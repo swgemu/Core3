@@ -35,7 +35,37 @@ TatooineMosEspaScreenPlay = CityScreenPlay:new {
 		{"mos_espa_police_officer", "mos_espa_police_officer_rebel", -3023.4,5,2618.4,86,0, "", ""},
 		{"mos_espa_police_officer", "mos_espa_police_officer_rebel", -2977.32,5,2010.1,171.012,0, "", ""},
 		{"mos_espa_police_officer", "mos_espa_police_officer_rebel", -3022.7,5.1,2619.6,-171,0, "", ""},
-		{"mos_espa_police_officer", "mos_espa_police_officer_rebel", -2976.54,5,2011.63,171.014,0, "", ""},		
+		{"mos_espa_police_officer", "mos_espa_police_officer_rebel", -2976.54,5,2011.63,171.014,0, "", ""},
+	},
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"cll8_1", "cll8_binary_load_lifter", 60, -2922.62, 5, 2143.4, 19.5832, 0, ""},
+		{"eg6_1", "eg6_power_droid", 300, -2833.22, 5, 1899.71, 245.01, 0, ""},
+		{"eg6_2", "eg6_power_droid", 300, -2928.04, 5, 1977.68, 330.633, 0, ""},
+		{"eg6_3", "eg6_power_droid", 300, -2945.98, 5, 2470.9, 186.376, 0, ""},
+		{"r2_1", "r2", 60, -2928.79, 5, 2111.03, 245.497, 0, "calm"},
+		{"r2_2", "r2", 60, -2946.8, 5, 2468.6, 350.917, 0, "calm"},
+		{"r4_1", "r4", 60, -2959.44, 5, 2110.92, 112.101, 0, "calm"},
+		{"r4_2", "r4", 60, -2873, 5, 1984, 252.493, 0, "calm"},
+		{"r5_1", "r5", 60, -2935.94, 5, 2275.75, 205.483, 0, "calm"},
+		{"r5_2", "r5", 60, -2915.25, 5, 2163.42, 154.028, 0, "calm"},
+		{"r5_3", "r5", 60, -2919.36, 5, 2262.73, 15.6789, 0, "calm"},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		cll8_1 = {{-2922.3, 5, 2144.1, 0, 1}, {-2912, 5, 2157, 0, 1}, {-2856, 5, 2154, 0, 1}, {-2902, 5, 2148, 0, 1}, {-2922, 5, 2111, 0, 1}},
+		eg6_1 = {{-2833.22, 5, 1899.71, 0, 1}, {-2788, 5, 1875, 0, 1}, {-2823, 5, 1924, 0, 1}, {-2834, 5, 1958, 0, 1}, {-2878, 5, 1955, 0, 1}, {-2831, 5, 1954, 0, 1}, {-2821, 5, 1913, 0, 1}},
+		eg6_2 = {{-2928.04, 5, 1977.68, 0, 1}, {-2955, 5, 1974, 0, 1}, {-2918, 5, 2010, 0, 1}, {-2898, 5, 1956, 0, 1}},
+		eg6_3 = {{-2945, 5, 2470, 0, 1}, {-2924, 5, 2472, 0, 1}, {-2919, 5, 2505, 0, 1}, {-2898, 5, 2476, 0, 1}, {-2912, 5, 2460, 0, 1}},
+		r2_1 = {{-2928.79, 5, 2111, 0, 1}, {-2925, 5, 2090, 0, 1}, {-2923, 5, 2052, 0, 1}, {-2952, 5, 2042, 0, 1}},
+		r2_2 = {{-2946.8, 5, 2468.6, 0, 0}, {-2906, 5, 2447, 0, 1}, {-2920, 5, 2428, 0, 1}, {-2921, 5, 2400, 0, 1}, {-2922, 5, 2422, 0, 1}, {-2944, 5, 2438, 0, 1}},
+		r4_1 = {{-2959, 5, 2110, 0, 1}, {-2994, 5, 2119, 0, 0}, {-3048, 5, 2141, 0, 1}, {-2994, 5, 2119, 0, 1}},
+		r4_2 = {{-2873, 5, 1984, 0, 1}, {-2860, 5, 1987, 0, 1}, {-2895, 5, 1981, 0, 1}, {-2922, 5, 2044, 0, 1}, {-2899, 5, 1983, 0, 1}},
+		r5_1 = {{-2935, 5, 2275, 0, 1}, {-2910, 5, 2323, 0, 1}, {-2923, 5, 2398, 0, 1}, {-2910, 5, 2323, 0, 1}},
+		r5_2 = {{-2915.25, 5, 2163.42, 0, 1}, {-2927, 5, 2164, 0, 1}, {-2964, 5, 2218, 0, 1}, {-2939, 5, 2226, 0, 1}, {-2912, 5, 2175, 0, 1}},
+		r5_3 = {{-2919.36, 5, 2262.73, 0, 1}, {-2957, 5, 2244, 0, 1}, {-3040, 5, 2230, 0, 1}, {-2972, 5, 2237, 0, 1}},
 	},
 }
 
@@ -44,6 +74,7 @@ registerScreenPlay("TatooineMosEspaScreenPlay", true)
 function TatooineMosEspaScreenPlay:start()
 	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 	end
@@ -263,7 +294,6 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile(self.planet, "businessman",60,-2868.4,5,2493.9,238,0)
 	self:setMoodString(pNpc, "npc_sitting_chair")
-	spawnMobile(self.planet, "cll8_binary_load_lifter",60,-2922.62,5,2143.4,19.5832,0)
 	spawnMobile(self.planet, "commoner_fat",60,-2954.74,5,2235.4,232.852,0)
 	spawnMobile(self.planet, "commoner_fat",60,-2877.18,5,2473.48,293.853,0)
 	spawnMobile(self.planet, "commoner_fat",60,-2886.35,5,2377.12,323.001,0)
@@ -304,9 +334,6 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "desert_demon",300,-2821.38,5,2432.95,176.513,0)
 	spawnMobile(self.planet, "desert_demon",300,-2861.27,5,2393.34,146.859,0)
 	spawnMobile(self.planet, "desert_demon",300,-2823.03,5,2448.69,64.4102,0)
-	spawnMobile(self.planet, "eg6_power_droid",300,-2833.22,5,1899.71,245.01,0)
-	spawnMobile(self.planet, "eg6_power_droid",300,-2928.04,5,1977.68,330.633,0)
-	spawnMobile(self.planet, "eg6_power_droid",300,-2945.98,5,2470.9,186.376,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-2804,5,2237,315,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-2836,5,2275,45,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-2935,5,2393,90,0)
@@ -376,20 +403,6 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "noble",60,-3062.85,5,2195.92,156.151,0)
 	pNpc = spawnMobile(self.planet, "prost_roberts",60,-2906.52,5,2128.41,75.633,0)
 	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile(self.planet, "r2",60,-2928.79,5,2111.03,245.497,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r2",60,-2946.98,5,2470.9,350.917,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r4",60,-2959.44,5,2110.92,112.101,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r4",60,-2871.38,6.12074,1985.32,252.493,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5",60,-2935.94,5,2275.75,205.483,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5",60,-2915.25,5,2163.42,154.028,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5",60,-2919.36,5,2262.73,15.6789,0)
-	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile(self.planet, "rel_keteris",60,-2905.83,5,2127.11,255.625,0)
 	self:setMoodString(pNpc, "neutral")
 	spawnMobile(self.planet, "scientist",60,-2969.77,5,2194.82,198.34,0)

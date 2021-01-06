@@ -18,6 +18,24 @@ TatooineWayfarScreenPlay = CityScreenPlay:new {
 		{"stormtrooper_groupleader", "rebel_high_general", -5287.5,75.0,-6594.4,-145,0, "", ""},
 		{"sand_trooper", "rebel_trooper", -5295.0,75.0,-6590.2,-145,0, "", ""},
 	},
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"cll8_1", "cll8_binary_load_lifter", 60, -5204.46, 75, -6481.04, 153.365, 0, ""},
+		{"cll8_2", "cll8_binary_load_lifter", 60, -5106.7, 75, -6484.28, 160.531, 0, ""},
+		{"r3_1", "r3", 60, -5129.45, 75, -6483.77, 250.023, 0, "calm"},
+		{"r5_1", "r5", 60, -5105.84, 75, -6486.52, 161.488, 0, "calm"},
+		{"r5_2", "r5", 60, -5126.31, 75, -6491.03, 294.68, 0, "calm"},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		cll8_1 = {{-5204.46, 75, -6481.04, 0 ,1}, {-5228, 75, -6489, 0, 1}, {-5223, 75, -6502, 0, 1}, {-5185, 75, -6494, 0, 1}, {-5201, 75, -6494, 0, 1}},
+		cll8_2 = {{-5106.7, 75, -6484.28, 0, 1}, {-5108.3, 75, -6472.3, 0, 0}, {-5110.9, 75, -6472.3, 0, 1}, {-5108.3, 75, -6472.3, 0, 0}},
+		r3_1 = {{-5129.45, 75, -6483.77, 0, 0}, {-5117.1, 75, -6474.6, 0, 1}, {-5129.45, 75, -6483.77, 0, 1}, {-5142.4, 75, -6494.4, 0, 0}, {-5154.6, 75, -6495.9, 0, 1}, {-5142.4, 75, -6494.4, 0, 1}},
+		r5_1 = {{-5105.84, 75, -6486.52, 0, 1}, {-5104.2, 75, -6500.9, 0, 0}, {-5085.8, 75, -6501.3, 0, 1}, {-5104.2, 75, -6500.9, 0, 1}},
+		r5_2 = {{-5126.31, 75, -6491.03, 0, 1}, {-5125.5, 75, -6497.1, 0, 0}, {-5142.3, 75, -6498.1, 0, 1}, {-5125.5, 75, -6497.1, 0, 1}},
+	},
 }
 
 registerScreenPlay("TatooineWayfarScreenPlay", true)
@@ -25,6 +43,7 @@ registerScreenPlay("TatooineWayfarScreenPlay", true)
 function TatooineWayfarScreenPlay:start()
 	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 	end
@@ -103,8 +122,6 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "mercenary",300,-25.6591,-0.519991,10.6171,15.7251,1134570)
 
 	--Outside
-	spawnMobile(self.planet, "cll8_binary_load_lifter",60,-5204.46,75,-6481.04,153.365,0)
-	spawnMobile(self.planet, "cll8_binary_load_lifter",60,-5106.7,75,-6484.28,160.531,0)
 	spawnMobile(self.planet, "commoner",60,-5095.19,75,-6527.76,255.369,0)
 	spawnMobile(self.planet, "commoner_fat",60,-5213.66,75,-6474.22,51.4178,0)
 	spawnMobile(self.planet, "commoner_naboo",60,-5249.25,75,-6516.55,22.2881,0)
@@ -153,12 +170,6 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "jawa_warlord",360,-5066.64,75,-6600.84,318.437,0)
 	spawnMobile(self.planet, "jawa_warlord",360,-5054.39,75,-6602.99,341.563,0)
 	spawnMobile(self.planet, "noble",60,-5161.6,75,-6532.3,24,0)
-	pNpc = spawnMobile(self.planet, "r3",60,-5129.45,75,-6483.77,250.023,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5",60,-5105.84,75,-6486.52,161.488,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5",60,-5126.31,75,-6491.03,294.68,0)
-	self:setMoodString(pNpc, "calm")
 	spawnMobile(self.planet, "rebel_recruiter",60,-5295.7,75,-6527.99,39.2298,0)
 	spawnMobile(self.planet, "scientist",60,-5260.46,75,-6556.07,247.019,0)
 	pNpc = spawnMobile(self.planet, "smuggler_pilot",60,-5868.38,90,-6199.5,65.5014,0)

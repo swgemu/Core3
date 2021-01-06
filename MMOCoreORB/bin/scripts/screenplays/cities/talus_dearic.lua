@@ -1,7 +1,35 @@
-TalusDearicScreenPlay = ScreenPlay:new {
+TalusDearicScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "TalusDearicScreenPlay"
+	screenplayName = "TalusDearicScreenPlay",
+
+	planet = "talus",
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"eg6_1", "eg6_power_droid", 60, 505.449, 6, -3025.94, 180.005, 0, ""},
+		{"eg6_2", "eg6_power_droid", 60, 380.738, 6, -3030.24, 268.183, 0, ""},
+		{"r2_1", "r2", 60, 207.078, 6, -2800.53, 272.222, 0, ""},
+		{"r2_2", "r2", 60, 504.449, 6, -3026.94, 180.006, 0, ""},
+		{"r3_1", "r3", 60, 459.915, 6, -3089.68, 182.021, 0, ""},
+		{"r3_2", "r3", 60, 457.915, 6, -3090.68, 270.018, 0, ""},
+		{"r3_3", "r3", 60, 664.839, 6, -3061.96, 180.006, 0, ""},
+		{"r5_1", "r5", 60, 411.254, 6, -2862.25, 208.889, 0, ""},
+		{"r5_2", "r5", 60, 407.095, 6, -3036.31, 310.529, 0, ''},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		eg6_1 = {{505, 6, 3025, 0, 1}, {505, 6, -2955, 0, 1}, {587, 6, -2953, 0, 1}},
+		eg6_2 = {{380, 6, -3030, 0, 1}, {304, 6, -3031, 0, 1}, {380, 6, -3030, 0, 1}, {388, 6, -3081, 0, 1}, {388, 6, -3097, 0, 1}, {388, 6, -3081, 0, 1}},
+		r2_1 = {{207, 6, -2800, 0, 1}, {132, 6, -2794, 0, 1}, {207, 6, -2800, 0, 1}, {282, 6, -2795, 0, 1}, {285, 6, -2754, 0, 1}, {282, 6, -2795, 0, 1}},
+		r2_2 = {{504, 6, -3026, 0, 1}, {530, 6, -3034, 0, 1}, {582, 6, -3034, 0, 1}, {600, 6, -3007, 0, 1}, {557, 6, -3031, 0, 1}},
+		r3_1 = {{459, 6, -3089, 0, 1}, {438, 6, -3058, 0, 1}, {454, 6, -3040, 0, 1}, {455, 6, -2997, 0, 1}, {454, 6, -3040, 0, 1}, {440, 6, -3061, 0, 1}},
+		r3_2 = {{457, 6, -3089, 0, 1}, {424, 6, -3067, 0, 1}, {409, 6, -3031, 0, 1}, {415, 6, -3043, 0, 1}},
+		r3_3 = {{663, 6, -3061, 0, 1}, {633, 6, -3049, 0, 1}, {634, 6.2, -3034.1, 0, 1}, {696.1, 6.2, -3033.9, 0, 1}, {696, 6, -3043, 0, 1}, {681, 6, -3043, 0, 1}},
+		r5_1 = {{417, 6, -2837, 0, 1}, {436, 6, -2837, 0, 1}, {465, 6, -2850, 0, 1}, {449, 6, -2861, 0, 1}},
+		r5_2 = {{407, 6, -3034, 0, 1}, {406, 6, -2968, 0, 1}, {341, 6, -2953, 0, 1}, {390, 6, -2963, 0, 1}, {484, 6, -2963, 0, 1}, {407, 6, -2967, 0, 1}},
+	},
 }
 
 registerScreenPlay("TalusDearicScreenPlay", true)
@@ -9,7 +37,8 @@ registerScreenPlay("TalusDearicScreenPlay", true)
 function TalusDearicScreenPlay:start()
 	if (isZoneEnabled("talus")) then
 		self:spawnMobiles()
-    		self:spawnSceneObjects()
+		self:spawnPatrolMobiles()
+		self:spawnSceneObjects()
 	end
 end
 
@@ -235,20 +264,11 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "commoner",60,709.053,6,-3036.35,323.442,0)
 	spawnMobile("talus", "commoner",60,721.819,6,-2892.41,331.474,0)
 	spawnMobile("talus", "commoner",60,709.441,6,-2967.7,167.877,0)
-	spawnMobile("talus", "eg6_power_droid",60,505.449,6,-3025.94,180.005,0)
-	spawnMobile("talus", "eg6_power_droid",60,380.738,6,-3030.24,268.183,0)
 	spawnMobile("talus", "noble",60,367.974,6,-2892.77,10.4074,0)
 	spawnMobile("talus", "noble",60,498.882,6,-3108.57,95.7697,0)
 	spawnMobile("talus", "noble",60,624.779,6,-2923.53,258.421,0)
 	spawnMobile("talus", "scientist",60,426.774,6,-2863.5,106.169,0)
 	spawnMobile("talus", "scientist",60,629.722,6,-3048.65,343.583,0)
-	spawnMobile("talus", "r2", 60, 207.078, 6, -2800.53, 272.222, 0)
-	spawnMobile("talus", "r2", 60, 504.449, 6, -3026.94, 180.006, 0)
-	spawnMobile("talus", "r3", 60, 459.915, 6, -3089.68, 182.021, 0)
-	spawnMobile("talus", "r3", 60, 457.915, 6, -3090.68, 270.018, 0)
-	spawnMobile("talus", "r3", 60, 664.839, 6, -3061.96, 180.006, 0)
-	spawnMobile("talus", "r5", 60, 411.254, 6, -2862.25, 208.889, 0)
-	spawnMobile("talus", "r5", 60, 407.095, 6, -3036.31, 310.529, 0)
 
 	--Starport
 	pNpc = spawnMobile("talus", "commoner",60,0.904988,0.639421,56.083,180.007,3175356)

@@ -1,7 +1,7 @@
 surgical_droid_21b = Creature:new {
 	objectName = "@mob/creature_names:surgical_droid_21b",
 	socialGroup = "townsperson",
-	faction = "townsperson",
+	faction = "",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -20,19 +20,17 @@ surgical_droid_21b = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
-	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = NONE,
+	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {
 		"object/mobile/21b_surgical_droid.iff"
-	},		
+	},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
-
 CreatureTemplates:addCreatureTemplate(surgical_droid_21b, "surgical_droid_21b")

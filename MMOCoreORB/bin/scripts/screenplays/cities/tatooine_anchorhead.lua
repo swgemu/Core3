@@ -1,7 +1,23 @@
-TatooineAnchorheadScreenPlay = ScreenPlay:new {
+TatooineAnchorheadScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "TatooineAnchorheadScreenPlay"
+	screenplayName = "TatooineAnchorheadScreenPlay",
+
+	planet = "tatooine",
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"r3_1", "r3", 60, -180.482, 65, -5314.98, 96.2472, 0, 'calm'},
+		{"r3_2", "r3", 60, 116.569, 52, -5341.57, 2.26464, 0, "calm"},
+		{"r4_1", "r4", 60, 75.9409, 52, -5355.36, 178.447, 0, "calm"},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		r3_1 = {{-180, 65, -5314, 0, 1}, {-184, 65, -5306, 0, 0}, {-179, 65, -5298, 0, 0}, {-231, 65, -5295, 0, 1}, {-201, 65, -5305, 0, 1}},
+		r3_2 = {{116.569, 52, -5341.57, 0, 1}, {116, 52, -5365, 0, 1}, {124, 52, -5397, 0, 1}, {116, 52, -5365, 0, 1}, {113.1, 52, -5359.2, 0, 0}, {78.6, 52, -5358.7, 0, 1}, {113.1, 52, -5359.2, 0, 1}},
+		r4_1 = {{75.9, 52, -5355, 0, 1}, {74, 52, -5345, 0, 0}, {67, 52, -5344, 0, 1}, {44, 52, -5344, 0, 1}, {41.0, 52, -5337.3, 0, 1}, {68, 52, -5337, 0, 1}},
+	},
 }
 
 registerScreenPlay("TatooineAnchorheadScreenPlay", true)
@@ -9,6 +25,7 @@ registerScreenPlay("TatooineAnchorheadScreenPlay", true)
 function TatooineAnchorheadScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
 	end
 end
@@ -59,12 +76,6 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "mercenary",60,-162.748,65,-5311.84,180.005,0)
 	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile("tatooine", "r3",60,-180.482,65,-5314.98,96.2472,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile("tatooine", "r3",60,116.569,52,-5341.57,2.26464,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile("tatooine", "r4",60,75.9409,52,-5355.36,178.447,0)
-	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile("tatooine", "businessman", 60, -143.907, 65, -5335.05, 0, 0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "pilot", 60, -143.907, 65, -5334.05, 180.005, 0)

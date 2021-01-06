@@ -7,7 +7,7 @@ CorelliaKorVellaScreenPlay = CityScreenPlay:new {
 
 	gcwMobs = {
 
-	--swap spawns for imp base near starport at outskirts of city limits
+		--swap spawns for imp base near starport at outskirts of city limits
 		{"stormtrooper", "rebel_trooper", -3001.5, 31.0, 2930.4, 180, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", -3003.5, 31.0, 2930.4, 180, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", -3007.5, 31.0, 2930.4, 180, 0, "", ""},
@@ -32,7 +32,7 @@ CorelliaKorVellaScreenPlay = CityScreenPlay:new {
 		{"stormtrooper", "rebel_trooper", -0.2, 0.1, 1.3, -90, 1331953, "", ""},
 		{"imperial_colonel", "rebel_colonel", 4.6, 0.1, -2.1, -135, 1331955, "", ""},
 
-	--faction swap spawns for in the city itself
+		--faction swap spawns for in the city itself
 		{"imperial_noncom", "specforce_interrogator", -3660.31, 86, 3103.26, 39.0513, 0, "", ""},
 		{"dark_trooper", "rebel_commando", -3773.66, 86, 3203.13, 22.9816, 0, "", ""},
 		{"imperial_private", "rebel_corporal", -3387, 86, 2960, 95, 0, "", ""},
@@ -96,6 +96,34 @@ CorelliaKorVellaScreenPlay = CityScreenPlay:new {
 		{"corsec_trooper", "corsec_trooper", -3102.95, 31, 2989.56, 266.9, 0, "", ""},
 		{"corsec_major", "corsec_major", -3150.16, 31.1, 2773.0, 282, 0, "", ""},
 	},
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"r2_1", "r2", 1, -3697.43, 86.1, 3141.62, 327.074, 0, "calm"},
+		{"r3_1", "r3", 1, -3423.05, 78.15, 3333.75, 253.023, "calm"},
+		{"r3_2", "r3", 1, -3327.95, 86, 3233.64, 315.946, 0, "calm"},
+		{"r3_3", "r3", 1, -3157, 31, 2802, 265.951, 0, "calm"},
+		{"r5_1", "r5", 1, -3094.48, 31, 2972.63, 268.321, 0, "calm"},
+		{"r5_2", "r5", 1, -3134.32, 31, 2801.71, 82.3858, 0, "calm"},
+		{"cll8_1", "cll8_binary_load_lifter", 1, -3654.48, 86, 3081.81, 26.971, ""},
+		{"cll8_2", "cll8_binary_load_lifter", 1, -3449, 78, 3378, 359.013, ""},
+		{"cll8_3", "cll8_binary_load_lifter", 1, -3038, 31, 2988, 81.028, 0, ""},
+		{"eg6_1", "eg6_power_droid", 1, -3766.44, 86, 3180.9, 54.4, 0, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
+		r2_1 = {{-3699, 86, 3140, 0, 1}, {-3720, 86, 3180, 0, 1}, {-3723, 86, 3178, 0, 1}, {-3686, 86, 3115, 0, 0}, {-3685, 86, 3104, 0, 1}, {-3686, 86, 3115, 0, 0}},
+		r3_1 = {{-3423, 78, 3333, 0, 1}, {-3428, 78, 3323, 0, 0}, {-3436, 78, 3247, 0, 1}, {-3428, 78, 3323, 0, 0}},
+		r3_2 = {{-3328, 86, 3235, 0, 1}, {-3336, 86, 3210, 0, 1}, {-3370, 85, 3215, 0, 1}, {-3371, 86, 3272, 0, 1}, {-3370, 85, 3215, 0, 1}, {-3336, 86, 3210, 0, 1}},
+		r3_3 = {{-3157, 31, 2802, 0, 0}, {-3176, 31, 2797, 0, 1}, {-3165, 31, 2809, 0, 1}},
+		r5_1 = {{-3094, 31, 2972, 0, 1}, {-3150, 31, 2998, 0, 1}},
+		r5_2 = {{-3142, 31, 2805, 0, 1}, {-3137, 31, 2809, 0, 1}, {-3113, 31, 2804, 0, 1}, {-3048, 30, 2832, 0, 1}, {-3113, 31, 2804, 0, 1}},
+		cll8_1 = {{-3654, 86, 3081, 0, 1}, {-3641, 86, 3126, 0, 0}, {-3591, 86, 3157, 0, 1}, {-3641, 86, 3126, 0, 1}},
+		cll8_2 = {{-3453, 78, 3350, 0, 1}, {-3436, 78, 3479, 0, 1}},
+		cll8_3 = {{-3038, 31, 2988, 0, 1}, {-3021, 31, 2908, 0, 1}, {-3038, 31, 2988, 0, 1}, {-3054, 31, 2985, 0, 0}, {-3091, 31, 2975, 0, 1}},
+		eg6_1 = {{-3766, 86, 3180, 0, 1}, {-3770, 86, 3192, 0, 1}, {-3755, 86, 3220, 0, 1}, {-3745, 86, 3198, 0, 1}},
+	},
 }
 
 registerScreenPlay("CorelliaKorVellaScreenPlay", true)
@@ -105,6 +133,7 @@ function CorelliaKorVellaScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -134,10 +163,6 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "sullustan_male", 360, -3177.78, 31, 2891.03, 180, 0)
 
 	--misc
-	spawnMobile(self.planet, "cll8_binary_load_lifter", 60, -3654.48, 86, 3081.81, 26.971, 0)
-	spawnMobile(self.planet, "cll8_binary_load_lifter", 60, -3444.06, 78, 3384.03, 359.013, 0)
-	spawnMobile(self.planet, "cll8_binary_load_lifter", 60, -3095.09, 31, 2975.46, 81.028, 0)
-	spawnMobile(self.planet, "eg6_power_droid", 60, -3766.44, 86, 3180.9, 54.4, 0)
 	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3563, 86, 3138, 60, 0)
 	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3571, 86, 3176, 60, 0)
 	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3574, 86, 3154, 315, 0)
@@ -155,19 +180,6 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3128, 31, 3008, 180, 0)
 	spawnMobile(self.planet, "medic", 60, -3591.74, 86, 3179.01, 0, 0)
 	spawnMobile(self.planet, "junk_dealer", 10, -3130.41, 31, 2973.96, 0, 0)
-
-	pNpc = spawnMobile(self.planet, "r2", 60, -3697.43, 87.5185, 3141.62, 327.074, 0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r3", 60, -3423.05, 78.15, 3333.75, 253.023, 0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r3", 60, -3327.95, 86, 3233.64, 315.946, 0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r3", 60, -3151.77, 31, 2800, 265.951, 0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5", 60, -3094.48, 31, 2972.63, 268.321, 0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r5", 60, -3134.32, 31, 2801.71, 82.3858, 0)
-	self:setMoodString(pNpc, "calm")
 
 	--commoners
 	spawnMobile(self.planet, "bodyguard", 300, -3587.81, 86, 3134.7, 0, 0)
@@ -423,7 +435,7 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "logro_elsin", 60, -3144.67, 31, 2806.06, 174, 0)
 
 	--Building Interiors
-		--Starport
+	--Starport
 	spawnMobile(self.planet, "contractor", 60, 0.68378, 0.639421, 62.1666, 180, 4255423)
 	spawnMobile(self.planet, "sullustan_male", 60, 45.99, -0.52, 35.85, 180, 4255426)
 	spawnMobile(self.planet, "medic", 60, 45.99, -0.52, 34.75, 0, 4255426)
@@ -434,14 +446,14 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	pNpc = spawnMobile(self.planet, "gambler", 60, 0.68378, 0.639421, 61.0666, 268.449, 4255423)
 	self:setMoodString(pNpc, "calm")
 
-		--Hotel
+	--Hotel
 	spawnMobile(self.planet, "zhanks", 60, 1.25, 1.0, 6.9, 340, 3005670)
 	spawnMobile(self.planet, "ta_667", 60, -0.52, 1.0, 6.4, 13.75, 3005670)
 	spawnMobile(self.planet, "commoner", 1, 20.5, 1.28, 10, 135, 3005671)
 	spawnMobile(self.planet, "entertainer", 60, 21.6, 1.28, 8.94, 0, 3005671)
 	spawnMobile(self.planet, "farmer_rancher", 60, 21.6, 1.28, 10.04, 180, 3005671)
 
-		--Cantina
+	--Cantina
 	spawnMobile(self.planet, "comm_operator", 400, 48.13, 0.1, 2.47, 292, 3005397)
 	spawnMobile(self.planet, "artisan", 60, 34.4, 0.1, -8.04, 0, 3005398)
 	spawnMobile(self.planet, "mercenary", 60, 34.4, 0.1, -6.9, 180, 3005398)
@@ -461,19 +473,19 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner_naboo", 300, -45.2, 0.1, -20.7, 180, 3005411)
 	spawnMobile(self.planet, "commoner", 60, -45.2, 0.1, -21.7, 0, 3005411)
 
-		--Guild Hall (-3435,3196)
+	--Guild Hall (-3435,3196)
 	spawnMobile(self.planet, "trainer_tailor", 0, 11, 1.1, -14, 0, 2955415)
 	spawnMobile(self.planet, "mercenary", 60, 3.29, 1.1, -9.58, 249, 2955416)
 	spawnMobile(self.planet, "trainer_artisan", 0, 0, 1.1, -14, 0, 2955416)
 	spawnMobile(self.planet, "trainer_chef", 0, -11, 1.1, -14, 0, 2955417)
 
-		--Guild Hall (-3412,3364)
+	--Guild Hall (-3412,3364)
 	spawnMobile(self.planet, "trainer_scout", 0, -12, 1.13, 5.5, 180, 2955424)
 	spawnMobile(self.planet, "trainer_marksman", 0, 0, 1.13, -14, 0, 2955426)
 	spawnMobile(self.planet, "trainer_brawler", 0, -11, 1.13, -14, 0, 2955427)
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 2.5, 88, 2955424)
 
-		--Cloning Facility
+	--Cloning Facility
 	spawnMobile(self.planet, "info_broker", 60, 4.47, -0.05, 2.9, 135, 3005428)
 	spawnMobile(self.planet, "medic", 60, 5.57, -0.05, 2.9, 180, 3005428)
 	spawnMobile(self.planet, "medic", 300, 3.9, -0.05, -3.15, 0, 3005428)
@@ -485,14 +497,14 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "artisan", 300, -5.69, -5.5, -9.21, 180, 3005430)
 	spawnMobile(self.planet, "farmer_rancher", 60, -5.69, -5.5, -10.31, 0, 3005430)
 
-		--Guild Hall (-3680,3081)
+	--Guild Hall (-3680,3081)
 	spawnMobile(self.planet, "trainer_merchant", 0, 12, 1.13, 6, 180, 2955398)
 	spawnMobile(self.planet, "trainer_armorsmith", 0, -12, 1.1, 5, 180, 2955399)
 	spawnMobile(self.planet, "trainer_architect", 0, 11, 1.13, -14, 0, 2955400)
 	spawnMobile(self.planet, "trainer_weaponsmith", 0, -2.5, 1.13, -8.4, 91, 2955401)
 	spawnMobile(self.planet, "trainer_droidengineer", 0, -11, 1.13, -14, 0, 2955402)
 
-		--Medical Center
+	--Medical Center
 	spawnMobile(self.planet, "trainer_doctor", 0, 12, 0.18, -1, 0, 3375392)
 	spawnMobile(self.planet, "trainer_medic", 0, -12.65, 0.18, 2.17, 111, 3375392)
 	spawnMobile(self.planet, "commoner", 60, -0.84, 0.18, 1.59, 270, 3375392)

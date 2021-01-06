@@ -1,7 +1,19 @@
-RoriNarmleScreenPlay = ScreenPlay:new {
+RoriNarmleScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "RoriNarmleScreenPlay"
+	screenplayName = "RoriNarmleScreenPlay",
+
+	planet = "rori",
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"cll8_1", "cll8_binary_load_lifter", 1, -5154.8, 80.0, -2343.4, 33, 0, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		cll8_1 = {{-5154, 80, -2343, 0, 1}, {-5165, 80, -2348, 0, 0}, {-5166, 80, -2422, 0, 1}, {-5165, 80, -2348, 0, 1}, {-5145, 80, -2333, 0, 0}, {-5117, 80, -2331, 0, 1}, {-5145, 80, -2333, 0, 1}},
+	},
 }
 
 registerScreenPlay("RoriNarmleScreenPlay", true)
@@ -9,7 +21,8 @@ registerScreenPlay("RoriNarmleScreenPlay", true)
 function RoriNarmleScreenPlay:start()
 	if (isZoneEnabled("rori")) then
 		self:spawnMobiles()
-    		self:spawnSceneObjects()
+		self:spawnPatrolMobiles()
+		self:spawnSceneObjects()
 	end
 end
 
@@ -207,7 +220,6 @@ function RoriNarmleScreenPlay:spawnMobiles()
 	spawnMobile("rori", "patron_klaatu", 1, 8.4, 1.1, -20.1, -165, 4635491)
 	spawnMobile("rori", "patron", 1, 7.7, 1.0, -8.2, -105, 4635491)
 	spawnMobile("rori", "patron", 1, -3.6, 1.0, -4.0, -35, 4635491)
-	spawnMobile("rori", "cll8_binary_load_lifter", 1, -5154.8, 80.0, -2343.4, 33, 0)
 	spawnMobile("rori", "imperial_recruiter", 1, -5256, 80, -2256, 270, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5120, 80, -2269, 0, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5127, 80, -2266, 45, 0)

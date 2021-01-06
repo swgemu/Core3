@@ -1,7 +1,19 @@
-EndorSmugglerOutpostScreenPlay = ScreenPlay:new {
+EndorSmugglerOutpostScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "EndorSmugglerOutpostScreenPlay"
+	screenplayName = "EndorSmugglerOutpostScreenPlay",
+
+	planet = "endor",
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"r3_1", "r3", 60, -950.705, 73, 1542.69, 331.775, 0, "neutral"},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		r3_1 = {{-951, 73, 1542, 0, 1}, {-905, 76, 1586, 0, 1}, {-904, 80, 1612, 0, 1}, {-886, 76, 1600, 0, 1}, {-880, 76, 1589, 0, 1}, {-858, 76, 1584, 0, 1}, {-854, 79, 1600, 0, 1}, {-858, 76, 1584, 0, 1}, {-885, 76, 1586, 0, 1}},
+	},
 }
 
 registerScreenPlay("EndorSmugglerOutpostScreenPlay", true)
@@ -9,6 +21,7 @@ registerScreenPlay("EndorSmugglerOutpostScreenPlay", true)
 function EndorSmugglerOutpostScreenPlay:start()
 	if (isZoneEnabled("endor")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -40,6 +53,4 @@ function EndorSmugglerOutpostScreenPlay:spawnMobiles()
 	spawnMobile("endor", "smuggler", 300, -890.91, 76, 1591.38, 253.162, 0)
 	spawnMobile("endor", "smuggler", 300, -889.732, 76, 1592.45, 319.914, 0)
 	spawnMobile("endor", "noble", 60, -829.243, 76, 1567.61, 95.886, 0)
-	pNpc = spawnMobile("endor", "r3",60,-950.705,73,1542.69,331.775,0)
-	self:setMoodString(pNpc, "neutral")
 end

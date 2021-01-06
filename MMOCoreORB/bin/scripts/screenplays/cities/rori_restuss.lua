@@ -1,7 +1,23 @@
-RoriRestussScreenPlay = ScreenPlay:new {
+RoriRestussScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "RoriRestussScreenPlay"
+	screenplayName = "RoriRestussScreenPlay",
+
+	planet = "rori",
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"cll8_1", "cll8_binary_load_lifter", 1, 5117.8, 80.0, 5696.8, 90, 0, ""},
+		{"cll8_2", "cll8_binary_load_lifter", 1, 5240.1, 80.0, 5616.5, -90, 0, ""},
+		{"r5_1", "r5", 1, 5443.7, 80.0, 5674.9, 33, 0, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		cll8_1 = {{5117, 80, 5696, 0, 1}, {5135.6, 80, 5688.2, 0, 1}, {5162.2, 80, 5688.4, 0, 0}, {5183.2, 80, 5697.6, 0, 1}, {5162.2, 80, 5688.4, 0, 0}, {5135.6, 80, 5688.2, 0, 1}},
+		cll8_2 = {{5239, 80, 5616, 0, 1}, {5235, 80, 5624, 0, 1}, {5172, 80, 5624, 0, 1}, {5164, 80, 5621, 0, 1}, {5139, 80, 5627, 0, 1}, {5164, 80, 5621, 0, 1}, {5172, 80, 5624, 0, 1}, {5206, 80, 5624, 0, 1}},
+		r5_1 = {{5451, 80, 5660, 0, 1}, {5449, 80, 5650, 0, 1}, {5466, 80, 5640, 0, 1}, {5489, 80, 5652, 0, 1}},
+	},
 }
 
 registerScreenPlay("RoriRestussScreenPlay",  true)
@@ -9,7 +25,8 @@ registerScreenPlay("RoriRestussScreenPlay",  true)
 function RoriRestussScreenPlay:start()
 	if (isZoneEnabled("rori")) then
 		self:spawnMobiles()
-    		self:spawnSceneObjects()
+		self:spawnPatrolMobiles()
+		self:spawnSceneObjects()
 	end
 end
 
@@ -220,9 +237,6 @@ function RoriRestussScreenPlay:spawnMobiles()
 	spawnMobile("rori", "first_brigade_officer", 300, 0.0, 1.7, -21.7, 0, 4635710)
 
 	--misc
-	spawnMobile("rori", "cll8_binary_load_lifter", 1, 5117.8, 80.0, 5696.8, 90, 0)
-	spawnMobile("rori", "cll8_binary_load_lifter", 1, 5240.1, 80.0, 5616.5, -90, 0)
-	spawnMobile("rori", "r5", 1, 5443.7, 80.0, 5674.9, 33, 0)
 	spawnMobile("rori", "commoner_old", 1, 5437.1, 80.0, 5876.9, 90, 0)
 	spawnMobile("rori", "commoner_fat", 1, 5439.3, 80.0, 5880.3, 135, 0)
 	spawnMobile("rori", "commoner", 1, 5442.3, 80.0, 5876.9, -75, 0)

@@ -435,3 +435,31 @@ function DeathWatchDefenderInterrupt:doAwarenessCheck(pAgent, pObject)
 
 	return true
 end
+
+CityPatrolInterrupt = createClass(Interrupt)
+function CityPatrolInterrupt:startAwarenessInterrupt(pAgent, pObject)
+	if (pAgent == pObject) then
+		return
+	end
+
+	if (pAgent == nil or pObject == nil) then
+		return
+	end
+
+	local aiAgent = AiAgent1(pAgent)
+
+	aiAgent:stopWaiting();
+	aiAgent:executeBehavior();
+end
+
+function CityPatrolInterrupt:doAwarenessCheck(pAgent, pObject)
+	if (pAgent == pObject) then
+		return
+	end
+
+	if (pAgent == nil or pObject == nil) then
+		return
+	end
+
+	return true
+end

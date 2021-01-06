@@ -6,7 +6,7 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 	planet = "naboo",
 
 	gcwMobs = {
-	--spawn garrison outside city in the outskirts
+		--spawn garrison outside city in the outskirts
 		{"stormtrooper", "rebel_trooper", 0, 0.3, 7.7, 0, 1259939, "", ""},
 		{"stormtrooper", "rebel_trooper", 0, 0.3, 6.2, 0, 1259939, "", ""},
 		{"stormtrooper", "rebel_trooper", 3.7, 0.3, -2.0, 0, 1259940, "", ""},
@@ -35,7 +35,7 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 		{"stormtrooper", "rebel_trooper", 5375.5, -197.2, 6453.5, -97, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5375.5, -197.2, 6456.5, -97, 0, "", ""},
 
-	--faction spawns inside the actual city limits
+		--faction spawns inside the actual city limits
 		{"stormtrooper", "rebel_trooper", 5290.5, -192, 6582.2, -90, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5294.5, -192, 6582.2, -90, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5298.5, -192, 6582.2, -90, 0, "", ""},
@@ -55,6 +55,18 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 		{"naboo_police_chief", "naboo_police_chief", 5011.7, -192, 6728.2, -40, 0, "", ""},
 		{"naboo_police_officer", "naboo_police_officer", 4985.0, -192, 6763.0, 88, 0, "", ""},
 	},
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"surgical_1", "surgical_droid_21b", 1, 4.5, -5.5, -13.2, -144, 1741516, ""},
+		{"r3_1", "r3", 60, 5189, -192, 6691, 0, 0, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		surgical_1 = {{4.5, -5.5, -13.2, 1741516, 1}, {-13.5, -5.0, -10.7, 1741516, 1}, {-7.1, -5.5, -9.4, 1741516, 1}, {-3.1, -5.5, -3.0, 1741516, 1}, {6.2, -5.5, -3.9, 1741516, 0}, {6.3, -5.5, -3.1, 1741516, 1}, {12.4, -5.0, -15.8, 1741516, 1}},
+		r3_1 = {{5189, -192, 6691, 0, 1}, {5179, -192, 6671, 0, 1}, {5189, -192, 6653, 0, 1}, {5200, -192, 6655, 0, 1}, {5205, -192, 6693, 0, 1}},
+	},
 }
 
 registerScreenPlay("NabooKaadaraScreenPlay", true)
@@ -64,6 +76,7 @@ function NabooKaadaraScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -197,7 +210,6 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "medic", 1, -3.5, -0.1, -3.3, 0, 1741514)
 	spawnMobile(self.planet, "medic", 1, -5.2, 0.1, 5.2, -90, 1741514)
 	spawnMobile(self.planet, "scientist", 1, -13.2, 0.1, 15.3, 90, 1741517)
-	spawnMobile(self.planet, "surgical_droid_21b", 1, 4.5, -5.5, -13.2, -144, 1741516)
 	spawnMobile(self.planet, "patron_ishitib", 1, 5299.3, -191.4, 6757.1, -80, 0)
 	spawnMobile(self.planet, "patron_ishitib", 1, 5298.0, -191.4, 6757.1, 100, 0)
 	spawnMobile(self.planet, "official", 120, 5236.8, -192, 6759.5, 87, 0)

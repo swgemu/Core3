@@ -91,8 +91,25 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 		{"corsec_trooper", "corsec_trooper", -1.67932,28,-4464.42,93.3597,0, "", ""},
 		{"corsec_trooper", "corsec_trooper", -60,28.5,-4597.2,-96,0, "", ""},
 		{"corsec_trooper", "corsec_trooper", -344.9,28,-4444.3,-48,0, "", ""},
-		{"corsec_trooper", "corsec_trooper", -347.5,28,-4442.6,123,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -347.5,28,-4442.6,123,0, "", ""}
 	},
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"cll8_1", "cll8_binary_load_lifter", 60, -146, 28, -4762, 0, 0, ""},
+		{"r3_1", "r3", 60, -158, 28, -4785, 0, 0, "calm"},
+		{"r3_2", "r3", 60, -182.479, 28, -4731.42, 293.019, 0, 0, "calm"},
+		{"surgical_1", "surgical_droid_21b", 60, -25.52, 0.26, -3.48, 357.849,1855535, ""}
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
+		cll8_1 = {{-147, 28, -4775, 0, 1}, {-139, 28, -4751, 0, 1}, {-164, 28, -4729, 0, 1}, {-145, 28, -4691, 0, 1}, {-105, 28, -4665, 0, 0}, {-77, 28, -4637, 0, 1}, {-105, 28, -4665, 0, 1}, {-145, 28, -4691, 0, 1}},
+		r3_1 = {{-149, 28, -4785, 0, 1}, {-196, 28, -4778, 0, 1}, {-205, 28, -4755, 0, 1}},
+		r3_2 = {{-178, 28, -4717, 0, 1}, {-186, 28, -4702, 0, 1}, {-192, 28, -4714, 0, 1}, {-212, 28, -4682, 0, 1}, {-182, 28, -4731, 0, 1}},
+		surgical_1 = {{-25.52, 0.26, -3.48, 1855535, 1}, {-11.3, 0.3, -6.5, 1855535, 0}, {-11.1, 0.3, 5.6, 1855535, 1}, {-30.0, 0.3, 6.0, 1855535, 1}, {-29.9, 0.3, -6.0, 1855535, 0}}
+	},
+
 }
 
 registerScreenPlay("CorelliaCoronetScreenPlay", true)
@@ -102,6 +119,7 @@ function CorelliaCoronetScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -199,7 +217,6 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_artisan",0,0,1.13306,-14,0,1855517)
 
 	--Med Center
-	spawnMobile(self.planet, "surgical_droid_21b",60,-25.52,0.26,-3.48,357.849,1855535)
 	spawnMobile(self.planet, "trainer_combatmedic",0,26.676,0.26,5.41823,85,1855531)
 	spawnMobile(self.planet, "trainer_doctor",0,-25.2731,0.26,-5,13,1855535)
 	spawnMobile(self.planet, "trainer_medic",0,-17.7359,0.26,-0.58142,137,1855535)
@@ -298,7 +315,6 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "businessman",60,-306.34,28,-4620.82,67.4368,0)
 	spawnMobile(self.planet, "businessman",60,-312.404,28,-4646.51,242.881,0)
 	spawnMobile(self.planet, "businessman",60,-135.995,28,-4745.63,251.824,0)
-	spawnMobile(self.planet, "cll8_binary_load_lifter",60,-146.217,28,-4738.99,346.392,0)
 	spawnMobile(self.planet, "commoner",60,-306.539,28,-4546.52,95.6639,0)
 	spawnMobile(self.planet, "commoner",60,-306.061,28,-4600.68,146.312,0)
 	spawnMobile(self.planet, "commoner",60,-258.479,28,-4620,198.098,0)
@@ -406,12 +422,6 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "meatlump_stooge",300,90.7,26.6,-4872.1,73,0)
 	spawnMobile(self.planet, "meatlump_stooge",300,252.9,28.3,-4657.7,-3,0)
 	spawnMobile(self.planet, "meatlump_stooge",300,293.9,29.7,-4552.4,-93,0)
-
-	--Misc
-	pNpc = spawnMobile(self.planet, "r3",60,-149.754,28,-4785.34,297.928,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r3",60,-182.479,28,-4731.42,293.019,0)
-	self:setMoodString(pNpc, "calm")
 
 	--Ragtag's outside
 	spawnMobile(self.planet, "ragtag_kook",300,-217.315,28,-4927.23,40.3799,0)

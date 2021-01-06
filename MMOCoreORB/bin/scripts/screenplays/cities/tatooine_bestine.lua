@@ -1,6 +1,25 @@
-TatooineBestineScreenPlay = ScreenPlay:new {
+TatooineBestineScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
-	screenplayName = "TatooineBestineScreenPlay"
+
+	screenplayName = "TatooineBestineScreenPlay",
+
+	planet = "tatooine",
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"cll8_1", "cll8_binary_load_lifter", 60, -1402.49, 9.99327, -3756.82, 140.109, 0, ""},
+		{"r2_1", "r2", 60, -15.8302, 1.0008, 1.57165, 93.4669, 1223851, ""},
+		{"r3_1", "r3", 60, -3.4, -4.0, -4.8, 128, 1528401, ""},
+		{"r4_1", "r4", 60, -1068.6, 12, -3600.3, -145, 0, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		cll8_1 = {{-1402, 9, -3756, 0, 1}, {-1398.5, 9.8, -3749.4, 0, 1}, {-1385.2, 10.0, -3734.9, 0, 0}, {-1394, 12, -3721, 0, 1}, {-1385.2, 10.0, -3734.9, 0, 1}, {-1398.5, 9.8, -3749.4, 0, 1}},
+		r2_1 = {{-15.8302, 1.0008, 1.57165, 1223851, 1}, {-15.9, 1.0, -9.3, 1223852, 1}, {-11.6, 1.0, 5.1, 1223851, 1}, {0.8, 1.0, 6.8, 1223849, 1}, {7.1, 1.0, 0.7,1223849, 1}, {0.8, 1.0, 6.8, 1223849, 1}},
+		r3_1 = {{-3.4, -4.0, -4.8, 1528401, 1}, {-4.1, -4.0, -9.7, 1528401, 1}, {-0.6, -4.0, -6.9, 1528401, 0}, {-0.6, -4.0, 0.6, 1528401, 1}},
+		r4_1 = {{-1068, 12, -3600, 0, 1}, {-1074.7, 12, -3608.6, 0, 0}, {-1035.7, 12, -3643.1, 0, 1}, {-1074.7, 12, -3608.6, 0, 1}, {-1086.9, 12, -3600.3, 0, 0}, {-1089.4, 12, -3585.6, 0, 1}, {-1086.9, 12, -3600.3, 0, 1}},
+	},
 }
 
 registerScreenPlay("TatooineBestineScreenPlay", true)
@@ -8,6 +27,7 @@ registerScreenPlay("TatooineBestineScreenPlay", true)
 function TatooineBestineScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
 	end
 end
@@ -109,7 +129,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "threaten")
 	pNpc = spawnMobile("tatooine", "mercenary",60,-11.2,-9.5,1.8,135,1528404)
 	self:setMoodString(pNpc, "threaten")
-	spawnMobile("tatooine", "r3",60,-3.4,-4.0,-4.8,128,1528401)
 	spawnMobile("tatooine", "seeker",240,-1.0,-9.5,1.8,-123,1528404)
 	pNpc = spawnMobile("tatooine", "twilek_slave",60,-1.9,-9.5,-2.4,130,1528407)
 	self:setMoodString(pNpc, "nervous")
@@ -139,7 +158,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "freelance_pilot",60,1.36242,0.999987,4.17823,16.6163,1223849)
 	self:setMoodString(pNpc, "neutral")
-	spawnMobile("tatooine", "r2",60,-15.8302,1.0008,1.57165,93.4669,1223851)
 	pNpc = spawnMobile("tatooine", "commoner_tatooine",60,-14.8302,1.00067,0.571647,270.007,1223851)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "commoner_tatooine",60,-16.8302,1.00087,0.571647,90.0019,1223851)
@@ -175,7 +193,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--Outside
 	spawnMobile("tatooine", "businessman",60,-1268.02,12,-3531.37,119.711,0)
 	spawnMobile("tatooine", "businessman",60,-987.119,12,-3729.33,40.7756,0)
-	spawnMobile("tatooine", "cll8_binary_load_lifter",60,-1402.49,9.99327,-3756.82,140.109,0)
 	spawnMobile("tatooine", "commoner_fat",60,-1213.04,12,-3629.94,40.7191,0)
 	spawnMobile("tatooine", "commoner_fat",60,-1279.47,12,-3584.64,352.018,0)
 	spawnMobile("tatooine", "commoner_fat",60,-1145.13,12,-3507.53,221.73,0)
@@ -230,9 +247,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "gerak_vurtimis",60,-1252.5,12,-3617.35,278.1,0)
 	spawnMobile("tatooine", "gert_talnin",60,-1287.3,12,-3587.16,169.676,0)
 	spawnMobile("tatooine", "gunham",60,-1125.07,12.1959,-3622.83,83.2544,0)
-
-	--by imp recruiter near city hall
-	spawnMobile("tatooine", "r4",60,-1068.6,12,-3600.3,-145,0)
 
 	--behind guild hall by shuttle
 	spawnMobile("tatooine", "commoner_tatooine",60,-1093.32,12,-3509.11, 63,0)

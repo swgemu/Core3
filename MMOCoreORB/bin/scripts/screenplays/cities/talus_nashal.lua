@@ -1,7 +1,39 @@
-TalusNashalScreenPlay = ScreenPlay:new {
+TalusNashalScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "TalusNashalScreenPlay"
+	screenplayName = "TalusNashalScreenPlay",
+
+	planet = "talus",
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"cll8_1", "cll8_binary_load_lifter", 60, 4217.52, 2, 5296.68, 76.6695, 0, ""},
+		{"cll8_2", "cll8_binary_load_lifter", 60, 4208.89, 2, 5145.09, 260.13, 0, ""},
+		{"cll8_3", "cll8_binary_load_lifter", 60, 4346.08, 2, 5094.9, 161.894, 0, ""},
+		{"cll8_4", "cll8_binary_load_lifter", 60, 4476, 2, 5203, 270, 0, ""},
+		{"eg6_1", "eg6_power_droid", 60, 4198.79, 2, 5292.24, 256.749, 0, ""},
+		{"eg6_2", "eg6_power_droid", 60, 4347.08, 2, 5093.9, 348.335, 0, ""},
+		{"eg6_3", "eg6_power_droid", 60, 4453.98, 2, 5284.27, 173.875, 0, ""},
+		{"eg6_4", "eg6_power_droid", 60, 4533.97, 2, 5111.71, 341.356, 0, ""},
+		{"eg6_5", "eg6_power_droid", 60, 4465.98, 2, 5278.48, 300.387, 0, ""},
+		{"r4_1", "r4", 60, 4267.23, 2, 5151.46, 66.4568, 0, ""},
+		{"r4_2", "r4", 60, 4531.97, 2, 5111.71, 209.78, 0, ""},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		cll8_1 = {{4217, 2, 5296, 0, 1}, {4234.2, 2, 5287.9, 0, 0}, {4334.1, 2, 5287.8, 0, 1}, {4234.2, 2, 5287.9, 0, 1}, {4223, 2, 5328, 0, 1}},
+		cll8_2 = {{4208, 2, 5154, 0, 1}, {4177.0, 2, 5132.1, 0, 0}, {4161, 2, 5116, 0, 1}, {4162, 2, 5134, 0, 1}, {4187.7, 2, 5143.2, 0, 0}},
+		cll8_3 = {{4354, 2, 5093, 0, 1}, {4372.1, 2, 5105.9, 0, 1}, {4478.9, 2.1, 5145.1, 0, 1}, {4477.7, 2, 5147.7, 0, 1}, {4371.1, 2, 5108.2, 0, 1}},
+		cll8_4 = {{4476, 2, 5203, 0, 1}, {4462, 2, 5207, 0, 1}, {4420, 2, 5254, 0, 1}, {4431, 2, 5276, 0, 0}, {4465, 2, 5264, 0, 1}, {4464.9, 2, 5230, 0, 1}},
+		eg6_1 = {{4198, 2, 5292, 0, 1}, {4185, 2, 5288, 0, 1}, {4187, 2, 5279, 0, 1}, {4164, 2, 5292, 0, 1}},
+		eg6_2 = {{4346, 2, 5090, 0, 1}, {4348, 2, 5077, 0, 1}, {4339, 2, 5067, 0, 1}, {4337, 2, 5053, 0, 1}, {4355, 2, 5067, 0, 1}},
+		eg6_3 = {{4453, 2, 5284, 0, 1}, {4439, 2, 5283, 0, 1}, {4426, 2, 5291, 0, 1}, {4411.4, 2, 5323.7, 0, 1}, {4367.2, 2, 5283.0, 1}, {4398, 2, 5270, 0, 1}},
+		eg6_4 = {{4533, 2, 5111, 0, 1}, {4526, 2, 5134, 0, 1}, {4526, 2, 5146, 0, 0}, {4518, 2, 5143, 1}},
+		eg6_5 = {{4465, 2, 5278, 0, 1}, {4458, 2, 5276, 0, 1}, {4490, 2, 5258, 0, 1}, {4533, 2, 5280, 0, 1}, {4498, 2, 5271, 0, 1}},
+		r4_1 = {{4267, 2, 5151, 0, 1}, {4276, 2, 5153, 0, 1}, {4276, 2, 5165, 0, 1}, {4253, 2, 5173, 0, 1}, {4258, 2, 5150, 0, 1}},
+		r4_2 = {{4531, 2, 5111, 0, 1}, {4523, 2, 5109, 0, 0}, {4529, 2, 5095, 0, 1}, {4520, 2, 5118, 0, 0}, {4521, 2, 5128, 0, 1}},
+	},
 }
 
 registerScreenPlay("TalusNashalScreenPlay", true)
@@ -9,7 +41,8 @@ registerScreenPlay("TalusNashalScreenPlay", true)
 function TalusNashalScreenPlay:start()
 	if (isZoneEnabled("talus")) then
 		self:spawnMobiles()
-    		self:spawnSceneObjects()
+		self:spawnPatrolMobiles()
+		self:spawnSceneObjects()
 	end
 end
 
@@ -223,10 +256,6 @@ function TalusNashalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("talus", "vendor",60,4279.23,2,5157.4,180.005,0)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile("talus", "cll8_binary_load_lifter",60,4217.52,2,5296.68,76.6695,0)
-	spawnMobile("talus", "cll8_binary_load_lifter",60,4208.89,2,5145.09,260.13,0)
-	spawnMobile("talus", "cll8_binary_load_lifter",60,4346.08,2,5094.9,161.894,0)
-	spawnMobile("talus", "cll8_binary_load_lifter",60,4476,2,5203,270,0)
 	spawnMobile("talus", "commoner",60,4078.96,2,5278.86,214.643,0)
 	spawnMobile("talus", "commoner",60,4074.05,2,5234.8,288.21,0)
 	spawnMobile("talus", "commoner",60,4034.88,2,5261.41,113.49,0)
@@ -304,13 +333,6 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "commoner",60,4533.27,2,5286.74,16.7138,0)
 	spawnMobile("talus", "commoner",60,4527.96,2,5505.62,305.189,0)
 	spawnMobile("talus", "comm_operator",60,4550.54,2,5436.9,346.678,0)
-	spawnMobile("talus", "eg6_power_droid",60,4198.79,2,5292.24,256.749,0)
-	spawnMobile("talus", "eg6_power_droid",60,4347.08,2,5093.9,348.335,0)
-	spawnMobile("talus", "eg6_power_droid",60,4453.98,2,5284.27,173.875,0)
-	spawnMobile("talus", "eg6_power_droid",60,4533.97,2,5111.71,341.356,0)
-	spawnMobile("talus", "eg6_power_droid",60,4465.98,2,5278.48,300.387,0)
-	spawnMobile("talus", "r4", 60, 4267.23, 2, 5151.46, 66.4568, 0)
-	spawnMobile("talus", "r4", 60, 4531.97, 2, 5111.71, 209.78, 0)
 
 	--Cloner
 	pNpc = spawnMobile("talus", "medic",60,1.8,-4.8,0,180,4265616)
