@@ -84,6 +84,8 @@ class TangibleObject extends SceneObject {
 
 	protected SceneObject antiDecayKitObject;
 
+	protected boolean jediRobe;
+
 	/**
 	 * TangibleObject constructor, used to initialized the object
 	 * @pre { templateData is a valid SharedTangibleObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
@@ -98,6 +100,8 @@ class TangibleObject extends SceneObject {
 		invisible = false;
 
 		antiDecayKitObject = null;
+
+		jediRobe = false;
 
 		luaStringData.setAllowOverwriteInsertPlan();
 	}
@@ -669,6 +673,11 @@ class TangibleObject extends SceneObject {
 
 	public void setSliced(boolean slice) {
 		sliced = slice;
+	}
+
+	@read
+	public boolean isJediRobe() {
+		return jediRobe;
 	}
 
 	public void setCustomizationString(final string vars) {
