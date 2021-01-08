@@ -171,7 +171,6 @@ namespace server {
 		static int getSpawnArea(lua_State* L);
 		static int makeCreatureName(lua_State* L);
 		static int getGCWDiscount(lua_State* L);
-		static int getBothanGCWDiscount(lua_State* L);
 		static int getTerrainHeight(lua_State* L);
 		static int checkArgumentCount(lua_State*L, int args);
 		static int awardSkill(lua_State* L);

@@ -2584,16 +2584,6 @@ float GCWManagerImplementation::getGCWDiscount(CreatureObject* creature) {
 	return discount;
 }
 
-float GCWManagerImplementation::getBothanGCWDiscount(CreatureObject* creature) {
-	float bothanDiscount = 1.0f;
-
-	if (creature->getSpecies() == 5) {
-		bothanDiscount = 0.9;
-	}
-
-	return bothanDiscount;
-}
-
 int GCWManagerImplementation::isStrongholdCity(String& city) {
 	for (int i = 0; i < imperialStrongholds.size(); i++) {
 		if (city.contains(imperialStrongholds.get(i))) {
