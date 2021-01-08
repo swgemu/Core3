@@ -408,7 +408,6 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("getSpawnArea", getSpawnArea);
 	luaEngine->registerFunction("makeCreatureName", makeCreatureName);
 	luaEngine->registerFunction("getGCWDiscount", getGCWDiscount);
-	luaEngine->registerFunction("getBothanGCWDiscount", getBothanGCWDiscount);
 	luaEngine->registerFunction("getTerrainHeight", getTerrainHeight);
 	luaEngine->registerFunction("awardSkill", awardSkill);
 	luaEngine->registerFunction("getCityRegionAt", getCityRegionAt);
@@ -3019,36 +3018,6 @@ int DirectorManager::getGCWDiscount(lua_State* L){
 		return 0;
 
 	lua_pushnumber(L, gcwMan->getGCWDiscount(creature));
-	return 1;
-}
-
-int DirectorManager::getBothanGCWDiscount(lua_State* L){
-	if (checkArgumentCount(L, 1) == 1) {
-		String err = "incorrect number of arguments passed to DirectorManager::getBothanGCWDiscount";
-		printTraceError(L, err);
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -1);
-
-	if (creature == nullptr) {
-		return 0;
-	}
-
-	Zone* zone = creature->getZone();
-
-	if (zone == nullptr) {
-		return 0;
-	}
-
-	GCWManager* gcwMan = zone->getGCWManager();
-
-	if (gcwMan == nullptr) {
-		return 0;
-	}
-
-	lua_pushnumber(L, gcwMan->getBothanGCWDiscount(creature));
 	return 1;
 }
 
