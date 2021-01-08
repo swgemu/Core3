@@ -265,6 +265,7 @@ class GCWManager extends ManagedService implements Logger {
 	private native void generateTurretControlBoxTo(CreatureObject creature, TangibleObject turret, SceneObject terminal);
 
 	public native float getGCWDiscount(CreatureObject creature);
+	public native float getBothanGCWDiscount(CreatureObject creature);
 
 	public native void runCrackdownScan(AiAgent scanner, CreatureObject player);
 	public native void startContrabandScanSession(AiAgent scanner, CreatureObject player, boolean enforced);
