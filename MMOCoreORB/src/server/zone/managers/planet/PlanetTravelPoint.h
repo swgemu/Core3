@@ -24,6 +24,7 @@ class PlanetTravelPoint : public Object {
 	std::atomic<Vector3> departureVector{};
 	bool interplanetaryTravelAllowed;
 	bool incomingTravelAllowed;
+	bool cityControlLandingPoint;
 
 public:
 	PlanetTravelPoint(const String& zoneName) {
@@ -31,6 +32,7 @@ public:
 		arrivalVector.set(0.f, 0.f, 0.f);
 		interplanetaryTravelAllowed = false;
 		incomingTravelAllowed = true;
+		cityControlLandingPoint = false;
 		shuttleObject = nullptr;
 	}
 
@@ -41,6 +43,7 @@ public:
 		departureVector = departVector;
 		interplanetaryTravelAllowed = false;
 		incomingTravelAllowed = true;
+		cityControlLandingPoint = false;
 		shuttleObject = shuttle;
 	}
 
@@ -51,6 +54,7 @@ public:
 		departureVector = ptp.departureVector.load();
 		interplanetaryTravelAllowed = ptp.interplanetaryTravelAllowed;
 		incomingTravelAllowed = ptp.incomingTravelAllowed;
+		cityControlLandingPoint = ptp.cityControlLandingPoint;
 		shuttleObject = ptp.shuttleObject;
 	}
 
@@ -64,6 +68,7 @@ public:
 		departureVector = ptp.departureVector.load();
 		interplanetaryTravelAllowed = ptp.interplanetaryTravelAllowed;
 		incomingTravelAllowed = ptp.incomingTravelAllowed;
+		cityControlLandingPoint = ptp.cityControlLandingPoint;
 		shuttleObject = ptp.shuttleObject;
 
 		return *this;
@@ -80,6 +85,7 @@ public:
 
 		interplanetaryTravelAllowed = (bool) luaObject->getByteField("interplanetaryTravelAllowed");
 		incomingTravelAllowed = (bool) luaObject->getByteField("incomingTravelAllowed");
+		cityControlLandingPoint = (bool) luaObject->getByteField("cityControlLandingPoint");
 	}
 
 	// Called by the shuttles and transports to set the shuttle object for the nearest travel point
@@ -154,6 +160,13 @@ public:
 	inline bool isIncomingAllowed() const {
 		return incomingTravelAllowed;
 	}
+
+	/**
+	 * Set for the CityLandingScreenplay
+	 */
+	 inline bool isCityControlLandingPoint() const {
+		return cityControlLandingPoint;
+	 }
 
 	/**
 	 * Returns true if travel between this point and the passed in point is permitted.

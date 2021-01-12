@@ -66,6 +66,7 @@ includeFile("trainers/trainerConvHandler.lua")
 
 -- GCW
 includeFile("gcw/city_control_banners.lua")
+includeFile("gcw/city_control_landing.lua")
 includeFile("gcw/newsnet.lua")
 includeFile("gcw/recruiters/recruiterConvoHandler.lua")
 includeFile("gcw/recruiters/recruiterScreenplay.lua")
