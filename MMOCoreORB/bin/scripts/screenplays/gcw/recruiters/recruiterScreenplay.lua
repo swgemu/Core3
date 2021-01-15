@@ -392,7 +392,13 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 		return self.errorCodes.ITEMCOST
 	end
 
-	itemCost = math.ceil(itemCost * getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer) * getBothanGCWDiscount(pPlayer))
+	local bothanDiscount = 1.0
+
+	if (CreatureObject(pPlayer):getSpecies() == 5) then
+		bothanDiscount = 0.9;
+	end
+
+	itemCost = math.ceil(itemCost * getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer) * bothanDiscount)
 
 	if (factionStanding < (itemCost + self.minimumFactionStanding)) then
 		return self.errorCodes.NOTENOUGHFACTION
