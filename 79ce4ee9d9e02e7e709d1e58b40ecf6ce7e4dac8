@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_16e25cd5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/AiAgentImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T09:38:06Z",
+      "side": 1,
+      "message": "Not needed, you have already checked that it is nullptr on line 1683.",
+      "range": {
+        "startLine": 1707,
+        "startChar": 5,
+        "endLine": 1707,
+        "endChar": 22
+      },
+      "revId": "79ce4ee9d9e02e7e709d1e58b40ecf6ce7e4dac8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_76e750e5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/AiAgentImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T09:38:06Z",
+      "side": 1,
+      "message": "I would suggest moving this to an else statement and remove the return on line 1711. I think code like that is simpler to read.",
+      "range": {
+        "startLine": 1713,
+        "startChar": 2,
+        "endLine": 1713,
+        "endChar": 44
+      },
+      "revId": "79ce4ee9d9e02e7e709d1e58b40ecf6ce7e4dac8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
