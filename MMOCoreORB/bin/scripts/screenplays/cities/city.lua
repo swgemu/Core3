@@ -120,6 +120,7 @@ function CityScreenPlay:spawnPatrol(num)
 
 	if (pMobile ~= nil and points ~= nil) then
 		local pOid = SceneObject(pMobile):getObjectID()
+		CreatureObject(pMobile):setPvpStatusBitmask(0)
 
 		writeStringData(pOid .. ":patrolPoints", points)
 		writeData(pOid .. ":currentLoc", 1)
