@@ -1679,6 +1679,40 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	removeOutOfRangeObjects();
 }
 
+void AiAgentImplementation::updatePetSwimmingState() {
+	if (parent != nullptr) {
+		return;
+	}
+
+	Zone* zone = getZoneUnsafe();
+
+	if (zone == nullptr) {
+		return;
+	}
+
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	if (planetManager == nullptr) {
+		return;
+	}
+
+	TerrainManager* terrainManager = planetManager->getTerrainManager();
+
+	if (terrainManager == nullptr) {
+		return;
+	}
+
+	float waterHeight;
+
+	if (terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight)) {
+
+		if ((getPositionZ() + getSwimHeight() - waterHeight < 0.2)) {
+			setState(CreatureState::SWIMMING, true);
+		} else {
+			clearState(CreatureState::SWIMMING, true);
+		}
+	}
+}
 
 void AiAgentImplementation::checkNewAngle() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
@@ -2421,6 +2455,10 @@ void AiAgentImplementation::activateMovementEvent() {
 			moveEvent->schedule(Math::max(minScheduleTime, (uint64) (waitTime > 0 ? waitTime : nextMovementInterval)));
 	} catch (IllegalArgumentException& e) {
 
+	}
+
+	if (isPet()) {
+		updatePetSwimmingState();
 	}
 
 	nextMovementInterval = UPDATEMOVEMENTINTERVAL;
