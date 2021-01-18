@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_96cdcc60",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet_manager.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T17:30:27Z",
+      "side": 1,
+      "message": "There should be a city control landing line for Bestine here right?",
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_b6d0c8f8",
+        "filename": "MMOCoreORB/bin/scripts/mobile/event/city_control_landing/darth_vader_city_control.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T17:30:27Z",
+      "side": 1,
+      "message": "remove these spaces.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_f6da4016",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T17:30:27Z",
+      "side": 1,
+      "message": "Code says 2 min, can you do as below and leave the actual code as commented out and add your test code above?",
+      "range": {
+        "startLine": 40,
+        "startChar": 81,
+        "endLine": 40,
+        "endChar": 83
+      },
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_d6ee24b4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T17:30:27Z",
+      "side": 1,
+      "message": "You have duplicated a lot of code in the if statement below. I would suggest that you create local variables for the stuff that is different for imperials and rebels and set the value of those variables in the if statement instead. Then you use the values in a common code section that spawns the shuttle sets it up and stores the data and creates the events instead.\n\nYou could also move that information to the rebelLanding and imperialLanding structs that are defined at the top instead and just select the correct struct to use and use the values from it.\n\nThat will ensure that we do not have strings in different places that should be the same etc so that a future change changes one of them but not the other etc. It will also be easier to add stuff in the logic.",
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_362b18ed",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T17:30:27Z",
+      "side": 1,
+      "message": "Do you need to store this information with the pOid as prefix? Only one shuttle should be active at the same time right?",
+      "range": {
+        "startLine": 80,
+        "startChar": 18,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_16309c55",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T17:30:27Z",
+      "side": 1,
+      "message": "It should be possible to share more code between the spawn methods. It is a lot of duplicated code.\n\nThe global structs should be possible to use in a common method and then readData to get the current one and select correct struct to pick values from.",
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_76359045",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T17:30:27Z",
+      "side": 1,
+      "message": "You have spaces in some places, do a search and replace to fix",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 4
+      },
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_563a1437",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T17:30:27Z",
+      "side": 1,
+      "message": "Use the length of the struct here instead so that any future addition to it will be despawned as well. THe spawn logics has it so you can do the same thing here.",
+      "range": {
+        "startLine": 450,
+        "startChar": 12,
+        "endLine": 450,
+        "endChar": 13
+      },
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_963b0c38",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T17:30:27Z",
+      "side": 1,
+      "message": "Same thing here the respawn methods can probably be merged.",
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_b63e0828",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-18T17:30:27Z",
+      "side": 1,
+      "message": "Will this always be correct, even when the mobiles have moved or is on the way to move?",
+      "range": {
+        "startLine": 508,
+        "startChar": 34,
+        "endLine": 508,
+        "endChar": 36
+      },
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
