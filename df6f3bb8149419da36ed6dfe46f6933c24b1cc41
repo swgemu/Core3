@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a6b29fe_561174ab",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet_manager.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-19T16:07:56Z",
+      "side": 1,
+      "message": "No this is only necessary for the rebel shuttle to land and Bestine is always the Lambda.",
+      "parentUuid": "7a6b29fe_96cdcc60",
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6b29fe_b6d0c8f8",
         "filename": "MMOCoreORB/bin/scripts/mobile/event/city_control_landing/darth_vader_city_control.lua",
         "patchSetId": 11
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "7a6b29fe_b625680c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/event/city_control_landing/darth_vader_city_control.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-19T16:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_b6d0c8f8",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6b29fe_f6da4016",
         "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
         "patchSetId": 11
@@ -53,6 +95,30 @@
       "writtenOn": "2021-01-18T17:30:27Z",
       "side": 1,
       "message": "Code says 2 min, can you do as below and leave the actual code as commented out and add your test code above?",
+      "range": {
+        "startLine": 40,
+        "startChar": 81,
+        "endLine": 40,
+        "endChar": 83
+      },
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_9622ecff",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-19T16:07:56Z",
+      "side": 1,
+      "message": "Setting both to 15min and leaving them. Still want to have ample amount of time for server loading",
+      "parentUuid": "7a6b29fe_f6da4016",
       "range": {
         "startLine": 40,
         "startChar": 81,
@@ -93,6 +159,30 @@
       "writtenOn": "2021-01-18T17:30:27Z",
       "side": 1,
       "message": "Do you need to store this information with the pOid as prefix? Only one shuttle should be active at the same time right?",
+      "range": {
+        "startLine": 80,
+        "startChar": 18,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_f61fe0b5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-19T16:07:56Z",
+      "side": 1,
+      "message": "Yes only one should ever be active at a time, so I can store the shuttles posture in a simpler way.",
+      "parentUuid": "7a6b29fe_362b18ed",
       "range": {
         "startLine": 80,
         "startChar": 18,
@@ -196,6 +286,30 @@
       "writtenOn": "2021-01-18T17:30:27Z",
       "side": 1,
       "message": "Will this always be correct, even when the mobiles have moved or is on the way to move?",
+      "range": {
+        "startLine": 508,
+        "startChar": 34,
+        "endLine": 508,
+        "endChar": 36
+      },
+      "revId": "df6f3bb8149419da36ed6dfe46f6933c24b1cc41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_d61c64c4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-19T16:07:56Z",
+      "side": 1,
+      "message": "Yes this will always be correct, it simulates the mobiles walking back to the ship before being despawned. The ship is always the same size.",
+      "parentUuid": "7a6b29fe_b63e0828",
       "range": {
         "startLine": 508,
         "startChar": 34,
