@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a6b29fe_56edf48a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_16cc1c35",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6b29fe_765ab084",
         "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
         "patchSetId": 13
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "7a6b29fe_b601e83b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_765ab084",
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6b29fe_565fb472",
         "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
         "patchSetId": 13
@@ -53,6 +95,30 @@
       "writtenOn": "2021-01-26T09:36:42Z",
       "side": 1,
       "message": "Change this to:\n\n landingType \u003d \"REBEL\"\n shuttlePosture \u003d \"PRONE\"",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 45
+      },
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_96fe6c37",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_565fb472",
       "range": {
         "startLine": 67,
         "startChar": 2,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "7a6b29fe_f6fb6045",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_f64d20c6",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6b29fe_b653a86b",
         "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
         "patchSetId": 13
@@ -99,6 +189,30 @@
       "writtenOn": "2021-01-26T09:36:42Z",
       "side": 1,
       "message": "Change this to:\n\n landingType \u003d \"IMPERIAL\"\n shuttlePosture \u003d \"UPRIGHT\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 47
+      },
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_d6f8e44b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_b653a86b",
       "range": {
         "startLine": 73,
         "startChar": 2,
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "7a6b29fe_3695d8e4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_96502c60",
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6b29fe_d64aa4ab",
         "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
         "patchSetId": 13
@@ -139,6 +271,30 @@
       "writtenOn": "2021-01-26T09:36:42Z",
       "side": 1,
       "message": "No need for return statements in this method. Everything is covered by if-else-statements so the code will not end up in wrong place.",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 9
+      },
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_169a5c14",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_d64aa4ab",
       "range": {
         "startLine": 144,
         "startChar": 3,
@@ -168,6 +324,24 @@
     },
     {
       "key": {
+        "uuid": "7a6b29fe_769f5004",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_76d110cd",
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6b29fe_36c79814",
         "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
         "patchSetId": 13
@@ -179,6 +353,30 @@
       "writtenOn": "2021-01-26T09:36:42Z",
       "side": 1,
       "message": "Seems like this may cause multiple npc\u0027s to be spawned in the same place.",
+      "range": {
+        "startLine": 211,
+        "startChar": 27,
+        "endLine": 211,
+        "endChar": 49
+      },
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_56a4d456",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_36c79814",
       "range": {
         "startLine": 211,
         "startChar": 27,
@@ -214,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "7a6b29fe_b688c8c7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_56d694c6",
+      "range": {
+        "startLine": 357,
+        "startChar": 4,
+        "endLine": 359,
+        "endChar": 9
+      },
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6b29fe_b6da88e7",
         "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
         "patchSetId": 13
@@ -225,6 +447,30 @@
       "writtenOn": "2021-01-26T09:36:42Z",
       "side": 1,
       "message": "This is named cityCoords in the spawn method above. I think you could share code between the spawn and respawn methods a bit more.",
+      "range": {
+        "startLine": 445,
+        "startChar": 7,
+        "endLine": 445,
+        "endChar": 18
+      },
+      "revId": "511ac41d822ceeb0ace5de7833d2b5eda374a527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_9685ccaf",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-01-26T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6b29fe_b6da88e7",
       "range": {
         "startLine": 445,
         "startChar": 7,
