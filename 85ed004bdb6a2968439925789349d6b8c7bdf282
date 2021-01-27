@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_3663181c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/city_control_landing.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-01-27T09:28:11Z",
+      "side": 1,
+      "message": "This can yield the same number for multiple NPC\u0027s resulting in them spawning on top of each other. I think you need to use the spawnNumber as done in the imperial case as well.",
+      "range": {
+        "startLine": 220,
+        "startChar": 26,
+        "endLine": 220,
+        "endChar": 48
+      },
+      "revId": "85ed004bdb6a2968439925789349d6b8c7bdf282",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
