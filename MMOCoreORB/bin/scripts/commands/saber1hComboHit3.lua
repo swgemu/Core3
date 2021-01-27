@@ -52,18 +52,18 @@ Saber1hComboHit3Command = {
 	forceCostMultiplier = 2.25,
 	visMod = 25,
 
-	animation = "showoff_1", 
+	animation = "showoff_1",
 	animType = GENERATE_INTENSITY,
 
 	stateEffects = {
-	  StateEffect( 
-		POSTUREDOWN_EFFECT, 
-		{ "postureDownRecovery" }, 
-		{ "posture_change_down_defense" }, 
+	  StateEffect(
+		POSTUREDOWN_EFFECT,
+		{ "postureDownRecovery" },
+		{ "posture_change_down_defense" },
 		{},
-		40, 
-		0, 
-		0 
+		40,
+		0,
+		0
 	  )
 	},
 
