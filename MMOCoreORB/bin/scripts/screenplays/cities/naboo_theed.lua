@@ -24,6 +24,41 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 		{"naboo_police_chief", "naboo_police_chief", -5555.25,6,4241.44,63.404,0, "npc_imperial", "", true},
 		{"naboo_police_officer", "naboo_police_officer", -5544.22,6,4232.32,267.981,0, "npc_imperial", "", true},
 	},
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		{"businessman_1", "businessman_patrol", 1, -4877, 6, 4154, 100, 0, ""},
+		{"commoner_1", "commoner_patrol", 1, -4924, 6, 4034, 112, 0, ""},
+		{"commoner_2", "commoner_patrol", 1, -4896, 6, 4167, 352, 0, ""},
+		{"commoner_3", "commoner_patrol", 1, -5054, 6, 4228, 0, 0, ""},
+		{"commoner_4", "commoner_patrol", 1, -5320, 6, 4236, 175, 0, ""},
+		{"commoner_5", "commoner_patrol", 1, -5489, 6, 4404, 229, 0, ""},
+		{"commoner_6", "commoner_patrol", 1, -5497, 6, 4148, 166, 0, ""},
+		{"commoner_7", "commoner_patrol", 1, -5291, 6, 4428, 322, 0, ""},
+		{"commoner_8", "commoner_patrol", 1, -5586, 6, 4495, 212, 0, ""},
+		{"gambler_1", "gambler", 1, -4829, 6, 4113, 0, ""},
+		{"noble_1", "noble_patrol", 1, -4956, 6, 4205, 106, 0, ""},
+		{"official_1", "official_patrol", 1, -4904, 6, 4201, 110, 0, "conversation"},
+		{"official_2", "official_patrol", 1, -4889.4, 6, 4081.8, 0, "conversation"}
+
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
+		businessman_1 = {{-4877, 6, 4154, 0, 0}, {-4896, 6, 4118, 0, 0}, {-4911, 6, 4145, 0, 0}},
+		commoner_1 = {{-4924, 6, 4034, 0, 0}, {-4893, 6, 4080, 0, 0}, {-4896, 6, 4052, 0, 0}},
+		commoner_2 = {{-4896, 6, 4167, 0, 0}, {-4932, 6, 4093, 0, 0}, {-4936, 6, 4136, 0, 0}},
+		commoner_3 = {{-5054, 6, 4228, 0, 0}, {-5087, 6, 4176, 0, 0}, {-5117, 6, 4327, 0, 0}},
+		commoner_4 = {{-5320, 6, 4236, 0, 1}, {-5332, 6, 4213, 0, 1}, {-5327, 6, 4180, 0, 0}, {-5279, 6, 4207, 0, 1}, {-5327, 6, 4180, 0, 0}, {-5318, 6, 4154, 0, 0}, {-5363, 6, 4167, 0, 1}, {-5348, 6, 4174, 0, 0}},
+		commoner_5 = {{-5489, 6, 4404, 0, 1}, {-5471, 6, 4374, 0, 1}, {-5470, 6, 4348, 0, 1}, {-5502, 6, 4355, 0, 0}, {-5539, 6, 4392, 0, 1}},
+		commoner_6 = {{-5497, 6, 4148, 0, 1}, {-5503.6, 6, 3989.0, 0, 1}, {-5511.7, 6, 3855.8, 0, 1}, {-5519.4, 6, 3855.9, 0, 1}, {-5511, 6, 3991, 0, 1}, {-5501, 6, 4069, 0, 0}, {-5497, 6, 4300, 0, 1}},
+		commoner_7 = {{-5291, 6, 4428, 0, 1}, {-5291, 6, 4486, 0, 1}, {-5311, 6, 4544, 0, 1}, {-5299.3, 6, 4556.5, 0, 0}, {-5298.6, 6, 4562.5, 0, 1}, {-5309, 6, 4549, 0, 0}},
+		commoner_8 = {{-5586, 6, 4495, 0, 0}, {-5569, 6, 4270, 0, 0}},
+		gambler_1  = {{-4829, 6, 4113, 0, 0}, {-4871, 6, 4098, 0, 0}, {-4893, 6, 4115, 0, 0}, {-4923, 6, 4209, 0, 0}},
+		noble_1 = {{-4956, 6, 4205, 0, 0}, {-4883, 6, 4170, 0, 0}},
+		official_1 = {{-4904, 6, 4201, 0, 0}, {-4933, 6, 4227, 0, 0}},
+		official_2 = {{-4889.4, 6, 4081.8, 0, 1}, {-4880, 6, 4083, 0, 0}, {-4844, 6, 4118, 0, 1}, {-4845, 6, 4155, 0, 1}, {-4844, 6, 4118, 0, 0}},
+	},
 }
 
 registerScreenPlay("NabooTheedScreenPlay", true)
@@ -33,6 +68,7 @@ function NabooTheedScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
+		self:spawnPatrolMobiles()
 	end
 end
 
@@ -50,21 +86,22 @@ function NabooTheedScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "noble",300,-5258.93,6,4187.17,180.005,0)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "bounty_hunter",300,-5082.41,6,4261.15,180.005,0)
+	pNpc = spawnMobile(self.planet, "commoner",60,-5082.41,6,4261.15,180.005,0)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile(self.planet, "commoner", 60, -5083.5, 6, 4259.9, 42, 0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "commoner",60,-5394.06,6,4519.32,169.904,0)
 	spawnMobile(self.planet, "commoner",60,-5384.95,6,4283.38,71.1905,0)
 	spawnMobile(self.planet, "commoner",60,-5256.72,6,4254.43,243.769,0)
 	spawnMobile(self.planet, "commoner",60,-5319.27,6,4365.19,286.546,0)
-	spawnMobile(self.planet, "commoner",60,-5320.16,6,4236.39,175.933,0)
 	spawnMobile(self.planet, "commoner",60,-5327.58,6,4267.42,170.655,0)
-	spawnMobile(self.planet, "commoner",60,-5281.75,6,4325.98,47.2066,0)
 	spawnMobile(self.planet, "commoner",60,-5140.78,6,4404.92,212.214,0)
 	spawnMobile(self.planet, "commoner",60,-6036.18,6,4286.85,147.238,0)
 	spawnMobile(self.planet, "commoner",60,-6055.49,6,4319.64,186.501,0)
 	spawnMobile(self.planet, "commoner",60,-6040.72,6,4260.46,325.963,0)
-	spawnMobile(self.planet, "commoner",60,-5291.01,6,4428.53,322.605,0)
 	spawnMobile(self.planet, "commoner",60,-5282.92,6,4405.65,279.205,0)
 	spawnMobile(self.planet, "commoner",60,-5280.52,6,4372.79,226.645,0)
+	spawnMobile(self.planet, "commoner",60,-5281.75,6,4325.98,47.2066,0)
 	spawnMobile(self.planet, "commoner",60,-5306.24,6,4357.56,77.2615,0)
 	spawnMobile(self.planet, "commoner",60,-5326.21,6,4292.88,155.604,0)
 	spawnMobile(self.planet, "commoner",60,-5309.23,6,4307.01,78.4133,0)
@@ -82,9 +119,15 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-5165.37,6,4173.32,44.4267,0)
 	spawnMobile(self.planet, "commoner",60,-5171.36,6,4148.39,89.3505,0)
 	spawnMobile(self.planet, "commoner",60,-5123.13,6,4201.32,268.516,0)
+	pNpc = spawnMobile(self.planet, "commoner", 60, -5116.4, 6, 4263.5, 40, 0)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile(self.planet, "commoner", 60, -5114.4, 6, 4265, 220, 0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "commoner",60,-5101.22,6,4246.47,39.2932,0)
-	spawnMobile(self.planet, "commoner",60,-5106.97,6,4296.89,278.927,0)
+	spawnMobile(self.planet, "commoner", 60, -5089.1, 6, 4284.4, 278.927, 0)
 	spawnMobile(self.planet, "commoner",60,-5069.74,6,4262.45,304.456,0)
+	spawnMobile(self.planet, "commoner",60,-4866.72,6,4160.45,346.733,0)
+	spawnMobile(self.planet, "commoner",60,-4902.73,6,4106.81,350.732,0)
 	spawnMobile(self.planet, "commoner",60,-5075.93,6,4204.5,258.103,0)
 	spawnMobile(self.planet, "commoner",60,-5053.71,6,4151.61,236.952,0)
 	spawnMobile(self.planet, "commoner",60,-5090.67,6,4173.27,324.898,0)
@@ -95,29 +138,41 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-5023.92,6,4040.07,112.362,0)
 	spawnMobile(self.planet, "commoner",60,-5004.8,6,4067.54,285.879,0)
 	spawnMobile(self.planet, "commoner",60,-5037.78,6,4078.71,14.5782,0)
+	pNpc = spawnMobile(self.planet, "commoner", 60, -5028.7, 6, 4237.1, 225, 0)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile(self.planet, "gambler", 60, -5029.5, 6, 4236.2, 45, 0)
+	self:setMoodString(pNpc, "conversation")
+	if pNpc ~= nil then
+		CreatureObject(pNpc):setPvpStatusBitmask(0)
+	end
+	pNpc = spawnMobile(self.planet, "commoner", 60, -5048.7, 6, 4225.4, 225, 0)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile(self.planet, "commoner", 60, -5049.5, 6, 4224.1, 41, 0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "commoner",60,-5007.98,6,4111.83,156.739,0)
-	spawnMobile(self.planet, "commoner",60,-5021.05,6,4230.04,13.8244,0)
-	spawnMobile(self.planet, "commoner",60,-4866.72,6,4160.45,346.733,0)
+	spawnMobile(self.planet, "commoner",60,-5021.05,6,4230.04,95,0)
 	spawnMobile(self.planet, "commoner",60,-4991.86,6,4125.22,355.866,0)
 	spawnMobile(self.planet, "commoner",60,-4970.37,6,4069.78,230.918,0)
-	spawnMobile(self.planet, "commoner",60,-4924.84,6,4034.9,112.799,0)
 	spawnMobile(self.planet, "commoner",60,-4892.24,6,4083,131.075,0)
-	spawnMobile(self.planet, "commoner",60,-4902.73,6,4106.81,350.732,0)
 	spawnMobile(self.planet, "commoner",60,-4933.63,6,4090.17,355.935,0)
 	spawnMobile(self.planet, "commoner",60,-4921.08,6,4061.48,324.756,0)
-	spawnMobile(self.planet, "commoner",60,-4896.15,6,4167.85,352.84,0)
-	spawnMobile(self.planet, "commoner",60,-4897.7,6,4193.27,70.95,0)
+	pNpc = spawnMobile(self.planet, "commoner", 60, -4899.7, 6, 4198.3, 265, 0)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile(self.planet, "commoner", 60, -4903, 6, 4196.9, 55, 0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "commoner",60,-4978.62,6,4119.77,158.522,0)
 	spawnMobile(self.planet, "commoner",60,-4941.05,6,4184.26,54.3125,0)
 	spawnMobile(self.planet, "commoner",60,-4968.55,6,4158.78,56.9517,0)
 	spawnMobile(self.planet, "commoner",60,-4978.84,6,4263.64,225.699,0)
 	spawnMobile(self.planet, "commoner",60,-4973.93,6,4220.31,28.5203,0)
 	spawnMobile(self.planet, "commoner",60,-4981.69,6,4244.41,37.6517,0)
-	spawnMobile(self.planet, "commoner",60,-4985.97,6,4212.75,54.7999,0)
-	spawnMobile(self.planet, "commoner",60,-4974.13,6,4196.91,163.185,0)
+	spawnMobile(self.planet, "commoner",60,-4983.97, 6, 4209.75, 54.7999, 0)
+	spawnMobile(self.planet, "commoner", 60,-4976.0, 6, 4193.5, 45, 0)
 	spawnMobile(self.planet, "commoner",60,-4973.2,6,4175.16,163.034,0)
-	spawnMobile(self.planet, "commoner",60,-4956.42,6,4205.06,106.528,0)
-	spawnMobile(self.planet, "commoner",60,-5054.68,6,4228.23,0,0)
+	pNpc = spawnMobile(self.planet, "commoner", 60, -4969, 6, 4192, 45, 0)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile(self.planet, "commoner", 60, -4967.6, 6, 4193.8, 225, 0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "commoner",60,-5803.39,6,4101.34,219.092,0)
 	spawnMobile(self.planet, "commoner",60,-5858.79,6,4147.3,177.298,0)
 	spawnMobile(self.planet, "commoner",60,-5941.62,6,4339.4,156.272,0)
@@ -152,11 +207,9 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-5492.21,6,4337.69,94.7447,0)
 	spawnMobile(self.planet, "commoner",60,-5507.67,6,4309.38,330.512,0)
 	spawnMobile(self.planet, "commoner",60,-5520.11,6,4349.32,243.736,0)
-	spawnMobile(self.planet, "commoner",60,-5489.16,6,4404.33,229.081,0)
 	spawnMobile(self.planet, "commoner",60,-5525.24,6,4430.28,32.9667,0)
 	spawnMobile(self.planet, "commoner",60,-5537.28,6,4411.34,252.902,0)
 	spawnMobile(self.planet, "commoner",60,-5545.73,6,4466.12,324.904,0)
-	spawnMobile(self.planet, "commoner",60,-5586.88,6,4495.26,212.866,0)
 	spawnMobile(self.planet, "commoner",60,-5565.53,6,4469.02,122.256,0)
 	spawnMobile(self.planet, "commoner",60,-5541.82,6,4394.46,238.528,0)
 	spawnMobile(self.planet, "commoner",60,-5547.21,6,4383.24,155.163,0)
@@ -170,13 +223,18 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-5487.23,6,4193.99,298.896,0)
 	spawnMobile(self.planet, "commoner",60,-5453.08,6,4198.55,346.123,0)
 	spawnMobile(self.planet, "commoner",60,-5457.43,6,4156.44,21.7515,0)
-	spawnMobile(self.planet, "commoner",60,-5497.13,6,4148.57,166.606,0)
 	spawnMobile(self.planet, "commoner",60,-5404.2,6,4199.59,80.6257,0)
 	spawnMobile(self.planet, "commoner",60,-5437.58,6,4301.41,199.461,0)
 	pNpc = spawnMobile(self.planet, "commoner_naboo",60,-5778.43,6,4397.54,180.005,0)
 	self:setMoodString(pNpc, "nervous")
 	spawnMobile(self.planet, "explorer",60,-5127.71,6,4336.34,0,0)
-	spawnMobile(self.planet, "explorer",60,-4870.86,6,4179.63,0,0)
+	pNpc = spawnMobile(self.planet, "explorer",60,-4870.86,6,4179.63, 345, 0)
+	self:setMoodString(pNpc, "conversation")
+	if pNpc ~= nil then
+		CreatureObject(pNpc):setPvpStatusBitmask(0)
+	end
+	pNpc = spawnMobile(self.planet, "commoner", 60, -4872.0, 6, 4181.6, 150, 0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "gungan_hunter",300,-5138.49,6,4229.36,180.005,0)
 	pNpc = spawnMobile(self.planet, "gungan_outcast",300,-5827.81,6,4172.98,0,0)
 	self:setMoodString(pNpc, "conversation")
@@ -190,8 +248,9 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-5436,6,4133,0,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-5369,6,4178,0,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-5477,6,4089,0,0)
-	spawnMobile(self.planet, "j1_po",60,-4856.56,6,4158.12,237.016,0)
-	spawnMobile(self.planet, "miner",60,-4965.4,6,4194.15,180.005,0)
+	spawnMobile(self.planet, "j1_po", 60, -4856, 6, 4158, 50, 0)
+	pNpc = spawnMobile(self.planet, "kulton_woodle", 1, -4855, 6, 4158, 260, 0)
+	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "miner",60,-5886.59,6,4369.23,180.005,0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "official",300,-5886.59,6,4368.23,0,0)

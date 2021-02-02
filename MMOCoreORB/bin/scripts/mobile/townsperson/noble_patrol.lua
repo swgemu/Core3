@@ -1,4 +1,4 @@
-noble = Creature:new {
+noble_patrol = Creature:new {
 	objectName = "@mob/creature_names:noble",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
@@ -22,17 +22,18 @@ noble = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 
 	templates = {"noble"},
 	lootGroups = {},
-	weapons = {},
-	conversationTemplate = "generic_noble_mission_giver_convotemplate",
-	attacks = {}
+	weapons = {"ranged_weapons"},
+	conversationTemplate = "",
+	attacks = merge(brawlermid, marksmanmid)
+}
 }
 
-CreatureTemplates:addCreatureTemplate(noble, "noble")
+CreatureTemplates:addCreatureTemplate(noble_patrol, "noble_patrol")
