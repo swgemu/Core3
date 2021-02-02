@@ -1,4 +1,4 @@
-commoner_old = Creature:new {
+commoner_naboo_patrol = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
@@ -22,18 +22,17 @@ commoner_old = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = { "commoner_old" },
+	templates = {"commoner_naboo"},
 
 	lootGroups = {},
-	weapons = {},
+	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(commoner_old, "commoner_old")
+CreatureTemplates:addCreatureTemplate(commoner_naboo_patrol, "commoner_naboo_patrol")
