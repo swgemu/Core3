@@ -28,12 +28,11 @@ commoner_tatooine = Creature:new {
 	diet = HERBIVORE,
 
 	templates = { "commoner_tatooine" },
-				
+
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(commoner_tatooine, "commoner_tatooine")

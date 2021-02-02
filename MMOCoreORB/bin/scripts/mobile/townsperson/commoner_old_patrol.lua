@@ -1,5 +1,5 @@
-commoner_technician = Creature:new {
-	objectName = "@mob/creature_names:technician",
+commoner_old_patrol = Creature:new {
+	objectName = "@mob/creature_names:commoner",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "townsperson",
@@ -27,17 +27,11 @@ commoner_technician = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {
-				"object/mobile/dressed_commoner_artisan_trandoshan_male_01.iff",
-				"object/mobile/dressed_commoner_artisan_bith_male_01.iff",
-				"object/mobile/dressed_commoner_artisan_sullustan_male_01.iff",
-				"object/mobile/dressed_artisan_trainer_01.iff",
-				},
-
-	lootGroups = {"junk"},
+	templates = {"commoner_old"},
+	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermid, marksmanmaster)
+	attacks = merge(brawlermid, marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(commoner_technician, "commoner_technician")
+CreatureTemplates:addCreatureTemplate(commoner_old_patrol, "commoner_old_patrol")
