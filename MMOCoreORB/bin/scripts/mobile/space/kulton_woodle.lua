@@ -29,8 +29,7 @@ kulton_woodle = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(kulton_woodle, "kulton_woodle")
