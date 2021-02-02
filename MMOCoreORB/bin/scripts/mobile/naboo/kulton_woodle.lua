@@ -1,9 +1,7 @@
-commoner_old = Creature:new {
-	objectName = "@mob/creature_names:commoner",
-	randomNameType = NAME_GENERIC,
-	randomNameTag = true,
-	socialGroup = "townsperson",
-	faction = "townsperson",
+kulton_woodle = Creature:new {
+	objectName = "@mob/creature_names:kultin_woodle",
+	socialGroup = "",
+	faction = "",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -12,7 +10,7 @@ commoner_old = Creature:new {
 	baseHAM = 113,
 	baseHAMmax = 138,
 	armor = 0,
-	resists = {15,15,15,15,15,15,15,-1,-1},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -23,17 +21,15 @@ commoner_old = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = HERD,
+	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = { "commoner_old" },
-
+	templates = {"object/mobile/space_greeter_theed_freighter_captain.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(commoner_old, "commoner_old")
+CreatureTemplates:addCreatureTemplate(kulton_woodle, "kulton_woodle")

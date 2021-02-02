@@ -1,5 +1,5 @@
-commoner_old = Creature:new {
-	objectName = "@mob/creature_names:commoner",
+official = Creature:new {
+	objectName = "@mob/creature_names:official",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "townsperson",
@@ -27,13 +27,11 @@ commoner_old = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = { "commoner_old" },
-
+	templates = {"object/mobile/dressed_official.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(commoner_old, "commoner_old")
+CreatureTemplates:addCreatureTemplate(official, "official")

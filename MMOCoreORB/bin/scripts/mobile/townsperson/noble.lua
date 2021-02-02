@@ -28,7 +28,7 @@ noble = Creature:new {
 	diet = HERBIVORE,
 
 
-	templates = { "noble" },
+	templates = {"noble"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "generic_noble_mission_giver_convotemplate",

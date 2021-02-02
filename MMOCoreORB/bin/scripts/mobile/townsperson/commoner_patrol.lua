@@ -1,4 +1,4 @@
-commoner_old = Creature:new {
+commoner_patrol = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
@@ -22,13 +22,12 @@ commoner_old = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLE,
 	diet = HERBIVORE,
 
-	templates = { "commoner_old" },
-
+	templates = {"commoner"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -36,4 +35,4 @@ commoner_old = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(commoner_old, "commoner_old")
+CreatureTemplates:addCreatureTemplate(commoner_patrol, "commoner_patrol")
