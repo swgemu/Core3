@@ -5,11 +5,20 @@ DathomirScienceOutpostScreenPlay = CityScreenPlay:new {
 
 	planet = "dathomir",
 
+	combatPatrol = {"commando", "commoner_technician", "mercenary", "miner", "sharpshooter"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol"},
+
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-		{"cll8_1", "cll8_binary_load_lifter", 60, -107.307, 18, -1603.07, 275.094, 0, ""},
-		{"r3_1", "r3", 60, -78.3142, 18, -1629.93, 144.919, 0, ""},
-		{"r4_1", "r4", 60, -134.195, 18, -1599.14, 45.5678, 0, ""},
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		{"cll8_1", "cll8_binary_load_lifter", 1, -107.307, 18, -1603.07, 275.094, 0, "", false},
+		{"r3_1", "r3", 1, -78.3142, 18, -1629.93, 144.919, 0, "", false},
+		{"r4_1", "r4", 1, -134.195, 18, -1599.14, 45.5678, 0, "", false},
+
+		{"npc_1", "combatPatrol", 60, -93, 18, -1578, 0, 0, "", true},
+		{"npc_2", "combatPatrol", 60, -88, 18, -1606, 350, 0, 0, "", true},
+		{"npc_3", "combatPatrol", 60, -74, 18, -1637, 345, 0, 0, "", true},
+		{"npc_4", "combatPatrol", 60, -114, 18, -1630, 300, 0, 0, "", true},
+		{"npc_5", "combatPatrol", 60, -86, 18, -1555, 219, 0, 0, "", true},
 	},
 
 	patrolPoints = {
@@ -17,6 +26,12 @@ DathomirScienceOutpostScreenPlay = CityScreenPlay:new {
 		cll8_1 = {{-107, 18, -1603, 0, 0}, {-128, 18, -1589, 0, 1}, {-107, 18, -1603, 0, 0}, {-95, 18, -1630, 0, 1}},
 		r3_1 = {{-78, 18, -1629, 0, 1}, {-68, 18, -1607, 0, 1}, {-91, 18, -1587, 0, 1}, {-80, 18, -1573, 0, 1}, {-51, 18, -1596, 0, 0}},
 		r4_1 = {{-134.8, 18, -1599.1, 0, 0}, {-122, 18, -1610, 0, 1}, {-134.8, 18, -1599.1, 0, 0}, {-134, 18, -1588, 0, 1}},
+
+		npc_1 = {{-93, 18, -1578, 0, 0}, {-77, 18, -1579, 0, 0}, {-90, 18, -1570, 0, 0}, {-78, 18, -1567, 0, 0}},
+		npc_2 = {{-88, 18, -1606, 0, 0}, {-80, 18, -1623, 0, 0}, {-98, 18, -1605, 0, 0}, {-77, 18, -1604, 0, 0}},
+		npc_3 = {{-74, 18, -1637, 0, 0}, {-75, 18, -1633, 0, 0}, {-82, 18, -1629, 0, 0}, {-71, 18, -1638, 0, 0}},
+		npc_4 = {{-114, 18, -1630, 0, 0}, {-90, 18, -1620, 0, 0}, {-99, 18, -1606, 0, 0}, {-119, 18, -1642, 0, 0}},
+		npc_5 = {{-86, 18, -1555, 0, 0}, {-97, 18, -1564, 0, 0}, {-85, 18, -1546, 0, 0}, {-91, 18, -1544, 0, 0}},
 	},
 }
 
@@ -43,14 +58,14 @@ function DathomirScienceOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "businessman", 60, -79.6404, 18, -1585.09, 131.623, 0)
 	spawnMobile("dathomir", "commoner", 60, -60.7253, 18, -1596.21, 88.2297, 0)
 	spawnMobile("dathomir", "commoner", 60, -37.0445, 18, -1587.75, 47.6817, 0)
-	spawnMobile("dathomir", "commoner", 60, -78.5124, 18, -1618.16, 179.85, 0)
+	spawnMobile("dathomir", "commoner", 60, -78, 18, -1614, 285, 0)
 	spawnMobile("dathomir", "commoner", 60, -98.9262, 18, -1590.29, 239.412, 0)
-	spawnMobile("dathomir", "mercenary", 60, -88.9323, 18, -1606.84, 350.084, 0)
-	spawnMobile("dathomir", "mercenary", 60, -100.976, 18, -1573.64, 39.7721, 0)
-	spawnMobile("dathomir", "mercenary", 60, -86.3374, 18, -1555.75, 219.418, 0)
-	spawnMobile("dathomir", "mercenary", 60, -93.2763, 18, -1569.32, 343.205, 0)
+	local pNpc = spawnMobile("dathomir", "explorer", 60, -68.4, 18, -1621.0, 180, 0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("dathomir", "mercenary", 60, -43.9919, 18, -1585.86, 220.77, 0)
 	spawnMobile("dathomir", "scientist", 60, -136.034, 18, -1592.07, 62.5196, 0)
+	local pNpc = spawnMobile("dathomir", "commoner_technician", 60, -69.1, 18, -1622.1, 45, 0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("dathomir", "informant_npc_lvl_3", 0,-68,18,-1565,270,0)
 
 	pNpc = spawnMobile("dathomir", "arnecio_ulvaw_op",60,4.06465,0.624999,2.34456,30.9406,2835570)

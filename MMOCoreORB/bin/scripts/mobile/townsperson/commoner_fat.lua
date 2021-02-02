@@ -27,8 +27,8 @@ commoner_fat = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {	" commoner_fat "},
-				
+	templates = {" commoner_fat "},
+
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

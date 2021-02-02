@@ -25,15 +25,39 @@ CorelliaDoabaGuerfelScreenPlay = CityScreenPlay:new {
 		{"corsec_trooper", "corsec_trooper", 3119.2,285,5002.2,20,0, "", ""},
 	},
 
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol"},
+
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-		{"surgical_1", "surgical_droid_21b", 1, -1.19, 0.184067, -1.89, 0, 4345354, "calm"},
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+
+		--Droids
+		{"surgical_1", "surgical_droid_21b", 1, -1.19, 0.184067, -1.89, 0, 4345354, "", false},
+
+		--NPCs
+		{"npc_1", "patrolNpc", 1, 3322, 308, 5484, 146, 0, "", false},
+		{"npc_2", "patrolNpc", 1, 3411, 308, 5515, 208, 0, "", false},
+		{"npc_3", "patrolNpc", 1, 3240, 300, 5415, 249, 0, "", false},
+		{"npc_4", "patrolNpc", 1, 3190, 300, 5269, 131, 0, "", false},
+		{"npc_5", "patrolNpc", 1, 3139, 300, 5247, 171, 0, "", false},
+		{"npc_6", "patrolNpc", 1, 3103, 300, 5164, 50, 0, "", false},
+		{"npc_7", "patrolNpc", 1, 3202, 290, 5034, 29, 0, "", false},
+		{"npc_8", "patrolNpc", 1, 3162, 290, 4966, 255, 0, "", false},
 	},
 
 	patrolPoints = {
 		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
 		surgical_1 = {{-12.3, 0.2, -1.5, 4345355, 1}, {10.4, 0.2, -1.9, 4345354, 1}, {9.6, 0.2, 9.8, 4345354, 1}, {-11.8, 0.2, 9.9, 4345354, 0}},
+
+		npc_1 = {{3322, 308, 5484, 0, 0}, {3308, 308, 5491, 0, 0}, {3322, 308, 5508, 0, 0}, {3322, 308, 5484, 0, 0}, {3312, 308, 5515, 0, 0}},
+		npc_2 = {{3411, 308, 5515, 0, 0}, {3380, 308, 5506, 0, 0}, {3353, 308, 5486, 0, 0}, {3363, 308, 5514, 0, 0}, {3386, 308, 5503, 0, 0}},
+		npc_3 = {{3240, 300, 5415, 0, 0}, {3246, 300, 5457, 0, 0}, {3256, 300, 5430, 0, 0}, {3246, 300, 5445, 0, 0}},
+		npc_4 = {{3190, 300, 5269, 0, 0}, {3152, 300, 5254, 0, 0}, {3186, 300, 5320, 0, 0}, {3160, 300, 5307, 0, 0}},
+		npc_5 = {{3139, 300, 5247, 0, 0}, {3164, 300, 5228, 0, 0}, {3140, 300, 5198, 0, 0}, {3113, 300, 5207, 0, 0}, {3121, 300,5212, 0, 0}},
+		npc_6 = {{3103, 300, 5164, 0, 0}, {3119, 300, 5139, 0, 0}, {3103, 300, 5135, 0, 0}, {3115, 300, 5146, 0, 0}, {3119, 300, 5163, 0, 0}},
+		npc_7 = {{3202, 290, 5034, 0, 0}, {3184, 290, 5030, 0, 0}, {3209, 290, 5051, 0, 0}},
+		npc_8 = {{3162, 290, 4966, 0, 1}, {3144, 290, 4979, 0, 0}, {3119, 284, 4994, 0, 0}, {3152, 290, 4988, 0, 0}},
 	},
+
 }
 
 registerScreenPlay("CorelliaDoabaGuerfelScreenPlay", true)
@@ -201,20 +225,14 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 	--Outside
 	pNpc = spawnMobile(self.planet, "info_broker",60,3202.28,290,4989.06,180.005,0)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner", 60,3139.88,300,5247.41,171.321,0)
 	spawnMobile(self.planet, "commoner", 60,3179.26,300,5213.19,233.367,0)
 	spawnMobile(self.planet, "commoner", 60,3117.25,300,5194.73,153.311,0)
 	spawnMobile(self.planet, "commoner", 60,3108.26,300,5229.01,219.942,0)
-	spawnMobile(self.planet, "commoner", 60,3162.05,290,4966.73,255.989,0)
-	spawnMobile(self.planet, "commoner", 60,3190.76,300,5269.61,131.093,0)
-	spawnMobile(self.planet, "commoner", 60,3103.05,300,5164.17,50.255,0)
 	spawnMobile(self.planet, "commoner", 60,3192.45,302.606,5113.34,189.527,0)
 	spawnMobile(self.planet, "commoner", 60,3159.78,300,5397.22,81.297,0)
 	spawnMobile(self.planet, "commoner", 60,3199.22,300,5449.92,146.634,0)
 	spawnMobile(self.planet, "commoner", 60,3277.95,300,5438.73,232.081,0)
-	spawnMobile(self.planet, "commoner", 60,3240.99,300,5415.5,249.458,0)
 	spawnMobile(self.planet, "commoner", 60,3204.19,290,5003.32,222.69,0)
-	spawnMobile(self.planet, "commoner", 60,3202.3,290,5034.41,29.3152,0)
 	spawnMobile(self.planet, "commoner", 60,3296.88,324,5760.95,196.788,0)
 	pNpc = spawnMobile(self.planet, "commoner_technician",60,3300.28,308,5495.49,0,0)
 	self:setMoodString(pNpc, "worried")
@@ -223,9 +241,7 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner", 60,3320.73,324,5709.36,340.725,0)
 	spawnMobile(self.planet, "commoner", 60,3307.64,308.031,5618.18,225.888,0)
 	spawnMobile(self.planet, "commoner", 60,3385.33,308,5699.29,242.976,0)
-	spawnMobile(self.planet, "commoner", 60,3322.09,308,5484.42,146.419,0)
 	spawnMobile(self.planet, "commoner", 60,3303.05,300,5351.87,319.052,0)
-	spawnMobile(self.planet, "commoner", 60,3411.89,308,5515.19,208.425,0)
 	spawnMobile(self.planet, "commoner", 60,3431.28,308,5563.41,159.884,0)
 	pNpc = spawnMobile(self.planet, "farmer_rancher",60,3196.61,295.033,5073.8,350.188,0)
 	self:setMoodString(pNpc, "conversation")

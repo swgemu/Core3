@@ -31,6 +31,11 @@ commoner_naboo = {
 	"object/mobile/dressed_commoner_naboo_zabrak_female_02.iff",
 	"object/mobile/dressed_commoner_naboo_zabrak_male_01.iff",
 	"object/mobile/dressed_commoner_naboo_zabrak_male_02.iff",
+	"object/mobile/gungan_male.iff",
+	"object/mobile/gungan_s02_male.iff",
+	"object/mobile/gungan_s03_male.iff",
+	"object/mobile/gungan_s04_male.iff",
+
 }
 
 addDressGroup("commoner_naboo", commoner_naboo)
