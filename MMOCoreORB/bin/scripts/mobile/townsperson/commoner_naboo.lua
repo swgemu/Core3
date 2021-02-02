@@ -27,8 +27,8 @@ commoner_naboo = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = { "commoner_naboo"	},
-				
+	templates = {"commoner_naboo"},
+
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

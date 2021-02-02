@@ -5,11 +5,21 @@ DantooineImperialOutpostScreenPlay = CityScreenPlay:new {
 
 	planet = "dantooine",
 
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol"},
+
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-		{"cll8_1", "cll8_binary_load_lifter", 60, -4244.24, 3, -2381.33, 238.12, 0, ""},
-		{"r4_1", "r4", 60, -4227.33, 3, -2366.11, 269.389, 0, ""},
-		{"r5_1", "r5", 60, -4228.33, 3, -2367.11, 48.8478, 0, ""},
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatNpc},
+
+		--Droids
+		{"cll8_1", "cll8_binary_load_lifter", 60, -4244.24, 3, -2381.33, 238.12, 0, "", false},
+		{"r4_1", "r4", 60, -4227.33, 3, -2366.11, 269.389, 0, "", false},
+		{"r5_1", "r5", 60, -4228.33, 3, -2367.11, 48.8478, 0, "", false},
+
+		--NPCs
+		{"npc_1", "patrolNpc", 1, -4221, 3, -2370, 124, 0, "", false},
+		{"npc_2", "patrolNpc", 1, -4210, 3, -2411, 81, 0, "", false},
+		{"npc_3", "patrolNpc", 1, -4182, 3, -2422, 157, 0, "", false},
+		{"npc_4", "patrolNpc", 1, -4272, 3, -2391, 117, 0, "", false},
 	},
 
 	patrolPoints = {
@@ -17,6 +27,11 @@ DantooineImperialOutpostScreenPlay = CityScreenPlay:new {
 		cll8_1 = {{-4244, 3, -2383, 0, 1}, {-4251, 3, -2383, 0, 1}, {-4229, 3, -2385, 0, 1}, {-4217, 3, -2380, 0, 1}, {-4206, 3, -2387, 0, 1}, {-4217, 3, -2380, 0, 1}, {-4229, 3, -2384, 0, 0}},
 		r4_1 = {{-4227, 3, -2366, 0, 1}, {-4212, 3, -2356, 0, 1}, {-4212, 3, -2349, 0, 1}, {-4204, 3, -2366, 0, 1}},
 		r5_1 = {{-4228, 3, -2367, 0, 1}, {-4212, 3, -2372, 0, 1}, {-4242, 3, -2352, 0, 1}},
+
+		npc_1 = {{-4221, 3, -2370, 0, 0}, {-4213, 3, -2373, 0, 0}, {-4222, 3, -2367, 0, 0}, {-4225, 3, -2374, 0, 0}},
+		npc_2 = {{-4210, 3, -2411, 0, 0}, {-4217, 3, -2419, 0, 0}, {-4204, 3, -2407, 0, 0}, {-4213, 3, -2406, 0, 0}, {-4190, 3, -2418, 0, 0}},
+		npc_3 = {{-4182, 3, -2422, 0, 0}, {-4191, 3, -2432, 0, 0}, {-4192, 3, -2420, 0, 0}, {-4176, 3, -2423, 0, 0}, {-4177, 3, -2415, 0, 0}},
+		npc_4 = {{-4272, 3, -2391, 0, 0}, {-4272, 3, -2399, 0, 0}, {-4254, 3, -2397, 0, 0}},
 	},
 }
 
@@ -65,14 +80,11 @@ function DantooineImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "businessman", 60, -4203, 3, -2357, 230, 0)
 	spawnMobile("dantooine", "businessman", 60, -4214.17, 3, -2394.5, 357.839, 0)
 	spawnMobile("dantooine", "businessman", 60, -4196.58, 3, -2425.71, 32.429, 0)
-	spawnMobile("dantooine", "commoner", 60, -4234.61, 3, -2380.77, 150.893, 0)
+	pNpc = spawnMobile("dantooine", "commoner", 60, -4234.61, 3, -2380.77, 150.893, 0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("dantooine", "commoner", 60, -4244.41, 3, -2373.1, 149.71, 0)
-	spawnMobile("dantooine", "commoner_tatooine", 60, -4272, 3, -2391, 117, 0)
 	spawnMobile("dantooine", "commoner", 60, -4258.64, 3, -2425.92, 281.664, 0)
 	spawnMobile("dantooine", "commoner", 60, -4229.36, 3, -2423.44, 122.777, 0)
-	spawnMobile("dantooine", "commoner", 60, -4210.71, 3, -2411.83, 81.6274, 0)
-	spawnMobile("dantooine", "commoner", 60, -4221.08, 3, -2370.49, 124.39, 0)
-	spawnMobile("dantooine", "commoner_naboo", 60, -4182.56, 3, -2422.72, 157.31, 0)
 	spawnMobile("dantooine", "commoner", 60, -4186.81, 3, -2388.66, 141.892, 0)
 	spawnMobile("dantooine", "juntah_herm", 60, -4222, 3, -2386.5, 300, 0)
 	spawnMobile("dantooine", "noble", 60, -4261, 3, -2384, 200, 0)

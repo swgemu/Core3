@@ -1,4 +1,4 @@
-commoner_old = Creature:new {
+commoner_fat_patrol = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
@@ -27,13 +27,11 @@ commoner_old = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = { "commoner_old" },
-
+	templates = {"commoner_fat"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermid, marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(commoner_old, "commoner_old")
+CreatureTemplates:addCreatureTemplate(commoner_fat_patrol, "commoner_fat_parol")

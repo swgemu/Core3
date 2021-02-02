@@ -94,20 +94,50 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 		{"corsec_trooper", "corsec_trooper", -347.5,28,-4442.6,123,0, "", ""}
 	},
 
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "explorer", "noble_patrol"},
+
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-		{"cll8_1", "cll8_binary_load_lifter", 60, -146, 28, -4762, 0, 0, ""},
-		{"r3_1", "r3", 60, -158, 28, -4785, 0, 0, "calm"},
-		{"r3_2", "r3", 60, -182.479, 28, -4731.42, 293.019, 0, 0, "calm"},
-		{"surgical_1", "surgical_droid_21b", 60, -25.52, 0.26, -3.48, 357.849,1855535, ""}
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+
+		--Droids
+		{"cll8_1", "cll8_binary_load_lifter", 1, -146, 28, -4762, 0, 0, "", false},
+		{"r3_1", "r3", 1, -158, 28, -4785, 0, 0, "", false},
+		{"r3_2", "r3", 1, -182, 28, -4731, 293, 0, "", false},
+		{"surgical_1", "surgical_droid_21b", 1, -25.52, 0.26, -3.48, 357.849,1855535, "", false},
+
+		--NPCs
+		{"npc_1", "patrolNpc", 1, -54, 28, -4530, 320, 0, "", false},
+		{"npc_2", "patrolNpc", 1, -26, 28, -4558, 310, 0, "", false},
+		{"npc_3", "patrolNpc", 1, -92, 28, -4471, 270, 0, "", false},
+		{"npc_4", "patrolNpc", 1, -195, 28, -4451, 186, 0, "", false},
+		{"npc_5", "patrolNpc", 1, -294, 28, -4412, 0, "", false},
+		{"npc_6", "patrolNpc", 1, -258, 28, -4620, 198, 0, "", false},
+		{"npc_7", "patrolNpc", 1, -306, 28, -4600, 146,0, "", false},
+		{"npc_8", "patrolNpc", 1, -350, 28, -4287, 88, 0, "", false},
+		{"npc_9", "patrolNpc", 1, -357, 28, -4267, 39, 0, "", false},
+		{"npc_10", "patrolNpc", 1, 69, 28, -4568, 100, 0, "conversation", false},
 	},
 
 	patrolPoints = {
 		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
+
+		--Droids
 		cll8_1 = {{-147, 28, -4775, 0, 1}, {-139, 28, -4751, 0, 1}, {-164, 28, -4729, 0, 1}, {-145, 28, -4691, 0, 1}, {-105, 28, -4665, 0, 0}, {-77, 28, -4637, 0, 1}, {-105, 28, -4665, 0, 1}, {-145, 28, -4691, 0, 1}},
 		r3_1 = {{-149, 28, -4785, 0, 1}, {-196, 28, -4778, 0, 1}, {-205, 28, -4755, 0, 1}},
 		r3_2 = {{-178, 28, -4717, 0, 1}, {-186, 28, -4702, 0, 1}, {-192, 28, -4714, 0, 1}, {-212, 28, -4682, 0, 1}, {-182, 28, -4731, 0, 1}},
-		surgical_1 = {{-25.52, 0.26, -3.48, 1855535, 1}, {-11.3, 0.3, -6.5, 1855535, 0}, {-11.1, 0.3, 5.6, 1855535, 1}, {-30.0, 0.3, 6.0, 1855535, 1}, {-29.9, 0.3, -6.0, 1855535, 0}}
+		surgical_1 = {{-25.52, 0.26, -3.48, 1855535, 1}, {-11.3, 0.3, -6.5, 1855535, 0}, {-11.1, 0.3, 5.6, 1855535, 1}, {-30.0, 0.3, 6.0, 1855535, 1}, {-29.9, 0.3, -6.0, 1855535, 0}},
+
+		--NPCs
+		npc_1 = {{-40, 28, -4521, 0, 0}, {-69, 28, -4548, 0, 0}, {-104, 28, -4530, 0, 0}},
+		npc_2 = {{-26, 28, -4558, 0, 0}, {20, 28, -4599, 0 , 0}, {-8, 28, -4614, 0, 0}},
+		npc_3 = {{-92, 28, -4471, 0, 0}, {-36, 28, -4476, 0, 0}},
+		npc_4 = {{-195, 28, -4451, 0, 1}, {-198, 28, -4490, 0, 0}, {-219, 28, -4490, 0, 1}, {-220, 28, -4459, 0, 0}, {-226, 28, -4441, 0, 0}, {-187, 28, -4430, 0, 1}},
+		npc_5 = {{-294, 28, -4412, 0, 1}, {-246, 28, -4416, 0, 0}, {-227, 28, -4438, 0, 1}, {-246, 28, -4416, 0, 0}},
+		npc_6 = {{-258, 28, -4620, 0, 0}, {-258, 28, -4533, 0, 0}},
+		npc_7 = {{-306, 28, -4600, 0, 0}, {-483, 28, -4596, 0, 0}},
+		npc_8 = {{-350, 28, -4287, 0, 1}, {-343, 28, -4302, 0, 1}, {-328, 28, -4322, 0, 0}, {-426, 28, -4423, 0, 1}, {-328, 28, -4322, 0, 0}},
+		npc_9 = {{-357, 28, -4267, 0, 0}, {-410, 28, -4238, 0, 0}, {-396, 28, -4209, 0, 0}},
+		npc_10 = {{69, 28, -4568, 0, 1}, {43, 28, -4551, 0, 0}, {0, 28, -4518, 0, 1}, {43, 28, -4551, 0, 0}},
 	},
 
 }
@@ -316,11 +346,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "businessman",60,-312.404,28,-4646.51,242.881,0)
 	spawnMobile(self.planet, "businessman",60,-135.995,28,-4745.63,251.824,0)
 	spawnMobile(self.planet, "commoner",60,-306.539,28,-4546.52,95.6639,0)
-	spawnMobile(self.planet, "commoner",60,-306.061,28,-4600.68,146.312,0)
-	spawnMobile(self.planet, "commoner",60,-258.479,28,-4620,198.098,0)
 	spawnMobile(self.planet, "commoner",60,-350.892,28,-4219.92,244.079,0)
-	spawnMobile(self.planet, "commoner",60,-357.932,28,-4267.81,39.6745,0)
-	spawnMobile(self.planet, "commoner",60,-350.452,28,-4287.73,88.2402,0)
 	spawnMobile(self.planet, "commoner",60,-350.998,28,-4250.76,129.539,0)
 	spawnMobile(self.planet, "commoner",60,-302.182,28,-4300.76,29.3627,0)
 	spawnMobile(self.planet, "commoner",60,-282.189,28,-4343.57,319.557,0)
@@ -329,11 +355,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-163.751,28,-4552.14,55.4278,0)
 	spawnMobile(self.planet, "commoner",60,-168.38,28,-4515.61,103.857,0)
 	spawnMobile(self.planet, "commoner",60,-158.666,28,-4526.31,289.183,0)
-	spawnMobile(self.planet, "commoner",60,-106.79,28,-4528.6,277.086,0)
-	spawnMobile(self.planet, "commoner",60,-26.0533,28,-4558.43,310.059,0)
-	spawnMobile(self.planet, "commoner",60,-54.9984,28,-4530.84,320.833,0)
-	spawnMobile(self.planet, "commoner",60,-37.2537,28,-4476.76,289.212,0)
-	spawnMobile(self.planet, "commoner",60,-92.217,28,-4471.14,34.4098,0)
+	spawnMobile(self.planet, "commoner",60,-106.79,28,-4528.6, 95,0)
 	spawnMobile(self.planet, "commoner",60,-14.9281,28,-4451.64,343.833,0)
 	spawnMobile(self.planet, "commoner",60,40.5453,28,-4416.63,80.7447,0)
 	spawnMobile(self.planet, "commoner",60,14.4606,28,-4407.11,38.4825,0)
@@ -349,7 +371,6 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-103.047,28,-4182.61,84.8143,0)
 	spawnMobile(self.planet, "commoner",60,-163.872,28,-4181.48,294.873,0)
 	spawnMobile(self.planet, "commoner",60,-122.156,28,-4392.8,270.52,0)
-	spawnMobile(self.planet, "commoner",60,-195.909,28,-4451.7,186.379,0)
 	spawnMobile(self.planet, "commoner",60,-181.008,28,-4505.08,109.502,0)
 	spawnMobile(self.planet, "commoner",60,71.9271,28,-4568.97,267.444,0)
 	spawnMobile(self.planet, "commoner",60,10.3286,28,-4633.8,159.984,0)
