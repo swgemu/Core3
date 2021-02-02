@@ -1,9 +1,9 @@
-commoner_old = Creature:new {
-	objectName = "@mob/creature_names:commoner",
+official_patrol = Creature:new {
+	objectName = "@mob/creature_names:official",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
-	socialGroup = "townsperson",
-	faction = "townsperson",
+	socialGroup = "naboo",
+	faction = "naboo",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -22,18 +22,16 @@ commoner_old = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = { "commoner_old" },
-
+	templates = {"object/mobile/dressed_official.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermid, marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(commoner_old, "commoner_old")
+CreatureTemplates:addCreatureTemplate(official_patrol, "official_patrol")
