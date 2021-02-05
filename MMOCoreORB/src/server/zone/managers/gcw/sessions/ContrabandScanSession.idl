@@ -46,6 +46,7 @@ class ContrabandScanSession extends Facade {
 	private transient int currentWinningFaction;
 	private transient int currentWinningFactionDifficultyScaling;
 	private boolean enforcedScan;
+	private transient int scannerFaction;
 
 	private boolean alreadyTriedToAvoidScan;
 
