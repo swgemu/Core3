@@ -5,6 +5,58 @@ TatooineBestineScreenPlay = CityScreenPlay:new {
 
 	planet = "tatooine",
 
+	gcwMobs = {
+		-- Imperial Mini Base -1136 -3901
+		{"imperial_sergeant", -2.3, 0, -3.9, 13,1279924, "npc_imperial"},
+		{"imperial_first_lieutenant", 3.0, 0.1, 0.5, 164, 1279924, "npc_imperial"},
+		{"imperial_recruiter", -1138, 98, -3897, 0, 0, "npc_imperial"},
+		-- Imperial Npc's Outside
+		{"command_security_guard", -1278.5, 12.5279, -3643.1, 165.005, 0, "", true},
+		{"command_security_guard", -1243.9, 12, -3550.55, 301.01, 0, "", true},
+		{"command_security_guard", -1277.1, 12, -3533.8, 301.01, 0, "", true},
+		{"command_security_guard", -1150.5, 12, -3547.1, 26, 0, "", true},
+		{"command_security_guard", -1097, 12, -3525.3, 121.004, 0, ""},
+		{"dark_trooper", -1430.36, 12, -3728.58, 141.26, 0, "npc_imperial"},
+		{"dark_trooper", -1004.6, 12, -3710.8, 132, 0, "npc_imperial", true},
+		{"dark_trooper", -1428.52, 12, -3730.88, 141.264, 0, "npc_imperial"},
+		{"dark_trooper", -1453, 12, -3646.95, 42.076, 0, "", true},
+		{"dark_trooper", -1002.9, 12, -3705.4, -55, 0, "npc_imperial", true},
+		{"elite_sand_trooper", -1284, 12, -3486, 180, 0, ""},
+		{"elite_sand_trooper", -1368.48, 12, -3725.42, 268.991, 0, "npc_imperial"},
+		{"elite_sand_trooper", -1276, 12, -3487, 180, 0, ""},
+		{"elite_sand_trooper", -1348.2, 12, -3712.7, 315, 0, "npc_imperial"},
+		{"elite_sand_trooper", -1429.92, 12, -3731.49, 141.268, 0, "npc_imperial", true},
+		{"elite_sand_trooper", -1275, 12, -3507.5, 315, 0, "", true},
+		{"elite_sand_trooper", -1378.4, 12, -3712.53, 119.74, 0, "npc_imperial", true},
+		{"elite_sand_trooper", -984.262, 12, -3742.5, 126.391, 0, "npc_imperial", true},
+		{"elite_sand_trooper", -1454.87, 12, -3651.05, 45.2754, 0, ""},
+		{"elite_sand_trooper", -1455.96, 12, -3650.25, 42.1254, 0, ""},
+		{"elite_sand_trooper", -1058.39, 12, -3671.09, 222.747, 0, "npc_imperial", true},
+		{"elite_sand_trooper", -1049.04, 12, -3660.19, 249.5, 0, "npc_imperial"},
+		{"sand_trooper", -983.8, 12, -3746.5, 116.003, 0, ""},
+		{"sand_trooper", -980.4, 12, -3742.8, 119, 0, ""},
+		{"sand_trooper", -1169.8, 12, -3692.1, 235.007, 0, ""},
+		{"sand_trooper", -1283.8, 12, -3480.4, 306.486, 0, "", true},
+		{"sand_trooper", -1275.6, 12, -3479.9, 0, 0, ""},
+		{"sand_trooper", -1016.9, 12, -3741.2, 97.0029, 0, "", true},
+		{"sand_trooper", -1018.3, 12, -3736.2, 272.008, 0, ""},
+		{"sand_trooper", -1089.8, 12, -3704.2, 116.003, 0, "", true},
+		{"sand_trooper", -1154.1, 12, -3650, -111, 0, "", true},
+		-- Guards near city hall and shuttleport entryway
+		{"sand_trooper", -1083.6, 12, -3594.2, 169.005, 0, "", true},
+		{"sand_trooper", -1092.1, 12, -3595.4, 169.005, 0, ""},
+		-- Guards by guildhall exits
+		{"sand_trooper", -1181.3, 12, -3537.9, 198.006, 0, ""},
+		{"sand_trooper", -1181.3, 12, -3542.5, 198.006, 0, "", true},
+		{"storm_commando", -1231.81, 12, -3605.85, 127.312, 0, ""},
+		{"storm_commando", -1292.8, 12, -3585.5, 133.004, 0, ""},
+		{"stormtrooper_sniper", -1093.7, 14, -3660.2, 41.0012, 0, ""},
+		-- In front of city hall
+		{"elite_sand_trooper", -1093.52, 12, -3647.32, 308.036, 0, "npc_imperial"},
+		-- Black stormtrooper by hutt informant
+		{"storm_commando", -1115.14, 12, -3639.18, 263.058, 0, "npc_imperial", true},
+	},
+
 	patrolMobiles = {
 		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
 		{"cll8_1", "cll8_binary_load_lifter", 60, -1402.49, 9.99327, -3756.82, 140.109, 0, ""},
@@ -29,6 +81,7 @@ function TatooineBestineScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
+		self:spawnGcwMobiles()
 	end
 end
 
@@ -89,14 +142,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "sad")
 	pNpc = spawnMobile("tatooine", "bounty_hunter",300,-10.2,1.0,7.1,-7,1028169)
 	self:setMoodString(pNpc, "npc_accusing")
-
-	--Imperial Mini Base -1136 -3901
-	pNpc = spawnMobile("tatooine", "imperial_sergeant",400,-2.3,0,-3.9,13,1279924)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "imperial_first_lieutenant",400,3.0,0.1,0.5,164,1279922)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "imperial_recruiter",0,-1138,98,-3897,0,0)
-	self:setMoodString(pNpc, "npc_imperial")
 
 	--east Tavern -1074 -3640
 	pNpc = spawnMobile("tatooine", "commoner_technician",60,4.6,1.0,7.5,90,1528396)
@@ -272,75 +317,8 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("tatooine", "wlinc_tchrr",60,-1288.15,12,-3588.42,276.296,0)
 	self:setMoodString(pNpc, "neutral")
 
-	--Imperial Npc's Outside
-	spawnMobile("tatooine", "command_security_guard",400,-1278.5,12.5279,-3643.1,165.005,0)
-	spawnMobile("tatooine", "command_security_guard",400,-1243.9,12,-3550.55,301.01,0)
-	spawnMobile("tatooine", "command_security_guard",400,-1277.1,  12, -3533.8,301.01,0)
-	spawnMobile("tatooine", "command_security_guard",400,-1150.5,12,-3547.1,26,0)
-	spawnMobile("tatooine", "command_security_guard",400,-1097,12,-3525.3,121.004,0)
-	pNpc = spawnMobile("tatooine", "dark_trooper",400,-1430.36,12,-3728.58,141.26,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "dark_trooper",400,-1004.6,12,-3710.8,132,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "dark_trooper",400,-1428.52,12,-3730.88,141.264,0)
-	self:setMoodString(pNpc, "npc_imperial")
-
-	spawnMobile("tatooine", "dark_trooper",400,-1453,12,-3646.95,42.076,0)
-	pNpc = spawnMobile("tatooine", "dark_trooper",400,-1002.9,12,-3705.4,-55,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	spawnMobile("tatooine", "elite_sand_trooper",400,-1284,12,-3486,180,0)
-	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1368.48,12,-3725.42,268.991,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	spawnMobile("tatooine", "elite_sand_trooper",400,-1276,12,-3487,180,0)
-	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1348.2,12,-3712.7,315,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1429.92,12,-3731.49,141.268,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	spawnMobile("tatooine", "elite_sand_trooper",400,-1275,12,-3507.5,315,0)
-	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1378.4,12,-3712.53,119.74,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-984.262,12,-3742.5,126.391,0)
-	self:setMoodString(pNpc, "npc_imperial")
-
-	spawnMobile("tatooine", "elite_sand_trooper",400,-1454.87,12,-3651.05,45.2754,0)
-	spawnMobile("tatooine", "elite_sand_trooper",400,-1455.96,12,-3650.25,42.1254,0)
-	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1058.39,12,-3671.09,222.747,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1049.04,12,-3660.19,249.5,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "sand_trooper",400,-983.8,12,-3746.5,116.003,0)
-	pNpc = spawnMobile("tatooine", "sand_trooper",400,-980.4,12,-3742.8,119,0)
-	pNpc = spawnMobile("tatooine", "sand_trooper",400,-1169.8,12,-3692.1,235.007,0)
-	pNpc = spawnMobile("tatooine", "sand_trooper",400,-1283.8,12,-3480.4,306.486,0)
-
-	spawnMobile("tatooine", "sand_trooper",400,-1275.6,12,-3479.9,0,0)
-	spawnMobile("tatooine", "sand_trooper",400,-1016.9,12,-3741.2,97.0029,0)
-	spawnMobile("tatooine", "sand_trooper",400,-1018.3,12,-3736.2,272.008,0)
-	spawnMobile("tatooine", "sand_trooper",400,-1089.8,12,-3704.2,116.003,0)
-	spawnMobile("tatooine", "sand_trooper",400,-1154.1,12,-3650,-111,0)
-
-	--guard near city hall and shuttleport entryway
-	spawnMobile("tatooine", "sand_trooper",400,-1083.6,12,-3594.2,169.005,0)
-	spawnMobile("tatooine", "sand_trooper",400,-1092.1,12,-3595.4,169.005,0)
-
-	--guard by guildhall exits
-	spawnMobile("tatooine", "sand_trooper",400,-1181.3,12,-3537.9,198.006,0)
-	spawnMobile("tatooine", "sand_trooper",400,-1181.3,12,-3542.5,198.006,0)
-
-	spawnMobile("tatooine", "storm_commando",400,-1231.81,12,-3605.85,127.312,0)
-	spawnMobile("tatooine", "storm_commando",400,-1292.8,12,-3585.5,133.004,0)
-
-	spawnMobile("tatooine", "stormtrooper_sniper",400,-1093.7,14,-3660.2,41.0012,0)
 	spawnMobile("tatooine", "imperial_recruiter",60,-1072.7,12,-3594,220,0)
 	spawnMobile("tatooine", "imperial_recruiter",60,-1275.75,12,-3594.28,-73,0)
-
-	--in front of city hall
-	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1093.52,12,-3647.32,308.036,0)
-	self:setMoodString(pNpc, "npc_imperial")
-
-	--black stormtrooper by hutt informant
-	pNpc = spawnMobile("tatooine", "storm_commando",0,-1115.14,12,-3639.18,263.058,0)
-	self:setMoodString(pNpc, "npc_imperial")
 
 	--Creatures
 	spawnMobile("tatooine", "lesser_desert_womp_rat",300,-1062.1,23.7,-3451.8,-110,0)
