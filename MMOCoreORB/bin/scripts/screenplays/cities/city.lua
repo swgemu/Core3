@@ -36,14 +36,41 @@ function CityScreenPlay:spawnMob(num, controllingFaction, difficulty)
 	local mobTable = mobsTable[num]
 	local pNpc = nil
 	local npcTemplate = ""
+	local x
+	local y
+	local z
+	local heading
+	local parentID
 	local npcMood = ""
+	local scanner = false
 
-	if controllingFaction == FACTIONIMPERIAL then
+	if #mobTable < 9 then
 		npcTemplate = mobTable[1]
+		x = mobTable[2]
+		z = mobTable[3]
+		y = mobTable[4]
+		heading = mobTable[5]
+		parentID = mobTable[6]
+		npcMood = mobTable[7]
+		scanner = mobTable[8]
+	elseif controllingFaction == FACTIONIMPERIAL then
+		npcTemplate = mobTable[1]
+		x = mobTable[3]
+		z = mobTable[4]
+		y = mobTable[5]
+		heading = mobTable[6]
+		parentID = mobTable[7]
 		npcMood = mobTable[8]
+		scanner = mobTable[10]
 	elseif controllingFaction == FACTIONREBEL then
 		npcTemplate = mobTable[2]
+		x = mobTable[3]
+		z = mobTable[4]
+		y = mobTable[5]
+		heading = mobTable[6]
+		parentID = mobTable[7]
 		npcMood = mobTable[9]
+		scanner = mobTable[10]
 	end
 
 	local scaling = ""
@@ -51,13 +78,13 @@ function CityScreenPlay:spawnMob(num, controllingFaction, difficulty)
 		scaling = "_hard"
 	end
 
-	pNpc = spawnMobile(self.planet, npcTemplate .. scaling, 0, mobTable[3], mobTable[4], mobTable[5], mobTable[6], mobTable[7])
+	pNpc = spawnMobile(self.planet, npcTemplate .. scaling, 0, x, z, y, heading, parentID)
 
 	if pNpc ~= nil then
 		if npcMood ~= "" then
 			self:setMoodString(pNpc, npcMood)
 		end
-		if mobTable[10] then
+		if scanner then
 			local aiAgent = AiAgent(pNpc)
 			aiAgent:setCreatureBit(SCANNING_FOR_CONTRABAND)
 		end
