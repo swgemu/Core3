@@ -3628,6 +3628,16 @@ void FrsManagerImplementation::teleportPlayerToDarkArena(CreatureObject* player)
 	float randX = -12.f + System::random(24);
 	float randY = -85.f + System::random(24);
 
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost != nullptr) {
+		ghost->setForcedTransform(true);
+
+		auto msg = player->info();
+		msg << "Dark Enclave Arena Movement  X = " << randX  << "  Y = " << randY << " Cell ID:  " << ARENA_CELL;
+		msg.flush();
+	}
+
 	player->teleport(randX, -47.424f, randY, ARENA_CELL);
 }
 
