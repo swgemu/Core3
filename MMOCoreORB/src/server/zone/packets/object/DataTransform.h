@@ -166,14 +166,17 @@ public:
 #undef isinf
 #endif
 
-		if (std::isnan(positionX) || std::isnan(positionY) || std::isnan(positionZ))
+		if (std::isnan(positionX) || std::isnan(positionY) || std::isnan(positionZ)) {
 			return;
+		}
 
-		if (std::isinf(positionX) || std::isinf(positionY) || std::isinf(positionZ))
+		if (std::isinf(positionX) || std::isinf(positionY) || std::isinf(positionZ)) {
 			return;
+		}
 
-		if (ghost->isTeleporting())
+		if (ghost->isTeleporting() && !ghost->isForcedTransform()) {
 			return;
+		}
 
 		/*if (!object->isInQuadTree())
 			return;*/
