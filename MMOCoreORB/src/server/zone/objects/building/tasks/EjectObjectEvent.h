@@ -9,6 +9,7 @@
 #define EJECTOBJECTEVENT_H_
 
 #include "engine/engine.h"
+#include "server/zone/packets/object/DataTransform.h"
 
 class EjectObjectEvent : public Task {
 	ManagedReference<SceneObject*> object;
@@ -36,13 +37,23 @@ public:
 
 			auto creo = object->asCreatureObject();
 
-			if (creo != nullptr)
-				creo->error(msg.toString());
-			else
-				object->error(msg.toString());
+			if (creo != nullptr) {
+				creo->info(msg.toString());
+
+				if (creo->isPlayerCreature()) {
+					PlayerObject* ghost = creo->getPlayerObject();
+
+					if (ghost != nullptr) {
+						ghost->setForcedTransform(true);
+					}
+				}
+			} else {
+				object->info(msg.toString());
+			}
 		}
 
 		object->teleport(x, z, y);
+		object->updateZone(false, true);
 	}
 };
 
