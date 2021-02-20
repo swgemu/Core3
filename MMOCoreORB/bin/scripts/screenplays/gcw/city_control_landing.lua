@@ -35,7 +35,8 @@ function CityControlLanding:start()
 end
 
 function CityControlLanding:chanceToSpawn()
-	local chance = getRandomNumber(49)
+	local chance = getRandomNumber(49) -- Testing Chance
+	--local chance = getRandomNumber(100)
 
 	if (chance <= 50) then --if (chance <= 5) then
 		createEvent(15 * 60 * 1000, "CityControlLanding", "spawnCityLanding", "", "") --15min after chance roll to allow for load time
@@ -105,12 +106,21 @@ function CityControlLanding:broadcastMessage(pShuttle)
 
 	local playerTable = SceneObject(pShuttle):getPlayersInRange(150)
 	local landingType = readStringData("LandingType:")
+	local landingStep = readStringData("NextPoint:")
 	local broadcastTemplate = ""
 
-	if (landingType == "REBEL") then
-		broadcastTemplate= "<<Incoming Alliance Transmission: Ground control, this is shuttle Alder Six-Two. We have the Princess on board and are coming in for a landing.>>"
+	if (landingStep == "shuttle")   then
+		if (landingType == "REBEL") then
+			broadcastTemplate= "<<Alliance Transmission: Alder Six-Two, you are clear for departure. Ground control out.>>" --Need evidence to confirm Rebel departure message.
+		else
+			broadcastTemplate = "<<Imperial Transmission: Shuttle ST321, your departure vector is right six-nine-three. Command station out.>>"
+		end
 	else
-		broadcastTemplate = "<<Incoming Imperial Transmission: Command station, this is ST321, code clearance blue. We're starting our approach.>>"
+		if (landingType == "REBEL") then
+			broadcastTemplate= "<<Incoming Alliance Transmission: Ground control, this is shuttle Alder Six-Two. We have the Princess on board and are coming in for a landing.>>"
+		else
+			broadcastTemplate = "<<Incoming Imperial Transmission: Command station, this is ST321, code clearance blue. We're starting our approach.>>"
+		end
 	end
 
 	if (#playerTable > 0) then
@@ -374,7 +384,8 @@ function CityControlLanding:despawnLanding()
 	end
 
 	createEvent(5 * 1000, "CityControlLanding", "despawnMobiles", "", "")
-	createEvent(27 * 1000, "CityControlLanding", "handleShuttlePosture", pShuttle, "")
+	createEvent(26 * 1000, "CityControlLanding", "broadcastMessage", pShuttle, "")
+	createEvent(28 * 1000, "CityControlLanding", "handleShuttlePosture", pShuttle, "")
 	createEvent(10 * 60 * 1000, "CityControlLanding", "cleanUp", "", "")
 end
 
