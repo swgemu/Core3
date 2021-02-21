@@ -463,3 +463,81 @@ function CityPatrolInterrupt:doAwarenessCheck(pAgent, pObject)
 
 	return true
 end
+
+CombatPatrolInterrupt = createClass(Interrupt)
+function CombatPatrolInterrupt:startAwarenessInterrupt(pAgent, pObject)
+	if (pAgent == pObject) then return end
+	if (pAgent == nil or pObject == nil) then return end
+
+	local sceneObject = SceneObject1(pObject)
+
+	if not sceneObject:isCreatureObject() then return false end
+
+	local creoAgent = CreatureObject1(pAgent)
+
+	if creoAgent:isDead() or creoAgent:isIncapacitated() then return end
+
+	local creoObject = CreatureObject2(pObject)
+
+	if creoObject:isDead() or creoObject:isIncapacitated() then return end
+
+	local aiAgent = AiAgent1(pAgent)
+
+	if aiAgent:isInCombat() then return end
+
+	local inRange1 = sceneObject:isInRangeWithObject3d(pAgent, 25)
+
+	if not inRange1 then
+		return
+	end
+
+	if sceneObject:isPlayerCreature() then
+		SceneObject(pAgent):showFlyText("npc_reaction/flytext", "alert", 255, 0, 0)
+	end
+
+	local inRange2 = sceneObject:isInRangeWithObject3d(pAgent, 10)
+
+	if aiAgent:isAggressiveTo(pObject) and aiAgent:checkLineOfSight(pObject) and inRange2 then
+		SceneObject(pAgent):showFlyText("npc_reaction/flytext", "threaten", 255, 0, 0)
+		aiAgent:addDefender(pObject)
+		aiAgent:stopWaiting();
+		aiAgent:executeBehavior();
+	end
+end
+
+function CombatPatrolInterrupt:doAwarenessCheck(pAgent, pObject)
+	if (pAgent == pObject) then
+		return
+	end
+
+	if (pAgent == nil or pObject == nil) then
+		return
+	end
+
+	local tanoAgent = TangibleObject1(pAgent)
+	local creoAgent = CreatureObject1(pAgent)
+
+	if creoAgent:isDead() then return false end
+
+	local aiAgent = AiAgent1(pAgent)
+
+	if aiAgent:isRetreating() or aiAgent:isInCombat() then return false end
+
+	local sceneObject = SceneObject1(pObject)
+
+	if not sceneObject:isCreatureObject() then return false end
+
+	local creoObject = CreatureObject2(pObject)
+
+	if creoObject:isInvisible() then return false end
+
+	if not sceneObject:isInRangeWithObject3d(pAgent, 35) then return false end
+
+	local tanoObject = TangibleObject2(pObject)
+
+	if tanoObject:getPvpStatusBitmask() == NONE or creoObject:isDead() or creoObject:isIncapacitated() then return false end
+
+	if not aiAgent:isAggressiveTo(pObject) or not creoObject:isAttackableBy(pAgent) then return false end
+
+	return true
+end
