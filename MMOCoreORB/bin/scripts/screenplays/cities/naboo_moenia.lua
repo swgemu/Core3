@@ -23,6 +23,22 @@ NabooMoeniaScreenPlay = CityScreenPlay:new {
 		{"specforce_marine", 4695.7, 3.8, -4913.5, 180, 0, "", true},
 		{"rebel_specforce_pathfinder", 4707.1, 3.8, -4894.6, 90, 0, "", true},
 	},
+
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_naboo_patrol", "commoner_old_patrol", "commoner_patrol", "commoner_technician", "naboo_nomad", "noble_patrol", "official_patrol", "scientist_patrol"},
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		{"npc_1", "patrolNpc", 1, 4795, 4, -4722, 45, "", false},
+		{"npc_2", "patrolNpc", 1, 4825, 4, -4679, 180, "", false},
+		{"npc_3", "patrolNpc", 1, 4852, 4, -4677, 255, "", false},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		npc_1 = {{4795, 4, -4722, 0, true}, {4770, 4, -4731, 0, true}, {4759, 4, -4750, 0, true},  {4751, 4, -4730, 0, true}},
+		npc_2 = {{4825, 4, -4679, 0, true}, {4819, 4, -4658, 0, true}, {4831, 4, -4669, 0, true}, {4831, 4, -4649, 0, true}},
+		npc_3 = {{4852, 4, -4677, 0, true}, {4849, 4, -4711, 0, true}, {4840, 4, -4699, 0, true}, {4846, 4, -4672, 0, true}},
+	},
 }
 
 registerScreenPlay("NabooMoeniaScreenPlay", true)
@@ -30,6 +46,7 @@ registerScreenPlay("NabooMoeniaScreenPlay", true)
 function NabooMoeniaScreenPlay:start()
 	if (isZoneEnabled("naboo")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 	end
@@ -67,7 +84,7 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "fishing")
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4652,3.8,-4749,0,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4744,3.8,-4847,0,0)
-	spawnMobile("naboo", "informant_npc_lvl_1",0,4825,3.8,-4829,0,0)
+	spawnMobile("naboo", "informant_npc_lvl_1",0,4825,3.8,-4829, 235,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4958,3.8,-4854,0,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4976,3.8,-4920,0,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4971,3.8,-4941,0,0)

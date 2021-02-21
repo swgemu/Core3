@@ -6,10 +6,10 @@ DathomirTradeOutpostScreenPlay = CityScreenPlay:new {
 	planet = "dathomir",
 
 	combatPatrol = {"commando", "commoner_technician", "mercenary", "miner", "sharpshooter"},
-	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
 		{"r4_1", "r4", 1, 620, 6, 3088, 191.123, 0, "", false},
@@ -26,17 +26,17 @@ DathomirTradeOutpostScreenPlay = CityScreenPlay:new {
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
-		r4_1 = {{620, 6, 3085, 0, 1}, {620, 6, 3065, 0, 1}, {599, 6, 3058, 0, 1}, {590, 6, 3080, 0, 1}, {618, 6, 3089, 0, 0}},
-		r4_2 = {{620, 6, 3089, 0, 1}, {613, 6, 3106, 0, 0}, {607, 6, 3109, 0, 1}, {615, 6, 3108, 0, 0}, {623, 6, 3101, 0, 1}, {619, 6, 3087, 0, 0}},
-		r5_1 = {{633, 6, 3084, 0, 1}, {622, 6, 3086, 0}, {636, 6, 3085, 0, 1}, {637, 6, 3044, 0, 1}, {619, 6, 3029, 0, 1}, {619, 6, 3043, 0}, {637, 6, 3044, 0, 1}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		r4_1 = {{620, 6, 3085, 0, false}, {620, 6, 3065, 0, false}, {599, 6, 3058, 0, false}, {590, 6, 3080, 0, false}, {618, 6, 3089, 0, true}},
+		r4_2 = {{620, 6, 3089, 0, false}, {613, 6, 3106, 0, true}, {607, 6, 3109, 0, false}, {615, 6, 3108, 0, true}, {623, 6, 3101, 0, false}, {619, 6, 3087, 0, true}},
+		r5_1 = {{633, 6, 3084, 0, false}, {622, 6, 3086, 0, true}, {636, 6, 3085, 0, false}, {637, 6, 3044, 0, false}, {619, 6, 3029, 0, false}, {619, 6, 3043, 0, false}, {637, 6, 3044, 0, false}},
 
-		npc_1 = {{559, 6, 3076, 0, 0}, {536, 8, 3077, 0, 0}, {546, 7, 3085, 0, 0}, {556, 6, 3083, 0, 0}, {538, 8, 3091, 0, 0}},
-		npc_2 = {{566, 6, 3070, 0, 0}, {569, 6, 3085, 0, 0}, {581, 6, 3071, 0, 0}, {578, 6, 3072, 0, 0}},
-		npc_3 = {{578, 6, 3092, 0, 0}, {585, 6, 3082, 0, 0}, {584, 6, 3102, 0, 0}, {592, 6, 3097, 0, 0}},
-		npc_4 = {{590, 6, 3058, 0, 0}, {599, 6, 3071, 0, 0}, {605, 6, 3066, 0, 0}, {610, 6, 3049, 0, 0}, {596, 6, 3051, 0, 0}},
-		npc_5 = {{577, 6, 3100, 0, 0}, {568, 6, 3106, 0, 0}, {563, 6, 3092, 0, 0}, {556, 6, 3099, 0, 0}, {590, 6, 3108, 0, 0}},
-		npc_6 = {{616, 6, 3056, 0, 0}, {610, 6, 3065, 0, 0}, {617, 6, 3072, 0, 0}, {609, 6, 3052, 0, 0}},
+		npc_1 = {{559, 6, 3076, 0, true}, {536, 8, 3077, 0, true}, {546, 7, 3085, 0, true}, {556, 6, 3083, 0, true}, {538, 8, 3091, 0, true}},
+		npc_2 = {{566, 6, 3070, 0, true}, {569, 6, 3085, 0, true}, {581, 6, 3071, 0, true}, {578, 6, 3072, 0, true}},
+		npc_3 = {{578, 6, 3092, 0, true}, {585, 6, 3082, 0, true}, {584, 6, 3102, 0, true}, {592, 6, 3097, 0, true}},
+		npc_4 = {{590, 6, 3058, 0, true}, {599, 6, 3071, 0, true}, {605, 6, 3066, 0, true}, {610, 6, 3049, 0, true}, {596, 6, 3051, 0, true}},
+		npc_5 = {{577, 6, 3100, 0, true}, {568, 6, 3106, 0, true}, {563, 6, 3092, 0, true}, {556, 6, 3099, 0, true}, {590, 6, 3108, 0, true}},
+		npc_6 = {{616, 6, 3056, 0, true}, {610, 6, 3065, 0, true}, {617, 6, 3072, 0, true}, {609, 6, 3052, 0, true}},
 	},
 }
 
