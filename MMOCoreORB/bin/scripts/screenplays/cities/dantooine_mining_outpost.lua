@@ -6,7 +6,7 @@ DantooineMiningOutpostScreenPlay = CityScreenPlay:new {
 	planet = "dantooine",
 
 	combatPatrol = {"commando", "miner", "sharpshooter"},
-	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
 		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
@@ -24,15 +24,15 @@ DantooineMiningOutpostScreenPlay = CityScreenPlay:new {
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
-		r2_1 = {{-635, 3, 2503, 0, 0}, {-627, 3, 2494, 0, 1}, {-600, 3, 2494, 0, 0}, {-611, 3, 2483, 0, 1}, {-622, 3, 2484, 0, 1}},
-		r4_1 = {{-643, 3, 2506, 0, 1}, {-648, 3, 2510, 0, 0}, {-655, 3, 2498, 0, 1}, {-643, 3, 2508, 0, 1}},
-		r4_2 = {{-666, 3, 2494, 0, 1}, {-638, 3, 2456, 0, 1}, {-658, 3, 2442, 0, 1}, {-658, 3, 2465, 0, 1}, {-649, 3, 2484, 0, 1}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		r2_1 = {{-635, 3, 2503, 0, true}, {-627, 3, 2494, 0, false}, {-600, 3, 2494, 0, true}, {-611, 3, 2483, 0, false}, {-622, 3, 2484, 0, false}},
+		r4_1 = {{-643, 3, 2506, 0, true}, {-648, 3, 2510, 0, true}, {-655, 3, 2498, 0, true}, {-643, 3, 2508, 0, false}},
+		r4_2 = {{-666, 3, 2494, 0, false}, {-638, 3, 2456, 0, false}, {-658, 3, 2442, 0, false}, {-658, 3, 2465, 0, false}, {-649, 3, 2484, 0, false}},
 
-		npc_1 = {{-616, 3, 2509, 0, 0}, {-612, 3, 2530, 0, 0}, {-600, 3, 2511, 0, 0}, {-621, 3, 2503, 0, 0}},
-		npc_2 = {{-562, 3, 2512, 0, 0}, {-572, 3, 2520, 0, 0}, {-551, 1, 2510, 0, 0}, {-566, 2, 2500, 0, 0}, {-572, 3, 2509, 0, 0}},
-		npc_3 = {{-602, 3, 2506, 0, 0}, {-595, 3, 2521, 0, 0}, {-604, 3, 2499, 0, 0}, {-570, 3, 2512, 0, 0}},
-		npc_4 = {{-647, 3, 2449, 0, 0}, {-656, 3, 2429, 0, 0}, {-664, 3, 2433, 0, 0}, {-653, 3, 2453, 0, 0}},
+		npc_1 = {{-616, 3, 2509, 0, true}, {-612, 3, 2530, 0, true}, {-600, 3, 2511, 0, true}, {-621, 3, 2503, 0, true}},
+		npc_2 = {{-562, 3, 2512, 0, true}, {-572, 3, 2520, 0, true}, {-551, 1, 2510, 0, true}, {-566, 2, 2500, 0, true}, {-572, 3, 2509, 0, true}},
+		npc_3 = {{-602, 3, 2506, 0, true}, {-595, 3, 2521, 0, true}, {-604, 3, 2499, 0, true}, {-570, 3, 2512, 0, true}},
+		npc_4 = {{-647, 3, 2449, 0, true}, {-656, 3, 2429, 0, true}, {-664, 3, 2433, 0, true}, {-653, 3, 2453, 0, true}},
 	},
 }
 
