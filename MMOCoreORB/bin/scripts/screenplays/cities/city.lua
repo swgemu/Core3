@@ -159,25 +159,36 @@ function CityScreenPlay:spawnPatrol(num)
 	if (pMobile ~= nil and points ~= nil) then
 		local pOid = SceneObject(pMobile):getObjectID()
 
-		if patrol[10] then
-			writeData(pOid .. ":patrolNumber", num)
-			createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawnPatrol", pMobile)
-		else
-			CreatureObject(pMobile):setPvpStatusBitmask(0)
-			createEvent(3000, self.screenplayName, "setupMobilePatrol", pMobile, "")
-		end
-
-		createEvent(3000, self.screenplayName, "setupMobilePatrol", pMobile, "")
+		createEvent(3000, self.screenplayName, "setupMobilePatrol", pMobile, num)
 		writeStringData(pOid .. ":patrolPoints", points)
+		writeData(pOid .. ":patrolNumber", num)
 		writeData(pOid .. ":currentLoc", 1)
 	end
 end
 
-function CityScreenPlay:setupMobilePatrol(pMobile)
+function CityScreenPlay:setupMobilePatrol(pMobile, num)
+	if (pMobile == nil) then
+		return
+	end
+
+	local spawnNumber = tonumber(num)
+	local combatNpc = self.patrolMobiles[spawnNumber][10]
+
+	if combatNpc then
+		--AiAgent(pMobile):setAiTemplate("combatpatrol")
+		AiAgent(pMobile):setAiTemplate("citypatrol")
+		createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawnPatrol", pMobile)
+
+		printf(" Combat is true " .. "\n")
+	else
+		AiAgent(pMobile):setAiTemplate("citypatrol")
+		CreatureObject(pMobile):setPvpStatusBitmask(0)
+		CreatureObject(pMobile):setOptionsBitmask(0)
+	end
+
+	AiAgent(pMobile):setFollowState(4)
 	createEvent(getRandomNumber(20, 40) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
 	createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
-	AiAgent(pMobile):setAiTemplate("citypatrol")
-	AiAgent(pMobile):setFollowState(4)
 end
 
 function CityScreenPlay:onDespawnPatrol(pMobile)
@@ -230,13 +241,14 @@ function CityScreenPlay:mobileDestinationReached(pMobile)
 	end
 
 	local currentSet = pointSets[currentLoc]
-	local noDelay = currentSet[5]
+	local delay = currentSet[5]
 
-	if (noDelay == 1) then
-		createEvent(100, self.screenplayName, "mobilePatrol", pMobile, "")
-	else
+	if (delay) then
 		createEvent(getRandomNumber( 30, 60) * 1000, self.screenplayName, "mobilePatrol", pMobile, "")
+	else
+		createEvent(100, self.screenplayName, "mobilePatrol", pMobile, "")
 	end
+
 	return 0
 end
 
@@ -263,6 +275,9 @@ function CityScreenPlay:mobilePatrol(pMobile)
 	else
 		nextPoint = pointSet[currentLoc + 1]
 	end
+
+	spatialChat(pMobile, "Current Location: " .. currentLoc .. " Out of: " .. patrolPointCount .. "  patrol points. ")
+	spatialChat(pMobile, " Next Point --  X: " .. nextPoint[1] .. "  Y:  " ..  nextPoint[3])
 
 	AiAgent(pMobile):stopWaiting()
 	AiAgent(pMobile):setWait(0)

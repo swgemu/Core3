@@ -6,7 +6,7 @@ DathomirScienceOutpostScreenPlay = CityScreenPlay:new {
 	planet = "dathomir",
 
 	combatPatrol = {"commando", "commoner_technician", "mercenary", "miner", "sharpshooter"},
-	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
 		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
@@ -24,16 +24,16 @@ DathomirScienceOutpostScreenPlay = CityScreenPlay:new {
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
-		cll8_1 = {{-107, 18, -1603, 0, 0}, {-128, 18, -1589, 0, 1}, {-107, 18, -1603, 0, 0}, {-95, 18, -1630, 0, 1}},
-		r3_1 = {{-78, 18, -1629, 0, 1}, {-68, 18, -1607, 0, 1}, {-91, 18, -1587, 0, 1}, {-80, 18, -1573, 0, 1}, {-51, 18, -1596, 0, 0}},
-		r4_1 = {{-134.8, 18, -1599.1, 0, 0}, {-122, 18, -1610, 0, 1}, {-134.8, 18, -1599.1, 0, 0}, {-134, 18, -1588, 0, 1}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		cll8_1 = {{-107, 18, -1603, 0, true}, {-128, 18, -1589, 0, false}, {-107, 18, -1603, 0, true}, {-95, 18, -1630, 0, false}},
+		r3_1 = {{-78, 18, -1629, 0, false}, {-68, 18, -1607, 0, false}, {-91, 18, -1587, 0, false}, {-80, 18, -1573, 0, false}, {-51, 18, -1596, 0, true}},
+		r4_1 = {{-134.8, 18, -1599.1, 0, true}, {-122, 18, -1610, 0, false}, {-134.8, 18, -1599.1, 0, true}, {-134, 18, -1588, 0, false}},
 
-		npc_1 = {{-93, 18, -1578, 0, 0}, {-77, 18, -1579, 0, 0}, {-90, 18, -1570, 0, 0}, {-78, 18, -1567, 0, 0}},
-		npc_2 = {{-88, 18, -1606, 0, 0}, {-80, 18, -1623, 0, 0}, {-98, 18, -1605, 0, 0}, {-77, 18, -1604, 0, 0}},
-		npc_3 = {{-74, 18, -1637, 0, 0}, {-75, 18, -1633, 0, 0}, {-82, 18, -1629, 0, 0}, {-71, 18, -1638, 0, 0}},
-		npc_4 = {{-114, 18, -1630, 0, 0}, {-90, 18, -1620, 0, 0}, {-99, 18, -1606, 0, 0}, {-119, 18, -1642, 0, 0}},
-		npc_5 = {{-86, 18, -1555, 0, 0}, {-97, 18, -1564, 0, 0}, {-85, 18, -1546, 0, 0}, {-91, 18, -1544, 0, 0}},
+		npc_1 = {{-93, 18, -1578, 0, true}, {-77, 18, -1579, 0, true}, {-90, 18, -1570, 0, true}, {-78, 18, -1567, 0, true}},
+		npc_2 = {{-88, 18, -1606, 0, true}, {-80, 18, -1623, 0, true}, {-98, 18, -1605, 0, true}, {-77, 18, -1604, 0, true}},
+		npc_3 = {{-74, 18, -1637, 0, true}, {-75, 18, -1633, 0, true}, {-82, 18, -1629, 0, true}, {-71, 18, -1638, 0, true}},
+		npc_4 = {{-114, 18, -1630, 0, true}, {-90, 18, -1620, 0, true}, {-99, 18, -1606, 0, true}, {-119, 18, -1642, 0, true}},
+		npc_5 = {{-86, 18, -1555, 0, true}, {-97, 18, -1564, 0, true}, {-85, 18, -1546, 0, true}, {-91, 18, -1544, 0, true}},
 	},
 }
 
