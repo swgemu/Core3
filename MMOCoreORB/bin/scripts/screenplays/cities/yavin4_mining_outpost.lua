@@ -6,13 +6,13 @@ Yavin4MiningOutpostScreenPlay = CityScreenPlay:new {
 	planet = "yavin4",
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-		{"surgical_1", "surgical_droid_21b", 60, -1.9, 0.7, 2.5, 175, 7925478, "neutral"},
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		{"surgical_1", "surgical_droid_21b", 1, -1.9, 0.7, 2.5, 175, 7925478, "neutral", false},
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
-		surgical_1 = {{-1.9, 0.7, 2.5, 7925478, 1}, {-1.8, 0.7, 4.4, 7925478, 1}, {3.1, 0.7, 4.5, 7925478, 0}, {3.2, 0.7, 3.6, 7925478, 1}, {3.1, 0.7, 4.5, 7925478, 1}, {-1.8, 0.7, 4.4, 7925478, 1}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		surgical_1 = {{-1.9, 0.7, 2.5, 7925478, false}, {-1.8, 0.7, 4.4, 7925478, false}, {3.1, 0.7, 4.5, 7925478, true}, {3.2, 0.7, 3.6, 7925478, false}, {3.1, 0.7, 4.5, 7925478, false}, {-1.8, 0.7, 4.4, 7925478, false}},
 	},
 }
 

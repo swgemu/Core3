@@ -25,7 +25,7 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 		{"naboo_police_officer", "naboo_police_officer", -5544.22,6,4232.32,267.981,0, "npc_imperial", "", true},
 	},
 
-	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_naboo_patrol", "commoner_old_patrol", "commoner_patrol", "gambler", "noble_patrol", "official_patrol"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_naboo_patrol", "commoner_old_patrol", "commoner_patrol", "gambler", "naboo_nomad", "noble_patrol", "official_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
 		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
@@ -46,20 +46,20 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
-		npc_1 = {{-4877, 6, 4154, 0, 0}, {-4896, 6, 4118, 0, 0}, {-4911, 6, 4145, 0, 0}},
-		npc_2 = {{-4924, 6, 4034, 0, 0}, {-4893, 6, 4080, 0, 0}, {-4896, 6, 4052, 0, 0}},
-		npc_3 = {{-4896, 6, 4167, 0, 0}, {-4932, 6, 4093, 0, 0}, {-4936, 6, 4136, 0, 0}},
-		npc_4 = {{-5054, 6, 4228, 0, 0}, {-5087, 6, 4176, 0, 0}, {-5117, 6, 4327, 0, 0}},
-		npc_5 = {{-5320, 6, 4236, 0, 1}, {-5332, 6, 4213, 0, 1}, {-5327, 6, 4180, 0, 0}, {-5279, 6, 4207, 0, 1}, {-5327, 6, 4180, 0, 0}, {-5318, 6, 4154, 0, 0}, {-5363, 6, 4167, 0, 1}, {-5348, 6, 4174, 0, 0}},
-		npc_6 = {{-5489, 6, 4404, 0, 1}, {-5471, 6, 4374, 0, 1}, {-5470, 6, 4348, 0, 1}, {-5502, 6, 4355, 0, 0}, {-5539, 6, 4392, 0, 1}},
-		npc_7 = {{-5497, 6, 4148, 0, 1}, {-5503.6, 6, 3989.0, 0, 1}, {-5511.7, 6, 3855.8, 0, 1}, {-5519.4, 6, 3855.9, 0, 1}, {-5511, 6, 3991, 0, 1}, {-5501, 6, 4069, 0, 0}, {-5497, 6, 4300, 0, 1}},
-		npc_8 = {{-5291, 6, 4428, 0, 1}, {-5291, 6, 4486, 0, 1}, {-5311, 6, 4544, 0, 1}, {-5299.3, 6, 4556.5, 0, 0}, {-5298.6, 6, 4562.5, 0, 1}, {-5309, 6, 4549, 0, 0}},
-		npc_9 = {{-5586, 6, 4495, 0, 0}, {-5569, 6, 4270, 0, 0}},
-		npc_10  = {{-4829, 6, 4113, 0, 0}, {-4871, 6, 4098, 0, 0}, {-4893, 6, 4115, 0, 0}, {-4923, 6, 4209, 0, 0}},
-		npc_11 = {{-4956, 6, 4205, 0, 0}, {-4883, 6, 4170, 0, 0}},
-		npc_12 = {{-4904, 6, 4201, 0, 0}, {-4933, 6, 4227, 0, 0}},
-		npc_13 = {{-4889.4, 6, 4081.8, 0, 1}, {-4880, 6, 4083, 0, 0}, {-4844, 6, 4118, 0, 1}, {-4845, 6, 4155, 0, 1}, {-4844, 6, 4118, 0, 0}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		npc_1 = {{-4877, 6, 4154, 0, true}, {-4896, 6, 4118, 0, true}, {-4911, 6, 4145, 0, true}},
+		npc_2 = {{-4924, 6, 4034, 0, true}, {-4893, 6, 4080, 0, true}, {-4896, 6, 4052, 0, true}},
+		npc_3 = {{-4896, 6, 4167, 0, true}, {-4932, 6, 4093, 0, true}, {-4936, 6, 4136, 0, true}},
+		npc_4 = {{-5054, 6, 4228, 0, true}, {-5087, 6, 4176, 0, true}, {-5117, 6, 4327, 0, true}},
+		npc_5 = {{-5320, 6, 4236, 0, false}, {-5332, 6, 4213, 0, false}, {-5327, 6, 4180, 0, true}, {-5279, 6, 4207, 0, false}, {-5327, 6, 4180, 0, true}, {-5318, 6, 4154, 0, true}, {-5363, 6, 4167, 0, false}, {-5348, 6, 4174, 0, true}},
+		npc_6 = {{-5489, 6, 4404, 0, false}, {-5471, 6, 4374, 0, false}, {-5470, 6, 4348, 0, false}, {-5502, 6, 4355, 0, true}, {-5539, 6, 4392, 0, false}},
+		npc_7 = {{-5497, 6, 4148, 0, false}, {-5503.6, 6, 3989.0, 0, false}, {-5511.7, 6, 3855.8, 0, false}, {-5519.4, 6, 3855.9, 0, false}, {-5511, 6, 3991, 0, false}, {-5501, 6, 4069, 0, true}, {-5497, 6, 4300, 0, false}},
+		npc_8 = {{-5291, 6, 4428, 0, false}, {-5291, 6, 4486, 0, false}, {-5311, 6, 4544, 0, false}, {-5299.3, 6, 4556.5, 0, true}, {-5298.6, 6, 4562.5, 0, false}, {-5309, 6, 4549, 0, true}},
+		npc_9 = {{-5586, 6, 4495, 0, true}, {-5569, 6, 4270, 0, true}},
+		npc_10  = {{-4829, 6, 4113, 0, true}, {-4871, 6, 4098, 0, true}, {-4893, 6, 4115, 0, true}, {-4923, 6, 4209, 0, true}},
+		npc_11 = {{-4956, 6, 4205, 0, true}, {-4883, 6, 4170, 0, true}},
+		npc_12 = {{-4902, 6, 4199, 0, true}, {-4933, 6, 4227, 0, true}},
+		npc_13 = {{-4889.4, 6, 4081.8, 0, false}, {-4880, 6, 4083, 0, true}, {-4844, 6, 4118, 0, false}, {-4845, 6, 4155, 0, false}, {-4844, 6, 4118, 0, true}},
 	},
 }
 
@@ -82,6 +82,9 @@ function NabooTheedScreenPlay:spawnSceneObjects()
 end
 
 function NabooTheedScreenPlay:spawnMobiles()
+
+	--TO DO: Function to spawn mobiles using table that randomizes spawn.
+	-- {"businessman", "commoner", "commoner_fat", "commoner_naboo", "commoner_old", "gambler", "gungang_priest", "naboo_nomad", "noble", "official", "scientist", "vendor"}
 
 	--Outside
 	local pNpc = spawnMobile(self.planet, "agriculturalist",60,-5827.81,6,4173.98,180.005,0)
@@ -128,8 +131,19 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-5101.22,6,4246.47,39.2932,0)
 	spawnMobile(self.planet, "commoner", 60, -5089.1, 6, 4284.4, 278.927, 0)
 	spawnMobile(self.planet, "commoner",60,-5069.74,6,4262.45,304.456,0)
-	spawnMobile(self.planet, "commoner",60,-4866.72,6,4160.45,346.733,0)
+	pNpc = spawnMobile(self.planet, "commoner_naboo", 1, -4835.5, 6.0, 4151.3, 157, 0)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile(self.planet, "scientist", 1, -4835.3, 6.0, 4150.1, 349, 0)
+	self:setMoodString(pNpc, "conversation")
+	spawnMobile(self.planet, "commoner", 1, -4865.4, 6, 4161.9, 308, 0)
 	spawnMobile(self.planet, "commoner_naboo",60,-4902.73,6,4106.81,350.732,0)
+	pNpc = spawnMobile(self.planet, "noble", 1, -4917.2, 6.0, 4098.9, 338, 0)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile(self.planet, "gungan_priest", 1, -4917.5, 6.0, 4100.1, 149, 0)
+	self:setMoodString(pNpc, "conversation")
+	if (pNpc ~= nil) then
+		CreatureObject(pNpc):setPvpStatusBitmask(0)
+	end
 	spawnMobile(self.planet, "commoner_naboo",60,-5075.93,6,4204.5,258.103,0)
 	spawnMobile(self.planet, "commoner",60,-5053.71,6,4151.61,236.952,0)
 	spawnMobile(self.planet, "commoner",60,-5090.67,6,4173.27,324.898,0)
@@ -160,7 +174,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-4921.08,6,4061.48,324.756,0)
 	pNpc = spawnMobile(self.planet, "commoner_naboo", 60, -4899.7, 6, 4198.3, 265, 0)
 	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_naboo", 60, -4903, 6, 4196.9, 55, 0)
+	pNpc = spawnMobile(self.planet, "commoner_naboo", 60, -4901.7, 6, 4197.5, 55, 0)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "commoner",60,-4978.62,6,4119.77,158.522,0)
 	spawnMobile(self.planet, "commoner",60,-4941.05,6,4184.26,54.3125,0)
@@ -250,10 +264,9 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-5436,6,4133,0,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-5369,6,4178,0,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-5477,6,4089,0,0)
-	spawnMobile(self.planet, "j1_po", 60, -4856, 6, 4158, 50, 0)
-	pNpc = spawnMobile(self.planet, "kulton_woodle", 1, -4855, 6, 4158, 260, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "miner",60,-5886.59,6,4369.23,180.005,0)
+	spawnMobile(self.planet, "j1_po", 1, -4859, 6, 4156, 18, 0)
+	spawnMobile(self.planet, "kulton_woodle", 1, -4857.1, 6, 4155.7, 299, 0)
+	spawnMobile(self.planet, "miner",60,-5886.59,6,4369.23,180.005,0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "official",300,-5886.59,6,4368.23,0,0)
 	self:setMoodString(pNpc, "conversation")

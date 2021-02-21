@@ -73,28 +73,59 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1448.8,7,3344.5,-105,0, "", ""},
 	},
 
+	patrolNpcs = {"commoner_fat_patrol", "commoner_old_patrol", "commoner_tatooine_patrol", "commoner_technician", "explorer", "gambler", "scientist_patrol"},
+
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-		{"r3_1", "r3", 60, 1242.26, 7, 3155.65, 78.1127, 0, "calm"},
-		{"r3_2", "r4", 60, 1456.33, 7, 3336.99, 338.919, 0, "calm"},
-		{"r4_1", "r4", 60, 1565.89, 7, 3111.38, 272.874, 0, "calm"},
-		{"r4_2", "r4", 60, 1583.75, 7, 3113.82, 97.4626, 0, "calm"},
-		{"r5_1", "r5", 60, 1324.5, 7, 3242.3, 186.564, 0, "calm"},
-		{"r5_2", "r5", 60, 1614.51, 7, 3127.01, 256.31, 0, "calm"},
-		{"eg6_1", "eg6_power_droid", 60, 1332.6, 7, 3239.0, 8.18614, 0, ""},
-		{"surgical_1", "surgical_droid_21b", 60, -25.52, 0.26, -3.48, 0, 1153586, ""},
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatNpc},
+
+		--Droids
+		{"r3_1", "r3", 1, 1242.26, 7, 3155.65, 78.1127, 0, "", false},
+		{"r3_2", "r4", 1, 1456.33, 7, 3336.99, 338.919, 0, "", false},
+		{"r4_1", "r4", 1, 1565.89, 7, 3111.38, 272.874, 0, "", false},
+		{"r4_2", "r4", 1, 1583.75, 7, 3113.82, 97.4626, 0, "", false},
+		{"r5_1", "r5", 1, 1324.5, 7, 3242.3, 186.564, 0, "", false},
+		{"r5_2", "r5", 1, 1614.51, 7, 3127.01, 256.31, 0, "", false},
+		{"eg6_1", "eg6_power_droid", 1, 1332.6, 7, 3239.0, 8.18614, 0, "", false},
+		{"surgical_1", "surgical_droid_21b", 1, -25.52, 0.26, -3.48, 0, 1153586, "", false},
+
+		--NPCs
+		{"npc_1", "patrolNpc", 1, 1340, 7, 3068, 51, 0, "", false},
+		{"npc_2", "patrolNpc", 1, 1328, 7, 3028, 238, 0, "", false},
+		{"npc_3", "patrolNpc", 1, 1294, 7, 3002, 111, 0, "", false},
+		{"npc_4", "patrolNpc", 1, 1225, 7, 2970, 264, 0, "", false},
+		{"npc_5", "patrolNpc", 1, 1169, 7, 3063, 171, 0, "", false},
+		{"npc_6", "patrolNpc", 1, 1184, 7, 3106, 161, 0, "", false},
+		{"npc_7", "patrolNpc", 1, 1242, 7, 3321, 32, 0, "", false},
+		{"npc_8", "patrolNpc", 1, 1508, 15, 3486, 274, 0, "", false},
+		{"npc_9", "patrolNpc", 1, 1583, 7, 3429, 52, 0, "", false},
+		{"npc_10", "patrolNpc", 1, 1556, 7, 3324, 237, 0, "", false},
+		{"npc_11", "patrolNpc", 1, 1609, 10, 3163, 239, 0, "", false},
+		{"npc_12", "patrolNpc", 1, 1636, 7, 3124, 33, 0, "", false},
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
-		r3_1 = {{1242, 7, 3155, 0, 1}, {1287, 7, 3142, 0, 1}, {1305, 7, 3130, 0, 1}, {1326, 7, 3078, 0, 1}, {1305, 7, 3130, 0, 1}},
-		r3_2 = {{1456, 7, 3336, 0, 1}, {1306, 7, 3332, 0, 1}, {1455, 7, 3338, 0, 1}, {1472, 7, 3390, 0, 1}},
-		r4_1 = {{1565, 7, 3111, 0, 1}, {1515, 7, 3109, 0, 1}, {1493, 7, 3094, 0, 1}, {1452, 7, 3093, 0, 1}, {1493, 7, 3094, 0, 1}, {1515, 7, 3109, 0, 1}},
-		r4_2 = {{1583, 7, 3113, 0, 1}, {1612, 7, 3115, 0, 1}, {1628, 7, 3098, 0, 1}, {1630, 7, 2984, 0, 1}, {1628, 7, 3098, 0, 1}, {1612, 7, 3115, 0, 1}},
-		r5_1 = {{1324.5, 7, 3242.3, 0, 1}, {1324.8, 7, 3190.1, 0, 1}, {1303.7, 7, 3167.5, 0, 1}, {1324.8, 7, 3190.1, 0, 1}},
-		r5_2 = {{1614, 7, 3127, 0, 1}, {1630, 7, 3248, 0, 1}, {1620, 7, 3132, 0, 1}, {1727, 7, 3140, 0, 1}},
-		eg6_1 = {{1332, 7, 3239, 0, 1}, {1329, 7, 3251, 0, 1}, {1276, 7, 3257, 0, 1}, {1457, 7, 3253, 0, 1}, {1329, 7, 3251, 0, 1}},
-		surgical_1 = {{-21.7, 0.26, -5.1, 1153586, 1}, {-11.3, 0.3, -6.5, 1153586, 0}, {-11.1, 0.3, 5.6, 1153586, 1}, {-21.5, 0.3, 6.3, 1153586, 1}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		r3_1 = {{1242, 7, 3155, 0, false}, {1287, 7, 3142, 0, false}, {1305, 7, 3130, 0, false}, {1326, 7, 3078, 0, false}, {1305, 7, 3130, 0, false}},
+		r3_2 = {{1456, 7, 3336, 0, false}, {1306, 7, 3332, 0, false}, {1455, 7, 3338, 0, false}, {1472, 7, 3390, 0, false}},
+		r4_1 = {{1565, 7, 3111, 0, false}, {1515, 7, 3109, 0, false}, {1493, 7, 3094, 0, false}, {1452, 7, 3093, 0, false}, {1493, 7, 3094, 0, false}, {1515, 7, 3109, 0, false}},
+		r4_2 = {{1583, 7, 3113, 0, false}, {1612, 7, 3115, 0, false}, {1628, 7, 3098, 0, false}, {1630, 7, 2984, 0, false}, {1628, 7, 3098, 0, false}, {1612, 7, 3115, 0, false}},
+		r5_1 = {{1324.5, 7, 3242.3, 0, false}, {1324.8, 7, 3190.1, 0, false}, {1303.7, 7, 3167.5, 0, false}, {1324.8, 7, 3190.1, 0, false}},
+		r5_2 = {{1614, 7, 3127, 0, false}, {1630, 7, 3248, 0, false}, {1620, 7, 3132, 0, false}, {1727, 7, 3140, 0, false}},
+		eg6_1 = {{1332, 7, 3239, 0, false}, {1329, 7, 3251, 0, false}, {1276, 7, 3257, 0, false}, {1457, 7, 3253, 0, false}, {1329, 7, 3251, 0, false}},
+		surgical_1 = {{-21.7, 0.26, -5.1, 1153586, false}, {-11.3, 0.3, -6.5, 1153586, true}, {-11.1, 0.3, 5.6, 1153586, false}, {-21.5, 0.3, 6.3, 1153586, false}},
+
+		npc_1 = {{1340, 7, 3068, 0, true}, {1350, 7, 3046, 0, true}, {1326, 7, 3080, 0, true}, {1330, 7, 3050, 0, true}, {1359, 7, 3084, 0, true}},
+		npc_2 = {{1328, 7, 3028, 0, true}, {1300, 7, 3019, 0, true}, {1324, 7, 3042, 0, true}, {1344, 7, 3023, 0, true}},
+		npc_3 = {{1294, 7, 3002, 0, true}, {1307, 7, 2986, 0, true}, {1278, 7, 2998, 0, true}, {1286, 7, 2976, 0, true}, {1297,  7, 3011, 0, true}},
+		npc_4 = {{1225, 7, 2970, 0, true}, {1206, 7, 2982, 0, true}, {1199, 7, 2967, 0, true}, {1159, 7, 2980, 0, true}, {1226, 7, 2959, 0, true}},
+		npc_5 = {{1169, 7, 3063, 0, true}, {1153, 7, 3059, 0, true}, {1169, 7, 3085, 0, true}, {1161, 7, 3088, 0, true}},
+		npc_6 = {{1184, 7, 3106, 0, true}, {1166, 7, 3103, 0, false}, {1192, 7, 3140, 0, false}, {1225, 7, 3164, 0, true}, {1192, 7, 3140, 0, true}},
+		npc_7 = {{1242, 7, 3321, 0, true}, {1243, 7, 3340, 0, true}, {1248, 7, 3321, 0, true}, {1230, 7, 3328, 0, true}},
+		npc_8 = {{1508, 15, 3486, 0, true}, {1503, 15, 3511, 0, true}, {1491, 15, 3491, 0, true}, {1523, 15, 3474, 0, true}},
+		npc_9 = {{1583, 7, 3429, 0, true}, {1559, 7, 3446, 0, true}, {1569, 7, 3417, 0, true}, {1593, 7, 3449, 0, true}, {1541, 7, 3455, 0, true}},
+		npc_10 = {{1556, 7, 3324, 0, true}, {1592, 7, 3326, 0, true}, {1592, 11, 3289, 0, true}, {1563, 7, 3312, 0, true}},
+		npc_11 = {{1609, 10, 3163, 0, false}, {1616, 11, 3191, 0, true}, {1618, 11, 3218, 0, false}, {1616, 11, 3191, 0, true}},
+		npc_12 = {{1636, 7, 3124, 0, true}, {1665, 7, 3128, 0, true}, {1675, 7, 3095, 0, true}, {1617, 7, 3137, 0, true}},
 	},
 }
 
@@ -414,38 +445,24 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,1752.63,7,3163.33,292.898,0)
 	spawnMobile(self.planet, "commoner_fat",60,1448.18,7,2974.11,175.638,0)
 	spawnMobile(self.planet, "commoner_fat",60,1326.19,7,3409.97,355.137,0)
-	spawnMobile(self.planet, "commoner_naboo",60,1294.55,7,3002.8,111.166,0)
-	spawnMobile(self.planet, "commoner_naboo",60,1389.06,7.5,3162.26,1.64759,0)
-	pNpc = spawnMobile(self.planet, "commoner_naboo",60,1328.4,7,3028.17,238.827,0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner_naboo",60,1450.08,7,3202.92,223.221,0)
-	spawnMobile(self.planet, "commoner_naboo",60,1448.7,7,3183.32,42.471,0)
-	spawnMobile(self.planet, "commoner_naboo",60,1495.58,7,3177.88,278.103,0)
-	spawnMobile(self.planet, "commoner_naboo",60,1609.53,10.9973,3163.55,239.286,0)
-	spawnMobile(self.planet, "commoner_naboo",60,1636.62,7,3124.11,33.7288,0)
-	spawnMobile(self.planet, "commoner_naboo",60,1624.1,7,2929.75,185.957,0)
-	spawnMobile(self.planet, "commoner_naboo",60,1647.95,7,2957,97.7955,0)
-	spawnMobile(self.planet, "commoner_naboo",60,1639.18,7,3070.97,82.98,0)
-	spawnMobile(self.planet, "commoner_old",60,1184.74,7,3106.09,161.401,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,1389.06,7.5,3162.26,1.64759,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,1450.08,7,3202.92,223.221,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,1448.7,7,3183.32,42.471,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,1495.58,7,3177.88,278.103,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,1624.1,7,2929.75,185.957,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,1647.95,7,2957,97.7955,0)
+	spawnMobile(self.planet, "commoner_tatooine", 1, 1639.18, 7, 3070.97, 270, 0)
 	spawnMobile(self.planet, "commoner_old",60,1288.86,7,3208.83,321.512,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,1169.4,7,3063.85,171.962,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,1197.96,7,2937.67,46.5906,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,1312.96,7,3028.24,216.261,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,1340.32,7,3068.23,51.271,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,1378.9,7,3087.88,171.156,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,1391.32,7.5,3202.54,15.2442,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,1302.38,7,3357.34,93.6624,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,1242.3,7,3321.72,32.6955,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,1225.63,7,2970.92,264.35,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,1449.68,7,3159.65,96.9033,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,1449.89,7,3138,131.557,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,1516.09,7,3164.73,72.0873,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,1619.54,11,3228.91,330.791,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,1615.17,7,3313.63,227.564,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,1556.48,7,3324.92,237.451,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,1583.89,7,3429.16,52.5515,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,1554.59,15,3500.85,259.137,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,1508.04,15,3486.27,274.387,0)
 	pNpc = spawnMobile(self.planet, "coris_mao",60,1538.55,7,3105.42,79.0161,0)
 	self:setMoodString(pNpc, "calm")
 	spawnMobile(self.planet, "criminal",300,1276.88,7,3180.3,164.363,0)

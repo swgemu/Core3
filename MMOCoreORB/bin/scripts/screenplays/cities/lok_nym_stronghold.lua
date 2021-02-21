@@ -1,7 +1,43 @@
-LokNymStrongholdScreenPlay = ScreenPlay:new {
+LokNymStrongholdScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "LokNymStrongholdScreenPlay"
+	screenplayName = "LokNymStrongholdScreenPlay",
+
+	planet = "lok",
+
+	combatPatrol = {"nym_guard", "nym_guard_strong", "nym_guard_weak"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "commoner_tatooine_patrol", "noble_patrol", "scientist_patrol"},
+
+	patrolMobiles = {
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--NPCs
+		{"npc_1", "combatPatrol", 300, 540, 12, 5124, 348, 0, "", true},
+		{"npc_2", "combatPatrol", 300, 384, 11, 4996, 286, 0, "", true},
+		{"npc_3", "combatPatrol", 300, 348, 12, 4940, 19, 0, "", true},
+		{"npc_4", "combatPatrol", 300, 350, 12, 4975, 216, 0, "", true},
+		{"npc_5", "patrolNpc", 1, 462, 11, 5192, 127, 0, "", false},
+		{"npc_6", "patrolNpc", 1, 562, 11, 5171, 43, 0, "", false},
+		{"npc_7", "patrolNpc", 1, 449, 12, 5141, 112, 0, "", false},
+		{"npc_8", "patrolNpc", 1, 618, 11, 5013, 225, 0, "", false},
+		{"npc_9", "patrolNpc", 1, 545, 11, 5081, 126, 0, "", false},
+		{"npc_10", "patrolNpc", 1, 342, 11, 5024, 97, 0, "", false},
+		{"npc_11", "patrolNpc", 1, 280, 11, 5027, 218, 0, "", false},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		npc_1 = {{540, 12, 5124, 0, true}, {544, 12, 5132, 0, true}, {548, 12, 5118, 0, true}, {527, 11, 5120, 0, true}, {540, 12, 5117, 0, true}},
+		npc_2 = {{384, 11, 4996, 0, true}, {377, 12, 4980, 0, true}, {405, 11, 4996, 0, true}, {403, 12, 4983, 0, true}},
+		npc_3 = {{348, 12, 4940, 0, true}, {344, 12, 4963, 0, true}, {331, 12, 4941, 0, true}, {353, 12, 4933, 0, true}, {332, 11, 4914, 0, true}},
+		npc_4 = {{350, 12, 4975, 0, true}, {354, 12, 4959, 0, true}, {331, 11, 4991, 0, true}, {338, 12, 5019, 0, true}},
+		npc_5 = {{462, 11, 5192, 0, true}, {479, 12, 5183, 0, true}, {447, 11, 5181, 0, false}, {465, 11, 5169, 0, true}, {472, 12, 5155, 0, true}},
+		npc_6 = {{562, 11, 5171, 0, true}, {556, 11, 5150, 0, true}, {544, 11, 5146, 0, true}, {538, 11, 5169, 0, true}, {552, 11, 5178, 0, true}},
+		npc_7 = {{449, 12, 5141, 0, true}, {462, 12, 5124, 0, true}, {455, 12, 5100, 0, true}, {454, 12, 5136, 0, true}, {428, 12, 5147, 0, true}},
+		npc_8 = {{618, 11, 5013, 0, true}, {581, 12, 5016, 0, true}, {552, 12, 4991, 0, true}, {604, 12, 5041, 0, true}, {618, 12, 5028, 0, true}},
+		npc_9 = {{545, 11, 5081, 0, true}, {563, 11, 5081, 0, true}, {528, 12, 5031, 0, true}, {481, 11, 5007, 0, true}, {537, 11, 5045, 0, false}, {561, 12, 5075, 0, false}, {544, 11, 5090, 0, true}},
+		npc_10 = {{342, 11, 5024, 0, true}, {344, 11, 5001, 0, true}, {324, 12, 5038, 0, true}, {301, 12, 5025, 0, true}},
+		npc_11 = {{280, 11, 5027, 0, true}, {276, 12, 4988, 0, true}, {240, 12, 4989, 0, true}, {275, 11, 4988, 0, true}, {277, 12, 4958, 0, true}},
+	},
 }
 
 registerScreenPlay("LokNymStrongholdScreenPlay", true)
@@ -9,6 +45,7 @@ registerScreenPlay("LokNymStrongholdScreenPlay", true)
 function LokNymStrongholdScreenPlay:start()
 	if (isZoneEnabled("lok")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
 	end
 end
@@ -33,13 +70,11 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("lok", "nym_surveyor",300,484.493,11.9154,5091.56,180.005,0)
 	spawnMobile("lok", "nym_guard_weak",300,551.4,12,5169.8,200,0)
 	spawnMobile("lok", "nym_guard_weak",300,535.7,11.9,5105.3,90,0)
-	spawnMobile("lok", "nym_guard_weak",300,331.611,11.9777,4898.94,14.0896,0)
+	spawnMobile("lok", "nym_guard_weak",300, 323.0, 12, 4883.7, 45, 0)
 	spawnMobile("lok", "nym_guard_weak",300,322.8,12.1,5050,216,0)
 	spawnMobile("lok", "nym_guard_weak",300,343.53,12.5909,4902.71,356.744,0)
-	spawnMobile("lok", "nym_guard_weak",300,348.219,12.1248,4940.84,19.7209,0)
 	spawnMobile("lok", "nym_guard",300,381.62,12,5013.95,350,0)
 	spawnMobile("lok", "nym_guard",300,381.4,12,5015.13,170,0)
-	spawnMobile("lok", "nym_guard",300,384.094,11.9992,4996.7,286.256,0)
 	spawnMobile("lok", "nym_guard",300,550.517,11.7979,5167.25,10.2375,0)
 	spawnMobile("lok", "nym_guard",300,518.4,12,5100.5,300,0)
 	spawnMobile("lok", "nym_guard",300,405,12.5,5032,230,0)
@@ -48,11 +83,9 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("lok", "nym_guard",300,441,12.5,5025,90,0)
 	spawnMobile("lok", "nym_guard_strong",300,405.3,12.5,5030,349,0)
 	spawnMobile("lok", "nym_guard_strong",300,537.325,11.9367,5112.7,290,0)
-	spawnMobile("lok", "nym_guard_strong",300,540.129,12.073,5124.46,348.152,0)
 	spawnMobile("lok", "nym_guard_strong",300,538.5,11.9,5102.6,45,0)
 	spawnMobile("lok", "nym_guard_strong",300,406.311,11.8705,4991.53,286.282,0)
-	spawnMobile("lok", "nym_guard_strong",300,334.572,11.9605,4892.89,349.707,0)
-	spawnMobile("lok", "nym_guard_strong",300,350.446,12.0004,4975.94,216.027,0)
+	spawnMobile("lok", "nym_guard_strong",300, 326.9, 12, 4879.9, 45, 0)
 	spawnMobile("lok", "nym_guard_weak",300,400.5,12.5,5047.2,90,0)
 	spawnMobile("lok", "nym_guard_weak",300,520.4,12,5128.8,180,0)
 	spawnMobile("lok", "mercenary",300,18.98,2.29948,10.51,181.005,6595511)
@@ -152,29 +185,22 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "commoner",60,29.0555,0.26,8.32789,179.999,2745866)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile("lok", "commoner",60,618.591,11.8421,5013.77,225.688,0)
 	pNpc = spawnMobile("lok", "commoner",60,6.78896,1.00001,8.59957,0,8145356)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "commoner",60,-11.545,1.00022,-2.89877,134.998,8145358)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile("lok", "commoner_fat",60,562.914,11.8302,5171.75,43.747,0)
 	pNpc = spawnMobile("lok", "commoner_fat",60,6.44821,-0.894991,-8.57564,45.0004,8145378)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile("lok", "commoner_naboo",60,360.315,11.9448,4966.58,287.085,0)
-	spawnMobile("lok", "commoner_naboo",60,371.229,12.06,5167.84,53.0347,0)
-	spawnMobile("lok", "commoner_naboo",60,545.596,11.959,5081.45,126.924,0)
-	spawnMobile("lok", "commoner_naboo",60,449.967,12,5141.31,112.766,0)
-	spawnMobile("lok", "commoner_old",60,535.709,11.9925,5135.86,230.158,0)
+	spawnMobile("lok", "commoner_tatooine",60,360.315,11.9448,4966.58,287.085,0)
+	spawnMobile("lok", "commoner_tatooine",60,371.229,12.06,5167.84,53.0347,0)
+	spawnMobile("lok", "commoner_old", 60, 535.709, 11.9925, 5135.86, 45, 0)
 	spawnMobile("lok", "commoner_old",60,522.568,11.8075,4964.65,304.378,0)
 	pNpc = spawnMobile("lok", "commoner_old",60,43.6331,0.104999,1.36432,180.09,8145376)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile("lok", "commoner_tatooine",60,280.329,11.9265,5027.91,218.008,0)
 	spawnMobile("lok", "commoner_tatooine",60,285.432,11.9758,5117.33,85.567,0)
 	spawnMobile("lok", "commoner_tatooine",60,332.33,12.0215,5159.29,135.281,0)
 	spawnMobile("lok", "commoner_tatooine",60,356.668,12.0208,4918.65,342.78,0)
-	spawnMobile("lok", "commoner_tatooine",60,342.313,11.9993,5024.26,97.0775,0)
 	spawnMobile("lok", "commoner_tatooine",60,462.534,11.8294,5148.35,23.6115,0)
-	spawnMobile("lok", "commoner_tatooine",60,462.685,11.9861,5192.39,127.19,0)
 	pNpc = spawnMobile("lok", "commoner_tatooine",60,-2.27845,0.999959,6.45641,0,8145356)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "commoner_technician",60,0.856204,7.26,-13.2226,0,2745872)
@@ -284,7 +310,7 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
 	end
-	spawnMobile("lok", "junk_reggi", 0, 443.925, 12, 4879.41, 70, 0)
+	spawnMobile("lok", "junk_reggi", 0, 443.925, 12, 4879.41, 145, 0)
 	pNpc = spawnMobile("lok", "rifea_eicik", 60, -23.1848, 1.58812, 1.95072, 180.005, 8145358)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "rorha_wahe", 60, 7.54821, -0.894991, -8.57564, 0, 8145378)

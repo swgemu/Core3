@@ -463,3 +463,57 @@ function CityPatrolInterrupt:doAwarenessCheck(pAgent, pObject)
 
 	return true
 end
+
+CombatPatrolInterrupt = createClass(Interrupt)
+function CombatPatrolInterrupt:startCombatInterrupt(pAgent, pObject)
+	if (pAgent ~= pObject) then
+		return
+	end
+
+	if (pAgent ~= nil) then
+		local agent = AiAgent(pAgent)
+		agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
+		agent:resetBehaviorList()
+		agent:executeBehavior()
+	end
+end
+
+function CombatPatrolInterrupt:startAwarenessInterrupt(pAgent, pObject)
+	if (pAgent == pObject) then
+		return
+	end
+
+	local aiAgent = AiAgent1(pAgent)
+
+	aiAgent:executeBehavior();
+end
+
+function CombatPatrolInterrupt:doAwarenessCheck(pAgent, pObject)
+	if (pAgent == pObject) then
+		return
+	end
+
+	if (pAgent == nil or pObject == nil) then
+		return
+	end
+
+	local creoAgent = CreatureObject1(pAgent)
+
+	if creoAgent:isDead() then
+		return false
+	end
+
+	local aiAgent = AiAgent1(pAgent)
+
+	if aiAgent:isRetreating() or not aiAgent:isInCombat() then
+		return false
+	end
+
+	local sceneObject = SceneObject1(pObject)
+
+	if not sceneObject:isCreatureObject() then
+		return false
+	end
+
+	return true
+end
