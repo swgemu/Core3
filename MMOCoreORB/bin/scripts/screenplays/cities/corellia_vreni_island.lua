@@ -5,15 +5,15 @@ CorelliaVreniIslandScreenPlay = CityScreenPlay:new {
 
 	planet = "corellia",
 
-	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
 		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
 		{"cll8_1", "cll8_binary_load_lifter", 1, -5696, 14.6, -6154.2, 75, 0, "", false},
-		{"eg6_1", "eg6_power_droid", 60, -5690.7, 14.6, -6154.2, -87, 0, "", false},
-		{"eg6_2", "eg6_power_droid" , 60, -5692.65, 14.6, -6151.28, 179.632, 0, "", false},
+		{"eg6_1", "eg6_power_droid", 1, -5690.7, 14.6, -6154.2, -87, 0, "", false},
+		{"eg6_2", "eg6_power_droid" , 1, -5692.6, 14.6, -6151.3, 179.6, 0, "", false},
 
 		--NPCs
 		{"npc_1", "patrolNpc", 1, -5505, 23, -6118, 272, 0, "", false},
@@ -23,15 +23,15 @@ CorelliaVreniIslandScreenPlay = CityScreenPlay:new {
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
-		cll8_1 ={{-5696, 14.6, -6154, 0, 1}, {-5693, 14.6, -6163, 0, 1}, {-5688, 14.6, -6180, 0, 1}, {-5673, 14.6, -6180, 0, 1}, {-5688, 14.6, -6180, 0, 1}},
-		eg6_1 = {{-5690, 14.6, -6154, 0, 1}, {-5686, 14.6, -6154, 0, 1}, {-5685, 14.6, -6166, 0, 1}},
-		eg6_2 = {{-5692, 14.6, -6151, 0, 1}, {-5693, 14.6, -6137, 0, 1}, {-5686, 14.6, -6142, 0, 1}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		cll8_1 ={{-5696, 14.6, -6154, 0, false}, {-5693, 14.6, -6163, 0, false}, {-5688, 14.6, -6180, 0, false}, {-5673, 14.6, -6180, 0, false}, {-5688, 14.6, -6180, 0, false}},
+		eg6_1 = {{-5690, 14.6, -6154, 0, false}, {-5686, 14.6, -6154, 0, false}, {-5685, 14.6, -6166, 0, false}},
+		eg6_2 = {{-5692, 14.6, -6151, 0, false}, {-5693, 14.6, -6137, 0, false}, {-5686, 14.6, -6142, 0, false}},
 
-		npc_1 = {{-5505, 23, -6118, 0, 0}, {-5514, 23, -6107, 0, 0}, {-5552, 23, -6112, 0, 0}, {-5551, 23, -6123, 0, 0}},
-		npc_2 = {{-5519, 23, -6224, 0, 0}, {-5503, 23, -6224, 0, 0}, {-5490, 23, -6241, 0, 0}},
-		npc_3 = {{-5385, 24, -6239, 0, 0}, {-5366, 23, -6232, 0, 0}, {-5370, 23, -6239, 0, 0}, {-5365, 23, -6245, 0, 0}, {-5393, 23, -6240, 0, 0}},
-		npc_4 = {{-5480, 23, -6133, 0, 0}, {-5480, 23, -6181, 0, 0}, {-5469, 23, -6170, 0, 0}},
+		npc_1 = {{-5505, 23, -6118, 0, true}, {-5514, 23, -6107, 0, true}, {-5552, 23, -6112, 0, true}, {-5551, 23, -6123, 0, true}},
+		npc_2 = {{-5519, 23, -6224, 0, true}, {-5503, 23, -6224, 0, true}, {-5490, 23, -6241, 0, true}},
+		npc_3 = {{-5385, 24, -6239, 0, true}, {-5366, 23, -6232, 0, true}, {-5370, 23, -6239, 0, true}, {-5365, 23, -6245, 0, true}, {-5393, 23, -6240, 0, true}},
+		npc_4 = {{-5480, 23, -6133, 0, true}, {-5480, 23, -6181, 0, true}, {-5469, 23, -6170, 0, true}},
 	},
 }
 
