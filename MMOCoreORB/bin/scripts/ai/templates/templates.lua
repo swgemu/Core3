@@ -134,4 +134,12 @@ addAiBehavior("GetTargetDeathWatchDefender")
 addAiBehavior("CompositeCityPatrol")
 addAiBehavior("WalkCityPatrol")
 addAiBehavior("WaitCityPatrol")
-addAiBehavior("GenerateCityPatrol")
+
+addAiBehavior("CompositeCombatPatrol")
+addAiBehavior("WalkCombatPatrol")
+addAiBehavior("WaitCombatPatrol")
+addAiBehavior("CombatMoveCombatPatrol")
+addAiBehavior("SelectAttackCombatPatrol")
+addAiBehavior("SelectWeaponCombatPatrol")
+addAiBehavior("GetTargetCombatPatrol")
+

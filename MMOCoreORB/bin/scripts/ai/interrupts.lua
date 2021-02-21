@@ -463,3 +463,42 @@ function CityPatrolInterrupt:doAwarenessCheck(pAgent, pObject)
 
 	return true
 end
+
+CombatPatrolInterrupt = createClass(Interrupt)
+function CombatPatrolInterrupt:startCombatInterrupt(pAgent, pObject)
+	if pAgent == nil or pObject == nil then return end
+	local agent = AiAgent(pAgent)
+
+	--DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
+
+	agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
+	--agent:resetBehaviorList()
+	--agent:executeBehavior()
+end
+
+function CombatPatrolInterrupt:startAwarenessInterrupt(pAgent, pObject)
+	if (pAgent == pObject) then
+		return
+	end
+
+	if (pAgent == nil or pObject == nil) then
+		return
+	end
+
+	local aiAgent = AiAgent1(pAgent)
+
+	aiAgent:stopWaiting();
+	aiAgent:executeBehavior();
+end
+
+function CombatPatrolInterrupt:doAwarenessCheck(pAgent, pObject)
+	if (pAgent == pObject) then
+		return
+	end
+
+	if (pAgent == nil or pObject == nil) then
+		return
+	end
+
+	return true
+end
