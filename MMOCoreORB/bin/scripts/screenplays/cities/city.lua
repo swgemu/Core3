@@ -6,6 +6,8 @@ CityScreenPlay = ScreenPlay:new {
 	planet = "",
 
 	gcwMobs = {},
+	combatPatrol = {},
+	patrolNpcs = {},
 	patrolMobiles = {},
 	patrolPoints = {},
 
@@ -136,18 +138,38 @@ function CityScreenPlay:spawnPatrol(num)
 
 	local patrol = patrolsTable[num]
 	local points = patrol[1]
+	local template = patrol[2]
 	local pMobile = nil
 
+	if (template == "patrolNpc") then
+		local patrolNpcs = self.patrolNpcs
+		local templateNum = getRandomNumber(#patrolNpcs)
+
+		template = patrolNpcs[templateNum]
+	elseif (template == "combatPatrol") then
+		local combatPatrol = self.combatPatrol
+		local templateNum = getRandomNumber(#combatPatrol)
+
+		template = combatPatrol[templateNum]
+	end
+
 	--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-	local pMobile = spawnMobile(self.planet, patrol[2], patrol[3], patrol[4], patrol[5], patrol[6], patrol[7], patrol[8], patrol[9])
+	local pMobile = spawnMobile(self.planet, template, patrol[3], patrol[4], patrol[5], patrol[6], patrol[7], patrol[8], patrol[9])
 
 	if (pMobile ~= nil and points ~= nil) then
 		local pOid = SceneObject(pMobile):getObjectID()
-		CreatureObject(pMobile):setPvpStatusBitmask(0)
 
+		if patrol[10] then
+			writeData(pOid .. ":patrolNumber", num)
+			createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawnPatrol", pMobile)
+		else
+			CreatureObject(pMobile):setPvpStatusBitmask(0)
+			createEvent(3000, self.screenplayName, "setupMobilePatrol", pMobile, "")
+		end
+
+		createEvent(3000, self.screenplayName, "setupMobilePatrol", pMobile, "")
 		writeStringData(pOid .. ":patrolPoints", points)
 		writeData(pOid .. ":currentLoc", 1)
-		createEvent(3000, self.screenplayName, "setupMobilePatrol", pMobile, "")
 	end
 end
 
@@ -156,6 +178,37 @@ function CityScreenPlay:setupMobilePatrol(pMobile)
 	createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
 	AiAgent(pMobile):setAiTemplate("citypatrol")
 	AiAgent(pMobile):setFollowState(4)
+end
+
+function CityScreenPlay:onDespawnPatrol(pMobile)
+	if pMobile == nil or not SceneObject(pMobile):isAiAgent() then
+		printf("Combat Patrol pMobile is nil or not an AiAgent")
+		return
+	end
+
+	local pOid = SceneObject(pMobile):getObjectID()
+	local spawnNumber = readData(pOid .. ":patrolNumber")
+
+	dropObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
+	deleteData(pOid .. ":patrolNumber")
+	deleteData(pOid .. ":currentLoc")
+
+	createEvent(300 * 1000, self.screenplayName, "patrolRespawn", pMobile, tostring(spawnNumber))
+
+	return 1
+end
+
+function CityScreenPlay:patrolRespawn(pMobile, args)
+	if pMobile == nil then
+		printf(" pMobile is nil in patrol respawn " .. "\n")
+		return
+	end
+
+	local pOid = SceneObject(pMobile):getObjectID()
+	local spawnNumber = tonumber(args)
+
+	deleteStringData(pOid .. ":patrolPoints")
+	self:spawnPatrol(spawnNumber)
 end
 
 function CityScreenPlay:mobileDestinationReached(pMobile)
@@ -192,6 +245,10 @@ function CityScreenPlay:mobilePatrol(pMobile)
 		return
 	end
 
+	if (AiAgent(pMobile):isInCombat()) then
+		createEvent(30 * 1000, self.screenplayName, "mobilePatrol", pMobile, "")
+	end
+
 	local pointSets = self.patrolPoints
 	local pOid = SceneObject(pMobile):getObjectID()
 	local mobileTable = readStringData(pOid .. ":patrolPoints")
@@ -210,5 +267,6 @@ function CityScreenPlay:mobilePatrol(pMobile)
 	AiAgent(pMobile):stopWaiting()
 	AiAgent(pMobile):setWait(0)
 	AiAgent(pMobile):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
+	AiAgent(pMobile):setHomeLocation(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
 	AiAgent(pMobile):executeBehavior()
 end

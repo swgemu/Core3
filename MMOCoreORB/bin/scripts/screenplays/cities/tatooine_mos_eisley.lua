@@ -39,16 +39,28 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		{"mos_eisley_police_lieutenant", "mos_eisley_police_lieutenant_rebel", 3243.7,5,-4533.1,137,0, "npc_imperial", "calm", true},
 	},
 
+	patrolNpcs = {"commoner_fat_patrol", "commoner_old_patrol", "commoner_tatooine_patrol", "explorer", "gambler"},
+
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-		{"cll8_1", "cll8_binary_load_lifter", 60, 3352.63, 4.00222, -4771.23, 23.6541, 0, ""},
-		{"r2_1", "r2", 60, 3710.16, 4, -4789.97, 354.654, 0, "calm"},
-		{"r3_1", "r3", 60, 15.9215, -0.894992, -0.217826, 56.8618, 1082877, "happy"},
-		{"r4_1", "r4", 60, 3466.08,4, -4883.93, 56.7343, 0, "calm"},
-		{"r5_1", "r5", 60, 1.4, 1.0, 5.7, 13, 1187871, "happy"},
-		{"r5_2", "r5", 60, 3324.84, 4.14982, -4819.95, 222.5, 0, "calm"},
-		{"r5_3", "r5", 60, 3460.21, 4.00358, -4888.86, 241.665, 0, "calm"},
-		{"eg6_1", "eg6_power_droid", 60, 3650.68, 5, -4734.71, 276.881, 0, ""}
+		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatNpc},
+
+		--Droids
+		{"cll8_1", "cll8_binary_load_lifter", 1, 3352.63, 4.00222, -4771.23, 23.6541, 0, "", false},
+		{"r2_1", "r2", 1, 3710.16, 4, -4789.97, 354.654, 0, "", false},
+		{"r3_1", "r3", 1, 15.9215, -0.894992, -0.217826, 56.8618, 1082877, "", false},
+		{"r4_1", "r4", 1, 3466.08,4, -4883.93, 56.7343, 0, "", false},
+		{"r5_1", "r5", 1, 1.4, 1.0, 5.7, 13, 1187871, "", false},
+		{"r5_2", "r5", 1, 3324.84, 4.14982, -4819.95, 222.5, 0, "", false},
+		{"r5_3", "r5", 1, 3460.21, 4.00358, -4888.86, 241.665, 0, "", false},
+		{"eg6_1", "eg6_power_droid", 1, 3650.68, 5, -4734.71, 276.881, 0, "", false},
+
+		--NPCs
+		{"npc_1", "patrolNpc", 1, 3377, 4, -4753, 305, 0, "", false},
+		{"npc_2", "patrolNpc", 1, 3330, 4, -4637, 208, 0, "", false},
+		{"npc_3", "patrolNpc", 1, 3381, 4, -4675, 80, 0, "", false},
+		{"npc_4", "patrolNpc", 1, 3559, 4, -4725, 194, 0, "", false},
+		{"npc_5", "patrolNpc", 1, 3513, 4, -4725, 293, 0, "", false},
+		{"npc_6", "patrolNpc", 1, 3458, 4, -4890, 312, 0, "", false},
 	},
 
 	patrolPoints = {
@@ -61,6 +73,13 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		r5_2 = {{3324, 4, -4819, 0, 1}, {3284, 5, -4838, 0, 1}, {3281, 5, -4864, 0, 1}, {3266, 5, -4878, 0, 1}, {3249, 5, -4863, 0, 1}, {3265, 5, -4843, 0, 1}, {3284, 5, -4838, 0, 1}},
 		r5_3 = {{3460, 5, -4888, 0, 1}, {3473, 5, -4899, 0, 1}, {3419.0, 5, -4966.4, 0, 1}, {3394.9, 5, -4944.1, 0, 1}, {3428.3, 5, -4911.1, 0, 1}, {3444.6, 5, -4883.9, 0, 1}},
 		eg6_1 = {{3650, 5, -4734, 0 ,1}, {3523, 5, -4713, 0, 1}, {3478, 5, -4725, 0, 1}, {3523, 5, -4713, 0, 1}},
+
+		npc_1 = {{3377, 4, -4753, 0, 1}, {3353, 5, -4747, 0, 0}, {3299, 5, -4710, 0, 1}, {3297, 5, -4699, 0, 0}},
+		npc_2 = {{3330, 4, -4637, 0, 0}, {3305, 5, -4627, 0, 0}, {3328, 5, -4614, 0, 0}},
+		npc_3 = {{3381, 4, -4675, 0, 0}, {3389, 5, -4712, 0, 1}, {3390, 5, -4691, 0, 0}, {3408, 5, -4640, 0, 0}},
+		npc_4 = {{3559, 4, -4725, 0, 0}, {3556, 5, -4757, 0, 1}, {3556, 5, -4744, 0, 0}, {3545, 5, -4729, 0, 0}},
+		npc_5 = {{3513, 4, -4725, 0, 1}, {3494, 5, -4724, 0, 0}, {3467, 5, -4739, 0, 1}, {3494, 5, -4724, 0, 0}},
+		npc_6 = {{3458, 4, -4890, 0, 1}, {3436, 5, -4903, 0, 0}, {3454, 5, -4917, 0, 0}},
 	},
 }
 
@@ -460,26 +479,22 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	pNpc = spawnMobile(self.planet, "commoner",60,3397.3,0,-4689.8,88,0)
 	self:setMoodString(pNpc, "npc_use_terminal_high")
 	spawnMobile(self.planet, "commoner_fat",60,3285.75,5,-4923.4,54.5616,0)
-	spawnMobile(self.planet, "commoner_fat",60,3559.5,4,-4725.87,194.769,0)
 	spawnMobile(self.planet, "commoner_fat",60,3482.43,5,-5002.18,227.852,0)
-	spawnMobile(self.planet, "commoner_fat",60,3330.17,4.00303,-4637.51,208.82,0)
-	spawnMobile(self.planet, "commoner_naboo",60,3232.74,5,-4798.26,202.31,0)
-	spawnMobile(self.planet, "commoner_naboo",60,3258.46,4.05782,-4673.77,110.797,0)
-	spawnMobile(self.planet, "commoner_naboo",60,3527.44,4,-4721.16,280.944,0)
-	spawnMobile(self.planet, "commoner_naboo",60,3526.85,4.44117,-4700.74,200.934,0)
-	spawnMobile(self.planet, "commoner_naboo",60,3381.63,4,-4675.2,80.0842,0)
-	spawnMobile(self.planet, "commoner_naboo",60,3357.54,4.2333,-4649.49,43.5369,0)
-	spawnMobile(self.planet, "commoner_naboo",60,3529.16,5,-4900.65,339.614,0)
-	spawnMobile(self.planet, "commoner_naboo",60,3329.54,5,-4975.12,351.826,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,3232.74,5,-4798.26,202.31,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,3258.46,4.05782,-4673.77,110.797,0)
+	pNpc = spawnMobile(self.planet, "commoner_tatooine", 60, 3532.7, 5, -4723.7, 90, 0)
+	self:setMoodString(pNpc, "conversation")
+	spawnMobile(self.planet, "commoner_tatooine",60,3526.85,4.44117,-4700.74,200.934,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,3357.54,4.2333,-4649.49,43.5369,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,3529.16,5,-4900.65,339.614,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,3329.54,5,-4975.12,351.826,0)
 	pNpc = spawnMobile(self.planet, "commoner_tatooine",60,3247.46,5,-4841.69,135.008,0)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "commoner_tatooine",60,3211.43,5,-4751.8,127.282,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3513.14,4,-4725.08,293.84,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3540.46,4,-4721.74,247.571,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3458.35,4.03078,-4890.75,312.265,0)
+	pNpc = spawnMobile(self.planet, "commoner_tatooine", 60, 3535.1, 4, -4724.2, 275, 0)
+	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "commoner_tatooine",60,3354.2,0,-4824.3,330,0)
 	self:setMoodString(pNpc, "worried")
-	spawnMobile(self.planet, "commoner_tatooine",60,3377.15,4,-4753.22,305.92,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,3697.52,5,-4757.76,158.22,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,3650.15,5,-4860.75,108.398,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,3563.18,5,-4946.05,34.6042,0)
