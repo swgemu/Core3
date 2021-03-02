@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_f954f3cb",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectType.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-03-02T09:10:51Z",
+      "side": 1,
+      "message": "We are using TAB as spacing, can you fix that in this file?",
+      "range": {
+        "startLine": 5,
+        "startChar": 14,
+        "endLine": 5,
+        "endChar": 33
+      },
+      "revId": "655b7e1473b870570aee44bbf1827cd4d3f99034",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_d95137da",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectType.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-03-02T09:10:51Z",
+      "side": 1,
+      "message": "Don\u0027t forget this one.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 4
+      },
+      "revId": "655b7e1473b870570aee44bbf1827cd4d3f99034",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
