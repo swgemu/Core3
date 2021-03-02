@@ -5,6 +5,23 @@ TatooineAnchorheadScreenPlay = CityScreenPlay:new {
 
 	planet = "tatooine",
 
+	gcwMobs = {
+		{"specforce_technician", 65.685, 52, -5349.49, -4, 0, "", true},
+		{"specforce_technician", 49.2, 52, -5351, 350, 0, "", true},
+		{"specforce_technician", 125.5, 52, -5416, 279.008, 0, "", true},
+		{"specforce_technician", 55.2, 52.6, -5332.5, 184.005, 0, "", true},
+		{"specforce_heavy_weapons_specialist", 68, 52, -5382, 67, 0, "", true},
+		{"rebel_specforce_captain", 67, 52, -5366.5, 95, 0, "", true},
+		{"rebel_specforce_captain", 31.4, 51.1006, -5350.3, 203.975, 0, "", true},
+		{"rebel_specforce_pathfinder", 31, 51.9725, -5337, 270.008, 0, "", true},
+		{"rebel_specforce_pathfinder", 76.5, 52, -5361.1, 329.737, 0, "", true},
+		{"rebel_specforce_pathfinder", 135.1, 52, -5374.9, 83.0024, 0, "", true},
+		{"rebel_specforce_pathfinder", 123.6, 52, -5368, 235, 0, "", true},
+		{"rebel_specforce_pathfinder", 89.9, 52, -5393.8, 313.009, 0, "", true},
+		{"rebel_specforce_pathfinder", 151, 52, -5316, 37.8685, 0, "", true},
+		{"rebel_specforce_pathfinder", 159, 52, -5320, 331.012, 0, "", true},
+	},
+
 	patrolMobiles = {
 		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
 		{"r3_1", "r3", 60, -180.482, 65, -5314.98, 96.2472, 0, 'calm'},
@@ -27,6 +44,7 @@ function TatooineAnchorheadScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
+		self:spawnGcwMobiles()
 	end
 end
 
@@ -83,20 +101,6 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "junk_dealer", 0, 110.87, 52, -5428.19, 53, 0)
 
 	spawnMobile("tatooine", "bantha",300,216.9,11.7,-5425.4,-121,0)
-	spawnMobile("tatooine", "specforce_technician",400,65.685,52,-5349.49,-4,0)
-	spawnMobile("tatooine", "specforce_technician",400,49.2,52,-5351,350,0)
-	spawnMobile("tatooine", "specforce_technician",400,125.5,52,-5416,279.008,0)
-	spawnMobile("tatooine", "specforce_technician",400,55.2,52.6,-5332.5,184.005,0)
-	spawnMobile("tatooine", "specforce_heavy_weapons_specialist",400,68,52,-5382,67,0)
-	spawnMobile("tatooine", "rebel_specforce_captain",400,67,52,-5366.5,95,0)
-	spawnMobile("tatooine", "rebel_specforce_captain",400,31.4,51.1006,-5350.3,203.975,0)
-	spawnMobile("tatooine", "rebel_specforce_pathfinder",400,31,51.9725,-5337,270.008,0)
-	spawnMobile("tatooine", "rebel_specforce_pathfinder",400,76.5,52,-5361.1,329.737,0)
-	spawnMobile("tatooine", "rebel_specforce_pathfinder",400,135.1,52,-5374.9,83.0024,0)
-	spawnMobile("tatooine", "rebel_specforce_pathfinder",400,123.6,52,-5368,235,0)
-	spawnMobile("tatooine", "rebel_specforce_pathfinder",400,89.9,52,-5393.8,313.009,0)
-	spawnMobile("tatooine", "rebel_specforce_pathfinder",400,151,52,-5316,37.8685,0)
-	spawnMobile("tatooine", "rebel_specforce_pathfinder",400,159,52,-5320,331.012,0)
 	spawnMobile("tatooine", "cu_pa",300,75.5625,88.9439,-5217.41,276.531,0)
 	spawnMobile("tatooine", "cu_pa",300,81.1976,85.0672,-5200.6,174.759,0)
 	spawnMobile("tatooine", "cu_pa",300,14.564,23.6794,-5543.66,99.0125,0)
