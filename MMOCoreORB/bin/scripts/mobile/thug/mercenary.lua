@@ -22,17 +22,20 @@ mercenary = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_mercenary_weak_hum_m.iff",
-		"object/mobile/dressed_mercenary_messanger_sullustan_m.iff" },
-	lootGroups = {},
+	templates = {
+		"object/mobile/dressed_mercenary_weak_hum_m.iff",
+		"object/mobile/dressed_mercenary_messanger_sullustan_m.iff",
+		},
+
+	lootGroups = {"junk"},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermid,marksmanmid)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mercenary, "mercenary")
