@@ -7,7 +7,7 @@ TatooineBestineScreenPlay = CityScreenPlay:new {
 
 	gcwMobs = {
 		-- Imperial Mini Base -1136 -3901
-		{"imperial_sergeant", -2.3, 0, -3.9, 13,1279924, "npc_imperial"},
+		{"imperial_sergeant", -2.3, 0, -3.9, 13, 1279924, "npc_imperial"},
 		{"imperial_first_lieutenant", 3.0, 0.1, 0.5, 164, 1279924, "npc_imperial"},
 		{"imperial_recruiter", -1138, 98, -3897, 0, 0, "npc_imperial"},
 		-- Imperial Npc's Outside
