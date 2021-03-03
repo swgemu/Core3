@@ -37,6 +37,7 @@
 #include "server/zone/objects/scene/components/LuaObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "server/zone/objects/scene/components/LuaContainerComponent.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
 //#include "PositionUpdateTask.h"
 
 #include "variables/ContainerPermissions.h"
@@ -2130,4 +2131,8 @@ void SceneObjectImplementation::getChildrenRecursive(SortedVector<uint64>& child
 			obj->getChildrenRecursive(childObjectsFound, maxDepth - 1, pruneCreo, pruneCraftedComponents);
 		}
 	}
+}
+
+String SceneObjectImplementation::getGameObjectTypeStringID() {
+	return SceneObjectType::typeToString(gameObjectType);
 }
