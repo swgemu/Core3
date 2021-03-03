@@ -6,12 +6,12 @@ TatooineMosTaikeScreenPlay = CityScreenPlay:new {
 	planet = "tatooine",
 
 	gcwMobs = {
-		{"stormtrooper", "rebel_crewman", 3732.4,5.6,2387.5,90,0, "", ""},
-		{"stormtrooper", "rebel_crewman", 3732.2,5.5,2382.8,90,0, "", ""},
-		{"stormtrooper", "rebel_trooper", 3759.3,8.4,2309.4,180,0, "", ""},
-		{"stormtrooper", "rebel_trooper", 3788.5,8.4,2309.9,180,0, "", ""},
+		{"stormtrooper", "rebel_crewman", 3732.4,5.6,2387.5,90,0, "", "", true},
+		{"stormtrooper", "rebel_crewman", 3732.2,5.5,2382.8,90,0, "", "", true},
+		{"stormtrooper", "rebel_trooper", 3759.3,8.4,2309.4,180,0, "", "", true},
+		{"stormtrooper", "rebel_trooper", 3788.5,8.4,2309.9,180,0, "", "", true},
 		{"scout_trooper", "rebel_scout", 3792.3,11.6,2379.2,180,0, "", "", true},
-		{"stormtrooper_sniper", "rebel_resistance_separatist", 3813.2,16.1,2315.6,-137,0, "", ""},
+		{"stormtrooper_sniper", "rebel_resistance_separatist", 3813.2,18.1,2315.6,-137,0, "", ""},
 		{"stormtrooper_bombardier", "rebel_surface_marshall", 3855.6,27.5,2325.3,-50,0, "", ""},
 		{"assault_trooper_squad_leader", "alliance_intelligence_case_officer", 3858.4,27.5,2328.6,-50,0, "", "", true},
 		{"assault_trooper", "rebel_major_general", 3951.7,53.5,2265.1,-114,0, "", "", true},
