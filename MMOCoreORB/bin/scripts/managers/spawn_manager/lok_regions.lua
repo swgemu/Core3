@@ -105,7 +105,7 @@ lok_regions = {
 	{"northern_mountains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"northern_plains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"nym_protectorate", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"nyms_stronghold", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
+	{"nyms_stronghold", 420, 5054, {CIRCLE, 256}, NOSPAWNAREA},
 	{"nym_pirate_cave", -2847, -712, {CIRCLE, 200}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"oasis", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"odd_building", 210, -5972, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},

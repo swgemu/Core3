@@ -289,7 +289,7 @@ tatooine_regions = {
 	{"w_dune_sea_1", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"w_dune_sea_2", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"w_dune_sea_3", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"wayfar", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
+	{"wayfar", -5157, -6549, {CIRCLE, 150}, NOSPAWNAREA},
 	{"wayfar_easy_newbie", -5195, -6535, {CIRCLE, 600}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 64},
 	{"wayfar_medium_newbie", -5195, -6535, {RING, 600, 1000}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 128},
 	{"west_dune_sea_3", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
