@@ -8,18 +8,18 @@ DantooineImperialOutpostScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"cll8_1", "cll8_binary_load_lifter", 1, -4244.24, 3, -2381.33, 238.12, 0, "", false},
-		{"r4_1", "r4", 1, -4227.33, 3, -2366.11, 269.389, 0, "", false},
-		{"r5_1", "r5", 1, -4228.33, 3, -2367.11, 48.8478, 0, "", false},
+		{"cll8_1", "cll8_binary_load_lifter", -4244.24, 3, -2381.33, 238.12, 0, "", false},
+		{"r4_1", "r4", -4227.33, 3, -2366.11, 269.389, 0, "", false},
+		{"r5_1", "r5", -4228.33, 3, -2367.11, 48.8478, 0, "", false},
 
 		--NPCs
-		{"npc_1", "patrolNpc", 1, -4221, 3, -2370, 124, 0, "", false},
-		{"npc_2", "patrolNpc", 1, -4210, 3, -2411, 81, 0, "", false},
-		{"npc_3", "patrolNpc", 1, -4182, 3, -2422, 157, 0, "", false},
-		{"npc_4", "patrolNpc", 1, -4272, 3, -2391, 117, 0, "", false},
+		{"npc_1", "patrolNpc", -4221, 3, -2370, 124, 0, "", false},
+		{"npc_2", "patrolNpc", -4210, 3, -2411, 81, 0, "", false},
+		{"npc_3", "patrolNpc", -4182, 3, -2422, 157, 0, "", false},
+		{"npc_4", "patrolNpc", -4272, 3, -2391, 117, 0, "", false},
 	},
 
 	patrolPoints = {

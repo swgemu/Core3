@@ -9,22 +9,22 @@ DantooineMiningOutpostScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"r2_1", "r2", 1, -635.747, 3, 2503.81, 354, 0, "", false},
-		{"r4_1", "r4", 1, -643.739, 3, 2506.86, 129, 0, "", false},
-		{"r4_2", "r4", 1, -666.582, 3, 2494.33, 121, 0, "", false},
+		{"r2_1", "r2", -635.747, 3, 2503.81, 354, 0, "", false},
+		{"r4_1", "r4", -643.739, 3, 2506.86, 129, 0, "", false},
+		{"r4_2", "r4", -666.582, 3, 2494.33, 121, 0, "", false},
 
 		--NPCs
 
-		{"npc_1", "patrolNpc", 1, -602, 3, 2506, 285, 0, "", false},
-		{"npc_2", "patrolNpc", 1, -647, 3, 2449, 73, 0, "", false},
-		{"npc_3", "combatPatrol", 60, -616, 3, 2509, 314, 0, "", true},
-		{"npc_4", "combatPatrol", 60, -562, 3, 2512, 108, 0, "", true},
-		{"npc_5", "combatPatrol", 60, -658, 3, 2480, 334, 0, "", true},
-		{"npc_6", "combatPatrol", 60, -665, 3, 2465, 120, 0, "", true},
-		{"npc_7", "combatPatrol", 60, -665, 3, 2462, 261, 0, "", true},
+		{"npc_1", "patrolNpc", -602, 3, 2506, 285, 0, "", false},
+		{"npc_2", "patrolNpc", -647, 3, 2449, 73, 0, "", false},
+		{"npc_3", "combatPatrol", -616, 3, 2509, 314, 0, "", true},
+		{"npc_4", "combatPatrol", -562, 3, 2512, 108, 0, "", true},
+		{"npc_5", "combatPatrol", -658, 3, 2480, 334, 0, "", true},
+		{"npc_6", "combatPatrol", -665, 3, 2465, 120, 0, "", true},
+		{"npc_7", "combatPatrol", -665, 3, 2462, 261, 0, "", true},
 	},
 
 	patrolPoints = {

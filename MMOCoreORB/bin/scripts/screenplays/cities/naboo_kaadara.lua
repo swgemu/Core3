@@ -59,15 +59,15 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "commoner_naboo_patrol", "noble_patrol", "official_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"surgical_1", "surgical_droid_21b", 1, 4.5, -5.5, -13.2, -144, 1741516, "", false},
-		{"r3_1", "r3", 1, 5189, -192, 6691, 0, 0, "", false},
+		{"surgical_1", "surgical_droid_21b", 4.5, -5.5, -13.2, -144, 1741516, "", false},
+		{"r3_1", "r3", 5189, -192, 6691, 0, 0, "", false},
 
 		--NPCs
-		{"npc_1", "patrolNpc", 1, 5236, -192, 6759, 87, 0, "", false},
-		{"npc_2", "patrolNpc", 1, 5180.9, -192, 6782.7, 45, 0, "", false},
+		{"npc_1", "patrolNpc", 5236, -192, 6759, 87, 0, "", false},
+		{"npc_2", "patrolNpc", 5180.9, -192, 6782.7, 45, 0, "", false},
 	},
 
 	patrolPoints = {

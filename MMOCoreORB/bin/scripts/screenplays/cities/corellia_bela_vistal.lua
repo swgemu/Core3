@@ -46,22 +46,22 @@ CorelliaBelaVistalScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "explorer", "noble_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"r4_1", "r4", 1, 6715, 330, -5903, 0, 0, "", false},
-		{"r2_1", "r2", 1, 6859, 315, -5706, 0, 0, "", false},
-		{"cll8_1", "cll8_binary_load_lifter", 1, 6826, 315, -5778, 0, 0, "", false},
+		{"r4_1", "r4", 6715, 330, -5903, 0, 0, "", false},
+		{"r2_1", "r2", 6859, 315, -5706, 0, 0, "", false},
+		{"cll8_1", "cll8_binary_load_lifter", 6826, 315, -5778, 0, 0, "", false},
 
 		--NPCs
-		{"npc_1", "patrolNpc", 1, 6846, 315, -5588, 54, 0, "", false},
-		{"npc_2", "patrolNpc", 1, 6829, 315, -5626, 119, 0, "", false},
-		{"npc_3", "patrolNpc", 1, 6755, 314, -5625, 139, 0, "", false},
-		{"npc_4", "patrolNpc", 1, 6740, 315, -5674, 168, 0, "", false},
-		{"npc_5", "patrolNpc", 1, 6761, 315, -5695, 3, 0, "", false},
-		{"npc_6", "patrolNpc", 1, 6829, 315, -5745, 171, 0, "", false},
-		{"npc_7", "patrolNpc", 1, 6808, 315, -5779, 282, 0, "", false},
-		{"npc_8", "patrolNpc", 1, 6829, 315, -5813, 319, 0, "", false},
+		{"npc_1", "patrolNpc", 6846, 315, -5588, 54, 0, "", false},
+		{"npc_2", "patrolNpc", 6829, 315, -5626, 119, 0, "", false},
+		{"npc_3", "patrolNpc", 6755, 314, -5625, 139, 0, "", false},
+		{"npc_4", "patrolNpc", 6740, 315, -5674, 168, 0, "", false},
+		{"npc_5", "patrolNpc", 6761, 315, -5695, 3, 0, "", false},
+		{"npc_6", "patrolNpc", 6829, 315, -5745, 171, 0, "", false},
+		{"npc_7", "patrolNpc", 6808, 315, -5779, 282, 0, "", false},
+		{"npc_8", "patrolNpc", 6829, 315, -5813, 319, 0, "", false},
 	},
 
 	patrolPoints = {

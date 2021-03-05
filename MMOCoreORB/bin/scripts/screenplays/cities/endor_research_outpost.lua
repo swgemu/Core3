@@ -9,22 +9,22 @@ EndorResearchOutpostScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"cll8_1", "cll8_binary_load_lifter", 1, 3250, 24, -3463, 330, 0, "", false},
-		{"r3_1", "r3", 1, 3250.85, 24, -3464.83, 263.893, 0, "calm", false},
-		{"r5_1", "r5", 1, 3249.85, 24, -3464.83, 180.771, 0, "calm", false},
+		{"cll8_1", "cll8_binary_load_lifter", 3250, 24, -3463, 330, 0, "", false},
+		{"r3_1", "r3", 3250.85, 24, -3464.83, 263.893, 0, "calm", false},
+		{"r5_1", "r5", 3249.85, 24, -3464.83, 180.771, 0, "calm", false},
 
 		--NPCs
-		{"npc_1", "combatPatrol", 60, 3166, 24, -3454, 130, 0, "", true},
-		{"npc_2", "combatPatrol", 60, 3201, 24, -3463, 170, 0, "", true},
-		{"npc_3", "combatPatrol", 60, 3196, 24, -3483, 359, 0, "", true},
-		{"npc_4", "combatPatrol", 60, 3235, 24, -3451, 170, 0, "", true},
-		{"npc_5", "combatPatrol", 60, 3277, 24, -3484, -80, 0, "", true},
-		{"npc_6", "patrolNpc", 60, 3186, 24, -3459, 189, 0, "", false},
-		{"npc_7", "patrolNpc", 60, 3188, 24, -3482, 277, 0, "", false},
-		{"npc_8", "patrolNpc", 60, 3171, 24, -3504, 196, 0, "", false},
+		{"npc_1", "combatPatrol", 3166, 24, -3454, 130, 0, "", true},
+		{"npc_2", "combatPatrol", 3201, 24, -3463, 170, 0, "", true},
+		{"npc_3", "combatPatrol", 3196, 24, -3483, 359, 0, "", true},
+		{"npc_4", "combatPatrol", 3235, 24, -3451, 170, 0, "", true},
+		{"npc_5", "combatPatrol", 3277, 24, -3484, -80, 0, "", true},
+		{"npc_6", "patrolNpc", 3186, 24, -3459, 189, 0, "", false},
+		{"npc_7", "patrolNpc", 3188, 24, -3482, 277, 0, "", false},
+		{"npc_8", "patrolNpc", 3171, 24, -3504, 196, 0, "", false},
 	},
 
 	patrolPoints = {
