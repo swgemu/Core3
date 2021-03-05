@@ -42,25 +42,25 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"commoner_fat_patrol", "commoner_old_patrol", "commoner_tatooine_patrol", "commoner_technician", "explorer", "gambler", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatNpc},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"cll8_1", "cll8_binary_load_lifter", 1, 3352.63, 4.00222, -4771.23, 23.6541, 0, "", false},
-		{"r2_1", "r2", 1, 3710.16, 4, -4789.97, 354.654, 0, "", false},
-		{"r3_1", "r3", 1, 15.9, -0.9, -0.2, 56, 1082877, "", false},
-		{"r4_1", "r4", 1, 3466.1, 4, -4883.9, 56, 0, "", false},
-		{"r5_1", "r5", 1, 1.4, 1.0, 5.7, 13, 1187871, "", false},
-		{"r5_2", "r5", 1, 3324.84, 4.14982, -4819.95, 222.5, 0, "", false},
-		{"r5_3", "r5", 1, 3460.21, 4.00358, -4888.86, 241.665, 0, "", false},
-		{"eg6_1", "eg6_power_droid", 1, 3650.7, 5, -4734.7, 276.9, 0, "", false},
+		{"cll8_1", "cll8_binary_load_lifter", 3352.63, 4.00222, -4771.23, 23.6541, 0, "", false},
+		{"r2_1", "r2", 3710.16, 4, -4789.97, 354.654, 0, "", false},
+		{"r3_1", "r3", 15.9, -0.9, -0.2, 56, 1082877, "", false},
+		{"r4_1", "r4", 3466.1, 4, -4883.9, 56, 0, "", false},
+		{"r5_1", "r5", 1.4, 1.0, 5.7, 13, 1187871, "", false},
+		{"r5_2", "r5", 3324.84, 4.14982, -4819.95, 222.5, 0, "", false},
+		{"r5_3", "r5", 3460.21, 4.00358, -4888.86, 241.665, 0, "", false},
+		{"eg6_1", "eg6_power_droid", 3650.7, 5, -4734.7, 276.9, 0, "", false},
 
 		--NPCs
-		{"npc_1", "patrolNpc", 1, 3377, 4, -4753, 305, 0, "", false},
-		{"npc_2", "patrolNpc", 1, 3330, 4, -4637, 208, 0, "", false},
-		{"npc_3", "patrolNpc", 1, 3381, 4, -4675, 80, 0, "", false},
-		{"npc_4", "patrolNpc", 1, 3559, 4, -4725, 194, 0, "", false},
-		{"npc_5", "patrolNpc", 1, 3513, 4, -4725, 293, 0, "", false},
-		{"npc_6", "patrolNpc", 1, 3458, 4, -4890, 312, 0, "", false},
+		{"npc_1", "patrolNpc", 3377, 4, -4753, 305, 0, "", false},
+		{"npc_2", "patrolNpc", 3330, 4, -4637, 208, 0, "", false},
+		{"npc_3", "patrolNpc", 3381, 4, -4675, 80, 0, "", false},
+		{"npc_4", "patrolNpc", 3559, 4, -4725, 194, 0, "", false},
+		{"npc_5", "patrolNpc", 3513, 4, -4725, 293, 0, "", false},
+		{"npc_6", "patrolNpc", 3458, 4, -4890, 312, 0, "", false},
 	},
 
 	patrolPoints = {

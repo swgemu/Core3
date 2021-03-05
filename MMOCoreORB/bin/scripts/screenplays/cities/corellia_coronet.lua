@@ -97,25 +97,25 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "explorer", "noble_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"cll8_1", "cll8_binary_load_lifter", 1, -146, 28, -4762, 0, 0, "", false},
-		{"r3_1", "r3", 1, -158, 28, -4785, 0, 0, "", false},
-		{"r3_2", "r3", 1, -182, 28, -4731, 293, 0, "", false},
-		{"surgical_1", "surgical_droid_21b", 1, -25.52, 0.26, -3.5, 357, 1855535, "", false},
+		{"cll8_1", "cll8_binary_load_lifter", -146, 28, -4762, 0, 0, "", false},
+		{"r3_1", "r3", 158, 28, -4785, 0, 0, "", false},
+		{"r3_2", "r3", -182, 28, -4731, 293, 0, "", false},
+		{"surgical_1", "surgical_droid_21b", -25.52, 0.26, -3.5, 357, 1855535, "", false},
 
 		--NPCs
-		{"npc_1", "patrolNpc", 1, -54, 28, -4530, 320, 0, "", false},
-		{"npc_2", "patrolNpc", 1, -26, 28, -4558, 310, 0, "", false},
-		{"npc_3", "patrolNpc", 1, -92, 28, -4471, 270, 0, "", false},
-		{"npc_4", "patrolNpc", 1, -195, 28, -4451, 186, 0, "", false},
-		{"npc_5", "patrolNpc", 1, -294, 28, -4412, 0, "", false},
-		{"npc_6", "patrolNpc", 1, -258, 28, -4620, 198, 0, "", false},
-		{"npc_7", "patrolNpc", 1, -306, 28, -4600, 146,0, "", false},
-		{"npc_8", "patrolNpc", 1, -350, 28, -4287, 88, 0, "", false},
-		{"npc_9", "patrolNpc", 1, -357, 28, -4267, 39, 0, "", false},
-		{"npc_10", "patrolNpc", 1, 69, 28, -4568, 100, 0, "conversation", false},
+		{"npc_1", "patrolNpc", -54, 28, -4530, 320, 0, "", false},
+		{"npc_2", "patrolNpc", -26, 28, -4558, 310, 0, "", false},
+		{"npc_3", "patrolNpc", -92, 28, -4471, 270, 0, "", false},
+		{"npc_4", "patrolNpc", -195, 28, -4451, 186, 0, "", false},
+		{"npc_5", "patrolNpc", -294, 28, -4412, 0, 0, "", false},
+		{"npc_6", "patrolNpc", -258, 28, -4620, 198, 0, "", false},
+		{"npc_7", "patrolNpc", -306, 28, -4600, 146, 0, "", false},
+		{"npc_8", "patrolNpc", -350, 28, -4287, 88, 0, "", false},
+		{"npc_9", "patrolNpc", -357, 28, -4267, 39, 0, "", false},
+		{"npc_10", "patrolNpc", 69, 28, -4568, 100, 0, "conversation", false},
 	},
 
 	patrolPoints = {

@@ -23,24 +23,24 @@ TatooineWayfarScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"commoner_fat_patrol", "commoner_old_patrol", "commoner_tatooine_patrol", "commoner_technician", "explorer", "gambler", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"cll8_1", "cll8_binary_load_lifter", 60, -5204.46, 75, -6481.04, 153.365, 0, "",false},
-		{"cll8_2", "cll8_binary_load_lifter", 60, -5106.7, 75, -6484.28, 160.531, 0, "", false},
-		{"r3_1", "r3", 60, -5129.45, 75, -6483.77, 250.023, 0, "", false},
-		{"r5_1", "r5", 60, -5105.84, 75, -6486.52, 161.488, 0, "", false},
-		{"r5_2", "r5", 60, -5126.31, 75, -6491.03, 294.68, 0, "", false},
+		{"cll8_1", "cll8_binary_load_lifter", -5204.46, 75, -6481.04, 153.365, 0, "",false},
+		{"cll8_2", "cll8_binary_load_lifter", -5106.7, 75, -6484.28, 160.531, 0, "", false},
+		{"r3_1", "r3", -5129.45, 75, -6483.77, 250.023, 0, "", false},
+		{"r5_1", "r5", -5105.84, 75, -6486.52, 161.488, 0, "", false},
+		{"r5_2", "r5", -5126.31, 75, -6491.03, 294.68, 0, "", false},
 
 		--NPCs
-		{"npc_1", "patrolNpc", 1, -5128, 75, -6542, 217, 0, "", false},
-		{"npc_2", "patrolNpc", 1, -5120, 75, -6594, 212, 0, "", false},
-		{"npc_3", "patrolNpc", 1, -5176, 75, -6611, 128, 0, "", false},
-		{"npc_4", "patrolNpc", 1, -5277, 75, -6558, 121, 0, "", false},
-		{"npc_5", "combatPatrol", 360, -5113, 75, -6550, 182, 0, "", true},
-		{"npc_6", "combatPatrol", 360, -5115, 75, -6548, 188, 0, "", true},
-		{"npc_7", "combatPatrol", 360, -5050, 75, -6570, 148, 0, "", true},
-		{"npc_8", "combatPatrol", 360, -5048, 75, -6567, 148, 0, "", true},
+		{"npc_1", "patrolNpc", -5128, 75, -6542, 217, 0, "", false},
+		{"npc_2", "patrolNpc", -5120, 75, -6594, 212, 0, "", false},
+		{"npc_3", "patrolNpc", -5176, 75, -6611, 128, 0, "", false},
+		{"npc_4", "patrolNpc", -5277, 75, -6558, 121, 0, "", false},
+		{"npc_5", "combatPatrol", -5113, 75, -6550, 182, 0, "", true},
+		{"npc_6", "combatPatrol", -5115, 75, -6548, 188, 0, "", true},
+		{"npc_7", "combatPatrol", -5050, 75, -6570, 148, 0, "", true},
+		{"npc_8", "combatPatrol", -5048, 75, -6567, 148, 0, "", true},
 	},
 
 	patrolPoints = {

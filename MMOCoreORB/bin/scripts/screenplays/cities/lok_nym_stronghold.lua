@@ -9,19 +9,19 @@ LokNymStrongholdScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "commoner_tatooine_patrol", "noble_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 		--NPCs
-		{"npc_1", "combatPatrol", 300, 540, 12, 5124, 348, 0, "", true},
-		{"npc_2", "combatPatrol", 300, 384, 11, 4996, 286, 0, "", true},
-		{"npc_3", "combatPatrol", 300, 348, 12, 4940, 19, 0, "", true},
-		{"npc_4", "combatPatrol", 300, 350, 12, 4975, 216, 0, "", true},
-		{"npc_5", "patrolNpc", 1, 462, 11, 5192, 127, 0, "", false},
-		{"npc_6", "patrolNpc", 1, 562, 11, 5171, 43, 0, "", false},
-		{"npc_7", "patrolNpc", 1, 449, 12, 5141, 112, 0, "", false},
-		{"npc_8", "patrolNpc", 1, 618, 11, 5013, 225, 0, "", false},
-		{"npc_9", "patrolNpc", 1, 545, 11, 5081, 126, 0, "", false},
-		{"npc_10", "patrolNpc", 1, 342, 11, 5024, 97, 0, "", false},
-		{"npc_11", "patrolNpc", 1, 280, 11, 5027, 218, 0, "", false},
+		{"npc_1", "combatPatrol", 540, 12, 5124, 348, 0, "", true},
+		{"npc_2", "combatPatrol", 384, 11, 4996, 286, 0, "", true},
+		{"npc_3", "combatPatrol", 348, 12, 4940, 19, 0, "", true},
+		{"npc_4", "combatPatrol", 350, 12, 4975, 216, 0, "", true},
+		{"npc_5", "patrolNpc", 462, 11, 5192, 127, 0, "", false},
+		{"npc_6", "patrolNpc", 562, 11, 5171, 43, 0, "", false},
+		{"npc_7", "patrolNpc", 449, 12, 5141, 112, 0, "", false},
+		{"npc_8", "patrolNpc", 618, 11, 5013, 225, 0, "", false},
+		{"npc_9", "patrolNpc", 545, 11, 5081, 126, 0, "", false},
+		{"npc_10", "patrolNpc", 342, 11, 5024, 97, 0, "", false},
+		{"npc_11", "patrolNpc", 280, 11, 5027, 218, 0, "", false},
 	},
 
 	patrolPoints = {

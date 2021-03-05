@@ -6,8 +6,8 @@ RoriNarmleScreenPlay = CityScreenPlay:new {
 	planet = "rori",
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
-		{"cll8_1", "cll8_binary_load_lifter", 1, -5154.8, 80.0, -2343.4, 33, 0, "", false},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
+		{"cll8_1", "cll8_binary_load_lifter", -5154.8, 80.0, -2343.4, 33, 0, "", false},
 	},
 
 	patrolPoints = {

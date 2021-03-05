@@ -8,18 +8,18 @@ CorelliaVreniIslandScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"cll8_1", "cll8_binary_load_lifter", 1, -5696, 14.6, -6154.2, 75, 0, "", false},
-		{"eg6_1", "eg6_power_droid", 1, -5690.7, 14.6, -6154.2, -87, 0, "", false},
-		{"eg6_2", "eg6_power_droid" , 1, -5692.6, 14.6, -6151.3, 179.6, 0, "", false},
+		{"cll8_1", "cll8_binary_load_lifter", -5696, 14.6, -6154.2, 75, 0, "", false},
+		{"eg6_1", "eg6_power_droid", -5690.7, 14.6, -6154.2, -87, 0, "", false},
+		{"eg6_2", "eg6_power_droid", -5692.6, 14.6, -6151.3, 179.6, 0, "", false},
 
 		--NPCs
-		{"npc_1", "patrolNpc", 1, -5505, 23, -6118, 272, 0, "", false},
-		{"npc_2", "patrolNpc", 1, -5519, 23, -6224, 134, 0, "", false},
-		{"npc_3", "patrolNpc", 1, -5385, 24, -6239, 118, 0, "", false},
-		{"npc_4", "patrolNpc", 1, -5480, 23, -6133, 182, 0, "", false},
+		{"npc_1", "patrolNpc", -5505, 23, -6118, 272, 0, "", false},
+		{"npc_2", "patrolNpc", -5519, 23, -6224, 134, 0, "", false},
+		{"npc_3", "patrolNpc", -5385, 24, -6239, 118, 0, "", false},
+		{"npc_4", "patrolNpc", -5480, 23, -6133, 182, 0, "", false},
 	},
 
 	patrolPoints = {
