@@ -19,7 +19,7 @@
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/player/PlayerMap.h"
-#include "server/login/account/Account.h"
+#include "server/login/account/AccountManager.h"
 
 void FrsManagerImplementation::initialize() {
 	auto zoneServer = this->zoneServer.get();
@@ -373,15 +373,28 @@ void FrsManagerImplementation::playerLoggedIn(CreatureObject* player) {
 }
 
 bool FrsManagerImplementation::isBanned(CreatureObject* player) {
+	if (player == nullptr) {
+		return false;
+	}
+
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost == nullptr)
+	if (ghost == nullptr) {
 		return false;
+	}
 
 	Reference<Account*> account = ghost->getAccount();
 
-	if (account == nullptr || account->isBanned())
+	if (account == nullptr){
+		return false;
+	}
+
+	Locker accLocker(account);
+	account->updateFromDatabase();
+
+	if (account->isBanned()) {
 		return true;
+	}
 
 	auto zoneServer = this->zoneServer.get();
 
@@ -415,8 +428,6 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player, bool v
 
 	if (ghost == nullptr)
 		return;
-
-	Reference<Account*> account = ghost->getAccount();
 
 	if (verifyBan && isBanned(player)) {
 		removeFromFrs(player);
@@ -604,6 +615,8 @@ void FrsManagerImplementation::removeFromFrs(CreatureObject* player) {
 	if (ghost == nullptr)
 		return;
 
+	printf(" removeFromFrs called " "\n");
+
 	uint64 playerID = player->getObjectID();
 
 	FrsData* playerData = ghost->getFrsData();
@@ -742,6 +755,8 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 
 	if (ghost == nullptr)
 		return;
+
+	printf(" UpdatePlayerSkills called " "\n");
 
 	FrsData* playerData = ghost->getFrsData();
 	int playerRank = playerData->getRank();
