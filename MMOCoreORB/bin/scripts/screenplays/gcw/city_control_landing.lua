@@ -4,20 +4,20 @@ CityControlLanding = ScreenPlay:new {
 	screenplayName = "CityControlLanding",
 
 	locations = {
-		--{"coronet", "corellia"},
-		--{"bela_vistal", "corellia"},
-		--{"theed", "naboo"},
-		--{"moenia", "naboo"},
+		{"coronet", "corellia"},
+		{"bela_vistal", "corellia"},
+		{"theed", "naboo"},
+		{"moenia", "naboo"},
 		{"bestine", "tatooine"},
 		{"anchorhead", "tatooine"}
 	},
 
 	coordinates = {
 		--{x, z, y, direction}
-		--{-148, 28, -4715, 179}, -- 1 Coronet
-		--{6902, 330, -5550, 179}, -- 2 Bela Vistal
-		--{-4897, 6, 4124, 179}, -- 3 Theed
-		--{4812, 4, -4700, 179}, --  4 Moenia
+		{-148, 28, -4715, 179}, -- 1 Coronet
+		{6902, 330, -5550, 179}, -- 2 Bela Vistal
+		{-4897, 6, 4124, 179}, -- 3 Theed
+		{4812, 4, -4700, 179}, --  4 Moenia
 		{-1282, 12, -3584, 180}, -- 5 Bestine
 		{112, 52, -5340, 180}, -- 6 Anchorhead
 	},
@@ -35,11 +35,10 @@ function CityControlLanding:start()
 end
 
 function CityControlLanding:chanceToSpawn()
-	local chance = getRandomNumber(49) -- Testing Chance
-	--local chance = getRandomNumber(100)
+	local chance = getRandomNumber(100)
 
-	if (chance <= 50) then --if (chance <= 5) then
-		createEvent(15 * 60 * 1000, "CityControlLanding", "spawnCityLanding", "", "") --15min after chance roll to allow for load time
+	if (chance <= 15) then
+		createEvent(20 * 60 * 1000, "CityControlLanding", "spawnCityLanding", "", "") --20min after chance roll to allow for load time
 	else
 		createEvent(6 * 60 * 60 * 1000, "CityControlLandingScreenplay", "chanceToSpawn", "", "") --6hrs
 	end
@@ -493,6 +492,5 @@ function CityControlLanding:cleanUp()
 	SceneObject(pShuttle):destroyObjectFromWorld()
 	deleteData(1 .. ":LandingParty")
 
-	--createEvent(4 * 60 * 60 * 1000, "CityControlLanding", "chanceToSpawn", "", "") -- 4 hrs
-	createEvent(15 * 60 * 1000, "CityControlLanding", "chanceToSpawn", "", "") -- 15min TESTING
+	createEvent(4 * 60 * 60 * 1000, "CityControlLanding", "chanceToSpawn", "", "") -- 4 hrs
 end
