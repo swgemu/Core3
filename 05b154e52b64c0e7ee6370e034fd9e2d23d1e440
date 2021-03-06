@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a6b29fe_d91c97c4",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 3395,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-03-06T13:13:22Z",
+      "side": 1,
+      "message": "Due to the player being dead and having no changes to their speed.\n\nI guess alternative to this is setting their buffer size when they are dragging?",
+      "parentUuid": "7a6b29fe_993b3f38",
+      "revId": "05b154e52b64c0e7ee6370e034fd9e2d23d1e440",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6b29fe_1930cf55",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DragIncapacitatedPlayerCommand.h",
         "patchSetId": 16
@@ -47,6 +65,24 @@
       "writtenOn": "2021-03-06T05:57:00Z",
       "side": 1,
       "message": "disables speed/teleport hack checks*",
+      "parentUuid": "7a6b29fe_1930cf55",
+      "revId": "05b154e52b64c0e7ee6370e034fd9e2d23d1e440",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_f91fd3b5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DragIncapacitatedPlayerCommand.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-03-06T13:13:22Z",
+      "side": 1,
+      "message": "If either players send a position during the drag event the dragger would not be able to use the command because of range and if the player that is being drug were to send a false location, the server is only going to allow them to move the max range of a drag which is 5m per movement.\n\nUnless I misunderstood what you said in Slack.",
       "parentUuid": "7a6b29fe_1930cf55",
       "revId": "05b154e52b64c0e7ee6370e034fd9e2d23d1e440",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
