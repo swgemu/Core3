@@ -6,11 +6,15 @@ CityScreenPlay = ScreenPlay:new {
 	planet = "",
 
 	gcwMobs = {},
+
 	combatPatrol = {},
 	patrolNpcs = {},
 	patrolMobiles = {},
 	patrolPoints = {},
 
+	stationaryCommoners = {},
+	stationaryNpcs = {},
+	stationaryMobiles = {},
 }
 
 function CityScreenPlay:spawnGcwMobiles()
@@ -280,4 +284,47 @@ function CityScreenPlay:mobilePatrol(pMobile)
 	AiAgent(pMobile):setWait(0)
 	AiAgent(pMobile):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
 	AiAgent(pMobile):executeBehavior()
+end
+
+function CityScreenPlay:spawnStationaryMobiles()
+	if (isZoneEnabled(self.planet)) then
+		for i = 1, #self.stationaryMobiles do
+			self:spawnStationaryMobile(i)
+		end
+	end
+end
+
+function CityScreenPlay:spawnStationaryMobile(num)
+	local stationaryTable = self.stationaryMobiles
+
+	if num <= 0 or num > #stationaryTable then
+		return
+	end
+
+	local pMobile = nil
+	local mobile = stationaryTable[num]
+	local stationaryTemps = nil
+	local template = ""
+	local mood = mobile[7]
+
+	if (getRandomNumber(100) < 20 ) then
+		stationaryTemps = self.stationaryNpcs
+		local templateNum = getRandomNumber(#stationaryTemps)
+
+		template = stationaryTemps[templateNum]
+	else
+		stationaryTemps = self.stationaryCommoners
+		local templateNum = getRandomNumber(#stationaryTemps)
+
+		template = stationaryTemps[templateNum]
+	end
+
+	--{respawn, x, z, y, direction, cell, mood}
+	local pMobile = spawnMobile(self.planet, template, mobile[1], mobile[2], mobile[3], mobile[4], mobile[5], mobile[6])
+
+	if (pMobile ~= nil) then
+		if mood ~= "" then
+			self:setMoodString(pMobile, mood)
+		end
+	end
 end
