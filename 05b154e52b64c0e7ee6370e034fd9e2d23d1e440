@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_1930cf55",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DragIncapacitatedPlayerCommand.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2021-03-06T05:55:55Z",
+      "side": 1,
+      "message": "so if someone starts dragging you, it disables speed/teleport hacks, then that player can just send an arbitrary position to teleport itself",
+      "revId": "05b154e52b64c0e7ee6370e034fd9e2d23d1e440",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
