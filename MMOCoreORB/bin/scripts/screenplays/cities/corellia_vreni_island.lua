@@ -5,6 +5,28 @@ CorelliaVreniIslandScreenPlay = CityScreenPlay:new {
 
 	planet = "corellia",
 
+	gcwMobs = {
+		{"rebel_specforce_pathfinder", -5538.4, 16.4902, -6054.7, 182.005, 0, "", true},
+		{"specforce_master_sergeant", -5533.2, 23.4, -6202.2, 46, 0, "", true},
+		{"specforce_technician", -5405, 25, -6220, 37, 0, "", true},
+		{"rebel_specforce_pathfinder", -5534.1, 23.4, -6217.9, 138.004, 0, "", true},
+		{"rebel_recruiter", 0, -5516.1, 23.4, -6204.0, 0, 0, "", true},
+		{"specforce_infiltrator", -5549.5, 23.4, -6202.1, 310.009, 0, "", true},
+		{"specforce_procurement_specialist", -5549, 23.4, -6217.8, -139, 0, "", true},
+		{"rebel_specforce_pathfinder", -5429.8, 24, -6218.9, 0, 0, "", true},
+		{"rebel_specforce_captain", -5411.4, 24.9599, -6219.3, 5.00012, 0, "", true},
+		{"specforce_marine", -5398, 24.2, -6242.9, 81, 0, "", true},
+		{"specforce_marine", -5443.6, 24, -6243, 282.008, 0, "", true},
+		{"specforce_marine", -5716.1, 14.6, -6153.1, 269.008, 0, "", true},
+		{"specforce_infiltrator", -5716.1, 14.6, -6147.5, 271.008, 0, "", true},
+		{"specforce_marine", -5664, 14.6, -6179.3, 94.0028, 0, "", true},
+		{"rebel_specforce_pathfinder", -5664, 14.7566, -6185.3, 94.0028, 0, "", true},
+		{"specforce_marine", -5290.0, 4.0, -6421.6, 0, 0, "", true},
+		{"specforce_marine", -5290.0, 4.0, -6432.9, 180, 0, "", true},
+		{"specforce_marine", -5149.3, 4.2, -6418.8, -90, 0, "", true},
+		{"specforce_marine", -5160.1, 4.0, -6413.2, 90, 0, "", true},
+	},
+
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol"},
 
 	patrolMobiles = {
@@ -42,6 +64,7 @@ function CorelliaVreniIslandScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
 		self:spawnSceneObjects()
+		self:spawnGcwMobiles()
 	end
 end
 
@@ -73,25 +96,6 @@ function CorelliaVreniIslandScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "corellia_times_investigator",300,8.4,1.0,10.8,-172,2775413)
 	spawnMobile("corellia", "chiss_female",300,8.2,1.0,8.7,7,2775413)
 	spawnMobile("corellia", "twilek_slave",300,24.9055,1.28309,6.41569,180.019,2775414)
-	spawnMobile("corellia", "rebel_specforce_pathfinder",300,-5538.4,16.4902,-6054.7,182.005,0)
-	spawnMobile("corellia", "specforce_master_sergeant",300,-5533.2,23.4,-6202.2,46,0)
-	spawnMobile("corellia", "specforce_technician",300,-5405,25,-6220,37,0)
-	spawnMobile("corellia", "rebel_specforce_pathfinder",300,-5534.1,23.4,-6217.9,138.004,0)
-	spawnMobile("corellia", "rebel_recruiter",0,-5516.1,23.4,-6204.0,0,0)
-	spawnMobile("corellia", "specforce_infiltrator",300,-5549.5,23.4,-6202.1,310.009,0)
-	spawnMobile("corellia", "specforce_procurement_specialist",300,-5549,23.4,-6217.8,-139,0)
-	spawnMobile("corellia", "rebel_specforce_pathfinder",300,-5429.8,24,-6218.9,0,0)
-	spawnMobile("corellia", "rebel_specforce_captain",300,-5411.4,24.9599,-6219.3,5.00012,0)
-	spawnMobile("corellia", "specforce_marine",300,-5398,24.2,-6242.9,81,0)
-	spawnMobile("corellia", "specforce_marine",300,-5443.6,24,-6243,282.008,0)
-	spawnMobile("corellia", "specforce_marine",300,-5716.1,14.6,-6153.1,269.008,0)
-	spawnMobile("corellia", "specforce_infiltrator",300,-5716.1,14.6,-6147.5,271.008,0)
-	spawnMobile("corellia", "specforce_marine",300,-5664,14.6,-6179.3,94.0028,0)
-	spawnMobile("corellia", "rebel_specforce_pathfinder",300,-5664,14.7566,-6185.3,94.0028,0)
-	spawnMobile("corellia", "specforce_marine",300,-5290.0,4.0,-6421.6,0,0)
-	spawnMobile("corellia", "specforce_marine",300,-5290.0,4.0,-6432.9,180,0)
-	spawnMobile("corellia", "specforce_marine",300,-5149.3,4.2,-6418.8,-90,0)
-	spawnMobile("corellia", "specforce_marine",300,-5160.1,4.0,-6413.2,90,0)
 	spawnMobile("corellia", "entertainer",60,-22.5021,1.6,4.63468,179.972,2775415)
 	spawnMobile("corellia", "info_broker",60,-22.5017,1.59973,3.53494,359.971,2775415)
 	spawnMobile("corellia", "informant_npc_lvl_3",0,-5559,23.4,-6220,90,0)
