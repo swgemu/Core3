@@ -416,8 +416,6 @@ void FrsManagerImplementation::validatePlayerData(CreatureObject* player, bool v
 	if (ghost == nullptr)
 		return;
 
-	Reference<Account*> account = ghost->getAccount();
-
 	if (verifyBan && isBanned(player)) {
 		removeFromFrs(player);
 		verifyRoomAccess(player, -1);
@@ -850,7 +848,7 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 		return;
 
 	if (amount > 0) {
-          
+
           	if (ghost->hasCappedExperience("force_rank_xp"))
                 {
                 	StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
@@ -858,7 +856,7 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
                 	player->sendSystemMessage(message);
                 	return;
                 }
-          
+
 		ghost->addExperience("force_rank_xp", amount, true);
 
 		if (sendSystemMessage) {

@@ -3860,7 +3860,7 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	Locker locker(account);
 
 	account->setBanReason(reason);
-	account->setBanExpires(System::getMiliTime() + seconds * 1000);
+	account->setBanExpires(time(0) + seconds);
 	account->setBanAdmin(admin->getAccountID());
 
 	StringBuffer banResult;
