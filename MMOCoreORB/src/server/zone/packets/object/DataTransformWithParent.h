@@ -111,14 +111,22 @@ public:
 	void run() {
 		Reference<CreatureObject*> object = client->getPlayer().get();
 
-		if (object == nullptr)
+		if (object == nullptr) {
 			return;
+		}
+
+		PlayerObject* ghost = object->getPlayerObject();
+
+		if (ghost == nullptr) {
+			return;
+		}
 
 		int posture = object->getPosture();
 
 		//TODO: This should be derived from the locomotion table
-		if (!object->hasDizzyEvent() && (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::CROUCHED
-				|| posture == CreaturePosture::DRIVINGVEHICLE || posture == CreaturePosture::RIDINGCREATURE || posture == CreaturePosture::SKILLANIMATING) ) {
+		if (ghost->isForcedTransform() || (!object->hasDizzyEvent()
+				&& (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::CROUCHED || posture == CreaturePosture::DRIVINGVEHICLE || posture == CreaturePosture::RIDINGCREATURE
+				|| posture == CreaturePosture::SKILLANIMATING))) {
 
 			updatePosition(object);
 		} else {
@@ -145,6 +153,10 @@ public:
 				else
 					object->updateZone(light);
 			}
+		}
+
+		if (ghost->isForcedTransform()) {
+			ghost->setForcedTransform(false);
 		}
 	}
 
@@ -318,12 +330,18 @@ public:
 		object->setCurrentSpeed(parsedSpeed);
 		object->updateLocomotion();
 
-		if (objectControllerMain->getPriority() == 0x23)
+		if (objectControllerMain->getPriority() == 0x23) {
 			object->updateZoneWithParent(newParent, false);
-		else
+		} else {
 			object->updateZoneWithParent(newParent, true);
-	}
+		}
 
+		if (ghost->isForcedTransform()) {
+			auto msg = object->info();
+			msg << "DataTransform with Parent - Player isForcedTransform == TRUE";
+			msg.flush();
+		}
+	}
 };
 
 
