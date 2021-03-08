@@ -166,6 +166,7 @@ void FrsManagerImplementation::loadLuaConfig() {
 	maxPetitioners = lua->getGlobalInt("maxPetitioners");
 	missedVotePenalty = lua->getGlobalInt("missedVotePenalty");
 	maxChallenges = lua->getGlobalInt("maxChallenges");
+	sameAccountEnclaveRestrictions = lua->getGlobalInt("sameAccountEnclaveRestrictions");
 
 	uint32 enclaveID = lua->getGlobalInt("lightEnclaveID");
 
@@ -1470,6 +1471,21 @@ void FrsManagerImplementation::handleVoteRecordSui(CreatureObject* player, Scene
 		return;
 	}
 
+	ManagedReference<CreatureObject*> petitioner = zoneServer->getObject(petitionerID).castTo<CreatureObject*>();
+
+	if (petitioner == nullptr)
+		return;
+
+	PlayerObject* petitionerGhost = petitioner->getPlayerObject();
+
+	if (petitionerGhost == nullptr)
+		return;
+
+	if (sameAccountEnclaveRestrictions && ghost->getAccountID() == petitionerGhost->getAccountID()) {
+		player->sendSystemMessage("You cannot vote for other characters on your account.");
+		return;
+	}
+
 	VectorMap<uint64, int>* petitionerList = rankData->getPetitionerList();
 	int curVotes = petitionerList->get(petitionerID);
 
@@ -2222,8 +2238,15 @@ void FrsManagerImplementation::handleChallengeVoteIssueSui(CreatureObject* playe
 
 	PlayerObject* challengedGhost = challenged->getPlayerObject();
 
+
 	if (challengedGhost == nullptr)
 		return;
+
+	if (sameAccountEnclaveRestrictions && ghost->getAccountID() == challengedGhost->getAccountID()) {
+		player->sendSystemMessage("You cannot issue challenges against other characters on your account.");
+		return;
+	}
+
 
 	Locker xlock(challenged, player);
 
@@ -2593,6 +2616,11 @@ void FrsManagerImplementation::handleVoteDemoteSui(CreatureObject* player, Scene
 
 	if (demoteGhost == nullptr)
 		return;
+
+	if (sameAccountEnclaveRestrictions && ghost->getAccountID() == demoteGhost->getAccountID()) {
+		player->sendSystemMessage("You cannot vote to demote other characters on your account.");
+		return;
+	}
 
 	FrsData* demotePlayerData = demoteGhost->getFrsData();
 	int demotePlayerRank = demotePlayerData->getRank();
@@ -3541,6 +3569,17 @@ void FrsManagerImplementation::acceptArenaChallenge(CreatureObject* player, uint
 
 	if (challenger == nullptr)
 		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
+	PlayerObject* challengerGhost = challenger->getPlayerObject();
+
+	if (ghost == nullptr || challengerGhost == nullptr)
+		return;
+
+	if (sameAccountEnclaveRestrictions && ghost->getAccountID() == challengerGhost->getAccountID()) {
+		player->sendSystemMessage("You cannot accept a challenge from other characters on your account.");
+		return;
+	}
 
 	challengeData->setChallengeAccepterID(player->getObjectID());
 

@@ -7,7 +7,8 @@ darkEnclaveID = 3435626
 petitionInterval = 86400000 -- 1 day
 votingInterval = 86400000 -- 1 day
 acceptanceInterval = 86400000 -- 1 day
-maintenanceInterval = 86400000 -- 1 day
+--maintenanceInterval = 86400000 -- 1 day
+maintenanceInterval = 10 * 60 * 1000
 
 requestDemotionDuration = 604800000 -- 7 days
 voteChallengeDuration = 604800000 -- 7 days
@@ -25,6 +26,9 @@ voteChallengeCost = 1000
 maxPetitioners = 11
 maxChallenges = 20
 missedVotePenalty = 100 -- FRS XP
+
+-- Restrict players from voting for and challenging other characters on their account
+sameAccountEnclaveRestrictions = 1
 
 -- { rank, skillName, requiredExperience, playerCap, robe }
 lightRankingData = {
