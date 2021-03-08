@@ -87,6 +87,7 @@ class FrsManager extends ManagedService implements Logger {
 	protected transient VectorMap experienceValues;
 
 	protected transient boolean frsEnabled;
+	protected transient boolean sameAccountEnclaveRestrictions;
 
 	protected transient unsigned long petitionInterval;
 	protected transient unsigned long votingInterval;
