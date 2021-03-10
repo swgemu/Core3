@@ -57,7 +57,7 @@ public:
 		} else {
 			Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(strongReference, 128.f);
 
-			if (ptp != nullptr && !ptp->isCityControlLandingPoint()) {
+			if (ptp != nullptr) {
 				auto oldShuttle = ptp->getShuttle();
 
 				if (oldShuttle == nullptr) {
@@ -75,7 +75,6 @@ public:
 			}
 		}
 	}
-
 };
 
 #endif /* SCHEDULESHUTTLETASK_H_ */

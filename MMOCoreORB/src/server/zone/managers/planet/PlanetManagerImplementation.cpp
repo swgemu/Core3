@@ -645,7 +645,8 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 			<< object->getObjectNameStringIdName()
 			<< ":" << object->getObjectID()
 			<< ", " << searchrange
-			<< ") @ " << object->getWorldPosition().toString();
+			<< ") @ " << object->getWorldPosition().toString()
+			<< "\n";
 #endif
 
 	Reference<PlanetTravelPoint*> planetTravelPoint = getNearestPlanetTravelPoint(object->getWorldPosition(), searchrange);
@@ -653,9 +654,9 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 #if DEBUG_TRAVEL
 
 	if(planetTravelPoint == nullptr)
-		callDesc << ": DID NOT FIND POINT IN RANGE";
+		callDesc << ": DID NOT FIND POINT IN RANGE \n";
 	else
-		callDesc << ": returning: " << planetTravelPoint->toString();
+		callDesc << ": returning: " << planetTravelPoint->toString() << "\n";
 
 	info(callDesc, true);
 #endif
