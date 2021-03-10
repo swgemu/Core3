@@ -63,7 +63,6 @@ corellia = {
 		{name = "Coronet Shuttle B", x = -329.76605, z = 28, y = -4641.23, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Coronet Shuttle A", x = -25.671804, z = 28, y = -4409.7847, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Coronet Starport", x = -66.760902, z = 28, y = -4711.3281, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
-		{name = "Coronet City Control Landing", x = -148, z = 28, y = -4715, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 0, cityControlLandingPoint = 1},
 		{name = "Vreni Island Shuttle", x = -5551.9473, z = 15.890146, y = -6059.9673, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Tyrena Shuttle B", x = -5600.6367, z = 21, y = -2790.7429, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Tyrena Shuttle A", x = -5005.354, z = 21, y = -2386.9819, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
@@ -75,6 +74,10 @@ corellia = {
 		{name = "Bela Vistal Shuttleport A", x = 6644.269, z = 330, y = -5922.5225, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Bela Vistal Shuttleport B", x = 6930.8042, z = 330, y = -5534.8936, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Bela Vistal City Control Landing", x = 6902, z = 330, y = -5550, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 0, cityControlLandingPoint = 1}
+	},
+
+	cityControlLandingPoints = {
+		{name = "Coronet City Control Landing", x = -148, z = 28, y = -4715},
 	},
 
 	badgeAreas = {
@@ -118,6 +121,8 @@ dantooine = {
 		{name = "Dantooine Agro Outpost", x = 1569.66, z = 4, y = -6415.7598, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0}
 	},
 
+	cityControlLandingPoints = {},
+
 	badgeAreas = {
 		{"badge_dantari_village1",-3929,-5632,0,30,84},
 		{"badge_dantari_village2",-7185,-883,0,30,85},
@@ -152,6 +157,8 @@ dathomir = {
 		{name = "Trade Outpost", x = 618.89258, z = 6.039608, y = 3092.0142, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Science Outpost", x = -49.021923, z = 18, y = -1584.7278, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0}
 	},
+
+	cityControlLandingPoints = {},
 
 	badgeAreas = {
 		{"badge_crashed_ship",5676,1901,0,30,82},
@@ -217,6 +224,8 @@ endor = {
 		{name = "Research Outpost", x = 3201.6599, z = 24, y = -3499.76, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0}
 	},
 
+	cityControlLandingPoints = {},
+
 	badgeAreas = {
 		{"badge_dulok_villlage",5921,-2514,0,30,88},
 		{"badge_ewok_tree_villlage",4661,-2425,0,30,86},
@@ -256,6 +265,8 @@ lok = {
 	planetTravelPoints = {
 		{name = "Nym's Stronghold", x = 478.92676, z = 9, y = 5511.9565, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0}
 	},
+
+	cityControlLandingPoints = {},
 
 	badgeAreas = {
 		{"badge_imp_outpost",-1814,-3086,0,10,98},
@@ -297,14 +308,17 @@ naboo = {
 		{name = "Theed Shuttle B", x = -5005, z = 6, y = 4072, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Theed Shuttle C", x = -5411.0171, z = 6, y = 4322.3315, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Theed Spaceport", x = -4858.834, z = 5.9483199, y = 4164.0679, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
-		{name = "Theed City Control Landing", x = -4897, z = 6, y = 4124, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 0, cityControlLandingPoint = 1},
 		{name = "The Lake Retreat", x = -5494.4224, z = -150, y = -21.837162, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Moenia", x = 4731.1743, z = 4.1700001, y = -4677.5439, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Moenia Shuttleport", x = 4961.9409, z = 3.75, y = -4892.6997, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
-		{name = "Moenia City Control Landing", x = 4812, z = 4, y = -4700, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 0, cityControlLandingPoint = 1},
 		{name = "Dee'ja Peak Shuttleport", x = 5331.9375, z = 327.02765, y = -1576.6733, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Kaadara Starport", x = 5280.2002, z = -192, y = 6688.0498, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Kaadara Shuttleport", x = 5123.3857, z = -192, y = 6616.0264, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0}
+	},
+
+	cityControlLandingPoints = {
+		{name = "Moenia City Control Landing", x = 4812, z = 4, y = -4700},
+		{name = "Theed City Control Landing", x = -4897, z = 6, y = 4124,},
 	},
 
 	badgeAreas = {
@@ -360,6 +374,8 @@ rori = {
 		{name = "Narmle Shuttleport", x = -5255.4116, z = 80.664185, y = -2161.6274, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Rebel Outpost", x = 3691.9023, z = 96, y = -6403.4404, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0}
 	},
+
+	cityControlLandingPoints = {},
 
 	badgeAreas = {
 		{"badge_imp_camp",-5633,-5661,0,10,96},
@@ -439,6 +455,8 @@ talus = {
 		{name = "Nashal Shuttleport", x = 4334.5786, z = 9.8999996, y = 5431.0415, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Nashal Starport", x = 4453.7212, z = 2, y = 5354.3345, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0}
 	},
+
+	cityControlLandingPoints = {},
 
 	badgeAreas = {
 		{"badge_aqualish_cave",-4425,-1414,0,30,93},
@@ -524,10 +542,13 @@ tatooine = {
 		{name = "Mos Espa Starport", x = -2833.1609, z = 5, y = 2107.3787, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Mos Espa Shuttleport East", x = -2803.511, z = 5, y = 2182.9648, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Anchorhead Shuttleport", x = 47.565128, z = 52, y = -5338.9072, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
-		{name = "Anchorhead City Control Landing", x = 111, z = 52, y = -5338, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 0, cityControlLandingPoint = 1},
 		{name = "Mos Entha Spaceport", x = 1266.0996, z = 7, y = 3065.1392, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Mos Entha Shuttle B", x = 1395.447, z = 7, y = 3467.0117, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Mos Entha Shuttle A", x = 1730.8828, z = 7, y = 3184.6135, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, cityControlLandingPoint = 0}
+	},
+
+	cityControlLandingPoints = {
+		{name = "Anchorhead City Control Landing", x = 111, z = 52, y = -5338},
 	},
 
 	badgeAreas = {
@@ -588,6 +609,8 @@ yavin4 = {
 		{name = "Yavin IV Mining Outpost", x = -267.23914, z = 35, y = 4896.3013, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Yavin IV Imperial Outpost", x = 4054.1, z = 37, y = -6216.9, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 0, cityControlLandingPoint = 0},
 	},
+
+	cityControlLandingPoints = {},
 
 	badgeAreas = {
 		{"badge_temple_exar_kun",5097,5537,0,30,23},
