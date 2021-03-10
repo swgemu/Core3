@@ -143,6 +143,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getGender", &LuaCreatureObject::getGender },
 		{ "isRidingMount", &LuaCreatureObject::isRidingMount },
 		{ "dismount", &LuaCreatureObject::dismount },
+		{ "setCityControlShuttle", &LuaCreatureObject::setCityControlShuttle },
 		{ 0, 0 }
 };
 
@@ -1126,5 +1127,13 @@ int LuaCreatureObject::isRidingMount(lua_State* L) {
 
 int LuaCreatureObject::dismount(lua_State* L) {
 	realObject->dismount();
+	return 0;
+}
+
+int LuaCreatureObject::setCityControlShuttle(lua_State* L) {
+	Locker locker(realObject);
+
+	realObject->setCityControlShuttle(L);
+
 	return 0;
 }
