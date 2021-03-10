@@ -55,22 +55,35 @@ public:
 			planetManager->scheduleShuttle(strongReference, PlanetManager::SHUTTLEPORT);
 
 		} else {
-			Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(strongReference, 128.f);
+			if (strongReference->isCityControlShuttle()) {
+				printf( " Schedule Shuttle Task is calling getCityControlLandingPoint \n");
 
-			if (ptp != nullptr && !ptp->isCityControlLandingPoint()) {
-				auto oldShuttle = ptp->getShuttle();
+				Reference<CityControlLandingPoint*> cclp = planetManager->getCityControlLandingPoint(strongReference, 128.f);
 
-				if (oldShuttle == nullptr) {
-					if (ptp->isInterplanetary())
-						planetManager->scheduleShuttle(strongReference, PlanetManager::STARPORT);
-					else
-						planetManager->scheduleShuttle(strongReference, PlanetManager::SHUTTLEPORT);
+				auto landingShuttle = cclp->getShuttle();
 
-					ptp->setShuttle(strongReference);
+				if (landingShuttle == nullptr) {
+					cclp->setShuttle(strongReference);
+				}
 
-				} else if (oldShuttle != strongReference) {
-					strongReference->destroyObjectFromWorld(true);
-					strongReference->destroyObjectFromDatabase(true);
+			} else {
+				Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(strongReference, 128.f);
+
+				if (ptp != nullptr) {
+					auto oldShuttle = ptp->getShuttle();
+
+					if (oldShuttle == nullptr) {
+						if (ptp->isInterplanetary())
+							planetManager->scheduleShuttle(strongReference, PlanetManager::STARPORT);
+						else
+							planetManager->scheduleShuttle(strongReference, PlanetManager::SHUTTLEPORT);
+
+						ptp->setShuttle(strongReference);
+
+					} else if (oldShuttle != strongReference) {
+						strongReference->destroyObjectFromWorld(true);
+						strongReference->destroyObjectFromDatabase(true);
+					}
 				}
 			}
 		}
