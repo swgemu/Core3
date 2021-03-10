@@ -12,6 +12,8 @@
 void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
 	ZoneComponent::notifyInsertToZone(sceneObject, zone);
 
+	printf("  Shuttle Zone Component Called \n");
+
 	if (sceneObject == nullptr || !sceneObject->isCreatureObject())
 		return;
 
