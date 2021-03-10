@@ -28,37 +28,6 @@ public:
 		return point;
 	}
 
-	void insertToMessage(BaseMessage* message, CityControlLandingPoint* origin) {
-		rlock();
-
-		int totalPoints = size();
-		int landingPoints = totalPoints;
-
-		for (int i = 0; i < totalPoints; ++i) {
-			Reference<CityControlLandingPoint*> cclp = VectorMap<String, Reference<CityControlLandingPoint*> >::get(i);
-			message->insertFloat(cclp->getLandingPositionX());
-			message->insertFloat(cclp->getLandingPositionZ());
-			message->insertFloat(cclp->getLandingPositionY());
-		}
-
-		message->insertInt(landingPoints);
-
-		for (int i = 0; i < totalPoints; ++i){
-
-			Reference<CityControlLandingPoint*> cclp = VectorMap<String, Reference<CityControlLandingPoint*> >::get(i);
-			ManagedReference<CreatureObject*> shuttle = cclp->getShuttle();
-
-			if (shuttle == nullptr) {
-				message->insertInt(0);
-				continue;
-			}
-		}
-
-		message->insertInt(landingPoints);
-
-		runlock();
-	}
-
 	void readLuaObject(LuaObject* luaObject) {
 		wlock();
 

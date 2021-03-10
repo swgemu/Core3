@@ -11,14 +11,12 @@ import engine.log.Logger;
 import system.util.VectorMap;
 import system.util.SynchronizedVectorMap;
 import system.util.SynchronizedSortedVector;
-
 import server.zone.objects.region.CityRegion;
 import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.gcw.GCWManager;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 include server.zone.managers.planet.RegionMap;
-
 include terrain.manager.TerrainManager;
 include server.zone.managers.planet.MissionTargetMap;
 include templates.snapshot.WorldSnapshotNode;
@@ -52,7 +50,9 @@ class PlanetManager extends ManagedService implements Logger {
 
 	protected PlanetTravelPointList planetTravelPointList;
 
+
 	protected CityControlPointList cityControlPointList;
+
 
 	//In seconds.
 	protected int shuttleportAwayTime;
@@ -198,7 +198,6 @@ class PlanetManager extends ManagedService implements Logger {
 
 	@local
 	public native CityControlLandingPoint getCityControlLandingPoint(CreatureObject shuttle, float range = 16000.0);
-
 
 	/**
 	 * Get a random spawn point on the planet.

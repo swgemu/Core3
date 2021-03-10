@@ -88,7 +88,6 @@ public:
 			}
 		}
 	}
-
 };
 
 #endif /* SCHEDULESHUTTLETASK_H_ */
