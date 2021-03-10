@@ -20,6 +20,10 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+
+
+		creature->sendSystemMessage(" purchase ticket command called ");
+
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 

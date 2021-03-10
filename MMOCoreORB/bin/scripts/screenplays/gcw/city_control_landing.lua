@@ -37,7 +37,7 @@ end
 function CityControlLanding:chanceToSpawn()
 	local chance = getRandomNumber(100)
 
-	if (chance <= 15) then
+	if (chance <= 15) then -- 15% Chance
 		createEvent(20 * 60 * 1000, "CityControlLanding", "spawnCityLanding", "", "") --20min after chance roll to allow for load time
 	else
 		createEvent(6 * 60 * 60 * 1000, "CityControlLandingScreenplay", "chanceToSpawn", "", "") --6hrs
@@ -79,9 +79,8 @@ function CityControlLanding:spawnCityLanding()
 
 	if (pShuttle ~= nil) then
 
-		local shuttlePost = readStringData("ShuttlePosture:")
-
 		if (shuttleTemplate == "object/creature/npc/theme_park/player_shuttle.iff") then
+			CreatureObject(pShuttle):setCityControlShuttle(true)
 			CreatureObject(pShuttle):setPosture(PRONE)
 		else
 			CreatureObject(pShuttle):setPosture(UPRIGHT)

@@ -33,6 +33,7 @@
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "conf/ConfigManager.h"
 #include "PlanetTravelPoint.h"
+#include "CityControlLandingPoint.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
 
@@ -45,6 +46,7 @@ void PlanetManagerImplementation::initialize() {
 	info("Loading planet.");
 
 	planetTravelPointList->setZoneName(zone->getZoneName());
+	cityControlPointList->setZoneName(zone->getZoneName());
 
 	loadLuaConfig();
 	loadTravelFares();
@@ -147,6 +149,10 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		LuaObject planetTravelPointsTable = luaObject.getObjectField("planetTravelPoints");
 		planetTravelPointList->readLuaObject(&planetTravelPointsTable);
 		planetTravelPointsTable.pop();
+
+		LuaObject cityControlLandingPointsTable = luaObject.getObjectField("cityControlLandingPoints");
+		cityControlPointList->readLuaObject(&cityControlLandingPointsTable);
+		cityControlLandingPointsTable.pop();
 
 		loadSnapshotObjects();
 
@@ -645,7 +651,8 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 			<< object->getObjectNameStringIdName()
 			<< ":" << object->getObjectID()
 			<< ", " << searchrange
-			<< ") @ " << object->getWorldPosition().toString();
+			<< ") @ " << object->getWorldPosition().toString()
+			<< "\n";
 #endif
 
 	Reference<PlanetTravelPoint*> planetTravelPoint = getNearestPlanetTravelPoint(object->getWorldPosition(), searchrange);
@@ -653,9 +660,9 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 #if DEBUG_TRAVEL
 
 	if(planetTravelPoint == nullptr)
-		callDesc << ": DID NOT FIND POINT IN RANGE";
+		callDesc << ": DID NOT FIND POINT IN RANGE \n";
 	else
-		callDesc << ": returning: " << planetTravelPoint->toString();
+		callDesc << ": returning: " << planetTravelPoint->toString() << "\n";
 
 	info(callDesc, true);
 #endif
@@ -690,6 +697,45 @@ PlanetTravelPoint* PlanetManagerImplementation::getRandomStarport() {
 	}
 
 	return planetStarports.get(System::random(planetStarports.size() - 1));
+}
+
+CityControlLandingPoint* PlanetManagerImplementation::getCityControlLandingPoint(CreatureObject* shuttle, float range) {
+	Reference<CityControlLandingPoint*> cityControlPoint = nullptr;
+
+	String shuttleZone = zone->getZoneName();
+	const Vector3& shuttlePos = shuttle->getWorldPosition();
+
+	for (int i = 0; i < cityControlPointList->size(); i++) {
+		const auto& cclp = cityControlPointList->get(i);
+
+		float dist = shuttlePos.distanceTo(cclp->getLandingPosition());
+
+		if (shuttleZone == cclp->getPointZone() && dist < range) {
+			range = dist;
+			cityControlPoint = cclp;
+		}
+	}
+
+#if DEBUG_CITYCONTROLLANDING
+	StringBuffer cityControlMsg;
+
+	cityControlMsg
+			<< "get City Control Landing Point ( "
+			<< shuttle->getObjectNameStringIdName()
+			<< ":" << shuttle->getObjectID()
+			<< ", " << range
+			<< ") @ " << shuttle->getWorldPosition().toString()
+			<< "\n";
+
+	if (cityControlPoint == nullptr)
+		cityControlMsg << " get City Control Point Failed \n";
+	else
+		cityControlMsg << ": returning: " << cityControlPoint->toString() << "\n";
+
+	info(cityControlMsg, true);
+#endif
+
+	return cityControlPoint;
 }
 
 Vector3 PlanetManagerImplementation::getRandomSpawnPoint() {
@@ -993,6 +1039,7 @@ void PlanetManagerImplementation::finalize() {
 	terrainManager = nullptr;
 	weatherManager = nullptr;
 	planetTravelPointList = nullptr;
+	cityControlPointList = nullptr;
 	performanceLocations = nullptr;
 	zone = nullptr;
 	server = nullptr;
