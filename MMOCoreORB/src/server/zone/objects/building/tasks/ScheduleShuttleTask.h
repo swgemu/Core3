@@ -55,27 +55,37 @@ public:
 			planetManager->scheduleShuttle(strongReference, PlanetManager::SHUTTLEPORT);
 
 		} else {
-			Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(strongReference, 128.f);
+			if (strongReference->isCityControlShuttle()) {
+				Reference<CityControlLandingPoint*> cclp = planetManager->getCityControlLandingPoint(strongReference, 128.f);
 
-			if (ptp != nullptr && !ptp->isCityControlLandingPoint()) {
-				auto oldShuttle = ptp->getShuttle();
+				auto landingShuttle = cclp->getShuttle();
 
-				if (oldShuttle == nullptr) {
-					if (ptp->isInterplanetary())
-						planetManager->scheduleShuttle(strongReference, PlanetManager::STARPORT);
-					else
-						planetManager->scheduleShuttle(strongReference, PlanetManager::SHUTTLEPORT);
+				if (landingShuttle == nullptr) {
+					cclp->setShuttle(strongReference);
+				}
 
-					ptp->setShuttle(strongReference);
+			} else {
+				Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(strongReference, 128.f);
 
-				} else if (oldShuttle != strongReference) {
-					strongReference->destroyObjectFromWorld(true);
-					strongReference->destroyObjectFromDatabase(true);
+				if (ptp != nullptr) {
+					auto oldShuttle = ptp->getShuttle();
+
+					if (oldShuttle == nullptr) {
+						if (ptp->isInterplanetary())
+							planetManager->scheduleShuttle(strongReference, PlanetManager::STARPORT);
+						else
+							planetManager->scheduleShuttle(strongReference, PlanetManager::SHUTTLEPORT);
+
+						ptp->setShuttle(strongReference);
+
+					} else if (oldShuttle != strongReference) {
+						strongReference->destroyObjectFromWorld(true);
+						strongReference->destroyObjectFromDatabase(true);
+					}
 				}
 			}
 		}
 	}
-
 };
 
 #endif /* SCHEDULESHUTTLETASK_H_ */

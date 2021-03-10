@@ -23,6 +23,8 @@ include templates.snapshot.WorldSnapshotNode;
 include templates.snapshot.WorldSnapshotIff;
 include server.zone.managers.planet.PlanetTravelPointList;
 include server.zone.managers.planet.PlanetTravelPoint;
+include server.zone.managers.planet.CityControlPointList;
+include server.zone.managers.planet.CityControlLandingPoint;
 include engine.lua.LuaObject;
 include server.zone.objects.building.ShuttleMap;
 include server.zone.managers.planet.ClientPoiDataTable;
@@ -47,6 +49,8 @@ class PlanetManager extends ManagedService implements Logger {
 	protected TravelFare travelFares;
 
 	protected PlanetTravelPointList planetTravelPointList;
+
+	protected CityControlPointList cityControlPointList;
 
 	//In seconds.
 	protected int shuttleportAwayTime;
@@ -122,6 +126,8 @@ class PlanetManager extends ManagedService implements Logger {
 
 		planetTravelPointList = new PlanetTravelPointList();
 
+		cityControlPointList = new CityControlPointList();
+
 		spawnedEventObjects.setNoDuplicateInsertPlan();
 		spawnedEventStructures.setNoDuplicateInsertPlan();
 	}
@@ -188,6 +194,9 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(@dereferenced final Vector3 position, float range = 16000.0);
 
+	@local
+	public native CityControlLandingPoint getCityControlLandingPoint(CreatureObject shuttle, float range = 16000.0);
+
 
 	/**
 	 * Get a random spawn point on the planet.
@@ -197,7 +206,6 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	@dereferenced
 	public native Vector3 getRandomSpawnPoint();
-
 
 	/**
 	 * Get a spawn point that is "in sight" for the supplied creature.
