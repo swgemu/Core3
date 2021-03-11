@@ -94,7 +94,7 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 		{"corsec_trooper", "corsec_trooper", -347.5,28,-4442.6,123,0, "", ""}
 	},
 
-	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "explorer", "noble_patrol", "scientist_patrol"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "explorer", "miner", "noble_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
 		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
@@ -140,6 +140,47 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 		npc_10 = {{69, 28, -4568, 0, false}, {43, 28, -4551, 0, true}, {0, 28, -4518, 0, false}, {43, 28, -4551, 0, true}},
 	},
 
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old"},
+	stationaryNpcs = {"artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer", "gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scientist", "slicer"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, -306.34, 28, -4620.82, 315, 0, ""},
+		{1, -312.404, 28, -4646.51, 242.881, 0, ""},
+		{1, -135.995, 28, -4745.63, 251.824, 0, ""},
+		{1, -306.539, 28, -4546.52, 95.6639, 0, ""},
+		{1, -350.892, 28, -4219.92, 244.079, 0, ""},
+		{1, -350.998, 28, -4250.76, 129.539, 0, ""},
+		{1, -302.182, 28, -4300.76, 29.3627, 0, ""},
+		{1, -282.189, 28, -4343.57, 319.557, 0, ""},
+		{1, -239.932, 28, -4522.15, 78.2005, 0, ""},
+		{1, -163.792, 28, -4606.3, 8.06951, 0, ""},
+		{1, -163.751, 28, -4552.14, 55.4278, 0, ""},
+		{1, -168.38, 28, -4515.61, 103.857, 0, ""},
+		{1, -158.666, 28, -4526.31, 289.183, 0, ""},
+		{1, -106.79, 28, -4528.6, 95, 0, ""},
+		{1, -14.9281, 28, -4451.64, 343, 0, ""},
+		{1, 40.5453, 28, -4416.63, 80.7447, 0, ""},
+		{1, 14.4606, 28, -4407.11, 38.4825, 0, ""},
+		{1, -15.4515, 28, -4415.25, 54.8457, 0, ""},
+		{1, -64.8198, 28, -4398.56, 247.888, 0, ""},
+		{1, -78.7157, 28, -4286.4, 22.2156, 0, ""},
+		{1, -71.0095, 28, -4325.21, 60.8559, 0, ""},
+		{1, -87.6481, 28, -4302.16, 97.3912, 0, ""},
+		{1, -112.646, 28, -4310.7, 151.383, 0, ""},
+		{1, -118.993, 28, -4285.29, 181.854, 0, ""},
+		{1, -54.3716, 28, -4304.72, 97.2405, 0, ""},
+		{1, -56.7639, 28, -4229.33, 47.6277, 0, ""},
+		{1, -103.047, 28, -4182.61, 84.8143, 0, ""},
+		{1, -163.872, 28, -4181.48, 294.873, 0, ""},
+		{1, -122.156, 28, -4392.8, 270.52, 0, ""},
+		{1, -181.008, 28, -4505.08, 109.502, 0, ""},
+		{1, 71.9271, 28, -4568.97, 267.444, 0, ""},
+		{1, 10.3286, 28, -4633.8, 159.984, 0, ""},
+		{1, 88.4953, 28, -4727.94, 340.398, 0, ""},
+		{1, 55.6269, 28, -4782.24, 123.611, 0, ""},
+		{1, 101.283, 28, -4554.86, 358.797, 0, ""},
+	},
 }
 
 registerScreenPlay("CorelliaCoronetScreenPlay", true)
@@ -150,6 +191,7 @@ function CorelliaCoronetScreenPlay:start()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 	end
 end
 
@@ -342,41 +384,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_imagedesigner",0,-21.4483,2.12878,74.4461,185,2365400)
 
 	--Outside Misc
-	spawnMobile(self.planet, "businessman",60,-306.34,28,-4620.82,67.4368,0)
-	spawnMobile(self.planet, "businessman",60,-312.404,28,-4646.51,242.881,0)
-	spawnMobile(self.planet, "businessman",60,-135.995,28,-4745.63,251.824,0)
-	spawnMobile(self.planet, "commoner",60,-306.539,28,-4546.52,95.6639,0)
-	spawnMobile(self.planet, "commoner",60,-350.892,28,-4219.92,244.079,0)
-	spawnMobile(self.planet, "commoner",60,-350.998,28,-4250.76,129.539,0)
-	spawnMobile(self.planet, "commoner",60,-302.182,28,-4300.76,29.3627,0)
-	spawnMobile(self.planet, "commoner",60,-282.189,28,-4343.57,319.557,0)
-	spawnMobile(self.planet, "commoner",60,-239.932,28,-4522.15,78.2005,0)
-	spawnMobile(self.planet, "commoner",60,-163.792,28,-4606.3,8.06951,0)
-	spawnMobile(self.planet, "commoner",60,-163.751,28,-4552.14,55.4278,0)
-	spawnMobile(self.planet, "commoner",60,-168.38,28,-4515.61,103.857,0)
-	spawnMobile(self.planet, "commoner",60,-158.666,28,-4526.31,289.183,0)
-	spawnMobile(self.planet, "commoner",60,-106.79,28,-4528.6, 95,0)
-	spawnMobile(self.planet, "commoner",60,-14.9281,28,-4451.64,343.833,0)
-	spawnMobile(self.planet, "commoner",60,40.5453,28,-4416.63,80.7447,0)
-	spawnMobile(self.planet, "commoner",60,14.4606,28,-4407.11,38.4825,0)
-	spawnMobile(self.planet, "commoner",60,-15.4515,28,-4415.25,54.8457,0)
-	spawnMobile(self.planet, "commoner",60,-64.8198,28,-4398.56,247.888,0)
-	spawnMobile(self.planet, "commoner",60,-78.7157,28,-4286.4,22.2156,0)
-	spawnMobile(self.planet, "commoner",60,-71.0095,28,-4325.21,60.8559,0)
-	spawnMobile(self.planet, "commoner",60,-87.6481,28,-4302.16,97.3912,0)
-	spawnMobile(self.planet, "commoner",60,-112.646,28,-4310.7,151.383,0)
-	spawnMobile(self.planet, "commoner",60,-118.993,28,-4285.29,181.854,0)
-	spawnMobile(self.planet, "commoner",60,-54.3716,28,-4304.72,97.2405,0)
-	spawnMobile(self.planet, "commoner",60,-56.7639,28,-4229.33,47.6277,0)
-	spawnMobile(self.planet, "commoner",60,-103.047,28,-4182.61,84.8143,0)
-	spawnMobile(self.planet, "commoner",60,-163.872,28,-4181.48,294.873,0)
-	spawnMobile(self.planet, "commoner",60,-122.156,28,-4392.8,270.52,0)
-	spawnMobile(self.planet, "commoner",60,-181.008,28,-4505.08,109.502,0)
-	spawnMobile(self.planet, "commoner",60,71.9271,28,-4568.97,267.444,0)
-	spawnMobile(self.planet, "commoner",60,10.3286,28,-4633.8,159.984,0)
-	spawnMobile(self.planet, "commoner",60,88.4953,28,-4727.94,340.398,0)
-	spawnMobile(self.planet, "commoner",60,55.6269,28,-4782.24,123.611,0)
-	spawnMobile(self.planet, "commoner",60,101.283,28,-4554.86,358.797,0)
+
 	pNpc = spawnMobile(self.planet, "commoner", 60, -51.7918, 28, -4662.65, 360.011, 0)
 	self:setMoodString(pNpc, "calm")
 	self:setCustomName(pNpc, "Hunter Javeezo")
@@ -396,7 +404,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-359,28,-4210,270,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-293,28,-4251,315,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-184,28,-4342,90,0)
-	spawnMobile(self.planet, "io_tsomcren",60,-140.701,28,-4719.16,44.0418,0)
+	spawnMobile(self.planet, "io_tsomcren",60,-140.70, 28, -4717.5, 180, 0)
 	spawnMobile(self.planet, "junk_dealer", 0, -118.06, 28, -4791.91, -120, 0)
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -189.62, 28, -4371.06, 0, 0)
 	if pNpc ~= nil then
@@ -468,8 +476,8 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "ragtag_loon",300,-525.124,5.82557,-4079.84,207.519,0)
 	spawnMobile(self.planet, "ragtag_loon",300,-534.124,6.67109,-4078.84,149.496,0)
 	spawnMobile(self.planet, "ragtag_maniac",300,-691.483,7.08209,-4227.75,29.5129,0)
-	spawnMobile(self.planet, "ral_mundi",60,-138.975,28,-4718.86,10.0036,0)
-	spawnMobile(self.planet, "tarth_jaxx",60,-137.464,28,-4718.83,342.825,0)
+	spawnMobile(self.planet, "ral_mundi",60,-138.975,28,-4718.86, 180, 0)
+	spawnMobile(self.planet, "tarth_jaxx",60,-137.3, 28, -4717.8, 180, 0)
 
 	--Trainers Outside
 	spawnMobile(self.planet, "trainer_architect",0,-161,28,-4698,-95,0)
