@@ -58,6 +58,38 @@ CorelliaDoabaGuerfelScreenPlay = CityScreenPlay:new {
 		npc_8 = {{3162, 290, 4966, 0, false}, {3144, 290, 4979, 0, true}, {3119, 284, 4994, 0, true}, {3152, 290, 4988, 0, true}},
 	},
 
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old"},
+	stationaryNpcs = {"artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer", "gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scientist", "slicer"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, 3357.46, 308, 5639.47, 212, 0, ""},
+		{1, 3414.81, 308, 5624.67, 237, 0, ""},
+		{1, 3179.26, 300, 5213.19, 233, 0, ""},
+		{1, 3117.25, 300, 5194.73, 153, 0, ""},
+		{1, 3108.26, 300, 5229.01, 219, 0, ""},
+		{1, 3192.45, 302, 5113.34, 189, 0, ""},
+		{1, 3159.78, 300, 5397.22, 81, 0, ""},
+		{1, 3199.22, 300, 5449.92, 146, 0, ""},
+		{1, 3277.95, 300, 5438.73, 232, 0, ""},
+		{1, 3204.19, 290, 5003.32, 222, 0, ""},
+		{1, 3296.88, 324, 5760.95, 196, 0, ""},
+		{1, 3300.28, 308, 5495.49, 0, 0, "worried"},
+		{1, 3316.17, 308, 5496.71, 3, 0, ""},
+		{1, 3308.36, 300, 5396.79, 274, 0, ""},
+		{1, 3320.73, 324, 5709.36, 340,0, ""},
+		{1, 3307.64, 308.031, 5618.18, 225, 0, ""},
+		{1, 3385.33, 308, 5699.29, 242, 0, ""},
+		{1, 3303.05, 300, 5351.87, 319, 0, ""},
+		{1, 3431.28, 308, 5563.41, 159, 0, ""},
+		{1, 3196.61, 295.033, 5073.8, 350, 0, "conversation"},
+		{1, 3196.61, 295.206, 5074.8, 180,0, "conversation"},
+		{1, 3184.22, 300, 5162.04, 0, 0, "conversation"},
+		{1, 3184.22, 300, 5163.04, 180, 0, "conversation"},
+		{1, 3145.1, 290, 4995.55, 180, 0, "conversation"},
+		{1, 3145.1, 289.991, 4994.55, 359, 0, "conversation"},
+	},
+
 }
 
 registerScreenPlay("CorelliaDoabaGuerfelScreenPlay", true)
@@ -68,6 +100,7 @@ function CorelliaDoabaGuerfelScreenPlay:start()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 	end
 end
 
@@ -82,8 +115,6 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 	--Starport
 	local pNpc = spawnMobile(self.planet, "entertainer",60,53.5,0.6,47.8,-80,9665359)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner", 60,3357.46,308,5639.47,212.301,0)
-	spawnMobile(self.planet, "commoner", 60,3414.81,308,5624.67,237.948,0)
 	spawnMobile(self.planet, "noble", 60,47.5747,0.974633,22.0108,238.024,9665365)
 	spawnMobile(self.planet, "businessman", 60,52.3124,0.639417,48.2148,107.997,9665359)
 	pNpc = spawnMobile(self.planet, "chiss_male",60,36.7068,0.639417,40.446,180.001,9665359)
@@ -224,36 +255,6 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 
 	--Outside
 	pNpc = spawnMobile(self.planet, "info_broker",60,3202.28,290,4989.06,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner", 60,3179.26,300,5213.19,233.367,0)
-	spawnMobile(self.planet, "commoner", 60,3117.25,300,5194.73,153.311,0)
-	spawnMobile(self.planet, "commoner", 60,3108.26,300,5229.01,219.942,0)
-	spawnMobile(self.planet, "commoner", 60,3192.45,302.606,5113.34,189.527,0)
-	spawnMobile(self.planet, "commoner", 60,3159.78,300,5397.22,81.297,0)
-	spawnMobile(self.planet, "commoner", 60,3199.22,300,5449.92,146.634,0)
-	spawnMobile(self.planet, "commoner", 60,3277.95,300,5438.73,232.081,0)
-	spawnMobile(self.planet, "commoner", 60,3204.19,290,5003.32,222.69,0)
-	spawnMobile(self.planet, "commoner", 60,3296.88,324,5760.95,196.788,0)
-	pNpc = spawnMobile(self.planet, "commoner_technician",60,3300.28,308,5495.49,0,0)
-	self:setMoodString(pNpc, "worried")
-	spawnMobile(self.planet, "commoner", 60,3316.17,308,5496.71,3.31657,0)
-	spawnMobile(self.planet, "commoner", 60,3308.36,300,5396.79,274.041,0)
-	spawnMobile(self.planet, "commoner", 60,3320.73,324,5709.36,340.725,0)
-	spawnMobile(self.planet, "commoner", 60,3307.64,308.031,5618.18,225.888,0)
-	spawnMobile(self.planet, "commoner", 60,3385.33,308,5699.29,242.976,0)
-	spawnMobile(self.planet, "commoner", 60,3303.05,300,5351.87,319.052,0)
-	spawnMobile(self.planet, "commoner", 60,3431.28,308,5563.41,159.884,0)
-	pNpc = spawnMobile(self.planet, "farmer_rancher",60,3196.61,295.033,5073.8,350.188,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "farmer",60,3196.61,295.206,5074.8,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "businessman",60,3184.22,300,5162.04,0,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "scientist",60,3184.22,300,5163.04,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "bounty_hunter",300,3145.1,290,4995.55,180.005,0)
-	self:setMoodString(pNpc, "angry")
-	pNpc = spawnMobile(self.planet, "farmer", 60, 3145.1, 289.991, 4994.55, 359.489, 0)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3100,300,5224,90,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3123,300,5188,0,0)
