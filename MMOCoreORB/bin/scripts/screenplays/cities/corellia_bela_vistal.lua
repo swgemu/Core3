@@ -81,6 +81,21 @@ CorelliaBelaVistalScreenPlay = CityScreenPlay:new {
 		npc_8 = {{6829, 315, -5813, 0, true}, {6794, 315, -5805, 0, true}, {6736, 315, -5816, 0, true}, {6778, 315, -5813, 0, true}},
 	},
 
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old"},
+	stationaryNpcs = {"artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer", "gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scientist", "slicer"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, 6823.1, 315, -5610.5, 225, 0, "conversation"},
+		{1, 6821.55, 314.999, -5611.9, 50, 0, "conversation"},
+		{1, 6834.25, 315, -5577.61, 150, 0, ""},
+		{1, 6896.18, 330, -5577.91, 290, 0, ""},
+		{1, 6867.23, 315, -5758.29, 338, 0, ""},
+		{1, 6810.15, 315, -5699.05, 137, 0, ""},
+		{1, 6798.04, 315, -5731.94, 270, 0, ""},
+		{1, 6724.41, 330, -5909.35, 213, 0, ""},
+	},
+
 }
 
 registerScreenPlay("CorelliaBelaVistalScreenPlay", true)
@@ -89,6 +104,7 @@ function CorelliaBelaVistalScreenPlay:start()
 	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
 		self:spawnSceneObjects()
+		self:spawnStationaryMobiles()
 		self:spawnPatrolMobiles()
 		self:spawnGcwMobiles()
 	end
@@ -141,21 +157,12 @@ function CorelliaBelaVistalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "neutral")
 
 	--Outside
-	pNpc = spawnMobile("corellia", "commoner", 60, 6823.1, 315, -5610.5, 225, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile("corellia", "commoner", 60, 6821.55, 314.999, -5611.9, 50, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile("corellia", "commoner", 60, 6834.25, 315, -5577.61, 150.226, 0)
-	spawnMobile("corellia", "commoner", 60, 6896.18, 330, -5577.91, 290.907, 0)
-	spawnMobile("corellia", "commoner", 60, 6867.23, 315, -5758.29, 338.874, 0)
-	spawnMobile("corellia", "commoner", 60, 6810.15, 315, -5699.05, 137.601, 0)
-	spawnMobile("corellia", "commoner", 60, 6798.04, 315, -5731.94, 270, 0)
+
 	spawnMobile("corellia", "criminal", 300, 6871.34, 315, -5753.42, 355.947, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6847.6, 315, -5838.6, -1, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6852.5, 315, -5838.8, -24, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6855.7, 315, -5837.1, -34, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6860.3, 315, -5833.9, -57, 0)
-	spawnMobile("corellia", "noble",60, 6724.41, 330, -5909.35, 213.723, 0)
 	spawnMobile("corellia", "imperial_recruiter", 60,6718.8,315.0,-5804.6,-174,0)
 
 	--Misc

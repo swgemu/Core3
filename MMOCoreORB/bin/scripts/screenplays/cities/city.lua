@@ -319,12 +319,15 @@ function CityScreenPlay:spawnStationaryMobile(num)
 		template = stationaryTemps[templateNum]
 	end
 
-	--{respawn, x, z, y, direction, cell, mood}
+	--{respawn, x, z, y, direction, cell, mood, combatNpc}
 	local pMobile = spawnMobile(self.planet, template, mobile[1], mobile[2], mobile[3], mobile[4], mobile[5], mobile[6])
 
 	if (pMobile ~= nil) then
 		if mood ~= "" then
 			self:setMoodString(pMobile, mood)
 		end
+
+		CreatureObject(pMobile):setPvpStatusBitmask(0)
+
 	end
 end
