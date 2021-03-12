@@ -61,6 +61,49 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 		npc_12 = {{-4902, 6, 4199, 0, true}, {-4933, 6, 4227, 0, true}},
 		npc_13 = {{-4889.4, 6, 4081.8, 0, false}, {-4880, 6, 4083, 0, true}, {-4844, 6, 4118, 0, false}, {-4845, 6, 4155, 0, false}, {-4844, 6, 4118, 0, true}},
 	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_naboo", "commoner_old"},
+	stationaryNpcs = {"agriculturalist", "artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer",
+						"gambler", "gungan_hunter", "gungan_priest", "gungan_priest", "info_broker", "medic", "mercenary", "miner", "noble", "official", "patron_ishitib", "pilot", "rancher", "scientist", "scout_trooper", "slicer", "traveller"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{ 1, -5827.81, 6, 4173.98, 180, 0, "conversation"}, { 1, -5258.93, 6, 4187.17, 180, 0, "conversation"}, { 1, -5082.41, 6, 4261.15, 180, 0, "conversation"}, { 1, -5083.5, 6, 4259.9, 42, 0, "conversation"},
+		{ 1, -5394.06, 6, 4519.32, 169, 0, ""}, { 1, -5384.95, 6, 4283.38, 71, 0, ""}, { 1, -5256.72, 6, 4254.43, 243, 0, ""}, { 1, -5319.27, 6, 4365.19, 286 , 0, ""},
+		{ 1, -5327.58, 6, 4267.42, 170, 0, ""}, { 1, -5140.78, 6, 4404.92, 212, 0, ""}, { 1, -6036.18, 6, 4286.85, 147, 0, ""}, { 1, -6055.49, 6, 4319.64, 186, 0, ""},
+		{ 1, -6040.72, 6, 4260.46, 325, 0, ""}, { 1, -5282.92, 6, 4405.65, 279, 0, ""}, { 1, -5280.52, 6, 4372.79, 226, 0, ""}, { 1, -5281.75, 6, 4325.98, 47, 0, ""},
+		{ 1, -5306.24, 6, 4357.56, 77, 0, ""}, { 1, -5326.21, 6, 4292.88,1, 55, 0, ""},	{ 1, -5309.23, 6, 4307.01, 78, 0, ""}, { 1, -5371.2, 6, 4337.4, 57, 0, ""},
+		{ 1, -5392.94, 6, 4361.06, 74, 0, ""}, { 1, -5370.57, 6, 4384.5, 150, 0, ""}, { 1, -5399.67, 6,4424.78, 313, 0, ""}, { 1, -5380.45, 6, 4628.71, 65, 0, ""},
+		{ 1, -5396.24, 6, 4492.81, 306, 0, ""}, { 1, -6023.52, 6, 4213.29, 308, 0, ""}, { 1, -5219.06, 6, 4291.75, 225, 0, ""}, { 1, -5194.95, 6, 4189.82, 3, 0, ""},
+		{ 1, -5135.69, 6, 4219.76, 3, 0, ""}, { 1,-5124.32, 6, 4230.7, 188, 0, ""}, { 1, -5165.37, 6, 4173.32, 44, 0, ""}, { 1, -5171.36, 6, 4148.39, 89, 0, ""},
+		{ 1, -5123.13, 6, 4201.32, 268, 0, ""}, { 1, -5116.4, 6, 4263.5, 40, 0, "conversation"}, { 1, -5114.4, 6, 4265, 220, 0, "conversation"}, { 1, -5101.22, 6, 4246.47, 39, 0, ""},
+		{ 1, -5089.1, 6, 4284.4, 278, 0, ""}, { 1, -5069.74, 6, 4262.45, 304, 0, ""}, {1, -4835.5, 6.0, 4151.3, 157, 0, "conversation"}, {1, -4835.3, 6.0, 4150.1, 349, 0, "conversation"},
+		{ 1, -4865.4, 6, 4161.9, 308, 0, ""}, { 1, -4902.73, 6, 4106.81, 350, 0, ""}, { 1, -4917.2, 6.0, 4098.9, 338, 0, "conversation"}, {1, -4917.5, 6.0, 4100.1, 149, 0, "conversation"},
+		{ 1, -5075.93, 6, 4204.5, 258, 0, ""}, { 1, -5053.71, 6, 4151.61, 236, 0, ""}, { 1, -5090.67, 6, 4173.27, 324, 0, ""}, { 1, -5088.5, 6, 4152.21, 228, 0, ""},
+		{ 1, -5076.56, 6, 4162.09, 47, 0, ""}, { 1, -5032.44, 6, 4131.62, 179, 0, ""},	{ 1, -5019.1, 6, 4125.83, 354, 0, ""}, { 1, -5023.92, 6, 4040.07, 112, 0, ""},
+		{ 1, -5004.8, 6, 4067.54, 285, 0, ""}, { 1, -5037.78, 6, 4078.71, 14, 0, ""}, { 1, -5028.7, 6, 4237.1, 225, 0, "conversation"},	{1, -5029.5, 6, 4236.2, 45, 0, "conversation"},
+		{ 1, -5048.7, 6, 4225.4, 225, 0, "conversation"}, { 1, -5049.5, 6, 4224.1, 41, 0, "conversation"}, { 1, -5007.98, 6, 4111.83, 156, 0, ""}, { 1, -5021.05, 6, 4230.04, 95, 0, ""},
+		{ 1, -4991.86, 6, 4125.22, 355, 0, ""}, { 1,-4970.37, 6, 4069.78, 230, 0, ""},	{ 1, -4892.24, 6, 4083, 131, 0, ""}, { 1, -4933.63, 6, 4090.17, 355, 0, ""},
+		{ 1, -4921.08, 6, 4061.48, 324, 0, ""}, { 1, -4901.7, 6, 4197.5, 55, 0, "conversation"}, {1, -4978.62, 6, 4119.77, 158, 0, ""},	{1, -4941.05, 6, 4184.26, 54, 0, ""},
+		{ 1, -4968.55, 6, 4158.78, 56, 0, ""}, { 1, -4978.84, 6, 4263.64, 225, 0, ""}, {1, -4973.93, 6, 4220.31, 28, 0, ""}, {1, -4981.69, 6, 4244.41, 37, 0, ""},
+		{ 1, -4983.97, 6, 4209.75, 54, 0, ""}, { 1, -4976.0, 6, 4193.5, 45, 0, ""}, { 1, -4973.2, 6, 4175.16, 163, 0, ""}, { 1, -4969, 6, 4192, 45, 0, "conversation"},
+		{ 1, -4967.6, 6, 4193.8, 225, 0, "conversation"}, { 1,-5803.39, 6, 4101.34, 219, 0, ""}, {1, -5858.79, 6, 4147.3, 177, 0, ""},	{1, -5941.62, 6, 4339.4, 156, 0, ""},
+		{ 1, -5996.82, 6, 4309.73, 327, 0, ""}, { 1, -5968.83, 6, 4287.92, 169, 0, ""},	{ 1, -5996.87, 6, 4269.75, 70, 0, ""}, { 1,-5928.72, 6, 4217.24, 56, 0, ""},
+		{ 1, -5727.93, 6, 4316.95, 342, 0, ""}, { 1, -5741.57, 6,4304.91, 133, 0, ""},	{ 1, -5757.67, 6, 4411.04, 296, 0, ""}, { 1,-5818.26, 6, 4407.8, 25, 0, ""},
+		{ 1, -5751.98, 6, 4147.86, 61, 0, ""}, { 1, -5729.03, 6, 4120.76, 304, 0, ""},	{ 1, -5709.29, 6, 4134.09, 24, 0, ""}, { 1,-5675.02, 6, 4238.39, 193, 0, ""},
+		{ 1, -5686.06, 6, 4307.41, 304, 0, ""},	{ 1, -5663.64, 6, 4136.03, 34, 0, ""}, { 1, -5690.65, 6, 4124.1, 313, 0, ""}, { 1,-5632.25, 6, 4137.72, 121, 0, ""},
+		{ 1, -5592.68, 6, 4154.97, 125, 0, ""}, { 1, -5600.12, 6, 4053.65, 55, 0, ""},	{ 1, -5418.26, 6, 4347.1, 173, 0, ""}, { 1,-5409.46, 6, 4386.55, 51, 0, ""},
+		{ 1, -5425.82, 6, 4371.62, 158, 0, ""}, { 1, -5416.72, 6, 4413.87, 130, 0, ""},	{ 1, -5428.98, 6, 4447.99, 285, 0, ""}, { 1,-5449.78, 6, 4428.75, 8, 0, ""},
+		{ 1, -5457.38, 6, 4469.32, 299, 0, ""}, { 1, -5468.87, 6, 4432.8, 25, 0, ""}, { 1, -5458.78, 6, 4343.19, 264, 0, ""},	{ 1,-5485.31, 6, 4373.11, 251, 0, ""},
+		{ 1, -5492.21, 6, 4337.69, 94, 0, ""}, { 1, -5507.67, 6, 4309.38, 330, 0, ""},	{ 1, -5520.11, 6, 4349.32, 243, 0, ""}, { 1,-5525.24, 6, 4430.28, 32, 0, ""},
+		{ 1, -5537.28, 6, 4411.34, 252, 0, ""}, { 1, -5545.73, 6, 4466.12, 324, 0, ""},	{ 1, -5565.53, 6, 4469.02, 122, 0, ""}, { 1,-5541.82, 6,4394.46, 238, 0, ""},
+		{ 1, -5547.21, 6, 4383.24, 155, 0, ""}, { 1, -5554.8, 6, 4319.26, 256, 0, ""}, { 1, -5541.38, 6, 4302.99, 60, 0, ""}, { 1,-5558.64, 6, 4283.8, 12, 0, ""},
+		{ 1, -5599.43, 6, 4261.62, 241, 0, ""}, { 1, -5583.5, 6, 4237.52, 344, 0, ""}, { 1, -5562.58, 6, 4208.34, 326, 0, ""}, { 1, -5507.69, 6, 4195.83, 129, 0, ""},
+		{ 1, -5487.23, 6, 4193.99, 298, 0, ""}, { 1, -5453.08, 6, 4198.55, 346, 0, ""}, { 1, -5457.43, 6, 4156.44, 21, 0, ""}, { 1, -5404.2, 6, 4199.59, 80, 0, ""},
+		{ 1, -5437.58, 6, 4301.41, 199, 0, ""}, { 1, -5778.43, 6, 4397.54, 180, 0, "nervous"}, { 1, -5127.71, 6, 4336.34, 0, 0, ""}, { 1, -4870.86,6, 4179.63, 345, 0, "conversation"},
+		{ 1, -4872.0, 6, 4181.6, 150, 0, "conversation"}, { 1, -5138.49, 6, 4229.36, 180, 0, ""}, { 1, -5827.81, 6, 4172.98, 0, 0, "conversation"}, { 1, -5886.59, 6, 4369.23, 180, 0, "conversation"},
+		{ 1, -5886.59, 6, 4368.23, 0, 0, "conversation"},
+	},
 }
 
 registerScreenPlay("NabooTheedScreenPlay", true)
@@ -71,6 +114,7 @@ function NabooTheedScreenPlay:start()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 	end
 end
 
@@ -87,173 +131,6 @@ function NabooTheedScreenPlay:spawnMobiles()
 	-- {"businessman", "commoner", "commoner_fat", "commoner_naboo", "commoner_old", "gambler", "gungang_priest", "naboo_nomad", "noble", "official", "scientist", "vendor"}
 
 	--Outside
-	local pNpc = spawnMobile(self.planet, "agriculturalist",60,-5827.81,6,4173.98,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "noble",300,-5258.93,6,4187.17,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_naboo",60,-5082.41,6,4261.15,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_naboo", 60, -5083.5, 6, 4259.9, 42, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner_naboo",60,-5394.06,6,4519.32,169.904,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5384.95,6,4283.38,71.1905,0)
-	spawnMobile(self.planet, "commoner",60,-5256.72,6,4254.43,243.769,0)
-	spawnMobile(self.planet, "commoner",60,-5319.27,6,4365.19,286.546,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5327.58,6,4267.42,170.655,0)
-	spawnMobile(self.planet, "commoner",60,-5140.78,6,4404.92,212.214,0)
-	spawnMobile(self.planet, "commoner",60,-6036.18,6,4286.85,147.238,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-6055.49,6,4319.64,186.501,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-6040.72,6,4260.46,325.963,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5282.92,6,4405.65,279.205,0)
-	spawnMobile(self.planet, "commoner",60,-5280.52,6,4372.79,226.645,0)
-	spawnMobile(self.planet, "commoner",60,-5281.75,6,4325.98,47.2066,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5306.24,6,4357.56,77.2615,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5326.21,6,4292.88,155.604,0)
-	spawnMobile(self.planet, "commoner",60,-5309.23,6,4307.01,78.4133,0)
-	spawnMobile(self.planet, "commoner",60,-5371.2,6,4337.4,57.5394,0)
-	spawnMobile(self.planet, "commoner",60,-5392.94,6,4361.06,74.0902,0)
-	spawnMobile(self.planet, "commoner",60,-5370.57,6,4384.5,150.505,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5399.67,6,4424.78,313.827,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5380.45,6,4628.71,65.0141,0)
-	spawnMobile(self.planet, "commoner",60,-5396.24,6,4492.81,306.733,0)
-	spawnMobile(self.planet, "commoner",60,-6023.52,6,4213.29,308.957,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5219.06,6,4291.75,225.099,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5194.95,6,4189.82,3.74494,0)
-	spawnMobile(self.planet, "commoner",60,-5135.69,6,4219.76,3.98419,0)
-	spawnMobile(self.planet, "commoner",60,-5124.32,6,4230.7,188.301,0)
-	spawnMobile(self.planet, "commoner",60,-5165.37,6,4173.32,44.4267,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5171.36,6,4148.39,89.3505,0)
-	spawnMobile(self.planet, "commoner",60,-5123.13,6,4201.32,268.516,0)
-	pNpc = spawnMobile(self.planet, "commoner", 60, -5116.4, 6, 4263.5, 40, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner", 60, -5114.4, 6, 4265, 220, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner",60,-5101.22,6,4246.47,39.2932,0)
-	spawnMobile(self.planet, "commoner", 60, -5089.1, 6, 4284.4, 278.927, 0)
-	spawnMobile(self.planet, "commoner",60,-5069.74,6,4262.45,304.456,0)
-	pNpc = spawnMobile(self.planet, "commoner_naboo", 1, -4835.5, 6.0, 4151.3, 157, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "scientist", 1, -4835.3, 6.0, 4150.1, 349, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner", 1, -4865.4, 6, 4161.9, 308, 0)
-	spawnMobile(self.planet, "commoner_naboo",60,-4902.73,6,4106.81,350.732,0)
-	pNpc = spawnMobile(self.planet, "noble", 1, -4917.2, 6.0, 4098.9, 338, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "gungan_priest", 1, -4917.5, 6.0, 4100.1, 149, 0)
-	self:setMoodString(pNpc, "conversation")
-	if (pNpc ~= nil) then
-		CreatureObject(pNpc):setPvpStatusBitmask(0)
-	end
-	spawnMobile(self.planet, "commoner_naboo",60,-5075.93,6,4204.5,258.103,0)
-	spawnMobile(self.planet, "commoner",60,-5053.71,6,4151.61,236.952,0)
-	spawnMobile(self.planet, "commoner",60,-5090.67,6,4173.27,324.898,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5088.5,6,4152.21,228.099,0)
-	spawnMobile(self.planet, "commoner",60,-5076.56,6,4162.09,47.5912,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5032.44,6,4131.62,179.986,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5019.1,6,4125.83,354.895,0)
-	spawnMobile(self.planet, "commoner",60,-5023.92,6,4040.07,112.362,0)
-	spawnMobile(self.planet, "commoner",60,-5004.8,6,4067.54,285.879,0)
-	spawnMobile(self.planet, "commoner",60,-5037.78,6,4078.71,14.5782,0)
-	pNpc = spawnMobile(self.planet, "commoner", 60, -5028.7, 6, 4237.1, 225, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "gambler", 60, -5029.5, 6, 4236.2, 45, 0)
-	self:setMoodString(pNpc, "conversation")
-	if pNpc ~= nil then
-		CreatureObject(pNpc):setPvpStatusBitmask(0)
-	end
-	pNpc = spawnMobile(self.planet, "commoner", 60, -5048.7, 6, 4225.4, 225, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner", 60, -5049.5, 6, 4224.1, 41, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner_naboo",60,-5007.98,6,4111.83,156.739,0)
-	spawnMobile(self.planet, "commoner",60,-5021.05,6,4230.04,95,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-4991.86,6,4125.22,355.866,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-4970.37,6,4069.78,230.918,0)
-	spawnMobile(self.planet, "commoner",60,-4892.24,6,4083,131.075,0)
-	spawnMobile(self.planet, "commoner",60,-4933.63,6,4090.17,355.935,0)
-	spawnMobile(self.planet, "commoner",60,-4921.08,6,4061.48,324.756,0)
-	pNpc = spawnMobile(self.planet, "commoner_naboo", 60, -4899.7, 6, 4198.3, 265, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_naboo", 60, -4901.7, 6, 4197.5, 55, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner",60,-4978.62,6,4119.77,158.522,0)
-	spawnMobile(self.planet, "commoner",60,-4941.05,6,4184.26,54.3125,0)
-	spawnMobile(self.planet, "commoner",60,-4968.55,6,4158.78,56.9517,0)
-	spawnMobile(self.planet, "commoner",60,-4978.84,6,4263.64,225.699,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-4973.93,6,4220.31,28.5203,0)
-	spawnMobile(self.planet, "commoner",60,-4981.69,6,4244.41,37.6517,0)
-	spawnMobile(self.planet, "commoner",60,-4983.97, 6, 4209.75, 54.7999, 0)
-	spawnMobile(self.planet, "commoner_naboo", 60,-4976.0, 6, 4193.5, 45, 0)
-	spawnMobile(self.planet, "commoner",60,-4973.2,6,4175.16,163.034,0)
-	pNpc = spawnMobile(self.planet, "commoner", 60, -4969, 6, 4192, 45, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner", 60, -4967.6, 6, 4193.8, 225, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner_naboo",60,-5803.39,6,4101.34,219.092,0)
-	spawnMobile(self.planet, "commoner",60,-5858.79,6,4147.3,177.298,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5941.62,6,4339.4,156.272,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5996.82,6,4309.73,327.452,0)
-	spawnMobile(self.planet, "commoner",60,-5968.83,6,4287.92,169.112,0)
-	spawnMobile(self.planet, "commoner",60,-5996.87,6,4269.75,70.6282,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5928.72,6,4217.24,56.7839,0)
-	spawnMobile(self.planet, "commoner",60,-5727.93,6,4316.95,342.377,0)
-	spawnMobile(self.planet, "commoner",60,-5741.57,6,4304.91,133.504,0)
-	spawnMobile(self.planet, "commoner",60,-5757.67,6,4411.04,296.772,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5818.26,6,4407.8,25.7365,0)
-	spawnMobile(self.planet, "commoner",60,-5751.98,6,4147.86,61.2467,0)
-	spawnMobile(self.planet, "commoner",60,-5729.03,6,4120.76,304.577,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5709.29,6,4134.09,24.3295,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5675.02,6,4238.39,193.294,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5686.06,6,4307.41,304.1,0)
-	spawnMobile(self.planet, "commoner",60,-5663.64,6,4136.03,34.2804,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5690.65,6,4124.1,313.987,0)
-	spawnMobile(self.planet, "commoner",60,-5632.25,6,4137.72,121.318,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5592.68,6,4154.97,125.654,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5600.12,6,4053.65,55.2097,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5418.26,6,4347.1,173.931,0)
-	spawnMobile(self.planet, "commoner",60,-5409.46,6,4386.55,51.6472,0)
-	spawnMobile(self.planet, "commoner",60,-5425.82,6,4371.62,158.964,0)
-	spawnMobile(self.planet, "commoner",60,-5416.72,6,4413.87,130.124,0)
-	spawnMobile(self.planet, "commoner",60,-5428.98,6,4447.99,285.357,0)
-	spawnMobile(self.planet, "commoner",60,-5449.78,6,4428.75,8.98008,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5457.38,6,4469.32,299.901,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5468.87,6,4432.8,25.9495,0)
-	spawnMobile(self.planet, "commoner",60,-5458.78,6,4343.19,264.89,0)
-	spawnMobile(self.planet, "commoner",60,-5485.31,6,4373.11,251.552,0)
-	spawnMobile(self.planet, "commoner",60,-5492.21,6,4337.69,94.7447,0)
-	spawnMobile(self.planet, "commoner",60,-5507.67,6,4309.38,330.512,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5520.11,6,4349.32,243.736,0)
-	spawnMobile(self.planet, "commoner",60,-5525.24,6,4430.28,32.9667,0)
-	spawnMobile(self.planet, "commoner",60,-5537.28,6,4411.34,252.902,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5545.73,6,4466.12,324.904,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5565.53,6,4469.02,122.256,0)
-	spawnMobile(self.planet, "commoner",60,-5541.82,6,4394.46,238.528,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5547.21,6,4383.24,155.163,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5554.8,6,4319.26,256.528,0)
-	spawnMobile(self.planet, "commoner",60,-5541.38,6,4302.99,60.5745,0)
-	spawnMobile(self.planet, "commoner",60,-5558.64,6,4283.8,12.7491,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5599.43,6,4261.62,241.361,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5583.5,6,4237.52,344.261,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5562.58,6,4208.34,326.3,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5507.69,6,4195.83,129.185,0)
-	spawnMobile(self.planet, "commoner",60,-5487.23,6,4193.99,298.896,0)
-	spawnMobile(self.planet, "commoner",60,-5453.08,6,4198.55,346.123,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5457.43,6,4156.44,21.7515,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5404.2,6,4199.59,80.6257,0)
-	spawnMobile(self.planet, "commoner",60,-5437.58,6,4301.41,199.461,0)
-	pNpc = spawnMobile(self.planet, "commoner_naboo",60,-5778.43,6,4397.54,180.005,0)
-	self:setMoodString(pNpc, "nervous")
-	spawnMobile(self.planet, "explorer",60,-5127.71,6,4336.34,0,0)
-	pNpc = spawnMobile(self.planet, "explorer",60,-4870.86,6,4179.63, 345, 0)
-	self:setMoodString(pNpc, "conversation")
-	if pNpc ~= nil then
-		CreatureObject(pNpc):setPvpStatusBitmask(0)
-	end
-	pNpc = spawnMobile(self.planet, "commoner", 60, -4872.0, 6, 4181.6, 150, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "gungan_hunter",300,-5138.49,6,4229.36,180.005,0)
-	pNpc = spawnMobile(self.planet, "gungan_outcast",300,-5827.81,6,4172.98,0,0)
-	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "imperial_recruiter",0,-4928,6,4231,174,0)
 	spawnMobile(self.planet, "imperial_recruiter",0,-4936,6,4231,174,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-4833,6,4134,0,0)
@@ -266,10 +143,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-5477,6,4089,0,0)
 	spawnMobile(self.planet, "j1_po", 1, -4859, 6, 4156, 18, 0)
 	spawnMobile(self.planet, "kulton_woodle", 1, -4857.1, 6, 4155.7, 299, 0)
-	spawnMobile(self.planet, "miner",60,-5886.59,6,4369.23,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "official",300,-5886.59,6,4368.23,0,0)
-	self:setMoodString(pNpc, "conversation")
+
 	spawnMobile(self.planet, "junk_dealer", 0, -5884.3, 6, 4214.3, 83, 0)
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -5762.59, 6.6, 4234.66, 87, 0)
 	if pNpc ~= nil then
