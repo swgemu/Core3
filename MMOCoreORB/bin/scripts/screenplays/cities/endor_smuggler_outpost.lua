@@ -40,6 +40,21 @@ EndorSmugglerOutpostScreenPlay = CityScreenPlay:new {
 		npc_8 = {{-838, 76, 1574, 0, true}, {-848, 76, 1575, 0, true}, {-850, 76, 1583, 0, true}, {-834, 76, 1576, 0, true}},
 		npc_9 = {{-851, 80, 1555, 0, true}, {-853, 80, 1568, 0, true}, {-838, 79, 1555, 0, true}, {-841, 80, 1545, 0, true}},
 	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old"},
+	stationaryNpcs = {"bodyguard", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "fringer", "gambler", "medic", "mercenary", "miner", "noble", "pilot", "rancher", "scientist", "slicer"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, -899.977, 78, 1548.09, 107.809, 0, ""},
+		{1, -828.009, 76, 1573.28, 320.402, 0, ""},
+		{1, -864.293, 79.5001, 1598.78, 184.686, 0, ""},
+		{1, -875.462, 80.0597, 1571.89, 84.1865, 0, ""},
+		{1, -956, 73, 1554, 135, 0, ""},
+		{1, -874.656, 80, 1564.76, 270, 0, ""},
+		{1, -845.301, 79.5, 1599.49, 197.393, 0, ""},
+		{1, -829.243, 76, 1567.61, 95.886, 0, ""},
+	},
 }
 
 registerScreenPlay("EndorSmugglerOutpostScreenPlay", true)
@@ -48,11 +63,11 @@ function EndorSmugglerOutpostScreenPlay:start()
 	if (isZoneEnabled("endor")) then
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 	end
 end
 
 function EndorSmugglerOutpostScreenPlay:spawnMobiles()
-
 	--mission term building
 	local pNpc = spawnMobile("endor", "commoner_technician",60,3.5,0.1,3.9,0,3605972)
 	self:setMoodString(pNpc, "sad")
@@ -60,14 +75,4 @@ function EndorSmugglerOutpostScreenPlay:spawnMobiles()
 	--tavern
 	local pNpc = spawnMobile("endor", "commoner_old",60,1.0,0.7,-4.4,0,6645605)
 	self:setMoodString(pNpc, "npc_sitting_chair")
-
-	--outside
-	spawnMobile("endor", "businessman", 1, -899.977, 78, 1548.09, 107.809, 0)
-	spawnMobile("endor", "commoner", 1, -828.009, 76, 1573.28, 320.402, 0)
-	spawnMobile("endor", "commoner", 1, -864.293, 79.5001, 1598.78, 184.686, 0)
-	spawnMobile("endor", "commoner", 1, -875.462, 80.0597, 1571.89, 84.1865, 0)
-	spawnMobile("endor", "noble", 1, -956, 73, 1554, 135, 0)
-	spawnMobile("endor", "scientist", 1, -874.656, 80, 1564.76, 270, 0)
-	spawnMobile("endor", "scientist", 1, -845.301, 79.5, 1599.49, 197.393, 0)
-	spawnMobile("endor", "noble", 60, -829.243, 76, 1567.61, 95.886, 0)
 end
