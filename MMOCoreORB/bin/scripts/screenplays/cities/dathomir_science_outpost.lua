@@ -35,6 +35,23 @@ DathomirScienceOutpostScreenPlay = CityScreenPlay:new {
 		npc_4 = {{-114, 18, -1630, 0, true}, {-90, 18, -1620, 0, true}, {-99, 18, -1606, 0, true}, {-119, 18, -1642, 0, true}},
 		npc_5 = {{-86, 18, -1555, 0, true}, {-97, 18, -1564, 0, true}, {-85, 18, -1546, 0, true}, {-91, 18, -1544, 0, true}},
 	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old"},
+	stationaryNpcs = {"bodyguard", "bounty_hunter", "businessman", "commoner_technician", "explorer", "fringer", "gambler", "medic", "mercenary", "miner",  "pilot", "scientist", "slicer"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, -70.8878, 18, -1646.08, 315.408, 0, ""},
+		{1, -64.4958, 18, -1581.42, 63.9635, 0, ""},
+		{1, -79.6404, 18, -1585.09, 131.623, 0, ""},
+		{1, -60.7253, 18, -1596.21, 88.2297, 0, ""},
+		{1, -37.0445, 18, -1587.75, 47.6817, 0, ""},
+		{1, -78, 18, -1614, 285, 0, ""},
+		{1, -98.9262, 18, -1590.29, 239.412, 0, ""},
+		{1, -68.4, 18, -1621.0, 180, 0, "conversation"},
+		{1, -69.1, 18, -1622.1, 45, 0, "conversation"},
+		{1, -136.034, 18, -1592.07, 62.5196, 0, ""},
+	},
 }
 
 registerScreenPlay("DathomirScienceOutpostScreenPlay", true)
@@ -43,6 +60,7 @@ function DathomirScienceOutpostScreenPlay:start()
 	if (isZoneEnabled("dathomir")) then
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 	end
 end
 
@@ -55,22 +73,8 @@ function DathomirScienceOutpostScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "nervous")
 
 	--Outside
-	spawnMobile("dathomir", "businessman", 60, -70.8878, 18, -1646.08, 315.408, 0)
-	spawnMobile("dathomir", "businessman", 60, -64.4958, 18, -1581.42, 63.9635, 0)
-	spawnMobile("dathomir", "businessman", 60, -79.6404, 18, -1585.09, 131.623, 0)
-	spawnMobile("dathomir", "commoner", 60, -60.7253, 18, -1596.21, 88.2297, 0)
-	spawnMobile("dathomir", "commoner", 60, -37.0445, 18, -1587.75, 47.6817, 0)
-	spawnMobile("dathomir", "commoner", 60, -78, 18, -1614, 285, 0)
-	spawnMobile("dathomir", "commoner", 60, -98.9262, 18, -1590.29, 239.412, 0)
-	local pNpc = spawnMobile("dathomir", "explorer", 60, -68.4, 18, -1621.0, 180, 0)
-	self:setMoodString(pNpc, "conversation")
 	spawnMobile("dathomir", "mercenary", 60, -43.9919, 18, -1585.86, 220.77, 0)
-	spawnMobile("dathomir", "scientist", 60, -136.034, 18, -1592.07, 62.5196, 0)
-	local pNpc = spawnMobile("dathomir", "commoner_technician", 60, -69.1, 18, -1622.1, 45, 0)
-	self:setMoodString(pNpc, "conversation")
 	spawnMobile("dathomir", "informant_npc_lvl_3", 0,-68,18,-1565,270,0)
-
 	pNpc = spawnMobile("dathomir", "arnecio_ulvaw_op",60,4.06465,0.624999,2.34456,30.9406,2835570)
 	self:setMoodString(pNpc, "neutral")
-
 end
