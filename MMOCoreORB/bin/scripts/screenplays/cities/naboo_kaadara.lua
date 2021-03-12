@@ -78,6 +78,29 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 		npc_1 = {{5236, -192, 6759, 0, true}, {5255, -192, 6755, 0, true}, {5242, -192, 6721, 0, true}, {5230, -192, 6719, 0, true}, {5224,  -192, 6749, 0, true}},
 		npc_2 = {{5180.9, -192, 6782.7, 0, true}, {5160, -192, 6758, 0, true}, {5163, -192, 6769, 0, true}, {5182, -192, 6789, 0, true}},
 	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_naboo", "commoner_old"},
+	stationaryNpcs = {"agriculturalist", "artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer",
+				"gambler", "info_broker", "medic", "mercenary", "miner", "naboo_nomad", "noble", "official", "patron_ishitib", "pilot", "rancher", "scientist", "slicer", "traveller"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, 5040.3, -183.3, 6736.1, 132, 0, ""},
+		{1, 5371.9, -191.4, 6736.9, 141, 0, "conversation"},
+		{1, 5373.5, -191.4, 6737.0, -132, 0, "conversation"},
+		{1, 5372.5, -191.4, 6735.6, 12, 0, "conversation"},
+		{1, 5377.1, -192, 6632.5, 159, 0, "conversation"},
+		{1, 5377.9, -192, 6630.5, -31, 0, "conversation"},
+		{1, 5325.5, -192, 6607.4, -151, 0, ""},
+		{1, 5332.8, -192, 6602.2, 127, 0, "conversation"},
+		{1, 5334.6, -192, 6600.7, -45, 0, "conversation"},
+		{1, 5284.8, -192, 6591.8, -111, 0, ""},
+		{1, 5299.3, -191.4, 6757.1, -80, 0, ""},
+		{1, 5298.0, -191.4, 6757.1, 100, 0, ""},
+		{1, 5080.9, -191.7, 6714.0, -155, 0, ""},
+		{1, 5208.8, -192, 6644.8, 0, 0, "conversation"},
+		{1, 5208.8, -192, 6646.3, 180, 0, "conversation"},
+	},
 }
 
 registerScreenPlay("NabooKaadaraScreenPlay", true)
@@ -88,6 +111,7 @@ function NabooKaadaraScreenPlay:start()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 	end
 end
 
@@ -111,9 +135,10 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_standing_drinking")
 	pNpc = spawnMobile(self.planet, "contractor",60,4.0,1.0,4.3,-165,1741477)
 	self:setMoodString(pNpc, "npc_accusing")
+	spawnMobile(self.planet, "bartender", 1, 19.5, 1.6, 12.6, 180, 1741478)
 
 	--cantina
-	pNpc = spawnMobile(self.planet, "bartender",60,2.9,-0.9,3.4,2,64)
+	pNpc = spawnMobile(self.planet, "bartender", 1, 2.9, -0.9, 3.4, 2, 64)
 	self:setMoodString(pNpc, "neutral")
 
 	--starport interior
@@ -208,36 +233,11 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "nightspider", 300, getRandomNumber(20) + 5535.6, -193.9, getRandomNumber(20) + 6745, getRandomNumber(360), 0)
 
 	--commoners
-	spawnMobile(self.planet, "commoner_fat", 1, 5040.3, -183.3, 6736.1, 132, 0)
-	pNpc = spawnMobile(self.planet, "commoner_fat", 1, 5371.9, -191.4, 6736.9, 141, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_old", 1, 5373.5, -191.4, 6737.0, -132, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_fat", 1, 5372.5, -191.4, 6735.6, 12, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_naboo", 1, 5377.1, -192, 6632.5, 159, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_naboo", 1, 5377.9, -192, 6630.5, -31, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner_naboo", 1, 5325.5, -192, 6607.4, -151, 0)
-	pNpc = spawnMobile(self.planet, "commoner", 1, 5332.8, -192, 6602.2, 127, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_naboo", 1, 5334.6, -192, 6600.7, -45, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "agriculturalist", 1, 5284.8, -192, 6591.8, -111, 0)
 	spawnMobile(self.planet, "medic", 1, -3.5, -0.1, -3.3, 0, 1741514)
 	spawnMobile(self.planet, "medic", 1, -5.2, 0.1, 5.2, -90, 1741514)
 	spawnMobile(self.planet, "scientist", 1, -13.2, 0.1, 15.3, 90, 1741517)
-	spawnMobile(self.planet, "patron_ishitib", 1, 5299.3, -191.4, 6757.1, -80, 0)
-	spawnMobile(self.planet, "patron_ishitib", 1, 5298.0, -191.4, 6757.1, 100, 0)
 	spawnMobile(self.planet, "commoner_tatooine", 120, -23.6, 1.6, -4.2, -172, 1741483)
 	spawnMobile(self.planet, "commoner_naboo", 120, -24.5, 1.6, -7.3, 17, 1741483)
-	spawnMobile(self.planet, "bartender", 1, 19.5, 1.6, 12.6, 180, 1741478)
-	spawnMobile(self.planet, "commoner_naboo", 1, 5080.9, -191.7, 6714.0, -155, 0)
-	pNpc = spawnMobile(self.planet, "commoner_naboo", 1, 5208.8, -192, 6644.8, 0, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_naboo", 1, 5208.8, -192, 6646.3, 180, 0)
-	self:setMoodString(pNpc, "conversation")
 
 	--trainers
 	spawnMobile(self.planet, "trainer_architect", 1, 11, 1.133, -14.5, 0, 1741470)

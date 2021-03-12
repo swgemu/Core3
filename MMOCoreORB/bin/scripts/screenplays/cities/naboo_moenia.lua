@@ -39,6 +39,17 @@ NabooMoeniaScreenPlay = CityScreenPlay:new {
 		npc_2 = {{4825, 4, -4679, 0, true}, {4819, 4, -4658, 0, true}, {4831, 4, -4669, 0, true}, {4831, 4, -4649, 0, true}},
 		npc_3 = {{4852, 4, -4677, 0, true}, {4849, 4, -4711, 0, true}, {4840, 4, -4699, 0, true}, {4846, 4, -4672, 0, true}},
 	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_naboo", "commoner_old"},
+	stationaryNpcs = {"agriculturalist", "artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer",
+				"gambler", "info_broker", "medic", "mercenary", "miner", "naboo_nomad", "noble", "official", "patron_ishitib", "pilot", "rancher", "scientist", "slicer", "traveller"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, 4667.6, 3.8, -4785.3, -20, 0, ""},
+		{1, 4667.9, 3.8, -4783.4, 170, 0, ""},
+		{1, 4646.5, 3.2, -4796.9, -179, 0, "fishing"},
+	},
 }
 
 registerScreenPlay("NabooMoeniaScreenPlay", true)
@@ -47,6 +58,7 @@ function NabooMoeniaScreenPlay:start()
 	if (isZoneEnabled("naboo")) then
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 	end
@@ -78,10 +90,7 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "mummer_thug", 300, getRandomNumber(10) + 4856.8, 4.2, getRandomNumber(10) + -4701.5, getRandomNumber(360), 0)
 	spawnMobile("naboo", "mummer_punk", 300, getRandomNumber(10) + 4856.8, 4.2, getRandomNumber(10) + -4701.5, getRandomNumber(360), 0)
 	spawnMobile("naboo", "mummer_punk", 300, getRandomNumber(10) + 4856.8, 4.2, getRandomNumber(10) + -4701.5, getRandomNumber(360), 0)
-	spawnMobile("naboo", "commoner",60,4667.6,3.8,-4785.3,-20,0)
-	spawnMobile("naboo", "bounty_hunter",60,4667.9,3.8,-4783.4,170,0)
-	pNpc = spawnMobile("naboo", "commoner_old",60,4646.5,3.2,-4796.9,-179,0)
-	self:setMoodString(pNpc, "fishing")
+
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4652,3.8,-4749,0,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4744,3.8,-4847,0,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4825,3.8,-4829, 235,0)
