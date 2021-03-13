@@ -41,15 +41,9 @@
 --this exception also makes it possible to release a modified version
 
 
+object_creature_npc_theme_park_player_shuttle2 = object_creature_npc_theme_park_shared_player_shuttle:new {
+	optionsBitmask = 256,
+	species = 216
+}
 
---Children folder includes
-
--- Server Objects
-includeFile("creature/npc/theme_park/event_transport.lua")
-includeFile("creature/npc/theme_park/event_transport_theed_hangar.lua")
-includeFile("creature/npc/theme_park/lambda_shuttle.lua")
-includeFile("creature/npc/theme_park/lambda_shuttle_faction_perk.lua")
-includeFile("creature/npc/theme_park/player_shuttle.lua")
-includeFile("creature/npc/theme_park/player_shuttle2.lua")
-includeFile("creature/npc/theme_park/player_transport.lua")
-includeFile("creature/npc/theme_park/player_transport_theed_hangar.lua")
+ObjectTemplates:addTemplate(object_creature_npc_theme_park_player_shuttle2, "object/creature/npc/theme_park/player_shuttle2.iff")
