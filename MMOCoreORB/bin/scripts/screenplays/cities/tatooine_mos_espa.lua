@@ -38,34 +38,63 @@ TatooineMosEspaScreenPlay = CityScreenPlay:new {
 		{"mos_espa_police_officer", "mos_espa_police_officer_rebel", -2976.54,5,2011.63,171.014,0, "", ""},
 	},
 
+	patrolNpcs = {"commoner_fat_patrol", "commoner_old_patrol", "commoner_tatooine_patrol", "commoner_technician", "explorer", "gambler", "scientist_patrol"},
+
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-		{"cll8_1", "cll8_binary_load_lifter", 60, -2922.62, 5, 2143.4, 19.5832, 0, ""},
-		{"eg6_1", "eg6_power_droid", 300, -2833.22, 5, 1899.71, 245.01, 0, ""},
-		{"eg6_2", "eg6_power_droid", 300, -2928.04, 5, 1977.68, 330.633, 0, ""},
-		{"eg6_3", "eg6_power_droid", 300, -2945.98, 5, 2470.9, 186.376, 0, ""},
-		{"r2_1", "r2", 60, -2928.79, 5, 2111.03, 245.497, 0, "calm"},
-		{"r2_2", "r2", 60, -2946.8, 5, 2468.6, 350.917, 0, "calm"},
-		{"r4_1", "r4", 60, -2959.44, 5, 2110.92, 112.101, 0, "calm"},
-		{"r4_2", "r4", 60, -2873, 5, 1984, 252.493, 0, "calm"},
-		{"r5_1", "r5", 60, -2935.94, 5, 2275.75, 205.483, 0, "calm"},
-		{"r5_2", "r5", 60, -2915.25, 5, 2163.42, 154.028, 0, "calm"},
-		{"r5_3", "r5", 60, -2919.36, 5, 2262.73, 15.6789, 0, "calm"},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
+
+		--Droids
+		{"cll8_1", "cll8_binary_load_lifter", -2922.62, 5, 2143.4, 19.5832, 0, "", false},
+		{"eg6_1", "eg6_power_droid", -2833.22, 5, 1899.71, 245.01, 0, "", false},
+		{"eg6_2", "eg6_power_droid", -2928.04, 5, 1977.68, 330.633, 0, "", false},
+		{"eg6_3", "eg6_power_droid", -2945.98, 5, 2470.9, 186.376, 0, "", false},
+		{"r2_1", "r2", -2928.79, 5, 2111.03, 245.497, 0, "", false},
+		{"r2_2", "r2", -2946.8, 5, 2468.6, 350.917, 0, "", false},
+		{"r4_1", "r4", -2959.44, 5, 2110.92, 112.101, 0, "", false},
+		{"r4_2", "r4", -2873, 5, 1984, 252.493, 0, "", false},
+		{"r5_1", "r5", -2935.94, 5, 2275.75, 205.483, 0, "", false},
+		{"r5_2", "r5", -2915.25, 5, 2163.42, 154.028, 0, "", false},
+		{"r5_3", "r5", -2919.36, 5, 2262.73, 15.6789, 0, "", false},
+
+		--NPCs
+		{"npc_1", "patrolNpc", -2905, 5, 2163, 180, 0, "", false},
+		{"npc_2", "patrolNpc", -2952, 5, 2087, 46, 0, "", false},
+		{"npc_3", "patrolNpc", -2914, 5, 1984, 26, 0, "", false},
+		{"npc_4", "patrolNpc", -2754, 5, 1981, 94, 0, "", false},
+		{"npc_5", "patrolNpc", -2715, 5, 2040, 144, 0, "", false},
+		{"npc_6", "patrolNpc", -3046, 5, 2133, 249, 0, "", false},
+		{"npc_7", "patrolNpc", -3100, 5, 2148, 158, 0, "", false},
+		{"npc_8", "patrolNpc", -2954, 5, 2235, 232, 0, "", false},
+		{"npc_9", "patrolNpc", -2914, 5, 2466, 163, 0, "", false},
+		{"npc_10", "patrolNpc", -2770, 5, 2245, 214, 0, "", false},
+		{"npc_11", "patrolNpc", -2731, 5, 2226, 196, 0, "", false},
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
-		cll8_1 = {{-2922.3, 5, 2144.1, 0, 1}, {-2912, 5, 2157, 0, 1}, {-2856, 5, 2154, 0, 1}, {-2902, 5, 2148, 0, 1}, {-2922, 5, 2111, 0, 1}},
-		eg6_1 = {{-2833.22, 5, 1899.71, 0, 1}, {-2788, 5, 1875, 0, 1}, {-2823, 5, 1924, 0, 1}, {-2834, 5, 1958, 0, 1}, {-2878, 5, 1955, 0, 1}, {-2831, 5, 1954, 0, 1}, {-2821, 5, 1913, 0, 1}},
-		eg6_2 = {{-2928.04, 5, 1977.68, 0, 1}, {-2955, 5, 1974, 0, 1}, {-2918, 5, 2010, 0, 1}, {-2898, 5, 1956, 0, 1}},
-		eg6_3 = {{-2945, 5, 2470, 0, 1}, {-2924, 5, 2472, 0, 1}, {-2919, 5, 2505, 0, 1}, {-2898, 5, 2476, 0, 1}, {-2912, 5, 2460, 0, 1}},
-		r2_1 = {{-2928.79, 5, 2111, 0, 1}, {-2925, 5, 2090, 0, 1}, {-2923, 5, 2052, 0, 1}, {-2952, 5, 2042, 0, 1}},
-		r2_2 = {{-2946.8, 5, 2468.6, 0, 0}, {-2906, 5, 2447, 0, 1}, {-2920, 5, 2428, 0, 1}, {-2921, 5, 2400, 0, 1}, {-2922, 5, 2422, 0, 1}, {-2944, 5, 2438, 0, 1}},
-		r4_1 = {{-2959, 5, 2110, 0, 1}, {-2994, 5, 2119, 0, 0}, {-3048, 5, 2141, 0, 1}, {-2994, 5, 2119, 0, 1}},
-		r4_2 = {{-2873, 5, 1984, 0, 1}, {-2860, 5, 1987, 0, 1}, {-2895, 5, 1981, 0, 1}, {-2922, 5, 2044, 0, 1}, {-2899, 5, 1983, 0, 1}},
-		r5_1 = {{-2935, 5, 2275, 0, 1}, {-2910, 5, 2323, 0, 1}, {-2923, 5, 2398, 0, 1}, {-2910, 5, 2323, 0, 1}},
-		r5_2 = {{-2915.25, 5, 2163.42, 0, 1}, {-2927, 5, 2164, 0, 1}, {-2964, 5, 2218, 0, 1}, {-2939, 5, 2226, 0, 1}, {-2912, 5, 2175, 0, 1}},
-		r5_3 = {{-2919.36, 5, 2262.73, 0, 1}, {-2957, 5, 2244, 0, 1}, {-3040, 5, 2230, 0, 1}, {-2972, 5, 2237, 0, 1}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		cll8_1 = {{-2922, 5, 2144, 0, false}, {-2912, 5, 2157, 0, false}, {-2856, 5, 2154, 0, false}, {-2902, 5, 2148, 0, false}, {-2922, 5, 2111, 0, false}},
+		eg6_1 = {{-2833, 5, 1899, 0, false}, {-2788, 5, 1875, 0, false}, {-2823, 5, 1924, 0, false}, {-2834, 5, 1958, 0, false}, {-2878, 5, 1955, 0, false}, {-2831, 5, 1954, 0, false}, {-2821, 5, 1913, 0, false}},
+		eg6_2 = {{-2928, 5, 1977, 0, false}, {-2955, 5, 1974, 0, false}, {-2918, 5, 2010, 0, false}, {-2898, 5, 1956, 0, false}},
+		eg6_3 = {{-2945, 5, 2470, 0, false}, {-2924, 5, 2472, 0, false}, {-2919, 5, 2505, 0, false}, {-2898, 5, 2476, 0, false}, {-2912, 5, 2460, 0, false}},
+		r2_1 = {{-2928, 5, 2111, 0, false}, {-2925, 5, 2090, 0, false}, {-2923, 5, 2052, 0, false}, {-2952, 5, 2042, 0, false}},
+		r2_2 = {{-2946, 5, 2468, 0, true}, {-2906, 5, 2447, 0, false}, {-2920, 5, 2428, 0, false}, {-2921, 5, 2400, 0, false}, {-2922, 5, 2422, 0, falses}, {-2944, 5, 2438, 0, false}},
+		r4_1 = {{-2959, 5, 2110, 0, false}, {-2994, 5, 2119, 0, true}, {-3048, 5, 2141, 0, false}, {-2994, 5, 2119, 0, false}},
+		r4_2 = {{-2873, 5, 1984, 0, false}, {-2860, 5, 1987, 0, true}, {-2895, 5, 1981, 0, false}, {-2922, 5, 2044, 0, false}, {-2899, 5, 1983, 0, false}},
+		r5_1 = {{-2935, 5, 2275, 0, false}, {-2910, 5, 2323, 0, false}, {-2923, 5, 2398, 0, false}, {-2910, 5, 2323, 0, false}},
+		r5_2 = {{-2915, 5, 2163, 0, false}, {-2927, 5, 2164, 0, false}, {-2964, 5, 2218, 0, false}, {-2939, 5, 2226, 0, false}, {-2912, 5, 2175, 0, false}},
+		r5_3 = {{-2919, 5, 2262, 0, false}, {-2957, 5, 2244, 0, false}, {-3040, 5, 2230, 0, false}, {-2972, 5, 2237, 0, false}},
+
+		npc_1 = {{-2905, 5, 2163, 0, true}, {-2900, 5, 2136, 0, true}, {-2898, 5, 2125, 0, true}, {-2909, 5, 2123, 0, true}},
+		npc_2 = {{-2952, 5, 2087, 0, true}, {-2930, 5, 2078, 0, true}, {-2953, 5, 2058, 0, true}, {-2966, 5, 2107, 0, true}, {-2947, 5, 2101, 0, true}},
+		npc_3 = {{-2914, 5, 1984, 0, true}, {-2878, 5, 1957, 0, true}, {-2909, 5, 1945, 0, true}, {-2939, 5, 1999, 0, true}},
+		npc_4 = {{-2754, 5, 1981, 0, true}, {-2785, 5, 1983, 0, true}, {-2763, 5, 2016, 0, true}, {-2744, 5, 1991, 0, true}, {-2746, 5, 2008, 0, true}},
+		npc_5 = {{-2715, 5, 2040, 0, true}, {-2732, 5, 2084, 0, true}, {-2747, 5, 2039, 0, true}, {-2707, 5, 2057, 0, true}},
+		npc_6 = {{-3046, 5, 2133, 0, true}, {-3082, 5, 2124, 0, true}, {-3064, 5, 2151, 0, true}, {-3036, 5, 2119, 0, true}},
+		npc_7 = {{-3100, 5, 2148, 0, true}, {3136, 5, 2136, 0, true}, {-3103, 5, 2155, 0, true}, {-3113, 5, 2181, 0, true}},
+		npc_8 = {{-2954, 5, 2235, 0, true}, {-2967, 5, 2254, 0, true}, {-2945, 5, 2271, 0, true}, {-2941, 5, 2214, 0, true}, {-2953, 5, 2246, 0, true}},
+		npc_9 = {{-2914, 5, 2466, 0, true}, {-2914, 5, 2489, 0, true}, {-2956, 5, 2536, 0, true}, {-2897, 5, 2476, 0, true}},
+		npc_10 = {{-2770, 5, 2245, 0, true}, {-2732, 5, 2254, 0, true}, {-2754, 5, 2219, 0, true}, {-2766, 5, 2281, 0, true}},
+		npc_11 = {{-2731, 5, 2226, 0, true}, {-2693, 5, 2264, 0, true}, {-2729, 5, 2263, 0, true}, {-2705, 5, 2240, 0, true}},
 	},
 }
 
@@ -100,8 +129,6 @@ function TatooineMosEspaScreenPlay:spawnSceneObjects()
 	spawnSceneObject(self.planet, "object/tangible/painting/painting_leia_wanted.iff", -4.34762, 0.512662, -10.997, 1261454, 0, 0, 0, 0)
 	spawnSceneObject(self.planet, "object/tangible/furniture/imperial/data_terminal_s2.iff", 2.31777, 0.512662, -11.0014, 1261454, 0, 0, 0, 0)
 	spawnSceneObject(self.planet, "object/tangible/furniture/imperial/data_terminal_s2.iff", -2.31777, 0.512662, -11.0014, 1261454, 0, 0, 0, 0)
-	spawnSceneObject(self.planet, "object/mobile/dressed_bounty_hunter_zabrak_female_01.iff", 2.3, 0.512662, -10.0014, 1261454, math.rad(180) )
-	spawnSceneObject(self.planet, "object/mobile/dressed_imperial_exterminator.iff", -2.3, 0.512662, -10.0014, 1261454, math.rad(180) )
 	spawnSceneObject(self.planet, "object/tangible/furniture/all/frn_all_rug_rectangle_large_style_05.iff", -0.0, 0.5, -3.1, 1261454, math.rad(90) )
 	spawnSceneObject(self.planet, "object/tangible/furniture/modern/dining_table_modern_style_01.iff", -0.0, 0.5, -3.1, 1261454, math.rad(0) )
 	spawnSceneObject(self.planet, "object/tangible/furniture/all/frn_all_chair_upholstered_s1.iff", -0.0, 1.0, 7.5, 1261454, math.rad(180) )
@@ -185,6 +212,8 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_accusing")
 	pNpc = spawnMobile(self.planet, "mercenary",60,6.9,2.0,10,-100,1261453)
 	self:setMoodString(pNpc, "npc_accusing")
+	spawnMobile(self.planet, "bounty_hunter", 1, 2.3, 0.5, -10.0, 0, 1261454)
+	spawnMobile(self.planet, "imperial_exterminator", 1, -2.3, 0.5, -10.0, 0, 1261454)
 
 	--southwest Tavern
 	pNpc = spawnMobile(self.planet, "vendor",60,10,0.4,-5.5,85,1261582)
@@ -271,7 +300,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "junk_dealer", 0, -14.3, 1.1, 2.9, 105, 1255991)
 
 	--Outside
-	pNpc = spawnMobile(self.planet, "anim_kahn",60,-2907.07,5,2130.14,71.993,0)
+	pNpc = spawnMobile(self.planet, "anim_kahn",60,-2907.07,5,2130.14, 75,0)
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile(self.planet, "brawler",60,-2918.94,5,2169.6,0,0)
 	self:setMoodString(pNpc, "conversation")
@@ -294,24 +323,16 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile(self.planet, "businessman",60,-2868.4,5,2493.9,238,0)
 	self:setMoodString(pNpc, "npc_sitting_chair")
-	spawnMobile(self.planet, "commoner_fat",60,-2954.74,5,2235.4,232.852,0)
 	spawnMobile(self.planet, "commoner_fat",60,-2877.18,5,2473.48,293.853,0)
 	spawnMobile(self.planet, "commoner_fat",60,-2886.35,5,2377.12,323.001,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-3046.72,5,2133.45,249.763,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-2890.19,5,2251.37,190.438,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-2839.04,5,2492.89,55.3765,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-2874.25,5,2546.29,122.899,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-2881.23,5,2004.94,233.054,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-2818.45,5,2407.94,238.346,0)
-	spawnMobile(self.planet, "commoner_old",60,-2952.26,5,2087.58,46.4769,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,-2890.19,5,2251.37,190.438,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,-2839.04,5,2492.89,55.3765,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,-2874.25,5,2546.29,122.899,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,-2881.23,5,2004.94,233.054,0)
+	spawnMobile(self.planet, "commoner_tatooine",60,-2818.45,5,2407.94,238.346,0)
 	spawnMobile(self.planet, "commoner_old",60,-2859.3,5,2288.53,351.513,0)
 	spawnMobile(self.planet, "commoner_old",60,-3007.6,5,2372.2,-133,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2914.38,5,1984.92,26.6556,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-3100.44,5,2148.76,158.885,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,-2860.36,5,2212.37,343.92,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2914.09,5,2466.26,163.417,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2715.87,5,2040.78,144.662,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2754.28,5,1981.64,94.3056,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,-2831.34,5,1912.49,217.51,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,-2807.11,5,1953.71,320.134,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,-3115.34,5,2084.32,284.484,0)
@@ -320,8 +341,6 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner_tatooine",60,-2884.43,5,2575.51,325.132,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,-2894.24,5,2492.22,84.423,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,-2810.06,5,2318.02,268.996,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2770.48,5,2245.4,214.817,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2731.39,5,2226.03,196.441,0)
 
 	--More misc outside
 	spawnMobile(self.planet, "criminal",300,-2960.96,5,2163.64,79.2954,0)
@@ -401,9 +420,9 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "noble",60,-2810.65,5,2195.86,318.004,0)
 	spawnMobile(self.planet, "noble",60,-3091.67,5,2165.61,286.75,0)
 	spawnMobile(self.planet, "noble",60,-3062.85,5,2195.92,156.151,0)
-	pNpc = spawnMobile(self.planet, "prost_roberts",60,-2906.52,5,2128.41,75.633,0)
+	pNpc = spawnMobile(self.planet, "prost_roberts", 60, -2906.52,5,2128.41, 75, 0)
 	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile(self.planet, "rel_keteris",60,-2905.83,5,2127.11,255.625,0)
+	pNpc = spawnMobile(self.planet, "rel_keteris", 60, -2905.83, 5, 2127.11, 75, 0)
 	self:setMoodString(pNpc, "neutral")
 	spawnMobile(self.planet, "scientist",60,-2969.77,5,2194.82,198.34,0)
 	spawnMobile(self.planet, "scientist",60,-3055.28,5,2098.76,237.173,0)

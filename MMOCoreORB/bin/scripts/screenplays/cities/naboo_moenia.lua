@@ -23,6 +23,33 @@ NabooMoeniaScreenPlay = CityScreenPlay:new {
 		{"specforce_marine", 4695.7, 3.8, -4913.5, 180, 0, "", true},
 		{"rebel_specforce_pathfinder", 4707.1, 3.8, -4894.6, 90, 0, "", true},
 	},
+
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_naboo_patrol", "commoner_old_patrol", "commoner_patrol", "commoner_technician", "naboo_nomad", "noble_patrol", "official_patrol", "scientist_patrol"},
+
+	patrolMobiles = {
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
+		{"npc_1", "patrolNpc", 4795, 4, -4722, 45, 0, "", false},
+		{"npc_2", "patrolNpc", 4825, 4, -4679, 180, 0, "", false},
+		{"npc_3", "patrolNpc", 4852, 4, -4677, 255, 0, "", false},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		npc_1 = {{4795, 4, -4722, 0, true}, {4770, 4, -4731, 0, true}, {4759, 4, -4750, 0, true},  {4751, 4, -4730, 0, true}},
+		npc_2 = {{4825, 4, -4679, 0, true}, {4819, 4, -4658, 0, true}, {4831, 4, -4669, 0, true}, {4831, 4, -4649, 0, true}},
+		npc_3 = {{4852, 4, -4677, 0, true}, {4849, 4, -4711, 0, true}, {4840, 4, -4699, 0, true}, {4846, 4, -4672, 0, true}},
+	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_naboo", "commoner_old"},
+	stationaryNpcs = {"agriculturalist", "artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer",
+				"gambler", "info_broker", "medic", "mercenary", "miner", "naboo_nomad", "noble", "official", "patron_ishitib", "pilot", "rancher", "scientist", "slicer", "traveller"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, 4667.6, 3.8, -4785.3, -20, 0, ""},
+		{1, 4667.9, 3.8, -4783.4, 170, 0, ""},
+		{1, 4646.5, 3.2, -4796.9, -179, 0, "fishing"},
+	},
 }
 
 registerScreenPlay("NabooMoeniaScreenPlay", true)
@@ -30,6 +57,8 @@ registerScreenPlay("NabooMoeniaScreenPlay", true)
 function NabooMoeniaScreenPlay:start()
 	if (isZoneEnabled("naboo")) then
 		self:spawnMobiles()
+		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 	end
@@ -61,13 +90,10 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "mummer_thug", 300, getRandomNumber(10) + 4856.8, 4.2, getRandomNumber(10) + -4701.5, getRandomNumber(360), 0)
 	spawnMobile("naboo", "mummer_punk", 300, getRandomNumber(10) + 4856.8, 4.2, getRandomNumber(10) + -4701.5, getRandomNumber(360), 0)
 	spawnMobile("naboo", "mummer_punk", 300, getRandomNumber(10) + 4856.8, 4.2, getRandomNumber(10) + -4701.5, getRandomNumber(360), 0)
-	spawnMobile("naboo", "commoner",60,4667.6,3.8,-4785.3,-20,0)
-	spawnMobile("naboo", "bounty_hunter",60,4667.9,3.8,-4783.4,170,0)
-	pNpc = spawnMobile("naboo", "commoner_old",60,4646.5,3.2,-4796.9,-179,0)
-	self:setMoodString(pNpc, "fishing")
+
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4652,3.8,-4749,0,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4744,3.8,-4847,0,0)
-	spawnMobile("naboo", "informant_npc_lvl_1",0,4825,3.8,-4829,0,0)
+	spawnMobile("naboo", "informant_npc_lvl_1",0,4825,3.8,-4829, 235,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4958,3.8,-4854,0,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4976,3.8,-4920,0,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4971,3.8,-4941,0,0)

@@ -188,7 +188,6 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(@dereferenced final Vector3 position, float range = 16000.0);
 
-
 	/**
 	 * Get a random spawn point on the planet.
 	 * The spawn point will be checked to be a valid spawn point through no spawn areas, water, buildings etc.
@@ -197,7 +196,6 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	@dereferenced
 	public native Vector3 getRandomSpawnPoint();
-
 
 	/**
 	 * Get a spawn point that is "in sight" for the supplied creature.

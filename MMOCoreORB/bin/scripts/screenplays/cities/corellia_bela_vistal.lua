@@ -46,39 +46,54 @@ CorelliaBelaVistalScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "explorer", "noble_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"r4_1", "r4", 1, 6715, 330, -5903, 0, 0, "", false},
-		{"r2_1", "r2", 1, 6859, 315, -5706, 0, 0, "", false},
-		{"cll8_1", "cll8_binary_load_lifter", 1, 6826, 315, -5778, 0, 0, "", false},
+		{"r4_1", "r4", 6715, 330, -5903, 0, 0, "", false},
+		{"r2_1", "r2", 6859, 315, -5706, 0, 0, "", false},
+		{"cll8_1", "cll8_binary_load_lifter", 6826, 315, -5778, 0, 0, "", false},
 
 		--NPCs
-		{"commoner_1", "patrolNpc", 1, 6846, 315, -5588, 54, 0, "", false},
-		{"commoner_2", "patrolNpc", 1, 6829, 315, -5626, 119, 0, "", false},
-		{"commoner_3", "patrolNpc", 1, 6755, 314, -5625, 139, 0, "", false},
-		{"commoner_4", "patrolNpc", 1, 6740, 315, -5674, 168, 0, "", false},
-		{"commoner_5", "patrolNpc", 1, 6761, 315, -5695, 3, 0, "", false},
-		{"commoner_6", "patrolNpc", 1, 6829, 315, -5745, 171, 0, "", false},
-		{"commoner_7", "patrolNpc", 1, 6808, 315, -5779, 282, 0, "", false},
-		{"commoner_8", "patrolNpc", 1, 6829, 315, -5813, 319, 0, "", false},
+		{"npc_1", "patrolNpc", 6846, 315, -5588, 54, 0, "", false},
+		{"npc_2", "patrolNpc", 6829, 315, -5626, 119, 0, "", false},
+		{"npc_3", "patrolNpc", 6755, 314, -5625, 139, 0, "", false},
+		{"npc_4", "patrolNpc", 6740, 315, -5674, 168, 0, "", false},
+		{"npc_5", "patrolNpc", 6761, 315, -5695, 3, 0, "", false},
+		{"npc_6", "patrolNpc", 6829, 315, -5745, 171, 0, "", false},
+		{"npc_7", "patrolNpc", 6808, 315, -5779, 282, 0, "", false},
+		{"npc_8", "patrolNpc", 6829, 315, -5813, 319, 0, "", false},
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
 
-		r4_1 = {{6715, 330, -5903, 0, 1}, {6693, 330, -5920, 0, 1}, {6690, 330, -5906, 0, 1}, {6647, 330, -5905, 0, 1}},
-		r2_1 = {{6858, 315, -5688, 0, 1}, {6859, 315, -5700, 0, 0}, {6816, 315, -5699, 0, 1}, {6861, 315, -5700, 0, 1}, {6859, 315, -5740, 0, 0}},
-		cll8_1 = {{6826, 315, -5807, 0, 1}, {6825, 315, -5725, 0, 1}, {6769, 315, -5725, 0, 1}, {6770, 315, -5736, 0, 1}, {6817, 315, -5735, 0, 1}},
+		r4_1 = {{6715, 330, -5903, 0, false}, {6693, 330, -5920, 0, false}, {6690, 330, -5906, 0, false}, {6647, 330, -5905, 0, false}},
+		r2_1 = {{6858, 315, -5688, 0, false}, {6859, 315, -5700, 0, true}, {6816, 315, -5699, 0, false}, {6861, 315, -5700, 0, false}, {6859, 315, -5740, 0, true}},
+		cll8_1 = {{6826, 315, -5807, 0, false}, {6825, 315, -5725, 0, false}, {6769, 315, -5725, 0, false}, {6770, 315, -5736, 0, false}, {6817, 315, -5735, 0, false}},
 
-		commoner_1 = {{6846, 315, -5588, 0, 0}, {6847, 315, -5617, 0, 0}, {6808, 315, -5616, 0, 1}, {6830, 315, -5599, 0, 0}, {6833.8, 315, -5580.4, 0, 0}},
-		commoner_2 = {{6829, 315, -5745, 0, 1}, {6818, 314, -5620, 0, 0}, {6779, 314, -5620, 0, 0}, {6818, 314, -5620, 0, 0}},
-		commoner_3 = {{6755, 314, -5625, 0, 1}, {6731, 315, 0, 0}, {6702, 315, -5583, 0, 0}, {6699, 315, -5567, 0, 0}, {6723, 315, -5567, 0, 1}, {6731, 315, 0, 0}},
-		commoner_4 = {{6740, 315, -5674, 0, 0}, {6742, 315, -5697, 0, 0}, {6714, 315, -5692, 0, 1}, {6742, 315, -5697, 0, 0}},
-		commoner_5 = {{6761, 315, -5695, 0, 0}, {6761, 315, -5731, 0, 0}, {6795, 315, -5732, 0, 0}, {6761, 315, -5731, 0, 0}},
-		commoner_6 = {{6829, 315, -5745, 0, 0}, {6828, 315, -5799, 0, 0}},
-		commoner_7 = {{6808, 315, -5779, 0, 0}, {6764, 315, -5779, 0, 0}, {6778, 315, -5774, 0, 0}, {6792, 315, -5783, 0, 0}},
-		commoner_8 = {{6829, 315, -5813, 0, 0}, {6794, 315, -5805, 0, 0}, {6736, 315, -5816, 0, 0}, {6778, 315, -5813, 0, 0}},
+		npc_1 = {{6846, 315, -5588, 0, true}, {6847, 315, -5617, 0, true}, {6808, 315, -5616, 0, false}, {6830, 315, -5599, 0, true}, {6833.8, 315, -5580.4, 0, true}},
+		npc_2 = {{6829, 315, -5745, 0, false}, {6818, 314, -5620, 0, false}, {6779, 314, -5620, 0, true}, {6818, 314, -5620, 0, true}},
+		npc_3 = {{6755, 314, -5625, 0, false}, {6731, 315, -5588, 0, true}, {6702, 315, -5583, 0, true}, {6699, 315, -5567, 0, true}, {6723, 315, -5567, 0, false}, {6731, 315, 0, true}},
+		npc_4 = {{6740, 315, -5674, 0, true}, {6742, 315, -5697, 0, true}, {6714, 315, -5692, 0, false}, {6742, 315, -5697, 0, true}},
+		npc_5 = {{6761, 315, -5695, 0, true}, {6761, 315, -5731, 0, true}, {6795, 315, -5732, 0, true}, {6761, 315, -5731, 0, true}},
+		npc_6 = {{6829, 315, -5745, 0, true}, {6828, 315, -5799, 0, true}},
+		npc_7 = {{6808, 315, -5779, 0, true}, {6764, 315, -5779, 0, true}, {6778, 315, -5774, 0, true}, {6792, 315, -5783, 0, true}},
+		npc_8 = {{6829, 315, -5813, 0, true}, {6794, 315, -5805, 0, true}, {6736, 315, -5816, 0, true}, {6778, 315, -5813, 0, true}},
+	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old"},
+	stationaryNpcs = {"artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer", "gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scientist", "slicer"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, 6823.1, 315, -5610.5, 225, 0, "conversation"},
+		{1, 6821.55, 314.999, -5611.9, 50, 0, "conversation"},
+		{1, 6834.25, 315, -5577.61, 150, 0, ""},
+		{1, 6896.18, 330, -5577.91, 290, 0, ""},
+		{1, 6867.23, 315, -5758.29, 338, 0, ""},
+		{1, 6810.15, 315, -5699.05, 137, 0, ""},
+		{1, 6798.04, 315, -5731.94, 270, 0, ""},
+		{1, 6724.41, 330, -5909.35, 213, 0, ""},
 	},
 
 }
@@ -89,6 +104,7 @@ function CorelliaBelaVistalScreenPlay:start()
 	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
 		self:spawnSceneObjects()
+		self:spawnStationaryMobiles()
 		self:spawnPatrolMobiles()
 		self:spawnGcwMobiles()
 	end
@@ -141,21 +157,12 @@ function CorelliaBelaVistalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "neutral")
 
 	--Outside
-	pNpc = spawnMobile("corellia", "commoner", 60, 6823.1, 315, -5610.5, 225, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile("corellia", "commoner", 60, 6821.55, 314.999, -5611.9, 50, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile("corellia", "commoner", 60, 6834.25, 315, -5577.61, 150.226, 0)
-	spawnMobile("corellia", "commoner", 60, 6896.18, 330, -5577.91, 290.907, 0)
-	spawnMobile("corellia", "commoner", 60, 6867.23, 315, -5758.29, 338.874, 0)
-	spawnMobile("corellia", "commoner", 60, 6810.15, 315, -5699.05, 137.601, 0)
-	spawnMobile("corellia", "commoner", 60, 6798.04, 315, -5731.94, 270, 0)
+
 	spawnMobile("corellia", "criminal", 300, 6871.34, 315, -5753.42, 355.947, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6847.6, 315, -5838.6, -1, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6852.5, 315, -5838.8, -24, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6855.7, 315, -5837.1, -34, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6860.3, 315, -5833.9, -57, 0)
-	spawnMobile("corellia", "noble",60, 6724.41, 330, -5909.35, 213.723, 0)
 	spawnMobile("corellia", "imperial_recruiter", 60,6718.8,315.0,-5804.6,-174,0)
 
 	--Misc

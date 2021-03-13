@@ -19,22 +19,46 @@ TatooineWayfarScreenPlay = CityScreenPlay:new {
 		{"sand_trooper", "rebel_trooper", -5295.0,75.0,-6590.2,-145,0, "", ""},
 	},
 
+	combatPatrol = {"jabba_enforcer"},
+	patrolNpcs = {"commoner_fat_patrol", "commoner_old_patrol", "commoner_tatooine_patrol", "commoner_technician", "explorer", "gambler", "scientist_patrol"},
+
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-		{"cll8_1", "cll8_binary_load_lifter", 60, -5204.46, 75, -6481.04, 153.365, 0, ""},
-		{"cll8_2", "cll8_binary_load_lifter", 60, -5106.7, 75, -6484.28, 160.531, 0, ""},
-		{"r3_1", "r3", 60, -5129.45, 75, -6483.77, 250.023, 0, "calm"},
-		{"r5_1", "r5", 60, -5105.84, 75, -6486.52, 161.488, 0, "calm"},
-		{"r5_2", "r5", 60, -5126.31, 75, -6491.03, 294.68, 0, "calm"},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
+
+		--Droids
+		{"cll8_1", "cll8_binary_load_lifter", -5204.46, 75, -6481.04, 153.365, 0, "",false},
+		{"cll8_2", "cll8_binary_load_lifter", -5106.7, 75, -6484.28, 160.531, 0, "", false},
+		{"r3_1", "r3", -5129.45, 75, -6483.77, 250.023, 0, "", false},
+		{"r5_1", "r5", -5105.84, 75, -6486.52, 161.488, 0, "", false},
+		{"r5_2", "r5", -5126.31, 75, -6491.03, 294.68, 0, "", false},
+
+		--NPCs
+		{"npc_1", "patrolNpc", -5128, 75, -6542, 217, 0, "", false},
+		{"npc_2", "patrolNpc", -5120, 75, -6594, 212, 0, "", false},
+		{"npc_3", "patrolNpc", -5176, 75, -6611, 128, 0, "", false},
+		{"npc_4", "patrolNpc", -5277, 75, -6558, 121, 0, "", false},
+		{"npc_5", "combatPatrol", -5113, 75, -6550, 182, 0, "", true},
+		{"npc_6", "combatPatrol", -5115, 75, -6548, 188, 0, "", true},
+		{"npc_7", "combatPatrol", -5050, 75, -6570, 148, 0, "", true},
+		{"npc_8", "combatPatrol", -5048, 75, -6567, 148, 0, "", true},
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay}
-		cll8_1 = {{-5204.46, 75, -6481.04, 0 ,1}, {-5228, 75, -6489, 0, 1}, {-5223, 75, -6502, 0, 1}, {-5185, 75, -6494, 0, 1}, {-5201, 75, -6494, 0, 1}},
-		cll8_2 = {{-5106.7, 75, -6484.28, 0, 1}, {-5108.3, 75, -6472.3, 0, 0}, {-5110.9, 75, -6472.3, 0, 1}, {-5108.3, 75, -6472.3, 0, 0}},
-		r3_1 = {{-5129.45, 75, -6483.77, 0, 0}, {-5117.1, 75, -6474.6, 0, 1}, {-5129.45, 75, -6483.77, 0, 1}, {-5142.4, 75, -6494.4, 0, 0}, {-5154.6, 75, -6495.9, 0, 1}, {-5142.4, 75, -6494.4, 0, 1}},
-		r5_1 = {{-5105.84, 75, -6486.52, 0, 1}, {-5104.2, 75, -6500.9, 0, 0}, {-5085.8, 75, -6501.3, 0, 1}, {-5104.2, 75, -6500.9, 0, 1}},
-		r5_2 = {{-5126.31, 75, -6491.03, 0, 1}, {-5125.5, 75, -6497.1, 0, 0}, {-5142.3, 75, -6498.1, 0, 1}, {-5125.5, 75, -6497.1, 0, 1}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		cll8_1 = {{-5204, 75, -6481, 0 , false}, {-5228, 75, -6489, 0, false}, {-5223, 75, -6502, 0, false}, {-5185, 75, -6494, 0, false}, {-5201, 75, -6494, 0, false}},
+		cll8_2 = {{-5106, 75, -6484, 0, false}, {-5108, 75, -6472, 0, true}, {-5110, 75, -6472, 0, false}, {-5108, 75, -6472, 0, true}},
+		r3_1 = {{-5129, 75, -6483, 0, true}, {-5117, 75, -6474, 0, false}, {-5129, 75, -6483, 0, false}, {-5142, 75, -6494, 0, true}, {-5154, 75, -6495, 0, false}, {-5142, 75, -6494, 0, false}},
+		r5_1 = {{-5105, 75, -6486, 0, false}, {-5104, 75, -6500, 0, true}, {-5085, 75, -6501, 0, false}, {-5104, 75, -6500, 0, false}},
+		r5_2 = {{-5126, 75, -6491, 0, false}, {-5125, 75, -6497, 0, true}, {-5142, 75, -6498, 0, false}, {-5125, 75, -6497, 0, false}},
+
+		npc_1 = {{-5128, 75, -6542, 0, true}, {-5140, 75, -6548, 0, true}, {-5123, 75, -6546, 0, true}, {-6115, 75, -6537, 0, true}, {-5146, 75, -6540, 0, true}},
+		npc_2 = {{-5120, 75, -6594, 0, true}, {-5129, 75, -6609, 0, true}, {-5147, 75, -6614, 0, true}, {-5126, 75, -6606, 0, true}},
+		npc_3 = {{-5176, 75, -6611, 0, true}, {-5156, 75, -6603, 0, true}, {-5195, 75, -6607, 0, true}, {-5176, 75, -6619, 0, true}},
+		npc_4 = {{-5277, 75, -6558, 0, true}, {-5273, 75, -6775, 0, true}, {-5281, 75, -6547, 0, true}, {-5285, 75, -6565, 0, true}},
+		npc_5 = {{-5113, 75, -6550, 0, false}, {-5109, 75, -6579, 0, true}, {-5080, 75, -6579, 0, true}, {-5109, 75, -6579, 0, true}},
+		npc_6 = {{-5115, 75, -6548, 0, true}, {-5113, 75, -6598, 0, true}},
+		npc_7 = {{-5050, 75, -6570, 0, false}, {-5074, 75, -6545, 0, false}, {-5085, 75, -6535, 0, false}, {-5088, 75, -6509, 0, false}},
+		npc_8 = {{-5048, 75, -6567, 0, false}, {-5072, 75, -6545, 0, false}, {-5082, 75, -6533, 0, false}, {-5084, 75, -6507, 0, false}},
 	},
 }
 
@@ -131,26 +155,18 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner_naboo",60,-5182,75,-6496.33,222.017,0)
 	spawnMobile(self.planet, "commoner_naboo",60,-5155.11,75,-6488.89,3.13805,0)
 	spawnMobile(self.planet, "commoner_naboo",60,-5133.39,75,-6492.64,280.032,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5128.78,75,-6542.42,217.665,0)
 	spawnMobile(self.planet, "commoner_old",60,-5219.65,75,-6548.3,63.534,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,-5260.24,75,-6510.64,241.382,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,-5251.85,75,-6499.93,200.386,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-5277.28,75,-6558.48,121.257,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,-5193.47,75,-6490.09,341.866,0)
 	spawnMobile(self.planet, "commoner_tatooine",60,-5155.04,75,-6500.75,115.651,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-5176.26,75,-6611.98,128.905,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-5120.75,75,-6594.69,212.419,0)
 	spawnMobile(self.planet, "criminal",300,-5210.29,75,-6570.98,235.683,0)
 	spawnMobile(self.planet, "informant_npc_lvl_2",0,-5205,75,-6503,315,0)
 	spawnMobile(self.planet, "jabba_enforcer",360,-5233.49,75,-6571.71,339.496,0)
 	spawnMobile(self.planet, "jabba_enforcer",360,-5248.39,75,-6549.52,120.944,0)
 	spawnMobile(self.planet, "jabba_enforcer",360,-5273.74,75,-6518.97,98.1445,0)
-	spawnMobile(self.planet, "jabba_enforcer",360,-5115.15,75,-6550.13,182.917,0)
-	spawnMobile(self.planet, "jabba_enforcer",360,-5115.97,75,-6548.43,188.285,0)
 	spawnMobile(self.planet, "jabba_enforcer",360,-5184.2,75,-6538,79,0)
-	spawnMobile(self.planet, "jabba_enforcer",360,-5048.57,75,-6571.22,148.847,0)
 	spawnMobile(self.planet, "jabba_enforcer",360,-5232.15,75,-6575.29,339.495,0)
-	spawnMobile(self.planet, "jabba_enforcer",360,-5050.32,75,-6570.58,148.833,0)
 	spawnMobile(self.planet, "jabba_henchman",360,-5282.79,75,-6521.67,116.926,0)
 	spawnMobile(self.planet, "jabba_henchman",360,-5232.74,75,-6573.71,339.487,0)
 	spawnMobile(self.planet, "jawa",360,-5242.73,75,-6503.24,231.558,0)

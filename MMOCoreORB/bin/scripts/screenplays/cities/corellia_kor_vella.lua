@@ -97,61 +97,137 @@ CorelliaKorVellaScreenPlay = CityScreenPlay:new {
 		{"corsec_major", "corsec_major", -3150.16, 31.1, 2773.0, 282, 0, "", ""},
 	},
 
-	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"r2_1", "r2", 1, -3697.43, 86.1, 3141.62, 327.074, 0, "", false},
-		{"r3_1", "r3", 1, -3423.05, 78.15, 3333.75, 253.023, "", false},
-		{"r3_2", "r3", 1, -3327.95, 86, 3233.64, 315.946, 0, "", false},
-		{"r3_3", "r3", 1, -3157, 31, 2802, 265.951, 0, "", false},
-		{"r5_1", "r5", 1, -3094.48, 31, 2972.63, 268.321, 0, "", false},
-		{"r5_2", "r5", 1, -3134.32, 31, 2801.71, 82.3858, 0, "", false},
-		{"cll8_1", "cll8_binary_load_lifter", 1, -3654.48, 86, 3081.81, 26.971, "", false},
-		{"cll8_2", "cll8_binary_load_lifter", 1, -3449, 78, 3378, 359.013, "", false},
-		{"cll8_3", "cll8_binary_load_lifter", 1, -3038, 31, 2988, 81.028, 0, "", false},
-		{"eg6_1", "eg6_power_droid", 1, -3766.44, 86, 3180.9, 54.4, 0, "", false},
+		{"r2_1", "r2", -3697.43, 86.1, 3141.62, 327.074, 0, "", false},
+		{"r3_1", "r3", -3423.05, 78.15, 3333.75, 253.023, 0, "", false},
+		{"r3_2", "r3", -3327.95, 86, 3233.64, 315.946, 0, "", false},
+		{"r3_3", "r3", -3157, 31, 2802, 265.951, 0, "", false},
+		{"r5_1", "r5", -3094.48, 31, 2972.63, 268.321, 0, "", false},
+		{"r5_2", "r5", -3134.32, 31, 2801.71, 82.3858, 0, "", false},
+		{"cll8_1", "cll8_binary_load_lifter", -3654.48, 86, 3081.81, 26.971, 0, "", false},
+		{"cll8_2", "cll8_binary_load_lifter", -3449, 78, 3378, 359.013, 0, "", false},
+		{"cll8_3", "cll8_binary_load_lifter", -3038, 31, 2988, 81.028, 0, "", false},
+		{"eg6_1", "eg6_power_droid", -3766.44, 86, 3180.9, 54.4, 0, "", false},
 
 		--NPCs
-		{"npc_1", "patrolNpc", 1, -3200, 30, 2786, 349, 0, "", false},
-		{"npc_2", "patrolNpc", 1, -3115, 31, 2800, 30, 0, "", false},
-		{"npc_3", "patrolNpc", 1, -3066, 31, 2925, 132, 0, "", false},
-		{"npc_4", "patrolNpc", 1, -3131, 31, 2995, 134, 0, "", false},
-		{"npc_5", "patrolNpc", 1, -3296, 66, 2877, 186, 0, "", false},
-		{"npc_6", "patrolNpc", 1, -3384, 86, 2958, 11, 0, "", false},
-		{"npc_7", "patrolNpc", 1, -3393, 86, 3007, 286 ,0, "", false},
-		{"npc_8", "patrolNpc", 1, -3426, 86, 3134, 343, 0, "", false},
-		{"npc_9", "patrolNpc", 1, -3378, 86, 3173, 240, 0, "", false},
-		{"npc_10", "patrolNpc", 1, -3351, 86, 3303, 24, 0, "", false},
-		{"npc_11", "patrolNpc", 1, -3572, 70, 3208, 214, 0, "", false},
+		{"npc_1", "patrolNpc", -3200, 30, 2786, 349, 0, "", false},
+		{"npc_2", "patrolNpc", -3115, 31, 2800, 30, 0, "", false},
+		{"npc_3", "patrolNpc", -3066, 31, 2925, 132, 0, "", false},
+		{"npc_4", "patrolNpc", -3131, 31, 2995, 134, 0, "", false},
+		{"npc_5", "patrolNpc", -3296, 66, 2877, 186, 0, "", false},
+		{"npc_6", "patrolNpc", -3384, 86, 2958, 11, 0, "", false},
+		{"npc_7", "patrolNpc", -3393, 86, 3007, 286 ,0, "", false},
+		{"npc_8", "patrolNpc", -3426, 86, 3134, 343, 0, "", false},
+		{"npc_9", "patrolNpc", -3378, 86, 3173, 240, 0, "", false},
+		{"npc_10", "patrolNpc", -3351, 86, 3303, 24, 0, "", false},
+		{"npc_11", "patrolNpc", -3572, 70, 3208, 214, 0, "", false},
 	},
 
 	patrolPoints = {
-		--table_name = {{x, z, y, cell, delayAtNextPoint}} 1 = no delay 0 = delay
-		r2_1 = {{-3699, 86, 3140, 0, 1}, {-3720, 86, 3180, 0, 1}, {-3723, 86, 3178, 0, 1}, {-3686, 86, 3115, 0, 0}, {-3685, 86, 3104, 0, 1}, {-3686, 86, 3115, 0, 0}},
-		r3_1 = {{-3423, 78, 3333, 0, 1}, {-3428, 78, 3323, 0, 0}, {-3436, 78, 3247, 0, 1}, {-3428, 78, 3323, 0, 0}},
-		r3_2 = {{-3328, 86, 3235, 0, 1}, {-3336, 86, 3210, 0, 1}, {-3370, 85, 3215, 0, 1}, {-3371, 86, 3272, 0, 1}, {-3370, 85, 3215, 0, 1}, {-3336, 86, 3210, 0, 1}},
-		r3_3 = {{-3157, 31, 2802, 0, 0}, {-3176, 31, 2797, 0, 1}, {-3165, 31, 2809, 0, 1}},
-		r5_1 = {{-3094, 31, 2972, 0, 1}, {-3150, 31, 2998, 0, 1}},
-		r5_2 = {{-3142, 31, 2805, 0, 1}, {-3137, 31, 2809, 0, 1}, {-3113, 31, 2804, 0, 1}, {-3048, 30, 2832, 0, 1}, {-3113, 31, 2804, 0, 1}},
-		cll8_1 = {{-3654, 86, 3081, 0, 1}, {-3641, 86, 3126, 0, 0}, {-3591, 86, 3157, 0, 1}, {-3641, 86, 3126, 0, 1}},
-		cll8_2 = {{-3453, 78, 3350, 0, 1}, {-3436, 78, 3479, 0, 1}},
-		cll8_3 = {{-3038, 31, 2988, 0, 1}, {-3021, 31, 2908, 0, 1}, {-3038, 31, 2988, 0, 1}, {-3054, 31, 2985, 0, 0}, {-3091, 31, 2975, 0, 1}},
-		eg6_1 = {{-3766, 86, 3180, 0, 1}, {-3770, 86, 3192, 0, 1}, {-3755, 86, 3220, 0, 1}, {-3745, 86, 3198, 0, 1}},
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		r2_1 = {{-3699, 86, 3140, 0, false}, {-3720, 86, 3180, 0, false}, {-3723, 86, 3178, 0, false}, {-3686, 86, 3115, 0, true}, {-3685, 86, 3104, 0, false}, {-3686, 86, 3115, 0, true}},
+		r3_1 = {{-3423, 78, 3333, 0, false}, {-3428, 78, 3323, 0, true}, {-3436, 78, 3247, 0, false}, {-3428, 78, 3323, 0, true}},
+		r3_2 = {{-3328, 86, 3235, 0, false}, {-3336, 86, 3210, 0, false}, {-3370, 85, 3215, 0, false}, {-3371, 86, 3272, 0, true}, {-3370, 85, 3215, 0, true}, {-3336, 86, 3210, 0, true}},
+		r3_3 = {{-3157, 31, 2802, 0, true}, {-3176, 31, 2797, 0, false}, {-3165, 31, 2809, 0, false}},
+		r5_1 = {{-3094, 31, 2972, 0, false}, {-3150, 31, 2998, 0, false}},
+		r5_2 = {{-3142, 31, 2805, 0, false}, {-3137, 31, 2809, 0, false}, {-3113, 31, 2804, 0, false}, {-3048, 30, 2832, 0, false}, {-3113, 31, 2804, 0, false}},
+		cll8_1 = {{-3654, 86, 3081, 0, false}, {-3641, 86, 3126, 0, true}, {-3591, 86, 3157, 0, false}, {-3641, 86, 3126, 0, false}},
+		cll8_2 = {{-3453, 78, 3350, 0, false}, {-3436, 78, 3479, 0, false}},
+		cll8_3 = {{-3038, 31, 2988, 0, false}, {-3021, 31, 2908, 0, false}, {-3038, 31, 2988, 0, false}, {-3054, 31, 2985, 0, true}, {-3091, 31, 2975, 0, false}},
+		eg6_1 = {{-3766, 86, 3180, 0, false}, {-3770, 86, 3192, 0, false}, {-3755, 86, 3220, 0, false}, {-3745, 86, 3198, 0, false}},
 
-		npc_1 = {{-3200, 30, 2786, 0, 0}, {-3249, 36, 2819, 0, 0}, {-3272, 53, 2855, 0, 0}, {-3193, 30, 2772, 0, 0}},
-		npc_2 = {{-3115, 31, 2800, 0, 0}, {-3112, 31, 2785, 0, 0}, {-3078, 31, 2813, 0, 0}, {-3119, 31, 2795, 0, 0}},
-		npc_3 = {{-3066, 31, 2925, 0, 0}, {-3072, 31, 2941, 0, 0}, {-3052, 31, 2918, 0, 0}, {-3062, 31, 2888, 0, 0}},
-		npc_4 = {{-3131, 31, 2995, 0, 0}, {-3094, 31, 2991, 0, 0}, {-3099, 31, 2982, 0, 0}, {-3141, 31, 3009, 0, 0}},
-		npc_5 = {{-3296, 66, 2877, 0, 0}, {-3299, 66, 2875, 0, 0}, {-3315, 70, 2899, 0, 0}, {-3342, 71, 2913, 0, 0}, {-3307, 69, 2887, 0, 0}},
-		npc_6 = {{ -3384, 86, 2958, 0, 0}, {-3381, 86, 2973, 0, 0}, {-3390, 86, -2986, 0, 0}},
-		npc_7 = {{-3393, 86, 3007, 0, 0}, {-3407, 86, 3017, 0, 0}, {-3407, 86, 3040, 0, 0}, {-3420, 86, 3050, 0, 0}},
-		npc_8 = {{-3426, 86, 3134, 0, 0}, {-3431, 86, 3118, 0, 0}, {-3436, 86, 3103, 0, 0}, {-3452, 86, 3138, 0, 0}, {-3448, 86, 3154, 0, 0}, {-3439, 86, 3134, 0, 0}},
-		npc_9 = {{-3378, 86, 3173, 0, 0}, {-3388, 86, 3163, 0, 0}, {-3279, 86, 3114, 0, 1}, {-3364, 86, 3151, 0, 0}},
-		npc_10 = {{-3351, 86, 3303, 0, 0}, {-3367, 86, 3296, 0, 0}, {-3354, 86, 3294, 0, 0}, {-3343, 86, 3308, 0, 0}, {-3350, 86, 3307, 0, 0}},
-		npc_11 = {{ -3572, 70, 3208, 0, 0}, {-3548, 70, 3219, 0, 0}, {-3528, 70, 3233, 0, 0}},
+		npc_1 = {{-3200, 30, 2786, 0, true}, {-3249, 36, 2819, 0, true}, {-3272, 53, 2855, 0, true}, {-3193, 30, 2772, 0, true}},
+		npc_2 = {{-3115, 31, 2800, 0, true}, {-3112, 31, 2785, 0, true}, {-3078, 31, 2813, 0, true}, {-3119, 31, 2795, 0, true}},
+		npc_3 = {{-3066, 31, 2925, 0, true}, {-3072, 31, 2941, 0, true}, {-3052, 31, 2918, 0, true}, {-3062, 31, 2888, 0, true}},
+		npc_4 = {{-3131, 31, 2995, 0, true}, {-3094, 31, 2991, 0, true}, {-3099, 31, 2982, 0, true}, {-3141, 31, 3009, 0, true}},
+		npc_5 = {{-3296, 66, 2877, 0, true}, {-3299, 66, 2875, 0, true}, {-3315, 70, 2899, 0, true}, {-3342, 71, 2913, 0, true}, {-3307, 69, 2887, 0, true}},
+		npc_6 = {{ -3384, 86, 2958, 0, true}, {-3381, 86, 2973, 0, true}, {-3390, 86, -2986, 0, true}},
+		npc_7 = {{-3393, 86, 3007, 0, true}, {-3407, 86, 3017, 0, true}, {-3407, 86, 3040, 0, true}, {-3420, 86, 3050, 0, true}},
+		npc_8 = {{-3426, 86, 3134, 0, true}, {-3431, 86, 3118, 0, true}, {-3436, 86, 3103, 0, true}, {-3452, 86, 3138, 0, true}, {-3448, 86, 3154, 0, true}, {-3439, 86, 3134, 0, true}},
+		npc_9 = {{-3378, 86, 3173, 0, true}, {-3388, 86, 3163, 0, true}, {-3279, 86, 3114, 0, false}, {-3364, 86, 3151, 0, true}},
+		npc_10 = {{-3351, 86, 3303, 0, true}, {-3367, 86, 3296, 0, true}, {-3354, 86, 3294, 0, true}, {-3343, 86, 3308, 0, true}, {-3350, 86, 3307, 0, true}},
+		npc_11 = {{ -3572, 70, 3208, 0, true}, {-3548, 70, 3219, 0, true}, {-3528, 70, 3233, 0, true}},
+	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old"},
+	stationaryNpcs = {"artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer", "gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scientist", "slicer"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, -3587.81, 86, 3134.7, 0, 0, ""},
+		{1, -3162.17, 31, 2902.28, 0, 0, ""},
+		{1, -3088.9, 31, 2902.08, 0, 0, ""},
+		{1, -3557.49, 86, 3158.11, 180.005, 0, ""},
+		{1, -3459.55, 78, 3226.02, 180, 0, ""},
+		{1, -3591.74, 86, 3180.01, 180, 0, ""},
+		{1, -3159.35, 31, 2813.02, 0, 0, ""},
+		{1, -3152.32, 31, 2971.71, 0, 0, ""},
+		{1, -3522.13, 70, 3234.57, 298, 0, ""},
+		{1, -3509.45, 78, 3148.97, 307, 0, ""},
+		{1, -3447.57, 78, 3219.08, 209, 0, ""},
+		{1, -3455.84, 78, 3343.36, 116, 0, ""},
+		{1, -3427.62, 86, 3029.21, 95, 0, ""},
+		{1, -3423.54, 86, 3043.61, 131, 0, "conversation"},
+		{1, -3403.44, 86, 2997.65, 182, 0, ""},
+		{1, -3403.21, 86, 3111.2, 47, 0, "conversation"},
+		{1, -3402.2, 86, 3111.9, 225, 0, "conversation"},
+		{1, -3459.9, 86, 3156.7, 255, 0, "conversation"},
+		{1, -3422, 86, 3042, 318, 0, "conversation"},
+		{1, -3458.31, 78, 3027.47, 275, 0, ""},
+		{1, -3461.07, 86, 3156, 54, 0, "conversation"},
+		{1, -3421.3, 86, 3104.47, 296, 0, ""},
+		{1,-3361.13,86,3217.26,124.012,0, ""},
+		{1,-3324.59,86,3261.86,293.486,0, ""},
+		{1,-3322.1,86,3230.47,113.222,0, ""},
+		{1,-3342.65,86,3268.3,214.421,0, ""},
+		{1,-3365.89,86,3284.68,46.8022,0, ""},
+		{1,-3374.97,86,3265.02,47.337,0, ""},
+		{1, -3332.16,86,3307.2,264.653,0, ""},
+		{1,-3322.3,86,3283.63,275.608,0, ""},
+		{1,-3378.96,86,2985.53,285.729,0, ""},
+		{1,-3311.8,69.6204,2886.94,40.0687,0, ""},
+		{1,-3396.89,86,3131.64,45,0, "conversation"},
+		{1,-3395.09, 86, 3131.9, 231, 0, "conversation"},
+		{1,-3225.11,32.2567,2816.51,180,0, ""},
+		{1,-3276.7,86,3089.82,195.888,0, ""},
+		{1,-3256,86,3124.3,90.73,0, ""},
+		{1,-3272.53,86,3071.96, 315, 0, ""},
+		{1,-3177.4, 30, 2775.1, 285,0, ""},
+		{1, -3178.84, 31, 2775.92, 100, 0, ""},
+		{1,-3157.04,101,3077.75,219.742,0, ""},
+		{1,-3191.67,101,3052.4,294.559,0, ""},
+		{1,-3190.54,101,3073.46,88.2138,0, ""},
+		{1, -3185.75,101,3104.64,308.461,0, ""},
+		{1,-3153.75,101,3112.41,31.6067,0, ""},
+		{1,-3188.79,101,3156.71,306.911,0, ""},
+		{1,-3068.52,30.6373,2772.26,154.712,0, ""},
+		{1,-3028.15,29.9485,2793.83,126.824,0, ""},
+		{1,-3087.72,31,2984.93,5.4138,0, ""},
+		{1, -3172.38, 31, 2881.95, 180, 0, ""},
+		{1, -3101.09, 31, 2904.87, 0, 0, ""},
+		{1, -3713.14, 86, 3105.66, 0, 0, ""},
+		{1, -3610.27, 86, 3198.4, 0, 0, ""},
+		{1, -3163.27, 31, 2903.38, 135.0, 0, ""},
+		{1, -3159.35, 31, 2814.02, 180, 0, ""},
+		{1, -3713.14, 86, 3106.66, 180.0, 0, ""},
+		{1, -3408.26, 86, 3048.35, 0, 0, ""},
+		{1, -3090, 31, 2903.18, 135.0, 0, ""},
+		{1, -3520.73, 78, 3126.57, 180, 0, ""},
+		{1, -3162.17, 31, 2903.38, 180, 0, ""},
+		{1, -3163.27, 31, 2902.28, 45, 0, ""},
+		{1, -3610.27, 86, 3199.4, 180, 0, ""},
+		{1, -3459.55, 78, 3225.02, 0, 0, ""},
+		{1, -3095.48, 31, 2971.63, 0, 0, ""},
+		{1, -3384.54, 86, 3008.15, 180, 0, ""},
+		{1, -3450.64, 78, 3030.31, 0, 0, ""},
+		{1, -3384.54, 86, 3007.15, 0, 0, ""},
+		{1, -3152.32, 31, 2972.71, 180, 0, ""},
+		{1, -3088.9, 31, 2903.18, 180, 0, ""},
 	},
 }
 
@@ -163,6 +239,7 @@ function CorelliaKorVellaScreenPlay:start()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 	end
 end
 
@@ -211,89 +288,10 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "junk_dealer", 10, -3130.41, 31, 2973.96, 0, 0)
 
 	--commoners
-	spawnMobile(self.planet, "bodyguard", 300, -3587.81, 86, 3134.7, 0, 0)
-	spawnMobile(self.planet, "bodyguard", 300, -3162.17, 31, 2902.28, 0, 0)
-	spawnMobile(self.planet, "info_broker", 60, -3088.9, 31, 2902.08, 0, 0)
-	pNpc = spawnMobile(self.planet, "info_broker", 60, -3557.49, 86, 3158.11, 180.005, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "brawler", 60, -3459.55, 78, 3226.02, 180, 0)
-	spawnMobile(self.planet, "businessman", 60, -3591.74, 86, 3180.01, 180, 0)
-	spawnMobile(self.planet, "businessman", 60, -3159.35, 31, 2813.02, 0, 0)
-	spawnMobile(self.planet, "businessman", 60, -3152.32, 31, 2971.71, 0, 0)
-	spawnMobile(self.planet, "commoner", 60, -3522.13, 70, 3234.57, 298, 0)
-	spawnMobile(self.planet, "commoner", 60, -3509.45, 78, 3148.97, 307, 0)
-	spawnMobile(self.planet, "commoner", 60, -3447.57, 78, 3219.08, 209, 0)
-	spawnMobile(self.planet, "commoner", 60, -3455.84, 78, 3343.36, 116, 0)
-	spawnMobile(self.planet, "commoner", 60, -3427.62, 86, 3029.21, 95, 0)
-	pNpc = spawnMobile(self.planet, "commoner", 60, -3423.54, 86, 3043.61, 131, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner", 60, -3403.44, 86, 2997.65, 182, 0)
-	pNpc = spawnMobile(self.planet, "commoner", 60, -3403.21, 86, 3111.2, 47, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner", 60, -3402.2, 86, 3111.9, 225, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner", 60, -3459.9, 86, 3156.7, 255, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner", 60, -3422, 86, 3042, 318, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner", 60, -3458.31, 78, 3027.47, 275, 0)
-	pNpc = spawnMobile(self.planet, "commoner", 60, -3461.07, 86, 3156, 54, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner", 60, -3421.3, 86, 3104.47, 296, 0)
-	spawnMobile(self.planet, "commoner", 1,-3361.13,86,3217.26,124.012,0)
-	spawnMobile(self.planet, "commoner", 1,-3324.59,86,3261.86,293.486,0)
-	spawnMobile(self.planet, "commoner", 1,-3322.1,86,3230.47,113.222,0)
-	spawnMobile(self.planet, "commoner", 1,-3342.65,86,3268.3,214.421,0)
-	spawnMobile(self.planet, "commoner", 1,-3365.89,86,3284.68,46.8022,0)
-	spawnMobile(self.planet, "commoner", 1,-3374.97,86,3265.02,47.337,0)
-	spawnMobile(self.planet, "commoner", 1,-3332.16,86,3307.2,264.653,0)
-	spawnMobile(self.planet, "commoner", 1,-3322.3,86,3283.63,275.608,0)
-	spawnMobile(self.planet, "commoner", 1,-3378.96,86,2985.53,285.729,0)
-	spawnMobile(self.planet, "commoner", 1,-3311.8,69.6204,2886.94,40.0687,0)
-	pNpc = spawnMobile(self.planet, "commoner", 1,-3396.89,86,3131.64,45,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner", 1,-3395.09, 86, 3131.9, 231, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner", 1,-3225.11,32.2567,2816.51,180,0)
-	spawnMobile(self.planet, "commoner", 1,-3276.7,86,3089.82,195.888,0)
-	spawnMobile(self.planet, "commoner", 1,-3256,86,3124.3,90.73,0)
-	spawnMobile(self.planet, "commoner", 1,-3272.53,86,3071.96, 315, 0)
-	pNpc = spawnMobile(self.planet, "commoner", 1,-3177.4, 30, 2775.1, 285,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner", 1, -3178.84, 31, 2775.92, 100, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner", 1,-3157.04,101,3077.75,219.742,0)
-	spawnMobile(self.planet, "commoner", 1,-3191.67,101,3052.4,294.559,0)
-	spawnMobile(self.planet, "commoner", 1,-3190.54,101,3073.46,88.2138,0)
-	spawnMobile(self.planet, "commoner", 1,-3185.75,101,3104.64,308.461,0)
-	spawnMobile(self.planet, "commoner", 1,-3153.75,101,3112.41,31.6067,0)
-	spawnMobile(self.planet, "commoner", 1,-3188.79,101,3156.71,306.911,0)
-	spawnMobile(self.planet, "commoner", 1,-3068.52,30.6373,2772.26,154.712,0)
-	spawnMobile(self.planet, "commoner", 1,-3028.15,29.9485,2793.83,126.824,0)
-	spawnMobile(self.planet, "commoner", 1,-3087.72,31,2984.93,5.4138,0)
-	spawnMobile(self.planet, "entertainer", 60, -3602.67, 86, 3221.17, 0, 0)
 	spawnMobile(self.planet, "entertainer", 60, -16.9034, 1.6, 11.8646, 180, 3005672)
+	spawnMobile(self.planet, "entertainer", 60, -3602.67, 86, 3221.17, 0, 0)
 	spawnMobile(self.planet, "entertainer", 60, -3100.88, 31, 2889.15, 0, 0)
-	spawnMobile(self.planet, "businessman", 60, -3172.38, 31, 2881.95, 180, 0)
-	spawnMobile(self.planet, "bounty_hunter", 60, -3101.09, 31, 2904.87, 0, 0)
-	spawnMobile(self.planet, "farmer", 60, -3713.14, 86, 3105.66, 0, 0)
-	spawnMobile(self.planet, "farmer", 60, -3610.27, 86, 3198.4, 0, 0)
-	spawnMobile(self.planet, "farmer", 60, -3163.27, 31, 2903.38, 135.0, 0)
-	spawnMobile(self.planet, "farmer_rancher", 60, -3159.35, 31, 2814.02, 180, 0)
-	spawnMobile(self.planet, "fringer", 300, -3713.14, 86, 3106.66, 180.0, 0)
-	spawnMobile(self.planet, "gambler", 60, -3408.26, 86, 3048.35, 0, 0)
-	spawnMobile(self.planet, "contractor", 60, -3090, 31, 2903.18, 135.0, 0)
-	spawnMobile(self.planet, "mercenary", 60, -3520.73, 78, 3126.57, 180, 0)
-	spawnMobile(self.planet, "twilek_slave", 60, -3162.17, 31, 2903.38, 180, 0)
-	spawnMobile(self.planet, "entertainer", 60, -3163.27, 31, 2902.28, 45, 0)
-	spawnMobile(self.planet, "noble", 60, -3610.27, 86, 3199.4, 180, 0)
-	spawnMobile(self.planet, "noble", 60, -3459.55, 78, 3225.02, 0, 0)
-	spawnMobile(self.planet, "noble", 60, -3095.48, 31, 2971.63, 0, 0)
-	spawnMobile(self.planet, "pilot", 60, -3384.54, 86, 3008.15, 180, 0)
-	spawnMobile(self.planet, "slicer", 60, -3450.64, 78, 3030.31, 0, 0)
-	spawnMobile(self.planet, "slicer", 60, -3384.54, 86, 3007.15, 0, 0)
-	spawnMobile(self.planet, "slicer", 60, -3152.32, 31, 2972.71, 180, 0)
-	spawnMobile(self.planet, "mercenary", 60, -3088.9, 31, 2903.18, 180, 0)
+
 
 	--thugs
 	spawnMobile(self.planet, "ragtag_kook", 300, -3816.4, 86, 3114.2, 103, 0)
