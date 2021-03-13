@@ -25,20 +25,20 @@ TatooineAnchorheadScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"commoner_fat_patrol", "commoner_old_patrol", "commoner_tatooine_patrol", "commoner_technician", "explorer", "gambler", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"r3_1", "r3", 1, -180, 65, -5314, 96, 0, "", false},
-		{"r3_2", "r3", 1, 116, 52, -5341, 2, 0, "", false},
-		{"r4_1", "r4", 1, 75, 52, -5355, 178, 0, "", false},
+		{"r3_1", "r3", -180, 65, -5314, 96, 0, "", false},
+		{"r3_2", "r3", 116, 52, -5341, 2, 0, "", false},
+		{"r4_1", "r4", 75, 52, -5355, 178, 0, "", false},
 
 		--NPCs
-		{"npc_1", "patrolNpc", 1, 73, 52, -5329, 324, 0, "", false},
-		{"npc_2", "patrolNpc", 1, 39, 52, -5345, 179, 0, "", false},
-		{"npc_3", "patrolNpc", 1, 134, 52, -5333, 67, 0, "", false},
-		{"npc_4", "patrolNpc", 1, 123, 52, -5377, 88, 0, "", false},
-		{"npc_5", "patrolNpc", 1, 83, 52, -5390, 61, 0, "", false},
-		{"npc_6", "patrolNpc", 1, -144, 65, -5301, 250, 0, "", false},
+		{"npc_1", "patrolNpc", 73, 52, -5329, 324, 0, "", false},
+		{"npc_2", "patrolNpc", 39, 52, -5345, 179, 0, "", false},
+		{"npc_3", "patrolNpc", 134, 52, -5333, 67, 0, "", false},
+		{"npc_4", "patrolNpc", 123, 52, -5377, 88, 0, "", false},
+		{"npc_5", "patrolNpc", 83, 52, -5390, 61, 0, "", false},
+		{"npc_6", "patrolNpc", -144, 65, -5301, 250, 0, "", false},
 	},
 
 	patrolPoints = {

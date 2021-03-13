@@ -9,21 +9,21 @@ EndorSmugglerOutpostScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droid
-		{"r3_1", "r3", 1, -950.7, 73, 1542.7, 331.8, 0, "neutral", false},
+		{"r3_1", "r3", -950.7, 73, 1542.7, 331.8, 0, "neutral", false},
 
 		--NPCs
-		{"npc_1", "combatPatrol", 300, -890, 76, 1591, 253, 0, "", true},
-		{"npc_2", "combatPatrol", 300, -889, 76, 1591, 182, 0, "", true},
-		{"npc_3", "combatPatrol", 300, -889, 76, 1592, 319, 0, "", true},
-		{"npc_4", "patrolNpc", 1, -896, 80, 1621, 243, 0, "", false},
-		{"npc_5", "patrolNpc", 1, -880, 76, 1604, 30, 0, "", false},
-		{"npc_6", "patrolNpc", 1, -880, 76, 1638, 11, 0, "", false},
-		{"npc_7", "patrolNpc", 1, -841, 79, 1602, 240, 0, "", false},
-		{"npc_8", "patrolNpc", 1, -838, 76, 1574, 333, 0, "", false},
-		{"npc_9", "patrolNpc", 1, -851, 80, 1555, 238, 0, "", false},
+		{"npc_1", "combatPatrol", -890, 76, 1591, 253, 0, "", true},
+		{"npc_2", "combatPatrol", -889, 76, 1591, 182, 0, "", true},
+		{"npc_3", "combatPatrol", -889, 76, 1592, 319, 0, "", true},
+		{"npc_4", "patrolNpc", -896, 80, 1621, 243, 0, "", false},
+		{"npc_5", "patrolNpc", -880, 76, 1604, 30, 0, "", false},
+		{"npc_6", "patrolNpc", -880, 76, 1638, 11, 0, "", false},
+		{"npc_7", "patrolNpc", -841, 79, 1602, 240, 0, "", false},
+		{"npc_8", "patrolNpc", -838, 76, 1574, 333, 0, "", false},
+		{"npc_9", "patrolNpc", -851, 80, 1555, 238, 0, "", false},
 	},
 
 	patrolPoints = {

@@ -6,10 +6,10 @@ RoriRestussScreenPlay = CityScreenPlay:new {
 	planet = "rori",
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
-		{"cll8_1", "cll8_binary_load_lifter", 1, 5117.8, 80.0, 5696.8, 90, 0, "", false},
-		{"cll8_2", "cll8_binary_load_lifter", 1, 5240.1, 80.0, 5616.5, -90, 0, "", false},
-		{"r5_1", "r5", 1, 5443.7, 80.0, 5674.9, 33, 0, "", false},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
+		{"cll8_1", "cll8_binary_load_lifter", 5117.8, 80.0, 5696.8, 90, 0, "", false},
+		{"cll8_2", "cll8_binary_load_lifter", 5240.1, 80.0, 5616.5, -90, 0, "", false},
+		{"r5_1", "r5", 5443.7, 80.0, 5674.9, 33, 0, "", false},
 	},
 
 	patrolPoints = {

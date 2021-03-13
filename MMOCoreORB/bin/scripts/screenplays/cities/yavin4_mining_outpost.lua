@@ -6,8 +6,8 @@ Yavin4MiningOutpostScreenPlay = CityScreenPlay:new {
 	planet = "yavin4",
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
-		{"surgical_1", "surgical_droid_21b", 1, -1.9, 0.7, 2.5, 175, 7925478, "neutral", false},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
+		{"surgical_1", "surgical_droid_21b", -1.9, 0.7, 2.5, 175, 7925478, "neutral", false},
 	},
 
 	patrolPoints = {

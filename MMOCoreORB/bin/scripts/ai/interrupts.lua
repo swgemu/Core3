@@ -499,9 +499,10 @@ function CombatPatrolInterrupt:startAwarenessInterrupt(pAgent, pObject)
 
 	if aiAgent:isAggressiveTo(pObject) and aiAgent:checkLineOfSight(pObject) and inRange2 then
 		SceneObject(pAgent):showFlyText("npc_reaction/flytext", "threaten", 255, 0, 0)
+		aiAgent:setWait(0)
+		aiAgent:stopWaiting()
+		aiAgent:executeBehavior()
 		aiAgent:addDefender(pObject)
-		aiAgent:stopWaiting();
-		aiAgent:executeBehavior();
 	end
 end
 

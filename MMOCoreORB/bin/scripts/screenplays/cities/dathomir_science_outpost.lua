@@ -9,18 +9,18 @@ DathomirScienceOutpostScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 		--Droids
-		{"cll8_1", "cll8_binary_load_lifter", 1, -107.307, 18, -1603.07, 275.094, 0, "", false},
-		{"r3_1", "r3", 1, -78.3142, 18, -1629.93, 144.919, 0, "", false},
-		{"r4_1", "r4", 1, -134.195, 18, -1599.14, 45.5678, 0, "", false},
+		{"cll8_1", "cll8_binary_load_lifter", -107.307, 18, -1603.07, 275.094, 0, "", false},
+		{"r3_1", "r3", -78.3142, 18, -1629.93, 144.919, 0, "", false},
+		{"r4_1", "r4", -134.195, 18, -1599.14, 45.5678, 0, "", false},
 
 		--NPCs
-		{"npc_1", "combatPatrol", 60, -93, 18, -1578, 0, 0, "", true},
-		{"npc_2", "combatPatrol", 60, -88, 18, -1606, 350, 0, 0, "", true},
-		{"npc_3", "combatPatrol", 60, -74, 18, -1637, 345, 0, 0, "", true},
-		{"npc_4", "combatPatrol", 60, -114, 18, -1630, 300, 0, 0, "", true},
-		{"npc_5", "combatPatrol", 60, -86, 18, -1555, 219, 0, 0, "", true},
+		{"npc_1", "combatPatrol", -93, 18, -1578, 0, 0, "", true},
+		{"npc_2", "combatPatrol", -88, 18, -1606, 350, 0, "", true},
+		{"npc_3", "combatPatrol", -74, 18, -1637, 345, 0, "", true},
+		{"npc_4", "combatPatrol", -114, 18, -1630, 300, 0, "", true},
+		{"npc_5", "combatPatrol", -86, 18, -1555, 219, 0, "", true},
 	},
 
 	patrolPoints = {

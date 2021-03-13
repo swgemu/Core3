@@ -28,20 +28,20 @@ CorelliaDoabaGuerfelScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "noble_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
 
 		--Droids
-		{"surgical_1", "surgical_droid_21b", 1, -1.19, 0.184067, -1.89, 0, 4345354, "", false},
+		{"surgical_1", "surgical_droid_21b", -1.19, 0.184067, -1.89, 0, 4345354, "", false},
 
 		--NPCs
-		{"npc_1", "patrolNpc", 1, 3322, 308, 5484, 146, 0, "", false},
-		{"npc_2", "patrolNpc", 1, 3411, 308, 5515, 208, 0, "", false},
-		{"npc_3", "patrolNpc", 1, 3240, 300, 5415, 249, 0, "", false},
-		{"npc_4", "patrolNpc", 1, 3190, 300, 5269, 131, 0, "", false},
-		{"npc_5", "patrolNpc", 1, 3139, 300, 5247, 171, 0, "", false},
-		{"npc_6", "patrolNpc", 1, 3103, 300, 5164, 50, 0, "", false},
-		{"npc_7", "patrolNpc", 1, 3202, 290, 5034, 29, 0, "", false},
-		{"npc_8", "patrolNpc", 1, 3162, 290, 4966, 255, 0, "", false},
+		{"npc_1", "patrolNpc", 3322, 308, 5484, 146, 0, "", false},
+		{"npc_2", "patrolNpc", 3411, 308, 5515, 208, 0, "", false},
+		{"npc_3", "patrolNpc", 3240, 300, 5415, 249, 0, "", false},
+		{"npc_4", "patrolNpc", 3190, 300, 5269, 131, 0, "", false},
+		{"npc_5", "patrolNpc", 3139, 300, 5247, 171, 0, "", false},
+		{"npc_6", "patrolNpc", 3103, 300, 5164, 50, 0, "", false},
+		{"npc_7", "patrolNpc", 3202, 290, 5034, 29, 0, "", false},
+		{"npc_8", "patrolNpc", 3162, 290, 4966, 255, 0, "", false},
 	},
 
 	patrolPoints = {

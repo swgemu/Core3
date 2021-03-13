@@ -28,20 +28,20 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_naboo_patrol", "commoner_old_patrol", "commoner_patrol", "gambler", "naboo_nomad", "noble_patrol", "official_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
-		--{patrolPoints, template, level, x, z, y, direction, cell, mood, combatPatrol},
-		{"npc_1", "patrolNpc", 1, -4877, 6, 4154, 100, 0, "", false},
-		{"npc_2", "patrolNpc", 1, -4924, 6, 4034, 112, 0, "", false},
-		{"npc_3", "patrolNpc", 1, -4896, 6, 4167, 352, 0, "", false},
-		{"npc_4", "patrolNpc", 1, -5054, 6, 4228, 0, 0, "", false},
-		{"npc_5", "patrolNpc", 1, -5320, 6, 4236, 175, 0, "", false},
-		{"npc_6", "patrolNpc", 1, -5489, 6, 4404, 229, 0, "", false},
-		{"npc_7", "patrolNpc", 1, -5497, 6, 4148, 166, 0, "", false},
-		{"npc_8", "patrolNpc", 1, -5291, 6, 4428, 322, 0, "", false},
-		{"npc_9", "patrolNpc", 1, -5586, 6, 4495, 212, 0, "", false},
-		{"npc_10", "patrolNpc", 1, -4829, 6, 4113, 0, "", false},
-		{"npc_11", "patrolNpc", 1, -4956, 6, 4205, 106, 0, "", false},
-		{"npc_12", "patrolNpc", 1, -4904, 6, 4201, 110, 0, "conversation", false},
-		{"npc_13", "patrolNpc", 1, -4889.4, 6, 4081.8, 0, "conversation", false}
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
+		{"npc_1", "patrolNpc", -4877, 6, 4154, 100, 0, "", false},
+		{"npc_2", "patrolNpc", -4924, 6, 4034, 112, 0, "", false},
+		{"npc_3", "patrolNpc", -4896, 6, 4167, 352, 0, "", false},
+		{"npc_4", "patrolNpc", -5054, 6, 4228, 0, 0, "", false},
+		{"npc_5", "patrolNpc", -5320, 6, 4236, 175, 0, "", false},
+		{"npc_6", "patrolNpc", -5489, 6, 4404, 229, 0, "", false},
+		{"npc_7", "patrolNpc", -5497, 6, 4148, 166, 0, "", false},
+		{"npc_8", "patrolNpc", -5291, 6, 4428, 322, 0, "", false},
+		{"npc_9", "patrolNpc", -5586, 6, 4495, 212, 0, "", false},
+		{"npc_10", "patrolNpc", -4829, 6, 4113, 0, 0, "", false},
+		{"npc_11", "patrolNpc", -4956, 6, 4205, 106, 0, "", false},
+		{"npc_12", "patrolNpc", -4904, 6, 4201, 110, 0, "conversation", false},
+		{"npc_13", "patrolNpc", -4889.4, 6, 4081.8, 0, 0, "conversation", false}
 
 	},
 

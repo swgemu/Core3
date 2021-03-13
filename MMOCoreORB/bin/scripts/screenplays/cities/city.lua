@@ -140,6 +140,7 @@ function CityScreenPlay:spawnPatrol(num)
 	local points = patrol[1]
 	local template = patrol[2]
 	local pMobile = nil
+	local mood = patrol[8]
 
 	if (template == "patrolNpc") then
 		local patrolNpcs = self.patrolNpcs
@@ -153,10 +154,14 @@ function CityScreenPlay:spawnPatrol(num)
 		template = combatPatrol[templateNum]
 	end
 
-	--{patrolPoints, template, level, x, z, y, direction, cell, mood},
-	local pMobile = spawnMobile(self.planet, template, patrol[3], patrol[4], patrol[5], patrol[6], patrol[7], patrol[8], patrol[9])
+	--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol}
+	local pMobile = spawnMobile(self.planet, template, 0, patrol[3], patrol[4], patrol[5], patrol[6], patrol[7])
 
 	if (pMobile ~= nil and points ~= nil) then
+		if mood ~= "" then
+			self:setMoodString(pMobile, mood)
+		end
+
 		local pOid = SceneObject(pMobile):getObjectID()
 
 		createEvent(3000, self.screenplayName, "setupMobilePatrol", pMobile, num)
@@ -172,7 +177,7 @@ function CityScreenPlay:setupMobilePatrol(pMobile, num)
 	end
 
 	local spawnNumber = tonumber(num)
-	local combatNpc = self.patrolMobiles[spawnNumber][10]
+	local combatNpc = self.patrolMobiles[spawnNumber][9]
 
 	if combatNpc then
 		AiAgent(pMobile):setAiTemplate("combatpatrol")
@@ -235,7 +240,10 @@ function CityScreenPlay:mobileDestinationReached(pMobile)
 	local delay = currentSet[5]
 
 	if (delay) then
-		createEvent(getRandomNumber( 30, 60) * 1000, self.screenplayName, "mobilePatrol", pMobile, "")
+		local delayTime = getRandomNumber(30, 60)
+
+		createEvent(delayTime * 1000, self.screenplayName, "mobilePatrol", pMobile, "")
+		AiAgent(pMobile):setWait(delayTime)
 	else
 		createEvent(100, self.screenplayName, "mobilePatrol", pMobile, "")
 	end
