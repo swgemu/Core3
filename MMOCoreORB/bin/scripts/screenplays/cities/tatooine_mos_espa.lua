@@ -96,6 +96,23 @@ TatooineMosEspaScreenPlay = CityScreenPlay:new {
 		npc_10 = {{-2770, 5, 2245, 0, true}, {-2732, 5, 2254, 0, true}, {-2754, 5, 2219, 0, true}, {-2766, 5, 2281, 0, true}},
 		npc_11 = {{-2731, 5, 2226, 0, true}, {-2693, 5, 2264, 0, true}, {-2729, 5, 2263, 0, true}, {-2705, 5, 2240, 0, true}},
 	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old", "commoner_tatooine"},
+	stationaryNpcs = {"artisan", "brawler", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "criminal", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer",
+			"gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scavenger", "scientist", "slicer"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, -2918.94, 5, 2169.6, 0, 0, "conversation"},	{1, -2881.87, 5, 2142.69, 18.8035, 0, ""}, {1, -2787.25, 5, 1962.04, 14.8999, 0, ""}, {1, -2939.1, 5, 1962.9, 15.9578, 0, ""},
+		{1, -2912.23, 5, 1928.7, 337.934, 0, ""}, {1, -2881.87, 5, 1974.41, 329.04, 0, ""}, {1, -3019.69, 5, 2114.97, 73.4692, 0, ""}, {1, -2881.8, 5, 2267.4, 180, 0, ""},
+		{1, -2897.39, 5, 2323.06, 54.7434, 0, ""}, {1, -2976.72, 5.52789, 2333.09, 215.86, 0, ""},	{1, -2931.98, 5, 2495.44, 266.081, 0, ""}, {1, -2774.25, 5, 2018.1, 237.899, 0, ""},
+		{1, -2739.74, 5, 2044.75, 99.9046, 0, ""}, {1, -2722.49, 5, 2007.18, 217.488, 0, ""}, {1, -2767.35, 5, 2232.76, 164.701, 0, ""}, {1, -2766.88, 5, 2314.77, 201.13, 0, ""},
+		{1, -2901.2, 5, 2360.3, 241, 0, "npc_sitting_chair"}, {1, -2868.4, 5, 2493.9, 238, 0, "npc_sitting_chair"}, {1, -2877.18, 5, 2473.48, 293.853, 0, ""}, {1, -2886.35, 5, 2377.12, 323.001, 0, ""},
+		{1, -2890.19, 5, 2251.37, 190.438, 0, ""}, {1, -2839.04, 5, 2492.89, 55.3765, 0, ""}, {1, -2874.25, 5, 2546.29, 122.899, 0, ""}, {1, -2881.23, 5, 2004.94, 233.054, 0, ""},
+		{1, -2818.45, 5, 2407.94, 238.346, 0, ""}, {1, -2859.3, 5, 2288.53, 351.513, 0, ""}, {1, -3007.6, 5, 2372.2, -133, 0, ""}, {1, -2860.36, 5, 2212.37, 343.92, 0, ""},
+		{1, -2831.34, 5, 1912.49, 217.51, 0, ""}, {1, -2807.11, 5, 1953.71, 320.134, 0, ""}, {1, -3115.34, 5, 2084.32, 284.484, 0, ""}, {1, -3000.81, 5, 2213.95, 148.773, 0, ""},
+		{1, -2978.76, 5, 2473.24, 5.89742, 0, ""}, {1, -2884.43, 5, 2575.51, 325.132, 0, ""}, {1, -2894.24, 5, 2492.22, 84.423, 0, ""},	{1, -2810.06, 5, 2318.02, 268.996, 0, ""},
+	},
 }
 
 registerScreenPlay("TatooineMosEspaScreenPlay", true)
@@ -104,6 +121,7 @@ function TatooineMosEspaScreenPlay:start()
 	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 	end
@@ -302,47 +320,6 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	--Outside
 	pNpc = spawnMobile(self.planet, "anim_kahn",60,-2907.07,5,2130.14, 75,0)
 	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile(self.planet, "brawler",60,-2918.94,5,2169.6,0,0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "businessman",60,-2881.87,5,2142.69,18.8035,0)
-	spawnMobile(self.planet, "businessman",60,-2787.25,5,1962.04,14.8999,0)
-	spawnMobile(self.planet, "businessman",60,-2939.1,5,1962.9,15.9578,0)
-	spawnMobile(self.planet, "businessman",60,-2912.23,5,1928.7,337.934,0)
-	spawnMobile(self.planet, "businessman",60,-2881.87,5,1974.41,329.04,0)
-	spawnMobile(self.planet, "businessman",60,-3019.69,5,2114.97,73.4692,0)
-	spawnMobile(self.planet, "businessman",60,-2881.8,5,2267.4,180,0)
-	spawnMobile(self.planet, "businessman",60,-2897.39,5,2323.06,54.7434,0)
-	spawnMobile(self.planet, "businessman",60,-2976.72,5.52789,2333.09,215.86,0)
-	spawnMobile(self.planet, "businessman",60,-2931.98,5,2495.44,266.081,0)
-	spawnMobile(self.planet, "businessman",60,-2774.25,5,2018.1,237.899,0)
-	spawnMobile(self.planet, "businessman",60,-2739.74,5,2044.75,99.9046,0)
-	spawnMobile(self.planet, "businessman",60,-2722.49,5,2007.18,217.488,0)
-	spawnMobile(self.planet, "businessman",60,-2767.35,5,2232.76,164.701,0)
-	spawnMobile(self.planet, "businessman",60,-2766.88,5,2314.77,201.13,0)
-	pNpc = spawnMobile(self.planet, "businessman",60,-2901.2,5,2360.3,241,0)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-	pNpc = spawnMobile(self.planet, "businessman",60,-2868.4,5,2493.9,238,0)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-	spawnMobile(self.planet, "commoner_fat",60,-2877.18,5,2473.48,293.853,0)
-	spawnMobile(self.planet, "commoner_fat",60,-2886.35,5,2377.12,323.001,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2890.19,5,2251.37,190.438,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2839.04,5,2492.89,55.3765,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2874.25,5,2546.29,122.899,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2881.23,5,2004.94,233.054,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2818.45,5,2407.94,238.346,0)
-	spawnMobile(self.planet, "commoner_old",60,-2859.3,5,2288.53,351.513,0)
-	spawnMobile(self.planet, "commoner_old",60,-3007.6,5,2372.2,-133,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2860.36,5,2212.37,343.92,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2831.34,5,1912.49,217.51,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2807.11,5,1953.71,320.134,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-3115.34,5,2084.32,284.484,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-3000.81,5,2213.95,148.773,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2978.76,5,2473.24,5.89742,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2884.43,5,2575.51,325.132,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2894.24,5,2492.22,84.423,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-2810.06,5,2318.02,268.996,0)
-
-	--More misc outside
 	spawnMobile(self.planet, "criminal",300,-2960.96,5,2163.64,79.2954,0)
 	spawnMobile(self.planet, "criminal",300,-2856.83,5,2473.55,184.191,0)
 	spawnMobile(self.planet, "criminal",300,-2976.77,5,2539.28,36.1265,0)

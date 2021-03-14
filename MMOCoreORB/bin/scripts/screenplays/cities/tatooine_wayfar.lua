@@ -60,6 +60,18 @@ TatooineWayfarScreenPlay = CityScreenPlay:new {
 		npc_7 = {{-5050, 75, -6570, 0, false}, {-5074, 75, -6545, 0, false}, {-5085, 75, -6535, 0, false}, {-5088, 75, -6509, 0, false}},
 		npc_8 = {{-5048, 75, -6567, 0, false}, {-5072, 75, -6545, 0, false}, {-5082, 75, -6533, 0, false}, {-5084, 75, -6507, 0, false}},
 	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old", "commoner_tatooine"},
+	stationaryNpcs = {"artisan", "brawler", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "chiss_female", "commoner_technician", "contractor", "criminal", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer",
+			"gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "patron_ithorian", "pilot", "rancher", "scavenger", "scientist", "slicer", "shadowy_figure", "sullustan_male", "twilek_slave"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, -5095.19, 75, -6527.76, 255, 0, ""}, {1, -5213.66, 75, -6474.22, 51, 0, ""}, {1, -5249.25, 75, -6516.55, 22, 0, ""}, {1, -5214.19, 75, -6460.12, 331, 0, ""},
+		{1, -5217.62, 75, -6578.64, 291, 0, ""}, {1, -5216.58, 75, -6494.05, 1, 0, ""}, {1, -5182, 75, -6496.33, 222, 0, ""}, {1, -5155.11, 75, -6488.89, 3, 0, ""},
+		{1, -5133.39, 75, -6492.64, 280, 0, ""}, {1, -5219.65, 75, -6548.3, 63, 0, ""},	{1, -5260.24, 75, -6510.64, 241, 0, ""}, {1, -5251.85, 75, -6499.93, 200, 0, ""},
+		{1, -5193.47, 75, -6490.09, 341, 0, ""}, {1, -5155.04, 75, -6500.75, 115, 0, ""}, {1, -5260.46, 75, -6556.07, 247, 0, ""}, {1, -5161.6, 75, -6532.3, 24, 0, ""},
+	},
 }
 
 registerScreenPlay("TatooineWayfarScreenPlay", true)
@@ -68,6 +80,7 @@ function TatooineWayfarScreenPlay:start()
 	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 	end
@@ -146,20 +159,6 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "mercenary",300,-25.6591,-0.519991,10.6171,15.7251,1134570)
 
 	--Outside
-	spawnMobile(self.planet, "commoner",60,-5095.19,75,-6527.76,255.369,0)
-	spawnMobile(self.planet, "commoner_fat",60,-5213.66,75,-6474.22,51.4178,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5249.25,75,-6516.55,22.2881,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5214.19,75,-6460.12,331.513,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5217.62,75,-6578.64,291.256,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5216.58,75,-6494.05,1.52676,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5182,75,-6496.33,222.017,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5155.11,75,-6488.89,3.13805,0)
-	spawnMobile(self.planet, "commoner_naboo",60,-5133.39,75,-6492.64,280.032,0)
-	spawnMobile(self.planet, "commoner_old",60,-5219.65,75,-6548.3,63.534,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-5260.24,75,-6510.64,241.382,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-5251.85,75,-6499.93,200.386,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-5193.47,75,-6490.09,341.866,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,-5155.04,75,-6500.75,115.651,0)
 	spawnMobile(self.planet, "criminal",300,-5210.29,75,-6570.98,235.683,0)
 	spawnMobile(self.planet, "informant_npc_lvl_2",0,-5205,75,-6503,315,0)
 	spawnMobile(self.planet, "jabba_enforcer",360,-5233.49,75,-6571.71,339.496,0)
@@ -185,9 +184,7 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "jawa_warlord",360,-5248.59,75,-6514.38,140.997,0)
 	spawnMobile(self.planet, "jawa_warlord",360,-5066.64,75,-6600.84,318.437,0)
 	spawnMobile(self.planet, "jawa_warlord",360,-5054.39,75,-6602.99,341.563,0)
-	spawnMobile(self.planet, "noble",60,-5161.6,75,-6532.3,24,0)
 	spawnMobile(self.planet, "rebel_recruiter",60,-5295.7,75,-6527.99,39.2298,0)
-	spawnMobile(self.planet, "scientist",60,-5260.46,75,-6556.07,247.019,0)
 	pNpc = spawnMobile(self.planet, "smuggler_pilot",60,-5868.38,90,-6199.5,65.5014,0)
 	self:setMoodString(pNpc, "neutral")
 	spawnMobile(self.planet, "trainer_artisan",0,-5274,75,-6547,139,0)
