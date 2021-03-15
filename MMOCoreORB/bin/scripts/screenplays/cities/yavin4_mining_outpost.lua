@@ -14,38 +14,38 @@ Yavin4MiningOutpostScreenPlay = CityScreenPlay:new {
 		--table_name = {{x, z, y, cell, delayAtNextPoint}}
 		surgical_1 = {{-1.9, 0.7, 2.5, 7925478, false}, {-1.8, 0.7, 4.4, 7925478, false}, {3.1, 0.7, 4.5, 7925478, true}, {3.2, 0.7, 3.6, 7925478, false}, {3.1, 0.7, 4.5, 7925478, false}, {-1.8, 0.7, 4.4, 7925478, false}},
 	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old"},
+	stationaryNpcs = {"bodyguard", "bounty_hunter", "businessman", "chiss_female", "chiss_male", "commoner_technician", "explorer", "fringer", "gambler", "medic", "mercenary", "miner",  "pilot", "scientist", "shadowy_figure", "slicer", "sullustan_male"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		--tavern a
+		{1, 3.1, 0.7, 2.4, 0, 7925478, "npc_sitting_chair"}, {1, 2.3, 0.7, 6.5, -5, 7925478, "sad"},
+
+		--tavern b
+		{1, 0.4, 0.6, -0.7, -179, 7925451, "npc_sitting_chair"}, {1, 3.5, 0.6, 4.2, -5, 7925449, "npc_standing_drinking"},
+
+		--building empty
+		{1, 3.6, 0.1, -0.5, 0, 1713372, "npc_sitting_chair"}
+	},
 }
 
 registerScreenPlay("Yavin4MiningOutpostScreenPlay", true)
 
 function Yavin4MiningOutpostScreenPlay:start()
-	if (isZoneEnabled("yavin4")) then
+	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
+		self:spawnStationaryMobiles()
 	end
 end
 
 function Yavin4MiningOutpostScreenPlay:spawnMobiles()
-	--tavern a
-	local pNpc = spawnMobile("yavin4", "sullustan_male",60,3.1,0.7,2.4,0,7925478)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-
-	pNpc = spawnMobile("yavin4", "medic",60,2.3,0.7,6.5,-5,7925478)
-	self:setMoodString(pNpc, "sad")
-
 	--tavern b
-	pNpc = spawnMobile("yavin4", "shadowy_figure",60,0.4,0.6,-0.7,-179,7925451)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-
 	pNpc = spawnMobile("yavin4", "bartender",60,3.4,0.6,5.6,173,7925449)
 	self:setMoodString(pNpc, "conversation")
-
-	pNpc = spawnMobile("yavin4", "commoner_fat",60,3.5,0.6,4.2,-5,7925449)
-	self:setMoodString(pNpc, "npc_standing_drinking")
-
-	--building empty
-	pNpc = spawnMobile("yavin4", "ithorian_male",60,3.6,0.1,-0.5,0,1713372)
-	self:setMoodString(pNpc, "npc_sitting_chair")
 
 	--outside tavern area
 	spawnMobile("yavin4", "rebel_commando", 460, -255.5, 35.0, 4859.2, 81, 0)
