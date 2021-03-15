@@ -124,9 +124,9 @@ public:
 		int posture = object->getPosture();
 
 		//TODO: This should be derived from the locomotion table
-		if (ghost->isForcedTransform() || (!object->hasDizzyEvent()
+		if (!object->hasDizzyEvent()
 				&& (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::CROUCHED || posture == CreaturePosture::DRIVINGVEHICLE || posture == CreaturePosture::RIDINGCREATURE
-				|| posture == CreaturePosture::SKILLANIMATING))) {
+				|| posture == CreaturePosture::SKILLANIMATING)) {
 
 			updatePosition(object);
 		} else {
@@ -163,17 +163,21 @@ public:
 	void updatePosition(CreatureObject* object) {
 		PlayerObject* ghost = object->getPlayerObject();
 
-		if (ghost == nullptr)
+		if (ghost == nullptr) {
 			return;
+		}
 
-		if (std::isnan(positionX) || std::isnan(positionY) || std::isnan(positionZ))
+		if (std::isnan(positionX) || std::isnan(positionY) || std::isnan(positionZ)) {
 			return;
+		}
 
-		if (std::isinf(positionX) || std::isinf(positionY) || std::isinf(positionZ))
+		if (std::isinf(positionX) || std::isinf(positionY) || std::isinf(positionZ)) {
 			return;
+		}
 
-		if (ghost->isTeleporting())
+		if (ghost->isTeleporting() && !ghost->isForcedTransform()) {
 			return;
+		}
 
 		/*if (!object->isInQuadTree())
 			return;*/
@@ -316,11 +320,13 @@ public:
 			return;
 		}
 
-		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0)
+		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0) {
 			return;
+		}
 
-		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, newParent) != 0)
+		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, newParent) != 0) {
 			return;
+		}
 
 		object->setMovementCounter(movementCounter);
 		object->setDirection(directionW, directionX, directionY, directionZ);
