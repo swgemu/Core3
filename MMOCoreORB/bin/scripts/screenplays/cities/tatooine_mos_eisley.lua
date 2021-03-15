@@ -81,6 +81,24 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		npc_5 = {{3513, 4, -4725, 0, false}, {3494, 5, -4724, 0, true}, {3467, 5, -4739, 0, false}, {3494, 5, -4724, 0, true}},
 		npc_6 = {{3458, 4, -4890, 0, false}, {3436, 5, -4903, 0, true}, {3454, 5, -4917, 0, true}},
 	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old", "commoner_tatooine"},
+	stationaryNpcs = {"artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "criminal", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer",
+			"gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scavenger", "scientist", "slicer"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, 3247.43, 4.00222, -4850.96, 0, 0, "conversation"}, {1, 3247.43, 4.00848, -4849.66, 180, 0, "conversation"}, {1, 3532.96, 5, -4788.08, 313, 0, "happy"}, {1, 3636.8, 5, -4877.95, 55, 0, ""},
+		{1, 3699, 5, -4768.14, 122.053, 0, ""}, {1, 3698.19, 4.91134, -4838.24, 31, 0, ""}, {1, 3359.65, 5, -4496.04, 277, 0, ""}, {1, 60, 3422.6, 5, -4847, 300, 0, "npc_sitting_table"},
+		{1, 3377.1, 5, -4864.9, 7, 0, "npc_sitting_chair"}, {1, 3414.1, 5, -4629.9, 155, 0, "npc_sitting_chair"}, {1, 3415.9, 5, -4630.2, 60, 0, "npc_use_terminal_high"}, {1, 3371.5, 0, -4858.4, 210, 0, "npc_use_terminal_high"},
+		{1, 3397.3, 0, -4689.8, 88, 0, "npc_use_terminal_high"}, {1, 3285.75, 5, -4923.4, 54, 0, ""}, {1, 3482.43, 5, -5002.18, 227, 0, ""}, {1, 3232.74, 5, -4798.26, 202, 0, ""},
+		{1, 3258.46, 4.05782, -4673.77, 110, 0, ""}, {1,  3532.7,  5,  -4723.7,  90,  0, "conversation"}, {1, 3526.85, 4.44117, -4700.74, 200, 0, ""}, {1, 3357.54, 4.2333, -4649.49, 43, 0, ""},
+		{1, 3529.16, 5, -4900.65, 339, 0, ""}, {1, 3329.54, 5, -4975.12, 351, 0, ""}, {1, 3247.46, 5, -4841.69, 135, 0, "conversation"}, {1, 3211.43, 5, -4751.8, 127.282, 0, ""},
+		{1,  3535.1,  4,  -4724.2,  275,  0, "conversation"}, {1, 3354.2, 0, -4824.3, 330, 0, "worried"}, {1, 3697.52, 5, -4757.76, 158, 0, ""}, {1, 3650.15, 5, -4860.75, 108, 0, ""},
+		{1, 3563.18, 5, -4946.05, 34, 0, ""}, {1, 3499.6, 5, -5019.9, 2335, 0, ""}, {1, 3507.53, 5, -5002.63, 318, 0, ""}, {1, 3496, 5, -4993.49, 82, 0, ""},
+		{1, 3347.29, 5, -4974.32, 230, 0, ""}, {1, 3379.18, 5, -4898.03, 283, 0, ""}, {1, 3316.48, 4.96935, -4888.61, 231, 0, ""}, {1, 3732.52, 4.00003, -4769.38, 321, 0, ""},
+		{1, 3271.6, 5, -4863.7, 231, 0, "npc_sitting_chair"}, {1, 3268.3, 5, -4854, 290, 0, "npc_sitting_chair"}, {1, 3268.7, 5, -4851.2, 194, 0, "npc_sitting_chair"}
+	},
 }
 
 registerScreenPlay("TatooineMosEisleyScreenPlay", true)
@@ -89,6 +107,7 @@ function TatooineMosEisleyScreenPlay:start()
 	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
 	end
@@ -456,63 +475,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_imagedesigner", 0, -20.9956, 2.12878, 73.874, 90, 1105854)
 
 	--Outside
-	pNpc = spawnMobile(self.planet, "agriculturalist",60,3247.43,4.00222,-4850.96,0.276961,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "agriculturalist",60,3247.43,4.00848,-4849.66,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "businessman",60,3532.96,5,-4788.08,313.416,0)
-	self:setMoodString(pNpc, "happy")
-	spawnMobile(self.planet, "businessman",60,3636.8,5,-4877.95,55.8088,0)
-	spawnMobile(self.planet, "businessman",60,3699,5,-4768.14,122.053,0)
-	spawnMobile(self.planet, "businessman",60,3698.19,4.91134,-4838.24,31.4813,0)
-	spawnMobile(self.planet, "businessman",60,3359.65,5,-4496.04,277.113,0)
-	pNpc = spawnMobile(self.planet, "businessman",60,3422.6,5,-4847,300,0)
-	self:setMoodString(pNpc, "npc_sitting_table")
-	pNpc = spawnMobile(self.planet, "businessman",60,3377.1,5,-4864.9,7,0)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-	pNpc = spawnMobile(self.planet, "businessman",60,3414.1,5,-4629.9,155,0)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-	pNpc = spawnMobile(self.planet, "commoner",60,3415.9,5,-4630.2,60,0)
-	self:setMoodString(pNpc, "npc_use_terminal_high")
-	pNpc = spawnMobile(self.planet, "commoner",60,3371.5,0,-4858.4,210,0)
-	self:setMoodString(pNpc, "npc_use_terminal_high")
-	pNpc = spawnMobile(self.planet, "commoner",60,3397.3,0,-4689.8,88,0)
-	self:setMoodString(pNpc, "npc_use_terminal_high")
-	spawnMobile(self.planet, "commoner_fat",60,3285.75,5,-4923.4,54.5616,0)
-	spawnMobile(self.planet, "commoner_fat",60,3482.43,5,-5002.18,227.852,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3232.74,5,-4798.26,202.31,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3258.46,4.05782,-4673.77,110.797,0)
-	pNpc = spawnMobile(self.planet, "commoner_tatooine", 60, 3532.7, 5, -4723.7, 90, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner_tatooine",60,3526.85,4.44117,-4700.74,200.934,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3357.54,4.2333,-4649.49,43.5369,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3529.16,5,-4900.65,339.614,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3329.54,5,-4975.12,351.826,0)
-	pNpc = spawnMobile(self.planet, "commoner_tatooine",60,3247.46,5,-4841.69,135.008,0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "commoner_tatooine",60,3211.43,5,-4751.8,127.282,0)
-	pNpc = spawnMobile(self.planet, "commoner_tatooine", 60, 3535.1, 4, -4724.2, 275, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_tatooine",60,3354.2,0,-4824.3,330,0)
-	self:setMoodString(pNpc, "worried")
-	spawnMobile(self.planet, "commoner_tatooine",60,3697.52,5,-4757.76,158.22,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3650.15,5,-4860.75,108.398,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3563.18,5,-4946.05,34.6042,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3499.6,5,-5019.9,233.335,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3507.53,5,-5002.63,318.575,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3496.19,5,-4993.49,82.9249,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3347.29,5,-4974.32,230.336,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3379.18,5,-4898.03,283.011,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3316.48,4.96935,-4888.61,231.288,0)
-	spawnMobile(self.planet, "commoner_tatooine",60,3732.52,4.00003,-4769.38,321.63,0)
-	pNpc = spawnMobile(self.planet, "commoner_tatooine",60,3271.6,5,-4863.7,231,0)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-	pNpc = spawnMobile(self.planet, "commoner_tatooine",60,3268.3,5,-4854,290,0)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-	pNpc = spawnMobile(self.planet, "commoner_tatooine",60,3268.7,5,-4851.2,194,0)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-
-	--More Misc Outside
 	pNpc = spawnMobile(self.planet, "criminal",300,3331.07,5,-4485.81,123.98,0)
 	self:setMoodString(pNpc, "worried")
 	spawnMobile(self.planet, "criminal",300,3364.26,5,-4854.56,0.24067,0)
