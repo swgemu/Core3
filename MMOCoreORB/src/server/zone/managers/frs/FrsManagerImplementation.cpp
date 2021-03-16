@@ -3659,8 +3659,9 @@ void FrsManagerImplementation::acceptArenaChallenge(CreatureObject* player, uint
 }
 
 void FrsManagerImplementation::teleportPlayerToDarkArena(CreatureObject* player) {
-	if (!isPlayerInEnclave(player))
+	if (!isPlayerInEnclave(player)) {
 		return;
+	}
 
 	float randX = -12.f + System::random(24);
 	float randY = -85.f + System::random(24);
@@ -3670,8 +3671,10 @@ void FrsManagerImplementation::teleportPlayerToDarkArena(CreatureObject* player)
 	if (ghost != nullptr) {
 		ghost->setForcedTransform(true);
 
+		uint64 playerCell = player->getParentID();
+
 		auto msg = player->info();
-		msg << "Dark Enclave Arena Movement  X = " << randX  << "  Y = " << randY << " Cell ID:  " << ARENA_CELL;
+		msg << "Dark Enclave Arena Movement  X = " << randX  << "  Y = " << randY << " Cell ID:  " << playerCell;
 		msg.flush();
 	}
 
