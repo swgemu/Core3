@@ -81,7 +81,7 @@ public:
 };
 
 class ComponentMap : public VectorMap<uint32, ComponentMapEntry>, public Singleton<ComponentMap>, public Logger {
-	VectorMap<uint32, VectorMap<uint32, Vector<uint32> > > visibleComponentMap;
+	VectorMap<uint32, VectorMap<uint32, VectorMap<uint32, uint32> > > visibleComponentMap;
 
 public:
 	ComponentMap() {
@@ -143,71 +143,84 @@ public:
 		if (!componentList.isValidTable())
 			return;
 
-		int size = componentList.getTableSize();
-		int count = 0;
-		uint32 muzzleTitle = STRING_HASHCODE("muzzle"), scopeTitle = STRING_HASHCODE("scope"), stockTitle = STRING_HASHCODE("stock");
+		uint32 barrelCRC = STRING_HASHCODE("barrel"), scopeCRC = STRING_HASHCODE("scope"), stockCRC = STRING_HASHCODE("stock");
 
-		lua_State* L = componentList.getLuaState();
+		for (int i = 1; i <= componentList.getTableSize(); ++i) {
+			LuaObject luaObject = componentList.getObjectAt(i);
 
-		for (int i = 0; i < size; ++i) {
+			if (!luaObject.isValidTable()) {
+				continue;
+			}
 
-			lua_rawgeti(L, -1, i + 1);
-			LuaObject luaObject(L);
+			uint32 weaponCRC = luaObject.getStringField("template").hashCode();
 
-			uint32 tempCRC = luaObject.getStringField("template").hashCode();
+			VectorMap<uint32, uint32> barrelVector, scopeVector, stockVector;
 
-			LuaObject muzzles = luaObject.getObjectField("muzzle");
-			Vector<uint32> muzzleVector;
+			LuaObject muzzles = luaObject.getObjectField("barrel");
 
 			for (int j = 1; j <= muzzles.getTableSize(); ++j) {
-				uint32 muzzle = muzzles.getStringAt(j).hashCode();
-				muzzleVector.add(muzzle);
+				LuaObject row = luaObject.getObjectAt(j);
+
+				if (row.isValidTable() && row.getTableSize() == 2) {
+					uint32 shotCRC = row.getStringAt(1).hashCode();
+					uint32 apprCRC = row.getStringAt(2).hashCode();
+					barrelVector.put(shotCRC, apprCRC);
+				}
+
+				row.pop();
 			}
 
 			muzzles.pop();
 
 			LuaObject scopes = luaObject.getObjectField("scope");
-			Vector<uint32> scopeVector;
 
 			for (int j = 1; j <= scopes.getTableSize(); ++j) {
-				uint32 scope = scopes.getStringAt(j).hashCode();
-				scopeVector.add(scope);
+				LuaObject row = luaObject.getObjectAt(j);
+
+				if (row.isValidTable() && row.getTableSize() == 2) {
+					uint32 shotCRC = row.getStringAt(1).hashCode();
+					uint32 apprCRC = row.getStringAt(2).hashCode();
+					scopeVector.put(shotCRC, apprCRC);
+				}
+
+				row.pop();
 			}
 
 			scopes.pop();
 
 			LuaObject stocks = luaObject.getObjectField("stock");
-			Vector<uint32> stockVector;
 
 			for (int j = 1; j <= stocks.getTableSize(); ++j) {
-				uint32 stock = stocks.getStringAt(j).hashCode();
-				stockVector.add(stock);
+				LuaObject row = luaObject.getObjectAt(j);
+
+				if (row.isValidTable() && row.getTableSize() == 2) {
+					uint32 shotCRC = row.getStringAt(1).hashCode();
+					uint32 apprCRC = row.getStringAt(2).hashCode();
+					stockVector.put(shotCRC, apprCRC);
+				}
+
+				row.pop();
 			}
 
 			stocks.pop();
 
 			luaObject.pop();
 
-			if (tempCRC == 0)
-				continue;
+			VectorMap<uint32, VectorMap<uint32, uint32> > visibleMap;
 
-			VectorMap<uint32, Vector<uint32> > visibleMap;
+			visibleMap.put(barrelCRC, barrelVector);
+			visibleMap.put(scopeCRC, scopeVector);
+			visibleMap.put(stockCRC, stockVector);
 
-			visibleMap.put(muzzleTitle, muzzleVector);
-			visibleMap.put(scopeTitle, scopeVector);
-			visibleMap.put(stockTitle, stockVector);
-
-			visibleComponentMap.put(tempCRC, visibleMap);
-
-			count++;
+			visibleComponentMap.put(weaponCRC, visibleMap);
 		}
 
 		componentList.pop();
 
-		Logger::info("Loaded visible components from scripts for " + String::valueOf(count) + " weapons.", true);
+		Logger::info("Loaded visible components from scripts for " + String::valueOf(visibleComponentMap.size()) + " weapons.", true);
 	}
 
-	Vector<uint32> getVisibleCRC(uint32 tempCRC, uint32 slotCRC) {
+	VectorMap<uint32, uint32> getVisibleCRC(uint32 tempCRC, uint32 slotCRC) {
 		return visibleComponentMap.get(tempCRC).get(slotCRC);
 	}
 };
