@@ -210,8 +210,9 @@ void QueueCommand::onComplete(uint32 actioncntr, CreatureObject* player, float c
 	if (!player->isPlayerCreature())
 		return;
 
-	if (addToQueue)
+	if (addToQueue) {
 		player->clearQueueAction(actioncntr, commandDuration);
+	}
 }
 
 int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) const {
@@ -220,9 +221,6 @@ int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) const {
 
 	if (!checkInvalidLocomotions(creature))
 		return INVALIDLOCOMOTION;
-
-	if (creature->hasAttackDelay() || !creature->checkPostureChangeDelay()) // no message associated with this
-		return GENERALERROR;
 
 	if (creature->isProne() || creature->isMeditating() || creature->isSwimming()) {
 		creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
