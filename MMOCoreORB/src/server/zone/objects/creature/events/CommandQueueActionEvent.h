@@ -13,7 +13,7 @@ class CommandQueueActionEvent : public Task {
 public:
 	const static int IMMEDIATE = 1;
 	const static int NORMAL = 2;
-	
+
 public:
 	CommandQueueActionEvent(CreatureObject* pl, int type = NORMAL) : Task() {
 		creature = pl;
@@ -21,25 +21,21 @@ public:
 	}
 
 	void run() {
-		//TODO: FIXME
-		/*if (creature == nullptr)
-			return;*/
-			
 		ManagedReference<CreatureObject*> creature = this->creature.get();
-		
+
 		if (creature == nullptr)
 			return;
 
 		try {
 			Locker creatureLocker(creature);
-			
+
 			//player->info("activating command queue action");
 
 			if (type == NORMAL)
 				creature->activateQueueAction();
 			else
 				creature->activateImmediateAction();
-			
+
 			//player->info("command queue action activated");
 
 		} catch (Exception& e) {
@@ -50,11 +46,7 @@ public:
 
 			throw;
 		}
-		
-		//creature = nullptr;
-		
 	}
-
 };
 
 #endif /*COMMANDQUEUEACTIONEVENT_H_*/

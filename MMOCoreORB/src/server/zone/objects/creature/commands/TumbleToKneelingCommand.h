@@ -23,9 +23,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->hasAttackDelay() || !creature->checkPostureChangeDelay())
-			return GENERALERROR;
-
 		//Check for and deduct HAM cost.
 		int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 100);
 		if (creature->getHAM(CreatureAttribute::ACTION) <= actionCost)
