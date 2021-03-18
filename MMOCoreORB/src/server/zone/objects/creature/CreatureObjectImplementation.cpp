@@ -41,6 +41,8 @@
 #include "templates/params/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
+#include "server/zone/objects/creature/events/CommandQueueRemoveEvent.h"
+#include "server/zone/objects/creature/events/CommandQueueImmediateEvent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/ChatManager.h"
@@ -1840,6 +1842,7 @@ float CreatureObjectImplementation::getTerrainNegotiation() const {
 
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments, int priority, int compareCounter) {
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
+	auto creo = asCreatureObject();
 
 	const QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
 
@@ -1851,26 +1854,49 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 		removeBuff(STRING_HASHCODE("private_feign_buff"));
 	}
 
-	if (priority < 0)
+	if (priority < 0) {
 		priority = queueCommand->getDefaultPriority();
+	}
 
 	Reference<CommandQueueAction*> action = nullptr;
 
 	if (priority == QueueCommand::IMMEDIATE) {
-#ifndef WITH_STM
-		objectController->activateCommand(asCreatureObject(), actionCRC, actionCount, targetID, arguments);
-#else
-		action = new CommandQueueAction(asCreatureObject(), targetID, actionCRC, actionCount, arguments);
 
-		immediateQueue->put(action.get());
+		float immediateDelay = 0.f;
 
-		if (immediateQueue->size() == 1) {
-			Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(asCreatureObject(), CommandQueueActionEvent::IMMEDIATE);
-			Core::getTaskManager()->executeTask(ev);
+		if (creo->hasAttackDelay()) {
+			const Time* attackDelay = creo->getCooldownTime("nextAttackDelay");
+			float attackTime = ((float)attackDelay->miliDifference() / 1000) * -1;
+
+			immediateDelay = attackTime;
 		}
-#endif
 
-		return;
+		if (creo->hasPostureChangeDelay()) {
+			const Time* postureDelay = creo->getCooldownTime("postureChangeDelay");
+			float postureTime = ((float)postureDelay->miliDifference() / 1000) * -1;
+
+			if (postureTime > immediateDelay) {
+				immediateDelay = postureTime;
+			}
+		}
+
+		if (immediateDelay > 0) {
+			nextImmediateAction.updateToCurrentTime();
+			nextImmediateAction.addMiliTime((uint32)(immediateDelay * 1000));
+
+			Reference<CommandQueueImmediateEvent*> queueImmediateEvent = new CommandQueueImmediateEvent(creo);
+
+			action = new CommandQueueAction(asCreatureObject(), targetID, actionCRC, actionCount, arguments);
+
+			immediateQueue->put(action.get());
+			queueImmediateEvent->schedule(nextImmediateAction);
+
+			return;
+		} else {
+			objectController->activateCommand(creo, actionCRC, actionCount, targetID, arguments);
+
+			return;
+		}
 	}
 
 	if (commandQueue->size() > 15 && priority != QueueCommand::FRONT) {
@@ -1926,24 +1952,31 @@ void CreatureObjectImplementation::sendCommand(uint32 crc, const UnicodeString& 
 }
 
 void CreatureObjectImplementation::activateImmediateAction() {
-	Reference<CommandQueueAction*> action = immediateQueue->get(0);
+	if (immediateQueue->size() == 0) {
+		return;
+	}
 
+	auto creo = asCreatureObject();
+
+	Reference<CommandQueueAction*> action = immediateQueue->get(0);
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
-	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+	objectController->activateCommand(creo, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
 
 	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
 	immediateQueue->remove(0);
 
 	if (immediateQueue->size() > 0) {
-		Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(asCreatureObject(), CommandQueueActionEvent::IMMEDIATE);
+		Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(creo, CommandQueueActionEvent::IMMEDIATE);
 		Core::getTaskManager()->executeTask(ev);
 	}
 }
 
 void CreatureObjectImplementation::activateQueueAction() {
+	auto creo = asCreatureObject();
+
 	if (nextAction.isFuture()) {
-		CommandQueueActionEvent* e = new CommandQueueActionEvent(asCreatureObject());
+		CommandQueueActionEvent* e = new CommandQueueActionEvent(creo);
 		e->schedule(nextAction);
 
 		return;
@@ -1954,38 +1987,105 @@ void CreatureObjectImplementation::activateQueueAction() {
 	}
 
 	Reference<CommandQueueAction*> action = commandQueue->get(0);
-
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
 	nextAction.updateToCurrentTime();
-	nextAction.addMiliTime(1000);
 
-	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
-
-	nextAction.updateToCurrentTime();
+	float time = objectController->activateCommand(creo, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
 
 	if (time > 0) {
 		nextAction.addMiliTime((uint32)(time * 1000));
 	}
 
-	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
-	for (int i = 0; i < commandQueue->size(); i++) {
-		Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
-		if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter()) {
-			commandQueue->remove(i);
-			break;
+	if (creo->hasAttackDelay() || creo->hasPostureChangeDelay()) {
+		Reference<CommandQueueRemoveEvent*> removeEvent = new CommandQueueRemoveEvent(creo);
+
+		removeAction.updateToCurrentTime();
+		removeAction.addMiliTime((uint32)(time * 1000));
+
+		removeEvent->schedule(removeAction);
+	} else {
+		for (int i = 0; i < commandQueue->size(); i++) {
+			Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
+
+			if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter()) {
+				commandQueue->remove(i);
+				break;
+			}
 		}
 	}
 
 	if (commandQueue->size() != 0) {
-		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(asCreatureObject());
+		Reference<CommandQueueActionEvent*> queueEvent = new CommandQueueActionEvent(creo);
 
 		if (!nextAction.isFuture()) {
 			nextAction.updateToCurrentTime();
 			nextAction.addMiliTime(100);
 		}
 
-		e->schedule(nextAction);
+		queueEvent->schedule(nextAction);
+	}
+}
+
+void CreatureObjectImplementation::removeQueueAction(int action) {
+	if (commandQueue->size() == 0) {
+		return;
+	}
+
+	commandQueue->remove(action);
+}
+
+void CreatureObjectImplementation::removeAttackDelay() {
+	cooldownTimerMap->updateToCurrentTime("nextAttackDelay");
+
+	auto creo = asCreatureObject();
+	float time = 0.f;
+
+	if (commandQueue->size() == 0) {
+		return;
+	}
+
+	Reference<ObjectController*> objectController = getZoneServer()->getObjectController();
+	Reference<CommandQueueAction*> action = commandQueue->get(0);
+
+	time = objectController->activateCommand(creo, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+
+	if (creo->hasPostureChangeDelay()) {
+		const Time* postureDelay = creo->getCooldownTime("postureChangeDelay");
+		float postureTime = floor((float)postureDelay->miliDifference() / 1000) * -1;
+
+		if (time > 0) {
+			postureTime += time;
+		}
+
+		nextAction.addMiliTime((uint32)(postureTime * 1000));
+		nextImmediateAction.addMiliTime((uint32)(postureTime * 1000));
+
+		removeAction.updateToCurrentTime();
+		removeAction.addMiliTime((uint32)(postureTime * 1000));
+
+	} else {
+
+		Reference<CommandQueueActionEvent*> actionEvent = new CommandQueueActionEvent(creo);
+
+		nextAction.updateToCurrentTime();
+		activateImmediateAction();
+
+		if (time > 0) {
+			nextAction.addMiliTime((uint32)(time * 1000));
+			actionEvent->schedule(nextAction);
+		} else {
+			Core::getTaskManager()->executeTask(actionEvent);
+		}
+
+		for (int i = 0; i < commandQueue->size(); i++) {
+			Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
+
+			if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter()) {
+				commandQueue->remove(i);
+				break;
+			}
+		}
 	}
 }
 
@@ -2548,6 +2648,12 @@ bool CreatureObjectImplementation::setNextAttackDelay(uint32 mod, int del) {
 	}
 
 	return false;
+}
+
+void CreatureObjectImplementation::setPostureChangeDelay(unsigned long long delay) {
+	cooldownTimerMap->updateToCurrentAndAddMili("postureChangeDelay", delay);
+
+	return;
 }
 
 void CreatureObjectImplementation::setMeditateState() {

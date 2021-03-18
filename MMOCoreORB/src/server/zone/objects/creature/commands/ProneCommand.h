@@ -22,9 +22,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->hasAttackDelay())
-			return GENERALERROR;
-
 		creature->setPosture(CreaturePosture::PRONE);
 
 		if (creature->isDizzied() && System::random(100) < 85)

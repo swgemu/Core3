@@ -31,9 +31,6 @@ public:
 			}
 		}
 
-		if (creature->hasAttackDelay())
-			return GENERALERROR;
-
 		if (creature->isAiAgent()) {
 			if (creature->isNonPlayerCreatureObject() && creature->isDizzied() && System::random(100) < 85) {
 				creature->queueDizzyFallEvent();
