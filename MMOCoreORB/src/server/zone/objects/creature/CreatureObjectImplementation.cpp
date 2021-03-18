@@ -41,6 +41,7 @@
 #include "templates/params/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
+#include "server/zone/objects/creature/events/CommandQueueRemoveEvent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/ChatManager.h"
@@ -465,6 +466,10 @@ void CreatureObjectImplementation::clearQueueAction(uint32 actioncntr,
 		float timer, uint32 tab1, uint32 tab2) {
 	if (actioncntr == 0 || !isPlayerCreature())
 		return;
+
+	StringBuffer msg;
+	msg << " Clear queue action called -- Timer:  " << timer;
+	sendSystemMessage(msg.toString());
 
 	BaseMessage* queuemsg = new CommandQueueRemove(asCreatureObject(), actioncntr, timer,
 			tab1, tab2);
@@ -1840,6 +1845,7 @@ float CreatureObjectImplementation::getTerrainNegotiation() const {
 
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments, int priority, int compareCounter) {
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
+	auto creo = asCreatureObject();
 
 	const QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
 
@@ -1847,29 +1853,34 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 		return;
 	}
 
+	creo->sendSystemMessage(" enququeCommand Called");
+
 	if (queueCommand->addToCombatQueue()) {
 		removeBuff(STRING_HASHCODE("private_feign_buff"));
 	}
 
-	if (priority < 0)
+	if (priority < 0) {
+		creo->sendSystemMessage(" enququeCommand -- Priority < 0");
 		priority = queueCommand->getDefaultPriority();
+	}
 
 	Reference<CommandQueueAction*> action = nullptr;
 
-	if (priority == QueueCommand::IMMEDIATE) {
+	if (!creo->hasAttackDelay() & !creo->hasPostureChangeDelay() && priority == QueueCommand::IMMEDIATE) {
+
 #ifndef WITH_STM
-		objectController->activateCommand(asCreatureObject(), actionCRC, actionCount, targetID, arguments);
+		objectController->activateCommand(creo, actionCRC, actionCount, targetID, arguments);
 #else
-		action = new CommandQueueAction(asCreatureObject(), targetID, actionCRC, actionCount, arguments);
+		action = new CommandQueueAction(creo, targetID, actionCRC, actionCount, arguments);
 
 		immediateQueue->put(action.get());
 
 		if (immediateQueue->size() == 1) {
-			Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(asCreatureObject(), CommandQueueActionEvent::IMMEDIATE);
+			Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(creo, CommandQueueActionEvent::IMMEDIATE);
+
 			Core::getTaskManager()->executeTask(ev);
 		}
 #endif
-
 		return;
 	}
 
@@ -1933,6 +1944,8 @@ void CreatureObjectImplementation::activateImmediateAction() {
 	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
 
 	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
+	asCreatureObject()->sendSystemMessage("  activateImmedateAction Called  ");
+
 	immediateQueue->remove(0);
 
 	if (immediateQueue->size() > 0) {
@@ -1942,8 +1955,10 @@ void CreatureObjectImplementation::activateImmediateAction() {
 }
 
 void CreatureObjectImplementation::activateQueueAction() {
+	auto creo = asCreatureObject();
+
 	if (nextAction.isFuture()) {
-		CommandQueueActionEvent* e = new CommandQueueActionEvent(asCreatureObject());
+		CommandQueueActionEvent* e = new CommandQueueActionEvent(creo);
 		e->schedule(nextAction);
 
 		return;
@@ -1960,7 +1975,7 @@ void CreatureObjectImplementation::activateQueueAction() {
 	nextAction.updateToCurrentTime();
 	nextAction.addMiliTime(1000);
 
-	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+	float time = objectController->activateCommand(creo, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
 
 	nextAction.updateToCurrentTime();
 
@@ -1968,12 +1983,24 @@ void CreatureObjectImplementation::activateQueueAction() {
 		nextAction.addMiliTime((uint32)(time * 1000));
 	}
 
-	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
-	for (int i = 0; i < commandQueue->size(); i++) {
-		Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
-		if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter()) {
-			commandQueue->remove(i);
-			break;
+	if (creo->hasAttackDelay() || creo->hasPostureChangeDelay()) {
+		Reference<CommandQueueRemoveEvent*> removeEvent = new CommandQueueRemoveEvent(asCreatureObject());
+
+		creo->sendSystemMessage("  Remove task scheduled with DELAY");
+
+		removeAction.updateToCurrentTime();
+		removeAction.addMiliTime((uint32)(time * 1000));
+
+		removeEvent->schedule(removeAction);
+	} else {
+		for (int i = 0; i < commandQueue->size(); i++) {
+			Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
+
+			if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter()) {
+				creo->sendSystemMessage(" Remove command Called -- Immediate ");
+				commandQueue->remove(i);
+				break;
+			}
 		}
 	}
 
@@ -1987,6 +2014,66 @@ void CreatureObjectImplementation::activateQueueAction() {
 
 		e->schedule(nextAction);
 	}
+}
+
+void CreatureObjectImplementation::removeQueueAction(int action) {
+	if (commandQueue->size() == 0) {
+		return;
+	}
+
+	commandQueue->remove(action);
+}
+
+void CreatureObjectImplementation::removeAttackDelay() {
+	auto creo = asCreatureObject();
+	cooldownTimerMap->updateToCurrentTime("nextAttackDelay");
+
+	Reference<ObjectController*> objectController = getZoneServer()->getObjectController();
+	Reference<CommandQueueAction*> action = commandQueue->get(0);
+
+	float time = objectController->activateCommand(creo, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+
+	if (creo->hasPostureChangeDelay()) {
+		creo->sendSystemMessage(" Removing attack -- has posture change delay ");
+
+		const Time* postureDelay = creo->getCooldownTime("postureChangeDelay");
+		int postureTime = floor((float)postureDelay->miliDifference() / 1000) * -1;
+
+		if (time > 0 ) {
+			postureTime += time;
+		}
+
+		nextAction.addMiliTime((uint32)(postureTime * 1000));
+
+		removeAction.updateToCurrentTime();
+		removeAction.addMiliTime((uint32)(postureTime * 1000));
+
+	} else {
+		creo->sendSystemMessage(" Removing Attack Delay -- ELSE ");
+
+		Reference<CommandQueueActionEvent*> actionEvent = new CommandQueueActionEvent(creo);
+
+		nextAction.updateToCurrentTime();
+
+		if (time > 0) {
+			nextAction.addMiliTime((uint32)(time * 1000));
+			actionEvent->schedule(nextAction);
+		} else {
+			Core::getTaskManager()->executeTask(actionEvent);
+		}
+
+		for (int i = 0; i < commandQueue->size(); i++) {
+			Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
+
+			if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter()) {
+				creo->sendSystemMessage(" Remove command Called Immediate ");
+				commandQueue->remove(i);
+				break;
+			}
+		}
+	}
+
+	//return;
 }
 
 void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
@@ -2548,6 +2635,12 @@ bool CreatureObjectImplementation::setNextAttackDelay(uint32 mod, int del) {
 	}
 
 	return false;
+}
+
+void CreatureObjectImplementation::setPostureChangeDelay(unsigned long long delay) {
+	cooldownTimerMap->updateToCurrentAndAddMili("postureChangeDelay", delay);
+
+	return;
 }
 
 void CreatureObjectImplementation::setMeditateState() {

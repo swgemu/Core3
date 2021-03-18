@@ -17,6 +17,8 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
+		creature->sendSystemMessage("Stand called");
+
 		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
 		}
@@ -30,9 +32,6 @@ public:
 				return INVALIDLOCOMOTION;
 			}
 		}
-
-		if (creature->hasAttackDelay())
-			return GENERALERROR;
 
 		if (creature->isAiAgent()) {
 			if (creature->isNonPlayerCreatureObject() && creature->isDizzied() && System::random(100) < 85) {
@@ -50,6 +49,8 @@ public:
 				creature->setPosture(CreaturePosture::UPRIGHT);
 			}
 		}
+
+		creature->sendSystemMessage(" Stand SUCCESS ");
 
 		return SUCCESS;
 	}
