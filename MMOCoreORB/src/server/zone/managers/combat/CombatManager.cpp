@@ -206,11 +206,6 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 
 	debug("past start combat");
 
-	if (attacker->hasAttackDelay() || !attacker->checkPostureChangeDelay())
-		return -3;
-
-	debug("past delay");
-
 	if (!applySpecialAttackCost(attacker, weapon, data)) {
 		return -2;
 	}
