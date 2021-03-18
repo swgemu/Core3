@@ -1878,19 +1878,39 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 	if (isOnline()) {
 		const CommandQueueActionVector* commandQueue = creature->getCommandQueue();
 
-		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() &&
-			!creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && (commandQueue->size() == 0) &&
-			creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated() &&
-			cooldownTimerMap->isPast("autoAttackDelay")) {
+		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && !creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && (commandQueue->size() == 0) &&
+			creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated() && cooldownTimerMap->isPast("autoAttackDelay")) {
 
 			ManagedReference<SceneObject*> targetObject = zoneServer->getObject(creature->getTargetID());
 			if (targetObject != nullptr) {
-				if (targetObject->isInRange(creature, Math::max(10, creature->getWeapon()->getMaxRange()) + targetObject->getTemplateRadius() + creature->getTemplateRadius())) {
+				if (targetObject->isInRange(creature, Math::max(10, creature->getWeapon()->getMaxRange()) + targetObject->getTemplateRadius() + creature->getTemplateRadius()) && (!creature->hasAttackDelay() || !creature->hasPostureChangeDelay())) {
 					creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
 				}
 
+				float delay = 0.f;
+				float weaponSpeed = ((uint64)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f)));
+
+				if (creature->hasAttackDelay()) {
+					const Time* attackDelay = creature->getCooldownTime("nextAttackDelay");
+					float attackTime = ((float)attackDelay->miliDifference() / 1000) * -1;
+
+					delay += attackTime;
+				}
+
+				if (creature->hasPostureChangeDelay()) {
+					const Time* postureDelay = creature->getCooldownTime("postureChangeDelay");
+					float postureTime = ((float)postureDelay->miliDifference() / 1000) * -1;
+
+					if (postureTime > delay) {
+						delay == postureTime;
+					}
+				}
+
+
 				// as long as the target is still valid, we still want to continue to queue auto attacks
-				cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", (uint64)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f) * 1000.f));
+
+
+				cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", (weaponSpeed + delay) * 1000.f);
 			} else {
 				creature->setTargetID(0);
 			}

@@ -158,6 +158,9 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected Time nextAction;
 
+	@dereferenced
+	protected Time removeAction;
+
 	@transactional
 	protected transient CooldownTimerMap cooldownTimerMap;
 
@@ -1333,9 +1336,7 @@ class CreatureObject extends TangibleObject {
 		return !cooldownTimerMap.isPast("nextAttackDelay");
 	}
 
-	public void removeAttackDelay() {
-		cooldownTimerMap.updateToCurrentTime("nextAttackDelay");
-	}
+	public native void removeAttackDelay();
 
 	@read
 	public boolean hasIncapTimer() {
@@ -1356,13 +1357,15 @@ class CreatureObject extends TangibleObject {
 		lastSuccessfulCombatAction.updateToCurrentTime();
 	}
 
-	public void updatePostureChangeDelay(unsigned long delay) {
-		cooldownTimerMap.updateToCurrentAndAddMili("postureChangeDelay", delay);
-	}
+	public native void setPostureChangeDelay(unsigned long delay);
 
 	@read
-	public boolean checkPostureChangeDelay() {
-		return cooldownTimerMap.isPast("postureChangeDelay");
+	public boolean hasPostureChangeDelay() {
+		return !cooldownTimerMap.isPast("postureChangeDelay");
+	}
+
+	public void removePostureChangeDelay() {
+		cooldownTimerMap.updateToCurrentTime("postureChangeDelay");
 	}
 
 	public void updatePostureDownRecovery() {
@@ -1472,6 +1475,8 @@ class CreatureObject extends TangibleObject {
 
 	@preLocked
 	public native void activateQueueAction();
+
+	public native void removeQueueAction(int action);
 
 	@preLocked
 	public native void activateImmediateAction();

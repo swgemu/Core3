@@ -68,8 +68,7 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 	return true;
 }
 
-float ObjectControllerImplementation::activateCommand(CreatureObject* object, unsigned int actionCRC,
-		unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) const {
+float ObjectControllerImplementation::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) const {
 	// Pre: object is wlocked
 	// Post: object is wlocked
 
@@ -83,9 +82,12 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		return 0.f;
 	}
 
-	/*StringBuffer infoMsg;
-	infoMsg << "activating queue command 0x" << hex << actionCRC << " " << queueCommand->getQueueCommandName() << " arguments='" << arguments.toString() << "'";
-	object->info(infoMsg.toString(), true);*/
+	StringBuffer infoMsg;
+	//infoMsg << "activating queue command 0x" << hex << actionCRC << " " << queueCommand->getQueueCommandName() << " arguments='" << arguments.toString() << "'";
+	//object->info(infoMsg.toString(), true);
+
+	infoMsg << " activateCommand -- Name:  " << queueCommand->getQueueCommandName() << "   ";
+	object->sendSystemMessage(infoMsg.toString());
 
 	const String& characterAbility = queueCommand->getCharacterAbility();
 
@@ -115,6 +117,36 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		}
 	}
 
+	if (object->hasAttackDelay()) {
+		const Time* attackDelay = object->getCooldownTime("nextAttackDelay");
+		float attackTime = ((float)attackDelay->miliDifference() / 1000) * -1;
+
+		if (attackTime > durationTime) {
+			durationTime += attackTime;
+		}
+
+		StringBuffer timeMsg;
+		timeMsg << "  attackDelay time =  " << durationTime;
+		object->sendSystemMessage(timeMsg.toString());
+
+		return durationTime;
+	}
+
+	if (object->hasPostureChangeDelay()) {
+		const Time* postureDelay = object->getCooldownTime("postureChangeDelay");
+		float postureTime = ((float)postureDelay->miliDifference() / 1000) * -1;
+
+		if (postureTime > durationTime) {
+			durationTime += postureTime;
+		}
+
+		StringBuffer timeMsg;
+		timeMsg << "  postureDelay time =  " << durationTime;
+		object->sendSystemMessage(timeMsg.toString());
+
+		return durationTime;
+	}
+
 	if (queueCommand->requiresAdmin()) {
 		try {
 			if(object->isPlayerCreature()) {
@@ -140,7 +172,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 	}
 
 	/// Add Skillmods if any
-	for(int i = 0; i < queueCommand->getSkillModSize(); ++i) {
+	for (int i = 0; i < queueCommand->getSkillModSize(); ++i) {
 		String skillMod;
 		int value = queueCommand->getSkillMod(i, skillMod);
 		object->addSkillMod(SkillModManager::ABILITYBONUS, skillMod, value, false);
@@ -149,7 +181,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 	int errorNumber = queueCommand->doQueueCommand(object, targetID, arguments);
 
 	/// Remove Skillmods if any
-	for(int i = 0; i < queueCommand->getSkillModSize(); ++i) {
+	for (int i = 0; i < queueCommand->getSkillModSize(); ++i) {
 		String skillMod;
 		int value = queueCommand->getSkillMod(i, skillMod);
 		object->addSkillMod(SkillModManager::ABILITYBONUS, skillMod, -value, false);
@@ -164,6 +196,10 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 
 		queueCommand->onComplete(actionCount, object, durationTime);
 	}
+
+	StringBuffer dTime;
+	dTime << "  Final Time = " << durationTime;
+	object->sendSystemMessage(dTime.toString());
 
 	return durationTime;
 }
