@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_fc0221b3",
+        "filename": "MMOCoreORB/bin/scripts/managers/crafting/visible_components.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-03-19T09:20:57Z",
+      "side": 1,
+      "message": "There is a lot of repetition in this file. Is there any reason for not defining the barrel, scope, and stock maps in variables at the top and then to reuse them below?",
+      "revId": "3701ad670f81eaec3b659433d8ff3207746d22cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_9cf5edcd",
+        "filename": "MMOCoreORB/bin/scripts/object/draft_schematic/weapon/component/blaster_pistol_barrel_advanced.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-03-19T09:20:57Z",
+      "side": 1,
+      "message": "Please fix. There are a few more in the other lua-files as well that your change adds.",
+      "range": {
+        "startLine": 75,
+        "startChar": 23,
+        "endLine": 75,
+        "endChar": 24
+      },
+      "revId": "3701ad670f81eaec3b659433d8ff3207746d22cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
