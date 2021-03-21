@@ -29,6 +29,7 @@
 #include "server/zone/managers/gcw/tasks/SecurityRepairTask.h"
 #include "server/zone/managers/gcw/tasks/BaseShutdownTask.h"
 #include "server/zone/managers/gcw/tasks/BaseRebootTask.h"
+#include "server/zone/managers/gcw/tasks/UplinkTerminalResetTask.h"
 #include "server/zone/managers/gcw/GCWBaseShutdownObserver.h"
 #include "server/zone/managers/gcw/TerminalSpawn.h"
 
@@ -858,6 +859,9 @@ void GCWManagerImplementation::checkVulnerabilityData(BuildingObject* building) 
 		}
 	} else {
 		spawnBaseTerminals(building);
+
+		//Resets PVE Bases state on server reset
+		baseData->setState(DestructibleBuildingDataComponent::VULNERABLE);
 	}
 
 	if (baseData->getState() == DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE) {
@@ -1107,6 +1111,17 @@ void GCWManagerImplementation::verifyUplinkBand(CreatureObject* creature, Buildi
 			creature->sendSystemMessage("You isolate the carrier signal to Channel #" + String::valueOf(band + 1) + ".");
 			creature->sendSystemMessage("Jamming complete! You disable the uplink...");
 			awardSlicingXP(creature, "bountyhunter", 1000);
+
+			//Schedule PVE base uplink reset
+			if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+				GCWManager* gcwManager = zone->getGCWManager();
+
+				UplinkTerminalResetTask* task = new UplinkTerminalResetTask(building, gcwManager, baseData);
+
+				//Task Resets Base state 24 hours after uplink is jammed
+				task->schedule(24 * 60 * 60 * 1000);
+			}
+
 			return;
 		} else {
 			baseData->setState(DestructibleBuildingDataComponent::BAND);
