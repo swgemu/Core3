@@ -52,15 +52,34 @@ public:
 
 		//Get the corpse's inventory.
 		SceneObject* lootContainer = ai->getSlottedObject("inventory");
-		if (lootContainer == nullptr)
+
+		if (lootContainer == nullptr) {
 			return GENERALERROR;
+		}
+
+		bool looterIsOwner = false;
+		bool groupIsOwner = false;
 
 		//Determine the loot rights.
-		bool looterIsOwner = (lootContainer->getContainerPermissions()->getOwnerID() == creature->getObjectID());
-		bool groupIsOwner = (lootContainer->getContainerPermissions()->getOwnerID() == creature->getGroupID());
+		if (lootContainer->getContainerPermissions()->getOwnerID() == creature->getObjectID()) {
+			looterIsOwner = true;
+		}
+
+		if (creature->isGrouped()) {
+			uint64 ownerID = lootContainer->getContainerPermissions()->getOwnerID();
+			Reference<CreatureObject*> owner = server->getZoneServer()->getObject(ownerID).castTo<CreatureObject*>();
+
+			if (owner == nullptr) {
+				return GENERALERROR;
+			}
+
+			if (owner->isGrouped() && owner->getGroupID() == creature->getGroupID()) {
+				groupIsOwner = true;
+			}
+		}
 
 		//Allow player to loot the corpse if they own it.
-		if (looterIsOwner) {
+		if (looterIsOwner && !groupIsOwner) {
 			if (lootAll) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 				playerManager->lootAll(creature, ai);
@@ -79,8 +98,8 @@ public:
 		}
 
 		//If player and their group don't own the corpse, pick up any owned items left on corpse due to full inventory, then fail.
-		if (!groupIsOwner) {
-			int pickupResult = pickupOwnedItems(ai, creature, lootContainer);
+		if (!looterIsOwner && !groupIsOwner) {
+			int pickupResult = pickupOwnedItems(ai, creature, lootContainer, looterIsOwner, groupIsOwner);
 			if (pickupResult < 2) { //Player didn't pickup an item nor is one available for them.
 				StringIdChatParameter noPermission("error_message","no_corpse_permission"); //"You do not have permission to access this corpse."
 				creature->sendSystemMessage(noPermission);
@@ -94,7 +113,7 @@ public:
 		}
 
 		//If looter's group is the owner, attempt to pick up any owned items, then process group loot rule.
-		int pickupResult = pickupOwnedItems(ai, creature, lootContainer);
+		int pickupResult = pickupOwnedItems(ai, creature, lootContainer, looterIsOwner, groupIsOwner);
 		switch (pickupResult) {
 		case NOPICKUPITEMS: //No items available for anyone to pickup.
 			break;
@@ -121,7 +140,7 @@ public:
 
 	}
 
-	int pickupOwnedItems(AiAgent* ai, CreatureObject* creature, SceneObject* lootContainer) const {
+	int pickupOwnedItems(AiAgent* ai, CreatureObject* creature, SceneObject* lootContainer, bool looterIsOwner, bool groupIsOwner) const {
 		/* Return codes:
 		 * NOPICKUPITEMS: No items available for anyone to pickup.
 		 * ITEMFOROTHER: No items available for looter to pickup, but one is available for someone else.
@@ -151,8 +170,8 @@ public:
 
 			//Check if player owns the loot item.
 			uint64 itemOwnerID = itemPerms->getOwnerID();
-			if (itemOwnerID == creature->getObjectID()) {
 
+			if (looterIsOwner && !groupIsOwner) {
 				//Attempt to transfer the item to the player.
 				attemptedPickup = true;
 				if (playerInventory->isContainerFullRecursive()) {
@@ -175,7 +194,7 @@ public:
 
 				contPerms->setOwner(originalOwner);
 
-			} else if (itemOwnerID != 0)
+			} else if (itemPerms->getOwnerID() != 0)
 				pickupAvailableOther = true;
 		}
 
@@ -192,7 +211,6 @@ public:
 
 		return NOPICKUPITEMS;
 	}
-
 };
 
 #endif //LOOTCOMMAND_H_

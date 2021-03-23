@@ -537,11 +537,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		if (player != nullptr) {
 
-			if (player->isGrouped()) {
-				ownerID = player->getGroupID();
-			} else {
-				ownerID = player->getObjectID();
-			}
+			ownerID = player->getObjectID();
 
 			if (player->isPlayerCreature()) {
 				if (!destructedObject->isEventMob()) {
