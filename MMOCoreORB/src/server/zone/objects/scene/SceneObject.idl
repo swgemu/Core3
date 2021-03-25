@@ -1691,6 +1691,11 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return false;
 	}
 
+	@dirty
+	public abstract boolean isDotPackObject() {
+		return false;
+	}
+
 	@read
 	public boolean isFishingPoleObject() {
 		return gameObjectType == SceneObjectType.FISHINGPOLE;

@@ -59,6 +59,34 @@ public:
 		creature->broadcastMessage(action, true);
 	}
 
+	DotPack* findDotPack(CreatureObject* creature) const {
+		SceneObject* inventory = creature->getSlottedObject("inventory");
+
+		if (inventory == nullptr) {
+			return nullptr;
+		}
+
+		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+			SceneObject* item = inventory->getContainerObject(i);
+
+			if (!item->isDotPackObject()) {
+				continue;
+			}
+
+			DotPack* pack = cast<DotPack*>(item);
+
+			if ((skillName == "applypoison") && pack->isPoisonDeliveryUnit()) {
+				return pack;
+			}
+
+			if ((skillName == "applydisease") && pack->isDiseaseDeliveryUnit()) {
+				return pack;
+			}
+		}
+
+		return nullptr;
+	}
+
 	void parseModifier(const String& modifier, uint64& objectId) const {
 		if (!modifier.isEmpty())
 			objectId = Long::valueOf(modifier);
@@ -255,17 +283,23 @@ public:
 
 		uint64 objectId = 0;
 
+		ManagedReference<DotPack*> dotPack;
+
 		parseModifier(arguments.toString(), objectId);
-		ManagedReference<DotPack*> dotPack = nullptr;
 
-		SceneObject* inventory = creature->getSlottedObject("inventory");
+		if (objectId == 0) {
+			dotPack = findDotPack(creature);
+		} else {
+			SceneObject* inventory = creature->getSlottedObject("inventory");
 
-		if (inventory != nullptr) {
-			dotPack = inventory->getContainerObject(objectId).castTo<DotPack*>();
+			if (inventory != nullptr) {
+				dotPack = inventory->getContainerObject(objectId).castTo<DotPack*>();
+			}
 		}
 
-		if (dotPack == nullptr)
+		if (dotPack == nullptr) {
 			return GENERALERROR;
+		}
 
 		PlayerManager* playerManager = server->getPlayerManager();
 		CombatManager* combatManager = CombatManager::instance();
