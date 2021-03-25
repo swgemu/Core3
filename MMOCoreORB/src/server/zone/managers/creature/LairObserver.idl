@@ -17,6 +17,13 @@ class LairObserver extends SpawnObserver {
 	@dereferenced
 	protected AtomicInteger spawnNumber;
 
+	@dereferenced
+	protected AtomicInteger respawnNumber;
+
+	protected boolean repopulated;
+
+	protected boolean repopulateStatus;
+
 	protected transient HealLairObserverEvent healLairEvent;
 
 	public LairObserver() {
@@ -26,6 +33,9 @@ class LairObserver extends SpawnObserver {
 
 		healLairEvent = null;
 		spawnNumber.set(0);
+		respawnNumber.set(0);
+		repopulated = false;
+		repopulateStatus = false;
 	}
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
@@ -37,6 +47,9 @@ class LairObserver extends SpawnObserver {
 	public native void healLair(TangibleObject lair, TangibleObject attacker);
 	public abstract native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
 	public native void doAggro(TangibleObject lair, TangibleObject attacker, boolean allAttack = false);
+
+	private native void incrementSpawn(boolean respawn = false);
+	public native void repopulateLair(TangibleObject lair);
 
 	public boolean isLairObserver() {
 		return true;
@@ -50,5 +63,25 @@ class LairObserver extends SpawnObserver {
 
 	public int getSpawnNumber() {
 		return spawnNumber.get();
+	}
+
+	public int getRespawnNumber() {
+		return respawnNumber.get();
+	}
+
+	public void setRepopulated(boolean val) {
+		repopulated = val;
+	}
+
+	public boolean isRepopulated() {
+		return repopulated;
+	}
+
+	public void setRepopulateStatus(boolean val) {
+		repopulateStatus = val;
+	}
+
+	public boolean isRepopulateStatus() {
+		return repopulateStatus;
 	}
 }

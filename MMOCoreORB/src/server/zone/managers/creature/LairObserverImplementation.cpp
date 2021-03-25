@@ -13,6 +13,7 @@
 #include "HealLairObserverEvent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "LairAggroTask.h"
+#include "LairRepopulateTask.h"
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DisseminateExperienceTask.h"
@@ -21,6 +22,7 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 	int i = 0;
 
 	Reference<LairAggroTask*> task = nullptr;
+	Reference<LairRepopulateTask*> repopTask = nullptr;
 	SceneObject* sourceObject = cast<SceneObject*>(arg1);
 	AiAgent* agent = nullptr;
 	ManagedReference<LairObserver*> lairObserver = _this.getReferenceUnsafeStaticCast();
@@ -41,7 +43,7 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 		break;
 	case ObserverEventType::DAMAGERECEIVED:
 		// if there are living creatures, make them aggro
-		if(getLivingCreatureCount() > 0 ){
+		if (getLivingCreatureCount() > 0 ){
 			task = new LairAggroTask(lair, attacker.get(), _this.getReferenceUnsafeStaticCast(), false);
 			task->execute();
 		}
@@ -51,7 +53,14 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 			lairObserver->checkForNewSpawns(lair, attacker);
 		}, "CheckForNewSpawnsLambda", queueName.toCharArray());
 
-		checkForHeal(lair, attacker);
+		if (!isRepopulateStatus() && !(getMobType() == LairTemplate::NPC) && getRespawnNumber() < 1 && getSpawnNumber() >= 3 && getLivingCreatureCount() >= 1) {
+			setRepopulateStatus(true);
+
+			repopTask = new LairRepopulateTask(lair, lairObserver);
+			repopTask->schedule(30 * 1000);
+		} else {
+			checkForHeal(lair, attacker);
+		}
 
 		break;
 	case ObserverEventType::AIMESSAGE:
@@ -201,41 +210,56 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {
 	Zone* zone = lair->getZone();
 
+	bool respawn = false;
+
+	if (isRepopulated()) {
+		respawn = true;
+	}
+
 	if (zone == nullptr)
 		return false;
 
-	if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit() && !lairTemplate->hasBossMobs())
+	int spawnLimit = lairTemplate->getSpawnLimit();
+	int spawnWave = spawnNumber;
+
+	if (respawn && !(getMobType() == LairTemplate::NPC)) {
+		spawnWave = respawnNumber;
+		spawnLimit *= 2;
+	}
+
+	if (spawnedCreatures.size() >= spawnLimit && !lairTemplate->hasBossMobs()) {
 		return false;
+	}
 
 	if (forceSpawn) {
-		spawnNumber.increment();
+		incrementSpawn(respawn);
 	} else if (getMobType() == LairTemplate::NPC) {
 		return false;
 	} else {
 		int conditionDamage = lair->getConditionDamage();
 		int maxCondition = lair->getMaxCondition();
 
-		switch (spawnNumber) {
+		switch (spawnWave) {
 		case 0:
-			spawnNumber.increment();
+			incrementSpawn(respawn);
 			break;
 		case 1:
 			if (conditionDamage > (maxCondition / 10)) {
-				spawnNumber.increment();
+				incrementSpawn(respawn);
 			} else {
 				return false;
 			}
 			break;
 		case 2:
 			if (conditionDamage > (maxCondition / 2)) {
-				spawnNumber.increment();
+				incrementSpawn(respawn);
 			} else {
 				return false;
 			}
 			break;
 		case 3:
 			if (lairTemplate->hasBossMobs() && conditionDamage > ((maxCondition * 9) / 10)) {
-				spawnNumber.increment();
+				incrementSpawn(respawn);
 			} else {
 				return false;
 			}
@@ -248,7 +272,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 
 	VectorMap<String, int> objectsToSpawn; // String mobileTemplate, int number to spawn
 
-	if (spawnNumber == 4) {
+	if (spawnWave == 4) {
 		if (System::random(100) > 9)
 			return false;
 
@@ -263,9 +287,13 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 		int amountToSpawn = 0;
 
 		if (getMobType() == LairTemplate::CREATURE) {
-			amountToSpawn = System::random(3) + ((lairTemplate->getSpawnLimit() / 3) - 2);
+			if (respawn) {
+				amountToSpawn = (System::random(3) + ((spawnLimit / 3) - 2)/ 2 - getLivingCreatureCount());
+			} else {
+				amountToSpawn = System::random(3) + ((spawnLimit / 3) - 2);
+			}
 		} else {
-			amountToSpawn = System::random(lairTemplate->getSpawnLimit() / 2) + (lairTemplate->getSpawnLimit() / 2);
+			amountToSpawn = System::random(spawnLimit / 2) + (spawnLimit / 2);
 		}
 
 		if (amountToSpawn < 1)
@@ -289,7 +317,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 	uint32 lairTemplateCRC = getLairTemplateName().hashCode();
 
 	for(int i = 0; i < objectsToSpawn.size(); ++i) {
-		if (spawnNumber != 4 && spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
+		if (spawnWave != 4 && spawnedCreatures.size() >= spawnLimit)
 			return true;
 
 		const String& templateToSpawn = objectsToSpawn.elementAt(i).getKey();
@@ -341,7 +369,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 		}
 	}
 
-	if (spawnNumber == 4) {
+	if (spawnWave == 4) {
 		Reference<LairAggroTask*> task = new LairAggroTask(lair, attacker, _this.getReferenceUnsafeStaticCast(), true);
 		task->schedule(1000);
 	}
@@ -349,3 +377,26 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 	return objectsToSpawn.size() > 0;
 }
 
+void LairObserverImplementation::incrementSpawn(bool respawn) {
+	if (respawn) {
+		respawnNumber.increment();
+	} else {
+		spawnNumber.increment();
+	}
+}
+
+void LairObserverImplementation::repopulateLair(TangibleObject* lair) {
+	if (lair == nullptr) {
+		return;
+	}
+
+	int lairCond = lair->getMaxCondition();
+
+	Locker lairlock(lair);
+
+	lair->setMaxCondition(lairCond * 0.7);
+	lair->healDamage(lair, 0, lairCond, true);
+
+	setRepopulated(true);
+	checkForNewSpawns(lair, nullptr, true);
+}
