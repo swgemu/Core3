@@ -391,8 +391,6 @@ public:
 			creatureTarget->sendSystemMessage(stringId2);
 		}
 
-		checkForTef(creature, creatureTarget);
-
 		if (dotPack->isArea()) {
 			if (creatureTarget != creature)
 				clocker.release();
@@ -409,6 +407,8 @@ public:
 		}
 
 		doAnimationsRange(creature, creatureTarget, dotPack->getObjectID(), creature->getWorldPosition().distanceTo(creatureTarget->getWorldPosition()), dotPack->isArea());
+		checkForTef(creature, creatureTarget);
+
 
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
 

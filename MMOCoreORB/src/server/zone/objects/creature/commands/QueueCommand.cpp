@@ -260,19 +260,53 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 	if (target->isPlayerCreature()) {
 		PlayerObject* targetGhost = target->getPlayerObject().get();
 
-		if (!CombatManager::instance()->areInDuel(creature, target)
-				&& targetGhost != nullptr && target->getFactionStatus() == FactionStatus::OVERT && targetGhost->hasPvpTef()) {
-			ghost->updateLastGcwPvpCombatActionTimestamp();
+		if (targetGhost != nullptr && !CombatManager::instance()->areInDuel(creature, target)) {
+			if (target->getFactionStatus() == FactionStatus::OVERT) {
+				if (ghost->hasTef()) {
+					ghost->updateLastGcwPvpCombatActionTimestamp();
+				} else {
+					ghost->updateLastCombatActionTimestamp(false, true, false);
+					creature->broadcastPvpStatusBitmask();
+				}
+			}
+
+			if ((creature->hasBountyMissionFor(target) || target->hasBountyMissionFor(creature))) {
+				creature->sendSystemMessage(" has bounty mission == true ");
+
+				if (ghost->hasBhTef()) {
+					ghost->updateLastBhPvpCombatActionTimestamp();
+				} else {
+					ghost->updateLastCombatActionTimestamp(false, false, true);
+					creature->broadcastPvpStatusBitmask();
+				}
+			}
 		}
+
 	} else if (target->isPet()) {
 		ManagedReference<CreatureObject*> owner = target->getLinkedCreature().get();
 
 		if (owner != nullptr && owner->isPlayerCreature()) {
 			PlayerObject* ownerGhost = owner->getPlayerObject().get();
 
-			if (!CombatManager::instance()->areInDuel(creature, owner)
-					&& ownerGhost != nullptr && owner->getFactionStatus() == FactionStatus::OVERT && ownerGhost->hasPvpTef()) {
-				ghost->updateLastGcwPvpCombatActionTimestamp();
+			if (ownerGhost != nullptr && !CombatManager::instance()->areInDuel(creature, owner)) {
+				if (target->getFactionStatus() == FactionStatus::OVERT) {
+					if (ownerGhost->hasTef()) {
+						ownerGhost->updateLastGcwPvpCombatActionTimestamp();
+					} else {
+						ownerGhost->updateLastCombatActionTimestamp(false, true, false);
+						creature->broadcastPvpStatusBitmask();
+					}
+				}
+			}
+
+			if ((creature->hasBountyMissionFor(target) || target->hasBountyMissionFor(creature))) {
+
+				if (ownerGhost->hasBhTef()) {
+					ownerGhost->updateLastBhPvpCombatActionTimestamp();
+				} else {
+					ownerGhost->updateLastCombatActionTimestamp(false, false, true);
+					creature->broadcastPvpStatusBitmask();
+				}
 			}
 		}
 	}
