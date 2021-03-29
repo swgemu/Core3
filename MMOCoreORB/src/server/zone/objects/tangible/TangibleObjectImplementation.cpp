@@ -502,6 +502,10 @@ void TangibleObjectImplementation::removeDefenders() {
 
 	broadcastMessage(dtano6, true);
 
+	if (asTangibleObject()->isCreatureObject()) {
+		asCreatureObject()->sendSystemMessage(" Removed Defenders Called ");
+	}
+
 	debug("removed all defenders");
 }
 
@@ -532,8 +536,9 @@ void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
 		}
 	}
 
-	if (defenderList.size() == 0)
+	if (defenderList.size() == 0) {
 		clearCombatState(false);
+	}
 
 	debug("finished removing defender");
 }
@@ -750,6 +755,8 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {
 	notifyObservers(ObserverEventType::OBJECTDESTRUCTION, attacker, condition);
 
+	printf( " TangibleObject -- notifyObjectDestruction \n ");
+	
 	if (threatMap != nullptr)
 		threatMap->removeAll();
 
@@ -759,8 +766,10 @@ int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 }
 
 void TangibleObjectImplementation::dropFromDefenderLists() {
-	if (defenderList.size() == 0)
+	if (defenderList.size() == 0) {
+		printf( " TangibleObject -- dropFromDefenderLists -- list size == 0 \n ");
 		return;
+	}
 
 	Reference<ClearDefenderListsTask*> task = new ClearDefenderListsTask(defenderList, asTangibleObject());
 	Core::getTaskManager()->executeTask(task);
