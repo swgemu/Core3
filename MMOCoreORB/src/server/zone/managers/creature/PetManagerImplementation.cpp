@@ -505,6 +505,15 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 
 	destructor->removeDefender(destructedObject);
 
+	if (destructor->isCreatureObject()) {
+		const DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructor->getDefenderList();
+		CreatureObject* creature = cast<CreatureObject*>( destructor);
+
+		if (creature != nullptr && defenderList->size() <= 0) {
+			creature->clearCombatState(false);
+		}
+	}
+
 	ManagedReference<PetControlDevice*> petControlDevice = destructedObject->getControlDevice().get().castTo<PetControlDevice*>();
 
 	if (!destructor->isKiller() && petControlDevice != nullptr && petControlDevice->getPetType() == CREATUREPET) {
