@@ -246,7 +246,6 @@ public:
 		if (dotDMG) {
 			awardXp(creature, "medical", dotDMG); //No experience for healing yourself.
 
-			creatureTarget->addDefender(creature);
 			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "");
 			creature->addDefender(creatureTarget);
 		} else {
