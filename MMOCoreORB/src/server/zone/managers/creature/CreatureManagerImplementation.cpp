@@ -638,6 +638,18 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		}
 	}
 
+	ThreatMap* destructorThreatMap = destructor->getThreatMap();
+
+	if (destructorThreatMap != nullptr) {
+		for (int i = 0; i < destructorThreatMap->size(); i++) {
+			CreatureObject* destructedCreo = destructorThreatMap->elementAt(i).getKey();
+
+			if (destructedCreo == destructedObject) {
+				destructorThreatMap->remove(i);
+			}
+		}
+	}
+
 	// now we can safely lock destructor again
 	if (destructedObject != destructor)
 		destructor->wlock(destructedObject);

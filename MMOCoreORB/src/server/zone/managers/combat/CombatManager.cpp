@@ -84,69 +84,59 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 			VisibilityManager::instance()->increaseVisibility(creo, 25);
 	}
 
+	attacker->setCombatState();
+	defender->setCombatState();
+
 	attacker->setDefender(defender);
-	defender->addDefender(attacker);
 
 	return true;
 }
 
 bool CombatManager::attemptPeace(CreatureObject* attacker) const {
-	const DeltaVector<ManagedReference<SceneObject*> >* defenderList = attacker->getDefenderList();
 
-	for (int i = defenderList->size() - 1; i >= 0; --i) {
-		try {
-			ManagedReference<SceneObject*> object = defenderList->get(i);
+	attacker->removeDefenders();
+	attacker->setState(CreatureState::PEACE);
 
-			TangibleObject* defender = cast<TangibleObject*>( object.get());
+	ThreatMap* threatMap = attacker->getThreatMap();
+	bool endCombatState = false;
 
-			if (defender == nullptr)
+	StringBuffer threatMsg;
+
+	if (threatMap != nullptr) {
+		attacker->sendSystemMessage(" Threat Map != nullptr ");
+
+		for (int i = 0; i < threatMap->size(); i++) {
+			CreatureObject* threatCreo = threatMap->elementAt(i).getKey();
+
+			threatMsg << " threat map key: " << threatCreo;
+
+			if (threatCreo == nullptr || threatCreo == attacker) {
+				attacker->sendSystemMessage(" failing at nulls");
 				continue;
-
-			try {
-				Locker clocker(defender, attacker);
-
-				if (defender->hasDefender(attacker)) {
-
-					if (defender->isCreatureObject()) {
-						CreatureObject* creature = defender->asCreatureObject();
-
-						if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead() || !creature->isInRange(attacker, 128.f)) {
-							attacker->removeDefender(defender);
-							defender->removeDefender(attacker);
-						}
-					} else {
-						attacker->removeDefender(defender);
-						defender->removeDefender(attacker);
-					}
-				} else {
-					attacker->removeDefender(defender);
-				}
-
-				clocker.release();
-
-			} catch (Exception& e) {
-				error(e.getMessage());
-				e.printStackTrace();
 			}
-		} catch (ArrayIndexOutOfBoundsException& exc) {
 
+			attacker->sendSystemMessage( " Passed one ");
+
+			if ((!threatCreo->isDead() && attacker->isInRange(threatCreo, 128.f) && threatCreo->getMainDefender() == attacker) || !threatCreo->hasState(CreatureState::PEACE)) {
+				attacker->sendSystemMessage(" failing at checks");
+				continue;
+			}
+
+			attacker->sendSystemMessage( " Passed two ");
+
+			endCombatState == true;
 		}
 	}
 
-	if (defenderList->size() != 0) {
-		debug("defenderList not empty, trying to set Peace State");
+	threatMsg << " Threat map size =  " << threatMap->size() << " End combat state: " << endCombatState;
+	attacker->sendSystemMessage(threatMsg.toString());
 
-		attacker->setState(CreatureState::PEACE);
 
-		return false;
-	} else {
+	if (endCombatState || threatMap->size() == 0) {
 		attacker->clearCombatState(false);
-
-		// clearCombatState() (rightfully) does not automatically set peace, so set it
-		attacker->setState(CreatureState::PEACE);
-
-		return true;
 	}
+
+	return true;
 }
 
 void CombatManager::forcePeace(CreatureObject* attacker) const {
@@ -289,9 +279,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	if (!tano->isAttackableBy(attacker))
 		return 0;
 
-	attacker->addDefender(tano);
-	tano->addDefender(attacker);
-
 	if (tano->isCreatureObject()) {
 		CreatureObject* defender = tano->asCreatureObject();
 
@@ -335,8 +322,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 }
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, bool* shouldGcwCrackdownTef, bool* shouldGcwTef, bool* shouldBhTef) const {
-	if (defender->isEntertaining())
+	if (defender->isEntertaining()) {
 		defender->stopEntertaining();
+	}
 
 	int hitVal = HIT;
 	uint8 hitLocation = 0;
@@ -380,7 +368,8 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		damageMultiplier = 0.0f;
 		break;}
 	case RICOCHET:
-		doLightsaberBlock(attacker, weapon, defender, damage);
+		//doLightsaberBlock(attacker, weapon, defender, damage);
+		broadcastCombatAction(attacker, defender, weapon, data, 0, hitVal, 0);
 		checkForTefs(attacker, defender, shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
 		damageMultiplier = 0.0f;
 		return 0;
@@ -440,9 +429,6 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	if (defenderObject->isEntertaining())
 		defenderObject->stopEntertaining();
-
-	attacker->addDefender(defenderObject);
-	defenderObject->addDefender(attacker);
 
 	float damageMultiplier = data.getDamageMultiplier();
 
@@ -2718,10 +2704,12 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 				if (!(weapon->isThrownWeapon()) && !(data.isSplashDamage()) && !(weapon->isHeavyWeapon())) {
 					if (CollisionManager::checkLineOfSight(object, attacker)) {
 						defenders->put(tano);
+						attacker->addDefender(tano);
 					}
 				} else {
 					if (CollisionManager::checkLineOfSight(object, defenderObject)) {
 						defenders->put(tano);
+						attacker->addDefender(tano);
 					}
 				}
 			} catch (Exception& e) {
