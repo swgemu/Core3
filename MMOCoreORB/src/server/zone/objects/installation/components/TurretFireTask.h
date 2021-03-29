@@ -45,6 +45,8 @@ public:
 
 		ManagedReference<CreatureObject*> target = nullptr;
 
+		turret->removeDefenders();
+		
 		if (isManual) {
 			target = turretData->getManualTarget();
 
@@ -75,6 +77,9 @@ public:
 
 		if (command != nullptr && weapon != nullptr) {
 			CombatManager::instance()->doCombatAction(turret, weapon, target, command);
+
+			target->setCombatState();
+			turret->setDefender(target);
 
 			if (isManual) {
 				if (checkTurretController(turretData))
