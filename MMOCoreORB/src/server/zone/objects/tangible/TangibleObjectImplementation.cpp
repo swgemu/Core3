@@ -532,8 +532,9 @@ void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
 		}
 	}
 
-	if (defenderList.size() == 0)
+	if (defenderList.size() == 0) {
 		clearCombatState(false);
+	}
 
 	debug("finished removing defender");
 }

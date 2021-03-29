@@ -1102,8 +1102,8 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	} else {
 
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, !isCombatAction, !isCombatAction);
+		playerCreature->clearCombatState(false);
 		playerCreature->clearState(CreatureState::FEIGNDEATH); // We got incapped for real - Remove the state so we can be DB'd
-
 
 		uint8 incapTime = calculateIncapacitationTimer(playerCreature, condition);
 		playerCreature->setCountdownTimer((uint32) incapTime, true);
@@ -1179,6 +1179,8 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		player->updateCooldownTimer("mount_dismount", 0);
 		player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 	}
+
+	player->clearCombatState(true);
 
 	player->clearDots();
 
