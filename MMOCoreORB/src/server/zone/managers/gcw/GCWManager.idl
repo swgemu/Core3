@@ -213,7 +213,7 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native void sendJamUplinkMenu(CreatureObject creature, BuildingObject building, TangibleObject uplinkTerminal);
 	public native void verifyUplinkBand(CreatureObject creature, BuildingObject building, int band, TangibleObject uplinkTerminal);
-	private native void renewUplinkBand(BuildingObject building);
+	public native void renewUplinkBand(BuildingObject building);
 
 	public native boolean canStartSlice(CreatureObject creature, TangibleObject terminal);
 	public native void completeSecuritySlice(CreatureObject creature, TangibleObject securityTerminal);
