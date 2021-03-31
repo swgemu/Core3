@@ -26,6 +26,7 @@
 #include "server/zone/packets/player/PlayerObjectDeltaMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage8.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 #include "server/zone/packets/chat/ChatOnGetFriendsList.h"
 #include "server/zone/packets/chat/ChatOnGetIgnoreList.h"
 #include "server/zone/packets/chat/ChatOnAddFriend.h"
@@ -1372,6 +1373,22 @@ void PlayerObjectImplementation::notifyOnline() {
 			auto speedTempl = playerTemplate->getSpeed();
 
 			playerCreature->setRunSpeed(speedTempl.get(0));
+		}
+	}
+
+	if (playerCreature->isInGuild()) {
+		ManagedReference<GuildObject*> guild = playerCreature->getGuildObject().get();
+		uint64 playerId = playerCreature->getObjectID();
+
+		if (guild != nullptr && !guild->hasMember(playerId)) {
+			playerCreature->setGuildObject(nullptr);
+
+			CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(playerCreature);
+			creod6->updateGuildID();
+			creod6->close();
+			playerCreature->broadcastMessage(creod6, true);
+
+			updateInRangeBuildingPermissions();
 		}
 	}
 
