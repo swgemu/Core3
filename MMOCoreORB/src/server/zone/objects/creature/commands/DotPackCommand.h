@@ -391,8 +391,6 @@ public:
 			creatureTarget->sendSystemMessage(stringId2);
 		}
 
-		checkForTef(creature, creatureTarget);
-
 		if (dotPack->isArea()) {
 			if (creatureTarget != creature)
 				clocker.release();
@@ -406,6 +404,18 @@ public:
 
 			Locker dlocker(dotPack, creature);
 			dotPack->decreaseUseCount();
+		}
+
+		if (creature->isPlayerCreature()) {
+			bool shouldGcwCrackdownTef = false, shouldGcwTef = false, shouldBhTef = false;
+
+			CombatManager::instance()->checkForTefs(creature, creatureTarget, &shouldGcwCrackdownTef, &shouldGcwTef, &shouldBhTef);
+
+			PlayerObject* ghost = creature->getPlayerObject().get();
+
+			if (ghost != nullptr) {
+				ghost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
+			}
 		}
 
 		doAnimationsRange(creature, creatureTarget, dotPack->getObjectID(), creature->getWorldPosition().distanceTo(creatureTarget->getWorldPosition()), dotPack->isArea());
