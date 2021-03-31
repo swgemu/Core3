@@ -62,7 +62,7 @@ TatooineAnchorheadScreenPlay = CityScreenPlay:new {
 	--{respawn, x, z, y, direction, cell, mood}
 	stationaryMobiles = {
 		{ 1, 74.6127, 52, -5382.24, 106, 0, ""}, {1, 150.383, 52, -5327.33, 143, 0, ""}, {1, 114.69, 52, -5404.19, 89, 0, ""}, { 1, -108.399, 65, -5298.05, 0, 0, "conversation"},
-		{ 1,-162.748,65,-5312.84, 0, 0, "conversation"}, {1,-108.399, 65, -5297.05, 180, 0, "conversation"}, { 1, -162.748, 65, -5311.84, 180, 0, "conversation"}, { 1, -143.907, 65, -5335.05, 0, 0, "conversation"},
+		{ 1, -162.748,65,-5312.84, 0, 0, "conversation"}, {1, -108.399, 65, -5297.05, 180, 0, "conversation"}, { 1, -162.748, 65, -5311.84, 180, 0, "conversation"}, { 1, -143.907, 65, -5335.05, 0, 0, "conversation"},
 		{ 1, -143.907, 65, -5334.05, 180, 0, "conversation"},
 	},
 }
