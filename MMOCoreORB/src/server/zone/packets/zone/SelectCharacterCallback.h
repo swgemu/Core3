@@ -62,7 +62,7 @@ public:
 				[object = Reference<SceneObject*>(obj), characterID,
 				playerCreature = Reference<CreatureObject*>(player),
 				clientObject = Reference<ZoneClientSession*>(client),
-				zoneServer](SessionApprovalResult result) {
+				zoneServer](const SessionApprovalResult& result) {
 
 			if (!result.isActionAllowed()) {
 				clientObject->info(true) << "Player connect not approved: " << result.getLogMessage();
