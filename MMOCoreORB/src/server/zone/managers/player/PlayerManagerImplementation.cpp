@@ -131,6 +131,8 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	loadPermissionLevels();
 	loadXpBonusList();
 
+	onlinePlayersLogOnSessionChange = false;
+
 	setGlobalLogging(true);
 	setLogging(false);
 

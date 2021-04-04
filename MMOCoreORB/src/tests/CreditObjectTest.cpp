@@ -22,7 +22,7 @@ protected:
 	bool isVerbose = false;
 	int startCash = 987654321;
 	int startBank = 123456789;
-	bool origEnableAddr2Line;
+	bool origEnableAddr2Line{};
 	StringBuffer stackTraceOutput;
 	StringBuffer creditManagerLogOutput;
 	Locker* locker = nullptr;

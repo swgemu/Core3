@@ -137,6 +137,13 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 
 	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
 	Zone* zone = zoneServer->getZone(zoneName);
+
+	if (zone == nullptr){
+		error("null zone " + zoneName + "in BountyMissionObjective::spawnTarget");
+
+		return;
+	}
+
 	CreatureManager* cmng = zone->getCreatureManager();
 
 	if (npcTarget == nullptr) {
