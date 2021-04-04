@@ -43,7 +43,6 @@ public:
 
 		switch (group->getLootRule()) {
 		case GroupManager::FREEFORALL:
-			//GO GET 'EM, NINJA! YEEEHAW!!!
 			break;
 		case GroupManager::MASTERLOOTER:
 			if (!group->checkMasterLooter(player)) {
