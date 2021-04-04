@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_7cb6118c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2021-04-04T19:38:02Z",
+      "side": 1,
+      "message": "theres hundreds of immediate commands that should not be affected by attack/posture delays",
+      "revId": "aa87ba17b8bb303e05814741e79804c718539546",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
