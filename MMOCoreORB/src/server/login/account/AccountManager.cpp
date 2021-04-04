@@ -72,7 +72,7 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 			[this,
 			loginClient = Reference<LoginClient*>(client),
 			loginAccount = Reference<Account*>(account)
-			](SessionApprovalResult result) {
+			](const SessionApprovalResult& result) {
 
 		if (result.isActionTemporaryFailure()) {
 			error()
@@ -99,7 +99,7 @@ void AccountManager::loginApprovedAccount(LoginClient* client, ManagedReference<
 
 	client->debug() << "generated sessionID: " << sessionID;
 
-	Message* lct = new LoginClientToken(account, sessionID);
+	auto* lct = new LoginClientToken(account, sessionID);
 	client->sendMessage(lct);
 
 	uint32 accountID = account->getAccountID();
@@ -129,7 +129,7 @@ void AccountManager::loginApprovedAccount(LoginClient* client, ManagedReference<
 	client->sendMessage(loginServer->getLoginEnumClusterMessage(account));
 	client->sendMessage(loginServer->getLoginClusterStatusMessage(account));
 
-	Message* eci = new EnumerateCharacterID(account);
+	auto* eci = new EnumerateCharacterID(account);
 	client->sendMessage(eci);
 }
 

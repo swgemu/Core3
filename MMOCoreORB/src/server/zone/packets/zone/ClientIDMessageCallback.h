@@ -19,7 +19,7 @@
 #include "ClientPermissionsMessage.h"
 
 class ClientIDMessageCallback : public MessageCallback {
-	uint32 gameBits;
+	uint32 gameBits{};
 	uint32 dataLen;
 	String sessionID;
 	uint32 accountID;
