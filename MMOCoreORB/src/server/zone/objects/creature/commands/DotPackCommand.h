@@ -59,11 +59,59 @@ public:
 		creature->broadcastMessage(action, true);
 	}
 
-	void parseModifier(const String& modifier, uint64& objectId) const {
-		if (!modifier.isEmpty())
-			objectId = Long::valueOf(modifier);
-		else
+	DotPack* findDotPack(CreatureObject* creature, uint8 pool, bool poolGiven) const {
+		SceneObject* inventory = creature->getSlottedObject("inventory");
+
+		if (inventory == nullptr) {
+			return nullptr;
+		}
+
+		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+			SceneObject* item = inventory->getContainerObject(i);
+
+			if (!item->isDotPackObject()) {
+				continue;
+			}
+
+			DotPack* pack = cast<DotPack*>(item);
+
+			if ((skillName == "applypoison") && pack->isPoisonDeliveryUnit()) {
+				if (!poolGiven) {
+					return pack;
+				} else if (pack->getPool() == pool) {
+					return pack;
+				}
+			}
+
+			if ((skillName == "applydisease") && pack->isDiseaseDeliveryUnit()) {
+				if (!poolGiven) {
+					return pack;
+				} else if (pack->getPool() == pool) {
+					return pack;
+				}
+			}
+		}
+
+		return nullptr;
+	}
+
+	void parseModifier(const String& modifier, uint8& pool, uint64& objectId) const {
+		if (!modifier.isEmpty()) {
+			StringTokenizer tokenizer(modifier);
+			tokenizer.setDelimeter("|");
+
+			String poolName;
+
+			tokenizer.getStringToken(poolName);
+			pool = BuffAttribute::getAttribute(poolName);
+
+			if (tokenizer.hasMoreTokens()) {
+				objectId = tokenizer.getLongToken();
+			}
+		} else {
+			pool = BuffAttribute::UNKNOWN;
 			objectId = 0;
+		}
 	}
 
 	bool checkTarget(CreatureObject* creature, CreatureObject* targetCreature, uint32 dotType) const {
@@ -253,19 +301,32 @@ public:
 		if (object == nullptr || !object->isCreatureObject() || creature == object)
 			return INVALIDTARGET;
 
+
+		uint8 pool = BuffAttribute::UNKNOWN;
+		bool poolGiven = false;
 		uint64 objectId = 0;
 
-		parseModifier(arguments.toString(), objectId);
-		ManagedReference<DotPack*> dotPack = nullptr;
+		ManagedReference<DotPack*> dotPack;
 
-		SceneObject* inventory = creature->getSlottedObject("inventory");
+		parseModifier(arguments.toString(), pool, objectId);
 
-		if (inventory != nullptr) {
-			dotPack = inventory->getContainerObject(objectId).castTo<DotPack*>();
+		if (objectId == 0) {
+			if (pool != BuffAttribute::UNKNOWN) {
+				poolGiven = true;
+			}
+
+			dotPack = findDotPack(creature, pool, poolGiven);
+		} else {
+			SceneObject* inventory = creature->getSlottedObject("inventory");
+
+			if (inventory != nullptr) {
+				dotPack = inventory->getContainerObject(objectId).castTo<DotPack*>();
+			}
 		}
 
-		if (dotPack == nullptr)
+		if (dotPack == nullptr) {
 			return GENERALERROR;
+		}
 
 		PlayerManager* playerManager = server->getPlayerManager();
 		CombatManager* combatManager = CombatManager::instance();
