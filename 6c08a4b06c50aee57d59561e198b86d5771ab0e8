@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_fca98125",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/ComponentMap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2021-04-04T20:03:51Z",
+      "side": 1,
+      "message": "const VectorMap\u003cuint32, uint32\u003e\u0026 getVisibleCRC(uint32 tempCRC, uint32 slotCRC) const",
+      "range": {
+        "startLine": 236,
+        "startChar": 20,
+        "endLine": 236,
+        "endChar": 21
+      },
+      "revId": "6c08a4b06c50aee57d59561e198b86d5771ab0e8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_dca64553",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/crafting/CraftingSessionImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2021-04-04T20:03:51Z",
+      "side": 1,
+      "message": "const auto\u0026",
+      "revId": "6c08a4b06c50aee57d59561e198b86d5771ab0e8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
