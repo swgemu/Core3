@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_9c732de7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2021-04-04T20:12:14Z",
+      "side": 1,
+      "message": "this needs to run in its own task like the above with the pet locked",
+      "revId": "68dc5ccda5adbd791f9c53ba43fc854cae38b369",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
