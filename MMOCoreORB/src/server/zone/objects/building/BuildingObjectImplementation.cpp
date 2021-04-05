@@ -56,7 +56,7 @@ void BuildingObjectImplementation::loadTemplateData(
 	optionsBitmask = 0x00000100;
 
 	SharedBuildingObjectTemplate* buildingData =
-			dynamic_cast<SharedBuildingObjectTemplate*> (templateData);
+		dynamic_cast<SharedBuildingObjectTemplate*> (templateData);
 
 	if (buildingData == nullptr)
 		return;
@@ -179,7 +179,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose, boo
 			auto containerObject = cell->getContainerObject(j);
 
 			if (containerObject != nullptr && ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
-							|| (closeObjects != nullptr && closeObjects->contains(containerObject.get()))))
+						|| (closeObjects != nullptr && closeObjects->contains(containerObject.get()))))
 				containerObject->sendTo(player, true, false);
 		}
 	}
@@ -538,21 +538,28 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 		if (!cell->isContainerLoaded())
 			continue;
 
-		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			auto child = cell->getContainerObject(j);
+		try
+		{
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				auto child = cell->getContainerObject(j);
 
-			if (child == nullptr)
-				continue;
+				if (child == nullptr)
+					continue;
 
-			if (child->getCloseObjects() != nullptr)
-				child->removeInRangeObject(obj);
-			else
-				child->notifyDissapear(obj);
+				if (child->getCloseObjects() != nullptr)
+					child->removeInRangeObject(obj);
+				else
+					child->notifyDissapear(obj);
 
-			if (obj->getCloseObjects() != nullptr)
-				obj->removeInRangeObject(child);
-			else
-				obj->notifyDissapear(child);
+				if (obj->getCloseObjects() != nullptr)
+					obj->removeInRangeObject(child);
+				else
+					obj->notifyDissapear(child);
+			}
+		} catch (const Exception& exception) {
+			exception.printStackTrace();
+
+			warning("could not remove all container objects in BuildingObject::notifyDissapear");
 		}
 	}
 }
@@ -664,7 +671,7 @@ CellObject* BuildingObjectImplementation::getCell(const String& cellName) {
 }
 
 void BuildingObjectImplementation::destroyObjectFromDatabase(
-	bool destroyContainedObjects) {
+		bool destroyContainedObjects) {
 
 	float x = getPositionX();
 	float y = getPositionY();
@@ -1501,8 +1508,8 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate() {
 					}
 
 				} catch (Exception& e) {
-						error("unreported exception caught in void BuildingObjectImplementation::spawnChildCreaturesFromTemplate()!");
-						e.printStackTrace();
+					error("unreported exception caught in void BuildingObjectImplementation::spawnChildCreaturesFromTemplate()!");
+					e.printStackTrace();
 				}
 
 			} // create the creature outside
