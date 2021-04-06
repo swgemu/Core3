@@ -16,6 +16,24 @@
       "revId": "aa87ba17b8bb303e05814741e79804c718539546",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_1f042f14",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-04-06T00:03:21Z",
+      "side": 1,
+      "message": "Ok, so this should ignore everything except what goes into the Combat Queue now. I also had to reduce the delay time you added in because with it functioning now as a proper queue the abilities will hang just a bit before firing due to the added delay.\n\nThis also happens onFail, it still adds a small delay before removing the failed command. The delay does seem to still be enough to prevent the prior issue from happening.",
+      "parentUuid": "7a6b29fe_7cb6118c",
+      "revId": "aa87ba17b8bb303e05814741e79804c718539546",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
