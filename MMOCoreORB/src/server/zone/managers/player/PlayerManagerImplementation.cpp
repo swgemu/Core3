@@ -1731,10 +1731,20 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				String xpType = entry->elementAt(j).getKey();
 				float xpAmount = baseXp;
 
+				StringBuffer xpMsg;
+
+				xpMsg << " Xp type is: " << xpType << " Base Amount = " << xpAmount;
+
+
+
 				xpAmount *= (float) damage / totalDamage;
+
+				xpMsg << " XP amount after damage calc: " << xpAmount;
 
 				//Cap xp based on level
 				xpAmount = Math::min(xpAmount, calculatePlayerLevel(attacker, xpType) * 300.f);
+
+				xpMsg << " XP amount after level calc: " << xpAmount;
 
 				//Apply group bonus if in group
 				if (group != nullptr)
@@ -1749,8 +1759,16 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				else
 					xpAmount *= 0.2f;
 
+				if (xpType == "dotDMG") { // Prevents XP generated from DoTs from applying to the equiped weapon, but still counts towards combat XP
+					continue;
+				}
+
+				xpMsg << " Final XP amount: " << xpAmount;
+
 				//Award individual expType
 				awardExperience(attacker, xpType, xpAmount);
+
+				attacker->sendSystemMessage(xpMsg.toString());
 			}
 
 			awardExperience(attacker, "combat_general", combatXp, true, 0.1f);
