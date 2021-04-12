@@ -85,6 +85,7 @@ class TangibleObject extends SceneObject {
 	protected SceneObject antiDecayKitObject;
 
 	protected boolean jediRobe;
+	protected boolean unionRing;
 
 	/**
 	 * TangibleObject constructor, used to initialized the object
@@ -102,6 +103,7 @@ class TangibleObject extends SceneObject {
 		antiDecayKitObject = null;
 
 		jediRobe = false;
+		unionRing = false;
 
 		luaStringData.setAllowOverwriteInsertPlan();
 	}
@@ -678,6 +680,15 @@ class TangibleObject extends SceneObject {
 	@read
 	public boolean isJediRobe() {
 		return jediRobe;
+	}
+
+	@read
+	public boolean isUnionRing() {
+		return unionRing;
+	}
+
+	public void setUnionRing(boolean val) {
+		unionRing = val;
 	}
 
 	public void setCustomizationString(final string vars) {
