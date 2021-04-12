@@ -3660,7 +3660,7 @@ SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getIn
 		if (container->isTangibleObject()) {
 			TangibleObject* item = cast<TangibleObject*>( container);
 
-			if (item == nullptr || item->hasAntiDecayKit() || item->isJediRobe())
+			if (item == nullptr || item->hasAntiDecayKit() || item->isJediRobe() || item->isUnionRing())
 				continue;
 
 			if (!(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
@@ -4569,6 +4569,10 @@ void PlayerManagerImplementation::proposeUnity( CreatureObject* askingPlayer, Cr
 	// All checks passed
 	//
 
+	if (askingPlayer->getPosture() != CreaturePosture::CROUCHED) {
+		askingPlayer->setPosture(CreaturePosture::CROUCHED);
+	}
+
 	Locker rlocker( askingPlayer, respondingPlayer );
 
 	// Initialize session
@@ -4677,11 +4681,32 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer)
 		return;
 	}
 
+	ManagedReference<WearableObject*> wearable = nullptr;
+
 	bool hasRing = false;
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-		ManagedReference<WearableObject*> wearable = cast<WearableObject*>(inventory->getContainerObject(i).get());
-		if (wearable != nullptr && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isEquipped()) {
+		wearable = cast<WearableObject*>(inventory->getContainerObject(i).get());
+
+		if (wearable != nullptr && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isNoTrade()) {
 			hasRing = true;
+		}
+	}
+
+	// Check equipped items
+	if (!hasRing) {
+		VectorMap<String, ManagedReference<SceneObject* > > slotted;
+		respondingPlayer->getSlottedObjects(slotted);
+
+		for (int i = 0; i < slotted.size(); ++i) {
+			SceneObject* object = slotted.get(i);
+
+			if (object != nullptr && object->isWearableObject() && object->getGameObjectType() == SceneObjectType::RING && !object->isNoTrade()) {
+				wearable = cast<WearableObject*>(object);
+
+				if (wearable != nullptr) {
+					hasRing = true;
+				}
+			}
 		}
 	}
 
@@ -4701,13 +4726,8 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer)
 	box->setOkButton(true, "@ok");
 	box->setCancelButton(true, "@cancel");
 
-	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-		ManagedReference<WearableObject*> wearable = cast<WearableObject*>(inventory->getContainerObject(i).get());
-		if (wearable != nullptr && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isEquipped() && !wearable->isNoTrade()) {
-			String itemName = wearable->getDisplayedName();
-			box->addMenuItem(itemName, wearable->getObjectID());
-		}
-	}
+	String itemName = wearable->getDisplayedName();
+	box->addMenuItem(itemName, wearable->getObjectID());
 
 	box->setUsingObject(respondingPlayer);
 	respondingPlayer->getPlayerObject()->addSuiBox(box);
@@ -4746,9 +4766,10 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 		return;
 	}
 
-	// Find selected ring
+	// Check if Asking and Responding players Inventories are null
 	ManagedReference<SceneObject*> respondingPlayerInventory = respondingPlayer->getSlottedObject("inventory");
 	ManagedReference<SceneObject*> askingPlayerInventory = askingPlayer->getSlottedObject("inventory");
+
 	if (respondingPlayerInventory == nullptr || askingPlayerInventory == nullptr) {
 		respondingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
 		askingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
@@ -4756,47 +4777,99 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 		return;
 	}
 
-	// Find responder's ring
 	ManagedReference<WearableObject*> wearable = nullptr;
-	ManagedReference<WearableObject*> respondingRing = nullptr;
+	ManagedReference<WearableObject*> responderRing = nullptr;
+
+	// Find responder's ring -- unequipped items
 	for (int i = 0; i < respondingPlayerInventory->getContainerObjectsSize(); i++) {
 		wearable = cast<WearableObject*>(respondingPlayerInventory->getContainerObject(i).get());
-		if (wearable != nullptr && wearable->getObjectID() == respondingPlayerRingId && !wearable->isEquipped()) {
-			respondingRing = wearable;
+		if (wearable != nullptr && wearable->getObjectID() == respondingPlayerRingId) {
+			responderRing = wearable;
 			break;
 		}
 	}
 
-	// Find asker's ring
+	// If responderRing is null, check equipped items
+	if (responderRing == nullptr) {
+		VectorMap<String, ManagedReference<SceneObject* > > slotted;
+		respondingPlayer->getSlottedObjects(slotted);
+
+		for (int i = 0; i < slotted.size(); ++i) {
+			SceneObject* responderObject = slotted.get(i);
+
+			if (responderObject != nullptr && responderObject->isWearableObject() && responderObject->getGameObjectType() == SceneObjectType::RING) {
+				wearable = cast<WearableObject*>(responderObject);
+
+				if (wearable != nullptr && wearable->getObjectID() == respondingPlayerRingId) {
+					responderRing = wearable;
+					break;
+				}
+			}
+		}
+	}
+
+	// Find asker's ring -- unequipped items
 	wearable = nullptr;
-	ManagedReference<WearableObject*> askingRing = nullptr;
+	ManagedReference<WearableObject*> askerRing = nullptr;
 	for (int i = 0; i < askingPlayerInventory->getContainerObjectsSize(); i++) {
 		wearable = cast<WearableObject*>(askingPlayerInventory->getContainerObject(i).get());
-		if (wearable != nullptr && wearable->getObjectID() == proposeUnitySession->getAskingPlayerRing() && !wearable->isEquipped()) {
-			askingRing = wearable;
+		if (wearable != nullptr && wearable->getObjectID() == proposeUnitySession->getAskingPlayerRing()) {
+			askerRing = wearable;
 			break;
+		}
+	}
+
+	// If askerRing is null, check equipped items
+	if (askerRing == nullptr) {
+		VectorMap<String, ManagedReference<SceneObject* > > slotted;
+		askingPlayer->getSlottedObjects(slotted);
+
+		for (int i = 0; i < slotted.size(); ++i) {
+			SceneObject* askingObject = slotted.get(i);
+
+			if (askingObject != nullptr && askingObject->isWearableObject() && askingObject->getGameObjectType() == SceneObjectType::RING) {
+				wearable = cast<WearableObject*>(askingObject);
+
+				if (wearable != nullptr && wearable->getObjectID() == proposeUnitySession->getAskingPlayerRing()) {
+					askerRing = wearable;
+					break;
+				}
+			}
 		}
 	}
 
 
 	// Rings not found
-	if (respondingRing == nullptr || askingRing == nullptr) {
+	if (responderRing == nullptr) {
 		askingPlayer->sendSystemMessage("@unity:accept_fail"); // "Your proposal target has no ring to offer in return."
 		respondingPlayer->sendSystemMessage("@unity:no_ring"); // "You cannot accept a unity proposal without a ring to offer."
 		cancelProposeUnitySession(respondingPlayer, askingPlayer);
 		return;
+	} else if (askerRing == nullptr) {
+		respondingPlayer->sendSystemMessage("@unity:accept_fail"); // "Your proposal target has no ring to offer in return."
+		askingPlayer->sendSystemMessage("@unity:no_ring"); // "You cannot accept a unity proposal without a ring to offer."
+		cancelProposeUnitySession(respondingPlayer, askingPlayer);
+		return;
 	}
 
-	// Exchange rings
+	// Exchange rings, set Insured and set as Union Ring
 	ManagedReference<ObjectController*> objectController = server->getObjectController();
-	if (objectController->transferObject(askingRing, respondingPlayerInventory, -1, true, true)) { // Allow overflow
-		askingRing->sendDestroyTo(askingPlayer);
-		respondingPlayerInventory->broadcastObject(askingRing, true);
+	if (objectController->transferObject(askerRing, respondingPlayerInventory, -1, true, true)) { // Allow overflow
+		askerRing->sendDestroyTo(askingPlayer);
+
+		respondingPlayerInventory->broadcastObject(askerRing, true);
+
+		askerRing->setOptionsBitmask(OptionBitmask::INSURED);
+		askerRing->setUnionRing(true);
 	}
 
-	if (objectController->transferObject(respondingRing, askingPlayerInventory, -1, true, true)) { // Allow overflow
-		respondingRing->sendDestroyTo(respondingPlayer);
-		askingPlayerInventory->broadcastObject(respondingRing, true);
+	if (objectController->transferObject(responderRing, askingPlayerInventory, -1, true, true)) { // Allow overflow
+		responderRing->sendDestroyTo(respondingPlayer);
+
+		askingPlayerInventory->broadcastObject(responderRing, true);
+
+		responderRing->setOptionsBitmask(OptionBitmask::INSURED);
+		responderRing->setUnionRing(true);
 	}
 
 	// Set married
@@ -4865,6 +4938,48 @@ void PlayerManagerImplementation::grantDivorce(CreatureObject* player) {
 	if (playerGhost == nullptr || !playerGhost->isMarried())
 		return;
 
+	// Get & check players inventory
+	ManagedReference<SceneObject*> playerInventory = player->getSlottedObject("inventory");
+
+	if (playerInventory == nullptr) {
+		return;
+	}
+
+	// Check for unionRing and set false
+	ManagedReference<WearableObject*> wearable = nullptr;
+	ManagedReference<WearableObject*> ring = nullptr;
+
+	// Unequipped items
+	for (int i = 0; i < playerInventory->getContainerObjectsSize(); i++) {
+		wearable = cast<WearableObject*>(playerInventory->getContainerObject(i).get());
+		if (wearable != nullptr && wearable->isUnionRing()) {
+			ring = wearable;
+			break;
+		}
+	}
+
+	// If ring is null, check equipped items
+	if (ring == nullptr) {
+		VectorMap<String, ManagedReference<SceneObject* > > slotted;
+		player->getSlottedObjects(slotted);
+
+		for (int i = 0; i < slotted.size(); ++i) {
+			SceneObject* askingObject = slotted.get(i);
+
+			if (askingObject != nullptr && askingObject->isWearableObject() && askingObject->getGameObjectType() == SceneObjectType::RING) {
+				ring = cast<WearableObject*>(askingObject);
+
+				if (wearable != nullptr && wearable->isUnionRing()) {
+					break;
+				}
+			}
+		}
+	}
+
+	if (ring != nullptr) {
+		ring->setUnionRing(false);
+	}
+
 	// Find spouse
 	CreatureObject* spouse = getPlayer(playerGhost->getSpouseName());
 
@@ -4887,6 +5002,45 @@ void PlayerManagerImplementation::grantDivorce(CreatureObject* player) {
 
 		msg.setTO(spouse->getFirstName());
 		player->sendSystemMessage(msg);
+
+		// Get spouses inventory
+		ManagedReference<SceneObject*> spouseInventory = spouse->getSlottedObject("inventory");
+
+		if (spouseInventory != nullptr) {
+			ring = nullptr;
+			wearable = nullptr;
+
+			// Check for Union Ring
+			for (int i = 0; i < spouse->getContainerObjectsSize(); i++) {
+				wearable = cast<WearableObject*>(spouseInventory->getContainerObject(i).get());
+				if (wearable != nullptr && wearable->isUnionRing()) {
+					ring = wearable;
+					break;
+				}
+			}
+
+			// If ring is null, check equipped items
+			if (ring == nullptr) {
+				VectorMap<String, ManagedReference<SceneObject* > > slotted;
+				spouse->getSlottedObjects(slotted);
+
+				for (int i = 0; i < slotted.size(); ++i) {
+					SceneObject* askingObject = slotted.get(i);
+
+					if (askingObject != nullptr && askingObject->isWearableObject() && askingObject->getGameObjectType() == SceneObjectType::RING) {
+						ring = cast<WearableObject*>(askingObject);
+
+						if (ring != nullptr && ring->isUnionRing()) {
+							break;
+						}
+					}
+				}
+			}
+
+			if (ring != nullptr) {
+				ring->setUnionRing(false);
+			}
+		}
 
 	} else {
 		// If spouse player is null (perhaps it's been deleted), we can still remove the spouse from the current player
