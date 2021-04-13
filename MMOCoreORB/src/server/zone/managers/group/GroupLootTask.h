@@ -43,6 +43,7 @@ public:
 
 		switch (group->getLootRule()) {
 		case GroupManager::FREEFORALL:
+			lootContainer->setContainerOwnerID(player->getObjectID());
 			break;
 		case GroupManager::MASTERLOOTER:
 			if (!group->checkMasterLooter(player)) {
