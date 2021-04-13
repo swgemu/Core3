@@ -691,25 +691,43 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 void CreatureObjectImplementation::removeMountedCombatSlow(bool showEndMessage) {
 	ManagedReference<CreatureObject*> creo = asCreatureObject();
 	ManagedReference<CreatureObject*> vehicle = getParent().get().castTo<CreatureObject*>();
-	if (vehicle == nullptr)
-		return;
 
-	Core::getTaskManager()->executeTask([=] () {
-		Locker locker(vehicle);
+	constexpr uint32 buffCRC = "mounted_combat_slow"_hashCode;
 
-		constexpr uint32 buffCRC = "mounted_combat_slow"_hashCode;
+	if (vehicle != nullptr) {
+		Core::getTaskManager()->executeTask([=] () {
+			Locker locker(vehicle);
 
-		bool hasBuff = vehicle->hasBuff(buffCRC);
+			bool hasBuff = vehicle->hasBuff(buffCRC);
 
-		if (hasBuff) {
-			vehicle->removeBuff(buffCRC);
-			if (showEndMessage) {
-				//I don't think we want to show this on dismount, or after a gallop
-				StringIdChatParameter endStringId("combat_effects", "mount_speed_after_combat"); // Your mount speeds up.
-				creo->sendSystemMessage(endStringId);
+			if (hasBuff) {
+				vehicle->removeBuff(buffCRC);
+				if (showEndMessage) {
+					//I don't think we want to show this on dismount, or after a gallop
+					StringIdChatParameter endStringId("combat_effects", "mount_speed_after_combat"); // Your mount speeds up.
+					creo->sendSystemMessage(endStringId);
+				}
+			}
+		}, "RemoveMountedCombatSlowLambda");
+	}
+
+	Reference<PlayerObject*> ghost = getPlayerObject();
+
+	if (ghost != nullptr) {
+		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+			ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
+
+			if (pet != nullptr) {
+				Core::getTaskManager()->executeTask([=] () {
+					Locker plocker(pet);
+
+			 		if (pet->isMount() && pet->hasBuff(buffCRC)) {
+						pet->removeBuff(buffCRC);
+					}
+				}, "RemovePetMountSlowLambda");
 			}
 		}
-	}, "RemoveMountedCombatSlowLambda");
+	}
 }
 
 void CreatureObjectImplementation::setCombatState() {
