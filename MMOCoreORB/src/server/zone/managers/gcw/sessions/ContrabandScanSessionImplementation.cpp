@@ -170,7 +170,7 @@ void ContrabandScanSessionImplementation::sendPersonalizedScannerChatMessage(
 	Zone* zone, AiAgent* scanner, CreatureObject* player, const String& imperial, const String& rebel = "") {
 	StringIdChatParameter chatMessage;
 	chatMessage.setStringId(getFactionStringId(scanner, imperial, rebel));
-	chatMessage.setTT(FactionManager::instance()->getRankName(player->getFactionRank()));
+	chatMessage.setTT("@faction_recruiter:" + FactionManager::instance()->getRankName(player->getFactionRank()));
 	chatMessage.setTO(player->getDisplayedName());
 	zone->getZoneServer()->getChatManager()->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, 0);
 }

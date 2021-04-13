@@ -3426,6 +3426,11 @@ bool FrsManagerImplementation::handleDarkCouncilDeath(CreatureObject* killer, Cr
 	if (rankData == nullptr)
 		return true;
 
+	if (challengerWon) {
+		modifySuddenDeathFlags(killer, rankData, true);
+		rankData->removeFromPetitionerList(challengerID);
+	}
+
 	Locker clocker(rankData, managerData);
 
 	SortedVector<uint64>* playerList = rankData->getPlayerList();

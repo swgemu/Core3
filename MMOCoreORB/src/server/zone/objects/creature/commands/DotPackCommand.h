@@ -244,10 +244,10 @@ public:
 		}
 
 		if (dotDMG) {
-			awardXp(creature, "medical", dotDMG); //No experience for healing yourself.
+			awardXp(creature, "medical", dotDMG); // No experience for healing yourself.
 
 			creatureTarget->addDefender(creature);
-			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "");
+			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "dotDMG");
 			creature->addDefender(creatureTarget);
 		} else {
 			StringIdChatParameter stringId("dot_message", "dot_resisted");
@@ -439,8 +439,8 @@ public:
 		}
 
 		if (dotDMG) {
-			awardXp(creature, "medical", dotDMG); //No experience for healing yourself.
-			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "");
+			awardXp(creature, "medical", dotDMG); // No experience for healing yourself.
+			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "dotDMG");
 		} else {
 			StringIdChatParameter stringId("dot_message", "dot_resisted");
 			stringId.setTT(creatureTarget->getObjectID());
