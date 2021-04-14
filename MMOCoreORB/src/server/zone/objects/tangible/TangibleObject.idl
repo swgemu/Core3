@@ -592,7 +592,7 @@ class TangibleObject extends SceneObject {
 
 	@read
 	public SceneObject getMainDefender() {
-		if(defenderList.size() > 0)
+		if (defenderList.size() > 0)
 			return defenderList.get(0);
 
 		return null;
