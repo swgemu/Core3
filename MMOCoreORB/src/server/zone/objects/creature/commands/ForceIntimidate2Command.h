@@ -44,7 +44,10 @@ public:
 			Reference<SortedVector<ManagedReference<TangibleObject*> >* > targets = CombatManager::instance()->getAreaTargets(creature, creature->getWeapon(), tarCreo, data);
 			if(targets->size() != 0) {
 				ForceIntimidateTask *task = new ForceIntimidateTask(tarCreo, targets, this);
-				task->schedule(100);
+				task->schedule(1500);
+
+				//CombatAction* action = new CombatAction(creature, targets, STRING_HASHCODE("force_intimidate"), 0x01, data.getTrails());
+				//creature->broadcastMessage(action, true);
 			}
 		}
 
