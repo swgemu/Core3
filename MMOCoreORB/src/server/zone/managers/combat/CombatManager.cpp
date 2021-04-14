@@ -28,8 +28,21 @@
 #include "server/zone/packets/object/ShowFlyText.h"
 #include "server/zone/managers/frs/FrsManager.h"
 
-#define COMBAT_SPAM_RANGE 85
+#define COMBAT_SPAM_RANGE 85 // Range at which players will see Combat Log Info
 
+
+/* CombatManager Restructure / Cleanup -- By Hakry
+
+-- Every player that uses an attack ability, including peace, is considered the attacker.
+
+-- Each Attacker has their Defender List stored on their Creature Object.
+
+-- Peace will clear a CreO's defender list, but they will not be able to exit Combat if they have nearby recent enemy.
+
+*/
+
+
+// Called when any Creatuure Object uses an attack/aggressive ability
 bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defender, bool lockDefender, bool allowIncapTarget) const {
 	if (attacker == defender)
 		return false;
@@ -84,71 +97,53 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 			VisibilityManager::instance()->increaseVisibility(creo, 25);
 	}
 
+	attacker->setCombatState();
+	defender->setCombatState();
+
 	attacker->setDefender(defender);
-	defender->addDefender(attacker);
+
+	if (defender->isCreatureObject()) {
+		ThreatMap* defenderThreatMap = defender->getThreatMap();
+
+		if (defenderThreatMap != nullptr) {
+			defenderThreatMap->addDamage(attacker, 0);
+		}
+	}
 
 	return true;
 }
 
+// Called when creature attempts to peace out of combat
 bool CombatManager::attemptPeace(CreatureObject* attacker) const {
-	const DeltaVector<ManagedReference<SceneObject*> >* defenderList = attacker->getDefenderList();
+	attacker->removeDefenders();
+	attacker->setState(CreatureState::PEACE);
 
-	for (int i = defenderList->size() - 1; i >= 0; --i) {
-		try {
-			ManagedReference<SceneObject*> object = defenderList->get(i);
+	ThreatMap* threatMap = attacker->getThreatMap();
 
-			TangibleObject* defender = cast<TangibleObject*>( object.get());
+	if (threatMap != nullptr) {
+		for (int i = 0; i < threatMap->size(); i++) {
+			CreatureObject* threatCreo = threatMap->elementAt(i).getKey();
 
-			if (defender == nullptr)
+			if (threatCreo == nullptr || threatCreo == attacker) {
 				continue;
-
-			try {
-				Locker clocker(defender, attacker);
-
-				if (defender->hasDefender(attacker)) {
-
-					if (defender->isCreatureObject()) {
-						CreatureObject* creature = defender->asCreatureObject();
-
-						if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead() || !creature->isInRange(attacker, 128.f)) {
-							attacker->removeDefender(defender);
-							defender->removeDefender(attacker);
-						}
-					} else {
-						attacker->removeDefender(defender);
-						defender->removeDefender(attacker);
-					}
-				} else {
-					attacker->removeDefender(defender);
-				}
-
-				clocker.release();
-
-			} catch (Exception& e) {
-				error(e.getMessage());
-				e.printStackTrace();
 			}
-		} catch (ArrayIndexOutOfBoundsException& exc) {
 
+			if ((attacker->isInRange(threatCreo, 128.f) && threatCreo->getMainDefender() == attacker)) {
+				continue;
+			}
+
+			attacker->clearCombatState(false);
+		}
+
+		if (threatMap->size() == 0) {
+			attacker->clearCombatState(false);
 		}
 	}
 
-	if (defenderList->size() != 0) {
-		debug("defenderList not empty, trying to set Peace State");
-
-		attacker->setState(CreatureState::PEACE);
-
-		return false;
-	} else {
-		attacker->clearCombatState(false);
-
-		// clearCombatState() (rightfully) does not automatically set peace, so set it
-		attacker->setState(CreatureState::PEACE);
-
-		return true;
-	}
+	return true;
 }
 
+// Called mainly for AiAgents to break their combat state
 void CombatManager::forcePeace(CreatureObject* attacker) const {
 	fatal(attacker->isLockedByCurrentThread(), "attacker must be locked");
 
@@ -180,6 +175,7 @@ void CombatManager::forcePeace(CreatureObject* attacker) const {
 	attacker->setState(CreatureState::PEACE);
 }
 
+// Do CombatAction - CreO attacker & TanO defender
 int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) const {
 	debug("entering doCombat action with data");
 
@@ -209,10 +205,10 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 		Reference<SortedVector<ManagedReference<TangibleObject*> >* > areaDefenders = getAreaTargets(attacker, weapon, defenderObject, data);
 
 		while (areaDefenders->size() > 0) {
-			for (int i = areaDefenders->size()-1; i >= 0 ; i--) {
+			for (int i = 0; i < areaDefenders->size(); i++) {
 				TangibleObject* tano = areaDefenders->get(i);
 				if (tano == attacker ||  tano == nullptr) {
-					areaDefenders->remove(i);
+					//areaDefenders->remove(i);
 					continue;
 				}
 
@@ -229,6 +225,13 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 			Thread::yield();
 			attacker->wlock(true);
 		}
+
+		/*if (areaDefenders->size() > 1) {
+			attacker->sendSystemMessage(" CombatAction for area targets called ");
+
+			CombatAction* action = new CombatAction(attacker, areaDefenders, data.getCommandCRC(), 0x01, data.getTrails());
+			attacker->broadcastMessage(action, true);
+		}*/
 	}
 
 	if (damage > 0) {
@@ -259,6 +262,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	return damage;
 }
 
+// Do CombatAction - TanO attacker & TanO defender
 int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, const CombatQueueCommand* command) const {
 	if (command == nullptr)
 		return -3;
@@ -281,6 +285,7 @@ int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon
 	return damage;
 }
 
+// Do CombatAction - CreO attacker & TanO object
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data, bool* shouldGcwCrackdownTef, bool* shouldGcwTef, bool* shouldBhTef) const {
 	int damage = 0;
 
@@ -289,8 +294,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	if (!tano->isAttackableBy(attacker))
 		return 0;
 
-	attacker->addDefender(tano);
-	tano->addDefender(attacker);
 
 	if (tano->isCreatureObject()) {
 		CreatureObject* defender = tano->asCreatureObject();
@@ -335,8 +338,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 }
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, bool* shouldGcwCrackdownTef, bool* shouldGcwTef, bool* shouldBhTef) const {
-	if (defender->isEntertaining())
+	if (defender->isEntertaining()) {
 		defender->stopEntertaining();
+	}
 
 	int hitVal = HIT;
 	uint8 hitLocation = 0;
@@ -380,7 +384,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		damageMultiplier = 0.0f;
 		break;}
 	case RICOCHET:
-		doLightsaberBlock(attacker, weapon, defender, damage);
+		broadcastCombatAction(attacker, defender, weapon, data, 0, hitVal, 0);
 		checkForTefs(attacker, defender, shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
 		damageMultiplier = 0.0f;
 		return 0;
@@ -417,7 +421,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 }
 
 int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) const {
-
 	int damage = 0;
 
 	Locker clocker(tano, attacker);
@@ -438,11 +441,9 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	if(defenderObject == nullptr || !defenderObject->isAttackableBy(attacker))
 		return 0;
 
-	if (defenderObject->isEntertaining())
+	if (defenderObject->isEntertaining()) {
 		defenderObject->stopEntertaining();
-
-	attacker->addDefender(defenderObject);
-	defenderObject->addDefender(attacker);
+	}
 
 	float damageMultiplier = data.getDamageMultiplier();
 
@@ -459,8 +460,6 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	//Send Attack Combat Spam
 	data.getCommand()->sendAttackCombatSpam(attacker, defenderObject, hitVal, damage, data);
-
-	CombatAction* combatAction = nullptr;
 
 	switch (hitVal) {
 	case MISS:
@@ -483,7 +482,6 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 		damageMultiplier = 0.0f;
 		break;
 	case RICOCHET:
-		doLightsaberBlock(attacker, weapon, defenderObject, damage);
 		damageMultiplier = 0.0f;
 		break;
 	default:
@@ -508,9 +506,6 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	defenderObject->updatePostures(false);
 
 	uint32 animationCRC = data.getCommand()->getAnimation(attacker, defenderObject, weapon, hitLocation, damage).hashCode();
-
-	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
-	attacker->broadcastMessage(combatAction,true);
 
 	return damage;
 }
@@ -1717,6 +1712,13 @@ void CombatManager::doLightsaberBlock(TangibleObject* attacker, WeaponObject* we
 
 }
 
+void CombatManager::doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) const {
+	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
+
+	//defender->doCombatAnimation(defender, STRING_HASHCODE("dodge"), 0);
+
+}
+
 void CombatManager::showHitLocationFlyText(CreatureObject *attacker, CreatureObject *defender, uint8 location) const {
 
 	if (defender->isVehicleObject())
@@ -1746,13 +1748,6 @@ void CombatManager::showHitLocationFlyText(CreatureObject *attacker, CreatureObj
 
 	if(fly != nullptr)
 		attacker->sendMessage(fly);
-}
-
-void CombatManager::doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) const {
-	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
-
-	//defender->doCombatAnimation(defender, STRING_HASHCODE("dodge"), 0);
-
 }
 
 bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, const CreatureAttackData& data) const {
@@ -2294,6 +2289,11 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 
 	if (!effect.isEmpty())
 		attacker->playEffect(effect);
+
+	attacker->addDefender(defenderObject);
+
+	CombatAction* combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit, data.getTrails());
+	attacker->broadcastMessage(combatAction, true);
 }
 
 void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPlayer) const {
@@ -2718,10 +2718,12 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 				if (!(weapon->isThrownWeapon()) && !(data.isSplashDamage()) && !(weapon->isHeavyWeapon())) {
 					if (CollisionManager::checkLineOfSight(object, attacker)) {
 						defenders->put(tano);
+						attacker->addDefender(tano);
 					}
 				} else {
 					if (CollisionManager::checkLineOfSight(object, defenderObject)) {
 						defenders->put(tano);
+						attacker->addDefender(tano);
 					}
 				}
 			} catch (Exception& e) {
