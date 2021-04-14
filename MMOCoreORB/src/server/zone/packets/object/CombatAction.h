@@ -112,6 +112,42 @@ public:
 		insertByte(0);
 	}
 
+	CombatAction(CreatureObject* attacker, SortedVector<ManagedReference<TangibleObject*> >* defenders, uint32 animcrc, uint8 hit, uint8 trails, long weaponID = 0) :
+			StandaloneObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC, true) {
+
+		insertInt(animcrc);
+
+		insertLong(attacker->getObjectID());
+		if (weaponID == 0)
+			insertLong(attacker->getWeaponID());
+		else
+			insertLong(weaponID);
+
+		insertByte(attacker->getPosture());
+		insertByte(trails);
+		insertByte(0);
+
+		short listSize = defenders->size();
+
+		if (listSize <= 0) {
+			return;
+			printf(" List size <= 0  \n");
+		}
+
+		insertShort(listSize);
+
+		for (int i = 0; i < listSize; ++i) {
+
+			TangibleObject* defender = defenders->get(i);
+
+			insertLong(defender->getObjectID());
+			insertByte((defender->isCreatureObject() ? defender->asCreatureObject()->getPosture() : 0x00));
+			insertByte(hit);
+			insertByte(0); //clientEffectID -- Always send 0
+		}
+	}
+
+
 	void updateDefenderSize() {
 		insertShort(53, ++defenderSize);
 	}
