@@ -8,6 +8,7 @@
 #ifndef COMBATMANAGER_H_
 #define COMBATMANAGER_H_
 
+//#include "DefenderHitList.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -59,8 +60,31 @@ public:
 	Vector<uint32> defaultMeleeAttacks;
 	Vector<uint32> defaultRangedAttacks;
 
+//protected:
+  //  Vector<DefenderHitList* > targetDefenders;
+
 private:
 	void initializeDefaultAttacks();
+
+/*	const Vector<DefenderHitList*>& getTargetDefenders() const {
+		return targetDefenders;
+	}
+
+    bool hasTargetDefenderList(DefenderHitList* list) const {
+        return targetDefenders.contains(list);
+    }
+
+    void addTargetDefenderList(DefenderHitList* list) {
+        targetDefenders.add(list);
+    }
+
+    void removeTargetDefender(DefenderHitList* list) {
+        for (int i = 0; i < targetDefenders.size(); ++i) {
+            if (list == targetDefenders.get(i)) {
+                targetDefenders.set(i, nullptr);
+            }
+        }
+    }*/
 
 public:
 	CombatManager() {
@@ -203,7 +227,6 @@ protected:
 	void doCounterAttack(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) const;
 	void doBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) const;
 	void doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) const;
-	void doLightsaberBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) const;
 
 	int applyDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, int poolsToDamage, const CreatureAttackData& data) const;
 	int applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, uint8& hitLocation, const CreatureAttackData& data) const;

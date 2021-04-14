@@ -20,10 +20,12 @@ include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
 include system.util.VectorMap;
+include system.util.Vector;
 import server.zone.objects.tangible.threat.ThreatMap;
 include server.zone.objects.scene.variables.AutoDeltaSet;
 include server.zone.objects.scene.variables.StringId;
 include system.thread.atomic.AtomicInteger;
+include server.zone.managers.combat.DefenderHitList;
 
 @json
 class TangibleObject extends SceneObject {
@@ -75,6 +77,9 @@ class TangibleObject extends SceneObject {
 
 	@dereferenced
 	protected DeltaVector<SceneObject> defenderList;
+
+	@dereferenced
+	protected Vector<DefenderHitList> targetDefenders;
 
 	protected boolean sliceable;
 	protected boolean sliced;
@@ -584,18 +589,45 @@ class TangibleObject extends SceneObject {
 		return defenderList;
 	}
 
+	@read
+	public SceneObject getMainDefender() {
+		if (defenderList.size() > 0) {
+			return defenderList.get(0);
+		}
+
+		return null;
+	}
+
+	@local
+	@read
+	public final Vector<DefenderHitList> getDefenderHitList() {
+		return defenderList;
+	}
+
+	//@preLocked
+	//@read
+	//public boolean isOnTargetDefendersList(DefenderHitList list) {
+	//	return targetDefenders.contains(list);
+	//}
+
+	@read
+	public void addTargetDefenderList(DefenderHitList list) {
+        targetDefenders.add(list);
+    }
+
+    @read
+	public void removeTargetDefender(DefenderHitList list) {
+        for (int i = 0; i < targetDefenders.size(); ++i) {
+            if (list == targetDefenders.get(i)) {
+                targetDefenders.remove(i);
+            }
+        }
+    }
+
 	@local
 	@read
 	public final AutoDeltaSet<int> getVisibleComponents() {
 		return visibleComponents;
-	}
-
-	@read
-	public SceneObject getMainDefender() {
-		if(defenderList.size() > 0)
-			return defenderList.get(0);
-
-		return null;
 	}
 
 	@read
