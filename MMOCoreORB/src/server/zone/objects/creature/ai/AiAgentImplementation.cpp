@@ -1702,16 +1702,33 @@ void AiAgentImplementation::updatePetSwimmingState() {
 		return;
 	}
 
-	float waterHeight;
+	float landHeight = zone->getHeight(getPositionX(), getPositionY());
+	float waterHeight = landHeight;
+	bool waterIsDefined = terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight);
 
-	if (terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight)) {
+	if (waterIsDefined && (waterHeight > landHeight) && (landHeight + getSwimHeight() - waterHeight < 0.2)) {
+		Reference<IntersectionResults*> intersections;
+		Reference<CloseObjectsVector*> closeObjectsVector;
 
-		if ((getPositionZ() + getSwimHeight() - waterHeight < 0.2)) {
-			setState(CreatureState::SWIMMING, true);
-		} else {
-			clearState(CreatureState::SWIMMING, true);
+		intersections = new IntersectionResults();
+
+		CollisionManager::getWorldFloorCollisions(getPositionX(), getPositionY(), zone, intersections, closeObjectsVector);
+
+		for (int i = 0; i < intersections->size(); i++) {
+			if (fabs(16384 - intersections->get(i).getIntersectionDistance() - getPositionZ()) < 0.2) {
+				// Pet is on terrain above the water.
+				clearState(CreatureState::SWIMMING, true);
+				return;
+			}
 		}
+
+		// Pet is in the water.
+		setState(CreatureState::SWIMMING, true);
+		return;
 	}
+
+	// Terrain is above water level.
+	clearState(CreatureState::SWIMMING, true);
 }
 
 void AiAgentImplementation::checkNewAngle() {
