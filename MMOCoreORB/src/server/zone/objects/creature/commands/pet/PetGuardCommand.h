@@ -22,7 +22,7 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == nullptr )
+		if (pet == nullptr )
 			return GENERALERROR;
 
 		if (pet->hasRidingCreature())
@@ -32,12 +32,12 @@ public:
 			pet->setPosture(CreaturePosture::UPRIGHT);
 
 		// Check if droid has power
-		if( controlDevice->getPetType() == PetManager::DROIDPET ){
+		if ( controlDevice->getPetType() == PetManager::DROIDPET ){
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
 			if( droidPet == nullptr )
 				return GENERALERROR;
 
-			if( !droidPet->hasPower() ){
+			if ( !droidPet->hasPower() ){
 				pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
 				return GENERALERROR;
 			}
@@ -45,6 +45,11 @@ public:
 
 		Reference<CreatureObject*> player = server->getZoneServer()->getObject(target, true).castTo<CreatureObject*>();
 		if (player == nullptr || player->isAttackableBy(pet)) {
+			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+			return GENERALERROR;
+		}
+
+		if (player->isSwimming() || pet->isSwimming()) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}
