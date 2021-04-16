@@ -40,7 +40,7 @@ function CityControlLanding:chanceToSpawn()
 	if (chance <= 15) then -- 15% Chance
 		createEvent(20 * 60 * 1000, "CityControlLanding", "spawnCityLanding", "", "") --20min after chance roll to allow for load time
 	else
-		createEvent(6 * 60 * 60 * 1000, "CityControlLandingScreenplay", "chanceToSpawn", "", "") --6hrs
+		createEvent(6 * 60 * 60 * 1000, "CityControlLanding", "chanceToSpawn", "", "") --6hrs
 	end
 end
 
