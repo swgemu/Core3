@@ -49,6 +49,11 @@ public:
 			return GENERALERROR;
 		}
 
+		if (creature->isSwimming() || pet->isSwimming()) {
+			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+			return GENERALERROR;
+		}
+
 		// Guard the player's target if valid, otherwise guard the player
 		uint64 playersTargetID = player->getTargetID();
 
