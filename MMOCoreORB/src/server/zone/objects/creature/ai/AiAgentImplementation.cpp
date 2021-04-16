@@ -1703,15 +1703,18 @@ void AiAgentImplementation::updatePetSwimmingState() {
 	}
 
 	float waterHeight;
+	bool waterIsDefined = terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight);
+	float petHeight = getPositionZ();
+	float swimVar = (waterHeight - swimHeight + 0.2f);
 
-	if (terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight)) {
-
-		if ((getPositionZ() + getSwimHeight() - waterHeight < 0.2)) {
-			setState(CreatureState::SWIMMING, true);
-		} else {
-			clearState(CreatureState::SWIMMING, true);
-		}
+	if (waterIsDefined && (swimVar - petHeight > 0.1)) {
+		// Pet is in the water.
+		setState(CreatureState::SWIMMING, true);
+		return;
 	}
+
+	// Terrain is above water level.
+	clearState(CreatureState::SWIMMING, true);
 }
 
 void AiAgentImplementation::checkNewAngle() {
@@ -1900,13 +1903,39 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				float dz = nextPosition.getZ() - thisPos.getZ();
 
 				nextPosition.setX(thisPos.getX() + (maxDist * (dx / dist)));
-				nextPosition.setZ(thisPos.getZ() + (maxDist * (dz / dist)));
 				nextPosition.setY(thisPos.getY() + (maxDist * (dy / dist)));
+
+				Zone* zone = getZoneUnsafe();
+
+				if (zone != nullptr) {
+					float newZ = CollisionManager::getWorldFloorCollision(nextPosition.getX(), nextPosition.getY(), (thisPos.getZ() + (maxDist * (dz / dist))), zone, false);
+
+					PlanetManager* planetManager = zone->getPlanetManager();
+
+					if (planetManager != nullptr) {
+						TerrainManager* terrainManager = planetManager->getTerrainManager();
+
+						if (terrainManager != nullptr) {
+							float waterHeight;
+							bool waterIsDefined = terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight);
+
+							if (waterIsDefined && (waterHeight > newZ) && isSwimming()) {
+								nextPosition.setZ(waterHeight - swimHeight);
+							} else {
+								nextPosition.setZ(newZ);
+							}
+						}
+					} else {
+						nextPosition.setZ(newZ);
+					}
+				} else {
+					nextPosition.setZ(thisPos.getZ() + (maxDist * (dz / dist)));
+				}
 
 				// Now do cell checks to get the Z coordinate outside
 				if (nextPosition.getCell() == nullptr && nextPosition.getZ() == 0) {
 					targetMutex.unlock();
-					nextPosition.setZ(getWorldZ(nextPosition.getWorldPosition()));
+					targetPosition.setPositionZ(getWorldZ(targetPosition.getWorldPosition()));
 					targetMutex.lock();
 				}
 			}
