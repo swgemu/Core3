@@ -13,6 +13,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/gcw/observers/ContainmentTeamObserver.h"
@@ -104,6 +105,11 @@ private:
 		float yOffsetRotated = -xOffset * Math::sin(rotationRadians) + yOffset * Math::cos(rotationRadians);
 
 		Zone* zone = player->getZone();
+
+		if (zone == nullptr) {
+			return;
+		}
+
 		float x = spawnPosition.getX() + xOffsetRotated;
 		float y = spawnPosition.getY() + yOffsetRotated;
 		if (lambdaShuttle != nullptr) {
@@ -111,14 +117,14 @@ private:
 			x = lambdaShuttle->getPositionX() + xOffsetRotated;
 			y = lambdaShuttle->getPositionY() + yOffsetRotated;
 		}
-		float z = zone->getHeight(x, y);
 
-		Reference<AiAgent*> npc =
-			cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
+		float z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
+
+		Reference<AiAgent*> npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
 
 		if (npc != nullptr) {
 			Locker npcLock(npc);
-			npc->activateLoad("");
+			npc->activateLoad("combatpatrol");
 			if (reinforcementType == LAMBDASHUTTLEATTACK) {
 				CombatManager::instance()->startCombat(npc, player);
 
