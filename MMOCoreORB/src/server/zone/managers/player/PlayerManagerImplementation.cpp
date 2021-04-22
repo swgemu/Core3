@@ -1099,13 +1099,17 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		destructor->removeDefender(destructedObject);
 	}
 
+	if (defenderList->size() == 0) {
+		destructor->clearCombatState(false);
+	}
+
 	if ((destructor->isKiller() && isDefender) || ghost->getIncapacitationCounter() >= 3) {
 		killPlayer(destructor, playerCreature, 0, isCombatAction);
 	} else {
 
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, !isCombatAction, !isCombatAction);
+		playerCreature->clearCombatState(false);
 		playerCreature->clearState(CreatureState::FEIGNDEATH); // We got incapped for real - Remove the state so we can be DB'd
-
 
 		uint8 incapTime = calculateIncapacitationTimer(playerCreature, condition);
 		playerCreature->setCountdownTimer((uint32) incapTime, true);
@@ -1171,6 +1175,18 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		}
 	}
 
+	ThreatMap* destructorThreatMap = destructor->getThreatMap();
+
+	if (destructorThreatMap != nullptr) {
+		for (int i = 0; i < destructorThreatMap->size(); i++) {
+			CreatureObject* destructedCreo = destructorThreatMap->elementAt(i).getKey();
+
+			if (destructedCreo == destructedObject) {
+				destructorThreatMap->remove(i);
+			}
+		}
+	}
+
 	return 0;
 }
 
@@ -1181,6 +1197,8 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		player->updateCooldownTimer("mount_dismount", 0);
 		player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 	}
+
+	player->clearCombatState(true);
 
 	player->clearDots();
 
