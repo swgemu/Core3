@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_dfed97f1",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2021-04-22T17:32:31Z",
+      "side": 1,
+      "message": "This isnt necessary, attacker is locked prior to this function being called",
+      "revId": "bc25bb1c6aa45de8ea7038525932e31bcb9e7a81",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
