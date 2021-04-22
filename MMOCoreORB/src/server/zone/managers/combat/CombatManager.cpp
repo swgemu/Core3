@@ -102,7 +102,7 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 }
 
 bool CombatManager::attemptPeace(CreatureObject* attacker) const {
-
+	
 	attacker->removeDefenders();
 	attacker->setState(CreatureState::PEACE);
 
