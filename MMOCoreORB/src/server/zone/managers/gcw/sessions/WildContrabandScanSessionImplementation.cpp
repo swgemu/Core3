@@ -34,6 +34,7 @@ int WildContrabandScanSessionImplementation::initializeSession() {
 	if (wildContrabandScanTask == nullptr) {
 		wildContrabandScanTask = new WildContrabandScanTask(player);
 	}
+
 	if (!wildContrabandScanTask->isScheduled()) {
 		wildContrabandScanTask->schedule(TASKDELAY);
 	}
@@ -43,6 +44,7 @@ int WildContrabandScanSessionImplementation::initializeSession() {
 	if (player->getActiveSession(SessionFacadeType::WILDCONTRABANDSCAN) != nullptr) {
 		player->dropActiveSession(SessionFacadeType::WILDCONTRABANDSCAN);
 	}
+
 	player->addActiveSession(SessionFacadeType::WILDCONTRABANDSCAN, _this.getReferenceUnsafeStaticCast());
 
 	landingCoordinates = getLandingCoordinates(zone, player);
@@ -168,7 +170,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			if (numberOfContrabandItems > 0) {
 				sendSystemMessage(player, "probe_scan_positive");
 				scanState = TAKEOFF;
-				timeLeft = 45;
+				timeLeft = 12;
 
 				MissionManager* missionManager = player->getZoneServer()->getMissionManager();
 				auto spawnPoint = missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(),
@@ -251,8 +253,7 @@ bool WildContrabandScanSessionImplementation::scanPrerequisitesMet(CreatureObjec
 }
 
 void WildContrabandScanSessionImplementation::landProbeDroid(Zone* zone, CreatureObject* player) {
-	PlayClientEffectLoc* effect = new PlayClientEffectLoc("clienteffect/probot_delivery.cef", zone->getZoneName(), landingCoordinates.getX(),
-														  landingCoordinates.getZ(), landingCoordinates.getY(), 0, 0);
+	PlayClientEffectLoc* effect = new PlayClientEffectLoc("clienteffect/probot_delivery.cef", zone->getZoneName(), landingCoordinates.getX(), landingCoordinates.getZ(), landingCoordinates.getY(), 0, 0);
 	player->sendMessage(effect);
 	timeLeft = 3;
 }

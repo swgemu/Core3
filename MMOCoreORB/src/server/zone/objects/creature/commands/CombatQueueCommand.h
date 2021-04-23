@@ -190,7 +190,9 @@ public:
 
 						if (targetCreature != nullptr) {
 							if (targetCreature->isPlayerCreature()) {
-								if (!CombatManager::instance()->areInDuel(creature, targetCreature) && !targetCreature->hasBountyMissionFor(creature) && !creature->hasBountyMissionFor(targetCreature) && targetCreature->getFactionStatus() == FactionStatus::OVERT)
+								ManagedReference<PlayerObject*> player = creature->getPlayerObject();
+
+								if (!CombatManager::instance()->areInDuel(creature, targetCreature) && !targetCreature->hasBountyMissionFor(creature) && !creature->hasBountyMissionFor(targetCreature) && (player != nullptr && !player->hasCrackdownTefTowards(targetCreature->getFaction())) && targetCreature->getFactionStatus() == FactionStatus::OVERT)
 									ghost->doFieldFactionChange(FactionStatus::OVERT);
 							} else if (targetCreature->isPet()) {
 								ManagedReference<CreatureObject*> targetOwner = targetCreature->getLinkedCreature().get();
