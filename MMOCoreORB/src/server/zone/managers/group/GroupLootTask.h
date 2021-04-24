@@ -38,8 +38,11 @@ public:
 
 		//Get the corpse's inventory.
 		SceneObject* lootContainer = corpse->getSlottedObject("inventory");
-		if (lootContainer == nullptr)
+		if (lootContainer == nullptr) {
 			return;
+		}
+
+		Locker lclocker(lootContainer);
 
 		switch (group->getLootRule()) {
 		case GroupManager::FREEFORALL:
