@@ -65,22 +65,6 @@ int ContrabandScanSessionImplementation::cancelSession() {
 	Locker locker(player);
 	Locker crossLocker(scanner, player);
 
-	if (scanner != nullptr && enforcedScan && !scanner->isInCombat()) {
-		PatrolPoint* home = scanner->getHomeLocation();
-
-		if (home != nullptr) {
-			scanner->setFollowObject(nullptr);
-			scanner->setFollowState(AiAgent::PATROLLING);
-
-			scanner->setNextPosition(home->getPositionX(), home->getPositionZ(), home->getPositionY());
-			scanner->stopWaiting();
-
-			scanner->activateMovementEvent();
-		} else {
-			scanner->leash();
-		}
-	}
-
 	if (player != nullptr) {
 		player->dropActiveSession(SessionFacadeType::CONTRABANDSCAN);
 	}
@@ -620,8 +604,12 @@ void ContrabandScanSessionImplementation::callInLambdaShuttle(AiAgent* scanner, 
 	}
 
 	if (spawnPoint != nullptr) {
-		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scannerFaction, difficulty, landingMessage, *spawnPoint->getPosition(),
-																			  *spawnPoint->getDirection(), reinforcementType);
+		float dx = player->getWorldPositionX() - spawnPoint->getPosition()->getX();
+		float dy = player->getWorldPositionY() - spawnPoint->getPosition()->getY();
+		float directionangle = atan2(dy, dx);
+		float radangle = M_PI / 2 - directionangle;
+
+		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scannerFaction, difficulty, landingMessage, *spawnPoint->getPosition(), radangle, reinforcementType);
 		lambdaTask->schedule(IMMEDIATELY);
 	} else {
 		StringBuffer errorMessage;
