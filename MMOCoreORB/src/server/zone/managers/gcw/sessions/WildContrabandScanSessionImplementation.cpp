@@ -178,16 +178,30 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 				if (spawnPoint != nullptr) {
 					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
 						player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", *spawnPoint->getPosition(),
-						*spawnPoint->getDirection(), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
+						spawnPoint->getDirection()->getRadians(), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
 					lambdaTask->schedule(1);
 				} else {
-					float spawnDirection = player->getDirection()->getRadians() + Math::PI;
-					if (spawnDirection >= 2 * Math::PI) {
-						spawnDirection -= 2 * Math::PI;
+
+					//This direction is wrong
+
+					float dx = landingCoordinates.getX() - player->getWorldPositionX();
+					float dy = landingCoordinates.getY() - player->getWorldPositionY() ;
+					float directionangle = atan2(dy, dx);
+					//float radangle = M_PI / 2 + directionangle;
+
+					if (directionangle >= M_PI) {
+						directionangle *= -1.f;
 					}
+
+
+					//float spawnDirection = radangle + Math::PI;
+					//if (spawnDirection >= 2 * Math::PI) {
+					//	spawnDirection -= 2 * Math::PI;
+					//}
+
 					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
 						player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", landingCoordinates,
-						Quaternion(Vector3(0, 1, 0), spawnDirection), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
+						directionangle, LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
 					lambdaTask->schedule(1);
 				}
 

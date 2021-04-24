@@ -40,8 +40,7 @@ public:
 		StringTokenizer args(arguments.toString());
 
 		if (!args.hasMoreTokens()) {
-			Quaternion direction;
-			direction.setHeadingDirection(creature->getDirection()->getRadians());
+			float direction = creature->getDirection()->getRadians();
 			Reference<Task*> lambdaTask =
 				new LambdaShuttleWithReinforcementsTask(creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial",
 														creature->getWorldPosition(), direction, LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
@@ -61,8 +60,7 @@ public:
 					NpcSpawnPoint* nsp =
 						missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(), creature->getWorldPositionY(), spawnType);
 					if (nsp != nullptr) {
-						Quaternion direction;
-						direction.setHeadingDirection(nsp->getDirection()->getRadians());
+						float direction = nsp->getDirection()->getRadians();
 						LambdaShuttleWithReinforcementsTask::ReinforcementType reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN;
 						if (arg == "closestlambdanotroops") {
 							reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLENOTROOPS;

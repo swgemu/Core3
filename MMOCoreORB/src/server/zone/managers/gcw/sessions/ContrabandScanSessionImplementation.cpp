@@ -66,19 +66,7 @@ int ContrabandScanSessionImplementation::cancelSession() {
 	Locker crossLocker(scanner, player);
 
 	if (scanner != nullptr && enforcedScan && !scanner->isInCombat()) {
-		PatrolPoint* home = scanner->getHomeLocation();
-
-		if (home != nullptr) {
-			scanner->setFollowObject(nullptr);
-			scanner->setFollowState(AiAgent::PATROLLING);
-
-			scanner->setNextPosition(home->getPositionX(), home->getPositionZ(), home->getPositionY());
-			scanner->stopWaiting();
-
-			scanner->activateMovementEvent();
-		} else {
-			scanner->leash();
-		}
+		// This needs something
 	}
 
 	if (player != nullptr) {
@@ -620,8 +608,7 @@ void ContrabandScanSessionImplementation::callInLambdaShuttle(AiAgent* scanner, 
 	}
 
 	if (spawnPoint != nullptr) {
-		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scannerFaction, difficulty, landingMessage, *spawnPoint->getPosition(),
-																			  *spawnPoint->getDirection(), reinforcementType);
+		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scannerFaction, difficulty, landingMessage, *spawnPoint->getPosition(), spawnPoint->getDirection()->getRadians(), reinforcementType);
 		lambdaTask->schedule(IMMEDIATELY);
 	} else {
 		StringBuffer errorMessage;
