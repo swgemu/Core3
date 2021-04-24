@@ -173,21 +173,24 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 				timeLeft = 12;
 
 				MissionManager* missionManager = player->getZoneServer()->getMissionManager();
-				auto spawnPoint = missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(),
-																	   NpcSpawnPoint::LAMBDASHUTTLESPAWN, 128.f);
+				auto spawnPoint = missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN, 128.f);
 				if (spawnPoint != nullptr) {
-					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-						player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", *spawnPoint->getPosition(),
-						*spawnPoint->getDirection(), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
+					float dx = player->getWorldPositionX() - landingCoordinates.getX();
+					float dy = player->getWorldPositionY() - landingCoordinates.getY();
+					float directionangle = atan2(dy, dx);
+					float radangle = M_PI / 2 - directionangle;
+
+					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", *spawnPoint->getPosition(),
+						radangle, LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
 					lambdaTask->schedule(1);
 				} else {
-					float spawnDirection = player->getDirection()->getRadians() + Math::PI;
-					if (spawnDirection >= 2 * Math::PI) {
-						spawnDirection -= 2 * Math::PI;
-					}
-					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-						player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", landingCoordinates,
-						Quaternion(Vector3(0, 1, 0), spawnDirection), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
+					float dx = player->getWorldPositionX() - landingCoordinates.getX();
+					float dy = player->getWorldPositionY() - landingCoordinates.getY();
+					float directionangle = atan2(dy, dx);
+					float radangle = M_PI / 2 - directionangle;
+
+					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", landingCoordinates,
+						radangle, LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
 					lambdaTask->schedule(1);
 				}
 

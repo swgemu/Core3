@@ -32,7 +32,8 @@ private:
 	int spawnNumber;
 	String chatMessageId;
 	Vector3 spawnPosition;
-	Quaternion spawnDirection;
+	float spawnDirection;
+	int movement;
 	int closingInTime;
 	int timeToDespawnLambdaShuttle;
 	int cleanUpTime;
@@ -84,6 +85,7 @@ private:
 		SPAWNTROOPS,
 		TAKEOFF,
 		CLOSINGIN,
+		MOVEMENT,
 		DELAY,
 		PICKUPSPAWN,
 		PICKUPUPRIGHT,
@@ -100,31 +102,34 @@ private:
 	LambdaTroop* troops;
 
 	void spawnSingleTroop(SceneObject* lambdaShuttle, CreatureObject* player, const String& creatureTemplate, float xOffset, float yOffset) {
-		float rotationRadians = spawnDirection.getRadians();
-		float xOffsetRotated = xOffset * Math::cos(rotationRadians) + yOffset * Math::sin(rotationRadians);
-		float yOffsetRotated = -xOffset * Math::sin(rotationRadians) + yOffset * Math::cos(rotationRadians);
+		float rotationRadians = spawnDirection;
+		float xOffsetRotated = xOffset * Math::cos(spawnDirection) + yOffset * Math::sin(spawnDirection);
+		float yOffsetRotated = -xOffset * Math::sin(spawnDirection) + yOffset * Math::cos(spawnDirection);
 
 		Zone* zone = player->getZone();
 
-		if (zone == nullptr) {
-			return;
-		}
-
 		float x = spawnPosition.getX() + xOffsetRotated;
 		float y = spawnPosition.getY() + yOffsetRotated;
+
 		if (lambdaShuttle != nullptr) {
 			zone = lambdaShuttle->getZone();
 			x = lambdaShuttle->getPositionX() + xOffsetRotated;
 			y = lambdaShuttle->getPositionY() + yOffsetRotated;
 		}
 
-		float z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
+		if (zone == nullptr) {
+			return;
+		}
 
-		Reference<AiAgent*> npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
+		float z = zone->getHeight(x, y);
+
+		Reference<AiAgent*> npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection));
 
 		if (npc != nullptr) {
 			Locker npcLock(npc);
 			npc->activateLoad("combatpatrol");
+			npc->setFollowState(AiAgent::PATROLLING);
+
 			if (reinforcementType == LAMBDASHUTTLEATTACK) {
 				CombatManager::instance()->startCombat(npc, player);
 
@@ -142,10 +147,7 @@ private:
 			} else {
 				if (spawnNumber == 0) {
 					npc->setFollowObject(player);
-				} else {
-					npc->setFollowObject(containmentTeamObserver->getMember(Math::max(containmentTeamObserver->size() - 2, 0)));
 				}
-				npc->registerObserver(ObserverEventType::DEFENDERADDED, containmentTeamObserver);
 			}
 
 			containmentTeamObserver->addMember(npc);
@@ -169,12 +171,15 @@ private:
 	}
 
 	void spawnTroops(SceneObject* lambdaShuttle, CreatureObject* player) {
-		if (reinforcementType == LAMBDASHUTTLESCAN && ((faction != player->getFaction() && player->getFaction() != Factions::FACTIONNEUTRAL) ||
-													   (player->getPlayerObject() != nullptr && player->getPlayerObject()->hasCrackdownTefTowards(faction)))) {
+		if (reinforcementType == LAMBDASHUTTLESCAN && ((faction != player->getFaction() && player->getFaction() != Factions::FACTIONNEUTRAL) || (player->getPlayerObject() != nullptr && player->getPlayerObject()->hasCrackdownTefTowards(faction)))) {
 			if (player->getFactionStatus() == FactionStatus::OVERT || player->getFactionStatus() == FactionStatus::COVERT) {
 				reinforcementType = LAMBDASHUTTLEATTACK;
 			}
 		}
+
+		int diff = difficulty * TROOPSSPAWNPERDIFFICULTY;
+		// StringBuffer moveDebug;
+
 		if (reinforcementType != LAMBDASHUTTLENOTROOPS) {
 			spawnOneSetOfTroops(lambdaShuttle, player);
 			if (spawnNumber > difficulty * TROOPSSPAWNPERDIFFICULTY) {
@@ -187,37 +192,130 @@ private:
 		} else {
 			state = TAKEOFF;
 		}
+
+		// moveDebug << " spawn number = " << spawnNumber << " Difficulty: " << diff;
+		// player->sendSystemMessage(moveDebug.toString());
+
 		reschedule(SPAWNDELAY);
 	}
 
-	void lambdaShuttleSpawn(SceneObject* lambdaShuttle, CreatureObject* player) {
+	void movementEvent(CreatureObject* player, bool despawn) {
+		if (player == nullptr) {
+			return;
+		}
+
+		Zone* zone = player->getZone();
+
+		if (zone == nullptr || player->isDead()) {
+			state = PICKUPSPAWN;
+			return;
+		}
+
+		auto offset = spawnOffset;
+		float spawnSeparation = 1.0f;
+		Vector3 moveCoords;
+		int i = 1;
+
+		if (despawn) {
+			moveCoords = spawnPosition;
+			player->sendSystemMessage(" despawn called ");
+			i = 0;
+		} else {
+			moveCoords = player->getWorldPosition();
+		}
+
+		for (i; i < containmentTeamObserver->size(); ++i) {
+			ManagedReference<AiAgent*> trooperAgent = containmentTeamObserver->getMember(i);
+
+			if (trooperAgent != nullptr && !trooperAgent->isDead()) {
+				Vector3 newPosition;
+				float xOffset = 0.0f;
+				float yOffset = spawnSeparation + 3; //removed offset
+
+				if (i % 2 > 0) {
+					xOffset = 0.5f;
+				} else {
+					xOffset = -0.5f;
+					spawnSeparation++;
+				}
+
+				float xOffsetRotated = xOffset * Math::cos(spawnDirection) + yOffset * Math::sin(spawnDirection);
+				float yOffsetRotated = -xOffset * Math::sin(spawnDirection) + yOffset * Math::cos(spawnDirection);
+
+				float dx = moveCoords.getX() - spawnPosition.getX();
+				float dy = moveCoords.getY() - spawnPosition.getY();
+				float directionangle = atan2(dy, dx);
+				float radangle = M_PI / 2 - directionangle;
+
+				newPosition.setX(spawnPosition.getX() + dx - xOffsetRotated);
+				newPosition.setY(spawnPosition.getY() + dy - yOffsetRotated);
+
+				StringBuffer moveMsg;
+				moveMsg << " Trooper #" << i << " is moving to X = " << newPosition.getX() << " Y = " << newPosition.getY();
+				player->sendSystemMessage(moveMsg.toString());
+
+				trooperAgent->setDirection(radangle);
+				trooperAgent->clearPatrolPoints();
+
+				trooperAgent->stopWaiting();
+				trooperAgent->setWait(0);
+				trooperAgent->setNextPosition(newPosition.getX(), zone->getHeight(newPosition.getX(), newPosition.getY()), newPosition.getY());
+				trooperAgent->activateMovementEvent();
+			}
+		}
+	}
+
+	void lambdaShuttleSpawn(SceneObject* lambdaShuttle) {
+		if (lambdaShuttle == nullptr) {
+			return;
+		}
+
 		Locker objLocker(lambdaShuttle);
 		lambdaShuttle->initializePosition(spawnPosition.getX(), spawnPosition.getZ(), spawnPosition.getY());
 		lambdaShuttle->setDirection(spawnDirection);
 		lambdaShuttle->createChildObjects();
 		lambdaShuttle->_setUpdated(true);
+		lambdaShuttle->updateZone(true, true);
+
+		/*StringBuffer msg;
+		msg << " Lambda rad = " << spawnDirection;
+		player->sendSystemMessage(msg.toString());*/
 	}
 
 	void lambdaShuttleLanding(SceneObject* lambdaShuttle) {
+		if (lambdaShuttle == nullptr) {
+			return;
+		}
+
 		Locker objLocker(lambdaShuttle);
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::PRONE);
 	}
 
 	void lambdaShuttleUpright(SceneObject* lambdaShuttle) {
+		if (lambdaShuttle == nullptr) {
+			return;
+		}
+
 		Locker objLocker(lambdaShuttle);
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
 	}
 
 	void lambdaShuttleTakeoff(SceneObject* lambdaShuttle) {
+		if (lambdaShuttle == nullptr) {
+			return;
+		}
+
 		Locker objLocker(lambdaShuttle);
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
 		timeToDespawnLambdaShuttle = LAMBDATAKEOFFDESPAWNTIME;
 	}
 
-	void closingInOnPlayer(CreatureObject* player) {
+	void closingInOnPlayer(CreatureObject* player, SceneObject* lambdaShuttle) {
+		player->sendSystemMessage(" closing in on player called ");
+
 		if (reinforcementType == LAMBDASHUTTLEATTACK) {
 			state = DELAY;
 		} else {
@@ -226,6 +324,7 @@ private:
 			if (npc == nullptr) {
 				state = DELAY;
 			} else if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 16 && !npc->isInCombat() && !npc->isDead()) {
+
 				auto zone = player->getZone();
 				if (zone != nullptr) {
 					auto gcwManager = zone->getGCWManager();
@@ -237,6 +336,8 @@ private:
 				state = DELAY;
 			} else if (closingInTime <= 0) {
 				state = DELAY;
+			} else if (state != DELAY) {
+				movementEvent(player, false);
 			}
 		}
 		reschedule(TASKDELAY);
@@ -299,7 +400,7 @@ private:
 	}
 
 public:
-	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, ReinforcementType reinforcementType) {
+	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, float direction, ReinforcementType reinforcementType) {
 		weakPlayer = player;
 		containmentTeamObserver = new ContainmentTeamObserver();
 		if (difficulty > MAXDIFFICULTY) {
@@ -318,12 +419,13 @@ public:
 		spawnNumber = 0;
 		spawnPosition = position;
 		spawnDirection = direction;
+		movement = 0;
 		closingInTime = 120;
 		timeToDespawnLambdaShuttle = -1;
 		cleanUpTime = 60;
 		spawnOffset = difficulty * TROOPSSPAWNPERDIFFICULTY;
 		this->faction = faction;
-		delayTime = 60;
+		delayTime = 90;
 		this->reinforcementType = reinforcementType;
 		if (reinforcementType == NOLAMBDASHUTTLEONLYTROOPS) {
 			state = SPAWNTROOPS;
@@ -354,7 +456,7 @@ public:
 
 		switch (state) {
 		case SPAWNSHUTTLE:
-			lambdaShuttleSpawn(lambdaShuttle, player);
+			lambdaShuttleSpawn(lambdaShuttle);
 			state = UPRIGHT;
 			reschedule(TASKDELAY);
 			break;
@@ -388,19 +490,23 @@ public:
 			}
 			reschedule(TASKDELAY);
 			break;
+		case MOVEMENT:
+			movementEvent(player, false);
+			break;
 		case CLOSINGIN:
-			closingInOnPlayer(player);
+			closingInOnPlayer(player, lambdaShuttle);
 			break;
 		case DELAY:
 			delay();
 			break;
 		case PICKUPSPAWN:
-			lambdaShuttleSpawn(lambdaShuttle, player);
+			lambdaShuttleSpawn(lambdaShuttle);
 			state = PICKUPUPRIGHT;
 			reschedule(TASKDELAY);
 			break;
 		case PICKUPUPRIGHT:
 			lambdaShuttleUpright(lambdaShuttle);
+			movementEvent(player, true);
 			state = PICKUPZONEIN;
 			reschedule(TASKDELAY);
 			break;
@@ -415,7 +521,7 @@ public:
 		case PICKUPLAND:
 			lambdaShuttleLanding(lambdaShuttle);
 			state = DESPAWN;
-			reschedule(LANDINGTIME);
+			reschedule(LANDINGTIME + 6000);
 			break;
 		case DESPAWN:
 			despawnNpcs(lambdaShuttle);
