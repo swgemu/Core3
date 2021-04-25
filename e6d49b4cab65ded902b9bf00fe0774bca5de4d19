@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_3f8f6b25",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupLootTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-04-25T16:03:41Z",
+      "side": 1,
+      "message": "You\u0027re holding the lock all the way down here.. just put it in a closure where you need it.",
+      "revId": "e6d49b4cab65ded902b9bf00fe0774bca5de4d19",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_1f942f36",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupLootTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-04-25T16:03:41Z",
+      "side": 1,
+      "message": "{\n   Locker lock(lootConainer);\n   blah...\n}",
+      "revId": "e6d49b4cab65ded902b9bf00fe0774bca5de4d19",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
