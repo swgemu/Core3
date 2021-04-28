@@ -225,7 +225,7 @@ private:
 			auto npc = containmentTeamObserver->getMember(0);
 			if (npc == nullptr) {
 				state = DELAY;
-			} else if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 16 && !npc->isInCombat() && !npc->isDead()) {
+			} else if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 12 && !npc->isInCombat() && !npc->isDead()) {
 				auto zone = player->getZone();
 				if (zone != nullptr) {
 					auto gcwManager = zone->getGCWManager();
@@ -323,7 +323,7 @@ public:
 		cleanUpTime = 60;
 		spawnOffset = difficulty * TROOPSSPAWNPERDIFFICULTY;
 		this->faction = faction;
-		delayTime = 60;
+		delayTime = 90;
 		this->reinforcementType = reinforcementType;
 		if (reinforcementType == NOLAMBDASHUTTLEONLYTROOPS) {
 			state = SPAWNTROOPS;
