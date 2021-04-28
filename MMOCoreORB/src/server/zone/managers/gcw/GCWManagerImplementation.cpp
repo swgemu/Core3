@@ -2616,7 +2616,7 @@ int GCWManagerImplementation::isStrongholdCity(String& city) {
 }
 
 void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject* player) {
-	if (!crackdownScansEnabled || !player->isPlayerCreature() || !scanner->isInRange(player, 16) || !CollisionManager::checkLineOfSight(scanner, player)) {
+	if (!crackdownScansEnabled || !player->isPlayerCreature() || !scanner->isInRange(player, 12) || !CollisionManager::checkLineOfSight(scanner, player)) {
 		return;
 	}
 
