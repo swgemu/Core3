@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_5f8867e7",
+        "filename": "MMOCoreORB/src/server/zone/objects/installation/components/TurretFireTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2021-04-29T19:27:01Z",
+      "side": 1,
+      "message": "Gotta look for existing locks when adding new ones, you can\u0027t have two single locks. In this case, turret is already locked above, so you need to cross lock target to turret. You also want to avoid reusing locker names.\n\nLocker clocker(target, turret);",
+      "revId": "d5781a733a1bca5005e0ccff8d3db930a00ceb17",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
