@@ -76,10 +76,12 @@ public:
 		ManagedReference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
 		if (command != nullptr && weapon != nullptr) {
-			CombatManager::instance()->doCombatAction(turret, weapon, target, command);
+			Locker clocker(target, turret);
 
 			target->setCombatState();
 			turret->setDefender(target);
+
+			CombatManager::instance()->doCombatAction(turret, weapon, target, command);
 
 			if (isManual) {
 				if (checkTurretController(turretData))
