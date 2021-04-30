@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6b29fe_ff4df3c5",
+        "filename": "MMOCoreORB/bin/scripts/custom_scripts/screenplays/basilisk_anniversary/basilisk_anniversary.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-04-30T15:42:17Z",
+      "side": 1,
+      "message": "replace spaces with tab",
+      "revId": "1b0635027a021d0098929dca22f3d1b9e2eab626",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_7fd1e3cc",
+        "filename": "MMOCoreORB/bin/scripts/custom_scripts/screenplays/basilisk_anniversary/basilisk_anniversary.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-04-30T15:42:17Z",
+      "side": 1,
+      "message": "This is where we will have to write the data if we are going to do a despawner",
+      "revId": "1b0635027a021d0098929dca22f3d1b9e2eab626",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_bfda5be7",
+        "filename": "MMOCoreORB/bin/scripts/custom_scripts/screenplays/basilisk_anniversary/basilisk_anniversary.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-04-30T15:42:17Z",
+      "side": 1,
+      "message": "this does not need to be iterated since we are only searching for one item. \n\nlocal template \u003d \"object/tang etc\"\n\nlocal pItem \u003d getContainerObjectsByTemplate(pInventory, template, true)",
+      "revId": "1b0635027a021d0098929dca22f3d1b9e2eab626",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_1fcc2f35",
+        "filename": "MMOCoreORB/bin/scripts/custom_scripts/screenplays/basilisk_anniversary/basilisk_anniversary_spawns.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-04-30T15:42:17Z",
+      "side": 1,
+      "message": "You don\u0027t need a new file for these, they can go in the main screenplay under screenplayName. I only made a second file for visions since it grew a bit large.",
+      "revId": "1b0635027a021d0098929dca22f3d1b9e2eab626",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_df4ab7ab",
+        "filename": "MMOCoreORB/bin/scripts/custom_scripts/screenplays/basilisk_anniversary/basilisk_anniversary_spawns.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-04-30T15:42:17Z",
+      "side": 1,
+      "message": "replace spaces with tabs",
+      "revId": "1b0635027a021d0098929dca22f3d1b9e2eab626",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_5fd6a7c6",
+        "filename": "MMOCoreORB/bin/scripts/custom_scripts/screenplays/basilisk_anniversary/conversations/AnniversaryAltonFlay_convo_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-04-30T15:42:17Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "1b0635027a021d0098929dca22f3d1b9e2eab626",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a6b29fe_9fd79fbf",
+        "filename": "MMOCoreORB/bin/scripts/custom_scripts/screenplays/basilisk_anniversary/conversations/AnniversarySnoopStewart_convo_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2235
+      },
+      "writtenOn": "2021-04-30T15:42:17Z",
+      "side": 1,
+      "message": "should probably give this a better pointer like anniversaryWpID_1",
+      "revId": "1b0635027a021d0098929dca22f3d1b9e2eab626",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
