@@ -1,0 +1,35 @@
+anniversary_information_broker = Creature:new {
+	customName = "Martha Fieri (a Information Broker)",
+	socialGroup = "",
+	faction = "",
+	level = 4,
+	chanceHit = 0.24,
+	damageMin = 40,
+	damageMax = 45,
+	baseXp = 62,
+	baseHAM = 113,
+	baseHAMmax = 138,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = HERD,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_criminal_slicer_human_female_01.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "AnniversaryMarthaFieriConvoTemplate",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(anniversary_information_broker, "anniversary_information_broker")
