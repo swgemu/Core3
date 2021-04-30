@@ -1,0 +1,1 @@
+includeFile("../custom_scripts/loot/items/basilisk_anniversary/anniversary_item_1.lua")
