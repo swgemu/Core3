@@ -169,30 +169,6 @@ public:
 				if (areaCenter->getWorldPosition().distanceTo(object->getWorldPosition()) - object->getTemplateRadius() > range)
 					continue;
 
-				if (creature->isPlayerCreature() && object->getParentID() != 0 && creature->getParentID() != object->getParentID()) {
-					Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
-
-					if (targetCell != nullptr) {
-						if (object->isPlayerCreature()) {
-							auto perms = targetCell->getContainerPermissions();
-
-							if (!perms->hasInheritPermissionsFromParent()) {
-								if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN))
-									continue;
-							}
-						}
-
-						ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
-
-						if (parentSceneObject != nullptr) {
-							BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
-
-							if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature))
-								continue;
-						}
-					}
-				}
-
 				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
 
 				try {

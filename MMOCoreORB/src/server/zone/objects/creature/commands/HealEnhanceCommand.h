@@ -5,7 +5,6 @@
 #ifndef HEALENHANCECOMMAND_H_
 #define HEALENHANCECOMMAND_H_
 
-#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/pharmaceutical/EnhancePack.h"
 #include "server/zone/ZoneServer.h"
@@ -135,34 +134,9 @@ public:
 			return false;
 		}
 
-		if (enhancer->isPlayerCreature() && patient->getParentID() != 0 && enhancer->getParentID() != patient->getParentID()) {
-			Reference<CellObject*> targetCell = patient->getParent().get().castTo<CellObject*>();
-
-			if (targetCell != nullptr) {
-				if (!patient->isPlayerCreature()) {
-					auto perms = targetCell->getContainerPermissions();
-
-					if (!perms->hasInheritPermissionsFromParent()) {
-						if (!targetCell->checkContainerPermission(enhancer, ContainerPermissions::WALKIN)) {
-							enhancer->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
-							return false;
-						}
-					}
-				}
-
-				ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
-
-				if (parentSceneObject != nullptr) {
-					BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
-
-					if (buildingObject != nullptr && !buildingObject->isAllowedEntry(enhancer)) {
-						enhancer->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
-						return false;
-					}
-				}
-			}
+		if (!playerEntryCheck(enhancer, patient)) {
+			return false;
 		}
-
 
 		return true;
 	}

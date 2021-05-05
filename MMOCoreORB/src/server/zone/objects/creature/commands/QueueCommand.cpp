@@ -7,6 +7,7 @@
 
 #include "QueueCommand.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -65,6 +66,47 @@ bool QueueCommand::checkInvalidLocomotions(CreatureObject* creature) const {
 			return false;
 	}
 
+	return true;
+}
+
+/*
+*	Checks cell access for the player creature if the target is in a cell
+*/
+bool QueueCommand::playerEntryCheck(CreatureObject* creature, TangibleObject* target) const {
+	if (creature == nullptr || target == nullptr) {
+		return false;
+	}
+
+	uint64 creoParentID = creature->getParentID();
+	uint64 tarParentID = target->getParentID();
+
+	if (!creature->isPlayerCreature() || tarParentID == 0) {
+		return true;
+	}
+
+	if (creoParentID != tarParentID) {
+		Reference<CellObject*> targetCell = target->getParent().get().castTo<CellObject*>();
+
+		if (targetCell != nullptr) {
+			const ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+			if (perms->hasInheritPermissionsFromParent()) {
+				if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
+					return false;
+				}
+			}
+
+			ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
+
+			if (parentSceneObject != nullptr) {
+				BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
+
+				if (buildingObject != nullptr && buildingObject->isAllowedEntry(creature)) {
+					return false;
+				}
+			}
+		}
+	}
 	return true;
 }
 

@@ -8,7 +8,6 @@
 #ifndef CUREPACKCOMMAND_H_
 #define CUREPACKCOMMAND_H_
 
-#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/pharmaceutical/CurePack.h"
 #include "server/zone/ZoneServer.h"
@@ -179,6 +178,10 @@ public:
 			return false;
 		}
 
+		if (!playerEntryCheck(creature, creatureTarget)) {
+			return false;
+		}
+
 		if (creature != creatureTarget && checkForArenaDuel(creatureTarget))
 			return false;
 
@@ -214,30 +217,6 @@ public:
 
 				if (areaCenter->getWorldPosition().distanceTo(object->getWorldPosition()) - object->getTemplateRadius() > range)
 					continue;
-
-				if (creature->isPlayerCreature() && object->getParentID() != 0 && creature->getParentID() != object->getParentID()) {
-					Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
-
-					if (targetCell != nullptr) {
-						if (object->isPlayerCreature()) {
-							auto perms = targetCell->getContainerPermissions();
-
-							if (!perms->hasInheritPermissionsFromParent()) {
-								if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN))
-									continue;
-							}
-						}
-
-						ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
-
-						if (parentSceneObject != nullptr) {
-							BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
-
-							if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature))
-								continue;
-						}
-					}
-				}
 
 				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
 
@@ -362,6 +341,10 @@ public:
 			return false;
 		}
 
+		if (!playerEntryCheck(creature, creatureTarget)) {
+			return false;
+		}
+
 		return true;
 	}
 
@@ -404,34 +387,6 @@ public:
 
 		if(!checkDistance(creature, targetCreature, range))
 			return TOOFAR;
-
-		if (creature->isPlayerCreature() && targetCreature->getParentID() != 0 && creature->getParentID() != targetCreature->getParentID()) {
-			Reference<CellObject*> targetCell = targetCreature->getParent().get().castTo<CellObject*>();
-
-			if (targetCell != nullptr) {
-				if (!targetCreature->isPlayerCreature()) {
-					auto perms = targetCell->getContainerPermissions();
-
-					if (perms->hasInheritPermissionsFromParent()) {
-						if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
-							creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
-							return GENERALERROR;
-						}
-					}
-				}
-
-				ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
-
-				if (parentSceneObject != nullptr) {
-					BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
-
-					if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature)) {
-						creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
-						return GENERALERROR;
-					}
-				}
-			}
-		}
 
 		int mindCostNew = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
 

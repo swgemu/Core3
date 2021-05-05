@@ -81,6 +81,11 @@ public:
 	 */
 	bool checkInvalidLocomotions(CreatureObject* creature) const;
 
+	/*
+	*	Checks cell access for the player creature if the target is in a cell
+	*/
+	bool playerEntryCheck(CreatureObject* creature, TangibleObject* target) const;
+
 	void onStateFail(CreatureObject* creature, uint32 actioncntr) const;
 	void onLocomotionFail(CreatureObject* creature, uint32 actioncntr) const;
 
