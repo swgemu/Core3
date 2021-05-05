@@ -186,6 +186,10 @@ public:
 		if(!checkDistance(creature, creatureTarget, range))
 			return TOOFAR;
 
+		if (!playerEntryCheck(creature, creatureTarget)) {
+			return GENERALERROR;
+		}
+
 		uint64 objectId = 0;
 
 		parseModifier(arguments.toString(), objectId);
