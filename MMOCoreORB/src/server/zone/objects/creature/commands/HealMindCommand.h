@@ -16,7 +16,7 @@ public:
 
 	HealMindCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-		
+
 		mindCost = 250;
 		mindWoundCost = 250;
 		range = 5;
@@ -142,6 +142,10 @@ public:
 
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
 			creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
+			return GENERALERROR;
+		}
+
+		if (!playerEntryCheck(creature, creatureTarget)) {
 			return GENERALERROR;
 		}
 
