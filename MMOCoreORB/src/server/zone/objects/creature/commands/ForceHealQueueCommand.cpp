@@ -8,7 +8,6 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/frs/FrsManager.h"
-#include "server/zone/objects/building/BuildingObject.h"
 
 ForceHealQueueCommand::ForceHealQueueCommand(const String& name, ZoneProcessServer* server) : JediQueueCommand(name, server) {
 	speed = 3;
@@ -391,34 +390,6 @@ int ForceHealQueueCommand::runCommandWithTarget(CreatureObject* creature, Creatu
 	if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
 		creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
 		return GENERALERROR;
-	}
-
-	if (creature->isPlayerCreature() && targetCreature->getParentID() != 0 && creature->getParentID() != targetCreature->getParentID()) {
-		Reference<CellObject*> targetCell = targetCreature->getParent().get().castTo<CellObject*>();
-
-		if (targetCell != nullptr) {
-			if (!targetCreature->isPlayerCreature()) {
-				auto perms = targetCell->getContainerPermissions();
-
-				if (!perms->hasInheritPermissionsFromParent()) {
-					if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
-						creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
-						return GENERALERROR;
-					}
-				}
-			}
-
-			ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
-
-			if (parentSceneObject != nullptr) {
-				BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
-
-				if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature)) {
-					creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
-					return GENERALERROR;
-				}
-			}
-		}
 	}
 
 	return runCommand(creature, targetCreature);

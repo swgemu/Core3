@@ -2644,31 +2644,6 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 				continue;
 			}
 
-			if (attacker->isPlayerCreature() && object->getParentID() != 0 && attacker->getParentID() != object->getParentID()) {
-				Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
-				CreatureObject* aggressor = attacker->asCreatureObject();
-
-				if (targetCell != nullptr) {
-					if (!object->isPlayerCreature()) {
-						auto perms = targetCell->getContainerPermissions();
-
-						if (!perms->hasInheritPermissionsFromParent()) {
-							if (targetCell->checkContainerPermission(aggressor, ContainerPermissions::WALKIN))
-								continue;
-						}
-					}
-
-					ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
-
-					if (parentSceneObject != nullptr) {
-						BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
-
-						if (buildingObject != nullptr && !buildingObject->isAllowedEntry(aggressor))
-							continue;
-					}
-				}
-			}
-
 			if (attacker->getWorldPosition().distanceTo(object->getWorldPosition()) - attacker->getTemplateRadius() - object->getTemplateRadius() > range) {
 				//error("not in range " + String::valueOf(range));
 				continue;
