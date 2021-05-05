@@ -428,23 +428,36 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	if (object2->getZone() != zone)
 		return false;
 
-	if (object1->isAiAgent() || object2->isAiAgent()) {
-		//Vector<WorldCoordinates>* path = PathFinderManager::instance()->findPath(object1, object2, zone);
+	/*if (object1->isAiAgent() || object2->isAiAgent()) {
+		Vector<WorldCoordinates>* path = PathFinderManager::instance()->findPath(object1, object2, zone);
 
-//		if (path == nullptr)
-//			return false;
-//		else
-//			delete path;
-	}
+		if (path == nullptr)
+			return false;
+		else
+			delete path;
+	}*/
 
 	ManagedReference<SceneObject*> rootParent1 = object1->getRootParent();
 	ManagedReference<SceneObject*> rootParent2 = object2->getRootParent();
 
 	if (rootParent1 != nullptr || rootParent2 != nullptr) {
 		if (rootParent1 == rootParent2) {
-			return CollisionManager::checkLineOfSightInBuilding(object1, object2, rootParent1);
-		} else if (rootParent1 != nullptr && rootParent2 != nullptr)
+			if (object1->isPlayerCreature() && object2->isCreatureObject()) {
+				CreatureObject* creO = object1->asCreatureObject();
+				CreatureObject* tarCreO = object2->asCreatureObject();
+
+				// This is to prevent players from attacking through doorways they cannot enter in dungeons.
+				if (!playerEntryCheck(creO, tarCreO)) {
+					return false;
+				} else {
+					return CollisionManager::checkLineOfSightInBuilding(object1, object2, rootParent1);
+				}
+			} else {
+				return CollisionManager::checkLineOfSightInBuilding(object1, object2, rootParent1);
+			}
+		} else if (rootParent1 != nullptr && rootParent2 != nullptr) {
 			return false; //different buildings
+		}
 	}
 
 	//switching z<->y, adding player height (head)
@@ -530,6 +543,16 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 
 //	zone->runlock();
 
+	// Check to prevent players from using abilities through Red Entry Barrier
+	if (object1->isPlayerCreature() && object2->isCreatureObject()) {
+		CreatureObject* creO = object1->asCreatureObject();
+		CreatureObject* tarCreO = object2->asCreatureObject();
+
+		if (!playerEntryCheck(creO, tarCreO)) {
+			return false;
+		}
+	}
+
 	ManagedReference<SceneObject*> parent1 = object1->getParent().get();
 	ManagedReference<SceneObject*> parent2 = object2->getParent().get();
 
@@ -547,6 +570,49 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 		}
 	}
 
+	return true;
+}
+
+bool CollisionManager::playerEntryCheck(CreatureObject* creature, CreatureObject* target) {
+	creature->sendSystemMessage(" player entry check called ");
+
+	if (creature == nullptr || target == nullptr) {
+		return false;
+	}
+
+	if (target->getParentID() == 0) {
+		return true;
+	}
+
+	if (creature->getParentID() != target->getParentID()) {
+		creature->sendSystemMessage(" player entry -- Different parent cells");
+
+		Reference<CellObject*> targetCell = target->getParent().get().castTo<CellObject*>();
+
+		if (targetCell != nullptr) {
+			const ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+			if (perms->hasInheritPermissionsFromParent()) {
+				creature->sendSystemMessage(" player entry check -- has inherent perms");
+
+				if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
+					creature->sendSystemMessage(" Cell has parent permissions. Attack denied");
+					return false;
+				}
+			}
+
+			ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
+
+			if (parentSceneObject != nullptr) {
+				BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
+
+				if (buildingObject != nullptr && buildingObject->isAllowedEntry(creature)) {
+					creature->sendSystemMessage(" Checking Cell permissions. Attack denied");
+					return false;
+				}
+			}
+		}
+	}
 	return true;
 }
 
