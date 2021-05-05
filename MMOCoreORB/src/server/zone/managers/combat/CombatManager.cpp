@@ -9,6 +9,7 @@
 #include "CreatureAttackData.h"
 #include "DefenderHitList.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "templates/params/creature/CreatureState.h"
@@ -956,27 +957,38 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 				continue;
 			}
 
-			if (attacker->isPlayerCreature() && object->getParentID() != 0 && attacker->getParentID() != object->getParentID()) {
+			uint64 tarParentID = object->getParentID();
+
+			if (attacker->isPlayerCreature() && tarParentID != 0 && attacker->getParentID() != tarParentID) {
 				Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
-				CreatureObject* aggressor = attacker->asCreatureObject();
+				CreatureObject* attackerCreO = attacker->asCreatureObject();
 
-				if (targetCell != nullptr) {
-					if (!object->isPlayerCreature()) {
-						auto perms = targetCell->getContainerPermissions();
+				if (attackerCreO != nullptr) {
+					if (targetCell != nullptr) {
+						const ContainerPermissions* perms = targetCell->getContainerPermissions();
 
-						if (!perms->hasInheritPermissionsFromParent()) {
-							if (targetCell->checkContainerPermission(aggressor, ContainerPermissions::WALKIN))
+						if (perms->hasInheritPermissionsFromParent()) {
+							if (!targetCell->checkContainerPermission(attackerCreO, ContainerPermissions::WALKIN)) {
 								continue;
+							}
 						}
-					}
 
-					ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
+						ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
 
-					if (parentSceneObject != nullptr) {
-						BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
+						if (parentSceneObject != nullptr) {
+							BuildingObject* building = parentSceneObject->asBuildingObject();
 
-						if (buildingObject != nullptr && !buildingObject->isAllowedEntry(aggressor))
-							continue;
+							if (building != nullptr && !building->isAllowedEntry(attackerCreO)) {
+								continue;
+							}
+						}
+
+						// This portion of the check is specific for locked dungeons doors since they do not inherit perms from parent
+						if (!perms->hasInheritPermissionsFromParent() && (attacker->getRootParent() == object->getRootParent())) {
+							if (!targetCell->checkContainerPermission(attackerCreO, ContainerPermissions::WALKIN)) {
+								continue;
+							}
+						}
 					}
 				}
 			}

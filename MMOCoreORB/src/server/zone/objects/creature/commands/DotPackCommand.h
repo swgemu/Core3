@@ -124,6 +124,10 @@ public:
 		if (creature != targetCreature && !CollisionManager::checkLineOfSight(creature, targetCreature))
 			return false;
 
+		if (!playerEntryCheck(creature, targetCreature)) {
+			return false;
+		}
+
 		return true;
 	}
 
@@ -168,30 +172,6 @@ public:
 
 				if (areaCenter->getWorldPosition().distanceTo(object->getWorldPosition()) - object->getTemplateRadius() > range)
 					continue;
-
-				if (creature->isPlayerCreature() && object->getParentID() != 0 && creature->getParentID() != object->getParentID()) {
-					Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
-
-					if (targetCell != nullptr) {
-						if (object->isPlayerCreature()) {
-							auto perms = targetCell->getContainerPermissions();
-
-							if (!perms->hasInheritPermissionsFromParent()) {
-								if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN))
-									continue;
-							}
-						}
-
-						ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
-
-						if (parentSceneObject != nullptr) {
-							BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
-
-							if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature))
-								continue;
-						}
-					}
-				}
 
 				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
 
@@ -334,6 +314,10 @@ public:
 
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
 			creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
+			return GENERALERROR;
+		}
+
+		if (!playerEntryCheck(creature, creatureTarget)) {
 			return GENERALERROR;
 		}
 
