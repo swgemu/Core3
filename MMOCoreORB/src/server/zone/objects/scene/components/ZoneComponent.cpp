@@ -444,7 +444,7 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 		// hack to get around notifyEnter/Exit only working with tangible objects
 		Vector3 worldPos = sceneObject->getWorldPosition();
 		SortedVector<ActiveArea* > objects;
-		zone->getInRangeActiveAreas(worldPos.getX(), worldPos.getY(), 5, &objects, false);
+		zone->getInRangeActiveAreas(worldPos.getX(), worldPos.getY(), &objects, false);
 
 		for(auto& area : objects) {
 			NavArea *mesh = area->asNavArea();

@@ -41,6 +41,8 @@ class SpawnArea extends ActiveArea {
 	@dereferenced
 	@rawTemplate(value = "ManagedWeakReference<SpawnArea*>")
 	protected Vector noSpawnAreas;
+	
+	protected boolean worldSpawnArea;
 
 	protected int tier;
 
@@ -52,6 +54,7 @@ class SpawnArea extends ActiveArea {
 		maxSpawnLimit = 0;
 		spawnTypes.setNullValue(0);
 		exitObserver = null;
+		worldSpawnArea = false;
 		Logger.setLoggingName("SpawnArea");
 	}
 
@@ -99,4 +102,14 @@ class SpawnArea extends ActiveArea {
 	}
 
 	public native void tryToSpawn(SceneObject object);
+	
+	@read
+	public boolean isWorldSpawnArea() {
+		return worldSpawnArea;
+	}
+
+	@preLocked
+	public void setWorldSpawnArea(boolean val) {
+		worldSpawnArea = val;
+	}
 }
