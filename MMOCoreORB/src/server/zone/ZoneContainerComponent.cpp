@@ -36,7 +36,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 
 	activeArea->setZone(newZone);
 
-	QuadTree* regionTree = newZone->getRegionTree();
+	ActiveAreaQuadTree* regionTree = newZone->getRegionTree();
 
 	regionTree->insert(activeArea);
 
@@ -97,7 +97,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	Locker zoneLocker(zone);
 
-	QuadTree* regionTree = zone->getRegionTree();
+	ActiveAreaQuadTree* regionTree = zone->getRegionTree();
 
 	regionTree->remove(activeArea);
 
