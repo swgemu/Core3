@@ -122,3 +122,7 @@ Vector3 RectangularAreaShapeImplementation::getFarthestPoint(const Vector3& posi
 
 	return point;
 }
+
+float RectangularAreaShapeImplementation::getRadius() const {
+	return Math::sqrt(getHeight() * getHeight() + getWidth() * getWidth()) / 2;
+}

@@ -199,6 +199,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	} else {
 		if (tier & WORLDSPAWNAREA) {
 			worldSpawnAreas.add(area);
+			area->setWorldSpawnArea(true);
 		}
 
 		area->setZone(zone);

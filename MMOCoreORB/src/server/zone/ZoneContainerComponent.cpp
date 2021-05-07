@@ -26,8 +26,8 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 
 	Locker zoneLocker(newZone);
 
-	if (activeArea->isInQuadTree() && newZone != zone) {
-		activeArea->error("trying to insert to zone an object that is already in a different quadtree");
+	if (newZone != zone) {
+		activeArea->error("trying to insert to zone an object that is already in a different zone");
 
 		activeArea->destroyObjectFromWorld(true);
 
@@ -36,7 +36,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 
 	activeArea->setZone(newZone);
 
-	QuadTree* regionTree = newZone->getRegionTree();
+	ActiveAreaQuadTree* regionTree = newZone->getRegionTree();
 
 	regionTree->insert(activeArea);
 
@@ -92,12 +92,9 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	ManagedReference<SceneObject*> thisLocker = activeArea;
 
-	if (!activeArea->isInQuadTree())
-		return false;
-
 	Locker zoneLocker(zone);
 
-	QuadTree* regionTree = zone->getRegionTree();
+	ActiveAreaQuadTree* regionTree = zone->getRegionTree();
 
 	regionTree->remove(activeArea);
 
