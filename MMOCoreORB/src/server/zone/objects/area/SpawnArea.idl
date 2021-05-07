@@ -43,6 +43,8 @@ class SpawnArea extends ActiveArea {
 	protected Vector noSpawnAreas;
 
 	protected int tier;
+	
+	protected boolean worldSpawnArea;
 
 	public final static int MINSPAWNINTERVAL = 2000; //msec
 
@@ -52,6 +54,7 @@ class SpawnArea extends ActiveArea {
 		maxSpawnLimit = 0;
 		spawnTypes.setNullValue(0);
 		exitObserver = null;
+		worldSpawnArea = false;
 		Logger.setLoggingName("SpawnArea");
 	}
 
@@ -97,6 +100,22 @@ class SpawnArea extends ActiveArea {
 	public void addNoSpawnArea(SpawnArea area) {
 		noSpawnAreas.add(area);
 	}
+	
+	@read
+	public boolean isWorldSpawnArea() {
+		return worldSpawnArea;
+	}
+	
+	@preLocked
+	public void setWorldSpawnArea(boolean val) {
+		worldSpawnArea = val;
+	}
 
 	public native void tryToSpawn(SceneObject object);
+	
+	@dirty
+	public native void notifyEnter(SceneObject player);
+	
+	@dirty
+	public native void notifyExit(SceneObject object);
 }

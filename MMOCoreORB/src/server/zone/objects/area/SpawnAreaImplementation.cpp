@@ -17,6 +17,27 @@
 #include "server/ServerCore.h"
 #include "events/RemoveNoSpawnAreaTask.h"
 
+void SpawnAreaImplementation::notifyEnter(SceneObject* player) {
+	ActiveAreaImplementation::notifyEnter(player);
+
+	if (!player->isPlayerCreature())
+		return;
+
+	printf("Entered spawn area %s\n", getObjectName()->getFullPath().toCharArray());
+	//StackTrace::printStackTrace();
+}
+
+void SpawnAreaImplementation::notifyExit(SceneObject* player) {
+	ActiveAreaImplementation::notifyEnter(player);
+
+	if (!player->isPlayerCreature())
+		return;
+
+	printf("Exited spawn area %s\n", getObjectName()->getFullPath().toCharArray());
+	//StackTrace::printStackTrace();
+}
+
+
 void SpawnAreaImplementation::buildSpawnList(Vector<uint32>* groupCRCs) {
 	CreatureTemplateManager* ctm = CreatureTemplateManager::instance();
 
