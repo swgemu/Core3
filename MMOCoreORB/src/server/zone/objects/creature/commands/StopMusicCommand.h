@@ -17,7 +17,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -27,11 +26,12 @@ public:
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
-		if (session == nullptr)
+		if (session == nullptr || !session->isPlayingMusic()) {
+			creature->sendSystemMessage("@performance:music_not_performing"); // You are not currently playing a song.
 			return GENERALERROR;
+		}
 
-		if (!session->isPlayingMusic())
-			return GENERALERROR;
+		// TODO: flourish outro
 
 		session->stopPlayingMusic();
 

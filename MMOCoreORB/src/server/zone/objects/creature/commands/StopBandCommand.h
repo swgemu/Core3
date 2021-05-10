@@ -23,67 +23,36 @@ public:
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
 
-		if (group == nullptr) {
-			creature->sendSystemMessage("You must be the leader of a band to use that command.");
-			return GENERALERROR;
-		}
-
-		Reference<CreatureObject*> leader = group->getLeader();
-
-		if (leader == nullptr || creature != leader) {
-			creature->sendSystemMessage("You must be the band leader to stop the band's song.");
-			return GENERALERROR;
-		}
-
-		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
-
-		if (session == nullptr)
+		if (group == nullptr)
 			return GENERALERROR;
 
-		if (!session->isPlayingMusic())
-			return GENERALERROR;
+		// TODO: outro
 
-		creature->unlock();
+		for (int i = 0; i < group->getGroupSize(); ++i) {
+			Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-		try {
-			Locker locker(group);
+			if (groupMember == nullptr || !groupMember->isPlayingMusic())
+				continue;
 
-			for (int i = 0; i < group->getGroupSize(); ++i) {
-				Reference<CreatureObject*> groupMember = group->getGroupMember(i);
+			Locker clocker(groupMember, creature);
 
-				if (groupMember == nullptr || !groupMember->isPlayingMusic())
-					continue;
+			ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-				Locker clocker(groupMember, group);
+			if (bandMemberSession == nullptr || !bandMemberSession->isPlayingMusic())
+				continue;
 
-				ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
+			if (groupMember == creature) {
+				groupMember->sendSystemMessage("@performance:music_stop_band_self"); // You stop the band.
+			} else {
+				StringIdChatParameter stringID;
 
-				if (bandMemberSession == nullptr || !bandMemberSession->isPlayingMusic())
-					continue;
-
-				if (groupMember == creature) {
-					groupMember->sendSystemMessage("@performance:music_stop_band_self"); // You stop the band.
-				} else {
-					StringIdChatParameter stringID;
-
-					stringID.setTU(creature->getCustomObjectName());
-					stringID.setStringId("performance", "music_stop_band_members"); // %TU stops your band.
-					groupMember->sendSystemMessage(stringID);
-				}
-
-				bandMemberSession->stopPlayingMusic();
+				stringID.setTU(creature->getCustomObjectName());
+				stringID.setStringId("performance", "music_stop_band_members"); // %TU stops your band.
+				groupMember->sendSystemMessage(stringID);
 			}
 
-			group->setBandSong("");
-
-		} catch (Exception& e) {
-			creature->wlock();
-
-			throw;
+			bandMemberSession->stopPlayingMusic();
 		}
-
-		creature->wlock();
 
 		return SUCCESS;
 	}

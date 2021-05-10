@@ -13,7 +13,6 @@ public:
 
 	StopDanceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -27,11 +26,10 @@ public:
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
-		if (session == nullptr)
+		if (session == nullptr || !session->isDancing()) {
+			creature->sendSystemMessage("@performance:dance_not_performing"); // You are not currently dancing.
 			return GENERALERROR;
-
-		if (!session->isDancing())
-			return GENERALERROR;
+		}
 
 		session->stopDancing();
 

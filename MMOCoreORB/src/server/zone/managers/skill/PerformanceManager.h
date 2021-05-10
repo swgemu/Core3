@@ -7,6 +7,7 @@
 
 #include "Performance.h"
 #include "engine/log/Logger.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class PerformanceManager: public Logger {
 	HashTable<String, String> danceMap;
@@ -21,32 +22,38 @@ public:
 
 	~PerformanceManager();
 
+	static const int HEAL_RANGE = 60;
+
 	Performance* getDance(const String& name);
 	Performance* getSong(const String& name, int instrumentType);
+	Performance* getPerformanceFromIndex(int index);
 
-	Vector<Performance*> getPerformanceListFromMod(
-			const String& requiredSkillMod, int playerSkillModValue,
-			int instrument);
+	int getPerformanceIndex(int type, const String& name, int instrumentType);
+	int getMatchingPerformanceIndex(int type, int instrumentType);
 
-	int getInstrumentAnimation(int instrumentType, String& instrumentAnimation);
+	Vector<Performance*> getPerformanceListFromMod(const String& requiredSkillMod, int playerSkillModValue,	int instrument);
 
+	String getInstrumentAnimation(int instrumentType);
 	String getInstrument(int instrumentType);
 
-	inline String getDanceAnimation(const String& dance) {
-		return danceMap.get(dance);
-	}
+	String getDanceAnimation(int performanceIndex);
 
-	inline int getInstrumentId(const String& song) {
-		return instrumentIdMap.get(song);
-	}
+	void sendAvailableSongs(CreatureObject* player);
+	void sendAvailableDances(CreatureObject* player);
 
-	inline bool hasInstrumentId(const String& song) {
-		return instrumentIdMap.containsKey(song);
-	}
+	bool canPlaySong(CreatureObject* player, const String& name);
+	bool canPlaySong(CreatureObject* player, int performanceIndex);
+	bool canPlayInstrument(CreatureObject* player, int instrumentType);
+	bool canPerformDance(CreatureObject* player, int performanceIndex);
 
-	inline bool hasDanceAnimation(const String& dance) {
-		return danceMap.containsKey(dance);
-	}
+
+	void performanceMessageToSelf(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
+	void performanceMessageToPlayer(CreatureObject* player, CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
+	void performanceMessageToBand(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
+	void performanceMessageToBandListeners(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
+	void performanceMessageToBandWatchers(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
+	void performanceMessageToListeners(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
+	void performanceMessageToWatchers(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
 
 };
 

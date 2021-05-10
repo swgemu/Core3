@@ -391,7 +391,7 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 	SkillManager* skillManager = droid->getZoneServer()->getSkillManager();
 
 	if (skillManager != nullptr) {
-		PerformanceManager* performanceManager = skillManager->getPerformanceManager();
+/*		PerformanceManager* performanceManager = skillManager->getPerformanceManager();
 
 		if (performanceManager != nullptr) {
 			String instrumentAnimation;
@@ -400,15 +400,15 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 
 			droid->setPerformanceAnimation(instrumentAnimation, false);
 			droid->setPerformanceCounter(0, false);
-			droid->setInstrumentID(0, false);
+			droid->setPerformanceType(0, false);
 
 			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(droid);
 			dcreo6->updatePerformanceAnimation(instrumentAnimation);
 			dcreo6->updatePerformanceCounter(0);
-			dcreo6->updateInstrumentID(0);
+			dcreo6->updatePerformanceType(0);
 			dcreo6->close();
 			droid->broadcastMessage(dcreo6, true);
-		}
+		}*/
 	}
 
 	droid->notifyObservers(ObserverEventType::STOPENTERTAIN, droid);

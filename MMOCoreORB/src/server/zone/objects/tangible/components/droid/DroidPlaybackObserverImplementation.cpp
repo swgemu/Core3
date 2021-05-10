@@ -39,7 +39,7 @@ int DroidPlaybackObserverImplementation::notifyObserverEvent(unsigned int eventT
 		}
 
 		String song = playingSession->getPerformanceName();
-		int instrument = playingSession->getInstrument(player)->getInstrumentType();
+		int instrument = player->getPlayableInstrument()->getInstrumentType();
 
 		Reference<Task*> task = new DroidPlaybackEvent(module.get(), player, song, instrument, DroidPlaybackEvent::SET_TRACK);
 		task->execute();

@@ -44,6 +44,7 @@ include server.zone.CloseObjectsVector;
 include server.zone.QuadTreeEntry;
 import system.util.SynchronizedVectorMap;
 import server.zone.managers.auction.AuctionSearchTask;
+import server.zone.objects.tangible.Instrument;
 
 @mock
 @json
@@ -124,8 +125,8 @@ class CreatureObject extends TangibleObject {
 
 	protected unsigned long targetID;
 	protected byte moodID;
-	protected int performanceCounter;
-	protected int instrumentID;
+	protected int performanceStartTime;
+	protected int performanceType;
 
 	@dereferenced
 	protected DeltaVector<int> hamList;
@@ -595,14 +596,14 @@ class CreatureObject extends TangibleObject {
 	public native int notifyObjectRemoved(SceneObject object);
 
 	/**
-	 * Updates the instrument id to the specified object id
+	 * Updates the performance type to the specified type
 	 * @pre { this object is locked }
-	 * @post { this object is locked, this object has the specified weapon id }
-	 * @param instrumentid the new instrument id
+	 * @post { this object is locked, this object has the specified index }
+	 * @param type the new performance type
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	@preLocked
-	public native void setInstrumentID(int instrumentid, boolean notifyClient = true);
+	public native void setPerformanceType(int type, boolean notifyClient = true);
 
 	/**
 	 * Updates listen id
@@ -611,14 +612,14 @@ class CreatureObject extends TangibleObject {
 	public native void setListenToID(unsigned long id, boolean notifyClient = true);
 
 	/**
-	 * Updates the preformance counter
+	 * Updates the preformance start time
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the counter updated }
 	 * @param counter new performance counter
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	@preLocked
-	public native void setPerformanceCounter(int counter, boolean notifyClient = true);
+	public native void setPerformanceStartTime(int counter, boolean notifyClient = true);
 
 	/**
 	 * Updates the preformance animation string
@@ -1786,13 +1787,13 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@read
-	public int getPerformanceCounter() {
-		return performanceCounter;
+	public int getPerformanceStartTime() {
+		return performanceStartTime;
 	}
 
 	@read
-	public int getInstrumentID() {
-		return instrumentID;
+	public int getPerformanceType() {
+		return performanceType;
 	}
 
 	@read
@@ -2221,4 +2222,7 @@ class CreatureObject extends TangibleObject {
 	public void setAuctionSearchTask(AuctionSearchTask task) {
 		auctionSearch = task;
 	}
+	
+	@local
+	public native Instrument getPlayableInstrument();
 }

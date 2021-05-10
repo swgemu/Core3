@@ -15,8 +15,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target,
-			const UnicodeString& arguments) const {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -24,24 +23,21 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<Facade*> facade = creature->getActiveSession(
-				SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session =
-				dynamic_cast<EntertainingSession*> (facade.get());
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-		if (session == nullptr) {
-			creature->sendSystemMessage("@performance:flourish_not_performing");
-			return GENERALERROR;
-		}
-
-		if (!session->isDancing() && !session->isPlayingMusic()) {
+		if (session == nullptr && !session->isDancing() && !session->isPlayingMusic()) {
 			creature->sendSystemMessage("@performance:flourish_not_performing");
 			return GENERALERROR;
 		}
 
 		String args = arguments.toString();
 
-		int mod = Integer::valueOf(args);
+		int index = Integer::valueOf(args);
+
+		if (index < 1 || index > 8) {
+			creature->sendSystemMessage("@performance:flourish_not_performing");
+			return GENERALERROR;
+		}
 
 		Reference<PlayerObject*> ghost =
 						creature->getSlottedObject(
@@ -54,7 +50,7 @@ public:
 			return GENERALERROR;
 		}
 
-		session->doFlourish(mod, true);
+		session->doFlourish(index, true);
 
 		return SUCCESS;
 	}
