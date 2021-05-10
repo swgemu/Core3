@@ -20,34 +20,6 @@ public:
 
 	}
 
-	bool canPlaySong(CreatureObject* entertainer, const String& song) const {
-		ManagedReference<EntertainingSession*> session = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
-
-		if (session == nullptr || !session->isPlayingMusic())
-			return false;
-
-		ManagedReference<Instrument*> instrument = session->getInstrument(entertainer);
-
-		if (instrument == nullptr)
-			return false;
-
-		ManagedReference<PlayerObject*> ghost = entertainer->getPlayerObject();
-
-		if (ghost == nullptr)
-			return false;
-
-		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
-
-		String instr = performanceManager->getInstrument(instrument->getInstrumentType());
-
-		if (!ghost->hasAbility(instr))
-			return false;
-
-		if (!ghost->hasAbility(song))
-			return false;
-
-		return true;
-	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
@@ -57,37 +29,14 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<GroupObject*> group = creature->getGroup();
-
-		if (group == nullptr) {
-			creature->sendSystemMessage("You must be the leader of a band to use that command.");
-			return GENERALERROR;
-		}
-
-		Reference<CreatureObject*> leader = group->getLeader();
-
-		if (leader == nullptr || creature != leader) {
-			creature->sendSystemMessage("You must be the band leader to change the band's song.");
-			return GENERALERROR;
-		}
-
 		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-		if (session == nullptr) {
+		if (session == nullptr || !session->isPlayingMusic()) {
 			creature->sendSystemMessage("@performance:music_must_be_performing_self"); // You must be playing music before you can change the song.
 			return GENERALERROR;
 		}
 
-		if (session->isDancing()) {
-			session->stopDancing();
-		}
-
-		if (!session->isPlayingMusic()) {
-			creature->sendSystemMessage("@performance:music_must_be_performing_self"); // You must be playing music before you can change the song.
-			return GENERALERROR;
-		}
-
-		ManagedReference<Instrument*> instrument = session->getInstrument(creature);
+		ManagedReference<Instrument*> instrument = creature->getPlayableInstrument();
 
 		if (instrument == nullptr) {
 			creature->sendSystemMessage("@performance:music_no_instrument"); // You must have an instrument equipped to play music.
@@ -99,86 +48,85 @@ public:
 		if (ghost == nullptr)
 			return GENERALERROR;
 
-		String args = arguments.toString();
+		// TODO: Outro check
 
-		if (args.length() < 2) {
-			if (!group->isOtherMemberPlayingMusic(creature)) {
-				StartMusicCommand::sendAvailableSongs(creature, ghost, SuiWindowType::MUSIC_CHANGE);
-				return SUCCESS;
-			} else {
-				StartMusicCommand::sendAvailableSongs(creature, ghost, SuiWindowType::BAND_CHANGE);
-				return SUCCESS;
-			}
-		}
+		String args = arguments.toString();
 
 		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 
-		String instr = performanceManager->getInstrument(instrument->getInstrumentType());
-
-		if (!ghost->hasAbility(instr)) {
-			creature->sendSystemMessage("@performance:music_lack_skill_instrument"); // You do not have the skill to use the currently equipped instrument.
-
-			return GENERALERROR;
+		if (args.length() < 1) {
+			performanceManager->sendAvailableSongs(creature);
+			return SUCCESS;
 		}
 
-		if (!performanceManager->hasInstrumentId(args)) {
+		int instrumentType = instrument->getInstrumentType();
+
+		int performanceIndex = performanceManager->getPerformanceIndex(PerformanceType::MUSIC, args, instrumentType);
+
+		if (performanceIndex == 0) {
 			creature->sendSystemMessage("@performance:music_invalid_song"); // That is not a valid song name.
 			return GENERALERROR;
 		}
 
-		String fullString = String("startMusic") + "+" + args;
-
-		if (!ghost->hasAbility(fullString)) {
+		if (!performanceManager->canPlaySong(creature, performanceIndex)) {
 			creature->sendSystemMessage("@performance:music_lack_skill_song_self"); // You do not have the skill to perform that song.
 			return GENERALERROR;
 		}
 
-		creature->unlock();
+		session->sendEntertainingUpdate(creature, performanceIndex);
+		creature->notifyObservers(ObserverEventType::CHANGEENTERTAIN, creature);
 
-		try {
-			Locker locker(group);
+		ManagedReference<GroupObject*> group = creature->getGroup();
 
+		bool bandMemberLacksSkill = false;
+
+		if (group != nullptr) {
 			for (int i = 0; i < group->getGroupSize(); ++i) {
 				Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-				if (groupMember == nullptr || !groupMember->isPlayingMusic())
+				if (groupMember == nullptr || groupMember == creature || !groupMember->isPlayingMusic())
 					continue;
 
-				Locker clocker(groupMember, group);
+				Locker clocker(groupMember, creature);
 
 				ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 				if (bandMemberSession == nullptr || !bandMemberSession->isPlayingMusic())
 					continue;
 
-				if (!canPlaySong(groupMember, fullString)) {
-					creature->sendSystemMessage("@performance:music_lack_skill_band_member"); // One of the band members lacked the skill to perform that song.
-					groupMember->sendSystemMessage("@performance:music_lack_skill_song_band"); // You do not have the skill to perform the song the band is performing.
+				ManagedReference<Instrument*> memberInstrument = creature->getPlayableInstrument();
+
+				if (memberInstrument == nullptr)
+					continue;
+
+				int memberInstrumentType = memberInstrument->getInstrumentType();
+				int memberPerformanceIndex = performanceManager->getMatchingPerformanceIndex(performanceIndex, memberInstrumentType);
+
+				if (memberPerformanceIndex == 0)
+					continue;
+
+				if (!performanceManager->canPlayInstrument(groupMember, memberInstrumentType)) {
+					groupMember->sendSystemMessage("@performance:music_lack_skill_instrument"); // You do not have the skill to use the currently equipped instrument.
 					bandMemberSession->stopPlayingMusic();
+					bandMemberLacksSkill = true;
 					continue;
 				}
 
-				ManagedReference<Instrument*> bandMemberInstrument = bandMemberSession->getInstrument(groupMember);
-				String instrumentAnimation;
+				if (!performanceManager->canPlaySong(groupMember, memberPerformanceIndex)) {
+					groupMember->sendSystemMessage("@performance:music_lack_skill_song_band"); // You do not have the skill to perform the song the band is performing.
+					bandMemberSession->stopPlayingMusic();
+					bandMemberLacksSkill = true;
+					continue;
+				}
 
-				int instrid = performanceManager->getInstrumentId(args);
-				instrid += performanceManager->getInstrumentAnimation(bandMemberInstrument->getInstrumentType(), instrumentAnimation);
-
-				bandMemberSession->sendEntertainingUpdate(groupMember, /*0x3C4CCCCD*/0.0125f, instrumentAnimation, 0x07339FF8, instrid);
-				bandMemberSession->setPerformanceName(args);
+				bandMemberSession->sendEntertainingUpdate(groupMember, memberPerformanceIndex);
 
 				groupMember->notifyObservers(ObserverEventType::CHANGEENTERTAIN, groupMember);
 			}
-
-			group->setBandSong(args);
-
-		} catch (Exception& e) {
-			creature->wlock();
-
-			throw;
 		}
 
-		creature->wlock();
+		if (bandMemberLacksSkill)
+			performanceManager->performanceMessageToSelf(creature, nullptr, "performance", "music_lack_skill_band_member"); // One of the band members lacked the skill to perform that song.
 
 		return SUCCESS;
 	}

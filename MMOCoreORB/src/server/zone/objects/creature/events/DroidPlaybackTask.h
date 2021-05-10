@@ -82,7 +82,7 @@ public:
 		PerformanceManager* performanceManager = skillManager->getPerformanceManager();
 		if (performanceManager == nullptr)
 			return;
-
+/*
 		String instrumentAnimation;
 		int instrid = performanceManager->getInstrumentId(performance);
 		instrid += performanceManager->getInstrumentAnimation(instrument, instrumentAnimation);
@@ -91,16 +91,16 @@ public:
 			// we fire off the performance piece and let it run
 			droid->setPerformanceAnimation(instrumentAnimation, false);
 			droid->setPerformanceCounter(0, false);
-			droid->setInstrumentID(instrid, false);
+			droid->setPerformanceType(instrid, false);
 			// broadcast the song
 			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(droid);
 			dcreo6->updatePerformanceAnimation(instrumentAnimation);
 			dcreo6->updatePerformanceCounter(0);
-			dcreo6->updateInstrumentID(instrid);
+			dcreo6->updatePerformanceType(instrid);
 			dcreo6->close();
 			droid->broadcastMessage(dcreo6, true);
 			playing = true;
-		}
+		}*/
 		// recheck every 30 seconds for power ont he droid
 		droid->addPendingTask("droid_playback",this,30000);
 	}

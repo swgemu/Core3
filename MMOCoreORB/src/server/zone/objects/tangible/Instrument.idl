@@ -113,13 +113,4 @@ class Instrument extends TangibleObject {
 	public void setSpawnerPlayer(CreatureObject pla) {
 		spawnerPlayer = pla;
 	}
-
-	@read
-	public boolean isBeingUsed() {
-		return beingUsed;
-	}
-
-	public void setBeingUsed(boolean val) {
-		beingUsed = val;
-	}
 }

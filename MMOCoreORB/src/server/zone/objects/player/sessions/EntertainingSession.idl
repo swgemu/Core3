@@ -36,7 +36,7 @@ class EntertainingSession extends Facade {
 	@dereferenced
 	protected Time nextTick;
 	
-	protected string performanceName;
+	protected int performanceIndex;
 	protected boolean dancing;
 	protected boolean playingMusic;
 	
@@ -46,8 +46,6 @@ class EntertainingSession extends Facade {
 	protected int flourishCount;
 	protected int applauseCount;
 	protected boolean acceptingBandFlourishes;
-	protected boolean targetInstrument;
-	protected Instrument externalInstrument;
 	
 	public EntertainingSession(CreatureObject ent) {
 		entertainer = ent;
@@ -57,13 +55,13 @@ class EntertainingSession extends Facade {
 		healingXp = 0;
 		flourishCount = 0;
 		applauseCount = 0;
+		performanceIndex = 0;
 		
 		observer = null;
 		
 		dancing = false;
 		playingMusic = false;
 		acceptingBandFlourishes = true;
-		targetInstrument = false;
 		
 		watchers.setNoDuplicateInsertPlan();
 		listeners.setNoDuplicateInsertPlan();
@@ -76,8 +74,8 @@ class EntertainingSession extends Facade {
 	public native void doPerformanceAction();
 	public native void addEntertainerFlourishBuff();
 	
-	public native void startDancing(final string dance, final string animation);
-	public native void startPlayingMusic(final string song, final string instrumentAnimation, int instrid);
+	public native void startDancing(int perfIndex);
+	public native void startPlayingMusic(int perfIndex, Instrument instrument);
 	
 	public native void startEntertaining();
 	
@@ -142,16 +140,12 @@ class EntertainingSession extends Facade {
 	public native int getEntertainerBuffDuration(CreatureObject creature, int performanceType);
 	public native int getEntertainerBuffStartTime(CreatureObject creature, int performanceType);
 	
-	public native void sendEntertainingUpdate(CreatureObject creature, float entval, final string performance, unsigned int perfcntr, int instrid);
-	public native void sendEntertainmentUpdate(CreatureObject creature, unsigned long entid, final string mood, boolean updateEntValue = false);
+	public native void sendEntertainingUpdate(CreatureObject creature, int performanceType);
+	public native void sendEntertainmentUpdate(CreatureObject creature, unsigned long entid, final string mood);
 	
 	public native void activateEntertainerBuff(CreatureObject creature, int performanceType);
-	
-	public native Instrument getInstrument(CreatureObject creature);
 
-	public string getPerformanceName() {
-		return performanceName;
-	}
+	public native string getPerformanceName();
 	
 	public native void addWatcher(CreatureObject creature);
 	public native void addListener(CreatureObject listener);
@@ -180,18 +174,10 @@ class EntertainingSession extends Facade {
 		listeners.drop(creature);
 	}
 	
-	public void setPerformanceName(final string name) {
-		performanceName = name;
-	}
-	
 	public void setDancing(boolean val) {
 		dancing = val;
 	}
-	
-	public void setTargetInstrument(boolean var) {
-		targetInstrument = var;
-	}
-	
+
 	public native void updateEntertainerMissionStatus(boolean entertaining, final int missionType);
 	
 	public boolean isInDenyServiceList(CreatureObject target) {
@@ -223,4 +209,13 @@ class EntertainingSession extends Facade {
 	public int getApplauseCount() {
 		return applauseCount;
 	}
+	
+	public int getPerformanceIndex() {
+		return performanceIndex;
+	}
+	
+	@local
+	public native void getListenersInRange(@dereferenced SortedVector<CreatureObject> listeners);
+	@local
+	public native void getWatchersInRange(@dereferenced SortedVector<CreatureObject> watchers);
 }

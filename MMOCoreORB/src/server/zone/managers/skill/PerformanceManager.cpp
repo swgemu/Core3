@@ -6,103 +6,332 @@
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
 #include "server/zone/objects/tangible/Instrument.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 PerformanceManager::PerformanceManager() :
 	Logger("PerformanceManager") {
 	loadPerformances();
-
-	danceMap.put("basic", "dance_1");
-	danceMap.put("basic2", "dance_2");
-	danceMap.put("rhythmic", "dance_3");
-	danceMap.put("rhythmic2", "dance_4");
-	danceMap.put("exotic", "dance_5");
-	danceMap.put("exotic2", "dance_6");
-	danceMap.put("exotic3", "dance_7");
-	danceMap.put("exotic4", "dance_8");
-	danceMap.put("popular", "dance_9");
-	danceMap.put("popular2", "dance_10");
-	danceMap.put("lyrical", "dance_11");
-	danceMap.put("lyrical2", "dance_12");
-	danceMap.put("poplock", "dance_13");
-	danceMap.put("poplock2", "dance_14");
-	danceMap.put("footloose", "dance_15");
-	danceMap.put("footloose2", "dance_16");
-	danceMap.put("formal", "dance_17");
-	danceMap.put("formal2", "dance_18");
-	danceMap.put("theatrical", "dance_21");
-	danceMap.put("theatrical2", "dance_22");
-	danceMap.put("breakdance", "dance_29");
-	danceMap.put("breakdance2", "dance_30");
-	danceMap.put("tumble", "dance_31");
-	danceMap.put("tumble2", "dance_32");
-
-	instrumentIdMap.put("starwars1", 1);
-	instrumentIdMap.put("rock", 11);
-	instrumentIdMap.put("starwars2", 21);
-	instrumentIdMap.put("folk", 31);
-	instrumentIdMap.put("starwars3", 41);
-	instrumentIdMap.put("ceremonial", 51);
-	instrumentIdMap.put("ballad", 61);
-	instrumentIdMap.put("waltz", 71);
-	instrumentIdMap.put("jazz", 81);
-	instrumentIdMap.put("virtuoso", 91);
-	instrumentIdMap.put("western", 101);
-	instrumentIdMap.put("starwars4", 111);
-	instrumentIdMap.put("funk", 121);
-
 }
 
-int PerformanceManager::getInstrumentAnimation(int instrumentType,
-		String& instrumentAnimation) {
-	int instrid = 0;
+PerformanceManager::~PerformanceManager() {
+	if (performances != nullptr) {
+		for (int i = 0; i < performances->size(); ++i)
+			delete performances->getUnsafe(i);
+
+		delete performances;
+
+		performances = nullptr;
+	}
+}
+
+void PerformanceManager::loadPerformances() {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/performance/performance.iff");
+
+	if (iffStream == nullptr) {
+		error("Could not open performances datatable.");
+		return;
+	}
+
+	DataTableIff dtable;
+	dtable.readObject(iffStream);
+
+	delete iffStream;
+
+	performances = new Vector<Performance*> ();
+	for (int i = 0; i < dtable.getTotalRows(); ++i) {
+		DataTableRow* row = dtable.getRow(i);
+
+		Performance* performance = new Performance();
+		performance->parseDataTableRow(i+1, row);
+		performances->add(performance);
+	}
+
+	info("Loaded " + String::valueOf(performances->size()) + " performances.", true);
+}
+
+Vector<Performance*> PerformanceManager::getPerformanceListFromMod(const String& requiredSkillMod, int playerSkillModValue, int instrument) {
+	String instrumentName = "";
+	if (instrument != 0)
+		instrumentName = getInstrument(instrument);
+
+	Vector<Performance*> performanceList;
+
+	if (performances != nullptr) {
+
+		for (int i = 0; i < performances->size(); ++i) {
+			Performance* perform = performances->get(i);
+
+			if (perform->getRequiredSkillMod() != requiredSkillMod || perform->getRequiredSkillModValue() > playerSkillModValue)
+				continue;
+
+			if (instrumentName != "") {
+				//Should be a music call, look only for performances with that instrument
+				if (instrumentName == perform->getRequiredInstrument())
+					performanceList.add(perform);
+			} else {
+				//Should be a dance call
+				performanceList.add(perform);
+			}
+		}
+
+	}
+
+	return performanceList;
+}
+
+Performance* PerformanceManager::getDance(const String& name) {
+	if (performances != nullptr) {
+		for (int i = 0; i < performances->size(); ++i) {
+			Performance* ret = performances->get(i);
+
+			if (ret->isDance() && ret->getName() == name)
+				return ret;
+		}
+	}
+
+	return nullptr;
+}
+
+Performance* PerformanceManager::getSong(const String& name, int instrumentType) {
+	if (performances != nullptr) {
+		for (int i = 0; i < performances->size(); ++i) {
+			Performance* ret = performances->get(i);
+
+			if (ret->isMusic() && ret->getName() == name
+					&& ret->getInstrumentAudioId() == instrumentType)
+				return ret;
+		}
+	}
+	return nullptr;
+}
+
+int PerformanceManager::getPerformanceIndex(int performanceType, const String& performanceName, int instrumentType) {
+	if (performances == nullptr)
+		return 0;
+
+	for (int i = 0; i < performances->size(); ++i) {
+		Performance* perf = performances->get(i);
+
+		if (perf->getType() == performanceType && perf->getName() == performanceName && perf->getInstrumentAudioId() == instrumentType)
+			return perf->getPerformanceIndex();
+	}
+
+	return 0;
+}
+
+Performance* PerformanceManager::getPerformanceFromIndex(int index) {
+	if (performances == nullptr)
+		return nullptr;
+
+	for (int i = 0; i < performances->size(); ++i) {
+		Performance* perf = performances->get(i);
+
+		if (perf->getPerformanceIndex() == index)
+			return perf;
+	}
+
+	return nullptr;
+}
+
+int PerformanceManager::getMatchingPerformanceIndex(int performanceIndex, int instrumentType) {
+	if (performances == nullptr)
+		return 0;
+
+	Performance* performance = getPerformanceFromIndex(performanceIndex);
+
+	if (performance == nullptr)
+		return 0;
+
+	String performanceName = performance->getName();
+
+	for (int i = 0; i < performances->size(); ++i) {
+		Performance* perf = performances->get(i);
+
+		if (!perf->isMusic())
+			continue;
+
+		if (perf->getInstrumentAudioId() == instrumentType && perf->getName() == performanceName)
+			return perf->getPerformanceIndex();
+	}
+
+	return 0;
+}
+
+void PerformanceManager::sendAvailableSongs(CreatureObject* player) {
+	Reference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	Reference<Instrument*> instrument = player->getPlayableInstrument();
+
+	if (instrument == nullptr) {
+		player->sendSystemMessage("@performance:music_no_instrument"); // You must have an instrument equipped to play music.
+		return;
+	}
+
+	Reference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::MUSIC_START);
+	sui->setPromptTitle("@performance:available_songs"); // Available Songs
+	sui->setPromptText("@performance:select_song"); // Select a song to play.
+
+	const AbilityList* list = ghost->getAbilityList();
+
+	for (int i = 0; i < list->size(); ++i) {
+		Ability* ability = list->get(i);
+
+		String abilityName = ability->getAbilityName();
+
+		if (abilityName.indexOf("startMusic") != -1) {
+			int args = abilityName.indexOf("+");
+
+			if (args != -1) {
+				String arg = abilityName.subString(args + 1);
+
+				sui->addMenuItem(arg);
+			}
+		}
+	}
+
+	ghost->addSuiBox(sui);
+	player->sendMessage(sui->generateMessage());
+}
+
+void PerformanceManager::sendAvailableDances(CreatureObject* player) {
+	// TODO: Sui callback
+	Reference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::DANCING_START);
+	sui->setPromptTitle("@performance:available_dances");
+	sui->setPromptText("@performance:select_dance");
+
+	const AbilityList* list = ghost->getAbilityList();
+
+	for (int i = 0; i < list->size(); ++i) {
+		Ability* ability = list->get(i);
+
+		String abilityName = ability->getAbilityName();
+
+		if (abilityName.indexOf("startDance") != -1) {
+			int args = abilityName.indexOf("+");
+
+			if (args != -1) {
+				String arg = abilityName.subString(args + 1);
+
+				sui->addMenuItem(arg);
+			}
+		}
+	}
+
+	ghost->addSuiBox(sui);
+	player->sendMessage(sui->generateMessage());
+
+	return;
+}
+
+bool PerformanceManager::canPlayInstrument(CreatureObject* player, int instrumentType) {
+	Reference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return false;
+
+	String instr = getInstrument(instrumentType);
+
+	return ghost->hasAbility(instr);
+}
+
+bool PerformanceManager::canPlaySong(CreatureObject* player, const String& name) {
+	Reference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return false;
+
+	String fullString = String("startMusic") + "+" + name;
+
+	return ghost->hasAbility(fullString);
+}
+
+bool PerformanceManager::canPlaySong(CreatureObject* player, int performanceIndex) {
+	Reference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return false;
+
+	Performance* performance = getPerformanceFromIndex(performanceIndex);
+
+	if (performance == nullptr)
+		return false;
+
+	return ghost->hasAbility(performance->getRequiredSong());
+}
+
+bool PerformanceManager::canPerformDance(CreatureObject* player, int performanceIndex) {
+	Reference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return false;
+
+	Performance* performance = getPerformanceFromIndex(performanceIndex);
+
+	if (performance == nullptr)
+		return false;
+
+	return ghost->hasAbility(performance->getRequiredDance());
+}
+
+String PerformanceManager::getDanceAnimation(int performanceIndex) {
+	Performance* performance = getPerformanceFromIndex(performanceIndex);
+
+	if (performance == nullptr)
+		return "";
+
+	return "dance_" + String::valueOf(performance->getDanceVisualId());
+}
+
+String PerformanceManager::getInstrumentAnimation(int instrumentType) {
+	String instrumentAnimation = "";
 
 	switch (instrumentType) {
-	case Instrument::SLITHERHORN: //SLITHERHORN: yeah!
-		instrid += 0;
+	case Instrument::SLITHERHORN:
 		instrumentAnimation = "music_3";
 		break;
-	case Instrument::FIZZ: // yeah
-		instrid += 1;
+	case Instrument::FIZZ:
 		instrumentAnimation = "music_3";
 		break;
-	case Instrument::FANFAR: //FANFAR yeah
-		instrid += 2;
+	case Instrument::FANFAR:
 		instrumentAnimation = "music_3";
 		break;
-	case Instrument::KLOOHORN: // yeah
-		instrid += 3;
+	case Instrument::KLOOHORN:
 		instrumentAnimation = "music_3";
 		break;
-	case Instrument::MANDOVIOL: //MANDOVIOL
-		instrid += 4;
+	case Instrument::MANDOVIOL:
 		instrumentAnimation = "music_5";
 		break;
-	case Instrument::TRAZ: //TRAZ yeah
-		instrid += 5;
+	case Instrument::TRAZ:
 		instrumentAnimation = "music_3";
 		break;
-	case Instrument::BANDFILL: // yeah
-		instrid += 6;
+	case Instrument::BANDFILL:
 		instrumentAnimation = "music_1";
 		break;
-	case Instrument::FLUTEDROOPY: //
-		instrid += 7;
+	case Instrument::FLUTEDROOPY:
 		instrumentAnimation = "music_3";
 		break;
-	case Instrument::OMNIBOX: //OMNIBOX:
-		instrid += 8;
+	case Instrument::OMNIBOX:
 		instrumentAnimation = "music_4";
 		break;
-	case Instrument::NALARGON: //NALARGON:
-		instrid += 9;
+	case Instrument::NALARGON:
 		instrumentAnimation = "music_2";
 		break;
 	default:
-		//sendSystemMessage("Bad instrument type.");
 		break;
 	}
 
-	return instrid;
+	return instrumentAnimation;
 }
 
 String PerformanceManager::getInstrument(int instrumentType) {
@@ -147,98 +376,112 @@ String PerformanceManager::getInstrument(int instrumentType) {
 	return instrument;
 }
 
-PerformanceManager::~PerformanceManager() {
-	if (performances != nullptr) {
-		for (int i = 0; i < performances->size(); ++i)
-			delete performances->getUnsafe(i);
 
-		delete performances;
-
-		performances = nullptr;
-	}
+void PerformanceManager::performanceMessageToSelf(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
+	performanceMessageToPlayer(actor, actor, target, table, text);
 }
 
-void PerformanceManager::loadPerformances() {
+void PerformanceManager::performanceMessageToBand(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
+	ManagedReference<GroupObject*> group = actor->getGroup();
 
-	IffStream* iffStream = TemplateManager::instance()->openIffFile(
-			"datatables/performance/performance.iff");
-
-	if (iffStream == nullptr) {
-		error("Could not open performances datatable.");
+	if (group == nullptr)
 		return;
+
+	for (int i = 0; i < group->getGroupSize(); i++) {
+		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+
+		if (groupMember == nullptr || !groupMember->isPlayerCreature() || groupMember == actor)
+			continue;
+
+		performanceMessageToPlayer(groupMember, actor, target, table, text);
 	}
-
-	DataTableIff dtable;
-	dtable.readObject(iffStream);
-
-	delete iffStream;
-
-	performances = new Vector<Performance*> ();
-	for (int i = 0; i < dtable.getTotalRows(); ++i) {
-		DataTableRow* row = dtable.getRow(i);
-
-		Performance* performance = new Performance();
-		performance->parseDataTableRow(row);
-		performances->add(performance);
-	}
-
-	info("Loaded " + String::valueOf(performances->size()) + " performances.",
-			true);
 }
 
-Vector<Performance*> PerformanceManager::getPerformanceListFromMod(
-		const String& requiredSkillMod, int playerSkillModValue, int instrument) {
-	String instrumentName = "";
-	if (instrument != 0)
-		instrumentName = getInstrument(instrument);
+void PerformanceManager::performanceMessageToBandListeners(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
+	ManagedReference<GroupObject*> group = actor->getGroup();
 
-	Vector<Performance*> performanceList;
+	if (group == nullptr)
+		return;
 
-	if (performances != nullptr) {
+	for (int i = 0; i < group->getGroupSize(); i++) {
+		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-		for (int i = 0; i < performances->size(); ++i) {
-			Performance* perform = performances->get(i);
-			if (perform->getRequiredSkillMod() == requiredSkillMod
-					&& perform->getRequiredSkillModValue()
-							<= playerSkillModValue) {
-				if (instrumentName != "") {
-					//Should be a music call, look only for performances with that instrument
-					if (instrumentName == perform->getRequiredInstrument())
-						performanceList.add(perform);
-				} else {
-					//Should be a dance call
-					performanceList.add(perform);
-				}
-			}
-		}
+		if (groupMember == nullptr || !groupMember->isPlayerCreature() || groupMember == actor)
+			continue;
 
+		performanceMessageToListeners(groupMember, target, table, text);
 	}
-
-	return performanceList;
 }
 
-Performance* PerformanceManager::getDance(const String& name) {
-	if (performances != nullptr) {
-		for (int i = 0; i < performances->size(); ++i) {
-			Performance* ret = performances->get(i);
+void PerformanceManager::performanceMessageToBandWatchers(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
+	ManagedReference<GroupObject*> group = actor->getGroup();
 
-			if (ret->isDance() && ret->getName() == name)
-				return ret;
-		}
+	if (group == nullptr)
+		return;
+
+	for (int i = 0; i < group->getGroupSize(); i++) {
+		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+
+		if (groupMember == nullptr || !groupMember->isPlayerCreature() || groupMember == actor)
+			continue;
+
+		performanceMessageToWatchers(groupMember, target, table, text);
 	}
-
-	return nullptr;
 }
 
-Performance* PerformanceManager::getSong(const String& name, int instrumentType) {
-	if (performances != nullptr) {
-		for (int i = 0; i < performances->size(); ++i) {
-			Performance* ret = performances->get(i);
+void PerformanceManager::performanceMessageToListeners(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
+	SortedVector<ManagedReference<CreatureObject*> > listeners;
+	ManagedReference<EntertainingSession*> session = actor->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-			if (ret->isMusic() && ret->getName() == name
-					&& ret->getInstrumentAudioId() == instrumentType)
-				return ret;
-		}
+	if (session == nullptr)
+		return;
+
+	session->getListenersInRange(listeners);
+
+	if (listeners.size() == 0)
+		return;
+
+	for (int i = 0; i < listeners.size(); i++) {
+		ManagedReference<CreatureObject*> listener = listeners.get(i);
+
+		if (listener == nullptr)
+			continue;
+
+		performanceMessageToPlayer(listener, actor, target, table, text);
 	}
-	return nullptr;
+}
+
+void PerformanceManager::performanceMessageToWatchers(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
+	SortedVector<ManagedReference<CreatureObject*> > watchers;
+	ManagedReference<EntertainingSession*> session = actor->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
+
+	if (session == nullptr)
+		return;
+
+	session->getWatchersInRange(watchers);
+
+	if (watchers.size() == 0)
+		return;
+
+	for (int i = 0; i < watchers.size(); i++) {
+		ManagedReference<CreatureObject*> watcher = watchers.get(i);
+
+		if (watcher == nullptr)
+			continue;
+
+		performanceMessageToPlayer(watcher, actor, target, table, text);
+	}
+}
+
+void PerformanceManager::performanceMessageToPlayer(CreatureObject* player, CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
+	StringIdChatParameter message;
+	message.setStringId(table, text);
+
+	if (actor != nullptr)
+		message.setTU(actor->getCustomObjectName());
+
+	if (target != nullptr)
+		message.setTT(target->getCustomObjectName());
+
+	player->sendSystemMessage(message);
 }
