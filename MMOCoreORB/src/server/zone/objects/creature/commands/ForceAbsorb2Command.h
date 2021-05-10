@@ -35,8 +35,6 @@ public:
 
 		int fCost = param * getFrsModifiedExtraForceCost(player, 0.25);
 		ghost->setForcePower(ghost->getForcePower() + fCost);
-
-		CombatManager::instance()->sendMitigationCombatSpam(player, nullptr, fCost, CombatManager::FORCEABSORB);
 	}
 };
 
