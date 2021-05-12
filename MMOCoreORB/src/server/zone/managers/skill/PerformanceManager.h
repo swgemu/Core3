@@ -50,10 +50,8 @@ public:
 	void performanceMessageToSelf(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
 	void performanceMessageToPlayer(CreatureObject* player, CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
 	void performanceMessageToBand(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
-	void performanceMessageToBandListeners(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
-	void performanceMessageToBandWatchers(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
-	void performanceMessageToListeners(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
-	void performanceMessageToWatchers(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
+	void performanceMessageToBandPatrons(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
+	void performanceMessageToPatrons(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
 
 };
 
