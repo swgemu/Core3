@@ -25,7 +25,7 @@ public:
 
 		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-		if (session == nullptr && !session->isDancing() && !session->isPlayingMusic()) {
+		if (session == nullptr || (!session->isDancing() && !session->isPlayingMusic())) {
 			creature->sendSystemMessage("@performance:flourish_not_performing");
 			return GENERALERROR;
 		}
@@ -35,18 +35,19 @@ public:
 		int index = Integer::valueOf(args);
 
 		if (index < 1 || index > 8) {
-			creature->sendSystemMessage("@performance:flourish_not_performing");
+			creature->sendSystemMessage("@performance:flourish_not_valid"); // That is not a valid flourish.
 			return GENERALERROR;
 		}
 
-		Reference<PlayerObject*> ghost =
-						creature->getSlottedObject(
-								"ghost").castTo<PlayerObject*> ();
+		Reference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == nullptr)
+			return GENERALERROR;
 
 		String fullString = String("flourish") + "+" + args;
 
 		if (!ghost->hasAbility(fullString)) {
-			creature->sendSystemMessage("@performance:flourish_not_valid");
+			creature->sendSystemMessage("@performance:flourish_not_valid"); // 	That is not a valid flourish.
 			return GENERALERROR;
 		}
 
@@ -55,20 +56,17 @@ public:
 		return SUCCESS;
 	}
 
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
-		ManagedReference<Facade*> facade = object->getActiveSession(
-				SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session =
-				dynamic_cast<EntertainingSession*> (facade.get());
+	float getCommandDuration(CreatureObject* creature, const UnicodeString& arguments) const {
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 		if (session == nullptr)
 			return 0.0f;
 
 		int knowledgeSkillMod = 0;
 		if (session->isPlayingMusic()) {
-			knowledgeSkillMod = object->getSkillMod("healing_music_ability");
+			knowledgeSkillMod = creature->getSkillMod("healing_music_ability");
 		} else if (session->isDancing()) {
-			knowledgeSkillMod = object->getSkillMod("healing_dance_ability");
+			knowledgeSkillMod = creature->getSkillMod("healing_dance_ability");
 		} else {
 			return 0.0f;
 		}

@@ -397,7 +397,7 @@ void PerformanceManager::performanceMessageToBand(CreatureObject* actor, Creatur
 	}
 }
 
-void PerformanceManager::performanceMessageToBandListeners(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
+void PerformanceManager::performanceMessageToBandPatrons(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
 	ManagedReference<GroupObject*> group = actor->getGroup();
 
 	if (group == nullptr)
@@ -409,67 +409,28 @@ void PerformanceManager::performanceMessageToBandListeners(CreatureObject* actor
 		if (groupMember == nullptr || !groupMember->isPlayerCreature() || groupMember == actor)
 			continue;
 
-		performanceMessageToListeners(groupMember, target, table, text);
+		performanceMessageToPatrons(groupMember, target, table, text);
 	}
 }
 
-void PerformanceManager::performanceMessageToBandWatchers(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
-	ManagedReference<GroupObject*> group = actor->getGroup();
-
-	if (group == nullptr)
-		return;
-
-	for (int i = 0; i < group->getGroupSize(); i++) {
-		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
-
-		if (groupMember == nullptr || !groupMember->isPlayerCreature() || groupMember == actor)
-			continue;
-
-		performanceMessageToWatchers(groupMember, target, table, text);
-	}
-}
-
-void PerformanceManager::performanceMessageToListeners(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
-	SortedVector<ManagedReference<CreatureObject*> > listeners;
+void PerformanceManager::performanceMessageToPatrons(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
 	ManagedReference<EntertainingSession*> session = actor->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 	if (session == nullptr)
 		return;
 
-	session->getListenersInRange(listeners);
+	SortedVector<ManagedReference<CreatureObject*> > patrons = session->getPatrons();
 
-	if (listeners.size() == 0)
+	if (patrons.size() == 0)
 		return;
 
-	for (int i = 0; i < listeners.size(); i++) {
-		ManagedReference<CreatureObject*> listener = listeners.get(i);
+	for (int i = 0; i < patrons.size(); i++) {
+		ManagedReference<CreatureObject*> patron = patrons.get(i);
 
-		if (listener == nullptr)
+		if (patron == nullptr)
 			continue;
 
-		performanceMessageToPlayer(listener, actor, target, table, text);
-	}
-}
-
-void PerformanceManager::performanceMessageToWatchers(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
-	SortedVector<ManagedReference<CreatureObject*> > watchers;
-	ManagedReference<EntertainingSession*> session = actor->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
-
-	if (session == nullptr)
-		return;
-
-	session->getWatchersInRange(watchers);
-
-	if (watchers.size() == 0)
-		return;
-
-	for (int i = 0; i < watchers.size(); i++) {
-		ManagedReference<CreatureObject*> watcher = watchers.get(i);
-
-		if (watcher == nullptr)
-			continue;
-
-		performanceMessageToPlayer(watcher, actor, target, table, text);
+		performanceMessageToPlayer(patron, actor, target, table, text);
 	}
 }
 

@@ -146,7 +146,7 @@ public:
 			performanceManager->performanceMessageToBand(creature, nullptr, "performance", "music_start_band_members"); // %TU prepares to start your band playing.
 		}
 
-		performanceManager->performanceMessageToBandListeners(creature, nullptr, "performance", "music_start_band_other"); // %TU's band prepares to start playing.
+		performanceManager->performanceMessageToBandPatrons(creature, nullptr, "performance", "music_start_band_other"); // %TU's band prepares to start playing.
 
 		if (bandMemberLacksSkill)
 			performanceManager->performanceMessageToSelf(creature, nullptr, "performance", "music_lack_skill_band_member"); // One of the band members lacked the skill to perform that song.
