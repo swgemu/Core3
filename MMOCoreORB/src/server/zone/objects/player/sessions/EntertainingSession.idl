@@ -23,10 +23,7 @@ class EntertainingSession extends Facade {
 	protected EntertainingObserver observer;
 	
 	@dereferenced
-	protected EntertainingDataMap watchers;
-	
-	@dereferenced
-	protected EntertainingDataMap listeners;
+	protected EntertainingDataMap patronDataMap;
 	
 	@dereferenced
 	protected SortedVector<CreatureObject> denyServiceList;
@@ -37,8 +34,6 @@ class EntertainingSession extends Facade {
 	protected Time nextTick;
 	
 	protected int performanceIndex;
-	protected boolean dancing;
-	protected boolean playingMusic;
 	
 	protected int flourishXp;
 	protected int oldFlourishXp;
@@ -59,12 +54,7 @@ class EntertainingSession extends Facade {
 		
 		observer = null;
 		
-		dancing = false;
-		playingMusic = false;
 		acceptingBandFlourishes = true;
-		
-		watchers.setNoDuplicateInsertPlan();
-		listeners.setNoDuplicateInsertPlan();
 		
 		Logger.setLoggingName("EntertainingSession");
 		Logger.setLogging(false);
@@ -147,16 +137,11 @@ class EntertainingSession extends Facade {
 
 	public native string getPerformanceName();
 	
-	public native void addWatcher(CreatureObject creature);
-	public native void addListener(CreatureObject listener);
+	public native void addPatron(CreatureObject creature);
+	public native void removePatron(CreatureObject creature);
 	
-	public boolean isDancing() {
-		return dancing;
-	}
-	
-	public boolean isPlayingMusic() {
-		return playingMusic;
-	}
+	public native boolean isDancing();
+	public native boolean isPlayingMusic();
 	
 	public boolean isAcceptingBandFlourishes() {
 		return acceptingBandFlourishes;
@@ -164,18 +149,6 @@ class EntertainingSession extends Facade {
 	
 	public void setAcceptingBandFlourishes(boolean val) {
 		acceptingBandFlourishes = val;
-	}
-	
-	public void removeWatcher(CreatureObject creature) {
-		watchers.drop(creature);
-	}
-	
-	public void removeListener(CreatureObject creature) {
-		listeners.drop(creature);
-	}
-	
-	public void setDancing(boolean val) {
-		dancing = val;
 	}
 
 	public native void updateEntertainerMissionStatus(boolean entertaining, final int missionType);
@@ -198,7 +171,11 @@ class EntertainingSession extends Facade {
 	
 	@local
 	@dereferenced
-	public native Vector<unsigned long> getAudience();
+	public native SortedVector<CreatureObject> getPatrons();
+	
+	public native int getAudienceSize() {
+		return patronDataMap.size();
+	}
 	
 	public native int getBandAudienceSize();
 	
@@ -213,9 +190,5 @@ class EntertainingSession extends Facade {
 	public int getPerformanceIndex() {
 		return performanceIndex;
 	}
-	
-	@local
-	public native void getListenersInRange(@dereferenced SortedVector<CreatureObject> listeners);
-	@local
-	public native void getWatchersInRange(@dereferenced SortedVector<CreatureObject> watchers);
+
 }
