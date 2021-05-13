@@ -136,6 +136,15 @@ Performance* PerformanceManager::getPerformanceFromIndex(int index) {
 	return nullptr;
 }
 
+String PerformanceManager::getInstrumentFromIndex(int index) {
+	Performance* performance = getPerformanceFromIndex(index);
+
+	if (performance == nullptr)
+		return "";
+
+	return performance->getRequiredInstrument();
+}
+
 int PerformanceManager::getMatchingPerformanceIndex(int performanceIndex, int instrumentType) {
 	if (performances == nullptr)
 		return 0;
@@ -376,6 +385,31 @@ String PerformanceManager::getInstrument(int instrumentType) {
 	return instrument;
 }
 
+int PerformanceManager::getInstrumentId(const String& instrument) {
+	if (instrument == "traz") {
+		return InstrumentImplementation::TRAZ;
+	} else if (instrument == "slitherhorn") {
+		return InstrumentImplementation::SLITHERHORN;
+	} else if (instrument == "fanfar") {
+		return InstrumentImplementation::FANFAR;
+	} else if (instrument == "chidinkalu") {
+		return InstrumentImplementation::FLUTEDROOPY;
+	} else if (instrument == "kloohorn") {
+		return InstrumentImplementation::KLOOHORN;
+	} else if (instrument == "fizz") {
+		return InstrumentImplementation::FIZZ;
+	} else if (instrument == "bandfill") {
+		return InstrumentImplementation::BANDFILL;
+	} else if (instrument == "omnibox") {
+		return InstrumentImplementation::OMNIBOX;
+	} else if (instrument == "nalargon") {
+		return InstrumentImplementation::NALARGON;
+	} else if (instrument == "mandoviol") {
+		return InstrumentImplementation::MANDOVIOL;
+	} else {
+		return -1;
+	}
+}
 
 void PerformanceManager::performanceMessageToSelf(CreatureObject* actor, CreatureObject* target, const String& table, const String& text) {
 	performanceMessageToPlayer(actor, actor, target, table, text);

@@ -10,6 +10,8 @@
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/managers/skill/PerformanceManager.h"
 
 class BandFlourishCommand : public QueueCommand {
 public:
@@ -19,38 +21,45 @@ public:
 
 	}
 
-	static bool doBandFlourish(CreatureObject* player, String& number, String& instrumentName) {
+	static bool doBandFlourish(CreatureObject* player, int flourishNum, String& instrumentName) {
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (group == nullptr)
 			return false;
 
 		int instrumentType = 0;
+		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+
 		if (!instrumentName.isEmpty()) {
-			instrumentType = determineInstrumentType(instrumentName);
+			instrumentType = performanceManager->getInstrumentId(instrumentName);
 
 			if (instrumentType < 0) {
-				player->sendSystemMessage("@performance:flourish_instrument_unknown");
+				player->sendSystemMessage("@performance:flourish_instrument_unknown"); // You specified an unknown instrument for a band flourish.
 				return false;
 			}
+		}
+
+		if (flourishNum < 1 || flourishNum > 8) {
+			player->sendSystemMessage("@performance:flourish_not_valid"); // That is not a valid flourish.
+			return false;
 		}
 
 		//Make group members flourish.
 		StringIdChatParameter params;
 		params.setTT(player->getFirstName());
 
-		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
-
-		if (facade == nullptr)
-			return false;
-
-		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+		ManagedReference<EntertainingSession *> session = player->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession *>();
 
 		if (session == nullptr)
 			return false;
 
 		bool isLeadDancing = session->isDancing();
 		bool isLeadPlaying = session->isPlayingMusic();
+
+		if (!isLeadDancing && !isLeadPlaying) {
+			player->sendSystemMessage("@performance:flourish_not_performing"); // You must be playing music or dancing in order to perform a flourish.
+			return false;
+		}
 
 		player->unlock();
 
@@ -69,8 +78,7 @@ public:
 				Locker clocker(groupMember, group);
 
 				if (groupMember->isPlayerCreature()) {
-					ManagedReference<Facade*> memberFacade = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING);
-					ManagedReference<EntertainingSession*> memberSession = dynamic_cast<EntertainingSession*>(memberFacade.get());
+					ManagedReference<EntertainingSession *> memberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession *>();
 
 					if (memberSession == nullptr)
 						continue;
@@ -85,20 +93,24 @@ public:
 						if (!memberSession->isPlayingMusic())
 							continue;
 
+						int memberInstrumentType = 0;
+
 						ManagedReference<Instrument*> memberInstrument = groupMember->getPlayableInstrument();
-						int memberInstrumentType = memberInstrument == nullptr ? -1 : memberInstrument->getInstrumentType();
+
+						if (memberInstrument != nullptr)
+							memberInstrumentType = memberInstrument->getInstrumentType();
 
 						if (memberInstrumentType != instrumentType)
 							continue;
 
-						memberSession->doFlourish(Integer::valueOf(number), false);
+						memberSession->doFlourish(flourishNum, false);
 					} else {
 						if (isLeadDancing && !memberSession->isDancing())
 							continue;
 						else if (isLeadPlaying && !memberSession->isPlayingMusic())
 							continue;
 
-						memberSession->doFlourish(Integer::valueOf(number), false);
+						memberSession->doFlourish(flourishNum, false);
 					}
 
 					if (groupMember == player) {
@@ -127,7 +139,7 @@ public:
 						continue;
 
 					if (instrumentType == playbackModule->getCurrentInstrument() || (isLeadPlaying && instrumentType < 1))
-						playbackModule->doFlourish(Integer::valueOf(number));
+						playbackModule->doFlourish(flourishNum);
 				}
 
 			}
@@ -142,60 +154,6 @@ public:
 		return true;
 	}
 
-
-	static int determineInstrumentType(const String& instrument) {
-		if (instrument == "traz") {
-			return InstrumentImplementation::TRAZ;
-		} else if (instrument == "slitherhorn") {
-			return InstrumentImplementation::SLITHERHORN;
-		} else if (instrument == "fanfar") {
-			return InstrumentImplementation::FANFAR;
-		} else if (instrument == "chidinkalu") {
-			return InstrumentImplementation::FLUTEDROOPY;
-		} else if (instrument == "kloohorn") {
-			return InstrumentImplementation::KLOOHORN;
-		} else if (instrument == "fizz") {
-			return InstrumentImplementation::FIZZ;
-		} else if (instrument == "bandfill") {
-			return InstrumentImplementation::BANDFILL;
-		} else if (instrument == "omnibox") {
-			return InstrumentImplementation::OMNIBOX;
-		} else if (instrument == "nalargon") {
-			return InstrumentImplementation::NALARGON;
-		} else if (instrument == "mandoviol") {
-			return InstrumentImplementation::MANDOVIOL;
-		} else {
-			return -1;
-		}
-	}
-
-	static bool parseOptions(CreatureObject* player, const String& options, String& stringA, String& stringB) {
-		if (options.isEmpty()) {
-			player->sendSystemMessage("@performance:band_flourish_format");
-			return false;
-		}
-
-		stringA = "";
-		stringB = "";
-
-		StringTokenizer tokenizer(options);
-		tokenizer.setDelimeter(" ");
-		tokenizer.getStringToken(stringA);
-		stringA.toLowerCase();
-
-		if (tokenizer.hasMoreTokens()) {
-			tokenizer.getStringToken(stringB);
-			stringB.toLowerCase();
-		}
-
-		if (tokenizer.hasMoreTokens()) {
-			player->sendSystemMessage("@performance:band_flourish_format");
-			return false;
-		}
-
-		return true;
-	}
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -206,31 +164,42 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		String stringA, instrumentName;
-
-		//Parse the options from the input string. This is the text the player entered after "/bandFlourish"
-		if (!parseOptions(creature, arguments.toString(), stringA, instrumentName))
+		if (arguments.isEmpty()) {
+			creature->sendSystemMessage("@performance:band_flourish_format");
 			return GENERALERROR;
+		}
 
-		int number = Integer::valueOf(stringA);
+		String tempString, instrumentName;
+		int instrumentNum;
 
-		if (number > 0) {
-			if (!doBandFlourish(creature, stringA, instrumentName))
+		StringTokenizer tokenizer(arguments.toString());
+		tokenizer.setDelimeter(" ");
+		tokenizer.getStringToken(tempString);
+		tempString.toLowerCase();
+
+		int flourishNum = Integer::valueOf(tempString);
+
+		if (flourishNum > 0) {
+			if (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(instrumentName);
+				instrumentName.toLowerCase();
+			}
+
+			if (doBandFlourish(creature, flourishNum, instrumentName))
 				return SUCCESS;
 			else
 				return GENERALERROR;
 		}
 
-		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+		ManagedReference<EntertainingSession *> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession *>();
 
-		if (stringA == "on") {
+		if (tempString == "on") {
 			session->setAcceptingBandFlourishes(true);
 			creature->sendSystemMessage("@performance:band_flourish_on");
-		} else if (stringA == "off") {
+		} else if (tempString == "off") {
 			session->setAcceptingBandFlourishes(false);
 			creature->sendSystemMessage("@performance:band_flourish_off");
-		} else if (stringA == "status") {
+		} else if (tempString == "status") {
 			if (session->isAcceptingBandFlourishes()) {
 				creature->sendSystemMessage("@performance:band_flourish_status_on");
 			} else {
@@ -242,6 +211,10 @@ public:
 		}
 
 		return SUCCESS;
+	}
+
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
+		return 0;
 	}
 
 };
