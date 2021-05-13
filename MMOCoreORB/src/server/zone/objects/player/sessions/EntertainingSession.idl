@@ -41,6 +41,7 @@ class EntertainingSession extends Facade {
 	protected int flourishCount;
 	protected int applauseCount;
 	protected boolean acceptingBandFlourishes;
+	protected boolean performingEffect;
 	
 	public EntertainingSession(CreatureObject ent) {
 		entertainer = ent;
@@ -55,6 +56,7 @@ class EntertainingSession extends Facade {
 		observer = null;
 		
 		acceptingBandFlourishes = true;
+		performingEffect = false;
 		
 		Logger.setLoggingName("EntertainingSession");
 		Logger.setLogging(false);
@@ -151,6 +153,7 @@ class EntertainingSession extends Facade {
 		acceptingBandFlourishes = val;
 	}
 
+	public native void doPerformEffect(int effectId, int effectLevel);
 	public native void updateEntertainerMissionStatus(boolean entertaining, final int missionType);
 	
 	public boolean isInDenyServiceList(CreatureObject target) {
@@ -189,6 +192,14 @@ class EntertainingSession extends Facade {
 	
 	public int getPerformanceIndex() {
 		return performanceIndex;
+	}
+	
+	public boolean isPerformingEffect() {
+		return performingEffect;
+	}
+	
+	public void setPerformingEffect(boolean val) {
+		performingEffect = val;
 	}
 
 }
