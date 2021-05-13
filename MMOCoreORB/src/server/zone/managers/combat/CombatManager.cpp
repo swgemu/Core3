@@ -28,8 +28,19 @@
 #include "server/zone/packets/object/ShowFlyText.h"
 #include "server/zone/managers/frs/FrsManager.h"
 
-#define COMBAT_SPAM_RANGE 85
+#define COMBAT_SPAM_RANGE 85 // Range at which players will see Combat Log Info
 
+/*
+* Notes:
+* Every player that uses an attack ability, including peace, is considered the attacker in a CombatManager instance.
+*
+* Each Attacker has their Defender List stored on their Object.
+* Peace will clear a Object's defender list, but they will not be able to exit Combat if checks are not passed.
+*
+*
+*/
+
+// Sets attackers mainDefender and puts both in combat
 bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defender, bool lockDefender, bool allowIncapTarget) const {
 	if (attacker == defender)
 		return false;
@@ -80,8 +91,9 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (creo != nullptr && creo->isPlayerCreature() && !creo->hasDefender(attacker)) {
 		ManagedReference<WeaponObject*> weapon = creo->getWeapon();
 
-		if (weapon != nullptr && weapon->isJediWeapon())
+		if (weapon != nullptr && weapon->isJediWeapon()) {
 			VisibilityManager::instance()->increaseVisibility(creo, 25);
+		}
 	}
 
 	attacker->setCombatState();
@@ -97,10 +109,10 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 		}
 	}
 
-
 	return true;
 }
 
+// Called when creature attempts to peace out of combat -- Defender List is cleared
 bool CombatManager::attemptPeace(CreatureObject* attacker) const {
 
 	attacker->removeDefenders();
@@ -130,6 +142,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) const {
 	return true;
 }
 
+// Called for AiAgents to break their combat state
 void CombatManager::forcePeace(CreatureObject* attacker) const {
 	fatal(attacker->isLockedByCurrentThread(), "attacker must be locked");
 
@@ -160,6 +173,17 @@ void CombatManager::forcePeace(CreatureObject* attacker) const {
 	attacker->clearCombatState(false);
 	attacker->setState(CreatureState::PEACE);
 }
+
+/*
+*
+*	Start Combat Action
+*
+*/
+
+/*
+	CreO attacker -- doCombatAction
+
+*/
 
 int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) const {
 	debug("entering doCombat action with data");
@@ -240,27 +264,11 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	return damage;
 }
 
-int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, const CombatQueueCommand* command) const {
-	if (command == nullptr)
-		return -3;
+/*
 
-	const CreatureAttackData data = CreatureAttackData("", command, defender->getObjectID());
-	int damage = 0;
+	CreO attacker -- doTargetCombatAction
 
-	if (weapon != nullptr){
-		damage = doTargetCombatAction(attacker, weapon, defender, data);
-
-		if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction()) {
-			Reference<SortedVector<ManagedReference<TangibleObject*> >* > areaDefenders = getAreaTargets(attacker, weapon, defender, data);
-
-			for (int i=0; i<areaDefenders->size(); i++) {
-				damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), data);
-			}
-		}
-	}
-
-	return damage;
-}
+*/
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data, bool* shouldGcwCrackdownTef, bool* shouldGcwTef, bool* shouldBhTef) const {
 	int damage = 0;
@@ -311,6 +319,12 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 	return damage;
 }
+
+/*
+
+	CreO attacker && CreO Defender -- doTargetCombatAction
+
+*/
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, bool* shouldGcwCrackdownTef, bool* shouldGcwTef, bool* shouldBhTef) const {
 	if (defender->isEntertaining()) {
@@ -396,6 +410,39 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	return damage;
 }
 
+/*
+	TanO attacker -- doCombatAction
+
+*/
+
+int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, const CombatQueueCommand* command) const {
+	if (command == nullptr)
+		return -3;
+
+	const CreatureAttackData data = CreatureAttackData("", command, defender->getObjectID());
+	int damage = 0;
+
+	if (weapon != nullptr){
+		damage = doTargetCombatAction(attacker, weapon, defender, data);
+
+		if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction()) {
+			Reference<SortedVector<ManagedReference<TangibleObject*> >* > areaDefenders = getAreaTargets(attacker, weapon, defender, data);
+
+			for (int i=0; i<areaDefenders->size(); i++) {
+				damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), data);
+			}
+		}
+	}
+
+	return damage;
+}
+
+/*
+
+	TanO attacker -- doTargetCombatAction
+
+*/
+
 int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) const {
 
 	int damage = 0;
@@ -413,6 +460,12 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	return damage;
 }
+
+/*
+
+	TanO attacker && CreO Defender -- doTargetCombatAction
+
+*/
 
 int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data) const {
 	if(defenderObject == nullptr || !defenderObject->isAttackableBy(attacker))
@@ -491,6 +544,160 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	return damage;
 }
+
+/*
+	Broadcast CombatAction Packets
+	-- Handles Animations
+
+*/
+
+void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObject * defenderObject,
+		WeaponObject* weapon, const CreatureAttackData & data, int damage, uint8 hit, uint8 hitLocation) const {
+	const String& animation = data.getCommand()->getAnimation(attacker, defenderObject, weapon, hitLocation, damage);
+
+	uint32 animationCRC = 0;
+
+	if (!animation.isEmpty())
+		animationCRC = animation.hashCode();
+
+	fatal(animationCRC != 0, "animationCRC is 0");
+
+	uint64 weaponID = weapon->getObjectID();
+
+	CreatureObject *dcreo = defenderObject->asCreatureObject();
+	if (dcreo != nullptr) { // All of this funkiness only applies to creo targets, tano's don't animate hits or posture changes
+
+		dcreo->updatePostures(false); // Commit pending posture changes to the client and notify observers
+
+		if (data.getPrimaryTarget() != defenderObject->getObjectID()){ // Check if we should play the default animation or one of several reaction animations
+
+			if (hit == HIT) {
+
+				if (data.changesDefenderPosture() && (!dcreo->isIncapacitated() && !dcreo->isDead())) {
+					dcreo->doCombatAnimation(STRING_HASHCODE("change_posture")); // We're not the primary target, but we are the victim of a posture change attack
+				} else {
+					dcreo->doCombatAnimation(STRING_HASHCODE("get_hit_medium")); // We're not the primary target but were hit - play the got hit animation
+				}
+
+			} else { // Not a hit but also not the primary target - play a dodge animation
+				dcreo->doCombatAnimation(STRING_HASHCODE("dodge"));
+			}
+
+		} else { // Primary target attack - play default animation
+			attacker->doCombatAnimation(dcreo, animationCRC, hit, data.getTrails(), weaponID);
+		}
+
+	} else {
+		if(data.getPrimaryTarget() == defenderObject->getObjectID()){ // Tano target attack - play default animation
+			attacker->doCombatAnimation(defenderObject, animationCRC, hit, data.getTrails(), weaponID);
+		}
+	}
+
+	if(data.changesAttackerPosture())
+		attacker->updatePostures(false);
+
+	const String& effect = data.getCommand()->getEffectString();
+
+	if (!effect.isEmpty())
+		attacker->playEffect(effect);
+}
+
+// broadcast CombatSpam packets
+void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* item,
+		int damage, const String& file, const String& stringName, byte color) const {
+	if (attacker == nullptr)
+		return;
+
+	Zone* zone = attacker->getZone();
+	if (zone == nullptr)
+		return;
+
+	CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+	SortedVector<QuadTreeEntry*> closeObjects;
+
+	if (vec != nullptr) {
+		closeObjects.removeAll(vec->size(), 10);
+		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
+	} else {
+#ifdef COV_DEBUG
+		info("Null closeobjects vector in CombatManager::broadcastCombatSpam", true);
+#endif
+		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), COMBAT_SPAM_RANGE, &closeObjects, true);
+	}
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* object = static_cast<SceneObject*>( closeObjects.get(i));
+
+		if (object->isPlayerCreature() && attacker->isInRange(object, COMBAT_SPAM_RANGE)) {
+			CreatureObject* receiver = static_cast<CreatureObject*>( object);
+			CombatSpam* spam = new CombatSpam(attacker, defender, receiver, item, damage, file, stringName, color);
+			receiver->sendMessage(spam);
+		}
+	}
+}
+
+void CombatManager::sendMitigationCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, int type) const {
+	if (defender == nullptr || !defender->isPlayerCreature())
+			return;
+
+	int color = 0; //text color
+	String file = "";
+	String stringName = "";
+
+	switch (type) {
+	case PSG:
+		color = 1; //green, confirmed
+		file = "cbt_spam";
+		stringName = "shield_damaged";
+		break;
+	case FORCESHIELD:
+		color = 1; //green, unconfirmed
+		file = "cbt_spam";
+		stringName = "forceshield_hit";
+		item = nullptr;
+		break;
+	case FORCEFEEDBACK:
+		color = 2; //red, confirmed
+		file = "cbt_spam";
+		stringName = "forcefeedback_hit";
+		item = nullptr;
+		break;
+	case FORCEABSORB:
+		color = 0; //white, unconfirmed
+		file = "cbt_spam";
+		stringName = "forceabsorb_hit";
+		item = nullptr;
+		break;
+	case FORCEARMOR:
+		color = 1; //green, confirmed
+		file = "cbt_spam";
+		stringName = "forcearmor_hit";
+		item = nullptr;
+		break;
+	case ARMOR:
+		color = 1; //green, confirmed
+		file = "cbt_spam";
+		stringName = "armor_damaged";
+		break;
+	case FOOD:
+		color = 0; //white, confirmed
+		file = "combat_effects";
+		stringName = "mitigate_damage";
+		item = nullptr;
+		break;
+	default:
+		break;
+	}
+
+	CombatSpam* spam = new CombatSpam(defender, nullptr, defender, item, damage, file, stringName, color);
+	defender->sendMessage(spam);
+}
+
+/*
+*
+*	Other Combat Functions Below
+*
+*/
 
 void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage, int unmitDamage, int poolsToDamage) const {
 	const Vector<DotEffect>* dotEffects = data.getDotEffects();
@@ -2130,147 +2337,6 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
 
 	return damage;
-}
-
-void CombatManager::sendMitigationCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, int type) const {
-	if (defender == nullptr || !defender->isPlayerCreature())
-			return;
-
-	int color = 0; //text color
-	String file = "";
-	String stringName = "";
-
-	switch (type) {
-	case PSG:
-		color = 1; //green, confirmed
-		file = "cbt_spam";
-		stringName = "shield_damaged";
-		break;
-	case FORCESHIELD:
-		color = 1; //green, unconfirmed
-		file = "cbt_spam";
-		stringName = "forceshield_hit";
-		item = nullptr;
-		break;
-	case FORCEFEEDBACK:
-		color = 2; //red, confirmed
-		file = "cbt_spam";
-		stringName = "forcefeedback_hit";
-		item = nullptr;
-		break;
-	case FORCEABSORB:
-		color = 0; //white, unconfirmed
-		file = "cbt_spam";
-		stringName = "forceabsorb_hit";
-		item = nullptr;
-		break;
-	case FORCEARMOR:
-		color = 1; //green, confirmed
-		file = "cbt_spam";
-		stringName = "forcearmor_hit";
-		item = nullptr;
-		break;
-	case ARMOR:
-		color = 1; //green, confirmed
-		file = "cbt_spam";
-		stringName = "armor_damaged";
-		break;
-	case FOOD:
-		color = 0; //white, confirmed
-		file = "combat_effects";
-		stringName = "mitigate_damage";
-		item = nullptr;
-		break;
-	default:
-		break;
-	}
-
-	CombatSpam* spam = new CombatSpam(defender, nullptr, defender, item, damage, file, stringName, color);
-	defender->sendMessage(spam);
-}
-
-void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* item,
-		int damage, const String& file, const String& stringName, byte color) const {
-	if (attacker == nullptr)
-		return;
-
-	Zone* zone = attacker->getZone();
-	if (zone == nullptr)
-		return;
-
-	CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
-	SortedVector<QuadTreeEntry*> closeObjects;
-
-	if (vec != nullptr) {
-		closeObjects.removeAll(vec->size(), 10);
-		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
-	} else {
-#ifdef COV_DEBUG
-		info("Null closeobjects vector in CombatManager::broadcastCombatSpam", true);
-#endif
-		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), COMBAT_SPAM_RANGE, &closeObjects, true);
-	}
-
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* object = static_cast<SceneObject*>( closeObjects.get(i));
-
-		if (object->isPlayerCreature() && attacker->isInRange(object, COMBAT_SPAM_RANGE)) {
-			CreatureObject* receiver = static_cast<CreatureObject*>( object);
-			CombatSpam* spam = new CombatSpam(attacker, defender, receiver, item, damage, file, stringName, color);
-			receiver->sendMessage(spam);
-		}
-	}
-}
-
-void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObject * defenderObject,
-		WeaponObject* weapon, const CreatureAttackData & data, int damage, uint8 hit, uint8 hitLocation) const {
-	const String& animation = data.getCommand()->getAnimation(attacker, defenderObject, weapon, hitLocation, damage);
-
-	uint32 animationCRC = 0;
-
-	if (!animation.isEmpty())
-		animationCRC = animation.hashCode();
-
-	fatal(animationCRC != 0, "animationCRC is 0");
-
-	uint64 weaponID = weapon->getObjectID();
-
-	CreatureObject *dcreo = defenderObject->asCreatureObject();
-	if (dcreo != nullptr) { // All of this funkiness only applies to creo targets, tano's don't animate hits or posture changes
-
-		dcreo->updatePostures(false); // Commit pending posture changes to the client and notify observers
-
-		if (data.getPrimaryTarget() != defenderObject->getObjectID()){ // Check if we should play the default animation or one of several reaction animations
-
-			if (hit == HIT) {
-
-				if (data.changesDefenderPosture() && (!dcreo->isIncapacitated() && !dcreo->isDead())) {
-					dcreo->doCombatAnimation(STRING_HASHCODE("change_posture")); // We're not the primary target, but we are the victim of a posture change attack
-				} else {
-					dcreo->doCombatAnimation(STRING_HASHCODE("get_hit_medium")); // We're not the primary target but were hit - play the got hit animation
-				}
-
-			} else { // Not a hit but also not the primary target - play a dodge animation
-				dcreo->doCombatAnimation(STRING_HASHCODE("dodge"));
-			}
-
-		} else { // Primary target attack - play default animation
-			attacker->doCombatAnimation(dcreo, animationCRC, hit, data.getTrails(), weaponID);
-		}
-
-	} else {
-		if(data.getPrimaryTarget() == defenderObject->getObjectID()){ // Tano target attack - play default animation
-			attacker->doCombatAnimation(defenderObject, animationCRC, hit, data.getTrails(), weaponID);
-		}
-	}
-
-	if(data.changesAttackerPosture())
-		attacker->updatePostures(false);
-
-	const String& effect = data.getCommand()->getEffectString();
-
-	if (!effect.isEmpty())
-		attacker->playEffect(effect);
 }
 
 void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPlayer) const {
