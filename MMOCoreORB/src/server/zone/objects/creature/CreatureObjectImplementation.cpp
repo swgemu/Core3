@@ -1988,7 +1988,7 @@ void CreatureObjectImplementation::activateQueueAction() {
 	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
 	for (int i = 0; i < commandQueue->size(); i++) {
 		Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
-		if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter()) {
+		if (action == actionToDelete) {
 			commandQueue->remove(i);
 			break;
 		}
