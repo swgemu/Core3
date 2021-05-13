@@ -5,6 +5,8 @@
 #ifndef VENTRILOQUISMCOMMAND_H_
 #define VENTRILOQUISMCOMMAND_H_
 
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
+
 class VentriloquismCommand : public QueueCommand {
 public:
 
@@ -21,46 +23,15 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (!creature->isEntertaining()) {
-			creature->sendSystemMessage("@performance:effect_not_performing");
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
+
+		if (session == nullptr || (!session->isPlayingMusic() && !session->isDancing())) {
+			creature->sendSystemMessage("@performance:effect_not_performing"); // You must be performing in order to execute this special effect.
 			return GENERALERROR;
 		}
 
-		if (!creature->isPlayingMusic()) {
-			creature->sendSystemMessage("@performance:effect_not_performing_correct");
-			return GENERALERROR;
-		}
-
-		int actionModifier = Integer::valueOf(arguments.toString());
-
-		if (actionModifier > 3 || actionModifier < 1)
-			actionModifier = 3;
-
-		StringBuffer effect;
-		effect << "clienteffect/entertainer_ventriloquism_level_" << dec << actionModifier << ".cef";
-
-		uint64 selectedTarget = creature->getTargetID();
- 		ManagedReference<CreatureObject*> targetCreature = server->getZoneServer()->getObject(selectedTarget).castTo<CreatureObject*>();
-
- 		if(targetCreature == nullptr) {
-			creature->sendSystemMessage("@performance:effect_need_target");
-			return GENERALERROR;
-		}
-		if(targetCreature == creature || !targetCreature->isPlayerCreature())
-			return GENERALERROR;
-
-
-		int actionCost = 30 * actionModifier;
-		actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, actionCost);
-		if (creature->getHAM(CreatureAttribute::ACTION) <= actionCost) {
-			creature->sendSystemMessage("@performance:effect_too_tired");
-			return GENERALERROR;
-		}
-		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
-
-		targetCreature->playEffect(effect.toString(), "");
-
-		creature->sendSystemMessage("@performance:effect_perform_ventriloquism");
+		int effectLevel = Integer::valueOf(arguments.toString());
+		session->doPerformEffect(PerformEffect::VENTRILOQUISM, effectLevel);
 
 		return SUCCESS;
 	}

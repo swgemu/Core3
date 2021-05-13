@@ -6,6 +6,7 @@
 #define PERFORMANCEMANAGER_H_
 
 #include "Performance.h"
+#include "PerformEffect.h"
 #include "engine/log/Logger.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -14,8 +15,10 @@ class PerformanceManager: public Logger {
 	HashTable<String, int> instrumentIdMap;
 
 	Vector<Performance*>* performances;
+	Vector<PerformEffect*>* performEffects;
 	int loadedCount;
 	void loadPerformances();
+	void loadPerformEffects();
 
 public:
 	PerformanceManager();
@@ -27,6 +30,8 @@ public:
 	Performance* getDance(const String& name);
 	Performance* getSong(const String& name, int instrumentType);
 	Performance* getPerformanceFromIndex(int index);
+
+	PerformEffect* getPerformEffect(int effectId, int effectLevel);
 
 	int getPerformanceIndex(int type, const String& name, int instrumentType);
 	int getMatchingPerformanceIndex(int type, int instrumentType);
