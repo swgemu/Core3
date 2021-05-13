@@ -69,7 +69,7 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 }
 
 float ObjectControllerImplementation::activateCommand(CreatureObject* object, unsigned int actionCRC,
-		unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) const {
+		unsigned int actionCount, uint64 targetID, const UnicodeString& arguments, int& errorNumber) const {
 	// Pre: object is wlocked
 	// Post: object is wlocked
 
@@ -146,7 +146,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		object->addSkillMod(SkillModManager::ABILITYBONUS, skillMod, value, false);
 	}
 
-	int errorNumber = queueCommand->doQueueCommand(object, targetID, arguments);
+	errorNumber = queueCommand->doQueueCommand(object, targetID, arguments);
 
 	/// Remove Skillmods if any
 	for(int i = 0; i < queueCommand->getSkillModSize(); ++i) {
@@ -166,6 +166,11 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 	}
 
 	return durationTime;
+}
+
+float ObjectControllerImplementation::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) const {
+	int errorNumber = -1;
+	return activateCommand(object, actionCRC, actionCount, targetID, arguments, errorNumber);
 }
 
 void ObjectControllerImplementation::addQueueCommand(QueueCommand* command) {

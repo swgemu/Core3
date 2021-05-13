@@ -1977,7 +1977,11 @@ void CreatureObjectImplementation::activateQueueAction() {
 	nextAction.updateToCurrentTime();
 	nextAction.addMiliTime(1000);
 
-	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+	int errorNumber = -1;
+
+	float time = objectController->activateCommand(asCreatureObject(), action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments(), errorNumber);
+
+	action->setErrorNumber(errorNumber);
 
 	nextAction.updateToCurrentTime();
 
@@ -1988,7 +1992,7 @@ void CreatureObjectImplementation::activateQueueAction() {
 	// Remove element from queue after it has been executed in order to ensure that other commands are enqueued and not activated at immediately.
 	for (int i = 0; i < commandQueue->size(); i++) {
 		Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
-		if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter()) {
+		if (action->getCommand() == actionToDelete->getCommand() && action->getActionCounter() == actionToDelete->getActionCounter() && action->getCompareToCounter() == actionToDelete->getCompareToCounter() && action->getErrorNumber() >= 0) {
 			commandQueue->remove(i);
 			break;
 		}

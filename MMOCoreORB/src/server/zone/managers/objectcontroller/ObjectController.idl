@@ -50,6 +50,9 @@ class ObjectController extends ManagedService implements Logger {
 	 * @returns time in seconds of command execution
 	 */
 	@read
+	public native float activateCommand(CreatureObject object, unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments, @dereferenced int errorNumber);
+	
+	@read
 	public native float activateCommand(CreatureObject object, unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments);
 
 	@local

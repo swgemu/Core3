@@ -16,6 +16,8 @@ CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 tar, uint32 co
 	creature = cr;
 	queueCommand = command;
 	compareToCounter = actionCounter;
+
+	errorNumber = -1;
 }
 
 void CommandQueueAction::clear(float timer, uint32 tab1, uint32 tab2) {

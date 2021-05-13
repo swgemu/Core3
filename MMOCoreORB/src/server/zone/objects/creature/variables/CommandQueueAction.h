@@ -56,6 +56,8 @@ class CommandQueueAction : public Object {
 
 	int compareToCounter;
 
+	int errorNumber;
+
 public:
 	CommandQueueAction(CreatureObject* cr, uint64 tar, uint32 command, uint32 acntr, const UnicodeString& amod);
 
@@ -99,6 +101,14 @@ public:
 
 	inline uint64 getTarget() {
 		return target;
+	}
+
+	inline int getErrorNumber() {
+		return errorNumber;
+	}
+
+	inline void setErrorNumber(int num) {
+		errorNumber = num;
 	}
 
 	inline uint32 getActionCounter() {
