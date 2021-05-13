@@ -30,11 +30,13 @@ public:
 
 	int getPerformanceIndex(int type, const String& name, int instrumentType);
 	int getMatchingPerformanceIndex(int type, int instrumentType);
+	String getInstrumentFromIndex(int performanceIndex);
 
 	Vector<Performance*> getPerformanceListFromMod(const String& requiredSkillMod, int playerSkillModValue,	int instrument);
 
 	String getInstrumentAnimation(int instrumentType);
 	String getInstrument(int instrumentType);
+	int getInstrumentId(const String& instrument);
 
 	String getDanceAnimation(int performanceIndex);
 
