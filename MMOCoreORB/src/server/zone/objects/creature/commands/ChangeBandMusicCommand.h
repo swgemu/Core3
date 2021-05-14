@@ -10,6 +10,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/skill/PerformanceManager.h"
+#include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 #include "StartMusicCommand.h"
 
 class ChangeBandMusicCommand : public QueueCommand {
@@ -84,10 +85,40 @@ public:
 			for (int i = 0; i < group->getGroupSize(); ++i) {
 				Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-				if (groupMember == nullptr || groupMember == creature || !groupMember->isPlayingMusic())
+				if (groupMember == nullptr || groupMember == creature)
 					continue;
 
 				Locker clocker(groupMember, creature);
+
+				if (groupMember->isDroidObject()) {
+					DroidObject* droid = cast<DroidObject*>(groupMember.get());
+
+					if (droid == nullptr)
+						continue;
+
+					auto module = droid->getModule("playback_module");
+
+					if (module == nullptr)
+						continue;
+
+					DroidPlaybackModuleDataComponent* playbackModule = cast<DroidPlaybackModuleDataComponent*>(module.get());
+
+					if (playbackModule == nullptr)
+						continue;
+
+					int newDroidIndex = playbackModule->getMatchingIndex(droid, performanceIndex);
+
+					if (newDroidIndex == 0) {
+						performanceManager->performanceMessageToDroidOwner(droid, nullptr, "performance", "music_track_not_available"); // Your droid does not have a track recorded for the current song in progress.
+						playbackModule->deactivate();
+						continue;
+					}
+
+					ManagedReference<CreatureObject*> owner = droid->getLinkedCreature().get();
+
+					playbackModule->playSong(owner, newDroidIndex);
+					continue;
+				}
 
 				ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
@@ -119,9 +150,12 @@ public:
 					continue;
 				}
 
-				bandMemberSession->sendEntertainingUpdate(groupMember, memberPerformanceIndex);
-
-				groupMember->notifyObservers(ObserverEventType::CHANGEENTERTAIN, groupMember);
+				if (groupMember->isPlayingMusic()) {
+					bandMemberSession->sendEntertainingUpdate(groupMember, memberPerformanceIndex);
+					groupMember->notifyObservers(ObserverEventType::CHANGEENTERTAIN, groupMember);
+				} else {
+					StartMusicCommand::startMusic(groupMember, memberPerformanceIndex, memberInstrument);
+				}
 			}
 		}
 

@@ -18,16 +18,15 @@ namespace droid {
 class DroidPlaybackModuleDataComponent : public BaseDroidModuleComponent {
 
 protected:
-	bool active;
-	bool recording;
+	bool currentlyRecording;
 	int recordingTrack;
-	String recordingSong;
-	int recordingInstrument;
+	int recordingPerformanceIndex;
 	int totalTracks;
-	int selectedIndex;
-	Vector<String> tracks; // Recorded Tracks
-	Vector<int> instruments; // instrument for a given track
+	int performanceIndex;
+	Vector<int> trackList; // Recorded Tracks
+
 	ManagedReference<DroidPlaybackObserver*> observer;
+
 	// states of recording
 	enum {
 		STATE_WAITING_TO_RECORD = 1,
@@ -49,18 +48,14 @@ public:
 	String toString() const;
 	void onCall();
 	void onStore();
-	bool isActive();
 	void addListener(uint64 id);
 	virtual bool isStackable() { return true; }
 	virtual void addToStack(BaseDroidModuleComponent* other);
 	virtual void copy(BaseDroidModuleComponent* other);
 	void deleteTrack(CreatureObject* player, int slotIndex);
-	void setTrack( CreatureObject* player, String song, int instrument);
+	void setTrack( CreatureObject* player, int perfIndex);
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
-	bool isPlayingMusic();
-	String getCurrentTrack();
-	int getCurrentInstrument();
 	void sessionTimeout(CreatureObject* player, int state);
 	void songChanged(CreatureObject* player);
 	void songStopped(CreatureObject* player);
@@ -69,19 +64,37 @@ public:
 	bool trackEmpty(int index);
 	void stopTimer();
 	void doFlourish(int number);
+	String getTrackName(int perfIndex);
+	int getMatchingIndex(DroidObject* droid, int perfIndex);
+
+	inline bool isPlayingMusic() {
+		return performanceIndex > 0;
+	}
+
+	inline int getPerformanceIndex() {
+		return performanceIndex;
+	}
+
+	inline bool isRecording() {
+		return currentlyRecording;
+	}
+
+	inline int getTotalTracks() {
+		return trackList.size();
+	}
+
+	inline int getTrackPerformanceIndex(int index) {
+		return trackList.get(index);
+	}
 
 	void writeJSON(nlohmann::json& j) const {
 		BaseDroidModuleComponent::writeJSON(j);
 
-		SERIALIZE_JSON_MEMBER(active);
-		SERIALIZE_JSON_MEMBER(recording);
+		SERIALIZE_JSON_MEMBER(currentlyRecording);
 		SERIALIZE_JSON_MEMBER(recordingTrack);
-		SERIALIZE_JSON_MEMBER(recordingSong);
-		SERIALIZE_JSON_MEMBER(recordingInstrument);
+		SERIALIZE_JSON_MEMBER(recordingPerformanceIndex);
 		SERIALIZE_JSON_MEMBER(totalTracks);
-		SERIALIZE_JSON_MEMBER(selectedIndex);
-		SERIALIZE_JSON_MEMBER(tracks);
-		SERIALIZE_JSON_MEMBER(instruments);
+		SERIALIZE_JSON_MEMBER(trackList);
 		SERIALIZE_JSON_MEMBER(observer);
 
 	}
