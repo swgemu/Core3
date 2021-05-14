@@ -25,7 +25,6 @@ class DefenderHitList : public Object {
 	int psgMitigation;
 	int armorMitigation;
 	Vector<int> poolsToWound;
-	int finalDamage;
 
 public:
 	DefenderHitList() {
@@ -42,7 +41,6 @@ public:
 		psgMitigation = 0;
 		armorMitigation = 0;
 		poolsToWound;
-		finalDamage = 0;
 	}
 
 
@@ -63,7 +61,6 @@ public:
 		psgMitigation = hitList.psgMitigation;
 		armorMitigation = hitList.armorMitigation;
 		poolsToWound = hitList.poolsToWound;
-		finalDamage = hitList.finalDamage;
 
 		return *this;
 	}
@@ -120,10 +117,6 @@ public:
 		poolsToWound = woundPools;
 	}
 
-	void setFinalDamage(int final) {
-		finalDamage = final;
-	}
-
 	ManagedReference<TangibleObject*> getDefender() {
 		return defender.get();
 	}
@@ -174,10 +167,6 @@ public:
 
 	Vector<int> getPoolsToWound() {
 		return poolsToWound;
-	}
-
-	inline int getFinalDamage() {
-		return finalDamage;
 	}
 };
 
