@@ -28,6 +28,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/Zone.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 
 void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	ManagedReference<CreatureObject*> creo = entertainer.get();
@@ -354,6 +355,77 @@ void EntertainingSessionImplementation::startDancing(int perfIndex) {
 	entertainer->notifyObservers(ObserverEventType::STARTENTERTAIN, entertainer);
 
 	startEntertaining();
+}
+
+void EntertainingSessionImplementation::doPerformEffect(int effectId, int effectLevel) {
+	ManagedReference<CreatureObject*> entertainer = this->entertainer.get();
+
+	if (entertainer == nullptr)
+		return;
+
+	if (effectLevel > 3 || effectLevel < 1)
+		effectLevel = 3;
+
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+
+	if (isPerformingEffect()) {
+		performanceManager->performanceMessageToSelf(entertainer, nullptr, "performance", "effect_wait_self"); // You must wait before you can perform another special effect.
+		return;
+	}
+
+	PerformEffect* effect = performanceManager->getPerformEffect(effectId, effectLevel);
+
+	if (effect == nullptr) {
+		error() << "Unable to get performance effect using id " << effectId << " and level " << effectLevel;
+		return;
+	}
+
+	if ((isDancing() && !effect->isDanceEffect()) || (isPlayingMusic() && !effect->isMusicEffect())) {
+		performanceManager->performanceMessageToSelf(entertainer, nullptr, "performance", "effect_not_performing_correct"); // You are not using the correct performance skill to execute this special effect.
+		return;
+	}
+
+	int effectCost = effect->getEffectActionCost();
+	effectCost = entertainer->calculateCostAdjustment(CreatureAttribute::QUICKNESS, effectCost);
+
+	if (entertainer->getHAM(CreatureAttribute::ACTION) <= effectCost) {
+		performanceManager->performanceMessageToSelf(entertainer, nullptr, "performance", "effect_too_tired"); // You are too tired to execute this special effect.
+		return;
+	}
+
+	int targetType = effect->getTargetType();
+	String effectFile = effect->getEffectFile();
+	String effectMessage = effect->getEffectMessage();
+
+	if (targetType == PerformEffect::TARGET_SELF) {
+		entertainer->playEffect(effectFile, "");
+	} else if (targetType == PerformEffect::TARGET_STATIONARY) {
+		PlayClientEffectLoc* effectLoc = new PlayClientEffectLoc(effectFile, entertainer->getZone()->getZoneName(), entertainer->getPositionX(), entertainer->getPositionZ(), entertainer->getPositionY());
+		entertainer->broadcastMessage(effectLoc, true);
+	} else if (targetType == PerformEffect::TARGET_OTHER) {
+		uint64 targetID = entertainer->getTargetID();
+ 		ManagedReference<CreatureObject*> targetCreature = entertainer->getZoneServer()->getObject(targetID).castTo<CreatureObject*>();
+
+ 		if (targetCreature == nullptr || !targetCreature->isPlayerCreature()) {
+ 			performanceManager->performanceMessageToSelf(entertainer, nullptr, "performance", "effect_need_target"); // This special effect requires an active target to execute.
+ 			return;
+ 		} else {
+ 			targetCreature->playEffect(effectFile, "");
+ 		}
+	}
+
+	performanceManager->performanceMessageToSelf(entertainer, nullptr, "performance", effectMessage);
+
+	entertainer->inflictDamage(entertainer, CreatureAttribute::ACTION, effectCost, true);
+	setPerformingEffect(true);
+
+	float effectDuration = effect->getEffectDuration() * 1000;
+	ManagedReference<EntertainingSession*> strongSess = _this.getReferenceUnsafeStaticCast();
+
+	Core::getTaskManager()->scheduleTask([entertainer, strongSess] {
+		Locker lock(entertainer);
+		strongSess->setPerformingEffect(false);
+	}, "SetPerformingEffectTask", effectDuration);
 }
 
 void EntertainingSessionImplementation::startPlayingMusic(int perfIndex, Instrument* instrument) {

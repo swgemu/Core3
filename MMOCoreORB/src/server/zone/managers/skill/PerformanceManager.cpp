@@ -14,6 +14,7 @@
 PerformanceManager::PerformanceManager() :
 	Logger("PerformanceManager") {
 	loadPerformances();
+	loadPerformEffects();
 }
 
 PerformanceManager::~PerformanceManager() {
@@ -50,6 +51,31 @@ void PerformanceManager::loadPerformances() {
 	}
 
 	info("Loaded " + String::valueOf(performances->size()) + " performances.", true);
+}
+
+void PerformanceManager::loadPerformEffects() {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/performance/perform_effect.iff");
+
+	if (iffStream == nullptr) {
+		error("Could not open performance effect datatable.");
+		return;
+	}
+
+	DataTableIff dtable;
+	dtable.readObject(iffStream);
+
+	delete iffStream;
+
+	performEffects = new Vector<PerformEffect*> ();
+	for (int i = 0; i < dtable.getTotalRows(); ++i) {
+		DataTableRow* row = dtable.getRow(i);
+
+		PerformEffect* effect = new PerformEffect();
+		effect->parseDataTableRow(i+1, row);
+		performEffects->add(effect);
+	}
+
+	info("Loaded " + String::valueOf(performEffects->size()) + " performance effects.", true);
 }
 
 Vector<Performance*> PerformanceManager::getPerformanceListFromMod(const String& requiredSkillMod, int playerSkillModValue, int instrument) {
@@ -131,6 +157,20 @@ Performance* PerformanceManager::getPerformanceFromIndex(int index) {
 
 		if (perf->getPerformanceIndex() == index)
 			return perf;
+	}
+
+	return nullptr;
+}
+
+PerformEffect* PerformanceManager::getPerformEffect(int effectId, int effectLevel) {
+	if (performEffects == nullptr)
+		return nullptr;
+
+	for (int i = 0; i < performEffects->size(); ++i) {
+		PerformEffect* effect = performEffects->get(i);
+
+		if (effect->getEffectId() == effectId && effect->getEffectLevel() == effectLevel)
+			return effect;
 	}
 
 	return nullptr;
