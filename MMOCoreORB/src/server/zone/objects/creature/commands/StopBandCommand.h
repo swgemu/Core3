@@ -5,6 +5,8 @@
 #ifndef STOPBANDCOMMAND_H_
 #define STOPBANDCOMMAND_H_
 
+#include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
+
 class StopBandCommand : public QueueCommand {
 public:
 
@@ -35,6 +37,27 @@ public:
 				continue;
 
 			Locker clocker(groupMember, creature);
+
+			if (groupMember->isDroidObject()) {
+				DroidObject* droid = cast<DroidObject*>(groupMember.get());
+
+				if (droid == nullptr)
+					continue;
+
+				auto module = droid->getModule("playback_module");
+
+				if (module == nullptr)
+					continue;
+
+				DroidPlaybackModuleDataComponent* playbackModule = cast<DroidPlaybackModuleDataComponent*>(module.get());
+
+				if (playbackModule == nullptr)
+					continue;
+
+				playbackModule->deactivate();
+
+				continue;
+			}
 
 			ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 

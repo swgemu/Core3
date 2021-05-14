@@ -387,38 +387,79 @@ String PerformanceManager::getInstrument(int instrumentType) {
 	String instrument;
 
 	switch (instrumentType) {
-	case Instrument::SLITHERHORN: //SLITHERHORN: yeah!
+	case Instrument::SLITHERHORN:
 		instrument = "slitherhorn";
 		break;
-	case Instrument::FIZZ: // yeah
+	case Instrument::FIZZ:
 		instrument = "fizz";
 		break;
-	case Instrument::FANFAR: //FANFAR yeah
+	case Instrument::FANFAR:
 		instrument = "fanfar";
 		break;
-	case Instrument::KLOOHORN: // yeah
+	case Instrument::KLOOHORN:
 		instrument = "kloohorn";
 		break;
-	case Instrument::MANDOVIOL: //MANDOVIOL
+	case Instrument::MANDOVIOL:
 		instrument = "mandoviol";
 		break;
-	case Instrument::TRAZ: //TRAZ yeah
+	case Instrument::TRAZ:
 		instrument = "traz";
 		break;
-	case Instrument::BANDFILL: // yeah
+	case Instrument::BANDFILL:
 		instrument = "bandfill";
 		break;
-	case Instrument::FLUTEDROOPY: //
+	case Instrument::FLUTEDROOPY:
 		instrument = "flutedroopy";
 		break;
-	case Instrument::OMNIBOX: //OMNIBOX:
+	case Instrument::OMNIBOX:
 		instrument = "omnibox";
 		break;
-	case Instrument::NALARGON: //NALARGON:
+	case Instrument::NALARGON:
 		instrument = "nalargon";
 		break;
 	default:
 		//sendSystemMessage("Bad instrument type.");
+		break;
+	}
+
+	return instrument;
+}
+
+String PerformanceManager::getProperInstrumentName(int instrumentType) {
+	String instrument;
+
+	switch (instrumentType) {
+	case Instrument::SLITHERHORN:
+		instrument = "Slitherhorn";
+		break;
+	case Instrument::FIZZ:
+		instrument = "Fizzz";
+		break;
+	case Instrument::FANFAR:
+		instrument = "Fanfar";
+		break;
+	case Instrument::KLOOHORN:
+		instrument = "Kloo Horn";
+		break;
+	case Instrument::MANDOVIOL:
+		instrument = "Mandoviol";
+		break;
+	case Instrument::TRAZ:
+		instrument = "Traz";
+		break;
+	case Instrument::BANDFILL:
+		instrument = "Bandfill";
+		break;
+	case Instrument::FLUTEDROOPY:
+		instrument = "Chidinkalu Horn";
+		break;
+	case Instrument::OMNIBOX:
+		instrument = "Ommni Box";
+		break;
+	case Instrument::NALARGON:
+		instrument = "Nalargon";
+		break;
+	default:
 		break;
 	}
 
@@ -519,4 +560,13 @@ void PerformanceManager::performanceMessageToPlayer(CreatureObject* player, Crea
 		message.setTT(target->getCustomObjectName());
 
 	player->sendSystemMessage(message);
+}
+
+void PerformanceManager::performanceMessageToDroidOwner(CreatureObject* droid, CreatureObject* target, const String& table, const String& text) {
+	ManagedReference<CreatureObject*> owner = droid->getLinkedCreature().get();
+
+	if (owner == nullptr)
+		return;
+
+	performanceMessageToPlayer(owner, droid, target, table, text);
 }

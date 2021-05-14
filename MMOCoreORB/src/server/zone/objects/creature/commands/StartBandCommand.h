@@ -8,6 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "StartMusicCommand.h"
+#include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 
 class StartBandCommand : public QueueCommand {
 public:
@@ -47,7 +48,7 @@ public:
 			for (int i = 0; i < group->getGroupSize(); i++) {
 				ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-				if (groupMember == nullptr || !groupMember->isPlayerCreature() || groupMember == creature || !groupMember->isPlayingMusic())
+				if (groupMember == nullptr || groupMember == creature || !groupMember->isPlayingMusic())
 					continue;
 
 				ManagedReference<Facade*> facade = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING);
@@ -107,8 +108,41 @@ public:
 			for (int i = 0; i < group->getGroupSize(); i++) {
 				ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-				if (groupMember == nullptr || !groupMember->isPlayerCreature() || groupMember == creature || !groupMember->isInRange(creature, 50.0f))
+				if (groupMember == nullptr || groupMember == creature || !groupMember->isInRange(creature, 50.0f))
 					continue;
+
+				Locker clocker(groupMember, creature);
+
+				if (groupMember->isDroidObject()) {
+					DroidObject* droid = cast<DroidObject*>(groupMember.get());
+
+					if (droid == nullptr)
+						continue;
+
+					auto module = droid->getModule("playback_module");
+
+					if (module == nullptr)
+						continue;
+
+					DroidPlaybackModuleDataComponent* playbackModule = cast<DroidPlaybackModuleDataComponent*>(module.get());
+
+					if (playbackModule == nullptr)
+						continue;
+
+					int newDroidIndex = playbackModule->getMatchingIndex(droid, performanceIndex);
+
+					if (newDroidIndex == 0) {
+						performanceManager->performanceMessageToDroidOwner(droid, nullptr, "performance", "music_track_not_available"); // Your droid does not have a track recorded for the current song in progress.
+						playbackModule->deactivate();
+						continue;
+					}
+
+					ManagedReference<CreatureObject*> owner = droid->getLinkedCreature().get();
+
+					playbackModule->playSong(owner, newDroidIndex);
+
+					continue;
+				}
 
 				Reference<Instrument*> memberInstrument = groupMember->getPlayableInstrument();
 
