@@ -17,7 +17,7 @@ public:
 	SelectTrackSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
-	/** droid and player should be locked by the ui start */
+
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
@@ -32,30 +32,43 @@ public:
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 		ManagedReference<SceneObject*> object = suiBox->getUsingObject().get();
 
-		if (object == nullptr) {
+		if (object == nullptr)
 			return;
-		}
 
 		DroidObject* droid = cast<DroidObject*>(object.get());
-		if (droid == nullptr){
-			return;
-		}
-		Locker crosslock(droid,player);
-		auto module = droid->getModule("playback_module").castTo<DroidPlaybackModuleDataComponent*>();
-		if(module == nullptr) {
-			return;
-		}
 
-		if (cancelPressed || index == -1) {
+		if (droid == nullptr)
 			return;
-		}
-		if (otherPressed) {
-			// pop up are you sure dialog here, need delete confiration callback box.
-			// make the confirmation UI
+
+		Locker crosslock(droid,player);
+
+		auto module = droid->getModule("playback_module").castTo<DroidPlaybackModuleDataComponent*>();
+
+		if (module == nullptr)
+			return;
+
+
+		if (cancelPressed)
+			return;
+
+		if (index < 0 || index >= module->getTotalTracks())
+			return;
+
+		int trackPerformanceIndex = module->getTrackPerformanceIndex(index);
+
+		if (otherPressed) { // Delete
+			if (trackPerformanceIndex == 0) {
+				player->sendSystemMessage("@pet/droid_modules:playback_msg_del_track_already_empty"); // You cannot erase a track that is already empty.
+				return;
+			}
+
+			int trackPerformanceIndex = module->getTrackPerformanceIndex(index);
+			String prompt = "@pet/droid_modules:playback_delete_title \n\n" + module->getTrackName(trackPerformanceIndex);
+
 			ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::DROID_DELETE_TRACK);
 			box->setCallback(new DeleteTrackConfirmationSuiCallback(player->getZoneServer(), module, index));
-			box->setPromptTitle("@pet/droid_modules:playback_delete_title"); // Configure Effects
-			box->setPromptText("@pet/droid_modules:playback_delete_prompt");
+			box->setPromptTitle("@pet/droid_modules:playback_delete_title"); // Delete Track
+			box->setPromptText(prompt); // Are you sure you want to delete this track:
 			box->setOkButton(true, "@ok");
 			box->setCancelButton(true, "@cancel");
 			box->setUsingObject(droid);
@@ -63,11 +76,10 @@ public:
 			player->sendMessage(box->generateMessage());
 		} else {
 			// if track is empty record
-			if (module->trackEmpty(index)) {
-				module->startRecordingSession(player,index);
-			}
-			else {
-				module->playSong(player,index);
+			if (trackPerformanceIndex == 0) {
+				module->startRecordingSession(player, index);
+			} else {
+				module->playSong(player, trackPerformanceIndex);
 			}
 		}
 	}

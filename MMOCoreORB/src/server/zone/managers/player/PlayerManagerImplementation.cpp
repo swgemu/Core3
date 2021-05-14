@@ -3034,7 +3034,7 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 					return;
 				}
 
-				if (module->isActive()) {
+				if (module->isPlayingMusic()) {
 					// the droid is playing so we can do something
 					if (creature->isListening()) {
 						stopListen(creature, listenID, false);

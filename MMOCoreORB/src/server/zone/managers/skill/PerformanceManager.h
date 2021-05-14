@@ -41,6 +41,7 @@ public:
 
 	String getInstrumentAnimation(int instrumentType);
 	String getInstrument(int instrumentType);
+	String getProperInstrumentName(int instrumentType);
 	int getInstrumentId(const String& instrument);
 
 	String getDanceAnimation(int performanceIndex);
@@ -59,6 +60,7 @@ public:
 	void performanceMessageToBand(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
 	void performanceMessageToBandPatrons(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
 	void performanceMessageToPatrons(CreatureObject* actor, CreatureObject* target, const String& table, const String& text);
+	void performanceMessageToDroidOwner(CreatureObject* droid, CreatureObject* target, const String& table, const String& text);
 
 };
 

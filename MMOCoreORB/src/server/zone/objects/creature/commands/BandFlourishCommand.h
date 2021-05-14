@@ -135,10 +135,15 @@ public:
 					if (playbackModule == nullptr)
 						continue;
 
-					if (!playbackModule->isActive())
+					if (!playbackModule->isPlayingMusic())
 						continue;
 
-					if (instrumentType == playbackModule->getCurrentInstrument() || (isLeadPlaying && instrumentType < 1))
+					Performance* performance = performanceManager->getPerformanceFromIndex(playbackModule->getPerformanceIndex());
+
+					if (performance == nullptr)
+						continue;
+
+					if (instrumentType == performance->getInstrumentAudioId() || (isLeadPlaying && instrumentType < 1))
 						playbackModule->doFlourish(flourishNum);
 				}
 

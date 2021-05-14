@@ -42,6 +42,10 @@ public:
 			return GENERALERROR;
 		}
 
+		if (!playerEntryCheck(creature, targetObject->asTangibleObject())) {
+			return GENERALERROR;
+		}
+
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 		if (ghost != nullptr && ghost->getForcePower() < getFrsModifiedForceCost(creature)) {

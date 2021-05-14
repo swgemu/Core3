@@ -46,6 +46,10 @@ public:
 				return GENERALERROR;
 			}
 
+			if (!playerEntryCheck(creature, player)) {
+				return GENERALERROR;
+			}
+
 			if (!player->isIncapacitated() || player->isFeigningDeath()){
 				creature->sendSystemMessage("@error_message:target_not_incapacitated"); //You cannot perform the death blow. Your target is not incapacitated.
 				return GENERALERROR;
@@ -63,6 +67,10 @@ public:
 
 			if (!CollisionManager::checkLineOfSight(creature, pet)) {
 				creature->sendSystemMessage("@combat_effects:cansee_fail");// You cannot see your target.
+				return GENERALERROR;
+			}
+
+			if (!playerEntryCheck(creature, pet)) {
 				return GENERALERROR;
 			}
 
