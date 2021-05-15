@@ -769,11 +769,13 @@ void CombatManager::finalCombatSpam(TangibleObject* attacker, WeaponObject* weap
 						sendMitigationCombatSpam(defenderCreo, armor, armorDmgAbsorbed, ARMOR);
 					}
 
-					if (attacker->isCreatureObject() && hit == HIT) {
-						applyStates(attacker->asCreatureObject(), defenderCreo, hitList, data);
-					}
+					if (!defenderCreo->isIncapacitated() && !defenderCreo->isDead()) {
+						if (attacker->isCreatureObject() && hit == HIT) {
+							applyStates(attacker->asCreatureObject(), defenderCreo, hitList, data);
+						}
 
-					woundCreatureTarget(defenderCreo, weapon, hitList->getPoolsToWound());
+						woundCreatureTarget(defenderCreo, weapon, hitList->getPoolsToWound());
+					}
 
 					if (foodMit > 0) {
 						sendMitigationCombatSpam(defenderCreo, weapon, foodMit, FOOD);
