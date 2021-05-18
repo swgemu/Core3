@@ -26,6 +26,15 @@ PerformanceManager::~PerformanceManager() {
 
 		performances = nullptr;
 	}
+
+	if (performEffects != nullptr) {
+		for (int i = 0; i < performEffects->size(); ++i)
+			delete performEffects->getUnsafe(i);
+
+		delete performEffects;
+
+		performEffects = nullptr;
+	}
 }
 
 void PerformanceManager::loadPerformances() {
@@ -218,7 +227,7 @@ void PerformanceManager::sendAvailableSongs(CreatureObject* player) {
 	Reference<Instrument*> instrument = player->getPlayableInstrument();
 
 	if (instrument == nullptr) {
-		player->sendSystemMessage("@performance:music_no_instrument"); // You must have an instrument equipped to play music.
+		performanceMessageToSelf(player, nullptr, "performance", "music_no_instrument"); // You must have an instrument equipped to play music.
 		return;
 	}
 
