@@ -428,7 +428,10 @@ int CombatManager::creoTargetCombatAction(CreatureObject* attacker, WeaponObject
 
 			damage = applyDamage(attacker, weapon, defender, targetHitList, damage, damageMultiplier, poolsToDamage, hitLocation, data);
 
-			if (!defender->isDead()) {
+			if (defender->isDead() || defender->isIncapacitated()) {
+				// This broadcasts the dead or incapacitated postures immediately
+				defender->updatePostures(true);
+			} else {
 				applyDots(attacker, defender, data, damage, unmitDamage, poolsToDamage);
 
 				// Prevents weapon dots from applying with offensive Force powers
@@ -544,8 +547,6 @@ int CombatManager::tanoTargetCombatAction(TangibleObject* attacker, WeaponObject
 
 	uint8 hitLocation = 0;
 
-	CombatAction* combatAction = nullptr;
-
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defenderObject, damage);
@@ -589,6 +590,11 @@ int CombatManager::tanoTargetCombatAction(TangibleObject* attacker, WeaponObject
 		if (damageMultiplier != 0 && damage != 0) {
 			damage = applyDamage(attacker, weapon, defenderObject, targetHitList, damage, damageMultiplier, poolsToDamage, hitLocation, data);
 		}
+
+		if (defenderObject->isDead() || defenderObject->isIncapacitated()) {
+			// This broadcasts the dead or incapacitated postures immediately
+			defenderObject->updatePostures(true);
+		}
 	} else {
 		damage = 0;
 	}
@@ -603,7 +609,7 @@ int CombatManager::tanoTargetCombatAction(TangibleObject* attacker, WeaponObject
 
 	uint32 animationCRC = data.getCommand()->getAnimation(attacker, defenderObject, weapon, hitLocation, damage).hashCode();
 
-	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
+	CombatAction* combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
 	attacker->broadcastMessage(combatAction,true);
 
 	return damage;
@@ -620,58 +626,27 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, WeaponObjec
 		return;
 	}
 
-	for (int i = 0; i < targetDefenders.size(); ++i) {
-		DefenderHitList* hitList = targetDefenders.get(i);
+	DefenderHitList* hitList = targetDefenders.get(0);
 
-		if (hitList == nullptr) {
-			continue;
-		}
-
+	if (hitList != nullptr) {
 		TangibleObject* defenderObject = hitList->getDefender();
 
-		if (defenderObject == nullptr) {
-			continue;
-		}
+		if (defenderObject != nullptr) {
+			const String& animation = data.getCommand()->getAnimation(attacker, defenderObject, weapon, hitList->getHitLocation(), hitList->getInitialDamage());
 
-		uint64 weaponID = weapon->getObjectID();
-		int hit = hitList->getHit();
+			uint32 animationCRC = 0;
 
-		CreatureObject* dCreo = defenderObject->asCreatureObject();
-
-		if (dCreo != nullptr) { // The following is for creature targets only. TanO's do not posture change or do animations.
-			Locker dlocker(dCreo, attacker);
-
-			dCreo->updatePostures(false); // Commit pending posture changes to the client and notify observers
-
-			if (data.getPrimaryTarget() != dCreo->getObjectID()){ // Check if we should play the default animation or one of several reaction animations
-				if (hit == HIT) {
-					if (data.changesDefenderPosture() && (!dCreo->isIncapacitated() && !dCreo->isDead())) {
-						dCreo->doCombatAnimation(STRING_HASHCODE("change_posture")); // We're not the primary target, but we are the victim of a posture change attack
-					} else { // We're not the primary target but were hit - play the got hit animation
-						if (System::random(100) > 75) {
-							dCreo->doCombatAnimation(STRING_HASHCODE("get_hit_medium"));
-						} else {
-							dCreo->doCombatAnimation(STRING_HASHCODE("get_hit_light"));
-						}
-					}
-				} else { // Not a hit but also not the primary target - play a dodge animation
-					dCreo->doCombatAnimation(STRING_HASHCODE("dodge"));
-				}
+			if (!animation.isEmpty()) {
+				animationCRC = animation.hashCode();
 			}
+
+			fatal(animationCRC != 0, "animationCRC is 0");
+
+			uint64 weaponID = weapon->getObjectID();
+
+			CombatAction* combatAction = new CombatAction(attacker, targetDefenders, animationCRC, data.getTrails(), weaponID);
+			attacker->broadcastMessage(combatAction, true);
 		}
-
-		const String& animation = data.getCommand()->getAnimation(attacker, defenderObject, weapon, hitList->getHitLocation(), hitList->getInitialDamage());
-
-		uint32 animationCRC = 0;
-
-		if (!animation.isEmpty()) {
-			animationCRC = animation.hashCode();
-		}
-
-		fatal(animationCRC != 0, "animationCRC is 0");
-
-		CombatAction* combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit, data.getTrails(), weaponID);
-		attacker->broadcastMessage(combatAction, true);
 	}
 
 	if (data.changesAttackerPosture()) {
@@ -726,10 +701,12 @@ void CombatManager::finalCombatSpam(TangibleObject* attacker, WeaponObject* weap
 			int hit = hitList->getHit();
 
 			// Initial attack combat spam
-			if (hit == RICOCHET || hit == DODGE) {
-				data.getCommand()->sendAttackCombatSpam(attacker, defender, hit, hitList->getInitialDamage(), data);
-			} else {
-				data.getCommand()->sendAttackCombatSpam(attacker, defender, hit, broadcastDamage, data);
+			if (!data.isStateOnlyAttack()) {
+				if (hit == RICOCHET || hit == DODGE) {
+					data.getCommand()->sendAttackCombatSpam(attacker, defender, hit, hitList->getInitialDamage(), data);
+				} else {
+					data.getCommand()->sendAttackCombatSpam(attacker, defender, hit, broadcastDamage, data);
+				}
 			}
 
 			if (defender->isCreatureObject()) {
@@ -2550,8 +2527,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, Weapon
 	return Math::max(attackSpeed, 1.0f);
 }
 
-// Fly Text - Hit, Miss, Block, Ricochet, Hit Location
-
+// Fly Text - Miss, Counterattack, Block, Hit Location
 void CombatManager::doMiss(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) const {
 	defender->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
 }
@@ -2565,6 +2541,7 @@ void CombatManager::doBlock(TangibleObject* attacker, WeaponObject* weapon, Crea
 }
 
 void CombatManager::doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) const {
+	defender->doCombatAnimation(STRING_HASHCODE("dodge"));
 	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
 }
 
@@ -2692,7 +2669,9 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 			// loop through any exclusion timers
 			for (int j = 0; j < exclusionTimers.size(); j++) {
-				if (!targetCreature->checkCooldownRecovery(exclusionTimers.get(j))) failed = true;
+				if (!targetCreature->checkCooldownRecovery(exclusionTimers.get(j))) {
+					failed = true;
+				}
 			}
 		}
 
@@ -2748,6 +2727,10 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			}
 
 			data.getCommand()->applyEffect(creature, targetCreature, effectType, effect.getStateStrength() + stateAccuracyBonus);
+
+			if (data.changesDefenderPosture()) {
+				targetCreature->updatePostures(true);
+			}
 		}
 
 		// can move this to scripts, but only these states have fail messages
@@ -2780,23 +2763,24 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		}
 
 		// now check combat equilibrium
-		//TODO: This should eventually be moved to happen AFTER the CombatAction is broadcast to "fix" it's animation (Mantis #4832)
 		if (!failed && (effectType == CommandEffect::KNOCKDOWN || effectType == CommandEffect::POSTUREDOWN || effectType == CommandEffect::POSTUREUP)) {
 			int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
 
-			if (combatEquil > 100)
+			if (combatEquil > 100) {
 				combatEquil = 100;
+			}
 
-			if ((combatEquil >> 1) > (int) System::random(100) && !targetCreature->isDead() && !targetCreature->isIntimidated())
-				targetCreature->setPosture(CreaturePosture::UPRIGHT, false);
+			if ((combatEquil >> 1) > (int) System::random(100) && !targetCreature->isDead() && !targetCreature->isIntimidated()) {
+				targetCreature->setPosture(CreaturePosture::UPRIGHT, false, true);
+			}
 		}
 
 		//Send Combat Spam for state-only attacks.
-		if (data.isStateOnlyAttack() && hitList != nullptr) {
+		if (data.isStateOnlyAttack()) {
 			if (failed) {
-				hitList->setHit(MISS);
+				data.getCommand()->sendAttackCombatSpam(creature, targetCreature, MISS, 0, data);
 			} else {
-				hitList->setHit(HIT);
+				data.getCommand()->sendAttackCombatSpam(creature, targetCreature, HIT, 0, data);
 			}
 		}
 	}
