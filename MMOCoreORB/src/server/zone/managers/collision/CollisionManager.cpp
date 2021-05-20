@@ -129,20 +129,38 @@ bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, con
 	SharedObjectTemplate* objectTemplate = building->getObjectTemplate();
 	const PortalLayout* portalLayout = objectTemplate->getPortalLayout();
 
-	if (portalLayout == nullptr)
+	if (portalLayout == nullptr) {
 		return true;
+	}
 
 	Ray ray = convertToModelSpace(rayOrigin, rayEnd, building);
+	int appearanceSize = portalLayout->getAppearanceTemplatesSize();
+	int cellNum = cellObject->getCellNumber();
 
-	if (cellObject->getCellNumber() >= portalLayout->getAppearanceTemplatesSize())
+	if (cellNum >= appearanceSize) {
 		return true;
+	}
 
-	const AppearanceTemplate* app = portalLayout->getAppearanceTemplate(cellObject->getCellNumber());
+	const AppearanceTemplate* app = portalLayout->getAppearanceTemplate(cellNum);
 	float intersectionDistance;
 	Triangle* triangle = nullptr;
 
-	if (app->intersects(ray, distance, intersectionDistance, triangle, true))
+	if (app->intersects(ray, distance, intersectionDistance, triangle, true)) {
 		return false;
+	}
+
+	for (int i = 0; i < appearanceSize; i++) {
+		const AppearanceTemplate* appTemp = portalLayout->getAppearanceTemplate(i);
+
+		float intersectDist;
+		Triangle* triangle2 = nullptr;
+
+		if ((i >= (cellNum + 1) || i <= (cellNum - 1))) {
+			if (appTemp->intersects(ray, distance, intersectDist, triangle2, true)) {
+				return false;
+			}
+		}
+	}
 
 	return true;
 }
@@ -425,17 +443,18 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	if (zone == nullptr)
 		return false;
 
-	if (object2->getZone() != zone)
+	if (object2->getZone() != zone) {
 		return false;
-
-	if (object1->isAiAgent() || object2->isAiAgent()) {
-		//Vector<WorldCoordinates>* path = PathFinderManager::instance()->findPath(object1, object2, zone);
-
-//		if (path == nullptr)
-//			return false;
-//		else
-//			delete path;
 	}
+
+	/*if (object1->isAiAgent() || object2->isAiAgent()) {
+		Vector<WorldCoordinates>* path = PathFinderManager::instance()->findPath(object1, object2, zone);
+
+		if (path == nullptr)
+			return false;
+		else
+			delete path;
+	}*/
 
 	ManagedReference<SceneObject*> rootParent1 = object1->getRootParent();
 	ManagedReference<SceneObject*> rootParent2 = object2->getRootParent();
