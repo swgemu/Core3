@@ -179,7 +179,7 @@ end
 function DeathWatchBunkerScreenPlay:givePermission(pPlayer, permissionGroup)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-	if (pGhost ~= nil) then
+	if (pGhost ~= nil and not PlayerObject(pGhost):hasPermissionGroup(permissionGroup)) then
 		PlayerObject(pGhost):addPermissionGroup(permissionGroup, true)
 	end
 end
