@@ -5,7 +5,9 @@
 package server.zone;
 
 import server.zone.QuadTree;
+import server.zone.ActiveAreaQuadTree;
 import server.zone.QuadTreeEntry;
+import server.zone.ActiveAreaQuadTreeEntry;
 include server.chat.room.ChatRoom;
 
 import system.lang.Time;
@@ -25,6 +27,7 @@ include server.zone.managers.object.ObjectMap;
 include server.zone.managers.planet.MapLocationTable;
 include engine.util.u3d.Vector3;
 include server.zone.QuadTreeReference;
+include server.zone.ActiveAreaQuadTreeReference;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.pathfinding.NavArea;
@@ -54,7 +57,7 @@ class Zone extends SceneObject {
 	private transient ZoneServer server;
 
 	@dereferenced
-	private QuadTreeReference regionTree;
+	private ActiveAreaQuadTreeReference regionTree;
 
 	@dereferenced
 	private QuadTreeReference quadTree;
@@ -82,7 +85,7 @@ class Zone extends SceneObject {
 	public native void initializePrivateData();
 
 	@local
-	public QuadTree getRegionTree() {
+	public ActiveAreaQuadTree getRegionTree() {
 		return regionTree.get();
 	}
 
@@ -107,12 +110,12 @@ class Zone extends SceneObject {
 	@local
 	public native int getInRangeNavMeshes(float x, float y, SortedVector<NavArea> objects, boolean readLockZone);
 
-	/* gets active areas whose center is within the given range */
+	/* gets active areas whose center is within the given range 
 	@local
 	public native int getInRangeActiveAreas(float x, float y, float range, SortedVector<ActiveArea> objects, boolean readLockZone);
 	@local
 	public native int getInRangeActiveAreas(float x, float y, float range, ActiveAreasVector objects, boolean readLockZone);
-
+*/
 	@local
 	@dereferenced
 	public native SortedVector<SceneObject> getPlanetaryObjectList(final string mapObjectLocationType);
