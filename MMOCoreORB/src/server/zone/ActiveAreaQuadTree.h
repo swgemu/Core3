@@ -115,7 +115,7 @@ public:
 	}
 
 	void remove(Reference<ActiveArea*> area) {
-		insert(root, area);
+		remove(root, area);
 	}
 
 	void remove(const Reference<ActiveAreaQuadTreeNode*>& node, Reference<ActiveArea*> area) const {
