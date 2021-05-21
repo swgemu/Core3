@@ -1345,18 +1345,21 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	// and then added together.
 	int foodBonus = defender->getSkillMod("mitigate_damage");
 	int totalFoodMit = 0;
+	float logDamage = 0.f;
 
 	if (healthDamaged) {
 		static const uint8 bodyLocations[] = {HIT_BODY, HIT_BODY, HIT_LARM, HIT_RARM};
 		hitLocation = bodyLocations[System::random(3)];
 
-		healthDamage = getArmorReduction(attacker, weapon, defender, defenderHitList, damage * data.getHealthDamageMultiplier(), hitLocation, data) * damageMultiplier;
+		float damageMultiplied = damage * data.getHealthDamageMultiplier();
+
+		logDamage += damageMultiplied;
+		healthDamage = getArmorReduction(attacker, weapon, defender, defenderHitList, damageMultiplied, hitLocation, data) * damageMultiplier;
 
 		int foodMitigation = 0;
 
 		if (foodBonus > 0) {
 			foodMitigation = (int)(healthDamage * foodBonus / 100.f);
-			foodMitigation = Math::min(healthDamage, foodMitigation * data.getHealthDamageMultiplier());
 		}
 
 		healthDamage -= foodMitigation;
@@ -1375,13 +1378,15 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		static const uint8 legLocations[] = {HIT_LLEG, HIT_RLEG};
 		hitLocation = legLocations[System::random(1)];
 
-		actionDamage = getArmorReduction(attacker, weapon, defender, defenderHitList, damage * data.getActionDamageMultiplier(), hitLocation, data) * damageMultiplier;
+		float damageMultiplied = damage * data.getActionDamageMultiplier();
+
+		logDamage += damageMultiplied;
+		actionDamage = getArmorReduction(attacker, weapon, defender, defenderHitList, damageMultiplied, hitLocation, data) * damageMultiplier;
 
 		int foodMitigation = 0;
 
 		if (foodBonus > 0) {
 			foodMitigation = (int)(actionDamage * foodBonus / 100.f);
-			foodMitigation = Math::min(actionDamage, foodMitigation * data.getActionDamageMultiplier());
 		}
 
 		actionDamage -= foodMitigation;
@@ -1398,13 +1403,16 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 	if (mindDamaged) {
 		hitLocation = HIT_HEAD;
-		mindDamage = getArmorReduction(attacker, weapon, defender, defenderHitList, damage * data.getMindDamageMultiplier(), hitLocation, data) * damageMultiplier;
+
+		float damageMultiplied = damage * data.getMindDamageMultiplier();
+
+		logDamage += damageMultiplied;
+		mindDamage = getArmorReduction(attacker, weapon, defender, defenderHitList, damageMultiplied, hitLocation, data) * damageMultiplier;
 
 		int foodMitigation = 0;
 
 		if (foodBonus > 0) {
 			foodMitigation = (int)(mindDamage * foodBonus / 100.f);
-			foodMitigation = Math::min(mindDamage, foodMitigation * data.getMindDamageMultiplier());
 		}
 
 		mindDamage -= foodMitigation;
@@ -1444,6 +1452,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		showHitLocationFlyText(attacker->asCreatureObject(), defender, hitLocation);
 	}
 
+	defenderHitList->setInitialDamage(logDamage);
 	defenderHitList->setHitLocation(hitLocation);
 	defenderHitList->setFoodMitigation(totalFoodMit);
 	defenderHitList->setPoolsToWound(poolsToWound);
@@ -2234,6 +2243,8 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		return damage;
 	}
 
+	float jediMit = hitList->getJediMitigation();
+
 	if (!data.isForceAttack()) {
 		// Force Armor
 		float rawDamage = damage;
@@ -2242,7 +2253,9 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		if (forceArmor > 0) {
 			float dmgAbsorbed = rawDamage - (damage *= 1.f - (forceArmor / 100.f));
 			defender->notifyObservers(ObserverEventType::FORCEARMOR, attacker, dmgAbsorbed);
-			hitList->setJediMitigation(dmgAbsorbed);
+
+			jediMit += dmgAbsorbed;
+			hitList->setJediMitigation(jediMit);
 		}
 	} else {
 		float jediBuffDamage = 0;
@@ -2253,7 +2266,9 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		if (forceShield > 0) {
 			jediBuffDamage = rawDamage - (damage *= 1.f - (forceShield / 100.f));
 			defender->notifyObservers(ObserverEventType::FORCESHIELD, attacker, jediBuffDamage);
-			hitList->setJediMitigation(jediBuffDamage);
+
+			jediMit += jediBuffDamage;
+			hitList->setJediMitigation(jediMit);
 		}
 
 		// Force Feedback
@@ -2298,7 +2313,10 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 
 		dmgAbsorbed -= damage;
 		if (dmgAbsorbed > 0) {
-			hitList->setPsgMitigation(dmgAbsorbed);
+			int psgMit = hitList->getPsgMitigation();
+
+			psgMit += dmgAbsorbed;
+			hitList->setPsgMitigation(psgMit);
 		}
 
 		Locker plocker(psg);
@@ -2323,7 +2341,10 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 			damage *= (1.f - (armorReduction / 100.f));
 			dmgAbsorbed -= damage;
 
-			hitList->setArmorMitigation((int)dmgAbsorbed);
+			int armorMit = hitList->getArmorMitigation();
+
+			armorMit += dmgAbsorbed;
+			hitList->setArmorMitigation(armorMit);
 		}
 
 		// inflict condition damage
