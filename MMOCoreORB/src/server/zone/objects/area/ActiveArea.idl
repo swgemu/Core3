@@ -192,6 +192,11 @@ class ActiveArea extends SceneObject {
 	public AreaShape getAreaShape() {
 		return areaShape;
 	}
+	
+	@read
+	public boolean isRectangularAreaShape() {
+		return areaShape && areaShape.isRectangularAreaShape();
+	}
 
 	@read
 	public native boolean intersectsWith(ActiveArea area);
