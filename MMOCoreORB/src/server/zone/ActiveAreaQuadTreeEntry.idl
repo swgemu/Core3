@@ -1,0 +1,38 @@
+/*
+Copyright (C) 2007 <SWGEmu>. All rights reserved.
+Distribution of this file for usage outside of Core3 is prohibited.
+*/
+
+package server.zone;
+import engine.util.Observable;
+import engine.core.ManagedObject;
+include system.lang.ref.Reference;
+import server.zone.objects.area.ActiveArea;
+
+@json
+class ActiveAreaQuadTreeEntry extends Observable {
+	@weakReference
+	protected ActiveArea area;
+	
+	protected float x;
+	protected float y;
+	
+	public ActiveAreaQuadTreeEntry(ActiveArea newArea, float newX, float newY) {
+		area = newArea;
+		x = newX;
+		y = newY;
+	}
+
+	@read
+	public boolean containsPoint(float contX, float contY) {
+		ActiveArea strongRef = area;
+		
+		return strongRef.containsPoint(contX, contY);
+	}
+	
+	@dirty
+	@weakReference
+	public ActiveArea getArea() {
+		return area;
+	}
+}
