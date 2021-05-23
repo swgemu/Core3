@@ -2296,8 +2296,6 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 				} else {
 					currentTurretIndex++;
 				}
-			} else {
-				error("Invalid turret template: " + child->getTemplateFile());
 			}
 		}
 	}
