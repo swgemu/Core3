@@ -1,0 +1,154 @@
+// RegionQuadTree.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+#pragma once
+
+#include "system/lang.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "system/util/Vector.h"
+#include "system/lang/ref/UniqueReference.h"
+
+//#define REGION_TREE_SIMPLE
+
+namespace server {
+namespace zone {
+
+class RegionQuadTreeNode {
+protected:
+	ArrayList<Reference<ActiveArea*>> regions;
+
+	UniqueReference<RegionQuadTreeNode*> nwNode{};
+	UniqueReference<RegionQuadTreeNode*> neNode{};
+	UniqueReference<RegionQuadTreeNode*> swNode{};
+	UniqueReference<RegionQuadTreeNode*> seNode{};
+
+	float minX = 0, minY = 0;
+	float maxX = 0, maxY = 0;
+
+	const RegionQuadTreeNode* parentNode;
+
+	float dividerX = 0, dividerY = 0;
+
+public:
+	RegionQuadTreeNode(float minx, float miny, float maxx, float maxy, const RegionQuadTreeNode* parent);
+
+	bool isEmpty() const {
+		return regions.isEmpty();
+	}
+
+	void insertRegion(ActiveArea* region) {
+		regions.emplace(region);
+	}
+
+	bool testInside(float x, float y) const {
+		return x >= minX && x < maxX && y >= minY && y < maxY;
+	}
+
+	bool testRegionInside(float x, float y, float radius) const {
+		return (x - radius) >= minX && (x + radius) < maxX && (y - radius) >= minY && (y + radius) < maxY;
+	}
+
+	bool hasSubNodes() const {
+		return nwNode || neNode || swNode || seNode;
+	}
+
+	bool testInSWArea(const ActiveArea& region) const {
+		return (region.getPositionX()) >= minX && (region.getPositionX()) < dividerX && (region.getPositionY()) >= minY && (region.getPositionY()) < dividerY;
+	}
+
+	bool testInSEArea(const ActiveArea& region) const {
+		return (region.getPositionX()) >= dividerX && (region.getPositionX()) < maxX && (region.getPositionY()) >= minY && (region.getPositionY()) < dividerY;
+	}
+
+	bool testInNWArea(const ActiveArea& region) const {
+		return (region.getPositionX()) >= minX && (region.getPositionX()) < dividerX && (region.getPositionY()) >= dividerY && (region.getPositionY()) < maxY;
+	}
+
+	bool testInNEArea(const ActiveArea& region) const {
+		return (region.getPositionX()) >= dividerX && (region.getPositionX()) < maxX && (region.getPositionY()) >= dividerY && (region.getPositionY()) < maxY;
+	}
+
+	friend class RegionQuadTree;
+};
+
+class RegionQuadTree : public Object {
+#ifdef REGION_TREE_SIMPLE
+	SortedVector<Reference<ActiveArea*>> regions;
+#else
+	UniqueReference<RegionQuadTreeNode*> root{};
+#endif
+
+public:
+	RegionQuadTree(float minx, float miny, float maxx, float maxy) {
+#ifndef REGION_TREE_SIMPLE
+		root = makeUnique<RegionQuadTreeNode>(minx, miny, maxx, maxy, nullptr);
+#else
+		regions.setNoDuplicateInsertPlan();
+#endif
+	}
+
+	template <typename AreaType>
+	void getActiveAreas(float x, float y, ArrayList<AreaType>& areas) const {
+#ifndef REGION_TREE_SIMPLE
+		getActiveAreas(root.get(), x, y, areas);
+#else
+		for (const auto& area : regions) {
+			if (area->containsPoint(x, y)) {
+				areas.emplace(area);
+			}
+		}
+#endif
+	}
+
+	void insert(Reference<ActiveArea*> region) {
+#ifndef REGION_TREE_SIMPLE
+		insert(*root, region);
+#else
+		regions.put(region);
+#endif
+	}
+
+#ifdef REGION_TREE_SIMPLE
+	void remove(Reference<ActiveArea*> region) {
+		regions.drop(region);
+	}
+#else
+	void remove(Reference<ActiveArea*> region);
+#endif
+
+protected:
+#ifndef REGION_TREE_SIMPLE
+	void insert(RegionQuadTreeNode& node, ActiveArea* region);
+	void removeActiveArea(RegionQuadTreeNode& node, ActiveArea* area);
+
+	template <typename AreaType>
+	void getActiveAreas(RegionQuadTreeNode* node, float x, float y, ArrayList<AreaType>& regions) const {
+		if (node == nullptr) {
+			return;
+		}
+
+		for (const auto& regionEntry : node->regions) {
+			if (regionEntry->containsPoint(x, y)) {
+				regions.emplace(regionEntry);
+			}
+		}
+
+		const auto& nodeSW = node->swNode;
+		const auto& nodeSE = node->seNode;
+		const auto& nodeNW = node->nwNode;
+		const auto& nodeNE = node->neNode;
+
+		if (nodeSW != nullptr && nodeSW->testInside(x, y)) {
+			getActiveAreas(nodeSW.get(), x, y, regions);
+		} else if (nodeSE != nullptr && nodeSE->testInside(x, y)) {
+			getActiveAreas(nodeSE.get(), x, y, regions);
+		} else if (nodeNW != nullptr && nodeNW->testInside(x, y)) {
+			getActiveAreas(nodeNW.get(), x, y, regions);
+		} else if (nodeNE != nullptr && nodeNE->testInside(x, y)) {
+			getActiveAreas(nodeNE.get(), x, y, regions);
+		}
+	}
+#endif
+};
+
+} // namespace zone
+} // namespace server
