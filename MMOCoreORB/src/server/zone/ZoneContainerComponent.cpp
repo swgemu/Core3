@@ -12,6 +12,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/RegionQuadTree.h"
 
 bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
 	if (newZone == nullptr)
@@ -36,7 +37,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 
 	activeArea->setZone(newZone);
 
-	ActiveAreaQuadTree* regionTree = newZone->getRegionTree();
+	auto regionTree = newZone->getRegionTree();
 
 	regionTree->insert(activeArea);
 
@@ -94,7 +95,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	Locker zoneLocker(zone);
 
-	ActiveAreaQuadTree* regionTree = zone->getRegionTree();
+	auto regionTree = zone->getRegionTree();
 
 	regionTree->remove(activeArea);
 
