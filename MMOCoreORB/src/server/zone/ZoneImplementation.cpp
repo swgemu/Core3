@@ -2,6 +2,7 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include "server/zone/ActiveAreaQuadTree.h"
 #include "server/zone/Zone.h"
 
 #include "server/zone/ZoneProcessServer.h"
@@ -21,6 +22,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "terrain/ProceduralTerrainAppearance.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
+#include "server/zone/RegionQuadTree.h"
 
 ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) {
 	processor = serv;
@@ -29,7 +31,7 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	zoneName = name;
 	zoneCRC = name.hashCode();
 
-	regionTree = new server::zone::ActiveAreaQuadTree(-8192, -8192, 8192, 8192);
+	regionTree = new server::zone::RegionQuadTree(-8192, -8192, 8192, 8192);
 	quadTree = new server::zone::QuadTree(-8192, -8192, 8192, 8192);
 
 	objectMap = new ObjectMap();
@@ -384,25 +386,16 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 
 	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
 
-	SortedVector<ActiveArea*> entryObjects;
-
 	try {
 		thisZone->rlock(readlock);
 
-		regionTree->getActiveAreas(x, y, entryObjects);
+		regionTree->getActiveAreas(x, y, *objects);
 
 		thisZone->runlock(readlock);
 	} catch (...) {
 		thisZone->runlock(readlock);
 
 		throw;
-	}
-
-	for (int i = 0; i < entryObjects.size(); ++i) {
-		ActiveArea* obj = static_cast<ActiveArea*>(entryObjects.get(i));
-
-		if (obj->containsPoint(x, y))
-			objects->put(obj);
 	}
 
 	return objects->size();
@@ -438,25 +431,16 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, ActiveAreasVecto
 
 	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
 
-	SortedVector<ActiveArea*> entryObjects;
-
 	try {
 		thisZone->rlock(readlock);
 
-		regionTree->getActiveAreas(x, y, entryObjects);
+		regionTree->getActiveAreas(x, y, *objects);
 
 		thisZone->runlock(readlock);
 	} catch (...) {
 		thisZone->runlock(readlock);
 
 		throw;
-	}
-
-	for (int i = 0; i < entryObjects.size(); ++i) {
-		ActiveArea* obj = static_cast<ActiveArea*>(entryObjects.getUnsafe(i));
-
-		if (obj->containsPoint(x, y))
-			objects->put(obj);
 	}
 
 	return objects->size();
