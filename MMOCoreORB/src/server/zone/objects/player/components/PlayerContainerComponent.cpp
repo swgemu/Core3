@@ -100,7 +100,7 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 					return TransferErrorCode::PLAYERUSEMASKERROR;
 				}
 
-				if (weapon->getCraftersName() != creo->getFirstName() && !ghost->isPrivileged()) {
+				if (weapon->getCraftersID() != creo->getObjectID() && !ghost->isPrivileged()) {
 					errorDescription = "@jedi_spam:not_your_lightsaber";
 					return TransferErrorCode::PLAYERUSEMASKERROR;
 				}

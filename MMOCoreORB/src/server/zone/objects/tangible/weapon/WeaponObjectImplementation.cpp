@@ -18,6 +18,8 @@
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 #include "server/zone/packets/object/WeaponRanges.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/managers/player/PlayerMap.h"
+#include "server/chat/ChatManager.h"
 
 
 void WeaponObjectImplementation::initializeTransientMembers() {
@@ -443,6 +445,24 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	if (sliced == 1)
 		alm->insertAttribute("wpn_attr", "@obj_attr_n:hacked1");
 
+	if (isJediWeapon() && getCraftersID() == 0) {
+		ZoneServer* zoneServer = getZoneServer();
+
+		if (zoneServer != nullptr) {
+			ChatManager* chatMan = zoneServer->getChatManager();
+
+			if (chatMan != nullptr) {
+				PlayerMap* playerMap = chatMan->getPlayerMap();
+
+				if (playerMap != nullptr) {
+					CreatureObject* crafterCreo = playerMap->get(getCraftersName());
+
+					if (crafterCreo != nullptr)
+						setCraftersID(crafterCreo->getObjectID());
+				}
+			}
+		}
+	}
 }
 
 int WeaponObjectImplementation::getPointBlankAccuracy(bool withPup) const {
