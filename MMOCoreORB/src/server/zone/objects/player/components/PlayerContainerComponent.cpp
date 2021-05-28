@@ -12,8 +12,10 @@
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/player/PlayerMap.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
+#include "server/chat/ChatManager.h"
 
 int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);
@@ -100,7 +102,11 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 					return TransferErrorCode::PLAYERUSEMASKERROR;
 				}
 
-				if (weapon->getCraftersName() != creo->getFirstName() && !ghost->isPrivileged()) {
+				uint64 craftersID = weapon->getCraftersID();
+				String craftersName = weapon->getCraftersName();
+
+				// Initial check against players name can be removed for new servers. Only newly crafted Lightsabers will have craftersID
+				if (((craftersID == 0 && craftersName != creo->getFirstName()) || (craftersID != creo->getObjectID())) && !ghost->isPrivileged()) {
 					errorDescription = "@jedi_spam:not_your_lightsaber";
 					return TransferErrorCode::PLAYERUSEMASKERROR;
 				}

@@ -64,6 +64,7 @@ class TangibleObject extends SceneObject {
 
 	protected byte objectVisible;
 	protected string craftersName;
+	protected unsigned long craftersID;
 
 	protected int junkDealerNeeded;
 	protected int junkValue;
@@ -120,6 +121,7 @@ class TangibleObject extends SceneObject {
 		complexity = 100.f;
 
 		volume = 1;
+		craftersID = 0;
 
 		objectVisible = 1;
 
@@ -705,9 +707,18 @@ class TangibleObject extends SceneObject {
 		craftersName = name;
 	}
 
+	public void setCraftersID(unsigned long crafterOID) {
+		craftersID = crafterOID;
+	}
+
 	@dirty
 	public abstract string getCraftersName() {
 		return craftersName;
+	}
+
+	@read
+	public unsigned long getCraftersID() {
+		return craftersID;
 	}
 
 	public void setJunkDealerNeeded(int jdNeeded) {
