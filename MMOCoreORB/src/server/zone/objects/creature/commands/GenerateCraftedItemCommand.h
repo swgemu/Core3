@@ -159,6 +159,7 @@ public:
 			// Set Crafter name and generate serial number
 			String name = "Generated with GenerateC Command";
 			prototype->setCraftersName(name);
+			prototype->setCraftersID(creature->getObjectID());
 
 			StringBuffer customName;
 			customName << prototype->getDisplayedName() <<  " (System Generated)";

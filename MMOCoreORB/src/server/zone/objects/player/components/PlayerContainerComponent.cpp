@@ -100,7 +100,13 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 					return TransferErrorCode::PLAYERUSEMASKERROR;
 				}
 
-				if (weapon->getCraftersName() != creo->getFirstName() && !ghost->isPrivileged()) {
+				uint64 craftersID = weapon->getCraftersID();
+
+				// Initial check against players name can be removed for new servers. Only newly crafted Lightsabers will have craftersID
+				if (craftersID == 0 && weapon->getCraftersName() != creo->getFirstName() && !ghost->isPrivileged()) {
+					errorDescription = "@jedi_spam:not_your_lightsaber";
+					return TransferErrorCode::PLAYERUSEMASKERROR;
+				} else if (craftersID != creo->getObjectID() && !ghost->isPrivileged()) {
 					errorDescription = "@jedi_spam:not_your_lightsaber";
 					return TransferErrorCode::PLAYERUSEMASKERROR;
 				}
