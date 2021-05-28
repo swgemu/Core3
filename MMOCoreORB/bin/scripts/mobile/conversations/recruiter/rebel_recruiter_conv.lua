@@ -301,7 +301,7 @@ rebelRecruiterConvoTemplate:addScreen(dont_resign_overt);
 
 accepted_resign = ConvoScreen:new {
 	id = "accepted_resign",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_544", -- So be it. If you decide that you want to come back, let me know. But for now, you are no longer a member of the Rebellion.
+	leftDialog = "@conversation/faction_recruiter_rebel:s_510", -- That's a shame. It will take some time to push the paperwork through for approval. Your status will change in about 5 minutes.
 	stopConversation = "true",
 	options = {
 	}

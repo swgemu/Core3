@@ -301,7 +301,7 @@ imperialRecruiterConvoTemplate:addScreen(dont_resign_overt);
 
 accepted_resign = ConvoScreen:new {
 	id = "accepted_resign",
-	leftDialog = "@conversation/faction_recruiter_imperial:s_392", -- So be it. I'll put the paperwork through. We will watch you closely to make sure that you don't cross any lines, citizen.
+	leftDialog = "@conversation/faction_recruiter_imperial:s_358", -- Give me a moment to change your status and alert your superior. This process will take approximately 5 minutes.
 	stopConversation = "true",
 	options = {
 	}
