@@ -1,161 +1,156 @@
-#ifndef ACTIVEAREAQUADTREE_H_
-#define ACTIVEAREAQUADTREE_H_
+#pragma once
 
 #include "system/lang.h"
 #include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/ActiveAreaQuadTreeNode.h"
+#include "system/util/Vector.h"
+#include "system/lang/ref/UniqueReference.h"
+
+//#define REGION_TREE_SIMPLE
 
 namespace server {
 namespace zone {
 
-class ActiveAreaQuadTree : public Object {
-	Reference<ActiveAreaQuadTreeNode*> root;
+class ActiveAreaQuadTreeNode {
+protected:
+	SortedVector<Reference<ActiveArea*>> regions;
+
+	UniqueReference<ActiveAreaQuadTreeNode*> nwNode{};
+	UniqueReference<ActiveAreaQuadTreeNode*> neNode{};
+	UniqueReference<ActiveAreaQuadTreeNode*> swNode{};
+	UniqueReference<ActiveAreaQuadTreeNode*> seNode{};
+
+	float minX = 0, minY = 0;
+	float maxX = 0, maxY = 0;
+
+	const ActiveAreaQuadTreeNode* parentNode;
+
+	float dividerX = 0, dividerY = 0;
 
 public:
-	ActiveAreaQuadTree() {
-		root = nullptr;
+	ActiveAreaQuadTreeNode(float minx, float miny, float maxx, float maxy, const ActiveAreaQuadTreeNode* parent);
+
+	bool isEmpty() const {
+		return regions.isEmpty();
 	}
 
-	ActiveAreaQuadTree(float minx, float miny, float maxx, float maxy) {
-		root = new ActiveAreaQuadTreeNode(minx, miny, maxx, maxy, nullptr);
+	void insertRegion(ActiveArea* region) {
+		regions.put(region);
 	}
 
-
-	void getActiveAreas(float x, float y, Vector<ActiveArea*>& areas) const {
-		getActiveAreas(root, x, y, areas);
+	void dropRegion(ActiveArea* area) {
+		regions.drop(area);
 	}
 
-	void getActiveAreas(const Reference<ActiveAreaQuadTreeNode*>& node, float x, float y, Vector<ActiveArea*>& areas) const {
-		if (node == nullptr) {
-			return;
-		}
-
-		for (const auto& areaEntry : node->activeAreas) {
-			if (areaEntry->containsPoint(x, y)) {
-				areas.add(areaEntry->getArea().get());
-			}
-		}
-
-		const auto& nodeSW = node->swNode;
-		const auto& nodeSE = node->seNode;
-		const auto& nodeNW = node->nwNode;
-		const auto& nodeNE = node->neNode;
-
-		if (nodeSW != nullptr && nodeSW->testInside(x, y)) {
-			getActiveAreas(nodeSW.get(), x, y, areas);
-		}
-		else if (nodeSE != nullptr && nodeSE->testInside(x, y)) {
-			getActiveAreas(nodeSE.get(), x, y, areas);
-		}
-		else if (nodeNW != nullptr && nodeNW->testInside(x, y)) {
-			getActiveAreas(nodeNW.get(), x, y, areas);
-		}
-		else if (nodeNE != nullptr && nodeNE->testInside(x, y)) {
-			getActiveAreas(nodeNE.get(), x, y, areas);
-		}
+	bool testInside(float x, float y) const {
+		return x >= minX && x < maxX && y >= minY && y < maxY;
 	}
 
-	void insert(Reference<ActiveArea*> area) {
-		insert(root, area);
+	bool testRegionInside(float x, float y, float radius) const {
+		return (x - radius) >= minX && (x + radius) < maxX && (y - radius) >= minY && (y + radius) < maxY;
 	}
 
-	void insert(const Reference<ActiveAreaQuadTreeNode*>& node, Reference<ActiveArea*> area) {
-	/*	if (node == root) {
-			System::out << "inserting to activearea quad tree\n";
-			StackTrace::printStackTrace();
-		}*/
-		if (!node->hasSubNodes()) {
-			if ((node->maxX - node->minX <= 8) && (node->maxY - node->minY <= 8)) {
-				node->insertArea(area);
-
-				return;
-			}
-		}
-
-		if (node->testAreaInside(area)) {
-			if (node->testInSWArea(area)) {
-				if (node->swNode == nullptr) {
-					node->swNode = new ActiveAreaQuadTreeNode(node->minX, node->minY, node->dividerX, node->dividerY, node);
-				}
-
-				insert(node->swNode, area);
-
-				return;
-			}
-			else if (node->testInNWArea(area)) {
-				if (node->nwNode == nullptr)
-					node->nwNode = new ActiveAreaQuadTreeNode(node->minX, node->dividerY, node->dividerX, node->maxY, node);
-
-				insert(node->nwNode, area);
-
-				return;
-			}
-			else if (node->testInSEArea(area)) {
-				if (node->seNode == nullptr)
-					node->seNode = new ActiveAreaQuadTreeNode(node->dividerX, node->minY, node->maxX, node->dividerY, node);
-
-				insert(node->seNode, area);
-
-				return;
-			}
-			else if (node->testInNEArea(area)) {
-				if (node->neNode == nullptr)
-					node->neNode = new ActiveAreaQuadTreeNode(node->dividerX, node->dividerY, node->maxX, node->maxY, node);
-
-				insert(node->neNode, area);
-
-				return;
-			}
-		}
-
-		// insert here
-		node->insertArea(area);
-
-		return;
+	bool hasSubNodes() const {
+		return nwNode || neNode || swNode || seNode;
 	}
 
-	void remove(Reference<ActiveArea*> area) {
-		remove(root, area);
+	bool testInSWArea(float x, float y) const {
+		return x >= minX && x < dividerX && y >= minY && y < dividerY;
 	}
 
-	void remove(const Reference<ActiveAreaQuadTreeNode*>& node, Reference<ActiveArea*> area) const {
-/*		if (node == root) {
-			System::out << "removing from activearea quad tree\n";
-			StackTrace::printStackTrace();
-		}*/
-		if (node == nullptr) {
-			return;
-		}
-
-		for (const auto& areaEntry : node->activeAreas) {
-			if (areaEntry->getArea() == area) {
-				node->removeArea(areaEntry);
-			}
-		}
-
-		float x = area->getPositionX();
-		float y = area->getPositionY();
-
-		const auto& nodeSW = node->swNode;
-		const auto& nodeSE = node->seNode;
-		const auto& nodeNW = node->nwNode;
-		const auto& nodeNE = node->neNode;
-
-		if (nodeSW != nullptr && nodeSW->testInside(x, y)) {
-			remove(nodeSW.get(), area);
-		}
-		else if (nodeSE != nullptr && nodeSE->testInside(x, y)) {
-			remove(nodeSE.get(), area);
-		}
-		else if (nodeNW != nullptr && nodeNW->testInside(x, y)) {
-			remove(nodeNW.get(), area);
-		}
-		else if (nodeNE != nullptr && nodeNE->testInside(x, y)) {
-			remove(nodeNE.get(), area);
-		}
+	bool testInSEArea(float x, float y) const {
+		return x >= dividerX && x < maxX && y >= minY && y < dividerY;
 	}
+
+	bool testInNWArea(float x, float y) const {
+		return x >= minX && x < dividerX && y >= dividerY && y < maxY;
+	}
+
+	bool testInNEArea(float x, float y) const {
+		return x >= dividerX && x < maxX && y >= dividerY && y < maxY;
+	}
+
+	friend class ActiveAreaQuadTree;
 };
+
+class ActiveAreaQuadTree : public Object {
+#ifdef REGION_TREE_SIMPLE
+	SortedVector<Reference<ActiveArea*>> regions;
+#else
+	UniqueReference<ActiveAreaQuadTreeNode*> root{};
+#endif
+
+public:
+	ActiveAreaQuadTree(float minx, float miny, float maxx, float maxy) {
+#ifndef REGION_TREE_SIMPLE
+		root = makeUnique<ActiveAreaQuadTreeNode>(minx, miny, maxx, maxy, nullptr);
+#else
+		regions.setNoDuplicateInsertPlan();
+#endif
+	}
+
+	template <typename AreaType>
+	void getActiveAreas(float x, float y, ArrayList<AreaType>& areas) const {
+#ifndef REGION_TREE_SIMPLE
+		getActiveAreas(root.get(), x, y, areas);
+#else
+		for (const auto& area : regions) {
+			if (area->containsPoint(x, y)) {
+				areas.emplace(area);
+			}
+		}
+#endif
+	}
+
+	void insert(Reference<ActiveArea*> region) {
+#ifndef REGION_TREE_SIMPLE
+		insert(*root, region);
+#else
+		regions.put(std::move(region));
+#endif
+	}
+
+#ifdef REGION_TREE_SIMPLE
+	void remove(Reference<ActiveArea*> region) {
+		regions.drop(region);
+	}
+#else
+	void remove(Reference<ActiveArea*> region);
+#endif
+
+protected:
+#ifndef REGION_TREE_SIMPLE
+	void insert(ActiveAreaQuadTreeNode& node, ActiveArea* region);
+	void removeActiveArea(ActiveAreaQuadTreeNode& node, ActiveArea* area);
+
+	template <typename AreaType>
+	void getActiveAreas(ActiveAreaQuadTreeNode* node, float x, float y, ArrayList<AreaType>& regions) const {
+		if (node == nullptr) {
+			return;
+		}
+
+		for (const auto& regionEntry : node->regions) {
+			if (regionEntry->containsPoint(x, y)) {
+				regions.emplace(regionEntry);
+			}
+		}
+
+		const auto& nodeSW = node->swNode;
+		const auto& nodeSE = node->seNode;
+		const auto& nodeNW = node->nwNode;
+		const auto& nodeNE = node->neNode;
+
+		if (nodeSW != nullptr && nodeSW->testInside(x, y)) {
+			getActiveAreas(nodeSW.get(), x, y, regions);
+		} else if (nodeSE != nullptr && nodeSE->testInside(x, y)) {
+			getActiveAreas(nodeSE.get(), x, y, regions);
+		} else if (nodeNW != nullptr && nodeNW->testInside(x, y)) {
+			getActiveAreas(nodeNW.get(), x, y, regions);
+		} else if (nodeNE != nullptr && nodeNE->testInside(x, y)) {
+			getActiveAreas(nodeNE.get(), x, y, regions);
+		}
+	}
+#endif
+};
+
 } // namespace zone
 } // namespace server
-
-#endif /* ACTIVEAREAQUADTREE_H_ */

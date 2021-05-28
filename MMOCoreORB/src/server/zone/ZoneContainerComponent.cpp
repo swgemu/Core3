@@ -12,6 +12,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/ActiveAreaQuadTree.h"
 
 bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
 	if (newZone == nullptr)
@@ -36,9 +37,9 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 
 	activeArea->setZone(newZone);
 
-	ActiveAreaQuadTree* regionTree = newZone->getRegionTree();
+	auto areaTree = newZone->getActiveAreaTree();
 
-	regionTree->insert(activeArea);
+	areaTree->insert(activeArea);
 
 	//regionTree->inRange(activeArea, 512);
 
@@ -94,9 +95,9 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	Locker zoneLocker(zone);
 
-	ActiveAreaQuadTree* regionTree = zone->getRegionTree();
+	auto areaTree = zone->getActiveAreaTree();
 
-	regionTree->remove(activeArea);
+	areaTree->remove(activeArea);
 
 	// lets remove the in range active areas of players
 	SortedVector<QuadTreeEntry*> objects;
