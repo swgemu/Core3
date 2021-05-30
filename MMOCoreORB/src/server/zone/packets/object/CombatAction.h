@@ -127,6 +127,8 @@ public:
 		insertByte(trails);
 		insertByte(0);
 
+		defenderSize = targetDefenders.size();
+
 		for (int i = 0; i < targetDefenders.size(); i++) {
 			DefenderHitList* hitList = targetDefenders.get(i);
 
@@ -140,11 +142,11 @@ public:
 				continue;
 			}
 
-			insertShort(1);
+			insertShort(i + 1);
 			insertLong(defender->getObjectID());
 			insertByte((defender->isCreatureObject() ? defender->asCreatureObject()->getPosture() : 0x00));
 			insertByte(hitList->getHit());
-			insertByte(0); //clientEffectID
+			insertByte(0); // clientEffectID
 			insertByte(hitList->getHitLocation());
 			insertByte(hitList->getInitialDamage());
 
