@@ -118,36 +118,49 @@ public:
 
 		int posture = object->getPosture();
 
-		//TODO: This should be derived from the locomotion table
-		if (ghost->isForcedTransform() || (!object->hasDizzyEvent()
-				&& (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::CROUCHED || posture == CreaturePosture::DRIVINGVEHICLE || posture == CreaturePosture::RIDINGCREATURE
-				|| posture == CreaturePosture::SKILLANIMATING))) {
+		auto parent = object->getParent().get();
 
-			updatePosition(object);
-		} else {
+		if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
+			parent->wlock(object);
+		}
 
-			object->setCurrentSpeed(0);
-			object->updateLocomotion();
+		try {
+			//TODO: This should be derived from the locomotion table
+			if (ghost->isForcedTransform() || (!object->hasDizzyEvent()
+					&& (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::CROUCHED || posture == CreaturePosture::DRIVINGVEHICLE || posture == CreaturePosture::RIDINGCREATURE
+					|| posture == CreaturePosture::SKILLANIMATING))) {
 
-			ValidatedPosition pos;
-			pos.update(object);
-
-			Vector3 currentPos = pos.getPosition();
-			Vector3 newPos(positionX, positionY, positionZ);
-
-			object->setDirection(directionW, directionX, directionY, directionZ);
-
-			if (currentPos.squaredDistanceTo(newPos) > 0.01) {
-				bounceBack(object, pos);
+				updatePosition(object);
 			} else {
-				ManagedReference<SceneObject*> currentParent = object->getParent().get();
-				bool light = objectControllerMain->getPriority() != 0x23;
+				object->setCurrentSpeed(0);
 
-				if (currentParent != nullptr)
-					object->updateZoneWithParent(currentParent, light);
-				else
-					object->updateZone(light);
+				object->updateLocomotion();
+
+				ValidatedPosition pos;
+				pos.update(object);
+
+				Vector3 currentPos = pos.getPosition();
+				Vector3 newPos(positionX, positionY, positionZ);
+
+				object->setDirection(directionW, directionX, directionY, directionZ);
+
+				if (currentPos.squaredDistanceTo(newPos) > 0.01) {
+					bounceBack(object, pos);
+				} else {
+					ManagedReference<SceneObject*> currentParent = object->getParent().get();
+					bool light = objectControllerMain->getPriority() != 0x23;
+
+					if (currentParent != nullptr)
+						object->updateZoneWithParent(currentParent, light);
+					else
+						object->updateZone(light);
+				}
 			}
+		} catch (...) {
+		}
+
+		if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
+			parent->unlock();
 		}
 
 		if (ghost->isForcedTransform()) {
