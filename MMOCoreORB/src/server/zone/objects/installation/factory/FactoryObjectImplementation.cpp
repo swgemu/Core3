@@ -369,7 +369,7 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 
 		player->sendSystemMessage(message);
 	} else {
-		trx.abort() << "transferObject failed.";
+		trx.abort() << "Failed to transfer schematic to factory.";
 
 		StringIdChatParameter message("manf_station", "schematic_not_removed"); //Schematic %TT was not removed from the station and been placed in your datapad. Have a nice day!
 
