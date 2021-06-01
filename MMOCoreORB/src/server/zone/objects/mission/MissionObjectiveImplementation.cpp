@@ -168,8 +168,9 @@ void MissionObjectiveImplementation::fail() {
 void MissionObjectiveImplementation::awardReward() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
-	if(mission == nullptr)
+	if (mission == nullptr) {
 		return;
+	}
 
 	Vector<ManagedReference<CreatureObject*> > players;
 	PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
@@ -177,6 +178,20 @@ void MissionObjectiveImplementation::awardReward() {
 	Vector3 missionEndPoint = getEndPosition();
 
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
+
+	if (owner != nullptr) {
+		ZoneServer* zoneServer = owner->getZoneServer();
+
+		if (zoneServer != nullptr) {
+			Reference<TangibleObject*> target = zoneServer->getObject(mission->getTargetObjectId()).castTo<TangibleObject*>();
+
+			if (target != nullptr) {
+				float zCoord = target->getWorldPosition().getZ();
+
+				missionEndPoint.setZ(zCoord);
+			}
+		}
+	}
 
 	ManagedReference<GroupObject*> group = owner->getGroup();
 
@@ -201,8 +216,9 @@ void MissionObjectiveImplementation::awardReward() {
 #else
 				groupMember->sendMessage(pmm->clone());
 #endif
+				int distance = groupMember->getWorldPosition().squaredDistanceTo(missionEndPoint);
 
-				if (groupMember->getWorldPosition().distanceTo(missionEndPoint) < 128) {
+				if (distance < (128 * 128)) {
 					players.add(groupMember);
 				}
 			}
@@ -263,11 +279,9 @@ Vector3 MissionObjectiveImplementation::getEndPosition() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	Vector3 missionEndPoint;
-	if(mission != nullptr) {
+	if (mission != nullptr) {
 		missionEndPoint.setX(mission->getEndPositionX());
 		missionEndPoint.setY(mission->getEndPositionY());
-		TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
-		missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
 	}
 
 	return missionEndPoint;
