@@ -63,13 +63,10 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 			return
 		end
 
-		if (CreatureObject(pPlayer):isOvert()) then
-			CreatureObject(pPlayer):setFutureFactionStatus(0)
-			writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
-			createEvent(300000, "recruiterScreenplay", "handleResign", pPlayer, "")
-			return pConvScreen
-		end
-		recruiterScreenplay:handleResign(pPlayer)
+		CreatureObject(pPlayer):setFutureFactionStatus(0)
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
+		createEvent(300000, "recruiterScreenplay", "handleResign", pPlayer, "")
+		return pConvScreen
 
 	elseif (screenID == "accepted_resume_duties") then
 		CreatureObject(pPlayer):setFutureFactionStatus(1)
