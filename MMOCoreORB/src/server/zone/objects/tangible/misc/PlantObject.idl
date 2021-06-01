@@ -14,7 +14,7 @@ include system.lang.Time;
 
 @json
 class PlantObject extends TangibleObject {
-	public static final int PULSERATE = 21600;
+	public static final unsigned long PULSERATE = 21600000; // 6 hours
 
 	protected int waterLevel;
 	protected int nutrientLevel;
@@ -60,6 +60,8 @@ class PlantObject extends TangibleObject {
 		super.initializeTransientMembers();
 		startPulse();
 	}
+	
+	public native void finalize();
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature
