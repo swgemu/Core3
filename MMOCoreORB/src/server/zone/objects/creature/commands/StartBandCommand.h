@@ -28,16 +28,21 @@ public:
 
 		Reference<Instrument*> instrument = creature->getPlayableInstrument();
 
+		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+
 		if (instrument == nullptr) {
-			creature->sendSystemMessage("@performance:music_no_instrument"); // You must have an instrument equipped to play music.
+			performanceManager->performanceMessageToSelf(creature, nullptr, "performance", "music_no_instrument"); // You must have an instrument equipped to play music.
 			return GENERALERROR;
 		}
 
-		// TODO: outro check
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
+
+		if (session != nullptr && session->isPerformingOutro()) {
+			performanceManager->performanceMessageToSelf(creature, nullptr, "@performance", "music_outro_wait"); // You must wait a moment before starting another song.
+			return GENERALERROR;
+		}
 
 		int instrumentType = instrument->getInstrumentType();
-
-		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 
 		bool activeBandSong = false;
 		int performanceIndex = 0;
@@ -72,7 +77,7 @@ public:
 
 		if (!activeBandSong) {
 			if (songToPlay.length() < 1) {
-				performanceManager->sendAvailableSongs(creature);
+				performanceManager->sendAvailablePerformances(creature, PerformanceType::MUSIC, true);
 				return SUCCESS;
 			}
 
@@ -80,22 +85,22 @@ public:
 		}
 
 		if (performanceIndex == 0) {
-			creature->sendSystemMessage("@performance:music_invalid_song"); // That is not a valid song name.
+			performanceManager->performanceMessageToSelf(creature, nullptr, "performance", "music_invalid_song"); // That is not a valid song name.
 			return GENERALERROR;
 		}
 
 		String instrumentName = performanceManager->getInstrument(instrumentType);
 
 		if (!performanceManager->canPlayInstrument(creature, instrumentType)) {
-			creature->sendSystemMessage("@performance:music_lack_skill_instrument"); // You do not have the skill to use the currently equipped instrument.
+			performanceManager->performanceMessageToSelf(creature, nullptr, "performance", "music_lack_skill_instrument"); // You do not have the skill to use the currently equipped instrument.
 			return GENERALERROR;
 		}
 
 		if (!performanceManager->canPlaySong(creature, songToPlay)) {
 			if (activeBandSong)
-				creature->sendSystemMessage("@performance:music_lack_skill_song_band"); // You do not have the skill to perform the song the band is performing.
+				performanceManager->performanceMessageToSelf(creature, nullptr, "performance", "music_lack_skill_song_band"); // You do not have the skill to perform the song the band is performing.
 			else
-				creature->sendSystemMessage("@performance:music_lack_skill_song_self"); // You do not have the skill to perform that song.
+				performanceManager->performanceMessageToSelf(creature, nullptr, "performance", "music_lack_skill_song_self"); // You do not have the skill to perform that song.
 
 			return GENERALERROR;
 		}

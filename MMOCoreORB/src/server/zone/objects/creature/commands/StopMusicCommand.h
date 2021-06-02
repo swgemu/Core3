@@ -23,17 +23,16 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 		if (session == nullptr || !session->isPlayingMusic()) {
-			creature->sendSystemMessage("@performance:music_not_performing"); // You are not currently playing a song.
+			performanceManager->performanceMessageToSelf(creature, nullptr, "performance", "music_not_performing"); // You are not currently playing a song.
 			return GENERALERROR;
 		}
 
-		// TODO: flourish outro
-
-		session->stopPlayingMusic();
+		session->stopMusic(false);
 
 		return SUCCESS;
 	}

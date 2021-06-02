@@ -17,12 +17,7 @@ public:
 		CLONE_CONFIRM                      = 10,
 
 		//Entertaining 11 - 20
-		MUSIC_START                        = 11,
-		MUSIC_CHANGE                       = 12,
-		DANCING_START                      = 13,
-		DANCING_CHANGE                     = 14,
-		BAND_START                         = 15,
-		BAND_CHANGE                        = 16,
+		PERFORMANCE_SELECT                 = 11,
 
 		//Guilds 21 - 50
 		GUILD_CREATE_NAME                  = 21,
