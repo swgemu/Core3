@@ -70,7 +70,7 @@ public:
 		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 
 		if (args.length() < 1) {
-			performanceManager->sendAvailableSongs(creature);
+			performanceManager->sendAvailablePerformances(creature, PerformanceType::MUSIC, false);
 			return SUCCESS;
 		}
 

@@ -36,7 +36,7 @@ public:
 		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 
 		if (args.length() < 1) {
-			performanceManager->sendAvailableDances(creature);
+			performanceManager->sendAvailablePerformances(creature, PerformanceType::DANCE, false);
 			return SUCCESS;
 		}
 

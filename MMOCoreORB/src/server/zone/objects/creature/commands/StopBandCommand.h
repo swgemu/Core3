@@ -28,8 +28,6 @@ public:
 		if (group == nullptr)
 			return GENERALERROR;
 
-		// TODO: outro
-
 		for (int i = 0; i < group->getGroupSize(); ++i) {
 			Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
@@ -59,22 +57,17 @@ public:
 				continue;
 			}
 
+			bool isLeader = false;
+
+			if (groupMember == creature)
+				isLeader = true;
+
 			ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 			if (bandMemberSession == nullptr || !bandMemberSession->isPlayingMusic())
 				continue;
 
-			if (groupMember == creature) {
-				groupMember->sendSystemMessage("@performance:music_stop_band_self"); // You stop the band.
-			} else {
-				StringIdChatParameter stringID;
-
-				stringID.setTU(creature->getCustomObjectName());
-				stringID.setStringId("performance", "music_stop_band_members"); // %TU stops your band.
-				groupMember->sendSystemMessage(stringID);
-			}
-
-			bandMemberSession->stopPlayingMusic();
+			bandMemberSession->stopMusic(false, true, isLeader);
 		}
 
 		return SUCCESS;

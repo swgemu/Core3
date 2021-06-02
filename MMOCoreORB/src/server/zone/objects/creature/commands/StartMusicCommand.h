@@ -96,7 +96,7 @@ public:
 
 		if (!activeBandSong) {
 			if (songToPlay.length() < 1) {
-				performanceManager->sendAvailableSongs(creature);
+				performanceManager->sendAvailablePerformances(creature, PerformanceType::MUSIC, false);
 				return SUCCESS;
 			}
 

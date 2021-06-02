@@ -270,7 +270,7 @@ void EntertainingSessionImplementation::doPerformanceAction() {
 		}
 
 		if (isPlayingMusic()) {
-			stopPlayingMusic();
+			stopMusic(true);
 			entertainer->sendSystemMessage("@performance:music_too_tired");
 		}
 	} else {
@@ -278,7 +278,7 @@ void EntertainingSessionImplementation::doPerformanceAction() {
 	}
 }
 
-void EntertainingSessionImplementation::stopPlayingMusic() {
+void EntertainingSessionImplementation::stopPlaying() {
 	ManagedReference<CreatureObject*> entertainer = this->entertainer.get();
 
 	if (entertainer == nullptr)
@@ -289,12 +289,13 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 	if (!isPlayingMusic())
 		return;
 
-	entertainer->sendSystemMessage("@performance:music_stop_self");
-
 	sendEntertainingUpdate(entertainer, 0);
 
 	performanceIndex = 0;
 	entertainer->setListenToID(0);
+
+	if (isPerformingOutro())
+		setPerformingOutro(false);
 
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 
@@ -328,6 +329,71 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 
 		entertainer->dropActiveSession(SessionFacadeType::ENTERTAINING);
 	}
+}
+
+void EntertainingSessionImplementation::stopMusic(bool skipOutro, bool bandStop, bool isBandLeader) {
+	ManagedReference<CreatureObject*> player = entertainer.get();
+
+	if (player == nullptr)
+		return;
+
+	if (isPerformingOutro() && !skipOutro)
+		return;
+
+	if (performanceIndex == 0)
+		return;
+
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+
+	if (skipOutro) {
+		performanceManager->performanceMessageToSelf(player, nullptr, "performance", "music_stop_self"); // You stop playing.
+		performanceManager->performanceMessageToBand(player, nullptr, "performance", "music_stop_other"); // %TU stops playing.
+		performanceManager->performanceMessageToBandPatrons(player, nullptr, "performance", "music_stop_other"); // %TU stops playing.
+		stopPlaying();
+	} else {
+		Flourish* flourish = new Flourish(player, -1);
+		player->broadcastMessage(flourish, true);
+
+		setPerformingOutro(true);
+
+		performanceManager->performanceMessageToSelf(player, nullptr, "performance", "music_prepare_stop_self"); // You prepare to stop playing.
+
+		ManagedReference<EntertainingSession*> strongSess = _this.getReferenceUnsafeStaticCast();
+
+		Core::getTaskManager()->scheduleTask([player, strongSess, bandStop, isBandLeader] {
+			Locker lock(player);
+			strongSess->clearOutro(bandStop, isBandLeader);
+		}, "SetPerformingOutroTask", 15000);
+	}
+}
+
+void EntertainingSessionImplementation::clearOutro(bool bandStop, bool isBandLeader) {
+	ManagedReference<CreatureObject*> player = entertainer.get();
+
+	if (player == nullptr)
+		return;
+
+	if (!isPerformingOutro())
+		return;
+
+	setPerformingOutro(false);
+
+	if (performanceIndex == 0)
+		return;
+
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+
+	if (bandStop && isBandLeader) {
+		performanceManager->performanceMessageToSelf(player, nullptr, "performance", "music_stop_band_self"); // You stop the band.
+		performanceManager->performanceMessageToBand(player, nullptr, "performance", "music_stop_band_members"); // %TU stops your band.
+		performanceManager->performanceMessageToBandPatrons(player, nullptr, "performance", "music_stop_band_other"); // %TU's band stops playing.
+	} else if (!bandStop) {
+		performanceManager->performanceMessageToSelf(player, nullptr, "performance", "music_stop_self"); // You stop playing.
+		performanceManager->performanceMessageToBand(player, nullptr, "performance", "music_stop_other"); // %TU stops playing.
+		performanceManager->performanceMessageToBandPatrons(player, nullptr, "performance", "music_stop_other"); // %TU stops playing.
+	}
+
+	stopPlaying();
 }
 
 void EntertainingSessionImplementation::startDancing(int perfIndex) {
@@ -605,7 +671,7 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber, bool gran
 			addEntertainerFlourishBuff();
 
 			// Grant Experience
-			int loopDuration = performance->getLoopDuration();
+			float loopDuration = performance->getLoopDuration();
 			int flourishCap = (int) (10 / loopDuration); // Cap for how many flourishes count towards xp per pulse. Music loops are 5s, dance are 10s so music has a cap of 2, dance a cap of 1.
 			if (grantXp && flourishCount < flourishCap)
 				flourishXp += performance->getFlourishXpMod();
@@ -1127,4 +1193,57 @@ bool EntertainingSessionImplementation::isDancing() {
 		return false;
 
 	return performance->isDance();
+}
+
+void EntertainingSessionImplementation::joinBand() {
+	if (performanceIndex == 0)
+		return;
+
+	ManagedReference<CreatureObject*> player = entertainer.get();
+
+	if (player == nullptr)
+		return;
+
+	ManagedReference<GroupObject*> group = player->getGroup();
+
+	if (group == nullptr)
+		return;
+
+	Reference<Instrument*> instrument = player->getPlayableInstrument();
+
+	if (instrument == nullptr)
+		return;
+
+	int instrumentType = instrument->getInstrumentType();
+	bool activeBandSong = false;
+	int bandSong = 0;
+
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+
+	for (int i = 0; i < group->getGroupSize(); i++) {
+		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+
+		if (groupMember == nullptr || groupMember == player || !groupMember->isPlayingMusic())
+			continue;
+
+		ManagedReference<EntertainingSession*> memberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
+
+		if (memberSession == nullptr)
+			continue;
+
+		int memberPerformanceIndex = memberSession->getPerformanceIndex();
+
+		if (memberPerformanceIndex == 0)
+			continue;
+
+		bandSong = performanceManager->getMatchingPerformanceIndex(memberPerformanceIndex, instrumentType);
+		activeBandSong = true;
+		break;
+	}
+
+	if (activeBandSong && performanceIndex != bandSong) {
+		performanceManager->performanceMessageToSelf(player, nullptr, "performance", "music_join_band_stop"); // You must play the same song as the band.
+		stopMusic(true);
+	}
+
 }

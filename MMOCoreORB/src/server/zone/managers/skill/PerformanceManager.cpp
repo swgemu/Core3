@@ -10,6 +10,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
+#include "server/zone/objects/player/sui/callbacks/SelectPerformanceSuiCallback.h"
 
 PerformanceManager::PerformanceManager() :
 	Logger("PerformanceManager") {
@@ -122,7 +123,7 @@ Performance* PerformanceManager::getDance(const String& name) {
 		for (int i = 0; i < performances->size(); ++i) {
 			Performance* ret = performances->get(i);
 
-			if (ret->isDance() && ret->getName() == name)
+			if (ret->isDance() && ret->getName().toLowerCase() == name.toLowerCase())
 				return ret;
 		}
 	}
@@ -135,7 +136,7 @@ Performance* PerformanceManager::getSong(const String& name, int instrumentType)
 		for (int i = 0; i < performances->size(); ++i) {
 			Performance* ret = performances->get(i);
 
-			if (ret->isMusic() && ret->getName() == name
+			if (ret->isMusic() && ret->getName().toLowerCase() == name.toLowerCase()
 					&& ret->getInstrumentAudioId() == instrumentType)
 				return ret;
 		}
@@ -150,7 +151,7 @@ int PerformanceManager::getPerformanceIndex(int performanceType, const String& p
 	for (int i = 0; i < performances->size(); ++i) {
 		Performance* perf = performances->get(i);
 
-		if (perf->getType() == performanceType && perf->getName() == performanceName && perf->getInstrumentAudioId() == instrumentType)
+		if (perf->getType() == performanceType && perf->getName().toLowerCase() == performanceName.toLowerCase() && perf->getInstrumentAudioId() == instrumentType)
 			return perf->getPerformanceIndex();
 	}
 
@@ -211,14 +212,14 @@ int PerformanceManager::getMatchingPerformanceIndex(int performanceIndex, int in
 		if (!perf->isMusic())
 			continue;
 
-		if (perf->getInstrumentAudioId() == instrumentType && perf->getName() == performanceName)
+		if (perf->getInstrumentAudioId() == instrumentType && perf->getName().toLowerCase() == performanceName.toLowerCase())
 			return perf->getPerformanceIndex();
 	}
 
 	return 0;
 }
 
-void PerformanceManager::sendAvailableSongs(CreatureObject* player) {
+void PerformanceManager::sendAvailablePerformances(CreatureObject* player, int performanceType, bool bandCommand) {
 	Reference<PlayerObject*> ghost = player->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -226,70 +227,55 @@ void PerformanceManager::sendAvailableSongs(CreatureObject* player) {
 
 	Reference<Instrument*> instrument = player->getPlayableInstrument();
 
-	if (instrument == nullptr) {
+	if (performanceType == PerformanceType::MUSIC && instrument == nullptr) {
 		performanceMessageToSelf(player, nullptr, "performance", "music_no_instrument"); // You must have an instrument equipped to play music.
 		return;
 	}
 
-	Reference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::MUSIC_START);
-	sui->setPromptTitle("@performance:available_songs"); // Available Songs
-	sui->setPromptText("@performance:select_song"); // Select a song to play.
+	int instrumentType = 0;
 
-	const AbilityList* list = ghost->getAbilityList();
+	if (instrument != nullptr)
+		instrumentType = instrument->getInstrumentType();
 
-	for (int i = 0; i < list->size(); ++i) {
-		Ability* ability = list->get(i);
+	Reference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::PERFORMANCE_SELECT);
+	sui->setCallback(new SelectPerformanceSuiCallback(player->getZoneServer(), performanceType, bandCommand));
 
-		String abilityName = ability->getAbilityName();
+	if (performanceType == PerformanceType::DANCE) {
+		sui->setPromptTitle("@performance:available_dances");
+		sui->setPromptText("@performance:select_dance");
+	} else {
+		sui->setPromptTitle("@performance:available_songs"); // Available Songs
+		sui->setPromptText("@performance:select_song"); // Select a song to play.
+	}
 
-		if (abilityName.indexOf("startMusic") != -1) {
-			int args = abilityName.indexOf("+");
+	if (performances != nullptr) {
+		for (int i = 0; i < performances->size(); ++i) {
+			Performance* perf = performances->get(i);
 
-			if (args != -1) {
-				String arg = abilityName.subString(args + 1);
+			if (perf->isMusic() && (performanceType != PerformanceType::MUSIC || instrumentType != perf->getInstrumentAudioId()))
+				continue;
 
-				sui->addMenuItem(arg);
-			}
+			if (perf->isDance() && performanceType != PerformanceType::DANCE)
+				continue;
+
+			int perfIndex = perf->getPerformanceIndex();
+
+			if (perf->isMusic() && !canPlaySong(player, perfIndex))
+				continue;
+
+			if (perf->isDance() && !canPerformDance(player, perfIndex))
+				continue;
+
+			String perfName = perf->getName();
+
+			String displayName = perfName.subString(0,1).toUpperCase() + perfName.subString(1);
+
+			sui->addMenuItem(displayName);
 		}
 	}
 
 	ghost->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
-}
-
-void PerformanceManager::sendAvailableDances(CreatureObject* player) {
-	// TODO: Sui callback
-	Reference<PlayerObject*> ghost = player->getPlayerObject();
-
-	if (ghost == nullptr)
-		return;
-
-	ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::DANCING_START);
-	sui->setPromptTitle("@performance:available_dances");
-	sui->setPromptText("@performance:select_dance");
-
-	const AbilityList* list = ghost->getAbilityList();
-
-	for (int i = 0; i < list->size(); ++i) {
-		Ability* ability = list->get(i);
-
-		String abilityName = ability->getAbilityName();
-
-		if (abilityName.indexOf("startDance") != -1) {
-			int args = abilityName.indexOf("+");
-
-			if (args != -1) {
-				String arg = abilityName.subString(args + 1);
-
-				sui->addMenuItem(arg);
-			}
-		}
-	}
-
-	ghost->addSuiBox(sui);
-	player->sendMessage(sui->generateMessage());
-
-	return;
 }
 
 bool PerformanceManager::canPlayInstrument(CreatureObject* player, int instrumentType) {
