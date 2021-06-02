@@ -42,6 +42,7 @@ class EntertainingSession extends Facade {
 	protected int applauseCount;
 	protected boolean acceptingBandFlourishes;
 	protected boolean performingEffect;
+	protected boolean performingOutro;
 	
 	public EntertainingSession(CreatureObject ent) {
 		entertainer = ent;
@@ -57,6 +58,7 @@ class EntertainingSession extends Facade {
 		
 		acceptingBandFlourishes = true;
 		performingEffect = false;
+		performingOutro = false;
 		
 		Logger.setLoggingName("EntertainingSession");
 		Logger.setLogging(false);
@@ -68,6 +70,7 @@ class EntertainingSession extends Facade {
 	
 	public native void startDancing(int perfIndex);
 	public native void startPlayingMusic(int perfIndex, Instrument instrument);
+	public native void joinBand();
 	
 	public native void startEntertaining();
 	
@@ -100,7 +103,7 @@ class EntertainingSession extends Facade {
 	}
 	
 	public int cancelSession() {
-		stopPlayingMusic();
+		stopMusic(true);
 		stopDancing();
 		
 		return 0;
@@ -110,7 +113,9 @@ class EntertainingSession extends Facade {
 		return 0;
 	}
 	
-	public native void stopPlayingMusic();
+	public native void stopPlaying();
+	public native void stopMusic(boolean skipOutro, boolean bandStop = false, boolean isBandLeader = false);
+	public native void clearOutro(boolean bandStop, boolean isBandLeader);
 	public native void stopDancing();
 	
 	public native void activateAction();
@@ -201,5 +206,12 @@ class EntertainingSession extends Facade {
 	public void setPerformingEffect(boolean val) {
 		performingEffect = val;
 	}
-
+	
+	public boolean isPerformingOutro() {
+		return performingOutro;
+	}
+	
+	public void setPerformingOutro(boolean val) {
+		performingOutro = val;
+	}
 }
