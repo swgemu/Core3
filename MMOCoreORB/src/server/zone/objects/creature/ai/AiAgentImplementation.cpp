@@ -1703,15 +1703,18 @@ void AiAgentImplementation::updatePetSwimmingState() {
 	}
 
 	float waterHeight;
+	bool waterIsDefined = terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight);
+	float petHeight = getPositionZ();
+	float swimVar = (waterHeight - swimHeight + 0.2f);
 
-	if (terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight)) {
-
-		if ((getPositionZ() + getSwimHeight() - waterHeight < 0.2)) {
-			setState(CreatureState::SWIMMING, true);
-		} else {
-			clearState(CreatureState::SWIMMING, true);
-		}
+	if (waterIsDefined && (swimVar - petHeight > 0.1)) {
+		// Pet is in the water.
+		setState(CreatureState::SWIMMING, true);
+		return;
 	}
+
+	// Terrain is above water level.
+	clearState(CreatureState::SWIMMING, true);
 }
 
 void AiAgentImplementation::checkNewAngle() {
@@ -1892,23 +1895,46 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				// okay, we can't go that far in one update (since we've capped update times)
 				// calculate the distance we can go and set nextPosition
 				Vector3 thisPos = thisWorldPos;
-				if (nextPosition.getCell() != nullptr)
+
+				if (nextPosition.getCell() != nullptr) {
 					thisPos = PathFinderManager::transformToModelSpace(thisPos, nextPosition.getCell()->getParent().get());
+				}
 
 				float dx = nextPosition.getX() - thisPos.getX();
 				float dy = nextPosition.getY() - thisPos.getY();
-				float dz = nextPosition.getZ() - thisPos.getZ();
 
-				nextPosition.setX(thisPos.getX() + (maxDist * (dx / dist)));
-				nextPosition.setZ(thisPos.getZ() + (maxDist * (dz / dist)));
-				nextPosition.setY(thisPos.getY() + (maxDist * (dy / dist)));
+				float newX = (thisPos.getX() + (maxDist * (dx / dist)));
+				float newY = (thisPos.getY() + (maxDist * (dy / dist)));
+				float newZ = 0.f;
 
-				// Now do cell checks to get the Z coordinate outside
-				if (nextPosition.getCell() == nullptr && nextPosition.getZ() == 0) {
-					targetMutex.unlock();
-					nextPosition.setZ(getWorldZ(nextPosition.getWorldPosition()));
-					targetMutex.lock();
+				Zone* zone = getZoneUnsafe();
+
+				if (targetPosition.getCell() == nullptr && nextPosition.getCell() == nullptr && zone != nullptr) {
+					newZ = getWorldZ(nextPosition.getWorldPosition());
+
+					PlanetManager* planetManager = zone->getPlanetManager();
+
+					if (planetManager != nullptr) {
+						TerrainManager* terrainManager = planetManager->getTerrainManager();
+
+						if (terrainManager != nullptr) {
+							float waterHeight;
+							bool waterIsDefined = terrainManager->getWaterHeight(newX, newY, waterHeight);
+
+							if (waterIsDefined && (waterHeight > newZ) && isSwimming()) {
+								newZ = (waterHeight - swimHeight);
+							}
+						}
+					}
+				} else {
+					float dz = nextPosition.getZ() - thisPos.getZ();
+
+					newZ = (thisPos.getZ() + (maxDist * (dz / dist)));
 				}
+
+				nextPosition.setX(newX);
+				nextPosition.setZ(newZ);
+				nextPosition.setY(newY);
 			}
 		}
 
