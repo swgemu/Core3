@@ -310,8 +310,6 @@ void TangibleObjectImplementation::setFutureFactionStatus(int status) {
 void TangibleObjectImplementation::setPvpStatusBitmask(uint32 bitmask, bool notifyClient) {
 	pvpStatusBitmask = bitmask;
 
-	broadcastPvpStatusBitmask();
-
 	if (isPlayerCreature()) {
 		PlayerObject* ghost = asCreatureObject()->getPlayerObject();
 
@@ -332,6 +330,8 @@ void TangibleObjectImplementation::setPvpStatusBitmask(uint32 bitmask, bool noti
 			pet->setPvpStatusBitmask(bitmask);
 		}
 	}
+
+	broadcastPvpStatusBitmask();
 }
 
 void TangibleObjectImplementation::setIsCraftedEnhancedItem(bool value) {
