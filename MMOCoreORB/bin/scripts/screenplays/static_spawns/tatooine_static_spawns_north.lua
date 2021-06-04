@@ -148,7 +148,7 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "seeker", 600, 5102.3, 23.6, 592.6, 138, 0)
 	--Building Ruins (6395,195)
 	spawnMobile("tatooine", "sunstained_dune_lizard", 600, 6383.5, 64.5, 190.5, -54, 0)
-
+	
 end
 
 function TatooineStaticSpawnsNorthScreenPlay:notifyWarriorDead(pWarrior, pKiller)
