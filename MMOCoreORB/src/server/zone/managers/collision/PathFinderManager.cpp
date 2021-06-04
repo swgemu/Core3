@@ -131,6 +131,12 @@ void PathFinderManager::getNavMeshCollisions(SortedVector<NavCollision*> *collis
 	float maxT = dir.normalize();
 
 	for (const ManagedReference<NavArea*>& area : *areas) {
+		if (area->getZone() == nullptr) {
+			String name = area->getMeshName();
+			error() << "Null zone on navmesh area " << name << " in getNavMeshCollisions";
+			continue;
+		}
+
 		const AABB* bounds = area->getMeshBounds();
 
 		const Vector3& bPos = bounds->center();

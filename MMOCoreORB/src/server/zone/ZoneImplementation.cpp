@@ -415,7 +415,7 @@ int ZoneImplementation::getInRangeNavMeshes(float x, float y, SortedVector<Manag
 		ActiveArea* area = static_cast<ActiveArea*>(entryObjects.getUnsafe(i));
 		NavArea* obj = area->asNavArea();
 
-		if (obj && obj->isNavMeshLoaded() && obj->isInRange(x, y, 256)) {
+		if (obj && obj->isNavMeshLoaded()) {
 			objects->put(obj);
 		}
 	}
