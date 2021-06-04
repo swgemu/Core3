@@ -88,14 +88,6 @@ bool QueueCommand::playerEntryCheck(CreatureObject* creature, TangibleObject* ta
 		Reference<CellObject*> targetCell = target->getParent().get().castTo<CellObject*>();
 
 		if (targetCell != nullptr) {
-			const ContainerPermissions* perms = targetCell->getContainerPermissions();
-
-			if (perms->hasInheritPermissionsFromParent()) {
-				if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
-					return false;
-				}
-			}
-
 			ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
 
 			if (parentSceneObject != nullptr) {
@@ -105,6 +97,8 @@ bool QueueCommand::playerEntryCheck(CreatureObject* creature, TangibleObject* ta
 					return false;
 				}
 			}
+
+			const ContainerPermissions* perms = targetCell->getContainerPermissions();
 
 			// This portion of the check is specific for locked dungeons doors since they do not inherit perms from parent
 			if (!perms->hasInheritPermissionsFromParent() && (creature->getRootParent() == target->getRootParent())) {
