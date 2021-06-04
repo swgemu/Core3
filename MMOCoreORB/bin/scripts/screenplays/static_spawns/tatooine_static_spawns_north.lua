@@ -149,6 +149,11 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	--Building Ruins (6395,195)
 	spawnMobile("tatooine", "sunstained_dune_lizard", 600, 6383.5, 64.5, 190.5, -54, 0)
 
+	-- Big Game Hunt
+	spawnMobile("tatooine", "krayt_dragon_adolescent", 1800, -1151, 9, -318, -122, 0)
+	spawnMobile("tatooine", "krayt_dragon_adolescent", 1800, -1337, 9, -242, 112, 0)
+	spawnMobile("tatooine", "krayt_dragon_grand", 1800, -1263, 8, -327, -32, 0)
+
 end
 
 function TatooineStaticSpawnsNorthScreenPlay:notifyWarriorDead(pWarrior, pKiller)
