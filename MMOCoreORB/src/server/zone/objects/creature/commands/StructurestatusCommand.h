@@ -36,7 +36,7 @@ public:
 
 		StructureObject* structure = cast<StructureObject*>( obj.get());
 
-		StructureManager::instance()->reportStructureStatus(creature, structure);
+		StructureManager::instance()->reportStructureStatus(creature, structure, nullptr);
 
 		// Check for admin doing export: /structurestatus export [reason for export]
 		auto ghost = creature->getPlayerObject();

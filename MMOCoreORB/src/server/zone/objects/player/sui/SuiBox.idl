@@ -5,6 +5,7 @@
 package server.zone.objects.player.sui;
 
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.structure.StructureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerObject;
 import engine.service.proto.BaseMessage;
@@ -29,6 +30,9 @@ class SuiBox extends ManagedObject implements Logger {
 
 	@weakReference
 	protected SceneObject usingObject;
+
+	@weakReference
+	protected StructureObject structureObject;
 
 	protected string handlerStr;
 
@@ -75,7 +79,7 @@ class SuiBox extends ManagedObject implements Logger {
 
 	public SuiBox(CreatureObject play, unsigned int windowtype, unsigned int boxtype) {
 		player = play;
-	
+
 		forceCloseDistance = 32;
 
 		boxType = boxtype;
@@ -121,7 +125,7 @@ class SuiBox extends ManagedObject implements Logger {
 
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		//Logger.setLoggingName("SuiBox");
 	}
 
@@ -300,6 +304,15 @@ class SuiBox extends ManagedObject implements Logger {
 
 	public void setUsingObject(SceneObject object) {
 		usingObject = object;
+	}
+
+	@weakReference
+	public StructureObject getStructureObject() {
+		return structureObject;
+	}
+
+	public void setStructureObject(StructureObject structure) {
+		structureObject = structure;
 	}
 
 	@local
