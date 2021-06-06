@@ -889,8 +889,7 @@ void StructureManager::moveFirstItemTo(CreatureObject* creature,
 	}
 }
 
-void StructureManager::reportStructureStatus(CreatureObject* creature,
-		StructureObject* structure) {
+void StructureManager::reportStructureStatus(CreatureObject* creature, StructureObject* structure) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -899,19 +898,18 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 	//Close the window if it is already open.
 	ghost->closeSuiWindowType(SuiWindowType::STRUCTURE_STATUS);
 
-	ManagedReference<SuiListBox*> status = new SuiListBox(creature,
-			SuiWindowType::STRUCTURE_STATUS);
+	creature->sendSystemMessage(" report structure status");
+
+	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::STRUCTURE_STATUS);
 	status->setPromptTitle("@player_structure:structure_status_t"); //Structure Status
-	status->setPromptText(
-			"@player_structure:structure_name_prompt "
-					+ structure->getDisplayedName()); //Structure Name:
-	status->setUsingObject(structure);
+	status->setPromptText("@player_structure:structure_name_prompt " + structure->getDisplayedName()); //Structure Name:
+	status->setUsingObject(creature);
+	status->setStructureObject(structure);
 	status->setOkButton(true, "@refresh");
 	status->setCancelButton(true, "@cancel");
 	status->setCallback(new StructureStatusSuiCallback(server));
 
-	ManagedReference<SceneObject*> ownerObject = server->getObject(
-			structure->getOwnerObjectID());
+	ManagedReference<SceneObject*> ownerObject = server->getObject(structure->getOwnerObjectID());
 
 	if (ownerObject != nullptr && ownerObject->isCreatureObject()) {
 		CreatureObject* owner = cast<CreatureObject*>(ownerObject.get());

@@ -9,6 +9,7 @@
 #define STRUCTURESTATUSSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
+#include "server/zone/objects/structure/StructureObject.h"
 
 
 class StructureStatusSuiCallback : public SuiCallback {
@@ -23,8 +24,13 @@ public:
 			return;
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
+		ManagedReference<StructureObject*> structure = sui->getStructureObject().get();
 
-		if (obj == nullptr || !obj->isStructureObject()) {
+		if (obj == nullptr ||	creature == nullptr || structure == nullptr) {
+			return;
+		}
+
+		if (!structure->isOnAdminList(creature)) {
 			creature->sendSystemMessage("@player_structure:no_valid_structurestatus"); //Your /structureStatus target is no longer valid. Cancelling refresh.
 			return;
 		}
