@@ -1009,11 +1009,11 @@ bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, Buildin
 	if (creature->isDead() || creature->isIncapacitated())
 		return false;
 
-	// Make sure the player is in the same cell
-	ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
-	uint64 parentid = validPosition->getParent();
+	// Make sure the player is in the same cell & check distance for temrinals in large rooms
+	uint64 creoParentID = creature->getParentID();
+	uint64 terminalParentID = terminal->getParentID();
 
-	if (parentid != terminal->getParentID()) {
+	if (creoParentID != terminalParentID || creature->getDistanceTo(terminal) > 5)  {
 		creature->sendSystemMessage("@pvp_rating:ch_terminal_too_far"); // you are too far away from the terminal to use it
 		return false;
 	}
@@ -1027,11 +1027,9 @@ bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, Buildin
 			creature->sendSystemMessage("@hq:declared_only"); // Only Special Forces personnel may access this terminal!
 			return false;
 		}
-	}
-	// check for PvE base
-	else {
+	} else { // check for PvE base
 		if (creature->getFactionStatus() < FactionStatus::COVERT) {
-			creature->sendSystemMessage("You must be at least combatant");
+			// creature->sendSystemMessage("You must be at least combatant");
 			return false;
 		}
 	}
