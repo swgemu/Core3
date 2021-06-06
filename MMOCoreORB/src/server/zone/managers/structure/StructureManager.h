@@ -102,7 +102,7 @@ public:
 	 * @param creature The creature receiving the report.
 	 * @param structure The structure the report is about.
 	 */
-	void reportStructureStatus(CreatureObject* creature, StructureObject* structure);
+	void reportStructureStatus(CreatureObject* creature, StructureObject* structure, SceneObject* terminal);
 
 	/**
 	 * Sends a Sui prompt to the player asking them to enter a name for the structure.
