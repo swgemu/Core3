@@ -15,11 +15,36 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 void UplinkTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-
-	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
-
-	if (building == nullptr || player->isDead() || player->isIncapacitated())
+	if (sceneObject == nullptr) {
 		return;
+	}
+
+	ManagedReference<BuildingObject*> building = nullptr;
+	uint64 terminalID = sceneObject->getObjectID();
+	ZoneServer* zoneServer = sceneObject->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	switch (terminalID) {
+		case 367406: // Corellia - Stronghold
+			building = cast<BuildingObject*>(zoneServer->getObject(2715899).get());
+			break;
+		case 923848: // Rori - Imperial Encampment
+			building = cast<BuildingObject*>(zoneServer->getObject(2935404).get());
+			break;
+		case 923863: // Rori - Rebel Military Base
+			building = cast<BuildingObject*>(zoneServer->getObject(7555646).get());
+			break;
+		default:
+			building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+			break;
+	}
+
+	if (building == nullptr || player == nullptr || player->isDead() || player->isIncapacitated()) {
+		return;
+	}
 
 	Zone* zone = building->getZone();
 
@@ -31,21 +56,46 @@ void UplinkTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	if (gcwMan == nullptr)
 		return;
 
-	if (!gcwMan->isBaseVulnerable(building))
+	if (!gcwMan->isBaseVulnerable(building)) {
 		return;
+	}
 
 	menuResponse->addRadialMenuItem(20, 3, "@hq:mnu_jam");
 }
 
 int UplinkTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
-	if (sceneObject == nullptr || !sceneObject->isTangibleObject() || player == nullptr || player->isDead() || player->isIncapacitated() || selectedID != 20)
-		return 0;
-
-	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
-	ManagedReference<TangibleObject*> uplinkTerminal = cast<TangibleObject*>(sceneObject);
-
-	if (building == nullptr)
+	if (sceneObject == nullptr || !sceneObject->isTangibleObject() || player == nullptr || player->isDead() || player->isIncapacitated() || selectedID != 20) {
 		return 1;
+	}
+
+	ManagedReference<BuildingObject*> building = nullptr;
+	uint64 terminalID = sceneObject->getObjectID();
+	ZoneServer* zoneServer = sceneObject->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 1;
+	}
+
+	switch (terminalID) {
+		case 367406: // Corellia - Stronghold
+			building = cast<BuildingObject*>(zoneServer->getObject(2715899).get());
+			break;
+		case 923848: // Rori - Imperial Encampment
+			building = cast<BuildingObject*>(zoneServer->getObject(2935404).get());
+			break;
+		case 923863: // Rori - Rebel Military Base
+			building = cast<BuildingObject*>(zoneServer->getObject(7555646).get());
+			break;
+		default:
+			building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+			break;
+	}
+
+	if (building == nullptr || player == nullptr || player->isDead() || player->isIncapacitated()) {
+		return 1;
+	}
+
+	ManagedReference<TangibleObject*> uplinkTerminal = cast<TangibleObject*>(sceneObject);
 
 	Zone* zone = sceneObject->getZone();
 
