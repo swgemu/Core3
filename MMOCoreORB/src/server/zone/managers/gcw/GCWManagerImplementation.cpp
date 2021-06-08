@@ -924,10 +924,36 @@ bool GCWManagerImplementation::isUplinkJammed(BuildingObject* building) {
 }
 
 bool GCWManagerImplementation::isTerminalDamaged(TangibleObject* securityTerminal) {
-	ManagedReference<BuildingObject*> building = securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
-
-	if (building == nullptr)
+	if (securityTerminal == nullptr) {
 		return true;
+	}
+
+	ManagedReference<BuildingObject*> building = nullptr;
+	uint64 terminalID = securityTerminal->getObjectID();
+	ZoneServer* zoneServer = securityTerminal->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return true;
+	}
+
+	switch (terminalID) {
+		case 367428: // Corellia - Stronghold
+			building = cast<BuildingObject*>(zoneServer->getObject(2715899).get());
+			break;
+		case 923854: // Rori - Imperial Encampment
+			building = cast<BuildingObject*>(zoneServer->getObject(2935404).get());
+			break;
+		case 923864: // Rori - Rebel Military Base
+			building = cast<BuildingObject*>(zoneServer->getObject(7555646).get());
+			break;
+		default:
+			building = securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+			break;
+	}
+
+	if (building == nullptr) {
+		return true;
+	}
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
@@ -1098,8 +1124,9 @@ void GCWManagerImplementation::verifyUplinkBand(CreatureObject* creature, Buildi
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
-	if (ghost == nullptr || baseData == nullptr)
+	if (ghost == nullptr || baseData == nullptr) {
 		return;
+	}
 
 	if (band == baseData->getUplinkBand()) {
 		Locker block(building, creature);
@@ -1354,7 +1381,32 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 }
 
 void GCWManagerImplementation::processDNASample(CreatureObject* creature, TangibleObject* overrideTerminal, const int index) {
-	ManagedReference<BuildingObject*> building = overrideTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+	if (overrideTerminal == nullptr) {
+		return;
+	}
+
+	ManagedReference<BuildingObject*> building = nullptr;
+	uint64 terminalID = overrideTerminal->getObjectID();
+	ZoneServer* zoneServer = overrideTerminal->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	switch (terminalID) {
+		case 367410: // Corellia - Stronghold
+			building = cast<BuildingObject*>(zoneServer->getObject(2715899).get());
+			break;
+		case 923847: // Rori - Imperial Encampment
+			building = cast<BuildingObject*>(zoneServer->getObject(2935404).get());
+			break;
+		case 923862: // Rori - Rebel Military Base
+			building = cast<BuildingObject*>(zoneServer->getObject(7555646).get());
+			break;
+		default:
+			building = overrideTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+			break;
+	}
 
 	if (building == nullptr || creature == nullptr)
 		return;
@@ -1488,10 +1540,36 @@ void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creatu
 }
 
 void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creature, TangibleObject* powerRegulator, int index) {
-	ManagedReference<BuildingObject*> building = powerRegulator->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
-
-	if (building == nullptr)
+	if (powerRegulator == nullptr) {
 		return;
+	}
+
+	ManagedReference<BuildingObject*> building = nullptr;
+	uint64 terminalID = powerRegulator->getObjectID();
+	ZoneServer* zoneServer = powerRegulator->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	switch (terminalID) {
+		case 367432: // Corellia - Stronghold
+			building = cast<BuildingObject*>(zoneServer->getObject(2715899).get());
+			break;
+		case 923849: // Rori - Imperial Encampment
+			building = cast<BuildingObject*>(zoneServer->getObject(2935404).get());
+			break;
+		case 923861: // Rori - Rebel Military Base
+			building = cast<BuildingObject*>(zoneServer->getObject(7555646).get());
+			break;
+		default:
+			building = powerRegulator->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+			break;
+	}
+
+	if (building == nullptr) {
+		return;
+	}
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
