@@ -183,6 +183,8 @@ int LuaBuildingObject::initializeStaticGCWBase(lua_State* L) {
 	gcwMan->initializeNewVulnerability(realObject);
 	gcwMan->registerGCWBase(realObject, false);
 
+	printf(" !!!!! Static GCW Base Registered! !!! \n");
+
 	return 0;
 }
 

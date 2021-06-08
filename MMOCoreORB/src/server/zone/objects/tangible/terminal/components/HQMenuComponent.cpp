@@ -20,10 +20,41 @@
 #include "server/zone/managers/structure/StructureManager.h"
 
 void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
-
-	if (building == nullptr || player  == nullptr)
+	if (sceneObject == nullptr) {
+		player->sendSystemMessage(" scene object is nullptr ");
 		return;
+	}
+
+	StringBuffer msg;
+	msg << " object name = " << sceneObject->getObjectName() << " object ID = " << sceneObject->getObjectID() << " parentID = " << sceneObject->getParentID();
+	player->sendSystemMessage(msg.toString());
+
+	ManagedReference<BuildingObject*> building = nullptr;
+	uint64 terminalID = sceneObject->getObjectID();
+	ZoneServer* zoneServer = sceneObject->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	switch (terminalID) {
+		case 367429: // Corellia - Stronghold
+			building = cast<BuildingObject*>(zoneServer->getObject(2715899).get());
+			break;
+		case 923853: // Rori - Imperial Encampment
+			building = cast<BuildingObject*>(zoneServer->getObject(2935404).get());
+			break;
+		case 923866: // Rori - Rebel Military Base
+			building = cast<BuildingObject*>(zoneServer->getObject(7555646).get());
+			break;
+		default:
+			building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+			break;
+	}
+
+	if (building == nullptr || player == nullptr) {
+		return;
+	}
 
 	Zone* zone = building->getZone();
 
@@ -82,9 +113,35 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 }
 
 int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) const {
-	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+	if (sceneObject == nullptr) {
+		return 0;
+	}
 
-	if (building == nullptr) {
+	ManagedReference<BuildingObject*> building = nullptr;
+	uint64 terminalID = sceneObject->getObjectID();
+	ZoneServer* zoneServer = sceneObject->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 1;
+	}
+
+	switch (terminalID) {
+		case 367429: // Corellia - Stronghold
+			building = cast<BuildingObject*>(zoneServer->getObject(2715899).get());
+			break;
+		case 923853: // Rori - Imperial Encampment
+			building = cast<BuildingObject*>(zoneServer->getObject(2935404).get());
+			break;
+		case 923866: // Rori - Rebel Military Base
+			building = cast<BuildingObject*>(zoneServer->getObject(7555646).get());
+			break;
+		default:
+			building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+			break;
+	}
+
+	if (building == nullptr || creature == nullptr) {
+		creature->sendSystemMessage(" building or player is nullptr in SELECT ");
 		return 1;
 	}
 

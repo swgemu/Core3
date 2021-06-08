@@ -990,6 +990,10 @@ bool GCWManagerImplementation::isFacilityRebooting(BuildingObject* building) {
 DestructibleBuildingDataComponent* GCWManagerImplementation::getDestructibleBuildingData(BuildingObject* building) {
 	DestructibleBuildingDataComponent* baseData = nullptr;
 
+	if (!building->isGCWBase()) {
+		printf(" not a GCW base\n");
+	}
+
 	if (building != nullptr && building->isGCWBase()) {
 		DataObjectComponentReference* data = building->getDataObjectComponent();
 
