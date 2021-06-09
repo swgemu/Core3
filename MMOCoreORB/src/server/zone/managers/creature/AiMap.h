@@ -246,6 +246,7 @@ private:
 				temp.pop();
 			}
 		}
+		obj.pop();
 	}
 
 	static Reference<AiTemplate*> getTemplate(unsigned int bitMask, const HashTable<unsigned int, Reference<AiTemplate*> >& table) {
