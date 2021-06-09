@@ -3632,7 +3632,7 @@ void PlayerManagerImplementation::addInsurableItemsRecursive(SceneObject* obj, S
 
 		TangibleObject* item = cast<TangibleObject*>( object);
 
-		if (item == nullptr || item->hasAntiDecayKit() || item->isJediRobe())
+		if (item == nullptr || item->hasAntiDecayKit() || item->isJediRobe() || item->isUnionRing())
 			continue;
 
 		if (!(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
