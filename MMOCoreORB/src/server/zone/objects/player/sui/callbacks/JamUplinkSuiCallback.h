@@ -22,23 +22,48 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (cancelPressed || !suiBox->isListBox() || player == nullptr || args->size() <= 0 )
+		if (cancelPressed || !suiBox->isListBox() || player == nullptr || args->size() <= 0 ) {
 			return;
+		}
 
-		if (player->isDead() || player->isIncapacitated())
+		if (player->isDead() || player->isIncapacitated()) {
 			return;
+		}
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == nullptr)
+		if (obj == nullptr) {
 			return;
+		}
 
 		TangibleObject* uplinkTerm = cast<TangibleObject*>(obj.get());
 
-		ManagedReference<BuildingObject*> building = obj->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
-
-		if (building == nullptr)
+		if (uplinkTerm == nullptr) {
 			return;
+		}
+
+		ManagedReference<BuildingObject*> building = nullptr;
+		uint64 terminalID = uplinkTerm->getObjectID();
+		ZoneServer* zoneServer = uplinkTerm->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		switch (terminalID) {
+			case 367406: // Corellia - Stronghold
+				building = cast<BuildingObject*>(zoneServer->getObject(2715899).get());
+				break;
+			case 923848: // Rori - Imperial Encampment
+				building = cast<BuildingObject*>(zoneServer->getObject(2935404).get());
+				break;
+			case 923863: // Rori - Rebel Military Base
+				building = cast<BuildingObject*>(zoneServer->getObject(7555646).get());
+				break;
+			default:
+			building = obj->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+				break;
+		}
 
 		GCWManager* gcwMan = player->getZone()->getGCWManager();
 
