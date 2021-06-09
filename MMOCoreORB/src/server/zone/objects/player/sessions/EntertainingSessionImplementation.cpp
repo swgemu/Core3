@@ -466,7 +466,7 @@ void EntertainingSessionImplementation::doPerformEffect(int effectId, int effect
 	if (targetType == PerformEffect::TARGET_SELF) {
 		entertainer->playEffect(effectFile, "");
 	} else if (targetType == PerformEffect::TARGET_STATIONARY) {
-		PlayClientEffectLoc* effectLoc = new PlayClientEffectLoc(effectFile, entertainer->getZone()->getZoneName(), entertainer->getPositionX(), entertainer->getPositionZ(), entertainer->getPositionY());
+		PlayClientEffectLoc* effectLoc = new PlayClientEffectLoc(effectFile, entertainer->getZone()->getZoneName(), entertainer->getPositionX(), entertainer->getPositionZ(), entertainer->getPositionY(), entertainer->getParentID());
 		entertainer->broadcastMessage(effectLoc, true);
 	} else if (targetType == PerformEffect::TARGET_OTHER) {
 		uint64 targetID = entertainer->getTargetID();
