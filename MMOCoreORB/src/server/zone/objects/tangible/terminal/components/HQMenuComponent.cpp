@@ -20,10 +20,36 @@
 #include "server/zone/managers/structure/StructureManager.h"
 
 void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
-
-	if (building == nullptr || player  == nullptr)
+	if (sceneObject == nullptr) {
 		return;
+	}
+
+	ManagedReference<BuildingObject*> building = nullptr;
+	uint64 terminalID = sceneObject->getObjectID();
+	ZoneServer* zoneServer = sceneObject->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	switch (terminalID) {
+		case 367429: // Corellia - Stronghold
+			building = cast<BuildingObject*>(zoneServer->getObject(2715899).get());
+			break;
+		case 923853: // Rori - Imperial Encampment
+			building = cast<BuildingObject*>(zoneServer->getObject(2935404).get());
+			break;
+		case 923866: // Rori - Rebel Military Base
+			building = cast<BuildingObject*>(zoneServer->getObject(7555646).get());
+			break;
+		default:
+			building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+			break;
+	}
+
+	if (building == nullptr || player == nullptr) {
+		return;
+	}
 
 	Zone* zone = building->getZone();
 
@@ -59,8 +85,10 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 		menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // Donate Defense
 	}
 
-	if (player->getFactionRank() < 4 && !ghost->isPrivileged())
+	if (player->getFactionRank() < 4 && !ghost->isPrivileged()) {
+		player->sendSystemMessage("@hq:admin_only"); // You must be at least faction rank 4 to use this terminal.
 		return;
+	}
 
 	menuResponse->addRadialMenuItem(210, 3, "@player_structure:management");
 	menuResponse->addRadialMenuItemToRadialID(210, 227, 3, "@player_structure:management_status");
@@ -80,10 +108,36 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 }
 
 int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) const {
-	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
-
-	if (building == nullptr)
+	if (sceneObject == nullptr) {
 		return 1;
+	}
+
+	ManagedReference<BuildingObject*> building = nullptr;
+	uint64 terminalID = sceneObject->getObjectID();
+	ZoneServer* zoneServer = sceneObject->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 1;
+	}
+
+	switch (terminalID) {
+		case 367429: // Corellia - Stronghold
+			building = cast<BuildingObject*>(zoneServer->getObject(2715899).get());
+			break;
+		case 923853: // Rori - Imperial Encampment
+			building = cast<BuildingObject*>(zoneServer->getObject(2935404).get());
+			break;
+		case 923866: // Rori - Rebel Military Base
+			building = cast<BuildingObject*>(zoneServer->getObject(7555646).get());
+			break;
+		default:
+			building = sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).castTo<BuildingObject*>();
+			break;
+	}
+
+	if (building == nullptr || creature == nullptr) {
+		return 1;
+	}
 
 	Zone* zone = building->getZone();
 
@@ -121,7 +175,7 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 			return 0;
 		} else if (selectedID == 20) {
 			if (creature->getFactionRank() > 7 || ghost->isPrivileged()) {
-				StructureManager::instance()->reportStructureStatus(creature, building);
+				StructureManager::instance()->reportStructureStatus(creature, building, sceneObject);
 			}
 
 			return 0;
@@ -154,7 +208,7 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 	}
 
 	if (selectedID == 210 || selectedID == 20 || selectedID == 227) {
-		StructureManager::instance()->reportStructureStatus(creature, building);
+		StructureManager::instance()->reportStructureStatus(creature, building, sceneObject);
 	} else if (selectedID == 228) {
 		gcwMan->sendBaseDefenseStatus(creature, building);
 	} else if (selectedID == 235) {

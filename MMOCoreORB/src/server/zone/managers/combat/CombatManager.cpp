@@ -947,14 +947,6 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 				CreatureObject* attackerCreO = attacker->asCreatureObject();
 
 				if (attackerCreO != nullptr && targetCell != nullptr) {
-					const ContainerPermissions* perms = targetCell->getContainerPermissions();
-
-					if (perms->hasInheritPermissionsFromParent()) {
-						if (!targetCell->checkContainerPermission(attackerCreO, ContainerPermissions::WALKIN)) {
-							continue;
-						}
-					}
-
 					ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
 
 					if (parentSceneObject != nullptr) {
@@ -964,6 +956,8 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 							continue;
 						}
 					}
+
+					const ContainerPermissions* perms = targetCell->getContainerPermissions();
 
 					// This portion of the check is specific for locked dungeons doors since they do not inherit perms from parent
 					if (!perms->hasInheritPermissionsFromParent() && (attacker->getRootParent() == object->getRootParent())) {
