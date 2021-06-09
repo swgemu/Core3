@@ -137,14 +137,6 @@ public:
 						Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
 
 						if (targetCell != nullptr) {
-							const ContainerPermissions* perms = targetCell->getContainerPermissions();
-
-							if (perms->hasInheritPermissionsFromParent()) {
-								if (!targetCell->checkContainerPermission(player, ContainerPermissions::WALKIN)) {
-									continue;
-								}
-							}
-
 							ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
 
 							if (parentSceneObject != nullptr) {
@@ -154,6 +146,8 @@ public:
 									continue;
 								}
 							}
+
+							const ContainerPermissions* perms = targetCell->getContainerPermissions();
 
 							// This portion of the check is specific for locked dungeons doors since they do not inherit perms from parent
 							if (!perms->hasInheritPermissionsFromParent() && (player->getRootParent() == object->getRootParent())) {
