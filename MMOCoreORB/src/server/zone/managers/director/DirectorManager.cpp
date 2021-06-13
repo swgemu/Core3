@@ -2487,11 +2487,25 @@ Lua* DirectorManager::getLuaInstance() {
 			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
+
+		if (!lua->checkStack(0)) {
+			error()
+				<< __FILE__ << ":" << __LINE__ << ":" <<  __FUNCTION__ << "()"
+				<< " LUA Stack Leak: Found " << lua_gettop(lua->getLuaState()) << " item(s) on stack.";
+		}
 	}
 
 	if (*version != masterScreenPlayVersion.get()) {
+		int stackSize = lua_gettop(lua->getLuaState());
+
 		loadScreenPlays(lua);
 		*version = masterScreenPlayVersion.get();
+
+		if (!lua->checkStack(stackSize)) {
+			error()
+				<< __FILE__ << ":" << __LINE__ << ":" <<  __FUNCTION__ << "()"
+				<< " LUA Stack Leak: Found " << lua_gettop(lua->getLuaState()) << " item(s) on stack.";
+		}
 	}
 
 	return lua;
@@ -2518,11 +2532,25 @@ int DirectorManager::runScreenPlays() {
 			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
+
+		if (!lua->checkStack(0)) {
+			error()
+				<< __FILE__ << ":" << __LINE__ << ":" <<  __FUNCTION__ << "()"
+				<< " LUA Stack Leak: Found " << lua_gettop(lua->getLuaState()) << " item(s) on stack.";
+		}
 	}
 
 	if (*version != masterScreenPlayVersion.get()) {
+		int stackSize = lua_gettop(lua->getLuaState());
+
 		ret = loadScreenPlays(lua);
 		*version = masterScreenPlayVersion.get();
+
+		if (!lua->checkStack(stackSize)) {
+			error()
+				<< __FILE__ << ":" << __LINE__ << ":" <<  __FUNCTION__ << "()"
+				<< " LUA Stack Leak: Found " << lua_gettop(lua->getLuaState()) << " item(s) on stack.";
+		}
 	}
 
 	return ret || ERROR_CODE;
