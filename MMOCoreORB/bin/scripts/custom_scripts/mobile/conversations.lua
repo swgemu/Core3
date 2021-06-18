@@ -1,0 +1,12 @@
+--Conversations
+includeFile("../custom_scripts/mobile/conversations/EmpireDayCaptainAlrezrinConvoTemplate.lua")
+includeFile("../custom_scripts/mobile/conversations/EmpireDayCaptainCarkorConvoTemplate.lua")
+includeFile("../custom_scripts/mobile/conversations/EmpireDayCaptainEdwardsConvoTemplate.lua")
+includeFile("../custom_scripts/mobile/conversations/EmpireDayCaretakerConvoTemplate.lua")
+includeFile("../custom_scripts/mobile/conversations/EmpireDayCorporalZuvordConvoTemplate.lua")
+includeFile("../custom_scripts/mobile/conversations/EmpireDayGeneralAldricConvoTemplate.lua")
+includeFile("../custom_scripts/mobile/conversations/EmpireDayLieutenantLowellConvoTemplate.lua")
+includeFile("../custom_scripts/mobile/conversations/EmpireDayPeetyJoeConvoTemplate.lua")
+includeFile("../custom_scripts/mobile/conversations/EmpireDayPuprusLiConvoTemplate.lua")
+includeFile("../custom_scripts/mobile/conversations/EmpireDaySeargentVilmoreConvoTemplate.lua")
+includeFile("../custom_scripts/mobile/conversations/EmpireDayTK626ConvoTemplate.lua")
