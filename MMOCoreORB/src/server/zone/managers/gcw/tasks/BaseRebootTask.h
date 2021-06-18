@@ -25,6 +25,7 @@ public:
 
 		StringIdChatParameter restartMessage;
 		restartMessage.setStringId("@faction/faction_hq/faction_hq_response:terminal_response08"); // FACILITY RESTART: RELOADING PRIMARY FACILITY SYSTEMS
+		gcwManager->despawnBaseAlarms(buildingObject);
 		gcwManager->broadcastBuilding(buildingObject, restartMessage);
 	}
 };

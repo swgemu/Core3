@@ -17,6 +17,7 @@ import server.zone.objects.tangible.deed.Deed;
 
 include server.zone.objects.building.BuildingObject;
 include server.zone.managers.gcw.TerminalSpawn;
+include server.zone.managers.gcw.BaseAlarm;
 include server.zone.objects.building.components.DestructibleBuildingDataComponent;
 include server.zone.objects.installation.components.TurretDataComponent;
 include server.zone.objects.tangible.terminal.components.TurretControlTerminalDataComponent;
@@ -82,6 +83,7 @@ class GCWManager extends ManagedService implements Logger {
 	private transient int crackdownContrabandFineCredits;
 	private transient int crackdownContrabandFineFactionPoints;
 	private transient int crackdownPerformanceWildScanPlayerFindRadius;
+	private transient boolean baseAlarms;
 
 	public transient unsigned long gcwCheckTimer;
 	public transient int vulnerabilityDuration;
@@ -110,7 +112,14 @@ class GCWManager extends ManagedService implements Logger {
 	protected transient VectorMap<string, Reference<Vector<Reference<TerminalSpawn> > > > terminalSpawnLocations;
 
 	@dereferenced
+	@local
+	protected transient VectorMap<string, Reference<Vector<Reference<BaseAlarm> > > > alarmSpawnLocations;
+
+	@dereferenced
 	protected transient Vector<string> terminalTemplates;
+
+	@dereferenced
+	protected transient VectorMap<string, string> alarmSpawnTemplates;
 
 	@dereferenced
 	protected transient Vector<string> imperialStrongholds;
@@ -275,6 +284,9 @@ class GCWManager extends ManagedService implements Logger {
 
 	private native void spawnBaseTerminals(BuildingObject building);
 	private native void despawnBaseTerminals(BuildingObject building);
+
+	public native void spawnBaseAlarms(BuildingObject building, int alarmType, boolean testSpawn);
+	public native void despawnBaseAlarms(BuildingObject building);
 
 	@dirty
 	public native int isStrongholdCity(string city);
