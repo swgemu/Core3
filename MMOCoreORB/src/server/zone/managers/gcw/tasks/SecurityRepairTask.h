@@ -92,6 +92,8 @@ public:
 
 			baseData->setTerminalDamaged(false);
 			baseData->setTerminalBeingRepaired(false);
+
+			gcwManager->spawnBaseAlarms(building, 2, false);
 		} else {
 			creature->sendSystemMessage("Security terminal repairs continue...");
 			reschedule(5000);
