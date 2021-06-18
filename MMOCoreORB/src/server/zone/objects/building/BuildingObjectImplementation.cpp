@@ -35,6 +35,7 @@
 
 #include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
 #include "server/zone/objects/building/components/EnclaveContainerComponent.h"
+#include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
@@ -1297,27 +1298,40 @@ void BuildingObjectImplementation::createChildObjects() {
 
 		GCWManager* gcwMan = thisZone->getGCWManager();
 
+		if (gcwMan == nullptr) {
+			return;
+		}
+
 		for (int i = 0; i < serverTemplate->getChildObjectsSize();i++) {
 			const ChildObject* child = serverTemplate->getChildObject(i);
 
-			if (child == nullptr)
+			if (child == nullptr) {
 				continue;
+			}
 
-			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
+			String templateString = child->getTemplateFile();
 
-			if (thisTemplate == nullptr || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE || thisTemplate->getGameObjectType() == SceneObjectType::CREATURE)
+			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(templateString.hashCode());
+
+			if (thisTemplate == nullptr || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE || thisTemplate->getGameObjectType() == SceneObjectType::CREATURE) {
 				continue;
+			}
 
+			if (templateString.contains("alarm_") && !gcwMan->shouldSpawnBaseAlarms()) {
+				continue;
+			}
 
 			String dbString = "sceneobjects";
+
 			if (thisTemplate->getGameObjectType() == SceneObjectType::MINEFIELD || thisTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE || thisTemplate->getGameObjectType() == SceneObjectType::STATICOBJECT) {
 				dbString = "playerstructures";
 			}
 
-			ManagedReference<SceneObject*> obj = server->createObject(child->getTemplateFile().hashCode(), dbString, getPersistenceLevel());
+			ManagedReference<SceneObject*> obj = server->createObject(templateString.hashCode(), dbString, getPersistenceLevel());
 
-			if (obj == nullptr)
+			if (obj == nullptr) {
 				continue;
+			}
 
 			Locker crossLocker(obj, asBuildingObject());
 
@@ -1343,6 +1357,8 @@ void BuildingObjectImplementation::createChildObjects() {
 						if (cellObject != nullptr) {
 							if (!cellObject->transferObject(obj, child->getContainmentType(), true)) {
 								obj->destroyObjectFromDatabase(true);
+							} else if (templateString.contains("alarm_")) {
+								gcwMan->addBaseAlarm(asBuildingObject(), obj);
 							}
 						} else {
 							obj->destroyObjectFromDatabase(true);
