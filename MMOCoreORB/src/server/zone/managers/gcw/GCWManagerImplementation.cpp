@@ -84,6 +84,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	reactivationTimer = lua->getGlobalInt("reactivationTimer");
 	turretAutoFireTimeout = lua->getGlobalInt("turretAutoFireTimeout");
 	maxBasesPerPlayer = lua->getGlobalInt("maxBasesPerPlayer");
+	spawnBaseAlarms = lua->getGlobalBoolean("spawnBaseAlarms");
 	bonusXP = lua->getGlobalInt("bonusXP");
 	winnerBonus = lua->getGlobalInt("winnerBonus");
 	loserBonus = lua->getGlobalInt("loserBonus");
@@ -632,6 +633,30 @@ void GCWManagerImplementation::addTurret(BuildingObject* building, SceneObject* 
 	verifyTurrets(building);
 }
 
+void GCWManagerImplementation::addBaseAlarm(BuildingObject* building, SceneObject* alarm) {
+	if (building == nullptr || alarm == nullptr) {
+		return;
+	}
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == nullptr) {
+		return;
+	}
+
+	Locker _lock(building);
+
+	String templateString = alarm->getObjectTemplate()->getTemplateFileName();
+
+	if (baseData != nullptr) {
+		if (templateString.contains("alarm_hack")) {
+			baseData->addHackBaseAlarm(alarm->getObjectID());
+		} else if (templateString.contains("alarm_destruct")) {
+			baseData->addDestructBaseAlarm(alarm->getObjectID());
+		}
+	}
+}
+
 // PRE: Nothing needs to be locked
 // should only be called by the startvulnerabilityTask or when loading from the db in the middle of vuln
 void GCWManagerImplementation::startVulnerability(BuildingObject* building) {
@@ -707,6 +732,7 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building) {
 	// schedule
 	scheduleVulnerabilityStart(building);
 	verifyTurrets(building);
+	deactivateBaseAlarms(building);
 	building->broadcastCellPermissions();
 }
 
@@ -1294,6 +1320,8 @@ void GCWManagerImplementation::completeSecuritySlice(CreatureObject* creature, T
 	creature->sendSystemMessage("@slicing/slicing:hq_security_success"); // You have managed to slice into the terminal. The security protocol for the override terminal has been significantly relaxed.
 	Locker block(building);
 	baseData->setState(DestructibleBuildingDataComponent::SLICED);
+
+	activateBaseAlarms(building, 1);
 }
 
 void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTerminal) {
@@ -1790,6 +1818,8 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		Reference<Task*> newTask = new BaseDestructionTask(_this.getReferenceUnsafeStaticCast(), building);
 		newTask->schedule(60000);
 		addDestroyTask(building->getObjectID(), newTask);
+
+		activateBaseAlarms(building, 2);
 	}
 }
 
@@ -1933,6 +1963,8 @@ void GCWManagerImplementation::abortShutdownSequence(BuildingObject* building, C
 
 		Reference<Task*> newTask = new BaseRebootTask(_this.getReferenceUnsafeStaticCast(), building, baseData);
 		newTask->schedule(60000);
+
+		deactivateBaseAlarms(building);
 	}
 }
 
@@ -3002,4 +3034,128 @@ void GCWManagerImplementation::despawnBaseTerminals(BuildingObject* bldg) {
 
 	baseData->clearBaseTerminals();
 	baseData->setTerminalsSpawned(false);
+}
+
+void GCWManagerImplementation::activateBaseAlarms(BuildingObject* building, int alarmType) {
+	if (!spawnBaseAlarms) {
+		return;
+	}
+
+	if (building == nullptr) {
+		return;
+	}
+
+	ZoneServer* zoneServer = building->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	Locker blocker(building);
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == nullptr) {
+		return;
+	}
+
+	Vector<uint64> alarmIds;
+
+	switch(alarmType) {
+		case(1):
+			alarmIds = baseData->getHackAlarms();
+			break;
+		case(2):
+			alarmIds = baseData->getDestructAlarms();
+			break;
+		default:
+			error("Incorrect Base Alarm Type in activateBaseAlarms.");
+			return;
+	}
+
+	for (int i = 0; i < alarmIds.size(); ++i) {
+		uint64 alarmID = alarmIds.get(i);
+
+		if (alarmID > 0) {
+			SceneObject* alarm = zoneServer->getObject(alarmID).get();
+
+			if (alarm == nullptr) {
+				continue;
+			}
+
+			Locker alocker(alarm, building);
+
+			if (alarm->isTangibleObject()) {
+				TangibleObject* alarmTano = alarm->asTangibleObject();
+
+				if (alarmTano != nullptr) {
+					alarmTano->setOptionsBitmask(OptionBitmask::ACTIVATED);
+					alarmTano->setMaxCondition(0);
+				}
+			}
+		}
+	}
+}
+
+void GCWManagerImplementation::deactivateBaseAlarms(BuildingObject* building) {
+	if (building == nullptr) {
+		return;
+	}
+
+	ZoneServer* zoneServer = building->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	Locker blocker(building);
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == nullptr) {
+		return;
+	}
+
+	Vector<uint64> hackAlarmIDs = baseData->getHackAlarms();
+	Vector<uint64> destructAlarmIDs = baseData->getDestructAlarms();
+
+	for (int i = 0; i < hackAlarmIDs.size(); ++i) {
+		uint64 hackAlarmID = hackAlarmIDs.get(i);
+
+		if (hackAlarmID > 0) {
+			SceneObject* hackAlarm = zoneServer->getObject(hackAlarmID).get();
+
+			if (hackAlarm == nullptr) {
+				continue;
+			}
+
+			if (hackAlarm->isTangibleObject()) {
+				TangibleObject* hackTano = hackAlarm->asTangibleObject();
+
+				Locker hlocker(hackTano, building);
+
+				hackTano->setOptionsBitmask(OptionBitmask::NONE);
+			}
+		}
+	}
+
+	for (int i = 0; i < destructAlarmIDs.size(); ++i) {
+		uint64 destructAlarmID = destructAlarmIDs.get(i);
+
+		if (destructAlarmID > 0) {
+			SceneObject* destructAlarm = zoneServer->getObject(destructAlarmID).get();
+
+			if (destructAlarm == nullptr) {
+				continue;
+			}
+
+			if (destructAlarm->isTangibleObject()) {
+				TangibleObject* destructTano = destructAlarm->asTangibleObject();
+
+				Locker hlocker(destructTano, building);
+
+				destructTano->setOptionsBitmask(OptionBitmask::NONE);
+			}
+		}
+	}
 }
