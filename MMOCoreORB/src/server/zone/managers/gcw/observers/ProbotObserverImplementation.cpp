@@ -12,7 +12,7 @@
 
 int ProbotObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<CreatureObject*> attacker = cast<CreatureObject*>(arg1);
-	if (attacker == nullptr || probot == nullptr) {
+	if (attacker == nullptr || probot == nullptr || !attacker->isPlayerCreature()) {
 		return 0;
 	}
 
