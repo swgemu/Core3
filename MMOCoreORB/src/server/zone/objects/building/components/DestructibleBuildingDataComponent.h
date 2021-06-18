@@ -41,6 +41,8 @@ private:
 	bool defenseAddedThisVuln;
 	bool terminalsSpawned;
 	Vector<ManagedReference<SceneObject*> > baseTerminals;
+	bool alarmsSpawned;
+	Vector<ManagedReference<SceneObject*> > baseAlarms;
 
 public:
 	const static int INVULNERABLE = 0;
@@ -62,6 +64,7 @@ public:
 		activeDefenses = true;
 		terminalDamaged = false;
 		terminalsSpawned = false;
+		alarmsSpawned = false;
 
 		uplinkBand = 0;
 		inRepair = false;
@@ -346,6 +349,30 @@ public:
 
 	void setTerminalsSpawned(bool val) {
 		terminalsSpawned = val;
+	}
+
+	int getBaseAlarmCount() {
+		return baseAlarms.size();
+	}
+
+	SceneObject* getBaseAlarm(int idx) {
+		return baseAlarms.get(idx);
+	}
+
+	void addBaseAlarm(SceneObject* alarm) {
+		baseAlarms.add(alarm);
+	}
+
+	void clearBaseAlarms() {
+		baseAlarms.removeAll();
+	}
+
+	bool areAlarmsSpawned() {
+		return alarmsSpawned;
+	}
+	
+	void setAlarmsSpawned (bool val) {
+		alarmsSpawned = val;
 	}
 
 private:
