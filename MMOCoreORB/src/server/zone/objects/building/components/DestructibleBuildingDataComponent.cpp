@@ -35,6 +35,8 @@ void DestructibleBuildingDataComponent::writeJSON(nlohmann::json& j) const {
 	SERIALIZE_JSON_MEMBER(defenseAddedThisVuln);
 	SERIALIZE_JSON_MEMBER(terminalsSpawned);
 	SERIALIZE_JSON_MEMBER(baseTerminals);
+	SERIALIZE_JSON_MEMBER(alarmsSpawned);
+	SERIALIZE_JSON_MEMBER(baseAlarms);
 }
 
 

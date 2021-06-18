@@ -105,6 +105,11 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 			menuResponse->addRadialMenuItemToRadialID(210, 236, 3, "@player_structure:permission_destroy");
 		}
 	}
+
+	if (ghost->isPrivileged()) {
+		menuResponse->addRadialMenuItemToRadialID(210, 78, 3, "Spawn Base Alarms");
+		menuResponse->addRadialMenuItemToRadialID(210, 79, 3, "Despawn Base Alarms");
+	}
 }
 
 int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) const {
@@ -216,6 +221,16 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 			gcwMan->resetVulnerability(creature, building);
 	} else if (selectedID == 236) {
 		creature->executeObjectControllerAction(0x18FC1726, building->getObjectID(), ""); //destroyStructure
+	}
+
+	if (ghost->isPrivileged()) {
+		if (selectedID == 78) {
+			for (int i = 1; i <= 4; ++i) {
+				gcwMan->spawnBaseAlarms(building, i, true);
+			}
+		} else if (selectedID == 79) {
+			gcwMan->despawnBaseAlarms(building);
+		}
 	}
 
 	return 0;

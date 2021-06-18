@@ -32,6 +32,7 @@
 #include "server/zone/managers/gcw/tasks/UplinkTerminalResetTask.h"
 #include "server/zone/managers/gcw/GCWBaseShutdownObserver.h"
 #include "server/zone/managers/gcw/TerminalSpawn.h"
+#include "server/zone/managers/gcw/BaseAlarm.h"
 
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
@@ -84,6 +85,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	reactivationTimer = lua->getGlobalInt("reactivationTimer");
 	turretAutoFireTimeout = lua->getGlobalInt("turretAutoFireTimeout");
 	maxBasesPerPlayer = lua->getGlobalInt("maxBasesPerPlayer");
+	baseAlarms = lua->getGlobalBoolean("spawnBaseAlarms");
 	bonusXP = lua->getGlobalInt("bonusXP");
 	winnerBonus = lua->getGlobalInt("winnerBonus");
 	loserBonus = lua->getGlobalInt("loserBonus");
@@ -244,6 +246,60 @@ void GCWManagerImplementation::loadLuaConfig() {
 	}
 
 	termTemps.pop();
+
+	LuaObject alarmLocations = lua->getGlobalObject("baseAlarmLocations");
+
+	if (alarmLocations.isValidTable()) {
+		for (int i = 0; i < alarmLocations.getTableSize(); ++i) {
+			LuaObject baseTable = alarmLocations.getObjectAt(i + 1);
+
+			if (baseTable.isValidTable()) {
+				String baseTemplate = baseTable.getStringAt(1);
+				Vector<Reference<BaseAlarm*>>* spawnList = new Vector<Reference<BaseAlarm*>>();
+				LuaObject alarmLocsType = baseTable.getObjectAt(2);
+
+				if (alarmLocsType.isValidTable()) {
+					for (int j = 1; j <= alarmLocsType.getTableSize(); ++j) {
+						LuaObject alarmSpawnLocs = alarmLocsType.getObjectAt(j);
+
+						if (alarmSpawnLocs.isValidTable()) {
+							String alarmType = alarmLocsType.getStringAt(1);
+							LuaObject pointSets = alarmLocsType.getObjectAt(2);
+
+							if (pointSets.isValidTable()) {
+								for (int k = 0; k < pointSets.getTableSize(); ++k) {
+									LuaObject alarmLoc = pointSets.getObjectAt(k + 1);
+
+									if (alarmLoc.isValidTable()) {
+										float spawnX = alarmLoc.getFloatAt(1);
+										float spawnZ = alarmLoc.getFloatAt(2);
+										float spawnY = alarmLoc.getFloatAt(3);
+										float ox = alarmLoc.getFloatAt(4);
+										float oy = alarmLoc.getFloatAt(5);
+										float oz = alarmLoc.getFloatAt(6);
+										float ow = alarmLoc.getFloatAt(7);
+										int cellID = alarmLoc.getIntAt(8);
+										Quaternion termRot(ox, oy, oz, ow);
+
+										Vector3 spLoc(spawnX, spawnY, spawnZ);
+										Reference<BaseAlarm*> alarmSpawn = new BaseAlarm(baseTemplate, alarmType, spLoc, cellID, termRot);
+										spawnList->add(alarmSpawn);
+									}
+									alarmLoc.pop();
+								}
+							}
+							pointSets.pop();
+						}
+						alarmSpawnLocs.pop();
+					}
+					alarmSpawnLocations.put(baseTemplate, spawnList);
+				}
+				alarmLocsType.pop();
+			}
+			baseTable.pop();
+		}
+	}
+	alarmLocations.pop();
 
 	delete lua;
 	lua = nullptr;
@@ -1341,6 +1397,8 @@ void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTermina
 
 	baseData->setTerminalBeingRepaired(false);
 	baseData->setTerminalDamaged(true);
+
+	spawnBaseAlarms(building, 1, false);
 }
 
 void GCWManagerImplementation::repairTerminal(CreatureObject* creature, TangibleObject* securityTerminal) {
@@ -1699,6 +1757,7 @@ void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creatu
 		baseData->setState(DestructibleBuildingDataComponent::OVERLOADED);
 		awardSlicingXP(creature, "combat_rangedspecialize_heavy", 1000);
 		randomizePowerRegulatorSwitches(building);
+		spawnBaseAlarms(building, 4, false);
 	} else {
 		sendPowerRegulatorControls(creature, building, powerRegulator);
 	}
@@ -1790,6 +1849,8 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		Reference<Task*> newTask = new BaseDestructionTask(_this.getReferenceUnsafeStaticCast(), building);
 		newTask->schedule(60000);
 		addDestroyTask(building->getObjectID(), newTask);
+
+		spawnBaseAlarms(building, 3, false);
 	}
 }
 
@@ -3002,4 +3063,156 @@ void GCWManagerImplementation::despawnBaseTerminals(BuildingObject* bldg) {
 
 	baseData->clearBaseTerminals();
 	baseData->setTerminalsSpawned(false);
+}
+
+void GCWManagerImplementation::spawnBaseAlarms(BuildingObject* bldg, int alarm, bool testSpawn) {
+	if (!baseAlarms) {
+		return;
+	}
+
+	if (bldg == nullptr) {
+		return;
+	}
+
+	String baseName = bldg->getObjectTemplate()->getTemplateFileName();
+
+	if (!baseName.beginsWith("hq_")) {
+		return;
+	}
+
+	baseName = baseName.replaceFirst("_imp_pvp", "");
+	baseName = baseName.replaceFirst("_imp", "");
+	baseName = baseName.replaceFirst("_rebel_pvp", "");
+	baseName = baseName.replaceFirst("_rebel", "");
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(bldg);
+
+	if (baseData == nullptr) {
+		return;
+	}
+
+	if (baseData->areAlarmsSpawned() && !testSpawn) {
+		despawnBaseAlarms(bldg);
+	}
+
+	if (!alarmSpawnLocations.contains(baseName)) {
+		error("No base alarm locations for GCW base type " + baseName);
+		return;
+	}
+
+	String alarmTemplate;
+	String alarmType;
+
+	switch(alarm) {
+		case(1):
+			alarmTemplate = "object/tangible/faction_perk/faction_base_item/alarm_hack.iff";
+			alarmType = "alarm_hack";
+			break;
+		case(2):
+			alarmTemplate = "object/tangible/faction_perk/faction_base_item/alarm_hack_no_sound.iff";
+			alarmType = "alarm_hack_no_sound";
+			break;
+		case(3):
+			alarmTemplate = "object/tangible/faction_perk/faction_base_item/alarm_destruct.iff";
+			alarmType =  "alarm_destruct";
+			break;
+		case(4):
+			alarmTemplate = "object/tangible/faction_perk/faction_base_item/alarm_destruct_no_sound.iff";
+			alarmType = "alarm_destruct_no_sound";
+			break;
+		default:
+			error("Bad GCW Base Alarm Number given.");
+			return;
+	}
+
+	Vector<Reference<BaseAlarm*>>* baseLocations = alarmSpawnLocations.get(baseName);
+
+	for (int j = 0; j < baseLocations->size(); ++j) {
+		Reference<BaseAlarm*> alarmLoc = baseLocations->get(j);
+
+		if (alarmLoc == nullptr) {
+			continue;
+		}
+
+		String alarmString = alarmLoc->getAlarmType();
+
+		if (alarmType != alarmString) {
+			continue;
+		}
+
+		ManagedReference<SceneObject*> obj = zone->getZoneServer()->createObject(alarmTemplate.hashCode(), 0);
+
+		if (obj == nullptr) {
+			continue;
+		}
+
+		Locker locker(obj);
+
+		Vector3* alarmCoords = alarmLoc->getSpawnLoc();
+
+		obj->initializePosition(alarmCoords->getX(), alarmCoords->getZ(), alarmCoords->getY());
+
+		Quaternion alarmRot = alarmLoc->getRotation();
+
+		obj->setDirection(alarmRot);
+
+		CellObject* cellObject = bldg->getCell(alarmLoc->getCellID());
+
+		if (cellObject != nullptr) {
+			if (!cellObject->transferObject(obj, -1, true)) {
+				obj->destroyObjectFromDatabase(true);
+			} else {
+				baseData->addBaseAlarm(obj);
+				bldg->addChildObject(obj);
+
+				if (obj->isTangibleObject()) {
+					obj->asTangibleObject()->setOptionsBitmask(OptionBitmask::ACTIVATED);
+				}
+			}
+		} else {
+			obj->destroyObjectFromDatabase(true);
+		}
+	}
+
+	baseData->setAlarmsSpawned(true);
+}
+
+void GCWManagerImplementation::despawnBaseAlarms(BuildingObject* bldg) {
+	if (!baseAlarms) {
+		return;
+	}
+
+	if (bldg == nullptr) {
+		return;
+	}
+
+	Locker blocker(bldg);
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(bldg);
+
+	if (baseData == nullptr) {
+		return;
+	}
+
+	if (!baseData->areAlarmsSpawned()) {
+		return;
+	}
+
+	int totalAlarms = baseData->getBaseAlarmCount();
+
+	for (int i = totalAlarms - 1; i >= 0; i--) {
+		ManagedReference<SceneObject*> alarm = baseData->getBaseAlarm(i);
+
+		if (alarm == nullptr) {
+			continue;
+		}
+
+		Locker clocker(alarm, bldg);
+		bldg->removeChildObject(alarm);
+		alarm->destroyObjectFromWorld(true);
+	}
+
+	baseData->clearBaseAlarms();
+	baseData->setAlarmsSpawned(false);
+
 }
