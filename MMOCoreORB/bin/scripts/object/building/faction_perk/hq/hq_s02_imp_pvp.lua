@@ -106,6 +106,26 @@ object_building_faction_perk_hq_hq_s02_imp_pvp = object_building_faction_perk_hq
 		{ templateFile = "object/tangible/terminal/terminal_bank.iff", x = 9.49, z = -6.77, y = -14.98, ox = 0, oy = 0.707, oz = 0, ow = -0.707, cellid = 6, containmentType = -1 },
 
 		{ templateFile = "object/tangible/terminal/terminal_hq_imperial.iff", x = 0, z = 0.25, y = 1.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
+
+		-- Base Alarms
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack.iff", x = -3.69, z = 3.75, y = 3.19, ow = -0.011, ox = 0.99, oy = 0.017, oz = 0.002550, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack.iff", x = -4.5, z = -8.3, y = -1.7, ow = 0, ox = 0, oy = 0, oz = 1, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack.iff", x = -8.2, z = -2.0, y = -15, ow = 0, ox = 0, oy = 0, oz = 1, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack.iff", x = 5.5, z = -0.9, y = -1.7, ow = 0, ox = 0, oy = 0, oz = 1, cellid = 7, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack.iff", x = -2.49, z = -13.64, y = -8.72, ow = -0.01, ox = -0.01, oy = 0.994, oz = -0.028, cellid = 9, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack_no_sound.iff", x = -3.7, z = 3.75, y = -4.7, ow = 0, ox = 0, oy = 0, oz = 1, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack_no_sound.iff", x = 3.5, z = -5.3, y = 4.1, ow = 0, ox = 0, oy = 0, oz = 1, cellid = 3, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack_no_sound.iff", x = -4.49, z = -1.66, y = -2.44, ow = -0.009, ox = 0.009, oy = -0.009, oz = 1, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack_no_sound.iff", x = 0.2, z = -1.8, y = -15, ow = 0, ox = 0, oy = 0, oz = 1, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack_no_sound.iff", x = 5.5, z = -1.8, y = -1.7, ow = 0, ox = 0, oy = 0, oz = 1, cellid = 7, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_hack_no_sound.iff", x = -2.49, z = -13.64, y = -8.72, ow = -0.01, ox = -0.01, oy = 0.994, oz = -0.028, cellid = 9, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_destruct.iff", x = 1.3245, z = 2.882, y = 3.227, ow = 0.728, ox = -0.005, oy = -0.005, oz = 0.686, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_destruct_no_sound.iff", x = -5.2, z = 3.4, y = 0.8, ow = 0.005, ox = 0.707, oy = 0.707, oz = 0.005, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_destruct_no_sound.iff", x = -0.3, z = 3.3, y = -5.5, ow = -0.010, ox = 0.009, oy = 0.716, oz = 0.700, cellid = 3, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_destruct_no_sound.iff", x = -0.5, z = -3.51, y = -3.09, ow = -0.510, ox = 0.504, oy = -0.500, oz = -0.500, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_destruct_no_sound.iff", x = 0.818, z = -3.44, y = -11.834, ow = -0.028, ox = -0.042, oy = 0.718, oz = -0.694, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_destruct_no_sound.iff", x = 1.488, z = -3.47, y = -3.09, ow = 0.508, ox = 0.495, oy = 0.5001, oz = -0.495, cellid = 7, containmentType = -1 },
+		{ templateFile = "object/tangible/faction_perk/faction_base_item/alarm_destruct_no_sound.iff", x = -2.44, z = -9.15, y = 3.502, ow = 0.0003, ox = 0.014, oy = -0.704, oz = 0.710, cellid = 9, containmentType = -1 },
 	},
 
 	childCreatureObjects = {

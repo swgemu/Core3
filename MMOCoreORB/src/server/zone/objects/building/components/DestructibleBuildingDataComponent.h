@@ -41,6 +41,8 @@ private:
 	bool defenseAddedThisVuln;
 	bool terminalsSpawned;
 	Vector<ManagedReference<SceneObject*> > baseTerminals;
+	Vector<uint64> hackBaseAlarms;
+	Vector<uint64> destructBaseAlarms;
 
 public:
 	const static int INVULNERABLE = 0;
@@ -346,6 +348,22 @@ public:
 
 	void setTerminalsSpawned(bool val) {
 		terminalsSpawned = val;
+	}
+
+	Vector<uint64> getHackAlarms() {
+		return hackBaseAlarms;
+	}
+
+	Vector<uint64> getDestructAlarms() {
+		return destructBaseAlarms;
+	}
+
+	void addHackBaseAlarm(uint64 alarmID) {
+		hackBaseAlarms.add(alarmID);
+	}
+
+	void addDestructBaseAlarm(uint64 alarmID) {
+		destructBaseAlarms.add(alarmID);
 	}
 
 private:
