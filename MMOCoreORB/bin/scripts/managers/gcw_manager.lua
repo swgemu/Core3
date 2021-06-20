@@ -96,6 +96,9 @@ HQValues = {
 	{"object/building/general/bunker_imperial_weapons_research_facility_01.iff", 2},
 	{"object/building/general/bunker_imperial_detainment_center_01.iff", 2},
 	{"object/building/general/bunker_rebel_weapons_depot.iff", 2},
+	{"object/building/military/military_base_police_station_imperial_style_01.iff", 2},
+	{"object/building/military/military_base_shed_imperial_style_officer_s01.iff", 2},
+	{"object/building/military/military_outpost_guard_house_rebel.iff", 2},
 
 }
 
