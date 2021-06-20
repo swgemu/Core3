@@ -16,6 +16,20 @@ int ProbotObserverImplementation::notifyObserverEvent(unsigned int eventType, Ob
 		return 0;
 	}
 
+	if (attacker->isPet()) {
+		CreatureObject* owner = attacker->getLinkedCreature().get();
+
+		if (owner == nullptr) {
+			return 0;
+		}
+
+		attacker = owner;
+	}
+
+	if (!attacker->isPlayerCreature()) {
+		return 0;
+	}
+
 	auto landingCoordinates = probot->getWorldPosition();
 	if (probot->getZone() != nullptr || probot->getZone()->getPlanetManager() != nullptr) {
 		landingCoordinates = probot->getZone()->getPlanetManager()->getInSightSpawnPoint(attacker, 30, 120, 15);
