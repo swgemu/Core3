@@ -35,6 +35,8 @@ void DestructibleBuildingDataComponent::writeJSON(nlohmann::json& j) const {
 	SERIALIZE_JSON_MEMBER(defenseAddedThisVuln);
 	SERIALIZE_JSON_MEMBER(terminalsSpawned);
 	SERIALIZE_JSON_MEMBER(baseTerminals);
+	SERIALIZE_JSON_MEMBER(hackBaseAlarms);
+	SERIALIZE_JSON_MEMBER(destructBaseAlarms);
 }
 
 
@@ -180,7 +182,23 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	return 13;
+	_name = "hackBaseAlarms";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<uint64>  >::toBinaryStream(&hackBaseAlarms, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "destructBaseAlarms";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<uint64>  >::toBinaryStream(&destructBaseAlarms, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	return 15;
 }
 
 bool DestructibleBuildingDataComponent::readObjectMember(ObjectInputStream* stream, const String& name) {
@@ -234,6 +252,12 @@ bool DestructibleBuildingDataComponent::readObjectMember(ObjectInputStream* stre
 
 	} else if (name == "defenseAddedThisVuln") {
 		TypeInfo<bool >::parseFromBinaryStream(&defenseAddedThisVuln, stream);
+		return true;
+	} else if (name == "hackBaseAlarms") {
+		TypeInfo<Vector<uint64> >::parseFromBinaryStream(&hackBaseAlarms, stream);
+		return true;
+	} else if (name == "destructBaseAlarms") {
+		TypeInfo<Vector<uint64> >::parseFromBinaryStream(&destructBaseAlarms, stream);
 		return true;
 	}
 

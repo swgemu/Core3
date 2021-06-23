@@ -35,6 +35,9 @@ class GCWManager extends ManagedService implements Logger {
 	public static final int PLAYERFACTIONBASE = 1;
 	public static final int STATICFACTIONBASE = 2;
 
+	public static final int HACKALARM = 1;
+	public static final int DESTRUCTALARM = 2;
+
 	private Zone zone;
 
 	@dereferenced
@@ -101,6 +104,7 @@ class GCWManager extends ManagedService implements Logger {
 	public transient int winnerBonus;
 	public transient int loserBonus;
 	public transient boolean spawnDefenses;
+	public transient boolean spawnBaseAlarms;
 	public transient int initialVulnerabilityDelay;
 
 	public transient boolean racialPenaltyEnabled;
@@ -144,6 +148,7 @@ class GCWManager extends ManagedService implements Logger {
 		winnerBonus = 30;
 		racialPenaltyEnabled = true;
 		spawnDefenses = true;
+		spawnBaseAlarms = false;
 		initialVulnerabilityDelay = 0;
 
 		Logger.setLoggingName("GCWManager " + zne.getZoneName());
@@ -185,6 +190,7 @@ class GCWManager extends ManagedService implements Logger {
 	public native void addMinefield(BuildingObject building, SceneObject minefield);
 	public native void addScanner(BuildingObject building, SceneObject scanner);
 	public native void addTurret(BuildingObject building, SceneObject turret);
+	public native void addBaseAlarm(BuildingObject building, SceneObject alarm);
 
 	public native void startVulnerability(BuildingObject building);
 	public native void endVulnerability(BuildingObject building);
@@ -275,6 +281,9 @@ class GCWManager extends ManagedService implements Logger {
 
 	private native void spawnBaseTerminals(BuildingObject building);
 	private native void despawnBaseTerminals(BuildingObject building);
+
+	public native void activateBaseAlarms(BuildingObject building, int alarmType);
+	public native void deactivateBaseAlarms(BuildingObject building);
 
 	@dirty
 	public native int isStrongholdCity(string city);
@@ -482,6 +491,12 @@ class GCWManager extends ManagedService implements Logger {
 	@read
 	public boolean shouldSpawnDefenses() {
 		return spawnDefenses;
+	}
+
+	@local
+	@read
+	public boolean shouldSpawnBaseAlarms() {
+		return spawnBaseAlarms;
 	}
 
 	@local
