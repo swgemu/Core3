@@ -12,6 +12,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
+#include "engine/lua/LuaPanicException.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";
 
@@ -110,6 +111,9 @@ int LuaSceneObject::_getObject(lua_State* L) {
 
 int LuaSceneObject::_setObject(lua_State* L) {
 	auto obj = reinterpret_cast<SceneObject*>(lua_touserdata(L, -1));
+
+	if (obj == nullptr)
+		throw LuaPanicException("nullptr in LuaSceneObject::_setObject");
 
 	if (obj != realObject)
 		realObject = obj;
