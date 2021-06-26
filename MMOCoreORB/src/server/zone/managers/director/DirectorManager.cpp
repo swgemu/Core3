@@ -430,6 +430,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("spawnTheaterObject", spawnTheaterObject);
 	luaEngine->registerFunction("getSchematicItemName", getSchematicItemName);
 	luaEngine->registerFunction("getBadgeListByType", getBadgeListByType);
+	luaEngine->registerFunction("getGalaxyName", getGalaxyName);
 
 	//Navigation Mesh Management
 	luaEngine->registerFunction("createNavMesh", createNavMesh);
@@ -3727,6 +3728,18 @@ int DirectorManager::getBadgeListByType(lua_State* L) {
 			lua_rawseti(L, -2, count);
 		}
 	}
+
+	return 1;
+}
+
+int DirectorManager::getGalaxyName(lua_State* L) {
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 0;
+	}
+
+	lua_pushstring(L, zoneServer->getGalaxyName().toCharArray());
 
 	return 1;
 }
