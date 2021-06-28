@@ -246,6 +246,20 @@ String DirectorManager::readStringSharedMemory(const String& key) {
 	return data;
 }
 
+Vector3 DirectorManager::readVector3SharedMemory(const String& key) {
+#ifndef WITH_STM
+	DirectorManager::instance()->rlock();
+#endif
+
+	Vector3 data = DirectorManager::instance()->sharedMemory->getVector3(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->runlock();
+#endif
+
+	return data;
+}
+
 uint64 DirectorManager::readSharedMemory(const String& key) {
 #ifndef WITH_STM
 	DirectorManager::instance()->rlock();
@@ -359,6 +373,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("readStringSharedMemory", readStringSharedMemory);
 	luaEngine->registerFunction("writeStringSharedMemory", writeStringSharedMemory);
 	luaEngine->registerFunction("deleteStringSharedMemory", deleteStringSharedMemory);
+	luaEngine->registerFunction("readVector3SharedMemory", readVector3SharedMemory);
+	luaEngine->registerFunction("writeVector3SharedMemory", writeVector3SharedMemory);
+	luaEngine->registerFunction("deleteVector3SharedMemory", deleteVector3SharedMemory);
 	luaEngine->registerFunction("spawnSceneObject", spawnSceneObject);
 	luaEngine->registerFunction("spawnActiveArea", spawnActiveArea);
 	luaEngine->registerFunction("spawnBuilding", spawnBuilding);
@@ -1088,6 +1105,80 @@ int DirectorManager::writeStringSharedMemory(lua_State* L) {
 #endif
 
 	DirectorManager::instance()->sharedMemory->putString(key, data);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->unlock();
+#endif
+
+	return 0;
+}
+
+int DirectorManager::readVector3SharedMemory(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::readVector3SharedMemory";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String key = Lua::getStringParameter(L);
+
+	Vector3 data = instance()->readVector3SharedMemory(key);
+
+	lua_newtable(L);
+	lua_pushnumber(L, data.getX());
+	lua_pushnumber(L, data.getZ());
+	lua_pushnumber(L, data.getY());
+	lua_rawseti(L, -4, 3);
+	lua_rawseti(L, -3, 2);
+	lua_rawseti(L, -2, 1);
+
+	return 1;
+}
+
+int DirectorManager::deleteVector3SharedMemory(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::deleteVector3SharedMemory";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String key = Lua::getStringParameter(L);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->wlock();
+#endif
+
+	DirectorManager::instance()->sharedMemory->removeVector3(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->unlock();
+#endif
+
+	return 0;
+}
+
+int DirectorManager::writeVector3SharedMemory(lua_State* L) {
+	if (checkArgumentCount(L, 4) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::writeVector3SharedMemory";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String key = lua_tostring(L, -4);
+	float x = lua_tonumber(L, -3);
+	float z = lua_tonumber(L, -2);
+	float y = lua_tonumber(L, -1);
+
+	Vector3 newVector = Vector3(x, y, z);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->wlock();
+#endif
+
+	DirectorManager::instance()->sharedMemory->putVector3(key, newVector);
 
 #ifndef WITH_STM
 	DirectorManager::instance()->unlock();
