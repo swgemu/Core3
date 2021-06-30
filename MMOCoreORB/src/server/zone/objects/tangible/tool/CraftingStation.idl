@@ -17,11 +17,14 @@ class CraftingStation extends ToolTangibleObject {
 	private int type;
 	private float effectiveness;
 	private int complexityLevel;
+	private string hopperString;
+	private boolean storage;
 
 	public CraftingStation() {
 		Logger.setLoggingName("CraftingStation");
 		complexityLevel = 0;
 		effectiveness = 25;
+		storage = false;
 	}
 
 	public void initializeTransientMembers() {
@@ -32,6 +35,9 @@ class CraftingStation extends ToolTangibleObject {
 
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	public native void notifyLoadFromDatabase();
+
 
 	@local
 	@dirty
@@ -90,5 +96,15 @@ class CraftingStation extends ToolTangibleObject {
 
 	public void setEffectiveness(float newValue) {
 		effectiveness = newValue;
+	}
+
+	@dirty
+	public boolean hasStorage() {
+		return storage;
+	}
+
+	@local
+	private void setStorage(int stor) {
+		storage = stor;
 	}
 }

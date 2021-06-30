@@ -9,6 +9,7 @@
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "templates/tangible/ContainerTemplate.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
@@ -125,6 +126,21 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 			errorDescription = "@container_error_message:container12"; // This item is too bulky to fit inside this container.
 
 			return TransferErrorCode::CANTNESTOBJECT;
+		}
+
+		if (object->isCraftingStation()) {
+			Reference<CraftingStation*> station = cast<CraftingStation*>(object);
+
+			if (station != nullptr && station->hasStorage()) {
+				Reference<SceneObject*> hopper = station->getSlottedObject("ingredient_hopper");
+
+				if (hopper != nullptr && hopper->getCountableObjectsRecursive() > 0) {
+					errorDescription = "@container_error_message:container21"; // You cannot pick up a crafting station unless it is empty.
+
+					return TransferErrorCode::CANTNESTOBJECT;
+				}
+
+			}
 		}
 
 		// Find out how much room we need
