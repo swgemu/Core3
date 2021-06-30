@@ -45,9 +45,33 @@ public:
 
 		/// This is weird, when you select a schematic and the crafting station has a
 		/// Hopper the client requests to open the hopper container to the player
-		/// Which isn't supposed to happen
-		if(objectToOpen->getParent() != nullptr && objectToOpen->getParent().get()->isCraftingStation())
-			return GENERALERROR;
+		// Which isn't supposed to happen
+		//if(objectToOpen->getParent() != nullptr && objectToOpen->getParent().get()->isCraftingStation())
+		//	return GENERALERROR;
+
+		if (objectToOpen->getParent().get()->isCraftingStation()) {
+			ManagedReference<SceneObject*> station = objectToOpen->getParent().get();
+
+			if (station != nullptr) {
+				if (!creature->isInRange(station, 12.0f)) {
+					StringIdChatParameter param;
+					param.setStringId("@container_error_message:container09_prose"); // You are out of range of %TT.
+					param.setTT(objectToOpen->getObjectName());
+					creature->sendSystemMessage(param);
+
+					return TOOFAR;
+				}
+
+				if (!CollisionManager::checkLineOfSight(station, creature)) {
+					StringIdChatParameter msgParam;
+					msgParam.setStringId("@container_error_message:container18_prose"); // You can't see %TT. You may have to move closer to it.
+					msgParam.setTT(objectToOpen->getObjectName());
+					creature->sendSystemMessage(msgParam);
+
+					return GENERALERROR;
+				}
+			}
+		}
 
 		Locker clocker(objectToOpen, creature);
 

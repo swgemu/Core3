@@ -15,6 +15,7 @@ private:
 
 	int stationType;
 	int complexityLevel;
+	String ingredientHopper;
 
 public:
 	CraftingStationTemplate() : stationType(0), complexityLevel(0) {
@@ -30,6 +31,7 @@ public:
 
 		stationType = templateData->getIntField("stationType");
 		complexityLevel = templateData->getIntField("complexityLevel");
+		ingredientHopper = templateData->getStringField("ingredientHopper");
 	}
 
 	int getStationType() const {
@@ -38,6 +40,10 @@ public:
 
 	int getComplexityLevel() const {
 		return complexityLevel;
+	}
+
+	String getIngredientHopper () const {
+		return ingredientHopper;
 	}
 
 	bool isCraftingStationTemplate() const override {
