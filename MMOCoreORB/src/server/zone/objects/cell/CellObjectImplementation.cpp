@@ -12,6 +12,7 @@
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 
 void CellObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -187,10 +188,20 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
 			if (!strongParent->containsChildObject(containerObject) && !containerObject->isCreatureObject() && !containerObject->isVendor()) {
+				if (containerObject->isContainerObject()) {
 
-				if (containerObject->isContainerObject())
 					count += containerObject->getCountableObjectsRecursive();
+				} else if (containerObject->isCraftingStation()) {
+					ManagedReference<CraftingStation*> station = cast<CraftingStation*>(containerObject.get());
 
+					if (station != nullptr && station->hasStorage()) {
+						ManagedReference<SceneObject*> hopper = station->getSlottedObject("ingredient_hopper");
+
+						if (hopper != nullptr) {
+							count += hopper->getCountableObjectsRecursive();
+						}
+					}
+				}
 				++count;
 			}
 		}
