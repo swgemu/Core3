@@ -33,6 +33,8 @@ class CraftingStation extends ToolTangibleObject {
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 
+	public native void notifyLoadFromDatabase();
+
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
@@ -58,7 +60,6 @@ class CraftingStation extends ToolTangibleObject {
 
 	@dirty
 	public native void sendInputHopper(CreatureObject player);
-
 
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
