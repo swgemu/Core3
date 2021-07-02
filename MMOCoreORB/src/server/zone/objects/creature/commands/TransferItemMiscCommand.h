@@ -174,7 +174,16 @@ public:
 
 			if (!rootParent->isBuildingObject()) {
 				if (rootParent->getDistanceTo(creature) > maxDistance) {
+
 					trx.abort() << "Too far from root: " << (int)rootParent->getDistanceTo(creature);
+					return TOOFAR;
+				}
+
+				ManagedReference<SceneObject*> destParent = destinationObject->getParent().get();
+
+				if (destParent != nullptr && destParent != creature && destParent->getDistanceTo(creature) > maxDistance) {
+
+					trx.abort() << "Too far from root: " << (int)destinationObject->getParent().get()->getDistanceTo(creature);
 					return TOOFAR;
 				}
 			} else {
@@ -187,13 +196,25 @@ public:
 				}
 
 				while ((par = obj->getParent().get()) != nullptr) {
+					if (par == creature) {
+						ManagedReference<SceneObject*> destPar = destinationObject->getParent().get();
+
+						if (destPar != nullptr && !destPar->isCellObject()) {
+							par = destPar;
+						} else {
+							par = destinationObject;
+						}
+					}
+
+					float distance = obj->getDistanceTo(creature);
+
 					if (par->isCellObject()) {
-						if (obj->getDistanceTo(creature) > maxDistance) {
+						if (distance > maxDistance) {
 							trx.abort() << "Too far from creature: " << (int)obj->getDistanceTo(creature);
 							return TOOFAR;
-						}
-						else
+						} else {
 							break;
+						}
 					} else {
 						obj = par;
 					}
