@@ -38,22 +38,28 @@ function CityControlLanding:chanceToSpawn()
 	local chance = getRandomNumber(100)
 
 	if (chance <= 15) then -- 15% Chance
-		createEvent(20 * 60 * 1000, "CityControlLanding", "spawnCityLanding", "", "") --20min after chance roll to allow for load time
+		createEvent(20 * 60 * 1000, "CityControlLanding", "spawnCityLanding", "0", "false") --20min after chance roll to allow for load time
 	else
 		createEvent(6 * 60 * 60 * 1000, "CityControlLanding", "chanceToSpawn", "", "") --6hrs
 	end
 end
 
-function CityControlLanding:spawnCityLanding()
+function CityControlLanding:spawnCityLanding(spawnCity, manual)
 	local totalLocations = #self.locations
-	local determineCity = getRandomNumber(totalLocations)
+	local determineCity = spawnCity
+
+	if (determineCity == nil) then
+		determineCity = getRandomNumber(totalLocations)
+	end
+
 	local chosenCityPlanet = self.locations[determineCity]
 	local cityCoords = self.coordinates[determineCity]
 	local city = chosenCityPlanet[1]
 	local planet = chosenCityPlanet[2]
 
-	if (not isZoneEnabled(planet)) then
-		createEvent(2 * 60 * 1000, "CityControlLanding", "spawnCityLanding", "", "")
+	if (not isZoneEnabled(planet) or readStringData("CityControlLandingStatus:") == "true") then
+		createEvent(20 * 60 * 1000, "CityControlLanding", "spawnCityLanding", spawnCity, manual)
+		return
 	end
 
 	writeStringData("CityControlLandingPlanet:", planet)
@@ -87,12 +93,13 @@ function CityControlLanding:spawnCityLanding()
 
 		local pOid = SceneObject(pShuttle):getObjectID()
 		writeData(1 .. ":LandingParty", pOid)
+		writeStringData("CityControlLandingStatus:", "true")
+		writeStringData("CityLandingManualControl:", manual)
 		writeStringData("LandingType:", landingType)
 		writeStringData("ShuttlePosture:", shuttlePosture)
 
 		createEvent(34 * 1000, "CityControlLanding", "handleShuttlePosture", pShuttle, "")
 		createEvent(10 * 1000, "CityControlLanding", "broadcastMessage", pShuttle, "")
-
 	end
 end
 
@@ -383,7 +390,7 @@ function CityControlLanding:despawnLanding()
 	createEvent(5 * 1000, "CityControlLanding", "despawnMobiles", "", "")
 	createEvent(26 * 1000, "CityControlLanding", "broadcastMessage", pShuttle, "")
 	createEvent(28 * 1000, "CityControlLanding", "handleShuttlePosture", pShuttle, "")
-	createEvent(10 * 60 * 1000, "CityControlLanding", "cleanUp", "", "")
+	createEvent(5 * 60 * 1000, "CityControlLanding", "cleanUp", "", "")
 end
 
 function CityControlLanding:despawnMobiles()
@@ -490,5 +497,54 @@ function CityControlLanding:cleanUp()
 	SceneObject(pShuttle):destroyObjectFromWorld()
 	deleteData(1 .. ":LandingParty")
 
-	createEvent(4 * 60 * 60 * 1000, "CityControlLanding", "chanceToSpawn", "", "") -- 4 hrs
+	local manualControl = readStringData("CityLandingManualControl:")
+
+	if (manualControl == "false") then
+		createEvent(4 * 60 * 60 * 1000, "CityControlLanding", "chanceToSpawn", "", "") -- 4 hrs
+	end
+
+	deleteStringData("CityLandingManualControl:")
+	deleteStringData("CityControlLandingStatus:")
+end
+
+function  CityControlLanding:showMainUI(pPlayer)
+	local sui = SuiListBox.new("CityControlLanding", "suiCCLMainCallback")
+
+	sui.setTargetNetworkId(SceneObject(pPlayer):getObjectID())
+
+	sui.setTitle("GCW City Control Landing")
+	sui.setPrompt("Select City for Landing: The planetary faction control will determine the type of landing.")
+
+	sui.add("Coronet", "")
+	sui.add("Bela Vistal", "")
+	sui.add("Theed", "")
+	sui.add("Moenia", "")
+	sui.add("Bestine", "")
+	sui.add("Anchorhead", "")
+
+	sui.sendTo(pPlayer)
+end
+
+
+function CityControlLanding:suiCCLMainCallback(pPlayer, pSui, eventIndex, args)
+	local cancelPressed = (eventIndex == 1)
+
+	if (cancelPressed or pPlayer == nil) then
+		return
+	end
+
+	local cityNum = tonumber(args) + 1
+	local city = self.locations[cityNum]
+
+	if (readStringData("CityControlLandingStatus:") == "true") then
+		CreatureObject(pPlayer):sendSystemMessage("There is already GCW City Control Landing Event in Progress, please wait until it completes before starting another.")
+		StaffTools:openSUI(pPlayer)
+		return
+	end
+
+	self:spawnCityLanding(cityNum, "true")
+
+	CreatureObject(pPlayer):sendSystemMessage("GCW City Control Landing Starting for " .. city[1])
+
+	StaffTools:openSUI(pPlayer)
 end
