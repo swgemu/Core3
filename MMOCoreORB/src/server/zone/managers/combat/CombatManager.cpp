@@ -132,13 +132,13 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) const {
 
 	if (threatMap != nullptr) {
 		for (int i = 0; i < threatMap->size(); i++) {
-			CreatureObject* threatCreo = threatMap->elementAt(i).getKey();
+			TangibleObject* threatTano = threatMap->elementAt(i).getKey();
 
-			if (threatCreo == nullptr || threatCreo == attacker) {
+			if (threatTano == nullptr || threatTano == attacker) {
 				continue;
 			}
 
-			if ((attacker->isInRange(threatCreo, 128.f) && threatCreo->getMainDefender() == attacker)) {
+			if ((attacker->isInRange(threatTano, 128.f) && threatTano->getMainDefender() == attacker)) {
 				continue;
 			}
 

@@ -1066,7 +1066,7 @@ int LuaCreatureObject::getDamageDealerList(lua_State* L) {
 		ThreatMapEntry* entry = &copyThreatMap.elementAt(i).getValue();
 
 		if (entry->getTotalDamage() > 0) {
-			CreatureObject* attacker = copyThreatMap.elementAt(i).getKey();
+			TangibleObject* attacker = copyThreatMap.elementAt(i).getKey();
 
 			count++;
 			lua_pushlightuserdata(L, attacker);
@@ -1088,7 +1088,7 @@ int LuaCreatureObject::getHealingThreatList(lua_State* L) {
 		ThreatMapEntry* entry = &copyThreatMap.elementAt(i).getValue();
 
 		if (entry->getHeal() > 0) {
-			CreatureObject* healer = copyThreatMap.elementAt(i).getKey();
+			TangibleObject* healer = copyThreatMap.elementAt(i).getKey();
 
 			count++;
 			lua_pushlightuserdata(L, healer);
