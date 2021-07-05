@@ -1187,9 +1187,9 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	if (destructorThreatMap != nullptr) {
 		for (int i = 0; i < destructorThreatMap->size(); i++) {
-			CreatureObject* destructedCreo = destructorThreatMap->elementAt(i).getKey();
+			TangibleObject* destructedTano = destructorThreatMap->elementAt(i).getKey();
 
-			if (destructedCreo == destructedObject) {
+			if (destructedTano == destructedObject) {
 				destructorThreatMap->remove(i);
 			}
 		}
@@ -1684,73 +1684,89 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
-		CreatureObject* attacker = threatMap->elementAt(i).getKey();
+		TangibleObject* attacker = threatMap->elementAt(i).getKey();
 
 		if (entry == nullptr || attacker == nullptr) {
 			continue;
 		}
 
 		if (attacker->isPet()) {
-			PetControlDevice* pcd = attacker->getControlDevice().get().castTo<PetControlDevice*>();
+			if (attacker->isCreatureObject()) {
+				CreatureObject* attackerCreo = attacker->asCreatureObject();
 
-			// only creature pets will award exp, so discard anything else
-			if (pcd == nullptr || pcd->getPetType() != PetManager::CREATUREPET) {
-				continue;
-			}
-
-			CreatureObject* owner = attacker->getLinkedCreature().get();
-			if (owner == nullptr || !owner->isPlayerCreature()) {
-				continue;
-			}
-
-			Locker crossLocker(owner, destructedObject);
-
-			PlayerObject* ownerGhost = owner->getPlayerObject();
-			if (ownerGhost == nullptr || !owner->hasSkill("outdoors_creaturehandler_novice") || !destructedObject->isInRange(owner, 80)) {
-				continue;
-			}
-
-			int totalPets = 1;
-
-			for (int i = 0; i < ownerGhost->getActivePetsSize(); i++) {
-				ManagedReference<AiAgent*> object = ownerGhost->getActivePet(i);
-
-				if (object != nullptr && object->isCreature()) {
-					if (object == attacker)
-						continue;
-
-					PetControlDevice* petControlDevice = object->getControlDevice().get().castTo<PetControlDevice*>();
-					if (petControlDevice != nullptr && petControlDevice->getPetType() == PetManager::CREATUREPET)
-						totalPets++;
+				if (attackerCreo == nullptr) {
+					continue;
 				}
+
+				PetControlDevice* pcd = attackerCreo->getControlDevice().get().castTo<PetControlDevice*>();
+
+				// only creature pets will award exp, so discard anything else
+				if (pcd == nullptr || pcd->getPetType() != PetManager::CREATUREPET) {
+					continue;
+				}
+
+				CreatureObject* owner = attackerCreo->getLinkedCreature().get();
+
+				if (owner == nullptr || !owner->isPlayerCreature()) {
+					continue;
+				}
+
+				Locker crossLocker(owner, destructedObject);
+
+				PlayerObject* ownerGhost = owner->getPlayerObject();
+				if (ownerGhost == nullptr || !owner->hasSkill("outdoors_creaturehandler_novice") || !destructedObject->isInRange(owner, 80)) {
+					continue;
+				}
+
+				int totalPets = 1;
+
+				for (int i = 0; i < ownerGhost->getActivePetsSize(); i++) {
+					ManagedReference<AiAgent*> object = ownerGhost->getActivePet(i);
+
+					if (object != nullptr && object->isCreature()) {
+						if (object == attacker)
+							continue;
+
+						PetControlDevice* petControlDevice = object->getControlDevice().get().castTo<PetControlDevice*>();
+						if (petControlDevice != nullptr && petControlDevice->getPetType() == PetManager::CREATUREPET)
+							totalPets++;
+					}
+				}
+
+				// TODO: Find a more correct CH xp formula
+				float levelRatio = (float)destructedObject->getLevel() / (float)attacker->getLevel();
+
+				float xpAmount = levelRatio * 500.f;
+
+				if (levelRatio <= 0.5) {
+					xpAmount = 1;
+				} else {
+					xpAmount = Math::min(xpAmount, (float)attacker->getLevel() * 50.f);
+					xpAmount /= totalPets;
+
+					if (winningFaction == attacker->getFaction())
+						xpAmount *= gcwBonus;
+				}
+
+				awardExperience(owner, "creaturehandler", xpAmount);
 			}
-
-			// TODO: Find a more correct CH xp formula
-			float levelRatio = (float)destructedObject->getLevel() / (float)attacker->getLevel();
-
-			float xpAmount = levelRatio * 500.f;
-
-			if (levelRatio <= 0.5) {
-				xpAmount = 1;
-			} else {
-				xpAmount = Math::min(xpAmount, (float)attacker->getLevel() * 50.f);
-				xpAmount /= totalPets;
-
-				if (winningFaction == attacker->getFaction())
-					xpAmount *= gcwBonus;
-			}
-
-			awardExperience(owner, "creaturehandler", xpAmount);
 
 		} else if (attacker->isPlayerCreature()) {
 			if (!(attacker->getZone() == zone && destructedObject->isInRangeZoneless(attacker, 80))) {
 				continue;
 			}
-			ManagedReference<GroupObject*> group = attacker->getGroup();
+
+			CreatureObject* attackerCreo = attacker->asCreatureObject();
+
+			if (attackerCreo == nullptr) {
+				continue;
+			}
+
+			ManagedReference<GroupObject*> group = attackerCreo->getGroup();
 
 			uint32 combatXp = 0;
 
-			Locker crossLocker(attacker, destructedObject);
+			Locker crossLocker(attackerCreo, destructedObject);
 
 			for (int j = 0; j < entry->size(); ++j) {
 				uint32 damage = entry->elementAt(j).getValue();
@@ -1760,13 +1776,13 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				xpAmount *= (float) damage / totalDamage;
 
 				//Cap xp based on level
-				xpAmount = Math::min(xpAmount, calculatePlayerLevel(attacker, xpType) * 300.f);
+				xpAmount = Math::min(xpAmount, calculatePlayerLevel(attackerCreo, xpType) * 300.f);
 
 				//Apply group bonus if in group
 				if (group != nullptr)
 					xpAmount *= groupExpMultiplier;
 
-				if (winningFaction == attacker->getFaction())
+				if (winningFaction == attackerCreo->getFaction())
 					xpAmount *= gcwBonus;
 
 				// Jedi experience doesn't count towards combat experience, and is earned at 20% the rate of normal experience
@@ -1780,10 +1796,10 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				}
 
 				//Award individual expType
-				awardExperience(attacker, xpType, xpAmount);
+				awardExperience(attackerCreo, xpType, xpAmount);
 			}
 
-			awardExperience(attacker, "combat_general", combatXp, true, 0.1f);
+			awardExperience(attackerCreo, "combat_general", combatXp, true, 0.1f);
 
 
 			//Check if the group leader is a squad leader
@@ -6003,17 +6019,23 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
-		CreatureObject* attacker = threatMap->elementAt(i).getKey();
+		TangibleObject* attacker = threatMap->elementAt(i).getKey();
 
 		if (entry == nullptr || attacker == nullptr || attacker == player || !attacker->isPlayerCreature())
 			continue;
 
-		PlayerObject* attackerGhost = attacker->getPlayerObject();
+		CreatureObject* attackerCreo = attacker->asCreatureObject();
+
+		if (attackerCreo == nullptr) {
+			continue;
+		}
+
+		PlayerObject* attackerGhost = attackerCreo->getPlayerObject();
 
 		if (attackerGhost == nullptr)
 			continue;
 
-		Locker crossLock(attacker, player);
+		Locker crossLock(attackerCreo, player);
 
 		if (!allowSameAccountPvpRatingCredit && ghost->getAccountID() == attackerGhost->getAccountID())
 			continue;
@@ -6028,13 +6050,13 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 
 		if (highDamageAmount == 0 || entry->getTotalDamage() > highDamageAmount) {
 			highDamageAmount = entry->getTotalDamage();
-			highDamageAttacker = attacker;
+			highDamageAttacker = attackerCreo;
 		}
 
 		if (attackerGhost->hasOnVictimList(player->getObjectID())) {
 			String stringFile;
 
-			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
+			if (attackerCreo->getSpecies() == CreatureObject::TRANDOSHAN)
 				stringFile = "rating_throttle_trandoshan_winner";
 			else
 				stringFile = "rating_throttle_winner";
@@ -6042,16 +6064,16 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			StringIdChatParameter toAttacker;
 			toAttacker.setStringId("pvp_rating", stringFile);
 			toAttacker.setTT(player->getFirstName());
-			toAttacker.setTU(attacker->getObjectID());
+			toAttacker.setTU(attackerCreo->getObjectID());
 			toAttacker.setDI(curAttackerRating);
 
-			attacker->sendSystemMessage(toAttacker);
+			attackerCreo->sendSystemMessage(toAttacker);
 			continue;
 		}
 
 		if (defenderPvpRating <= PlayerObject::PVP_RATING_FLOOR) {
 			String stringFile;
-			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
+			if (attackerCreo->getSpecies() == CreatureObject::TRANDOSHAN)
 				stringFile = "rating_floor_trandoshan_winner";
 			else
 				stringFile = "rating_floor_winner";
@@ -6061,17 +6083,17 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			toAttacker.setTT(player->getFirstName());
 			toAttacker.setDI(curAttackerRating);
 
-			attacker->sendSystemMessage(toAttacker);
+			attackerCreo->sendSystemMessage(toAttacker);
 		}
 
 		float damageContribution = (float) entry->getTotalDamage() / totalDamage;
 
-		if (frsManager != nullptr && frsManager->isFrsEnabled() && frsManager->isValidFrsBattle(attacker, player)) {
-			int attackerFrsXp = frsManager->calculatePvpExperienceChange(attacker, player, damageContribution, false);
-			int victimFrsXp = frsManager->calculatePvpExperienceChange(attacker, player, damageContribution, true);
+		if (frsManager != nullptr && frsManager->isFrsEnabled() && frsManager->isValidFrsBattle(attackerCreo, player)) {
+			int attackerFrsXp = frsManager->calculatePvpExperienceChange(attackerCreo, player, damageContribution, false);
+			int victimFrsXp = frsManager->calculatePvpExperienceChange(attackerCreo, player, damageContribution, true);
 			frsXpAdjustment += victimFrsXp;
 
-			ManagedReference<CreatureObject*> attackerRef = attacker;
+			ManagedReference<CreatureObject*> attackerRef = attackerCreo;
 			if (attackerFrsXp > 0) {
 				Core::getTaskManager()->executeTask([attackerRef, frsManager, attackerFrsXp] () {
 					Locker locker(attackerRef);
@@ -6111,7 +6133,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			String stringFile;
 
 			int randNum = System::random(2) + 1;
-			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
+			if (attackerCreo->getSpecies() == CreatureObject::TRANDOSHAN)
 				stringFile = "trandoshan_win" + String::valueOf(randNum);
 			else
 				stringFile = "win" + String::valueOf(randNum);
@@ -6121,7 +6143,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			toAttacker.setTT(player->getFirstName());
 			toAttacker.setDI(newRating);
 
-			attacker->sendSystemMessage(toAttacker);
+			attackerCreo->sendSystemMessage(toAttacker);
 		}
 	}
 
