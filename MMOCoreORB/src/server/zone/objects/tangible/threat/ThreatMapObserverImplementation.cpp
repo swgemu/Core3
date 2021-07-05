@@ -20,12 +20,12 @@ int ThreatMapObserverImplementation::notifyObserverEvent(uint32 eventType, Obser
 	if (eventType != ObserverEventType::HEALINGRECEIVED)
 		return 0;
 
-	Reference<CreatureObject*> healTarget = cast<CreatureObject*>(observable);
+	Reference<TangibleObject*> healTarget = cast<CreatureObject*>(observable);
 
 	if (healTarget == nullptr)
 		return 0;
 
-	Reference<CreatureObject*> healer = cast<CreatureObject*>(arg1);
+	Reference<TangibleObject*> healer = cast<CreatureObject*>(arg1);
 
 	if (healer == nullptr)
 		return 0;

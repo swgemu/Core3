@@ -12,10 +12,11 @@
 
 class ClearThreatStateTask : public Task {
 	ManagedReference<TangibleObject*> self;
-	ManagedReference<CreatureObject*> target;
+	ManagedReference<TangibleObject*> target;
 	uint64 state;
+
 public:
-	ClearThreatStateTask(TangibleObject* me, CreatureObject* tar, uint64 st) {
+	ClearThreatStateTask(TangibleObject* me, TangibleObject* tar, uint64 st) {
 		self = me;
 		target = tar;
 		state = st;

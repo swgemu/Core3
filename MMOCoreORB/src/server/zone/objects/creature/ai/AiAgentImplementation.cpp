@@ -925,13 +925,30 @@ bool AiAgentImplementation::validateStateAttack() {
 }
 
 SceneObject* AiAgentImplementation::getTargetFromMap() {
-	CreatureObject* target = getThreatMap()->getHighestThreatCreature();
+	TangibleObject* target = getThreatMap()->getHighestThreatAttacker();
 
-	if (target != nullptr && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(asAiAgent()) < 128.f && target->isAttackableBy(asAiAgent()) && lastDamageReceived.miliDifference() < 20000)
-		addDefender(target);
-	else if (target != nullptr && defenderList.contains(target) && (target->isDead() || target->isIncapacitated() || !target->isInRange(asAiAgent(), 128) || !target->isAttackableBy(asAiAgent()))) {
-		removeDefender(target);
-		target = nullptr;
+	if (target != nullptr && !defenderList.contains(target) && target->getDistanceTo(asAiAgent()) < 128.f && target->isAttackableBy(asAiAgent()) && lastDamageReceived.miliDifference() < 20000) {
+		if (target->isCreatureObject()) {
+			CreatureObject* creoTarget = target->asCreatureObject();
+
+			if (creoTarget != nullptr && !creoTarget->isDead() && !creoTarget->isIncapacitated()) {
+				addDefender(target);
+			}
+		} else {
+			addDefender(target);
+		}
+	} else if (target != nullptr && defenderList.contains(target) && (!target->isInRange(asAiAgent(), 128) || !target->isAttackableBy(asAiAgent()))) {
+		if (target->isCreatureObject()) {
+			CreatureObject* tarCreo = target->asCreatureObject();
+
+			if (tarCreo->isDead() || tarCreo->isIncapacitated()) {
+				removeDefender(target);
+				target = nullptr;
+			}
+		} else {
+			removeDefender(target);
+			target = nullptr;
+		}
 	}
 
 	return target;
@@ -1281,8 +1298,8 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 	if ((defenderList.size() == 0 || getFollowObject().get() == nullptr) && defender != nullptr) {
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 		setFollowObject(defender);
-		if (defender->isCreatureObject() && threatMap != nullptr)
-			threatMap->addAggro(defender->asCreatureObject(), 1);
+		if (defender->isTangibleObject() && threatMap != nullptr)
+			threatMap->addAggro(defender->asTangibleObject(), 1);
 	} else if (stateCopy <= STALKING) {
 		setFollowState(AiAgent::FOLLOWING);
 	}
@@ -1298,16 +1315,19 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 	if (defender == nullptr)
 		return;
 
-	if (defender->isCreatureObject())
-		getThreatMap()->dropDamage(defender->asCreatureObject());
+	if (defender->isTangibleObject()) {
+		getThreatMap()->dropDamage(defender->asTangibleObject());
+	}
 
 	if (getFollowObject().get() == defender) {
-		CreatureObject* target = getThreatMap()->getHighestThreatCreature();
+		TangibleObject* target = getThreatMap()->getHighestThreatAttacker();
 
 		if (target == nullptr && defenderList.size() > 0) {
 			SceneObject* tarObj = defenderList.get(0);
-			if (tarObj != nullptr && tarObj->isCreatureObject())
-				target = tarObj->asCreatureObject();
+
+			if (tarObj != nullptr && tarObj->isTangibleObject()) {
+				target = tarObj->asTangibleObject();
+			}
 		}
 
 		if (target != nullptr)
@@ -2569,16 +2589,14 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 	activateRecovery();
 
-	if (attacker->isCreatureObject()) {
-		CreatureObject* creature = attacker->asCreatureObject();
-
-		if (damage > 0) {
-			// This damage is DOT or other types of non direct combat damage, it should not count towards loot and thus not be added to the threat map damage.
-			// Adding aggro should still be done.
-			getThreatMap()->addAggro(creature, 1);
-		}
+	if (damage > 0) {
+		// This damage is DOT or other types of non direct combat damage, it should not count towards loot and thus not be added to the threat map damage.
+		// Adding aggro should still be done.
+		getThreatMap()->addAggro(attacker, 1);
 	}
+
 	activateInterrupt(attacker, ObserverEventType::DAMAGERECEIVED);
+
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
 }
 
@@ -2587,14 +2605,12 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 	activateRecovery();
 
-	if (attacker->isCreatureObject()) {
-		CreatureObject* creature = attacker->asCreatureObject();
-
-		if (damage > 0) {
-			getThreatMap()->addDamage(creature, damage, xp);
-		}
+	if (damage > 0) {
+		getThreatMap()->addDamage(attacker, damage, xp);
 	}
+
 	activateInterrupt(attacker, ObserverEventType::DAMAGERECEIVED);
+
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
 }
 
