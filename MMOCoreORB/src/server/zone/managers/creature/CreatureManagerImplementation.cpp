@@ -646,9 +646,9 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		if (destructorThreatMap != nullptr) {
 			for (int i = 0; i < destructorThreatMap->size(); i++) {
-				CreatureObject* destructedCreo = destructorThreatMap->elementAt(i).getKey();
+				TangibleObject* destructedTano = destructorThreatMap->elementAt(i).getKey();
 
-				if (destructedCreo == destructedObject) {
+				if (destructedTano == destructedObject) {
 					destructorThreatMap->remove(i);
 				}
 			}

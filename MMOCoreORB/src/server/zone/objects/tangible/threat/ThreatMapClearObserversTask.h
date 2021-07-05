@@ -22,12 +22,12 @@ public:
 
 	void run() {
 		while (threatMap.size() > 0) {
-			CreatureObject* creature = threatMap.elementAt(0).getKey();
+			TangibleObject* tano = threatMap.elementAt(0).getKey();
 
-			if (creature != nullptr && threatMapObserver != nullptr) {
-				Locker clocker(creature);
+			if (tano != nullptr && threatMapObserver != nullptr) {
+				Locker clocker(tano);
 
-				creature->dropObserver(ObserverEventType::HEALINGRECEIVED, threatMapObserver);
+				tano->dropObserver(ObserverEventType::HEALINGRECEIVED, threatMapObserver);
 			}
 
 			threatMap.remove(0);
