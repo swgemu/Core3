@@ -5,14 +5,14 @@
 #include "system/util/Vector.h"
 #include "system/lang/ref/UniqueReference.h"
 
-//#define REGION_TREE_SIMPLE
+//#define AREA_TREE_SIMPLE
 
 namespace server {
 namespace zone {
 
 class ActiveAreaQuadTreeNode {
 protected:
-	SortedVector<Reference<ActiveArea*>> regions;
+	SortedVector<Reference<ActiveArea*>> areas;
 
 	UniqueReference<ActiveAreaQuadTreeNode*> nwNode{};
 	UniqueReference<ActiveAreaQuadTreeNode*> neNode{};
@@ -30,22 +30,22 @@ public:
 	ActiveAreaQuadTreeNode(float minx, float miny, float maxx, float maxy, const ActiveAreaQuadTreeNode* parent);
 
 	bool isEmpty() const {
-		return regions.isEmpty();
+		return areas.isEmpty();
 	}
 
-	void insertRegion(ActiveArea* region) {
-		regions.put(region);
+	void insertArea(ActiveArea* area) {
+		areas.put(area);
 	}
 
-	void dropRegion(ActiveArea* area) {
-		regions.drop(area);
+	void dropArea(ActiveArea* area) {
+		areas.drop(area);
 	}
 
 	bool testInside(float x, float y) const {
 		return x >= minX && x < maxX && y >= minY && y < maxY;
 	}
 
-	bool testRegionInside(float x, float y, float radius) const {
+	bool testAreaInside(float x, float y, float radius) const {
 		return (x - radius) >= minX && (x + radius) < maxX && (y - radius) >= minY && (y + radius) < maxY;
 	}
 
@@ -53,47 +53,47 @@ public:
 		return nwNode || neNode || swNode || seNode;
 	}
 
-	bool testInSWArea(float x, float y) const {
-		return x >= minX && x < dividerX && y >= minY && y < dividerY;
+	bool testInSWArea(float x, float y, float radius) const {
+		return (x - radius) >= minX && (x + radius) < dividerX && (y - radius) >= minY && (y + radius) < dividerY;
 	}
 
-	bool testInSEArea(float x, float y) const {
-		return x >= dividerX && x < maxX && y >= minY && y < dividerY;
+	bool testInSEArea(float x, float y, float radius) const {
+		return (x - radius) >= dividerX && (x + radius) < maxX && (y - radius) >= minY && (y + radius) < dividerY;
 	}
 
-	bool testInNWArea(float x, float y) const {
-		return x >= minX && x < dividerX && y >= dividerY && y < maxY;
+	bool testInNWArea(float x, float y, float radius) const {
+		return (x - radius) >= minX && (x + radius) < dividerX && (y - radius) >= dividerY && (y + radius) < maxY;
 	}
 
-	bool testInNEArea(float x, float y) const {
-		return x >= dividerX && x < maxX && y >= dividerY && y < maxY;
+	bool testInNEArea(float x, float y, float radius) const {
+		return (x - radius) >= dividerX && (x + radius) < maxX && (y - radius) >= dividerY && (y + radius) < maxY;
 	}
 
 	friend class ActiveAreaQuadTree;
 };
 
 class ActiveAreaQuadTree : public Object {
-#ifdef REGION_TREE_SIMPLE
-	SortedVector<Reference<ActiveArea*>> regions;
+#ifdef AREA_TREE_SIMPLE
+	SortedVector<Reference<ActiveArea*>> areas;
 #else
 	UniqueReference<ActiveAreaQuadTreeNode*> root{};
 #endif
 
 public:
 	ActiveAreaQuadTree(float minx, float miny, float maxx, float maxy) {
-#ifndef REGION_TREE_SIMPLE
+#ifndef AREA_TREE_SIMPLE
 		root = makeUnique<ActiveAreaQuadTreeNode>(minx, miny, maxx, maxy, nullptr);
 #else
-		regions.setNoDuplicateInsertPlan();
+		areas.setNoDuplicateInsertPlan();
 #endif
 	}
 
 	template <typename AreaType>
 	void getActiveAreas(float x, float y, ArrayList<AreaType>& areas) const {
-#ifndef REGION_TREE_SIMPLE
+#ifndef AREA_TREE_SIMPLE
 		getActiveAreas(root.get(), x, y, areas);
 #else
-		for (const auto& area : regions) {
+		for (const auto& area : areas) {
 			if (area->containsPoint(x, y)) {
 				areas.emplace(area);
 			}
@@ -101,36 +101,36 @@ public:
 #endif
 	}
 
-	void insert(Reference<ActiveArea*> region) {
-#ifndef REGION_TREE_SIMPLE
-		insert(*root, region);
+	void insert(Reference<ActiveArea*> area) {
+#ifndef AREA_TREE_SIMPLE
+		insert(*root, area);
 #else
-		regions.put(std::move(region));
+		areas.put(std::move(area));
 #endif
 	}
 
-#ifdef REGION_TREE_SIMPLE
-	void remove(Reference<ActiveArea*> region) {
-		regions.drop(region);
+#ifdef AREA_TREE_SIMPLE
+	void remove(Reference<ActiveArea*> area) {
+		areas.drop(area);
 	}
 #else
-	void remove(Reference<ActiveArea*> region);
+	void remove(Reference<ActiveArea*> area);
 #endif
 
 protected:
-#ifndef REGION_TREE_SIMPLE
-	void insert(ActiveAreaQuadTreeNode& node, ActiveArea* region);
+#ifndef AREA_TREE_SIMPLE
+	void insert(ActiveAreaQuadTreeNode& node, ActiveArea* area);
 	void removeActiveArea(ActiveAreaQuadTreeNode& node, ActiveArea* area);
 
 	template <typename AreaType>
-	void getActiveAreas(ActiveAreaQuadTreeNode* node, float x, float y, ArrayList<AreaType>& regions) const {
+	void getActiveAreas(ActiveAreaQuadTreeNode* node, float x, float y, ArrayList<AreaType>& areas) const {
 		if (node == nullptr) {
 			return;
 		}
 
-		for (const auto& regionEntry : node->regions) {
-			if (regionEntry->containsPoint(x, y)) {
-				regions.emplace(regionEntry);
+		for (const auto& areaEntry : node->areas) {
+			if (areaEntry->containsPoint(x, y)) {
+				areas.emplace(areaEntry);
 			}
 		}
 
@@ -140,13 +140,13 @@ protected:
 		const auto& nodeNE = node->neNode;
 
 		if (nodeSW != nullptr && nodeSW->testInside(x, y)) {
-			getActiveAreas(nodeSW.get(), x, y, regions);
+			getActiveAreas(nodeSW.get(), x, y, areas);
 		} else if (nodeSE != nullptr && nodeSE->testInside(x, y)) {
-			getActiveAreas(nodeSE.get(), x, y, regions);
+			getActiveAreas(nodeSE.get(), x, y, areas);
 		} else if (nodeNW != nullptr && nodeNW->testInside(x, y)) {
-			getActiveAreas(nodeNW.get(), x, y, regions);
+			getActiveAreas(nodeNW.get(), x, y, areas);
 		} else if (nodeNE != nullptr && nodeNE->testInside(x, y)) {
-			getActiveAreas(nodeNE.get(), x, y, regions);
+			getActiveAreas(nodeNE.get(), x, y, areas);
 		}
 	}
 #endif
