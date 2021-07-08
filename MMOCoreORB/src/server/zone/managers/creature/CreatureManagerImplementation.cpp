@@ -654,6 +654,10 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			}
 		}
 
+		if (destructor->hasDefender(destructedObject)) {
+			destructor->removeDefender(destructedObject);
+		}
+
 		const DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructor->getDefenderList();
 
 		if (defenderList->size() == 0) {
