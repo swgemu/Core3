@@ -273,6 +273,9 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 			droidObject->handleChat(speaker, message);
 		}
 	}
+
+	Locker plocker(pcd, speaker);
+	pcd->setLastCommander(speaker);
 }
 
 bool PetManagerImplementation::isTrainedCommand( PetControlDevice* petControlDevice, unsigned int commandId, const String& msg ){

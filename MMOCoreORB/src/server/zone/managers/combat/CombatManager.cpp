@@ -29,6 +29,7 @@
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/packets/object/ShowFlyText.h"
 #include "server/zone/managers/frs/FrsManager.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 #define COMBAT_SPAM_RANGE 85 // Range at which players will see Combat Log Info
 
@@ -77,7 +78,6 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	}
 
 	CreatureObject* creo = defender->asCreatureObject();
-
 	if (creo != nullptr && creo->isIncapacitated() && creo->isFeigningDeath() == false) {
 		if (allowIncapTarget) {
 			attacker->clearState(CreatureState::PEACE);
@@ -271,7 +271,23 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 
 	// Update PvP TEF Duration
 	if (shouldGcwCrackdownTef || shouldGcwTef || shouldBhTef) {
-		ManagedReference<CreatureObject*> attackingCreature = attacker->isPet() ? attacker->getLinkedCreature() : attacker;
+		ManagedReference<CreatureObject*> attackingCreature = nullptr;
+
+		if (attacker->isPet()) {
+			ManagedReference<PetControlDevice*> controlDevice = attacker->getControlDevice().get().castTo<PetControlDevice*>();
+
+			if (controlDevice != nullptr) {
+				ManagedReference<SceneObject*> lastCommander = controlDevice->getLastCommander().get();
+
+				if (lastCommander != nullptr && lastCommander->isCreatureObject()) {
+					attackingCreature = lastCommander->asCreatureObject();
+				} else {
+					attackingCreature = attacker->getLinkedCreature();
+				}
+			}
+		} else {
+			attackingCreature = attacker;
+		}
 
 		if (attackingCreature != nullptr) {
 			PlayerObject* ghost = attackingCreature->getPlayerObject();
@@ -3095,8 +3111,24 @@ void CombatManager::checkForTefs(CreatureObject* attacker, CreatureObject* defen
 		return;
 	}
 
-	ManagedReference<CreatureObject*> attackingCreature = attacker->isPet() ? attacker->getLinkedCreature() : attacker;
+	ManagedReference<CreatureObject*> attackingCreature = nullptr;
 	ManagedReference<CreatureObject*> targetCreature = defender->isPet() || defender->isVehicleObject() ? defender->getLinkedCreature() : defender;
+
+	if (attacker->isPet()) {
+		ManagedReference<PetControlDevice*> controlDevice = attacker->getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (controlDevice != nullptr) {
+			ManagedReference<SceneObject*> lastCommander = controlDevice->getLastCommander().get();
+
+			if (lastCommander != nullptr && lastCommander->isCreatureObject()) {
+				attackingCreature = lastCommander->asCreatureObject();
+			} else {
+				attackingCreature = attacker->getLinkedCreature();
+			}
+		}
+	} else {
+		attackingCreature = attacker;
+	}
 
 	if (attackingCreature != nullptr && targetCreature != nullptr) {
 		if (attackingCreature->isPlayerCreature() && targetCreature->isPlayerCreature() && !areInDuel(attackingCreature, targetCreature)) {
