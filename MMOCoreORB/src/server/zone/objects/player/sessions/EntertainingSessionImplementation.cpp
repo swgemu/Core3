@@ -862,6 +862,10 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 		if ((!entertainer->isGrouped() || entertainer->getGroupID() != creature->getGroupID()) && entPlayer->getPerformanceBuffTarget() != creature->getObjectID())
 			return;
 
+		if (creature->isIncapacitated() || creature->isDead()) {
+			return;
+		}
+
 		if (!canGiveEntertainBuff())
 			return;
 
