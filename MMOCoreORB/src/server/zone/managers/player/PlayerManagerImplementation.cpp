@@ -1059,9 +1059,9 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 
 			recoveryTime = round(recoveryTime * ((100.0f - percent) / 100.0f));
 
-            StringIdChatParameter message("combat_effects", "incap_recovery");
-            message.setDI(recoveryTime);
-            playerCreature->sendSystemMessage(message); // Incapacitation recovery time reduced by %DI%.
+			StringIdChatParameter message("combat_effects", "incap_recovery");
+			message.setDI(recoveryTime);
+			playerCreature->sendSystemMessage(message); // Incapacitation recovery time reduced by %DI%.
 
 			playerCreature->removeBuff(buff);
 		}
@@ -1076,7 +1076,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	if (!destructedObject->isPlayerCreature())
 		return 1;
 
-	CreatureObject* playerCreature = cast<CreatureObject*>( destructedObject);
+	CreatureObject* playerCreature = cast<CreatureObject*>(destructedObject);
 
 	if ((playerCreature->isIncapacitated() && !(playerCreature->isFeigningDeath())) || playerCreature->isDead())
 		return 1;
@@ -1173,6 +1173,14 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 				}
 			}
 		}
+	}
+
+	if (playerCreature->isWatching()) {
+		uint64 watchID = playerCreature->getWatchToID();
+		stopWatch(playerCreature, watchID, false);
+	} else if (playerCreature->isListening()) {
+		uint64 listenID = playerCreature->getListenID();
+		stopListen(playerCreature, listenID, false);
 	}
 
 	ThreatMap* destructorThreatMap = destructor->getThreatMap();
