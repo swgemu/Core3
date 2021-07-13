@@ -1392,6 +1392,9 @@ void PlayerObjectImplementation::notifyOnline() {
 		}
 	}
 
+	// Checks for DoTs that should have expired during server downtime and removes them
+	playerCreature->getDamageOverTimeList()->validateDots(playerCreature);
+
 	if (getForcePowerMax() > 0 && getForcePower() < getForcePowerMax())
 		activateForcePowerRegen();
 
