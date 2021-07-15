@@ -201,6 +201,8 @@ public:
 					if (par == creature) {
 						ManagedReference<SceneObject*> destPar = destinationObject->getParent().get();
 
+						Locker parLocker(par, creature);
+
 						if (destPar != nullptr && !destPar->isCellObject()) {
 							par = destPar;
 						} else {
