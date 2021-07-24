@@ -63,6 +63,7 @@ public:
 	uint8 getRandomPool(uint64 dotType);
 	bool healState(CreatureObject* victim, uint64 dotType, float reduction, bool sendMsg = true);
 	void clear(CreatureObject* creature);
+	void validateDots(CreatureObject* creature);
 	bool hasDot(uint64 dotType);
 	void multiplyAllDOTDurations (float multiplier);
 

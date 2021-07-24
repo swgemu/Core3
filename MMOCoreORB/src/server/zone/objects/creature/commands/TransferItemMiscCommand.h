@@ -203,8 +203,10 @@ public:
 
 						if (destPar != nullptr && !destPar->isCellObject()) {
 							par = destPar;
+							break;
 						} else {
 							par = destinationObject;
+							break;
 						}
 					}
 
