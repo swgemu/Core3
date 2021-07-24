@@ -103,16 +103,7 @@ int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
 	return strength;
 }
 
-uint32 DamageOverTimeList::addDot(CreatureObject* victim,
-								  CreatureObject* attacker,
-								  uint64 objectID,
-								  uint32 duration,
-								  uint64 dotType,
-								  uint8 pool,
-								  uint32 strength,
-								  float potency,
-								  uint32 defense,
-								  int secondaryStrength) {
+uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attacker, uint64 objectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense, int secondaryStrength) {
 	Locker locker(&guard);
 
 	if (strength == 0 || duration == 0)
@@ -325,6 +316,22 @@ void DamageOverTimeList::clear(CreatureObject* creature) {
 	}
 
 	removeAll();
+}
+
+void DamageOverTimeList::validateDots(CreatureObject* creature) {
+	Locker lock(&guard);
+
+	for (int i = 0; i < size(); ++i) {
+		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
+
+		for (int j = 0; j < vector->size(); ++j) {
+			DamageOverTime* dot = &vector->elementAt(j);
+
+			if (dot != nullptr && !dot->isActivated()) {
+				creature->clearState(dot->getType());
+			}
+		}
+	}
 }
 
 void DamageOverTimeList::multiplyAllDOTDurations(float multiplier) {
