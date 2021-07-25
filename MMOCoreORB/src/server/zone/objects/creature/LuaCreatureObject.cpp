@@ -1066,10 +1066,16 @@ int LuaCreatureObject::getDamageDealerList(lua_State* L) {
 		ThreatMapEntry* entry = &copyThreatMap.elementAt(i).getValue();
 
 		if (entry->getTotalDamage() > 0) {
-			CreatureObject* attacker = copyThreatMap.elementAt(i).getKey();
+			TangibleObject* attacker = copyThreatMap.elementAt(i).getKey();
+
+			if (attacker == nullptr || !attacker->isCreatureObject()) {
+				continue;
+			}
+
+			CreatureObject* creoAttacker = attacker->asCreatureObject();
 
 			count++;
-			lua_pushlightuserdata(L, attacker);
+			lua_pushlightuserdata(L, creoAttacker);
 			lua_rawseti(L, -2, count);
 		}
 	}
@@ -1088,10 +1094,16 @@ int LuaCreatureObject::getHealingThreatList(lua_State* L) {
 		ThreatMapEntry* entry = &copyThreatMap.elementAt(i).getValue();
 
 		if (entry->getHeal() > 0) {
-			CreatureObject* healer = copyThreatMap.elementAt(i).getKey();
+			TangibleObject* healer = copyThreatMap.elementAt(i).getKey();
+
+			if (healer == nullptr || !healer->isCreatureObject()) {
+				continue;
+			}
+
+			CreatureObject* creoHealer = healer->asCreatureObject();
 
 			count++;
-			lua_pushlightuserdata(L, healer);
+			lua_pushlightuserdata(L, creoHealer);
 			lua_rawseti(L, -2, count);
 		}
 	}

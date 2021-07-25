@@ -4132,15 +4132,17 @@ void FrsManagerImplementation::handleSuddenDeathLoss(CreatureObject* player, Thr
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
-		CreatureObject* attacker = threatMap->elementAt(i).getKey();
+		TangibleObject* attacker = threatMap->elementAt(i).getKey();
 
 		if (entry == nullptr || attacker == nullptr || attacker == player || !attacker->isPlayerCreature())
 			continue;
 
-		if (!player->isAttackableBy(attacker, true))
+		CreatureObject* attackerCreo = attacker->asCreatureObject();
+
+		if (!player->isAttackableBy(attackerCreo, true))
 			continue;
 
-		PlayerObject* attackerGhost = attacker->getPlayerObject();
+		PlayerObject* attackerGhost = attackerCreo->getPlayerObject();
 
 		if (attackerGhost == nullptr)
 			continue;

@@ -8,8 +8,6 @@
 #ifndef THREATMAP_H_
 #define THREATMAP_H_
 
-
-
 #include "engine/engine.h"
 #include "ThreatMatrix.h"
 #include "server/zone/objects/tangible/threat/ThreatMapObserver.h"
@@ -28,7 +26,6 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
-
 namespace server {
 namespace zone {
 namespace objects {
@@ -38,7 +35,6 @@ namespace threat {
 //#define DEBUG
 
 class ThreatMapEntry : public VectorMap<String, uint32> {
-
 	int aggroMod;
 	uint64 threatBitmask;
 	int healAmount;
@@ -124,29 +120,27 @@ public:
 	}
 };
 
-class ThreatMap : public VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry> {
+class ThreatMap : public VectorMap<ManagedReference<TangibleObject*>, ThreatMapEntry> {
 public:
 	/// Time between normal target evaluation
-	enum {
-		EVALUATIONCOOLDOWN = 24000
-	};
+	enum { EVALUATIONCOOLDOWN = 24000 };
 
 protected:
 	ManagedWeakReference<TangibleObject*> self;
 	CooldownTimerMap cooldownTimerMap;
-	ManagedWeakReference<CreatureObject*> currentThreat;
+	ManagedWeakReference<TangibleObject*> currentThreat;
 	ThreatMatrix threatMatrix;
 	ManagedReference<ThreatMapObserver*> threatMapObserver;
 	Mutex lockMutex;
 
 public:
-	ThreatMap(TangibleObject* me) : VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>(1, 0) {
+	ThreatMap(TangibleObject* me) : VectorMap<ManagedReference<TangibleObject*>, ThreatMapEntry>(1, 0) {
 		self = me;
 		currentThreat = nullptr;
 		setNoDuplicateInsertPlan();
 	}
 
-	ThreatMap(const ThreatMap& map) : VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>(map), lockMutex() {
+	ThreatMap(const ThreatMap& map) : VectorMap<ManagedReference<TangibleObject*>, ThreatMapEntry>(map), lockMutex() {
 		setNoDuplicateInsertPlan();
 		self = map.self;
 		currentThreat = map.currentThreat;
@@ -166,11 +160,10 @@ public:
 		threatMatrix = map.threatMatrix;
 		cooldownTimerMap = map.cooldownTimerMap;
 
-		VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>::operator =(map);
+		VectorMap<ManagedReference<TangibleObject*>, ThreatMapEntry>::operator=(map);
 
 		return *this;
 	}
-
 
 	~ThreatMap() {
 	}
@@ -179,11 +172,11 @@ public:
 
 	void removeObservers();
 
-	void addDamage(CreatureObject* target, uint32 damage, String xp = "");
-	void dropDamage(CreatureObject* target);
+	void addDamage(TangibleObject* target, uint32 damage, String xp = "");
+	void dropDamage(TangibleObject* target);
 
-	bool setThreatState(CreatureObject* target, uint64 state, uint64 duration = 0, uint64 cooldown = 0);
-	void clearThreatState(CreatureObject* target, uint64 state);
+	bool setThreatState(TangibleObject* target, uint64 state, uint64 duration = 0, uint64 cooldown = 0);
+	void clearThreatState(TangibleObject* target, uint64 state);
 
 	bool hasState(uint64 state);
 	bool isUniqueState(uint64 state);
@@ -191,20 +184,18 @@ public:
 	CreatureObject* getHighestDamagePlayer();
 	CreatureObject* getHighestDamageGroupLeader();
 
-	CreatureObject* getHighestThreatCreature();
+	TangibleObject* getHighestThreatAttacker();
 	uint32 getTotalDamage();
 
-	void addAggro(CreatureObject* target, int value, uint64 duration = 0);
-	void removeAggro(CreatureObject* target, int value);
-	void clearAggro(CreatureObject* target);
+	void addAggro(TangibleObject* target, int value, uint64 duration = 0);
+	void removeAggro(TangibleObject* target, int value);
+	void clearAggro(TangibleObject* target);
 
-	void addHeal(CreatureObject* target, int value);
+	void addHeal(TangibleObject* target, int value);
+
 private:
-
-	void registerObserver(CreatureObject* target);
-
+	void registerObserver(TangibleObject* target);
 };
-
 }
 }
 }
