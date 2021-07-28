@@ -40,8 +40,6 @@ void CraftingStationImplementation::notifyLoadFromDatabase() {
 	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
 
 	if (inputHopper != nullptr) {
-		Locker lock(inputHopper);
-
 		ContainerPermissions* permissions = inputHopper->getContainerPermissionsForUpdate();
 		permissions->setOwner(getObjectID());
 		permissions->setInheritPermissionsFromParent(true);
@@ -72,12 +70,12 @@ void CraftingStationImplementation::createChildObjects() {
 			continue;
 		}
 
+		Locker hopLock(hopper, _this.getReferenceUnsafeStaticCast());
+
 		if (!transferObject(hopper, child->getContainmentType())) {
 			hopper->destroyObjectFromDatabase(true);
 			continue;
 		}
-
-		Locker hopLock(hopper);
 
 		ContainerPermissions* permissions = hopper->getContainerPermissionsForUpdate();
 		permissions->setOwner(getObjectID());
@@ -175,7 +173,6 @@ SceneObject* CraftingStationImplementation::findCraftingTool(CreatureObject* pla
 				craftingTool = object;
 			}
 		}
-
 	}
 	return craftingTool;
 }
