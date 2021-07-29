@@ -169,24 +169,32 @@ public:
 
 		if (zoneObject != nullptr) {
 			ManagedReference<SceneObject*> rootParent = objectToTransfer->getRootParent();
+			ManagedReference<SceneObject*> parent = objectToTransfer->getParent().get();
 
-			float maxDistance = 12.5;
+			float maxDistance =  16.5;
 
-			if (!rootParent->isBuildingObject()) {
+			if (!rootParent->isBuildingObject() && !parent->isBuildingObject()) {
 				float rootDist = rootParent->getDistanceTo(creature);
 
-				if (rootDist > maxDistance) {
-
+				if (rootDist > maxDistance) { // Handles Hoppers in Factories
 					trx.abort() << "Too far from root: " << (int)rootDist;
 					return TOOFAR;
 				}
 
 				ManagedReference<SceneObject*> destParent = destinationObject->getParent().get();
 
-				if (destParent != nullptr && destParent != creature && destParent->getDistanceTo(creature) > maxDistance) {
+				if (destParent != nullptr) {
+					if (destParent->isCellObject()) {
+						destParent = destinationObject;
+					}
 
-					trx.abort() << "Too far from root: " << (int)destinationObject->getParent().get()->getDistanceTo(creature);
-					return TOOFAR;
+					float destDistance = destParent->getDistanceTo(creature);
+					ManagedReference<SceneObject*> destGrandParent = destParent->getParent().get();
+
+					if (((destinationObject->isContainerObject() && destGrandParent != nullptr && destGrandParent->isCellObject()) || destParent->isInstallationObject() || destParent->isCraftingStation()) && destDistance > maxDistance) {
+						trx.abort() << "Too far from root: " << (int)destinationObject->getParent().get()->getDistanceTo(creature);
+						return TOOFAR;
+					}
 				}
 			} else {
 				ManagedReference<SceneObject*> par = nullptr;
@@ -197,25 +205,49 @@ public:
 					return INVALIDTARGET;
 				}
 
+				// Container Inside Cell to Player Transfer
+
+				while ((par = obj->getParent().get()) != nullptr) { // Container to Player
+					if (par->isCellObject()) {
+						float distance = obj->getDistanceTo(creature);
+
+						if (distance > maxDistance) {
+							trx.abort() << "Too far from creature: " << (int)distance;
+							return TOOFAR;
+						} else {
+							break;
+						}
+					} else {
+						obj = par;
+					}
+				}
+
+				// Player Inside Cell to Container Transfer
+
+				obj = objectToTransfer;
+
 				while ((par = obj->getParent().get()) != nullptr) {
 					if (par == creature) {
 						ManagedReference<SceneObject*> destPar = destinationObject->getParent().get();
 
-						if (destPar != nullptr && !destPar->isCellObject()) {
-							par = destPar;
-							break;
-						} else {
-							par = destinationObject;
-							break;
-						}
-					}
+						if (destPar != nullptr) {
+							ManagedReference<SceneObject*> destGrandParent = destPar->getParent().get();
+							ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-					float distance = obj->getDistanceTo(creature);
+							if (destPar == creature || destinationObject->isCellObject() || (destGrandParent != nullptr && inventory != nullptr && (destGrandParent == inventory || destPar == inventory))) {
+								break;
+							} else if (destPar->isCellObject()) {
+								destPar = destinationObject;
+							}
 
-					if (par->isCellObject()) {
-						if (distance > maxDistance) {
-							trx.abort() << "Too far from creature: " << (int)distance;
-							return TOOFAR;
+							float distance = destPar->getDistanceTo(creature);
+
+							if (distance > maxDistance) {
+								trx.abort() << "Too far from creature: " << (int)distance;
+								return TOOFAR;
+							} else {
+								break;
+							}
 						} else {
 							break;
 						}
