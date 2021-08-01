@@ -45,8 +45,6 @@ void CraftingStationImplementation::notifyLoadFromDatabase() {
 		permissions->setInheritPermissionsFromParent(true);
 		permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 		permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
-	} else {
-		createChildObjects();
 	}
 }
 
@@ -107,7 +105,11 @@ void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 int CraftingStationImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 68 && getSlottedObject("ingredient_hopper") != nullptr) {
+	if (selectedID == 68) {
+		if (getSlottedObject("ingredient_hopper") == nullptr && !getObjectNameStringIdName().contains("public")) {
+			createChildObjects();
+		}
+
 		SceneObject* parent = getParent().get();
 
 		if (parent != nullptr && parent->isCellObject()) {
