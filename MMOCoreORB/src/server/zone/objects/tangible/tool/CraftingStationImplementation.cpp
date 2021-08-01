@@ -46,7 +46,9 @@ void CraftingStationImplementation::notifyLoadFromDatabase() {
 		permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 		permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 	} else {
-		createChildObjects();
+		if (!getObjectNameStringIdName().contains("public")) {
+			createChildObjects();
+		}
 	}
 }
 
