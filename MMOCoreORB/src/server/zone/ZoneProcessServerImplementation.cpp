@@ -78,7 +78,7 @@ void ZoneProcessServerImplementation::initialize() {
 	objectController = new ObjectController(_this.getReferenceUnsafeStaticCast());
 
 	fishingManager = new FishingManager();
-	fishingManager->deploy();
+	fishingManager->initialize();
 
 	gamblingManager = new GamblingManager();
 	gamblingManager->deploy();

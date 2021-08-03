@@ -29,35 +29,27 @@ public:
 		try {
 			Locker _locker(player);
 
-			//player->info("activating command queue action");
-
 			ManagedReference<FishingManager*> manager = player->getZoneProcessServer()->getFishingManager();
 			Locker splashLocker(splash);
 			manager->removeSplash(splash);
-
-			//player->info("command queue action activated");
-
 		} catch (...) {
-			//player = nullptr;
+			// player = nullptr;
 
 			throw;
 		}
 
-		//player = nullptr;
-
+		// player = nullptr;
 	}
 
 	SceneObject* getSplash() {
 		return splash;
 	}
-
 };
-
-}
-}
-}
-}
-}
+} // namespace events
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
 
 using namespace server::zone::managers::minigames::events;
 
