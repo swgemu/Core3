@@ -186,7 +186,6 @@ void SuiManager::handleFishingAction(CreatureObject* player, SuiBox* suiBox, uin
 		newBoxID = manager->createWindow(player, suiBox->getBoxID());
 		break;
 	case FishingManager::STOPFISHING:
-		player->sendSystemMessage("@fishing:stop_fishing"); //You reel-in your line and stop fishing...
 		manager->stopFishing(player, suiBox->getBoxID(), true);
 		return;
 		break;
