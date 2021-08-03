@@ -72,6 +72,7 @@ enum class TrxCode {
 	DESTROYSTRUCTURE,           // Structure destroyed by system (maintenance etc)
 	EXTRACTCRATE,               // Extract item from crate
 	FACTORYOPERATION,           // Factory operations
+	FISHING,                    // Fishing Loot
 	FORAGED,                    // Foraged items
 	HARVESTED,                  // Harvested items
 	IMAGEDESIGN,                // Image Design Fees
