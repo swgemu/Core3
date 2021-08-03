@@ -70,6 +70,7 @@ enum class TrxCode {
 	CRAFTINGSESSION,            // Crafting Session
 	EXTRACTCRATE,               // Extract item from crate
 	FACTORYOPERATION,           // Factory operations
+	FISHING,                    // Fishing Loot
 	FORAGED,                    // Foraged items
 	HARVESTED,                  // Harvested items
 	IMAGEDESIGN,                // Image Design Fees

@@ -860,6 +860,7 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::CRAFTINGSESSION:          return "craftingsession";           // Crafting Session
 	case TrxCode::EXTRACTCRATE:             return "extractcrate";              // Extract item from crate
 	case TrxCode::FACTORYOPERATION:         return "factoryoperation";          // Factory operations
+	case TrxCode::FISHING:                  return "fishing";                   // Fishing loot
 	case TrxCode::FORAGED:                  return "foraged";                   // Foraged items
 	case TrxCode::HARVESTED:                return "harvested";                 // Harvested items
 	case TrxCode::IMAGEDESIGN:              return "imagedesign";               // Image Design Fees
