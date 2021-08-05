@@ -52,7 +52,7 @@ public:
 			return GENERALERROR;
 		}
 
-		session->sendEntertainingUpdate(creature, performanceIndex);
+		session->sendEntertainingUpdate(creature, performanceIndex, true);
 
 		creature->notifyObservers(ObserverEventType::CHANGEENTERTAIN, creature);
 

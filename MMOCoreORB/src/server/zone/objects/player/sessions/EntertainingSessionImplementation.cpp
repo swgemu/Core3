@@ -289,10 +289,11 @@ void EntertainingSessionImplementation::stopPlaying() {
 	if (!isPlayingMusic())
 		return;
 
-	sendEntertainingUpdate(entertainer, 0);
-
 	performanceIndex = 0;
 	entertainer->setListenToID(0);
+
+	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
+	entertainer->setPosture(CreaturePosture::UPRIGHT, true, true);
 
 	if (isPerformingOutro())
 		setPerformingOutro(false);
@@ -315,11 +316,10 @@ void EntertainingSessionImplementation::stopPlaying() {
 	if (tickTask != nullptr && tickTask->isScheduled())
 		tickTask->cancel();
 
+	sendEntertainingUpdate(entertainer, 0, false);
 	updateEntertainerMissionStatus(false, MissionTypes::MUSICIAN);
 
 	entertainer->notifyObservers(ObserverEventType::STOPENTERTAIN, entertainer);
-
-	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
 
 	if (!isDancing() && !isPlayingMusic()) {
 		ManagedReference<PlayerObject*> entPlayer = entertainer->getPlayerObject();
@@ -412,7 +412,7 @@ void EntertainingSessionImplementation::startDancing(int perfIndex) {
 
 	Locker locker(entertainer);
 
-	sendEntertainingUpdate(entertainer, performanceIndex);
+	sendEntertainingUpdate(entertainer, performanceIndex, true);
 
 	entertainer->sendSystemMessage("@performance:dance_start_self"); // You begin dancing.
 
@@ -515,7 +515,7 @@ void EntertainingSessionImplementation::startPlayingMusic(int perfIndex, Instrum
 
 	Locker locker(entertainer);
 
-	sendEntertainingUpdate(entertainer, performanceIndex);
+	sendEntertainingUpdate(entertainer, performanceIndex, true);
 
 	entertainer->setListenToID(entertainer->getObjectID(), true);
 
@@ -530,8 +530,6 @@ void EntertainingSessionImplementation::startEntertaining() {
 	ManagedReference<CreatureObject*> entertainer = this->entertainer.get();
 
 	Locker locker(entertainer);
-
-	entertainer->setPosture(CreaturePosture::SKILLANIMATING);
 
 	startTickTask();
 
@@ -558,10 +556,11 @@ void EntertainingSessionImplementation::stopDancing() {
 
 	performanceIndex = 0;
 
-	sendEntertainingUpdate(entertainer, 0);
+	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
+	entertainer->setPosture(CreaturePosture::UPRIGHT, true, true);
 
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
-	
+
 	while (patronDataMap.size() > 0) {
 		ManagedReference<CreatureObject*> patron = patronDataMap.elementAt(0).getKey();
 
@@ -578,11 +577,10 @@ void EntertainingSessionImplementation::stopDancing() {
 	if (tickTask != nullptr && tickTask->isScheduled())
 		tickTask->cancel();
 
-	updateEntertainerMissionStatus(false, MissionTypes::DANCER);
-
 	entertainer->notifyObservers(ObserverEventType::STOPENTERTAIN, entertainer);
 
-	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
+	updateEntertainerMissionStatus(false, MissionTypes::DANCER);
+	sendEntertainingUpdate(entertainer, 0, false);
 
 	if (!isDancing() && !isPlayingMusic()) {
 		ManagedReference<PlayerObject*> entPlayer = entertainer->getPlayerObject();
@@ -814,7 +812,7 @@ void EntertainingSessionImplementation::sendEntertainmentUpdate(CreatureObject* 
 	creature->setMoodString(moodString, true);
 }
 
-void EntertainingSessionImplementation::sendEntertainingUpdate(CreatureObject* creature, int performanceType) {
+void EntertainingSessionImplementation::sendEntertainingUpdate(CreatureObject* creature, int performanceType, bool startPerformance) {
 	performanceIndex = performanceType;
 	String performanceAnim = "";
 
@@ -831,21 +829,11 @@ void EntertainingSessionImplementation::sendEntertainingUpdate(CreatureObject* c
 			performanceAnim = performanceManager->getInstrumentAnimation(performance->getInstrumentAudioId());
 		else
 			performanceAnim = performanceManager->getDanceAnimation(performance->getPerformanceIndex());
-	} else {
-		creature->setPosture(CreaturePosture::UPRIGHT);
 	}
 
-	creature->setPerformanceAnimation(performanceAnim, false);
-	creature->setPerformanceStartTime(0, false);
-	creature->setPerformanceType(performanceType, false);
-
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(creature);
-	dcreo6->updatePerformanceAnimation(performanceAnim);
-	dcreo6->updatePerformanceStartTime(0);
-	dcreo6->updatePerformanceType(performanceType);
-	dcreo6->close();
-
-	creature->broadcastMessage(dcreo6, true);
+	creature->setPerformanceAnimation(performanceAnim, startPerformance);
+	creature->setPerformanceStartTime(0, startPerformance);
+	creature->setPerformanceType(performanceType, startPerformance);
 }
 
 void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* creature, int performanceType) {
