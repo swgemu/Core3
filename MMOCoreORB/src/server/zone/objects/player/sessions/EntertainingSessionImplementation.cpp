@@ -833,7 +833,7 @@ void EntertainingSessionImplementation::sendEntertainingUpdate(CreatureObject* c
 
 	creature->setPerformanceAnimation(performanceAnim, startPerformance);
 	creature->setPerformanceStartTime(0, startPerformance);
-	creature->setPerformanceType(performanceType, startPerformance);
+	creature->setPerformanceType(performanceType, true);
 }
 
 void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* creature, int performanceType) {
