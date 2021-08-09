@@ -42,7 +42,7 @@
 
 
 object_tangible_wearables_armor_stormtrooper_armor_stormtrooper_utility_belt = object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_belt:new {
-	templateType = CLOTHINGOBJECT,
+	templateType = ARMOROBJECT,
 	faction = "Imperial",
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
