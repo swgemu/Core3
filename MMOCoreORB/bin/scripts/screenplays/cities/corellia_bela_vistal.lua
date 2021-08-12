@@ -1,19 +1,116 @@
-BelaVistalScreenPlay = ScreenPlay:new {
+CorelliaBelaVistalScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "BelaVistalScreenPlay"
+	screenplayName = "CorelliaBelaVistalScreenPlay",
+
+	planet = "corellia",
+
+	gcwMobs = {
+		{"dark_trooper", 6749.3, 315, -5684, 231.007, 0, "", true},
+		{"dark_trooper", 6718.1, 328.537, -5869.6, 186.005, 0, "", true},
+		{"imperial_noncom", 6663.8, 330, -5913.3, 134.004, 0, "", true},
+		{"scout_trooper", 6832.36, 314.758, -5811.93, 312.353, 0, ""},
+		{"storm_commando", 6752.1, 315, -5823.5, 273.008, 0, ""},
+		{"storm_commando", 6648.54, 330, -5939.32, 280.874, 0, ""},
+		{"stormtrooper", 6852.9, 315, -5826.9, 140.004, 0, ""},
+		{"stormtrooper", 6837.4, 315, -5774, 260.008, 0, ""},
+		{"stormtrooper", 6819.9, 315, -5720.1, 220.006, 0, "", true},
+		{"stormtrooper", 6748.9, 315, -5665.2, 279.008, 0, "", true},
+		{"stormtrooper", 6855, 315, -5609.3, 280.008, 0, "", true},
+		{"stormtrooper", 6685.7, 330, -5943.3, 222.007, 0, "", true},
+		{"stormtrooper", 6708, 328.7, -5869.7, 166.005, 0, ""},
+		{"stormtrooper_rifleman", 6845.3, 315, -5826.8, 130.004, 0, "", true},
+		{"stormtrooper_bombardier", 6646.02, 330, -5931.59, 357.677, 0, "", true},
+		{"stormtrooper_bombardier", 6644.26, 330, -5937.08, 5.98245, 0, ""},
+		{"stormtrooper_bombardier", 6649.56, 330, -5935.6, 128.564, 0, ""},
+		{"stormtrooper_captain", 6854.5, 315, -5696.6, 87, 0, "npc_imperial", true},
+		{"stormtrooper_squad_leader", 6650.38, 330, -5938.43, 280.869, 0, "npc_imperial"},
+		{"specialist_noncom", 6830.18, 314.823, -5816.91, 187.167, 0, "npc_imperial", true},
+		{"imperial_army_captain", 6820.49, 315, -5743.53, 353.468, 0, "npc_imperial"},
+		{"imperial_army_captain", 6832.21, 315, -5811.19, 189.637, 0, "npc_imperial"},
+		{"imperial_sergeant", 6712.78, 315, -5810.38, 112.467, 0, "npc_imperial", true},
+		{"imperial_sergeant", 6795.21, 315, -5702.92, 63.9209, 0, "npc_imperial", true},
+		{"imperial_sergeant", 6823.92, 315, -5597.88, 121.846, 0, "npc_imperial", true},
+		{"imperial_sergeant_major", 6908.17, 330, -5608.54, 27.4568, 0, "npc_imperial", true},
+		{"imperial_staff_sergeant", 6909.29, 330, -5606.48, 204.967, 0, "npc_imperial"},
+		{"stormtrooper", 6727.1, 315, -5809.9, 165, 0, "npc_imperial", true},
+		{"stormtrooper", 6707.89, 315, -5814.25, 131.647, 0, "npc_imperial"},
+		{"stormtrooper", 6794.42, 315, -5696.6, 90.5594, 0, "npc_imperial"},
+		{"stormtrooper", 6826.7, 315, -5820.68, 309.206, 0, "npc_imperial"},
+		{"stormtrooper", 6825.35, 315, -5620.37, 277.216, 0, "npc_imperial", true},
+		{"stormtrooper", 6842.92, 315, -5604.11, 56.0358, 0, "npc_imperial"},
+		{"stormtrooper", 6852, 315, -5831.51, 128.695, 0, "npc_imperial"},
+		{"stormtrooper", 6837.95, 315, -5806.84, 302.784, 0, "npc_imperial"},
+	},
+
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "explorer", "noble_patrol"},
+
+	patrolMobiles = {
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
+
+		--Droids
+		{"r4_1", "r4", 6715, 330, -5903, 0, 0, "", false},
+		{"r2_1", "r2", 6859, 315, -5706, 0, 0, "", false},
+		{"cll8_1", "cll8_binary_load_lifter", 6826, 315, -5778, 0, 0, "", false},
+
+		--NPCs
+		{"npc_1", "patrolNpc", 6846, 315, -5588, 54, 0, "", false},
+		{"npc_2", "patrolNpc", 6829, 315, -5626, 119, 0, "", false},
+		{"npc_3", "patrolNpc", 6755, 314, -5625, 139, 0, "", false},
+		{"npc_4", "patrolNpc", 6740, 315, -5674, 168, 0, "", false},
+		{"npc_5", "patrolNpc", 6761, 315, -5695, 3, 0, "", false},
+		{"npc_6", "patrolNpc", 6829, 315, -5745, 171, 0, "", false},
+		{"npc_7", "patrolNpc", 6808, 315, -5779, 282, 0, "", false},
+		{"npc_8", "patrolNpc", 6829, 315, -5813, 319, 0, "", false},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+
+		r4_1 = {{6715, 330, -5903, 0, false}, {6693, 330, -5920, 0, false}, {6690, 330, -5906, 0, false}, {6647, 330, -5905, 0, false}},
+		r2_1 = {{6858, 315, -5688, 0, false}, {6859, 315, -5700, 0, true}, {6816, 315, -5699, 0, false}, {6861, 315, -5700, 0, false}, {6859, 315, -5740, 0, true}},
+		cll8_1 = {{6826, 315, -5807, 0, false}, {6825, 315, -5725, 0, false}, {6769, 315, -5725, 0, false}, {6770, 315, -5736, 0, false}, {6817, 315, -5735, 0, false}},
+
+		npc_1 = {{6846, 315, -5588, 0, true}, {6847, 315, -5617, 0, true}, {6808, 315, -5616, 0, false}, {6830, 315, -5599, 0, true}, {6833.8, 315, -5580.4, 0, true}},
+		npc_2 = {{6829, 315, -5745, 0, false}, {6818, 314, -5620, 0, false}, {6779, 314, -5620, 0, true}, {6818, 314, -5620, 0, true}},
+		npc_3 = {{6755, 314, -5625, 0, false}, {6731, 315, -5588, 0, true}, {6702, 315, -5583, 0, true}, {6699, 315, -5567, 0, true}, {6723, 315, -5567, 0, false}, {6731, 315, 0, true}},
+		npc_4 = {{6740, 315, -5674, 0, true}, {6742, 315, -5697, 0, true}, {6714, 315, -5692, 0, false}, {6742, 315, -5697, 0, true}},
+		npc_5 = {{6761, 315, -5695, 0, true}, {6761, 315, -5731, 0, true}, {6795, 315, -5732, 0, true}, {6761, 315, -5731, 0, true}},
+		npc_6 = {{6829, 315, -5745, 0, true}, {6828, 315, -5799, 0, true}},
+		npc_7 = {{6808, 315, -5779, 0, true}, {6764, 315, -5779, 0, true}, {6778, 315, -5774, 0, true}, {6792, 315, -5783, 0, true}},
+		npc_8 = {{6829, 315, -5813, 0, true}, {6794, 315, -5805, 0, true}, {6736, 315, -5816, 0, true}, {6778, 315, -5813, 0, true}},
+	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old"},
+	stationaryNpcs = {"artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer", "gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scientist", "slicer"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, 6823.1, 315, -5610.5, 225, 0, "conversation"},
+		{1, 6821.55, 314.999, -5611.9, 50, 0, "conversation"},
+		{1, 6834.25, 315, -5577.61, 150, 0, ""},
+		{1, 6896.18, 330, -5577.91, 290, 0, ""},
+		{1, 6867.23, 315, -5758.29, 338, 0, ""},
+		{1, 6810.15, 315, -5699.05, 137, 0, ""},
+		{1, 6798.04, 315, -5731.94, 270, 0, ""},
+		{1, 6724.41, 330, -5909.35, 213, 0, ""},
+	},
+
 }
 
-registerScreenPlay("BelaVistalScreenPlay", true)
+registerScreenPlay("CorelliaBelaVistalScreenPlay", true)
 
-function BelaVistalScreenPlay:start()
-	if (isZoneEnabled("corellia")) then
+function CorelliaBelaVistalScreenPlay:start()
+	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
 		self:spawnSceneObjects()
+		self:spawnStationaryMobiles()
+		self:spawnPatrolMobiles()
+		self:spawnGcwMobiles()
 	end
 end
 
-function BelaVistalScreenPlay:spawnSceneObjects()
+function CorelliaBelaVistalScreenPlay:spawnSceneObjects()
 
 	--Guild Hall regular
 	spawnSceneObject("corellia", "object/tangible/loot/simple_kit/paint_cartridge.iff", 5.3, 2.3, 10.2, 2365923, math.rad(-19) )
@@ -21,7 +118,7 @@ function BelaVistalScreenPlay:spawnSceneObjects()
 	spawnSceneObject("corellia", "object/static/structure/general/droid_r4_powerdown.iff", 6.0, 1.0, 20.2, 2365805, math.rad(143) )
 end
 
-function BelaVistalScreenPlay:spawnMobiles()
+function CorelliaBelaVistalScreenPlay:spawnMobiles()
 
 	--Cloning Facility
 	local pNpc = spawnMobile("corellia", "surgical_droid_21b",60,3.1,0.1,11.5,0,2365903)
@@ -60,47 +157,12 @@ function BelaVistalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "neutral")
 
 	--Outside
-	spawnMobile("corellia", "cll8_binary_load_lifter", 60, 6826.88, 315, -5778.01, 0.0395659, 0)
-	spawnMobile("corellia", "commoner", 60, 6832.06, 315, -5606.82, 252.9, 0)
-	spawnMobile("corellia", "commoner", 60, 6847.34, 315, -5617.89, 54.6527, 0)
-	spawnMobile("corellia", "commoner", 60, 6829.04, 315, -5626.01, 119.354, 0)
-	spawnMobile("corellia", "commoner", 60, 6821.55, 314.999, -5611.9, 303.021, 0)
-	spawnMobile("corellia", "commoner", 60, 6834.25, 315, -5577.61, 150.226, 0)
-	spawnMobile("corellia", "commoner", 60, 6846.25, 315, -5588.75, 54.8409, 0)
-	spawnMobile("corellia", "commoner", 60, 6896.18, 330, -5577.91, 290.907, 0)
-	spawnMobile("corellia", "commoner", 60, 6867.23, 315, -5758.29, 338.874, 0)
-	spawnMobile("corellia", "commoner", 60, 6829.48, 315, -5813.46, 319.91, 0)
-	spawnMobile("corellia", "commoner", 60, 6808.93, 315, -5779.16, 282.269, 0)
-	spawnMobile("corellia", "commoner", 60, 6829.32, 315, -5745.5, 171.619, 0)
-	spawnMobile("corellia", "commoner", 60, 6810.15, 315, -5699.05, 137.601, 0)
-	spawnMobile("corellia", "commoner", 60, 6798.04, 315, -5731.94, 209.929, 0)
-	spawnMobile("corellia", "commoner", 60, 6760.75, 315, -5733.05, 101.495, 0)
-	spawnMobile("corellia", "commoner", 60, 6761.43, 315, -5695.98, 3.51103, 0)
-	spawnMobile("corellia", "commoner", 60, 6755.2, 314.926, -5625.98, 139.418, 0)
-	spawnMobile("corellia", "commoner", 60, 6740.98, 315, -5674.9, 168.837, 0)
+
 	spawnMobile("corellia", "criminal", 300, 6871.34, 315, -5753.42, 355.947, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6847.6, 315, -5838.6, -1, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6852.5, 315, -5838.8, -24, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6855.7, 315, -5837.1, -34, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6860.3, 315, -5833.9, -57, 0)
-	spawnMobile("corellia", "dark_trooper", 400, 6749.3, 315, -5684, 231.007, 0)
-	spawnMobile("corellia", "dark_trooper", 400, 6718.1, 328.537, -5869.6, 186.005, 0)
-	spawnMobile("corellia", "imperial_noncom", 400, 6663.8, 330, -5913.3, 134.004, 0)
-	spawnMobile("corellia", "scout_trooper", 400, 6832.36, 314.758, -5811.93, 312.353, 0)
-	spawnMobile("corellia", "storm_commando", 400, 6752.1, 315, -5823.5, 273.008, 0)
-	spawnMobile("corellia", "storm_commando", 400, 6648.54, 330, -5939.32, 280.874, 0)
-	spawnMobile("corellia", "stormtrooper", 400, 6852.9, 315, -5826.9, 140.004, 0)
-	spawnMobile("corellia", "stormtrooper", 400, 6837.4, 315, -5774, 260.008, 0)
-	spawnMobile("corellia", "stormtrooper", 400, 6819.9, 315, -5720.1, 220.006, 0)
-	spawnMobile("corellia", "stormtrooper", 400, 6748.9, 315, -5665.2, 279.008, 0)
-	spawnMobile("corellia", "stormtrooper", 400, 6855, 315, -5609.3, 280.008, 0)
-	spawnMobile("corellia", "stormtrooper", 400, 6685.7, 330, -5943.3, 222.007, 0)
-	spawnMobile("corellia", "stormtrooper", 400, 6708, 328.7, -5869.7, 166.005, 0)
-	spawnMobile("corellia", "stormtrooper_rifleman", 400, 6845.3, 315, -5826.8, 130.004, 0)
-	spawnMobile("corellia", "noble",60, 6724.41, 330, -5909.35, 213.723, 0)
-	spawnMobile("corellia", "stormtrooper_bombardier", 360, 6646.02, 330, -5931.59, 357.677, 0)
-	spawnMobile("corellia", "stormtrooper_bombardier", 360, 6644.26, 330, -5937.08, 5.98245, 0)
-	spawnMobile("corellia", "stormtrooper_bombardier", 360, 6649.56, 330, -5935.6, 128.564, 0)
 	spawnMobile("corellia", "imperial_recruiter", 60,6718.8,315.0,-5804.6,-174,0)
 
 	--Misc
@@ -138,56 +200,16 @@ function BelaVistalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("corellia", "bounty_hunter",60,21.6023,-0.894996,-18.5913,360.011,3375356)
 	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile("corellia", "stormtrooper_captain",400,6854.5,315,-5696.6,87,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "stormtrooper_squad_leader",400,6650.38,330,-5938.43,280.869,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "specialist_noncom",400,6830.18,314.823,-5816.91,187.167,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "imperial_army_captain",400,6820.49,315,-5743.53,353.468,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "imperial_army_captain",400,6832.21,315,-5811.19,189.637,0)
-	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("corellia", "comm_operator",60,-42.3991,0.105009,-24.3411,360.011,3375367)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("corellia", "commoner",60,-42.3991,0.105009,-23.2411,180.016,3375367)
 	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile("corellia", "imperial_sergeant",400,6712.78,315,-5810.38,112.467,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "imperial_sergeant",400,6795.21,315,-5702.92,63.9209,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "imperial_sergeant",400,6823.92,315,-5597.88,121.846,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "imperial_sergeant_major",400,6908.17,330,-5608.54,27.4568,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "imperial_staff_sergeant",400,6909.29,330,-5606.48,204.967,0)
-	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("corellia", "info_broker",60,21.6023,-0.894996,-17.4913,180.012,3375356)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("corellia", "medic",60,-43.4991,0.105009,-23.2411,135.007,3375367)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("corellia", "mercenary",60,-5.46842,-0.894998,20.8012,0,3375361)
 	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile("corellia", "stormtrooper",400,6727.1,315,-5809.9,165,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "stormtrooper",400,6707.89,315,-5814.25,131.647,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "stormtrooper",400,6794.42,315,-5696.6,90.5594,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "stormtrooper",400,6826.7,315,-5820.68,309.206,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "stormtrooper",400,6825.35,315,-5620.37,277.216,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "stormtrooper",400,6842.92,315,-5604.11,56.0358,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "stormtrooper",400,6852,315,-5831.51,128.695,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "stormtrooper",400,6837.95,315,-5806.84,302.784,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("corellia", "r4",60,6715.38,330,-5903.81,0.0395659,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile("corellia", "r2",60,6857.06,315,-5702.8,0,0)
-	self:setMoodString(pNpc, "calm")
 	spawnMobile("corellia", "junk_malik", 0, 6969.06, 330, -5588.66, 105, 0)
 	pNpc = spawnMobile("corellia", "junk_dealer", 0, 6840.98, 315, -5630.49, -47, 0)
 	if pNpc ~= nil then

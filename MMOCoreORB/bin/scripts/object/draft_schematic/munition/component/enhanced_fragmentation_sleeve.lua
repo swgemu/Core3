@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_munition_component_enhanced_fragmentation_sleeve = object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_enhanced_fragmentation_sleeve, "object/draft_schematic/munition/component/enhanced_fragmentation_sleeve.iff")

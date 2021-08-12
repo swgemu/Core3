@@ -51,7 +51,8 @@ object_draft_schematic_furniture_furniture_chair_loveseat_modern = object_draft_
 	complexity = 20,
 	size = 3,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 700,
 

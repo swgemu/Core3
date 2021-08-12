@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_military_starship_rebel_xwing_b = object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_b:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_starship_rebel_xwing_b, "object/draft_schematic/vehicle/military/starship_rebel_xwing_b.iff")

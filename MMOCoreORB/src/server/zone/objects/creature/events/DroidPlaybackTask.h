@@ -33,15 +33,15 @@ public:
 			return;
 
 		DroidObject* droid = module->getDroidObject();
+
 		if (droid == nullptr)
 			return;
 
 		Locker locker(droid);
 
-		if( droid->getLocalZone() == nullptr ){  // Not outdoors
-
+		if (droid->getLocalZone() == nullptr) {  // Not outdoors
 			ManagedReference<SceneObject*> parent = droid->getParent().get();
-			if( parent == nullptr || !parent->isCellObject() ){ // Not indoors either
+			if (parent == nullptr || !parent->isCellObject()) { // Not indoors either
 				module->deactivate();
 				droid->removePendingTask("droid_playback");
 				return;
@@ -49,60 +49,29 @@ public:
 		}
 
 		// Check droid states
-		if( droid->isDead() || droid->isIncapacitated() ){
+		if (droid->isDead() || droid->isIncapacitated()) {
 			module->deactivate();
 			droid->removePendingTask("droid_playback");
 			return;
 		}
 
-
 		// Droid must have power
-		if( !droid->hasPower() ){
+		if (!droid->hasPower()) {
 			module->deactivate();
 			droid->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
 			droid->removePendingTask("droid_playback");
 			return;
 		}
 
+		int performanceIndex = module->getPerformanceIndex();
 
-		String performance = module->getCurrentTrack();
-		int instrument = module->getCurrentInstrument();
-		if (instrument == -1) {
+		if (performanceIndex == 0) {
 			module->deactivate();
 			return;
 		}
-		if (performance.length() == 0) {
-			module->deactivate();
-			return;
-		}
-		SkillManager* skillManager = droid->getZoneServer()->getSkillManager();
-		if (skillManager == nullptr)
-			return;
 
-		PerformanceManager* performanceManager = skillManager->getPerformanceManager();
-		if (performanceManager == nullptr)
-			return;
-
-		String instrumentAnimation;
-		int instrid = performanceManager->getInstrumentId(performance);
-		instrid += performanceManager->getInstrumentAnimation(instrument, instrumentAnimation);
-		if (!playing) {
-			droid->setPosture(CreaturePosture::SKILLANIMATING);
-			// we fire off the performance piece and let it run
-			droid->setPerformanceAnimation(instrumentAnimation, false);
-			droid->setPerformanceCounter(0, false);
-			droid->setInstrumentID(instrid, false);
-			// broadcast the song
-			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(droid);
-			dcreo6->updatePerformanceAnimation(instrumentAnimation);
-			dcreo6->updatePerformanceCounter(0);
-			dcreo6->updateInstrumentID(instrid);
-			dcreo6->close();
-			droid->broadcastMessage(dcreo6, true);
-			playing = true;
-		}
-		// recheck every 30 seconds for power ont he droid
-		droid->addPendingTask("droid_playback",this,30000);
+		// recheck every 10 seconds for power on the droid
+		droid->addPendingTask("droid_playback", this, 10000);
 	}
 };
 

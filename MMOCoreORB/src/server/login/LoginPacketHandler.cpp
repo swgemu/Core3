@@ -66,7 +66,7 @@ void LoginPacketHandler::handleLoginClientID(LoginClient* client, Message* pack)
 
 void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Message* pack) {
 	if (!client->hasAccount()) {
-		Message* msg = new DeleteCharacterReplyMessage(1); //FAIL
+		auto* msg = new DeleteCharacterReplyMessage(1); //FAIL
 		client->sendMessage(msg);
 		return;
 	}
@@ -134,7 +134,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 		}
 	}
 
-	Message* msg = new DeleteCharacterReplyMessage(dbDelete);
+	auto* msg = new DeleteCharacterReplyMessage(dbDelete);
 	client->sendMessage(msg);
 }
 

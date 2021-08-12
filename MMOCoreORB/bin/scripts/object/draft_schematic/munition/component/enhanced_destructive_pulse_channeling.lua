@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_munition_component_enhanced_destructive_pulse_channeling = object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_channeling:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_enhanced_destructive_pulse_channeling, "object/draft_schematic/munition/component/enhanced_destructive_pulse_channeling.iff")

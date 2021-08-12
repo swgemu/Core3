@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_armor_component_deflector_shield_ion_feed_unit = object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit:new {
-
+    factoryCrateType = "object/factory/factory_crate_armor.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_deflector_shield_ion_feed_unit, "object/draft_schematic/armor/component/deflector_shield_ion_feed_unit.iff")

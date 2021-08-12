@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_chemistry_antidote_sm_s1 = object_draft_schematic_chemistry_shared_antidote_sm_s1:new {
-
+    factoryCrateType = "object/factory/factory_crate_chemicals.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_antidote_sm_s1, "object/draft_schematic/chemistry/antidote_sm_s1.iff")

@@ -26,15 +26,16 @@ void RingObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, O
 	if (server == nullptr || ghost == nullptr)
 		return;
 
-	if (!wearable->isEquipped() && !wearable->isNoTrade()) {
+	if (!wearable->isNoTrade()) {
 		if (ghost->isMarried()) {
 			menuResponse->addRadialMenuItem(234, 3, "@unity:mnu_divorce"); // Divorce
 		} else {
 			uint64 targetID = player->getTargetID();
 			ManagedReference<CreatureObject*> target = server->getObject(targetID, true).castTo<CreatureObject*>();
 
-			if (target != nullptr && target->isPlayerCreature())
+			if (target != nullptr && target->isPlayerCreature()) {
 				menuResponse->addRadialMenuItem(22, 3, "@unity:mnu_propose"); // Propose Unity
+			}
 		}
 	}
 
@@ -52,8 +53,9 @@ int RingObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cr
 		if (target != nullptr && target->isPlayerCreature()) {
 			PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
 
-			if (playerManager != nullptr)
+			if (playerManager != nullptr) {
 				playerManager->proposeUnity(player, cast<CreatureObject*>(target.get()), sceneObject);
+			}
 
 			return 0;
 		} else {

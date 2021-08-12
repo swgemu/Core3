@@ -51,7 +51,8 @@ object_draft_schematic_furniture_furniture_candle_free_s01_on = object_draft_sch
 	complexity = 20,
 	size = 1,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 110,
 

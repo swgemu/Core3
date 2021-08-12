@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dish_braised_canron = object_draft_schematic_food_shared_dish_braised_canron:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_braised_canron, "object/draft_schematic/food/dish_braised_canron.iff")

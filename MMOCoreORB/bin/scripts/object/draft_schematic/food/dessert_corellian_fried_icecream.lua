@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dessert_corellian_fried_icecream = object_draft_schematic_food_shared_dessert_corellian_fried_icecream:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_corellian_fried_icecream, "object/draft_schematic/food/dessert_corellian_fried_icecream.iff")

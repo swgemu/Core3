@@ -39,6 +39,19 @@ bool StructurePermissionList::toBinaryStream(ObjectOutputStream* stream) {
 	return true;
 }
 
+StructurePermissionList& StructurePermissionList::operator=(const StructurePermissionList& list) {
+	if (this == &list) {
+		return *this;
+	}
+
+	permissionLists = list.permissionLists;
+	idPermissionLists = list.idPermissionLists;
+	ownerName = list.ownerName;
+	ownerID = list.ownerID;
+
+	return *this;
+}
+
 void to_json(nlohmann::json& j, const StructurePermissionList& p) {
 	j["permissionLists"] = p.permissionLists;
 	j["idPermissionLists"] = p.idPermissionLists;

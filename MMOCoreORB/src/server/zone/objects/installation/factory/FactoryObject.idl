@@ -116,7 +116,7 @@ class FactoryObject extends InstallationObject {
 	private native FactoryCrate locateCrateInOutputHopper(TangibleObject prototype);
 
 	@preLocked
-	private native FactoryCrate createNewFactoryCrate(TangibleObject prototype, int maxSize);
+	private native FactoryCrate createNewFactoryCrate(TangibleObject prototype, int maxSize, string crateType);
 
 	@preLocked
 	private native TangibleObject createNewUncratedItem(TangibleObject prototype);

@@ -12,17 +12,14 @@
 
 class CraftingStationTemplate : public SharedTangibleObjectTemplate {
 private:
-
 	int stationType;
 	int complexityLevel;
 
 public:
 	CraftingStationTemplate() : stationType(0), complexityLevel(0) {
-
 	}
 
 	~CraftingStationTemplate() {
-
 	}
 
 	void readObject(LuaObject* templateData) override {

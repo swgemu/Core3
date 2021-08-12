@@ -602,104 +602,138 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				},
 				--"Force Sensitive",
 				--{
+				--	"Combat Prowess",
+				--	{
+				--		"Novice", "force_sensitive_combat_prowess_novice",
+				--		"Ranged Accuracy",
+				--		{
+				--			"Ranged Accuracy I", "force_sensitive_combat_prowess_ranged_accuracy_01",
+				--			"Ranged Accuracy II", "force_sensitive_combat_prowess_ranged_accuracy_02",
+				--			"Ranged Accuracy III", "force_sensitive_combat_prowess_ranged_accuracy_03",
+				--			"Ranged Accuracy IV", "force_sensitive_combat_prowess_ranged_accuracy_04"
+				--		},
+				--		"Ranged Speed",
+				--		{
+				--			"Ranged Speed I", "force_sensitive_combat_prowess_ranged_speed_01",
+				--			"Ranged Speed II", "force_sensitive_combat_prowess_ranged_speed_02",
+				--			"Ranged Speed III", "force_sensitive_combat_prowess_ranged_speed_03",
+				--			"Ranged Speed IV", "force_sensitive_combat_prowess_ranged_speed_04"
+				--		},
+				--		"Melee Accuracy",
+				--		{
+				--			"Melee Accuracy I", "force_sensitive_combat_prowess_melee_accuracy_01",
+				--			"Melee Accuracy II", "force_sensitive_combat_prowess_melee_accuracy_02",
+				--			"Melee Accuracy III", "force_sensitive_combat_prowess_melee_accuracy_03",
+				--			"Melee Accuracy IV", "force_sensitive_combat_prowess_melee_accuracy_04"
+				--		},
+				--		"Melee Speed",
+				--		{
+				--			"Melee Speed I", "force_sensitive_combat_prowess_melee_speed_01",
+				--			"Melee Speed II", "force_sensitive_combat_prowess_melee_speed_02",
+				--			"Melee Speed III", "force_sensitive_combat_prowess_melee_speed_03",
+				--			"Melee Speed IV", "force_sensitive_combat_prowess_melee_speed_04"
+				--		},
+				--		"Master", "force_sensitive_combat_prowess_master"
+				--	},
 				--	"Crafting Mastery",
-				--{
-				--	"Novice", "force_sensitive_crafting_mastery_novice",
-				--	"Experimentation",
 				--	{
-				--		"Experimentation I", "force_sensitive_crafting_mastery_experimentation_01",
-				--		"Experimentation II", "force_sensitive_crafting_mastery_experimentation_02",
-				--		"Experimentation III", "force_sensitive_crafting_mastery_experimentation_03",
-				--		"Experimentation IV", "force_sensitive_crafting_mastery_experimentation_04"
+				--		"Novice", "force_sensitive_crafting_mastery_novice",
+				--		"Experimentation",
+				--		{
+				--			"Experimentation I", "force_sensitive_crafting_mastery_experimentation_01",
+				--			"Experimentation II", "force_sensitive_crafting_mastery_experimentation_02",
+				--			"Experimentation III", "force_sensitive_crafting_mastery_experimentation_03",
+				--			"Experimentation IV", "force_sensitive_crafting_mastery_experimentation_04"
+				--		},
+				--		"Assembly",
+				--		{
+				--			"Assembly I", "force_sensitive_crafting_mastery_assembly_01",
+				--			"Assembly II", "force_sensitive_crafting_mastery_assembly_02",
+				--			"Assembly III", "force_sensitive_crafting_mastery_assembly_03",
+				--			"Assembly IV", "force_sensitive_crafting_mastery_assembly_04"
+				--		},
+				--		"Repair",
+				--		{
+				--			"Repair I", "force_sensitive_crafting_mastery_repair_01",
+				--			"Repair II", "force_sensitive_crafting_mastery_repair_02",
+				--			"Repair III", "force_sensitive_crafting_mastery_repair_03",
+				--			"Repair IV", "force_sensitive_crafting_mastery_repair_04"
+				--		},
+				--		"Technique",
+				--		{
+				--			"Technique I", "force_sensitive_crafting_mastery_technique_01",
+				--			"Technique II", "force_sensitive_crafting_mastery_technique_02",
+				--			"Technique III", "force_sensitive_crafting_mastery_technique_03",
+				--			"Technique IV", "force_sensitive_crafting_mastery_technique_04"
+				--		},
+				--		"Master", "force_sensitive_crafting_mastery_master"
 				--	},
-				--	"Assembly",
+				--	"Enhanced Reflexes",
 				--	{
-				--		"Assembly I", "force_sensitive_crafting_mastery_assembly_01",
-				--		"Assembly II", "force_sensitive_crafting_mastery_assembly_02",
-				--		"Assembly III", "force_sensitive_crafting_mastery_assembly_03",
-				--		"Assembly IV", "force_sensitive_crafting_mastery_assembly_04"
+				--		"Novice", "force_sensitive_enhanced_reflexes_novice",
+				--		"Ranged Defense",
+				--		{
+				--			"Ranged Defense I", "force_sensitive_enhanced_reflexes_ranged_defense_01",
+				--			"Ranged Defense II", "force_sensitive_enhanced_reflexes_ranged_defense_02",
+				--			"Ranged Defense III", "force_sensitive_enhanced_reflexes_ranged_defense_03",
+				--			"Ranged Defense IV", "force_sensitive_enhanced_reflexes_ranged_defense_04"
+				--		},
+				--		"Melee Defense",
+				--		{
+				--			"Melee Defense I", "force_sensitive_enhanced_reflexes_melee_defense_01",
+				--			"Melee Defense II", "force_sensitive_enhanced_reflexes_melee_defense_02",
+				--			"Melee Defense III", "force_sensitive_enhanced_reflexes_melee_defense_03",
+				--			"Melee Defense IV", "force_sensitive_enhanced_reflexes_melee_defense_04"
+				--		},
+				--		"Vehicle Control",
+				--		{
+				--			"Vehicle Control I", "force_sensitive_enhanced_reflexes_vehicle_control_01",
+				--			"Vehicle Control II", "force_sensitive_enhanced_reflexes_vehicle_control_02",
+				--			"Vehicle Control III", "force_sensitive_enhanced_reflexes_vehicle_control_03",
+				--			"Vehicle Control IV", "force_sensitive_enhanced_reflexes_vehicle_control_04"
+				--		},
+				--		"Survival",
+				--		{
+				--			"Survival I", "force_sensitive_enhanced_reflexes_survival_01",
+				--			"Survival II", "force_sensitive_enhanced_reflexes_survival_02",
+				--			"Survival III", "force_sensitive_enhanced_reflexes_survival_03",
+				--			"Survival IV", "force_sensitive_enhanced_reflexes_survival_04"
+				--		},
+				--		"Master", "force_sensitive_enhanced_reflexes_master"
 				--	},
-				--	"Repair",
+				--	"Heightened Senses",
 				--	{
-				--		"Repair I", "force_sensitive_crafting_mastery_repair_01",
-				--		"Repair II", "force_sensitive_crafting_mastery_repair_02",
-				--		"Repair III", "force_sensitive_crafting_mastery_repair_03",
-				--		"Repair IV", "force_sensitive_crafting_mastery_repair_04"
+				--		"Novice", "force_sensitive_heightened_senses_novice",
+				--		"Healing",
+				--		{
+				--			"Healing I", "force_sensitive_heightened_senses_healing_01",
+				--			"Healing II", "force_sensitive_heightened_senses_healing_02",
+				--			"Healing III", "force_sensitive_heightened_senses_healing_03",
+				--			"Healing IV", "force_sensitive_heightened_senses_healing_04"
+				--		},
+				--		"Surveying",
+				--		{
+				--			"Surveying I", "force_sensitive_heightened_senses_surveying_01",
+				--			"Surveying II", "force_sensitive_heightened_senses_surveying_02",
+				--			"Surveying III", "force_sensitive_heightened_senses_surveying_03",
+				--			"Surveying IV", "force_sensitive_heightened_senses_surveying_04"
+				--		},
+				--		"Persuasion",
+				--		{
+				--			"Persuasion I", "force_sensitive_heightened_senses_persuasion_01",
+				--			"Persuasion II", "force_sensitive_heightened_senses_persuasion_02",
+				--			"Persuasion III", "force_sensitive_heightened_senses_persuasion_03",
+				--			"Persuasion IV", "force_sensitive_heightened_senses_persuasion_04"
+				--		},
+				--		"Luck",
+				--		{
+				--			"Luck I", "force_sensitive_heightened_senses_luck_01",
+				--			"Luck II", "force_sensitive_heightened_senses_luck_02",
+				--			"Luck III", "force_sensitive_heightened_senses_luck_03",
+				--			"Luck IV", "force_sensitive_heightened_senses_luck_04"
+				--		},
+				--		"Master", "force_sensitive_heightened_senses_master"
 				--	},
-				--	"Technique",
-				--	{
-				--		"Technique I", "force_sensitive_crafting_mastery_technique_01",
-				--		"Technique II", "force_sensitive_crafting_mastery_technique_02",
-				--		"Technique III", "force_sensitive_crafting_mastery_technique_03",
-				--		"Technique IV", "force_sensitive_crafting_mastery_technique_04"
-				--	},
-				--	"Master", "force_sensitive_crafting_mastery_master"
-				--},
-				--"Enhanced Reflexes",
-				--{
-				--	"Novice", "force_sensitive_enhanced_reflexes_novice",
-				--	"Ranged Defense",
-				--	{
-				--		"Ranged Defense I", "force_sensitive_enhanced_reflexes_ranged_defense_01",
-				--		"Ranged Defense II", "force_sensitive_enhanced_reflexes_ranged_defense_02",
-				--		"Ranged Defense III", "force_sensitive_enhanced_reflexes_ranged_defense_03",
-				--		"Ranged Defense IV", "force_sensitive_enhanced_reflexes_ranged_defense_04"
-				--	},
-				--	"Melee Defense",
-				--	{
-				--		"Melee Defense I", "force_sensitive_enhanced_reflexes_melee_defense_01",
-				--		"Melee Defense II", "force_sensitive_enhanced_reflexes_melee_defense_02",
-				--		"Melee Defense III", "force_sensitive_enhanced_reflexes_melee_defense_03",
-				--		"Melee Defense IV", "force_sensitive_enhanced_reflexes_melee_defense_04"
-				--	},
-				--	"Vehicle Control",
-				--	{
-				--		"Vehicle Control I", "force_sensitive_enhanced_reflexes_vehicle_control_01",
-				--		"Vehicle Control II", "force_sensitive_enhanced_reflexes_vehicle_control_02",
-				--		"Vehicle Control III", "force_sensitive_enhanced_reflexes_vehicle_control_03",
-				--		"Vehicle Control Iv", "force_sensitive_enhanced_reflexes_vehicle_control_04"
-				--	},
-				--	"Survival",
-				--	{
-				--		"Survival I", "force_sensitive_enhanced_reflexes_survival_01",
-				--		"Survival II", "force_sensitive_enhanced_reflexes_survival_02",
-				--		"Survival III", "force_sensitive_enhanced_reflexes_survival_03",
-				--		"Survival IV", "force_sensitive_enhanced_reflexes_survival_04"
-				--	},
-				--	"Master", "force_sensitive_enhanced_reflexes_master"
-				--},
-				--"Heightened Senses",
-				--{
-				--	"Novice", "force_sensitive_heightened_senses_novice",
-				--	"Healing",
-				--	{
-				--		"Healing I", "force_sensitive_heightened_senses_healing_01",
-				--		"Healing II", "force_sensitive_heightened_senses_healing_02",
-				--		"Healing III", "force_sensitive_heightened_senses_healing_03",
-				--		"Healing IV", "force_sensitive_heightened_senses_healing_04"
-				--	},
-				--	"Surveying",
-				--	{
-				--		"Surveying I", "force_sensitive_heightened_senses_surveying_01",
-				--		"Surveying II", "force_sensitive_heightened_senses_surveying_02",
-				--		"Surveying III", "force_sensitive_heightened_senses_surveying_03",
-				--		"Surveying IV", "force_sensitive_heightened_senses_surveying_04"
-				--	},
-				--	"Persuasion",
-				--	{
-				--		"Persuasion I", "force_sensitive_heightened_senses_persuasion_01",
-				--		"Persuasion II", "force_sensitive_heightened_senses_persuasion_02",
-				--		"Persuasion III", "force_sensitive_heightened_senses_persuasion_03",
-				--		"Persuasion Iv", "force_sensitive_heightened_senses_persuasion_04"
-				--	},
-				--	"Luck",
-				--	{
-				--		"Luck I", "force_sensitive_heightened_senses_luck_01",
-				--		"Luck II", "force_sensitive_heightened_senses_luck_02",
-				--		"Luck III", "force_sensitive_heightened_senses_luck_03",
-				--		"Luck IV", "force_sensitive_heightened_senses_luck_04"
-				--	},
-				--	"Master", "force_sensitive_heightened_senses_master"
 				--},
 				"Image Designer",
 				{

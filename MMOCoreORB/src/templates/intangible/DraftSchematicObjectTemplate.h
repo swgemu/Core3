@@ -80,6 +80,8 @@ protected:
 
 	int factoryCrateSize;
 
+	String factoryCrateType;
+
 public:
 	enum LabType {
 		RESOURCE_LAB = 0x00,
@@ -207,6 +209,10 @@ public:
 
 	int getFactoryCrateSize() const {
 		return factoryCrateSize;
+	}
+
+	const String& getFactoryCrateType() const {
+		return factoryCrateType;
 	}
 
 };

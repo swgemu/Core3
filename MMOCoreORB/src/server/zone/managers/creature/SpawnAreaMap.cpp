@@ -45,8 +45,6 @@ void SpawnAreaMap::loadMap(Zone* z) {
 	}
 
 	lua->deinit();
-
-	delete lua;
 	lua = nullptr;
 }
 
@@ -219,6 +217,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	} else {
 		if (tier & WORLDSPAWNAREA) {
 			worldSpawnAreas.add(area);
+			area->setWorldSpawnArea(true);
 		}
 
 		area->setZone(zone);

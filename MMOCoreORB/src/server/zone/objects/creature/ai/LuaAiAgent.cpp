@@ -26,6 +26,7 @@ const char LuaAiAgent::className[] = "LuaAiAgent";
 Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "_setObject", &LuaAiAgent::_setObject },
 		{ "_getObject", &LuaSceneObject::_getObject },
+		{ "setAiTemplate", &LuaAiAgent::setAiTemplate }, // TODO: Change with new AI?
 		{ "setAITemplate", &LuaAiAgent::setAITemplate },
 		{ "setFollowObject", &LuaAiAgent::setFollowObject },
 		{ "setOblivious", &LuaAiAgent::setOblivious },
@@ -164,6 +165,17 @@ int LuaAiAgent::_setObject(lua_State* L) {
 #endif
 
 	return 0;
+}
+
+int LuaAiAgent::setAiTemplate(lua_State* L) {
+    String tempName = lua_tostring(L, -1);
+
+	realObject->info() << "WARNING: setAiTemplate ignoring argument [" << tempName << "]"; // TODO: Change with new AI?
+
+	Locker locker(realObject);
+	realObject->setAITemplate();
+
+    return 0;
 }
 
 int LuaAiAgent::setAITemplate(lua_State* L) {
@@ -317,6 +329,8 @@ int LuaAiAgent::setDestination(lua_State* L) {
 }
 
 int LuaAiAgent::completeMove(lua_State* L) {
+	Locker locker(realObject);
+
 	bool retVal = realObject->completeMove();
 
 	lua_pushboolean(L, retVal);

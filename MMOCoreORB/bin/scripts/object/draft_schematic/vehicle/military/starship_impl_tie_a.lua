@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_military_starship_impl_tie_a = object_draft_schematic_vehicle_military_shared_starship_impl_tie_a:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_starship_impl_tie_a, "object/draft_schematic/vehicle/military/starship_impl_tie_a.iff")

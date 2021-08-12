@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_munition_component_ammo_projectile_entanglement = object_draft_schematic_munition_component_shared_ammo_projectile_entanglement:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_ammo_projectile_entanglement, "object/draft_schematic/munition/component/ammo_projectile_entanglement.iff")

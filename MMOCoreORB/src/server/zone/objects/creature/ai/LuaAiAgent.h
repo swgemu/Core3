@@ -31,6 +31,7 @@ namespace ai {
 		~LuaAiAgent();
 
 		int _setObject(lua_State* L);
+		int setAiTemplate(lua_State* L);
 		int setAITemplate(lua_State* L);
 		int setFollowObject(lua_State* L);
 		int setOblivious(lua_State* L);

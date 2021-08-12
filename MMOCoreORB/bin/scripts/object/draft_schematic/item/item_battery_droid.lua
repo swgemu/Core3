@@ -50,7 +50,8 @@ object_draft_schematic_item_item_battery_droid = object_draft_schematic_item_sha
    craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 7, 
    size = 4, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "crafting_general", 
    xp = 30, 
 

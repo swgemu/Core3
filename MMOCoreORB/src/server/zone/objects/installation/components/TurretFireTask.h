@@ -45,6 +45,8 @@ public:
 
 		ManagedReference<CreatureObject*> target = nullptr;
 
+		turret->removeDefenders();
+
 		if (isManual) {
 			target = turretData->getManualTarget();
 
@@ -74,6 +76,11 @@ public:
 		ManagedReference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
 		if (command != nullptr && weapon != nullptr) {
+			Locker clocker(target, turret);
+
+			target->setCombatState();
+			turret->setDefender(target);
+
 			CombatManager::instance()->doCombatAction(turret, weapon, target, command);
 
 			if (isManual) {

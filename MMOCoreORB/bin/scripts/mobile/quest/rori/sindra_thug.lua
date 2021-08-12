@@ -25,28 +25,12 @@ sindra_thug = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
-		"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
-		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
-		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
-		"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
-		"object/mobile/dressed_criminal_thug_bothan_female_01.iff",
-		"object/mobile/dressed_criminal_thug_human_male_01.iff",
-		"object/mobile/dressed_criminal_thug_human_male_02.iff",
-		"object/mobile/dressed_criminal_thug_human_female_01.iff",
-		"object/mobile/dressed_criminal_thug_human_female_02.iff",
-		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
-		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
-		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
-		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
-		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
-		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff"},
+	templates = {"thug"},
 	lootGroups = {
 		{
 			groups = {
 				{group = "junk", chance = 4000000},
-				{group = "wearables_common", chance = 2000000},     
+				{group = "wearables_common", chance = 2000000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
 				{group = "melee_weapons", chance = 1000000},

@@ -50,7 +50,8 @@ object_draft_schematic_item_quest_item_current_alternator = object_draft_schemat
    craftingToolTab = 2148007936, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "crafting_general", 
    xp = 40, 
 

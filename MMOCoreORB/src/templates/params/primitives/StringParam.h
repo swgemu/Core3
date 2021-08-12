@@ -60,6 +60,18 @@ public:
 		return *this;
 	}
 
+	StringParam& operator= (const StringParam& val) {
+		if (this == &val) {
+			return *this;
+		}
+
+		setType(STRING);
+
+		TemplateBase<String>::operator=(val);
+
+		return *this;
+	}
+
 	String& operator-= (const String& val) {
 		return value;
 	}

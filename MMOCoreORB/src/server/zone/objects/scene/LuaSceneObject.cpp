@@ -12,6 +12,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
+#include "engine/lua/LuaPanicException.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";
 
@@ -110,6 +111,9 @@ int LuaSceneObject::_getObject(lua_State* L) {
 
 int LuaSceneObject::_setObject(lua_State* L) {
 	auto obj = reinterpret_cast<SceneObject*>(lua_touserdata(L, -1));
+
+	if (obj == nullptr)
+		throw LuaPanicException("nullptr in LuaSceneObject::_setObject");
 
 	if (obj != realObject)
 		realObject = obj;
@@ -819,20 +823,12 @@ int LuaSceneObject::getPlayersInRange(lua_State *L) {
 
 	lua_newtable(L);
 
-	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-	thisZone->getInRangeObjects(realObject->getWorldPositionX(), realObject->getWorldPositionY(), range, closeObjects, true);
+	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> playerObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+	thisZone->getInRangePlayers(realObject->getWorldPositionX(), realObject->getWorldPositionY(), range, playerObjects);
 	int numPlayers = 0;
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
-
-		if (object == nullptr || !object->isPlayerCreature())
-			continue;
-
-		CreatureObject* player = object->asCreatureObject();
-
-		if (player == nullptr || player->isInvisible())
-			continue;
+	for (int i = 0; i < playerObjects->size(); ++i) {
+		SceneObject* object = cast<SceneObject*>(playerObjects->get(i).get());
 
 		numPlayers++;
 		lua_pushlightuserdata(L, object);

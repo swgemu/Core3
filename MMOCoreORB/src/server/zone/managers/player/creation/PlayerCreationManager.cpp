@@ -149,6 +149,12 @@ void PlayerCreationManager::loadProfessionDefaultsInfo() {
 	iffStream = templateManager->openIffFile(
 			"datatables/creation/profession_mods.iff");
 
+	if (iffStream == nullptr) {
+		error("Could not open creation profession mods data table");
+
+		return;
+	}
+
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
 

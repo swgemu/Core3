@@ -76,9 +76,9 @@ protected:
 
 	Vector<ChildObject> childObjects;
 
-	PortalLayout* portalLayout;
-	AppearanceTemplate* appearanceTemplate;
-	bool loadedPortalLayout, loadedAppearanceTemplate;
+	AtomicReference<PortalLayout*> portalLayout;
+	AtomicReference<AppearanceTemplate*> appearanceTemplate;
+	AtomicBoolean loadedPortalLayout, loadedAppearanceTemplate;
 	String zoneComponent, attributeListComponent;
 	String containerComponent;
 	String objectMenuComponent;

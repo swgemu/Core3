@@ -28,6 +28,16 @@ public:
 
 	}
 
+	PlayerList& operator=(const PlayerList& list) {
+		if (this == &list) {
+			return *this;
+		}
+
+		DeltaVector<String>::operator=(list);
+
+		return *this;
+	}
+
 	friend void to_json(nlohmann::json& j, const PlayerList& l) {
 		const DeltaVector<String>& dv = l;
 

@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_pitcher_full = object_draft_schematic_furniture_shared_furniture_pitcher_full:new {
-
+	factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_pitcher_full, "object/draft_schematic/furniture/furniture_pitcher_full.iff")

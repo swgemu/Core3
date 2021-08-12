@@ -50,7 +50,8 @@ object_draft_schematic_munition_mine_dxr55 = object_draft_schematic_munition_sha
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 35, 
 

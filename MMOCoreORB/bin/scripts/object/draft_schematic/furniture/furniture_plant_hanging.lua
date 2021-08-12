@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_plant_hanging = object_draft_schematic_furniture_shared_furniture_plant_hanging:new {
-
+    factoryCrateType = "object/factory/factory_crate_furniture.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_plant_hanging, "object/draft_schematic/furniture/furniture_plant_hanging.iff")

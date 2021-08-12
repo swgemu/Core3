@@ -51,6 +51,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn_advanced = obje
 	complexity = 25,
 	size = 1,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_armor.iff",
 
 	xpType = "crafting_clothing_armor",
 	xp = 50,

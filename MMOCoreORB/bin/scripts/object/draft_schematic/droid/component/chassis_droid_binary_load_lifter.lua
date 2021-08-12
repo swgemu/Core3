@@ -51,6 +51,7 @@ object_draft_schematic_droid_component_chassis_droid_binary_load_lifter = object
 	complexity = 30,
 	size = 1,
 	factoryCrateSize = 1,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
 	xpType = "crafting_droid_general",
 	xp = 4000,

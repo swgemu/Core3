@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_pistol_quest_imperial_navy_formal = object_draft_schematic_weapon_shared_pistol_quest_imperial_navy_formal:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_pistol_quest_imperial_navy_formal, "object/draft_schematic/weapon/pistol_quest_imperial_navy_formal.iff")

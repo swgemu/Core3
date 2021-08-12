@@ -24,16 +24,7 @@ public:
 
 		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-		if (session == nullptr) {
-			creature->sendSystemMessage("@performance:dance_must_be_performing_self");
-			return GENERALERROR;
-		}
-
-		if (session->isPlayingMusic()) {
-			session->stopPlayingMusic();
-		}
-
-		if (!session->isDancing()) {
+		if (session == nullptr || !session->isDancing()) {
 			creature->sendSystemMessage("@performance:dance_must_be_performing_self");
 			return GENERALERROR;
 		}
@@ -44,25 +35,24 @@ public:
 
 		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 
-		if (args.length() < 2) {
-			StartDanceCommand::sendAvailableDances(creature, ghost, SuiWindowType::DANCING_CHANGE);
+		if (args.length() < 1) {
+			performanceManager->sendAvailablePerformances(creature, PerformanceType::DANCE, false);
 			return SUCCESS;
 		}
 
-		String fullString = String("startDance") + "+" + args;
+		int performanceIndex = performanceManager->getPerformanceIndex(PerformanceType::DANCE, args, 0);
 
-		if (!ghost->hasAbility(fullString)) {
-			creature->sendSystemMessage("@performance:dance_lack_skill_self");
+		if (performanceIndex == 0) {
+			creature->sendSystemMessage("@performance:dance_unknown_self"); // You do not know that dance.
 			return GENERALERROR;
 		}
 
-		if (!performanceManager->hasDanceAnimation(args)) {
-			creature->sendSystemMessage("@performance:dance_lack_skill_self");
+		if (!performanceManager->canPerformDance(creature, performanceIndex)) {
+			creature->sendSystemMessage("@performance:dance_lack_skill_self"); // You do not have the skill to perform the dance.
 			return GENERALERROR;
 		}
 
-		session->sendEntertainingUpdate(creature, /*0x3C4CCCCD*/0.0125f, performanceManager->getDanceAnimation(args), 0x07339FF8, 0xDD);
-		session->setPerformanceName(args);
+		session->sendEntertainingUpdate(creature, performanceIndex, true);
 
 		creature->notifyObservers(ObserverEventType::CHANGEENTERTAIN, creature);
 

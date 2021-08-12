@@ -50,7 +50,8 @@ object_draft_schematic_scout_item_trap_tranq_dart = object_draft_schematic_scout
    craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "camp", 
    xp = 40, 
 

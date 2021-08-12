@@ -15,6 +15,7 @@ void MissionNpcSpawnMap::loadSpawnPointsFromLua() {
 
 		LuaObject cities = lua->getGlobalObject("cities");
 
+		spawnMap.clear();
 		spawnMap.addCities(&cities);
 
 		LuaObject universeObject = lua->getGlobalObject("universe");
@@ -69,6 +70,14 @@ NpcSpawnPoint* MissionNpcSpawnMap::addSpawnPoint(uint32 planetCRC, Reference<Npc
 	return nullptr;
 }
 
+void MissionNpcSpawnMap::removeSpawnPoint(uint32 planetCRC, NpcSpawnPoint* npc) {
+	Reference<PlanetSpawnMap* > planet = spawnMap.getPlanet(planetCRC);
+
+	if (planet != nullptr) {
+		return planet->remove(npc);
+	}
+}
+
 NpcSpawnPoint* MissionNpcSpawnMap::findSpawnAt(uint32 planetCRC, const Vector3* position) const {
 	Reference<const PlanetSpawnMap* > planet = spawnMap.getPlanet(planetCRC);
 
@@ -112,4 +121,5 @@ void MissionNpcSpawnMap::saveSpawnPoints() {
 	file << "}" << std::endl << std::endl;
 
 	spawnMap.saveSpawnPoints(file);
+	loadSpawnPointsFromLua();
 }

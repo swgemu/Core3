@@ -39,6 +39,10 @@ class PetControlDevice extends ControlDevice {
 
 	// Last command issued
 	protected unsigned int lastCommand;
+
+	@weakReference
+	protected SceneObject lastCommander;
+
 	@weakReference
 	protected SceneObject lastCommandTarget;
 
@@ -79,6 +83,7 @@ class PetControlDevice extends ControlDevice {
 		petType = 0;
 		trainingCommand = 0;
 		lastCommand = 0;
+		lastCommander = null;
 		lastCommandTarget = null;
 		namingProgress = 0;
 		futureName = "";
@@ -224,6 +229,19 @@ class PetControlDevice extends ControlDevice {
 	@dirty
 	public abstract unsigned int getLastCommand() {
 		return lastCommand;
+	}
+
+	@local
+	@preLocked
+	public void setLastCommander(SceneObject commander) {
+		lastCommander = commander;
+	}
+
+	@dirty
+	@local
+	@weakReference
+	public SceneObject getLastCommander() {
+		return lastCommander;
 	}
 
 	@local

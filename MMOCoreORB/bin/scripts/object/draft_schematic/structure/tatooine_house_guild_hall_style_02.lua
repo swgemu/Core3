@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_structure_tatooine_house_guild_hall_style_02 = object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_tatooine_house_guild_hall_style_02, "object/draft_schematic/structure/tatooine_house_guild_hall_style_02.iff")

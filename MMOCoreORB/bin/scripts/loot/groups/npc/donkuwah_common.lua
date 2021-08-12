@@ -7,8 +7,8 @@ donkuwah_common = {
 	lootItems = {
 		{itemTemplate = "donkuwah_bone_armor_segment", weight = 3500000},
 		{itemTemplate = "donkuwah_poison", weight = 3500000},
-		{itemTemplate = "rifle_ewok_crossbow", weight = 10000},
-		{itemTemplate = "knife_donkuwah", weight = 990000},
+		--{itemTemplate = "rifle_ewok_crossbow", weight = 10000},
+		{itemTemplate = "knife_donkuwah", weight = 1000000},
 		{groupTemplate = "wearables_common", weight = 2000000},
 	}
 }

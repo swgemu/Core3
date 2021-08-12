@@ -51,7 +51,8 @@ object_draft_schematic_structure_city_cloning_naboo = object_draft_schematic_str
 	complexity = 23,
 	size = 14,
 	factoryCrateSize = 1,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 6800,
 

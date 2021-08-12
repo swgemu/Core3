@@ -50,11 +50,11 @@ object_draft_schematic_furniture_furniture_couch_blue = object_draft_schematic_f
    craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
-
+   factoryCrateSize = 0,
+   factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
    xpType = "crafting_structure_general", 
    xp = 340, 
-
-   factoryCrateSize = 0,
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 

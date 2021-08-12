@@ -51,7 +51,8 @@ object_draft_schematic_furniture_furniture_terminal_wall = object_draft_schemati
 	complexity = 39,
 	size = 4,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 160,
 

@@ -1278,7 +1278,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	return true;
 }
 
-NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType) {
+NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType, const float maxRange) {
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 
 	Vector3 pos(x, y, 0);
@@ -1286,7 +1286,7 @@ NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const
 	//First try for an exact match
 	auto npc = missionNpcSpawnMap.findSpawnAt(planetCRC, &pos);
 
-	if (npc != nullptr && npc->getInUse() == 0) {
+	if (npc != nullptr && npc->getInUse() == 0 && (npc->getSpawnType() & spawnType) == spawnType) {
 		return npc;
 	}
 
@@ -1294,7 +1294,7 @@ NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const
 	float min = 0.0f;
 	float max = 50.0f;
 
-	while (max <= 1600.0f) {
+	while (max <= maxRange) {
 		npc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetCRC, &pos, spawnType, min, max);
 		if (npc != nullptr && npc->getInUse() == 0) {
 			return npc;
@@ -1665,6 +1665,7 @@ void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, cons
 			} else if (*returnedNpc->getPosition() == *npc->getPosition()) {
 				message = "NPC spawn point created at coordinates " + npc->getPosition()->toString() + " of spawn type " + String::valueOf(npc->getSpawnType());
 				missionNpcSpawnMap.saveSpawnPoints();
+				missionNpcSpawnMap.loadSpawnPointsFromLua();
 			} else {
 				message = "NPC spawn point to close to existing spawn point at coordinates " + returnedNpc->getPosition()->toString() + " of spawn type " + String::valueOf(returnedNpc->getSpawnType());
 			}
@@ -1672,6 +1673,37 @@ void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, cons
 		player->sendSystemMessage(message);
 	} else {
 		player->sendSystemMessage("Incorrect parameters. /createMissionElement [spawn type(s)] - (spawn types supported: neutral, imperial, rebel, bhtarget, nospawn)");
+	}
+}
+
+void MissionManagerImplementation::removeSpawnPoint(CreatureObject* player, const String& spawnTypes) {
+	if (player == nullptr) {
+		return;
+	}
+
+	if (player->getParentID() != 0 || spawnTypes == "") {
+		String text = "Player position = " + player->getPosition().toString() + ", direction = " + String::valueOf(player->getDirection()->getRadians()) + ", cell id = " + String::valueOf(player->getParentID());
+		player->sendSystemMessage(text);
+		return;
+	}
+
+	Reference<NpcSpawnPoint* > npc = new NpcSpawnPoint(player, spawnTypes);
+	if (npc != nullptr && npc->getSpawnType() != 0) {
+		//Lock mission spawn points.
+		Locker missionSpawnLocker(&missionNpcSpawnMap);
+
+		String message;
+		auto returnedNpc = getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), npc->getSpawnType());
+		if (returnedNpc != nullptr) {
+			message = "NPC spawn point removed at coordinates " + returnedNpc->getPosition()->toString() + " of spawn type " + String::valueOf(returnedNpc->getSpawnType());
+			missionNpcSpawnMap.removeSpawnPoint(player->getPlanetCRC(), returnedNpc);
+			missionNpcSpawnMap.saveSpawnPoints();
+		} else {
+			message = "No NPC spawn point found close to coordinates " + player->getPosition().toString() + " of spawn type " + spawnTypes;
+		}
+		player->sendSystemMessage(message);
+	} else {
+		player->sendSystemMessage("Incorrect parameters.");
 	}
 }
 
@@ -1830,25 +1862,7 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 		return position;
 	}
 
-	bool found = false;
-	float minX = targetZone->getMinX(), maxX = targetZone->getMaxX();
-	float minY = targetZone->getMinY(), maxY = targetZone->getMaxY();
-	float diameterX = maxX - minX;
-	float diameterY = maxY - minY;
-	int retries = 20;
-
-	while (!found && retries > 0) {
-		position.setX(System::random(diameterX) + minX);
-		position.setY(System::random(diameterY) + minY);
-
-		found = targetZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), nullptr);
-
-		retries--;
-	}
-
-	if (retries == 0) {
-		position.set(0, 0, 0);
-	}
+	position = targetZone->getPlanetManager()->getRandomSpawnPoint();
 
 	return position;
 }

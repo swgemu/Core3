@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_clothing_clothing_quest_robe_imperial = object_draft_schematic_clothing_shared_clothing_quest_robe_imperial:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_quest_robe_imperial, "object/draft_schematic/clothing/clothing_quest_robe_imperial.iff")

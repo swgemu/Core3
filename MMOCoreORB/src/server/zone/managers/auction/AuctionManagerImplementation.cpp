@@ -1103,10 +1103,11 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	seller->addBankCredits(item->getPrice());
 	trx.commit();
 
-	if (tax > 0) {
+	if (city != nullptr && tax > 0) {
 		TransactionLog trxFee(seller, TrxCode::CITYSALESTAX, tax, false);
 		trxFee.groupWith(trx);
-		seller->subtractBankCredits(item->getPrice());
+		trxFee.addState("cityRegionID", city->getObjectID());
+		seller->subtractBankCredits(tax);
 	}
 	slocker.release();
 

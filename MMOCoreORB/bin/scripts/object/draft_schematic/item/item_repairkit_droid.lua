@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_item_item_repairkit_droid = object_draft_schematic_item_shared_item_repairkit_droid:new {
-
+    factoryCrateType = "object/factory/factory_crate_electronics.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_repairkit_droid, "object/draft_schematic/item/item_repairkit_droid.iff")

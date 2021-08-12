@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dish_stewed_gwouch = object_draft_schematic_food_shared_dish_stewed_gwouch:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_stewed_gwouch, "object/draft_schematic/food/dish_stewed_gwouch.iff")

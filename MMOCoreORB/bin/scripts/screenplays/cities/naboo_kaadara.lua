@@ -6,37 +6,37 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 	planet = "naboo",
 
 	gcwMobs = {
-	--spawn garrison outside city in the outskirts
+		--spawn garrison outside city in the outskirts
 		{"stormtrooper", "rebel_trooper", 0, 0.3, 7.7, 0, 1259939, "", ""},
 		{"stormtrooper", "rebel_trooper", 0, 0.3, 6.2, 0, 1259939, "", ""},
 		{"stormtrooper", "rebel_trooper", 3.7, 0.3, -2.0, 0, 1259940, "", ""},
 		{"stormtrooper_rifleman", "rebel_commando", -3.7, -3.3, 4.9, 180, 1259942, "", ""},
 		{"stormtrooper_medic", "rebel_medic", 7.8, -6.8, -5.8, -65, 1259943, "", ""},
-		{"stormtrooper_colonel", "rebel_colonel", 3.5, -6.8, -4.8, 0, 1259943, "", ""},
+		{"stormtrooper_colonel", "rebel_colonel", 3.5, -6.8, -4.8, 0, 1259943, "", "", true},
 		{"stormtrooper_sniper", "rebel_scout", -3.7, -13.8, -18.5, 90, 1259944, "", ""},
 		{"stormtrooper_colonel", "rebel_major", -0.9, -13.7, -4.7, -45, 1259945, "", ""},
 		{"stormtrooper", "rebel_trooper", -5.1, -13.7, 7.5, 180, 1259945, "", ""},
 		{"stormtrooper", "rebel_trooper", -1.9, -13.7, 7.5, 180, 1259945, "", ""},
 		{"stormtrooper_medic", "rebel_medic", -5.3, -13.8, 13.5, -30, 1259950, "", ""},
-		{"stormtrooper_squad_leader", "rebel_general", 14.7, -13.8, 5.2, 0, 1260045, "", ""},
+		{"stormtrooper_squad_leader", "rebel_general", 14.7, -13.8, 5.2, 0, 1260045, "", "", true},
 		{"stormtrooper", "rebel_trooper", 14.7, -13.8, 8.0, 0, 1260045, "", ""},
 		{"stormtrooper", "rebel_trooper", 14.7, -13.8, 9.8, 0, 1260045, "", ""},
-		{"imperial_army_captain", "rebel_army_captain", 15.1, -11.5, -20.4, 0, 1260046, "", ""},
+		{"imperial_army_captain", "rebel_army_captain", 15.1, -11.5, -20.4, 0, 1260046, "", "", true},
 		{"stormtrooper", "rebel_trooper", 3.7, 0.1, 2.1, -90, 1260051, "", ""},
 		{"stormtrooper", "rebel_trooper", 0, 0.1, -1.9, 0, 1260050, "", ""},
 		{"stormtrooper", "rebel_trooper", 0, 0.1, -1.9, 0, 1260057, "", ""},
 		{"imperial_colonel", "rebel_lieutenant_colonel", 5.3, 0.1, 4.5, -150, 1260058, "", ""},
 		{"stormtrooper", "rebel_trooper", 5384.5, -197.2, 6455, -97, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5384.5, -197.2, 6458, -97, 0, "", ""},
-		{"stormtrooper", "rebel_trooper", 5381.5, -197.2, 6454.5, -97, 0, "", ""},
+		{"stormtrooper", "rebel_trooper", 5381.5, -197.2, 6454.5, -97, 0, "", "", true},
 		{"stormtrooper", "rebel_trooper", 5381.5, -197.2, 6457.5, -97, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5378.5, -197.2, 6454, -97, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5378.5, -197.2, 6457, -97, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5375.5, -197.2, 6453.5, -97, 0, "", ""},
-		{"stormtrooper", "rebel_trooper", 5375.5, -197.2, 6456.5, -97, 0, "", ""},
+		{"stormtrooper", "rebel_trooper", 5375.5, -197.2, 6456.5, -97, 0, "", "", true},
 
-	--faction spawns inside the actual city limits
-		{"stormtrooper", "rebel_trooper", 5290.5, -192, 6582.2, -90, 0, "", ""},
+		--faction spawns inside the actual city limits
+		{"stormtrooper", "rebel_trooper", 5290.5, -192, 6582.2, -90, 0, "", "", true},
 		{"stormtrooper", "rebel_trooper", 5294.5, -192, 6582.2, -90, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5298.5, -192, 6582.2, -90, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", getRandomNumber(20) + 5189.5, -192, getRandomNumber(28) + 6624.5, getRandomNumber(360), 0, "", ""},
@@ -44,16 +44,62 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 		{"stormtrooper_rifleman", "rebel_gungan_bomber", getRandomNumber(20) + 5189.5, -192, getRandomNumber(28) + 6624.5, getRandomNumber(360), 0, "", ""},
 		{"stormtrooper", "rebel_trooper", getRandomNumber(20) + 5189.5, -192, getRandomNumber(20) + 6624.5, getRandomNumber(360), 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 29.9, 0.3, -2, -79, 1741439, "", ""},
-		{"stormtrooper", "rebel_trooper", 18.6, 0.3, 9.5, -90, 1741439, "", ""},
+		{"stormtrooper", "rebel_trooper", 18.6, 0.3, 9.5, -90, 1741439, "", "", true},
 		{"stormtrooper", "rebel_trooper", -7.2, 0.3, -3.2, -111, 1741443, "", ""},
 		{"stormtrooper", "rebel_trooper", -18.4, 0.3, -6.6, -101, 1741443, "", ""},
-		{"naboo_police", "naboo_police", 5095.7, -192, 6744.4, 136, 0, "", ""},
-		{"naboo_police", "naboo_police", 5105.6, -192, 6733.9, 136, 0, "", ""},
+		{"naboo_police", "naboo_police", 5095.7, -192, 6744.4, 136, 0, "", "", true},
+		{"naboo_police", "naboo_police", 5105.6, -192, 6733.9, 136, 0, "", "", true},
 		{"stormtrooper", "rebel_trooper", 5137.7, -192, 6692.9, 136, 0, "", ""},
-		{"stormtrooper", "rebel_trooper", 5148.6, -192, 6682.4, 136, 0, "", ""},
+		{"stormtrooper", "rebel_trooper", 5148.6, -192, 6682.4, 136, 0, "", "", true},
 		{"stormtrooper", "rebel_trooper", 5023.0, -192, 6714.8, -40, 0, "", ""},
-		{"naboo_police_chief", "naboo_police_chief", 5011.7, -192, 6728.2, -40, 0, "", ""},
-		{"naboo_police_officer", "naboo_police_officer", 4985.0, -192, 6763.0, 88, 0, "", ""},
+		{"naboo_police_chief", "naboo_police_chief", 5011.7, -192, 6728.2, -40, 0, "", "", true},
+		{"naboo_police_officer", "naboo_police_officer", 4985.0, -192, 6763.0, 88, 0, "", "", true},
+	},
+
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "commoner_naboo_patrol", "noble_patrol", "official_patrol", "scientist_patrol"},
+
+	patrolMobiles = {
+		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
+
+		--Droids
+		{"surgical_1", "surgical_droid_21b", 4.5, -5.5, -13.2, -144, 1741516, "", false},
+		{"r3_1", "r3", 5189, -192, 6691, 0, 0, "", false},
+
+		--NPCs
+		{"npc_1", "patrolNpc", 5236, -192, 6759, 87, 0, "", false},
+		{"npc_2", "patrolNpc", 5180.9, -192, 6782.7, 45, 0, "", false},
+	},
+
+	patrolPoints = {
+		--table_name = {{x, z, y, cell, delayAtNextPoint}}
+		surgical_1 = {{4.5, -5.5, -13.2, 1741516, false}, {-13.5, -5.0, -10.7, 1741516, false}, {-7.1, -5.5, -9.4, 1741516, false}, {-3.1, -5.5, -3.0, 1741516, false}, {6.2, -5.5, -3.9, 1741516, true}, {6.3, -5.5, -3.1, 1741516, false}, {12.4, -5.0, -15.8, 1741516, false}},
+		r3_1 = {{5189, -192, 6691, 0, false}, {5179, -192, 6671, 0, false}, {5189, -192, 6653, 0, false}, {5200, -192, 6655, 0, false}, {5205, -192, 6693, 0, false}},
+
+		npc_1 = {{5236, -192, 6759, 0, true}, {5255, -192, 6755, 0, true}, {5242, -192, 6721, 0, true}, {5230, -192, 6719, 0, true}, {5224,  -192, 6749, 0, true}},
+		npc_2 = {{5180.9, -192, 6782.7, 0, true}, {5160, -192, 6758, 0, true}, {5163, -192, 6769, 0, true}, {5182, -192, 6789, 0, true}},
+	},
+
+	stationaryCommoners = {"commoner", "commoner_fat", "commoner_naboo", "commoner_old"},
+	stationaryNpcs = {"agriculturalist", "artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer",
+				"gambler", "info_broker", "medic", "mercenary", "miner", "naboo_nomad", "noble", "official", "patron_ishitib", "pilot", "rancher", "scientist", "slicer", "traveller"},
+
+	--{respawn, x, z, y, direction, cell, mood}
+	stationaryMobiles = {
+		{1, 5040.3, -183.3, 6736.1, 132, 0, ""},
+		{1, 5371.9, -191.4, 6736.9, 141, 0, "conversation"},
+		{1, 5373.5, -191.4, 6737.0, -132, 0, "conversation"},
+		{1, 5372.5, -191.4, 6735.6, 12, 0, "conversation"},
+		{1, 5377.1, -192, 6632.5, 159, 0, "conversation"},
+		{1, 5377.9, -192, 6630.5, -31, 0, "conversation"},
+		{1, 5325.5, -192, 6607.4, -151, 0, ""},
+		{1, 5332.8, -192, 6602.2, 127, 0, "conversation"},
+		{1, 5334.6, -192, 6600.7, -45, 0, "conversation"},
+		{1, 5284.8, -192, 6591.8, -111, 0, ""},
+		{1, 5299.3, -191.4, 6757.1, -80, 0, ""},
+		{1, 5298.0, -191.4, 6757.1, 100, 0, ""},
+		{1, 5080.9, -191.7, 6714.0, -155, 0, ""},
+		{1, 5208.8, -192, 6644.8, 0, 0, "conversation"},
+		{1, 5208.8, -192, 6646.3, 180, 0, "conversation"},
 	},
 }
 
@@ -64,6 +110,8 @@ function NabooKaadaraScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnSceneObjects()
 		self:spawnGcwMobiles()
+		self:spawnPatrolMobiles()
+		self:spawnStationaryMobiles()
 	end
 end
 
@@ -87,9 +135,10 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_standing_drinking")
 	pNpc = spawnMobile(self.planet, "contractor",60,4.0,1.0,4.3,-165,1741477)
 	self:setMoodString(pNpc, "npc_accusing")
+	spawnMobile(self.planet, "bartender", 1, 19.5, 1.6, 12.6, 180, 1741478)
 
 	--cantina
-	pNpc = spawnMobile(self.planet, "bartender",60,2.9,-0.9,3.4,2,64)
+	pNpc = spawnMobile(self.planet, "bartender", 1, 2.9, -0.9, 3.4, 2, 64)
 	self:setMoodString(pNpc, "neutral")
 
 	--starport interior
@@ -184,30 +233,11 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "nightspider", 300, getRandomNumber(20) + 5535.6, -193.9, getRandomNumber(20) + 6745, getRandomNumber(360), 0)
 
 	--commoners
-	spawnMobile(self.planet, "commoner_fat", 1, 5040.3, -183.3, 6736.1, 132, 0)
-	spawnMobile(self.planet, "commoner_fat", 1, 5371.9, -191.4, 6736.9, 141, 0)
-	spawnMobile(self.planet, "commoner_old", 1, 5373.5, -191.4, 6737.0, -132, 0)
-	spawnMobile(self.planet, "commoner_fat", 1, 5372.5, -191.4, 6735.6, 12, 0)
-	spawnMobile(self.planet, "commoner_naboo", 1, 5377.1, -192, 6632.5, 159, 0)
-	spawnMobile(self.planet, "commoner_naboo", 1, 5377.9, -192, 6630.5, -31, 0)
-	spawnMobile(self.planet, "commoner_naboo", 1, 5325.5, -192, 6607.4, -151, 0)
-	spawnMobile(self.planet, "commoner", 1, 5332.8, -192, 6602.2, 127, 0)
-	spawnMobile(self.planet, "commoner_naboo", 1, 5334.6, -192, 6600.7, -45, 0)
-	spawnMobile(self.planet, "agriculturalist", 1, 5284.8, -192, 6591.8, -111, 0)
 	spawnMobile(self.planet, "medic", 1, -3.5, -0.1, -3.3, 0, 1741514)
 	spawnMobile(self.planet, "medic", 1, -5.2, 0.1, 5.2, -90, 1741514)
 	spawnMobile(self.planet, "scientist", 1, -13.2, 0.1, 15.3, 90, 1741517)
-	spawnMobile(self.planet, "surgical_droid_21b", 1, 4.5, -5.5, -13.2, -144, 1741516)
-	spawnMobile(self.planet, "patron_ishitib", 1, 5299.3, -191.4, 6757.1, -80, 0)
-	spawnMobile(self.planet, "patron_ishitib", 1, 5298.0, -191.4, 6757.1, 100, 0)
-	spawnMobile(self.planet, "official", 120, 5236.8, -192, 6759.5, 87, 0)
 	spawnMobile(self.planet, "commoner_tatooine", 120, -23.6, 1.6, -4.2, -172, 1741483)
 	spawnMobile(self.planet, "commoner_naboo", 120, -24.5, 1.6, -7.3, 17, 1741483)
-	spawnMobile(self.planet, "bartender", 1, 19.5, 1.6, 12.6, 180, 1741478)
-	spawnMobile(self.planet, "commoner_naboo", 1, 5180.9, -192, 6782.7, 45, 0)
-	spawnMobile(self.planet, "commoner_naboo", 1, 5080.9, -191.7, 6714.0, -155, 0)
-	spawnMobile(self.planet, "commoner_naboo", 1, 5208.8, -192, 6644.8, 0, 0)
-	spawnMobile(self.planet, "commoner_naboo", 1, 5208.8, -192, 6646.3, 180, 0)
 
 	--trainers
 	spawnMobile(self.planet, "trainer_architect", 1, 11, 1.133, -14.5, 0, 1741470)

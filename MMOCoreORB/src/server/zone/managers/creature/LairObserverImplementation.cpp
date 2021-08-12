@@ -167,8 +167,13 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 	for (int i = 0; i < spawnedCreatures.size() ; ++i) {
 		CreatureObject* creo = spawnedCreatures.get(i);
 
-		if (creo->isDead() || creo->getZone() == nullptr)
+		if (creo->isDead() || creo->getZone() == nullptr) {
 			continue;
+		}
+
+		if (lair->getDistanceTo(creo) > 20.0f) {
+			continue;
+		}
 
 		//  TODO: Range check
 		damageToHeal += lairMaxCondition / 100;

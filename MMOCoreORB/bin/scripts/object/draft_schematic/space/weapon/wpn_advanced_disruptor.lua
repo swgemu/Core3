@@ -51,7 +51,8 @@ object_draft_schematic_space_weapon_wpn_advanced_disruptor = object_draft_schema
 	complexity = 32,
 	size = 1,
 	factoryCrateSize = 0,
-
+	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
+   
 	xpType = "shipwright",
 	xp = 625,
 

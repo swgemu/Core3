@@ -52,18 +52,18 @@ Saber1hComboHit2Command = {
 	forceCostMultiplier = 1.75,
 	visMod = 25,
 
-	animation = "combo_5b", 
+	animation = "combo_5b",
 	animType = GENERATE_INTENSITY,
 
 	stateEffects = {
-	  StateEffect( 
-		POSTUREDOWN_EFFECT, 
-		{ "postureDownRecovery" }, 
-		{ "posture_change_down_defense" }, 
+	  StateEffect(
+		POSTUREDOWN_EFFECT,
+		{ "postureDownRecovery" },
+		{ "posture_change_down_defense" },
 		{},
-		40, 
-		0, 
-		0 
+		40,
+		0,
+		0
 	  )
 	},
 

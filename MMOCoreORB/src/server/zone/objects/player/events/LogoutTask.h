@@ -48,7 +48,7 @@ public:
 
 		try {
 			// TODO: Research do things like bleeding, poison etc stop a /logout ??
-			if (creature->isBleeding() || creature->isPoisoned() || creature->isDiseased() || creature->isOnFire() || !creature->isSitting()) {
+			if (player->isLinkDead() || creature->isBleeding() || creature->isPoisoned() || creature->isDiseased() || creature->isOnFire() || !creature->isSitting()) {
 				cancelLogout();
 				return;
 			}

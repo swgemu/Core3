@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_instrument_instrument_drums = object_draft_schematic_instrument_shared_instrument_drums:new {
-
+    factoryCrateType = "object/factory/factory_crate_generic_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_instrument_drums, "object/draft_schematic/instrument/instrument_drums.iff")

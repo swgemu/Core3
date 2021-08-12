@@ -51,7 +51,8 @@ object_draft_schematic_furniture_furniture_toolchest_large = object_draft_schema
 	complexity = 15,
 	size = 2,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 260,
 

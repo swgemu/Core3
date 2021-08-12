@@ -51,6 +51,7 @@ object_draft_schematic_chemistry_medpack_enhance_quickness_a = object_draft_sche
 	complexity = 22,
 	size = 1,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_chemicals.iff",
 
 	xpType = "crafting_medicine_general",
 	xp = 60,

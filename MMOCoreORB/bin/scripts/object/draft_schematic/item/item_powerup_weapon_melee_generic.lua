@@ -51,7 +51,8 @@ object_draft_schematic_item_item_powerup_weapon_melee_generic = object_draft_sch
 	complexity = 5,
 	size = 1,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
 	xpType = "crafting_general",
 	xp = 20,
 

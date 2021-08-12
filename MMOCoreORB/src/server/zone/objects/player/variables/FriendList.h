@@ -22,6 +22,18 @@ public:
 		reverseTable = list.reverseTable;
 	}
 
+	FriendList& operator=(const FriendList& list) {
+		if (this == &list) {
+			return *this;
+		}
+
+		PlayerList<7>::operator=(list);
+
+		reverseTable = list.reverseTable;
+
+		return *this;
+	}
+
 	bool readObjectMember(ObjectInputStream* stream, const String& name) {
 		if (name == "reverseTable") {
 			TypeInfo<Vector<String>>::parseFromBinaryStream(&reverseTable, stream);

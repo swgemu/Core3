@@ -53,12 +53,12 @@ public:
 
 				creature->sendSystemMessage(targetCreature->getFirstName() + " " + screenPlayName + " set to " + String::valueOf(targetCreature->getScreenPlayState(screenPlayName)));
 			} else {
-				creature->sendSystemMessage("SYNTAX: /clearCompleteQuest screenplaystate <screenPlayStateName> <state>");
+				creature->sendSystemMessage("SYNTAX: /clearCompletedQuest screenplaystate <screenPlayStateName> <state>");
 
 				return INVALIDPARAMETERS;
 			}
 		} catch (Exception& e) {
-			creature->sendSystemMessage("SYNTAX: /clearCompleteQuest screenplaystate <screenPlayStateName> <state>");
+			creature->sendSystemMessage("SYNTAX: /clearCompletedQuest screenplaystate <screenPlayStateName> <state>");
 
 			return INVALIDPARAMETERS;
 		}

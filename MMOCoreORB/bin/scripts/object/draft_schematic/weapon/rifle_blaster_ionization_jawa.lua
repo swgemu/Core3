@@ -50,7 +50,8 @@ object_draft_schematic_weapon_rifle_blaster_ionization_jawa = object_draft_schem
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 2, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 230, 
 

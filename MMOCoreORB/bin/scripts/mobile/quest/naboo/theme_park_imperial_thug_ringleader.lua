@@ -25,28 +25,12 @@ theme_park_imperial_thug_ringleader = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
-		"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
-		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
-		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
-		"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
-		"object/mobile/dressed_criminal_thug_bothan_female_01.iff",
-		"object/mobile/dressed_criminal_thug_human_male_01.iff",
-		"object/mobile/dressed_criminal_thug_human_male_02.iff",
-		"object/mobile/dressed_criminal_thug_human_female_01.iff",
-		"object/mobile/dressed_criminal_thug_human_female_02.iff",
-		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
-		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
-		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
-		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
-		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
-		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff"},
+	templates = {"thug"},
 	lootGroups = {
 		{
-	        groups = {
-			{group = "theme_park_loot_plans", chance = 10000000},
-		},
+			groups = {
+				{group = "theme_park_loot_plans", chance = 10000000},
+			},
 			lootChance = 10000000
 		}
 	},

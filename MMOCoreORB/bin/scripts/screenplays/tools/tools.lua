@@ -2,6 +2,7 @@ StaffTools = {
 	toolsMenu = {
 		{ "Shuttle Dropoff", "openShuttleConfig" },
 		{ "Firework Event", "openFireworkConfig" },
+		{ "GCW City Landing", "openCityLandingConfig" },
 	}
 }
 
@@ -46,6 +47,10 @@ end
 
 function StaffTools.openFireworkConfig(pPlayer)
 	FireworkEvent:showMainUI(pPlayer)
+end
+
+function StaffTools.openCityLandingConfig(pPlayer)
+	CityControlLanding:showMainUI(pPlayer)
 end
 
 function StaffTools:suiShuttleDropoffCallback(pPlayer, pSui, eventIndex, args)

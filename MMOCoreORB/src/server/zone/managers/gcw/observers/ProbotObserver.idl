@@ -1,0 +1,37 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.managers.gcw.observers;
+
+import server.zone.objects.creature.ai.AiAgent;
+
+import engine.core.ManagedObject;
+import engine.util.Observer;
+import engine.util.Observable;
+
+include engine.log.Logger;
+
+class ProbotObserver extends Observer implements Logger {
+
+	protected AiAgent probot;
+
+	public ProbotObserver() {
+		super();
+
+		Logger.setLoggingName("ProbotObserver");
+
+		probot = null;
+	}
+
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+
+	public boolean isProbotObserver() {
+		return true;
+	}
+
+	public void setProbot(AiAgent probotDroid) {
+		probot = probotDroid;
+	}
+}

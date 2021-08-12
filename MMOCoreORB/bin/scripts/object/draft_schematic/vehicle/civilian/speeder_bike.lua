@@ -51,7 +51,8 @@ object_draft_schematic_vehicle_civilian_speeder_bike = object_draft_schematic_ve
 	complexity = 20, 
 	size = 1,
 	factoryCrateSize = 50,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_general", 
 	xp = 1600, 
 

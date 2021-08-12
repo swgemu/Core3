@@ -27,6 +27,16 @@ public:
 		return *this;
 	}
 
+	IntegerParam& operator= (const IntegerParam& param) {
+		if (this == &param) {
+			return *this;
+		}
+
+		create(param.get());
+
+		return *this;
+	}
+
 	String toString() const {
 		return String::valueOf(get());
 	}

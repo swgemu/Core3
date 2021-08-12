@@ -26,6 +26,9 @@ maxPetitioners = 11
 maxChallenges = 20
 missedVotePenalty = 100 -- FRS XP
 
+-- Restrict players from voting for and challenging other characters on their account
+sameAccountEnclaveRestrictions = 1
+
 -- { rank, skillName, requiredExperience, playerCap, robe }
 lightRankingData = {
 	{ 0, "force_rank_light_novice", 0, -1, "object/tangible/wearables/robe/robe_jedi_light_s01.iff" },

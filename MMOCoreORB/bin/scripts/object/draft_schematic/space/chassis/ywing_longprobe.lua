@@ -51,7 +51,8 @@ object_draft_schematic_space_chassis_ywing_longprobe = object_draft_schematic_sp
 	complexity = 31,
 	size = 1,
 	factoryCrateSize = 0,
-
+	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
+   
 	xpType = "shipwright",
 	xp = 7500,
 

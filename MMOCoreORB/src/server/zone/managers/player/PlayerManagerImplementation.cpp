@@ -131,6 +131,8 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	loadPermissionLevels();
 	loadXpBonusList();
 
+	onlinePlayersLogOnSessionChange = false;
+
 	setGlobalLogging(true);
 	setLogging(false);
 
@@ -1057,9 +1059,9 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 
 			recoveryTime = round(recoveryTime * ((100.0f - percent) / 100.0f));
 
-            StringIdChatParameter message("combat_effects", "incap_recovery");
-            message.setDI(recoveryTime);
-            playerCreature->sendSystemMessage(message); // Incapacitation recovery time reduced by %DI%.
+			StringIdChatParameter message("combat_effects", "incap_recovery");
+			message.setDI(recoveryTime);
+			playerCreature->sendSystemMessage(message); // Incapacitation recovery time reduced by %DI%.
 
 			playerCreature->removeBuff(buff);
 		}
@@ -1074,7 +1076,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	if (!destructedObject->isPlayerCreature())
 		return 1;
 
-	CreatureObject* playerCreature = cast<CreatureObject*>( destructedObject);
+	CreatureObject* playerCreature = cast<CreatureObject*>(destructedObject);
 
 	if ((playerCreature->isIncapacitated() && !(playerCreature->isFeigningDeath())) || playerCreature->isDead())
 		return 1;
@@ -1097,13 +1099,17 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		destructor->removeDefender(destructedObject);
 	}
 
+	if (defenderList->size() == 0) {
+		destructor->clearCombatState(false);
+	}
+
 	if ((destructor->isKiller() && isDefender) || ghost->getIncapacitationCounter() >= 3) {
 		killPlayer(destructor, playerCreature, 0, isCombatAction);
 	} else {
 
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, !isCombatAction, !isCombatAction);
+		playerCreature->clearCombatState(false);
 		playerCreature->clearState(CreatureState::FEIGNDEATH); // We got incapped for real - Remove the state so we can be DB'd
-
 
 		uint8 incapTime = calculateIncapacitationTimer(playerCreature, condition);
 		playerCreature->setCountdownTimer((uint32) incapTime, true);
@@ -1169,6 +1175,26 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		}
 	}
 
+	if (playerCreature->isWatching()) {
+		uint64 watchID = playerCreature->getWatchToID();
+		stopWatch(playerCreature, watchID, false);
+	} else if (playerCreature->isListening()) {
+		uint64 listenID = playerCreature->getListenID();
+		stopListen(playerCreature, listenID, false);
+	}
+
+	ThreatMap* destructorThreatMap = destructor->getThreatMap();
+
+	if (destructorThreatMap != nullptr) {
+		for (int i = 0; i < destructorThreatMap->size(); i++) {
+			TangibleObject* destructedTano = destructorThreatMap->elementAt(i).getKey();
+
+			if (destructedTano == destructedObject) {
+				destructorThreatMap->remove(i);
+			}
+		}
+	}
+
 	return 0;
 }
 
@@ -1179,6 +1205,8 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		player->updateCooldownTimer("mount_dismount", 0);
 		player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 	}
+
+	player->clearCombatState(true);
 
 	player->clearDots();
 
@@ -1385,7 +1413,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 				(cbot->getFacilityType() == CloningBuildingObjectTemplate::DARK_JEDI_ONLY && player->hasSkill("force_rank_dark_novice"))) {
 			FrsManager* frsManager = server->getFrsManager();
 
-			if (frsManager->isFrsEnabled()) {
+			if (frsManager != nullptr && frsManager->isFrsEnabled()) {
 				String name = "Jedi Enclave (" + String::valueOf((int)loc->getWorldPositionX()) + ", " + String::valueOf((int)loc->getWorldPositionY()) + ")";
 				cloneMenu->addMenuItem(name, loc->getObjectID());
 			}
@@ -1656,21 +1684,32 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
-		CreatureObject* attacker = threatMap->elementAt(i).getKey();
+		TangibleObject* attacker = threatMap->elementAt(i).getKey();
 
 		if (entry == nullptr || attacker == nullptr) {
 			continue;
 		}
 
 		if (attacker->isPet()) {
-			PetControlDevice* pcd = attacker->getControlDevice().get().castTo<PetControlDevice*>();
+			if (!attacker->isCreatureObject()) {
+				continue;
+			}
+
+			CreatureObject* attackerCreo = attacker->asCreatureObject();
+
+			if (attackerCreo == nullptr) {
+				continue;
+			}
+
+			PetControlDevice* pcd = attackerCreo->getControlDevice().get().castTo<PetControlDevice*>();
 
 			// only creature pets will award exp, so discard anything else
 			if (pcd == nullptr || pcd->getPetType() != PetManager::CREATUREPET) {
 				continue;
 			}
 
-			CreatureObject* owner = attacker->getLinkedCreature().get();
+			CreatureObject* owner = attackerCreo->getLinkedCreature().get();
+
 			if (owner == nullptr || !owner->isPlayerCreature()) {
 				continue;
 			}
@@ -1713,16 +1752,22 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			}
 
 			awardExperience(owner, "creaturehandler", xpAmount);
-
 		} else if (attacker->isPlayerCreature()) {
 			if (!(attacker->getZone() == zone && destructedObject->isInRangeZoneless(attacker, 80))) {
 				continue;
 			}
-			ManagedReference<GroupObject*> group = attacker->getGroup();
+
+			CreatureObject* attackerCreo = attacker->asCreatureObject();
+
+			if (attackerCreo == nullptr) {
+				continue;
+			}
+
+			ManagedReference<GroupObject*> group = attackerCreo->getGroup();
 
 			uint32 combatXp = 0;
 
-			Locker crossLocker(attacker, destructedObject);
+			Locker crossLocker(attackerCreo, destructedObject);
 
 			for (int j = 0; j < entry->size(); ++j) {
 				uint32 damage = entry->elementAt(j).getValue();
@@ -1732,32 +1777,40 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				xpAmount *= (float) damage / totalDamage;
 
 				//Cap xp based on level
-				xpAmount = Math::min(xpAmount, calculatePlayerLevel(attacker, xpType) * 300.f);
+				xpAmount = Math::min(xpAmount, calculatePlayerLevel(attackerCreo, xpType) * 300.f);
 
 				//Apply group bonus if in group
 				if (group != nullptr)
 					xpAmount *= groupExpMultiplier;
 
-				if (winningFaction == attacker->getFaction())
+				if (winningFaction == attackerCreo->getFaction())
 					xpAmount *= gcwBonus;
 
-				//Jedi experience doesn't count towards combat experience, and is earned at 20% the rate of normal experience
+				// Jedi experience doesn't count towards combat experience, and is earned at 20% the rate of normal experience
 				if (xpType != "jedi_general")
 					combatXp += xpAmount;
 				else
 					xpAmount *= 0.2f;
 
+				if (xpType == "dotDMG") { // Prevents XP generated from DoTs from applying to the equiped weapon, but still counts towards combat XP
+					continue;
+				}
+
 				//Award individual expType
-				awardExperience(attacker, xpType, xpAmount);
+				awardExperience(attackerCreo, xpType, xpAmount);
 			}
 
-			combatXp = awardExperience(attacker, "combat_general", combatXp, true, 0.1f);
+			awardExperience(attackerCreo, "combat_general", combatXp, true, 0.1f);
+
 
 			//Check if the group leader is a squad leader
 			if (group == nullptr)
 				continue;
 
-			Vector3 pos(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 0);
+			//Calculate squad leader group size experience @ 10% person + combat experience which is 10% of the variable
+			float squadXp = (combatXp * 0.1f) + (combatXp * 0.1f * group->getGroupSize());
+
+			Vector3 pos(attacker->getWorldPosition());
 
 			crossLocker.release();
 
@@ -1769,12 +1822,16 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			Locker squadLock(groupLeader, destructedObject);
 
 			//If he is a squad leader, and is in range of this player, then add the combat exp for him to use.
-			if (groupLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(attacker->getWorldPosition()) <= ZoneServer::CLOSEOBJECTRANGE) {
-				int v = slExperience.get(groupLeader) + combatXp;
+			//Removed distance check to keep current functionality. Attacker was previously comparing its location to itself
+			if (groupLeader->hasSkill("outdoors_squadleader_novice")) {
+				int v = slExperience.get(groupLeader) + squadXp;
 				slExperience.put(groupLeader, v);
 			}
 		}
 	}
+
+
+
 
 	//Send out squad leader experience.
 	for (int i = 0; i < slExperience.size(); ++i) {
@@ -2692,19 +2749,19 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 	return buffdiff;
 }
 
-void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 entertainerID, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
 	Locker locker(creature);
 
 	uint64 listenID = creature->getListenID();
 
 	// If the player selected "Stop listening" by using a radial menu created on a
 	// musician other than the one that they are currently listening to then change
-	// entid to their listenID so that the player can still stop listening.
-	if (entid != listenID && listenID != 0 && creature->isListening()) {
-		entid = listenID;
+	// entertainerID to their listenID so that the player can still stop listening.
+	if (entertainerID != listenID && listenID != 0 && creature->isListening()) {
+		entertainerID = listenID;
 	}
 
-	ManagedReference<SceneObject*> object = server->getObject(entid);
+	ManagedReference<SceneObject*> object = server->getObject(entertainerID);
 
 	if (object == nullptr)
 		return;
@@ -2719,7 +2776,7 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 			CreatureObject* player = cast<CreatureObject*>( creature);
 			StringIdChatParameter stringID;
 			if (forced) {
-				stringID.setTU(entid);
+				stringID.setTU(entertainerID);
 				stringID.setStringId("performance", "music_stop_other"); // "%TU stops playing."
 				player->sendSystemMessage(stringID);
 				return;
@@ -2764,7 +2821,7 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 			if (esession != nullptr) {
 				esession->activateEntertainerBuff(creature, PerformanceType::MUSIC);
 
-				esession->removeListener(creature);
+				esession->removePatron(creature);
 			}
 		}
 
@@ -2782,7 +2839,7 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 		StringIdChatParameter stringID;
 
 		if (forced) {
-			stringID.setTU(entid);
+			stringID.setTU(entertainerID);
 			stringID.setStringId("performance", "music_stop_other"); // "%TU stops playing."
 
 			player->sendSystemMessage(stringID);
@@ -2808,19 +2865,19 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 }
 
 
-void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 entertainerID, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
 	Locker locker(creature);
 
 	uint64 watchID = creature->getWatchToID();
 
 	// If the player selected "Stop watching" by using a radial menu created on a
 	// dancer other than the one that they are currently watching then change
-	// entid to their watchID so that the player can still stop watching.
-	if (entid != watchID && watchID != 0 && creature->isWatching()) {
-		entid = watchID;
+	// entertainerID to their watchID so that the player can still stop watching.
+	if (entertainerID != watchID && watchID != 0 && creature->isWatching()) {
+		entertainerID = watchID;
 	}
 
-	ManagedReference<SceneObject*> object = server->getObject(entid);
+	ManagedReference<SceneObject*> object = server->getObject(entertainerID);
 
 	if (object == nullptr)
 		return;
@@ -2851,7 +2908,7 @@ void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 ent
 			if (esession != nullptr) {
 				esession->activateEntertainerBuff(creature, PerformanceType::DANCE);
 
-				esession->removeWatcher(creature);
+				esession->removePatron(creature);
 			}
 		}
 
@@ -2870,7 +2927,7 @@ void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 ent
 		StringIdChatParameter stringID;
 
 		if (forced) {
-			stringID.setTU(entid);
+			stringID.setTU(entertainerID);
 			stringID.setStringId("performance", "dance_stop_other"); // %TU stops dancing.
 
 			player->sendSystemMessage(stringID);
@@ -2899,22 +2956,18 @@ void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 ent
 	watchID = 0;*/
 }
 
-void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 entid) {
+void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 entertainerID) {
 	Locker locker(creature);
 
-	ManagedReference<SceneObject*> object = server->getObject(entid);
 	uint64 watchID = creature->getWatchToID();
 
-	if (watchID == entid)
+	if (watchID == entertainerID)
 		return;
+
+	ManagedReference<SceneObject*> object = server->getObject(entertainerID);
 
 	if (object == nullptr)
 		return;
-
-	/*if (object->isNonPlayerCreature()) {
-		creature->sendSystemMessage("@performance:dance_watch_npc");
-		return;
-	}*/
 
 	if (!object->isPlayerCreature()) {
 		creature->sendSystemMessage("@performance:dance_watch_npc"); // "You can not /watch NPCs."
@@ -2939,17 +2992,12 @@ void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 en
 	} else if (!entertainer->isDancing()) {
 		StringIdChatParameter stringID;
 		stringID.setStringId("performance", "dance_watch_not_dancing"); // "%TT is not dancing."
-		stringID.setTT(entid);
+		stringID.setTT(entertainerID);
 		creature->sendSystemMessage(stringID);
 		return;
 	}
 
-	ManagedReference<Facade*> facade = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING);
-
-	if (facade == nullptr)
-		return;
-
-	EntertainingSession* entertainingSession = dynamic_cast<EntertainingSession*>(facade.get());
+	ManagedReference<EntertainingSession*> entertainingSession = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 	if (entertainingSession == nullptr)
 		return;
@@ -2958,36 +3006,29 @@ void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 en
 		stopWatch(creature, watchID, false);
 	}
 
-	//sendEntertainmentUpdate(entid, "entertained");
-
-	entertainingSession->sendEntertainmentUpdate(creature, entid, "entertained");
-	entertainingSession->addWatcher(creature);
+	entertainingSession->sendEntertainmentUpdate(creature, entertainerID, "entertained");
+	entertainingSession->addPatron(creature);
 
 	entertainer->notifyObservers(ObserverEventType::WASWATCHED, creature);
 
-	//creature->addWatcher(_this);
-
 	StringIdChatParameter stringID;
 	stringID.setStringId("performance", "dance_watch_self"); // You start watching %TT.
-	stringID.setTT(entid);
+	stringID.setTT(entertainerID);
 	creature->sendSystemMessage(stringID);
-
-	//setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f);
-	//setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f);
 
 	creature->info("started watching [" + entertainer->getCustomObjectName().toString() + "]");
 
 	creature->setWatchToID(entertainer->getObjectID());
-	//watchID =  entid;
+	//watchID =  entertainerID;
 }
 
-void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 entid) {
+void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 entertainerID) {
 	Locker locker(creature);
 
-	ManagedReference<SceneObject*> object = server->getObject(entid);
+	ManagedReference<SceneObject*> object = server->getObject(entertainerID);
 	uint64 listenID = creature->getListenID();
 
-	if (listenID == entid)
+	if (listenID == entertainerID)
 		return;
 
 	if (object == nullptr)
@@ -3018,18 +3059,18 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 					return;
 				}
 
-				if (module->isActive()) {
+				if (module->isPlayingMusic()) {
 					// the droid is playing so we can do something
 					if (creature->isListening()) {
 						stopListen(creature, listenID, false);
 					}
 
 					StringIdChatParameter stringID;
-					stringID.setTT(entid);
+					stringID.setTT(entertainerID);
 					stringID.setStringId("performance", "music_listen_self"); // "You start listening to %TT."
 					creature->sendSystemMessage(stringID);
 
-					creature->setListenToID(entid, true);
+					creature->setListenToID(entertainerID, true);
 					String str = server->getChatManager()->getMoodAnimation("entertained");
 					creature->setMoodString(str, true);
 					creature->setListenToID(droid->getObjectID());
@@ -3037,7 +3078,7 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 					return;
 				} else {
 					StringIdChatParameter stringID;
-					stringID.setTT(entid);
+					stringID.setTT(entertainerID);
 					stringID.setStringId("performance", "music_listen_not_playing"); // %TT is not playing a song.
 					creature->sendSystemMessage(stringID);
 					return;
@@ -3072,7 +3113,7 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 		return;
 	} else if (!entertainer->isPlayingMusic()) {
 		StringIdChatParameter stringID;
-		stringID.setTT(entid);
+		stringID.setTT(entertainerID);
 		stringID.setStringId("performance", "music_listen_not_playing"); // %TT is not playing a song.
 		creature->sendSystemMessage(stringID);
 
@@ -3093,17 +3134,17 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 		stopListen(creature, listenID, false);
 	}
 
-	//sendEntertainmentUpdate(entid, "entertained");
+	//sendEntertainmentUpdate(entertainerID, "entertained");
 
-	entertainingSession->sendEntertainmentUpdate(creature, entid, "entertained");
-	entertainingSession->addListener(creature);
+	entertainingSession->sendEntertainmentUpdate(creature, entertainerID, "entertained");
+	entertainingSession->addPatron(creature);
 
 	entertainer->notifyObservers(ObserverEventType::WASLISTENEDTO, creature);
 
 	//creature->addWatcher(_this);
 
 	StringIdChatParameter stringID;
-	stringID.setTT(entid);
+	stringID.setTT(entertainerID);
 	stringID.setStringId("performance", "music_listen_self"); // "You start listening to %TT."
 	creature->sendSystemMessage(stringID);
 
@@ -3113,7 +3154,7 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 	creature->info("started listening to [" + entertainer->getCustomObjectName().toString() + "]");
 
 	creature->setListenToID(entertainer->getObjectID());
-	//watchID =  entid;
+	//watchID =  entertainerID;
 }
 
 
@@ -3616,7 +3657,7 @@ void PlayerManagerImplementation::addInsurableItemsRecursive(SceneObject* obj, S
 
 		TangibleObject* item = cast<TangibleObject*>( object);
 
-		if (item == nullptr || item->hasAntiDecayKit())
+		if (item == nullptr || item->hasAntiDecayKit() || item->isJediRobe() || item->isUnionRing())
 			continue;
 
 		if (!(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
@@ -3650,7 +3691,7 @@ SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getIn
 		if (container->isTangibleObject()) {
 			TangibleObject* item = cast<TangibleObject*>( container);
 
-			if (item == nullptr || item->hasAntiDecayKit())
+			if (item == nullptr || item->hasAntiDecayKit() || item->isJediRobe() || item->isUnionRing())
 				continue;
 
 			if (!(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
@@ -3664,6 +3705,37 @@ SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getIn
 	}
 
 	return insurableItems;
+}
+
+SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getInventoryItemsOfType(CreatureObject* player, int mask) {
+	SortedVector<ManagedReference<SceneObject*> > matchedItems;
+	matchedItems.setNoDuplicateInsertPlan();
+
+	if (player == nullptr)
+		return matchedItems;
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+
+	if ( inventory == nullptr )
+		return matchedItems;
+
+	for (int j = 0; j < inventory->getContainerObjectsSize(); j++) {
+		SceneObject* item = inventory->getContainerObject(j);
+
+		if (!item->isTangibleObject())
+			continue;
+
+		TangibleObject* tano = cast<TangibleObject*>( item);
+
+		if (tano == nullptr )
+			continue;
+
+		if ( (tano -> getGameObjectType()) & mask ) {
+			matchedItems.put(tano);
+		}
+	}
+
+	return matchedItems;
 }
 
 int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
@@ -3821,7 +3893,7 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	Locker locker(account);
 
 	account->setBanReason(reason);
-	account->setBanExpires(System::getMiliTime() + seconds * 1000);
+	account->setBanExpires(time(0) + seconds);
 	account->setBanAdmin(admin->getAccountID());
 
 	StringBuffer banResult;
@@ -4528,6 +4600,10 @@ void PlayerManagerImplementation::proposeUnity( CreatureObject* askingPlayer, Cr
 	// All checks passed
 	//
 
+	if (askingPlayer->getPosture() != CreaturePosture::CROUCHED) {
+		askingPlayer->setPosture(CreaturePosture::CROUCHED);
+	}
+
 	Locker rlocker( askingPlayer, respondingPlayer );
 
 	// Initialize session
@@ -4636,46 +4712,65 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer)
 		return;
 	}
 
-	bool hasRing = false;
+	ManagedReference<WearableObject*> wearable = nullptr;
+	Vector<WearableObject*> rings;
+
+	// Check proposal target for unequipped applicable rings
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-		ManagedReference<WearableObject*> wearable = cast<WearableObject*>(inventory->getContainerObject(i).get());
-		if (wearable != nullptr && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isEquipped()) {
-			hasRing = true;
+		wearable = cast<WearableObject*>(inventory->getContainerObject(i).get());
+
+		if (wearable != nullptr && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isNoTrade()) {
+			rings.add(wearable);
+		}
+	}
+
+	// Check equipped items for applicable rings
+	VectorMap<String, ManagedReference<SceneObject* > > slotted;
+	respondingPlayer->getSlottedObjects(slotted);
+
+	for (int i = 0; i < slotted.size(); ++i) {
+		SceneObject* object = slotted.get(i);
+
+		if (object != nullptr && object->isWearableObject() && object->getGameObjectType() == SceneObjectType::RING && !object->isNoTrade()) {
+			wearable = cast<WearableObject*>(object);
+
+			if (wearable != nullptr) {
+				rings.add(wearable);
+			}
 		}
 	}
 
 	// No ring found
-	if (!hasRing) {
+	if (rings.size() <= 0) {
 		askingPlayer->sendSystemMessage("@unity:accept_fail"); // "Your proposal target has no ring to offer in return."
 		respondingPlayer->sendSystemMessage("@unity:no_ring"); // "You cannot accept a unity proposal without a ring to offer."
 		cancelProposeUnitySession(respondingPlayer, askingPlayer);
 		return;
-	}
+	} else {
+		// Build and send list box for ring selection
+		ManagedReference<SuiListBox*> box = new SuiListBox(respondingPlayer, SuiWindowType::SELECT_UNITY_RING, SuiListBox::HANDLETWOBUTTON);
+		box->setCallback(new SelectUnityRingSuiCallback(server));
+		box->setPromptText("@unity:ring_prompt"); // "Select the ring you would like to offer, in return, for your unity."
+		box->setPromptTitle("Select Unity Ring");
+		box->setOkButton(true, "@ok");
+		box->setCancelButton(true, "@cancel");
 
-	// Build and send list box for ring selection
-	ManagedReference<SuiListBox*> box = new SuiListBox(respondingPlayer, SuiWindowType::SELECT_UNITY_RING, SuiListBox::HANDLETWOBUTTON);
-	box->setCallback(new SelectUnityRingSuiCallback(server));
-	box->setPromptText("@unity:ring_prompt"); // "Select the ring you would like to offer, in return, for your unity."
-	box->setPromptTitle("Select Unity Ring");
-	box->setOkButton(true, "@ok");
-	box->setCancelButton(true, "@cancel");
+		for (int i = 0; i < rings.size(); i++) {
+			WearableObject* ring = rings.get(i);
 
-	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-		ManagedReference<WearableObject*> wearable = cast<WearableObject*>(inventory->getContainerObject(i).get());
-		if (wearable != nullptr && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isEquipped() && !wearable->isNoTrade()) {
-			String itemName = wearable->getDisplayedName();
-			box->addMenuItem(itemName, wearable->getObjectID());
+			if (ring != nullptr) {
+				String itemName = ring->getDisplayedName();
+				box->addMenuItem(itemName, ring->getObjectID());
+			}
 		}
+
+		box->setUsingObject(respondingPlayer);
+		respondingPlayer->getPlayerObject()->addSuiBox(box);
+		respondingPlayer->sendMessage(box->generateMessage());
 	}
-
-	box->setUsingObject(respondingPlayer);
-	respondingPlayer->getPlayerObject()->addSuiBox(box);
-	respondingPlayer->sendMessage(box->generateMessage());
-
 }
 
 void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlayer, unsigned long long respondingPlayerRingId) {
-
 	if (respondingPlayer == nullptr )
 		return;
 
@@ -4705,9 +4800,10 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 		return;
 	}
 
-	// Find selected ring
+	// Check if Asking and Responding players Inventories are null
 	ManagedReference<SceneObject*> respondingPlayerInventory = respondingPlayer->getSlottedObject("inventory");
 	ManagedReference<SceneObject*> askingPlayerInventory = askingPlayer->getSlottedObject("inventory");
+
 	if (respondingPlayerInventory == nullptr || askingPlayerInventory == nullptr) {
 		respondingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
 		askingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
@@ -4715,47 +4811,101 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 		return;
 	}
 
-	// Find responder's ring
 	ManagedReference<WearableObject*> wearable = nullptr;
-	ManagedReference<WearableObject*> respondingRing = nullptr;
+	ManagedReference<WearableObject*> responderRing = nullptr;
+
+	// Find responder's ring -- unequipped items
 	for (int i = 0; i < respondingPlayerInventory->getContainerObjectsSize(); i++) {
 		wearable = cast<WearableObject*>(respondingPlayerInventory->getContainerObject(i).get());
-		if (wearable != nullptr && wearable->getObjectID() == respondingPlayerRingId && !wearable->isEquipped()) {
-			respondingRing = wearable;
+		if (wearable != nullptr && wearable->getObjectID() == respondingPlayerRingId) {
+			responderRing = wearable;
 			break;
 		}
 	}
 
-	// Find asker's ring
+	// If responderRing is null, check equipped items
+	if (responderRing == nullptr) {
+		VectorMap<String, ManagedReference<SceneObject* > > slotted;
+		respondingPlayer->getSlottedObjects(slotted);
+
+		for (int i = 0; i < slotted.size(); ++i) {
+			SceneObject* responderObject = slotted.get(i);
+
+			if (responderObject != nullptr && responderObject->isWearableObject() && responderObject->getGameObjectType() == SceneObjectType::RING) {
+				wearable = cast<WearableObject*>(responderObject);
+
+				if (wearable != nullptr && wearable->getObjectID() == respondingPlayerRingId) {
+					responderRing = wearable;
+					break;
+				}
+			}
+		}
+	}
+
+	// Find asker's ring -- unequipped items
 	wearable = nullptr;
-	ManagedReference<WearableObject*> askingRing = nullptr;
+	ManagedReference<WearableObject*> askerRing = nullptr;
 	for (int i = 0; i < askingPlayerInventory->getContainerObjectsSize(); i++) {
 		wearable = cast<WearableObject*>(askingPlayerInventory->getContainerObject(i).get());
-		if (wearable != nullptr && wearable->getObjectID() == proposeUnitySession->getAskingPlayerRing() && !wearable->isEquipped()) {
-			askingRing = wearable;
+		if (wearable != nullptr && wearable->getObjectID() == proposeUnitySession->getAskingPlayerRing()) {
+			askerRing = wearable;
 			break;
+		}
+	}
+
+	// If askerRing is null, check equipped items
+	if (askerRing == nullptr) {
+		VectorMap<String, ManagedReference<SceneObject* > > slotted;
+		askingPlayer->getSlottedObjects(slotted);
+
+		for (int i = 0; i < slotted.size(); ++i) {
+			SceneObject* askingObject = slotted.get(i);
+
+			if (askingObject != nullptr && askingObject->isWearableObject() && askingObject->getGameObjectType() == SceneObjectType::RING) {
+				wearable = cast<WearableObject*>(askingObject);
+
+				if (wearable != nullptr && wearable->getObjectID() == proposeUnitySession->getAskingPlayerRing()) {
+					askerRing = wearable;
+					break;
+				}
+			}
 		}
 	}
 
 
 	// Rings not found
-	if (respondingRing == nullptr || askingRing == nullptr) {
+	if (responderRing == nullptr) {
 		askingPlayer->sendSystemMessage("@unity:accept_fail"); // "Your proposal target has no ring to offer in return."
 		respondingPlayer->sendSystemMessage("@unity:no_ring"); // "You cannot accept a unity proposal without a ring to offer."
 		cancelProposeUnitySession(respondingPlayer, askingPlayer);
 		return;
+	} else if (askerRing == nullptr) {
+		respondingPlayer->sendSystemMessage("@unity:accept_fail"); // "Your proposal target has no ring to offer in return."
+		askingPlayer->sendSystemMessage("@unity:no_ring"); // "You cannot accept a unity proposal without a ring to offer."
+		cancelProposeUnitySession(respondingPlayer, askingPlayer);
+		return;
 	}
 
-	// Exchange rings
+	// Exchange rings, set Insured and set as Union Ring
 	ManagedReference<ObjectController*> objectController = server->getObjectController();
-	if (objectController->transferObject(askingRing, respondingPlayerInventory, -1, true, true)) { // Allow overflow
-		askingRing->sendDestroyTo(askingPlayer);
-		respondingPlayerInventory->broadcastObject(askingRing, true);
+	if (objectController->transferObject(askerRing, respondingPlayerInventory, -1, true, true)) { // Allow overflow
+		Locker aringlock(askerRing);
+		askerRing->sendDestroyTo(askingPlayer);
+
+		respondingPlayerInventory->broadcastObject(askerRing, true);
+
+		askerRing->setOptionsBitmask(OptionBitmask::INSURED);
+		askerRing->setUnionRing(true);
 	}
 
-	if (objectController->transferObject(respondingRing, askingPlayerInventory, -1, true, true)) { // Allow overflow
-		respondingRing->sendDestroyTo(respondingPlayer);
-		askingPlayerInventory->broadcastObject(respondingRing, true);
+	if (objectController->transferObject(responderRing, askingPlayerInventory, -1, true, true)) { // Allow overflow
+		Locker rringlock(responderRing);
+		responderRing->sendDestroyTo(respondingPlayer);
+
+		askingPlayerInventory->broadcastObject(responderRing, true);
+
+		responderRing->setOptionsBitmask(OptionBitmask::INSURED);
+		responderRing->setUnionRing(true);
 	}
 
 	// Set married
@@ -4824,6 +4974,50 @@ void PlayerManagerImplementation::grantDivorce(CreatureObject* player) {
 	if (playerGhost == nullptr || !playerGhost->isMarried())
 		return;
 
+	// Get & check players inventory
+	ManagedReference<SceneObject*> playerInventory = player->getSlottedObject("inventory");
+
+	if (playerInventory == nullptr) {
+		return;
+	}
+
+	// Check for unionRing and set false
+	ManagedReference<WearableObject*> wearable = nullptr;
+	ManagedReference<WearableObject*> ring = nullptr;
+
+	// Unequipped items
+	for (int i = 0; i < playerInventory->getContainerObjectsSize(); i++) {
+		wearable = cast<WearableObject*>(playerInventory->getContainerObject(i).get());
+		if (wearable != nullptr && wearable->isUnionRing()) {
+			ring = wearable;
+			break;
+		}
+	}
+
+	// If ring is null, check equipped items
+	if (ring == nullptr) {
+		VectorMap<String, ManagedReference<SceneObject* > > slotted;
+		player->getSlottedObjects(slotted);
+
+		for (int i = 0; i < slotted.size(); ++i) {
+			SceneObject* askingObject = slotted.get(i);
+
+			if (askingObject != nullptr && askingObject->isWearableObject() && askingObject->getGameObjectType() == SceneObjectType::RING) {
+				wearable = cast<WearableObject*>(askingObject);
+
+				if (wearable != nullptr && wearable->isUnionRing()) {
+					ring = wearable;
+					break;
+				}
+			}
+		}
+	}
+
+	if (ring != nullptr) {
+		Locker lock(ring);
+		ring->setUnionRing(false);
+	}
+
 	// Find spouse
 	CreatureObject* spouse = getPlayer(playerGhost->getSpouseName());
 
@@ -4846,6 +5040,47 @@ void PlayerManagerImplementation::grantDivorce(CreatureObject* player) {
 
 		msg.setTO(spouse->getFirstName());
 		player->sendSystemMessage(msg);
+
+		// Get spouses inventory
+		ManagedReference<SceneObject*> spouseInventory = spouse->getSlottedObject("inventory");
+
+		if (spouseInventory != nullptr) {
+			ring = nullptr;
+			wearable = nullptr;
+
+			// Check for Union Ring
+			for (int i = 0; i < spouse->getContainerObjectsSize(); i++) {
+				wearable = cast<WearableObject*>(spouseInventory->getContainerObject(i).get());
+				if (wearable != nullptr && wearable->isUnionRing()) {
+					ring = wearable;
+					break;
+				}
+			}
+
+			// If ring is null, check equipped items
+			if (ring == nullptr) {
+				VectorMap<String, ManagedReference<SceneObject* > > slotted;
+				spouse->getSlottedObjects(slotted);
+
+				for (int i = 0; i < slotted.size(); ++i) {
+					SceneObject* askingObject = slotted.get(i);
+
+					if (askingObject != nullptr && askingObject->isWearableObject() && askingObject->getGameObjectType() == SceneObjectType::RING) {
+						wearable = cast<WearableObject*>(askingObject);
+
+						if (wearable != nullptr && wearable->isUnionRing()) {
+							ring = wearable;
+							break;
+						}
+					}
+				}
+			}
+
+			if (ring != nullptr) {
+				Locker srlock(ring);
+				ring->setUnionRing(false);
+			}
+		}
 
 	} else {
 		// If spouse player is null (perhaps it's been deleted), we can still remove the spouse from the current player
@@ -5785,17 +6020,23 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
-		CreatureObject* attacker = threatMap->elementAt(i).getKey();
+		TangibleObject* attacker = threatMap->elementAt(i).getKey();
 
 		if (entry == nullptr || attacker == nullptr || attacker == player || !attacker->isPlayerCreature())
 			continue;
 
-		PlayerObject* attackerGhost = attacker->getPlayerObject();
+		CreatureObject* attackerCreo = attacker->asCreatureObject();
+
+		if (attackerCreo == nullptr) {
+			continue;
+		}
+
+		PlayerObject* attackerGhost = attackerCreo->getPlayerObject();
 
 		if (attackerGhost == nullptr)
 			continue;
 
-		Locker crossLock(attacker, player);
+		Locker crossLock(attackerCreo, player);
 
 		if (!allowSameAccountPvpRatingCredit && ghost->getAccountID() == attackerGhost->getAccountID())
 			continue;
@@ -5810,13 +6051,13 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 
 		if (highDamageAmount == 0 || entry->getTotalDamage() > highDamageAmount) {
 			highDamageAmount = entry->getTotalDamage();
-			highDamageAttacker = attacker;
+			highDamageAttacker = attackerCreo;
 		}
 
 		if (attackerGhost->hasOnVictimList(player->getObjectID())) {
 			String stringFile;
 
-			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
+			if (attackerCreo->getSpecies() == CreatureObject::TRANDOSHAN)
 				stringFile = "rating_throttle_trandoshan_winner";
 			else
 				stringFile = "rating_throttle_winner";
@@ -5824,16 +6065,16 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			StringIdChatParameter toAttacker;
 			toAttacker.setStringId("pvp_rating", stringFile);
 			toAttacker.setTT(player->getFirstName());
-			toAttacker.setTU(attacker->getObjectID());
+			toAttacker.setTU(attackerCreo->getObjectID());
 			toAttacker.setDI(curAttackerRating);
 
-			attacker->sendSystemMessage(toAttacker);
+			attackerCreo->sendSystemMessage(toAttacker);
 			continue;
 		}
 
 		if (defenderPvpRating <= PlayerObject::PVP_RATING_FLOOR) {
 			String stringFile;
-			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
+			if (attackerCreo->getSpecies() == CreatureObject::TRANDOSHAN)
 				stringFile = "rating_floor_trandoshan_winner";
 			else
 				stringFile = "rating_floor_winner";
@@ -5843,17 +6084,17 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			toAttacker.setTT(player->getFirstName());
 			toAttacker.setDI(curAttackerRating);
 
-			attacker->sendSystemMessage(toAttacker);
+			attackerCreo->sendSystemMessage(toAttacker);
 		}
 
 		float damageContribution = (float) entry->getTotalDamage() / totalDamage;
 
-		if (frsManager != nullptr && frsManager->isFrsEnabled() && frsManager->isValidFrsBattle(attacker, player)) {
-			int attackerFrsXp = frsManager->calculatePvpExperienceChange(attacker, player, damageContribution, false);
-			int victimFrsXp = frsManager->calculatePvpExperienceChange(attacker, player, damageContribution, true);
+		if (frsManager != nullptr && frsManager->isFrsEnabled() && frsManager->isValidFrsBattle(attackerCreo, player)) {
+			int attackerFrsXp = frsManager->calculatePvpExperienceChange(attackerCreo, player, damageContribution, false);
+			int victimFrsXp = frsManager->calculatePvpExperienceChange(attackerCreo, player, damageContribution, true);
 			frsXpAdjustment += victimFrsXp;
 
-			ManagedReference<CreatureObject*> attackerRef = attacker;
+			ManagedReference<CreatureObject*> attackerRef = attackerCreo;
 			if (attackerFrsXp > 0) {
 				Core::getTaskManager()->executeTask([attackerRef, frsManager, attackerFrsXp] () {
 					Locker locker(attackerRef);
@@ -5893,7 +6134,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			String stringFile;
 
 			int randNum = System::random(2) + 1;
-			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
+			if (attackerCreo->getSpecies() == CreatureObject::TRANDOSHAN)
 				stringFile = "trandoshan_win" + String::valueOf(randNum);
 			else
 				stringFile = "win" + String::valueOf(randNum);
@@ -5903,7 +6144,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			toAttacker.setTT(player->getFirstName());
 			toAttacker.setDI(newRating);
 
-			attacker->sendSystemMessage(toAttacker);
+			attackerCreo->sendSystemMessage(toAttacker);
 		}
 	}
 

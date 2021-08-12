@@ -36,13 +36,22 @@ public:
 
 			auto creo = object->asCreatureObject();
 
-			if (creo != nullptr)
-				creo->error(msg.toString());
-			else
-				object->error(msg.toString());
-		}
+			if (creo != nullptr) {
+				creo->info(msg.toString());
 
+				if (creo->isPlayerCreature()) {
+					PlayerObject* ghost = creo->getPlayerObject();
+
+					if (ghost != nullptr) {
+						ghost->setForcedTransform(true);
+					}
+				}
+			} else {
+				object->info(msg.toString());
+			}
+		}
 		object->teleport(x, z, y);
+		object->updateZone(true, true);
 	}
 };
 

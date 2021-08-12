@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dish_fire_stew = object_draft_schematic_food_shared_dish_fire_stew:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_fire_stew, "object/draft_schematic/food/dish_fire_stew.iff")

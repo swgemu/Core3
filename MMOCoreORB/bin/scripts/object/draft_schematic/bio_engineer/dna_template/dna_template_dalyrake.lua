@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_bio_engineer_dna_template_dna_template_dalyrake = object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_dna_template_dalyrake, "object/draft_schematic/bio_engineer/dna_template/dna_template_dalyrake.iff")

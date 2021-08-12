@@ -13,43 +13,40 @@
 int DroidPlaybackObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	// check params we should have the player around here
 	SceneObject* sceno = dynamic_cast<SceneObject*>(arg1);
-	if (sceno == nullptr) {
-		return 1;
-	}
 
-	if(!sceno->isPlayerCreature()) {
+	if (sceno == nullptr)
 		return 1;
-	}
+
+	if(!sceno->isPlayerCreature())
+		return 1;
 
 	CreatureObject* player = dynamic_cast<CreatureObject*>(sceno);
-	if (player == nullptr) {
+
+	if (player == nullptr)
 		return 1;
-	}
 
 	// make a task and lock the module to run it.
 
 	if (eventType == ObserverEventType::STARTENTERTAIN) {
 		ManagedReference<EntertainingSession*> playingSession = player->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
-		if(playingSession == nullptr) {
+
+		if(playingSession == nullptr)
 			return 1;
-		}
 
-		if(!playingSession->isPlayingMusic()) {
+		if(!playingSession->isPlayingMusic())
 			return 1;
-		}
 
-		String song = playingSession->getPerformanceName();
-		int instrument = playingSession->getInstrument(player)->getInstrumentType();
+		int perfIndex = playingSession->getPerformanceIndex();
 
-		Reference<Task*> task = new DroidPlaybackEvent(module.get(), player, song, instrument, DroidPlaybackEvent::SET_TRACK);
+		Reference<Task*> task = new DroidPlaybackEvent(module.get(), player, perfIndex, DroidPlaybackEvent::SET_TRACK);
 		task->execute();
 	}
 	else if (eventType == ObserverEventType::CHANGEENTERTAIN) {
-		Reference<Task*> task = new DroidPlaybackEvent(module.get(), player, "", -1, DroidPlaybackEvent::CHANGE_SONG);
+		Reference<Task*> task = new DroidPlaybackEvent(module.get(), player, 0, DroidPlaybackEvent::CHANGE_SONG);
 		task->execute();
 	}
 	else if (eventType == ObserverEventType::STOPENTERTAIN) {
-		Reference<Task*> task = new DroidPlaybackEvent(module.get(), player, "", -1, DroidPlaybackEvent::STOP_PLAYING);
+		Reference<Task*> task = new DroidPlaybackEvent(module.get(), player, 0, DroidPlaybackEvent::STOP_PLAYING);
 		task->execute();
 	}
 

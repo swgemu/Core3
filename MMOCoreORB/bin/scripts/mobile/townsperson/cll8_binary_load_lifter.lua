@@ -1,7 +1,7 @@
 cll8_binary_load_lifter = Creature:new {
 	objectName = "@mob/creature_names:cll8_binary_load_lifter",
 	socialGroup = "townsperson",
-	faction = "townsperson",
+	faction = "",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -20,14 +20,12 @@ cll8_binary_load_lifter = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
-	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = NONE,
+	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/cll8_binary_load_lifter.iff"
-	},		
+	templates = {"object/mobile/cll8_binary_load_lifter.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)

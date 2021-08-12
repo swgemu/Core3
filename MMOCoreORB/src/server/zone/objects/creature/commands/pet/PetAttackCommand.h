@@ -61,7 +61,7 @@ public:
 		if (player == nullptr)
 			return GENERALERROR;
 
-		if (player->isSwimming()) {
+		if (player->isSwimming() || pet->isSwimming()) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}

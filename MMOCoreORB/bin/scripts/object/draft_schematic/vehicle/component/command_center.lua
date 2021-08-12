@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_command_center = object_draft_schematic_vehicle_component_shared_command_center:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_command_center, "object/draft_schematic/vehicle/component/command_center.iff")

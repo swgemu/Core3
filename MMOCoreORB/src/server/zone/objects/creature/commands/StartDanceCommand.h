@@ -18,52 +18,19 @@ public:
 
 	}
 
-	static void startDance(CreatureObject* creature, const String& dance,
-			const String& animation) {
-		ManagedReference<Facade*> facade = creature->getActiveSession(
-				SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session =
-				dynamic_cast<EntertainingSession*> (facade.get());
+	static void startDance(CreatureObject* creature, int performanceIndex) {
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
 
 		if (session == nullptr) {
 			session = new EntertainingSession(creature);
 			creature->addActiveSession(SessionFacadeType::ENTERTAINING, session);
 		}
 
-		session->startDancing(dance, animation);
+		session->startDancing(performanceIndex);
 	}
 
-	static void sendAvailableDances(CreatureObject* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::DANCING_START) {
-		ManagedReference<SuiListBox*> sui = new SuiListBox(player, suiType);
-		sui->setPromptTitle("@performance:available_dances");
-		sui->setPromptText("@performance:select_dance");
-
-		const AbilityList* list = ghost->getAbilityList();
-
-		for (int i = 0; i < list->size(); ++i) {
-			const Ability* ability = list->get(i);
-
-			String abilityName = ability->getAbilityName();
-
-			if (abilityName.indexOf("startDance") != -1) {
-				int args = abilityName.indexOf("+");
-
-				if (args != -1) {
-					String arg = abilityName.subString(args + 1);
-
-					sui->addMenuItem(arg);
-				}
-			}
-		}
-
-		ghost->addSuiBox(sui);
-		player->sendMessage(sui->generateMessage());
-
-		return;
-	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target,
-			const UnicodeString& arguments) const {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -74,56 +41,41 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = cast<CreatureObject*> (creature);
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
 
-		ManagedReference<Facade*> facade = creature->getActiveSession(
-				SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session =
-				dynamic_cast<EntertainingSession*> (facade.get());
-
-		if (session != nullptr) {
-			if (session->isPlayingMusic()) {
-				session->stopPlayingMusic();
-			}
-
-			if (session->isDancing()) {
-				creature->sendSystemMessage(
-						"@performance:already_performing_self");
-
-				return GENERALERROR;
-			}
+		if (session != nullptr && (session->isPlayingMusic() || session->isDancing())) {
+			creature->sendSystemMessage("@performance:already_performing_self"); // You are already performing.
+			return GENERALERROR;
 		}
 
-		Reference<PlayerObject*> ghost =
-				creature->getSlottedObject(
-						"ghost").castTo<PlayerObject*> ();
+		Reference<PlayerObject*> ghost = creature->getPlayerObject();
 
 		if (ghost == nullptr)
 			return GENERALERROR;
 
 		String args = arguments.toString();
 
-		PerformanceManager* performanceManager =
-				SkillManager::instance()->getPerformanceManager();
+		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 
-		if (args.length() < 2) {
-			sendAvailableDances(player, ghost);
+		if (args.length() < 1) {
+			performanceManager->sendAvailablePerformances(creature, PerformanceType::DANCE, false);
 			return SUCCESS;
 		}
 
-		String fullString = String("startDance") + "+" + args;
+		int performanceIndex = performanceManager->getPerformanceIndex(PerformanceType::DANCE, args, 0);
 
-		if (!ghost->hasAbility(fullString)) {
-			creature->sendSystemMessage("@performance:dance_lack_skill_self");
+		if (performanceIndex == 0) {
+			creature->sendSystemMessage("@performance:dance_unknown_self"); // You do not know that dance.
 			return GENERALERROR;
 		}
 
-		if (!performanceManager->hasDanceAnimation(args)) {
-			creature->sendSystemMessage("@performance:dance_lack_skill_self");
+		if (!performanceManager->canPerformDance(creature, performanceIndex)) {
+			creature->sendSystemMessage("@performance:dance_lack_skill_self"); // You do not have the skill to perform the dance.
 			return GENERALERROR;
 		}
 
-		startDance(creature, args, performanceManager->getDanceAnimation(args));
+		startDance(creature, performanceIndex);
 
 		return SUCCESS;
 	}

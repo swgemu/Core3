@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_charisma = object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma:new {
-
+    factoryCrateType = "object/factory/factory_crate_chemicals.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_charisma, "object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_charisma.iff")

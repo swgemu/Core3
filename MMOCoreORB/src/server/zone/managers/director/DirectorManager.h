@@ -93,6 +93,7 @@ namespace server {
 
 		String readStringSharedMemory(const String& key);
 		uint64 readSharedMemory(const String& key);
+		Vector3 readVector3SharedMemory(const String& key);
 
 		QuestVectorMap* getQuestVectorMap(const String& keyString);
 		QuestVectorMap* createQuestVectorMap(const String& keyString);
@@ -138,6 +139,9 @@ namespace server {
 		static int readStringSharedMemory(lua_State* L);
 		static int writeStringSharedMemory(lua_State* L);
 		static int deleteStringSharedMemory(lua_State* L);
+		static int readVector3SharedMemory(lua_State* L);
+		static int writeVector3SharedMemory(lua_State* L);
+		static int deleteVector3SharedMemory(lua_State* L);
 		static int getSceneObject(lua_State* L);
 		static int getCreatureObject(lua_State* L);
 		static int addStartingItemsInto(lua_State* L);
@@ -198,6 +202,7 @@ namespace server {
 		static int spawnTheaterObject(lua_State* L);
 		static int getSchematicItemName(lua_State* L);
 		static int getBadgeListByType(lua_State* L);
+		static int getGalaxyName(lua_State* L);
 
 	private:
 		static void setupLuaPackagePath(Lua* luaEngine);

@@ -51,7 +51,8 @@ object_draft_schematic_structure_component_structure_heavy_harvesting_mechanism 
 	complexity = 16,
 	size = 8,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 1340,
 

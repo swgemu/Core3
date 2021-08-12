@@ -71,6 +71,13 @@ public:
 	NpcSpawnPoint* addSpawnPoint(uint32 planetCRC, Reference<NpcSpawnPoint* > npc);
 
 	/**
+	 * Remove a spawn point from the specified planet.
+	 * @param planetCRC the CRC of the planet name.
+	 * @param npc the NPC to remote.
+	 */
+	void removeSpawnPoint(uint32 planetCRC, NpcSpawnPoint* npc);
+
+	/**
 	 * Finds a spawn point on a certain location.
 	 * @param planetCRC the CRC of the planet name.
 	 * @param position the position to search.

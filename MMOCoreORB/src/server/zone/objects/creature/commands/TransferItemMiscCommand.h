@@ -153,17 +153,48 @@ public:
 			}
 		}
 
+		// Check for any parent that is containerType == NONE
+		for (auto parent = objectToTransfer->getParent().get(); parent != nullptr; parent = parent->getParent().get()) {
+			Locker lock(parent);
+
+			if (parent->getContainerType() == ContainerType::NONE) {
+				creature->error() << "Trying to remove object from containerType==NONE: oid " << parent->getObjectID();
+				trx.abort() << "Attempted to transfer from containerType == NONE";
+				creature->sendSystemMessage("@error_message:perm_no_move");
+				return GENERALERROR;
+			}
+		}
+
 		Zone* zoneObject = objectToTransfer->getZone();
 
 		if (zoneObject != nullptr) {
 			ManagedReference<SceneObject*> rootParent = objectToTransfer->getRootParent();
+			ManagedReference<SceneObject*> parent = objectToTransfer->getParent().get();
 
-			float maxDistance = 12.5;
+			float maxDistance =  16.5;
 
-			if (!rootParent->isBuildingObject()) {
-				if (rootParent->getDistanceTo(creature) > maxDistance) {
-					trx.abort() << "Too far from root: " << (int)rootParent->getDistanceTo(creature);
+			if (rootParent != nullptr && !rootParent->isBuildingObject() && parent != nullptr && !parent->isBuildingObject()) {
+				float rootDist = rootParent->getDistanceTo(creature);
+
+				if (rootDist > maxDistance) { // Handles Hoppers in Factories
+					trx.abort() << "Too far from root: " << (int)rootDist;
 					return TOOFAR;
+				}
+
+				ManagedReference<SceneObject*> destParent = destinationObject->getParent().get();
+
+				if (destParent != nullptr) {
+					if (destParent->isCellObject()) {
+						destParent = destinationObject;
+					}
+
+					float destDistance = destParent->getDistanceTo(creature);
+					ManagedReference<SceneObject*> destGrandParent = destParent->getParent().get();
+
+					if (((destinationObject->isContainerObject() && destGrandParent != nullptr && destGrandParent->isCellObject()) || destParent->isInstallationObject() || destParent->isCraftingStation()) && destDistance > maxDistance) {
+						trx.abort() << "Too far from root: " << (int)destinationObject->getParent().get()->getDistanceTo(creature);
+						return TOOFAR;
+					}
 				}
 			} else {
 				ManagedReference<SceneObject*> par = nullptr;
@@ -174,14 +205,52 @@ public:
 					return INVALIDTARGET;
 				}
 
+				// Container Inside Cell to Player Transfer
+
 				while ((par = obj->getParent().get()) != nullptr) {
 					if (par->isCellObject()) {
-						if (obj->getDistanceTo(creature) > maxDistance) {
-							trx.abort() << "Too far from creature: " << (int)obj->getDistanceTo(creature);
+						float distance = obj->getDistanceTo(creature);
+
+						if (distance > maxDistance) {
+							trx.abort() << "Too far from creature: " << (int)distance;
 							return TOOFAR;
-						}
-						else
+						} else {
 							break;
+						}
+					} else {
+						obj = par;
+					}
+				}
+
+				// Player Inside Cell to Container Transfer
+
+				obj = objectToTransfer;
+
+				while ((par = obj->getParent().get()) != nullptr) {
+					if (par == creature) {
+						ManagedReference<SceneObject*> destPar = destinationObject->getParent().get();
+
+						if (destPar != nullptr) {
+							ManagedReference<SceneObject*> destGrandParent = destPar->getParent().get();
+							ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+							if (destPar == creature || destinationObject->isCellObject() || (destGrandParent != nullptr && inventory != nullptr && (destGrandParent == inventory || destPar == inventory))) {
+								break;
+							} else if (destPar->isCellObject()) {
+								destPar = destinationObject;
+							}
+
+							float distance = destPar->getDistanceTo(creature);
+
+							if (distance > maxDistance) {
+								trx.abort() << "Too far from creature: " << (int)distance;
+								return TOOFAR;
+							} else {
+								break;
+							}
+						} else {
+							break;
+						}
 					} else {
 						obj = par;
 					}
@@ -250,7 +319,7 @@ public:
 
 		bool notifyLooted = (objectToTransfer->getParentRecursively(SceneObjectType::CREATURE) != nullptr || objectToTransfer->getParentRecursively(SceneObjectType::NPCCREATURE) != nullptr);
 
-		bool notifyContainerContentsChanged = (objectToTransfer->getParentRecursively(SceneObjectType::STATICLOOTCONTAINER) != nullptr);
+		bool notifyContainerContentsChanged = (objectToTransfer->getParentRecursively(SceneObjectType::STATICLOOTCONTAINER) != nullptr || (objectToTransfer->getParentRecursively(SceneObjectType::CONTAINER)) != nullptr);
 
 		Locker clocker(objectsParent, creature);
 
@@ -284,4 +353,3 @@ public:
 };
 
 #endif //TRANSFERITEMMISCCOMMAND_H_
-

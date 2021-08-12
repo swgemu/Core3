@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_structure_corellia_house_player_medium_style_02 = object_draft_schematic_structure_shared_corellia_house_player_medium_style_02:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_corellia_house_player_medium_style_02, "object/draft_schematic/structure/corellia_house_player_medium_style_02.iff")

@@ -118,10 +118,17 @@ class ActiveArea extends SceneObject {
 
 	@read
 	public float getRadius2() {
+		float radius = getRadius();
+
+		return radius * radius;
+	}
+
+	@read
+	public float getRadius() {
 		if (areaShape) {
-			return areaShape.getRadius() * areaShape.getRadius();
+			return areaShape.getRadius();
 		} else {
-			return super.getRadius() * super.getRadius();
+			return super.getRadius();
 		}
 	}
 
@@ -191,6 +198,11 @@ class ActiveArea extends SceneObject {
 	@read
 	public AreaShape getAreaShape() {
 		return areaShape;
+	}
+	
+	@read
+	public boolean isRectangularAreaShape() {
+		return areaShape && areaShape.isRectangularAreaShape();
 	}
 
 	@read

@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dessert_ryshcate = object_draft_schematic_food_shared_dessert_ryshcate:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_ryshcate, "object/draft_schematic/food/dessert_ryshcate.iff")

@@ -50,7 +50,8 @@ object_draft_schematic_food_drink_starshine_surprise = object_draft_schematic_fo
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 5, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_food.iff",
+   
    xpType = "crafting_general", 
    xp = 80, 
 

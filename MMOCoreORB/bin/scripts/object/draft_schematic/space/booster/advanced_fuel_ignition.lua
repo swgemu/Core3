@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_space_booster_advanced_fuel_ignition = object_draft_schematic_space_booster_shared_advanced_fuel_ignition:new {
-
+    factoryCrateType = "object/factory/factory_crate_generic_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_advanced_fuel_ignition, "object/draft_schematic/space/booster/advanced_fuel_ignition.iff")

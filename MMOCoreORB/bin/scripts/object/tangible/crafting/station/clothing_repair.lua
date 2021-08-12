@@ -51,7 +51,7 @@ object_tangible_crafting_station_clothing_repair = object_tangible_crafting_stat
 	boostSkillMod = "clothing_repair",
 
 	stationType = 1,
-
+	useCount = 5,
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},

@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_clothing_clothing_pants_formal_38 = object_draft_schematic_clothing_shared_clothing_pants_formal_38:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_pants_formal_38, "object/draft_schematic/clothing/clothing_pants_formal_38.iff")

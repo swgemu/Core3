@@ -47,8 +47,8 @@ namespace login {
 			return session->getIPAddress();
 		}
 
-		void sendMessage(Message* msg) {
-			session->sendPacket(cast<BasePacket*>(msg));
+		void sendMessage(BasePacket* msg) {
+			session->sendPacket(msg);
 		}
 
 		void sendErrorMessage(const String& title, const String& text, bool fatal = false, bool sendDisconnect = true) {

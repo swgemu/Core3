@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_clothing_clothing_armor_bounty_hunter_belt = object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_belt:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_bounty_hunter_belt, "object/draft_schematic/clothing/clothing_armor_bounty_hunter_belt.iff")

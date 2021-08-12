@@ -12,7 +12,7 @@ ShuttleDropoff = {
 
 	shuttleTemplate = {
 		"object/creature/npc/theme_park/lambda_shuttle.iff",
-		"object/creature/npc/theme_park/player_shuttle.iff",
+		"object/creature/npc/theme_park/player_shuttle2.iff",
 		"object/creature/npc/theme_park/player_transport.iff",
 		"object/creature/npc/theme_park/player_transport_theed_hangar.iff"
 	},

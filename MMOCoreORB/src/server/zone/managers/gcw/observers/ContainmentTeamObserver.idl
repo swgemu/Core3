@@ -1,0 +1,55 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.managers.gcw.observers;
+
+import server.zone.objects.creature.ai.AiAgent;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.TangibleObject;
+import engine.core.ManagedObject;
+import engine.util.Observer;
+import engine.util.Observable;
+import system.thread.Mutex;
+
+include engine.log.Logger;
+include system.util.Vector;
+include engine.util.u3d.Vector3;
+
+class ContainmentTeamObserver extends Observer implements Logger {
+
+	@local
+	@dereferenced
+	protected Vector<AiAgent> teamMembers;
+
+	@dereferenced
+	protected transient Mutex containmentTeamLock;
+
+	public ContainmentTeamObserver() {
+		super();
+
+		Logger.setLoggingName("ContainmentTeamObserver");
+	}
+
+	@local
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+
+    @local
+	public native void addMember(AiAgent member);
+
+    @local
+	public native int size();
+
+    @local
+	public native AiAgent getMember(unsigned int teamMemberIndex);
+
+    @local
+	public native void removeMember(unsigned int teamMemberIndex);
+
+    @local
+	public native boolean despawnMembersCloseToLambdaShuttle(@dereferenced final Vector3 landingPosition, boolean forcedCleanup);
+
+    @local
+	public native void attack(TangibleObject object);
+}

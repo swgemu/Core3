@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_drink_angerian_fishak_surprise = object_draft_schematic_food_shared_drink_angerian_fishak_surprise:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_angerian_fishak_surprise, "object/draft_schematic/food/drink_angerian_fishak_surprise.iff")

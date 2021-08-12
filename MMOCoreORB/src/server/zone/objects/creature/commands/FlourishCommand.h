@@ -15,8 +15,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target,
-			const UnicodeString& arguments) const {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -24,55 +23,50 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<Facade*> facade = creature->getActiveSession(
-				SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session =
-				dynamic_cast<EntertainingSession*> (facade.get());
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
-		if (session == nullptr) {
-			creature->sendSystemMessage("@performance:flourish_not_performing");
-			return GENERALERROR;
-		}
-
-		if (!session->isDancing() && !session->isPlayingMusic()) {
+		if (session == nullptr || (!session->isDancing() && !session->isPlayingMusic())) {
 			creature->sendSystemMessage("@performance:flourish_not_performing");
 			return GENERALERROR;
 		}
 
 		String args = arguments.toString();
 
-		int mod = Integer::valueOf(args);
+		int index = Integer::valueOf(args);
 
-		Reference<PlayerObject*> ghost =
-						creature->getSlottedObject(
-								"ghost").castTo<PlayerObject*> ();
+		if (index < 1 || index > 8) {
+			creature->sendSystemMessage("@performance:flourish_not_valid"); // That is not a valid flourish.
+			return GENERALERROR;
+		}
+
+		Reference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == nullptr)
+			return GENERALERROR;
 
 		String fullString = String("flourish") + "+" + args;
 
 		if (!ghost->hasAbility(fullString)) {
-			creature->sendSystemMessage("@performance:flourish_not_valid");
+			creature->sendSystemMessage("@performance:flourish_not_valid"); // 	That is not a valid flourish.
 			return GENERALERROR;
 		}
 
-		session->doFlourish(mod, true);
+		session->doFlourish(index, true);
 
 		return SUCCESS;
 	}
 
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
-		ManagedReference<Facade*> facade = object->getActiveSession(
-				SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session =
-				dynamic_cast<EntertainingSession*> (facade.get());
+	float getCommandDuration(CreatureObject* creature, const UnicodeString& arguments) const {
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 		if (session == nullptr)
 			return 0.0f;
 
 		int knowledgeSkillMod = 0;
 		if (session->isPlayingMusic()) {
-			knowledgeSkillMod = object->getSkillMod("healing_music_ability");
+			knowledgeSkillMod = creature->getSkillMod("healing_music_ability");
 		} else if (session->isDancing()) {
-			knowledgeSkillMod = object->getSkillMod("healing_dance_ability");
+			knowledgeSkillMod = creature->getSkillMod("healing_dance_ability");
 		} else {
 			return 0.0f;
 		}

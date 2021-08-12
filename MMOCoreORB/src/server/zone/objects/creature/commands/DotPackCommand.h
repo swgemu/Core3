@@ -59,11 +59,59 @@ public:
 		creature->broadcastMessage(action, true);
 	}
 
-	void parseModifier(const String& modifier, uint64& objectId) const {
-		if (!modifier.isEmpty())
-			objectId = Long::valueOf(modifier);
-		else
+	DotPack* findDotPack(CreatureObject* creature, uint8 pool, bool poolGiven) const {
+		SceneObject* inventory = creature->getSlottedObject("inventory");
+
+		if (inventory == nullptr) {
+			return nullptr;
+		}
+
+		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+			SceneObject* item = inventory->getContainerObject(i);
+
+			if (!item->isDotPackObject()) {
+				continue;
+			}
+
+			DotPack* pack = cast<DotPack*>(item);
+
+			if ((skillName == "applypoison") && pack->isPoisonDeliveryUnit()) {
+				if (!poolGiven) {
+					return pack;
+				} else if (pack->getPool() == pool) {
+					return pack;
+				}
+			}
+
+			if ((skillName == "applydisease") && pack->isDiseaseDeliveryUnit()) {
+				if (!poolGiven) {
+					return pack;
+				} else if (pack->getPool() == pool) {
+					return pack;
+				}
+			}
+		}
+
+		return nullptr;
+	}
+
+	void parseModifier(const String& modifier, uint8& pool, uint64& objectId) const {
+		if (!modifier.isEmpty()) {
+			StringTokenizer tokenizer(modifier);
+			tokenizer.setDelimeter("|");
+
+			String poolName;
+
+			tokenizer.getStringToken(poolName);
+			pool = BuffAttribute::getAttribute(poolName);
+
+			if (tokenizer.hasMoreTokens()) {
+				objectId = tokenizer.getLongToken();
+			}
+		} else {
+			pool = BuffAttribute::UNKNOWN;
 			objectId = 0;
+		}
 	}
 
 	bool checkTarget(CreatureObject* creature, CreatureObject* targetCreature, uint32 dotType) const {
@@ -75,6 +123,10 @@ public:
 
 		if (creature != targetCreature && !CollisionManager::checkLineOfSight(creature, targetCreature))
 			return false;
+
+		if (!playerEntryCheck(creature, targetCreature)) {
+			return false;
+		}
 
 		return true;
 	}
@@ -120,30 +172,6 @@ public:
 
 				if (areaCenter->getWorldPosition().distanceTo(object->getWorldPosition()) - object->getTemplateRadius() > range)
 					continue;
-
-				if (creature->isPlayerCreature() && object->getParentID() != 0 && creature->getParentID() != object->getParentID()) {
-					Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
-
-					if (targetCell != nullptr) {
-						if (object->isPlayerCreature()) {
-							auto perms = targetCell->getContainerPermissions();
-
-							if (!perms->hasInheritPermissionsFromParent()) {
-								if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN))
-									continue;
-							}
-						}
-
-						ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
-
-						if (parentSceneObject != nullptr) {
-							BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
-
-							if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature))
-								continue;
-						}
-					}
-				}
 
 				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
 
@@ -196,10 +224,9 @@ public:
 		}
 
 		if (dotDMG) {
-			awardXp(creature, "medical", dotDMG); //No experience for healing yourself.
+			awardXp(creature, "medical", dotDMG); // No experience for healing yourself.
 
-			creatureTarget->addDefender(creature);
-			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "");
+			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "dotDMG");
 			creature->addDefender(creatureTarget);
 		} else {
 			StringIdChatParameter stringId("dot_message", "dot_resisted");
@@ -253,19 +280,32 @@ public:
 		if (object == nullptr || !object->isCreatureObject() || creature == object)
 			return INVALIDTARGET;
 
+
+		uint8 pool = BuffAttribute::UNKNOWN;
+		bool poolGiven = false;
 		uint64 objectId = 0;
 
-		parseModifier(arguments.toString(), objectId);
-		ManagedReference<DotPack*> dotPack = nullptr;
+		ManagedReference<DotPack*> dotPack;
 
-		SceneObject* inventory = creature->getSlottedObject("inventory");
+		parseModifier(arguments.toString(), pool, objectId);
 
-		if (inventory != nullptr) {
-			dotPack = inventory->getContainerObject(objectId).castTo<DotPack*>();
+		if (objectId == 0) {
+			if (pool != BuffAttribute::UNKNOWN) {
+				poolGiven = true;
+			}
+
+			dotPack = findDotPack(creature, pool, poolGiven);
+		} else {
+			SceneObject* inventory = creature->getSlottedObject("inventory");
+
+			if (inventory != nullptr) {
+				dotPack = inventory->getContainerObject(objectId).castTo<DotPack*>();
+			}
 		}
 
-		if (dotPack == nullptr)
+		if (dotPack == nullptr) {
 			return GENERALERROR;
+		}
 
 		PlayerManager* playerManager = server->getPlayerManager();
 		CombatManager* combatManager = CombatManager::instance();
@@ -274,6 +314,10 @@ public:
 
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
 			creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
+			return GENERALERROR;
+		}
+
+		if (!playerEntryCheck(creature, creatureTarget)) {
 			return GENERALERROR;
 		}
 
@@ -378,8 +422,8 @@ public:
 		}
 
 		if (dotDMG) {
-			awardXp(creature, "medical", dotDMG); //No experience for healing yourself.
-			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "");
+			awardXp(creature, "medical", dotDMG); // No experience for healing yourself.
+			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "dotDMG");
 		} else {
 			StringIdChatParameter stringId("dot_message", "dot_resisted");
 			stringId.setTT(creatureTarget->getObjectID());
@@ -390,8 +434,6 @@ public:
 
 			creatureTarget->sendSystemMessage(stringId2);
 		}
-
-		checkForTef(creature, creatureTarget);
 
 		if (dotPack->isArea()) {
 			if (creatureTarget != creature)
@@ -406,6 +448,18 @@ public:
 
 			Locker dlocker(dotPack, creature);
 			dotPack->decreaseUseCount();
+		}
+
+		if (creature->isPlayerCreature()) {
+			bool shouldGcwCrackdownTef = false, shouldGcwTef = false, shouldBhTef = false;
+
+			CombatManager::instance()->checkForTefs(creature, creatureTarget, &shouldGcwCrackdownTef, &shouldGcwTef, &shouldBhTef);
+
+			PlayerObject* ghost = creature->getPlayerObject().get();
+
+			if (ghost != nullptr) {
+				ghost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
+			}
 		}
 
 		doAnimationsRange(creature, creatureTarget, dotPack->getObjectID(), creature->getWorldPosition().distanceTo(creatureTarget->getWorldPosition()), dotPack->isArea());

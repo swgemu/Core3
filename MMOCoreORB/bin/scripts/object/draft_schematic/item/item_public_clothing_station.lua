@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_item_item_public_clothing_station = object_draft_schematic_item_shared_item_public_clothing_station:new {
-
+    factoryCrateType = "object/factory/factory_crate_electronics.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_public_clothing_station, "object/draft_schematic/item/item_public_clothing_station.iff")

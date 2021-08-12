@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_knife_stone = object_draft_schematic_weapon_shared_knife_stone:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_knife_stone, "object/draft_schematic/weapon/knife_stone.iff")

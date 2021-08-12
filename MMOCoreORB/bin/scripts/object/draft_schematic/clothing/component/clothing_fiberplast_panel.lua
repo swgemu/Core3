@@ -51,6 +51,7 @@ object_draft_schematic_clothing_component_clothing_fiberplast_panel = object_dra
 	complexity = 5,
 	size = 2,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_clothing.iff",
 
 	xpType = "crafting_general",
 	xp = 20,

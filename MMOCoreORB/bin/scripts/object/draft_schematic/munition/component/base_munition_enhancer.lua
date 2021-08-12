@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_munition_component_base_munition_enhancer = object_draft_schematic_munition_component_shared_base_munition_enhancer:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_base_munition_enhancer, "object/draft_schematic/munition/component/base_munition_enhancer.iff")

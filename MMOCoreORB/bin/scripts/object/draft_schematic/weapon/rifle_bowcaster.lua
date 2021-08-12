@@ -50,7 +50,8 @@ object_draft_schematic_weapon_rifle_bowcaster = object_draft_schematic_weapon_sh
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 28, 
    size = 3, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 250, 
 

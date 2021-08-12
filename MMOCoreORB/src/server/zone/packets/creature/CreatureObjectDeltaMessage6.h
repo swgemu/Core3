@@ -48,14 +48,14 @@ public:
 		addAsciiUpdate(0x04, creo->getMoodString());
 	}
 
-	void updateInstrumentID(int value) {
+	void updatePerformanceType(int value) {
 		startUpdate(0x0C);
 		insertInt(value);
 	}
 
-	void updatePerformanceCounter(uint32 pCounter) {
+	void updatePerformanceStartTime(uint32 startTime) {
 		startUpdate(0x0B);
-		insertInt(pCounter);
+		insertInt(startTime);
 	}
 
 	void updatePerformanceAnimation(const String& pAnimation) {
@@ -72,35 +72,6 @@ public:
 		startUpdate(0x10);
 		insertAscii(creo->getAlternateAppearance());
 	}
-
-	/*
-
-	void updateInviterId() {
-		startUpdate(0x07);
-
-		insertLong(creo->getGroupInviterID());
-		insertLong(creo->getNewGroupInviteCounter());
-	}
-
-	void updateInstrumentID(int value) {
-		startUpdate(0x0C);
-		insertInt(value);
-	}
-
-	void updateMoodAnimation(String value) {
-		startUpdate(0x04);
-		insertAscii(value);
-	}
-
-	void setFrozen(bool frozen) {
-		startUpdate(0x11);
-		if (frozen) {
-			insertByte(0x01);
-		} else {
-			insertByte(0);
-		}
-	}
-	}*/
 };
 
 #endif /*CREATUREOBJECTDELTAMESSAGE6_H_*/

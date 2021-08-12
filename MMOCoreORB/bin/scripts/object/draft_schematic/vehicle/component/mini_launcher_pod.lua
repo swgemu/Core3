@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_mini_launcher_pod = object_draft_schematic_vehicle_component_shared_mini_launcher_pod:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_mini_launcher_pod, "object/draft_schematic/vehicle/component/mini_launcher_pod.iff")

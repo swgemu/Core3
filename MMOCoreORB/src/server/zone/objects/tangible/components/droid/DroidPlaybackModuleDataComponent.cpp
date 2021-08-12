@@ -18,16 +18,15 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "templates/params/creature/CreatureAttribute.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 DroidPlaybackModuleDataComponent::DroidPlaybackModuleDataComponent() {
-	active = false;
-	recording = false;
+	currentlyRecording = false;
 	setLoggingName("DroidPlaybackModule");
 	totalTracks = 1;
-	selectedIndex = -1;
+	performanceIndex = 0;
 	recordingTrack = -1;
-	recordingSong = "";
-	recordingInstrument = 1;
+	recordingPerformanceIndex = 0;
 }
 
 DroidPlaybackModuleDataComponent::~DroidPlaybackModuleDataComponent() {
@@ -39,41 +38,27 @@ String DroidPlaybackModuleDataComponent::getModuleName() const {
 }
 
 void DroidPlaybackModuleDataComponent::initializeTransientMembers() {
-
 	// Pull module stat from parent sceno
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
+
 	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
 	}
 
-	if(droidComponent->hasKey("module_count")) {
+	if (droidComponent->hasKey("module_count")) {
 		totalTracks = droidComponent->getAttributeHidden("module_count");
 	}
 }
 
-String DroidPlaybackModuleDataComponent::getCurrentTrack() {
-	if (selectedIndex == -1) {
-		return "";
-	}
-
-	if (selectedIndex >=0 && selectedIndex < tracks.size()) {
-		return tracks.get(selectedIndex);
-	}
-
-	return "";
-}
-
 void DroidPlaybackModuleDataComponent::doFlourish(int number) {
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if (droid == nullptr) {
-		info("Droid is null");
-		return;
-	}
 
-	if (!active) {
+	if (droid == nullptr)
 		return;
-	}
+
+	if (!isPlayingMusic())
+		return;
 
 	Locker dlock(droid);
 
@@ -83,13 +68,10 @@ void DroidPlaybackModuleDataComponent::doFlourish(int number) {
 	}
 
 	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
-	Performance* performance = nullptr;
-	if (performanceManager != nullptr)
-		performance = performanceManager->getSong(getCurrentTrack(), getCurrentInstrument());
+	Performance* performance = performanceManager->getPerformanceFromIndex(performanceIndex);
 
-	if (performance == nullptr) {
+	if (performance == nullptr)
 		return;
-	}
 
 	float baseActionDrain =  performance->getActionPointsPerLoop();
 	float flourishActionDrain = baseActionDrain / 2.0;
@@ -110,30 +92,25 @@ void DroidPlaybackModuleDataComponent::addListener(uint64 id) {
 	listeners.add(id);
 }
 
-int DroidPlaybackModuleDataComponent::getCurrentInstrument() {
-	if (selectedIndex == -1) {
-		return -1;
-	}
-
-	if (selectedIndex >=0 && selectedIndex < instruments.size()) {
-		return instruments.get(selectedIndex);
-	}
-
-	return -1;
-}
-
 void DroidPlaybackModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
-	alm->insertAttribute( "playback_modules", tracks.size());
+	alm->insertAttribute("playback_modules", trackList.size());
 }
 
 void DroidPlaybackModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (player == nullptr)
 		return;
 
+	ManagedReference<DroidObject*> droid = getDroidObject();
+
+	if (droid == nullptr || droid->getLinkedCreature().get() != player)
+		return;
+
 	// Novice Musician required to utilize this module
 	if (player->hasSkill("social_musician_novice")) {
-		menuResponse->addRadialMenuItem(PLAYBACK_ACCESS_MENU, 3, "@pet/droid_modules:playback_menu_playback" );
-		menuResponse->addRadialMenuItem(PLAYBACK_STOP_MENU, 3, "@pet/droid_modules:playback_menu_stop_playback");
+		if (!isPlayingMusic())
+			menuResponse->addRadialMenuItem(PLAYBACK_ACCESS_MENU, 3, "@pet/droid_modules:playback_menu_playback" );
+		else
+			menuResponse->addRadialMenuItem(PLAYBACK_STOP_MENU, 3, "@pet/droid_modules:playback_menu_stop_playback");
 	}
 }
 
@@ -142,10 +119,9 @@ int DroidPlaybackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 		deactivate();
 	} else if (selectedID == PLAYBACK_ACCESS_MENU) {
 		ManagedReference<DroidObject*> droid = getDroidObject();
-		if (droid == nullptr) {
-			info("Droid is null");
+
+		if (droid == nullptr || droid->getLinkedCreature().get() != player)
 			return 0;
-		}
 
 		if (!droid->hasPower()) {
 			player->sendSystemMessage("@pet/droid_modules:playback_msg_play_out_of_power");
@@ -157,14 +133,22 @@ int DroidPlaybackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::DROID_PLAYBACK_MENU, SuiListBox::HANDLETHREEBUTTON);
 		box->setCallback(new SelectTrackSuiCallback(player->getZoneServer()));
 		box->setPromptText("@pet/droid_modules:playback_list_prompt");
-		box->setPromptTitle("@pet/droid_modules:playback_list_title"); // Configure Effects
-		box->setOkButton(true,"@pet/droid_modules:playback_btn_play_record");
-		box->setOtherButton(true, "@pet/droid_modules:playback_btn_delete");
+		box->setPromptTitle("@pet/droid_modules:playback_list_title"); // Playback Module
+		box->setOkButton(true,"@pet/droid_modules:playback_btn_play_record"); // Record/Play
+		box->setOtherButton(true, "@pet/droid_modules:playback_btn_delete"); // Delete
 		box->setCancelButton(true, "@cancel");
 
 		// Add tracks
-		for(int i =0; i< tracks.size();i++){
-			box->addMenuItem( tracks.elementAt(i), i);
+		for(int i = 0; i< trackList.size(); i++) {
+			int curTrack = trackList.elementAt(i);
+
+			if (curTrack == 0) {
+				String itemName = "@pet/droid_modules:playback_track " + String::valueOf(i+1) + " @pet/droid_modules:playback_blank_track";
+				box->addMenuItem(itemName);
+			} else {
+				String itemName = getTrackName(curTrack);
+				box->addMenuItem(itemName);
+			}
 		}
 
 		box->setUsingObject(droid);
@@ -175,67 +159,178 @@ int DroidPlaybackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 	return 0;
 }
 
+String DroidPlaybackModuleDataComponent::getTrackName(int perfIndex) {
+	String trackName = "";
+
+	ManagedReference<DroidObject*> droid = getDroidObject();
+
+	if (droid == nullptr)
+		return trackName;
+
+	SkillManager* skillManager = droid->getZoneServer()->getSkillManager();
+	PerformanceManager* performanceManager = skillManager->getPerformanceManager();
+
+	Performance* performance = performanceManager->getPerformanceFromIndex(perfIndex);
+
+	if (performance == nullptr)
+		return trackName;
+
+	String instrumentName = performanceManager->getProperInstrumentName(performance->getInstrumentAudioId());
+	String songName = performance->getName();
+
+	if (Character::isDigit(songName.charAt(songName.length() - 1)))
+		songName = songName.subString(0, (songName.length() - 1)) + " " + songName.subString(songName.length() - 1);
+
+	trackName = instrumentName + " - " + songName;
+
+	return trackName;
+}
+
 void DroidPlaybackModuleDataComponent::stopRecording(CreatureObject* player, bool success) {
 	if (success) {
-		tracks.setElementAt(recordingTrack, recordingSong);
-		instruments.setElementAt(recordingTrack, recordingInstrument);
+		trackList.setElementAt(recordingTrack, recordingPerformanceIndex);
 		player->dropObserver(ObserverEventType::STARTENTERTAIN, observer);
 		player->dropObserver(ObserverEventType::STOPENTERTAIN, observer);
 		player->dropObserver(ObserverEventType::CHANGEENTERTAIN, observer);
 	}
 
-	recording = false;
-	recordingInstrument = -1;
-	recordingSong = "";
+	currentlyRecording = false;
+	recordingPerformanceIndex = 0;
 	recordingTrack = -1;
+
 	stopTimer();
 }
 
-bool DroidPlaybackModuleDataComponent::trackEmpty(int index) {
-	return tracks.get(index) == "@pet/droid_modules:playback_blank_track";
-}
+void DroidPlaybackModuleDataComponent::playSong(CreatureObject* player, int perfIndex) {
+	ManagedReference<DroidObject*> droid = getDroidObject();
 
-bool DroidPlaybackModuleDataComponent::isActive() {
-	return active;
-}
+	if (droid == nullptr || (!droid->isGrouped() && droid->getLinkedCreature().get() != player))
+		return;
 
-bool DroidPlaybackModuleDataComponent::isPlayingMusic() {
-	return active;
-}
+	if (isPlayingMusic())
+		return;
 
-void DroidPlaybackModuleDataComponent::playSong(CreatureObject* player, int index) {
-	if (active) {
-		deactivate();
+	Locker plock(player);
+
+	player->setListenToID(droid->getObjectID());
+
+	plock.release();
+
+	Locker dlock(droid);
+
+	bool activeBandSong = false;
+	int newPerfIndex = 0;
+
+	SkillManager* skillManager = droid->getZoneServer()->getSkillManager();
+	PerformanceManager* performanceManager = skillManager->getPerformanceManager();
+
+	ManagedReference<GroupObject*> group = droid->getGroup();
+
+	if (group != nullptr) {
+		for (int i = 0; i < group->getGroupSize(); i++) {
+			ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+
+			if (groupMember == nullptr || !groupMember->isPlayerCreature() || groupMember == droid || !groupMember->isPlayingMusic())
+				continue;
+
+			ManagedReference<Facade*> memberFacade = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING);
+			ManagedReference<EntertainingSession*> memberSession = dynamic_cast<EntertainingSession*> (memberFacade.get());
+
+			if (memberSession == nullptr)
+				continue;
+
+			int memberPerformanceIndex = memberSession->getPerformanceIndex();
+
+			if (memberPerformanceIndex == 0)
+				continue;
+
+			newPerfIndex = getMatchingIndex(droid, memberPerformanceIndex);
+			activeBandSong = true;
+			break;
+		}
 	}
 
-	if (index >= 0 && index <= tracks.size()) {
-		Reference<Task*> task = new DroidPlaybackTask(this);
-		ManagedReference<DroidObject*> droid = getDroidObject();
-		if (droid == nullptr) {
-			info("Droid is null");
+	if (activeBandSong) {
+		if (newPerfIndex == 0) {
+			performanceManager->performanceMessageToDroidOwner(droid, nullptr, "performance", "music_track_not_available"); // Your droid does not have a track recorded for the current song in progress.
 			return;
 		}
-
-		Locker dlock(droid);
-
-		active = true;
-		selectedIndex = index;
-		droid->addPendingTask("droid_playback", task, 0);
-		// future or a unknown, should be start auto listenting to the droid when it starts playing.
+		perfIndex = newPerfIndex;
 	}
+
+	performanceIndex = perfIndex;
+	String performanceAnim = "";
+
+	if (performanceIndex > 0) {
+		droid->setPosture(CreaturePosture::SKILLANIMATING);
+
+		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+		Performance* performance = performanceManager->getPerformanceFromIndex(performanceIndex);
+
+		if (performance == nullptr)
+			return;
+
+		if (performance->isMusic())
+			performanceAnim = performanceManager->getInstrumentAnimation(performance->getInstrumentAudioId());
+		else
+			performanceAnim = performanceManager->getDanceAnimation(performance->getPerformanceIndex());
+	} else {
+		droid->setPosture(CreaturePosture::UPRIGHT);
+	}
+
+	droid->setPerformanceAnimation(performanceAnim, false);
+	droid->setPerformanceStartTime(0, false);
+	droid->setPerformanceType(performanceIndex, false);
+
+	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(droid);
+	dcreo6->updatePerformanceAnimation(performanceAnim);
+	dcreo6->updatePerformanceStartTime(0);
+	dcreo6->updatePerformanceType(performanceIndex);
+	dcreo6->close();
+
+	droid->broadcastMessage(dcreo6, true);
+
+	Reference<Task*> task = new DroidPlaybackTask(this);
+	droid->addPendingTask("droid_playback", task, 0);
+}
+
+int DroidPlaybackModuleDataComponent::getMatchingIndex(DroidObject* droid, int memberPerformanceIndex) {
+	SkillManager* skillManager = droid->getZoneServer()->getSkillManager();
+	PerformanceManager* performanceManager = skillManager->getPerformanceManager();
+
+	Performance* memberPerformance = performanceManager->getPerformanceFromIndex(memberPerformanceIndex);
+
+	if (memberPerformance == nullptr)
+		return 0;
+
+	for(int i = 0; i< trackList.size(); i++) {
+		int curTrack = trackList.elementAt(i);
+
+		if (curTrack == 0)
+			continue;
+
+		Performance* perf = performanceManager->getPerformanceFromIndex(curTrack);
+
+		if (perf == nullptr)
+			continue;
+
+		if (memberPerformance->getName() == perf->getName())
+			return curTrack;
+	}
+
+	return 0;
 }
 
 void DroidPlaybackModuleDataComponent::sessionTimeout(CreatureObject* player, int state) {
-	if (recording) {
+	if (currentlyRecording) {
 		if (state == STATE_WAITING_TO_RECORD) {
 			player->sendSystemMessage("@pet/droid_modules:playback_msg_rec_timeout");
 			stopRecording(player, false);
 		} else if (state == STATE_RECORDING_TRACK) {
 			player->sendSystemMessage("@pet/droid_modules:playback_msg_rec_complete");
 
-			if (recordingSong.length() > 0) {
-				tracks.setElementAt(recordingTrack,recordingSong);
-				instruments.setElementAt(recordingTrack,recordingInstrument);
+			if (recordingPerformanceIndex > 0) {
+				trackList.setElementAt(recordingTrack, recordingPerformanceIndex);
 			} else {
 				player->sendSystemMessage("@pet/droid_modules:playback_msg_rec_fail_corrupted");
 			}
@@ -260,22 +355,32 @@ void DroidPlaybackModuleDataComponent::stopTimer() {
 }
 
 void DroidPlaybackModuleDataComponent::songChanged(CreatureObject* player) {
-	if (recording) {
+	if (currentlyRecording) {
 		player->sendSystemMessage("@pet/droid_modules:playback_msg_rec_fail_corrupted");
 		stopRecording(player, false);
 	}
 }
 
 void DroidPlaybackModuleDataComponent::songStopped(CreatureObject* player) {
-	if (recording) {
+	if (currentlyRecording) {
 		player->sendSystemMessage("@pet/droid_modules:playback_msg_rec_fail_not_finished");
 		stopRecording(player, false);
 	}
 }
 
 void DroidPlaybackModuleDataComponent::startRecordingSession(CreatureObject* entertainer, int index) {
-	if (recording) {
+	ManagedReference<DroidObject*> droid = getDroidObject();
+
+	if (droid == nullptr)
+		return;
+
+	if (entertainer->isPlayingMusic()) {
 		entertainer->sendSystemMessage("@pet/droid_modules:playback_msg_rec_fail_already_playing");
+		return;
+	}
+
+	if (trackList.get(index) != 0) {
+		entertainer->sendSystemMessage("@pet/droid_modules:playback_msg_rec_fail_track_full"); // Recording failed: You cannot record over a track that is not empty.
 		return;
 	}
 
@@ -284,47 +389,44 @@ void DroidPlaybackModuleDataComponent::startRecordingSession(CreatureObject* ent
 		observer->deploy();
 	}
 
-	recording = true;
+	currentlyRecording = true;
 	recordingTrack = index;
-	ManagedReference<DroidObject*> droid = getDroidObject();
 
-	if (droid != nullptr) {
-		Locker dlock(droid);
+	Locker dlock(droid);
 
-		stopTimer();
+	stopTimer();
 
-		Reference<Task*> task = new RecordTrackTimeoutEvent(this, entertainer, STATE_WAITING_TO_RECORD);
-		droid->addPendingTask("droid_recording", task, 30 * 1000);
+	Reference<Task*> task = new RecordTrackTimeoutEvent(this, entertainer, STATE_WAITING_TO_RECORD);
+	droid->addPendingTask("droid_recording", task, 30 * 1000);
 
-		// set the slot
-		observer->setSlot(index);
-		entertainer->registerObserver(ObserverEventType::STARTENTERTAIN, observer);
-		entertainer->registerObserver(ObserverEventType::CHANGEENTERTAIN, observer);
-		entertainer->registerObserver(ObserverEventType::STOPENTERTAIN, observer);
-	}
+	entertainer->sendSystemMessage("@pet/droid_modules:playback_msg_rec_start"); // Your droid is ready to start recording your music.
+
+	// set the slot
+	observer->setSlot(index);
+	entertainer->registerObserver(ObserverEventType::STARTENTERTAIN, observer);
+	entertainer->registerObserver(ObserverEventType::CHANGEENTERTAIN, observer);
+	entertainer->registerObserver(ObserverEventType::STOPENTERTAIN, observer);
 }
 
 void DroidPlaybackModuleDataComponent::deleteTrack(CreatureObject* player, int slotIndex) {
-	if (0 <= slotIndex && slotIndex <= tracks.size()) {
-		// check to see if ti was blank
-		if (tracks.get(slotIndex) == "@pet/droid_modules:playback_blank_track") {
+	if (slotIndex >= 0 && slotIndex <= trackList.size()) {
+		if (trackList.get(slotIndex) == 0) {
 			player->sendSystemMessage("@pet/droid_modules:playback_msg_del_track_already_empty");
 			return;
 		}
 
-		tracks.setElementAt(slotIndex, "@pet/droid_modules:playback_blank_track");
-		instruments.setElementAt(slotIndex, -1);
+		trackList.setElementAt(slotIndex, 0);
 		player->sendSystemMessage("@pet/droid_modules:playback_msg_del_track_deleted");
 	}
 }
 
-void DroidPlaybackModuleDataComponent::setTrack( CreatureObject* player, String song, int instrument) {
-	if (active) {
+void DroidPlaybackModuleDataComponent::setTrack(CreatureObject* player, int perfIndex) {
+	if (isPlayingMusic()) {
 		player->sendSystemMessage("@pet/droid_modules:playback_msg_rec_fail_already_playing");
 		return;
 	}
 
-	if (recording) {
+	if (isRecording()) {
 		stopTimer();
 
 		ManagedReference<DroidObject*> droid = getDroidObject();
@@ -334,15 +436,14 @@ void DroidPlaybackModuleDataComponent::setTrack( CreatureObject* player, String 
 
 			Reference<Task*> task = new RecordTrackTimeoutEvent(this, player, STATE_RECORDING_TRACK);
 			droid->addPendingTask("droid_recording", task, 30 * 1000);
-			recordingSong = song;
-			recordingInstrument = instrument;
+			recordingPerformanceIndex = perfIndex;
 			player->sendSystemMessage("@pet/droid_modules:playback_msg_rec_begun");
 		}
 	}
 }
 
 int DroidPlaybackModuleDataComponent::getBatteryDrain() {
-	if (active) {
+	if (isPlayingMusic()) {
 		return 4;
 	}
 
@@ -351,7 +452,7 @@ int DroidPlaybackModuleDataComponent::getBatteryDrain() {
 
 void DroidPlaybackModuleDataComponent::deactivate() {
 	// set choosen track to empty
-	active = false;
+	performanceIndex = 0;
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
 	if (droid == nullptr) {
@@ -363,11 +464,8 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 
 	stopTimer();
 
-	// cancel animation of the droid
-	String performance = getCurrentTrack();
+	Task* task = droid->getPendingTask("droid_playback");
 
-	// Cancel playback task if it hasnt launched yet
-	Task* task = droid->getPendingTask( "droid_playback" );
 	if (task != nullptr) {
 		Core::getTaskManager()->cancelTask(task);
 		droid->removePendingTask("droid_playback");
@@ -388,35 +486,22 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 		}
 	}
 
-	SkillManager* skillManager = droid->getZoneServer()->getSkillManager();
+	droid->setPerformanceAnimation("", false);
+	droid->setPerformanceStartTime(0, false);
+	droid->setPerformanceType(performanceIndex, false);
 
-	if (skillManager != nullptr) {
-		PerformanceManager* performanceManager = skillManager->getPerformanceManager();
+	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(droid);
+	dcreo6->updatePerformanceAnimation("");
+	dcreo6->updatePerformanceStartTime(0);
+	dcreo6->updatePerformanceType(performanceIndex);
+	dcreo6->close();
 
-		if (performanceManager != nullptr) {
-			String instrumentAnimation;
-			int instrid = performanceManager->getInstrumentId(performance);
-			instrid += performanceManager->getInstrumentAnimation(getCurrentInstrument(), instrumentAnimation);
-
-			droid->setPerformanceAnimation(instrumentAnimation, false);
-			droid->setPerformanceCounter(0, false);
-			droid->setInstrumentID(0, false);
-
-			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(droid);
-			dcreo6->updatePerformanceAnimation(instrumentAnimation);
-			dcreo6->updatePerformanceCounter(0);
-			dcreo6->updateInstrumentID(0);
-			dcreo6->close();
-			droid->broadcastMessage(dcreo6, true);
-		}
-	}
+	droid->broadcastMessage(dcreo6, true);
 
 	droid->notifyObservers(ObserverEventType::STOPENTERTAIN, droid);
 
 	if (droid->getPosture() == CreaturePosture::SKILLANIMATING)
 		droid->setPosture(CreaturePosture::UPRIGHT);
-
-	selectedIndex = -1;
 }
 
 String DroidPlaybackModuleDataComponent::toString() const {
@@ -433,6 +518,7 @@ void DroidPlaybackModuleDataComponent::onStore() {
 
 void DroidPlaybackModuleDataComponent::addToStack(BaseDroidModuleComponent* other) {
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
+
 	if (droidComponent == nullptr) {
 		info("droidComponent was null");
 		return;
@@ -442,8 +528,7 @@ void DroidPlaybackModuleDataComponent::addToStack(BaseDroidModuleComponent* othe
 	droidComponent->changeAttributeValue("module_count", (float)totalTracks);
 
 	// add to the track list
-	tracks.add("@pet/droid_modules:playback_blank_track");
-	instruments.add(-1);
+	trackList.add(0);
 }
 
 void DroidPlaybackModuleDataComponent::copy(BaseDroidModuleComponent* other) {
@@ -451,12 +536,11 @@ void DroidPlaybackModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 
 	if (droidComponent != nullptr) {
-		droidComponent->addProperty("module_count",(float)totalTracks,0,"hidden",true);
+		droidComponent->addProperty("module_count", (float)totalTracks, 0, "hidden", true);
 	}
 
 	// add to the track list
-	tracks.add("@pet/droid_modules:playback_blank_track");
-	instruments.add(-1);
+	trackList.add(0);
 }
 
 /** Serilization Methods below */
@@ -475,22 +559,13 @@ int DroidPlaybackModuleDataComponent::writeObjectMembers(ObjectOutputStream* str
 	int _offset;
 	uint32 _totalSize;
 
-	_name = "tracks";
+	_name = "trackList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo< Vector<String> >::toBinaryStream(&tracks, stream);
+	TypeInfo< Vector<int> >::toBinaryStream(&trackList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
-
-	_name = "instruments";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo< Vector<int> >::toBinaryStream(&instruments, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 
 	_name = "totalTracks";
 	_name.toBinaryStream(stream);
@@ -500,15 +575,12 @@ int DroidPlaybackModuleDataComponent::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	return 3;
+	return 2;
 }
 
 bool DroidPlaybackModuleDataComponent::readObjectMember(ObjectInputStream* stream, const String& name) {
-	if (name == "tracks") {
-		TypeInfo< Vector<String> >::parseFromBinaryStream(&tracks, stream);
-		return true;
-	} else if (name == "instruments") {
-		TypeInfo< Vector<int> >::parseFromBinaryStream(&instruments, stream);
+	if (name == "trackList") {
+		TypeInfo< Vector<int> >::parseFromBinaryStream(&trackList, stream);
 		return true;
 	} else if (name == "totalTracks") {
 		TypeInfo< int >::parseFromBinaryStream(&totalTracks, stream);

@@ -50,7 +50,8 @@ object_draft_schematic_weapon_katana = object_draft_schematic_weapon_shared_kata
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 4, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 110, 
 

@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_armor_component_armor_layer_restraint = object_draft_schematic_armor_component_shared_armor_layer_restraint:new {
-
+    factoryCrateType = "object/factory/factory_crate_armor.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_armor_layer_restraint, "object/draft_schematic/armor/component/armor_layer_restraint.iff")

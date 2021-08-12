@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_drink_double_dip_outer_rim_rumdrop = object_draft_schematic_food_shared_drink_double_dip_outer_rim_rumdrop:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_double_dip_outer_rim_rumdrop, "object/draft_schematic/food/drink_double_dip_outer_rim_rumdrop.iff")

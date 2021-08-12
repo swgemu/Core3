@@ -50,7 +50,8 @@ object_draft_schematic_item_item_survey_tool_wind = object_draft_schematic_item_
    craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "crafting_general", 
    xp = 32, 
 

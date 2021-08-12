@@ -50,7 +50,8 @@ object_draft_schematic_vehicle_vehicle_customization_kit = object_draft_schemati
    craftingToolTab = 16, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "crafting_general", 
    xp = 40, 
 

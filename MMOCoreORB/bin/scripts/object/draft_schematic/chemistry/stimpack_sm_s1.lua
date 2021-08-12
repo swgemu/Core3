@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_chemistry_stimpack_sm_s1 = object_draft_schematic_chemistry_shared_stimpack_sm_s1:new {
-
+    factoryCrateType = "object/factory/factory_crate_chemicals.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_stimpack_sm_s1, "object/draft_schematic/chemistry/stimpack_sm_s1.iff")

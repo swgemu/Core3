@@ -42,7 +42,6 @@
 
 
 object_draft_schematic_space_chassis_tiefighter_body = object_draft_schematic_space_chassis_shared_tiefighter_body:new {
-
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_tiefighter_body, "object/draft_schematic/space/chassis/tiefighter_body.iff")

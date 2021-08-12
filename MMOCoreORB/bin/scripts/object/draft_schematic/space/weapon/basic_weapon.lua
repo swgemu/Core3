@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_space_weapon_basic_weapon = object_draft_schematic_space_weapon_shared_basic_weapon:new {
-
+    factoryCrateType = "object/factory/factory_crate_general_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_basic_weapon, "object/draft_schematic/space/weapon/basic_weapon.iff")

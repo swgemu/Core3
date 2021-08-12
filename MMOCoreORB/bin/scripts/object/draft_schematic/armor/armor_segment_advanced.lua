@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_armor_armor_segment_advanced = object_draft_schematic_armor_shared_armor_segment_advanced:new {
-
+    factoryCrateType = "object/factory/factory_crate_armor.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_segment_advanced, "object/draft_schematic/armor/armor_segment_advanced.iff")

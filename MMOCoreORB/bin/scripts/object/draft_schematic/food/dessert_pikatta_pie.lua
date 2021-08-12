@@ -50,7 +50,8 @@ object_draft_schematic_food_dessert_pikatta_pie = object_draft_schematic_food_sh
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_food.iff",
+   
    xpType = "crafting_food_general", 
    xp = 260, 
 

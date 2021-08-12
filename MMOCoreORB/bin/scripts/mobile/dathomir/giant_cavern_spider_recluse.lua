@@ -1,5 +1,5 @@
 giant_cavern_spider_recluse = Creature:new {
-	objectName = "@mob/creature_names:gaping_spider_recluse_giant",
+	objectName = "@mob/creature_names:cave_gaping_spider_recluse_giant",
 	socialGroup = "spider_nightsister",
 	faction = "spider_nightsister",
 	level = 116,

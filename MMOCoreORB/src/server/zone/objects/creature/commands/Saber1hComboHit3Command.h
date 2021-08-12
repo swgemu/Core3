@@ -30,10 +30,9 @@ public:
 		float mods[3] = {0.f, 0.f, 0.f};
 
 		for (int i = 0; i < 2; i++)
-			mods[System::random(2)] += (1.0f/3.0f);
+			mods[System::random(2)] += 0.5f;
 
 		UnicodeString args = "healthDamageMultiplier=" + String::valueOf(mods[0]) + ";actionDamageMultiplier=" + String::valueOf(mods[1]) + ";mindDamageMultiplier=" + String::valueOf(mods[2]) + ";";
-
 
 		return doCombatAction(creature, target, args);
 	}

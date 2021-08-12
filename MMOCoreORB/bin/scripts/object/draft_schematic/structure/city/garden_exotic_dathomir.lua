@@ -51,7 +51,8 @@ object_draft_schematic_structure_city_garden_exotic_dathomir = object_draft_sche
 	complexity = 27,
 	size = 12,
 	factoryCrateSize = 1,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 9000,
 

@@ -5,6 +5,8 @@
 #ifndef STOPBANDCOMMAND_H_
 #define STOPBANDCOMMAND_H_
 
+#include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
+
 class StopBandCommand : public QueueCommand {
 public:
 
@@ -23,67 +25,50 @@ public:
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
 
-		if (group == nullptr) {
-			creature->sendSystemMessage("You must be the leader of a band to use that command.");
-			return GENERALERROR;
-		}
-
-		Reference<CreatureObject*> leader = group->getLeader();
-
-		if (leader == nullptr || creature != leader) {
-			creature->sendSystemMessage("You must be the band leader to stop the band's song.");
-			return GENERALERROR;
-		}
-
-		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
-
-		if (session == nullptr)
+		if (group == nullptr)
 			return GENERALERROR;
 
-		if (!session->isPlayingMusic())
-			return GENERALERROR;
+		for (int i = 0; i < group->getGroupSize(); ++i) {
+			Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-		creature->unlock();
+			if (groupMember == nullptr || !groupMember->isPlayingMusic())
+				continue;
 
-		try {
-			Locker locker(group);
+			Locker clocker(groupMember, creature);
 
-			for (int i = 0; i < group->getGroupSize(); ++i) {
-				Reference<CreatureObject*> groupMember = group->getGroupMember(i);
+			if (groupMember->isDroidObject()) {
+				DroidObject* droid = cast<DroidObject*>(groupMember.get());
 
-				if (groupMember == nullptr || !groupMember->isPlayingMusic())
+				if (droid == nullptr)
 					continue;
 
-				Locker clocker(groupMember, group);
+				auto module = droid->getModule("playback_module");
 
-				ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
-
-				if (bandMemberSession == nullptr || !bandMemberSession->isPlayingMusic())
+				if (module == nullptr)
 					continue;
 
-				if (groupMember == creature) {
-					groupMember->sendSystemMessage("@performance:music_stop_band_self"); // You stop the band.
-				} else {
-					StringIdChatParameter stringID;
+				DroidPlaybackModuleDataComponent* playbackModule = cast<DroidPlaybackModuleDataComponent*>(module.get());
 
-					stringID.setTU(creature->getCustomObjectName());
-					stringID.setStringId("performance", "music_stop_band_members"); // %TU stops your band.
-					groupMember->sendSystemMessage(stringID);
-				}
+				if (playbackModule == nullptr)
+					continue;
 
-				bandMemberSession->stopPlayingMusic();
+				playbackModule->deactivate();
+
+				continue;
 			}
 
-			group->setBandSong("");
+			bool isLeader = false;
 
-		} catch (Exception& e) {
-			creature->wlock();
+			if (groupMember == creature)
+				isLeader = true;
 
-			throw;
+			ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
+
+			if (bandMemberSession == nullptr || !bandMemberSession->isPlayingMusic())
+				continue;
+
+			bandMemberSession->stopMusic(false, true, isLeader);
 		}
-
-		creature->wlock();
 
 		return SUCCESS;
 	}

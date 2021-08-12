@@ -49,13 +49,15 @@ public:
 
 		if (delegator->getFactionStanding(faction) < charge + 200) {
 			StringIdChatParameter param("faction_recruiter", "not_enough_standing_spend");
-			param.setDI(charge + 200);
+			param.setDI(200);
 			param.setTO(faction);
 			creature->sendSystemMessage(param);
 			return GENERALERROR;
 		}
 
-		if ((targetsCurrentPoints + tipAmount) > targetsCap) {
+		int targetsNewPoints = targetsCurrentPoints + tipAmount;
+
+		if (targetsNewPoints > targetsCap) {
 			creature->sendSystemMessage("That amount would exceed the player's current rank points limit.");
 			return GENERALERROR;
 		}
@@ -82,8 +84,7 @@ public:
 		if (target == 0)
 			return INVALIDTARGET;
 
-		//The player has SOMETHING targeted.
-		//Lets first check if it's a player, cause if it is we can skip some stuff.
+		//Check for targeted player
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		StringIdChatParameter params("@cmd_err:target_type_prose"); // Your target for %TO was invalid.

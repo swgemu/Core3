@@ -33,6 +33,7 @@
 
 #include "engine/core/MetricsManager.h"
 #include "engine/service/ServiceThread.h"
+#include "engine/lua/LuaPanicException.h"
 
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = nullptr;
 SortedVector<String> ServerCore::arguments;
@@ -488,6 +489,75 @@ void ServerCore::registerConsoleCommmands() {
 		System::out << "dump last modified traces set to " << DOBObjectManager::getDumpLastModifiedTraces();
 
 		return SUCCESS;
+	});
+
+	addCommand("runLuaFunction", [this](const String& arguments) -> CommandResult {
+		StringTokenizer argTokenizer(arguments);
+
+		argTokenizer.setDelimiter(":");
+
+		String module;
+		String function;
+
+		if (argTokenizer.hasMoreTokens())
+			argTokenizer.getStringToken(module);
+
+		if (argTokenizer.hasMoreTokens())
+			argTokenizer.getStringToken(function);
+
+		if (module.isEmpty() || function.isEmpty()) {
+			System::out << "Usage: runLuaFunction {module}:{function}" << endl;
+
+			return ERROR;
+		}
+
+		System::out << "Attemping to run " << module << ":" << function << endl;
+
+		Lua* lua = DirectorManager::instance()->getLuaInstance();
+		lua_State* L = lua->getLuaState();
+		CommandResult cmdResult = NOTFOUND;
+
+		try {
+			if (!lua->checkStack(0)) {
+				error() << "Warning Lua Stack is not clean!";
+			}
+
+			UniqueReference<LuaFunction*> func(lua->createFunction(module, function, 1));
+
+			while (argTokenizer.hasMoreTokens()) {
+				String arg;
+				argTokenizer.getStringToken(arg);
+				*func << arg;
+			}
+
+			if (func->callFunction() == nullptr) {
+				String errorMessage = lua_tostring(L, -1);
+
+				lua_pop(L, 1);
+
+				System::out << "Failed to runLuaFunction " << module << ":" << function << ": " << errorMessage << endl;
+
+				cmdResult = ERROR;
+			} else {
+				lua_pop(L, 1);
+
+				String result;
+
+				if (lua_type(L, 0) == LUA_TSTRING) {
+					result = lua_tostring(L, 0);
+				} else {
+					result = "<" + (String)lua_typename(L, lua_type(L, 0)) + ">";
+				}
+
+				System::out << "runLuaFunction " << module << ":" << function << ": result=[" << result << "]" << endl;
+
+				cmdResult = SUCCESS;
+			}
+		} catch (const Exception& e) {
+			System::out << "Exception in runLuaFunction " << module << ":" << function << " - " << e.getMessage() << endl << Lua::dumpStack(L);
+		}
+
+		return cmdResult;
 	});
 
 	debug() << "registered " << consoleCommands.size() << " console commands.";

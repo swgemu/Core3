@@ -43,6 +43,17 @@ public:
 		addSerializableVariables();
 	}
 
+	DeltaVectorMap& operator=(const DeltaVectorMap& ds) {
+		if (this == &ds) {
+			return *this;
+		}
+
+		updateCounter = ds.updateCounter;
+		vectorMap = ds.vectorMap;
+
+		return *this;
+	}
+
 	inline void addSerializableVariables() {
 		addSerializableVariable("vectorMap", &vectorMap);
 		addSerializableVariable("updateCounter", &updateCounter);

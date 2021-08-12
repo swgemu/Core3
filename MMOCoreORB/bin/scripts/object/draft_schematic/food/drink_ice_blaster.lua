@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_drink_ice_blaster = object_draft_schematic_food_shared_drink_ice_blaster:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_ice_blaster, "object/draft_schematic/food/drink_ice_blaster.iff")

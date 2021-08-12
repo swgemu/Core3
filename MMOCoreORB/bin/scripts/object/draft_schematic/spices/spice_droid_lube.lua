@@ -50,7 +50,8 @@ object_draft_schematic_spices_spice_droid_lube = object_draft_schematic_spices_s
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_food.iff",
+   
    xpType = "crafting_spice", 
    xp = 115, 
 

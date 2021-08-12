@@ -50,7 +50,8 @@ object_draft_schematic_food_dish_crispic = object_draft_schematic_food_shared_di
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 3, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_food.iff",
+   
    xpType = "crafting_general", 
    xp = 50, 
 

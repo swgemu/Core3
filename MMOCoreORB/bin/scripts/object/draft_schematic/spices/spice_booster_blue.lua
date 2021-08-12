@@ -50,7 +50,8 @@ object_draft_schematic_spices_spice_booster_blue = object_draft_schematic_spices
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 13, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_food.iff",
+   
    xpType = "crafting_spice", 
    xp = 240, 
 

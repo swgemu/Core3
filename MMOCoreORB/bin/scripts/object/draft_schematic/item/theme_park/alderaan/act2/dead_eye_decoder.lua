@@ -49,7 +49,8 @@ object_draft_schematic_item_theme_park_alderaan_act2_dead_eye_decoder = object_d
 	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 12,
 	size = 1,
-
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
 	xpType = "crafting_general",
 	xp = 0,
 

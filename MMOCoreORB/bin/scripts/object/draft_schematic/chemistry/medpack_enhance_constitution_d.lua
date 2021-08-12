@@ -51,6 +51,7 @@ object_draft_schematic_chemistry_medpack_enhance_constitution_d = object_draft_s
 	complexity = 37,
 	size = 3,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_chemicals.iff",
 
 	xpType = "crafting_medicine_general",
 	xp = 90,

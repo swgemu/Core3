@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_drink_sullustan_gin = object_draft_schematic_food_shared_drink_sullustan_gin:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_sullustan_gin, "object/draft_schematic/food/drink_sullustan_gin.iff")

@@ -51,7 +51,8 @@ object_draft_schematic_space_weapon_wpn_medium_blaster = object_draft_schematic_
 	complexity = 25,
 	size = 0,
 	factoryCrateSize = 0,
-
+	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
+   
 	xpType = "shipwright",
 	xp = 125,
 

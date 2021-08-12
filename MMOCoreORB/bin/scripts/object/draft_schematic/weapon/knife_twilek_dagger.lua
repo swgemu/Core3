@@ -50,7 +50,8 @@ object_draft_schematic_weapon_knife_twilek_dagger = object_draft_schematic_weapo
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 9, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_general", 
    xp = 40, 
 

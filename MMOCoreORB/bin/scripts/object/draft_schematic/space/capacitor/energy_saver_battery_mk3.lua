@@ -50,7 +50,8 @@ object_draft_schematic_space_capacitor_energy_saver_battery_mk3 = object_draft_s
    craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 27, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "shipwright", 
    xp = 125, 
 

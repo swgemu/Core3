@@ -50,7 +50,8 @@ object_draft_schematic_space_capacitor_quick_recharge_battery_mk3 = object_draft
    craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 27, 
    size = 0, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "shipwright", 
    xp = 125, 
 

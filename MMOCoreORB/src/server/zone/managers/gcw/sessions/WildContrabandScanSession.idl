@@ -1,0 +1,72 @@
+package server.zone.managers.gcw.sessions;
+
+import engine.util.Facade;
+import server.zone.Zone;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.ai.AiAgent;
+import engine.core.Task;
+include engine.util.u3d.Vector3;
+
+class WildContrabandScanSession extends Facade {
+	private static final int CONTRABANDSCANCOOLDOWN = 90000; // Time should be at least a few seconds longer than the longest time a scan takes. Current maximum scan time is 80 s.
+	private static final int TASKDELAY = 1000; // 1 s delay.
+	private static final int SCANTIME = 10; // 10 s scan time.
+
+	// Wild Contraband Scan Session States
+	private static final int LANDING = 0;
+	private static final int HEADTOPLAYER = 1;
+	private static final int CLOSINGIN = 2;
+	private static final int INITIATESCAN = 3;
+	private static final int SCANDELAY = 4;
+	private static final int INCOMBAT = 5;
+	private static final int TAKEOFF = 6;
+	private static final int TAKINGOFF = 7;
+	private static final int FINISHED = 8;
+
+	private int scanState;
+
+	private int timeLeft;
+	private transient int currentWinningFactionDifficultyScaling;
+
+	@weakReference
+	private transient CreatureObject weakPlayer;
+
+	private transient AiAgent weakDroid;
+
+	private transient Task wildContrabandScanTask;
+
+	@dereferenced
+	private Vector3 landingCoordinates;
+
+	public WildContrabandScanSession(CreatureObject player, int winningFactionDifficultyScaling) {
+		Logger.setLoggingName("WildContrabandScanSession");
+		Logger.setLogging(true);
+
+		weakPlayer = player;
+
+		scanState = LANDING;
+		timeLeft = 0;
+
+		currentWinningFactionDifficultyScaling = winningFactionDifficultyScaling;
+	}
+
+	public native int initializeSession();
+
+	public native int cancelSession();
+
+	public native int clearSession();
+
+	public native void runWildContrabandScan();
+
+	public native boolean scanPrerequisitesMet(CreatureObject player);
+
+	private native void landProbeDroid(Zone zone, CreatureObject player);
+
+	@local
+	@dereferenced
+	private native Vector3 getLandingCoordinates(Zone zone, CreatureObject player);
+
+	private native void sendSystemMessage(CreatureObject player, final string messageName);
+	private native AiAgent getDroid();
+
+}

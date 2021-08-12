@@ -11,17 +11,14 @@ class ContrabandScanSession extends Facade {
 
 	private static final int CONTRABANDSCANCOOLDOWN = 90000; // Time should be at least a few seconds longer than the longest time a scan takes. Current maximum scan time is 80 s.
 	private static final int SCANINITIATECHANCE = 8; // 1/8 chance to initiate scan - 12.5 % chance.
-	private static final int TASKDELAY = 1000; // 1 s delay.
+	private static final int TASKDELAY = 2000; // 2s delay.
 	private static final int IMMEDIATELY = 1; // Minimum delay.
-	private static final int PLAYERSCANCOOLDOWN = 90000; // 90 s cooldown - Should be set to a much higher value when all functionality has been verified.
 	private static final int SCANTIME = 10; // 10 iterations = 10 s
 	private static final int TIMETORETURNFORSCAN = 10; // 10 iterations = 10 s
-	private static final int RANAWAYFACTIONFINE = 100;
 	private static final int RECOGNIZEDFACTIONRANK = 9;
 	private static final int BASEFACTIONDETECTIONCHANCE = 10; // 10 percent chance to detect opposite faction.
 	private static final int RANKDETECTIONCHANCEMODIFIER = 3; // Each faction rank increases the percentage chance to detect opposite faction by this amount.
 	private static final int JEDIMINDTRICKSUCCESSCHANCEBASE = 80; // 80 percent chance to mind trick.
-	private static final int CONTRABANDFINEPERITEM = 10000;
 	private static final int WAITFORPAYFINEANSWERTIMEOUT = 60; // 60 iterations = 60 s timeout.
 	private static final int SMUGGLERAVOIDSCANCHANCE = 80; // 80 percent chance for smugglers to completly avoid all scan related detections.
 	private static final int JEDIAVOIDDETECTIONBASECHANCE = 80; // 80 percent base chance for avoiding being detected as a jedi after all other scan avoidance checks.
@@ -48,6 +45,8 @@ class ContrabandScanSession extends Facade {
 
 	private transient int currentWinningFaction;
 	private transient int currentWinningFactionDifficultyScaling;
+	private boolean enforcedScan;
+	private transient int scannerFaction;
 
 	private boolean alreadyTriedToAvoidScan;
 
@@ -66,7 +65,7 @@ class ContrabandScanSession extends Facade {
 
 	protected transient Task contrabandScanTask;
 
-	public ContrabandScanSession(AiAgent scanner, CreatureObject player, int winningFaction, int winningFactionDifficultyScaling) {
+	public ContrabandScanSession(AiAgent scanner, CreatureObject player, int winningFaction, int winningFactionDifficultyScaling, boolean enforced) {
 		Logger.setLoggingName("ContrabandScanSession");
 		Logger.setLogging(true);
 
@@ -84,6 +83,7 @@ class ContrabandScanSession extends Facade {
 		smugglerAvoidedScan = false;
 		currentWinningFaction = winningFaction;
 		currentWinningFactionDifficultyScaling = winningFactionDifficultyScaling;
+		enforcedScan = enforced;
 	}
 
 	public native int initializeSession();
@@ -103,7 +103,7 @@ class ContrabandScanSession extends Facade {
 		acceptedFine = acceptFine;
 	}
 
-	private native string getFactionStringId(AiAgent scanner, final string imperial, final string rebel);
+	private native string getFactionStringId(final string imperial, final string rebel);
 	private native void sendScannerChatMessage(Zone zone, AiAgent scanner, CreatureObject player, final string imperial, final string rebel);
 	private native void sendPersonalizedScannerChatMessage(Zone zone, AiAgent scanner, CreatureObject player, final string imperial, final string rebel);
 	private native void sendSystemMessage(AiAgent scanner, CreatureObject player, final string imperial, final string rebel);
@@ -119,13 +119,10 @@ class ContrabandScanSession extends Facade {
 	private native void jediDetect(Zone zone, AiAgent scanner, CreatureObject player);
 	private native void performScan(Zone zone, AiAgent scanner, CreatureObject player);
 	private native void checkIfPlayerHasReturned(Zone zone, AiAgent scanner, CreatureObject player);
-	private native boolean isContraband(SceneObject item);
 	private native boolean notDarkJedi(CreatureObject player);
-	private native int countContrabandItemsInContainer(SceneObject container);
-	private native int countContrabandItems(CreatureObject player);
 	private native unsigned int jediMindTrickSuccessChance(CreatureObject player);
 	private native unsigned int jediAvoidDetectionSuccessChance(CreatureObject player);
-	private native void addCrackdownTef(AiAgent scanner, CreatureObject player);
+	private native void addCrackdownTef(CreatureObject player);
 	private native void sendContrabandFineSuiWindow(Zone zone, AiAgent scanner, CreatureObject player, int numberOfContrabandItems);
 	private native void waitForPayFineAnswer(Zone zone, AiAgent scanner, CreatureObject player);
 	private native void removeFineSuiWindow(CreatureObject player);

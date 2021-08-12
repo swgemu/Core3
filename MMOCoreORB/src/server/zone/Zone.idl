@@ -31,6 +31,7 @@ import server.zone.objects.pathfinding.NavArea;
 import system.thread.atomic.AtomicInteger;
 include system.thread.atomic.AtomicBoolean;
 include server.zone.objects.region.CityRegion;
+import server.zone.ActiveAreaQuadTree;
 
 @mock
 class Zone extends SceneObject {
@@ -53,8 +54,7 @@ class Zone extends SceneObject {
 
 	private transient ZoneServer server;
 
-	@dereferenced
-	private QuadTreeReference regionTree;
+	private transient ActiveAreaQuadTree areaTree;
 
 	@dereferenced
 	private QuadTreeReference quadTree;
@@ -82,8 +82,8 @@ class Zone extends SceneObject {
 	public native void initializePrivateData();
 
 	@local
-	public QuadTree getRegionTree() {
-		return regionTree.get();
+	public ActiveAreaQuadTree getActiveAreaTree() {
+		return areaTree;
 	}
 
 	@local
@@ -95,6 +95,9 @@ class Zone extends SceneObject {
 	@local
 	public native int getInRangeObjects(float x, float y, float range, InRangeObjectsVector objects, boolean readLockZone, boolean includeBuildingObjects = true);
 
+	@local
+	public native int getInRangePlayers(float x, float y, float range, SortedVector<QuadTreeEntry> objects);
+
 	public native void createContainerComponent();
 
 	@local
@@ -103,12 +106,6 @@ class Zone extends SceneObject {
 	public native int getInRangeActiveAreas(float x, float y, ActiveAreasVector objects, boolean readLockZone);
 	@local
 	public native int getInRangeNavMeshes(float x, float y, SortedVector<NavArea> objects, boolean readLockZone);
-
-	/* gets active areas whose center is within the given range */
-	@local
-	public native int getInRangeActiveAreas(float x, float y, float range, SortedVector<ActiveArea> objects, boolean readLockZone);
-	@local
-	public native int getInRangeActiveAreas(float x, float y, float range, ActiveAreasVector objects, boolean readLockZone);
 
 	@local
 	@dereferenced

@@ -50,7 +50,8 @@ object_draft_schematic_item_quest_item_feedback_controller = object_draft_schema
    craftingToolTab = 2148007936, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "crafting_general", 
    xp = 40, 
 

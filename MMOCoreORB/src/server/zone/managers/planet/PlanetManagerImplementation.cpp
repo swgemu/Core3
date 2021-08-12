@@ -645,7 +645,8 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 			<< object->getObjectNameStringIdName()
 			<< ":" << object->getObjectID()
 			<< ", " << searchrange
-			<< ") @ " << object->getWorldPosition().toString();
+			<< ") @ " << object->getWorldPosition().toString()
+			<< "\n";
 #endif
 
 	Reference<PlanetTravelPoint*> planetTravelPoint = getNearestPlanetTravelPoint(object->getWorldPosition(), searchrange);
@@ -653,9 +654,9 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 #if DEBUG_TRAVEL
 
 	if(planetTravelPoint == nullptr)
-		callDesc << ": DID NOT FIND POINT IN RANGE";
+		callDesc << ": DID NOT FIND POINT IN RANGE \n";
 	else
-		callDesc << ": returning: " << planetTravelPoint->toString();
+		callDesc << ": returning: " << planetTravelPoint->toString() << "\n";
 
 	info(callDesc, true);
 #endif
@@ -690,6 +691,86 @@ PlanetTravelPoint* PlanetManagerImplementation::getRandomStarport() {
 	}
 
 	return planetStarports.get(System::random(planetStarports.size() - 1));
+}
+
+Vector3 PlanetManagerImplementation::getRandomSpawnPoint() {
+	Vector3 position;
+	bool found = false;
+	float minX = zone->getMinX(), maxX = zone->getMaxX();
+	float minY = zone->getMinY(), maxY = zone->getMaxY();
+	float diameterX = maxX - minX;
+	float diameterY = maxY - minY;
+	int retries = 20;
+
+	while (!found && retries > 0) {
+		position.setX(System::random(diameterX) + minX);
+		position.setY(System::random(diameterY) + minY);
+
+		found = isSpawningPermittedAt(position.getX(), position.getY());
+
+		retries--;
+	}
+
+	if (retries == 0) {
+		position.set(0, 0, 0);
+	}
+
+	return position;
+}
+
+Vector3 PlanetManagerImplementation::getInSightSpawnPoint(CreatureObject* creature, float minDistance, float maxDistance, float angle) {
+	Vector3 position = creature->getPosition();
+
+	do {
+		for (int i = 0; i < 10; i++) {
+			position = creature->getWorldCoordinate(minDistance + System::random(20), angle - System::random(2 * angle), true);
+
+			if (noInterferingObjects(creature, position)) {
+				return position;
+			}
+		}
+
+		minDistance += 10;
+		angle += 5;
+	} while (maxDistance <= 120);
+
+	return creature->getPosition();
+}
+
+bool PlanetManagerImplementation::noInterferingObjects(CreatureObject* creature, const Vector3& position) {
+	CloseObjectsVector* vec = creature->getCloseObjects();
+
+	if (vec == nullptr)
+		return true;
+
+	SortedVector<QuadTreeEntry*> closeObjects;
+	vec->safeCopyTo(closeObjects);
+
+	for (int j = 0; j < closeObjects.size(); j++) {
+		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(j));
+
+		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
+
+		if (objectTemplate != nullptr) {
+			float radius = objectTemplate->getNoBuildRadius();
+
+			if (radius > 0) {
+				Vector3 objWorldPos = obj->getWorldPosition();
+
+				if (objWorldPos.squaredDistanceTo(position) < radius * radius) {
+					return false;
+				}
+			}
+
+			if (objectTemplate->isSharedStructureObjectTemplate()) {
+				if (StructureManager::instance()->isInStructureFootprint(cast<StructureObject*>(obj), position.getX(), position.getY(), 2)) {
+					return false;
+				}
+			}
+		}
+	}
+
+	return true;
 }
 
 void PlanetManagerImplementation::loadClientPoiData() {
@@ -991,7 +1072,6 @@ bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float 
 	targetPos.setZ(zone->getHeight(x, y));
 
 	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
-	zone->getInRangeActiveAreas(x, y, margin + 64.f, &activeAreas, true);
 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);

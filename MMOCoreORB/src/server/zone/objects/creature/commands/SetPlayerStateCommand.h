@@ -65,6 +65,10 @@ public:
 
 		creature->sendSystemMessage("You have " + actionName + " " + targetCreature->getDisplayedName() + "'s '" + state + "' state.");
 
+		if (actionName == "set") {
+			creature->sendSystemMessage("WARNING: These are not traditional state applications. Only attempt to remove them with the setPlayerState command.");
+		}
+
 		return SUCCESS;
 	}
 

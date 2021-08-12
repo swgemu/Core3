@@ -51,7 +51,8 @@ object_draft_schematic_structure_component_structure_storage_section = object_dr
 	complexity = 5,
 	size = 2,
 	factoryCrateSize = 10,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 400,
 

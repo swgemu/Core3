@@ -51,7 +51,8 @@ object_draft_schematic_structure_installation_mining_liquid_vapor = object_draft
 	complexity = 15,
 	size = 8,
 	factoryCrateSize = 1,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 1900,
 

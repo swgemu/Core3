@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_item_theme_park_alderaan_act3_dead_eye_prototype = object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype:new {
-
+    factoryCrateType = "object/factory/factory_crate_chemicals.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_theme_park_alderaan_act3_dead_eye_prototype, "object/draft_schematic/item/theme_park/alderaan/act3/dead_eye_prototype.iff")

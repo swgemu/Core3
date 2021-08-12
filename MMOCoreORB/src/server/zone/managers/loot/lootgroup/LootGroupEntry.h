@@ -22,6 +22,9 @@ public:
 		lootChance = chance;
 	}
 
+	LootGroupEntry(const LootGroupEntry& entry) : Object(), templateName(entry.templateName), lootChance(entry.lootChance) {
+	}
+
 	void readObject(LuaObject* lua) {
 		templateName = lua->getStringField("group");
 		lootChance = lua->getIntField("chance");

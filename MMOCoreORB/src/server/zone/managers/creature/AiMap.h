@@ -430,7 +430,6 @@ private:
 
 			bitmaskMap.put(flag, flagMap);
 		}
-
 		obj.pop();
 	}
 

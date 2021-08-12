@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_space_capacitor_basic_capacitor = object_draft_schematic_space_capacitor_shared_basic_capacitor:new {
-
+    factoryCrateType = "object/factory/factory_crate_generic_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_basic_capacitor, "object/draft_schematic/space/capacitor/basic_capacitor.iff")

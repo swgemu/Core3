@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_weapon_component_weapon_mount = object_draft_schematic_weapon_component_shared_weapon_mount:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_weapon_mount, "object/draft_schematic/weapon/component/weapon_mount.iff")

@@ -50,7 +50,8 @@ object_draft_schematic_weapon_pistol_republic_blaster_quest = object_draft_schem
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 105, 
 

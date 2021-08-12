@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dish_wastril_bread = object_draft_schematic_food_shared_dish_wastril_bread:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_wastril_bread, "object/draft_schematic/food/dish_wastril_bread.iff")

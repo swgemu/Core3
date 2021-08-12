@@ -51,6 +51,7 @@ object_draft_schematic_chemistry_medpack_wound_constitution_b = object_draft_sch
 	complexity = 10,
 	size = 4,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_chemicals.iff",
 
 	xpType = "crafting_medicine_general",
 	xp = 55,

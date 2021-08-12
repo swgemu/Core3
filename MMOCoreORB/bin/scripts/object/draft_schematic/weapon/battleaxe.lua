@@ -50,7 +50,8 @@ object_draft_schematic_weapon_battleaxe = object_draft_schematic_weapon_shared_b
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 4, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 135, 
 

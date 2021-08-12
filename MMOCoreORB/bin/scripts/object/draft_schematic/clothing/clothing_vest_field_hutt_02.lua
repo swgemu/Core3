@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_clothing_clothing_vest_field_hutt_02 = object_draft_schematic_clothing_shared_clothing_vest_field_hutt_02:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_vest_field_hutt_02, "object/draft_schematic/clothing/clothing_vest_field_hutt_02.iff")

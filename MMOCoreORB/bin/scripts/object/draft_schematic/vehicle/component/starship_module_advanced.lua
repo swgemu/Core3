@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_starship_module_advanced = object_draft_schematic_vehicle_component_shared_starship_module_advanced:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_starship_module_advanced, "object/draft_schematic/vehicle/component/starship_module_advanced.iff")

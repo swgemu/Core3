@@ -12,6 +12,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/ActiveAreaQuadTree.h"
 
 bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
 	if (newZone == nullptr)
@@ -26,8 +27,8 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 
 	Locker zoneLocker(newZone);
 
-	if (activeArea->isInQuadTree() && newZone != zone) {
-		activeArea->error("trying to insert to zone an object that is already in a different quadtree");
+	if (zone != nullptr && newZone != zone) {
+		activeArea->error("trying to insert area to a different zone areaTree than its current zone");
 
 		activeArea->destroyObjectFromWorld(true);
 
@@ -36,9 +37,9 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 
 	activeArea->setZone(newZone);
 
-	QuadTree* regionTree = newZone->getRegionTree();
+	auto areaTree = newZone->getActiveAreaTree();
 
-	regionTree->insert(activeArea);
+	areaTree->insert(activeArea);
 
 	//regionTree->inRange(activeArea, 512);
 
@@ -87,19 +88,21 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 }
 
 bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea) const {
-	if (zone == nullptr)
+	if (zone == nullptr) {
+		activeArea->error("trying to remove activeArea from a null zone");
 		return false;
+	}
+
+	if (zone != activeArea->getZone())
+		activeArea->error("trying to remove activeArea from the wrong zone areaTree");
 
 	ManagedReference<SceneObject*> thisLocker = activeArea;
 
-	if (!activeArea->isInQuadTree())
-		return false;
-
 	Locker zoneLocker(zone);
 
-	QuadTree* regionTree = zone->getRegionTree();
+	auto areaTree = zone->getActiveAreaTree();
 
-	regionTree->remove(activeArea);
+	areaTree->remove(activeArea);
 
 	// lets remove the in range active areas of players
 	SortedVector<QuadTreeEntry*> objects;

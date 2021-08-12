@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_bio_engineer_dna_template_dna_template_narglatch = object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch:new {
-
+    factoryCrateType = "object/factory/factory_crate_clothing.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_dna_template_narglatch, "object/draft_schematic/bio_engineer/dna_template/dna_template_narglatch.iff")

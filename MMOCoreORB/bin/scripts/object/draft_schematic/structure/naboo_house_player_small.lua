@@ -51,7 +51,8 @@ object_draft_schematic_structure_naboo_house_player_small = object_draft_schemat
 	complexity = 13,
 	size = 10,
 	factoryCrateSize = 1,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 1000,
 

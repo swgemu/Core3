@@ -33,6 +33,18 @@ public:
 		rewardedSchematics = list.rewardedSchematics;
 	}
 
+	SchematicList& operator=(const SchematicList& list) {
+		if (this == &list) {
+			return *this;
+		}
+
+		DeltaVector<ManagedReference<DraftSchematic*>>::operator=(list);
+
+		rewardedSchematics = list.rewardedSchematics;
+
+		return *this;
+	}
+
 	friend void to_json(nlohmann::json& j, const SchematicList& l);
 
 	bool add(DraftSchematic* schematic, DeltaMessage* message = nullptr, int updates = 1);

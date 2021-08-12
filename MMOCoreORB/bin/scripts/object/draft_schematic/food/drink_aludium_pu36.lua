@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_drink_aludium_pu36 = object_draft_schematic_food_shared_drink_aludium_pu36:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_aludium_pu36, "object/draft_schematic/food/drink_aludium_pu36.iff")

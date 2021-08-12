@@ -260,7 +260,7 @@ void SessionAPIClient::apiCall(const String& src, const String& basePath, const 
 }
 
 void SessionAPIClient::apiNotify(const String& src, const String& basePath) {
-	apiCall(src, basePath, [=](SessionApprovalResult result) {
+	apiCall(src, basePath, [=](const SessionApprovalResult& result) {
 		if (!result.isActionAllowed()) {
 			error() << src << " unexpected failure: " << result;
 		}

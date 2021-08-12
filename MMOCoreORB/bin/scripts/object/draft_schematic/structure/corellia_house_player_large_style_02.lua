@@ -51,7 +51,8 @@ object_draft_schematic_structure_corellia_house_player_large_style_02 = object_d
 	complexity = 32,
 	size = 14,
 	factoryCrateSize = 1,
-
+	factoryCrateType = "object/factory/factory_crate_installation.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 10000,
 

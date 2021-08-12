@@ -51,7 +51,8 @@ object_draft_schematic_space_weapon_missile_countermeasure_em_launcher = object_
 	complexity = 17,
 	size = 1,
 	factoryCrateSize = 0,
-
+	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
+   
 	xpType = "shipwright",
 	xp = 625,
 

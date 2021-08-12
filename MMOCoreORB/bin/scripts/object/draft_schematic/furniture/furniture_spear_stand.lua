@@ -50,7 +50,8 @@ object_draft_schematic_furniture_furniture_spear_stand = object_draft_schematic_
    craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
-
+	factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 540, 
 

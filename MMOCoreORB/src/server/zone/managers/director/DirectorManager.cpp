@@ -247,6 +247,20 @@ String DirectorManager::readStringSharedMemory(const String& key) {
 	return data;
 }
 
+Vector3 DirectorManager::readVector3SharedMemory(const String& key) {
+#ifndef WITH_STM
+	DirectorManager::instance()->rlock();
+#endif
+
+	Vector3 data = DirectorManager::instance()->sharedMemory->getVector3(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->runlock();
+#endif
+
+	return data;
+}
+
 uint64 DirectorManager::readSharedMemory(const String& key) {
 #ifndef WITH_STM
 	DirectorManager::instance()->rlock();
@@ -360,6 +374,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("readStringSharedMemory", readStringSharedMemory);
 	luaEngine->registerFunction("writeStringSharedMemory", writeStringSharedMemory);
 	luaEngine->registerFunction("deleteStringSharedMemory", deleteStringSharedMemory);
+	luaEngine->registerFunction("readVector3SharedMemory", readVector3SharedMemory);
+	luaEngine->registerFunction("writeVector3SharedMemory", writeVector3SharedMemory);
+	luaEngine->registerFunction("deleteVector3SharedMemory", deleteVector3SharedMemory);
 	luaEngine->registerFunction("spawnSceneObject", spawnSceneObject);
 	luaEngine->registerFunction("spawnActiveArea", spawnActiveArea);
 	luaEngine->registerFunction("spawnBuilding", spawnBuilding);
@@ -431,6 +448,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("spawnTheaterObject", spawnTheaterObject);
 	luaEngine->registerFunction("getSchematicItemName", getSchematicItemName);
 	luaEngine->registerFunction("getBadgeListByType", getBadgeListByType);
+	luaEngine->registerFunction("getGalaxyName", getGalaxyName);
 
 	//Navigation Mesh Management
 	luaEngine->registerFunction("createNavMesh", createNavMesh);
@@ -1107,6 +1125,80 @@ int DirectorManager::writeStringSharedMemory(lua_State* L) {
 #endif
 
 	DirectorManager::instance()->sharedMemory->putString(key, data);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->unlock();
+#endif
+
+	return 0;
+}
+
+int DirectorManager::readVector3SharedMemory(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::readVector3SharedMemory";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String key = Lua::getStringParameter(L);
+
+	Vector3 data = instance()->readVector3SharedMemory(key);
+
+	lua_newtable(L);
+	lua_pushnumber(L, data.getX());
+	lua_pushnumber(L, data.getZ());
+	lua_pushnumber(L, data.getY());
+	lua_rawseti(L, -4, 3);
+	lua_rawseti(L, -3, 2);
+	lua_rawseti(L, -2, 1);
+
+	return 1;
+}
+
+int DirectorManager::deleteVector3SharedMemory(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::deleteVector3SharedMemory";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String key = Lua::getStringParameter(L);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->wlock();
+#endif
+
+	DirectorManager::instance()->sharedMemory->removeVector3(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->unlock();
+#endif
+
+	return 0;
+}
+
+int DirectorManager::writeVector3SharedMemory(lua_State* L) {
+	if (checkArgumentCount(L, 4) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::writeVector3SharedMemory";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String key = lua_tostring(L, -4);
+	float x = lua_tonumber(L, -3);
+	float z = lua_tonumber(L, -2);
+	float y = lua_tonumber(L, -1);
+
+	Vector3 newVector = Vector3(x, y, z);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->wlock();
+#endif
+
+	DirectorManager::instance()->sharedMemory->putVector3(key, newVector);
 
 #ifndef WITH_STM
 	DirectorManager::instance()->unlock();
@@ -2504,11 +2596,25 @@ Lua* DirectorManager::getLuaInstance() {
 		JediManager::instance()->loadConfiguration(lua);
 
 		localLua.set(lua);
+
+		if (!lua->checkStack(0)) {
+			error()
+				<< __FILE__ << ":" << __LINE__ << ":" <<  __FUNCTION__ << "()"
+				<< " LUA Stack Leak: Found " << lua_gettop(lua->getLuaState()) << " item(s) on stack.";
+		}
 	}
 
 	if (*version != masterScreenPlayVersion.get()) {
+		int stackSize = lua_gettop(lua->getLuaState());
+
 		loadScreenPlays(lua);
 		*version = masterScreenPlayVersion.get();
+
+		if (!lua->checkStack(stackSize)) {
+			error()
+				<< __FILE__ << ":" << __LINE__ << ":" <<  __FUNCTION__ << "()"
+				<< " LUA Stack Leak: Found " << lua_gettop(lua->getLuaState()) << " item(s) on stack.";
+		}
 	}
 
 	return lua;
@@ -2532,11 +2638,25 @@ int DirectorManager::runScreenPlays() {
 		JediManager::instance()->loadConfiguration(lua);
 
 		localLua.set(lua);
+
+		if (!lua->checkStack(0)) {
+			error()
+				<< __FILE__ << ":" << __LINE__ << ":" <<  __FUNCTION__ << "()"
+				<< " LUA Stack Leak: Found " << lua_gettop(lua->getLuaState()) << " item(s) on stack.";
+		}
 	}
 
 	if (*version != masterScreenPlayVersion.get()) {
+		int stackSize = lua_gettop(lua->getLuaState());
+
 		ret = loadScreenPlays(lua);
 		*version = masterScreenPlayVersion.get();
+
+		if (!lua->checkStack(stackSize)) {
+			error()
+				<< __FILE__ << ":" << __LINE__ << ":" <<  __FUNCTION__ << "()"
+				<< " LUA Stack Leak: Found " << lua_gettop(lua->getLuaState()) << " item(s) on stack.";
+		}
 	}
 
 	return ret || ERROR_CODE;
@@ -3037,7 +3157,7 @@ int DirectorManager::getGCWDiscount(lua_State* L){
 
 int DirectorManager::getTerrainHeight(lua_State* L){
 	if (checkArgumentCount(L, 3) == 1) {
-		String err = "incorrect number of arguments passed to DirectorManager::getGCWDiscount";
+		String err = "incorrect number of arguments passed to DirectorManager::getTerrainHeight";
 		printTraceError(L, err);
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
@@ -3713,6 +3833,18 @@ int DirectorManager::getBadgeListByType(lua_State* L) {
 			lua_rawseti(L, -2, count);
 		}
 	}
+
+	return 1;
+}
+
+int DirectorManager::getGalaxyName(lua_State* L) {
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 0;
+	}
+
+	lua_pushstring(L, zoneServer->getGalaxyName().toCharArray());
 
 	return 1;
 }

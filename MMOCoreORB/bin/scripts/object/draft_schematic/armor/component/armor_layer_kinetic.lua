@@ -51,6 +51,7 @@ object_draft_schematic_armor_component_armor_layer_kinetic = object_draft_schema
 	complexity = 20,
 	size = 3,
 	factoryCrateSize = 100,
+	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
 
 	xpType = "crafting_clothing_armor",
 	xp = 80,

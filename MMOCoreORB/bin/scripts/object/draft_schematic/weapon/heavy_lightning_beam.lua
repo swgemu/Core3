@@ -50,7 +50,8 @@ object_draft_schematic_weapon_heavy_lightning_beam = object_draft_schematic_weap
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 50, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 550, 
 

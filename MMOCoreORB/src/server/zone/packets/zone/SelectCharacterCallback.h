@@ -62,7 +62,7 @@ public:
 				[object = Reference<SceneObject*>(obj), characterID,
 				playerCreature = Reference<CreatureObject*>(player),
 				clientObject = Reference<ZoneClientSession*>(client),
-				zoneServer](SessionApprovalResult result) {
+				zoneServer](const SessionApprovalResult& result) {
 
 			if (!result.isActionAllowed()) {
 				clientObject->info(true) << "Player connect not approved: " << result.getLogMessage();
@@ -193,13 +193,13 @@ public:
 
 		// Disable music notes if player had been playing music
 		if (!player->isPlayingMusic() && !player->isDancing()) {
-			player->setPerformanceCounter(0, false);
-			player->setInstrumentID(0, false);
+			player->setPerformanceStartTime(0, false);
+			player->setPerformanceType(0, false);
 
 			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(player);
 			dcreo6->updatePerformanceAnimation(player->getPerformanceAnimation());
-			dcreo6->updatePerformanceCounter(0);
-			dcreo6->updateInstrumentID(0);
+			dcreo6->updatePerformanceStartTime(0);
+			dcreo6->updatePerformanceType(0);
 			dcreo6->close();
 			player->broadcastMessage(dcreo6, true);
 

@@ -51,6 +51,7 @@ object_draft_schematic_armor_armor_segment_composite = object_draft_schematic_ar
 	complexity = 30,
 	size = 6,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_armor.iff",
 
 	xpType = "crafting_clothing_armor",
 	xp = 35,

@@ -50,7 +50,8 @@ object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_
    craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 7, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "crafting_general", 
    xp = 180, 
 

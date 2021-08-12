@@ -33,7 +33,7 @@ public:
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		agent->eraseBlackboard("targetProspect");
 
-		ManagedReference<SceneObject*> tar = agent->getThreatMap()->getHighestThreatCreature();
+		ManagedReference<SceneObject*> tar = agent->getThreatMap()->getHighestThreatAttacker();
 		if (tar == nullptr)
 			return FAILURE;
 

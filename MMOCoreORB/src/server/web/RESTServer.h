@@ -40,7 +40,7 @@ namespace server {
  class RESTServer : public Logger {
  protected:
 	AtomicBoolean doRun;
-	uint16 port;
+	uint16 port{};
 
  private:
 	String mAuthHeader;

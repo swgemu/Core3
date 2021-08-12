@@ -50,7 +50,8 @@ object_draft_schematic_furniture_bestine_painting_bestine_golden_flower_01 = obj
 	complexity = 15,
 	size = 2,
 	factoryCrateSize = 15,
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff",
+   
 	xpType = "crafting_structure_general",
 	xp = 80,
 

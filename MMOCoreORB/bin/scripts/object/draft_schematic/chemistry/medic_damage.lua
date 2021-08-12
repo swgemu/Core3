@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_chemistry_medic_damage = object_draft_schematic_chemistry_shared_medic_damage:new {
-
+    factoryCrateType = "object/factory/factory_crate_chemicals.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medic_damage, "object/draft_schematic/chemistry/medic_damage.iff")

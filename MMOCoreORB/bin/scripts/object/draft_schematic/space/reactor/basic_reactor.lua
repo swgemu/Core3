@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_space_reactor_basic_reactor = object_draft_schematic_space_reactor_shared_basic_reactor:new {
-
+    factoryCrateType = "object/factory/factory_crate_generic_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_basic_reactor, "object/draft_schematic/space/reactor/basic_reactor.iff")

@@ -164,6 +164,18 @@ public:
 	}
 
 	/**
+	 * Remove a spawn point.
+	 * @param npc the npc spawn point to remove.
+	 */
+	void remove(NpcSpawnPoint* npc) {
+		int closestCityNumber = getClosestCityNumber(npc->getPosition());
+
+		if (closestCityNumber >= 0) {
+			citySpawnMaps.get(closestCityNumber)->remove(npc);
+		}
+	}
+
+	/**
 	 * Finds a spawn point on a certain location.
 	 * @param position the position to search.
 	 * @return the spawn point on the position or nullptr if none exist.

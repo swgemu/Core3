@@ -35,6 +35,7 @@
 
 #include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
 #include "server/zone/objects/building/components/EnclaveContainerComponent.h"
+#include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
@@ -56,7 +57,7 @@ void BuildingObjectImplementation::loadTemplateData(
 	optionsBitmask = 0x00000100;
 
 	SharedBuildingObjectTemplate* buildingData =
-			dynamic_cast<SharedBuildingObjectTemplate*> (templateData);
+		dynamic_cast<SharedBuildingObjectTemplate*> (templateData);
 
 	if (buildingData == nullptr)
 		return;
@@ -179,7 +180,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose, boo
 			auto containerObject = cell->getContainerObject(j);
 
 			if (containerObject != nullptr && ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
-							|| (closeObjects != nullptr && closeObjects->contains(containerObject.get()))))
+						|| (closeObjects != nullptr && closeObjects->contains(containerObject.get()))))
 				containerObject->sendTo(player, true, false);
 		}
 	}
@@ -538,21 +539,28 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 		if (!cell->isContainerLoaded())
 			continue;
 
-		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			auto child = cell->getContainerObject(j);
+		try
+		{
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				auto child = cell->getContainerObject(j);
 
-			if (child == nullptr)
-				continue;
+				if (child == nullptr)
+					continue;
 
-			if (child->getCloseObjects() != nullptr)
-				child->removeInRangeObject(obj);
-			else
-				child->notifyDissapear(obj);
+				if (child->getCloseObjects() != nullptr)
+					child->removeInRangeObject(obj);
+				else
+					child->notifyDissapear(obj);
 
-			if (obj->getCloseObjects() != nullptr)
-				obj->removeInRangeObject(child);
-			else
-				obj->notifyDissapear(child);
+				if (obj->getCloseObjects() != nullptr)
+					obj->removeInRangeObject(child);
+				else
+					obj->notifyDissapear(child);
+			}
+		} catch (const Exception& exception) {
+			warning("could not remove all container objects in BuildingObject::notifyDissapear");
+
+			exception.printStackTrace();
 		}
 	}
 }
@@ -664,7 +672,7 @@ CellObject* BuildingObjectImplementation::getCell(const String& cellName) {
 }
 
 void BuildingObjectImplementation::destroyObjectFromDatabase(
-	bool destroyContainedObjects) {
+		bool destroyContainedObjects) {
 
 	float x = getPositionX();
 	float y = getPositionY();
@@ -1289,27 +1297,40 @@ void BuildingObjectImplementation::createChildObjects() {
 
 		GCWManager* gcwMan = thisZone->getGCWManager();
 
+		if (gcwMan == nullptr) {
+			return;
+		}
+
 		for (int i = 0; i < serverTemplate->getChildObjectsSize();i++) {
 			const ChildObject* child = serverTemplate->getChildObject(i);
 
-			if (child == nullptr)
+			if (child == nullptr) {
 				continue;
+			}
 
-			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
+			String templateString = child->getTemplateFile();
 
-			if (thisTemplate == nullptr || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE || thisTemplate->getGameObjectType() == SceneObjectType::CREATURE)
+			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(templateString.hashCode());
+
+			if (thisTemplate == nullptr || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE || thisTemplate->getGameObjectType() == SceneObjectType::CREATURE) {
 				continue;
+			}
 
+			if (templateString.contains("alarm_") && !gcwMan->shouldSpawnBaseAlarms()) {
+				continue;
+			}
 
 			String dbString = "sceneobjects";
+
 			if (thisTemplate->getGameObjectType() == SceneObjectType::MINEFIELD || thisTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE || thisTemplate->getGameObjectType() == SceneObjectType::STATICOBJECT) {
 				dbString = "playerstructures";
 			}
 
-			ManagedReference<SceneObject*> obj = server->createObject(child->getTemplateFile().hashCode(), dbString, getPersistenceLevel());
+			ManagedReference<SceneObject*> obj = server->createObject(templateString.hashCode(), dbString, getPersistenceLevel());
 
-			if (obj == nullptr)
+			if (obj == nullptr) {
 				continue;
+			}
 
 			Locker crossLocker(obj, asBuildingObject());
 
@@ -1335,6 +1356,8 @@ void BuildingObjectImplementation::createChildObjects() {
 						if (cellObject != nullptr) {
 							if (!cellObject->transferObject(obj, child->getContainmentType(), true)) {
 								obj->destroyObjectFromDatabase(true);
+							} else if (templateString.contains("alarm_")) {
+								gcwMan->addBaseAlarm(asBuildingObject(), obj);
 							}
 						} else {
 							obj->destroyObjectFromDatabase(true);
@@ -1500,8 +1523,8 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate() {
 					}
 
 				} catch (Exception& e) {
-						error("unreported exception caught in void BuildingObjectImplementation::spawnChildCreaturesFromTemplate()!");
-						e.printStackTrace();
+					error("unreported exception caught in void BuildingObjectImplementation::spawnChildCreaturesFromTemplate()!");
+					e.printStackTrace();
 				}
 
 			} // create the creature outside

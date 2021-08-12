@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_structure_component_weapon_mount_heavy_stabilization_unit = object_draft_schematic_structure_component_shared_weapon_mount_heavy_stabilization_unit:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_weapon_mount_heavy_stabilization_unit, "object/draft_schematic/structure/component/weapon_mount_heavy_stabilization_unit.iff")

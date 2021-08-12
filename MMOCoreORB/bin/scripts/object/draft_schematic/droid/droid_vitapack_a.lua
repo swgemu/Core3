@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_droid_droid_vitapack_a = object_draft_schematic_droid_shared_droid_vitapack_a:new {
-
+	factoryCrateType = "object/factory/factory_crate_electronics.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_vitapack_a, "object/draft_schematic/droid/droid_vitapack_a.iff")

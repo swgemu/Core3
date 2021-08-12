@@ -678,27 +678,52 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	craftingValues->setManufactureSchematic(manufactureSchematic);
 	craftingValues->setPlayer(crafter);
 
-	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
+	if (prototype->isWeaponObject()) {
+		unsigned int type = prototype->getClientGameObjectType();
 
-		ComponentSlot* compSlot = cast<ComponentSlot*>(manufactureSchematic->getSlot(i));
-		if (compSlot == nullptr)
-			continue;
+		if (type == SceneObjectType::PISTOL || type == SceneObjectType::CARBINE || type == SceneObjectType::RIFLE) {
+			uint32 tanoCRC = prototype->getClientObjectCRC();
 
-		ManagedReference<TangibleObject*> tano = compSlot->getPrototype();
-		if (tano == nullptr)
-			continue;
+			for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
+				ComponentSlot* compSlot = cast<ComponentSlot*>(manufactureSchematic->getSlot(i));
 
-		uint32 tanoCRC = prototype->getClientObjectCRC();
-		uint32 visSlot = draftSchematic->getAppearance(i).hashCode();
+				if (compSlot == nullptr) {
+					continue;
+				}
 
-		// we know that we can only have one component per hardpoint slot, so don't worry about checking them
-		if (visSlot > 0) {
-			Vector<uint32> ids = ComponentMap::instance()->getVisibleCRC(tanoCRC, visSlot);
-			int size = ids.size();
+				ManagedReference<TangibleObject*> compTano = compSlot->getPrototype();
 
-			if (size > 0) {
-				int index = System::random(size - 1);
-				prototype->addVisibleComponent(ids.get(index), false);
+				if (compTano == nullptr) {
+					continue;
+				}
+
+				const String& slotName = compSlot->getSlotName();
+
+				if (slotName.isEmpty()) {
+					continue;
+				}
+
+				const auto& ids = ComponentMap::instance()->getVisibleCRC(tanoCRC, slotName.hashCode());
+
+				if (ids.size() == 0) {
+					continue;
+				}
+
+				uint32 compCrc = compTano->getClientObjectCRC();
+
+				for (int ii = 0; ii < ids.size(); ++ii) {
+					uint32 key = ids.elementAt(ii).getKey();
+					uint32 val = ids.elementAt(ii).getValue();
+
+					if (key == 0 || val == 0) {
+						continue;
+					}
+
+					if (slotName == "stock" || compCrc == key) {
+						prototype->addVisibleComponent(val, false);
+						break;
+					}
+				}
 			}
 		}
 	}
@@ -1041,22 +1066,25 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 	Locker locker2(manufactureSchematic);
 	Locker locker3(prototype);
 
+	StringId protoNameID = *prototype->getObjectName();
+
 	if (templateChoice != 0xFF) {
+		Reference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
 
-		Reference<DraftSchematic*> draftSchematic =
-				manufactureSchematic->getDraftSchematic();
+		if (draftSchematic != nullptr && draftSchematic->getTemplateListSize() >= (int)templateChoice) {
+			String clientTemplate = draftSchematic->getTemplate((int)templateChoice);
+			String serverTemplate = clientTemplate.replaceAll("shared_", "");
 
-		if (draftSchematic != nullptr) {
-			if (draftSchematic->getTemplateListSize() >= (int) templateChoice) {
-				String chosenTemplate = draftSchematic->getTemplate((int) templateChoice);
-				uint32 clientCRC = chosenTemplate.hashCode();
-				prototype->setClientObjectCRC(clientCRC);
+			SharedObjectTemplate* shot = TemplateManager::instance()->getTemplate(serverTemplate.hashCode());
 
-				String minusShared = chosenTemplate.replaceAll("shared_","");
-				SharedObjectTemplate* newTemplate = TemplateManager::instance()->getTemplate(minusShared.hashCode());
-
-				prototype->loadTemplateData(newTemplate);
+			if (shot != nullptr) {
+				prototype->loadTemplateData(shot);
+				prototype->setObjectName(protoNameID, false);
 				prototype->updateCraftingValues(manufactureSchematic->getCraftingValues(), false);
+
+				if (!prototype->getSerialNumber().isEmpty()) {
+					prototype->setOptionBit(OptionBitmask::HASSERIAL, false);
+				}
 
 				prototype->sendDestroyTo(crafter);
 				prototype->sendTo(crafter, true);
@@ -1064,71 +1092,64 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 		}
 	}
 
-	if (schematicCount < 0 || schematicCount > 1000)
-		schematicCount = 1000;
+	String clientName = name;
 
-	manufactureSchematic->setManufactureLimit(schematicCount);
+	while (clientName.contains("\\#")) {
+		int index = clientName.indexOf("\\#");
+		String sub = "\\" + clientName.subString(index, index + 2);
 
-	StringTokenizer tokenizer(customizationString);
-	byte customizationindex, customizationvalue;
-	String customizationname = "";
-
-	//Database::escapeString(name);
-
-	//Remove color codes
-	String newName = name;
-	while (newName.contains("\\#")) {
-		int index = newName.indexOf("\\#");
-		String sub = "\\" + newName.subString(index, index + 2);
-		newName = newName.replaceFirst(sub,"");
+		clientName = clientName.replaceFirst(sub, "");
 	}
 
-	UnicodeString customName(newName);
+	if (clientName.isEmpty()) {
+		clientName = prototype->getDisplayedName();
+	}
+
+	UnicodeString customName = clientName;
+
 	prototype->setCustomObjectName(customName, false);
 
-	auto newObjectName = server::zone::objects::scene::variables::StringId(
-			prototype->getObjectNameStringIdFile(),
-			prototype->getObjectNameStringIdName());
-
-	/// Set Name
-	manufactureSchematic->setObjectName(newObjectName, false);
-
-	/// Set Manufacture Schematic Custom name
-	if (!newName.isEmpty())
-		manufactureSchematic->setCustomObjectName(customName, false);
-
-	while (tokenizer.hasMoreTokens()) {
-
-		customizationindex = (byte) tokenizer.getIntToken();
-
-		customizationname = variables.elementAt(customizationindex).getKey();
-
-		customizationvalue = (byte) tokenizer.getIntToken();
-
-		prototype->setCustomizationVariable(customizationname,
-				customizationvalue);
+	if (schematicCount < 0 || schematicCount > 1000) {
+		schematicCount = 1000;
 	}
 
-	TangibleObjectDeltaMessage3* dtano3 =
-			new TangibleObjectDeltaMessage3(prototype);
-	dtano3->updateCustomName(newName);
+	manufactureSchematic->setManufactureLimit(schematicCount);
+	manufactureSchematic->setObjectName(protoNameID, false);
+	manufactureSchematic->setCustomObjectName(clientName, false);
+
+	StringTokenizer tokenizer(customizationString);
+
+	while (tokenizer.hasMoreTokens()) {
+		byte customizationindex = (byte)tokenizer.getIntToken();
+
+		if (tokenizer.hasMoreTokens()) {
+			byte customizationvalue = (byte)tokenizer.getIntToken();
+
+			String customizationname = variables.elementAt(customizationindex).getKey();
+
+			prototype->setCustomizationVariable(customizationname, customizationvalue);
+		}
+	}
+
+	auto dtano3 = new TangibleObjectDeltaMessage3(prototype);
+
+	dtano3->updateCustomName(customName);
+	dtano3->updateOptionsBitmask();
 	dtano3->updateCustomizationString();
 	dtano3->close();
 
 	crafter->sendMessage(dtano3);
 
-	ManufactureSchematicObjectDeltaMessage3 * dMsco3 =
-			new ManufactureSchematicObjectDeltaMessage3(
-					manufactureSchematic);
-	dMsco3->updateName(newName);
+	auto dMsco3 = new ManufactureSchematicObjectDeltaMessage3(manufactureSchematic);
+
+	dMsco3->updateName(clientName);
 	dMsco3->updateCondition(schematicCount);
 	dMsco3->close();
 
 	crafter->sendMessage(dMsco3);
 
-	//Object Controller
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			crafter->getObjectID(), 0x1B, 0x010C);
+	auto objMsg = new ObjectControllerMessage(crafter->getObjectID(), 0x1B, 0x010C);
+
 	objMsg->insertInt(0x15A);
 	objMsg->insertInt(0);
 	objMsg->insertByte(0);

@@ -90,9 +90,9 @@ class PlanetManager extends ManagedService implements Logger {
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
 		server = srv;
-		
+
 		performanceLocations = new MissionTargetMap();
-		
+
 		Logger.setLoggingName("PlanetManager " + zone.getZoneName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
@@ -175,7 +175,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 */
 	@local
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(SceneObject object, float range = 16000.0);
-	
+
 	@local
 	public native PlanetTravelPoint getRandomStarport();
 
@@ -187,6 +187,33 @@ class PlanetManager extends ManagedService implements Logger {
 	 */
 	@local
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(@dereferenced final Vector3 position, float range = 16000.0);
+
+	/**
+	 * Get a random spawn point on the planet.
+	 * The spawn point will be checked to be a valid spawn point through no spawn areas, water, buildings etc.
+	 * @return Returns a valid spawn point.
+	 */
+	@local
+	@dereferenced
+	public native Vector3 getRandomSpawnPoint();
+
+	/**
+	 * Get a spawn point that is "in sight" for the supplied creature.
+	 * The spawn point will be randomly generated in an arc in front of the creature. The creature heading direction willl be the center of the arc.
+	 * The spawn point will be checked to be unobstructed by any buildings and to be a valid spawn point. 10 tries will be made with the minimum distance + 20 m.
+	 * If no suitable spawn point has been foun the minimum distance will be increased with 10 m and 10 new tries will be made. This will continue until the
+	 * maximum distance is reached. If no suitable spawn point has been found after all tries the creature position will be returned.
+	 * @param creature the creature that the spaawn point should be in sight for.
+	 * @param minDistance the minimum spawn point distance from thee creature.
+	 * @param maxDistance the maximum spawn point distance from thee creature.
+	 * @param angle the half angle of the spawn arc.
+	 * @return a spawn position.
+	 */
+	@local
+	@dereferenced
+	public native Vector3 getInSightSpawnPoint(CreatureObject creature, float minDistance, float maxDistance, float angle);
+
+	private native boolean noInterferingObjects(CreatureObject creature, @dereferenced final Vector3 position);
 
 	public native boolean isSpawningPermittedAt(float x, float y, float margin = 0);
 

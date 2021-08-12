@@ -44,6 +44,23 @@ public:
 		canSeeHeightMod = m.canSeeHeightMod;
 	}
 
+	CreatureMovementEntry& operator=(const CreatureMovementEntry& m) {
+		if (this == &m) {
+			return *this;
+		}
+
+		posture = m.posture;
+		stationary = m.stationary;
+		slow = m.slow;
+		fast = m.fast;
+		movementScale = m.movementScale;
+		accelerationScale = m.accelerationScale;
+		turnScale = m.turnScale;
+		canSeeHeightMod = m.canSeeHeightMod;
+
+		return *this;
+	}
+
 	bool operator==(CreatureMovementEntry entry) {
 		return posture == entry.posture; // only need posture here because I am sure that these are unique to entries
 	}

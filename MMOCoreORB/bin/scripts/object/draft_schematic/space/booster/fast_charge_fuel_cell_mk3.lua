@@ -50,7 +50,8 @@ object_draft_schematic_space_booster_fast_charge_fuel_cell_mk3 = object_draft_sc
    craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 27, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_electronics.iff",
+   
    xpType = "shipwright", 
    xp = 125, 
 

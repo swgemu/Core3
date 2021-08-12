@@ -22,6 +22,7 @@ j1_po = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/3po_protocol_droid_silver.iff"},
@@ -37,7 +38,6 @@ j1_po = Creature:new {
 	primaryAttacks = {},
 	secondaryAttacks = { },
 	conversationTemplate = "",
-	optionsBitmask = AIENABLED
 }
 
 CreatureTemplates:addCreatureTemplate(j1_po, "j1_po")

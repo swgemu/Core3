@@ -50,6 +50,7 @@ object_draft_schematic_clothing_clothing_armor_ris_bracer_r = object_draft_schem
    craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 45, 
    size = 1, 
+   factoryCrateType = "object/factory/factory_crate_clothing.iff",
 
    xpType = "crafting_clothing_armor", 
    xp = 836, 

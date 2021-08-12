@@ -51,7 +51,7 @@ object_tangible_crafting_station_armor_repair = object_tangible_crafting_station
 	boostSkillMod = "armor_repair",
 
 	stationType = 1,
-
+	useCount = 5,
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -62,7 +62,6 @@ object_tangible_crafting_station_armor_repair = object_tangible_crafting_station
 	experimentalPrecision = {0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 4, 1},
 }
-	experimentalCombineType = {0, 0, 1, 1},
 ObjectTemplates:addTemplate(object_tangible_crafting_station_armor_repair, "object/tangible/crafting/station/armor_repair.iff")
 
 -- Items in previous file

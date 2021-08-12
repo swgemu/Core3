@@ -50,6 +50,7 @@ object_draft_schematic_droid_component_personality_module_geek = object_draft_sc
    craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 2, 
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
    xpType = "crafting_droid_general", 
    xp = 40, 

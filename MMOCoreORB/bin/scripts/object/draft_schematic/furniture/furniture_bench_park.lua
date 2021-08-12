@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_bench_park = object_draft_schematic_furniture_shared_furniture_bench_park:new {
-
+	factoryCrateType = "object/factory/factory_crate_furniture.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_bench_park, "object/draft_schematic/furniture/furniture_bench_park.iff")

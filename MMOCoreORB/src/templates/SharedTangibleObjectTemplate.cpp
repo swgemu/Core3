@@ -37,6 +37,8 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 
 	sliceable = false;
 
+	jediRobe = false;
+
 	faction = 0;
 
 	junkDealerNeeded = 0;
@@ -118,6 +120,8 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		pvpStatusBitmask = Lua::getIntParameter(state);
 	} else if (varName == "sliceable") {
 		sliceable = Lua::getIntParameter(state);
+	} else if (varName == "jediRobe") {
+		jediRobe = Lua::getBooleanParameter(state);
 	} else if (varName == "faction") {
 		String factionString = Lua::getStringParameter(state);
 		faction = factionString.toLowerCase().hashCode();

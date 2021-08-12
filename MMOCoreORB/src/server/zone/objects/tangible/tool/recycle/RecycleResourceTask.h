@@ -114,13 +114,17 @@ public:
 		ResourceSpawn* recycledVersion = manager->getRecycledVersion(resource);
 
 		TransactionLog trx(TrxCode::RECYCLED, player);
-		manager->harvestResourceToPlayer(trx, player, recycledVersion, resCon->getQuantity());
+		if (!manager->harvestResourceToPlayer(trx, player, recycledVersion, resCon->getQuantity())) {
+			trx.abort() << "Recycle error: harvestResourceToPlayer failed.";
+			return;
+		}
 
 		Locker clocker(insertedItem, player);
 
 		insertedItem->destroyObjectFromWorld(true);
 		insertedItem->destroyObjectFromDatabase(true);
 
+		trx.commit(true);
 	}
 
 	void removeFromRecycler(const String& reason) {

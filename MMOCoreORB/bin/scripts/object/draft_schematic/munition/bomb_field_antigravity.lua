@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_munition_bomb_field_antigravity = object_draft_schematic_munition_shared_bomb_field_antigravity:new {
-
+    factoryCrateType = "object/factory/factory_crate_weapon.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_bomb_field_antigravity, "object/draft_schematic/munition/bomb_field_antigravity.iff")

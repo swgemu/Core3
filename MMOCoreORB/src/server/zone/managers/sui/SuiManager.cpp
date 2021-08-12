@@ -94,24 +94,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 	debug() << "Unknown message callback with SuiWindowType: " << hex << windowType << ". Falling back on old handler system.";
 
 	switch (windowType) {
-	case SuiWindowType::DANCING_START:
-		handleStartDancing(player, suiBox, eventIndex, args);
-		break;
-	case SuiWindowType::DANCING_CHANGE:
-		handleStartDancing(player, suiBox, eventIndex, args);
-		break;
-	case SuiWindowType::MUSIC_START:
-		handleStartMusic(player, suiBox, eventIndex, args);
-		break;
-	case SuiWindowType::MUSIC_CHANGE:
-		handleStartMusic(player, suiBox, eventIndex, args);
-		break;
-	case SuiWindowType::BAND_START:
-		handleStartMusic(player, suiBox, eventIndex, args);
-		break;
-	case SuiWindowType::BAND_CHANGE:
-		handleStartMusic(player, suiBox, eventIndex, args);
-		break;
 	case SuiWindowType::BANK_TRANSFER:
 		handleBankTransfer(player, suiBox, eventIndex, args);
 		break;
@@ -148,67 +130,6 @@ void SuiManager::handleSetObjectName(CreatureObject* player, SuiBox* suiBox, uin
 		params.setTO(objectName);
 
 		player->sendSystemMessage(params);
-	}
-}
-
-void SuiManager::handleStartDancing(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 2)
-		return;
-
-	int index = Integer::valueOf(args->get(0).toString());
-
-	uint32 id = suiBox->getBoxID();
-
-	bool change = (uint16)id == SuiWindowType::DANCING_CHANGE;
-
-
-	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-
-	if (index == -1)
-		return;
-
-	String dance = listBox->getMenuItemName(index);
-
-	if (!change)
-		player->executeObjectControllerAction(STRING_HASHCODE("startdance"), 0, dance);
-	else
-		player->executeObjectControllerAction(STRING_HASHCODE("changedance"), 0, dance);
-}
-
-void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 2)
-		return;
-
-	int index = Integer::valueOf(args->get(0).toString());
-
-	uint32 id = suiBox->getBoxID();
-
-	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-
-	if (index == -1)
-		return;
-
-	String dance = listBox->getMenuItemName(index);
-
-	switch ((uint16)id) {
-	case SuiWindowType::MUSIC_START:
-		player->executeObjectControllerAction(STRING_HASHCODE("startmusic"), player->getTargetID(), dance);
-		break;
-	case SuiWindowType::MUSIC_CHANGE:
-		player->executeObjectControllerAction(STRING_HASHCODE("changemusic"), player->getTargetID(), dance);
-		break;
-	case SuiWindowType::BAND_CHANGE:
-		player->executeObjectControllerAction(STRING_HASHCODE("changebandmusic"), player->getTargetID(), dance);
-		break;
-	case SuiWindowType::BAND_START:
-		player->executeObjectControllerAction(STRING_HASHCODE("startband"), player->getTargetID(), dance);
-		break;
 	}
 }
 

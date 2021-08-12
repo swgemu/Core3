@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_vehicle_component_disperser = object_draft_schematic_vehicle_component_shared_disperser:new {
-
+    factoryCrateType = "object/factory/factory_crate_installation.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_disperser, "object/draft_schematic/vehicle/component/disperser.iff")

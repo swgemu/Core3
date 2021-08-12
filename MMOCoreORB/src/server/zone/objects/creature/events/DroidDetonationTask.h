@@ -131,26 +131,29 @@ public:
 						continue;
 					}
 
-					if (player->isPlayerCreature() && object->getParentID() != 0 && player->getParentID() != object->getParentID()) {
+					uint64 tarParentID = object->getParentID();
+
+					if (player->isPlayerCreature() && tarParentID != 0 && player->getParentID() != tarParentID) {
 						Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
 
 						if (targetCell != nullptr) {
-							if (!object->isPlayerCreature()) {
-								auto perms = targetCell->getContainerPermissions();
-
-								if (!perms->hasInheritPermissionsFromParent()) {
-									if (targetCell->checkContainerPermission(player, ContainerPermissions::WALKIN))
-										continue;
-								}
-							}
-
 							ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
 
 							if (parentSceneObject != nullptr) {
-								BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
+								BuildingObject* building = parentSceneObject->asBuildingObject();
 
-								if (buildingObject != nullptr && !buildingObject->isAllowedEntry(player))
+								if (building != nullptr && !building->isAllowedEntry(player)) {
 									continue;
+								}
+							}
+
+							const ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+							// This portion of the check is specific for locked dungeons doors since they do not inherit perms from parent
+							if (!perms->hasInheritPermissionsFromParent() && (player->getRootParent() == object->getRootParent())) {
+								if (!targetCell->checkContainerPermission(player, ContainerPermissions::WALKIN)) {
+									continue;
+								}
 							}
 						}
 					}

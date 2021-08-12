@@ -278,7 +278,7 @@ class QuadTreeEntry extends Observable {
 	public abstract native unsigned long getObjectID();
 
 	@read
-	public float getRadius() {
+	public abstract float getRadius() {
 		return radius;
 	}
 

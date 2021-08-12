@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_microphone_s01 = object_draft_schematic_furniture_shared_furniture_microphone_s01:new {
-
+	factoryCrateType = "object/factory/factory_crate_electronics.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_microphone_s01, "object/draft_schematic/furniture/furniture_microphone_s01.iff")

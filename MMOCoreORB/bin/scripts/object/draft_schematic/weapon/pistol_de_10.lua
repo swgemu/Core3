@@ -50,7 +50,8 @@ object_draft_schematic_weapon_pistol_de_10 = object_draft_schematic_weapon_share
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 32, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_weapon.iff",
+   
    xpType = "crafting_weapons_general", 
    xp = 360, 
 

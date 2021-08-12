@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_chemistry_component_dye_clothing = object_draft_schematic_chemistry_component_shared_dye_clothing:new {
-
+    factoryCrateType = "object/factory/factory_crate_chemicals.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_dye_clothing, "object/draft_schematic/chemistry/component/dye_clothing.iff")

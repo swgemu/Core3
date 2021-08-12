@@ -1,0 +1,30 @@
+sith_shadow = {
+		"object/mobile/dressed_sith_shadow_hum_f_01.iff",
+		"object/mobile/dressed_sith_shadow_hum_f_02.iff",
+		"object/mobile/dressed_sith_shadow_hum_f_03.iff",
+		"object/mobile/dressed_sith_shadow_hum_m_01.iff",
+		"object/mobile/dressed_sith_shadow_hum_m_02.iff",
+		"object/mobile/dressed_sith_shadow_hum_m_03.iff",
+		"object/mobile/dressed_sith_shadow_aqualish_f_01.iff",
+		"object/mobile/dressed_sith_shadow_aqualish_f_02.iff",
+		"object/mobile/dressed_sith_shadow_aqualish_m_01.iff",
+		"object/mobile/dressed_sith_shadow_aqualish_m_02.iff",
+		"object/mobile/dressed_sith_shadow_nikto_m_01.iff",
+		"object/mobile/dressed_sith_shadow_nikto_m_02.iff",
+		"object/mobile/dressed_sith_shadow_nikto_m_03.iff",
+		"object/mobile/dressed_sith_shadow_rodian_f_01.iff",
+		"object/mobile/dressed_sith_shadow_rodian_f_02.iff",
+		"object/mobile/dressed_sith_shadow_rodian_m_01.iff",
+		"object/mobile/dressed_sith_shadow_rodian_m_02.iff",
+		"object/mobile/dressed_sith_shadow_trn_f_01.iff",
+		"object/mobile/dressed_sith_shadow_trn_m_01.iff",
+		"object/mobile/dressed_sith_shadow_trn_m_02.iff",
+		"object/mobile/dressed_sith_shadow_trn_m_03.iff",
+		"object/mobile/dressed_sith_shadow_zab_f_01.iff",
+		"object/mobile/dressed_sith_shadow_zab_f_02.iff",
+		"object/mobile/dressed_sith_shadow_zab_m_01.iff",
+		"object/mobile/dressed_sith_shadow_zab_m_02.iff",
+		"object/mobile/dressed_sith_shadow_zab_m_03.iff"
+}
+
+addDressGroup("sith_shadow", sith_shadow)

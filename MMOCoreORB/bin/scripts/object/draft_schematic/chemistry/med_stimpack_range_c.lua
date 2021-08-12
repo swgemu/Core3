@@ -51,6 +51,7 @@ object_draft_schematic_chemistry_med_stimpack_range_c = object_draft_schematic_c
 	complexity = 30,
 	size = 3,
 	factoryCrateSize = 50,
+	factoryCrateType = "object/factory/factory_crate_chemicals.iff",
 
 	xpType = "crafting_medicine_general",
 	xp = 70,

@@ -50,6 +50,7 @@ object_draft_schematic_droid_component_personality_module_prissy = object_draft_
    craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 2, 
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
    xpType = "crafting_droid_general", 
    xp = 40, 

@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_food_dish_patot_panak = object_draft_schematic_food_shared_dish_patot_panak:new {
-
+    factoryCrateType = "object/factory/factory_crate_food.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_patot_panak, "object/draft_schematic/food/dish_patot_panak.iff")

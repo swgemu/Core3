@@ -51,6 +51,7 @@ object_draft_schematic_armor_shield_generator_personal_imperial_test = object_dr
 	complexity = 60,
 	size = 14,
 	factoryCrateSize = 20,
+	factoryCrateType = "object/factory/factory_crate_armor.iff",
 
 	xpType = "crafting_clothing_armor",
 	xp = 280,

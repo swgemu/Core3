@@ -50,7 +50,8 @@ object_draft_schematic_food_dish_thakitillo = object_draft_schematic_food_shared
    craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
-
+   factoryCrateType = "object/factory/factory_crate_food.iff",
+   
    xpType = "crafting_food_general", 
    xp = 350, 
 

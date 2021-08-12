@@ -50,6 +50,7 @@ object_draft_schematic_droid_component_performer_effects_aa = object_draft_schem
    craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 1, 
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
    xpType = "crafting_droid_general", 
    xp = 135, 

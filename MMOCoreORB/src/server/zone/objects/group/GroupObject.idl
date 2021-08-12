@@ -27,8 +27,6 @@ class GroupObject extends SceneObject {
 
 	int groupLevel;
 
-	protected string bandSong;
-
 	int lootRule;
 
 	unsigned long masterLooterID;
@@ -39,8 +37,6 @@ class GroupObject extends SceneObject {
 		Logger.setLoggingName("GroupObject");
 
 		chatRoom = null;
-
-		bandSong = "";
 
 		lootRule = GroupManager.FREEFORALL;
 		masterLooterID = 0;
@@ -165,16 +161,6 @@ class GroupObject extends SceneObject {
 
 	@dirty
 	public native boolean isOtherMemberPlayingMusic(CreatureObject player);
-
-	@read
-	public string getBandSong() {
-		return bandSong;
-	}
-
-	@preLocked
-	public void setBandSong(final string song) {
-		bandSong = song;
-	}
 
 	@read
 	public int getLootRule() {

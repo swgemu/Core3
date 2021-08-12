@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_droid_droid_stimpack_d = object_draft_schematic_droid_shared_droid_stimpack_d:new {
-
+	factoryCrateType = "object/factory/factory_crate_electronics.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_stimpack_d, "object/draft_schematic/droid/droid_stimpack_d.iff")

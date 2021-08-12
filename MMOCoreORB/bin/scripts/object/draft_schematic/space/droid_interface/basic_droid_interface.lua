@@ -42,7 +42,7 @@
 
 
 object_draft_schematic_space_droid_interface_basic_droid_interface = object_draft_schematic_space_droid_interface_shared_basic_droid_interface:new {
-
+    factoryCrateType = "object/factory/factory_crate_generic_items.iff"
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_basic_droid_interface, "object/draft_schematic/space/droid_interface/basic_droid_interface.iff")

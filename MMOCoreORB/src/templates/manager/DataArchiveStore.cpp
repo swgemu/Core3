@@ -99,8 +99,10 @@ IffStream* DataArchiveStore::openIffFile(const String& fileName) const {
 
 	byte* data = getData(fileName, size);
 
-	if (size == 0)
+	if (size == 0) {
+		E3_ASSERT(!data);
 		return nullptr;
+	}
 
 	iffStream = new IffStream();
 
