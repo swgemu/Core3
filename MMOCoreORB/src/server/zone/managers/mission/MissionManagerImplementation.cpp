@@ -763,7 +763,8 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	if (difficulty == 5)
 		difficulty = 4;
 
-	int diffDisplay = difficultyLevel + 7;
+	int diffDisplay = difficultyLevel < 5 ? 4 : difficultyLevel;
+
 	if (player->isGrouped())
 		diffDisplay += player->getGroup()->getGroupLevel();
 	else
