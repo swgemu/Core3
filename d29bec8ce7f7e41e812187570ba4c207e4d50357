@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f525d86f_88745b1f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GenerateCraftedItemCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-08-14T15:49:34Z",
+      "side": 1,
+      "message": "Maybe everything should be setCraftersID and then inside that you \"cache\" the name to the object? I\u0027m not sure but it\u0027s always been strange to me we use the character\u0027s name when it can change over time etc.",
+      "revId": "d29bec8ce7f7e41e812187570ba4c207e4d50357",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
