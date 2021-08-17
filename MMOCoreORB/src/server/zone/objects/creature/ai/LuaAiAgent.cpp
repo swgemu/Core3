@@ -48,6 +48,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "completeMove", &LuaAiAgent::completeMove },
 		{ "isWaiting", &LuaAiAgent::isWaiting },
 		{ "stopWaiting", &LuaAiAgent::stopWaiting },
+		{ "setWait", &LuaAiAgent::setWait },
 		{ "getCurrentSpeed", &LuaCreatureObject::getCurrentSpeed },
 		{ "setCurrentSpeed", &LuaAiAgent::setCurrentSpeed },
 		{ "getTargetFromMap", &LuaAiAgent::getTargetFromMap },
@@ -360,6 +361,16 @@ int LuaAiAgent::stopWaiting(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->stopWaiting();
+
+	return 0;
+}
+
+int LuaAiAgent::setWait(lua_State* L) {
+	int wait = (int) lua_tonumber(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->setWait(wait);
 
 	return 0;
 }
