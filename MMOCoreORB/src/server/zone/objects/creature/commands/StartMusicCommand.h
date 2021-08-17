@@ -124,6 +124,7 @@ public:
 			return GENERALERROR;
 		}
 
+		creature->sendSystemMessage("@performance:music_start_self"); // You begin playing.
 		startMusic(creature, performanceIndex, instrument);
 
 		return SUCCESS;
