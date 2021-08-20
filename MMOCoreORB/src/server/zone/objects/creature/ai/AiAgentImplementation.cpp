@@ -1150,8 +1150,12 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	// TODO (dannuic): do we need to check threatmap for other players in range at this point, or just have the mob completely drop aggro?
 	if (threatMap != nullptr)
 		threatMap->removeAll();
+
 	// try to peace out while running away since we removed all threat targets see above note
-	CombatManager::instance()->attemptPeace(asAiAgent());
+	if (isInCombat()) {
+		CombatManager::instance()->attemptPeace(asAiAgent());
+	}
+
 	clearPatrolPoints();
 
 	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
@@ -1194,8 +1198,6 @@ void AiAgentImplementation::leash() {
 }
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {
-	setFollowObject(defender);
-
 	CreatureObjectImplementation::setDefender(defender);
 
 	if (isRetreating())
@@ -1204,25 +1206,27 @@ void AiAgentImplementation::setDefender(SceneObject* defender) {
 	activateRecovery();
 }
 
+void AiAgentImplementation::setFollowTarget(SceneObject* prospect) {
+	if (prospect == nullptr) {
+		return;
+	}
+
+	setFollowObject(prospect);
+
+	if (prospect->isTangibleObject() && threatMap != nullptr) {
+		threatMap->addAggro(prospect->asTangibleObject(), 1);
+	}
+}
+
 void AiAgentImplementation::queueDizzyFallEvent() {
 	if (isNonPlayerCreatureObject())
 		CreatureObjectImplementation::queueDizzyFallEvent();
 }
 
 void AiAgentImplementation::addDefender(SceneObject* defender) {
-	unsigned int stateCopy = getFollowState();
-
-	if ((defenderList.size() == 0 || getFollowObject().get() == nullptr) && defender != nullptr) {
-		setFollowObject(defender);
-		if (defender->isTangibleObject() && threatMap != nullptr)
-			threatMap->addAggro(defender->asTangibleObject(), 1);
-	} else if (stateCopy <= STALKING) {
-		setFollowState(AiAgent::FOLLOWING);
+	if (defenderList.size() == 0 || (defender != nullptr && !defenderList.contains(defender))) {
+		CreatureObjectImplementation::addDefender(defender);
 	}
-
-	CreatureObjectImplementation::addDefender(defender);
-
-	activateRecovery();
 }
 
 void AiAgentImplementation::removeDefender(SceneObject* defender) {
@@ -2199,20 +2203,17 @@ float AiAgentImplementation::getMaxDistance() {
 		return 0.1f;
 		break;
 	case AiAgent::STALKING:
-		return followCopy != nullptr ? getAggroRadius()*2 : 25;
+		return followCopy != nullptr ? getAggroRadius() * 2 : 25;
 		break;
 	case AiAgent::FOLLOWING:
 		if (followCopy == nullptr)
 			return 0.1f;
 
-		if (isInCombat()) {
-			// stop in weapons range
-			if (!CollisionManager::checkLineOfSight(asAiAgent(), followCopy)) {
-				return 0.1f;
-			} else if (getWeapon() != nullptr ) {
-				float weapMaxRange = Math::min(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
-				return Math::max(0.1f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius() - 2);
-			}
+		if (!CollisionManager::checkLineOfSight(asAiAgent(), followCopy)) {
+			return 0.1f;
+		} else if (getWeapon() != nullptr ) {
+			float weapMaxRange = Math::min(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
+			return Math::max(0.1f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius() - 2);
 		} else {
 			return 1 + getTemplateRadius() + followCopy->getTemplateRadius();
 		}
@@ -2233,17 +2234,14 @@ int AiAgentImplementation::setDestination() {
 
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
-		if (followCopy != nullptr)
-			setOblivious();
 		clearPatrolPoints();
 
-		if (!homeLocation.isInRange(asAiAgent(), 1.5)) {
+		if (creatureBitmask == CreatureFlag::STATIC && !homeLocation.isInRange(asAiAgent(), 1.5)) {
 			homeLocation.setReached(false);
 			addPatrolPoint(homeLocation);
 		} else {
 			homeLocation.setReached(true);
 		}
-
 		break;
 	case AiAgent::FLEEING:
 		// TODO (dannuic): do we need to check threatmap for other players in range at this point? also, is this too far? alsoalso, is this time too static?
@@ -2271,7 +2269,7 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::WATCHING:
-		if (followCopy == nullptr || getAlertedTime() == nullptr || getAlertedTime()->isPast()) {
+		if (followCopy == nullptr) {
 			setOblivious();
 			return setDestination();
 		}
@@ -2306,8 +2304,15 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	default:
+		Time currentTime;
+		uint32 combatTime = currentTime.getMiliTime() - lastCombatActionTime.getMiliTime();
 
-		setOblivious();
+		if (creatureBitmask == CreatureFlag::STATIC) {
+			setOblivious();
+			break;
+		} else if (followCopy == nullptr && combatTime > 2000) {
+			setFollowState(PATROLLING);
+		}
 		break;
 	}
 
@@ -3162,10 +3167,13 @@ void AiAgentImplementation::restoreFollowObject() {
 	locker.release();
 	if (obj == nullptr) {
 		setOblivious();
+		return;
 	} else if (getCloseObjects() != nullptr && !getCloseObjects()->contains(obj.get())) {
 		setOblivious();
+		return;
 	} else if (obj->isCreatureObject() && obj->asCreatureObject()->isInvisible()) {
 		setOblivious();
+		return;
 	} else {
 		setFollowObject(obj);
 	}

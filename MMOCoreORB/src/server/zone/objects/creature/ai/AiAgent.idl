@@ -173,7 +173,7 @@ class AiAgent extends CreatureObject {
 	public static final int FLEEING = 5;
 	public static final int LEASHING = 6;
 	public static final int EVADING = 7;
-	
+
 	protected transient unsigned long customAiMap;
 
 	public AiAgent() {
@@ -572,6 +572,15 @@ class AiAgent extends CreatureObject {
 	public native void setDefender(SceneObject defender);
 
 	/**
+	 * Sets object to follow
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param prospect SceneObject is set to followObject
+	 */
+	@preLocked
+	public native void setFollowTarget(SceneObject prospect);
+
+	/**
 	 * Adds a SceneObject to the defender vector
 	 * @pre { this object is locked }
 	 * @post { this object is locked, defender is in the defender vector }
@@ -707,7 +716,7 @@ class AiAgent extends CreatureObject {
 		synchronized (targetMutex) {
 			if (this.isRetreating())
 				return;
-				
+
 			if (followObject != obj) {
 				setFollowState(FOLLOWING);
 

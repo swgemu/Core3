@@ -50,9 +50,12 @@ public:
 		SortedVector<QuadTreeEntry* > closeObjects;
 		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
-		// Shuffle closeobjects to randomize target checks
+		/* Shuffle closeobjects to randomize target checks
+		We do not want to randomize the checks. The ThreatMap and Defenders are checked first already for a prospective target.
+		So last we would want to check the closest target. - Hakry
+
 		std::shuffle(closeObjects.begin(), closeObjects.end(), *System::getMTRand());
-		/*QuadTreeEntry* temp;
+		QuadTreeEntry* temp;
 		int index;
 		for (int i = 0; i < closeObjects.size(); i++) {
 			index = (int) System::random(closeObjects.size() - 1 - i) + i;
@@ -68,14 +71,17 @@ public:
 			agent->writeBlackboard("targetProspect", scene);
 
 			Behavior::Status result = child->doAction(agent);
-			if (result != FAILURE)
+			if (result != FAILURE) {
+				agent->showFlyText("npc_reaction/flytext", "alert", 255, 0, 0);
 				return result;
+			}
 		}
 
 		return FAILURE;
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
+		// TO DO: Incapacitated players should be valid targets for creatures that Deathblow - H
 		if (target == nullptr || target == agent || target->isVehicleObject() || target->hasRidingCreature() || target->getPvpStatusBitmask() == CreatureFlag::NONE
 				|| target->isDead() || target->isIncapacitated() || target->isInvisible() || agent->isCamouflaged(target) || !agent->isAttackableBy(target)
 				|| !target->isAttackableBy(agent))
