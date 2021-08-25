@@ -180,9 +180,6 @@ public:
 			return FAILURE;
 		}
 
-		// We should not be assigning a defender. That is handled in the CombatManager. We only want to set the follow object until AI is in range to attack. - Hakry
-		agent->setFollowTarget(tar);
-
 		Time* aggroDelay = agent->getAggroDelay();
 		Time* alert = agent->getAlertedTime();
 
@@ -191,8 +188,7 @@ public:
 			uint32 newDelay = 6000 + System::random(4000);
 			aggroDelay->addMiliTime(newDelay);
 
-			agent->showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
-			agent->setFollowState(AiAgent::FOLLOWING);
+			agent->addDefender(tar);
 		}
 
 		return SUCCESS;

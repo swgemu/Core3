@@ -572,15 +572,6 @@ class AiAgent extends CreatureObject {
 	public native void setDefender(SceneObject defender);
 
 	/**
-	 * Sets object to follow
-	 * @pre { this object is locked }
-	 * @post { this object is locked }
-	 * @param prospect SceneObject is set to followObject
-	 */
-	@preLocked
-	public native void setFollowTarget(SceneObject prospect);
-
-	/**
 	 * Adds a SceneObject to the defender vector
 	 * @pre { this object is locked }
 	 * @post { this object is locked, defender is in the defender vector }

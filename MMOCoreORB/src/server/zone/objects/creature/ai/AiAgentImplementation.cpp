@@ -1206,25 +1206,19 @@ void AiAgentImplementation::setDefender(SceneObject* defender) {
 	activateRecovery();
 }
 
-void AiAgentImplementation::setFollowTarget(SceneObject* prospect) {
-	if (prospect == nullptr) {
-		return;
-	}
-
-	setFollowObject(prospect);
-
-	if (prospect->isTangibleObject() && threatMap != nullptr) {
-		threatMap->addAggro(prospect->asTangibleObject(), 1);
-	}
-}
-
 void AiAgentImplementation::queueDizzyFallEvent() {
 	if (isNonPlayerCreatureObject())
 		CreatureObjectImplementation::queueDizzyFallEvent();
 }
 
 void AiAgentImplementation::addDefender(SceneObject* defender) {
-	if (defenderList.size() == 0 || (defender != nullptr && !defenderList.contains(defender))) {
+	if ((defenderList.size() == 0 || getFollowObject().get() == nullptr) && defender != nullptr) {
+		setFollowObject(defender);
+		setFollowState(AiAgent::FOLLOWING);
+
+		if (defender->isTangibleObject() && threatMap != nullptr)
+			threatMap->addAggro(defender->asTangibleObject(), 1);
+
 		CreatureObjectImplementation::addDefender(defender);
 	}
 }

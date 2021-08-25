@@ -50,12 +50,10 @@ public:
 		SortedVector<QuadTreeEntry* > closeObjects;
 		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
-		/* Shuffle closeobjects to randomize target checks
-		We do not want to randomize the checks. The ThreatMap and Defenders are checked first already for a prospective target.
-		So last we would want to check the closest target. - Hakry
+		// Shuffle closeobjects to randomize target checks
 
 		std::shuffle(closeObjects.begin(), closeObjects.end(), *System::getMTRand());
-		QuadTreeEntry* temp;
+		/*QuadTreeEntry* temp;
 		int index;
 		for (int i = 0; i < closeObjects.size(); i++) {
 			index = (int) System::random(closeObjects.size() - 1 - i) + i;
