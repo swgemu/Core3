@@ -90,9 +90,8 @@ function CityScreenPlay:spawnMob(num, controllingFaction, difficulty)
 			local aiAgent = AiAgent(pNpc)
 			aiAgent:setCreatureBit(SCANNING_FOR_CONTRABAND)
 		end
-	end
 
-	if pNpc ~= nil then
+		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
 		createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawn", pNpc)
 		writeData(SceneObject(pNpc):getObjectID(), num)
 	end
@@ -327,7 +326,7 @@ function CityScreenPlay:spawnStationaryMobile(num)
 			self:setMoodString(pMobile, mood)
 		end
 
+		AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 		CreatureObject(pMobile):setPvpStatusBitmask(0)
-
 	end
 end

@@ -1025,6 +1025,7 @@ int LuaAiAgent::addCreatureFlag(lua_State* L) {
 
 	Locker locker(realObject);
 	realObject->addCreatureFlag(flag);
+	realObject->setAITemplate();
 
 	return 0;
 }
@@ -1034,6 +1035,7 @@ int LuaAiAgent::removeCreatureFlag(lua_State* L) {
 
 	Locker locker(realObject);
 	realObject->removeCreatureFlag(flag);
+	realObject->setAITemplate();
 
 	return 0;
 }

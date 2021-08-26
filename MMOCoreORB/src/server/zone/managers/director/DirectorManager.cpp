@@ -2168,7 +2168,6 @@ int DirectorManager::spawnMobile(lua_State* L) {
 			if (randomRespawn)
 				ai->setRandomRespawn(true);
 
-			ai->addCreatureFlag(CreatureFlag::STATIC);
 			ai->setAITemplate();
 		}
 
