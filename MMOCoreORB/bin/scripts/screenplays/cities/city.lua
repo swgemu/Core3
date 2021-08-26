@@ -183,12 +183,9 @@ function CityScreenPlay:setupMobilePatrol(pMobile, num)
 	local combatNpc = self.patrolMobiles[spawnNumber][9]
 
 	if combatNpc then
-		AiAgent(pMobile):setAiTemplate("combatpatrol")
 		createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawnPatrol", pMobile)
 	else
-		AiAgent(pMobile):setAiTemplate("citypatrol")
 		CreatureObject(pMobile):setPvpStatusBitmask(0)
-		CreatureObject(pMobile):setOptionsBitmask(0)
 	end
 
 	AiAgent(pMobile):setFollowState(4)
@@ -246,7 +243,7 @@ function CityScreenPlay:mobileDestinationReached(pMobile)
 		local delayTime = getRandomNumber(30, 60)
 
 		createEvent(delayTime * 1000, self.screenplayName, "mobilePatrol", pMobile, "")
-		-- AiAgent(pMobile):setWait(delayTime) -- TODO: Change for new AI?
+		AiAgent(pMobile):setWait(delayTime)
 	else
 		createEvent(100, self.screenplayName, "mobilePatrol", pMobile, "")
 	end
@@ -280,7 +277,6 @@ function CityScreenPlay:mobilePatrol(pMobile)
 	end
 
 	AiAgent(pMobile):stopWaiting()
-	-- AiAgent(pMobile):setWait(0) -- TODO: Change for new AI?
 	AiAgent(pMobile):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
 	AiAgent(pMobile):executeBehavior()
 end
