@@ -51,6 +51,7 @@ namespace ai {
 		int completeMove(lua_State* L);
 		int isWaiting(lua_State* L);
 		int stopWaiting(lua_State* L);
+		int setWait (lua_State* L);
 		int setCurrentSpeed(lua_State* L);
 		int getTargetFromMap(lua_State* L);
 		int getTargetFromDefenders(lua_State* L);
