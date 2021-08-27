@@ -24,14 +24,24 @@ official_patrol = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED + INVULNERABLE,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_official.iff"},
+
 	lootGroups = {},
-	weapons = {"ranged_weapons"},
-	conversationTemplate = "",
-	attacks = merge(brawlermid, marksmanmid)
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pistol",
+	secondaryWeapon = "none",
+	reactionStf = "@npc_reaction/fancy",
+
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = marksmannovice,
+	secondaryAttacks = {},
+	conversationTemplate = ""
 }
 
 CreatureTemplates:addCreatureTemplate(official_patrol, "official_patrol")
