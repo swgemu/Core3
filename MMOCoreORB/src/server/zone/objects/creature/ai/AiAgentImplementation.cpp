@@ -2230,10 +2230,15 @@ int AiAgentImplementation::setDestination() {
 	case AiAgent::OBLIVIOUS:
 		clearPatrolPoints();
 
-		if (creatureBitmask == CreatureFlag::STATIC && !homeLocation.isInRange(asAiAgent(), 1.5)) {
+		if (creatureBitmask >= CreatureFlag::STATIC && !homeLocation.isInRange(asAiAgent(), 1.5)) {
 			homeLocation.setReached(false);
 			addPatrolPoint(homeLocation);
 		} else {
+			if (creatureBitmask >= CreatureFlag::STATIC) {
+				setDirection(Math::deg2rad(homeLocation.getDirection()));
+				broadcastNextPositionUpdate(nullptr);
+			}
+
 			homeLocation.setReached(true);
 		}
 		break;
@@ -2298,13 +2303,9 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	default:
-		Time currentTime;
-		uint32 combatTime = currentTime.getMiliTime() - lastCombatActionTime.getMiliTime();
-
-		if (creatureBitmask == CreatureFlag::STATIC) {
+		if (creatureBitmask >= CreatureFlag::STATIC) {
 			setOblivious();
-			break;
-		} else if (followCopy == nullptr && combatTime > 2000) {
+		} else if (followCopy == nullptr) {
 			setFollowState(PATROLLING);
 		}
 		break;

@@ -51,7 +51,6 @@ public:
 		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 		// Shuffle closeobjects to randomize target checks
-
 		std::shuffle(closeObjects.begin(), closeObjects.end(), *System::getMTRand());
 		/*QuadTreeEntry* temp;
 		int index;
@@ -70,7 +69,6 @@ public:
 
 			Behavior::Status result = child->doAction(agent);
 			if (result != FAILURE) {
-				agent->showFlyText("npc_reaction/flytext", "alert", 255, 0, 0);
 				return result;
 			}
 		}
@@ -79,7 +77,7 @@ public:
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
-		// TO DO: Incapacitated players should be valid targets for creatures that Deathblow - H
+		// TODO: Incapacitated players should be valid targets for creatures that Deathblow - H
 		if (target == nullptr || target == agent || target->isVehicleObject() || target->hasRidingCreature() || target->getPvpStatusBitmask() == CreatureFlag::NONE
 				|| target->isDead() || target->isIncapacitated() || target->isInvisible() || agent->isCamouflaged(target) || !agent->isAttackableBy(target)
 				|| !target->isAttackableBy(agent))

@@ -90,7 +90,7 @@ lookDefault = {
 	{id="1650016708",	name="If",	pid="2391667584"},
 	{id="638753146",	name="CheckProspectLOS",	pid="1650016708"},
 	{id="4076527471",	name="SetFollowState",	pid="2391667584",	args={state=WATCHING}},
-	{id="1583995406",	name="SetAlert",	pid="2391667584",	args={duration=3.0, show=1}}}
+	{id="1583995406",	name="SetAlert",	pid="2391667584",	args={duration=6.0, show=1}}}
 addAiTemplate("lookDefault", lookDefault)
 
 moveDefault = {

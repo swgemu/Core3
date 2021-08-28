@@ -180,18 +180,9 @@ public:
 			return FAILURE;
 		}
 
-		Time* aggroDelay = agent->getAggroDelay();
-		Time* alert = agent->getAlertedTime();
+		agent->setDefender(tar);
 
-		if (aggroDelay != nullptr && aggroDelay->isPast() && alert->isPast() && agent->getFollowState() < AiAgent::FOLLOWING) {
-			aggroDelay->updateToCurrentTime();
-			uint32 newDelay = 6000 + System::random(4000);
-			aggroDelay->addMiliTime(newDelay);
-
-			agent->addDefender(tar);
-		}
-
-		return SUCCESS;
+		return agent->getMainDefender() == tar ? SUCCESS : FAILURE;
 	}
 };
 

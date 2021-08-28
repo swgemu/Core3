@@ -626,12 +626,13 @@ class AiAgent extends CreatureObject {
 	}
 
 	@preLocked
-	public void setHomeLocation(float x, float z, float y, CellObject cell = null) {
+	public void setHomeLocation(float x, float z, float y, CellObject cell = null, float direction = 0) {
 		//Logger.info("settingHomeLocation to" + String.valueOf(x) + ", " + String.valueOf(z) + ", " + String.valueOf(y), true);
 
 		homeLocation.setPosition(x, z, y);
 		homeLocation.setCell(cell);
 		homeLocation.setReached(true);
+		homeLocation.setDirection(direction);
 	}
 
 	@preLocked
