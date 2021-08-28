@@ -2230,15 +2230,16 @@ int AiAgentImplementation::setDestination() {
 	case AiAgent::OBLIVIOUS:
 		clearPatrolPoints();
 
-		if (creatureBitmask >= CreatureFlag::STATIC && !homeLocation.isInRange(asAiAgent(), 1.5)) {
-			homeLocation.setReached(false);
-			addPatrolPoint(homeLocation);
-		} else {
-			if (creatureBitmask >= CreatureFlag::STATIC) {
+		if (creatureBitmask >= CreatureFlag::STATIC) {
+			if (!homeLocation.isInRange(asAiAgent(), 1.5)) {
+				homeLocation.setReached(false);
+				addPatrolPoint(homeLocation);
+			} else {
 				setDirection(Math::deg2rad(homeLocation.getDirection()));
 				broadcastNextPositionUpdate(nullptr);
+				homeLocation.setReached(true);
 			}
-
+		} else {
 			homeLocation.setReached(true);
 		}
 		break;
