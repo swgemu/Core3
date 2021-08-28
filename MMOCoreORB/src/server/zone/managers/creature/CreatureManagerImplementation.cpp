@@ -425,7 +425,7 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 
 	if (creature->isAiAgent()) {
 		AiAgent* aio = cast<AiAgent*>(creature);
-		aio->setHomeLocation(x, z, y, cellParent);
+		aio->setHomeLocation(x, z, y, cellParent, direction);
 		aio->setNextStepPosition(x, z, y, cellParent);
 	}
 

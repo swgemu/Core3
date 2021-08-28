@@ -68,14 +68,16 @@ public:
 			agent->writeBlackboard("targetProspect", scene);
 
 			Behavior::Status result = child->doAction(agent);
-			if (result != FAILURE)
+			if (result != FAILURE) {
 				return result;
+			}
 		}
 
 		return FAILURE;
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
+		// TODO: Incapacitated players should be valid targets for creatures that Deathblow - H
 		if (target == nullptr || target == agent || target->isVehicleObject() || target->hasRidingCreature() || target->getPvpStatusBitmask() == CreatureFlag::NONE
 				|| target->isDead() || target->isIncapacitated() || target->isInvisible() || agent->isCamouflaged(target) || !agent->isAttackableBy(target)
 				|| !target->isAttackableBy(agent))

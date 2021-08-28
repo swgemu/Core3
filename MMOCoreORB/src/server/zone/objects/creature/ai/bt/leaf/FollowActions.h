@@ -164,12 +164,10 @@ public:
 
 class SetDefenderFromProspect : public Behavior {
 public:
-	SetDefenderFromProspect(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args) {
+	SetDefenderFromProspect(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
 	}
 
-	SetDefenderFromProspect(const SetDefenderFromProspect& a)
-			: Behavior(a) {
+	SetDefenderFromProspect(const SetDefenderFromProspect& a) : Behavior(a) {
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
@@ -182,7 +180,6 @@ public:
 			return FAILURE;
 		}
 
-		// note: this also sets the follow object (and sets the state to FOLLOWING)
 		agent->setDefender(tar);
 
 		return agent->getMainDefender() == tar ? SUCCESS : FAILURE;
@@ -249,7 +246,6 @@ public:
 			agent->setStalkObject(tar);
 			break;
 		case AiAgent::FOLLOWING:
-			agent->setFollowObject(tar);
 			break;
 		case AiAgent::PATROLLING:
 		case AiAgent::FLEEING:
@@ -293,7 +289,8 @@ public:
 
 		CreatureObject* tarCreo = tar->asCreatureObject();
 
-		float mod = Math::max(0.3f, Math::min(1 - (tarCreo->getLevel() - agent->getLevel()) / 20.f, 1.2f));
+		float minMod = Math::min(1.f - (tarCreo->getLevel() - agent->getLevel()) / 8.f, 1.5f);
+		float mod = Math::max(0.75f, minMod);
 		agent->writeBlackboard("aggroMod", mod);
 
 		return agent->peekBlackboard("aggroMod") ? SUCCESS : FAILURE;

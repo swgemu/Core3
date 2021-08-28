@@ -40,7 +40,6 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 		if (agent != nullptr) {
 			// TODO: Should this be done here or in realizations of specific actions?
 			agent->clearCombatState(true);
-			agent->setOblivious();
 			agent->info("Invalid return from " + print(), true);
 		}
 

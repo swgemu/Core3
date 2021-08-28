@@ -2149,7 +2149,7 @@ int DirectorManager::spawnMobile(lua_State* L) {
 	msg << "trying to spawn with mobile: " << mobile << " x:" << x;
 	DirectorManager::instance()->info(msg.toString(), true);*/
 
-	CreatureObject* creature = creatureManager->spawnCreature(mobile.hashCode(), 0, x, z, y, parentID);
+	CreatureObject* creature = creatureManager->spawnCreature(mobile.hashCode(), 0, x, z, y, parentID, false, heading);
 
 	if (creature == nullptr) {
 		String err = "could not spawn mobile " + mobile;
