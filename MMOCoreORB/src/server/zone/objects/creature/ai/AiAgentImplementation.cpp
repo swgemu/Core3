@@ -1198,11 +1198,16 @@ void AiAgentImplementation::leash() {
 }
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {
+	if (defender == nullptr)
+		return;
+
 	CreatureObjectImplementation::setDefender(defender);
 
 	if (isRetreating())
 		homeLocation.setReached(true);
 
+	setFollowObject(defender);
+	setFollowState(AiAgent::FOLLOWING);
 	activateRecovery();
 }
 
@@ -1212,14 +1217,18 @@ void AiAgentImplementation::queueDizzyFallEvent() {
 }
 
 void AiAgentImplementation::addDefender(SceneObject* defender) {
-	if ((defenderList.size() == 0 || getFollowObject().get() == nullptr) && defender != nullptr) {
-		setFollowObject(defender);
-		setFollowState(AiAgent::FOLLOWING);
+	if (defender == nullptr) {
+		return;
+	}
 
-		if (defender->isTangibleObject() && threatMap != nullptr)
-			threatMap->addAggro(defender->asTangibleObject(), 1);
+	CreatureObjectImplementation::addDefender(defender);
 
-		CreatureObjectImplementation::addDefender(defender);
+	if (defender->isTangibleObject() && threatMap != nullptr) {
+		threatMap->addAggro(defender->asTangibleObject(), 1);
+	}
+
+	if (defender->isCreatureObject()) {
+		notifyPackMobs(defender->asCreatureObject());
 	}
 }
 
@@ -3128,7 +3137,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 		if (targetFaction == getFaction())
 			return false;
 
-		if (targetFaction == 0 || (object->getFactionStatus() == FactionStatus::ONLEAVE))
+		if (targetFaction == 0 || (object->isPlayerCreature() && object->getFactionStatus() == FactionStatus::ONLEAVE))
 			return false;
 	}
 
