@@ -140,11 +140,10 @@ function Encounter:setSpawnedObjectsToFollow(spawnedObjects, objectToFollow)
 				if self.spawnObjectList[i]["setNotAttackable"] then
 					AiAgent(spawnedObjects[i]):addCreatureFlag(AI_NOAIAGGRO)
 				end
-				AiAgent(spawnedObjects[i]):addCreatureFlag(AI_PET)
 				AiAgent(spawnedObjects[i]):addCreatureFlag(AI_ESCORT)
 				AiAgent(spawnedObjects[i]):addCreatureFlag(AI_FOLLOW)
-				AiAgent(spawnedObjects[i]):setAITemplate()
 				AiAgent(spawnedObjects[i]):setFollowObject(objectToFollow)
+				AiAgent(spawnedObjects[i]):setFollowState(3)
 			end
 		end
 	end
