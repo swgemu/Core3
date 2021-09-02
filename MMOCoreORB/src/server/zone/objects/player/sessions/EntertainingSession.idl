@@ -103,8 +103,11 @@ class EntertainingSession extends Facade {
 	}
 
 	public int cancelSession() {
-		stopMusic(true);
-		stopDancing();
+		if (isPlayingMusic()) {
+			stopMusic(true);
+		} else {
+			stopDancing();
+		}
 
 		return 0;
 	}
