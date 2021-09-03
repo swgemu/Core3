@@ -450,8 +450,12 @@ public:
 			delay->addMiliTime(newDelay);
 		}
 
-		if (show)
+		if (show) {
 			agent->showFlyText("npc_reaction/flytext", "alert", 255, 0, 0);
+
+			if (agent->isNonPlayerCreatureObject() && agent->getFaction() > 0)
+				agent->doAnimation("search");
+		}
 
 		return SUCCESS;
 	}
