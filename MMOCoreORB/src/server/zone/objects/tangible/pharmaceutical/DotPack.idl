@@ -14,6 +14,7 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.tangible.DotPackTemplate;
 include templates.SharedObjectTemplate;
 include system.lang.String;
+include server.zone.objects.creature.BuffAttribute;
 
 @json
 class DotPack extends PharmaceuticalObject {
@@ -144,7 +145,7 @@ class DotPack extends PharmaceuticalObject {
 
 			return 0;
 		} else {
-			player.sendCommand(commandToExecute, String.valueOf(super.getObjectID()), player.getTargetID());
+			player.sendCommand(commandToExecute, BuffAttribute.getName(pool) + "|" + String.valueOf(super.getObjectID()), player.getTargetID());
 
 			return 0;
 		}
