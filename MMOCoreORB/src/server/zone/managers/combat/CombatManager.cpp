@@ -138,11 +138,12 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) const {
 				continue;
 			}
 
-			if ((attacker->isInRange(threatTano, 128.f) && threatTano->getMainDefender() == attacker)) {
+			if (attacker->isInRange(threatTano, 128.f) && threatTano->getMainDefender() == attacker) {
 				continue;
 			}
 
 			attacker->clearCombatState(false);
+			threatMap->removeAll();
 		}
 
 		if (threatMap->size() == 0) {
