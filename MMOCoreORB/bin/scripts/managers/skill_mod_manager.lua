@@ -54,7 +54,8 @@ skillModLimits = {
 	--{258, x, x}, -- SKILLBOX
 	
 	-- Bonus Mods Wearables / Structure
-	{4097, -25, 25},  --WEARABLE
+	--{4097, -25, 25},  --WEARABLE
+	{4097, -25, 45},  --WEARABLE
 	{4098, -125, 125}, -- STRUCTUREMOD
 	
 	-- Temp mods, not displayed (on timers or ability bonus)

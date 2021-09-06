@@ -41,27 +41,34 @@
 --which carries forward this exception.
 
 --Determines how often exceptional and legendary items can drop.
-yellowChance = 1000 -- 1 in 1,000
-exceptionalChance = 100000 --1 in 100,000
-legendaryChance = 1000000 --1 in 1,000,000
+--yellowChance = 1000 -- 1 in 1,000
+--exceptionalChance = 100000 --1 in 100,000
+--legendaryChance = 1000000 --1 in 1,000,000
+yellowChance = 1 -- 1 in 1,000
+exceptionalChance = 5 --1 in 100,000
+legendaryChance = 10 -- Labor Day Fun
 --yellowChance = 50 --1 in 50 for testing
 --exceptionalChance = 100 --1 in 100 for testing
 --legendaryChance = 1000 --1 in 1000 for testing
 
 --Determines how much of an increase in the base stats will be applied to the object.
-yellowModifier = 1.5
-exceptionalModifier = 2.5
-legendaryModifier = 5.0
+--yellowModifier = 1.5
+--exceptionalModifier = 2.5
+--legendaryModifier = 5.0
+yellowModifier = 2.0
+exceptionalModifier = 4.0
+legendaryModifier = 8.0
 
 --The chance for random skill mods to be on looted weapons/wearables
-skillModChance = 500 -- 1 in 500
+--skillModChance = 500 -- 1 in 500
+skillModChance = 10
 
 -- Value ranges for random dots on looted weapons (chance is set individually on the loot items)
 randomDotAttribute = {0, 8} -- See CreatureAttributes.h in src for numbers.
-randomDotStrength = {10, 200} -- Set for disease. Fire will be x1.5, poison x2.
-randomDotDuration = {30, 240} -- Set for poison. Fire will be x1.5, disease x5.
-randomDotPotency = {1, 100}
-randomDotUses = {250, 9999}
+randomDotStrength = {5, 75} -- Set for disease. Fire will be x1.5, poison x2.
+randomDotDuration = {20, 100} -- Set for poison. Fire will be x1.5, disease x5.
+randomDotPotency = {1, 75}
+randomDotUses = {20, 100}
 
 -- Modifier applied to min/max junk values found in loot item lua
 junkValueModifier = 5;
@@ -804,21 +811,21 @@ lootableHeavyWeaponStatMods = {
 -- Values used to generate lightsaber crystal stats
 jediCrystalStats = {
 	lightsaber_module_force_crystal = {
-		minDamage = 0,
+		minDamage = 30,
 		maxDamage = 50,
-		minHitpoints = 700,
+		minHitpoints = 900,
 		maxHitpoints = 1400,
-		minHealthSac = 0,
+		minHealthSac = -6,
 		maxHealthSac = -9,
-		minActionSac = 0,
+		minActionSac = -6,
 		maxActionSac = -9,
-		minMindSac = 0,
+		minMindSac = -6,
 		maxMindSac = -9,
-		minAttackSpeed = 0,
+		minAttackSpeed = -0.3,
 		maxAttackSpeed = -0.6,
-		minForceCost = 0,
+		minForceCost = -6.0,
 		maxForceCost = -9.9,
-		minWoundChance = 0,
+		minWoundChance = 2,
 		maxWoundChance = 4,
 	},
 	lightsaber_module_krayt_dragon_pearl = {
