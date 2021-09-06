@@ -44,7 +44,7 @@ turretAutoFireTimeout = 20
 maxBasesPerPlayer = 3
 
 -- Enable Alarms on player GCW bases
-spawnBaseAlarms = false
+spawnBaseAlarms = true
 
 -- xp bonus for faction controlling a planet
 bonusXP = 15
