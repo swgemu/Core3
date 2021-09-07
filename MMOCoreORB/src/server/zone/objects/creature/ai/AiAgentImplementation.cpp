@@ -1932,7 +1932,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 			nextStepPosition.setReached(false);
 
-			float directionangle = atan2(nextWorldPos.getX() - thisWorldPos.getX(), nextWorldPos.getY() - thisWorldPos.getY());
+			float directionangle = atan2(nextPosition.getX() - getPositionX(), nextPosition.getY() - getPositionY());
 
 			if (directionangle < 0) {
 				float a = M_PI + directionangle;
