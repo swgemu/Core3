@@ -180,7 +180,9 @@ public:
 			return FAILURE;
 		}
 
-		agent->setDefender(tar);
+		Time* alert = agent->getAlertedTime();
+		if (alert != nullptr && alert->isPast())
+			agent->setDefender(tar);
 
 		return agent->getMainDefender() == tar ? SUCCESS : FAILURE;
 	}
@@ -332,7 +334,9 @@ public:
 		if (radius == 0)
 			radius = AiAgent::DEFAULTAGGRORADIUS;
 
-		agent->runAway(tar->asCreatureObject(), dist - radius * aggroMod);
+		if (!agent->isNonPlayerCreatureObject())
+			agent->runAway(tar->asCreatureObject(), dist - radius * aggroMod);
+
 		return SUCCESS;
 	}
 
