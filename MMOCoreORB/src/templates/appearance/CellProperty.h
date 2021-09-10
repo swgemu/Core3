@@ -117,6 +117,10 @@ public:
 		return numberOfPortals;
 	}
 
+	const Vector<Reference<CellPortal*> > getCellPortals() const {
+		return portals;
+	}
+
 	const CellPortal* getPortal(int idx) const {
 		return portals.get(idx);
 	}
