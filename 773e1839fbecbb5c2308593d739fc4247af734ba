@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "09dec9de_48453454",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-09-10T20:42:13Z",
+      "side": 1,
+      "message": "Im not against that at all and would simplify. Especially if we store the info on the cell or portal.",
+      "parentUuid": "895e17dd_4e114666",
+      "revId": "773e1839fbecbb5c2308593d739fc4247af734ba",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52ccf5df_e36ce1ca",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
         "patchSetId": 2
