@@ -16,7 +16,7 @@ void CellPortal::readObject(IffStream* iff) {
 		solid = (bool) iff->getByte();
 		geometryIndex = iff->getInt();
 		winding = (bool) iff->getByte();
-		int unk = iff->getInt();
+		targetCell = iff->getInt();
 		iff->getString(doorName);
 		transformFlag = (bool) iff->getByte();
 

@@ -155,6 +155,23 @@ bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, con
 		return true;
 	}
 
+	const Vector<Reference<CellPortal*> > portals = cellProperty->getCellPortals();
+	bool worldPortal = false;
+
+	for (int i = 0; i < portals.size(); i++) {
+		const CellPortal* portal = portals.get(i);
+
+		int cellNumber = portal->getTargetCellIndex();
+
+		if (portal != nullptr && cellNumber <= 1) {
+			worldPortal = true;
+		}
+	}
+
+	if (!worldPortal) {
+		return false;
+	}
+
 	const SortedVector<int>& connectedCells = cellProperty->getConnectedCells();
 
 	for (int i = 0; i < connectedCells.size(); i++) {
