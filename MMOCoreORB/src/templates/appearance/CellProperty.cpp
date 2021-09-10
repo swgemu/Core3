@@ -16,7 +16,7 @@ void CellPortal::readObject(IffStream* iff) {
 		solid = (bool) iff->getByte();
 		geometryIndex = iff->getInt();
 		winding = (bool) iff->getByte();
-		int unk = iff->getInt();
+		targetCell = iff->getInt();
 		iff->getString(doorName);
 		transformFlag = (bool) iff->getByte();
 
@@ -64,6 +64,7 @@ CellProperty& CellProperty::operator=(const CellProperty& c) {
 
 	name = c.name;
 	numberOfPortals = c.numberOfPortals;
+	worldPortal = c.worldPortal;
 	floorMesh = c.floorMesh;
 	appearanceTemplate = c.appearanceTemplate;
 	cellID = c.cellID;
@@ -120,7 +121,12 @@ void CellProperty::loadVersion5(IffStream* iffStream) {
 
 		iffStream->closeForm('PRTL');
 
+		if (portal != nullptr && portal->getTargetCellIndex() <= 1) {
+			worldPortal = true;
+		}
+
 		portals.emplace(std::move(portal));
+
 
 	}
 
@@ -168,6 +174,10 @@ void CellProperty::loadVersion4(IffStream* iffStream) {
 		portal->readObject(iffStream);
 
 		iffStream->closeForm('PRTL');
+
+		if (portal != nullptr && portal->getTargetCellIndex() <= 1) {
+			worldPortal = true;
+		}
 
 		portals.emplace(std::move(portal));
 

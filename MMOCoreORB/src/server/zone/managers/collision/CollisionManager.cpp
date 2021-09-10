@@ -129,13 +129,23 @@ bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, con
 
 	SharedObjectTemplate* objectTemplate = building->getObjectTemplate();
 	const PortalLayout* portalLayout = objectTemplate->getPortalLayout();
+	int cellNum = cellObject->getCellNumber();
 
 	if (portalLayout == nullptr) {
 		return true;
 	}
 
+	const CellProperty* cellProperty = portalLayout->getCellProperty(cellNum);
+
+	if (cellProperty == nullptr) {
+		return true;
+	}
+
+	if (!cellProperty->hasWorldPortal()) {
+		return false;
+	}
+
 	Ray ray = convertToModelSpace(rayOrigin, rayEnd, building);
-	int cellNum = cellObject->getCellNumber();
 
 	if (cellNum >= portalLayout->getAppearanceTemplatesSize()) {
 		return true;
@@ -147,12 +157,6 @@ bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, con
 
 	if (app->intersects(ray, distance, intersectionDistance, triangle, true)) {
 		return false;
-	}
-
-	const CellProperty* cellProperty = portalLayout->getCellProperty(cellNum);
-
-	if (cellProperty == nullptr) {
-		return true;
 	}
 
 	const SortedVector<int>& connectedCells = cellProperty->getConnectedCells();
