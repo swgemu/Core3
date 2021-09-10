@@ -40,7 +40,6 @@
 * Each Attacker has their Defender List stored on their Object.
 * Peace will clear a Object's defender list, but they will not be able to exit Combat if checks are not passed.
 *
-*
 */
 
 // Sets attackers mainDefender and puts both in combat
@@ -131,6 +130,11 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) const {
 	ThreatMap* threatMap = attacker->getThreatMap();
 
 	if (threatMap != nullptr) {
+		if (threatMap->size() == 0) {
+			attacker->clearCombatState(false);
+			return true;
+		}
+
 		for (int i = 0; i < threatMap->size(); i++) {
 			TangibleObject* threatTano = threatMap->elementAt(i).getKey();
 
@@ -139,16 +143,11 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) const {
 			}
 
 			if (attacker->isInRange(threatTano, 128.f) && threatTano->getMainDefender() == attacker) {
-				continue;
+				return true;
 			}
-
-			attacker->clearCombatState(false);
-			threatMap->removeAll();
 		}
 
-		if (threatMap->size() == 0) {
-			attacker->clearCombatState(false);
-		}
+		attacker->clearCombatState(false);
 	}
 	return true;
 }
@@ -251,24 +250,22 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 		}
 	}
 
-	if (damage > 0 || data.isStateOnlyAttack()) {
-		if (damage > 0) {
-			attacker->updateLastSuccessfulCombatAction();
+	if (damage > 0) {
+		attacker->updateLastSuccessfulCombatAction();
 
-			if (attacker->isPlayerCreature() && data.getCommandCRC() != STRING_HASHCODE("attack")) {
-				weapon->decay(attacker);
-			}
-
-			// Decreases the powerup once per successful attack
-			if (!data.isForceAttack()) {
-				weapon->decreasePowerupUses(attacker);
-			}
+		if (attacker->isPlayerCreature() && data.getCommandCRC() != STRING_HASHCODE("attack")) {
+			weapon->decay(attacker);
 		}
 
-		// Broadcast CombatSpam and CombatAction packets now that the attack is complete
-		finalCombatSpam(attacker, weapon, targetDefenders, data);
-		broadcastCombatAction(attacker, weapon, targetDefenders, data);
+		// Decreases the powerup once per successful attack
+		if (!data.isForceAttack()) {
+			weapon->decreasePowerupUses(attacker);
+		}
 	}
+
+	// Broadcast CombatSpam and CombatAction packets now that the attack is complete
+	finalCombatSpam(attacker, weapon, targetDefenders, data);
+	broadcastCombatAction(attacker, weapon, targetDefenders, data);
 
 	// Update PvP TEF Duration
 	if (shouldGcwCrackdownTef || shouldGcwTef || shouldBhTef) {
