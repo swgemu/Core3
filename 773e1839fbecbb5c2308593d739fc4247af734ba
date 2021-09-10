@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "895e17dd_4e114666",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-09-10T10:38:32Z",
+      "side": 1,
+      "message": "seems heavy.. would it be cheaper to just have -\u003ehasWorldPortal() ? and then do the work in the cell object? Also would keep from passing a lot of stuff back and forth and later could optimize in cell object code? A cell could even cache the result and just return the cached result every future check..",
+      "revId": "773e1839fbecbb5c2308593d739fc4247af734ba",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52ccf5df_e36ce1ca",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-09-10T10:38:32Z",
+      "side": 1,
+      "message": "break; ? I mean why continue iterating the cells?",
+      "revId": "773e1839fbecbb5c2308593d739fc4247af734ba",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
