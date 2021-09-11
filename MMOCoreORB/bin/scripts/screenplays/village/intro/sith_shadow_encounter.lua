@@ -14,8 +14,8 @@ SithShadowEncounter = Encounter:new {
 	-- Encounter properties
 	encounterDespawnTime = 2 * 60 * 1000, -- 2 minutes
 	spawnObjectList = {
-		{ template = "sith_shadow_outlaw_mission", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true, setNotAttackable = false, runOnDespawn = true },
-		{ template = "sith_shadow_outlaw_mission", minimumDistance = 4, maximumDistance = 8, referencePoint = 1, followPlayer = true, setNotAttackable = false, runOnDespawn = true }
+		{ template = "sith_shadow_outlaw_mission", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = false, setNotAttackable = false, runOnDespawn = true },
+		{ template = "sith_shadow_outlaw_mission", minimumDistance = 4, maximumDistance = 8, referencePoint = 1, followPlayer = false, setNotAttackable = false, runOnDespawn = true }
 	},
 	onEncounterSpawned = nil,
 	isEncounterFinished = nil,
@@ -103,6 +103,12 @@ function SithShadowEncounter:onEncounterSpawned(pPlayer, spawnedObjects)
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
 	FsIntro:setCurrentStep(pPlayer, 4)
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.TWO_MILITARY)
+
+	foreach(spawnedObjects, function(pMobile)
+		if (pMobile ~= nil) then
+			AiAgent(pMobile):setDefender(pPlayer)
+		end
+	end)
 end
 
 -- Handling of the encounter in range event.
@@ -119,12 +125,6 @@ function SithShadowEncounter:onEncounterInRange(pPlayer, spawnedObjects)
 	threatenString:setTT(CreatureObject(pPlayer):getFirstName())
 	spatialChat(spawnedObjects[1], threatenString:_getObject())
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.LOOT_DATAPAD_1)
-
-	foreach(spawnedObjects, function(pMobile)
-		if (pMobile ~= nil) then
-			AiAgent(pMobile):setDefender(pPlayer)
-		end
-	end)
 end
 
 -- Check if the sith shadow encounter is finished or not.
