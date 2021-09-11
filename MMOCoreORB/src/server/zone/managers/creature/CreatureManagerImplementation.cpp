@@ -599,16 +599,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			curWeap->destroyObjectFromWorld(true);
 		}
 
-		for (int j = creatureInventory->getContainerObjectsSize() - 1; j >= 0 ; --j) {
-			ManagedReference<SceneObject*> object = creatureInventory->getContainerObject(j);
-
-			if (object == nullptr)
-				continue;
-
-			Locker locker(object);
-			object->destroyObjectFromWorld(true);
-		}
-
 		if (creatureInventory != nullptr && player != nullptr && player->isPlayerCreature()) {
 			LootManager* lootManager = zoneServer->getLootManager();
 
