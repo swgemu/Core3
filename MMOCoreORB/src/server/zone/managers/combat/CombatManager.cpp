@@ -264,8 +264,15 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	}
 
 	// Broadcast CombatSpam and CombatAction packets now that the attack is complete
-	finalCombatSpam(attacker, weapon, targetDefenders, data);
-	broadcastCombatAction(attacker, weapon, targetDefenders, data);
+	if (targetDefenders.size() == 0) {
+		attacker->error("target defenders list == 0");
+		defenderObject->error("Defender Object being attacked");
+	}
+
+	if (damage >= 0) {
+		finalCombatSpam(attacker, weapon, targetDefenders, data);
+		broadcastCombatAction(attacker, weapon, targetDefenders, data);
+	}
 
 	// Update PvP TEF Duration
 	if (shouldGcwCrackdownTef || shouldGcwTef || shouldBhTef) {
@@ -312,17 +319,17 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	Locker clocker(tano, attacker);
 
 	if (!tano->isAttackableBy(attacker)) {
-		return 0;
+		return -1;
 	}
 
 	if (targetDefenders == nullptr) {
-		return 0;
+		return -1;
 	}
 
 	DefenderHitList* hitList = new DefenderHitList();
 
 	if (hitList == nullptr) {
-		return 0;
+		return -1;
 	}
 
 	// Add DefenderHitList to the targetDefenders Vector and set the defender to that list
@@ -333,7 +340,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		CreatureObject* defender = tano->asCreatureObject();
 
 		if (defender->getWeapon() == nullptr) {
-			return 0;
+			return -1;
 		}
 
 		damage = creoTargetCombatAction(attacker, weapon, defender, hitList, data, shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
@@ -363,7 +370,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 			aiAgent->sendReactionChat(ReactionManager::HIT);
 	}
 
-	if (damage > 0 && attacker->isAiAgent()) {
+	if (damage > -1 && attacker->isAiAgent()) {
 		AiAgent* aiAgent = cast<AiAgent*>(attacker);
 		aiAgent->sendReactionChat(ReactionManager::HITTARGET);
 	}
