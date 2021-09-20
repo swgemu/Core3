@@ -17,37 +17,37 @@ class GamblingManager extends Observer implements Logger {
 
 	@dereferenced
 	protected VectorMap<CreatureObject, GamblingTerminal> slotGames;
-	
+
 	@dereferenced
 	protected VectorMap<CreatureObject, GamblingTerminal> rouletteGames;
-	
+
 	// Stored possible roulette bet targets
 	@dereferenced
 	protected Vector<string> roulette;
-	
+
 	// Stores the numbers that belong to red, black are {1-36}\red
 	@dereferenced
 	protected Vector<string> red;
-	
+
 	// Stores the rewards for Slot Games
 	@dereferenced
 	protected Vector<int> slot;
 
 	@dereferenced
 	protected Vector<int> slotTimer;
-	
+
 	@dereferenced
 	protected Vector<int> rouletteTimer;
-	
+
 	public GamblingManager() {
 		initializeRoulette();
 		initializeRouletteRed();
 		initializeSlots();
-		
+
 		initializeSlotTimer();
-		
+
 		initializeRouletteTimer();
-		
+
 		Logger.setLoggingName("GamblingManager");
 		Logger.setLogging(true);
 	}
@@ -56,7 +56,7 @@ class GamblingManager extends Observer implements Logger {
 	public Vector<string> getRoulette() {
 		return roulette;
 	}
-	
+
 	public void initializeSlotTimer() {
 		slotTimer.add(6);
 		slotTimer.add(4);
@@ -65,7 +65,7 @@ class GamblingManager extends Observer implements Logger {
 		slotTimer.add(1);
 		slotTimer.add(1);
 	}
-	
+
 	public void initializeRouletteTimer() {
 		rouletteTimer.add(30);
 		rouletteTimer.add(30);
@@ -80,7 +80,7 @@ class GamblingManager extends Observer implements Logger {
 		rouletteTimer.add(5);
 		rouletteTimer.add(2);
 	}
-	
+
 	public void initializeSlots() {
 		slot.add(4);
 		slot.add(50);
@@ -91,7 +91,7 @@ class GamblingManager extends Observer implements Logger {
 		slot.add(1000);
 		slot.add(1500);
 	}
-	
+
 	public void initializeRouletteRed() {
 		red.add("1");
 		red.add("3");
@@ -112,7 +112,7 @@ class GamblingManager extends Observer implements Logger {
 		red.add("34");
 		red.add("36");
 	}
-	
+
 	public void initializeRoulette() {
 		roulette.add("0");
 		roulette.add("1");
@@ -159,26 +159,26 @@ class GamblingManager extends Observer implements Logger {
 		roulette.add("red");
 		roulette.add("black");
 	}
-	
+
 	public int notify(SceneObject sceneObject) {
 		if (sceneObject.isCreatureObject())
 			return 1;
-		
+
 		return 0;
 	}
-	
+
 	public boolean isHigh(int value) {
 		if ((value > 18 ) && (value != 37))
 			return true;
 		return false;
 	}
-	
+
 	public boolean isLow(int value) {
 		if ((value > 0 ) && (value < 19))
 			return true;
 		return false;
 	}
-	
+
 	public boolean isEven(int value) {
 		if ((value == 0) || (value == 37))
 			return false;
@@ -186,7 +186,7 @@ class GamblingManager extends Observer implements Logger {
 			return true;
 		return false;
 	}
-	
+
 	public boolean isOdd(int value) {
 		if ((value == 0) || (value == 37))
 			return false;
@@ -194,7 +194,7 @@ class GamblingManager extends Observer implements Logger {
 			return true;
 		return false;
 	}
-	
+
 	public boolean isBlack(int value) {
 		if (roulette.get(value) == "0" || roulette.get(value) == "00")
 			return false;
@@ -202,7 +202,7 @@ class GamblingManager extends Observer implements Logger {
 			return false;
 		return true;
 	}
-	
+
 	public boolean isRed(int value) {
 		if (roulette.get(value) == "0" || roulette.get(value) == "00")
 			return false;
@@ -213,11 +213,22 @@ class GamblingManager extends Observer implements Logger {
 		}
 		return false;
 	}
-	
+
 	public native void handleSlot(CreatureObject player, boolean cancel, boolean other);
-	
+
 	protected native void refreshSlotMenu(CreatureObject player, GamblingTerminal terminal);
-	
+
+	@dirty
+	public boolean bettingAllowed(CreatureObject player) {
+		if (rouletteGames.contains(player)) {
+			return rouletteGames.get(player).bettingAllowed();
+		} else if (slotGames.contains(player)) {
+			return slotGames.get(player).bettingAllowed();
+		} else {
+			return false;
+		}
+	}
+
 	/**
 	 * Accept bet from /bet command
 	 * This method receives the player who wants to bet, the amount he wants to bet, and the target he's betting on
@@ -229,7 +240,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @param target Target field (remains empty for slotMachine)
 	 */
 	public native void bet(CreatureObject player, int amount, int target, int machineType);
-	
+
 	/**
 	 * Accept bet from /bet command or startGame
 	 * This method receives the player who wants to bet, the amount he wants to bet, and the target he's betting on
@@ -242,18 +253,18 @@ class GamblingManager extends Observer implements Logger {
 	 * @param target Target field (remains empty for slotMachine)
 	 */
 	public native void bet(GamblingTerminal terminal, CreatureObject player, int amount, int target);
-	
+
 	/**
 	 * StartGame called by SuiManager
 	 * This method receives a CreatureObject, looks it up in the machineType's corresponding VectorMap
-	 * and then calls startGame(Terminal) 
+	 * and then calls startGame(Terminal)
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
 	 * @param player CreatureObject for which to start the Game
 	 * @param machineType machine type of the Terminal, set in the SuiManager
 	 */
 	public native void startGame(CreatureObject player, int machineType);
-	
+
 	/**
 	 * Starts Game
 	 * This method receives a GamblingTerminal, starting the Event cycle of the Game
@@ -262,18 +273,18 @@ class GamblingManager extends Observer implements Logger {
 	 * @param terminal GamblingTerminal for which to start the game
 	 */
 	public native void startGame(GamblingTerminal terminal);
-	
+
 	/**
 	 * LeaveTerminal called by SuiManager
 	 * This method receives a CreatureObject, looks it up in the machineType's corresponding VectorMap
-	 * and then calls Terminal::leaveTerminal(player) 
+	 * and then calls Terminal::leaveTerminal(player)
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
 	 * @param player CreatureObject who wants to leave the Terminal
 	 * @param machineType machine type of the Terminal, set in the SuiManager
 	 */
 	public native void leaveTerminal(CreatureObject player, int machineType);
-	
+
 	/**
 	 * Adds player to VectorMap
 	 * This method switches machineTypes adding the Player and GamblingTerminal to the machineType's corresponding VectorMap
@@ -283,7 +294,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @param player CreatureObject to register
 	 */
 	public native void registerPlayer(GamblingTerminal terminal, CreatureObject player);
-	
+
 	/**
 	 * Refreshes the menu
 	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
@@ -293,7 +304,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native void refreshRouletteMenu(CreatureObject player);
-	
+
 	/**
 	 * Continues the Game
 	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
@@ -303,7 +314,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native void continueGame(GamblingTerminal terminal);
-	
+
 	/**
 	 * Ends the Game
 	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
@@ -313,7 +324,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native void stopGame(GamblingTerminal terminal, boolean cancel);
-	
+
 	/**
 	 * Calculates the results of each players' bets
 	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
@@ -323,7 +334,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native void calculateOutcome(GamblingTerminal terminal);
-	
+
 	/**
 	 * Creates the Windows
 	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
@@ -333,7 +344,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native unsigned int createWindow(GamblingTerminal terminal, CreatureObject player);
-	
+
 	/**
 	 * Creates the SlotPayoutWindow
 	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
@@ -343,7 +354,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native unsigned int createPayoutWindow(CreatureObject player);
-	
+
 	/**
 	 * Creates the SlotWindow
 	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
@@ -354,7 +365,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @param payoutBoxID boxID of the payout menu so it can be closed later
 	 */
 	public native unsigned int createSlotWindow(CreatureObject player, unsigned int payoutBoxID);
-	
+
 	/**
 	 * Creates the RouletteWindow
 	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
@@ -364,7 +375,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native unsigned int createRouletteWindow(CreatureObject player);
-	
+
 	/**
 	 * Creates Events
 	 * This method receives a Terminal and a time,
@@ -375,9 +386,9 @@ class GamblingManager extends Observer implements Logger {
 	 * @param time Time in ms to schedule the Task
 	 */
 	public native void createEvent(GamblingTerminal terminal, int time);
-	
+
 	public boolean isPlaying(CreatureObject player) {
 		return (slotGames.contains(player) || rouletteGames.contains(player));
 	}
-	
+
 }
