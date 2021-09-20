@@ -228,6 +228,8 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 		Reference<SortedVector<ManagedReference<TangibleObject*>>*> areaDefenders = getAreaTargets(attacker, weapon, defenderObject, data);
 
 		while (areaDefenders->size() > 0) {
+			int areaDam = 0;
+
 			for (int i = areaDefenders->size() - 1; i >= 0; i--) {
 				TangibleObject* tano = areaDefenders->get(i);
 				if (tano == attacker || tano == nullptr) {
@@ -239,11 +241,15 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 					continue;
 				}
 
-				damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), &targetDefenders, data, &shouldGcwCrackdownTef, &shouldGcwTef, &shouldBhTef);
+				areaDam += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), &targetDefenders, data, &shouldGcwCrackdownTef, &shouldGcwTef, &shouldBhTef);
 				areaDefenders->remove(i);
 
 				tano->unlock();
 			}
+
+			if (areaDam > 0)
+				damage += areaDam;
+
 			attacker->unlock();
 			Thread::yield();
 			attacker->wlock(true);
@@ -264,8 +270,10 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	}
 
 	// Broadcast CombatSpam and CombatAction packets now that the attack is complete
-	finalCombatSpam(attacker, weapon, targetDefenders, data);
-	broadcastCombatAction(attacker, weapon, targetDefenders, data);
+	if (damage >= 0) {
+		finalCombatSpam(attacker, weapon, targetDefenders, data);
+		broadcastCombatAction(attacker, weapon, targetDefenders, data);
+	}
 
 	// Update PvP TEF Duration
 	if (shouldGcwCrackdownTef || shouldGcwTef || shouldBhTef) {
@@ -312,17 +320,17 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	Locker clocker(tano, attacker);
 
 	if (!tano->isAttackableBy(attacker)) {
-		return 0;
+		return -1;
 	}
 
 	if (targetDefenders == nullptr) {
-		return 0;
+		return -1;
 	}
 
 	DefenderHitList* hitList = new DefenderHitList();
 
 	if (hitList == nullptr) {
-		return 0;
+		return -1;
 	}
 
 	// Add DefenderHitList to the targetDefenders Vector and set the defender to that list
@@ -333,7 +341,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		CreatureObject* defender = tano->asCreatureObject();
 
 		if (defender->getWeapon() == nullptr) {
-			return 0;
+			return -1;
 		}
 
 		damage = creoTargetCombatAction(attacker, weapon, defender, hitList, data, shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
@@ -363,7 +371,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 			aiAgent->sendReactionChat(ReactionManager::HIT);
 	}
 
-	if (damage > 0 && attacker->isAiAgent()) {
+	if (damage > -1 && attacker->isAiAgent()) {
 		AiAgent* aiAgent = cast<AiAgent*>(attacker);
 		aiAgent->sendReactionChat(ReactionManager::HITTARGET);
 	}
