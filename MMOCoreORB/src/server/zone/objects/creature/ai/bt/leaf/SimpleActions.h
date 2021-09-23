@@ -444,7 +444,7 @@ public:
 		alert->addMiliTime(duration);
 
 		Time* delay = agent->getAggroDelay();
-		if (delay != nullptr && !delay->isPast() && agent->getFollowState() < AiAgent::FOLLOWING) {
+		if (delay != nullptr && !delay->isPast()) {
 			delay->updateToCurrentTime();
 			uint32 newDelay = 2000 + System::random(2000);
 			delay->addMiliTime(newDelay);
