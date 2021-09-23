@@ -1103,7 +1103,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		destructor->clearCombatState(false);
 	}
 
-	if ((destructor->isKiller() && isDefender) || ghost->getIncapacitationCounter() >= 3) {
+	if (ghost->getIncapacitationCounter() >= 3) {
 		killPlayer(destructor, playerCreature, 0, isCombatAction);
 	} else {
 

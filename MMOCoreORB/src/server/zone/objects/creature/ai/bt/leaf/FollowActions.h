@@ -180,9 +180,7 @@ public:
 			return FAILURE;
 		}
 
-		Time* alert = agent->getAlertedTime();
-		if (alert != nullptr && alert->isPast())
-			agent->setDefender(tar);
+		agent->setDefender(tar);
 
 		return agent->getMainDefender() == tar ? SUCCESS : FAILURE;
 	}
