@@ -77,10 +77,13 @@ public:
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
-		// TODO: Incapacitated players should be valid targets for creatures that Deathblow - H
-		if (target == nullptr || target == agent || target->isVehicleObject() || target->hasRidingCreature() || target->getPvpStatusBitmask() == CreatureFlag::NONE
-				|| target->isDead() || target->isIncapacitated() || target->isInvisible() || agent->isCamouflaged(target) || !agent->isAttackableBy(target)
-				|| !target->isAttackableBy(agent))
+		if (target == nullptr || target == agent || target->getPvpStatusBitmask() == CreatureFlag::NONE)
+			return true;
+
+		if (target->isDead() || target->isInvulnerable() || target->isInvisible() || !agent->isAttackableBy(target) || !target->isAttackableBy(agent))
+			return true;
+
+		if (target->isVehicleObject() || target->hasRidingCreature() || agent->isCamouflaged(target) || (!agent->isKiller() && target->isIncapacitated()))
 			return true;
 
 		SceneObject* agentRoot = agent->getRootParent();

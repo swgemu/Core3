@@ -191,6 +191,9 @@ template<> bool CheckTargetIsValid::check(AiAgent* agent) const {
 	if (agent->peekBlackboard("targetProspect"))
 		tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
+	if (tar == nullptr)
+		return false;
+
 	return agent->validateTarget(tar);
 }
 
@@ -368,3 +371,24 @@ template<> bool CheckProspectJediTrial::check(AiAgent* agent) const {
 	return (councilType == FrsManager::COUNCIL_DARK && objName != "dark_jedi_sentinel")
 			|| (councilType == FrsManager::COUNCIL_LIGHT && objName != "light_jedi_sentinel");
 }
+
+template<> bool CheckProspectIsIncapacitated::check(AiAgent* agent) const {
+	ManagedReference<SceneObject*> tar = nullptr;
+	if (agent->peekBlackboard("targetProspect"))
+		tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
+
+	if (tar == nullptr || !tar->isCreatureObject())
+		return false;
+
+	CreatureObject* tarCreo = tar->asCreatureObject();
+
+	if (tarCreo == nullptr)
+		return false;
+
+	return tarCreo->isIncapacitated() && System::random(75) < 100;
+}
+
+template<> bool CheckIsKiller::check(AiAgent* agent) const {
+	return agent->isKiller();
+}
+

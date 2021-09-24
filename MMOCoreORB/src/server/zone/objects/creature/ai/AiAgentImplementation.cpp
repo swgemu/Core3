@@ -1007,21 +1007,20 @@ bool AiAgentImplementation::validateTarget(SceneObject* target) {
 	}
 
 	if (target->isCreatureObject()) {
-		CreatureObject* targetCreatureObject = target->asCreatureObject();
+		CreatureObject* targetCreO = target->asCreatureObject();
 
-		if (targetCreatureObject == nullptr
-				|| !targetCreatureObject->isAttackableBy(asAiAgent())
-				|| targetCreatureObject->isDead()
-				|| targetCreatureObject->isIncapacitated()) {
-			//info("validateTarget failed CREO checks", true);
+		if (targetCreO == nullptr || targetCreO->isInvulnerable() || targetCreO->isInvisible()) {
+			// info("validateTarget failed CREO checks", true);
+			return false;
+		}
+
+		if (!targetCreO->isAttackableBy(asAiAgent()) || targetCreO->isDead() || targetCreO->isIncapacitated()) {
 			return false;
 		}
 	} else if (target->isTangibleObject()) {
 		TangibleObject* targetTangibleObject = target->asTangibleObject();
 
-		if (targetTangibleObject == nullptr
-				|| !targetTangibleObject->isAttackableBy(asAiAgent())
-				|| targetTangibleObject->isDestroyed()) {
+		if (targetTangibleObject == nullptr || !targetTangibleObject->isAttackableBy(asAiAgent()) || targetTangibleObject->isDestroyed()) {
 			//info("validateTarget failed TANO checks", true);
 			return false;
 		}
@@ -1209,6 +1208,42 @@ void AiAgentImplementation::setDefender(SceneObject* defender) {
 	setFollowObject(defender);
 	setFollowState(AiAgent::FOLLOWING);
 	activateRecovery();
+}
+
+bool AiAgentImplementation::killPlayer(SceneObject* prospect) {
+	if (prospect == nullptr || !prospect->isCreatureObject()) {
+		return false;
+	}
+
+	faceObject(prospect, true);
+	setFollowObject(prospect);
+
+	PatrolPoint point = prospect->getWorldPosition();
+	setNextPosition(point.getPositionX(), point.getPositionZ(), point.getPositionY(), prospect->getParent().get().castTo<CellObject*>());
+	activateMovementEvent();
+
+	if (prospect->isInRange(asAiAgent(), 6.f)) {
+		ZoneServer* zoneServer = getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return false;
+		}
+
+		PlayerManager* playerMan = zoneServer->getPlayerManager();
+		CreatureObject* prospectCreo = prospect->asCreatureObject();
+
+		if (playerMan != nullptr && prospectCreo != nullptr) {
+			faceObject(prospect, true);
+
+			Locker klock(prospectCreo);
+			playerMan->killPlayer(asCreatureObject(), prospectCreo, 0, false);
+
+			setFollowObject(nullptr);
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void AiAgentImplementation::queueDizzyFallEvent() {
@@ -2029,7 +2064,7 @@ void AiAgentImplementation::doMovement() {
 
 	// Do pre-checks (these should remain hard-coded)
 	if (asAiAgent()->isDead() || asAiAgent()->isIncapacitated() || (asAiAgent()->getZoneUnsafe() == nullptr) || !(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
-		setFollowObject(NULL);
+		setFollowObject(nullptr);
 		return;
 	}
 
@@ -2900,7 +2935,7 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 }
 
 bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
-	if (!isAttackableBy(target) || target->isVehicleObject())
+	if (target->isIncapacitated() || !isAttackableBy(target) || !target->isAttackableBy(asAiAgent()) || target->isVehicleObject())
 		return false;
 
 	if (getParentID() != 0 && getParentID() != target->getParentID()) {

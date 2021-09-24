@@ -592,6 +592,9 @@ class AiAgent extends CreatureObject {
 	public abstract native void removeDefender(SceneObject defender);
 
 	@preLocked
+	public native boolean killPlayer(SceneObject player);
+
+	@preLocked
 	public native void setDespawnOnNoPlayerInRange(boolean val);
 
 	/**

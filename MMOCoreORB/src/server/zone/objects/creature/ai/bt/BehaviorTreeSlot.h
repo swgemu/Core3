@@ -22,12 +22,13 @@ enum BehaviorTreeSlot : uint32 {
 	LOOKAT,
 	AGGRO,
 	SCARE,
+	KILL,
 	LASTTREESLOT
 };
 
 // These definition allow looping through slots with iterator semantics.
 // The underlying assumptions are that the enum increments each member by one,
-// the first member is NONE, and the last member is LASTTREESLOT, which is 
+// the first member is NONE, and the last member is LASTTREESLOT, which is
 // unused (because end() must return one past the end)
 inline BehaviorTreeSlot operator++(BehaviorTreeSlot& in) {
 	return in = (BehaviorTreeSlot)(std::underlying_type<BehaviorTreeSlot>::type(in) + 1);
@@ -58,6 +59,8 @@ inline const char* getBehaviorTreeSlotName(BehaviorTreeSlot slot) {
 		return "AGGRO";
 	case SCARE:
 		return "SCARE";
+	case KILL:
+		return "KILL";
 	case LASTTREESLOT:
 		return "LASTTREESLOT";
 	default:
