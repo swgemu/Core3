@@ -127,6 +127,7 @@ public:
 		lua->setGlobalInt("LOOKAT",						BehaviorTreeSlot::LOOKAT				);
 		lua->setGlobalInt("AGGRO",						BehaviorTreeSlot::AGGRO					);
 		lua->setGlobalInt("SCARE",						BehaviorTreeSlot::SCARE					);
+		lua->setGlobalInt("KILL",						BehaviorTreeSlot::KILL					);
 
 		lua->setGlobalInt("WALK",						DataVal::WALK							);
 		lua->setGlobalInt("RUN",						DataVal::RUN							);
@@ -357,6 +358,8 @@ private:
 		_REGISTERLEAF(CheckIsInCombat);
 		_REGISTERLEAF(CheckHasPatrol);
 		_REGISTERLEAF(CheckProspectIsType);
+		_REGISTERLEAF(CheckProspectIsIncapacitated);
+		_REGISTERLEAF(CheckIsKiller);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -383,6 +386,7 @@ private:
 		_REGISTERLEAF(CompleteMove);
 		_REGISTERLEAF(Wait);
 		_REGISTERLEAF(SetAlert);
+		_REGISTERLEAF(KillProspect);
 	}
 
 	void putBitmask(Lua* lua, String key) {

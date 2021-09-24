@@ -47,7 +47,8 @@ bitmaskLookup = {
 		{MOVE, "moveDefault"},
 		{LOOKAT, "lookDefault"},
 		{AGGRO, "aggroDefault"},
-		{SCARE, "scareDefault"}
+		{SCARE, "scareDefault"},
+		{KILL, "killDefault"}
 	}},
 
 	{NPC, {

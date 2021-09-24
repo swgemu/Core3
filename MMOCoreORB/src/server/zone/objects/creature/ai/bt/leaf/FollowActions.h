@@ -186,6 +186,28 @@ public:
 	}
 };
 
+class KillProspect : public Behavior {
+public:
+	KillProspect(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	KillProspect(const KillProspect& a) : Behavior(a) {
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		ManagedReference<SceneObject*> tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
+		if (!agent->peekBlackboard("targetProspect"))
+			return FAILURE;
+
+		if (tar == nullptr) {
+			agent->eraseBlackboard("targetProspect");
+			return FAILURE;
+		}
+
+		return agent->killPlayer(tar) ? SUCCESS : FAILURE;
+	}
+};
+
 class UpdateRangeToFollow : public Behavior {
 public:
 	UpdateRangeToFollow(const String& className, const uint32 id, const LuaObject& args)
