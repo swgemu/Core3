@@ -134,11 +134,11 @@ public:
 		lua->setGlobalInt("DEFAULT",					DataVal::DEFAULT						);
 		lua->setGlobalInt("WEAPON",						DataVal::WEAPON							);
 		lua->setGlobalInt("RANDOM",						DataVal::RANDOM							);
-		lua->setGlobalInt("PLAYER",						DataVal::PLAYER							);
-		lua->setGlobalInt("CREATURE",					DataVal::CREATURE						);
-		lua->setGlobalInt("NPC",						DataVal::NPC							);
-		lua->setGlobalInt("TANGIBLE",					DataVal::TANGIBLE						);
-		lua->setGlobalInt("AGENT",						DataVal::AGENT							);
+		lua->setGlobalInt("PLAYERTYPE",					DataVal::PLAYER							);
+		lua->setGlobalInt("CREATURETYPE",				DataVal::CREATURE						);
+		lua->setGlobalInt("NPCTYPE",					DataVal::NPC							);
+		lua->setGlobalInt("TANGIBLETYPE",				DataVal::TANGIBLE						);
+		lua->setGlobalInt("AGENTTYPE",					DataVal::AGENT							);
 		lua->setGlobalInt("PRIMARYWEAPON",				DataVal::PRIMARYWEAPON					);
 		lua->setGlobalInt("SECONDARYWEAPON",			DataVal::SECONDARYWEAPON				);
 
@@ -358,6 +358,7 @@ private:
 		_REGISTERLEAF(CheckIsInCombat);
 		_REGISTERLEAF(CheckHasPatrol);
 		_REGISTERLEAF(CheckProspectIsType);
+		_REGISTERLEAF(CheckProspectJediTrial);
 		_REGISTERLEAF(CheckProspectIsIncapacitated);
 		_REGISTERLEAF(CheckIsKiller);
 		// action behaviors
