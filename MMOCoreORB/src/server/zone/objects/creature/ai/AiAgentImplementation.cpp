@@ -1212,6 +1212,7 @@ void AiAgentImplementation::setDefender(SceneObject* defender) {
 
 bool AiAgentImplementation::killPlayer(SceneObject* prospect) {
 	if (prospect == nullptr || !prospect->isCreatureObject()) {
+		setFollowObject(nullptr);
 		return false;
 	}
 

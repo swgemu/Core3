@@ -341,7 +341,7 @@ template<> bool CheckProspectIsType::check(AiAgent* agent) const {
 	case CREATURE:
 		return tar->isCreature();
 	case NPC:
-		return tar->isCreatureObject() && !tar->isCreature();
+		return tar->isCreatureObject() && tar->asCreatureObject()->isNonPlayerCreatureObject();
 	case TANGIBLE:
 		return tar->isTangibleObject();
 	case AGENT:
@@ -369,7 +369,7 @@ template<> bool CheckProspectJediTrial::check(AiAgent* agent) const {
 	String objName = agent->getObjectNameStringIdName().toCharArray();
 
 	return (councilType == FrsManager::COUNCIL_DARK && objName != "dark_jedi_sentinel")
-			|| (councilType == FrsManager::COUNCIL_LIGHT && objName != "light_jedi_sentinel");
+		|| (councilType == FrsManager::COUNCIL_LIGHT && objName != "light_jedi_sentinel");
 }
 
 template<> bool CheckProspectIsIncapacitated::check(AiAgent* agent) const {
@@ -385,7 +385,7 @@ template<> bool CheckProspectIsIncapacitated::check(AiAgent* agent) const {
 	if (tarCreo == nullptr)
 		return false;
 
-	return tarCreo->isIncapacitated() && System::random(75) < 100;
+	return tarCreo->isIncapacitated();
 }
 
 template<> bool CheckIsKiller::check(AiAgent* agent) const {
