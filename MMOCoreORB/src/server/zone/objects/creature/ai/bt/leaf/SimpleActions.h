@@ -444,9 +444,9 @@ public:
 		alert->addMiliTime(duration);
 
 		Time* delay = agent->getAggroDelay();
-		if (delay != nullptr && !delay->isPast()) {
+		if (delay != nullptr && delay->isPast()) {
 			delay->updateToCurrentTime();
-			uint32 newDelay = 2000 + System::random(2000);
+			uint32 newDelay = 5000;
 			delay->addMiliTime(newDelay);
 		}
 

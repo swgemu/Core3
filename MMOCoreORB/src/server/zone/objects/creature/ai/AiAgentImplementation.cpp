@@ -1217,7 +1217,6 @@ bool AiAgentImplementation::killPlayer(SceneObject* prospect) {
 	}
 
 	faceObject(prospect, true);
-	setFollowObject(prospect);
 
 	PatrolPoint point = prospect->getWorldPosition();
 	setNextPosition(point.getPositionX(), point.getPositionZ(), point.getPositionY(), prospect->getParent().get().castTo<CellObject*>());

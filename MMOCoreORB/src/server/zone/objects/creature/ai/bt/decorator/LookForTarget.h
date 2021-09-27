@@ -34,11 +34,17 @@ public:
 
 		assert(child != nullptr);
 
-		// if we have a follow object, then that is the only thing we pay attention to
+		// If we have a follow object, check if it is still valid then set as prospect
 		ManagedReference<SceneObject*> currObj = agent->getFollowObject().get();
 		if (currObj != nullptr) {
-			agent->writeBlackboard("targetProspect", currObj);
-			return child->doAction(agent);
+			if (currObj->isCreatureObject() && isInvalidTarget(currObj->asCreatureObject(), agent)) {
+				agent->setFollowObject(nullptr);
+				agent->setOblivious();
+				return FAILURE;
+			} else {
+				agent->writeBlackboard("targetProspect", currObj);
+				return child->doAction(agent);
+			}
 		}
 
 		// get targets we want to apply our child tree to
