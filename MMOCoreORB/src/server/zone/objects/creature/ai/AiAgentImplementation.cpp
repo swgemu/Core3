@@ -2248,7 +2248,7 @@ float AiAgentImplementation::getMaxDistance() {
 			return 1.0f;
 		} else if (getWeapon() != nullptr ) {
 			float weapMaxRange = Math::min(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
-			return Math::max(0.1f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius());
+			return Math::max(1.0f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius());
 		} else {
 			return 1 + getTemplateRadius() + followCopy->getTemplateRadius();
 		}
