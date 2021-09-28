@@ -758,7 +758,7 @@ int AiAgentImplementation::checkForReactionChat(SceneObject* pObject) {
 	} else
 		state = ReactionManager::MID;
 
-	faceObject(pObject);
+	faceObject(pObject, true);
 
 	if (!isFacingObject(pObject))
 		sendReactionChat(ReactionManager::HI, state);
@@ -1233,12 +1233,9 @@ bool AiAgentImplementation::killPlayer(SceneObject* prospect) {
 		CreatureObject* prospectCreo = prospect->asCreatureObject();
 
 		if (playerMan != nullptr && prospectCreo != nullptr) {
-			faceObject(prospect, true);
-
 			Locker klock(prospectCreo);
 			playerMan->killPlayer(asCreatureObject(), prospectCreo, 0, false);
 
-			setFollowObject(nullptr);
 			return true;
 		}
 	}
@@ -1656,7 +1653,7 @@ void AiAgentImplementation::checkNewAngle() {
 	if (followCopy == nullptr)
 		return;
 
-	faceObject(followCopy);
+	faceObject(followCopy, true);
 
 	if (!nextStepPosition.isReached()) {
 		broadcastNextPositionUpdate(&nextStepPosition);
@@ -2248,10 +2245,10 @@ float AiAgentImplementation::getMaxDistance() {
 			return 0.1f;
 
 		if (!CollisionManager::checkLineOfSight(asAiAgent(), followCopy)) {
-			return 0.1f;
+			return 1.0f;
 		} else if (getWeapon() != nullptr ) {
 			float weapMaxRange = Math::min(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
-			return Math::max(0.1f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius() - 2);
+			return Math::max(0.1f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius());
 		} else {
 			return 1 + getTemplateRadius() + followCopy->getTemplateRadius();
 		}
@@ -2348,7 +2345,7 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	default:
-		if (creatureBitmask >= CreatureFlag::STATIC) {
+		if (creatureBitmask & CreatureFlag::STATIC) {
 			setOblivious();
 		} else if (followCopy == nullptr) {
 			setFollowState(PATROLLING);
