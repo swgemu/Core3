@@ -75,7 +75,8 @@ bitmaskLookup = {
 	}},
 
 	{ESCORT, {
-		{IDLE, "walkEscort"},
+		{IDLE, "runEscort"},
+		{MOVE, "moveEscort"},
 		{TARGET, "targetDefault"}
 	}},
 
