@@ -2271,7 +2271,7 @@ int AiAgentImplementation::setDestination() {
 	case AiAgent::OBLIVIOUS:
 		clearPatrolPoints();
 
-		if (creatureBitmask >= CreatureFlag::STATIC) {
+		if (creatureBitmask & CreatureFlag::STATIC) {
 			if (!homeLocation.isInRange(asAiAgent(), 1.5)) {
 				homeLocation.setReached(false);
 				addPatrolPoint(homeLocation);
