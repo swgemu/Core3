@@ -443,6 +443,15 @@ public:
 		if (primaryRange < 10.f && secondaryRange < 10.f)
 			return FAILURE;
 
+		// Current weapon is melee. We do not need to evade when melee
+		if (agent->getWeapon() != nullptr) {
+			float idealRange = agent->getWeapon()->getIdealRange();
+
+			if (idealRange < 10.f) {
+				return FAILURE;
+			}
+		}
+
 		CreatureObject* tarCreo = tar->asCreatureObject();
 
 		if (tarCreo->isPlayerCreature()) {
@@ -496,6 +505,7 @@ public:
 
 		agent->setFollowState(AiAgent::EVADING);
 		agent->setNextPosition(position.getX(), position.getZ(), position.getY(), agent->getParent().get().castTo<CellObject*>());
+		agent->faceObject(tar);
 
 		return SUCCESS;
 	}
