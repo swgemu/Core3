@@ -215,7 +215,6 @@ function CityControlLanding:spawnMobile(spawnNumber)
 		local pMobile = spawnMobile(planet, template[spawnNumber], 0, xLoc, cityCoords[2], yLoc, cityCoords[4], 0, "")
 
 		if (pMobile ~= nil) then
-			AiAgent(pMobile):setAiTemplate("citypatrol")
 			AiAgent(pMobile):setFollowState(4)
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 
@@ -248,7 +247,6 @@ function CityControlLanding:spawnMobile(spawnNumber)
 		local pMobile = spawnMobile(planet, template[spawnNumber], 0, xLoc, cityCoords[2], yLoc, cityCoords[4], 0, "")
 
 		if (pMobile ~= nil) then
-			AiAgent(pMobile):setAiTemplate("")
 			AiAgent(pMobile):setFollowState(4)
 			CreatureObject(pMobile):setPvpStatusBitmask(1)
 
@@ -341,7 +339,6 @@ function CityControlLanding:moveTo(pMobile)
 			AiAgent(pMobile):setNextPosition(spawnCoords[1], spawnCoords[2], posY, 0)
 		else
 			local posY = spawnCoords[3] - 11
-			AiAgent(pMobile):setAiTemplate("manualescortwalk")
 			AiAgent(pMobile):setNextPosition(spawnCoords[1], spawnCoords[2], posY, 0)
 		end
 	elseif (landingType == "IMPERIAL") then
@@ -349,7 +346,6 @@ function CityControlLanding:moveTo(pMobile)
 			local posY = spawnCoords[3] - 10
 			AiAgent(pMobile):setNextPosition(spawnCoords[1], spawnCoords[2], posY, 0)
 		else
-			AiAgent(pMobile):setAiTemplate("manualescortwalk")
 			AiAgent(pMobile):setNextPosition(spawnCoords[1], spawnCoords[2], spawnCoords[3], 0)
 		end
 	else

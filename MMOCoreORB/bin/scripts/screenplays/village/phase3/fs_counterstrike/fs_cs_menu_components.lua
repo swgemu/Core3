@@ -140,7 +140,7 @@ function FsCampCommanderMenuComponent:handleObjectMenuSelect(pCommander, pPlayer
 		deleteData(commanderID .. ":canBeRecaptured")
 		deleteData(commanderID .. ":currentlyFree")
 		writeData(commanderID .. ":capturedBy", SceneObject(pPlayer):getObjectID())
-		AiAgent(pCommander):setAiTemplate("follow")
+		AiAgent(pCommander):setFollowObject(pPlayer)
 		AiAgent(pCommander):setFollowState(3)
 
 		FsCsCommander:captureCommander(pCommander, pShieldKiller)

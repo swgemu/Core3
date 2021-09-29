@@ -200,7 +200,6 @@ function Encounter:handleDespawnEvent(pPlayer)
 	for i = 1, #spawnedObjects, 1 do
 		if SpawnMobiles.isValidMobile(spawnedObjects[i]) and self.spawnObjectList[i]["runOnDespawn"] then
 			CreatureObject(spawnedObjects[i]):setPvpStatusBitmask(0)
-			AiAgent(spawnedObjects[i]):setAiTemplate("follow")
 			runAway = true
 			mobX = SceneObject(spawnedObjects[i]):getPositionX()
 			mobY = SceneObject(spawnedObjects[i]):getPositionY()

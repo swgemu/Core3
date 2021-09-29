@@ -418,7 +418,6 @@ function CorellianCorvette:setupBrokenDroid(pDroid)
 	createObserver(DESTINATIONREACHED, "CorellianCorvette", "repairDroidDestinationReached", pDroid)
 	SceneObject(pDroid):setContainerComponent("corvetteBrokenDroidContainerComponent")
 
-	AiAgent(pDroid):setAiTemplate("idlewait") -- Don't move unless patrol point is added to list
 	AiAgent(pDroid):setFollowState(4) -- Patrolling
 
 	writeData(corvetteID .. ":electricTrapEnabled", 1)
@@ -541,7 +540,6 @@ function CorellianCorvette:setupPrisoner(pPrisoner)
 	end
 
 	createObserver(DESTINATIONREACHED, "CorellianCorvette", "prisonerDestinationReached", pPrisoner)
-	AiAgent(pPrisoner):setAiTemplate("idlewait") -- Don't move unless patrol point is added to list
 	AiAgent(pPrisoner):setFollowState(4) -- Patrolling
 
 	if (SceneObject(pPrisoner):getObjectName() == "prisoner") then

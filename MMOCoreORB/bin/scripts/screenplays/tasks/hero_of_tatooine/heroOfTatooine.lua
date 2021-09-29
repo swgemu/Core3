@@ -669,7 +669,6 @@ function HeroOfTatooineScreenPlay:doGiverDespawn(pGiver)
 	if (CreatureObject(pGiver):isAiAgent()) then
 		AiAgent(pGiver):addCreatureFlag(AI_NOAIAGGRO)
 		AiAgent(pGiver):addCreatureFlag(AI_FOLLOW)
-		AiAgent(pGiver):setAITemplate()
 		AiAgent(pGiver):setFollowState(4)
 		AiAgent(pGiver):generatePatrol(1, 30)
 		createObserver(DESTINATIONREACHED, "HeroOfTatooineScreenPlay", "giverDespawnDestinationReached", pGiver)
@@ -746,7 +745,6 @@ function HeroOfTatooineScreenPlay:completeEscort(pPlayer)
 		spatialChat(pWife, "@quest/hero_of_tatooine/system_messages:altruism_npc_farewell")
 		AiAgent(pWife):addCreatureFlag(AI_NOAIAGGRO)
 		AiAgent(pWife):addCreatureFlag(AI_FOLLOW)
-		AiAgent(pWife):setAITemplate()
 	end
 
 	deleteData("hero_of_tat:altruismEscortStatus")
@@ -1048,7 +1046,6 @@ end
 function HeroOfTatooineScreenPlay:doStartPatrol(pNpc)
 	AiAgent(pNpc):addCreatureFlag(AI_NOAIAGGRO)
 	AiAgent(pNpc):addCreatureFlag(AI_ESCORT)
-	AiAgent(pNpc):setAITemplate() -- Don't move unless patrol point is added to list, walking speed
 	AiAgent(pNpc):setFollowState(4) -- Patrolling
 	HeroOfTatooineScreenPlay:doHonorStep(pNpc)
 end
