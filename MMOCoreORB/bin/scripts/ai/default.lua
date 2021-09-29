@@ -1,12 +1,12 @@
 aggroDefault = {
-	{id="2000748860",	name="Sequence",	pid="none"},
-	{id="4089394424",	name="If",	pid="2000748860"},
-	{id="4054469891",	name="CheckProspectAggression",	pid="4089394424"},
-	{id="2352605300",	name="If",	pid="2000748860"},
-	{id="2886773021",	name="CheckProspectInRange",	pid="2352605300",	args={condition=0.0}},
-	{id="3108697267",	name="If",	pid="2000748860"},
-	{id="1343865250",	name="CheckProspectLOS",	pid="3108697267"},
-	{id="1639079550",	name="SetDefenderFromProspect",	pid="2000748860"}}
+	{id="2009948435",	name="Sequence",	pid="none"},
+	{id="1351912750",	name="If",	pid="2009948435"},
+	{id="3646194541",	name="CheckProspectAggression",	pid="1351912750"},
+	{id="2493941910",	name="If",	pid="2009948435"},
+	{id="1725623190",	name="CheckProspectInRange",	pid="2493941910",	args={condition=0.0}},
+	{id="4287005799",	name="If",	pid="2009948435"},
+	{id="415432002",	name="CheckProspectLOS",	pid="4287005799"},
+	{id="199246519",	name="SetDefenderFromProspect",	pid="2009948435"}}
 addAiTemplate("aggroDefault", aggroDefault)
 
 attackDefault = {
@@ -38,8 +38,8 @@ awareDefault = {
 	{id="2060697202",	name="CalculateAggroMod",	pid="1957246555"},
 	{id="3934686138",	name="If",	pid="1957246555"},
 	{id="3559324712",	name="CheckProspectInRange",	pid="3934686138",	args={condition=0.0}},
-	{id="2851498991",	name="Selector",	pid="1957246555"},
-	{id="2161122682",	name="Sequence",	pid="2851498991"},
+	{id="1945988400",	name="TreeSocket",	pid="1957246555",	args={slot=LOOKAT}},
+	{id="2161122682",	name="Sequence",	pid="1957246555"},
 	{id="1918093601",	name="Selector",	pid="2161122682"},
 	{id="3395891290",	name="If",	pid="1918093601"},
 	{id="1548623514",	name="CheckFollowState",	pid="3395891290",	args={condition=WATCHING}},
@@ -51,7 +51,6 @@ awareDefault = {
 	{id="1619483218",	name="CheckAggroDelayPast",	pid="2660217776"},
 	{id="2566615919",	name="TreeSocket",	pid="3457280844",	args={slot=AGGRO}},
 	{id="302020086",	name="TreeSocket",	pid="2555066128",	args={slot=SCARE}},
-	{id="1945988400",	name="TreeSocket",	pid="2851498991",	args={slot=LOOKAT}},
 	{id="3313602446",	name="Sequence",	pid="4104990252"},
 	{id="4160853308",	name="If",	pid="3313602446"},
 	{id="2059317409",	name="CheckIsKiller",	pid="4160853308"},
@@ -100,12 +99,18 @@ lookDefault = {
 	{id="3448746212",	name="Selector",	pid="2391667584"},
 	{id="1241082520",	name="If",	pid="3448746212"},
 	{id="3119101863",	name="CheckFollowState",	pid="1241082520",	args={condition=OBLIVIOUS}},
+	{id="2624010097",	name="If",	pid="3448746212"},
+	{id="3045801451",	name="CheckFollowState",	pid="2624010097",	args={condition=WATCHING}},
 	{id="4062139516",	name="If",	pid="3448746212"},
 	{id="1006667864",	name="CheckFollowState",	pid="4062139516",	args={condition=PATROLLING}},
 	{id="1650016708",	name="If",	pid="2391667584"},
 	{id="638753146",	name="CheckProspectLOS",	pid="1650016708"},
 	{id="4076527471",	name="SetFollowState",	pid="2391667584",	args={state=WATCHING}},
-	{id="1583995406",	name="SetAlert",	pid="2391667584",	args={duration=6.0, show=1}}}
+	{id="4136354341",	name="Not",	pid="2391667584"},
+	{id="3644188776",	name="If",	pid="4136354341"},
+	{id="2759614932",	name="CheckProspectIsIncapacitated",	pid="3644188776"},
+	{id="1232715974",	name="AlwaysSucceed",	pid="2391667584"},
+	{id="1583995406",	name="SetAlert",	pid="1232715974",	args={duration=10.0, show=1}}}
 addAiTemplate("lookDefault", lookDefault)
 
 moveDefault = {
