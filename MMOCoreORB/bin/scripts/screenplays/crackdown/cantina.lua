@@ -155,7 +155,6 @@ function CrackdownCantina:setupHarasser(pMobile, factionName)
 
 	writeStringData(mobileID .. ":nextPoint", "cantina")
 	writeStringData(mobileID .. ":factionName", factionName)
-	AiAgent(pMobile):setAiTemplate("cantinacrackdown") -- Don't move unless patrol point is added to list, walking speed
 	AiAgent(pMobile):setFollowState(4) -- Patrolling
 
 	createEvent(2000, "CrackdownCantina", "moveToHarassPoint", pMobile, "")
@@ -624,7 +623,6 @@ function CrackdownCantina:setupBackupMobile(pMobile)
 	if (pTarget ~= nil) then
 		writeStringData(SceneObject(pMobile):getObjectID() .. ":nextPoint", "backupLoc")
 		createObserver(DESTINATIONREACHED, "CrackdownCantina", "destinationReached", pMobile)
-		AiAgent(pMobile):setAiTemplate("cantinacrackdown") -- Don't move unless patrol point is added to list, walking speed
 		AiAgent(pMobile):setFollowState(4) -- Patrolling
 
 		AiAgent(pMobile):stopWaiting()

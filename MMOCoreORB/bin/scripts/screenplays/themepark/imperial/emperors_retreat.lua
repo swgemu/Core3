@@ -203,6 +203,5 @@ end
 function EmperorsRetreatScreenPlay:setupDroidPatrol(pDroid)
 	createEvent(getRandomNumber(350,450) * 100, "EmperorsRetreatScreenPlay", "droidPatrol", pDroid, "")
 	createObserver(DESTINATIONREACHED, "EmperorsRetreatScreenPlay", "retreatPatrolDestReached", pDroid)
-	AiAgent(pDroid):setAiTemplate("manualescortwalk")
 	AiAgent(pDroid):setFollowState(4)
 end

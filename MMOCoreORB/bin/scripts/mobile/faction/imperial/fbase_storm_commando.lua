@@ -50,11 +50,11 @@ fbase_storm_commando = Creature:new {
 	secondaryWeapon = "commando_melee",
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/stormtrooper",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = merge(riflemanmaster,marksmanmaster),
-	secondaryAttacks = brawlermaster
+	primaryAttacks = merge(commandomaster,riflemanmaster,pistoleermaster,marksmanmaster),
+	secondaryAttacks = merge(tkamaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(fbase_storm_commando, "fbase_storm_commando")
