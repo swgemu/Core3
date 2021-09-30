@@ -128,6 +128,7 @@ public:
 		lua->setGlobalInt("AGGRO",						BehaviorTreeSlot::AGGRO					);
 		lua->setGlobalInt("SCARE",						BehaviorTreeSlot::SCARE					);
 		lua->setGlobalInt("KILL",						BehaviorTreeSlot::KILL					);
+		lua->setGlobalInt("STALK",						BehaviorTreeSlot::STALK					);
 
 		lua->setGlobalInt("WALK",						DataVal::WALK							);
 		lua->setGlobalInt("RUN",						DataVal::RUN							);
@@ -361,6 +362,7 @@ private:
 		_REGISTERLEAF(CheckProspectJediTrial);
 		_REGISTERLEAF(CheckProspectIsIncapacitated);
 		_REGISTERLEAF(CheckIsKiller);
+		_REGISTERLEAF(CheckIsStalker);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -388,6 +390,7 @@ private:
 		_REGISTERLEAF(Wait);
 		_REGISTERLEAF(SetAlert);
 		_REGISTERLEAF(KillProspect);
+		_REGISTERLEAF(StalkProspect);
 	}
 
 	void putBitmask(Lua* lua, String key) {

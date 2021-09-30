@@ -392,3 +392,7 @@ template<> bool CheckIsKiller::check(AiAgent* agent) const {
 	return agent->isKiller();
 }
 
+template<> bool CheckIsStalker::check(AiAgent* agent) const {
+	return agent->isStalker();
+}
+

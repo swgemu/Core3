@@ -2237,9 +2237,14 @@ float AiAgentImplementation::getMaxDistance() {
 	case AiAgent::LEASHING:
 		return 0.1f;
 		break;
-	case AiAgent::STALKING:
-		return followCopy != nullptr ? getAggroRadius() * 2 : 25;
+	case AiAgent::STALKING: {
+		int stalkRad = 0;
+		if (peekBlackboard("stalkRadius"))
+			stalkRad = readBlackboard("stalkRadius").get<int>() / 3;
+
+		return stalkRad > 0 ? stalkRad : 25;
 		break;
+	}
 	case AiAgent::FOLLOWING:
 		if (followCopy == nullptr)
 			return 0.1f;
@@ -2323,11 +2328,13 @@ int AiAgentImplementation::setDestination() {
 		}
 		break;
 	case AiAgent::STALKING:
-		if (getAlertedTime() == nullptr || getAlertedTime()->isPast()) {
+		if (followCopy == nullptr) {
 			setOblivious();
 			return setDestination();
 		}
-		/* no break */
+
+		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
+		break;
 	case AiAgent::FOLLOWING:
 		if (followCopy == nullptr) {
 			setOblivious();
