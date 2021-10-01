@@ -12,23 +12,18 @@ addAiTemplate("aggroDefault", aggroDefault)
 attackDefault = {
 	{id="4024177786",	name="Sequence",	pid="none"},
 	{id="2812006626",	name="RandomSelector",	pid="4024177786"},
+	{id="169743063",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
+	{id="1932903383",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
 	{id="2322819263",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
-	{id="1793608263",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
-	{id="1011850080",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
-	{id="2342191700",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
 	{id="1163120514",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
-	{id="2329787886",	name="SelectAttack",	pid="4024177786",	args={attackNum=-1}},
-	{id="180351178",	name="EnqueueAttack",	pid="4024177786"},
-	{id="302238494",	name="Selector",	pid="4024177786"},
-	{id="3604417668",	name="Sequence",	pid="302238494"},
+	{id="3280863871",	name="Sequence",	pid="4024177786"},
+	{id="3604417668",	name="Sequence",	pid="3280863871"},
+	{id="2582933389",	name="SelectAttack",	pid="3604417668",	args={attackNum=-1}},
 	{id="763264896",	name="If",	pid="3604417668"},
 	{id="1728591479",	name="CheckAttackInRange",	pid="763264896"},
 	{id="807085653",	name="If",	pid="3604417668"},
 	{id="728357096",	name="CheckAttackIsValid",	pid="807085653"},
-	{id="285069068",	name="Sequence",	pid="302238494"},
-	{id="4146066819",	name="WriteBlackboard",	pid="285069068",	args={key="attackType", val=DEFAULT}},
-	{id="2582933389",	name="SelectAttack",	pid="285069068",	args={attackNum=-1}},
-	{id="2327622682",	name="EnqueueAttack",	pid="285069068"}}
+	{id="2327622682",	name="EnqueueAttack",	pid="3280863871"}}
 addAiTemplate("attackDefault", attackDefault)
 
 awareDefault = {
