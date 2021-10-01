@@ -1243,6 +1243,33 @@ bool AiAgentImplementation::killPlayer(SceneObject* prospect) {
 	return false;
 }
 
+bool AiAgentImplementation::stalkProspect(SceneObject* prospect) {
+	if (prospect == nullptr || !prospect->isCreatureObject())
+		return false;
+
+	setStalkObject(prospect);
+
+	PatrolPoint point = prospect->getWorldPosition();
+	setNextPosition(point.getPositionX(), point.getPositionZ(), point.getPositionY(), prospect->getParent().get().castTo<CellObject*>());
+
+	CreatureObject* creature = prospect->asCreatureObject();
+
+	if (creature != nullptr && creature->isPlayerCreature()) {
+		if (isCamouflaged(creature)) {
+			return false;
+		}
+
+		if (creature->hasSkill("outdoors_ranger_novice")) {
+			StringIdChatParameter param;
+			param.setStringId("@skl_use:notify_stalked"); // "It seems that you are being stalked by %TO."
+			param.setTO(getObjectName());
+			creature->sendSystemMessage(param);
+		}
+	}
+
+	return true;
+}
+
 void AiAgentImplementation::queueDizzyFallEvent() {
 	if (isNonPlayerCreatureObject())
 		CreatureObjectImplementation::queueDizzyFallEvent();
@@ -2328,7 +2355,7 @@ int AiAgentImplementation::setDestination() {
 		}
 		break;
 	case AiAgent::STALKING:
-		if (followCopy == nullptr) {
+		if (followCopy == nullptr || !followCopy->isInRange(asAiAgent(), 128)) {
 			setOblivious();
 			return setDestination();
 		}

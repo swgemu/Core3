@@ -538,7 +538,7 @@ public:
 		ManagedReference<SceneObject*> tar = nullptr;
 
 		if (agent->peekBlackboard("targetProspect"))
-			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
+			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
 
 		int stalkRad = agent->getAggroRadius();
 
@@ -553,7 +553,8 @@ public:
 			return FAILURE;
 		}
 
-		agent->setStalkObject(tar);
+		if (!agent->stalkProspect(tar))
+			return FAILURE;
 
 		return SUCCESS;
 	}

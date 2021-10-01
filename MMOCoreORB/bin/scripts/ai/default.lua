@@ -179,6 +179,9 @@ stalkDefault = {
 	{id="3024166838",	name="CheckTargetIsValid",	pid="3337736172"},
 	{id="1047936480",	name="If",	pid="1672513422"},
 	{id="1298894483",	name="CheckProspectLOS",	pid="1047936480"},
+	{id="2548145200",	name="Not",	pid="1672513422"},
+	{id="4223807049",	name="If",	pid="2548145200"},
+	{id="3347717967",	name="CheckFollowState",	pid="4223807049",	args={condition=STALKING}},
 	{id="1993075065",	name="StalkProspect",	pid="1672513422"},
 	{id="2442951800",	name="TreeSocket",	pid="1672513422",	args={slot=MOVE}}}
 addAiTemplate("stalkDefault", stalkDefault)
