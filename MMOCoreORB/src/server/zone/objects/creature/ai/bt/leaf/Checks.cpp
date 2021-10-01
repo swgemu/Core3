@@ -6,6 +6,7 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/bt/BlackboardData.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
@@ -170,12 +171,16 @@ template<> bool CheckAttackInRange::check(AiAgent* agent) const {
 	const QueueCommand* queueCommand = agent->getNextAction();
 	ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
 
-	if (queueCommand == nullptr || followCopy == nullptr)
+	if (queueCommand == nullptr || followCopy == nullptr || !queueCommand->isCombatCommand()) {
 		return false;
+	}
+
+	const CombatQueueCommand* combatCommand = cast<const CombatQueueCommand*>(queueCommand);
 
 	float templatePadding = agent->getTemplateRadius() + followCopy->getTemplateRadius();
-	if ((queueCommand->getMaxRange() > 0 && !followCopy->isInRange(agent, queueCommand->getMaxRange() + templatePadding))
-			|| (queueCommand->getMaxRange() <= 0 && !followCopy->isInRange(agent, agent->getWeapon()->getMaxRange() + templatePadding))) {
+	float maxRange = combatCommand->getRange();
+
+	if ((maxRange > 0 && !followCopy->isInRange(agent, maxRange)) || (maxRange <= 0 && !followCopy->isInRange(agent, agent->getWeapon()->getMaxRange() + templatePadding))) {
 		return false;
 	}
 

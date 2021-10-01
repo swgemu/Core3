@@ -243,6 +243,12 @@ public:
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		//agent->info("SelectAttack::execute", true);
 
+		WeaponObject* weapon = agent->getWeapon();
+
+		if (weapon != nullptr && weapon->getAttackType() ==  SharedWeaponObjectTemplate::FORCEATTACK) {
+			return agent->selectSpecialAttack(-1) ? SUCCESS : FAILURE;
+		}
+
 		if (agent->peekBlackboard("attackType")) {
 			//agent->info("SelectAttack::execute has attackType", true);
 

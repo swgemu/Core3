@@ -807,44 +807,42 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
 		return false;
 	}
 
-    if (attackNum < 0) {
-        return selectSpecialAttack();
-    }
+	if (attackNum < 0) {
+		return selectSpecialAttack();
+	}
 
 	if (attackNum >= attackMap->size()) {
 		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 			info("attackNum >= attackMap->size()", true);
-        return false;
+		return false;
 	}
 
-    String cmd = attackMap->getCommand(attackNum);
+	String cmd = attackMap->getCommand(attackNum);
 
-    if (cmd.isEmpty()) {
-    	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
-    		info("cmd.isEmpty()", true);
-        return false;
-    }
+	if (cmd.isEmpty()) {
+		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
+			info("cmd.isEmpty()", true);
+		return false;
+	}
 
-    nextActionCRC = cmd.hashCode();
-    nextActionArgs = attackMap->getArguments(attackNum);
+	nextActionCRC = cmd.hashCode();
+	nextActionArgs = attackMap->getArguments(attackNum);
 
-    ZoneServer* zoneServer = getZoneServer();
-    if (zoneServer == nullptr)
-        return false;
+	ZoneServer* zoneServer = getZoneServer();
+	if (zoneServer == nullptr)
+		return false;
 
-    ObjectController* objectController = zoneServer->getObjectController();
-    if (objectController == nullptr)
-        return false;
+	ObjectController* objectController = zoneServer->getObjectController();
+	if (objectController == nullptr)
+		return false;
 
-    const QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
-    ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-    if (queueCommand == nullptr || followCopy == nullptr
-            || (queueCommand->getMaxRange() > 0 && !followCopy->isInRange(asAiAgent(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
-            || (queueCommand->getMaxRange() <= 0 && !followCopy->isInRange(asAiAgent(), getWeapon()->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))) {
-        selectDefaultAttack();
-    }
+	const QueueCommand* queueCommand = objectController->getQueueCommand(nextActionCRC);
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 
-    return true;
+	if (queueCommand == nullptr || followCopy == nullptr)
+		return false;
+
+	return true;
 }
 
 bool AiAgentImplementation::selectDefaultAttack() {
@@ -855,14 +853,14 @@ bool AiAgentImplementation::selectDefaultAttack() {
 
 	nextActionArgs = "";
 
-    return true;
+	return true;
 }
 
 const QueueCommand* AiAgentImplementation::getNextAction() {
-    if (getZoneServer() == nullptr || getZoneServer()->getObjectController() == nullptr)
-        return nullptr;
+	if (getZoneServer() == nullptr || getZoneServer()->getObjectController() == nullptr)
+		return nullptr;
 
-    return getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
+	return getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
 }
 
 int AiAgentImplementation::enqueueAttack(int priority) {
