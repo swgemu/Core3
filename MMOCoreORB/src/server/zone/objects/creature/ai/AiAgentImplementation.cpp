@@ -1241,6 +1241,33 @@ bool AiAgentImplementation::killPlayer(SceneObject* prospect) {
 	return false;
 }
 
+bool AiAgentImplementation::stalkProspect(SceneObject* prospect) {
+	if (prospect == nullptr || !prospect->isCreatureObject())
+		return false;
+
+	setStalkObject(prospect);
+
+	PatrolPoint point = prospect->getWorldPosition();
+	setNextPosition(point.getPositionX(), point.getPositionZ(), point.getPositionY(), prospect->getParent().get().castTo<CellObject*>());
+
+	CreatureObject* creature = prospect->asCreatureObject();
+
+	if (creature != nullptr && creature->isPlayerCreature()) {
+		if (isCamouflaged(creature)) {
+			return false;
+		}
+
+		if (creature->hasSkill("outdoors_ranger_novice")) {
+			StringIdChatParameter param;
+			param.setStringId("@skl_use:notify_stalked"); // "It seems that you are being stalked by %TO."
+			param.setTO(getObjectName());
+			creature->sendSystemMessage(param);
+		}
+	}
+
+	return true;
+}
+
 void AiAgentImplementation::queueDizzyFallEvent() {
 	if (isNonPlayerCreatureObject())
 		CreatureObjectImplementation::queueDizzyFallEvent();
@@ -2235,9 +2262,14 @@ float AiAgentImplementation::getMaxDistance() {
 	case AiAgent::LEASHING:
 		return 0.1f;
 		break;
-	case AiAgent::STALKING:
-		return followCopy != nullptr ? getAggroRadius() * 2 : 25;
+	case AiAgent::STALKING: {
+		int stalkRad = 0;
+		if (peekBlackboard("stalkRadius"))
+			stalkRad = readBlackboard("stalkRadius").get<int>() / 3;
+
+		return stalkRad > 0 ? stalkRad : 25;
 		break;
+	}
 	case AiAgent::FOLLOWING:
 		if (followCopy == nullptr)
 			return 0.1f;
@@ -2321,11 +2353,13 @@ int AiAgentImplementation::setDestination() {
 		}
 		break;
 	case AiAgent::STALKING:
-		if (getAlertedTime() == nullptr || getAlertedTime()->isPast()) {
+		if (followCopy == nullptr || !followCopy->isInRange(asAiAgent(), 128)) {
 			setOblivious();
 			return setDestination();
 		}
-		/* no break */
+
+		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
+		break;
 	case AiAgent::FOLLOWING:
 		if (followCopy == nullptr) {
 			setOblivious();

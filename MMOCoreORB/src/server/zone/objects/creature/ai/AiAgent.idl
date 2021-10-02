@@ -594,6 +594,8 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public native boolean killPlayer(SceneObject player);
 
+	public native boolean stalkProspect(SceneObject prospect);
+
 	@preLocked
 	public native void setDespawnOnNoPlayerInRange(boolean val);
 

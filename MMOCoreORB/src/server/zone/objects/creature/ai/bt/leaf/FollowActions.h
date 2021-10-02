@@ -522,6 +522,51 @@ public:
 	float maxEvadeChance;
 };
 
+class StalkProspect : public Behavior {
+public:
+	StalkProspect(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	StalkProspect(const StalkProspect& a) : Behavior(a) {
+	}
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		Time* alert = agent->getAlertedTime();
+
+		if (alert == nullptr || !alert->isPast())
+			return FAILURE;
+
+		ManagedReference<SceneObject*> tar = nullptr;
+
+		if (agent->peekBlackboard("targetProspect"))
+			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
+
+		int stalkRad = agent->getAggroRadius();
+
+		if (stalkRad == 0)
+			stalkRad = AiAgent::DEFAULTAGGRORADIUS;
+
+		float aggroMod = agent->readBlackboard("aggroMod").get<float>();
+		stalkRad *= aggroMod * 2;
+		agent->writeBlackboard("stalkRadius", stalkRad);
+
+		if (tar == nullptr || !tar->isInRange(agent, stalkRad)) {
+			return FAILURE;
+		}
+
+		if (!agent->stalkProspect(tar))
+			return FAILURE;
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
+};
+
 }
 }
 }
