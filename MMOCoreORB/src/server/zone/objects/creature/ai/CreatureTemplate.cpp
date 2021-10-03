@@ -59,6 +59,7 @@ CreatureTemplate::CreatureTemplate() {
 
 	primaryWeapon = "";
 	secondaryWeapon = "";
+	thrownWeapon = "",
 
 	templates.removeAll();
 
@@ -172,6 +173,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 
 	primaryWeapon = templateData->getStringField("primaryWeapon");
 	secondaryWeapon = templateData->getStringField("secondaryWeapon");
+	thrownWeapon = templateData->getStringField("thrownWeapon");
 
 	LuaObject attackList = templateData->getObjectField("primaryAttacks");
 	if (attackList.isValidTable()) {

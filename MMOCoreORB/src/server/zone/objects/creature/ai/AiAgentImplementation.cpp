@@ -218,7 +218,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		if (secondaryWeap.indexOf(".iff") != -1) {
 			weaponCRC = primaryWeap.hashCode();
 		} else {
-			const Vector<String>& secondaryTemplates = CreatureTemplateManager::instance()->getWeapons(npcTemplate->getSecondaryWeapon().hashCode());
+			const Vector<String>& secondaryTemplates = CreatureTemplateManager::instance()->getWeapons(secondaryWeapHash);
 
 			if (secondaryTemplates.size() > 0) {
 				String& weaponTemplate = secondaryTemplates.get(System::random(secondaryTemplates.size() - 1));
@@ -228,6 +228,23 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 		if (weaponCRC != 0)
 			secondaryWeapon = createWeapon(weaponCRC, false);
+	}
+
+	String thrownWeap = npcTemplate->getThrownWeapon();
+
+	if (thrownWeap != "") {
+		uint32 weaponCRC = 0;
+
+		const Vector<String>& thrownTemplates = CreatureTemplateManager::instance()->getWeapons(thrownWeap.hashCode());
+
+		if (thrownTemplates.size() > 0) {
+			String& weaponTemplate = thrownTemplates.get(System::random(thrownTemplates.size() - 1));
+			weaponCRC = weaponTemplate.hashCode();
+		}
+
+		if (weaponCRC != 0) {
+			thrownWeapon = createWeapon(weaponCRC, false);
+		}
 	}
 
 	setupAttackMaps();
@@ -788,6 +805,18 @@ void AiAgentImplementation::doRecovery(int latency) {
 }
 
 bool AiAgentImplementation::selectSpecialAttack() {
+	if (thrownWeapon != nullptr && System::random(100) > 95) {
+		ManagedReference<SceneObject*> followCopy = getFollowObject().get();
+
+		enqueueCommand(STRING_HASHCODE("throwgrenade"), 0, followCopy->getObjectID(), String::valueOf(thrownWeapon->getObjectID()), 1);
+
+		if (thrownWeapon->getUseCount() < 1) {
+			Locker locker(thrownWeapon);
+			thrownWeapon->destroyObjectFromWorld(true);
+			thrownWeapon = nullptr;
+		}
+	}
+
 	const CreatureAttackMap* attackMap = getAttackMap();
 
 	if (attackMap == nullptr) {
@@ -1245,11 +1274,6 @@ bool AiAgentImplementation::stalkProspect(SceneObject* prospect) {
 	if (prospect == nullptr || !prospect->isCreatureObject())
 		return false;
 
-	setStalkObject(prospect);
-
-	PatrolPoint point = prospect->getWorldPosition();
-	setNextPosition(point.getPositionX(), point.getPositionZ(), point.getPositionY(), prospect->getParent().get().castTo<CellObject*>());
-
 	CreatureObject* creature = prospect->asCreatureObject();
 
 	if (creature != nullptr && creature->isPlayerCreature()) {
@@ -1264,6 +1288,11 @@ bool AiAgentImplementation::stalkProspect(SceneObject* prospect) {
 			creature->sendSystemMessage(param);
 		}
 	}
+
+	setStalkObject(prospect);
+
+	PatrolPoint point = prospect->getWorldPosition();
+	setNextPosition(point.getPositionX(), point.getPositionZ(), point.getPositionY(), prospect->getParent().get().castTo<CellObject*>());
 
 	return true;
 }

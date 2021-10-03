@@ -75,6 +75,7 @@ class AiAgent extends CreatureObject {
 	protected WeaponObject defaultWeapon;
 	protected WeaponObject primaryWeapon;
 	protected WeaponObject secondaryWeapon;
+	protected WeaponObject thrownWeapon;
 
 	protected WeaponObject currentWeapon;
 
@@ -1411,6 +1412,11 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public abstract WeaponObject getDefaultWeapon() {
 		return defaultWeapon;
+	}
+
+	@dirty
+	public abstract WeaponObject getThrownWeapon() {
+		return thrownWeapon;
 	}
 
 	@dirty
