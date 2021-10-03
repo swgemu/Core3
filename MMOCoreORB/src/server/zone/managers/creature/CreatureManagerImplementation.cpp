@@ -594,7 +594,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		// Make sure mob weapons are destroyed when the ai dies so they can't be looted
 		WeaponObject* primaryWeap = destructedObject->getPrimaryWeapon();
 
-		if (primaryWeap != nullptr) {
+		if (primaryWeap != nullptr && primaryWeap != destructedObject->getDefaultWeapon()) {
 			Locker locker(primaryWeap);
 			primaryWeap->destroyObjectFromWorld(true);
 		}

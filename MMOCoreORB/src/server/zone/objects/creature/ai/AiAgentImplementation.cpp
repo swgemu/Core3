@@ -808,12 +808,14 @@ bool AiAgentImplementation::selectSpecialAttack() {
 	if (thrownWeapon != nullptr && System::random(100) > 95) {
 		ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 
-		enqueueCommand(STRING_HASHCODE("throwgrenade"), 0, followCopy->getObjectID(), String::valueOf(thrownWeapon->getObjectID()), 1);
+		if (followCopy != nullptr) {
+			enqueueCommand(STRING_HASHCODE("throwgrenade"), 0, followCopy->getObjectID(), String::valueOf(thrownWeapon->getObjectID()), 1);
 
-		if (thrownWeapon->getUseCount() < 1) {
-			Locker locker(thrownWeapon);
-			thrownWeapon->destroyObjectFromWorld(true);
-			thrownWeapon = nullptr;
+			if (thrownWeapon->getUseCount() < 1) {
+				Locker locker(thrownWeapon);
+				thrownWeapon->destroyObjectFromWorld(true);
+				thrownWeapon = nullptr;
+			}
 		}
 	}
 
