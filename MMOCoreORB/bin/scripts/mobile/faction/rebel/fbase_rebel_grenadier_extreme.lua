@@ -52,7 +52,9 @@ fbase_rebel_grenadier_extreme = Creature:new {
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "rebel_weapons_heavy",
-	secondaryWeapon = "unarmed",
+	secondaryWeapon = "none",
+	thrownWeapon = "thrown_weapons",
+
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
 	
