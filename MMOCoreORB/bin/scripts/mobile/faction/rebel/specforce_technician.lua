@@ -53,6 +53,8 @@ specforce_technician = Creature:new {
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "imperial_weapons_medium",
 	secondaryWeapon = "unarmed",
+	thrownWeapon = "thrown_weapons",
+
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
 	

@@ -47,6 +47,8 @@ fbase_stormtrooper_extreme = Creature:new {
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "stormtrooper_carbine",
 	secondaryWeapon = "none",
+	thrownWeapon = "thrown_weapons",
+
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/stormtrooper",
 	
