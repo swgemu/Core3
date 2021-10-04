@@ -16,9 +16,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		if (creature == nullptr)
-			return GENERALERROR;
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
