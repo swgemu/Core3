@@ -85,6 +85,7 @@ protected:
 
 	String primaryWeapon;
 	String secondaryWeapon;
+	String thrownWeapon;
 
 	CreatureAttackMap* primaryAttacks;
 	CreatureAttackMap* secondaryAttacks;
@@ -368,6 +369,10 @@ public:
 
 	inline const String& getSecondaryWeapon() const {
 		return secondaryWeapon;
+	}
+
+	inline const String& getThrownWeapon() const {
+		return thrownWeapon;
 	}
 
 	inline const CreatureAttackMap* getPrimaryAttacks() const {
