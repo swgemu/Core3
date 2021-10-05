@@ -114,9 +114,15 @@ class AiAgent extends CreatureObject {
 
 	@dereferenced
 	protected transient Time lastDamageReceived;
-	
+
 	@dereferenced
 	protected transient Time lastPackNotify;
+
+	@dereferenced
+	protected transient Time checkRetreat;
+
+	@dereferenced
+	protected transient Time postureSet;
 
 	protected int reactionRank;
 
@@ -470,7 +476,7 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	@arg1preLocked
 	public native void notifyPackMobs(CreatureObject attacker);
-	
+
 
 	@preLocked
 	public native int addDotState(CreatureObject attacker, unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense, int secondaryStrength = 0) {
@@ -1249,6 +1255,12 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public Time getAggroDelay() {
 		return aggroDelay;
+	}
+
+	@local
+	@dirty
+	public Time getPostureSet() {
+		return postureSet;
 	}
 
 	public void incrementLuaCall(final string key) {

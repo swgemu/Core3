@@ -1186,7 +1186,6 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 
 	clearPatrolPoints();
 
-	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 	notifyObservers(ObserverEventType::FLEEING, target);
 	sendReactionChat(ReactionManager::FLEE);
 
@@ -1623,24 +1622,28 @@ void AiAgentImplementation::activateRecovery() {
 }
 
 void AiAgentImplementation::activatePostureRecovery() {
-	if ((isProne() || isKnockedDown() || isKneeling()) && checkPostureChangeDelay()) {
+	if (isKnockedDown() && checkPostureChangeDelay()) {
 		executeObjectControllerAction(0xA8A25C79); // stand
+		return;
 	}
+
+	if (postureSet.miliDifference() > 0 && (isProne() || isKneeling()) && checkPostureChangeDelay())
+		executeObjectControllerAction(0xA8A25C79);
 }
 
 void AiAgentImplementation::activateHAMRegeneration(int latency) {
-    if (isIncapacitated() || isDead() || isInCombat())
-        return;
+	if (isIncapacitated() || isDead() || isInCombat())
+		return;
 
-    uint32 healthTick = (uint32) Math::max(1.f, (float) ceil(getMaxHAM(CreatureAttribute::HEALTH) / 300000.f * latency));
-    uint32 actionTick = (uint32) Math::max(1.f, (float) ceil(getMaxHAM(CreatureAttribute::ACTION) / 300000.f * latency));
-    uint32 mindTick   = (uint32) Math::max(1.f, (float) ceil(getMaxHAM(CreatureAttribute::MIND) / 300000.f * latency));
+	uint32 healthTick = (uint32) Math::max(1.f, (float) ceil(getMaxHAM(CreatureAttribute::HEALTH) / 300000.f * latency));
+	uint32 actionTick = (uint32) Math::max(1.f, (float) ceil(getMaxHAM(CreatureAttribute::ACTION) / 300000.f * latency));
+	uint32 mindTick   = (uint32) Math::max(1.f, (float) ceil(getMaxHAM(CreatureAttribute::MIND) / 300000.f * latency));
 
-    healDamage(asCreatureObject(), CreatureAttribute::HEALTH, healthTick, true, false);
-    healDamage(asCreatureObject(), CreatureAttribute::ACTION, actionTick, true, false);
-    healDamage(asCreatureObject(), CreatureAttribute::MIND,   mindTick,   true, false);
+	healDamage(asCreatureObject(), CreatureAttribute::HEALTH, healthTick, true, false);
+	healDamage(asCreatureObject(), CreatureAttribute::ACTION, actionTick, true, false);
+	healDamage(asCreatureObject(), CreatureAttribute::MIND,   mindTick,   true, false);
 
-    activatePassiveWoundRegeneration();
+	activatePassiveWoundRegeneration();
 }
 
 void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
@@ -2685,6 +2688,23 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 	if (damage > 0) {
 		getThreatMap()->addDamage(attacker, damage, xp);
+
+		if (checkRetreat.miliDifference() > 20000 && ((getHAM(CreatureAttribute::HEALTH) < getMaxHAM(CreatureAttribute::HEALTH) * 0.1)
+			|| (getHAM(CreatureAttribute::ACTION) < getMaxHAM(CreatureAttribute::ACTION) * 0.1)
+			|| (getHAM(CreatureAttribute::MIND) < getMaxHAM(CreatureAttribute::MIND) * 0.1))) {
+
+			checkRetreat.updateToCurrentTime();
+
+			ManagedReference<SceneObject*> followCopy = getFollowObject().get();
+
+			if (followCopy != nullptr && followCopy->isCreatureObject()) {
+				CreatureObject* followCreo = followCopy->asCreatureObject();
+
+				if (followCreo != nullptr) {
+					runAway(followCreo, System::random(50) + 25);
+				}
+			}
+		}
 	}
 
 	notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker);

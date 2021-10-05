@@ -354,8 +354,10 @@ public:
 		if (radius == 0)
 			radius = AiAgent::DEFAULTAGGRORADIUS;
 
-		if (!agent->isNonPlayerCreatureObject())
+		if (!agent->isNonPlayerCreatureObject()) {
 			agent->runAway(tar->asCreatureObject(), dist - radius * aggroMod);
+			agent->showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
+		}
 
 		return SUCCESS;
 	}
@@ -440,16 +442,18 @@ public:
 			secondaryRange = agent->getSecondaryWeapon()->getMaxRange();
 
 		// No need to evade if creature is melee only
-		if (primaryRange < 10.f && secondaryRange < 10.f)
+		if (primaryRange < 5.f && secondaryRange < 5.f)
 			return FAILURE;
 
 		// Current weapon is melee. We do not need to evade when melee
-		if (agent->getWeapon() != nullptr) {
-			float idealRange = agent->getWeapon()->getIdealRange();
+		WeaponObject* weapon = agent->getWeapon();
+		if (weapon == nullptr)
+			return FAILURE;
 
-			if (idealRange < 10.f) {
-				return FAILURE;
-			}
+		float idealRange = weapon->getIdealRange();
+
+		if (idealRange <= 5.f) {
+			return FAILURE;
 		}
 
 		CreatureObject* tarCreo = tar->asCreatureObject();
@@ -484,8 +488,26 @@ public:
 
 		int randRoll = System::random(100);
 
-		if (finalChance < 100 && randRoll > finalChance)
+		Time* postureSet = agent->getPostureSet();
+
+		if (postureSet == nullptr || !postureSet->isPast())
 			return FAILURE;
+
+		if (finalChance < 100 && randRoll > finalChance) {
+			if (System::random(100) > 95) {
+				postureSet->updateToCurrentTime();
+				postureSet->addMiliTime(20 * 1000);
+
+				float sqrDist = agent->getWorldPosition().squaredDistanceTo(tarCreo->getWorldPosition());
+
+				if (sqrDist > 25 * 25) {
+					agent->setPosture(CreaturePosture::PRONE, true, true);
+				} else {
+					agent->setPosture(CreaturePosture::CROUCHED, true, true);
+				}
+			}
+			return FAILURE;
+		}
 
 		float distance = minDist + System::random(maxDist - minDist);
 		float angle = System::random(360);
@@ -497,8 +519,6 @@ public:
 		float newZ = zone->getHeight(newX, newY);
 
 		Vector3 position = Vector3(newX, newY, newZ);
-
-		auto thisWorldPos = agent->getWorldPosition();
 
 		if (CollisionManager::checkSphereCollision(position, 5, zone))
 			return FAILURE;

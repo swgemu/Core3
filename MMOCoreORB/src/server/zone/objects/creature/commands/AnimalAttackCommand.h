@@ -82,7 +82,7 @@ public:
 			creature->sendSystemMessage(param);
 		}
 
-		return SUCCESS;
+		return result;
 	}
 };
 
