@@ -340,7 +340,7 @@ class AiAgent extends CreatureObject {
 	public abstract native boolean checkLineOfSight(SceneObject obj);
 
 	@local
-	public native float getWorldZ(@dereferenced final Vector3 position);
+	public native float getWorldZ(float x, float z, float y);
 
 	@local
 	public native int checkForReactionChat(SceneObject pObject);

@@ -1797,7 +1797,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (targetCoordinateCell == nullptr && targetPosition.getPositionZ() == 0) {
 			// We are not in a cell, so we need to calculate which Z we want to move to
 			targetMutex.unlock();
-			targetPosition.setPositionZ(getWorldZ(targetPosition.getWorldPosition()));
+			targetPosition.setPositionZ(getWorldZ(targetPosition.getPositionX(), targetPosition.getPositionZ(), targetPosition.getPositionY()));
 			targetMutex.lock();
 		}
 
@@ -1886,6 +1886,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			found = true;
 
 			float dist = fabs(nextPosition.getWorldPosition().distanceTo(thisWorldPos));
+
 			if (dist > maxDist && dist > 0) {
 				// okay, we can't go that far in one update (since we've capped update times)
 				// calculate the distance we can go and set nextPosition
@@ -1905,7 +1906,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				Zone* zone = getZoneUnsafe();
 
 				if (targetPosition.getCell() == nullptr && nextPosition.getCell() == nullptr && zone != nullptr) {
-					newZ = getWorldZ(nextPosition.getWorldPosition());
+					newZ = getWorldZ(newX, newZ, newY);
 
 					PlanetManager* planetManager = zone->getPlanetManager();
 
@@ -2076,12 +2077,12 @@ bool AiAgentImplementation::checkLineOfSight(SceneObject* obj) {
 	return CollisionManager::checkLineOfSight(asAiAgent(), obj);
 }
 
-float AiAgentImplementation::getWorldZ(const Vector3& position) {
-	float ret = 0.f;
+float AiAgentImplementation::getWorldZ(float newX, float newZ, float newY) {
+	float zCoord = 0.f;
 
 	Zone* zone = getZoneUnsafe();
 	if (zone == nullptr)
-		return ret;
+		return zCoord;
 
 	IntersectionResults intersections;
 
@@ -2089,9 +2090,9 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 		Vector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
 
 		closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::COLLIDABLETYPE);
-		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
+		CollisionManager::getWorldFloorCollisions(newX, newY, zone, &intersections, closeObjects);
 
-		ret = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, nullptr);
+		zCoord = zone->getPlanetManager()->findClosestWorldFloor(newX, newY, newZ, getSwimHeight(), &intersections, nullptr);
 	} else {
 		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
@@ -2102,12 +2103,12 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 		Vector3 worldPosition = getWorldPosition();
 		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, &closeObjects, true);
 
-		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
+		CollisionManager::getWorldFloorCollisions(newX, newY, zone, &intersections, closeObjects);
 
-		ret = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, nullptr);
+		zCoord = zone->getPlanetManager()->findClosestWorldFloor(newX, newY, newZ, getSwimHeight(), &intersections, nullptr);
 	}
 
-	return ret;
+	return zCoord;
 }
 
 void AiAgentImplementation::doMovement() {
