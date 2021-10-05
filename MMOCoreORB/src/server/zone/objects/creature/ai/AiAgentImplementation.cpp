@@ -1886,6 +1886,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			found = true;
 
 			float dist = fabs(nextPosition.getWorldPosition().distanceTo(thisWorldPos));
+
 			if (dist > maxDist && dist > 0) {
 				// okay, we can't go that far in one update (since we've capped update times)
 				// calculate the distance we can go and set nextPosition
@@ -1898,14 +1899,15 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				float dx = nextPosition.getX() - thisPos.getX();
 				float dy = nextPosition.getY() - thisPos.getY();
 
-				float newX = (thisPos.getX() + (maxDist * (dx / dist)));
-				float newY = (thisPos.getY() + (maxDist * (dy / dist)));
-				float newZ = 0.f;
+				Vector3 newPosition;
+				newPosition.setX(thisPos.getX() + (maxDist * (dx / dist)));
+				newPosition.setY(thisPos.getY() + (maxDist * (dy / dist)));
+				newPosition.setZ(0.f);
 
 				Zone* zone = getZoneUnsafe();
 
 				if (targetPosition.getCell() == nullptr && nextPosition.getCell() == nullptr && zone != nullptr) {
-					newZ = getWorldZ(nextPosition.getWorldPosition());
+					newPosition.setZ(getWorldZ(newPosition));
 
 					PlanetManager* planetManager = zone->getPlanetManager();
 
@@ -1914,22 +1916,22 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 						if (terrainManager != nullptr) {
 							float waterHeight;
-							bool waterIsDefined = terrainManager->getWaterHeight(newX, newY, waterHeight);
+							bool waterIsDefined = terrainManager->getWaterHeight(newPosition.getX(), newPosition.getY(), waterHeight);
 
-							if (waterIsDefined && (waterHeight > newZ) && isSwimming()) {
-								newZ = (waterHeight - swimHeight);
+							if (waterIsDefined && (waterHeight > newPosition.getZ()) && isSwimming()) {
+								newPosition.setZ(waterHeight - swimHeight);
 							}
 						}
 					}
 				} else {
 					float dz = nextPosition.getZ() - thisPos.getZ();
 
-					newZ = (thisPos.getZ() + (maxDist * (dz / dist)));
+					newPosition.setZ(thisPos.getZ() + (maxDist * (dz / dist)));
 				}
 
-				nextPosition.setX(newX);
-				nextPosition.setZ(newZ);
-				nextPosition.setY(newY);
+				nextPosition.setX(newPosition.getX());
+				nextPosition.setZ(newPosition.getZ());
+				nextPosition.setY(newPosition.getY());
 			}
 		}
 
@@ -2077,11 +2079,11 @@ bool AiAgentImplementation::checkLineOfSight(SceneObject* obj) {
 }
 
 float AiAgentImplementation::getWorldZ(const Vector3& position) {
-	float ret = 0.f;
+	float zCoord = 0.f;
 
 	Zone* zone = getZoneUnsafe();
 	if (zone == nullptr)
-		return ret;
+		return zCoord;
 
 	IntersectionResults intersections;
 
@@ -2091,7 +2093,7 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 		closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::COLLIDABLETYPE);
 		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
 
-		ret = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, nullptr);
+		zCoord = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, nullptr);
 	} else {
 		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
@@ -2104,10 +2106,10 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 
 		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
 
-		ret = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, nullptr);
+		zCoord = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, nullptr);
 	}
 
-	return ret;
+	return zCoord;
 }
 
 void AiAgentImplementation::doMovement() {
