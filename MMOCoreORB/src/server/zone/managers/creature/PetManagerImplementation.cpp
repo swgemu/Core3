@@ -15,6 +15,7 @@
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 void PetManagerImplementation::loadLuaConfig() {
 	info("Loading configuration file.", true);
@@ -190,6 +191,9 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 
 	// Check if speaker has permission to command pet
 	if( linkedCreature != speaker && !pcd->isFriend(speaker->getObjectID()))
+		return;
+
+	if (linkedCreature != speaker && pcd->getPetType() == PetManager::FACTIONPET && (speaker->getFaction() != pet->getFaction() || speaker->getFactionStatus() < FactionStatus::COVERT))
 		return;
 
 	ManagedReference<SceneObject*> speakerParent = speaker->getRootParent();
