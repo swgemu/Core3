@@ -549,11 +549,11 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet, b
 
 	ManagedReference<AiAgent*> petAgent = pet;
 
-	Core::getTaskManager()->executeTask([=]() {
-			Locker locker(petAgent);
+	Core::getTaskManager()->executeTask([=] () {
+		Locker locker(petAgent);
 
-			petAgent->clearBuffs(false, false);
-		},"ClearPetBuffsLambda");
+		petAgent->clearBuffs(false, false);
+	}, "ClearPetBuffsLambda");
 
 	ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
