@@ -8,31 +8,28 @@
 
 class PetTransferCommand : public QueueCommand {
 public:
-	PetTransferCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetTransferCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 
 		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		// Creature specific command
-		if( controlDevice->getPetType() != PetManager::CREATUREPET )
+		if (controlDevice->getPetType() != PetManager::CREATUREPET)
 			return GENERALERROR;
 
 		if (!creature->isAiAgent())
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == nullptr )
+		if (pet == nullptr)
 			return GENERALERROR;
 
-		ManagedReference< CreatureObject*> player = pet->getLinkedCreature().get();
-		if( player == nullptr )
+		ManagedReference<CreatureObject*> player = pet->getLinkedCreature().get();
+		if (player == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> commandTarget = server->getZoneServer()->getObject(target);
@@ -83,16 +80,15 @@ public:
 			}
 		}
 
-		//none ch doesn't seem to have keep_creature, effectively returns 0/
+		// none ch doesn't seem to have keep_creature, effectively returns 0/
 		if (activePets != 0 && activePets >= targetPlayer->getSkillMod("keep_creature")) {
-			player->sendSystemMessage("@pet/pet_menu:targ_too_many"); // That person has too many pets. Transfer failed.
+			player->sendSystemMessage("@pet/pet_menu:targ_too_many");  // That person has too many pets. Transfer failed.
 			targetPlayer->sendSystemMessage("@pet/pet_menu:too_many"); // You can't control any more pets. Store one first.
 			return GENERALERROR;
 		}
 
-		//None CH can only have 1 active pet.
-		if(targetPlayer->hasSkill("outdoors_creaturehandler_novice") && ((petLevel + pet->getLevel()) > targetPlayer->getSkillMod("tame_level")))
-		{
+		// None CH can only have 1 active pet.
+		if (targetPlayer->hasSkill("outdoors_creaturehandler_novice") && ((petLevel + pet->getLevel()) > targetPlayer->getSkillMod("tame_level"))) {
 			player->sendSystemMessage("@pet/pet_menu:no_chance"); // That person has no chance of controlling this creature. Transfer failed.
 			return GENERALERROR;
 		}
@@ -126,8 +122,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
-
 
 #endif /* PETTRANSFERCOMMAND_H_ */

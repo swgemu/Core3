@@ -12,8 +12,7 @@ idlePet = {
 	{id="1668930524",	name="CheckFollowState",	pid="3397268825",	args={condition=OBLIVIOUS}},
 	{id="4036559077",	name="WriteBlackboard",	pid="4089440207",	args={key="moveMode", val=RUN}},
 	{id="5946488",	name="AlwaysSucceed",	pid="4089440207"},
-	{id="1805516334",	name="TreeSocket",	pid="5946488",	args={slot=MOVE}},
-	{id="2339011119",	name="Wait",	pid="2602839395",	args={duration=-1.0}}}
+	{id="1805516334",	name="TreeSocket",	pid="5946488",	args={slot=MOVE}}}
 addAiTemplate("idlePet", idlePet)
 
 movePet = {

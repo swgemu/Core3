@@ -7,59 +7,54 @@
 
 class PetRechargeOtherCommand : public QueueCommand {
 public:
-	PetRechargeOtherCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetRechargeOtherCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 
 		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		// Droid specific command
-		if( controlDevice->getPetType() != PetManager::DROIDPET )
+		if (controlDevice->getPetType() != PetManager::DROIDPET)
 			return GENERALERROR;
 
 		ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(creature);
-		if( droidPet == nullptr )
+		if (droidPet == nullptr)
 			return GENERALERROR;
 
 		// Target must be a droid
 		Reference<DroidObject*> targetDroid = server->getZoneServer()->getObject(target, true).castTo<DroidObject*>();
-		if (targetDroid == nullptr || !targetDroid->isDroidObject() ) {
-			droidPet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		if (targetDroid == nullptr || !targetDroid->isDroidObject()) {
+			droidPet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return GENERALERROR;
 		}
 
 		// Check range between droids
-		if (!checkDistance(droidPet, targetDroid, 30.0f)){ // Same range as auto-repair
-			droidPet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		if (!checkDistance(droidPet, targetDroid, 30.0f)) {						  // Same range as auto-repair
+			droidPet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return GENERALERROR;
 		}
 
 		// Target can't be this droid
-		if (droidPet == targetDroid ) {
-			droidPet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		if (droidPet == targetDroid) {
+			droidPet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return GENERALERROR;
 		}
 
 		// Check if droid has power
-		if( !droidPet->hasPower() ){
-			droidPet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+		if (!droidPet->hasPower()) {
+			droidPet->showFlyText("npc_reaction/flytext", "low_power", 204, 0, 0); // "*Low Power*"
 			return GENERALERROR;
 		}
 
 		// Recharge other droid
 		Locker clocker(targetDroid, droidPet);
-		droidPet->rechargeOtherDroid( targetDroid );
+		droidPet->rechargeOtherDroid(targetDroid);
 
 		return SUCCESS;
 	}
-
 };
-
 
 #endif /* PETRECHARGEOTHERCOMMAND_H_ */

@@ -9,24 +9,21 @@
 
 class PetSpecialAttackCommand : public QueueCommand {
 public:
-	PetSpecialAttackCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetSpecialAttackCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		int petType = controlDevice->getPetType();
-		if( petType == PetManager::DROIDPET || petType == PetManager::FACTIONPET ) {
+		if (petType == PetManager::DROIDPET || petType == PetManager::FACTIONPET) {
 			return GENERALERROR;
 		}
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == nullptr )
+		if (pet == nullptr)
 			return GENERALERROR;
 
 		if (pet->hasRidingCreature())
@@ -36,8 +33,8 @@ public:
 			pet->setPosture(CreaturePosture::UPRIGHT);
 
 		Reference<TangibleObject*> targetObject = server->getZoneServer()->getObject(target, true).castTo<TangibleObject*>();
-		if (targetObject == nullptr || !targetObject->isAttackableBy(pet) ) {
-			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		if (targetObject == nullptr || !targetObject->isAttackableBy(pet)) {
+			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return INVALIDTARGET;
 		}
 
@@ -68,7 +65,7 @@ public:
 		}
 
 		if (!CollisionManager::checkLineOfSight(player, targetObject)) {
-			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return INVALIDTARGET;
 		}
 
@@ -79,7 +76,7 @@ public:
 
 			if (!perms->hasInheritPermissionsFromParent()) {
 				if (!targetCell->checkContainerPermission(player, ContainerPermissions::WALKIN)) {
-					pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+					pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 					return INVALIDTARGET;
 				}
 			}
@@ -114,8 +111,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
-
 
 #endif /* PETSPECIALATTACKCOMMAND_H_ */

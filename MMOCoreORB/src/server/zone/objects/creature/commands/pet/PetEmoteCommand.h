@@ -15,13 +15,10 @@
 
 class PetEmoteCommand : public QueueCommand {
 public:
-	PetEmoteCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetEmoteCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		// Parse arguments (client arguments from SocialInternalCommand /socialInternal)
 		StringTokenizer tokenizer(arguments.toString());
 		uint64 targetid;
@@ -51,12 +48,9 @@ public:
 		if (pet->hasRidingCreature())
 			return GENERALERROR;
 
-		if (emoteid == CreatureEmote::PET || emoteid == CreatureEmote::REASSURE ||
-				emoteid == CreatureEmote::NUZZLE || emoteid == CreatureEmote::HUG) {
+		if (emoteid == CreatureEmote::PET || emoteid == CreatureEmote::REASSURE || emoteid == CreatureEmote::NUZZLE || emoteid == CreatureEmote::HUG) {
 			return praise(pet);
-		} else if (emoteid == CreatureEmote::BONK || emoteid == CreatureEmote::WHAP ||
-				 emoteid == CreatureEmote::SCOLD || emoteid == CreatureEmote::BAD ||
-				 emoteid == CreatureEmote::SLAP) {
+		} else if (emoteid == CreatureEmote::BONK || emoteid == CreatureEmote::WHAP || emoteid == CreatureEmote::SCOLD || emoteid == CreatureEmote::BAD || emoteid == CreatureEmote::SLAP) {
 			return shame(pet);
 		} else if (emoteid == CreatureEmote::POINTAT || emoteid == CreatureEmote::TAP) {
 			return alert(pet);
@@ -110,7 +104,7 @@ public:
 
 	int summon(AiAgent* pet, PetControlDevice* controlDevice) const {
 		// Follow owner if command is trained
-		if (controlDevice->hasTrainedCommand( PetManager::FOLLOW)) {
+		if (controlDevice->hasTrainedCommand(PetManager::FOLLOW)) {
 			// Always a chance the pet will just be stubborn
 			if (System::random(100) <= 90) {
 				// attempt peace if the pet is in combat
@@ -131,11 +125,11 @@ public:
 				pet->notifyObservers(ObserverEventType::STARTCOMBAT, pet->getLinkedCreature().get());
 			} else {
 				pet->doAnimation("confused");
-				pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+				pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			}
 		} else {
 			pet->doAnimation("confused");
-			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 		}
 
 		return SUCCESS;

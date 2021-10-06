@@ -7,23 +7,20 @@
 
 class PetStoreCommand : public QueueCommand {
 public:
-	PetStoreCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetStoreCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == nullptr )
+		if (pet == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<CreatureObject*> player = pet->getLinkedCreature().get();
-		if (player == nullptr || !player->isPlayerCreature() ) {
+		if (player == nullptr || !player->isPlayerCreature()) {
 			return GENERALERROR;
 		}
 		Locker clocker(player, pet);
@@ -32,8 +29,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
-
 
 #endif /* PETSTORECOMMAND_H_ */
