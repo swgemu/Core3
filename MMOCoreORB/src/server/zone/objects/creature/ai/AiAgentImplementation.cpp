@@ -1627,7 +1627,7 @@ void AiAgentImplementation::activatePostureRecovery() {
 		return;
 	}
 
-	if (postureSet.miliDifference() > 0 && (isProne() || isKneeling()) && checkPostureChangeDelay())
+	if ((postureSet.miliDifference() > 0 || !isInCombat()) && (isProne() || isKneeling()) && checkPostureChangeDelay())
 		executeObjectControllerAction(0xA8A25C79);
 }
 
@@ -2688,23 +2688,6 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 	if (damage > 0) {
 		getThreatMap()->addDamage(attacker, damage, xp);
-
-		if (checkRetreat.miliDifference() > 20000 && ((getHAM(CreatureAttribute::HEALTH) < getMaxHAM(CreatureAttribute::HEALTH) * 0.1)
-			|| (getHAM(CreatureAttribute::ACTION) < getMaxHAM(CreatureAttribute::ACTION) * 0.1)
-			|| (getHAM(CreatureAttribute::MIND) < getMaxHAM(CreatureAttribute::MIND) * 0.1))) {
-
-			checkRetreat.updateToCurrentTime();
-
-			ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-
-			if (followCopy != nullptr && followCopy->isCreatureObject()) {
-				CreatureObject* followCreo = followCopy->asCreatureObject();
-
-				if (followCreo != nullptr) {
-					runAway(followCreo, System::random(50) + 25);
-				}
-			}
-		}
 	}
 
 	notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker);

@@ -363,6 +363,7 @@ private:
 		_REGISTERLEAF(CheckProspectIsIncapacitated);
 		_REGISTERLEAF(CheckIsKiller);
 		_REGISTERLEAF(CheckIsStalker);
+		_REGISTERLEAF(CheckFlee);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -391,6 +392,8 @@ private:
 		_REGISTERLEAF(SetAlert);
 		_REGISTERLEAF(KillProspect);
 		_REGISTERLEAF(StalkProspect);
+		_REGISTERLEAF(Flee);
+		_REGISTERLEAF(SetAttackPosture);
 	}
 
 	void putBitmask(Lua* lua, String key) {

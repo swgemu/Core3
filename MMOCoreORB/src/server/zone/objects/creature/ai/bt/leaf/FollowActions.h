@@ -442,21 +442,22 @@ public:
 			secondaryRange = agent->getSecondaryWeapon()->getMaxRange();
 
 		// No need to evade if creature is melee only
-		if (primaryRange < 5.f && secondaryRange < 5.f)
+		if (primaryRange < 10.f && secondaryRange < 10.f)
 			return FAILURE;
 
 		// Current weapon is melee. We do not need to evade when melee
-		WeaponObject* weapon = agent->getWeapon();
-		if (weapon == nullptr)
-			return FAILURE;
+		if (agent->getWeapon() != nullptr) {
+			float idealRange = agent->getWeapon()->getIdealRange();
 
-		float idealRange = weapon->getIdealRange();
-
-		if (idealRange <= 5.f) {
-			return FAILURE;
+			if (idealRange < 10.f) {
+				return FAILURE;
+			}
 		}
 
 		CreatureObject* tarCreo = tar->asCreatureObject();
+
+		if (tarCreo == nullptr)
+			return FAILURE;
 
 		if (tarCreo->isPlayerCreature()) {
 			float playerWeaponRange = 0;
@@ -488,26 +489,8 @@ public:
 
 		int randRoll = System::random(100);
 
-		Time* postureSet = agent->getPostureSet();
-
-		if (postureSet == nullptr || !postureSet->isPast())
+		if (finalChance < 100 && randRoll > finalChance)
 			return FAILURE;
-
-		if (finalChance < 100 && randRoll > finalChance) {
-			if (System::random(100) > 95) {
-				postureSet->updateToCurrentTime();
-				postureSet->addMiliTime(20 * 1000);
-
-				float sqrDist = agent->getWorldPosition().squaredDistanceTo(tarCreo->getWorldPosition());
-
-				if (sqrDist > 25 * 25) {
-					agent->setPosture(CreaturePosture::PRONE, true, true);
-				} else {
-					agent->setPosture(CreaturePosture::CROUCHED, true, true);
-				}
-			}
-			return FAILURE;
-		}
 
 		float distance = minDist + System::random(maxDist - minDist);
 		float angle = System::random(360);
@@ -585,6 +568,60 @@ public:
 
 		return msg.toString();
 	}
+};
+
+class Flee : public Behavior {
+public:
+	Flee(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args), delay(0) {
+		parseArgs(args);
+	}
+
+	Flee(const Flee& a) : Behavior(a), delay(a.delay) {
+	}
+
+	Flee& operator=(const Flee& a) {
+		if (this == &a)
+			return *this;
+		Behavior::operator=(a);
+		delay = a.delay;
+		return *this;
+	}
+
+	void parseArgs(const LuaObject& args) {
+		delay = getArg<float>()(args, "delay");
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		ManagedReference<SceneObject*> target = nullptr;
+
+		if (agent->peekBlackboard("targetProspect"))
+			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
+
+		if (target != nullptr && target->isCreatureObject()) {
+			CreatureObject* targetCreo = target->asCreatureObject();
+			Time* fleeDelay = agent->getFleeDelay();
+
+			if (targetCreo != nullptr && fleeDelay != nullptr) {
+				fleeDelay->updateToCurrentTime();
+				fleeDelay->addMiliTime(delay * 1000);
+
+				agent->runAway(targetCreo, System::random(50) + 25);
+				return SUCCESS;
+			}
+		}
+
+		return FAILURE;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
+
+	private:
+	int delay;
 };
 
 }

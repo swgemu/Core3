@@ -483,6 +483,68 @@ private:
 	bool show;
 };
 
+class SetAttackPosture : public Behavior {
+public:
+	SetAttackPosture(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	SetAttackPosture(const SetAttackPosture& b) : Behavior(b) {
+	}
+
+	SetAttackPosture& operator=(const SetAttackPosture& b) {
+		if (this == &b)
+			return *this;
+		Behavior::operator=(b);
+		return *this;
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		if (!agent->isNonPlayerCreatureObject())
+			return FAILURE;
+
+		Time* postureSet = agent->getPostureSet();
+
+		if (postureSet == nullptr || !postureSet->isPast())
+			return FAILURE;
+
+		if (System::random(100) > 98) {
+			WeaponObject* weapon = agent->getWeapon();
+
+			if (weapon == nullptr || !weapon->isRangedWeapon())
+				return FAILURE;
+
+			ManagedReference<SceneObject*> target = nullptr;
+
+			if (agent->peekBlackboard("targetProspect"))
+				target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
+
+			if (target == nullptr)
+				return FAILURE;
+
+			postureSet->updateToCurrentTime();
+			postureSet->addMiliTime(20 * 1000);
+
+			float sqrDist = agent->getWorldPosition().squaredDistanceTo(target->getWorldPosition());
+
+			if (sqrDist > 25 * 25) {
+				agent->setPosture(CreaturePosture::PRONE);
+			} else {
+				agent->setPosture(CreaturePosture::CROUCHED);
+			}
+			return SUCCESS;
+		}
+
+		return FAILURE;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className;
+
+		return msg.toString();
+	}
+};
+
 }
 }
 }
