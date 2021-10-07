@@ -23,7 +23,8 @@ attackDefault = {
 	{id="1728591479",	name="CheckAttackInRange",	pid="763264896"},
 	{id="807085653",	name="If",	pid="3604417668"},
 	{id="728357096",	name="CheckAttackIsValid",	pid="807085653"},
-	{id="2327622682",	name="EnqueueAttack",	pid="3280863871"}}
+	{id="2327622682",	name="EnqueueAttack",	pid="3280863871"},
+	{id="179413845",	name="SetAttackPosture",	pid="3280863871"}}
 addAiTemplate("attackDefault", attackDefault)
 
 awareDefault = {
@@ -124,6 +125,10 @@ moveDefault = {
 	{id="361808887",	name="If",	pid="1049607122"},
 	{id="1901811754",	name="CheckRetreat",	pid="361808887",	args={condition=256}},
 	{id="4131275375",	name="Leash",	pid="1049607122"},
+	{id="439475086",	name="Sequence",	pid="95757095"},
+	{id="1464671058",	name="If",	pid="439475086"},
+	{id="683224492",	name="CheckFlee",	pid="1464671058",	args={condition=0.1}},
+	{id="3377670639",	name="Flee",	pid="439475086",	args={delay=15}},
 	{id="3937110156",	name="ParallelSelector",	pid="95757095"},
 	{id="3859304677",	name="Evade",	pid="3937110156",	args={maxEvadeChance=0.07, minEvadeChance=0.02}},
 	{id="3690551020",	name="FindNextPosition",	pid="3937110156"}}

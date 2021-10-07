@@ -354,8 +354,10 @@ public:
 		if (radius == 0)
 			radius = AiAgent::DEFAULTAGGRORADIUS;
 
-		if (!agent->isNonPlayerCreatureObject())
+		if (!agent->isNonPlayerCreatureObject()) {
 			agent->runAway(tar->asCreatureObject(), dist - radius * aggroMod);
+			agent->showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
+		}
 
 		return SUCCESS;
 	}
@@ -454,6 +456,9 @@ public:
 
 		CreatureObject* tarCreo = tar->asCreatureObject();
 
+		if (tarCreo == nullptr)
+			return FAILURE;
+
 		if (tarCreo->isPlayerCreature()) {
 			float playerWeaponRange = 0;
 
@@ -497,8 +502,6 @@ public:
 		float newZ = zone->getHeight(newX, newY);
 
 		Vector3 position = Vector3(newX, newY, newZ);
-
-		auto thisWorldPos = agent->getWorldPosition();
 
 		if (CollisionManager::checkSphereCollision(position, 5, zone))
 			return FAILURE;
@@ -565,6 +568,60 @@ public:
 
 		return msg.toString();
 	}
+};
+
+class Flee : public Behavior {
+public:
+	Flee(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args), delay(0) {
+		parseArgs(args);
+	}
+
+	Flee(const Flee& a) : Behavior(a), delay(a.delay) {
+	}
+
+	Flee& operator=(const Flee& a) {
+		if (this == &a)
+			return *this;
+		Behavior::operator=(a);
+		delay = a.delay;
+		return *this;
+	}
+
+	void parseArgs(const LuaObject& args) {
+		delay = getArg<float>()(args, "delay");
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		ManagedReference<SceneObject*> target = nullptr;
+
+		if (agent->peekBlackboard("targetProspect"))
+			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
+
+		if (target != nullptr && target->isCreatureObject()) {
+			CreatureObject* targetCreo = target->asCreatureObject();
+			Time* fleeDelay = agent->getFleeDelay();
+
+			if (targetCreo != nullptr && fleeDelay != nullptr) {
+				fleeDelay->updateToCurrentTime();
+				fleeDelay->addMiliTime(delay * 1000);
+
+				agent->runAway(targetCreo, System::random(50) + 25);
+				return SUCCESS;
+			}
+		}
+
+		return FAILURE;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
+
+	private:
+	int delay;
 };
 
 }

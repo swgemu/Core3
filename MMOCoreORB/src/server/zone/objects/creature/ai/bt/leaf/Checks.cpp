@@ -218,6 +218,21 @@ template<> bool CheckRetreat::check(AiAgent* agent) const {
 	return !homeLocation->isInRange(agent, checkVar);
 }
 
+template<> bool CheckFlee::check(AiAgent* agent) const {
+	Time* fleeDelay = agent->getFleeDelay();
+
+	if (fleeDelay == nullptr || !fleeDelay->isPast())
+		return false;
+
+	if ((agent->getHAM(CreatureAttribute::HEALTH) < agent->getMaxHAM(CreatureAttribute::HEALTH) * checkVar)
+		|| (agent->getHAM(CreatureAttribute::ACTION) < agent->getMaxHAM(CreatureAttribute::ACTION) * checkVar)
+		|| (agent->getHAM(CreatureAttribute::MIND) < agent->getMaxHAM(CreatureAttribute::MIND) * checkVar)) {
+		return true;
+	}
+
+	return false;
+}
+
 template<> bool CheckSpeed::check(AiAgent* agent) const {
 	return agent->getCurrentSpeed() > checkVar;
 }
