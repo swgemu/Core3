@@ -15,63 +15,57 @@
 
 class PetFeedCommand : public QueueCommand {
 public:
-	PetFeedCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetFeedCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		// Creature specific command
-		if( controlDevice->getPetType() != PetManager::CREATUREPET )
+		if (controlDevice->getPetType() != PetManager::CREATUREPET)
 			return GENERALERROR;
 
 		if (!creature->isAiAgent())
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == nullptr )
+		if (pet == nullptr)
 			return GENERALERROR;
 
-		ManagedReference< CreatureObject*> player = pet->getLinkedCreature().get();
-		if( player == nullptr )
+		ManagedReference<CreatureObject*> player = pet->getLinkedCreature().get();
+		if (player == nullptr)
 			return GENERALERROR;
 
-		if( pet->getCooldownTimerMap() == nullptr )
+		if (pet->getCooldownTimerMap() == nullptr)
 			return GENERALERROR;
 
 		// Check pet states
-		if( pet->isInCombat() || pet->isDead() || pet->isIncapacitated() )
+		if (pet->isInCombat() || pet->isDead() || pet->isIncapacitated())
 			return GENERALERROR;
 
 		// Find food sceno (either provided in arguments or first food in inventory)
 		Locker clocker(player, creature);
 		ManagedReference<SceneObject*> foodSceno = nullptr;
 		StringTokenizer args(arguments.toString());
-		if (!args.hasMoreTokens()){
-
+		if (!args.hasMoreTokens()) {
 			// Find food in player inventory
 			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-			if (inventory == nullptr){
+			if (inventory == nullptr) {
 				player->sendSystemMessage("Player inventory not found");
 				return GENERALERROR;
 			}
 
-
 			for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 				ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
-				if( sceno->getGameObjectType() == SceneObjectType::FOOD ){
+				if (sceno->getGameObjectType() == SceneObjectType::FOOD) {
 					foodSceno = sceno;
 					break;
 				}
 			}
 
-		}
-		else{
+		} else {
 			uint64 targetObjectID = 0;
 
 			try {
@@ -83,24 +77,23 @@ public:
 			}
 
 			foodSceno = server->getZoneServer()->getObject(targetObjectID);
-
 		}
 
 		// Valid food not found
-		if( foodSceno == nullptr || foodSceno->getGameObjectType() != SceneObjectType::FOOD){
-			pet->showFlyText("npc_reaction/flytext","nofood", 204, 0, 0); // "You don't have any food to give!"
+		if (foodSceno == nullptr || foodSceno->getGameObjectType() != SceneObjectType::FOOD) {
+			pet->showFlyText("npc_reaction/flytext", "nofood", 204, 0, 0); // "You don't have any food to give!"
 			return GENERALERROR;
 		}
 
 		// Check cooldown
-		if( !pet->getCooldownTimerMap()->isPast("feedCooldown") ){
-			pet->showFlyText("npc_reaction/flytext","nothungry", 204, 0, 0); // "Your pet isn't hungry."
+		if (!pet->getCooldownTimerMap()->isPast("feedCooldown")) {
+			pet->showFlyText("npc_reaction/flytext", "nothungry", 204, 0, 0); // "Your pet isn't hungry."
 			return GENERALERROR;
 		}
 
 		// Food found
 		ManagedReference<Consumable*> consumable = cast<Consumable*>(foodSceno.get());
-		if( consumable == nullptr ){
+		if (consumable == nullptr) {
 			player->sendSystemMessage("Error with consumable object");
 			return GENERALERROR;
 		}
@@ -108,16 +101,14 @@ public:
 		Locker locker(consumable);
 
 		// Apply buff if this is a pet specific food
-		if( consumable->getSpeciesRestriction() == "pets" ){
-
+		if (consumable->getSpeciesRestriction() == "pets") {
 			unsigned int buffCRC = STRING_HASHCODE("petFoodBuff");
 
 			// Check if pet already has buff
-			if ( pet->hasBuff(buffCRC) ){
+			if (pet->hasBuff(buffCRC)) {
 				player->sendSystemMessage("Your pet is still fortified from its last meal!");
 				return SUCCESS;
-			}
-			else{
+			} else {
 				ManagedReference<Buff*> buff = new Buff(pet, buffCRC, consumable->getDuration(), BuffType::FOOD);
 
 				Locker blocker(buff);
@@ -127,18 +118,13 @@ public:
 				player->sendSystemMessage("Your pet is fortified by the food!");
 			}
 
-		}
-		else{
-
+		} else {
 			// Pet must have wounds to eat non-specific food
-			int wounds = pet->getWounds( CreatureAttribute::HEALTH ) + 	pet->getWounds( CreatureAttribute::STRENGTH ) +
-					     pet->getWounds( CreatureAttribute::CONSTITUTION ) + pet->getWounds( CreatureAttribute::ACTION ) +
-					     pet->getWounds( CreatureAttribute::QUICKNESS ) + pet->getWounds( CreatureAttribute::STAMINA );
-			if( wounds == 0 ){
-				pet->showFlyText("npc_reaction/flytext","nothungry", 204, 0, 0); // "Your pet isn't hungry."
+			int wounds = pet->getWounds(CreatureAttribute::HEALTH) + pet->getWounds(CreatureAttribute::STRENGTH) + pet->getWounds(CreatureAttribute::CONSTITUTION) + pet->getWounds(CreatureAttribute::ACTION) + pet->getWounds(CreatureAttribute::QUICKNESS) + pet->getWounds(CreatureAttribute::STAMINA);
+			if (wounds == 0) {
+				pet->showFlyText("npc_reaction/flytext", "nothungry", 204, 0, 0); // "Your pet isn't hungry."
 				return GENERALERROR;
 			}
-
 		}
 
 		// Heal 10% of base in wounds
@@ -158,7 +144,7 @@ public:
 
 		// Perform eat animation and do fly text
 		pet->doAnimation("eat");
-		pet->showFlyText("npc_reaction/flytext","yum", 0, 153, 0); // "Yummy!"
+		pet->showFlyText("npc_reaction/flytext", "yum", 0, 153, 0); // "Yummy!"
 
 		// Consume food
 		consumable->decreaseUseCount();
@@ -168,8 +154,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
-
 
 #endif /* PETFEEDCOMMAND_H_ */

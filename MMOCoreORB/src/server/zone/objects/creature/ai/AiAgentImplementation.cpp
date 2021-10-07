@@ -2312,6 +2312,8 @@ float AiAgentImplementation::getMaxDistance() {
 
 		if (!CollisionManager::checkLineOfSight(asAiAgent(), followCopy)) {
 			return 1.0f;
+		} else if (isPet() && !isInCombat()) {
+			return 5.0f;
 		} else if (getWeapon() != nullptr ) {
 			float weapMaxRange = Math::min(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
 			return Math::max(1.0f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius());

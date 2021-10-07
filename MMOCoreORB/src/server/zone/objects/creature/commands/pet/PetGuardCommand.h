@@ -10,19 +10,16 @@
 
 class PetGuardCommand : public QueueCommand {
 public:
-	PetGuardCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetGuardCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if (pet == nullptr )
+		if (pet == nullptr)
 			return GENERALERROR;
 
 		if (pet->hasRidingCreature())
@@ -32,25 +29,25 @@ public:
 			pet->setPosture(CreaturePosture::UPRIGHT);
 
 		// Check if droid has power
-		if ( controlDevice->getPetType() == PetManager::DROIDPET ){
+		if (controlDevice->getPetType() == PetManager::DROIDPET) {
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
-			if( droidPet == nullptr )
+			if (droidPet == nullptr)
 				return GENERALERROR;
 
-			if ( !droidPet->hasPower() ){
-				pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+			if (!droidPet->hasPower()) {
+				pet->showFlyText("npc_reaction/flytext", "low_power", 204, 0, 0); // "*Low Power*"
 				return GENERALERROR;
 			}
 		}
 
 		Reference<CreatureObject*> player = server->getZoneServer()->getObject(target, true).castTo<CreatureObject*>();
 		if (player == nullptr || player->isAttackableBy(pet)) {
-			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return GENERALERROR;
 		}
 
 		if (player->isSwimming() || pet->isSwimming()) {
-			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return GENERALERROR;
 		}
 
@@ -73,8 +70,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
-
 
 #endif /* PETGUARDCOMMAND_H_ */

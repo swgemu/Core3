@@ -7,33 +7,30 @@
 
 class PetGroupCommand : public QueueCommand {
 public:
-	PetGroupCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetGroupCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == nullptr )
+		if (pet == nullptr)
 			return GENERALERROR;
 
-		ManagedReference< CreatureObject*> player = pet->getLinkedCreature().get();
-		if( player == nullptr )
+		ManagedReference<CreatureObject*> player = pet->getLinkedCreature().get();
+		if (player == nullptr)
 			return GENERALERROR;
 
 		// Check if droid has power
-		if( controlDevice->getPetType() == PetManager::DROIDPET ){
+		if (controlDevice->getPetType() == PetManager::DROIDPET) {
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
-			if( droidPet == nullptr )
+			if (droidPet == nullptr)
 				return GENERALERROR;
 
-			if( !droidPet->hasPower() ){
-				creature->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+			if (!droidPet->hasPower()) {
+				creature->showFlyText("npc_reaction/flytext", "low_power", 204, 0, 0); // "*Low Power*"
 				return GENERALERROR;
 			}
 		}
@@ -47,8 +44,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
-
 
 #endif /* PETGROUPCOMMAND_H_ */
