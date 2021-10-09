@@ -143,6 +143,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getGender", &LuaCreatureObject::getGender },
 		{ "isRidingMount", &LuaCreatureObject::isRidingMount },
 		{ "dismount", &LuaCreatureObject::dismount },
+		{ "setAppearance", &LuaCreatureObject::setAppearance },
 		{ 0, 0 }
 };
 
@@ -1139,4 +1140,41 @@ int LuaCreatureObject::isRidingMount(lua_State* L) {
 int LuaCreatureObject::dismount(lua_State* L) {
 	realObject->dismount();
 	return 0;
+}
+
+int LuaCreatureObject::setAppearance(lua_State* L){
+	String appearanceString = lua_tostring(L, -2);
+	String zoneName = lua_tostring(L, -1);
+
+
+	Locker pLocker(realObject);
+
+	// Reset Template - Pass empty string
+	if (appearanceString == "") {
+		realObject->switchZone(zoneName, realObject->getPositionX(), realObject->getPositionZ(), realObject->getPositionY(), realObject->getParentID());
+		return 1;
+	}
+
+	String templateName = "";
+
+	if (appearanceString.indexOf(".iff") == -1 || appearanceString.indexOf("object/mobile/shared_") == -1) {
+		return 1;
+	} else if (appearanceString != "") {
+		TemplateManager* templateManager = TemplateManager::instance();
+		String templateTest = appearanceString.replaceFirst("shared_", "");
+
+		if (templateManager != nullptr) {
+			SharedObjectTemplate* templateData = templateManager->getTemplate(templateTest.hashCode());
+
+			if (templateData == nullptr) {
+				realObject->sendSystemMessage("Unable to find template.");
+				return 1;
+			}
+			templateName = appearanceString;
+
+			realObject->setAlternateAppearance(templateName, true);
+		}
+	}
+
+	return 1;
 }
