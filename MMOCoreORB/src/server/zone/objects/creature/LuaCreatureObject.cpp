@@ -18,6 +18,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/Zone.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
@@ -143,6 +144,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getGender", &LuaCreatureObject::getGender },
 		{ "isRidingMount", &LuaCreatureObject::isRidingMount },
 		{ "dismount", &LuaCreatureObject::dismount },
+		{ "setAppearance", &LuaCreatureObject::setAppearance },
 		{ 0, 0 }
 };
 
@@ -1138,5 +1140,40 @@ int LuaCreatureObject::isRidingMount(lua_State* L) {
 
 int LuaCreatureObject::dismount(lua_State* L) {
 	realObject->dismount();
+	return 0;
+}
+
+int LuaCreatureObject::setAppearance(lua_State* L){
+	String appearanceString = lua_tostring(L, -1);
+
+	Locker pLocker(realObject);
+
+	// Reset Template - Pass empty string
+	if (appearanceString == "") {
+		realObject->switchZone(realObject->getZone()->getZoneName(), realObject->getPositionX(), realObject->getPositionZ(), realObject->getPositionY(), realObject->getParentID());
+		return 0;
+	}
+
+	String templateName = "";
+
+	if (appearanceString.indexOf(".iff") == -1 || appearanceString.indexOf("object/mobile/shared_") == -1) {
+		return 0;
+	} else if (appearanceString != "") {
+		TemplateManager* templateManager = TemplateManager::instance();
+		String templateTest = appearanceString.replaceFirst("shared_", "");
+
+		if (templateManager != nullptr) {
+			SharedObjectTemplate* templateData = templateManager->getTemplate(templateTest.hashCode());
+
+			if (templateData == nullptr) {
+				realObject->sendSystemMessage("Unable to find template.");
+				return 0;
+			}
+			templateName = appearanceString;
+
+			realObject->setAlternateAppearance(templateName, true);
+		}
+	}
+
 	return 0;
 }
