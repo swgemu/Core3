@@ -76,6 +76,8 @@ function BestineMuseumScreenPlay:doPhaseInit()
 
 	if (not hasServerEvent("MuseumPhaseChange")) then
 		BestineMuseumScreenPlay:createEvent()
+	else
+		rescheduleServerEvent("MuseumPhaseChange", PHASE_CHANGE_TIME)
 	end
 end
 
