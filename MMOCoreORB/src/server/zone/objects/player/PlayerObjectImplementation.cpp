@@ -248,9 +248,15 @@ void PlayerObjectImplementation::unloadSpawnedChildren() {
 	task->execute();
 }
 
-void PlayerObjectImplementation::unload() {
-	debug("unloading player");
+void PlayerObjectImplementation::setLastLogoutWorldPosition(const Vector3& position) {
+	lastLogoutWorldPosition = position;
+}
 
+Vector3 PlayerObjectImplementation::getLastLogoutWorldPosition() const {
+	return lastLogoutWorldPosition;
+}
+
+void PlayerObjectImplementation::unload() {
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
@@ -274,6 +280,19 @@ void PlayerObjectImplementation::unload() {
 			savedParentID = creoParent->getObjectID();
 		} else
 			savedParentID = 0;
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		auto zone = creature->getZone();
+
+		if (ghost != nullptr && zone != nullptr) {
+			Vector3 position = creature->getWorldPosition();
+			setLastLogoutWorldPosition(position);
+		}
+
+		if (creoParent != nullptr) {
+			savedParentID = creoParent->getObjectID();
+		} else {
+			savedParentID = 0;
+		}
 
 		creature->destroyObjectFromWorld(true);
 	}
