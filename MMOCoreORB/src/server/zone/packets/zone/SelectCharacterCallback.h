@@ -18,6 +18,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
 #endif // WITH_SESSION_API
@@ -157,6 +158,12 @@ public:
 
 		} else if (currentParent == nullptr) {
 			player->removeAllSkillModsOfType(SkillModManager::STRUCTURE);
+			Vector3 worldPos = ghost->getLastLogoutWorldPosition();
+
+			float x = worldPos.getX();
+			float y = worldPos.getY();
+			float z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
+			player->initializePosition(x, z, y);
 			zone->transferObject(player, -1, true);
 		} else {
 			if (player->getZone() == nullptr) {

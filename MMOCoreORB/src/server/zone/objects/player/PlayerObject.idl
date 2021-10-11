@@ -187,6 +187,10 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected Vector3 trainerCoordinates;
 
+	@local
+	@dereferenced
+	protected Vector3 lastLogoutWorldPosition;
+
 	protected string trainerZoneName;
 
 	@dereferenced
@@ -1615,6 +1619,14 @@ class PlayerObject extends IntangibleObject {
 	public int getSkillPoints() {
 		return skillPoints;
 	}
+
+	@local
+	public native void setLastLogoutWorldPosition(@dereferenced final Vector3 position);
+
+	@local
+	@dereferenced
+	@read
+	public native Vector3 getLastLogoutWorldPosition();
 
 	@local
 	public ValidatedPosition getLastValidatedPosition() {
