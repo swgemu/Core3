@@ -248,6 +248,14 @@ void PlayerObjectImplementation::unloadSpawnedChildren() {
 	task->execute();
 }
 
+void PlayerObjectImplementation::setLastLogoutWorldPosition(const Vector3& position) {
+	lastLogoutWorldPosition = position;
+}
+
+Vector3 PlayerObjectImplementation::getLastLogoutWorldPosition() const {
+	return lastLogoutWorldPosition;
+}
+
 void PlayerObjectImplementation::unload() {
 	debug("unloading player");
 
@@ -272,8 +280,12 @@ void PlayerObjectImplementation::unload() {
 
 		if (creoParent != nullptr) {
 			savedParentID = creoParent->getObjectID();
-		} else
+		} else {
 			savedParentID = 0;
+		}
+
+		Vector3 position = creature->getWorldPosition();
+		setLastLogoutWorldPosition(position);
 
 		creature->destroyObjectFromWorld(true);
 	}
