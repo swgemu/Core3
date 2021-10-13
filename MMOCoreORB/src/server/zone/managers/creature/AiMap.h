@@ -364,6 +364,7 @@ private:
 		_REGISTERLEAF(CheckIsKiller);
 		_REGISTERLEAF(CheckIsStalker);
 		_REGISTERLEAF(CheckFlee);
+		_REGISTERLEAF(CheckOwnerInRange);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -394,6 +395,7 @@ private:
 		_REGISTERLEAF(StalkProspect);
 		_REGISTERLEAF(Flee);
 		_REGISTERLEAF(SetAttackPosture);
+		_REGISTERLEAF(PetReturn);
 	}
 
 	void putBitmask(Lua* lua, String key) {

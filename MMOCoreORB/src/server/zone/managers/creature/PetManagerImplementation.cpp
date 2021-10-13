@@ -212,7 +212,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	} else if (isTrainedCommand(pcd, ATTACK, message)) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petattack"), String::valueOf(speaker->getObjectID()));
 	} else if (isTrainedCommand(pcd, GUARD, message)) {
-		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petguard"), "", true);
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petguard"), String::valueOf(speaker->getObjectID()), true);
 	} else if (isTrainedCommand(pcd, FRIEND, message)) {
 		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("petfriend"), "");
 	} else if (isTrainedCommand(pcd, FOLLOWOTHER, message)) {

@@ -416,3 +416,20 @@ template<> bool CheckIsStalker::check(AiAgent* agent) const {
 	return agent->isStalker();
 }
 
+template<> bool CheckOwnerInRange::check(AiAgent* agent) const {
+	if (agent == nullptr || !agent->isPet())
+		return false;
+
+	Reference<PetControlDevice*> controlDevice = agent->getControlDevice().castTo<PetControlDevice*>();
+
+	if (controlDevice == nullptr)
+		return false;
+
+	ManagedReference<SceneObject*> commander = controlDevice->getLastCommander();
+
+	if (checkVar > 0.f) {
+		return commander != nullptr && agent->isInRange(commander, checkVar);
+	}
+
+	return false;
+}

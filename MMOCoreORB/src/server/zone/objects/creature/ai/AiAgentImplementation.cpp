@@ -981,6 +981,20 @@ SceneObject* AiAgentImplementation::getTargetFromDefenders() {
 	return target;
 }
 
+SceneObject* AiAgentImplementation::getTargetFromTargetsMap() {
+	ManagedReference<CreatureObject*> followCopy = getFollowObject().get().castTo<CreatureObject*>();
+
+	if (followCopy == nullptr) {
+		return nullptr;
+	}
+
+	Locker threatLock(followCopy, asAiAgent());
+
+	TangibleObject* target = followCopy->getThreatMap()->getHighestThreatAttacker();
+
+	return target;
+}
+
 SceneObject* AiAgentImplementation::getTargetFromTargetsDefenders() {
 	SceneObject* newTarget = nullptr;
 	ManagedReference<CreatureObject*> followCopy = getFollowObject().get().castTo<CreatureObject*>();

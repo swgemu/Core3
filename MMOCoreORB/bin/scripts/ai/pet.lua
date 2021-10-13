@@ -1,3 +1,17 @@
+awarePet = {
+	{id="2672408205",	name="Sequence",	pid="none"},
+	{id="2428980616",	name="Not",	pid="2672408205"},
+	{id="502701510",	name="If",	pid="2428980616"},
+	{id="1498311304",	name="CheckIsInCombat",	pid="502701510"},
+	{id="3748783887",	name="Not",	pid="2672408205"},
+	{id="2777768044",	name="If",	pid="3748783887"},
+	{id="2342952551",	name="CheckPetCommand",	pid="2777768044",	args={condition=PET_STAY}},
+	{id="2624621770",	name="Not",	pid="2672408205"},
+	{id="1629721978",	name="If",	pid="2624621770"},
+	{id="854873693",	name="CheckFollowState",	pid="1629721978",	args={condition=PATROLLING}},
+	{id="3351684077",	name="SetFollowState",	pid="2672408205",	args={state=FOLLOWING}}}
+addAiTemplate("awarePet", awarePet)
+
 idlePet = {
 	{id="2602839395",	name="Selector",	pid="none"},
 	{id="1196938563",	name="Sequence",	pid="2602839395"},
@@ -9,7 +23,7 @@ idlePet = {
 	{id="4089440207",	name="Sequence",	pid="2602839395"},
 	{id="4147395704",	name="Not",	pid="4089440207"},
 	{id="3397268825",	name="If",	pid="4147395704"},
-	{id="1668930524",	name="CheckFollowState",	pid="3397268825",	args={condition=OBLIVIOUS}},
+	{id="1418550182",	name="CheckPetCommand",	pid="3397268825",	args={condition=PET_STAY}},
 	{id="4036559077",	name="WriteBlackboard",	pid="4089440207",	args={key="moveMode", val=RUN}},
 	{id="5946488",	name="AlwaysSucceed",	pid="4089440207"},
 	{id="1805516334",	name="TreeSocket",	pid="5946488",	args={slot=MOVE}}}
@@ -28,6 +42,12 @@ movePet = {
 	{id="1556803780",	name="If",	pid="1891282080"},
 	{id="1543236352",	name="CheckSpeed",	pid="1556803780",	args={condition=0.0}},
 	{id="2113831125",	name="CompleteMove",	pid="1891282080"},
+	{id="3808575642",	name="Sequence",	pid="3554620412"},
+	{id="2714566339",	name="Not",	pid="3808575642"},
+	{id="1610732848",	name="If",	pid="2714566339"},
+	{id="580291233",	name="CheckOwnerInRange",	pid="1610732848",	args={condition=128.0}},
+	{id="2044240713",	name="AlwaysFail",	pid="3808575642"},
+	{id="2024110586",	name="PetReturn",	pid="2044240713"},
 	{id="4111934468",	name="FindNextPosition",	pid="3554620412"}}
 addAiTemplate("movePet", movePet)
 
@@ -38,8 +58,7 @@ targetPet = {
 	{id="1588174195",	name="Sequence",	pid="1610025830"},
 	{id="2487017921",	name="If",	pid="1588174195"},
 	{id="1805084865",	name="CheckPetCommand",	pid="2487017921",	args={condition=PET_GUARD}},
-	{id="4088629427",	name="AlwaysSucceed",	pid="1588174195"},
-	{id="4093395222",	name="GetProspectFromTarget",	pid="4088629427"},
+	{id="4093395222",	name="GetProspectFromTarget",	pid="1588174195"},
 	{id="3411899925",	name="Sequence",	pid="1610025830"},
 	{id="2270135938",	name="Selector",	pid="3411899925"},
 	{id="2800276185",	name="If",	pid="2270135938"},
@@ -48,13 +67,11 @@ targetPet = {
 	{id="2172835025",	name="CheckPetCommand",	pid="2865585610",	args={condition=PET_SPECIAL_ATTACK1}},
 	{id="2606935716",	name="If",	pid="2270135938"},
 	{id="2878990487",	name="CheckPetCommand",	pid="2606935716",	args={condition=PET_SPECIAL_ATTACK2}},
-	{id="508259610",	name="AlwaysSucceed",	pid="3411899925"},
-	{id="4137584383",	name="GetProspectFromCommand",	pid="508259610"},
+	{id="4137584383",	name="GetProspectFromCommand",	pid="3411899925"},
 	{id="89792960",	name="Sequence",	pid="1610025830"},
 	{id="1114936193",	name="If",	pid="89792960"},
 	{id="4248996732",	name="CheckPetCommand",	pid="1114936193",	args={condition=PET_PATROL}},
-	{id="1679932869",	name="AlwaysSucceed",	pid="89792960"},
-	{id="312457495",	name="Selector",	pid="1679932869"},
+	{id="312457495",	name="Selector",	pid="89792960"},
 	{id="312307422",	name="GetProspectFromThreatMap",	pid="312457495"},
 	{id="869980090",	name="GetProspectFromDefenders",	pid="312457495"},
 	{id="2780806186",	name="Selector",	pid="564148782"},
@@ -65,7 +82,11 @@ targetPet = {
 	{id="2355980134",	name="DropProspectFromDefenders",	pid="532716569"},
 	{id="3244187974",	name="EraseBlackboard",	pid="532716569",	args={param="targetProspect"}},
 	{id="2191514309",	name="SetDefenderFromProspect",	pid="564148782"},
-	{id="31729507",	name="AlwaysFail",	pid="2727643421"},
-	{id="3430063290",	name="ExitCombat",	pid="31729507",	args={clearDefenders=1}}}
+	{id="4018265484",	name="AlwaysSucceed",	pid="2727643421"},
+	{id="1099151408",	name="Sequence",	pid="4018265484"},
+	{id="1342984787",	name="Not",	pid="1099151408"},
+	{id="1353963104",	name="If",	pid="1342984787"},
+	{id="1883530480",	name="CheckOwnerInRange",	pid="1353963104",	args={condition=128.0}},
+	{id="311376226",	name="ExitCombat",	pid="1099151408",	args={clearDefenders=1}}}
 addAiTemplate("targetPet", targetPet)
 

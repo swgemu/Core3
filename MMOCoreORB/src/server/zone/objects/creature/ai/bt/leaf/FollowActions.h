@@ -79,7 +79,8 @@ public:
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		agent->eraseBlackboard("targetProspect");
 
-		ManagedReference<SceneObject*> tar = agent->getTargetFromTargetsDefenders();
+		ManagedReference<SceneObject*> tar = agent->getTargetFromTargetsMap();
+
 		if (tar == nullptr)
 			return FAILURE;
 
@@ -622,6 +623,48 @@ public:
 
 	private:
 	int delay;
+};
+
+class PetReturn : public Behavior {
+public:
+	PetReturn(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	PetReturn(const PetReturn& a) : Behavior(a) {
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		if (agent == nullptr || !agent->isPet())
+			return FAILURE;
+
+		Reference<PetControlDevice*> controlDevice = agent->getControlDevice().castTo<PetControlDevice*>();
+
+		if (controlDevice == nullptr)
+			return FAILURE;
+
+		ManagedReference<SceneObject*> newFollow = nullptr;
+
+		if (controlDevice->getLastCommand() == PetManager::GUARD) {
+			newFollow = controlDevice->getLastCommandTarget();
+		} else {
+			newFollow = controlDevice->getLastCommander();
+		}
+
+		if (newFollow == nullptr) {
+			return FAILURE;
+		}
+
+		agent->setFollowObject(newFollow);
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
 };
 
 }
