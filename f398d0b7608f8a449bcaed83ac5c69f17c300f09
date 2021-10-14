@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b4b886f_93717675",
+        "filename": "MMOCoreORB/src/server/zone/packets/zone/SelectCharacterCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-14T11:21:39Z",
+      "side": 1,
+      "message": "space at end of line",
+      "revId": "f398d0b7608f8a449bcaed83ac5c69f17c300f09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

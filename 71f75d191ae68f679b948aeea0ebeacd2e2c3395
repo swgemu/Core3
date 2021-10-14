@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71b25a87_b2e7820d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-14T11:21:39Z",
+      "side": 0,
+      "message": "why did you delete this debug message?",
+      "revId": "71f75d191ae68f679b948aeea0ebeacd2e2c3395",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d94187b_e73e5dd5",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-14T11:21:39Z",
+      "side": 0,
+      "message": "where does this get set now?",
+      "range": {
+        "startLine": 271,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 18
+      },
+      "revId": "71f75d191ae68f679b948aeea0ebeacd2e2c3395",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
