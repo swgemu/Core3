@@ -16,6 +16,24 @@
       "revId": "f398d0b7608f8a449bcaed83ac5c69f17c300f09",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e7ffeb6_3bd2f0a7",
+        "filename": "MMOCoreORB/src/server/zone/packets/zone/SelectCharacterCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 2094
+      },
+      "writtenOn": "2021-10-14T13:35:53Z",
+      "side": 1,
+      "message": "Will fix this later.",
+      "parentUuid": "0b4b886f_93717675",
+      "revId": "f398d0b7608f8a449bcaed83ac5c69f17c300f09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }

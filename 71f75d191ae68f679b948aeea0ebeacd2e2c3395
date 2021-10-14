@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "acc45d8b_4dd486c9",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 2094
+      },
+      "writtenOn": "2021-10-14T13:35:53Z",
+      "side": 0,
+      "message": "I don\u0027t see how it\u0027s being used. Do we need it there for some higher-level reason?",
+      "parentUuid": "71b25a87_b2e7820d",
+      "revId": "71f75d191ae68f679b948aeea0ebeacd2e2c3395",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d94187b_e73e5dd5",
         "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2021-10-14T11:21:39Z",
       "side": 0,
       "message": "where does this get set now?",
+      "range": {
+        "startLine": 271,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 18
+      },
+      "revId": "71f75d191ae68f679b948aeea0ebeacd2e2c3395",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa4f286_470b2e47",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 2094
+      },
+      "writtenOn": "2021-10-14T13:35:53Z",
+      "side": 0,
+      "message": "I removed this because it doesn\u0027t appear it\u0027s being used.",
+      "parentUuid": "1d94187b_e73e5dd5",
       "range": {
         "startLine": 271,
         "startChar": 2,
