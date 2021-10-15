@@ -92,7 +92,7 @@ public:
 		if (followCreo == nullptr || !followCreo->isInCombat())
 			return FAILURE;
 
-		ManagedReference<SceneObject*> target = agent->getProspectFromTargetsMap(followCreo);
+		ManagedReference<SceneObject*> target = agent->getTargetFromTargetsMap(followCreo);
 
 		if (target == nullptr) {
 			return FAILURE;

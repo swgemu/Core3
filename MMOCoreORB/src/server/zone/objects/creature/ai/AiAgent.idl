@@ -317,7 +317,7 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public native SceneObject getTargetFromDefenders();
 
-	public native SceneObject getProspectFromTargetsMap(TangibleObject target);
+	public native SceneObject getTargetFromTargetsMap(TangibleObject target);
 
 	@preLocked
 	public native SceneObject getTargetFromTargetsDefenders();

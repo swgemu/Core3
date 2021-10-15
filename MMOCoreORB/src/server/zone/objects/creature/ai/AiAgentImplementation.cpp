@@ -981,7 +981,7 @@ SceneObject* AiAgentImplementation::getTargetFromDefenders() {
 	return target;
 }
 
-SceneObject* AiAgentImplementation::getProspectFromTargetsMap(TangibleObject* target) {
+SceneObject* AiAgentImplementation::getTargetFromTargetsMap(TangibleObject* target) {
 	if (target == nullptr) {
 		return nullptr;
 	}

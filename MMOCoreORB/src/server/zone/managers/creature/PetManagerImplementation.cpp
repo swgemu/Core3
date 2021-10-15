@@ -203,7 +203,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		return;
 
 	// Handle trained command
-	int command = isTrainedCommand(pcd, message);
+	int command = getTrainedCommandNum(pcd, message);
 
 #ifdef PET_DEBUG
 	StringBuffer debugMsg;
@@ -268,29 +268,30 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	}
 }
 
-int PetManagerImplementation::isTrainedCommand(PetControlDevice* petControlDevice, const String& msg) {
-	for (int i = 0; i <= totalCommands; i++) {
-		unsigned int commandId = i;
+int PetManagerImplementation::getTrainedCommandNum(PetControlDevice* petControlDevice, const String& msg) {
+	String name = petControlDevice->getCustomObjectName().toString();
+	String petName = "";
 
+	if (name.length() > 2) {
+		petName = name.subString(1, name.length() - 1); // Remove parenthesis
+	}
+
+	for (int i = 0; i <= TOTALCOMMANDS; i++) {
 		// Check if pet is trained in the command
-		if (petControlDevice->hasTrainedCommand(commandId)) {
-
+		if (petControlDevice->hasTrainedCommand(i)) {
 			// Check if string exactly matches registered command
-			if (petControlDevice->getTrainedCommand(commandId) == msg)
-				return commandId;
+			if (petControlDevice->getTrainedCommand(i) == msg)
+				return i;
 
 			// Check if string matches registered command with or without the pet's name
-			String name = petControlDevice->getCustomObjectName().toString();
-			if (name.length() > 2) {
-				String petName = name.subString(1, name.length() - 1); // Remove parenthesis
-
-				String cmdWithName = petName + " " + petControlDevice->getTrainedCommand(commandId);
+			if (petName != "") {
+				String cmdWithName = petName + " " + petControlDevice->getTrainedCommand(i);
 				if (cmdWithName == msg)
-					return commandId;
+					return i;
 
 				String msgWithName = petName + " " + msg;
-				if (petControlDevice->getTrainedCommand(commandId) == msgWithName)
-					return commandId;
+				if (petControlDevice->getTrainedCommand(i) == msgWithName)
+					return i;
 			}
 		}
 	}

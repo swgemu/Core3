@@ -62,7 +62,7 @@ class PetManager extends ManagedService implements Logger {
 	public static final unsigned int GETPATROLPOINT = 22;
 	public static final unsigned int CLEARPATROLPOINTS = 23;
 
-	public static final int totalCommands = 23;
+	public static final int TOTALCOMMANDS = 23;
 
 	public PetManager(ZoneServer server) {
 		zoneServer = server;
@@ -138,7 +138,7 @@ class PetManager extends ManagedService implements Logger {
 	 * Returns whether the pet has the given message trained for the command
 	 */
 	@local
-	public native int isTrainedCommand(PetControlDevice petControlDevice, final string msg);
+	public native int getTrainedCommandNum(PetControlDevice petControlDevice, final string msg);
 
 	/**
 	 * @pre { destructor and destructedObject locked }
