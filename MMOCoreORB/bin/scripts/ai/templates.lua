@@ -58,18 +58,21 @@ bitmaskLookup = {
 	}},
 
 	{PET, {
+		{AWARE, "awarePet"},
 		{IDLE, "idlePet"},
 		{TARGET, "targetPet"},
 		{MOVE, "movePet"}
 	}},
 
 	{FACTION_PET, {
+		{AWARE, "awarePet"},
 		{IDLE, "idlePet"},
 		{TARGET, "targetPet"},
 		{MOVE, "movePet"}
 	}},
 
 	{DROID_PET, {
+		{AWARE, "awarePet"},
 		{IDLE, "idlePet"},
 		{TARGET, "targetPet"},
 		{MOVE, "movePet"}

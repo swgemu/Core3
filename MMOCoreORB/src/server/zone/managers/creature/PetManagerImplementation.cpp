@@ -203,45 +203,53 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		return;
 
 	// Handle trained command
-	if (isTrainedCommand(pcd, STAY, message)) {
+	int command = getTrainedCommandNum(pcd, message);
+
+#ifdef PET_DEBUG
+	StringBuffer debugMsg;
+	debugMsg << " command given " << message << " command number = " << command;
+	speaker->sendSystemMessage(debugMsg.toString());
+#endif
+
+	if (command == STAY) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petstay"), "");
-	} else if (isTrainedCommand(pcd, FOLLOW, message)) {
+	} else if (command == FOLLOW) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petfollow"), String::valueOf(speaker->getObjectID()), true);
-	} else if (isTrainedCommand(pcd, STORE, message)) {
+	} else if (command == STORE) {
 		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("petstore"), "");
-	} else if (isTrainedCommand(pcd, ATTACK, message)) {
+	} else if (command == ATTACK) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petattack"), String::valueOf(speaker->getObjectID()));
-	} else if (isTrainedCommand(pcd, GUARD, message)) {
-		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petguard"), "", true);
-	} else if (isTrainedCommand(pcd, FRIEND, message)) {
+	} else if (command == GUARD) {
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petguard"), String::valueOf(speaker->getObjectID()), true);
+	} else if (command == FRIEND) {
 		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("petfriend"), "");
-	} else if (isTrainedCommand(pcd, FOLLOWOTHER, message)) {
+	} else if (command == FOLLOWOTHER) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petfollow"), String::valueOf(speaker->getObjectID()));
-	} else if (isTrainedCommand(pcd, TRICK1, message)) {
+	} else if (command == TRICK1) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("pettrick"), "1", true);
-	} else if (isTrainedCommand(pcd, TRICK2, message)) {
+	} else if (command == TRICK2) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("pettrick"), "2", true);
-	} else if (isTrainedCommand(pcd, PATROL, message)) {
+	} else if (command == PATROL) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petpatrol"), "");
-	} else if (isTrainedCommand(pcd, GETPATROLPOINT, message)) {
+	} else if (command == GETPATROLPOINT) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petgetpatrolpoint"), "", true);
-	} else if (isTrainedCommand(pcd, CLEARPATROLPOINTS, message)) {
+	} else if (command == CLEARPATROLPOINTS) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petclearpatrolpoints"), "", true);
-	} else if (isTrainedCommand(pcd, FORMATION1, message)) {
+	} else if (command == FORMATION1) {
 		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
-	} else if (isTrainedCommand(pcd, FORMATION2, message)) {
+	} else if (command == FORMATION2) {
 		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
-	} else if (isTrainedCommand(pcd, SPECIAL_ATTACK1, message)) {
+	} else if (command == SPECIAL_ATTACK1) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petspecialattack"), "1 " + String::valueOf(speaker->getObjectID()));
-	} else if (isTrainedCommand(pcd, SPECIAL_ATTACK2, message)) {
+	} else if (command == SPECIAL_ATTACK2) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petspecialattack"), "2 " + String::valueOf(speaker->getObjectID()));
-	} else if (isTrainedCommand(pcd, RANGED_ATTACK, message)) {
+	} else if (command == RANGED_ATTACK) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petrangedattack"), "", true);
-	} else if (isTrainedCommand(pcd, GROUP, message)) {
+	} else if (command == GROUP) {
 		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("petgroup"), "");
-	} else if (isTrainedCommand(pcd, RECHARGEOTHER, message)) {
+	} else if (command == RECHARGEOTHER) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petrechargeother"), "");
-	} else if (isTrainedCommand(pcd, TRANSFER, message)) {
+	} else if (command == TRANSFER) {
 		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("pettransfer"), "");
 	}
 
@@ -253,34 +261,42 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		}
 	}
 
-	Locker plocker(pcd, speaker);
-	pcd->setLastCommander(speaker);
+	if (command > 0) {
+		Locker plocker(pcd, speaker);
+		pcd->setLastCommander(speaker);
+		pcd->setLastCommand(command);
+	}
 }
 
-bool PetManagerImplementation::isTrainedCommand(PetControlDevice* petControlDevice, unsigned int commandId, const String& msg) {
-	// Check if pet is trained in the command
-	if (!petControlDevice->hasTrainedCommand(commandId))
-		return false;
-
-	// Check if string exactly matches registered command
-	if (petControlDevice->getTrainedCommand(commandId) == msg)
-		return true;
-
-	// Check if string matches registered command with or without the pet's name
+int PetManagerImplementation::getTrainedCommandNum(PetControlDevice* petControlDevice, const String& msg) {
 	String name = petControlDevice->getCustomObjectName().toString();
+	String petName = "";
+
 	if (name.length() > 2) {
-		String petName = name.subString(1, name.length() - 1); // Remove parenthesis
-
-		String cmdWithName = petName + " " + petControlDevice->getTrainedCommand(commandId);
-		if (cmdWithName == msg)
-			return true;
-
-		String msgWithName = petName + " " + msg;
-		if (petControlDevice->getTrainedCommand(commandId) == msgWithName)
-			return true;
+		petName = name.subString(1, name.length() - 1); // Remove parenthesis
 	}
 
-	return false;
+	for (int i = 0; i <= TOTALCOMMANDS; i++) {
+		// Check if pet is trained in the command
+		if (petControlDevice->hasTrainedCommand(i)) {
+			// Check if string exactly matches registered command
+			if (petControlDevice->getTrainedCommand(i) == msg)
+				return i;
+
+			// Check if string matches registered command with or without the pet's name
+			if (petName != "") {
+				String cmdWithName = petName + " " + petControlDevice->getTrainedCommand(i);
+				if (cmdWithName == msg)
+					return i;
+
+				String msgWithName = petName + " " + msg;
+				if (petControlDevice->getTrainedCommand(i) == msgWithName)
+					return i;
+			}
+		}
+	}
+
+	return 0;
 }
 
 bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, AiAgent* pet, const String& message) {

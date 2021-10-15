@@ -48,19 +48,14 @@ public:
 		if (controlDevice->getPatrolPointSize() == 0)
 			return GENERALERROR;
 
-		pet->setTargetObject(nullptr);
+		pet->setFollowObject(nullptr);
 		pet->setFollowState(AiAgent::PATROLLING);
 		pet->clearSavedPatrolPoints();
-		pet->stopWaiting();
 
 		for (int i = 0; i < controlDevice->getPatrolPointSize(); i++) {
 			PatrolPoint point = controlDevice->getPatrolPoint(i);
 			pet->addPatrolPoint(point);
 		}
-
-		pet->activateMovementEvent();
-
-		controlDevice->setLastCommand(PetManager::PATROL);
 
 		return SUCCESS;
 	}

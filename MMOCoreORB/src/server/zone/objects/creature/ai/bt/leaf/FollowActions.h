@@ -77,13 +77,28 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		agent->eraseBlackboard("targetProspect");
+		ManagedReference<SceneObject*> followCopy = agent->getFollowObject();
 
-		ManagedReference<SceneObject*> tar = agent->getTargetFromTargetsDefenders();
-		if (tar == nullptr)
+		if (followCopy == nullptr || !followCopy->isCreatureObject()) {
+			return FAILURE;
+		}
+
+		if (agent->hasDefender(followCopy)) {
+			return SUCCESS;
+		}
+
+		ManagedReference<CreatureObject*> followCreo = followCopy->asCreatureObject();
+
+		if (followCreo == nullptr || !followCreo->isInCombat())
 			return FAILURE;
 
-		agent->writeBlackboard("targetProspect", tar);
+		ManagedReference<SceneObject*> target = agent->getTargetFromTargetsMap(followCreo);
+
+		if (target == nullptr) {
+			return FAILURE;
+		}
+
+		agent->writeBlackboard("targetProspect", target);
 
 		return SUCCESS;
 	}
@@ -622,6 +637,64 @@ public:
 
 	private:
 	int delay;
+};
+
+class PetReturn : public Behavior {
+public:
+	PetReturn(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	PetReturn(const PetReturn& a) : Behavior(a) {
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		if (agent == nullptr || !agent->isPet())
+			return FAILURE;
+
+		Reference<PetControlDevice*> controlDevice = agent->getControlDevice().castTo<PetControlDevice*>();
+
+		if (controlDevice == nullptr)
+			return FAILURE;
+
+		ManagedReference<SceneObject*> newFollow = controlDevice->getLastCommander();
+
+		uint32 lastCommand = controlDevice->getLastCommand();
+
+		if (lastCommand == PetManager::PATROL && newFollow != nullptr) {
+			Locker clocker(controlDevice, agent);
+
+			if (controlDevice->getPatrolPointSize() == 0)
+				return FAILURE;
+
+			agent->setFollowObject(nullptr);
+			agent->setFollowState(AiAgent::PATROLLING);
+			agent->clearSavedPatrolPoints();
+
+			for (int i = 0; i < controlDevice->getPatrolPointSize(); i++) {
+				PatrolPoint point = controlDevice->getPatrolPoint(i);
+				agent->addPatrolPoint(point);
+			}
+
+			return SUCCESS;
+		} else if (lastCommand == PetManager::GUARD) {
+			newFollow = controlDevice->getLastCommandTarget();
+		}
+
+		if (newFollow == nullptr) {
+			return FAILURE;
+		}
+
+		agent->setFollowObject(newFollow);
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
 };
 
 }
