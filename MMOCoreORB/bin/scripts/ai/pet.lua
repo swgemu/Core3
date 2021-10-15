@@ -52,10 +52,6 @@ movePet = {
 	{id="4111934468",	name="FindNextPosition",	pid="3554620412"}}
 addAiTemplate("movePet", movePet)
 
-Pet = {
-	{id="1955706839",	name="LookForTarget",	pid="none"}}
-addAiTemplate("Pet", Pet)
-
 targetPet = {
 	{id="2727643421",	name="Selector",	pid="none"},
 	{id="564148782",	name="Sequence",	pid="2727643421"},
