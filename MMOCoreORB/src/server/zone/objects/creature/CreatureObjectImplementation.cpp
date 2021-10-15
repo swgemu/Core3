@@ -3146,6 +3146,16 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 			if (owner == nullptr)
 				return false;
 
+			ManagedReference<PetControlDevice*> controlDevice = object->getControlDevice().get().castTo<PetControlDevice*>();
+
+			if (controlDevice != nullptr) {
+				ManagedReference<SceneObject*> lastCommander = controlDevice->getLastCommander().get();
+
+				if (lastCommander != nullptr && lastCommander != owner && lastCommander->isCreatureObject()) {
+					return isAttackableBy(lastCommander->asCreatureObject());
+				}
+			}
+
 			return isAttackableBy(owner);
 		}
 
