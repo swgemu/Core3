@@ -286,7 +286,7 @@ void DroidHarvestModuleDataComponent::handlePetCommand(String cmd, CreatureObjec
 		return;
 	}
 
-	if( petManager->isTrainedCommand( pcd, PetManager::HARVEST, cmd ) ){
+	if (petManager->isTrainedCommand( pcd, cmd) == PetManager::HARVEST){
 		Locker dlock(droid);
 		uint64 targetID = speaker->getTargetID();
 		Reference<CreatureObject*> target = droid->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();

@@ -29,9 +29,6 @@ public:
 		pet->setOblivious();
 		pet->storeFollowObject();
 
-		Locker clocker(controlDevice, creature);
-		controlDevice->setLastCommand(PetManager::STAY);
-
 		pet->notifyObservers(ObserverEventType::STARTCOMBAT, pet->getLinkedCreature().get());
 
 		return SUCCESS;

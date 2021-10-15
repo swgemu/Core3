@@ -63,7 +63,6 @@ public:
 		pet->storeFollowObject();
 
 		Locker clocker(controlDevice, creature);
-		controlDevice->setLastCommand(PetManager::GUARD);
 		controlDevice->setLastCommandTarget(targetObject);
 
 		pet->notifyObservers(ObserverEventType::STARTCOMBAT, pet->getLinkedCreature().get());

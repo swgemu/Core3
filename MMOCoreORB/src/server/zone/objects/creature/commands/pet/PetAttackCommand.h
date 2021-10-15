@@ -84,7 +84,6 @@ public:
 		ManagedReference<TangibleObject*> targetTano = targetObject.castTo<TangibleObject*>();
 
 		Locker clocker(controlDevice, creature);
-		controlDevice->setLastCommand(PetManager::ATTACK);
 		controlDevice->setLastCommandTarget(targetTano);
 
 		pet->notifyObservers(ObserverEventType::STARTCOMBAT, pet->getLinkedCreature().get());

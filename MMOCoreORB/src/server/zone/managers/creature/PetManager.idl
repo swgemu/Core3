@@ -48,7 +48,7 @@ class PetManager extends ManagedService implements Logger {
 	public static final unsigned int TRICK2 = 8;
 	public static final unsigned int PATROL = 9;
 	public static final unsigned int FORMATION1 = 10;
-	public static final unsigned int FORMATION2 = 11;	
+	public static final unsigned int FORMATION2 = 11;
 	public static final unsigned int SPECIAL_ATTACK1 = 12;
 	public static final unsigned int SPECIAL_ATTACK2 = 13;
 	public static final unsigned int RANGED_ATTACK = 14;
@@ -61,7 +61,9 @@ class PetManager extends ManagedService implements Logger {
 	public static final unsigned int HARVEST = 21;
 	public static final unsigned int GETPATROLPOINT = 22;
 	public static final unsigned int CLEARPATROLPOINTS = 23;
-	
+
+	public static final int totalCommands = 23;
+
 	public PetManager(ZoneServer server) {
 		zoneServer = server;
 
@@ -131,12 +133,12 @@ class PetManager extends ManagedService implements Logger {
 	 */
 	@local
 	public native void enqueueOwnerOnlyPetCommand(CreatureObject player, AiAgent pet, unsigned int command, final string args);
-	
+
 	/**
 	 * Returns whether the pet has the given message trained for the command
 	 */
 	@local
-	public native boolean isTrainedCommand( PetControlDevice petControlDevice, unsigned int command, final string msg );
+	public native int isTrainedCommand(PetControlDevice petControlDevice, final string msg);
 
 	/**
 	 * @pre { destructor and destructedObject locked }
