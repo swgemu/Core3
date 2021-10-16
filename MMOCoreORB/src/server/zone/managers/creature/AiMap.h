@@ -365,6 +365,7 @@ private:
 		_REGISTERLEAF(CheckIsStalker);
 		_REGISTERLEAF(CheckFlee);
 		_REGISTERLEAF(CheckOwnerInRange);
+		_REGISTERLEAF(CheckTargetInOwnerRange);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
