@@ -433,3 +433,28 @@ template<> bool CheckOwnerInRange::check(AiAgent* agent) const {
 
 	return false;
 }
+
+template<> bool CheckTargetInOwnerRange::check(AiAgent* agent) const {
+	if (agent == nullptr || !agent->isPet())
+		return false;
+
+	ManagedReference<SceneObject*> tar = nullptr;
+	if (agent->peekBlackboard("targetProspect"))
+		tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
+
+	if (tar == nullptr || !tar->isCreatureObject())
+		return false;
+
+	Reference<PetControlDevice*> controlDevice = agent->getControlDevice().castTo<PetControlDevice*>();
+
+	if (controlDevice == nullptr)
+		return false;
+
+	ManagedReference<SceneObject*> commander = controlDevice->getLastCommander();
+
+	if (checkVar > 0.f) {
+		return commander != nullptr && tar->isInRange(commander, checkVar);
+	}
+
+	return false;
+}

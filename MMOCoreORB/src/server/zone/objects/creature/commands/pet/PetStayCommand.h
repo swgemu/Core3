@@ -26,6 +26,9 @@ public:
 
 		CombatManager::instance()->attemptPeace(pet);
 
+		Vector3 home = pet->getWorldPosition();
+
+		pet->setHomeLocation(home.getX(), home.getZ(), home.getY());
 		pet->setOblivious();
 		pet->storeFollowObject();
 
