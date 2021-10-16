@@ -75,6 +75,14 @@ public:
 			msg << "Children: " << String::valueOf(object->getChildObjects()->size()) << endl;
 			msg << "PARENT OBJECTID: " << String::valueOf(parentID) << endl;
 
+			if (object->isAiAgent()) {
+				AiAgent* objectAgent = object->asAiAgent();
+
+				if (objectAgent != nullptr) {
+					msg << "Creature Bitmask = " << objectAgent->getCreatureBitmask() << endl;
+				}
+			}
+
 			if(object->getZone() != nullptr)
 				msg << "location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName() << endl;
 
