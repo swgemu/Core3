@@ -27,19 +27,18 @@ darth_vader = Creature:new {
   	scale = 1.25,
 
 	templates = {"object/mobile/darth_vader.iff"},
-	lootGroups = {
-	},
+	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "unarmed",
+	primaryWeapon = "darth_vader_weapons",
 	secondaryWeapon = "none",
 	conversationTemplate = "theme_park_imperial_mission_giver_convotemplate",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = {},
-	secondaryAttacks = { }
+	primaryAttacks = merge(lightsabermaster,forcepowermaster),
+	secondaryAttacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(darth_vader, "darth_vader")
