@@ -79,7 +79,11 @@ public:
 				AiAgent* objectAgent = object->asAiAgent();
 
 				if (objectAgent != nullptr) {
-					msg << "Creature Bitmask = " << objectAgent->getCreatureBitmask() << endl;
+					String aiEnabled = (objectAgent->getOptionsBitmask() & OptionBitmask::AIENABLED ? "True" : "False");
+					msg << "AI Enabled: " << aiEnabled << endl;
+					msg << "Creature Bitmask: " << objectAgent->getCreatureBitmask() << endl;
+					msg << "PvP Status Bitmask: " << objectAgent->getPvpStatusBitmask() << endl;
+					msg << "Options Bitmask: " << objectAgent->getOptionsBitmask() << endl;
 				}
 			}
 
