@@ -87,8 +87,6 @@ public:
 				}
 			}
 
-
-
 			if(object->getZone() != nullptr)
 				msg << "location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName() << endl;
 
