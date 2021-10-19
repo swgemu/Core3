@@ -454,6 +454,9 @@ class AiAgent extends CreatureObject {
 	public native void loadTemplateData(CreatureTemplate templateData);
 
 	@local
+	public native void loadWeaponTemplateData();
+
+	@local
 	public native void setupAttackMaps();
 
 	@local
