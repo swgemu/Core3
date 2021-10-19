@@ -144,109 +144,12 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	planetMapCategory = npcTemplate->getPlanetMapCategory();
 
-	float minDmg = npcTemplate->getDamageMin();
-	float maxDmg = npcTemplate->getDamageMax();
-	float speed = calculateAttackSpeed(level);
-
-	float globalSpeedOverride = CreatureTemplateManager::instance()->getGlobalAttackSpeedOverride();
-	float customSpeed = npcTemplate->getAttackSpeed();
-
-	if (globalSpeedOverride > 0.0f)
-		speed = globalSpeedOverride;
-	else if (customSpeed > 0.0f)
-		speed = customSpeed;
-
-	bool allowedWeapon = true;
-
-	if (petDeed != nullptr) {
-		minDmg = petDeed->getMinDamage();
-		maxDmg = petDeed->getMaxDamage();
-		allowedWeapon = petDeed->getRanged();
-	}
-
 	if (getHueValue() == -1 && npcTemplate->getTotalHues() > 0) {
 		int randHue = npcTemplate->getRandomHue();
 		setHue(randHue);
 	}
 
-	Reference<WeaponObject*> defaultWeap = asCreatureObject()->getDefaultWeapon();
-
-	if (defaultWeap != nullptr) {
-		defaultWeapon = defaultWeap;
-		// set the damage of the default weapon
-		defaultWeapon->setMinDamage(minDmg);
-		defaultWeapon->setMaxDamage(maxDmg);
-
-		if (petDeed != nullptr) {
-			defaultWeapon->setAttackSpeed(petDeed->getAttackSpeed());
-		} else if (isPet()) {
-			defaultWeapon->setAttackSpeed(speed);
-		}
-
-		primaryWeapon = defaultWeapon;
-	}
-
-	String primaryWeap = npcTemplate->getPrimaryWeapon();
-	uint32 primaryWeapHash = primaryWeap.hashCode();
-
-	if (primaryWeapHash != STRING_HASHCODE("unarmed") && primaryWeapHash != STRING_HASHCODE("none")) {
-		uint32 weaponCRC = 0;
-
-		if (primaryWeap.indexOf(".iff") != -1) {
-			weaponCRC = primaryWeap.hashCode();
-		} else {
-			const Vector<String>& primaryTemplates = CreatureTemplateManager::instance()->getWeapons(primaryWeap);
-
-			if (primaryTemplates.size() > 0) {
-				String& weaponTemplate = primaryTemplates.get(System::random(primaryTemplates.size() - 1));
-				weaponCRC = weaponTemplate.hashCode();
-			}
-		}
-
-		if (weaponCRC != 0)
-			primaryWeapon = createWeapon(weaponCRC, true);
-	}
-
-	String secondaryWeap = npcTemplate->getSecondaryWeapon();
-	uint32 secondaryWeapHash = secondaryWeap.hashCode();
-
-	if (secondaryWeapHash == STRING_HASHCODE("unarmed")) {
-		secondaryWeapon = defaultWeapon;
-	} else if (secondaryWeapHash != STRING_HASHCODE("none")) {
-		uint32 weaponCRC = 0;
-
-		if (secondaryWeap.indexOf(".iff") != -1) {
-			weaponCRC = primaryWeap.hashCode();
-		} else {
-			const Vector<String>& secondaryTemplates = CreatureTemplateManager::instance()->getWeapons(secondaryWeapHash);
-
-			if (secondaryTemplates.size() > 0) {
-				String& weaponTemplate = secondaryTemplates.get(System::random(secondaryTemplates.size() - 1));
-				weaponCRC = weaponTemplate.hashCode();
-			}
-		}
-
-		if (weaponCRC != 0)
-			secondaryWeapon = createWeapon(weaponCRC, false);
-	}
-
-	String thrownWeap = npcTemplate->getThrownWeapon();
-
-	if (thrownWeap != "") {
-		uint32 weaponCRC = 0;
-
-		const Vector<String>& thrownTemplates = CreatureTemplateManager::instance()->getWeapons(thrownWeap.hashCode());
-
-		if (thrownTemplates.size() > 0) {
-			String& weaponTemplate = thrownTemplates.get(System::random(thrownTemplates.size() - 1));
-			weaponCRC = weaponTemplate.hashCode();
-		}
-
-		if (weaponCRC != 0) {
-			thrownWeapon = createWeapon(weaponCRC, false);
-		}
-	}
-
+	loadWeaponTemplateData();
 	setupAttackMaps();
 
 	if (primaryWeapon != nullptr)
@@ -380,6 +283,106 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	String conTemp = npcTemplate->getContainerComponentTemplate();
 	if (!conTemp.isEmpty()) {
 		containerComponent = cast<ContainerComponent*>(ComponentManager::instance()->getComponent<SceneObjectComponent*>(conTemp));
+	}
+}
+
+void AiAgentImplementation::loadWeaponTemplateData() {
+	float minDmg = npcTemplate->getDamageMin();
+	float maxDmg = npcTemplate->getDamageMax();
+	float speed = calculateAttackSpeed(level);
+
+	float globalSpeedOverride = CreatureTemplateManager::instance()->getGlobalAttackSpeedOverride();
+	float customSpeed = npcTemplate->getAttackSpeed();
+
+	if (globalSpeedOverride > 0.0f)
+		speed = globalSpeedOverride;
+	else if (customSpeed > 0.0f)
+		speed = customSpeed;
+
+	bool allowedWeapon = true;
+
+	if (petDeed != nullptr) {
+		minDmg = petDeed->getMinDamage();
+		maxDmg = petDeed->getMaxDamage();
+		allowedWeapon = petDeed->getRanged();
+	}
+
+	Reference<WeaponObject*> defaultWeap = asCreatureObject()->getDefaultWeapon();
+
+	if (defaultWeap != nullptr) {
+		defaultWeapon = defaultWeap;
+		// set the damage of the default weapon
+		defaultWeapon->setMinDamage(minDmg);
+		defaultWeapon->setMaxDamage(maxDmg);
+
+		if (petDeed != nullptr) {
+			defaultWeapon->setAttackSpeed(petDeed->getAttackSpeed());
+		} else if (isPet()) {
+			defaultWeapon->setAttackSpeed(speed);
+		}
+
+		primaryWeapon = defaultWeapon;
+	}
+
+	String primaryWeap = npcTemplate->getPrimaryWeapon();
+	uint32 primaryWeapHash = primaryWeap.hashCode();
+
+	if (primaryWeapHash != STRING_HASHCODE("unarmed") && primaryWeapHash != STRING_HASHCODE("none")) {
+		uint32 weaponCRC = 0;
+
+		if (primaryWeap.indexOf(".iff") != -1) {
+			weaponCRC = primaryWeap.hashCode();
+		} else {
+			const Vector<String>& primaryTemplates = CreatureTemplateManager::instance()->getWeapons(primaryWeap);
+
+			if (primaryTemplates.size() > 0) {
+				String& weaponTemplate = primaryTemplates.get(System::random(primaryTemplates.size() - 1));
+				weaponCRC = weaponTemplate.hashCode();
+			}
+		}
+
+		if (weaponCRC != 0)
+			primaryWeapon = createWeapon(weaponCRC, true);
+	}
+
+	String secondaryWeap = npcTemplate->getSecondaryWeapon();
+	uint32 secondaryWeapHash = secondaryWeap.hashCode();
+
+	if (secondaryWeapHash == STRING_HASHCODE("unarmed")) {
+		secondaryWeapon = defaultWeapon;
+	} else if (secondaryWeapHash != STRING_HASHCODE("none")) {
+		uint32 weaponCRC = 0;
+
+		if (secondaryWeap.indexOf(".iff") != -1) {
+			weaponCRC = primaryWeap.hashCode();
+		} else {
+			const Vector<String>& secondaryTemplates = CreatureTemplateManager::instance()->getWeapons(secondaryWeapHash);
+
+			if (secondaryTemplates.size() > 0) {
+				String& weaponTemplate = secondaryTemplates.get(System::random(secondaryTemplates.size() - 1));
+				weaponCRC = weaponTemplate.hashCode();
+			}
+		}
+
+		if (weaponCRC != 0)
+			secondaryWeapon = createWeapon(weaponCRC, false);
+	}
+
+	String thrownWeap = npcTemplate->getThrownWeapon();
+
+	if (thrownWeap != "") {
+		uint32 weaponCRC = 0;
+
+		const Vector<String>& thrownTemplates = CreatureTemplateManager::instance()->getWeapons(thrownWeap.hashCode());
+
+		if (thrownTemplates.size() > 0) {
+			String& weaponTemplate = thrownTemplates.get(System::random(thrownTemplates.size() - 1));
+			weaponCRC = weaponTemplate.hashCode();
+		}
+
+		if (weaponCRC != 0) {
+			thrownWeapon = createWeapon(weaponCRC, false);
+		}
 	}
 }
 
@@ -684,9 +687,10 @@ void AiAgentImplementation::initializeTransientMembers() {
 
 	// Fix for pets created prior to ai update
 	if (controlDevice != nullptr && defaultWeapon == nullptr) {
-		SharedObjectTemplate* temp = getObjectTemplate();
-		loadTemplateData(temp);
+
+		loadWeaponTemplateData();
 	}
+
 
 	setAITemplate();
 
