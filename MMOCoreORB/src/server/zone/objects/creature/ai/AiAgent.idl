@@ -181,6 +181,13 @@ class AiAgent extends CreatureObject {
 	public static final int LEASHING = 6;
 	public static final int EVADING = 7;
 
+	public static final int MOB_HERBIVORE = 1;
+	public static final int MOB_CARNIVORE = 2;
+	public static final int MOB_NPC = 3;
+	public static final int MOB_DROID = 4;
+	public static final int MOB_ANDROID = 5;
+	public static final int MOB_VEHICLE = 6;
+
 	protected transient unsigned long customAiMap;
 
 	public AiAgent() {
@@ -1443,5 +1450,49 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public abstract WeaponObject getCurrentWeapon() {
 		return defaultWeapon;
+	}
+	
+	@read
+	public int getMobType() {
+		return npcTemplate.get().getMobType();
+	}
+	
+	@read
+	public int isHerbivore() {
+		return getMobType() == MOB_HERBIVORE;
+	}
+	
+	@read
+	public int isCarnivore() {
+		return getMobType() == MOB_CARNIVORE;
+	}
+	
+	@read
+	public int isMonster() {
+		int type = getMobType();
+		
+		return type == MOB_HERBIVORE || type == MOB_CARNIVORE;
+	}
+	
+	@read
+	public int isDroid() {
+		return getMobType() == MOB_DROID;
+	}
+	
+	@read
+	public int isAndroid() {
+		return getMobType() == MOB_ANDROID;
+	}
+	
+	@read
+	public int isNpc() {
+		return getMobType() == MOB_NPC;
+	}
+	
+	@read
+	public int isHumanoid() {
+		int type = getMobType();
+		
+		return type == MOB_ANDROID || type == MOB_NPC;
 	}
 }

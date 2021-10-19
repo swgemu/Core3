@@ -3,6 +3,7 @@ corvette_rebel_adar = Creature:new {
 	customName = "Adar Tallon",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

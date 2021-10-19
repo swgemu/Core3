@@ -3,6 +3,7 @@ commoner_old_patrol = Creature:new {
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

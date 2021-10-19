@@ -56,6 +56,7 @@ protected:
 	bool randomNameTag;
 	String socialGroup;
 	String faction;
+	int mobType;
 
 	int level;
 
@@ -256,6 +257,10 @@ public:
 
 	inline int getRandomNameType() const {
 		return randomNameType;
+	}
+
+	inline int getMobType() const {
+		return mobType;
 	}
 
 	inline bool getRandomNameTag() const {

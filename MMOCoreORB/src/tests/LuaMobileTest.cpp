@@ -229,6 +229,10 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		int level = creature->getLevel();
 		EXPECT_TRUE( level > 0 ) << "Level is not a positive value on mobile: " << templateName;
 
+		// Verify level
+		int mobType = creature->getMobType();
+		EXPECT_TRUE( mobType > 0 ) << "mobType is not a valid value on mobile: " << templateName;
+
 		// Verify hit chance
 		float hitChance = creature->getChanceHit();
 		EXPECT_TRUE( hitChance > 0 ) << "ChanceHit is not a positive value on mobile: " << templateName;

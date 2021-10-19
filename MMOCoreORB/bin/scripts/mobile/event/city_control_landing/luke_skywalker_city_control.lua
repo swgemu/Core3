@@ -2,6 +2,7 @@ luke_skywalker_city_control = Creature:new {
 	objectName = "@mob/creature_names:luke_skywalker",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

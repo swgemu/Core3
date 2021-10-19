@@ -3,6 +3,7 @@ scientist_patrol = Creature:new {
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 34,
 	chanceHit = 0.410000,

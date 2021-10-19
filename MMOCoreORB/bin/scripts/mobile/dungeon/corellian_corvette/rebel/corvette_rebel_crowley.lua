@@ -3,6 +3,7 @@ corvette_rebel_crowley = Creature:new {
 	customName = "Master Sergeant Crowley",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
