@@ -90,6 +90,123 @@ CorelliaDoabaGuerfelScreenPlay = CityScreenPlay:new {
 		{1, 3145.1, 289.991, 4994.55, 359, 0, "conversation"},
 	},
 
+	mobiles = {
+		--Starport
+		{"entertainer",60,53.5,0.6,47.8,-80,9665359, "conversation"},
+		{"noble", 60,47.5747,0.974633,22.0108,238.024,9665365, ""},
+		{"businessman", 60,52.3124,0.639417,48.2148,107.997,9665359, ""},
+		{"chiss_male",60,36.7068,0.639417,40.446,180.001,9665359, "conversation"},
+		{"farmer", 60,36.7068,0.639417,39.346,0,9665359, ""},
+		{"brawler",60,-4.68154,0.639424,60.9856,180.005,9665356, "conversation"},
+		{"corellia_times_reporter",300,-4.68154,0.639424,59.8856,360.011,9665356, "conversation"},
+		{"trainer_shipwright",60,1.28595,0.639421,66.8733,180,9665356, "neutral"},
+		{"contractor",60,-62.5737,2.63942,41.0043,180.004,9665364, "npc_consoling"},
+		{"farmer",60,-62.5737,2.63942,40.0043,360.011,9665364, "worried"},
+		{"chassis_dealer",60,-56.6993,0.974563,8.57384,27.5028,9665366, "neutral"},
+
+		--Guild Hall/Theater
+		{"corellia_times_investigator",60,-1.72179,0.6,-2.95766,180.016,4395396, "conversation"},
+		{"info_broker",60,-23.9134,0.6,-4.15254,360.011,4395397, "conversation"},
+		{"artisan",60,-1.72179,0.6,-4.05766,360.011,4395396, "conversation"},
+		{"farmer_rancher",60,-23.9134,0.6,-3.15254,179.996,4395397, ""},
+		{"artisan",60,-0.629707,2.6,3.43132,180.013,4395401, "conversation"},
+		{"commoner_tatooine",60,25.4426,0.655075,43.6577,180.006,4395401, "conversation"},
+		{"comm_operator",300,24.3,0.6,4.7,180,4395398, "npc_imperial"},
+		{"entertainer",60,12.8,2.1,76.4,90,4395403, "happy"},
+		{"farmer",60,22.8,2.1,58.9,180,4395402, "conversation"},
+		{"farmer_rancher",60,22.8,2.1,56.9,0,4395402, "worried"},
+		{"farmer",60,25.4426,0.746078,42.666,5.24364,4395401, "conversation"},
+		{"info_broker",60,24.5,0.6,2.8,0,4395398, "conversation"},
+		{"mercenary",300,-0.629707,2.6,2.33132,360.011,4395401, "angry"},
+		{"noble",60,14.3,2.1,76.3,-90,4395403, "conversation"},
+		{"noble", 60,28.93,2.12878,58.19,222.007,4395402, ""},
+		{"noble", 60,19.26,2.12847,56.13,266.008,4395403, ""},
+		{"corellia_times_reporter",300,3.96145,2.12878,75.4149,0,4395403, "conversation"},
+		{"farmer",60,3.96145,2.12878,76.4149,180.002,4395403, "nervous"},
+		{"trainer_dancer", 0,17.7541,2.12875,53.6699,1,4395403, ""},
+		{"trainer_entertainer", 0,30.358,2.12878,73.5895,265,4395403, ""},
+		{"trainer_imagedesigner", 0,-2.51106,2.12878,70.8023,2,4395403, ""},
+		{"trainer_musician", 0,21.8,2.1,76.4,180,4395403, ""},
+		{"theater_manager", 0,22.0995,2.12823,63.5054,0,4395403, ""},
+		{"artisan",60,-20.4229,2.12878,65.9439,180.013,4395404, "conversation"},
+		{"businessman",300,-20.4229,2.12878,64.9439,0,4395404, "conversation"},
+		{"commoner_old",300,-21.8263,2.12878,74.8963,179.999,4395404, "worried"},
+		{"mercenary",300,-21.8263,2.12878,73.7963,0,4395404, "npc_accusing"},
+		{"mercenary",300,-22.9263,2.12878,74.8963,134.998,4395404, "npc_accusing"},
+
+		--Med Center
+		{"medic",60,-3.23192,0.184067,-5.20004,360.011,4345354, "conversation"},
+		{"corellia_times_investigator",300,-3.23192,0.184067,-4.20004,180.012,4345354, "calm"},
+		{"trainer_1hsword", 0,3.5,0.2,-8.7,4,4345354, ""},
+		{"trainer_combatmedic", 0,8.00847,0.184067,5.47322,87,4345354, ""},
+		{"trainer_doctor", 0,-3.95652,0.184067,0.467273,171,4345354, ""},
+		{"comm_operator",400,-13,0.2,-7.7,60,4345354, "npc_imperial"},
+
+		--Cantina
+		{"bartender",60,-4.00542,-0.894992,-2.41,166.23,3075429, "neutral"},
+		{"noble",60,-42.098,0.105009,-23.0786,180.012,3075441, "conversation"},
+		{"mercenary",300,-42.098,0.105009,-24.1786,0,3075441, "nervous"},
+		{"corellia_times_reporter",300,21.878,-0.894997,-15.7126,0,3075430, "conversation"},
+		{"patron_ithorian",300,40.8822,0.104999,2.22818,0,3075427, "conversation"},
+		{"commoner_naboo",300,8.35364,-0.894992,6.38149,360.011,3075429, "conversation"},
+		{"entertainer",60,21.878,-0.894997,-14.6126,179.999,3075430, "entertained"},
+		{"farmer_rancher",60,8.35364,-0.894992,7.38149,179.999,3075429, "conversation"},
+		{"contractor",60,40.8822,0.104999,3.32819,180.003,3075427, "worried"},
+
+		--Guild Hall 3122 5268
+		{"trainer_architect", 0,11,1.13306,-14,0,3075412, ""},
+		{"trainer_armorsmith", 0,-12,1.1,5,180,3075411, ""},
+		{"trainer_droidengineer", 0,-11,1.13306,-14,0,3075414, ""},
+		{"trainer_merchant", 0,12,1.13306,6,180,3075410, ""},
+		{"trainer_weaponsmith", 0,-2.5,1.13306,-8.4,91,3075413, ""},
+
+		--Guild Hall 3182 5240
+		{"businessman", 60,3.32,1.13306,-8.49,228.007,3075360, ""},
+		{"bounty_hunter", 300,-14.01,1.13306,-8.53,120.004,3075361, ""},
+		{"trainer_brawler", 0,-11,1.13306,-14,0,3075361, ""},
+		{"trainer_marksman", 0,0,1.13306,-14,0,3075360, ""},
+		{"trainer_scout", 0,-12,1.13306,5.5,180,3075358, ""},
+		{"junk_dealer", 0, -14.5, 1.1, 2.5, 88, 3075358, ""},
+
+		--Guild Hall 3160 5012
+		{"contractor", 60,3.29,1.13306,-9.58,249.007,3055771, ""},
+		{"trainer_artisan", 0,0,1.13306,-14,0,3055771, ""},
+
+		--Hotel
+		{"mercenary",300,17.1745,1.28309,-13.1361,0,3075367, "angry"},
+		{"corellia_times_investigator",60,-4.31306,0.999956,6.26959,180,3075366, "conversation"},
+		{"ithorian_male",300,7.8197,1.00001,-5.9104,180.001,3075366, "conversation"},
+		{"twilek_slave",300,-5.41306,0.999953,6.26959,134.998,3075366, "nervous"},
+		{"info_broker",300,17.1745,1.28309,-12.0361,179.995,3075367, "conversation"},
+		{"commoner_fat",300,7.8197,1.00001,-7.0104,0,3075366, "npc_standing_drinking"},
+		{"medic",60,-4.31306,0.999965,5.16959,0,3075366, "conversation"},
+		{"willham_burke",60,0.861081,0.999995,2.33215,346.259,3075366, "neutral"},
+		{"zo_ssa",60,-1.1331,0.999991,1.50214,21.773,3075366, "neutral"},
+
+		--Outside
+		{"info_broker",60,3202.28,290,4989.06,180.005,0, "conversation"},
+		{"informant_npc_lvl_1", 0,3100,300,5224,90,0, ""},
+		{"informant_npc_lvl_1", 0,3123,300,5188,0,0, ""},
+		{"informant_npc_lvl_1", 0,3145,300,5148,90,0, ""},
+		{"informant_npc_lvl_1", 0,3165,295.7,5077,180,0, ""},
+		{"informant_npc_lvl_1", 0,3078,280,5014,270,0, ""},
+		{"informant_npc_lvl_1", 0,3210,300,5440,100,0, ""},
+		{"informant_npc_lvl_1", 0,3311,300,5386,300,0, ""},
+		{"informant_npc_lvl_1", 0,3293,300,5401,90,0, ""},
+		{"informant_npc_lvl_1", 0,3297,308,5514,70,0, ""},
+		{"noble", 60,3158.95,300,5352.24,80.7765,0, ""},
+		{"pilot",60,3202.28,290,4988.06,0,0, "angry"},
+		{"trainer_artisan", 0,3311,308,5530,83,0, ""},
+		{"trainer_brawler", 0,3334,308,5517,0,0, ""},
+		{"trainer_chef", 0,3070,300,5260,180,0, ""},
+		{"trainer_creaturehandler",0,3162,300,5191,0,0, ""},
+		{"trainer_entertainer", 0,3305,308,5525,151,0, ""},
+		{"trainer_marksman", 0,3338,308,5516,0,0, ""},
+		{"trainer_medic", 0,3341,308,5517,47,0, ""},
+		{"trainer_scout", 0,3330.01,308,5512.46,204,0, ""},
+		{"trainer_tailor", 0,3077,300,5251,0,0, ""},
+		{"junk_dealer", 0, 3402.4, 308, 5679, 5, 0, ""}
+	}
 }
 
 registerScreenPlay("CorelliaDoabaGuerfelScreenPlay", true)
@@ -111,176 +228,27 @@ function CorelliaDoabaGuerfelScreenPlay:spawnSceneObjects()
 end
 
 function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
+	local mobiles = self.mobiles
 
-	--Starport
-	local pNpc = spawnMobile(self.planet, "entertainer",60,53.5,0.6,47.8,-80,9665359)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "noble", 60,47.5747,0.974633,22.0108,238.024,9665365)
-	spawnMobile(self.planet, "businessman", 60,52.3124,0.639417,48.2148,107.997,9665359)
-	pNpc = spawnMobile(self.planet, "chiss_male",60,36.7068,0.639417,40.446,180.001,9665359)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "farmer", 60,36.7068,0.639417,39.346,0,9665359)
-	pNpc = spawnMobile(self.planet, "brawler",60,-4.68154,0.639424,60.9856,180.005,9665356)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "corellia_times_reporter",300,-4.68154,0.639424,59.8856,360.011,9665356)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "trainer_shipwright",60,1.28595,0.639421,66.8733,180,9665356)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile(self.planet, "contractor",60,-62.5737,2.63942,41.0043,180.004,9665364)
-	self:setMoodString(pNpc, "npc_consoling")
-	pNpc = spawnMobile(self.planet, "farmer",60,-62.5737,2.63942,40.0043,360.011,9665364)
-	self:setMoodString(pNpc, "worried")
-	pNpc = spawnMobile(self.planet, "chassis_dealer",60,-56.6993,0.974563,8.57384,27.5028,9665366)
-	self:setMoodString(pNpc, "neutral")
+	for i = 1, #mobiles, 1 do
+		local mob = mobiles[i]
 
-	--Guild Hall/Theater
-	pNpc = spawnMobile(self.planet, "corellia_times_investigator",60,-1.72179,0.6,-2.95766,180.016,4395396)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "info_broker",60,-23.9134,0.6,-4.15254,360.011,4395397)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "artisan",60,-1.72179,0.6,-4.05766,360.011,4395396)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "farmer_rancher",60,-23.9134,0.6,-3.15254,179.996,4395397)
-	pNpc = spawnMobile(self.planet, "artisan",60,-0.629707,2.6,3.43132,180.013,4395401)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_tatooine",60,25.4426,0.655075,43.6577,180.006,4395401)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "comm_operator",300,24.3,0.6,4.7,180,4395398)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile(self.planet, "entertainer",60,12.8,2.1,76.4,90,4395403)
-	self:setMoodString(pNpc, "happy")
-	pNpc = spawnMobile(self.planet, "farmer",60,22.8,2.1,58.9,180,4395402)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "farmer_rancher",60,22.8,2.1,56.9,0,4395402)
-	self:setMoodString(pNpc, "worried")
-	pNpc = spawnMobile(self.planet, "farmer",60,25.4426,0.746078,42.666,5.24364,4395401)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "info_broker",60,24.5,0.6,2.8,0,4395398)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "mercenary",300,-0.629707,2.6,2.33132,360.011,4395401)
-	self:setMoodString(pNpc, "angry")
-	pNpc = spawnMobile(self.planet, "noble",60,14.3,2.1,76.3,-90,4395403)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "noble", 60,28.93,2.12878,58.19,222.007,4395402)
-	spawnMobile(self.planet, "noble", 60,19.26,2.12847,56.13,266.008,4395403)
-	pNpc = spawnMobile(self.planet, "corellia_times_reporter",300,3.96145,2.12878,75.4149,0,4395403)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "farmer",60,3.96145,2.12878,76.4149,180.002,4395403)
-	self:setMoodString(pNpc, "nervous")
-	spawnMobile(self.planet, "trainer_dancer", 0,17.7541,2.12875,53.6699,1,4395403)
-	spawnMobile(self.planet, "trainer_entertainer", 0,30.358,2.12878,73.5895,265,4395403)
-	spawnMobile(self.planet, "trainer_imagedesigner", 0,-2.51106,2.12878,70.8023,2,4395403)
-	spawnMobile(self.planet, "trainer_musician", 0,21.8,2.1,76.4,180,4395403)
-	spawnMobile(self.planet, "theater_manager", 0,22.0995,2.12823,63.5054,0,4395403)
-	pNpc = spawnMobile(self.planet, "artisan",60,-20.4229,2.12878,65.9439,180.013,4395404)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "businessman",300,-20.4229,2.12878,64.9439,0,4395404)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_old",300,-21.8263,2.12878,74.8963,179.999,4395404)
-	self:setMoodString(pNpc, "worried")
-	pNpc = spawnMobile(self.planet, "mercenary",300,-21.8263,2.12878,73.7963,0,4395404)
-	self:setMoodString(pNpc, "npc_accusing")
-	pNpc = spawnMobile(self.planet, "mercenary",300,-22.9263,2.12878,74.8963,134.998,4395404)
-	self:setMoodString(pNpc, "npc_accusing")
+		-- {template, respawn, x, z, y, direction, cell, mood}
+		local pMobile = spawnMobile(self.planet, mob[1], mob[2], mob[3], mob[4], mob[5], mob[6], mob[7])
 
-	--Med Center
-	pNpc = spawnMobile(self.planet, "medic",60,-3.23192,0.184067,-5.20004,360.011,4345354)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "corellia_times_investigator",300,-3.23192,0.184067,-4.20004,180.012,4345354)
-	self:setMoodString(pNpc, "calm")
-	spawnMobile(self.planet, "trainer_1hsword", 0,3.5,0.2,-8.7,4,4345354)
-	spawnMobile(self.planet, "trainer_combatmedic", 0,8.00847,0.184067,5.47322,87,4345354)
-	spawnMobile(self.planet, "trainer_doctor", 0,-3.95652,0.184067,0.467273,171,4345354)
-	pNpc = spawnMobile(self.planet, "comm_operator",400,-13,0.2,-7.7,60,4345354)
-	self:setMoodString(pNpc, "npc_imperial")
+		if (pMobile ~= nil) then
+			if mob[8] ~= "" then
+				CreatureObject(pMobile):setMoodString(mob[8])
+			end
 
-	--Cantina
-	pNpc = spawnMobile(self.planet, "bartender",60,-4.00542,-0.894992,-2.41,166.23,3075429)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile(self.planet, "noble",60,-42.098,0.105009,-23.0786,180.012,3075441)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "mercenary",300,-42.098,0.105009,-24.1786,0,3075441)
-	self:setMoodString(pNpc, "nervous")
-	pNpc = spawnMobile(self.planet, "corellia_times_reporter",300,21.878,-0.894997,-15.7126,0,3075430)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "patron_ithorian",300,40.8822,0.104999,2.22818,0,3075427)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_naboo",300,8.35364,-0.894992,6.38149,360.011,3075429)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "entertainer",60,21.878,-0.894997,-14.6126,179.999,3075430)
-	self:setMoodString(pNpc, "entertained")
-	pNpc = spawnMobile(self.planet, "farmer_rancher",60,8.35364,-0.894992,7.38149,179.999,3075429)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "contractor",60,40.8822,0.104999,3.32819,180.003,3075427)
-	self:setMoodString(pNpc, "worried")
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+		end
+	end
 
-	--Guild Hall 3122 5268
-	spawnMobile(self.planet, "trainer_architect", 0,11,1.13306,-14,0,3075412)
-	spawnMobile(self.planet, "trainer_armorsmith", 0,-12,1.1,5,180,3075411)
-	spawnMobile(self.planet, "trainer_droidengineer", 0,-11,1.13306,-14,0,3075414)
-	spawnMobile(self.planet, "trainer_merchant", 0,12,1.13306,6,180,3075410)
-	spawnMobile(self.planet, "trainer_weaponsmith", 0,-2.5,1.13306,-8.4,91,3075413)
-
-	--Guild Hall 3182 5240
-	spawnMobile(self.planet, "businessman", 60,3.32,1.13306,-8.49,228.007,3075360)
-	spawnMobile(self.planet, "bounty_hunter", 300,-14.01,1.13306,-8.53,120.004,3075361)
-	spawnMobile(self.planet, "trainer_brawler", 0,-11,1.13306,-14,0,3075361)
-	spawnMobile(self.planet, "trainer_marksman", 0,0,1.13306,-14,0,3075360)
-	spawnMobile(self.planet, "trainer_scout", 0,-12,1.13306,5.5,180,3075358)
-	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 2.5, 88, 3075358)
-
-	--Guild Hall 3160 5012
-	spawnMobile(self.planet, "contractor", 60,3.29,1.13306,-9.58,249.007,3055771)
-	spawnMobile(self.planet, "trainer_artisan", 0,0,1.13306,-14,0,3055771)
-
-	--Hotel
-	pNpc = spawnMobile(self.planet, "mercenary",300,17.1745,1.28309,-13.1361,0,3075367)
-	self:setMoodString(pNpc, "angry")
-	pNpc = spawnMobile(self.planet, "corellia_times_investigator",60,-4.31306,0.999956,6.26959,180,3075366)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "ithorian_male",300,7.8197,1.00001,-5.9104,180.001,3075366)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "twilek_slave",300,-5.41306,0.999953,6.26959,134.998,3075366)
-	self:setMoodString(pNpc, "nervous")
-	pNpc = spawnMobile(self.planet, "info_broker",300,17.1745,1.28309,-12.0361,179.995,3075367)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "commoner_fat",300,7.8197,1.00001,-7.0104,0,3075366)
-	self:setMoodString(pNpc, "npc_standing_drinking")
-	pNpc = spawnMobile(self.planet, "medic",60,-4.31306,0.999965,5.16959,0,3075366)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "willham_burke",60,0.861081,0.999995,2.33215,346.259,3075366)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile(self.planet, "zo_ssa",60,-1.1331,0.999991,1.50214,21.773,3075366)
-	self:setMoodString(pNpc, "neutral")
-
-	--Outside
-	pNpc = spawnMobile(self.planet, "info_broker",60,3202.28,290,4989.06,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3100,300,5224,90,0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3123,300,5188,0,0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3145,300,5148,90,0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3165,295.7,5077,180,0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3078,280,5014,270,0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3210,300,5440,100,0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3311,300,5386,300,0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3293,300,5401,90,0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 0,3297,308,5514,70,0)
-	spawnMobile(self.planet, "noble", 60,3158.95,300,5352.24,80.7765,0)
-	pNpc = spawnMobile(self.planet, "pilot",60,3202.28,290,4988.06,0,0)
-	self:setMoodString(pNpc, "angry")
-	spawnMobile(self.planet, "trainer_artisan", 0,3311,308,5530,83,0)
-	spawnMobile(self.planet, "trainer_brawler", 0,3334,308,5517,0,0)
-	spawnMobile(self.planet, "trainer_chef", 0,3070,300,5260,180,0)
-	spawnMobile(self.planet, "trainer_creaturehandler",0,3162,300,5191,0,0)
-	spawnMobile(self.planet, "trainer_entertainer", 0,3305,308,5525,151,0)
-	spawnMobile(self.planet, "trainer_marksman", 0,3338,308,5516,0,0)
-	spawnMobile(self.planet, "trainer_medic", 0,3341,308,5517,47,0)
-	spawnMobile(self.planet, "trainer_scout", 0,3330.01,308,5512.46,204,0)
-	spawnMobile(self.planet, "trainer_tailor", 0,3077,300,5251,0,0)
-	spawnMobile(self.planet, "junk_dealer", 0, 3402.4, 308, 5679, 5, 0)
-	spawnMobile(self.planet, "junk_dealer", 0, 3367.86, 308.6, 5466.07, 0, 0)
+	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, 3367.86, 308.6, 5466.07, 0, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
 	end
 
 	--newb starter grind spawns

@@ -38,6 +38,25 @@ DathomirTradeOutpostScreenPlay = CityScreenPlay:new {
 		npc_5 = {{577, 6, 3100, 0, true}, {568, 6, 3106, 0, true}, {563, 6, 3092, 0, true}, {556, 6, 3099, 0, true}, {590, 6, 3108, 0, true}},
 		npc_6 = {{616, 6, 3056, 0, true}, {610, 6, 3065, 0, true}, {617, 6, 3072, 0, true}, {609, 6, 3052, 0, true}},
 	},
+
+	mobiles = {
+		--In buildings
+		{"scientist",60,5.7,0.6,-6.3,-132,6955370, "conversation"},
+		{"noble", 60, 3.00888, 0.125266, -2.92449, -90, 1392894, ""},
+		{"businessman", 60, 6.94935, 0.624998, 2.6394, 198.079, 6955367, ""},
+		{"businessman", 60, -8.09806, 0.625, 4.31086, 153.675, 6955368, ""},
+		{"nirame_sakute", 60, -2.1912, 0.624999, -6.92293, 24.0649, 6955369, ""},
+
+		--Outside
+		{"businessman", 60, 594.44, 6, 3087.13, 181.146, 0, ""},
+		{"businessman", 60, 614.681, 6, 3081.65, 80.4705, 0, ""},
+		{"commoner", 60, 597.6, 6, 3048.5, 135, 0, "conversation"},
+		{"commoner", 60, 598.679, 6, 3046.85, 315, 0, "conversation"},
+		{"commoner", 60, 621.667, 6, 3092.75, 351.148, 0, ""},
+		{"scientist", 60, 623.05, 6, 3037.98, 54.874, 0, ""},
+		{"informant_npc_lvl_3", 0,590,6,3091,-31,0, ""},
+		{"informant_npc_lvl_3", 0,598,6,3025,180,0, ""}
+	}
 }
 
 registerScreenPlay("DathomirTradeOutpostScreenPlay", true)
@@ -50,25 +69,20 @@ function DathomirTradeOutpostScreenPlay:start()
 end
 
 function DathomirTradeOutpostScreenPlay:spawnMobiles()
+	local mobiles = self.mobiles
 
-	--In buildings
-	local pNpc = spawnMobile("dathomir", "scientist",60,5.7,0.6,-6.3,-132,6955370)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile("dathomir", "noble", 60, 3.00888, 0.125266, -2.92449, -90, 1392894)
-	spawnMobile("dathomir", "businessman", 60, 6.94935, 0.624998, 2.6394, 198.079, 6955367)
-	spawnMobile("dathomir", "businessman", 60, -8.09806, 0.625, 4.31086, 153.675, 6955368)
-	spawnMobile("dathomir", "nirame_sakute", 60, -2.1912, 0.624999, -6.92293, 24.0649, 6955369)
+	for i = 1, #mobiles, 1 do
+		local mob = mobiles[i]
 
-	--Outside
-	spawnMobile("dathomir", "businessman", 60, 594.44, 6, 3087.13, 181.146, 0)
-	spawnMobile("dathomir", "businessman", 60, 614.681, 6, 3081.65, 80.4705, 0)
-	pNpc = spawnMobile("dathomir", "commoner", 60, 597.6, 6, 3048.5, 135, 0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile("dathomir", "commoner", 60, 598.679, 6, 3046.85, 315, 0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile("dathomir", "commoner", 60, 621.667, 6, 3092.75, 351.148, 0)
-	spawnMobile("dathomir", "scientist", 60, 623.05, 6, 3037.98, 54.874, 0)
-	spawnMobile("dathomir", "informant_npc_lvl_3", 0,590,6,3091,-31,0)
-	spawnMobile("dathomir", "informant_npc_lvl_3", 0,598,6,3025,180,0)
+		-- {template, respawn, x, z, y, direction, cell, mood}
+		local pMobile = spawnMobile(self.planet, mob[1], mob[2], mob[3], mob[4], mob[5], mob[6], mob[7])
 
+		if (pMobile ~= nil) then
+			if mob[8] ~= "" then
+				CreatureObject(pMobile):setMoodString(mob[8])
+			end
+
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+		end
+	end
 end
