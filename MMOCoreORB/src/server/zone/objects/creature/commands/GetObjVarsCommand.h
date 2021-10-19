@@ -75,15 +75,22 @@ public:
 			msg << "Children: " << String::valueOf(object->getChildObjects()->size()) << endl;
 			msg << "PARENT OBJECTID: " << String::valueOf(parentID) << endl;
 
-			if (object->isAiAgent()) {
-				AiAgent* objectAgent = object->asAiAgent();
+			if (object->isCreatureObject()) {
+				CreatureObject* creoObject = object->asCreatureObject();
 
-				if (objectAgent != nullptr) {
-					String aiEnabled = (objectAgent->getOptionsBitmask() & OptionBitmask::AIENABLED ? "True" : "False");
+				if (creoObject != nullptr) {
+					String aiEnabled = (creoObject->getOptionsBitmask() & OptionBitmask::AIENABLED ? "True" : "False");
 					msg << "AI Enabled: " << aiEnabled << endl;
-					msg << "Creature Bitmask: " << objectAgent->getCreatureBitmask() << endl;
-					msg << "PvP Status Bitmask: " << objectAgent->getPvpStatusBitmask() << endl;
-					msg << "Options Bitmask: " << objectAgent->getOptionsBitmask() << endl;
+					msg << "PvP Status Bitmask: " << creoObject->getPvpStatusBitmask() << endl;
+					msg << "Options Bitmask: " << creoObject->getOptionsBitmask() << endl;
+				}
+
+				if (object->isAiAgent()) {
+					AiAgent* objectAgent = object->asAiAgent();
+
+					if (objectAgent != nullptr) {
+						msg << "Creature Bitmask: " << objectAgent->getCreatureBitmask() << endl;
+					}
 				}
 			}
 
