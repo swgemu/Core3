@@ -458,3 +458,25 @@ template<> bool CheckTargetInOwnerRange::check(AiAgent* agent) const {
 
 	return false;
 }
+
+template<> bool CheckUseRanged::check(AiAgent* agent) const {
+	return agent->getUseRanged();
+}
+
+template<> bool CheckWeaponIsRanged::check(AiAgent* agent) const {
+	if (checkVar == PRIMARYWEAPON) {
+		WeaponObject* primaryWeapon = agent->getPrimaryWeapon();
+
+		if (primaryWeapon != nullptr && primaryWeapon->isRangedWeapon()) {
+			return true;
+		}
+	} else if (checkVar == SECONDARYWEAPON) {
+		WeaponObject* secondaryWeapon = agent->getPrimaryWeapon();
+
+		if (secondaryWeapon != nullptr && secondaryWeapon->isRangedWeapon()) {
+			return true;
+		}
+	}
+
+	return false;
+}
