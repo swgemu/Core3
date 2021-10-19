@@ -349,7 +349,11 @@ class PetControlDevice extends ControlDevice {
 
 	@preLocked
 	public void toggleUseRanged() {
-		useRanged = !useRanged;
+		if (useRanged) {
+			useRanged = false;
+		} else {
+			useRanged = true;
+		}
 	}
 
 	public void setVitalityHealthPenalty(float value) {

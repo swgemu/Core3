@@ -16,6 +16,40 @@ awarePet = {
 	{id="559248213",	name="TreeSocket",	pid="2672408205",	args={slot=MOVE}}}
 addAiTemplate("awarePet", awarePet)
 
+equipPet = {
+	{id="1108669613",	name="ParallelSequence",	pid="none"},
+	{id="3049624129",	name="Sequence",	pid="1108669613"},
+	{id="2950077037",	name="UpdateRangeToFollow",	pid="3049624129"},
+	{id="3308237866",	name="Selector",	pid="3049624129"},
+	{id="2437000641",	name="Sequence",	pid="3308237866"},
+	{id="1185099605",	name="If",	pid="2437000641"},
+	{id="2759587382",	name="CheckUseRanged",	pid="1185099605"},
+	{id="2987581746",	name="Selector",	pid="2437000641"},
+	{id="1695730033",	name="Sequence",	pid="2987581746"},
+	{id="3227837017",	name="If",	pid="1695730033"},
+	{id="2534499086",	name="CheckWeaponIsRanged",	pid="3227837017",	args={condition=PRIMARYWEAPON}},
+	{id="1381132896",	name="WriteBlackboard",	pid="1695730033",	args={key="stagedWeapon", val=PRIMARYWEAPON}},
+	{id="3632826513",	name="Sequence",	pid="2987581746"},
+	{id="1157658447",	name="If",	pid="3632826513"},
+	{id="1155398833",	name="CheckWeaponIsRanged",	pid="1157658447",	args={condition=SECONDARYWEAPON}},
+	{id="353950556",	name="WriteBlackboard",	pid="3632826513",	args={key="stagedWeapon", val=SECONDARYWEAPON}},
+	{id="1749301565",	name="Sequence",	pid="3308237866"},
+	{id="3831253223",	name="If",	pid="1749301565"},
+	{id="3554588378",	name="CheckFollowInWeaponRange",	pid="3831253223",	args={condition=PRIMARYWEAPON}},
+	{id="124074494",	name="If",	pid="1749301565"},
+	{id="417335643",	name="CheckFollowClosestIdealRange",	pid="124074494",	args={condition=PRIMARYWEAPON}},
+	{id="1808660918",	name="WriteBlackboard",	pid="1749301565",	args={key="stagedWeapon", val=PRIMARYWEAPON}},
+	{id="970080915",	name="Sequence",	pid="3308237866"},
+	{id="3704650182",	name="If",	pid="970080915"},
+	{id="4045449539",	name="CheckFollowInWeaponRange",	pid="3704650182",	args={condition=SECONDARYWEAPON}},
+	{id="3110803999",	name="If",	pid="970080915"},
+	{id="3581580359",	name="CheckFollowClosestIdealRange",	pid="3110803999",	args={condition=SECONDARYWEAPON}},
+	{id="1322099622",	name="WriteBlackboard",	pid="970080915",	args={key="stagedWeapon", val=SECONDARYWEAPON}},
+	{id="3132206392",	name="EquipStagedWeapon",	pid="3049624129"},
+	{id="50350698",	name="EraseBlackboard",	pid="1108669613",	args={param="stagedWeapon"}},
+	{id="3927914430",	name="EraseBlackboard",	pid="1108669613",	args={param="followRange"}}}
+addAiTemplate("equipPet", equipPet)
+
 idlePet = {
 	{id="2602839395",	name="Selector",	pid="none"},
 	{id="1196938563",	name="Sequence",	pid="2602839395"},
@@ -82,6 +116,8 @@ targetPet = {
 	{id="4137584383",	name="GetProspectFromCommand",	pid="3411899925"},
 	{id="89792960",	name="Sequence",	pid="2325957935"},
 	{id="1148349928",	name="Selector",	pid="89792960"},
+	{id="1780096631",	name="If",	pid="1148349928"},
+	{id="3175965712",	name="CheckPetCommand",	pid="1780096631",	args={condition=PET_RANGED_ATTACK}},
 	{id="1114936193",	name="If",	pid="1148349928"},
 	{id="4248996732",	name="CheckPetCommand",	pid="1114936193",	args={condition=PET_PATROL}},
 	{id="4288585165",	name="If",	pid="1148349928"},

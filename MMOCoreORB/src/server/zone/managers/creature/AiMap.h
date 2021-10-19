@@ -366,6 +366,8 @@ private:
 		_REGISTERLEAF(CheckFlee);
 		_REGISTERLEAF(CheckOwnerInRange);
 		_REGISTERLEAF(CheckTargetInOwnerRange);
+		_REGISTERLEAF(CheckUseRanged);
+		_REGISTERLEAF(CheckWeaponIsRanged);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
