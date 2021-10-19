@@ -2,6 +2,7 @@ xarot_nightsister_witch = Creature:new {
 	objectName = "",
 	socialGroup = "nightsister",
 	faction = "nightsister",
+	mobType = MOB_NPC,
 	level = 60,
 	chanceHit = 0.5,
 	damageMin = 445,

@@ -2,6 +2,7 @@ zekka_thyne = Creature:new {
 	objectName = "@npc_name:bothan_base_male",
 	customName = "Zekka Thyne",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

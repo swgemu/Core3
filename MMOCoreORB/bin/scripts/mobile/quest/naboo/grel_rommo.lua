@@ -2,6 +2,7 @@ grel_rommo = Creature:new {
 	objectName = "@mob/creature_names:rebel_pilot",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,

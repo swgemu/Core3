@@ -2,6 +2,7 @@ theme_park_jabba_kaadu = Creature:new {
 	objectName = "@mob/creature_names:kaadu",
 	socialGroup = "mercenary",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

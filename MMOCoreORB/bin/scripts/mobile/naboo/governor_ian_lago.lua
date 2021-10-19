@@ -2,6 +2,7 @@ governor_ian_lago = Creature:new {
 	objectName = "",
 	customName = "Governor Ian Lago",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

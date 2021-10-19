@@ -2,6 +2,7 @@ fath_hray = Creature:new {
 	objectName = "@mob/creature_names:fath_hray",
 	socialGroup = "nightsister",
 	faction = "nightsister",
+	mobType = MOB_NPC,
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 250,

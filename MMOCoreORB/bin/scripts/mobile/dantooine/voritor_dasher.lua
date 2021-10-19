@@ -2,6 +2,7 @@ voritor_dasher = Creature:new {
 	objectName = "@mob/creature_names:voritor_dasher",
 	socialGroup = "voritor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 345,

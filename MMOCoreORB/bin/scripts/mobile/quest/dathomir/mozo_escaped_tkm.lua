@@ -2,6 +2,7 @@ mozo_escaped_tkm = Creature:new {
 	objectName = "@mob/creature_names:prisoner",
 	socialGroup = "prisoner",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 27,
 	chanceHit = 0.27,
 	damageMin = 260,

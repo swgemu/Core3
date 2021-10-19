@@ -2,6 +2,7 @@ plasma_bandit = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Plasma Bandit",
 	socialGroup = "plasma_thief",
 	faction = "plasma_thief",

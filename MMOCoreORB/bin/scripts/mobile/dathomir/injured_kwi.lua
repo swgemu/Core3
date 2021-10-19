@@ -2,6 +2,7 @@ injured_kwi = Creature:new {
 	objectName = "@mob/creature_names:injured_kwi",
 	socialGroup = "kwi",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,

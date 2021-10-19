@@ -2,6 +2,7 @@ hedon_istee = Creature:new {
 	objectName = "",
 	customName = "Hedon Istee",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

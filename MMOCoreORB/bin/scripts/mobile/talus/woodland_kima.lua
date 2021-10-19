@@ -2,6 +2,7 @@ woodland_kima = Creature:new {
 	objectName = "@mob/creature_names:woodland_kima",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 160,

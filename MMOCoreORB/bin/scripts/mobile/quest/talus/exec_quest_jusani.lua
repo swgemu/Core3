@@ -2,6 +2,7 @@ exec_quest_jusani = Creature:new {
 	objectName = "@mob/creature_names:businessman",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

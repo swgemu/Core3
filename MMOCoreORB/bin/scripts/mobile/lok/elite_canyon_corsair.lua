@@ -2,6 +2,7 @@ elite_canyon_corsair = Creature:new {
 	objectName = "@mob/creature_names:elite_canyon_corsair",
 	socialGroup = "canyon_corsair",
 	faction = "canyon_corsair",
+	mobType = MOB_NPC,
 	level = 45,
 	chanceHit = 0.47,
 	damageMin = 370,

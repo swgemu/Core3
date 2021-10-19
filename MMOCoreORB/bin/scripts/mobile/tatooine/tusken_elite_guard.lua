@@ -2,6 +2,7 @@ tusken_elite_guard = Creature:new {
 	objectName = "@mob/creature_names:tusken_elite_guard",
 	socialGroup = "tusken_raider",
 	faction = "tusken_raider",
+	mobType = MOB_NPC,
 	level = 44,
 	chanceHit = 0.46,
 	damageMin = 365,

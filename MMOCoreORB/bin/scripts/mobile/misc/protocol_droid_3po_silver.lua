@@ -2,6 +2,7 @@ protocol_droid_3po_silver = Creature:new {
 	objectName = "@mob/creature_names:protocol_droid_3po_silver",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

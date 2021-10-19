@@ -2,6 +2,7 @@ baritha = Creature:new {
 	objectName = "",
 	customName = "Baritha",
 	socialGroup = "nightsister",
+	mobType = MOB_NPC,
 	faction = "nightsister",
 	level = 100,
 	chanceHit = 1,

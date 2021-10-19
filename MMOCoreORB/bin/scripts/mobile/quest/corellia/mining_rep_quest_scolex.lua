@@ -2,6 +2,7 @@ mining_rep_quest_scolex = Creature:new {
 	objectName = "@mob/creature_names:miner",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,

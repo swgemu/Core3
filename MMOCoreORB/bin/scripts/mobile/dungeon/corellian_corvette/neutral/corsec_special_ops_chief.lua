@@ -2,6 +2,7 @@ corsec_special_ops_chief = Creature:new {
 	objectName = "@mob/creature_names:corsec_chief_aggro",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 200,

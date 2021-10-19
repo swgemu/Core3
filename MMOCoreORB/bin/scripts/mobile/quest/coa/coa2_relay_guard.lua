@@ -2,6 +2,7 @@ coa2_relay_guard = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper",
 	randomNameType = NAME_STORMTROOPER,
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 27,
 	chanceHit = 0.37,

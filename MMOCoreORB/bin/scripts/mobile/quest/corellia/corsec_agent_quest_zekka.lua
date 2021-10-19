@@ -2,6 +2,7 @@ corsec_agent_quest_zekka = Creature:new {
 	objectName = "@mob/creature_names:corsec_agent",
 	socialGroup = "corsec",
 	faction = "corsec",
+	mobType = MOB_NPC,
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,

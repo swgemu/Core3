@@ -2,6 +2,7 @@ swooper = Creature:new {
 	objectName = "@mob/creature_names:swooper",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "swoop",
 	faction = "swoop",
 	level = 2,

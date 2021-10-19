@@ -2,6 +2,7 @@ cll8_binary_load_lifter_crafted = Creature:new {
 	objectName = "@droid_name:cll_8_binary_load_lifter_crafted",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 10,

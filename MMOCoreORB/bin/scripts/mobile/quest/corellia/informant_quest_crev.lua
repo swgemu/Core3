@@ -2,6 +2,7 @@ informant_quest_crev = Creature:new {
 	objectName = "@mob/creature_names:spynet_operative",
 	socialGroup = "spynet",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,

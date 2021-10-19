@@ -2,6 +2,7 @@ wooral = Creature:new {
 	objectName = "",
 	socialGroup = "selonian",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,

@@ -2,6 +2,7 @@ abandoned_rebel_private = Creature:new {
 	objectName = "@mob/creature_names:abandoned_rebel_private",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 27,

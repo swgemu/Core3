@@ -2,6 +2,7 @@ gurreck_forest_stalker = Creature:new {
 	objectName = "@mob/creature_names:woodland_gurreck",
 	socialGroup = "gurreck",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 32,
 	chanceHit = 0.39,
 	damageMin = 320,

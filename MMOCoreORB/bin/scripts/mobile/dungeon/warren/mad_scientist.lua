@@ -2,6 +2,7 @@ mad_scientist = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Mad Scientist",
 	socialGroup = "warren_scientist",
 	faction = "",

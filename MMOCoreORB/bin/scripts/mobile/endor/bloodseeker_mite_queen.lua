@@ -2,6 +2,7 @@ bloodseeker_mite_queen = Creature:new {
 	objectName = "@mob/creature_names:bloodseeker_mite_queen",
 	socialGroup = "bloodseeker",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 38,
 	chanceHit = 0.41,
 	damageMin = 330,

@@ -2,6 +2,7 @@ nightsister_ranger_quest = Creature:new {
 	objectName = "@mob/creature_names:nightsister_ranger",
 	socialGroup = "nightsister",
 	faction = "nightsister",
+	mobType = MOB_NPC,
 	level = 81,
 	chanceHit = 0.75,
 	damageMin = 555,

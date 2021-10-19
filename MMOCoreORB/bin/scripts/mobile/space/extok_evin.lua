@@ -2,6 +2,7 @@ extok_evin = Creature:new {
 	objectName = "@npc_spawner_n:extok_evin",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

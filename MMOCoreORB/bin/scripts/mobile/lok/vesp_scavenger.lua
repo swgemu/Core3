@@ -2,6 +2,7 @@ vesp_scavenger = Creature:new {
 	objectName = "@mob/creature_names:vesp_scavanger",
 	socialGroup = "vesp",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 29,
 	chanceHit = 0.37,
 	damageMin = 260,

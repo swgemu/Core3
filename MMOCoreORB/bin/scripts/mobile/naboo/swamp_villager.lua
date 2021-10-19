@@ -2,6 +2,7 @@ swamp_villager = Creature:new {
 	objectName = "@mob/creature_names:swamp_villager",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "villager",
 	faction = "",
 	level = 7,

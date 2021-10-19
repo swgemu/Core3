@@ -2,6 +2,7 @@ borgle_life_sapper = Creature:new {
 	objectName = "@mob/creature_names:borgle_life_sapper",
 	socialGroup = "borgle",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 25,
 	chanceHit = 0.35,
 	damageMin = 220,

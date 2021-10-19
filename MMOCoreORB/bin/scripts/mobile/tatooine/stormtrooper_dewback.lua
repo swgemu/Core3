@@ -2,6 +2,7 @@ stormtrooper_dewback = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_dewback",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_HERBIVORE,
 	level = 29,
 	chanceHit = 0.38,
 	damageMin = 280,

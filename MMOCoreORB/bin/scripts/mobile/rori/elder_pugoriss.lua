@@ -2,6 +2,7 @@ elder_pugoriss = Creature:new {
 	objectName = "@mob/creature_names:elder_pugoriss",
 	socialGroup = "pugoriss",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 17,
 	chanceHit = 0.31,
 	damageMin = 170,

@@ -2,6 +2,7 @@ sean_questn_university = Creature:new {
 	objectName = "",
 	customName = "Ocket Abaot",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

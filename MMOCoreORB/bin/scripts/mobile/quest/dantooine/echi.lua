@@ -3,6 +3,7 @@ echi = Creature:new {
 	customName = "Echi (a Holovid Developer)",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

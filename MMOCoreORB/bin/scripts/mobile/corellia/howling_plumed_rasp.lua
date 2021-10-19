@@ -2,6 +2,7 @@ howling_plumed_rasp = Creature:new {
 	objectName = "@mob/creature_names:howling_plumed_rasp",
 	socialGroup = "rasp",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

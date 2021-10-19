@@ -2,6 +2,7 @@ slooni_jong = Creature:new {
 	objectName = "",
 	customName = "Slooni Jong",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

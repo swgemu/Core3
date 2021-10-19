@@ -2,6 +2,7 @@ kormund_thrylle = Creature:new {
 	objectName = "",
 	customName = "Kormund Thrylle",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 10,
 	chanceHit = 0.28,

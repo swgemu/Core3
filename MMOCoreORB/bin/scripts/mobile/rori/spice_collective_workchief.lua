@@ -2,6 +2,7 @@ spice_collective_workchief = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_workchief",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "spice_collective",
 	faction = "spice_collective",
 	level = 11,

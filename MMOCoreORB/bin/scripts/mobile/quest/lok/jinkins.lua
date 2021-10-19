@@ -2,6 +2,7 @@ jinkins = Creature:new {
 	objectName = "@mob/creature_names:jinkins",
 	socialGroup = "nym",
 	faction = "nym",
+	mobType = MOB_NPC,
 	level = 22,
 	chanceHit = 0.330000,
 	damageMin = 190,

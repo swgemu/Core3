@@ -2,6 +2,7 @@ sayama_edosun = Creature:new {
 	objectName = "",
 	customName = "Sayama Edosun",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

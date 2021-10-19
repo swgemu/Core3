@@ -2,6 +2,7 @@ fs_reflex1_prisoner = Creature:new {
 	objectName = "",
 	customName = "an imprisoned villager",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

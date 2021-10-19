@@ -2,6 +2,7 @@ chasmal_spider = Creature:new {
 	objectName = "@mob/creature_names:gaping_spider_chasmal",
 	socialGroup = "spider",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 31,
 	chanceHit = 0.38,
 	damageMin = 290,

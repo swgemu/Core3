@@ -2,6 +2,7 @@ sigrix_selonian_warrior = Creature:new {
 	objectName = "@mob/creature_names:selonian_warrior",
 	socialGroup = "selonian",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

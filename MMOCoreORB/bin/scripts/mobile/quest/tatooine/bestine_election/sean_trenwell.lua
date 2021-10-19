@@ -2,6 +2,7 @@ sean_trenwell = Creature:new {
 	objectName = "",
 	customName = "Sean Trenwell",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

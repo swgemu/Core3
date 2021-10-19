@@ -2,6 +2,7 @@ junk_jawa = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Jawa Trader",
 	planetMapCategory = "junkshop",
+	mobType = MOB_NPC,
 	socialGroup = "jawa",
 	faction = "jawa",
 	level = 100,

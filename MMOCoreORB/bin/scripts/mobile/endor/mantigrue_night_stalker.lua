@@ -2,6 +2,7 @@ mantigrue_night_stalker = Creature:new {
 	objectName = "@mob/creature_names:mantigrue_night_stalker",
 	socialGroup = "mantigrue",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 28,
 	chanceHit = 0.36,
 	damageMin = 290,

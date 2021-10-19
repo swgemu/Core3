@@ -3,6 +3,7 @@ c3p0_crafted = Creature:new {
 	socialGroup = "",
 	faction = "",
 	level = 4,
+	mobType = MOB_DROID,
 	chanceHit = 0.24,
 	damageMin = 10,
 	damageMax = 10,

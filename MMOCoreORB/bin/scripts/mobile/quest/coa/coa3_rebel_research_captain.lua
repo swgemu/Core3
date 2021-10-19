@@ -2,6 +2,7 @@ coa3_rebel_research_captain = Creature:new {
 	objectName = "",
 	customName = "a Rebel Research Captain",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 23,
 	chanceHit = 0.35,

@@ -2,6 +2,7 @@ sont_toipo = Creature:new {
 	objectName = "",
 	customName = "Sont Toipo",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 13,
 	chanceHit = 0.3,

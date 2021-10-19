@@ -2,6 +2,7 @@ female_kai_tok = Creature:new {
 	objectName = "@mob/creature_names:female_kai_tok",
 	socialGroup = "kai_tok",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.29,
 	damageMin = 130,

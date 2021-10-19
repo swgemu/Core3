@@ -2,6 +2,7 @@ lian_thief = Creature:new {
 	objectName = "@mob/creature_names:thief",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

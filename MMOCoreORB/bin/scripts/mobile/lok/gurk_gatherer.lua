@@ -2,6 +2,7 @@ gurk_gatherer = Creature:new {
 	objectName = "@mob/creature_names:gurk_gatherer",
 	socialGroup = "gurk",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 30,
 	chanceHit = 0.37,
 	damageMin = 270,

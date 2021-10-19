@@ -2,6 +2,7 @@ bewitching_donkuwah_shaman = Creature:new {
 	objectName = "@mob/creature_names:bewitching_donkuwah_shaman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 21,

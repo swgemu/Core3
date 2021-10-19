@@ -2,6 +2,7 @@ grand_wrix = Creature:new {
 	objectName = "@mob/creature_names:grand_wrix",
 	socialGroup = "wrix",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 25,
 	chanceHit = 0.35,
 	damageMin = 210,

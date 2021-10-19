@@ -2,6 +2,7 @@ lerat_zom = Creature:new {
 	objectName = "@mob/creature_names:lerat_zom",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 23,
 	chanceHit = 0.33,
 	damageMin = 210,

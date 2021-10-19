@@ -2,6 +2,7 @@ r2d2 = Creature:new {
 	objectName = "@theme_park_name:r2d2",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_DROID,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

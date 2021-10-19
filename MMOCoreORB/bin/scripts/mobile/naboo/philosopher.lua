@@ -2,6 +2,7 @@ philosopher = Creature:new {
 	objectName = "@mob/creature_names:philosopher",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,

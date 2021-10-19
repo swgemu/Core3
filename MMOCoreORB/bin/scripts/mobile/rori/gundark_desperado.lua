@@ -2,6 +2,7 @@ gundark_desperado = Creature:new {
 	objectName = "@mob/creature_names:gundark_desperado",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "gundark_gang",
 	faction = "thug",
 	level = 8,

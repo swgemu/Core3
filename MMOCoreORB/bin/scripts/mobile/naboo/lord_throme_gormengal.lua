@@ -2,6 +2,7 @@ lord_throme_gormengal = Creature:new {
 	objectName = "",
 	customName = "Lord Throme Gormengal",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

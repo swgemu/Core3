@@ -2,6 +2,7 @@ song_rasp = Creature:new {
 	objectName = "@mob/creature_names:song_rasp",
 	socialGroup = "rasp",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

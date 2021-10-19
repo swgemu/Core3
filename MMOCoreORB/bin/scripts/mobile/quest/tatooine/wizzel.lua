@@ -2,6 +2,7 @@ wizzel = Creature:new {
 	objectName = "",
 	socialGroup = "mercenary",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

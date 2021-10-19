@@ -2,6 +2,7 @@ stoneskin_hanadak = Creature:new {
 	objectName = "@mob/creature_names:stoneskin_hanadak",
 	socialGroup = "hanadak",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 139,
 	chanceHit = 4.75,
 	damageMin = 720,

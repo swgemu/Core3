@@ -2,6 +2,7 @@ baz_nitch = Creature:new {
 	objectName = "@mob/creature_names:baz_nitch",
 	socialGroup = "baz_nitch",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 210,

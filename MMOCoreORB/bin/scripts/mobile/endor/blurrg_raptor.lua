@@ -2,6 +2,7 @@ blurrg_raptor = Creature:new {
 	objectName = "@mob/creature_names:blurrg_raptor",
 	socialGroup = "blurrg",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 141,
 	chanceHit = 6.25,
 	damageMin = 945,

@@ -2,6 +2,7 @@ domesticated_merek = Creature:new {
 	objectName = "@mob/creature_names:domesticated_merek",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 49,
 	chanceHit = 0.5,
 	damageMin = 395,

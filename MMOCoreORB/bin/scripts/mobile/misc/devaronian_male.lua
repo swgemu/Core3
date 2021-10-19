@@ -2,6 +2,7 @@ devaronian_male = Creature:new {
 	objectName = "@mob/creature_names:patron_devaronian_male",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

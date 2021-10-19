@@ -2,6 +2,7 @@ kaja_orzee = Creature:new {
 	objectName = "@mob/creature_names:kaja_orzee",
 	customName = "Kaja Orzee",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ roaming_desert_borgle = Creature:new {
 	objectName = "@mob/creature_names:borgle_desert_roamer",
 	socialGroup = "borgle",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 32,
 	chanceHit = 0.38,
 	damageMin = 280,

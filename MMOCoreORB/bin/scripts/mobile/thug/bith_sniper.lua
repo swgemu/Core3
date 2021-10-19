@@ -2,6 +2,7 @@ bith_sniper = Creature:new {
 	objectName = "@mob/creature_names:bith_sniper",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "bith",
 	faction = "",
 	level = 9,

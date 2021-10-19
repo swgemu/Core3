@@ -2,6 +2,7 @@ pirate_squab = Creature:new {
 	objectName = "@mob/creature_names:pirate",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Pirate Squab",
 	socialGroup = "pirate",
 	faction = "",

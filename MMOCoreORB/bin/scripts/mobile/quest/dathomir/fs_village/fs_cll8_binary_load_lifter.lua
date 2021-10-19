@@ -2,6 +2,7 @@ fs_cll8_binary_load_lifter = Creature:new {
 	objectName = "",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_DROID,
 	customName = "QT-QC",
 	level = 100,
 	chanceHit = 1,

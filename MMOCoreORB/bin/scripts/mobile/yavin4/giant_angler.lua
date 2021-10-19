@@ -2,6 +2,7 @@ giant_angler = Creature:new {
 	objectName = "@mob/creature_names:giant_angler",
 	socialGroup = "angler",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 35,
 	chanceHit = 0.41,
 	damageMin = 320,

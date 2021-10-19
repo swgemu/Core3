@@ -2,6 +2,7 @@ sludge_panther = Creature:new {
 	objectName = "@mob/creature_names:sludge_panther",
 	socialGroup = "panther",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

@@ -2,6 +2,7 @@ farious_gletch = Creature:new {
 	objectName = "",
 	customName = "Farious Gletch",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

@@ -2,6 +2,7 @@ noren_krast = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Noren Krast",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

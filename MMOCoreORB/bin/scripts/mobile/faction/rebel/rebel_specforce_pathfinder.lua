@@ -2,6 +2,7 @@ rebel_specforce_pathfinder = Creature:new {
 	objectName = "@mob/creature_names:rebel_specforce_pathfinder",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 18,

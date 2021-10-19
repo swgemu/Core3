@@ -2,6 +2,7 @@ turon_idala = Creature:new {
 	objectName = "@mob/creature_names:naboo_police",
 	customName = "Turon Adala",
 	socialGroup = "naboo_security_force",
+	mobType = MOB_NPC,
 	faction = "naboo_security_force",
 	level = 16,
 	chanceHit = 0.31,

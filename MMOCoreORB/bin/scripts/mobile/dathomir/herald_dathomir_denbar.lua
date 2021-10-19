@@ -2,6 +2,7 @@ herald_dathomir_denbar = Creature:new {
 	objectName = "",
 	customName = "Denbar",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

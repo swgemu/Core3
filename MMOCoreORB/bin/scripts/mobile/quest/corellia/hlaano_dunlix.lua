@@ -2,6 +2,7 @@ hlaano_dunlix = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	customName = "Hlaano Dunlix",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

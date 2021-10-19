@@ -2,6 +2,7 @@ hero_of_tat_smuggler = Creature:new {
 	objectName = "@mob/creature_names:smuggler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "",
 	faction = "",
 	level = 14,

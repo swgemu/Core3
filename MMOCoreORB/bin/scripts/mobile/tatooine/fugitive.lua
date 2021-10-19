@@ -2,6 +2,7 @@ fugitive = Creature:new {
 	objectName = "@mob/creature_names:fugitive",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

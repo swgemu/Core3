@@ -2,6 +2,7 @@ outrider = Creature:new {
 	objectName = "@mob/creature_names:lost_aqualish_outrider",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "wilder",
 	faction = "",
 	level = 10,

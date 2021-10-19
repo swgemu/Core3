@@ -2,6 +2,7 @@ hero_of_tat_smuggler_captain = Creature:new {
 	objectName = "",
 	customName = "Himfan (a smuggler captain)",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

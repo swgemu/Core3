@@ -2,6 +2,7 @@ male_snorbal_calf = Creature:new {
 	objectName = "@mob/creature_names:male_snorbal_calf",
 	socialGroup = "snorbal",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 22,
 	chanceHit = 0.33,
 	damageMin = 190,

@@ -2,7 +2,7 @@ daclif_gallamby = Creature:new {
 	objectName = "",
 	customName = "Daclif Gallamby",
 	socialGroup = "townsperson",
-
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

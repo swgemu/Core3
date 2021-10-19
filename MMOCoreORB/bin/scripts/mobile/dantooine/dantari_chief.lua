@@ -2,6 +2,7 @@ dantari_chief = Creature:new {
 	objectName = "@mob/creature_names:dantari_raider_chief",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "dantari_raiders",
 	faction = "dantari_raiders",
 	level = 42,

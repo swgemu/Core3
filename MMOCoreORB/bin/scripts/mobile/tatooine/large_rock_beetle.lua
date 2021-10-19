@@ -2,6 +2,7 @@ large_rock_beetle = Creature:new {
 	objectName = "@mob/creature_names:large_rock_beetle",
 	socialGroup = "beetle",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 170,

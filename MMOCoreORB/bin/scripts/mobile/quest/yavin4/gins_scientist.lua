@@ -2,6 +2,7 @@ gins_scientist = Creature:new {
 	objectName = "@mob/creature_names:thug",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 15,
 	chanceHit = 0.26,
 	damageMin = 85,

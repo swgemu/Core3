@@ -2,6 +2,7 @@ nym_kusak_guardian = Creature:new {
 	objectName = "@mob/creature_names:nym_kusak_guardian",
 	socialGroup = "nym",
 	faction = "nym",
+	mobType = MOB_CARNIVORE,
 	level = 29,
 	chanceHit = 0.37,
 	damageMin = 270,

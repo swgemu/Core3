@@ -2,6 +2,7 @@ jabba_rancor = Creature:new {
 	objectName = "@mob/creature_names:jabbas_palace_rancor",
 	socialGroup = "jabba ",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 61,
 	chanceHit = 0.590000,
 	damageMin = 485,

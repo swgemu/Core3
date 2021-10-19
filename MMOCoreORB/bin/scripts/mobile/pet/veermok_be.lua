@@ -2,6 +2,7 @@ veermok_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_veermok",
 	socialGroup = "veermok",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 10,
 	chanceHit = 0.2,
 	damageMin = 30,

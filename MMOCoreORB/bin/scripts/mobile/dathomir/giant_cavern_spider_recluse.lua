@@ -2,6 +2,7 @@ giant_cavern_spider_recluse = Creature:new {
 	objectName = "@mob/creature_names:cave_gaping_spider_recluse_giant",
 	socialGroup = "spider_nightsister",
 	faction = "spider_nightsister",
+	mobType = MOB_CARNIVORE,
 	level = 116,
 	chanceHit = 3.1,
 	damageMin = 775,

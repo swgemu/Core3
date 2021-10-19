@@ -2,6 +2,7 @@ escaped_traitor_quest_vinzel = Creature:new {
 	objectName = "@mob/creature_names:abandoned_rebel_private",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 27,
 	chanceHit = 0.36,
 	damageMin = 240,

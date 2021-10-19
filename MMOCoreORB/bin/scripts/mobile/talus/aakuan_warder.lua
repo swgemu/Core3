@@ -2,6 +2,7 @@ aakuan_warder = Creature:new {
 	objectName = "@mob/creature_names:aakuan_warder",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "aakuans",
 	faction = "aakuans",
 	level = 29,

@@ -2,6 +2,7 @@ fs_villager_engineer = Creature:new {
 	objectName = "@mob/creature_names:fs_villager_engineer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "fs_villager",
 	faction = "fs_villager",
 	level = 4,

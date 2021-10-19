@@ -2,6 +2,7 @@ choku_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_choku",
 	socialGroup = "choku",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 2,
 	chanceHit = 0.2,
 	damageMin = 30,

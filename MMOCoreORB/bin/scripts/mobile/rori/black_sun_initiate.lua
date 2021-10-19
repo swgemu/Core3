@@ -2,6 +2,7 @@ black_sun_initiate = Creature:new {
 	objectName = "@mob/creature_names:black_sun_initiate",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 17,

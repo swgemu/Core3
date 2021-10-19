@@ -2,6 +2,7 @@ alkhara_bandit = Creature:new {
 	objectName = "@mob/creature_names:alkhara_bandit",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "alkhara",
 	faction = "alkhara",
 	level = 13,

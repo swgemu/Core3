@@ -2,6 +2,7 @@ nightsister_enraged_bull_rancor = Creature:new {
 	objectName = "@mob/creature_names:nightsister_enraged_bull_rancor",
 	socialGroup = "nightsister",
 	faction = "nightsister",
+	mobType = MOB_CARNIVORE,
 	level = 89,
 	chanceHit = 0.85,
 	damageMin = 570,

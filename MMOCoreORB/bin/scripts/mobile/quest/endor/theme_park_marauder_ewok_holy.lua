@@ -3,6 +3,7 @@ theme_park_marauder_ewok_holy = Creature:new {
 	customName = "Ewok Holy One",
 	socialGroup = "gondula_tribe",
 	faction = "gondula_tribe",
+	mobType = MOB_NPC,
 	level = 34,
 	chanceHit = 0.35,
 	damageMin = 400,

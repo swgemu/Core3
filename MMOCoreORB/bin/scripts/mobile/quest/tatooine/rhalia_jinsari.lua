@@ -2,6 +2,7 @@ rhalia_jinsari = Creature:new {
 	objectName = "",
 	customName = "Rhalia Jinsari",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 30,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ ravenous_roba_stalker = Creature:new {
 	objectName = "@mob/creature_names:ravenous_roba_stalker",
 	socialGroup = "roba",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 40,
 	chanceHit = 0.44,
 	damageMin = 345,

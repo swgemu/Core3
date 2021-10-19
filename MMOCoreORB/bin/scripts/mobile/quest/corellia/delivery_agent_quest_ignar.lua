@@ -2,6 +2,7 @@ delivery_agent_quest_ignar = Creature:new {
 	objectName = "@mob/creature_names:drall_abbot",
 	socialGroup = "drall",
 	faction = "drall",
+	mobType = MOB_NPC,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

@@ -2,6 +2,7 @@ meager_tortur = Creature:new {
 	objectName = "@mob/creature_names:meager_tortur",
 	socialGroup = "tortur",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,

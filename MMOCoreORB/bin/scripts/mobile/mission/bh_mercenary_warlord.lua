@@ -2,6 +2,7 @@ bh_mercenary_warlord = Creature:new {
 	objectName = "@mob/creature_names:mercenary_warlord",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 44,

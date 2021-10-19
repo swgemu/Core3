@@ -2,6 +2,7 @@ dune_beetle = Creature:new {
 	objectName = "@mob/creature_names:dune_beetle",
 	socialGroup = "beetle",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 13,
 	chanceHit = 0.29,
 	damageMin = 120,

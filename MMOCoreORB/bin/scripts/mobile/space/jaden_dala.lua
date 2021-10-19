@@ -2,6 +2,7 @@ jaden_dala = Creature:new {
 	objectName = "@npc_spawner_n:jaden_dala",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -2,6 +2,7 @@ rot_mite = Creature:new {
 	objectName = "@mob/creature_names:rot_mite",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,

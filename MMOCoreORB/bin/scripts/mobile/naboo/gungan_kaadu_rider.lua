@@ -2,6 +2,7 @@ gungan_kaadu_rider = Creature:new {
 	objectName = "@mob/creature_names:gungan_kaadu_rider",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "gungan",
 	faction = "gungan",
 	level = 15,

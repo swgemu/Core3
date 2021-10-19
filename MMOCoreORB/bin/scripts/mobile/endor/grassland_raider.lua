@@ -2,6 +2,7 @@ grassland_raider = Creature:new {
 	objectName = "@mob/creature_names:grassland_raider",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "endor_marauder",
 	faction = "endor_marauder",
 	level = 40,

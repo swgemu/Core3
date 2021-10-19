@@ -2,6 +2,7 @@ vrir_unglan = Creature:new {
 	objectName = "",
 	customName = "Vrir Unglan",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

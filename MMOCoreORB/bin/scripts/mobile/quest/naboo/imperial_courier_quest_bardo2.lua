@@ -2,6 +2,7 @@ imperial_courier_quest_bardo2 = Creature:new {
 	objectName = "@mob/creature_names:assassin_mission_recruiter_imperial",
 	level = 13,
 	chanceHit = 0.3,
+	mobType = MOB_NPC,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 609,

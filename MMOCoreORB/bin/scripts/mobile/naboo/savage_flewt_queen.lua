@@ -2,6 +2,7 @@ savage_flewt_queen = Creature:new {
 	objectName = "@mob/creature_names:savage_flewt_queen",
 	socialGroup = "flewt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

@@ -2,6 +2,7 @@ igbi_hutt_hotshot = Creature:new {
 	objectName = "",
 	socialGroup = "hutt",
 	faction = "hutt",
+	mobType = MOB_NPC,
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,

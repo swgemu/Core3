@@ -2,6 +2,7 @@ cobral_hooligan = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Neo-Cobral Hooligan",
 	socialGroup = "cobral",
 	faction = "cobral",

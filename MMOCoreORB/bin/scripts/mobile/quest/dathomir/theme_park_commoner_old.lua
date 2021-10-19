@@ -2,6 +2,7 @@ theme_park_commoner_old = Creature:new {
   objectName = "@mob/creature_names:commoner",
   randomNameType = NAME_GENERIC,
   randomNameTag = true,
+	mobType = MOB_NPC,
   socialGroup = "townsperson",
   faction = "townsperson",
   level = 4,

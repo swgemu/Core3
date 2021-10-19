@@ -2,6 +2,7 @@ dagorel = Creature:new {
 	objectName = "",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 9,
 	chanceHit = 0.270000,
 	damageMin = 80,

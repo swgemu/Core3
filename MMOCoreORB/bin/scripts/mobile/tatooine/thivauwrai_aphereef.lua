@@ -3,6 +3,7 @@ thivauwrai_aphereef = Creature:new {
 	customName = "Thivauwrai Aphereef",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

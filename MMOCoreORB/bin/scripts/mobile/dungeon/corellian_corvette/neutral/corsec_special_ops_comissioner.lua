@@ -4,6 +4,7 @@ corsec_special_ops_comissioner = Creature:new {
 	randomNameTag = true,
 	socialGroup = "corsec",
 	faction = "corsec",
+	mobType = MOB_NPC,
 	level = 226,
 	chanceHit = 19.75,
 	damageMin = 1270,

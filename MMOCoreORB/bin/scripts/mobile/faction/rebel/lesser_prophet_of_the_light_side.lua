@@ -2,6 +2,7 @@ lesser_prophet_of_the_light_side = Creature:new {
 	objectName = "@mob/creature_names:lesser_prophet_of_the_dark_side",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 85,

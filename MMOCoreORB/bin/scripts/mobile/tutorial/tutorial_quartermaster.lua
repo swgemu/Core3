@@ -2,6 +2,7 @@ tutorial_quartermaster = Creature:new {
 	objectName = "@newbie_tutorial/system_messages:quarter_name",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

@@ -2,6 +2,7 @@ flit_bloodsucker = Creature:new {
 	objectName = "@mob/creature_names:flit_bloodsucker",
 	socialGroup = "flit",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

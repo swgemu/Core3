@@ -2,6 +2,7 @@ thune_grassland_guardian = Creature:new {
 	objectName = "@mob/creature_names:thune_grassland_guardian",
 	socialGroup = "thune",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 40,
 	chanceHit = 0.44,
 	damageMin = 345,

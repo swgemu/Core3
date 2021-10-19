@@ -2,6 +2,7 @@ j_pai_brek = Creature:new {
 	objectName = "@npc_spawner_n:j_pai_brek",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

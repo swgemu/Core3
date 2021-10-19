@@ -2,6 +2,7 @@ scientist_target_spy = Creature:new {
 	objectName = "@mob/creature_names:industrial_spy",
 	socialGroup = "mercenary",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 8,
 	chanceHit = 0.270000,
 	damageMin = 70,

@@ -2,6 +2,7 @@ skreeg_warrior = Creature:new {
 	objectName = "@mob/creature_names:skreeg_warrior",
 	socialGroup = "skreeg",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 28,
 	chanceHit = 0.36,
 	damageMin = 250,

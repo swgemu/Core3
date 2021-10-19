@@ -2,6 +2,7 @@ crystal_snake = Creature:new {
 	objectName = "@mob/creature_names:crystal_snake",
 	socialGroup = "snake",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

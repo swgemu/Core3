@@ -2,6 +2,7 @@ black_sun_henchman = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_blksun_henchman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 76,

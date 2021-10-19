@@ -2,6 +2,7 @@ stormtrooper_groupleader = Creature:new {
 	objectName = "@mob/creature_names:crackdown_stormtrooper_captain",
 	randomNameType = NAME_STORMTROOPER,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 29,

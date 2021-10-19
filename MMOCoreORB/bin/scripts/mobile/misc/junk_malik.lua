@@ -2,6 +2,7 @@ junk_malik = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Malik Pendron",
 	planetMapCategory = "junkshop",
+	mobType = MOB_NPC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,

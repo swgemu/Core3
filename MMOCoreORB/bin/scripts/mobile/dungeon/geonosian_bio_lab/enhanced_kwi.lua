@@ -2,6 +2,7 @@ enhanced_kwi = Creature:new {
 	objectName = "@mob/creature_names:geonosian_enhanced_kwi",
 	socialGroup = "geonosian_creature",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 106,
 	chanceHit = 1.75,
 	damageMin = 690,

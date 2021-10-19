@@ -2,6 +2,7 @@ diseased_bocatt = Creature:new {
 	objectName = "@mob/creature_names:bocatt_diseased",
 	socialGroup = "bocatt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,

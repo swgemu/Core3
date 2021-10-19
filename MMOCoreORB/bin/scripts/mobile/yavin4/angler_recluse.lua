@@ -2,6 +2,7 @@ angler_recluse = Creature:new {
 	objectName = "@mob/creature_names:angler_recluse",
 	socialGroup = "angler",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,

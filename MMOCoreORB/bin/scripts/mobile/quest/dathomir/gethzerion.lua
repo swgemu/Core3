@@ -2,6 +2,7 @@ gethzerion = Creature:new {
 	objectName = "@mob/creature_names:gethzerion",
 	socialGroup = "nightsister",
 	faction = "nightsister",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

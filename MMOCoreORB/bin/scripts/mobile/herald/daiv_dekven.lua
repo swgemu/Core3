@@ -2,6 +2,7 @@ daiv_dekven = Creature:new {
 	objectName = "@mob/creature_names:patron_human_male_02",
 	customName = "Daiv Dekven",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

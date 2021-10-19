@@ -2,6 +2,7 @@ tortur_bull = Creature:new {
 	objectName = "@mob/creature_names:tortur_bull",
 	socialGroup = "tortur",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 305,

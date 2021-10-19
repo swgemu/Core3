@@ -2,6 +2,7 @@ great_plains_stalker = Creature:new {
 	objectName = "@mob/creature_names:great_plains_stalker",
 	socialGroup = "panther",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 51,
 	chanceHit = 0.5,
 	damageMin = 395,

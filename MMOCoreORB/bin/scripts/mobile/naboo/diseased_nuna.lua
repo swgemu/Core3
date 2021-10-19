@@ -2,6 +2,7 @@ diseased_nuna = Creature:new {
 	objectName = "@mob/creature_names:diseased_nuna",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

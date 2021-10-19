@@ -2,6 +2,7 @@ victor_questn_capitol = Creature:new {
 	objectName = "",
 	customName = "TL-017",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

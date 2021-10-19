@@ -2,6 +2,7 @@ sindra_bieque = Creature:new {
   objectName = "@mob/creature_names:philosopher",
   socialGroup = "townsperson",
   faction = "townsperson",
+	mobType = MOB_NPC,
   level = 4,
   chanceHit = 0.240000,
   damageMin = 40,

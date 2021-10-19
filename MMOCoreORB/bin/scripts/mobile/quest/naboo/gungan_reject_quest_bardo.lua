@@ -2,6 +2,7 @@ gungan_reject_quest_bardo = Creature:new {
 	objectName = "@mob/creature_names:mordran_gungan_reject",
 	socialGroup = "borvo",
 	faction = "borvo",
+	mobType = MOB_NPC,
 	level = 35,
 	chanceHit = 0.41,
 	damageMin = 320,

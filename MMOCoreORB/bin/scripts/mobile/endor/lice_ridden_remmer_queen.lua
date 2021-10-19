@@ -2,6 +2,7 @@ lice_ridden_remmer_queen = Creature:new {
 	objectName = "@mob/creature_names:lice_ridden_remmer_queen",
 	socialGroup = "remmer",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 37,
 	chanceHit = 0.41,
 	damageMin = 320,

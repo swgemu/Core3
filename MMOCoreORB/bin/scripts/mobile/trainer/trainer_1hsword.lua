@@ -2,6 +2,7 @@ trainer_1hsword = Creature:new {
 	objectName = "@mob/creature_names:trainer_1hsword",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "",
 	faction = "",
 	level = 100,

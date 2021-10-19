@@ -2,6 +2,7 @@ ikopi = Creature:new {
 	objectName = "@mob/creature_names:ikopi",
 	socialGroup = "ikopi",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 50,

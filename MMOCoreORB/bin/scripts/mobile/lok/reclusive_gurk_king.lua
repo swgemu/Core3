@@ -2,6 +2,7 @@ reclusive_gurk_king = Creature:new {
 	objectName = "@mob/creature_names:recluse_gurk_king",
 	socialGroup = "gurk",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 45,
 	chanceHit = 0.47,
 	damageMin = 370,

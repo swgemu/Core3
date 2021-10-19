@@ -2,6 +2,7 @@ giant_decay_mite_queen = Creature:new {
 	objectName = "@mob/creature_names:giant_decay_mite_queen",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 26,
 	chanceHit = 0.35,
 	damageMin = 210,

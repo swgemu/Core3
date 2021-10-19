@@ -1,7 +1,7 @@
 bantha_e3 = Creature:new {
 	objectName = "@mob/creature_names:bantha",
 	socialGroup = "bantha",
-
+	mobType = MOB_HERBIVORE,
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

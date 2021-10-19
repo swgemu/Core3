@@ -2,6 +2,7 @@ frenzied_kahmurra = Creature:new {
 	objectName = "@mob/creature_names:frenzied_kahmurra",
 	socialGroup = "kahmurra",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 33,
 	chanceHit = 0.4,
 	damageMin = 310,

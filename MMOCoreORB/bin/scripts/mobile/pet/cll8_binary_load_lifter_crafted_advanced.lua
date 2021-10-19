@@ -4,6 +4,7 @@ cll8_binary_load_lifter_crafted_advanced = Creature:new {
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,
+	mobType = MOB_DROID,
 	damageMin = 10,
 	damageMax = 10,
 	baseXp = 0,

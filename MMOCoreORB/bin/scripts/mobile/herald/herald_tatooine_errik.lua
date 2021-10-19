@@ -2,6 +2,7 @@ herald_tatooine_errik = Creature:new {
 	objectName = "@npc_name:tatooine_herald_01",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

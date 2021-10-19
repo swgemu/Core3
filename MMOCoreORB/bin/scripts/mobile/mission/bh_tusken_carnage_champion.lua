@@ -2,6 +2,7 @@ bh_tusken_carnage_champion = Creature:new {
 	objectName = "@mob/creature_names:tusken_fort_tusken_champion",
 	socialGroup = "tusken_raider",
 	faction = "tusken_raider",
+	mobType = MOB_NPC,
 	level = 116,
 	chanceHit = 3.85,
 	damageMin = 750,

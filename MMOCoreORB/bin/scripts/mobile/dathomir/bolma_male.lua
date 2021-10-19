@@ -2,6 +2,7 @@ bolma_male = Creature:new {
 	objectName = "@mob/creature_names:bolma_male",
 	socialGroup = "bolma",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 27,
 	chanceHit = 0.37,
 	damageMin = 260,

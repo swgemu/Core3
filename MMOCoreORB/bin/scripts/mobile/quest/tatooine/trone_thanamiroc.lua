@@ -2,6 +2,7 @@ trone_thanamiroc = Creature:new {
 	objectName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 23,
 	chanceHit = 0.35,
 	damageMin = 210,

@@ -2,6 +2,7 @@ professor_whisper = Creature:new {
 	objectName = "",
 	socialGroup = "bith",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 180,

@@ -2,6 +2,7 @@ jundland_eopie = Creature:new {
 	objectName = "@mob/creature_names:jundland_eopie",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 10,
 	chanceHit = 0.27,
 	damageMin = 80,

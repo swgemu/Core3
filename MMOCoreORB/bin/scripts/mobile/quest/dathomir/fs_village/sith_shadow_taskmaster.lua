@@ -2,6 +2,7 @@ sith_shadow_taskmaster = Creature:new {
 	objectName = "@mob/creature_names:shadow_nco",
 	socialGroup = "sith_shadow",
 	faction = "sith_shadow",
+	mobType = MOB_NPC,
 	level = 87,
 	chanceHit = 0.75,
 	damageMin = 620,

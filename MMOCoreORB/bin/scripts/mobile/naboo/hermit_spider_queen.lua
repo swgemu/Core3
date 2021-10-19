@@ -2,6 +2,7 @@ hermit_spider_queen = Creature:new {
 	objectName = "@mob/creature_names:hermit_spider_queen",
 	socialGroup = "spider",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 11,
 	chanceHit = 0.28,
 	damageMin = 80,

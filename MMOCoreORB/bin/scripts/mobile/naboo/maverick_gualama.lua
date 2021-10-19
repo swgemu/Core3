@@ -2,6 +2,7 @@ maverick_gualama = Creature:new {
 	objectName = "@mob/creature_names:maverick_gualama",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,

@@ -2,6 +2,7 @@ mountain_vesp = Creature:new {
 	objectName = "@mob/creature_names:mountain_vesp",
 	socialGroup = "vesp",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 230,

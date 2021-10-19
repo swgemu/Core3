@@ -2,6 +2,7 @@ woolamander_gatherer = Creature:new {
 	objectName = "@mob/creature_names:woolamander_gatherer",
 	socialGroup = "woolamander",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 29,
 	chanceHit = 0.38,
 	damageMin = 280,

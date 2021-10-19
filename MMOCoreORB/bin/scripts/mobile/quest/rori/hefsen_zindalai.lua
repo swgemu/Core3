@@ -2,6 +2,7 @@ hefsen_zindalai = Creature:new {
 	objectName = "",
 	customName = "Hefsen Zindalai",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

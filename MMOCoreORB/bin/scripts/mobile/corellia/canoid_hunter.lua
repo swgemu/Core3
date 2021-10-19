@@ -2,6 +2,7 @@ canoid_hunter = Creature:new {
 	objectName = "@mob/creature_names:canoid_hunter",
 	socialGroup = "canoid",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.3,
 	damageMin = 150,

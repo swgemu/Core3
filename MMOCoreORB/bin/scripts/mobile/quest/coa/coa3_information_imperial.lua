@@ -2,6 +2,7 @@ coa3_information_imperial = Creature:new {
 	objectName = "@mob/creature_names:coa3_information_imperial",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 25,

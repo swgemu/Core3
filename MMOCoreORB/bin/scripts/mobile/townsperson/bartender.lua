@@ -2,6 +2,7 @@ bartender = Creature:new {
 	objectName = "@npc_name:bartender",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,

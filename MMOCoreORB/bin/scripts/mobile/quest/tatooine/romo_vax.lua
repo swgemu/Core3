@@ -2,6 +2,7 @@ romo_vax = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Romo Vax",
 	socialGroup = "jabba",
+	mobType = MOB_NPC,
 	faction = "jabba",
 	level = 100,
 	chanceHit = 1,

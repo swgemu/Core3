@@ -2,6 +2,7 @@ draya_korbinari_thief = Creature:new {
 	objectName = "@mob/creature_names:thief",
 	customName = "",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 9,
 	chanceHit = 0.27,

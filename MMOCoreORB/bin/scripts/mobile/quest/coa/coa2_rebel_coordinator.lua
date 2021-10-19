@@ -2,6 +2,7 @@ coa2_rebel_coordinator = Creature:new {
 	objectName = "@mob/creature_names:coa2_rebel_coordinator",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 25,

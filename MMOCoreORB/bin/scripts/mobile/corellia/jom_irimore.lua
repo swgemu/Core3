@@ -3,6 +3,7 @@ jom_irimore = Creature:new {
 	customName = "Jom Irimore",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -2,6 +2,7 @@ darth_vader = Creature:new {
 	objectName = "@mob/creature_names:darth_vader",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 300,
 	chanceHit = 30,
 	damageMin = 1645,

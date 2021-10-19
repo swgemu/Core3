@@ -2,6 +2,7 @@ thune = Creature:new {
 	objectName = "@mob/creature_names:thune",
 	socialGroup = "thune",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,

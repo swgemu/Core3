@@ -2,6 +2,7 @@ hutt_informant_quest = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

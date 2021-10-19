@@ -3,6 +3,7 @@ thark = Creature:new {
 	customName = "",
 	socialGroup = "",
 	faction = "lost_aqualish",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

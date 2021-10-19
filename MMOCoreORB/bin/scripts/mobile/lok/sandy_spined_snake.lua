@@ -2,6 +2,7 @@ sandy_spined_snake = Creature:new {
 	objectName = "@mob/creature_names:sandy_spined_snake",
 	socialGroup = "spine_snake",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 160,

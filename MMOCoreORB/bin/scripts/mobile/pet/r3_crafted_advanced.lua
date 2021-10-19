@@ -3,6 +3,7 @@ r3_crafted_advanced = Creature:new {
 	socialGroup = "",
 	faction = "",
 	level = 4,
+	mobType = MOB_DROID,
 	chanceHit = 0.24,
 	damageMin = 160,
 	damageMax = 170,

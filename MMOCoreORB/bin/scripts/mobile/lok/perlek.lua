@@ -2,6 +2,7 @@ perlek = Creature:new {
 	objectName = "@mob/creature_names:perlek",
 	socialGroup = "perlek",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 140,

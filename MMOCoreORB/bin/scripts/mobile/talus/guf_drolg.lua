@@ -2,6 +2,7 @@ guf_drolg = Creature:new {
 	objectName = "@mob/creature_names:guf_drolg",
 	socialGroup = "guf_drolg",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 140,

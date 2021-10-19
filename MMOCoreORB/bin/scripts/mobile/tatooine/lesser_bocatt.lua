@@ -2,6 +2,7 @@ lesser_bocatt = Creature:new {
 	objectName = "@mob/creature_names:lesser_bocatt",
 	socialGroup = "bocatt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.3,
 	damageMin = 150,

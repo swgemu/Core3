@@ -2,6 +2,7 @@ frightened_borgle = Creature:new {
 	objectName = "@mob/creature_names:frightened_borgle",
 	socialGroup = "borgle",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 80,

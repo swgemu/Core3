@@ -3,6 +3,7 @@ oxil_sarban = Creature:new {
 	customName = "Oxil Sarban",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

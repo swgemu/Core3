@@ -2,6 +2,7 @@ arrek_von_sarko = Creature:new {
 	objectName = "",
 	customName = "Arrek Von Sarko",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

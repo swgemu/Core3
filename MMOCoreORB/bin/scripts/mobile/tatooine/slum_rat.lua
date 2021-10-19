@@ -2,6 +2,7 @@ slum_rat = Creature:new {
 	objectName = "@mob/creature_names:womprat_city",
 	socialGroup = "rat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

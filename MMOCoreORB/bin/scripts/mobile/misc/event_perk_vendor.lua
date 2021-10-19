@@ -2,6 +2,7 @@ event_perk_vendor = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

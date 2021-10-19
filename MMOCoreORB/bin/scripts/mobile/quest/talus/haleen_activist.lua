@@ -2,6 +2,7 @@ haleen_activist = Creature:new {
 	objectName = "@mob/creature_names:liberation_activist",
 	socialGroup = "liberation_party",
 	faction = "liberation_party",
+	mobType = MOB_NPC,
 	level = 21,
 	chanceHit = 0.34,
 	damageMin = 200,

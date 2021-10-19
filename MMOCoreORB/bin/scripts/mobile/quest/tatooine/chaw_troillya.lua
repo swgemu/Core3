@@ -2,6 +2,7 @@ chaw_troillya = Creature:new {
 	objectName = "@mob/creature_names:bothan_information_broker",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 3,
 	chanceHit = 0.23,
 	damageMin = 35,

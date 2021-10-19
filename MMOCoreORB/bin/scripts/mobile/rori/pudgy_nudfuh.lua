@@ -2,6 +2,7 @@ pudgy_nudfuh = Creature:new {
 	objectName = "@mob/creature_names:pudgy_nudfuh",
 	socialGroup = "nudfuh",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

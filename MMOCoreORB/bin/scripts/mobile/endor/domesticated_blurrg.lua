@@ -2,6 +2,7 @@ domesticated_blurrg = Creature:new {
 	objectName = "@mob/creature_names:domesticated_blurrg",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,

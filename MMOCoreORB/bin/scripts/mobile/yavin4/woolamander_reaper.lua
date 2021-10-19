@@ -2,6 +2,7 @@ woolamander_reaper = Creature:new {
 	objectName = "@mob/creature_names:woolamander_reaper",
 	socialGroup = "woolamander",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 47,
 	chanceHit = 0.48,
 	damageMin = 375,

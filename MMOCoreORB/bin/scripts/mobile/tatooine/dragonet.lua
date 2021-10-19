@@ -2,6 +2,7 @@ dragonet = Creature:new {
 	objectName = "@mob/creature_names:dragonet",
 	socialGroup = "lizard",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 29,
 	chanceHit = 0.37,
 	damageMin = 260,

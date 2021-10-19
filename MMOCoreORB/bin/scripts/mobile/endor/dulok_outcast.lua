@@ -2,6 +2,7 @@ dulok_outcast = Creature:new {
 	objectName = "@mob/creature_names:dulok_outcast",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "self",
 	faction = "",
 	level = 20,

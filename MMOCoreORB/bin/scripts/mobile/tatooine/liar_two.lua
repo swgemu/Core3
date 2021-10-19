@@ -3,6 +3,7 @@ liar_two = Creature:new {
 	customName = "Liar Two",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

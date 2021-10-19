@@ -2,6 +2,7 @@ kahmurra_be = Creature:new {
 	objectName = "@mob/creature_names:kahmurra_bio_engineer",
 	socialGroup = "kahmurra",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 5,
 	chanceHit = 0.250000,
 	damageMin = 45,

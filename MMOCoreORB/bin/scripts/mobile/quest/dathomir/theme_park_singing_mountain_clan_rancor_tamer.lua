@@ -2,6 +2,7 @@ theme_park_singing_mountain_clan_rancor_tamer = Creature:new {
   objectName = "@mob/creature_names:singing_mtn_clan_rancor_tamer",
   randomNameType = NAME_GENERIC,
   randomNameTag = true,
+	mobType = MOB_NPC,
   socialGroup = "mtn_clan",
   faction = "mtn_clan",
   level = 75,

@@ -2,6 +2,7 @@ assassin_quest_zekka = Creature:new {
 	objectName = "@mob/creature_names:assassin",
 	socialGroup = "mercenary",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 23,
 	chanceHit = 0.35,
 	damageMin = 210,

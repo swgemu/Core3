@@ -2,6 +2,7 @@ kai_tok_prowler = Creature:new {
 	objectName = "@mob/creature_names:kai_tok_prowler",
 	socialGroup = "kai_tok",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 240,

@@ -2,6 +2,7 @@ sleemo_hoodlum = Creature:new {
 	objectName = "@mob/creature_names:sleemo_hoodlum",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "sleemo_gang",
 	faction = "",
 	level = 6,

@@ -2,6 +2,7 @@ theme_park_rebel_selonian_male = Creature:new {
 	objectName = "",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

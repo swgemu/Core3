@@ -2,6 +2,7 @@ bh_dark_adept = Creature:new {
 	objectName = "@mob/creature_names:dark_adept",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "dark_jedi",
 	faction = "",
 	level = 120,

@@ -2,6 +2,7 @@ nitra_vendallan = Creature:new {
 	objectName = "",
 	customName = "Nitra Vendallan",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

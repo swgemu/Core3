@@ -2,6 +2,7 @@ civil_patrol_corporal = Creature:new {
 	objectName = "@mob/creature_names:imperial_civil_patrol_corporal",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 7,

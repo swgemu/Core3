@@ -2,6 +2,7 @@ corsec_special_ops_inspector = Creature:new {
 	objectName = "@mob/creature_names:corsec_inspector_sergeant_aggro",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 150,

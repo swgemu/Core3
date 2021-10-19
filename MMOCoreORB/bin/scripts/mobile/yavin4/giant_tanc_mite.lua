@@ -2,6 +2,7 @@ giant_tanc_mite = Creature:new {
 	objectName = "@mob/creature_names:giant_tanc_mite",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 140,

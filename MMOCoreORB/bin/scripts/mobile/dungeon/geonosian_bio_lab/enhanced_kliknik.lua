@@ -2,6 +2,7 @@ enhanced_kliknik = Creature:new {
 	objectName = "@mob/creature_names:geonosian_kliknik_force_strong",
 	socialGroup = "geonosian_creature",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 109,
 	chanceHit = 2.2,
 	damageMin = 675,

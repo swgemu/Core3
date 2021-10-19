@@ -2,6 +2,7 @@ narglatch_matriarch = Creature:new {
 	objectName = "@mob/creature_names:narglatch_matriarch",
 	socialGroup = "narglatch",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 27,
 	chanceHit = 0.36,
 	damageMin = 250,

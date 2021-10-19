@@ -3,6 +3,7 @@ acun_solari = Creature:new {
 	customName = "Acun Solari",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

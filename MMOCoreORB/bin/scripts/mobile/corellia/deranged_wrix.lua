@@ -2,6 +2,7 @@ deranged_wrix = Creature:new {
 	objectName = "@mob/creature_names:deranged_wrix",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 180,

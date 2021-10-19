@@ -2,6 +2,7 @@ vampiric_gackle_bat = Creature:new {
 	objectName = "@mob/creature_names:gackle_bat_vampiric",
 	socialGroup = "gacklebat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 120,

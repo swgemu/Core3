@@ -2,6 +2,7 @@ geonosian_scientist = Creature:new {
 	objectName = "@mob/creature_names:geonosian_scientist",
 	socialGroup = "geonosian",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 48,
 	chanceHit = 0.49,
 	damageMin = 385,

@@ -2,6 +2,7 @@ scrib_leras = Creature:new {
 	objectName = "",
 	customName = "Scrib Leras",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

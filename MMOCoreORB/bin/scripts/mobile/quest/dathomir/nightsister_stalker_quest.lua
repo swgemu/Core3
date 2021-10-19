@@ -2,6 +2,7 @@ nightsister_stalker_quest = Creature:new {
 	objectName = "@mob/creature_names:nightsister_stalker",
 	socialGroup = "nightsister",
 	faction = "nightsister",
+	mobType = MOB_NPC,
 	level = 60,
 	chanceHit = 10,
 	damageMin = 350,

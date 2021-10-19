@@ -2,6 +2,7 @@ wert_jopi = Creature:new {
 	objectName = "@mob/creature_names:gungan_priest",
 	socialGroup = "gungan",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

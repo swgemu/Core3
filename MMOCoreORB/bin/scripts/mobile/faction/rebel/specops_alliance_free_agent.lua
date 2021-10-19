@@ -2,6 +2,7 @@ specops_alliance_free_agent = Creature:new {
 	objectName = "@mob/creature_names:specops_alliance_free_agent",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 27,

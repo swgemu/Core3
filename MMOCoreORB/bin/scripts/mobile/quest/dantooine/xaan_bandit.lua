@@ -2,6 +2,7 @@ xaan_bandit = Creature:new {
 	objectName = "@mob/creature_names:bandit",
 	socialGroup = "bandit",
 	faction = "bandit",
+	mobType = MOB_NPC,
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,

@@ -2,6 +2,7 @@ junk_sneg = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Sneg the Hand",
 	planetMapCategory = "junkshop",
+	mobType = MOB_NPC,
 	socialGroup = "valarian",
 	faction = "valarian",
 	level = 100,

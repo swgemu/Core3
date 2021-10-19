@@ -2,6 +2,7 @@ jan_dodonna = Creature:new {
 	objectName = "@mob/creature_names:jan_dodonna",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,

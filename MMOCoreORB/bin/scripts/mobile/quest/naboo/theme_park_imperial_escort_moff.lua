@@ -3,6 +3,7 @@ theme_park_imperial_escort_moff = Creature:new {
 	customName = "escort",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

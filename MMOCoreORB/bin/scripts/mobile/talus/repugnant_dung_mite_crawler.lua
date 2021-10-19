@@ -2,6 +2,7 @@ repugnant_dung_mite_crawler = Creature:new {
 	objectName = "@mob/creature_names:dung_mite_repugnant_crawler",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 80,

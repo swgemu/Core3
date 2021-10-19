@@ -2,6 +2,7 @@ theme_park_jabba_sirad_far = Creature:new {
 	objectName = "@mob/creature_names:sirad_far",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 21,
 	chanceHit = 0.330000,
 	damageMin = 190,

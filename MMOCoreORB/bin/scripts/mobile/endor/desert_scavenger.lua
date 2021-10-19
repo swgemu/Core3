@@ -2,6 +2,7 @@ desert_scavenger = Creature:new {
 	objectName = "@mob/creature_names:borgle_desert_runner",
 	socialGroup = "borgle",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 37,
 	chanceHit = 0.41,
 	damageMin = 325,

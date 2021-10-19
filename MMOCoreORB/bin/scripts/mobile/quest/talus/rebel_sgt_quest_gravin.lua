@@ -2,6 +2,7 @@ rebel_sgt_quest_gravin = Creature:new {
 	objectName = "@mob/creature_names:rebel_staff_sergeant",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

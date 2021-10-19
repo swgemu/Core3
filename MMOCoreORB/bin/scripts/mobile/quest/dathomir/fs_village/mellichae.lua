@@ -2,6 +2,7 @@ mellichae = Creature:new {
 	objectName = "@mob/creature_names:mellichae",
 	socialGroup = "sith_shadow",
 	faction = "sith_shadow",
+	mobType = MOB_NPC,
 	level = 140,
 	chanceHit = 4.750000,
 	damageMin = 945,

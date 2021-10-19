@@ -2,6 +2,7 @@ bestine_rumor09 = Creature:new {
 	objectName = "@mob/creature_names:commoner_twilek_female",
 	customName = "Ek'i Wim'is (an artist)",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

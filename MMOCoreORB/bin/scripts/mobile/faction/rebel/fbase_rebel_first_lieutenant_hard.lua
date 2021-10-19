@@ -2,6 +2,7 @@ fbase_rebel_first_lieutenant_hard = Creature:new {
 	objectName = "@mob/creature_names:fbase_rebel_first_lieutenant_hard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 60,

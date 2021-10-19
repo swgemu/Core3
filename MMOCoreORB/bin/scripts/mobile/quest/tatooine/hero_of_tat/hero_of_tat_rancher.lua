@@ -2,6 +2,7 @@ hero_of_tat_rancher = Creature:new {
 	objectName = "@mob/creature_names:farmer_rancher",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

@@ -2,6 +2,7 @@ angler_hatchling = Creature:new {
 	objectName = "@mob/creature_names:angler_hatchling",
 	socialGroup = "angler",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,

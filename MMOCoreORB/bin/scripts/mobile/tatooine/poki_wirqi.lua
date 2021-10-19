@@ -3,6 +3,7 @@ poki_wirqi = Creature:new {
 	customName = "Poki Wirqi",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

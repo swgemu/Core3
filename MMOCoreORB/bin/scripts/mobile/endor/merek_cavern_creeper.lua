@@ -2,6 +2,7 @@ merek_cavern_creeper = Creature:new {
 	objectName = "@mob/creature_names:merek_cavern_creeper",
 	socialGroup = "merek",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 40,
 	chanceHit = 0.44,
 	damageMin = 345,

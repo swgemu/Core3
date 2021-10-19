@@ -2,6 +2,7 @@ jace_yiaso = Creature:new {
 	objectName = "@npc_spawner_n:ja_ce_yiaso",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

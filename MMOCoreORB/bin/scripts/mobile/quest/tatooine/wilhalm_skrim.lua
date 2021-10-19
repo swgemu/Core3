@@ -2,6 +2,7 @@ wilhalm_skrim = Creature:new {
 	objectName = "@theme_park_name:willhalm_skrim",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

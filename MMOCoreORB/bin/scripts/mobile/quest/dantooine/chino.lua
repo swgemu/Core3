@@ -3,6 +3,7 @@ chino = Creature:new {
 	customName = "Chino (an Empire Chief Inquisitor)",	
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 120,
 	chanceHit = 4.000000,
 	damageMin = 745,

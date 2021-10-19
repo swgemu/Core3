@@ -2,6 +2,7 @@ ral_mundi = Creature:new {
 	objectName = "@npc_spawner_n:ral_mundi",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,

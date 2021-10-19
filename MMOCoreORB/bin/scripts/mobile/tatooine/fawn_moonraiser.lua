@@ -2,6 +2,7 @@ fawn_moonraiser = Creature:new {
 	objectName = "@mob/creature_names:fawn_moonraiser",
 	socialGroup = "darklighter",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 99,
 	chanceHit = 0.99,
 	damageMin = 640,

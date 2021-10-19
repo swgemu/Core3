@@ -2,6 +2,7 @@ blurrg_tracker = Creature:new {
 	objectName = "@mob/creature_names:blurrg_tracker",
 	socialGroup = "blurrg",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 28,
 	chanceHit = 0.36,
 	damageMin = 250,

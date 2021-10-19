@@ -3,6 +3,7 @@ morgo_one_shot = Creature:new {
 	customName = "Morgo One-Shot",
 	socialGroup = "corsec",
 	faction = "corsec",
+	mobType = MOB_NPC,
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,

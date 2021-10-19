@@ -2,6 +2,7 @@ naz_tulos = Creature:new {
 	objectName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,

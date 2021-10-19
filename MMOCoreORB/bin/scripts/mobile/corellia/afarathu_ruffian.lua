@@ -2,6 +2,7 @@ afarathu_ruffian = Creature:new {
 	objectName = "@mob/creature_names:afarathu_cult_ruffian",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "afarathu",
 	faction = "afarathu",
 	level = 5,

@@ -2,6 +2,7 @@ feral_bantha = Creature:new {
 	objectName = "@mob/creature_names:feral_bantha",
 	socialGroup = "bantha",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 170,

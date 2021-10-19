@@ -2,6 +2,7 @@ theme_park_imperial_mattias_aggro = Creature:new {
 	objectName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 18,
 	chanceHit = 0.320000,
 	damageMin = 170,

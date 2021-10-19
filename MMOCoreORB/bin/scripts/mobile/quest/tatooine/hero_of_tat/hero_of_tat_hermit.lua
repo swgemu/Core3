@@ -2,6 +2,7 @@ hero_of_tat_hermit = Creature:new {
 	objectName = "@mob/creature_names:quest_hero_of_tatooine_hermit",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

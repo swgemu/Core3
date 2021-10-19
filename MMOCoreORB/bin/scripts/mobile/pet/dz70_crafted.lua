@@ -3,6 +3,7 @@ dz70_crafted = Creature:new {
 	socialGroup = "",
 	faction = "",
 	level = 4,
+	mobType = MOB_DROID,
 	chanceHit = 0.24,
 	damageMin = 112,
 	damageMax = 118,

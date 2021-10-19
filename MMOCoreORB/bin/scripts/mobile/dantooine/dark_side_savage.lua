@@ -2,6 +2,7 @@ dark_side_savage = Creature:new {
 	objectName = "@mob/creature_names:dark_side_savage",
 	socialGroup = "kun",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 75,
 	chanceHit = 0.7,
 	damageMin = 595,

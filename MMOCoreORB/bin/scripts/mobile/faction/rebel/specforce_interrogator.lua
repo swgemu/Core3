@@ -2,6 +2,7 @@ specforce_interrogator = Creature:new {
 	objectName = "@mob/creature_names:specforce_interrogator",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 16,

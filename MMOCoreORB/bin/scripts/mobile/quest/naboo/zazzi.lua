@@ -2,6 +2,7 @@ zazzi = Creature:new {
 	objectName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 35,
 	chanceHit = 0.41,
 	damageMin = 320,

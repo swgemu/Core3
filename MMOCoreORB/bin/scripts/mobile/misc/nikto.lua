@@ -2,6 +2,7 @@ nikto = Creature:new {
 	objectName = "@mob/creature_names:patron_nikto",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

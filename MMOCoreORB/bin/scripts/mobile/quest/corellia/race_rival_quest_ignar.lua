@@ -2,6 +2,7 @@ race_rival_quest_ignar = Creature:new {
 	objectName = "@mob/creature_names:chadra_fan_male",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

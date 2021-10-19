@@ -2,6 +2,7 @@ theme_park_imperial_mellag_davin_lars = Creature:new {
 	objectName = "",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

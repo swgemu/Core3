@@ -2,6 +2,7 @@ wallaw_loowobbli = Creature:new {
 	objectName = "",
 	customName = "Wallaw Loowobbli",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

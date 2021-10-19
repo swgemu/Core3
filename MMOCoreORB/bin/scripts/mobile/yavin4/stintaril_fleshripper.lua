@@ -2,6 +2,7 @@ stintaril_fleshripper = Creature:new {
 	objectName = "@mob/creature_names:stintaril_fleshstripper",
 	socialGroup = "stinaril",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 150,

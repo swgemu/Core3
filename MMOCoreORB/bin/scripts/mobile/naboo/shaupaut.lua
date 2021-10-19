@@ -2,6 +2,7 @@ shaupaut = Creature:new {
 	objectName = "@mob/creature_names:shaupaut",
 	socialGroup = "shaupaut",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

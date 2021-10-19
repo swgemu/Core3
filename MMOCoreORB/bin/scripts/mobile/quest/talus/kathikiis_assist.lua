@@ -2,6 +2,7 @@ kathikiis_assist = Creature:new {
 	objectName = "",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,

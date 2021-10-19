@@ -2,6 +2,7 @@ crazed_gurreck = Creature:new {
 	objectName = "@mob/creature_names:crazed_gurreck",
 	socialGroup = "gurreck",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 270,

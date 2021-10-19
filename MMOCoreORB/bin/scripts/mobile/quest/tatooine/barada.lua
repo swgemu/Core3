@@ -2,6 +2,7 @@ barada = Creature:new {
 	objectName = "@mob/creature_names:barada",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

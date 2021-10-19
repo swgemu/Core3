@@ -2,6 +2,7 @@ wandering_kitonak = Creature:new {
 	objectName = "@mob/creature_names:wandering_kitonak",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

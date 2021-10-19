@@ -2,6 +2,7 @@ vine_rawl = Creature:new {
 	objectName = "@mob/creature_names:vine_rawl",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 19,
 	chanceHit = 0.32,
 	damageMin = 170,

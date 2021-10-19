@@ -2,6 +2,7 @@ huff_darklighter = Creature:new {
 	objectName = "",
 	customName = "Huff Darklighter",
 	socialGroup = "darklighter",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 99,
 	chanceHit = 0.99,

@@ -2,6 +2,7 @@ shaggy_pubam_youth = Creature:new {
 	objectName = "@mob/creature_names:shaggy_ubam_youth",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 5,

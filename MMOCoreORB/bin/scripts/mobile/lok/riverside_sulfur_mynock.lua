@@ -2,6 +2,7 @@ riverside_sulfur_mynock = Creature:new {
 	objectName = "@mob/creature_names:riverside_sulfur_mynock",
 	socialGroup = "mynock",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 33,
 	chanceHit = 0.4,
 	damageMin = 305,

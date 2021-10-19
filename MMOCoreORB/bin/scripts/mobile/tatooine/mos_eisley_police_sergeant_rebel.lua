@@ -2,6 +2,7 @@ mos_eisley_police_sergeant_rebel = Creature:new {
 	objectName = "@mob/creature_names:mos_eisley_police_sergeant",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 14,

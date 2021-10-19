@@ -4,6 +4,7 @@ fiend_of_lord_nyax = Creature:new {
 	randomNameTag = true,
 	socialGroup = "followers_of_lord_nyax",
 	faction = "followers_of_lord_nyax",
+	mobType = MOB_NPC,
 	level = 29,
 	chanceHit = 0.36,
 	damageMin = 305,

@@ -2,6 +2,7 @@ dalyrake_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_dalyrake",
 	socialGroup = "dalyrake",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 5,
 	chanceHit = 0.2,
 	damageMin = 30,

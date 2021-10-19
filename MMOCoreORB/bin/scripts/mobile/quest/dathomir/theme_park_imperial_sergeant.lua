@@ -2,6 +2,7 @@ theme_park_imperial_sergeant = Creature:new {
   objectName = "@mob/creature_names:imperial_sergeant",
   randomNameType = NAME_GENERIC,
   randomNameTag = true,
+	mobType = MOB_NPC,
   socialGroup = "imperial",
   faction = "imperial",
   level = 16,

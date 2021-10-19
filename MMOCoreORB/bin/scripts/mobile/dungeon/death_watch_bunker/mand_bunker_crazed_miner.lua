@@ -2,6 +2,7 @@ mand_bunker_crazed_miner = Creature:new {
 	objectName = "",
 	customName = "Haldo",
 	socialGroup = "death_watch",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 100,
 	chanceHit = 1,

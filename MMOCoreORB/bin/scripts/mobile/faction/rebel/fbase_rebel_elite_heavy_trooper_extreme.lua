@@ -2,6 +2,7 @@ fbase_rebel_elite_heavy_trooper_extreme = Creature:new {
 	objectName = "@mob/creature_names:fbase_rebel_elite_heavy_trooper_extreme",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_ANDROID,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 270,

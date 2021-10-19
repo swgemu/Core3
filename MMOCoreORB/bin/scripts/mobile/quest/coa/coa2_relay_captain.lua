@@ -2,6 +2,7 @@ coa2_relay_captain = Creature:new {
 	randomNameType = NAME_GENERIC,
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 29,
 	chanceHit = 0.38,
 	damageMin = 280,

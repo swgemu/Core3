@@ -2,6 +2,7 @@ insane_mantigrue_berserker = Creature:new {
 	objectName = "@mob/creature_names:mantigrue_insane_berserker",
 	socialGroup = "mantigrue",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 50,
 	chanceHit = 0.43,
 	damageMin = 400,

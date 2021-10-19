@@ -2,6 +2,7 @@ piket_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_piket",
 	socialGroup = "piket",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 10,
 	chanceHit = 0.2,
 	damageMin = 30,

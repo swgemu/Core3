@@ -2,6 +2,7 @@ shaki_hamachil = Creature:new {
 	objectName = "",
 	customName = "Shaki Hamachil",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

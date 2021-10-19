@@ -2,6 +2,7 @@ theme_park_jabba_sennex_slaver = Creature:new {
 	objectName = "@mob/creature_names:sennex_slaver",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 23,

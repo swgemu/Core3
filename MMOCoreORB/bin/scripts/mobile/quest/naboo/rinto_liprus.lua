@@ -2,6 +2,7 @@ rinto_liprus = Creature:new {
 	objectName = "",
 	socialGroup = "nomad",
 	faction = "naboo",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

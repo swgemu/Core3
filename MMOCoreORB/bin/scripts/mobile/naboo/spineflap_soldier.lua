@@ -2,6 +2,7 @@ spineflap_soldier = Creature:new {
 	objectName = "@mob/creature_names:spineflap_soldier",
 	socialGroup = "spineflap",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,

@@ -2,6 +2,7 @@ droopy_mccool = Creature:new {
 	objectName = "@mob/creature_names:droopy_mccool",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

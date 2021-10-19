@@ -2,6 +2,7 @@ krayt_dragon_grand = Creature:new {
 	objectName = "@mob/creature_names:krayt_dragon_grand",
 	socialGroup = "krayt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 336,
 	chanceHit = 30,
 	damageMin = 2270,

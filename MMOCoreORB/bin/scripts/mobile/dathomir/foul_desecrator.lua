@@ -2,6 +2,7 @@ foul_desecrator = Creature:new {
 	objectName = "@mob/creature_names:kamurith_foul_desecrator",
 	socialGroup = "kamurith",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 60,
 	chanceHit = 0.55,
 	damageMin = 470,

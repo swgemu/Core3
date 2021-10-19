@@ -2,6 +2,7 @@ ravenous_rasp = Creature:new {
 	objectName = "@mob/creature_names:ravenous_rasp",
 	socialGroup = "rasp",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 31,
 	chanceHit = 0.41,
 	damageMin = 360,

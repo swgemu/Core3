@@ -2,6 +2,7 @@ bossk = Creature:new {
 	objectName = "@mob/creature_names:bossk",
 	socialGroup = "mercenary",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

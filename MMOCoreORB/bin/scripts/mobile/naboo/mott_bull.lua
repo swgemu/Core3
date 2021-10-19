@@ -2,6 +2,7 @@
 	objectName = "@mob/creature_names:mott_bull",
 	socialGroup = "mott",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 130,

@@ -3,6 +3,7 @@ gabriel_lan = Creature:new {
 	customName = "Gabriel Ian",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -2,6 +2,7 @@ enhanced_force_kliknik = Creature:new {
 	objectName = "",
 	customName = "Force Kliknik",
 	socialGroup = "geonosian_creature",
+	mobType = MOB_CARNIVORE,
 	faction = "",
 	level = 94,
 	chanceHit = 0.95,

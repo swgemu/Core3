@@ -2,6 +2,7 @@ tutorial_stormtrooper_filler = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 30,
 	chanceHit = 0.390000,
 	damageMin = 290,

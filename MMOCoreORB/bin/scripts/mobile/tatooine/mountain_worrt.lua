@@ -2,6 +2,7 @@ mountain_worrt = Creature:new {
 	objectName = "@mob/creature_names:mountain_worrt",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 22,
 	chanceHit = 0.34,
 	damageMin = 200,

@@ -2,6 +2,7 @@ piket_longhorn_female = Creature:new {
 	objectName = "@mob/creature_names:piket_longhorn_female",
 	socialGroup = "piket",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,

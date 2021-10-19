@@ -2,6 +2,7 @@ crimson_razor_cat = Creature:new {
 	objectName = "@mob/creature_names:crimson_sand_panther",
 	socialGroup = "panther",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 29,
 	chanceHit = 0.39,
 	damageMin = 305,

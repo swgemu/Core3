@@ -2,6 +2,7 @@ mordran = Creature:new {
 	objectName = "@mob/creature_names:mordran",
 	socialGroup = "borvo",
 	faction = "borvo",
+	mobType = MOB_NPC,
 	level = 78,
 	chanceHit = 0.750000,
 	damageMin = 520,

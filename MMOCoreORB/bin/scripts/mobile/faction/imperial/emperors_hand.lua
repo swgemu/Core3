@@ -2,6 +2,7 @@ emperors_hand = Creature:new {
 	objectName = "@mob/creature_names:emperors_hand",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 252,
 	chanceHit = 23.5,
 	damageMin = 1395,

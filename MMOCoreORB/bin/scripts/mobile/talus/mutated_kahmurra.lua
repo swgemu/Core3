@@ -2,6 +2,7 @@ mutated_kahmurra = Creature:new {
 	objectName = "@mob/creature_names:mutated_kahmurra",
 	socialGroup = "kahmurra",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 26,
 	chanceHit = 0.35,
 	damageMin = 230,

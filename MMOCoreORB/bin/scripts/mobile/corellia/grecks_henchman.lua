@@ -2,6 +2,7 @@ grecks_henchman = Creature:new {
 	objectName = "@mob/creature_names:greck_henchman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "olag_greck",
 	faction = "olag_greck",
 	level = 6,

@@ -2,6 +2,7 @@ bh_force_trained_archaist = Creature:new {
 	objectName = "@mob/creature_names:force_trained_archaist",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "force",
 	faction = "",
 	level = 90,

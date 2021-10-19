@@ -2,6 +2,7 @@ theme_park_imperial_assassin = Creature:new {
 	objectName = "@mob/creature_names:assassin",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,

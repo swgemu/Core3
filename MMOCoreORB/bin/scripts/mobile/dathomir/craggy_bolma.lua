@@ -2,6 +2,7 @@ craggy_bolma = Creature:new {
 	objectName = "@mob/creature_names:craggy_bolma",
 	socialGroup = "bolma",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 47,
 	chanceHit = 0.47,
 	damageMin = 375,

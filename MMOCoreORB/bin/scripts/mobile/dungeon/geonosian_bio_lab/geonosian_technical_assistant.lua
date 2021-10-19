@@ -2,6 +2,7 @@ geonosian_technical_assistant = Creature:new {
 	objectName = "@mob/creature_names:geonosian_tech_assistant",
 	socialGroup = "geonosian",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 48,
 	chanceHit = 0.49,
 	damageMin = 385,

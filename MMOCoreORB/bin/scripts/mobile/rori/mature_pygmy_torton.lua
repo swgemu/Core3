@@ -2,6 +2,7 @@ mature_pygmy_torton = Creature:new {
 	objectName = "@mob/creature_names:torton_pygmy_mature",
 	socialGroup = "torton",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 26,
 	chanceHit = 0.35,
 	damageMin = 250,

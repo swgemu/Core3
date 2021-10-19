@@ -2,6 +2,7 @@ tutorial_clone_droid = Creature:new {
 	objectName = "@newbie_tutorial/system_messages:droid_name",
 	socialGroup = "imperial",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 30,
 	chanceHit = 0.390000,
 	damageMin = 290,

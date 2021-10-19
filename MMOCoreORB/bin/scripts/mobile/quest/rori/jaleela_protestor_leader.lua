@@ -2,6 +2,7 @@ jaleela_protestor_leader = Creature:new {
 	objectName = "",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 17,
 	chanceHit = 0.320000,
 	damageMin = 180,

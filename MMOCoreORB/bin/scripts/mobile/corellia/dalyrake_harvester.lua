@@ -2,6 +2,7 @@ dalyrake_harvester = Creature:new {
 	objectName = "@mob/creature_names:dalyrake_harvester",
 	socialGroup = "dalyrake",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

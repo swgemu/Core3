@@ -2,6 +2,7 @@ seeker = Creature:new {
 	objectName = "@droid_name:probe_droid",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 1,
 	chanceHit = 0.01,
 	damageMin = 1,

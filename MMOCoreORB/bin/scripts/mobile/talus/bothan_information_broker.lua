@@ -2,6 +2,7 @@ bothan_information_broker = Creature:new {
 	objectName = "@mob/creature_names:bothan_information_broker",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "spynet",
 	faction = "",
 	level = 3,

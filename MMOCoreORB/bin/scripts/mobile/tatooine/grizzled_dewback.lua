@@ -2,6 +2,7 @@ grizzled_dewback = Creature:new {
 	objectName = "@mob/creature_names:grizzled_dewback",
 	socialGroup = "dewback",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 27,
 	chanceHit = 0.35,
 	damageMin = 270,

@@ -2,6 +2,7 @@ wend_dinard = Creature:new {
 	objectName = "",
 	socialGroup = "hutt",
 	faction = "hutt",
+	mobType = MOB_NPC,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

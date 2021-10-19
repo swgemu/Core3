@@ -2,6 +2,7 @@ grand_tybis = Creature:new {
 	objectName = "@mob/creature_names:tybis_grand",
 	socialGroup = "tybis",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 230,

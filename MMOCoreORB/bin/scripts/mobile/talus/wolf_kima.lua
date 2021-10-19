@@ -2,6 +2,7 @@ wolf_kima = Creature:new {
 	objectName = "@mob/creature_names:wolf_kima",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 19,
 	chanceHit = 0.32,
 	damageMin = 190,

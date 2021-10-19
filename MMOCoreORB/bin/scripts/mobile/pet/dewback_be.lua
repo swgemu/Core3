@@ -2,6 +2,7 @@ dewback_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_dewback",
 	socialGroup = "dewback",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 5,
 	chanceHit = 0.2,
 	damageMin = 30,

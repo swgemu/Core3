@@ -3,6 +3,7 @@ sg_619 = Creature:new {
 	customName = "SG-619",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

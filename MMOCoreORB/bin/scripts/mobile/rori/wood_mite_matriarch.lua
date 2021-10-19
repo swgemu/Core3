@@ -2,6 +2,7 @@ wood_mite_matriarch = Creature:new {
 	objectName = "@mob/creature_names:wood_mite_matriarch",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.3,
 	damageMin = 140,

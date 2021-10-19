@@ -2,6 +2,7 @@ frail_squall = Creature:new {
 	objectName = "@mob/creature_names:frail_squall",
 	socialGroup = "squall",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

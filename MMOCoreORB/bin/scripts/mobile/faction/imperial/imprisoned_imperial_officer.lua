@@ -2,6 +2,7 @@ imprisoned_imperial_officer = Creature:new {
 	objectName = "@mob/creature_names:imprisoned_imperial",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 12,

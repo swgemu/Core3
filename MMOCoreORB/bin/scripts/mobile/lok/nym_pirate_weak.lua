@@ -2,6 +2,7 @@ nym_pirate_weak = Creature:new {
 	objectName = "@mob/creature_names:nym_pirate_weak",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 23,

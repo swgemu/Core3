@@ -2,6 +2,7 @@ dune_stalker_leader = Creature:new {
 	objectName = "@mob/creature_names:dune_stalker_leader",
 	socialGroup = "dune_stalker",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 23,
 	chanceHit = 0.35,
 	damageMin = 220,

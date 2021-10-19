@@ -3,6 +3,7 @@ lx_466_dantari = Creature:new {
 	customName = "(a Dantari tribesman)",	
 	socialGroup = "dantari_raiders",
 	faction = "dantari_raiders",
+	mobType = MOB_NPC,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

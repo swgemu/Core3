@@ -2,6 +2,7 @@ infuriated_roba_protector = Creature:new {
 	objectName = "@mob/creature_names:roba_infuriated_protectorate",
 	socialGroup = "roba",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 57,
 	chanceHit = 0.55,
 	damageMin = 420,

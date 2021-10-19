@@ -2,6 +2,7 @@ hostile_thune_mother = Creature:new {
 	objectName = "@mob/creature_names:hostile_thune_mother",
 	socialGroup = "thune",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,

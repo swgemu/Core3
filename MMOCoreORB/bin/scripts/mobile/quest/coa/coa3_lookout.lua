@@ -2,6 +2,7 @@ coa3_lookout = Creature:new {
 	objectName = "",
 	customName = "a Lookout",
 	socialGroup = "self",
+	mobType = MOB_NPC,
 	faction = "jabba",
 	level = 12,
 	chanceHit = 0.29,

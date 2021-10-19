@@ -2,6 +2,7 @@ fierce_piket_protector = Creature:new {
 	objectName = "@mob/creature_names:fierce_piket_protector",
 	socialGroup = "piket",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 45,
 	chanceHit = 0.45,
 	damageMin = 355,

@@ -2,6 +2,7 @@ sickly_decay_mite_queen = Creature:new {
 	objectName = "@mob/creature_names:sickly_decay_mite_queen",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 220,

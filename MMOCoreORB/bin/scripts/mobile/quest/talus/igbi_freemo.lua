@@ -2,6 +2,7 @@ igbi_freemo = Creature:new {
 	objectName = "",
 	customName = "Igbi Freemo",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

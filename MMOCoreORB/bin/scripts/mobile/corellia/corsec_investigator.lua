@@ -2,6 +2,7 @@ corsec_investigator = Creature:new {
 	objectName = "@mob/creature_names:corsec_investigator",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 15,

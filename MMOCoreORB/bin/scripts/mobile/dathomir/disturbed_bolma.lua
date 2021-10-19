@@ -2,6 +2,7 @@ disturbed_bolma = Creature:new {
 	objectName = "@mob/creature_names:disturbed_bolma",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 270,

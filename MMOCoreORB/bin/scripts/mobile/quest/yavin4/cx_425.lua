@@ -2,6 +2,7 @@ cx_425 = Creature:new {
 	objectName = "",
 	customName = "CX-425",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

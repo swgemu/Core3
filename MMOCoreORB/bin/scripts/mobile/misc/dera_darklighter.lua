@@ -2,6 +2,7 @@ dera_darklighter = Creature:new {
 	objectName = "@mob/creature_names:dera_darklighter",
 	socialGroup = "darklighter",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

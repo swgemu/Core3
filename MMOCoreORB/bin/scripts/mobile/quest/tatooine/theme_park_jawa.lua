@@ -2,6 +2,7 @@ theme_park_jawa = Creature:new {
 	objectName = "@mob/creature_names:jawa_henchman",
 	socialGroup = "jawa",
 	faction = "jawa",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

@@ -2,6 +2,7 @@ kobola_miner = Creature:new {
 	objectName = "@mob/creature_names:kobola_miner",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "kobola",
 	faction = "kobola",
 	level = 8,

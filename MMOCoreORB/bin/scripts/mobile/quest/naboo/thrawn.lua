@@ -2,6 +2,7 @@ thrawn = Creature:new {
 	objectName = "",
 	customName = "Captain Thrawn",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 26,
 	chanceHit = 0.36,

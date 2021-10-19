@@ -2,6 +2,7 @@ canyon_corsair_weak_pirate = Creature:new {
 	objectName = "@mob/creature_names:canyon_corsair_pirate_weak",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "canyon_corsair",
 	faction = "canyon_corsair",
 	level = 29,

@@ -2,6 +2,7 @@ nurla_jabba_enforcer = Creature:new {
 	objectName = "@mob/creature_names:jabba_enforcer",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

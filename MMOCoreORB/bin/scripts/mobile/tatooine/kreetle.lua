@@ -2,6 +2,7 @@ kreetle = Creature:new {
 	objectName = "@mob/creature_names:kreetle",
 	socialGroup = "kreetle",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 3,
 	chanceHit = 0.23,
 	damageMin = 35,

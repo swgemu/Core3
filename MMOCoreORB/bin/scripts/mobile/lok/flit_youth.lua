@@ -2,6 +2,7 @@ flit_youth = Creature:new {
 	objectName = "@mob/creature_names:flit_youth",
 	socialGroup = "flit",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

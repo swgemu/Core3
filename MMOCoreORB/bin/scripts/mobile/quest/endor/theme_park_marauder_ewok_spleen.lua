@@ -2,6 +2,7 @@ theme_park_marauder_ewok_spleen = Creature:new {
 	objectName = "@mob/creature_names:masterful_ewok_warrior",
 	socialGroup = "gondula_tribe",
 
+	mobType = MOB_NPC,
 	faction = "gondula_tribe",
 	level = 35,
 	chanceHit = 0.41,

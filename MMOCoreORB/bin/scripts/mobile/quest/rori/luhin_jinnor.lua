@@ -2,6 +2,7 @@ luhin_jinnor = Creature:new {
 	objectName = "@mob/creature_names:imperial_warrant_officer_ii",
 	customName = "Warrant Officer Luhin Jinnor",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 18,
 	chanceHit = 0.32,

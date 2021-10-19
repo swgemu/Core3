@@ -2,6 +2,7 @@ trainer_medic = Creature:new {
 	objectName = "@mob/creature_names:trainer_medic",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	planetMapCategory = "trainer_medic",
 	faction = "",
 	level = 100,

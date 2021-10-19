@@ -3,6 +3,7 @@ theme_park_smc_rancor_pygmy_shando = Creature:new {
 	customName = "Shando",
 	socialGroup = "rancor",
 	faction = "mtn_clan",
+	mobType = MOB_CARNIVORE,
 	level = 50,
 	chanceHit = 0.5,
 	damageMin = 420,

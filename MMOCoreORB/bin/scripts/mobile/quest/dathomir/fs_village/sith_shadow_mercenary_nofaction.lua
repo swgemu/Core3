@@ -2,6 +2,7 @@ sith_shadow_mercenary_nofaction = Creature:new {
 	objectName = "@mob/creature_names:shadow_mercenary_nofaction",
 	socialGroup = "sith_shadow",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 148,
 	chanceHit = 7,
 	damageMin = 895,

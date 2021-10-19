@@ -2,6 +2,7 @@ sulfur_pool_mynock = Creature:new {
 	objectName = "@mob/creature_names:sulfur_pool_mynock",
 	socialGroup = "mynock",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,

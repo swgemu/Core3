@@ -2,6 +2,7 @@ irenez = Creature:new {
 	objectName = "",
 	customName = "Irenez",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ leb_slesher = Creature:new {
 	objectName = "",
 	customName = "Leb Slesher",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ fbase_scout_trooper = Creature:new {
 	objectName = "@mob/creature_names:fbase_scout_trooper",
 	randomNameType = NAME_SCOUTTROOPER,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 33,

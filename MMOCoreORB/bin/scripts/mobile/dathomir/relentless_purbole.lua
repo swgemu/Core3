@@ -2,6 +2,7 @@ relentless_purbole = Creature:new {
 	objectName = "@mob/creature_names:purbole_relentless",
 	socialGroup = "purbole",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 180,

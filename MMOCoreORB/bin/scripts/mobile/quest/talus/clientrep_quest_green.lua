@@ -2,6 +2,7 @@ clientrep_quest_green = Creature:new {
 	objectName = "@mob/creature_names:assassin_mission_recruiter_neutral",
 	socialGroup = "hutt",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 160,

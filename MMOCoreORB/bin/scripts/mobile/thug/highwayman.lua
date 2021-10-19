@@ -2,6 +2,7 @@ highwayman = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Highwayman",
 	socialGroup = "brigand",
 	faction = "",

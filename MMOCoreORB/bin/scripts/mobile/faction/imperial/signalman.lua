@@ -2,6 +2,7 @@ signalman = Creature:new {
 	objectName = "@mob/creature_names:signalman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 15,

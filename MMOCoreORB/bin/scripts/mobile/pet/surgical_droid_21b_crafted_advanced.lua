@@ -2,6 +2,7 @@ surgical_droid_21b_crafted_advanced = Creature:new {
 	objectName = "@droid_name:b_surgical_droid_crafted_advanced",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 10,

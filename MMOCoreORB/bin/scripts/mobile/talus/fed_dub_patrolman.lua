@@ -2,6 +2,7 @@ fed_dub_patrolman = Creature:new {
 	objectName = "@mob/creature_names:fed_dub_patrolman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "fed_dub",
 	faction = "fed_dub",
 	level = 9,

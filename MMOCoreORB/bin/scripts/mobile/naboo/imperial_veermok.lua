@@ -2,6 +2,7 @@ imperial_veermok = Creature:new {
 	objectName = "@mob/creature_names:imperial_veermok",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_CARNIVORE,
 	level = 27,
 	chanceHit = 0.36,
 	damageMin = 240,

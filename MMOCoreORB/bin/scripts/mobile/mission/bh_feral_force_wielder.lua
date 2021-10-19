@@ -3,6 +3,7 @@ bh_feral_force_wielder = Creature:new {
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "force",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 115,
 	chanceHit = 1,

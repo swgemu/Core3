@@ -2,6 +2,7 @@ gadget_specialist = Creature:new {
 	objectName = "@mob/creature_names:quest_gadget_specialist",
 	socialGroup = "townsperson",
 	randomNameType = NAME_GENERIC,
+	mobType = MOB_NPC,
 	randomNameTag = true,
 	faction = "",
 	level = 19,

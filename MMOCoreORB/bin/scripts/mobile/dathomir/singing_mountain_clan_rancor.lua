@@ -2,6 +2,7 @@ singing_mountain_clan_rancor = Creature:new {
 	objectName = "@mob/creature_names:singing_mountain_clan_rancor",
 	socialGroup = "mtn_clan",
 	faction = "mtn_clan",
+	mobType = MOB_CARNIVORE,
 	level = 55,
 	chanceHit = 0.5,
 	damageMin = 370,

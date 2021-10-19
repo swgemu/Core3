@@ -2,6 +2,7 @@ chadra_fan_female = Creature:new {
 	objectName = "@mob/creature_names:chadra_fan_female",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

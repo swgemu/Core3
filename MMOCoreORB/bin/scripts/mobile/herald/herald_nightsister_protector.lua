@@ -2,6 +2,7 @@ herald_nightsister_protector = Creature:new {
 	objectName = "@mob/creature_names:nightsister_protector",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "nightsister",
 	faction = "nightsister",
 	level = 131,

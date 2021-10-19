@@ -2,6 +2,7 @@ mos_taike_veteran_guard_rebel = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_guard_old",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 21,

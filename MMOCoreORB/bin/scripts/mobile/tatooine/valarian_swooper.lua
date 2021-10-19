@@ -2,6 +2,7 @@ valarian_swooper = Creature:new {
 	objectName = "@mob/creature_names:valarian_swooper",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "valarian",
 	faction = "valarian",
 	level = 10,

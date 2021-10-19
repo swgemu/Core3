@@ -2,6 +2,7 @@ wise_gondula_ritualist = Creature:new {
 	objectName = "@mob/creature_names:wise_gondula_ritualist",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 41,

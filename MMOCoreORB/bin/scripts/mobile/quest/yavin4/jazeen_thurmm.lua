@@ -2,6 +2,7 @@ jazeen_thurmm = Creature:new {
 	objectName = "",
 	customName = "Jazeen Thurmm",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ mire_marauder = Creature:new {
 	objectName = "@mob/creature_names:mire_marauder",
 	socialGroup = "panther",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 56,
 	chanceHit = 0.55,
 	damageMin = 445,

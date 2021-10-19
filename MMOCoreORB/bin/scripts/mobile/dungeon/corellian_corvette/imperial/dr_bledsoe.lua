@@ -2,6 +2,7 @@ dr_bledsoe = Creature:new {
 	objectName = "",
 	customName = "Dr Bledsoe (an Imperial scientist)",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

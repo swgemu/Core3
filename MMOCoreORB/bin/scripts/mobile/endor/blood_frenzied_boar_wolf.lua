@@ -2,6 +2,7 @@ blood_frenzied_boar_wolf = Creature:new {
 	objectName = "@mob/creature_names:blood_frenzied_boar_wolf",
 	socialGroup = "boar",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 45,
 	chanceHit = 0.44,
 	damageMin = 395,

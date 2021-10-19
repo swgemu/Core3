@@ -2,6 +2,7 @@ overkreetle = Creature:new {
 	objectName = "@mob/creature_names:kreetle_over",
 	socialGroup = "kreetle",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.29,
 	damageMin = 150,

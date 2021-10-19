@@ -2,6 +2,7 @@ theme_park_imperial_slicer = Creature:new {
 	objectName = "",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,

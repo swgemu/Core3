@@ -2,6 +2,7 @@ theme_park_imperial_commander = Creature:new {
 	objectName = "",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

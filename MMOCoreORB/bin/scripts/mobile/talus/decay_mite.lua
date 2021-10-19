@@ -2,6 +2,7 @@ decay_mite = Creature:new {
 	objectName = "@mob/creature_names:decay_mite",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

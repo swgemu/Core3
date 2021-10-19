@@ -2,6 +2,7 @@ bark_mite_burrower = Creature:new {
 	objectName = "@mob/creature_names:bark_mite_burrower",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 55,
 	chanceHit = 0.49,
 	damageMin = 415,

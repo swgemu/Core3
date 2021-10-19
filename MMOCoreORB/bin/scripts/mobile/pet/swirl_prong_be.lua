@@ -2,6 +2,7 @@ swirl_prong_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_swirl_prong",
 	socialGroup = "prong",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 2,
 	chanceHit = 0.2,
 	damageMin = 30,

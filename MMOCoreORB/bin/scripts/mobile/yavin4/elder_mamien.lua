@@ -2,6 +2,7 @@ elder_mamien = Creature:new {
 	objectName = "@mob/creature_names:mamien_elder",
 	socialGroup = "mamien",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 180,

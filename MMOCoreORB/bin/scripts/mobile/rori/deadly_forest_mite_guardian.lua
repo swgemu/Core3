@@ -2,6 +2,7 @@ deadly_forest_mite_guardian = Creature:new {
 	objectName = "@mob/creature_names:deadly_forest_mite_guardian",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

@@ -2,6 +2,7 @@ melloc_fitzal = Creature:new {
   objectName = "",
   socialGroup = "imperial",
   faction = "imperial",
+  mobType = MOB_NPC,
   level = 30,
   chanceHit = 0.39,
   damageMin = 290,

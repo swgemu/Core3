@@ -2,6 +2,7 @@ crackdown_imperial_sharpshooter = Creature:new {
 	objectName = "@mob/creature_names:crackdown_imperial_sharpshooter",
 	randomNameType = NAME_STORMTROOPER,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 1,

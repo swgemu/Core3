@@ -2,6 +2,7 @@ dire_cat = Creature:new {
 	objectName = "@mob/creature_names:dire_cat",
 	socialGroup = "dire_cat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 160,

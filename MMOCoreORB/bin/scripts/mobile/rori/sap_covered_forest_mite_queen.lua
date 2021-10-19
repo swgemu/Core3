@@ -2,6 +2,7 @@ sap_covered_forest_mite_queen = Creature:new {
 	objectName = "@mob/creature_names:sap_covered_forest_mite_queen",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 180,

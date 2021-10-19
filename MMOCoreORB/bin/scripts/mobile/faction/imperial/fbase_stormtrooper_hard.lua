@@ -2,6 +2,7 @@ fbase_stormtrooper_hard = Creature:new {
 	objectName = "@mob/creature_names:fbase_stormtrooper_hard",
 	randomNameType = NAME_STORMTROOPER,
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 70,
 	chanceHit = 0.7,

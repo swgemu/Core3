@@ -2,6 +2,7 @@ sil_ondatek = Creature:new {
 	objectName = "",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

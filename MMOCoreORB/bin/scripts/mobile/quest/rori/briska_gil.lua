@@ -3,6 +3,7 @@ briska_gil = Creature:new {
 	customName = "Briska Gil",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

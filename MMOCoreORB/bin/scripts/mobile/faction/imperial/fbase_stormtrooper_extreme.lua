@@ -2,6 +2,7 @@ fbase_stormtrooper_extreme = Creature:new {
 	objectName = "@mob/creature_names:fbase_stormtrooper_extreme",
 	randomNameType = NAME_STORMTROOPER,
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 140,
 	chanceHit = 5.0,

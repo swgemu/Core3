@@ -2,6 +2,7 @@ stella = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_cantina_owner",
 	customName = "Stella",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 20,
 	chanceHit = 0.33,

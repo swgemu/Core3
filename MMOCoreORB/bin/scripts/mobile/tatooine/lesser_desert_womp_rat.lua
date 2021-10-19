@@ -2,6 +2,7 @@ lesser_desert_womp_rat = Creature:new {
 	objectName = "@mob/creature_names:lesser_desert_womprat",
 	socialGroup = "rat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,

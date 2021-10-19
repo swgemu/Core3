@@ -2,6 +2,7 @@ durgur_pyne = Creature:new {
 	objectName = "",
 	customName = "Durgur Pyne",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

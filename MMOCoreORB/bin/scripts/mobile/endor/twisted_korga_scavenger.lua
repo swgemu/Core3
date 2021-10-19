@@ -2,6 +2,7 @@ twisted_korga_scavenger = Creature:new {
 	objectName = "@mob/creature_names:twisted_korga_scavenger",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "korga_tribe",
 	faction = "korga_tribe",
 	level = 26,

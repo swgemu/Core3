@@ -4,6 +4,7 @@ bh_pirate_captain = Creature:new {
 	randomNameTag = true,
 	customName = "a Pirate Captain",
 	socialGroup = "pirate",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,

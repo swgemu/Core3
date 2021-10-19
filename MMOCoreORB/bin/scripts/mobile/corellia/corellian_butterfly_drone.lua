@@ -2,6 +2,7 @@ corellian_butterfly_drone = Creature:new {
 	objectName = "@mob/creature_names:corellian_butterfly_drone",
 	socialGroup = "butterfly",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,

@@ -2,6 +2,7 @@ jawa = Creature:new {
 	objectName = "@mob/creature_names:jawa",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "jawa",
 	faction = "jawa",
 	level = 6,

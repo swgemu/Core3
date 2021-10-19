@@ -2,6 +2,7 @@ mirla = Creature:new {
 	objectName = "@theme_park/warren/warren_system_messages:name_mirla",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

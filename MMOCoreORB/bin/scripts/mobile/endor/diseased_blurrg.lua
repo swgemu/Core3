@@ -2,6 +2,7 @@ diseased_blurrg = Creature:new {
 	objectName = "@mob/creature_names:diseased_blurrg",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 37,
 	chanceHit = 0.41,
 	damageMin = 320,

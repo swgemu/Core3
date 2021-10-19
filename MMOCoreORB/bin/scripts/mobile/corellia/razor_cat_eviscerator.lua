@@ -2,6 +2,7 @@ razor_cat_eviscerator = Creature:new {
 	objectName = "@mob/creature_names:razor_cat_eviscerator",
 	socialGroup = "panther",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 240,

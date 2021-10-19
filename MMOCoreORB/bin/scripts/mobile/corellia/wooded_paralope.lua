@@ -2,6 +2,7 @@ wooded_paralope = Creature:new {
 	objectName = "@mob/creature_names:wooded_paralope",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

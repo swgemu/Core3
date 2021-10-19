@@ -2,6 +2,7 @@ savage_pugoriss = Creature:new {
 	objectName = "@mob/creature_names:savage_pugoriss",
 	socialGroup = "pugoriss",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.3,
 	damageMin = 160,

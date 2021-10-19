@@ -2,6 +2,7 @@ feral_orphan = Creature:new {
 	objectName = "@mob/creature_names:dire_cat_feral_orphan",
 	socialGroup = "dire_cat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 16,
 	chanceHit = 0.3,
 	damageMin = 160,

@@ -2,6 +2,7 @@ singing_mountain_clan_guardian = Creature:new {
 	objectName = "@mob/creature_names:singing_mtn_clan_guardian",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "mtn_clan",
 	faction = "mtn_clan",
 	level = 156,

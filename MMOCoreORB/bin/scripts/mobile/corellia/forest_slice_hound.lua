@@ -2,6 +2,7 @@ forest_slice_hound = Creature:new {
 	objectName = "@mob/creature_names:forest_slice_hound",
 	socialGroup = "slice_hound",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 16,
 	chanceHit = 0.3,
 	damageMin = 160,

@@ -2,6 +2,7 @@ volatile_scyk = Creature:new {
 	objectName = "@mob/creature_names:scyk_volatile",
 	socialGroup = "scyk",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

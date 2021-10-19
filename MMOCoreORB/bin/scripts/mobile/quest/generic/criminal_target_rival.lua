@@ -2,6 +2,7 @@ criminal_target_rival = Creature:new {
 	objectName = "@mob/creature_names:criminal",
 	socialGroup = "thug",
 	randomNameType = NAME_GENERIC,
+	mobType = MOB_NPC,
 	randomNameTag = true,
 	faction = "thug",
 	level = 7,

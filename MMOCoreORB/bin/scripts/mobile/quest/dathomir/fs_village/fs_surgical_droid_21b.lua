@@ -2,6 +2,7 @@ fs_surgical_droid_21b = Creature:new {
 	objectName = "@mob/creature_names:fs_surgical_droid_21b",
 	socialGroup = "fs_villager",
 	faction = "fs_villager",
+	mobType = MOB_DROID,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

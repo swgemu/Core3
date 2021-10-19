@@ -2,6 +2,7 @@ mutant_rancor = Creature:new {
 	objectName = "@mob/creature_names:mutant_rancor",
 	socialGroup = "rancor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 75,
 	chanceHit = 0.7,
 	damageMin = 495,

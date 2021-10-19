@@ -2,6 +2,7 @@ insurgent = Creature:new {
 	objectName = "@npc_spawner_n:insurgent",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 17,
 	chanceHit = 0.320000,
 	damageMin = 160,

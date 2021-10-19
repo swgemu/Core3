@@ -2,6 +2,7 @@ servant_quest_crev = Creature:new {
 	objectName = "@mob/creature_names:slave",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.240000,
 	damageMin = 40,

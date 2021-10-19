@@ -2,6 +2,7 @@ fbase_imperial_sharpshooter = Creature:new {
 	objectName = "@mob/creature_names:fbase_imperial_sharpshooter",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 27,

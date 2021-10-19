@@ -2,6 +2,7 @@ imperial_army_captain = Creature:new {
 	objectName = "@mob/creature_names:imperial_army_captain",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 21,

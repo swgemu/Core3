@@ -2,6 +2,7 @@ security_officer_quest_kritus = Creature:new {
 	objectName = "@mob/creature_names:rsf_security_officer",
 	socialGroup = "naboo_security_force",
 	faction = "naboo_security_force",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

@@ -2,6 +2,7 @@ sith_shadow_outlaw_nonaggro = Creature:new {
 	objectName = "@mob/creature_names:shadow_outlaw_nonaggro",
 	socialGroup = "sith_shadow",
 	faction = "sith_shadow_nonaggro",
+	mobType = MOB_NPC,
 	level = 68,
 	chanceHit = 0.6,
 	damageMin = 445,

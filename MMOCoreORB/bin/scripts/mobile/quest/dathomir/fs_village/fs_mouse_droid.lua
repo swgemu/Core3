@@ -2,6 +2,7 @@ fs_mouse_droid = Creature:new {
 	objectName = "@mob/creature_names:mouse_droid",
 	socialGroup = "sith_shadow",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

@@ -2,6 +2,7 @@ crackdown_rebel_comm_operator = Creature:new {
 	objectName = "@mob/creature_names:crackdown_rebel_comm_operator",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 1,

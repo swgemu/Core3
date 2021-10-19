@@ -2,6 +2,7 @@ brass_marshoo = Creature:new {
 	objectName = "",
 	customName = "Brass Marshoo",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

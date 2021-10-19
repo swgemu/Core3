@@ -2,6 +2,7 @@ rohak_village_elder = Creature:new {
 	objectName = "@mob/creature_names:fs_villager_elder",
 	socialGroup = "fs_villager",
 	faction = "fs_villager",
+	mobType = MOB_NPC,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

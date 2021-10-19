@@ -2,6 +2,7 @@ sickle_rasp = Creature:new {
 	objectName = "@mob/creature_names:sickle_rasp",
 	socialGroup = "rasp",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 90,

@@ -2,6 +2,7 @@ slinking_voritor_hunter = Creature:new {
 	objectName = "@mob/creature_names:slinking_voritor_hunter",
 	socialGroup = "voritor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 57,
 	chanceHit = 0.55,
 	damageMin = 420,

@@ -2,6 +2,7 @@ vrak = Creature:new {
 	objectName = "@npc_spawner_n:vrak",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

@@ -2,6 +2,7 @@ hal_horn = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Hal Horn",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ hirsch_sif = Creature:new {
 	objectName = "@mob/creature_names:hirsch_sif",
 	socialGroup = "sif",
 	faction = "sif",
+	mobType = MOB_NPC,
 	level = 57,
 	chanceHit = 0.570000,
 	damageMin = 430,

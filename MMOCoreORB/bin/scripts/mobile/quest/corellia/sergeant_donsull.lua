@@ -2,6 +2,7 @@ sergeant_donsull = Creature:new {
 	objectName = "",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

@@ -2,6 +2,7 @@ mauler_lord = Creature:new {
 	objectName = "@mob/creature_names:mauler_lord",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "mauler",
 	faction = "",
 	level = 27,

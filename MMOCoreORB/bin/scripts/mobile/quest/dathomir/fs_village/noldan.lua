@@ -2,6 +2,7 @@ noldan = Creature:new {
 	objectName = "@mob/creature_names:trainer_fs",
 	socialGroup = "fs_villager",
 	faction = "fs_villager",
+	mobType = MOB_NPC,
 	level = 99,
 	chanceHit = 1,
 	damageMin = 645,

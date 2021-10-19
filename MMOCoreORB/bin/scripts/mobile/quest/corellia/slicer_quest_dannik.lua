@@ -2,6 +2,7 @@ slicer_quest_dannik = Creature:new {
 	objectName = "@mob/creature_names:slicer",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

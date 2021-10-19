@@ -2,6 +2,7 @@ bestine_rumor07 = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper",
 	customName = "TK-471",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

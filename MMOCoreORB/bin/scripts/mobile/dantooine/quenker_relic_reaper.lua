@@ -2,6 +2,7 @@ quenker_relic_reaper = Creature:new {
 	objectName = "@mob/creature_names:quenker_relic_reaper",
 	socialGroup = "quenker",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 45,
 	chanceHit = 0.44,
 	damageMin = 380,

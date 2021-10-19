@@ -2,6 +2,7 @@ agrilat_race_coordinator = Creature:new {
 	objectName = "@event_perk:name_race_droid",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

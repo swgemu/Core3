@@ -2,6 +2,7 @@ blerx_tango = Creature:new {
 	objectName = "@npc_name:bith_base_male",
 	customName = "Blerx Tango",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

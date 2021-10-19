@@ -3,6 +3,7 @@ aroho_preni = Creature:new {
 	customName = "Aroho Preni (a Dantari Raider)",	
 	socialGroup = "dantari_raiders",
 	faction = "dantari_raiders",
+	mobType = MOB_NPC,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

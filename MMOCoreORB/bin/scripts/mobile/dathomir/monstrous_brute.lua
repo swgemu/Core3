@@ -2,6 +2,7 @@ monstrous_brute = Creature:new {
 	objectName = "@mob/creature_names:rancor_monstrous_brute",
 	socialGroup = "rancor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 87,
 	chanceHit = 0.82,
 	damageMin = 595,

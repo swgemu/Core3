@@ -2,6 +2,7 @@ tusken_bantha = Creature:new {
 	objectName = "@mob/creature_names:tusken_bantha",
 	socialGroup = "tusken_raider",
 	faction = "tusken_raider",
+	mobType = MOB_HERBIVORE,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 260,

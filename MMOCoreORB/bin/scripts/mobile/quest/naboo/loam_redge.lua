@@ -2,6 +2,7 @@ loam_redge = Creature:new {
 	objectName = "@mob/creature_names:loam_redge",
 	customName = "Inquisitor Loam Redge",--according to ZAM that's the name
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

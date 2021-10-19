@@ -2,6 +2,7 @@ vicious_slice_hound = Creature:new {
 	objectName = "",
 	customName = "a vicious slice hound",
 	socialGroup = "slice_hound",
+	mobType = MOB_CARNIVORE,
 	faction = "",
 	level = 9,
 	chanceHit = 0.27,

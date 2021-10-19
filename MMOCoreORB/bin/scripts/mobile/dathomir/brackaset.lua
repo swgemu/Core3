@@ -2,6 +2,7 @@ brackaset = Creature:new {
 	objectName = "@mob/creature_names:brackaset",
 	socialGroup = "brackaset",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 240,

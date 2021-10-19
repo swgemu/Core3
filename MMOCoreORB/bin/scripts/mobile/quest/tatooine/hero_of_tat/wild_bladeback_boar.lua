@@ -2,6 +2,7 @@ wild_bladeback_boar = Creature:new {
 	objectName = "@mob/creature_names:quest_hero_of_tatooine_ferocious_beast",
 	socialGroup = "boar",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 39,
 	chanceHit = 0.44,
 	damageMin = 355,

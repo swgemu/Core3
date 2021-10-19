@@ -2,6 +2,7 @@ audience_member = Creature:new {
 	objectName = "@mob/creature_names:quest_crowd_pleaser_audience_member",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

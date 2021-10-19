@@ -2,6 +2,7 @@ theme_park_imperial_alderaanian_leader = Creature:new {
 	objectName = "",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

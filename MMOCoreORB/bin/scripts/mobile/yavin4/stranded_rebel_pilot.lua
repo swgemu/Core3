@@ -2,6 +2,7 @@ stranded_rebel_pilot = Creature:new {
 	objectName = "@mob/creature_names:stranded_rebel_pilot",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 20,

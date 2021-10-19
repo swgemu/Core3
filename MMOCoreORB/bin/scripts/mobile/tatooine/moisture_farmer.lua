@@ -2,6 +2,7 @@ moisture_farmer = Creature:new {
 	objectName = "@mob/creature_names:moisture_farmer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,

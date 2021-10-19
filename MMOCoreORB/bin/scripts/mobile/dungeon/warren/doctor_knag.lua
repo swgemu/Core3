@@ -2,6 +2,7 @@ doctor_knag = Creature:new {
 	objectName = "@theme_park/warren/warren_system_messages:name_knag",
 	socialGroup = "warren_scientist",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 11,
 	chanceHit = 1,
 	damageMin = 121,

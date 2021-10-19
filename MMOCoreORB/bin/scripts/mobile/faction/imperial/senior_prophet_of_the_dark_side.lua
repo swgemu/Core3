@@ -2,6 +2,7 @@ senior_prophet_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:senior_prophet_of_the_dark_side",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 138,

@@ -2,6 +2,7 @@ tamvar_senzen = Creature:new {
 	objectName = "",
 	customName = "Tamvar Senzen",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

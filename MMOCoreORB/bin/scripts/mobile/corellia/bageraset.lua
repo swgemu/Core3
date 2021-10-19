@@ -2,6 +2,7 @@ bageraset = Creature:new {
 	objectName = "@mob/creature_names:bageraset",
 	socialGroup = "bageraset",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

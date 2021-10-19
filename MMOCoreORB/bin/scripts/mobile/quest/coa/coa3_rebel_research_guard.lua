@@ -2,6 +2,7 @@ coa3_rebel_research_guard = Creature:new {
 	objectName = "",
 	customName = "a Rebel Research Guard",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 18,
 	chanceHit = 0.32,

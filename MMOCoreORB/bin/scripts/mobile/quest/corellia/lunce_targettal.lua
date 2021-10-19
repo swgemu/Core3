@@ -2,6 +2,7 @@ lunce_targettal = Creature:new {
 	objectName = "",
 	socialGroup = "corsec",
 	faction = "corsec",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

@@ -2,6 +2,7 @@ bestine_rumor08 = Creature:new {
 	objectName = "",
 	customName = "Par Doiae (a surveyor)",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ gravin_attal = Creature:new {
 	objectName = "",
 	customName = "Gravin Attal",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

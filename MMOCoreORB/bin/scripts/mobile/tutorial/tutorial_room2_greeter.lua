@@ -2,6 +2,7 @@ tutorial_room2_greeter = Creature:new {
 	objectName = "@newbie_tutorial/system_messages:imp_name",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,

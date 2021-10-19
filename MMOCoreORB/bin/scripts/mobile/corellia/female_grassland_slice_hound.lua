@@ -2,6 +2,7 @@ female_grassland_slice_hound = Creature:new {
 	objectName = "@mob/creature_names:female_grassland_slice_hound",
 	socialGroup = "slice_hound",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.29,
 	damageMin = 120,

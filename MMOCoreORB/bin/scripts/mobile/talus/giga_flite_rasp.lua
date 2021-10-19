@@ -2,6 +2,7 @@ giga_flite_rasp = Creature:new {
 	objectName = "@mob/creature_names:giga_flite_rasp",
 	socialGroup = "rasp",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 130,

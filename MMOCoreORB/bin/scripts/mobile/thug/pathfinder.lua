@@ -2,6 +2,7 @@ pathfinder = Creature:new {
 	objectName = "",
 	customName = "Pathfinder",
 	socialGroup = "wilder",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 21,
 	chanceHit = 0.33,

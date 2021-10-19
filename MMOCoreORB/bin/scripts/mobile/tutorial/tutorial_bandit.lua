@@ -2,6 +2,7 @@ tutorial_bandit = Creature:new {
 	objectName = "@mob/creature_names:bandit",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 1,
 	chanceHit = 0.390000,
 	damageMin = 5,

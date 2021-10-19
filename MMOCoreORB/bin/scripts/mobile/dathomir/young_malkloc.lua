@@ -2,6 +2,7 @@ young_malkloc = Creature:new {
 	objectName = "@mob/creature_names:young_malkloc",
 	socialGroup = "malkloc",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 20,
 	chanceHit = 0.32,
 	damageMin = 160,

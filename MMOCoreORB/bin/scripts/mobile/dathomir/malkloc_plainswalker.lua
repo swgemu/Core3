@@ -2,6 +2,7 @@ malkloc_plainswalker = Creature:new {
 	objectName = "@mob/creature_names:malkloc_plainswalker",
 	socialGroup = "malkloc",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 84,
 	chanceHit = 0.7,
 	damageMin = 535,

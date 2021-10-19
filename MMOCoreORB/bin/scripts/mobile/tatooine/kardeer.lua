@@ -2,6 +2,7 @@ kardeer = Creature:new {
 	objectName = "@mob/creature_names:kardeer",
 	socialGroup = "valarian",
 	faction = "valarian",
+	mobType = MOB_NPC,
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 190,

@@ -2,6 +2,7 @@ domestic_bearded_jax = Creature:new {
 	objectName = "@mob/creature_names:domestic_bearded_jax",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,

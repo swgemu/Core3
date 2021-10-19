@@ -2,6 +2,7 @@ puny_stintaril = Creature:new {
 	objectName = "@mob/creature_names:puny_stintaril",
 	socialGroup = "stinaril",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

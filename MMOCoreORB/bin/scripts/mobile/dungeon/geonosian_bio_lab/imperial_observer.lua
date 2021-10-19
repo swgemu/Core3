@@ -2,6 +2,7 @@ imperial_observer = Creature:new {
 	objectName = "@mob/creature_names:geonosian_imperial_observer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 53,

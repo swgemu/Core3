@@ -2,6 +2,7 @@ demolishing_snorbal_titan = Creature:new {
 	objectName = "@mob/creature_names:snorbal_titanic_demolisher",
 	socialGroup = "snorbal",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 40,
 	chanceHit = 0.47,
 	damageMin = 345,

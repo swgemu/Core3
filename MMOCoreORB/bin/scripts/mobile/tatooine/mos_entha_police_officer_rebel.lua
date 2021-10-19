@@ -2,6 +2,7 @@ mos_entha_police_officer_rebel = Creature:new {
 	objectName = "@mob/creature_names:mos_entha_police_officer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 13,

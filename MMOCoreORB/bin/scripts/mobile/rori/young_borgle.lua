@@ -2,6 +2,7 @@ young_borgle = Creature:new {
 	objectName = "@mob/creature_names:young_borgle",
 	socialGroup = "borgle",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 45,

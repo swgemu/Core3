@@ -2,6 +2,7 @@ weequay_soldier = Creature:new {
 	objectName = "@mob/creature_names:weequay_soldier",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "weequay",
 	faction = "",
 	level = 10,

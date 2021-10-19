@@ -2,6 +2,7 @@ ev_9d9 = Creature:new {
 	objectName = "@mob/creature_names:ev_9d9",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_DROID,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

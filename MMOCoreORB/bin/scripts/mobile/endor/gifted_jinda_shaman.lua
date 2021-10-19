@@ -2,6 +2,7 @@ gifted_jinda_shaman = Creature:new {
 	objectName = "@mob/creature_names:gifted_jinda_shaman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "jinda_tribe",
 	faction = "",
 	level = 27,

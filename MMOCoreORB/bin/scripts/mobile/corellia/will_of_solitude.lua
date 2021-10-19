@@ -2,6 +2,7 @@ will_of_solitude = Creature:new {
 	objectName = "@mob/creature_names:will_of_solitude",
 	socialGroup = "solitude",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 160,

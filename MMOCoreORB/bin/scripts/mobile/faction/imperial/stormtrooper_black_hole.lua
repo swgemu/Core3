@@ -2,6 +2,7 @@ stormtrooper_black_hole = Creature:new {
 	objectName = "",
 	randomNameType = NAME_STORMTROOPER,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Black Hole Stormtrooper",
 	socialGroup = "imperial",
 	faction = "imperial",

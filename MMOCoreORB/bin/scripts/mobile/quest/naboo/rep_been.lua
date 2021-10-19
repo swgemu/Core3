@@ -2,6 +2,7 @@ rep_been = Creature:new {
 	objectName = "",
 	customName = "Rep Been",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

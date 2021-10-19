@@ -2,6 +2,7 @@ hero_of_tat_bh = Creature:new {
 	objectName = "@mob/creature_names:quest_hero_of_tatooine_liar_bounty_hunter",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "",
 	faction = "",
 	level = 24,

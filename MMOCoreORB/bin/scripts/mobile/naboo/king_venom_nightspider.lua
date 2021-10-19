@@ -2,6 +2,7 @@ king_venom_nightspider = Creature:new {
 	objectName = "@mob/creature_names:king_venom_nightspider",
 	socialGroup = "spider",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 160,

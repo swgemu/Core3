@@ -2,6 +2,7 @@ ferine_razorfang = Creature:new {
 	objectName = "@mob/creature_names:kima_ferine_razorfang",
 	socialGroup = "kima",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 21,
 	chanceHit = 0.32,
 	damageMin = 210,

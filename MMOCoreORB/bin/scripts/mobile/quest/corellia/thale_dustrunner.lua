@@ -2,6 +2,7 @@ thale_dustrunner = Creature:new {
 	objectName = "",
 	customName = "Thale Dustrunner (Corsec Captain)",
 	socialGroup = "corsec",
+	mobType = MOB_NPC,
 	faction = "corsec",
 	level = 100,
 	chanceHit = 1,

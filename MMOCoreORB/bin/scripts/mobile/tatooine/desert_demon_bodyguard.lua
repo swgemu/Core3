@@ -2,6 +2,7 @@ desert_demon_bodyguard = Creature:new {
 	objectName = "@mob/creature_names:desert_demon_bodyguard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "desert_demon",
 	faction = "desert_demon",
 	level = 15,

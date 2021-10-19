@@ -2,6 +2,7 @@ phy_hudgen = Creature:new {
 	objectName = "@theme_park/warren/warren_system_messages:name_phy",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 23,
 	chanceHit = 1,
 	damageMin = 123,

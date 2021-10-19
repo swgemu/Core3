@@ -2,6 +2,7 @@ gerrio_coronis = Creature:new {
 	objectName = "",
 	customName = "Gerrio Coronis",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

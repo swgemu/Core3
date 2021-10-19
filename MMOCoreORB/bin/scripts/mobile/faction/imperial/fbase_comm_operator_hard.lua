@@ -2,6 +2,7 @@ fbase_comm_operator_hard = Creature:new {
 	objectName = "@mob/creature_names:fbase_comm_operator_hard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 48,

@@ -2,6 +2,7 @@ motley_kaadu = Creature:new {
 	objectName = "@mob/creature_names:kaadu_motley",
 	socialGroup = "kaadu",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,

@@ -2,6 +2,7 @@ coa3_rebel_vacca = Creature:new {
 	objectName = "",
 	customName = "Vacca",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 35,
 	chanceHit = 0.41,

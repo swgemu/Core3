@@ -2,6 +2,7 @@ gilad_pellaeon = Creature:new {
 	objectName = "",
 	customName = "Captain Gilad Pellaeon",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

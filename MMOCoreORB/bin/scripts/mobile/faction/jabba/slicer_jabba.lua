@@ -2,6 +2,7 @@ slicer_jabba = Creature:new {
 	objectName = "@mob/creature_names:slicer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "jabba",
 	faction = "jabba",
 	level = 6,

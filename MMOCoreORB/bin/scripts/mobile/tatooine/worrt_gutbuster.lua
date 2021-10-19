@@ -2,6 +2,7 @@ worrt_gutbuster = Creature:new {
 	objectName = "@mob/creature_names:worrt_gutbuster",
 	socialGroup = "worrt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 16,
 	chanceHit = 0.33,
 	damageMin = 160,

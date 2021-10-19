@@ -2,6 +2,7 @@ vordin_bounty_hunter = Creature:new {
 	objectName = "@mob/creature_names:bounty_hunter",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 12,
 	chanceHit = 0.27,
 	damageMin = 80,

@@ -2,6 +2,7 @@ gruthashaal = Creature:new {
 	objectName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 40,
 	chanceHit = 10,
 	damageMin = 240,

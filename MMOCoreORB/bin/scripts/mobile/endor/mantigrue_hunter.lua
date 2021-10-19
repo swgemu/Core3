@@ -2,6 +2,7 @@ mantigrue_hunter = Creature:new {
 	objectName = "@mob/creature_names:mantigrue_hunter",
 	socialGroup = "mantigrue",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 38,
 	chanceHit = 0.41,
 	damageMin = 320,

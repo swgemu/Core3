@@ -2,6 +2,7 @@ choku_female = Creature:new {
 	objectName = "@mob/creature_names:choku_female",
 	socialGroup = "choku",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 130,

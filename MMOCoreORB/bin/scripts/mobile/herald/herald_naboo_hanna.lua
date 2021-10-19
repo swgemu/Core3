@@ -2,6 +2,7 @@ herald_naboo_hanna = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
 	customName = "Hanna S'kiyah",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

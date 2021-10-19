@@ -2,6 +2,7 @@ theme_park_imperial_rebels_father = Creature:new {
 	objectName = "",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,

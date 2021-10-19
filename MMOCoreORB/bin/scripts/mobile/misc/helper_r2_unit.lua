@@ -2,6 +2,7 @@ helper_r2_unit = Creature:new {
 	objectName = "@mob/creature_names:nhelper_droid",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

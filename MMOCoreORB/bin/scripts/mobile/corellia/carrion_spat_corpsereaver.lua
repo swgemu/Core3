@@ -2,6 +2,7 @@ carrion_spat_corpsereaver = Creature:new {
 	objectName = "@mob/creature_names:carrion_spat_corpsereaver",
 	socialGroup = "carrion_spat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.29,
 	damageMin = 130,

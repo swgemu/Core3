@@ -2,6 +2,7 @@ female_mamien = Creature:new {
 	objectName = "@mob/creature_names:mamien_female",
 	socialGroup = "mamien",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 18,
 	chanceHit = 0.31,
 	damageMin = 170,

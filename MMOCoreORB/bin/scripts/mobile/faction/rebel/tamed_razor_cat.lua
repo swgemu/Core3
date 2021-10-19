@@ -2,6 +2,7 @@ tamed_razor_cat = Creature:new {
 	objectName = "@mob/creature_names:rebel_tamed_razor_cat",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_CARNIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 140,

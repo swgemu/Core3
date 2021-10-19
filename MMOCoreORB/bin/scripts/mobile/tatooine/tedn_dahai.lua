@@ -3,6 +3,7 @@ tedn_dahai = Creature:new {
 	customName = "Tedn Dahai",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

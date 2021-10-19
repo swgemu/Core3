@@ -3,6 +3,7 @@ lx_466_imperial_courier = Creature:new {
 	customName = "(an Imperial Courier)",		
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 30,
 	chanceHit = 0.390000,
 	damageMin = 290,

@@ -2,6 +2,7 @@ sigrix_slix = Creature:new {
 	objectName = "",
 	customName = "Sigrix Slix",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

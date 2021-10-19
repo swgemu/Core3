@@ -2,6 +2,7 @@ imperial_cadet_squadleader = Creature:new {
 	objectName = "@mob/creature_names:imperial_cadet_squadleader",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 11,

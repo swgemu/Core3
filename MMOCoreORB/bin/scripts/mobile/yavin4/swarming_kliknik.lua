@@ -2,6 +2,7 @@ swarming_kliknik = Creature:new {
 	objectName = "@mob/creature_names:kliknik_swarming",
 	socialGroup = "kliknik",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 10,
 	chanceHit = 0.27,
 	damageMin = 170,

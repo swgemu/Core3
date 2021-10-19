@@ -2,6 +2,7 @@ deranged_ravisher = Creature:new {
 	objectName = "@mob/creature_names:squill_deranged_ravisher",
 	socialGroup = "squill",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 35,
 	chanceHit = 0.39,
 	damageMin = 330,

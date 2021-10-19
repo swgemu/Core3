@@ -2,6 +2,7 @@ ree_yees = Creature:new {
 	objectName = "@theme_park_name:ree_yees",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 20,
 	chanceHit = 0.330000,
 	damageMin = 190,

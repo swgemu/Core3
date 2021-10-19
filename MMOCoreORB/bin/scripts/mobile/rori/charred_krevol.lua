@@ -2,6 +2,7 @@ charred_krevol = Creature:new {
 	objectName = "@mob/creature_names:charred_krevol",
 	socialGroup = "krevol",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

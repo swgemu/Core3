@@ -2,6 +2,7 @@ technician = Creature:new {
 	objectName = "@mob/creature_names:technician",
 	socialGroup = "death_watch",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 34,
 	chanceHit = 0.41,
 	damageMin = 320,

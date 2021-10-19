@@ -2,6 +2,7 @@ ta_667 = Creature:new {
 	objectName = "@npc_spawner_n:ta_667",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_ANDROID,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

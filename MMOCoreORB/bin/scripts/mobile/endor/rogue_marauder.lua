@@ -2,6 +2,7 @@ rogue_marauder = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Rogue Marauder",
 	socialGroup = "self",
 	faction = "",

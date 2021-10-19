@@ -2,6 +2,7 @@ graul = Creature:new {
 	objectName = "@mob/creature_names:graul",
 	socialGroup = "graul",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,

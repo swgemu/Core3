@@ -2,6 +2,7 @@ roba_pack_leader = Creature:new {
 	objectName = "@mob/creature_names:roba_pack_leader",
 	socialGroup = "roba",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 310,

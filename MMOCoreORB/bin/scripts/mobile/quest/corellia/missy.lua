@@ -2,6 +2,7 @@ missy = Creature:new {
 	objectName = "@mob/creature_names:sand_panther_cub",
 	socialGroup = "panther",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 1,
 	chanceHit = 0.28,
 	damageMin = 5,

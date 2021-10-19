@@ -2,6 +2,7 @@ forsaken_force_drifter = Creature:new {
 	objectName = "@mob/creature_names:forsaken_force_drifter",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "force",
 	faction = "",
 	level = 80,

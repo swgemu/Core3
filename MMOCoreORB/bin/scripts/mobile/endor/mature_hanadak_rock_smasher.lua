@@ -2,6 +2,7 @@ mature_hanadak_rock_smasher = Creature:new {
 	objectName = "@mob/creature_names:mature_hanadak_rock_smasher",
 	socialGroup = "hanadak",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 35,
 	chanceHit = 0.41,
 	damageMin = 330,

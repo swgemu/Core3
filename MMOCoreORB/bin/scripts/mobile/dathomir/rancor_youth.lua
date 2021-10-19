@@ -2,6 +2,7 @@ rancor_youth = Creature:new {
 	objectName = "@mob/creature_names:rancor_youth",
 	socialGroup = "rancor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 45,
 	chanceHit = 0.44,
 	damageMin = 365,

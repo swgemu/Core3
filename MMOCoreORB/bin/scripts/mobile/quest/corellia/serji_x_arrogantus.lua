@@ -2,6 +2,7 @@ serji_x_arrogantus = Creature:new {
 	objectName = "",
 	customName = "Serji-X Arrogantus",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

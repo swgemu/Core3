@@ -2,6 +2,7 @@ deliver_npc = Creature:new {
 	objectName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 0.39,
 	damageMin = 290,

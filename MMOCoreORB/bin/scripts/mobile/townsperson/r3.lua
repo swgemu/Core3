@@ -2,6 +2,7 @@ r3 = Creature:new {
 	objectName = "@mob/creature_names:r3",
 	randomNameType = NAME_R3,
 	socialGroup = "townsperson",
+	mobType = MOB_DROID,
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

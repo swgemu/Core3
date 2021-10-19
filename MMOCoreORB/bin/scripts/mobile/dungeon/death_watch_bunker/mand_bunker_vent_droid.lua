@@ -2,6 +2,7 @@ mand_bunker_vent_droid = Creature:new {
 	objectName = "@mob/creature_names:r2",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 86,
 	chanceHit = 0.85,
 	damageMin = 570,

@@ -2,6 +2,7 @@ falumpaset_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_falumpaset",
 	socialGroup = "falumpaset",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 5,
 	chanceHit = 0.2,
 	damageMin = 30,

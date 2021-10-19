@@ -2,6 +2,7 @@ huff_guard = Creature:new {
 	objectName = "@mob/creature_names:darklighter_guard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "darklighter",
 	faction = "",
 	level = 99,

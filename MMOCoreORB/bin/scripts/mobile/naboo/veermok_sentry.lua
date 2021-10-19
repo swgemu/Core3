@@ -2,6 +2,7 @@ veermok_sentry = Creature:new {
 	objectName = "@mob/creature_names:veermok_sentry",
 	socialGroup = "veermok",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 70,

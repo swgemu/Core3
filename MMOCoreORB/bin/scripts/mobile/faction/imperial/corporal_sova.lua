@@ -2,6 +2,7 @@ corporal_sova = Creature:new {
 	objectName = "@mob/creature_names:corporal_sova",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,

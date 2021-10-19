@@ -2,6 +2,7 @@ librarian = Creature:new {
 	objectName = "@mob/creature_names:trivia_librarian",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 1,
 	chanceHit = 0.25,
 	damageMin = 50,

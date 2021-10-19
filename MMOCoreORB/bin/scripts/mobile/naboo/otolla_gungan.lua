@@ -2,6 +2,7 @@ otolla_gungan = Creature:new {
 	objectName = "@mob/creature_names:otolla_gungan",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "gungan",
 	faction = "gungan",
 	level = 10,

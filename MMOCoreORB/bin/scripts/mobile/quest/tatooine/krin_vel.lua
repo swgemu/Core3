@@ -2,6 +2,7 @@ krin_vel = Creature:new {
 	objectName = "",
 	customName = "Krin Vel",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

@@ -2,6 +2,7 @@ lambda_shuttle = Creature:new {
 	objectName = "@event_perk:shuttle_lambda_shuttle",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_VEHICLE,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

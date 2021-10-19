@@ -2,6 +2,7 @@ seething_bol_crusher = Creature:new {
 	objectName = "@mob/creature_names:seething_bol_crusher",
 	socialGroup = "bol",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 44,
 	chanceHit = 0.44,
 	damageMin = 325,

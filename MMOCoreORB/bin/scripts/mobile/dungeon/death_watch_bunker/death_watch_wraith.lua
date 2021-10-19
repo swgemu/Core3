@@ -2,6 +2,7 @@ death_watch_wraith = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_dthwatch_silver",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 178,

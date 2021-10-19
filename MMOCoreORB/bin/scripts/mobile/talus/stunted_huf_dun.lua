@@ -2,6 +2,7 @@ stunted_huf_dun = Creature:new {
 	objectName = "@mob/creature_names:stunted_huf_dun",
 	socialGroup = "huf_dun",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 90,

@@ -2,6 +2,7 @@ kusak_hunter = Creature:new {
 	objectName = "@mob/creature_names:kusak_hunter",
 	socialGroup = "kusak",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 73,
 	chanceHit = 0.75,
 	damageMin = 570,

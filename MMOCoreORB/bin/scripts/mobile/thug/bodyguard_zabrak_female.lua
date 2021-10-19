@@ -2,6 +2,7 @@ bodyguard_zabrak_female = Creature:new {
 	objectName = "@mob/creature_names:bodyguard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 18,

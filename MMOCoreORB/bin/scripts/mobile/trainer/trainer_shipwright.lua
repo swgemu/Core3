@@ -2,6 +2,7 @@ trainer_shipwright = Creature:new {
 	objectName = "@npc_spawner_n:shipwright_trainer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,

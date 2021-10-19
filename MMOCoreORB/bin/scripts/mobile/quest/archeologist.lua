@@ -2,6 +2,7 @@ archeologist = Creature:new {
 	objectName = "@mob/creature_names:quest_archeologist",
 	socialGroup = "townsperson",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,

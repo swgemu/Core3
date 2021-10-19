@@ -2,6 +2,7 @@ giant_decay_mite_guardian = Creature:new {
 	objectName = "@mob/creature_names:giant_decay_mite_royal_guardian",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 24,
 	chanceHit = 0.33,
 	damageMin = 220,

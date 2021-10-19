@@ -2,6 +2,7 @@ enraged_tabage_mother = Creature:new {
 	objectName = "@mob/creature_names:enraged_tabage_mother",
 	socialGroup = "tabage",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 17,
 	chanceHit = 0.31,
 	damageMin = 170,

@@ -2,6 +2,7 @@ pouncing_jax = Creature:new {
 	objectName = "@mob/creature_names:pouncing_jax",
 	socialGroup = "jax",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.29,
 	damageMin = 150,

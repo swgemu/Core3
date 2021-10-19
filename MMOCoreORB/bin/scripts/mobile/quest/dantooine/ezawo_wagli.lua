@@ -3,6 +3,7 @@ ezawo_wagli = Creature:new {
 	customName = "Ezawo Wagli",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

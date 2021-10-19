@@ -2,6 +2,7 @@ melios_purl = Creature:new {
 	objectName = "@theme_park_name:melious_purl",
 	customName = "Melios Purl",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 8,
 	chanceHit = 0.28,

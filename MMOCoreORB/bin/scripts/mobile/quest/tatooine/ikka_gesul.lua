@@ -2,6 +2,7 @@ ikka_gesul = Creature:new {
 	objectName = "",
 	customName = "Ikka Gesul",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

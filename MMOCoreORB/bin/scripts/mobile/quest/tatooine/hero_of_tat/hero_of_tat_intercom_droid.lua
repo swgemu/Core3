@@ -2,6 +2,7 @@ hero_of_tat_intercom_droid = Creature:new {
 	objectName = "",
 	customName = "Intercom Droid",
 	socialGroup = "",
+	mobType = MOB_DROID,
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

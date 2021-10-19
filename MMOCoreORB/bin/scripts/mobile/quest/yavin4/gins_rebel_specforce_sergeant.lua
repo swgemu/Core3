@@ -2,6 +2,7 @@ gins_rebel_specforce_sergeant = Creature:new {
 	objectName = "@mob/creature_names:rebel_specforce_sergeant",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 21,
 	chanceHit = 0.34,
 	damageMin = 200,

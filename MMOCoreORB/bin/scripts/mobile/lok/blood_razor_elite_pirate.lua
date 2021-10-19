@@ -2,6 +2,7 @@ blood_razor_elite_pirate = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_pirate_elite",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "bloodrazor",
 	faction = "bloodrazor",
 	level = 33,

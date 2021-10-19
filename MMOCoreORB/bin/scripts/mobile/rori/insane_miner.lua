@@ -3,6 +3,7 @@ insane_miner = Creature:new {
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	customName = "an Insane Miner",
+	mobType = MOB_NPC,
 	socialGroup = "self",
 	faction = "",
 	level = 9,

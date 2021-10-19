@@ -2,6 +2,7 @@ vanvi_hotne = Creature:new {
 	objectName = "@mob/creature_names:bestine_artist01",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

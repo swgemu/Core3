@@ -4,6 +4,7 @@ chassis_dealer = Creature:new {
 	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_DROID,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

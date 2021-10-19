@@ -2,6 +2,7 @@ gurnaset = Creature:new {
 	objectName = "@mob/creature_names:gurnaset",
 	socialGroup = "gurnaset",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

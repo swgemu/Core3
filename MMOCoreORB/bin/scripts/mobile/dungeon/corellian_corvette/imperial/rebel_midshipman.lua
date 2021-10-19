@@ -4,6 +4,7 @@ rebel_midshipman = Creature:new {
 	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 136,
 	chanceHit = 6.25,
 	damageMin = 820,

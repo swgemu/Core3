@@ -2,6 +2,7 @@ female_razor_cat = Creature:new {
 	objectName = "@mob/creature_names:female_sand_panther",
 	socialGroup = "panther",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 230,

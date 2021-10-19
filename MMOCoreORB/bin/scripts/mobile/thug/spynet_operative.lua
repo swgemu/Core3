@@ -2,6 +2,7 @@ spynet_operative = Creature:new {
 	objectName = "@mob/creature_names:spynet_operative",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "spynet",
 	faction = "",
 	level = 17,

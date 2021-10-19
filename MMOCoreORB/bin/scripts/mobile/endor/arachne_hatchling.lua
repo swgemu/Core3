@@ -2,6 +2,7 @@ arachne_hatchling = Creature:new {
 	objectName = "@mob/creature_names:arachne_hatchling",
 	socialGroup = "arachne",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 160,

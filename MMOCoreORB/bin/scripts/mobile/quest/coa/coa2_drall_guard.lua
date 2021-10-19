@@ -2,6 +2,7 @@ coa2_drall_guard = Creature:new {
 	randomNameType = NAME_GENERIC,
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 27,
 	chanceHit = 0.37,
 	damageMin = 260,

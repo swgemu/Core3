@@ -2,6 +2,7 @@ swirl_prong_impaler = Creature:new {
 	objectName = "@mob/creature_names:swirl_prong_impaler",
 	socialGroup = "prong",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 30,
 	chanceHit = 0.37,
 	damageMin = 270,

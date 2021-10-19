@@ -2,6 +2,7 @@ rebel_network_leader = Creature:new {
 	objectName = "@mob/creature_names:network_leader",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 12,

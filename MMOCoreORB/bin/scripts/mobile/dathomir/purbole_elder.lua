@@ -2,6 +2,7 @@ purbole_elder = Creature:new {
 	objectName = "@mob/creature_names:purbole_elder",
 	socialGroup = "purbole",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 190,

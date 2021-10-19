@@ -2,6 +2,7 @@ rancid_remmer_warrior = Creature:new {
 	objectName = "@mob/creature_names:rancid_remmer_warrior",
 	socialGroup = "remmer",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 33,
 	chanceHit = 0.39,
 	damageMin = 290,

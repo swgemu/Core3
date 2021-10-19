@@ -2,6 +2,7 @@ beguiling_korga_scout = Creature:new {
 	objectName = "@mob/creature_names:beguiling_korga_scout",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "korga_tribe",
 	faction = "korga_tribe",
 	level = 32,

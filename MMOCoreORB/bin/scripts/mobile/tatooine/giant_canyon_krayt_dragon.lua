@@ -2,6 +2,7 @@ giant_canyon_krayt_dragon = Creature:new {
 	objectName = "@mob/creature_names:giant_canyon_krayt_dragon",
 	socialGroup = "krayt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 300,
 	chanceHit = 30.0,
 	damageMin = 1645,

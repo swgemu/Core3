@@ -2,6 +2,7 @@ mountain_villager = Creature:new {
 	objectName = "@mob/creature_names:mountain_villager",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "villager",
 	faction = "",
 	level = 4,

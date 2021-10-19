@@ -2,6 +2,7 @@ langlatch_hatchling = Creature:new {
 	objectName = "@mob/creature_names:langlatch_hatchling",
 	socialGroup = "langlatch",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

@@ -2,6 +2,7 @@ surlin_rolei = Creature:new {
 	objectName = "",
 	customName = "Surlin Rolei",
 	socialGroup = "naboo_security_force",
+	mobType = MOB_NPC,
 	faction = "naboo_security_force",
 	level = 16,
 	chanceHit = 0.31,

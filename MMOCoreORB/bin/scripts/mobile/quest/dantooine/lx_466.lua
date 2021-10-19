@@ -2,6 +2,7 @@ lx_466 = Creature:new {
 	objectName = "",
 	customName = "LX-466",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

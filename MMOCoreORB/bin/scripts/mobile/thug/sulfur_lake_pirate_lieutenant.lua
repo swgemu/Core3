@@ -2,6 +2,7 @@ sulfur_lake_pirate_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:slp_privateer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "pirate",
 	faction = "",
 	level = 17,

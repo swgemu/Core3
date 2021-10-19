@@ -2,6 +2,7 @@ captain_sarguillo = Creature:new {
 	objectName = "@mob/creature_names:fs_villager_captain",
 	socialGroup = "fs_villager",
 	faction = "fs_villager",
+	mobType = MOB_NPC,
 	level = 69,
 	chanceHit = 0.6,
 	damageMin = 495,

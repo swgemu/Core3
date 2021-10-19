@@ -2,6 +2,7 @@ lowland_brackaset = Creature:new {
 	objectName = "@mob/creature_names:brackaset_lowlands",
 	socialGroup = "brackaset",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 120,

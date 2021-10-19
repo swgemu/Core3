@@ -2,6 +2,7 @@ dorn_gestros = Creature:new {
 	objectName = "@mob/creature_names:commoner_human_male",
 	customName = "Dorn Gestros",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

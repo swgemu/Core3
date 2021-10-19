@@ -2,6 +2,7 @@ boulo_siesi = Creature:new {
 	objectName = "@mob/creature_names:bestine_artist06",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

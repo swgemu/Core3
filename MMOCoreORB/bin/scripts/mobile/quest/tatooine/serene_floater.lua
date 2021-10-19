@@ -2,6 +2,7 @@ serene_floater = Creature:new {
 	objectName = "",
 	customName = "Serene Floater",
 	socialGroup = "bomarr",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 32,
 	chanceHit = 0.28,

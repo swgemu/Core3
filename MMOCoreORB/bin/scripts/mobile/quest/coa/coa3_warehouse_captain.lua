@@ -2,6 +2,7 @@ coa3_warehouse_captain = Creature:new {
 	objectName = "",
 	customName = "a Warehouse Captain",
 	socialGroup = "warehouse",
+	mobType = MOB_NPC,
 	faction = "jabba",
 	level = 35,
 	chanceHit = 0.41,

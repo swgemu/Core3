@@ -2,6 +2,7 @@ phinea_shantee = Creature:new {
 	objectName = "@theme_park_name:phinea_shantee",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

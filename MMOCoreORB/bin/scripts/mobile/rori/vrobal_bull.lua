@@ -2,6 +2,7 @@ vrobal_bull = Creature:new {
 	objectName = "@mob/creature_names:vrobal_bull",
 	socialGroup = "vrobal",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,

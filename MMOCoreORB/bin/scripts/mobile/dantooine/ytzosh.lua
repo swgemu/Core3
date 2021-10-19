@@ -3,6 +3,7 @@ ytzosh = Creature:new {
 	customName = "Ytzosh",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

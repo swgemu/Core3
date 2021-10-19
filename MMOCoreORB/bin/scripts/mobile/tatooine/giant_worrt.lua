@@ -2,6 +2,7 @@ giant_worrt = Creature:new {
 	objectName = "@mob/creature_names:giant_worrt",
 	socialGroup = "worrt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

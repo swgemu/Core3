@@ -2,6 +2,7 @@ coa2_imperial_slicer = Creature:new {
 	objectName = "@mob/creature_names:slicer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 14,

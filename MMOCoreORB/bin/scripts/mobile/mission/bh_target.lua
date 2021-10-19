@@ -2,6 +2,7 @@ informant_npc = Creature:new {
 	objectName = "@mob/creature_names:spynet_operative",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "",
 	faction = "",
 	level = 100,

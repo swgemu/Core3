@@ -2,6 +2,7 @@ imperial_probe_drone = Creature:new {
 	objectName = "@mob/creature_names:imperial_probot_drone",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_DROID,
 	level = 14,
 	chanceHit = 0.31,
 	damageMin = 150,

@@ -2,6 +2,7 @@ palpatine = Creature:new {
 	objectName = "@theme_park_name:emperor_palpatine",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

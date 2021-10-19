@@ -2,6 +2,7 @@ imperial_stealth_operative = Creature:new {
 	objectName = "@mob/creature_names:assassin_mission_recruiter_imperial",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 16,

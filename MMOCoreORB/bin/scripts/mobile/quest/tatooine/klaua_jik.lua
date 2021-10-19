@@ -2,6 +2,7 @@ klaua_jik = Creature:new {
 	objectName = "@mob/creature_names:bodyguard",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,

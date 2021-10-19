@@ -2,6 +2,7 @@ dark_trooper_novatrooper = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_dark_trooper_novatrooper",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_ANDROID,
 	level = 200,
 	chanceHit = 18,
 	damageMin = 1270,

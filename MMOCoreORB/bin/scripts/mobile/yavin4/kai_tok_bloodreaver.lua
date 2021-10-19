@@ -2,6 +2,7 @@ kai_tok_bloodreaver = Creature:new {
 	objectName = "@mob/creature_names:kai_tok_bloodreaver",
 	socialGroup = "kai_tok",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 35,
 	chanceHit = 0.42,
 	damageMin = 260,

@@ -2,6 +2,7 @@ mutated_krevol_clicker = Creature:new {
 	objectName = "@mob/creature_names:mutated_krevol_clicker",
 	socialGroup = "krevol",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

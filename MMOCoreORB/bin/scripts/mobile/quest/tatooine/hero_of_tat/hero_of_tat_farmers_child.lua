@@ -2,6 +2,7 @@ hero_of_tat_farmers_child = Creature:new {
 	objectName = "@mob/creature_names:quest_hero_of_tatooine_farmer_daughter",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

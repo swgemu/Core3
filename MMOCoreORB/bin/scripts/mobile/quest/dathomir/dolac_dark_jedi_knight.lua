@@ -2,6 +2,7 @@ dolac_dark_jedi_knight = Creature:new {
 	objectName = "@mob/creature_names:dark_jedi_knight",
 	socialGroup = "dark_jedi",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 265,
 	chanceHit = 235,
 	damageMin = 1645,

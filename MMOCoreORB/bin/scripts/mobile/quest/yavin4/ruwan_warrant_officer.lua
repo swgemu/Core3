@@ -2,6 +2,7 @@ ruwan_warrant_officer = Creature:new {
   objectName = "@mob/creature_names:imperial_warrant_officer_ii",
   socialGroup = "imperial",
   faction = "imperial",
+	mobType = MOB_NPC,
   level = 18,
   chanceHit = 0.32,
   damageMin = 170,

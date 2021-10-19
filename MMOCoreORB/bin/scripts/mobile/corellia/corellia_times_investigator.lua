@@ -2,6 +2,7 @@ corellia_times_investigator = Creature:new {
 	objectName = "@mob/creature_names:corellia_times_investigator",
 	socialGroup = "corellia_times",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

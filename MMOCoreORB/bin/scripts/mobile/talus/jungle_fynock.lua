@@ -2,6 +2,7 @@ jungle_fynock = Creature:new {
 	objectName = "@mob/creature_names:jungle_fynock",
 	socialGroup = "fynock",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

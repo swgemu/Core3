@@ -1,6 +1,7 @@
 surgical_droid_21b = Creature:new {
 	objectName = "@mob/creature_names:surgical_droid_21b",
 	socialGroup = "townsperson",
+	mobType = MOB_DROID,
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

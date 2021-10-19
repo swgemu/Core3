@@ -2,6 +2,7 @@ theme_park_nightsister_rancor = Creature:new {
   objectName = "@mob/creature_names:nightsister_rancor",
   socialGroup = "nightsister",
   faction = "nightsister",
+	mobType = MOB_CARNIVORE,
   level = 55,
   chanceHit = 0.5,
   damageMin = 395,

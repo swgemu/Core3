@@ -2,6 +2,7 @@ han_solo = Creature:new {
 	objectName = "@mob/creature_names:han_solo",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

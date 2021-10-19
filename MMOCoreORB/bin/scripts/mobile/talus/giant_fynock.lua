@@ -2,6 +2,7 @@ giant_fynock = Creature:new {
 	objectName = "@mob/creature_names:giant_fynock",
 	socialGroup = "fynock",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 42,
 	chanceHit = 0.44,
 	damageMin = 345,

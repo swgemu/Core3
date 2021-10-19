@@ -2,6 +2,7 @@ lesser_plains_bol = Creature:new {
 	objectName = "@mob/creature_names:bol_lesser_plains",
 	socialGroup = "bol",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

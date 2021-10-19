@@ -2,6 +2,7 @@ blurga_vuto = Creature:new {
 	objectName = "",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 9,
 	chanceHit = 0.270000,
 	damageMin = 80,

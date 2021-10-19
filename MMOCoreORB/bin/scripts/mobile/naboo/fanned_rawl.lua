@@ -2,6 +2,7 @@ fanned_rawl = Creature:new {
 	objectName = "@mob/creature_names:fanned_rawl",
 	socialGroup = "rawl",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

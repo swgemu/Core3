@@ -2,6 +2,7 @@ feral_forest_mite_king = Creature:new {
 	objectName = "@mob/creature_names:feral_forest_mite_king",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 27,
 	chanceHit = 0.35,
 	damageMin = 230,

@@ -2,6 +2,7 @@ elder_snorbal_female = Creature:new {
 	objectName = "@mob/creature_names:elder_snorbal_female",
 	socialGroup = "snorbal",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 34,
 	chanceHit = 0.41,
 	damageMin = 320,

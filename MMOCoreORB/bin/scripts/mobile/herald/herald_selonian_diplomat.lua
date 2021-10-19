@@ -4,6 +4,7 @@ herald_selonian_diplomat = Creature:new {
 	randomNameTag = true,
 	customName = "a Selonian Diplomat",
 	socialGroup = "selonian",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

@@ -2,6 +2,7 @@ remmer_carrion_keeper = Creature:new {
 	objectName = "@mob/creature_names:remmer_carrion_keeper",
 	socialGroup = "remmer",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 210,

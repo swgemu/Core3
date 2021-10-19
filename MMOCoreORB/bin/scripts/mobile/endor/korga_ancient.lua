@@ -2,6 +2,7 @@ korga_ancient = Creature:new {
 	objectName = "@mob/creature_names:korga_ancient",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "korga_tribe",
 	faction = "korga_tribe",
 	level = 47,

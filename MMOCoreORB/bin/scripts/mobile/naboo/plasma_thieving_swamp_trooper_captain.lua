@@ -2,6 +2,7 @@ plasma_thieving_swamp_trooper_captain = Creature:new {
 	objectName = "@mob/creature_names:swamp_trooper_captain_anti_gungan",
 	randomNameType = NAME_SWAMPTROOPER,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 30,

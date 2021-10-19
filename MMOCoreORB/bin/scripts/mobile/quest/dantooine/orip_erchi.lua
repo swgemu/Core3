@@ -2,6 +2,7 @@ orip_erchi = Creature:new {
 	objectName = "",
 	customName = "Orip Erchi",
 	socialGroup = "pirate",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 100,
 	chanceHit = 1,

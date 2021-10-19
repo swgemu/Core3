@@ -3,6 +3,7 @@ zim_zam_blattis = Creature:new {
 	customName = "Zim Zam Blattis",
 	socialGroup = "gungan",
 	faction = "gungan",
+	mobType = MOB_NPC,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,

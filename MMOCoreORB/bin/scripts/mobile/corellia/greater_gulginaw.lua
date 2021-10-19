@@ -2,6 +2,7 @@ greater_gulginaw = Creature:new {
 	objectName = "@mob/creature_names:greater_gulginaw",
 	socialGroup = "gulginaw",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 190,

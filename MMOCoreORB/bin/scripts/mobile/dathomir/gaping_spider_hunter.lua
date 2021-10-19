@@ -2,6 +2,7 @@ gaping_spider_hunter = Creature:new {
 	objectName = "@mob/creature_names:gaping_spider_hunter",
 	socialGroup = "spider",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 44,
 	chanceHit = 0.46,
 	damageMin = 390,

@@ -2,6 +2,7 @@ herald_biogenic_teraeza = Creature:new {
 	objectName = "",
 	customName = "Teraeza Furloti",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

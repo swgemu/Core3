@@ -2,6 +2,7 @@ mourno_draver = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Mourno Draver",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

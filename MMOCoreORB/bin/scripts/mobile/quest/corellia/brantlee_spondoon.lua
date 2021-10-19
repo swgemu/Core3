@@ -2,7 +2,7 @@ brantlee_spondoon = Creature:new {
 	objectName = "",
 	customName = "Brantlee Spondoon",
 	socialGroup = "townsperson",
-
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

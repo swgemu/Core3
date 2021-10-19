@@ -2,6 +2,7 @@ corsec_security_specialist = Creature:new {
 	objectName = "@mob/creature_names:corsec_detective_aggro",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 120,

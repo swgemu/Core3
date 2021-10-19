@@ -2,6 +2,7 @@ tormented_bocatt = Creature:new {
 	objectName = "@mob/creature_names:bocatt_tormented",
 	socialGroup = "bocatt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,

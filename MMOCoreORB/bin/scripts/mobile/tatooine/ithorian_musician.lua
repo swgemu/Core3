@@ -2,6 +2,7 @@ ithorian_musician = Creature:new {
 	objectName = "",
 	customName = "Mellaw Doowan",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

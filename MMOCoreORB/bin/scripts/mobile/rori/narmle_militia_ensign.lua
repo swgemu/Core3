@@ -2,6 +2,7 @@ narmle_militia_ensign = Creature:new {
 	objectName = "@mob/creature_names:narmle_ensign",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "narmle",
 	faction = "narmle",
 	level = 5,

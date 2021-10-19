@@ -2,6 +2,7 @@ coa3_caravan_thug = Creature:new {
 	objectName = "",
 	customName = "Caravan Thug",
 	socialGroup = "caravan",
+	mobType = MOB_NPC,
 	faction = "jabba",
 	level = 15,
 	chanceHit = 0.31,

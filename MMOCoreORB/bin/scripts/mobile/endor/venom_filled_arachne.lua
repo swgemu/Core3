@@ -2,6 +2,7 @@ venom_filled_arachne = Creature:new {
 	objectName = "@mob/creature_names:venom_filled_arachne",
 	socialGroup = "arachne",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 36,
 	chanceHit = 0.4,
 	damageMin = 300,

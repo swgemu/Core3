@@ -2,6 +2,7 @@ janta_clan_leader = Creature:new {
 	objectName = "@mob/creature_names:janta_clan_leader",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "janta_tribe",
 	faction = "janta_tribe",
 	level = 75,

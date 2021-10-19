@@ -2,6 +2,7 @@ herosk_balfar = Creature:new {
 	objectName = "@mob/creature_names:bothan_diplomat",
 	customName = "Herosk Bal'far",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 16,
 	chanceHit = 0.31,

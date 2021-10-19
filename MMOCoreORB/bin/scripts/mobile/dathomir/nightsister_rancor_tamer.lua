@@ -2,6 +2,7 @@ nightsister_rancor_tamer = Creature:new {
 	objectName = "@mob/creature_names:nightsister_rancor_tamer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "nightsister",
 	faction = "nightsister",
 	level = 76,

@@ -2,6 +2,7 @@ giant_decay_mite_harvester = Creature:new {
 	objectName = "@mob/creature_names:giant_decay_mite_harvester",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 120,

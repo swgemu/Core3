@@ -2,6 +2,7 @@ victor_questp_slums = Creature:new {
 	objectName = "",
 	customName = "Foofice Lightingrunner",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

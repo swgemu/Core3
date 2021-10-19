@@ -2,6 +2,7 @@ trainer_artisan = Creature:new {
 	objectName = "@mob/creature_names:trainer_artisan",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	planetMapCategory = "trainer_artisan",
 	faction = "",
 	level = 100,

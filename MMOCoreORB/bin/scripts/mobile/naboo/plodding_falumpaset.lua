@@ -2,6 +2,7 @@ plodding_falumpaset = Creature:new {
 	objectName = "@mob/creature_names:domestic_falumpaset",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 80,

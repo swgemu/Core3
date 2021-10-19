@@ -3,6 +3,7 @@ trained_veermok = Creature:new {
 	customName = "a trained veermok",
 	socialGroup = "pirate",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 180,

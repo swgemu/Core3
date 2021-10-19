@@ -2,6 +2,7 @@ tusk_cat_rider = Creature:new {
 	objectName = "@mob/creature_names:tusk_cat_rider",
 	socialGroup = "naboo",
 	faction = "naboo",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

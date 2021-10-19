@@ -2,6 +2,7 @@ mutant_bark_mite_soldier = Creature:new {
 	objectName = "@mob/creature_names:mutant_bark_mite_soldier",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 24,
 	chanceHit = 0.33,
 	damageMin = 230,

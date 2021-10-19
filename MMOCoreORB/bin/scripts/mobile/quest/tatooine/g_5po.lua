@@ -2,6 +2,7 @@ g_5po = Creature:new {
 	objectName = "@mob/creature_names:protocol_droid_3po",
 	customName = "G-5P0",
 	socialGroup = "jabba",
+	mobType = MOB_DROID,
 	faction = "jabba",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ didina_lippinoss = Creature:new {
 	objectName = "@npc_name:human_base_female",
 	customName = "Didina Lippinoss",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

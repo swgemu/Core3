@@ -2,6 +2,7 @@ rebel_sailor = Creature:new {
 	objectName = "@mob/creature_names:corvette_rebel_sailor",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 96,

@@ -2,6 +2,7 @@ escaped_singing_mountain_clan_slave = Creature:new {
 	objectName = "@mob/creature_names:escaped_singing_mtn_clan_slave",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "slave",
 	faction = "",
 	level = 26,

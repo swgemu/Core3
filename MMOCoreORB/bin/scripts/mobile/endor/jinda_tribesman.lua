@@ -2,6 +2,7 @@ jinda_tribesman = Creature:new {
 	objectName = "@mob/creature_names:jinda_tribesman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "jinda_tribe",
 	faction = "",
 	level = 21,

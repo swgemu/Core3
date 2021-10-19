@@ -2,6 +2,7 @@ comm_operator = Creature:new {
 	objectName = "@mob/creature_names:comm_operator",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 14,

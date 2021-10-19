@@ -3,6 +3,7 @@ theme_park_smc_rancor_pygmy_maufel = Creature:new {
 	customName = "Mau'fel",
 	socialGroup = "rancor",
 	faction = "mtn_clan",
+	mobType = MOB_CARNIVORE,
 	level = 50,
 	chanceHit = 0.5,
 	damageMin = 420,

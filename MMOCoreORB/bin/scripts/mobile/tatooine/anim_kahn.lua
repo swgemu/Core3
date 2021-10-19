@@ -2,6 +2,7 @@ anim_kahn = Creature:new {
 	objectName = "@npc_spawner_n:anim_kahn",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

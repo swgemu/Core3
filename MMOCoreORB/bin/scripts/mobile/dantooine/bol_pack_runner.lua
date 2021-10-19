@@ -2,6 +2,7 @@ bol_pack_runner = Creature:new {
 	objectName = "@mob/creature_names:bol_pack_runner",
 	socialGroup = "bol",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 230,

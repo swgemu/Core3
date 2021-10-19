@@ -2,6 +2,7 @@ dolac_dark_jedi_master = Creature:new {
 	objectName = "@mob/creature_names:dark_jedi_master",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "dark_jedi",
 	faction = "",
 	level = 291,

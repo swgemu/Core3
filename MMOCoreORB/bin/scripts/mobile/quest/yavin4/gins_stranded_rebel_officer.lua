@@ -2,6 +2,7 @@ gins_stranded_rebel_officer = Creature:new {
 	objectName = "@mob/creature_names:rebel_first_lieutenant",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,

@@ -2,6 +2,7 @@ nym_fuel_tech = Creature:new {
 	objectName = "@npc_spawner_n:nym_fuel_tech",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -2,6 +2,7 @@ theme_park_rebel_pirate_holocron = Creature:new {
 	objectName = "@mob/creature_names:marooned_pirate",
 	socialGroup = "pirate",
 	faction = "pirate",
+	mobType = MOB_NPC,
 	level = 19,
 	chanceHit = 0.32,
 	damageMin = 170,

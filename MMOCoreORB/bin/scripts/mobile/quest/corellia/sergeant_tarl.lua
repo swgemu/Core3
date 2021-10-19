@@ -2,6 +2,7 @@ sergeant_tarl = Creature:new {
 	objectName = "",
 	customName = "Sergeant Tarl",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

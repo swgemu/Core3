@@ -2,6 +2,7 @@ warder = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Warder",
 	socialGroup = "wilder",
 	faction = "",

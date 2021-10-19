@@ -2,6 +2,7 @@ reclusive_roba = Creature:new {
 	objectName = "@mob/creature_names:reclusive_roba",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,

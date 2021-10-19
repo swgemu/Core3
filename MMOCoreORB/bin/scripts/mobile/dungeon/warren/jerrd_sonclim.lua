@@ -1,6 +1,7 @@
 jerrd_sonclim = Creature:new {
 	objectName = "@theme_park/warren/warren_system_messages:name_jerrd",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 11,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ panshee_matriarch = Creature:new {
 	objectName = "@mob/creature_names:panshee_matriarch",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 30,

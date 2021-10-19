@@ -2,6 +2,7 @@ mott_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_mott",
 	socialGroup = "mott",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 2,
 	chanceHit = 0.2,
 	damageMin = 30,

@@ -2,6 +2,7 @@ errad_brytok = Creature:new {
 	objectName = "",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,

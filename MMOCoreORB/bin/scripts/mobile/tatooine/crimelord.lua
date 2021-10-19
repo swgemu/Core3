@@ -2,6 +2,7 @@ crimelord = Creature:new {
 	objectName = "@mob/creature_names:crimelord",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "hutt",
 	faction = "hutt",
 	level = 17,

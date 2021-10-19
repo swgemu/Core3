@@ -2,6 +2,7 @@ foaming_vynock = Creature:new {
 	objectName = "@mob/creature_names:foaming_vynock",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 170,

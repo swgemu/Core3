@@ -2,6 +2,7 @@ aakuan_assassin = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "an Aa'kuan Assassin",
 	socialGroup = "aakuans",
 	faction = "aakuans",

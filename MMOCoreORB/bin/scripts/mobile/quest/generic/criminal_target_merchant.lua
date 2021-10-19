@@ -2,6 +2,7 @@ criminal_target_merchant = Creature:new {
 	objectName = "@mob/creature_names:noble",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 6,

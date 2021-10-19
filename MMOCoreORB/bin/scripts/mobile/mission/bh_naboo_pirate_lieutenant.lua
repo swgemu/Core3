@@ -2,6 +2,7 @@ bh_naboo_pirate_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:naboo_pirate_lieutenant",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "naboo_pirate",
 	faction = "naboo_pirate",
 	level = 15,

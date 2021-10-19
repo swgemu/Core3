@@ -2,6 +2,7 @@ tabage_protector = Creature:new {
 	objectName = "@mob/creature_names:tabage_protector",
 	socialGroup = "tabage",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 160,

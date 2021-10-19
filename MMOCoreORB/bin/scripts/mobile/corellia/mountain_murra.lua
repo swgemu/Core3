@@ -2,6 +2,7 @@ mountain_murra = Creature:new {
 	objectName = "@mob/creature_names:mountain_murra",
 	socialGroup = "murra",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 17,
 	chanceHit = 0.31,
 	damageMin = 170,

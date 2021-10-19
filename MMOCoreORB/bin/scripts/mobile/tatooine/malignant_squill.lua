@@ -2,6 +2,7 @@ malignant_squill = Creature:new {
 	objectName = "@mob/creature_names:malignant_squill",
 	socialGroup = "squill",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 50,
 	chanceHit = 0.5,
 	damageMin = 420,

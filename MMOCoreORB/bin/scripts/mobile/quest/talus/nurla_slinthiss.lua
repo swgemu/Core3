@@ -2,6 +2,7 @@ nurla_slinthiss = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
 	customName = "Nurla Slinthiss",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

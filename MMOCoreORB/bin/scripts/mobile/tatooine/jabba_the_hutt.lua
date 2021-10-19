@@ -2,6 +2,7 @@ jabba_the_hutt = Creature:new {
 	objectName = "@mob/creature_names:jabba_the_hutt",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -2,6 +2,7 @@ mammoth_bearded_jax = Creature:new {
 	objectName = "@mob/creature_names:mammoth_bearded_jax",
 	socialGroup = "jax",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 160,

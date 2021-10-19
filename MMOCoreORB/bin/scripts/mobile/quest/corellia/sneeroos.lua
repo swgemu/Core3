@@ -2,6 +2,7 @@ sneeroos = Creature:new {
 	objectName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,

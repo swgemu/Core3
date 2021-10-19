@@ -2,6 +2,7 @@ flit_harasser = Creature:new {
 	objectName = "@mob/creature_names:flit_harasser",
 	socialGroup = "flit",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

@@ -2,6 +2,7 @@ kritus_morven = Creature:new {
 	objectName = "",
 	customName = "Kritus Morven",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

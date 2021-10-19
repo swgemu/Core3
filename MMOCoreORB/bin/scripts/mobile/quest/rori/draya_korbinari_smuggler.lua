@@ -2,6 +2,7 @@ draya_korbinari_smuggler = Creature:new {
 	objectName = "@mob/creature_names:smuggler",
 	customName = "",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

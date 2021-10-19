@@ -2,6 +2,7 @@ vexed_voritor_lizard = Creature:new {
 	objectName = "@mob/creature_names:vexed_voritor_lizard",
 	socialGroup = "voritor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 52,
 	chanceHit = 0.5,
 	damageMin = 465,

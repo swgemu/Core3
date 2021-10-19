@@ -2,6 +2,7 @@ drakka_judarrl = Creature:new {
 	objectName = "",
 	customName = "Drakka Judarrl",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

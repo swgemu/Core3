@@ -3,6 +3,7 @@ sol_windtide = Creature:new {
 	customName = "Sol Windtide",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 21,
 	chanceHit = 0.330000,
 	damageMin = 190,

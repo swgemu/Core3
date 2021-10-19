@@ -2,6 +2,7 @@ herald_naboo_ronin = Creature:new {
 	objectName = "@npc_name:naboo_herald_02",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

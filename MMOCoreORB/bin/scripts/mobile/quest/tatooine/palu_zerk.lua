@@ -2,6 +2,7 @@ palu_zerk = Creature:new {
 	objectName = "",
 	customName = "Palu Zerk",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

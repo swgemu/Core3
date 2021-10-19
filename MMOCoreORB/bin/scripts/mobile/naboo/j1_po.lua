@@ -2,6 +2,7 @@ j1_po = Creature:new {
 	objectName = "@npc_spawner_n:j1_po",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 30,
 	chanceHit = 0.390000,
 	damageMin = 290,

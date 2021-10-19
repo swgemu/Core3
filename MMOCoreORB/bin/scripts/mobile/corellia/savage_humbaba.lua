@@ -2,6 +2,7 @@ savage_humbaba = Creature:new {
 	objectName = "@mob/creature_names:savage_humbaba",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 190,

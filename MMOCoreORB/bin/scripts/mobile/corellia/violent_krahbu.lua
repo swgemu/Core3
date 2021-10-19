@@ -2,6 +2,7 @@ violent_krahbu = Creature:new {
 	objectName = "@mob/creature_names:violent_krahbu",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.29,
 	damageMin = 130,

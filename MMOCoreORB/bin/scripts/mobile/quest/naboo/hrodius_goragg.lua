@@ -2,6 +2,7 @@ hrodius_goragg = Creature:new {
 	objectName = "@mob/creature_names:trandoshan_slavemaster",
 	customName = "Hrodius Goragg",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 24,
 	chanceHit = 0.36,

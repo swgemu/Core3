@@ -2,6 +2,7 @@ huurton_stalker = Creature:new {
 	objectName = "@mob/creature_names:huurton_stalker",
 	socialGroup = "huurton",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 33,
 	chanceHit = 0.4,
 	damageMin = 310,

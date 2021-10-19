@@ -2,6 +2,7 @@ slooni_smuggler = Creature:new {
 	objectName = "@mob/creature_names:smuggler",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 14,
 	chanceHit = 0.300000,
 	damageMin = 150,

@@ -2,6 +2,7 @@ bh_canyon_corsair_captain = Creature:new {
 	objectName = "@mob/creature_names:canyon_corsair_captain",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "canyon_corsair",
 	faction = "canyon_corsair",
 	level = 50,

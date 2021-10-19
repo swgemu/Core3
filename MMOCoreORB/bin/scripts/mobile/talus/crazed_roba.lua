@@ -2,6 +2,7 @@ crazed_roba = Creature:new {
 	objectName = "@mob/creature_names:crazed_roba",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 140,

@@ -2,6 +2,7 @@ hilltop_gurreck_hunter = Creature:new {
 	objectName = "@mob/creature_names:hilltop_gurreck_hunter",
 	socialGroup = "gurreck",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 41,
 	chanceHit = 0.42,
 	damageMin = 340,

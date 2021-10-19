@@ -2,6 +2,7 @@ theme_park_rebel_bounty_hunter = Creature:new {
 	objectName = "@mob/creature_names:bounty_hunter",
 	socialGroup = "mercenary",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 24,
 	chanceHit = 0.350000,
 	damageMin = 220,

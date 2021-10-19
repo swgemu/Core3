@@ -2,6 +2,7 @@ mokk_loreweaver = Creature:new {
 	objectName = "@mob/creature_names:mokk_loreweaver",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 47,

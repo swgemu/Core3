@@ -2,6 +2,7 @@ dalla_solo = Creature:new {
 	objectName = "",
 	customName = "Dalla Solo",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

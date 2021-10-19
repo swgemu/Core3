@@ -2,6 +2,7 @@ lethin_bludder = Creature:new {
 	objectName = "",
 	customName = "Lethin Bludder",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

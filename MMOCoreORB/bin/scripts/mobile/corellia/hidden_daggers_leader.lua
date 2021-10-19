@@ -2,6 +2,7 @@ hidden_daggers_leader = Creature:new {
 	objectName = "@mob/creature_names:hidden_daggers_leader",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "hidden_daggers",
 	faction = "hidden_daggers",
 	level = 18,

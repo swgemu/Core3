@@ -2,6 +2,7 @@ dwarf_gronda = Creature:new {
 	objectName = "@mob/creature_names:dwarf_gronda",
 	socialGroup = "gronda",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.29,
 	damageMin = 130,

@@ -2,6 +2,7 @@ grobber = Creature:new {
 	objectName = "@npc_name:twilek_base_male",
 	customName = "Grobber",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

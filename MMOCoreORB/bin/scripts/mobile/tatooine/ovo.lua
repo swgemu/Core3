@@ -3,6 +3,7 @@ ovo = Creature:new {
 	customName = "Ovo",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

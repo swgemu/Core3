@@ -2,6 +2,7 @@ bloodstained_prowler = Creature:new {
 	objectName = "@mob/creature_names:wrix_bloodstained_prowler",
 	socialGroup = "wrix",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 29,
 	chanceHit = 0.35,
 	damageMin = 210,

@@ -2,6 +2,7 @@ tempest_rill = Creature:new {
 	objectName = "@mob/creature_names:rill_tempest",
 	socialGroup = "rill",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 9,
 	chanceHit = 0.28,
 	damageMin = 90,

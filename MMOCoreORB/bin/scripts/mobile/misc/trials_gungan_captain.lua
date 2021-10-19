@@ -2,6 +2,7 @@ trials_gungan_captain = Creature:new {
 	objectName = "@mob/creature_names:gungan_captain",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "gungan",
 	faction = "",
 	level = 21,

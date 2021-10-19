@@ -2,6 +2,7 @@ fbase_imperial_army_captain_extreme = Creature:new {
 	objectName = "@mob/creature_names:fbase_imperial_army_captain_extreme",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 124,

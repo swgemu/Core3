@@ -2,6 +2,7 @@ minor_worrt = Creature:new {
 	objectName = "@mob/creature_names:minor_worrt",
 	socialGroup = "worrt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,

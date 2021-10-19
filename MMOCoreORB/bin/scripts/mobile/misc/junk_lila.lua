@@ -2,6 +2,7 @@ junk_lila = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Lila Rawlkiss",
 	planetMapCategory = "junkshop",
+	mobType = MOB_NPC,
 	socialGroup = "borvo",
 	faction = "borvo",
 	level = 100,

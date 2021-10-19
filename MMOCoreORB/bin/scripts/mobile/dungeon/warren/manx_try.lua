@@ -2,6 +2,7 @@ manx_try = Creature:new {
 	objectName = "@theme_park/warren/warren_system_messages:name_manx",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 23,
 	chanceHit = 1,
 	damageMin = 123,

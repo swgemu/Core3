@@ -2,6 +2,7 @@ dac_axfow = Creature:new {
 	objectName = "@npc_spawner_n:dac_axfow",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 23,
 	chanceHit = 0.33,
 	damageMin = 210,

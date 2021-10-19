@@ -2,6 +2,7 @@ boar_wolf_ravager = Creature:new {
 	objectName = "@mob/creature_names:boar_wolf_ravager",
 	socialGroup = "boar",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 34,
 	chanceHit = 0.4,
 	damageMin = 305,

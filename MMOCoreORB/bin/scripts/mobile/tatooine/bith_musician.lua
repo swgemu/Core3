@@ -2,6 +2,7 @@ bith_musician = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Bith Musician",
 	socialGroup = "townsperson",
 	faction = "townsperson",

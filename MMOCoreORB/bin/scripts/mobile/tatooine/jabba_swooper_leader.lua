@@ -2,6 +2,7 @@ jabba_swooper_leader = Creature:new {
 	objectName = "@mob/creature_names:jabbas_swooper_leader",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "jabba",
 	faction = "jabba",
 	level = 8,

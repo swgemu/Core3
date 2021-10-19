@@ -2,6 +2,7 @@ gnarled_pubam_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:gnarled_pubam_spiritmaster",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 31,

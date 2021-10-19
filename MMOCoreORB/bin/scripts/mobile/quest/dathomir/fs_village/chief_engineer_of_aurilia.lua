@@ -2,6 +2,7 @@ chief_engineer_of_aurilia = Creature:new {
 	objectName = "@mob/creature_names:fs_villager_engineer",
 	socialGroup = "fs_villager",
 	faction = "fs_villager",
+	mobType = MOB_NPC,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

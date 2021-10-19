@@ -2,6 +2,7 @@ reelo_baruk = Creature:new {
 	objectName = "@theme_park_name:reelo_baruk",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 20,
 	chanceHit = 0.330000,
 	damageMin = 190,

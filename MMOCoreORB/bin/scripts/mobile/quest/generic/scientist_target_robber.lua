@@ -2,6 +2,7 @@ scientist_target_robber = Creature:new {
 	objectName = "@mob/creature_names:scavenger",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,

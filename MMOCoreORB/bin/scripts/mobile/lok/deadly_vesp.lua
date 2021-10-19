@@ -2,6 +2,7 @@ deadly_vesp = Creature:new {
 	objectName = "@mob/creature_names:deadly_vesp",
 	socialGroup = "vesp",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 93,
 	chanceHit = 0.9,
 	damageMin = 670,

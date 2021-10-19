@@ -2,6 +2,7 @@ blood_razor_scout = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_scout",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "bloodrazor",
 	faction = "bloodrazor",
 	level = 32,

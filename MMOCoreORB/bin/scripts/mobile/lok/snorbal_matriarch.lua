@@ -2,6 +2,7 @@ snorbal_matriarch = Creature:new {
 	objectName = "@mob/creature_names:snorbal_matriarch",
 	socialGroup = "snorbal",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 45,
 	chanceHit = 0.47,
 	damageMin = 370,

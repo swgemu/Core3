@@ -3,6 +3,7 @@ mwaloob = Creature:new {
 	socialGroup = "thug",
 	faction = "thug",
 	level = 7,
+	mobType = MOB_NPC,
 	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,

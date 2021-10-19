@@ -2,6 +2,7 @@ naive_gondula_workling = Creature:new {
 	objectName = "@mob/creature_names:naive_gondula_workling",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 9,

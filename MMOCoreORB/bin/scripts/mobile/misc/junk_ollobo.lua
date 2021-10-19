@@ -2,6 +2,7 @@ junk_ollobo = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Ollobo",
 	planetMapCategory = "junkshop",
+	mobType = MOB_NPC,
 	socialGroup = "jabba",
 	faction = "jabba",
 	level = 100,

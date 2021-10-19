@@ -2,6 +2,7 @@ cavern_spider_hunter = Creature:new {
 	objectName = "@mob/creature_names:gaping_spider_hunter",
 	socialGroup = "spider_nightsister",
 	faction = "spider_nightsister",
+	mobType = MOB_CARNIVORE,
 	level = 46,
 	chanceHit = 0.46,
 	damageMin = 390,

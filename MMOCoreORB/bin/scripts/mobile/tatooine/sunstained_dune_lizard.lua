@@ -2,6 +2,7 @@ sunstained_dune_lizard = Creature:new {
 	objectName = "@mob/creature_names:dune_lizard_sunstained",
 	socialGroup = "lizard",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,

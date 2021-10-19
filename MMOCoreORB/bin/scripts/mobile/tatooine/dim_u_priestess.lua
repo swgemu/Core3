@@ -2,6 +2,7 @@ dim_u_priestess = Creature:new {
 	objectName = "@mob/creature_names:dim_u_priestess",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "dim_u",
 	faction = "",
 	level = 8,

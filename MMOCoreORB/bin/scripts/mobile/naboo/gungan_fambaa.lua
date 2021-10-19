@@ -2,6 +2,7 @@ gungan_fambaa = Creature:new {
 	objectName = "@mob/creature_names:gungan_fambaa",
 	socialGroup = "gungan",
 	faction = "gungan",
+	mobType = MOB_HERBIVORE,
 	level = 42,
 	chanceHit = 0.44,
 	damageMin = 345,

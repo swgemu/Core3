@@ -2,6 +2,7 @@ xarot_singing_mountain_clan_witch = Creature:new {
 	objectName = "",
 	socialGroup = "mtn_clan",
 	faction = "mtn_clan",
+	mobType = MOB_NPC,
 	level = 50,
 	chanceHit = 0.5,
 	damageMin = 395,

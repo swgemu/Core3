@@ -2,6 +2,7 @@ gold_two = Creature:new {
 	objectName = "",
 	customName = "Gold Two",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

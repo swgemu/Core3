@@ -2,6 +2,7 @@ jilljoo_jab = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
 	customName = "Jilljoo Jab",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

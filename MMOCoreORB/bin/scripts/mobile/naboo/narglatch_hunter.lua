@@ -2,6 +2,7 @@ narglatch_hunter = Creature:new {
 	objectName = "@mob/creature_names:narglatch_hunter",
 	socialGroup = "narglatch",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

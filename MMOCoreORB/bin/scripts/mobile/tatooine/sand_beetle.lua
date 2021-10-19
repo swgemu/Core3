@@ -2,6 +2,7 @@ sand_beetle = Creature:new {
 	objectName = "@mob/creature_names:sand_beetle",
 	socialGroup = "beetle",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

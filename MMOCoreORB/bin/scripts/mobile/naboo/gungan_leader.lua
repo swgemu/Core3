@@ -5,6 +5,7 @@ gungan_leader = Creature:new {
 	customName = "a Gungan Leader",
 	socialGroup = "gungan",
 	faction = "gungan",
+	mobType = MOB_NPC,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 230,

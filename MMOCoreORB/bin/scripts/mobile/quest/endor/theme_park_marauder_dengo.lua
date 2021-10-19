@@ -2,6 +2,7 @@ theme_park_marauder_dengo = Creature:new {
 	objectName = "@mob/creature_names:marooned_pirate_captain",
 	customName = "Dengo Haribonn",
 	socialGroup = "pirate",
+	mobType = MOB_NPC,
 	faction = "pirate",
 	level = 12,
 	chanceHit = 0.35,

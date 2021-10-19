@@ -2,6 +2,7 @@ plague_victim = Creature:new {
 	objectName = "@mob/creature_names:plague_victim",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

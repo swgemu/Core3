@@ -1,5 +1,6 @@
 kilnstrider = Creature:new {
 	objectName = "@npc_spawner_n:kilnstrider",
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 178,

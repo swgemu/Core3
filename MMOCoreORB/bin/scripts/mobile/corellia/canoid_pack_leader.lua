@@ -2,6 +2,7 @@ canoid_pack_leader = Creature:new {
 	objectName = "@mob/creature_names:canoid_pack_leader",
 	socialGroup = "canoid",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 160,

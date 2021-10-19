@@ -2,6 +2,7 @@ sy_snootles = Creature:new {
 	objectName = "@mob/creature_names:sy_snootles",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,

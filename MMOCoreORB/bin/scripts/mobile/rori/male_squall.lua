@@ -2,6 +2,7 @@ male_squall = Creature:new {
 	objectName = "@mob/creature_names:squall_male",
 	socialGroup = "squall",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,

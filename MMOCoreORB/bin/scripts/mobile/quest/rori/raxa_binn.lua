@@ -2,6 +2,7 @@ raxa_binn = Creature:new {
 	objectName = "",
 	customName = "Raxa Binn",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

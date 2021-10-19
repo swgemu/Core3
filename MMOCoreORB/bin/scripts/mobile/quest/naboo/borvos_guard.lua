@@ -2,6 +2,7 @@ borvos_guard = Creature:new {
 	objectName = "",
 	customName = "Borvo's Guard",
 	socialGroup = "borvo",
+	mobType = MOB_NPC,
 	faction = "borvo",
 	level = 15,
 	chanceHit = 0.31,

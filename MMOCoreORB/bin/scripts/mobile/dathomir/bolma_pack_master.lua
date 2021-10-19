@@ -2,6 +2,7 @@ bolma_pack_master = Creature:new {
 	objectName = "@mob/creature_names:bolma_pack_master",
 	socialGroup = "bolma",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 210,

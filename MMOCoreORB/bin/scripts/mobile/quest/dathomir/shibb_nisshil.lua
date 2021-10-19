@@ -2,6 +2,7 @@ shibb_nisshil = Creature:new {
 	objectName = "",
 	customName = "Shibb Nisshil",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

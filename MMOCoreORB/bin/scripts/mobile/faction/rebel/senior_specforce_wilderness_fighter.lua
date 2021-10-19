@@ -2,6 +2,7 @@ senior_specforce_wilderness_fighter = Creature:new {
 	objectName = "@mob/creature_names:senior_specforce_wilderness_trooper",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 20,

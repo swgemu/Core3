@@ -2,6 +2,7 @@ spineflap_handmaiden = Creature:new {
 	objectName = "@mob/creature_names:spineflap_handmaiden",
 	socialGroup = "spineflap",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

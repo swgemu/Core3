@@ -3,6 +3,7 @@ ysnide_omewror = Creature:new {
 	customName = "Ysnide Omewror",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,

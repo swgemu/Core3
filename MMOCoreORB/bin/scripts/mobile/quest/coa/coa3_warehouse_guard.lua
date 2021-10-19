@@ -2,6 +2,7 @@ coa3_warehouse_guard = Creature:new {
 	objectName = "",
 	customName = "a Warehouse Guard",
 	socialGroup = "warehouse",
+	mobType = MOB_NPC,
 	faction = "jabba",
 	level = 25,
 	chanceHit = 0.36,

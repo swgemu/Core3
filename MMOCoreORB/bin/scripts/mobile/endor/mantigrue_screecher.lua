@@ -2,6 +2,7 @@ mantigrue_screecher = Creature:new {
 	objectName = "@mob/creature_names:mantigrue_screecher",
 	socialGroup = "mantigrue",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 55,
 	chanceHit = 0.55,
 	damageMin = 420,

@@ -2,6 +2,7 @@ swift_charging_bol = Creature:new {
 	objectName = "@mob/creature_names:bol_swift_charger",
 	socialGroup = "bol",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 34,
 	chanceHit = 0.41,
 	damageMin = 310,

@@ -2,6 +2,7 @@ bageraset_bruiser = Creature:new {
 	objectName = "@mob/creature_names:bageraset_bruiser",
 	socialGroup = "bageraset",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

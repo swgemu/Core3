@@ -2,6 +2,7 @@ chunker_swindler = Creature:new {
 	objectName = "@mob/creature_names:chunker_swindler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "chunker",
 	faction = "thug",
 	level = 8,

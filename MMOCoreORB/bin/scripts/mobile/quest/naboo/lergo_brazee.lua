@@ -2,6 +2,7 @@ lergo_brazee = Creature:new {
 	objectName = "",
 	customName = "Lergo Brazee",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

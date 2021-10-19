@@ -2,6 +2,7 @@ plains_hunter = Creature:new {
 	objectName = "@mob/creature_names:plains_hunter",
 	socialGroup = "tusk_cat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 31,
 	chanceHit = 0.39,
 	damageMin = 310,

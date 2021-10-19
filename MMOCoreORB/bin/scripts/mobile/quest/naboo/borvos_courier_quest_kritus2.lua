@@ -2,6 +2,7 @@ borvos_courier_quest_kritus2 = Creature:new {
 	objectName = "@mob/creature_names:borvos_champion",
 	socialGroup = "borvo",
 	faction = "borvo",
+	mobType = MOB_NPC,
 	level = 21,
 	chanceHit = 0.34,
 	damageMin = 200,

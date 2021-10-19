@@ -2,6 +2,7 @@ nuna = Creature:new {
 	objectName = "@mob/creature_names:nuna",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

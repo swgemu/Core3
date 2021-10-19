@@ -2,6 +2,7 @@ lassin_dedge = Creature:new {
 	objectName = "",
 	customName = "Lassin Dedge",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

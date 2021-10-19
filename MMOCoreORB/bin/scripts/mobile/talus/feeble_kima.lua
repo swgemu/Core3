@@ -2,6 +2,7 @@ feeble_kima = Creature:new {
 	objectName = "@mob/creature_names:feeble_kima",
 	socialGroup = "kima",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,

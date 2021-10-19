@@ -2,6 +2,7 @@ fbase_imperial_medic = Creature:new {
 	objectName = "@mob/creature_names:fbase_imperial_medic",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 26,

@@ -2,6 +2,7 @@ fbase_rebel_soldier_extreme = Creature:new {
 	objectName = "@mob/creature_names:fbase_rebel_soldier_extreme",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 160,

@@ -2,6 +2,7 @@ gordul_koga = Creature:new {
 	objectName = "",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

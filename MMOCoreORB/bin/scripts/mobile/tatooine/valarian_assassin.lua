@@ -2,6 +2,7 @@ valarian_assassin = Creature:new {
 	objectName = "@mob/creature_names:valarian_assassin",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "valarian",
 	faction = "valarian",
 	level = 16,

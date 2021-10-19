@@ -2,6 +2,7 @@ tamed_gurrcat = Creature:new {
 	objectName = "@mob/creature_names:rebel_tamed_gurrcat",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_CARNIVORE,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

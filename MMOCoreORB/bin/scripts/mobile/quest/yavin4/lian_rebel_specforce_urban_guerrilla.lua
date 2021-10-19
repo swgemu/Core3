@@ -2,6 +2,7 @@ lian_rebel_specforce_urban_guerrilla = Creature:new {
 	objectName = "@mob/creature_names:rebel_specforce_guerrilla",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,

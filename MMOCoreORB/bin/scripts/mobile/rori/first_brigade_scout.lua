@@ -2,6 +2,7 @@ first_brigade_scout = Creature:new {
 	objectName = "@mob/creature_names:brigade_scout",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "restuss",
 	faction = "restuss",
 	level = 7,

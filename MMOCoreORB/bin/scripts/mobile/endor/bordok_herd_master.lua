@@ -2,6 +2,7 @@ bordok_herd_master = Creature:new {
 	objectName = "@mob/creature_names:bordok_herd_master",
 	socialGroup = "bordok",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 40,
 	chanceHit = 0.43,
 	damageMin = 355,

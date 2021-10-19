@@ -2,6 +2,7 @@ toxic_slasher = Creature:new {
 	objectName = "@mob/creature_names:vir_vur_toxic_slasher",
 	socialGroup = "vir_vur",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 170,

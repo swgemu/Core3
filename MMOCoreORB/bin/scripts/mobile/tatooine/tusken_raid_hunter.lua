@@ -2,6 +2,7 @@ tusken_raid_hunter = Creature:new {
 	objectName = "@mob/creature_names:bestine_tusken_raid_sub_leader",
 	socialGroup = "tusken_raider",
 	faction = "tusken_raider",
+	mobType = MOB_NPC,
 	level = 51,
 	chanceHit = 0.51,
 	damageMin = 400,

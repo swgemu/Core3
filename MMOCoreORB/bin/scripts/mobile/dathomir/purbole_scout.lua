@@ -2,6 +2,7 @@ purbole_scout = Creature:new {
 	objectName = "@mob/creature_names:purbole_scout",
 	socialGroup = "purbole",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

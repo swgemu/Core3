@@ -2,6 +2,7 @@ skilled_panshee_worker = Creature:new {
 	objectName = "@mob/creature_names:skilled_panshee_worker",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 36,

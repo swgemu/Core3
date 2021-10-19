@@ -2,6 +2,7 @@ bestine_merchant = Creature:new {
 	objectName = "@bestine:merchant_title",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -2,6 +2,7 @@ kimogila = Creature:new {
 	objectName = "@mob/creature_names:kimogila",
 	socialGroup = "kimogila",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 95,
 	chanceHit = 0.9,
 	damageMin = 630,

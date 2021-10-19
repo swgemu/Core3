@@ -2,6 +2,7 @@ nym_domesticated_gurk = Creature:new {
 	objectName = "@mob/creature_names:nym_domesticated_gurk",
 	socialGroup = "gurk", "nym",
 	faction = "nym",
+	mobType = MOB_HERBIVORE,
 	level = 27,
 	chanceHit = 0.36,
 	damageMin = 240,

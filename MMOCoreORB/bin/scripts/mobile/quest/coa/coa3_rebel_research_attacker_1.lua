@@ -3,6 +3,7 @@ coa3_rebel_research_attacker_1 = Creature:new {
 	customName = "a Rebel Research Attacker",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 35,
 	chanceHit = 0.41,
 	damageMin = 320,

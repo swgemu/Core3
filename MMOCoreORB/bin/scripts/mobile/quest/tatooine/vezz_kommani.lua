@@ -2,6 +2,7 @@ vezz_kommani = Creature:new {
 	objectName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,

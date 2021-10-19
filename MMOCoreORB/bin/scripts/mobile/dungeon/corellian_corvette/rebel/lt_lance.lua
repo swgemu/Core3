@@ -2,6 +2,7 @@ lt_lance = Creature:new {
 	objectName = "",
 	customName = "Lt. Lance",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

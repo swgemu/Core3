@@ -2,6 +2,7 @@ gorg = Creature:new {
 	objectName = "@mob/creature_names:gorg",
 	socialGroup = "gorg",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

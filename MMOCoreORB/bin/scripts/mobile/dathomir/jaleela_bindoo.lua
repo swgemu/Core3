@@ -2,6 +2,7 @@ jaleela_bindoo = Creature:new {
 	objectName = "",
 	customName = "Jaleela Bindoo",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

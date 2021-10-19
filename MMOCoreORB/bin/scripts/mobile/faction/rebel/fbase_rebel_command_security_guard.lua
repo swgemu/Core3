@@ -2,6 +2,7 @@ fbase_rebel_command_security_guard = Creature:new {
 	objectName = "@mob/creature_names:fbase_rebel_command_security_guard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 25,

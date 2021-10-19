@@ -2,6 +2,7 @@ warren_stormtrooper = Creature:new {
 	objectName = "@mob/creature_names:warren_stormtrooper",
 	randomNameType = NAME_STORMTROOPER,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "warren_imperial",
 	faction = "",
 	level = 26,

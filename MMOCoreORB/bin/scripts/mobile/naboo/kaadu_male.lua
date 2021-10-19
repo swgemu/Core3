@@ -2,6 +2,7 @@ kaadu_male = Creature:new {
 	objectName = "@mob/creature_names:kaadu_male",
 	socialGroup = "kaadu",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,

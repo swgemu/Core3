@@ -2,6 +2,7 @@ mountain_krevol = Creature:new {
 	objectName = "@mob/creature_names:mountain_krevol",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 15,
 	chanceHit = 0.39,
 	damageMin = 150,

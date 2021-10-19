@@ -2,6 +2,7 @@ kavas_urdano = Creature:new {
 	objectName = "@mob/creature_names:patron_chiss_female",
 	customName = "Kavas Urdano",
 	socialGroup = "valarian",
+	mobType = MOB_NPC,
 	faction = "valarian",
 	level = 100,
 	chanceHit = 1,

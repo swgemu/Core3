@@ -2,6 +2,7 @@ victor_questp_hospital = Creature:new {
 	objectName = "",
 	customName = "Izosxisli",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

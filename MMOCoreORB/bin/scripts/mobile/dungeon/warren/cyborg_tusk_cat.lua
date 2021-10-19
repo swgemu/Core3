@@ -2,6 +2,7 @@ cyborg_tusk_cat = Creature:new {
 	objectName = "@mob/creature_names:warren_cyborg_tuskcat",
 	socialGroup = "warren_cyborg",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,

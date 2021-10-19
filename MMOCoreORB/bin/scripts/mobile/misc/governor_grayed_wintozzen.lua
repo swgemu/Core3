@@ -3,6 +3,7 @@ governor_grayed_wintozzen = Creature:new {
 	customName = "Governor Grayed Wintozzen",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 5,
 	chanceHit = 0.250000,
 	damageMin = 45,

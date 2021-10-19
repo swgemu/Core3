@@ -2,6 +2,7 @@ shaki_smuggler_q1 = Creature:new {
 	objectName = "@mob/creature_names:smuggler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 14,

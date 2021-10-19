@@ -2,6 +2,7 @@ woff_btar = Creature:new {
 	objectName = "",
 	socialGroup = "slaver",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.240000,
 	damageMin = 40,

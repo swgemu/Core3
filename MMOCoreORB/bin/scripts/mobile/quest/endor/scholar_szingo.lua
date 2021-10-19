@@ -2,6 +2,7 @@ scholar_szingo = Creature:new {
 	objectName = "@mob/creature_names:scholar_szingo",
 	socialGroup = "endor_marauder",
 	faction = "endor_marauder",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 0.33,
 	damageMin = 210,

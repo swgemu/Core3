@@ -2,6 +2,7 @@ spiderclan_stalker = Creature:new {
 	objectName = "@mob/creature_names:spider_nightsister_stalker",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "spider_nightsister",
 	faction = "spider_nightsister",
 	level = 100,

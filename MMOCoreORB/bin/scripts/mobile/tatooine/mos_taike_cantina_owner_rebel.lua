@@ -2,6 +2,7 @@ mos_taike_cantina_owner_rebel = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_cantina_owner",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 21,

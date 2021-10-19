@@ -2,6 +2,7 @@ majestic_plumed_rasp = Creature:new {
 	objectName = "@mob/creature_names:majestic_plumed_rasp",
 	socialGroup = "rasp",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 160,

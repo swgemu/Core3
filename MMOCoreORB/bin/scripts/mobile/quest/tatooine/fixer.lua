@@ -2,6 +2,7 @@ fixer = Creature:new {
 	objectName = "",
 	customName = "Fixer",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

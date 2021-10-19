@@ -2,6 +2,7 @@ frenzied_graul = Creature:new {
 	objectName = "@mob/creature_names:frenzied_graul",
 	socialGroup = "graul",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 56,
 	chanceHit = 0.5,
 	damageMin = 445,

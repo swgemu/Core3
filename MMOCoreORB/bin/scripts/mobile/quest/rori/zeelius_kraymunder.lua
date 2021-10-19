@@ -2,6 +2,7 @@ zeelius_kraymunder = Creature:new {
 	objectName = "",
 	customName = "Zeelius Kraymunder",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

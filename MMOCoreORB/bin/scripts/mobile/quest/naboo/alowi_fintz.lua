@@ -3,6 +3,7 @@ alowi_fintz = Creature:new {
   customName = "Alowi Fintz",
   socialGroup = "rebel",
   faction = "rebel",
+  mobType = MOB_NPC,
   level = 20,
   chanceHit = 0.33,
   damageMin = 180,

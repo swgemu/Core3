@@ -2,6 +2,7 @@ sango_rond = Creature:new {
 	objectName = "",
 	customName = "Sango Rond",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

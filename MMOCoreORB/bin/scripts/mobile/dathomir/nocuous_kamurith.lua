@@ -2,6 +2,7 @@ nocuous_kamurith = Creature:new {
 	objectName = "@mob/creature_names:kamurith_nocuous",
 	socialGroup = "kamurith",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 46,
 	chanceHit = 0.48,
 	damageMin = 395,

@@ -2,6 +2,7 @@ xalox_guul = Creature:new {
 	objectName = "",
 	customName = "Xalox Guul",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ xarot_korlin = Creature:new {
 	objectName = "",
 	customName = "Xarot Korlin",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

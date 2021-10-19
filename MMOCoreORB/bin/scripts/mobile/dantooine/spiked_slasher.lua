@@ -2,6 +2,7 @@ spiked_slasher = Creature:new {
 	objectName = "@mob/creature_names:voritor_spiked_slasher",
 	socialGroup = "voritor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 58,
 	chanceHit = 0.53,
 	damageMin = 430,

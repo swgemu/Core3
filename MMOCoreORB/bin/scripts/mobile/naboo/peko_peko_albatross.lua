@@ -2,6 +2,7 @@ peko_peko_albatross = Creature:new {
 	objectName = "@mob/creature_names:peko_peko_albatross",
 	socialGroup = "peko",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 155,
 	chanceHit = 7.75,
 	damageMin = 945,

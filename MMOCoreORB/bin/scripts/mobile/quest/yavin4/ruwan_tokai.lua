@@ -2,6 +2,7 @@ ruwan_tokai = Creature:new {
   objectName = "@mob/creature_names:sergeant_ruwan_tokai",
   socialGroup = "imperial",
   faction = "imperial",
+	mobType = MOB_NPC,
   level = 100,
   chanceHit = 1.000000,
   damageMin = 645,

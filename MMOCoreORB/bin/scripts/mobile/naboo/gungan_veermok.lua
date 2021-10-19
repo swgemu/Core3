@@ -2,6 +2,7 @@ gungan_veermok = Creature:new {
 	objectName = "@mob/creature_names:gungan_veermok",
 	socialGroup = "gungan",
 	faction = "gungan",
+	mobType = MOB_CARNIVORE,
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 210,

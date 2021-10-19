@@ -2,6 +2,7 @@ vurlene = Creature:new {
 	objectName = "",
 	customName = "Vurlene",
 	socialGroup = "mtn_clan",
+	mobType = MOB_NPC,
 	faction = "mtn_clan",
 	level = 100,
 	chanceHit = 1,

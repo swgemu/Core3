@@ -2,6 +2,7 @@ elder_gronda = Creature:new {
 	objectName = "@mob/creature_names:gronda_elder",
 	socialGroup = "gronda",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 33,
 	chanceHit = 0.39,
 	damageMin = 290,

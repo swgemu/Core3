@@ -2,6 +2,7 @@ theme_park_imperial_twilek = Creature:new {
 	objectName = "@mob/creature_names:borvos_thug",
 	socialGroup = "borvo",
 	faction = "borvo",
+	mobType = MOB_NPC,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,

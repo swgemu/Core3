@@ -2,6 +2,7 @@ sidoras_bey = Creature:new {
 	objectName = "",
 	customName = "Sidoras Bey",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

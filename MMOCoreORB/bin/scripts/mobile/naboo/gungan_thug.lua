@@ -5,6 +5,7 @@ gungan_thug = Creature:new {
 	customName = "a Gungan Thug",
 	socialGroup = "gungan",
 	faction = "gungan",
+	mobType = MOB_NPC,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,

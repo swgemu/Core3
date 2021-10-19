@@ -2,6 +2,7 @@ sean_questp_market = Creature:new {
 	objectName = "",
 	customName = "Orqiti Aneofo",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

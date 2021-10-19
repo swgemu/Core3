@@ -3,6 +3,7 @@ veteran_explorer = Creature:new {
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	customName = "a Veteran Explorer",
+	mobType = MOB_NPC,
 	socialGroup = "wilder",
 	faction = "",
 	level = 8,

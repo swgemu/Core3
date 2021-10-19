@@ -2,6 +2,7 @@ da_la_socuna = Creature:new {
 	objectName = "@npc_spawner_n:da_la_socuna",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

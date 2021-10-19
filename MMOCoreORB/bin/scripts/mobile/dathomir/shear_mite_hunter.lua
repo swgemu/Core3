@@ -2,6 +2,7 @@ shear_mite_hunter = Creature:new {
 	objectName = "@mob/creature_names:shear_mite_hunter",
 	socialGroup = "shear_mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 29,
 	chanceHit = 0.38,
 	damageMin = 290,

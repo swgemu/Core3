@@ -2,6 +2,7 @@ midnight_vir_vur = Creature:new {
 	objectName = "@mob/creature_names:midnight_vir_vur",
 	socialGroup = "vir_vur",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 16,
 	chanceHit = 0.32,
 	damageMin = 160,

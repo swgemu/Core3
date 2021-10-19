@@ -2,6 +2,7 @@ gambler = Creature:new {
 	objectName = "@mob/creature_names:gambler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "thug",
 	faction = "",
 	level = 8,

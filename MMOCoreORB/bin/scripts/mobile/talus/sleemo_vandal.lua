@@ -2,6 +2,7 @@ sleemo_vandal = Creature:new {
 	objectName = "",
 	customName = "a Sleemo Vandal",
 	socialGroup = "sleemo_gang",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 9,
 	chanceHit = 0.27,

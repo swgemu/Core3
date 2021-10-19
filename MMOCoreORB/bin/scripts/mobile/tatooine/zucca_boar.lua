@@ -2,6 +2,7 @@ zucca_boar = Creature:new {
 	objectName = "@mob/creature_names:zucca_boar",
 	socialGroup = "boar",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 120,

@@ -3,6 +3,7 @@ baze_joz = Creature:new {
 	customName = "Baze Joz",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

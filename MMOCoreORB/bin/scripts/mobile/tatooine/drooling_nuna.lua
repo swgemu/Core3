@@ -2,6 +2,7 @@ drooling_nuna = Creature:new {
 	objectName = "@mob/creature_names:dwarf_nuna_drooling",
 	socialGroup = "nuna",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 80,

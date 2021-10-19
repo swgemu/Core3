@@ -2,6 +2,7 @@ mamien_jungle_lord = Creature:new {
 	objectName = "@mob/creature_names:mamien_junglelord",
 	socialGroup = "mamien",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 180,

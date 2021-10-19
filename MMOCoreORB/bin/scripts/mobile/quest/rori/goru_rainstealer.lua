@@ -2,6 +2,7 @@ goru_rainstealer = Creature:new {
 	objectName = "",
 	customName = "Goru Rainstealer",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

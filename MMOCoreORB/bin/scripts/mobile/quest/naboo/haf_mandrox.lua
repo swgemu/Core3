@@ -3,6 +3,7 @@ haf_mandrox = Creature:new {
 	customName = "Haf Mandrox",
 	socialGroup = "borvo",
 	faction = "borvo",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

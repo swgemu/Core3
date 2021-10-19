@@ -2,6 +2,7 @@ nightspider_poison_spitter = Creature:new {
 	objectName = "@mob/creature_names:nightspider_poison_spitter",
 	socialGroup = "spider",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 130,

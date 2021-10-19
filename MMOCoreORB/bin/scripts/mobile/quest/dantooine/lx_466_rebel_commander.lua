@@ -3,6 +3,7 @@ lx_466_rebel_commander = Creature:new {
 	customName = "(a Stranded Rebel Commander)",	
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

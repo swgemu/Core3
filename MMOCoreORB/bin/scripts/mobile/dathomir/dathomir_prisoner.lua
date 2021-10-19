@@ -2,6 +2,7 @@ dathomir_prisoner = Creature:new {
 	objectName = "@mob/creature_names:prisoner",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "prisoner",
 	faction = "",
 	level = 12,

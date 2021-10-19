@@ -2,6 +2,7 @@ kamurith_defiler = Creature:new {
 	objectName = "@mob/creature_names:kamurith_defiler",
 	socialGroup = "kamurith",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 50,
 	chanceHit = 0.5,
 	damageMin = 420,

@@ -2,6 +2,7 @@ garyns_raider = Creature:new {
 	objectName = "@mob/creature_names:garyn_raider",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "garyn",
 	faction = "garyn",
 	level = 20,

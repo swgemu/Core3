@@ -2,6 +2,7 @@ rogue_falumpaset = Creature:new {
 	objectName = "@mob/creature_names:rogue_falumpaset",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 180,

@@ -2,6 +2,7 @@ klin_nif = Creature:new {
 	objectName = "",
 	customName = "Klin Nif",
 	socialGroup = "death_watch",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 178,
 	chanceHit = 12.25,

@@ -3,6 +3,7 @@ thrackan_sal_solo = Creature:new {
 	customName = "Thrackan Sal Solo",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

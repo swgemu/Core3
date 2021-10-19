@@ -2,6 +2,7 @@ zakarisz_ghent = Creature:new {
 	customName = "Zakarisz Ghent",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

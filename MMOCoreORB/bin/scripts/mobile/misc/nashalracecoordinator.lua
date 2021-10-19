@@ -3,6 +3,7 @@ nashal_race_coordinator = Creature:new {
 	socialGroup = "",
 	faction = "",
 	level = 100,
+	mobType = MOB_DROID,
 	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,

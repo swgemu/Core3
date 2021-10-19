@@ -2,6 +2,7 @@ domesticated_snorbal = Creature:new {
 	objectName = "@mob/creature_names:domesticated_snorbal",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 31,
 	chanceHit = 0.39,
 	damageMin = 260,

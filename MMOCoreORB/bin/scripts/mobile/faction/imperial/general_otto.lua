@@ -2,6 +2,7 @@ general_otto = Creature:new {
 	objectName = "@mob/creature_names:general_otto",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

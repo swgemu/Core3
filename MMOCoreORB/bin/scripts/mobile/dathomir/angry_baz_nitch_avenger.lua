@@ -2,6 +2,7 @@ angry_baz_nitch_avenger = Creature:new {
 	objectName = "@mob/creature_names:angry_baz_nitch_avenger",
 	socialGroup = "baz_nitch",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 230,

@@ -2,6 +2,7 @@ sean_questp_house = Creature:new {
 	objectName = "",
 	customName = "Edaekomeu Ossilei",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

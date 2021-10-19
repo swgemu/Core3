@@ -2,6 +2,7 @@ nial_declann = Creature:new {
 	objectName = "@npc_spawner_n:nial_declann",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -2,6 +2,7 @@ bull_ronto = Creature:new {
 	objectName = "@mob/creature_names:ronto_male",
 	socialGroup = "ronto",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 23,
 	chanceHit = 0.34,
 	damageMin = 200,

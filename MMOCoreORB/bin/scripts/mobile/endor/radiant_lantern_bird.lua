@@ -2,6 +2,7 @@ radiant_lantern_bird = Creature:new {
 	objectName = "@mob/creature_names:radiant_lantern_bird",
 	socialGroup = "lantern",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 40,
 	chanceHit = 0.43,
 	damageMin = 335,

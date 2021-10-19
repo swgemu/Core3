@@ -2,6 +2,7 @@ graf_zapalo = Creature:new {
 	objectName = "",
 	customName = "Graf Zapalo",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

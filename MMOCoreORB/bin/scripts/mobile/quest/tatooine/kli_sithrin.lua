@@ -1,6 +1,7 @@
 kli_sithrin = Creature:new {
 	objectName = "",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 15,
 	chanceHit = 0.31,

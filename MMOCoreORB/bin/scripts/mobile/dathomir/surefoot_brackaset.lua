@@ -2,6 +2,7 @@ surefoot_brackaset = Creature:new {
 	objectName = "@mob/creature_names:surefoot_brackaset",
 	socialGroup = "brackaset",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 46,
 	chanceHit = 0.44,
 	damageMin = 340,

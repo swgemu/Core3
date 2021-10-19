@@ -3,6 +3,7 @@ kunn_kuroosh = Creature:new {
 	customName = "Kunn Kuroosh",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

@@ -2,6 +2,7 @@ herald_biogenic_gardo = Creature:new {
 	objectName = "",
 	customName = "Gardo Valdell",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

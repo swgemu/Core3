@@ -2,6 +2,7 @@ giant_carrion_spat = Creature:new {
 	objectName = "@mob/creature_names:giant_carrion_spat",
 	socialGroup = "carrion_spat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 160,

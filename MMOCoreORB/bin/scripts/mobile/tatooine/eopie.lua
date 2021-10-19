@@ -2,6 +2,7 @@ eopie = Creature:new {
 	objectName = "@mob/creature_names:eopie",
 	socialGroup = "eopie",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 45,

@@ -2,6 +2,7 @@ weathered_gondula_shaman = Creature:new {
 	objectName = "@mob/creature_names:weathered_gondula_shaman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 43,

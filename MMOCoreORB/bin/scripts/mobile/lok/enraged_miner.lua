@@ -2,6 +2,7 @@ enraged_miner = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "an Enraged Miner",
 	socialGroup = "self",
 	faction = "",

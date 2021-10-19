@@ -2,6 +2,7 @@ verne_calf = Creature:new {
 	objectName = "@mob/creature_names:verne_calf",
 	socialGroup = "verne",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 130,

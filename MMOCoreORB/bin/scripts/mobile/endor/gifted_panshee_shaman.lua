@@ -2,6 +2,7 @@ gifted_panshee_shaman = Creature:new {
 	objectName = "@mob/creature_names:gifted_panshee_shaman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 38,

@@ -2,6 +2,7 @@ herald_rsf_security_guard = Creature:new {
 	objectName = "@mob/creature_names:rsf_security_guard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "naboo_security_force",
 	faction = "naboo_security_force",
 	level = 8,

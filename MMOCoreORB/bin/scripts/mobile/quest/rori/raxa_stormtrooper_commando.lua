@@ -2,6 +2,7 @@ raxa_stormtrooper_commando = Creature:new {
 	objectName = "@mob/creature_names:storm_commando",
 	randomNameType = NAME_STORMTROOPER,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 29,

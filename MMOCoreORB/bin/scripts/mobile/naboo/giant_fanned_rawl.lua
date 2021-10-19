@@ -2,6 +2,7 @@ giant_fanned_rawl = Creature:new {
 	objectName = "",
 	customName = "a giant fanned rawl",
 	socialGroup = "rawl",
+	mobType = MOB_CARNIVORE,
 	faction = "",
 	level = 11,
 	chanceHit = 0.3,

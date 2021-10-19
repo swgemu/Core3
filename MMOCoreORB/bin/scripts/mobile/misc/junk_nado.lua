@@ -2,6 +2,7 @@ junk_nado = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Nado",
 	planetMapCategory = "junkshop",
+	mobType = MOB_NPC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,

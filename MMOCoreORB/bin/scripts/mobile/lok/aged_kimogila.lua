@@ -2,6 +2,7 @@ aged_kimogila = Creature:new {
 	objectName = "",
 	customName = "an aged kimogila",
 	socialGroup = "kimogila",
+	mobType = MOB_CARNIVORE,
 	faction = "",
 	level = 139,
 	chanceHit = 5.5,

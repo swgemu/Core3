@@ -2,6 +2,7 @@ domestic_tusk_cat = Creature:new {
 	objectName = "@mob/creature_names:domestic_tusk_cat",
 	socialGroup = "naboo",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,

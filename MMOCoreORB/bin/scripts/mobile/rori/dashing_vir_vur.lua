@@ -2,6 +2,7 @@ dashing_vir_vur = Creature:new {
 	objectName = "@mob/creature_names:dashing_vir_vur",
 	socialGroup = "vir_vur",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

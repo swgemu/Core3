@@ -2,6 +2,7 @@ nym = Creature:new {
 	objectName = "@mob/creature_names:nym",
 	socialGroup = "nym",
 	faction = "nym",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

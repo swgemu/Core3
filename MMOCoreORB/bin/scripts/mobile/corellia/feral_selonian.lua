@@ -2,6 +2,7 @@ feral_selonian = Creature:new {
 	objectName = "@mob/creature_names:feral_selonian",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "self",
 	faction = "",
 	level = 12,

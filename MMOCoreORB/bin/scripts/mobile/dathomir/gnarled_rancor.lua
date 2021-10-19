@@ -2,6 +2,7 @@ gnarled_rancor = Creature:new {
 	objectName = "@mob/creature_names:gnarled_rancor",
 	socialGroup = "rancor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 46,
 	chanceHit = 0.47,
 	damageMin = 395,

@@ -2,6 +2,7 @@ greeata = Creature:new {
 	objectName = "@theme_park_name:greeata",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

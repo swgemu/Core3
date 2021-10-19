@@ -2,6 +2,7 @@ mac_varley = Creature:new {
 	objectName = "@mob/creature_names:corsec_captain",
 	socialGroup = "corsec",
 	faction = "corsec",
+	mobType = MOB_NPC,
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 210,

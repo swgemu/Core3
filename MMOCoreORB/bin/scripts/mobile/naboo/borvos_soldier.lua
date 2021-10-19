@@ -2,6 +2,7 @@ borvos_soldier = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "Borvo's Soldier",
 	socialGroup = "borvo",
 	faction = "borvo",

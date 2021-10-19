@@ -2,6 +2,7 @@ cas_vankoo = Creature:new {
 	objectName = "@mob/creature_names:cas_vankoo",
 	socialGroup = "kimogila",
 	faction = "bandit",
+	mobType = MOB_NPC,
 	level = 117,
 	chanceHit = 3.4,
 	damageMin = 725,

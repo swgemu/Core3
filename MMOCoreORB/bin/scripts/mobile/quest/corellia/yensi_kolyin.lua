@@ -3,6 +3,7 @@ yensi_kolyin = Creature:new {
 	customName = "Yensi Kolyin",
 	socialGroup = "pirate",
 	faction = "pirate",
+	mobType = MOB_NPC,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

@@ -2,6 +2,7 @@ herald_drall = Creature:new {
 	objectName = "@mob/creature_names:drall_patriot",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,

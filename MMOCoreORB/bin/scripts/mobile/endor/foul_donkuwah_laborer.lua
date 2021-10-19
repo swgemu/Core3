@@ -2,6 +2,7 @@ foul_donkuwah_laborer = Creature:new {
 	objectName = "@mob/creature_names:foul_donkuwah_laborer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 24,

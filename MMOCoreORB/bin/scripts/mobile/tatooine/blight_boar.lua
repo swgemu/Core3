@@ -2,6 +2,7 @@ blight_boar = Creature:new {
 	objectName = "@mob/creature_names:zucca_boar_blight",
 	socialGroup = "boar",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 150,

@@ -2,6 +2,7 @@ wallaw_bull_rancor = Creature:new {
 	objectName = "@mob/creature_names:bull_rancor",
 	socialGroup = "rancor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 65,
 	chanceHit = 0.6,
 	damageMin = 455,

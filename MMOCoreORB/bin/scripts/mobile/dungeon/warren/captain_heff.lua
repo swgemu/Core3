@@ -2,6 +2,7 @@ captain_heff = Creature:new {
 	objectName = "@theme_park/warren/warren_system_messages:name_heff",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 23,
 	chanceHit = 1,
 	damageMin = 123,

@@ -2,6 +2,7 @@ archaic_panshee_ritualist = Creature:new {
 	objectName = "@mob/creature_names:archaic_panshee_ritualist",
 	socialGroup = "panshee_tribe",
 	faction = "panshee_tribe",
+	mobType = MOB_NPC,
 	level = 60,
 	chanceHit = 0.6,
 	damageMin = 445,

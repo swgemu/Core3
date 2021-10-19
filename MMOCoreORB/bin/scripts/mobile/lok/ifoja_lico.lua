@@ -3,6 +3,7 @@ ifoja_lico = Creature:new {
 	customName = "Ifoja Lico",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,

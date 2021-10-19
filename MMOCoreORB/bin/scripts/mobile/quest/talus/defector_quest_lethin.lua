@@ -2,6 +2,7 @@ defector_quest_lethin = Creature:new {
 	objectName = "@mob/creature_names:imperial_medic",
 	socialGroup = "imperial",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

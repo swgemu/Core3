@@ -2,6 +2,7 @@ imperial_rep_quest_brennis = Creature:new {
 	objectName = "@mob/creature_names:imperial_first_lieutenant",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

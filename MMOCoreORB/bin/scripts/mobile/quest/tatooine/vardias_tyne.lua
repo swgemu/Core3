@@ -2,6 +2,7 @@ vardias_tyne = Creature:new {
 	objectName = "",
 	customName = "Vardias Tyne",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

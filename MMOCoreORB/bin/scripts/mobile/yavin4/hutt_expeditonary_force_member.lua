@@ -2,6 +2,7 @@ hutt_expeditonary_force_member = Creature:new {
 	objectName = "@mob/creature_names:hutt_expedition_force_member",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "hutt",
 	faction = "hutt",
 	level = 17,

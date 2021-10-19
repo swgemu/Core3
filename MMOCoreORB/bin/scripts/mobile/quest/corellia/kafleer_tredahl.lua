@@ -2,6 +2,7 @@ kafleer_tredahl = Creature:new {
 	objectName = "",
 	socialGroup = "townsperson",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.310000,
 	damageMin = 160,

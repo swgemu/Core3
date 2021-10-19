@@ -2,6 +2,7 @@ mercenary = Creature:new {
 	objectName = "@mob/creature_names:mercenary",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "mercenary",
 	faction = "",
 	level = 12,

@@ -1,6 +1,7 @@
 prisoner_quest_vinzel_too = Creature:new {
 	objectName = "@mob/creature_names:prisoner",
 	socialGroup = "prisoner",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 27,
 	chanceHit = 0.27,

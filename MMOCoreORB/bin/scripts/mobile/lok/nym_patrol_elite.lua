@@ -2,6 +2,7 @@ nym_patrol_elite = Creature:new {
 	objectName = "@mob/creature_names:nym_patrol_elite",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 41,

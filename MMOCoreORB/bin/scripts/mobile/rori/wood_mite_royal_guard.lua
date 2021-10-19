@@ -2,6 +2,7 @@ wood_mite_royal_guard = Creature:new {
 	objectName = "@mob/creature_names:wood_mite_royal_guard",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 18,
 	chanceHit = 0.31,
 	damageMin = 170,

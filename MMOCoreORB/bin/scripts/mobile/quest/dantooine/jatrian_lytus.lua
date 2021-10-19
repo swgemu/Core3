@@ -2,6 +2,7 @@ jatrian_lytus = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Cmdr. Jatrian Lytus",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

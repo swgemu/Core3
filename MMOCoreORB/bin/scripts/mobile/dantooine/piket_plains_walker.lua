@@ -2,6 +2,7 @@ piket_plains_walker = Creature:new {
 	objectName = "@mob/creature_names:piket_plains_walker",
 	socialGroup = "piket",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 32,
 	chanceHit = 0.4,
 	damageMin = 290,

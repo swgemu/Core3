@@ -2,6 +2,7 @@ scyk = Creature:new {
 	objectName = "@mob/creature_names:scyk",
 	socialGroup = "scyk",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

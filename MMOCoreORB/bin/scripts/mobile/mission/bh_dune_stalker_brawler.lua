@@ -2,6 +2,7 @@ bh_dune_stalker_brawler = Creature:new {
 	objectName = "@mob/creature_names:dune_stalker_brawler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "dune_stalker",
 	faction = "",
 	level = 17,

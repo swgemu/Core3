@@ -2,6 +2,7 @@ kormund_probot = Creature:new {
 	objectName = "@droid_name:imperial_probot_base",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_DROID,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

@@ -2,6 +2,7 @@ trade_federation_avenger = Creature:new {
 	objectName = "@mob/creature_names:trade_federation_avenger",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "trade_federation",
 	faction = "trade_federation",
 	level = 16,

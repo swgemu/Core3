@@ -2,6 +2,7 @@ enraged_pubam = Creature:new {
 	objectName = "@mob/creature_names:enraged_pubam",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 10,

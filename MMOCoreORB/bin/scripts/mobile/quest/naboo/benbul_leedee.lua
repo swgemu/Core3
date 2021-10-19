@@ -3,6 +3,7 @@ benbul_leedee = Creature:new {
 	customName = "Benbul Leedee",
 	socialGroup = "gungan",
 	faction = "gungan",
+	mobType = MOB_NPC,
 	level = 20,
 	chanceHit = 0.31,
 	damageMin = 160,

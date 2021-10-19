@@ -2,6 +2,7 @@ plasma_thief = Creature:new {
 	objectName = "@mob/creature_names:plasma_thief",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "plasma_thief",
 	faction = "plasma_thief",
 	level = 7,

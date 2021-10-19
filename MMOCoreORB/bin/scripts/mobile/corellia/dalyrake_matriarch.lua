@@ -2,6 +2,7 @@ dalyrake_matriarch = Creature:new {
 	objectName = "@mob/creature_names:dalyrake_matriarch",
 	socialGroup = "dalyrake",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,

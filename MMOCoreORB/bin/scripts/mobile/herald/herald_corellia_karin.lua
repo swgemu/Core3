@@ -2,6 +2,7 @@ herald_corellia_karin = Creature:new {
 	objectName = "@npc_name:corellia_herald_02",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

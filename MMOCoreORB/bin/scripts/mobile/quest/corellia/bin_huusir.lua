@@ -2,6 +2,7 @@ bin_huusir = Creature:new {
 	objectName = "",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,

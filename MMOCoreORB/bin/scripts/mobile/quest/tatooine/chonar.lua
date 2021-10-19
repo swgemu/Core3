@@ -2,6 +2,7 @@ chonar = Creature:new {
 	objectName = "",
 	customName = "Brother Chonar",	
 	socialGroup = "dim_u",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 6,
 	chanceHit = 0.25,

@@ -2,6 +2,7 @@ capper_spineflap_drone = Creature:new {
 	objectName = "@mob/creature_names:capper_spineflap_drone",
 	socialGroup = "spineflap",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

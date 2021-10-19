@@ -2,6 +2,7 @@ flewt_leviathan = Creature:new {
 	objectName = "@mob/creature_names:flewt_leviathan",
 	socialGroup = "flewt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 9,
 	chanceHit = 0.28,
 	damageMin = 90,

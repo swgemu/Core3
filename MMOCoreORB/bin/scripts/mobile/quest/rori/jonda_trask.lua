@@ -3,6 +3,7 @@ jonda_trask = Creature:new {
 	customName = "Jonda Trask",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

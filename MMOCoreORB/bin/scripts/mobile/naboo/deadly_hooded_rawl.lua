@@ -2,6 +2,7 @@ deadly_hooded_rawl = Creature:new {
 	objectName = "@mob/creature_names:rawl_deadly_hooded",
 	socialGroup = "rawl",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

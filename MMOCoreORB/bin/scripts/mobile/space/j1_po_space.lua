@@ -2,6 +2,7 @@ j1_po_space = Creature:new {
 	objectName = "@npc_spawner_n:j1_po",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,

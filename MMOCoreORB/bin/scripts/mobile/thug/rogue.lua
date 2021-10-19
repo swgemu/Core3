@@ -2,6 +2,7 @@ rogue = Creature:new {
 	objectName = "@mob/creature_names:rogue",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 9,

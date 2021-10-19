@@ -2,6 +2,7 @@ jumis = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	customName = "Jumis",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 16,
 	chanceHit = 0.31,

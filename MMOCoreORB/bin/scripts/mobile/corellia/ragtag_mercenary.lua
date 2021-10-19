@@ -2,6 +2,7 @@ ragtag_mercenary = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Ragtag mercenary",
 	socialGroup = "ragtag",
 	faction = "thug",

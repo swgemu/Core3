@@ -3,6 +3,7 @@ ds_297 = Creature:new {
 	customName = "DS-297",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,

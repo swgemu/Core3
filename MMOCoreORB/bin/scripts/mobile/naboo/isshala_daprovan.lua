@@ -2,6 +2,7 @@ isshala_daprovan = Creature:new {
 	objectName = "",
 	customName = "Isshala Daprovan",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

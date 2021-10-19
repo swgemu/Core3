@@ -2,6 +2,7 @@ vinya_maysor = Creature:new {
 	objectName = "",
 	customName = "Vinya Maysor",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

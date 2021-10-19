@@ -2,6 +2,7 @@ corvette_r5 = Creature:new {
 	objectName = "@mob/creature_names:r5",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

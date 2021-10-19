@@ -2,6 +2,7 @@ glutted_fynock_queen = Creature:new {
 	objectName = "@mob/creature_names:glutted_fynock_queen",
 	socialGroup = "fynock",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,

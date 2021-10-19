@@ -2,6 +2,7 @@ poisonous_krevol_queen = Creature:new {
 	objectName = "@mob/creature_names:poisonous_krevol_queen",
 	socialGroup = "krevol",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.3,
 	damageMin = 170,

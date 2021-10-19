@@ -2,6 +2,7 @@ hero_of_tat_pirate_leader_converse = Creature:new {
 	objectName = "@mob/creature_names:pirate_leader",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "pirate",
 	faction = "pirate",
 	level = 32,

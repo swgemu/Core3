@@ -2,6 +2,7 @@ theme_park_imperial_escort_commander = Creature:new {
 	objectName = "",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

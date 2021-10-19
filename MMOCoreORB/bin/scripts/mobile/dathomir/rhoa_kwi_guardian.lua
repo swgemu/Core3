@@ -2,6 +2,7 @@ rhoa_kwi_guardian = Creature:new {
 	objectName = "@mob/creature_names:rhoa_kwi_guardian",
 	socialGroup = "kwi",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 45,
 	chanceHit = 0.44,
 	damageMin = 320,

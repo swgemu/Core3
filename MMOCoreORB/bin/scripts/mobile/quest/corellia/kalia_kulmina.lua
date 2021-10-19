@@ -2,6 +2,7 @@ kalia_kulmina = Creature:new {
 	objectName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 24,
 	chanceHit = 0.350000,
 	damageMin = 220,

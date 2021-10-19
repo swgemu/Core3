@@ -2,6 +2,7 @@ voracious_patriarch = Creature:new {
 	objectName = "@mob/creature_names:torton_voracious_patriarch",
 	socialGroup = "torton",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 37,
 	chanceHit = 0.4,
 	damageMin = 365,

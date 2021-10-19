@@ -2,6 +2,7 @@ rath_kanaz = Creature:new {
 	objectName = "",
 	customName = "Rath Kanaz",
 	socialGroup = "self",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 23,
 	chanceHit = 0.28,

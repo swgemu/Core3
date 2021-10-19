@@ -2,6 +2,7 @@ fbase_sand_trooper_extreme = Creature:new {
 	objectName = "@mob/creature_names:fbase_sand_trooper_extreme",
 	randomNameType = NAME_STORMTROOPER,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 160,

@@ -2,6 +2,7 @@ wookiee_brawler = Creature:new {
 	objectName = "@mob/creature_names:wookiee_brawler",
 	socialGroup = "mercenary",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

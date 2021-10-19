@@ -2,6 +2,7 @@ domesticated_mott = Creature:new {
 	objectName = "@mob/creature_names:domesticated_mott",
 	socialGroup = "naboo",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,

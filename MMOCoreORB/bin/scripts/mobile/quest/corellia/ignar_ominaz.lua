@@ -2,6 +2,7 @@ ignar_ominaz = Creature:new {
 	objectName = "",
 	customName = "Ignar Ominaz",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

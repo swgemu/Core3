@@ -2,6 +2,7 @@ herald_dathomir_azzenaj = Creature:new {
 	objectName = "",
 	customName = "Arch Witch Azzenaj",
 	socialGroup = "mtn_clan",
+	mobType = MOB_NPC,
 	faction = "mtn_clan",
 	level = 100,
 	chanceHit = 1,

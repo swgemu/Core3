@@ -2,6 +2,7 @@ valarian_courier = Creature:new {
 	objectName = "@mob/creature_names:valarian_assassin",
 	socialGroup = "valarian",
 	faction = "valarian",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 160,

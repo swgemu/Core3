@@ -3,6 +3,7 @@ ara_niorri = Creature:new {
 	customName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

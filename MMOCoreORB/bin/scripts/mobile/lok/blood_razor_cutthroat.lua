@@ -2,6 +2,7 @@ blood_razor_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_cutthroat",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "bloodrazor",
 	faction = "bloodrazor",
 	level = 34,

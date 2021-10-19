@@ -2,6 +2,7 @@ gualama = Creature:new {
 	objectName = "@mob/creature_names:gualama",
 	socialGroup = "gualama",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 13,
 	chanceHit = 0.29,
 	damageMin = 130,

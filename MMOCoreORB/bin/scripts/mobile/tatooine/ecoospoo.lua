@@ -3,6 +3,7 @@ ecoospoo = Creature:new {
 	customName = "Ecoospoo",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

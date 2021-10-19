@@ -2,6 +2,7 @@ kais = Creature:new {
 	objectName = "@mob/creature_names:kais",
 	socialGroup = "nightsister",
 	faction = "nightsister",
+	mobType = MOB_NPC,
 	level = 21,
 	chanceHit = 0.330000,
 	damageMin = 190,

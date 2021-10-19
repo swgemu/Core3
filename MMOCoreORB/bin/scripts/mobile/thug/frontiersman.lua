@@ -2,6 +2,7 @@ frontiersman = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Frontiersman",
 	socialGroup = "wilder",
 	faction = "",

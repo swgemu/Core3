@@ -2,6 +2,7 @@ crackdown_comm_operator_hard = Creature:new {
 	objectName = "@mob/creature_names:crackdown_comm_operator_hard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 1,

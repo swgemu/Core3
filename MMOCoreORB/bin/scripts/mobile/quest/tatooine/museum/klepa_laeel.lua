@@ -2,6 +2,7 @@ klepa_laeel = Creature:new {
 	objectName = "@mob/creature_names:bestine_artist05",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

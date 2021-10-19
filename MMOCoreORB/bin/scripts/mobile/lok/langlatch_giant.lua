@@ -2,6 +2,7 @@ langlatch_giant = Creature:new {
 	objectName = "@mob/creature_names:langlatch_giant",
 	socialGroup = "langlatch",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 210,

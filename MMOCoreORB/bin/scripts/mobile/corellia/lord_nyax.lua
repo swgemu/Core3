@@ -2,6 +2,7 @@ lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax",
 	socialGroup = "followers_of_lord_nyax",
 	faction = "followers_of_lord_nyax",
+	mobType = MOB_NPC,
 	level = 129,
 	chanceHit = 4.9,
 	damageMin = 775,

@@ -2,6 +2,7 @@ bonecracker_bantha = Creature:new {
 	objectName = "@mob/creature_names:bantha_bonecracker",
 	socialGroup = "bantha",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 240,

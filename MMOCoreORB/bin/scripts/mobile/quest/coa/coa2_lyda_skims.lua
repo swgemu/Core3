@@ -3,6 +3,7 @@ coa2_lyda_skims = Creature:new {
 	customName = "Lyda Skims",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

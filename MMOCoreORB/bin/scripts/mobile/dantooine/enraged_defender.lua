@@ -2,6 +2,7 @@ enraged_defender = Creature:new {
 	objectName = "@mob/creature_names:piket_enraged_defender",
 	socialGroup = "piket",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 49,
 	chanceHit = 0.47,
 	damageMin = 385,

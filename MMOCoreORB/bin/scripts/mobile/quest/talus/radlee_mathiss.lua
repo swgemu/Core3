@@ -2,6 +2,7 @@ radlee_mathiss = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Radlee Mathiss",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

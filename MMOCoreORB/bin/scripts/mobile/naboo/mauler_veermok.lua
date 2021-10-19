@@ -2,6 +2,7 @@ mauler_veermok = Creature:new {
 	objectName = "@mob/creature_names:mauler_veermok",
 	socialGroup = "mauler",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,

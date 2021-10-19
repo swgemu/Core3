@@ -2,6 +2,7 @@ mature_reptilian_flier = Creature:new {
 	objectName = "@mob/creature_names:mature_reptilian_flier",
 	socialGroup = "reptilian_flier",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.32,
 	damageMin = 190,

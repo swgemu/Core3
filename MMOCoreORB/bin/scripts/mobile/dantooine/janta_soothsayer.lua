@@ -2,6 +2,7 @@ janta_soothsayer = Creature:new {
 	objectName = "@mob/creature_names:janta_soothsayer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "janta_tribe",
 	faction = "janta_tribe",
 	level = 60,

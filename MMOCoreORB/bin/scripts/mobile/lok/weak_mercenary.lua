@@ -2,6 +2,7 @@ weak_mercenary = Creature:new {
 	objectName = "@mob/creature_names:mercenary_weak",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 34,

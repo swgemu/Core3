@@ -2,6 +2,7 @@ record_keeper_rebel = Creature:new {
 	objectName = "",
 	customName = "Falton Molard",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ weequay_captain = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "Weequay Captain",
 	socialGroup = "weequay",
 	faction = "",

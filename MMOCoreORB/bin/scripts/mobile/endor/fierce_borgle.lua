@@ -2,6 +2,7 @@ fierce_borgle = Creature:new {
 	objectName = "@mob/creature_names:fierce_borgle",
 	socialGroup = "borgle",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 32,
 	chanceHit = 0.37,
 	damageMin = 310,

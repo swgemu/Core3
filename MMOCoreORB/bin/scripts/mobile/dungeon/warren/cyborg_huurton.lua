@@ -2,6 +2,7 @@ cyborg_huurton = Creature:new {
 	objectName = "@mob/creature_names:warren_cyborg_huurton",
 	socialGroup = "warren_cyborg",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 32,
 	chanceHit = 0.4,
 	damageMin = 305,

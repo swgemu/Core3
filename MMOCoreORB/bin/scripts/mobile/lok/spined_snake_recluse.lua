@@ -2,6 +2,7 @@ spined_snake_recluse = Creature:new {
 	objectName = "@mob/creature_names:spined_snake_recluse",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 160,

@@ -2,6 +2,7 @@ vraker_orde = Creature:new {
 	objectName = "",
 	customName = "Vraker Orde",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

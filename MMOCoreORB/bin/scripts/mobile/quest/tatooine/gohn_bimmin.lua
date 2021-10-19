@@ -2,6 +2,7 @@ gohn_bimmin = Creature:new {
 	objectName = "",
 	customName = "",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

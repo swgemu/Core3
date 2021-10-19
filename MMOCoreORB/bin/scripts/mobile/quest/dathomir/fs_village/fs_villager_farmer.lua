@@ -2,6 +2,7 @@ fs_villager_farmer = Creature:new {
 	objectName = "@mob/creature_names:fs_villager_farmer",
 	socialGroup = "fs_villager",
 	faction = "fs_villager",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

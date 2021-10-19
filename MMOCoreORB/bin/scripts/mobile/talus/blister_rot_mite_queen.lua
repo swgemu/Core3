@@ -2,6 +2,7 @@ blister_rot_mite_queen = Creature:new {
 	objectName = "@mob/creature_names:blister_rot_queen",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.3,
 	damageMin = 160,

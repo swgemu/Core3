@@ -2,6 +2,7 @@ fbase_rebel_rifleman = Creature:new {
 	objectName = "@mob/creature_names:fbase_rebel_rifleman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 38,

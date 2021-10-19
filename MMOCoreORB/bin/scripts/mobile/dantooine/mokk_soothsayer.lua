@@ -2,6 +2,7 @@ mokk_soothsayer = Creature:new {
 	objectName = "@mob/creature_names:mokk_soothsayer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 43,

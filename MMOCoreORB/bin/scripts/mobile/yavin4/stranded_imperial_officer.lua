@@ -2,6 +2,7 @@ stranded_imperial_officer = Creature:new {
 	objectName = "@mob/creature_names:stranded_imperial_officer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 26,

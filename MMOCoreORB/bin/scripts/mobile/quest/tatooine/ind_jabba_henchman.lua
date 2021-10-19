@@ -2,6 +2,7 @@ ind_jabba_henchman = Creature:new {
 	objectName = "@mob/creature_names:jabba_henchman",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

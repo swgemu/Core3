@@ -2,6 +2,7 @@ fadulk_dikeer = Creature:new {
 	objectName = "",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 3,
 	chanceHit = 0.23,
 	damageMin = 35,

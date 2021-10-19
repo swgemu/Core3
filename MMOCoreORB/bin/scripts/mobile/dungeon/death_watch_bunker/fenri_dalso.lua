@@ -2,6 +2,7 @@ fenri_dalso = Creature:new {
 	objectName = "",
 	customName = "Fenri Dalso",
 	socialGroup = "death_watch",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 178,
 	chanceHit = 12.25,

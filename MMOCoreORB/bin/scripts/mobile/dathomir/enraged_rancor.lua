@@ -2,6 +2,7 @@ enraged_rancor = Creature:new {
 	objectName = "@mob/creature_names:enraged_rancor",
 	socialGroup = "rancor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 80,
 	chanceHit = 0.75,
 	damageMin = 570,

@@ -2,6 +2,7 @@ puny_tanc_mite = Creature:new {
 	objectName = "@mob/creature_names:puny_tanc_mite",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 2,
 	chanceHit = 0.21,
 	damageMin = 35,

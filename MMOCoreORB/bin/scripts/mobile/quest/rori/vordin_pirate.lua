@@ -2,6 +2,7 @@ vordin_pirate = Creature:new {
 	objectName = "@mob/creature_names:pirate",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 15,
 	chanceHit = 0.32,
 	damageMin = 160,

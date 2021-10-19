@@ -3,6 +3,7 @@ corvette_neutral_yondalla = Creature:new {
 	customName = "Yondalla",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

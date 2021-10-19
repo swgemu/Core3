@@ -2,6 +2,7 @@ yith_seenath = Creature:new {
 	objectName = "",
 	customName = "Yith Seenath",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ flesh_eating_chuba = Creature:new {
 	objectName = "@mob/creature_names:flesh_eating_chuba",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

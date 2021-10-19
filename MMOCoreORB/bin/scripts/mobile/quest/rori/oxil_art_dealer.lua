@@ -3,6 +3,7 @@ oxil_art_dealer = Creature:new {
   customName = "Art Dealer",
   socialGroup = "",
   faction = "",
+  mobType = MOB_NPC,
   level = 7,
   chanceHit = 0.26,
   damageMin = 55,

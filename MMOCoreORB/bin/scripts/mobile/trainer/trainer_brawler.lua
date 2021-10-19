@@ -2,6 +2,7 @@ trainer_brawler = Creature:new {
 	objectName = "@mob/creature_names:trainer_brawler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	planetMapCategory = "trainer_brawler",
 	faction = "",
 	level = 100,

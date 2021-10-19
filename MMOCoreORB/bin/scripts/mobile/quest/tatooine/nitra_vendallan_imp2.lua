@@ -2,6 +2,7 @@ nitra_vendallan_imp2 = Creature:new {
 	objectName = "",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 30,
 	chanceHit = 0.390000,
 	damageMin = 290,

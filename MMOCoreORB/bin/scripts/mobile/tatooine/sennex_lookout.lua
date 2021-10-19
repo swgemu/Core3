@@ -2,6 +2,7 @@ sennex_lookout = Creature:new {
 	objectName = "@mob/creature_names:sennex_lookout",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "sennex",
 	faction = "pirate",
 	level = 17,

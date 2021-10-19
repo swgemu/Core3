@@ -2,6 +2,7 @@ kamurith_snapper = Creature:new {
 	objectName = "@mob/creature_names:kamurith_snapper",
 	socialGroup = "kamurith",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 44,
 	chanceHit = 0.46,
 	damageMin = 405,

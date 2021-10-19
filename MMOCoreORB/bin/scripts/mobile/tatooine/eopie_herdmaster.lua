@@ -2,6 +2,7 @@ eopie_herdmaster = Creature:new {
 	objectName = "@mob/creature_names:eopie_herdmaster",
 	socialGroup = "eopie",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 55,

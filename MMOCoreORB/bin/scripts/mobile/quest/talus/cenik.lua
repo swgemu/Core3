@@ -2,6 +2,7 @@ cenik = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_courier",
 	socialGroup = "spice_collective",
 	faction = "spice_collective",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,

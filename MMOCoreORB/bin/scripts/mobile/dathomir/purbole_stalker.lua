@@ -2,6 +2,7 @@ purbole_stalker = Creature:new {
 	objectName = "@mob/creature_names:purbole_stalker",
 	socialGroup = "purbole",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 19,
 	chanceHit = 0.32,
 	damageMin = 190,

@@ -2,6 +2,7 @@ veneral_devourer = Creature:new {
 	objectName = "@mob/creature_names:pugoriss_venerable_devourer",
 	socialGroup = "pugoriss",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 20,
 	chanceHit = 0.32,
 	damageMin = 160,

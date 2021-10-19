@@ -2,6 +2,7 @@ trujhazii = Creature:new {
 	objectName = "",
 	socialGroup = "nightsister",
 	faction = "nightsister",
+	mobType = MOB_NPC,
 	level = 50,
 	chanceHit = 10,
 	damageMin = 280,

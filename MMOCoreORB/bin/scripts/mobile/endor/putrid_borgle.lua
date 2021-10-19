@@ -2,6 +2,7 @@ putrid_borgle = Creature:new {
 	objectName = "@mob/creature_names:putrid_borgle",
 	socialGroup = "borgle",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 19,
 	chanceHit = 0.32,
 	damageMin = 170,

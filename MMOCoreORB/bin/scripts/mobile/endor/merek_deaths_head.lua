@@ -2,6 +2,7 @@ merek_deaths_head = Creature:new {
 	objectName = "@mob/creature_names:merek_deaths_head",
 	socialGroup = "merek",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 56,
 	chanceHit = 0.55,
 	damageMin = 480,

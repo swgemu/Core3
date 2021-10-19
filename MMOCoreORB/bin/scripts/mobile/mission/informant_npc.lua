@@ -3,6 +3,7 @@ function createInformantNPC(lvl)
 		objectName = "@mob/creature_names:spynet_operative",
 		socialGroup = "",
 		faction = "",
+		mobType = MOB_NPC,
 		level = 100,
 		chanceHit = 0.39,
 		damageMin = 290,

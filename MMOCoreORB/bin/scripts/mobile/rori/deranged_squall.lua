@@ -2,6 +2,7 @@ deranged_squall = Creature:new {
 	objectName = "@mob/creature_names:deranged_squall",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 170,

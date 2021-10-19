@@ -2,6 +2,7 @@ huurton_matron = Creature:new {
 	objectName = "@mob/creature_names:huurton_matron",
 	socialGroup = "huurton",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,

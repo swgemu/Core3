@@ -3,6 +3,7 @@ corvette_imperial_darkstone = Creature:new {
 	customName = "Colonel Darkstone",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

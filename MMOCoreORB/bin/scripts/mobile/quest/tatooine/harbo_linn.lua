@@ -1,6 +1,7 @@
 harbo_linn = Creature:new {
 	objectName = "",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 16,
 	chanceHit = 0.310000,

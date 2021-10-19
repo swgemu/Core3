@@ -2,6 +2,7 @@ pubam_dark_shaman = Creature:new {
 	objectName = "@mob/creature_names:pubam_dark_shaman",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 48,

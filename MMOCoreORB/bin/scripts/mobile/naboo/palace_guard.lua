@@ -2,6 +2,7 @@ palace_guard = Creature:new {
 	objectName = "@mob/creature_names:palace_guard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "naboo_security_force",
 	faction = "naboo_security_force",
 	level = 16,

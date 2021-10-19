@@ -2,6 +2,7 @@ tutorial_mission_giver = Creature:new {
 	objectName = "@newbie_tutorial/system_messages:imp_name",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,

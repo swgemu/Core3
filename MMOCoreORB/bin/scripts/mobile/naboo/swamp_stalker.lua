@@ -2,6 +2,7 @@ swamp_stalker = Creature:new {
 	objectName = "@mob/creature_names:swamp_stalker",
 	socialGroup = "tusk_cat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 32,
 	chanceHit = 0.39,
 	damageMin = 290,

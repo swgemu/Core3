@@ -2,6 +2,7 @@ theme_park_marauder_pirate_leader = Creature:new {
 	objectName = "@mob/creature_names:marooned_pirate_captain",
 	socialGroup = "pirate",
 	faction = "pirate",
+	mobType = MOB_NPC,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 210,

@@ -2,6 +2,7 @@ juvenile_canyon_krayt_dragon = Creature:new {
 	objectName = "@mob/creature_names:juvenile_canyon_krayt",
 	socialGroup = "krayt",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 122,
 	chanceHit = 4.0,
 	damageMin = 745,

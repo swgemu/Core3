@@ -2,6 +2,7 @@ vrelt = Creature:new {
 	objectName = "@mob/creature_names:vrelt",
 	socialGroup = "vrelt",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

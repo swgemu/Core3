@@ -2,6 +2,7 @@ sandreaver = Creature:new {
 	objectName = "@mob/creature_names:dewback_sandreaver",
 	socialGroup = "dewback",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 290,

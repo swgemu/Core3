@@ -2,6 +2,7 @@ frenzied_fynock_guardian = Creature:new {
 	objectName = "@mob/creature_names:frenzied_fynock_guardian",
 	socialGroup = "fynock",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 150,

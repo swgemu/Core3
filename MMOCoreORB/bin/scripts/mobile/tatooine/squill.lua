@@ -2,6 +2,7 @@ squill = Creature:new {
 	objectName = "@mob/creature_names:squill",
 	socialGroup = "squill",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 160,

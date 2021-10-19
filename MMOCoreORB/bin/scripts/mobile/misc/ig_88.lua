@@ -2,6 +2,7 @@ ig_88 = Creature:new {
 	objectName = "@mob/creature_names:ig_88",
 	socialGroup = "mercenary",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

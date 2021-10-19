@@ -2,6 +2,7 @@ cannibal_dewback = Creature:new {
 	objectName = "@mob/creature_names:dewback_cannibal",
 	socialGroup = "dewback",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 230,

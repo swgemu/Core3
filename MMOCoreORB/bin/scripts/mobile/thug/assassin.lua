@@ -2,6 +2,7 @@ assassin = Creature:new {
 	objectName = "@mob/creature_names:assassin",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "mercenary",
 	faction = "",
 	level = 23,

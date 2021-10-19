@@ -2,6 +2,7 @@ merek_assassin = Creature:new {
 	objectName = "@mob/creature_names:merek_assassin",
 	socialGroup = "merek",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 31,
 	chanceHit = 0.39,
 	damageMin = 325,

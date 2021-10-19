@@ -2,6 +2,7 @@ grondorn_muse = Creature:new {
 	objectName = "",
 	customName = "Grondorn Muse",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

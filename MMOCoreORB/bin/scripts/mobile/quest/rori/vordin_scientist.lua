@@ -2,6 +2,7 @@ vordin_scientist = Creature:new {
 	objectName = "@mob/creature_names:scientist",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 34,
 	chanceHit = 0.410000,
 	damageMin = 320,

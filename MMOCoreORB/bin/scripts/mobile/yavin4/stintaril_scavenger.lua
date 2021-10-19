@@ -2,6 +2,7 @@ stintaril_scavenger = Creature:new {
 	objectName = "@mob/creature_names:stintaril_scavenger",
 	socialGroup = "stinaril",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,

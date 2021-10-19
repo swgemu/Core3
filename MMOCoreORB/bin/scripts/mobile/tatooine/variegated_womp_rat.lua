@@ -2,6 +2,7 @@ variegated_womp_rat = Creature:new {
 	objectName = "@mob/creature_names:variegated_womprat",
 	socialGroup = "rat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 160,

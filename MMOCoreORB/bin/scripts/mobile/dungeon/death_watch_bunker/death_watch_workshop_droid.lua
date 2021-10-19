@@ -1,6 +1,7 @@
 death_watch_workshop_droid = Creature:new {
 	objectName = "@droid_name:wed_treadwell_base",
 	customName = "WED15-I643 (a workshop droid)",
+	mobType = MOB_DROID,
 	socialGroup = "",
 	faction = "",
 	level = 30,

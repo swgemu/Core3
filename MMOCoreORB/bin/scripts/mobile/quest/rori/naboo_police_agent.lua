@@ -2,6 +2,7 @@ naboo_police_agent = Creature:new {
 	objectName = "@mob/creature_names:naboo_police",
 	socialGroup = "naboo_security_force",
 	faction = "naboo_security_force",
+	mobType = MOB_NPC,
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,

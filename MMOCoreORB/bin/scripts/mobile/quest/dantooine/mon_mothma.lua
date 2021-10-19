@@ -2,6 +2,7 @@ mon_mothma = Creature:new {
 	objectName = "@mob/creature_names:mon_mothma",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

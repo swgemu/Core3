@@ -2,6 +2,7 @@ spined_puc = Creature:new {
 	objectName = "@mob/creature_names:spined_puc",
 	socialGroup = "spined_puc",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,

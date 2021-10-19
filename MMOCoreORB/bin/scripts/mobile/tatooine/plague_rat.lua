@@ -2,6 +2,7 @@ plague_rat = Creature:new {
 	objectName = "@mob/creature_names:womprat_plague",
 	socialGroup = "rat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

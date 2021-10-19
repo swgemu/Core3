@@ -2,6 +2,7 @@ le_repair_droid = Creature:new {
 	objectName = "@mob/creature_names:le_repair_droid",
 	randomNameType = NAME_LE,
 	socialGroup = "",
+	mobType = MOB_DROID,
 	faction = "",
 	level = 100,
 	chanceHit = 1,

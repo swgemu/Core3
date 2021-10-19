@@ -2,6 +2,7 @@ rogue_fambaa = Creature:new {
 	objectName = "@mob/creature_names:rogue_fambaa",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 37,
 	chanceHit = 0.42,
 	damageMin = 330,

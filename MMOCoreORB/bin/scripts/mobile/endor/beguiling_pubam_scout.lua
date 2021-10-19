@@ -2,6 +2,7 @@ beguiling_pubam_scout = Creature:new {
 	objectName = "@mob/creature_names:beguiling_pubam_scout",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 25,

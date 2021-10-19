@@ -2,6 +2,7 @@ charal = Creature:new {
 	objectName = "@mob/creature_names:charal",
 	socialGroup = "endor_marauder",
 	faction = "endor_marauder",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

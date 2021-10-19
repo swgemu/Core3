@@ -2,6 +2,7 @@ humbaba = Creature:new {
 	objectName = "@mob/creature_names:humbaba",
 	socialGroup = "humbaba",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,

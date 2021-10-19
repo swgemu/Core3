@@ -2,6 +2,7 @@ hanadak_ancient = Creature:new {
 	objectName = "@mob/creature_names:hanadak_ancient",
 	socialGroup = "hanadak",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 41,
 	chanceHit = 0.44,
 	damageMin = 345,

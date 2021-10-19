@@ -2,6 +2,7 @@ corsec_cadet = Creature:new {
 	objectName = "@mob/creature_names:corsec_cadet",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 12,

@@ -3,6 +3,7 @@ corvette_neutral_bronell = Creature:new {
 	customName = "Bronell",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -2,6 +2,7 @@ sulfur_lake_pirate = Creature:new {
 	objectName = "@mob/creature_names:slp_pirate",
 	socialGroup = "pirate",
 	faction = "pirate",
+	mobType = MOB_NPC,
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

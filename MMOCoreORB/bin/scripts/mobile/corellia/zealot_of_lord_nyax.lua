@@ -2,6 +2,7 @@ zealot_of_lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax_zealot",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "followers_of_lord_nyax",
 	faction = "followers_of_lord_nyax",
 	level = 25,

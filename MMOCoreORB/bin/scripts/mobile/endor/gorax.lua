@@ -1,6 +1,8 @@
 gorax = Creature:new {
 	objectName = "@mob/creature_names:gorax",
 	socialGroup = "gorax",
+	faction = "",
+	mobType = MOB_CARNIVORE,
 	faction = "gorax",
 	level = 300,
 	chanceHit = 30,

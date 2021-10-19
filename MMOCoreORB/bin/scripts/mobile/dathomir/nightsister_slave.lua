@@ -2,6 +2,7 @@ nightsister_slave = Creature:new {
 	objectName = "@mob/creature_names:nightsister_slave",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "nightsister",
 	faction = "nightsister",
 	level = 15,

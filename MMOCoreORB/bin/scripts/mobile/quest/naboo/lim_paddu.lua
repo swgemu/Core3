@@ -2,6 +2,7 @@ lim_paddu = Creature:new {
 	objectName = "@mob/creature_names:gungan_priest",
 	customName = "Lim Paddu",
 	socialGroup = "gungan",
+	mobType = MOB_NPC,
 	faction = "gungan",
 	level = 16,
 	chanceHit = 0.31,

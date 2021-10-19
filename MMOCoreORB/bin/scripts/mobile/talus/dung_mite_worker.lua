@@ -2,6 +2,7 @@ dung_mite_worker = Creature:new {
 	objectName = "@mob/creature_names:sickening_dung_mite_worker",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 170,

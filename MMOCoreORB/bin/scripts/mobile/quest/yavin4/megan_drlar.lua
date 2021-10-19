@@ -2,6 +2,7 @@ megan_drlar = Creature:new {
 	objectName = "@mob/creature_names:megan_drlar",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 22,
 	chanceHit = 0.330000,
 	damageMin = 190,

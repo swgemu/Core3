@@ -2,6 +2,7 @@ lareen_dantara = Creature:new {
 	objectName = "",
 	customName = "Lareen Dantara",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

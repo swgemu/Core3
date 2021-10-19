@@ -3,6 +3,7 @@ le_repair_crafted_advanced = Creature:new {
 	socialGroup = "",
 	faction = "",
 	level = 4,
+	mobType = MOB_DROID,
 	chanceHit = 0.24,
 	damageMin = 69,
 	damageMax = 85,

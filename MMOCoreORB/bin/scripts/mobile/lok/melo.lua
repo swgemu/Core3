@@ -3,6 +3,7 @@ melo = Creature:new {
 	customName = "Melo",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,

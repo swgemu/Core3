@@ -2,6 +2,7 @@ coa2_imperial_informant = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 20,
 	chanceHit = 0.33,

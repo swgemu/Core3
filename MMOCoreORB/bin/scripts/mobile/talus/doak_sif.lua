@@ -2,6 +2,7 @@ doak_sif = Creature:new {
 	objectName = "@mob/creature_names:doak_sif",
 	socialGroup = "sif",
 	faction = "sif",
+	mobType = MOB_NPC,
 	level = 48,
 	chanceHit = 0.49,
 	damageMin = 385,

@@ -2,6 +2,7 @@ coa2_rebel_sympathizer = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 15,
 	chanceHit = 0.31,

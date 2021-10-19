@@ -2,6 +2,7 @@ ind = Creature:new {
 	objectName = "@npc_name:gran_base_male",
 	customName = "Ind",
 	socialGroup = "valarian",
+	mobType = MOB_NPC,
 	faction = "valarian",
 	level = 100,
 	chanceHit = 1,

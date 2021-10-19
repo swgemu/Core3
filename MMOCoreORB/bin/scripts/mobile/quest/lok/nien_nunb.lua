@@ -2,6 +2,7 @@ nien_nunb = Creature:new {
 	objectName = "@mob/creature_names:nien_nunb",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,

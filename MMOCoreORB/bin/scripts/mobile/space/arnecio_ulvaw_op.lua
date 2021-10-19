@@ -2,6 +2,7 @@ arnecio_ulvaw_op = Creature:new {
 	objectName = "@npc_spawner_n:arnecio_ulvaw_op",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

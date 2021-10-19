@@ -2,6 +2,7 @@ nomad_chief = Creature:new {
 	objectName = "@mob/creature_names:nomad_chief",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "nomad",
 	faction = "naboo",
 	level = 8,

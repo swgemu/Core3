@@ -2,6 +2,7 @@ rebel_recruiter = Creature:new {
 	objectName = "@mob/creature_names:rebel_recruiter",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 20,

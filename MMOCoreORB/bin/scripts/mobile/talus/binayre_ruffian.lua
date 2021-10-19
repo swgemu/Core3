@@ -2,6 +2,7 @@ binayre_ruffian = Creature:new {
 	objectName = "@mob/creature_names:binayre_ruffian",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "binayre",
 	faction = "binayre",
 	level = 13,

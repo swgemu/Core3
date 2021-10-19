@@ -2,6 +2,7 @@ flail_slayer = Creature:new {
 	objectName = "@mob/creature_names:flail_slayer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "flail",
 	faction = "flail",
 	level = 20,

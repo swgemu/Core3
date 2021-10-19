@@ -2,6 +2,7 @@ pooja_naberrie = Creature:new {
 	objectName = "",
 	customName = "Pooja Naberrie",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

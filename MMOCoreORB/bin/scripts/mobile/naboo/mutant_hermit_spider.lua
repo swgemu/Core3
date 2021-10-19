@@ -2,6 +2,7 @@ mutant_hermit_spider = Creature:new {
 	objectName = "",
 	customName = "a mutant hermit spider",
 	socialGroup = "spider",
+	mobType = MOB_CARNIVORE,
 	faction = "",
 	level = 7,
 	chanceHit = 0.3,

@@ -2,6 +2,7 @@ scientist_target_crazed_scientist = Creature:new {
 	objectName = "@mob/creature_names:scientist",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 7,

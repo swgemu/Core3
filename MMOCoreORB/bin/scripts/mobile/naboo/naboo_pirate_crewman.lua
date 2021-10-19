@@ -2,6 +2,7 @@ naboo_pirate_crewman = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "a Pirate Crewman",
 	socialGroup = "naboo_pirate",
 	faction = "naboo_pirate",

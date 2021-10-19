@@ -2,6 +2,7 @@ hakassha_sireen = Creature:new {
 	objectName = "@npc_spawner_n:hakassha_sireen",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

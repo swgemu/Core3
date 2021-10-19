@@ -2,6 +2,7 @@ master_thief = Creature:new {
 	objectName = "@mob/creature_names:master_thief",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 14,

@@ -2,6 +2,7 @@ hagrin_fed_dub_patrolman = Creature:new {
 	objectName = "@mob/creature_names:fed_dub_patrolman",
 	socialGroup = "fed_dub",
 	faction = "fed_dub",
+	mobType = MOB_NPC,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

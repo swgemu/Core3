@@ -2,6 +2,7 @@ roba_boar = Creature:new {
 	objectName = "@mob/creature_names:young_roba",
 	socialGroup = "roba",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 50,
 	chanceHit = 0.5,
 	damageMin = 395,

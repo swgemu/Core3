@@ -2,6 +2,7 @@ korrkoressk = Creature:new {
 	objectName = "",
 	socialGroup = "jabba",
 	faction = "jabba",
+	mobType = MOB_NPC,
 	level = 9,
 	chanceHit = 0.270000,
 	damageMin = 80,

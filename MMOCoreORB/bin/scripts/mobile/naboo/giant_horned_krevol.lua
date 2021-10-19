@@ -2,6 +2,7 @@ giant_horned_krevol = Creature:new {
 	objectName = "@mob/creature_names:giant_horned_krevol",
 	socialGroup = "krevol",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 11,
 	chanceHit = 0.28,
 	damageMin = 90,

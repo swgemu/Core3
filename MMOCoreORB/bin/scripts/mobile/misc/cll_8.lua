@@ -2,6 +2,7 @@ cll_8 = Creature:new {
 	objectName = "@npc_spawner_n:cll_8",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_DROID,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

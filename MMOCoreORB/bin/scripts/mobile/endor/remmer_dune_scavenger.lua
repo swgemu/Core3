@@ -2,6 +2,7 @@ remmer_dune_scavenger = Creature:new {
 	objectName = "@mob/creature_names:remmer_dune_scavenger",
 	socialGroup = "remmer",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 180,

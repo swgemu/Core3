@@ -2,6 +2,7 @@ toxic_merek_battlelord = Creature:new {
 	objectName = "@mob/creature_names:toxic_merek_battlelord",
 	socialGroup = "merek",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 45,
 	chanceHit = 0.47,
 	damageMin = 370,

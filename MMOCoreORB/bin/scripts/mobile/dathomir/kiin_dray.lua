@@ -2,6 +2,7 @@ kiin_dray = Creature:new {
 	objectName = "@mob/creature_names:gaping_spider_recluse_giant_kiin_dray",
 	socialGroup = "spider_nightsister",
 	faction = "spider_nightsister",
+	mobType = MOB_CARNIVORE,
 	level = 126,
 	chanceHit = 4.75,
 	damageMin = 830,

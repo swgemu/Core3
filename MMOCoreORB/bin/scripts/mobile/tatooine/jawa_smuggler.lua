@@ -2,6 +2,7 @@ jawa_smuggler = Creature:new {
 	objectName = "@mob/creature_names:jawa_smuggler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "jawa",
 	faction = "jawa",
 	level = 6,

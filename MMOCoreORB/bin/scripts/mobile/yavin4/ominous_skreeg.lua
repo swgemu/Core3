@@ -2,6 +2,7 @@ ominous_skreeg = Creature:new {
 	objectName = "@mob/creature_names:skreeg_ominous",
 	socialGroup = "skreeg",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 24,
 	chanceHit = 0.36,
 	damageMin = 210,

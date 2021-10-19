@@ -2,6 +2,7 @@ kliknik_queen = Creature:new {
 	objectName = "@mob/creature_names:kliknik_queen",
 	socialGroup = "kliknik",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 37,
 	chanceHit = 0.41,
 	damageMin = 320,

@@ -2,6 +2,7 @@ settler_townsperson = Creature:new {
 	objectName = "@mob/creature_names:settler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 6,

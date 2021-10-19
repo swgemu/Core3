@@ -2,6 +2,7 @@ smashball_bully = Creature:new {
 	objectName = "@mob/creature_names:smashball_bully",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "smashball",
 	faction = "smashball",
 	level = 7,

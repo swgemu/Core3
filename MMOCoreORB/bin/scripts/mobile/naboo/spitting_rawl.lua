@@ -2,6 +2,7 @@ spitting_rawl = Creature:new {
 	objectName = "@mob/creature_names:spitting_rawl",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 210,

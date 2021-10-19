@@ -2,6 +2,7 @@ cowardly_gurreck = Creature:new {
 	objectName = "@mob/creature_names:cowardly_gurreck",
 	socialGroup = "gurreck",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 150,

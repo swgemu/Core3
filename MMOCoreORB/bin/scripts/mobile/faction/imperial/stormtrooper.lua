@@ -2,6 +2,7 @@ stormtrooper = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper",
 	randomNameType = NAME_STORMTROOPER,
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 25,
 	chanceHit = 0.36,

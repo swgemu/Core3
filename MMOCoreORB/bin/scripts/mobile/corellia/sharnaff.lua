@@ -2,6 +2,7 @@ sharnaff = Creature:new {
 	objectName = "@mob/creature_names:sharnaff",
 	socialGroup = "sharnaff",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 31,
 	chanceHit = 0.38,
 	damageMin = 300,

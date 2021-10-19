@@ -2,6 +2,7 @@ gnort = Creature:new {
 	objectName = "@mob/creature_names:gnort",
 	socialGroup = "gnort",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

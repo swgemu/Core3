@@ -2,6 +2,7 @@ frenzied_choku = Creature:new {
 	objectName = "@mob/creature_names:frenzied_choku",
 	socialGroup = "choku",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 230,

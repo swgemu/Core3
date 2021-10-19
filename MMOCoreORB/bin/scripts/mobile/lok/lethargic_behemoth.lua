@@ -2,6 +2,7 @@ lethargic_behemoth = Creature:new {
 	objectName = "@mob/creature_names:flit_lethargic_behemoth",
 	socialGroup = "flit",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 23,
 	chanceHit = 0.35,
 	damageMin = 250,

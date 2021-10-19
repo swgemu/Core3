@@ -2,6 +2,7 @@ enraged_wood_mite_king = Creature:new {
 	objectName = "@mob/creature_names:enraged_wood_mite_king",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 200,

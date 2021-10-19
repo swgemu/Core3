@@ -2,6 +2,7 @@ rhys_dallows = Creature:new {
 	objectName = "",
 	customName = "Rhys Dallows",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -2,6 +2,7 @@ death_watch_black_sun_thug = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_blksun_thug",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 86,

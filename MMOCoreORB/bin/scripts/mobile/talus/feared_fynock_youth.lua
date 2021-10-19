@@ -2,6 +2,7 @@ feared_fynock_youth = Creature:new {
 	objectName = "@mob/creature_names:feared_fynock_youth",
 	socialGroup = "fynock",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 7,
 	chanceHit = 0.25,
 	damageMin = 80,

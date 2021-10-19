@@ -2,6 +2,7 @@ mourno_surveyor = Creature:new {
 	objectName = "@mob/creature_names:hutt_expedition_force_surveyer",
 	socialGroup = "hutt",
 	faction = "hutt",
+	mobType = MOB_NPC,
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

@@ -2,6 +2,7 @@ vana_captain = Creature:new {
 	objectName = "@mob/creature_names:rsf_captain",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

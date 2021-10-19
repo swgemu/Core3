@@ -2,6 +2,7 @@ runty_pharple = Creature:new {
 	objectName = "@mob/creature_names:runty_pharple",
 	socialGroup = "pharple",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 3,
 	chanceHit = 0.23,
 	damageMin = 35,

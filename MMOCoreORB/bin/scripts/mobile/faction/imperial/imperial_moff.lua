@@ -2,6 +2,7 @@ imperial_moff = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	customName = "an Imperial Moff",
 	socialGroup = "imperial",
 	faction = "imperial",

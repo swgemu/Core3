@@ -2,6 +2,7 @@ cu_pa = Creature:new {
 	objectName = "@mob/creature_names:cu_pa",
 	socialGroup = "cu_pa",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,

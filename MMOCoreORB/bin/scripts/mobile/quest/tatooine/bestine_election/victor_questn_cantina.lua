@@ -2,6 +2,7 @@ victor_questn_cantina = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

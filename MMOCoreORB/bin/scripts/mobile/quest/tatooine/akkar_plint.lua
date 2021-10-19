@@ -2,6 +2,7 @@ akkar_plint = Creature:new {
 	objectName = "",
 	customName = "",
 	socialGroup = "",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 17,
 	chanceHit = 0.32,

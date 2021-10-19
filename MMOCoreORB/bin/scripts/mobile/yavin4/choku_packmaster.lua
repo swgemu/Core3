@@ -2,6 +2,7 @@ choku_packmaster = Creature:new {
 	objectName = "@mob/creature_names:choku_packmaster",
 	socialGroup = "choku",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 21,
 	chanceHit = 0.34,
 	damageMin = 170,

@@ -2,6 +2,7 @@ pirate_cutthroat = Creature:new {
 	objectName = "",
 	customName = "a Pirate Cutthroat",
 	socialGroup = "pirate",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 8,
 	chanceHit = 0.27,

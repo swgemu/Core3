@@ -2,6 +2,7 @@ luthin_dlunar = Creature:new {
 	objectName = "",
 	customName = "Luthin Dlunar",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

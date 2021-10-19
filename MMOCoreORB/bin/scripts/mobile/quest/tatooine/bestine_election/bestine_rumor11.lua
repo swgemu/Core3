@@ -2,6 +2,7 @@ bestine_rumor11 = Creature:new {
 	objectName = "@mob/creature_names:smuggler",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,

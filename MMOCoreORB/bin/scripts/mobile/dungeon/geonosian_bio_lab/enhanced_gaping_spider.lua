@@ -2,6 +2,7 @@ enhanced_gaping_spider = Creature:new {
 	objectName = "@mob/creature_names:geonosian_gaping_spider_fire",
 	customName = "Fire Breathing Spider",
 	socialGroup = "geonosian_creature",
+	mobType = MOB_CARNIVORE,
 	faction = "",
 	level = 108,
 	chanceHit = 2.5,

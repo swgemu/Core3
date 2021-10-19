@@ -2,6 +2,7 @@ gaping_spider_recluse_queen = Creature:new {
 	objectName = "@mob/creature_names:gaping_spider_recluse_queen",
 	socialGroup = "spider",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 68,
 	chanceHit = 0.65,
 	damageMin = 510,

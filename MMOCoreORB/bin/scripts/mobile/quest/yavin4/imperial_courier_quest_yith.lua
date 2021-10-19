@@ -2,6 +2,7 @@ imperial_courier_quest_yith = Creature:new {
 	objectName = "@mob/creature_names:assassin_mission_recruiter_imperial",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

@@ -2,6 +2,7 @@ male_mawgax = Creature:new {
 	objectName = "@mob/creature_names:mawgax_male",
 	socialGroup = "mawgax",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

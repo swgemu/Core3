@@ -2,6 +2,7 @@ gackle_bat_myrmidon_lord = Creature:new {
 	objectName = "@mob/creature_names:gackle_bat_myrmidon_lord",
 	socialGroup = "gacklebat",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 210,

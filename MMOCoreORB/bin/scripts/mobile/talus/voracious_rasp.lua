@@ -2,6 +2,7 @@ voracious_rasp = Creature:new {
 	objectName = "@mob/creature_names:voracious_rasp",
 	socialGroup = "rasp",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 40,
 	chanceHit = 0.47,
 	damageMin = 445,

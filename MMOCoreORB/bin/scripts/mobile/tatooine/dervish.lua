@@ -2,6 +2,7 @@ dervish = Creature:new {
 	objectName = "@mob/creature_names:dervish",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 90,

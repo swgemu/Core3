@@ -1,6 +1,7 @@
 alozen = Creature:new {
 	objectName = "@npc_spawner_n:alozen",
 	socialGroup = "imperial",
+	mobType = MOB_NPC,
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

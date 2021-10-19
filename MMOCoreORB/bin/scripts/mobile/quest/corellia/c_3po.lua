@@ -2,6 +2,7 @@ c_3po = Creature:new {
 	objectName = "@theme_park_name:c_3po",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_DROID,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

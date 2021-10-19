@@ -2,6 +2,7 @@ gaping_spider_queen_quest = Creature:new {
 	objectName = "@mob/creature_names:gaping_spider_queen",
 	socialGroup = "spider",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 47,
 	chanceHit = 0.44,
 	damageMin = 345,

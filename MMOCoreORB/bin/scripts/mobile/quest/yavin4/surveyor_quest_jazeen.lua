@@ -2,6 +2,7 @@ surveyor_quest_jazeen = Creature:new {
 	objectName = "@mob/creature_names:crafting_contractor",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

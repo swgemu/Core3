@@ -2,6 +2,7 @@ warren_irradiated_worker = Creature:new {
 	objectName = "@mob/creature_names:warren_irradiated_worker",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "warren_imperial_worker",
 	faction = "",
 	level = 13,

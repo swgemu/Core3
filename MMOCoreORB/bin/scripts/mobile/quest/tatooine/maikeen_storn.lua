@@ -2,6 +2,7 @@ maikeen_storn = Creature:new {
 	objectName = "@mob/creature_names:farmer",
 	customName = "Maikeen Storn",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

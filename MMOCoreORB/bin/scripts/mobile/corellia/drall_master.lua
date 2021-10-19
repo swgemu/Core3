@@ -2,6 +2,7 @@ drall_master = Creature:new {
 	objectName = "@mob/creature_names:drall_master",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "drall",
 	faction = "drall",
 	level = 18,

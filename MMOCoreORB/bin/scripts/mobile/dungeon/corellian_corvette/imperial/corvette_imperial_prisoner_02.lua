@@ -3,6 +3,7 @@ corvette_imperial_prisoner_02 = Creature:new {
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "prisoner",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

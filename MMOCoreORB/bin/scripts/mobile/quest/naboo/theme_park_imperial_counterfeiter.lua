@@ -2,6 +2,7 @@ theme_park_imperial_counterfeiter = Creature:new {
 	objectName = "",
 	socialGroup = "skaak_tipper_gang",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,

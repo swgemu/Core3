@@ -2,6 +2,7 @@ insane_kitonak = Creature:new {
 	objectName = "@mob/creature_names:insane_kitonak",
 	socialGroup = "self",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 4,
 	chanceHit = 0.240000,
 	damageMin = 40,
