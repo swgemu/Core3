@@ -101,6 +101,76 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 		{1, 5208.8, -192, 6644.8, 0, 0, "conversation"},
 		{1, 5208.8, -192, 6646.3, 180, 0, "conversation"},
 	},
+
+	mobiles = {
+		--Hotel
+		{"info_broker",60,-2.1,1.0,12.6,90,1741477, "happy"},
+		{"patron_devaronian",60,2.1,1.0,-4.5,-24,1741477, "entertained"},
+		{"entertainer",60,1.2,1.0,-1.9,78,1741477, "happy"},
+		{"chiss_female",60,2.6,1.0,-0.5,-115,1741477, "npc_standing_drinking"},
+		{"contractor",60,4.0,1.0,4.3,-165,1741477, "npc_accusing"},
+		{"bartender", 1, 19.5, 1.6, 12.6, 180, 1741478, ""},
+
+		--cantina
+		{"bartender", 1, 2.9, -0.9, 3.4, 2, 64, "neutral"},
+
+		--starport interior
+		{"chassis_dealer",60,6.3,0.6,65.8,-60,1741539, "neutral"},
+
+		--commoners
+		{"medic", 1, -3.5, -0.1, -3.3, 0, 1741514, ""},
+		{"medic", 1, -5.2, 0.1, 5.2, -90, 1741514, ""},
+		{"scientist", 1, -13.2, 0.1, 15.3, 90, 1741517, ""},
+		{"commoner_tatooine", 120, -23.6, 1.6, -4.2, -172, 1741483, ""},
+		{"commoner_naboo", 120, -24.5, 1.6, -7.3, 17, 1741483, ""},
+
+		--trainers
+		{"trainer_architect", 1, 11, 1.133, -14.5, 0, 1741470, ""},
+		{"trainer_armorsmith", 1, -15, 1.1, 0, 221, 1741469, ""},
+		{"trainer_artisan", 1, -0.031573, 1.13306, -14.1498, 0, 1741510, ""},
+		{"trainer_artisan", 1, 5182, -192, 6686, 138, 0, ""},
+		{"trainer_brawler", 1, 5174.04, -192, 6639.92, 4, 0, ""},
+		{"trainer_brawler", 0, -11.887, 1.13306, -11.5344, 1, 1741462, ""},
+		{"trainer_combatmedic", 1, 5080, -192, 6655, -49, 0, ""},
+		{"trainer_combatmedic", 0, -16.368, 0.26, 11.0637, 172, 1741443, ""},
+		{"trainer_creaturehandler", 1, 5181, -192, 6806, 0, 0, ""},
+		{"trainer_dancer", 1, 17.6312, 2.12874, 53.7646, 1, 4105618, ""},
+		{"trainer_doctor", 1, 5021, -192, 6787, 2, 0, ""},
+		{"trainer_doctor", 1, -24.4979, 0.26, -4.7603, 187, 1741443, ""},
+		{"trainer_doctor", 1, 21.4466, 0.26, -2.96069, 37, 1741439, ""},
+		{"trainer_droidengineer", 1, 5191, -192, 6695, 143, 0, ""},
+		{"trainer_droidengineer", 1, -10.8596, 1.13306, -14.4116, 1, 1741472, ""},
+		{"trainer_entertainer", 1, 5209.69, -192, 6661.65, 257, 0, ""},
+		{"trainer_imagedesigner", 1, -21.662, 2.12878, 75.0346, 166, 4105619, ""},
+		{"trainer_marksman", 1, 0, 1.13306, -13, 0, 1741461, ""},
+		{"trainer_marksman", 0, 5182, -192, 6632, 0, 0, ""},
+		{"trainer_medic", 1, 5211, -192, 6694, -62, 0, ""},
+		{"trainer_medic", 1, -16.43, 0.26, 0.33, 173, 1741443, ""},
+		{"trainer_medic", 1, 15.4875, 0.26, 6.2929, 20, 1741439, ""},
+		{"trainer_merchant", 1, 12, 1.13306, 6, 180, 1741468, ""},
+		{"trainer_musician", 1, 21.8, 2.1, 76.3, 180, 4105618, ""},
+		{"theater_manager", 1, 21.7817, 2.12808, 63.5, 1, 4105618, ""},
+		{"trainer_politician", 1, 5279, -192, 6591, 0, 0, ""},
+		{"trainer_ranger", 1, 5279, -192, 6594, 180, 0, ""},
+		{"trainer_scout", 1, 5192.38, -192, 6614.09, 5, 0, ""},
+		{"trainer_scout", 1, -10.8899, 1.13306, 4.89649, 204, 1741459, ""},
+		{"trainer_weaponsmith", 1, -2.5, 1.13306, -8.4, 91, 1741471, ""},
+		{"trainer_shipwright",1,5.1,0.6,66.6,119,1741539, "neutral"},
+
+		--misc
+		{"informant_npc_lvl_1", 1, 5042, -188, 6734, 0, 0, ""},
+		{"informant_npc_lvl_1", 1, 5199, -192, 6546, 0, 0, ""},
+		{"informant_npc_lvl_2", 1, 5410, -192, 6672, 225, 0, ""},
+		{"informant_npc_lvl_2", 1, 5075, -192, 6784, 0, 0, ""},
+		{"informant_npc_lvl_2", 1, 5261, -192, 6793, 90, 0, ""},
+		{"informant_npc_lvl_2", 1, 5084, -192, 6593, 225, 0, ""},
+		{"informant_npc_lvl_3", 1, 4999, -192, 6822, 270, 0, ""},
+		{"informant_npc_lvl_3", 1, 6.37977, -0.894992, 6.05897, 225, 64, ""},
+		{"informant_npc_lvl_3", 1, 5009, -192, 6652, 315, 0, ""},
+		{"informant_npc_lvl_3", 1, 5277, -192, 6560, 0, 0, ""},
+		{"junk_dealer", 0, -14.5, 1.1, 3.0, 116, 1741459, ""},
+		{"junk_dealer", 0, 5143.9, -192, 6818, 47, 0, ""}
+	}
 }
 
 registerScreenPlay("NabooKaadaraScreenPlay", true)
@@ -123,27 +193,22 @@ function NabooKaadaraScreenPlay:spawnSceneObjects()
 end
 
 function NabooKaadaraScreenPlay:spawnMobiles()
+	local mobiles = self.mobiles
 
-	--Hotel
-	local pNpc = spawnMobile(self.planet, "info_broker",60,-2.1,1.0,12.6,90,1741477)
-	self:setMoodString(pNpc, "happy")
-	pNpc = spawnMobile(self.planet, "patron_devaronian",60,2.1,1.0,-4.5,-24,1741477)
-	self:setMoodString(pNpc, "entertained")
-	pNpc = spawnMobile(self.planet, "entertainer",60,1.2,1.0,-1.9,78,1741477)
-	self:setMoodString(pNpc, "happy")
-	pNpc = spawnMobile(self.planet, "chiss_female",60,2.6,1.0,-0.5,-115,1741477)
-	self:setMoodString(pNpc, "npc_standing_drinking")
-	pNpc = spawnMobile(self.planet, "contractor",60,4.0,1.0,4.3,-165,1741477)
-	self:setMoodString(pNpc, "npc_accusing")
-	spawnMobile(self.planet, "bartender", 1, 19.5, 1.6, 12.6, 180, 1741478)
+	for i = 1, #mobiles, 1 do
+		local mob = mobiles[i]
 
-	--cantina
-	pNpc = spawnMobile(self.planet, "bartender", 1, 2.9, -0.9, 3.4, 2, 64)
-	self:setMoodString(pNpc, "neutral")
+		-- {template, respawn, x, z, y, direction, cell, mood}
+		local pMobile = spawnMobile(self.planet, mob[1], mob[2], mob[3], mob[4], mob[5], mob[6], mob[7])
 
-	--starport interior
-	pNpc = spawnMobile(self.planet, "chassis_dealer",60,6.3,0.6,65.8,-60,1741539)
-	self:setMoodString(pNpc, "neutral")
+		if (pMobile ~= nil) then
+			if mob[8] ~= "" then
+				CreatureObject(pMobile):setMoodString(mob[8])
+			end
+
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+		end
+	end
 
 	--thugs
 	spawnMobile(self.planet, "skaak_tipper_mugger", 300, 5414.8, -192, 6713.9, 112, 0)
@@ -232,66 +297,14 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "nightspider", 300, getRandomNumber(20) + 5535.6, -193.9, getRandomNumber(20) + 6745, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "nightspider", 300, getRandomNumber(20) + 5535.6, -193.9, getRandomNumber(20) + 6745, getRandomNumber(360), 0)
 
-	--commoners
-	spawnMobile(self.planet, "medic", 1, -3.5, -0.1, -3.3, 0, 1741514)
-	spawnMobile(self.planet, "medic", 1, -5.2, 0.1, 5.2, -90, 1741514)
-	spawnMobile(self.planet, "scientist", 1, -13.2, 0.1, 15.3, 90, 1741517)
-	spawnMobile(self.planet, "commoner_tatooine", 120, -23.6, 1.6, -4.2, -172, 1741483)
-	spawnMobile(self.planet, "commoner_naboo", 120, -24.5, 1.6, -7.3, 17, 1741483)
-
-	--trainers
-	spawnMobile(self.planet, "trainer_architect", 1, 11, 1.133, -14.5, 0, 1741470)
-	spawnMobile(self.planet, "trainer_armorsmith", 1, -15, 1.1, 0, 221, 1741469)
-	spawnMobile(self.planet, "trainer_artisan", 1, -0.031573, 1.13306, -14.1498, 0, 1741510)
-	spawnMobile(self.planet, "trainer_artisan", 1, 5182, -192, 6686, 138, 0)
-	spawnMobile(self.planet, "trainer_brawler", 1, 5174.04, -192, 6639.92, 4, 0)
-	spawnMobile(self.planet, "trainer_brawler", 0, -11.887, 1.13306, -11.5344, 1, 1741462)
-	spawnMobile(self.planet, "trainer_combatmedic", 1, 5080, -192, 6655, -49, 0)
-	spawnMobile(self.planet, "trainer_combatmedic", 0, -16.368, 0.26, 11.0637, 172, 1741443)
-	spawnMobile(self.planet, "trainer_creaturehandler", 1, 5181, -192, 6806, 0, 0)
-	spawnMobile(self.planet, "trainer_dancer", 1, 17.6312, 2.12874, 53.7646, 1, 4105618)
-	spawnMobile(self.planet, "trainer_doctor", 1, 5021, -192, 6787, 2, 0)
-	spawnMobile(self.planet, "trainer_doctor", 1, -24.4979, 0.26, -4.7603, 187, 1741443)
-	spawnMobile(self.planet, "trainer_doctor", 1, 21.4466, 0.26, -2.96069, 37, 1741439)
-	spawnMobile(self.planet, "trainer_droidengineer", 1, 5191, -192, 6695, 143, 0)
-	spawnMobile(self.planet, "trainer_droidengineer", 1, -10.8596, 1.13306, -14.4116, 1, 1741472)
-	spawnMobile(self.planet, "trainer_entertainer", 1, 5209.69, -192, 6661.65, 257, 0)
-	spawnMobile(self.planet, "trainer_imagedesigner", 1, -21.662, 2.12878, 75.0346, 166, 4105619)
-	spawnMobile(self.planet, "trainer_marksman", 1, 0, 1.13306, -13, 0, 1741461)
-	spawnMobile(self.planet, "trainer_marksman", 0, 5182, -192, 6632, 0, 0)
-	spawnMobile(self.planet, "trainer_medic", 1, 5211, -192, 6694, -62, 0)
-	spawnMobile(self.planet, "trainer_medic", 1, -16.43, 0.26, 0.33, 173, 1741443)
-	spawnMobile(self.planet, "trainer_medic", 1, 15.4875, 0.26, 6.2929, 20, 1741439)
-	spawnMobile(self.planet, "trainer_merchant", 1, 12, 1.13306, 6, 180, 1741468)
-	spawnMobile(self.planet, "trainer_musician", 1, 21.8, 2.1, 76.3, 180, 4105618)
-	spawnMobile(self.planet, "theater_manager", 1, 21.7817, 2.12808, 63.5, 1, 4105618)
-	spawnMobile(self.planet, "trainer_politician", 1, 5279, -192, 6591, 0, 0)
-	spawnMobile(self.planet, "trainer_ranger", 1, 5279, -192, 6594, 180, 0)
-	spawnMobile(self.planet, "trainer_scout", 1, 5192.38, -192, 6614.09, 5, 0)
-	spawnMobile(self.planet, "trainer_scout", 1, -10.8899, 1.13306, 4.89649, 204, 1741459)
-	spawnMobile(self.planet, "trainer_weaponsmith", 1, -2.5, 1.13306, -8.4, 91, 1741471)
-	pNpc = spawnMobile(self.planet, "trainer_shipwright",1,5.1,0.6,66.6,119,1741539)
-	self:setMoodString(pNpc, "neutral")
-
-	--misc
-	spawnMobile(self.planet, "informant_npc_lvl_1", 1, 5042, -188, 6734, 0, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 1, 5199, -192, 6546, 0, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_2", 1, 5410, -192, 6672, 225, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_2", 1, 5075, -192, 6784, 0, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_2", 1, 5261, -192, 6793, 90, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_2", 1, 5084, -192, 6593, 225, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_3", 1, 4999, -192, 6822, 270, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_3", 1, 6.37977, -0.894992, 6.05897, 225, 64)
-	spawnMobile(self.planet, "informant_npc_lvl_3", 1, 5009, -192, 6652, 315, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_3", 1, 5277, -192, 6560, 0, 0)
-	spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 3.0, 116, 1741459)
-	spawnMobile(self.planet, "junk_dealer", 0, 5143.9, -192, 6818, 47, 0)
-	pNpc = spawnMobile(self.planet, "junk_dealer", 0, 5149.79, -192, 6745.73, -72, 0)
+	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, 5149.79, -192, 6745.73, -72, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
+		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
 	end
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, 5136.8, -192, 6746.75, 48, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
 	end
 end
