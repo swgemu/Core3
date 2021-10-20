@@ -52,6 +52,17 @@ DathomirScienceOutpostScreenPlay = CityScreenPlay:new {
 		{1, -69.1, 18, -1622.1, 45, 0, "conversation"},
 		{1, -136.034, 18, -1592.07, 62.5196, 0, ""},
 	},
+
+	mobiles = {
+		--In a building
+		{"medic",60,5.1,0.6,-2.2,-51,2835552, "sad"},
+		{"contractor",60,6.3,0.6,-6.4,-133,2835573, "nervous"},
+
+		--Outside
+		{"mercenary", 60, -43.9919, 18, -1585.86, 220.77, 0, ""},
+		{"informant_npc_lvl_3", 0,-68,18,-1565,270,0, ""},
+		{"arnecio_ulvaw_op",60,4.06465,0.624999,2.34456,30.9406,2835570, "neutral"}
+	}
 }
 
 registerScreenPlay("DathomirScienceOutpostScreenPlay", true)
@@ -65,16 +76,20 @@ function DathomirScienceOutpostScreenPlay:start()
 end
 
 function DathomirScienceOutpostScreenPlay:spawnMobiles()
+	local mobiles = self.mobiles
 
-	--In a building
-	local pNpc = spawnMobile("dathomir", "medic",60,5.1,0.6,-2.2,-51,2835552)
-	self:setMoodString(pNpc, "sad")
-	pNpc = spawnMobile("dathomir", "contractor",60,6.3,0.6,-6.4,-133,2835573)
-	self:setMoodString(pNpc, "nervous")
+	for i = 1, #mobiles, 1 do
+		local mob = mobiles[i]
 
-	--Outside
-	spawnMobile("dathomir", "mercenary", 60, -43.9919, 18, -1585.86, 220.77, 0)
-	spawnMobile("dathomir", "informant_npc_lvl_3", 0,-68,18,-1565,270,0)
-	pNpc = spawnMobile("dathomir", "arnecio_ulvaw_op",60,4.06465,0.624999,2.34456,30.9406,2835570)
-	self:setMoodString(pNpc, "neutral")
+		-- {template, respawn, x, z, y, direction, cell, mood}
+		local pMobile = spawnMobile(self.planet, mob[1], mob[2], mob[3], mob[4], mob[5], mob[6], mob[7])
+
+		if (pMobile ~= nil) then
+			if mob[8] ~= "" then
+				CreatureObject(pMobile):setMoodString(mob[8])
+			end
+
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+		end
+	end
 end
