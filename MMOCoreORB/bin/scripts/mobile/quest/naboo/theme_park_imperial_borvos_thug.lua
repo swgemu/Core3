@@ -28,12 +28,12 @@ theme_park_imperial_borvos_thug = Creature:new {
 
 	templates = {"object/mobile/dressed_borvos_thug.iff"},
 	lootGroups = {
-	    {
+	 	{
 			groups = {
 				{group = "theme_park_loot_shipping_manifest", chance = 10000000},
 			},
 			lootChance = 10000000
-		}				
+		}
 	},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -41,7 +41,7 @@ theme_park_imperial_borvos_thug = Creature:new {
 	primaryWeapon = "pirate_weapons_light",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(brawlermaster,marksmanmaster),
