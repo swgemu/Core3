@@ -23,7 +23,7 @@ theme_park_imperial_escort_commander = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
-	optionsBitmask = INVULNERABLE + CONVERSABLE,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_commander_m.iff"},
@@ -39,7 +39,6 @@ theme_park_imperial_escort_commander = Creature:new {
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = brawlermaster,
 	secondaryAttacks = { },
-	
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_escort_commander, "theme_park_imperial_escort_commander")

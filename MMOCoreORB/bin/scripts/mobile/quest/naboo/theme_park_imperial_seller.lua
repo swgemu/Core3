@@ -29,8 +29,8 @@ theme_park_imperial_seller = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_naboo_bothan_female_02.iff"},
 	lootGroups = {
-	 {
-	        groups = {
+		{
+	 		groups = {
 				{group = "theme_park_loot_rocket", chance = 10000000}
 			},
 			lootChance = 10000000
@@ -42,7 +42,7 @@ theme_park_imperial_seller = Creature:new {
 	primaryWeapon = "pirate_weapons_light",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(brawlernovice,marksmannovice),
