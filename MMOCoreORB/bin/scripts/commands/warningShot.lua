@@ -53,15 +53,14 @@ WarningShotCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animation = "fire_area", 
+	animation = "fire_area",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "warningshot",
-	
+
 	weaponType = RANGEDWEAPON,
 
 	range = -1
-
 }
 
 AddCommand(WarningShotCommand)

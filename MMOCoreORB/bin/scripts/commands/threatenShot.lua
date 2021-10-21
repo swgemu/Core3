@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 ThreatenShotCommand = {
-        name = "threatenshot",
+	name = "threatenshot",
 
 	damageMultiplier = 0.25,
 	speedMultiplier = 2,
@@ -51,11 +51,11 @@ ThreatenShotCommand = {
 	mindCostMultiplier = 1,
 	accuracyBonus = 15,
 
-	animation = "fire_1_special_single", 
+	animation = "fire_1_special_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "threatenshot",
-	
+
 	weaponType = RANGEDWEAPON,
 
 	range = -1
