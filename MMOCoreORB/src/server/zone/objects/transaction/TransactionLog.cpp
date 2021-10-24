@@ -858,6 +858,7 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::CITYSALESTAX:             return "citysalestax";              // City Sales taxes
 	case TrxCode::CITYTREASURY:             return "citytreasury";              // City Treasury
 	case TrxCode::CRAFTINGSESSION:          return "craftingsession";           // Crafting Session
+	case TrxCode::DESTROYSTRUCTURE:         return "destroystructure";          // Server destroyed structure (maintenance)
 	case TrxCode::EXTRACTCRATE:             return "extractcrate";              // Extract item from crate
 	case TrxCode::FACTORYOPERATION:         return "factoryoperation";          // Factory operations
 	case TrxCode::FORAGED:                  return "foraged";                   // Foraged items
