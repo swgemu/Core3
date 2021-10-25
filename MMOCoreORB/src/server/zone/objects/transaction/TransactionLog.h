@@ -64,6 +64,7 @@ enum class TrxCode {
 	AUCTIONEXPIRED,             // Never retrieved and expired
 	AUCTIONRETRIEVE,            // retrieveItem()
 	CHARACTERBUILDER,           // Character Builder
+	CHARACTERDELETE,            // Delete Character
 	CITYINCOMETAX,              // City income taxes
 	CITYSALESTAX,               // City Sales taxes
 	CITYTREASURY,               // City Treasury
