@@ -247,7 +247,7 @@ void TransactionLog::exportRelated() {
 	}
 
 	Time exportStartTime;
-	auto logMsg = "TransactionLog trxId: " + getTrxID();
+	auto logMsg = "TransactionLog trxId: " + getTrxID() + "; code: " + String(mTransaction["code"]);
 
 	for (int i = 0; i < mRelatedObjects.size(); ++i) {
 		auto oid = mRelatedObjects.get(i);
@@ -854,10 +854,12 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::AUCTIONEXPIRED:           return "auctionexpired";            // Never retrieved and expired
 	case TrxCode::AUCTIONRETRIEVE:          return "auctionretrieve";           // retrieveItem()
 	case TrxCode::CHARACTERBUILDER:         return "characterbuilder";          // Character Builder
+	case TrxCode::CHARACTERDELETE:          return "characterdelete";           // Delete Character
 	case TrxCode::CITYINCOMETAX:            return "cityincometax";             // City income taxes
 	case TrxCode::CITYSALESTAX:             return "citysalestax";              // City Sales taxes
 	case TrxCode::CITYTREASURY:             return "citytreasury";              // City Treasury
 	case TrxCode::CRAFTINGSESSION:          return "craftingsession";           // Crafting Session
+	case TrxCode::DESTROYSTRUCTURE:         return "destroystructure";          // Server destroyed structure (maintenance)
 	case TrxCode::EXTRACTCRATE:             return "extractcrate";              // Extract item from crate
 	case TrxCode::FACTORYOPERATION:         return "factoryoperation";          // Factory operations
 	case TrxCode::FORAGED:                  return "foraged";                   // Foraged items

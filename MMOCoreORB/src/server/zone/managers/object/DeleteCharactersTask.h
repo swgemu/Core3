@@ -11,6 +11,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class DeleteCharactersTask : public Task, public Logger {
 	SortedVector<uint64> deletedCharacters;
@@ -51,6 +52,15 @@ public:
 
 				if (client != nullptr)
 					client->disconnect();
+
+				if (obj->getPersistenceLevel() > 0) {
+					TransactionLog trx(TrxCode::CHARACTERDELETE, nullptr, obj);
+
+					// Force a synchronous export because the objects will be deleted before we can export them!
+					trx.addRelatedObject(obj);
+					trx.setExportRelatedObjects(true);
+					trx.exportRelated();
+				}
 
 				obj->destroyObjectFromWorld(false); //Don't need to send destroy to the player - they are being disconnected.
 				obj->destroyPlayerCreatureFromDatabase(true);
