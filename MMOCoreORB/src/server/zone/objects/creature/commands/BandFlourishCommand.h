@@ -198,6 +198,11 @@ public:
 
 		ManagedReference<EntertainingSession *> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession *>();
 
+		if (session == nullptr) {
+			creature->sendSystemMessage("@performance:flourish_not_performing"); // You must be playing music or dancing in order to perform a flourish.
+			return GENERALERROR;
+		}
+
 		if (tempString == "on") {
 			session->setAcceptingBandFlourishes(true);
 			creature->sendSystemMessage("@performance:band_flourish_on");
