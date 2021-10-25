@@ -147,10 +147,15 @@ void StructureMaintenanceTask::destroyStructureWithReason(StructureObject* struc
 	structure->info("Will not be destroyed because DEBUG_STRUCTURE_TASK_NO_DESTROY is set, should destroy because " + reason, true);
 #else // DEBUG_STRUCTURE_TASK_NO_DESTROY
 	structure->info("Destroying because " + reason);
-	TransactionLog trx(TrxCode::DESTROYSTRUCTURE, nullptr, structure, true);
+
+	// Force a synchronous export because the objects will be deleted before we can export them!
+	TransactionLog trx(TrxCode::DESTROYSTRUCTURE, nullptr, structure);
 	trx.addState("subjectDestroyReason", reason);
+	trx.addRelatedObject(structure);
+	trx.setExportRelatedObjects(true);
+	trx.exportRelated();
+
 	StructureManager::instance()->destroyStructure(structure);
-	trx.commit();
 #endif // DEBUG_STRUCTURE_TASK_NO_DESTROY
 }
 
