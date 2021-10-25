@@ -93,7 +93,9 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		agent->clearCombatState(clearDefenders);
+		if (agent->getFollowState() != AiAgent::FLEEING) {
+			agent->clearCombatState(clearDefenders);
+		}
 
 		return !agent->isInCombat() ? SUCCESS : FAILURE;
 	}
@@ -427,8 +429,7 @@ public:
 		parseArgs(args);
 	}
 
-	SetAlert(const SetAlert& b)
-			: Behavior(b), duration(b.duration), show(b.show) {
+	SetAlert(const SetAlert& b) : Behavior(b), duration(b.duration), show(b.show) {
 	}
 
 	SetAlert& operator=(const SetAlert& b) {

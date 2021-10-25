@@ -68,9 +68,6 @@ public:
 					threatMap->removeAll();
 				}
 
-				CombatManager::instance()->attemptPeace(agent);
-				agent->clearPatrolPoints();
-
 				agent->notifyObservers(ObserverEventType::FLEEING, creature);
 				agent->setFollowState(AiAgent::FLEEING);
 
@@ -81,6 +78,7 @@ public:
 				runTrajectory = runTrajectory * (10.f / runTrajectory.length());
 				runTrajectory += agent->getPosition();
 
+				agent->setFleeRange(15.f);
 				agent->setNextPosition(runTrajectory.getX(), agent->getWorldZ(runTrajectory), runTrajectory.getY(), agent->getParent().get().castTo<CellObject*>());
 			}
 		}
