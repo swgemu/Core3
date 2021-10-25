@@ -735,6 +735,9 @@ int StructureManager::redeedStructure(CreatureObject* creature) {
 
 	TransactionLog trx(creature, TrxCode::STRUCTUREDEED, structureObject);
 
+	trx.addState("subjectIsRedeedable", structureObject->isRedeedable());
+	trx.addState("subjectDeedObjectID", deed != nullptr ? deed->getObjectID() : 0);
+
 	if (deed != nullptr && structureObject->isRedeedable()) {
 		Locker _lock(deed, structureObject);
 
@@ -772,11 +775,13 @@ int StructureManager::redeedStructure(CreatureObject* creature) {
 					return session->cancelSession();
 				}
 
-				TransactionLog trx(TrxCode::STRUCTUREDEED, creature, rewardSceno);
+				TransactionLog trxReward(structureObject, creature, rewardSceno, TrxCode::STRUCTUREDEED, false);
+				trxReward.addState("srcIsSelfPoweredHarvester", isSelfPoweredHarvester);
+				trxReward.groupWith(trx);
 
 				// Transfer to player
 				if( !inventory->transferObject(rewardSceno, -1, false, true) ){ // Allow overflow
-					trx.abort() << "Failed to reclaim deed";
+					trxReward.abort() << "Failed to reclaim deed";
 					creature->sendSystemMessage("@player_structure:deed_reclaimed_failed"); //Structure destroy and deed reclaimed FAILED!
 					rewardSceno->destroyObjectFromDatabase(true);
 					return session->cancelSession();

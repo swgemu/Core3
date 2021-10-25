@@ -17,6 +17,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/credit/CreditManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void StructureMaintenanceTask::run() {
 	ManagedReference<StructureObject*> strongRef = structureObject.get();
@@ -146,7 +147,10 @@ void StructureMaintenanceTask::destroyStructureWithReason(StructureObject* struc
 	structure->info("Will not be destroyed because DEBUG_STRUCTURE_TASK_NO_DESTROY is set, should destroy because " + reason, true);
 #else // DEBUG_STRUCTURE_TASK_NO_DESTROY
 	structure->info("Destroying because " + reason);
+	TransactionLog trx(TrxCode::DESTROYSTRUCTURE, nullptr, structure, true);
+	trx.addState("subjectDestroyReason", reason);
 	StructureManager::instance()->destroyStructure(structure);
+	trx.commit();
 #endif // DEBUG_STRUCTURE_TASK_NO_DESTROY
 }
 
