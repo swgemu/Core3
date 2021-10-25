@@ -148,43 +148,46 @@ int WearableObjectImplementation::socketsUsed() const {
 	}
 }
 
-void WearableObjectImplementation::applyAttachment(CreatureObject* player, Attachment* attachment) {
+void WearableObjectImplementation::applyAttachment(CreatureObject* player,
+		Attachment* attachment) {
 	if (!isASubChildOf(player))
 		return;
 
-	if (socketsLeft() > 0 && wearableSkillMods.size() < 6) {
+	if (socketsLeft() > 0) {
 		Locker locker(player);
 
 		if (isEquipped()) {
 			removeSkillModsFrom(player);
 		}
 
-		HashTable<String, int>* mods = attachment->getSkillMods();
-		HashTableIterator<String, int> iterator = mods->iterator();
+		if (wearableSkillMods.size() < 6) {
+			HashTable<String, int>* mods = attachment->getSkillMods();
+			HashTableIterator<String, int> iterator = mods->iterator();
 
-		String statName;
-		int newValue;
+			String statName;
+			int newValue;
 
-		SortedVector< ModSortingHelper > sortedMods;
-		for( int i = 0; i < mods->size(); i++){
-			iterator.getNextKeyAndValue(statName, newValue);
-			sortedMods.put( ModSortingHelper( statName, newValue));
-		}
+			SortedVector< ModSortingHelper > sortedMods;
+			for( int i = 0; i < mods->size(); i++){
+				iterator.getNextKeyAndValue(statName, newValue);
+				sortedMods.put( ModSortingHelper( statName, newValue));
+			}
 
-		// Select the next mod in the SEA, sorted high-to-low. If that skill mod is already on the
-		// wearable, with higher or equal value, don't apply and continue. Break once one mod
-		// is applied.
-		for (int i = 0; i < sortedMods.size(); i++ ) {
-			String modName = sortedMods.elementAt(i).getKey();
-			int modValue = sortedMods.elementAt(i).getValue();
+			// Select the next mod in the SEA, sorted high-to-low. If that skill mod is already on the
+			// wearable, with higher or equal value, don't apply and continue. Break once one mod
+			// is applied.
+			for( int i = 0; i < sortedMods.size(); i++ ) {
+				String modName = sortedMods.elementAt(i).getKey();
+				int modValue = sortedMods.elementAt(i).getValue();
 
-			int existingValue = -26;
-			if (wearableSkillMods.contains(modName))
-				existingValue = wearableSkillMods.get(modName);
+				int existingValue = -26;
+				if(wearableSkillMods.contains(modName))
+					existingValue = wearableSkillMods.get(modName);
 
-			if (modValue > existingValue) {
-				wearableSkillMods.put( modName, modValue );
-				break;
+				if( modValue > existingValue) {
+					wearableSkillMods.put( modName, modValue );
+					break;
+				}
 			}
 		}
 
