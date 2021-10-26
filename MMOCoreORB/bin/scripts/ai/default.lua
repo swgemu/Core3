@@ -186,7 +186,7 @@ scareDefault = {
 	{id="3009279984",	name="If",	pid="9692099"},
 	{id="1391512006",	name="CheckProspectLOS",	pid="3009279984"},
 	{id="2633134651",	name="RunAway",	pid="9692099",	args={dist=64.0}},
-	{id="3135988450",	name="SetAlert",	pid="9692099",	args={duration=5.0, show=0}}}
+	{id="2259218024",	name="SetAlert",	pid="9692099",	args={duration=5.0, show=false}}}
 addAiTemplate("scareDefault", scareDefault)
 
 stalkDefault = {
