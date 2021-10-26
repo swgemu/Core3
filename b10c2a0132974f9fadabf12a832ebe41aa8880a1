@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d389b526_d51e6e1b",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManager.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "Typo? I mean in a comment but just noticed it..",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c66055_eb3e30c6",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "Should these be some sort of enum?",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "678795fd_da1e78b7",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "if (player !\u003d nullptr \u0026\u0026 event !\u003d nullptr \n\nDon\u0027t really need the extra parens?",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e55b9308_5951392b",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "is this leaking FishingSession objects? Not sure how sessions get \"freed\" later?",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b677a3_1c8d9199",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "DEBUG_FISHING",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4cbd05_5fd0041a",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "anytime you give the player something it needs a single trx, can make one in this scope even.\ncan do: groupWith(trx)... see StructureManager::redeedStructure for examples..",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5543f92b_5029f602",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "subjectFishType -- Everything should look like a variable because it\u0027s json in the end.. see other examples..",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75fd1a2e_89520f50",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "subjectFishLength",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f26aa3b7_abccf697",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "again if multiple things given (in general if you\u0027re calling transferObject you need a trx for each.. and I would groupWith(trx) -- the primary trx",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d42d96c7_775e12b7",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "not sure might need trx here? I\u0027m unclear what\u0027s being given or only called from above?",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c086fc0f_4795158b",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "DEBUG_FISHING",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b661e89b_e34dbb77",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "DEBUG_FISHING",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82cde5bd_25721295",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "DEBUG_FISHING",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d2e818d_937c97f7",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2021-10-26T00:30:24Z",
+      "side": 1,
+      "message": "lol server time is UTC .. strange did the game really use the UNIX time format for this string?",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
