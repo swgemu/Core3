@@ -753,7 +753,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	@preLocked
-	public native void runAway(CreatureObject target, float range);
+	public native void runAway(CreatureObject target, float range, boolean random);
 
 	@mock
 	@preLocked
@@ -1431,11 +1431,6 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public void setDefaultWeapon(WeaponObject weap) {
 		defaultWeapon = weap;
-	}
-
-	@preLocked
-	public void setFleeRange(float range) {
-		fleeRange = range;
 	}
 
 	@dirty

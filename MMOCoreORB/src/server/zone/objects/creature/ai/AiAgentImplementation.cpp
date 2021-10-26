@@ -1181,38 +1181,34 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 	}
 }
 
-void AiAgentImplementation::runAway(CreatureObject* target, float range) {
-	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-	if (target == nullptr || asAiAgent()->getZoneUnsafe() == nullptr || followCopy == nullptr) {
+void AiAgentImplementation::runAway(CreatureObject* target, float range, bool random = false) {
+	if (target == nullptr || asAiAgent()->getZoneUnsafe() == nullptr) {
 		setOblivious();
 		return;
 	}
 
 	setTargetObject(target);
-
-	// TODO (dannuic): do we need to check threatmap for other players in range at this point, or just have the mob completely drop aggro?
-	if (threatMap != nullptr)
-		threatMap->removeAll();
-
 	clearPatrolPoints();
 
 	notifyObservers(ObserverEventType::FLEEING, target);
 	sendReactionChat(ReactionManager::FLEE);
 
 	setFollowState(AiAgent::FLEEING);
-	fleeRange = range;
 
-	// TODO: undo this abstraction (it's for mocks)
-	if (!asAiAgent()->getHomeLocation()->isInRange(asAiAgent(), 128)) {
-		homeLocation.setReached(false);
-		setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
+	Vector3 runTrajectory;
+	Vector3 agentPosition = getWorldPosition();
+	Vector3 creaturePosition = target->getWorldPosition();
+
+	if (random) {
+		runTrajectory.set((creaturePosition.getX() + System::random(20)) - (agentPosition.getX() + System::random(20)), (creaturePosition.getY() + System::random(20)) - (agentPosition.getY() + System::random(20)), 0);
 	} else {
-		Vector3 runTrajectory(getPositionX() - followCopy->getPositionX(), getPositionY() - followCopy->getPositionY(), 0);
-		runTrajectory = runTrajectory * (fleeRange / runTrajectory.length());
-		runTrajectory += getPosition();
-
-		setNextPosition(runTrajectory.getX(), getZoneUnsafe()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
+		runTrajectory.set(agentPosition.getX() - creaturePosition.getX(), agentPosition.getY() - creaturePosition.getY(), 0);
 	}
+
+	runTrajectory = runTrajectory * (range / runTrajectory.length());
+	runTrajectory += getPosition();
+
+	setNextPosition(runTrajectory.getX(), getZoneUnsafe()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
 }
 
 void AiAgentImplementation::leash() {
@@ -2313,6 +2309,9 @@ float AiAgentImplementation::getMaxDistance() {
 	// info("getmaxDistance - stateCopy: " + String::valueOf(stateCopy), true);
 
 	switch (stateCopy) {
+	case AiAgent::WATCHING:
+		return 0.1f;
+		break;
 	case AiAgent::PATROLLING:
 	case AiAgent::LEASHING:
 		return 0.1f;
@@ -2371,13 +2370,20 @@ int AiAgentImplementation::setDestination() {
 			homeLocation.setReached(true);
 		}
 		break;
-	case AiAgent::FLEEING:
-		if (followCopy == nullptr || (followCopy != nullptr && !isInRange(followCopy, fleeRange))) {
+	case AiAgent::FLEEING: {
+		float range = fleeRange;
+
+		if (peekBlackboard("fleeRange"))
+			range = readBlackboard("fleeRange").get<float>() / 4;
+
+		if (followCopy == nullptr || !isInRange(followCopy, 128.f) || getNextPosition().isInRange(asAiAgent(), range > 5.f ? range : 5.f)) {
+			eraseBlackboard("fleeRange");
 			setOblivious();
 			return setDestination();
 		}
 
 		break;
+	}
 	case AiAgent::LEASHING:
 		if (!isRetreating()) {
 			setOblivious();

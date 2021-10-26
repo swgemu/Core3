@@ -514,7 +514,7 @@ int LuaAiAgent::runAway(lua_State* L) {
 		Core::getTaskManager()->executeTask([=] () {
 			Locker locker(agentObject);
 
-			agentObject->runAway(target, range);
+			agentObject->runAway(target, range, false);
 		}, "RunAwayLambda");
 	}
 

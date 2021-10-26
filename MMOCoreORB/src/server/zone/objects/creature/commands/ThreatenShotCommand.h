@@ -60,24 +60,9 @@ public:
 
 			if (failCalc < 300) {
 				Locker alock(agent, creature);
-				ThreatMap* threatMap = agent->getThreatMap();
 
-				if (threatMap != nullptr) {
-					threatMap->removeAll();
-				}
-
-				agent->notifyObservers(ObserverEventType::FLEEING, creature);
-				agent->setFollowState(AiAgent::FLEEING);
-
-				Vector3 agentPosition = agent->getWorldPosition();
-				Vector3 creaturePosition = creature->getWorldPosition();
-				Vector3 runTrajectory((creaturePosition.getX() + System::random(20)) - (agentPosition.getX() + System::random(20)), (creaturePosition.getY() + System::random(20)) - (agentPosition.getY() + System::random(20)), 0);
-
-				runTrajectory = runTrajectory * (10.f / runTrajectory.length());
-				runTrajectory += agent->getPosition();
-
-				agent->setFleeRange(15.f);
-				agent->setNextPosition(runTrajectory.getX(), agent->getWorldZ(runTrajectory), runTrajectory.getY(), agent->getParent().get().castTo<CellObject*>());
+				agent->writeBlackboard("fleeRange", 15.f);
+				agent->runAway(creature, 15.f, true);
 			}
 		}
 

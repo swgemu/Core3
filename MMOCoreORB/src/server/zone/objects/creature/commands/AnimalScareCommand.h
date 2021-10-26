@@ -75,7 +75,11 @@ public:
 				if (radius == 0)
 					radius = AiAgent::DEFAULTAGGRORADIUS;
 
-				agent->runAway(creature, 100.f - radius * aggroMod);
+				float distance = 100.f - radius * aggroMod;
+
+				agent->writeBlackboard("fleeRange", distance);
+
+				agent->runAway(creature, distance, false);
 				agent->showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 
 				param.setStringId("@jedi_spam:animal_scare_success");

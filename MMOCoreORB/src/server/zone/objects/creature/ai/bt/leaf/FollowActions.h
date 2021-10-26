@@ -374,7 +374,10 @@ public:
 			radius = AiAgent::DEFAULTAGGRORADIUS;
 
 		if (!agent->isNonPlayerCreatureObject()) {
-			agent->runAway(tar->asCreatureObject(), dist - radius * aggroMod);
+			float distance = dist - radius * aggroMod;
+
+			agent->writeBlackboard("fleeRange", distance);
+			agent->runAway(tar->asCreatureObject(), distance, false);
 			agent->showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 		}
 
@@ -624,7 +627,10 @@ public:
 				fleeDelay->updateToCurrentTime();
 				fleeDelay->addMiliTime(delay * 1000);
 
-				agent->runAway(targetCreo, System::random(50) + 25);
+				float distance = System::random(75) + 25;
+
+				agent->writeBlackboard("fleeRange", distance);
+				agent->runAway(targetCreo, distance, false);
 				return SUCCESS;
 			}
 		}

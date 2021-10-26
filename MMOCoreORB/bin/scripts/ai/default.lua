@@ -155,6 +155,9 @@ addAiTemplate("moveDefault", moveDefault)
 rootDefault = {
 	{id="714360210",	name="Selector",	pid="none"},
 	{id="4192507528",	name="Sequence",	pid="714360210"},
+	{id="1064078295",	name="Not",	pid="4192507528"},
+	{id="3716307837",	name="If",	pid="1064078295"},
+	{id="3269440031",	name="CheckFollowState",	pid="3716307837",	args={condition=FLEEING}},
 	{id="112941615",	name="TreeSocket",	pid="4192507528",	args={slot=TARGET}},
 	{id="1711463331",	name="ParallelSelector",	pid="4192507528"},
 	{id="3085594992",	name="Sequence",	pid="1711463331"},
