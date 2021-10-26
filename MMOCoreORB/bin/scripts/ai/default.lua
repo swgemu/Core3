@@ -244,6 +244,10 @@ targetDefault = {
 	{id="3481038322",	name="CheckFollowAggression",	pid="2741672315"},
 	{id="2102245599",	name="ExitCombat",	pid="1092122064",	args={clearDefenders=1}},
 	{id="2289904783",	name="AlwaysFail",	pid="4111738087"},
-	{id="3752919331",	name="ExitCombat",	pid="2289904783",	args={clearDefenders=1}}}
+	{id="214464091",	name="Sequence",	pid="2289904783"},
+	{id="2590329793",	name="Not",	pid="214464091"},
+	{id="1425466029",	name="If",	pid="2590329793"},
+	{id="3340870082",	name="CheckFollowState",	pid="1425466029",	args={condition=FLEEING}},
+	{id="3752919331",	name="ExitCombat",	pid="214464091",	args={clearDefenders=1}}}
 addAiTemplate("targetDefault", targetDefault)
 

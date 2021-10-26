@@ -93,9 +93,7 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		if (agent->getFollowState() != AiAgent::FLEEING) {
-			agent->clearCombatState(clearDefenders);
-		}
+		agent->clearCombatState(clearDefenders);
 
 		return !agent->isInCombat() ? SUCCESS : FAILURE;
 	}
