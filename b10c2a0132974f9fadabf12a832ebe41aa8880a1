@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "81563cc5_76d119bc",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManager.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d389b526_d51e6e1b",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5c66055_eb3e30c6",
         "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b29e5f_1ab98fb8",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5c66055_eb3e30c6",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "da221854_46057032",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "678795fd_da1e78b7",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e55b9308_5951392b",
         "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4523678_c3360774",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Added comment to it, when stop fishing is called the session is dropped.",
+      "parentUuid": "e55b9308_5951392b",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "f206e463_7cb5c0e5",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44b677a3_1c8d9199",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e4cbd05_5fd0041a",
         "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
         "patchSetId": 4
@@ -101,6 +191,24 @@
       "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab18d8f9_b8d91a40",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e4cbd05_5fd0041a",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "2d377f72_4b6c4f29",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5543f92b_5029f602",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75fd1a2e_89520f50",
         "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
         "patchSetId": 4
@@ -135,6 +261,24 @@
       "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e4e8d9e_57287c91",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75fd1a2e_89520f50",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "353de2ff_59bacde4",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26aa3b7_abccf697",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d42d96c7_775e12b7",
         "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
         "patchSetId": 4
@@ -169,6 +331,24 @@
       "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d800c6bb_692db6cf",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "No need for a trx here, we already accounted for those items in the original trx. This is just putting the items into the marker container that is opened to the player to loot.",
+      "parentUuid": "d42d96c7_775e12b7",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "19028ae5_81b66bf4",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c086fc0f_4795158b",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b661e89b_e34dbb77",
         "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
         "patchSetId": 4
@@ -203,6 +401,24 @@
       "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad8aeb94_e83d034b",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b661e89b_e34dbb77",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "44f14a6e_611ee80d",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82cde5bd_25721295",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d2e818d_937c97f7",
         "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
         "patchSetId": 4
@@ -237,6 +471,24 @@
       "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb9c546_b266d06c",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2021-10-26T16:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d2e818d_937c97f7",
+      "revId": "b10c2a0132974f9fadabf12a832ebe41aa8880a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
