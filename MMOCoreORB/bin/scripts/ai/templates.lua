@@ -40,7 +40,7 @@ bitmaskLookup = {
 	{NONE, {
 		{NONE, "rootDefault"},
 		{AWARE, "awareDefault"},
-		{IDLE, "wanderDefault"},
+		{IDLE, "idleDefault"},
 		{ATTACK, "attackDefault"},
 		{EQUIP, "equipDefault"},
 		{TARGET, "targetDefault"},

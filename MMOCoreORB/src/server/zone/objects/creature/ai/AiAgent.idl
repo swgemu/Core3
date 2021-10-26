@@ -400,7 +400,7 @@ class AiAgent extends CreatureObject {
 
 	public void clearPatrolPoints() {
 		synchronized (targetMutex) {
-			if (getFollowState() == PATROLLING) {
+			if (followState == PATROLLING || followState == WATCHING) {
 				for (int i = 0; i < patrolPoints.size(); i++) {
 					savedPatrolPoints.add(patrolPoints.get(i));
 				}
@@ -753,7 +753,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	@preLocked
-	public native void runAway(CreatureObject target, float range);
+	public native void runAway(CreatureObject target, float range, boolean random);
 
 	@mock
 	@preLocked
@@ -783,7 +783,10 @@ class AiAgent extends CreatureObject {
 	public void setFollowState(int state) {
 		synchronized (targetMutex) {
 			int oldState = followState;
-			clearPatrolPoints();
+
+			if (state != PATROLLING && state != WATCHING)
+				clearPatrolPoints();
+
 			followState = state;
 
 			if (oldState == LEASHING || state == LEASHING)
@@ -1454,48 +1457,48 @@ class AiAgent extends CreatureObject {
 	public abstract WeaponObject getCurrentWeapon() {
 		return defaultWeapon;
 	}
-	
+
 	@read
 	public int getMobType() {
 		return npcTemplate.get().getMobType();
 	}
-	
+
 	@read
 	public int isHerbivore() {
 		return getMobType() == MOB_HERBIVORE;
 	}
-	
+
 	@read
 	public int isCarnivore() {
 		return getMobType() == MOB_CARNIVORE;
 	}
-	
+
 	@read
 	public int isMonster() {
 		int type = getMobType();
-		
+
 		return type == MOB_HERBIVORE || type == MOB_CARNIVORE;
 	}
-	
+
 	@read
 	public int isDroid() {
 		return getMobType() == MOB_DROID;
 	}
-	
+
 	@read
 	public int isAndroid() {
 		return getMobType() == MOB_ANDROID;
 	}
-	
+
 	@read
 	public int isNpc() {
 		return getMobType() == MOB_NPC;
 	}
-	
+
 	@read
 	public int isHumanoid() {
 		int type = getMobType();
-		
+
 		return type == MOB_ANDROID || type == MOB_NPC;
 	}
 }

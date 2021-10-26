@@ -1181,43 +1181,34 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 	}
 }
 
-void AiAgentImplementation::runAway(CreatureObject* target, float range) {
-	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-	if (target == nullptr || asAiAgent()->getZoneUnsafe() == nullptr || followCopy == nullptr) {
+void AiAgentImplementation::runAway(CreatureObject* target, float range, bool random = false) {
+	if (target == nullptr || asAiAgent()->getZoneUnsafe() == nullptr) {
 		setOblivious();
 		return;
 	}
 
 	setTargetObject(target);
-
-	// TODO (dannuic): do we need to check threatmap for other players in range at this point, or just have the mob completely drop aggro?
-	if (threatMap != nullptr)
-		threatMap->removeAll();
-
-	// try to peace out while running away since we removed all threat targets see above note
-	if (isInCombat()) {
-		CombatManager::instance()->attemptPeace(asAiAgent());
-	}
-
 	clearPatrolPoints();
 
 	notifyObservers(ObserverEventType::FLEEING, target);
 	sendReactionChat(ReactionManager::FLEE);
 
 	setFollowState(AiAgent::FLEEING);
-	fleeRange = range;
 
-	// TODO: undo this abstraction (it's for mocks)
-	if (!asAiAgent()->getHomeLocation()->isInRange(asAiAgent(), 128)) {
-		homeLocation.setReached(false);
-		setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
+	Vector3 runTrajectory;
+	Vector3 agentPosition = getWorldPosition();
+	Vector3 creaturePosition = target->getWorldPosition();
+
+	if (random) {
+		runTrajectory.set((creaturePosition.getX() + System::random(20)) - (agentPosition.getX() + System::random(20)), (creaturePosition.getY() + System::random(20)) - (agentPosition.getY() + System::random(20)), 0);
 	} else {
-		Vector3 runTrajectory(getPositionX() - followCopy->getPositionX(), getPositionY() - followCopy->getPositionY(), 0);
-		runTrajectory = runTrajectory * (fleeRange / runTrajectory.length());
-		runTrajectory += getPosition();
-
-		setNextPosition(runTrajectory.getX(), getZoneUnsafe()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
+		runTrajectory.set(agentPosition.getX() - creaturePosition.getX(), agentPosition.getY() - creaturePosition.getY(), 0);
 	}
+
+	runTrajectory = runTrajectory * (range / runTrajectory.length());
+	runTrajectory += getPosition();
+
+	setNextPosition(runTrajectory.getX(), getZoneUnsafe()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
 }
 
 void AiAgentImplementation::leash() {
@@ -1878,6 +1869,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		float targetDistance = targetPosition.getWorldPosition().distanceTo(thisWorldPos);
 
+		if (targetDistance < maxDistance) {
+			patrolPoints.remove(0);
+		}
+
 		if (targetDistance > maxDistance)
 			// this is the actual "distance we can travel" calculation. We only want to
 			// go to the edge of the maxDistance radius and stop, so select the minimum
@@ -2063,7 +2058,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	}
 
 	if (!found) {
-		if (getFollowState() == AiAgent::PATROLLING && patrolPoints.size() > 0)
+		if (getFollowState() == (AiAgent::PATROLLING || AiAgent::WATCHING) && patrolPoints.size() > 0)
 			savedPatrolPoints.add(patrolPoints.remove(0));
 
 		if (getFollowState() == AiAgent::EVADING)
@@ -2089,7 +2084,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 	updateLocomotion();
 
-	return getFollowState() == AiAgent::WATCHING || getFollowState() == AiAgent::FLEEING || found;
+	return (getFollowState() == AiAgent::FLEEING && !fleeDelay.isPast()) || found;
 }
 
 bool AiAgentImplementation::checkLineOfSight(SceneObject* obj) {
@@ -2243,8 +2238,11 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 		return false;
 
 	uint32 savedState = getFollowState(); // save this off in case we fail
-	setFollowState(AiAgent::PATROLLING); // this clears patrol points
-	clearSavedPatrolPoints();
+
+	if (savedState != PATROLLING || savedState != WATCHING) {
+		setFollowState(AiAgent::PATROLLING); // this clears patrol points
+		clearSavedPatrolPoints();
+	}
 
 	if (isInNavMesh()) {
 		Sphere sphere(getWorldPosition(), dist);
@@ -2308,7 +2306,12 @@ float AiAgentImplementation::getMaxDistance() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	unsigned int stateCopy = getFollowState();
 
+	// info("getmaxDistance - stateCopy: " + String::valueOf(stateCopy), true);
+
 	switch (stateCopy) {
+	case AiAgent::WATCHING:
+		return 0.1f;
+		break;
 	case AiAgent::PATROLLING:
 	case AiAgent::LEASHING:
 		return 0.1f;
@@ -2316,9 +2319,9 @@ float AiAgentImplementation::getMaxDistance() {
 	case AiAgent::STALKING: {
 		int stalkRad = 0;
 		if (peekBlackboard("stalkRadius"))
-			stalkRad = readBlackboard("stalkRadius").get<int>() / 3;
+			stalkRad = readBlackboard("stalkRadius").get<int>() / 5;
 
-		return stalkRad > 0 ? stalkRad : 25;
+		return stalkRad > 0 ? stalkRad : 10;
 		break;
 	}
 	case AiAgent::FOLLOWING:
@@ -2347,8 +2350,8 @@ int AiAgentImplementation::setDestination() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	unsigned int stateCopy = getFollowState();
 
-	//info("stateCopy: " + String::valueOf(stateCopy), true);
-	//info("homeLocation: " + homeLocation.toString(), true);
+	// info("setDestination - stateCopy: " + String::valueOf(stateCopy), true);
+	// info("homeLocation: " + homeLocation.toString(), true);
 
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
@@ -2367,17 +2370,20 @@ int AiAgentImplementation::setDestination() {
 			homeLocation.setReached(true);
 		}
 		break;
-	case AiAgent::FLEEING:
-		// TODO (dannuic): do we need to check threatmap for other players in range at this point? also, is this too far? alsoalso, is this time too static?
-		if (!isRetreating() && (followCopy == nullptr || !isInRange(followCopy, fleeRange))) {
-			clearCombatState(true);
-			setWatchObject(followCopy);
-			alertedTime.updateToCurrentTime();
-			alertedTime.addMiliTime(10000);
+	case AiAgent::FLEEING: {
+		float range = fleeRange;
+
+		if (peekBlackboard("fleeRange"))
+			range = readBlackboard("fleeRange").get<float>() / 4;
+
+		if (followCopy == nullptr || !isInRange(followCopy, 128.f) || getNextPosition().isInRange(asAiAgent(), range > 5.f ? range : 5.f)) {
+			eraseBlackboard("fleeRange");
+			setOblivious();
 			return setDestination();
 		}
 
 		break;
+	}
 	case AiAgent::LEASHING:
 		if (!isRetreating()) {
 			setOblivious();
@@ -2393,17 +2399,11 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::WATCHING:
-		if (followCopy == nullptr) {
+		if (followCopy == nullptr || alertedTime.isPast()) {
 			setOblivious();
 			return setDestination();
 		}
 
-		setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent().get().castTo<CellObject*>()); // sets patrolPoints[0] to current position
-		checkNewAngle(); // sends update zone packet
-		if (getPatrolPointSize() > 0) {
-			PatrolPoint patrolPoint = getNextPosition();
-			updateCurrentPosition(&patrolPoint);
-		}
 		break;
 	case AiAgent::STALKING:
 		if (followCopy == nullptr || !followCopy->isInRange(asAiAgent(), 128)) {

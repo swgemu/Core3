@@ -210,9 +210,11 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		ManagedReference<SceneObject*> tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
-		if (!agent->peekBlackboard("targetProspect"))
+		if (!agent->peekBlackboard("targetProspect")) {
 			return FAILURE;
+		}
+
+		ManagedReference<SceneObject*> tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
 		if (tar == nullptr) {
 			agent->eraseBlackboard("targetProspect");
@@ -269,8 +271,10 @@ public:
 		if (agent->peekBlackboard("targetProspect"))
 			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
-		if (tar == nullptr && (state == AiAgent::WATCHING || state == AiAgent::STALKING || state == AiAgent::FOLLOWING))
+		if (tar == nullptr && (state == AiAgent::WATCHING || state == AiAgent::STALKING || state == AiAgent::FOLLOWING)) {
+			agent->setFollowObject(nullptr);
 			return FAILURE;
+		}
 
 		switch (state) {
 		case AiAgent::OBLIVIOUS:
@@ -370,7 +374,10 @@ public:
 			radius = AiAgent::DEFAULTAGGRORADIUS;
 
 		if (!agent->isNonPlayerCreatureObject()) {
-			agent->runAway(tar->asCreatureObject(), dist - radius * aggroMod);
+			float distance = dist - radius * aggroMod;
+
+			agent->writeBlackboard("fleeRange", distance);
+			agent->runAway(tar->asCreatureObject(), distance, false);
 			agent->showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 		}
 
@@ -620,7 +627,10 @@ public:
 				fleeDelay->updateToCurrentTime();
 				fleeDelay->addMiliTime(delay * 1000);
 
-				agent->runAway(targetCreo, System::random(50) + 25);
+				float distance = System::random(75) + 25;
+
+				agent->writeBlackboard("fleeRange", distance);
+				agent->runAway(targetCreo, distance, false);
 				return SUCCESS;
 			}
 		}

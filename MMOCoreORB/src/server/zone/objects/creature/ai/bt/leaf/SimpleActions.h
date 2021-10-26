@@ -427,8 +427,7 @@ public:
 		parseArgs(args);
 	}
 
-	SetAlert(const SetAlert& b)
-			: Behavior(b), duration(b.duration), show(b.show) {
+	SetAlert(const SetAlert& b) : Behavior(b), duration(b.duration), show(b.show) {
 	}
 
 	SetAlert& operator=(const SetAlert& b) {
