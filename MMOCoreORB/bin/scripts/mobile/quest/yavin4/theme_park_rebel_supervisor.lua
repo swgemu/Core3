@@ -23,7 +23,7 @@ theme_park_rebel_supervisor = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = INVULNERABLE + CONVERSABLE,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {
@@ -40,7 +40,7 @@ theme_park_rebel_supervisor = Creature:new {
 	primaryWeapon = "rebel_weapons_heavy",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(marksmanmaster,brawlermaster),

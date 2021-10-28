@@ -35,7 +35,7 @@ theme_park_rebel_pirate_holocron = Creature:new {
 		"object/mobile/dressed_marooned_pirate_rod_m.iff",
 		"object/mobile/dressed_marooned_pirate_tran_m.iff"
 		},
-	lootGroups = 
+	lootGroups =
 	{
 		{
 			groups = {
@@ -50,7 +50,7 @@ theme_park_rebel_pirate_holocron = Creature:new {
 	primaryWeapon = "pirate_weapons_medium",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(brawlermaster,marksmanmaster),

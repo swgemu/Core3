@@ -23,7 +23,7 @@ theme_park_rebel_deasie_afresel = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = INVULNERABLE + CONVERSABLE,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_organized_twilek_female_01.iff"},

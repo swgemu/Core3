@@ -23,7 +23,7 @@ theme_park_rebel_officer_tennelt = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = INVULNERABLE + CONVERSABLE,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_eisley_officer_twilek_male_01.iff"},
@@ -38,7 +38,7 @@ theme_park_rebel_officer_tennelt = Creature:new {
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = brawlermaster,
-	secondaryAttacks = { }
+	secondaryAttacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_rebel_officer_tennelt, "theme_park_rebel_officer_tennelt")
