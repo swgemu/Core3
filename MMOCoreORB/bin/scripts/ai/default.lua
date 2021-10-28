@@ -193,6 +193,8 @@ stalkDefault = {
 	{id="1672513422",	name="Sequence",	pid="none"},
 	{id="3739778054",	name="If",	pid="1672513422"},
 	{id="4188555031",	name="CheckIsStalker",	pid="3739778054"},
+	{id="1616171750",	name="If",	pid="1672513422"},
+	{id="3970049935",	name="CheckOutdoors",	pid="1616171750"},
 	{id="2548145200",	name="Not",	pid="1672513422"},
 	{id="4223807049",	name="If",	pid="2548145200"},
 	{id="3347717967",	name="CheckFollowState",	pid="4223807049",	args={condition=STALKING}},
