@@ -373,7 +373,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 			//any further rescheduling.
 
 			//Randomize maintenance tasks over the first hour after server restart.
-			secondsRemaining = System::random(60 * 60);
+			secondsRemaining = ConfigManager::instance()->getInt("Core3.StructureObject.MaintenanceBootDelay", 600) + System::random(60 * 60);
 		} else if (secondsRemaining > 24 * 60 * 60) {
 			//Run maintenance task at least one time every day but randomized to spread it out.
 			secondsRemaining = 12 * 60 * 60 + System::random(12 * 60 * 60);

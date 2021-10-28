@@ -785,7 +785,7 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 			}
 		}
 
-		city->rescheduleUpdateEvent(cityUpdateInterval * 60);
+		city->rescheduleUpdateEvent((cityUpdateInterval + System::random(30)) * 60);
 
 		processIncomeTax(city);
 
