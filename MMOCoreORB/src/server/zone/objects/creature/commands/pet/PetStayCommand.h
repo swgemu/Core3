@@ -24,7 +24,8 @@ public:
 		if (pet->hasRidingCreature())
 			return GENERALERROR;
 
-		CombatManager::instance()->attemptPeace(pet);
+		if (pet->isInCombat())
+			CombatManager::instance()->attemptPeace(pet);
 
 		Vector3 home = pet->getWorldPosition();
 

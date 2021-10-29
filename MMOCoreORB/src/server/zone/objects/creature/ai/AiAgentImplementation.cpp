@@ -2330,8 +2330,12 @@ float AiAgentImplementation::getMaxDistance() {
 
 		if (!CollisionManager::checkLineOfSight(asAiAgent(), followCopy)) {
 			return 1.0f;
-		} else if (!isInCombat() && (creatureBitmask & CreatureFlag::ESCORT || isPet())) {
-			return 5.0f;
+		} else if (!isInCombat()) {
+			if (peekBlackboard("formationOffset"))
+				return 0.1f;
+
+			if (creatureBitmask & CreatureFlag::ESCORT || isPet())
+				return 5.0f;
 		} else if (getWeapon() != nullptr ) {
 			float weapMaxRange = Math::min(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
 			return Math::max(1.0f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius());
@@ -2413,15 +2417,28 @@ int AiAgentImplementation::setDestination() {
 
 		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
 		break;
-	case AiAgent::FOLLOWING:
+	case AiAgent::FOLLOWING: {
 		if (followCopy == nullptr) {
 			setOblivious();
 			return setDestination();
 		}
 
 		clearPatrolPoints();
-		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
+		PatrolPoint nextPos = followCopy->getWorldPosition();
+
+		if (peekBlackboard("formationOffset") && !isInCombat()) {
+			Vector3 formationOffset = readBlackboard("formationOffset").get<Vector3>();
+			float directionAngle = followCopy->getDirection()->getRadians();
+			float xRotated = (formationOffset.getX() * Math::cos(directionAngle) + formationOffset.getY() * Math::sin(directionAngle));
+			float yRotated = (-formationOffset.getX() * Math::sin(directionAngle) + formationOffset.getY() * Math::cos(directionAngle));
+
+			nextPos.setPositionX(nextPos.getPositionX() + xRotated);
+			nextPos.setPositionY(nextPos.getPositionY() + yRotated);
+		}
+
+		setNextPosition(nextPos.getPositionX(), nextPos.getPositionZ(), nextPos.getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
 		break;
+	}
 	case AiAgent::EVADING:
 		if (followCopy == nullptr || getPatrolPointSize() == 0) {
 			setOblivious();

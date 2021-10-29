@@ -240,9 +240,9 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	} else if (command == CLEARPATROLPOINTS) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petclearpatrolpoints"), "", true);
 	} else if (command == FORMATION1) {
-		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petformation"), "wedge", true);
 	} else if (command == FORMATION2) {
-		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petformation"), "column", true);
 	} else if (command == SPECIAL_ATTACK1) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petspecialattack"), "1 " + String::valueOf(speaker->getObjectID()));
 	} else if (command == SPECIAL_ATTACK2) {
@@ -266,6 +266,10 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	}
 
 	if (command > 0) {
+		if (command == (FOLLOW || FOLLOWOTHER) && pet->peekBlackboard("formationOffset")) {
+			pet->eraseBlackboard("formationOffset");
+		}
+
 		Locker plocker(pcd, speaker);
 		pcd->setLastCommander(speaker);
 		pcd->setLastCommand(command);
