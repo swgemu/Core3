@@ -2486,6 +2486,10 @@ bool AiAgentImplementation::isWaiting() const {
 
 bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	Locker locker(&targetMutex);
+
+	if (!isMonster() || isPet())
+		return false;
+
 	CreatureObject* effectiveTarget = target;
 
 	// Check masked scent
@@ -2504,9 +2508,6 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 		}
 		return false;
 	}
-
-	if (isNonPlayerCreatureObject() || isDroidObject())
-		return false;
 
 	// Don't check if it's already been checked
 	if (camouflagedObjects.contains(effectiveTargetID))
@@ -2540,6 +2541,10 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 
 bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 	Locker locker(&targetMutex);
+
+	if (isDroid() || isAndroid() || isPet())
+		return false;
+
 	CreatureObject* effectiveTarget = target;
 
 	// Check masked scent
@@ -2559,9 +2564,6 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 		}
 		return false;
 	}
-
-	if (isDroidObject())
-		return false;
 
 	// Don't check if it's already been checked
 	if (camouflagedObjects.contains(effectiveTargetID)) {
@@ -3093,6 +3095,13 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 			if (targetAi != nullptr && FactionManager::instance()->isEnemy(factionString, targetAi->getFactionString()))
 				return true;
 		}
+	}
+
+	if (isCarnivore() && target->isAiAgent()) {
+		AiAgent* targetAi = target->asAiAgent();
+
+		if (targetAi != nullptr && targetAi->isHerbivore())
+			return true;
 	}
 
 	// if we've made it this far then the target is a valid target, but we will only be aggressive based on the pvpStatusBitmask
