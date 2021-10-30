@@ -64,8 +64,6 @@ public:
 	static float determineMinDamage(int droidType, int rating) {
 		if (rating == 0)
 			return 1;
-		if (rating > 600)
-			rating = 600;
 		if(droidType == DroidObject::R_SERIES)
 			return ((int)((rating/600.0) * 80.0)) + 80;
 		if(droidType == DroidObject::LE_REPAIR)
@@ -77,8 +75,6 @@ public:
 	static float determineMaxDamage(int droidType, int rating) {
 		if (rating == 0)
 			return 1;
-		if (rating > 600)
-			rating = 600;
 		if(droidType == DroidObject::R_SERIES)
 			return ((int)((rating/600.0) * 85.0)) + 85;
 		if(droidType == DroidObject::LE_REPAIR)

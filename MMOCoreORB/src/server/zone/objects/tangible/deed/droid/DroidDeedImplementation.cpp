@@ -199,6 +199,10 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 	combatRating = values->getCurrentValue("cmbt_module");
 	if (combatRating < 0)
 		combatRating = 0;
+
+	if (combatRating > 600)
+		combatRating = 600;
+
 	// @TODO Add crafting values, this should adjust toHit and Speed based on droid ham, also
 	// we need to stack modules if they are stackable.
 	// walk all components and ensure we have all modules that are stackable there.
