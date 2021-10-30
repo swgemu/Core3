@@ -29,6 +29,8 @@ int ContrabandScanSessionImplementation::initializeSession() {
 
 	if (!scanPrerequisitesMet(scanner, player)) {
 		return false;
+	} else {
+		player->info("Contraband scan started by scanner " + scanner->getDisplayedName() + " (" + String::valueOf(scanner->getObjectID()) + ") at " + scanner->getWorldPosition().toString());
 	}
 
 	adjustReinforcementStrength(scanner);
@@ -282,7 +284,7 @@ void ContrabandScanSessionImplementation::checkIfPlayerHasReturned(Zone* zone, A
 		sendScannerChatMessage(zone, scanner, player, "return_false_imperial", "return_false_rebel");
 		sendSystemMessage(scanner, player, "ran_away_imperial", "ran_away_rebel");
 		player->getPlayerObject()->decreaseFactionStanding(scanner->getFactionString(), zone->getGCWManager()->getCrackdownContrabandFineFactionPoints());
-
+		player->info("Contraband scan aborted due to player running away. Faction point fine issued.");
 		scanState = FINISHED;
 	}
 }
@@ -340,6 +342,7 @@ void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scann
 			sendContrabandFineSuiWindow(zone, scanner, player, numberOfContrabandItems);
 			scanState = WAITFORPAYFINEANSWER;
 			timeLeft = WAITFORPAYFINEANSWERTIMEOUT;
+			player->info("Contraband scan found " + String::valueOf(numberOfContrabandItems));
 		} else {
 			sendScannerChatMessage(zone, scanner, player, "clean_target_imperial", "clean_target_rebel");
 			scanner->doAnimation("wave_on_directing");
@@ -350,6 +353,11 @@ void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scann
 			}
 
 			scanner->setFollowObject(nullptr);
+			if (smugglerAvoidedScan) {
+				player->info("Contraband scan avoided due to smuggler chance.");
+			} else {
+				player->info("Contraband scan finished, no contraband found.");
+			}
 			scanState = FINISHED;
 		}
 	}
@@ -365,6 +373,7 @@ void ContrabandScanSessionImplementation::checkIfPlayerShouldBeScanned(CreatureO
 		scanState = INITIATESCAN;
 		player->updateCooldownTimer("crackdown_scan", player->getZone()->getGCWManager()->getCrackdownPlayerScanCooldown());
 	} else {
+		player->info("Contraband scan not initiated due to scan chance.");
 		scanState = FINISHED;
 	}
 }
@@ -411,6 +420,7 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 		if (recognized) {
 			sendSystemMessage(scanner, player, "probe_scan_done");
 			scanner->doAnimation("wave_on_directing");
+			player->info("Contraband scan avoided due to faction rank.");
 			scanState = FINISHED;
 		}
 	} else if (player->getFaction() != Factions::FACTIONNEUTRAL) {
@@ -433,6 +443,7 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			enforcedScan = false;
 			CombatManager::instance()->startCombat(scanner, player);
 
+			player->info("Contraband scan stopped due to player being detected as opposite faction.");
 			scanState = FINISHED;
 		}
 	}
@@ -549,6 +560,7 @@ void ContrabandScanSessionImplementation::jediMindTrickResult(Zone* zone, AiAgen
 		mood = dependingOnJediSkills(player, "confused", "confident", "scared");
 		sendSystemMessage(scanner, player, "probe_scan_done");
 		scanner->doAnimation("wave_on_directing");
+		player->info("Contraband scan avoided due to Jedi mind trick.");
 		scanState = FINISHED;
 	}
 
@@ -591,6 +603,7 @@ void ContrabandScanSessionImplementation::waitForPayFineAnswer(Zone* zone, AiAge
 		player->getPlayerObject()->decreaseFactionStanding(scanner->getFactionString(), zone->getGCWManager()->getCrackdownContrabandFineFactionPoints());
 		scanner->setFollowObject(nullptr);
 		scanState = FINISHED;
+		player->info("Contraband scan aborted due to player not answering on fine Sui window in time, faction point fine issued.");
 	} else if (fineAnswerGiven) {
 		if (acceptedFine) {
 			if (player->getCashCredits() + player->getBankCredits() >= fineToPay) {
@@ -609,14 +622,17 @@ void ContrabandScanSessionImplementation::waitForPayFineAnswer(Zone* zone, AiAge
 					trxBank.groupWith(trxCash);
 					player->subtractBankCredits(fineToPay);
 				}
+				player->info("Contraband scan finished with player paying the fine.");
 			} else {
 				sendScannerChatMessage(zone, scanner, player, "failure_to_pay_imperial", "failure_to_pay_rebel");
 				scanner->doAnimation("wave_finger_warning");
+				player->info("Contraband scan finished with player not having enough credits to pay the fine.");
 			}
 		} else {
 			sendScannerChatMessage(zone, scanner, player, "punish_imperial", "punish_rebel");
 			scanner->doAnimation("wave_finger_warning");
 			player->getPlayerObject()->decreaseFactionStanding(scanner->getFactionString(), zone->getGCWManager()->getCrackdownContrabandFineFactionPoints());
+			player->info("Contraband scan finished with player taking a faction point fine.");
 		}
 
 		scanner->setFollowObject(nullptr);
