@@ -2513,6 +2513,9 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	if (camouflagedObjects.contains(effectiveTargetID))
 		return true;
 
+	if (!(getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE) && !isStalker())
+		return true;
+
 	// Step 1. Check for break
 	bool success = false;
 	int camoSkill = effectiveTarget->getSkillMod("mask_scent");
@@ -2574,6 +2577,9 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 
 	if (buff == nullptr || buff->getPlanetName() != getZoneUnsafe()->getZoneName())
 		return false;
+
+	if (!(getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE) && !isStalker())
+		return true;
 
 	bool success = false;
 	int camoSkill = effectiveTarget->getSkillMod("private_conceal");

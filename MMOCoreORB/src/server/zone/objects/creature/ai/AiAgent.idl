@@ -1464,39 +1464,39 @@ class AiAgent extends CreatureObject {
 	}
 
 	@read
-	public int isHerbivore() {
+	public boolean isHerbivore() {
 		return getMobType() == MOB_HERBIVORE;
 	}
 
 	@read
-	public int isCarnivore() {
+	public boolean isCarnivore() {
 		return getMobType() == MOB_CARNIVORE;
 	}
 
 	@read
-	public int isMonster() {
+	public boolean isMonster() {
 		int type = getMobType();
 
 		return type == MOB_HERBIVORE || type == MOB_CARNIVORE;
 	}
 
 	@read
-	public int isDroid() {
+	public boolean isDroid() {
 		return getMobType() == MOB_DROID;
 	}
 
 	@read
-	public int isAndroid() {
+	public boolean isAndroid() {
 		return getMobType() == MOB_ANDROID;
 	}
 
 	@read
-	public int isNpc() {
+	public boolean isNpc() {
 		return getMobType() == MOB_NPC;
 	}
 
 	@read
-	public int isHumanoid() {
+	public boolean isHumanoid() {
 		int type = getMobType();
 
 		return type == MOB_ANDROID || type == MOB_NPC;

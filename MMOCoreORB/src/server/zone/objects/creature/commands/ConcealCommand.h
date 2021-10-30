@@ -136,7 +136,6 @@ public:
 		StringIdChatParameter endStringId("skl_use", "sys_conceal_stop"); // You are no longer concealed from view.
 
 		int camoMod = creature->getSkillMod("camouflage");
-		int cdReduction = ((float)(camoMod / 100.0f)) * 45;
 		int duration = 60 + (((float)(camoMod / 100.0f)) * 1440);
 
 
