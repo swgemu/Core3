@@ -74,6 +74,11 @@ includeFile("quest/coa/coa3_warehouse_captain.lua")
 includeFile("quest/coa/coa3_warehouse_guard.lua")
 includeFile("quest/coa/coa3_warehouse_thug.lua")
 
+-- Secrets of the Syren
+--includeFile("quest/syren/syren_jevan_monsul.lua")
+--includeFile("quest/syren/syren_tyla_jinn.lua")
+includeFile("quest/syren/syren_veega_madish.lua")
+
 -- Corellia
 includeFile("quest/corellia/aldalad.lua")
 includeFile("quest/corellia/ara_niorri.lua")

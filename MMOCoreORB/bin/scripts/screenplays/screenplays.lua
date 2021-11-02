@@ -311,6 +311,10 @@ includeFile("events/coa/conversations/rebel_coordinator_conv_handler.lua")
 includeFile("events/coa/conversations/rebel_lyda_conv_handler.lua")
 includeFile("events/coa/conversations/rebel_sympathizer_conv_handler.lua")
 
+-- Secrets of the Syren
+includeFile("events/syren/syren.lua")
+includeFile("events/syren/conversations/rebel_veega_madish_conv_handler.lua")
+
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
 includeFile("events/conversations/life_day_anarra_conv_handler.lua")
