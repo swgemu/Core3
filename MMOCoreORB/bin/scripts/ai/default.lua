@@ -63,12 +63,13 @@ addAiTemplate("awareDefault", awareDefault)
 
 crackdownScanDefault = {
 	{id="688534916",	name="Selector",	pid="none"},
-	{id="2897210188",	name="LookForTarget",	pid="688534916",	args={bypassAttackable=true}},
+	{id="3269996958",	name="Sequence",	pid="688534916"},
+	{id="1824436907",	name="If",	pid="3269996958"},
+	{id="2380017041",	name="CheckCrackdownScanner",	pid="1824436907"},
+	{id="2897210188",	name="LookForTarget",	pid="3269996958",	args={bypassAttackable=true}},
 	{id="2120293750",	name="Sequence",	pid="2897210188"},
 	{id="3355601546",	name="If",	pid="2120293750"},
 	{id="3223870287",	name="CheckProspectIsType",	pid="3355601546",	args={condition=PLAYERTYPE}},
-	{id="1824436907",	name="If",	pid="2120293750"},
-	{id="2380017041",	name="CheckCrackdownScanner",	pid="1824436907"},
 	{id="2557331632",	name="If",	pid="2120293750"},
 	{id="3227701225",	name="CheckProspectInRange",	pid="2557331632",	args={condition=12.0}},
 	{id="1840897137",	name="ContrabandScan",	pid="2120293750"},
