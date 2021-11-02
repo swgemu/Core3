@@ -480,3 +480,11 @@ template<> bool CheckWeaponIsRanged::check(AiAgent* agent) const {
 
 	return false;
 }
+
+template<> bool CheckIsDroid::check(AiAgent* agent) const {
+	return agent->isDroid();
+}
+
+template<> bool CheckCrackdownScanner::check(AiAgent* agent) const {
+	return agent->getCreatureBitmask() & CreatureFlag::SCANNING_FOR_CONTRABAND;
+}

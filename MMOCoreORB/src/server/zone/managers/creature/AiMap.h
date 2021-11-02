@@ -129,6 +129,7 @@ public:
 		lua->setGlobalInt("SCARE",						BehaviorTreeSlot::SCARE					);
 		lua->setGlobalInt("KILL",						BehaviorTreeSlot::KILL					);
 		lua->setGlobalInt("STALK",						BehaviorTreeSlot::STALK					);
+		lua->setGlobalInt("CRACKDOWNSCAN",				BehaviorTreeSlot::CRACKDOWNSCAN			);
 
 		lua->setGlobalInt("WALK",						DataVal::WALK							);
 		lua->setGlobalInt("RUN",						DataVal::RUN							);
@@ -368,6 +369,8 @@ private:
 		_REGISTERLEAF(CheckTargetInOwnerRange);
 		_REGISTERLEAF(CheckUseRanged);
 		_REGISTERLEAF(CheckWeaponIsRanged);
+		_REGISTERLEAF(CheckIsDroid);
+		_REGISTERLEAF(CheckCrackdownScanner);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -399,6 +402,7 @@ private:
 		_REGISTERLEAF(Flee);
 		_REGISTERLEAF(SetAttackPosture);
 		_REGISTERLEAF(PetReturn);
+		_REGISTERLEAF(ContrabandScan);
 	}
 
 	void putBitmask(Lua* lua, String key) {

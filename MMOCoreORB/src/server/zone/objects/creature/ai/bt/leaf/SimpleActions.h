@@ -4,6 +4,7 @@
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "server/zone/objects/creature/ai/bt/BlackboardData.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 
 namespace server {
 namespace zone {
@@ -542,6 +543,54 @@ public:
 
 		return msg.toString();
 	}
+};
+
+class ContrabandScan : public Behavior {
+public:
+	ContrabandScan(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	ContrabandScan(const ContrabandScan& b) : Behavior(b) {
+	}
+
+	ContrabandScan& operator=(const ContrabandScan& b) {
+		if (this == &b)
+			return *this;
+		Behavior::operator=(b);
+
+		return *this;
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		ManagedReference<SceneObject*> target = nullptr;
+
+		if (agent->peekBlackboard("targetProspect"))
+			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
+
+		if (target == nullptr || !target->isCreatureObject())
+			return FAILURE;
+
+		Zone* zone = agent->getZone();
+
+		if (zone == nullptr)
+			return FAILURE;
+
+		GCWManager* gcwMan = zone->getGCWManager();
+
+		if (gcwMan == nullptr)
+			return FAILURE;
+
+
+		return gcwMan->runCrackdownScan(agent, target->asCreatureObject()) ? SUCCESS : FAILURE;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className;
+
+		return msg.toString();
+	}
+
 };
 
 }

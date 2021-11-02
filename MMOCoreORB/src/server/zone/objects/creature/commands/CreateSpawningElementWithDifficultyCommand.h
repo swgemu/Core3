@@ -42,9 +42,8 @@ public:
 		if (!args.hasMoreTokens()) {
 			Quaternion direction;
 			direction.setHeadingDirection(creature->getDirection()->getRadians());
-			Reference<Task*> lambdaTask =
-				new LambdaShuttleWithReinforcementsTask(creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial",
-														creature->getWorldPosition(), direction, LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
+			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", creature->getWorldPosition(), direction, LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
+
 			lambdaTask->schedule(1);
 		} else {
 			String arg = "";
@@ -58,8 +57,7 @@ public:
 					if (arg == "closestcontainmentteam") {
 						spawnType = NpcSpawnPoint::CONTAINMENTTEAMSPAWN;
 					}
-					NpcSpawnPoint* nsp =
-						missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(), creature->getWorldPositionY(), spawnType);
+					NpcSpawnPoint* nsp = missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(), creature->getWorldPositionY(), spawnType);
 					if (nsp != nullptr) {
 						Quaternion direction;
 						direction.setHeadingDirection(nsp->getDirection()->getRadians());
@@ -69,12 +67,9 @@ public:
 						} else if (arg == "closestcontainmentteam") {
 							reinforcementType = LambdaShuttleWithReinforcementsTask::NOLAMBDASHUTTLEONLYTROOPS;
 						}
-						Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(creature, Factions::FACTIONIMPERIAL, 2,
-																							  "@imperial_presence/contraband_search:containment_team_imperial",
-																							  *(nsp->getPosition()), direction, reinforcementType);
+						Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()), direction, reinforcementType);
 						lambdaTask->schedule(1);
-						String text = "Lambda shuttle landing coordinates = " + nsp->getPosition()->toString() +
-									  ", direction = " + String::valueOf(nsp->getDirection()->getRadians());
+						String text = "Lambda shuttle landing coordinates = " + nsp->getPosition()->toString() + ", direction = " + String::valueOf(nsp->getDirection()->getRadians());
 						creature->sendSystemMessage(text);
 					} else {
 						return INVALIDSTATE;
@@ -90,10 +85,8 @@ public:
 				missionManager->removeSpawnPoint(creature, "containmentteam");
 			} else if (arg == "closestreinforcement") {
 				MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
-				auto lambdaSpawnPoint = missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(),
-																			 creature->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN);
-				auto containmentTeamSpawnPoint = missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(),
-																					  creature->getWorldPositionY(), NpcSpawnPoint::CONTAINMENTTEAMSPAWN);
+				auto lambdaSpawnPoint = missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(), creature->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN);
+				auto containmentTeamSpawnPoint = missionManager->getFreeNpcSpawnPoint(creature->getPlanetCRC(), creature->getWorldPositionX(), creature->getWorldPositionY(), NpcSpawnPoint::CONTAINMENTTEAMSPAWN);
 
 				LambdaShuttleWithReinforcementsTask::ReinforcementType reinforcementType;
 				NpcSpawnPoint* spawnPoint = nullptr;
@@ -118,9 +111,7 @@ public:
 					return GENERALERROR;
 				}
 
-				String text = "Closest reinforcement spawn point is " + spawnPoint->getPosition()->toString() + ", direction " +
-							  String::valueOf(spawnPoint->getDirection()->getRadians()) + ", distance " +
-							  String::valueOf(creature->getWorldPosition().distanceTo(*spawnPoint->getPosition()));
+				String text = "Closest reinforcement spawn point is " + spawnPoint->getPosition()->toString() + ", direction " + String::valueOf(spawnPoint->getDirection()->getRadians()) + ", distance " + String::valueOf(creature->getWorldPosition().distanceTo(*spawnPoint->getPosition()));
 				creature->sendSystemMessage(text);
 				auto ghost = creature->getPlayerObject();
 				if (ghost != nullptr) {

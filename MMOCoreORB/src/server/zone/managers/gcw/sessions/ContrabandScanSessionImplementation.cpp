@@ -134,7 +134,7 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 		break;
 	case INITIATESCAN:
 		initiateScan(zone, scanner, player);
-		delay += 4000;
+		delay += 2000;
 		break;
 	case JEDIMINDTRICKPLAYERCHAT:
 		performJediMindTrick(zone, scanner, player);
@@ -157,7 +157,7 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 		break;
 	case SCANDELAY:
 		performScan(zone, scanner, player);
-		delay += 4000;
+		delay += 2000;
 		break;
 	case WAITFORPAYFINEANSWER:
 		waitForPayFineAnswer(zone, scanner, player);
@@ -226,8 +226,7 @@ bool ContrabandScanSessionImplementation::scanPrerequisitesMet(AiAgent* scanner,
 		return 0;
 	}
 
-	return scanner != nullptr && player != nullptr && player->isPlayerCreature() && !scanner->isDead() && !player->isDead() && !player->isFeigningDeath() &&
-		   !player->isIncapacitated() && !scanner->isInCombat() && !player->isInCombat();
+	return scanner != nullptr && player != nullptr && player->isPlayerCreature() && !scanner->isDead() && !player->isDead() && !player->isFeigningDeath() && !player->isIncapacitated() && !scanner->isInCombat() && !player->isInCombat();
 }
 
 void ContrabandScanSessionImplementation::adjustReinforcementStrength(AiAgent* scanner) {
@@ -243,8 +242,7 @@ bool ContrabandScanSessionImplementation::playerTriesToAvoidScan(AiAgent* scanne
 		return 0;
 	}
 
-	return (scanState != AVOIDINGSCAN && scanState != SCANCHANCE && scanState != INITIATESCAN) &&
-		   (!scanner->isInRange(player, 12) || !CollisionManager::checkLineOfSight(scanner, player));
+	return (scanState != AVOIDINGSCAN && scanState != SCANCHANCE && scanState != INITIATESCAN) && (!scanner->isInRange(player, 12) || !CollisionManager::checkLineOfSight(scanner, player));
 }
 
 void ContrabandScanSessionImplementation::scannerRequestsPlayerToReturn(Zone* zone, AiAgent* scanner, CreatureObject* player) {
@@ -312,11 +310,10 @@ void ContrabandScanSessionImplementation::sendContrabandFineSuiWindow(Zone* zone
 	} else {
 		text += " @imperial_presence/contraband_search:imp_fine_text2_rebel";
 	}
-	suiContrabandFine->setPromptText(text);
 
+	suiContrabandFine->setPromptText(text);
 	suiContrabandFine->setCancelButton(true, "@ui:no");
 	suiContrabandFine->setOkButton(true, "@ui:yes");
-
 	suiContrabandFine->setCallback(new ContrabandFineSuiCallback(zone->getZoneServer()));
 
 	player->getPlayerObject()->addSuiBox(suiContrabandFine);
@@ -699,10 +696,8 @@ void ContrabandScanSessionImplementation::callInLambdaShuttle(AiAgent* scanner, 
 	}
 
 	MissionManager* missionManager = player->getZoneServer()->getMissionManager();
-	auto lambdaSpawnPoint =
-		missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN);
-	auto containmentTeamSpawnPoint =
-		missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), NpcSpawnPoint::CONTAINMENTTEAMSPAWN);
+	auto lambdaSpawnPoint = missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), NpcSpawnPoint::LAMBDASHUTTLESPAWN);
+	auto containmentTeamSpawnPoint = missionManager->getFreeNpcSpawnPoint(player->getPlanetCRC(), player->getWorldPositionX(), player->getWorldPositionY(), NpcSpawnPoint::CONTAINMENTTEAMSPAWN);
 
 	LambdaShuttleWithReinforcementsTask::ReinforcementType reinforcementType;
 	NpcSpawnPoint* spawnPoint = nullptr;
@@ -724,13 +719,11 @@ void ContrabandScanSessionImplementation::callInLambdaShuttle(AiAgent* scanner, 
 	}
 
 	if (spawnPoint != nullptr) {
-		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scannerFaction, difficulty, landingMessage, *spawnPoint->getPosition(),
-																			  *spawnPoint->getDirection(), reinforcementType);
+		Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scannerFaction, difficulty, landingMessage, *spawnPoint->getPosition(), *spawnPoint->getDirection(), reinforcementType);
 		lambdaTask->schedule(IMMEDIATELY);
 	} else {
 		StringBuffer errorMessage;
-		errorMessage << "Could not find any Lambda shuttle landing point on " << scanner->getZone()->getZoneName() << " close to ("
-					 << scanner->getWorldPositionX() << ", " << scanner->getWorldPositionY() << ").";
+		errorMessage << "Could not find any Lambda shuttle landing point on " << scanner->getZone()->getZoneName() << " close to (" << scanner->getWorldPositionX() << ", " << scanner->getWorldPositionY() << ").";
 		error(errorMessage.toString());
 	}
 }

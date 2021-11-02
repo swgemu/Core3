@@ -28,6 +28,7 @@ crackdown_stormtrooper_sniper = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 	scale = 1.05,
+	customAiMap = "crackdown",
 
 	templates = {
 		"object/mobile/dressed_stormtrooper_sniper_m.iff"
@@ -46,7 +47,7 @@ crackdown_stormtrooper_sniper = Creature:new {
 				{group = "stormtrooper_common", chance = 100000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -54,7 +55,7 @@ crackdown_stormtrooper_sniper = Creature:new {
 	primaryWeapon = "stormtrooper_rifle",
 	secondaryWeapon = "imperial_pistol",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = riflemanmaster,

@@ -28,6 +28,7 @@ crackdown_stormtrooper_squad_leader = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 	scale = 1.05,
+	customAiMap = "crackdown",
 
 	templates = {"object/mobile/dressed_stormtrooper_squad_leader_white_gold.iff",
 				"object/mobile/dressed_stormtrooper_groupleader_m.iff"

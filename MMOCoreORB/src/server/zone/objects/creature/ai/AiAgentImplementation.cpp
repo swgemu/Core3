@@ -1284,6 +1284,9 @@ bool AiAgentImplementation::stalkProspect(SceneObject* prospect) {
 	CreatureObject* creature = prospect->asCreatureObject();
 
 	if (creature != nullptr && creature->isPlayerCreature()) {
+		if (!isAggressiveTo(creature))
+			return false;
+
 		if (isCamouflaged(creature)) {
 			return false;
 		}
@@ -2331,11 +2334,15 @@ float AiAgentImplementation::getMaxDistance() {
 		if (!CollisionManager::checkLineOfSight(asAiAgent(), followCopy)) {
 			return 1.0f;
 		} else if (!isInCombat()) {
-			if (peekBlackboard("formationOffset"))
-				return 0.1f;
+			if (peekBlackboard("formationOffset")) {
+				if (isPet()) {
+					return 0.1f;
+				} else {
+					return 1.0f;
+				}
+			}
 
-			if (creatureBitmask & CreatureFlag::ESCORT || isPet())
-				return 5.0f;
+			return 4.0f;
 		} else if (getWeapon() != nullptr ) {
 			float weapMaxRange = Math::min(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
 			return Math::max(1.0f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius());

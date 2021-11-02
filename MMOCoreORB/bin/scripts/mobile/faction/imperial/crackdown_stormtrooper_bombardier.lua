@@ -28,6 +28,7 @@ crackdown_stormtrooper_bombardier = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 	scale = 1.05,
+	customAiMap = "crackdown",
 
 	templates = {"object/mobile/dressed_stormtrooper_bombardier_m.iff"},
 	lootGroups = {

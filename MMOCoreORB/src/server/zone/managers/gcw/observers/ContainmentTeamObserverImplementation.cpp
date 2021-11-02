@@ -53,15 +53,19 @@ bool ContainmentTeamObserverImplementation::despawnMembersCloseToLambdaShuttle(c
 		if (npc != nullptr) {
 			Locker npcLock(npc);
 			auto distance = npc->getWorldPosition().distanceTo(landingPosition);
-			if ((!npc->isInCombat() && distance < 4) || forcedCleanup) {
+			if ((!npc->isInCombat() && distance < 5) || forcedCleanup) {
 				if (!npc->isDead()) {
 					npc->destroyObjectFromWorld(true);
 				}
 				removeMember(i);
 			} else if (!npc->isInCombat() && !npc->isDead() && !forcedCleanup) {
 				npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat", 60000);
-				npc->setHomeLocation(landingPosition.getX(), landingPosition.getZ(), landingPosition.getY());
-				npc->leash();
+
+				if (i == 0) {
+					npc->removeCreatureFlag(CreatureFlag::FOLLOW);
+					npc->setNextPosition(landingPosition.getX(), landingPosition.getZ(), landingPosition.getY());
+					npc->setFollowState(AiAgent::PATROLLING);
+				}
 			}
 		} else {
 			removeMember(i);

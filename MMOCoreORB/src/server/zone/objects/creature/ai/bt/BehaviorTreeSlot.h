@@ -24,6 +24,7 @@ enum BehaviorTreeSlot : uint32 {
 	SCARE,
 	KILL,
 	STALK,
+	CRACKDOWNSCAN,
 	LASTTREESLOT
 };
 
@@ -64,6 +65,8 @@ inline const char* getBehaviorTreeSlotName(BehaviorTreeSlot slot) {
 		return "KILL";
 	case STALK:
 		return "STALK";
+	case CRACKDOWNSCAN:
+		return "CRACKDOWNSCAN";
 	case LASTTREESLOT:
 		return "LASTTREESLOT";
 	default:

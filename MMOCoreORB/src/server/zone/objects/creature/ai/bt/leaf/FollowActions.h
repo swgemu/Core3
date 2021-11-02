@@ -271,7 +271,7 @@ public:
 		if (agent->peekBlackboard("targetProspect"))
 			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
-		if (tar == nullptr && (state == AiAgent::WATCHING || state == AiAgent::STALKING || state == AiAgent::FOLLOWING)) {
+		if (tar == nullptr && ~agent->getCreatureBitmask() & CreatureFlag::FOLLOW && (state == AiAgent::WATCHING || state == AiAgent::STALKING || state == AiAgent::FOLLOWING)) {
 			agent->setFollowObject(nullptr);
 			return FAILURE;
 		}

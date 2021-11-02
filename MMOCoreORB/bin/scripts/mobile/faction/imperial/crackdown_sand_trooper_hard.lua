@@ -28,6 +28,7 @@ crackdown_sand_trooper_hard = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 	scale = 1.05,
+	customAiMap = "crackdown",
 
 	templates = {"object/mobile/dressed_stormtrooper_sand_trooper_m.iff"},
 	lootGroups = {
