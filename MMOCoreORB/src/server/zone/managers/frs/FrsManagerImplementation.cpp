@@ -1481,7 +1481,7 @@ void FrsManagerImplementation::handleVoteRecordSui(CreatureObject* player, Scene
 	if (petitionerGhost == nullptr)
 		return;
 
-	if (sameAccountEnclaveRestrictions && ghost->getAccountID() == petitionerGhost->getAccountID()) {
+	if (sameAccountEnclaveRestrictions && ghost->getAccountID() == petitionerGhost->getAccountID() && playerID != petitionerID) {
 		player->sendSystemMessage("You cannot vote for other characters on your account.");
 		return;
 	}
