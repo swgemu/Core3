@@ -2829,7 +2829,11 @@ void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject
 		return;
 	}
 
-	if (scanner->checkCooldownRecovery("crackdown_scan") && player->checkCooldownRecovery("crackdown_scan")) {
+	if (!scanner->checkCooldownRecovery("crackdown_scan")) {
+		scanner->info("Contraband scan of " + player->getDisplayedName() + " (" + String::valueOf(player->getObjectID()) + ") skipped due to scanner cooldown.");
+	} else if (!player->checkCooldownRecovery("crackdown_scan")) {
+		scanner->info("Contraband scan of " + player->getDisplayedName() + " (" + String::valueOf(player->getObjectID()) + ") skipped due to player cooldown.");
+	} else {
 		startContrabandScanSession(scanner, player, false);
 	}
 }
@@ -2878,7 +2882,11 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 				WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
 				wildContrabandScanSession->initializeSession();
 			}
+		} else {
+			this->info("Wild contraband scan skipped due to player " + player->getDisplayedName() + " (" + String::valueOf(player->getObjectID()) + ") not being a valid scan target.");
 		}
+	} else {
+		this->info("Wild contraband scan found no players at " + hitPoint.toString());
 	}
 
 	CheckWildContrabandScanTask* task = new CheckWildContrabandScanTask(_this.getReferenceUnsafeStaticCast());

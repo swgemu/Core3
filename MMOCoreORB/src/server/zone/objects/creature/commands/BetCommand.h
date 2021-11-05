@@ -24,8 +24,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
-
 		if (creature->isPlayerCreature()) {
 
 			CreatureObject* player = cast<CreatureObject*>(creature);
@@ -38,7 +36,7 @@ public:
 			if (gamblingManager == nullptr)
 				return GENERALERROR;
 
-			if (!gamblingManager->isPlaying(player)) {
+			if (!gamblingManager->isPlaying(player) || !gamblingManager->bettingAllowed(player)) {
 				player->sendSystemMessage("@gambling/default_interface:bet_failed");
 				return GENERALERROR;
 			}

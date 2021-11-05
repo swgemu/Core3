@@ -1628,12 +1628,12 @@ void AiAgentImplementation::activateRecovery() {
 }
 
 void AiAgentImplementation::activatePostureRecovery() {
-	if (isKnockedDown() && checkPostureChangeDelay()) {
+	if (isKnockedDown() && !hasPostureChangeDelay()) {
 		executeObjectControllerAction(0xA8A25C79); // stand
 		return;
 	}
 
-	if ((postureSet.miliDifference() > 0 || !isInCombat()) && (isProne() || isKneeling()) && checkPostureChangeDelay())
+	if ((postureSet.miliDifference() > 0 || !isInCombat()) && (isProne() || isKneeling()) && hasPostureChangeDelay())
 		executeObjectControllerAction(0xA8A25C79);
 }
 

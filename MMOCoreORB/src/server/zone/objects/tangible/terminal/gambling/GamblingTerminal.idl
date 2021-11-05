@@ -285,6 +285,17 @@ class GamblingTerminal extends Terminal {
 		return state != NOGAMERUNNING;
 	}
 
+	@dirty
+	public boolean bettingAllowed() {
+		if (machineType == ROULETTEMACHINE) {
+			return NOGAMERUNNING < state && state < WHEELSTART;
+		} else if (machineType == SLOTMACHINE) {
+			return state < GAMESTARTING;
+		} else {
+			return false;
+		}
+	}
+
 	/**
 	 * Notifies other Players
 	 * This method sends the argument text to every Player joined to the Terminal except the Player provided

@@ -72,6 +72,9 @@ void DroidCombatModuleDataComponent::addToStack(BaseDroidModuleComponent* other)
 		return;
 
 	rating = rating + otherModule->rating;
+	if (rating > 600) {
+		rating = 600;
+	}
 
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 	if (droidComponent != nullptr)

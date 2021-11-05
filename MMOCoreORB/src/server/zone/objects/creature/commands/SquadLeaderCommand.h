@@ -53,9 +53,6 @@ public:
 			return false;
 		}
 
-		if (player->hasAttackDelay() || !player->checkPostureChangeDelay())
-			return false;
-
 		return true;
 	}
 
