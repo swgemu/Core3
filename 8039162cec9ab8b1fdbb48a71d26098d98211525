@@ -16,6 +16,24 @@
       "revId": "8039162cec9ab8b1fdbb48a71d26098d98211525",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d42f841_ec82d928",
+        "filename": "MMOCoreORB/src/server/zone/packets/zone/SelectCharacterCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2021-11-06T19:12:03Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be skipped in that case, because currentParent !\u003d null?",
+      "parentUuid": "c43bf35c_ceeef11c",
+      "revId": "8039162cec9ab8b1fdbb48a71d26098d98211525",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
     }
   ]
 }
