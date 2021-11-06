@@ -163,7 +163,11 @@ public:
 			float x = worldPos.getX();
 			float y = worldPos.getY();
 			float z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
-			player->initializePosition(x, z, y);
+
+			if (x == 0 && y == 0) {
+				player->initializePosition(x, z, y);
+			}
+
 			zone->transferObject(player, -1, true);
 		} else {
 			if (player->getZone() == nullptr) {
