@@ -28,6 +28,7 @@ crackdown_swamp_trooper = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 	scale = 1.05,
+	customAiMap = "crackdown",
 
 	templates = {"object/mobile/dressed_swamp_trooper.iff"},
 	lootGroups = {},

@@ -2820,14 +2820,18 @@ int GCWManagerImplementation::isStrongholdCity(String& city) {
 	return 0;
 }
 
-void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject* player) {
-	if (!crackdownScansEnabled || !player->isPlayerCreature() || !scanner->isInRange(player, 12) || !CollisionManager::checkLineOfSight(scanner, player)) {
-		return;
-	}
+bool GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject* player) {
+	if (!crackdownScansEnabled)
+		return false;
 
-	if (!crackdownScanPrivilegedPlayers && player->isPlayerObject() && player->getPlayerObject()->isPrivileged()) {
-		return;
-	}
+	if (!CollisionManager::checkLineOfSight(scanner, player))
+		return false;
+
+	if (player->isIncapacitated())
+		return false;
+
+	if (!crackdownScanPrivilegedPlayers && player->isPlayerObject() && player->getPlayerObject()->isPrivileged())
+		return false;
 
 	if (!scanner->checkCooldownRecovery("crackdown_scan")) {
 		scanner->info("Contraband scan of " + player->getDisplayedName() + " (" + String::valueOf(player->getObjectID()) + ") skipped due to scanner cooldown.");
@@ -2835,7 +2839,10 @@ void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject
 		scanner->info("Contraband scan of " + player->getDisplayedName() + " (" + String::valueOf(player->getObjectID()) + ") skipped due to player cooldown.");
 	} else {
 		startContrabandScanSession(scanner, player, false);
+		return true;
 	}
+
+	return false;
 }
 
 void GCWManagerImplementation::startContrabandScanSession(AiAgent* scanner, CreatureObject* player, bool enforced) {

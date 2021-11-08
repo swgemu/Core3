@@ -11,6 +11,7 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/managers/gcw/observers/ContainmentTeamObserver.h"
 
 namespace server {
 namespace zone {
@@ -271,7 +272,7 @@ public:
 		if (agent->peekBlackboard("targetProspect"))
 			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
-		if (tar == nullptr && (state == AiAgent::WATCHING || state == AiAgent::STALKING || state == AiAgent::FOLLOWING)) {
+		if (tar == nullptr && ~agent->getCreatureBitmask() & CreatureFlag::FOLLOW && (state == AiAgent::WATCHING || state == AiAgent::STALKING || state == AiAgent::FOLLOWING)) {
 			agent->setFollowObject(nullptr);
 			return FAILURE;
 		}
@@ -706,6 +707,56 @@ public:
 		return msg.toString();
 	}
 };
+
+class FollowSquadLeader : public Behavior {
+public:
+	FollowSquadLeader(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	FollowSquadLeader(const FollowSquadLeader& a) : Behavior(a) {
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		if (agent == nullptr)
+			return FAILURE;
+
+		ManagedReference<ContainmentTeamObserver*> containmentTeamObserver = nullptr;
+		SortedVector<ManagedReference<Observer*>> observers = agent->getObservers(ObserverEventType::SQUAD);
+
+		for (int i = 0; i < observers.size(); i++) {
+			containmentTeamObserver = cast<ContainmentTeamObserver*>(observers.get(i).get());
+			if (containmentTeamObserver != nullptr)
+				break;
+		}
+
+		if (containmentTeamObserver == nullptr)
+			return FAILURE;
+
+		AiAgent* squadLeader = containmentTeamObserver->getMember(0);
+
+		if (squadLeader == nullptr || squadLeader == agent)
+			return FAILURE;
+
+		ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
+
+		if (followCopy != nullptr && followCopy == squadLeader) {
+			return FAILURE;
+		}
+
+		agent->addCreatureFlag(CreatureFlag::FOLLOW);
+		agent->setFollowObject(squadLeader);
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
+};
+
 
 }
 }

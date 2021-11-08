@@ -33,23 +33,17 @@ class ContainmentTeamObserver extends Observer implements Logger {
 	}
 
 	@local
-	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-
-    @local
 	public native void addMember(AiAgent member);
 
-    @local
+	@local
 	public native int size();
 
-    @local
+	@local
 	public native AiAgent getMember(unsigned int teamMemberIndex);
 
-    @local
+	@local
 	public native void removeMember(unsigned int teamMemberIndex);
 
-    @local
+	@local
 	public native boolean despawnMembersCloseToLambdaShuttle(@dereferenced final Vector3 landingPosition, boolean forcedCleanup);
-
-    @local
-	public native void attack(TangibleObject object);
 }

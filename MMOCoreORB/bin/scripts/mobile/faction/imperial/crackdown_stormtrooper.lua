@@ -27,10 +27,10 @@ crackdown_stormtrooper = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 	scale = 1.05,
+	customAiMap = "crackdown",
 
-	templates = {"object/mobile/dressed_stormtrooper_commando1_m.iff",
-		"object/mobile/dressed_stormtrooper_m.iff"
-	},
+	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
+
 	lootGroups = {
 		{
 			groups = {

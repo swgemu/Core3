@@ -18,12 +18,10 @@ namespace decorator {
 
 class LookForTarget : public Decorator {
 public:
-	LookForTarget(const String& className, const uint32 id, const LuaObject& args)
-			: Decorator(className, id, args) {
+	LookForTarget(const String& className, const uint32 id, const LuaObject& args) : Decorator(className, id, args) {
 	}
 
-	LookForTarget(const LookForTarget& b)
-			: Decorator(b) {
+	LookForTarget(const LookForTarget& b) : Decorator(b) {
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
@@ -38,8 +36,10 @@ public:
 		ManagedReference<SceneObject*> currObj = agent->getFollowObject().get();
 		if (currObj != nullptr) {
 			if (currObj->isCreatureObject() && isInvalidTarget(currObj->asCreatureObject(), agent)) {
-				agent->setFollowObject(nullptr);
-				agent->setOblivious();
+				if (~agent->getCreatureBitmask() & CreatureFlag::FOLLOW) {
+					agent->setFollowObject(nullptr);
+					agent->setOblivious();
+				}
 				return FAILURE;
 			} else {
 				agent->writeBlackboard("targetProspect", currObj);
@@ -86,7 +86,7 @@ public:
 		if (target == nullptr || target == agent || target->getPvpStatusBitmask() == CreatureFlag::NONE)
 			return true;
 
-		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvulnerable() || target->isInvisible() || !agent->isAttackableBy(target) || !target->isAttackableBy(agent))
+		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvulnerable() || target->isInvisible() || !target->isAttackableBy(agent) || !agent->isAttackableBy(target))
 			return true;
 
 		if (target->isVehicleObject() || target->hasRidingCreature() || agent->isCamouflaged(target))

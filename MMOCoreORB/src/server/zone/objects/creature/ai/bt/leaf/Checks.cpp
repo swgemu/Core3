@@ -480,3 +480,28 @@ template<> bool CheckWeaponIsRanged::check(AiAgent* agent) const {
 
 	return false;
 }
+
+template<> bool CheckIsDroid::check(AiAgent* agent) const {
+	return agent->isDroid();
+}
+
+template<> bool CheckCrackdownScanner::check(AiAgent* agent) const {
+	return agent->getCreatureBitmask() & CreatureFlag::SCANNING_FOR_CONTRABAND;
+}
+
+template<> bool CheckCrackdownFollowTarget::check(AiAgent* agent) const {
+	if (~agent->getCreatureBitmask() & CreatureFlag::FOLLOW)
+		return false;
+
+	ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
+	if (followCopy == nullptr || !followCopy->isCreatureObject())
+		return false;
+
+	CreatureObject* followCreo = followCopy->asCreatureObject();
+
+	if (followCreo != nullptr && !followCreo->isDead()) {
+		return true;
+	}
+
+	return false;
+}

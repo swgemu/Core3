@@ -4,6 +4,7 @@ includeFile("pet.lua")
 includeFile("static.lua")
 includeFile("deathWatch.lua")
 includeFile("enclaveSentinel.lua")
+includeFile("crackdown.lua")
 includeFile("villageRaider.lua")
 --TODO: write templates, put them in the base ai directory and get rid of current ai script directory structure
 --includeAiFile("templates/example.lua")
@@ -23,6 +24,13 @@ includeFile("villageRaider.lua")
 --includeAiFile("templates/combatmovepet.lua")
 
 customMap = {
+	{ "crackdown", {
+		{NONE, "rootCrackdown"},
+		{AWARE, "awareCrackdown"},
+		{IDLE, "idleCrackdown"},
+		{LOOKAT, "lookCrackdown"}
+	}},
+
 	{ "enclaveSentinel", {
 		{AWARE, "awareEnclavesentinel"}
 	}},
@@ -49,7 +57,8 @@ bitmaskLookup = {
 		{AGGRO, "aggroDefault"},
 		{SCARE, "scareDefault"},
 		{KILL, "killDefault"},
-		{STALK, 'stalkDefault'}
+		{STALK, 'stalkDefault'},
+		{CRACKDOWNSCAN, "crackdownScanDefault"}
 	}},
 
 	{NPC, {
