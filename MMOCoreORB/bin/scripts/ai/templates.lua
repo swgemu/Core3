@@ -27,7 +27,8 @@ customMap = {
 	{ "crackdown", {
 		{NONE, "rootCrackdown"},
 		{AWARE, "awareCrackdown"},
-		{IDLE, "idleCrackdown"}
+		{IDLE, "idleCrackdown"},
+		{LOOKAT, "lookCrackdown"}
 	}},
 
 	{ "enclaveSentinel", {

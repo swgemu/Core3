@@ -29,7 +29,7 @@ addAiTemplate("attackDefault", attackDefault)
 
 awareDefault = {
 	{id="4203407615",	name="Selector",	pid="none"},
-	{id="1249379660",	name="LookForTarget",	pid="4203407615",	args={bypassAttackable=false}},
+	{id="1249379660",	name="LookForTarget",	pid="4203407615"},
 	{id="1806193610",	name="Sequence",	pid="1249379660"},
 	{id="1216252065",	name="CalculateAggroMod",	pid="1806193610"},
 	{id="3272345327",	name="AlwaysSucceed",	pid="1806193610"},
@@ -66,8 +66,8 @@ crackdownScanDefault = {
 	{id="3269996958",	name="Sequence",	pid="688534916"},
 	{id="1824436907",	name="If",	pid="3269996958"},
 	{id="2380017041",	name="CheckCrackdownScanner",	pid="1824436907"},
-	{id="2897210188",	name="LookForTarget",	pid="3269996958",	args={bypassAttackable=true}},
-	{id="2120293750",	name="Sequence",	pid="2897210188"},
+	{id="2904764039",	name="LookForPlayer",	pid="3269996958"},
+	{id="2120293750",	name="Sequence",	pid="2904764039"},
 	{id="3355601546",	name="If",	pid="2120293750"},
 	{id="3223870287",	name="CheckProspectIsType",	pid="3355601546",	args={condition=PLAYERTYPE}},
 	{id="2557331632",	name="If",	pid="2120293750"},

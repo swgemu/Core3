@@ -31,6 +31,7 @@
 #include "server/zone/objects/creature/ai/bt/decorator/UntilFailure.h"
 #include "server/zone/objects/creature/ai/bt/decorator/UntilSuccess.h"
 #include "server/zone/objects/creature/ai/bt/decorator/LookForTarget.h"
+#include "server/zone/objects/creature/ai/bt/decorator/LookForPlayer.h"
 
 #define _REGISTERBASE(name) factory.reg(#name, new BehaviorCreator<name>)
 #define _REGISTERNODE(name) factory.reg(#name, new BehaviorCreator<node::name>)
@@ -330,6 +331,7 @@ private:
 		_REGISTERDECO(UntilFailure);
 		_REGISTERDECO(UntilSuccess);
 		_REGISTERDECO(LookForTarget);
+		_REGISTERDECO(LookForPlayer);
 		// check behaviors
 		_REGISTERLEAF(CheckPosture);
 		_REGISTERLEAF(CheckDestination);
@@ -371,6 +373,7 @@ private:
 		_REGISTERLEAF(CheckWeaponIsRanged);
 		_REGISTERLEAF(CheckIsDroid);
 		_REGISTERLEAF(CheckCrackdownScanner);
+		_REGISTERLEAF(CheckCrackdownFollowTarget);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -403,6 +406,7 @@ private:
 		_REGISTERLEAF(SetAttackPosture);
 		_REGISTERLEAF(PetReturn);
 		_REGISTERLEAF(ContrabandScan);
+		_REGISTERLEAF(FollowSquadLeader);
 	}
 
 	void putBitmask(Lua* lua, String key) {

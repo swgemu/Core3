@@ -1,5 +1,5 @@
 awareEnclavesentinel = {
-	{id="2877429880",	name="LookForTarget",	pid="none",	args={bypassAttackable=false}},
+	{id="2877429880",	name="LookForTarget",	pid="none"},
 	{id="1842231240",	name="Sequence",	pid="2877429880"},
 	{id="680465367",	name="If",	pid="1842231240"},
 	{id="14270026",	name="CheckProspectInRange",	pid="680465367",	args={condition=32.0}},

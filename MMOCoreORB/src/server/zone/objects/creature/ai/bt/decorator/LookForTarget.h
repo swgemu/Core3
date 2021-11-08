@@ -18,19 +18,10 @@ namespace decorator {
 
 class LookForTarget : public Decorator {
 public:
-	LookForTarget(const String& className, const uint32 id, const LuaObject& args) : Decorator(className, id, args), bypassAttackable(false) {
-		parseArgs(args);
+	LookForTarget(const String& className, const uint32 id, const LuaObject& args) : Decorator(className, id, args) {
 	}
 
-	LookForTarget(const LookForTarget& b) : Decorator(b), bypassAttackable(b.bypassAttackable) {
-	}
-
-	LookForTarget& operator=(const LookForTarget& b) {
-		if (this == &b)
-			return *this;
-		Behavior::operator=(b);
-		bypassAttackable = b.bypassAttackable;
-		return *this;
+	LookForTarget(const LookForTarget& b) : Decorator(b) {
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
@@ -44,7 +35,7 @@ public:
 		// If we have a follow object, check if it is still valid then set as prospect
 		ManagedReference<SceneObject*> currObj = agent->getFollowObject().get();
 		if (currObj != nullptr) {
-			if (currObj->isCreatureObject() && isInvalidTarget(currObj->asCreatureObject(), agent, bypassAttackable)) {
+			if (currObj->isCreatureObject() && isInvalidTarget(currObj->asCreatureObject(), agent)) {
 				if (~agent->getCreatureBitmask() & CreatureFlag::FOLLOW) {
 					agent->setFollowObject(nullptr);
 					agent->setOblivious();
@@ -62,14 +53,8 @@ public:
 		if (vec == nullptr)
 			return FAILURE;
 
-		int type = CloseObjectsVector::CREOTYPE;
-
-		// This is used to find scannable players for Crackdown City Scans
-		if (bypassAttackable)
-			type = CloseObjectsVector::PLAYERTYPE;
-
 		SortedVector<QuadTreeEntry* > closeObjects;
-		vec->safeCopyReceiversTo(closeObjects, type);
+		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 		// Shuffle closeobjects to randomize target checks
 		std::shuffle(closeObjects.begin(), closeObjects.end(), *System::getMTRand());
@@ -83,7 +68,7 @@ public:
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			ManagedReference<SceneObject*> scene = static_cast<SceneObject*>(closeObjects.get(i));
-			if (isInvalidTarget(scene->asCreatureObject(), agent, bypassAttackable))
+			if (isInvalidTarget(scene->asCreatureObject(), agent))
 				continue;
 
 			agent->writeBlackboard("targetProspect", scene);
@@ -97,16 +82,12 @@ public:
 		return FAILURE;
 	}
 
-	bool isInvalidTarget(CreatureObject* target, AiAgent* agent, bool bypassAttackable) const {
+	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
 		if (target == nullptr || target == agent || target->getPvpStatusBitmask() == CreatureFlag::NONE)
 			return true;
 
-		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvulnerable() || target->isInvisible())
+		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvulnerable() || target->isInvisible() || !target->isAttackableBy(agent) || !agent->isAttackableBy(target))
 			return true;
-
-		if ((!target->isAttackableBy(agent) || !agent->isAttackableBy(target)) && !bypassAttackable)
-			return true;
-
 
 		if (target->isVehicleObject() || target->hasRidingCreature() || agent->isCamouflaged(target))
 			return true;
@@ -122,13 +103,6 @@ public:
 
 		return false;
 	}
-
-	void parseArgs(const LuaObject& args) {
-		bypassAttackable = getArg<bool>()(args, "bypassAttackable");
-	}
-
-private:
-	bool bypassAttackable;
 };
 
 }

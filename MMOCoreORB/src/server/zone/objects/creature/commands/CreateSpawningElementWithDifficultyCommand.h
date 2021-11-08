@@ -63,9 +63,9 @@ public:
 						direction.setHeadingDirection(nsp->getDirection()->getRadians());
 						LambdaShuttleWithReinforcementsTask::ReinforcementType reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN;
 						if (arg == "closestlambdanotroops") {
-							reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLENOTROOPS;
+							reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLEONLY;
 						} else if (arg == "closestcontainmentteam") {
-							reinforcementType = LambdaShuttleWithReinforcementsTask::NOLAMBDASHUTTLEONLYTROOPS;
+							reinforcementType = LambdaShuttleWithReinforcementsTask::CONTAINMENTTEAM;
 						}
 						Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(creature, Factions::FACTIONIMPERIAL, 2, "@imperial_presence/contraband_search:containment_team_imperial", *(nsp->getPosition()), direction, reinforcementType);
 						lambdaTask->schedule(1);
@@ -97,14 +97,14 @@ public:
 						reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLEATTACK;
 						spawnPoint = lambdaSpawnPoint;
 					} else {
-						reinforcementType = LambdaShuttleWithReinforcementsTask::NOLAMBDASHUTTLEONLYTROOPS;
+						reinforcementType = LambdaShuttleWithReinforcementsTask::CONTAINMENTTEAM;
 						spawnPoint = containmentTeamSpawnPoint;
 					}
 				} else if (lambdaSpawnPoint != nullptr) {
 					reinforcementType = LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLEATTACK;
 					spawnPoint = lambdaSpawnPoint;
 				} else if (containmentTeamSpawnPoint != nullptr) {
-					reinforcementType = LambdaShuttleWithReinforcementsTask::NOLAMBDASHUTTLEONLYTROOPS;
+					reinforcementType = LambdaShuttleWithReinforcementsTask::CONTAINMENTTEAM;
 					spawnPoint = containmentTeamSpawnPoint;
 				} else {
 					creature->sendSystemMessage("No containment team or Lambda shuttle spawns in range.");

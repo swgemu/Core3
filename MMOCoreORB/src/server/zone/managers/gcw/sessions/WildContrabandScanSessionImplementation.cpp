@@ -164,7 +164,16 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			scanState = FINISHED;
 		}
 	} break;
-	case SCANDELAY:
+	case SCANDELAY: {
+		PlayerObject* ghost = player->getPlayerObject();
+		if ((ghost != nullptr && ghost->hasCrackdownTefTowards(Factions::FACTIONIMPERIAL)) || (player->getFaction() == Factions::FACTIONREBEL && (player->getFactionStatus() == FactionStatus::OVERT || player->getFactionStatus() == FactionStatus::COVERT))) {
+			AiAgent* droid = getDroid();
+			if (droid != nullptr) {
+				Locker droidlock(droid);
+				droid->addDefender(player);
+			}
+		}
+
 		if (timeLeft <= 0) {
 			int numberOfContrabandItems = 0;
 			GCWManager* gcwManager = zone->getGCWManager();
@@ -192,11 +201,17 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 				}
 
 				AiAgent* droid = getDroid();
-				if (droid != nullptr) {
+				if (droid != nullptr && !droid->isDead()) {
 					Locker dlocker(droid);
 					PatrolPoint* homeLocation = droid->getHomeLocation();
 
+					droid->removeCreatureFlag(CreatureFlag::FOLLOW);
+					droid->clearPatrolPoints();
+
+					droid->setFollowState(AiAgent::PATROLLING);
 					droid->setNextPosition(homeLocation->getPositionX(), homeLocation->getPositionZ(), homeLocation->getPositionY());
+					droid->stopWaiting();
+
 					droid->showFlyText("imperial_presence/contraband_search", "probot_support_fly", 255, 0, 0);
 				}
 			} else {
@@ -206,6 +221,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			}
 		}
 		break;
+	}
 	case INCOMBAT: {
 		AiAgent* droid = getDroid();
 		if (droid != nullptr) {

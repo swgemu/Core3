@@ -1636,7 +1636,7 @@ void AiAgentImplementation::activatePostureRecovery() {
 		return;
 	}
 
-	if ((postureSet.miliDifference() > 0 || !isInCombat()) && (isProne() || isKneeling()) && hasPostureChangeDelay())
+	if ((postureSet.miliDifference() > 0 || !isInCombat()) && (isProne() || isKneeling()) && !hasPostureChangeDelay())
 		executeObjectControllerAction(0xA8A25C79);
 }
 

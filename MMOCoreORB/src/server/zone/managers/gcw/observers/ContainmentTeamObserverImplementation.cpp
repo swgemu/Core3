@@ -9,17 +9,6 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 
-int ContainmentTeamObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	ManagedReference<TangibleObject*> attacker = cast<TangibleObject*>(arg1);
-	if (attacker == nullptr) {
-		return 0;
-	}
-
-	attack(attacker);
-
-	return 1;
-}
-
 void ContainmentTeamObserverImplementation::addMember(AiAgent* member) {
 	Locker locker(&containmentTeamLock);
 	teamMembers.add(member);
@@ -53,18 +42,23 @@ bool ContainmentTeamObserverImplementation::despawnMembersCloseToLambdaShuttle(c
 		if (npc != nullptr) {
 			Locker npcLock(npc);
 			auto distance = npc->getWorldPosition().distanceTo(landingPosition);
-			if ((!npc->isInCombat() && distance < 5) || forcedCleanup) {
-				if (!npc->isDead()) {
-					npc->destroyObjectFromWorld(true);
-				}
+			if (npc->isDead()) {
 				removeMember(i);
-			} else if (!npc->isInCombat() && !npc->isDead() && !forcedCleanup) {
+				continue;
+			} else if (!npc->isInCombat()) {
 				npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat", 60000);
 
-				if (i == 0) {
-					npc->removeCreatureFlag(CreatureFlag::FOLLOW);
-					npc->setNextPosition(landingPosition.getX(), landingPosition.getZ(), landingPosition.getY());
-					npc->setFollowState(AiAgent::PATROLLING);
+				npc->removeCreatureFlag(CreatureFlag::FOLLOW);
+				npc->setFollowObject(nullptr);
+				npc->setOblivious();
+				npc->setNextPosition(landingPosition.getX(), landingPosition.getZ(), landingPosition.getY());
+
+				if (forcedCleanup)
+					npc->leash();
+
+				if (distance < 8) {
+					npc->destroyObjectFromWorld(true);
+					removeMember(i);
 				}
 			}
 		} else {
@@ -72,20 +66,4 @@ bool ContainmentTeamObserverImplementation::despawnMembersCloseToLambdaShuttle(c
 		}
 	}
 	return teamMembers.size() == 0;
-}
-
-void ContainmentTeamObserverImplementation::attack(TangibleObject* object) {
-	// Do not lock containmentTeamLock in this method to avoid deadlocks. Use the minimal locking methods above.
-	for (int i = size() - 1; i >= 0; i--) {
-		auto npc = getMember(i);
-		if (npc != nullptr) {
-			Locker npcLock(npc);
-
-			if (!npc->isDead() && !npc->isInCombat()) {
-				Locker clocker(object, npc);
-				npc->setFollowObject(object);
-				CombatManager::instance()->startCombat(npc, object);
-			}
-		}
-	}
 }
