@@ -18,6 +18,8 @@ public:
 			return;
 		}
 
+		Locker creolocker(creature);
+
 		if (!creature->hasAttackDelay() || !creature->hasPostureChangeDelay()) {
 			return;
 		}
