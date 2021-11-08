@@ -139,6 +139,10 @@ uint32 GamblingManagerImplementation::createRouletteWindow(CreatureObject* playe
 
 	ManagedReference<GamblingTerminal*> terminal = rouletteGames.get(player);
 
+	if (terminal == nullptr) {
+		return 0;
+	}
+
 	box->setUsingObject(terminal);
 
 	if (terminal->getBets()->size() != 0) {
@@ -235,6 +239,10 @@ void GamblingManagerImplementation::handleSlot(CreatureObject* player, bool canc
 		return;
 
 	ManagedReference<GamblingTerminal*> terminal = slotGames.get(player);
+
+	if (terminal == nullptr) {
+		return;
+	}
 
 	bool hasBets = !terminal->getBets()->isEmpty();
 
