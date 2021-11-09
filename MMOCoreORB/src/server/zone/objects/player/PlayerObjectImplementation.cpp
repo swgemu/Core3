@@ -284,9 +284,6 @@ void PlayerObjectImplementation::unload() {
 			savedParentID = 0;
 		}
 
-		Vector3 position = creature->getWorldPosition();
-		setLastLogoutWorldPosition(position);
-
 		creature->destroyObjectFromWorld(true);
 	}
 
@@ -2180,6 +2177,9 @@ void PlayerObjectImplementation::disconnect(bool closeClient, bool doLock) {
 
 	if (creature == nullptr)
 		return;
+
+	Vector3 position = getWorldPosition();
+	setLastLogoutWorldPosition(position);
 
 	if (!isOnline()) {
 		auto owner = creature->getClient();

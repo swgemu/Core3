@@ -123,6 +123,7 @@ public:
 		}
 
 		uint64 savedParentID = ghost->getSavedParentID();
+
 		ManagedReference<SceneObject*> playerParent = zoneServer->getObject(savedParentID, true);
 		ManagedReference<SceneObject*> currentParent = player->getParent().get();
 
@@ -158,13 +159,14 @@ public:
 
 		} else if (currentParent == nullptr) {
 			player->removeAllSkillModsOfType(SkillModManager::STRUCTURE);
-			Vector3 worldPos = ghost->getLastLogoutWorldPosition();
 
+			Vector3 worldPos = ghost->getLastLogoutWorldPosition();
 			float x = worldPos.getX();
 			float y = worldPos.getY();
-			float z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
 
-			if (x != 0 || y != 0) {
+			if (savedParentID != 0 && (x != 0 || y != 0)) {
+				float z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
+
 				player->initializePosition(x, z, y);
 			}
 
