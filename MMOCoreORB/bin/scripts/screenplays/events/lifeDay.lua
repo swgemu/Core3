@@ -41,7 +41,7 @@ LifeDay = ScreenPlay:new {
 registerScreenPlay("LifeDay", true)
 
 function LifeDay:start(force_start)
-	if force_start or os.date("%m%d%H%M") >= "12010600" and os.date("%m%d%H") < "01010000" then
+	if force_start or os.date("%m%d%H%M") >= "12010600" and os.date("%m%d%H") < "12312359" then
 		writeStringSharedMemory("LifeDayName", "lifeDay" .. tostring(os.date('%Y')))
 		self:spawnMobiles()
 
@@ -174,7 +174,7 @@ function LifeDay:noGift(pPlayer)
 end
 
 function LifeDay:despawnEvent(pMobile, args)
-	if pMobile == nil and os.date("%m%d%H%M") < "01010000" then
+	if pMobile == nil and os.date("%m%d%H%M") < "12312359" then
 		print(os.date() .. ": Life Day - Rescheduling Despawn")
 
 		createEvent(24 * 60 * 60 * 1000, "LifeDay", "despawnEvent", nil, "")
