@@ -471,10 +471,10 @@ function CrackdownCantina:continueHarassingPlayer(pMobile)
 	end
 
 	spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:harass_" .. tostring(randSpatial) .. "_" .. factionName)
+
 	writeData(mobileID .. ":lastHarass", randSpatial)
-
-
 	writeData(mobileID .. ":timesHarassed", timesHarassed + 1)
+
 	createEvent(18000, "CrackdownCantina", "continueHarassingPlayer", pMobile, "")
 end
 
