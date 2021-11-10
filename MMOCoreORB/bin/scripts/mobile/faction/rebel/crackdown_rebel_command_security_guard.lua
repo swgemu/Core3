@@ -27,6 +27,7 @@ crackdown_rebel_command_security_guard = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "crackdown",
 
 	templates = {
 		"object/mobile/dressed_rebel_crewman_human_male_04.iff",

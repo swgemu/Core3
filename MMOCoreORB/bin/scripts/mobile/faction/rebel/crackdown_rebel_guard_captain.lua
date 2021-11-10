@@ -27,6 +27,7 @@ crackdown_rebel_guard_captain = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
+	customAiMap = "crackdown",
 
 	templates = {
 		"object/mobile/dressed_rebel_specforce_captain_moncal_female_01.iff",

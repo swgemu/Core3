@@ -27,6 +27,7 @@ crackdown_rebel_comm_operator = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "crackdown",
 
 	templates = {"object/mobile/dressed_rebel_scout_human_male_01.iff"},
 	lootGroups = {

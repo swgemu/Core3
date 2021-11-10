@@ -505,3 +505,7 @@ template<> bool CheckCrackdownFollowTarget::check(AiAgent* agent) const {
 
 	return false;
 }
+
+template<> bool CheckIsStationary::check(AiAgent* agent) const {
+	return agent->getCreatureBitmask() & CreatureFlag::STATIONARY;
+}

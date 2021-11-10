@@ -27,6 +27,7 @@ crackdown_rebel_elite_sand_rat = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "crackdown",
 
 	templates = {"object/mobile/dressed_rebel_trooper_sullustan_male_01.iff"},
 	lootGroups = {
