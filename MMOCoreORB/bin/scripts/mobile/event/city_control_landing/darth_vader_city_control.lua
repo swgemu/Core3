@@ -21,11 +21,12 @@ darth_vader_city_control = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 	scale = 1.25,
+	customAiMap = "crackdown",
 
 	templates = {"object/mobile/darth_vader.iff"},
 	lootGroups = {},

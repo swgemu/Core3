@@ -434,8 +434,8 @@ function CrackdownCantina:continueHarassingPlayer(pMobile)
 
 	local pPlayer = getSceneObject(playerID)
 
-	if (pPlayer == nil or CreatureObject(pPlayer):isDead()) then
-		createEvent(15000, "CrackdownCantina", "finishHarassing", pMobile, "")
+	if (pPlayer == nil or CreatureObject(pPlayer):isDead() or SceneObject(pPlayer):getParentID() == 0) then
+		createEvent(10000, "CrackdownCantina", "finishHarassing", pMobile, "")
 		return
 	end
 
