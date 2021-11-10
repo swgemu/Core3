@@ -138,7 +138,7 @@ function CrackdownCantina:startTrouble(pCantina)
 		factionName = "rebel"
 	end
 
-	local pSpawn = spawnMobile(zoneName, spawnTemplate, 0, 48.13, .1, 2.47, 175, foyerID)
+	local pSpawn = spawnMobile(zoneName, spawnTemplate, 0, 48.13, .1, 2.47, 0, foyerID)
 
 	if (pSpawn == nil) then
 		deleteData(cantinaID .. ":crackdownInProgress")
@@ -149,7 +149,7 @@ function CrackdownCantina:startTrouble(pCantina)
 	spatialChat(pSpawn, "@npc_reaction/imperial_crackdown_cantina:call_in_" .. factionName)
 
 	AiAgent(pSpawn):addCreatureFlag(AI_STATIONARY)
-	self:setupHarasser(pSpawn, factionName)
+	createEvent(1000, "CrackdownCantina", "setupHarasser", pSpawn, factionName)
 end
 
 function CrackdownCantina:setupHarasser(pMobile, factionName)
@@ -186,7 +186,7 @@ function CrackdownCantina:onStartedCombat(pMobile, pPlayer)
 		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:back_up")
 
 		local factionName = readStringData(mobileID .. ":factionName")
-		self:callForBackup(pMobile, factionName)
+		createEvent(1000, "CrackdownCantina", "callForBackup", pMobile, factionName)
 	end
 
 	return 1
@@ -226,11 +226,9 @@ function CrackdownCantina:destinationReached(pMobile)
 
 	if (pointName == "cantina") then
 		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:rebel_scum_" .. factionName)
-
-		createEvent(10000, "CrackdownCantina", "startHarassing", pMobile, "")
+		createEvent(7000, "CrackdownCantina", "startHarassing", pMobile, "")
 	elseif (pointName == "harassPlayer") then
-		local factionName = readStringData(mobileID .. ":factionName")
-		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:checking_out_" .. factionName)
+		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:sudden_moves_" .. factionName)
 
 		local playerID = readData(mobileID .. ":harassing")
 
@@ -242,7 +240,7 @@ function CrackdownCantina:destinationReached(pMobile)
 		end
 	elseif (pointName == "exit") then
 		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:back_home")
-		createEvent(4000, "CrackdownCantina", "leaveCantina", pMobile, "")
+		createEvent(7000, "CrackdownCantina", "leaveCantina", pMobile, "")
 	elseif (pointName == "backupLoc") then
 		local targetID = readData(mobileID .. ":targetID")
 		local pTarget = getSceneObject(targetID)
@@ -322,7 +320,7 @@ function CrackdownCantina:startHarassing(pMobile)
 			writeData(mobileID .. ":harassing", harassingPlayerID)
 
 			foundHarass = true
-			createEvent(8000, "CrackdownCantina", "harassPlayer", pMobile, "")
+			createEvent(12000, "CrackdownCantina", "harassPlayer", pMobile, "")
 		end
 	else
 		local harassFaction
@@ -388,7 +386,7 @@ function CrackdownCantina:harassPlayer(pMobile)
 	SceneObject(pMobile):faceObject(pPlayer, true)
 	spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:looking_at_" .. factionName)
 
-	createEvent(2000, "CrackdownCantina", "moveToPlayer", pMobile, "false")
+	createEvent(3000, "CrackdownCantina", "moveToPlayer", pMobile, "false")
 end
 
 function CrackdownCantina:moveToPlayer(pMobile, playerMoved)
@@ -410,6 +408,9 @@ function CrackdownCantina:moveToPlayer(pMobile, playerMoved)
 		writeStringData(mobileID .. ":nextPoint", "playerMoved")
 	else
 		writeStringData(mobileID .. ":nextPoint", "harassPlayer")
+
+		local factionName = readStringData(mobileID .. ":factionName")
+		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:checking_out_" .. factionName)
 	end
 
 	local distance = SceneObject(pMobile):getDistanceTo(pPlayer) - 1
@@ -435,7 +436,7 @@ function CrackdownCantina:continueHarassingPlayer(pMobile)
 	local pPlayer = getSceneObject(playerID)
 
 	if (pPlayer == nil or CreatureObject(pPlayer):isDead() or SceneObject(pPlayer):getParentID() == 0) then
-		createEvent(10000, "CrackdownCantina", "finishHarassing", pMobile, "")
+		createEvent(15000, "CrackdownCantina", "finishHarassing", pMobile, "")
 		return
 	end
 
@@ -458,26 +459,23 @@ function CrackdownCantina:continueHarassingPlayer(pMobile)
 
 	SceneObject(pMobile):faceObject(pPlayer, true)
 
-	if timesHarassed < 1 then
-		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:sudden_moves_" .. factionName)
-	else
-		local spatialString = ""
-		local randSpatial = getRandomNumber(1,15)
+	local spatialString = ""
+	local randSpatial = getRandomNumber(1,15)
 
-		if (randSpatial == lastHarass) then
-			if (randSpatial == 15) then
-				randSpatial = 14
-			else
-				randSpatial = randSpatial + 1
-			end
+	if (randSpatial == lastHarass) then
+		if (randSpatial == 15) then
+			randSpatial = 14
+		else
+			randSpatial = randSpatial + 1
 		end
-
-		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:harass_" .. tostring(randSpatial) .. "_" .. factionName)
-		writeData(mobileID .. ":lastHarass", randSpatial)
 	end
 
+	spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:harass_" .. tostring(randSpatial) .. "_" .. factionName)
+	writeData(mobileID .. ":lastHarass", randSpatial)
+
+
 	writeData(mobileID .. ":timesHarassed", timesHarassed + 1)
-	createEvent(8000, "CrackdownCantina", "continueHarassingPlayer", pMobile, "")
+	createEvent(18000, "CrackdownCantina", "continueHarassingPlayer", pMobile, "")
 end
 
 function CrackdownCantina:finishHarassing(pMobile)
@@ -742,7 +740,9 @@ function CrackdownCantina:isValidTarget(pPlayer, harassFaction)
 
 	local smugglerAvoidance = 0
 
-	if CreatureObject(pPlayer):hasSkill("combat_smuggler_underworld_01") then
+	if CreatureObject(pPlayer):hasSkill("combat_smuggler_novice") then
+		smugglerAvoidance = smugglerAvoidance + 15
+	elseif CreatureObject(pPlayer):hasSkill("combat_smuggler_underworld_01") then
 		smugglerAvoidance = smugglerAvoidance + 10
 	elseif CreatureObject(pPlayer):hasSkill("combat_smuggler_underworld_02") then
 		smugglerAvoidance = smugglerAvoidance + 10
