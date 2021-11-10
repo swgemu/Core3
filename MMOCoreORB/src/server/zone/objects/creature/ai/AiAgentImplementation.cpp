@@ -2825,7 +2825,13 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	CreatureObject* playerCreature = cast<CreatureObject*>( player);
 
 	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplateCRC);
-	if (conversationTemplate != nullptr && conversationTemplate->getConversationTemplateType() == ConversationTemplate::ConversationTemplateTypeLua && conversationTemplate->getLuaClassHandler() == "trainerConvHandler") {
+
+	if (conversationTemplate == nullptr) {
+		error("Could not find the conversation template.");
+		return false;
+	}
+
+	if (conversationTemplate->getConversationTemplateType() == ConversationTemplate::ConversationTemplateTypeLua && conversationTemplate->getLuaClassHandler() == "trainerConvHandler") {
 		ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
 		if (city != nullptr && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
