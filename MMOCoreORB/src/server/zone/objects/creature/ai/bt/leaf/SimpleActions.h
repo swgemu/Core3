@@ -507,7 +507,7 @@ public:
 		if (postureSet == nullptr || !postureSet->isPast())
 			return FAILURE;
 
-		if (System::random(100) > 98) {
+		if (System::random(100) > 98 && !agent->isDizzied()) {
 			WeaponObject* weapon = agent->getWeapon();
 
 			if (weapon == nullptr || !weapon->isRangedWeapon())
@@ -524,12 +524,14 @@ public:
 			postureSet->updateToCurrentTime();
 			postureSet->addMiliTime(20 * 1000);
 
-			float sqrDist = agent->getWorldPosition().squaredDistanceTo(target->getWorldPosition());
+			float sqrDist = agent->getPosition().squaredDistanceTo(target->getPosition());
 
 			if (sqrDist > 25 * 25) {
-				agent->setPosture(CreaturePosture::PRONE);
+				//agent->setPosture(CreaturePosture::PRONE);
+				agent->enqueueCommand(STRING_HASHCODE("prone"), 0, 0, "");
 			} else {
-				agent->setPosture(CreaturePosture::CROUCHED);
+				agent->enqueueCommand(STRING_HASHCODE("kneel"), 0, 0, "");
+				//agent->setPosture(CreaturePosture::CROUCHED);
 			}
 			return SUCCESS;
 		}

@@ -1632,12 +1632,30 @@ void AiAgentImplementation::activateRecovery() {
 
 void AiAgentImplementation::activatePostureRecovery() {
 	if (isKnockedDown() && !hasPostureChangeDelay()) {
-		executeObjectControllerAction(0xA8A25C79); // stand
+		enqueueCommand(STRING_HASHCODE("stand"), 0, 0, "");
 		return;
 	}
 
-	if ((postureSet.miliDifference() > 0 || !isInCombat()) && (isProne() || isKneeling()) && !hasPostureChangeDelay())
-		executeObjectControllerAction(0xA8A25C79);
+	if (isProne() || isKneeling()) {
+		if (isInCombat()) {
+			if (postureSet.miliDifference() > 0) {
+				enqueueCommand(STRING_HASHCODE("stand"), 0, 0, "");
+				return;
+			}
+
+			ManagedReference<SceneObject*> followCopy = getFollowObject().get();
+
+			if (followCopy != nullptr) {
+				float sqrDist = getPosition().squaredDistanceTo(followCopy->getPosition());
+
+				if ((weapon != nullptr && Math::sqrt(sqrDist) > weapon->getMaxRange()) || !checkLineOfSight(followCopy)) {
+					enqueueCommand(STRING_HASHCODE("stand"), 0, 0, "");
+				}
+			}
+		} else {
+			enqueueCommand(STRING_HASHCODE("stand"), 0, 0, "");
+		}
+	}
 }
 
 void AiAgentImplementation::activateHAMRegeneration(int latency) {
