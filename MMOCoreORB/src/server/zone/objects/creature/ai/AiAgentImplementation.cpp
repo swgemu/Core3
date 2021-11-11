@@ -2431,7 +2431,7 @@ int AiAgentImplementation::setDestination() {
 		}
 
 		clearPatrolPoints();
-		PatrolPoint nextPos = followCopy->getWorldPosition();
+		PatrolPoint nextPos = followCopy->getPosition();
 
 		if (peekBlackboard("formationOffset") && !isInCombat()) {
 			Vector3 formationOffset = readBlackboard("formationOffset").get<Vector3>();
