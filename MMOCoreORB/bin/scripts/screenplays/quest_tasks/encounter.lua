@@ -143,7 +143,6 @@ function Encounter:setSpawnedObjectsToFollow(spawnedObjects, objectToFollow)
 				AiAgent(spawnedObjects[i]):addCreatureFlag(AI_ESCORT)
 				AiAgent(spawnedObjects[i]):addCreatureFlag(AI_FOLLOW)
 				AiAgent(spawnedObjects[i]):setFollowObject(objectToFollow)
-				AiAgent(spawnedObjects[i]):setFollowState(3)
 			end
 		end
 	end
@@ -253,13 +252,9 @@ function Encounter:doRunAway(pAiAgent)
 	local newZ = readData(objectID .. ":encounterNewZ")
 
 	AiAgent(pAiAgent):setFollowObject(nil)
-	AiAgent(pAiAgent):addCreatureFlag(AI_NOAIAGGRO)
-	AiAgent(pAiAgent):addCreatureFlag(AI_FOLLOW)
-	AiAgent(pAiAgent):setAITemplate()
+	AiAgent(pAiAgent):setFollowState(4)
 
-	AiAgent(pAiAgent):stopWaiting()
 	AiAgent(pAiAgent):setNextPosition(newX, newZ, newY, 0)
-	AiAgent(pAiAgent):executeBehavior()
 
 	deleteData(objectID .. ":encounterNewX")
 	deleteData(objectID .. ":encounterNewY")
