@@ -1638,7 +1638,7 @@ void AiAgentImplementation::activatePostureRecovery() {
 
 	if (isProne() || isKneeling()) {
 		if (isInCombat()) {
-			if (postureSet.miliDifference() > 0) {
+			if (System::random(100) > 75 && postureSet.miliDifference() > 0) {
 				enqueueCommand(STRING_HASHCODE("stand"), 0, 0, "");
 				return;
 			}

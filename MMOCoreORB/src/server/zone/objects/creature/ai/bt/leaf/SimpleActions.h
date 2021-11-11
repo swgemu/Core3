@@ -527,11 +527,9 @@ public:
 			float sqrDist = agent->getPosition().squaredDistanceTo(target->getPosition());
 
 			if (sqrDist > 25 * 25) {
-				//agent->setPosture(CreaturePosture::PRONE);
 				agent->enqueueCommand(STRING_HASHCODE("prone"), 0, 0, "");
 			} else {
 				agent->enqueueCommand(STRING_HASHCODE("kneel"), 0, 0, "");
-				//agent->setPosture(CreaturePosture::CROUCHED);
 			}
 			return SUCCESS;
 		}
