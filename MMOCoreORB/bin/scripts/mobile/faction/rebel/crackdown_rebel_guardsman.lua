@@ -27,6 +27,7 @@ crackdown_rebel_guardsman = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "crackdown",
 
 	templates = {
 		"object/mobile/dressed_rebel_trooper_twk_male_01.iff",

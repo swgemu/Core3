@@ -215,7 +215,7 @@ function CityControlLanding:spawnMobile(spawnNumber)
 		local pMobile = spawnMobile(planet, template[spawnNumber], 0, xLoc, cityCoords[2], yLoc, cityCoords[4], 0, "")
 
 		if (pMobile ~= nil) then
-			AiAgent(pMobile):setFollowState(4)
+			AiAgent(pMobile):addCreatureFlag(AI_STATIONARY)
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 
 			local mobileID = SceneObject(pMobile):getObjectID()

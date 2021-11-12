@@ -21,10 +21,11 @@ leia_organa_city_control = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
+	customAiMap = "crackdown",
 
 	templates = {"object/mobile/leia_organa.iff"},
 	lootGroups = {},

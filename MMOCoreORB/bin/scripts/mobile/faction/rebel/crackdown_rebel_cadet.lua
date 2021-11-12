@@ -27,6 +27,7 @@ crackdown_rebel_cadet = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "crackdown",
 
 	templates = {"object/mobile/dressed_mercenary_weak_hum_f.iff"},
 	lootGroups = {

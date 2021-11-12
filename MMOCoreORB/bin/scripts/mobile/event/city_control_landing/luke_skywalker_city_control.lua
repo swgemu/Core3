@@ -21,10 +21,11 @@ luke_skywalker_city_control = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
+	customAiMap = "crackdown",
 
 	templates = {"object/mobile/dressed_luke_skywalker.iff"},
 	lootGroups = {},
