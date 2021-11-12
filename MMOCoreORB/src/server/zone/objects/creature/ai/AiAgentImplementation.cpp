@@ -307,7 +307,7 @@ void AiAgentImplementation::loadWeaponTemplateData() {
 		allowedWeapon = petDeed->getRanged();
 	}
 
-	Reference<WeaponObject*> defaultWeap = asCreatureObject()->getDefaultWeapon();
+	Reference<WeaponObject*> defaultWeap = asCreatureObject()->getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	if (defaultWeap != nullptr) {
 		defaultWeapon = defaultWeap;
