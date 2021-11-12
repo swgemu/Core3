@@ -97,7 +97,28 @@ public:
 					msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
 			}
 
-			msg << endl << "numberOfPlayersInRange = " << objCreo->getNumberOfPlayersInRange();
+			msg << endl << "numberOfPlayersInRange = " << objCreo->getNumberOfPlayersInRange() << endl;
+
+			WeaponObject* defaultWeapon = objCreo->getDefaultWeapon();
+			if (defaultWeapon != nullptr) {
+				msg << "Default Weapon ID = " << defaultWeapon->getObjectID() << endl;
+			} else {
+				msg << "Default Weapon is nullptr" << endl;
+			}
+
+			WeaponObject* primaryWeapon = objCreo->getPrimaryWeapon();
+			if (primaryWeapon != nullptr) {
+				msg << "Primary Weapon ID = " << primaryWeapon->getObjectID() << endl;
+			} else {
+				msg << "Primary Weapon is nullptr" << endl;
+			}
+
+			WeaponObject* secondaryWeapon = objCreo->getSecondaryWeapon();
+			if (secondaryWeapon != nullptr) {
+				msg << "Secondary Weapon ID = " << secondaryWeapon->getObjectID() << endl;
+			} else {
+				msg << "Secondary Weapon is nullptr" << endl;
+			}
 		}
 
 		player->sendSystemMessage(msg.toString());
