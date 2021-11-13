@@ -444,9 +444,7 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void setZone(Zone zne);
 
 	@preLocked
-	public void setCustomRegionName(final string name) {
-		customRegionName = name;
-	}
+	public native void setCustomRegionName(final string name);
 
 	@preLocked
 	public void setCitySpecialization(final string spec) {

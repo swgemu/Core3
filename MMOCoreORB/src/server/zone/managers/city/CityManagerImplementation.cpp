@@ -733,11 +733,19 @@ void CityManagerImplementation::assessCitizens(CityRegion* city) {
 }
 
 void CityManagerImplementation::processCityUpdate(CityRegion* city) {
-	info("Processing city update: " + city->getRegionName(), true);
+	auto zone = city->getZone();
+
+	if (zone == nullptr) {
+		error() << "processCityUpdate: City " << city->getRegionName() << " has nullptr zone!";
+		return;
+	}
+
+	info(true) << "Processing city update: " << city->getObjectID() << " " << city->getRegionName() << " on " << zone->getZoneName();
 
 	ManagedReference<StructureObject*> ch = city->getCityHall();
 
 	if (ch == nullptr) {
+		error() << "processCityUpdate: City " << city->getRegionName() << " has nullptr city hall!";
 		destroyCity(city);
 		return;
 	}
