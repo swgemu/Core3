@@ -701,7 +701,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 
 						if (tempTarget == roulette.get(terminal->getFirst())) {
 
-							tempReward = ((bets->get(i)->getAmount() * 35) * 2);
+							tempReward = (bets->get(i)->getAmount() * 35);
 
 							if (winnings->contains(bets->get(i)->getPlayer())) {
 
