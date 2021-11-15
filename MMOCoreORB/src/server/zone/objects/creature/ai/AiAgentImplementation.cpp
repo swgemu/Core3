@@ -704,7 +704,7 @@ void AiAgentImplementation::initializeTransientMembers() {
 			}
 
 			trx.commit();
-			destroyObjectFromDatabase(true);
+			destroyObjectFromDatabase();
 			controlDevice.get()->destroyObjectFromDatabase();
 			return;
 		} else if (!(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
