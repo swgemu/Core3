@@ -83,6 +83,7 @@
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 //#define SHOW_WALK_PATH
 //#define DEBUG
@@ -690,13 +691,25 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
-	// Fix for old pets on new AI
+	// Handling of old pets on new AI
 	if (controlDevice != nullptr) {
 		if (npcTemplate == nullptr) {
-			uint32 objectCRC = getServerObjectCRC();
+			// Old pets with no templates have to be destroyed
+			TransactionLog trx(TrxCode::SERVERDESTROYOBJECT, asAiAgent(), controlDevice.get());
 
-			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(objectCRC);
-			loadTemplateData(templateData);
+			ManagedReference<CreatureObject*> linkedCreature = getLinkedCreature().get();
+			if (linkedCreature != nullptr) {
+				trx.addState("Owner Name: ", linkedCreature->getFirstName());
+				trx.addState("Owner ID", linkedCreature->getObjectID());
+			}
+
+			trx.commit();
+			destroyObjectFromDatabase();
+			controlDevice.get()->destroyObjectFromDatabase();
+			return;
+		} else if (!(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
+			Logger::console.info(true) << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ": " << *_this.getReferenceUnsafeStaticCast();
+			loadTemplateData(npcTemplate);
 		}
 
 		if (defaultWeapon == nullptr)
