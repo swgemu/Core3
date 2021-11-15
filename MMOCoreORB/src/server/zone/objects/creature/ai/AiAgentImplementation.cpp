@@ -287,6 +287,11 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 }
 
 void AiAgentImplementation::loadWeaponTemplateData() {
+	if (npcTemplate == nullptr) {
+		Logger::console.info(true) << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ": " << *_this.getReferenceUnsafeStaticCast();
+		return;
+	}
+
 	float minDmg = npcTemplate->getDamageMin();
 	float maxDmg = npcTemplate->getDamageMax();
 	float speed = calculateAttackSpeed(level);
@@ -685,12 +690,18 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
-	// Fix for pets created prior to ai update
-	if (controlDevice != nullptr && defaultWeapon == nullptr) {
+	// Fix for old pets on new AI
+	if (controlDevice != nullptr) {
+		if (npcTemplate == nullptr) {
+			uint32 objectCRC = getServerObjectCRC();
 
-		loadWeaponTemplateData();
+			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(objectCRC);
+			loadTemplateData(templateData);
+		}
+
+		if (defaultWeapon == nullptr)
+			loadWeaponTemplateData();
 	}
-
 
 	setAITemplate();
 
