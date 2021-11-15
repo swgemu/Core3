@@ -704,10 +704,11 @@ void AiAgentImplementation::initializeTransientMembers() {
 			}
 
 			trx.commit();
-			destroyObjectFromWorld(true);
-			controlDevice.get()->destroyObjectFromWorld(true);
+			destroyObjectFromDatabase(true);
+			controlDevice.get()->destroyObjectFromDatabase();
 			return;
 		} else if (!(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
+			Logger::console.info(true) << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ": " << *_this.getReferenceUnsafeStaticCast();
 			loadTemplateData(npcTemplate);
 		}
 
