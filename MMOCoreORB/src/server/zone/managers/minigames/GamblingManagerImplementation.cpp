@@ -565,7 +565,7 @@ void GamblingManagerImplementation::kickAllPlayersOutOfRange(GamblingTerminal* t
 	for (int i = 0; i < terminal->getPlayersWindows()->size(); i++) {
 		VectorMapEntry<ManagedReference<CreatureObject*>, unsigned int> item = terminal->getPlayersWindows()->elementAt(i);
 		auto player = item.getKey();
-		if (!player->isInRange(terminal, 20.0f)) {
+		if (player != nullptr && !player->isInRange(terminal, 20.0f)) {
 			terminal->leaveTerminal(player);
 		}
 	}
