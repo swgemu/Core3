@@ -558,6 +558,9 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 						Locker _locker(player);
 
 						int win = bet->getAmount() * slot.get(terminal->getFirst());
+						if (win == 4500) {
+							win += 500;  // 500 extra credits for betting 3 credits and getting 777.
+						}
 
 						StringIdChatParameter textPlayer("gambling/default_interface","winner_to_winner");
 						textPlayer.setDI(win);
@@ -701,7 +704,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 
 						if (tempTarget == roulette.get(terminal->getFirst())) {
 
-							tempReward = ((bets->get(i)->getAmount() * 35) * 2);
+							tempReward = (bets->get(i)->getAmount() * 35);
 
 							if (winnings->contains(bets->get(i)->getPlayer())) {
 
