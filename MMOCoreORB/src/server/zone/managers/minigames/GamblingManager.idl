@@ -229,6 +229,8 @@ class GamblingManager extends Observer implements Logger {
 		}
 	}
 
+	public native void kickAllPlayersOutOfRange(GamblingTerminal terminal);
+
 	/**
 	 * Get maximum allowed bet for a player.
 	 * This method looks through the already placed bets and calculates the amount of credits remaining for the player until
