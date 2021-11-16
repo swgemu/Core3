@@ -539,6 +539,11 @@ void AiAgentImplementation::setupAttackMaps() {
 }
 
 void AiAgentImplementation::unequipWeapons() {
+	if (currentWeapon == nullptr) {
+		currentWeapon = defaultWeapon;
+		return;
+	}
+
 	SceneObject* inventory = asAiAgent()->getSlottedObject("inventory");
 
 	if (inventory == nullptr)
