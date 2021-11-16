@@ -1014,12 +1014,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	@dirty
-	public int getAggroRadius() {
-		if (npcTemplate.get() == null)
-			return 0;
-
-		return npcTemplate.get().getAggroRadius();
-	}
+	public native int getAggroRadius();
 
 	@dirty
 	public abstract unsigned int getArmor() {

@@ -3486,3 +3486,13 @@ void AiAgentImplementation::writeBlackboard(const String& key, const BlackboardD
 	blackboard.drop(key);
 	blackboard.put(key, data);
 }
+
+int AiAgentImplementation::getAggroRadius() {
+	if (npcTemplate.get() != nullptr && npcTemplate.get()->getAggroRadius() > 0)
+		return npcTemplate.get()->getAggroRadius();
+
+	if (getLevel() > 200)
+		return AiAgent::DEFAULTAGGRORADIUS;
+
+	return (2 + round(Math::min(getLevel(), 200) / 50)) * 3;
+}
