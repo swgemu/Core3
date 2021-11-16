@@ -261,7 +261,7 @@ void GamblingManagerImplementation::handleSlot(CreatureObject* player, bool canc
 	}
 }
 
-int GamblingManagerImplementation::getMaximumAllowedBet(GamblingTerminal* terminal, CreatureObject* player) {
+int GamblingManagerImplementation::getMaximumAllowedBet(GamblingTerminal* terminal, CreatureObject* player, int target) {
 	if (player == nullptr || terminal == nullptr) {
 		return 0;
 	}
@@ -272,7 +272,7 @@ int GamblingManagerImplementation::getMaximumAllowedBet(GamblingTerminal* termin
 		auto bets = terminal->getBets();
 
 		for (int i = 0; i < bets->size(); i++) {
-			if (bets->get(i)->getPlayer()->getObjectID() == player->getObjectID()) {
+			if (bets->get(i)->getPlayer()->getObjectID() == player->getObjectID() && bets->get(i)->getTarget() == roulette.get(target)) {
 				maximumBet -= bets->get(i)->getAmount();
 			}
 		}
@@ -302,7 +302,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObje
 
 	switch (terminal->getMachineType()) {
 		case GamblingTerminal::SLOTMACHINE: {
-			if (amount > getMaximumAllowedBet(terminal, player)) {
+			if (amount > terminal->getMaxBet()) {
 
 				StringIdChatParameter body("gambling/default_interface","bet_above_max");
 				body.setDI(terminal->getMaxBet());
@@ -356,7 +356,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObje
 			break;
 		}
 		case GamblingTerminal::ROULETTEMACHINE: {
-			if (amount > getMaximumAllowedBet(terminal, player)) {
+			if (amount > getMaximumAllowedBet(terminal, player, target)) {
 
 				StringIdChatParameter body("gambling/default_interface","bet_above_max");
 				body.setDI(terminal->getMaxBet());
