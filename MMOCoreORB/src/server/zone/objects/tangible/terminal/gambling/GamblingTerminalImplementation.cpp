@@ -495,7 +495,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					// wheel slows down, seems to be.
 					//Locker _locker(_this.getReferenceUnsafeStaticCast());
 
-					first = System::random(37);
+					first = System::random(36);
 
 					StringIdChatParameter body("gambling/default_interface","prose_wheel_slow");
 					body.setTT(String::valueOf(first));
@@ -527,7 +527,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 
 					} else {
 
-						first = System::random(37);
+						first = System::random(36);
 
 						StringIdChatParameter body("gambling/default_interface","prose_result_change");
 						body.setTT(String::valueOf(first));
