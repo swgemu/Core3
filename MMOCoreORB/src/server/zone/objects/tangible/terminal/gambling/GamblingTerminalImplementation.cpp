@@ -527,7 +527,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 
 					} else {
 
-						first = System::random(37);
+						first = System::random(36);
 
 						StringIdChatParameter body("gambling/default_interface","prose_result_change");
 						body.setTT(String::valueOf(first));
