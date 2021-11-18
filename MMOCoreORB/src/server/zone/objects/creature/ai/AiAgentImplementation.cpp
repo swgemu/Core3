@@ -2295,7 +2295,12 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 	}
 
 	if (isInNavMesh()) {
-		Sphere sphere(getWorldPosition(), dist);
+		Vector3 homeCoords;
+		homeCoords.setX(homeLocation.getPositionX());
+		homeCoords.setY(homeLocation.getPositionY());
+		homeCoords.setZ(homeLocation.getPositionZ());
+
+		Sphere sphere(homeCoords, dist);
 		Vector3 result;
 
 		for (int i = 0; i < num; i++) {

@@ -219,6 +219,9 @@ template<> bool CheckRetreat::check(AiAgent* agent) const {
 }
 
 template<> bool CheckFlee::check(AiAgent* agent) const {
+	if (agent == nullptr || agent->getParent().get() != nullptr)
+		return false;
+
 	Time* fleeDelay = agent->getFleeDelay();
 
 	if (fleeDelay == nullptr || !fleeDelay->isPast())
