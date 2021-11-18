@@ -229,6 +229,20 @@ class GamblingManager extends Observer implements Logger {
 		}
 	}
 
+	public native void kickAllPlayersOutOfRange(GamblingTerminal terminal);
+
+	/**
+	 * Get maximum allowed bet for a player.
+	 * This method looks through the already placed bets and calculates the amount of credits remaining for the player until
+	 * maximum bet is reached for the target.
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param terminal GablingTerminal being played
+	 * @param player CreatureObject betting money
+	 * @param target target to bet on.
+	 */
+	public native int getMaximumAllowedBet(GamblingTerminal terminal, CreatureObject player, int target);
+
 	/**
 	 * Accept bet from /bet command
 	 * This method receives the player who wants to bet, the amount he wants to bet, and the target he's betting on

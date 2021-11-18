@@ -261,6 +261,30 @@ void GamblingManagerImplementation::handleSlot(CreatureObject* player, bool canc
 	}
 }
 
+int GamblingManagerImplementation::getMaximumAllowedBet(GamblingTerminal* terminal, CreatureObject* player, int target) {
+	if (player == nullptr || terminal == nullptr) {
+		return 0;
+	}
+
+	int maximumBet = terminal->getMaxBet();
+
+	if (!terminal->getBets()->isEmpty()) {
+		auto bets = terminal->getBets();
+
+		for (int i = 0; i < bets->size(); i++) {
+			if (bets->get(i)->getPlayer()->getObjectID() == player->getObjectID() && bets->get(i)->getTarget() == roulette.get(target)) {
+				maximumBet -= bets->get(i)->getAmount();
+			}
+		}
+	}
+	if (maximumBet < 0) {
+		player->error("Player has been able to bet more than the maximum allowed amount.");
+		maximumBet = 0;
+	}
+
+	return maximumBet;
+}
+
 void GamblingManagerImplementation::bet(CreatureObject* player, int amount, int target, int machineType) {
 	if (player == nullptr)
 		return;
@@ -332,7 +356,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObje
 			break;
 		}
 		case GamblingTerminal::ROULETTEMACHINE: {
-			if (amount > terminal->getMaxBet()) {
+			if (amount > getMaximumAllowedBet(terminal, player, target)) {
 
 				StringIdChatParameter body("gambling/default_interface","bet_above_max");
 				body.setDI(terminal->getMaxBet());
@@ -532,7 +556,18 @@ void GamblingManagerImplementation::stopGame(GamblingTerminal* terminal, bool ca
 				break;
 			}
 		}
+		kickAllPlayersOutOfRange(terminal);
 
+	}
+}
+
+void GamblingManagerImplementation::kickAllPlayersOutOfRange(GamblingTerminal* terminal) {
+	for (int i = 0; i < terminal->getPlayersWindows()->size(); i++) {
+		VectorMapEntry<ManagedReference<CreatureObject*>, unsigned int> item = terminal->getPlayersWindows()->elementAt(i);
+		auto player = item.getKey();
+		if (player != nullptr && !player->isInRange(terminal, 20.0f)) {
+			terminal->leaveTerminal(player);
+		}
 	}
 }
 
