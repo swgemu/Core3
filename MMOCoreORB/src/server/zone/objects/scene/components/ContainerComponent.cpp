@@ -205,6 +205,9 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		return false;
 	}
 
+	if (!object->canBeTransferred(sceneObject))
+		return false;
+
 	ManagedReference<SceneObject*> objParent = object->getParent().get();
 	ManagedReference<Zone*> objZone = object->getLocalZone();
 	ManagedReference<Zone*> oldRootZone = object->getZone();

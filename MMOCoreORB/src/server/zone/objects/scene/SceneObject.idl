@@ -2192,4 +2192,9 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dirty
 	@local
 	public abstract native void getChildrenRecursive(@dereferenced SortedVector<unsigned long> childrenObjectsFound, int maxDepth = 50, boolean pruneCreo = false, boolean pruneCraftedComponents = false);
+	
+	@dirty
+	public abstract boolean canBeTransferred(SceneObject newContainer) {
+		return true;
+	}
 }

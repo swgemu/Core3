@@ -4110,7 +4110,7 @@ Instrument* CreatureObjectImplementation::getPlayableInstrument() {
 
 		ManagedReference<CreatureObject*> spawnerPlayer = instrument->getSpawnerPlayer().get();
 
-		if (spawnerPlayer == nullptr || spawnerPlayer != asCreatureObject())
+		if (spawnerPlayer != nullptr && spawnerPlayer != asCreatureObject())
 			return nullptr;
 	}
 
