@@ -10,6 +10,8 @@ include templates.SharedObjectTemplate;
 include templates.tangible.InstrumentObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
+import system.lang.ref.Reference;
+import server.zone.objects.tangible.tasks.InstrumentPulseTask;
 
 @json
 class Instrument extends TangibleObject {
@@ -19,6 +21,9 @@ class Instrument extends TangibleObject {
 
 	@weakReference
 	protected CreatureObject spawnerPlayer;
+	
+	@dereferenced
+	protected transient Reference<InstrumentPulseTask> instrumentPulse;
 
 	/* Redoing instrument consts to match the instrumentAudioId in TRE
 	 * The actual packets for triggering sound is different & in creature
@@ -93,11 +98,15 @@ class Instrument extends TangibleObject {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
-	public native void spawnInAdminCell(CreatureObject spawner);
-	public native void spawnNonAdmin(CreatureObject spawner);
 
 	@dirty
-	public native boolean canDropInstrument();
+	public native boolean isActiveInstrument(CreatureObject player);
+	
+	@dirty
+	public native boolean isEquipped();
+	
+	@dirty
+	public native boolean canBeTransferred(SceneObject newContainer);
 
 	@read
 	public int getInstrumentType() {
@@ -112,5 +121,9 @@ class Instrument extends TangibleObject {
 
 	public void setSpawnerPlayer(CreatureObject pla) {
 		spawnerPlayer = pla;
+	}
+	
+	public boolean isUnequippable() {
+		return instrumentType == NALARGON || instrumentType == OMNIBOX;
 	}
 }
