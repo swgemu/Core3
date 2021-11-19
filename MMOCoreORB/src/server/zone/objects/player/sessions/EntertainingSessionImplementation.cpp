@@ -676,7 +676,6 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber, bool gran
 			entertainer->broadcastMessage(flourish, true);
 		}
 
-		printf("Flourish count %i\n", flourishCount);
 		//check to see how many flourishes have occurred this tick
 		if (flourishCount < 5) {
 			// Add buff
@@ -684,12 +683,12 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber, bool gran
 
 			// Grant Experience
 			float loopDuration = performance->getLoopDuration();
-			printf("loop duration %f\n", loopDuration);
+
 			int flourishCap = (int) (10 / loopDuration); // Cap for how many flourishes count towards xp per pulse. Music loops are 5s, dance are 10s so music has a cap of 2, dance a cap of 1.
-			printf("Flourish cap %i\n", flourishCap);
+
 			if (grantXp && flourishCount < flourishCap)
 				flourishXp += performance->getFlourishXpMod();
-			printf("xp mod %i, new flourish xp %i\n", performance->getFlourishXpMod(), flourishXp);
+
 			flourishCount++;
 		}
 		entertainer->notifyObservers(ObserverEventType::FLOURISH, entertainer, flourishNumber);
