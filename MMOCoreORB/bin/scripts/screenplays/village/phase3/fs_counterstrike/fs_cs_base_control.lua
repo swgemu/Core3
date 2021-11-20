@@ -672,7 +672,7 @@ function FsCsBaseControl:setupSpawnedDefender(pMobile)
 
 	createEvent(getRandomNumber(10, 30) * 1000, "FsCsBaseControl", "doMobileSpatial", pMobile, "")
 
-	AiAgent(pMobile):setFollowState(4)
+	AiAgent(pMobile):setMovementState(4)
 
 	local theaterX = SceneObject(pTheater):getWorldPositionX()
 	local theaterZ = SceneObject(pTheater):getWorldPositionZ()

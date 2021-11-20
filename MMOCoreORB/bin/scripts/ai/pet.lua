@@ -8,10 +8,10 @@ awarePet = {
 	{id="2342952551",	name="CheckPetCommand",	pid="2777768044",	args={condition=PET_STAY}},
 	{id="2624621770",	name="Not",	pid="2672408205"},
 	{id="1629721978",	name="If",	pid="2624621770"},
-	{id="854873693",	name="CheckFollowState",	pid="1629721978",	args={condition=PATROLLING}},
+	{id="854873693",	name="CheckMovementState",	pid="1629721978",	args={condition=PATROLLING}},
 	{id="308986874",	name="Selector",	pid="2672408205"},
 	{id="2381505880",	name="PetReturn",	pid="308986874"},
-	{id="3351684077",	name="SetFollowState",	pid="308986874",	args={state=FOLLOWING}},
+	{id="3351684077",	name="SetMovementState",	pid="308986874",	args={state=FOLLOWING}},
 	{id="303550960",	name="WriteBlackboard",	pid="2672408205",	args={key="moveMode", val=RUN}},
 	{id="559248213",	name="TreeSocket",	pid="2672408205",	args={slot=MOVE}}}
 addAiTemplate("awarePet", awarePet)
@@ -54,7 +54,7 @@ idlePet = {
 	{id="2602839395",	name="Selector",	pid="none"},
 	{id="1196938563",	name="Sequence",	pid="2602839395"},
 	{id="2159332246",	name="If",	pid="1196938563"},
-	{id="2297306633",	name="CheckFollowState",	pid="2159332246",	args={condition=PATROLLING}},
+	{id="2297306633",	name="CheckMovementState",	pid="2159332246",	args={condition=PATROLLING}},
 	{id="2901314389",	name="WriteBlackboard",	pid="1196938563",	args={key="moveMode", val=WALK}},
 	{id="3579768154",	name="TreeSocket",	pid="1196938563",	args={slot=MOVE}},
 	{id="3694282813",	name="Wait",	pid="1196938563",	args={duration=5.0}},

@@ -90,7 +90,7 @@ public:
 
 					if (objectAgent != nullptr) {
 						msg << "Creature Bitmask: " << objectAgent->getCreatureBitmask() << endl;
-						msg << "Creature Follow State: " << objectAgent->getFollowState() << endl;
+						msg << "Creature Follow State: " << objectAgent->getMovementState() << endl;
 
 						ManagedReference<SceneObject*> followCopy = objectAgent->getFollowObject();
 						StringBuffer hasFollow;

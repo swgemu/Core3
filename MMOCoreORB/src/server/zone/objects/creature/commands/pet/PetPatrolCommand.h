@@ -49,7 +49,7 @@ public:
 			return GENERALERROR;
 
 		pet->setFollowObject(nullptr);
-		pet->setFollowState(AiAgent::PATROLLING);
+		pet->setMovementState(AiAgent::PATROLLING);
 		pet->clearSavedPatrolPoints();
 
 		for (int i = 0; i < controlDevice->getPatrolPointSize(); i++) {

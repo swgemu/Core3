@@ -335,7 +335,7 @@ private:
 		// check behaviors
 		_REGISTERLEAF(CheckPosture);
 		_REGISTERLEAF(CheckDestination);
-		_REGISTERLEAF(CheckFollowState);
+		_REGISTERLEAF(CheckMovementState);
 		_REGISTERLEAF(CheckHasFollow);
 		_REGISTERLEAF(CheckFollowHasState);
 		_REGISTERLEAF(CheckAggroDelayPast);
@@ -374,6 +374,7 @@ private:
 		_REGISTERLEAF(CheckIsDroid);
 		_REGISTERLEAF(CheckCrackdownScanner);
 		_REGISTERLEAF(CheckCrackdownFollowTarget);
+		_REGISTERLEAF(CheckIsStationary);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -391,7 +392,7 @@ private:
 		_REGISTERLEAF(DropProspectFromDefenders);
 		_REGISTERLEAF(SetDefenderFromProspect);
 		_REGISTERLEAF(UpdateRangeToFollow);
-		_REGISTERLEAF(SetFollowState);
+		_REGISTERLEAF(SetMovementState);
 		_REGISTERLEAF(CalculateAggroMod);
 		_REGISTERLEAF(RunAway);
 		_REGISTERLEAF(Evade);

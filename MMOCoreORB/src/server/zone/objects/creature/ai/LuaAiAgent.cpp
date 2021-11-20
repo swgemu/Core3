@@ -37,8 +37,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getTargetOfTargetID", &LuaAiAgent::getTargetOfTargetID },
 		{ "getTargetID", &LuaCreatureObject::getTargetID },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
-		{ "getFollowState", &LuaAiAgent::getFollowState },
-		{ "setFollowState", &LuaAiAgent::setFollowState },
+		{ "getMovementState", &LuaAiAgent::getMovementState },
+		{ "setMovementState", &LuaAiAgent::setMovementState },
 		{ "setNextPosition", &LuaAiAgent::setNextPosition },
 		{ "findNextPosition", &LuaAiAgent::findNextPosition },
 		{ "getMaxDistance", &LuaAiAgent::getMaxDistance },
@@ -238,8 +238,8 @@ int LuaAiAgent::getTargetOfTargetID(lua_State* L) {
 	return 1;
 }
 
-int LuaAiAgent::getFollowState(lua_State* L) {
-	unsigned int state = realObject->getFollowState();
+int LuaAiAgent::getMovementState(lua_State* L) {
+	unsigned int state = realObject->getMovementState();
 
 	lua_pushinteger(L, state);
 
@@ -267,10 +267,10 @@ int LuaAiAgent::setNextPosition(lua_State* L) {
 	return 0;
 }
 
-int LuaAiAgent::setFollowState(lua_State* L) {
+int LuaAiAgent::setMovementState(lua_State* L) {
 	int state = lua_tonumber(L, -1);
 
-	realObject->setFollowState(state);
+	realObject->setMovementState(state);
 
 	return 0;
 }

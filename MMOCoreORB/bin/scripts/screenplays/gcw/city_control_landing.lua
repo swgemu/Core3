@@ -98,8 +98,15 @@ function CityControlLanding:spawnCityLanding(spawnCity, manual)
 		writeStringData("LandingType:", landingType)
 		writeStringData("ShuttlePosture:", shuttlePosture)
 
-		createEvent(34 * 1000, "CityControlLanding", "handleShuttlePosture", pShuttle, "")
-		createEvent(10 * 1000, "CityControlLanding", "broadcastMessage", pShuttle, "")
+		local playerTable = SceneObject(pShuttle):getPlayersInRange(150)
+
+		if (#playerTable > 0) then
+			createEvent(34 * 1000, "CityControlLanding", "handleShuttlePosture", pShuttle, "")
+			createEvent(10 * 1000, "CityControlLanding", "broadcastMessage", pShuttle, "")
+		else
+			SceneObject(pShuttle):destroyObjectFromWorld()
+			createEvent(20 * 1000, "CityControlLanding", "cleanUp", "", "")
+		end
 	end
 end
 
@@ -247,7 +254,7 @@ function CityControlLanding:spawnMobile(spawnNumber)
 		local pMobile = spawnMobile(planet, template[spawnNumber], 0, xLoc, cityCoords[2], yLoc, cityCoords[4], 0, "")
 
 		if (pMobile ~= nil) then
-			AiAgent(pMobile):setFollowState(4)
+			AiAgent(pMobile):setMovementState(4)
 			CreatureObject(pMobile):setPvpStatusBitmask(1)
 
 			local mobileID = SceneObject(pMobile):getObjectID()

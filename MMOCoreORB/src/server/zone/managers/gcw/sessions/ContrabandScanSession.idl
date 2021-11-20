@@ -103,7 +103,7 @@ class ContrabandScanSession extends Facade {
 		acceptedFine = acceptFine;
 	}
 
-	private native string getFactionStringId(final string imperial, final string rebel);
+	private native string getFactionStringId(CreatureObject player, final string imperial, final string rebel);
 	private native void sendScannerChatMessage(Zone zone, AiAgent scanner, CreatureObject player, final string imperial, final string rebel);
 	private native void sendPersonalizedScannerChatMessage(Zone zone, AiAgent scanner, CreatureObject player, final string imperial, final string rebel);
 	private native void sendSystemMessage(AiAgent scanner, CreatureObject player, final string imperial, final string rebel);

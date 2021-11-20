@@ -248,18 +248,18 @@ public:
 	}
 };
 
-class SetFollowState : public Behavior {
+class SetMovementState : public Behavior {
 public:
-	SetFollowState(const String& className, const uint32 id, const LuaObject& args)
+	SetMovementState(const String& className, const uint32 id, const LuaObject& args)
 			: Behavior(className, id, args), state(0) {
 		parseArgs(args);
 	}
 
-	SetFollowState(const SetFollowState& a)
+	SetMovementState(const SetMovementState& a)
 			: Behavior(a), state(a.state) {
 	}
 
-	SetFollowState& operator=(const SetFollowState& a) {
+	SetMovementState& operator=(const SetMovementState& a) {
 		if (this == &a)
 			return *this;
 		Behavior::operator=(a);
@@ -293,7 +293,7 @@ public:
 		case AiAgent::FLEEING:
 		case AiAgent::LEASHING:
 		default:
-			agent->setFollowState(state);
+			agent->setMovementState(state);
 			break;
 		};
 
@@ -433,7 +433,7 @@ public:
 		if (!agent->isInCombat() || agent->isPet())
 			return FAILURE;
 
-		if (agent->getFollowState() == AiAgent::EVADING)
+		if (agent->getMovementState() == AiAgent::EVADING)
 			return SUCCESS;
 
 		Zone* zone = agent->getZoneUnsafe();
@@ -533,7 +533,7 @@ public:
 		if (CollisionManager::checkSphereCollision(position, 5, zone))
 			return FAILURE;
 
-		agent->setFollowState(AiAgent::EVADING);
+		agent->setMovementState(AiAgent::EVADING);
 		agent->setNextPosition(position.getX(), position.getZ(), position.getY(), agent->getParent().get().castTo<CellObject*>());
 		agent->faceObject(tar);
 
@@ -684,7 +684,7 @@ public:
 				return FAILURE;
 
 			agent->setFollowObject(nullptr);
-			agent->setFollowState(AiAgent::PATROLLING);
+			agent->setMovementState(AiAgent::PATROLLING);
 			agent->clearSavedPatrolPoints();
 
 			for (int i = 0; i < controlDevice->getPatrolPointSize(); i++) {
