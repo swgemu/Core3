@@ -290,6 +290,12 @@ void GamblingTerminalImplementation::statusUpdate(int event) {
 }
 
 void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int event) {
+	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
+
+	if (gamblingManager == nullptr) {
+		return;
+	}
+
 	switch (machineType) {
 		case SLOTMACHINE: {
 
@@ -495,10 +501,11 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					// wheel slows down, seems to be.
 					//Locker _locker(_this.getReferenceUnsafeStaticCast());
 
-					first = System::random(36);
+					first = System::random(37);
+					first = 37;
 
 					StringIdChatParameter body("gambling/default_interface","prose_wheel_slow");
-					body.setTT(String::valueOf(first));
+					body.setTT(gamblingManager->getRoulette()->get(first));
 
 					String terminalName;
 					_this.getReferenceUnsafeStaticCast()->getObjectName()->getFullPath(terminalName);
@@ -516,7 +523,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					if (random == 0) {
 
 						StringIdChatParameter body("gambling/default_interface","prose_result_same");
-						body.setTT(String::valueOf(first));
+						body.setTT(gamblingManager->getRoulette()->get(first));
 
 						String terminalName;
 						_this.getReferenceUnsafeStaticCast()->getObjectName()->getFullPath(terminalName);
@@ -527,10 +534,10 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 
 					} else {
 
-						first = System::random(36);
+						first = System::random(37);
 
 						StringIdChatParameter body("gambling/default_interface","prose_result_change");
-						body.setTT(String::valueOf(first));
+						body.setTT(gamblingManager->getRoulette()->get(first));
 
 						String terminalName;
 						_this.getReferenceUnsafeStaticCast()->getObjectName()->getFullPath(terminalName);
