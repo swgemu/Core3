@@ -33,8 +33,6 @@ bool GamblingTerminalImplementation::invalidPosture(CreatureObject* player) {
 	return false;
 }
 
-
-
 bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 	bool returnValue = true;
 	switch (machineType) {
@@ -331,7 +329,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 				}
 				case TWOLEFT: {
 					//Locker _locker(_this.getReferenceUnsafeStaticCast()); Unnecessary, called from continue which locks
-					first = System::random(7);
+					first = gamblingManager->rollSlotDigit();
 
 					if (player != nullptr) {
 						player->sendSystemMessage("Slot Machine Pay Line");
@@ -342,7 +340,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 				}
 				case ONELEFT: {
 					//Locker _locker(_this.getReferenceUnsafeStaticCast());
-					second = System::random(7);
+					second = gamblingManager->rollSlotDigit();
 
 					if (player != nullptr) {
 						player->sendSystemMessage("Slot Machine Pay Line");
@@ -353,7 +351,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 				}
 				case END: {
 					//Locker _locker(_this.getReferenceUnsafeStaticCast());
-					third = System::random(7);
+					third = gamblingManager->rollSlotDigit();
 
 					if (player != nullptr) {
 						player->sendSystemMessage("Slot Machine Pay Line");
