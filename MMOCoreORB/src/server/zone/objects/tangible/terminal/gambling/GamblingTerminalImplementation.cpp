@@ -94,6 +94,8 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
 
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
+
+	gamblingManager->removeOutOfRangePlayers(_this.getReferenceUnsafeStaticCast());
 	switch (machineType) {
 		case SLOTMACHINE: {
 			if (state == SLOTGAMEENDED) {//begin new round

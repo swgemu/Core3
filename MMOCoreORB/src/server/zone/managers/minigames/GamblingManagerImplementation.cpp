@@ -234,6 +234,34 @@ void GamblingManagerImplementation::refreshSlotMenu(CreatureObject* player, Gamb
 	terminal->getPlayersWindows()->put(player, createSlotWindow(player, 0));
 }
 
+void GamblingManagerImplementation::removeOutOfRangePlayers(GamblingTerminal* terminal) {
+	if (terminal == nullptr) {
+		return;
+	}
+
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
+	auto games = slotGames;
+	switch (terminal->getMachineType()) {
+		case GamblingTerminal::SLOTMACHINE: {
+			games = slotGames;
+			break;
+		}
+		case GamblingTerminal::ROULETTEMACHINE: {
+			games = rouletteGames;
+			break;
+		}
+	}
+
+	for (const auto& entry : games) {
+		if (entry.getValue()->getObjectID() == terminal->getObjectID()) {
+			auto player = entry.getKey();
+			if (player != nullptr && (!player->isInRange(terminal, 20.0f) || !player->isOnline())) {
+				terminal->leaveTerminal(player);
+			}
+		}
+	}
+}
+
 void GamblingManagerImplementation::initializeSlotWeights() {
 	slotWeights.add(25);
 	slotWeights.add(20);

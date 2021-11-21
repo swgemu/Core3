@@ -219,6 +219,8 @@ class GamblingManager extends Observer implements Logger {
 		return false;
 	}
 
+	public native void removeOutOfRangePlayers(GamblingTerminal terminal);
+
 	@local
 	protected native void initializeSlotWeights();
 
