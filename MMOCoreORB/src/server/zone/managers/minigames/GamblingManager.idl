@@ -39,10 +39,15 @@ class GamblingManager extends Observer implements Logger {
 	@dereferenced
 	protected Vector<int> rouletteTimer;
 
+	@dereferenced
+	protected Vector<int> slotWeights;
+	int slotWeightsTotal;
+
 	public GamblingManager() {
 		initializeRoulette();
 		initializeRouletteRed();
-		initializeSlots();
+		initializeSlotsWinnings();
+		initializeSlotWeights();
 
 		initializeSlotTimer();
 
@@ -81,7 +86,7 @@ class GamblingManager extends Observer implements Logger {
 		rouletteTimer.add(2);
 	}
 
-	public void initializeSlots() {
+	public void initializeSlotsWinnings() {
 		slot.add(4);
 		slot.add(50);
 		slot.add(75);
@@ -213,6 +218,12 @@ class GamblingManager extends Observer implements Logger {
 		}
 		return false;
 	}
+
+	@local
+	protected native void initializeSlotWeights();
+
+	@local
+	public native int rollSlotDigit();
 
 	public native void handleSlot(CreatureObject player, boolean cancel, boolean other);
 

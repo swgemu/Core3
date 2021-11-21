@@ -234,6 +234,34 @@ void GamblingManagerImplementation::refreshSlotMenu(CreatureObject* player, Gamb
 	terminal->getPlayersWindows()->put(player, createSlotWindow(player, 0));
 }
 
+void GamblingManagerImplementation::initializeSlotWeights() {
+	slotWeights.add(25);
+	slotWeights.add(20);
+	slotWeights.add(18);
+	slotWeights.add(15);
+	slotWeights.add(10);
+	slotWeights.add(5);
+	slotWeights.add(3);
+	slotWeights.add(1);
+
+	slotWeightsTotal = -1;
+	for (int i = 0; i < slotWeights.size(); i++) {
+		slotWeightsTotal += slotWeights.get(i);
+	}
+}
+
+int GamblingManagerImplementation::rollSlotDigit() {
+	int rolledWeight = System::random(slotWeightsTotal);
+
+	int value = 0;
+	while (rolledWeight > slotWeights.get(value) && value < slotWeights.size()) {
+		rolledWeight -= slotWeights.get(value);
+		value++;
+	}
+
+	return value;
+}
+
 void GamblingManagerImplementation::handleSlot(CreatureObject* player, bool cancel, bool other) {
 	if (player == nullptr)
 		return;
