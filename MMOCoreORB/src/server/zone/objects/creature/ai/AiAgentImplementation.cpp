@@ -1919,19 +1919,21 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		float targetDistance = targetPosition.getWorldPosition().distanceTo(thisWorldPos);
 
-		if (targetDistance > maxDistance) {
+		if (targetDistance < maxDistance) {
+			patrolPoints.remove(0);
+		}
+
+		if (targetDistance > maxDistance)
 			// this is the actual "distance we can travel" calculation. We only want to
 			// go to the edge of the maxDistance radius and stop, so select the minimum
 			// of either our max travel distance (maxSpeed) or the distance from the
 			// maxDistance radius
 			maxDist = Math::min(maxSpeed, targetDistance - maxDistance + 0.1f);
-		} else {
+		else
 			// We are already at or inside the maxDistance radius, so we have reached this
 			// patrolPoint. We want to stop at every patrolPoint exactly once, so we will
 			// return from this function here because we are done.
-			patrolPoints.remove(0);
 			break;
-		}
 
 		/*
 		 * STEP 3: Calculate the next position along the path
@@ -3504,14 +3506,4 @@ bool AiAgentImplementation::isPet() const {
 void AiAgentImplementation::writeBlackboard(const String& key, const BlackboardData& data) {
 	blackboard.drop(key);
 	blackboard.put(key, data);
-}
-
-int AiAgentImplementation::getAggroRadius() {
-	if (npcTemplate.get() != nullptr && npcTemplate.get()->getAggroRadius() > 0)
-		return npcTemplate.get()->getAggroRadius();
-
-	if (getLevel() > 200)
-		return AiAgent::DEFAULTAGGRORADIUS;
-
-	return (2 + round(Math::min(getLevel(), 200) / 50)) * 3;
 }

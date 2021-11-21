@@ -71,7 +71,7 @@ crackdownScanDefault = {
 	{id="3355601546",	name="If",	pid="2120293750"},
 	{id="3223870287",	name="CheckProspectIsType",	pid="3355601546",	args={condition=PLAYERTYPE}},
 	{id="2557331632",	name="If",	pid="2120293750"},
-	{id="3227701225",	name="CheckProspectInRange",	pid="2557331632",	args={condition=20.0}},
+	{id="3227701225",	name="CheckProspectInRange",	pid="2557331632",	args={condition=25.0}},
 	{id="1840897137",	name="ContrabandScan",	pid="2120293750"},
 	{id="1246036558",	name="AlwaysFail",	pid="688534916"},
 	{id="1955645295",	name="EraseBlackboard",	pid="1246036558",	args={param="targetProspect"}}}

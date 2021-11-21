@@ -329,14 +329,10 @@ public:
 		if (tar == nullptr || !tar->isCreatureObject())
 			return FAILURE;
 
-		float mod = 1.f;
+		CreatureObject* tarCreo = tar->asCreatureObject();
 
-		if (tar->isPlayerCreature()) {
-			CreatureObject* tarCreo = tar->asCreatureObject();
-			float levelDiff = tarCreo->getLevel() - agent->getLevel();
-			mod = Math::clamp(0.05f, (1.0f - (levelDiff / 20.0f)), 1.20f);
-		}
-
+		float minMod = Math::min(1.f - (tarCreo->getLevel() - agent->getLevel()) / 8.f, 1.5f);
+		float mod = Math::max(0.75f, minMod);
 		agent->writeBlackboard("aggroMod", mod);
 
 		return agent->peekBlackboard("aggroMod") ? SUCCESS : FAILURE;

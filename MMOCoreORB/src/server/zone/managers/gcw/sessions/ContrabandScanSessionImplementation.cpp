@@ -50,6 +50,10 @@ int ContrabandScanSessionImplementation::initializeSession() {
 		scannerFaction = currentWinningFaction;
 	}
 
+	if (scannerFaction == 0) {
+		scannerFaction = currentWinningFaction = Factions::FACTIONIMPERIAL;
+	}
+
 	scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
 
 	if (player->getActiveSession(SessionFacadeType::CONTRABANDSCAN) != nullptr) {
