@@ -186,13 +186,13 @@ function LifeDay:despawnEvent(pMobile, args)
 	local mobs = self.mobiles
 
 	for i = 1, #mobs, 1 do
-		local pOID = readData(i .. " :LifeDayMobile")
+		local pOID = readData(i .. ":LifeDayMobile")
 		local despawnMob = getSceneObject(pOID)
 
 		if despawnMob ~= nil then
 
 			SceneObject(despawnMob):destroyObjectFromWorld()
-			deleteData(i .. " :LifeDayMobile")
+			deleteData(i .. ":LifeDayMobile")
 		end
 	end
 

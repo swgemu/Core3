@@ -21,7 +21,7 @@ function lifeDayKkatamkConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pN
 	local screenID = screen:getScreenID()
 
 	if screenID == "waypoint" or screenID == "waypoint_wookiee" or screenID == "new_waypoint" then
-		lifeDayScreenplay:giveWaypoint(pPlayer)
+		LifeDay:giveWaypoint(pPlayer)
 	end
 	return pConvScreen
 end
