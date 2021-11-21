@@ -60,8 +60,8 @@ NabooKerenScreenPlay = CityScreenPlay:new {
 
 		--Guild Hall/Theater
 		{"trainer_dancer",0,18.188,2.12871,53.8705,2,4045383, ""},
-		{"trainer_entertainer",0,29.6396,2.12878,74.0291,270,4045383, ""},
-		{"trainer_musician",0,21.7,2.1,76.2,180,4045383, ""},
+		{"trainer_entertainer",0,26.5,2.12878,75.2,170,4045383, ""},
+		{"trainer_musician",0,21.7,2.1,75.2,180,4045383, ""},
 		{"theater_manager",0,21.7887,2.12809,63.5017,3,4045383, ""},
 		{"trainer_imagedesigner",0,-20.97,2.1287,74.23,180,4045384, ""},
 

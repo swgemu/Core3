@@ -38,11 +38,11 @@ function lifeDayOraalarriConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, 
 			clonedConversation:addOption("@conversation/lifeday04b:s_afabf3ac", "gift_non_wookiee") -- What sort of gifts?
 		end
 	elseif screenID == "gift_non_wookiee" or screenID == "enjoy_other_gift" then
-		lifeDayScreenplay:giveRandomGift(pPlayer)
+		LifeDay:giveRandomGift(pPlayer)
 	elseif screenID == "enjoy_robe" then
-		lifeDayScreenplay:giveRobe(pPlayer)
+		LifeDay:giveRobe(pPlayer)
 	elseif screenID == "no_gift" then
-		lifeDayScreenplay:noGift(pPlayer)
+		LifeDay:noGift(pPlayer)
 	end
 	return pConvScreen
 end

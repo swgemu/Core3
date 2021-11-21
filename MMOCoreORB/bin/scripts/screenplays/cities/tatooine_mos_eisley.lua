@@ -289,7 +289,7 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		{"comm_operator",300,-3.43834,2.6,11.8623,357,1105851, "npc_imperial"},
 		{"commoner_technician",300,-3.43834,2.6,12.9623,180.01,1105851, "conversation"},
 		{"rodian_clan_captain", 300, 5.07127, 2.6, 6.65958, 0, 1105851, "conversation"},
-		{"noble",60,28.93,2.12878,58.19,222.007,1105852, ""},
+		{"noble",60,26.93,2.12878,58.19,222.007,1105852, ""},
 		{"noble",60,19.26,2.12847,56.13,266.008,1105853, ""},
 		{"brawler",60,17.0318,2.12878,75.3601,0,1105853, "conversation"},
 		{"dede_chesmi",60,26.7839,2.12847,70.8524,180.013,1105853, "conversation"},

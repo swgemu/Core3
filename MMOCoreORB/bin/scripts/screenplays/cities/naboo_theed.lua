@@ -176,8 +176,8 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 		{"chiss_male",300,3.05224,2.12878,71.4469,0,5475487, "nervous"},
 		{"medic",60,-11.5446,2.12878,75.9709,0,5475487, "conversation"},
 		{"trainer_dancer",0,18.2374,2.12871,53.9343,6,5475487, ""},
-		{"trainer_entertainer",0,28.3235,2.12854,73.5353,90,5475487, ""},
-		{"trainer_musician",0,28.3,2.12801,54,-39,5475486, ""},
+		{"trainer_entertainer",0,26.2,2.12854,75.2,175,5475487, ""},
+		{"trainer_musician",0,23.8,2.12801,54,28,5475486, ""},
 		{"vendor",60,-11.5446,2.12878,76.8966,179.996,5475487, "happy"},
 		{"trainer_imagedesigner",0,-22.9,2.1287,74.7,121,5475488, ""},
 
