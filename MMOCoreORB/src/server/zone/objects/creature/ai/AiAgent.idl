@@ -105,7 +105,7 @@ class AiAgent extends CreatureObject {
 	private SceneObject followObject;
 	@weakReference
 	private SceneObject followStore;
-	private unsigned int followState;
+	private unsigned int movementState;
 	@dereferenced
 	private transient Mutex targetMutex;
 	@dereferenced
@@ -180,6 +180,9 @@ class AiAgent extends CreatureObject {
 	public static final int FLEEING = 5;
 	public static final int LEASHING = 6;
 	public static final int EVADING = 7;
+	public static final int PATHING_HOME = 8;
+	public static final int FOLLOW_FORMATION = 9;
+	public static final int MOVING_TO_HEAL = 10;
 
 	public static final int MOB_HERBIVORE = 1;
 	public static final int MOB_CARNIVORE = 2;
@@ -191,7 +194,7 @@ class AiAgent extends CreatureObject {
 	protected transient unsigned long customAiMap;
 
 	public AiAgent() {
-		followState = OBLIVIOUS;
+		movementState = OBLIVIOUS;
 
 		respawnTimer = 0;
 		respawnCounter = 0;
@@ -400,7 +403,7 @@ class AiAgent extends CreatureObject {
 
 	public void clearPatrolPoints() {
 		synchronized (targetMutex) {
-			if (followState == PATROLLING || followState == WATCHING) {
+			if (movementState == PATROLLING || movementState == WATCHING) {
 				for (int i = 0; i < patrolPoints.size(); i++) {
 					savedPatrolPoints.add(patrolPoints.get(i));
 				}
@@ -697,7 +700,7 @@ class AiAgent extends CreatureObject {
 
 	public void setOblivious() {
 		synchronized (targetMutex) {
-			setFollowState(OBLIVIOUS);
+			setMovementState(OBLIVIOUS);
 			setTargetObject(null);
 			clearState(CreatureState.PEACE);
 			//activateMovementEvent();
@@ -709,7 +712,7 @@ class AiAgent extends CreatureObject {
 			if (this.isRetreating())
 				return;
 
-			setFollowState(WATCHING);
+			setMovementState(WATCHING);
 
 			setTargetObject(obj);
 			//activateMovementEvent();
@@ -721,7 +724,7 @@ class AiAgent extends CreatureObject {
 			if (this.isRetreating())
 				return;
 
-			setFollowState(STALKING);
+			setMovementState(STALKING);
 
 			setTargetObject(obj);
 			//activateMovementEvent();
@@ -734,7 +737,7 @@ class AiAgent extends CreatureObject {
 				return;
 
 			if (followObject != obj) {
-				setFollowState(FOLLOWING);
+				setMovementState(FOLLOWING);
 
 				setTargetObject(obj);
 				//activateMovementEvent();
@@ -776,18 +779,18 @@ class AiAgent extends CreatureObject {
 	public native void restoreFollowObject();
 
 	@read
-	public unsigned int getFollowState() {
-		return followState;
+	public unsigned int getMovementState() {
+		return movementState;
 	}
 
-	public void setFollowState(int state) {
+	public void setMovementState(int state) {
 		synchronized (targetMutex) {
-			int oldState = followState;
+			int oldState = movementState;
 
 			if (state != PATROLLING && state != WATCHING)
 				clearPatrolPoints();
 
-			followState = state;
+			movementState = state;
 
 			if (oldState == LEASHING || state == LEASHING)
 				broadcastPvpStatusBitmask();
@@ -854,7 +857,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	public boolean isFleeing() {
-		return getFollowState() == FLEEING;
+		return getMovementState() == FLEEING;
 	}
 
 	@preLocked
@@ -1014,7 +1017,12 @@ class AiAgent extends CreatureObject {
 	}
 
 	@dirty
-	public native int getAggroRadius();
+	public int getAggroRadius() {
+		if (npcTemplate.get() == null)
+			return 0;
+
+		return npcTemplate.get().getAggroRadius();
+	}
 
 	@dirty
 	public abstract unsigned int getArmor() {

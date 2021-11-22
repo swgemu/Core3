@@ -15,7 +15,7 @@ namespace leaf {
 enum CheckType {
 	CHECK_POSTURE,
 	CHECK_DESTINATION,
-	CHECK_FOLLOWSTATE,
+	CHECK_MOVEMENTSTATE,
 	CHECK_HASFOLLOW,
 	CHECK_FOLLOWHASSTATE,
 	CHECK_AGGRODELAYPAST,
@@ -108,8 +108,8 @@ template<> bool CheckPosture::check(AiAgent* agent) const;
 typedef _Check<int32, CHECK_DESTINATION> CheckDestination;
 template<> bool CheckDestination::check(AiAgent* agent) const;
 
-typedef _Check<int32, CHECK_FOLLOWSTATE> CheckFollowState;
-template<> bool CheckFollowState::check(AiAgent* agent) const;
+typedef _Check<int32, CHECK_MOVEMENTSTATE> CheckMovementState;
+template<> bool CheckMovementState::check(AiAgent* agent) const;
 
 typedef _Check<int32, CHECK_HASFOLLOW> CheckHasFollow;
 template<> bool CheckHasFollow::check(AiAgent* agent) const;

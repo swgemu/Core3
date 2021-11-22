@@ -161,6 +161,8 @@ private:
 				formationOffset.setX(xOffset);
 				formationOffset.setY(spawnNumber * -1);
 				npc->writeBlackboard("formationOffset", formationOffset);
+			} else {
+				npc->addCreatureFlag(CreatureFlag::STATIONARY);
 			}
 
 			containmentTeamObserver->addMember(npc);
@@ -205,7 +207,7 @@ private:
 				agent->setFollowObject(squadLeader);
 			}
 
-			squadLeader->setWait(5000);
+			squadLeader->setCreatureBitmask(squadLeader->getCreatureBitmask() - CreatureFlag::STATIONARY);
 			squadLeader->addCreatureFlag(CreatureFlag::FOLLOW);
 			squadLeader->setFollowObject(player);
 		}
@@ -227,8 +229,7 @@ private:
 					state = TAKEOFF;
 				}
 
-				if (reinforcementType == LAMBDASHUTTLESCAN)
-					setupMovement(player);
+				setupMovement(player);
 			}
 		} else {
 			state = TAKEOFF;
@@ -271,7 +272,7 @@ private:
 			auto npc = containmentTeamObserver->getMember(0);
 			if (npc == nullptr) {
 				state = DELAY;
-			} else if (npc->getWorldPosition().distanceTo(player->getWorldPosition()) < 12 && !npc->isInCombat() && !npc->isDead()) {
+			} else if ((npc->getWorldPosition().squaredDistanceTo(player->getWorldPosition()) < 20 * 20) && !npc->isInCombat() && !npc->isDead()) {
 				auto zone = player->getZone();
 				if (zone != nullptr) {
 					auto gcwManager = zone->getGCWManager();
@@ -384,6 +385,31 @@ public:
 
 		if (player == nullptr) {
 			return;
+		}
+
+		if (faction == 0) {
+			if (player->getFactionStatus() == FactionStatus::COVERT || player->getFactionStatus() == FactionStatus::OVERT) {
+				if (player->getFaction() == Factions::FACTIONREBEL) {
+					troops = IMPERIALTROOPS;
+					faction = Factions::FACTIONIMPERIAL;
+				} else {
+					troops = REBELTROOPS;
+					faction = Factions::FACTIONREBEL;
+				}
+			} else {
+				if (player->isPlayerObject()) {
+					PlayerObject* ghost = player->getPlayerObject();
+					if (ghost != nullptr) {
+						if (ghost->hasCrackdownTefTowards(Factions::FACTIONIMPERIAL)) {
+							troops = IMPERIALTROOPS;
+							faction = Factions::FACTIONIMPERIAL;
+						} else if (ghost->hasCrackdownTefTowards(Factions::FACTIONREBEL)) {
+							troops = REBELTROOPS;
+							faction = Factions::FACTIONREBEL;
+						}
+					}
+				}
+			}
 		}
 
 		ManagedReference<SceneObject*> lambdaShuttle = getLambdaShuttle(player);

@@ -217,7 +217,7 @@ end
 function TatooineJabbasPalaceMobsScreenPlay:setupJabbaPatrol(pMobile)
 	createEvent(getRandomNumber(30,45) * 1000, "TatooineJabbasPalaceMobsScreenPlay", "JabbaPatrol", pMobile, "")
 	createObserver(DESTINATIONREACHED, "TatooineJabbasPalaceMobsScreenPlay", "jabbaPatrolDestReached", pMobile)
-	AiAgent(pMobile):setFollowState(4)
+	AiAgent(pMobile):setMovementState(4)
 end
 
 function TatooineJabbasPalaceMobsScreenPlay:palaceConverseJawa(pMobile)

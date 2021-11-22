@@ -41,7 +41,7 @@ function kidnappedNobleConvoHandler:doRunAway(pCreature)
 	AiAgent(pCreature):addCreatureFlag(AI_NOAIAGGRO)
 	AiAgent(pCreature):addCreatureFlag(AI_FOLLOW)
 	AiAgent(pCreature):setAITemplate() -- Don't move unless patrol point is added to list
-	AiAgent(pCreature):setFollowState(4) -- Patrolling
+	AiAgent(pCreature):setMovementState(4) -- Patrolling
 	AiAgent(pCreature):stopWaiting()
 	AiAgent(pCreature):setNextPosition(xPos, zPos, yPos, 0)
 	AiAgent(pCreature):executeBehavior()

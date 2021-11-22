@@ -7,6 +7,7 @@
 
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h"
+#include "server/zone/managers/gcw/sessions/WildContrabandScanSession.h"
 
 class CreateSpawningElementWithDifficultyCommand : public QueueCommand {
 public:
@@ -129,6 +130,9 @@ public:
 					Locker glocker(ghost);
 					ghost->addWaypoint(waypoint, false, true);
 				}
+			} else if (arg == "probot") {
+				WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(creature, gcwManager->getWinningFactionDifficultyScaling());
+				wildContrabandScanSession->initializeSession();
 			} else {
 				return INVALIDPARAMETERS;
 			}

@@ -208,7 +208,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 					droid->removeCreatureFlag(CreatureFlag::FOLLOW);
 					droid->clearPatrolPoints();
 
-					droid->setFollowState(AiAgent::PATROLLING);
+					droid->setMovementState(AiAgent::PATROLLING);
 					droid->setNextPosition(homeLocation->getPositionX(), homeLocation->getPositionZ(), homeLocation->getPositionY());
 					droid->stopWaiting();
 

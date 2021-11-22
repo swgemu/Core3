@@ -25,8 +25,8 @@ template<> bool CheckDestination::check(AiAgent* agent) const {
 	return agent->setDestination() > checkVar;
 }
 
-template<> bool CheckFollowState::check(AiAgent* agent) const {
-	return agent->getFollowState() == checkVar;
+template<> bool CheckMovementState::check(AiAgent* agent) const {
+	return agent->getMovementState() == checkVar;
 }
 
 template<> bool CheckHasFollow::check(AiAgent* agent) const {

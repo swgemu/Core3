@@ -1222,7 +1222,7 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 	notifyObservers(ObserverEventType::FLEEING, target);
 	sendReactionChat(ReactionManager::FLEE);
 
-	setFollowState(AiAgent::FLEEING);
+	setMovementState(AiAgent::FLEEING);
 
 	Vector3 runTrajectory;
 	Vector3 agentPosition = getWorldPosition();
@@ -1241,7 +1241,7 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 }
 
 void AiAgentImplementation::leash() {
-	setFollowState(AiAgent::LEASHING);
+	setMovementState(AiAgent::LEASHING);
 	setTargetObject(nullptr);
 	storeFollowObject();
 
@@ -1269,7 +1269,7 @@ void AiAgentImplementation::setDefender(SceneObject* defender) {
 		homeLocation.setReached(true);
 
 	setFollowObject(defender);
-	setFollowState(AiAgent::FOLLOWING);
+	setMovementState(AiAgent::FOLLOWING);
 	activateRecovery();
 }
 
@@ -1894,7 +1894,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			// we weren't able to find a path, so remove this location from patrolPoints and try again with the next one
 			PatrolPoint oldPoint = patrolPoints.remove(0);
 
-			if (getFollowState() == AiAgent::PATROLLING)
+			if (getMovementState() == AiAgent::PATROLLING)
 				savedPatrolPoints.add(oldPoint);
 
 			if (isRetreating())
@@ -2108,11 +2108,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	}
 
 	if (!found) {
-		if (getFollowState() == (AiAgent::PATROLLING || AiAgent::WATCHING) && patrolPoints.size() > 0)
+		if (getMovementState() == (AiAgent::PATROLLING || AiAgent::WATCHING) && patrolPoints.size() > 0)
 			savedPatrolPoints.add(patrolPoints.remove(0));
 
-		if (getFollowState() == AiAgent::EVADING)
-			setFollowState(AiAgent::FOLLOWING);
+		if (getMovementState() == AiAgent::EVADING)
+			setMovementState(AiAgent::FOLLOWING);
 
 		ManagedReference<SceneObject*> followCopy = followObject.get();
 		if (followCopy == nullptr)
@@ -2134,7 +2134,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 	updateLocomotion();
 
-	return (getFollowState() == AiAgent::FLEEING && !fleeDelay.isPast()) || found;
+	return (getMovementState() == AiAgent::FLEEING && !fleeDelay.isPast()) || found;
 }
 
 bool AiAgentImplementation::checkLineOfSight(SceneObject* obj) {
@@ -2287,10 +2287,10 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 	if (zone == nullptr)
 		return false;
 
-	uint32 savedState = getFollowState(); // save this off in case we fail
+	uint32 savedState = getMovementState(); // save this off in case we fail
 
 	if (savedState != PATROLLING || savedState != WATCHING) {
-		setFollowState(AiAgent::PATROLLING); // this clears patrol points
+		setMovementState(AiAgent::PATROLLING); // this clears patrol points
 		clearSavedPatrolPoints();
 	}
 
@@ -2350,7 +2350,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 	if (getPatrolPointSize() > 0)
 		return true;
 
-	setFollowState(savedState);
+	setMovementState(savedState);
 	return false;
 }
 
@@ -2359,7 +2359,7 @@ float AiAgentImplementation::getMaxDistance() {
 		return 0.1f;
 
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-	unsigned int stateCopy = getFollowState();
+	unsigned int stateCopy = getMovementState();
 
 	// info("getmaxDistance - stateCopy: " + String::valueOf(stateCopy), true);
 
@@ -2402,6 +2402,9 @@ float AiAgentImplementation::getMaxDistance() {
 			return 1 + getTemplateRadius() + followCopy->getTemplateRadius();
 		}
 		break;
+	case AiAgent::PATHING_HOME:
+		return 0.1f;
+		break;
 	}
 
 	return 5.f;
@@ -2411,7 +2414,7 @@ int AiAgentImplementation::setDestination() {
 	//info("setDestination start", true);
 
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-	unsigned int stateCopy = getFollowState();
+	unsigned int stateCopy = getMovementState();
 
 	// info("setDestination - stateCopy: " + String::valueOf(stateCopy), true);
 	// info("homeLocation: " + homeLocation.toString(), true);
@@ -2421,7 +2424,7 @@ int AiAgentImplementation::setDestination() {
 		clearPatrolPoints();
 
 		if (creatureBitmask & CreatureFlag::STATIC) {
-			if (!homeLocation.isInRange(asAiAgent(), 1.5)) {
+			if (!homeLocation.isInRange(asAiAgent(), 0.1f)) {
 				homeLocation.setReached(false);
 				addPatrolPoint(homeLocation);
 			} else {
@@ -2505,11 +2508,18 @@ int AiAgentImplementation::setDestination() {
 		}
 
 		break;
+	case AiAgent::PATHING_HOME:
+		if (homeLocation.isInRange(asAiAgent(), 0.1f)) {
+			setOblivious();
+			return setDestination();
+		}
+
+		break;
 	default:
 		if (creatureBitmask & CreatureFlag::STATIC) {
 			setOblivious();
 		} else if (followCopy == nullptr) {
-			setFollowState(PATROLLING);
+			setMovementState(PATROLLING);
 		}
 		break;
 	}
@@ -3268,7 +3278,7 @@ bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
 	if (object->isCreatureObject())
 		return isAttackableBy(object->asCreatureObject());
 
-	if (isDead() || isIncapacitated() || getFollowState() == AiAgent::LEASHING)
+	if (isDead() || isIncapacitated() || getMovementState() == AiAgent::LEASHING)
 		return false;
 
 	if (isPet()) {
@@ -3303,7 +3313,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	if (object == nullptr || object == asAiAgent())
 		return false;
 
-	if (isDead() || isIncapacitated() || getFollowState() == AiAgent::LEASHING)
+	if (isDead() || isIncapacitated() || getMovementState() == AiAgent::LEASHING)
 		return false;
 
 	if (isPet()) {
@@ -3496,14 +3506,4 @@ bool AiAgentImplementation::isPet() const {
 void AiAgentImplementation::writeBlackboard(const String& key, const BlackboardData& data) {
 	blackboard.drop(key);
 	blackboard.put(key, data);
-}
-
-int AiAgentImplementation::getAggroRadius() {
-	if (npcTemplate.get() != nullptr && npcTemplate.get()->getAggroRadius() > 0)
-		return npcTemplate.get()->getAggroRadius();
-
-	if (getLevel() > 200)
-		return AiAgent::DEFAULTAGGRORADIUS;
-
-	return (2 + round(Math::min(getLevel(), 200) / 50)) * 3;
 }

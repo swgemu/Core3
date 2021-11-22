@@ -252,7 +252,7 @@ function Encounter:doRunAway(pAiAgent)
 	local newZ = readData(objectID .. ":encounterNewZ")
 
 	AiAgent(pAiAgent):setFollowObject(nil)
-	AiAgent(pAiAgent):setFollowState(4)
+	AiAgent(pAiAgent):setMovementState(4)
 
 	AiAgent(pAiAgent):setNextPosition(newX, newZ, newY, 0)
 
