@@ -44,9 +44,10 @@
 object_tangible_food_crafted_drink_ithorian_mist = object_tangible_food_crafted_shared_drink_ithorian_mist:new {
 	templateType = CONSUMABLE,
 
-	duration = 10,
-	filling = 10,
-	nutrition = 10,
+	useCount = 5,
+	duration = 900,
+	filling = 21,
+	nutrition = 15,
 
 	effectType = 4,
 
