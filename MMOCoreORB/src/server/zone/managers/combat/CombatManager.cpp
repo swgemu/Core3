@@ -881,11 +881,11 @@ void CombatManager::sendMitigationCombatSpam(CreatureObject* defender, TangibleO
 
 // Get Attackers Area Targets
 Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAreaTargets(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) const {
-	float creatureVectorX = attacker->getPositionX();
-	float creatureVectorY = attacker->getPositionY();
+	Vector3 attackerPos = attacker->getPosition();
+	Vector3 defenderPos = defenderObject->getPosition();
 
-	float directionVectorX = defenderObject->getPositionX() - creatureVectorX;
-	float directionVectorY = defenderObject->getPositionY() - creatureVectorY;
+	float dx = defenderPos.getX() - attackerPos.getX();
+	float dy = defenderPos.getY() - attackerPos.getY();
 
 	Reference<SortedVector<ManagedReference<TangibleObject*>>*> defenders = new SortedVector<ManagedReference<TangibleObject*>>();
 
@@ -898,7 +898,8 @@ Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAr
 
 	int damage = 0;
 
-	int range = data.getAreaRange();
+	int areaRange = data.getAreaRange();
+	int range = areaRange;
 
 	if (data.getCommand()->isConeAction()) {
 		int coneRange = data.getConeRange();
@@ -918,7 +919,7 @@ Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAr
 		range += data.getRange();
 
 	if (weapon->isThrownWeapon() || weapon->isHeavyWeapon())
-		range = weapon->getMaxRange() + data.getAreaRange();
+		range = weapon->getMaxRange() + areaRange;
 
 	try {
 		// zone->rlock();
@@ -934,20 +935,19 @@ Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAr
 #ifdef COV_DEBUG
 			attacker->info("Null closeobjects vector in CombatManager::getAreaTargets", true);
 #endif
-			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+			zone->getInRangeObjects(attackerPos.getX(), attackerPos.getY(), 128, &closeObjects, true);
 		}
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			SceneObject* object = static_cast<SceneObject*>(closeObjects.get(i));
 
 			TangibleObject* tano = object->asTangibleObject();
-			CreatureObject* creo = object->asCreatureObject();
 
 			if (tano == nullptr) {
 				continue;
 			}
 
-			if (object == attacker || object == defenderObject) {
+			if (tano == attacker || tano == defenderObject) {
 				// error("object is attacker");
 				continue;
 			}
@@ -960,7 +960,7 @@ Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAr
 			uint64 tarParentID = object->getParentID();
 
 			if (attacker->isPlayerCreature() && tarParentID != 0 && attacker->getParentID() != tarParentID) {
-				Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
+				Reference<CellObject*> targetCell = tano->getParent().get().castTo<CellObject*>();
 				CreatureObject* attackerCreO = attacker->asCreatureObject();
 
 				if (attackerCreO != nullptr && targetCell != nullptr) {
@@ -977,7 +977,7 @@ Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAr
 					const ContainerPermissions* perms = targetCell->getContainerPermissions();
 
 					// This portion of the check is specific for locked dungeons doors since they do not inherit perms from parent
-					if (!perms->hasInheritPermissionsFromParent() && (attacker->getRootParent() == object->getRootParent())) {
+					if (!perms->hasInheritPermissionsFromParent() && (attacker->getRootParent() == tano->getRootParent())) {
 						if (!targetCell->checkContainerPermission(attackerCreO, ContainerPermissions::WALKIN)) {
 							continue;
 						}
@@ -985,22 +985,27 @@ Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAr
 				}
 			}
 
-			if (attacker->getWorldPosition().distanceTo(object->getWorldPosition()) - attacker->getTemplateRadius() - object->getTemplateRadius() > range) {
+			float attackerRadiusSq = attacker->getTemplateRadius() * attacker->getTemplateRadius();
+			float tanoRadiusSq = tano->getTemplateRadius() * tano->getTemplateRadius();
+
+			if ((attacker->getWorldPosition().squaredDistanceTo(tano->getWorldPosition()) - attackerRadiusSq - tanoRadiusSq) > (range * range)) {
 				// error("not in range " + String::valueOf(range));
 				continue;
 			}
 
 			if (data.isSplashDamage() || weapon->isThrownWeapon() || weapon->isHeavyWeapon()) {
-				if (defenderObject->getWorldPosition().distanceTo(tano->getWorldPosition()) - tano->getTemplateRadius() > data.getAreaRange())
+				if (defenderObject->getWorldPosition().squaredDistanceTo(tano->getWorldPosition()) - tanoRadiusSq > (areaRange * areaRange))
 					continue;
 			}
+
+			CreatureObject* creo = tano->asCreatureObject();
 
 			if (creo != nullptr && creo->isFeigningDeath() == false && creo->isIncapacitated()) {
 				// error("object is incapacitated");
 				continue;
 			}
 
-			if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX, directionVectorY)) {
+			if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), attackerPos.getX(), attackerPos.getY(), dx, dy)) {
 				// error("object is not in cone angle");
 				continue;
 			}
