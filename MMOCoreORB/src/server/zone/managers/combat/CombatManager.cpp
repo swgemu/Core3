@@ -714,6 +714,8 @@ void CombatManager::finalCombatSpam(TangibleObject* attacker, WeaponObject* weap
 
 		// Combat Spam
 		if (defender != nullptr) {
+			Locker defLock(defender, attacker);
+
 			int jediMitigation = hitList->getJediMitigation();
 			int foodMit = hitList->getFoodMitigation();
 			int broadcastDamage = hitList->getInitialDamage() - jediMitigation - foodMit;
