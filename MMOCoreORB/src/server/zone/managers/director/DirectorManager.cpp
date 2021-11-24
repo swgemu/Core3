@@ -612,6 +612,19 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("AI_STATIONARY", CreatureFlag::STATIONARY);
 	luaEngine->setGlobalInt("AI_NOAIAGGRO", CreatureFlag::NOAIAGGRO);
 
+	// AI Movement States
+	luaEngine->setGlobalInt("AI_OBLIVIOUS", AiAgent::OBLIVIOUS);
+	luaEngine->setGlobalInt("AI_WATCHING", AiAgent::WATCHING);
+	luaEngine->setGlobalInt("AI_STALKING", AiAgent::STALKING);
+	luaEngine->setGlobalInt("AI_FOLLOWING", AiAgent::FOLLOWING);
+	luaEngine->setGlobalInt("AI_PATROLLING", AiAgent::PATROLLING);
+	luaEngine->setGlobalInt("AI_FLEEING", AiAgent::FLEEING);
+	luaEngine->setGlobalInt("AI_LEASHING", AiAgent::LEASHING);
+	luaEngine->setGlobalInt("AI_EVADING", AiAgent::EVADING);
+	luaEngine->setGlobalInt("AI_PATHING_HOME", AiAgent::PATHING_HOME);
+	luaEngine->setGlobalInt("AI_FOLLOW_FORMATION", AiAgent::FOLLOW_FORMATION);
+	luaEngine->setGlobalInt("AI_MOVING_TO_HEAL", AiAgent::MOVING_TO_HEAL);
+
 	// Badges
 	const auto badges = BadgeList::instance()->getMap();
 	for (const auto& entry : *badges) {

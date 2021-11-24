@@ -418,7 +418,7 @@ function CorellianCorvette:setupBrokenDroid(pDroid)
 	createObserver(DESTINATIONREACHED, "CorellianCorvette", "repairDroidDestinationReached", pDroid)
 	SceneObject(pDroid):setContainerComponent("corvetteBrokenDroidContainerComponent")
 
-	AiAgent(pDroid):setMovementState(4) -- Patrolling
+	AiAgent(pDroid):setMovementState(AI_PATROLLING)
 
 	writeData(corvetteID .. ":electricTrapEnabled", 1)
 end
@@ -540,7 +540,7 @@ function CorellianCorvette:setupPrisoner(pPrisoner)
 	end
 
 	createObserver(DESTINATIONREACHED, "CorellianCorvette", "prisonerDestinationReached", pPrisoner)
-	AiAgent(pPrisoner):setMovementState(4) -- Patrolling
+	AiAgent(pPrisoner):setMovementState(AI_PATROLLING)
 
 	if (SceneObject(pPrisoner):getObjectName() == "prisoner") then
 		CreatureObject(pPrisoner):setOptionBit(CONVERSABLE)

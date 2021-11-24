@@ -106,7 +106,7 @@ function FsCsCommander:setPlayerAsEscorter(pCommander, pPlayer)
 	self:createCommanderWaypoint(pPlayer, theaterID)
 
 	AiAgent(pCommander):setFollowObject(pPlayer)
-	AiAgent(pCommander):setMovementState(3)
+	AiAgent(pCommander):setMovementState(AI_FOLLOWING)
 	AiAgent(pCommander):executeBehavior()
 end
 
@@ -346,7 +346,7 @@ function FsCsCommander:killCommander(pCommander)
 	local commanderID = SceneObject(pCommander):getObjectID()
 
 	CreatureObject(pCommander):setPosture(KNOCKEDDOWN)
-	AiAgent(pCommander):setMovementState(0)
+	AiAgent(pCommander):setMovementState(AI_OBLIVIOUS)
 	AiAgent(pCommander):setFollowObject(nil)
 	writeData(commanderID .. ":deathSequence", 1)
 	createEvent(5000, "FsCsCommander", "doCommanderDeathSequence", pCommander, "")
