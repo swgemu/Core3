@@ -101,6 +101,9 @@ addAiTemplate("equipDefault", equipDefault)
 
 healDefault = {
 	{id="3412645993",	name="Sequence",	pid="none"},
+	{id="3070384900",	name="Not",	pid="3412645993"},
+	{id="136362440",	name="If",	pid="3070384900"},
+	{id="2378733296",	name="CheckPosture",	pid="136362440",	args={condition=KNOCKEDDOWN}},
 	{id="2638573300",	name="Selector",	pid="3412645993"},
 	{id="2194304589",	name="If",	pid="2638573300"},
 	{id="2199358504",	name="CheckMovementState",	pid="2194304589",	args={condition=MOVING_TO_HEAL}},
