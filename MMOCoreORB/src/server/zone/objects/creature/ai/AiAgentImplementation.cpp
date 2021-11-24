@@ -2602,7 +2602,7 @@ int AiAgentImplementation::setDestination() {
 			}
 		}
 
-		ManagedReference<SceneObject*> healTarget = readBlackboard("healTarget").get<ManagedReference<CreatureObject*> >().get();
+		ManagedReference<CreatureObject*> healTarget = readBlackboard("healTarget").get<ManagedReference<CreatureObject*> >().get();
 
 		if (healTarget != nullptr) {
 			clearPatrolPoints();
