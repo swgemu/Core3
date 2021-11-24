@@ -58,7 +58,8 @@ bitmaskLookup = {
 		{SCARE, "scareDefault"},
 		{KILL, "killDefault"},
 		{STALK, 'stalkDefault'},
-		{CRACKDOWNSCAN, "crackdownScanDefault"}
+		{CRACKDOWNSCAN, "crackdownScanDefault"},
+		{HEAL, "healDefault"}
 	}},
 
 	{NPC, {

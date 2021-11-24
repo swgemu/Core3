@@ -512,3 +512,20 @@ template<> bool CheckCrackdownFollowTarget::check(AiAgent* agent) const {
 template<> bool CheckIsStationary::check(AiAgent* agent) const {
 	return agent->getCreatureBitmask() & CreatureFlag::STATIONARY;
 }
+
+template<> bool CheckIsHealer::check(AiAgent* agent) const {
+	return agent->isHealer();
+}
+
+template<> bool CheckHealChance::check(AiAgent* agent) const {
+	Time* healDelay = agent->getHealDelay();
+
+	if (healDelay == nullptr || !healDelay->isPast()) {
+		return false;
+	}
+
+	if (System::random(100) < 75)
+		return false;
+
+	return true;
+}

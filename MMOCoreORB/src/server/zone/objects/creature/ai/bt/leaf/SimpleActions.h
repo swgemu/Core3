@@ -593,6 +593,71 @@ public:
 
 };
 
+class HealTarget : public Behavior {
+public:
+	HealTarget(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	HealTarget(const HealTarget& b) : Behavior(b) {
+	}
+
+	HealTarget& operator=(const HealTarget& b) {
+		if (this == &b)
+			return *this;
+		Behavior::operator=(b);
+
+		return *this;
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		ManagedReference<CreatureObject*> healTarget = nullptr;
+
+		if (agent->peekBlackboard("healTarget"))
+			healTarget = agent->readBlackboard("healTarget").get<ManagedReference<CreatureObject*> >().get();
+
+		if (healTarget == nullptr) {
+			agent->setMovementState(AiAgent::FOLLOWING);
+			return FAILURE;
+		}
+
+		bool healExecuted = false;
+
+		if (healTarget->getHAM(CreatureAttribute::HEALTH) < healTarget->getMaxHAM(CreatureAttribute::HEALTH) || healTarget->getHAM(CreatureAttribute::ACTION) < healTarget->getMaxHAM(CreatureAttribute::ACTION)) {
+			if (healTarget == agent) {
+				agent->healTarget(healTarget);
+				healExecuted = true;
+			} else {
+				if (agent->isInRange(healTarget, 2.0f)) {
+					agent->healTarget(healTarget);
+
+					agent->setMovementState(AiAgent::FOLLOWING);
+					healExecuted = true;
+				}
+			}
+		}
+
+		if (healExecuted == true) {
+			Time* healDelay = agent->getHealDelay();
+
+			if (healDelay != nullptr) {
+				healDelay->updateToCurrentTime();
+				healDelay->addMiliTime(20 * 1000);
+			}
+
+			agent->eraseBlackboard("healTarget");
+		}
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className;
+
+		return msg.toString();
+	}
+};
+
 }
 }
 }

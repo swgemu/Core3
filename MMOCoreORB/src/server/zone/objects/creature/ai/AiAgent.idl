@@ -124,6 +124,9 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected transient Time postureSet;
 
+	@dereferenced
+	protected transient Time healDelay;
+
 	protected int reactionRank;
 
 	protected float respawnTimer;
@@ -618,6 +621,8 @@ class AiAgent extends CreatureObject {
 
 	public native boolean stalkProspect(SceneObject prospect);
 
+	public native void healTarget(CreatureObject target);
+
 	@preLocked
 	public native void setDespawnOnNoPlayerInRange(boolean val);
 
@@ -1009,6 +1014,14 @@ class AiAgent extends CreatureObject {
 	}
 
 	@dirty
+	public boolean isHealer() {
+		if (npcTemplate.get() == null)
+			return false;
+
+		return npcTemplate.get().isHealer();
+	}
+
+	@dirty
 	public unsigned int getFerocity() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -1279,6 +1292,12 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public Time getPostureSet() {
 		return postureSet;
+	}
+
+	@local
+	@dirty
+	public Time getHealDelay() {
+		return healDelay;
 	}
 
 	@local

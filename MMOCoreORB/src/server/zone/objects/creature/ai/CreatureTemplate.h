@@ -191,6 +191,10 @@ public:
 		return creatureBitmask & CreatureFlag::KILLER;
 	}
 
+	inline bool isHealer() const {
+		return creatureBitmask & CreatureFlag::HEALER;
+	}
+
 	inline bool isPack() const {
 		return creatureBitmask & CreatureFlag::PACK;
 	}

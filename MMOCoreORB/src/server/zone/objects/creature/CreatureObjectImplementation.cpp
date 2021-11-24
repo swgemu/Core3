@@ -1087,8 +1087,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	return 0;
 }
 
-int CreatureObjectImplementation::healDamage(TangibleObject* healer,
-		int damageType, int damage, bool notifyClient, bool notifyObservers) {
+int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient, bool notifyObservers) {
 	if (damage == 0)
 		return 0;
 
