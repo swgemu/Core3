@@ -1343,6 +1343,8 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 	}
 
 	ZoneServer* zoneServer = asAiAgent()->getZoneServer();
+
+	// Chat output for Testing - Remove later
 	ChatManager* chatManager = nullptr;
 
 	if (zoneServer != nullptr)
@@ -1350,9 +1352,9 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 
 	asAiAgent()->clearQueueActions();
 
-	String socialGroup = getSocialGroup();
+	uint32 socialGroup = getSocialGroup().hashCode();
 
-	if (socialGroup == "nightsister" || socialGroup == "mtn_clan" || socialGroup == "force" || socialGroup == "spider_nightsister") {
+	if (socialGroup == STRING_HASHCODE("nightsister") || socialGroup == STRING_HASHCODE("mtn_clan") || socialGroup == STRING_HASHCODE("force") || socialGroup == STRING_HASHCODE("spider_nightsister")) {
 		if (healTarget == asAiAgent()) {
 			healTarget->playEffect("clienteffect/pl_force_heal_self.cef");
 

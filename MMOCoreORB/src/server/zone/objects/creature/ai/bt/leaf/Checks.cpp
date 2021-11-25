@@ -524,7 +524,7 @@ template<> bool CheckHealChance::check(AiAgent* agent) const {
 		return false;
 	}
 
-	if (System::random(100) < 75)
+	if (System::random(100) < 75) // Increase after testing
 		return false;
 
 	return true;
