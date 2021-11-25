@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f09aea2_22413b4e",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2021-11-25T04:49:00Z",
+      "side": 1,
+      "message": "delete lua;\nlua \u003d nullptr;",
+      "revId": "b82a9284a107275595ed832b6fa3b1ed465ff959",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a5eed36_01679b31",
+        "filename": "MMOCoreORB/src/server/zone/managers/minigames/FishingManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2021-11-25T04:49:00Z",
+      "side": 1,
+      "message": "use the existing zone reference",
+      "revId": "b82a9284a107275595ed832b6fa3b1ed465ff959",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
