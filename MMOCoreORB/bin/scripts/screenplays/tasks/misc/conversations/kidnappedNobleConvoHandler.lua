@@ -37,11 +37,11 @@ function kidnappedNobleConvoHandler:doRunAway(pCreature)
 	local yPos = SceneObject(pCreature):getWorldPositionY() + 60
 	local zPos = getTerrainHeight(pCreature, xPos, yPos)
 
-	
+
 	AiAgent(pCreature):addCreatureFlag(AI_NOAIAGGRO)
 	AiAgent(pCreature):addCreatureFlag(AI_FOLLOW)
 	AiAgent(pCreature):setAITemplate() -- Don't move unless patrol point is added to list
-	AiAgent(pCreature):setMovementState(4) -- Patrolling
+	AiAgent(pCreature):setMovementState(AI_PATROLLING)
 	AiAgent(pCreature):stopWaiting()
 	AiAgent(pCreature):setNextPosition(xPos, zPos, yPos, 0)
 	AiAgent(pCreature):executeBehavior()

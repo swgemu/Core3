@@ -188,7 +188,7 @@ function CityScreenPlay:setupMobilePatrol(pMobile, num)
 		CreatureObject(pMobile):setPvpStatusBitmask(0)
 	end
 
-	AiAgent(pMobile):setMovementState(4)
+	AiAgent(pMobile):setMovementState(AI_PATROLLING)
 	createEvent(getRandomNumber(20, 40) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
 	createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
 end

@@ -527,7 +527,7 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 end
 
 function DeathWatchBunkerScreenPlay:setBombDroidTemplate(pDroid)
-	AiAgent(pDroid):setMovementState(4) -- Patrolling
+	AiAgent(pDroid):setMovementState(AI_PATROLLING)
 end
 
 function DeathWatchBunkerScreenPlay:setLootBoxPermissions(pContainer)
@@ -1199,7 +1199,7 @@ function DeathWatchBunkerScreenPlay:startDefenderPath(pMobile, spawnName)
 		return
 	end
 
-	AiAgent(pMobile):setMovementState(4)
+	AiAgent(pMobile):setMovementState(AI_PATROLLING)
 	AiAgent(pMobile):setHomeLocation(patrolPoint[1] + randomX, patrolPoint[2], patrolPoint[3] + randomY, pCell)
 	AiAgent(pMobile):stopWaiting()
 	AiAgent(pMobile):setWait(0)
@@ -1967,7 +1967,7 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		createObserver(DESTINATIONREACHED, "DeathWatchBunkerScreenPlay", "ventDroidDestinationReached", pDroid)
 		AiAgent(pDroid):addCreatureFlag(AI_NOAIAGGRO)
 		AiAgent(pDroid):addCreatureFlag(AI_FOLLOW)
-		AiAgent(pDroid):setMovementState(4) -- Patrolling
+		AiAgent(pDroid):setMovementState(AI_PATROLLING)
 		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid, "")
 		writeData("dwb:ventDroidStep", curStep + 1)
 	elseif (curStep == 1) then -- Move to toolbox

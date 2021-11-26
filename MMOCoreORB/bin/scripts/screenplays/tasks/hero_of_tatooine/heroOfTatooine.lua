@@ -669,7 +669,7 @@ function HeroOfTatooineScreenPlay:doGiverDespawn(pGiver)
 	if (CreatureObject(pGiver):isAiAgent()) then
 		AiAgent(pGiver):addCreatureFlag(AI_NOAIAGGRO)
 		AiAgent(pGiver):addCreatureFlag(AI_FOLLOW)
-		AiAgent(pGiver):setMovementState(4)
+		AiAgent(pGiver):setMovementState(AI_PATROLLING)
 		AiAgent(pGiver):generatePatrol(1, 30)
 		createObserver(DESTINATIONREACHED, "HeroOfTatooineScreenPlay", "giverDespawnDestinationReached", pGiver)
 	else
@@ -1046,7 +1046,7 @@ end
 function HeroOfTatooineScreenPlay:doStartPatrol(pNpc)
 	AiAgent(pNpc):addCreatureFlag(AI_NOAIAGGRO)
 	AiAgent(pNpc):addCreatureFlag(AI_ESCORT)
-	AiAgent(pNpc):setMovementState(4) -- Patrolling
+	AiAgent(pNpc):setMovementState(AI_PATROLLING)
 	HeroOfTatooineScreenPlay:doHonorStep(pNpc)
 end
 
