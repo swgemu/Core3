@@ -416,6 +416,7 @@ private:
 		_REGISTERLEAF(FollowSquadLeader);
 		_REGISTERLEAF(GetHealTarget);
 		_REGISTERLEAF(HealTarget);
+		_REGISTERLEAF(RestorePetPatrols);
 	}
 
 	void putBitmask(Lua* lua, String key) {

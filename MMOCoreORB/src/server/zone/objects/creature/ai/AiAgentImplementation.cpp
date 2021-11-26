@@ -86,9 +86,9 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/chat/ChatManager.h"
 
-//#define SHOW_WALK_PATH
+#define SHOW_WALK_PATH
 //#define DEBUG
-//#define SHOW_NEXT_POSITION
+#define SHOW_NEXT_POSITION
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
@@ -1779,16 +1779,16 @@ void AiAgentImplementation::activateHAMRegeneration(int latency) {
 	activatePassiveWoundRegeneration();
 }
 
-void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
-	PatrolPoint* nextPosition = pos;
+void AiAgentImplementation::updateCurrentPosition(PatrolPoint* nextPosition) {
+	if (nextPosition == nullptr)
+		return;
 
-	setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(),
-			nextPosition->getPositionY());
+	setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(), nextPosition->getPositionY());
 
 	CellObject* cell = nextPosition->getCell();
 
 	/*StringBuffer reachedPosition;
-	reachedPosition << "(" << positionX << ", " << positionY << ")";
+	reachedPosition << "(" << nextPosition->getPositionX() << ", " << nextPosition->getPositionY() << ")";
 	info("reached " + reachedPosition.toString(), true);*/
 
 	if (getZoneUnsafe() == nullptr)
@@ -1854,18 +1854,6 @@ void AiAgentImplementation::checkNewAngle() {
 			return;
 
 		broadcastNextPositionUpdate(nullptr);
-		/*
-		Locker clocker(getZone(), asAiAgent());
-
-		++movementCounter;
-
-		ManagedReference<SceneObject*> strongParent = getParent().get();
-		if (strongParent != nullptr && strongParent->isCellObject())
-			updateZoneWithParent(getParent().get(), true, true);
-		else
-			updateZone(true, true);
-
-			*/
 	}
 }
 
@@ -1883,13 +1871,15 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 	Locker locker(&targetMutex);
 
-	// complete any pending move actions
-	completeMove();
+	WorldCoordinates nextMovementPosition;
 
-	WorldCoordinates nextPosition;
+	float newSpeed = runSpeed; // 1.5 is runSpeed
+	int posture = getPosture();
 
-	float newSpeed = runSpeed; // Is this *1.5? Is that some magic number?
-	if (walk && !(isRetreating() || isFleeing()))
+	if (posture == CreaturePosture::CROUCHED) //move to BT?
+		return false;
+
+	if ((walk && !(isRetreating() || isFleeing())) || posture == CreaturePosture::PRONE)
 		newSpeed = walkSpeed;
 
 	if (hasState(CreatureState::IMMOBILIZED))
@@ -1899,15 +1889,13 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		newSpeed = 0.01f;
 
 	float updateTicks = float(UPDATEMOVEMENTINTERVAL) / 1000.f;
-
-	float maxSpeed = newSpeed*updateTicks; // now maxSpeed is the distance able to travel in time updateTicks
+	float maxSpeed = newSpeed * updateTicks; // maxSpeed is the distance able to travel in time updateTicks
 
 	PathFinderManager* pathFinder = PathFinderManager::instance();
 	float maxDist = maxSpeed;
 
 	bool found = false;
-
-	auto thisWorldPos = getWorldPosition();
+	auto currentPosition = getWorldPosition();
 
 #ifdef SHOW_WALK_PATH
 	CreateClientPathMessage* pathMessage = new CreateClientPathMessage();
@@ -1918,41 +1906,34 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	}
 #endif
 
-	// setNextPosition will add a point to patrolPoints (at the beginning)
-	while (!found && getPatrolPointSize() != 0) {
-		// the first position in patrolPoints is where we want to move to
-		PatrolPoint targetPosition = getNextPosition();
-		CellObject* targetCoordinateCell = targetPosition.getCell();
+	// setNextPosition adds a point to patrolPoints at spot 0 -- usually by the setDestination function
+	while (!found && getPatrolPointSize() > 0) {
+		PatrolPoint endMovementPosition = getNextPosition();
+		CellObject* endMovementCell = endMovementPosition.getCell();
 
 		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
-			info("targetPosition: " + targetPosition.toString(), true);
-		/*
-		 * PRE-STEP: calculate z if we need to for our target location
-		 */
-
-		if (targetCoordinateCell == nullptr && targetPosition.getPositionZ() == 0) {
-			// We are not in a cell, so we need to calculate which Z we want to move to
-			targetMutex.unlock();
-			targetPosition.setPositionZ(getWorldZ(targetPosition.getWorldPosition()));
-			targetMutex.lock();
-		}
+			info("targetPosition: " + endMovementPosition.toString(), true);
 
 		/*
-		 *  STEP 1: Find a path (or reuse our previous path)
-		 */
+		*	STEP 1: Find a path if there is not a previously found path
+		*/
 
 		Reference<Vector<WorldCoordinates>* > path;
 
-		if (targetCellObject == targetCoordinateCell && currentFoundPath != nullptr) {
-			// We have previously found a path into the same target cell that we want to move into
+		if (currentFoundPath == nullptr) {
+			// No prior path or path is null, find new path
+			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), endMovementPosition.getCoordinates(), getZoneUnsafe()));
+		} else {
+			// We already have a path
 			SceneObject* currentCell = getParent().get();
 			if (currentCell != nullptr && !currentCell->isCellObject())
 				currentCell = nullptr;
 
-			// Don't recalculate path if mob hasn't entered the target cell yet (we already checked to make sure the target is still in the same cell)
-			if (currentCell == targetCoordinateCell && currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().distanceTo(targetPosition.getCoordinates().getWorldPosition()) > 3) {
+			// Don't recalculate path if mob hasn't entered the endMovementCell
+			const WorldCoordinates endMovementCoords = endMovementPosition.getCoordinates();
+			if (currentCell == endMovementCell && currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 2 * 2) {
 				// Our target has moved, so we will need a new path with a new position.
-				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), targetPosition.getCoordinates(), getZoneUnsafe()));
+				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), endMovementCoords, getZoneUnsafe()));
 			} else {
 				// Our target is close to where it was before, so our path begins where we are standing
 				WorldCoordinates curr(asAiAgent());
@@ -1960,11 +1941,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 				path->set(0, curr);
 			}
-		} else {
-			// either our target cell is different than the current path cell or we don't have a current path,
-			// so we need to automatically re-calculate the path (and we don't need to include our current location)
-			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), targetPosition.getCoordinates(), getZoneUnsafe()));
-			targetCellObject = targetCoordinateCell;
 		}
 
 		if (path == nullptr) {
@@ -1980,73 +1956,79 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			if (getPatrolPointSize() == 0) {
 				CellObject* sourceCell = getParent().get().castTo<CellObject*>();
 				error("nullptr or empty path in AiAgent::findNextPosition. Source was " + getPosition().toString() + " in " + String::valueOf(sourceCell != nullptr ? sourceCell->getCellNumber() : 0) + ". Destination was " + oldPoint.toString());
-				nextPosition = oldPoint.getCoordinates();
+				nextMovementPosition = oldPoint.getCoordinates();
 				found = true;
 			}
 
 			continue;
 		}
 
+		float endMovementDistance = endMovementPosition.getWorldPosition().squaredDistanceTo(currentPosition);
+		float maxSquared = maxDistance * maxDistance;
+
+		if (endMovementDistance < maxSquared) {
+			patrolPoints.remove(0);
+			break;
+		}
+
 		// Get rid of duplicate/invalid points in path
 		pathFinder->filterPastPoints(path, asAiAgent());
 
 		/*
-		 * STEP 2: Calculate distance to travel
+		 * STEP 2: Calculate distance to travel & apply it to find position along the path
 		 */
 
-		float targetDistance = targetPosition.getWorldPosition().distanceTo(thisWorldPos);
-
-		if (targetDistance < maxDistance) {
-			patrolPoints.remove(0);
-		}
-
-		if (targetDistance > maxDistance)
+		if (endMovementDistance > maxSquared) {
 			// this is the actual "distance we can travel" calculation. We only want to
 			// go to the edge of the maxDistance radius and stop, so select the minimum
 			// of either our max travel distance (maxSpeed) or the distance from the
 			// maxDistance radius
-			maxDist = Math::min(maxSpeed, targetDistance - maxDistance + 0.1f);
-		else
-			// We are already at or inside the maxDistance radius, so we have reached this
-			// patrolPoint. We want to stop at every patrolPoint exactly once, so we will
-			// return from this function here because we are done.
+			maxDist = Math::min(maxSpeed, endMovementDistance - maxSquared + 0.1f);
+		} else {
 			break;
-
-		/*
-		 * STEP 3: Calculate the next position along the path
-		 */
+		}
 
 		if (path->size() < 2) {
 			// we know path size is at least one, so somehow we got a one-position path (this shouldn't happen)
 			// just use the one position as our next point don't set found because this is our current position
-			nextPosition = path->get(0);
+			nextMovementPosition = path->get(0);
 		} else {
 			// the farthest we will move is one point in the path, and the movement update time will change to reflect that
-			nextPosition = path->get(1);
+			nextMovementPosition = path->get(1);
 			found = true;
 
-			float dist = fabs(nextPosition.getWorldPosition().distanceTo(thisWorldPos));
+			float nextMovementDistance = fabs(nextMovementPosition.getWorldPosition().distanceTo(currentPosition));
 
-			if (dist > maxDist && dist > 0) {
-				// okay, we can't go that far in one update (since we've capped update times)
-				// calculate the distance we can go and set nextPosition
-				Vector3 thisPos = thisWorldPos;
+			printf("max distance = %f \n", maxDist);
+			printf("endMovementPosition x = %f , ", endMovementPosition.getPositionX());
+			printf(" y = %f \n", endMovementPosition.getPositionY());
 
-				if (nextPosition.getCell() != nullptr) {
-					thisPos = PathFinderManager::transformToModelSpace(thisPos, nextPosition.getCell()->getParent().get());
+			if (nextMovementDistance > maxDist && nextMovementDistance > 0) {
+				// nextMovementPosition is further then the maxDist
+				// Calculate the distance we can go and set the new nextMovementPosition
+				Vector3 currentPos = currentPosition;
+				Vector3 newPosition;
+
+				printf("nextMovementDist > maxDist \n");
+
+				// TODO - Remove Debugging
+				// Issue - We are assigning AI to a location outside of the actual cell boundary
+
+				if (nextMovementPosition.getCell() != nullptr) {
+					currentPos = PathFinderManager::transformToModelSpace(currentPos, nextMovementPosition.getCell()->getParent().get());
 				}
 
-				float dx = nextPosition.getX() - thisPos.getX();
-				float dy = nextPosition.getY() - thisPos.getY();
+				float dx = nextMovementPosition.getX() - currentPos.getX();
+				float dy = nextMovementPosition.getY() - currentPos.getY();
 
-				Vector3 newPosition;
-				newPosition.setX(thisPos.getX() + (maxDist * (dx / dist)));
-				newPosition.setY(thisPos.getY() + (maxDist * (dy / dist)));
+				newPosition.setX(currentPos.getX() + (maxDist * (dx / nextMovementDistance)));
+				newPosition.setY(currentPos.getY() + (maxDist * (dy / nextMovementDistance)));
 				newPosition.setZ(0.f);
 
 				Zone* zone = getZoneUnsafe();
 
-				if (targetPosition.getCell() == nullptr && nextPosition.getCell() == nullptr && zone != nullptr) {
+				// We must check that the end movement position does not end in a cell because AI will be placed on the overhangs of buildings before entering
+				if (nextMovementPosition.getCell() == nullptr && endMovementPosition.getCell() == nullptr && zone != nullptr) {
 					newPosition.setZ(getWorldZ(newPosition));
 
 					PlanetManager* planetManager = zone->getPlanetManager();
@@ -2064,14 +2046,15 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 						}
 					}
 				} else {
-					float dz = nextPosition.getZ() - thisPos.getZ();
+					float z = getPositionZ();
+					float dz = nextMovementPosition.getZ() - z;
 
-					newPosition.setZ(thisPos.getZ() + (maxDist * (dz / dist)));
+					newPosition.setZ(z + (maxDist * (dz / nextMovementDistance)));
 				}
 
-				nextPosition.setX(newPosition.getX());
-				nextPosition.setZ(newPosition.getZ());
-				nextPosition.setY(newPosition.getY());
+				nextMovementPosition.setX(newPosition.getX());
+				nextMovementPosition.setY(newPosition.getY());
+				nextMovementPosition.setZ(newPosition.getZ());
 			}
 		}
 
@@ -2082,7 +2065,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			Vector3 nextWorldPos = nextPositionDebug.getWorldPosition();
 
 			if (nextPositionDebug.getCell() == nullptr)
-				pathMessage->addCoordinate(nextWorldPos.getX(), getZone()->getHeight(nextWorldPos.getX(), nextWorldPos.getY()), nextWorldPos.getY());
+				pathMessage->addCoordinate(nextWorldPos.getX(), currentPosition.getZ(), nextWorldPos.getY());
 			else
 				pathMessage->addCoordinate(nextWorldPos.getX(), nextWorldPos.getZ(), nextWorldPos.getY());
 
@@ -2146,23 +2129,22 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 #endif
 
 	/*
-	 * STEP 4: Finish the update tick
+	 * STEP 3: Finish the update tick
 	 */
 
 	if (found) {
 		// Set the next place we will be if we are to move
-		Vector3 nextWorldPos = nextPosition.getWorldPosition();
-		float dist = thisWorldPos.distanceTo(nextWorldPos);
+		Vector3 nextWorldPos = nextMovementPosition.getWorldPosition();
+		float distance = currentPosition.distanceTo(nextWorldPos);
 
-		if (!(dist > 0 && newSpeed > 0.1)) {
+		if (!(distance > 0 && newSpeed > 0.1)) {
 			found = false;
 		} else {
-			nextStepPosition.setPosition(nextPosition.getX(), nextPosition.getZ(), nextPosition.getY());
-			nextStepPosition.setCell(nextPosition.getCell());
-
+			nextStepPosition.setPosition(nextMovementPosition.getX(), nextMovementPosition.getZ(), nextMovementPosition.getY());
+			nextStepPosition.setCell(nextMovementPosition.getCell());
 			nextStepPosition.setReached(false);
 
-			float directionangle = atan2(nextPosition.getX() - getPositionX(), nextPosition.getY() - getPositionY());
+			float directionangle = atan2(nextMovementPosition.getX() - getPositionX(), nextMovementPosition.getY() - getPositionY());
 
 			if (directionangle < 0) {
 				float a = M_PI + directionangle;
@@ -2174,9 +2156,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			if (err >= 0.05)
 				direction.setHeadingDirection(directionangle);
 
-			float dist = fabs(thisWorldPos.distanceTo(nextWorldPos));
 			auto interval = UPDATEMOVEMENTINTERVAL;
-			nextMovementInterval = Math::min((int)((Math::min(dist, maxDist)/newSpeed)*1000 + 0.5), interval);
+			nextMovementInterval = Math::min((int)((Math::min(distance, maxDist) / newSpeed) * 1000 + 0.5), interval);
 			currentSpeed = newSpeed;
 
 			// Tell the clients where to expect us next tick -- requires that we have found a destination
@@ -2203,12 +2184,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		currentSpeed = 0;
 	}
 
-	/*if (!(isRetreating() || isFleeing())) {
-		targetMutex.unlock();
-		checkNewAngle();
-		targetMutex.lock();
-	}*/
-
+	completeMove();
 	updateLocomotion();
 
 	return (getMovementState() == AiAgent::FLEEING && !fleeDelay.isPast()) || found;
@@ -2843,13 +2819,14 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 		else
 			msg = new UpdateTransformMessage(asAiAgent());
 	} else {
-		if (point->getCell() != nullptr)
+		if (point->getCell() != nullptr) {
 			msg = new LightUpdateTransformWithParentMessage(asAiAgent(), point->getPositionX(), point->getPositionZ(), point->getPositionY(), point->getCell()->getObjectID());
-		else
+		} else {
 			msg = new LightUpdateTransformMessage(asAiAgent(), point->getPositionX(), point->getPositionZ(), point->getPositionY());
+		}
 	}
 
-	broadcastMessage(msg, false);
+ 	broadcastMessage(msg, false);
 }
 
 int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {
