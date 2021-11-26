@@ -86,9 +86,9 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/chat/ChatManager.h"
 
-#define SHOW_WALK_PATH
+//#define SHOW_WALK_PATH
 //#define DEBUG
-#define SHOW_NEXT_POSITION
+//#define SHOW_NEXT_POSITION
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
@@ -1999,19 +1999,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 			float nextMovementDistance = fabs(nextMovementPosition.getWorldPosition().distanceTo(currentPosition));
 
-			printf("max distance = %f \n", maxDist);
-			printf("endMovementPosition x = %f , ", endMovementPosition.getPositionX());
-			printf(" y = %f \n", endMovementPosition.getPositionY());
-
 			if (nextMovementDistance > maxDist && nextMovementDistance > 0) {
 				// nextMovementPosition is further then the maxDist
 				// Calculate the distance we can go and set the new nextMovementPosition
 				Vector3 currentPos = currentPosition;
 				Vector3 newPosition;
 
-				printf("nextMovementDist > maxDist \n");
-
-				// TODO - Remove Debugging
 				// Issue - We are assigning AI to a location outside of the actual cell boundary
 
 				if (nextMovementPosition.getCell() != nullptr) {
