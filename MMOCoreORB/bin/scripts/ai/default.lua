@@ -99,6 +99,27 @@ equipDefault = {
 	{id="4004759019",	name="EraseBlackboard",	pid="2941044245",	args={param="followRange"}}}
 addAiTemplate("equipDefault", equipDefault)
 
+healDefault = {
+	{id="3412645993",	name="Sequence",	pid="none"},
+	{id="3070384900",	name="Not",	pid="3412645993"},
+	{id="136362440",	name="If",	pid="3070384900"},
+	{id="2378733296",	name="CheckPosture",	pid="136362440",	args={condition=KNOCKEDDOWN}},
+	{id="2638573300",	name="Selector",	pid="3412645993"},
+	{id="2194304589",	name="If",	pid="2638573300"},
+	{id="2199358504",	name="CheckMovementState",	pid="2194304589",	args={condition=MOVING_TO_HEAL}},
+	{id="3642803509",	name="Sequence",	pid="2638573300"},
+	{id="3673985997",	name="If",	pid="3642803509"},
+	{id="4043069176",	name="CheckIsHealer",	pid="3673985997"},
+	{id="3665716442",	name="If",	pid="3642803509"},
+	{id="1601692717",	name="CheckIsInCombat",	pid="3665716442"},
+	{id="3816980756",	name="If",	pid="3642803509"},
+	{id="1970265917",	name="CheckHealChance",	pid="3816980756"},
+	{id="1528696497",	name="GetHealTarget",	pid="3642803509",	args={range=60.0}},
+	{id="3764376804",	name="AlwaysSucceed",	pid="3412645993"},
+	{id="3741964589",	name="TreeSocket",	pid="3764376804",	args={slot=MOVE}},
+	{id="2037341348",	name="HealTarget",	pid="3412645993"}}
+addAiTemplate("healDefault", healDefault)
+
 idleDefault = {
 	{id="2434234854",	name="Selector",	pid="none"},
 	{id="3408558848",	name="Sequence",	pid="2434234854"},
@@ -148,13 +169,13 @@ lookDefault = {
 addAiTemplate("lookDefault", lookDefault)
 
 moveDefault = {
-	{id="95757095",	name="Selector",	pid="none"},
-	{id="2725427749",	name="Not",	pid="95757095"},
-	{id="2494411167",	name="Sequence",	pid="2725427749"},
+	{id="1171159267",	name="Sequence",	pid="none"},
+	{id="2494411167",	name="Sequence",	pid="1171159267"},
 	{id="4016651762",	name="If",	pid="2494411167"},
 	{id="938685055",	name="CheckPosture",	pid="4016651762",	args={condition=UPRIGHT}},
 	{id="2354494630",	name="If",	pid="2494411167"},
 	{id="1233890036",	name="CheckDestination",	pid="2354494630",	args={condition=0.0}},
+	{id="95757095",	name="Selector",	pid="1171159267"},
 	{id="1049607122",	name="Sequence",	pid="95757095"},
 	{id="361808887",	name="If",	pid="1049607122"},
 	{id="1901811754",	name="CheckRetreat",	pid="361808887",	args={condition=256}},
@@ -170,8 +191,13 @@ addAiTemplate("moveDefault", moveDefault)
 
 rootDefault = {
 	{id="714360210",	name="Selector",	pid="none"},
+	{id="1083123564",	name="TreeSocket",	pid="714360210",	args={slot=HEAL}},
 	{id="4192507528",	name="Sequence",	pid="714360210"},
-	{id="1064078295",	name="Not",	pid="4192507528"},
+	{id="2466392703",	name="Sequence",	pid="4192507528"},
+	{id="217738262",	name="Not",	pid="2466392703"},
+	{id="2153845340",	name="If",	pid="217738262"},
+	{id="3482701026",	name="CheckMovementState",	pid="2153845340",	args={condition=MOVING_TO_HEAL}},
+	{id="1064078295",	name="Not",	pid="2466392703"},
 	{id="3716307837",	name="If",	pid="1064078295"},
 	{id="3269440031",	name="CheckMovementState",	pid="3716307837",	args={condition=FLEEING}},
 	{id="112941615",	name="TreeSocket",	pid="4192507528",	args={slot=TARGET}},

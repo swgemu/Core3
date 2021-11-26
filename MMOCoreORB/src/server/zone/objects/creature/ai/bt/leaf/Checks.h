@@ -54,7 +54,9 @@ enum CheckType {
 	CHECK_ISDROID,
 	CHECK_CRACKDOWNSCANNER,
 	CHECK_CRACKDOWNFOLLOWTARGET,
-	CHECK_ISSTATIONARY
+	CHECK_ISSTATIONARY,
+	CHECK_ISHEALER,
+	CHECK_HEALCHANCE
 };
 
 // template class to reduce repeated code. Do this instead of inheritance so we
@@ -227,6 +229,12 @@ template<> bool CheckCrackdownFollowTarget::check(AiAgent* agent) const;
 
 typedef _Check<bool, CHECK_ISSTATIONARY> CheckIsStationary;
 template<> bool CheckIsStationary::check(AiAgent* agent) const;
+
+typedef _Check<bool, CHECK_ISHEALER> CheckIsHealer;
+template<> bool CheckIsHealer::check(AiAgent* agent) const;
+
+typedef _Check<bool, CHECK_HEALCHANCE> CheckHealChance;
+template<> bool CheckHealChance::check(AiAgent* agent) const;
 }
 }
 }

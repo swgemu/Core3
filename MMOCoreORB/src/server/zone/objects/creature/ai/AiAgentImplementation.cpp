@@ -84,6 +84,7 @@
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/chat/ChatManager.h"
 
 //#define SHOW_WALK_PATH
 //#define DEBUG
@@ -1336,6 +1337,82 @@ bool AiAgentImplementation::stalkProspect(SceneObject* prospect) {
 	return true;
 }
 
+void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
+	if (healTarget == nullptr) {
+		return;
+	}
+
+	ZoneServer* zoneServer = asAiAgent()->getZoneServer();
+
+	// Chat output for Testing - Remove later
+	ChatManager* chatManager = nullptr;
+
+	if (zoneServer != nullptr)
+		chatManager = zoneServer->getChatManager();
+
+	asAiAgent()->clearQueueActions();
+
+	uint32 socialGroup = getSocialGroup().hashCode();
+
+	if (socialGroup == STRING_HASHCODE("nightsister") || socialGroup == STRING_HASHCODE("mtn_clan") || socialGroup == STRING_HASHCODE("force") || socialGroup == STRING_HASHCODE("spider_nightsister")) {
+		if (healTarget == asAiAgent()) {
+			healTarget->playEffect("clienteffect/pl_force_heal_self.cef");
+
+			if (chatManager != nullptr)
+				chatManager->broadcastChatMessage(asAiAgent(), "Healing myself!", 0, 0, asAiAgent()->getMoodID());
+		} else {
+			asAiAgent()->doCombatAnimation(healTarget, STRING_HASHCODE("force_healing_1"), 0, 0xFF);
+
+			if (chatManager != nullptr)
+				chatManager->broadcastChatMessage(asAiAgent(), "Healing target!", 0, 0, asAiAgent()->getMoodID());
+		}
+	} else {
+		if (healTarget == asAiAgent()) {
+			asAiAgent()->doAnimation("heal_self");
+
+			if (chatManager != nullptr)
+				chatManager->broadcastChatMessage(asAiAgent(), "Healing myself!", 0, 0, asAiAgent()->getMoodID());
+		} else {
+			asAiAgent()->doAnimation("heal_other");
+
+			if (chatManager != nullptr)
+				chatManager->broadcastChatMessage(asAiAgent(), "Healing target!", 0, 0, asAiAgent()->getMoodID());
+		}
+
+		healTarget->playEffect("clienteffect/healing_healdamage.cef");
+	}
+
+	Locker healLock(healTarget);
+
+	int healthMax = healTarget->getMaxHAM(CreatureAttribute::HEALTH) - healTarget->getWounds(CreatureAttribute::HEALTH);
+	int actionMax = healTarget->getMaxHAM(CreatureAttribute::ACTION) - healTarget->getWounds(CreatureAttribute::ACTION);
+	int mindMax = healTarget->getMaxHAM(CreatureAttribute::MIND) - healTarget->getWounds(CreatureAttribute::MIND);
+
+	int healthDam = healthMax - healTarget->getHAM(CreatureAttribute::HEALTH);
+	int actionDam = actionMax - healTarget->getHAM(CreatureAttribute::ACTION);
+	int mindDam = mindMax - healTarget->getHAM(CreatureAttribute::MIND);
+
+	int healAmount = getLevel() * 20;
+
+	if (healAmount > healthDam) {
+		healTarget->healDamage(asAiAgent(), CreatureAttribute::HEALTH, healthMax, true, false);
+	} else {
+		healTarget->healDamage(asAiAgent(), CreatureAttribute::HEALTH, healAmount, true, false);
+	}
+
+	if (healAmount > actionDam) {
+		healTarget->healDamage(asAiAgent(), CreatureAttribute::ACTION, actionMax, true, false);
+	} else {
+		healTarget->healDamage(asAiAgent(), CreatureAttribute::ACTION, healAmount, true, false);
+	}
+
+	if (healAmount > mindDam) {
+		healTarget->healDamage(asAiAgent(), CreatureAttribute::MIND, mindMax, true, false);
+	} else {
+		healTarget->healDamage(asAiAgent(), CreatureAttribute::MIND, healAmount, true, false);
+	}
+}
+
 void AiAgentImplementation::queueDizzyFallEvent() {
 	if (isNonPlayerCreatureObject())
 		CreatureObjectImplementation::queueDizzyFallEvent();
@@ -2405,6 +2482,9 @@ float AiAgentImplementation::getMaxDistance() {
 	case AiAgent::PATHING_HOME:
 		return 0.1f;
 		break;
+	case AiAgent::MOVING_TO_HEAL:
+		return 1.5f;
+		break;
 	}
 
 	return 5.f;
@@ -2515,6 +2595,24 @@ int AiAgentImplementation::setDestination() {
 		}
 
 		break;
+	case AiAgent::MOVING_TO_HEAL: {
+		if (!peekBlackboard("healTarget")) {
+			if (followCopy != nullptr) {
+				setMovementState(AiAgent::FOLLOWING);
+			} else {
+				setOblivious();
+			}
+		}
+
+		ManagedReference<CreatureObject*> healTarget = readBlackboard("healTarget").get<ManagedReference<CreatureObject*> >().get();
+
+		if (healTarget != nullptr) {
+			clearPatrolPoints();
+			Vector3 targetPos = healTarget->getPosition();
+			setNextPosition(targetPos.getX(), targetPos.getZ(), targetPos.getY(), healTarget->getParent().get().castTo<CellObject*>());
+		}
+		break;
+	}
 	default:
 		if (creatureBitmask & CreatureFlag::STATIC) {
 			setOblivious();

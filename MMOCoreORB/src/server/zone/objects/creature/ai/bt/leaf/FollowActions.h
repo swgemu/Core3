@@ -12,6 +12,7 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/gcw/observers/ContainmentTeamObserver.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 namespace server {
 namespace zone {
@@ -759,6 +760,91 @@ public:
 	}
 };
 
+class GetHealTarget : public Behavior {
+public:
+	GetHealTarget(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args), range(0.f) {
+		parseArgs(args);
+	}
+
+	GetHealTarget(const GetHealTarget& a) : Behavior(a), range(a.range){
+	}
+
+	GetHealTarget& operator=(const GetHealTarget& a) {
+		if (this == &a)
+			return *this;
+		Behavior::operator=(a);
+		range = a.range;
+		return *this;
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		ManagedReference<SceneObject*> target = nullptr;
+
+		if (agent->peekBlackboard("targetProspect"))
+			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
+
+		if (target == nullptr || !target->isCreatureObject())
+			return FAILURE;
+
+		ManagedReference<CreatureObject*> targetCreo = target->asCreatureObject();
+
+		if (targetCreo != nullptr) {
+			const DeltaVector<ManagedReference<SceneObject*>>* defenderList = targetCreo->getDefenderList();
+
+			if (defenderList != nullptr && defenderList->size() > 0) {
+				int healTar = System::random(defenderList->size() - 1);
+
+				ManagedReference<SceneObject*> healTarget = defenderList->get(healTar);
+
+				if (healTarget == nullptr || !healTarget->isCreatureObject())
+					return FAILURE;
+
+				ManagedReference<CreatureObject*> healCreo = healTarget->asCreatureObject();
+
+				if (healCreo == nullptr || healCreo->isDead())
+					return FAILURE;
+
+				if (healCreo == agent) {
+					agent->writeBlackboard("healTarget", healCreo);
+					return SUCCESS;
+				}
+
+				if (healCreo->isAggressiveTo(agent) || agent->isAggressiveTo(healCreo))
+					return FAILURE;
+
+				if (healCreo->getFaction() > 0 && (healCreo->getFaction() != agent->getFaction() && healCreo->getFactionStatus() > FactionStatus::ONLEAVE)) {
+					return FAILURE;
+				}
+
+				float distSq = agent->getPosition().squaredDistanceTo(healCreo->getPosition());
+
+				if (distSq > range * range)
+					return FAILURE;
+
+				agent->setMovementState(AiAgent::MOVING_TO_HEAL);
+				agent->writeBlackboard("healTarget", healCreo);
+
+				return SUCCESS;
+			}
+		}
+
+		return FAILURE;
+	}
+
+	void parseArgs(const LuaObject& args) {
+		range = (float) (getArg<float>()(args, "range"));
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-" << range;
+
+		return msg.toString();
+	}
+
+private:
+	float range;
+};
 
 }
 }

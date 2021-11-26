@@ -131,6 +131,7 @@ public:
 		lua->setGlobalInt("KILL",						BehaviorTreeSlot::KILL					);
 		lua->setGlobalInt("STALK",						BehaviorTreeSlot::STALK					);
 		lua->setGlobalInt("CRACKDOWNSCAN",				BehaviorTreeSlot::CRACKDOWNSCAN			);
+		lua->setGlobalInt("HEAL",						BehaviorTreeSlot::HEAL					);
 
 		lua->setGlobalInt("WALK",						DataVal::WALK							);
 		lua->setGlobalInt("RUN",						DataVal::RUN							);
@@ -153,6 +154,9 @@ public:
 		lua->setGlobalInt("FLEEING",					AiAgent::FLEEING						);
 		lua->setGlobalInt("LEASHING",					AiAgent::LEASHING						);
 		lua->setGlobalInt("EVADING",					AiAgent::EVADING						);
+		lua->setGlobalInt("PATHING_HOME",				AiAgent::PATHING_HOME					);
+		lua->setGlobalInt("FOLLOW_FORMATION",			AiAgent::FOLLOW_FORMATION				);
+		lua->setGlobalInt("MOVING_TO_HEAL",				AiAgent::MOVING_TO_HEAL					);
 
 		lua->setGlobalInt("UPRIGHT",					CreaturePosture::UPRIGHT				);
 		lua->setGlobalInt("CROUCHED",					CreaturePosture::CROUCHED				);
@@ -365,6 +369,8 @@ private:
 		_REGISTERLEAF(CheckProspectJediTrial);
 		_REGISTERLEAF(CheckProspectIsIncapacitated);
 		_REGISTERLEAF(CheckIsKiller);
+		_REGISTERLEAF(CheckIsHealer);
+		_REGISTERLEAF(CheckHealChance);
 		_REGISTERLEAF(CheckIsStalker);
 		_REGISTERLEAF(CheckFlee);
 		_REGISTERLEAF(CheckOwnerInRange);
@@ -408,6 +414,8 @@ private:
 		_REGISTERLEAF(PetReturn);
 		_REGISTERLEAF(ContrabandScan);
 		_REGISTERLEAF(FollowSquadLeader);
+		_REGISTERLEAF(GetHealTarget);
+		_REGISTERLEAF(HealTarget);
 	}
 
 	void putBitmask(Lua* lua, String key) {
