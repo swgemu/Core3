@@ -17,37 +17,28 @@ import engine.util.Observable;
 include templates.params.ObserverEventType;
 include system.util.Vector;
 include engine.core.ManagedObject;
+include engine.util.u3d.Vector3;
 
-class FishingManager extends Observer implements Logger {	
+class FishingManager extends Observer implements Logger {
+	private transient boolean fishingEnabled;
+
 	@dereferenced
-	protected Vector<string> miscLoot;
-	
+	protected transient Vector<string> fishType;
+
 	@dereferenced
-	protected Vector<string> rareLoot;
-	
+	protected transient VectorMap<string, int> fishColors;
+
 	@dereferenced
-	protected VectorMap<string, int> color;
-	
+	protected transient VectorMap<string, int> fishLengths;
+
 	@dereferenced
-	protected Vector<int> fishLength;
-	
+	protected Vector<string> fishingActions;
+
 	@dereferenced
-	protected Vector<string> fishType;
-	
-	@dereferenced
-	protected Vector<string> state;
-	
-	@dereferenced
-	protected Vector<string> action;
-	
-	@dereferenced
-	protected Vector<string> property;
-	
+	protected Vector<string> fishingStates;
+
 	@dereferenced
 	protected Vector<string> baitStatus;
-
-	/*@dereferenced
-	protected VectorMap<CreatureObject, FishingSession> sessions;*/
 
 	public static final int NOTFISHING = 0;
 	public static final int WAITING = 1;
@@ -57,7 +48,7 @@ class FishingManager extends Observer implements Logger {
 	public static final int CATCH = 5;
 	public static final int REELING = 6;
 	public static final int REELGAME = 7;
-	
+
 	public static final int BLACKFISH = 0;
 	public static final int BLOWFISH = 1;
 	public static final int BLUEFISH = 2;
@@ -65,125 +56,49 @@ class FishingManager extends Observer implements Logger {
 	public static final int LAA = 4;
 	public static final int RAY = 5;
 	public static final int STRIPED = 6;
-	
+
 	public static final int FRESH = 0;
 	public static final int SOGGY = 6;
 	public static final int MUSH = 10;
-	
+
 	public static final int DONOTHING = 0;
 	public static final int TUGUP = 1;
 	public static final int TUGRIGHT = 2;
 	public static final int TUGLEFT = 3;
 	public static final int REEL = 4;
 	public static final int STOPFISHING = 5;
-	
+
 	public static final int NOEVENT = 0;
-	public static final int PROCEED = 17;
-	public static final int MISHAP = 45;
-	
-	public FishingManager() {				
-		initializeFishType();
-		initializeFishLength();
-		initializeLoot();
-		initializeColor();
-		initializeBaitStatus();
-		initializeProperty();
-		initializeAction();
-		initializeState();
-		
+	public static final int PROCEED = 20;
+	public static final int MISHAP = 10;
+
+	public static final int STARTFISHING = 0;
+	public static final int NOFISHING = 1;
+	public static final int BADCAST = 2;
+	public static final int NOWATER = 3;
+
+
+	public FishingManager() {
 		Logger.setLoggingName("FishingManager");
 		Logger.setLogging(true);
 	}
-	
-	public void initializeBaitStatus() {
-		baitStatus.add("Fresh");
-		baitStatus.add("Soggy");
-		baitStatus.add("Mush");
-	}
-	
-	public void initializeProperty() {
-		property.add(" ");
-		property.add("*");
-		property.add("**");
-		property.add("***");
-		property.add("****");
-		property.add("*****");
-	}
-	
-	public void initializeAction() {
-		action.add("None");
-		action.add("Tug Up");
-		action.add("Tug Right");
-		action.add("Tug Left");
-		action.add("Small Reel");
-		action.add("Stop Fishing");
-	}
-	
-	public void initializeState() {
-		state.add("Nothing");
-		state.add("Waiting...");
-		state.add("Snagged!");
-		state.add("Nibble...");
-		state.add("BITE?");
-		state.add("CAUGHT SOMETHING?!");
-		state.add("CAUGHT SOMETHING?!");	
-	}
-	
-	public void initializeFishType() {
-		fishType.add("blackfish");
-		fishType.add("blowfish");
-		fishType.add("bluefish");
-		fishType.add("faa");
-		fishType.add("laa");
-		fishType.add("ray");
-		fishType.add("striped");
-	}
-	
-	public void initializeFishLength() {
-		fishLength.add(25);
-		fishLength.add(15);
-		fishLength.add(30);
-		fishLength.add(30);
-		fishLength.add(30);
-		fishLength.add(35);
-		fishLength.add(40);
-	}
-	
-	public void initializeLoot() {
-		//TODO: This should be loaded from a lua config "fishing_manager.lua"
-		miscLoot.add("object/tangible/wearables/shoes/shoes_s07.iff");
-		miscLoot.add("object/tangible/wearables/shoes/shoes_s02.iff");
-		miscLoot.add("object/tangible/food/foraged/foraged_fruit_s1.iff");
-		
-		rareLoot.add("object/weapon/ranged/pistol/pistol_cdef.iff");
-	}
-	
-	public void initializeColor() {
-		//TODO: Move this to a lua...
-		color.put("corellia", 61);
-		color.put("dantooine", 51);
-		color.put("dathomir", 21);
-		color.put("endor", 32);
-		color.put("lok", 8);
-		color.put("naboo", 14);
-		color.put("rori", 55);
-		color.put("talus", 0);
-		color.put("tatooine", 7);
-		color.put("yavin4", 41);
-	}
-	
+
+	public native void initialize();
+
+	private native boolean loadConfigData();
+
 	public int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
 		if (eventType == ObserverEventType.POSITIONCHANGED) {
 			checkFishingOnPositionUpdate((CreatureObject) observable);
-			
+
 			return 0;
 		} else if (eventType == ObserverEventType.CLOSECONTAINER) {
 			return notifyCloseContainer((CreatureObject)arg1, (SceneObject)observable);
 		}
-		
+
 		return 0;
 	}
-	
+
 	/**
 	 * Checks for Player movement
 	 * checkFishingOnPositionUpdate is called from notify(SceneObject) by the observer pattern
@@ -197,7 +112,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param player CreatureObject to check movement for
 	 */
 	public native void checkFishingOnPositionUpdate(CreatureObject player);
-	
+
 	/**
 	 * Removes the Marker
 	 * notifyCloseContainer is called when the registered Marker is closed.
@@ -206,8 +121,8 @@ class FishingManager extends Observer implements Logger {
 	 * @param player CreatureObject to remove Marker from
 	 */
 	public native int notifyCloseContainer(CreatureObject player, SceneObject container);
-	
-	/** 
+
+	/**
 	 * check location of Player and return the marker position
 	 * checkLocation gets the PositionX/Y/Z from Player computing new coordinates based on quality of the fishing pole
 	 * @pre { this object is locked }
@@ -216,13 +131,13 @@ class FishingManager extends Observer implements Logger {
 	 * @param quality Crafted Quality of the Fishing Pole
 	 * @param x x-Coordinate to be filled with marker position
 	 * @param y y-Coordinate to be filled with marker position
-	 * @param z z-Coordinate to be filled with marker position 
+	 * @param z z-Coordinate to be filled with marker position
 	 * @return { 0: everything worked, 1: Exception case, 3: No Water, 4: Water under terrain }
-	 * @TODO { once actually craftable the line range calculation probably needs to be adjusted to affect the outcome less } 
+	 * @TODO { once actually craftable the line range calculation probably needs to be adjusted to affect the outcome less }
 	 */
 	@local
-	public native int checkLocation(CreatureObject player, int quality, @dereferenced float x, @dereferenced float y, @dereferenced float z);
-	
+	public native int checkLocation(CreatureObject player, int quality, @dereferenced Vector3 location);
+
 	/**
 	 * Starts Fishing Game
 	 * startFishing checks for Fishing Pole, Fishing Bait and Water at the position of the bobber,
@@ -233,7 +148,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { 0: everything worked, 1: No Pole, 2: No Bait, 3: No Water, 4: Water under terrain, 5: Player Swimming, 6: Exception case }
 	 */
 	public native int startFishing(CreatureObject player);
-	
+
 	/**
 	 * Stops Fishing Game
 	 * stopFishing sets fishing state to NOTFISHING, creates a new splash (marker disappearing), closes the menu,
@@ -245,7 +160,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param rem if true removes Marker, false when called by successful catch so the container won't disappear
 	 */
 	public native void stopFishing(CreatureObject player, unsigned int boxID, boolean rem);
-	
+
 	/**
 	 * fishingStep gets called from FishingEvent::run()
 	 * fishingStep closes the menu, gets the current state and computes two random numbers
@@ -255,7 +170,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param player CreatureObject which is currently fishing
 	 */
 	public native void fishingStep(CreatureObject player);
-	
+
 	/**
 	 * success is called to give the Player his reward
 	 * success uses the given fish to decide whether the player receives a misc item or a fish
@@ -270,7 +185,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param boxID Fishing window being closed
 	 */
 	public native void success(CreatureObject player, int fish, SceneObject marker, unsigned int boxID);
-	
+
 	/**
 	 * Returns timestamp as string
 	 * Takes current time and returns formatted String
@@ -279,7 +194,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { String of time }
 	 */
 	public native string getTime();
-	
+
 	/**
 	 * Sends loot to Player
 	 * sendReward receives Player, the Marker and the created Object,
@@ -291,7 +206,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param loot Item to send to Player
 	 */
 	public native void sendReward(CreatureObject player, SceneObject marker, SceneObject loot);
-	
+
 	/**
 	 * Creates a Fishing Window
 	 * createWindow closes the old menu and creates a new one based on vegetation, density, freshness etc
@@ -302,7 +217,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { -1: problem, otherwise uint32 boxID of new window }
 	 */
 	public native unsigned int createWindow(CreatureObject player, unsigned int boxID);
-	
+
 	/**
 	 * Closes the FishingMenu
 	 * closeMenu checks for valid boxID and Player and sends the close message, removing the sui box from the player
@@ -312,7 +227,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param boxID Fishing window being closed
 	 */
 	public native void closeMenu(CreatureObject player, unsigned int boxID);
-	
+
 	/**
 	 * Calculates vegetation based on current Position
 	 * vegetation returns a value 0-5 based on abs(PositionX/100) rounded up
@@ -323,7 +238,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { 0-5 }
 	 */
 	public native int vegetation(SceneObject marker);
-	
+
 	/**
 	 * Calculates density based on current Position
 	 * density returns a value 0-5 based on abs(PositionY/100) rounded up
@@ -334,18 +249,19 @@ class FishingManager extends Observer implements Logger {
 	 * @return { 0-5 }
 	 */
 	public native int density(SceneObject marker);
-	
+
 	/**
 	 * Calculates Fish biting
 	 * getFish calculates a random number 0-99 and, if it's a fish (<94) calculates what kind of fish
 	 * based on pole quality, vegetation penalty, fish density bonus, bait status, and a random number
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
-	 * @param player CreatureObject for which to randomize fish 
+	 * @param player CreatureObject for which to randomize fish
+	 * @param marker SceneObject for vegation calculation
 	 * @return { 0-6: Fish, 94-99: Misc Item }
 	 */
-	public native int getFish(CreatureObject player);
-	
+	public native int getFish(CreatureObject player, SceneObject marker);
+
 	/**
 	 * Gets Next Action from Event
 	 * getNextAction gets the Event linked to the Player and returns the next action,
@@ -356,7 +272,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { 0-5: Next Action }
 	 */
 	public native int getNextAction(CreatureObject player);
-	
+
 	/**
 	 * Sets Next Action on Fishing Event
 	 * setNextAction gets the Fishing Event linked to the Player and sets it's Action to the argument
@@ -367,7 +283,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param next Integer index of Action selected by Player
 	 */
 	public native void setNextAction(CreatureObject player, int next);
-	
+
 	/**
 	 * Gets Pole from Player
 	 * getPole gets the SceneObject in the Players right hand and, unless it is NULL,
@@ -378,7 +294,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { FishingPoleObject or NULL }
 	 */
 	public native FishingPoleObject getPole(CreatureObject player);
-	
+
 	/**
 	 * Gets Bait from Pole
 	 * getBait gets the pole from the Player, looks into the Container and if there's an object in it returns it
@@ -388,7 +304,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { FishingBaitObject or NULL }
 	 */
 	public native FishingBaitObject getBait(CreatureObject player);
-	
+
 	/**
 	 * Gets Fishing Window ID from Event
 	 * getFishBoxID gets the Event linked to a player and returns the fishBoxID from it
@@ -398,7 +314,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { boxID or -1 }
 	 */
 	public native unsigned int getFishBoxID(CreatureObject player);
-	
+
 	/**
 	 * Sets Window BoxID in Event
 	 * setFishBoxID gets the event linked to the player
@@ -409,7 +325,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param boxID fishing window to point to
 	 */
 	public native void setFishBoxID(CreatureObject player, unsigned int boxID);
-	
+
 	/**
 	 * Gets fishing state from Event
 	 * getFishingState gets the Event linked to the player
@@ -420,7 +336,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { 0-6 }
 	 */
 	public native int getFishingState(CreatureObject player);
-	
+
 	/**
 	 * Sets fishing state in Event
 	 * setFishingState gets the Event linked to the player
@@ -431,7 +347,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param state Integer value sent to event
 	 */
 	public native void setFishingState(CreatureObject player, int state);
-	
+
 	/**
 	 * Gets Fish Marker in Event
 	 * getFishMarker gets the Event linked to the player
@@ -442,7 +358,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { NULL: player is NULL, player: no fishing event, FishMarker otherwise }
 	 */
 	public native SceneObject getFishMarker(CreatureObject player);
-	
+
 	/**
 	 * Sets Fish Marker in Event
 	 * setFishMarker gets the Event linked to the player
@@ -454,7 +370,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param marker Marker sent to event
 	 */
 	public native void setFishMarker(CreatureObject player, SceneObject marker);
-		
+
 	/**
 	 * Hands out free Bait
 	 * freeBait is used for debugging: in case the Pole is empty, a bait will be created
@@ -482,7 +398,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param moodString String taken from player before fishing to return to after fishing
 	 */
 	public native void fishingProceed(CreatureObject player, int nextAction, SceneObject marker, int fish, unsigned int boxID, int newstate, boolean notifyClient, string moodString);
-	
+
 	/**
 	 * mishapEvent stops Fishing out of bad luck, possibly losing bait in the process
 	 * mishapEvent uses the argument string and sends it to the Player, stops Fishing and if losebait
@@ -491,12 +407,13 @@ class FishingManager extends Observer implements Logger {
 	 * @post { object is locked }
 	 * @param text String to send to Player
 	 * @param player CreatureObject to which send message
+	 * @param marker SceneObject used for getFish function
 	 * @param boxID fishing window to close when calling stopFishing()
 	 * @param losebait If true the bait in the pole will be removed as an outcome of what happened
-	 * @param moodString String taken from player before fishing to return to after fishing 
+	 * @param moodString String taken from player before fishing to return to after fishing
 	 */
-	public native void mishapEvent(final string text, CreatureObject player, unsigned int boxID, boolean losebait, string moodString);
-	
+	public native void mishapEvent(final string text, CreatureObject player, SceneObject marker, unsigned int boxID, boolean losebait, string moodString);
+
 	/**
 	 * Lose the Bait in the Container
 	 * loseBait gets the pole and removes the object from that container
@@ -507,7 +424,7 @@ class FishingManager extends Observer implements Logger {
 	 * @return { true if bait was removed }
 	 */
 	public native boolean loseBait(CreatureObject player);
-	 
+
 	/**
 	 * Does Player Animations for different fishing actions
 	 * animate switches through nextAction and calls appropriate Animations
@@ -517,20 +434,18 @@ class FishingManager extends Observer implements Logger {
 	 * @param nextAction index used to decide which animation to play
 	 */
 	public native void animate(CreatureObject player, int nextAction);
-	
+
 	/**
 	 * Creates a marker object at the given coordinates
 	 * createMarker creates a SceneObject for tango/fishing/shared_marker.iff and inserts it at given coordinates
 	 * @pre { object is locked }
 	 * @post { object is locked }
-	 * @param x X-Coordinate of new marker
-	 * @param y Y-Coordinate of new marker
-	 * @param z Z-Coordinate of new marker
+	 * @param Vector3 for location to create marker
 	 * @param zone Zone used to create the marker in
 	 * @return { SceneObject of new marker }
 	 */
-	public native SceneObject createMarker(float x, float y, float z, Zone zone);
-	
+	public native SceneObject createMarker(@dereferenced Vector3 location, Zone zone);
+
 	/**
 	 * Creates a small Splash at the given coordinates
 	 * createSplash creates a SceneObject for tango/fishing/shared_splash.iff and inserts it at given coordinates
@@ -557,10 +472,10 @@ class FishingManager extends Observer implements Logger {
 	 * @return { true if beached, false if water }
 	 */
 	@local
-	public native boolean checkUpdateMarker(CreatureObject player, @dereferenced float x, @dereferenced float y, @dereferenced float z);
-	
+	public native boolean checkUpdateMarker(CreatureObject player, @dereferenced Vector3 location);
+
 	public native boolean isPlaying(CreatureObject player);
-	
+
 	/**
 	 * Updates the fishing Marker
 	 * updateMarker takes the player position and the marker position and halfes that distance creating
@@ -571,8 +486,8 @@ class FishingManager extends Observer implements Logger {
 	 * @param marker Object sent to event as new marker
 	 * @return { SceneObject of new Marker }
 	 */
-	public native SceneObject updateMarker(CreatureObject player, SceneObject marker, boolean notifyPlayer);
-	
+	public native SceneObject updateMarker(CreatureObject player, SceneObject marker, unsigned int boxID, boolean notifyPlayer);
+
 	/**
 	 * Removes the fishing marker
 	 * removeMarker sets the Marker in the Event to NULL and removes the marker from Zone
@@ -583,7 +498,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param container Container to remove
 	 */
 	public native void removeMarker(CreatureObject player, SceneObject container);
-	
+
 	/**
 	 * Removes the Splash
 	 * removeSplash is called from FishingSplashEvent, the splash is simply removed from zone
@@ -592,7 +507,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param splash SceneObject to remove from Zone
 	 */
 	public native void removeSplash(SceneObject splash);
-	
+
 	/**
 	 * Creates a Splash Event schedule 1000
 	 * createFishingSplashEvent creates a new FishingSplashEvent for the given SceneObject
@@ -604,7 +519,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param splash SceneObject to remove later
 	 */
 	public native void createFishingSplashEvent(CreatureObject player, SceneObject splash);
-	
+
 	/**
 	 * Creates a FishingSession
 	 * createFishingSession creates a new FishingSession given the player, event, nextAction,
@@ -622,7 +537,7 @@ class FishingManager extends Observer implements Logger {
 	 */
 	@local
 	public native void createFishingSession(CreatureObject player, FishingEvent event, SceneObject marker, int nextAction, int fish, unsigned int boxID, int fishingState, string mood);
-	
+
 	/**
 	 * Creates a Fishing Event schedule 7000
 	 * createFishingEvent creates a new Fishing Event given the State
@@ -634,7 +549,7 @@ class FishingManager extends Observer implements Logger {
 	 */
 	@local
 	public native FishingEvent createFishingEvent(CreatureObject player, int state);
-	
+
 	/**
 	 * Stops Fishing Event
 	 * stopFishingEvent gets the FishingEvent for a player, drops it from the VectorMap and cancels it
@@ -643,9 +558,9 @@ class FishingManager extends Observer implements Logger {
 	 * @param player CreatureObject for which to stop the fishing event
 	 */
 	public native void stopFishingEvent(CreatureObject player);
-	
+
 	/**
-	 * FishingEvent getter
+	 * FishingEvent
 	 * getFishingEvent is a readonly method that gets the FishingEvent from the events VectorMap and returns it
 	 * @pre { object is locked }
 	 * @post { object is locked }
@@ -653,5 +568,10 @@ class FishingManager extends Observer implements Logger {
 	 */
 	@local
 	public native FishingEvent getFishingEvent(CreatureObject player);
-	
+
+	/**
+	 * getPropertyString
+	 * Generates String for Fish Density and Vegetation.
+	 */
+	public native string getPropertyString(int amount);
 }
