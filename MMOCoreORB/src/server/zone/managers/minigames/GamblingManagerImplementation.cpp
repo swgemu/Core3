@@ -256,7 +256,7 @@ void GamblingManagerImplementation::removeOutOfRangePlayers(GamblingTerminal* te
 		if (entry.getValue()->getObjectID() == terminal->getObjectID()) {
 			auto player = entry.getKey();
 			if (player != nullptr && (!player->isInRange(terminal, 20.0f) || !player->isOnline())) {
-				terminal->leaveTerminal(player);
+				leaveTerminal(player, terminal->getMachineType());
 			}
 		}
 	}

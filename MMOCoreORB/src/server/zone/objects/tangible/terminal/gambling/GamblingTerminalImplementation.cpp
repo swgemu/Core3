@@ -14,7 +14,12 @@
 int GamblingTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 245 || selectedID == 20) {
 		if (playersWindows.contains(player)) {
-			leaveTerminal(player);
+			ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
+
+			if (gamblingManager == nullptr) {
+				return 0;
+			}
+			gamblingManager->leaveTerminal(player, getMachineType());
 		} else {
 			joinTerminal(player);
 		}
@@ -34,6 +39,17 @@ bool GamblingTerminalImplementation::invalidPosture(CreatureObject* player) {
 }
 
 bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
+	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
+
+	if (gamblingManager == nullptr) {
+		return false;
+	}
+
+	if (gamblingManager->isPlaying(player)) {
+		player->sendSystemMessage("You are already playing at a gambling terminal.");
+		return false;
+	}
+
 	bool returnValue = true;
 	switch (machineType) {
 		case SLOTMACHINE: {
@@ -92,6 +108,10 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 
 void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
+
+	if (gamblingManager == nullptr) {
+		return;
+	}
 
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
