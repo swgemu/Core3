@@ -232,7 +232,7 @@ bool DroidMaintenanceModuleDataComponent::isAssignedTo(uint64 structure) {
 
 bool DroidMaintenanceModuleDataComponent::assignStructure( uint64 objectID ){
 
-	if( !assignedStructures.contains( objectID ) && assignedStructures.size() <= maxStructures) {
+	if( !assignedStructures.contains( objectID ) && (assignedStructures.size() + 1) <= maxStructures) {
 		assignedStructures.add( objectID );
 		return true;
 	} else {
