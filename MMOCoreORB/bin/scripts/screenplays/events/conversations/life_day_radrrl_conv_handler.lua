@@ -6,7 +6,7 @@ function lifeDayRadrrlConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
-	if readScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete") == "1" or readData(playerID .. ":lifeDayRadrrl") == 1 then
+	if readScreenPlayData(pPlayer, readStringSharedMemory("LifeDayName"), "complete") == "1" or readData(playerID .. ":lifeDayRadrrl") == 1 then
 		return convoTemplate:getScreen("hello_again")
 	elseif readData(playerID .. ":lifeDayState") == 2 then
 		return convoTemplate:getScreen("rememberance")
