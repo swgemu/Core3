@@ -437,7 +437,11 @@ int CombatManager::creoTargetCombatAction(CreatureObject* attacker, WeaponObject
 	// If it's a state only attack (intimidate, warcry, wookiee roar) don't apply dots or break combat delays
 	if (!data.isStateOnlyAttack() && hitVal != MISS) {
 		if (defender->hasAttackDelay()) {
-			defender->removeAttackDelay();
+			Core::getTaskManager()->executeTask([=]() {
+				Locker locker(defender);
+
+				defender->removeAttackDelay();
+			}, "RemoveAttackDelayLambda");
 		}
 
 		if (damageMultiplier != 0 && damage != 0) {
@@ -603,7 +607,11 @@ int CombatManager::tanoTargetCombatAction(TangibleObject* attacker, WeaponObject
 		}
 
 		if (defenderObject->hasAttackDelay()) {
-			defenderObject->removeAttackDelay();
+			Core::getTaskManager()->executeTask([=]() {
+				Locker locker(defenderObject);
+
+				defenderObject->removeAttackDelay();
+			}, "RemoveAttackDelayLambda");
 		}
 
 		if (damageMultiplier != 0 && damage != 0) {
@@ -2954,10 +2962,10 @@ void CombatManager::requestEndDuel(CreatureObject* player, CreatureObject* targe
 				ManagedReference<CreatureObject*> target = targetPlayer;
 
 				Core::getTaskManager()->executeTask([=]() {
-					 Locker locker(pet);
+					Locker locker(pet);
 
-					 pet->removeDefender(target);
-				 }, "PetRemoveDefenderLambda");
+					pet->removeDefender(target);
+				}, "PetRemoveDefenderLambda");
 			}
 		}
 
@@ -2977,10 +2985,10 @@ void CombatManager::requestEndDuel(CreatureObject* player, CreatureObject* targe
 				ManagedReference<CreatureObject*> play = player;
 
 				Core::getTaskManager()->executeTask([=]() {
-					 Locker locker(pet);
+					Locker locker(pet);
 
-					 pet->removeDefender(play);
-				 }, "PetRemoveDefenderLambda2");
+					pet->removeDefender(play);
+				}, "PetRemoveDefenderLambda2");
 			}
 		}
 

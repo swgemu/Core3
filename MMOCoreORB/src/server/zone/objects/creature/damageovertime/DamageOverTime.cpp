@@ -203,16 +203,19 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* at
 
 	Core::getTaskManager()->executeTask([victimRef, attackerRef, attribute, damage] () {
 		Locker locker(victimRef);
-
 		Locker crossLocker(attackerRef, victimRef);
 
 		victimRef->inflictDamage(attackerRef, attribute, damage, false);
-
-		if (victimRef->hasAttackDelay())
-			victimRef->removeAttackDelay();
-
 		victimRef->playEffect("clienteffect/dot_bleeding.cef","");
 	}, "BleedTickLambda");
+
+	if (victimRef->hasAttackDelay()) {
+		Core::getTaskManager()->executeTask([=]() {
+			Locker locker(victimRef);
+
+			victimRef->removeAttackDelay();
+		}, "RemoveAttackDelayLambda");
+	}
 
 	return damage;
 }
@@ -257,13 +260,18 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 		}
 
 		victimRef->addShockWounds((int)(secondaryStrength * 0.075f));
-
 		victimRef->inflictDamage(attackerRef, attribute - attribute % 3, damage, true);
-		if (victimRef->hasAttackDelay())
-			victimRef->removeAttackDelay();
 
 		victimRef->playEffect("clienteffect/dot_fire.cef","");
 	}, "FireTickLambda");
+
+	if (victimRef->hasAttackDelay()) {
+		Core::getTaskManager()->executeTask([=]() {
+			Locker locker(victimRef);
+
+			victimRef->removeAttackDelay();
+		}, "RemoveAttackDelayLambda");
+	}
 
 	return damage;
 }
@@ -293,11 +301,17 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* atta
 		Locker crossLocker(attackerRef, victimRef);
 
 		victimRef->inflictDamage(attackerRef, attribute, damage, false);
-		if (victimRef->hasAttackDelay())
-			victimRef->removeAttackDelay();
 
 		victimRef->playEffect("clienteffect/dot_poisoned.cef","");
 	}, "PoisonTickLambda");
+
+	if (victimRef->hasAttackDelay()) {
+		Core::getTaskManager()->executeTask([=]() {
+			Locker locker(victimRef);
+
+			victimRef->removeAttackDelay();
+		}, "RemoveAttackDelayLambda");
+	}
 
 	return damage;
 }
@@ -336,11 +350,16 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim, CreatureObject* att
 
 		victimRef->addShockWounds((int)(strength * 0.075f));
 
-		if (victimRef->hasAttackDelay())
-			victimRef->removeAttackDelay();
-
 		victimRef->playEffect("clienteffect/dot_diseased.cef","");
 	}, "DiseaseTickLambda");
+
+	if (victimRef->hasAttackDelay()) {
+		Core::getTaskManager()->executeTask([=]() {
+			Locker locker(victimRef);
+
+			victimRef->removeAttackDelay();
+		}, "RemoveAttackDelayLambda");
+	}
 
 	return damage;
 }
@@ -386,13 +405,19 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 		CombatManager::instance()->broadcastCombatSpam(attackerRef, victimRef, nullptr, chokeDam, "cbt_spam", "forcechoke_hit", 1);
 		victimRef->inflictDamage(attackerRef, attribute, chokeDam, true);
 
-		if (victimRef->hasAttackDelay())
-			victimRef->removeAttackDelay();
 
 		victimRef->playEffect("clienteffect/pl_force_choke.cef", "");
 		victimRef->sendSystemMessage("@combat_effects:choke_single");
 		victimRef->showFlyText("combat_effects", "choke", 0xFF, 0, 0);
 	}, "ForceChokeTickLambda");
+
+	if (victimRef->hasAttackDelay()) {
+		Core::getTaskManager()->executeTask([=]() {
+			Locker locker(victimRef);
+
+			victimRef->removeAttackDelay();
+		}, "RemoveAttackDelayLambda");
+	}
 
 	return strength;
 
