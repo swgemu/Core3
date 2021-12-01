@@ -6,7 +6,7 @@ function lifeDayOraalarriConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTempl
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local playerID = CreatureObject(pPlayer):getObjectID()
-	if readScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete") == "1" then
+	if readScreenPlayData(pPlayer, readStringSharedMemory("LifeDayName"), "complete") == "1" then
 		return convoTemplate:getScreen("return_complete")
 	elseif readData(playerID .. ":lifeDayState") == 1 or readData(playerID .. ":lifeDayState") == 2 then
 		return convoTemplate:getScreen("greetings")

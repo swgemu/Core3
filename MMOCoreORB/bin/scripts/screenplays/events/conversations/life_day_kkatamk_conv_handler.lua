@@ -5,7 +5,7 @@ lifeDayKkatamkConvoHandler = conv_handler:new {}
 function lifeDayKkatamkConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	if readScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete") == "1" then
+	if readScreenPlayData(pPlayer, readStringSharedMemory("LifeDayName"), "complete") == "1" then
 		return convoTemplate:getScreen("return_complete")
 	elseif readData(CreatureObject(pPlayer):getObjectID() .. ":lifeDayState") == 1 then
 		return convoTemplate:getScreen("return_incomplete")
