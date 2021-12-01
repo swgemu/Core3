@@ -846,6 +846,40 @@ private:
 	float range;
 };
 
+class RestorePetPatrols : public Behavior {
+public:
+	RestorePetPatrols(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	RestorePetPatrols(const RestorePetPatrols& a) : Behavior(a) {
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		if (agent == nullptr || !agent->isPet())
+			return FAILURE;
+
+		ManagedReference<PetControlDevice*> pcd = agent->getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (pcd == nullptr)
+			return FAILURE;
+
+		for (int i = 0; i < pcd->getPatrolPointSize(); ++i) {
+			PatrolPoint patrolPoint = pcd->getPatrolPoint(i);
+
+			agent->addPatrolPoint(patrolPoint);
+		}
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
+};
+
 }
 }
 }

@@ -69,9 +69,8 @@ function CrackdownCantina:onEnteredCantina(pCantina, pPlayer)
 	if (readData(cantinaID .. ":crackdownInProgress") == 1) then
 		local mobileID = readData(cantinaID .. ":harasserID")
 		local pMobile = getSceneObject(mobileID)
-		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-		if (pMobile == nil or CreatureObject(pMobile):isDead() or (not self.harassPrivileged and PlayerObject(pGhost):isPrivileged())) then
+		if (pMobile == nil or CreatureObject(pMobile):isDead()) then
 			createEvent(30000, "CrackdownCantina", "doCleanup", pCantina, "")
 		end
 
@@ -85,6 +84,16 @@ end
 
 function CrackdownCantina:handlePotentialTrouble(pCantina, pPlayer)
 	if (readData(SceneObject(pCantina):getObjectID() .. ":crackdownInProgress") == 1) then
+		return
+	end
+
+	if pPlayer == nil then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if ((not self.harassPrivileged) and PlayerObject(pGhost):isPrivileged()) then
 		return
 	end
 
