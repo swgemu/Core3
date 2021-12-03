@@ -1909,7 +1909,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	// setNextPosition adds a point to patrolPoints at spot 0 -- usually by the setDestination function
 	while (!found && getPatrolPointSize() > 0) {
 		PatrolPoint endMovementPosition = getNextPosition();
-		CellObject* endMovementCell = endMovementPosition.getCell();
 
 		if (currentPosition.squaredDistanceTo(endMovementPosition.getWorldPosition()) <= maxDistance * maxDistance) {
 			patrolPoints.remove(0);
