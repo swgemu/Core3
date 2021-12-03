@@ -715,7 +715,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 }
 
 void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
-	SceneObject* selfObject = sendSelf ? nullptr : asSceneObject();
+	SceneObject* selfObject = sendSelf ? asSceneObject() : nullptr;
 
 	broadcastMessagePrivate(message, selfObject, lockZone);
 }
