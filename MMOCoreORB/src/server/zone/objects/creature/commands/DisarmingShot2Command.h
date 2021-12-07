@@ -22,36 +22,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		int result = doCombatAction(creature, target);
-
-		if (result == SUCCESS) {
-			ZoneServer* zoneServer = creature->getZoneServer();
-
-			if (zoneServer == nullptr)
-				return result;
-
-			ManagedReference<SceneObject*> targetObject = zoneServer->getObject(target);
-
-			if (targetObject == nullptr || !targetObject->isCreatureObject())
-				return result;
-
-			CreatureObject* tarCreo = targetObject->asCreatureObject();
-
-			if (tarCreo == nullptr || !tarCreo->isAiAgent()) {
-				return result;
-			}
-
-			AiAgent* agent = tarCreo->asAiAgent();
-
-			if (agent == nullptr || !agent->isNpc())
-				return result;
-
-			agent->unequipWeapons();
-		}
-
-		return result;
+		return doCombatAction(creature, target);
 	}
-
 };
 
 #endif //DISARMINGSHOT2COMMAND_H_
