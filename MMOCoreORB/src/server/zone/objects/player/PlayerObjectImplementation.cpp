@@ -293,8 +293,6 @@ void PlayerObjectImplementation::unload() {
 
 	creature->stopEntertaining();
 
-	creature->clearTargetMissCount();
-
 	ManagedReference<TradeSession*> tradeContainer = creature->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer != nullptr)

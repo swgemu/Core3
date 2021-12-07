@@ -34,51 +34,53 @@ public:
 
 		int result = doCombatAction(creature, target);
 
-		if (result == SUCCESS && creature->isPlayerCreature()) {
+		if (result == SUCCESS && creature->isPlayerCreature() && targetObject->isCreatureObject()) {
 			CreatureObject* tarCreo = targetObject->asCreatureObject();
 
-			if (tarCreo == nullptr || tarCreo->isDead() || tarCreo->isPlayerCreature()) {
+			if (tarCreo == nullptr || tarCreo->isDead() || !tarCreo->isAiAgent()) {
 				return result;
 			}
 
-			int missCount = 0;
-			VectorMap<uint64, int>* targetMissCount = creature->getTargetMissCount();
+			AiAgent* agent = tarCreo->asAiAgent();
 
-			Locker creoLock(creature);
+			if (agent != nullptr) {
+				int missCount = 0;
+				VectorMap<uint64, int>* targetMissCount = agent->getTargetMissCount();
 
-			if (targetMissCount != nullptr) {
-				for (int i = 0; i < targetMissCount->size(); ++i){
-					uint64 listTarget = targetMissCount->elementAt(i).getKey();
+				Locker creoLock(agent);
 
-					if (listTarget == target) {
-						missCount = targetMissCount->elementAt(i).getValue();
+				if (targetMissCount != nullptr) {
+					for (int i = 0; i < targetMissCount->size(); ++i){
+						uint64 listTarget = targetMissCount->elementAt(i).getKey();
 
-						break;
+						if (listTarget == creature->getObjectID()) {
+							missCount = targetMissCount->elementAt(i).getValue();
+
+							break;
+						}
 					}
 				}
-			}
 
-			float distSq = 40.f * 40.f;
+				float distSq = 40.f * 40.f;
 
-			if (creature->getWorldPosition().squaredDistanceTo(tarCreo->getWorldPosition()) >= distSq) {
-				int posture = creature->getPosture();
+				if (creature->getWorldPosition().squaredDistanceTo(agent->getWorldPosition()) >= distSq) {
+					int posture = creature->getPosture();
 
-				if ((posture == CreaturePosture::PRONE && missCount <= 3) || (posture == CreaturePosture::CROUCHED && missCount <= 2) || (posture == CreaturePosture::UPRIGHT && missCount <= 1)) {
-					Locker lock(tarCreo);
+					if ((posture == CreaturePosture::PRONE && missCount <= 3) || (posture == CreaturePosture::CROUCHED && missCount <= 2) || (posture == CreaturePosture::UPRIGHT && missCount <= 1)) {
+						ThreatMap* threatMap = agent->getThreatMap();
 
-					ThreatMap* threatMap = tarCreo->getThreatMap();
+						if (threatMap != nullptr && threatMap->size() > 0) {
+							for (int i = 0; i < threatMap->size(); ++i) {
+								TangibleObject* threatTano = threatMap->elementAt(i).getKey();
 
-					if (threatMap != nullptr && threatMap->size() > 0) {
-						for (int i = 0; i < threatMap->size(); ++i) {
-							TangibleObject* threatTano = threatMap->elementAt(i).getKey();
+								if (threatTano == nullptr) {
+									continue;
+								}
 
-							if (threatTano == nullptr) {
-								continue;
-							}
-
-							if (threatTano == creature) {
-								threatMap->remove(i);
-								break;
+								if (threatTano == creature) {
+									threatMap->remove(i);
+									break;
+								}
 							}
 						}
 					}

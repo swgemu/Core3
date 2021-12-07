@@ -2581,29 +2581,29 @@ void CombatManager::doMiss(TangibleObject* attacker, WeaponObject* weapon, Creat
 
 	defender->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
 
-	if (data.getCommandCRC() == STRING_HASHCODE("concealshot") && attacker != nullptr && attacker->isPlayerCreature() && !defender->isPlayerCreature()) {
-		CreatureObject* attackerCreo = attacker->asCreatureObject();
+	if (data.getCommandCRC() == STRING_HASHCODE("concealshot") && attacker != nullptr && attacker->isPlayerCreature() && defender->isAiAgent()) {
+		AiAgent* agent = defender->asAiAgent();
 
-		if (attackerCreo != nullptr) {
-			VectorMap<uint64, int>* targetMissCount = attackerCreo->getTargetMissCount();
+		if (agent != nullptr) {
+			VectorMap<uint64, int>* targetMissCount = agent->getTargetMissCount();
 			if (targetMissCount != nullptr) {
-				uint64 defenderID = defender->getObjectID();
+				uint64 attackerID = attacker->getObjectID();
 
-				Locker creoLock(attackerCreo);
+				Locker agentLock(agent);
 
-				if (targetMissCount->contains(defenderID)) {
+				if (targetMissCount->contains(attackerID)) {
 					for (int i = 0; i < targetMissCount->size(); i++){
 						uint64 listTarget = targetMissCount->elementAt(i).getKey();
 
-						if (listTarget == defenderID) {
+						if (listTarget == attackerID) {
 							int missCount = targetMissCount->elementAt(i).getValue();
 
-							attackerCreo->setTargetMissCount(defenderID, missCount + 1);
+							agent->setTargetMissCount(attackerID, missCount + 1);
 							break;
 						}
 					}
 				} else {
-					attackerCreo->addTargetMissCount(defenderID, 1);
+					agent->addTargetMissCount(attackerID, 1);
 				}
 			}
 		}

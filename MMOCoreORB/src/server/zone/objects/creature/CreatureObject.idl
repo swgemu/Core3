@@ -129,9 +129,6 @@ class CreatureObject extends TangibleObject {
 	protected int performanceType;
 
 	@dereferenced
-	protected VectorMap<unsigned long, int> targetMissCount;
-
-	@dereferenced
 	protected DeltaVector<int> hamList;
 
 	@dereferenced
@@ -1820,33 +1817,6 @@ class CreatureObject extends TangibleObject {
 	@read
 	public int getPerformanceType() {
 		return performanceType;
-	}
-
-	@local
-	@dirty
-	public VectorMap<unsigned long, int> getTargetMissCount() {
-		return targetMissCount;
-	}
-
-	@prelocked
-	public native void addTargetMissCount(unsigned long target, int misses) {
-		targetMissCount.put(target, misses);
-	}
-
-	@prelocked
-	public native void setTargetMissCount(unsigned long target, int misses) {
-		targetMissCount.drop(target);
-		targetMissCount.put(target, misses);
-	}
-
-	@prelocked
-	public native void removeTargetMissCount(unsigned long target) {
-		targetMissCount.drop(target);
-	}
-
-	@prelocked
-	public native void clearTargetMissCount() {
-		targetMissCount.removeAll();
 	}
 
 	@read

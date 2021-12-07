@@ -142,6 +142,9 @@ class AiAgent extends CreatureObject {
 
 	protected PetDeed petDeed;
 
+	@dereferenced
+	protected transient VectorMap<unsigned long, int> targetMissCount;
+
 	// btree bit
 	@dereferenced
 	@rawTemplate(value = "BehaviorTreeSlot, Reference<Behavior*>")
@@ -1522,5 +1525,27 @@ class AiAgent extends CreatureObject {
 		int type = getMobType();
 
 		return type == MOB_ANDROID || type == MOB_NPC;
+	}
+
+	@local
+	@dirty
+	public VectorMap<unsigned long, int> getTargetMissCount() {
+		return targetMissCount;
+	}
+
+	@prelocked
+	public native void addTargetMissCount(unsigned long target, int misses) {
+		targetMissCount.put(target, misses);
+	}
+
+	@prelocked
+	public native void setTargetMissCount(unsigned long target, int misses) {
+		targetMissCount.drop(target);
+		targetMissCount.put(target, misses);
+	}
+
+	@prelocked
+	public native void removeTargetMissCount(unsigned long target) {
+		targetMissCount.drop(target);
 	}
 }
