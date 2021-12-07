@@ -42,19 +42,19 @@
 --true = 1, false = 0
 
 DisarmingShot2Command = {
-        name = "disarmingshot2",
+	name = "disarmingshot2",
 
 	damageMultiplier = 2.75,
 	speedMultiplier = 2.0,
 	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 1.0,
 	mindCostMultiplier = 0.5,
-        accuracyBonus = 50,
+	accuracyBonus = 50,
 
 	coneAngle = 15,
 	coneAction = true,
 
-	animation = "fire_3_single", 
+	animation = "fire_3_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "disarmblast",
