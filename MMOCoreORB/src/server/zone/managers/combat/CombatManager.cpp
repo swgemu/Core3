@@ -409,7 +409,7 @@ int CombatManager::creoTargetCombatAction(CreatureObject* attacker, WeaponObject
 
 	switch (hitVal) {
 	case MISS:
-		doMiss(attacker, weapon, defender, damage);
+		doMiss(attacker, weapon, defender, data, damage);
 		damageMultiplier = 0.0f;
 		break;
 	case BLOCK:
@@ -568,7 +568,7 @@ int CombatManager::tanoTargetCombatAction(TangibleObject* attacker, WeaponObject
 
 	switch (hitVal) {
 	case MISS:
-		doMiss(attacker, weapon, defenderObject, damage);
+		doMiss(attacker, weapon, defenderObject, data, damage);
 		damageMultiplier = 0.0f;
 		break;
 	case HIT:
@@ -2575,8 +2575,39 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, Weapon
 }
 
 // Fly Text - Miss, Counterattack, Block, Hit Location
-void CombatManager::doMiss(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) const {
+void CombatManager::doMiss(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, int damage) const {
+	if (defender == nullptr)
+		return;
+
 	defender->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
+
+	if (data.getCommandCRC() == STRING_HASHCODE("concealshot") && attacker != nullptr && attacker->isPlayerCreature() && defender->isAiAgent()) {
+		AiAgent* agent = defender->asAiAgent();
+
+		if (agent != nullptr) {
+			VectorMap<uint64, int>* targetMissCount = agent->getTargetMissCount();
+			if (targetMissCount != nullptr) {
+				uint64 attackerID = attacker->getObjectID();
+
+				Locker agentLock(agent);
+
+				if (targetMissCount->contains(attackerID)) {
+					for (int i = 0; i < targetMissCount->size(); i++){
+						uint64 listTarget = targetMissCount->elementAt(i).getKey();
+
+						if (listTarget == attackerID) {
+							int missCount = targetMissCount->elementAt(i).getValue();
+
+							agent->setTargetMissCount(attackerID, missCount + 1);
+							break;
+						}
+					}
+				} else {
+					agent->addTargetMissCount(attackerID, 1);
+				}
+			}
+		}
+	}
 }
 
 void CombatManager::doCounterAttack(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) const {

@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 ConcealShotCommand = {
-        name = "concealshot",
+	name = "concealshot",
 
 	damageMultiplier = 2.5,
 	speedMultiplier = 2.0,
@@ -53,11 +53,11 @@ ConcealShotCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animation = "fire_1_special_single", 
+	animation = "fire_1_special_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "concealedshot",
-	
+
 	weaponType = RIFLEWEAPON,
 
 	range = -1
