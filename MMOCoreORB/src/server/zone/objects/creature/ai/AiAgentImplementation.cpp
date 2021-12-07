@@ -86,7 +86,7 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/chat/ChatManager.h"
 
-//#define SHOW_WALK_PATH
+//#define DEBUG_PATHING
 //#define DEBUG
 //#define SHOW_NEXT_POSITION
 
@@ -1897,7 +1897,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	bool found = false;
 	auto currentPosition = getWorldPosition();
 
-#ifdef SHOW_WALK_PATH
+#ifdef DEBUG_PATHING
 	CreateClientPathMessage* pathMessage = new CreateClientPathMessage();
 	if (getParent() == nullptr) {
 		pathMessage->addCoordinate(getPositionX(), getZone()->getHeight(getPositionX(), getPositionY()), getPositionY());
@@ -1909,7 +1909,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	// setNextPosition adds a point to patrolPoints at spot 0 -- usually by the setDestination function
 	while (!found && getPatrolPointSize() > 0) {
 		PatrolPoint endMovementPosition = getNextPosition();
-		CellObject* endMovementCell = endMovementPosition.getCell();
+
+		if (currentPosition.squaredDistanceTo(endMovementPosition.getWorldPosition()) <= maxDistance * maxDistance) {
+			patrolPoints.remove(0);
+			break;
+		}
 
 		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 			info("targetPosition: " + endMovementPosition.toString(), true);
@@ -1924,16 +1928,16 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			// No prior path or path is null, find new path
 			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), endMovementPosition.getCoordinates(), getZoneUnsafe()));
 		} else {
-			// We already have a path
-			SceneObject* currentCell = getParent().get();
+			ManagedReference<SceneObject*> currentCell = getParent().get();
 			if (currentCell != nullptr && !currentCell->isCellObject())
 				currentCell = nullptr;
 
-			// Don't recalculate path if mob hasn't entered the endMovementCell
+			// We already have a path
 			const WorldCoordinates endMovementCoords = endMovementPosition.getCoordinates();
-			if (currentCell == endMovementCell && currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 2 * 2) {
+			if (currentCell != nullptr && endMovementPosition.getCell() != nullptr && currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 3 * 3) {
 				// Our target has moved, so we will need a new path with a new position.
-				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), endMovementCoords, getZoneUnsafe()));
+
+				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), endMovementPosition.getCoordinates(), getZoneUnsafe()));
 			} else {
 				// Our target is close to where it was before, so our path begins where we are standing
 				WorldCoordinates curr(asAiAgent());
@@ -1999,6 +2003,28 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 			float nextMovementDistance = fabs(nextMovementPosition.getWorldPosition().distanceTo(currentPosition));
 
+#ifdef DEBUG_PATHING
+			printf("findNexPosition - Path Size = %i \n", path->size());
+			printf("Start of Calc \n");
+			printf("max distance = %f \n", maxDist);
+			printf("Next Movement Position x = %f , ", nextMovementPosition.getX());
+			printf(" y = %f \n", nextMovementPosition.getY());
+
+			for (int i = 0; i < path->size(); ++i) {
+				WorldCoordinates pos = path->get(i);
+
+				printf("Point # %i ", i);
+				printf(" X = %f , ", pos.getX());
+				printf(" Y = %f \n", pos.getY());
+
+				if (pos.isCellEdge())
+					printf("<----- Point is a Cell Edge ------> \n");
+
+				if (pos.getCell() == nullptr)
+					printf(" Cell is null \n");
+			}
+#endif
+
 			if (nextMovementDistance > maxDist && nextMovementDistance > 0) {
 				// nextMovementPosition is further then the maxDist
 				// Calculate the distance we can go and set the new nextMovementPosition
@@ -2006,16 +2032,21 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				Vector3 newPosition;
 
 				// Issue - We are assigning AI to a location outside of the actual cell boundary
-
-				if (nextMovementPosition.getCell() != nullptr) {
+				if (nextMovementPosition.getCell() != nullptr && !nextMovementPosition.isCellEdge()) {
 					currentPos = PathFinderManager::transformToModelSpace(currentPos, nextMovementPosition.getCell()->getParent().get());
 				}
 
-				float dx = nextMovementPosition.getX() - currentPos.getX();
-				float dy = nextMovementPosition.getY() - currentPos.getY();
+				if (nextMovementPosition.isCellEdge() && nextMovementPosition.getCell() != nullptr) {
+					newPosition.setX(nextMovementPosition.getX());
+					newPosition.setY(nextMovementPosition.getY());
+				} else {
+					float dx = nextMovementPosition.getX() - currentPos.getX();
+					float dy = nextMovementPosition.getY() - currentPos.getY();
 
-				newPosition.setX(currentPos.getX() + (maxDist * (dx / nextMovementDistance)));
-				newPosition.setY(currentPos.getY() + (maxDist * (dy / nextMovementDistance)));
+					newPosition.setX(currentPos.getX() + (maxDist * (dx / nextMovementDistance)));
+					newPosition.setY(currentPos.getY() + (maxDist * (dy / nextMovementDistance)));
+				}
+
 				newPosition.setZ(0.f);
 
 				Zone* zone = getZoneUnsafe();
@@ -2051,7 +2082,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			}
 		}
 
-#ifdef SHOW_WALK_PATH
+#ifdef DEBUG_PATHING
 		for (int i = 1; i < path->size(); ++i) { // i = 0 is our position
 			const WorldCoordinates& nextPositionDebug = path->get(i);
 
@@ -2117,7 +2148,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 #endif
 	}
 
-#ifdef SHOW_WALK_PATH
+#ifdef DEBUG_PATHING
 	broadcastMessage(pathMessage, false);
 #endif
 
