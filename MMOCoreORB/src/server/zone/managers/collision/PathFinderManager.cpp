@@ -86,11 +86,11 @@ void PathFinderManager::filterPastPoints(Vector<WorldCoordinates>* path, SceneOb
 
 		printf("Filter Past Points initial #%i - ", i);
 		printf(" X = %f,", coord.getX());
-		printf("Y = %f", coord.getY());
+		printf("Y = %f  ", coord.getY());
 		if (coord.getCell() == nullptr) {
-			printf(" -- Cell is nullptr -- \n");
+			printf(" -- Cell is nullptr -- ");
 		} else {
-			printf("\n");
+			printf("Cell ID: %llu \n", coord.getCell()->getObjectID());
 		}
 
 		if (coord.isCellEdge())
@@ -619,7 +619,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	path->add(pointB);
 
 #ifdef DEBUG_PATHING
-	printf(" FINAL PATH POINTS VECTOR: \n");
+	printf(" FINAL PATH POINTS VECTOR - worldToCell: \n");
 
 	for (int i = 0; i < path->size(); ++i) {
 		WorldCoordinates coord = path->get(i);
@@ -929,7 +929,9 @@ void PathFinderManager::addTriangleNodeEdges(const Vector3& source, const Vector
 }
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
-	//info ("findPathFromCellToDifferentCell", true);
+#ifdef DEBUG_PATHING
+	info ("findPathFromCellToDifferentCell", true);
+#endif
 
 	CellObject* ourCell = pointA.getCell();
 	CellObject* targetCell = pointB.getCell();
@@ -937,8 +939,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	int ourCellID = ourCell->getCellNumber();
 	int targetCellID = targetCell->getCellNumber();
 
-	ManagedReference<BuildingObject*> building1 = cast<BuildingObject*>( ourCell->getParent().get().get());
-	ManagedReference<BuildingObject*> building2 = cast<BuildingObject*>( targetCell->getParent().get().get());
+	ManagedReference<BuildingObject*> building1 = cast<BuildingObject*>(ourCell->getParent().get().get());
+	ManagedReference<BuildingObject*> building2 = cast<BuildingObject*>(targetCell->getParent().get().get());
 
 	if (building1 != building2) // TODO: implement path finding between 2 buildings
 		return nullptr;
@@ -975,7 +977,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		return nullptr;
 	}
 
-	const PathNode* source = CollisionManager::findNearestPathNode(nearestSourceNodeTriangle, floorMesh1, pointB.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
+	const PathNode* source = CollisionManager::findNearestPathNode(nearestSourceNodeTriangle, floorMesh1, pointA.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
 
 	if (source == nullptr) {
 		delete path;
@@ -1029,7 +1031,12 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		trianglePath = nullptr;
 	}
 
-	path->add(WorldCoordinates(source->getPosition(), ourCell));
+	WorldCoordinates sourceCellNode(source->getPosition(), ourCell);
+	sourceCellNode.setCellEdge(true);
+
+	path->add(sourceCellNode);
+
+	int priorID = 0;
 
 	//traversing cells
 	for (int i = 1; i < nodes->size(); ++i) {
@@ -1041,18 +1048,30 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		int cellID = floorMesh->getCellID();
 
 		if (cellID == 0) {
-			//info("cellID == 0", true);
-			WorldCoordinates coord(pathNode->getPosition(), ourCell);
-
-			path->add(WorldCoordinates(coord.getWorldPosition(), nullptr));
+			// We should never have a cellID of 0 when moving cell to cell
+			nodes->remove(i);
+#ifdef DEBUG_PATHING
+			printf("Removing node with cellID = 0 \n");
+#endif
 		} else {
 			CellObject* pathCell = building1->getCell(cellID);
 
+			if (pathCell == nullptr)
+				continue;
+
 			WorldCoordinates coord(pathNode->getPosition(), pathCell);
 
-			path->add(coord);
+#ifdef DEBUG_PATHING
+			printf("Adding Path Node with Cell ID = %i, ", cellID);
+			printf(" X = %f ,", coord.getX());
+			printf("Y = %f \n", coord.getY());
+#endif
 
-			//info("cellID:" + String::valueOf(cellID), true);
+			if (priorID != cellID)
+				coord.setCellEdge(true);
+
+			path->add(coord);
+			priorID = cellID;
 
 			if (i == nodes->size() - 1) {
 				if (pathNode != target) {
@@ -1081,6 +1100,26 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		delete trianglePath;
 
 	path->add(pointB);
+
+#ifdef DEBUG_PATHING
+	printf(" FINAL PATH POINTS cell to other cell: \n");
+
+	for (int i = 0; i < path->size(); ++i) {
+		WorldCoordinates coord = path->get(i);
+
+		printf("Final Path Point #%i - ", i);
+		printf(" X = %f,", coord.getX());
+		printf("Y = %f", coord.getY());
+		if (coord.getCell() == nullptr) {
+			printf(" -- Cell is nullptr -- ");
+		} else {
+			printf("Cell ID: %llu \n", coord.getCell()->getObjectID());
+		}
+
+		if (coord.isCellEdge())
+			printf(" isCellEdge true \n");
+	}
+#endif
 
 	return path;
 }
