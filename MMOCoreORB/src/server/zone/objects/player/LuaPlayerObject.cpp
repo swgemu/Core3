@@ -82,6 +82,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "startSlicingSession", &LuaPlayerObject::startSlicingSession },
 		{ "setVisibility", &LuaPlayerObject::setVisibility },
 		{ "getPlayedTimeString", &LuaPlayerObject::getPlayedTimeString },
+		{ "getAccountID", &LuaPlayerObject::getAccountID },
 		{ 0, 0 }
 };
 
@@ -747,6 +748,14 @@ int LuaPlayerObject::getPlayedTimeString(lua_State* L) {
 	Locker locker(realObject);
 
 	lua_pushstring(L, realObject->getPlayedTimeString(verbose).toCharArray());
+
+	return 1;
+}
+
+int LuaPlayerObject::getAccountID(lua_State* L) {
+	Locker locker(realObject);
+
+	lua_pushinteger(L, realObject->getAccountID());
 
 	return 1;
 }

@@ -93,14 +93,14 @@ function ServerEventAutomation:sendEventEmails(pPlayer, source_event)
 
 	for email_id, email in pairs(self.config.emails) do
 		if (email.start_time == nil or now >= email.start_time) and (email.end_time == nil or now <= email.end_time) then
-			if not self:getSent(pPlayer, email) then
+			if not self:getEmailSent(pPlayer, email) then
 				if email.target == nil or email.target(self, pPlayer, email) then
 						self:sendEventEmail(pPlayer, email)
 						self:logPlayerEvent(pPlayer, "sentEventEmail:" .. email_id)
 						if email.after_send ~= nil then
 								email.after_send(self, pPlayer, email)
 						end
-						self:setSent(pPlayer, email)
+						self:setEmailSent(pPlayer, email)
 				else
 						self:logPlayerEvent(pPlayer, "filteredFromEventEmail:" .. email_id)
 				end
@@ -155,7 +155,7 @@ function ServerEventAutomation:sendSurveys(pPlayer, source_event)
 
 	for survey_id, survey in pairs(self.config.surveys) do
 		if (survey.start_time == nil or now >= survey.start_time) and (survey.end_time == nil or now <= survey.end_time) then
-			if not self:getSent(pPlayer, survey) then
+			if not self:getSurveySent(pPlayer, survey) then
 				if survey.target == nil or survey.target(self, pPlayer, survey) then
 						self:sendSurvey(pPlayer, survey)
 						if survey.after_send ~= nil then
@@ -255,16 +255,34 @@ function ServerEventAutomation:handleSurveyResponse(pPlayer, pSui, eventIndex, a
 		return
 	end
 
+	local accountID = 0
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if pGhost == nil then
+		self:logPlayerEvent(pPlayer, "ServerEventAutomation:handleSurveyResponse missing ghost?")
+	else
+		accountID = PlayerObject(pGhost):getAccountID()
+	end
+
 	self:logPlayerEvent(pPlayer, survey_id .. ": Selected " .. response .. " after " .. delta .. " seconds.")
 
+	local result = '{"survey_id":"' .. survey_id .. '"'
+	   .. ',"account_id":' .. accountID
+	   .. ',"character_oid":' .. CreatureObject(pPlayer):getObjectID()
+	   .. ',"response":"' .. response .. '"'
+	   .. ',"timestamp":"' .. getFormattedTime() .. '"'
+	   .. ',"time":' .. getTimestamp()
+	   .. ',"answer_seconds":' .. delta
+	   .. "}\n"
+
 	local fh = io.open("log/SurveyAnswers.log", "a+")
-	fh:write(string.format("%s %d %s %s %d\n", getFormattedTime(), CreatureObject(pPlayer):getObjectID(), survey_id, response, delta))
+	fh:write(result)
 	fh:flush()
 	fh:close()
 
 	self:logEvent("Finished survey " .. survey.id .. " title: " .. survey.title)
 
-	self:setSent(pPlayer, survey)
+	self:setSurveySent(pPlayer, survey)
 end
 
 function ServerEventAutomation:scheduleSurvey(pPlayer, when, reason)
@@ -278,16 +296,46 @@ function ServerEventAutomation:scheduleSurvey(pPlayer, when, reason)
 	createEvent(when * 1000, "ServerEventAutomation", "sendSurveys", pPlayer, reason)
 end
 
-function ServerEventAutomation:getSentKey(pPlayer, item)
+function ServerEventAutomation:getEmailSentKey(pPlayer, item)
 	return CreatureObject(pPlayer):getObjectID() .. ":ServerEventAutomation:" .. item.namespace .. ":" .. item.id
 end
 
-function ServerEventAutomation:setSent(pPlayer, item)
-	setQuestStatus(self:getSentKey(pPlayer, item), getTimestamp())
+function ServerEventAutomation:setEmailSent(pPlayer, item)
+	setQuestStatus(self:getEmailSentKey(pPlayer, item), getTimestamp())
 end
 
-function ServerEventAutomation:getSent(pPlayer, item)
-	local when = getQuestStatus(self:getSentKey(pPlayer, item))
+function ServerEventAutomation:getEmailSent(pPlayer, item)
+	local when = getQuestStatus(self:getEmailSentKey(pPlayer, item))
+
+	if when == nil then
+		return false
+	end
+
+	return true
+end
+
+function ServerEventAutomation:getSurveySentKey(pPlayer, item)
+	if pPlayer == nil then
+		self:logEvent("ERROR: ServerEventAutomation:getSurveySentKey pPlayer is nil")
+		return "unknownPlayer"
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if pGhost == nil then
+		self:logPlayerEvent(pPlayer, "ServerEventAutomation:getSurveySentKey missing ghost?")
+		return "missingGhost"
+	end
+
+	return "accountID:" .. PlayerObject(pGhost):getAccountID() .. ":ServerEventAutomation:" .. item.namespace .. ":" .. item.id
+end
+
+function ServerEventAutomation:setSurveySent(pPlayer, item)
+	setQuestStatus(self:getSurveySentKey(pPlayer, item), getTimestamp())
+end
+
+function ServerEventAutomation:getSurveySent(pPlayer, item)
+	local when = getQuestStatus(self:getSurveySentKey(pPlayer, item))
 
 	if when == nil then
 		return false
@@ -311,11 +359,20 @@ function ServerEventAutomation:logPlayerEvent(pPlayer, what)
 
 	local creature = CreatureObject(pPlayer)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if pGhost == nil then
+		self:logEvent("NIL GHOST ON OID " .. creature:getObjectID() .. ": " .. what)
+		return
+	end
+
+	local ghost = PlayerObject(pGhost)
+
 	self:logEvent(string.format(
-		"playerEvent %s (oid: %d, %s) on %s at %s %s - %s",
+		"playerEvent %s (account_id: %s, oid: %d, %s) on %s at %s %s - %s",
 		creature:getFirstName(),
+		ghost:getAccountID(),
 		creature:getObjectID(),
-		PlayerObject(pGhost):getPlayedTimeString(),
+		ghost:getPlayedTimeString(),
 		creature:getZoneName(),
 		math.floor(creature:getWorldPositionX()),
 		math.floor(creature:getWorldPositionY()),

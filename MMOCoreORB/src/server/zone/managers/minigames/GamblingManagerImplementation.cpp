@@ -644,7 +644,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 
 				if ((bet != nullptr) && (player != nullptr)) {
 
-					if (terminal->getFirst() == terminal->getSecond() && terminal->getSecond() == terminal->getThird()) {
+					if (terminal->getFirst() == terminal->getSecond() && terminal->getSecond() == terminal->getThird() && terminal->getFirst() > 0) {
 
 						Locker _locker(player);
 
