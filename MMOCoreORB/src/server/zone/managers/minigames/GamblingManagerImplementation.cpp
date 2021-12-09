@@ -263,14 +263,14 @@ void GamblingManagerImplementation::removeOutOfRangePlayers(GamblingTerminal* te
 }
 
 void GamblingManagerImplementation::initializeSlotWeights() {
-	slotWeights.add(25);
-	slotWeights.add(20);
+	slotWeights.add(79);
+	slotWeights.add(22);
 	slotWeights.add(18);
-	slotWeights.add(15);
+	slotWeights.add(16);
 	slotWeights.add(10);
+	slotWeights.add(7);
 	slotWeights.add(5);
-	slotWeights.add(3);
-	slotWeights.add(1);
+	slotWeights.add(4);
 
 	slotWeightsTotal = -1;
 	for (int i = 0; i < slotWeights.size(); i++) {
