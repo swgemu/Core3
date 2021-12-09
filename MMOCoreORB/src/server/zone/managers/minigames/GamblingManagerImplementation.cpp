@@ -644,11 +644,11 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 
 				if ((bet != nullptr) && (player != nullptr)) {
 
-					if (terminal->getFirst() == terminal->getSecond() && terminal->getSecond() == terminal->getThird() && terminal->getFirst() > 0) {
+					if (terminal->getFirst() == terminal->getSecond() && terminal->getSecond() == terminal->getThird()) {
 
 						Locker _locker(player);
 
-						int win = bet->getAmount() * slot.get(terminal->getFirst());
+						int win = bet->getAmount() * slot.get(terminal->getFirst() + 1); // 1|2|3 winnings in index 0, rest following in order.
 						if (win == 4500) {
 							win += 500;  // 500 extra credits for betting 3 credits and getting 777.
 						}
