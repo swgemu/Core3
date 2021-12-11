@@ -381,6 +381,8 @@ private:
 		_REGISTERLEAF(CheckCrackdownScanner);
 		_REGISTERLEAF(CheckCrackdownFollowTarget);
 		_REGISTERLEAF(CheckIsStationary);
+		_REGISTERLEAF(CheckIsHome);
+		_REGISTERLEAF(CheckHomeIsCell);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);

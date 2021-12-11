@@ -529,3 +529,15 @@ template<> bool CheckHealChance::check(AiAgent* agent) const {
 
 	return true;
 }
+
+template<> bool CheckIsHome::check(AiAgent* agent) const {
+	PatrolPoint* homeLocation = agent->getHomeLocation();
+
+	return homeLocation != nullptr && homeLocation->isReached() ? true : false;
+}
+
+template<> bool CheckHomeIsCell::check(AiAgent* agent) const {
+	PatrolPoint* homeLocation = agent->getHomeLocation();
+
+	return homeLocation != nullptr && homeLocation->getCell() != nullptr ? true : false;
+}
