@@ -580,7 +580,6 @@ public:
 		if (gcwMan == nullptr)
 			return FAILURE;
 
-
 		return gcwMan->runCrackdownScan(agent, target->asCreatureObject()) ? SUCCESS : FAILURE;
 	}
 

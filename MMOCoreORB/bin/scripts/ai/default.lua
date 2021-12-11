@@ -129,9 +129,22 @@ idleDefault = {
 	{id="1424165865",	name="TreeSocket",	pid="3408558848",	args={slot=MOVE}},
 	{id="852586211",	name="Wait",	pid="3408558848",	args={duration=5.0}},
 	{id="4072235030",	name="Sequence",	pid="2434234854"},
+	{id="401182658",	name="Not",	pid="4072235030"},
+	{id="2752118648",	name="If",	pid="401182658"},
+	{id="1816846537",	name="CheckHomeIsCell",	pid="2752118648"},
+	{id="487154563",	name="Not",	pid="4072235030"},
+	{id="3807314026",	name="If",	pid="487154563"},
+	{id="1384587681",	name="CheckMovementState",	pid="3807314026",	args={condition=PATHING_HOME}},
 	{id="3483017378",	name="If",	pid="4072235030"},
 	{id="776089883",	name="CheckOutdoors",	pid="3483017378"},
-	{id="1547268873",	name="GeneratePatrol",	pid="4072235030",	args={distFromHome=10.0, numPoints=5}}}
+	{id="1547268873",	name="GeneratePatrol",	pid="4072235030",	args={distFromHome=10.0, numPoints=5}},
+	{id="4129527278",	name="Sequence",	pid="2434234854"},
+	{id="3690571869",	name="If",	pid="4129527278"},
+	{id="4009188085",	name="CheckMovementState",	pid="3690571869",	args={condition=PATHING_HOME}},
+	{id="663900148",	name="If",	pid="4129527278"},
+	{id="3881405125",	name="CheckDestination",	pid="663900148",	args={condition=0.0}},
+	{id="1596358304",	name="WriteBlackboard",	pid="4129527278",	args={key="moveMode", val=WALK}},
+	{id="1979932461",	name="TreeSocket",	pid="4129527278",	args={slot=MOVE}}}
 addAiTemplate("idleDefault", idleDefault)
 
 killDefault = {
@@ -145,8 +158,9 @@ killDefault = {
 	{id="3171471690",	name="If",	pid="3446643166"},
 	{id="3828589773",	name="CheckProspectLOS",	pid="3171471690"},
 	{id="1985163643",	name="SetMovementState",	pid="3446643166",	args={state=WATCHING}},
-	{id="1819260193",	name="SetAlert",	pid="3446643166",	args={duration=10.0, show=false}},
-	{id="1512963980",	name="KillProspect",	pid="3446643166"}}
+	{id="1819260193",	name="SetAlert",	pid="3446643166",	args={duration=5.0, show=false}},
+	{id="1512963980",	name="KillProspect",	pid="3446643166"},
+	{id="1587481576",	name="SetMovementState",	pid="3446643166",	args={state=PATHING_HOME}}}
 addAiTemplate("killDefault", killDefault)
 
 lookDefault = {
@@ -154,6 +168,8 @@ lookDefault = {
 	{id="3448746212",	name="Selector",	pid="2391667584"},
 	{id="1485546267",	name="If",	pid="3448746212"},
 	{id="2646753484",	name="CheckMovementState",	pid="1485546267",	args={condition=OBLIVIOUS}},
+	{id="94397332",	name="If",	pid="3448746212"},
+	{id="933406997",	name="CheckMovementState",	pid="94397332",	args={condition=OBLIVIOUS}},
 	{id="3934657672",	name="If",	pid="3448746212"},
 	{id="1417574534",	name="CheckMovementState",	pid="3934657672",	args={condition=STALKING}},
 	{id="268320967",	name="If",	pid="3448746212"},

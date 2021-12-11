@@ -12,6 +12,9 @@ wanderStatic = {
 	{id="446627907",	name="Sequence",	pid="3910073142"},
 	{id="2664305160",	name="WriteBlackboard",	pid="446627907",	args={key="moveMode", val=WALK}},
 	{id="3605604170",	name="TreeSocket",	pid="446627907",	args={slot=MOVE}},
+	{id="1411814469",	name="Not",	pid="3910073142"},
+	{id="3866536807",	name="If",	pid="1411814469"},
+	{id="4198924774",	name="CheckIsHome",	pid="3866536807"},
 	{id="737159031",	name="Wait",	pid="3910073142",	args={duration=10.0}}}
 addAiTemplate("wanderStatic", wanderStatic)
 

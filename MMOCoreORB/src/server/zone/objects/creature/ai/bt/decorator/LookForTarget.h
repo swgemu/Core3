@@ -38,7 +38,7 @@ public:
 			if (currObj->isCreatureObject() && isInvalidTarget(currObj->asCreatureObject(), agent)) {
 				if (~agent->getCreatureBitmask() & CreatureFlag::FOLLOW) {
 					agent->setFollowObject(nullptr);
-					agent->setOblivious();
+					agent->setMovementState(AiAgent::PATHING_HOME);
 				}
 				return FAILURE;
 			} else {
@@ -98,7 +98,7 @@ public:
 		uint64 agentParentID = agentRoot != nullptr && agentRoot->isBuildingObject() ? agentRoot->getObjectID() : 0;
 		uint64 targetParentID = targetRoot != nullptr && targetRoot->isBuildingObject() ? targetRoot->getObjectID() : 0;
 
-		if (agentParentID != targetParentID)
+		if (agentParentID != targetParentID && !CollisionManager::checkLineOfSight(agent, target))
 			return true;
 
 		return false;

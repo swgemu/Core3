@@ -1213,7 +1213,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 
 void AiAgentImplementation::runAway(CreatureObject* target, float range, bool random = false) {
 	if (target == nullptr || asAiAgent()->getZoneUnsafe() == nullptr) {
-		setOblivious();
+		setMovementState(AiAgent::PATHING_HOME);
 		return;
 	}
 
@@ -1252,10 +1252,12 @@ void AiAgentImplementation::leash() {
 
 	CombatManager::instance()->forcePeace(asAiAgent());
 
-	if (!homeLocation.isInRange(asAiAgent(), 1.5)) {
+	if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
 		homeLocation.setReached(false);
 		addPatrolPoint(homeLocation);
 	} else {
+		setDirection(Math::deg2rad(homeLocation.getDirection()));
+		broadcastNextPositionUpdate(&homeLocation);
 		homeLocation.setReached(true);
 	}
 }
@@ -1265,9 +1267,6 @@ void AiAgentImplementation::setDefender(SceneObject* defender) {
 		return;
 
 	CreatureObjectImplementation::setDefender(defender);
-
-	if (isRetreating())
-		homeLocation.setReached(true);
 
 	setFollowObject(defender);
 	setMovementState(AiAgent::FOLLOWING);
@@ -1282,7 +1281,7 @@ bool AiAgentImplementation::killPlayer(SceneObject* prospect) {
 
 	faceObject(prospect, true);
 
-	PatrolPoint point = prospect->getWorldPosition();
+	PatrolPoint point = prospect->getPosition();
 	setNextPosition(point.getPositionX(), point.getPositionZ(), point.getPositionY(), prospect->getParent().get().castTo<CellObject*>());
 	activateMovementEvent();
 
@@ -1873,13 +1872,13 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 	WorldCoordinates nextMovementPosition;
 
-	float newSpeed = runSpeed; // 1.5 is runSpeed
+	float newSpeed = runSpeed; // float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376f;
 	int posture = getPosture();
 
 	if (posture == CreaturePosture::CROUCHED) //move to BT?
 		return false;
 
-	if ((walk && !(isRetreating() || isFleeing())) || posture == CreaturePosture::PRONE)
+	if (walk && (!isFleeing() || posture == CreaturePosture::PRONE))
 		newSpeed = walkSpeed;
 
 	if (hasState(CreatureState::IMMOBILIZED))
@@ -2438,11 +2437,10 @@ float AiAgentImplementation::getMaxDistance() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	unsigned int stateCopy = getMovementState();
 
-	// info("getmaxDistance - stateCopy: " + String::valueOf(stateCopy), true);
-
+	// info("getmaxDistance - stateCopy: " + String::valueOf(stateCopy) /*+ " Max Distance: " + String::valueOf(maxDistance)*/, true);
 	switch (stateCopy) {
 	case AiAgent::WATCHING:
-		return 0.1f;
+		return 1.5f;
 		break;
 	case AiAgent::PATROLLING:
 	case AiAgent::LEASHING:
@@ -2469,9 +2467,9 @@ float AiAgentImplementation::getMaxDistance() {
 				} else {
 					return 1.0f;
 				}
+			} else {
+				return 4.0f;
 			}
-
-			return 4.0f;
 		} else if (getWeapon() != nullptr ) {
 			float weapMaxRange = Math::min(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
 			return Math::max(1.0f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius());
@@ -2501,20 +2499,6 @@ int AiAgentImplementation::setDestination() {
 
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
-		clearPatrolPoints();
-
-		if (creatureBitmask & CreatureFlag::STATIC) {
-			if (!homeLocation.isInRange(asAiAgent(), 0.1f)) {
-				homeLocation.setReached(false);
-				addPatrolPoint(homeLocation);
-			} else {
-				setDirection(Math::deg2rad(homeLocation.getDirection()));
-				broadcastNextPositionUpdate(nullptr);
-				homeLocation.setReached(true);
-			}
-		} else {
-			homeLocation.setReached(true);
-		}
 		break;
 	case AiAgent::FLEEING: {
 		float range = fleeRange;
@@ -2524,7 +2508,7 @@ int AiAgentImplementation::setDestination() {
 
 		if (followCopy == nullptr || !isInRange(followCopy, 128.f) || getNextPosition().isInRange(asAiAgent(), range > 5.f ? range : 5.f)) {
 			eraseBlackboard("fleeRange");
-			setOblivious();
+			setMovementState(AiAgent::PATHING_HOME);
 			return setDestination();
 		}
 
@@ -2532,7 +2516,7 @@ int AiAgentImplementation::setDestination() {
 	}
 	case AiAgent::LEASHING:
 		if (!isRetreating()) {
-			setOblivious();
+			setMovementState(AiAgent::PATHING_HOME);
 			return setDestination();
 		}
 
@@ -2546,14 +2530,14 @@ int AiAgentImplementation::setDestination() {
 		break;
 	case AiAgent::WATCHING:
 		if (followCopy == nullptr || alertedTime.isPast()) {
-			setOblivious();
+			setMovementState(AiAgent::PATHING_HOME);
 			return setDestination();
 		}
 
 		break;
 	case AiAgent::STALKING:
 		if (followCopy == nullptr || !followCopy->isInRange(asAiAgent(), 128)) {
-			setOblivious();
+			setMovementState(AiAgent::PATHING_HOME);
 			return setDestination();
 		}
 
@@ -2561,7 +2545,7 @@ int AiAgentImplementation::setDestination() {
 		break;
 	case AiAgent::FOLLOWING: {
 		if (followCopy == nullptr) {
-			setOblivious();
+			setMovementState(AiAgent::PATHING_HOME);
 			return setDestination();
 		}
 
@@ -2583,24 +2567,42 @@ int AiAgentImplementation::setDestination() {
 	}
 	case AiAgent::EVADING:
 		if (followCopy == nullptr || getPatrolPointSize() == 0) {
-			setOblivious();
+			setMovementState(AiAgent::PATHING_HOME);
 			return setDestination();
 		}
 
 		break;
-	case AiAgent::PATHING_HOME:
-		if (homeLocation.isInRange(asAiAgent(), 0.1f)) {
+	case AiAgent::PATHING_HOME: {
+		clearPatrolPoints();
+
+		if (creatureBitmask & CreatureFlag::STATIC || homeLocation.getCell() != nullptr || getParent().get() != nullptr) {
+			if (!homeLocation.isInRange(asAiAgent(), 1.f)) {
+				homeLocation.setReached(false);
+				addPatrolPoint(homeLocation);
+			} else {
+				float dirDiff = fabs(getDirectionAngle() - homeLocation.getDirection());
+
+				if (dirDiff > 1.f) {
+					setDirection(Math::deg2rad(homeLocation.getDirection()));
+					broadcastNextPositionUpdate(&homeLocation);
+				}
+
+				setOblivious();
+				homeLocation.setReached(true);
+			}
+		} else {
+			homeLocation.setReached(true);
 			setOblivious();
-			return setDestination();
 		}
 
 		break;
+	}
 	case AiAgent::MOVING_TO_HEAL: {
 		if (!peekBlackboard("healTarget")) {
 			if (followCopy != nullptr) {
 				setMovementState(AiAgent::FOLLOWING);
 			} else {
-				setOblivious();
+				setMovementState(AiAgent::PATHING_HOME);
 			}
 		}
 
@@ -2614,10 +2616,10 @@ int AiAgentImplementation::setDestination() {
 		break;
 	}
 	default:
-		if (creatureBitmask & CreatureFlag::STATIC) {
-			setOblivious();
+		if (creatureBitmask & CreatureFlag::STATIC || homeLocation.getCell() != nullptr) {
+			setMovementState(AiAgent::PATHING_HOME);
 		} else if (followCopy == nullptr) {
-			setMovementState(PATROLLING);
+			setMovementState(AiAgent::PATROLLING);
 		}
 		break;
 	}
@@ -3494,13 +3496,13 @@ void AiAgentImplementation::restoreFollowObject() {
 	ManagedReference<SceneObject*> obj = followStore.get();
 	locker.release();
 	if (obj == nullptr) {
-		setOblivious();
+		setMovementState(AiAgent::PATHING_HOME);
 		return;
 	} else if (getCloseObjects() != nullptr && !getCloseObjects()->contains(obj.get())) {
-		setOblivious();
+		setMovementState(AiAgent::PATHING_HOME);
 		return;
 	} else if (obj->isCreatureObject() && obj->asCreatureObject()->isInvisible()) {
-		setOblivious();
+		setMovementState(AiAgent::PATHING_HOME);
 		return;
 	} else {
 		setFollowObject(obj);
