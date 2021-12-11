@@ -169,7 +169,7 @@ lookDefault = {
 	{id="1485546267",	name="If",	pid="3448746212"},
 	{id="2646753484",	name="CheckMovementState",	pid="1485546267",	args={condition=OBLIVIOUS}},
 	{id="94397332",	name="If",	pid="3448746212"},
-	{id="933406997",	name="CheckMovementState",	pid="94397332",	args={condition=OBLIVIOUS}},
+	{id="933406997",	name="CheckMovementState",	pid="94397332",	args={condition=PATHING_HOME}},
 	{id="3934657672",	name="If",	pid="3448746212"},
 	{id="1417574534",	name="CheckMovementState",	pid="3934657672",	args={condition=STALKING}},
 	{id="268320967",	name="If",	pid="3448746212"},
