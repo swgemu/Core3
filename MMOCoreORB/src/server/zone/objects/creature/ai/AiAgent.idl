@@ -366,9 +366,6 @@ class AiAgent extends CreatureObject {
 	@local
 	public native float getWorldZ(@dereferenced final Vector3 position);
 
-	@local
-	public native int checkForReactionChat(SceneObject pObject);
-
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -1358,7 +1355,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	@preLocked
-	public native void sendReactionChat(int type, int state = 0, boolean force = false);
+	public native void sendReactionChat(SceneObject object, int type, int state = 0, boolean force = false);
 
 	@dirty
 	public abstract boolean hasReactionChatMessages() {

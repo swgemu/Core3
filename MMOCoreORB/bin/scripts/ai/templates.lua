@@ -59,7 +59,8 @@ bitmaskLookup = {
 		{KILL, "killDefault"},
 		{STALK, 'stalkDefault'},
 		{CRACKDOWNSCAN, "crackdownScanDefault"},
-		{HEAL, "healDefault"}
+		{HEAL, "healDefault"},
+		{CHATREACTION, "chatReactionDefault"}
 	}},
 
 	{NPC, {

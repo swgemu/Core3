@@ -61,6 +61,17 @@ awareDefault = {
 	{id="2315536834",	name="EraseBlackboard",	pid="2435336978",	args={param="targetProspect"}}}
 addAiTemplate("awareDefault", awareDefault)
 
+chatReactionDefault = {
+	{id="419159391",	name="Sequence",	pid="none"},
+	{id="1364298059",	name="If",	pid="419159391"},
+	{id="60979689",	name="CheckChatDelay",	pid="1364298059"},
+	{id="1420318389",	name="Not",	pid="419159391"},
+	{id="1539953131",	name="If",	pid="1420318389"},
+	{id="3831395144",	name="CheckIsInCombat",	pid="1539953131"},
+	{id="2451228289",	name="LookForPlayer",	pid="419159391"},
+	{id="1661636752",	name="SendChatGreeting",	pid="2451228289"}}
+addAiTemplate("chatReactionDefault", chatReactionDefault)
+
 crackdownScanDefault = {
 	{id="688534916",	name="Selector",	pid="none"},
 	{id="3269996958",	name="Sequence",	pid="688534916"},
@@ -227,6 +238,7 @@ rootDefault = {
 	{id="4224133747",	name="TreeSocket",	pid="4148461600",	args={slot=MOVE}},
 	{id="3497802169",	name="TreeSocket",	pid="714360210",	args={slot=AWARE}},
 	{id="772402747",	name="TreeSocket",	pid="714360210",	args={slot=CRACKDOWNSCAN}},
+	{id="1709087547",	name="TreeSocket",	pid="714360210",	args={slot=CHATREACTION}},
 	{id="2514877899",	name="TreeSocket",	pid="714360210",	args={slot=IDLE}}}
 addAiTemplate("rootDefault", rootDefault)
 

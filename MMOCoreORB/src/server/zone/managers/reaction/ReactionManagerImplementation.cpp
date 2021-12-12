@@ -8,6 +8,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/ReactionFinePaymentSuiCallback.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 void ReactionManagerImplementation::loadLuaConfig() {
 	Lua* lua = new Lua();
@@ -97,7 +98,38 @@ void ReactionManagerImplementation::loadLuaConfig() {
 	lua = nullptr;
 }
 
-void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int state, bool force) {
+void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, SceneObject* object, int type, int state, bool force) {
+	if (npc == nullptr)
+		return;
+
+	if (!force) {
+		Zone* zone = npc->getZone();
+
+		if (zone != nullptr) {
+			PlanetManager* planetManager = zone->getPlanetManager();
+
+			if (planetManager != nullptr) {
+				bool failRoll = false;
+
+				CityRegion* cityRegion = planetManager->getRegionAt(npc->getPositionX(), npc->getPositionY());
+
+				if (cityRegion != nullptr) {
+					if (cityRegion->isClientRegion() && System::random(100) > 1) {
+						failRoll = true;
+					}
+				} else if (System::random(10) < 9) {
+					failRoll = true;
+				}
+
+				if (failRoll) {
+					npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat", (System::random(30) + 60) * 1000);
+					return;
+				}
+			}
+
+		}
+	}
+
 	StringBuffer message;
 
 	if (npc->getReactionStf() != "") {
@@ -106,69 +138,92 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 		return;
 	}
 
-	int chance = 0;
 	String typeString;
 
 	switch(type) {
-	case ReactionManager::ALERT: // TODO: add trigger
-		chance = 25;
+	case ReactionManager::ALERT:
 		typeString = "alert_";
 		break;
-	case ReactionManager::ALLY: // TODO: add trigger
-		chance = 25;
+	case ReactionManager::ALLY:
 		typeString = "ally_";
 		break;
 	case ReactionManager::ASSIST:
-		chance = 25;
 		typeString = "assist_";
 		break;
 	case ReactionManager::ATTACKED:
-		chance = 25;
 		typeString = "attacked_";
 		break;
 	case ReactionManager::BYE:
-		chance = 25;
 		typeString = "bye_";
 		break;
 	case ReactionManager::CALM:
-		chance = 25;
 		typeString = "calm_";
 		break;
 	case ReactionManager::DEATH:
-		chance = 50;
 		typeString = "death_";
 		break;
 	case ReactionManager::FLEE:
-		chance = 25;
 		typeString = "flee_";
 		break;
 	case ReactionManager::GLOAT:
-		chance = 100;
 		typeString = "gloat_";
 		break;
 	case ReactionManager::HELP:
-		chance = 10;
 		typeString = "help_";
 		break;
 	case ReactionManager::HI:
-		chance = 25;
 		typeString = "hi_";
 		break;
 	case ReactionManager::HIT:
-		chance = 10;
 		typeString = "hit_";
 		break;
 	case ReactionManager::HITTARGET:
-		chance = 10;
 		typeString = "hit_target_";
 		break;
 	case ReactionManager::THREAT: // TODO: add trigger
-		chance = 25;
 		typeString = "threat_";
 		break;
 	default:
 		return;
 		break;
+	}
+
+	if (object != nullptr && object->isCreatureObject()) {
+		CreatureObject* creoObject = object->asCreatureObject();
+
+		if (creoObject == nullptr || creoObject->getActiveSession(SessionFacadeType::CONTRABANDSCAN) != nullptr) {
+			npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat", 180 * 1000);
+			return;
+		}
+
+		if (state == 0 && (type == ReactionManager::HI || type == ReactionManager::BYE)) {
+			String factionString = npc->getFactionString();
+			uint32 aiFaction = npc->getFaction();
+			uint32 targetFaction = creoObject->getFaction();
+
+			if (aiFaction != 0) {
+				if (targetFaction == aiFaction)
+					state = ReactionManager::NICE;
+				else if (targetFaction == 0)
+					state = ReactionManager::MID;
+				else {
+					state = ReactionManager::MEAN;
+				}
+			} else if (!factionString.isEmpty()) {
+				PlayerObject* pGhost = creoObject->getPlayerObject();
+
+				if (pGhost != nullptr) {
+					int standing = pGhost->getFactionStanding(factionString);
+					if (standing >= 3000)
+						state = ReactionManager::NICE;
+					else if (standing <= -3000)
+						state = ReactionManager::MEAN;
+					else
+						state = ReactionManager::MID;
+				}
+			} else
+				state = ReactionManager::MID;
+		}
 	}
 
 	switch (state) {
@@ -188,20 +243,18 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 		break;
 	}
 
-	if (force || System::random(99) < chance) {
-		int num = System::random(15) + 1;
+	int num = System::random(15) + 1;
 
-		// All of the reaction stfs are missing attacked_15
-		if (type == ReactionManager::ATTACKED && num == 15)
-			return;
+	// All of the reaction stfs are missing attacked_15
+	if (type == ReactionManager::ATTACKED && num == 15)
+		return;
 
-		message << ":" << typeString << num;
-		StringIdChatParameter chat;
-		chat.setStringId(message.toString());
-		zoneServer->getChatManager()->broadcastChatMessage(npc, chat, 0, 0, npc->getMoodID());
+	message << ":" << typeString << num;
+	StringIdChatParameter chat;
+	chat.setStringId(message.toString());
+	zoneServer->getChatManager()->broadcastChatMessage(npc, chat, 0, 0, npc->getMoodID());
 
-		npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat", 60000); // 60 second cooldown
-	}
+	npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat", (System::random(30) + 60) * 1000);
 }
 
 void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiAgent* emoteTarget, int emoteid) {

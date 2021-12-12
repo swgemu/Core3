@@ -9,6 +9,7 @@ import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
+import server.zone.objects.scene.SceneObject;
 import system.util.VectorMap;
 import system.util.Vector;
 include server.zone.managers.reaction.EmoteReactionFine;
@@ -48,7 +49,7 @@ class ReactionManager extends ManagedService implements Logger {
 	public static final int NICE = 1;
 	public static final int MID = 2;
 	public static final int MEAN = 3;
-	
+
 	public ReactionManager(ZoneServer zserv) {
 		Logger.setLoggingName("ReactionManager");
 		Logger.setLogging(true);
@@ -75,7 +76,7 @@ class ReactionManager extends ManagedService implements Logger {
 	 * @param force: if true, 100% chance to send the chat
 	 */
 	@arg1preLocked
-	public native void sendChatReaction(AiAgent npc, int type, int state = 0, boolean force = false);
+	public native void sendChatReaction(AiAgent npc, SceneObject object, int type, int state = 0, boolean force = false);
 
 	@local
 	public native EmoteReactionFine getEmoteReactionFine(CreatureObject emoteUser, AiAgent emoteTarget, int reactionLevel);
