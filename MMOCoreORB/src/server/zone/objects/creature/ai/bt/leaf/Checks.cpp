@@ -11,6 +11,7 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/frs/FrsManager.h"
+#include "server/zone/managers/reaction/ReactionManager.h"
 
 // full template specializations need to go in cpp so they don't get
 // defined multiple times.
@@ -524,7 +525,7 @@ template<> bool CheckHealChance::check(AiAgent* agent) const {
 		return false;
 	}
 
-	if (System::random(100) < 75) // Increase after testing
+	if (System::random(100) < 98)
 		return false;
 
 	return true;
@@ -540,4 +541,8 @@ template<> bool CheckHomeIsCell::check(AiAgent* agent) const {
 	PatrolPoint* homeLocation = agent->getHomeLocation();
 
 	return homeLocation != nullptr && homeLocation->getCell() != nullptr ? true : false;
+}
+
+template<> bool CheckChatDelay::check(AiAgent* agent) const {
+	return agent->getCooldownTimerMap()->isPast("reaction_chat") ? true : false;
 }

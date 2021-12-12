@@ -5,6 +5,7 @@
 #include "server/zone/objects/creature/ai/bt/BlackboardData.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/reaction/ReactionManager.h"
 
 namespace server {
 namespace zone {
@@ -461,6 +462,8 @@ public:
 
 			if (agent->isNpc() && agent->getFaction() > 0)
 				agent->doAnimation("search");
+
+			agent->sendReactionChat(nullptr, ReactionManager::ALERT);
 		}
 
 		return SUCCESS;
@@ -645,6 +648,63 @@ public:
 
 			agent->eraseBlackboard("healTarget");
 		}
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className;
+
+		return msg.toString();
+	}
+};
+
+class SendChatGreeting : public Behavior {
+public:
+	SendChatGreeting(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	SendChatGreeting(const SendChatGreeting& b) : Behavior(b) {
+	}
+
+	SendChatGreeting& operator=(const SendChatGreeting& b) {
+		if (this == &b)
+			return *this;
+		Behavior::operator=(b);
+
+		return *this;
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		ManagedReference<SceneObject*> target = nullptr;
+
+		if (agent->peekBlackboard("targetProspect"))
+			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
+
+		if (target == nullptr || !target->isPlayerCreature()) {
+			return FAILURE;
+		}
+
+		CreatureObject* creoTarget = target->asCreatureObject();
+
+		if (!(creoTarget->getCurrentSpeed() > 0.5 * creoTarget->getWalkSpeed()))
+			return FAILURE;
+
+		if (!agent->hasReactionChatMessages() || agent->getParentUnsafe() != target->getParentUnsafe())
+			return FAILURE;
+
+		float sqrDist = agent->getWorldPosition().squaredDistanceTo(target->getWorldPosition());
+
+		if (sqrDist > 35 * 35 || sqrDist < 25 * 25) // Between 35m and 25m
+			return FAILURE;
+
+		agent->faceObject(target, true);
+
+		if (target->isFacingObject(agent))
+			agent->sendReactionChat(target, ReactionManager::HI);
+		else
+			agent->sendReactionChat(target, ReactionManager::BYE);
 
 		return SUCCESS;
 	}

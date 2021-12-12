@@ -13,6 +13,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/gcw/observers/ContainmentTeamObserver.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/managers/reaction/ReactionManager.h"
 
 namespace server {
 namespace zone {
@@ -99,6 +100,8 @@ public:
 		if (target == nullptr) {
 			return FAILURE;
 		}
+
+		agent->sendReactionChat(target, ReactionManager::ALLY);
 
 		agent->writeBlackboard("targetProspect", target);
 

@@ -132,6 +132,7 @@ public:
 		lua->setGlobalInt("STALK",						BehaviorTreeSlot::STALK					);
 		lua->setGlobalInt("CRACKDOWNSCAN",				BehaviorTreeSlot::CRACKDOWNSCAN			);
 		lua->setGlobalInt("HEAL",						BehaviorTreeSlot::HEAL					);
+		lua->setGlobalInt("CHATREACTION",				BehaviorTreeSlot::CHATREACTION			);
 
 		lua->setGlobalInt("WALK",						DataVal::WALK							);
 		lua->setGlobalInt("RUN",						DataVal::RUN							);
@@ -383,6 +384,7 @@ private:
 		_REGISTERLEAF(CheckIsStationary);
 		_REGISTERLEAF(CheckIsHome);
 		_REGISTERLEAF(CheckHomeIsCell);
+		_REGISTERLEAF(CheckChatDelay);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -419,6 +421,7 @@ private:
 		_REGISTERLEAF(GetHealTarget);
 		_REGISTERLEAF(HealTarget);
 		_REGISTERLEAF(RestorePetPatrols);
+		_REGISTERLEAF(SendChatGreeting);
 	}
 
 	void putBitmask(Lua* lua, String key) {

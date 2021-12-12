@@ -753,72 +753,6 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	CreatureObject* creo = object->asCreatureObject();
 }
 
-// TODO: tie this in (or replace with) btrees
-int AiAgentImplementation::checkForReactionChat(SceneObject* pObject) {
-	if (!pObject->isPlayerCreature())
-		return 1;
-
-	CreatureObject* creoObject = pObject->asCreatureObject();
-
-	if (!(creoObject->getCurrentSpeed() > 0.5 * creoObject->getWalkSpeed()))
-		return 2;
-
-	if (!hasReactionChatMessages())
-		return 3;
-
-	if (getParentUnsafe() != pObject->getParentUnsafe())
-		return 4;
-
-	float sqrDist = getWorldPosition().squaredDistanceTo(pObject->getWorldPosition());
-
-	if (sqrDist > 1225 || sqrDist < 900) // between 30 and 35m
-		return 5;
-
-	if (!checkCooldownRecovery("reaction_chat"))
-		return 6;
-
-	if (!CollisionManager::checkLineOfSight(asAiAgent(), pObject))
-		return 7;
-
-	String factionString = getFactionString();
-	uint32 aiFaction = getFaction();
-	uint32 targetFaction = creoObject->getFaction();
-
-	int state = 0;
-
-	if (aiFaction != 0) {
-		if (targetFaction == aiFaction)
-			state = ReactionManager::NICE;
-		else if (targetFaction == 0)
-			state = ReactionManager::MID;
-		else {
-			state = ReactionManager::MEAN;
-		}
-	} else if (!factionString.isEmpty()) {
-		PlayerObject* pGhost = creoObject->getPlayerObject();
-
-		if (pGhost != nullptr) {
-			int standing = pGhost->getFactionStanding(factionString);
-			if (standing >= 3000)
-				state = ReactionManager::NICE;
-			else if (standing <= -3000)
-				state = ReactionManager::MEAN;
-			else
-				state = ReactionManager::MID;
-		}
-	} else
-		state = ReactionManager::MID;
-
-	faceObject(pObject, true);
-
-	if (!isFacingObject(pObject))
-		sendReactionChat(ReactionManager::HI, state);
-	else
-		sendReactionChat(ReactionManager::BYE, state);
-
-	return 0;
-}
-
 void AiAgentImplementation::doRecovery(int latency) {
 	if (isDead() || getZoneUnsafe() == nullptr)
 		return;
@@ -1221,7 +1155,7 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 	clearPatrolPoints();
 
 	notifyObservers(ObserverEventType::FLEEING, target);
-	sendReactionChat(ReactionManager::FLEE);
+	sendReactionChat(target, ReactionManager::FLEE);
 
 	setMovementState(AiAgent::FLEEING);
 
@@ -1343,11 +1277,12 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 
 	ZoneServer* zoneServer = asAiAgent()->getZoneServer();
 
-	// Chat output for Testing - Remove later
+#ifdef DEBUG_AIHEAL
 	ChatManager* chatManager = nullptr;
 
 	if (zoneServer != nullptr)
 		chatManager = zoneServer->getChatManager();
+#endif
 
 	asAiAgent()->clearQueueActions();
 
@@ -1357,25 +1292,35 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 		if (healTarget == asAiAgent()) {
 			healTarget->playEffect("clienteffect/pl_force_heal_self.cef");
 
+#ifdef DEBUG_AIHEAL
 			if (chatManager != nullptr)
 				chatManager->broadcastChatMessage(asAiAgent(), "Healing myself!", 0, 0, asAiAgent()->getMoodID());
+#endif
+
 		} else {
 			asAiAgent()->doCombatAnimation(healTarget, STRING_HASHCODE("force_healing_1"), 0, 0xFF);
 
+#ifdef DEBUG_AIHEAL
 			if (chatManager != nullptr)
 				chatManager->broadcastChatMessage(asAiAgent(), "Healing target!", 0, 0, asAiAgent()->getMoodID());
+#endif
 		}
 	} else {
 		if (healTarget == asAiAgent()) {
 			asAiAgent()->doAnimation("heal_self");
 
+#ifdef DEBUG_AIHEAL
 			if (chatManager != nullptr)
 				chatManager->broadcastChatMessage(asAiAgent(), "Healing myself!", 0, 0, asAiAgent()->getMoodID());
+#endif
+
 		} else {
 			asAiAgent()->doAnimation("heal_other");
 
+#ifdef DEBUG_AIHEAL
 			if (chatManager != nullptr)
 				chatManager->broadcastChatMessage(asAiAgent(), "Healing target!", 0, 0, asAiAgent()->getMoodID());
+#endif
 		}
 
 		healTarget->playEffect("clienteffect/healing_healdamage.cef");
@@ -1476,7 +1421,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 		threatMap->removeAll();
 
 	notifyObservers(ObserverEventType::PEACE);
-	sendReactionChat(ReactionManager::CALM);
+	sendReactionChat(nullptr, ReactionManager::CALM);
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
@@ -2856,7 +2801,7 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 }
 
 int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {
-	sendReactionChat(ReactionManager::DEATH);
+	sendReactionChat(attacker, ReactionManager::DEATH);
 
 	if (isPet()) {
 		PetManager* petManager = getZoneServer()->getPetManager();
@@ -3332,7 +3277,7 @@ void AiAgentImplementation::setCombatState() {
 			Locker clocker(target, ai);
 
 			if (target->hasDefender(ai))
-				ai->sendReactionChat(ReactionManager::ATTACKED);
+				ai->sendReactionChat(followCopy, ReactionManager::ATTACKED);
 		}, "SendAttackedChatLambda");
 	}
 }
@@ -3515,15 +3460,15 @@ String AiAgentImplementation::getPersonalityStf() {
 		return npcTemplate->getPersonalityStf();
 }
 
-void AiAgentImplementation::sendReactionChat(int type, int state, bool force) {
-	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZoneUnsafe() == nullptr || isDead()) {
+void AiAgentImplementation::sendReactionChat(SceneObject* object, int type, int state, bool force) {
+	if ((!getCooldownTimerMap()->isPast("reaction_chat") && !force) || getZoneUnsafe() == nullptr || !isNpc() || isDead()) {
 		return;
 	}
 
 	ReactionManager* reactionManager = getZoneServer()->getReactionManager();
 
 	if (reactionManager != nullptr)
-		reactionManager->sendChatReaction(asAiAgent(), type, state, force);
+		reactionManager->sendChatReaction(asAiAgent(), object, type, state, force);
 }
 
 void AiAgentImplementation::setMaxHAM(int type, int value, bool notifyClient) {

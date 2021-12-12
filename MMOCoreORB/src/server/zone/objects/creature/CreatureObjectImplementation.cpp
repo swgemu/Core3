@@ -3396,7 +3396,7 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 
 	if (attacker->isAiAgent()) {
 		AiAgent* aiAgent = attacker->asAiAgent();
-		aiAgent->sendReactionChat(ReactionManager::GLOAT);
+		aiAgent->sendReactionChat(asSceneObject(), ReactionManager::GLOAT);
 	}
 
 	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition, isCombatAction);

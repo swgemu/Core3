@@ -800,7 +800,7 @@ int LuaAiAgent::assist(lua_State* L) {
 
 	Locker locker(realObject);
 
-	realObject->sendReactionChat(ReactionManager::ASSIST);
+	realObject->sendReactionChat(nullptr, ReactionManager::ASSIST);
 
 	realObject->setDefender(target);
 
@@ -902,7 +902,7 @@ int LuaAiAgent::sendReactionChat(lua_State* L) {
 
 	Locker locker(realObject);
 
-	realObject->sendReactionChat(type, state);
+	realObject->sendReactionChat(nullptr, type, state);
 
 	return 0;
 }
