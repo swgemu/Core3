@@ -286,6 +286,20 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	if (!conTemp.isEmpty()) {
 		containerComponent = cast<ContainerComponent*>(ComponentManager::instance()->getComponent<SceneObjectComponent*>(conTemp));
 	}
+
+	if (!isPet() && isNpc() && System::random(50) < 15) {
+		ZoneServer* zoneServer = asAiAgent()->getZoneServer();
+
+		if (zoneServer != nullptr) {
+			ChatManager* chatManager = zoneServer->getChatManager();
+
+			if (chatManager != nullptr) {
+				unsigned int id = chatManager->getRandomMoodID();
+
+				setMood(id);
+			}
+		}
+	}
 }
 
 void AiAgentImplementation::loadWeaponTemplateData() {
