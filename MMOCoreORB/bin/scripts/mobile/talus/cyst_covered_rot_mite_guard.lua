@@ -2,6 +2,7 @@ cyst_covered_rot_mite_guard = Creature:new {
 	objectName = "@mob/creature_names:cyst_covered_rot_guard",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,
@@ -29,12 +30,17 @@ cyst_covered_rot_mite_guard = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	scale = 1.15,
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"mediumdisease",""},
-		{"stunattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"mediumdisease",""}, {"stunattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(cyst_covered_rot_mite_guard, "cyst_covered_rot_mite_guard")

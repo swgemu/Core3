@@ -219,8 +219,7 @@ function VillageRaids:setupSpawnedRaider(pMobile)
 		return
 	end
 
-	AiAgent(pMobile):setAiTemplate("villageraider")
-	AiAgent(pMobile):setFollowState(4)
+	AiAgent(pMobile):setMovementState(AI_PATROLLING)
 
 	createObserver(OBJECTDESTRUCTION, "FsVillageDefense", "notifyKilledRaider", pMobile)
 

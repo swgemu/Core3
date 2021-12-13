@@ -2,6 +2,7 @@ xalox_slicer = Creature:new {
 	objectName = "@mob/creature_names:slicer",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 23,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -38,8 +39,16 @@ xalox_slicer = Creature:new {
 			}
 		}
 	},
-	weapons = {"pirate_weapons_light"},
-	attacks = merge(brawlermaster,marksmanmaster)
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_light",
+	secondaryWeapon = "unarmed",
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlermaster,marksmanmaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(xalox_slicer, "xalox_slicer")

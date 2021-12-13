@@ -39,6 +39,17 @@ public:
 			*staffTools << creature;
 
 			staffTools->callFunction();
+		} else if (arg == "toggledebug") {
+			ManagedReference<AiAgent*> aiAgent = server->getZoneServer()->getObject(creature->getTargetID()).castTo<AiAgent*>();
+
+			if (aiAgent == nullptr)
+				return GENERALERROR;
+
+			Locker clocker(aiAgent, creature);
+			bool curDebug = aiAgent->peekBlackboard("aiDebug") && aiAgent->readBlackboard("aiDebug") == true;
+			aiAgent->setAIDebug(!curDebug);
+
+			creature->sendSystemMessage("Debug toggle for " + String::valueOf(creature->getTargetID()) + " set to " + String::valueOf(!curDebug));
 		}
 
 		return SUCCESS;

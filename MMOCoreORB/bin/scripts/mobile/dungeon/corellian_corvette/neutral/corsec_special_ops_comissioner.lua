@@ -4,6 +4,7 @@ corsec_special_ops_comissioner = Creature:new {
 	randomNameTag = true,
 	socialGroup = "corsec",
 	faction = "corsec",
+	mobType = MOB_NPC,
 	level = 226,
 	chanceHit = 19.75,
 	damageMin = 1270,
@@ -43,10 +44,18 @@ corsec_special_ops_comissioner = Creature:new {
 			}
 		}
 	},
-	weapons = {"corsec_police_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "corsec_police_weapons",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_special_ops_comissioner, "corsec_special_ops_comissioner")

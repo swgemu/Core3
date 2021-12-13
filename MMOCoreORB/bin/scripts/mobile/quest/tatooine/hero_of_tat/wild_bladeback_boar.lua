@@ -2,6 +2,7 @@ wild_bladeback_boar = Creature:new {
 	objectName = "@mob/creature_names:quest_hero_of_tatooine_ferocious_beast",
 	socialGroup = "boar",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 39,
 	chanceHit = 0.44,
 	damageMin = 355,
@@ -35,12 +36,17 @@ wild_bladeback_boar = Creature:new {
 			lootChance = 10000000
 		}
 	},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"knockdownattack",""},
-		{"stunattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"knockdownattack",""}, {"stunattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(wild_bladeback_boar, "wild_bladeback_boar")

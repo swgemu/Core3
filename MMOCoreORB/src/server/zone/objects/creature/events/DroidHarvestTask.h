@@ -117,7 +117,7 @@ public:
 				module->addHarvestTarget(droidTarget,true);
 				droid->setTargetObject(target);
 				droid->storeFollowObject(); // calling store here as a tthe end of a task we reset the follow object
-				droid->activateInterrupt(owner, ObserverEventType::STARTCOMBAT);
+				droid->notifyObservers(ObserverEventType::STARTCOMBAT, owner);
 				reschedule(1000); // wait 5 seconds for the droid to get there before checking again.
 
 				return;

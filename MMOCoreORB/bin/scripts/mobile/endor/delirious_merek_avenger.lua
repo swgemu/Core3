@@ -2,6 +2,7 @@ delirious_merek_avenger = Creature:new {
 	objectName = "@mob/creature_names:delirious_merek_avenger",
 	socialGroup = "merek",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 40,
 	chanceHit = 0.44,
 	damageMin = 345,
@@ -29,12 +30,17 @@ delirious_merek_avenger = Creature:new {
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	controlDeviceTemplate = "object/intangible/pet/merek_hue.iff",
 	lootGroups = {},
-	weapons = {"creature_spit_small_yellow"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "object/weapon/ranged/creature/creature_spit_large_toxicgreen.iff",
+	secondaryWeapon = "object/weapon/ranged/creature/creature_spit_large_toxicgreen.iff",
 	conversationTemplate = "",
-	attacks = {
-		{"intimidationattack",""},
-		{"stunattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"intimidationattack",""}, {"stunattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(delirious_merek_avenger, "delirious_merek_avenger")

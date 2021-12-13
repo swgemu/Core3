@@ -3,6 +3,7 @@ wed_treadwell_crafted_advanced = Creature:new {
 	socialGroup = "",
 	faction = "",
 	level = 4,
+	mobType = MOB_DROID,
 	chanceHit = 0.24,
 	damageMin = 10,
 	damageMax = 10,
@@ -29,7 +30,11 @@ wed_treadwell_crafted_advanced = Creature:new {
 		"object/creature/npc/droid/crafted/wed_treadwell_droid_advanced.iff"
 	},		
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
 }
 

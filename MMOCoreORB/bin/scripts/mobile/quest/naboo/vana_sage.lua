@@ -2,6 +2,7 @@ vana_sage = Creature:new {
 	objectName = "",
 	customName = "Vana Sage",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
@@ -28,10 +29,17 @@ vana_sage = Creature:new {
 
 	templates = {"object/mobile/dressed_lt_vana_sage.iff"},
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "vana_sage_mission_giver_convotemplate",
-	attacks = {
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(vana_sage, "vana_sage")

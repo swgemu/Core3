@@ -31,6 +31,123 @@ RoriRestussScreenPlay = CityScreenPlay:new {
 		{1, 5314.8, 80.0, 5793.8, -105, 0, ""},
 		{1, 5389.9, 80.0, 5674.2, -135, 0, ""},
 	},
+
+	mobiles = {
+		--starport added
+		{"pilot",60,-27.0,1.6,53.2,128,4635675, "npc_standing_drinking"},
+		{"chiss_female",60,-27.6,1.6,52.3,29,4635675, "npc_accusing"},
+		{"shadowy_figure",60,-69.1,2.6,38.5,70,4635678, "angry"},
+		{"trainer_shipwright",60,6.3,0.6,67.3,-90,4635670, "conversation"},
+		{"chassis_dealer",60,4.3,0.6,66.9,80,4635670, "conversation"},
+
+		--First Brigade
+		{"first_brigade_marine", 300, 5459.9, 80.1, 5856.5, 90, 0, ""},
+		{"first_brigade_marine", 300, 5459.9, 80.1, 5861.5, 90, 0, ""},
+		{"first_brigade_marine", 300, 5381.5, 80.0, 5881.5, -135, 0, ""},
+		{"first_brigade_marine", 300, 5383.8, 80.0, 5877.1, -135, 0, ""},
+		{"first_brigade_officer", 300, 5373.6, 83.7, 5848.2, -50, 0, ""},
+		{"first_brigade_marine", 300, 5361.3, 87.2, 5848.8, -90, 0, ""},
+		{"first_brigade_marine", 300, 5357.3, 87.2, 5848.8, -90, 0, ""},
+		{"first_brigade_trooper", 300, 5345.7, 80.0, 5839.6, 180, 0, ""},
+		{"first_brigade_trooper", 300, 5340.7, 80.0, 5839.6, 180, 0, ""},
+		{"first_brigade_general", 300, 5447.9, 80.0, 5837.7, 0, 0, ""},
+		{"first_brigade_captain", 300, 5445.4, 80.0, 5840.2, 90, 0, ""},
+		{"first_brigade_captain", 300, 5450.4, 80.0, 5840.2, -90, 0, ""},
+		{"first_brigade_trooper", 300, 5445.4, 80.0, 5844.2, 90, 0, ""},
+		{"first_brigade_trooper", 300, 5450.4, 80.0, 5844.2, -90, 0, ""},
+		{"first_brigade_trooper", 300, 5445.4, 80.0, 5848.2, 90, 0, ""},
+		{"first_brigade_trooper", 300, 5450.4, 80.0, 5848.2, -90, 0, ""},
+		{"first_brigade_trooper", 300, 5419.4, 80.0, 5845.2, 180, 0, ""},
+		{"first_brigade_trooper", 300, 5414.4, 80.0, 5845.2, 180, 0, ""},
+		{"first_brigade_sergeant", 300, 5292.2, 80.0, 5854.8, 180, 0, ""},
+		{"first_brigade_gunner", 300, 5283.2, 80.0, 5854.8, 180, 0, ""},
+		{"first_brigade_sergeant", 300, 5212.4, 80.0, 5778.7, 0, 0, ""},
+		{"first_brigade_gunner", 300, 5199.2, 80.0, 5778.7, 0, 0, ""},
+		{"first_brigade_marine", 300, 5212.4, 80.0, 5764.4, 180, 0, ""},
+		{"first_brigade_marine", 300, 5199.2, 80.0, 5764.4, 180, 0, ""},
+		{"first_brigade_marine", 300, 5318.2, 80.2, 5523.5, 180, 0, ""},
+		{"first_brigade_trooper", 300, 5315.2, 80.2, 5523.5, 180, 0, ""},
+		{"first_brigade_marine", 300, 5339.0, 80.2, 5523.5, 180, 0, ""},
+		{"first_brigade_trooper", 300, 5342.0, 80.2, 5523.5, 180, 0, ""},
+		{"first_brigade_marine", 300, 5206.5, 80.2, 5603.2, 0, 0, ""},
+		{"first_brigade_marine", 300, 5199.5, 80.2, 5609.3, 90, 0, ""},
+		{"first_brigade_marine", 300, 5154.5, 80.2, 5603.2, 0, 0, ""},
+		{"first_brigade_marine", 300, 5161.5, 80.2, 5609.3, -90, 0, ""},
+		{"first_brigade_marine", 300, 5128.7, 80.0, 5535.5, -75, 0, ""},
+		{"first_brigade_marine", 300, 5125.1, 80.2, 5542.4, 145, 0, ""},
+		{"first_brigade_officer", 300, 0.0, 1.7, -21.7, 0, 4635710, ""},
+
+		{"gundark_hooligan", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_rogue", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_raider", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_raider", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_raider", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_desperado", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_desperado", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_desperado", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_ruffian", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_ruffian", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_ruffian", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+		{"gundark_hooligan", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0, ""},
+
+		--misc
+		{"imperial_recruiter", 1, 5349, 80, 5617.6, 0, 0, ""},
+		{"informant_npc_lvl_1", 1, 5401, 80, 5857, 45, 0, ""},
+		{"informant_npc_lvl_3", 1, 5102, 79.98, 5652, 30, 0, ""},
+		{"junk_dealer", 1, 5353.8, 80, 5665.9, 180, 0, ""},
+		{"junk_dealer", 1, 5350.2, 81.3, 5484.8, -50, 0, ""},
+		{"junk_dealer", 0, -14.1, 1.1, 2.8, 127, 4635688, ""},
+
+		--Hotel
+		{"businessman", 1, 2.3, 1.0, 23.2, -75, 4635641, ""},
+		{"patron_ishitib", 1, 5.2, 1.0, 7.9, 140, 4635643, ""},
+		{"patron_ishitib", 1, 6.4, 1.0, 6.4, -50, 4635643, ""},
+		{"bartender", 1, 20.1, 1.6, 12.3, 180, 4635644, ""},
+		{"entertainer", 1, 25.2, 2.0, -16.7, -50, 4635644, ""},
+		{"entertainer", 1, 24.3, 2.0, -14.2, -45, 4635644, ""},
+		{"entertainer", 1, 22.7, 2.0, -16.5, -55, 4635644, ""},
+
+		--trainers
+		{"trainer_architect", 0, 11, 1.133, -14.5, 0, 4635774, ""},
+		{"trainer_architect", 0, 5510, 80, 5663, 214, 0, ""},
+		{"trainer_armorsmith", 0, -12.5, 1.13306, 3.55, 157, 4635773, ""},
+		{"trainer_artisan", 0, 0, 1.1, -14, 0, 4635664, ""},
+		{"trainer_artisan", 0, 5256, 80, 5600, 13, 0, ""},
+		{"trainer_brawler", 0, -11, 1, -14, 0, 4635691, ""},
+		{"trainer_brawler", 0, 5335.31, 80, 5530.48, 0, 0, ""},
+		{"trainer_chef", 0, 5181, 80, 5668, 180, 0, ""},
+		{"trainer_combatmedic", 0, -16.3425, 0.26, 10.8489, 168, 4635732, ""},
+		{"trainer_combatmedic", 0, 26.6144, 0.26, 5.52845, 84, 4635728, ""},
+		{"trainer_commando", 0, 9.51478, 1.13306, -10.433, 39, 4635689, ""},
+		{"trainer_creaturehandler", 0, 5134, 80, 5749, 180, 0, ""},
+		{"trainer_dancer", 0, 17.9253, 2.12876, 53.5327, 0, 4635754, ""},
+		{"trainer_dancer", 0, 5437, 80.6, 5564, 270, 0, ""},
+		{"trainer_doctor", 0, 20.8797, 0.26, -4.8809, 46, 4635728, ""},
+		{"trainer_doctor", 0, 5373, 80, 5589, 180, 0, ""},
+		{"trainer_droidengineer", 0, -11.4803, 1.13306, -13.6866, 4, 4635776, ""},
+		{"trainer_droidengineer", 0, 5186, 80, 5719, 90, 0, ""},
+		{"trainer_entertainer", 0, 28, 2.1, 73, 270, 4635754, ""},
+		{"trainer_entertainer", 0, 29.5159, 2.12878, 73.6413, 88, 4635403, ""},
+		{"trainer_entertainer", 0, 5433, 80.6, 5558, 270, 0, ""},
+		{"trainer_imagedesigner", 0, -21.5126, 2.12878, 74.0536, 181, 4635404, ""},
+		{"trainer_imagedesigner", 0, -22.3, 2.1, 73.1, 90, 4635755, ""},
+		{"trainer_imagedesigner", 0, 5255, 80, 5850, 180, 0, ""},
+		{"trainer_marksman", 0, 0, 0, -13, 0, 4635690, ""},
+		{"trainer_marksman", 0, 0, 1.13306, -13, 0, 4615374, ""},
+		{"trainer_marksman", 0, 5528, 80.7357, 5641, 91, 0, ""},
+		{"trainer_medic", 0, 13.2069, 0.26, 4.92654, 165, 4635728, ""},
+		{"trainer_merchant", 0, 11.6338, 1.13306, 5.69637, 177, 4635772, ""},
+		{"trainer_merchant", 0, 5388, 80, 5673, 110, 0, ""},
+		{"trainer_musician", 0, 21.8, 2.1, 76.2, 180, 4635754, ""},
+		{"theater_manager", 0, 21.6954, 2.12795, 63.866, 0, 4635754, ""},
+		{"trainer_musician", 0, 5432.89, 80.6, 5569.12, 270, 0, ""},
+		{"trainer_polearm", 0, 5090, 80, 5759, 180, 0, ""},
+		{"trainer_scout", 0, -12.5744, 1.13306, 4.79458, 180, 4635688, ""},
+		{"trainer_scout", 0, 5371, 80, 5539, 180, 0, ""},
+		{"trainer_tailor", 0, 11, 0, -13, 0, 4635663, ""},
+		{"trainer_tailor", 0, 5209, 80, 5729, 180, 0, ""},
+		{"trainer_weaponsmith", 0, 0, 1, -13, 0, 4635775, ""}
+	}
 }
 
 registerScreenPlay("RoriRestussScreenPlay",  true)
@@ -45,24 +162,27 @@ function RoriRestussScreenPlay:start()
 end
 
 function RoriRestussScreenPlay:spawnSceneObjects()
-
 	--outside starport
 	spawnSceneObject(self.planet, "object/tangible/crafting/station/public_space_station.iff", 5376.78, 80, 5666.8, 0, math.rad(179) )
 end
 
 function RoriRestussScreenPlay:spawnMobiles()
+	local mobiles = self.mobiles
 
-	--starport added
-	local pNpc = spawnMobile(self.planet, "pilot",60,-27.0,1.6,53.2,128,4635675)
-	self:setMoodString(pNpc, "npc_standing_drinking")
-	pNpc = spawnMobile(self.planet, "chiss_female",60,-27.6,1.6,52.3,29,4635675)
-	self:setMoodString(pNpc, "npc_accusing")
-	pNpc = spawnMobile(self.planet, "shadowy_figure",60,-69.1,2.6,38.5,70,4635678)
-	self:setMoodString(pNpc, "angry")
-	pNpc = spawnMobile(self.planet, "trainer_shipwright",60,6.3,0.6,67.3,-90,4635670)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "chassis_dealer",60,4.3,0.6,66.9,80,4635670)
-	self:setMoodString(pNpc, "conversation")
+	for i = 1, #mobiles, 1 do
+		local mob = mobiles[i]
+
+		-- {template, respawn, x, z, y, direction, cell, mood}
+		local pMobile = spawnMobile(self.planet, mob[1], mob[2], mob[3], mob[4], mob[5], mob[6], mob[7])
+
+		if (pMobile ~= nil) then
+			if mob[8] ~= "" then
+				CreatureObject(pMobile):setMoodString(mob[8])
+			end
+
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+		end
+	end
 
 	--Creatures
 	spawnMobile(self.planet, "nightspider", 300,getRandomNumber(10) + 4980.2, 76.9,getRandomNumber(10) + 5535.3, getRandomNumber(360), 0)
@@ -153,19 +273,6 @@ function RoriRestussScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "garyns_prowler", 300,getRandomNumber(15) + 5316.0, 80.0,getRandomNumber(15) + 5831.2, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "garyns_prowler", 300,getRandomNumber(15) + 5316.0, 80.0,getRandomNumber(15) + 5831.2, getRandomNumber(360), 0)
 
-	spawnMobile(self.planet, "gundark_hooligan", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_rogue", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_raider", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_raider", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_raider", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_desperado", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_desperado", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_desperado", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_ruffian", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_ruffian", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_ruffian", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "gundark_hooligan", 300,getRandomNumber(20) + 5325.3, 87.3,getRandomNumber(30) + 5575.5, getRandomNumber(360), 0)
-
 	spawnMobile(self.planet, "gundark_rogue", 300,getRandomNumber(10) + 4969.6, 84.0,getRandomNumber(10) + 5644.5, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "gundark_rogue", 300,getRandomNumber(10) + 4969.6, 84.0,getRandomNumber(10) + 5644.5, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "gundark_rogue", 300,getRandomNumber(10) + 4969.6, 84.0,getRandomNumber(10) + 5644.5, getRandomNumber(360), 0)
@@ -212,99 +319,4 @@ function RoriRestussScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "gundark_hooligan", 300,getRandomNumber(5) + 5108.7, 80.0,getRandomNumber(12) + 5624, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "gundark_hooligan", 300,getRandomNumber(5) + 5108.7, 80.0,getRandomNumber(12) + 5624, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "gundark_hooligan", 300,getRandomNumber(5) + 5108.7, 80.0,getRandomNumber(12) + 5624, getRandomNumber(360), 0)
-
-	--First Brigade
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5459.9, 80.1, 5856.5, 90, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5459.9, 80.1, 5861.5, 90, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5381.5, 80.0, 5881.5, -135, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5383.8, 80.0, 5877.1, -135, 0)
-	spawnMobile(self.planet, "first_brigade_officer", 300, 5373.6, 83.7, 5848.2, -50, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5361.3, 87.2, 5848.8, -90, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5357.3, 87.2, 5848.8, -90, 0)
-	spawnMobile(self.planet, "first_brigade_trooper", 300, 5345.7, 80.0, 5839.6, 180, 0)
-	spawnMobile(self.planet, "first_brigade_trooper", 300, 5340.7, 80.0, 5839.6, 180, 0)
-	spawnMobile(self.planet, "first_brigade_general", 300, 5447.9, 80.0, 5837.7, 0, 0)
-	spawnMobile(self.planet, "first_brigade_captain", 300, 5445.4, 80.0, 5840.2, 90, 0)
-	spawnMobile(self.planet, "first_brigade_captain", 300, 5450.4, 80.0, 5840.2, -90, 0)
-	spawnMobile(self.planet, "first_brigade_trooper", 300, 5445.4, 80.0, 5844.2, 90, 0)
-	spawnMobile(self.planet, "first_brigade_trooper", 300, 5450.4, 80.0, 5844.2, -90, 0)
-	spawnMobile(self.planet, "first_brigade_trooper", 300, 5445.4, 80.0, 5848.2, 90, 0)
-	spawnMobile(self.planet, "first_brigade_trooper", 300, 5450.4, 80.0, 5848.2, -90, 0)
-	spawnMobile(self.planet, "first_brigade_trooper", 300, 5419.4, 80.0, 5845.2, 180, 0)
-	spawnMobile(self.planet, "first_brigade_trooper", 300, 5414.4, 80.0, 5845.2, 180, 0)
-	spawnMobile(self.planet, "first_brigade_sergeant", 300, 5292.2, 80.0, 5854.8, 180, 0)
-	spawnMobile(self.planet, "first_brigade_gunner", 300, 5283.2, 80.0, 5854.8, 180, 0)
-	spawnMobile(self.planet, "first_brigade_sergeant", 300, 5212.4, 80.0, 5778.7, 0, 0)
-	spawnMobile(self.planet, "first_brigade_gunner", 300, 5199.2, 80.0, 5778.7, 0, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5212.4, 80.0, 5764.4, 180, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5199.2, 80.0, 5764.4, 180, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5318.2, 80.2, 5523.5, 180, 0)
-	spawnMobile(self.planet, "first_brigade_trooper", 300, 5315.2, 80.2, 5523.5, 180, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5339.0, 80.2, 5523.5, 180, 0)
-	spawnMobile(self.planet, "first_brigade_trooper", 300, 5342.0, 80.2, 5523.5, 180, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5206.5, 80.2, 5603.2, 0, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5199.5, 80.2, 5609.3, 90, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5154.5, 80.2, 5603.2, 0, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5161.5, 80.2, 5609.3, -90, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5128.7, 80.0, 5535.5, -75, 0)
-	spawnMobile(self.planet, "first_brigade_marine", 300, 5125.1, 80.2, 5542.4, 145, 0)
-	spawnMobile(self.planet, "first_brigade_officer", 300, 0.0, 1.7, -21.7, 0, 4635710)
-
-	--misc
-	spawnMobile(self.planet, "imperial_recruiter", 1, 5349, 80, 5617.6, 0, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 1, 5401, 80, 5857, 45, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_3", 1, 5102, 79.98, 5652, 30, 0)
-	spawnMobile(self.planet, "junk_dealer", 1, 5353.8, 80, 5665.9, 180, 0)
-	spawnMobile(self.planet, "junk_dealer", 1, 5350.2, 81.3, 5484.8, -50, 0)
-	spawnMobile(self.planet, "junk_dealer", 0, -14.1, 1.1, 2.8, 127, 4635688)
-
-	--Hotel
-	spawnMobile(self.planet, "businessman", 1, 2.3, 1.0, 23.2, -75, 4635641)
-	spawnMobile(self.planet, "patron_ishitib", 1, 5.2, 1.0, 7.9, 140, 4635643)
-	spawnMobile(self.planet, "patron_ishitib", 1, 6.4, 1.0, 6.4, -50, 4635643)
-	spawnMobile(self.planet, "bartender", 1, 20.1, 1.6, 12.3, 180, 4635644)
-	spawnMobile(self.planet, "entertainer", 1, 25.2, 2.0, -16.7, -50, 4635644)
-	spawnMobile(self.planet, "entertainer", 1, 24.3, 2.0, -14.2, -45, 4635644)
-	spawnMobile(self.planet, "entertainer", 1, 22.7, 2.0, -16.5, -55, 4635644)
-
-	--trainers
-	spawnMobile(self.planet, "trainer_architect", 0, 11, 1.133, -14.5, 0, 4635774)
-	spawnMobile(self.planet, "trainer_architect", 0, 5510, 80, 5663, 214, 0)
-	spawnMobile(self.planet, "trainer_armorsmith", 0, -12.5, 1.13306, 3.55, 157, 4635773)
-	spawnMobile(self.planet, "trainer_artisan", 0, 0, 1.1, -14, 0, 4635664)
-	spawnMobile(self.planet, "trainer_artisan", 0, 5256, 80, 5600, 13, 0)
-	spawnMobile(self.planet, "trainer_brawler", 0, -11, 1, -14, 0, 4635691)
-	spawnMobile(self.planet, "trainer_brawler", 0, 5335.31, 80, 5530.48, 0, 0)
-	spawnMobile(self.planet, "trainer_chef", 0, 5181, 80, 5668, 180, 0)
-	spawnMobile(self.planet, "trainer_combatmedic", 0, -16.3425, 0.26, 10.8489, 168, 4635732)
-	spawnMobile(self.planet, "trainer_combatmedic", 0, 26.6144, 0.26, 5.52845, 84, 4635728)
-	spawnMobile(self.planet, "trainer_commando", 0, 9.51478, 1.13306, -10.433, 39, 4635689)
-	spawnMobile(self.planet, "trainer_creaturehandler", 0, 5134, 80, 5749, 180, 0)
-	spawnMobile(self.planet, "trainer_dancer", 0, 17.9253, 2.12876, 53.5327, 0, 4635754)
-	spawnMobile(self.planet, "trainer_dancer", 0, 5437, 80.6, 5564, 270, 0)
-	spawnMobile(self.planet, "trainer_doctor", 0, 20.8797, 0.26, -4.8809, 46, 4635728)
-	spawnMobile(self.planet, "trainer_doctor", 0, 5373, 80, 5589, 180, 0)
-	spawnMobile(self.planet, "trainer_droidengineer", 0, -11.4803, 1.13306, -13.6866, 4, 4635776)
-	spawnMobile(self.planet, "trainer_droidengineer", 0, 5186, 80, 5719, 90, 0)
-	spawnMobile(self.planet, "trainer_entertainer", 0, 28, 2.1, 73, 270, 4635754)
-	spawnMobile(self.planet, "trainer_entertainer", 0, 29.5159, 2.12878, 73.6413, 88, 4635403)
-	spawnMobile(self.planet, "trainer_entertainer", 0, 5433, 80.6, 5558, 270, 0)
-	spawnMobile(self.planet, "trainer_imagedesigner", 0, -21.5126, 2.12878, 74.0536, 181, 4635404)
-	spawnMobile(self.planet, "trainer_imagedesigner", 0, -22.3, 2.1, 73.1, 90, 4635755)
-	spawnMobile(self.planet, "trainer_imagedesigner", 0, 5255, 80, 5850, 180, 0)
-	spawnMobile(self.planet, "trainer_marksman", 0, 0, 0, -13, 0, 4635690)
-	spawnMobile(self.planet, "trainer_marksman", 0, 0, 1.13306, -13, 0, 4615374)
-	spawnMobile(self.planet, "trainer_marksman", 0, 5528, 80.7357, 5641, 91, 0)
-	spawnMobile(self.planet, "trainer_medic", 0, 13.2069, 0.26, 4.92654, 165, 4635728)
-	spawnMobile(self.planet, "trainer_merchant", 0, 11.6338, 1.13306, 5.69637, 177, 4635772)
-	spawnMobile(self.planet, "trainer_merchant", 0, 5388, 80, 5673, 110, 0)
-	spawnMobile(self.planet, "trainer_musician", 0, 21.8, 2.1, 76.2, 180, 4635754)
-	spawnMobile(self.planet, "theater_manager", 0, 21.6954, 2.12795, 63.866, 0, 4635754)
-	spawnMobile(self.planet, "trainer_musician", 0, 5432.89, 80.6, 5569.12, 270, 0)
-	spawnMobile(self.planet, "trainer_polearm", 0, 5090, 80, 5759, 180, 0)
-	spawnMobile(self.planet, "trainer_scout", 0, -12.5744, 1.13306, 4.79458, 180, 4635688)
-	spawnMobile(self.planet, "trainer_scout", 0, 5371, 80, 5539, 180, 0)
-	spawnMobile(self.planet, "trainer_tailor", 0, 11, 0, -13, 0, 4635663)
-	spawnMobile(self.planet, "trainer_tailor", 0, 5209, 80, 5729, 180, 0)
-	spawnMobile(self.planet, "trainer_weaponsmith", 0, 0, 1, -13, 0, 4635775)
 end

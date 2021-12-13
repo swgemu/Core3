@@ -2,6 +2,7 @@ ankura_gungan = Creature:new {
 	objectName = "@mob/creature_names:ankura_gungan",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "gungan",
 	faction = "gungan",
 	level = 8,
@@ -39,9 +40,17 @@ ankura_gungan = Creature:new {
 			}
 		}
 	},
-	weapons = {"rebel_weapons_light"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "rebel_weapons_light",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlernovice,marksmannovice),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(ankura_gungan, "ankura_gungan")

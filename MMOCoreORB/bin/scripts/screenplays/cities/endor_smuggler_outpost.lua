@@ -70,9 +70,15 @@ end
 function EndorSmugglerOutpostScreenPlay:spawnMobiles()
 	--mission term building
 	local pNpc = spawnMobile("endor", "commoner_technician",60,3.5,0.1,3.9,0,3605972)
-	self:setMoodString(pNpc, "sad")
+	if pNpc ~= nil then
+		self:setMoodString(pNpc, "sad")
+		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+	end
 
 	--tavern
 	local pNpc = spawnMobile("endor", "commoner_old",60,1.0,0.7,-4.4,0,6645605)
-	self:setMoodString(pNpc, "npc_sitting_chair")
+	if pNpc ~= nil then
+		self:setMoodString(pNpc, "npc_sitting_chair")
+		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+	end
 end

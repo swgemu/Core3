@@ -134,10 +134,7 @@ public:
 		bool pickupAvailableOther = false;
 
 		int totalItems = lootContainer->getContainerObjectsSize();
-
-		if (totalItems < 1) {
-			return NOPICKUPITEMS;
-		}
+		if (totalItems < 1) return NOPICKUPITEMS;
 
 		ContainerPermissions* contPerms = lootContainer->getContainerPermissionsForUpdate();
 		if (contPerms == nullptr) {
@@ -183,12 +180,11 @@ public:
 
 				contPerms->setOwner(originalOwner);
 
-			} else if (itemOwnerID != 0) {
+			} else if (itemOwnerID != 0)
 				pickupAvailableOther = true;
-			}
 		}
 
-		// Determine which result code to return.
+		//Determine which result code to return.
 		if (attemptedPickup) {
 			if (lootContainer->getContainerObjectsSize() > 0)
 				return PICKEDANDREMAINING;

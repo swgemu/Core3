@@ -282,8 +282,9 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param range range to check
 	 * @return returns true if this object is in range with obj
 	 */
+	@mock
 	@dirty
-	public native boolean isInRange(SceneObject obj, float range);
+	public abstract native boolean isInRange(SceneObject obj, float range);
 	/**
 	 * Evaluates if the object is in range without checking zone
 	 * @pre { this object is locked, obj is locked}
@@ -736,9 +737,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @post { this object is locked, objects is a vector map with the contained objects and their occupied slots }
 	 * @param objects the vector map that will contain the objects and their occupied slots
 	 */
+	@mock
 	@local
 	@dirty
-	public native void getSlottedObjects(@dereferenced VectorMap<string, SceneObject> objects);
+	public abstract native void getSlottedObjects(@dereferenced VectorMap<string, SceneObject> objects);
 
 	@local
 	@dirty
@@ -914,12 +916,14 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	public native abstract int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
+	@mock
 	@dirty
-	public native float getDistanceTo(SceneObject object);
+	public abstract native float getDistanceTo(SceneObject object);
 
+	@mock
 	@local
 	@dirty
-	public native float getDistanceTo(Coordinate coordinate);
+	public abstract native float getDistanceTo(Coordinate coordinate);
 
 	public abstract native void updateVehiclePosition(boolean sendPackets);
 
@@ -961,11 +965,13 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		cityRegion = region;
 	}
 
+	@mock
 	@dirty
-	public native Zone getZone();
+	public abstract native Zone getZone();
 
+	@mock
 	@read
-	public native Zone getZoneUnsafe();
+	public abstract native Zone getZoneUnsafe();
 
 	@read
 	public Zone getLocalZone() {
@@ -984,21 +990,21 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@mock
 	@dirty
-	public native float getWorldPositionX();
+	public abstract native float getWorldPositionX();
 
 	@dirty
 	@mock
-	public native float getWorldPositionY();
+	public abstract native float getWorldPositionY();
 
 	@dirty
 	@mock
-	public native float getWorldPositionZ();
+	public abstract native float getWorldPositionZ();
 
 	@dirty
 	@local
 	@dereferenced
 	@mock
-	public native Vector3 getWorldPosition();
+	public abstract native Vector3 getWorldPosition();
 
 	@read
 	public float getDirectionX() {
@@ -1104,7 +1110,8 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@dirty
 	@reference
-	public native SceneObject getSlottedObject(final string slot);
+	@mock
+	public abstract native SceneObject getSlottedObject(final string slot);
 
 	@read
 	public int getSlotDescriptorSize() {
@@ -1273,8 +1280,9 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	public native void faceObject(SceneObject obj, boolean notifyClient = false);
 
+	@mock
 	@read
-	public native boolean isFacingObject(SceneObject obj);
+	public abstract native boolean isFacingObject(SceneObject obj);
 
 	public native abstract void notifySelfPositionUpdate();
 
@@ -1291,6 +1299,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return movementCounter;
 	}
 
+	@mock
 	@dirty
 	@weakReference
 	public native SceneObject getParent();
@@ -1494,6 +1503,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@virtualStub
 	public abstract native boolean isCreatureObject();
 
+	@mock
 	@dirty
 	@local
 	@nativeStub
@@ -1506,6 +1516,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@virtualStub
 	public native abstract boolean isAiAgent();
 
+	@mock
 	@dirty
 	@local
 	@nativeStub
@@ -1605,6 +1616,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return false;
 	}
 
+	@mock
 	@dirty
 	@local
 	public abstract TangibleObject asTangibleObject() {
@@ -2154,6 +2166,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@read
 	public native boolean isDataPad();
 
+	@mock
 	@dirty
 	public native abstract float getTemplateRadius();
 

@@ -2,6 +2,7 @@ hermit_spider_guard = Creature:new {
 	objectName = "@mob/creature_names:hermit_spider_guard",
 	socialGroup = "spider",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 10,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -29,12 +30,17 @@ hermit_spider_guard = Creature:new {
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
 	scale = 1.2,
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"stunattack",""},
-		{"mildpoison",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"stunattack",""}, {"mildpoison",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(hermit_spider_guard, "hermit_spider_guard")

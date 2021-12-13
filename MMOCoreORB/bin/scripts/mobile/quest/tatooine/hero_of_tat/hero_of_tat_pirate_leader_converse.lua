@@ -2,6 +2,7 @@ hero_of_tat_pirate_leader_converse = Creature:new {
 	objectName = "@mob/creature_names:pirate_leader",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "pirate",
 	faction = "pirate",
 	level = 32,
@@ -28,9 +29,17 @@ hero_of_tat_pirate_leader_converse = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_pirate_human_male_01.iff"},
-	weapons = {"pirate_weapons_heavy"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_heavy",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "heroOfTatPirateLeaderConvoTemplate",
-	attacks = merge(brawlermaster,marksmanmaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlermaster,marksmanmaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(hero_of_tat_pirate_leader_converse, "hero_of_tat_pirate_leader_converse")

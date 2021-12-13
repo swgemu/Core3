@@ -2,6 +2,7 @@ nym_droideka = Creature:new {
 	objectName = "@mob/creature_names:nym_droideka_strong",
 	socialGroup = "nym",
 	faction = "nym",
+	mobType = MOB_DROID,
 	level = 45,
 	chanceHit = 0.47,
 	damageMin = 360,

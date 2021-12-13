@@ -2,6 +2,7 @@ fierce_huurton = Creature:new {
 	objectName = "@mob/creature_names:warren_huurton_fierce",
 	socialGroup = "warren_huurton",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 22,
 	chanceHit = 0.34,
 	damageMin = 220,
@@ -29,11 +30,17 @@ fierce_huurton = Creature:new {
 	templates = {"object/mobile/huurton_hue.iff"},
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"stunattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"stunattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(fierce_huurton, "fierce_huurton")

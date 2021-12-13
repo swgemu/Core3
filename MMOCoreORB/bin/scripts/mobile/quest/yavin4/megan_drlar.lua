@@ -2,6 +2,7 @@ megan_drlar = Creature:new {
 	objectName = "@mob/creature_names:megan_drlar",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 22,
 	chanceHit = 0.330000,
 	damageMin = 190,
@@ -27,10 +28,18 @@ megan_drlar = Creature:new {
 
 	templates = {"object/mobile/megan_drlar.iff"},
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	reactionStf = "@npc_reaction/slang",
 	conversationTemplate = "megan_drlar_mission_giver_convotemplate",
-	attacks = {}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(megan_drlar, "megan_drlar")

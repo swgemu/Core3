@@ -103,6 +103,7 @@ function SithShadowEncounter:onEncounterSpawned(pPlayer, spawnedObjects)
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
 	FsIntro:setCurrentStep(pPlayer, 4)
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.TWO_MILITARY)
+
 end
 
 -- Handling of the encounter in range event.
@@ -114,17 +115,19 @@ function SithShadowEncounter:onEncounterInRange(pPlayer, spawnedObjects)
 		return
 	end
 
+	foreach(spawnedObjects, function(pMobile)
+		if (pMobile ~= nil) then
+			AiAgent(pMobile):removeCreatureFlag(AI_ESCORT)
+			AiAgent(pMobile):removeCreatureFlag(AI_FOLLOW)
+			AiAgent(pMobile):setDefender(pPlayer)
+		end
+	end)
+
 	Logger:log("Sending threaten string.", LT_INFO)
 	local threatenString = LuaStringIdChatParameter(SITH_SHADOW_THREATEN_STRING)
 	threatenString:setTT(CreatureObject(pPlayer):getFirstName())
 	spatialChat(spawnedObjects[1], threatenString:_getObject())
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.LOOT_DATAPAD_1)
-
-	foreach(spawnedObjects, function(pMobile)
-		if (pMobile ~= nil) then
-			AiAgent(pMobile):setDefender(pPlayer)
-		end
-	end)
 end
 
 -- Check if the sith shadow encounter is finished or not.

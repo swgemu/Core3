@@ -2,6 +2,7 @@ klin_nif = Creature:new {
 	objectName = "",
 	customName = "Klin Nif",
 	socialGroup = "death_watch",
+	mobType = MOB_NPC,
 	faction = "",
 	level = 178,
 	chanceHit = 12.25,
@@ -36,9 +37,17 @@ klin_nif = Creature:new {
 			lootChance = 10000000
 		}
 	},
-	weapons = {"death_watch_commander_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "death_watch_commander_weapons",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = merge(carbineermaster,marksmanmaster,brawlermaster,fencermaster,pistoleermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(carbineermaster,marksmanmaster,brawlermaster,fencermaster,pistoleermaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(klin_nif, "klin_nif")

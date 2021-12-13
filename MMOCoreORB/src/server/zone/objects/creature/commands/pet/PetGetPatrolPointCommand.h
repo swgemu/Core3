@@ -9,32 +9,29 @@
 
 class PetGetPatrolPointCommand : public QueueCommand {
 public:
-	PetGetPatrolPointCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetGetPatrolPointCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == nullptr )
+		if (pet == nullptr)
 			return GENERALERROR;
 
 		if (pet->hasRidingCreature())
 			return GENERALERROR;
 
 		// Check if droid has power
-		if( controlDevice->getPetType() == PetManager::DROIDPET ) {
+		if (controlDevice->getPetType() == PetManager::DROIDPET) {
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
-			if( droidPet == nullptr )
+			if (droidPet == nullptr)
 				return GENERALERROR;
 
-			if( !droidPet->hasPower() ){
-				pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+			if (!droidPet->hasPower()) {
+				pet->showFlyText("npc_reaction/flytext", "low_power", 204, 0, 0); // "*Low Power*"
 				return GENERALERROR;
 			}
 		}
@@ -48,7 +45,7 @@ public:
 		if (controlDevice->getPatrolPointSize() < 10) {
 			ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target, true);
 
-			if (targetObject != nullptr || targetObject->isPlayerCreature() ) {
+			if (targetObject != nullptr || targetObject->isPlayerCreature()) {
 				CreatureObject* player = targetObject->asCreatureObject();
 
 				PatrolPoint point;
@@ -65,8 +62,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
-
 
 #endif /* PETGETPATROLPOINTCOMMAND_H_ */

@@ -2,6 +2,7 @@ rodian_clan_medic = Creature:new {
 	objectName = "@mob/creature_names:rodian_clan_medic",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rodian",
 	faction = "",
 	level = 7,
@@ -39,10 +40,18 @@ rodian_clan_medic = Creature:new {
 			}
 		}
 	},
-	weapons = {"rebel_weapons_medium"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "rebel_weapons_medium",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	attacks = merge(marksmannovice,brawlernovice)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(marksmannovice,brawlernovice),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(rodian_clan_medic, "rodian_clan_medic")

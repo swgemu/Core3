@@ -2,6 +2,7 @@ cenik = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_courier",
 	socialGroup = "spice_collective",
 	faction = "spice_collective",
+	mobType = MOB_NPC,
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,
@@ -29,7 +30,11 @@ cenik = Creature:new {
 	lootGroups = { },
 	weapons = { },
 	conversationTemplate = "sigrix_slix_mission_target_convotemplate",
-	attacks = { }
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(cenik, "cenik")

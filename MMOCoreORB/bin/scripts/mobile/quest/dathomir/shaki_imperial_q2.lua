@@ -2,6 +2,7 @@ shaki_imperial_q2 = Creature:new {
 	objectName = "@mob/creature_names:imperial_second_lieutenant",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 20,
@@ -29,7 +30,11 @@ shaki_imperial_q2 = Creature:new {
 
 	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_medium"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "imperial_weapons_medium",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "shaki_hamachil_mission_target_convotemplate",
 }
 

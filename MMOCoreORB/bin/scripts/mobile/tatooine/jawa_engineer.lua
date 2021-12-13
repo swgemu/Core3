@@ -2,6 +2,7 @@ jawa_engineer = Creature:new {
 	objectName = "@mob/creature_names:jawa_engineer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "jawa",
 	faction = "jawa",
 	level = 10,
@@ -40,9 +41,17 @@ jawa_engineer = Creature:new {
 			}
 		}
 	},
-	weapons = {"jawa_weaker_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "jawa_weaker_weapons",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = merge(marksmannovice,brawlernovice)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(marksmannovice,brawlernovice),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(jawa_engineer, "jawa_engineer")

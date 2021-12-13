@@ -2,6 +2,7 @@ fbase_rebel_comm_operator = Creature:new {
 	objectName = "@mob/creature_names:fbase_rebel_comm_operator",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 24,
@@ -47,10 +48,20 @@ fbase_rebel_comm_operator = Creature:new {
 			}
 		}
 	},
-	weapons = {"rebel_weapons_light"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "rebel_weapons_light",
+	secondaryWeapon = "none",
+	thrownWeapon = "thrown_weapons",
+
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	attacks = merge(marksmanmaster,brawlermaster)
+
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(marksmanmaster,brawlermaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(fbase_rebel_comm_operator, "fbase_rebel_comm_operator")

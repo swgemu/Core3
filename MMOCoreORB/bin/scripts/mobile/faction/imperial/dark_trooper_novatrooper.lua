@@ -2,6 +2,7 @@ dark_trooper_novatrooper = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_dark_trooper_novatrooper",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_ANDROID,
 	level = 200,
 	chanceHit = 18,
 	damageMin = 1270,
@@ -28,10 +29,20 @@ dark_trooper_novatrooper = Creature:new {
 
 	templates = {"object/mobile/dressed_stormtrooper_black_black.iff"},
 	lootGroups = {},
-	weapons = {"dark_trooper_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "imperial_carbine",
+	secondaryWeapon = "stormtrooper_sword",
+	thrownWeapon = "thrown_weapons",
+
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/stormtrooper",
-	attacks = merge(riflemanmaster,marksmanmaster,fencermaster,brawlermaster)
+
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(carbineermaster,marksmanmaster),
+	secondaryAttacks = merge(fencermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(dark_trooper_novatrooper, "dark_trooper_novatrooper")

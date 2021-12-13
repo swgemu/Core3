@@ -65,7 +65,7 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 			if (agent == nullptr)
 				continue;
 
-			agent->activateInterrupt(sourceObject, arg2);
+			agent->notifyObservers(arg2, sourceObject);
 		}
 
 		break;

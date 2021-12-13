@@ -2,6 +2,7 @@ sand_trooper = Creature:new {
 	objectName = "@mob/creature_names:sand_trooper",
 	randomNameType = NAME_STORMTROOPER,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 25,
@@ -45,11 +46,19 @@ sand_trooper = Creature:new {
 			}
 		}
 	},
-	weapons = {"sandtrooper_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "imperial_carbine",
+	secondaryWeapon = "imperial_pistol",
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/stormtrooper",
 	personalityStf = "@hireling/hireling_stormtrooper",
-	attacks = merge(riflemanmaster,brawlermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = marksmanmaster,
+	secondaryAttacks = marksmanmaster
 }
 
 CreatureTemplates:addCreatureTemplate(sand_trooper, "sand_trooper")

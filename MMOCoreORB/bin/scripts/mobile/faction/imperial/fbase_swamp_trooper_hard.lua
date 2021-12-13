@@ -2,6 +2,7 @@ fbase_swamp_trooper_hard = Creature:new {
 	objectName = "@mob/creature_names:fbase_swamp_trooper_hard",
 	randomNameType = NAME_SWAMPTROOPER,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 82,
@@ -43,10 +44,20 @@ fbase_swamp_trooper_hard = Creature:new {
 			}
 		}
 	},
-	weapons = {"stormtrooper_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "imperial_carbine",
+	secondaryWeapon = "imperial_pistol",
+	thrownWeapon = "thrown_weapons",
+
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/stormtrooper",
-	attacks = merge(riflemanmaster,brawlermaster,marksmanmaster)
+
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(carbineermaster,marksmanmaster),
+	secondaryAttacks = marksmanmaster
 }
 
 CreatureTemplates:addCreatureTemplate(fbase_swamp_trooper_hard, "fbase_swamp_trooper_hard")

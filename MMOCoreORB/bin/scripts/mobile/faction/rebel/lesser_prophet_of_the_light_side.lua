@@ -2,6 +2,7 @@ lesser_prophet_of_the_light_side = Creature:new {
 	objectName = "@mob/creature_names:lesser_prophet_of_the_dark_side",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 85,
@@ -44,9 +45,17 @@ lesser_prophet_of_the_light_side = Creature:new {
 			}
 		}
 	},
-	weapons = {"light_jedi_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "light_jedi_weapons",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = merge(lightsabermaster,forcewielder)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(lightsabermaster,forcewielder),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(lesser_prophet_of_the_light_side, "lesser_prophet_of_the_light_side")

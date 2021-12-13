@@ -44,7 +44,7 @@
 object_mobile_vendor_human_female = object_mobile_vendor_shared_human_female:new {
 
 	templateType = VENDORCREATURE,
-	optionsBitmask = 386,
+	optionsBitmask = 258,
 	pvpStatusBitmask = 0,
 
 	objectMenuComponent = "VendorMenuComponent",

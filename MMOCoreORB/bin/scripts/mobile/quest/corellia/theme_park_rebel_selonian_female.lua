@@ -2,6 +2,7 @@ theme_park_rebel_selonian_female = Creature:new {
 	objectName = "",
 	socialGroup = "rebel",
 	faction = "rebel",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -22,7 +23,7 @@ theme_park_rebel_selonian_female = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = INVULNERABLE + CONVERSABLE,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_selonian_f_01.iff",
@@ -38,9 +39,17 @@ theme_park_rebel_selonian_female = Creature:new {
 				 "object/mobile/dressed_selonian_f_11.iff",
 				 "object/mobile/dressed_selonian_f_12.iff"},
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
-	attacks = brawlermaster
+
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = brawlermaster,
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_rebel_selonian_female, "theme_park_rebel_selonian_female")

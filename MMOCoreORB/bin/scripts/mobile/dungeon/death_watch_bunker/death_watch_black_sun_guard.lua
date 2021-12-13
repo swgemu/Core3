@@ -2,6 +2,7 @@ death_watch_black_sun_guard = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_blksun_guard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 96,
@@ -37,9 +38,17 @@ death_watch_black_sun_guard = Creature:new {
 			lootChance = 1000000
 		}
 	},
-	weapons = {"pirate_weapons_heavy"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "deathwatch_ranged",
+	secondaryWeapon = "deathwatch_ranged",
 	conversationTemplate = "",
-	attacks = merge(bountyhuntermaster,marksmanmaster,brawlermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(bountyhuntermaster,marksmanmaster,carbineermaster),
+	secondaryAttacks = merge(bountyhuntermaster,marksmanmaster,carbineermaster),
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_black_sun_guard, "death_watch_black_sun_guard")

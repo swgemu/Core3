@@ -2,6 +2,7 @@ mammoth_bearded_jax = Creature:new {
 	objectName = "@mob/creature_names:mammoth_bearded_jax",
 	socialGroup = "jax",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 160,
@@ -30,12 +31,17 @@ mammoth_bearded_jax = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/bearded_jax_hue.iff",
 	scale = 2.8,
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"dizzyattack",""},
-		{"stunattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"dizzyattack",""}, {"stunattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(mammoth_bearded_jax, "mammoth_bearded_jax")

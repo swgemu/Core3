@@ -2,6 +2,7 @@ at_at = Creature:new {
 	objectName = "@mob/creature_names:at_at",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_VEHICLE,
 	level = 228,
 	chanceHit = 19.75,
 	damageMin = 1270,

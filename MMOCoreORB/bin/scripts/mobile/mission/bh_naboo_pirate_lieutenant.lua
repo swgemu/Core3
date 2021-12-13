@@ -2,6 +2,7 @@ bh_naboo_pirate_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:naboo_pirate_lieutenant",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "naboo_pirate",
 	faction = "naboo_pirate",
 	level = 15,
@@ -52,9 +53,17 @@ bh_naboo_pirate_lieutenant = Creature:new {
 			lootChance = 3300000
 		}
 	},
-	weapons = {"pirate_weapons_heavy"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_heavy",
+	secondaryWeapon = "unarmed",
 	reactionStf = "@npc_reaction/slang",
-	attacks = merge(brawlermid,marksmanmid)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlermid,marksmanmid),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(bh_naboo_pirate_lieutenant, "bh_naboo_pirate_lieutenant")

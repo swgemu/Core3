@@ -52,21 +52,21 @@ SuppressionFire1Command = {
 	accuracyBonus = 25,
 
 	stateEffects = {
-	  StateEffect( 
-		POSTUREDOWN_EFFECT, 
-		{ "postureDownRecovery" }, 
-		{ "posture_change_down_defense" }, 
-		{},
-		100, 
-		0, 
-		0 
-	  )
+		StateEffect(
+			POSTUREDOWN_EFFECT,
+			{ "postureDownRecovery" },
+			{ "posture_change_down_defense" },
+			{},
+			100,
+			0,
+			0
+		)
 	},
 
 	animation = "fire_defender_posture_change_down",
 
 	combatSpam = "suppressionfire",
-	
+
 	weaponType = RANGEDWEAPON,
 
 	range = -1

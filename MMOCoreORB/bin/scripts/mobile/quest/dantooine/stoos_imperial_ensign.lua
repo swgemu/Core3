@@ -2,6 +2,7 @@ stoos_imperial_ensign = Creature:new {
   objectName = "",
   socialGroup = "imperial",
   faction = "imperial",
+  mobType = MOB_NPC,
   level = 30,
   chanceHit = 0.390000,
   damageMin = 290,
@@ -34,9 +35,14 @@ stoos_imperial_ensign = Creature:new {
     "object/mobile/dressed_imperial_officer_m_5.iff",
     "object/mobile/dressed_imperial_officer_m_6.iff"},
   lootGroups = {},
-  weapons = {"imperial_weapons_medium"},
+  primaryWeapon = "imperial_weapons_medium",
+	secondaryWeapon = "unarmed",
   conversationTemplate = "stoos_olko_mission_target_convotemplate",
-  attacks = {}
+  
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { },
 
 }
 

@@ -2,6 +2,7 @@ theme_park_rebel_disgruntled_citizen = Creature:new {
 	objectName = "@mob/creature_names:bounty_hunter",
 	socialGroup = "mercenary",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 24,
 	chanceHit = 0.350000,
 	damageMin = 220,
@@ -37,8 +38,16 @@ theme_park_rebel_disgruntled_citizen = Creature:new {
 			lootChance = 10000000
 		}
 	},
-	weapons = {"pirate_weapons_heavy"},
-	attacks = merge(brawlermaster,marksmanmaster)
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_heavy",
+	secondaryWeapon = "unarmed",
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlermaster,marksmanmaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_rebel_disgruntled_citizen, "theme_park_rebel_disgruntled_citizen")

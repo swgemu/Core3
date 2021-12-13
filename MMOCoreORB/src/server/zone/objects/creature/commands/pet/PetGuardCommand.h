@@ -10,19 +10,16 @@
 
 class PetGuardCommand : public QueueCommand {
 public:
-	PetGuardCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetGuardCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if (pet == nullptr )
+		if (pet == nullptr)
 			return GENERALERROR;
 
 		if (pet->hasRidingCreature())
@@ -32,49 +29,46 @@ public:
 			pet->setPosture(CreaturePosture::UPRIGHT);
 
 		// Check if droid has power
-		if ( controlDevice->getPetType() == PetManager::DROIDPET ){
+		if (controlDevice->getPetType() == PetManager::DROIDPET) {
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
-			if( droidPet == nullptr )
+			if (droidPet == nullptr)
 				return GENERALERROR;
 
-			if ( !droidPet->hasPower() ){
-				pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+			if (!droidPet->hasPower()) {
+				pet->showFlyText("npc_reaction/flytext", "low_power", 204, 0, 0); // "*Low Power*"
 				return GENERALERROR;
 			}
 		}
 
-		Reference<CreatureObject*> player = server->getZoneServer()->getObject(target, true).castTo<CreatureObject*>();
-		if (player == nullptr || player->isAttackableBy(pet)) {
-			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		// target is passed from PetManagerImplementation as the player giving the pet the command
+		Reference<CreatureObject*> commander = server->getZoneServer()->getObject(target, true).castTo<CreatureObject*>();
+		if (commander == nullptr) {
 			return GENERALERROR;
 		}
 
-		if (player->isSwimming() || pet->isSwimming()) {
-			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		if (commander->isSwimming() || pet->isSwimming()) {
+			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return GENERALERROR;
 		}
 
-		// Guard the player's target if valid, otherwise guard the player
-		uint64 playersTargetID = player->getTargetID();
+		// Guard the commanding player's target if valid, otherwise guard the player
+		uint64 playersTargetID = commander->getTargetID();
 
 		Reference<TangibleObject*> targetObject = server->getZoneServer()->getObject(playersTargetID, true).castTo<TangibleObject*>();
-		if (targetObject == nullptr || !targetObject->isCreatureObject() || targetObject->isAttackableBy(pet)) {
-			targetObject = player->asTangibleObject();
+		if (targetObject == nullptr || targetObject->isAttackableBy(pet)) {
+			targetObject = commander;
 		}
 
 		pet->setFollowObject(targetObject);
 		pet->storeFollowObject();
 
 		Locker clocker(controlDevice, creature);
-		controlDevice->setLastCommand(PetManager::GUARD);
 		controlDevice->setLastCommandTarget(targetObject);
 
-		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
+		pet->notifyObservers(ObserverEventType::STARTCOMBAT, pet->getLinkedCreature().get());
 
 		return SUCCESS;
 	}
-
 };
-
 
 #endif /* PETGUARDCOMMAND_H_ */

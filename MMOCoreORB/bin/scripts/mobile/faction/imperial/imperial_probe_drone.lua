@@ -2,6 +2,7 @@ imperial_probe_drone = Creature:new {
 	objectName = "@mob/creature_names:imperial_probot_drone",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_DROID,
 	level = 14,
 	chanceHit = 0.31,
 	damageMin = 150,
@@ -28,7 +29,11 @@ imperial_probe_drone = Creature:new {
 	templates = {"object/mobile/probot.iff"},
 	lootGroups = {},
 	conversationTemplate = "",
-	weapons = {"droid_probot_ranged"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "object/weapon/ranged/droid/droid_probot_ranged.iff",
+	secondaryWeapon = "object/weapon/ranged/droid/droid_probot_ranged.iff",
 	defaultAttack = "attack",
 
 }

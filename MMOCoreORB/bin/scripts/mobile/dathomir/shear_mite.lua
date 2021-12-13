@@ -2,6 +2,7 @@ shear_mite = Creature:new {
 	objectName = "@mob/creature_names:shear_mite",
 	socialGroup = "shear_mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -29,11 +30,17 @@ shear_mite = Creature:new {
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	controlDeviceTemplate = "object/intangible/pet/shear_mite_hue.iff",
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"blindattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"blindattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(shear_mite, "shear_mite")

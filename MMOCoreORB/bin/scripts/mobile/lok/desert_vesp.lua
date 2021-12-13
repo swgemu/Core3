@@ -2,6 +2,7 @@ desert_vesp = Creature:new {
 	objectName = "@mob/creature_names:desert_vesp",
 	socialGroup = "vesp",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,
@@ -30,12 +31,17 @@ desert_vesp = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/vesp_hue.iff",
 	scale = 1.2,
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"strongpoison",""},
-		{"stunattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"strongpoison",""}, {"stunattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(desert_vesp, "desert_vesp")

@@ -2,6 +2,7 @@ nurla_slinthiss = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
 	customName = "Nurla Slinthiss",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
@@ -28,10 +29,17 @@ nurla_slinthiss = Creature:new {
 
 	templates = {"object/mobile/dressed_nurla_slinthiss.iff"},
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "nurla_slinthiss_mission_giver_convotemplate",
-	attacks = {
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(nurla_slinthiss, "nurla_slinthiss")

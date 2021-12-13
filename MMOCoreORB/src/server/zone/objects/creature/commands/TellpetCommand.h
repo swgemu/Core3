@@ -35,10 +35,10 @@ public:
 			ManagedReference<AiAgent*> pet = player->getActivePet(i);
 			if (pet != nullptr) {
 
-				if( creature->isInRange( pet, 150.0 ) ){
+				if (creature->isInRange(pet, 128.f) ){
 
 					Locker clocker(pet, creature);
-					server->getZoneServer()->getPetManager()->handleChat( creature, pet, arguments.toString() );
+					server->getZoneServer()->getPetManager()->handleChat(creature, pet, arguments.toString());
 				}
 			}
 		}

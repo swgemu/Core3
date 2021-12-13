@@ -103,7 +103,7 @@ class ContrabandScanSession extends Facade {
 		acceptedFine = acceptFine;
 	}
 
-	private native string getFactionStringId(final string imperial, final string rebel);
+	private native string getFactionStringId(CreatureObject player, final string imperial, final string rebel);
 	private native void sendScannerChatMessage(Zone zone, AiAgent scanner, CreatureObject player, final string imperial, final string rebel);
 	private native void sendPersonalizedScannerChatMessage(Zone zone, AiAgent scanner, CreatureObject player, final string imperial, final string rebel);
 	private native void sendSystemMessage(AiAgent scanner, CreatureObject player, final string imperial, final string rebel);
@@ -119,7 +119,7 @@ class ContrabandScanSession extends Facade {
 	private native void jediDetect(Zone zone, AiAgent scanner, CreatureObject player);
 	private native void performScan(Zone zone, AiAgent scanner, CreatureObject player);
 	private native void checkIfPlayerHasReturned(Zone zone, AiAgent scanner, CreatureObject player);
-	private native boolean notDarkJedi(CreatureObject player);
+	private native boolean isDarkJedi(CreatureObject player);
 	private native unsigned int jediMindTrickSuccessChance(CreatureObject player);
 	private native unsigned int jediAvoidDetectionSuccessChance(CreatureObject player);
 	private native void addCrackdownTef(CreatureObject player);

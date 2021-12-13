@@ -196,7 +196,7 @@ void DroidTrapModuleDataComponent::handlePetCommand(String cmd, CreatureObject* 
 	if( droid->getLinkedCreature().get() != speaker ) {
 		return;
 	}
-	if( petManager->isTrainedCommand( pcd, PetManager::THROWTRAP, cmd ) ){
+	if (petManager->getTrainedCommandNum( pcd, cmd) == PetManager::THROWTRAP) {
 		if (trap == nullptr) {
 			speaker->sendSystemMessage("@pet/droid_modules:no_trap_loaded");
 			return;

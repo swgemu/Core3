@@ -2,6 +2,7 @@ r4_crafted = Creature:new {
 	objectName = "@droid_name:r4_crafted",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 94,

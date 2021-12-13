@@ -2,6 +2,7 @@ mature_snorbal_female = Creature:new {
 	objectName = "@mob/creature_names:mature_snorbal_female",
 	socialGroup = "snorbal",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 31,
 	chanceHit = 0.39,
 	damageMin = 290,
@@ -30,12 +31,17 @@ mature_snorbal_female = Creature:new {
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
 	scale = 1.05,
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"posturedownattack",""},
-		{"knockdownattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"posturedownattack",""}, {"knockdownattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(mature_snorbal_female, "mature_snorbal_female")

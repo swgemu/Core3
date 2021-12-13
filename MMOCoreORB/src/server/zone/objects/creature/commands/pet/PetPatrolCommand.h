@@ -9,19 +9,16 @@
 
 class PetPatrolCommand : public QueueCommand {
 public:
-	PetPatrolCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetPatrolCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 		if (controlDevice == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == nullptr )
+		if (pet == nullptr)
 			return GENERALERROR;
 
 		if (pet->hasRidingCreature())
@@ -31,13 +28,13 @@ public:
 			pet->setPosture(CreaturePosture::UPRIGHT);
 
 		// Check if droid has power
-		if( controlDevice->getPetType() == PetManager::DROIDPET ) {
+		if (controlDevice->getPetType() == PetManager::DROIDPET) {
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
-			if( droidPet == nullptr )
+			if (droidPet == nullptr)
 				return GENERALERROR;
 
-			if( !droidPet->hasPower() ){
-				pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+			if (!droidPet->hasPower()) {
+				pet->showFlyText("npc_reaction/flytext", "low_power", 204, 0, 0); // "*Low Power*"
 				return GENERALERROR;
 			}
 		}
@@ -51,25 +48,17 @@ public:
 		if (controlDevice->getPatrolPointSize() == 0)
 			return GENERALERROR;
 
-		pet->setTargetObject(nullptr);
-		pet->setFollowState(AiAgent::PATROLLING);
+		pet->setFollowObject(nullptr);
+		pet->setMovementState(AiAgent::PATROLLING);
 		pet->clearSavedPatrolPoints();
-		pet->stopWaiting();
-		pet->setWait(0);
 
 		for (int i = 0; i < controlDevice->getPatrolPointSize(); i++) {
 			PatrolPoint point = controlDevice->getPatrolPoint(i);
 			pet->addPatrolPoint(point);
 		}
 
-		pet->activateMovementEvent();
-
-		controlDevice->setLastCommand(PetManager::PATROL);
-
 		return SUCCESS;
 	}
-
 };
-
 
 #endif /* PETPATROLCOMMAND_H_ */

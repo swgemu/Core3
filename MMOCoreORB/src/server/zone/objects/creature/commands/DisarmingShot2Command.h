@@ -24,7 +24,6 @@ public:
 
 		return doCombatAction(creature, target);
 	}
-
 };
 
 #endif //DISARMINGSHOT2COMMAND_H_

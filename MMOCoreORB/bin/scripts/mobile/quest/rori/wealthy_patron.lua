@@ -3,6 +3,7 @@ wealthy_patron = Creature:new {
 	customName = "a wealthy patron",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,
@@ -29,9 +30,17 @@ wealthy_patron = Creature:new {
 	templates = {"object/mobile/dressed_noble_twilek_female_01.iff"},
 	lootGroups = {				
 	},
-	weapons = {"rebel_weapons_medium"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "rebel_weapons_medium",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "hefsen_zindalai_mission_target_convotemplate",
-	attacks = merge(brawlernovice,marksmannovice)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlernovice,marksmannovice),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(wealthy_patron, "wealthy_patron")

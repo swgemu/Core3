@@ -130,11 +130,6 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 				ai->setHomeObject(building);
 				ai->setLairTemplateCRC(lairTemplateCRC);
 
-				if (ai->isNonPlayerCreatureObject() && System::random(3) == 0) {
-					unsigned int id = ai->getZoneServer()->getChatManager()->getRandomMoodID();
-					ai->setMood(id);
-				}
-
 				spawnedCreatures.add(creo);
 			}
 		}

@@ -2,6 +2,7 @@ scavenger_quest_megan = Creature:new {
 	objectName = "@mob/creature_names:scavenger",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 7,
@@ -40,9 +41,17 @@ scavenger_quest_megan = Creature:new {
 			lootChance = 10000000
 		}
 	},
-	weapons = {"pirate_weapons_medium"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_medium",
+	secondaryWeapon = "unarmed",
 	reactionStf = "@npc_reaction/slang",
-	attacks = merge(marksmanmaster,brawlermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(marksmanmaster,brawlermaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(scavenger_quest_megan, "scavenger_quest_megan")

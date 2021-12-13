@@ -229,6 +229,10 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		int level = creature->getLevel();
 		EXPECT_TRUE( level > 0 ) << "Level is not a positive value on mobile: " << templateName;
 
+		// Verify level
+		int mobType = creature->getMobType();
+		EXPECT_TRUE( mobType > 0 ) << "mobType is not a valid value on mobile: " << templateName;
+
 		// Verify hit chance
 		float hitChance = creature->getChanceHit();
 		EXPECT_TRUE( hitChance > 0 ) << "ChanceHit is not a positive value on mobile: " << templateName;
@@ -440,12 +444,20 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		}
 
 		// Verify weapon groups exist
-		Vector<String> weapons = creature->getWeapons();
-		for (int i = 0; i < weapons.size(); i++) {
-			String weaponGroup = weapons.get(i);
-			std::string groupName( weaponGroup.toCharArray() );
-			Vector<String> group = CreatureTemplateManager::instance()->getWeapons(weaponGroup);
-			EXPECT_TRUE( group.size() > 0 ) << "Weapon group " << groupName << " from " << templateName << " was not found in weaponMap";
+		String primaryWeap = creature->getPrimaryWeapon();
+		uint32 primaryWeapHash = primaryWeap.hashCode();
+
+		if (primaryWeapHash != String::hashCode("unarmed") && primaryWeapHash != String::hashCode("none") && primaryWeap.indexOf(".iff") == -1) {
+			const Vector<String>& templates = CreatureTemplateManager::instance()->getWeapons(primaryWeap);
+			EXPECT_TRUE( templates.size() > 0 ) << "Primary weapon group " << primaryWeap.toCharArray() << " from " << templateName << " was not found in weaponMap";
+		}
+
+		String secondaryWeap = creature->getSecondaryWeapon();
+		uint32 secondaryWeapHash = secondaryWeap.hashCode();
+
+		if (secondaryWeapHash != String::hashCode("unarmed") && secondaryWeapHash != String::hashCode("none") && secondaryWeap.indexOf(".iff") == -1) {
+			const Vector<String>& templates = CreatureTemplateManager::instance()->getWeapons(secondaryWeap);
+			EXPECT_TRUE( templates.size() > 0 ) << "Secondary weapon group " << secondaryWeap.toCharArray() << " from " << templateName << " was not found in weaponMap";
 		}
 
 		// Verify conversation template exist, and the mob has converse option bit
@@ -469,11 +481,13 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		}
 
 		// Verify attacks are valid commands
-		auto cam = creature->getAttacks();
-		for (int i = 0; i < cam->size(); i++) {
-			const auto& commandName = cam->getCommand(i);
+		auto cam = creature->getPrimaryAttacks();
+		if (primaryWeapHash != String::hashCode("unarmed") && primaryWeapHash != String::hashCode("none") && primaryWeap.indexOf(".iff") == -1) {
+			for (int i = 0; i < cam->size(); i++) {
+				const auto& commandName = cam->getCommand(i);
 
-			EXPECT_TRUE( commandName.isEmpty() || commandConfigManager->contains(commandName) ) << "Attack: " << commandName.toCharArray() << " is not a valid command in mobile template: " << templateName;
+				EXPECT_TRUE( commandName.isEmpty() || commandConfigManager->contains(commandName) ) << "Primary attack: " << commandName.toCharArray() << " is not a valid command in mobile template: " << templateName;
+			}
 		}
 
 		// Very attackable npcs
@@ -481,6 +495,15 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		if ((pvpBitmask & CreatureFlag::ATTACKABLE) && objectType == 1025) {
 			// Verify attackable npcs have attacks
 			EXPECT_TRUE( cam->size() > 0 ) << "Attackable npc " << templateName << " does not have attacks.";
+		}
+
+		cam = creature->getSecondaryAttacks();
+		if (secondaryWeapHash != String::hashCode("unarmed") && secondaryWeapHash != String::hashCode("none") && secondaryWeap.indexOf(".iff") == -1) {
+			for (int i = 0; i < cam->size(); i++) {
+				const auto& commandName = cam->getCommand(i);
+
+				EXPECT_TRUE( commandName.isEmpty() || commandConfigManager->contains(commandName) ) << "Secondary attack: " << commandName.toCharArray() << " is not a valid command in mobile template: " << templateName;
+			}
 		}
 	}
 
