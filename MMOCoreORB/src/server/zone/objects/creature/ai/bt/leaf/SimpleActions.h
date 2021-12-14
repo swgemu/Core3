@@ -763,7 +763,7 @@ public:
 
 		agent->clearPatrolPoints();
 		agent->setMovementState(AiAgent::EVADING);
-		agent->setNextPosition(allyPosition.getX(), allyPosition.getZ(), allyPosition.getY());
+		agent->setNextPosition(allyPosition.getX(), allyPosition.getZ(), allyPosition.getY(), allyCreo->getParent().get().castTo<CellObject*>());
 
 		agent->faceObject(ally);
 
