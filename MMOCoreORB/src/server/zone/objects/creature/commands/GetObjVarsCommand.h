@@ -75,6 +75,37 @@ public:
 			msg << "Children: " << String::valueOf(object->getChildObjects()->size()) << endl;
 			msg << "PARENT OBJECTID: " << String::valueOf(parentID) << endl;
 
+			if (object->isCreatureObject()) {
+				CreatureObject* creoObject = object->asCreatureObject();
+
+				if (creoObject != nullptr) {
+					String aiEnabled = (creoObject->getOptionsBitmask() & OptionBitmask::AIENABLED ? "True" : "False");
+					msg << "AI Enabled: " << aiEnabled << endl;
+					msg << "PvP Status Bitmask: " << creoObject->getPvpStatusBitmask() << endl;
+					msg << "Options Bitmask: " << creoObject->getOptionsBitmask() << endl;
+				}
+
+				if (object->isAiAgent()) {
+					AiAgent* objectAgent = object->asAiAgent();
+
+					if (objectAgent != nullptr) {
+						msg << "Creature Bitmask: " << objectAgent->getCreatureBitmask() << endl;
+						msg << "Creature Movement Sate: " << objectAgent->getMovementState() << endl;
+
+						ManagedReference<SceneObject*> followCopy = objectAgent->getFollowObject();
+						StringBuffer hasFollow;
+
+						if (followCopy != nullptr) {
+							hasFollow << "True - " << " OID: " << followCopy->getObjectID();
+						} else {
+							hasFollow << "False";
+						}
+
+						msg << "Has Follow Object: " << hasFollow.toString() << endl;
+					}
+				}
+			}
+
 			if(object->getZone() != nullptr)
 				msg << "location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName() << endl;
 

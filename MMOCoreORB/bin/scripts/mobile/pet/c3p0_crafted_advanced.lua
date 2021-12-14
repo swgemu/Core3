@@ -2,6 +2,7 @@ c3p0_crafted_advanced = Creature:new {
 	objectName = "@droid_name:po_crafted_advanced",
 	socialGroup = "",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 10,
@@ -29,7 +30,11 @@ c3p0_crafted_advanced = Creature:new {
 		"object/creature/npc/droid/crafted/3po_droid_advanced.iff"
 	},		
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
 }
 

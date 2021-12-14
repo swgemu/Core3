@@ -2,6 +2,7 @@ fawn_moonraiser = Creature:new {
 	objectName = "@mob/creature_names:fawn_moonraiser",
 	socialGroup = "darklighter",
 	faction = "",
+	mobType = MOB_NPC,
 	level = 99,
 	chanceHit = 0.99,
 	damageMin = 640,
@@ -27,10 +28,17 @@ fawn_moonraiser = Creature:new {
 
 	templates = {"object/mobile/dressed_fawn_moonraiser.iff"},
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(fawn_moonraiser, "fawn_moonraiser")

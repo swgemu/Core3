@@ -109,7 +109,6 @@ function EmperorsRetreatScreenPlay:droidPatrol(pMobile)
 	end
 
 	AiAgent(pMobile):stopWaiting()
-	AiAgent(pMobile):setWait(0)
 	AiAgent(pMobile):setNextPosition(nextLoc[1], nextLoc[2], nextLoc[3], nextLoc[4])
 	AiAgent(pMobile):executeBehavior()
 
@@ -204,6 +203,5 @@ end
 function EmperorsRetreatScreenPlay:setupDroidPatrol(pDroid)
 	createEvent(getRandomNumber(350,450) * 100, "EmperorsRetreatScreenPlay", "droidPatrol", pDroid, "")
 	createObserver(DESTINATIONREACHED, "EmperorsRetreatScreenPlay", "retreatPatrolDestReached", pDroid)
-	AiAgent(pDroid):setAiTemplate("manualescortwalk")
-	AiAgent(pDroid):setFollowState(4)
+	AiAgent(pDroid):setMovementState(AI_PATROLLING)
 end

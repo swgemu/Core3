@@ -74,12 +74,48 @@ CorelliaVreniIslandScreenPlay = CityScreenPlay:new {
 		{1, -5557.29, 23.4, -6203.08, 226, 0, ""},
 		{1, -5691.18, 14.6, -6133.32, 248, 0, ""},
 	},
+
+	mobiles = {
+		{"commoner_technician",60,7.1,1.0,19.3,137,2775411, "npc_use_terminal_high"},
+		{"bounty_hunter",300,24.9055,1.28309,5.31569,360.011,2775414, ""},
+		{"corellia_times_investigator",300,8.4,1.0,10.8,-172,2775413, ""},
+		{"chiss_female",300,8.2,1.0,8.7,7,2775413, ""},
+		{"twilek_slave",300,24.9055,1.28309,6.41569,180.019,2775414, ""},
+		{"entertainer",60,-22.5021,1.6,4.63468,179.972,2775415, ""},
+		{"info_broker",60,-22.5017,1.59973,3.53494,359.971,2775415, ""},
+		{"informant_npc_lvl_3",0,-5559,23.4,-6220,90,0, ""},
+		{"noble",60,-24.96,1.6,-4.79578,14.5444,2775419, ""},
+
+		 -- "R2-P2" When/if option customName is available to spawnMobile function
+		{"r2",60,-5528,23.4,-6195.05,84.2678,0, ""},
+
+		{"trainer_entertainer",0,22.0446,-0.894993,11.7787,189,3005697, ""},
+		{"trainer_doctor",0,-2.9,0.7,2.5,132,7615446, ""},
+		{"trainer_musician",0,-5408,24.7288,-6260,50,0, ""},
+		{"junk_dealer", 0, -5664.12, 14.6, -6171.81, 123, 0, ""},
+		{"junk_dealer", 0, -5439.78, 23.91, -6225.42, -84, 0, ""},
+
+		{"commoner_technician",60,-32.3,-0.1,-19.0,-177,3005708, "sad"},
+		{"mouse_droid",60,-32.8,-0.1,-21.0,-16,3005708, "sad"},
+		{"patron_devaronian",60,-31.6,0.1,-9.7,10,3005708, "sad"},
+		{"bartender",60,8.5,-0.9,0.1,82,3005697, "neutral"},
+		{"scientist",60,10.5,-0.9,2.0,-119,3005697, "npc_standing_drinking"},
+		{"devaronian_male",60,-31.2,-0.9,20.3,87,3005706, "npc_sitting_chair"},
+		{"bounty_hunter",60,-21.4,-0.9,19.0,-84,3005706, "calm"},
+		{"entertainer",60,-30.5,-0.9,19.9,-22,3005706, "happy"},
+		{"chiss_female",60,-30.6,-0.9,20.8,178,3005706, "entertained"},
+		{"seeker",60,-32.2,-0.9,19.6,76,3005706, "neutral"},
+		{"shadowy_figure",60,-27.8,-0.9,0.1,-56,3005705, "worried"},
+		{"mercenary",60,-16.3,-0.9,3.2,106,3005697, "angry"},
+		{"mercenary",60,-16.3,-0.9,-2.9,65,3005697, "angry"},
+		{"medic",60,1.4,0.7,2.0,167,7615445, "npc_use_terminal_high"}
+	}
 }
 
 registerScreenPlay("CorelliaVreniIslandScreenPlay", true)
 
 function CorelliaVreniIslandScreenPlay:start()
-	if (isZoneEnabled("corellia")) then
+	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
 		self:spawnGcwMobiles()
 		self:spawnPatrolMobiles()
@@ -89,63 +125,31 @@ function CorelliaVreniIslandScreenPlay:start()
 end
 
 function CorelliaVreniIslandScreenPlay:spawnSceneObjects()
-
 	--Hotel
-	spawnSceneObject("corellia", "object/static/structure/general/droid_probedroid_powerdown.iff", -6.2, 1.0, 21.7, 2775411, math.rad(-163) )
+	spawnSceneObject(self.planet, "object/static/structure/general/droid_probedroid_powerdown.iff", -6.2, 1.0, 21.7, 2775411, math.rad(-163) )
 	--Cantina
-	spawnSceneObject("corellia", "object/static/structure/general/escape_pod.iff", -29.2, -0.9, 3.2, 3005705, math.rad(118) )
-	spawnSceneObject("corellia", "object/static/structure/general/skeleton_bith_headandbody.iff", -29.3, -0.9, 1.2, 3005705, math.rad(-9) )
+	spawnSceneObject(self.planet, "object/static/structure/general/escape_pod.iff", -29.2, -0.9, 3.2, 3005705, math.rad(118) )
+	spawnSceneObject(self.planet, "object/static/structure/general/skeleton_bith_headandbody.iff", -29.3, -0.9, 1.2, 3005705, math.rad(-9) )
 
 end
 
 function CorelliaVreniIslandScreenPlay:spawnMobiles()
+	local mobiles = self.mobiles
 
-	local pNpc = spawnMobile("corellia", "commoner_technician",60,7.1,1.0,19.3,137,2775411)
-	self:setMoodString(pNpc, "npc_use_terminal_high")
+	for i = 1, #mobiles, 1 do
+		local mob = mobiles[i]
 
-	spawnMobile("corellia", "bounty_hunter",300,24.9055,1.28309,5.31569,360.011,2775414)
-	spawnMobile("corellia", "corellia_times_investigator",300,8.4,1.0,10.8,-172,2775413)
-	spawnMobile("corellia", "chiss_female",300,8.2,1.0,8.7,7,2775413)
-	spawnMobile("corellia", "twilek_slave",300,24.9055,1.28309,6.41569,180.019,2775414)
-	spawnMobile("corellia", "entertainer",60,-22.5021,1.6,4.63468,179.972,2775415)
-	spawnMobile("corellia", "info_broker",60,-22.5017,1.59973,3.53494,359.971,2775415)
-	spawnMobile("corellia", "informant_npc_lvl_3",0,-5559,23.4,-6220,90,0)
-	spawnMobile("corellia", "noble",60,-24.96,1.6,-4.79578,14.5444,2775419)
-	spawnMobile("corellia", "r2",60,-5528,23.4,-6195.05,84.2678,0)            -- "R2-P2" When/if option customName is available to spawnMobile function
-	spawnMobile("corellia", "trainer_entertainer",0,22.0446,-0.894993,11.7787,189,3005697)
-	spawnMobile("corellia", "trainer_doctor",0,-2.9,0.7,2.5,132,7615446)
-	spawnMobile("corellia", "trainer_musician",0,-5408,24.7288,-6260,50,0)
-	spawnMobile("corellia", "junk_dealer", 0, -5664.12, 14.6, -6171.81, 123, 0)
-	spawnMobile("corellia", "junk_dealer", 0, -5439.78, 23.91, -6225.42, -84, 0)
+		-- {template, respawn, x, z, y, direction, cell, mood}
+		local pMobile = spawnMobile(self.planet, mob[1], mob[2], mob[3], mob[4], mob[5], mob[6], mob[7])
 
-	pNpc = spawnMobile("corellia", "commoner_technician",60,-32.3,-0.1,-19.0,-177,3005708)
-	self:setMoodString(pNpc, "sad")
-	pNpc = spawnMobile("corellia", "mouse_droid",60,-32.8,-0.1,-21.0,-16,3005708)
-	self:setMoodString(pNpc, "sad")
-	pNpc = spawnMobile("corellia", "patron_devaronian",60,-31.6,0.1,-9.7,10,3005708)
-	self:setMoodString(pNpc, "sad")
-	pNpc = spawnMobile("corellia", "bartender",60,8.5,-0.9,0.1,82,3005697)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("corellia", "scientist",60,10.5,-0.9,2.0,-119,3005697)
-	self:setMoodString(pNpc, "npc_standing_drinking")
-	pNpc = spawnMobile("corellia", "devaronian_male",60,-31.2,-0.9,20.3,87,3005706)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-	pNpc = spawnMobile("corellia", "bounty_hunter",60,-21.4,-0.9,19.0,-84,3005706)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile("corellia", "entertainer",60,-30.5,-0.9,19.9,-22,3005706)
-	self:setMoodString(pNpc, "happy")
-	pNpc = spawnMobile("corellia", "chiss_female",60,-30.6,-0.9,20.8,178,3005706)
-	self:setMoodString(pNpc, "entertained")
-	pNpc = spawnMobile("corellia", "seeker",60,-32.2,-0.9,19.6,76,3005706)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("corellia", "shadowy_figure",60,-27.8,-0.9,0.1,-56,3005705)
-	self:setMoodString(pNpc, "worried")
-	pNpc = spawnMobile("corellia", "mercenary",60,-16.3,-0.9,3.2,106,3005697)
-	self:setMoodString(pNpc, "angry")
-	pNpc = spawnMobile("corellia", "mercenary",60,-16.3,-0.9,-2.9,65,3005697)
-	self:setMoodString(pNpc, "angry")
-	pNpc = spawnMobile("corellia", "medic",60,1.4,0.7,2.0,167,7615445)
-	self:setMoodString(pNpc, "npc_use_terminal_high")
+		if (pMobile ~= nil) then
+			if mob[8] ~= "" then
+				CreatureObject(pMobile):setMoodString(mob[8])
+			end
+
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+		end
+	end
 
 	--newb grind starter spawns
 	spawnMobile("corellia", "durni", 300, getRandomNumber(10) + -5379, 5.7, getRandomNumber(10) + -6418, getRandomNumber(360), 0)
@@ -156,5 +160,4 @@ function CorelliaVreniIslandScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "meatlump_fool", 300, getRandomNumber(10) + -5529, 11.4, getRandomNumber(10) + -6353, getRandomNumber(360), 0)
 	spawnMobile("corellia", "meatlump_fool", 300, getRandomNumber(10) + -5529, 11.4, getRandomNumber(10) + -6353, getRandomNumber(360), 0)
 	spawnMobile("corellia", "meatlump_fool", 300, getRandomNumber(10) + -5529, 11.4, getRandomNumber(10) + -6353, getRandomNumber(360), 0)
-
 end

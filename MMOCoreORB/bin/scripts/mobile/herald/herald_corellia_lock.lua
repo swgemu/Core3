@@ -2,6 +2,7 @@ herald_corellia_lock = Creature:new {
 	objectName = "@npc_name:corellia_herald_01",
 	customName = "Lock Vlash",
 	socialGroup = "townsperson",
+	mobType = MOB_NPC,
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
@@ -28,9 +29,17 @@ herald_corellia_lock = Creature:new {
 
 	templates = {"object/mobile/dressed_herald_corellia_01.iff"},
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "heraldCorellia1ConvoTemplate",
-	attacks = {}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(herald_corellia_lock, "herald_corellia_lock")

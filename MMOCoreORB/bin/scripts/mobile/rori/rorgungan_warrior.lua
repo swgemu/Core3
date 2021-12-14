@@ -2,6 +2,7 @@ rorgungan_warrior = Creature:new {
 	objectName = "@mob/creature_names:rorgungan_warrior",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "rorgungan",
 	faction = "rorgungan",
 	level = 17,
@@ -39,8 +40,16 @@ rorgungan_warrior = Creature:new {
 			}
 		}
 	},
-	weapons = {"rebel_weapons_heavy"},
-	attacks = merge(brawlermaster,marksmanmaster)
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "rebel_weapons_heavy",
+	secondaryWeapon = "unarmed",
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlermaster,marksmanmaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(rorgungan_warrior, "rorgungan_warrior")

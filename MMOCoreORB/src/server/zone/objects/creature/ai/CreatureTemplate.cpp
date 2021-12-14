@@ -24,6 +24,7 @@ CreatureTemplate::CreatureTemplate() {
 
 	objectName = "";
 	randomNameType = 0;
+	mobType = 0;
 	randomNameTag = false;
 	customName = "";
 	planetMapCategory = 0;
@@ -33,6 +34,7 @@ CreatureTemplate::CreatureTemplate() {
 	chanceHit = 0.f;
 	damageMin = 0;
 	damageMax = 0;
+	attackSpeed = 0.0f;
 	specialDamageMult = 1.f;
 	range = 0;
 	baseXp = 0;
@@ -54,12 +56,16 @@ CreatureTemplate::CreatureTemplate() {
 	creatureBitmask = 0;
 	diet = 0;
 	optionsBitmask = 0;
+	customAiMap = 0;
+
+	primaryWeapon = "";
+	secondaryWeapon = "";
+	thrownWeapon = "",
 
 	templates.removeAll();
 
-	weapons.removeAll();
-
-	attacks = new CreatureAttackMap();
+	primaryAttacks = new CreatureAttackMap();
+	secondaryAttacks = new CreatureAttackMap();
 
 	aiTemplate = "example";
 	defaultWeapon = "";
@@ -73,10 +79,11 @@ CreatureTemplate::CreatureTemplate() {
 CreatureTemplate::~CreatureTemplate() {
 	templates.removeAll();
 
-	weapons.removeAll();
+	delete primaryAttacks;
+	primaryAttacks = nullptr;
 
-	delete attacks;
-	attacks = nullptr;
+	delete secondaryAttacks;
+	secondaryAttacks = nullptr;
 }
 
 void CreatureTemplate::readObject(LuaObject* templateData) {
@@ -85,6 +92,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	randomNameType = templateData->getIntField("randomNameType");
 	randomNameTag = templateData->getBooleanField("randomNameTag");
 	planetMapCategory = String(templateData->getStringField("planetMapCategory").trim()).hashCode();
+	mobType = templateData->getIntField("mobType");
 
 	customName = templateData->getStringField("customName").trim();
 	socialGroup = templateData->getStringField("socialGroup").trim();
@@ -94,6 +102,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	damageMin = templateData->getIntField("damageMin");
 	damageMax = templateData->getIntField("damageMax");
 	specialDamageMult = templateData->getFloatField("specialDamageMult");
+	attackSpeed = templateData->getFloatField("attackSpeed");
 	if (specialDamageMult < 0.001f) specialDamageMult = 1.f; // could use numeric_limit here, but this will prevent people from putting tiny modifiers in as well.
 	baseXp = templateData->getIntField("baseXp");
 	baseHAM = templateData->getIntField("baseHAM");
@@ -118,6 +127,9 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 
 	if(!templateData->getStringField("defaultAttack").isEmpty())
 		defaultAttack = templateData->getStringField("defaultAttack");
+
+	if(!templateData->getStringField("customAiMap").isEmpty())
+		customAiMap = templateData->getStringField("customAiMap").hashCode();
 
 	scale = templateData->getFloatField("scale");
 
@@ -161,17 +173,11 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	lootgroups.readObject(&lootCollections, level);
 	lootCollections.pop();
 
-	LuaObject weps = templateData->getObjectField("weapons");
+	primaryWeapon = templateData->getStringField("primaryWeapon");
+	secondaryWeapon = templateData->getStringField("secondaryWeapon");
+	thrownWeapon = templateData->getStringField("thrownWeapon");
 
-	if (weps.isValidTable()) {
-		for (int i = 1; i <= weps.getTableSize(); ++i) {
-			weapons.add(weps.getStringAt(i).trim());
-		}
-	}
-
-	weps.pop();
-
-	LuaObject attackList = templateData->getObjectField("attacks");
+	LuaObject attackList = templateData->getObjectField("primaryAttacks");
 	if (attackList.isValidTable()) {
 		int size = attackList.getTableSize();
 		lua_State* L = attackList.getLuaState();
@@ -185,7 +191,31 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 					String com = atk.getStringAt(1).trim();
 					String arg = atk.getStringAt(2).trim();
 
-					attacks->addAttack(com, arg);
+					primaryAttacks->addAttack(com, arg);
+				}
+			}
+
+			atk.pop();
+		}
+	}
+
+	attackList.pop();
+
+	attackList = templateData->getObjectField("secondaryAttacks");
+	if (attackList.isValidTable()) {
+		int size = attackList.getTableSize();
+		lua_State* L = attackList.getLuaState();
+		for (int i = 1; i <= size; ++i) {
+			lua_rawgeti(L, -1, i);
+			LuaObject atk(L);
+
+			if (atk.isValidTable()) {
+				int atkSize = atk.getTableSize();
+				if (atkSize == 2) {
+					String com = atk.getStringAt(1).trim();
+					String arg = atk.getStringAt(2).trim();
+
+					secondaryAttacks->addAttack(com, arg);
 				}
 			}
 

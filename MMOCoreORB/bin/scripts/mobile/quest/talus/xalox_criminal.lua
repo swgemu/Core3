@@ -2,6 +2,7 @@ xalox_criminal = Creature:new {
 	objectName = "@mob/creature_names:criminal",
 	socialGroup = "thug",
 	faction = "thug",
+	mobType = MOB_NPC,
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
@@ -46,9 +47,17 @@ xalox_criminal = Creature:new {
 			}
 		}
 	},
-	weapons = {"pirate_weapons_light"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "pirate_weapons_light",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = merge(marksmanmid,brawlermid)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(marksmanmid,brawlermid),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(xalox_criminal, "xalox_criminal")

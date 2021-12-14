@@ -2,6 +2,7 @@ security_officer_quest_kritus = Creature:new {
 	objectName = "@mob/creature_names:rsf_security_officer",
 	socialGroup = "naboo_security_force",
 	faction = "naboo_security_force",
+	mobType = MOB_NPC,
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -27,10 +28,18 @@ security_officer_quest_kritus = Creature:new {
 
 	templates = {"object/mobile/dressed_rsf_security_officer.iff"},
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "kritus_morven_mission_target_convotemplate",
 	reactionStf = "@npc_reaction/townperson",
-	attacks = {}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(security_officer_quest_kritus, "security_officer_quest_kritus")

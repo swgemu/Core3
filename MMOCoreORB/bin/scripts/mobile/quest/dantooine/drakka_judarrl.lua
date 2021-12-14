@@ -2,6 +2,7 @@ drakka_judarrl = Creature:new {
 	objectName = "",
 	customName = "Drakka Judarrl",
 	socialGroup = "rebel",
+	mobType = MOB_NPC,
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
@@ -28,9 +29,17 @@ drakka_judarrl = Creature:new {
 
 	templates = {"object/mobile/dressed_drakka_judarrl.iff"},
 	lootGroups = {},
-	weapons = {"light_jedi_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "light_jedi_weapons",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "drakka_judarrl_mission_giver_convotemplate",
-	attacks = merge(lightsabermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(lightsabermaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(drakka_judarrl, "drakka_judarrl")

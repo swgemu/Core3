@@ -44,7 +44,7 @@
 object_mobile_vendor_twilek_male = object_mobile_vendor_shared_twilek_male:new {
 
 	templateType = VENDORCREATURE,
-	optionsBitmask = 386,
+	optionsBitmask = 258,
 	pvpStatusBitmask = 0,
 
 	objectMenuComponent = "VendorMenuComponent",

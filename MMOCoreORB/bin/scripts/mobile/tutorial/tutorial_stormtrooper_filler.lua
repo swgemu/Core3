@@ -2,6 +2,7 @@ tutorial_stormtrooper_filler = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 30,
 	chanceHit = 0.390000,
 	damageMin = 290,
@@ -27,8 +28,16 @@ tutorial_stormtrooper_filler = Creature:new {
 
 	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
 	lootGroups = {},
-	weapons = {"stormtrooper_weapons"},
-	attacks = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "stormtrooper_weapons",
+	secondaryWeapon = "unarmed",
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { },
 	conversationTemplate = "stormtrooperFillerConvoTemplate",
 }
 

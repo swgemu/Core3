@@ -17,7 +17,7 @@ public:
 		insertShort(0x08);
 		insertInt(0xC867AB5A);
 		insertLong(object->getParentID());
-	    insertLong(object->getObjectID());
+		insertLong(object->getObjectID());
 
 		// add coordinates
 		insertSignedShort((int16) (object->getPositionX() * 8));
@@ -33,12 +33,12 @@ public:
 			insertByte((int8)creo->getCurrentSpeed());
 		else
 			insertByte(0);
-		
+
 		// add direction
 		insertByte((byte) object->getSpecialDirectionAngle());
-		
-		/*System::out << "Position Update [" << player->getObjectID() << "] (" 
-			 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << "," 
+
+		/*System::out << "Position Update [" << player->getObjectID() << "] ("
+			 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << ","
 			 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
 	}
 

@@ -2,6 +2,7 @@ proficient_panshee_worker = Creature:new {
 	objectName = "@mob/creature_names:proficient_panshee_worker",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 33,
@@ -45,9 +46,46 @@ proficient_panshee_worker = Creature:new {
 			lootChance = 1660000
 		}
 	},
-	weapons = {"ewok_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "ewok_melee",
+	secondaryWeapon = "ewok_ranged",
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,brawlermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED,
+	diet = HERBIVORE,
+
+	templates = {
+		"object/mobile/dressed_ewok_f_02.iff",
+		"object/mobile/dressed_ewok_f_10.iff",
+		"object/mobile/dressed_ewok_f_11.iff",
+		"object/mobile/dressed_ewok_m_02.iff"
+	},
+	lootGroups = {
+		{
+			groups = {
+				{group = "ewok", chance = 10000000}
+			},
+			lootChance = 1440000
+		}
+	},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "ewok_melee",
+	secondaryWeapon = "ewok_ranged",
+	conversationTemplate = "",
+
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = brawlermaster,
+	secondaryAttacks = marksmanmaster
 }
 
 CreatureTemplates:addCreatureTemplate(proficient_panshee_worker, "proficient_panshee_worker")

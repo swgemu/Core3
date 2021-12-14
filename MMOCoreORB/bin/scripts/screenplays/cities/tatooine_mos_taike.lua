@@ -32,6 +32,17 @@ TatooineMosTaikeScreenPlay = CityScreenPlay:new {
 		{1, -3.8, -4.0, 9.0, -45, 1154127, "npc_sitting_chair"}, {1, -4.3, -4.0, 8.7, 58, 1154127, "sad"}, {1, 1.7, 1.0, 4.8, -85, 1154123, "entertained"}, {1,  3860.7,  28.0,  2361.1,  180,  0, ""},
 		{1, 4.9, -0.4, -3.8,  -150,  1400866, ""}, {1, 3.1, -0.4, -5.8, -45, 1400866, ""},
 	},
+
+	mobiles = {
+		--misc
+		{"r3",60,4.9,-4.0,-5.6,171,1154128,"neutral"},
+		{"entertainer",120,-6.0,1.0,7.2,-96,1154123, "themepark_music_2"},
+		{"informant_npc_lvl_1", 1, 3775, 8.7, 2371, 180, 0, ""},
+		{"informant_npc_lvl_2", 1, 0.93374, 1.00421, 9.03511, 180, 1154123, ""},
+		{"informant_npc_lvl_3", 1, -1.97807, -9.54192, 9.62469, -45, 1154131, ""},
+		{"junk_dealer", 1, 3902.19, 33, 2362.52, -97, 0, ""},
+		{"junk_nathan", 1, 3821.75, 17.51, 2343.11, 0, 0, ""}
+	}
 }
 
 registerScreenPlay("TatooineMosTaikeScreenPlay", true)
@@ -53,17 +64,22 @@ function TatooineMosTaikeScreenPlay:spawnSceneObjects()
 end
 
 function TatooineMosTaikeScreenPlay:spawnMobiles()
+	local mobiles = self.mobiles
 
-	--misc
-	pNpc = spawnMobile(self.planet, "r3",60,4.9,-4.0,-5.6,171,1154128,"neutral")
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile(self.planet, "entertainer",120,-6.0,1.0,7.2,-96,1154123)
-	self:setMoodString(pNpc, "themepark_music_2")
-	spawnMobile(self.planet, "informant_npc_lvl_1", 1, 3775, 8.7, 2371, 180, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_2", 1, 0.93374, 1.00421, 9.03511, 180, 1154123)
-	spawnMobile(self.planet, "informant_npc_lvl_3", 1, -1.97807, -9.54192, 9.62469, -45, 1154131)
-	spawnMobile(self.planet, "junk_dealer", 1, 3902.19, 33, 2362.52, -97, 0)
-	spawnMobile(self.planet, "junk_nathan", 1, 3821.75, 17.51, 2343.11, 0, 0)
+	for i = 1, #mobiles, 1 do
+		local mob = mobiles[i]
+
+		-- {template, respawn, x, z, y, direction, cell, mood}
+		local pMobile = spawnMobile(self.planet, mob[1], mob[2], mob[3], mob[4], mob[5], mob[6], mob[7])
+
+		if (pMobile ~= nil) then
+			if mob[8] ~= "" then
+				CreatureObject(pMobile):setMoodString(mob[8])
+			end
+
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+		end
+	end
 
 	--thugs
 	spawnMobile(self.planet, "scoundrel", 300, 3867.0, 27.5, 2307.5, -90, 0)

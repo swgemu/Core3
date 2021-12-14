@@ -2,6 +2,7 @@ horned_voritor_lizard = Creature:new {
 	objectName = "@mob/creature_names:horned_voritor_jungle_lizard",
 	socialGroup = "voritor",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 53,
 	chanceHit = 0.5,
 	damageMin = 395,
@@ -36,12 +37,17 @@ horned_voritor_lizard = Creature:new {
 			lootChance = 2060000
 		}
 	},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"strongpoison",""},
-		{"creatureareapoison",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"strongpoison",""}, {"creatureareapoison",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(horned_voritor_lizard, "horned_voritor_lizard")

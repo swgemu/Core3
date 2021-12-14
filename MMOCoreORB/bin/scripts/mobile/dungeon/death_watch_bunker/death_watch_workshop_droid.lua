@@ -1,6 +1,7 @@
 death_watch_workshop_droid = Creature:new {
 	objectName = "@droid_name:wed_treadwell_base",
 	customName = "WED15-I643 (a workshop droid)",
+	mobType = MOB_DROID,
 	socialGroup = "",
 	faction = "",
 	level = 30,
@@ -27,8 +28,16 @@ death_watch_workshop_droid = Creature:new {
 
 	templates = {"object/mobile/wed_treadwell.iff"},
 	lootGroups = {},
-	weapons = {},
-	attacks = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { },
 	conversationTemplate = "deathWatchWorkshopDroidConvoTemplate",
 	optionsBitmask = INVULNERABLE + CONVERSABLE
 }

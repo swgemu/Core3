@@ -2,6 +2,7 @@ swarming_kliknik = Creature:new {
 	objectName = "@mob/creature_names:kliknik_swarming",
 	socialGroup = "kliknik",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 10,
 	chanceHit = 0.27,
 	damageMin = 170,
@@ -29,18 +30,24 @@ swarming_kliknik = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/kliknik_hue.iff",
 	scale = 0.8,
 	lootGroups = {
-	 {
-	        groups = {
+		{
+			groups = {
 				{group = "kliknik_common", chance = 10000000}
 			},
 			lootChance = 1200000
 		}
 	},
-	weapons = {"creature_spit_small_yellow"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "object/weapon/ranged/creature/creature_spit_large_yellow.iff",
+	secondaryWeapon = "object/weapon/ranged/creature/creature_spit_large_yellow.iff",
 	conversationTemplate = "",
-	attacks = {
-		{"posturedownattack",""}
-	}
+
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"posturedownattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(swarming_kliknik, "swarming_kliknik")

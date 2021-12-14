@@ -16,6 +16,7 @@ import server.zone.objects.intangible.PetControlObserver;
 include system.util.Vector;
 include system.lang.Time;
 
+@mock
 @json
 class PetControlDevice extends ControlDevice {
 
@@ -224,8 +225,9 @@ class PetControlDevice extends ControlDevice {
 		lastCommand = c;
 	}
 
-	@read
-	public unsigned int getLastCommand() {
+	@mock
+	@dirty
+	public abstract unsigned int getLastCommand() {
 		return lastCommand;
 	}
 
@@ -248,10 +250,11 @@ class PetControlDevice extends ControlDevice {
 		lastCommandTarget = target;
 	}
 
+	@mock
 	@dirty
 	@local
 	@weakReference
-	public SceneObject getLastCommandTarget() {
+	public abstract SceneObject getLastCommandTarget() {
 		return lastCommandTarget;
 	}
 

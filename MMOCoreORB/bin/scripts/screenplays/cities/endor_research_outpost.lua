@@ -74,8 +74,10 @@ function EndorResearchOutpostScreenPlay:start()
 end
 
 function EndorResearchOutpostScreenPlay:spawnMobiles()
-
 	--tavern building
 	pNpc = spawnMobile("endor", "kilnstrider",60,-3.44448,0.624999,-6.82681,331.362,9925367)
-	self:setMoodString(pNpc, "npc_imperial")
+	if pNpc ~= nil then
+		self:setMoodString(pNpc, "npc_imperial")
+		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+	end
 end

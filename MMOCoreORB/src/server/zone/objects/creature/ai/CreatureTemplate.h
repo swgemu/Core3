@@ -56,6 +56,7 @@ protected:
 	bool randomNameTag;
 	String socialGroup;
 	String faction;
+	int mobType;
 
 	int level;
 
@@ -64,6 +65,7 @@ protected:
 	int damageMax;
 	float specialDamageMult;
 	int range;
+	float attackSpeed;
 
 	float scale;
 
@@ -82,11 +84,16 @@ protected:
 
 	LootGroupCollection lootgroups;
 
-	Vector<String> weapons;
+	String primaryWeapon;
+	String secondaryWeapon;
+	String thrownWeapon;
 
-	CreatureAttackMap* attacks;
+	CreatureAttackMap* primaryAttacks;
+	CreatureAttackMap* secondaryAttacks;
+
 	uint32 conversationTemplate;
 	uint32 optionsBitmask;
+	uint64 customAiMap;
 
 	String patrolPathTemplate;
 
@@ -184,6 +191,10 @@ public:
 		return creatureBitmask & CreatureFlag::KILLER;
 	}
 
+	inline bool isHealer() const {
+		return creatureBitmask & CreatureFlag::HEALER;
+	}
+
 	inline bool isPack() const {
 		return creatureBitmask & CreatureFlag::PACK;
 	}
@@ -252,6 +263,10 @@ public:
 		return randomNameType;
 	}
 
+	inline int getMobType() const {
+		return mobType;
+	}
+
 	inline bool getRandomNameTag() const {
 		return randomNameTag;
 	}
@@ -266,6 +281,10 @@ public:
 
 	inline uint32 getOptionsBitmask() const {
 		return optionsBitmask;
+	}
+
+	inline uint64 getCustomAiMap() {
+		return customAiMap;
 	}
 
 	inline const String& getFaction() const {
@@ -290,6 +309,10 @@ public:
 
 	inline int getDamageMax() const {
 		return damageMax;
+	}
+
+	inline float getAttackSpeed() const {
+		return attackSpeed;
 	}
 
 	inline float getSpecialDamageMult() const {
@@ -349,12 +372,24 @@ public:
 		return &lootgroups;
 	}
 
-	inline const Vector<String>& getWeapons() const {
-		return weapons;
+	inline const String& getPrimaryWeapon() const {
+		return primaryWeapon;
 	}
 
-	inline const CreatureAttackMap* getAttacks() const {
-		return attacks;
+	inline const String& getSecondaryWeapon() const {
+		return secondaryWeapon;
+	}
+
+	inline const String& getThrownWeapon() const {
+		return thrownWeapon;
+	}
+
+	inline const CreatureAttackMap* getPrimaryAttacks() const {
+		return primaryAttacks;
+	}
+
+	inline const CreatureAttackMap* getSecondaryAttacks() const {
+		return secondaryAttacks;
 	}
 
 	inline const String& getPatrolPathTemplate() const {

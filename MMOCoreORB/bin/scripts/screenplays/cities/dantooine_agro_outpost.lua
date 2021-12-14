@@ -1,6 +1,8 @@
 DantooineAgroOutpostScreenPlay = CityScreenPlay:new {
 	numberOfActs = 1,
 
+	screenplayName = "DantooineAgroOutpostScreenPlay",
+
 	planet = "dantooine",
 
 	combatPatrol = {"commando", "pirate", "sharpshooter"},
@@ -56,13 +58,27 @@ DantooineAgroOutpostScreenPlay = CityScreenPlay:new {
 		{1, 1583, 4, -6439, 7, 0, ""},
 	},
 
-	screenplayName = "DantooineAgroOutpostScreenPlay"
+	mobiles = {
+		--In the Cantina
+		{"chiss_male",60,3.0,0.6,0.8,-42,6205496, "npc_sitting_chair"},
+		{"patron_devaronian",60,-7.5,0.6,5.7,-95,6205497, "npc_standing_drinking"},
+		{"bartender",60,-9.1,0.6,5.3,85,6205497, "conversation"},
+		{"businessman", 60, 8.90672, 0.625, -2.94252, 244, 6205499, ""},
+		{"entertainer",60,-7.77368,0.624999,-5.2158,188,6205498, "happy"},
+
+		--Outside
+		{"criminal", 300, 1601, 4, -6367, 109, 0, ""},
+		{"ytzosh", 60, 1636.98, 4, -6402.56, 322, 0, ""},
+		{"ussox", 60, 1635.07, 4, -6402.37, 322, 0, ""},
+		{"yras_shen_jen",60,1572.26,4,-6417.06,75.0582,0, "neutral"},
+		{"junk_quich", 0, 1579.04, 4, -6374.52, 48, 0, ""}
+	}
 }
 
 registerScreenPlay("DantooineAgroOutpostScreenPlay", true)
 
 function DantooineAgroOutpostScreenPlay:start()
-	if (isZoneEnabled("dantooine")) then
+	if (isZoneEnabled(self.planet)) then
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
 		self:spawnStationaryMobiles()
@@ -70,23 +86,20 @@ function DantooineAgroOutpostScreenPlay:start()
 end
 
 function DantooineAgroOutpostScreenPlay:spawnMobiles()
+	local mobiles = self.mobiles
 
-	--In the Cantina
-	local pNpc = spawnMobile("dantooine", "chiss_male",60,3.0,0.6,0.8,-42,6205496)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-	pNpc = spawnMobile("dantooine", "patron_devaronian",60,-7.5,0.6,5.7,-95,6205497)
-	self:setMoodString(pNpc, "npc_standing_drinking")
-	pNpc = spawnMobile("dantooine", "bartender",60,-9.1,0.6,5.3,85,6205497)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile("dantooine", "businessman", 60, 8.90672, 0.625, -2.94252, 244, 6205499)
-	pNpc = spawnMobile("dantooine", "entertainer",60,-7.77368,0.624999,-5.2158,188,6205498)
-	self:setMoodString(pNpc, "happy")
+	for i = 1, #mobiles, 1 do
+		local mob = mobiles[i]
 
-	--Outside
-	spawnMobile("dantooine", "criminal", 300, 1601, 4, -6367, 109, 0)
-	spawnMobile("dantooine", "ytzosh", 60, 1636.98, 4, -6402.56, 322, 0)
-	spawnMobile("dantooine", "ussox", 60, 1635.07, 4, -6402.37, 322, 0)
-	pNpc = spawnMobile("dantooine", "yras_shen_jen",60,1572.26,4,-6417.06,75.0582,0)
-	self:setMoodString(pNpc, "neutral")
-	spawnMobile("dantooine", "junk_quich", 0, 1579.04, 4, -6374.52, 48, 0)
+		-- {template, respawn, x, z, y, direction, cell, mood}
+		local pMobile = spawnMobile(self.planet, mob[1], mob[2], mob[3], mob[4], mob[5], mob[6], mob[7])
+
+		if (pMobile ~= nil) then
+			if mob[8] ~= "" then
+				CreatureObject(pMobile):setMoodString(mob[8])
+			end
+
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+		end
+	end
 end

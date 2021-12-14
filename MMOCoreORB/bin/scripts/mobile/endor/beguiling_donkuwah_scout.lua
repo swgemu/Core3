@@ -2,6 +2,7 @@ beguiling_donkuwah_scout = Creature:new {
 	objectName = "@mob/creature_names:beguiling_donkuwah_scout",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 18,
@@ -29,7 +30,8 @@ beguiling_donkuwah_scout = Creature:new {
 
 	templates = {
 		"object/mobile/dulok_male.iff",
-		"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_female.iff"
+	},
 	lootGroups = {
 		{
 			groups = {
@@ -38,9 +40,17 @@ beguiling_donkuwah_scout = Creature:new {
 			lootChance = 1360000
 		}
 	},
-	weapons = {"donkuwah_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "ewok_melee",
+	secondaryWeapon = "ewok_ranged",
 	conversationTemplate = "",
-	attacks = brawlermaster
+
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = brawlermaster,
+	secondaryAttacks = marksmanmaster,
 }
 
 CreatureTemplates:addCreatureTemplate(beguiling_donkuwah_scout, "beguiling_donkuwah_scout")

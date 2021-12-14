@@ -98,8 +98,15 @@ function CityControlLanding:spawnCityLanding(spawnCity, manual)
 		writeStringData("LandingType:", landingType)
 		writeStringData("ShuttlePosture:", shuttlePosture)
 
-		createEvent(34 * 1000, "CityControlLanding", "handleShuttlePosture", pShuttle, "")
-		createEvent(10 * 1000, "CityControlLanding", "broadcastMessage", pShuttle, "")
+		local playerTable = SceneObject(pShuttle):getPlayersInRange(150)
+
+		if (#playerTable > 0) then
+			createEvent(34 * 1000, "CityControlLanding", "handleShuttlePosture", pShuttle, "")
+			createEvent(10 * 1000, "CityControlLanding", "broadcastMessage", pShuttle, "")
+		else
+			SceneObject(pShuttle):destroyObjectFromWorld()
+			createEvent(20 * 1000, "CityControlLanding", "cleanUp", "", "")
+		end
 	end
 end
 
@@ -215,8 +222,7 @@ function CityControlLanding:spawnMobile(spawnNumber)
 		local pMobile = spawnMobile(planet, template[spawnNumber], 0, xLoc, cityCoords[2], yLoc, cityCoords[4], 0, "")
 
 		if (pMobile ~= nil) then
-			AiAgent(pMobile):setAiTemplate("citypatrol")
-			AiAgent(pMobile):setFollowState(4)
+			AiAgent(pMobile):addCreatureFlag(AI_STATIONARY)
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 
 			local mobileID = SceneObject(pMobile):getObjectID()
@@ -248,8 +254,7 @@ function CityControlLanding:spawnMobile(spawnNumber)
 		local pMobile = spawnMobile(planet, template[spawnNumber], 0, xLoc, cityCoords[2], yLoc, cityCoords[4], 0, "")
 
 		if (pMobile ~= nil) then
-			AiAgent(pMobile):setAiTemplate("")
-			AiAgent(pMobile):setFollowState(4)
+			AiAgent(pMobile):setMovementState(AI_PATROLLING)
 			CreatureObject(pMobile):setPvpStatusBitmask(1)
 
 			local mobileID = SceneObject(pMobile):getObjectID()
@@ -341,7 +346,6 @@ function CityControlLanding:moveTo(pMobile)
 			AiAgent(pMobile):setNextPosition(spawnCoords[1], spawnCoords[2], posY, 0)
 		else
 			local posY = spawnCoords[3] - 11
-			AiAgent(pMobile):setAiTemplate("manualescortwalk")
 			AiAgent(pMobile):setNextPosition(spawnCoords[1], spawnCoords[2], posY, 0)
 		end
 	elseif (landingType == "IMPERIAL") then
@@ -349,7 +353,6 @@ function CityControlLanding:moveTo(pMobile)
 			local posY = spawnCoords[3] - 10
 			AiAgent(pMobile):setNextPosition(spawnCoords[1], spawnCoords[2], posY, 0)
 		else
-			AiAgent(pMobile):setAiTemplate("manualescortwalk")
 			AiAgent(pMobile):setNextPosition(spawnCoords[1], spawnCoords[2], spawnCoords[3], 0)
 		end
 	else

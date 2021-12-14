@@ -3,6 +3,7 @@ le_repair_crafted = Creature:new {
 	socialGroup = "",
 	faction = "",
 	level = 4,
+	mobType = MOB_DROID,
 	chanceHit = 0.24,
 	damageMin = 61,
 	damageMax = 75,
@@ -29,7 +30,11 @@ le_repair_crafted = Creature:new {
 		"object/creature/npc/droid/crafted/le_repair_droid.iff"
 	},		
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
 }
 

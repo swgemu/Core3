@@ -2,6 +2,7 @@ dreaded_vir_vur = Creature:new {
 	objectName = "@mob/creature_names:dreaded_vir_vir",
 	socialGroup = "vir_vur",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 38,
 	chanceHit = 0.44,
 	damageMin = 370,
@@ -30,11 +31,17 @@ dreaded_vir_vur = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/vir_vur_hue.iff",
 	scale = 1.35,
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"intimidationattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"intimidationattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(dreaded_vir_vur, "dreaded_vir_vur")

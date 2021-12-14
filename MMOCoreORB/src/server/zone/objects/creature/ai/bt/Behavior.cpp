@@ -5,132 +5,81 @@
  *      Author: swgemu
  */
 
-#include "Behavior.h"
-#include "server/zone/managers/creature/AiMap.h"
+#include "server/zone/objects/creature/ai/bt/Behavior.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
-Behavior::Behavior(AiAgent* _agent, const String& className) {
-	agent = _agent;
-	result = AiMap::SUSPEND;
-	parent = nullptr;
-	interface = AiMap::instance()->getBehavior(className);
-	id = 0;
+// DEBUG
+#include "server/zone/ZoneServer.h"
+#include "server/chat/ChatManager.h"
 
-	if (interface == nullptr) {
-		_agent->error("Null interface in Behavior: " + className);
-	}
+using namespace server::zone::objects::creature::ai::bt;
+
+Behavior::Behavior(const String& className, const uint32 id, const LuaObject& args)
+	: Object(), className(className), id(id), parent() {}
+
+bool Behavior::checkConditions(AiAgent* agent) const {
+	// placeholder for more robust checkConditions
+	return agent != nullptr &&
+		   !agent->isDead() &&
+		   !agent->isIncapacitated() &&
+		   agent->getZone() != nullptr;
 }
 
-void Behavior::start() {
-	if (!checkConditions()) {
-		endWithFailure();
-		return;
+Behavior::Status Behavior::doAction(AiAgent* agent) const {
+	//agent->info("0x" + String::hexvalueOf((int)id) + " " + print().toCharArray(), true);
+	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
+		StringBuffer msg;
+		msg << "0x" << hex << id << " " << print().toCharArray();
+		agent->info(msg.toString(), true);
+
+		ChatManager* chatManager = agent->getZoneServer()->getChatManager();
+		chatManager->broadcastChatMessage(agent, print(), 0, 0, 0);
 	}
 
-	result = AiMap::RUNNING;
-
-	if (interface != nullptr) {
-		AiAgent* strongReference = agent.getReferenceUnsafeStaticCast();
-
-		interface->start(strongReference);
-	}
-}
-
-void Behavior::end() {
-	if (interface != nullptr) {
-		AiAgent* strongReference = agent.getReferenceUnsafeStaticCast();
-
-		interface->end(strongReference);
-	}
-}
-
-void Behavior::doAction(bool directlyExecuted) {
-	AiAgent* agent = this->agent.getReferenceUnsafeStaticCast();
-
-	if (agent->isDead() || agent->isIncapacitated() || (agent->getZone() == nullptr)) {
-		agent->setFollowObject(nullptr);
-		return;
-	}
-
-	//agent->info(id, true);
-	agent->setCurrentBehavior(id);
-
-	if (!started())
-		this->start();
-	else if (!this->checkConditions())
-		endWithFailure();
-
-	agent = this->agent.getReferenceUnsafeStaticCast();
-
-	if (finished()) {
-		if (parent == nullptr) {
-			this->end();
-			result = AiMap::SUSPEND;
-			agent->activateMovementEvent(); // this is an automatic recycle decorator for the root node
-		} else if (directlyExecuted) {
-			agent->setCurrentBehavior(parent->id);
-			parent->doAction(true);
+	if (!this->checkConditions(agent)) {
+		if (agent != nullptr) {
+			// TODO: Should this be done here or in realizations of specific actions?
+			agent->clearCombatState(true);
+			agent->info("Invalid return from " + print(), true);
 		}
 
-		return;
+		return INVALID; // TODO: should this be FAILURE?
 	}
 
-	int res = AiMap::INVALID;
-	if (interface != nullptr)
-		res = interface->doAction(agent);
+	// Step 1:	check if this behavior is in the running chain
+	//			If it isn't, call start()
+	//			We can assume here that if we are running here, that this is the
+	//			leaf that is actually running because all other running states
+	//			will be composites and would have a different reaction to being
+	//			in the running vector
+	if (!agent->isRunningBehavior(id))
+		this->start(agent);
+	else
+		agent->popRunningChain();
 
-	switch(res) {
-	case AiMap::SUCCESS:
-		endWithSuccess();
-		break;
-	case AiMap::FAILURE:
-		endWithFailure();
-		break;
-	case AiMap::INVALID:
-		if (agent == nullptr)
-			return;
+	// Step 2:	evaluate the action result (method to do this will be abstract
+	//			and implemented in the concrete behaviors)
+	Behavior::Status result = this->execute(agent);
 
-		agent->resetBehaviorList();
-		break;
-	default:
-		if (agent == nullptr)
-			return;
+	//agent->info("0x" + String::hexvalueOf((int)id) + " " + print().toCharArray() + " result: " + result, true);
+	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
+		StringBuffer msg;
+		msg << "0x" << hex << id << " " << print() << " result: " << result;
 
-		break;
+		agent->info(msg.toString(), true);
 	}
 
-	if (!finished() || parent == nullptr)
-		agent->activateMovementEvent();
-	else if (directlyExecuted) {
-		agent->setCurrentBehavior(parent->id);
+	// Step 3:	If the result is RUNNING, clear the agent's run chain and and
+	//			add this->id to the front. As the chain unwinds, the composite
+	//			parents will push_front to the chain until the root node
+	if (result == RUNNING) {
+		if (!isSocket()) agent->clearRunningChain();
+		agent->addRunningID(id);
+	} else
+		this->end(agent);
 
-		parent->doAction(true);
-	}
-}
-
-void Behavior::endWithFailure() {
-	this->result = AiMap::FAILURE;
-}
-
-void Behavior::endWithSuccess() {
-	this->result = AiMap::SUCCESS;
-}
-
-void Behavior::endWithError() {
-	this->result = AiMap::INVALID;
-}
-
-bool Behavior::succeeded() {
-	return result == AiMap::SUCCESS;
-}
-
-bool Behavior::failed() {
-	return result == AiMap::FAILURE;
-}
-
-bool Behavior::finished() {
-	return result == AiMap::SUCCESS || result == AiMap::FAILURE || result == AiMap::INVALID;
-}
-
-bool Behavior::started() {
-	return result != AiMap::SUSPEND;
+	// Step 4:	If the result is anything else (TODO: SUSPEND?) just return that
+	//			value; the parent will deal with the next action based on the
+	//			type of parent.
+	return result;
 }

@@ -20,6 +20,8 @@ class PatrolPoint : public Serializable {
 
 	SerializableTime estimatedTimeOfArrival;
 
+	float direction;
+
 public:
 	PatrolPoint() {
 		reached = true;
@@ -99,7 +101,7 @@ public:
 		return position.getWorldPosition();
 	}
 
-	bool isInRange(SceneObject* obj, float range) {
+	virtual bool isInRange(SceneObject* obj, float range) {
 		Vector3 thisWorldPos = getWorldPosition();
 		Vector3 objWorldPos = obj->getWorldPosition();
 
@@ -134,6 +136,10 @@ public:
 		return position.getCell();
 	}
 
+	inline float getDirection() const {
+		return direction;
+	}
+
 	inline Time* getEstimatedTimeOfArrival() {
 		return &estimatedTimeOfArrival;
 	}
@@ -165,6 +171,10 @@ public:
 
 	inline void setCell(CellObject* cell) {
 		position.setCell(cell);
+	}
+
+	inline void setDirection(float dir) {
+		direction = dir;
 	}
 
 	inline void setReached(bool value) {

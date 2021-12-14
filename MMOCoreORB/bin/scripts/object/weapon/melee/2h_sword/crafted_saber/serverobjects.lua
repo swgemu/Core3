@@ -49,6 +49,7 @@ includeFile("weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen
 includeFile("weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen2.lua")
 includeFile("weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen3.lua")
 includeFile("weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen4.lua")
+includeFile("weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen4_ranged.lua")
 includeFile("weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen5.lua")
 includeFile("weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_s1.lua")
 includeFile("weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_s10.lua")

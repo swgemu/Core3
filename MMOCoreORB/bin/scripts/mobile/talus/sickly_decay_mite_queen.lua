@@ -2,6 +2,7 @@ sickly_decay_mite_queen = Creature:new {
 	objectName = "@mob/creature_names:sickly_decay_mite_queen",
 	socialGroup = "mite",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 220,
@@ -29,12 +30,17 @@ sickly_decay_mite_queen = Creature:new {
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
 	scale = 1.25,
 	lootGroups = {},
-	weapons = {"creature_spit_small_yellow"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "object/weapon/ranged/creature/creature_spit_spray_toxicgreen.iff",
+	secondaryWeapon = "object/weapon/ranged/creature/creature_spit_spray_toxicgreen.iff",
 	conversationTemplate = "",
-	attacks = {
-		{"blindattack",""},
-		{"mediumdisease",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"blindattack",""}, {"mediumdisease",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(sickly_decay_mite_queen, "sickly_decay_mite_queen")

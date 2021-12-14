@@ -2,6 +2,7 @@ vicious_donkuwah_battlelord = Creature:new {
 	objectName = "@mob/creature_names:vicious_donkuwah_battlelord",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
+	mobType = MOB_NPC,
 	socialGroup = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 51,
@@ -39,9 +40,17 @@ vicious_donkuwah_battlelord = Creature:new {
 			lootChance = 2020000
 		}
 	},
-	weapons = {"donkuwah_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "ewok_melee",
+	secondaryWeapon = "ewok_ranged",
 	conversationTemplate = "",
-	attacks = merge(fencermaster,brawlermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlermaster,pikemanmaster),
+	secondaryAttacks = merge(riflemanmaster,marksmanmaster),
 }
 
 CreatureTemplates:addCreatureTemplate(vicious_donkuwah_battlelord, "vicious_donkuwah_battlelord")

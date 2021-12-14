@@ -6,7 +6,6 @@ CorelliaKorVellaScreenPlay = CityScreenPlay:new {
 	planet = "corellia",
 
 	gcwMobs = {
-
 		--swap spawns for imp base near starport at outskirts of city limits
 		{"stormtrooper", "rebel_trooper", -3001.5, 31.0, 2930.4, 180, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", -3003.5, 31.0, 2930.4, 180, 0, "", ""},
@@ -229,6 +228,146 @@ CorelliaKorVellaScreenPlay = CityScreenPlay:new {
 		{1, -3152.32, 31, 2972.71, 180, 0, ""},
 		{1, -3088.9, 31, 2903.18, 180, 0, ""},
 	},
+
+	mobiles = {
+		--side starport room
+		{"bounty_hunter",60,-33.5,1.6,49.2,-88,4255428, "sad"},
+		--starport interior
+		{"trainer_shipwright",60,-0.1,0.6,67.4,176,4255423, "neutral"},
+
+		--corsec not in buildings
+		{"chiss_male", 360, -3101.09, 31, 2905.97, 180, 0, ""},
+		{"corellia_times_reporter", 360, -3100.88, 31, 2890.25, 180, 0, ""},
+		{"ithorian_male", 360, -3177.78, 31, 2889.93, 0, 0, ""},
+		{"medic", 360, -3172.38, 31, 2880.85, 0, 0, ""},
+		{"rogue_corsec_trooper", 360, -3340.49, 86, 3292.76, 100.151, 0, ""},
+		{"rogue_corsec_trooper", 360, -3332.89, 86, 3303.69, 68.6738, 0, ""},
+		{"rogue_corsec_trooper", 360, -3330.1, 86, 3290.98, 104.099, 0, ""},
+		{"sullustan_male", 360, -3177.78, 31, 2891.03, 180, 0, ""},
+
+		--misc
+		{"informant_npc_lvl_1", 10, -3563, 86, 3138, 60, 0, ""},
+		{"informant_npc_lvl_1", 10, -3571, 86, 3176, 60, 0, ""},
+		{"informant_npc_lvl_1", 10, -3574, 86, 3154, 315, 0, ""},
+		{"informant_npc_lvl_1", 10, -3604, 86, 3172, 90, 0, ""},
+		{"informant_npc_lvl_1", 10, -3665, 86, 3139, 170, 0, ""},
+		{"informant_npc_lvl_1", 10, -3375, 86, 3281, 90, 0, ""},
+		{"informant_npc_lvl_1", 10, -3358, 86, 3307, 140, 0, ""},
+		{"informant_npc_lvl_1", 10, -3315, 86, 3234, 270, 0, ""},
+		{"informant_npc_lvl_1", 10, -3386, 85.6, 3184, 90, 0, ""},
+		{"informant_npc_lvl_1", 10, -3444, 78, 3231, 225, 0, ""},
+		{"informant_npc_lvl_1", 10, -3458, 85.9, 3165, 90, 0, ""},
+		{"informant_npc_lvl_1", 10, -3416, 86, 3078, 0, 0, ""},
+		{"informant_npc_lvl_1", 10, -3401, 86, 3034, 270, 0, ""},
+		{"informant_npc_lvl_1", 10, -3124, 31, 2808, 180, 0, ""},
+		{"informant_npc_lvl_1", 10, -3128, 31, 3008, 180, 0, ""},
+		{"medic", 60, -3591.74, 86, 3179.01, 0, 0, ""},
+		{"junk_dealer", 10, -3130.41, 31, 2973.96, 0, 0, ""},
+
+		--commoners
+		{"entertainer", 60, -16.9034, 1.6, 11.8646, 180, 3005672, ""},
+		{"entertainer", 60, -3602.67, 86, 3221.17, 0, 0, ""},
+		{"entertainer", 60, -3100.88, 31, 2889.15, 0, 0, ""},
+
+		--Trainers not in buildings
+		{"trainer_1hsword", 1, -3320, 86, 3220, 0, 0, ""},
+		{"trainer_2hsword", 1, -3374, 86, 3285, 87, 0, ""},
+		{"trainer_artisan", 1, -3164, 31, 2791, 0, 0, ""},
+		{"trainer_brawler", 1, -3124, 31, 2791, 0, 0, ""},
+		{"trainer_brawler", 1, -3193, 31, 2799, -129, 0, ""},
+		{"trainer_chef", 1, -3147, 31, 2792, 0, 0, ""},
+		{"trainer_commando", 1, -3344, 86, 3292, 0, 0, ""},
+		{"trainer_entertainer", 1, -3152, 31, 2807, 178, 0, ""},
+		{"trainer_marksman", 1, -3130, 31, 2791, 0, 0, ""},
+		{"trainer_medic", 1, -3139, 31, 2792, 0, 0, ""},
+		{"trainer_polearm", 1, -3412, 86, 3084, 0, 0, ""},
+		{"trainer_scout", 1, -3164.42, 31, 2802.08, 78, 0, ""},
+		{"trainer_unarmed", 1, -3570, 86, 3146, 233, 0, ""},
+
+		--named npc's
+		{"dac_axfow", 60, -3143.7, 31, 2803.73, 233.156, 0, ""},
+		{"eryk_chinn", 60, -3145.32, 31, 2803.95, 208.286, 0, ""},
+		{"logro_elsin", 60, -3144.67, 31, 2806.06, 174, 0, ""},
+
+		--Building Interiors
+		--Starport
+		{"contractor", 60, 0.68378, 0.639421, 62.1666, 180, 4255423, ""},
+		{"sullustan_male", 60, 45.99, -0.52, 35.85, 180, 4255426, ""},
+		{"medic", 60, 45.99, -0.52, 34.75, 0, 4255426, ""},
+		{"mercenary", 60, 44.8927, -0.52, 35.85, 135, 4255426, ""},
+		{"medic", 60, -62.23, 2.64, 40.83, 180, 4255431, ""},
+		{"corellia_times_reporter", 300, -62.23, 2.64, 39.73, 0.19, 4255431, ""},
+		{"chassis_dealer", 60, -56.71, 0.97, 8.33, 12.61, 4255433, ""},
+		{"gambler", 60, 0.68378, 0.639421, 61.0666, 268.449, 4255423, "calm"},
+
+		--Hotel
+		{"zhanks", 60, 1.25, 1.0, 6.9, 340, 3005670, ""},
+		{"ta_667", 60, -0.52, 1.0, 6.4, 13.75, 3005670, ""},
+		{"commoner", 1, 20.5, 1.28, 10, 135, 3005671, ""},
+		{"entertainer", 60, 21.6, 1.28, 8.94, 0, 3005671, ""},
+		{"farmer_rancher", 60, 21.6, 1.28, 10.04, 180, 3005671, ""},
+
+		--Cantina
+		{"comm_operator", 400, 48.13, 0.1, 2.47, 292, 3005397, ""},
+		{"artisan", 60, 34.4, 0.1, -8.04, 0, 3005398, ""},
+		{"mercenary", 60, 34.4, 0.1, -6.9, 180, 3005398, ""},
+		{"trainer_entertainer", 1, 26.2, -0.9, 10.25, 260, 3005399, ""},
+		{"bartender", 60, 6.4, -0.9, -2.3, 156, 3005399, ""},
+		{"corellia_times_investigator", 300, 20.6, -0.9, -18.6, 180, 3005400, ""},
+		{"commoner_technician", 60, 20.6, -0.9, -19.6, 0, 3005400, ""},
+		{"brawler", 60, 22.6, -0.9, 19.6, 0, 3005401, ""},
+		{"commoner", 60, 21.5, -0.9, 20.7, 135, 3005401, ""},
+		{"farmer_rancher", 300, 22.6, -0.9, 20.7, 180, 3005401, ""},
+		{"farmer", 60, 10.9, -0.9, -13.9, 180, 3005402, ""},
+		{"mercenary", 60, 10.9, -0.9, -15.0, 0, 3005402, ""},
+		{"brawler", 60, -2.4, -0.9, 24.5, 180, 3005405, ""},
+		{"shadowy_figure", 60, -2.4, -0.9, 23.4, 0, 3005405, ""},
+		{"commoner_tatooine", 300, -25.7, -0.5, 10.5, 0, 3005409, ""},
+		{"bounty_hunter", 60, -25.7, -0.5, 11.5, 180, 3005409, ""},
+		{"commoner_naboo", 300, -45.2, 0.1, -20.7, 180, 3005411, ""},
+		{"commoner", 60, -45.2, 0.1, -21.7, 0, 3005411, ""},
+
+		--Guild Hall (-3435,3196, ""},
+		{"trainer_tailor", 0, 11, 1.1, -14, 0, 2955415, ""},
+		{"mercenary", 60, 3.29, 1.1, -9.58, 249, 2955416, ""},
+		{"trainer_artisan", 0, 0, 1.1, -14, 0, 2955416, ""},
+		{"trainer_chef", 0, -11, 1.1, -14, 0, 2955417, ""},
+
+		--Guild Hall (-3412,3364, ""},
+		{"trainer_scout", 0, -12, 1.13, 5.5, 180, 2955424, ""},
+		{"trainer_marksman", 0, 0, 1.13, -14, 0, 2955426, ""},
+		{"trainer_brawler", 0, -11, 1.13, -14, 0, 2955427, ""},
+		{"junk_dealer", 0, -14.5, 1.1, 2.5, 88, 2955424, ""},
+		--Cloning Facility
+		{"info_broker", 60, 4.47, -0.05, 2.9, 135, 3005428, ""},
+		{"medic", 60, 5.57, -0.05, 2.9, 180, 3005428, ""},
+		{"medic", 300, 3.9, -0.05, -3.15, 0, 3005428, ""},
+		{"scientist", 60, 5.57, -0.05, 1.84, 0, 3005428, ""},
+		{"farmer", 60, 3.98, -0.05, -2.04, 180, 3005428, ""},
+		{"contractor", 60, 3.19, -5.5, -6.32, 180, 3005430, ""},
+		{"brawler", 60, 2.09, -5.5, -6.32, 135, 3005430, ""},
+		{"businessman", 60, 3.19, -5.5, -7.42, 0, 3005430, ""},
+		{"artisan", 300, -5.69, -5.5, -9.21, 180, 3005430, ""},
+		{"farmer_rancher", 60, -5.69, -5.5, -10.31, 0, 3005430, ""},
+
+		--Guild Hall (-3680,3081, ""},
+		{"trainer_merchant", 0, 12, 1.13, 6, 180, 2955398, ""},
+		{"trainer_armorsmith", 0, -12, 1.1, 5, 180, 2955399, ""},
+		{"trainer_architect", 0, 11, 1.13, -14, 0, 2955400, ""},
+		{"trainer_weaponsmith", 0, -2.5, 1.13, -8.4, 91, 2955401, ""},
+		{"trainer_droidengineer", 0, -11, 1.13, -14, 0, 2955402, ""},
+
+		--Medical Center
+		{"trainer_doctor", 0, 12, 0.18, -1, 0, 3375392, ""},
+		{"trainer_medic", 0, -12.65, 0.18, 2.17, 111, 3375392, ""},
+		{"commoner", 60, -0.84, 0.18, 1.59, 270, 3375392, ""},
+		{"medic", 60, -2.84, 0.18, 1.59, 90, 3375392, ""},
+		{"twilek_slave", 300, 0.28, 0.18, 7.39, 0, 3375392, ""},
+		{"chiss_female", 60, 0.28, 0.18, 8.39, 180, 3375392, ""},
+		{"commoner_old", 400, -11.7, 0.18, -13.7, 90, 3375393, ""},
+		{"ithorian_male", 400, -9.9, 0.18, -13.1, 168, 3375393, ""},
+		{"r2", 60, -1.84202, 0.184067, 2.59886, 22.229, 3375392, "calm"}
+	}
 }
 
 registerScreenPlay("CorelliaKorVellaScreenPlay", true)
@@ -244,54 +383,27 @@ function CorelliaKorVellaScreenPlay:start()
 end
 
 function CorelliaKorVellaScreenPlay:spawnSceneObjects()
-
 	--outside starport
 	spawnSceneObject(self.planet, "object/tangible/crafting/station/public_space_station.iff", -3118.55, 31, 2783.4, 0, math.rad(90) )
 end
 
 function CorelliaKorVellaScreenPlay:spawnMobiles()
+	local mobiles = self.mobiles
 
-	--side starport room
-	local pNpc = spawnMobile(self.planet, "bounty_hunter",60,-33.5,1.6,49.2,-88,4255428)
-	self:setMoodString(pNpc, "sad")
-	--starport interior
-	pNpc = spawnMobile(self.planet, "trainer_shipwright",60,-0.1,0.6,67.4,176,4255423)
-	self:setMoodString(pNpc, "neutral")
+	for i = 1, #mobiles, 1 do
+		local mob = mobiles[i]
 
-	--corsec not in buildings
-	spawnMobile(self.planet, "chiss_male", 360, -3101.09, 31, 2905.97, 180, 0)
-	spawnMobile(self.planet, "corellia_times_reporter", 360, -3100.88, 31, 2890.25, 180, 0)
-	spawnMobile(self.planet, "ithorian_male", 360, -3177.78, 31, 2889.93, 0, 0)
-	spawnMobile(self.planet, "medic", 360, -3172.38, 31, 2880.85, 0, 0)
-	spawnMobile(self.planet, "rogue_corsec_trooper", 360, -3340.49, 86, 3292.76, 100.151, 0)
-	spawnMobile(self.planet, "rogue_corsec_trooper", 360, -3332.89, 86, 3303.69, 68.6738, 0)
-	spawnMobile(self.planet, "rogue_corsec_trooper", 360, -3330.1, 86, 3290.98, 104.099, 0)
-	spawnMobile(self.planet, "sullustan_male", 360, -3177.78, 31, 2891.03, 180, 0)
+		-- {template, respawn, x, z, y, direction, cell, mood}
+		local pMobile = spawnMobile(self.planet, mob[1], mob[2], mob[3], mob[4], mob[5], mob[6], mob[7])
 
-	--misc
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3563, 86, 3138, 60, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3571, 86, 3176, 60, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3574, 86, 3154, 315, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3604, 86, 3172, 90, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3665, 86, 3139, 170, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3375, 86, 3281, 90, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3358, 86, 3307, 140, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3315, 86, 3234, 270, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3386, 85.6, 3184, 90, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3444, 78, 3231, 225, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3458, 85.9, 3165, 90, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3416, 86, 3078, 0, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3401, 86, 3034, 270, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3124, 31, 2808, 180, 0)
-	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3128, 31, 3008, 180, 0)
-	spawnMobile(self.planet, "medic", 60, -3591.74, 86, 3179.01, 0, 0)
-	spawnMobile(self.planet, "junk_dealer", 10, -3130.41, 31, 2973.96, 0, 0)
+		if (pMobile ~= nil) then
+			if mob[8] ~= "" then
+				CreatureObject(pMobile):setMoodString(mob[8])
+			end
 
-	--commoners
-	spawnMobile(self.planet, "entertainer", 60, -16.9034, 1.6, 11.8646, 180, 3005672)
-	spawnMobile(self.planet, "entertainer", 60, -3602.67, 86, 3221.17, 0, 0)
-	spawnMobile(self.planet, "entertainer", 60, -3100.88, 31, 2889.15, 0, 0)
-
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+		end
+	end
 
 	--thugs
 	spawnMobile(self.planet, "ragtag_kook", 300, -3816.4, 86, 3114.2, 103, 0)
@@ -437,106 +549,4 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "corellian_butterfly_drone", 300, getRandomNumber(10) + -2981, 31, getRandomNumber(10) + 2988, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "corellian_butterfly_drone", 300, getRandomNumber(10) + -2981, 31, getRandomNumber(10) + 2988, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "corellian_butterfly_drone", 300, getRandomNumber(10) + -2981, 31, getRandomNumber(10) + 2988, getRandomNumber(360), 0)
-
-	--Trainers not in buildings
-	spawnMobile(self.planet, "trainer_1hsword", 1, -3320, 86, 3220, 0, 0)
-	spawnMobile(self.planet, "trainer_2hsword", 1, -3374, 86, 3285, 87, 0)
-	spawnMobile(self.planet, "trainer_artisan", 1, -3164, 31, 2791, 0, 0)
-	spawnMobile(self.planet, "trainer_brawler", 1, -3124, 31, 2791, 0, 0)
-	spawnMobile(self.planet, "trainer_brawler", 1, -3193, 31, 2799, -129, 0)
-	spawnMobile(self.planet, "trainer_chef", 1, -3147, 31, 2792, 0, 0)
-	spawnMobile(self.planet, "trainer_commando", 1, -3344, 86, 3292, 0, 0)
-	spawnMobile(self.planet, "trainer_entertainer", 1, -3152, 31, 2807, 178, 0)
-	spawnMobile(self.planet, "trainer_marksman", 1, -3130, 31, 2791, 0, 0)
-	spawnMobile(self.planet, "trainer_medic", 1, -3139, 31, 2792, 0, 0)
-	spawnMobile(self.planet, "trainer_polearm", 1, -3412, 86, 3084, 0, 0)
-	spawnMobile(self.planet, "trainer_scout", 1, -3164.42, 31, 2802.08, 78, 0)
-	spawnMobile(self.planet, "trainer_unarmed", 1, -3570, 86, 3146, 233, 0)
-
-	--named npc's
-	spawnMobile(self.planet, "dac_axfow", 60, -3143.7, 31, 2803.73, 233.156, 0)
-	spawnMobile(self.planet, "eryk_chinn", 60, -3145.32, 31, 2803.95, 208.286, 0)
-	spawnMobile(self.planet, "logro_elsin", 60, -3144.67, 31, 2806.06, 174, 0)
-
-	--Building Interiors
-	--Starport
-	spawnMobile(self.planet, "contractor", 60, 0.68378, 0.639421, 62.1666, 180, 4255423)
-	spawnMobile(self.planet, "sullustan_male", 60, 45.99, -0.52, 35.85, 180, 4255426)
-	spawnMobile(self.planet, "medic", 60, 45.99, -0.52, 34.75, 0, 4255426)
-	spawnMobile(self.planet, "mercenary", 60, 44.8927, -0.52, 35.85, 135, 4255426)
-	spawnMobile(self.planet, "medic", 60, -62.23, 2.64, 40.83, 180, 4255431)
-	spawnMobile(self.planet, "corellia_times_reporter", 300, -62.23, 2.64, 39.73, 0.19, 4255431)
-	spawnMobile(self.planet, "chassis_dealer", 60, -56.71, 0.97, 8.33, 12.61, 4255433)
-	pNpc = spawnMobile(self.planet, "gambler", 60, 0.68378, 0.639421, 61.0666, 268.449, 4255423)
-	self:setMoodString(pNpc, "calm")
-
-	--Hotel
-	spawnMobile(self.planet, "zhanks", 60, 1.25, 1.0, 6.9, 340, 3005670)
-	spawnMobile(self.planet, "ta_667", 60, -0.52, 1.0, 6.4, 13.75, 3005670)
-	spawnMobile(self.planet, "commoner", 1, 20.5, 1.28, 10, 135, 3005671)
-	spawnMobile(self.planet, "entertainer", 60, 21.6, 1.28, 8.94, 0, 3005671)
-	spawnMobile(self.planet, "farmer_rancher", 60, 21.6, 1.28, 10.04, 180, 3005671)
-
-	--Cantina
-	spawnMobile(self.planet, "comm_operator", 400, 48.13, 0.1, 2.47, 292, 3005397)
-	spawnMobile(self.planet, "artisan", 60, 34.4, 0.1, -8.04, 0, 3005398)
-	spawnMobile(self.planet, "mercenary", 60, 34.4, 0.1, -6.9, 180, 3005398)
-	spawnMobile(self.planet, "trainer_entertainer", 1, 26.2, -0.9, 10.25, 260, 3005399)
-	spawnMobile(self.planet, "bartender", 60, 6.4, -0.9, -2.3, 156, 3005399)
-	spawnMobile(self.planet, "corellia_times_investigator", 300, 20.6, -0.9, -18.6, 180, 3005400)
-	spawnMobile(self.planet, "commoner_technician", 60, 20.6, -0.9, -19.6, 0, 3005400)
-	spawnMobile(self.planet, "brawler", 60, 22.6, -0.9, 19.6, 0, 3005401)
-	spawnMobile(self.planet, "commoner", 60, 21.5, -0.9, 20.7, 135, 3005401)
-	spawnMobile(self.planet, "farmer_rancher", 300, 22.6, -0.9, 20.7, 180, 3005401)
-	spawnMobile(self.planet, "farmer", 60, 10.9, -0.9, -13.9, 180, 3005402)
-	spawnMobile(self.planet, "mercenary", 60, 10.9, -0.9, -15.0, 0, 3005402)
-	spawnMobile(self.planet, "brawler", 60, -2.4, -0.9, 24.5, 180, 3005405)
-	spawnMobile(self.planet, "shadowy_figure", 60, -2.4, -0.9, 23.4, 0, 3005405)
-	spawnMobile(self.planet, "commoner_tatooine", 300, -25.7, -0.5, 10.5, 0, 3005409)
-	spawnMobile(self.planet, "bounty_hunter", 60, -25.7, -0.5, 11.5, 180, 3005409)
-	spawnMobile(self.planet, "commoner_naboo", 300, -45.2, 0.1, -20.7, 180, 3005411)
-	spawnMobile(self.planet, "commoner", 60, -45.2, 0.1, -21.7, 0, 3005411)
-
-	--Guild Hall (-3435,3196)
-	spawnMobile(self.planet, "trainer_tailor", 0, 11, 1.1, -14, 0, 2955415)
-	spawnMobile(self.planet, "mercenary", 60, 3.29, 1.1, -9.58, 249, 2955416)
-	spawnMobile(self.planet, "trainer_artisan", 0, 0, 1.1, -14, 0, 2955416)
-	spawnMobile(self.planet, "trainer_chef", 0, -11, 1.1, -14, 0, 2955417)
-
-	--Guild Hall (-3412,3364)
-	spawnMobile(self.planet, "trainer_scout", 0, -12, 1.13, 5.5, 180, 2955424)
-	spawnMobile(self.planet, "trainer_marksman", 0, 0, 1.13, -14, 0, 2955426)
-	spawnMobile(self.planet, "trainer_brawler", 0, -11, 1.13, -14, 0, 2955427)
-	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 2.5, 88, 2955424)
-
-	--Cloning Facility
-	spawnMobile(self.planet, "info_broker", 60, 4.47, -0.05, 2.9, 135, 3005428)
-	spawnMobile(self.planet, "medic", 60, 5.57, -0.05, 2.9, 180, 3005428)
-	spawnMobile(self.planet, "medic", 300, 3.9, -0.05, -3.15, 0, 3005428)
-	spawnMobile(self.planet, "scientist", 60, 5.57, -0.05, 1.84, 0, 3005428)
-	spawnMobile(self.planet, "farmer", 60, 3.98, -0.05, -2.04, 180, 3005428)
-	spawnMobile(self.planet, "contractor", 60, 3.19, -5.5, -6.32, 180, 3005430)
-	spawnMobile(self.planet, "brawler", 60, 2.09, -5.5, -6.32, 135, 3005430)
-	spawnMobile(self.planet, "businessman", 60, 3.19, -5.5, -7.42, 0, 3005430)
-	spawnMobile(self.planet, "artisan", 300, -5.69, -5.5, -9.21, 180, 3005430)
-	spawnMobile(self.planet, "farmer_rancher", 60, -5.69, -5.5, -10.31, 0, 3005430)
-
-	--Guild Hall (-3680,3081)
-	spawnMobile(self.planet, "trainer_merchant", 0, 12, 1.13, 6, 180, 2955398)
-	spawnMobile(self.planet, "trainer_armorsmith", 0, -12, 1.1, 5, 180, 2955399)
-	spawnMobile(self.planet, "trainer_architect", 0, 11, 1.13, -14, 0, 2955400)
-	spawnMobile(self.planet, "trainer_weaponsmith", 0, -2.5, 1.13, -8.4, 91, 2955401)
-	spawnMobile(self.planet, "trainer_droidengineer", 0, -11, 1.13, -14, 0, 2955402)
-
-	--Medical Center
-	spawnMobile(self.planet, "trainer_doctor", 0, 12, 0.18, -1, 0, 3375392)
-	spawnMobile(self.planet, "trainer_medic", 0, -12.65, 0.18, 2.17, 111, 3375392)
-	spawnMobile(self.planet, "commoner", 60, -0.84, 0.18, 1.59, 270, 3375392)
-	spawnMobile(self.planet, "medic", 60, -2.84, 0.18, 1.59, 90, 3375392)
-	spawnMobile(self.planet, "twilek_slave", 300, 0.28, 0.18, 7.39, 0, 3375392)
-	spawnMobile(self.planet, "chiss_female", 60, 0.28, 0.18, 8.39, 180, 3375392)
-	spawnMobile(self.planet, "commoner_old", 400, -11.7, 0.18, -13.7, 90, 3375393)
-	spawnMobile(self.planet, "ithorian_male", 400, -9.9, 0.18, -13.1, 168, 3375393)
-	pNpc = spawnMobile(self.planet, "r2", 60, -1.84202, 0.184067, 2.59886, 22.229, 3375392)
-	self:setMoodString(pNpc, "calm")
 end

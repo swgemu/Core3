@@ -2,6 +2,7 @@ imperial_battle_droid = Creature:new {
 	objectName = "@mob/creature_names:imperial_battle_droid",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_ANDROID,
 	level = 134,
 	chanceHit = 5.5,
 	damageMin = 795,
@@ -31,8 +32,16 @@ imperial_battle_droid = Creature:new {
 	},
 	lootGroups = {
 	},
-	weapons = {"battle_droid_weapons"},
-	attacks = merge(pistoleermaster,carbineermaster,marksmanmaster)
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "battle_droid_weapons",
+	secondaryWeapon = "unarmed",
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(pistoleermaster,carbineermaster,marksmanmaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_battle_droid, "imperial_battle_droid")

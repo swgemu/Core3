@@ -9,6 +9,7 @@
 #include "SpawnGroup.h"
 #include "conf/ConfigManager.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 AtomicInteger CreatureTemplateManager::loadedMobileTemplates;
 
@@ -19,6 +20,7 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	/*setLogging(false);
 		setGlobalLogging(true);*/
 	//setLoggingName("CreatureTemplateManager");
+	globalAttackSpeedOverride = 0.0f;
 
 	lua = new Lua();
 	lua->init();
@@ -86,11 +88,20 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("NAME_DARKTROOPER", NameManagerType::DARKTROOPER);
 	lua->setGlobalInt("NAME_SWAMPTROOPER", NameManagerType::SWAMPTROOPER);
 
+	lua->setGlobalInt("MOB_HERBIVORE", AiAgent::MOB_HERBIVORE);
+	lua->setGlobalInt("MOB_CARNIVORE", AiAgent::MOB_CARNIVORE);
+	lua->setGlobalInt("MOB_NPC", AiAgent::MOB_NPC);
+	lua->setGlobalInt("MOB_DROID", AiAgent::MOB_DROID);
+	lua->setGlobalInt("MOB_ANDROID", AiAgent::MOB_ANDROID);
+	lua->setGlobalInt("MOB_VEHICLE", AiAgent::MOB_VEHICLE);
+
 	loadLuaConfig();
 }
 
 void CreatureTemplateManager::loadLuaConfig() {
 	lua->runFile("scripts/managers/creature_manager.lua");
+
+	globalAttackSpeedOverride = lua->getGlobalFloat("globalAttackSpeedOverride");
 
 	LuaObject luaObject = lua->getGlobalObject("aiSpeciesData");
 
@@ -263,9 +274,19 @@ int CreatureTemplateManager::addWeapon(lua_State* L) {
 
 	LuaObject obj(L);
 	if (obj.isValidTable()) {
+		TemplateManager* templateManager = TemplateManager::instance();
+
 		Vector<String> weps;
-		for (int i = 1; i <= obj.getTableSize(); ++i)
-			weps.add(obj.getStringAt(i));
+		for (int i = 1; i <= obj.getTableSize(); ++i) {
+			String tempName = obj.getStringAt(i);
+			SharedObjectTemplate* templateData = templateManager->getTemplate(tempName.hashCode());
+			if (templateData == nullptr && tempName != "unarmed") {
+				instance()->error() << "Weapon group " << ascii << " has invalid weapon configured: " << tempName;
+				continue;
+			}
+
+			weps.add(tempName);
+		}
 
 		CreatureTemplateManager::instance()->weaponMap.put(crc, weps);
 	}

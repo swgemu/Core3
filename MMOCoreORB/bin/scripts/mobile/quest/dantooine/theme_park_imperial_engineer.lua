@@ -2,8 +2,9 @@ theme_park_imperial_engineer = Creature:new {
 	objectName = "@mob/creature_names:warren_imperial_officer",
 	socialGroup = "imperial",
 	faction = "imperial",
+	mobType = MOB_NPC,
 	level = 30,
-	chanceHit = 0.390000,
+	chanceHit = 0.39,
 	damageMin = 290,
 	damageMax = 300,
 	baseXp = 2914,
@@ -18,11 +19,11 @@ theme_park_imperial_engineer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = INVULNERABLE + CONVERSABLE,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {
@@ -34,9 +35,17 @@ theme_park_imperial_engineer = Creature:new {
 		"object/mobile/dressed_imperial_officer_m_5.iff",
 		"object/mobile/dressed_imperial_officer_m_6.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_medium"},
-	attacks = merge(brawlermaster,marksmanmaster),
-	conversationTemplate = "theme_park_rebel_mission_target_convotemplate"
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "imperial_weapons_medium",
+	secondaryWeapon = "none",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
+
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlermaster,marksmanmaster),
+	secondaryAttacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_engineer, "theme_park_imperial_engineer")

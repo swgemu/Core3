@@ -224,6 +224,8 @@ public:
 		meleeDefenseMod.put(CreatureLocomotion::DEAD, 0);
 		meleeDefenseMod.put(CreatureLocomotion::BLOCKING, 0);
 		meleeDefenseMod.put(CreatureLocomotion::INVALID, 0);
+
+		loadMovementData();
 	}
 
 	~CreaturePosture() {}

@@ -234,7 +234,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templa
 	CreatureObject* creature = spawnCreature(templateCRC, 0, x, z, y, parentID, persistent);
 
 	if (creature != nullptr && creature->isAiAgent())
-		cast<AiAgent*>(creature)->activateLoad("");
+		creature->asAiAgent()->setAITemplate();
 	else {
 		error("could not spawn template " + String::valueOf(templateCRC) + " with AI.");
 		creature = nullptr;
@@ -298,7 +298,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templa
 	placeCreature(creo, x, z, y, parentID);
 
 	if (creo != nullptr && creo->isAiAgent())
-		cast<AiAgent*>(creo)->activateLoad("");
+		creo->asAiAgent()->setAITemplate();
 	else {
 		error("could not spawn template " + templateToSpawn + " as baby with AI.");
 		creo = nullptr;
@@ -341,7 +341,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureAsEventMob(uint32 te
 	placeCreature(creo, x, z, y, parentID);
 
 	if (creo != nullptr && creo->isAiAgent())
-		cast<AiAgent*>(creo)->activateLoad("");
+		creo->asAiAgent()->setAITemplate();
 
 	return creo;
 }
@@ -425,7 +425,8 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 
 	if (creature->isAiAgent()) {
 		AiAgent* aio = cast<AiAgent*>(creature);
-		aio->setHomeLocation(x, z, y, cellParent);
+		aio->setHomeLocation(x, z, y, cellParent, direction);
+		aio->setNextStepPosition(x, z, y, cellParent);
 	}
 
 	creature->initializePosition(x, z, y);
@@ -471,6 +472,13 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 		Locker clocker(defaultWeapon, creature);
 
 		creature->transferObject(defaultWeapon, 4);
+
+		if (creature->isAiAgent()) {
+			WeaponObject* weap = defaultWeapon.castTo<WeaponObject*>();
+			AiAgent* agent = creature->asAiAgent();
+			agent->setDefaultWeapon(weap);
+			agent->setCurrentWeapon(weap);
+		}
 	}
 
 	if (creature->hasSlotDescriptor("inventory")) {
@@ -582,6 +590,30 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			playerManager->disseminateExperience(destructedObject, &copyThreatMap);
 
 		SceneObject* creatureInventory = destructedObject->getSlottedObject("inventory");
+
+		// Make sure mob weapons are destroyed when the ai dies so they can't be looted
+		destructedObject->unequipWeapons();
+
+		WeaponObject* primaryWeap = destructedObject->getPrimaryWeapon();
+
+		if (primaryWeap != nullptr && primaryWeap != destructedObject->getDefaultWeapon()) {
+			Locker locker(primaryWeap);
+			primaryWeap->destroyObjectFromWorld(true);
+		}
+
+		WeaponObject* secondaryWeap = destructedObject->getSecondaryWeapon();
+
+		if (secondaryWeap != nullptr) {
+			Locker locker(secondaryWeap);
+			secondaryWeap->destroyObjectFromWorld(true);
+		}
+
+		WeaponObject* thrownWeap = destructedObject->getThrownWeapon();
+
+		if (thrownWeap != nullptr) {
+			Locker locker(thrownWeap);
+			thrownWeap->destroyObjectFromWorld(true);
+		}
 
 		if (creatureInventory != nullptr && player != nullptr && player->isPlayerCreature()) {
 			LootManager* lootManager = zoneServer->getLootManager();
@@ -1087,8 +1119,10 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 	creature->setPvpStatusBitmask(0, true);
 
 	if (creature->isAiAgent()) {
-		AiAgent* agent = cast<AiAgent*>(creature);
-		agent->activateLoad("wait");
+		AiAgent* agent = creature->asAiAgent();
+		// TODO (dannuic): is there a better way to do this? We just set the root behavior to "wait" an indefinite amount of time before
+		agent->addCreatureFlag(CreatureFlag::STATIONARY);
+		agent->setAITemplate();
 	}
 
 	Reference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force, adult);

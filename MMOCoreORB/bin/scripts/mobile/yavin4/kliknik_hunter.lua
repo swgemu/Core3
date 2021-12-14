@@ -2,6 +2,7 @@ kliknik_hunter = Creature:new {
 	objectName = "@mob/creature_names:kliknik_hunter",
 	socialGroup = "kliknik",
 	faction = "",
+	mobType = MOB_CARNIVORE,
 	level = 32,
 	chanceHit = 0.39,
 	damageMin = 300,
@@ -37,12 +38,17 @@ kliknik_hunter = Creature:new {
 			lootChance = 1640000
 		}
 	},
-	weapons = {"creature_spit_small_yellow"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "object/weapon/ranged/creature/creature_spit_small_yellow.iff",
+	secondaryWeapon = "object/weapon/ranged/creature/creature_spit_small_yellow.iff",
 	conversationTemplate = "",
-	attacks = {
-		{"",""},
-		{"intimidationattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"",""}, {"intimidationattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(kliknik_hunter, "kliknik_hunter")

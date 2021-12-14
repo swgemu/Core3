@@ -217,8 +217,7 @@ end
 function TatooineJabbasPalaceMobsScreenPlay:setupJabbaPatrol(pMobile)
 	createEvent(getRandomNumber(30,45) * 1000, "TatooineJabbasPalaceMobsScreenPlay", "JabbaPatrol", pMobile, "")
 	createObserver(DESTINATIONREACHED, "TatooineJabbasPalaceMobsScreenPlay", "jabbaPatrolDestReached", pMobile)
-	AiAgent(pMobile):setAiTemplate("manualescortwalk")
-	AiAgent(pMobile):setFollowState(4)
+	AiAgent(pMobile):setMovementState(AI_PATROLLING)
 end
 
 function TatooineJabbasPalaceMobsScreenPlay:palaceConverseJawa(pMobile)
@@ -463,7 +462,6 @@ function TatooineJabbasPalaceMobsScreenPlay:JabbaPatrol(pMobile)
 	end
 
 	AiAgent(pMobile):stopWaiting()
-	AiAgent(pMobile):setWait(0)
 	AiAgent(pMobile):setNextPosition(nextLoc[1], nextLoc[2], nextLoc[3], nextLoc[4])
 	AiAgent(pMobile):executeBehavior()
 end

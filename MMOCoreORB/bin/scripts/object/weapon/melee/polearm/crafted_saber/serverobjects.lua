@@ -49,6 +49,7 @@ includeFile("weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen1.lu
 includeFile("weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen2.lua")
 includeFile("weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen3.lua")
 includeFile("weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen4.lua")
+includeFile("weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen4_ranged.lua")
 includeFile("weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen5.lua")
 includeFile("weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_s1.lua")
 includeFile("weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_s1_gen1.lua")

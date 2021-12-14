@@ -2,6 +2,7 @@ death_watch_blastromech = Creature:new {
 	objectName = "@mob/creature_names:blastromech",
 	socialGroup = "death_watch",
 	faction = "",
+	mobType = MOB_DROID,
 	level = 80,
 	chanceHit = 0.75,
 	damageMin = 520,

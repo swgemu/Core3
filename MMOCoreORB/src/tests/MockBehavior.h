@@ -4,11 +4,12 @@
  *  Created on: Aug 24, 2013
  *      Author: swgemu
  */
-#include "gmock/gmock.h"
-#include "server/zone/objects/creature/ai/bt/Behavior.h"
-
 #ifndef MOCKBEHAVIOUR_H_
 #define MOCKBEHAVIOUR_H_
+#include "gmock/gmock.h"
+
+#include "server/zone/objects/creature/ai/bt/Behavior.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 namespace server {
 namespace zone {

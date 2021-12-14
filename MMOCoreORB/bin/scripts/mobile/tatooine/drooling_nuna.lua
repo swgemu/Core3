@@ -2,6 +2,7 @@ drooling_nuna = Creature:new {
 	objectName = "@mob/creature_names:dwarf_nuna_drooling",
 	socialGroup = "nuna",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 80,
@@ -29,10 +30,17 @@ drooling_nuna = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/dwarf_nuna_hue.iff",
 	scale = 0.75,
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = {},
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(drooling_nuna, "drooling_nuna")

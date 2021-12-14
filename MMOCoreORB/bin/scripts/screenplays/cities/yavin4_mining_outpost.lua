@@ -22,10 +22,8 @@ Yavin4MiningOutpostScreenPlay = CityScreenPlay:new {
 	stationaryMobiles = {
 		--tavern a
 		{1, 3.1, 0.7, 2.4, 0, 7925478, "npc_sitting_chair"}, {1, 2.3, 0.7, 6.5, -5, 7925478, "sad"},
-
 		--tavern b
 		{1, 0.4, 0.6, -0.7, -179, 7925451, "npc_sitting_chair"}, {1, 3.5, 0.6, 4.2, -5, 7925449, "npc_standing_drinking"},
-
 		--building empty
 		{1, 3.6, 0.1, -0.5, 0, 1713372, "npc_sitting_chair"}
 	},
@@ -38,18 +36,19 @@ function Yavin4MiningOutpostScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnPatrolMobiles()
 		self:spawnStationaryMobiles()
-		self:spawnStationaryMobiles()
 	end
 end
 
 function Yavin4MiningOutpostScreenPlay:spawnMobiles()
 	--tavern b
-	pNpc = spawnMobile("yavin4", "bartender",60,3.4,0.6,5.6,173,7925449)
-	self:setMoodString(pNpc, "conversation")
+	local pNpc = spawnMobile("yavin4", "bartender",60,3.4,0.6,5.6,173,7925449)
+
+	if pNpc ~= nil then
+		self:setMoodString(pNpc, "conversation")
+	end
 
 	--outside tavern area
 	spawnMobile("yavin4", "rebel_commando", 460, -255.5, 35.0, 4859.2, 81, 0)
 	spawnMobile("yavin4", "rebel_commando", 460, -250.5, 35.0, 4854.2, 86, 0)
 	spawnMobile("yavin4", "rebel_commando", 460, -260.5, 35.0, 4864.2, 76, 0)
-
 end

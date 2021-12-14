@@ -2,6 +2,7 @@ hagrin_fed_dub_patrolman = Creature:new {
 	objectName = "@mob/creature_names:fed_dub_patrolman",
 	socialGroup = "fed_dub",
 	faction = "fed_dub",
+	mobType = MOB_NPC,
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -41,9 +42,17 @@ hagrin_fed_dub_patrolman = Creature:new {
 			}
 		}
 	},
-	weapons = {"rebel_weapons_medium"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "rebel_weapons_medium",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(brawlernovice,marksmannovice),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(hagrin_fed_dub_patrolman, "hagrin_fed_dub_patrolman")

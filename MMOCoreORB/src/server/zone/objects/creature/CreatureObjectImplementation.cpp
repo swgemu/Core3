@@ -508,7 +508,7 @@ void CreatureObjectImplementation::clearQueueActions(bool combatOnly) {
 void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 		bool notifyClient) {
 	if (weao == nullptr)
-		weao = TangibleObjectImplementation::getSlottedObject("default_weapon").castTo<WeaponObject*>();
+		weao = asCreatureObject()->getDefaultWeapon();
 
 	weapon = weao;
 
@@ -1087,8 +1087,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	return 0;
 }
 
-int CreatureObjectImplementation::healDamage(TangibleObject* healer,
-		int damageType, int damage, bool notifyClient, bool notifyObservers) {
+int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient, bool notifyObservers) {
 	if (damage == 0)
 		return 0;
 
@@ -1578,10 +1577,17 @@ float CreatureObjectImplementation::calculateSpeed() {
 void CreatureObjectImplementation::updateLocomotion() {
 	// 0: stationary, 0-walk: slow, walk-run+; fast
 	// the movement table does not seem to want scaling factors...
-	if (currentSpeed <= walkSpeed / 10.f)
+
+	// This is a "good enough" hysteresis to allow for more fluid transition
+	// between locomotions. It breaks down on posture changes, but it's not
+	// worth accounting for that for something this simple.
+	uint8 oldSpeed = CreaturePosture::instance()->getSpeed(posture, locomotion);
+	float hysteresis = walkSpeed / 10.f * (oldSpeed == CreatureLocomotion::FAST ? -1.f : 1.f);
+
+	if (currentSpeed <= abs(hysteresis))
 		locomotion = CreaturePosture::instance()->getLocomotion(posture,
 				CreatureLocomotion::STATIONARY);
-	else if (currentSpeed <= walkSpeed + walkSpeed / 10.0f)
+	else if (currentSpeed <= walkSpeed + hysteresis)
 		locomotion = CreaturePosture::instance()->getLocomotion(posture,
 				CreatureLocomotion::SLOW);
 	else
@@ -3390,7 +3396,7 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 
 	if (attacker->isAiAgent()) {
 		AiAgent* aiAgent = attacker->asAiAgent();
-		aiAgent->sendReactionChat(ReactionManager::GLOAT);
+		aiAgent->sendReactionChat(asSceneObject(), ReactionManager::GLOAT);
 	}
 
 	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition, isCombatAction);
@@ -3506,10 +3512,20 @@ float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float ba
 }
 
 Reference<WeaponObject*> CreatureObjectImplementation::getWeapon() {
-	if (weapon == nullptr) {
-		return TangibleObjectImplementation::getSlottedObject("default_weapon").castTo<WeaponObject*>();
-	} else
-		return weapon;
+	Reference<WeaponObject*> retWeap = weapon;
+	if (retWeap == nullptr) {
+		retWeap = asCreatureObject()->getDefaultWeapon();
+	}
+
+	if (retWeap == nullptr) {
+		Logger::console.info(true) << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ": " << *_this.getReferenceUnsafeStaticCast();
+	}
+
+	return retWeap;
+}
+
+WeaponObject* CreatureObjectImplementation::getDefaultWeapon() {
+	return getSlottedObject("default_weapon").castTo<WeaponObject*>();
 }
 
 void CreatureObjectImplementation::setFaction(unsigned int crc) {

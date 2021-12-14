@@ -2,6 +2,7 @@ bordok_foal = Creature:new {
 	objectName = "@mob/creature_names:bordok_foal",
 	socialGroup = "bordok",
 	faction = "",
+	mobType = MOB_HERBIVORE,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,
@@ -30,12 +31,17 @@ bordok_foal = Creature:new {
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 0.75,
 	lootGroups = {},
-	weapons = {},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	attacks = {
-		{"intimidationattack",""},
-		{"dizzyattack",""}
-	}
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = { {"intimidationattack",""}, {"dizzyattack",""} },
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(bordok_foal, "bordok_foal")

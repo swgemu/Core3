@@ -30,6 +30,6 @@ class NonPlayerCreatureObject extends AiAgent {
 
 	@dirty
 	public boolean isCamouflaged(CreatureObject target) {
-		return isAggressiveTo(target) && isConcealed(target);
+		return isConcealed(target) && isAggressiveTo(target);
 	}
 }

@@ -437,17 +437,17 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 	float minDmg = calculateAttackMinDamage(baseLevel);
 	float maxDmg = calculateAttackMaxDamage(baseLevel);
 
-	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
+	Reference<WeaponObject*> defaultWeapon = asAiAgent()->getDefaultWeapon();
 
 	float ratio = ((float)newLevel) / (float)baseLevel;
 	minDmg *= ratio;
 	maxDmg *= ratio;
 
-	if (readyWeapon != nullptr) {
-		float mod = 1.f - 0.1f*float(readyWeapon->getArmorPiercing());
+	if (primaryWeapon != nullptr && primaryWeapon != defaultWeapon) {
+		float mod = 1.f - 0.1f*float(primaryWeapon->getArmorPiercing());
 
-		readyWeapon->setMinDamage(minDmg * mod);
-		readyWeapon->setMaxDamage(maxDmg * mod);
+		primaryWeapon->setMinDamage(minDmg * mod);
+		primaryWeapon->setMaxDamage(maxDmg * mod);
 	}
 
 	if (defaultWeapon != nullptr) {

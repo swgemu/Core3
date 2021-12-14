@@ -2,6 +2,7 @@ mozo_mercenary_warlord = Creature:new {
 	objectName = "@mob/creature_names:mercenary_warlord",
 	socialGroup = "lok_mercenaries",
 	faction = "lok_mercenaries",
+	mobType = MOB_NPC,
 	level = 44,
 	chanceHit = 0.47,
 	damageMin = 370,
@@ -38,9 +39,17 @@ mozo_mercenary_warlord = Creature:new {
 			lootChance = 10000000
 		}
 	},
-	weapons = {"rebel_weapons_heavy"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "rebel_weapons_heavy",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,commandomaster,carbineermaster,marksmanmaster,brawlermaster)
+	
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(riflemanmaster,commandomaster,carbineermaster,marksmanmaster,brawlermaster),
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(mozo_mercenary_warlord, "mozo_mercenary_warlord")

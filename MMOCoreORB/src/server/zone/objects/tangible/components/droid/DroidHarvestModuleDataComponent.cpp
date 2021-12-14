@@ -4,6 +4,7 @@
 
 #include "DroidHarvestModuleDataComponent.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 #include "server/zone/objects/creature/events/DroidHarvestTask.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -285,7 +286,7 @@ void DroidHarvestModuleDataComponent::handlePetCommand(String cmd, CreatureObjec
 		return;
 	}
 
-	if( petManager->isTrainedCommand( pcd, PetManager::HARVEST, cmd ) ){
+	if (petManager->getTrainedCommandNum( pcd, cmd) == PetManager::HARVEST){
 		Locker dlock(droid);
 		uint64 targetID = speaker->getTargetID();
 		Reference<CreatureObject*> target = droid->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();

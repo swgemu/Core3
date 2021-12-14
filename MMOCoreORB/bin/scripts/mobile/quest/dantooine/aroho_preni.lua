@@ -3,6 +3,7 @@ aroho_preni = Creature:new {
 	customName = "Aroho Preni (a Dantari Raider)",	
 	socialGroup = "dantari_raiders",
 	faction = "dantari_raiders",
+	mobType = MOB_NPC,
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,
@@ -28,9 +29,17 @@ aroho_preni = Creature:new {
 
 	templates = {"object/mobile/dantari_female.iff"},
 	lootGroups = {},
-	weapons = {"primitive_weapons"},
+
+	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
+	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
+	primaryWeapon = "primitive_weapons",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "drakka_judarrl_mission_target_convotemplate",
-	attacks = brawlermaster
+
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = brawlermaster,
+	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(aroho_preni, "aroho_preni")
