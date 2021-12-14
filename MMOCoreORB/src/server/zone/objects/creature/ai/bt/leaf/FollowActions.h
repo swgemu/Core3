@@ -520,11 +520,10 @@ public:
 			return FAILURE;
 
 		float distance = minDist + System::random(maxDist - minDist);
-		float angle = System::random(360);
-		float newAngle = angle * (M_PI / 180.0f);
+		float angle = System::random(360) * Math::DEG2RAD;
 
-		float newX = tarCreo->getPositionX() + (cos(newAngle) * distance);
-		float newY = tarCreo->getPositionY() + (sin(newAngle) * distance);
+		float newX = tarCreo->getPositionX() + (cos(angle) * distance);
+		float newY = tarCreo->getPositionY() + (sin(angle) * distance);
 
 		float newZ = zone->getHeight(newX, newY);
 
