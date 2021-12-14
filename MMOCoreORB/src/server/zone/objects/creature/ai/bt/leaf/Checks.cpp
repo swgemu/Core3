@@ -377,6 +377,28 @@ template<> bool CheckProspectIsType::check(AiAgent* agent) const {
 	return false;
 }
 
+template<> bool CheckIsType::check(AiAgent* agent) const {
+	if (agent == nullptr)
+		return false;
+
+	switch (checkVar) {
+	case NPC:
+		return agent->isNpc();
+	case MONSTER:
+		return agent->isMonster();
+	case DROID:
+		return agent->isDroid();
+	case ANDROID:
+		return agent->isAndroid();
+	case HUMANOID:
+		return agent->isHumanoid();
+	default:
+		return false;
+	};
+
+	return false;
+}
+
 template<> bool CheckProspectJediTrial::check(AiAgent* agent) const {
 	ManagedReference<SceneObject*> tar = nullptr;
 	if (agent->peekBlackboard("targetProspect"))
@@ -545,4 +567,17 @@ template<> bool CheckHomeIsCell::check(AiAgent* agent) const {
 
 template<> bool CheckChatDelay::check(AiAgent* agent) const {
 	return agent->getCooldownTimerMap()->isPast("reaction_chat") ? true : false;
+}
+
+template<> bool CheckCallForHelp::check(AiAgent* agent) const {
+	if (agent == nullptr)
+		return false;
+
+	Time* callForHelp = agent->getLastCallForHelp();
+
+	if (callForHelp == nullptr || !callForHelp->isPast()) {
+		return false;
+	}
+
+	return true;
 }

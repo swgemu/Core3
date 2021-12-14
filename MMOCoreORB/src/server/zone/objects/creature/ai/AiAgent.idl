@@ -119,6 +119,9 @@ class AiAgent extends CreatureObject {
 	protected transient Time lastPackNotify;
 
 	@dereferenced
+	protected transient Time lastCallForHelp;
+
+	@dereferenced
 	protected transient Time fleeDelay;
 
 	@dereferenced
@@ -493,7 +496,7 @@ class AiAgent extends CreatureObject {
 
 	@preLocked
 	@arg1preLocked
-	public native void notifyPackMobs(CreatureObject attacker);
+	public native void notifyPackMobs(SceneObject attacker);
 
 
 	@preLocked
@@ -545,7 +548,6 @@ class AiAgent extends CreatureObject {
 	public native int notifyConverseObservers(CreatureObject converser);
 
 	public native int notifyAttack(Observable observable);
-	public native int notifyCallForHelp(Observable observable, ManagedObject arg1);
 
 	@preLocked
 	public void destroyObjectFromWorld(boolean sendSelfDestroy) {
@@ -1306,6 +1308,11 @@ class AiAgent extends CreatureObject {
 		return fleeDelay;
 	}
 
+	@local
+	@dirty
+	public Time getLastCallForHelp() {
+		return lastCallForHelp;
+	}
 
 	public void incrementLuaCall(final string key) {
 		trackingTask.incrementCall(key);

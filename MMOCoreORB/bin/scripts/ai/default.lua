@@ -112,17 +112,12 @@ addAiTemplate("equipDefault", equipDefault)
 
 healDefault = {
 	{id="3412645993",	name="Sequence",	pid="none"},
-	{id="3070384900",	name="Not",	pid="3412645993"},
-	{id="136362440",	name="If",	pid="3070384900"},
-	{id="2378733296",	name="CheckPosture",	pid="136362440",	args={condition=KNOCKEDDOWN}},
 	{id="2638573300",	name="Selector",	pid="3412645993"},
 	{id="2194304589",	name="If",	pid="2638573300"},
 	{id="2199358504",	name="CheckMovementState",	pid="2194304589",	args={condition=MOVING_TO_HEAL}},
 	{id="3642803509",	name="Sequence",	pid="2638573300"},
 	{id="3673985997",	name="If",	pid="3642803509"},
 	{id="4043069176",	name="CheckIsHealer",	pid="3673985997"},
-	{id="3665716442",	name="If",	pid="3642803509"},
-	{id="1601692717",	name="CheckIsInCombat",	pid="3665716442"},
 	{id="3816980756",	name="If",	pid="3642803509"},
 	{id="1970265917",	name="CheckHealChance",	pid="3816980756"},
 	{id="1528696497",	name="GetHealTarget",	pid="3642803509",	args={range=60.0}},
@@ -216,9 +211,33 @@ moveDefault = {
 	{id="3690551020",	name="FindNextPosition",	pid="3937110156"}}
 addAiTemplate("moveDefault", moveDefault)
 
+notifyHelpDefault = {
+	{id="801960668",	name="Sequence",	pid="none"},
+	{id="1696799548",	name="If",	pid="801960668"},
+	{id="2818754924",	name="CheckCallForHelp",	pid="1696799548"},
+	{id="708981659",	name="If",	pid="801960668"},
+	{id="1970598206",	name="CheckIsType",	pid="708981659",	args={condition=NPCTYPE}},
+	{id="1993112640",	name="Selector",	pid="801960668"},
+	{id="996086380",	name="If",	pid="1993112640"},
+	{id="4074755753",	name="CheckMovementState",	pid="996086380",	args={condition=MOVING_TO_HEAL}},
+	{id="4049270502",	name="LookForAllies",	pid="1993112640"},
+	{id="1419427323",	name="CallForHelp",	pid="4049270502"},
+	{id="3173027259",	name="WriteBlackboard",	pid="801960668",	args={key="moveMode", val=RUN}},
+	{id="3649208780",	name="AlwaysSucceed",	pid="801960668"},
+	{id="837811894",	name="TreeSocket",	pid="3649208780",	args={slot=MOVE}}}
+addAiTemplate("notifyHelpDefault", notifyHelpDefault)
+
 rootDefault = {
 	{id="714360210",	name="Selector",	pid="none"},
-	{id="1083123564",	name="TreeSocket",	pid="714360210",	args={slot=HEAL}},
+	{id="3684005064",	name="Sequence",	pid="714360210"},
+	{id="2242560418",	name="If",	pid="3684005064"},
+	{id="891055589",	name="CheckIsInCombat",	pid="2242560418"},
+	{id="1730788281",	name="Not",	pid="3684005064"},
+	{id="3644134237",	name="If",	pid="1730788281"},
+	{id="3429751858",	name="CheckPosture",	pid="3644134237",	args={condition=KNOCKEDDOWN}},
+	{id="3093046551",	name="Selector",	pid="3684005064"},
+	{id="1083123564",	name="TreeSocket",	pid="3093046551",	args={slot=HEAL}},
+	{id="2192079094",	name="TreeSocket",	pid="3093046551",	args={slot=NOTIFYHELP}},
 	{id="4192507528",	name="Sequence",	pid="714360210"},
 	{id="2466392703",	name="Sequence",	pid="4192507528"},
 	{id="217738262",	name="Not",	pid="2466392703"},

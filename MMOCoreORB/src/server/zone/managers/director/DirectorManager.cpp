@@ -465,7 +465,6 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("EXITEDAREA", ObserverEventType::EXITEDAREA);
 	luaEngine->setGlobalInt("DESTINATIONREACHED", ObserverEventType::DESTINATIONREACHED);
 	luaEngine->setGlobalInt("SPECIALATTACK", ObserverEventType::SPECIALATTACK);
-	luaEngine->setGlobalInt("CALLFORHELP", ObserverEventType::CALLFORHELP);
 	luaEngine->setGlobalInt("NEWBIETUTORIALZOOMCAMERA", ObserverEventType::NEWBIETUTORIALZOOMCAMERA);
 	luaEngine->setGlobalInt("CHAT", ObserverEventType::CHAT);
 	luaEngine->setGlobalInt("NEWBIETUTORIALHOLOCRON", ObserverEventType::NEWBIETUTORIALHOLOCRON);

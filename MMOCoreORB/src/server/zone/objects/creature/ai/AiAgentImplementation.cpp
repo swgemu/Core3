@@ -1059,11 +1059,6 @@ int AiAgentImplementation::notifyAttack(Observable* observable) {
 	return 0;
 }
 
-int AiAgentImplementation::notifyCallForHelp(Observable* observable, ManagedObject* arg1) {
-	// TODO: add aggroing
-	return 0;
-}
-
 int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (isDead() && !isPet()) {
 		switch (selectedID) {
@@ -1387,9 +1382,7 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 		threatMap->addAggro(defender->asTangibleObject(), 1);
 	}
 
-	if (defender->isCreatureObject()) {
-		notifyPackMobs(defender->asCreatureObject());
-	}
+	notifyPackMobs(defender);
 }
 
 void AiAgentImplementation::removeDefender(SceneObject* defender) {
@@ -2868,14 +2861,14 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
 }
 
-void AiAgentImplementation::notifyPackMobs(CreatureObject* attacker) {
+void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 	if (lastPackNotify.miliDifference() < 2000)
 		return;
 
 	auto closeObjectsVector = getCloseObjects();
 	Vector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
 	closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
-	String socialGroup = getSocialGroup().toLowerCase();
+	uint32 socialGroup = getSocialGroup().toLowerCase().hashCode();
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* object = static_cast<SceneObject*>(closeObjects.get(i));
@@ -2885,7 +2878,7 @@ void AiAgentImplementation::notifyPackMobs(CreatureObject* attacker) {
 
 		CreatureObject* creo = object->asCreatureObject();
 
-		if (creo == nullptr || creo->isDead() || creo->isPlayerCreature() || creo->isInCombat())
+		if (creo == nullptr || creo->isDead() || creo == asAiAgent() || creo->isPlayerCreature() || creo->isInCombat())
 			continue;
 
 		if (creo->getParentID() != getParentID())
@@ -2901,14 +2894,13 @@ void AiAgentImplementation::notifyPackMobs(CreatureObject* attacker) {
 
 		String targetSocialGroup = agent->getSocialGroup().toLowerCase();
 
-		if (targetSocialGroup.isEmpty() || targetSocialGroup != socialGroup)
+		if (targetSocialGroup.isEmpty() || targetSocialGroup.hashCode() != socialGroup)
 			continue;
 
-		// TODO: Make this distance variable per mob?
-		float packRange = 10.f;
+		float packRange = 20.f + (getLevel() / 100.f);
 
-		if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
-			packRange = 16.f;
+		if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE) {}
+			packRange += 5.f;
 
 		if (!agent->isInRange(asAiAgent(), packRange))
 			continue;
