@@ -1155,7 +1155,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 }
 
 void AiAgentImplementation::runAway(CreatureObject* target, float range, bool random = false) {
-	if (target == nullptr || asAiAgent()->getZoneUnsafe() == nullptr) {
+	if (getParent().get() != nullptr || getParentID() > 0 || target == nullptr || asAiAgent()->getZoneUnsafe() == nullptr) {
 		setMovementState(AiAgent::PATHING_HOME);
 		return;
 	}
@@ -1169,8 +1169,8 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 	setMovementState(AiAgent::FLEEING);
 
 	Vector3 runTrajectory;
-	Vector3 agentPosition = getWorldPosition();
-	Vector3 creaturePosition = target->getWorldPosition();
+	Vector3 agentPosition = getPosition();
+	Vector3 creaturePosition = target->getPosition();
 
 	if (random) {
 		runTrajectory.set((creaturePosition.getX() + System::random(20)) - (agentPosition.getX() + System::random(20)), (creaturePosition.getY() + System::random(20)) - (agentPosition.getY() + System::random(20)), 0);
@@ -1284,9 +1284,9 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 		return;
 	}
 
+#ifdef DEBUG_AIHEAL
 	ZoneServer* zoneServer = asAiAgent()->getZoneServer();
 
-#ifdef DEBUG_AIHEAL
 	ChatManager* chatManager = nullptr;
 
 	if (zoneServer != nullptr)
