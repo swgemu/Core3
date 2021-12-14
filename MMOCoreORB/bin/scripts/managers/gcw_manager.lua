@@ -51,7 +51,7 @@ bonusXP = 15
 
 -- Crackdown settings
 crackdownScansEnabled = true
-local crackdownTesting = true
+local crackdownTesting = false
 
 -- thresholds for scaling crackdown npc's difficulty, first threshold should always be 0.
 difficutlyScalingThresholds = {0, 64}
