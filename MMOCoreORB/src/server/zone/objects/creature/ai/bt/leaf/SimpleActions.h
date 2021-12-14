@@ -717,6 +717,93 @@ public:
 	}
 };
 
+class CallForHelp : public Behavior {
+public:
+	CallForHelp(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	CallForHelp(const CallForHelp& b) : Behavior(b) {
+	}
+
+	CallForHelp& operator=(const CallForHelp& b) {
+		if (this == &b)
+			return *this;
+		Behavior::operator=(b);
+
+		return *this;
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		ManagedReference<SceneObject*> ally = nullptr;
+		ManagedReference<SceneObject*> target = nullptr;
+
+		if (agent->peekBlackboard("allyProspect"))
+			ally = agent->readBlackboard("allyProspect").get<ManagedReference<SceneObject*> >().get();
+
+		if (agent->peekBlackboard("targetProspect"))
+			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
+
+		if (ally == nullptr || target == nullptr)
+			return FAILURE;
+
+		CreatureObject* allyCreo = ally->asCreatureObject();
+
+		if (allyCreo == nullptr || allyCreo->isDead()) {
+			agent->eraseBlackboard("allyProspect");
+			return FAILURE;
+		}
+
+		Vector3 agentPosition = agent->getPosition();
+		Vector3 allyPosition = allyCreo->getPosition();
+		int sqrDistance = agentPosition.squaredDistanceTo(allyPosition);
+
+		if (sqrDistance > 50 * 50) {
+			return FAILURE;
+		}
+
+		agent->clearPatrolPoints();
+		agent->setMovementState(AiAgent::EVADING);
+		agent->setNextPosition(allyPosition.getX(), allyPosition.getZ(), allyPosition.getY());
+
+		agent->faceObject(ally);
+
+		Time* callForHelp = agent->getLastCallForHelp();
+
+		if (callForHelp == nullptr)
+			return FAILURE;
+
+		if (sqrDistance < 10 * 10) {
+			callForHelp->updateToCurrentTime();
+			callForHelp->addMiliTime(60 * 1000);
+
+			Locker aLock(target);
+
+			if (target->isAiAgent()) {
+				Time* allyCall = target->asAiAgent()->getLastCallForHelp();
+
+				if (allyCall != nullptr) {
+					allyCall->updateToCurrentTime();
+					allyCall->addMiliTime(60 * 1000);
+				}
+			}
+
+			agent->notifyPackMobs(target);
+
+			agent->eraseBlackboard("allyTarget");
+			agent->setMovementState(AiAgent::FOLLOWING);
+		}
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className;
+
+		return msg.toString();
+	}
+};
+
 }
 }
 }

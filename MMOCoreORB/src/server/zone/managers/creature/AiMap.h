@@ -32,6 +32,7 @@
 #include "server/zone/objects/creature/ai/bt/decorator/UntilSuccess.h"
 #include "server/zone/objects/creature/ai/bt/decorator/LookForTarget.h"
 #include "server/zone/objects/creature/ai/bt/decorator/LookForPlayer.h"
+#include "server/zone/objects/creature/ai/bt/decorator/LookForAllies.h"
 
 #define _REGISTERBASE(name) factory.reg(#name, new BehaviorCreator<name>)
 #define _REGISTERNODE(name) factory.reg(#name, new BehaviorCreator<node::name>)
@@ -133,6 +134,7 @@ public:
 		lua->setGlobalInt("CRACKDOWNSCAN",				BehaviorTreeSlot::CRACKDOWNSCAN			);
 		lua->setGlobalInt("HEAL",						BehaviorTreeSlot::HEAL					);
 		lua->setGlobalInt("CHATREACTION",				BehaviorTreeSlot::CHATREACTION			);
+		lua->setGlobalInt("NOTIFYHELP",					BehaviorTreeSlot::NOTIFYHELP			);
 
 		lua->setGlobalInt("WALK",						DataVal::WALK							);
 		lua->setGlobalInt("RUN",						DataVal::RUN							);
@@ -146,6 +148,10 @@ public:
 		lua->setGlobalInt("AGENTTYPE",					DataVal::AGENT							);
 		lua->setGlobalInt("PRIMARYWEAPON",				DataVal::PRIMARYWEAPON					);
 		lua->setGlobalInt("SECONDARYWEAPON",			DataVal::SECONDARYWEAPON				);
+		lua->setGlobalInt("MONSTERTYPE",				DataVal::MONSTER						);
+		lua->setGlobalInt("DROIDTYPE",					DataVal::DROID							);
+		lua->setGlobalInt("ANDROIDTYPE",				DataVal::ANDROID						);
+		lua->setGlobalInt("HUMANOIDTYPE",				DataVal::HUMANOID						);
 
 		lua->setGlobalInt("OBLIVIOUS",					AiAgent::OBLIVIOUS						);
 		lua->setGlobalInt("WATCHING",					AiAgent::WATCHING						);
@@ -337,6 +343,7 @@ private:
 		_REGISTERDECO(UntilSuccess);
 		_REGISTERDECO(LookForTarget);
 		_REGISTERDECO(LookForPlayer);
+		_REGISTERDECO(LookForAllies);
 		// check behaviors
 		_REGISTERLEAF(CheckPosture);
 		_REGISTERLEAF(CheckDestination);
@@ -367,6 +374,7 @@ private:
 		_REGISTERLEAF(CheckIsInCombat);
 		_REGISTERLEAF(CheckHasPatrol);
 		_REGISTERLEAF(CheckProspectIsType);
+		_REGISTERLEAF(CheckIsType);
 		_REGISTERLEAF(CheckProspectJediTrial);
 		_REGISTERLEAF(CheckProspectIsIncapacitated);
 		_REGISTERLEAF(CheckIsKiller);
@@ -385,6 +393,7 @@ private:
 		_REGISTERLEAF(CheckIsHome);
 		_REGISTERLEAF(CheckHomeIsCell);
 		_REGISTERLEAF(CheckChatDelay);
+		_REGISTERLEAF(CheckCallForHelp);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -422,6 +431,7 @@ private:
 		_REGISTERLEAF(HealTarget);
 		_REGISTERLEAF(RestorePetPatrols);
 		_REGISTERLEAF(SendChatGreeting);
+		_REGISTERLEAF(CallForHelp);
 	}
 
 	void putBitmask(Lua* lua, String key) {
