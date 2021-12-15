@@ -2141,10 +2141,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	}
 
 	if (!found) {
-		if (getMovementState() == (AiAgent::PATROLLING || AiAgent::WATCHING) && patrolPoints.size() > 0)
+		uint32 movementState = getMovementState();
+
+		if ((movementState == AiAgent::PATROLLING || movementState == AiAgent::WATCHING) && patrolPoints.size() > 0)
 			savedPatrolPoints.add(patrolPoints.remove(0));
 
-		if (getMovementState() == AiAgent::EVADING)
+		if (movementState == AiAgent::EVADING)
 			setMovementState(AiAgent::FOLLOWING);
 
 		ManagedReference<SceneObject*> followCopy = followObject.get();
