@@ -80,7 +80,7 @@ int ContrabandScanSessionImplementation::cancelSession() {
 			PatrolPoint* home = scanner->getHomeLocation();
 
 			if (home != nullptr) {
-				if (scanner->getCreatureBitmask() & CreatureFlag::STATIC) {
+				if (scanner->getCreatureBitmask() & CreatureFlag::SCANNING_FOR_CONTRABAND) {
 					scanner->setMovementState(AiAgent::PATHING_HOME);
 					scanner->setNextPosition(home->getPositionX(), home->getPositionZ(), home->getPositionY());
 				}
@@ -389,6 +389,8 @@ void ContrabandScanSessionImplementation::initiateScan(Zone* zone, AiAgent* scan
 		scanner->addCreatureFlag(CreatureFlag::FOLLOW);
 
 	scanner->setFollowObject(player);
+	scanner->setMovementState(AiAgent::FOLLOWING);
+
 	sendSystemMessage(scanner, player, "dismount_imperial", "dismount_rebel");
 
 	if (player->isRidingMount()) {
