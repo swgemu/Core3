@@ -2901,7 +2901,7 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 
 		float packRange = 20.f + (getLevel() / 100.f);
 
-		if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE) {}
+		if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
 			packRange += 5.f;
 
 		if (!agent->isInRange(asAiAgent(), packRange))
