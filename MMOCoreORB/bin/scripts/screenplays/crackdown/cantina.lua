@@ -1,7 +1,7 @@
 CrackdownCantina = ScreenPlay:new {
 	isEnabled = true,
-	harassPrivileged = true,
-	debugNotify = true, -- Send system messages for testing
+	harassPrivileged = false,
+	debugNotify = false, -- Send system messages for testing
 
 	cantinaPlanets = { "corellia", "naboo", "tatooine" },
 
