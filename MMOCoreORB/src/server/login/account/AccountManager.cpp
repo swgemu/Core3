@@ -308,7 +308,16 @@ Reference<Account*> AccountManager::getAccount(uint32 accountID, bool forceSqlUp
 		accObj->setSalt(result->getString(3));
 		accObj->setAccountID(accountID);
 		accObj->setStationID(result->getUnsignedInt(5));
-		accObj->setTimeCreated(result->getUnsignedInt(6));
+
+		if (!ConfigManager::instance()->getBool("Core3.AccountManager.CreatedDateFirstConnect", false)) {
+			accObj->setTimeCreated(result->getUnsignedInt(6));
+		} else {
+			if (accObj->getTimeCreated() == 0) {
+				Time now;
+				accObj->setTimeCreated(now.getTime());
+			}
+		}
+
 		accObj->setAdminLevel(result->getInt(7));
 
 		accObj->updateFromDatabase();
@@ -370,7 +379,16 @@ Reference<Account*> AccountManager::getAccount(String query, String& passwordSto
 		account->setSalt(result->getString(3));
 		account->setAccountID(accountID);
 		account->setStationID(result->getUnsignedInt(5));
-		account->setTimeCreated(result->getUnsignedInt(6));
+
+		if (!ConfigManager::instance()->getBool("Core3.AccountManager.CreatedDateFirstConnect", false)) {
+			account->setTimeCreated(result->getUnsignedInt(6));
+		} else {
+			if (account->getTimeCreated() == 0) {
+				Time now;
+				account->setTimeCreated(now.getTime());
+			}
+		}
+
 		account->setAdminLevel(result->getInt(7));
 
 		account->updateFromDatabase();
