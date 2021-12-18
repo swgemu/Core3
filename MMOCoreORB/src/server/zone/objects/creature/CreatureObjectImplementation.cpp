@@ -3084,11 +3084,15 @@ String CreatureObjectImplementation::getFirstName() const {
 	}
 }
 
-String CreatureObjectImplementation::setFirstName(const String& newFirstName) {
+String CreatureObjectImplementation::setFirstName(const String& newFirstName, bool skipVerify) {
 	if (!isPlayerCreature())
 		return "Can only set FirstName on players.";
 
-	return getZoneServer()->getPlayerManager()->setFirstName(asCreatureObject(), newFirstName);
+	return getZoneServer()->getPlayerManager()->setFirstName(asCreatureObject(), newFirstName, skipVerify);
+}
+
+String CreatureObjectImplementation::setFirstName(const String& newFirstName) {
+	return setFirstName(newFirstName, false);
 }
 
 String CreatureObjectImplementation::getLastName() const {

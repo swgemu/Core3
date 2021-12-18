@@ -1212,6 +1212,8 @@ class CreatureObject extends TangibleObject {
 	@read
 	public native string getFirstName();
 
+	public native string setFirstName(final string newFirstName, boolean skipVerify);
+
 	public native string setFirstName(final string newFirstName);
 
 	@read

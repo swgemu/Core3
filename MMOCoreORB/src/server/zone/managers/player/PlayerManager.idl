@@ -149,7 +149,7 @@ class PlayerManager extends Observer implements Logger {
 	@local
 	public native boolean checkPlayerName(ClientCreateCharacterCallback callback);
 
-	public native string setFirstName(CreatureObject creature, final string newFirstName);
+	public native string setFirstName(CreatureObject creature, final string newFirstName, boolean skipVerify = false);
 
 	public native string setLastName(CreatureObject creature, final string newLastName, boolean skipVerify = false);
 

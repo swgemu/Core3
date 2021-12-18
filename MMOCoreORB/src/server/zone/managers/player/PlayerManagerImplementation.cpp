@@ -780,7 +780,7 @@ bool PlayerManagerImplementation::checkPlayerName(ClientCreateCharacterCallback*
 	return true;
 }
 
-String PlayerManagerImplementation::setFirstName(CreatureObject* creature, const String& newFirstName) {
+String PlayerManagerImplementation::setFirstName(CreatureObject* creature, const String& newFirstName, bool skipVerify) {
     if (creature == nullptr)
 		return "nullptr creature specified";
 
@@ -800,34 +800,36 @@ String PlayerManagerImplementation::setFirstName(CreatureObject* creature, const
 
 	Locker locker(creature, ghost);
 
-	auto nameManager = processor->getNameManager();
+	if (!skipVerify) {
+		auto nameManager = processor->getNameManager();
 
-	int result = nameManager->validateName(newFirstName, creature->getSpecies());
+		int result = nameManager->validateName(newFirstName, creature->getSpecies());
 
-	switch (result) {
-	case NameManagerResult::ACCEPTED:
-		break;
-	case NameManagerResult::DECLINED_EMPTY:
-		return "First names may not be empty.";
-		break;
-	case NameManagerResult::DECLINED_RACE_INAPP:
-		return "That name is inappropriate for the player's species.";
-		break;
-	case NameManagerResult::DECLINED_PROFANE:
-		return "That name is profane.";
-		break;
-	case NameManagerResult::DECLINED_DEVELOPER:
-		return "That is a developer's name.";
-		break;
-	case NameManagerResult::DECLINED_FICT_RESERVED:
-		return "That name is a reserved fictional name.";
-		break;
-	case NameManagerResult::DECLINED_RESERVED:
-		return "That name is reserved.";
-		break;
-	case NameManagerResult::DECLINED_SYNTAX:
-		return "That name contains invalid syntax.";
-		break;
+		switch (result) {
+		case NameManagerResult::ACCEPTED:
+			break;
+		case NameManagerResult::DECLINED_EMPTY:
+			return "First names may not be empty.";
+			break;
+		case NameManagerResult::DECLINED_RACE_INAPP:
+			return "That name is inappropriate for the player's species.";
+			break;
+		case NameManagerResult::DECLINED_PROFANE:
+			return "That name is profane.";
+			break;
+		case NameManagerResult::DECLINED_DEVELOPER:
+			return "That is a developer's name.";
+			break;
+		case NameManagerResult::DECLINED_FICT_RESERVED:
+			return "That name is a reserved fictional name.";
+			break;
+		case NameManagerResult::DECLINED_RESERVED:
+			return "That name is reserved.";
+			break;
+		case NameManagerResult::DECLINED_SYNTAX:
+			return "That name contains invalid syntax.";
+			break;
+		}
 	}
 
 	String oldFirstName = creature->getFirstName();
