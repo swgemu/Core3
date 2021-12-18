@@ -631,7 +631,7 @@ public:
 				fleeDelay->updateToCurrentTime();
 				fleeDelay->addMiliTime(delay * 1000);
 
-				float distance = System::random(75) + 25;
+				float distance = System::random(35) + 25;
 
 				agent->clearQueueActions();
 				agent->writeBlackboard("fleeRange", distance);
