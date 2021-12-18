@@ -21,7 +21,7 @@ class Account extends ManagedObject implements Logger {
 	protected transient unsigned int accountID;
 	protected transient unsigned int stationID;
 	protected transient unsigned int adminLevel;
-	protected transient unsigned int created;
+	protected unsigned int created;
 
 	protected transient CharacterList characterList;
 
