@@ -5,7 +5,11 @@
 #ifndef SETFIRSTNAMECOMMAND_H_
 #define SETFIRSTNAMECOMMAND_H_
 
+#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class SetFirstNameCommand : public QueueCommand {
 public:
@@ -32,7 +36,31 @@ public:
 			return INVALIDTARGET;
 		}
 
-		String newFirstName = arguments.toString();
+		StringTokenizer tokenizer(arguments.toString());
+		String newFirstName;
+		bool skipVerify = false;
+
+		if (tokenizer.hasMoreTokens()) {
+			String argument;
+			tokenizer.getStringToken(argument);
+
+			if (argument == "--force" || argument == "-f") {
+				auto ghost = creature->getPlayerObject();
+
+				if (ghost == nullptr || ghost->getAdminLevel() < 15) {
+					creature->sendSystemMessage("Must be adminLevel >= 15 to use --force on setFirstName.");
+					return INVALIDPARAMETERS;
+				}
+
+				skipVerify = true;
+
+				if (tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(newFirstName);
+				}
+			} else {
+				newFirstName = argument;
+			}
+		}
 
 		if (newFirstName.isEmpty()) {
 			creature->sendSystemMessage("Usage: /setfirstname {NewFirstName}");
@@ -45,7 +73,7 @@ public:
 
 		String oldFirstName = targetCreature->getFirstName();
 
-		String errmsg = targetCreature->setFirstName(newFirstName);
+		String errmsg = targetCreature->setFirstName(newFirstName, skipVerify);
 
 		if (!errmsg.isEmpty()) {
 			creature->sendSystemMessage(errmsg);

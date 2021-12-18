@@ -5,7 +5,11 @@
 #ifndef SETLASTNAMECOMMAND_H_
 #define SETLASTNAMECOMMAND_H_
 
+#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class SetLastNameCommand : public QueueCommand {
 public:
@@ -32,7 +36,31 @@ public:
 			return INVALIDTARGET;
 		}
 
+		StringTokenizer tokenizer(arguments.toString());
 		String newLastName = arguments.toString();
+		bool skipVerify = false;
+
+		if (tokenizer.hasMoreTokens()) {
+			String argument;
+			tokenizer.getStringToken(argument);
+
+			if (argument == "--force" || argument == "-f") {
+				auto ghost = creature->getPlayerObject();
+
+				if (ghost == nullptr || ghost->getAdminLevel() < 15) {
+					creature->sendSystemMessage("Must be adminLevel >= 15 to use --force on setLastName.");
+					return INVALIDPARAMETERS;
+				}
+
+				skipVerify = true;
+
+				if (tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(newLastName);
+				}
+			} else {
+				newLastName = argument;
+			}
+		}
 
 		Locker clocker(targetObj, creature);
 
@@ -40,7 +68,7 @@ public:
 
 		String oldLastName = targetCreature->getLastName();
 
-		String errmsg = targetCreature->setLastName(newLastName);
+		String errmsg = targetCreature->setLastName(newLastName, skipVerify);
 
 		if (!errmsg.isEmpty()) {
 			creature->sendSystemMessage(errmsg);
@@ -51,7 +79,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
 
 #endif //SETLASTNAMECOMMAND_H_
