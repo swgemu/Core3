@@ -199,6 +199,8 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 		{"brawler",60,16.2045,2.25,19.3968,135.003,1855477, "conversation"},
 		{"chiss_female",300,17.3045,2.25,19.3968,180.006,1855477, "conversation"},
 		{"commoner_naboo",60,17.3045,2.25,18.2968,360.011,1855477, "conversation"},
+		{"ral_mundi",60,-138.975,28,-4718.86, 180, 0, ""},
+		{"tarth_jaxx",60,-137.3, 28, -4717.8, 180, 0, ""},
 
 		-- Hotel
 		{"corellia_times_investigator",60,7.44572,1.00001,-8.00652,0,1855548, "conversation"},
@@ -362,6 +364,10 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 			end
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and mob[1] ~= "junk_dealer" then
+				CreatureObject(pMobile):setOptionsBitmask(0)
+			end
 		end
 	end
 
@@ -443,6 +449,4 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "ragtag_loon",300,-525.124,5.82557,-4079.84,207.519,0)
 	spawnMobile(self.planet, "ragtag_loon",300,-534.124,6.67109,-4078.84,149.496,0)
 	spawnMobile(self.planet, "ragtag_maniac",300,-691.483,7.08209,-4227.75,29.5129,0)
-	spawnMobile(self.planet, "ral_mundi",60,-138.975,28,-4718.86, 180, 0)
-	spawnMobile(self.planet, "tarth_jaxx",60,-137.3, 28, -4717.8, 180, 0)
 end

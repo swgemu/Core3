@@ -264,6 +264,10 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 			end
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and mob[1] ~= "junk_dealer" then
+				CreatureObject(pMobile):setOptionsBitmask(0)
+			end
 		end
 	end
 
@@ -290,5 +294,9 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 		self:setMoodString(pNpc, "bored")
 		self:setCustomName(pNpc, "Razor")
 		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+
+		if CreatureObject(pNpc):getPvpStatusBitmask() == 0 then
+			AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+		end
 	end
 end

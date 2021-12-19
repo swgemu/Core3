@@ -79,5 +79,9 @@ function EndorResearchOutpostScreenPlay:spawnMobiles()
 	if pNpc ~= nil then
 		self:setMoodString(pNpc, "npc_imperial")
 		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+
+		if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and mob[1] ~= "junk_dealer" then
+			CreatureObject(pMobile):setOptionsBitmask(0)
+		end
 	end
 end

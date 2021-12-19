@@ -324,5 +324,6 @@ function CityScreenPlay:spawnStationaryMobile(num)
 
 		AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 		CreatureObject(pMobile):setPvpStatusBitmask(0)
+		CreatureObject(pMobile):setOptionsBitmask(0)
 	end
 end
