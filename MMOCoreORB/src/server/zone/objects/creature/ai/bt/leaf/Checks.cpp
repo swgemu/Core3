@@ -59,11 +59,14 @@ template<> bool CheckProspectInRange::check(AiAgent* agent) const {
 		return tar != nullptr && agent->isInRange(tar, checkVar);
 	} else if (tar != nullptr && agent->peekBlackboard("aggroMod")) {
 		float aggroMod = agent->readBlackboard("aggroMod").get<float>();
-		int radius = agent->getAggroRadius();
+		float radius = agent->getAggroRadius();
+
 		if (radius == 0)
 			radius = AiAgent::DEFAULTAGGRORADIUS;
 
-		return agent->isInRange(tar, radius * aggroMod);
+		radius = Math::min(96.f, radius * aggroMod);
+
+		return agent->isInRange(tar, radius);
 	}
 
 	return false;

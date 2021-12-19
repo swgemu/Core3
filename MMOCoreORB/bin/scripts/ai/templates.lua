@@ -6,22 +6,6 @@ includeFile("deathWatch.lua")
 includeFile("enclaveSentinel.lua")
 includeFile("crackdown.lua")
 includeFile("villageRaider.lua")
---TODO: write templates, put them in the base ai directory and get rid of current ai script directory structure
---includeAiFile("templates/example.lua")
---includeAiFile("templates/stationary.lua")
---includeAiFile("templates/stationarynoleash.lua")
---includeAiFile("templates/follow.lua")
---includeAiFile("templates/wait.lua")
---includeAiFile("templates/idlewander.lua")
---includeAiFile("templates/idlewait.lua")
---includeAiFile("templates/idlepet.lua")
---includeAiFile("templates/gettargetreactive.lua")
---includeAiFile("templates/manualescort.lua")
---includeAiFile("templates/selectattacksimple.lua")
---includeAiFile("templates/combatmovesimple.lua")
---includeAiFile("templates/gettargetpet.lua")
---includeAiFile("templates/selectattackpet.lua")
---includeAiFile("templates/combatmovepet.lua")
 
 customMap = {
 	{ "crackdown", {
