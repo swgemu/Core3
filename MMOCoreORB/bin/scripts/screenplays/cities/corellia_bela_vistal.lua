@@ -207,12 +207,16 @@ function CorelliaBelaVistalScreenPlay:spawnMobiles()
 			end
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
+				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+			end
 		end
 	end
 
 	local pNpc = spawnMobile("corellia", "junk_dealer", 0, 6840.98, 315, -5630.49, -47, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
-		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 end

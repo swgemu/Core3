@@ -225,13 +225,17 @@ function NabooTheedScreenPlay:spawnMobiles()
 			end
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
+				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+			end
 		end
 	end
 
 	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, -5762.59, 6.6, 4234.66, 87, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
-		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 
 	--Creatures
@@ -309,7 +313,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -5.8, -0.9, -20.9, -52, 96)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
-		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 
 	--double waterfall island near Palace

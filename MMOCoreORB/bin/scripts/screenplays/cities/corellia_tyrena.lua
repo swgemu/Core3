@@ -387,6 +387,10 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 			end
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
+				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+			end
 		end
 	end
 
@@ -406,7 +410,7 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, -5639.2, 21, -2799.2, -40, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
-		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 
 	--Ragtag's
