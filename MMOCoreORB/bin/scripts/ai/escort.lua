@@ -2,6 +2,7 @@ moveEscort = {
 	{id="824192424",	name="Selector",	pid="none"},
 	{id="1974555353",	name="Not",	pid="824192424"},
 	{id="887883781",	name="Sequence",	pid="1974555353"},
+	{id="2315223567",	name="WriteBlackboard",	pid="887883781",	args={key="moveMode", val=RUN}},
 	{id="2074092638",	name="If",	pid="887883781"},
 	{id="2988186562",	name="CheckPosture",	pid="2074092638",	args={condition=UPRIGHT}},
 	{id="2904768555",	name="If",	pid="887883781"},

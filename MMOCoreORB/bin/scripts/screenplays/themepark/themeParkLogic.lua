@@ -880,6 +880,8 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea
 		elseif mission.missionType == "escort" then
 			CreatureObject(pNpc):setPvpStatusBitmask(0)
 			CreatureObject(pNpc):setOptionBit(INTERESTING)
+			CreatureObject(pNpc):setOptionBit(AIENABLED)
+			AiAgent(pNpc):addCreatureFlag(AI_STATIC)
 			self:normalizeNpc(pNpc, 16, 3000)
 		elseif mission.missionType == "retrieve" or mission.missionType == "deliver" then
 			CreatureObject(pNpc):setPvpStatusBitmask(0)
@@ -2105,6 +2107,7 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 		end
 	end
 
+	AiAgent(pConversingNpc):removeCreatureFlag(AI_STATIC)
 	AiAgent(pConversingNpc):addCreatureFlag(AI_NOAIAGGRO)
 	AiAgent(pConversingNpc):addCreatureFlag(AI_ESCORT)
 	AiAgent(pConversingNpc):setFollowObject(pConversingPlayer)
