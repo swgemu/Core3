@@ -44,9 +44,19 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 
 	planetManager = nullptr;
 
+	String capName = name;
+	capName[0] = toupper(name[0]);
+
+	int numThreads = ConfigManager::instance()->getInt("Core3.Zone.ThreadsDefault", 1);
+	numThreads = ConfigManager::instance()->getInt("Core3.Zone.Threads" + capName, numThreads);
+
 	setLoggingName("Zone " + name);
 
-	Core::getTaskManager()->initializeCustomQueue(zoneName, 1, true);
+	if (numThreads != 1) {
+		info(true) << "Zone " << capName << " using " << numThreads << " threads.";
+	}
+
+	Core::getTaskManager()->initializeCustomQueue(zoneName, numThreads, true);
 }
 
 void ZoneImplementation::createContainerComponent() {
