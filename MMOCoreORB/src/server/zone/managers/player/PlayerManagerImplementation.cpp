@@ -1776,7 +1776,9 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				String xpType = entry->elementAt(j).getKey();
 				float xpAmount = baseXp;
 
-				xpAmount *= (float) damage / totalDamage;
+				if (ConfigManager::instance()->getBool("Core3.PlayerManager.CombatXpSplit", true)) {
+					xpAmount *= (float) damage / totalDamage;
+				}
 
 				//Cap xp based on level
 				xpAmount = Math::min(xpAmount, calculatePlayerLevel(attackerCreo, xpType) * 300.f);
