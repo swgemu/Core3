@@ -387,6 +387,10 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 			end
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and mob[1] ~= "junk_dealer" then
+				CreatureObject(pMobile):setOptionsBitmask(0)
+			end
 		end
 	end
 
