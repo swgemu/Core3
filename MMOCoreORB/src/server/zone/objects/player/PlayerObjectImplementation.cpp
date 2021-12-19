@@ -65,6 +65,7 @@
 #include "server/zone/objects/player/events/ForceRegenerationEvent.h"
 #include "server/login/account/AccountManager.h"
 #include "templates/creature/SharedCreatureObjectTemplate.h"
+#include "server/zone/objects/player/sessions/survey/SurveySession.h"
 
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/managers/player/QuestInfo.h"
@@ -1466,6 +1467,12 @@ void PlayerObjectImplementation::notifyOffline() {
 
 	if (missionManager != nullptr && playerCreature->hasSkill("force_title_jedi_rank_02")) {
 		missionManager->updatePlayerBountyOnlineStatus(playerCreature->getObjectID(), false);
+	}
+
+	ManagedReference<SurveySession*> session = playerCreature->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
+
+	if (session != nullptr) {
+		session->cancelSession();
 	}
 
 	logSessionStats(true);
