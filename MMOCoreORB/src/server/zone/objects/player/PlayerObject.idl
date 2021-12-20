@@ -312,9 +312,7 @@ class PlayerObject extends IntangibleObject {
 	public static final int ONLINE = 1;
 	public static final int OFFLINE = 2;
 	public static final int LINKDEAD = 3;
-	public static final int LOGGINGIN = 4;
 	public static final int LOGGINGOUT = 5;
-	public static final int LOADING = 6;
 
 	public static final int PVP_RATING_FLOOR = 500;
 	public static final unsigned long PVP_RESET_TIME = 259200000; // 3 days
@@ -376,7 +374,7 @@ class PlayerObject extends IntangibleObject {
 
 		languageID = 0;
 
-		setOffline();
+		onlineStatus = OFFLINE;
 
 		performanceBuffTarget = 0;
 
@@ -785,21 +783,13 @@ class PlayerObject extends IntangibleObject {
 
 	public native void reload(ZoneClientSession client);
 
-	public void setOffline() {
-		if (isLinkDead()) {
-			// clear LD flag
-		}
-
-		onlineStatus = OFFLINE;
-	}
+	public native void setOffline();
 
 	public native void setLinkDead(boolean isSafeLogout = false);
 
 	public native void setOnline();
 
-	public void setLoggingOut() {
-		onlineStatus = LOGGINGOUT;
-	}
+	public native void setLoggingOut();
 
 	/**
 	 * Sends a badges response message
@@ -1580,18 +1570,8 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@read
-	public boolean isLoading() {
-		return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
-	}
-
-	@read
 	public boolean isLinkDead() {
 		return onlineStatus == LINKDEAD;
-	}
-
-	@read
-	public boolean isLoggingIn() {
-		return onlineStatus == LOGGINGIN;
 	}
 
 	@read

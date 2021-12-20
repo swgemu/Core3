@@ -1203,6 +1203,24 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath, bool isCombatAction) {
 	StringIdChatParameter stringId;
 
+	if (!CombatManager::instance()->areInDuel(attacker->asCreatureObject(), player)) {
+		TransactionLog trx(attacker, player, TrxCode::PLAYERDIED);
+		trx.addState("isCombatAction", isCombatAction);
+		trx.addState("typeofdeath", typeofdeath);
+		trx.addState("attackerFaction", attacker->getFaction());
+		trx.addState("attackerIsPlayerCreature", attacker->isPlayerCreature());
+		trx.addState("attackerIsPet", attacker->isPet());
+		trx.addState("playerFaction", player->getFaction());
+		trx.addState("playerIsRidingMount", player->isRidingMount());
+		trx.addState("playerPosture", player->getPosture());
+
+		auto ghost = player->getPlayerObject();
+
+		if (ghost != nullptr) {
+			trx.addState("playerCloningFacilityID", ghost->getCloningFacility());
+		}
+	}
+
 	if (player->isRidingMount()) {
 		player->updateCooldownTimer("mount_dismount", 0);
 		player->executeObjectControllerAction(STRING_HASHCODE("dismount"));

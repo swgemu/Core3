@@ -87,6 +87,11 @@ enum class TrxCode {
 	PLAYERMISCACTION,           // Misc player action
 	PLAYERTIP,                  // sui Tip
 	PLAYERTRADE,                // Player Trade
+	PLAYERDIED,                 // Player Died
+	PLAYERLINKDEAD,             // Player Link Dead
+	PLAYERLOGGINGOUT,           // Player Logging Out
+	PLAYEROFFLINE,              // Player Offline
+	PLAYERONLINE,               // Player Online
 	RECYCLED,                   // Recycled Items
 	SERVERDESTROYOBJECT,        // /serverDestroyObject command
 	SLICECONTAINER,             // Slicing session on a container
@@ -158,7 +163,12 @@ public:
 			switch (code) {
 				case TrxCode::EXPERIENCE:
 				case TrxCode::COMBATSTATS:
+				case TrxCode::PLAYERONLINE:
+				case TrxCode::PLAYEROFFLINE:
+				case TrxCode::PLAYERLINKDEAD:
+				case TrxCode::PLAYERLOGGINGOUT:
 					mAutoCommit = true;
+					setType("stats");
 					break;
 
 				default:
