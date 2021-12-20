@@ -889,6 +889,11 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::PLAYERMISCACTION:         return "playermiscaction";          // Misc player action
 	case TrxCode::PLAYERTIP:                return "playertip";                 // sui Tip
 	case TrxCode::PLAYERTRADE:              return "playertrade";               // Player Trade
+	case TrxCode::PLAYERONLINE:             return "playeronline";              // Player Online
+	case TrxCode::PLAYEROFFLINE:            return "playeroffline";             // Player Offline
+	case TrxCode::PLAYERLINKDEAD:           return "playerlinkdead";            // Player Link Dead
+	case TrxCode::PLAYERLOGGINGOUT:         return "playerloggingout";          // Player Logging Out
+	case TrxCode::PLAYERDIED:               return "playerdied";                // Player Died
 	case TrxCode::RECYCLED:                 return "recycled";                  // Recycled Items
 	case TrxCode::SERVERDESTROYOBJECT:      return "serverdestroyobject";       // /serverDestroyObject command
 	case TrxCode::SLICECONTAINER:           return "slicecontainer";            // Slicing session on a container
