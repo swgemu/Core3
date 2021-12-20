@@ -503,9 +503,6 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		if (!agent->isNonPlayerCreatureObject())
-			return FAILURE;
-
 		Time* postureSet = agent->getPostureSet();
 
 		if (postureSet == nullptr || !postureSet->isPast())

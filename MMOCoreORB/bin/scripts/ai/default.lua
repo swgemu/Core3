@@ -24,7 +24,11 @@ attackDefault = {
 	{id="807085653",	name="If",	pid="3604417668"},
 	{id="728357096",	name="CheckAttackIsValid",	pid="807085653"},
 	{id="2327622682",	name="EnqueueAttack",	pid="3280863871"},
-	{id="179413845",	name="SetAttackPosture",	pid="3280863871"}}
+	{id="1409207115",	name="AlwaysSucceed",	pid="3280863871"},
+	{id="3375230030",	name="Sequence",	pid="1409207115"},
+	{id="3190669470",	name="If",	pid="3375230030"},
+	{id="4134473136",	name="CheckIsType",	pid="3190669470",	args={condition=NPCTYPE}},
+	{id="179413845",	name="SetAttackPosture",	pid="3375230030"}}
 addAiTemplate("attackDefault", attackDefault)
 
 awareDefault = {
@@ -205,7 +209,7 @@ moveDefault = {
 	{id="439475086",	name="Sequence",	pid="95757095"},
 	{id="1464671058",	name="If",	pid="439475086"},
 	{id="2800332243",	name="CheckFlee",	pid="1464671058",	args={condition=0.1}},
-	{id="3377670639",	name="Flee",	pid="439475086",	args={delay=60}},
+	{id="3377670639",	name="Flee",	pid="439475086",	args={delay=15}},
 	{id="3937110156",	name="ParallelSelector",	pid="95757095"},
 	{id="3859304677",	name="Evade",	pid="3937110156",	args={maxEvadeChance=0.07, minEvadeChance=0.02}},
 	{id="3690551020",	name="FindNextPosition",	pid="3937110156"}}
@@ -275,7 +279,7 @@ scareDefault = {
 	{id="4154513359",	name="CheckProspectFacing",	pid="4278456295"},
 	{id="3009279984",	name="If",	pid="9692099"},
 	{id="1391512006",	name="CheckProspectLOS",	pid="3009279984"},
-	{id="2633134651",	name="RunAway",	pid="9692099",	args={dist=32.0}},
+	{id="2633134651",	name="RunAway",	pid="9692099",	args={dist=64.0}},
 	{id="2259218024",	name="SetAlert",	pid="9692099",	args={duration=5.0, show=false}}}
 addAiTemplate("scareDefault", scareDefault)
 
