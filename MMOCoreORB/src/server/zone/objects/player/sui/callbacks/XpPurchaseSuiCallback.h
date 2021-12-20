@@ -88,6 +88,8 @@ public:
 			return;
 		}
 
+		TransactionLog trx(TrxCode::EXPERIENCE, player);
+
 		if (grantType == "ability") {
 			SkillManager* skillManager = SkillManager::instance();
 			Ability* grantAbility = skillManager->getAbility(grantName);
@@ -98,7 +100,7 @@ public:
 			}
 
 			ghost->addAbility(grantAbility, true);
-			ghost->addExperience(xpType, -xpAmount, true);
+			ghost->addExperience(trx, xpType, -xpAmount, true);
 			player->sendSystemMessage("@item/xp_purchase:msg_learned_command");
 
 			if (!templateData->isNoRemove()) {
@@ -114,7 +116,7 @@ public:
 			}
 
 			if(ghost->addRewardedSchematic(schematic, SchematicList::QUEST, -1, true)) {
-				ghost->addExperience(xpType, -xpAmount, true);
+				ghost->addExperience(trx, xpType, -xpAmount, true);
 				player->sendSystemMessage("@item/xp_purchase:msg_learned_schematic");
 
 				if (!templateData->isNoRemove()) {
