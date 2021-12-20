@@ -167,6 +167,7 @@ public:
 				case TrxCode::PLAYEROFFLINE:
 				case TrxCode::PLAYERLINKDEAD:
 				case TrxCode::PLAYERLOGGINGOUT:
+				case TrxCode::SKILLTRAININGSYSTEM:
 					mAutoCommit = true;
 					setType("stats");
 					break;
