@@ -447,12 +447,17 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 			end
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
+				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+			end
 		end
 	end
 
 	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, 1471.19, 7.6, 3325.8, 0, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 
 	--Creatures

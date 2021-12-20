@@ -159,19 +159,23 @@ function RoriNarmleScreenPlay:spawnMobiles()
 			end
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
+				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+			end
 		end
 	end
 
 	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, -5187.95, 80, -2224.44, 176, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
-		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -4980.14, 80, -2284.88, -90, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
-		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 
 	--Creatures
