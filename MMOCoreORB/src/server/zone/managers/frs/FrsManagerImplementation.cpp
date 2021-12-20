@@ -848,6 +848,8 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 	if (ghost == nullptr)
 		return;
 
+	TransactionLog trx(TrxCode::EXPERIENCE, player);
+
 	if (amount > 0) {
 
           	if (ghost->hasCappedExperience("force_rank_xp"))
@@ -858,7 +860,7 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
                 	return;
                 }
 
-		ghost->addExperience("force_rank_xp", amount, true);
+		ghost->addExperience(trx, "force_rank_xp", amount, true);
 
 		if (sendSystemMessage) {
 			StringIdChatParameter param("@force_rank:experience_granted"); // You have gained %DI Force Rank experience.
@@ -877,7 +879,7 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 		if ((amount * -1) > curExperience)
 			amount = curExperience * -1;
 
-		ghost->addExperience("force_rank_xp", amount, true);
+		ghost->addExperience(trx, "force_rank_xp", amount, true);
 
 		if (sendSystemMessage) {
 			StringIdChatParameter param("@force_rank:experience_lost"); // You have lost %DI Force Rank experience.

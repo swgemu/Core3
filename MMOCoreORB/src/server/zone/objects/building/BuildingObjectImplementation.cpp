@@ -1203,8 +1203,11 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 
 		PlayerObject* ghost = owner->getPlayerObject();
 
-		if (ghost != nullptr)
-			ghost->addExperience("merchant", 50, true);
+		if (ghost != nullptr) {
+			TransactionLog trxExperience(TrxCode::EXPERIENCE, owner);
+			trxExperience.groupWith(trx);
+			ghost->addExperience(trxExperience, "merchant", 50, true);
+		}
 	}
 
 	updatePaidAccessList();

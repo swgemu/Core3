@@ -183,6 +183,18 @@ void TransactionLog::setSubject(SceneObject* subject, bool exportSubject) {
 	}
 }
 
+void TransactionLog::setExperience(const String& xpType, int xpAdd, int xpTotal) {
+	if (mTransaction.contains("xpAdd")) {
+		errorMessage() << "duplicate setExperience call: [" << xpType << "] = [" << xpAdd << "]";
+		Logger::console.error() << errorMessage() << " " << *this;
+		return;
+	}
+
+	mTransaction["xpType"] = xpType;
+	mTransaction["xpAdd"] = xpAdd;
+	mTransaction["xpTotal"] = xpTotal;
+}
+
 void TransactionLog::addRelatedObject(uint64 oid, bool trackChildren) {
 	if (!isEnabled() || oid == 0) {
 		return;
@@ -858,8 +870,11 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::CITYINCOMETAX:            return "cityincometax";             // City income taxes
 	case TrxCode::CITYSALESTAX:             return "citysalestax";              // City Sales taxes
 	case TrxCode::CITYTREASURY:             return "citytreasury";              // City Treasury
+	case TrxCode::COMBATSTATS:              return "combatstats";               // Combat Stats
 	case TrxCode::CRAFTINGSESSION:          return "craftingsession";           // Crafting Session
+	case TrxCode::DATABASECOMMIT:           return "databasecommit";            // Database Commit
 	case TrxCode::DESTROYSTRUCTURE:         return "destroystructure";          // Server destroyed structure (maintenance)
+	case TrxCode::EXPERIENCE:               return "experience";                // Player experience change
 	case TrxCode::EXTRACTCRATE:             return "extractcrate";              // Extract item from crate
 	case TrxCode::FACTORYOPERATION:         return "factoryoperation";          // Factory operations
 	case TrxCode::FISHING:                  return "fishing";                   // Fishing loot

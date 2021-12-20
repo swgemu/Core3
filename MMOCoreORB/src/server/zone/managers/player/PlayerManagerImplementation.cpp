@@ -1723,6 +1723,15 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				continue;
 			}
 
+			TransactionLog trx(owner, destructedObject, TrxCode::COMBATSTATS, attackerCreo);
+			trx.addState("combatTotalDamage", entry->getTotalDamage());
+			trx.addState("combatTotalNonAggroDamage", entry->getNonAggroDamage());
+			trx.addState("combatTotalHeal", entry->getHeal());
+			trx.addState("combatTotalSeconds", entry->getDurationSeconds());
+			trx.addState("combatDPS", entry->getDPS());
+			trx.addState("combatPlayerLevel", calculatePlayerLevel(owner));
+			trx.addState("combatPetLevel", calculatePlayerLevel(attackerCreo));
+
 			int totalPets = 1;
 
 			for (int i = 0; i < ownerGhost->getActivePetsSize(); i++) {
@@ -1753,6 +1762,8 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 					xpAmount *= gcwBonus;
 			}
 
+			trx.addState("combatTotalPets", totalPets);
+
 			awardExperience(owner, "creaturehandler", xpAmount);
 		} else if (attacker->isPlayerCreature()) {
 			if (!(attacker->getZone() == zone && destructedObject->isInRangeZoneless(attacker, 80))) {
@@ -1770,6 +1781,20 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			uint32 combatXp = 0;
 
 			Locker crossLocker(attackerCreo, destructedObject);
+
+			TransactionLog trx(attackerCreo, destructedObject, TrxCode::COMBATSTATS);
+			trx.addState("combatTotalDamage", entry->getTotalDamage());
+			trx.addState("combatTotalNonAggroDamage", entry->getNonAggroDamage());
+			trx.addState("combatTotalHeal", entry->getHeal());
+			trx.addState("combatTotalSeconds", entry->getDurationSeconds());
+			trx.addState("combatDPS", entry->getDPS());
+			trx.addState("combatPlayerLevel", calculatePlayerLevel(attackerCreo));
+
+			if (group != nullptr) {
+				trx.addState("combatGroupID", group->getObjectID());
+				trx.addState("combatGroupSize", group->getGroupSize());
+				trx.addState("combatGroupLevel", group->getGroupLevel());
+			}
 
 			for (int j = 0; j < entry->size(); ++j) {
 				uint32 damage = entry->elementAt(j).getValue();
@@ -1822,6 +1847,9 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				continue;
 
 			Locker squadLock(groupLeader, destructedObject);
+
+			trx.addState("squadLeader", groupLeader->getObjectID());
+			trx.addState("squadLeaderDistance", groupLeader->getDistanceTo(attackerCreo));
 
 			//If he is a squad leader, and is in range of this player, then add the combat exp for him to use.
 			//Removed distance check to keep current functionality. Attacker was previously comparing its location to itself
@@ -2084,6 +2112,8 @@ int PlayerManagerImplementation::awardExperience(CreatureObject* player, const S
 	if (playerObject == nullptr)
 		return 0;
 
+	TransactionLog trx(TrxCode::EXPERIENCE, player);
+
 	float speciesModifier = 1.f;
 
 	if (amount > 0)
@@ -2096,10 +2126,17 @@ int PlayerManagerImplementation::awardExperience(CreatureObject* player, const S
 
 	int xp = 0;
 
-	if (applyModifiers)
-		xp = playerObject->addExperience(xpType, (int) (amount * speciesModifier * buffMultiplier * localMultiplier * globalExpMultiplier));
-	else
-		xp = playerObject->addExperience(xpType, (int)amount);
+	trx.addState("applyModifiers", applyModifiers);
+
+	if (applyModifiers) {
+		trx.addState("speciesModifier", speciesModifier);
+		trx.addState("buffMultiplier", buffMultiplier);
+		trx.addState("localMultiplier", localMultiplier);
+		trx.addState("globalExpMultiplier", globalExpMultiplier);
+
+		xp = playerObject->addExperience(trx, xpType, (int) (amount * speciesModifier * buffMultiplier * localMultiplier * globalExpMultiplier));
+	} else
+		xp = playerObject->addExperience(trx, xpType, (int)amount);
 
 	player->notifyObservers(ObserverEventType::XPAWARDED, player, xp);
 
