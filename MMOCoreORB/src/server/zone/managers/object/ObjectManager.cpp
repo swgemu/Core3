@@ -19,6 +19,7 @@
 #include "conf/ConfigManager.h"
 #include "engine/orb/db/UpdateModifiedObjectsThread.h"
 #include "engine/orb/db/CommitMasterTransactionThread.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 using namespace engine::db;
 
@@ -990,6 +991,8 @@ void ObjectManager::onUpdateModifiedObjectsToDatabase() {
 }
 
 void ObjectManager::onCommitData() {
+	TransactionLog::onCommitData();
+
 	if (charactersSaved != nullptr) {
 		try {
 			StringBuffer query;

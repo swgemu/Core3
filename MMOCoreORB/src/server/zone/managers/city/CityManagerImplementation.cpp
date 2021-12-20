@@ -769,7 +769,8 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 			Reference<PlayerObject*> ghost = mayor->getSlottedObject("ghost").castTo<PlayerObject*> ();
 
 			if (ghost != nullptr) {
-				ghost->addExperience("political", 750, true);
+				TransactionLog trx(TrxCode::EXPERIENCE, mayor);
+				ghost->addExperience(trx, "political", 750, true);
 			}
 		}
 		updateCityVoting(city);
@@ -1156,7 +1157,8 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city, bool override
 			Reference<PlayerObject*> ghost = mayorObject->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 			if (ghost != nullptr) {
-				ghost->addExperience("political", votes * 300, true);
+				TransactionLog trx(TrxCode::EXPERIENCE, mayor);
+				ghost->addExperience(trx, "political", votes * 300, true);
 			}
 
 			if (votes > topVotes || (votes == topVotes && candidateID == incumbentID)) {

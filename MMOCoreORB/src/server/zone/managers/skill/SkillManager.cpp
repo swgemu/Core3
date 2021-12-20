@@ -240,6 +240,8 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		return false;
 
 	Locker locker(creature);
+	TransactionLog trx(TrxCode::EXPERIENCE, creature);
+	trx.addState("skill", skillName);
 
 	//Check for required skills.
 	auto requiredSkills = skill->getSkillsRequired();
@@ -273,7 +275,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		//Witdraw experience.
 		if (!noXpRequired) {
-			ghost->addExperience(skill->getXpType(), -skill->getXpCost(), true);
+			ghost->addExperience(trx, skill->getXpType(), -skill->getXpCost(), true);
 		}
 
 		creature->addSkill(skill, notifyClient);
@@ -674,7 +676,8 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 	for (int i = 0; i < experienceList->size(); ++i) {
 		String xpType = experienceList->getKeyAt(i);
 		if (experienceList->get(xpType) > xpTypeCapList->get(xpType)) {
-			ghost->addExperience(xpType, xpTypeCapList->get(xpType) - experienceList->get(xpType), true);
+			TransactionLog trx(TrxCode::EXPERIENCE, player);
+			ghost->addExperience(trx, xpType, xpTypeCapList->get(xpType) - experienceList->get(xpType), true);
 		}
 	}
 }

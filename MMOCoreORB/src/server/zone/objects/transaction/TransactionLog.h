@@ -68,8 +68,11 @@ enum class TrxCode {
 	CITYINCOMETAX,              // City income taxes
 	CITYSALESTAX,               // City Sales taxes
 	CITYTREASURY,               // City Treasury
+	COMBATSTATS,                // Combat Stats
 	CRAFTINGSESSION,            // Crafting Session
+	DATABASECOMMIT,             // Database Commit
 	DESTROYSTRUCTURE,           // Structure destroyed by system (maintenance etc)
+	EXPERIENCE,                 // Player experience change
 	EXTRACTCRATE,               // Extract item from crate
 	FACTORYOPERATION,           // Factory operations
 	FISHING,                    // Fishing Loot
@@ -152,7 +155,16 @@ public:
 
 	TransactionLog(TrxCode code, SceneObject* dst, CAPTURE_CALLER_DECLARE)
 		: TransactionLog((SceneObject*)nullptr, dst, (SceneObject*)nullptr, code, false, file, function, line) {
-			mAutoCommit = false;
+			switch (code) {
+				case TrxCode::EXPERIENCE:
+				case TrxCode::COMBATSTATS:
+					mAutoCommit = true;
+					break;
+
+				default:
+					mAutoCommit = false;
+					break;
+			}
 	}
 
 	TransactionLog(SceneObject* src, TrxCode code, uint amount, bool isCash = true, CAPTURE_CALLER_DECLARE)
@@ -270,6 +282,8 @@ public:
 
 	void setSubject(SceneObject* subject, bool exportSubject = false);
 
+	void setExperience(const String& xpType, int xpAdd, int xpTotal);
+
 	bool getAutoCommit() const {
 		return mAutoCommit;
 	}
@@ -304,6 +318,8 @@ public:
 	}
 
 	void addWorldPosition(String context, SceneObject* scno);
+
+	static void onCommitData();
 
 	static const String getNewTrxID();
 
