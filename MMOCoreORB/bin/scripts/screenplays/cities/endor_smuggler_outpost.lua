@@ -72,17 +72,13 @@ function EndorSmugglerOutpostScreenPlay:spawnMobiles()
 	local pNpc = spawnMobile("endor", "commoner_technician",60,3.5,0.1,3.9,0,3605972)
 	if pNpc ~= nil then
 		self:setMoodString(pNpc, "sad")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
+		CreatureObject(pNpc):setOptionsBitmask(0)
 	end
 
 	--tavern
 	local pNpc = spawnMobile("endor", "commoner_old",60,1.0,0.7,-4.4,0,6645605)
 	if pNpc ~= nil then
 		self:setMoodString(pNpc, "npc_sitting_chair")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
-
-		if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and mob[1] ~= "junk_dealer" then
-			CreatureObject(pMobile):setOptionsBitmask(0)
-		end
+		CreatureObject(pNpc):setOptionsBitmask(0)
 	end
 end
