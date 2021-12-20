@@ -78,10 +78,9 @@ function EndorResearchOutpostScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("endor", "kilnstrider",60,-3.44448,0.624999,-6.82681,331.362,9925367)
 	if pNpc ~= nil then
 		self:setMoodString(pNpc, "npc_imperial")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 
-		if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and mob[1] ~= "junk_dealer" then
-			CreatureObject(pMobile):setOptionsBitmask(0)
+		if CreatureObject(pNpc):getPvpStatusBitmask() == 0 and CreatureObject(pNpc):getOptionsBitmask() > 0 then
+			CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 		end
 	end
 end
