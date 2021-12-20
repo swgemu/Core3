@@ -95,6 +95,7 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		agent->clearQueueActions();
 		agent->clearCombatState(clearDefenders);
 
 		return !agent->isInCombat() ? SUCCESS : FAILURE;
@@ -774,7 +775,7 @@ public:
 
 		if (sqrDistance < 10 * 10) {
 			callForHelp->updateToCurrentTime();
-			callForHelp->addMiliTime(60 * 1000);
+			callForHelp->addMiliTime(90 * 1000);
 
 			Locker aLock(target);
 
@@ -783,7 +784,7 @@ public:
 
 				if (allyCall != nullptr) {
 					allyCall->updateToCurrentTime();
-					allyCall->addMiliTime(60 * 1000);
+					allyCall->addMiliTime(90 * 1000);
 				}
 			}
 

@@ -1826,11 +1826,15 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 	float newSpeed = runSpeed; // float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376f;
 	int posture = getPosture();
+	int movementState = getMovementState();
 
 	if (posture == CreaturePosture::CROUCHED) //move to BT?
 		return false;
 
-	if (walk && (!isFleeing() || posture == CreaturePosture::PRONE))
+	if (movementState == AiAgent::FLEEING)
+		newSpeed *= 0.7f;
+
+	if ((walk && movementState != AiAgent::FLEEING) || posture == CreaturePosture::PRONE)
 		newSpeed = walkSpeed;
 
 	if (hasState(CreatureState::IMMOBILIZED))

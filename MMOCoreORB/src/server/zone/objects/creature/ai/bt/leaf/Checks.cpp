@@ -227,8 +227,12 @@ template<> bool CheckFlee::check(AiAgent* agent) const {
 		return false;
 
 	Time* fleeDelay = agent->getFleeDelay();
+	int fleeChance = 40;
 
-	if (fleeDelay == nullptr || !fleeDelay->isPast())
+	if (agent->getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
+		fleeChance = 20;
+
+	if (fleeDelay == nullptr || !fleeDelay->isPast() || System::random(100) > fleeChance)
 		return false;
 
 	if ((agent->getHAM(CreatureAttribute::HEALTH) < agent->getMaxHAM(CreatureAttribute::HEALTH) * checkVar)
@@ -581,6 +585,14 @@ template<> bool CheckCallForHelp::check(AiAgent* agent) const {
 	if (callForHelp == nullptr || !callForHelp->isPast()) {
 		return false;
 	}
+
+	if (System::random(100) < 50) {
+		callForHelp->updateToCurrentTime();
+		callForHelp->addMiliTime(45 * 1000);
+
+		return false;
+	}
+
 
 	return true;
 }

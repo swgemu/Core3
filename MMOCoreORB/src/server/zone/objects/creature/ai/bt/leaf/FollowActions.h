@@ -631,6 +631,9 @@ public:
 				fleeDelay->updateToCurrentTime();
 				fleeDelay->addMiliTime(delay * 1000);
 
+				if (!agent->isInRange(target, 64.f))
+					return FAILURE;
+
 				float distance = System::random(35) + 25;
 
 				agent->clearQueueActions();
