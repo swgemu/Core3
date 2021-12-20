@@ -1684,6 +1684,42 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			baseXp = ai->getBaseXp();
 	}
 
+	Vector<uint64> playerList;
+
+	for (int i = 0; i < threatMap->size(); ++i) {
+		TangibleObject* attacker = threatMap->elementAt(i).getKey();
+
+		if (attacker == nullptr)
+			continue;
+
+		if (attacker->isPet()) {
+			CreatureObject* attackerCreo = attacker->asCreatureObject();
+
+			if (attackerCreo == nullptr)
+				continue;
+
+			CreatureObject* owner = attackerCreo->getLinkedCreature().get();
+
+			if (owner == nullptr)
+				continue;
+
+			uint64 attackerID = owner->getObjectID();
+
+			if (!playerList.contains(attackerID))
+				playerList.add(attackerID);
+		} else {
+			if (!attacker->isPlayerCreature())
+				continue;
+
+			uint64 attackerID = attacker->getObjectID();
+
+			if (!playerList.contains(attackerID))
+				playerList.add(attackerID);
+		}
+	}
+
+	int mobTapCount = playerList.size();
+
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
 		TangibleObject* attacker = threatMap->elementAt(i).getKey();
@@ -1749,7 +1785,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				xpAmount = Math::min(xpAmount, (float)attacker->getLevel() * 50.f);
 				xpAmount /= totalPets;
 
-				if (winningFaction == attacker->getFaction())
+				if (winningFaction != Factions::FACTIONNEUTRAL && winningFaction == attacker->getFaction())
 					xpAmount *= gcwBonus;
 			}
 
@@ -1778,6 +1814,9 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 				if (ConfigManager::instance()->getBool("Core3.PlayerManager.CombatXpSplit", true)) {
 					xpAmount *= (float) damage / totalDamage;
+				} else {
+					float xpMod = Math::max(0.8f, 1.f - (mobTapCount * 0.02f));
+					xpAmount *= xpMod;
 				}
 
 				//Cap xp based on level
@@ -1787,7 +1826,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				if (group != nullptr)
 					xpAmount *= groupExpMultiplier;
 
-				if (winningFaction == attackerCreo->getFaction())
+				if (winningFaction != Factions::FACTIONNEUTRAL && winningFaction == attackerCreo->getFaction())
 					xpAmount *= gcwBonus;
 
 				// Jedi experience doesn't count towards combat experience, and is earned at 20% the rate of normal experience
