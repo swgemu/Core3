@@ -24,7 +24,11 @@ attackDefault = {
 	{id="807085653",	name="If",	pid="3604417668"},
 	{id="728357096",	name="CheckAttackIsValid",	pid="807085653"},
 	{id="2327622682",	name="EnqueueAttack",	pid="3280863871"},
-	{id="179413845",	name="SetAttackPosture",	pid="3280863871"}}
+	{id="1409207115",	name="AlwaysSucceed",	pid="3280863871"},
+	{id="3375230030",	name="Sequence",	pid="1409207115"},
+	{id="3190669470",	name="If",	pid="3375230030"},
+	{id="4134473136",	name="CheckIsType",	pid="3190669470",	args={condition=NPCTYPE}},
+	{id="179413845",	name="SetAttackPosture",	pid="3375230030"}}
 addAiTemplate("attackDefault", attackDefault)
 
 awareDefault = {
