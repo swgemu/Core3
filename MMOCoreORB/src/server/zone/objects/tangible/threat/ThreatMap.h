@@ -39,6 +39,7 @@ class ThreatMapEntry : public VectorMap<String, uint32> {
 	uint64 threatBitmask;
 	int healAmount;
 	uint32 nonAggroDamageTotal;
+	Time startTime;
 
 public:
 	ThreatMapEntry() {
@@ -55,6 +56,7 @@ public:
 		threatBitmask = e.threatBitmask;
 		healAmount = e.healAmount;
 		nonAggroDamageTotal = e.nonAggroDamageTotal;
+		startTime = e.startTime;
 	}
 
 	ThreatMapEntry& operator=(const ThreatMapEntry& e) {
@@ -65,6 +67,7 @@ public:
 		threatBitmask = e.threatBitmask;
 		healAmount = e.healAmount;
 		nonAggroDamageTotal = e.nonAggroDamageTotal;
+		startTime = e.startTime;
 
 		VectorMap<String, uint32>::operator=(e);
 
@@ -92,6 +95,21 @@ public:
 
 	int getAggroMod() {
 		return aggroMod;
+	}
+
+	uint32 getDurationSeconds() {
+		Time now;
+		return startTime.miliDifference(now) / 1000.0;
+	}
+
+	uint32 getDPS() {
+		uint32 duration = getDurationSeconds();
+
+		if (duration > 0) {
+			return getTotalDamage() / getDurationSeconds();
+		}
+		
+		return 0;
 	}
 
 	void removeAggro(int value) {

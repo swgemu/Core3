@@ -569,22 +569,26 @@ void PlayerObjectImplementation::awardBadge(uint32 badge) {
 	playerManager->awardBadge(asPlayerObject(), badge);
 }
 
-int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {
-	if (xp == 0)
+int PlayerObjectImplementation::addExperience(TransactionLog& trx, const String& xpType, int xp, bool notifyClient) {
+	if (xp == 0) {
+		trx.setExperience(xpType, 0, experienceList.contains(xpType) ? experienceList.get(xpType) : 0);
 		return 0;
+	}
 
 	int valueToAdd = xp;
 
 	Locker locker(asPlayerObject());
 
-	if (xp > 0)
+	if (xp > 0) {
 		sessionStatsActivityXP += xp; // Count all xp as we're looking for activity not caps etc.
+		trx.addState("activityXP", xp);
+	}
 
 	if (experienceList.contains(xpType)) {
 		xp += experienceList.get(xpType);
 
 		if (xp <= 0 && xpType != "jedi_general") {
-			removeExperience(xpType, notifyClient);
+			removeExperience(trx, xpType, notifyClient);
 			return 0;
 		// -10 million experience cap for Jedi experience loss
 		} else if(xp < -10000000 && xpType == "jedi_general") {
@@ -616,10 +620,12 @@ int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool
 		experienceList.set(xpType, xp);
 	}
 
+	trx.setExperience(xpType, valueToAdd, experienceList.get(xpType));
+
 	return valueToAdd;
 }
 
-void PlayerObjectImplementation::removeExperience(const String& xpType, bool notifyClient) {
+void PlayerObjectImplementation::removeExperience(TransactionLog& trx, const String& xpType, bool notifyClient) {
 	if (!experienceList.contains(xpType))
 		return;
 
@@ -633,6 +639,8 @@ void PlayerObjectImplementation::removeExperience(const String& xpType, bool not
 	} else {
 		experienceList.drop(xpType);
 	}
+
+	trx.setExperience(xpType, experienceList.get(xpType) * -1, 0);
 }
 
 bool PlayerObjectImplementation::hasCappedExperience(const String& xpType) const {
@@ -2219,10 +2227,16 @@ void PlayerObjectImplementation::clearDisconnectEvent() {
 }
 
 void PlayerObjectImplementation::maximizeExperience() {
+	auto player = getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
+
+	if (player == nullptr)
+		return;
+
 	VectorMap<String, int>* xpCapList = getXpTypeCapList();
 
 	for (int i = 0; i < xpCapList->size(); ++i) {
-		addExperience(xpCapList->elementAt(i).getKey(), xpCapList->elementAt(i).getValue(), true);
+		TransactionLog trx(TrxCode::EXPERIENCE, player);
+		addExperience(trx, xpCapList->elementAt(i).getKey(), xpCapList->elementAt(i).getValue(), true);
 	}
 }
 
