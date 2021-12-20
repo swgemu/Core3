@@ -2127,6 +2127,9 @@ void PlayerObjectImplementation::setLinkDead(bool isSafeLogout) {
 
 	onlineStatus = LINKDEAD;
 
+	TransactionLog trx(TrxCode::PLAYERLINKDEAD, getParentRecursively(SceneObjectType::PLAYERCREATURE));
+	trx.addState("isSafeLogout", isSafeLogout);
+
 	logoutTimeStamp.updateToCurrentTime();
 	if(!isSafeLogout) {
 		info("went link dead");
@@ -2145,11 +2148,25 @@ void PlayerObjectImplementation::setLinkDead(bool isSafeLogout) {
 void PlayerObjectImplementation::setOnline() {
 	onlineStatus = ONLINE;
 
+	TransactionLog trx(TrxCode::PLAYERONLINE, getParentRecursively(SceneObjectType::PLAYERCREATURE));
+
 	clearCharacterBit(PlayerObjectImplementation::LD, true);
 
 	doRecovery(1000);
 
 	activateMissions();
+}
+
+void PlayerObjectImplementation::setOffline() {
+	onlineStatus = OFFLINE;
+
+	TransactionLog trx(TrxCode::PLAYEROFFLINE, getParentRecursively(SceneObjectType::PLAYERCREATURE));
+}
+
+void PlayerObjectImplementation::setLoggingOut() {
+	onlineStatus = LOGGINGOUT;
+
+	TransactionLog trx(TrxCode::PLAYERLOGGINGOUT, getParentRecursively(SceneObjectType::PLAYERCREATURE));
 }
 
 void PlayerObjectImplementation::reload(ZoneClientSession* client) {
@@ -2162,17 +2179,6 @@ void PlayerObjectImplementation::reload(ZoneClientSession* client) {
 
 	if (creature == nullptr)
 		return;
-
-	if (isLoggingIn()) {
-		creature->unlock();
-
-		auto owner = creature->getClient();
-
-		if (owner != nullptr && owner != client)
-			owner->disconnect();
-
-		creature->wlock();
-	}
 
 	setOnline();
 
