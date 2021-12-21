@@ -287,7 +287,9 @@ function VillageJediManagerTownship:spawnMobiles(currentPhase, spawnStaticMobs)
 				end
 				if (mobile[7] ~= "") then
 					CreatureObject(pMobile):setOptionsBitmask(136)
+
 					AiAgent(pMobile):setConvoTemplate(mobile[7])
+					AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 				end
 			end
 		end
@@ -308,6 +310,9 @@ function VillageJediManagerTownship:spawnMobiles(currentPhase, spawnStaticMobs)
 				CreatureObject(pMobile):setOptionsBitmask(136)
 				AiAgent(pMobile):setConvoTemplate(mobile[7])
 			end
+
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+
 			local mobileID = SceneObject(pMobile):getObjectID()
 			writeData("village:npc:object:" .. i, mobileID)
 		end

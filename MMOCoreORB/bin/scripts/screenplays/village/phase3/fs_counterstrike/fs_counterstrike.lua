@@ -224,7 +224,7 @@ function FsCounterStrike:despawnAllCamps()
 		if (pMesh ~= nil) then
 			SceneObject(pMesh):destroyObjectFromWorld()
 		end
-		
+
 		self:despawnCamp(tonumber(campTable[i]))
 	end
 end

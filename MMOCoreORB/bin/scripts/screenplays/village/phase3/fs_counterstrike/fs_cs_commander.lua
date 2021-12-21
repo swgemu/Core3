@@ -107,7 +107,6 @@ function FsCsCommander:setPlayerAsEscorter(pCommander, pPlayer)
 
 	AiAgent(pCommander):setFollowObject(pPlayer)
 	AiAgent(pCommander):setMovementState(AI_FOLLOWING)
-	AiAgent(pCommander):executeBehavior()
 end
 
 function FsCsCommander:createCommander(pTheater)
@@ -175,6 +174,8 @@ function FsCsCommander:createCommander(pTheater)
 		writeData(areaID .. ":theaterID", theaterID)
 	end
 
+	AiAgent(pCommander):addCreatureFlag(AI_ESCORT)
+	AiAgent(pCommander):addCreatureFlag(AI_FOLLOW)
 	createEvent(self.commanderDespawnTime, "FsCsCommander", "killCommander", pCommander, "")
 end
 

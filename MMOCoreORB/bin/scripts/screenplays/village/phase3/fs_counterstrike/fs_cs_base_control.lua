@@ -672,6 +672,7 @@ function FsCsBaseControl:setupSpawnedDefender(pMobile)
 
 	createEvent(getRandomNumber(10, 30) * 1000, "FsCsBaseControl", "doMobileSpatial", pMobile, "")
 
+	AiAgent(pMobile):addCreatureFlag(AI_ESCORT)
 	AiAgent(pMobile):setMovementState(AI_PATROLLING)
 
 	local theaterX = SceneObject(pTheater):getWorldPositionX()
@@ -704,9 +705,6 @@ function FsCsBaseControl:setupSpawnedDefender(pMobile)
 		door1Destroyed = true
 	end
 
-	AiAgent(pMobile):stopWaiting()
-	AiAgent(pMobile):setWait(0)
-
 	if (distToDoor1 < distToDoor2 or not door1Destroyed) then
 		AiAgent(pMobile):setNextPosition(door1X, door1Z, door1Y, 0)
 		AiAgent(pMobile):setHomeLocation(door1X, door1Z, door1Y, 0)
@@ -714,12 +712,10 @@ function FsCsBaseControl:setupSpawnedDefender(pMobile)
 		AiAgent(pMobile):setNextPosition(door2X, door2Z, door2Y, 0)
 		AiAgent(pMobile):setHomeLocation(door2X, door2Z, door2Y, 0)
 	end
-
-	AiAgent(pMobile):executeBehavior()
 end
 
 function FsCsBaseControl:doMobileSpatial(pMobile)
-	if (pMobile == nil or getRandomNumber(100) <= 75) then
+	if (pMobile == nil or getRandomNumber(100) <= 75 or CreatureObject(pMobile):isDead()) then
 		return
 	end
 
