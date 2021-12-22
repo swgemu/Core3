@@ -1884,23 +1884,14 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 	Reference<CommandQueueAction*> action = nullptr;
 
 	if (priority == QueueCommand::IMMEDIATE) {
-		float immediateDelay = 0.f;
+		if (queueCommand->addToCombatQueue() && isInCombat()) {
+			float immediateDelay = 0.f;
 
-		if (queueCommand->addToCombatQueue()) {
 			if (creo->hasAttackDelay()) {
 				const Time* attackDelay = creo->getCooldownTime("nextAttackDelay");
 				float attackTime = ((float)attackDelay->miliDifference() / 1000) * -1;
 
 				immediateDelay = attackTime;
-			}
-
-			if (creo->hasPostureChangeDelay()) {
-				const Time* postureDelay = creo->getCooldownTime("postureChangeDelay");
-				float postureTime = ((float)postureDelay->miliDifference() / 1000) * -1;
-
-				if (postureTime > immediateDelay) {
-					immediateDelay = postureTime;
-				}
 			}
 
 			if (immediateDelay > 0) {

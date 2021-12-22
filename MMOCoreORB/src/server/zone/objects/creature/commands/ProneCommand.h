@@ -22,14 +22,25 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		creature->setPosture(CreaturePosture::PRONE);
-
-		if (creature->isDizzied() && System::random(100) < 85)
-			creature->queueDizzyFallEvent();
+		if (creature->isAiAgent()) {
+			if (creature->isNonPlayerCreatureObject() && creature->isDizzied() && System::random(100) < 85) {
+				creature->queueDizzyFallEvent();
+			} else if (creature->isInCombat()) {
+				creature->setPosture(CreaturePosture::PRONE);
+				creature->doCombatAnimation(STRING_HASHCODE("change_posture"));
+			} else {
+				creature->setPosture(CreaturePosture::PRONE);
+			}
+		} else {
+			if (creature->isDizzied() && System::random(100) < 85) {
+				creature->queueDizzyFallEvent();
+			} else {
+				creature->setPosture(CreaturePosture::PRONE, true, true);
+			}
+		}
 
 		return SUCCESS;
 	}
-
 };
 
 #endif //PRONECOMMAND_H_

@@ -129,7 +129,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		return durationTime;
 	}
 
-	if (object->hasPostureChangeDelay()) {
+	if (object->hasPostureChangeDelay() && queueCommand->getDefaultPriority() != QueueCommand::IMMEDIATE) {
 		const Time* postureDelay = object->getCooldownTime("postureChangeDelay");
 		float postureTime = ((float)postureDelay->miliDifference() / 1000) * -1;
 
