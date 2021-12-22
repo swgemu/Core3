@@ -352,7 +352,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
-	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
+	controlledObject->initializePosition(player->getPositionX() + System::random(5) - 2, player->getPositionZ(), player->getPositionY() + System::random(5) - 2);
 	ManagedReference<CreatureObject*> creature = nullptr;
 
 	if (controlledObject->isCreatureObject()) {
@@ -422,8 +422,12 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	}
 
 	pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
-	pet->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
+	pet->setFollowObject(player);
+
+	// This will clear the points set by the BT and any stored points on the PCD
 	pet->clearPatrolPoints();
+	clearPatrolPoints();
+
 	if (petType == PetManager::CREATUREPET) {
 		pet->setCreatureBitmask(CreatureFlag::PET);
 	}
@@ -437,11 +441,13 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 			pet->setOptionBit(OptionBitmask::CONVERSE,true);
 		**/
 	}
+
 	pet->setAITemplate();
 	pet->activateRecovery();
 	// Not training any commands
 	trainingCommand = 0;
-	clearPatrolPoints();
+
+	pet->faceObject(player, true);
 }
 
 void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
