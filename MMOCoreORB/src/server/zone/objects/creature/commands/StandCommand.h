@@ -35,7 +35,7 @@ public:
 			if (creature->isNonPlayerCreatureObject() && creature->isDizzied() && System::random(100) < 85) {
 				creature->queueDizzyFallEvent();
 			} else if (creature->isInCombat()) {
-				creature->setPosture(CreaturePosture::UPRIGHT, false, true);
+				creature->setPosture(CreaturePosture::UPRIGHT);
 				creature->doCombatAnimation(STRING_HASHCODE("change_posture"));
 			} else {
 				creature->setPosture(CreaturePosture::UPRIGHT);
@@ -44,7 +44,7 @@ public:
 			if (creature->isDizzied() && System::random(100) < 85) {
 				creature->queueDizzyFallEvent();
 			} else {
-				creature->setPosture(CreaturePosture::UPRIGHT);
+				creature->setPosture(CreaturePosture::UPRIGHT, true, true);
 			}
 		}
 
