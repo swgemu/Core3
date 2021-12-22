@@ -65,6 +65,8 @@ public:
 
 		reached = p.reached;
 
+		direction = p.direction;
+
 		estimatedTimeOfArrival = p.estimatedTimeOfArrival;
 
 		return *this;
@@ -78,6 +80,8 @@ public:
 		position = std::move(p.position);
 
 		reached = p.reached;
+
+		direction = p.direction;
 
 		estimatedTimeOfArrival = p.estimatedTimeOfArrival;
 
