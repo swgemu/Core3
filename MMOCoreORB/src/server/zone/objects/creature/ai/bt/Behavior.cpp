@@ -40,7 +40,7 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 		if (agent != nullptr) {
 			// TODO: Should this be done here or in realizations of specific actions?
 			agent->clearCombatState(true);
-			agent->info("Invalid return from " + print(), true);
+			agent->info(true) << "Invalid return from " << print() << " in " << agent->getErrorContext();
 		}
 
 		return INVALID; // TODO: should this be FAILURE?

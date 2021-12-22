@@ -1552,4 +1552,7 @@ class AiAgent extends CreatureObject {
 	public native void removeTargetMissCount(unsigned long target) {
 		targetMissCount.drop(target);
 	}
+
+	@dirty
+	public native string getErrorContext();
 }

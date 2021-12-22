@@ -2464,7 +2464,8 @@ int AiAgentImplementation::setDestination() {
 		if (peekBlackboard("fleeRange"))
 			range = readBlackboard("fleeRange").get<float>() / 4;
 
-		if (followCopy == nullptr || !isInRange(followCopy, 128.f) || getNextPosition().isInRange(asAiAgent(), range > 5.f ? range : 5.f)) {
+		if (followCopy == nullptr || !isInRange(followCopy, 128.f)
+				|| getPatrolPointSize() == 0 || getNextPosition().isInRange(asAiAgent(), range > 5.f ? range : 5.f)) {
 			eraseBlackboard("fleeRange");
 			setMovementState(AiAgent::PATHING_HOME);
 			return setDestination();
@@ -3564,4 +3565,18 @@ bool AiAgentImplementation::isPet() const {
 void AiAgentImplementation::writeBlackboard(const String& key, const BlackboardData& data) {
 	blackboard.drop(key);
 	blackboard.put(key, data);
+}
+
+String AiAgentImplementation::getErrorContext() {
+	StringBuffer msg;
+
+	msg << typeid(*this).name() << ": " << getObjectID() << "'" << getDisplayedName() << "'";
+
+	auto zone = getZone();
+
+	msg << " zone: " << (zone != nullptr ? zone->getZoneName() : "nullptr");
+
+	msg << " " << getWorldPosition().toString();
+
+	return msg.toString();
 }
