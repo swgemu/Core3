@@ -3568,14 +3568,17 @@ void AiAgentImplementation::writeBlackboard(const String& key, const BlackboardD
 }
 
 String AiAgentImplementation::getErrorContext() {
+	auto zone = getZone();
+
 	StringBuffer msg;
 
 	msg << typeid(*this).name() << ": " << getObjectID() << "'" << getDisplayedName() << "'";
 
-	auto zone = getZone();
-
-	msg << " zone: " << (zone != nullptr ? zone->getZoneName() : "nullptr");
-
+	msg << " Health: " << getHAM(CreatureAttribute::HEALTH);
+	msg << " Action: " << getHAM(CreatureAttribute::ACTION);
+	msg << " Mind: " << getHAM(CreatureAttribute::MIND);
+	msg << " posture: " << CreaturePosture::postureToString(posture);
+	msg << " Zone: " << (zone != nullptr ? zone->getZoneName() : "nullptr");
 	msg << " " << getWorldPosition().toString();
 
 	return msg.toString();

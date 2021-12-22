@@ -1212,7 +1212,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		trx.addState("attackerIsPet", attacker->isPet());
 		trx.addState("playerFaction", player->getFaction());
 		trx.addState("playerIsRidingMount", player->isRidingMount());
-		trx.addState("playerPosture", player->getPosture());
+		trx.addState("playerPosture", CreaturePosture::postureToString(player->getPosture()));
 
 		auto ghost = player->getPlayerObject();
 

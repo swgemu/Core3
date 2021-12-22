@@ -230,6 +230,33 @@ public:
 
 	~CreaturePosture() {}
 
+	static const String postureToString(uint8 posture) {
+		switch (posture) {
+		case INVALID:        return "invalid";
+		case UPRIGHT:        return "upright";
+		case CROUCHED:       return "crouched";
+		case PRONE:          return "prone";
+		case SNEAKING:       return "sneaking";
+		case BLOCKING:       return "blocking";
+		case CLIMBING:       return "climbing";
+		case FLYING:         return "flying";
+		case LYINGDOWN:      return "lyingdown";
+		case SITTING:        return "sitting";
+		case SKILLANIMATING: return "skillanimating";
+		case DRIVINGVEHICLE: return "drivingvehicle";
+		case RIDINGCREATURE: return "ridingcreature";
+		case KNOCKEDDOWN:    return "knockeddown";
+		case INCAPACITATED:  return "incapacitated";
+		case DEAD:           return "dead";
+		}
+
+		StringBuffer msg;
+
+		msg << "Unknown(" << hex << posture << ")";
+
+		return msg.toString();
+	}
+
 	uint8 getLocomotion(uint8 pos, uint8 speed) const {
 		const CreatureMovementEntry* move = &movementTable.get(pos);
 
