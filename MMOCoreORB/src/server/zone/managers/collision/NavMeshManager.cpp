@@ -6,10 +6,10 @@
 #include "terrain/ProceduralTerrainAppearance.h"
 
 // Lower thread count, used during runtime
-const String NavMeshManager::TileQueue = "NavMeshWorker";
+const String NavMeshManager::TileQueue = "NavMeshWork";
 
 // Higher thread count, used for building large static cities during initialization
-const String NavMeshManager::MeshQueue = "NavMeshBuilder";
+const String NavMeshManager::MeshQueue = "NavMeshBuild";
 
 //#define NAVMESH_DEBUG
 

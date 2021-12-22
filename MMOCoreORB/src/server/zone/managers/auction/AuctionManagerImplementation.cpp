@@ -51,7 +51,7 @@ void AuctionManagerImplementation::initialize() {
 		setLogLevel(static_cast<Logger::LogLevel>(logLevel));
 	}
 
-	Core::getTaskManager()->initializeCustomQueue("AuctionSearchQueue", ConfigManager::instance()->getMaxAuctionSearchJobs(), true);
+	Core::getTaskManager()->initializeCustomQueue("AuctionSearch", ConfigManager::instance()->getMaxAuctionSearchJobs(), true);
 
 	auctionMap = new AuctionsMap();
 
