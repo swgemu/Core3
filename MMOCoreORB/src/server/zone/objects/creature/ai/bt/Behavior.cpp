@@ -19,10 +19,7 @@ Behavior::Behavior(const String& className, const uint32 id, const LuaObject& ar
 
 bool Behavior::checkConditions(AiAgent* agent) const {
 	// placeholder for more robust checkConditions
-	return agent != nullptr &&
-		   !agent->isDead() &&
-		   !agent->isIncapacitated() &&
-		   agent->getZone() != nullptr;
+	return agent != nullptr && !agent->isDead() && !agent->isIncapacitated() && agent->getZone() != nullptr;
 }
 
 Behavior::Status Behavior::doAction(AiAgent* agent) const {
@@ -40,7 +37,7 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 		if (agent != nullptr) {
 			// TODO: Should this be done here or in realizations of specific actions?
 			agent->clearCombatState(true);
-			agent->info(true) << "Invalid return from " << print() << " in " << agent->getErrorContext();
+			agent->info() << "Invalid return from " << print() << " in " << agent->getErrorContext();
 		}
 
 		return INVALID; // TODO: should this be FAILURE?

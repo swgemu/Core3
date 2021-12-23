@@ -90,9 +90,15 @@ public:
 				resetStatus();
 
 				int ferocity = creature->getFerocity();
+				int aggroChance = System::random(20 - ferocity);
 
-				if (System::random(20 - ferocity) == 0) {
-					CombatManager::instance()->startCombat(creature,player,true);
+				if (aggroChance == 0 && creature->isAiAgent()) {
+					AiAgent* agent = creature->asAiAgent();
+
+					if (agent != nullptr) {
+						Locker aLock(agent);
+						agent->addDefender(player);
+					}
 				}
 			}
 
@@ -230,8 +236,14 @@ public:
 			return;
 
 		creature->setPvpStatusBitmask(originalMask, true);
+
 		if (creature->isAiAgent()) {
 			AiAgent* agent = cast<AiAgent*>(creature.get());
+
+			if (agent == nullptr)
+				return;
+
+			agent->clearCreatureBit(CreatureFlag::STATIONARY);
 			agent->setAITemplate();
 		}
 	}

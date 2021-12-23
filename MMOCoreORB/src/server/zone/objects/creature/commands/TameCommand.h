@@ -68,7 +68,9 @@ public:
 		Locker clocker(baby, creature);
 
 		ManagedReference<CreatureManager*> manager = creature->getZone()->getCreatureManager();
-		manager->tame(baby, creature, force, adult);
+
+		if (manager != nullptr)
+			manager->tame(baby, creature, force, adult);
 
 		return SUCCESS;
 	}

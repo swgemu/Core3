@@ -2426,6 +2426,9 @@ float AiAgentImplementation::getMaxDistance() {
 					return 1.0f;
 				}
 			} else {
+				if (isPet() && isDroid())
+					return 2.0f;
+
 				return 4.0f;
 			}
 		} else if (getWeapon() != nullptr ) {

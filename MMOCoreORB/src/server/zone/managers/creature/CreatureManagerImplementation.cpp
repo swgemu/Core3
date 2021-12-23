@@ -1120,7 +1120,11 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 
 	if (creature->isAiAgent()) {
 		AiAgent* agent = creature->asAiAgent();
-		// TODO (dannuic): is there a better way to do this? We just set the root behavior to "wait" an indefinite amount of time before
+
+		if (agent == nullptr)
+			return;
+
+		agent->clearPatrolPoints();
 		agent->addCreatureFlag(CreatureFlag::STATIONARY);
 		agent->setAITemplate();
 	}
