@@ -26,7 +26,7 @@ void ActiveAreaEvent::run() {
 	}
 
 	StringBuffer newName;
-	newName << area->getLoggingName() << " ran event type " << eventType << " on " << object->getLoggingName();
+	newName << "ActiveArea(" << area->getObjectID() << ") ran event type " << eventType << " on " << object->getLoggingName();
 
 	auto tano = object->asTangibleObject();
 
