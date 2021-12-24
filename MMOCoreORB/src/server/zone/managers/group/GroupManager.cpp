@@ -42,6 +42,8 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	// Pre: leader locked
 	// Post: player invited to leader's group, leader locked
 
+	bool galaxyWide = ConfigManager::instance()->getBool("Core3.PlayerManager.GalaxyWideGrouping", false);
+
 	Locker clocker(target, leader);
 
 	if (target == leader) {
@@ -72,7 +74,13 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	if (target->isGrouped()) {
 		StringIdChatParameter stringId;
 		stringId.setStringId("group", "already_grouped");
-		stringId.setTT(target->getObjectID());
+
+		if (galaxyWide) {
+			stringId.setTT(target->getDisplayedName());
+		} else {
+			stringId.setTT(target->getObjectID());
+		}
+
 		leader->sendSystemMessage(stringId);
 		//leader->sendSystemMessage("group", "already_grouped", player->getObjectID());
 
@@ -82,7 +90,13 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	if (target->getGroupInviterID() == leader->getObjectID()) {
 		StringIdChatParameter stringId;
 		stringId.setStringId("group", "considering_your_group");
-		stringId.setTT(target->getObjectID());
+
+		if (galaxyWide) {
+			stringId.setTT(target->getDisplayedName());
+		} else {
+			stringId.setTT(target->getObjectID());
+		}
+
 		leader->sendSystemMessage(stringId);
 		//leader->sendSystemMessage("group", "considering_your_group", player->getObjectID());
 
@@ -90,7 +104,13 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	} else if (target->getGroupInviterID() != 0) {
 		StringIdChatParameter stringId;
 		stringId.setStringId("group", "considering_other_group"); // %TT is considering joining another group.
-		stringId.setTT(target->getObjectID());
+
+		if (galaxyWide) {
+			stringId.setTT(target->getDisplayedName());
+		} else {
+			stringId.setTT(target->getObjectID());
+		}
+
 		leader->sendSystemMessage(stringId);
 
 		return;

@@ -36,9 +36,16 @@ public:
 
 		creature->updateGroupInviterID(0);
 
+		bool galaxyWide = ConfigManager::instance()->getBool("Core3.PlayerManager.GalaxyWideGrouping", false);
+
 		StringIdChatParameter stringId;
 		stringId.setStringId("group", "decline_leader");
-		stringId.setTT(creature->getObjectID());
+
+		if (galaxyWide) {
+			stringId.setTT(creature->getDisplayedName());
+		} else {
+			stringId.setTT(creature->getObjectID());
+		}
 
 		inviter->sendSystemMessage(stringId);
 		creature->sendSystemMessage("@group:decline_self");
