@@ -54,11 +54,11 @@ fbase_specialist_noncom_hard = Creature:new {
 	primaryWeapon = "imperial_carbine",
 	secondaryWeapon = "imperial_pistol",
 	reactionStf = "@npc_reaction/military",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(marksmanmaster,carbineermaster),
-	secondaryAttacks = marksmanmaster
+	secondaryAttacks = merge(marksmanmaster,pistoleermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(fbase_specialist_noncom_hard, "fbase_specialist_noncom_hard")

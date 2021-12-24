@@ -35,7 +35,6 @@ imperial_probe_drone = Creature:new {
 	primaryWeapon = "object/weapon/ranged/droid/droid_probot_ranged.iff",
 	secondaryWeapon = "object/weapon/ranged/droid/droid_probot_ranged.iff",
 	defaultAttack = "attack",
-
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_probe_drone, "imperial_probe_drone")

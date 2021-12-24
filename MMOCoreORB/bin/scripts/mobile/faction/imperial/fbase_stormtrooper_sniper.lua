@@ -55,7 +55,7 @@ fbase_stormtrooper_sniper = Creature:new {
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(riflemanmaster,marksmanmaster),
-	secondaryAttacks = marksmanmaster
+	secondaryAttacks = merge(pistoleermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(fbase_stormtrooper_sniper, "fbase_stormtrooper_sniper")
