@@ -3575,14 +3575,14 @@ String AiAgentImplementation::getErrorContext() {
 
 	StringBuffer msg;
 
-	msg << typeid(*this).name() << ": " << getObjectID() << "'" << getDisplayedName() << "'";
+	msg << "AiAgentImplementation" << ": " << getObjectID() << "; '" << getDisplayedName() << "';";
 
-	msg << " Health: " << getHAM(CreatureAttribute::HEALTH);
-	msg << " Action: " << getHAM(CreatureAttribute::ACTION);
-	msg << " Mind: " << getHAM(CreatureAttribute::MIND);
-	msg << " posture: " << CreaturePosture::postureToString(posture);
-	msg << " Zone: " << (zone != nullptr ? zone->getZoneName() : "nullptr");
-	msg << " " << getWorldPosition().toString();
+	msg << " Health: " << getHAM(CreatureAttribute::HEALTH) << ";";
+	msg << " Action: " << getHAM(CreatureAttribute::ACTION) << ";";
+	msg << " Mind: " << getHAM(CreatureAttribute::MIND) << ";";
+	msg << " posture: " << CreaturePosture::postureToString(posture) << ";";
+	msg << " Zone: " << (zone != nullptr ? zone->getZoneName() : "nullptr") << ";";
+	msg << " at: " << getWorldPosition().toString();
 
 	return msg.toString();
 }

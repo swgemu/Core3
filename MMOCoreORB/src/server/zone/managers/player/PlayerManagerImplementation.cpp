@@ -1201,6 +1201,11 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 }
 
 void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath, bool isCombatAction) {
+	if (player == nullptr) {
+		error() << __FILE__ << ":" << __FUNCTION__ << "()" << " player is nullptr";
+		return;
+	}
+
 	StringIdChatParameter stringId;
 
 	if (!CombatManager::instance()->areInDuel(attacker->asCreatureObject(), player)) {
