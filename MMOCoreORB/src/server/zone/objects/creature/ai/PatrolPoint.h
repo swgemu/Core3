@@ -92,12 +92,14 @@ public:
 	inline void addSerializableVariables() {
 		addSerializableVariable("position", &position);
 		addSerializableVariable("reached", &reached);
+		addSerializableVariable("direction", &direction);
 		addSerializableVariable("estimatedTimeOfArrival", &estimatedTimeOfArrival);
 	}
 
 	friend void to_json(nlohmann::json& j, const PatrolPoint& p) {
 		j["position"] = p.position;
 		j["reached"] = p.reached;
+		j["direction"] = p.direction;
 		j["estimatedTimeOfArrival"] = p.estimatedTimeOfArrival;
 	}
 
