@@ -80,7 +80,7 @@ function EndorResearchOutpostScreenPlay:spawnMobiles()
 		self:setMoodString(pNpc, "npc_imperial")
 
 		if CreatureObject(pNpc):getPvpStatusBitmask() == 0 and CreatureObject(pNpc):getOptionsBitmask() > 0 then
-			CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
+			CreatureObject(pNpc):clearOptionBit(AIENABLED)
 		end
 	end
 end
