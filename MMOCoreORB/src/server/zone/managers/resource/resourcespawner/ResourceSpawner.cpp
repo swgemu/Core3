@@ -939,19 +939,24 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 	ManagedReference<SurveySession*> session = player->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 
 	if(session == nullptr) {
+		trx.abort() << "Missing active survey session";
 		return;
 	}
 
 	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool().get();
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (surveyTool == nullptr || player->getZone() == nullptr)
+	if (surveyTool == nullptr) {
+		trx.abort() << "Missing survey tool.";
 		return;
+	}
 
 	Zone* zne = player->getZone();
 
-	if (zne == nullptr)
+	if (zne == nullptr) {
+		trx.abort() << "Player zone nullptr";
 		return;
+	}
 
 	String zoneName = zne->getZoneName();
 
@@ -961,6 +966,7 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 		message.setTO(resname);
 		player->sendSystemMessage(message);
 		player->setPosture(CreaturePosture::UPRIGHT, true);
+		trx.abort() << message.toString();
 		return;
 	}
 
@@ -972,6 +978,7 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 		message.setTO(resname);
 		player->sendSystemMessage(message);
 		player->setPosture(CreaturePosture::UPRIGHT, true);
+		trx.abort() << message.toString();
 		return;
 	}
 
@@ -984,7 +991,7 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 		StringIdChatParameter message("survey", "sample_failed");
 		message.setTO(resname);
 		player->sendSystemMessage(message);
-
+		trx.abort() << message.toString();
 		return;
 	}
 
@@ -1007,14 +1014,11 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 	}
 
 	if (richSampleLocation != nullptr && richSampleLocation->getPosition() != Vector3(0, 0, 0)) {
-
 		if (player->getDistanceTo(richSampleLocation) < 10) {
-
 			player->sendSystemMessage("@survey:node_recovery");
 			unitsExtracted *= 5;
 
 		} else {
-
 			player->sendSystemMessage("@survey:node_not_close");
 		}
 
@@ -1023,13 +1027,12 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 	}
 
 	if (unitsExtracted < 2) {
-
 		// Send message to player about trace amounts
 		StringIdChatParameter message("survey", "trace_amount");
 		message.setTO(resname);
 		message.setDI(unitsExtracted);
 		player->sendSystemMessage(message);
-
+		trx.abort() << message.toString();
 		return;
 	}
 
@@ -1104,7 +1107,7 @@ bool ResourceSpawner::addResourceToPlayerInventory(TransactionLog& trx, Creature
 		if (!player->isIncapacitated() && !player->isDead()){
 			player->setPosture(CreaturePosture::UPRIGHT, true);
 		}
-		trx.errorMessage() << "No inventory space";
+		trx.abort() << "No inventory space";
 		return false;
 	}
 	// Create New resource container if one isn't found in inventory
@@ -1122,7 +1125,7 @@ bool ResourceSpawner::addResourceToPlayerInventory(TransactionLog& trx, Creature
 		Locker resLocker(harvestedResource);
 
 		harvestedResource->destroyObjectFromDatabase(true);
-		trx.errorMessage() << "transferObject failed in " << __FUNCTION__ << " near line " << __LINE__;
+		trx.abort() << "transferObject failed in " << __FUNCTION__ << " near line " << __LINE__;
 		return false;
 	}
 
