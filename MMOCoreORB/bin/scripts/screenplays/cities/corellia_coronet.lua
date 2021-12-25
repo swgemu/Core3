@@ -366,7 +366,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 
 			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
-				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+				CreatureObject(pMobile):clearOptionBit(AIENABLED)
 			end
 		end
 	end
@@ -374,12 +374,10 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, -189.62, 28, -4371.06, 0, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -28.7, -0.9, 20.8, 95, 8105505)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 
 	--Outside Misc
@@ -387,7 +385,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	if pNpc ~= nil then
 		self:setMoodString(pNpc, "calm")
 		self:setCustomName(pNpc, "Hunter Javeezo")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
+		CreatureObject(pNpc):clearOptionBit(AIENABLED)
 	end
 
 	--Meatlump's outside

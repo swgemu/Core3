@@ -161,7 +161,7 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 
 			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
-				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+				CreatureObject(pMobile):clearOptionBit(AIENABLED)
 			end
 		end
 	end
