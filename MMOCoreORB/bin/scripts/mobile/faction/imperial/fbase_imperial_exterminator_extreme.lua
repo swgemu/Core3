@@ -49,7 +49,7 @@ fbase_imperial_exterminator_extreme = Creature:new {
 	secondaryWeapon = "imperial_pistol",
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(marksmanmaster,carbineermaster),
