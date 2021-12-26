@@ -525,6 +525,8 @@ public:
 			postureSet->updateToCurrentTime();
 			postureSet->addMiliTime(20 * 1000);
 
+			Locker clocker(target,agent);
+
 			float sqrDist = agent->getPosition().squaredDistanceTo(target->getPosition());
 
 			if (sqrDist > 25 * 25) {
@@ -568,7 +570,7 @@ public:
 		if (agent->peekBlackboard("targetProspect"))
 			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
 
-		if (target == nullptr || !target->isCreatureObject())
+		if (target == nullptr || !target->isPlayerCreature())
 			return FAILURE;
 
 		Zone* zone = agent->getZone();
@@ -580,6 +582,8 @@ public:
 
 		if (gcwMan == nullptr)
 			return FAILURE;
+
+		Locker clocker(target, agent);
 
 		return gcwMan->runCrackdownScan(agent, target->asCreatureObject()) ? SUCCESS : FAILURE;
 	}
@@ -628,6 +632,8 @@ public:
 				healExecuted = true;
 			} else {
 				if (agent->isInRange(healTarget, 2.0f)) {
+					Locker clocker(healTarget, agent);
+
 					agent->healTarget(healTarget);
 
 					agent->setMovementState(AiAgent::FOLLOWING);
@@ -686,8 +692,10 @@ public:
 
 		CreatureObject* creoTarget = target->asCreatureObject();
 
-		if (!(creoTarget->getCurrentSpeed() > 0.5 * creoTarget->getWalkSpeed()))
+		if (creoTarget == nullptr || (creoTarget->getCurrentSpeed() < creoTarget->getWalkSpeed() * 0.5))
 			return FAILURE;
+
+		Locker clocker(target, agent);
 
 		if (!agent->hasReactionChatMessages() || agent->getParentUnsafe() != target->getParentUnsafe())
 			return FAILURE;
@@ -751,6 +759,8 @@ public:
 			return FAILURE;
 		}
 
+		Locker lock(allyCreo, agent);
+
 		Vector3 agentPosition = agent->getPosition();
 		Vector3 allyPosition = allyCreo->getPosition();
 		int sqrDistance = agentPosition.squaredDistanceTo(allyPosition);
@@ -763,7 +773,7 @@ public:
 		agent->setMovementState(AiAgent::EVADING);
 		agent->setNextPosition(allyPosition.getX(), allyPosition.getZ(), allyPosition.getY(), allyCreo->getParent().get().castTo<CellObject*>());
 
-		agent->faceObject(ally);
+		agent->faceObject(ally, true);
 
 		Time* callForHelp = agent->getLastCallForHelp();
 

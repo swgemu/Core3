@@ -287,7 +287,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		containerComponent = cast<ContainerComponent*>(ComponentManager::instance()->getComponent<SceneObjectComponent*>(conTemp));
 	}
 
-	if (!isPet() && isNpc() && System::random(50) < 15) {
+	if (!isPet() && isNpc() && getMoodID() == 0 && System::random(50) < 15) {
 		ZoneServer* zoneServer = asAiAgent()->getZoneServer();
 
 		if (zoneServer != nullptr) {
@@ -3477,7 +3477,7 @@ String AiAgentImplementation::getPersonalityStf() {
 }
 
 void AiAgentImplementation::sendReactionChat(SceneObject* object, int type, int state, bool force) {
-	if ((!getCooldownTimerMap()->isPast("reaction_chat") && !force) || getZoneUnsafe() == nullptr || !isNpc() || isDead()) {
+	if (object == nullptr || (!getCooldownTimerMap()->isPast("reaction_chat") && !force) || getZoneUnsafe() == nullptr || !isNpc() || isDead()) {
 		return;
 	}
 

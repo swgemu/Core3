@@ -40,6 +40,8 @@ public:
 		if (tar == nullptr)
 			return FAILURE;
 
+		Locker clocker(tar, agent);
+
 		agent->writeBlackboard("targetProspect", tar);
 
 		return SUCCESS;
@@ -62,6 +64,8 @@ public:
 		ManagedReference<SceneObject*> tar = agent->getMainDefender();
 		if (tar == nullptr)
 			return FAILURE;
+
+		Locker clocker(tar, agent);
 
 		agent->writeBlackboard("targetProspect", tar);
 
@@ -86,6 +90,8 @@ public:
 			return FAILURE;
 		}
 
+		Locker fLocker(followCopy, agent);
+
 		if (agent->hasDefender(followCopy)) {
 			return SUCCESS;
 		}
@@ -100,6 +106,8 @@ public:
 		if (target == nullptr) {
 			return FAILURE;
 		}
+
+		Locker clocker(target, agent);
 
 		agent->sendReactionChat(target, ReactionManager::ALLY);
 
@@ -132,6 +140,8 @@ public:
 		ManagedReference<SceneObject*> tar = cd->getLastCommandTarget().get();
 		if (tar == nullptr)
 			return FAILURE;
+
+		Locker clocker(tar, agent);
 
 		agent->writeBlackboard("targetProspect", tar);
 
@@ -175,6 +185,8 @@ public:
 			return SUCCESS;
 		}
 
+		Locker clocker(tar, agent);
+
 		agent->removeDefender(tar);
 		agent->eraseBlackboard("targetProspect");
 
@@ -199,6 +211,8 @@ public:
 			agent->eraseBlackboard("targetProspect");
 			return FAILURE;
 		}
+
+		Locker clocker(tar, agent);
 
 		agent->setDefender(tar);
 
@@ -226,6 +240,8 @@ public:
 			return FAILURE;
 		}
 
+		Locker clocker(tar, agent);
+
 		return agent->killPlayer(tar) ? SUCCESS : FAILURE;
 	}
 };
@@ -244,6 +260,8 @@ public:
 		ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
 		if (followCopy == nullptr)
 			return FAILURE;
+
+		Locker clocker(followCopy, agent);
 
 		float dist = agent->getDistanceTo(followCopy) - followCopy->getTemplateRadius() - agent->getTemplateRadius();
 		agent->writeBlackboard("followRange", BlackboardData(dist));
@@ -285,12 +303,20 @@ public:
 		case AiAgent::OBLIVIOUS:
 			agent->setOblivious();
 			break;
-		case AiAgent::WATCHING:
-			agent->setWatchObject(tar);
+		case AiAgent::WATCHING: {
+			if (tar != nullptr) {
+				Locker clocker(tar, agent);
+				agent->setWatchObject(tar);
+			}
 			break;
-		case AiAgent::STALKING:
-			agent->setStalkObject(tar);
+		}
+		case AiAgent::STALKING: {
+			if (tar != nullptr) {
+				Locker clocker(tar, agent);
+				agent->setStalkObject(tar);
+			}
 			break;
+		}
 		case AiAgent::FOLLOWING:
 			break;
 		case AiAgent::PATROLLING:
@@ -335,6 +361,11 @@ public:
 
 		CreatureObject* tarCreo = tar->asCreatureObject();
 
+		if (tarCreo == nullptr)
+			return FAILURE;
+
+		Locker clocker(tarCreo, agent);
+
 		float minMod = Math::min(1.f - (tarCreo->getLevel() - agent->getLevel()) / 8.f, 1.5f);
 		float mod = Math::max(0.75f, minMod);
 		agent->writeBlackboard("aggroMod", mod);
@@ -369,6 +400,8 @@ public:
 
 		if (tar == nullptr || !tar->isCreatureObject())
 			return FAILURE;
+
+		Locker clocker(tar, agent);
 
 		float aggroMod = 1.f;
 		if (agent->peekBlackboard("aggroMod"))
@@ -451,14 +484,6 @@ public:
 		float minChance = minEvadeChance;
 		float maxChance = maxEvadeChance;
 
-		ManagedReference<SceneObject*> tar = nullptr;
-
-		if (agent->peekBlackboard("targetProspect"))
-			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
-
-		if (tar == nullptr || !tar->isCreatureObject())
-			return FAILURE;
-
 		float primaryRange = 0;
 		float secondaryRange = 0;
 
@@ -481,10 +506,20 @@ public:
 			}
 		}
 
+		ManagedReference<SceneObject*> tar = nullptr;
+
+		if (agent->peekBlackboard("targetProspect"))
+			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
+
+		if (tar == nullptr || !tar->isCreatureObject())
+			return FAILURE;
+
 		CreatureObject* tarCreo = tar->asCreatureObject();
 
 		if (tarCreo == nullptr)
 			return FAILURE;
+
+		Locker clocker(tarCreo, agent);
 
 		if (tarCreo->isPlayerCreature()) {
 			float playerWeaponRange = 0;
@@ -534,7 +569,7 @@ public:
 
 		agent->setMovementState(AiAgent::EVADING);
 		agent->setNextPosition(position.getX(), position.getZ(), position.getY(), agent->getParent().get().castTo<CellObject*>());
-		agent->faceObject(tar);
+		agent->faceObject(tar, true);
 
 		return SUCCESS;
 	}
@@ -569,6 +604,9 @@ public:
 		if (agent->peekBlackboard("targetProspect"))
 			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
 
+		if (tar == nullptr)
+			return FAILURE;
+
 		int stalkRad = agent->getAggroRadius();
 
 		if (stalkRad == 0)
@@ -578,7 +616,9 @@ public:
 		stalkRad *= aggroMod * 2;
 		agent->writeBlackboard("stalkRadius", stalkRad);
 
-		if (tar == nullptr || !tar->isInRange(agent, stalkRad)) {
+		Locker clocker(tar, agent);
+
+		if (!tar->isInRange(agent, stalkRad)) {
 			return FAILURE;
 		}
 
@@ -628,6 +668,8 @@ public:
 			Time* fleeDelay = agent->getFleeDelay();
 
 			if (targetCreo != nullptr && fleeDelay != nullptr) {
+				Locker clocker(targetCreo, agent);
+
 				fleeDelay->updateToCurrentTime();
 				fleeDelay->addMiliTime(delay * 1000);
 
@@ -679,7 +721,7 @@ public:
 
 		uint32 lastCommand = controlDevice->getLastCommand();
 
-		if (lastCommand == PetManager::PATROL && newFollow != nullptr) {
+		if (lastCommand == PetManager::PATROL) {
 			Locker clocker(controlDevice, agent);
 
 			if (controlDevice->getPatrolPointSize() == 0)
@@ -702,6 +744,8 @@ public:
 		if (newFollow == nullptr) {
 			return FAILURE;
 		}
+
+		Locker clocker(newFollow, agent);
 
 		agent->setFollowObject(newFollow);
 
@@ -750,6 +794,8 @@ public:
 		if (followCopy != nullptr && followCopy == squadLeader) {
 			return FAILURE;
 		}
+
+		Locker clocker(squadLeader, agent);
 
 		agent->addCreatureFlag(CreatureFlag::FOLLOW);
 		agent->setFollowObject(squadLeader);
@@ -813,6 +859,8 @@ public:
 					agent->writeBlackboard("healTarget", healCreo);
 					return SUCCESS;
 				}
+
+				Locker clocker(healCreo, agent);
 
 				if (healCreo->isAggressiveTo(agent) || agent->isAggressiveTo(healCreo))
 					return FAILURE;
