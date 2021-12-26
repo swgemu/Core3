@@ -165,8 +165,8 @@ function NabooKerenScreenPlay:spawnMobiles()
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 
-			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
-				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 then
+				CreatureObject(pMobile):clearOptionBit(AIENABLED)
 			end
 		end
 	end
@@ -174,12 +174,10 @@ function NabooKerenScreenPlay:spawnMobiles()
 	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, 1242.11, 13, 2732.43, 48, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, 1286.34, 13, 2676.88, -166, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 
 	--newb grind starter spawns

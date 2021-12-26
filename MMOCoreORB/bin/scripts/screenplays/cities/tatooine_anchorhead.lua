@@ -118,8 +118,8 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 
-			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
-				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 then
+				CreatureObject(pMobile):clearOptionBit(AIENABLED)
 			end
 		end
 	end

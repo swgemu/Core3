@@ -280,8 +280,8 @@ function TatooineBestineScreenPlay:spawnMobiles()
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 
-			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
-				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 then
+				CreatureObject(pMobile):clearOptionBit(AIENABLED)
 			end
 		end
 	end
@@ -289,12 +289,10 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, -1136.25, 12, -3683.56, 40, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -1117.39, 12, -3686.64, -144, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 
 	--Creatures

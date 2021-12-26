@@ -265,8 +265,8 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 
-			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
-				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 then
+				CreatureObject(pMobile):clearOptionBit(AIENABLED)
 			end
 		end
 	end
@@ -280,23 +280,21 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, 345.73, 12, 5139.45, -177, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
+
 	pNpc = spawnMobile(self.planet, "nym_kusak_guardian", 60, -3.62, 3.27819, -25.44, 39.0011, 6595511)
 	if pNpc ~= nil then
 		self:setMoodString(pNpc, "calm")
 		self:setCustomName(pNpc, "Scourge")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
+
+		CreatureObject(pNpc):clearOptionBit(AIENABLED)
 	end
 
 	pNpc = spawnMobile(self.planet, "nym_kusak_guardian", 60, 3.62, 3.27819, -25.44, 325.01, 6595511)
 	if pNpc ~= nil then
 		self:setMoodString(pNpc, "bored")
 		self:setCustomName(pNpc, "Razor")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 
-		if CreatureObject(pNpc):getPvpStatusBitmask() == 0 then
-			CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
-		end
+		CreatureObject(pNpc):clearOptionBit(AIENABLED)
 	end
 end

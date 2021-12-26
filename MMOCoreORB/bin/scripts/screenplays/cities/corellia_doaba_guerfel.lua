@@ -243,8 +243,8 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 
 			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 
-			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 and CreatureObject(pMobile):getOptionsBitmask() > 0 then
-				CreatureObject(pMobile):setOptionsBitmask(CreatureObject(pMobile):getOptionsBitmask() - AIENABLED)
+			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 then
+				CreatureObject(pMobile):clearOptionBit(AIENABLED)
 			end
 		end
 	end
@@ -252,7 +252,6 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, 3367.86, 308.6, 5466.07, 0, 0)
 	if pNpc ~= nil then
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
-		CreatureObject(pNpc):setOptionsBitmask(CreatureObject(pNpc):getOptionsBitmask() - AIENABLED)
 	end
 
 	--newb starter grind spawns
