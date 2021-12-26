@@ -893,8 +893,13 @@ int AiAgentImplementation::enqueueAttack(int priority) {
 bool AiAgentImplementation::validateStateAttack() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 
-	if (followCopy == nullptr || !followCopy->isCreatureObject())
+	if (followCopy == nullptr)
 		return false;
+
+	if (!followCopy->isCreatureObject()) {
+		// Do not attempt to apply States to Non-CreO Targets
+		return true;
+	}
 
 	return validateStateAttack(followCopy->asCreatureObject(), nextActionCRC);
 }
