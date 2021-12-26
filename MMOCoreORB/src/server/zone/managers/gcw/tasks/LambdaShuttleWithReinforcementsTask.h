@@ -138,7 +138,7 @@ private:
 		Reference<AiAgent*> npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
 
 		if (npc != nullptr) {
-			Locker npcLock(npc);
+			Locker npcLock(npc, player);
 
 			if (reinforcementType == LAMBDASHUTTLEATTACK || reinforcementType == CONTAINMENTTEAM) {
 				CombatManager::instance()->startCombat(npc, player);
@@ -194,7 +194,7 @@ private:
 		AiAgent* squadLeader = containmentTeamObserver->getMember(0);
 
 		if (squadLeader != nullptr && player != nullptr) {
-			Locker slLock(squadLeader);
+			Locker slLock(squadLeader, player);
 
 			for (int i = 1; i <= containmentTeamObserver->size(); ++i) {
 				AiAgent* agent = containmentTeamObserver->getMember(i);
@@ -238,7 +238,6 @@ private:
 	}
 
 	void lambdaShuttleSpawn(SceneObject* lambdaShuttle, CreatureObject* player) {
-		Locker objLocker(lambdaShuttle);
 		lambdaShuttle->initializePosition(spawnPosition.getX(), spawnPosition.getZ(), spawnPosition.getY());
 		lambdaShuttle->setDirection(spawnDirection);
 		lambdaShuttle->createChildObjects();
@@ -246,19 +245,16 @@ private:
 	}
 
 	void lambdaShuttleLanding(SceneObject* lambdaShuttle) {
-		Locker objLocker(lambdaShuttle);
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::PRONE);
 	}
 
 	void lambdaShuttleUpright(SceneObject* lambdaShuttle) {
-		Locker objLocker(lambdaShuttle);
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
 	}
 
 	void lambdaShuttleTakeoff(SceneObject* lambdaShuttle) {
-		Locker objLocker(lambdaShuttle);
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
 		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
 		timeToDespawnLambdaShuttle = LAMBDATAKEOFFDESPAWNTIME;
@@ -318,7 +314,6 @@ private:
 		if (zone == nullptr) {
 			return false;
 		} else {
-			Locker objLocker(lambdaShuttle);
 			zone->transferObject(lambdaShuttle, -1, true);
 			return true;
 		}
@@ -387,6 +382,8 @@ public:
 			return;
 		}
 
+		Locker locker(player);
+
 		if (faction == 0) {
 			if (player->getFactionStatus() == FactionStatus::COVERT || player->getFactionStatus() == FactionStatus::OVERT) {
 				if (player->getFaction() == Factions::FACTIONREBEL) {
@@ -418,8 +415,9 @@ public:
 			return;
 		}
 
+		Locker clocker(lambdaShuttle, player);
+
 		if (--timeToDespawnLambdaShuttle == 0) {
-			Locker objLocker(lambdaShuttle);
 			lambdaShuttle->destroyObjectFromWorld(true);
 			weakLambdaShuttle = nullptr;
 		}
