@@ -1208,7 +1208,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	StringIdChatParameter stringId;
 
-	if (!CombatManager::instance()->areInDuel(attacker->asCreatureObject(), player)) {
+	if (!attacker->isPlayerCreature() || !CombatManager::instance()->areInDuel(attacker->asCreatureObject(), player)) {
 		TransactionLog trx(attacker, player, TrxCode::PLAYERDIED);
 		trx.addState("isCombatAction", isCombatAction);
 		trx.addState("typeofdeath", typeofdeath);
