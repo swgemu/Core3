@@ -31,7 +31,13 @@ public:
 		if (pet->getPosture() != CreaturePosture::UPRIGHT && pet->getPosture() != CreaturePosture::KNOCKEDDOWN)
 			pet->setPosture(CreaturePosture::UPRIGHT);
 
-		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target, true);
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> targetObject = zoneServer->getObject(target, true);
+
 		if (targetObject == nullptr || !targetObject->isCreatureObject()) {  // pets should be able to follow other mobiles as a command. i found multiple references to this. -- washu
 			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return GENERALERROR;
@@ -44,7 +50,7 @@ public:
 
 		uint64 playerID = tokenizer.getLongToken();
 
-		ManagedReference<CreatureObject*> player = server->getZoneServer()->getObject(playerID, true).castTo<CreatureObject*>();
+		ManagedReference<CreatureObject*> player = zoneServer->getObject(playerID, true).castTo<CreatureObject*>();
 
 		if (player == nullptr)
 			return GENERALERROR;
@@ -83,6 +89,7 @@ public:
 				return GENERALERROR;
 			}
 		}
+
 		// attempt peace if the pet is in combat
 		if (pet->isInCombat())
 			CombatManager::instance()->attemptPeace(pet);

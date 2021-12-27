@@ -737,7 +737,7 @@ public:
 			}
 
 			return SUCCESS;
-		} else if (lastCommand == PetManager::GUARD) {
+		} else if (lastCommand == PetManager::GUARD || lastCommand == PetManager::FOLLOWOTHER) {
 			newFollow = controlDevice->getLastCommandTarget();
 		}
 

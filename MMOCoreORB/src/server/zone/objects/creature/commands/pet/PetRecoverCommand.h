@@ -29,10 +29,14 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<CreatureObject*> player = pet->getLinkedCreature().get();
+
 		if (player == nullptr)
 			return GENERALERROR;
 
 		Locker crossLocker(player, pet);
+		Locker devLocker(controlDevice, pet);
+
+		controlDevice->setLastCommand(PetManager::FOLLOW);
 
 		// Check pet states
 		if (!pet->isIncapacitated())
@@ -46,6 +50,10 @@ public:
 
 		if (pet->getHAM(CreatureAttribute::MIND) <= 0)
 			pet->healDamage(player, CreatureAttribute::MIND, 1 - pet->getHAM(CreatureAttribute::MIND));
+
+		pet->setFollowObject(player);
+		pet->storeFollowObject();
+		pet->setMovementState(AiAgent::FOLLOWING);
 
 		// Player animation
 		player->doAnimation("heal_other");
