@@ -228,7 +228,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	} else if (command == FRIEND) {
 		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("petfriend"), "");
 	} else if (command == FOLLOWOTHER) {
-		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petfollow"), String::valueOf(speaker->getObjectID()));
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petfollow"), String::valueOf(speaker->getObjectID()), false);
 	} else if (command == TRICK1) {
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("pettrick"), "1", true);
 	} else if (command == TRICK2) {
@@ -511,6 +511,11 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 		destructedObject->setCurrentSpeed(0);
 		destructedObject->setPosture(CreaturePosture::INCAPACITATED, false);
 		destructedObject->updateLocomotion();
+
+		destructedObject->setFollowObject(nullptr);
+
+		if (destructedObject->peekBlackboard("targetProspect"))
+			destructedObject->eraseBlackboard("targetProspect");
 
 		uint32 incapTime = calculateIncapacitationTimer(destructedObject, condition);
 
