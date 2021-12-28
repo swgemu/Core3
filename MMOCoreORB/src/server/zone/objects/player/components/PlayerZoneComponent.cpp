@@ -76,8 +76,6 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 			ghost->unloadSpawnedChildren();
 		}
 
-		player->setMovementCounter(0);
-
 		player->notifyObservers(ObserverEventType::ZONESWITCHED);
 	}
 
@@ -110,8 +108,6 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 			ghost->updateLastValidatedPosition();
 			ghost->setClientLastMovementStamp(0);
 		}
-
-		player->setMovementCounter(0);
 	}
 }
 

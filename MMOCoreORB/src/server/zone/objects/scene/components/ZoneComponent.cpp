@@ -63,25 +63,27 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 		if (newParent == nullptr || !newParent->isCellObject())
 			return;
 
-		if (newPositionX != sceneObject->getPositionX() || newPositionZ != sceneObject->getPositionZ() || newPositionY != sceneObject->getPositionY()) {
+		if (sceneObject->getMovementCounter() == 0 || parentID != sceneObject->getParentID() || newPositionX != sceneObject->getPositionX() || newPositionZ != sceneObject->getPositionZ() || newPositionY != sceneObject->getPositionY()) {
 			sceneObject->setPosition(newPositionX, newPositionZ, newPositionY);
-			sceneObject->updateZoneWithParent(newParent, false, false);
+			sceneObject->incrementMovementCounter();
+			sceneObject->updateZoneWithParent(newParent, false, true);
 		}
 
 		//sceneObject->info("sending data transform with parent", true);
 
 		DataTransformWithParent* pack = new DataTransformWithParent(sceneObject);
-		sceneObject->broadcastMessage(pack, true, false);
+		sceneObject->sendMessage(pack);
 	} else {
-		if (newPositionX != sceneObject->getPositionX() || newPositionZ != sceneObject->getPositionZ() || newPositionY != sceneObject->getPositionY()) {
+		if (sceneObject->getMovementCounter() == 0 || parentID != sceneObject->getParentID() || newPositionX != sceneObject->getPositionX() || newPositionZ != sceneObject->getPositionZ() || newPositionY != sceneObject->getPositionY()) {
 			sceneObject->setPosition(newPositionX, newPositionZ, newPositionY);
-			sceneObject->updateZone(false, false);
+			sceneObject->incrementMovementCounter();
+			sceneObject->updateZone(false, true);
 		}
 
 		//sceneObject->info("sending data transform", true);
 
 		DataTransform* pack = new DataTransform(sceneObject);
-		sceneObject->broadcastMessage(pack, true, false);
+		sceneObject->sendMessage(pack);
 	}
 }
 
@@ -292,8 +294,8 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	}
 
 	Locker locker(newZone);
-
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
+	sceneObject->incrementMovementCounter();
 
 	if (newParent != nullptr) {
 		if (zone == newZone) {
@@ -315,6 +317,8 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	} else {
 		newZone->transferObject(sceneObject, -1, true);
 	}
+
+	sceneObject->setMovementCounter(0);
 }
 
 void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
