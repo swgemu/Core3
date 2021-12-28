@@ -70,6 +70,8 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 
 		//sceneObject->info("sending data transform with parent", true);
 
+		sceneObject->incrementMovementCounter();
+
 		DataTransformWithParent* pack = new DataTransformWithParent(sceneObject);
 		sceneObject->broadcastMessage(pack, true, false);
 	} else {
@@ -79,6 +81,8 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 		}
 
 		//sceneObject->info("sending data transform", true);
+
+		sceneObject->incrementMovementCounter();
 
 		DataTransform* pack = new DataTransform(sceneObject);
 		sceneObject->broadcastMessage(pack, true, false);
@@ -294,6 +298,7 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	Locker locker(newZone);
 
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
+	sceneObject->incrementMovementCounter();
 
 	if (newParent != nullptr) {
 		if (zone == newZone) {
@@ -315,6 +320,8 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	} else {
 		newZone->transferObject(sceneObject, -1, true);
 	}
+
+	sceneObject->setMovementCounter(0);
 }
 
 void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
