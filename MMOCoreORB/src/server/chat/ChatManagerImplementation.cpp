@@ -734,14 +734,8 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 
 	BaseMessage* msg = new ChatRoomMessage(fullName, server->getGalaxyName(), formattedMessage, roomID);
 
-	// Auction Chat and Planet Chat should adhere to player ignore list
-	if(auctionRoom != nullptr && auctionRoom->getRoomID() == roomID) {
+	// All chat should adhere to player ignore list
 		channel->broadcastMessageCheckIgnore(msg, name);
-	} else if (planetRoom != nullptr && planetRoom->getRoomID() == roomID) {
-		channel->broadcastMessageCheckIgnore(msg, name);
-	} else {
-		channel->broadcastMessage(msg);
-	}
 
 	BaseMessage* amsg = new ChatOnSendRoomMessage(counter);
 	channel->broadcastMessage(amsg);
@@ -1796,8 +1790,10 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 		Locker locker(receiver);
 		PlayerObject* receiverPlayerObject = receiver->getPlayerObject();
 
-		if ((receiverPlayerObject == nullptr) || (receiverPlayerObject->isIgnoring(sendername) && !godMode))
+		if ((receiverPlayerObject == nullptr) || (receiverPlayerObject->isIgnoring(sendername) && !godMode)) {
+			info(true) << "[ChatManager] player ignored...";
 			return;
+		}
 
 		ObjectManager::instance()->persistObject(mail, 1, "mail");
 		PlayerObject* ghost = receiver->getPlayerObject();
