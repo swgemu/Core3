@@ -34,6 +34,15 @@ private:
 			return GENERALERROR;
 		}
 
+		// Player must not be ignored
+		ManagedReference<PlayerObject*> target = targetPlayer->getPlayerObject();
+		if (!(target == nullptr)) {
+			String playerName = player->getFirstName().toLowerCase();
+			if (target->isIgnoring(playerName)) {
+				return GENERALERROR;
+			}
+		}
+
 		// We have a target, who is on-line, in range, with sufficient funds.
 		// Lock target player to prevent simultaneous tips to not register correctly.
 
