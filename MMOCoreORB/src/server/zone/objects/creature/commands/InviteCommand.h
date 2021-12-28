@@ -47,7 +47,7 @@ public:
 		if (object->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( object.get());
 
-			if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()) || godMode)
+			if (!player->getPlayerObject()->isIgnoring(creature->getFirstName()) || godMode)
 				groupManager->inviteToGroup(creature, player);
 		}
 

@@ -34,6 +34,13 @@ private:
 			return GENERALERROR;
 		}
 
+		// Player must not be ignored
+		ManagedReference<PlayerObject*> target = targetPlayer->getPlayerObject();
+		if (!(target == nullptr)) {
+			if (target->isIgnoring(player->getFirstName()))
+				return GENERALERROR;
+		}
+
 		// We have a target, who is on-line, in range, with sufficient funds.
 		// Lock target player to prevent simultaneous tips to not register correctly.
 
@@ -74,6 +81,13 @@ private:
 			ptnsfb.setTT(targetPlayer->getCreatureName());
 			player->sendSystemMessage(ptnsfb);
 			return GENERALERROR;
+		}
+
+		// Player must not be ignored
+		ManagedReference<PlayerObject*> target = targetPlayer->getPlayerObject();
+		if (!(target == nullptr)) {
+			if (target->isIgnoring(player->getFirstName()))
+				return GENERALERROR;
 		}
 
 		ManagedReference<SuiMessageBox*> confirmbox = new SuiMessageBox(player,
