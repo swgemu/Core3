@@ -178,13 +178,24 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose, boo
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			auto containerObject = cell->getContainerObject(j);
+			if (containerObject == nullptr) {
+				continue;
+			}
 
-			if (containerObject != nullptr && ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
-						|| (closeObjects != nullptr && closeObjects->contains(containerObject.get()))))
+			// send sceneObject create to self only with first update
+			if (containerObject == player) {
+				if (containerObject->getMovementCounter() == 0) {
+					containerObject->sendTo(player, true, false);
+				}
+
+				continue;
+			}
+
+			if ((containerObject->isCreatureObject() && publicStructure) || (closeObjects != nullptr && closeObjects->contains(containerObject.get()))) {
 				containerObject->sendTo(player, true, false);
+			}
 		}
 	}
-	//}
 }
 
 bool BuildingObjectImplementation::hasTemplateEjectionPoint() {
