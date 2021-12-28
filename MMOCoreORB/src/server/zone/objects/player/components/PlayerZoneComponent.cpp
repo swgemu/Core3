@@ -57,26 +57,26 @@ void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntr
 void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
 	if (sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
+		if (player == nullptr) {
+			return;
+		}
+
 		PlayerObject* ghost = player->getPlayerObject();
+		if (ghost == nullptr) {
+			return;
+		}
 
-		ManagedReference<SceneObject*> par = sceneObject->getParent().get();
-
-		if (par != nullptr && (par->isVehicleObject() || par->isMount())) {
+		ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
+		if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
 			player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 		}
 
-		if (ghost != nullptr) {
-			ghost->setSavedParentID(0);
-
-			ghost->setTeleporting(true);
-			ghost->setOnLoadScreen(true);
-			ghost->updateLastValidatedPosition();
-			ghost->setClientLastMovementStamp(0);
-
-			ghost->unloadSpawnedChildren();
-		}
-
-		player->setMovementCounter(0);
+		ghost->setSavedParentID(0);
+		ghost->setTeleporting(true);
+		ghost->setOnLoadScreen(true);
+		ghost->updateLastValidatedPosition();
+		ghost->setClientLastMovementStamp(0);
+		ghost->unloadSpawnedChildren();
 
 		player->notifyObservers(ObserverEventType::ZONESWITCHED);
 	}
@@ -85,34 +85,36 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 }
 
 void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {
-	CreatureObject* player = nullptr;
-
-	if (sceneObject->isPlayerCreature()) {
-		player = sceneObject->asCreatureObject();
+	if (!sceneObject->isPlayerCreature()) {
+		ZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
+		return;
 	}
 
-	ManagedReference<SceneObject*> par = sceneObject->getParent().get();
+	CreatureObject* player = sceneObject->asCreatureObject();
+	if (player == nullptr) {
+		return;
+	}
 
-	if (player != nullptr && par != nullptr && parentID != 0) {
+	Reference<PlayerObject*> ghost = player->getPlayerObject();
+	if (ghost == nullptr) {
+		return;
+	}
 
-		if (par->isVehicleObject() || par->isMount()) {
+	if (parentID != 0) {
+		ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
+		if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
 			player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 		}
 	}
 
-	ZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
-
-	if (player != nullptr) {
-		PlayerObject* ghost = player->getPlayerObject();
-
-		if (ghost != nullptr) {
-			ghost->setTeleporting(true);
-			ghost->updateLastValidatedPosition();
-			ghost->setClientLastMovementStamp(0);
-		}
-
-		player->setMovementCounter(0);
+	// first update, parent update, or position update.
+	if (player->getMovementCounter() == 0 || parentID != player->getParentID() || newPositionX != player->getPositionX() || newPositionZ != player->getPositionZ() || newPositionY != player->getPositionY()) {
+		ghost->setTeleporting(true);
+		ZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
 	}
+
+	ghost->updateLastValidatedPosition();
+	ghost->setClientLastMovementStamp(0);
 }
 
 /**
