@@ -22,6 +22,8 @@
 #include "APIProxyObjectManager.h"
 #include "APIRequest.h"
 
+#include <iomanip>
+
 namespace server {
  namespace web3 {
 

@@ -39,6 +39,16 @@ namespace server {
 		   activeArea = ar;
 		   eventType = eventt;
 		   sceneObject = obj;
+
+		   if (!obj) {
+		   	return;
+		   }
+
+		   const auto zone = obj->getZone();
+
+		   if (zone) {
+		   	setCustomTaskQueue(zone->getZoneName());
+		   }
 	   }
 
 	   void run();

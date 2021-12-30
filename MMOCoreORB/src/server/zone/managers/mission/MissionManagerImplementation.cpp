@@ -521,6 +521,8 @@ void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, Cr
 }
 
 void MissionManagerImplementation::populateMissionList(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
+	Locker crossLocker(missionTerminal, player);
+
 	bool slicer = missionTerminal->isSlicer(player);
 
 	if (missionTerminal->isGeneralTerminal()) {
