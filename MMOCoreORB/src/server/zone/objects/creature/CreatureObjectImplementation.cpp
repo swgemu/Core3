@@ -2648,6 +2648,10 @@ void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 }
 
 bool CreatureObjectImplementation::setNextAttackDelay(uint32 mod, int del) {
+	// Disabled until its fixed
+
+	return false;
+
 	if (cooldownTimerMap->isPast("nextAttackDelayRecovery")) {
 		//del += mod;
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
