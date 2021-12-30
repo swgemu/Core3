@@ -1954,6 +1954,7 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int 
 	thisObject["_depth"] = oidPath->size();
 	thisObject["_oid"] = getObjectID();
 	thisObject["_className"] = _className;
+	thisObject["_observerCounet"] = observerEventMap.getFullObserverCount();
 
 	oidPath->add(getObjectID());
 

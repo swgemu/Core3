@@ -53,6 +53,8 @@ public:
 
 		MissionTerminal* missionTerminal = cast<MissionTerminal*>( terminal.get());
 
+		setTaskName("MissionListRequestCallback for " + String::valueOf(missionTerminal->getObjectID()));
+
 		MissionManager* manager = server->getZoneServer()->getMissionManager();
 		manager->handleMissionListRequest(missionTerminal, player, unk2);
 	}
