@@ -52,25 +52,25 @@ PanicShotCommand = {
 	accuracyBonus = 50,
 
 	stateEffects = {
-	  StateEffect( 
-		NEXTATTACKDELAY_EFFECT, 
-		{}, 
-		{ "warcry_defense" }, 
-		{}, 
-		100, 
-		0, 
-		10 
-	  )
+	StateEffect(
+		NEXTATTACKDELAY_EFFECT,
+		{"nextAttackDelayRecovery" },
+		{"warcry_defense"},
+		{},
+		100,
+		0,
+		10
+	)
 	},
 
-	animation = "fire_1_special_single", 
+	animation = "fire_1_special_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "panicshot",
 
 	coneAction = true,
 	coneAngle = 45,
-	
+
 	weaponType = PISTOLWEAPON,
 
 	range = -1

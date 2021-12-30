@@ -1884,36 +1884,25 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 	Reference<CommandQueueAction*> action = nullptr;
 
 	if (priority == QueueCommand::IMMEDIATE) {
-		if (queueCommand->addToCombatQueue() && isInCombat()) {
-			float immediateDelay = 0.f;
+		if (queueCommand->addToCombatQueue() && isInCombat() && hasAttackDelay()) {
+			const Time* attackDelay = creo->getCooldownTime("nextAttackDelay");
+			float delayTime = ((float)attackDelay->miliDifference() / 1000) * -1;
 
-			if (creo->hasAttackDelay()) {
-				const Time* attackDelay = creo->getCooldownTime("nextAttackDelay");
-				float attackTime = ((float)attackDelay->miliDifference() / 1000) * -1;
+			nextImmediateAction.updateToCurrentTime();
+			nextImmediateAction.addMiliTime((uint32)(delayTime * 1000));
 
-				immediateDelay = attackTime;
-			}
+			Reference<CommandQueueImmediateEvent*> queueImmediateEvent = new CommandQueueImmediateEvent(creo);
 
-			if (immediateDelay > 0) {
-				nextImmediateAction.updateToCurrentTime();
-				nextImmediateAction.addMiliTime((uint32)(immediateDelay * 1000));
+			action = new CommandQueueAction(asCreatureObject(), targetID, actionCRC, actionCount, arguments);
 
-				Reference<CommandQueueImmediateEvent*> queueImmediateEvent = new CommandQueueImmediateEvent(creo);
+			immediateQueue->put(action.get());
+			queueImmediateEvent->schedule(nextImmediateAction);
 
-				action = new CommandQueueAction(asCreatureObject(), targetID, actionCRC, actionCount, arguments);
-
-				immediateQueue->put(action.get());
-				queueImmediateEvent->schedule(nextImmediateAction);
-
-				return;
-			} else {
-				objectController->activateCommand(creo, actionCRC, actionCount, targetID, arguments);
-				return;
-			}
-		} else {
-			objectController->activateCommand(creo, actionCRC, actionCount, targetID, arguments);
 			return;
 		}
+
+		objectController->activateCommand(creo, actionCRC, actionCount, targetID, arguments);
+		return;
 	}
 
 	if (commandQueue->size() > 15 && priority != QueueCommand::FRONT) {
@@ -2056,54 +2045,7 @@ void CreatureObjectImplementation::removeQueueAction(int action) {
 void CreatureObjectImplementation::removeAttackDelay() {
 	cooldownTimerMap->updateToCurrentTime("nextAttackDelay");
 
-	if (commandQueue->size() == 0) {
-		return;
-	}
-
-	auto creo = asCreatureObject();
-
-	Reference<ObjectController*> objectController = getZoneServer()->getObjectController();
-	Reference<CommandQueueAction*> action = commandQueue->get(0);
-
-	float time = objectController->activateCommand(creo, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
-
-	if (creo->hasPostureChangeDelay()) {
-		const Time* postureDelay = creo->getCooldownTime("postureChangeDelay");
-		float postureTime = floor((float)postureDelay->miliDifference() / 1000) * -1;
-
-		if (time > 0) {
-			postureTime += time;
-		}
-
-		nextAction.addMiliTime((uint32)(postureTime * 1000));
-		nextImmediateAction.addMiliTime((uint32)(postureTime * 1000));
-
-		removeAction.updateToCurrentTime();
-		removeAction.addMiliTime((uint32)(postureTime * 1000));
-
-	} else {
-
-		Reference<CommandQueueActionEvent*> actionEvent = new CommandQueueActionEvent(creo);
-
-		nextAction.updateToCurrentTime();
-		activateImmediateAction();
-
-		if (time > 0) {
-			nextAction.addMiliTime((uint32)(time * 1000));
-			actionEvent->schedule(nextAction);
-		} else {
-			Core::getTaskManager()->executeTask(actionEvent);
-		}
-
-		for (int i = 0; i < commandQueue->size(); i++) {
-			Reference<CommandQueueAction*> actionToDelete = commandQueue->get(i);
-
-			if (action == actionToDelete) {
-				commandQueue->remove(i);
-				break;
-			}
-		}
-	}
+	activateQueueAction();
 }
 
 void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
@@ -2648,10 +2590,6 @@ void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 }
 
 bool CreatureObjectImplementation::setNextAttackDelay(uint32 mod, int del) {
-	// Disabled until its fixed
-
-	return false;
-
 	if (cooldownTimerMap->isPast("nextAttackDelayRecovery")) {
 		//del += mod;
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
