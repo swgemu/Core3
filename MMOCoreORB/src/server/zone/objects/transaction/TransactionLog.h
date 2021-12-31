@@ -82,6 +82,7 @@ enum class TrxCode {
 	INSTANTBUY,                 // Instant Buy
 	LOTTERYDROID,               // Lottery Droid
 	LUASCRIPT,                  // LUA Script
+	MISSIONCOMPLETE,            // Mission Completed Summary
 	NPCLOOTCLAIM,               // NPC Loot Claimed
 	PERMISSIONLIST,             // Permission List changes
 	PLAYERMISCACTION,           // Misc player action
@@ -161,12 +162,13 @@ public:
 	TransactionLog(TrxCode code, SceneObject* dst, CAPTURE_CALLER_DECLARE)
 		: TransactionLog((SceneObject*)nullptr, dst, (SceneObject*)nullptr, code, false, file, function, line) {
 			switch (code) {
-				case TrxCode::EXPERIENCE:
 				case TrxCode::COMBATSTATS:
-				case TrxCode::PLAYERONLINE:
-				case TrxCode::PLAYEROFFLINE:
+				case TrxCode::EXPERIENCE:
+				case TrxCode::MISSIONCOMPLETE:
 				case TrxCode::PLAYERLINKDEAD:
 				case TrxCode::PLAYERLOGGINGOUT:
+				case TrxCode::PLAYEROFFLINE:
+				case TrxCode::PLAYERONLINE:
 				case TrxCode::SKILLTRAININGSYSTEM:
 					mAutoCommit = true;
 					setType("stats");

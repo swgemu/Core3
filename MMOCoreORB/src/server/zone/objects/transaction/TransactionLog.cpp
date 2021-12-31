@@ -883,6 +883,7 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::IMAGEDESIGN:              return "imagedesign";               // Image Design Fees
 	case TrxCode::INSTANTBUY:               return "instantbuy";                // Instant Buy
 	case TrxCode::LOTTERYDROID:             return "lotterydroid";              // Lottery Droid
+	case TrxCode::MISSIONCOMPLETE:          return "missioncomplete";           // Mission Completed Summary
 	case TrxCode::LUASCRIPT:                return "luascript";                 // LUA Script
 	case TrxCode::NPCLOOTCLAIM:             return "npclootclaim";              // NPC Loot Claimed
 	case TrxCode::PERMISSIONLIST:           return "permissionlist";            // Permission List Changes
