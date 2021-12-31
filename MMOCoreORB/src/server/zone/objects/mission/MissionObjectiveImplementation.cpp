@@ -178,9 +178,45 @@ void MissionObjectiveImplementation::awardReward() {
 	Vector3 missionEndPoint = getEndPosition();
 
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
+
+	if (owner == nullptr) {
+		error() << "Mission " << mission->getObjectID() << " had nullptr owner";
+		return;
+	}
+
 	ManagedReference<GroupObject*> group = owner->getGroup();
 
+	TransactionLog trx(owner, TrxCode::MISSIONCOMPLETE, mission, false);
+	trx.addWorldPosition("src", owner);
+	trx.addState("missionID", mission->getObjectID());
+	trx.addState("missionType", mission->getTypeAsString());
+	trx.addState("missionTitle", mission->getMissionTitle()->toString());
+	trx.addState("missionDescription", mission->getMissionDescription()->toString());
+	trx.addState("missionDifficulty", mission->getDifficulty());
+	trx.addState("missionDifficultyDisplay", mission->getDifficultyDisplay());
+	trx.addState("missionDifficultyLevel", mission->getDifficultyLevel());
+	trx.addState("missionStartWorldPositionX", int(mission->getStartPositionX()));
+	trx.addState("missionStartWorldPositionY", int(mission->getStartPositionY()));
+	trx.addState("missionStartPlanet", mission->getStartPlanet());
+	trx.addState("missionEndWorldPositionX", int(missionEndPoint.getX()));
+	trx.addState("missionEndWorldPositionY", int(missionEndPoint.getY()));
+	trx.addState("missionEndPlanet", owner->getZone() != nullptr ? owner->getZone()->getZoneName() : "-nullptr-");
+	trx.addState("missionRewardCredits", mission->getRewardCredits());
+	trx.addState("missionRefreshCounter", mission->getRefreshCounter());
+	trx.addState("missionTarget", mission->getTargetName());
+	trx.addState("missionSize", mission->getSize());
+
+	if (mission->getFaction() != Factions::FACTIONNEUTRAL) {
+		trx.addState("missionFaction", mission->getFaction() == Factions::FACTIONIMPERIAL ? "imperial" : "rebel");
+		trx.addState("missionRewardFactionPointsRebel", mission->getRewardFactionPointsRebel());
+		trx.addState("missionRewardFactionPointsImperial", mission->getRewardFactionPointsImperial());
+	}
+
 	int playerCount = 1;
+	int petCount = 0;
+	int petOutOfRangeCount = 0;
+	int petFactionCount = 0;
+	int petFactionOutOfRangeCount = 0;
 
 	if (group != nullptr) {
 		Locker lockerGroup(group, _this.getReferenceUnsafeStaticCast());
@@ -194,7 +230,13 @@ void MissionObjectiveImplementation::awardReward() {
 		for (int i = 0; i < group->getGroupSize(); i++) {
 			Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-			if (groupMember != nullptr && groupMember->isPlayerCreature()) {
+			if (groupMember == nullptr) {
+				continue;
+			}
+
+			trx.addRelatedObject(groupMember);
+
+			if (groupMember->isPlayerCreature()) {
 				//Play mission complete sound.
 #ifdef LOCKFREE_BCLIENT_BUFFERS
 				groupMember->sendMessage(pack);
@@ -209,6 +251,22 @@ void MissionObjectiveImplementation::awardReward() {
 
 				if (memberPosition.distanceTo(missionEndPoint) < 128) {
 					players.add(groupMember);
+				}
+			} else if(groupMember->isPet()) {
+				Vector3 petPosition = groupMember->getWorldPosition();
+
+				if (groupMember->getFaction() != 0) {
+					petFactionCount++;
+				} else {
+					petCount++;
+				}
+
+				if (petPosition.distanceTo(missionEndPoint) >= 128) {
+					if (groupMember->getFaction() != 0) {
+						petFactionOutOfRangeCount++;
+					} else {
+						petOutOfRangeCount++;
+					}
 				}
 			}
 		}
@@ -240,6 +298,20 @@ void MissionObjectiveImplementation::awardReward() {
 
 	int dividedReward = mission->getRewardCredits() / Math::max(divisor, 1);
 
+	if (expanded) {
+		trx.addState("missionExpanded", true);
+	}
+
+	trx.addState("missionRewardCreditsDivisor", divisor);
+	trx.addState("missionPlayerInRangeCount", players.size());
+	trx.addState("missionPlayerOutOfRangeCount", playerCount - players.size());
+	trx.addState("missionPetCount", petCount);
+	trx.addState("missionPetOutOfRangeCount", petOutOfRangeCount);
+	trx.addState("missionPetFactionCount", petFactionCount);
+	trx.addState("missionPetFactionOutOfRange", petFactionOutOfRangeCount);
+
+	int totalRewarded = 0;
+
 	for (int i = 0; i < players.size(); i++) {
 		ManagedReference<CreatureObject*> player = players.get(i);
 		StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
@@ -247,9 +319,17 @@ void MissionObjectiveImplementation::awardReward() {
 		player->sendSystemMessage(stringId);
 
 		Locker lockerPl(player, _this.getReferenceUnsafeStaticCast());
-		TransactionLog trx(TrxCode::MISSIONSYSTEMDYNAMIC, player, dividedReward, false);
+		TransactionLog trxReward(TrxCode::MISSIONSYSTEMDYNAMIC, player, dividedReward, false);
+		trxReward.groupWith(trx);
+		trxReward.addState("missionTrxId", trx.getTrxID());
+		trxReward.addState("missionID", mission->getObjectID());
+
 		player->addBankCredits(dividedReward, true);
+		totalRewarded += dividedReward;
 	}
+
+	// Catch any rounding errors etc.
+	trx.addState("missionTotalRewarded", totalRewarded);
 
 	if (group != nullptr) {
 		if (expanded) {
@@ -259,9 +339,7 @@ void MissionObjectiveImplementation::awardReward() {
 		}
 	}
 
-	int creditsDistributed = dividedReward * players.size();
-
-	StatisticsManager::instance()->completeMission(mission->getTypeCRC(), creditsDistributed);
+	StatisticsManager::instance()->completeMission(mission->getTypeCRC(), totalRewarded);
 }
 
 Vector3 MissionObjectiveImplementation::getEndPosition() {

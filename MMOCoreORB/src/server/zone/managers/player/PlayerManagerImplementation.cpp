@@ -1783,6 +1783,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			}
 
 			TransactionLog trx(owner, destructedObject, TrxCode::COMBATSTATS, attackerCreo);
+			trx.addState("combatIsPet", true);
 			trx.addState("combatTotalDamage", entry->getTotalDamage());
 			trx.addState("combatTotalNonAggroDamage", entry->getNonAggroDamage());
 			trx.addState("combatTotalHeal", entry->getHeal());
@@ -1842,6 +1843,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			Locker crossLocker(attackerCreo, destructedObject);
 
 			TransactionLog trx(attackerCreo, destructedObject, TrxCode::COMBATSTATS);
+			trx.addState("combatIsPet", false);
 			trx.addState("combatTotalDamage", entry->getTotalDamage());
 			trx.addState("combatTotalNonAggroDamage", entry->getNonAggroDamage());
 			trx.addState("combatTotalHeal", entry->getHeal());
@@ -1853,6 +1855,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 				trx.addState("combatGroupID", group->getObjectID());
 				trx.addState("combatGroupSize", group->getGroupSize());
 				trx.addState("combatGroupLevel", group->getGroupLevel());
+				trx.addState("combatGroupFactionPetLevel", group->getFactionPetLevel());
 			}
 
 			for (int j = 0; j < entry->size(); ++j) {
