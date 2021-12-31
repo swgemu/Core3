@@ -528,10 +528,10 @@ void GroupObjectImplementation::scheduleUpdateNearestMissionForGroup(unsigned in
 	}
 
 	if (task->isScheduled()) {
-		task->reschedule(30000);
+		task->reschedule(10000);
 	}
 	else {
-		task->schedule(30000);
+		task->schedule(10000);
 	}
 }
 

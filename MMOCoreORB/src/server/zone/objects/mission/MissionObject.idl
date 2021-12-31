@@ -284,6 +284,9 @@ class MissionObject extends IntangibleObject {
 	}
 
 	@read
+	public native string getTypeAsString();
+
+	@read
 	public int getRewardCredits() {
 		return rewardCredits;
 	}

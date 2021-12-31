@@ -119,6 +119,12 @@ public:
 
 		return true;
 	}
+
+	String toString() const {
+		StringBuffer asStr;
+		asStr << file << ":" << stringID;
+		return asStr.toString();
+	}
 };
 
 void to_json(nlohmann::json& k, const server::zone::objects::scene::variables::StringId& str);
