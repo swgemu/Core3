@@ -37,7 +37,7 @@ public:
 		CombatManager* combatManager = CombatManager::instance();
 		CreatureObject* player = cast<CreatureObject*>(targetObject.get());
 
-		if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()))
+		if (!player->getPlayerObject()->isIgnoring(creature->getFirstName()))
 			combatManager->requestDuel(creature, player);
 
 		return SUCCESS;

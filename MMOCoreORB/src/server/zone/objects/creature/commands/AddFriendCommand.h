@@ -8,6 +8,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class AddFriendCommand : public QueueCommand {
 public:
@@ -28,21 +29,21 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		String nameLower = arguments.toString().toLowerCase();
+		String name = arguments.toString();
 
-		Reference<PlayerObject*> ghost =  creature->getSlottedObject("ghost").castTo<PlayerObject*>();
+		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-		if (ghost->isIgnoring(nameLower)) {
+		if (ghost->isIgnoring(name)) {
 			StringIdChatParameter param("cmnty", "friend_fail_is_ignored");
-			param.setTT(nameLower);
+			param.setTT(name);
 			creature->sendSystemMessage(param);
 
 			return GENERALERROR;
 		}
 
-		if (ghost->hasFriend(nameLower)) {
+		if (ghost->hasFriend(name)) {
 			StringIdChatParameter param("cmnty", "friend_duplicate");
-			param.setTT(nameLower);
+			param.setTT(name);
 			creature->sendSystemMessage(param);
 
 			return GENERALERROR;
@@ -54,19 +55,30 @@ public:
 			return GENERALERROR;
 		}
 
+		CreatureObject* creo = server->getPlayerManager()->getPlayer(name); 
+		if (creo != nullptr) {
+			PlayerObject* player = creo->getPlayerObject();
+			if (player != nullptr && !ghost->hasGodMode()) {
+				if (player->hasGodMode()) {
+					creature->sendSystemMessage("You may not add that player to your friend list.");
+
+					return GENERALERROR;
+				}
+			}
+		}
 		PlayerManager* playerManager = server->getPlayerManager();
 
-		bool validName = playerManager->existsName(nameLower);
+		bool validName = playerManager->existsName(name);
 
 		if (!validName) {
 			StringIdChatParameter param("cmnty", "friend_not_found");
-			param.setTT(nameLower);
+			param.setTT(name);
 			creature->sendSystemMessage(param);
 
 			return GENERALERROR;
 		}
 
-		ghost->addFriend(nameLower);
+		ghost->addFriend(name);
 
 		return SUCCESS;
 	}

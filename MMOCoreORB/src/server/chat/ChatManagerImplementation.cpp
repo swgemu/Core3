@@ -734,14 +734,8 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 
 	BaseMessage* msg = new ChatRoomMessage(fullName, server->getGalaxyName(), formattedMessage, roomID);
 
-	// Auction Chat and Planet Chat should adhere to player ignore list
-	if(auctionRoom != nullptr && auctionRoom->getRoomID() == roomID) {
+	// All chat should adhere to player ignore list
 		channel->broadcastMessageCheckIgnore(msg, name);
-	} else if (planetRoom != nullptr && planetRoom->getRoomID() == roomID) {
-		channel->broadcastMessageCheckIgnore(msg, name);
-	} else {
-		channel->broadcastMessage(msg);
-	}
 
 	BaseMessage* amsg = new ChatOnSendRoomMessage(counter);
 	channel->broadcastMessage(amsg);
@@ -839,7 +833,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	String firstName;
 
 	if (sender->isPlayerCreature())
-		firstName = (cast<CreatureObject*>(sender))->getFirstName().toLowerCase();
+		firstName = (cast<CreatureObject*>(sender))->getFirstName();
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) sender->getCloseObjects();
 
@@ -1017,7 +1011,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	bool godMode = false;
 
 	if (sourceCreature->isPlayerCreature()) {
-		firstName = sourceCreature->getFirstName().toLowerCase();
+		firstName = sourceCreature->getFirstName();
 		PlayerObject* myGhost = sourceCreature->getPlayerObject();
 
 		if (myGhost != nullptr) {
@@ -1176,7 +1170,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	ManagedReference<CreatureObject*> chatTarget = server->getObject(chatTargetID).castTo<CreatureObject*>();
 
 	if (sourceCreature->isPlayerCreature()) {
-		firstName = sourceCreature->getFirstName().toLowerCase();
+		firstName = sourceCreature->getFirstName();
 		PlayerObject* myGhost = sourceCreature->getPlayerObject();
 
 		if (myGhost != nullptr)
@@ -1627,7 +1621,7 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 
 }
 
-void ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name) {
+void ChatManagerImplementation::sendMail(const String& senderName, const UnicodeString& header, const UnicodeString& body, const String& name) {
 	uint64 receiverObjectID = playerManager->getObjectID(name);
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
@@ -1639,7 +1633,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 
 	Core::getTaskManager()->executeTask([=] () {
         	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
-		mail->setSenderName(sendername);
+		mail->setSenderName(senderName);
 		mail->setSubject(header);
 		mail->setBody(body);
 		mail->setReceiverObjectID(receiverObjectID);
@@ -1666,7 +1660,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 	}, "SendMailLambda3", "slowQueue");
 }
 
-int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters, Reference<PersistentMessage* >* sentMail) {
+int ChatManagerImplementation::sendMail(const String& senderName, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters, Reference<PersistentMessage* >* sentMail) {
 	if (!playerManager->containsPlayer(recipientName))
 		return IM_OFFLINE;
 
@@ -1675,23 +1669,31 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	bool godMode = false;
 
-	ManagedReference<CreatureObject*> sender = playerManager->getPlayer(sendername.toLowerCase());
+	ManagedReference<CreatureObject*> sender = playerManager->getPlayer(senderName);
 
 	if (sender != nullptr) {
 		if (sender->isPlayerCreature()) {
 			ManagedReference<PlayerObject*> senderPlayer = nullptr;
 			senderPlayer = sender->getPlayerObject();
 
-		if (senderPlayer == nullptr)
-			return IM_OFFLINE;
+			if (senderPlayer == nullptr)
+				return IM_OFFLINE;
 
-		if (senderPlayer->hasGodMode())
-			godMode = true;
+			if (senderPlayer->hasGodMode())
+				godMode = true;
+
+			ManagedReference<CreatureObject*> receiver = playerManager->getPlayer(recipientName.toLowerCase());
+			if (receiver == nullptr)
+				return FAIL;
+
+			ManagedReference<PlayerObject*> receiverPlayer = receiver->getPlayerObject();
+			if (receiverPlayer->isIgnoring(senderName) && !godMode) 
+				return IM_IGNORED;
 		}
 	}
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
-	mail->setSenderName(sendername);
+	mail->setSenderName(senderName);
 	mail->setSubject(subject);
 	mail->setBody(body);
 
@@ -1732,7 +1734,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 			Locker locker(receiver);
 			PlayerObject* receiverPlayerObject = receiver->getPlayerObject();
 
-			if ((receiverPlayerObject == nullptr) || (receiverPlayerObject->isIgnoring(sendername) && !godMode)) {
+			if ((receiverPlayerObject == nullptr) || (receiverPlayerObject->isIgnoring(senderName) && !godMode)) {
 				ObjectManager::instance()->destroyObjectFromDatabase(mail->getObjectID());
 				mail->setPersistent(0);
 				return;
@@ -1750,14 +1752,14 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	return IM_SUCCESS;
 }
 
-int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName, WaypointObject* waypoint) {
+int ChatManagerImplementation::sendMail(const String& senderName, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName, WaypointObject* waypoint) {
 
 	if (!playerManager->containsPlayer(recipientName))
 		return IM_OFFLINE;
 
 	bool godMode = false;
 
-	ManagedReference<CreatureObject*> sender = playerManager->getPlayer(sendername.toLowerCase());
+	ManagedReference<CreatureObject*> sender = playerManager->getPlayer(senderName);
 
 	if (sender != nullptr) {
 		if (sender->isPlayerCreature()) {
@@ -1773,7 +1775,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	}
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
-	mail->setSenderName(sendername);
+	mail->setSenderName(senderName);
 	mail->setSubject(subject);
 	mail->addStringIdParameter(body);
 
@@ -1796,8 +1798,9 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 		Locker locker(receiver);
 		PlayerObject* receiverPlayerObject = receiver->getPlayerObject();
 
-		if ((receiverPlayerObject == nullptr) || (receiverPlayerObject->isIgnoring(sendername) && !godMode))
+		if ((receiverPlayerObject == nullptr) || (receiverPlayerObject->isIgnoring(senderName) && !godMode)) {
 			return;
+		}
 
 		ObjectManager::instance()->persistObject(mail, 1, "mail");
 		PlayerObject* ghost = receiver->getPlayerObject();
