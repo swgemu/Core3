@@ -68,8 +68,8 @@ public:
 		if (object->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( object.get());
 
-			if (player != nullptr && (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()) || godMode))
-				groupManager->inviteToGroup(creature, player);
+		if (player != nullptr && (!player->getPlayerObject()->isIgnoring(creature->getFirstName()) || godMode))
+			groupManager->inviteToGroup(creature, player);
 		}
 
 		return SUCCESS;

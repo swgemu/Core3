@@ -2971,7 +2971,8 @@ void PlayerObjectImplementation::doFieldFactionChange(int newStatus) {
 }
 
 bool PlayerObjectImplementation::isIgnoring(const String& name) const {
-	return !name.isEmpty() && ignoreList.contains(name);
+	String lowerName = name.toLowerCase();
+	return !lowerName.isEmpty() && ignoreList.contains(lowerName);
 }
 
 void PlayerObjectImplementation::checkAndShowTOS() {

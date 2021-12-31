@@ -60,6 +60,14 @@ public:
 			return GENERALERROR;
 		}
 
+		if (targetGhost->isIgnoring(myFirstName)) {
+			StringIdChatParameter message("@ui_cmnty:friend_location_failed"); // Unable to locate %TU
+			message.setTU(name);
+
+			player->sendSystemMessage(message);
+			return GENERALERROR;
+		}
+
 		Zone* zone = targetPlayer->getZone();
 
 		if (zone == nullptr) {
