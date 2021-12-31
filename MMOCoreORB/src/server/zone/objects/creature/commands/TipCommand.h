@@ -34,6 +34,13 @@ private:
 			return GENERALERROR;
 		}
 
+		// Player must not be ignored
+		auto target = targetPlayer->getPlayerObject();
+		if (!(target == nullptr)) {
+			if (target->isIgnoring(player->getFirstName()))
+				return GENERALERROR;
+		}
+
 		// We have a target, who is on-line, in range, with sufficient funds.
 		// Lock target player to prevent simultaneous tips to not register correctly.
 
@@ -60,7 +67,7 @@ private:
 	int performBankTip(CreatureObject* player, CreatureObject* targetPlayer,
 			int amount) const {
 
-		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		auto ghost = player->getPlayerObject();
 		if (ghost == nullptr) {
 			player->sendSystemMessage("@base_player:tip_error"); // There was an error processing your /tip request. Please try again.
 			return GENERALERROR;
@@ -76,7 +83,13 @@ private:
 			return GENERALERROR;
 		}
 
-		ManagedReference<SuiMessageBox*> confirmbox = new SuiMessageBox(player,
+		// Player must not be ignored
+		auto target = targetPlayer->getPlayerObject();
+		if (target == nullptr || target->isIgnoring(player->getFirstName())) {
+				return GENERALERROR;
+		}
+
+		auto confirmbox = new SuiMessageBox(player,
 				SuiWindowType::BANK_TIP_CONFIRM);
 		confirmbox->setCallback(
 				new TipCommandSuiCallback(server->getZoneServer(),
@@ -158,8 +171,7 @@ public:
 		}
 
 		if (!syntaxError && targetPlayer == nullptr) { // No target argument, check look-at target
-			ManagedReference<SceneObject*> object =
-					server->getZoneServer()->getObject(target);
+			auto object = server->getZoneServer()->getObject(target);
 
 			if (object != nullptr && object->isPlayerCreature()) {
 				targetPlayer = object->asCreatureObject();

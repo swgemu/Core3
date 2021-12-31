@@ -31,15 +31,15 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = cast<CreatureObject*>(creature);
+		auto player = cast<CreatureObject*>(creature);
 
-		PlayerObject* ghost = player->getPlayerObject();
+		auto ghost = player->getPlayerObject();
 
 		String name = arguments.toString().toLowerCase();
 
-		ChatManager* chatManager = server->getChatManager();
+		auto chatManager = server->getChatManager();
 
-		ManagedReference<CreatureObject*> targetPlayer = chatManager->getPlayer(name);
+		auto targetPlayer = chatManager->getPlayer(name);
 
 		if (targetPlayer == nullptr) {
 			StringIdChatParameter message("@ui_cmnty:friend_location_failed"); // Unable to locate %TU
@@ -49,7 +49,7 @@ public:
 			return GENERALERROR;
 		}
 
-		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
+		auto targetGhost = targetPlayer->getPlayerObject();
 		String myFirstName = player->getFirstName().toLowerCase();
 
 		if (!targetGhost->hasFriend(myFirstName)) {
@@ -60,7 +60,15 @@ public:
 			return GENERALERROR;
 		}
 
-		Zone* zone = targetPlayer->getZone();
+		if (targetGhost->isIgnoring(myFirstName)) {
+			StringIdChatParameter message("@ui_cmnty:friend_location_failed"); // Unable to locate %TU
+			message.setTU(name);
+
+			player->sendSystemMessage(message);
+			return GENERALERROR;
+		}
+
+		auto zone = targetPlayer->getZone();
 
 		if (zone == nullptr) {
 			StringIdChatParameter message("@ui_cmnty:friend_location_failed"); // Unable to locate %TU
@@ -74,7 +82,7 @@ public:
 
 		float x, z = 0, y;
 
-		ManagedReference<SceneObject*> parent = targetPlayer->getParent().get();
+		auto parent = targetPlayer->getParent().get();
 
 		if (parent != nullptr && parent->isCellObject()) {
 			ManagedReference<SceneObject*> building = parent->getParent().get();
@@ -86,7 +94,7 @@ public:
 			y = targetPlayer->getPositionY();
 		}
 
-		ManagedReference<WaypointObject*> obj = ( server->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
+		auto obj = (server->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
 
 		Locker locker(obj);
 
