@@ -20,6 +20,8 @@
 #include "server/zone/objects/group/RemovePetsFromGroupTask.h"
 #include "server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	auto client = player->getClient();
@@ -406,7 +408,7 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 	return modifier;
 }
 
-void GroupObjectImplementation::calcGroupLevel() {
+int GroupObjectImplementation::calcGroupLevel(bool broadcastLevel, bool includeFactionPets) {
 	int highestPlayer = 0;
 	groupLevel = 0;
 
@@ -414,8 +416,14 @@ void GroupObjectImplementation::calcGroupLevel() {
 		Reference<CreatureObject*> member = getGroupMember(i);
 
 		if (member->isPet()) {
-			groupLevel += member->getLevel() / 5;
+			if (!includeFactionPets) {
+				ManagedReference<PetControlDevice*> pcd = member->getControlDevice().get().castTo<PetControlDevice*>();
 
+				if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET)
+					continue;
+			}
+
+			groupLevel += member->getLevel() / 5;
 		} else if (member->isPlayerCreature()) {
 			int memberLevel = member->getLevel();
 
@@ -428,12 +436,17 @@ void GroupObjectImplementation::calcGroupLevel() {
 		}
 	}
 
-	GroupObjectDeltaMessage6* msg = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
 
-	msg->updateLevel(this->groupLevel);
-	msg->close();
+	if (broadcastLevel) {
+		GroupObjectDeltaMessage6* msg = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
 
-	broadcastMessage(msg);
+		msg->updateLevel(this->groupLevel);
+		msg->close();
+
+		broadcastMessage(msg);
+	}
+
+	return groupLevel;
 }
 
 int GroupObjectImplementation::getNumberOfPlayerMembers() {

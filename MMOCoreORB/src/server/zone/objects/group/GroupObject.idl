@@ -93,7 +93,7 @@ class GroupObject extends SceneObject {
 
 	@dirty
 	@preLocked
-	public native void calcGroupLevel();
+	public native int calcGroupLevel(boolean broadcastLevel = true, boolean includeFactionPets = true);
 
 	@read
 	public int getGroupLevel() {
