@@ -148,7 +148,7 @@ TatooineMosEspaScreenPlay = CityScreenPlay:new {
 		{"mercenary",60,-6.9,2.0,10,100,1261453, "npc_accusing"},
 		{"mercenary",60,6.9,2.0,10,-100,1261453, "npc_accusing"},
 		{"bounty_hunter", 1, 2.3, 0.5, -10.0, 0, 1261454, ""},
-		{"imperial_exterminator", 1, -2.3, 0.5, -10.0, 0, 1261454, ""},
+		{"imperial_exterminator", 300, -2.3, 0.5, -10.0, 0, 1261454, ""},
 
 		--southwest Tavern
 		{"vendor",60,10,0.4,-5.5,85,1261582, "npc_use_terminal_high"},
