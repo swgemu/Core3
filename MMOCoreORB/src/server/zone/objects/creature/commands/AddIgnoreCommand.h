@@ -28,33 +28,32 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		String nameLower = arguments.toString().toLowerCase();
+		String name = arguments.toString();
 
-		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
+		auto ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-		if (ghost->isIgnoring(nameLower)) {
+		if (ghost->isIgnoring(name)) {
 			StringIdChatParameter param("cmnty", "ignore_duplicate");
-			param.setTT(nameLower);
+			param.setTT(name);
 			creature->sendSystemMessage(param);
 
 			return GENERALERROR;
 		}
 
-		PlayerManager* playerManager = server->getPlayerManager();
+		auto playerManager = server->getPlayerManager();
 
-		bool validName = playerManager->existsName(nameLower);
-		validName = validName &&
-				(creature->getFirstName().toLowerCase().compareTo( nameLower ) != 0);
+		bool validName = playerManager->existsName(name);
+		validName = validName && (creature->getFirstName().toLowerCase().compareTo(name) != 0);
 
 		if (!validName) {
 			StringIdChatParameter param("cmnty", "ignore_not_found");
-			param.setTT(nameLower);
+			param.setTT(name);
 			creature->sendSystemMessage(param);
 
 			return GENERALERROR;
 		}
 
-		ghost->addIgnore(nameLower, true);
+		ghost->addIgnore(name, true);
 
 		return SUCCESS;
 	}

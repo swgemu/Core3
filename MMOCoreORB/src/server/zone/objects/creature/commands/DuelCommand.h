@@ -6,6 +6,7 @@
 #define DUELCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
 
 class DuelCommand : public QueueCommand {
 public:
@@ -26,7 +27,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+		auto targetObject = server->getZoneServer()->getObject(target);
 
 		if (targetObject == nullptr || !targetObject->isPlayerCreature() || targetObject == creature)
 			return INVALIDTARGET;
@@ -34,10 +35,10 @@ public:
 		if(!checkDistance(creature, targetObject, 25.0f))
 			return TOOFAR;
 
-		CombatManager* combatManager = CombatManager::instance();
-		CreatureObject* player = cast<CreatureObject*>(targetObject.get());
+		auto combatManager = CombatManager::instance();
+		auto player = cast<CreatureObject*>(targetObject.get());
 
-		if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()))
+		if (!player->getPlayerObject()->isIgnoring(creature->getFirstName()))
 			combatManager->requestDuel(creature, player);
 
 		return SUCCESS;
