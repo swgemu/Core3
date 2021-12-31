@@ -767,10 +767,17 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	int diffDisplay = difficultyLevel < 5 ? 4 : difficultyLevel;
 
-	if (player->isGrouped())
-		diffDisplay += player->getGroup()->getGroupLevel();
-	else
+	if (player->isGrouped()) {
+		bool includeFactionPets = faction != Factions::FACTIONNEUTRAL || ConfigManager::instance()->getBool("Core3.MissionManager.IncludeFactionPets", true);
+		Reference<GroupObject*> group = player->getGroup();
+
+		if (group != nullptr) {
+			Locker locker(group);
+			diffDisplay += group->getGroupLevel(includeFactionPets);
+		}
+	} else {
 		diffDisplay += playerLevel;
+	}
 
 	String building = lairTemplateObject->getMissionBuilding(difficulty);
 
@@ -1779,8 +1786,16 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	bool foundLair = false;
 	int counter = availableLairList->size();
 	int playerLevel = server->getPlayerManager()->calculatePlayerLevel(player);
-	if (player->isGrouped())
-		playerLevel = player->getGroup()->getGroupLevel();
+
+	if (player->isGrouped()) {
+		bool includeFactionPets = faction != Factions::FACTIONNEUTRAL || ConfigManager::instance()->getBool("Core3.MissionManager.IncludeFactionPets", true);
+		Reference<GroupObject*> group = player->getGroup();
+
+		if (group != nullptr) {
+			Locker locker(group);
+			playerLevel = group->getGroupLevel(includeFactionPets);
+		}
+	}
 
 	LairSpawn* lairSpawn = nullptr;
 

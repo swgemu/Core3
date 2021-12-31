@@ -26,6 +26,7 @@ class GroupObject extends SceneObject {
 	ChatRoom chatRoom;
 
 	int groupLevel;
+	int factionPetLevel;
 
 	int lootRule;
 
@@ -33,6 +34,7 @@ class GroupObject extends SceneObject {
 
 	public GroupObject() {
 		groupLevel = 0;
+		factionPetLevel = 0;
 
 		Logger.setLoggingName("GroupObject");
 
@@ -96,8 +98,11 @@ class GroupObject extends SceneObject {
 	public native void calcGroupLevel();
 
 	@read
-	public int getGroupLevel() {
-		return groupLevel;
+	public int getGroupLevel(boolean includeFactionPets = true) {
+		if (includeFactionPets)
+			return groupLevel;
+		else
+			return groupLevel - factionPetLevel;
 	}
 
 	@read

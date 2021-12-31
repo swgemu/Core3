@@ -20,6 +20,8 @@
 #include "server/zone/objects/group/RemovePetsFromGroupTask.h"
 #include "server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	auto client = player->getClient();
@@ -409,13 +411,19 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 void GroupObjectImplementation::calcGroupLevel() {
 	int highestPlayer = 0;
 	groupLevel = 0;
+	factionPetLevel = 0;
 
 	for (int i = 0; i < getGroupSize(); i++) {
 		Reference<CreatureObject*> member = getGroupMember(i);
 
 		if (member->isPet()) {
-			groupLevel += member->getLevel() / 5;
+				ManagedReference<PetControlDevice*> pcd = member->getControlDevice().get().castTo<PetControlDevice*>();
 
+				if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET) {
+					factionPetLevel += member->getLevel() / 5;
+				}
+
+				groupLevel += member->getLevel() / 5;
 		} else if (member->isPlayerCreature()) {
 			int memberLevel = member->getLevel();
 
