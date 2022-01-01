@@ -329,6 +329,20 @@ namespace conf {
 			return cachedProgressMonitors;
 		}
 
+		inline bool includeFactionPetsForMissionDifficulty() {
+			// Use cached value as this a hot item called in lots of loops
+			static uint32 cachedVersion = 0;
+			static bool cachedValue;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedValue = getBool("Core3.MissionManager.IncludeFactionPets", true);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedValue;
+		}
+
 		inline int getDBPort() {
 			return getInt("Core3.DBPort", 3306);
 		}
