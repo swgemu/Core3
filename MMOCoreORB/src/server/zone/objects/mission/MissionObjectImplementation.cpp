@@ -339,18 +339,18 @@ void MissionObjectImplementation::setCreatorName(const String& name, bool notify
 String MissionObjectImplementation::getTypeAsString() const {
 	// clang-format off
 	switch (typeCRC) {
-    case MissionTypes::BOUNTY:          return "bounty";
-    case MissionTypes::CRAFTING:        return "crafting";
-    case MissionTypes::DANCER:          return "dancer";
-    case MissionTypes::DELIVER:         return "deliver";
-    case MissionTypes::DESTROY:         return "destroy";
-    case MissionTypes::ESCORT2ME:       return "escort2me";
-    case MissionTypes::ESCORT:          return "escort";
-    case MissionTypes::ESCORTTOCREATOR: return "escorttocreator";
-    case MissionTypes::HUNTING:         return "hunting";
-    case MissionTypes::MUSICIAN:        return "musician";
-    case MissionTypes::RECON:           return "recon";
-    case MissionTypes::SURVEY:          return "survey";
+	case MissionTypes::BOUNTY:          return "bounty";
+	case MissionTypes::CRAFTING:        return "crafting";
+	case MissionTypes::DANCER:          return "dancer";
+	case MissionTypes::DELIVER:         return "deliver";
+	case MissionTypes::DESTROY:         return "destroy";
+	case MissionTypes::ESCORT2ME:       return "escort2me";
+	case MissionTypes::ESCORT:          return "escort";
+	case MissionTypes::ESCORTTOCREATOR: return "escorttocreator";
+	case MissionTypes::HUNTING:         return "hunting";
+	case MissionTypes::MUSICIAN:        return "musician";
+	case MissionTypes::RECON:           return "recon";
+	case MissionTypes::SURVEY:          return "survey";
 	}
 	// clang-format on
 
