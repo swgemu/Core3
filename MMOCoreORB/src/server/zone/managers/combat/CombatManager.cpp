@@ -2829,7 +2829,10 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				creature->sendSystemMessage("@cbt_spam:posture_change_fail");
 				break;
 			case CommandEffect::NEXTATTACKDELAY:
-				targetCreature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0);
+				if (data.getCommand()->getNameCRC() != STRING_HASHCODE("panicshot"))
+					targetCreature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0);
+
+				creature->sendSystemMessage("@combat_effects:combat_delay_resist");
 				break;
 			case CommandEffect::INTIMIDATE:
 				targetCreature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0);

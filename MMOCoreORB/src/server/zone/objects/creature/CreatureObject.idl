@@ -1318,7 +1318,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void setRootedState(int durationSeconds = 20);
 
-	public native boolean setNextAttackDelay(unsigned int mod, int del);
+	public native boolean setNextAttackDelay(CreatureObject attacker, final string command, unsigned int mod, int del);
 
 	@preLocked
 	public native void setMeditateState();
