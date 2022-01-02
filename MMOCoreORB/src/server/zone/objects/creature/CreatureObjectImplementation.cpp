@@ -2647,7 +2647,7 @@ void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 	}
 }
 
-bool CreatureObjectImplementation::setNextAttackDelay(uint32 mod, int del) {
+bool CreatureObjectImplementation::setNextAttackDelay(CreatureObject* attacker, const String& command, uint32 mod, int del) {
 	// Disabled until its fixed
 
 	return false;
@@ -2660,9 +2660,16 @@ bool CreatureObjectImplementation::setNextAttackDelay(uint32 mod, int del) {
 		showFlyText("combat_effects", "warcry_hit", 0x00, 0xFF, 0x00);
 
 		if (isPlayerCreature()) {
-			StringIdChatParameter stringId("combat_effects", "delay_applied_self");
-			stringId.setDI(del);
-			sendSystemMessage(stringId);
+			if (STRING_HASHCODE("panicshot") == command.hashCode()) {
+				StringIdChatParameter params("@combat_effects:delay_notify"); // You duck for cover from %TT's wild shooting! Your next action is delayed for %DI seconds
+				params.setDI(del);
+				params.setTT(attacker->getFirstName());
+				sendSystemMessage(params);
+			} else {
+				StringIdChatParameter stringId("combat_effects", "delay_applied_self");
+				stringId.setDI(del);
+				sendSystemMessage(stringId);
+			}
 		}
 
 		return true;
