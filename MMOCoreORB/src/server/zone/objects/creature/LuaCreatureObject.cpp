@@ -115,7 +115,6 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isDead", &LuaCreatureObject::isDead},
 		{ "isIncapacitated", &LuaCreatureObject::isIncapacitated },
 		{ "getLevel", &LuaCreatureObject::getLevel},
-		{ "getQueueSize", &LuaCreatureObject::getQueueSize },
 		{ "isDancing", &LuaCreatureObject::isDancing},
 		{ "isPlayingMusic", &LuaCreatureObject::isPlayingMusic},
 		{ "getPerformanceName", &LuaCreatureObject::getPerformanceName},
@@ -874,14 +873,6 @@ int LuaCreatureObject::getLevel(lua_State* L) {
 	int level = realObject->getLevel();
 
 	lua_pushinteger(L, level);
-
-	return 1;
-}
-
-int LuaCreatureObject::getQueueSize(lua_State* L) {
-	int size = realObject->getCommandQueueSize();
-
-	lua_pushinteger(L, size);
 
 	return 1;
 }
