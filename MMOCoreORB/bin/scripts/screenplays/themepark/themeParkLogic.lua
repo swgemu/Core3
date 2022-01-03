@@ -1606,7 +1606,7 @@ function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, planetName, pConver
 			if currentMissionType == "destroy" then
 				nextSpawnPoint = getSpawnPoint(planetName, firstSpawnPoint[1], firstSpawnPoint[3], 10, 20, true)
 			else
-				nextSpawnPoint = getSpawnPoint(planetName, firstSpawnPoint[1], firstSpawnPoint[3], 5, 15)
+				nextSpawnPoint = getSpawnPoint(planetName, firstSpawnPoint[1], firstSpawnPoint[3], 5, 15, true)
 			end
 			if nextSpawnPoint ~= nil then
 				table.insert(spawnPoints, nextSpawnPoint)
