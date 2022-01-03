@@ -246,6 +246,10 @@ public:
 		return targetType;
 	}
 
+	inline String getName() const {
+		return name;
+	}
+
 	inline uint32 getNameCRC() const {
 		return nameCRC;
 	}
