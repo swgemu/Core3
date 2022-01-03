@@ -91,6 +91,7 @@ public:
 		FACTIONCHANGED,				// ManagedObject arg1 = null, long arg2 = 0
 		SLICED,						// ManagedObject arg1 = player doing slicing, long arg2 = result (1/0)
 		SQUAD,						// ManagedObject arg1 = AiAgent, long arg2 = 0
+		COMBATCOMMANDENQUEUED,		// ManagedObject arg1 = player, long arg2 = 0
 	};
 };
 
