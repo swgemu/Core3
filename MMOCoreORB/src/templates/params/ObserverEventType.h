@@ -93,6 +93,7 @@ public:
 		SQUAD,						// ManagedObject arg1 = AiAgent, long arg2 = 0
 		QUESTKILL,					// ManagedObject arg1 = destructedObject, long arg2 = 0 Credit for quest/screenplay kills
 		DAMAGECHECKPOINT,
+		COMBATCOMMANDENQUEUED,		// ManagedObject arg1 = player, long arg2 = 0
 	};
 };
 
