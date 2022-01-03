@@ -1109,7 +1109,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		killPlayer(destructor, playerCreature, 0, isCombatAction);
 	} else {
 
-		playerCreature->setPosture(CreaturePosture::INCAPACITATED, !isCombatAction, !isCombatAction);
+		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true, true);
 		playerCreature->clearCombatState(false);
 		playerCreature->clearState(CreatureState::FEIGNDEATH); // We got incapped for real - Remove the state so we can be DB'd
 
