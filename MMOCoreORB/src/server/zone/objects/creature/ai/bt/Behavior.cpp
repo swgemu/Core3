@@ -23,6 +23,7 @@ bool Behavior::checkConditions(AiAgent* agent) const {
 }
 
 Behavior::Status Behavior::doAction(AiAgent* agent) const {
+#ifdef DEBUG_AI
 	//agent->info("0x" + String::hexvalueOf((int)id) + " " + print().toCharArray(), true);
 	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
 		StringBuffer msg;
@@ -32,6 +33,7 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 		ChatManager* chatManager = agent->getZoneServer()->getChatManager();
 		chatManager->broadcastChatMessage(agent, print(), 0, 0, 0);
 	}
+#endif // DEBUG_AI
 
 	if (!this->checkConditions(agent)) {
 		if (agent != nullptr) {
@@ -58,6 +60,7 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 	//			and implemented in the concrete behaviors)
 	Behavior::Status result = this->execute(agent);
 
+#ifdef DEBUG_AI
 	//agent->info("0x" + String::hexvalueOf((int)id) + " " + print().toCharArray() + " result: " + result, true);
 	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
 		StringBuffer msg;
@@ -65,6 +68,7 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 
 		agent->info(msg.toString(), true);
 	}
+#endif // DEBUG_AI
 
 	// Step 3:	If the result is RUNNING, clear the agent's run chain and and
 	//			add this->id to the front. As the chain unwinds, the composite

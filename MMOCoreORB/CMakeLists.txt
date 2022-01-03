@@ -87,6 +87,11 @@ include_directories(${OPENSSL_INCLUDE_DIR})
 find_package(ZLIB REQUIRED)
 include_directories(${ZLIB_INCLUDE_DIRS})
 
+if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+	message(STATUS "Compiling with AI debug enabled")
+	add_definitions(-DDEBUG_AI)
+endif()
+
 if (ENABLE_SESSION_API)
     message(STATUS "Compiling with session API support")
     add_definitions(-DWITH_SESSION_API)

@@ -12,12 +12,14 @@ using namespace server::zone::objects::creature::ai::bt;
 using namespace server::zone::objects::creature::ai::bt::node;
 
 Behavior::Status Composite::doAction(AiAgent* agent) const {
+#ifdef DEBUG_AI
 	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
 		StringBuffer msg;
 		msg << "0x" << hex << id << " " << print().toCharArray();
 
 		agent->info(msg.toString(), true);
 	}
+#endif // DEBUG_AI
 
 	if (!this->checkConditions(agent))
 		return INVALID;
@@ -58,12 +60,14 @@ Behavior::Status Composite::doAction(AiAgent* agent) const {
 	//			depending on the type of composite this is, so this will just
 	//			call the abstract method to do it.
 	Behavior::Status result = this->execute(agent, currentIdx);
+#ifdef DEBUG_AI
 	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
 		StringBuffer msg;
 		msg << "0x" << hex << id << " " << print() << "result: " << result;
 
 		agent->info(msg.toString(), true);
 	}
+#endif // DEBUG_AI
 
 	// Step 3:  if the child result is running, then set this
 	//          state to running and push the behavior to the
