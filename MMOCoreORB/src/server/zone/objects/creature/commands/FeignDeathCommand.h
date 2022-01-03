@@ -9,21 +9,17 @@
 
 class FeignDeathCommand : public QueueCommand {
 public:
-
-	FeignDeathCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	FeignDeathCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const override {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if(creature->isInCombat() == false) {
+		if (creature->isInCombat() == false) {
 			creature->sendSystemMessage("@combat_effects:feign_no_combat");
 			return GENERALERROR;
 		}
@@ -34,6 +30,7 @@ public:
 		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, STRING_HASHCODE("private_feign_buff"), std::numeric_limits<float>::max(), BuffType::OTHER, getNameCRC());
 
 		Locker locker(buff, creature); // buff->init requires buff to be locked
+
 		buff->init(&observerTypes);
 		buff->setSkillModifier("private_defense", -99999999);
 
@@ -55,13 +52,9 @@ public:
 		if (creo->canFeignDeath()) {
 			creo->feignDeath();
 		} else {
-			creo->sendSystemMessage("@cbt_spam:feign_fail_single");
+			creo->removeBuff(STRING_HASHCODE("private_feign_buff"));
 		}
-
-		creo->removeBuff(STRING_HASHCODE("private_feign_buff"));
-
 	}
-
 };
 
-#endif //FEIGNDEATHCOMMAND_H_
+#endif // FEIGNDEATHCOMMAND_H_
