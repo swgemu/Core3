@@ -1974,11 +1974,8 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 	}
 
 	if (isOnline()) {
-		const CommandQueueActionVector* commandQueue = creature->getCommandQueue();
-		const CommandQueueActionVector* immediateQueue = creature->getImmediateQueue();
-
-		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && !creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && (commandQueue->size() == 0) && (immediateQueue->size() == 0)
-		&& creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated() && cooldownTimerMap->isPast("autoAttackDelay") && !creature->hasAttackDelay() && !creature->hasPostureChangeDelay()) {
+		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && !creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && !creature->hasAttackDelay() && !creature->hasPostureChangeDelay() &&
+		creature->isNextActionPast() && creature->getCommandQueueSize() == 0 && !creature->isDead() && !creature->isIncapacitated() && cooldownTimerMap->isPast("autoAttackDelay") && !creature->hasAttackDelay() && !creature->hasPostureChangeDelay()) {
 
 			ManagedReference<SceneObject*> targetObject = zoneServer->getObject(creature->getTargetID());
 
@@ -1987,10 +1984,19 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 					creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
 				}
 
-				float weaponSpeed = ((uint64)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f)));
+				float delay = ((uint64)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f)));
 
 				// as long as the target is still valid, we still want to continue to queue auto attacks
-				cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", (weaponSpeed) * 1000.f);
+				cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", delay * 1000.f);
+
+				Locker lock(creature);
+
+				Time* nextAction = creature->getNextActionTime();
+
+				if (nextAction != nullptr) {
+					nextAction->updateToCurrentTime();
+					nextAction->addMiliTime((uint32)(delay) * 1000.f);
+				}
 			} else {
 				creature->setTargetID(0);
 			}
