@@ -165,6 +165,10 @@ void MissionObjectiveImplementation::fail() {
 	removeMissionFromPlayer();
 }
 
+void MissionObjectiveImplementation::addMissionStats(TransactionLog& trx) {
+	// Stub for subclasses to add mission type specific stats
+}
+
 void MissionObjectiveImplementation::awardReward() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
@@ -186,6 +190,8 @@ void MissionObjectiveImplementation::awardReward() {
 
 	ManagedReference<GroupObject*> group = owner->getGroup();
 
+	auto ownerZone = owner->getZone();
+
 	TransactionLog trx(owner, TrxCode::MISSIONCOMPLETE, mission, false);
 	trx.addWorldPosition("src", owner);
 	trx.addState("missionID", mission->getObjectID());
@@ -200,17 +206,20 @@ void MissionObjectiveImplementation::awardReward() {
 	trx.addState("missionStartPlanet", mission->getStartPlanet());
 	trx.addState("missionEndWorldPositionX", int(missionEndPoint.getX()));
 	trx.addState("missionEndWorldPositionY", int(missionEndPoint.getY()));
-	trx.addState("missionEndPlanet", owner->getZone() != nullptr ? owner->getZone()->getZoneName() : "-nullptr-");
+	trx.addState("missionEndPlanet", ownerZone != nullptr ? ownerZone->getZoneName() : "-nullptr-");
 	trx.addState("missionRewardCredits", mission->getRewardCredits());
 	trx.addState("missionRefreshCounter", mission->getRefreshCounter());
 	trx.addState("missionTarget", mission->getTargetName());
 	trx.addState("missionSize", mission->getSize());
+	trx.addState("missionTimeTotal", missionStartTime.miliDifference() / 1000);
 
 	if (mission->getFaction() != Factions::FACTIONNEUTRAL) {
 		trx.addState("missionFaction", mission->getFaction() == Factions::FACTIONIMPERIAL ? "imperial" : "rebel");
 		trx.addState("missionRewardFactionPointsRebel", mission->getRewardFactionPointsRebel());
 		trx.addState("missionRewardFactionPointsImperial", mission->getRewardFactionPointsImperial());
 	}
+
+	addMissionStats(trx);
 
 	int playerCount = 1;
 	int petCount = 0;

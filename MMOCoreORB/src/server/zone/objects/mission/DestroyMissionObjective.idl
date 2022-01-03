@@ -12,9 +12,11 @@ import engine.core.ManagedObject;
 
 include engine.util.u3d.Vector3;
 include engine.log.Logger;
+include system.lang.Time;
 include server.zone.objects.mission.MissionObjective;
 include server.zone.objects.tangible.LairObject;
 include server.zone.objects.area.MissionSpawnActiveArea;
+include server.zone.objects.transaction.TransactionLog;
 
 @json
 class DestroyMissionObjective extends MissionObjective {
@@ -27,6 +29,9 @@ class DestroyMissionObjective extends MissionObjective {
 
 	int difficultyLevel;
 	int difficulty;
+
+	@dereferenced
+	protected Time lairSpawnTime;
 
 	public DestroyMissionObjective(MissionObject mission) {
 		super(mission);
@@ -43,6 +48,8 @@ class DestroyMissionObjective extends MissionObjective {
 
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
+
+		lairSpawnTime.updateToCurrentTime();
 
 		Logger.setLoggingName("DestroyMissionObjective");
 	}
@@ -87,4 +94,8 @@ class DestroyMissionObjective extends MissionObjective {
 	@local
 	@dirty
 	public native Vector3 getEndPosition();
+
+	@local
+	@dirty
+	public native void addMissionStats(@dereferenced TransactionLog trx);
 }

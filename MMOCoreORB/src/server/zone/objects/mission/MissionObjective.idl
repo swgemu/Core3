@@ -15,6 +15,7 @@ include system.lang.Time;
 include server.zone.objects.mission.MissionObserver;
 include server.zone.objects.mission.events.FailMissionAfterCertainTimeTask;
 include server.zone.objects.mission.MissionObject;
+include server.zone.objects.transaction.TransactionLog;
 
 @json
 class MissionObjective extends ManagedObject implements Logger {
@@ -129,6 +130,10 @@ class MissionObjective extends ManagedObject implements Logger {
 
 	@preLocked
 	public native void awardReward();
+
+    @local
+    @dirty
+	public abstract native void addMissionStats(@dereferenced TransactionLog trx);
 
 	@dereferenced
 	@local

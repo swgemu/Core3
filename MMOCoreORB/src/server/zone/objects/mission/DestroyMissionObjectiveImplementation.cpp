@@ -248,6 +248,10 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 		zone->transferObject(lairObject, -1, true);
 	}
+
+	if (lairObject != nullptr) {
+		lairSpawnTime.updateToCurrentTime();
+	}
 }
 
 void DestroyMissionObjectiveImplementation::abort() {
@@ -280,6 +284,10 @@ void DestroyMissionObjectiveImplementation::abort() {
 
 		spawnActiveArea->destroyObjectFromWorld(true);
 	}
+}
+
+void DestroyMissionObjectiveImplementation::addMissionStats(TransactionLog& trx) {
+	trx.addState("missionTimeLairDestroyed", lairSpawnTime.miliDifference() / 1000);
 }
 
 void DestroyMissionObjectiveImplementation::complete() {
