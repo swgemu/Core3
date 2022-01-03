@@ -23,7 +23,6 @@ include server.zone.objects.creature.variables.CooldownTimerMap;
 include server.zone.objects.creature.buffs.BuffList;
 include server.zone.objects.creature.damageovertime.DamageOverTimeList;
 include server.zone.objects.scene.variables.DeltaVector;
-include server.zone.objects.creature.variables.CommandQueueActionVector;
 include server.zone.objects.creature.variables.SkillList;
 include server.zone.objects.creature.variables.SkillModList;
 include templates.params.creature.CreaturePosture;
@@ -45,6 +44,7 @@ include server.zone.QuadTreeEntry;
 import system.util.SynchronizedVectorMap;
 import server.zone.managers.auction.AuctionSearchTask;
 import server.zone.objects.tangible.Instrument;
+include server.zone.objects.creature.CommandQueue;
 
 @mock
 @json
@@ -148,22 +148,12 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected transient ReadWriteLock skillModMutex;
 
-	@transactional
-	protected transient CommandQueueActionVector commandQueue;
-
-	@transactional
-	protected transient CommandQueueActionVector immediateQueue;
+	protected transient CommandQueue commandQueue;
 
 	protected transient unsigned int lastActionCounter;
 
 	@dereferenced
 	protected Time nextAction;
-
-	@dereferenced
-	protected Time nextImmediateAction;
-
-	@dereferenced
-	protected Time removeAction;
 
 	@transactional
 	protected transient CooldownTimerMap cooldownTimerMap;
@@ -1479,14 +1469,6 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public native void doCombatAnimation(unsigned int animationCRC);
 
-	@preLocked
-	public native void activateQueueAction();
-
-	public native void removeQueueAction(int action);
-
-	@preLocked
-	public native void activateImmediateAction();
-
 	@read
 	public native unicode getCreatureName();
 
@@ -1651,24 +1633,12 @@ class CreatureObject extends TangibleObject {
 		return speedMultiplierModChanges;
 	}
 
-	@preLocked
-	@local
-	@read
-	public final CommandQueueActionVector getCommandQueue() {
-		return commandQueue;
-	}
-
-	@preLocked
-	@local
-	@read
-	public final CommandQueueActionVector getImmediateQueue() {
-		return immediateQueue;
-	}
 
 	@read
 	public int getCommandQueueSize() {
-		return commandQueue.size();
+		return commandQueue.getQueueSize();
 	}
+
 
 	@preLocked
 	public void setLastActionCounter(unsigned int ctr) {
@@ -1935,6 +1905,11 @@ class CreatureObject extends TangibleObject {
 	@nativeStub
 	@local
 	public native CreatureObject asCreatureObject();
+
+	@local
+	public Time getNextActionTime() {
+		return nextAction;
+	}
 
 	@read
 	public boolean isNextActionPast() {
