@@ -151,9 +151,6 @@ class CreatureObject extends TangibleObject {
 	@transactional
 	protected transient CommandQueueActionVector commandQueue;
 
-	@transactional
-	protected transient CommandQueueActionVector immediateQueue;
-
 	protected transient unsigned int lastActionCounter;
 
 	@dereferenced
@@ -1480,12 +1477,7 @@ class CreatureObject extends TangibleObject {
 	public native void doCombatAnimation(unsigned int animationCRC);
 
 	@preLocked
-	public native void activateQueueAction();
-
-	public native void removeQueueAction(int action);
-
-	@preLocked
-	public native void activateImmediateAction();
+	public native void activateQueue();
 
 	@read
 	public native unicode getCreatureName();
@@ -1656,13 +1648,6 @@ class CreatureObject extends TangibleObject {
 	@read
 	public final CommandQueueActionVector getCommandQueue() {
 		return commandQueue;
-	}
-
-	@preLocked
-	@local
-	@read
-	public final CommandQueueActionVector getImmediateQueue() {
-		return immediateQueue;
 	}
 
 	@read
@@ -1935,6 +1920,12 @@ class CreatureObject extends TangibleObject {
 	@nativeStub
 	@local
 	public native CreatureObject asCreatureObject();
+
+	@local
+	@dirty
+	public Time getNextActionTime() {
+		return nextAction;
+	}
 
 	@read
 	public boolean isNextActionPast() {
