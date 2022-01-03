@@ -815,8 +815,10 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
 	const CreatureAttackMap* attackMap = getAttackMap();
 
 	if (attackMap == nullptr) {
+#ifdef DEBUG_AI
 		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 			info("attackMap == nullptr", true);
+#endif // DEBUG_AI
 		return false;
 	}
 
@@ -825,16 +827,20 @@ bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
 	}
 
 	if (attackNum >= attackMap->size()) {
+#ifdef DEBUG_AI
 		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 			info("attackNum >= attackMap->size()", true);
+#endif // DEBUG_AI
 		return false;
 	}
 
 	String cmd = attackMap->getCommand(attackNum);
 
 	if (cmd.isEmpty()) {
+#ifdef DEBUG_AI
 		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 			info("cmd.isEmpty()", true);
+#endif // DEBUG_AI
 		return false;
 	}
 
@@ -1822,8 +1828,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	 * SETUP: Calculate and initialize situational variables
 	 */
 
+#ifdef DEBUG_AI
 	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 		info("findNextPosition(" + String::valueOf(maxDistance) + ", " + String::valueOf(walk) + ")", true);
+#endif // DEBUG_AI
 
 	Locker locker(&targetMutex);
 
@@ -1875,8 +1883,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			break;
 		}
 
+#ifdef DEBUG_AI
 		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 			info("targetPosition: " + endMovementPosition.toString(), true);
+#endif // DEBUG_AI
 
 		/*
 		*	STEP 1: Find a path if there is not a previously found path
@@ -2231,8 +2241,10 @@ void AiAgentImplementation::doMovement() {
 	//if (isWaiting())
 	//	stopWaiting();
 
+#ifdef DEBUG_AI
 	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 		info("Performing root behavior: " + rootBehavior->print(), true);
+#endif // DEBUG_AI
 	// activate AI
 	Behavior::Status actionStatus = rootBehavior->doAction(asAiAgent());
 
@@ -2246,14 +2258,18 @@ void AiAgentImplementation::doMovement() {
 	//	}
 	//}
 
+#ifdef DEBUG_AI
 	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 		info("rootBehavior->doAction() took " + String::valueOf((int)startTime.miliDifference()) + "ms to complete.", true);
+#endif // DEBUG_AI
 
 	activateMovementEvent();
 }
 
 void AiAgentImplementation::setAIDebug(bool flag) {
+#ifdef DEBUG_AI
 	writeBlackboard("aiDebug", flag);
+#endif // DEBUG_AI
 }
 
 bool AiAgentImplementation::isRunningBehavior(unsigned int id) {

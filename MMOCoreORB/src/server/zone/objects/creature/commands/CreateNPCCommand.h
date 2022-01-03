@@ -45,11 +45,15 @@ public:
 			if (aiAgent == nullptr)
 				return GENERALERROR;
 
+#ifdef DEBUG_AI
 			Locker clocker(aiAgent, creature);
 			bool curDebug = aiAgent->peekBlackboard("aiDebug") && aiAgent->readBlackboard("aiDebug") == true;
 			aiAgent->setAIDebug(!curDebug);
 
 			creature->sendSystemMessage("Debug toggle for " + String::valueOf(creature->getTargetID()) + " set to " + String::valueOf(!curDebug));
+#else // DEBUG_AI
+			creature->sendSystemMessage("AI Debug not compiled into this server");
+#endif // DEBUG_AI
 		}
 
 		return SUCCESS;

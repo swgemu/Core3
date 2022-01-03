@@ -82,12 +82,14 @@ public:
 	}
 
 	Behavior::Status doAction(AiAgent* agent) const {
+#ifdef DEBUG_AI
 		if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
 			StringBuffer msg;
 			msg << "0x" << hex << id << " " << print().toCharArray();
 
 			agent->info(msg.toString(), true);
 		}
+#endif // DEBUG_AI
 
 		if (!this->checkConditions(agent))
 			return INVALID; // TODO: should this be FAILURE?
@@ -98,12 +100,15 @@ public:
 			agent->popRunningChain();
 
 		Behavior::Status result = this->execute(agent);
+
+#ifdef DEBUG_AI
 		if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
 			StringBuffer msg;
 
 			msg << "0x" << hex << id << " " << print() << " result: " << result;
 			agent->info(msg.toString(), true);
 		}
+#endif // DEBUG_AI
 
 		if (result == RUNNING)
 			agent->addRunningID(id);
