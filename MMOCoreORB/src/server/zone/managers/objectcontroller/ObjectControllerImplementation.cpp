@@ -114,40 +114,6 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		}
 	}
 
-	if (object->hasAttackDelay()) {
-		const Time* attackDelay = object->getCooldownTime("nextAttackDelay");
-		float attackTime = ((float)attackDelay->miliDifference() / 1000) * -1;
-
-		if (attackTime > durationTime) {
-			durationTime += attackTime;
-		}
-
-		/*StringBuffer timeMsg;
-		timeMsg << "  attackDelay time =  " << durationTime;
-		object->sendSystemMessage(timeMsg.toString());*/
-
-		return durationTime;
-	}
-
-	if (object->hasPostureChangeDelay() && queueCommand->getDefaultPriority() != QueueCommand::IMMEDIATE) {
-		const Time* postureDelay = object->getCooldownTime("postureChangeDelay");
-		float postureTime = ((float)postureDelay->miliDifference() / 1000) * -1;
-
-		if (postureTime > durationTime) {
-			durationTime += postureTime;
-		}
-
-		/*StringBuffer timeMsg;
-		timeMsg << "  postureDelay time =  " << durationTime;
-		object->sendSystemMessage(timeMsg.toString());*/
-
-		return durationTime;
-	}
-
-	if (!queueCommand->checkCooldown(object)) {
-		return 0.0f;
-	}
-
 	if (queueCommand->requiresAdmin()) {
 		try {
 			if(object->isPlayerCreature()) {
@@ -190,8 +156,8 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 
 	//onFail onComplete must clear the action from client queue
 	if (errorNumber != QueueCommand::SUCCESS) {
-
 		queueCommand->onFail(actionCount, object, errorNumber);
+		return 0;
 	} else {
 		if (queueCommand->getDefaultPriority() != QueueCommand::IMMEDIATE) {
 			durationTime = queueCommand->getCommandDuration(object, arguments);
