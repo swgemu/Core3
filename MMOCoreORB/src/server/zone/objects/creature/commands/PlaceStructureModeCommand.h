@@ -59,6 +59,34 @@ public:
 
 		Deed* deed = cast<Deed*>(obj.get());
 
+		//Check deed faction, player faction and status to make sure they are allowed to place a faction deeds (bases)
+		if (deed->getFaction() != 0){
+			if (creature->getFactionStatus() == 0) {
+				StringIdChatParameter message("faction_perk","prose_not_neutral"); // You cannot use %TT if you are neutral or on leave.
+				message.setTT(deed->getDisplayedName());
+
+				creature->sendSystemMessage(message);
+				return GENERALERROR;
+			}
+
+			if (deed->getFaction() != creature->getFaction()) {
+				UnicodeString deedFaction = "";
+
+				if (deed->isRebel()) {
+					deedFaction = "Rebel";
+				} else if (deed->isImperial()) {
+					deedFaction = "Imperial";
+				}
+
+				StringIdChatParameter message("faction_perk","prose_wrong_faction"); // You must be declared to %TO faction to use %TT.
+				message.setTT(deed->getDisplayedName());
+				message.setTO(deedFaction);
+
+				creature->sendSystemMessage(message);
+				return GENERALERROR;
+			}
+		}
+
 		TemplateManager* templateManager = TemplateManager::instance();
 
 		String serverTemplatePath = deed->getGeneratedObjectTemplate();
