@@ -572,8 +572,10 @@ function recruiterScreenplay:transferItem(pPlayer, pInventory, faction, itemStri
 
 		deed:setGeneratedObjectTemplate(genPath)
 
-		if TangibleObject(pItem) ~= nil then
-			TangibleObject(pItem):setFaction(faction)
+		if (faction == "imperial") then
+			TangibleObject(pItem):setFaction(FACTIONIMPERIAL)
+		elseif (faction == "rebel") then
+			TangibleObject(pItem):setFaction(FACTIONREBEL)
 		end
 	end
 
