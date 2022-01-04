@@ -1454,6 +1454,7 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 		item->setStatus(AuctionItem::RETRIEVED);
 
 		auctionMap->deleteItem(vendor, item);
+		auctionMap->removeFromCommodityLimit(item);
 
 		item->setAuctionedItemObjectID(0);
 
