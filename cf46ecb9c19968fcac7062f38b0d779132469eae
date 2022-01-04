@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb8c11db_12262e01",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PlaceStructureModeCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2022-01-04T05:36:22Z",
+      "side": 1,
+      "message": "Looks good, but this system message covers on leave and neutral. You\u0027re checking for on leave, but not neutral. Adding || creature-\u003egetFaction() \u003d\u003d Factions::FACTIONNEUTRAL should handle it. We also try to avoid magic numbers wherever possible so its more readable, so rather than checking if faction status is 0, check if its \u003d\u003d FactionStatus::ONLEAVE",
+      "revId": "cf46ecb9c19968fcac7062f38b0d779132469eae",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
