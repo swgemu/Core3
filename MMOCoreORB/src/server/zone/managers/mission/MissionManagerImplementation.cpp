@@ -189,6 +189,14 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 		}
 	}
 
+	if (!player->checkCooldownRecovery("mission_list_request")) {
+		player->sendSystemMessage("You can't request missions yet, please wait a bit before trying again.");
+		return;
+	}
+
+	// UI gray out is for 1500ms, default to 1400 to give a bit of gracetime
+	player->addCooldown("mission_list_request", ConfigManager::instance()->getInt("Core3.MissionManager.ListRequestCooldown", 1400));
+
 	ManagedReference<SceneObject*> missionBag = player->getSlottedObject("mission_bag");
 
 	if (missionBag == nullptr)
