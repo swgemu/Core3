@@ -13,8 +13,8 @@
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 
 class MissionListRequestCallback : public MessageCallback {
-	uint16 unk1;
-	uint16 unk2;
+	uint16 flags;
+	uint16 seq;
 	uint64 terminalObjectID;
 
 	ObjectControllerMessageCallback* objectControllerMain;
@@ -22,17 +22,15 @@ class MissionListRequestCallback : public MessageCallback {
 public:
 	MissionListRequestCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 			MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
-			unk1(0), unk2(0), terminalObjectID(0), objectControllerMain(objectControllerCallback) {
+			flags(0), seq(0), terminalObjectID(0), objectControllerMain(objectControllerCallback) {
 	}
 
 	void parse(Message* message) {
 		message->parseInt();
-		unk1 = message->parseByte();
-		unk2 = message->parseByte();
+		flags = message->parseByte();
+		seq = message->parseByte();
 
 		terminalObjectID = message->parseLong();
-
-		//System::out << "mission list request with unk1: " << unk1 << " unk2: " << unk2 << " oid: " << terminalObjectID << endl;
 	}
 
 	void run() {
@@ -53,10 +51,17 @@ public:
 
 		MissionTerminal* missionTerminal = cast<MissionTerminal*>( terminal.get());
 
-		setTaskName("MissionListRequestCallback for MissionTerminal(" + String::valueOf(missionTerminal->getObjectID()) + ")");
+		StringBuffer taskName;
+
+		taskName << "MissionListRequestCallback for MissionTerminal(" << missionTerminal->getObjectID() << ")"
+			<< "; player=" << player->getObjectID()
+			<< "; flags=" << flags
+			<< "; seq=" << seq;
+
+		setTaskName(taskName.toString());
 
 		MissionManager* manager = server->getZoneServer()->getMissionManager();
-		manager->handleMissionListRequest(missionTerminal, player, unk2);
+		manager->handleMissionListRequest(missionTerminal, player, seq);
 	}
 
 };
