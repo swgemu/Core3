@@ -142,6 +142,9 @@ idleDefault = {
 	{id="401182658",	name="Not",	pid="4072235030"},
 	{id="2752118648",	name="If",	pid="401182658"},
 	{id="1816846537",	name="CheckHomeIsCell",	pid="2752118648"},
+	{id="3395906854",	name="Not",	pid="4072235030"},
+	{id="2189282822",	name="If",	pid="3395906854"},
+	{id="3904790446",	name="CheckMovementState",	pid="2189282822",	args={condition=LEASHING}},
 	{id="487154563",	name="Not",	pid="4072235030"},
 	{id="3807314026",	name="If",	pid="487154563"},
 	{id="1384587681",	name="CheckMovementState",	pid="3807314026",	args={condition=PATHING_HOME}},
@@ -154,7 +157,12 @@ idleDefault = {
 	{id="663900148",	name="If",	pid="4129527278"},
 	{id="3881405125",	name="CheckDestination",	pid="663900148",	args={condition=0.0}},
 	{id="1596358304",	name="WriteBlackboard",	pid="4129527278",	args={key="moveMode", val=WALK}},
-	{id="1979932461",	name="TreeSocket",	pid="4129527278",	args={slot=MOVE}}}
+	{id="1979932461",	name="TreeSocket",	pid="4129527278",	args={slot=MOVE}},
+	{id="1398319073",	name="Sequence",	pid="2434234854"},
+	{id="2757532336",	name="If",	pid="1398319073"},
+	{id="3270011669",	name="CheckMovementState",	pid="2757532336",	args={condition=LEASHING}},
+	{id="1349815697",	name="WriteBlackboard",	pid="1398319073",	args={key="moveMode", val=RUN}},
+	{id="681545628",	name="TreeSocket",	pid="1398319073",	args={slot=MOVE}}}
 addAiTemplate("idleDefault", idleDefault)
 
 killDefault = {
@@ -289,6 +297,9 @@ stalkDefault = {
 	{id="4188555031",	name="CheckIsStalker",	pid="3739778054"},
 	{id="1616171750",	name="If",	pid="1672513422"},
 	{id="3970049935",	name="CheckOutdoors",	pid="1616171750"},
+	{id="3327894366",	name="Not",	pid="1672513422"},
+	{id="2682867169",	name="If",	pid="3327894366"},
+	{id="4037126453",	name="CheckMovementState",	pid="2682867169",	args={condition=LEASHING}},
 	{id="2548145200",	name="Not",	pid="1672513422"},
 	{id="4223807049",	name="If",	pid="2548145200"},
 	{id="3347717967",	name="CheckMovementState",	pid="4223807049",	args={condition=STALKING}},
