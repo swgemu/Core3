@@ -8,6 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 #include "templates/manager/TemplateManager.h"
+#include "templates/faction/Factions.h"
 
 class PlaceStructureModeCommand : public QueueCommand {
 public:
@@ -58,6 +59,34 @@ public:
 			return GENERALERROR; //Deed must be in inventory...
 
 		Deed* deed = cast<Deed*>(obj.get());
+
+		//Check deed faction, player faction and status to make sure they are allowed to place a faction deeds (bases)
+		if (deed->getFaction() != Factions::FACTIONNEUTRAL){
+			if (creature->getFaction() == Factions::FACTIONNEUTRAL || creature->getFactionStatus() == FactionStatus::ONLEAVE){
+				StringIdChatParameter message("@faction_perk:prose_not_neutral"); // You cannot use %TT if you are neutral or on leave.
+				message.setTT(deed->getDisplayedName());
+
+				creature->sendSystemMessage(message);
+				return GENERALERROR;
+			}
+
+			if (deed->getFaction() != creature->getFaction()) {
+				UnicodeString deedFaction = "";
+
+				if (deed->isRebel()) {
+					deedFaction = "Rebel";
+				} else if (deed->isImperial()) {
+					deedFaction = "Imperial";
+				}
+
+				StringIdChatParameter message("@faction_perk:prose_wrong_faction"); // You must be declared to %TO faction to use %TT.
+				message.setTT(deed->getDisplayedName());
+				message.setTO(deedFaction);
+
+				creature->sendSystemMessage(message);
+				return GENERALERROR;
+			}
+		}
 
 		TemplateManager* templateManager = TemplateManager::instance();
 
