@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a21c54f_b066d6f0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2022-01-05T01:13:21Z",
+      "side": 1,
+      "message": "Not sure I understand moving this down here. If these checks aren\u0027t needed prior to the tick doing damage, then they shouldn\u0027t be needed at all and you can just remove them. All moving this here is doing is making it return a tick power of 0 even when the tick did damage.",
+      "revId": "53c93bc76c0599ee1bb7eacbeb09488fe8e7e078",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
