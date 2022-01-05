@@ -1196,24 +1196,19 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 }
 
 void AiAgentImplementation::leash() {
-	setMovementState(AiAgent::LEASHING);
-	setTargetObject(nullptr);
+	if (getMovementState() == AiAgent::LEASHING)
+		return;
+
+	eraseBlackboard("targetProspect");
+	setFollowObject(nullptr);
 	storeFollowObject();
 
 	clearPatrolPoints();
-
 	clearDots();
 
 	CombatManager::instance()->forcePeace(asAiAgent());
-
-	if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
-		homeLocation.setReached(false);
-		addPatrolPoint(homeLocation);
-	} else {
-		setDirection(Math::deg2rad(homeLocation.getDirection()));
-		broadcastNextPositionUpdate(&homeLocation);
-		homeLocation.setReached(true);
-	}
+	setMovementState(AiAgent::LEASHING);
+	homeLocation.setReached(false);
 }
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {
@@ -1904,7 +1899,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 			// We already have a path
 			const WorldCoordinates endMovementCoords = endMovementPosition.getCoordinates();
-			if (currentCell != nullptr && endMovementPosition.getCell() != nullptr && currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 3 * 3) {
+			if (currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 3 * 3) {
 				// Our target has moved, so we will need a new path with a new position.
 
 				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), endMovementPosition.getCoordinates(), getZoneUnsafe()));
@@ -2022,7 +2017,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				Zone* zone = getZoneUnsafe();
 
 				// We must check that the end movement position does not end in a cell because AI will be placed on the overhangs of buildings before entering
-				if (nextMovementPosition.getCell() == nullptr && endMovementPosition.getCell() == nullptr && zone != nullptr) {
+				if (!isInNavMesh() && nextMovementPosition.getCell() == nullptr && zone != nullptr) {
 					newPosition.setZ(getWorldZ(newPosition));
 
 					PlanetManager* planetManager = zone->getPlanetManager();
@@ -2344,7 +2339,10 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 
 	uint32 savedState = getMovementState(); // save this off in case we fail
 
-	if (savedState != PATROLLING || savedState != WATCHING) {
+	if (savedState == AiAgent::LEASHING)
+		return false;
+
+	if (savedState != AiAgent::PATROLLING || savedState != AiAgent::WATCHING) {
 		setMovementState(AiAgent::PATROLLING); // this clears patrol points
 		clearSavedPatrolPoints();
 	}
@@ -2501,6 +2499,15 @@ int AiAgentImplementation::setDestination() {
 		if (!isRetreating()) {
 			setMovementState(AiAgent::PATHING_HOME);
 			return setDestination();
+		}
+
+		if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
+			homeLocation.setReached(false);
+			addPatrolPoint(homeLocation);
+		} else {
+			setDirection(Math::deg2rad(homeLocation.getDirection()));
+			broadcastNextPositionUpdate(&homeLocation);
+			homeLocation.setReached(true);
 		}
 
 		break;
