@@ -25,6 +25,7 @@ rebel_recruiter = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {
@@ -36,17 +37,16 @@ rebel_recruiter = Creature:new {
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "unarmed",
-	secondaryWeapon = "none",
-	
-	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
-	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster),
-	secondaryAttacks = { },
+	primaryWeapon = "rebel_carbine",
+	secondaryWeapon = "rebel_pistol",
+
 	conversationTemplate = "rebelRecruiterConvoTemplate",
 	containerComponentTemplate = "FactionRecruiterContainerComponent",
-	optionsBitmask = INVULNERABLE + CONVERSABLE
 
+	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
+	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
+	primaryAttacks = merge(carbineernovice,marksmanmaster),
+	secondaryAttacks = merge(pistoleernovice,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_recruiter, "rebel_recruiter")
