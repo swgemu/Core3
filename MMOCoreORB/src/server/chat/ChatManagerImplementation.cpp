@@ -1361,8 +1361,6 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 		fname = fname.subString(0, spc);
 	}
 
-	ManagedReference<CreatureObject*> receiver = getPlayer(fname);
-
 	uint64 receiverObjectID = server->getPlayerManager()->getObjectID(fname);
 
 	if (receiverObjectID == 0) {
@@ -1375,15 +1373,29 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 		sender->sendMessage(amsg);
 
 		return;
+	}
+	
+	Reference<CreatureObject*> receiver = getPlayer(fname);
 
-	} else if (receiver == nullptr || !receiver->isOnline()) {
+	if (receiver == nullptr) {
+		// Can't really tell if other player is ignoring if creo isn't loaded
 		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_OFFLINE);
 		sender->sendMessage(amsg);
 
 		return;
 	}
 
-	if (receiver->getPlayerObject()->isIgnoring(sender->getFirstName()) && !godMode) {
+	auto receiverIgnoring = receiver->getPlayerObject()->isIgnoring(sender->getFirstName()) && !godMode;
+
+	// Avoid telling ignored people about online/offline status
+	if (!receiverIgnoring && !receiver->isOnline()) {
+		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_OFFLINE);
+		sender->sendMessage(amsg);
+
+		return;
+	}
+
+	if (receiverIgnoring) {
 		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_IGNORED);
 		sender->sendMessage(amsg);
 
