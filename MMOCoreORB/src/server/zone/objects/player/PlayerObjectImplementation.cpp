@@ -1331,24 +1331,45 @@ void PlayerObjectImplementation::notifyOnline() {
 	ChatManager* chatManager = server->getChatManager();
 	ZoneServer* zoneServer = server->getZoneServer();
 
-	String firstName = playerCreature->getFirstName();
-	firstName = firstName.toLowerCase();
+	String lowerFirstName = playerCreature->getFirstName();
+	lowerFirstName = lowerFirstName.toLowerCase();
 
 	for (int i = 0; i < friendList.reversePlayerCount(); ++i) {
-		ManagedReference<CreatureObject*> player = chatManager->getPlayer(friendList.getReversePlayer(i));
+		auto otherName = friendList.getReversePlayer(i);
+		Reference<CreatureObject*> otherPlayer = chatManager->getPlayer(otherName);
 
-		if (player != nullptr) {
-			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(firstName, zoneServer->getGalaxyName(), true);
-			player->sendMessage(notifyStatus);
+		if (otherPlayer == nullptr) {
+			continue;
+		}
+
+		auto otherGhost = otherPlayer->getPlayerObject();
+
+		if (otherGhost == nullptr) {
+			continue;
+		}
+
+		if (otherGhost->isPrivileged() || !isIgnoring(otherName)) {
+			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(lowerFirstName, zoneServer->getGalaxyName(), true);
+			otherPlayer->sendMessage(notifyStatus);
 		}
 	}
 
 	for (int i = 0; i < friendList.size(); ++i) {
-		const String& name = friendList.get(i);
-		ManagedReference<CreatureObject*> player = chatManager->getPlayer(name);
+		auto otherName = friendList.get(i);
+		Reference<CreatureObject*> otherPlayer = chatManager->getPlayer(otherName);
 
-		if (player != nullptr) {
-			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(name, zoneServer->getGalaxyName(), true);
+		if (otherPlayer == nullptr) {
+			continue;
+		}
+
+		auto otherGhost = otherPlayer->getPlayerObject();
+
+		if (otherGhost == nullptr) {
+			continue;
+		}
+
+		if (isPrivileged() || !otherGhost->isIgnoring(lowerFirstName)) {
+			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(otherName, zoneServer->getGalaxyName(), true);
 			parent->sendMessage(notifyStatus);
 		}
 	}
@@ -1445,15 +1466,26 @@ void PlayerObjectImplementation::notifyOffline() {
 	if (playerCreature == nullptr)
 		return;
 
-	String firstName = playerCreature->getFirstName();
-	firstName = firstName.toLowerCase();
+	String lowerFirstName = playerCreature->getFirstName();
+	lowerFirstName = lowerFirstName.toLowerCase();
 
 	for (int i = 0; i < friendList.reversePlayerCount(); ++i) {
-		ManagedReference<CreatureObject*> player = chatManager->getPlayer(friendList.getReversePlayer(i));
+		auto otherName = friendList.getReversePlayer(i);
+		Reference<CreatureObject*> otherPlayer = chatManager->getPlayer(friendList.getReversePlayer(i));
 
-		if (player != nullptr) {
-			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(firstName, server->getZoneServer()->getGalaxyName(), false);
-			player->sendMessage(notifyStatus);
+		if (otherPlayer == nullptr) {
+			continue;
+		}
+
+		auto otherGhost = otherPlayer->getPlayerObject();
+
+		if (otherGhost == nullptr) {
+			continue;
+		}
+
+		if (otherGhost->isPrivileged() || !isIgnoring(otherName)) {
+			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(lowerFirstName, server->getZoneServer()->getGalaxyName(), false);
+			otherPlayer->sendMessage(notifyStatus);
 		}
 	}
 
@@ -2971,7 +3003,8 @@ void PlayerObjectImplementation::doFieldFactionChange(int newStatus) {
 }
 
 bool PlayerObjectImplementation::isIgnoring(const String& name) const {
-	return !name.isEmpty() && ignoreList.contains(name);
+	String nameLower = name.toLowerCase();
+	return !nameLower.isEmpty() && ignoreList.contains(nameLower);
 }
 
 void PlayerObjectImplementation::checkAndShowTOS() {
