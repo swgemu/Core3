@@ -323,6 +323,7 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 	if (pFarmer ~= nil) then
 		writeData("hero_of_tat:altruism_mob_id", SceneObject(pFarmer):getObjectID())
 		CreatureObject(pFarmer):setPvpStatusBitmask(0)
+		CreatureObject(pFarmer):addCreatureFlag(AI_STATIC)
 	else
 		printLuaError("HeroOfTatooineScreenPlay:doAltruismChange, unable to spawn farmer.")
 	end
@@ -369,6 +370,7 @@ function HeroOfTatooineScreenPlay:doIntellectSpawn()
 
 	writeData("hero_of_tat:intellect_mob_id", SceneObject(pBountyHunter):getObjectID())
 	CreatureObject(pBountyHunter):setPvpStatusBitmask(0)
+	CreatureObject(pBountyHunter):addCreatureFlag(AI_STATIC)
 
 	self:spawnIntellectLiars(pBountyHunter)
 end
@@ -524,6 +526,8 @@ function HeroOfTatooineScreenPlay:spawnIntellectLiars(pBountyHunter)
 			return
 		end
 		CreatureObject(pLiar):setPvpStatusBitmask(0)
+		CreatureObject(pLiar):addCreatureFlag(AI_STATIC)
+
 		writeData("hero_of_tat:liar_" .. i, SceneObject(pLiar):getObjectID())
 		writeData(SceneObject(pLiar):getObjectID() .. ":liarId", i)
 	end
