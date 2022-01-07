@@ -108,7 +108,14 @@ public:
 		}
 
 		if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
-			ErrorMessage* errMsg = new ErrorMessage("Login Error", "You reached the max online character count.", 0x0);
+			auto maxOnline = zoneServer->getPlayerManager()->getOnlineCharactersPerAccount();
+			StringBuffer msg;
+			String plural = maxOnline > 1 ? "s" : "";
+
+			msg << "\\#ffff00You have reached this server's limit of " <<  maxOnline << " character" << plural << " online per account.\\#." << endl << endl
+				<< "\\#ffffffPlease logout your other character" << plural << " and try again.\\#.";
+
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", msg.toString(), 0x0);
 			client->sendMessage(errMsg);
 
 			return;

@@ -572,6 +572,10 @@ class PlayerManager extends Observer implements Logger {
 		onlineCharactersPerAccount = count;
 	}
 
+	public int getOnlineCharactersPerAccount() {
+	    return onlineCharactersPerAccount;
+	}
+
 	@local
 	@arg1preLocked
 	public native void doPvpDeathRatingUpdate(CreatureObject player, ThreatMap threatMap);
