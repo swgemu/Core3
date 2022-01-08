@@ -107,9 +107,6 @@ void DamageOverTime::activate() {
 }
 
 uint32 DamageOverTime::applyDot(CreatureObject* victim) {
-	if (expires.isPast() || !nextTick.isPast())
-		return 0;
-
 	nextTick.updateToCurrentTime();
 
 	uint32 power = 0;
