@@ -520,6 +520,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	destructedObject->setPosture(CreaturePosture::DEAD, !isCombatAction, !isCombatAction);
 
 	destructedObject->updateTimeOfDeath();
+	destructedObject->wipeBlackboard();
 
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 

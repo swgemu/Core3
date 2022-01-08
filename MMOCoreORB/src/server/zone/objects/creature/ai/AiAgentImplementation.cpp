@@ -768,8 +768,10 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 }
 
 void AiAgentImplementation::doRecovery(int latency) {
-	if (isDead() || getZoneUnsafe() == nullptr)
+	if (isDead() || getZoneUnsafe() == nullptr) {
+		blackboard.removeAll();
 		return;
+	}
 
 	activateHAMRegeneration(latency);
 	activateStateRecovery();
@@ -1463,6 +1465,7 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	if (getZoneUnsafe() != nullptr)
 		return;
 
+	blackboard.removeAll();
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
 	if (npcTemplate != nullptr && creatureManager != nullptr && isCreature()) {
@@ -2290,6 +2293,7 @@ void AiAgentImplementation::clearRunningChain() {
 
 void AiAgentImplementation::setAITemplate() {
 	btreeMap.removeAll();
+	blackboard.removeAll();
 
 	uint64 customMap = customAiMap;
 
