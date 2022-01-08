@@ -42,8 +42,8 @@ void FactoryObjectImplementation::notifyLoadFromDatabase() {
 	setLoggingName("FactoryObject");
 
 	if (operating) {
-		Core::getTaskManager()->executeTask([factory=_this.getReferenceUnsafeStaticCast()]() {
-			Reference<FactoryObject*> factoryStrong = factory;
+		Core::getTaskManager()->executeTask([factory = WeakReference<FactoryObject*>(_this.getReferenceUnsafeStaticCast())]() {
+			auto factoryStrong = factory.get();
 
 			if (factoryStrong != nullptr) {
 				Locker lock(factoryStrong);
