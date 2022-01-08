@@ -3430,7 +3430,7 @@ int DirectorManager::getWinningFactionDifficultyScaling(lua_State* L) {
 }
 
 int DirectorManager::playClientEffectLoc(lua_State* L) {
-	uint64 playerId = lua_tointeger(L, -7);
+	uint64 objectID = lua_tointeger(L, -7);
 	String effect = lua_tostring(L, -6);
 	String zone = lua_tostring(L, -5);
 	float x = lua_tonumber(L, -4);
@@ -3440,13 +3440,13 @@ int DirectorManager::playClientEffectLoc(lua_State* L) {
 
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 
-	ManagedReference<CreatureObject*> creature = zoneServer->getObject(playerId).castTo<CreatureObject*>();
+	ManagedReference<SceneObject*> sceneOb = zoneServer->getObject(objectID);
 
-	if (creature == nullptr)
+	if (sceneOb == nullptr)
 		return 0;
 
 	PlayClientEffectLoc* effectLoc = new PlayClientEffectLoc(effect, zone, x, z, y, cell);
-	creature->broadcastMessage(effectLoc, true);
+	sceneOb->broadcastMessage(effectLoc, true);
 
 	return 1;
 }

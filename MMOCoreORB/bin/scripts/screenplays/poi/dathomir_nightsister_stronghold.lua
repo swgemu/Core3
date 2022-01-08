@@ -259,7 +259,7 @@ function NightSisterStrongholdScreenPlay:notifyEnteredTrapArea(pActiveArea, pPla
 	end
 
 	spawnSceneObject("dathomir", "object/static/particle/pt_magic_sparks.iff", -11.5, -64.6, -202.2, 4115624, 0.707107, 0, 0.707107, 0)
-	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/trap_electric_01.cef", "dathomir", -11.5, -64.6, -202.2, 4115624)
+	playClientEffectLoc(pPlayer, "clienteffect/trap_electric_01.cef", "dathomir", -11.5, -64.6, -202.2, 4115624)
 
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/nightsister_rancor_cave:shock")
 	local trapDmg = getRandomNumber(400, 700)
