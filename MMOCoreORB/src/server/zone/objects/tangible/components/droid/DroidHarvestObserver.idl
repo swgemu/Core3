@@ -17,7 +17,7 @@ class DroidHarvestObserver extends Observer {
 	public DroidHarvestObserver(DroidHarvestModuleDataComponent m) {
 		module = m;
 	}
-	
+
 	@dirty
-	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);	
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 }
