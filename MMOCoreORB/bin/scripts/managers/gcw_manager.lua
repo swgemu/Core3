@@ -51,12 +51,11 @@ bonusXP = 15
 
 -- Crackdown settings
 crackdownScansEnabled = true
-local crackdownTesting = false
 
 -- thresholds for scaling crackdown npc's difficulty, first threshold should always be 0.
 difficutlyScalingThresholds = {0, 64}
 
-if crackdownTesting then
+--[[
 	-- TESTING VALUES
 	crackdownScanPrivilegedPlayers = true
 	crackdownPlayerScanCooldown = 15 * 60  -- In seconds
@@ -66,7 +65,7 @@ if crackdownTesting then
 	-- Radius for the area in which all players are retrieved in order to select one of them randomly to be scanned in the wild.
 	-- All objects in the quadtree in that radius will be iterated. Iteration will happen every 10s on each active planet.
 	crackdownPerformanceWildScanPlayerFindRadius = 2560 -- meter radius
-else
+]]
 	-- PRODUCTION SERVER VALUES
 	crackdownScanPrivilegedPlayers = false
 	crackdownPlayerScanCooldown = 2 * 24 * 60 * 60  -- In seconds, 48 hour cooldown
@@ -76,7 +75,6 @@ else
 	-- Radius for the area in which all players are retrieved in order to select one of them randomly to be scanned in the wild.
 	-- All objects in the quadtree in that radius will be iterated. Iteration will happen every 10 s on each active planet.
 	crackdownPerformanceWildScanPlayerFindRadius = 256 -- 256m radius
-end
 
 -- discount percentage for side losing&winning the gcw.  negative value of increase in price (penality).  positive for a decrease (Bonus)
 
