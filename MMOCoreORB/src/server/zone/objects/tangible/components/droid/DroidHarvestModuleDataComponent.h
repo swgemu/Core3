@@ -26,10 +26,10 @@ protected:
 	Vector<uint64> harvestTargets;
 public:
 	enum {
-		INTREST_RANDOM,
-		INTREST_BONE,
-		INTREST_MEAT,
-		INTREST_HIDE
+		INTEREST_RANDOM,
+		INTEREST_BONE,
+		INTEREST_MEAT,
+		INTEREST_HIDE
 	};
 
 	DroidHarvestModuleDataComponent();
@@ -43,36 +43,51 @@ public:
 	void deactivate();
 	String toString() const;
 	void onCall();
+
 	int getHarvestInterest() {
 		return interest;
 	}
+
 	void onStore();
 	void setHarvestInterest(CreatureObject* player, int option);
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
-	bool isActive(){ return active; }
+
+	bool isActive() {
+		return active;
+	}
+
 	int getHarvestPower(){
 		return harvestBonus;
 	}
+
 	void handlePetCommand(String cmd, CreatureObject* speaker) ;
 	virtual bool isStackable() { return true; }
 	virtual void addToStack(BaseDroidModuleComponent* other);
 	virtual void copy(BaseDroidModuleComponent* other);
 	void creatureHarvestCheck(CreatureObject* target);
 	void harvestDestinationReached();
+
 	bool hasMoreTargets() {
 		return harvestTargets.size() > 0;
 	}
+
 	void addHarvestTarget(uint64 target,bool first = false) {
-		if (first)
-			harvestTargets.add(0,target);
-		else
-			harvestTargets.add(target);
+		if (!harvestTargets.contains(target)) {
+			if (first)
+				harvestTargets.add(0,target);
+			else
+				harvestTargets.add(target);
+		}
 	}
+
+	void removeHarvestTarget(uint64 target) {
+		harvestTargets.remove(target);
+	}
+
 	uint64 getNextHarvestTarget() {
 		if (harvestTargets.size() > 0) {
-			return harvestTargets.remove(0);
-		}
-		else {
+			return harvestTargets.get(0);
+		} else {
 			return -1;
 		}
 	}

@@ -28,7 +28,7 @@ public:
 		}
 
 		Locker olock(owner);
-		// RE-DO here, pull target form harvest target list on module. and ignore the target id passed in.
+
 		ManagedReference<DroidObject*> droid = cast<DroidObject*>(creature);
 		if (droid == nullptr)
 			return GENERALERROR;
@@ -41,11 +41,13 @@ public:
 		if (module == nullptr) {
 			return GENERALERROR;
 		}
+
 		uint64 droidTarget = module->getNextHarvestTarget();
+
 		// check for no target
 		if (droidTarget == -1)
 			return GENERALERROR;
-		// end re-do
+
 		Reference<CreatureObject*> target = server->getZoneServer()->getObject(droidTarget, true).castTo<CreatureObject*>();
 
 		if (target == nullptr || !target->isCreature()) {
@@ -62,6 +64,7 @@ public:
 
 		if (cr->getZone() == nullptr)
 			return GENERALERROR;
+
 		// Check if droid is spawned
 		if (droid->getLocalZone() == nullptr) { // Not outdoors
 			ManagedReference<SceneObject*> parent = droid->getParent().get();
@@ -83,11 +86,13 @@ public:
 
 		if (!checkDistance(target, droid, 7.0f)) { // this should run the droid to the target for harvesting
 			module->addHarvestTarget(droidTarget, true);
+
 			droid->setTargetObject(target);
-			droid->activateMovementEvent();
+
 			// we will get rescheduled on destination reached message
 			return GENERALERROR;
 		}
+
 		int harvestInterest = module->getHarvestInterest();
 		int bonus = module->getHarvestPower();
 		// we have all the info we need form the droid for now.
@@ -95,34 +100,34 @@ public:
 
 		Vector<int> types;
 		int type = 0;
-		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_BONE) {
+		if (harvestInterest == DroidHarvestModuleDataComponent::INTEREST_BONE) {
 			type = 236;
 		}
 
-		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_HIDE) {
+		if (harvestInterest == DroidHarvestModuleDataComponent::INTEREST_HIDE) {
 			type = 235;
 		}
 
-		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_MEAT) {
+		if (harvestInterest == DroidHarvestModuleDataComponent::INTEREST_MEAT) {
 			type = 234;
 		}
 
-		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_BONE && cr->getBoneType().isEmpty()) {
+		if (harvestInterest == DroidHarvestModuleDataComponent::INTEREST_BONE && cr->getBoneType().isEmpty()) {
 			owner->sendSystemMessage("@pet/droid_modules:target_type_not_found");
 			return GENERALERROR;
 		}
 
-		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_HIDE && cr->getHideType().isEmpty()) {
+		if (harvestInterest == DroidHarvestModuleDataComponent::INTEREST_HIDE && cr->getHideType().isEmpty()) {
 			owner->sendSystemMessage("@pet/droid_modules:target_type_not_found");
 			return GENERALERROR;
 		}
 
-		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_MEAT && cr->getMeatType().isEmpty()) {
+		if (harvestInterest == DroidHarvestModuleDataComponent::INTEREST_MEAT && cr->getMeatType().isEmpty()) {
 			owner->sendSystemMessage("@pet/droid_modules:target_type_not_found");
 			return GENERALERROR;
 		}
 
-		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_RANDOM) {
+		if (harvestInterest == DroidHarvestModuleDataComponent::INTEREST_RANDOM) {
 			// pick one at random
 			if (!cr->getMeatType().isEmpty()) {
 				types.add(234);
