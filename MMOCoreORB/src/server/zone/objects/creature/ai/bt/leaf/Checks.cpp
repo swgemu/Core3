@@ -479,7 +479,7 @@ template<> bool CheckTargetInOwnerRange::check(AiAgent* agent) const {
 	if (agent->peekBlackboard("targetProspect"))
 		tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
-	if (tar == nullptr || !tar->isCreatureObject())
+	if (tar == nullptr)
 		return false;
 
 	Reference<PetControlDevice*> controlDevice = agent->getControlDevice().castTo<PetControlDevice*>();
