@@ -138,7 +138,7 @@ function FsCsBaseControl:notifyKilledDroid(pVictim, pAttacker)
 		return 1
 	end
 
-	playClientEffectLoc(SceneObject(pVictim):getObjectID(), "clienteffect/combat_explosion_lair_large.cef", "dathomir", SceneObject(pVictim):getPositionX(), SceneObject(pVictim):getPositionZ(), SceneObject(pVictim):getPositionY(), 0)
+	playClientEffectLoc(pVictim, "clienteffect/combat_explosion_lair_large.cef", "dathomir", SceneObject(pVictim):getPositionX(), SceneObject(pVictim):getPositionZ(), SceneObject(pVictim):getPositionY(), 0)
 
 	local victimID = SceneObject(pVictim):getObjectID()
 	local theaterID = readData(victimID .. ":theaterID")
@@ -179,7 +179,7 @@ function FsCsBaseControl:notifyDestructibleDisabled(pVictim, pAttacker)
 	end
 
 	if (pAttacker ~= nil) then
-		playClientEffectLoc(SceneObject(pAttacker):getObjectID(), "clienteffect/combat_explosion_lair_large.cef", "dathomir", SceneObject(pVictim):getPositionX(), SceneObject(pVictim):getPositionZ(), SceneObject(pVictim):getPositionY(), 0)
+		playClientEffectLoc(pAttacker, "clienteffect/combat_explosion_lair_large.cef", "dathomir", SceneObject(pVictim):getPositionX(), SceneObject(pVictim):getPositionZ(), SceneObject(pVictim):getPositionY(), 0)
 	end
 
 	createEvent(2000, "FsCsBaseControl", "destroyDestructible", pVictim, "")
