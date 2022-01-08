@@ -656,8 +656,8 @@ function HeroOfTatooineScreenPlay:destroyCaveWall(pCrevice)
 	local pPlanter = getSceneObject(planterId)
 
 	if (planterId ~= 0 and pPlanter ~= nil) then
-		playClientEffectLoc(planterId, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 162.5, -66.8, -97.7, 5995573)
-		playClientEffectLoc(planterId, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 150.96, -65.83, -97.66, 5995573)
+		playClientEffectLoc(pPlanter, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 162.5, -66.8, -97.7, 5995573)
+		playClientEffectLoc(pPlanter, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 150.96, -65.83, -97.66, 5995573)
 		deleteData("hero_of_tat:explosivePlanterID")
 	end
 
@@ -1030,9 +1030,9 @@ function HeroOfTatooineScreenPlay:doHonorFail(pPlayer)
 	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pWife, "")
 
 	--Explosion effect
-	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/combat_grenade_thermal_detonator.cef", "tatooine", -4.8, 0.3, -2.3, 4005941)
+	playClientEffectLoc(pPlayer, "clienteffect/combat_grenade_thermal_detonator.cef", "tatooine", -4.8, 0.3, -2.3, 4005941)
 	--House shake effect
-	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/cr_bodyfall_huge.cef", "tatooine", -4.8, 0.3, -2.3, 4005941)
+	playClientEffectLoc(pPlayer, "clienteffect/cr_bodyfall_huge.cef", "tatooine", -4.8, 0.3, -2.3, 4005941)
 
 	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pPirate1, "")
 	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pPirate2, "")
