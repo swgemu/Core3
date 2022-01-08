@@ -42,7 +42,9 @@ void FactoryObjectImplementation::notifyLoadFromDatabase() {
 	setLoggingName("FactoryObject");
 
 	if (operating) {
-		startFactory();
+		Core::getTaskManager()->executeTask([=]() {
+			startFactory();
+		}, "StartFactoryLambda");
 	}
 
 	hopperObserver = new FactoryHopperObserver(_this.getReferenceUnsafeStaticCast());
