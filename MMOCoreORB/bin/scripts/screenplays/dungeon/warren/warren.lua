@@ -890,7 +890,7 @@ end
 
 function Warren:notifyDebrisDestroyed(pDebris, pPlayer)
 	if (pDebris ~= nil) then
-		playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/combat_explosion_lair_large.cef", "dantooine", SceneObject(pDebris):getPositionX(), SceneObject(pDebris):getPositionZ(), SceneObject(pDebris):getPositionY(), SceneObject(pDebris):getParentID())
+		playClientEffectLoc(pPlayer, "clienteffect/combat_explosion_lair_large.cef", "dantooine", SceneObject(pDebris):getPositionX(), SceneObject(pDebris):getPositionZ(), SceneObject(pDebris):getPositionY(), SceneObject(pDebris):getParentID())
 		createEvent(2000, "Warren", "destroySceneObject", pDebris, "")
 	end
 

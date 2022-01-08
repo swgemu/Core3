@@ -185,7 +185,7 @@ function JediTrials:unlockJediKnight(pPlayer)
 	awardSkill(pPlayer, "force_title_jedi_rank_03")
 	writeScreenPlayData(pPlayer, "KnightTrials", "completedTrials", 1)
 	CreatureObject(pPlayer):playMusicMessage(unlockMusic)
-	playClientEffectLoc(CreatureObject(pPlayer):getObjectID(), "clienteffect/trap_electric_01.cef", CreatureObject(pPlayer):getZoneName(), CreatureObject(pPlayer):getPositionX(), CreatureObject(pPlayer):getPositionZ(), CreatureObject(pPlayer):getPositionY(), CreatureObject(pPlayer):getParentID())
+	playClientEffectLoc(pPlayer, "clienteffect/trap_electric_01.cef", CreatureObject(pPlayer):getZoneName(), CreatureObject(pPlayer):getPositionX(), CreatureObject(pPlayer):getPositionZ(), CreatureObject(pPlayer):getPositionY(), CreatureObject(pPlayer):getParentID())
 
 	PlayerObject(pGhost):addWaypoint(enclaveLoc[3], enclaveName, "", enclaveLoc[1], enclaveLoc[2], WAYPOINTYELLOW, true, true, 0)
 	PlayerObject(pGhost):setJediState(jediState)

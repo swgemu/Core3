@@ -1596,7 +1596,7 @@ function TheaterManagerScreenPlay:doFinalAudienceReaction(pControl)
 		reactEffect = "clienteffect/perform_boo.cef"
 	end
 
-	playClientEffectLoc(playerID, reactEffect, SceneObject(pPlayer):getZoneName(), 0.16, 1.2, 36.74, SceneObject(pPlayer):getParentID())
+	playClientEffectLoc(pPlayer, reactEffect, SceneObject(pPlayer):getZoneName(), 0.16, 1.2, 36.74, SceneObject(pPlayer):getParentID())
 
 end
 

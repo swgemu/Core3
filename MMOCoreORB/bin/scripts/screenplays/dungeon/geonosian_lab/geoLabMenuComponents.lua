@@ -79,7 +79,7 @@ function GeoLabTrashContainerMenuComponent:handleObjectMenuSelect(pSceneObject, 
 	if (trapEnabled == 1) then
 		CreatureObject(pPlayer):inflictDamage(pPlayer, 0, getRandomNumber(300, 700), 1)
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:electric_trash") -- You were electrified by the trash heap!
-		playClientEffectLoc(CreatureObject(pPlayer):getObjectID(), "clienteffect/trap_electric_01.cef", "yavin4", SceneObject(pSceneObject):getPositionX(), SceneObject(pSceneObject):getPositionZ(), SceneObject(pSceneObject):getPositionY(), SceneObject(pSceneObject):getParentID())
+		playClientEffectLoc(pPlayer, "clienteffect/trap_electric_01.cef", "yavin4", SceneObject(pSceneObject):getPositionX(), SceneObject(pSceneObject):getPositionZ(), SceneObject(pSceneObject):getPositionY(), SceneObject(pSceneObject):getParentID())
 	else
 		if (readData("geoLab:trashContainerLoot") == 1) then
 			createLoot(pSceneObject, "geonosian_loot_container", 1, false)
