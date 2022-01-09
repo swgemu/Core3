@@ -154,9 +154,6 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	loadWeaponTemplateData();
 	setupAttackMaps();
 
-	if (primaryWeapon != nullptr)
-		equipPrimaryWeapon();
-
 	int ham = 0;
 	baseHAM.removeAll();
 	if (petDeed == nullptr) {

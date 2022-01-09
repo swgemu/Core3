@@ -119,6 +119,13 @@ public:
 			} else {
 				msg << "Secondary Weapon is nullptr" << endl;
 			}
+
+			WeaponObject* thrownWeapon = objCreo->getThrownWeapon();
+			if (thrownWeapon != nullptr) {
+				msg << "Thrown Weapon ID = " << thrownWeapon->getObjectID() << " with use count of = " << thrownWeapon->getUseCount() << endl;
+			} else {
+				msg << "Thrown Weapon is nullptr" << endl;
+			}
 		}
 
 		player->sendSystemMessage(msg.toString());

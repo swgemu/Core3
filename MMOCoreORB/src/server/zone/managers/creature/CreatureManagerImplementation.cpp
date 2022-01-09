@@ -616,6 +616,8 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			thrownWeap->destroyObjectFromWorld(true);
 		}
 
+		destructedObject->nullifyWeapons();
+
 		if (creatureInventory != nullptr && player != nullptr && player->isPlayerCreature()) {
 			LootManager* lootManager = zoneServer->getLootManager();
 
