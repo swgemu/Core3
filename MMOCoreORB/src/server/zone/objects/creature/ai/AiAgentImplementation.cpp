@@ -2595,14 +2595,14 @@ int AiAgentImplementation::setDestination() {
 			} else {
 				setMovementState(AiAgent::PATHING_HOME);
 			}
-		}
+		} else {
+			ManagedReference<CreatureObject*> healTarget = readBlackboard("healTarget").get<ManagedReference<CreatureObject*> >().get();
 
-		ManagedReference<CreatureObject*> healTarget = readBlackboard("healTarget").get<ManagedReference<CreatureObject*> >().get();
-
-		if (healTarget != nullptr) {
-			clearPatrolPoints();
-			Vector3 targetPos = healTarget->getPosition();
-			setNextPosition(targetPos.getX(), targetPos.getZ(), targetPos.getY(), healTarget->getParent().get().castTo<CellObject*>());
+			if (healTarget != nullptr) {
+				clearPatrolPoints();
+				Vector3 targetPos = healTarget->getPosition();
+				setNextPosition(targetPos.getX(), targetPos.getZ(), targetPos.getY(), healTarget->getParent().get().castTo<CellObject*>());
+			}
 		}
 		break;
 	}
