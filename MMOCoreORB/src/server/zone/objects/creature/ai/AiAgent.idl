@@ -1446,7 +1446,7 @@ class AiAgent extends CreatureObject {
 	public void eraseBlackboard(final string key) {
 		blackboard.drop(key);
 	}
-	
+
 	@preLocked
 	@local
 	public void wipeBlackboard() {
@@ -1491,6 +1491,13 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public abstract WeaponObject getCurrentWeapon() {
 		return defaultWeapon;
+	}
+
+	public void nullifyWeapons () {
+		primaryWeapon = null;
+		secondaryWeapon = null;
+		thrownWeapon = null;
+		currentWeapon = null;
 	}
 
 	@read
