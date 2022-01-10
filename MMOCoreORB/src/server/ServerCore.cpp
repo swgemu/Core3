@@ -183,9 +183,25 @@ void ServerCore::registerConsoleCommmands() {
 	});
 
 	addCommand("save", [this](const String& arguments) -> CommandResult {
-		bool forceFull = !arguments.contains("delta");
+		int flags = ObjectManager::SAVE_DELTA;
 
-		ObjectManager::instance()->createBackup(forceFull);
+		if (!arguments.contains("delta") || arguments.contains("full")) {
+			flags = ObjectManager::SAVE_FULL;
+		}
+
+		if (arguments.contains("debug")) {
+			flags |= ObjectManager::SAVE_DEBUG;
+		}
+
+		if (arguments.contains("report")) {
+			flags |= ObjectManager::SAVE_REPORT;
+		}
+
+		if (arguments.contains("dump")) {
+			flags |= ObjectManager::SAVE_DUMP;
+		}
+
+		ObjectManager::instance()->createBackup(flags);
 
 		return SUCCESS;
 	});
