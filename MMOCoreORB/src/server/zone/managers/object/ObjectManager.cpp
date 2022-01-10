@@ -972,7 +972,7 @@ String ObjectManager::getInfo() {
 	return msg.toString();
 }
 
-void ObjectManager::onUpdateModifiedObjectsToDatabase() {
+void ObjectManager::onUpdateModifiedObjectsToDatabase(int flags) {
 	galaxyId = -1;
 
 	if (server != nullptr && server->getZoneServer() != nullptr) {
