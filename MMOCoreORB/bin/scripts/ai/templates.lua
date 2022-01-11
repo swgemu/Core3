@@ -45,7 +45,8 @@ bitmaskLookup = {
 		{CRACKDOWNSCAN, "crackdownScanDefault"},
 		{HEAL, "healDefault"},
 		{CHATREACTION, "chatReactionDefault"},
-		{NOTIFYHELP, "notifyHelpDefault"}
+		{NOTIFYHELP, "notifyHelpDefault"},
+		{HARVEST, "harvestPet"}
 	}},
 
 	{NPC, {
@@ -54,14 +55,17 @@ bitmaskLookup = {
 	}},
 
 	{PET, {
+		{NONE, "rootPet"},
 		{AWARE, "awarePet"},
 		{EQUIP, "equipPet"},
 		{IDLE, "idlePet"},
 		{TARGET, "targetPet"},
-		{MOVE, "movePet"}
+		{MOVE, "movePet"},
+		{HARVEST, "harvestPet"}
 	}},
 
 	{FACTION_PET, {
+		{NONE, "rootPet"},
 		{AWARE, "awarePet"},
 		{EQUIP, "equipPet"},
 		{IDLE, "idlePet"},
@@ -70,11 +74,13 @@ bitmaskLookup = {
 	}},
 
 	{DROID_PET, {
+		{NONE, "rootPet"},
 		{AWARE, "awarePet"},
 		{EQUIP, "equipPet"},
 		{IDLE, "idlePet"},
 		{TARGET, "targetPet"},
-		{MOVE, "movePet"}
+		{MOVE, "movePet"},
+		{HARVEST, "harvestPet"}
 	}},
 
 	{ESCORT, {

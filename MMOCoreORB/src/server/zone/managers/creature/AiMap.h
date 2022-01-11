@@ -135,6 +135,7 @@ public:
 		lua->setGlobalInt("HEAL",						BehaviorTreeSlot::HEAL					);
 		lua->setGlobalInt("CHATREACTION",				BehaviorTreeSlot::CHATREACTION			);
 		lua->setGlobalInt("NOTIFYHELP",					BehaviorTreeSlot::NOTIFYHELP			);
+		lua->setGlobalInt("HARVEST",					BehaviorTreeSlot::HARVEST				);
 
 		lua->setGlobalInt("WALK",						DataVal::WALK							);
 		lua->setGlobalInt("RUN",						DataVal::RUN							);
@@ -394,6 +395,8 @@ private:
 		_REGISTERLEAF(CheckHomeIsCell);
 		_REGISTERLEAF(CheckChatDelay);
 		_REGISTERLEAF(CheckCallForHelp);
+		_REGISTERLEAF(CheckIsHarvester);
+		_REGISTERLEAF(CheckHasHarvestTargets);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -432,6 +435,7 @@ private:
 		_REGISTERLEAF(RestorePetPatrols);
 		_REGISTERLEAF(SendChatGreeting);
 		_REGISTERLEAF(CallForHelp);
+		_REGISTERLEAF(DroidHarvest);
 	}
 
 	void putBitmask(Lua* lua, String key) {

@@ -255,6 +255,8 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petrechargeother"), "");
 	} else if (command == TRANSFER) {
 		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("pettransfer"), "");
+	} else if (command == HARVEST) {
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petharvest"), String::valueOf(speaker->getObjectID()), false);
 	}
 
 	// Hand off to droid modules for handling
@@ -373,7 +375,7 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 
 		// Success
 		pcd->addTrainedCommand(trainingCommand, message);
-		pet->showFlyText("npc_reaction/flytext", "threaten", 204, 0, 0); // "?"
+		pet->showFlyText("npc_reaction/flytext", "threaten", 204, 0, 0); // "!"
 		speaker->sendSystemMessage("@pet/pet_menu:pet_learn");			 // You teach your pet a new command.
 
 		if (!alreadyTrained) {

@@ -43,6 +43,7 @@ public:
 		}
 
 		auto module = droid->getModule("harvest_module").castTo<DroidHarvestModuleDataComponent*>();
+
 		if(module == nullptr) {
 			return;
 		}

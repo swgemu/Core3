@@ -15,19 +15,13 @@
 int DroidHarvestObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	Reference<DroidHarvestModuleDataComponent*> mod = module.get();
 
-	if (mod == nullptr)
+	if (mod == nullptr || !mod->isActive())
 		return 1;
 
 	ManagedReference<CreatureObject*> player = cast<CreatureObject*>(observable);
 
 	if (player == nullptr)
 		return 1;
-
-	// check params we should have the player around here
-	if (eventType == ObserverEventType::DESTINATIONREACHED) {
-		mod->harvestDestinationReached();
-		return 0;
-	}
 
 	SceneObject* sceno = dynamic_cast<SceneObject*>(arg1);
 
@@ -39,10 +33,7 @@ int DroidHarvestObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	if (target == nullptr)
 		return 1;
 
-	// make a task and lock the module to run it.
-
-	if (eventType == ObserverEventType::KILLEDCREATURE && player->isInRange(target, 256.0f)) {
-		// observable needs to be the droid owner, arg1 should be the target
+	if (eventType == ObserverEventType::KILLEDCREATURE && player->isInRange(target, 64.0f)) {
 		mod->creatureHarvestCheck(target);
 	}
 
