@@ -12,6 +12,8 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/frs/FrsManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
+#include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 
 // full template specializations need to go in cpp so they don't get
 // defined multiple times.
@@ -599,4 +601,35 @@ template<> bool CheckCallForHelp::check(AiAgent* agent) const {
 
 
 	return true;
+}
+
+template<> bool CheckIsHarvester::check(AiAgent* agent) const {
+	if (agent == nullptr || !agent->isDroid())
+		return false;
+
+	ManagedReference<DroidObject*> droid = cast<DroidObject*>(agent);
+
+	if (droid == nullptr)
+		return false;
+
+	auto module = droid->getModule("harvest_module").castTo<DroidHarvestModuleDataComponent*>();
+
+	return module != nullptr ? true : false;
+}
+
+template<> bool CheckHasHarvestTargets::check(AiAgent* agent) const {
+	if (agent == nullptr || !agent->isDroid())
+		return false;
+
+	if (agent->peekBlackboard("harvestTarget"))
+		return true;
+
+	ManagedReference<DroidObject*> droid = cast<DroidObject*>(agent);
+
+	if (droid == nullptr)
+		return false;
+
+	auto module = droid->getModule("harvest_module").castTo<DroidHarvestModuleDataComponent*>();
+
+	return module != nullptr && module->hasMoreTargets() ? true : false;
 }

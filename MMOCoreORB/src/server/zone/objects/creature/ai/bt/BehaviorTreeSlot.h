@@ -28,6 +28,7 @@ enum BehaviorTreeSlot : uint32 {
 	HEAL,
 	CHATREACTION,
 	NOTIFYHELP,
+	HARVEST,
 	LASTTREESLOT
 };
 
@@ -76,6 +77,8 @@ inline const char* getBehaviorTreeSlotName(BehaviorTreeSlot slot) {
 		return "CHATREACTION";
 	case NOTIFYHELP:
 		return "NOTIFYHELP";
+	case HARVEST:
+		return "HARVEST";
 	case LASTTREESLOT:
 		return "LASTTREESLOT";
 	default:

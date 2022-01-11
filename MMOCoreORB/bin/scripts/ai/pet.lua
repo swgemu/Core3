@@ -12,7 +12,7 @@ awarePet = {
 	{id="308986874",	name="Selector",	pid="2672408205"},
 	{id="2381505880",	name="PetReturn",	pid="308986874"},
 	{id="3351684077",	name="SetMovementState",	pid="308986874",	args={state=FOLLOWING}},
-	{id="303550960",	name="WriteBlackboard",	pid="2672408205",	args={val=RUN, key="moveMode"}},
+	{id="303550960",	name="WriteBlackboard",	pid="2672408205",	args={key="moveMode", val=RUN}},
 	{id="559248213",	name="TreeSocket",	pid="2672408205",	args={slot=MOVE}}}
 addAiTemplate("awarePet", awarePet)
 
@@ -28,34 +28,51 @@ equipPet = {
 	{id="1695730033",	name="Sequence",	pid="2987581746"},
 	{id="3227837017",	name="If",	pid="1695730033"},
 	{id="2534499086",	name="CheckWeaponIsRanged",	pid="3227837017",	args={condition=PRIMARYWEAPON}},
-	{id="1381132896",	name="WriteBlackboard",	pid="1695730033",	args={val=PRIMARYWEAPON, key="stagedWeapon"}},
+	{id="1381132896",	name="WriteBlackboard",	pid="1695730033",	args={key="stagedWeapon", val=PRIMARYWEAPON}},
 	{id="3632826513",	name="Sequence",	pid="2987581746"},
 	{id="1157658447",	name="If",	pid="3632826513"},
 	{id="1155398833",	name="CheckWeaponIsRanged",	pid="1157658447",	args={condition=SECONDARYWEAPON}},
-	{id="353950556",	name="WriteBlackboard",	pid="3632826513",	args={val=SECONDARYWEAPON, key="stagedWeapon"}},
+	{id="353950556",	name="WriteBlackboard",	pid="3632826513",	args={key="stagedWeapon", val=SECONDARYWEAPON}},
 	{id="1749301565",	name="Sequence",	pid="3308237866"},
 	{id="3831253223",	name="If",	pid="1749301565"},
 	{id="3554588378",	name="CheckFollowInWeaponRange",	pid="3831253223",	args={condition=PRIMARYWEAPON}},
 	{id="124074494",	name="If",	pid="1749301565"},
 	{id="417335643",	name="CheckFollowClosestIdealRange",	pid="124074494",	args={condition=PRIMARYWEAPON}},
-	{id="1808660918",	name="WriteBlackboard",	pid="1749301565",	args={val=PRIMARYWEAPON, key="stagedWeapon"}},
+	{id="1808660918",	name="WriteBlackboard",	pid="1749301565",	args={key="stagedWeapon", val=PRIMARYWEAPON}},
 	{id="970080915",	name="Sequence",	pid="3308237866"},
 	{id="3704650182",	name="If",	pid="970080915"},
 	{id="4045449539",	name="CheckFollowInWeaponRange",	pid="3704650182",	args={condition=SECONDARYWEAPON}},
 	{id="3110803999",	name="If",	pid="970080915"},
 	{id="3581580359",	name="CheckFollowClosestIdealRange",	pid="3110803999",	args={condition=SECONDARYWEAPON}},
-	{id="1322099622",	name="WriteBlackboard",	pid="970080915",	args={val=SECONDARYWEAPON, key="stagedWeapon"}},
+	{id="1322099622",	name="WriteBlackboard",	pid="970080915",	args={key="stagedWeapon", val=SECONDARYWEAPON}},
 	{id="3132206392",	name="EquipStagedWeapon",	pid="3049624129"},
 	{id="50350698",	name="EraseBlackboard",	pid="1108669613",	args={param="stagedWeapon"}},
 	{id="3927914430",	name="EraseBlackboard",	pid="1108669613",	args={param="followRange"}}}
 addAiTemplate("equipPet", equipPet)
+
+harvestPet = {
+	{id="1067142705",	name="Sequence",	pid="none"},
+	{id="4118537921",	name="Not",	pid="1067142705"},
+	{id="1280510381",	name="If",	pid="4118537921"},
+	{id="4057328645",	name="CheckIsInCombat",	pid="1280510381"},
+	{id="3285446615",	name="If",	pid="1067142705"},
+	{id="81979381",	name="CheckIsDroid",	pid="3285446615"},
+	{id="3275634488",	name="If",	pid="1067142705"},
+	{id="1696967841",	name="CheckIsHarvester",	pid="3275634488"},
+	{id="2997531046",	name="If",	pid="1067142705"},
+	{id="418167462",	name="CheckOutdoors",	pid="2997531046"},
+	{id="3273106585",	name="If",	pid="1067142705"},
+	{id="1682748011",	name="CheckHasHarvestTargets",	pid="3273106585"},
+	{id="3307465105",	name="DroidHarvest",	pid="1067142705"},
+	{id="933872980",	name="TreeSocket",	pid="1067142705",	args={slot=MOVE}}}
+addAiTemplate("harvestPet", harvestPet)
 
 idlePet = {
 	{id="2602839395",	name="Selector",	pid="none"},
 	{id="1196938563",	name="Sequence",	pid="2602839395"},
 	{id="2159332246",	name="If",	pid="1196938563"},
 	{id="2297306633",	name="CheckMovementState",	pid="2159332246",	args={condition=PATROLLING}},
-	{id="2901314389",	name="WriteBlackboard",	pid="1196938563",	args={val=WALK, key="moveMode"}},
+	{id="2901314389",	name="WriteBlackboard",	pid="1196938563",	args={key="moveMode", val=WALK}},
 	{id="3579768154",	name="TreeSocket",	pid="1196938563",	args={slot=MOVE}},
 	{id="3694282813",	name="Wait",	pid="1196938563",	args={duration=5.0}},
 	{id="673054985",	name="AlwaysSucceed",	pid="1196938563"},
@@ -68,7 +85,7 @@ idlePet = {
 	{id="4147395704",	name="Not",	pid="4089440207"},
 	{id="3397268825",	name="If",	pid="4147395704"},
 	{id="1418550182",	name="CheckPetCommand",	pid="3397268825",	args={condition=PET_STAY}},
-	{id="4036559077",	name="WriteBlackboard",	pid="4089440207",	args={val=RUN, key="moveMode"}},
+	{id="4036559077",	name="WriteBlackboard",	pid="4089440207",	args={key="moveMode", val=RUN}},
 	{id="5946488",	name="AlwaysSucceed",	pid="4089440207"},
 	{id="1805516334",	name="TreeSocket",	pid="5946488",	args={slot=MOVE}},
 	{id="691694066",	name="Sequence",	pid="2602839395"},
@@ -76,7 +93,7 @@ idlePet = {
 	{id="3534465851",	name="CheckPetCommand",	pid="27856860",	args={condition=PET_STAY}},
 	{id="3007878385",	name="If",	pid="691694066"},
 	{id="855976028",	name="CheckRetreat",	pid="3007878385",	args={condition=5}},
-	{id="1430990324",	name="WriteBlackboard",	pid="691694066",	args={val=RUN, key="moveMode"}},
+	{id="1430990324",	name="WriteBlackboard",	pid="691694066",	args={key="moveMode", val=RUN}},
 	{id="3088088980",	name="Leash",	pid="691694066"},
 	{id="3026536590",	name="TreeSocket",	pid="691694066",	args={slot=MOVE}}}
 addAiTemplate("idlePet", idlePet)
@@ -102,6 +119,33 @@ movePet = {
 	{id="2024110586",	name="PetReturn",	pid="2044240713"},
 	{id="4111934468",	name="FindNextPosition",	pid="3554620412"}}
 addAiTemplate("movePet", movePet)
+
+rootPet = {
+	{id="1392695167",	name="Selector",	pid="none"},
+	{id="1145947200",	name="Sequence",	pid="1392695167"},
+	{id="237728831",	name="If",	pid="1145947200"},
+	{id="1833272288",	name="CheckIsInCombat",	pid="237728831"},
+	{id="3540658805",	name="Not",	pid="1145947200"},
+	{id="2406229846",	name="If",	pid="3540658805"},
+	{id="912453904",	name="CheckPosture",	pid="2406229846",	args={condition=KNOCKEDDOWN}},
+	{id="1287307442",	name="TreeSocket",	pid="1145947200",	args={slot=HEAL}},
+	{id="654152705",	name="Sequence",	pid="1392695167"},
+	{id="1421120974",	name="Not",	pid="654152705"},
+	{id="2004961848",	name="If",	pid="1421120974"},
+	{id="318962656",	name="CheckMovementState",	pid="2004961848",	args={condition=MOVING_TO_HEAL}},
+	{id="3054290862",	name="TreeSocket",	pid="654152705",	args={slot=TARGET}},
+	{id="1472598970",	name="ParallelSelector",	pid="654152705"},
+	{id="706963786",	name="Sequence",	pid="1472598970"},
+	{id="1315818962",	name="TreeSocket",	pid="706963786",	args={slot=TARGET}},
+	{id="9283471",	name="TreeSocket",	pid="706963786",	args={slot=ATTACK}},
+	{id="2065378848",	name="Sequence",	pid="1472598970"},
+	{id="2976729954",	name="WriteBlackboard",	pid="2065378848",	args={key="moveMode", val=RUN}},
+	{id="2364005951",	name="AlwaysSucceed",	pid="2065378848"},
+	{id="476655997",	name="TreeSocket",	pid="2364005951",	args={slot=MOVE}},
+	{id="846004893",	name="TreeSocket",	pid="1392695167",	args={slot=HARVEST}},
+	{id="4251953986",	name="TreeSocket",	pid="1392695167",	args={slot=AWARE}},
+	{id="3476219463",	name="TreeSocket",	pid="1392695167",	args={slot=IDLE}}}
+addAiTemplate("rootPet", rootPet)
 
 targetPet = {
 	{id="2727643421",	name="Selector",	pid="none"},
