@@ -55,6 +55,7 @@ class ZoneClientSession extends ManagedObject {
 
 	public native void closeConnection(boolean lockPlayer, boolean doLock = true);
 
+	public native void setupLogging();
 	public native void info(final string msg, boolean force = false);
 	public native void debug(final string msg);
 	public native void error(final string msg);
@@ -93,9 +94,7 @@ class ZoneClientSession extends ManagedObject {
 		sessionID = id;
 	}
 
-	public void setAccountID(unsigned int acc) {
-		accountID = acc;
-	}
+	public native void setAccountID(unsigned int acc);
 
 	@read
 	public int getCommandCount() {
