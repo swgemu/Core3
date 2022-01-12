@@ -35,6 +35,22 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 	//session->setDebugLogLevel();
 }
 
+void ZoneClientSessionImplementation::setAccountID(unsigned int newAccountID) {
+	accountID = newAccountID;
+
+	if (session == nullptr) {
+		error() << "setAccountID(" << newAccountID << ") session == nullptr";
+		return;
+	}
+
+	auto clientLogLevel = ConfigManager::instance()->getInt("Core3.ZoneServer.ClientLogLevel", -1, accountID);
+
+	if (clientLogLevel >= 0) {
+		session->setLogLevel(static_cast<Logger::LogLevel>(clientLogLevel));
+		session->info() << "AccountID=" << accountID << "; ClientLogLevel=" << (int)session->getLogLevel();
+	}
+}
+
 void ZoneClientSessionImplementation::disconnect() {
 	session->disconnect();
 }
@@ -123,6 +139,16 @@ void ZoneClientSessionImplementation::setPlayer(CreatureObject* playerCreature) 
 			if (zoneServer != nullptr) {
 				zoneServer->increaseOnlinePlayers();
 			}
+		}
+	}
+
+	if (session != nullptr) {
+		if (playerCreature != nullptr) {
+			session->info() << "Player " << playerCreature->getObjectID() << " logged in.";
+		} else if (player != nullptr) {
+			session->info() << "Player " << player->getObjectID() << " logged out.";
+		} else {
+			session->info() << "Cleared player from session.";
 		}
 	}
 

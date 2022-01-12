@@ -93,9 +93,7 @@ class ZoneClientSession extends ManagedObject {
 		sessionID = id;
 	}
 
-	public void setAccountID(unsigned int acc) {
-		accountID = acc;
-	}
+	public native void setAccountID(unsigned int acc);
 
 	@read
 	public int getCommandCount() {

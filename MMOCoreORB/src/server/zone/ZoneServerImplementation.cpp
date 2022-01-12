@@ -433,6 +433,26 @@ ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, Sock
 
 	BaseClientProxy* session = new BaseClientProxy(sock, addr);
 
+	auto clientLogLevel = ConfigManager::instance()->getInt("Core3.ZoneServer.ClientLogLevel", -1);
+
+	if (clientLogLevel >= 0) {
+		// Files should end up in: log/clients/{ip}/clientsession-{timeSecs}-{ip}-{port}.log
+		Time now;
+		StringBuffer logFilename;
+		logFilename << "log/clients/" << addr.getIPAddress();
+
+		File::mkpath(logFilename.toString());
+
+		logFilename << "/BaseClientProxy-" << now.getTime() << "-" << addr.getIPAddress() << "-" << addr.getPort() << ".log";
+
+		session->setFileLogger(logFilename.toString(), true, ConfigManager::instance()->getRotateLogAtStart());
+		session->setLogSynchronized(true);
+		session->setLogToConsole(false);
+		session->setGlobalLogging(false);
+		session->setLogLevel(static_cast<Logger::LogLevel>(clientLogLevel));
+		session->info() << "Client connected";
+	}
+
 	StringBuffer loggingname;
 	loggingname << "ZoneClientSession " << addr.getFullIPAddress();
 
