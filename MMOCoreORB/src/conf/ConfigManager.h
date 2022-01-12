@@ -183,7 +183,7 @@ namespace conf {
 		ReadWriteLock mutex;
 
 	private:
-		ConfigDataItem* findItem(const String& name) const;
+		ConfigDataItem* findItem(const String& name, unsigned int accountID = 0) const;
 		bool updateItem(const String& name, ConfigDataItem* newItem);
 
 		bool parseConfigData(const String& prefix, bool isGlobal = false, int maxDepth = 5);
@@ -193,6 +193,17 @@ namespace conf {
 
 		void incrementConfigVersion() {
 			configVersion.increment();
+		}
+
+		String withAccount(const String& name, unsigned int accountID) const {
+			if (accountID == 0) {
+				return name;
+			}
+
+			StringBuffer acctFlag;
+			acctFlag << "Core3.AccountFlags." << accountID << "." << name;
+
+			return acctFlag.toString();
 		}
 
 	public:
@@ -216,15 +227,15 @@ namespace conf {
 		}
 
 		// General config functions
-		bool contains(const String& name) const;
+		bool contains(const String& name, unsigned int accountID = 0) const;
 		int getUsageCounter(const String& name) const;
-		int getInt(const String& name, int defaultValue);
-		bool getBool(const String& name, bool defaultValue);
-		float getFloat(const String& name, float defaultValue);
-		const String& getString(const String& name, const String& defaultValue);
-		const Vector<String>& getStringVector(const String& name);
-		const SortedVector<String>& getSortedStringVector(const String& name);
-		const Vector<int>& getIntVector(const String& name);
+		int getInt(const String& name, int defaultValue, unsigned int accountID = 0);
+		bool getBool(const String& name, bool defaultValue, unsigned int accountID = 0);
+		float getFloat(const String& name, float defaultValue, unsigned int accountID = 0);
+		const String& getString(const String& name, const String& defaultValue, unsigned int accountID = 0);
+		const Vector<String>& getStringVector(const String& name, unsigned int accountID = 0);
+		const SortedVector<String>& getSortedStringVector(const String& name, unsigned int accountID = 0);
+		const Vector<int>& getIntVector(const String& name, unsigned int accountID = 0);
 		bool getAsJSON(const String& target, JSONSerializationType& jsonData);
 
 		bool setNumber(const String& name, lua_Number newValue);

@@ -444,12 +444,20 @@ bool ConfigManager::parseConfigJSON(const String& jsonString, String& errorMessa
 	return false;
 }
 
-bool ConfigManager::contains(const String& name) const {
-	return configData.find(name) != -1;
+bool ConfigManager::contains(const String& name, unsigned int accountID) const {
+	return configData.find(name) != -1 || configData.find(withAccount(name, accountID)) != -1;
 }
 
-ConfigDataItem* ConfigManager::findItem(const String& name) const {
-	int pos = configData.find(name);
+ConfigDataItem* ConfigManager::findItem(const String& name, unsigned int accountID) const {
+	int pos = -1;
+
+	if (pos == -1 && accountID > 0) {
+		pos = configData.find(withAccount(name, accountID));
+	}
+
+	if (pos == -1) {
+		pos = configData.find(name);
+	}
 
 	if (pos == -1) {
 		return nullptr;
@@ -468,10 +476,10 @@ int ConfigManager::getUsageCounter(const String& name) const {
 	return itm->getUsageCounter();
 }
 
-int ConfigManager::getInt(const String& name, int defaultValue) {
+int ConfigManager::getInt(const String& name, int defaultValue, unsigned int accountID) {
 	ReadLocker guard(&mutex);
 
-	ConfigDataItem* itm = findItem(name);
+	ConfigDataItem* itm = findItem(name, accountID);
 
 	if (itm == nullptr)
 		return defaultValue;
@@ -479,10 +487,10 @@ int ConfigManager::getInt(const String& name, int defaultValue) {
 	return itm->getInt();
 }
 
-bool ConfigManager::getBool(const String& name, bool defaultValue) {
+bool ConfigManager::getBool(const String& name, bool defaultValue, unsigned int accountID) {
 	ReadLocker guard(&mutex);
 
-	ConfigDataItem* itm = findItem(name);
+	ConfigDataItem* itm = findItem(name, accountID);
 
 	if (itm == nullptr)
 		return defaultValue;
@@ -490,10 +498,10 @@ bool ConfigManager::getBool(const String& name, bool defaultValue) {
 	return itm->getBool();
 }
 
-float ConfigManager::getFloat(const String& name, float defaultValue) {
+float ConfigManager::getFloat(const String& name, float defaultValue, unsigned int accountID) {
 	ReadLocker guard(&mutex);
 
-	ConfigDataItem* itm = findItem(name);
+	ConfigDataItem* itm = findItem(name, accountID);
 
 	if (itm == nullptr)
 		return defaultValue;
@@ -501,10 +509,10 @@ float ConfigManager::getFloat(const String& name, float defaultValue) {
 	return itm->getFloat();
 }
 
-const String& ConfigManager::getString(const String& name, const String& defaultValue) {
+const String& ConfigManager::getString(const String& name, const String& defaultValue, unsigned int accountID) {
 	Locker guard(&mutex);
 
-	ConfigDataItem* itm = findItem(name);
+	ConfigDataItem* itm = findItem(name, accountID);
 
 	if (itm == nullptr) {
 		itm = new ConfigDataItem(defaultValue);
@@ -515,10 +523,10 @@ const String& ConfigManager::getString(const String& name, const String& default
 	return itm->getString();
 }
 
-const Vector<String>& ConfigManager::getStringVector(const String& name) {
+const Vector<String>& ConfigManager::getStringVector(const String& name, unsigned int accountID) {
 	ReadLocker guard(&mutex);
 
-	ConfigDataItem* itm = findItem(name);
+	ConfigDataItem* itm = findItem(name, accountID);
 
 	if (itm == nullptr)
 		throw Exception("ConfigManager::getStringVector(" + name + ") not found");
@@ -526,10 +534,10 @@ const Vector<String>& ConfigManager::getStringVector(const String& name) {
 	return itm->getStringVector();
 }
 
-const SortedVector<String>& ConfigManager::getSortedStringVector(const String& name) {
+const SortedVector<String>& ConfigManager::getSortedStringVector(const String& name, unsigned int accountID) {
 	ReadLocker guard(&mutex);
 
-	ConfigDataItem* itm = findItem(name);
+	ConfigDataItem* itm = findItem(name, accountID);
 
 	if (itm == nullptr)
 		throw Exception("ConfigManager::getSortedStringVector(" + name + ") not found");
@@ -537,10 +545,10 @@ const SortedVector<String>& ConfigManager::getSortedStringVector(const String& n
 	return itm->getSortedStringVector();
 }
 
-const Vector<int>& ConfigManager::getIntVector(const String& name) {
+const Vector<int>& ConfigManager::getIntVector(const String& name, unsigned int accountID) {
 	ReadLocker guard(&mutex);
 
-	ConfigDataItem* itm = findItem(name);
+	ConfigDataItem* itm = findItem(name, accountID);
 
 	if (itm == nullptr)
 		throw Exception("ConfigManager::getIntVector(" + name + ") not found");
