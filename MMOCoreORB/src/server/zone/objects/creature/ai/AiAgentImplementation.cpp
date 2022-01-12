@@ -1894,14 +1894,15 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), endMovementPosition.getCoordinates(), getZoneUnsafe()));
 		} else {
 			ManagedReference<SceneObject*> currentCell = getParent().get();
+
 			if (currentCell != nullptr && !currentCell->isCellObject())
 				currentCell = nullptr;
 
 			// We already have a path
 			const WorldCoordinates endMovementCoords = endMovementPosition.getCoordinates();
-			if (currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 3 * 3) {
-				// Our target has moved, so we will need a new path with a new position.
 
+			if (currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 5 * 5) {
+				// Our target has moved, so we will need a new path with a new position.
 				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(asAiAgent(), endMovementPosition.getCoordinates(), getZoneUnsafe()));
 			} else {
 				// Our target is close to where it was before, so our path begins where we are standing
@@ -2017,7 +2018,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				Zone* zone = getZoneUnsafe();
 
 				// We must check that the end movement position does not end in a cell because AI will be placed on the overhangs of buildings before entering
-				if (!isInNavMesh() && nextMovementPosition.getCell() == nullptr && zone != nullptr) {
+				if (nextMovementPosition.getCell() == nullptr && endMovementPosition.getCell() == nullptr && zone != nullptr) {
 					newPosition.setZ(getWorldZ(newPosition));
 
 					PlanetManager* planetManager = zone->getPlanetManager();
