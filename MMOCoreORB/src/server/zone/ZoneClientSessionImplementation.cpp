@@ -32,7 +32,58 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 	bannedCharacters.setNullValue(0);
 	bannedCharacters.setAllowDuplicateInsertPlan();
 
+	setupLogging();
+
 	//session->setDebugLogLevel();
+}
+
+void ZoneClientSessionImplementation::setupLogging() {
+	auto clientLogLevel = ConfigManager::instance()->getInt("Core3.ZoneServer.ClientLogLevel", -1, accountID);
+
+	if (clientLogLevel < 0) {
+		return;
+	}
+
+	if (session == nullptr) {
+		error() << "setupLogging failed: session == nullptr";
+		return;
+	}
+
+	if (clientLogLevel >= 0) {
+		// Files should end up in: log/clients/{ip}/BaseClientProxy-{timeSecs}-{ip}-{port}.log
+		Time now;
+		StringBuffer logFilename;
+		logFilename << "log/clients/" << session->getIPAddress();
+
+		File::mkpath(logFilename.toString());
+
+		auto addr = session->ServiceClient::getAddress();
+
+		logFilename << "/BaseClientProxy-" << now.getTime() << "-" << addr.getIPAddress() << "-" << addr.getPort() << ".log";
+
+		session->setFileLogger(logFilename.toString(), true, ConfigManager::instance()->getRotateLogAtStart());
+		session->setLogSynchronized(true);
+		session->setLogToConsole(false);
+		session->setGlobalLogging(false);
+		session->setLogLevel(static_cast<Logger::LogLevel>(clientLogLevel));
+
+		if (accountID == 0) {
+			session->info() << "Client connected";
+		} else {
+			session->info() << "AccountID=" << accountID;
+		}
+	}
+}
+
+void ZoneClientSessionImplementation::setAccountID(unsigned int newAccountID) {
+	accountID = newAccountID;
+
+	if (session == nullptr) {
+		error() << "setAccountID(" << newAccountID << ") session == nullptr";
+		return;
+	}
+
+	setupLogging();
 }
 
 void ZoneClientSessionImplementation::disconnect() {
@@ -123,6 +174,16 @@ void ZoneClientSessionImplementation::setPlayer(CreatureObject* playerCreature) 
 			if (zoneServer != nullptr) {
 				zoneServer->increaseOnlinePlayers();
 			}
+		}
+	}
+
+	if (session != nullptr) {
+		if (playerCreature != nullptr) {
+			session->info() << "Player " << playerCreature->getObjectID() << " logged in.";
+		} else if (player != nullptr) {
+			session->info() << "Player " << player->getObjectID() << " logged out.";
+		} else {
+			session->info() << "Cleared player from session.";
 		}
 	}
 
