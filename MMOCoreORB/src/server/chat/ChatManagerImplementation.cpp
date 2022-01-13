@@ -734,14 +734,8 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 
 	BaseMessage* msg = new ChatRoomMessage(fullName, server->getGalaxyName(), formattedMessage, roomID);
 
-	// Auction Chat and Planet Chat should adhere to player ignore list
-	if(auctionRoom != nullptr && auctionRoom->getRoomID() == roomID) {
-		channel->broadcastMessageCheckIgnore(msg, name);
-	} else if (planetRoom != nullptr && planetRoom->getRoomID() == roomID) {
-		channel->broadcastMessageCheckIgnore(msg, name);
-	} else {
-		channel->broadcastMessage(msg);
-	}
+	// All chat should adhere to player ignore list
+	channel->broadcastMessageCheckIgnore(msg, name);
 
 	BaseMessage* amsg = new ChatOnSendRoomMessage(counter);
 	channel->broadcastMessage(amsg);
