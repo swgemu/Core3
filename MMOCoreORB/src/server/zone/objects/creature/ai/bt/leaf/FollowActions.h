@@ -14,6 +14,7 @@
 #include "server/zone/managers/gcw/observers/ContainmentTeamObserver.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
+#include "server/zone/objects/creature/events/DroidHarvestTask.h"
 
 namespace server {
 namespace zone {
@@ -920,6 +921,114 @@ public:
 			PatrolPoint patrolPoint = pcd->getPatrolPoint(i);
 
 			agent->addPatrolPoint(patrolPoint);
+		}
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
+};
+
+class DroidHarvest : public Behavior {
+public:
+	DroidHarvest(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	DroidHarvest(const DroidHarvest& a) : Behavior(a) {
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		if (agent == nullptr || agent->isDead() || agent->isIncapacitated() || !agent->isDroid())
+			return FAILURE;
+
+		ManagedReference<DroidObject*> droid = cast<DroidObject*>(agent);
+
+		if (droid == nullptr)
+			return FAILURE;
+
+		auto module = droid->getModule("harvest_module").castTo<DroidHarvestModuleDataComponent*>();
+
+		if (module == nullptr)
+			return FAILURE;
+
+		ManagedReference<SceneObject*> target = nullptr;
+
+		if (!agent->peekBlackboard("harvestTarget")) {
+			if (!module->hasMoreTargets())
+				return FAILURE;
+
+			uint64 targetID = module->getNextHarvestTarget();
+
+			ZoneServer* zoneServer = agent->getZoneServer();
+
+			if (zoneServer == nullptr)
+				return FAILURE;
+
+			target = zoneServer->getObject(targetID, true);
+		} else {
+			target = agent->readBlackboard("harvestTarget").get<ManagedReference<SceneObject*> >();
+		}
+
+		if (target == nullptr || !target->isCreature())
+			return FAILURE;
+
+		Locker cLocker(target, agent);
+
+		agent->writeBlackboard("harvestTarget", target);
+
+		CreatureObject* tarCreo = target->asCreatureObject();
+
+		if (tarCreo == nullptr || !tarCreo->isDead())
+			return FAILURE;
+
+		ManagedReference<CreatureObject*> owner = agent->getLinkedCreature().get();
+
+		if (owner == nullptr) {
+			return FAILURE;
+		}
+
+		Locker olock(owner, agent);
+
+		// Droid must have power move to module itself.
+		if (!droid->hasPower()) {
+			droid->showFlyText("npc_reaction/flytext", "low_power", 204, 0, 0); // "*Low Power*
+
+			return FAILURE;
+		}
+
+		if (!tarCreo->isInRange(owner, 64.0f)) {
+			agent->eraseBlackboard("harvestTarget");
+
+			agent->setFollowObject(owner);
+			agent->storeFollowObject();
+			agent->setMovementState(AiAgent::FOLLOWING);
+
+			return FAILURE;
+		}
+
+		if (!tarCreo->isInRange(droid, 7.0f + tarCreo->getTemplateRadius() + droid->getTemplateRadius())) {
+			agent->setMovementState(AiAgent::OBLIVIOUS);
+			agent->setNextPosition(tarCreo->getPositionX(), tarCreo->getPositionZ(), tarCreo->getPositionY());
+
+			droid->notifyObservers(ObserverEventType::STARTCOMBAT, owner);
+
+			return SUCCESS;
+		}
+
+		Reference<Task*> task = new DroidHarvestTask(module, tarCreo);
+		Core::getTaskManager()->executeTask(task);
+
+		agent->eraseBlackboard("harvestTarget");
+
+		if (!module->hasMoreTargets()) {
+			agent->setFollowObject(owner);
+			agent->storeFollowObject();
+			agent->setMovementState(AiAgent::FOLLOWING);
 		}
 
 		return SUCCESS;
