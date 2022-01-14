@@ -472,9 +472,16 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 				firstNameLeader= playerLeader->getFirstName();
 		}
 
+		bool galaxyWide = ConfigManager::instance()->getBool("Core3.PlayerManager.GalaxyWideGrouping", false);
+
 		StringIdChatParameter message;
 		message.setStringId("group", "new_leader"); // %TU is now the group leader.
-		message.setTU(newLeader->getObjectID());
+
+		if (galaxyWide) {
+			message.setTU(newLeader->getDisplayedName());
+		} else {
+			message.setTU(newLeader->getObjectID());
+		}
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
 			Reference<CreatureObject*> play = group->getGroupMember(i);
