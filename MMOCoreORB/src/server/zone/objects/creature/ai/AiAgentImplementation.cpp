@@ -1926,8 +1926,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			if (getPatrolPointSize() == 0) {
 				CellObject* sourceCell = getParent().get().castTo<CellObject*>();
 				error("nullptr or empty path in AiAgent::findNextPosition. Source was " + getPosition().toString() + " in " + String::valueOf(sourceCell != nullptr ? sourceCell->getCellNumber() : 0) + ". Destination was " + oldPoint.toString());
-				nextMovementPosition = oldPoint.getCoordinates();
-				found = true;
+
+				found = false;
+				break;
 			}
 
 			continue;
