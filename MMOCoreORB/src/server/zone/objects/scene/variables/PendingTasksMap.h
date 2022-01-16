@@ -38,6 +38,7 @@ protected:
 
 public:
 	PendingTasksMap();
+	~PendingTasksMap();
 
 	int put(const String& name, Task* task);
 
@@ -47,23 +48,29 @@ public:
 
 	Reference<Task*> get(const String& name) const;
 
+	uint64 decrementPendingTasks() {
+		return pendingTasksSize.decrement();
+	}
+
 	template <class Owner>
 	void putOrdered(Task* task, Owner* owner) {
 		task->acquire();
-
 		const auto values = pendingTasksSize.increment();
 
-		const bool result = pendingTasks.push(task);
-		E3_ASSERT(result);
-
 		if (values == 1) {
-			auto newTask = new server::zone::objects::scene::variables::OrderedTaskExecutioner<Owner>(owner);
-			newTask->setCustomTaskQueue(task->getCustomTaskQueue());
+			Reference<Task*> strongReference;
+		        strongReference.initializeWithoutAcquire(task);
+
+			auto newTask = new server::zone::objects::scene::variables::OrderedTaskExecutioner<Owner>(owner, std::move(strongReference));
 			newTask->execute();
+		} else {
+			const bool result = pendingTasks.push(task);
+			E3_ASSERT(result);
 		}
+
 	}
 
-	Pair<Reference<Task*>, std::size_t> popNextOrderedTask();
+	Reference<Task*> popNextOrderedTask();
 };
 
 #endif /* PENDINGTASKSMAP_H_ */
