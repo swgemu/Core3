@@ -547,7 +547,7 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 							activeArea->notifyPositionUpdate(tanoStrong);
 						}
 					}
-				}, "UpdateWorldActiveAreas");
+				}, "UpdateWorldActiveAreas", zoneName);
 			}
 		}
 	} catch (...) {

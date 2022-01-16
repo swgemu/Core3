@@ -127,6 +127,18 @@ void CloseObjectsVector::safeCopyReceiversTo(Vector<QuadTreeEntry*>& vec, uint32
 	}
 }
 
+void CloseObjectsVector::safeRunForEach(const Function<void(QuadTreeEntry* const&)>& lambda, uint32 receiverType) const {
+	ReadLocker locker(&mutex);
+
+	int i = messageReceivers.find(receiverType);
+
+	if (i != -1) {
+		const auto& receivers = messageReceivers.elementAt(i).getValue();
+
+		receivers.forEach(lambda);
+	}
+}
+
 void CloseObjectsVector::safeCopyReceiversTo(Vector<ManagedReference<QuadTreeEntry*> >& vec, uint32 receiverType) const {
 	ReadLocker locker(&mutex);
 

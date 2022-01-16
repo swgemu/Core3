@@ -10,9 +10,12 @@ import engine.core.ManagedObject;
 import server.zone.objects.creature.CreatureObject;
 import system.lang.Time;
 import system.util.VectorMap;
+import engine.core.Task;
 
 include engine.log.LoggerHelperStream;
 include system.util.SynchronizedVectorMap;
+include server.zone.objects.scene.variables.PendingTasksMap;
+include server.zone.objects.scene.variables.OrderedTaskExecutioner;
 
 @dirty
 class ZoneClientSession extends ManagedObject {
@@ -32,6 +35,8 @@ class ZoneClientSession extends ManagedObject {
 	protected string sessionID;
 
 	protected unsigned int accountID;
+
+	protected transient PendingTasksMap pendingTasks;
 
 	boolean disconnecting;
 
@@ -59,6 +64,18 @@ class ZoneClientSession extends ManagedObject {
 	public native void info(final string msg, boolean force = false);
 	public native void debug(final string msg);
 	public native void error(final string msg);
+
+	@local
+	@dirty
+	public void executeOrderedTask(Task task) {
+		pendingTasks.putOrdered(task, this);
+	}
+
+	@local
+	@dirty
+	public PendingTasksMap getPendingTasks() {
+		return pendingTasks;
+	}
 
 	@read
 	@dereferenced

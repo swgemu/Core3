@@ -219,12 +219,10 @@ if (ENABLE_ODB_REFERENCES)
 endif()
 
 if (ENABLE_LOCKFREE_BCLIENT_BUFFERS)
-	find_package(Boost REQUIRED COMPONENTS thread)
-
 	add_definitions(-DLOCKFREE_BCLIENT_BUFFERS)
-else()
-	find_package(Boost QUIET OPTIONAL_COMPONENTS thread)
 endif()
+
+find_package(Boost REQUIRED COMPONENTS thread)
 
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
