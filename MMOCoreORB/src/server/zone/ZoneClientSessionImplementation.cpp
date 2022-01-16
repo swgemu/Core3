@@ -69,10 +69,12 @@ void ZoneClientSessionImplementation::setupLogging() {
 	session->setLogLevel(static_cast<Logger::LogLevel>(clientLogLevel));
 
 	if (accountID == 0) {
-		session->info() << "Client connected";
+		session->reportStats("Client connected");
 	} else {
 		session->info() << "AccountID=" << accountID << "; ClientLogLevel=" << clientLogLevel;
+		session->reportStats("Account logged in");
 	}
+
 }
 
 void ZoneClientSessionImplementation::setAccountID(unsigned int newAccountID) {
@@ -87,6 +89,7 @@ void ZoneClientSessionImplementation::setAccountID(unsigned int newAccountID) {
 }
 
 void ZoneClientSessionImplementation::disconnect() {
+	session->reportStats("ZoneClientSessionImplementation::disconnect()");
 	session->disconnect();
 }
 
@@ -180,10 +183,13 @@ void ZoneClientSessionImplementation::setPlayer(CreatureObject* playerCreature) 
 	if (session != nullptr) {
 		if (playerCreature != nullptr) {
 			session->info() << "Player " << playerCreature->getObjectID() << " logged in.";
+			session->reportStats("Player logged in");
 		} else if (player != nullptr) {
 			session->info() << "Player " << player->getObjectID() << " logged out.";
+			session->reportStats("Player logged out");
 		} else {
 			session->info() << "Cleared player from session.";
+			session->reportStats("Player cleared from session");
 		}
 	}
 
