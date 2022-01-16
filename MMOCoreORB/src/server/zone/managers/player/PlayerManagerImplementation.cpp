@@ -5530,6 +5530,13 @@ int PlayerManagerImplementation::getOnlineCharCount(unsigned int accountId) {
 void PlayerManagerImplementation::disconnectAllPlayers() {
 	Locker locker(&onlineMapMutex);
 
+	info(true) << "Disconnecting " << onlineZoneClientMap.size() << " players.";
+
+	Time now, last_rpt;
+	Timer profile;
+	int countDisconnected = 0;
+
+	profile.start();
 	HashTableIterator<uint32, Vector<Reference<ZoneClientSession*> > > iter = onlineZoneClientMap.iterator();
 
 	while (iter.hasNext()) {
@@ -5548,11 +5555,26 @@ void PlayerManagerImplementation::disconnectAllPlayers() {
 						Locker plocker(player);
 						ghost->setLinkDead(true);
 						ghost->disconnect(true, true);
+						++countDisconnected;
 					}
 				}
 			}
+
+			now.updateToCurrentTime();
+			int delta = now.getTime() - last_rpt.getTime();
+
+			if (delta > 5) {
+				last_rpt.updateToCurrentTime();
+				auto elapsedMs = profile.elapsedToNow() / 1000000;
+				auto ps = countDisconnected / (elapsedMs / 1000.0f);
+				info(true) << "Disconnected " << commas << countDisconnected << " players (" << ps << "/s)";
+			}
 		}
 	}
+
+	auto elapsedMs = profile.stopMs();
+	auto ps = countDisconnected / (elapsedMs / 1000.0f);
+	info(true) << "Finished disconnecting " << commas << countDisconnected << " players (" << ps << "/s)";
 }
 
 bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai) {
