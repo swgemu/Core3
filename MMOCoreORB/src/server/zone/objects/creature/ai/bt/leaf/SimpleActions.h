@@ -619,13 +619,9 @@ public:
 		if (agent->peekBlackboard("healTarget"))
 			healTarget = agent->readBlackboard("healTarget").get<ManagedReference<CreatureObject*> >().get();
 
-		if (healTarget == nullptr) {
-			agent->setMovementState(AiAgent::FOLLOWING);
-			return FAILURE;
-		}
-
-		if (healTarget->isDead()) {
+		if (healTarget == nullptr || healTarget->isDead()) {
 			agent->eraseBlackboard("healTarget");
+			agent->setMovementState(AiAgent::FOLLOWING);
 			return FAILURE;
 		}
 
