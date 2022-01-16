@@ -2419,6 +2419,8 @@ float AiAgentImplementation::getMaxDistance() {
 
 	// info("getmaxDistance - stateCopy: " + String::valueOf(stateCopy) /*+ " Max Distance: " + String::valueOf(maxDistance)*/, true);
 	switch (stateCopy) {
+	case AiAgent::OBLIVIOUS:
+		return 2.0f;
 	case AiAgent::WATCHING:
 		return 1.5f;
 		break;

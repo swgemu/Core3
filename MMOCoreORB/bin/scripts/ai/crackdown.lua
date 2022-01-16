@@ -30,6 +30,8 @@ idleCrackdown = {
 	{id="3466255097",	name="AlwaysFail",	pid="652324672"},
 	{id="2492969551",	name="FollowSquadLeader",	pid="3466255097"},
 	{id="3420905314",	name="Sequence",	pid="341662921"},
+	{id="2778093536",	name="If",	pid="3420905314"},
+	{id="861335548",	name="CheckOutdoors",	pid="2778093536"},
 	{id="4284793712",	name="Not",	pid="3420905314"},
 	{id="2689461598",	name="If",	pid="4284793712"},
 	{id="973784086",	name="CheckDestination",	pid="2689461598",	args={condition=0.0}},
@@ -69,8 +71,8 @@ lookCrackdown = {
 	{id="3613339524",	name="Selector",	pid="526604206"},
 	{id="4006686023",	name="If",	pid="3613339524"},
 	{id="1956271224",	name="CheckMovementState",	pid="4006686023",	args={condition=OBLIVIOUS}},
-	{id="3477974716",	name="If",	pid="3613339524"},
-	{id="1793565763",	name="CheckMovementState",	pid="3477974716",	args={condition=WATCHING}},
+	{id="2813165004",	name="If",	pid="3613339524"},
+	{id="2976651463",	name="CheckMovementState",	pid="2813165004",	args={condition=PATHING_HOME}},
 	{id="3305550153",	name="If",	pid="3613339524"},
 	{id="1751494098",	name="CheckMovementState",	pid="3305550153",	args={condition=FOLLOWING}},
 	{id="3646803803",	name="If",	pid="526604206"},
@@ -78,7 +80,7 @@ lookCrackdown = {
 	{id="1503586382",	name="Not",	pid="526604206"},
 	{id="739302339",	name="If",	pid="1503586382"},
 	{id="56523403",	name="CheckProspectIsIncapacitated",	pid="739302339"},
-	{id="3588181178",	name="SetMovementState",	pid="526604206",	args={state=FOLLOWING}},
+	{id="3588181178",	name="SetMovementState",	pid="526604206",	args={state=WATCHING}},
 	{id="348153104",	name="AlwaysSucceed",	pid="526604206"},
 	{id="219684595",	name="SetAlert",	pid="348153104",	args={duration=5.0, show=true}}}
 addAiTemplate("lookCrackdown", lookCrackdown)

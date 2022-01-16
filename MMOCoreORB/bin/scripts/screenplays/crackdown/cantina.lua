@@ -2,6 +2,7 @@ CrackdownCantina = ScreenPlay:new {
 	isEnabled = true,
 	harassPrivileged = false,
 	debugNotify = false, -- Send system messages for testing
+	delay = 1, -- 1 hour delay per cantina
 
 	cantinaPlanets = { "corellia", "naboo", "tatooine" },
 
@@ -56,7 +57,7 @@ function CrackdownCantina:doCleanup(pBuilding)
 end
 
 function CrackdownCantina:onEnteredCantina(pCantina, pPlayer)
-	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
+	if (pPlayer == nil or pCantina == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 0
 	end
 
@@ -83,6 +84,10 @@ function CrackdownCantina:onEnteredCantina(pCantina, pPlayer)
 end
 
 function CrackdownCantina:handlePotentialTrouble(pCantina, pPlayer)
+	if (pCantina == nil) then
+		return
+	end
+
 	if (readData(SceneObject(pCantina):getObjectID() .. ":crackdownInProgress") == 1) then
 		return
 	end
@@ -97,14 +102,26 @@ function CrackdownCantina:handlePotentialTrouble(pCantina, pPlayer)
 		return
 	end
 
-	-- Only going to check for trouble 20% of the time
-	if (getRandomNumber(100) > 20) then
+	local cantinaID = SceneObject(pCantina):getObjectID()
+	local time = tonumber(os.date("%d%H%M"))
+	local delayTime = tonumber(readData(cantinaID .. ":crackdownCooldown"))
+
+	if (self.debugNotify) then
+		printf("Current time = " .. time .. "\n")
+		printf("Current delay = " .. delayTime .. "\n")
+	end
+
+	-- Only going to check for trouble 20% of the time and if delay has passed
+	if (getRandomNumber(100) > 20 or time < delayTime) then
 		return
 	end
 
 	if (self.debugNotify) then
 		CreatureObject(pPlayer):sendSystemMessage("Debug: Cantina crackdown triggered")
 	end
+
+	writeData(cantinaID .. ":crackdownInProgress", 1)
+	writeData(cantinaID .. ":crackdownCooldown", time + (self.delay * 100))
 
 	createEvent(15000, "CrackdownCantina", "startTrouble", pCantina, "")
 end
@@ -114,17 +131,15 @@ function CrackdownCantina:startTrouble(pCantina)
 		return
 	end
 
-	local cantinaID = SceneObject(pCantina):getObjectID()
-
 	local pFoyer = BuildingObject(pCantina):getNamedCell("foyer1")
 
 	if (pFoyer == nil) then
 		return
 	end
 
-	local foyerID = SceneObject(pFoyer):getObjectID()
+	local cantinaID = SceneObject(pCantina):getObjectID()
 
-	writeData(cantinaID .. ":crackdownInProgress", 1)
+	local foyerID = SceneObject(pFoyer):getObjectID()
 	local zoneName = SceneObject(pCantina):getZoneName()
 	local controllingFaction = getControllingFaction(zoneName)
 	local cantinaCity = self:getCantinaCity(cantinaID, zoneName)
@@ -147,6 +162,12 @@ function CrackdownCantina:startTrouble(pCantina)
 		factionName = "rebel"
 	end
 
+	if (factionName == "") then
+		printLuaError("Crantina Crackdown - Bad factionName ")
+		deleteData(cantinaID .. ":crackdownInProgress")
+		return
+	end
+
 	local pSpawn = spawnMobile(zoneName, spawnTemplate, 0, 48.13, .1, 2.47, 0, foyerID)
 
 	if (pSpawn == nil) then
@@ -154,24 +175,26 @@ function CrackdownCantina:startTrouble(pCantina)
 		return
 	end
 
+	local mobileID = SceneObject(pSpawn):getObjectID()
+
+	writeStringData(mobileID .. ":factionName", factionName)
 	writeData(cantinaID .. ":harasserID", SceneObject(pSpawn):getObjectID())
 	spatialChat(pSpawn, "@npc_reaction/imperial_crackdown_cantina:call_in_" .. factionName)
 
-	AiAgent(pSpawn):addCreatureFlag(AI_STATIONARY)
-	createEvent(1000, "CrackdownCantina", "setupHarasser", pSpawn, factionName)
+	createEvent(1000, "CrackdownCantina", "setupHarasser", pSpawn, "")
 end
 
-function CrackdownCantina:setupHarasser(pMobile, factionName)
+function CrackdownCantina:setupHarasser(pMobile)
 	if (pMobile == nil or CreatureObject(pMobile):isDead()) then
 		return
 	end
 
 	local mobileID = SceneObject(pMobile):getObjectID()
+
 	createObserver(DESTINATIONREACHED, "CrackdownCantina", "destinationReached", pMobile)
 	createObserver(DEFENDERADDED, "CrackdownCantina", "onStartedCombat", pMobile)
 
 	writeStringData(mobileID .. ":nextPoint", "cantina")
-	writeStringData(mobileID .. ":factionName", factionName)
 
 	createEvent(2000, "CrackdownCantina", "moveToHarassPoint", pMobile, "")
 end
@@ -232,6 +255,16 @@ function CrackdownCantina:destinationReached(pMobile)
 	deleteStringData(mobileID .. ":nextPoint")
 
 	local factionName = readStringData(mobileID .. ":factionName")
+
+	if (factionName == "") then
+		local faction = CreatureObject(pMobile):getFaction()
+
+		if (faction == FACTIONIMPERIAL) then
+			factionName = "imperial"
+		else
+			factionName = "rebel"
+		end
+	end
 
 	if (pointName == "cantina") then
 		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:rebel_scum_" .. factionName)
@@ -310,6 +343,16 @@ function CrackdownCantina:startHarassing(pMobile)
 	local factionName = readStringData(mobileID .. ":factionName")
 	local harassingPlayer = 0
 	local foundHarass = false
+
+	if (factionName == "") then
+		local faction = CreatureObject(pMobile):getFaction()
+
+		if (faction == FACTIONIMPERIAL) then
+			factionName = "imperial"
+		else
+			factionName = "rebel"
+		end
+	end
 
 	if (playerCount <= 0) then
 		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:no_one_here_" .. factionName)
@@ -632,7 +675,7 @@ function CrackdownCantina:callForBackup(pMobile, factionName)
 			local spawnID = SceneObject(pSpawn):getObjectID()
 
 			writeData(spawnID .. ":targetID", targetID)
-			AiAgent(pSpawn):addCreatureFlag(AI_STATIONARY)
+
 			createEvent(1000, "CrackdownCantina", "setupBackupMobile", pSpawn, "")
 		end
 	end
@@ -648,7 +691,7 @@ function CrackdownCantina:callForBackup(pMobile, factionName)
 			local spawnID = SceneObject(pSpawn):getObjectID()
 
 			writeData(spawnID .. ":targetID", targetID)
-			AiAgent(pSpawn):addCreatureFlag(AI_STATIONARY)
+
 			createEvent(1000, "CrackdownCantina", "setupBackupMobile", pSpawn, "")
 		end
 	end
@@ -664,7 +707,7 @@ function CrackdownCantina:callForBackup(pMobile, factionName)
 			local spawnID = SceneObject(pSpawn):getObjectID()
 
 			writeData(spawnID .. ":targetID", targetID)
-			AiAgent(pSpawn):addCreatureFlag(AI_STATIONARY)
+
 			createEvent(1000, "CrackdownCantina", "setupBackupMobile", pSpawn, "")
 		end
 	end
@@ -775,6 +818,10 @@ function CrackdownCantina:isValidTarget(pPlayer, harassFaction)
 end
 
 function CrackdownCantina:getCantinaBuilding(pMobile)
+	if (pMobile == nil) then
+		return nil
+	end
+
 	local pCell = SceneObject(pMobile):getParent()
 
 	if (pCell == nil) then
