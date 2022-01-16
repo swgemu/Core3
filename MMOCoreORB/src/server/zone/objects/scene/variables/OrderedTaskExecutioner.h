@@ -26,11 +26,13 @@ template <class TaskOwner>
 class OrderedTaskExecutioner : public Task {
 protected:
 	WeakReference<TaskOwner*> owner;
+	Reference<Task*> task{nullptr};
 
 	String taskName;
 
 public:
-	OrderedTaskExecutioner(TaskOwner* object) : owner(object) {
+	OrderedTaskExecutioner(TaskOwner* object, Reference<Task*>&& taskToRun) : owner(object), task(std::move(taskToRun)) {
+		setCustomTaskQueue(task->getCustomTaskQueue());
 	}
 
 	void run() final {
@@ -40,28 +42,31 @@ public:
 			return;
 
 		auto pendingTasks = strongReference->getPendingTasks();
-		auto poppedTaskData = pendingTasks->popNextOrderedTask();
-		auto& task = poppedTaskData.first;
 
-		if (task != nullptr) {
-			try {
-				task->run();
-			} catch (Exception& exc) {
-				strongReference->error("exception in OrderedTaskExecutioner::run");
-				strongReference->error(exc.getMessage());
+		try {
+			task->run();
+		} catch (const Exception& exc) {
+			strongReference->error("exception in OrderedTaskExecutioner::run");
+			strongReference->error(exc.getMessage());
 
-				exc.printStackTrace();
-			} catch (...) {
-				strongReference->error("uncaught exception in OrderedTaskExecutioner::run");
+			exc.printStackTrace();
+		} catch (...) {
+			strongReference->error("uncaught exception in OrderedTaskExecutioner::run");
+		}
+
+		taskName = task->getTaskName();
+
+		const auto remainingTasks = pendingTasks->decrementPendingTasks();
+
+		if (remainingTasks > 0) {
+			Reference<Task*> poppedTask;
+
+			while (!(poppedTask = pendingTasks->popNextOrderedTask())) {
+
 			}
 
-			taskName = task->getTaskName();
-
-			if (poppedTaskData.second) {
-				auto nextTask = new OrderedTaskExecutioner<TaskOwner>(strongReference);
-				nextTask->setCustomTaskQueue(nextTask->getCustomTaskQueue());
-				nextTask->execute();
-			}
+			auto nextTask = new OrderedTaskExecutioner<TaskOwner>(strongReference, std::move(poppedTask));
+			nextTask->execute();
 		}
 	}
 

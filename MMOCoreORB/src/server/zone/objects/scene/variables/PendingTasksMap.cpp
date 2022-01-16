@@ -18,6 +18,16 @@ PendingTasksMap::PendingTasksMap() : taskMap(1, 1), pendingTasks(1000) {
 	taskMap.setNullValue(nullptr);
 }
 
+PendingTasksMap::~PendingTasksMap() {
+	Task* task;
+
+	while (pendingTasks.pop(task)) {
+		if (task != nullptr) {
+			task->release();
+		}
+	}
+}
+
 int PendingTasksMap::put(const String& name, Task* task) {
 	Locker guard(&mutex);
 
@@ -42,19 +52,16 @@ Reference<Task*> PendingTasksMap::get(const String& name) const {
 	return taskMap.get(name);
 }
 
-Pair<Reference<Task*>, std::size_t> PendingTasksMap::popNextOrderedTask() {
+Reference<Task*> PendingTasksMap::popNextOrderedTask() {
 	Reference<Task*> strongTaskReference;
 	Task* task;
 
-	auto result = pendingTasks.pop(task);
-	uint64_t remaining = 0;
+	const auto result = pendingTasks.pop(task);
 
 	if (result && task) {
-		remaining = pendingTasksSize.decrement();
-
 		strongTaskReference.initializeWithoutAcquire(task);
 	}
 
-	return {std::move(strongTaskReference), remaining};
+	return strongTaskReference;
 }
 
