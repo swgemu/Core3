@@ -1285,7 +1285,7 @@ bool AiAgentImplementation::stalkProspect(SceneObject* prospect) {
 }
 
 void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
-	if (healTarget == nullptr) {
+	if (healTarget == nullptr || healTarget->isDead()) {
 		return;
 	}
 

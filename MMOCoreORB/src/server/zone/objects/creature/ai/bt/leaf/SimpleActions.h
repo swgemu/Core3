@@ -624,6 +624,11 @@ public:
 			return FAILURE;
 		}
 
+		if (healTarget->isDead()) {
+			agent->eraseBlackboard("healTarget");
+			return FAILURE;
+		}
+
 		bool healExecuted = false;
 
 		if (healTarget->getHAM(CreatureAttribute::HEALTH) < healTarget->getMaxHAM(CreatureAttribute::HEALTH) || healTarget->getHAM(CreatureAttribute::ACTION) < healTarget->getMaxHAM(CreatureAttribute::ACTION)) {
