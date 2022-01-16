@@ -57,6 +57,7 @@ include templates.collision.BaseBoundingVolume;
 include server.zone.objects.scene.variables.StdFunction;
 include server.metrics.Metrics;
 include engine.util.JSONSerializationType;
+include server.zone.objects.scene.variables.OrderedTaskExecutioner;
 
 @mock
 @json
@@ -782,9 +783,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@local
 	@dirty
 	public void executeOrderedTask(Task task) {
-		synchronized (containerLock) {
-			getPendingTasks().putOrdered(task, this);
-		}
+		getPendingTasks().putOrdered(task, this);
 	}
 
 	/**
@@ -2192,7 +2191,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@dirty
 	@local
 	public abstract native void getChildrenRecursive(@dereferenced SortedVector<unsigned long> childrenObjectsFound, int maxDepth = 50, boolean pruneCreo = false, boolean pruneCraftedComponents = false);
-	
+
 	@dirty
 	public abstract boolean canBeTransferred(SceneObject newContainer) {
 		return true;

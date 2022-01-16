@@ -20,6 +20,8 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 
 	player = nullptr;
 
+	pendingTasks = new PendingTasksMap();
+
 	accountID = 0;
 
 	disconnecting = false;

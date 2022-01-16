@@ -670,6 +670,18 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 		return;
 	}
 
+#ifdef LOCKFREE_BCLIENT_BUFFERS
+	if (closeobjects) {
+		closeobjects->safeRunForEach([pack = Reference<BasePacket*>(message) ](auto value) {
+				SceneObject* scno = static_cast<SceneObject*>(value);
+				scno->sendMessage(pack);
+			}, CloseObjectsVector::PLAYERTYPE);
+
+		return;
+	}
+
+#endif
+
 	SortedVector<QuadTreeEntry*> closeNoneReference;
 
 	try {

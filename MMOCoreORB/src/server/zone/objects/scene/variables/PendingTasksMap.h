@@ -9,29 +9,36 @@
 #define PENDINGTASKSMAP_H_
 
 #include "engine/engine.h"
+#include <boost/lockfree/queue.hpp>
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace scene {
 class SceneObject;
-}
-}
-}
-}
 
+namespace variables {
+
+template <class TaskOwner>
+class OrderedTaskExecutioner;
+}
+}
+} // namespace objects
+} // namespace zone
+} // namespace server
 
 class PendingTasksMap : public Object {
 protected:
 	mutable Mutex mutex;
 
-	VectorMap<String, Reference<Task*> > taskMap;
+	VectorMap<String, Reference<Task*>> taskMap;
 
-	ArrayList<Reference<Task*> > orderedTasks;
+	typedef boost::lockfree::queue<Task*, boost::lockfree::fixed_sized<false>> TaskQueue;
+	TaskQueue pendingTasks{};
+	AtomicLong pendingTasksSize{};
 
 public:
 	PendingTasksMap();
-	PendingTasksMap(const PendingTasksMap& p);
 
 	int put(const String& name, Task* task);
 
@@ -41,13 +48,23 @@ public:
 
 	Reference<Task*> get(const String& name) const;
 
-	void putOrdered(Task* task, server::zone::objects::scene::SceneObject* sceneObject);
+	template <class Owner>
+	void putOrdered(Task* task, Owner* owner) {
+		task->acquire();
 
-	int getOrderedTasksSize() const;
+		const auto values = pendingTasksSize.increment();
 
-	bool runMoreOrderedTasks(server::zone::objects::scene::SceneObject* sceneObject);
+		const bool result = pendingTasks.push(task);
+		E3_ASSERT(result);
 
-	Reference<Task*> getNextOrderedTask();
+		if (values == 1) {
+			auto newTask = new server::zone::objects::scene::variables::OrderedTaskExecutioner<Owner>(owner);
+			newTask->setCustomTaskQueue(task->getCustomTaskQueue());
+			newTask->execute();
+		}
+	}
+
+	Pair<Reference<Task*>, std::size_t> popNextOrderedTask();
 };
 
 #endif /* PENDINGTASKSMAP_H_ */

@@ -3,7 +3,6 @@
  *
  *  Created on: Apr 14, 2015
  *      Author: TheAnswer
- */
 
 #include "OrderedTaskExecutioner.h"
 #include "PendingTasksMap.h"
@@ -23,11 +22,9 @@ void OrderedTaskExecutioner::run() {
 	if (strongReference == nullptr)
 		return;
 
-	//no lock on getPendingTasks() is safe due to using the container lock
-
-	PendingTasksMap* pendingTasks = strongReference->getPendingTasks();
-
-	Reference<Task*> task = pendingTasks->getNextOrderedTask();
+	PendingTasksMap* pendingTasks = strongReference->getPendingTasks();
+	auto poppedTaskData = pendingTasks->popNextOrderedTask();
+	auto& task = poppedTaskData.first;
 
 	if (task != nullptr) {
 		try {
@@ -43,7 +40,11 @@ void OrderedTaskExecutioner::run() {
 
 		taskName = task->getTaskName();
 
-		pendingTasks->runMoreOrderedTasks(strongReference);
+		if (poppedTaskData.second) {
+			Reference<OrderedTaskExecutioner*> nextTask = new OrderedTaskExecutioner(strongReference);
+			nextTask->setCustomTaskQueue(nextTask->getCustomTaskQueue());
+			nextTask->execute();
+		}
 	}
 }
 
@@ -54,3 +55,4 @@ const char* OrderedTaskExecutioner::getTaskName() {
 		return Task::getTaskName();
 	}
 }
+*/
