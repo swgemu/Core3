@@ -479,15 +479,20 @@ void ZoneServerImplementation::processMessage(Message* message) {
 
 	auto client = zoneHandler->getClientSession(message->getClient());
 
+	// move generateMessageTask to the client task at some point
 	Task* task = zonePacketHandler->generateMessageTask(client, message);
 
 	if (task != nullptr) {
-		auto taskManager = Core::getTaskManager();
-
-		if (taskManager) {
-			taskManager->executeTask(task);
+		if (client != nullptr) {
+			client->executeOrderedTask(task);
 		} else {
-			delete task;
+			auto taskManager = Core::getTaskManager();
+
+			if (taskManager) {
+				taskManager->executeTask(task);
+			} else {
+				delete task;
+			}
 		}
 	}
 

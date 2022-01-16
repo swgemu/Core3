@@ -23,9 +23,9 @@ class CloseObjectsVector : public Object {
 
 	VectorMap<uint32, SortedVector<server::zone::QuadTreeEntry*> > messageReceivers;
 
-	AtomicInteger count;
+	uint32 count;
 
-#ifdef CXX11_COMPILER
+#if defined(CXX11_COMPILER) && !defined(TRACE_REFERENCES)
 	static_assert(sizeof(server::zone::QuadTreeEntry*) == sizeof(Reference<server::zone::QuadTreeEntry*>), "Reference<> size is not the size of a pointer");
 #endif
 
@@ -65,6 +65,8 @@ public:
 
 	int put(const Reference<server::zone::QuadTreeEntry*>& o);
 	int put(Reference<server::zone::QuadTreeEntry*>&& o);
+
+	void safeRunForEach(const Function<void(QuadTreeEntry* const&)>& lambda, uint32 receiverType) const;
 
 	int size() const NO_THREAD_SAFETY_ANALYSIS {
 		return count;
