@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_weapon_melee_sword_sword_02 = object_weapon_melee_sword_shared_sword_02:new {
+object_weapon_melee_sword_sword_02_ranged = object_weapon_melee_sword_shared_sword_02:new {
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",

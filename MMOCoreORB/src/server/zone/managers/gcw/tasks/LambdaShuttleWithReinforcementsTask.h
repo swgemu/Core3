@@ -156,10 +156,13 @@ private:
 				}
 			}
 
+			npc->setAITemplate();
+
 			if (spawnNumber != 0) {
 				Vector3 formationOffset;
 				formationOffset.setX(xOffset);
 				formationOffset.setY(spawnNumber * -1);
+
 				npc->writeBlackboard("formationOffset", formationOffset);
 			} else {
 				npc->addCreatureFlag(CreatureFlag::STATIONARY);
@@ -167,7 +170,6 @@ private:
 
 			containmentTeamObserver->addMember(npc);
 			npc->registerObserver(ObserverEventType::SQUAD, containmentTeamObserver);
-			npc->setAITemplate();
 		}
 	}
 
