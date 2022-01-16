@@ -291,8 +291,8 @@ void ZoneServerImplementation::stop() {
 	shutdown();
 }
 
-void ZoneServerImplementation::timedShutdown(int minutes) {
-	Reference<Task*> task = new ShutdownTask(_this.getReferenceUnsafeStaticCast(), minutes);
+void ZoneServerImplementation::timedShutdown(int minutes, int flags) {
+	Reference<Task*> task = new ShutdownTask(_this.getReferenceUnsafeStaticCast(), minutes, flags);
 
 	if (minutes <= 0) {
 		task->execute();

@@ -198,7 +198,11 @@ void ServerCore::registerConsoleCommmands() {
 		}
 
 		if (arguments.contains("dump")) {
-			flags |= ObjectManager::SAVE_DUMP;
+			flags |= ObjectManager::SAVE_DUMP | ObjectManager::SAVE_FULL;
+		}
+
+		if (arguments.contains("json")) {
+			flags |= ObjectManager::SAVE_JSON | ObjectManager::SAVE_FULL;
 		}
 
 		ObjectManager::instance()->createBackup(flags);
@@ -298,19 +302,28 @@ void ServerCore::registerConsoleCommmands() {
 	});
 
 	addCommand("shutdown", [this](const String& arguments) -> CommandResult {
+		int flags = ShutdownFlags::DEFAULT;
 		ZoneServer* zoneServer = zoneServerRef.getForUpdate();
 		int minutes = 1;
 
 		try {
 			minutes = UnsignedInteger::valueOf(arguments);
 		} catch (const Exception& e) {
-			System::out << "invalid minutes number expected dec" << endl;
+			System::out << "Usage: shutdown {minutes} {json} {fast}" << endl;
 
 			return ERROR;
 		}
 
+		if (arguments.contains("fast")) {
+			flags |= ShutdownFlags::FAST;
+		}
+
+		if (arguments.contains("json")) {
+			flags |= ShutdownFlags::DUMP_JSON;
+		}
+
 		if (zoneServer != nullptr) {
-			zoneServer->timedShutdown(minutes);
+			zoneServer->timedShutdown(minutes, flags);
 
 			shutdownBlockMutex.lock();
 
@@ -617,7 +630,9 @@ void ServerCore::initializeCoreContext() {
 	Thread::setThreadInitializer(new ThreadHook());
 }
 
-void ServerCore::signalShutdown() {
+void ServerCore::signalShutdown(ShutdownFlags flags) {
+	nextShutdownFlags = flags;
+
 	shutdownBlockMutex.lock();
 
 	waitCondition.broadcast(&shutdownBlockMutex);
@@ -798,7 +813,11 @@ void ServerCore::run() {
 }
 
 void ServerCore::shutdown() {
-	info(true) << "shutting down server..";
+	info(true) << "shutting down server.. flags = "
+		<< (nextShutdownFlags == ShutdownFlags::DEFAULT) << " DEFAULT"
+		<< (nextShutdownFlags & ShutdownFlags::FAST) << " FAST"
+		<< (nextShutdownFlags & ShutdownFlags::DUMP_JSON) << " DUMP_JSON"
+		;
 
 	handleCmds = false;
 
@@ -811,10 +830,18 @@ void ServerCore::shutdown() {
 	}
 #endif // WITH_REST_API
 
+	bool haveSave = false;
+
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	while (objectManager->isObjectUpdateInProgress())
-		Thread::sleep(500);
+	if (objectManager->isObjectUpdateInProgress()) {
+		haveSave = true;
+
+		info(true) << "Shutdown waiting for in-progress save to complete...";
+
+		while (objectManager->isObjectUpdateInProgress())
+			Thread::sleep(500);
+	}
 
 	objectManager->cancelDeleteCharactersTask();
 	objectManager->cancelUpdateModifiedObjectsTask();
@@ -831,20 +858,24 @@ void ServerCore::shutdown() {
 
 		Thread::sleep(2000);
 
-		info("Disconnecting all players", true);
+		if (nextShutdownFlags & ShutdownFlags::FAST) {
+			info(true) << "Skip disconnecting players";
+		} else {
+			info(true) << "Disconnecting all players";
 
-		PlayerManager* playerManager = zoneServer->getPlayerManager();
+			PlayerManager* playerManager = zoneServer->getPlayerManager();
 
-		playerManager->stopOnlinePlayerLogTask();
-		playerManager->disconnectAllPlayers();
+			playerManager->stopOnlinePlayerLogTask();
+			playerManager->disconnectAllPlayers();
 
-		int count = 0;
-		while (zoneServer->getConnectionCount() > 0 && count < 20) {
-			Thread::sleep(500);
-			count++;
+			int count = 0;
+			while (zoneServer->getConnectionCount() > 0 && count < 20) {
+				Thread::sleep(500);
+				count++;
+			}
+
+			info("All players disconnected", true);
 		}
-
-		info("All players disconnected", true);
 
 		auto frsManager = zoneServer->getFrsManager();
 
@@ -867,12 +898,20 @@ void ServerCore::shutdown() {
 
 	Thread::sleep(5000);
 
-	objectManager->createBackup(true);
+	auto backupFlags = ObjectManager::SAVE_FULL | ObjectManager::SAVE_REPORT;
+
+	if (nextShutdownFlags & ShutdownFlags::DUMP_JSON) {
+		info(true) << "Backing up with JSON dump of in-ram objects.";
+
+		backupFlags |= ObjectManager::SAVE_JSON;
+	}
+
+	objectManager->createBackup(backupFlags);
 
 	while (objectManager->isObjectUpdateInProgress())
 		Thread::sleep(500);
 
-	info("database backup done", true);
+	info(true) << "database backup done";
 
 	objectManager->cancelUpdateModifiedObjectsTask();
 

@@ -148,7 +148,7 @@ class ZoneServer extends ManagedService implements Logger {
 
 	public native void clearZones();
 
-	public native void timedShutdown(int minutes);
+	public native void timedShutdown(int minutes, int flags = 0);
 
 	@local
 	@dirty
