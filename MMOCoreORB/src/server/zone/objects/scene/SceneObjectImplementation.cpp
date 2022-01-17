@@ -1442,38 +1442,54 @@ bool SceneObjectImplementation::isFacingObject(SceneObject* obj) const {
 	Vector3 thisPos = getPosition();
 	Vector3 targetPos = obj->getPosition();
 
-	float directionangle = atan2(targetPos.getX() - thisPos.getX(), targetPos.getY() - thisPos.getY());
+	float dx = targetPos.getX() - thisPos.getX();
+	float dy = targetPos.getY() - thisPos.getY();
+	float directionAngle = atan2(dy, dx);
 
-	if (directionangle < 0) {
-		float a = M_PI + directionangle;
-		directionangle = M_PI + a;
+	directionAngle = M_PI / 2 - directionAngle;
+
+	if (directionAngle < 0) {
+		float a = M_PI + directionAngle;
+		directionAngle = M_PI + a;
 	}
 
-	return fabs(directionangle - direction.getRadians()) < (M_PI / 2);
+	return fabs(directionAngle - direction.getRadians()) < (M_PI / 2);
 }
 
 void SceneObjectImplementation::faceObject(SceneObject* obj, bool notifyClient) {
 	Vector3 thisPos = getPosition();
 	Vector3 targetPos = obj->getPosition();
 
-	float directionangle = atan2(targetPos.getX() - thisPos.getX(), targetPos.getY() - thisPos.getY());
+	float dx = targetPos.getX() - thisPos.getX();
+	float dy = targetPos.getY() - thisPos.getY();
+	float directionAngle = atan2(dy, dx);
 
-	if (directionangle < 0) {
-		float a = M_PI + directionangle;
-		directionangle = M_PI + a;
+	directionAngle = M_PI / 2 - directionAngle;
+
+	if (directionAngle < 0) {
+		float a = M_PI + directionAngle;
+		directionAngle = M_PI + a;
 	}
 
-	float err = fabs(directionangle - direction.getRadians());
+	float error = fabs(directionAngle - direction.getRadians());
 
-	if (err < 0.05) {
-		debug() << "not updating " << directionangle;
+	if (error < 0.05) {
+		debug() << "Direction below error - not updating " << directionAngle;
 		return;
 	}
 
+	// info("Error Value = " + String::valueOf(error), true);
+	// info("Setting New Direction angle = " + String::valueOf(directionAngle), true);
+
 	if (notifyClient) {
-		updateDirection(directionangle);
+		if (isAiAgent()) {
+			setDirection(directionAngle);
+			asAiAgent()->broadcastNextPositionUpdate(nullptr);
+		} else {
+			updateDirection(directionAngle);
+		}
 	} else {
-		direction.setHeadingDirection(directionangle);
+		direction.setHeadingDirection(directionAngle);
 	}
 }
 
