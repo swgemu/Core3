@@ -570,7 +570,6 @@ public:
 
 		agent->setMovementState(AiAgent::EVADING);
 		agent->setNextPosition(position.getX(), position.getZ(), position.getY(), agent->getParent().get().castTo<CellObject*>());
-		agent->faceObject(tar, true);
 
 		return SUCCESS;
 	}
