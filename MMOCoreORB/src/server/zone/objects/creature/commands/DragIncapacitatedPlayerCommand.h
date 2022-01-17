@@ -138,10 +138,16 @@ public:
 
 		float dx = dragger.getX() - target.getX();
 		float dy = dragger.getY() - target.getY();
-		float directionangle = atan2(dy, dx);
-		float radangle = M_PI / 2 - directionangle;
+		float directionAngle = atan2(dy, dx);
 
-		targetPlayer->setDirection(radangle);
+		directionAngle = M_PI / 2 - directionAngle;
+
+		if (directionAngle < 0) {
+			float a = M_PI + directionAngle;
+			directionAngle = M_PI + a;
+		}
+
+		targetPlayer->setDirection(directionAngle);
 		targetPlayer->setPosition(newPosition.getX(), newPosition.getZ(), newPosition.getY());
 		targetPlayer->incrementMovementCounter();
 

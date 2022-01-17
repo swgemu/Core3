@@ -1799,19 +1799,13 @@ void AiAgentImplementation::updatePetSwimmingState() {
 
 void AiAgentImplementation::checkNewAngle() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
+
 	if (followCopy == nullptr)
 		return;
 
+	// info("Check new angle called ", true);
+
 	faceObject(followCopy, true);
-
-	if (!nextStepPosition.isReached()) {
-		broadcastNextPositionUpdate(&nextStepPosition);
-	} else {
-		if (getZoneUnsafe() == nullptr)
-			return;
-
-		broadcastNextPositionUpdate(nullptr);
-	}
 }
 
 // It is important to know that the return of this function determines whether
@@ -2135,17 +2129,23 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			nextStepPosition.setCell(nextMovementPosition.getCell());
 			nextStepPosition.setReached(false);
 
-			float directionangle = atan2(nextMovementPosition.getX() - getPositionX(), nextMovementPosition.getY() - getPositionY());
+			float dx = nextMovementPosition.getX() - getPositionX();
+			float dy = nextMovementPosition.getY() - getPositionY();
 
-			if (directionangle < 0) {
-				float a = M_PI + directionangle;
-				directionangle = M_PI + a;
+			float directionAngle = atan2(dy, dx);
+
+			directionAngle = M_PI / 2 - directionAngle;
+
+			if (directionAngle < 0) {
+				float a = M_PI + directionAngle;
+				directionAngle = M_PI + a;
 			}
 
-			float err = fabs(directionangle - direction.getRadians());
+			float error = fabs(directionAngle - direction.getRadians());
 
-			if (err >= 0.05)
-				direction.setHeadingDirection(directionangle);
+			if (error >= 0.05) {
+				setDirection(directionAngle);
+			}
 
 			auto interval = UPDATEMOVEMENTINTERVAL;
 			nextMovementInterval = Math::min((int)((Math::min(distance, maxDist) / newSpeed) * 1000 + 0.5), interval);
@@ -2166,6 +2166,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			setMovementState(AiAgent::FOLLOWING);
 
 		ManagedReference<SceneObject*> followCopy = followObject.get();
+
 		if (followCopy == nullptr)
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
@@ -2555,6 +2556,8 @@ int AiAgentImplementation::setDestination() {
 
 			nextPos.setPositionX(nextPos.getPositionX() + xRotated);
 			nextPos.setPositionY(nextPos.getPositionY() + yRotated);
+		} else {
+			checkNewAngle();
 		}
 
 		setNextPosition(nextPos.getPositionX(), nextPos.getPositionZ(), nextPos.getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
@@ -2577,7 +2580,7 @@ int AiAgentImplementation::setDestination() {
 			} else {
 				float dirDiff = fabs(getDirectionAngle() - homeLocation.getDirection());
 
-				if (dirDiff > 1.f) {
+				if (dirDiff >= 0.5) {
 					setDirection(Math::deg2rad(homeLocation.getDirection()));
 					broadcastNextPositionUpdate(&homeLocation);
 				}
