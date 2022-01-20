@@ -84,15 +84,11 @@ function CrackdownCantina:onEnteredCantina(pCantina, pPlayer)
 end
 
 function CrackdownCantina:handlePotentialTrouble(pCantina, pPlayer)
-	if (pCantina == nil) then
+	if (pCantina == nil or pPlayer == nil) then
 		return
 	end
 
 	if (readData(SceneObject(pCantina):getObjectID() .. ":crackdownInProgress") == 1) then
-		return
-	end
-
-	if pPlayer == nil then
 		return
 	end
 
@@ -254,6 +250,10 @@ function CrackdownCantina:destinationReached(pMobile)
 	local pointName = readStringData(mobileID .. ":nextPoint")
 	deleteStringData(mobileID .. ":nextPoint")
 
+	if (pointName == "") then
+		pointName = "exit"
+	end
+
 	local factionName = readStringData(mobileID .. ":factionName")
 
 	if (factionName == "") then
@@ -308,13 +308,13 @@ function CrackdownCantina:leaveCantina(pMobile)
 	local pBuilding = self:getCantinaBuilding(pMobile)
 
 	if (pBuilding == nil) then
-		SceneObject(pMobile):destroyObjectFromWorld()
+		self:destroyMobile(pMobile)
 		return
 	end
 
 	createEvent(2000, "CrackdownCantina", "doCleanup", pBuilding, "")
 
-	SceneObject(pMobile):destroyObjectFromWorld()
+	self:destroyMobile(pMobile)
 end
 
 function CrackdownCantina:destroyMobile(pMobile)
@@ -405,9 +405,10 @@ function CrackdownCantina:startHarassing(pMobile)
 
 	if (not foundHarass) then
 		local pPlayer = playerTable[1]
-		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:harass_guy_" .. factionName)
 
 		if (pPlayer ~= nil) then
+			spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:harass_guy_" .. factionName)
+
 			harassingPlayer = SceneObject(pPlayer):getObjectID()
 			writeData(mobileID .. ":harassing", harassingPlayer)
 			createEvent(10000, "CrackdownCantina", "harassPlayer", pMobile, "")
@@ -435,6 +436,17 @@ function CrackdownCantina:harassPlayer(pMobile)
 	end
 
 	local factionName = readStringData(mobileID .. ":factionName")
+
+	if (factionName == "") then
+		local faction = CreatureObject(pMobile):getFaction()
+
+		if (faction == FACTIONIMPERIAL) then
+			factionName = "imperial"
+		else
+			factionName = "rebel"
+		end
+	end
+
 	SceneObject(pMobile):faceObject(pPlayer, true)
 	spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:looking_at_" .. factionName)
 
@@ -461,7 +473,15 @@ function CrackdownCantina:moveToPlayer(pMobile, playerMoved)
 	else
 		writeStringData(mobileID .. ":nextPoint", "harassPlayer")
 
-		local factionName = readStringData(mobileID .. ":factionName")
+		local factionName
+		local faction = CreatureObject(pMobile):getFaction()
+
+		if (faction == FACTIONIMPERIAL) then
+			factionName = "imperial"
+		else
+			factionName = "rebel"
+		end
+
 		spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:checking_out_" .. factionName)
 	end
 
@@ -498,7 +518,14 @@ function CrackdownCantina:continueHarassingPlayer(pMobile)
 
 	local timesHarassed = readData(mobileID .. ":timesHarassed")
 	local lastHarass = readData(mobileID .. ":lastHarass")
-	local factionName = readStringData(mobileID .. ":factionName")
+	local factionName
+	local faction = CreatureObject(pMobile):getFaction()
+
+	if (faction == FACTIONIMPERIAL) then
+		factionName = "imperial"
+	else
+		factionName = "rebel"
+	end
 
 	if (self.debugNotify) then
 		CreatureObject(pPlayer):sendSystemMessage("Debug: Continue harassing called - Time harassed: " .. timesHarassed)
@@ -551,6 +578,17 @@ function CrackdownCantina:finishHarassing(pMobile)
 	end
 
 	local factionName = readStringData(mobileID .. ":factionName")
+
+	if (factionName == "") then
+		local faction = CreatureObject(pMobile):getFaction()
+
+		if (faction == FACTIONIMPERIAL) then
+			factionName = "imperial"
+		else
+			factionName = "rebel"
+		end
+	end
+
 	spatialChat(pMobile, "@npc_reaction/imperial_crackdown_cantina:rebel_cowards_" .. factionName)
 
 	local pBuilding = self:getCantinaBuilding(pMobile)
@@ -570,6 +608,10 @@ function CrackdownCantina:finishHarassing(pMobile)
 end
 
 function CrackdownCantina:doFinalFight(pMobile)
+	if (pMobile == nil) then
+		return false;
+	end
+
 	local mobileID = SceneObject(pMobile):getObjectID()
 
 	local pBuilding = self:getCantinaBuilding(pMobile)
@@ -591,6 +633,17 @@ function CrackdownCantina:doFinalFight(pMobile)
 	end
 
 	local factionName = readStringData(mobileID .. ":factionName")
+
+	if (factionName == "") then
+		local faction = CreatureObject(pMobile):getFaction()
+
+		if (faction == FACTIONIMPERIAL) then
+			factionName = "imperial"
+		else
+			factionName = "rebel"
+		end
+	end
+
 	local harassFaction
 
 	if (factionName == "imperial") then
@@ -644,6 +697,16 @@ end
 function CrackdownCantina:callForBackup(pMobile, factionName)
 	if (pMobile == nil) then
 		return
+	end
+
+	if (factionName == "") then
+		local faction = CreatureObject(pMobile):getFaction()
+
+		if (faction == FACTIONIMPERIAL) then
+			factionName = "imperial"
+		else
+			factionName = "rebel"
+		end
 	end
 
 	local mobileID = SceneObject(pMobile):getObjectID()
