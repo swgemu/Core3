@@ -1012,7 +1012,7 @@ public:
 
 		if (!tarCreo->isInRange(droid, 7.0f + tarCreo->getTemplateRadius() + droid->getTemplateRadius())) {
 			agent->setMovementState(AiAgent::OBLIVIOUS);
-			agent->setNextPosition(tarCreo->getPositionX(), tarCreo->getPositionZ(), tarCreo->getPositionY());
+			agent->setNextPosition(tarCreo->getPositionX(), tarCreo->getPositionZ(), tarCreo->getPositionY(), tarCreo->getParent().get().castTo<CellObject*>());
 
 			droid->notifyObservers(ObserverEventType::STARTCOMBAT, owner);
 

@@ -421,7 +421,9 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		droid->addPendingTask("droid_skill_mod", droidSkillModTask, 3000); // 3 sec
 	}
 
-	pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
+	pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParent().get().castTo<CellObject*>());
+	pet->setNextPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParent().get().castTo<CellObject*>());
+
 	pet->setFollowObject(player);
 
 	// This will clear the points set by the BT and any stored points on the PCD

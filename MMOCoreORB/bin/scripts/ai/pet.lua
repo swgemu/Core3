@@ -59,8 +59,6 @@ harvestPet = {
 	{id="81979381",	name="CheckIsDroid",	pid="3285446615"},
 	{id="3275634488",	name="If",	pid="1067142705"},
 	{id="1696967841",	name="CheckIsHarvester",	pid="3275634488"},
-	{id="2997531046",	name="If",	pid="1067142705"},
-	{id="418167462",	name="CheckOutdoors",	pid="2997531046"},
 	{id="3273106585",	name="If",	pid="1067142705"},
 	{id="1682748011",	name="CheckHasHarvestTargets",	pid="3273106585"},
 	{id="3307465105",	name="DroidHarvest",	pid="1067142705"},
