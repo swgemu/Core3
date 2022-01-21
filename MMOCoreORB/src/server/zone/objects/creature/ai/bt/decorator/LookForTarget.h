@@ -89,7 +89,7 @@ public:
 		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvulnerable() || target->isInvisible() || !target->isAttackableBy(agent) || !agent->isAttackableBy(target))
 			return true;
 
-		if (target->isVehicleObject() || target->hasRidingCreature() || agent->isCamouflaged(target))
+		if (target->isVehicleObject() || target->hasRidingCreature())
 			return true;
 
 		SceneObject* agentRoot = agent->getRootParent();

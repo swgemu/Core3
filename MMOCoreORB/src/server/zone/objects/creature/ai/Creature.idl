@@ -61,11 +61,6 @@ class Creature extends AiAgent {
 		dnaSampleCount++;
 	}
 
-	@dirty
-	public boolean isCamouflaged(CreatureObject target) {
-		return (isScentMasked(target) || isConcealed(target)) && isAggressiveTo(target);
-	}
-
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
