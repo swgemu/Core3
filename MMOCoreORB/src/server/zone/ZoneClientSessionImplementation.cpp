@@ -51,16 +51,14 @@ void ZoneClientSessionImplementation::setupLogging() {
 		return;
 	}
 
-	// Files should end up in: log/clients/{ip}/BaseClientProxy-{timeSecs}-{ip}-{port}.log
+	// Files should end up in: log/clients/YYYY-MM-DD/HH/{ip}/BaseClientProxy-{timeSecs}-{ip}-{port}.log
+	auto addr = session->ServiceClient::getAddress();
 	Time now;
 	StringBuffer logFilename;
-	logFilename << "log/clients/" << session->getIPAddress();
-
-	File::mkpath(logFilename.toString());
-
-	auto addr = session->ServiceClient::getAddress();
-
-	logFilename << "/BaseClientProxy-" << now.getTime() << "-" << addr.getIPAddress() << "-" << addr.getPort() << ".log";
+	logFilename << "log/clients/"
+		<< now.getFormattedTime("%Y-%m-%d/%H")
+		<< "/" << session->getIPAddress()
+	    << "/BaseClientProxy-" << now.getTime() << "-" << addr.getIPAddress() << "-" << addr.getPort() << ".log";
 
 	session->setFileLogger(logFilename.toString(), true, ConfigManager::instance()->getRotateLogAtStart());
 	session->setLogSynchronized(true);
