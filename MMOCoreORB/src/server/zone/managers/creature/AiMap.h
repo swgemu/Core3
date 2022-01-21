@@ -355,6 +355,7 @@ private:
 		_REGISTERLEAF(CheckProspectInRange);
 		_REGISTERLEAF(CheckFollowAggression);
 		_REGISTERLEAF(CheckProspectAggression);
+		_REGISTERLEAF(CheckIsCamouflaged);
 		_REGISTERLEAF(CheckFollowPosture);
 		_REGISTERLEAF(CheckFollowInWeaponRange);
 		_REGISTERLEAF(CheckFollowClosestIdealRange);

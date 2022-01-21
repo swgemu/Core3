@@ -46,6 +46,8 @@ awareDefault = {
 	{id="1278976041",	name="CheckProspectInRange",	pid="3394370660",	args={condition=0.0}},
 	{id="1799248528",	name="AlwaysSucceed",	pid="1806193610"},
 	{id="3025856600",	name="TreeSocket",	pid="1799248528",	args={slot=LOOKAT}},
+	{id="1533332073",	name="If",	pid="1806193610"},
+	{id="1436716103",	name="CheckIsCamouflaged",	pid="1533332073"},
 	{id="3702045485",	name="Sequence",	pid="1806193610"},
 	{id="3753019142",	name="Selector",	pid="3702045485"},
 	{id="115067313",	name="If",	pid="3753019142"},
@@ -308,8 +310,10 @@ stalkDefault = {
 	{id="2130079230",	name="CheckIsInCombat",	pid="970505057"},
 	{id="3337736172",	name="If",	pid="1672513422"},
 	{id="3024166838",	name="CheckTargetIsValid",	pid="3337736172"},
-	{id="1047936480",	name="If",	pid="1672513422"},
-	{id="1298894483",	name="CheckProspectLOS",	pid="1047936480"},
+	{id="3649042844",	name="If",	pid="1672513422"},
+	{id="894470915",	name="CheckProspectAggression",	pid="3649042844"},
+	{id="1209684945",	name="If",	pid="1672513422"},
+	{id="3138234806",	name="CheckIsCamouflaged",	pid="1209684945"},
 	{id="1993075065",	name="StalkProspect",	pid="1672513422"},
 	{id="2442951800",	name="TreeSocket",	pid="1672513422",	args={slot=MOVE}}}
 addAiTemplate("stalkDefault", stalkDefault)

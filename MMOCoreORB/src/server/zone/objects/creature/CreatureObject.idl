@@ -2115,6 +2115,11 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@read
+	public boolean isWalking() {
+		return currentSpeed <= walkSpeed;
+	}
+
+	@read
 	public boolean isRunning() {
 		return currentSpeed >= runSpeed;
 	}
