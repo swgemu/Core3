@@ -357,15 +357,7 @@ class AiAgent extends CreatureObject {
 
 	@mock
 	@dirty
-	public abstract native boolean isCamouflaged(CreatureObject target) {
-		return (isScentMasked(target) || isConcealed(target)) && isAggressiveTo(target);
-	}
-
-	@dirty
-	protected native boolean isScentMasked(CreatureObject target);
-
-	@dirty
-	protected native boolean isConcealed(CreatureObject target);
+	public native boolean isCamouflaged(CreatureObject target);
 
 	@mock
 	@preLocked

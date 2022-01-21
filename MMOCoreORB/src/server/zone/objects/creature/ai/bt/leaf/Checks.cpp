@@ -89,12 +89,26 @@ template<> bool CheckProspectAggression::check(AiAgent* agent) const {
 	if (agent->peekBlackboard("targetProspect"))
 		tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
-	if (tar == nullptr)
+	if (tar == nullptr || !tar->isCreatureObject())
 		return false;
 
 	CreatureObject* tarCreo = tar->asCreatureObject();
 
 	return tarCreo != nullptr && agent->isAggressiveTo(tarCreo);
+}
+
+template<> bool CheckIsCamouflaged::check(AiAgent* agent) const {
+	ManagedReference<SceneObject*> target = nullptr;
+
+	if (agent->peekBlackboard("targetProspect"))
+		target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
+
+	if (target == nullptr || !target->isCreatureObject())
+		return false;
+
+	CreatureObject* tarCreo = target->asCreatureObject();
+
+	return tarCreo != nullptr && !agent->isCamouflaged(tarCreo);
 }
 
 template<> bool CheckFollowPosture::check(AiAgent* agent) const {
