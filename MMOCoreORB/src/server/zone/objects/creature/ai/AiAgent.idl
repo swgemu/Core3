@@ -223,10 +223,6 @@ class AiAgent extends CreatureObject {
 
 		loadedOutfit = false;
 
-		Logger.setLoggingName("AiAgent");
-		Logger.setLogging(false);
-		Logger.setGlobalLogging(true);
-
 		fleeRange = 192;
 		lairTemplateCRC = 0;
 
@@ -250,6 +246,16 @@ class AiAgent extends CreatureObject {
 
 	public void finalize() {
 		//Logger.info("deleting from ram", true);
+	}
+
+	@read
+	public string getLogFileName() {
+	    return Logger.getLogFileName();
+	}
+
+	@read
+	public int getLogLevel() {
+	    return Logger.getLogLevel();
 	}
 
 	/**
@@ -308,6 +314,8 @@ class AiAgent extends CreatureObject {
 
 	@preLocked
 	public native void setAIDebug(boolean flag);
+
+	public native boolean getAIDebug();
 
 	@preLocked
 	public native void setLevel(int lvl, boolean randomHam = true);

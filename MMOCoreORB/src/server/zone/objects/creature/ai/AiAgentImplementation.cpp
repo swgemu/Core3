@@ -225,6 +225,18 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		logName << getLoggingName() << "[" << npcTemplate->getTemplateName() << "]";
 
 		setLoggingName(logName.toString());
+
+		// Check for template level logging setting
+		StringBuffer configName;
+		configName << "Core3.AiAgent." << npcTemplate->getTemplateName() << ".LogLevel";
+
+		auto templateLogLevel = ConfigManager::instance()->getInt(configName.toString(), -1);
+
+		if (templateLogLevel >= 0) {
+			setLogLevel(static_cast<Logger::LogLevel>(templateLogLevel));
+		}
+
+		debug() << "loadTemplateData(" << npcTemplate->getTemplateName() << ")";
 	}
 
 	String factionString = npcTemplate->getFaction();
@@ -707,6 +719,29 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 
 void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
+
+	auto aiLogLevel = ConfigManager::instance()->getInt("Core3.AiAgent.LogLevel", LogLevel::WARNING);
+
+	if (aiLogLevel >= 0) {
+		// Files should end up in: log/ai/YYYY-MM-DD/HH-MM/oid/AiAgent-{timestamp}-{oid}.log
+		Time now;
+		StringBuffer logFilename;
+		logFilename << "log/ai/"
+			<< now.getFormattedTime("%Y-%m-%d/%H-%M")
+			<< "/" << getObjectID()
+		    << "/AiAgent-" << now.getTime() << "-" << getObjectID() << ".log";
+
+		setFileLogger(logFilename.toString(), false, false);
+		setLogSynchronized(true);
+		setLogToConsole(false);
+		setGlobalLogging(false);
+		setLogLevel(static_cast<Logger::LogLevel>(aiLogLevel));
+	} else {
+		setLogLevel(LogLevel::ERROR);
+		setGlobalLogging(true);
+	}
+
+	setLoggingName("AiAgent");
 
 	// Handling of old pets on new AI
 	if (controlDevice != nullptr) {
@@ -2267,6 +2302,27 @@ void AiAgentImplementation::doMovement() {
 void AiAgentImplementation::setAIDebug(bool flag) {
 #ifdef DEBUG_AI
 	writeBlackboard("aiDebug", flag);
+#endif // DEBUG_AI
+	info() << "setAIDebug(" << flag << ")";
+
+	if (flag) {
+		setLogLevel(LogLevel::DEBUG);
+	} else {
+		auto aiLogLevel = ConfigManager::instance()->getInt("Core3.AiAgent.LogLevel", -1);
+
+		if (aiLogLevel >= 0) {
+			setLogLevel(static_cast<Logger::LogLevel>(aiLogLevel));
+		} else {
+			setLogLevel(Logger::LogLevel::ERROR);
+		}
+	}
+}
+
+bool AiAgentImplementation::getAIDebug() {
+#ifdef DEBUG_AI
+    return peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true;
+#else // DEBUG_AI
+	return getLogLevel() >= LogLevel::DEBUG;
 #endif // DEBUG_AI
 }
 
