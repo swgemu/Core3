@@ -3036,6 +3036,9 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 		if (!agent->isInRange(asAiAgent(), packRange))
 			continue;
 
+		if (!CollisionManager::checkLineOfSight(asAiAgent(), creo))
+			continue;
+
 		Core::getTaskManager()->executeTask([=] () {
 			Locker locker(agent);
 
