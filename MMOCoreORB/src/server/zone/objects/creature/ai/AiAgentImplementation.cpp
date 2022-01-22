@@ -821,17 +821,34 @@ void AiAgentImplementation::doRecovery(int latency) {
 }
 
 bool AiAgentImplementation::selectSpecialAttack() {
-	if (thrownWeapon != nullptr && System::random(100) > 95) {
-		ManagedReference<SceneObject*> followCopy = getFollowObject().get();
+	Reference<WeaponObject*> strongWeapon = thrownWeapon;
+
+	if (strongWeapon != nullptr && System::random(100) > 95) {
+		Locker locker(strongWeapon);
+
+		Reference<SceneObject*> followCopy = getFollowObject().get();
 
 		if (followCopy != nullptr) {
-			enqueueCommand(STRING_HASHCODE("throwgrenade"), 0, followCopy->getObjectID(), String::valueOf(thrownWeapon->getObjectID()), 1);
+			auto targetID = followCopy->getObjectID();
+			Reference<AiAgent*> strongAiAgent = asAiAgent();
 
-			if (thrownWeapon->getUseCount() < 1) {
-				Locker locker(thrownWeapon);
-				thrownWeapon->destroyObjectFromWorld(true);
-				thrownWeapon = nullptr;
-			}
+			Core::getTaskManager()->executeTask([strongAiAgent, targetID, strongWeapon] () {
+				Locker lock(strongAiAgent);
+
+				if (strongAiAgent->getThrownWeapon() != nullptr) {
+					strongAiAgent->enqueueCommand(STRING_HASHCODE("throwgrenade"), 0, targetID, String::valueOf(strongWeapon->getObjectID()), 1);
+
+					Locker locker(strongWeapon);
+
+					if (strongWeapon->getUseCount() < 1) {
+						strongWeapon->destroyObjectFromWorld(true);
+						strongAiAgent->clearThrownWeapon();
+					}
+				} else {
+					strongAiAgent->error() << "AiAgentThrowGrenadeLambda: thrownWeapon changed to nullptr";
+				}
+			}, "AiAgentThrowGrenadeLambda");
+
 		}
 	}
 

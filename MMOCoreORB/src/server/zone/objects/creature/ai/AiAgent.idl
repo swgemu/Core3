@@ -1496,6 +1496,11 @@ class AiAgent extends CreatureObject {
 		return thrownWeapon;
 	}
 
+	@preLocked
+	public void clearThrownWeapon() {
+		thrownWeapon = null;
+	}
+
 	@dirty
 	public abstract WeaponObject getCurrentWeapon() {
 		return defaultWeapon;
