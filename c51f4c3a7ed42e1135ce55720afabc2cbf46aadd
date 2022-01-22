@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4be9b85c_434ac6ba",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CommandQueue.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-01-22T20:49:28Z",
+      "side": 1,
+      "message": "Doesn\u0027t this mean that the creature will be delayed 2 * DELAYCHECK? One time here, and then one more time in the DELAY state below next time this method executes?",
+      "range": {
+        "startLine": 218,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 4
+      },
+      "revId": "c51f4c3a7ed42e1135ce55720afabc2cbf46aadd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0391b3d2_018e023b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CommandQueue.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-01-22T20:49:28Z",
+      "side": 1,
+      "message": "While all this is a big improvement I think that this is still a bit ugly. Would be nice with a observer pattern to be able to move stuff like this to the buff itself.\n\nIsn\u0027t this also requiring a lock on the creature or is it already locked when calling these methods? Accessing the weakCreature above made me look for the lock.",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "c51f4c3a7ed42e1135ce55720afabc2cbf46aadd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
