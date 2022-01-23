@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5dfff8fc_ad2ca725",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CommandQueue.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2022-01-23T03:02:01Z",
+      "side": 1,
+      "message": "No it will modify the state and then the task will be called using the DELAYCHECK time before the switch breaks. Then the task calls run() again and it will be with the delay state and run until the creo has no posture or attack delays or if a immediate or non combat queue command is added to the queue so they will still properly execute.",
+      "parentUuid": "4be9b85c_434ac6ba",
+      "range": {
+        "startLine": 218,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 4
+      },
+      "revId": "c51f4c3a7ed42e1135ce55720afabc2cbf46aadd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0391b3d2_018e023b",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/CommandQueue.cpp",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2022-01-22T20:49:28Z",
       "side": 1,
       "message": "While all this is a big improvement I think that this is still a bit ugly. Would be nice with a observer pattern to be able to move stuff like this to the buff itself.\n\nIsn\u0027t this also requiring a lock on the creature or is it already locked when calling these methods? Accessing the weakCreature above made me look for the lock.",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "c51f4c3a7ed42e1135ce55720afabc2cbf46aadd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc1bbb0f_d59b3e03",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CommandQueue.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2022-01-23T03:02:01Z",
+      "side": 1,
+      "message": "Definitely would be cleaner using an observer I do agree. The creature should be locked when command is enqueued I believe.",
+      "parentUuid": "0391b3d2_018e023b",
       "range": {
         "startLine": 297,
         "startChar": 1,
