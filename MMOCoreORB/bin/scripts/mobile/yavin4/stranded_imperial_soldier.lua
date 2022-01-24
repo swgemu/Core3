@@ -47,8 +47,8 @@ stranded_imperial_soldier = Creature:new {
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "imperial_weapons_medium",
-	secondaryWeapon = "unarmed",
+	primaryWeapon = "imperial_carbine",
+	secondaryWeapon = "imperial_pistol",
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
 	

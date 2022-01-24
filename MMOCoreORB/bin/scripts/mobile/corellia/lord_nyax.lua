@@ -41,15 +41,15 @@ lord_nyax = Creature:new {
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "nyaxs_weapons",
-	secondaryWeapon = "unarmed",
+	primaryWeapon = "general_rifle",
+	secondaryWeapon = "general_pistol",
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/fancy",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = merge(marksmanmaster,riflemanmaster,carbineermaster,brawlermaster,swordsmanmaster),
-	secondaryAttacks = { }
+	primaryAttacks = merge(marksmanmaster,riflemanmaster),
+	secondaryAttacks = merge(marksmanmaster,pistoleermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(lord_nyax, "lord_nyax")
