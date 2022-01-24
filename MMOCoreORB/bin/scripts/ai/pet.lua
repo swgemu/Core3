@@ -134,7 +134,7 @@ rootPet = {
 	{id="3054290862",	name="TreeSocket",	pid="654152705",	args={slot=TARGET}},
 	{id="1472598970",	name="ParallelSelector",	pid="654152705"},
 	{id="706963786",	name="Sequence",	pid="1472598970"},
-	{id="1315818962",	name="TreeSocket",	pid="706963786",	args={slot=TARGET}},
+	{id="1315818962",	name="TreeSocket",	pid="706963786",	args={slot=EQUIP}},
 	{id="9283471",	name="TreeSocket",	pid="706963786",	args={slot=ATTACK}},
 	{id="2065378848",	name="Sequence",	pid="1472598970"},
 	{id="2976729954",	name="WriteBlackboard",	pid="2065378848",	args={key="moveMode", val=RUN}},
