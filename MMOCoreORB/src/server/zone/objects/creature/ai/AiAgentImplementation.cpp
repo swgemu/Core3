@@ -2730,8 +2730,6 @@ bool AiAgentImplementation::isCamouflaged(CreatureObject* creature) {
 	if (effectiveTarget == nullptr || !effectiveTarget->isPlayerCreature())
 		return false;
 
-	Locker clock(effectiveTarget, asAiAgent());
-
 	uint32 concealCRC = STRING_HASHCODE("skill_buff_mask_scent");
 
 	bool concealed = effectiveTarget->hasBuff(concealCRC);
