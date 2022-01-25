@@ -37,7 +37,7 @@ public:
 		ManagedReference<SceneObject*> currObj = agent->getFollowObject().get();
 		if (currObj != nullptr) {
 			if (currObj->isCreatureObject() && isInvalidTarget(currObj->asCreatureObject(), agent)) {
-				if (~agent->getCreatureBitmask() & CreatureFlag::FOLLOW) {
+				if (!(agent->getCreatureBitmask() & CreatureFlag::FOLLOW)) {
 					agent->setFollowObject(nullptr);
 					agent->setMovementState(AiAgent::PATHING_HOME);
 				}
@@ -84,7 +84,7 @@ public:
 		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvulnerable() || target->isInvisible() || !target->isAttackableBy(agent) || !agent->isAttackableBy(target))
 			return true;
 
-		if (target->isVehicleObject() || !target->hasRidingCreature())
+		if (target->isVehicleObject() && !target->hasRidingCreature())
 			return true;
 
 		SceneObject* agentParent = agent->getParent().get();
