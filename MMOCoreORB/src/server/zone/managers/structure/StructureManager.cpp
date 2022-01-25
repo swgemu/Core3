@@ -46,6 +46,8 @@
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "templates/faction/Factions.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 namespace StorageManagerNamespace {
 	 int indexCallback(DB *secondary, const DBT *key, const DBT *data, DBT *result) {
@@ -268,14 +270,37 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 	if (zone == nullptr || creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
 		return 1;
 
-	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
-
 	String serverTemplatePath = deed->getGeneratedObjectTemplate();
 
-	if (deed->getFaction() != 0 && creature->getFaction() != deed->getFaction()) {
-		creature->sendSystemMessage("You are not the correct faction");
-		return 1;
+	//Check deed faction, player faction and status to make sure they are allowed to place a faction deeds (bases)
+	if (deed->getFaction() != Factions::FACTIONNEUTRAL){
+		if (creature->getFaction() == Factions::FACTIONNEUTRAL || creature->getFactionStatus() == FactionStatus::ONLEAVE){
+			StringIdChatParameter message("@faction_perk:prose_not_neutral"); // You cannot use %TT if you are neutral or on leave.
+			message.setTT(deed->getDisplayedName());
+
+			creature->sendSystemMessage(message);
+			return 1;
+		}
+
+		if (deed->getFaction() != creature->getFaction()) {
+			UnicodeString deedFaction = "";
+
+			if (deed->isRebel()) {
+				deedFaction = "Rebel";
+			} else if (deed->isImperial()) {
+				deedFaction = "Imperial";
+			}
+
+			StringIdChatParameter message("@faction_perk:prose_wrong_faction"); // You must be declared to %TO faction to use %TT.
+			message.setTT(deed->getDisplayedName());
+			message.setTO(deedFaction);
+
+			creature->sendSystemMessage(message);
+			return 1;
+		}
 	}
+
+	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
 	Reference<SharedStructureObjectTemplate*> serverTemplate =
 			dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
@@ -306,6 +331,11 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 
 		if (city != nullptr)
 			break;
+	}
+
+	if (city != nullptr && city->isClientRegion()) {
+		creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
+		return 1;
 	}
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > inRangeObjects;
