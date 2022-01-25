@@ -126,12 +126,20 @@ public:
 	}
 
 	inline String toString() const {
-		StringBuffer sb;
-		sb << point.toString();
-		sb << " in " << String::valueOf(cell != nullptr ? cell->getCellNumber() : 0) << ".";
-		String edge = cellEdge ? "True" : "False";
-		sb << " isCellEdge = " << edge;
-		return sb.toString();
+		StringBuffer buf;
+
+		buf <<"WorldCoordinates(x:" << point.getX()
+			<< ", y:" << point.getY()
+			<< ", z:" << point.getZ()
+			<< ", cell: " << (cell != nullptr ? cell->getCellNumber() : -1)
+			<< ", isCellEdge: " << (cellEdge ? "true" : "false")
+			<< ")";
+
+		return buf.toString();
+	}
+
+	String toStringData() const {
+		return toString();
 	}
 };
 

@@ -123,6 +123,46 @@ public:
 		return pathGraph;
 	}
 
+	inline static String typeToString(PathNodeType nodeType) {
+		switch (nodeType) {
+		case CellPortal:           return "CellPortal";
+		case CellWaypoint:         return "CellWaypoint";
+		case CellPOI:              return "CellPOI";
+		case BuildingEntrance:     return "BuildingEntrance";
+		case BuildingCell:         return "BuildingCell";
+		case BuildingPortal:       return "BuildingPortal";
+		case CityBuildingEntrance: return "CityBuildingEntrance";
+		case CityWaypoint:         return "CityWaypoint";
+		case CityPOI:              return "CityPOI";
+		case CityBuilding:         return "CityBuilding";
+		case CityEntrance:         return "CityEntrance";
+		case BuildingCellPart:     return "BuildingCellPart";
+		case Invalid:              return "Invalid";
+		default:
+			StringBuffer buf;
+			buf << "UnknownType(" << nodeType << ")";
+			return buf.toString();
+		}
+	}
+
+	inline String toString() const {
+		StringBuffer buf;
+
+		buf << "PathNode(id: " << id
+			<< ", type: " << typeToString(type)
+			<< ", x: " << x
+			<< ", y: " << y
+			<< ", z: " << z
+			<< ", radius: " << radius
+			<< ", globalGraphNodeID: " << globalGraphNodeID
+			<< ")";
+
+		return buf.toString();
+	}
+
+	String toStringData() const {
+		return toString();
+	}
 };
 
 #endif /* PATHNODE_H_ */

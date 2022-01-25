@@ -27,12 +27,12 @@ void destroyNavMeshQuery(void* value) {
 }
 
 PathFinderManager::PathFinderManager() : Logger("PathFinderManager"), m_navQuery(destroyNavMeshQuery) {
-	setFileLogger("log/pathfinder.log");
+	setFileLogger("log/pathfinder.log", true, true);
+	setLogToConsole(false);
+	setGlobalLogging(false);
+	setLogSynchronized(true);
 	setLogJSON(ConfigManager::instance()->getPathfinderLogJSON());
 	setRotateLogSizeMB(ConfigManager::instance()->getRotateLogSizeMB());
-	if (getLogJSON()) {
-		setLogSynchronized(true);
-	}
 
 	m_filter.setIncludeFlags(SAMPLE_POLYFLAGS_ALL ^ (SAMPLE_POLYFLAGS_DISABLED));
 	m_filter.setExcludeFlags(0);
@@ -485,7 +485,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	ManagedReference<BuildingObject*> building = dynamic_cast<BuildingObject*>(targetCell->getParent().get().get());
 
 	if (building == nullptr) {
-		error("building == nullptr in PathFinderManager::findPathFromWorldToCell");
+		String zoneName = zone == nullptr ? "unknown" : zone->getZoneName();
+
+		error() << "building == nullptr in PathFinderManager::findPathFromWorldToCell from " << pointA << " to " << pointB << " in zone " << zoneName;
+
 		return nullptr;
 	}
 
@@ -518,7 +521,11 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	const PathNode* exteriorNode = exteriorPathGraph->findNearestGlobalNode(transformedPosition);
 
 	if (exteriorNode == nullptr) {
-		error("nullptr exterior node for building " + templateObject->getFullTemplateString());
+		String zoneName = zone == nullptr ? "unknown" : zone->getZoneName();
+
+		error() << "nullptr exterior node for building " << templateObject->getFullTemplateString()
+				<< " from " << pointA << " to " << pointB << " in zone " << zoneName;
+
 		delete path;
 		return nullptr;
 	}
@@ -526,7 +533,11 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	const TriangleNode* nearestInteriorNodeTriangle = CollisionManager::getTriangle(pointB.getPoint(), interiorFloorMesh);
 
 	if (nearestInteriorNodeTriangle == nullptr) {
-		error("nearest node triangle is nullptr ");
+		String zoneName = zone == nullptr ? "unknown" : zone->getZoneName();
+
+		error() << "nearest node triangle is nullptr for building " << templateObject->getFullTemplateString()
+				<< " from " << pointA << " to " << pointB << " in zone " << zoneName;
+
 		delete path;
 		return nullptr;
 	}
@@ -534,7 +545,11 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	const PathNode* nearestInteriorNode = CollisionManager::findNearestPathNode(nearestInteriorNodeTriangle, interiorFloorMesh, pointB.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
 
 	if (nearestInteriorNode == nullptr) {
-		error("nearest node is nullptr ");
+		String zoneName = zone == nullptr ? "unknown" : zone->getZoneName();
+
+		error() << "nearest node is nullptr for building " << templateObject->getFullTemplateString()
+				<< " from " << pointA << " to " << pointB << " in zone " << zoneName;
+
 		delete path;
 		return nullptr;
 	}
@@ -546,7 +561,12 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	Vector<const PathNode*>* pathToCell = portalLayout->getPath(exteriorNode, nearestInteriorNode);
 
 	if (pathToCell == nullptr) {
-		error("pathToCell = portalLayout->getPath(exteriorNode, nearestInteriorNode); == nullptr");
+		String zoneName = zone == nullptr ? "unknown" : zone->getZoneName();
+
+		error() << "getPath from " << exteriorNode << " to " << nearestInteriorNode
+			   << " is nullptr for building " << templateObject->getFullTemplateString()
+				<< " from " << pointA << " to " << pointB << " in zone " << zoneName;
+
 		delete path;
 		return nullptr;
 	}
@@ -819,7 +839,12 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	Vector<const PathNode*>* exitPath = portalLayout->getPath(exitNode, exteriorNode);
 
 	if (exitPath == nullptr) {
-		error("exitPath == nullptr");
+		String zoneName = zone == nullptr ? "unknown" : zone->getZoneName();
+
+		error() << "getPath from " << exitNode << " to " << exteriorNode
+			   << " exitpath is nullptr for building " << templateObject->getFullTemplateString()
+				<< " from " << pointA << " to " << pointB << " in zone " << zoneName;
+
 		delete path;
 		return nullptr;
 	}
@@ -1002,8 +1027,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	Vector<const PathNode*>* nodes = portalLayout->getPath(source, target);
 
 	if (nodes == nullptr) {
-		log() << "Could not find path from node: " << source->getID()
-				<< " to node: " << target->getID() << " in building: "
+		log() << "Could not find path from " << source
+				<< " to " << target << " in building: "
 				<< templateObject->getFullTemplateString();
 
 		delete path;
@@ -1012,7 +1037,12 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 	// FIXME (dannuic): Sometimes nodes only have one entry.... why?
 	if (nodes->size() == 1) {
-		error("Only one node");
+		auto zone = building1->getZone();
+		String zoneName = zone == nullptr ? "unknown" : zone->getZoneName();
+
+		error() << "getPath from " << source << " to " << target
+			   << " nodes->size() == 1 for building " << templateObject->getFullTemplateString()
+				<< " from " << pointA << " to " << pointB << " in zone " << zoneName;
 
 		delete path;
 		return nullptr;
