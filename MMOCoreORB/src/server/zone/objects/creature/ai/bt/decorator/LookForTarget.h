@@ -5,6 +5,7 @@
 #include "templates/params/OptionBitmask.h"
 #include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/ai/bt/decorator/Decorator.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 #include <cassert>
 
@@ -50,6 +51,7 @@ public:
 		// get targets we want to apply our child tree to
 		// TODO: might have to fix numberOfPlayersInRange here
 		CloseObjectsVector* vec = (CloseObjectsVector*) agent->getCloseObjects();
+
 		if (vec == nullptr)
 			return FAILURE;
 
@@ -58,13 +60,6 @@ public:
 
 		// Shuffle closeobjects to randomize target checks
 		std::shuffle(closeObjects.begin(), closeObjects.end(), *System::getMTRand());
-		/*QuadTreeEntry* temp;
-		int index;
-		for (int i = 0; i < closeObjects.size(); i++) {
-			index = (int) System::random(closeObjects.size() - 1 - i) + i;
-			temp = closeObjects.set(i, closeObjects.get(index));
-			closeObjects.set(index, temp);
-		}*/
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			ManagedReference<SceneObject*> scene = static_cast<SceneObject*>(closeObjects.get(i));
@@ -89,14 +84,14 @@ public:
 		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvulnerable() || target->isInvisible() || !target->isAttackableBy(agent) || !agent->isAttackableBy(target))
 			return true;
 
-		if (target->isVehicleObject() || target->hasRidingCreature())
+		if (target->isVehicleObject() || !target->hasRidingCreature())
 			return true;
 
-		SceneObject* agentRoot = agent->getRootParent();
-		SceneObject* targetRoot = target->getRootParent();
+		SceneObject* agentParent = agent->getParent().get();
+		SceneObject* targetParent = target->getParent().get();
 
-		uint64 agentParentID = agentRoot != nullptr && agentRoot->isBuildingObject() ? agentRoot->getObjectID() : 0;
-		uint64 targetParentID = targetRoot != nullptr && targetRoot->isBuildingObject() ? targetRoot->getObjectID() : 0;
+		uint64 agentParentID = agentParent != nullptr ? agentParent->getObjectID() : 0;
+		uint64 targetParentID = targetParent != nullptr ? targetParent->getObjectID() : 0;
 
 		if (agentParentID != targetParentID && !CollisionManager::checkLineOfSight(agent, target))
 			return true;
