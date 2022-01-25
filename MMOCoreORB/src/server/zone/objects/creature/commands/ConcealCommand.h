@@ -10,12 +10,8 @@
 #include "server/zone/objects/creature/buffs/ConcealBuff.h"
 
 class ConcealCommand : public QueueCommand {
-
 public:
-
-	ConcealCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	ConcealCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* targetPlayer) const {
@@ -26,7 +22,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -38,39 +33,55 @@ public:
 		uint32 crc = STRING_HASHCODE("skill_buff_mask_scent");
 
 		// Rangers can remove their own conceal buff by targeting nothing.
-		if(targetPlayer == nullptr && creature->hasBuff(crc)) {
+		if (targetPlayer == nullptr && creature->hasBuff(crc)) {
 			creature->sendSystemMessage("@skl_use:sys_conceal_remove"); // You remove the camouflage. You are no longer concealed.
 			creature->removeBuff(crc);
 			return SUCCESS;
 		}
 
-		if(targetPlayer == nullptr || creature->getZone() == nullptr || !targetPlayer->isPlayerCreature()) {
+		if (targetPlayer == nullptr || creature->getZone() == nullptr || !targetPlayer->isPlayerCreature()) {
 			creature->sendSystemMessage("@skl_use:sys_conceal_notplayer"); // You can only conceal yourself or another player.
 			return INVALIDTARGET;
 		}
 
 		Locker clocker(targetPlayer, creature);
 
-		if(!checkDistance(creature, targetPlayer, 10.0f)) {
+		if (!checkDistance(creature, targetPlayer, 10.0f)) {
 			StringIdChatParameter tooFar("cmd_err", "target_range_prose"); // Your target is too far away to %TO.
 			tooFar.setTO("conceal");
 			creature->sendSystemMessage(tooFar);
 			return GENERALERROR;
 		}
 
-		if(targetPlayer->hasBuff(crc) || targetPlayer->getSkillModFromBuffs("private_conceal") > 0) {
+		if (targetPlayer->hasBuff(crc) || targetPlayer->getSkillModFromBuffs("private_conceal") > 0) {
 			creature->sendSystemMessage("@skl_use:sys_target_concealed"); // Your target is already concealed.
 			return false;
 		}
 
-		if(targetPlayer->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self")) || (targetPlayer->getOptionsBitmask() & CreatureState::MASKSCENT)) {
-			creature->sendSystemMessage("@skl_use:sys_conceal_scentmasked"); // You can't Conceal while Scent Masked.
-			return GENERALERROR;
+		uint32 maskCrc = STRING_HASHCODE("skill_buff_mask_scent_self");
+
+		if (targetPlayer->hasBuff(maskCrc)) {
+			if (targetPlayer == creature) {
+				creature->removeBuff(maskCrc);
+			} else {
+				creature->sendSystemMessage("@skl_use:sys_conceal_scentmasked"); // You can't Conceal while Scent Masked.
+				return GENERALERROR;
+			}
+		}
+
+		if (!targetPlayer->checkCooldownRecovery("skill_buff_mask_scent_self")) {
+			StringIdChatParameter waitTime("@skl_use:sys_scentmask_delay"); // You must wait %DI seconds to mask your scent again.
+			int timeLeft = (targetPlayer->getCooldownTime("skill_buff_mask_scent_self")->getMiliTime() / 1000) - System::getTime();
+			waitTime.setDI(timeLeft);
+
+			targetPlayer->sendSystemMessage(waitTime);
+
+			return false;
 		}
 
 		/// Check if anything is attackable in range
 		SortedVector<QuadTreeEntry*> objects(512, 512);
-		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
+		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*)creature->getCloseObjects();
 
 		if (closeObjectsVector == nullptr) {
 			creature->getZone()->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), 32, &objects, true);
@@ -84,7 +95,7 @@ public:
 			if (object->isCreatureObject() && checkDistance(creature, object, 32)) {
 				CreatureObject* creo = cast<CreatureObject*>(object);
 
-				if(!creo->isDead() && (creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
+				if (!creo->isDead() && (creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
 					creature->sendSystemMessage("@skl_use:sys_conceal_othersclose"); // You can't conceal yourself because you are too close to a potentially hostile creature or NPC.
 					return GENERALERROR;
 				}
@@ -94,50 +105,48 @@ public:
 		String zoneName = creature->getZone()->getZoneName();
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
-		if(inventory == nullptr)
+
+		if (inventory == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<TangibleObject*> usableKit = nullptr;
 
-		for(int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 			Reference<TangibleObject*> item = inventory->getContainerObject(i).castTo<TangibleObject*>();
 
-			if(item == nullptr || !item->isCamoKit())
+			if (item == nullptr || !item->isCamoKit())
 				continue;
 
-			SharedObjectTemplate* templateData =
-					TemplateManager::instance()->getTemplate(
-							item->getServerObjectCRC());
+			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(item->getServerObjectCRC());
+
 			if (templateData == nullptr) {
 				error("No template for: " + String::valueOf(item->getServerObjectCRC()));
 				return GENERALERROR;
 			}
 
-			CamoKitTemplate* camoKitData = cast<CamoKitTemplate*> (templateData);
+			CamoKitTemplate* camoKitData = cast<CamoKitTemplate*>(templateData);
 			if (camoKitData == nullptr) {
 				error("No camoKitData for: " + String::valueOf(camoKitData->getServerObjectCRC()));
 				return GENERALERROR;
 			}
 
-			if(zoneName == camoKitData->getEffectiveZone()
-					&& item->getUseCount() >= 1) {
-
+			if (zoneName == camoKitData->getEffectiveZone() && item->getUseCount() >= 1) {
 				usableKit = item;
 				break;
 			}
 		}
 
-		if(usableKit == nullptr) {
+		if (usableKit == nullptr) {
 			creature->sendSystemMessage("@skl_use:sys_conceal_nokit"); // You need to have a Camouflage Kit in your inventory to Conceal.
 			return GENERALERROR;
 		}
 
 		StringIdChatParameter startStringId("skl_use", "sys_conceal_start"); // You are now concealed from view by complex camouflage.
-		StringIdChatParameter endStringId("skl_use", "sys_conceal_stop"); // You are no longer concealed from view.
+		StringIdChatParameter endStringId("skl_use", "sys_conceal_stop");	// You are no longer concealed from view.
 
-		int camoMod = creature->getSkillMod("camouflage");
-		int duration = 60 + (((float)(camoMod / 100.0f)) * 1440);
+		int camoMod = creature->getSkillMod("camouflage") / 2;
 
+		int duration = 40 * camoMod;
 
 		ManagedReference<ConcealBuff*> buff = new ConcealBuff(targetPlayer, creature, crc, duration, zoneName);
 
@@ -148,8 +157,8 @@ public:
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 
-		if(targetPlayer != creature) {
-			StringIdChatParameter param("skl_use","sys_conceal_apply"); // You carefully apply the camouflage to %TT.
+		if (targetPlayer != creature) {
+			StringIdChatParameter param("skl_use", "sys_conceal_apply"); // You carefully apply the camouflage to %TT.
 			param.setTT(targetPlayer->getFirstName());
 			creature->sendSystemMessage(param);
 		}
@@ -164,7 +173,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
 
-#endif //CONCEALCOMMAND_H_
+#endif // CONCEALCOMMAND_H_

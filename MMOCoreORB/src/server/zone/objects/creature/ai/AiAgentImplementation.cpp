@@ -1312,25 +1312,16 @@ bool AiAgentImplementation::stalkProspect(SceneObject* prospect) {
 
 	CreatureObject* creature = prospect->asCreatureObject();
 
-	if (creature != nullptr && creature->isPlayerCreature()) {
-		if (!isAggressiveTo(creature))
-			return false;
-
-		if (isCamouflaged(creature)) {
-			return false;
-		}
-
-		if (creature->hasSkill("outdoors_ranger_novice")) {
-			StringIdChatParameter param;
-			param.setStringId("@skl_use:notify_stalked"); // "It seems that you are being stalked by %TO."
-			param.setTO(getObjectName());
-			creature->sendSystemMessage(param);
-		}
+	if (creature != nullptr && creature->isPlayerCreature() && creature->hasSkill("outdoors_ranger_novice")) {
+		StringIdChatParameter param;
+		param.setStringId("@skl_use:notify_stalked"); // "It seems that you are being stalked by %TO."
+		param.setTO(getObjectName());
+		creature->sendSystemMessage(param);
 	}
 
 	setStalkObject(prospect);
 
-	PatrolPoint point = prospect->getWorldPosition();
+	PatrolPoint point = prospect->getPosition();
 	setNextPosition(point.getPositionX(), point.getPositionZ(), point.getPositionY(), prospect->getParent().get().castTo<CellObject*>());
 
 	return true;
@@ -2724,28 +2715,35 @@ bool AiAgentImplementation::isWaiting() const {
 	return !cooldownTimerMap->isPast("waitTimer");
 }
 
-bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
-	Locker locker(&targetMutex);
-
-	if (!isMonster() || isPet())
+bool AiAgentImplementation::isCamouflaged(CreatureObject* creature) {
+	if (creature == nullptr)
 		return false;
 
-	CreatureObject* effectiveTarget = target;
+	Locker locker(&targetMutex);
 
-	// Check masked scent
-	if (target->isVehicleObject() || target->isMount()) {
-		effectiveTarget = target->getSlottedObject("rider").castTo<CreatureObject*>();
+	CreatureObject* effectiveTarget = creature;
+
+	if (creature->isVehicleObject() || creature->isMount()) {
+		effectiveTarget = creature->getSlottedObject("rider").castTo<CreatureObject*>();
 	}
 
 	if (effectiveTarget == nullptr || !effectiveTarget->isPlayerCreature())
 		return false;
 
+	Locker clock(effectiveTarget, asAiAgent());
+
+	uint32 concealCRC = STRING_HASHCODE("skill_buff_mask_scent");
+
+	bool concealed = effectiveTarget->hasBuff(concealCRC);
+
+	if ((!concealed && !isMonster()) || isPet() || isDroid() || isAndroid())
+		return false;
+
+	bool scentMasked = effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"));
 	uint64 effectiveTargetID = effectiveTarget->getObjectID();
 
-	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
-		if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent"))) {
-			camouflagedObjects.drop(effectiveTargetID);
-		}
+	if (!concealed && !scentMasked) {
+		camouflagedObjects.drop(effectiveTargetID);
 		return false;
 	}
 
@@ -2753,100 +2751,123 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	if (camouflagedObjects.contains(effectiveTargetID))
 		return true;
 
-	if (!(getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE) && !isStalker())
-		return true;
-
-	// Step 1. Check for break
-	bool success = false;
-	int camoSkill = effectiveTarget->getSkillMod("mask_scent");
-	int creatureLevel = getLevel();
-
-	int mod = 100;
-	if (effectiveTarget->isKneeling() || effectiveTarget->isSitting())
-		mod -= 10;
-	if (effectiveTarget->isStanding())
-		mod -= 15;
-	if (effectiveTarget->isRunning() || effectiveTarget->isRidingMount() )
-		mod -= 35;
-
-	success = System::random(100) <= mod - (float)creatureLevel / ((float)camoSkill / 100.0f) / 20.f;
-
-	if (success)
-		camouflagedObjects.put(effectiveTargetID); // add to award
-	else
-		camouflagedObjects.drop(effectiveTargetID);
-
-	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), true, success);
-	ct->execute();
-
-	return success;
-}
-
-bool AiAgentImplementation::isConcealed(CreatureObject* target) {
-	Locker locker(&targetMutex);
-
-	if (isDroid() || isAndroid() || isPet())
+	if (!isStalker() && !isAggressiveTo(effectiveTarget))
 		return false;
 
-	CreatureObject* effectiveTarget = target;
+	StringBuffer camoDebug;
 
-	// Check masked scent
-	if (target->isVehicleObject() || target->isMount()) {
-		effectiveTarget = target->getSlottedObject("rider").castTo<CreatureObject*>();
+	int concealMod = 0;
+
+	if (concealed) {
+		ConcealBuff* concealBuff = cast<ConcealBuff*>(effectiveTarget->getBuff(concealCRC));
+
+		if (concealBuff == nullptr)
+			return false;
+
+		String buffPlanet = concealBuff->getPlanetName();
+
+		if (buffPlanet != getZoneUnsafe()->getZoneName())
+			return false;
+
+		concealMod = effectiveTarget->getSkillModFromBuffs("private_conceal");
+
+		camoDebug << "Concealed = true. Conceal Mod = " << concealMod <<". ";
 	}
 
-	if (effectiveTarget == nullptr)
-		return false;
+	int mod = 0;
 
-	uint64 effectiveTargetID = effectiveTarget->getObjectID();
-	uint32 concealCRC = STRING_HASHCODE("skill_buff_mask_scent");
+	if (concealed) {
+		mod = concealMod;
 
-	if (!effectiveTarget->hasBuff(concealCRC)) {
-		if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
-			camouflagedObjects.drop(effectiveTargetID);
+		if (concealMod > 0) {
+			mod += effectiveTarget->getSkillMod("camouflage") / 2;
 		}
-		return false;
+	} else {
+		mod = effectiveTarget->getSkillMod("mask_scent");
+
+		if (mod > 0)
+			mod /= 2;
 	}
 
-	// Don't check if it's already been checked
-	if (camouflagedObjects.contains(effectiveTargetID)) {
-		return true;
-	}
+	camoDebug << " Initial Mod = " << mod << ". ";
 
-	ConcealBuff* buff = cast<ConcealBuff*>(effectiveTarget->getBuff(concealCRC));
-
-	if (buff == nullptr || buff->getPlanetName() != getZoneUnsafe()->getZoneName())
+	if (mod < 5)
 		return false;
 
-	if (!(getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE) && !isStalker())
-		return true;
+	PlayerManager* playerMan = server->getPlayerManager();
 
-	bool success = false;
-	int camoSkill = effectiveTarget->getSkillMod("private_conceal");
+	if (playerMan == nullptr)
+		return false;
+
+	int playerLevel = playerMan->calculatePlayerLevel(effectiveTarget);
 	int creatureLevel = getLevel();
 
-	int mod = 100;
-	if (effectiveTarget->isKneeling() || effectiveTarget->isSitting())
-		mod -= 10;
-	if (effectiveTarget->isStanding())
-		mod -= 15;
-	if (effectiveTarget->isRunning() || effectiveTarget->isRidingMount() )
-		mod -= 35;
+	if (effectiveTarget->isGrouped()) {
+		Reference<GroupObject*> group = effectiveTarget->getGroup();
 
-	// Check if camo breaks
-	if (!isCreature())
-		creatureLevel *= 2;
+		if (group != nullptr) {
+			Locker locker(group);
+			playerLevel += group->getGroupLevel(false);
+		}
+	}
 
-	success = System::random(100) <= mod - (float)creatureLevel / ((float)camoSkill / 100.0f) / 20.f;
+	camoDebug << " Player Level = " << playerLevel << ".  Creature Level = " << creatureLevel << ". ";
+
+	if ((playerLevel - creatureLevel) >= 10) {
+#ifdef DEBUG_CAMOUFLAGE
+		effectiveTarget->sendSystemMessage(camoDebug.toString());
+#endif
+		return true;
+	}
+
+	float roll = (100 + mod) - creatureLevel;
+
+	camoDebug << " Initial Roll = " << roll << ". ";
+
+	if (effectiveTarget->getPosture() == CreaturePosture::PRONE) {
+		roll += 15;
+	}
+
+	if (effectiveTarget->isRunning()) {
+		roll -= 10;
+	} else if (effectiveTarget->isWalking()) {
+		roll -= 5;
+	}
+
+	if (creatureLevel > (2 * mod))
+		roll -= 20;
+
+	if (concealed) {
+		if (roll > 98)
+			roll = 98;
+	} else {
+		if (roll > 95)
+			roll = 95;
+	}
+
+	if (!isMonster())
+		roll -= 5;
+
+	camoDebug << "Roll after calcs = " << roll << ". ";
+
+	bool success = (System::random(100) +1) < roll ? true : false;
 
 	if (success) {
-		camouflagedObjects.put(effectiveTargetID); // add to award
+		camouflagedObjects.put(effectiveTargetID);
+
+		camoDebug << "Success";
 	} else {
 		camouflagedObjects.drop(effectiveTargetID);
+
+		camoDebug << "Failure";
 	}
 
-	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), false, success);
-	ct->execute();
+#ifdef DEBUG_CAMOUFLAGE
+	effectiveTarget->sendSystemMessage(camoDebug.toString());
+#endif
+
+	Reference<Task*> camoTask = new CamoTask(effectiveTarget, asAiAgent(), !concealed, success);
+	camoTask->execute();
 
 	return success;
 }
