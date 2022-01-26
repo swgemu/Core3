@@ -59,7 +59,7 @@ DathomirScienceOutpostScreenPlay = CityScreenPlay:new {
 		{"contractor",60,6.3,0.6,-6.4,-133,2835573, "nervous"},
 
 		--Outside
-		{"mercenary", 60, -43.9919, 18, -1585.86, 220.77, 0, ""},
+		{"mercenary", 300, -43.9919, 18, -1585.86, 220.77, 0, ""},
 		{"informant_npc_lvl_3", 0,-68,18,-1565,270,0, ""},
 		{"arnecio_ulvaw_op",60,4.06465,0.624999,2.34456,30.9406,2835570, "neutral"}
 	}

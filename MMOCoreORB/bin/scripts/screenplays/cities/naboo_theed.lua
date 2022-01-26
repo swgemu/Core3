@@ -155,8 +155,8 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 		--Hotel
 		{"businessman",60,15.5641,1.28309,-2.37071,135.005,1677395, "worried"},
 		{"businessman",60,-4.2087,0.999986,2.15452,179.993,1677394, "conversation"},
-		{"mercenary",60,4.2931,1,-7.62435,360.011,1677394, "angry"},
-		{"mercenary",60,-11.7266,1.6,-16.4722,0,1677399, "nervous"},
+		{"mercenary",300,4.2931,1,-7.62435,360.011,1677394, "angry"},
+		{"mercenary",300,-11.7266,1.6,-16.4722,0,1677399, "nervous"},
 		{"noble",300,16.6641,1.28309,-3.47071,360.011,1677395, "conversation"},
 		{"corellia_times_investigator",300,-11.7266,1.6,-15.4722,180.001,1677399, "conversation"},
 		{"comm_operator",300,16.6641,1.28309,-2.37071,180.007,1677395, ""},
@@ -166,7 +166,7 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 		{"noble",300,-22.6115,1.6,-11.4739,0,1677400, "conversation"},
 
 		--Guild Hall/Theater
-		{"mercenary",60,-6.34119,0.6,-9.37965,360.011,5475480, "neutral"},
+		{"mercenary",300,-6.34119,0.6,-9.37965,360.011,5475480, "neutral"},
 		{"comm_operator",300,-6.34119,0.6,-8.27965,180.012,5475480, "neutral"},
 		{"commoner_technician",60,22.86,2.1,58.4,0,5475486, "worried"},
 		{"etheli_drenel",60,12.4716,2.31216,25.6024,180.001,5475485, "conversation"},

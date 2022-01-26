@@ -141,7 +141,7 @@ TalusDearicScreenPlay = CityScreenPlay:new {
 		--Starport
 		{"commoner",60,0.904988,0.639421,56.083,180.007,3175356, "conversation"},
 		{"farmer",60,-1.32019,0.639422,60.6488,180.001,3175356, "conversation"},
-		{"mercenary",60,-0.186001,0.639421,56.083,135.241,3175356, "conversation"},
+		{"mercenary",300,-0.186001,0.639421,56.083,135.241,3175356, "conversation"},
 		{"devaronian_male",60,-1.32019,0.639422,59.6488,0,3175356, "conversation"},
 		{"shadowy_figure",60,0.904988,0.639421,54.983,360.011,3175356, "conversation"},
 		{"businessman",60,-32.0259,1.63942,62.9678,180.006,3175361, "conversation"},

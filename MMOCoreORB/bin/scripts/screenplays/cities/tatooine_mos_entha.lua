@@ -149,7 +149,7 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		--eastern Tavern
 		{"scientist",60,-4.9,1.0,9.0,-12,1153626, "neutral"},
 		{"scientist",60,1.7,1,5.3,90,1153626, ""},
-		{"mercenary",60,-6.8,0.4,-7.4,9,1153625, "npc_sitting_chair"},
+		{"mercenary",300,-6.8,0.4,-7.4,9,1153625, "npc_sitting_chair"},
 		{"patron_devaronian",60,-7.0,0.4,-4.2,-151,1153625, "npc_sitting_chair"},
 		{"vendor",60,5.0,0.4,-10.2,23,1153625, "npc_sitting_chair"},
 		{"mouse_droid",60,5.1,1.0,9.4,173,1153624, "sad"},
@@ -157,7 +157,7 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		--Starport
 		{"contractor",300,53.5956,-0.521137,38.1243,135.004,4005523, "conversation"},
 		{"commoner_tatooine",60,54.6956,-0.521137,37.0243,360.011,4005523, "conversation"},
-		{"mercenary",60,54.6956,-0.521137,38.1243,180.008,4005523, "conversation"},
+		{"mercenary",300,54.6956,-0.521137,38.1243,180.008,4005523, "conversation"},
 		{"chassis_dealer",60,2.14833,0.639422,67.5897,224.216,4005520, "neutral"},
 		{"farmer",300,-36.1846,1.63942,64.2406,180.002,4005525, "conversation"},
 		{"commoner_technician",300,-36.1846,1.63942,63.1406,360.011,4005525, "conversation"},
@@ -194,7 +194,7 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		--center Tavern CC
 		{"chiss_male",60,-2.5,1.0,7.3,89,1153975, "npc_sitting_chair"},
 		{"chiss_female",60,-3.0,1.0,7.3,-89,1153975, "npc_sitting_chair"},
-		{"mercenary",60,-6.9,0.4,-7.1,174,1153974, "sad"},
+		{"mercenary",300,-6.9,0.4,-7.1,174,1153974, "sad"},
 		{"seeker",360,-6.3,0.4,-7.1,-169,1153974, ""},
 
 		--center Tavern BB

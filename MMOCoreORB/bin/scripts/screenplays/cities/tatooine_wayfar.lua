@@ -92,7 +92,7 @@ TatooineWayfarScreenPlay = CityScreenPlay:new {
 		{"farmer_rancher",60,11.9085,0.991375,0.149539,180.01,1134533, "conversation"},
 		{"businessman",60,-20.9216,-3.99571,2.67462,119.091,1718359, ""},
 		{"chiss_female",300,14.8335,-3.99038,5.61296,180.016,1718360, "conversation"},
-		{"mercenary",60,14.8335,-3.99038,4.51296,0,1718360, "npc_accusing"},
+		{"mercenary",300,14.8335,-3.99038,4.51296,0,1718360, "npc_accusing"},
 
 		--Cantina
 		{"artisan",60,34.4931,0.104999,-6.47601,180,1134559, "conversation"},

@@ -106,8 +106,8 @@ CorelliaVreniIslandScreenPlay = CityScreenPlay:new {
 		{"chiss_female",60,-30.6,-0.9,20.8,178,3005706, "entertained"},
 		{"seeker",60,-32.2,-0.9,19.6,76,3005706, "neutral"},
 		{"shadowy_figure",60,-27.8,-0.9,0.1,-56,3005705, "worried"},
-		{"mercenary",60,-16.3,-0.9,3.2,106,3005697, "angry"},
-		{"mercenary",60,-16.3,-0.9,-2.9,65,3005697, "angry"},
+		{"mercenary",300,-16.3,-0.9,3.2,106,3005697, "angry"},
+		{"mercenary",300,-16.3,-0.9,-2.9,65,3005697, "angry"},
 		{"medic",60,1.4,0.7,2.0,167,7615445, "npc_use_terminal_high"}
 	}
 }

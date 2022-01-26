@@ -167,7 +167,7 @@ CorelliaBelaVistalScreenPlay = CityScreenPlay:new {
 		{"commoner",60,-42.3991,0.105009,-23.2411,180.016,3375367, "conversation"},
 		{"info_broker",60,21.6023,-0.894996,-17.4913,180.012,3375356, "conversation"},
 		{"medic",60,-43.4991,0.105009,-23.2411,135.007,3375367, "conversation"},
-		{"mercenary",60,-5.46842,-0.894998,20.8012,0,3375361, "conversation"},
+		{"mercenary",300,-5.46842,-0.894998,20.8012,0,3375361, "conversation"},
 		{"junk_malik", 0, 6969.06, 330, -5588.66, 105, 0, ""},
 		{"junk_dealer", 0, 6756.79, 315, -5779.1, 96, 0, ""}
 	}

@@ -304,7 +304,7 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		{"criminal",300,3364.26,5,-4854.56,0.24067,0, ""},
 		{"criminal",300,3352.2,5.0,-4821.5,90,0, "npc_sitting_chair"},
 		{"criminal",300,3401.83,5,-4868.72,295.372,0, ""},
-		{"explorer",60,3421,5,-4953.33,180.005,0, "conversation"},
+		{"explorer",300,3421,5,-4953.33,180.005,0, "conversation"},
 		{"informant_npc_lvl_1",0,3447,5,-4850,135,0, ""},
 		{"informant_npc_lvl_1",0,3253,5,-4923,180,0, ""},
 		{"informant_npc_lvl_1",0,3488,5,-4782,135,0, ""},

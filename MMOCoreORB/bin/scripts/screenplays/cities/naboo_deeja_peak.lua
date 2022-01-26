@@ -43,7 +43,7 @@ NabooDeejaPeakScreenPlay = CityScreenPlay:new {
 		{"medic",60,-29.1,1.3,2.0,-170,1945394, "npc_sitting_chair"},
 		{"surgical_droid_21b",60,-30.5,1.3,-0.1,-3,1945394, "neutral"},
 		{"agriculturalist",60,18.7,3.2,-23.3,-5,1945398, "nervous"},
-		{"mercenary",60,-21.3,3.2,21.7,0,1945395, "angry"},
+		{"mercenary",300,-21.3,3.2,21.7,0,1945395, "angry"},
 		{"r4",60,-20.3,3.2,20.0,-45,1945395, "neutral"},
 		{"r4",60,-21.9,3.2,20.1,34,1945395, "neutral"},
 		{"r4",60,-21.9,3.2,23.3,126,1945395, "neutral"},

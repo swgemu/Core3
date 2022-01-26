@@ -179,7 +179,7 @@ TalusNashalScreenPlay = CityScreenPlay:new {
 		{"corellia_times_investigator",60,25.7677,1.28309,8.41503,360.011,4265423, "conversation"},
 		{"bounty_hunter",300,16.326,1.28309,10.047,180.01,4265423, "conversation"},
 		{"medic",60,25.7677,1.28309,9.41503,180.008,4265423, "conversation"},
-		{"mercenary",60,15.226,1.28309,10.047,135.013,4265423, "conversation"},
+		{"mercenary",300,15.226,1.28309,10.047,135.013,4265423, "conversation"},
 
 		--Starport
 		{"brawler",60,5.81535,0.639421,60.0653,0,4265359, "angry"},
