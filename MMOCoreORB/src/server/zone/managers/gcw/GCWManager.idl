@@ -81,6 +81,7 @@ class GCWManager extends ManagedService implements Logger {
 	private transient int winnerDifficultyScaling;
 	private transient boolean crackdownScansEnabled;
 	private transient boolean crackdownScanPrivilegedPlayers;
+	private transient int crackdownScanInterval;
 	private transient int crackdownPlayerScanCooldown;
 	private transient int crackdownContrabandFineCredits;
 	private transient int crackdownContrabandFineFactionPoints;
@@ -449,6 +450,12 @@ class GCWManager extends ManagedService implements Logger {
 	@read
 	public int getCrackdownContrabandFineFactionPoints() {
 		return crackdownContrabandFineFactionPoints;
+	}
+
+	@local
+	@read
+	public int getCrackdownScanInterval() {
+		return crackdownScanInterval;
 	}
 
 	@local
