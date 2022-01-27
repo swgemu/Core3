@@ -82,7 +82,7 @@ function mission_target_conv_handler:getReturnWaypointLoc(playerID, npcNumber)
 		local pGiver = getSceneObject(giverId)
 		if (pGiver == nil) then
 			printf("Error in mission_target_conv_handler:getReturnWaypointLoc(), unable to find generic quest giver.")
-			return location
+			return {"tutorial", 0, 0}
 		end
 		location[1] = SceneObject(pGiver):getZoneName()
 		location[2] = SceneObject(pGiver):getWorldPositionX()
@@ -101,7 +101,7 @@ function mission_target_conv_handler:getReturnWaypointLoc(playerID, npcNumber)
 
 		if (location[1] == nil or location[1] == "") then
 			printf("ERROR: Unable to create return waypoint for mission number " .. missionNumber .. " in screenplay " .. self.themePark.className .. ", planetName invalid.\n")
-			return {}
+			return {"tutorial", 0, 0}
 		end
 	end
 
