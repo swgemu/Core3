@@ -68,6 +68,7 @@ difficutlyScalingThresholds = {0, 64}
 ]]
 	-- PRODUCTION SERVER VALUES
 	crackdownScanPrivilegedPlayers = false
+	crackdownScanInterval = 10
 	crackdownPlayerScanCooldown = 2 * 24 * 60 * 60  -- In seconds, 48 hour cooldown
 	crackdownContrabandFineCredits = 10000
 	crackdownContrabandFineFactionPoints = 100

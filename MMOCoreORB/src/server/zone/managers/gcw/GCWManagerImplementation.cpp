@@ -93,6 +93,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	spawnDefenses = lua->getGlobalInt("spawnDefenses");
 	crackdownScansEnabled = lua->getGlobalBoolean("crackdownScansEnabled");
 	crackdownScanPrivilegedPlayers = lua->getGlobalBoolean("crackdownScanPrivilegedPlayers");
+	crackdownScanInterval = lua->getGlobalInt("crackdownScanInterval") * 1000;
 	crackdownPlayerScanCooldown = lua->getGlobalInt("crackdownPlayerScanCooldown") * 1000;
 	crackdownContrabandFineCredits = lua->getGlobalInt("crackdownContrabandFineCredits");
 	crackdownContrabandFineFactionPoints = lua->getGlobalInt("crackdownContrabandFineFactionPoints");
@@ -2871,6 +2872,10 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 		return;
 	}
 
+	Timer profile;
+
+	profile.start();
+
 	Vector3 hitPoint = zone->getPlanetManager()->getRandomSpawnPoint();
 
 	Reference<SortedVector<ManagedReference<QuadTreeEntry*>>*> closePlayers = new SortedVector<ManagedReference<QuadTreeEntry*>>();
@@ -2890,14 +2895,14 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 				wildContrabandScanSession->initializeSession();
 			}
 		} else {
-			this->info("Wild contraband scan skipped due to player " + player->getDisplayedName() + " (" + String::valueOf(player->getObjectID()) + ") not being a valid scan target.");
+			this->info() << "Wild contraband scan skipped due to player " << player->getDisplayedName() << " (" << player->getObjectID() << ") not being a valid scan target in " << nsToString(profile.stop());
 		}
 	} else {
-		this->info("Wild contraband scan found no players at " + hitPoint.toString());
+		this->info() << "Wild contraband scan found no players at " + hitPoint.toString() << " in " << nsToString(profile.stop());
 	}
 
 	CheckWildContrabandScanTask* task = new CheckWildContrabandScanTask(_this.getReferenceUnsafeStaticCast());
-	task->schedule(10000);
+	task->schedule(Math::max(10000, crackdownScanInterval));
 }
 
 bool GCWManagerImplementation::isContraband(SceneObject* item) {
