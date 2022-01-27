@@ -173,41 +173,37 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 	}
 
 	if (withinNavMesh) {
-		Vector <WorldCoordinates> entrances;
+		Vector <WorldCoordinates> endCoords;
 		Reference < Vector < WorldCoordinates > * > path = nullptr;
 
 		if (object->isBuildingObject()) {
 			BuildingObject* building = object->asBuildingObject();
 
 			SharedBuildingObjectTemplate* templateData = static_cast<SharedBuildingObjectTemplate*>(object->getObjectTemplate());
-			const PortalLayout* portalLayout = templateData->getPortalLayout();
 
-			if (portalLayout != nullptr) {
-				const Vector <Reference<CellProperty*> >& cells = portalLayout->getCellProperties();
-				if (cells.size() > 0) {
-					const CellProperty* cell = cells.get(0);
+			if (building != nullptr && templateData != nullptr && building->getTotalCellNumber() > 1) {
+				CellObject* cell = building->getCell(1);
+				const PortalLayout* portalLayout = templateData->getPortalLayout();
 
-					for (int i = 0; i < cell->getNumberOfPortals(); i++) {
-						const CellPortal* portal = cell->getPortal(i);
-						const AABB& box = portalLayout->getPortalBounds(portal->getGeometryIndex());
+				if (portalLayout != nullptr && cell != nullptr) {
+					const FloorMesh* exteriorFloorMesh = portalLayout->getFloorMesh(0);
 
-						Vector3 center = box.center();
-						center.setZ(center.getZ() + 5.0f);
-						Matrix4 transform;
+					if (exteriorFloorMesh != nullptr) {
+						const PathGraph* exteriorPathGraph = exteriorFloorMesh->getPathGraph();
 
-						auto dir = building->getDirection();
+						if (exteriorPathGraph != nullptr) {
+							Vector3 transformedPosition = PathFinderManager::instance()->transformToModelSpace(start.getPoint(), building);
+							const PathNode* exteriorNode = exteriorPathGraph->findNearestGlobalNode(transformedPosition);
 
-						Quaternion directionRecast(dir->getW(), dir->getX(), dir->getY(), -dir->getZ());
+							if (exteriorNode != nullptr) {
+								WorldCoordinates coord(exteriorNode->getPosition(), cell);
 
-						transform.setRotationMatrix(directionRecast.toMatrix3());
-						transform.setTranslation(building->getPositionX(), building->getPositionZ(),
-												 -building->getPositionY());
+								endCoords.add(WorldCoordinates(coord.getWorldPosition(), nullptr));
 
-						Vector3 dPos = (Vector3(center.getX(), center.getY(), -center.getZ()) * transform);
-						entrances.add(WorldCoordinates(Vector3(dPos.getX(), -dPos.getZ(), dPos.getY()), nullptr));
+								path = PathFinderManager::instance()->findPathFromWorldToWorld(start, endCoords, zone, true);
+							}
+						}
 					}
-
-					path = PathFinderManager::instance()->findPathFromWorldToWorld(start, entrances, zone, false);
 				}
 			}
 		}
@@ -216,20 +212,23 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 			path = PathFinderManager::instance()->findPath(start, end, zone);
 		}
 
-		if (path && path->size()) {
+		if (path != nullptr && path->size()) {
 			CreateClientPathMessage* msg = new CreateClientPathMessage();
-			for (int i = 0; i < path->size(); i++) {
-				const WorldCoordinates& point = path->get(i);
-				msg->addCoordinate(point.getX(), point.getZ(), point.getY());
-			}
 
-			if (wpt != nullptr) {
-				PlayerObject* ghost = player->getPlayerObject();
-				if (ghost != nullptr)
-					ghost->setClientPathWaypoint(wpt);
-			}
+			if (msg != nullptr) {
+				for (int i = 0; i < path->size(); i++) {
+					const WorldCoordinates& point = path->get(i);
+					msg->addCoordinate(point.getX(), point.getZ(), point.getY());
+				}
 
-			player->sendMessage(msg);
+				if (wpt != nullptr) {
+					PlayerObject* ghost = player->getPlayerObject();
+					if (ghost != nullptr)
+						ghost->setClientPathWaypoint(wpt);
+				}
+
+				player->sendMessage(msg);
+			}
 		}
 	}
 
