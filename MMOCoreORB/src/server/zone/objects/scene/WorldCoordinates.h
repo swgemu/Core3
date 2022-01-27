@@ -131,9 +131,15 @@ public:
 		buf <<"WorldCoordinates(x:" << point.getX()
 			<< ", y:" << point.getY()
 			<< ", z:" << point.getZ()
-			<< ", cell: " << (cell != nullptr ? cell->getCellNumber() : -1)
-			<< ", isCellEdge: " << (cellEdge ? "true" : "false")
-			<< ")";
+			<< ", cell: ";
+
+		if (cell == nullptr) {
+			buf << "nullptr";
+		} else {
+			buf << cell->getCellNumber() << ", isCellEdge: " << (cellEdge ? "true" : "false");
+		}
+
+		buf << ")";
 
 		return buf.toString();
 	}

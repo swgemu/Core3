@@ -31,6 +31,10 @@ public:
 		if (server == nullptr || server->isServerShuttingDown())
 			return;
 
+		if (!server->isServerOnline()) {
+			schedule(10000 + System::random(30000));
+		}
+
 		strongRef->performCheckWildContrabandScanTask();
 	}
 };

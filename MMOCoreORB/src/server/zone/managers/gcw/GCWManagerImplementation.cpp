@@ -93,6 +93,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	spawnDefenses = lua->getGlobalInt("spawnDefenses");
 	crackdownScansEnabled = lua->getGlobalBoolean("crackdownScansEnabled");
 	crackdownScanPrivilegedPlayers = lua->getGlobalBoolean("crackdownScanPrivilegedPlayers");
+	crackdownScanInterval = lua->getGlobalInt("crackdownScanInterval") * 1000;
 	crackdownPlayerScanCooldown = lua->getGlobalInt("crackdownPlayerScanCooldown") * 1000;
 	crackdownContrabandFineCredits = lua->getGlobalInt("crackdownContrabandFineCredits");
 	crackdownContrabandFineFactionPoints = lua->getGlobalInt("crackdownContrabandFineFactionPoints");
@@ -2897,7 +2898,7 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 	}
 
 	CheckWildContrabandScanTask* task = new CheckWildContrabandScanTask(_this.getReferenceUnsafeStaticCast());
-	task->schedule(10000);
+	task->schedule(Math::max(10000, crackdownScanInterval));
 }
 
 bool GCWManagerImplementation::isContraband(SceneObject* item) {
