@@ -108,7 +108,7 @@ public:
 
 			if (object->getZone() != nullptr) {
 				msg << "Location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName() << endl;
-				msg << "Direction Angle - Radians: " << object->getDirectionAngle() << endl;
+				msg << "Direction Angle - Radians: " << object->getDirection()->getRadians() << endl;
 			}
 
 			ManagedReference<CityRegion*> city = object->getCityRegion().get();
