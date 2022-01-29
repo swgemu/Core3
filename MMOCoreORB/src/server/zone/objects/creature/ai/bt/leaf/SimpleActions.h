@@ -356,21 +356,6 @@ public:
 	}
 };
 
-class CompleteMove : public Behavior {
-public:
-	CompleteMove(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args) {
-	}
-
-	CompleteMove(const CompleteMove& a)
-			: Behavior(a) {
-	}
-
-	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		return agent->completeMove() ? SUCCESS : FAILURE;
-	}
-};
-
 class Wait : public Behavior {
 public:
 	Wait(const String& className, const uint32 id, const LuaObject& args)
