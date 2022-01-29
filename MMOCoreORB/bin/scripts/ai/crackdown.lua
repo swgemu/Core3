@@ -59,6 +59,8 @@ idleCrackdown = {
 	{id="3873815212",	name="CheckIsDroid",	pid="1908035156"},
 	{id="2472779767",	name="WriteBlackboard",	pid="3071138585",	args={key="moveMode", val=RUN}},
 	{id="3225520752",	name="WriteBlackboard",	pid="3326622834",	args={key="moveMode", val=WALK}},
+	{id="1742603408",	name="If",	pid="1025565676"},
+	{id="2307864494",	name="CheckDestination",	pid="1742603408",	args={condition=0.0}},
 	{id="3869875258",	name="TreeSocket",	pid="1025565676",	args={slot=MOVE}},
 	{id="2586149198",	name="Sequence",	pid="1025565676"},
 	{id="1931706343",	name="If",	pid="2586149198"},

@@ -165,9 +165,17 @@ function CityScreenPlay:spawnPatrol(num)
 			self:setMoodString(pMobile, mood)
 		end
 
+		local combatNpc = patrol[9]
+
+		if combatNpc then
+			createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawnPatrol", pMobile)
+		else
+			CreatureObject(pMobile):setPvpStatusBitmask(0)
+		end
+
 		local pOid = SceneObject(pMobile):getObjectID()
 
-		createEvent(3000, self.screenplayName, "setupMobilePatrol", pMobile, num)
+		createEvent(10000, self.screenplayName, "setupMobilePatrol", pMobile, num)
 		writeStringData(pOid .. ":patrolPoints", points)
 		writeData(pOid .. ":patrolNumber", num)
 		writeData(pOid .. ":currentLoc", 1)
@@ -179,17 +187,7 @@ function CityScreenPlay:setupMobilePatrol(pMobile, num)
 		return
 	end
 
-	local spawnNumber = tonumber(num)
-	local combatNpc = self.patrolMobiles[spawnNumber][9]
-
-	if combatNpc then
-		createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawnPatrol", pMobile)
-	else
-		CreatureObject(pMobile):setPvpStatusBitmask(0)
-	end
-
-	AiAgent(pMobile):setMovementState(AI_PATROLLING)
-	createEvent(getRandomNumber(20, 40) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
+	createEvent(getRandomNumber(40, 60) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
 	createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
 end
 
@@ -245,7 +243,7 @@ function CityScreenPlay:mobileDestinationReached(pMobile)
 		createEvent(delayTime * 1000, self.screenplayName, "mobilePatrol", pMobile, "")
 		AiAgent(pMobile):setWait(delayTime)
 	else
-		createEvent(100, self.screenplayName, "mobilePatrol", pMobile, "")
+		createEvent(5000, self.screenplayName, "mobilePatrol", pMobile, "")
 	end
 
 	return 0
@@ -276,9 +274,7 @@ function CityScreenPlay:mobilePatrol(pMobile)
 		nextPoint = pointSet[currentLoc + 1]
 	end
 
-	AiAgent(pMobile):stopWaiting()
 	AiAgent(pMobile):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
-	AiAgent(pMobile):executeBehavior()
 end
 
 function CityScreenPlay:spawnStationaryMobiles()
