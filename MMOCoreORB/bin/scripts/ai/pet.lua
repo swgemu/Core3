@@ -83,6 +83,8 @@ idlePet = {
 	{id="4147395704",	name="Not",	pid="4089440207"},
 	{id="3397268825",	name="If",	pid="4147395704"},
 	{id="1418550182",	name="CheckPetCommand",	pid="3397268825",	args={condition=PET_STAY}},
+	{id="1539366576",	name="If",	pid="4089440207"},
+	{id="1266622134",	name="CheckDestination",	pid="1539366576",	args={condition=0.0}},
 	{id="4036559077",	name="WriteBlackboard",	pid="4089440207",	args={key="moveMode", val=RUN}},
 	{id="5946488",	name="AlwaysSucceed",	pid="4089440207"},
 	{id="1805516334",	name="TreeSocket",	pid="5946488",	args={slot=MOVE}},
