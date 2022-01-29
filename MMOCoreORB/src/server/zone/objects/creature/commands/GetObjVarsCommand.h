@@ -102,6 +102,7 @@ public:
 						}
 
 						msg << "Has Follow Object: " << hasFollow.toString() << endl;
+						msg << "Current total Patrol Points: " << objectAgent->getPatrolPointSize() << endl;
 					}
 				}
 			}

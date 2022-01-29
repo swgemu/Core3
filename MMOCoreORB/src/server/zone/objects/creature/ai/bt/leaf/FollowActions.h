@@ -405,15 +405,17 @@ public:
 		Locker clocker(tar, agent);
 
 		float aggroMod = 1.f;
+
 		if (agent->peekBlackboard("aggroMod"))
 			aggroMod = agent->readBlackboard("aggroMod").get<float>();
 
 		int radius = agent->getAggroRadius();
+
 		if (radius == 0)
 			radius = AiAgent::DEFAULTAGGRORADIUS;
 
 		if (!agent->isNonPlayerCreatureObject()) {
-			float distance = dist - radius * aggroMod;
+			float distance = Math::max(dist, dist - radius * aggroMod);
 
 			agent->writeBlackboard("fleeRange", distance);
 			agent->runAway(tar->asCreatureObject(), distance, false);

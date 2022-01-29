@@ -166,10 +166,19 @@ function CityScreenPlay:spawnPatrol(num)
 		end
 
 		local pOid = SceneObject(pMobile):getObjectID()
+		local combatNpc = patrol[9]
 
-		createEvent(3000, self.screenplayName, "setupMobilePatrol", pMobile, num)
-		writeStringData(pOid .. ":patrolPoints", points)
 		writeData(pOid .. ":patrolNumber", num)
+
+		if combatNpc then
+			createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawnPatrol", pMobile)
+			return
+		else
+			CreatureObject(pMobile):setPvpStatusBitmask(0)
+		end
+
+		createEvent(10000, self.screenplayName, "setupMobilePatrol", pMobile, num)
+		writeStringData(pOid .. ":patrolPoints", points)
 		writeData(pOid .. ":currentLoc", 1)
 	end
 end
@@ -189,7 +198,7 @@ function CityScreenPlay:setupMobilePatrol(pMobile, num)
 		CreatureObject(pMobile):setPvpStatusBitmask(0)
 	end
 
-	createEvent(getRandomNumber(20, 40) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
+	createEvent(getRandomNumber(40, 60) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
 	createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
 end
 
@@ -204,10 +213,10 @@ function CityScreenPlay:onDespawnPatrol(pMobile)
 
 	createEvent(300 * 1000, self.screenplayName, "patrolRespawn", nil, tostring(spawnNumber))
 
-	dropObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
+	--dropObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
 	deleteData(pOid .. ":patrolNumber")
-	deleteData(pOid .. ":currentLoc")
-	deleteStringData(pOid .. ":patrolPoints")
+	---deleteData(pOid .. ":currentLoc")
+	--deleteStringData(pOid .. ":patrolPoints")
 
 	return 1
 end
@@ -245,7 +254,7 @@ function CityScreenPlay:mobileDestinationReached(pMobile)
 		createEvent(delayTime * 1000, self.screenplayName, "mobilePatrol", pMobile, "")
 		AiAgent(pMobile):setWait(delayTime)
 	else
-		createEvent(100, self.screenplayName, "mobilePatrol", pMobile, "")
+		createEvent(5000, self.screenplayName, "mobilePatrol", pMobile, "")
 	end
 
 	return 0
