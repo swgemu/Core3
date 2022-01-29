@@ -20,6 +20,7 @@
 #include "pathfinding/recast/DetourCommon.h"
 
 //#define DEBUG_PATHING
+
 const static constexpr int MAX_QUERY_NODES = 2048 * 2;
 
 void destroyNavMeshQuery(void* value) {
@@ -70,7 +71,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPath(const WorldCoordinates& po
 		return findPathFromCellToWorld(pointA, pointB, zone);
 	} else if (cellA == nullptr && cellB != nullptr) { // world -> cell
 		return findPathFromWorldToCell(pointA, pointB, zone);
-	} else /* if (cellA != nullptr && cellB != nullptr) */ { // cell -> cell, the only left option
+	} else { // cell -> cell, the only left option
 		return findPathFromCellToCell(pointA, pointB);
 	}
 }
@@ -88,13 +89,10 @@ void PathFinderManager::filterPastPoints(Vector<WorldCoordinates>* path, SceneOb
 		printf(" X = %f,", coord.getX());
 		printf("Y = %f  ", coord.getY());
 		if (coord.getCell() == nullptr) {
-			printf(" -- Cell is nullptr -- ");
+			printf(" -- Cell is nullptr -- \n");
 		} else {
 			printf("Cell ID: %llu \n", coord.getCell()->getObjectID());
 		}
-
-		if (coord.isCellEdge())
-			printf(" isCellEdge true \n");
 	}
 #endif
 
@@ -105,7 +103,7 @@ void PathFinderManager::filterPastPoints(Vector<WorldCoordinates>* path, SceneOb
 		WorldCoordinates coord2 = path->get(i);
 
 		if (path->size() > 2) {
-			if (coord1 == coord2 && coord1.getCell() != nullptr && coord2.getCell() != nullptr && coord1.getCell() == coord2.getCell()) {
+			if (coord1 == coord2) {
 				WorldCoordinates point = path->get(i - 1);
 
 #ifdef DEBUG_PATHING
@@ -227,7 +225,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 	const Vector3 targetPosition(end.getX(), end.getZ(), -end.getY());
 	const float* startPosAsFloat = startPosition.toFloatArray();
 	const float* tarPosAsFloat = targetPosition.toFloatArray();
-	const static float extents[3] = {2, 4, 2};
+	const static float extents[3] = {8, 8, 3};
 	dtPolyRef startPoly;
 	dtPolyRef endPoly;
 
@@ -307,6 +305,7 @@ bool PathFinderManager::getRecastPath(const Vector3& start, const Vector3& end, 
 									&numPoints, MAX_PATH_POINTS, pathOptions);
 #ifdef DEBUG_PATHING
 			info("findStraightPath result: 0x" + String::hexvalueOf(status), true);
+			info("number of points = " + String::valueOf(numPoints), true);
 #endif
 			if (numPoints > 0) {
 				for (int i = 0; i < numPoints; i++) {
@@ -341,7 +340,9 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 		zone->getInRangeNavMeshes(mid.getX(), mid.getY(), &areas, true);
 
 		SortedVector<NavCollision*> collisions;
+
 		getNavMeshCollisions(&collisions, &areas, pointA.getWorldPosition(), pointB.getWorldPosition());
+
 		// Collisions are sorted by distance from the start of the line. This is done so that we can chain our path from
 		// one navmesh to another if a path spans multiple meshes.
 		Vector<WorldCoordinates> *path = new Vector<WorldCoordinates>();
@@ -554,9 +555,6 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 		return nullptr;
 	}
 
-	/*if (nearestEntranceNode == nearestTargetNode)
-		info("nearestEntranceNode == nearestTargetNode", true);*/
-
 	//find graph from outside to appropriate cell
 	Vector<const PathNode*>* pathToCell = portalLayout->getPath(exteriorNode, nearestInteriorNode);
 
@@ -590,9 +588,6 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 
 			WorldCoordinates point(coord.getWorldPosition(), nullptr);
 
-			if (i > 0)
-				point.setCellEdge(true);
-
 #ifdef DEBUG_PATHING
 			printf("Adding Path Node with Cell ID = 0 , X = %f ,", point.getX());
 			printf("Y = %f \n", point.getY());
@@ -610,15 +605,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 
 			WorldCoordinates point(pathNode->getPosition(), pathCell);
 
-			if (i < path->size() - 1)
-				point.setCellEdge(true);
-
 			path->add(point);
-
-			if (i == pathToCell->size() - 1)
-				if (pathCell != targetCell) {
-					error("final cell not target cell");
-				}
 		}
 	}
 
@@ -648,13 +635,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 		printf(" X = %f,", coord.getX());
 		printf("Y = %f", coord.getY());
 		if (coord.getCell() == nullptr) {
-			printf(" -- Cell is nullptr -- ");
-		} else {
-			printf("\n");
+			printf(" -- Cell is nullptr --");
 		}
 
-		if (coord.isCellEdge())
-			printf(" isCellEdge true \n");
+		printf("\n");
 	}
 #endif
 
@@ -957,9 +941,11 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 #ifdef DEBUG_PATHING
 	info ("findPathFromCellToDifferentCell", true);
 #endif
-
 	CellObject* ourCell = pointA.getCell();
 	CellObject* targetCell = pointB.getCell();
+
+	if (ourCell == nullptr || targetCell == nullptr)
+		return nullptr;
 
 	int ourCellID = ourCell->getCellNumber();
 	int targetCellID = targetCell->getCellNumber();
@@ -990,6 +976,9 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 	const PathGraph* pathGraph1 = floorMesh1->getPathGraph();
 	const PathGraph* pathGraph2 = floorMesh2->getPathGraph();
+
+	if (pathGraph1 == nullptr || pathGraph2 == nullptr)
+		return nullptr;
 
 	Vector<WorldCoordinates>* path = new Vector<WorldCoordinates>(5, 1);
 	path->add(pointA); // adding source
@@ -1062,11 +1051,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	}
 
 	WorldCoordinates sourceCellNode(source->getPosition(), ourCell);
-	sourceCellNode.setCellEdge(true);
 
 	path->add(sourceCellNode);
-
-	int priorID = 0;
 
 	//traversing cells
 	for (int i = 1; i < nodes->size(); ++i) {
@@ -1097,11 +1083,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 			printf("Y = %f \n", coord.getY());
 #endif
 
-			if (priorID != cellID)
-				coord.setCellEdge(true);
-
 			path->add(coord);
-			priorID = cellID;
 
 			if (i == nodes->size() - 1) {
 				if (pathNode != target) {
@@ -1145,9 +1127,6 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		} else {
 			printf("Cell ID: %llu \n", coord.getCell()->getObjectID());
 		}
-
-		if (coord.isCellEdge())
-			printf(" isCellEdge true \n");
 	}
 #endif
 
@@ -1157,6 +1136,9 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
 	CellObject* ourCell = pointA.getCell();
 	CellObject* targetCell = pointB.getCell();
+
+	if (ourCell == nullptr || targetCell == nullptr)
+		return nullptr;
 
 	if (ourCell != targetCell)
 		return findPathFromCellToDifferentCell(pointA, pointB);
