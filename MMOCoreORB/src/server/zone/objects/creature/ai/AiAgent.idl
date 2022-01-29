@@ -69,6 +69,9 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected PatrolPoint nextStepPosition;
 
+	@dereferenced
+	protected PatrolPoint endMovementPosition;
+
 	protected transient CurrentFoundPath currentFoundPath;
 	protected transient CellObject targetCellObject;
 
@@ -177,7 +180,7 @@ class AiAgent extends CreatureObject {
 	protected unsigned int nextActionCRC;
 	protected string nextActionArgs;
 
-	public static final int UPDATEMOVEMENTINTERVAL = 500; // msec
+	public static final int UPDATEMOVEMENTINTERVAL = 400; // msec
 
 	public static final int DEFAULTAGGRORADIUS = 24;
 
@@ -810,9 +813,6 @@ class AiAgent extends CreatureObject {
 	@mock
 	@preLocked
 	public abstract native int setDestination();
-	@mock
-	@preLocked
-	public abstract native boolean completeMove();
 
 	/**
 	 * Set the wait time in milliseconds

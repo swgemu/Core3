@@ -43,11 +43,9 @@ namespace ai {
 		int getMovementState(lua_State* L);
 		int setMovementState(lua_State* L);
 		int setNextPosition(lua_State* L);
-		int findNextPosition(lua_State* L);
 		int getMaxDistance(lua_State* L);
 		int generatePatrol(lua_State* L);
 		int setDestination(lua_State* L);
-		int completeMove(lua_State* L);
 		int isWaiting(lua_State* L);
 		int stopWaiting(lua_State* L);
 		int setWait (lua_State* L);

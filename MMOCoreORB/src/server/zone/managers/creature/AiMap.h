@@ -421,7 +421,6 @@ private:
 		_REGISTERLEAF(Evade);
 		_REGISTERLEAF(FindNextPosition);
 		_REGISTERLEAF(Leash);
-		_REGISTERLEAF(CompleteMove);
 		_REGISTERLEAF(Wait);
 		_REGISTERLEAF(SetAlert);
 		_REGISTERLEAF(KillProspect);
