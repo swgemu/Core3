@@ -172,6 +172,7 @@ void ChatManagerImplementation::loadSpatialChatTypes() {
 		i++;
 
 		spatialChatTypes.put(key, i);
+		spatialChatTypeNames.put(i, key);
 	}
 
 	iffStream->closeChunk('TYPS');
@@ -220,6 +221,8 @@ void ChatManagerImplementation::loadSpatialChatTypes() {
 
 	iffStream->closeForm('0000');
 	iffStream->closeForm('SPCT');
+
+	defaultSpatialChatType = spatialChatTypes.get("say");
 }
 
 void ChatManagerImplementation::loadMoodTypes() {
@@ -494,7 +497,7 @@ int ChatManagerImplementation::checkRoomExpirations() {
 }
 
 Reference<ChatRoom*> ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
-	ManagedReference<ChatRoom*> room = cast<ChatRoom*>(ObjectManager::instance()->createObject("ChatRoom", 0 , ""));
+	Reference<ChatRoom*> room = cast<ChatRoom*>(ObjectManager::instance()->createObject("ChatRoom", 0 , ""));
 
 	if (parent != nullptr) {
 		room->init(server, parent, roomName);
@@ -515,7 +518,7 @@ Reference<ChatRoom*> ChatManagerImplementation::createPersistentRoom(const Strin
 	if (parent == nullptr)
 		return nullptr;
 
-	ManagedReference<ChatRoom*> room = cast<ChatRoom*>(ObjectManager::instance()->createObject("ChatRoom", 1 , "chatrooms"));
+	Reference<ChatRoom*> room = cast<ChatRoom*>(ObjectManager::instance()->createObject("ChatRoom", 1 , "chatrooms"));
 
 	room->init(server, parent, roomName);
 	if (parent->isPersistent())
@@ -1005,6 +1008,10 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	if (zone == nullptr)
 		return;
 
+	if (spatialChatType == 0) {
+		spatialChatType = defaultSpatialChatType;
+	}
+
 	ManagedReference<CreatureObject*> chatTarget = server->getObject(chatTargetID).castTo<CreatureObject*>();
 
 	String firstName;
@@ -1165,6 +1172,10 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 	if (zone == nullptr)
 		return;
+
+	if (spatialChatType == 0) {
+		spatialChatType = defaultSpatialChatType;
+	}
 
 	String firstName;
 	ManagedReference<CreatureObject*> chatTarget = server->getObject(chatTargetID).castTo<CreatureObject*>();
@@ -2665,13 +2676,25 @@ void ChatManagerImplementation::sendChatOnUnbanResult(CreatureObject* unbanner, 
 	unbanner->sendMessage(notification);
 }
 
-unsigned int ChatManagerImplementation::getSpatialChatType(const String& spatialChatType) {
+unsigned int ChatManagerImplementation::getSpatialChatType(const String& spatialChatType) const {
 	if (spatialChatTypes.contains(spatialChatType)) {
 		return spatialChatTypes.get(spatialChatType);
 	} else {
 		warning("Spatial chat type '" + spatialChatType + "' not found.");
 		return 0;
 	}
+}
+
+const String ChatManagerImplementation::getSpatialChatType(unsigned int chatType) const {
+	String name = spatialChatTypeNames.get(chatType);
+
+	if (!name.isEmpty()) {
+		return name;
+	}
+
+	StringBuffer buf;
+	buf << "unknown#" << chatType;
+	return buf.toString();
 }
 
 unsigned int ChatManagerImplementation::getMoodID(const String& moodType) {
