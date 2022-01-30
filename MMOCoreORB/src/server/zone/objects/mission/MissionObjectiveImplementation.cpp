@@ -45,9 +45,21 @@ Reference<CreatureObject*> MissionObjectiveImplementation::getPlayerOwner() {
 
 void MissionObjectiveImplementation::activate() {
 	if (!activated) {
+		ManagedReference<MissionObject* > mission = this->mission.get();
+
+		if (mission == nullptr) {
+			return;
+		}
+
 		activated = true;
 		int64 timeElapsed = missionStartTime.miliDifference();
-		int64 timeRemaining = MISSIONDURATION - timeElapsed;
+		int64 missionDuration = MISSIONDURATION;
+
+		if (mission->getTypeCRC() == MissionTypes::BOUNTY) {
+			missionDuration = ConfigManager::instance()->getInt("Core3.MissionManager.BountyExpirationTime", MISSIONDURATION);
+		}
+
+		int64 timeRemaining = missionDuration - timeElapsed;
 
 		if (timeRemaining < 1) {
 			timeRemaining = 1;
@@ -306,6 +318,15 @@ void MissionObjectiveImplementation::awardReward() {
 	}
 
 	int dividedReward = mission->getRewardCredits() / Math::max(divisor, 1);
+	int bonusCreds = mission->getBonusCredits();
+	int dividedBonus = 0;
+
+	bool anonymousPlayerBounties = ConfigManager::instance()->getBool("Core3.MissionManager.AnonymousBountyTerminals", false);
+
+	if (anonymousPlayerBounties && bonusCreds > 0) {
+		trx.addState("missionBonusCredits", bonusCreds);
+		dividedBonus = bonusCreds / Math::max(divisor, 1);
+	}
 
 	if (expanded) {
 		trx.addState("missionExpanded", true);
@@ -320,6 +341,7 @@ void MissionObjectiveImplementation::awardReward() {
 	trx.addState("missionPetFactionOutOfRange", petFactionOutOfRangeCount);
 
 	int totalRewarded = 0;
+	int totalBonusRewarded = 0;
 
 	for (int i = 0; i < players.size(); i++) {
 		ManagedReference<CreatureObject*> player = players.get(i);
@@ -327,18 +349,27 @@ void MissionObjectiveImplementation::awardReward() {
 		stringId.setDI(dividedReward);
 		player->sendSystemMessage(stringId);
 
+		if (anonymousPlayerBounties && dividedBonus > 0) {
+			String bonusString = "The Bounty Hunter guild has paid you a bonus in the amount of: " + String::valueOf(dividedBonus);
+			player->sendSystemMessage(bonusString);
+			totalBonusRewarded += dividedBonus;
+		}
+
 		Locker lockerPl(player, _this.getReferenceUnsafeStaticCast());
 		TransactionLog trxReward(TrxCode::MISSIONSYSTEMDYNAMIC, player, dividedReward, false);
 		trxReward.groupWith(trx);
 		trxReward.addState("missionTrxId", trx.getTrxID());
 		trxReward.addState("missionID", mission->getObjectID());
 
-		player->addBankCredits(dividedReward, true);
+		player->addBankCredits(dividedReward + dividedBonus, true);
 		totalRewarded += dividedReward;
 	}
 
 	// Catch any rounding errors etc.
 	trx.addState("missionTotalRewarded", totalRewarded);
+
+	if (anonymousPlayerBounties)
+		trx.addState("missionTotalBonusRewarded", totalBonusRewarded);
 
 	if (group != nullptr) {
 		if (expanded) {
