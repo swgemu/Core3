@@ -141,4 +141,9 @@ class MissionObjective extends ManagedObject implements Logger {
 	public abstract native Vector3 getEndPosition();
 
 	public native void clearFailTask();
+	
+	@read
+	public abstract boolean isPlayerBounty() {
+		return false;
+	}
 }
