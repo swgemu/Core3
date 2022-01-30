@@ -1035,14 +1035,39 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 			ManagedReference<CreatureObject*> creature = server->getObject(target->getTargetPlayerID()).castTo<CreatureObject*>();
 			String name = "";
 
-			if (creature != nullptr) {
-				name = creature->getFirstName() + " " + creature->getLastName();
-				name = name.trim();
+			if (creature != nullptr && ConfigManager::instance()->getBool("Core3.MissionManager.AnonymousBountyTerminals", false)) {
+				if (creature->getFaction() == Factions::FACTIONIMPERIAL)
+					name = "Imperial Jedi";
+				else if (creature->getFaction() == Factions::FACTIONREBEL)
+					name = "Rebel Jedi";
+				else
+					name = "Neutral Jedi";
+
+				ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+				int rewardCreds = 0;
+				if (ghost->getJediState() >= 4)
+					rewardCreds = 50000;
+				else
+					rewardCreds = 25000;
+
+				mission->setRewardCredits(rewardCreds);
+				int totalCreds = getRealBountyReward(creature, target);
+				int bonusCreds = totalCreds - rewardCreds;
+
+				if (bonusCreds > 0)
+					mission->setBonusCredits(bonusCreds);
+			} else {
+				if (creature != nullptr) {
+					name = creature->getFirstName() + " " + creature->getLastName();
+					name = name.trim();
+				}
+
+				mission->setRewardCredits(getRealBountyReward(creature, target));
 			}
 
 			mission->setMissionTargetName(name);
 			mission->setMissionDifficulty(75);
-			mission->setRewardCredits(getRealBountyReward(creature, target));
 
 			// Set the Title, Creator, and Description of the mission.
 

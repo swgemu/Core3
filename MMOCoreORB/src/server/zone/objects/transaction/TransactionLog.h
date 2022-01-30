@@ -314,6 +314,9 @@ public:
 	}
 
 	const String getTrxID() const {
+		if (!isEnabled())
+			return "disabled";
+
 		return String(mTransaction["trxId"].get<std::string>());
 	}
 

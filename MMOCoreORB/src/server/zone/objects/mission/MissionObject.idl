@@ -30,6 +30,7 @@ class MissionObject extends IntangibleObject {
 	protected int difficulty;
 	protected unicode creatorName;
 	protected int rewardCredits;
+	protected int bonusCredits;
 	protected int rewardCreditsDivisor;
 	protected int rewardFactionPointsRebel;
 	protected int rewardFactionPointsImperial;
@@ -84,6 +85,7 @@ class MissionObject extends IntangibleObject {
 		difficulty = 2;
 
 		rewardCredits = 100;
+		bonusCredits = 0;
 		rewardCreditsDivisor = 1;
 		rewardFactionPointsRebel = 0;
 		rewardFactionPointsImperial = 0;
@@ -394,5 +396,15 @@ class MissionObject extends IntangibleObject {
 	@read
 	public float getSize() {
 		return size;
+	}
+	
+	@preLocked
+	public void setBonusCredits(int creds) {
+		bonusCredits = creds;
+	}
+	
+	@read
+	public int getBonusCredits() {
+		return bonusCredits;
 	}
 }
