@@ -58,12 +58,16 @@ class ChatManager extends ManagedService implements Logger {
 	private transient VectorMap<string, unsigned int> spatialChatTypes;
 
 	@dereferenced
+	private transient VectorMap<unsigned int, string> spatialChatTypeNames;
+
+	@dereferenced
 	private transient VectorMap<unsigned int, string> spatialChatTypeSkillNeeded;
 
 	@dereferenced
 	private transient VectorMap<unsigned int, short> spatialChatDistances;
 
 	private transient short defaultSpatialChatDistance;
+	private transient short defaultSpatialChatType;
 
 	//Determines how many characters long a room name can be.
 	public static final unsigned int MAXCHATROOMNAMELENGTH = 25;
@@ -370,7 +374,11 @@ class ChatManager extends ManagedService implements Logger {
 	public native void broadcastGalaxy(CreatureObject player, final string message);
 	public native void broadcastGalaxy(final string message, final string faction);
 
+	@read
 	public native unsigned int getSpatialChatType(final string spatialChatType);
+
+	@read
+	public native final string getSpatialChatType(unsigned int chatType);
 	public native unsigned int getMoodID(final string moodType);
 	public native final string getMoodType(unsigned int id);
 	public native final string getMoodAnimation(final string moodType);
