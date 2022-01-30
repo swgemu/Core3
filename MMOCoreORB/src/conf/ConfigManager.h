@@ -238,6 +238,10 @@ namespace conf {
 		const Vector<int>& getIntVector(const String& name, unsigned int accountID = 0);
 		bool getAsJSON(const String& target, JSONSerializationType& jsonData);
 
+		Logger::LogLevel getLogLevel(const String& name, Logger::LogLevel defaultValue, unsigned int accountID = 0) {
+			return static_cast<Logger::LogLevel>(getInt(name, (int)defaultValue, accountID));
+		}
+
 		bool setNumber(const String& name, lua_Number newValue);
 		bool setInt(const String& name, int newValue);
 		bool setBool(const String& name, bool newValue);
