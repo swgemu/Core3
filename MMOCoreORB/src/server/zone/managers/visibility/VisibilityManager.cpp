@@ -31,6 +31,8 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 		closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 	}
 
+	bool disableGroupVis = ConfigManager::instance()->getBool("Core3.PlayerManager.DisableGroupVisibility", false);
+
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(i));
 
@@ -47,6 +49,13 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 
 		if (c->isDead() || c->isIncapacitated() || (c->isPlayerCreature() && c->getPlayerObject()->hasGodMode()))
 			continue;
+
+		if (disableGroupVis && creature->isGrouped()) {
+			ManagedReference<GroupObject*> group = creature->getGroup();
+
+			if (group != nullptr && group->hasMember(c))
+				continue;
+		}
 
 		if (!creature->isInRange(c, 32) || !CollisionManager::checkLineOfSight(creature, c))
 			continue;
