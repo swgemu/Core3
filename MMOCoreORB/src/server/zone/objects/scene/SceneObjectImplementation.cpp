@@ -2086,29 +2086,25 @@ String SceneObjectImplementation::exportJSON(const String& exportNote, int maxDe
 	exportObject["metadata"] = metaData;
 	exportObject["objects"] = exportedObjects;
 
+	auto exportBasedir = ConfigManager::instance()->getString("Core3.SceneObject.exportDir", "log/exports/%Y-%m-%d/%H/");
+
 	// Save to file...
+	Time now;
 	StringBuffer fileNameBuf;
 
-	// Spread the files out across directories
-	fileNameBuf << "exports";
-	if (!File::doMkdir(fileNameBuf.toString().toCharArray(), 0770)) {
-		warning() << "could not create " << fileNameBuf << " directory";
+	fileNameBuf << now.getFormattedTime(exportBasedir) << oid << "/";
+
+	String dirName = fileNameBuf.toString();
+
+	if (File::directorySeparator() != '/') {
+		dirName.replaceAll("/", String().concat(File::directorySeparator()));
 	}
 
-	fileNameBuf << File::directorySeparator() << String::hexvalueOf((int64)((oid & 0xFFFF000000000000) >> 48));
-	if (!File::doMkdir(fileNameBuf.toString().toCharArray(), 0770)) {
-		warning() << "could not create " << fileNameBuf << " directory";
-	}
+	File::mkpath(dirName, 0755);
 
-	fileNameBuf << File::directorySeparator() << String::hexvalueOf((int64)((oid & 0x0000FFFFFF000000) >> 24));
-	if (!File::doMkdir(fileNameBuf.toString().toCharArray(), 0770)) {
-		warning() << "could not create " << fileNameBuf << " directory";
-	}
-
-	fileNameBuf << File::directorySeparator() << oid << "-" << startTime.getMiliTime() << ".json";
+	fileNameBuf << oid << "-" << now.getMiliTime() << ".json";
 
 	String fileName = fileNameBuf.toString();
-
 	std::ofstream jsonFile(fileName.toCharArray());
 	jsonFile << std::setw(4) << exportObject << std::endl;
 	jsonFile.close();

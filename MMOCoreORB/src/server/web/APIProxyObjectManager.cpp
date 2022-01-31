@@ -18,6 +18,7 @@
 #include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
+#include "conf/ConfigManager.h"
 
 #include "APIProxyObjectManager.h"
 #include "APIRequest.h"
@@ -324,31 +325,22 @@ String APIProxyObjectManager::exportJSON(ManagedObject* obj, const String& expor
 	exportObject["metadata"] = metaData;
 	exportObject["objects"] = exportedObjects;
 
+	auto exportBasedir = ConfigManager::instance()->getString("Core3.RESTServer.exportDir", "log/exports/api/%Y-%m-%d/%H/");
+
 	// Save to file...
 	StringBuffer fileNameBuf;
 
-	// Spread the files out across directories
-	fileNameBuf << "exports";
-	if (!File::doMkdir(fileNameBuf.toString().toCharArray(), 0770)) {
-		Logger::console.warning() << "could not create " << fileNameBuf << " directory";
+	fileNameBuf << now.getFormattedTime(exportBasedir) << oid << "/";
+
+	String dirName = fileNameBuf.toString();
+
+	if (File::directorySeparator() != '/') {
+		dirName.replaceAll("/", String().concat(File::directorySeparator()));
 	}
 
-	fileNameBuf << File::directorySeparator() << "api";
-	if (!File::doMkdir(fileNameBuf.toString().toCharArray(), 0770)) {
-		Logger::console.warning() << "could not create " << fileNameBuf << " directory";
-	}
+	File::mkpath(dirName, 0755);
 
-	fileNameBuf << File::directorySeparator() << String::hexvalueOf((int64)((oid & 0xFFFF000000000000) >> 48));
-	if (!File::doMkdir(fileNameBuf.toString().toCharArray(), 0770)) {
-		Logger::console.warning() << "could not create " << fileNameBuf << " directory";
-	}
-
-	fileNameBuf << File::directorySeparator() << String::hexvalueOf((int64)((oid & 0x0000FFFFFF000000) >> 24));
-	if (!File::doMkdir(fileNameBuf.toString().toCharArray(), 0770)) {
-		Logger::console.warning() << "could not create " << fileNameBuf << " directory";
-	}
-
-	fileNameBuf << File::directorySeparator() << oid << "-" << now.getMiliTime() << ".json";
+	fileNameBuf << oid << "-" << now.getMiliTime() << ".json";
 
 	String fileName = fileNameBuf.toString();
 
