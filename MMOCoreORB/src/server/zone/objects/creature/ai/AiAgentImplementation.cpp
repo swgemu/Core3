@@ -1247,19 +1247,18 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 }
 
 void AiAgentImplementation::leash() {
-	if (getMovementState() == AiAgent::LEASHING)
-		return;
+	homeLocation.setReached(false);
+	setMovementState(AiAgent::LEASHING);
 
 	eraseBlackboard("targetProspect");
 	setFollowObject(nullptr);
 	storeFollowObject();
 
+	CombatManager::instance()->forcePeace(asAiAgent());
+
 	clearPatrolPoints();
 	clearDots();
-
-	CombatManager::instance()->forcePeace(asAiAgent());
-	setMovementState(AiAgent::LEASHING);
-	homeLocation.setReached(false);
+	currentFoundPath = nullptr;
 }
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {
@@ -2610,6 +2609,20 @@ int AiAgentImplementation::setDestination() {
 		}
 
 		clearPatrolPoints();
+
+		if (!isPet() && followCopy->getParent().get() != nullptr) {
+			ManagedReference<SceneObject*> rootParent = followCopy->getRootParent();
+
+			if (rootParent != nullptr && rootParent->isBuildingObject()) {
+				BuildingObject* rootBuilding = rootParent.castTo<BuildingObject*>();
+
+				if (rootBuilding != nullptr && rootBuilding->isPrivateStructure()) {
+					leash();
+					return setDestination();
+				}
+			}
+		}
+
 		PatrolPoint nextPos = followCopy->getPosition();
 
 		if (peekBlackboard("formationOffset") && !isInCombat()) {
