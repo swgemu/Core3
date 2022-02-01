@@ -1,4 +1,5 @@
 includeFile("default.lua")
+includeFile("acklay.lua")
 includeFile("escort.lua")
 includeFile("pet.lua")
 includeFile("static.lua")
@@ -25,6 +26,10 @@ customMap = {
 
 	{ "villageRaider", {
 		{AWARE, "awareVillageraider"}
+	}},
+
+	{ "geoLabAcklay", {
+		{MOVE, "moveAcklay"}
 	}},
 }
 
