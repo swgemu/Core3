@@ -146,7 +146,7 @@ TatooineBestineScreenPlay = CityScreenPlay:new {
 		--Guild Hall -1187 -3515
 		{"contractor",60,-3.69,1.13306,-6,11.0003,1028558, ""},
 		{"trainer_artisan",0,-0.0507306,1.13306,-13.747,0,1028562, ""},
-		{"mercenary",60,3.29,1.13306,-9.58,249.007,1028562, ""},
+		{"mercenary",300,3.29,1.13306,-9.58,249.007,1028562, ""},
 
 		{"coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,1028561, "npc_imperial"},
 
@@ -169,15 +169,15 @@ TatooineBestineScreenPlay = CityScreenPlay:new {
 		{"commoner_naboo",60,-0.6,0.4,-2.8,134,1528397, "npc_sitting_chair"},
 		{"ishitib_male",60,3.0,0.4,-9.3,0,1528397, "npc_sitting_chair"},
 		{"commoner_fat",60,-9.4,1.0,9.3,-80,1528398, "npc_standing_drinking"},
-		{"mercenary",60,-10.6,0.4,-2.3,90,1528397, "threaten"},
-		{"mercenary",60,-10.7,-1.4,-10.4,44,1528400, "threaten"},
-		{"mercenary",60,0.2,-4.0,-10.4,-47,1528401, "threaten"},
-		{"mercenary",60,-11.2,-9.5,1.8,135,1528404, "threaten"},
+		{"mercenary",300,-10.6,0.4,-2.3,90,1528397, "threaten"},
+		{"mercenary",300,-10.7,-1.4,-10.4,44,1528400, "threaten"},
+		{"mercenary",300,0.2,-4.0,-10.4,-47,1528401, "threaten"},
+		{"mercenary",300,-11.2,-9.5,1.8,135,1528404, "threaten"},
 		{"seeker",240,-1.0,-9.5,1.8,-123,1528404, ""},
 		{"twilek_slave",60,-1.9,-9.5,-2.4,130,1528407, "nervous"},
 		{"devaronian_male",60,-0.4,-9.5,-3.9,-44,1528407, "accusing"},
-		{"mercenary",60,-0.5,-9.5,-2.4,-90,1528407, "threaten"},
-		{"mercenary",60,-1.9,-9.5,-3.6,-16,1528407, "threaten"},
+		{"mercenary",300,-0.5,-9.5,-2.4,-90,1528407, "threaten"},
+		{"mercenary",300,-1.9,-9.5,-3.6,-16,1528407, "threaten"},
 		{"probot",60,2.7,-9.5,1.1,-100,1528407, ""},
 
 		--Tavern -1009 -3544
