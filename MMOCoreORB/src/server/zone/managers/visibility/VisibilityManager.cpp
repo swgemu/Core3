@@ -80,24 +80,22 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 }
 
 void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
-
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	if (ghost != nullptr) {
-		Locker locker(ghost);
-		if (ghost->getVisibility() > 0)
-		{
+	if (ghost == nullptr)
+		return;
 
-			//info("VisDecayTickRate: " + String::valueOf(visDecayTickRate) + " DecayPerTick: " + String::valueOf(visDecayPerTick), true);
-			float visibilityDecrease = (((ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.0f) / visDecayTickRate) * visDecayPerTick);
+	Locker locker(ghost);
 
-			//info("Decreasing visibility of player " + creature->getFirstName() + " by " + String::valueOf(visibilityDecrease), true);
-			if (ghost->getVisibility() <= visibilityDecrease) {
-				clearVisibility(creature);
-			} else {
-				ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
-			}
-		}
+	if (ghost->getVisibility() <= 0)
+		return;
+
+	float visibilityDecrease = (((ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.0f) / visDecayTickRate) * visDecayPerTick);
+
+	if (ghost->getVisibility() <= visibilityDecrease) {
+		clearVisibility(creature);
+	} else {
+		ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
 	}
 }
 
