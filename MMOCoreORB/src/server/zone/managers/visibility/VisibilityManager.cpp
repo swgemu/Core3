@@ -8,6 +8,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 const String VisibilityManager::factionStringRebel = "rebel";
 const String VisibilityManager::factionStringImperial = "imperial";
@@ -80,24 +81,34 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 }
 
 void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
+	if (creature == nullptr)
+		return;
 
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	if (ghost != nullptr) {
-		Locker locker(ghost);
-		if (ghost->getVisibility() > 0)
-		{
+	if (ghost == nullptr)
+		return;
 
-			//info("VisDecayTickRate: " + String::valueOf(visDecayTickRate) + " DecayPerTick: " + String::valueOf(visDecayPerTick), true);
-			float visibilityDecrease = (((ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.0f) / visDecayTickRate) * visDecayPerTick);
+	Locker locker(ghost);
 
-			//info("Decreasing visibility of player " + creature->getFirstName() + " by " + String::valueOf(visibilityDecrease), true);
-			if (ghost->getVisibility() <= visibilityDecrease) {
-				clearVisibility(creature);
-			} else {
-				ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
-			}
+	if (ghost->getVisibility() <= 0)
+		return;
+
+	if (creature->getParent() != nullptr && creature->isOnline() && !ConfigManager::instance()->getBool("Core3.VisibilityManager.PrivateStructureDecay", true)) {
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(creature->getRootParent());
+
+		if (building != nullptr && building->isPrivateStructure()) {
+			ghost->updateVisibilityTimestamp();
+			return;
 		}
+	}
+
+	float visibilityDecrease = (((ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.0f) / visDecayTickRate) * visDecayPerTick);
+
+	if (ghost->getVisibility() <= visibilityDecrease) {
+		clearVisibility(creature);
+	} else {
+		ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
 	}
 }
 

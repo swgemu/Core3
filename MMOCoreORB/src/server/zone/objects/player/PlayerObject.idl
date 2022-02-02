@@ -1722,6 +1722,10 @@ class PlayerObject extends IntangibleObject {
 		visibility = value;
 		lastVisibilityUpdateTimestamp.updateToCurrentTime();
 	}
+	
+	public void updateVisibilityTimestamp() {
+		lastVisibilityUpdateTimestamp.updateToCurrentTime();
+	}
 
 	@dereferenced
 	@local

@@ -34,6 +34,7 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 void MissionManagerImplementation::loadLuaSettings() {
 	try {
@@ -2025,8 +2026,17 @@ bool MissionManagerImplementation::isBountyValidForPlayer(CreatureObject* player
 	if (!bounty->isOnline())
 		return false;
 
-	if (bounty->numberOfActiveMissions() >= 5)
+	int maxBountiesPerJedi = ConfigManager::instance()->getInt("Core3.MissionManager.MaxBountiesPerJedi", 5);
+
+	if (bounty->numberOfActiveMissions() >= maxBountiesPerJedi)
 		return false;
+
+	if (!ConfigManager::instance()->getBool("Core3.MissionManager.PrivateStructureJediMissions", true)) {
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(player->getRootParent());
+
+		if (building != nullptr && building->isPrivateStructure())
+			return false;
+	}
 
 	uint64 targetId = bounty->getTargetPlayerID();
 	uint64 playerId = player->getObjectID();
