@@ -26,6 +26,7 @@ cll8_binary_load_lifter = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
+	customAiMap = "cityPatrol",
 
 	templates = {"object/mobile/cll8_binary_load_lifter.iff"},
 	lootGroups = {},

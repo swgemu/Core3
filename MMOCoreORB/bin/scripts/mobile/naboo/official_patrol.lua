@@ -27,6 +27,7 @@ official_patrol = Creature:new {
 	creatureBitmask = HERD,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "cityPatrol",
 
 	templates = {"object/mobile/dressed_official.iff"},
 

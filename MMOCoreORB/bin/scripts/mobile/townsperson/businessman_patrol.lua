@@ -27,6 +27,7 @@ businessman_patrol = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "cityPatrol",
 
 	templates = {
 		"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",

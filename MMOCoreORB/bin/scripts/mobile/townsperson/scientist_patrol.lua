@@ -27,6 +27,7 @@ scientist_patrol = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "cityPatrol",
 
 	templates = {
 		"object/mobile/dressed_combatmedic_trainer_human_male_01.iff",

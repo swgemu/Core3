@@ -1,11 +1,12 @@
 includeFile("default.lua")
 includeFile("acklay.lua")
+includeFile("cityPatrol.lua")
+includeFile("crackdown.lua")
+includeFile("deathWatch.lua")
+includeFile("enclaveSentinel.lua")
 includeFile("escort.lua")
 includeFile("pet.lua")
 includeFile("static.lua")
-includeFile("deathWatch.lua")
-includeFile("enclaveSentinel.lua")
-includeFile("crackdown.lua")
 includeFile("villageRaider.lua")
 
 customMap = {
@@ -30,6 +31,11 @@ customMap = {
 
 	{ "geoLabAcklay", {
 		{MOVE, "moveAcklay"}
+	}},
+
+	{ "cityPatrol", {
+		{ROOT, "rootCitypatrol"},
+		{IDLE, "idleCitypatrol"}
 	}},
 }
 

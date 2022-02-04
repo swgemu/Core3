@@ -184,11 +184,11 @@ function CityScreenPlay:setupMobilePatrol(pMobile, num)
 
 	if combatNpc then
 		createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawnPatrol", pMobile)
+		return
 	else
 		CreatureObject(pMobile):setPvpStatusBitmask(0)
 	end
 
-	AiAgent(pMobile):setMovementState(AI_PATROLLING)
 	createEvent(getRandomNumber(20, 40) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
 	createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
 end
@@ -276,9 +276,7 @@ function CityScreenPlay:mobilePatrol(pMobile)
 		nextPoint = pointSet[currentLoc + 1]
 	end
 
-	AiAgent(pMobile):stopWaiting()
 	AiAgent(pMobile):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
-	AiAgent(pMobile):executeBehavior()
 end
 
 function CityScreenPlay:spawnStationaryMobiles()

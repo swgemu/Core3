@@ -27,6 +27,7 @@ commoner_tatooine_patrol = Creature:new {
 	creatureBitmask = HERD,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "cityPatrol",
 
 	templates = { "commoner_tatooine" },
 
