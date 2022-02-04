@@ -134,6 +134,23 @@ addAiTemplate("healDefault", healDefault)
 
 idleDefault = {
 	{id="2434234854",	name="Selector",	pid="none"},
+	{id="1398319073",	name="Sequence",	pid="2434234854"},
+	{id="2478467976",	name="Selector",	pid="1398319073"},
+	{id="496166575",	name="If",	pid="2478467976"},
+	{id="3240544028",	name="CheckMovementState",	pid="496166575",	args={condition=FLEEING}},
+	{id="2757532336",	name="If",	pid="2478467976"},
+	{id="3270011669",	name="CheckMovementState",	pid="2757532336",	args={condition=LEASHING}},
+	{id="2186343870",	name="If",	pid="1398319073"},
+	{id="935976306",	name="CheckDestination",	pid="2186343870",	args={condition=0.0}},
+	{id="1349815697",	name="WriteBlackboard",	pid="1398319073",	args={key="moveMode", val=RUN}},
+	{id="681545628",	name="TreeSocket",	pid="1398319073",	args={slot=MOVE}},
+	{id="4129527278",	name="Sequence",	pid="2434234854"},
+	{id="3690571869",	name="If",	pid="4129527278"},
+	{id="4009188085",	name="CheckMovementState",	pid="3690571869",	args={condition=PATHING_HOME}},
+	{id="663900148",	name="If",	pid="4129527278"},
+	{id="3881405125",	name="CheckDestination",	pid="663900148",	args={condition=0.0}},
+	{id="1596358304",	name="WriteBlackboard",	pid="4129527278",	args={key="moveMode", val=WALK}},
+	{id="1979932461",	name="TreeSocket",	pid="4129527278",	args={slot=MOVE}},
 	{id="3408558848",	name="Sequence",	pid="2434234854"},
 	{id="480022165",	name="If",	pid="3408558848"},
 	{id="1939596405",	name="CheckHasPatrol",	pid="480022165"},
@@ -152,19 +169,7 @@ idleDefault = {
 	{id="1384587681",	name="CheckMovementState",	pid="3807314026",	args={condition=PATHING_HOME}},
 	{id="3483017378",	name="If",	pid="4072235030"},
 	{id="776089883",	name="CheckOutdoors",	pid="3483017378"},
-	{id="1547268873",	name="GeneratePatrol",	pid="4072235030",	args={distFromHome=10.0, numPoints=5}},
-	{id="4129527278",	name="Sequence",	pid="2434234854"},
-	{id="3690571869",	name="If",	pid="4129527278"},
-	{id="4009188085",	name="CheckMovementState",	pid="3690571869",	args={condition=PATHING_HOME}},
-	{id="663900148",	name="If",	pid="4129527278"},
-	{id="3881405125",	name="CheckDestination",	pid="663900148",	args={condition=0.0}},
-	{id="1596358304",	name="WriteBlackboard",	pid="4129527278",	args={key="moveMode", val=WALK}},
-	{id="1979932461",	name="TreeSocket",	pid="4129527278",	args={slot=MOVE}},
-	{id="1398319073",	name="Sequence",	pid="2434234854"},
-	{id="2757532336",	name="If",	pid="1398319073"},
-	{id="3270011669",	name="CheckMovementState",	pid="2757532336",	args={condition=LEASHING}},
-	{id="1349815697",	name="WriteBlackboard",	pid="1398319073",	args={key="moveMode", val=RUN}},
-	{id="681545628",	name="TreeSocket",	pid="1398319073",	args={slot=MOVE}}}
+	{id="1547268873",	name="GeneratePatrol",	pid="4072235030",	args={distFromHome=10.0, numPoints=5}}}
 addAiTemplate("idleDefault", idleDefault)
 
 killDefault = {

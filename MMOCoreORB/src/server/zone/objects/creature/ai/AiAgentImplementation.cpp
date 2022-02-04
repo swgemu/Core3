@@ -1235,13 +1235,23 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 	Vector3 creaturePosition = target->getPosition();
 
 	if (random) {
-		runTrajectory.set((creaturePosition.getX() + System::random(20)) - (agentPosition.getX() + System::random(20)), (creaturePosition.getY() + System::random(20)) - (agentPosition.getY() + System::random(20)), 0);
+		runTrajectory.setX((creaturePosition.getX() + System::random(20)) - (agentPosition.getX() + System::random(20)));
+		runTrajectory.setY((creaturePosition.getY() + System::random(20)) - (agentPosition.getY() + System::random(20)));
 	} else {
-		runTrajectory.set(agentPosition.getX() - creaturePosition.getX(), agentPosition.getY() - creaturePosition.getY(), 0);
+		runTrajectory.setX(agentPosition.getX() - creaturePosition.getX());
+		runTrajectory.setY(agentPosition.getY() - creaturePosition.getY());
 	}
 
-	runTrajectory = runTrajectory * (range / runTrajectory.length());
-	runTrajectory += getPosition();
+	float directionAngle = atan2(runTrajectory.getX(), runTrajectory.getY());
+
+	directionAngle = M_PI / 2 - directionAngle;
+
+	if (directionAngle < 0) {
+		float a = M_PI + directionAngle;
+		directionAngle = M_PI + a;
+	}
+
+	runTrajectory = agentPosition + (range * runTrajectory);
 
 	setNextPosition(runTrajectory.getX(), getZoneUnsafe()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
 }

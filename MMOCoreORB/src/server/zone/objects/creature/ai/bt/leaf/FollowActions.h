@@ -676,7 +676,7 @@ public:
 				if (!agent->isInRange(target, 64.f))
 					return FAILURE;
 
-				float distance = System::random(35) + 25;
+				float distance = System::random(20) + 15;
 
 				agent->clearQueueActions();
 				agent->writeBlackboard("fleeRange", distance);
