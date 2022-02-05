@@ -774,6 +774,8 @@ void AiAgentImplementation::initializeTransientMembers() {
 
 	if (npcTemplate != nullptr)
 		setupAttackMaps();
+
+	aiLoadTesting = ConfigManager::instance()->getAiAgentLoadTesting();
 }
 
 void AiAgentImplementation::notifyLoadFromDatabase() {
@@ -2917,7 +2919,7 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (getZoneUnsafe() == nullptr || !(getOptionsBitmask() & OptionBitmask::AIENABLED))
 		return;
 
-	if (numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) {
+	if (!aiLoadTesting && numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) {
 		cancelMovementEvent();
 		return;
 	}

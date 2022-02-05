@@ -204,6 +204,8 @@ class AiAgent extends CreatureObject {
 
 	protected transient unsigned long customAiMap;
 
+	protected boolean aiLoadTesting;
+
 	public AiAgent() {
 		movementState = OBLIVIOUS;
 
@@ -230,6 +232,8 @@ class AiAgent extends CreatureObject {
 
 		aiTemplate = "";
 		customAiMap = 0;
+
+		aiLoadTesting = false;
 	}
 
 	/**
