@@ -2913,7 +2913,7 @@ void AiAgentImplementation::activateMovementEvent() {
 
 	Locker locker(&movementEventMutex);
 
-	if (numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) {
+	if (!aiLoadTesting && numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) {
 		if (moveEvent != nullptr) {
 			moveEvent->clearCreatureObject();
 			moveEvent = nullptr;

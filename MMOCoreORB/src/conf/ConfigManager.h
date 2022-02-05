@@ -642,6 +642,21 @@ namespace conf {
 
 			return cachedForceNoTradeADKMessage;
 		}
+
+#ifdef DEBUG_AI
+		inline bool getAiAgentLoadTesting() {
+			static uint32 cachedVersion = 0;
+			static bool cachedAiAgentLoadTesting;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedAiAgentLoadTesting = getBool("Core3.AiAgent.AiAgentLoadTesting", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedAiAgentLoadTesting;
+		}
+#endif
 	};
 }
 
