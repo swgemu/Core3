@@ -2917,7 +2917,13 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (getZoneUnsafe() == nullptr || !(getOptionsBitmask() & OptionBitmask::AIENABLED))
 		return;
 
-	if (numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) {
+#ifdef DEBUG_AI
+	bool alwaysActive = ConfigManager::instance()->getAiAgentLoadTesting();
+#else // DEBUG_AI
+	bool alwaysActive = false;
+#endif // DEBUG_AI
+
+	if (!alwaysActive && numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) {
 		cancelMovementEvent();
 		return;
 	}
