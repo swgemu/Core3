@@ -354,6 +354,11 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 
 		if (containerPower > power) {
 			uint32 consumedUnits = (uint64) power / modifier;
+
+			if (consumedUnits < 1) {
+				consumedUnits = 1;
+			}
+
 			rcno->setQuantity(quantity - consumedUnits);
 
 			ResourceContainerObjectDeltaMessage3* drcno3 = new ResourceContainerObjectDeltaMessage3(rcno);
