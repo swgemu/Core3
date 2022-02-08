@@ -1251,7 +1251,9 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 		directionAngle = M_PI + a;
 	}
 
-	runTrajectory = agentPosition + (range * runTrajectory);
+	float distance = getWorldPosition().distanceTo(target->getWorldPosition());
+
+	runTrajectory = agentPosition + (range * (runTrajectory / distance));
 
 	setNextPosition(runTrajectory.getX(), getZoneUnsafe()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
 }
