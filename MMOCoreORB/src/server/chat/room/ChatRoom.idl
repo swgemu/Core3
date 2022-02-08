@@ -282,7 +282,7 @@ class ChatRoom extends ManagedObject {
 		isPublicRoom = true;
 	}
 
-	@dirty
+	@read
 	public boolean isPublic() {
 		return isPublicRoom == true;
 	}
