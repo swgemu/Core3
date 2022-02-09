@@ -376,6 +376,14 @@ static int triangulate(int n, const int* verts, int* indices, int* tris)
 		
 		if (mini == -1)
 		{
+			// We might get here because the contour has overlapping segments, like this:
+			//
+			//  A o-o=====o---o B
+			//   /  |C   D|    \.
+			//  o   o     o     o
+			//  :   :     :     :
+			// We'll try to recover by loosing up the inCone test a bit so that a diagonal
+			// like A-B or C-D can be found and we can continue.
 			minLen = -1;
 			mini = -1;
 			for (int i = 0; i < n; i++)
