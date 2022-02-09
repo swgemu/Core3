@@ -40,11 +40,9 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getMovementState", &LuaAiAgent::getMovementState },
 		{ "setMovementState", &LuaAiAgent::setMovementState },
 		{ "setNextPosition", &LuaAiAgent::setNextPosition },
-		{ "findNextPosition", &LuaAiAgent::findNextPosition },
 		{ "getMaxDistance", &LuaAiAgent::getMaxDistance },
 		{ "generatePatrol", &LuaAiAgent::generatePatrol },
 		{ "setDestination", &LuaAiAgent::setDestination },
-		{ "completeMove", &LuaAiAgent::completeMove },
 		{ "isWaiting", &LuaAiAgent::isWaiting },
 		{ "stopWaiting", &LuaAiAgent::stopWaiting },
 		{ "setWait", &LuaAiAgent::setWait },
@@ -275,21 +273,6 @@ int LuaAiAgent::setMovementState(lua_State* L) {
 	return 0;
 }
 
-/**
- * @param takes a float maxDistance argument
- * @return bool to lua depending on if a new position was found or not
- */
-int LuaAiAgent::findNextPosition(lua_State* L) {
-	bool walk = lua_toboolean(L, -1);
-	float maxDistance = lua_tonumber(L, -2);
-
-	bool found = realObject->findNextPosition(maxDistance, walk);
-
-	lua_pushboolean(L, found);
-
-	return 1;
-}
-
 int LuaAiAgent::getMaxDistance(lua_State* L) {
 	float maxDistance = realObject->getMaxDistance();
 
@@ -313,16 +296,6 @@ int LuaAiAgent::setDestination(lua_State* L) {
 	int retVal = realObject->setDestination();
 
 	lua_pushinteger(L, retVal);
-
-	return 1;
-}
-
-int LuaAiAgent::completeMove(lua_State* L) {
-	Locker locker(realObject);
-
-	bool retVal = realObject->completeMove();
-
-	lua_pushboolean(L, retVal);
 
 	return 1;
 }
