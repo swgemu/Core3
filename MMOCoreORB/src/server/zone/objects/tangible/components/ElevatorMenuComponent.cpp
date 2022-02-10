@@ -11,6 +11,8 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/packets/scene/SceneObjectCreateMessage.h"
+#include "server/zone/Zone.h"
 
 void ElevatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) const {
 	menuResponse->addRadialMenuItem(198, 3, "@elevator_text:up");
@@ -20,8 +22,13 @@ void ElevatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Obj
 int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) const {
 	ManagedReference<SceneObject*> parent = creature->getParent().get();
 
-	if (parent == nullptr || !parent->isCellObject() || parent != sceneObject->getParent().get())
+	if (parent == nullptr || !parent->isCellObject())
 		return 0;
+
+	if (parent != sceneObject->getParent().get()) {
+		creature->sendSystemMessage("@elevator_text:too_far"); // You are too far away to use that.
+		return 0;
+	}
 
 	CellObject* cell = parent.castTo<CellObject*>();
 
@@ -43,7 +50,7 @@ int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 	switch (selectedID) {
 	case 198: //UP
 		if (i <= 0) {
-			creature->sendSystemMessage("You are already on the highest floor");
+			creature->sendSystemMessage("@elevator_text:highest_floor"); // You are already on the highest floor.
 			delete floors;
 			floors = nullptr;
 			return 0;
@@ -54,7 +61,7 @@ int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 		break;
 	case 199: //DOWN
 		if (i >= floorCount - 1) {
-			creature->sendSystemMessage("You are already on the lowest floor");
+			creature->sendSystemMessage("@elevator_text:lowest_floor"); // You are already on the lowest floor.
 			delete floors;
 			floors = nullptr;
 			return 0;
@@ -69,10 +76,32 @@ int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 		return 0;
 	}
 
-	creature->teleport(x, z, y, sceneObject->getParentID());
-
 	delete floors;
 	floors = nullptr;
+
+	creature->teleport(x, z, y, sceneObject->getParentID());
+
+	Zone* zone = creature->getZone();
+	if (zone == nullptr) {
+		return 0;
+	}
+
+	CloseObjectsVector* closeObjectsVector = creature->getCloseObjects();
+	if (closeObjectsVector == nullptr) {
+		return 0;
+	}
+
+	Vector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
+	closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* scno = static_cast<SceneObject*>(closeObjects.get(i));
+		if (scno == nullptr || scno == creature) {
+			continue;
+		}
+
+		creature->sendWithoutContainerObjectsTo(scno);
+	}
 
 	return 0;
 }
