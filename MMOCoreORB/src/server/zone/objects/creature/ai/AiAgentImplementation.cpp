@@ -802,24 +802,28 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 }
 
 void AiAgentImplementation::doRecovery(int latency) {
-	if (isDead() || getZoneUnsafe() == nullptr) {
-		blackboard.removeAll();
-		return;
+	try {
+		if (isDead() || getZoneUnsafe() == nullptr) {
+			blackboard.removeAll();
+			return;
+		}
+
+		activateHAMRegeneration(latency);
+		activateStateRecovery();
+		activatePostureRecovery();
+
+		// we only want to activate recovery if we need to -- it will restart when we need it
+		if (defenderList.size() > 0 || damageOverTimeList.hasDot()
+				|| getHAM(CreatureAttribute::HEALTH) < getMaxHAM(CreatureAttribute::HEALTH)
+				|| getHAM(CreatureAttribute::ACTION) < getMaxHAM(CreatureAttribute::ACTION)
+				|| getHAM(CreatureAttribute::MIND) < getMaxHAM(CreatureAttribute::MIND)
+				|| getWounds(CreatureAttribute::CONSTITUTION) > 0 || getWounds(CreatureAttribute::STRENGTH) > 0
+				|| getWounds(CreatureAttribute::QUICKNESS) > 0 || getWounds(CreatureAttribute::STAMINA) > 0
+				|| getWounds(CreatureAttribute::FOCUS) > 0 || getWounds(CreatureAttribute::WILLPOWER) > 0)
+			activateRecovery();
+	} catch (const Exception& ex) {
+		handleException(ex, __FUNCTION__);
 	}
-
-	activateHAMRegeneration(latency);
-	activateStateRecovery();
-	activatePostureRecovery();
-
-	// we only want to activate recovery if we need to -- it will restart when we need it
-	if (defenderList.size() > 0 || damageOverTimeList.hasDot()
-			|| getHAM(CreatureAttribute::HEALTH) < getMaxHAM(CreatureAttribute::HEALTH)
-			|| getHAM(CreatureAttribute::ACTION) < getMaxHAM(CreatureAttribute::ACTION)
-			|| getHAM(CreatureAttribute::MIND) < getMaxHAM(CreatureAttribute::MIND)
-			|| getWounds(CreatureAttribute::CONSTITUTION) > 0 || getWounds(CreatureAttribute::STRENGTH) > 0
-			|| getWounds(CreatureAttribute::QUICKNESS) > 0 || getWounds(CreatureAttribute::STAMINA) > 0
-			|| getWounds(CreatureAttribute::FOCUS) > 0 || getWounds(CreatureAttribute::WILLPOWER) > 0)
-		activateRecovery();
 }
 
 bool AiAgentImplementation::selectSpecialAttack() {
@@ -2255,45 +2259,49 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 }
 
 void AiAgentImplementation::doMovement() {
-	//info("doMovement", true);
-	Reference<Behavior*> rootBehavior = getBehaviorTree(BehaviorTreeSlot::NONE);
-	assert(rootBehavior != nullptr);
+	try {
+		//info("doMovement", true);
+		Reference<Behavior*> rootBehavior = getBehaviorTree(BehaviorTreeSlot::NONE);
+		assert(rootBehavior != nullptr);
 
-	// Do pre-checks (these should remain hard-coded)
-	if (asAiAgent()->isDead() || asAiAgent()->isIncapacitated() || (asAiAgent()->getZoneUnsafe() == nullptr) || !(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
-		setFollowObject(nullptr);
-		return;
+		// Do pre-checks (these should remain hard-coded)
+		if (asAiAgent()->isDead() || asAiAgent()->isIncapacitated() || (asAiAgent()->getZoneUnsafe() == nullptr) || !(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
+			setFollowObject(nullptr);
+			return;
+		}
+
+		Time startTime;
+		startTime.updateToCurrentTime();
+
+		//if (isWaiting())
+		//	stopWaiting();
+
+#ifdef DEBUG_AI
+		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
+			info("Performing root behavior: " + rootBehavior->print(), true);
+#endif // DEBUG_AI
+		// activate AI
+		Behavior::Status actionStatus = rootBehavior->doAction(asAiAgent());
+
+		if (actionStatus == Behavior::RUNNING)
+			popRunningChain(); // don't keep root in the running chain
+
+		//if (actionStatus == Behavior::RUNNING) {
+		//	std::cout << "Running chain: (" << runningChain.size() << ")" << std::endl;
+		//	for (int i = 0; i < runningChain.size(); ++i) {
+		//		std::cout << "0x" << std::hex << runningChain.get(i) << std::endl;;
+		//	}
+		//}
+
+#ifdef DEBUG_AI
+		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
+			info("rootBehavior->doAction() took " + String::valueOf((int)startTime.miliDifference()) + "ms to complete.", true);
+#endif // DEBUG_AI
+
+		activateMovementEvent();
+	} catch (Exception& ex) {
+		handleException(ex, __FUNCTION__);
 	}
-
-	Time startTime;
-	startTime.updateToCurrentTime();
-
-	//if (isWaiting())
-	//	stopWaiting();
-
-#ifdef DEBUG_AI
-	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
-		info("Performing root behavior: " + rootBehavior->print(), true);
-#endif // DEBUG_AI
-	// activate AI
-	Behavior::Status actionStatus = rootBehavior->doAction(asAiAgent());
-
-	if (actionStatus == Behavior::RUNNING)
-		popRunningChain(); // don't keep root in the running chain
-
-	//if (actionStatus == Behavior::RUNNING) {
-	//	std::cout << "Running chain: (" << runningChain.size() << ")" << std::endl;
-	//	for (int i = 0; i < runningChain.size(); ++i) {
-	//		std::cout << "0x" << std::hex << runningChain.get(i) << std::endl;;
-	//	}
-	//}
-
-#ifdef DEBUG_AI
-	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
-		info("rootBehavior->doAction() took " + String::valueOf((int)startTime.miliDifference()) + "ms to complete.", true);
-#endif // DEBUG_AI
-
-	activateMovementEvent();
 }
 
 void AiAgentImplementation::setAIDebug(bool flag) {
@@ -3736,4 +3744,26 @@ String AiAgentImplementation::getErrorContext() {
 	msg << " at: " << getWorldPosition().toString();
 
 	return msg.toString();
+}
+
+void AiAgentImplementation::handleException(const Exception& ex, const String& context) {
+	auto numExceptions = AiMap::instance()->countExceptions.increment();
+	auto consoleToo = (numExceptions - 1) % ConfigManager::instance()->getAiAgentConsoleThrottle() == 0;
+
+	StringBuffer msg;
+
+	msg << "Unhandled AiAgent exception from " << context << ": " << ex.getMessage()
+		<< "; AiMap::countExceptions=" << numExceptions
+		<< "; AiAgentID=" << getObjectID()
+		;
+
+	if (consoleToo) {
+		auto fileName = getLogFileName();
+
+		Logger::console.error()
+			<< msg << (fileName.isEmpty() ? "" : "; logFileName=" + fileName);
+	}
+
+	auto trace = ex.getStackTrace();
+	error() << msg << endl << trace.toStringData() << endl << *this;
 }

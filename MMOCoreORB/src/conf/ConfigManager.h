@@ -642,6 +642,27 @@ namespace conf {
 
 			return cachedForceNoTradeADKMessage;
 		}
+
+		inline uint32 getAiAgentConsoleThrottle() {
+			static uint32 cachedVersion = 0;
+			static uint32 cachedValue;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+#ifdef DEBUG_AI
+				cachedValue = getInt("Core3.AiAgent.ConsoleThrottle", 1);
+#else // !DEBUG_AI
+				cachedValue = getInt("Core3.AiAgent.ConsoleThrottle", 100);
+#endif // DEBUG_AI
+				if (cachedVersion <= 0) {
+					cachedVersion = 1;
+				}
+
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedValue;
+		}
 	};
 }
 

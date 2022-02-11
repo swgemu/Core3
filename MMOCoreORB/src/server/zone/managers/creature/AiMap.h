@@ -85,6 +85,7 @@ public:
 	VectorMap<uint32, VectorMap<BehaviorTreeSlot, Reference<Behavior*> > > bitmaskMap;
 	VectorMap<uint64, VectorMap<BehaviorTreeSlot, Reference<Behavior*> > > customMap;
 
+	AtomicInteger countExceptions;
 	AtomicInteger activeMoveEvents;
 	AtomicInteger scheduledMoveEvents;
 	AtomicInteger moveEventsWithFollowObject;
