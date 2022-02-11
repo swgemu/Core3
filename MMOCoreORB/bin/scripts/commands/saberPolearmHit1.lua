@@ -42,9 +42,10 @@
 --true = 1, false = 0
 
 SaberPolearmHit1Command = {
-        name = "saberpolearmhit1",
-            
+	name = "saberpolearmhit1",
+
 	damageMultiplier = 1.25,
+	accuracyBonus = 50,
 	speedMultiplier = 1.5,
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
@@ -52,7 +53,7 @@ SaberPolearmHit1Command = {
 	forceCostMultiplier = 1.0,
 	visMod = 25,
 
-	animation = "combo_3a", 
+	animation = "combo_3a",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saberpolearmhit1",

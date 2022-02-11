@@ -42,9 +42,10 @@
 --true = 1, false = 0
 
 SaberSlash1Command = {
-        name = "saberslash1",
+	name = "saberslash1",
 
 	damageMultiplier = 1.0,
+	accuracyBonus = 50,
 	speedMultiplier = 1.25,
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
@@ -53,56 +54,56 @@ SaberSlash1Command = {
 	visMod = 25,
 
 	dotEffects = {
-	  DotEffect(
-		BLEEDING,
-		{ "resistance_bleeding", "bleed_resist" },
-		HEALTH,
-		true,
-		0,
-		25,
-		50,
-		30,
-      		8.33,
-      		8.33
-	  ),
+		DotEffect(
+			BLEEDING,
+			{ "resistance_bleeding", "bleed_resist" },
+			HEALTH,
+			true,
+			0,
+			25,
+			50,
+			30,
+			8.33,
+			8.33
+		),
 
-	  	DotEffect(
-		BLEEDING,
-		{ "resistance_bleeding", "bleed_resist" },
-		ACTION,
-		true,
-		0,
-		25,
-		50,
-		30,
-		8.33,
-		8.33
-	  ),
+		DotEffect(
+			BLEEDING,
+			{ "resistance_bleeding", "bleed_resist" },
+			ACTION,
+			true,
+			0,
+			25,
+			50,
+			30,
+			8.33,
+			8.33
+		),
 
-	  	DotEffect(
-		BLEEDING,
-		{ "resistance_bleeding", "bleed_resist" },
-		MIND,
-		true,
-		0,
-		25,
-		50,
-		30,
-		8.33,
-		8.33
-	  ),
+		DotEffect(
+			BLEEDING,
+			{ "resistance_bleeding", "bleed_resist" },
+			MIND,
+			true,
+			0,
+			25,
+			50,
+			30,
+			8.33,
+			8.33
+		),
 	},
 
 	stateEffects = {
-	  StateEffect(
-		POSTUREDOWN_EFFECT,
-		{ "postureDownRecovery" },
-		{ "posture_change_down_defense" },
-		{},
-		100,
-		0,
-		0
-	  )
+		StateEffect(
+			POSTUREDOWN_EFFECT,
+			{ "postureDownRecovery" },
+			{ "posture_change_down_defense" },
+			{},
+			100,
+			0,
+			0
+		)
 	},
 
 	combatSpam = "saberslash1",

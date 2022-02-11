@@ -42,9 +42,10 @@
 --true = 1, false = 0
 
 SaberPolearmSpinAttack1Command = {
-        name = "saberpolearmspinattack1",
+	name = "saberpolearmspinattack1",
 
 	damageMultiplier = 0.75,
+	accuracyBonus = 50,
 	speedMultiplier = 1.25,
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
@@ -54,7 +55,7 @@ SaberPolearmSpinAttack1Command = {
 	areaRange = 16,
 	visMod = 25,
 
-	animation = "counter_low_left", 
+	animation = "counter_low_left",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saberpolearmspinattack1",
