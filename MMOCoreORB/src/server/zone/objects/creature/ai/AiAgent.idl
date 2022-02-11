@@ -34,7 +34,6 @@ include server.zone.objects.creature.ai.variables.CurrentFoundPath;
 include server.zone.objects.creature.ai.bt.Behavior;
 include server.zone.objects.creature.ai.bt.BehaviorTreeSlot;
 import server.zone.objects.intangible.ControlDevice;
-import server.zone.objects.creature.ai.events.AiTrackingTask;
 import system.thread.atomic.AtomicInteger;
 include server.zone.objects.tangible.deed.pet.PetDeed;
 include server.zone.objects.cell.CellObject;
@@ -175,8 +174,6 @@ class AiAgent extends CreatureObject {
 
 	@dereferenced
 	protected transient Time aggroDelay;
-
-	protected transient AiTrackingTask trackingTask;
 
 	protected unsigned int nextActionCRC;
 	protected string nextActionArgs;
@@ -1317,29 +1314,6 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public Time getLastCallForHelp() {
 		return lastCallForHelp;
-	}
-
-	public void incrementLuaCall(final string key) {
-		trackingTask.incrementCall(key);
-	}
-
-	public void addToLuaTime(final string key, unsigned long val) {
-		trackingTask.addTime(key, val);
-	}
-
-	public void outputLuaTimes(CreatureObject caller) {
-		trackingTask.outputTimes(caller);
-	}
-
-	public void rescheduleTrackingTask() {
-		if (!trackingTask) {
-			trackingTask = new AiTrackingTask(this);
-			trackingTask.schedule(300000);
-		}
-
-		if (!trackingTask.isScheduled()) {
-			trackingTask.schedule(300000);
-		}
 	}
 
 	@dirty

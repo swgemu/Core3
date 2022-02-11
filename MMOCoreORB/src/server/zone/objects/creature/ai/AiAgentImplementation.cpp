@@ -774,8 +774,6 @@ void AiAgentImplementation::initializeTransientMembers() {
 
 	if (npcTemplate != nullptr)
 		setupAttackMaps();
-
-	rescheduleTrackingTask();
 }
 
 void AiAgentImplementation::notifyLoadFromDatabase() {
