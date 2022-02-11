@@ -48,6 +48,7 @@ public:
 
 			if (!tempName.isEmpty() && tempName == "checkThreads") {
 				creature->sendSystemMessage("Current number of AiMoveEvents: " + String::valueOf(AiMap::instance()->activeMoveEvents.get()));
+				creature->sendSystemMessage("Current number of AiAgent Exceptions: " + String::valueOf(AiMap::instance()->countExceptions.get()));
 				creature->sendSystemMessage("Current number of scheduled AiMoveEvents: " + String::valueOf(AiMap::instance()->scheduledMoveEvents.get()));
 				creature->sendSystemMessage("Current number of scheduled AiMoveEvents with followObject: " + String::valueOf(AiMap::instance()->moveEventsWithFollowObject.get()));
 				creature->sendSystemMessage("Current number of scheduled AiMoveEvents retreating: " + String::valueOf(AiMap::instance()->moveEventsRetreating.get()));

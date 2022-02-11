@@ -7,6 +7,7 @@ package server.zone.objects.creature.ai;
 import system.util.Vector;
 import system.lang.Time;
 import system.lang.String;
+import system.lang.Exception;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.commands.QueueCommand;
@@ -293,6 +294,10 @@ class AiAgent extends CreatureObject {
 	 */
 	@preLocked
 	public native void doMovement();
+
+	@local
+	@preLocked
+	public native void handleException(@dereferenced final Exception e, final string context);
 
 	public native boolean isRunningBehavior(unsigned int id);
 	public native void addRunningID(unsigned int id);
