@@ -6,17 +6,14 @@
 #define TAUNTCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 class TauntCommand : public CombatQueueCommand {
 public:
-
-	TauntCommand(const String& name, ZoneProcessServer* server)
-		: CombatQueueCommand(name, server) {
-
+	TauntCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -41,24 +38,32 @@ public:
 		if (res == SUCCESS) {
 			Locker clocker(targetCreature, creature);
 
-			targetCreature->getThreatMap()->addAggro(creature, creature->getSkillMod("taunt") * 10, 0);
-			targetCreature->getThreatMap()->setThreatState(creature, ThreatStates::TAUNTED,(uint64)creature->getSkillMod("taunt") / 10, (uint64)creature->getSkillMod("taunt") / 10);
-			//creature->doCombatAnimation(creature,STRING_HASHCODE("taunt"),0,0xFF);
-			creature->doAnimation("taunt");
+			ThreatMap* threatMap = targetCreature->getThreatMap();
 
-			if (creature->isPlayerCreature())
-				creature->sendSystemMessage("@cbt_spam:taunt_success_single");
+			if (threatMap != nullptr) {
+				int tauntMod = creature->getSkillMod("taunt");
+				int levelCombine = targetCreature->getLevel() + creature->getLevel();
 
-		} else {
+				if (System::random(levelCombine + tauntMod) >= System::random(levelCombine - tauntMod)) {
+					threatMap->setThreatState(creature, ThreatStates::TAUNTED, (uint64)tauntMod * 1000, (uint64)tauntMod * 1000);
+					threatMap->addAggro(creature, tauntMod * 10, (uint64)tauntMod * 1000);
 
-			if (creature->isPlayerCreature())
-				creature->sendSystemMessage("@cbt_spam:taunt_fail_single");
+					creature->doCombatAnimation(creature, STRING_HASHCODE("taunt"), 0, 0xFF);
+					creature->doAnimation("taunt");
+
+					if (creature->isPlayerCreature())
+						creature->sendSystemMessage("@cbt_spam:taunt_success_single");
+				} else {
+					if (creature->isPlayerCreature())
+						creature->sendSystemMessage("@cbt_spam:taunt_fail_single");
+				}
+			}
 		}
 
 		return res;
 	}
 
-	void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage, const CreatureAttackData& data) const {
+	/*void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage, const CreatureAttackData& data) const {
 		if (attacker == nullptr)
 			return;
 
@@ -86,9 +91,7 @@ public:
 		}
 
 		CombatManager::instance()->broadcastCombatSpam(attacker, nullptr, nullptr, damage, "cbt_spam", stringName, color);
-
-	}
-
+	}*/
 };
 
-#endif //TAUNTCOMMAND_H_
+#endif // TAUNTCOMMAND_H_
