@@ -32,6 +32,23 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 
 		ChatManager* chatManager = agent->getZoneServer()->getChatManager();
 		chatManager->broadcastChatMessage(agent, print(), 0, 0, 0);
+	} else {
+		static Mutex mutext;
+		Locker guard(&mutext);
+		static AtomicBoolean verbose = false;
+		static AtomicInteger lastConfigVersion = 0;
+		auto currentConfigVersion = ConfigManager::instance()->getConfigVersion();
+
+		if (currentConfigVersion > lastConfigVersion) {
+			lastConfigVersion.set(currentConfigVersion);
+			verbose.set(ConfigManager::instance()->getBool("Core3.AiAgent.Verbose", false));
+			Logger::console.info(true) << "Core3.AiAgent.Verbose=" << verbose;
+		}
+
+		if (verbose) {
+			ChatManager* chatManager = agent->getZoneServer()->getChatManager();
+			chatManager->broadcastChatMessage(agent, print(), 0, 0, 0);
+		}
 	}
 #endif // DEBUG_AI
 
