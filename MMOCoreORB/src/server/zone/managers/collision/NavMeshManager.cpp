@@ -14,6 +14,12 @@ const String NavMeshManager::MeshQueue = "NavMeshBuild";
 //#define NAVMESH_DEBUG
 
 NavMeshManager::NavMeshManager() : Logger("NavMeshManager") {
+	setFileLogger("log/navmesh.log", true, true);
+	setLogToConsole(false);
+	setGlobalLogging(false);
+	setLogSynchronized(true);
+	setRotateLogSizeMB(ConfigManager::instance()->getRotateLogSizeMB());
+
     maxConcurrentJobs = 4;
     stopped = false;
     zoneServer = nullptr;
@@ -152,7 +158,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
 
     String name = area->getMeshName();
 
-    info(true) << "Starting building navmesh for area: " << name
+    info() << "Starting building navmesh for area: " << name
 	    << " on planet: " << zone->getZoneName() << " at: "
 	    << area->getPosition().toString();
 
@@ -242,7 +248,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     	navmesh->setupDetourNavMeshHeader();
     	area->_setUpdated(true);
 
-	info(true) <<
+	info() <<
 		"Done building and setting navmesh for area: " << name << " on planet: "
 		<< zone->getZoneName() << " at: " << area->getPosition().toString();
     }, "setNavMeshLambda");
@@ -353,7 +359,7 @@ void NavMeshManager::dumpMeshesToFiles() {
 			error("Database exception in NavMeshManager::dumpMeshesToFiles(): " + e.getMessage());
 		}
 
-		info(String::valueOf(i) + " nav meshes saved to file.", true);
+		info(String::valueOf(i) + " nav meshes saved to file.");
 	} else {
 		error("Could not load the navareas database.");
 	}
