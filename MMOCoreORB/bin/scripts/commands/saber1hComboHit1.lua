@@ -42,9 +42,10 @@
 --true = 1, false = 0
 
 Saber1hComboHit1Command = {
-        name = "saber1hcombohit1",
+	name = "saber1hcombohit1",
 
 	damageMultiplier = 1.5,
+	accuracyBonus = 50,
 	speedMultiplier = 1.25,
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
