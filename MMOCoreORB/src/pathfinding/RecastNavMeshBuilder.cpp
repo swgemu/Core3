@@ -448,7 +448,9 @@ void RecastNavMeshBuilder::buildAllTiles() {
 					dtFree(data);
 				}
 			} else {
+#ifdef NAVMESH_DEBUG
 				info("No data", true);
+#endif
 			}
 		}
 		progress.add(tw);

@@ -54,6 +54,6 @@ void ClientCreateCharacterCallback::run() {
 	if (success) {
 		client->info("success creating char");
 	} else {
-		client->info("failed to create char", true);
+		client->info("failed to create char");
 	}
 }

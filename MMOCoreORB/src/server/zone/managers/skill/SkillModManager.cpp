@@ -226,7 +226,7 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 
 
 	if (!compareMods(mods, creature, STRUCTURE)) {
-		warning("Structure mods don't match for " + creature->getFirstName());
+		creature->info() << "Structure mods don't match.";
 	}
 }
 
@@ -254,7 +254,7 @@ void SkillModManager::verifySkillBoxSkillMods(CreatureObject* creature) {
 	}
 
 	if(!compareMods(mods, creature, SKILLBOX)) {
-		warning("SkillBox mods don't match for " + creature->getFirstName());
+		creature->info() << "SkillBox mods don't match";
 	}
 }
 
@@ -342,7 +342,7 @@ bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* 
 	}
 
 	if (match == false) {
-		warning(compare.toString());
+		creature->info() << compare;
 
 		if(creature->getPlayerObject() != nullptr) {
 			if(creature->getPlayerObject()->getDebug()) {
