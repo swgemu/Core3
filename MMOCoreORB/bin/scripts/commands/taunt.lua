@@ -42,10 +42,12 @@
 --true = 1, false = 0
 
 TauntCommand = {
-        name = "taunt",
-        combatSpam = "taunt",
+	name = "taunt",
+	combatSpam = "taunt",
 	effectString = "clienteffect/combat_special_attacker_taunt.cef",
-	range = 15
+	poolsToDamage = NO_ATTRIBUTE,
+
+	range = 64
 }
 
 AddCommand(TauntCommand)
