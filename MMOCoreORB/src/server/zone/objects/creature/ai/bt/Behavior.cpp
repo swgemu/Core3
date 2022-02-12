@@ -12,6 +12,27 @@
 #include "server/zone/ZoneServer.h"
 #include "server/chat/ChatManager.h"
 
+#ifdef DEBUG_AI
+namespace {
+	static Logger logger("AiAgent::Behavior", Logger::INFO);
+	bool getAiAgentDebugVerbose() {
+		static Mutex mutext;
+		Locker guard(&mutext);
+		static bool cachedValue = false;
+		static int cachedConfigVersion = 0;
+		int currentConfigVersion = ConfigManager::instance()->getConfigVersion();
+
+		if (currentConfigVersion > cachedConfigVersion) {
+			cachedConfigVersion = currentConfigVersion;
+			cachedValue = ConfigManager::instance()->getBool("Core3.AiAgent.Verbose", false);
+			logger.info(true) << "Core3.AiAgent.Verbose=" << cachedValue;
+		}
+
+		return cachedValue;
+	}
+}
+#endif // DEBUG_AI
+
 using namespace server::zone::objects::creature::ai::bt;
 
 Behavior::Behavior(const String& className, const uint32 id, const LuaObject& args)
@@ -30,6 +51,9 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 		msg << "0x" << hex << id << " " << print().toCharArray();
 		agent->info(msg.toString(), true);
 
+		ChatManager* chatManager = agent->getZoneServer()->getChatManager();
+		chatManager->broadcastChatMessage(agent, print(), 0, 0, 0);
+	} else if (getAiAgentDebugVerbose()) {
 		ChatManager* chatManager = agent->getZoneServer()->getChatManager();
 		chatManager->broadcastChatMessage(agent, print(), 0, 0, 0);
 	}
