@@ -31,9 +31,9 @@ TransactionLog::TransactionLog(SceneObject* src, SceneObject* dst, SceneObject* 
 		return;
 	}
 
-	initializeCommon(src, dst, code, file, function, line);
-
 	setType("transfer");
+
+	initializeCommon(src, dst, code, file, function, line);
 
 	setSubject(subject, exportSubject);
 }
@@ -43,6 +43,8 @@ TransactionLog::TransactionLog(SceneObject* src, SceneObject* dst, TrxCode code,
 		return;
 	}
 
+	setType("credits");
+
 	initializeCommon(src, dst, code, file, function, line);
 	initializeCreditsCommon(src, dst, code, amount, isCash);
 }
@@ -51,6 +53,8 @@ TransactionLog::TransactionLog(uint64 srcObjectID, TrxCode code, uint amount, bo
 	if (!isEnabled()) {
 		return;
 	}
+
+	setType("credits");
 
 	auto server = ServerCore::getZoneServer();
 
@@ -76,6 +80,8 @@ TransactionLog::TransactionLog(CreditObject* creditObject, SceneObject* dst, Trx
 	if (!isEnabled()) {
 		return;
 	}
+
+	setType("credits");
 
 	initializeCommon(nullptr, dst, code, file, function, line);
 	initializeCreditsCommon(nullptr, dst, code, amount, isCash);
@@ -466,6 +472,12 @@ void TransactionLog::initializeCommonSceneObject(const String& key, SceneObject*
 
 	if (player != nullptr) {
 		mTransaction[key + "AccountId"] = player->getAccountID();
+
+		mState[key + "PlayedSeconds"] = (int)(player->getPlayedMiliSecs() / 1000);
+		mState[key + "SessionSeconds"] = (int)(player->getSessionMiliSecs() / 1000);
+		mState[key + "SessionMovement"] = player->getSessionTotalMovement();
+		mState[key + "SessionCredits"] = player->getSessionTotalCredits();
+
 		return;
 	}
 
@@ -477,33 +489,14 @@ void TransactionLog::initializeCommon(SceneObject* src, SceneObject* dst, TrxCod
 
 	mTransaction["code"] = trxCodeToString(code);
 
-	switch (code) {
-		case TrxCode::COMBATSTATS:
-		case TrxCode::CORPSEEXPIRATION:
-		case TrxCode::CRAFTINGSESSION:
-		case TrxCode::DATABASECOMMIT:
-		case TrxCode::EXPERIENCE:
-		case TrxCode::JABBASPALACE:
-		case TrxCode::NEWBIETUTORIAL:
-		case TrxCode::PLAYERDIED:
-		case TrxCode::PLAYERLINKDEAD:
-		case TrxCode::PLAYERLOGGINGOUT:
-		case TrxCode::PLAYEROFFLINE:
-		case TrxCode::PLAYERONLINE:
-		case TrxCode::POISYSTEM:
-		case TrxCode::SKILLTRAININGSYSTEM:
-		case TrxCode::TESTACCOUNT:
-			mAutoCommit = true;
-			mMaxDepth = 1;
-			setType("stats");
-			break;
+	mMaxDepth = 4;
 
-		case TrxCode::HARVESTED:
-			mMaxDepth = 1;
-
-		default:
-			mAutoCommit = false;
-			break;
+	if (isStat(code)) {
+		mAutoCommit = true;
+		mMaxDepth = 1;
+		setType("stat");
+	} else if (code == TrxCode::HARVESTED) {
+		mMaxDepth = 1;
 	}
 
 	initializeCommonSceneObject("src", src);
@@ -530,7 +523,6 @@ void TransactionLog::initializeCommon(SceneObject* src, SceneObject* dst, TrxCod
 }
 
 void TransactionLog::initializeCreditsCommon(SceneObject* src, SceneObject* dst, TrxCode code, int amount, bool isCash) {
-	setType("credits");
 	mTransaction["isCash"] = isCash;
 	mTransaction["amount"] = amount;
 

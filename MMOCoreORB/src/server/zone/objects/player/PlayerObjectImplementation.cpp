@@ -103,6 +103,7 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	sessionStatsActivityXP = 0;
 	sessionStatsActivityMovement = 0;
 	sessionStatsTotalMovement = 0;
+	sessionStatsTotalCredits = 0;
 	sessionStatsIPAddress = "";
 	miliSecsSession = 0;
 }
@@ -1609,11 +1610,14 @@ void PlayerObjectImplementation::logSessionStats(bool isSessionEnd) {
 		error("parent == nullptr in logSessionStats");
 	}
 
-	if (sessionStatsLastCredits == -1)
+	if (sessionStatsLastCredits == -1) {
 		sessionStatsLastCredits = currentCredits;
+		sessionStatsTotalCredits = 0;
+	}
 
 	int skillPointDelta = skillPoints - sessionStatsLastSkillPoints;
 	int64 creditsDelta = (int64)currentCredits - (int64)sessionStatsLastCredits;
+	sessionStatsTotalCredits += creditsDelta;
 
 	int ipAccountCount = 0;
 

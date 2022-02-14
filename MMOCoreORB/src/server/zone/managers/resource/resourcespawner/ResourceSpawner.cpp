@@ -1088,6 +1088,7 @@ bool ResourceSpawner::addResourceToPlayerInventory(TransactionLog& trx, Creature
 				if  ((resource->getQuantity() + unitsExtracted) <= ResourceContainer::MAXSIZE ){
 					trx.addRelatedObject(resource);
 					trx.addState("resourceType", resourceSpawn->getType());
+					trx.addState("resourceID", resourceSpawn->getObjectID());
 					trx.addState("resourceName", resourceSpawn->getName());
 					trx.addState("resourceQuantity", unitsExtracted);
 
@@ -1117,6 +1118,7 @@ bool ResourceSpawner::addResourceToPlayerInventory(TransactionLog& trx, Creature
 
 	if (inventory->transferObject(harvestedResource, -1, false)) {
 		trx.addState("resourceType", resourceSpawn->getType());
+		trx.addState("resourceID", resourceSpawn->getObjectID());
 		trx.addState("resourceName", resourceSpawn->getName());
 		trx.addState("resourceQuantity", unitsExtracted);
 

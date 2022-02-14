@@ -299,6 +299,7 @@ class PlayerObject extends IntangibleObject {
 	protected transient unsigned long sessionStatsActivityXP;
 	protected transient unsigned long sessionStatsActivityMovement;
 	protected transient unsigned long sessionStatsTotalMovement;
+	protected transient unsigned long sessionStatsTotalCredits;
 	protected transient string sessionStatsIPAddress;
 
 	public static final int LFG = 1;
@@ -2013,6 +2014,11 @@ class PlayerObject extends IntangibleObject {
 	@read
 	public unsigned long getSessionTotalMovement() {
 		return sessionStatsTotalMovement;
+	}
+
+	@read
+	public long getSessionTotalCredits() {
+	    return sessionStatsTotalCredits;
 	}
 
 	@read

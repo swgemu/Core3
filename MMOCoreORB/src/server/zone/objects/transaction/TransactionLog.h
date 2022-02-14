@@ -162,6 +162,9 @@ public:
 
 	TransactionLog(TrxCode code, SceneObject* dst, CAPTURE_CALLER_DECLARE)
 		: TransactionLog((SceneObject*)nullptr, dst, (SceneObject*)nullptr, code, false, file, function, line) {
+			if (!isStat(code)) {
+				mAutoCommit = false;
+			}
 	}
 
 	TransactionLog(SceneObject* src, TrxCode code, uint amount, bool isCash = true, CAPTURE_CALLER_DECLARE)
@@ -377,4 +380,28 @@ private:
 	void writeLog();
 
 	static const String trxCodeToString(TrxCode code);
+
+	static bool isStat(TrxCode code) {
+		switch (code) {
+			case TrxCode::COMBATSTATS:
+			case TrxCode::CORPSEEXPIRATION:
+			case TrxCode::CRAFTINGSESSION:
+			case TrxCode::DATABASECOMMIT:
+			case TrxCode::EXPERIENCE:
+			case TrxCode::JABBASPALACE:
+			case TrxCode::NEWBIETUTORIAL:
+			case TrxCode::PLAYERDIED:
+			case TrxCode::PLAYERLINKDEAD:
+			case TrxCode::PLAYERLOGGINGOUT:
+			case TrxCode::PLAYEROFFLINE:
+			case TrxCode::PLAYERONLINE:
+			case TrxCode::POISYSTEM:
+			case TrxCode::SKILLTRAININGSYSTEM:
+			case TrxCode::TESTACCOUNT:
+				return true;
+
+			default:
+				return false;
+		}
+	}
 };
