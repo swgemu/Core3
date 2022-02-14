@@ -1557,6 +1557,7 @@ void PlayerObjectImplementation::resetSessionStats(bool isSessionStart) {
 
 		logSessionStats(false);
 		sessionStatsTotalMovement = 0;
+		sessionStatsTotalCredits = 0;
 		return;
 	}
 
