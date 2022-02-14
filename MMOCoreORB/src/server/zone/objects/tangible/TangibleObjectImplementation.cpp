@@ -88,7 +88,7 @@ void TangibleObjectImplementation::notifyLoadFromDatabase() {
 			auto& area = activeAreas.get(i);
 
 			if (!area->isNavArea()) {
-				area->notifyExit(tano);
+				area->enqueueExitEvent(tano);
 				activeAreas.remove(i);
 			}
 		}

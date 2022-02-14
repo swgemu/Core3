@@ -3554,7 +3554,7 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 				ActiveArea* area = activeAreas.get(i);
 
 				if (area != nullptr)
-					area->notifyEnter(asCreatureObject());
+					area->enqueueEnterEvent(asCreatureObject());
 			}
 		}
 
