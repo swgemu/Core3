@@ -131,6 +131,7 @@ class TransactionLog {
 	bool mCommitted = false;
 	bool mAborted = false;
 	bool mExportRelated = false;
+	int mMaxDepth = 4;
 	StringBuffer mError;
 	Vector3 mWorldPosition;
 	String mZoneName;
@@ -161,23 +162,6 @@ public:
 
 	TransactionLog(TrxCode code, SceneObject* dst, CAPTURE_CALLER_DECLARE)
 		: TransactionLog((SceneObject*)nullptr, dst, (SceneObject*)nullptr, code, false, file, function, line) {
-			switch (code) {
-				case TrxCode::COMBATSTATS:
-				case TrxCode::EXPERIENCE:
-				case TrxCode::MISSIONCOMPLETE:
-				case TrxCode::PLAYERLINKDEAD:
-				case TrxCode::PLAYERLOGGINGOUT:
-				case TrxCode::PLAYEROFFLINE:
-				case TrxCode::PLAYERONLINE:
-				case TrxCode::SKILLTRAININGSYSTEM:
-					mAutoCommit = true;
-					setType("stats");
-					break;
-
-				default:
-					mAutoCommit = false;
-					break;
-			}
 	}
 
 	TransactionLog(SceneObject* src, TrxCode code, uint amount, bool isCash = true, CAPTURE_CALLER_DECLARE)
@@ -311,6 +295,14 @@ public:
 
 	bool isVerbose() const {
 		return getVerbose();
+	}
+
+	void setMaxDepth(int maxDepth) {
+		mMaxDepth = maxDepth;
+	}
+
+	int getMaxDepth() const {
+		return mMaxDepth;
 	}
 
 	const String getTrxID() const {

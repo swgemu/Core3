@@ -2046,6 +2046,8 @@ int SceneObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int 
 }
 
 String SceneObjectImplementation::exportJSON(const String& exportNote, int maxDepth, bool pruneCreo, bool pruneCraftedComponents) {
+	static AtomicInteger sequence;
+
 	Time startTime;
 	uint64 oid = getObjectID();
 
@@ -2102,7 +2104,7 @@ String SceneObjectImplementation::exportJSON(const String& exportNote, int maxDe
 
 	File::mkpath(dirName, 0755);
 
-	fileNameBuf << oid << "-" << now.getMiliTime() << ".json";
+	fileNameBuf << oid << "-" << now.getMiliTime() << "-" << sequence.increment() << ".json";
 
 	String fileName = fileNameBuf.toString();
 	std::ofstream jsonFile(fileName.toCharArray());

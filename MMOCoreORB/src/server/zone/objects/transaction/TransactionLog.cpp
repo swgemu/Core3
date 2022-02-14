@@ -224,7 +224,7 @@ void TransactionLog::addRelatedObject(uint64 oid, bool trackChildren) {
 		mChildObjects.setAllowOverwriteInsertPlan();
 	}
 
-	scno->getChildrenRecursive(mChildObjects, 50, true, true);
+	scno->getChildrenRecursive(mChildObjects, mMaxDepth, true, true);
 }
 
 void TransactionLog::addRelatedObject(SceneObject* obj, bool trackChildren) {
@@ -272,7 +272,7 @@ void TransactionLog::exportRelated() {
 
 		auto pruneCreo = getPruneCreatureObjects() && obj->isStructureObject();
 
-		exportMap[String::valueOf(oid)] = obj->exportJSON(logMsg, 50, pruneCreo, getPruneCraftedComponents());
+		exportMap[String::valueOf(oid)] = obj->exportJSON(logMsg, mMaxDepth, pruneCreo, getPruneCraftedComponents());
 	}
 
 	mState["exports"] = exportMap;
@@ -476,6 +476,35 @@ void TransactionLog::initializeCommon(SceneObject* src, SceneObject* dst, TrxCod
 	mTransaction["trxId"] = getNewTrxID();
 
 	mTransaction["code"] = trxCodeToString(code);
+
+	switch (code) {
+		case TrxCode::COMBATSTATS:
+		case TrxCode::CORPSEEXPIRATION:
+		case TrxCode::CRAFTINGSESSION:
+		case TrxCode::DATABASECOMMIT:
+		case TrxCode::EXPERIENCE:
+		case TrxCode::JABBASPALACE:
+		case TrxCode::NEWBIETUTORIAL:
+		case TrxCode::PLAYERDIED:
+		case TrxCode::PLAYERLINKDEAD:
+		case TrxCode::PLAYERLOGGINGOUT:
+		case TrxCode::PLAYEROFFLINE:
+		case TrxCode::PLAYERONLINE:
+		case TrxCode::POISYSTEM:
+		case TrxCode::SKILLTRAININGSYSTEM:
+		case TrxCode::TESTACCOUNT:
+			mAutoCommit = true;
+			mMaxDepth = 1;
+			setType("stats");
+			break;
+
+		case TrxCode::HARVESTED:
+			mMaxDepth = 1;
+
+		default:
+			mAutoCommit = false;
+			break;
+	}
 
 	initializeCommonSceneObject("src", src);
 	initializeCommonSceneObject("dst", dst);
