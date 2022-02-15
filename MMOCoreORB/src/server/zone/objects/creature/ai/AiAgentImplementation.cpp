@@ -2303,6 +2303,21 @@ void AiAgentImplementation::setAIDebug(bool flag) {
 
 	if (flag) {
 		setLogLevel(LogLevel::DEBUG);
+		debug() << "setAIDebug(" << flag << ")";
+		debug() << "moveEvent->isScheduled = " << (moveEvent != nullptr ? moveEvent->isScheduled() : -1);
+		debug() << "thinkEvent->isScheduled = " << (thinkEvent != nullptr ? thinkEvent->isScheduled() : -1);
+		debug() << "primaryAttackMap.size = " << (primaryAttackMap != nullptr ? primaryAttackMap->size() : -1);
+		debug() << "secondaryAttackMap.size = " << (secondaryAttackMap != nullptr ? secondaryAttackMap->size() : -1);
+		debug() << "defaultAttackMap.size = " << (defaultAttackMap != nullptr ? defaultAttackMap->size() : -1);
+		debug() << "lastDamageReceived = " << lastDamageReceived.miliDifference();
+		debug() << "lastPackNotify = " << lastPackNotify.miliDifference();
+		debug() << "lastCallForHelp = " << lastCallForHelp.miliDifference();
+		debug() << "fleeDelay = " << fleeDelay.miliDifference();
+		debug() << "postureSet = " << postureSet.miliDifference();
+		debug() << "healDelay = " << healDelay.miliDifference();
+		debug() << "alertedTime = " << alertedTime.miliDifference();
+		debug() << "aggroDelay = " << aggroDelay.miliDifference();
+		debug() << "numberOfPlayersInRange = " << numberOfPlayersInRange.get();
 	} else {
 		auto aiLogLevel = ConfigManager::instance()->getInt("Core3.AiAgent.LogLevel", -1);
 
@@ -2927,7 +2942,7 @@ void AiAgentImplementation::cancelMovementEvent() {
 
 	moveEvent->cancel();
 	moveEvent->clearCreatureObject();
-	moveEvent == nullptr;
+	moveEvent = nullptr;
 }
 
 void AiAgentImplementation::setNextPosition(float x, float z, float y, CellObject* cell) {
