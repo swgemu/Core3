@@ -41,7 +41,8 @@ public:
 	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
 	int getBatteryDrain();
-	void deactivate();
+	void deactivate(bool onStore = false);
+	bool activate();
 	String toString() const;
 	void onCall();
 
@@ -52,6 +53,7 @@ public:
 	void onStore();
 	void setHarvestInterest(CreatureObject* player, int option);
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+	void setActive(bool newActive);
 
 	bool isActive() {
 		return active;

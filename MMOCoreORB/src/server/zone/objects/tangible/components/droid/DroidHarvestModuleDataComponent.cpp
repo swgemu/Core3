@@ -38,6 +38,19 @@ void DroidHarvestModuleDataComponent::initializeTransientMembers() {
 		return;
 	}
 
+	if (droidComponent->hasKey("harvest_interest")) {
+		interest = (int)droidComponent->getAttributeValue("harvest_interest");
+	} else {
+		droidComponent->addProperty("harvest_interest", (float)interest, 0, "hidden", true);
+	}
+
+	if (droidComponent->hasKey("harvest_active")) {
+		active = droidComponent->getAttributeValue("harvest_active") > 0.0 ? true : false;
+	} else {
+		float harvest_active = active ? 1.0f : 0.0f;
+		droidComponent->addProperty("harvest_active", harvest_active, 0, "hidden", true);
+	}
+
 	if (droidComponent->hasKey("harvest_power")) {
 		harvestBonus = droidComponent->getAttributeValue("harvest_power");
 	} else {
@@ -61,6 +74,9 @@ void DroidHarvestModuleDataComponent::fillAttributeList(AttributeListMessage* al
 		alm->insertAttribute("pet_command_21", "@pet/droid_modules:interest_set_hide");
 	if (interest == INTEREST_RANDOM)
 		alm->insertAttribute("pet_command_21", "@pet/droid_modules:interest_set_random");
+	if (active) {
+		alm->insertAttribute("pet_command_21", "Auto Harvest");
+	}
 }
 
 void DroidHarvestModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -91,6 +107,13 @@ void DroidHarvestModuleDataComponent::setHarvestInterest(CreatureObject* player,
 	if (option == INTEREST_RANDOM) {
 		player->sendSystemMessage("@pet/droid_modules:interest_set_random");
 	}
+
+	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
+
+	if (droidComponent == nullptr)
+		return;
+
+	droidComponent->changeAttributeValue("harvest_interest", interest);
 }
 
 int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
@@ -132,43 +155,7 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 		return 0;
 
 	} else if (selectedID == HARVEST_TOGGLE) {
-		ManagedReference<DroidObject*> droid = getDroidObject();
-
-		if (droid == nullptr) {
-			return 0;
-		}
-
-		Locker dlock(droid, player);
-
-		// Toggle off
-		if (active) {
-			deactivate();
-			player->sendSystemMessage("@pet/droid_modules:auto_harvest_off"); // Auto Harvest: Off
-		} else { // Toggle on
-			// Check droid states
-			if (droid->isDead() || droid->isIncapacitated())
-				return 0;
-
-			// Droid must have power
-			if (!droid->hasPower()) {
-				droid->showFlyText("npc_reaction/flytext", "low_power", 204, 0, 0); // "*Low Power*"
-				return 0;
-			}
-
-			// Ensure we don't accidentally have another task outstanding
-			deactivate();
-
-			player->sendSystemMessage("@pet/droid_modules:auto_harvest_on"); // Auto Harvest: On
-
-			if (observer == nullptr) {
-				observer = new DroidHarvestObserver(this);
-				observer->deploy();
-			}
-
-			Locker plock(player);
-			player->registerObserver(ObserverEventType::KILLEDCREATURE, observer);
-			active = true;
-		}
+		setActive(!active);
 	}
 	return 0;
 }
@@ -181,10 +168,13 @@ int DroidHarvestModuleDataComponent::getBatteryDrain() {
 	return 0;
 }
 
-void DroidHarvestModuleDataComponent::deactivate() {
-	active = false;
+void DroidHarvestModuleDataComponent::deactivate(bool onStore) {
+	if (!onStore) {
+		active = false;
+	}
 
-	ManagedReference<DroidObject*> droid = getDroidObject();
+	auto droid = getDroidObject();
+
 	if (droid == nullptr) {
 		return;
 	}
@@ -192,7 +182,7 @@ void DroidHarvestModuleDataComponent::deactivate() {
 	Locker dlock(droid);
 
 	// remove observer
-	ManagedReference<CreatureObject*> player = droid->getLinkedCreature().get();
+	auto player = droid->getLinkedCreature().get();
 
 	if (player != nullptr) {
 		Locker clock(player, droid);
@@ -206,12 +196,55 @@ void DroidHarvestModuleDataComponent::deactivate() {
 	harvestTargets.removeAll(0, 10);
 }
 
+bool DroidHarvestModuleDataComponent::activate() {
+	deactivate();
+
+	auto droid = getDroidObject();
+
+	if (droid == nullptr) {
+		return false;
+	}
+
+	Locker dlock(droid);
+
+	auto player = droid->getLinkedCreature().get();
+
+	if (player == nullptr) {
+		return false;
+	}
+
+	// Check droid states
+	if (droid->isDead() || droid->isIncapacitated())
+		return false;
+
+	// Droid must have power
+	if (!droid->hasPower()) {
+		droid->showFlyText("npc_reaction/flytext", "low_power", 204, 0, 0); // "*Low Power*"
+		return false;
+	}
+
+	if (observer == nullptr) {
+		observer = new DroidHarvestObserver(this);
+		observer->deploy();
+	}
+
+	Locker plock(player);
+	player->registerObserver(ObserverEventType::KILLEDCREATURE, observer);
+	active = true;
+
+	return true;
+}
+
 String DroidHarvestModuleDataComponent::toString() const {
 	return BaseDroidModuleComponent::toString();
 }
 
 void DroidHarvestModuleDataComponent::onCall() {
-	deactivate();
+	if (active) {
+		activate();
+	} else {
+		deactivate();
+	}
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
 
@@ -226,7 +259,7 @@ void DroidHarvestModuleDataComponent::onCall() {
 }
 
 void DroidHarvestModuleDataComponent::onStore() {
-	deactivate();
+	deactivate(true);
 }
 
 void DroidHarvestModuleDataComponent::addToStack(BaseDroidModuleComponent* other) {
@@ -272,4 +305,39 @@ void DroidHarvestModuleDataComponent::creatureHarvestCheck(CreatureObject* targe
 
 	if (targetID > 0 && !harvestTargets.contains(targetID))
 		harvestTargets.add(targetID);
+}
+
+void DroidHarvestModuleDataComponent::setActive(bool newActive) {
+	auto droid = getDroidObject();
+
+	if (droid == nullptr) {
+		error() << "DroidHarvestModuleDataComponent::setActive: getDroidObject == nullptr";
+		return;
+	}
+
+	Locker lock(droid);
+
+	auto player = droid->getLinkedCreature().get();
+
+	if (player == nullptr) {
+		error() << "DroidHarvestModuleDataComponent::setActive: player == nullptr";
+		return;
+	}
+
+	if (!newActive) {
+		deactivate();
+		player->sendSystemMessage("@pet/droid_modules:auto_harvest_off"); // Auto Harvest: Off
+	} else { // Toggle on
+		if (activate()) {
+			player->sendSystemMessage("@pet/droid_modules:auto_harvest_on"); // Auto Harvest: On
+		}
+	}
+
+	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
+
+	if (droidComponent == nullptr) {
+		return;
+	}
+
+	droidComponent->changeAttributeValue("harvest_active", active ? 1.0 : 0.0);
 }
