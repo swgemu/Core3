@@ -194,11 +194,10 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 
 	auto elapsedMs = loadTimer.stopMs();
 
-	info(countLoaded > 0) << commas << countLoaded << " player structures loaded for "
-			<< zoneName << " in "
-			<< msToString(elapsedMs)
-			<< "where the initial query took " << msToString(initialQueryPerf.getTotalTimeMs())
-			<< "and iterator took " << msToString(iteratorPerf.getTotalTimeMs());
+	info(countLoaded > 0) << commas << countLoaded << " player structures loaded for " << zoneName
+		<< " in " << msToString(elapsedMs)
+		<< " where the initial query took " << msToString(initialQueryPerf.getTotalTimeMs())
+		<< " and iterator took " << msToString(iteratorPerf.getTotalTimeMs());
 }
 
 int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1) {
