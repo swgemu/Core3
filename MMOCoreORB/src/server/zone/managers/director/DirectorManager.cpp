@@ -301,15 +301,40 @@ String DirectorManager::getStringSharedMemory(const String& key) const {
 }
 
 void DirectorManager::startGlobalScreenPlays() {
-	info("Starting global screenplays.", true);
+	info(true) << "Starting " << screenPlays.size() << " global screenplays.";
+
+	Time nextReport;
+	nextReport.addMiliTime(5000);
+	int countStarted = 0;
+
+	Timer profileAll;
+	profileAll.start();
 
 	for (int i = 0; i < screenPlays.size(); ++i) {
 		String screenPlay = screenPlays.elementAt(i).getKey();
 		bool start = screenPlays.elementAt(i).getValue();
 
-		if (start)
+		if (!nextReport.isFuture()) {
+			nextReport.updateToCurrentTime();
+			nextReport.addMiliTime(5000);
+			info(true) << "Started " << countStarted << " of " << screenPlays.size() << " screenplays.";
+		}
+
+		if (start) {
+			Timer profileStart;
+			profileStart.start();
 			startScreenPlay(nullptr, screenPlay);
+			auto elapsedMs = profileStart.stopMs();
+
+			if (elapsedMs > 500) {
+				info(true) << "Slow screenplay: " << screenPlay << " took " << msToString(elapsedMs) << " to start.";
+			}
+
+			countStarted++;
+		}
 	}
+
+	info(true) << "Started " << countStarted << " global screenplays in " << msToString(profileAll.stopMs());
 }
 
 void DirectorManager::setupLuaPackagePath(Lua* luaEngine) {

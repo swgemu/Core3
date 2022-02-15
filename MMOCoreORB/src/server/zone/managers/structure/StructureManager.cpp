@@ -121,11 +121,13 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 
 	IndexDatabaseIterator iterator(playerStructuresDatabaseIndex, config);
 
-	int i = 0;
+	Time nextReport;
+	nextReport.addMiliTime(5000);
+	int countLoaded = 0;
 
 	uint64 objectID;
 
-	auto loadFunction = [this] (int& i, uint64 objectID, uint64 planet) {
+	auto loadFunction = [this, &nextReport, zoneName] (int& countLoaded, uint64 objectID, uint64 planet) {
 		//debug("loading 0x" + String::hexvalueOf(objectID) + " for planet 0x" + String::hexvalueOf(planet), true);
 
 		try {
@@ -137,7 +139,13 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 				return;
 			}
 
-			++i;
+			++countLoaded;
+
+			if (!nextReport.isFuture()) {
+				nextReport.updateToCurrentTime();
+				nextReport.addMiliTime(5000);
+				info(true) << "Loaded " << commas << countLoaded << " structures for zone: " << zoneName;
+			}
 
 			if (object->isGCWBase()) {
 				Zone* zone = object->getZone();
@@ -152,7 +160,7 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 			}
 
 			if (ConfigManager::instance()->isProgressMonitorActivated())
-				printf("\r\tLoading player structures [%d] / [?]\t", i);
+				printf("\r\tLoading player structures [%d] / [?]\t", countLoaded);
 		} catch (Exception& e) {
 			error("Database exception in StructureManager::loadPlayerStructures(): " + e.getMessage());
 		}
@@ -169,14 +177,14 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 	if (iterator.setKeyAndGetValue(zoneHash, objectID, nullptr)) {
 		initialQueryPerf.stop();
 
-		loadFunction(i, objectID, zoneHash);
+		loadFunction(countLoaded, objectID, zoneHash);
 
 		iteratorPerf.start();
 
 		while (iterator.getNextKeyAndValue(zoneHash, objectID, nullptr)) {
 			iteratorPerf.stop();
 
-			loadFunction(i, objectID, zoneHash);
+			loadFunction(countLoaded, objectID, zoneHash);
 
 			iteratorPerf.start();
 		}
@@ -186,11 +194,11 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 
 	auto elapsedMs = loadTimer.stopMs();
 
-	info(i > 0) << i << " player structures loaded for "
+	info(countLoaded > 0) << commas << countLoaded << " player structures loaded for "
 			<< zoneName << " in "
-			<< elapsedMs << "ms "
-			<< "where the initial query took " << initialQueryPerf.getTotalTimeMs() << "ms "
-			<< "and iterator took " << iteratorPerf.getTotalTimeMs() << "ms.";
+			<< msToString(elapsedMs)
+			<< "where the initial query took " << msToString(initialQueryPerf.getTotalTimeMs())
+			<< "and iterator took " << msToString(iteratorPerf.getTotalTimeMs());
 }
 
 int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1) {
@@ -1386,6 +1394,10 @@ void StructureManager::payMaintenance(StructureObject* structure,
 		TransactionLog trx(creature, structure, TrxCode::STRUCTUREMAINTANENCE, amount, true);
 		creature->subtractCashCredits(amount);
 		structure->addMaintenance(amount);
+	}
+
+	if (!ConfigManager::instance()->getBool("Core3.StructureMaintenanceTask.AllowBankPayments", true)) {
+		creature->sendSystemMessage("Maintenance will not be pulled from your bank if it runs out.");
 	}
 
 	PlayerObject* ghost = creature->getPlayerObject();
