@@ -727,63 +727,99 @@ public:
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		ManagedReference<SceneObject*> ally = nullptr;
-		ManagedReference<SceneObject*> target = nullptr;
 
 		if (agent->peekBlackboard("allyProspect"))
 			ally = agent->readBlackboard("allyProspect").get<ManagedReference<SceneObject*> >().get();
 
-		if (agent->peekBlackboard("targetProspect"))
-			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
-
-		if (ally == nullptr || target == nullptr)
-			return FAILURE;
-
-		CreatureObject* allyCreo = ally->asCreatureObject();
-
-		if (allyCreo == nullptr || allyCreo->isDead()) {
+		if (ally == nullptr) {
 			agent->eraseBlackboard("allyProspect");
 			return FAILURE;
 		}
 
-		Locker lock(allyCreo, agent);
+		CreatureObject* allyCreo = ally->asCreatureObject();
 
-		Vector3 agentPosition = agent->getPosition();
-		Vector3 allyPosition = allyCreo->getPosition();
-		int sqrDistance = agentPosition.squaredDistanceTo(allyPosition);
-
-		if (sqrDistance > 50 * 50) {
+		if (allyCreo == nullptr || allyCreo->isDead() || !allyCreo->isAiAgent()) {
+			agent->eraseBlackboard("allyProspect");
 			return FAILURE;
 		}
 
-		agent->clearPatrolPoints();
-		agent->setMovementState(AiAgent::EVADING);
-		agent->setNextPosition(allyPosition.getX(), allyPosition.getZ(), allyPosition.getY(), allyCreo->getParent().get().castTo<CellObject*>());
+		Locker clock(allyCreo, agent);
 
+		Vector3 agentPosition = agent->getPosition();
+		Vector3 allyPosition = allyCreo->getPosition();
+
+		float sqrDistance = agentPosition.squaredDistanceTo(allyPosition);
+
+		if (sqrDistance > 50 * 50) {
+			agent->eraseBlackboard("allyProspect");
+			return FAILURE;
+		}
+
+#ifdef DEBUG_CALLFORHELP
+		ZoneServer* zoneServer = agent->getZoneServer();
+
+		ChatManager* chatManager = nullptr;
+
+		if (zoneServer != nullptr)
+			chatManager = zoneServer->getChatManager();
+#endif
+
+		agent->clearPatrolPoints();
 		agent->faceObject(ally, true);
 
-		Time* callForHelp = agent->getLastCallForHelp();
+		agent->setMovementState(AiAgent::NOTIFY_ALLY);
+		agent->setNextPosition(allyPosition.getX(), allyPosition.getZ(), allyPosition.getY(), allyCreo->getParent().get().castTo<CellObject*>());
 
-		if (callForHelp == nullptr)
+#ifdef DEBUG_CALLFORHELP
+		if (chatManager != nullptr)
+			chatManager->broadcastChatMessage(agent, "Heading to notify my ally", 0, 0, agent->getMoodID());
+#endif
+
+		AiAgent* allyAgent = allyCreo->asAiAgent();
+
+		if (allyAgent == nullptr) {
+			agent->eraseBlackboard("allyProspect");
 			return FAILURE;
+		}
+
+		Time* allyTime = allyAgent->getLastCallForHelp();
+
+		if (allyTime != nullptr) {
+			allyTime->updateToCurrentTime();
+			allyTime->addMiliTime(90 * 1000);
+		}
 
 		if (sqrDistance < 10 * 10) {
+			Time* callForHelp = agent->getLastCallForHelp();
+
+			if (callForHelp == nullptr)
+				return FAILURE;
+
 			callForHelp->updateToCurrentTime();
 			callForHelp->addMiliTime(90 * 1000);
 
-			Locker aLock(target);
+			ManagedReference<SceneObject*> enemyTarget = nullptr;
 
-			if (target->isAiAgent()) {
-				Time* allyCall = target->asAiAgent()->getLastCallForHelp();
+			if (agent->peekBlackboard("targetProspect"))
+				enemyTarget = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
 
-				if (allyCall != nullptr) {
-					allyCall->updateToCurrentTime();
-					allyCall->addMiliTime(90 * 1000);
-				}
+			if (enemyTarget != nullptr) {
+
+#ifdef DEBUG_CALLFORHELP
+				if (chatManager != nullptr)
+					chatManager->broadcastChatMessage(agent, "Notifying my ally", 0, 0, agent->getMoodID());
+#endif
+
+				Core::getTaskManager()->executeTask([allyAgent, enemyTarget] () {
+					Locker lock(allyAgent);
+					Locker enlocker(enemyTarget, allyAgent);
+
+					allyAgent->addDefender(enemyTarget);
+
+				}, "CallForHelpLambda");
 			}
 
-			agent->notifyPackMobs(target);
-
-			agent->eraseBlackboard("allyTarget");
+			agent->eraseBlackboard("allyProspect");
 			agent->setMovementState(AiAgent::FOLLOWING);
 		}
 

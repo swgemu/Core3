@@ -598,8 +598,19 @@ template<> bool CheckChatDelay::check(AiAgent* agent) const {
 }
 
 template<> bool CheckCallForHelp::check(AiAgent* agent) const {
-	if (agent == nullptr)
+	if (agent == nullptr || agent->isDead())
 		return false;
+
+	Time* packNotify = agent->getLastPackNotify();
+
+	if (packNotify == nullptr || !packNotify->isPast()) {
+		agent->eraseBlackboard("allyProspect");
+		return false;
+	}
+
+	if (agent->peekBlackboard("allyProspect")) {
+		return true;
+	}
 
 	Time* callForHelp = agent->getLastCallForHelp();
 
@@ -607,13 +618,8 @@ template<> bool CheckCallForHelp::check(AiAgent* agent) const {
 		return false;
 	}
 
-	if (System::random(100) < 50) {
-		callForHelp->updateToCurrentTime();
-		callForHelp->addMiliTime(45 * 1000);
-
+	if (System::random(100) < 40)
 		return false;
-	}
-
 
 	return true;
 }
