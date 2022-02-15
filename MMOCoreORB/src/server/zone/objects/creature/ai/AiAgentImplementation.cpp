@@ -1597,14 +1597,7 @@ void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
-	Locker mLocker(&movementEventMutex);
-	if (moveEvent != nullptr) {
-		moveEvent->cancel();
-		moveEvent->clearCreatureObject();
-		moveEvent = nullptr;
-	}
-
-	mLocker.release();
+	cancelMovementEvent();
 
 	for (int i = 0; i < movementMarkers.size(); ++i) {
 		ManagedReference<SceneObject*> marker = movementMarkers.get(i);
@@ -2900,30 +2893,22 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (getZoneUnsafe() == nullptr || !(getOptionsBitmask() & OptionBitmask::AIENABLED))
 		return;
 
-	const static uint64 minScheduleTime = 100;
-
-	Locker locker(&movementEventMutex);
-
 	if (numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) {
-		if (moveEvent != nullptr) {
-			moveEvent->clearCreatureObject();
-			moveEvent = nullptr;
-		}
-
+		cancelMovementEvent();
 		return;
 	}
 
+	Locker locker(&movementEventMutex);
+
 	if (moveEvent == nullptr) {
 		moveEvent = new AiMoveEvent(asAiAgent());
-
 		moveEvent->schedule(nextMovementInterval);
-	}
-
-	try {
-		if (!moveEvent->isScheduled())
-			moveEvent->schedule(nextMovementInterval);
-	} catch (IllegalArgumentException& e) {
-
+	} else {
+		try {
+			if (!moveEvent->isScheduled())
+				moveEvent->schedule(Math::max(10, nextMovementInterval));
+		} catch (IllegalArgumentException& e) {
+		}
 	}
 
 	if (isPet()) {
@@ -2931,6 +2916,18 @@ void AiAgentImplementation::activateMovementEvent() {
 	}
 
 	nextMovementInterval = UPDATEMOVEMENTINTERVAL;
+}
+
+void AiAgentImplementation::cancelMovementEvent() {
+	Locker locker(&movementEventMutex);
+
+	if (moveEvent == nullptr) {
+		return;
+	}
+
+	moveEvent->cancel();
+	moveEvent->clearCreatureObject();
+	moveEvent == nullptr;
 }
 
 void AiAgentImplementation::setNextPosition(float x, float z, float y, CellObject* cell) {
