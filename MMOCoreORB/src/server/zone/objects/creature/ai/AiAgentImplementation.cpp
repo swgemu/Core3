@@ -2902,7 +2902,7 @@ void AiAgentImplementation::activateMovementEvent() {
 
 	if (moveEvent == nullptr) {
 		moveEvent = new AiMoveEvent(asAiAgent());
-		moveEvent->schedule(nextMovementInterval);
+		moveEvent->schedule(Math::max(10, nextMovementInterval));
 	} else {
 		try {
 			if (!moveEvent->isScheduled())
