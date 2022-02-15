@@ -1973,8 +1973,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (currentParent != nullptr && !currentParent->isCellObject())
 			currentParent = nullptr;
 
-		if ((movementState == AiAgent::FOLLOWING || movementState == AiAgent::PATHING_HOME) && endMovementCell == nullptr && currentParent == nullptr &&
-			currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 4 * 4) {
+		if ((movementState == AiAgent::FOLLOWING || movementState == AiAgent::PATHING_HOME || movementState == AiAgent::NOTIFY_ALLY || movementState == AiAgent::MOVING_TO_HEAL)
+			&& endMovementCell == nullptr && currentParent == nullptr && currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 4 * 4) {
 
 			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(currentPoint.getCoordinates(), endMovementPosition.getCoordinates(), getZoneUnsafe()));
 		} else {
@@ -2504,65 +2504,66 @@ float AiAgentImplementation::getMaxDistance() {
 
 	// info("getmaxDistance - stateCopy: " + String::valueOf(stateCopy) /*+ " Max Distance: " + String::valueOf(maxDistance)*/, true);
 	switch (stateCopy) {
-	case AiAgent::OBLIVIOUS:
-		return 2.0f;
-	case AiAgent::WATCHING:
-		return 1.5f;
-	case AiAgent::PATROLLING:
-		return 0.1f;
-	case AiAgent::LEASHING:
-		return 0.1f;
-	case AiAgent::STALKING: {
-		int stalkRad = 0;
-		if (peekBlackboard("stalkRadius"))
-			stalkRad = readBlackboard("stalkRadius").get<int>() / 5;
-
-		return stalkRad > 0 ? stalkRad : 10;
-	}
-	case AiAgent::FOLLOWING:
-		if (followCopy == nullptr)
+		case AiAgent::OBLIVIOUS:
+			return 2.0f;
+		case AiAgent::WATCHING:
+			return 1.5f;
+		case AiAgent::PATROLLING:
 			return 0.1f;
+		case AiAgent::LEASHING:
+			return 0.1f;
+		case AiAgent::STALKING: {
+			int stalkRad = 0;
+			if (peekBlackboard("stalkRadius"))
+				stalkRad = readBlackboard("stalkRadius").get<int>() / 5;
 
-		if (!CollisionManager::checkLineOfSight(asAiAgent(), followCopy)) {
-			return 1.0f;
-		} else if (!isInCombat()) {
-			if (peekBlackboard("formationOffset")) {
-				if (isPet()) {
-					return 0.1f;
-				} else {
-					return 1.0f;
-				}
-			} else {
-				if (isPet() && isDroid())
-					return 2.0f;
-
-				return 4.0f;
-			}
-		} else if (getWeapon() != nullptr) {
-			WeaponObject* currentWeapon = getWeapon();
-			float weapMaxRange = 1.0f;
-
-			if (currentWeapon != nullptr) {
-				weapMaxRange = Math::min(currentWeapon->getIdealRange(), currentWeapon->getMaxRange());
-
-				if (currentWeapon->isMeleeWeapon() && weapMaxRange > 8) {
-					weapMaxRange = 3.f;
-				}
-
-				weapMaxRange = Math::max(1.0f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius());
-			}
-
-			return weapMaxRange;
-		} else {
-			return 1 + getTemplateRadius() + followCopy->getTemplateRadius();
+			return stalkRad > 0 ? stalkRad : 10;
 		}
-		break;
-	case AiAgent::PATHING_HOME:
-		return 0.1f;
-		break;
-	case AiAgent::MOVING_TO_HEAL:
-		return 1.5f;
-		break;
+		case AiAgent::FOLLOWING:
+			if (followCopy == nullptr)
+				return 0.1f;
+
+			if (!CollisionManager::checkLineOfSight(asAiAgent(), followCopy)) {
+				return 1.0f;
+			} else if (!isInCombat()) {
+				if (peekBlackboard("formationOffset")) {
+					if (isPet()) {
+						return 0.1f;
+					} else {
+						return 1.0f;
+					}
+				} else {
+					if (isPet() && isDroid())
+						return 2.0f;
+
+					return 4.0f;
+				}
+			} else if (getWeapon() != nullptr) {
+				WeaponObject* currentWeapon = getWeapon();
+				float weapMaxRange = 1.0f;
+
+				if (currentWeapon != nullptr) {
+					weapMaxRange = Math::min(currentWeapon->getIdealRange(), currentWeapon->getMaxRange());
+
+					if (currentWeapon->isMeleeWeapon() && weapMaxRange > 8) {
+						weapMaxRange = 3.f;
+					}
+
+					weapMaxRange = Math::max(1.0f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius());
+				}
+
+				return weapMaxRange;
+			} else {
+				return 1 + getTemplateRadius() + followCopy->getTemplateRadius();
+			}
+			break;
+		case AiAgent::PATHING_HOME:
+			return 0.1f;
+			break;
+		case AiAgent::MOVING_TO_HEAL:
+			return 1.5f;
+		case AiAgent::NOTIFY_ALLY:
+			return 1.0f;
 	}
 
 	return 5.f;
@@ -2678,6 +2679,11 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::PATHING_HOME: {
+		if (isInCombat()) {
+			setMovementState(AiAgent::FOLLOWING);
+			break;
+		}
+
 		clearPatrolPoints();
 
 		if (creatureBitmask & CreatureFlag::STATIC || homeLocation.getCell() != nullptr || getParent().get() != nullptr) {
@@ -2719,6 +2725,9 @@ int AiAgentImplementation::setDestination() {
 				setNextPosition(targetPos.getX(), targetPos.getZ(), targetPos.getY(), healTarget->getParent().get().castTo<CellObject*>());
 			}
 		}
+		break;
+	}
+	case AiAgent::NOTIFY_ALLY: {
 		break;
 	}
 	default:
@@ -3089,6 +3098,14 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 
 			agent->showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 			agent->addDefender(attacker);
+
+			Time* lastNotify = agent->getLastPackNotify();
+
+			if (lastNotify != nullptr) {
+				lastNotify->updateToCurrentTime();
+				lastNotify->addMiliTime(20000);
+			}
+
 		}, "PackAttackLambda");
 	}
 
