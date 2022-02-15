@@ -232,15 +232,14 @@ addAiTemplate("moveDefault", moveDefault)
 
 notifyHelpDefault = {
 	{id="801960668",	name="Sequence",	pid="none"},
-	{id="1696799548",	name="If",	pid="801960668"},
-	{id="2818754924",	name="CheckCallForHelp",	pid="1696799548"},
 	{id="708981659",	name="If",	pid="801960668"},
 	{id="1970598206",	name="CheckIsType",	pid="708981659",	args={condition=NPCTYPE}},
-	{id="1993112640",	name="Selector",	pid="801960668"},
-	{id="996086380",	name="If",	pid="1993112640"},
-	{id="4074755753",	name="CheckMovementState",	pid="996086380",	args={condition=MOVING_TO_HEAL}},
-	{id="4049270502",	name="LookForAllies",	pid="1993112640"},
+	{id="1696799548",	name="If",	pid="801960668"},
+	{id="2818754924",	name="CheckCallForHelp",	pid="1696799548"},
+	{id="4049270502",	name="LookForAllies",	pid="801960668"},
 	{id="1419427323",	name="CallForHelp",	pid="4049270502"},
+	{id="407552319",	name="If",	pid="801960668"},
+	{id="784166790",	name="CheckMovementState",	pid="407552319",	args={condition=NOTIFY_ALLY}},
 	{id="3173027259",	name="WriteBlackboard",	pid="801960668",	args={key="moveMode", val=RUN}},
 	{id="3649208780",	name="AlwaysSucceed",	pid="801960668"},
 	{id="837811894",	name="TreeSocket",	pid="3649208780",	args={slot=MOVE}}}

@@ -193,6 +193,7 @@ class AiAgent extends CreatureObject {
 	public static final int PATHING_HOME = 8;
 	public static final int FOLLOW_FORMATION = 9;
 	public static final int MOVING_TO_HEAL = 10;
+	public static final int NOTIFY_ALLY = 11;
 
 	public static final int MOB_HERBIVORE = 1;
 	public static final int MOB_CARNIVORE = 2;
@@ -1316,6 +1317,12 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public Time getFleeDelay() {
 		return fleeDelay;
+	}
+
+	@local
+	@dirty
+	public Time getLastPackNotify() {
+		return lastPackNotify;
 	}
 
 	@local

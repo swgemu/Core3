@@ -95,7 +95,10 @@ public:
 		uint64 agentParentID = agentParent != nullptr ? agentParent->getObjectID() : 0;
 		uint64 targetParentID = targetParent != nullptr ? targetParent->getObjectID() : 0;
 
-		if (agentParentID != targetParentID && !CollisionManager::checkLineOfSight(agent, target))
+		if (agentParentID == targetParentID && (agent->getPosition().squaredDistanceTo(target->getPosition()) > 50 * 50))
+			return true;
+
+		if (!CollisionManager::checkLineOfSight(agent, target))
 			return true;
 
 		return false;

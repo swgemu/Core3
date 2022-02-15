@@ -166,6 +166,7 @@ public:
 		lua->setGlobalInt("PATHING_HOME",				AiAgent::PATHING_HOME					);
 		lua->setGlobalInt("FOLLOW_FORMATION",			AiAgent::FOLLOW_FORMATION				);
 		lua->setGlobalInt("MOVING_TO_HEAL",				AiAgent::MOVING_TO_HEAL					);
+		lua->setGlobalInt("NOTIFY_ALLY",				AiAgent::NOTIFY_ALLY					);
 
 		lua->setGlobalInt("UPRIGHT",					CreaturePosture::UPRIGHT				);
 		lua->setGlobalInt("CROUCHED",					CreaturePosture::CROUCHED				);
