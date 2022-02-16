@@ -2685,11 +2685,6 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::PATHING_HOME: {
-		if (isInCombat()) {
-			setMovementState(AiAgent::FOLLOWING);
-			break;
-		}
-
 		clearPatrolPoints();
 
 		if (creatureBitmask & CreatureFlag::STATIC || homeLocation.getCell() != nullptr || getParent().get() != nullptr) {
