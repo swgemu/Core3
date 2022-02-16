@@ -68,7 +68,7 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		if (area->isCampArea()) {
 			break;
 		}
-		area == nullptr;
+		area = nullptr;
 	}
 
 	if (area != nullptr && area->isCampArea() && (area.castTo<CampSiteActiveArea*>())->isAbandoned()) {
@@ -147,7 +147,7 @@ void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
 		if(area->isCampArea()) {
 			break;
 		}
-		area == nullptr;
+		area = nullptr;
 	}
 
 	CampSiteActiveArea* campArea = cast<CampSiteActiveArea*>(area.get());
