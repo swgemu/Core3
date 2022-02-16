@@ -1221,8 +1221,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 }
 
 void AiAgentImplementation::runAway(CreatureObject* target, float range, bool random = false) {
-	if (getParent().get() != nullptr || getParentID() > 0 || target == nullptr || asAiAgent()->getZoneUnsafe() == nullptr) {
-		setMovementState(AiAgent::PATHING_HOME);
+	if (getParent().get() != nullptr || getParentID() > 0 || target == nullptr || target->getParent().get() != nullptr || asAiAgent()->getZoneUnsafe() == nullptr) {
 		return;
 	}
 
@@ -1234,8 +1233,8 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 	setMovementState(AiAgent::FLEEING);
 
 	Vector3 runTrajectory;
-	Vector3 agentPosition = getPosition();
-	Vector3 creaturePosition = target->getPosition();
+	Vector3 agentPosition = getWorldPosition();
+	Vector3 creaturePosition = target->getWorldPosition();
 
 	if (random) {
 		runTrajectory.setX((creaturePosition.getX() + System::random(20)) - (agentPosition.getX() + System::random(20)));
@@ -1257,6 +1256,13 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 	float distance = Math::max(1.0f, getWorldPosition().distanceTo(target->getWorldPosition()));
 
 	runTrajectory = agentPosition + (range * (runTrajectory / distance));
+
+	if (runTrajectory.getX() <= coordinateMin || runTrajectory.getX() >= coordinateMax || runTrajectory.getY() <= coordinateMin || runTrajectory.getY() >= coordinateMax) {
+		/* info(true) << " Agent trying to flee out of bounds to -- X = " << runTrajectory.getX() << "  Y = " << runTrajectory.getY() << "    With a Direction Angle of " << directionAngle << "  Distance from target to flee " << distance
+		<< "  A Range of " << range; */
+
+		return;
+	}
 
 	stopWaiting();
 	clearPatrolPoints();

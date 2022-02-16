@@ -139,6 +139,9 @@ class AiAgent extends CreatureObject {
 	protected int respawnCounter;
 	protected boolean randomRespawn;
 
+	protected float coordinateMin;
+	protected float coordinateMax;
+
 	@dereferenced
 	protected transient AtomicInteger numberOfPlayersInRange;
 
@@ -230,6 +233,9 @@ class AiAgent extends CreatureObject {
 
 		aiTemplate = "";
 		customAiMap = 0;
+
+		coordinateMin = -8192;
+		coordinateMax = 8192;
 	}
 
 	/**
