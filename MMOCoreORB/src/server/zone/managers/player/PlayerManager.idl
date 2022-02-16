@@ -112,6 +112,9 @@ class PlayerManager extends Observer implements Logger {
 
 	@dereferenced
 	protected transient Vector<Reference<QuestInfo> > questInfo;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned int, string> questCrcTable;
 
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
@@ -123,6 +126,7 @@ class PlayerManager extends Observer implements Logger {
 	private native void loadStartingLocations();
 	private native void loadPermissionLevels();
 	private native void loadQuestInfo();
+	private native void loadQuestCrcTable();
 
 	public native void finalize();
 
