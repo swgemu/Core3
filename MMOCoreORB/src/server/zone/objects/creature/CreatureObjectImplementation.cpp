@@ -538,7 +538,7 @@ void CreatureObjectImplementation::setLevel(int level, bool randomHam) {
 
 	broadcastMessage(msg, true);
 
-	if (isGrouped()) {
+	if (group != nullptr) {
 		Locker clocker(group, asCreatureObject());
 
 		group->calcGroupLevel();
