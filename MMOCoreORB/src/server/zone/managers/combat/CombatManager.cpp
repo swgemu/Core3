@@ -154,34 +154,37 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) const {
 
 // Called for AiAgents to break their combat state
 void CombatManager::forcePeace(CreatureObject* attacker) const {
-	fatal(attacker->isLockedByCurrentThread(), "attacker must be locked");
+	Core::getTaskManager()->scheduleTask([=] () {
+		Locker lock(attacker);
 
-	const DeltaVector<ManagedReference<SceneObject*>>* defenderList = attacker->getDefenderList();
+		const DeltaVector<ManagedReference<SceneObject*>>* defenderList = attacker->getDefenderList();
 
-	for (int i = 0; i < defenderList->size(); ++i) {
-		ManagedReference<SceneObject*> object = defenderList->getSafe(i);
+		for (int i = 0; i < defenderList->size(); ++i) {
+			ManagedReference<SceneObject*> object = defenderList->getSafe(i);
 
-		if (object == nullptr || !object->isTangibleObject())
-			continue;
+			if (object == nullptr || !object->isTangibleObject())
+				continue;
 
-		TangibleObject* defender = cast<TangibleObject*>(object.get());
+			TangibleObject* defender = cast<TangibleObject*>(object.get());
 
-		Locker clocker(defender, attacker);
+			Locker clocker(defender, attacker);
 
-		if (defender->hasDefender(attacker)) {
-			attacker->removeDefender(defender);
-			defender->removeDefender(attacker);
-		} else {
-			attacker->removeDefender(defender);
+			if (defender->hasDefender(attacker)) {
+				attacker->removeDefender(defender);
+				defender->removeDefender(attacker);
+			} else {
+				attacker->removeDefender(defender);
+			}
+
+			--i;
+
+			clocker.release();
 		}
 
-		--i;
+		attacker->clearCombatState(false);
+		attacker->setState(CreatureState::PEACE);
 
-		clocker.release();
-	}
-
-	attacker->clearCombatState(false);
-	attacker->setState(CreatureState::PEACE);
+	}, "ForcePeaceLambda", 250);
 }
 
 /*

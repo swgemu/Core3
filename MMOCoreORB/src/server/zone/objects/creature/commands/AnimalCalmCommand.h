@@ -67,10 +67,8 @@ public:
 				failCalc += 75;
 
 			if (failCalc < 300) {
-				Locker alock(agent, creature);
 
 				CombatManager::instance()->forcePeace(agent);
-
 				param.setStringId("@jedi_spam:calm_target");
 			} else {
 				param.setStringId("@jedi_spam:fail_calm_target");

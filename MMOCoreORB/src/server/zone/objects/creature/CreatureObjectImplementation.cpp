@@ -2442,11 +2442,8 @@ void CreatureObjectImplementation::feignDeath() {
 	buff->setSkillModifier("private_damage_multiplier", 5);
 	creo->addBuff(buff);
 
-	// We need to delay the forcePeace until after the CombatAction is executed
-	Core::getTaskManager()->scheduleTask([creo] {
-		Locker lock(creo);
-		CombatManager::instance()->forcePeace(creo);
-	}, "FeignDeathForcePeaceTask", 250);
+	// forcePeace is a scheduledLambda in the CombatManager so should delay until combat action is complete
+	CombatManager::instance()->forcePeace(creo);
 }
 
 void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
