@@ -69,7 +69,12 @@ public:
 			if (failCalc < 300) {
 				Locker alock(agent, creature);
 
-				CombatManager::instance()->forcePeace(agent);
+				Core::getTaskManager()->scheduleTask([agent] () {
+					Locker locker(agent);
+
+					CombatManager::instance()->forcePeace(agent);
+
+				}, "AnimalCalmForcePeaceLambda", 250);
 
 				param.setStringId("@jedi_spam:calm_target");
 			} else {
