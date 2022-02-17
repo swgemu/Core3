@@ -31,11 +31,29 @@ class Region extends ActiveArea {
 	public native void notifyLoadFromDatabase();
 
 	public void enqueueEnterEvent(SceneObject obj) {
-		notifyEnter(obj);
+		super.enqueueEnterEvent(obj);
+
+		CityRegion strongReference = cityRegion;
+
+		if (!strongReference)
+			return;
+
+		synchronized (strongReference) {
+			strongReference.notifyEnter(obj);
+		}
 	}
 
 	public void enqueueExitEvent(SceneObject obj) {
-		notifyExit(obj);
+		super.enqueueExitEvent(obj);
+
+		CityRegion strongReference = cityRegion;
+
+		if (!strongReference)
+			return;
+
+		synchronized (strongReference) {
+			strongReference.notifyExit(obj);
+		}
 	}
 
 	public void notifyEnter(SceneObject object) {
