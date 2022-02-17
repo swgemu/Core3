@@ -23,7 +23,14 @@ void CampSiteActiveAreaImplementation::initializeTransientMembers() {
 
 	startTasks();
 
-	setAbandoned(abandoned);
+	Core::getTaskManager()->executeTask([weakCampSiteArea = WeakReference<CampSiteActiveArea*>(_this.getReferenceUnsafeStaticCast())]() {
+		auto strongCampSiteArea = weakCampSiteArea.get();
+
+		if (strongCampSiteArea != nullptr) {
+			Locker lock(strongCampSiteArea);
+			strongCampSiteArea->setAbandoned(strongCampSiteArea->isAbandoned());
+		}
+	}, "InitCampSiteActiveArea");
 }
 
 void CampSiteActiveAreaImplementation::init(CampStructureTemplate* campData) {
