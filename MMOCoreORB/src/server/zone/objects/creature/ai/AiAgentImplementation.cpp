@@ -3110,18 +3110,22 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 		if (!CollisionManager::checkLineOfSight(asAiAgent(), creo))
 			continue;
 
-		Core::getTaskManager()->executeTask([=] () {
-			Locker locker(agent);
+		Reference<AiAgent*> agentRef = agent;
+		Reference<SceneObject*> attackerRef = attacker;
 
-			Time* lastNotify = agent->getLastPackNotify();
+		Core::getTaskManager()->executeTask([agentRef, attackerRef] () {
+			Locker locker(agentRef);
+			Locker clocker(attackerRef, agentRef);
+
+			Time* lastNotify = agentRef->getLastPackNotify();
 
 			if (lastNotify != nullptr) {
 				lastNotify->updateToCurrentTime();
 				lastNotify->addMiliTime(30000);
 			}
 
-			agent->showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
-			agent->setDefender(attacker);
+			agentRef->showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
+			agentRef->setDefender(attackerRef);
 
 		}, "PackAttackLambda");
 	}

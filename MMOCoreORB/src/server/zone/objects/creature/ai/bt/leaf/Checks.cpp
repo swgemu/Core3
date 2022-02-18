@@ -614,7 +614,7 @@ template<> bool CheckCallForHelp::check(AiAgent* agent) const {
 
 	Time* callForHelp = agent->getLastCallForHelp();
 
-	if (callForHelp == nullptr) {
+	if (callForHelp != nullptr) {
 		if (!callForHelp->isPast())
 			return false;
 
