@@ -3061,8 +3061,11 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 }
 
 void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
-	if (lastPackNotify.miliDifference() < 2000)
+	if (!lastPackNotify.isPast())
 		return;
+
+	lastPackNotify.updateToCurrentTime();
+	lastPackNotify.addMiliTime(30000);
 
 	auto closeObjectsVector = getCloseObjects();
 	Vector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
@@ -3110,20 +3113,18 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 		Core::getTaskManager()->executeTask([=] () {
 			Locker locker(agent);
 
-			agent->showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
-			agent->addDefender(attacker);
-
 			Time* lastNotify = agent->getLastPackNotify();
 
 			if (lastNotify != nullptr) {
 				lastNotify->updateToCurrentTime();
-				lastNotify->addMiliTime(20000);
+				lastNotify->addMiliTime(30000);
 			}
+
+			agent->showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
+			agent->setDefender(attacker);
 
 		}, "PackAttackLambda");
 	}
-
-	lastPackNotify.updateToCurrentTime();
 }
 
 void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {

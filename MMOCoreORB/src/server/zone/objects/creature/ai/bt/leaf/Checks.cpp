@@ -614,12 +614,16 @@ template<> bool CheckCallForHelp::check(AiAgent* agent) const {
 
 	Time* callForHelp = agent->getLastCallForHelp();
 
-	if (callForHelp == nullptr || !callForHelp->isPast()) {
-		return false;
-	}
+	if (callForHelp == nullptr) {
+		if (!callForHelp->isPast())
+			return false;
 
-	if (System::random(100) < 40)
-		return false;
+		if (System::random(100) < 75) {
+			callForHelp->updateToCurrentTime();
+			callForHelp->addMiliTime(60 * 1000);
+			return false;
+		}
+	}
 
 	return true;
 }
