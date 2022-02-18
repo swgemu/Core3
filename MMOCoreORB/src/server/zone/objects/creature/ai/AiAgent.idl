@@ -280,7 +280,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this is locked }
 	 */
 	@preLocked
-	public abstract native void activateMovementEvent();
+	public abstract native void activateMovementEvent(boolean reschedule = false);
 
 	/**
 	 * Stops the movement event task

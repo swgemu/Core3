@@ -2297,8 +2297,9 @@ void AiAgentImplementation::doMovement() {
 			info("rootBehavior->doAction() took " + String::valueOf((int)startTime.miliDifference()) + "ms to complete.", true);
 #endif // DEBUG_AI
 
-		activateMovementEvent();
+		activateMovementEvent(true);
 	} catch (Exception& ex) {
+		cancelMovementEvent();
 		handleException(ex, __FUNCTION__);
 	}
 }
@@ -2918,7 +2919,7 @@ bool AiAgentImplementation::isCamouflaged(CreatureObject* creature) {
 	return success;
 }
 
-void AiAgentImplementation::activateMovementEvent() {
+void AiAgentImplementation::activateMovementEvent(bool reschedule) {
 	if (getZoneUnsafe() == nullptr || !(getOptionsBitmask() & OptionBitmask::AIENABLED))
 		return;
 
@@ -2939,10 +2940,12 @@ void AiAgentImplementation::activateMovementEvent() {
 		moveEvent = new AiMoveEvent(asAiAgent());
 		moveEvent->schedule(Math::max(10, nextMovementInterval));
 	} else {
-		try {
-			if (!moveEvent->isScheduled())
-				moveEvent->schedule(Math::max(10, nextMovementInterval));
-		} catch (IllegalArgumentException& e) {
+		if (reschedule) {
+			try {
+				if (!moveEvent->isScheduled())
+					moveEvent->schedule(Math::max(10, nextMovementInterval));
+			} catch (IllegalArgumentException& e) {
+			}
 		}
 	}
 
