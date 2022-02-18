@@ -2590,14 +2590,11 @@ int AiAgentImplementation::setDestination() {
 	case AiAgent::OBLIVIOUS:
 		break;
 	case AiAgent::FLEEING: {
-		float range = fleeRange;
+		int64 fleeDiff = (fleeDelay.miliDifference() / 4) * -1;
 
-		if (peekBlackboard("fleeRange"))
-			range = readBlackboard("fleeRange").get<float>() / 4;
-
-		if (alertedTime.isPast()) {
+		if (fleeDiff < 1500) {
 			eraseBlackboard("fleeRange");
-			setMovementState(AiAgent::PATROLLING);
+			setMovementState(AiAgent::FOLLOWING);
 			return stateCopy;
 		}
 

@@ -675,10 +675,10 @@ public:
 				fleeDelay->updateToCurrentTime();
 				fleeDelay->addMiliTime(delay * 1000);
 
-				if (!agent->isInRange(target, 64.f))
+				if (!agent->isInRange(target, 40.f))
 					return FAILURE;
 
-				float distance = System::random(20) + 15;
+				float distance = System::random(20) + 25;
 
 				agent->clearQueueActions();
 				agent->writeBlackboard("fleeRange", distance);
