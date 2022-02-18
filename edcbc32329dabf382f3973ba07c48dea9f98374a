@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af396366_b30cbb01",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2022-02-18T16:49:58Z",
+      "side": 1,
+      "message": "not needed",
+      "revId": "edcbc32329dabf382f3973ba07c48dea9f98374a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "197bad6c_1de4520d",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2022-02-18T16:49:58Z",
+      "side": 1,
+      "message": "lambdaShuttle !\u003d nullptr",
+      "revId": "edcbc32329dabf382f3973ba07c48dea9f98374a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a478782e_92924bbc",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2022-02-18T16:49:58Z",
+      "side": 1,
+      "message": "cLock !\u003d nullptr",
+      "range": {
+        "startLine": 522,
+        "startChar": 6,
+        "endLine": 522,
+        "endChar": 13
+      },
+      "revId": "edcbc32329dabf382f3973ba07c48dea9f98374a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b773254_22d11727",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2022-02-18T16:49:58Z",
+      "side": 1,
+      "message": "not needed dtor for Locker will do it.",
+      "revId": "edcbc32329dabf382f3973ba07c48dea9f98374a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "165e11a5_7cc50311",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2022-02-18T16:49:58Z",
+      "side": 1,
+      "message": "not \"needed\" but good habit.",
+      "revId": "edcbc32329dabf382f3973ba07c48dea9f98374a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
