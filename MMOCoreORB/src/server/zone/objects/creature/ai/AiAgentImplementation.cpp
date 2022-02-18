@@ -1284,8 +1284,10 @@ void AiAgentImplementation::leash() {
 
 	eraseBlackboard("targetProspect");
 
-	CombatManager::instance()->forcePeace(asAiAgent());
+	clearQueueActions();
 	clearDots();
+
+	CombatManager::instance()->forcePeace(asAiAgent());
 }
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {
@@ -3086,7 +3088,7 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 
 		AiAgent* agent = creo->asAiAgent();
 
-		if (!(agent->getCreatureBitmask() & CreatureFlag::PACK))
+		if (agent == nullptr || !(agent->getCreatureBitmask() & CreatureFlag::PACK) || agent->getMovementState() == AiAgent::LEASHING)
 			continue;
 
 		String targetSocialGroup = agent->getSocialGroup().toLowerCase();

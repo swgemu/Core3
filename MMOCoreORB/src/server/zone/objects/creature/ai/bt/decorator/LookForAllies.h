@@ -81,7 +81,7 @@ public:
 
 		AiAgent* tarAgent = target->asAiAgent();
 
-		if (tarAgent == nullptr)
+		if (tarAgent == nullptr || tarAgent->isFleeing() || tarAgent->getMovementState() == AiAgent::LEASHING)
 			return true;
 
 		uint32 socialGroup = agent->getSocialGroup().toLowerCase().hashCode();
