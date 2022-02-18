@@ -417,7 +417,14 @@ public:
 			return;
 		}
 
-		Locker clocker(lambdaShuttle, player);
+		Locker* cLock;
+
+		bool cLocker = lambdaShuttle != nullptr;
+		if (cLocker) {
+			cLock = new Locker(lambdaShuttle, player);
+		}
+
+		try {
 
 		if (--timeToDespawnLambdaShuttle == 0) {
 			lambdaShuttle->destroyObjectFromWorld(true);
@@ -505,6 +512,16 @@ public:
 			break;
 		default:
 			break;
+		}
+
+		} catch (Exception& e) {
+			player->error() << "exception caught in LambdaShuttleWithReinforcementsTask " << e.what();
+			e.printStackTrace();
+		}
+
+		if (cLocker) {
+			cLock->release();
+			cLock = nullptr;
 		}
 	}
 };
