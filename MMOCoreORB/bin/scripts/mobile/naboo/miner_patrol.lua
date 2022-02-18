@@ -1,4 +1,4 @@
-miner = Creature:new {
+miner_patrol = Creature:new {
 	objectName = "@mob/creature_names:miner",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
@@ -27,6 +27,7 @@ miner = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "cityPatrol",
 
 	templates = {"object/mobile/dressed_mand_miner_bith.iff",
 		"object/mobile/dressed_mand_miner_aqualish.iff",
@@ -62,4 +63,4 @@ miner = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(miner, "miner")
+CreatureTemplates:addCreatureTemplate(miner_patrol, "miner_patrol")

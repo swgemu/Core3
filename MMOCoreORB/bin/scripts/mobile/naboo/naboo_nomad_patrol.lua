@@ -1,17 +1,17 @@
-explorer = Creature:new {
-	objectName = "@mob/creature_names:explorer",
+naboo_nomad_patrol = Creature:new {
+	objectName = "@mob/creature_names:naboo_nomad",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	mobType = MOB_NPC,
-	socialGroup = "wilder",
-	faction = "",
-	level = 7,
-	chanceHit = 0.26,
-	damageMin = 55,
-	damageMax = 65,
+	socialGroup = "nomad",
+	faction = "naboo",
+	level = 6,
+	chanceHit = 0.25,
+	damageMin = 50,
+	damageMax = 55,
 	baseXp = 147,
-	baseHAM = 270,
-	baseHAMmax = 330,
+	baseHAM = 180,
+	baseHAMmax = 220,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -24,34 +24,27 @@ explorer = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + STALKER,
+	creatureBitmask = PACK,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "cityPatrol",
 
-	templates = {	"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
-		"object/mobile/dressed_commoner_naboo_human_female_07.iff",
-		"object/mobile/dressed_commoner_naboo_human_male_08.iff",
-		"object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff",
-		"object/mobile/dressed_commoner_naboo_moncal_female_01.iff",
-		"object/mobile/dressed_commoner_tatooine_aqualish_male_05.iff",
-		"object/mobile/dressed_commoner_naboo_bothan_male_01.iff",
-		"object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff",
-		"object/mobile/dressed_commoner_naboo_moncal_male_02.iff"
-	},
+	templates = {"object/mobile/dressed_naboo_nomad.iff",
+		"object/mobile/dressed_commoner_fat_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
 				{group = "junk", chance = 4000000},
-				{group = "wearables_common", chance = 3000000},
-				{group = "loot_kit_parts", chance = 2000000},
-				{group = "tailor_components", chance = 1000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000}
 			}
 		}
 	},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "rebel_weapons_medium",
+	primaryWeapon = "pirate_weapons_light",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",
@@ -62,4 +55,4 @@ explorer = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(explorer, "explorer")
+CreatureTemplates:addCreatureTemplate(naboo_nomad_patrol, "naboo_nomad_patrol")

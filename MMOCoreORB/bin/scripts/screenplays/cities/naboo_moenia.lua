@@ -24,7 +24,7 @@ NabooMoeniaScreenPlay = CityScreenPlay:new {
 		{"rebel_specforce_pathfinder", 4707.1, 3.8, -4894.6, 90, 0, "", true},
 	},
 
-	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_naboo_patrol", "commoner_old_patrol", "commoner_patrol", "commoner_technician", "naboo_nomad", "noble_patrol", "official_patrol", "scientist_patrol"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_naboo_patrol", "commoner_old_patrol", "commoner_patrol", "commoner_technician_patrol", "naboo_nomad_patrol", "noble_patrol", "official_patrol", "scientist_patrol"},
 
 	patrolMobiles = {
 		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},

@@ -191,15 +191,11 @@ function CityScreenPlay:setupMobilePatrol(pMobile, num)
 	local spawnNumber = tonumber(num)
 	local combatNpc = self.patrolMobiles[spawnNumber][9]
 
-	if combatNpc then
-		createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawnPatrol", pMobile)
-		return
-	else
+	if combatNpc == false then
 		CreatureObject(pMobile):setPvpStatusBitmask(0)
+		createEvent(getRandomNumber(40, 60) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
+		createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
 	end
-
-	createEvent(getRandomNumber(40, 60) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
-	createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
 end
 
 function CityScreenPlay:onDespawnPatrol(pMobile)
@@ -213,10 +209,7 @@ function CityScreenPlay:onDespawnPatrol(pMobile)
 
 	createEvent(300 * 1000, self.screenplayName, "patrolRespawn", nil, tostring(spawnNumber))
 
-	--dropObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
 	deleteData(pOid .. ":patrolNumber")
-	---deleteData(pOid .. ":currentLoc")
-	--deleteStringData(pOid .. ":patrolPoints")
 
 	return 1
 end

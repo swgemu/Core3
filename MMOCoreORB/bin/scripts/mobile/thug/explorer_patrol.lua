@@ -1,4 +1,4 @@
-explorer = Creature:new {
+explorer_patrol = Creature:new {
 	objectName = "@mob/creature_names:explorer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
@@ -27,6 +27,7 @@ explorer = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	customAiMap = "cityPatrol",
 
 	templates = {	"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
 		"object/mobile/dressed_commoner_naboo_human_female_07.iff",
@@ -62,4 +63,4 @@ explorer = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(explorer, "explorer")
+CreatureTemplates:addCreatureTemplate(explorer_patrol, "explorer_patrol")

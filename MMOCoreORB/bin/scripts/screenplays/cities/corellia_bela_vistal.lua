@@ -43,7 +43,7 @@ CorelliaBelaVistalScreenPlay = CityScreenPlay:new {
 		{"stormtrooper", 6837.95, 315, -5806.84, 302.784, 0, "npc_imperial"},
 	},
 
-	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "explorer", "noble_patrol"},
+	patrolNpcs = {"businessman_patrol", "commoner_fat_patrol", "commoner_old_patrol", "commoner_patrol", "explorer_patrol", "noble_patrol"},
 
 	patrolMobiles = {
 		--{patrolPoints, template, x, z, y, direction, cell, mood, combatPatrol},
