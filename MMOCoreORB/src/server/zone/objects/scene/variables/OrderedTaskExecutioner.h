@@ -46,12 +46,11 @@ public:
 		try {
 			task->run();
 		} catch (const Exception& exc) {
-			strongReference->error("exception in OrderedTaskExecutioner::run");
-			strongReference->error(exc.getMessage());
-
-			exc.printStackTrace();
+			auto trace = exc.getStackTrace();
+			strongReference->error() << "exception in OrderedTaskExecutioner::run: " << exc.getMessage() << "; STACK: " << trace.toStringData();
 		} catch (...) {
-			strongReference->error("uncaught exception in OrderedTaskExecutioner::run");
+			StackTrace trace;
+			strongReference->error() << "exception in OrderedTaskExecutioner::run: unhandled excetion; STACK: " << trace.toStringData();
 		}
 
 		taskName = task->getTaskName();
