@@ -9,6 +9,7 @@
 #define CHECKGCWTASK_H_
 
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/Zone.h"
 
 class CheckGCWTask : public Task {
 	ManagedWeakReference<GCWManager*> gcwManager;
@@ -32,12 +33,13 @@ public:
 		if (server == nullptr || server->isServerShuttingDown())
 			return;
 
-		strongRef->performGCWTasks(false);
+		if (!server->isServerOnline()) {
+			schedule((60 + System::random(30)) * 1000);
+			return;
+		}
 
+		strongRef->performGCWTasks();
 	}
 };
-
-
-
 
 #endif /* CHECKGCWTASK_H_ */

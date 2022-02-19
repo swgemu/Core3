@@ -179,7 +179,7 @@ class GCWManager extends ManagedService implements Logger {
 	public native void loadLuaConfig();
 	public native void stop();
 
-	public native void performGCWTasks(boolean initial);
+	public native void performGCWTasks();
 	private native void verifyTurrets(BuildingObject building);
 
 	public native boolean canPlaceMoreBases(CreatureObject creature);

@@ -57,8 +57,30 @@ void GCWManagerImplementation::initialize() {
 }
 
 void GCWManagerImplementation::start() {
-	performGCWTasks(true);
-	performCheckWildContrabandScanTask();
+	auto checkGCWTask = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());
+
+	if (checkGCWTask != nullptr) {
+		// typically gcwCheckTimer = 3600 - start 900 + random 450 seconds from now
+		uint64 delay = ((gcwCheckTimer / 4) + System::random(gcwCheckTimer / 8));
+		info(true) << "Scheduling checks to start in " << delay << " seconds.";
+		checkGCWTask->schedule(delay * 1000);
+	} else {
+		error() << "Unable to create new CheckGCWTask";
+		return;
+	}
+
+	if (crackdownScansEnabled && planetsWithWildScans.contains(zone->getZoneName())) {
+		auto contrabandScanTask = new CheckWildContrabandScanTask(_this.getReferenceUnsafeStaticCast());
+
+		if (contrabandScanTask != nullptr) {
+			uint64 delay = getCrackdownScanInterval() * 10 + System::random(600000);
+			info(true) << "Scheduling crackdown scans to start in " << int(delay / 1000) << " seconds.";
+			contrabandScanTask->schedule(delay);
+		} else {
+			error() << "Unable to create new CheckWildContrabandScanTask";
+			return;
+		}
+	}
 }
 
 void GCWManagerImplementation::loadLuaConfig() {
@@ -258,7 +280,7 @@ void GCWManagerImplementation::stop() {
 	gcwDestroyTasks.removeAll();
 }
 
-void GCWManagerImplementation::performGCWTasks(bool initial) {
+void GCWManagerImplementation::performGCWTasks() {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	int totalBase = gcwBaseList.size();
@@ -303,15 +325,8 @@ void GCWManagerImplementation::performGCWTasks(bool initial) {
 	updateWinningFaction();
 	spawnGcwControlBanners();
 
-	uint64 timer = gcwCheckTimer * 1000;
-
-	if (initial) {
-		// randomize a bit so every zone doesn't run it's check at the same time
-		timer = (System::random(gcwCheckTimer / 4) + gcwCheckTimer) * 1000;
-	}
-
 	CheckGCWTask* task = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());
-	task->schedule(timer);
+	task->schedule(gcwCheckTimer * 1000);
 }
 
 void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
