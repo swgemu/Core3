@@ -21,6 +21,7 @@
 #include "APIProxyObjectManager.h"
 #include "APIProxyGuildManager.h"
 #include "APIProxyConfigManager.h"
+#include "APIProxyStatisticsManager.h"
 
 using namespace server::web3;
 
@@ -96,6 +97,10 @@ void RESTServer::registerEndpoints() {
 
 	addEndpoint(RESTEndpoint("(?:GET|POST|PUT):/v1/admin/config/(?:(.*)/|)", {"key"}, [this] (APIRequest& apiRequest) -> void {
 		mConfigManagerProxy->handle(apiRequest);
+	}));
+
+	addEndpoint(RESTEndpoint("(?:GET|PUT):/v1/admin/stats/", {}, [this] (APIRequest& apiRequest) -> void {
+		mStatisticsManager->handle(apiRequest);
 	}));
 
 	addEndpoint(RESTEndpoint("POST:/v1/admin/console/(\\w+)/", {"command"}, [this] (APIRequest& apiRequest) -> void {
@@ -275,6 +280,12 @@ void RESTServer::createProxies() {
 	if (mConfigManagerProxy == nullptr) {
 		throw OutOfMemoryError();
 	}
+
+	mStatisticsManager = new APIProxyStatisticsManager();
+
+	if (mStatisticsManager == nullptr) {
+		throw OutOfMemoryError();
+	}
 }
 
 void RESTServer::destroyProxies() {
@@ -301,6 +312,11 @@ void RESTServer::destroyProxies() {
 	if (mConfigManagerProxy != nullptr) {
 		delete mConfigManagerProxy;
 		mConfigManagerProxy = nullptr;
+	}
+
+	if (mStatisticsManager != nullptr) {
+		delete mStatisticsManager;
+		mStatisticsManager = nullptr;
 	}
 }
 
