@@ -99,8 +99,18 @@ private:
 				new TipCommandSuiCallback(server->getZoneServer(),
 						targetPlayer, amount));
 
+		String promptText = "@base_player:tip_wire_prompt"; // A surcharge of 5% will be added to your requested bank-to-bank transfer amount. Would you like to continue?
+
+		if (ConfigManager::instance()->getBool("Core3.SameAccountTipsAreFree", false)) {
+			auto dstGhost = targetPlayer->getPlayerObject();
+
+			if (dstGhost != nullptr && ghost->getAccountID() == dstGhost->getAccountID()) {
+				promptText = "You are transferring credits to another character on your account, there will be no fee for this transaction. Would you like to continue?";
+			}
+		}
+
 		confirmbox->setPromptTitle("@base_player:tip_wire_title"); // Confirm Bank Transfer
-		confirmbox->setPromptText("@base_player:tip_wire_prompt"); // A surcharge of 5% will be added to your requested bank-to-bank transfer amount. Would you like to continue?
+		confirmbox->setPromptText(promptText);
 		confirmbox->setCancelButton(true, "@no");
 		confirmbox->setOkButton(true, "@yes");
 
