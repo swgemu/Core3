@@ -1945,13 +1945,16 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	printf("Patrol Points Size = %i \n", patrolPoints.size());
 
 	printf("Current World Position x = %f , ", currentWorldPos.getX());
+	printf(" z = %f \n", currentWorldPos.getZ());
 	printf(" y = %f \n", currentWorldPos.getY());
 
 	printf("End Movement Position x = %f , ", endMovementPosition.getWorldPosition().getX());
+	printf(" z = %f \n", endMovementPosition.getWorldPosition().getZ());
 	printf(" y = %f \n", endMovementPosition.getWorldPosition().getY());
 
 	printf("endDistanceSq = %f \n", endDistanceSq);
 	printf("maxSquared = %f \n", maxSquared);
+	printf("max distance = %f \n", maxDistance);
 #endif
 
 	PathFinderManager* pathFinder = PathFinderManager::instance();
@@ -2032,7 +2035,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		currentPosition = PathFinderManager::transformToModelSpace(currentPosition, nextMovementCell->getParent().get());
 
 	float nextMovementDistance = currentWorldPos.distanceTo(nextMovementPosition.getWorldPosition());
-
 	float maxDist = maxSpeed;
 
 	if (endDistanceSq > maxSquared) {
@@ -2051,19 +2053,22 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 #endif
 
 #ifdef DEBUG_PATHING
-	printf("findNextPosition - Path Size = %i ---  ", path->size());
+	printf("findNextPosition - Path Size = %i ---  \n", path->size());
 
+	printf("max speed = %f \n", maxSpeed);
 	printf("max distance = %f \n", maxDist);
 	printf("Current Position x = %f , ", currentPosition.getX());
+	printf(" z = %f \n", currentPosition.getZ());
 	printf(" y = %f \n", currentPosition.getY());
 
 	printf("Next Movement Position x = %f , ", nextMovementPosition.getX());
+	printf(" z = %f \n", nextMovementPosition.getZ());
 	printf(" y = %f \n", nextMovementPosition.getY());
 	printf("nextMovementDistance = %f \n", nextMovementDistance);
 
-	//printf(" - Current Path Points - \n");
+	printf(" - Current Path Points - \n");
 
-	/*for (int i = 0; i < path->size(); ++i) {
+	for (int i = 0; i < path->size(); ++i) {
 		WorldCoordinates pos = path->get(i);
 
 		printf("Point # %i ", i);
@@ -2072,7 +2077,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		if (pos.getCell() == nullptr)
 			printf(" Cell is null \n");
-	}*/
+	}
 #endif
 	Vector3 newPosition;
 
@@ -2084,10 +2089,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		newPosition.setX(currentPosition.getX() + (maxDist * (dx / nextMovementDistance)));
 		newPosition.setY(currentPosition.getY() + (maxDist * (dy / nextMovementDistance)));
-
-		if (nextMovementDistance <= maxDist && path->size() >= 2) {
-			path->remove(1);
-		}
 	} else {
 		newPosition.setX(nextMovementPosition.getX());
 		newPosition.setY(nextMovementPosition.getY());

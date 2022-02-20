@@ -545,6 +545,7 @@ tatooine = {
 		{"darklighter_estate",-695,-6721,164},
 		{"fort_tusken",-3981,6261,128},
 		{"imperial_oasis",-5315,2685,128},
+		{"jabas_palace",-5968,-6277,500},
 		{"jawa_traders",-6120,1872,100},
 		{"makeshift_camp",-4464,5784,32},
 		{"mark_of_honor_ranch",5002,-4684,75},
