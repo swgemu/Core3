@@ -8,6 +8,7 @@
 #ifndef AIMAP_H_
 #define AIMAP_H_
 
+#include "server/ServerCore.h"
 #include "system/util/VectorMap.h"
 
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
@@ -90,7 +91,6 @@ public:
 	AtomicInteger scheduledMoveEvents;
 	AtomicInteger moveEventsWithFollowObject;
 	AtomicInteger moveEventsRetreating;
-
 	AtomicInteger activeRecoveryEvents;
 
 	Mutex guard;
@@ -102,6 +102,45 @@ public:
 	}
 
 	~AiMap() {}
+
+	const JSONSerializationType getStatsAsJSON() const {
+		JSONSerializationType json;
+
+		json["activeMoveEvents"] = activeMoveEvents.get();
+		json["activeRecoveryEvents"] = activeRecoveryEvents.get();
+		json["countExceptions"] = countExceptions.get();
+		json["moveEventsRetreating"] = moveEventsRetreating.get();
+		json["moveEventsWithFollowObject"] = moveEventsWithFollowObject.get();
+		json["scheduledMoveEvents"] = scheduledMoveEvents.get();
+
+		auto server = ServerCore::getZoneServer();
+
+		if (server != nullptr) {
+			int totalSpawned = 0;
+
+			for (int i = 0; i < server->getZoneCount(); ++i) {
+				Zone* zone = server->getZone(i);
+
+				if (zone == nullptr)
+					continue;
+
+				int num = zone->getSpawnedAiAgents();
+
+				if (num <= 0)
+					continue;
+
+				String ucFirstZoneName = zone->getZoneName();
+				ucFirstZoneName[0] = toupper(ucFirstZoneName[0]);
+				json["countAiAgents" + ucFirstZoneName] = num;
+
+				totalSpawned += num;
+			}
+
+			json["countAiAgentsTotal"] = totalSpawned;
+		}
+
+		return json;
+	}
 
 	void initialize() {
 		if (DEBUG_MODE)
