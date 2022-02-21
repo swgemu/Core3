@@ -275,6 +275,9 @@ class ZoneServer extends ManagedService implements Logger {
 
 	@read
 	public Zone getZone(final string terrainName) {
+		if (!zones)
+		    return null;
+
 		return zones.get(terrainName);
 	}
 
@@ -285,11 +288,17 @@ class ZoneServer extends ManagedService implements Logger {
 	 */
 	@dirty
 	public Zone getZone(int idx) {
+		if (!zones)
+		    return null;
+
 		return zones.get(idx);
 	}
 
 	@read
 	public int getZoneCount() {
+		if (!zones)
+		    return 0;
+
 		return zones.size();
 	}
 
