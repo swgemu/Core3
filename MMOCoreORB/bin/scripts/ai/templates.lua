@@ -29,10 +29,6 @@ customMap = {
 		{AWARE, "awareVillageraider"}
 	}},
 
-	{ "geoLabAcklay", {
-		{MOVE, "moveAcklay"}
-	}},
-
 	{ "cityPatrol", {
 		{ROOT, "rootCitypatrol"},
 		{IDLE, "idleCitypatrol"}
