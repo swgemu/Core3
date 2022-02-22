@@ -2266,6 +2266,7 @@ void AiAgentImplementation::doMovement() {
 
 		// Do pre-checks (these should remain hard-coded)
 		if (asAiAgent()->isDead() || asAiAgent()->isIncapacitated() || (asAiAgent()->getZoneUnsafe() == nullptr) || !(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
+			cancelMovementEvent();
 			setFollowObject(nullptr);
 			return;
 		}
