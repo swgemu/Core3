@@ -1850,16 +1850,21 @@ void AiAgentImplementation::updatePetSwimmingState() {
 	float waterHeight;
 	bool waterIsDefined = terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight);
 	float petHeight = getPositionZ();
-	float swimVar = (waterHeight - swimHeight + 0.2f);
+	float swimVar = waterHeight - swimHeight;
 
-	if (waterIsDefined && (swimVar - petHeight > 0.1)) {
+#ifdef DEBUG_PETSWIMMING
+	String waterDef = waterIsDefined ? " waterIsDefined == true " : " waterIsDefined == FALSE ";
+	info(true) << waterDef;
+	info(true) << "Pet Height = " << petHeight << "   Water Height =  " << waterHeight << "   Swim Height = " << swimHeight << " Swim Var = " << swimVar;
+#endif
+
+	if (waterIsDefined && ((petHeight <= swimVar + 0.2f) || (petHeight <= swimVar - 0.2f))) {
 		// Pet is in the water.
 		setState(CreatureState::SWIMMING, true);
-		return;
+	} else {
+		// Terrain is above water level.
+		clearState(CreatureState::SWIMMING, true);
 	}
-
-	// Terrain is above water level.
-	clearState(CreatureState::SWIMMING, true);
 }
 
 void AiAgentImplementation::checkNewAngle() {
@@ -2061,23 +2066,24 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	printf(" z = %f \n", currentPosition.getZ());
 	printf(" y = %f \n", currentPosition.getY());
 
-	printf("Next Movement Position x = %f , ", nextMovementPosition.getX());
-	printf(" z = %f \n", nextMovementPosition.getZ());
-	printf(" y = %f \n", nextMovementPosition.getY());
+	printf("Next Movement Position X = %f , ", nextMovementPosition.getX());
+	printf(" Z = %f \n", nextMovementPosition.getZ());
+	printf(" Y = %f \n", nextMovementPosition.getY());
 	printf("nextMovementDistance = %f \n", nextMovementDistance);
 
-	printf(" - Current Path Points - \n");
+	/*printf(" - Current Path Points - \n");
 
 	for (int i = 0; i < path->size(); ++i) {
 		WorldCoordinates pos = path->get(i);
 
 		printf("Point # %i ", i);
 		printf(" X = %f , ", pos.getX());
+		printf(" Z = %f ", pos.getZ());
 		printf(" Y = %f \n", pos.getY());
 
 		if (pos.getCell() == nullptr)
 			printf(" Cell is null \n");
-	}
+	}*/
 #endif
 	Vector3 newPosition;
 
@@ -2096,30 +2102,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		path->remove(1);
 	}
 
-	newPosition.setZ(0.f);
-
-	// We must check that the end movement position does not end in a cell because AI will be placed on the overhangs of buildings before entering
+	// Handle next Z coordinate
 	if (!isInNavMesh() && currentParent == nullptr) {
-		Zone* zone = getZoneUnsafe();
-
-		if (zone != nullptr) {
-			newPosition.setZ(getWorldZ(newPosition));
-
-			PlanetManager* planetManager = zone->getPlanetManager();
-
-			if (planetManager != nullptr) {
-				TerrainManager* terrainManager = planetManager->getTerrainManager();
-
-				if (terrainManager != nullptr) {
-					float waterHeight;
-					bool waterIsDefined = terrainManager->getWaterHeight(newPosition.getX(), newPosition.getY(), waterHeight);
-
-					if (waterIsDefined && (waterHeight > newPosition.getZ()) && isSwimming()) {
-						newPosition.setZ(waterHeight - swimHeight);
-					}
-				}
-			}
-		}
+		newPosition.setZ(getWorldZ(newPosition));
 	} else {
 		newPosition.setZ(nextMovementPosition.getZ());
 	}
@@ -2208,6 +2193,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 	updateCurrentPosition(&nextStepPosition);
 
+	if (isPet()) {
+		updatePetSwimmingState();
+	}
+
 #ifdef DEBUG_AI
 	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 		info("findNextPosition - complete returning true", true);
@@ -2228,6 +2217,7 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 	float zCoord = 0.f;
 
 	Zone* zone = getZoneUnsafe();
+
 	if (zone == nullptr)
 		return zCoord;
 
@@ -2239,7 +2229,10 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 		closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::COLLIDABLETYPE);
 		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
 
-		zCoord = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, nullptr);
+		PlanetManager* planetMan = zone->getPlanetManager();
+
+		if (planetMan != nullptr)
+			zCoord = planetMan->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), swimHeight, &intersections, nullptr);
 	} else {
 		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
@@ -2252,7 +2245,10 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 
 		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
 
-		zCoord = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, nullptr);
+		PlanetManager* planetMan = zone->getPlanetManager();
+
+		if (planetMan != nullptr)
+			zCoord = planetMan->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), swimHeight, &intersections, nullptr);
 	}
 
 	return zCoord;
@@ -2949,10 +2945,6 @@ void AiAgentImplementation::activateMovementEvent(bool reschedule) {
 			} catch (IllegalArgumentException& e) {
 			}
 		}
-	}
-
-	if (isPet()) {
-		updatePetSwimmingState();
 	}
 
 	nextMovementInterval = UPDATEMOVEMENTINTERVAL;
