@@ -131,6 +131,7 @@ class TransactionLog {
 	bool mCommitted = false;
 	bool mAborted = false;
 	bool mExportRelated = false;
+	bool mLogged = false;
 	int mMaxDepth = 4;
 	StringBuffer mError;
 	Vector3 mWorldPosition;

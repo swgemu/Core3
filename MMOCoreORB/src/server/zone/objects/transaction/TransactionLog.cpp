@@ -24,6 +24,8 @@
 #include "server/zone/objects/tangible/eventperk/LotteryDroid.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
+#define TRXLOG_FORMAT_VERSION 2
+
 AtomicInteger TransactionLog::exportBacklog;
 
 TransactionLog::TransactionLog(SceneObject* src, SceneObject* dst, SceneObject* subject, TrxCode code, bool exportSubject, CAPTURE_CALLER_ARGS) {
@@ -96,12 +98,12 @@ TransactionLog::~TransactionLog() {
 		return;
 	}
 
-	if (mAborted) {
-		writeLog();
-		return;
-	}
-
 	if (!mCommitted) {
+		if (mAborted) {
+			writeLog();
+			return;
+		}
+
 		if (mAutoCommit) {
 			commit();
 		} else {
@@ -160,7 +162,7 @@ void TransactionLog::commit(bool discardEmpty) {
 						trx.mTransaction["exportBacklog"] = exportBacklog.get() - 1;
 						trx.writeLog();
 					} catch (...) {
-						Logger::console.error() << "unexpected exception in export task: " << trx;
+						getLogger().error() << "unexpected exception in export task: " << trx;
 					}
 
 					exportBacklog.decrement();
@@ -192,7 +194,7 @@ void TransactionLog::setSubject(SceneObject* subject, bool exportSubject) {
 void TransactionLog::setExperience(const String& xpType, int xpAdd, int xpTotal) {
 	if (mTransaction.contains("xpAdd")) {
 		errorMessage() << "duplicate setExperience call: [" << xpType << "] = [" << xpAdd << "]";
-		Logger::console.error() << errorMessage() << " " << *this;
+		getLogger().error() << errorMessage() << " " << *this;
 		return;
 	}
 
@@ -360,35 +362,20 @@ void TransactionLog::catchAndLog(const char* functioName, Function<void()> funct
 #else
 		errorMessage() << __FILE__ << ":" << functioName << " unexpected exception";
 #endif
-		Logger::console.error() << errorMessage() << " " << *this;
+		getLogger().error() << errorMessage() << " " << *this;
 	}
 }
 
 Logger& TransactionLog::getLogger() {
 	auto static customLogger = [] () {
-		auto logLevel = ConfigManager::instance()->getInt("Core3.TransactionLog.LogLevel", (int)Logger::DEBUG);
-
-		Logger log("TransactionLog");
+		Logger log("TransactionLogMessages");
 
 		log.setGlobalLogging(false);
-		log.setFileLogger("log/transaction.log", true, ConfigManager::instance()->getRotateLogAtStart());
+		log.setFileLogger("log/trxlogmsgs.log", true, ConfigManager::instance()->getRotateLogAtStart());
 		log.setLogLevelToFile(false);
 		log.setLogToConsole(false);
 		log.setRotateLogSizeMB(ConfigManager::instance()->getInt("Core3.TransactionLog.RotateLogSizeMB", ConfigManager::instance()->getRotateLogSizeMB()));
-		log.setLogLevel(static_cast<Logger::LogLevel>(logLevel));
-		log.setLoggerCallback([log](Logger::LogLevel level, const char* msg) -> int {
-			static Mutex logWriteMutext;
-			auto logFile = log.getFileLogger();
-			StringBuffer logLine;
-
-			logLine << msg << endl;
-
-			Locker guard(&logWriteMutext);
-			(*logFile) << logLine;
-			logFile->flush();
-
-			return Logger::DONTLOG;
-		});
+		log.setLogLevel(ConfigManager::instance()->getLogLevel("Core3.TransactionLog.LogLevel", Logger::DEBUG));
 
 		return log;
 	} ();
@@ -511,6 +498,7 @@ void TransactionLog::initializeCommon(SceneObject* src, SceneObject* dst, TrxCod
 	mContext["function"] = function;
 	mContext["line"] = line;
 	mContext["ref"] = getVersion();
+	mContext["@fmt"] = TRXLOG_FORMAT_VERSION;
 
 	auto currentThread = Thread::getCurrentThread();
 
@@ -539,7 +527,7 @@ void TransactionLog::addStateObjectMetadata(const String& baseKeyName, SceneObje
 	auto stringIdName = obj->getObjectNameStringIdName();
 
 	if (!stringIdFile.isEmpty() || !stringIdName.isEmpty()) {
-		addState(baseKeyName + "ObjectName", stringIdFile + "." + stringIdName);
+		addState(baseKeyName + "ObjectName", stringIdFile + ":" + stringIdName);
 	}
 
 	addState(baseKeyName + "Class", obj->_getClassName());
@@ -714,6 +702,40 @@ const String TransactionLog::composeLogEntry() const {
 }
 
 void TransactionLog::writeLog() {
+	auto static trxLog = [] () {
+		Logger log("TransactionLog");
+
+		log.setGlobalLogging(false);
+		log.setFileLogger("log/transaction.log", true, ConfigManager::instance()->getRotateLogAtStart());
+		log.setLogLevelToFile(false);
+		log.setLogToConsole(false);
+		log.setRotateLogSizeMB(ConfigManager::instance()->getInt("Core3.TransactionLog.RotateLogSizeMB", ConfigManager::instance()->getRotateLogSizeMB()));
+		log.setLogLevel(ConfigManager::instance()->getLogLevel("Core3.TransactionLog.LogLevel", Logger::DEBUG));
+		log.setLoggerCallback([log](Logger::LogLevel level, const char* msg) -> int {
+			static Mutex logWriteMutext;
+			auto logFile = log.getFileLogger();
+			StringBuffer logLine;
+
+			logLine << msg << endl;
+
+			Locker guard(&logWriteMutext);
+			(*logFile) << logLine;
+			logFile->flush();
+
+			return Logger::DONTLOG;
+		});
+
+		return log;
+	} ();
+
+	if (mLogged) {
+		auto trace = StackTrace();
+		getLogger().error() << "Duplicate write for trx " << *this << endl << "STACK: " << trace.toStringData();
+		return;
+	}
+
+	mLogged = true;
+
 	if (mError.length() > 0) {
 		mState["errorMessage"] = mError.toString();
 	}
@@ -723,10 +745,10 @@ void TransactionLog::writeLog() {
 	}
 
 	if (!mWorldPositionContext.isEmpty()) {
-		addState("WorldPositionContext", mWorldPositionContext);
-		addState("WorldPositionX", (int)mWorldPosition.getX());
-		addState("WorldPositionZ", (int)mWorldPosition.getZ());
-		addState("WorldPositionY", (int)mWorldPosition.getY());
+		addState("worldPositionContext", mWorldPositionContext);
+		addState("worldPositionX", (int)mWorldPosition.getX());
+		addState("worldPositionZ", (int)mWorldPosition.getZ());
+		addState("worldPositionY", (int)mWorldPosition.getY());
 		addState("zone", mZoneName);
 	}
 
@@ -752,10 +774,10 @@ void TransactionLog::writeLog() {
 			continue;
 		}
 
-		auto objName = scno->getObjectNameStringIdFile() + "." + scno->getObjectNameStringIdName();
+		auto objName = "@" + scno->getObjectNameStringIdFile() + ":" + scno->getObjectNameStringIdName();
 
-		if (objName == ".") {
-			objName = scno->_getClassName();
+		if (objName == "@:") {
+			objName = "@c:" + scno->_getClassName();
 		}
 
 		children[String::valueOf(oid)] = objName;
@@ -771,7 +793,7 @@ void TransactionLog::writeLog() {
 		mState["verbose"] = true;
 	}
 
-	getLogger().info() << composeLogEntry();
+	trxLog.info() << composeLogEntry();
 }
 
 SceneObject* TransactionLog::getTrxParticipant(SceneObject* obj, SceneObject* defaultValue) {
