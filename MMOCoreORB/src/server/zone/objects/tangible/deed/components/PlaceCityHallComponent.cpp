@@ -72,7 +72,10 @@ int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureO
 			Locker locker(city);
 
 			city->setCityHall(structure);
-			city->createNavMesh();
+
+			// TODO: Cities need to update the mesh they are in when placed
+			//city->createNavMesh();
+
 			city->setLoaded();
 
 			locker.release();
