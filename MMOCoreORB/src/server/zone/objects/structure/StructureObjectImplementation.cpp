@@ -201,7 +201,7 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 	}
 
 	if (isGCWBase() && !isClientObject()) {
-		createNavMesh();
+		//createNavMesh();
 	}
 }
 

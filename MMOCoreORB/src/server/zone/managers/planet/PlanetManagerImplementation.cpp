@@ -158,9 +158,17 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		loadBadgeAreas(&badges);
 		badges.pop();
 
-		LuaObject navAreas = luaObject.getObjectField("navAreas");
-		loadNavAreas(&navAreas);
-		navAreas.pop();
+		usePlanetMesh = luaObject.getIntField("usePlanetMesh");
+
+		if (usePlanetMesh) {
+			LuaObject planetNavAreas = lua->getGlobalObject("planetNavAreas");
+			loadNavAreas(&planetNavAreas);
+			planetNavAreas.pop();
+		} else {
+			LuaObject navAreas = luaObject.getObjectField("navAreas");
+			loadNavAreas(&navAreas);
+			navAreas.pop();
+		}
 
 	} else {
 		warning("Configuration settings not found.");
@@ -191,10 +199,13 @@ void PlanetManagerImplementation::loadLuaConfig() {
 	ReadLocker rLock(&regionMap);
 	int numRegions = regionMap.getTotalRegions();
 	bool forceRebuild = server->getZoneServer()->shouldDeleteNavAreas();
-	for (int i=0; i<numRegions; i++) {
-		CityRegion* city = regionMap.getRegion(i);
-		Locker locker(city);
-		city->createNavMesh(NavMeshManager::MeshQueue, forceRebuild);
+
+	if (!usePlanetMesh) {
+		for (int i = 0; i < numRegions; i++) {
+			CityRegion* city = regionMap.getRegion(i);
+			Locker locker(city);
+			city->createNavMesh(NavMeshManager::MeshQueue, forceRebuild);
+		}
 	}
 
 	rLock.release();
@@ -304,13 +315,15 @@ void PlanetManagerImplementation::loadNavAreas(LuaObject* areas) {
 
 			LuaObject areaTable(L);
 
-			String name = areaTable.getStringAt(1);
+			StringBuffer meshName;
+			meshName << zone->getZoneName() << areaTable.getStringAt(1);
+
 			Vector<float> locs;
 			locs.add(areaTable.getFloatAt(2));
 			locs.add(areaTable.getFloatAt(3));
 			locs.add(areaTable.getFloatAt(4));
 
-			configAreas.put(name, locs);
+			configAreas.put(meshName.toString(), locs);
 
 			areaTable.pop();
 		}

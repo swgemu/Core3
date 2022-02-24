@@ -60,6 +60,8 @@ class PlanetManager extends ManagedService implements Logger {
 	public static final int SHUTTLEPORT = 0;
 	public static final int STARPORT = 1;
 
+	public boolean usePlanetMesh;
+
 	protected transient WeatherManager weatherManager;
 
 	protected transient GCWManager gcwManager;
@@ -124,6 +126,8 @@ class PlanetManager extends ManagedService implements Logger {
 
 		spawnedEventObjects.setNoDuplicateInsertPlan();
 		spawnedEventStructures.setNoDuplicateInsertPlan();
+
+		usePlanetMesh = false;
 	}
 
 	@local
