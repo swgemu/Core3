@@ -434,7 +434,7 @@ void EntertainingSessionImplementation::doPerformEffect(int effectId, int effect
 
 	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 
-	if (isPerformingEffect()) {
+	if (!entertainer->checkCooldownRecovery("performing_entertainer_effect")) {
 		performanceManager->performanceMessageToSelf(entertainer, nullptr, "performance", "effect_wait_self"); // You must wait before you can perform another special effect.
 		return;
 	}
@@ -483,15 +483,9 @@ void EntertainingSessionImplementation::doPerformEffect(int effectId, int effect
 	performanceManager->performanceMessageToSelf(entertainer, nullptr, "performance", effectMessage);
 
 	entertainer->inflictDamage(entertainer, CreatureAttribute::ACTION, effectCost, true);
-	setPerformingEffect(true);
 
-	float effectDuration = effect->getEffectDuration() * 1000;
-	ManagedReference<EntertainingSession*> strongSess = _this.getReferenceUnsafeStaticCast();
-
-	Core::getTaskManager()->scheduleTask([entertainer, strongSess] {
-		Locker lock(entertainer);
-		strongSess->setPerformingEffect(false);
-	}, "SetPerformingEffectTask", effectDuration);
+	uint64 effectDuration = (uint64)(effect->getEffectDuration() * 1000);
+	entertainer->addCooldown("performing_entertainer_effect", effectDuration);
 }
 
 void EntertainingSessionImplementation::startPlayingMusic(int perfIndex, Instrument* instrument) {
