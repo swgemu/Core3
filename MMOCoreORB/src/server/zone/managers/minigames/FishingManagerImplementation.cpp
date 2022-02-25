@@ -564,9 +564,9 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 
 				float length = fish * factor;
 
-				length = System::random(length) + quality;
+				length = System::frandom(length) + quality;
 
-				Zone* zone = player->getZone();
+				Zone* zone = player->getZone(); 
 
 				if (zone == nullptr) {
 					trx.abort();

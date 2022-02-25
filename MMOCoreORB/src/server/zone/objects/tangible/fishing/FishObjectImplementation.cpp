@@ -82,10 +82,12 @@ void FishObjectImplementation::filet(CreatureObject* player) {
 void FishObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);
 
-	String lengthText = String::valueOf(length) + "m";
-	alm->insertAttribute("length", lengthText);
+	//Fish length has precision to 6 places, so generate the string ourselves.
+	char buf[20];
+	snprintf(buf, 20, "%fm", length);
+	String lengthText = String(buf);
 
-	//TODO: Reenable with new zone system.
-	//String planetText = Planet::getPlanetName(planet);
-	//alm->insertAttribute("planet", planetText);
+	alm->insertAttribute("type", String("a ") + objectName.getStringID());
+	alm->insertAttribute("length", lengthText);
+	alm->insertAttribute("planet", String("@planet_n:") + zoneName);
 }
