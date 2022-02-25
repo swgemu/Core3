@@ -42,11 +42,7 @@
 
 
 object_tangible_gambling_table_table_base = object_tangible_gambling_table_shared_table_base:new {
-	templateType = GAMBLINGTERMINAL,
 
-	gameObjectType = 16407,
-
-	machineType = 2,
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1},
