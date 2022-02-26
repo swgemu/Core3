@@ -220,7 +220,24 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 
 	serverLastMovementStamp.updateToCurrentTime();
 
-	lastValidatedPosition.update(getParent().get());
+	auto parent = getParent().get();
+
+	if (parent != nullptr) {
+		Reference<CreatureObject*> player = parent->asCreatureObject();
+
+		if (player != nullptr) {
+			parent->executeOrderedTask([player] () {
+					Locker lock(player);
+
+					auto ghost = player->getPlayerObject();
+
+					if (ghost != nullptr) {
+						auto parent = player->getParent();
+						ghost->updateLastValidatedPosition();
+					}
+			}, "PlayerObjNotifyLoadDb");
+		}
+	}
 
 	clientLastMovementStamp = 0;
 }
