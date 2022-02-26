@@ -1400,6 +1400,10 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 }
 
 void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject* creature) {
+	if (city == nullptr || creature == nullptr || !creature->isPlayerCreature() || city->isCitizen(creature->getObjectID())) {
+		return;
+	}
+
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
@@ -1427,6 +1431,10 @@ void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject
 }
 
 void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObject* creature) {
+	if (city == nullptr || creature == nullptr || !city->isCitizen(creature->getObjectID())) {
+		return;
+	}
+
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
