@@ -43,6 +43,8 @@ public:
 			return;
 		}
 
+		ghost->unloadSpawnedChildren();
+
 		if (ghost->getAdminLevel() == 0 && (zoneServer->getConnectionCount() >= zoneServer->getServerCap())) {
 			client->sendMessage(new ErrorMessage("Login Error", "Server cap reached, please try again later", 0));
 			return;

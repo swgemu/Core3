@@ -779,6 +779,19 @@ void AiAgentImplementation::initializeTransientMembers() {
 void AiAgentImplementation::notifyLoadFromDatabase() {
 	CreatureObjectImplementation::notifyLoadFromDatabase();
 
+	auto strongControlDevice = controlDevice.get();
+
+	if (strongControlDevice != nullptr) {
+		auto strongLinkedCreature = linkedCreature.get();
+
+		if (strongLinkedCreature != nullptr && strongLinkedCreature->isPlayerCreature() && !strongLinkedCreature->isOnline()) {
+			info() << "Storing because linked creature " << strongLinkedCreature->getObjectID() << " is offline.";
+			Locker clock(strongLinkedCreature, _this.getReferenceUnsafeStaticCast());
+			Locker lock(strongControlDevice);
+			strongControlDevice->storeObject(strongLinkedCreature, true);
+		}
+	}
+
 	if (npcTemplate != nullptr && convoTemplateCRC != 0) {
 		ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplateCRC);
 
