@@ -36,6 +36,8 @@ protected:
 	bool admin;
 
 	uint32 cooldown; // in msec
+	String cooldownString;
+	String cooldownName;
 
 	float defaultTime;
 
@@ -71,7 +73,6 @@ public:
 	const static int TOOCLOSE = 14;
 	const static int NOSTACKJEDIBUFF = 15;
 	const static int ALREADYAFFECTEDJEDIPOWER = 16;
-
 
 	virtual ~QueueCommand() {
 	}
@@ -200,8 +201,14 @@ public:
 	inline void setCharacterAbility(const String& ability) {
 		characterAbility = ability;
 
-		if(ability == "admin")
+		if(ability == "admin") {
 			admin = true;
+
+			// Allow config to potentially override admin cmd cooldown
+			if (cooldown == 0) {
+				setCooldown(0);
+			}
+		}
 	}
 
 	inline void setDefaultPriority(const String& priority) {
@@ -324,12 +331,85 @@ public:
 		return false;
 	}
 
+	void setCooldownString(String msg) {
+		cooldownString = msg;
+	}
+
+	String getCooldownString() const {
+		return cooldownString;
+	}
+
+	void setCooldownName(String name) {
+		cooldownName = name;
+	}
+
+	String getCooldownName() const {
+		return cooldownName;
+	}
+
+	void setCooldown(int cooldownMili) {
+		cooldown = Math::max(0, ConfigManager::instance()->getInt("Core3.CommandCooldown." + name, cooldownMili));
+
+		if (cooldown > 0 && cooldownName.isEmpty()) {
+			cooldownName = "command_" + name;
+		}
+
+		if (cooldownMili == 0 && cooldown > 0) {
+			info(true) << "setCooldown(" << cooldownMili << "): cooldown=" << cooldown << "; cooldownName=" << cooldownName;
+		}
+	}
+
+	inline int getCooldown() const {
+		return cooldown;
+	}
+
+	bool checkCooldown(CreatureObject* creo) const;
+
 	virtual void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) const {
 	}
 
 	int doCommonMedicalCommandChecks(CreatureObject* creature) const;
 
 	void checkForTef(CreatureObject* creature, CreatureObject* target) const;
+
+	String toStringData() const {
+		StringBuffer buf;
+		buf << "QueueCommand(" << name
+			<< ", nameCRC=" << nameCRC
+			<< ", stateMask=" << stateMask
+			<< ", targetType=" << targetType
+			<< ", maxRangeToTarget=" << maxRangeToTarget
+			<< ", disabled=" << disabled
+			<< ", addToQueue=" << addToQueue
+			<< ", admin=" << admin
+			<< ", cooldown=" << cooldown
+			<< ", cooldownString=\"" << cooldownString << "\""
+			<< ", defaultTime=" << defaultTime
+			<< ", characterAbility=" << characterAbility
+			<< ", defaultPriority=" << defaultPriority
+			<< ", commandGroup=" << commandGroup
+			<< ", invalidLocomotion=[";
+
+		for (int i = 0; i < invalidLocomotion.size(); ++i) {
+			if (i) {
+				buf << ", ";
+			}
+			buf << invalidLocomotion.get(i);
+		}
+
+		buf << "], skillMods=[";
+
+		for (int i = 0; i < skillMods.size(); ++i) {
+			if (i) {
+				buf << ", ";
+			}
+			buf << skillMods.get(i);
+		}
+
+		buf << "])";
+
+		return buf.toString();
+	}
 };
 
 
