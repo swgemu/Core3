@@ -35,7 +35,14 @@ commoner_technician = Creature:new {
 		"object/mobile/dressed_artisan_trainer_01.iff",
 	},
 
-	lootGroups = {"junk"},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 10000000},
+			},
+			lootChance = 5000000
+		}
+	},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
