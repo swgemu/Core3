@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06ceb1fd_0fd178f5",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/gambling/table/table_base.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2022-02-27T16:07:07Z",
+      "side": 1,
+      "message": "discussing with the team and this most likely will break these. What types of testing did you do on this?",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "dbb97f5e4967d612c449f2e391d73f5d434f4cc9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
