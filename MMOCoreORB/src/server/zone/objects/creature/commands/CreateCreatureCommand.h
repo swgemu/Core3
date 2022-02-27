@@ -181,6 +181,8 @@ public:
 			npc->setHeight(scale);
 		}
 
+		info(true) << "CreateCreatureCommand " << creature->getDisplayedName() << " created: " << npc->getObjectID() << " [" << npc->getDisplayedName() << "] at " << npc->getWorldPosition() << " on " << npc->getZone()->getZoneName();
+
 		return SUCCESS;
 	}
 
