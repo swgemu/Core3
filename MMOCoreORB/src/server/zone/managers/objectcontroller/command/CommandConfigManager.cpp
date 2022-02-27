@@ -106,6 +106,8 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 
 	delete metatable;
 
+	auto dumpAdminCommands = ConfigManager::instance()->getBool("Core3.CommandConfigManager.DumpAdminCommands", false);
+
 	for (int j = 0; j < tablesToLoad.getTotalRows(); ++j) {
 		DataTableRow* tableRow = tablesToLoad.getRow(j);
 		String tableName;
@@ -294,6 +296,10 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 			slashCommand->setCommandGroup(group);
 
 			num++;
+
+			if (dumpAdminCommands && slashCommand->requiresAdmin()) {
+				info(true) << "Loaded " << *slashCommand;
+			}
 		}
 	}
 
@@ -561,6 +567,10 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 	// overwrite data from command_table
 	if (varName == "name") // just ignore name, it's only used to grab the object from the table
 		command.pop();
+	else if (varName == "cooldown")
+		slashCommand->setCooldown(Lua::getIntParameter(L));
+	else if (varName == "cooldownString")
+		slashCommand->setCooldownString(Lua::getStringParameter(L));
 	else if (varName == "invalidStateMask")
 		slashCommand->setStateMask(Lua::getUnsignedLongParameter(L));
 	else if (varName == "invalidLocomotions")
