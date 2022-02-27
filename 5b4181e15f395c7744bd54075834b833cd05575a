@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eef0c58e_e707724c",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/fishing/FishObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2022-02-27T15:58:27Z",
+      "side": 1,
+      "message": "Can you use String::valueOf(float val) ?",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "5b4181e15f395c7744bd54075834b833cd05575a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce11d4a5_349272bf",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/fishing/FishObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2022-02-27T15:58:27Z",
+      "side": 1,
+      "message": "does this format properly on client?",
+      "revId": "5b4181e15f395c7744bd54075834b833cd05575a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
