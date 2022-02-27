@@ -144,6 +144,10 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		return durationTime;
 	}
 
+	if (!queueCommand->checkCooldown(object)) {
+		return 0.0f;
+	}
+
 	if (queueCommand->requiresAdmin()) {
 		try {
 			if(object->isPlayerCreature()) {

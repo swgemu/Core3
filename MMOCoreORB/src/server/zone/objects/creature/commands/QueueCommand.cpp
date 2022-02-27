@@ -320,3 +320,65 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 		}
 	}
 }
+
+bool QueueCommand::checkCooldown(CreatureObject* creo) const {
+	if (cooldown == 0) {
+		return true;
+	}
+
+	if (creo == nullptr) {
+		error() << "checkCooldown() nullptr creo";
+		return true;
+	}
+
+	if (!creo->isLockedByCurrentThread()) {
+		error() << "checkCooldown() is not locked";
+		return true;
+	}
+
+	// Provide sane default but should have been set in setCooldown()
+	auto cooldownKey = cooldownName.isEmpty() ? "command_" + name : cooldownName;
+
+	if (creo->checkCooldownRecovery(cooldownKey)) {
+		creo->addCooldown(cooldownKey, cooldown);
+		return true;
+	}
+
+	uint32 remain = 0;
+	auto cooldownTime = creo->getCooldownTime(cooldownKey);
+
+	if (cooldownTime != nullptr) {
+		Time now;
+		remain = now.miliDifference(*cooldownTime) / 1000;
+	}
+
+	String logMsg;
+
+	if (!cooldownString.isEmpty()) {
+		if (cooldownString.charAt(0) == '@') {
+			StringIdChatParameter stringIdMsg(cooldownString);
+			stringIdMsg.setDI(remain);
+			logMsg = stringIdMsg.toString();
+			creo->sendSystemMessage(stringIdMsg);
+		} else {
+			logMsg = cooldownString.replaceFirst("%DI", String::valueOf(remain));
+			creo->sendSystemMessage(logMsg);
+		}
+	} else {
+		StringBuffer buf;
+
+		buf << "You can't do /" << name << " again yet, please wait";
+
+		if (remain > 0) {
+			buf << " " << remain << (remain == 1 ? " second" : " seconds");
+		}
+
+		buf << " before trying again.";
+		logMsg = buf.toString();
+		creo->sendSystemMessage(logMsg);
+	}
+
+	creo->info(admin) << "checkCooldown /" << name << ": remain=" << remain << "; msg=\"" << logMsg << "\"";
+
+	return false;
+}
