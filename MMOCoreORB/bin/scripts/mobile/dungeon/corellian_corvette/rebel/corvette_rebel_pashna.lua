@@ -24,7 +24,7 @@ corvette_rebel_pashna = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
+	optionsBitmask = CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corvette_rebel_pashna.iff"},
