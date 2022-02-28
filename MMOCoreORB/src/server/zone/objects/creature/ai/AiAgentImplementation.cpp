@@ -753,8 +753,8 @@ void AiAgentImplementation::initializeTransientMembers() {
 
 			ManagedReference<CreatureObject*> linkedCreature = getLinkedCreature().get();
 			if (linkedCreature != nullptr) {
-				trx.addState("Owner Name: ", linkedCreature->getFirstName());
-				trx.addState("Owner ID", linkedCreature->getObjectID());
+				trx.addState("ownerName", linkedCreature->getFirstName());
+				trx.addState("ownerID", linkedCreature->getObjectID());
 			}
 
 			trx.commit();
