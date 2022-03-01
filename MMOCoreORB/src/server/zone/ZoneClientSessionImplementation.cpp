@@ -40,6 +40,8 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 }
 
 void ZoneClientSessionImplementation::setupLogging() {
+	static AtomicInteger sequence;
+
 	auto clientLogLevel = ConfigManager::instance()->getInt("Core3.ZoneServer.ClientLogLevel", -1, accountID);
 
 	if (clientLogLevel < 0) {
@@ -58,7 +60,8 @@ void ZoneClientSessionImplementation::setupLogging() {
 	logFilename << "log/clients/"
 		<< now.getFormattedTime("%Y-%m-%d/%H")
 		<< "/" << session->getIPAddress()
-	    << "/BaseClientProxy-" << now.getTime() << "-" << addr.getIPAddress() << "-" << addr.getPort() << ".log";
+	    << "/BaseClientProxy-" << now.getTime() << "-" << addr.getIPAddress() << "-" << addr.getPort()
+		<< "-" << sequence.increment() << ".log";
 
 	session->setFileLogger(logFilename.toString(), true, ConfigManager::instance()->getRotateLogAtStart());
 	session->setLogSynchronized(true);
@@ -72,7 +75,6 @@ void ZoneClientSessionImplementation::setupLogging() {
 		session->info() << "AccountID=" << accountID << "; ClientLogLevel=" << clientLogLevel;
 		session->reportStats("account_id=" + String::valueOf(accountID));
 	}
-
 }
 
 void ZoneClientSessionImplementation::setAccountID(unsigned int newAccountID) {
