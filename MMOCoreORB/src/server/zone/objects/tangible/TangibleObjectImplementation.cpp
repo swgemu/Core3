@@ -1136,7 +1136,6 @@ bool TangibleObjectImplementation::isAttackableBy(TangibleObject* object) {
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (object->isPlayerCreature()) {
 		Reference<PlayerObject*> ghost = object->getPlayerObject();
-
 		if (ghost != nullptr && ghost->hasCrackdownTefTowards(getFaction())) {
 			return true;
 		}
@@ -1152,22 +1151,19 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	} else if (isRebel() && !(object->isImperial())) {
 		return false;
 	} else if (object->isAiAgent()) {
-		AiAgent* agent = object->asAiAgent();
+		AiAgent* ai = object->asAiAgent();
 
-		if (agent == nullptr)
-			return false;
-
-		if (agent->getHomeObject().get() == asTangibleObject()) {
+		if (ai->getHomeObject().get() == asTangibleObject()) {
 			return false;
 		}
 
-		if (agent->isPet()) {
-			ManagedReference<PetControlDevice*> pcd = agent->getControlDevice().get().castTo<PetControlDevice*>();
+		if (ai->isPet()) {
+			ManagedReference<PetControlDevice*> pcd = ai->getControlDevice().get().castTo<PetControlDevice*>();
 			if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral()) {
 				return false;
 			}
 
-			ManagedReference<CreatureObject*> owner = agent->getLinkedCreature().get();
+			ManagedReference<CreatureObject*> owner = ai->getLinkedCreature().get();
 
 			if (owner == nullptr)
 				return false;

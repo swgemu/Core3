@@ -3272,10 +3272,10 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 			return isAttackableBy(owner);
 		}
 
-		if ((pvpStatusBitmask & CreatureFlag::ATTACKABLE) && !object->isRebel() && !object->isImperial())
+		if(!object->isRebel() && !object->isImperial())
 			return true;
 
-		if (getFaction() == 0 || getFaction() == object->getFaction())
+		if(getFaction() == 0 || getFaction() == object->getFaction())
 			return false;
 		else if (isPlayerCreature() && getFactionStatus() == FactionStatus::ONLEAVE)
 			return false;
