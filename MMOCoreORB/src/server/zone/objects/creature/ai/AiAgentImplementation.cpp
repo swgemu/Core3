@@ -2598,6 +2598,11 @@ int AiAgentImplementation::setDestination() {
 	// info(true) << "ID: " << getObjectID() << "  setDestination - stateCopy: " << String::valueOf(stateCopy) << "  Patrol Point Size:" << getPatrolPointSize();
 	// info("homeLocation: " + homeLocation.toString(), true);
 
+	if (patrolPoints.size() > 20) {
+		info() << "Patrol points have oveflowed. Total points: " << patrolPoints.size();
+		clearPatrolPoints();
+	}
+
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
 		break;
@@ -2618,9 +2623,11 @@ int AiAgentImplementation::setDestination() {
 			return setDestination();
 		}
 
+		clearPatrolPoints();
+
 		if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
 			homeLocation.setReached(false);
-			addPatrolPoint(homeLocation);
+			setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
 		} else {
 			setDirection(Math::deg2rad(homeLocation.getDirection()));
 			broadcastNextPositionUpdate(&homeLocation);
