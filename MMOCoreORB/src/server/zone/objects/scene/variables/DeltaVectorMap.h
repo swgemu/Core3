@@ -88,8 +88,6 @@ public:
 
 		V& value = vectorMap.get(key);
 
-		vectorMap.drop(key);
-
 		if (message != nullptr) {
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
@@ -101,6 +99,8 @@ public:
 			TypeInfo<K>::toBinaryStream(&nonconstK, message);
 			TypeInfo<V>::toBinaryStream(&nonconstV, message);
 		}
+
+		vectorMap.drop(key);
 
 		return true;
 	}
