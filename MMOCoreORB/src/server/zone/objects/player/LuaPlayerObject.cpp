@@ -50,6 +50,16 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "setJediState", &LuaPlayerObject::setJediState },
 		{ "getJediState", &LuaPlayerObject::getJediState },
 		{ "isOnline", &LuaPlayerObject::isOnline },
+		{ "questActivateQuest", &LuaPlayerObject::questActivateQuest },
+		{ "questCompleteQuest", &LuaPlayerObject::questCompleteQuest },
+		{ "questClearQuest", &LuaPlayerObject::questClearQuest },
+		{ "questActivateQuestTask", &LuaPlayerObject::questActivateQuestTask },
+		{ "questCompleteQuestTask", &LuaPlayerObject::questCompleteQuestTask },
+		{ "questClearQuestTask", &LuaPlayerObject::questClearQuestTask },
+		{ "questIsQuestActive", &LuaPlayerObject::questIsQuestActive },
+		{ "questIsQuestComplete", &LuaPlayerObject::questIsQuestComplete },
+		{ "questIsQuestTaskActive", &LuaPlayerObject::questIsQuestTaskActive },
+		{ "questIsQuestTaskComplete", &LuaPlayerObject::questIsQuestTaskComplete },
 		{ "setActiveQuestsBit", &LuaPlayerObject::setActiveQuestsBit },
 		{ "clearActiveQuestsBit", &LuaPlayerObject::clearActiveQuestsBit },
 		{ "hasActiveQuestBitSet", &LuaPlayerObject::hasActiveQuestBitSet },
@@ -407,6 +417,97 @@ int LuaPlayerObject::getJediState(lua_State* L) {
 
 int LuaPlayerObject::isOnline(lua_State* L) {
 	lua_pushboolean(L, realObject->isOnline());
+
+	return 1;
+}
+
+int LuaPlayerObject::questActivateQuest(lua_State* L) {
+	int quest = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	realObject->questActivateQuest(quest, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::questCompleteQuest(lua_State* L) {
+	int quest = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	realObject->questCompleteQuest(quest, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::questClearQuest(lua_State* L) {
+	int quest = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	realObject->questClearQuest(quest, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::questActivateQuestTask(lua_State* L) {
+	int quest = lua_tointeger(L, -3);
+	int task = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	realObject->questActivateQuestTask(quest, task, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::questCompleteQuestTask(lua_State* L) {
+	int quest = lua_tointeger(L, -3);
+	int task = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	realObject->questCompleteQuestTask(quest, task, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::questClearQuestTask(lua_State* L) {
+	int quest = lua_tointeger(L, -3);
+	int task = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	realObject->questClearQuestTask(quest, task, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::questIsQuestActive(lua_State* L) {
+	int quest = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->questIsQuestActive(quest));
+
+	return 1;
+}
+
+int LuaPlayerObject::questIsQuestComplete(lua_State* L) {
+	int quest = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->questIsQuestComplete(quest));
+
+	return 1;
+}
+
+int LuaPlayerObject::questIsQuestTaskActive(lua_State* L) {
+	int quest = lua_tointeger(L, -2);
+	int task = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->questIsQuestTaskActive(quest, task));
+
+	return 1;
+}
+
+int LuaPlayerObject::questIsQuestTaskComplete(lua_State* L) {
+	int quest = lua_tointeger(L, -2);
+	int task = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->questIsQuestTaskComplete(quest, task));
 
 	return 1;
 }
