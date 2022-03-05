@@ -57,6 +57,7 @@ CreatureTemplate::CreatureTemplate() {
 	diet = 0;
 	optionsBitmask = 0;
 	customAiMap = 0;
+	tauntable = true;
 
 	primaryWeapon = "";
 	secondaryWeapon = "";
@@ -124,6 +125,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	optionsBitmask = templateData->getIntField("optionsBitmask");
 	patrolPathTemplate = templateData->getStringField("patrolPathTemplate");
 	defaultWeapon = templateData->getStringField("defaultWeapon");
+	tauntable = templateData->getBooleanField("tauntable");
 
 	if(!templateData->getStringField("defaultAttack").isEmpty())
 		defaultAttack = templateData->getStringField("defaultAttack");

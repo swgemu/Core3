@@ -26,6 +26,7 @@ acklay = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
+	tauntable = false,
 
 	templates = {"object/mobile/acklay_hue.iff"},
 	lootGroups = {
