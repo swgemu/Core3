@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1ae0cd5a_54ec943f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DeactivateQuestCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-05T18:28:20Z",
+      "side": 1,
+      "message": "OK makes sense, I\u0027ll put the check in... I copied this logic from ClearCompletedQuestCommand.h which existed before, and it appears to not be checking for admin either FYI.",
+      "parentUuid": "081a3378_ad5c98e8",
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03847b51_63522b10",
         "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b91f65ae_3c4ee784",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-05T18:28:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03847b51_63522b10",
+      "range": {
+        "startLine": 425,
+        "startChar": 5,
+        "endLine": 425,
+        "endChar": 10
+      },
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3aff0a3_5440d98b",
         "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a9f374_5293cb95",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-05T18:28:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e3aff0a3_5440d98b",
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "aa40fedf_395950a7",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-05T18:28:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7dec2b2a_42b9e2d6",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cc1142c_41fc9a7a",
         "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
         "patchSetId": 1
@@ -102,6 +186,30 @@
       "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74e8cd3b_389c6fa4",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2764,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-05T18:28:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3cc1142c_41fc9a7a",
+      "range": {
+        "startLine": 2764,
+        "startChar": 0,
+        "endLine": 2764,
+        "endChar": 1
+      },
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "b80e9bb7_351b4864",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2797,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-05T18:28:20Z",
+      "side": 1,
+      "message": "In the data structure they would still be uncompleted and \"active\"... but the quest journal hides all tasks regardless of completeness when the quest is complete. I believe it\u0027s supposed to be possible to fail tasks and still complete quests.",
+      "parentUuid": "6d077152_86cfb142",
+      "range": {
+        "startLine": 2796,
+        "startChar": 1,
+        "endLine": 2797,
+        "endChar": 46
+      },
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "070653ec_c06ed31b",
         "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
         "patchSetId": 1
@@ -139,6 +271,30 @@
       "writtenOn": "2022-03-05T16:18:01Z",
       "side": 1,
       "message": "What happens if you only clear the ownerId and completed bits? Will the quest remain in the journal anyway?",
+      "range": {
+        "startLine": 3096,
+        "startChar": 1,
+        "endLine": 3096,
+        "endChar": 77
+      },
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b23ee399_2aaaaaa2",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3096,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-05T18:28:20Z",
+      "side": 1,
+      "message": "I don\u0027t think in practice anything actually removes a journal quest in PreCU.  I added an admin command to do it for testing purposes as the deadmite quest can\u0027t be repeated.  That admin command is the only thing that calls this method.  That said, I will check to see if the quest can be cleared by just setting the whole data structure to 0\u0027s",
+      "parentUuid": "070653ec_c06ed31b",
       "range": {
         "startLine": 3096,
         "startChar": 1,
