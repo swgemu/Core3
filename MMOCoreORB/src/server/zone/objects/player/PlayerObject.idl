@@ -792,6 +792,26 @@ class PlayerObject extends IntangibleObject {
 
 	public native void setLoggingOut();
 
+	public native void questActivateQuest(unsigned int questHashCode, boolean notifyClient = true);
+
+	public native void questCompleteQuest(unsigned int questHashCode, boolean notifyClient = true);
+
+	public native void questClearQuest(unsigned int questHashCode, boolean notifyClient = true);
+
+	public native void questActivateQuestTask(unsigned int questHashCode, int taskNum, boolean notifyClient = true);
+
+	public native void questCompleteQuestTask(unsigned int questHashCode, int taskNum, boolean notifyClient = true);
+
+	public native void questClearQuestTask(unsigned int questHashCode, int taskNum, boolean notifyClient = true);
+
+	public native boolean questIsQuestActive(unsigned int questHashCode);
+
+	public native boolean questIsQuestComplete(unsigned int questHashCode);
+
+	public native boolean questIsQuestTaskActive(unsigned int questHashCode, int taskNum);
+
+	public native boolean questIsQuestTaskComplete(unsigned int questHashCode, int taskNum);
+
 	/**
 	 * Sends a badges response message
 	 * @pre { }
@@ -846,6 +866,8 @@ class PlayerObject extends IntangibleObject {
 	@local
 	public native void setPlayerQuestData(unsigned int questHashCode, @dereferenced PlayerQuestData data, boolean notifyClient = true);
 
+	@local
+	public native void clearPlayerQuestData(unsigned int questHashCode, boolean notifyClient = true);
 	/**
 	 * Gets the faction point list.
 	 */

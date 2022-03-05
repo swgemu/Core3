@@ -57,6 +57,16 @@ namespace player {
 		int setJediState(lua_State* L);
 		int getJediState(lua_State* L);
 		int isOnline(lua_State* L);
+		int questActivateQuest(lua_State* L);
+		int questCompleteQuest(lua_State* L);
+		int questClearQuest(lua_State* L);
+		int questActivateQuestTask(lua_State* L);
+		int questCompleteQuestTask(lua_State* L);
+		int questClearQuestTask(lua_State* L);
+		int questIsQuestActive(lua_State* L);
+		int questIsQuestComplete(lua_State* L);
+		int questIsQuestTaskActive(lua_State* L);
+		int questIsQuestTaskComplete(lua_State* L);
 		int setActiveQuestsBit(lua_State* L);
 		int clearActiveQuestsBit(lua_State* L);
 		int hasActiveQuestBitSet(lua_State* L);
