@@ -366,7 +366,7 @@ void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scann
 
 void ContrabandScanSessionImplementation::checkIfPlayerShouldBeScanned(CreatureObject* player) {
 	if (player == nullptr) {
-		scanState == FINISHED;
+		scanState = FINISHED;
 		return;
 	}
 
