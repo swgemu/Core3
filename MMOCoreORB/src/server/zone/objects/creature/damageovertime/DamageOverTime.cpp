@@ -206,7 +206,7 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* at
 
 		Locker crossLocker(attackerRef, victimRef);
 
-		victimRef->inflictDamage(attackerRef, attribute, damage, false);
+		victimRef->inflictDamage(attackerRef, attribute, damage, false, "dotDMG", true, false);
 
 		if (victimRef->hasAttackDelay())
 			victimRef->removeAttackDelay();
@@ -251,14 +251,14 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 			// need to do damage to account for wounds first, or it will possibly get
 			// applied twice
 			if (attribute % 3 == 0)
-				victimRef->inflictDamage(attackerRef, attribute, woundsToApply, true);
+				victimRef->inflictDamage(attackerRef, attribute, woundsToApply, true, "dotDMG", true, false);
 
 			victimRef->addWounds(attribute, woundsToApply, true, false);
 		}
 
 		victimRef->addShockWounds((int)(secondaryStrength * 0.075f));
 
-		victimRef->inflictDamage(attackerRef, attribute - attribute % 3, damage, true);
+		victimRef->inflictDamage(attackerRef, attribute - attribute % 3, damage, true, "dotDMG", true, false);
 		if (victimRef->hasAttackDelay())
 			victimRef->removeAttackDelay();
 
@@ -292,7 +292,7 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* atta
 
 		Locker crossLocker(attackerRef, victimRef);
 
-		victimRef->inflictDamage(attackerRef, attribute, damage, false);
+		victimRef->inflictDamage(attackerRef, attribute, damage, false, "dotDMG", true, false);
 		if (victimRef->hasAttackDelay())
 			victimRef->removeAttackDelay();
 
@@ -329,7 +329,7 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim, CreatureObject* att
 			// need to do damage to account for wounds first, or it will possibly get
 			// applied twice
 			if (attribute % 3 == 0)
-				victimRef->inflictDamage(attackerRef, attribute, damage, true);
+				victimRef->inflictDamage(attackerRef, attribute, damage, true, "dotDMG", true, false);
 
 			victimRef->addWounds(attribute, damage, true, false);
 		}
@@ -384,7 +384,7 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 		}
 
 		CombatManager::instance()->broadcastCombatSpam(attackerRef, victimRef, nullptr, chokeDam, "cbt_spam", "forcechoke_hit", 1);
-		victimRef->inflictDamage(attackerRef, attribute, chokeDam, true);
+		victimRef->inflictDamage(attackerRef, attribute, chokeDam, true, "dotDMG", true, false);
 
 		if (victimRef->hasAttackDelay())
 			victimRef->removeAttackDelay();
