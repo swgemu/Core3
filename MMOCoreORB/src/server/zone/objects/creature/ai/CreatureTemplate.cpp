@@ -125,7 +125,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	optionsBitmask = templateData->getIntField("optionsBitmask");
 	patrolPathTemplate = templateData->getStringField("patrolPathTemplate");
 	defaultWeapon = templateData->getStringField("defaultWeapon");
-	tauntable = templateData->getBooleanField("tauntable");
+	tauntable = templateData->getBooleanField("tauntable", true);
 
 	if(!templateData->getStringField("defaultAttack").isEmpty())
 		defaultAttack = templateData->getStringField("defaultAttack");
