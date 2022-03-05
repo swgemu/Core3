@@ -148,6 +148,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	planetMapCategory = npcTemplate->getPlanetMapCategory();
 
+	tauntable = npcTemplate->isTauntable();
+
 	if (getHueValue() == -1 && npcTemplate->getTotalHues() > 0) {
 		int randHue = npcTemplate->getRandomHue();
 		setHue(randHue);

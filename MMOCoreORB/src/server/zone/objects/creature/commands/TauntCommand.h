@@ -38,6 +38,16 @@ public:
 		if (res == SUCCESS) {
 			Locker clocker(targetCreature, creature);
 
+			AiAgent* agent = targetCreature->asAiAgent();
+
+			if (agent == nullptr)
+				return INVALIDTARGET;
+
+			if (!agent->isTauntable()) {
+				creature->sendSystemMessage("@cbt_spam:taunt_fail_single");
+				return res;
+			}
+
 			ThreatMap* threatMap = targetCreature->getThreatMap();
 
 			if (threatMap != nullptr) {
