@@ -58,6 +58,8 @@ protected:
 	String faction;
 	int mobType;
 
+	bool tauntable;
+
 	int level;
 
 	float chanceHit;
@@ -362,6 +364,10 @@ public:
 
 	inline uint32 getDiet() const {
 		return diet;
+	}
+
+	inline bool isTauntable() const {
+		return tauntable;
 	}
 
 	inline const Vector<String>& getTemplates() const {

@@ -33,10 +33,20 @@ public:
 		if (!targetCreature->isAttackableBy(creature))
 			return INVALIDTARGET;
 
+		AiAgent* agent = targetCreature->asAiAgent();
+
+		if (agent == nullptr)
+			return INVALIDTARGET;
+
 		int res = doCombatAction(creature, target);
 
 		if (res == SUCCESS) {
 			Locker clocker(targetCreature, creature);
+
+			if (!agent->isTauntable()) {
+				creature->sendSystemMessage("@cbt_spam:taunt_fail_single");
+				return res;
+			}
 
 			ThreatMap* threatMap = targetCreature->getThreatMap();
 
