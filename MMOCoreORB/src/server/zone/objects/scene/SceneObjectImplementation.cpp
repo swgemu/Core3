@@ -1206,6 +1206,16 @@ void SceneObjectImplementation::rotate(int degrees) {
 	direction.rotate(unity, degrees);
 }
 
+void SceneObjectImplementation::rotatePitch(int degrees) {
+	Vector3 unity(0, 0, 1);
+	direction.rotate(unity, degrees);
+}
+
+void SceneObjectImplementation::rotateRoll(int degrees) {
+	Vector3 unity(1, 0, 0);
+	direction.rotate(unity, degrees);
+}
+
 void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (objectMenuComponent == nullptr) {
 		error("no object menu component set for " + templateObject->getTemplateFileName());
