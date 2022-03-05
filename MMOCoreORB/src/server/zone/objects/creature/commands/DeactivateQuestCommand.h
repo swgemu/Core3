@@ -21,6 +21,43 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		Reference<PlayerObject*> ghost = creature->getPlayerObject();
+		if (ghost == nullptr || !ghost->isPrivileged()) {
+			return GENERALERROR;
+		}
+
+		StringTokenizer args(arguments.toString());
+
+		try {
+			ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+
+			if (obj == nullptr || !obj->isCreatureObject()) {
+				return INVALIDTARGET;
+			}
+
+			CreatureObject* targetCreature = cast<CreatureObject*>(obj.get());
+
+			if (targetCreature == nullptr) {
+				return INVALIDTARGET;
+			}
+
+			PlayerObject* ghost = targetCreature->getPlayerObject();
+
+			if (ghost == nullptr)
+				return INVALIDTARGET;
+
+			String questName = args.getStringToken();
+			int questCRC = questName.hashCode();
+
+			PlayerQuestData data;
+			ghost->clearJournalQuest(questCRC, true);
+
+		} catch (Exception& e) {
+			creature->sendSystemMessage("SYNTAX: /deactivateQuest <questName>");
+
+			return INVALIDPARAMETERS;
+		}
+
 		return SUCCESS;
 	}
 

@@ -2760,6 +2760,165 @@ int PlayerObjectImplementation::getOwnedChatRoomCount() {
 
 }
 
+void PlayerObjectImplementation::activateJournalQuest(unsigned int questCrc, bool notifyClient) {
+	PlayerQuestData questData = getQuestData(questCrc);
+
+	if (questData.getOwnerId() != 0)
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(getParent().get().get());
+
+	if (creature == nullptr)
+		return;
+
+	questData.setOwnerId(getObjectID());
+	questData.setActiveStepBitmask(0);
+	questData.setCompletedStepBitmask(0);
+	questData.setCompletedFlag(0);
+	setPlayerQuestData(questCrc, questData);
+
+	activateJournalQuestTask(questCrc, 0, notifyClient);
+}
+
+void PlayerObjectImplementation::completeJournalQuest(unsigned int questCrc, bool notifyClient) {
+	PlayerQuestData questData = getQuestData(questCrc);
+
+	if (questData.getOwnerId() == 0)
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(getParent().get().get());
+
+	if (creature == nullptr)
+		return;
+
+	questData.setCompletedFlag(1);
+	setPlayerQuestData(questCrc, questData);
+
+	if (notifyClient)
+		creature->sendSystemMessage("@quest/quests:quest_journal_updated");
+}
+
+void PlayerObjectImplementation::clearJournalQuest(unsigned int questCrc, bool notifyClient) {
+	PlayerQuestData questData = getQuestData(questCrc);
+
+	if (questData.getOwnerId() == 0)
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(getParent().get().get());
+
+	if (creature == nullptr)
+		return;
+
+	clearPlayerQuestData(questCrc);
+
+	if (notifyClient)
+		creature->sendSystemMessage("@quest/quests:quest_journal_updated");
+}
+
+void PlayerObjectImplementation::activateJournalQuestTask(unsigned int questCrc, int taskNum, bool notifyClient) {
+	if (taskNum > 15)
+		return;
+
+	PlayerQuestData questData = getQuestData(questCrc);
+
+	if (questData.getOwnerId() == 0)
+		return;
+
+	if (questData.getActiveStepBitmask() & (1 << taskNum))
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(getParent().get().get());
+
+	if (creature == nullptr)
+		return;
+
+	questData.setActiveStepBitmask(questData.getActiveStepBitmask() | (1 << taskNum));
+	questData.setCompletedStepBitmask(questData.getCompletedStepBitmask() & ~(1 << taskNum));
+	setPlayerQuestData(questCrc, questData);
+
+	if (notifyClient)
+		creature->sendSystemMessage("@quest/quests:quest_journal_updated");
+}
+
+void PlayerObjectImplementation::completeJournalQuestTask(unsigned int questCrc, int taskNum, bool notifyClient) {
+	if (taskNum > 15)
+		return;
+
+	PlayerQuestData questData = getQuestData(questCrc);
+
+	if (questData.getOwnerId() == 0)
+		return;
+
+	if ((questData.getActiveStepBitmask() & (1 << taskNum)) == 0)
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(getParent().get().get());
+
+	if (creature == nullptr)
+		return;
+
+	questData.setActiveStepBitmask(questData.getActiveStepBitmask() & ~(1 << taskNum));
+	questData.setCompletedStepBitmask(questData.getCompletedStepBitmask() | (1 << taskNum));
+	setPlayerQuestData(questCrc, questData);
+
+	if (notifyClient)
+		creature->sendSystemMessage("@quest/quests:task_complete");
+}
+
+void PlayerObjectImplementation::clearJournalQuestTask(unsigned int questCrc, int taskNum, bool notifyClient) {
+	if (taskNum > 15)
+		return;
+
+	PlayerQuestData questData = getQuestData(questCrc);
+
+	if (questData.getOwnerId() == 0)
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(getParent().get().get());
+
+	if (creature == nullptr)
+		return;
+
+	questData.setActiveStepBitmask(questData.getActiveStepBitmask() & ~(1 << taskNum));
+	questData.setCompletedStepBitmask(questData.getCompletedStepBitmask() & ~(1 << taskNum));
+	setPlayerQuestData(questCrc, questData);
+
+	if (notifyClient)
+		creature->sendSystemMessage("@quest/quests:quest_journal_updated");
+}
+
+bool PlayerObjectImplementation::isJournalQuestActive(unsigned int questCrc) {
+	PlayerQuestData questData = getQuestData(questCrc);
+	return questData.getOwnerId() ? true : false;
+}
+
+bool PlayerObjectImplementation::isJournalQuestComplete(unsigned int questCrc) {
+	PlayerQuestData questData = getQuestData(questCrc);
+	return questData.getCompletedFlag() ? true : false;
+}
+
+bool PlayerObjectImplementation::isJournalQuestTaskActive(unsigned int questCrc, int taskNum) {
+	if (taskNum > 15)
+		return false;
+
+	PlayerQuestData questData = getQuestData(questCrc);
+	if (questData.getActiveStepBitmask() & (1 << taskNum))
+		return true;
+
+	return false;
+}
+
+bool PlayerObjectImplementation::isJournalQuestTaskComplete(unsigned int questCrc, int taskNum) {
+	if (taskNum > 15)
+		return false;
+
+	PlayerQuestData questData = getQuestData(questCrc);
+	if (questData.getCompletedStepBitmask() & (1 << taskNum))
+		return true;
+
+	return false;
+}
+
 void PlayerObjectImplementation::setJediState(int state, bool notifyClient) {
 	if (jediState == state)
 		return;
@@ -2910,21 +3069,35 @@ void PlayerObjectImplementation::setCompletedQuestsBit(int bitIndex, byte value,
 	sendMessage(delta);
 }
 
-void PlayerObjectImplementation::setPlayerQuestData(uint32 questHashCode, PlayerQuestData& data, bool notifyClient) {
+void PlayerObjectImplementation::setPlayerQuestData(uint32 questCrc, PlayerQuestData& data, bool notifyClient) {
 	if (notifyClient) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 		dplay8->startUpdate(6);
-		playerQuestsData.set(questHashCode, data, dplay8, 1);
+		playerQuestsData.set(questCrc, data, dplay8, 1);
 		dplay8->close();
 
 		sendMessage(dplay8);
 	} else {
-		playerQuestsData.set(questHashCode, data);
+		playerQuestsData.set(questCrc, data);
 	}
 }
 
-PlayerQuestData PlayerObjectImplementation::getQuestData(uint32 questHashCode) const {
-	return playerQuestsData.get(questHashCode);
+void PlayerObjectImplementation::clearPlayerQuestData(uint32 questCrc, bool notifyClient) {
+	//This works but client has to log out and back in to see the journal update
+	if (notifyClient) {
+		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+		dplay8->startUpdate(6);
+		playerQuestsData.drop(questCrc, dplay8, 1);
+		dplay8->close();
+
+		sendMessage(dplay8);
+	} else {
+		playerQuestsData.drop(questCrc);
+	}
+}
+
+PlayerQuestData PlayerObjectImplementation::getQuestData(uint32 questCrc) const {
+	return playerQuestsData.get(questCrc);
 }
 
 int PlayerObjectImplementation::getVendorCount() {

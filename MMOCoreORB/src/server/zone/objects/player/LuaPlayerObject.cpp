@@ -50,6 +50,16 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "setJediState", &LuaPlayerObject::setJediState },
 		{ "getJediState", &LuaPlayerObject::getJediState },
 		{ "isOnline", &LuaPlayerObject::isOnline },
+		{ "activateJournalQuest", &LuaPlayerObject::activateJournalQuest },
+		{ "completeJournalQuest", &LuaPlayerObject::completeJournalQuest },
+		{ "clearJournalQuest", &LuaPlayerObject::clearJournalQuest },
+		{ "activateJournalQuestTask", &LuaPlayerObject::activateJournalQuestTask },
+		{ "completeJournalQuestTask", &LuaPlayerObject::completeJournalQuestTask },
+		{ "clearJournalQuestTask", &LuaPlayerObject::clearJournalQuestTask },
+		{ "isJournalQuestActive", &LuaPlayerObject::isJournalQuestActive },
+		{ "isJournalQuestComplete", &LuaPlayerObject::isJournalQuestComplete },
+		{ "isJournalQuestTaskActive", &LuaPlayerObject::isJournalQuestTaskActive },
+		{ "isJournalQuestTaskComplete", &LuaPlayerObject::isJournalQuestTaskComplete },
 		{ "setActiveQuestsBit", &LuaPlayerObject::setActiveQuestsBit },
 		{ "clearActiveQuestsBit", &LuaPlayerObject::clearActiveQuestsBit },
 		{ "hasActiveQuestBitSet", &LuaPlayerObject::hasActiveQuestBitSet },
@@ -407,6 +417,109 @@ int LuaPlayerObject::getJediState(lua_State* L) {
 
 int LuaPlayerObject::isOnline(lua_State* L) {
 	lua_pushboolean(L, realObject->isOnline());
+
+	return 1;
+}
+
+int LuaPlayerObject::activateJournalQuest(lua_State* L) {
+	int questCrc = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->activateJournalQuest(questCrc, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::completeJournalQuest(lua_State* L) {
+	int questCrc = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->completeJournalQuest(questCrc, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::clearJournalQuest(lua_State* L) {
+	int questCrc = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->clearJournalQuest(questCrc, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::activateJournalQuestTask(lua_State* L) {
+	int questCrc = lua_tointeger(L, -3);
+	int task = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->activateJournalQuestTask(questCrc, task, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::completeJournalQuestTask(lua_State* L) {
+	int questCrc = lua_tointeger(L, -3);
+	int task = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->completeJournalQuestTask(questCrc, task, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::clearJournalQuestTask(lua_State* L) {
+	int questCrc = lua_tointeger(L, -3);
+	int task = lua_tointeger(L, -2);
+	bool notify = lua_toboolean(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->clearJournalQuestTask(questCrc, task, notify);
+
+	return 0;
+}
+
+int LuaPlayerObject::isJournalQuestActive(lua_State* L) {
+	int questCrc = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->isJournalQuestActive(questCrc));
+
+	return 1;
+}
+
+int LuaPlayerObject::isJournalQuestComplete(lua_State* L) {
+	int questCrc = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->isJournalQuestComplete(questCrc));
+
+	return 1;
+}
+
+int LuaPlayerObject::isJournalQuestTaskActive(lua_State* L) {
+	int questCrc = lua_tointeger(L, -2);
+	int task = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->isJournalQuestTaskActive(questCrc, task));
+
+	return 1;
+}
+
+int LuaPlayerObject::isJournalQuestTaskComplete(lua_State* L) {
+	int questCrc = lua_tointeger(L, -2);
+	int task = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->isJournalQuestTaskComplete(questCrc, task));
 
 	return 1;
 }
