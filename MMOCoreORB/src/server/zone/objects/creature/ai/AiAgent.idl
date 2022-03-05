@@ -1112,15 +1112,11 @@ class AiAgent extends CreatureObject {
 	}
 
 	@dirty
-	public int getDamageMin() {
-		return getWeapon().getMinDamage();
-	}
+	public native int getDamageMin();
 
 	@dirty
-	public int getDamageMax() {
-		return getWeapon().getMaxDamage();
-	}
-
+	public native int getDamageMax();
+	
 	@dirty
 	public float getSpecialDamageMult() {
 		if (npcTemplate.get() == null)
@@ -1511,6 +1507,9 @@ class AiAgent extends CreatureObject {
 
 	@read
 	public int getMobType() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
 		return npcTemplate.get().getMobType();
 	}
 

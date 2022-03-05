@@ -132,6 +132,24 @@ float AiAgentImplementation::calculateAttackSpeed(int level) {
 	return speed;
 }
 
+int AiAgentImplementation::getDamageMax() {
+	WeaponObject* currentWeapon = getWeapon();
+
+	if (currentWeapon == nullptr)
+		return 0;
+
+	return currentWeapon->getMaxDamage();
+}
+
+int AiAgentImplementation::getDamageMin() {
+	WeaponObject* currentWeapon = getWeapon();
+
+	if (currentWeapon == nullptr)
+		return 0;
+
+	return currentWeapon->getMinDamage();
+}
+
 void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	npcTemplate = templateData;
 
