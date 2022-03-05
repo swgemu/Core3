@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "04f4a200_29fc3479",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DeactivateQuestCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-05T19:00:57Z",
+      "side": 1,
+      "message": "Yes, we are missing that check in a few admin commands. We\u0027ve started to add them to the admin commands as we go through and make changes or additions to them.",
+      "parentUuid": "1ae0cd5a_54ec943f",
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03847b51_63522b10",
         "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
         "patchSetId": 1
@@ -260,6 +278,30 @@
     },
     {
       "key": {
+        "uuid": "5b9dcbb0_ba431d5b",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2797,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-05T19:00:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b80e9bb7_351b4864",
+      "range": {
+        "startLine": 2796,
+        "startChar": 1,
+        "endLine": 2797,
+        "endChar": 46
+      },
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "070653ec_c06ed31b",
         "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
         "patchSetId": 1
@@ -295,6 +337,30 @@
       "side": 1,
       "message": "I don\u0027t think in practice anything actually removes a journal quest in PreCU.  I added an admin command to do it for testing purposes as the deadmite quest can\u0027t be repeated.  That admin command is the only thing that calls this method.  That said, I will check to see if the quest can be cleared by just setting the whole data structure to 0\u0027s",
       "parentUuid": "070653ec_c06ed31b",
+      "range": {
+        "startLine": 3096,
+        "startChar": 1,
+        "endLine": 3096,
+        "endChar": 77
+      },
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb39f8d2_364d628f",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3096,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-05T19:00:57Z",
+      "side": 1,
+      "message": "Please check that, my thinkin is that perhaps setting it to 0 will remove it from the journal without the need of restarting the client. I did some tests with this logic a few months ago when I started the secret of the syren quest line. I do however not remember if it removed it from the journal or not. \n\nI\u0027m glad you are adding these methods, since I just got to the point where I needed them in that quest line as well :)",
+      "parentUuid": "b23ee399_2aaaaaa2",
       "range": {
         "startLine": 3096,
         "startChar": 1,
