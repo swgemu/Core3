@@ -96,7 +96,7 @@ void StructureObjectImplementation::createNavMesh() {
 
 		Vector3 position = Vector3(getPositionX(), 0, getPositionY());
 		// This is invoked when a new faction base is placed, always force a rebuild
-		navArea->initializeNavArea(position, length * 1.25f, zone, name, true);
+		navArea->initializeNavArea(position, 0, length * 1.25f, zone, name, true);
 
 		zone->transferObject(navArea, -1, false);
 

@@ -427,7 +427,6 @@ Vector <Reference<MeshData*>> FloorMesh::getTransformedMeshData(const Matrix4& p
 	Vector<Reference<MeshData*>> meshData;
 	meshData.emplace(std::move(data));
 
-#ifdef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
 	Reference<MeshData*> floorData = new MeshData();
 
 	Vector<Vector3>* floorVertices = floorData->getVerts();
@@ -450,7 +449,6 @@ Vector <Reference<MeshData*>> FloorMesh::getTransformedMeshData(const Matrix4& p
 	}
 
 	meshData.emplace(std::move(floorData));
-#endif
 
 	return meshData;
 }
