@@ -881,7 +881,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea
 			CreatureObject(pNpc):setPvpStatusBitmask(0)
 			CreatureObject(pNpc):setOptionBit(INTERESTING)
 			CreatureObject(pNpc):setOptionBit(AIENABLED)
-			AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
 			self:normalizeNpc(pNpc, 16, 3000)
 		elseif mission.missionType == "retrieve" or mission.missionType == "deliver" then
 			CreatureObject(pNpc):setPvpStatusBitmask(0)
