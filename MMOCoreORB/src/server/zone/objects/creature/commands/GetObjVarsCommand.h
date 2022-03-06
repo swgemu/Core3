@@ -103,12 +103,13 @@ public:
 
 						msg << "Has Follow Object: " << hasFollow.toString() << endl;
 						msg << "Current total Patrol Points: " << objectAgent->getPatrolPointSize() << endl;
+						msg << "Is in navmesh: " << (objectAgent->isInNavMesh() ? "True" : "False") << endl;
 					}
 				}
 			}
 
 			if (object->getZone() != nullptr) {
-				msg << "Location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName() << endl;
+				msg << "Location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionZ()) << " " << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName() << endl;
 				msg << "Direction Angle - Radians: " << object->getDirection()->getRadians() << endl;
 			}
 
