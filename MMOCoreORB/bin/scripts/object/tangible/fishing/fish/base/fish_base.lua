@@ -42,7 +42,7 @@
 
 
 object_tangible_fishing_fish_base_fish_base = object_tangible_fishing_fish_base_shared_fish_base:new {
-
+    maxCondition = 0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_base_fish_base, "object/tangible/fishing/fish/base/fish_base.iff")
