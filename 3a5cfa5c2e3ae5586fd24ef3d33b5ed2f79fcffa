@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37a282a7_f4af0df8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-06T12:21:45Z",
+      "side": 1,
+      "message": "This will reset the counters if the player leaves the cave right? Is that the intended functionality or should these lines be guarded in some way?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39173ea0_261de33f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-06T12:21:45Z",
+      "side": 1,
+      "message": "The iff file says that all five of these quests should be activated once you reach the cave.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 66
+      },
+      "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "185201ea_37658cc1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-06T12:21:45Z",
+      "side": 1,
+      "message": "Could you create a generic notifyLoot method that takes arguments in order to handel each different type? The notifyLootXXX functions are almost identical and thus a lot of code is repeated five times which could be avoided by a change like that.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 69
+      },
+      "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ecdb805_b156e3ff",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-06T12:21:45Z",
+      "side": 1,
+      "message": "Please make a separate function for this in order to keep the screen handler function as short as possible.",
+      "range": {
+        "startLine": 391,
+        "startChar": 2,
+        "endLine": 409,
+        "endChar": 5
+      },
+      "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
