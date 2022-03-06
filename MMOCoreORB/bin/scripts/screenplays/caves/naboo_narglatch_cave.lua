@@ -36,6 +36,10 @@ function NarglatchCaveScreenPlay:start()
 	if (isZoneEnabled("naboo")) then
 		self:spawnMobiles()
 		self:initializeLootContainers()
+
+
+		-- TEST
+		createNavMesh("naboo", -15.4, -1.9, 5285895, 250, true, "naboo_narglatch_cave")
 	end
 end
 

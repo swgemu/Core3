@@ -215,7 +215,7 @@ function VillageJediManagerTownship:start()
 		VillageJediManagerTownship:spawnSceneObjects(currentPhase, true)
 		VillageJediManagerTownship:createVillageMasterObject()
 
-		createNavMesh("dathomir", 5292, -4119, 210, true, "village_township")
+		createNavMesh("dathomir", 5292, -4119, 0, 210, true, "village_township")
 
 		if (currentPhase == 3 or currentPhase == 4) then
 			local pMaster = VillageJediManagerTownship:getMasterObject()
