@@ -78,6 +78,71 @@ void BuildingObjectImplementation::createContainerComponent() {
 	TangibleObjectImplementation::createContainerComponent();
 }
 
+void BuildingObjectImplementation::createInteriorNavMesh() {
+	bool buildInteriorMeshes = ConfigManager::instance()->getBool("Core3.StructureManager.BuildInteriorMeshes", false);
+
+	if (server->getZoneServer()->shouldDeleteNavAreas() && interiorNavArea != nullptr) {
+		ManagedReference<NavArea*> nav = interiorNavArea;
+		zone->getPlanetManager()->dropNavArea(nav->getMeshName());
+
+		Core::getTaskManager()->executeTask([nav] {
+			Locker locker(nav);
+			nav->destroyObjectFromWorld(true);
+			nav->destroyObjectFromDatabase(true);
+		}, "destroyInteriorNavAreaLambda");
+
+		interiorNavArea = nullptr;
+	}
+
+	if (interiorNavArea == nullptr) {
+		if (totalCellNumber > 0) {
+			CellObject* mainCell = getCell(1);
+			ZoneServer* zoneServer = getZoneServer();
+
+			if (mainCell == nullptr || zoneServer == nullptr) {
+				return;
+			}
+
+			interiorNavArea = zoneServer->createObject(STRING_HASHCODE("object/region_navmesh.iff"), "navareas", isPersistent()).castTo<NavArea*>();
+
+			Locker clocker(interiorNavArea, _this.getReferenceUnsafeStaticCast());
+
+			StringBuffer name;
+			name << (isResidence() ? "Player Residence: " : "Non-Residence: ") << String::valueOf(getObjectID());
+
+			float length = 32.0f;
+
+			for (const auto& child : childObjects) {
+				const BaseBoundingVolume* boundingVolume = child->getBoundingVolume();
+				if (boundingVolume) {
+					const AABB& box = boundingVolume->getBoundingBox();
+					float distance = (child->getWorldPosition() - getWorldPosition()).length();
+					float radius = box.extents()[box.longestAxis()];
+					if (distance + radius > length)
+						length = radius + distance;
+				}
+			}
+
+			const BaseBoundingVolume* boundingVolume = getBoundingVolume();
+			if (boundingVolume) {
+				const AABB& box = boundingVolume->getBoundingBox();
+				float radius = box.extents()[box.longestAxis()];
+				if (radius > length)
+					length = radius;
+			}
+
+			Vector3 position = Vector3(getPositionX(), 0, getPositionY());
+
+			interiorNavArea->initializeNavArea(position, length * 1.25f, 0, zone, name.toString(), true);
+			zone->transferObject(interiorNavArea, -1, false);
+
+			zone->getPlanetManager()->addNavArea(name.toString(), interiorNavArea);
+		}
+	} else if (interiorNavArea->isNavMeshLoaded()) {
+		interiorNavArea->updateNavMesh(interiorNavArea->getBoundingBox());
+	}
+}
+
 void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
 	StringBuffer newName;
 
@@ -1788,7 +1853,6 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 			if (floor != nullptr) {
 				data.addAll(floor->getTransformedMeshData(fullTransform));
 			}
-
 #ifndef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
 			data.addAll(appr->getTransformedMeshData(fullTransform));
 #endif

@@ -25,6 +25,8 @@ include templates.appearance.MeshData;
 include templates.collision.BaseBoundingVolume;
 include system.lang.ref.Reference;
 include system.util.VectorMap;
+import server.zone.objects.pathfinding.NavArea;
+
 
 @json
 class BuildingObject extends StructureObject {
@@ -52,6 +54,8 @@ class BuildingObject extends StructureObject {
 
 	@dereferenced
 	protected transient SynchronizedSortedVector<unsigned long> registeredPlayerIdList;
+
+	protected NavArea interiorNavArea;
 
 	public boolean publicStructure;
 
@@ -85,6 +89,8 @@ class BuildingObject extends StructureObject {
 		isOwnerResidence = false;
 
 		factionBaseType = 0;
+
+		interiorNavArea = null;
 	}
 
 	@preLocked
@@ -461,4 +467,17 @@ class BuildingObject extends StructureObject {
 
 	@read
 	public native string getCellName(unsigned long cellID);
+
+	@read
+	public NavArea getInteriorNavArea() {
+		return interiorNavArea;
+	}
+
+	@read
+	public boolean hasInteriorNavmesh() {
+		return interiorNavArea;
+	}
+
+	@preLocked
+	public native abstract void createInteriorNavMesh();
 }

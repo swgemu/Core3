@@ -24,7 +24,7 @@
 #include "terrain/layer/boundaries/BoundaryPolygon.h"
 #include "conf/ConfigManager.h"
 
-//#define NAVMESH_DEBUG
+#define NAVMESH_DEBUG
 
 inline unsigned int nextPow2(unsigned int v) {
 	v--;
@@ -460,42 +460,46 @@ void RecastNavMeshBuilder::buildAllTiles() {
 	}
 }
 
-void
-RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const AABB& bounds, float distanceBetweenHeights) {
+void RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*>>& meshData, const AABB& bounds, ManagedReference<SceneObject*> parent, float distanceBetweenHeights) {
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
-
-#ifdef NAVMESH_DEBUG
-	info("Building region terrain for: " + name, true);
-#endif
 
 	float boundsRadius = bounds.extents()[bounds.longestAxis()] * 2.0f;
 	assert(boundsRadius != 0.f);
-
 	Vector3 center = bounds.center();
+
+	if (parent == nullptr) {
+#ifdef NAVMESH_DEBUG
+		info("Building region terrain for: " + name, true);
+#endif
+		meshData.add(getTerrainMesh(center, boundsRadius, terrainManager, 32, distanceBetweenHeights));
+	} else {
+#ifdef NAVMESH_DEBUG
+		info(" ------ Building floor mesh for: " + name + " ----------- ", true);
+#endif
+	}
+
 #ifdef NAVMESH_DEBUG
 	info(center.toString() + " Radius: " + String::valueOf(boundsRadius), true);
 #endif
-	meshData.add(getTerrainMesh(center, boundsRadius, terrainManager, 32,
-								distanceBetweenHeights));
 
-	Reference < MeshData * > flattened = flattenMeshData(meshData);
+	Reference<MeshData*> flattened = flattenMeshData(meshData);
+	Vector<Reference<MeshData*>> test;
 
-	Vector <Reference<MeshData*>> test;
 	test.add(flattened);
 	meshData.removeAll();
+
+	changeMesh(flattened);
 
 	if (ConfigManager::instance()->getDumpObjFiles()) {
 		String objName = name + ".obj";
 		dumpOBJ(objName, test);
 	}
 
-	changeMesh(flattened);
-
-#ifdef NAVMESH_DEBUG
-	info("Building region navmesh for: " + name, true);
-#endif
 	Vector<const Boundary*> water;
-	terrainManager->getProceduralTerrainAppearance()->getWaterBoundariesInAABB(bounds, &water);
+
+	if (parent == nullptr)
+		terrainManager->getProceduralTerrainAppearance()->getWaterBoundariesInAABB(bounds, &water);
+
 	// Render water as polygons
 	for (const Boundary* boundary : water) {
 		const BoundaryPolygon* bPoly = dynamic_cast<const BoundaryPolygon*>(boundary);

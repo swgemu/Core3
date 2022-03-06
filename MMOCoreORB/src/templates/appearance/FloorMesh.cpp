@@ -451,6 +451,5 @@ Vector <Reference<MeshData*>> FloorMesh::getTransformedMeshData(const Matrix4& p
 
 	meshData.emplace(std::move(floorData));
 #endif
-
 	return meshData;
 }
