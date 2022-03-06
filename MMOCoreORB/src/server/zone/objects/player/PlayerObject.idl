@@ -792,6 +792,26 @@ class PlayerObject extends IntangibleObject {
 
 	public native void setLoggingOut();
 
+	public native void activateJournalQuest(unsigned int questCrc, boolean notifyClient = true);
+
+	public native void completeJournalQuest(unsigned int questCrc, boolean notifyClient = true);
+
+	public native void clearJournalQuest(unsigned int questCrc, boolean notifyClient = true);
+
+	public native void activateJournalQuestTask(unsigned int questCrc, int taskNum, boolean notifyClient = true);
+
+	public native void completeJournalQuestTask(unsigned int questCrc, int taskNum, boolean notifyClient = true);
+
+	public native void clearJournalQuestTask(unsigned int questCrc, int taskNum, boolean notifyClient = true);
+
+	public native boolean isJournalQuestActive(unsigned int questCrc);
+
+	public native boolean isJournalQuestComplete(unsigned int questCrc);
+
+	public native boolean isJournalQuestTaskActive(unsigned int questCrc, int taskNum);
+
+	public native boolean isJournalQuestTaskComplete(unsigned int questCrc, int taskNum);
+
 	/**
 	 * Sends a badges response message
 	 * @pre { }
@@ -836,16 +856,18 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	@local
 	@read
-	public native PlayerQuestData getQuestData(unsigned int questHashCode);
+	public native PlayerQuestData getQuestData(unsigned int questCrc);
 
 	@read
-	public boolean hasQuestData(unsigned int questHashCode) {
-		return playerQuestsData.contains(questHashCode);
+	public boolean hasQuestData(unsigned int questCrc) {
+		return playerQuestsData.contains(questCrc);
 	}
 
 	@local
-	public native void setPlayerQuestData(unsigned int questHashCode, @dereferenced PlayerQuestData data, boolean notifyClient = true);
+	public native void setPlayerQuestData(unsigned int questCrc, @dereferenced PlayerQuestData data, boolean notifyClient = true);
 
+	@local
+	public native void clearPlayerQuestData(unsigned int questCrc, boolean notifyClient = true);
 	/**
 	 * Gets the faction point list.
 	 */
