@@ -82,7 +82,7 @@ void FishObjectImplementation::filet(CreatureObject* player) {
 void FishObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);
 
-	alm->insertAttribute("type", String("a ") + objectName.getStringID());
+	alm->insertAttribute("type", String("@fish_n:") + objectName.getStringID());
 	alm->insertAttribute("length", String::format("%fm", length));
 	alm->insertAttribute("planet", String("@planet_n:") + zoneName);
 }
