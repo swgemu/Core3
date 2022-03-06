@@ -11,8 +11,7 @@
 class RotateFurnitureCommand : public QueueCommand {
 public:
 
-	RotateFurnitureCommand(const String& name, ZoneProcessServer* server)
-: QueueCommand(name, server) {
+	RotateFurnitureCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 
 	}
 
@@ -159,7 +158,7 @@ public:
 			return false;
 		}
 
-		ManagedReference<SceneObject*> objectRootParent = player->getRootParent();
+		ManagedReference<SceneObject*> objectRootParent = object->getRootParent();
 
 		if (objectRootParent == nullptr || objectRootParent != rootParent) {
 			player->sendSystemMessage("@player_structure:item_not_in_building"); // That object is not within the building.
