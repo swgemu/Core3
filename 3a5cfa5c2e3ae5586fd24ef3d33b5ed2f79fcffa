@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a411d70_8c0b53fc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-06T13:09:23Z",
+      "side": 1,
+      "message": "They are guarded by Task 0 still being incomplete. Task 0 is \"find the cave\" so this will never trigger again once they\u0027ve entered the cave the first time.  The count reset is just incase someone reset your quest with an admin command.",
+      "parentUuid": "37a282a7_f4af0df8",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39173ea0_261de33f",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "83c72ffb_b6f6bff2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-06T13:09:23Z",
+      "side": 1,
+      "message": "Yep all five are activated here, the last parameter bool is just telling the player object to only send the \"Task Updated\" system message only once, to avoid spam.",
+      "parentUuid": "39173ea0_261de33f",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 66
+      },
+      "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "185201ea_37658cc1",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2022-03-06T12:21:45Z",
       "side": 1,
       "message": "Could you create a generic notifyLoot method that takes arguments in order to handel each different type? The notifyLootXXX functions are almost identical and thus a lot of code is repeated five times which could be avoided by a change like that.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 69
+      },
+      "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d5f68ce_78283334",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-06T13:09:23Z",
+      "side": 1,
+      "message": "Of course... but how am I going to claim I wrote a thousand lines of code in 2 days like that? :-)\n\nI\u0027ll tidy it up...",
+      "parentUuid": "185201ea_37658cc1",
       "range": {
         "startLine": 180,
         "startChar": 0,
@@ -91,6 +163,30 @@
       "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e3d088_9d1d4bc6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-06T13:09:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5ecdb805_b156e3ff",
+      "range": {
+        "startLine": 391,
+        "startChar": 2,
+        "endLine": 409,
+        "endChar": 5
+      },
+      "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
