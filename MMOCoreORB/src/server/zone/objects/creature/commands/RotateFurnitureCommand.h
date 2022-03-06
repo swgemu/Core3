@@ -158,6 +158,11 @@ public:
 			return false;
 		}
 
+		if (!buildingObject->isOnAdminList(player)) {
+			player->sendSystemMessage("@player_structure:admin_move_only"); // You must be an admin to manipulate objects.
+			return false;
+		}
+
 		ManagedReference<SceneObject*> objectRootParent = object->getRootParent();
 
 		if (objectRootParent == nullptr || objectRootParent != rootParent) {
@@ -167,11 +172,6 @@ public:
 
 		if (buildingObject->containsChildObject(object)) {
 			player->sendSystemMessage("@player_structure:cant_move_item"); // You cannot move that object.
-			return false;
-		}
-
-		if (!object->isVendor() && !buildingObject->isOnAdminList(player)) {
-			player->sendSystemMessage("@player_structure:admin_move_only"); // You must be an admin to manipulate objects.
 			return false;
 		}
 
