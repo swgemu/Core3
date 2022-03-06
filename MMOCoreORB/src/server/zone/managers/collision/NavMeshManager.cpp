@@ -4,6 +4,9 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "terrain/manager/TerrainManager.h"
 #include "terrain/ProceduralTerrainAppearance.h"
+#include "server/zone/objects/building/BuildingObject.h"
+
+#define NAVMESH_DEBUG
 
 // Lower thread count, used during runtime
 const String NavMeshManager::TileQueue = "NavMeshWork";
@@ -11,11 +14,9 @@ const String NavMeshManager::TileQueue = "NavMeshWork";
 // Higher thread count, used for building large static cities during initialization
 const String NavMeshManager::MeshQueue = "NavMeshBuild";
 
-//#define NAVMESH_DEBUG
-
 NavMeshManager::NavMeshManager() : Logger("NavMeshManager") {
 	setFileLogger("log/navmesh.log", true, true);
-	setLogToConsole(false);
+	setLogToConsole(true);
 	setGlobalLogging(false);
 	setLogSynchronized(true);
 	setRotateLogSizeMB(ConfigManager::instance()->getRotateLogSizeMB());
@@ -184,6 +185,73 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
         }
     }
 
+
+// NEW Code
+
+	ManagedReference<SceneObject*> parentSceneO = nullptr;
+/*
+	Vector <Reference<MeshData *>> meshData;
+	static const Matrix4 identity;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	ManagedReference<SceneObject*> parentSceneO = nullptr;
+	uint64 cellID = area->getCellObjectID();
+
+	if (cellID > 0 && zoneServer != nullptr) {
+		info() << "Starting Floor NavMesh generation for building: " << name << " Cell ID: " << cellID <<" on planet: " << zone->getZoneName() << " at: " << area->getPosition().toString();
+
+		ManagedReference<SceneObject*> cell = zoneServer->getObject(cellID);
+
+		if (cell == nullptr || !cell->isCellObject()) {
+			return;
+		}
+
+		parentSceneO = cell->getParent().get();
+
+		if (parentSceneO == nullptr || !parentSceneO->isBuildingObject()) {
+			return;
+		}
+
+		SharedObjectTemplate* templateObject = parentSceneO->getObjectTemplate();
+
+		if (templateObject == nullptr)
+			return;
+
+		const PortalLayout* portalLayout = templateObject->getPortalLayout();
+
+		if (portalLayout == nullptr)
+			return;
+
+		int totalCells = parentSceneO->asBuildingObject()->getTotalCellNumber();
+
+		for (int i = 0; i < totalCells; i++) {
+			const FloorMesh* interiorFloorMesh = portalLayout->getFloorMesh(i);
+
+			if (interiorFloorMesh != nullptr) {
+				meshData.addAll(interiorFloorMesh->getTransformedMeshData(identity));
+			}
+		}
+	} else {
+		info() << "Starting NavMesh generation for area: " << name << " on planet: " << zone->getZoneName() << " at: " << area->getPosition().toString();
+
+		SortedVector <ManagedReference<QuadTreeEntry *>> closeObjects;
+		zone->getInRangeSolidObjects(center.getX(), center.getZ(), range, &closeObjects, true);
+
+		for (int i = 0; i < closeObjects.size(); i++) {
+			SceneObject *sceno = closeObjects.get(i).castTo<SceneObject *>();
+			if (sceno) {
+				// TODO: Figure out why we need this
+				// Example: v 1393.67 3.09307e+06 -3217
+				// mos entha pristine wall
+				const float height = sceno->getPosition().getZ();
+				if (height > 10000 || height < -10000)
+					continue;
+
+				meshData.addAll(sceno->getTransformedMeshData(&identity));
+			}
+		}
+	}*/
+
     Reference<RecastNavMeshBuilder*> builder = nullptr;
 
     const AtomicBoolean* running = job->getJobStatus();
@@ -197,7 +265,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
         poleDist = zone->getPlanetManager()->getTerrainManager()->getProceduralTerrainAppearance()->getDistanceBetweenPoles();
     }
 
-    builder->initialize(meshData, bBox, poleDist);
+    builder->initialize(meshData, bBox, parentSceneO, poleDist);
     meshData.removeAll();
 
     // This will take a very long time to complete

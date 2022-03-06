@@ -586,11 +586,12 @@ void CityRegionImplementation::createNavMesh(const String& queue, bool forceRebu
 
 		AABB box(Vector3(minx, miny, minz), Vector3(maxx, maxy, maxz));
 		Vector3 position = Vector3(box.center()[0], 0, box.center()[1]);
+
 		strongMesh->disableMeshUpdates(true);
-		strongMesh->initializeNavArea(position, box.extents()[box.longestAxis()], zone, name, forceRebuild);
+		strongMesh->initializeNavArea(position, 0, box.extents()[box.longestAxis()], zone, name, forceRebuild);
 	} else {
 		Vector3 position = Vector3(getPositionX(), 0, getPositionY());
-		strongMesh->initializeNavArea(position, 480.0f, zone, name, forceRebuild);
+		strongMesh->initializeNavArea(position, 0, 480.0f, zone, name, forceRebuild);
 	}
 
 	zone->transferObject(strongMesh, -1, false);

@@ -46,7 +46,7 @@ class NavArea extends ActiveArea {
 
 	@local
 	@preLocked
-	public native void initializeNavArea(@dereferenced Vector3 position, float radius, Zone zone, final string name, boolean forceRebuild = false);
+	public native void initializeNavArea(@dereferenced Vector3 position, unsigned long parentID, float radius, Zone zone, final string name, boolean forceRebuild = false);
 
 	@preLocked
 	public native void initialize();

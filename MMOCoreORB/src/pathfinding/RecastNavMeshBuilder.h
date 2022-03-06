@@ -63,21 +63,20 @@ protected:
 
 	void cleanup();
 
-	Vector <Reference<RecastPolygon*>> water;
+	Vector<Reference<RecastPolygon*>> water;
 
 	float waterTableHeight;
 	bool destroyMesh;
 	NavMeshSetHeader header;
+
 public:
-	void initialize(Vector <Reference<MeshData*>>& meshData, const AABB& bounds, float distanceBetweenHeights = 2);
+	void initialize(Vector<Reference<MeshData*>>& meshData, const AABB& bounds, ManagedReference<SceneObject*> parent, float distanceBetweenHeights = 2);
 
-	static Reference<MeshData*> flattenMeshData(Vector <Reference<MeshData*>>& data);
+	static Reference<MeshData*> flattenMeshData(Vector<Reference<MeshData*>>& data);
 
-	static void dumpOBJ(const String& filename, Vector <Reference<MeshData*>>& data);
+	static void dumpOBJ(const String& filename, Vector<Reference<MeshData*>>& data);
 
-	static Reference<MeshData*>
-	getTerrainMesh(Vector3& position, float terrainSize, TerrainManager* terrainManager, float chunkSize,
-				   float distanceBetweenHeights);
+	static Reference<MeshData*> getTerrainMesh(Vector3& position, float terrainSize, TerrainManager* terrainManager, float chunkSize, float distanceBetweenHeights);
 
 	RecastNavMeshBuilder(Zone* zone, const String& name, const AtomicBoolean* jobStatus);
 
@@ -118,13 +117,11 @@ public:
 		return m_navMesh;
 	}
 
-
 private:
 	// Explicitly disabled copy constructor and copy assignment operator.
 	RecastNavMeshBuilder(const RecastNavMeshBuilder&);
 
 	RecastNavMeshBuilder& operator=(const RecastNavMeshBuilder&);
 };
-
 
 #endif // RECASTSAMPLETILEMESH_H

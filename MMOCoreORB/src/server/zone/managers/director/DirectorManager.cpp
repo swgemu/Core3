@@ -3627,28 +3627,46 @@ void DirectorManager::removeQuestVectorMap(const String& keyString) {
 
 int DirectorManager::createNavMesh(lua_State *L) {
 
-    if (checkArgumentCount(L, 6) == 1) {
+    if (checkArgumentCount(L, 7) == 1) {
         String err = "incorrect number of arguments passed to DirectorManager::createNavMesh";
         printTraceError(L, err);
         ERROR_CODE = INCORRECT_ARGUMENTS;
         return 0;
     }
+
     String name  = lua_tostring(L, -1);
     bool dynamic = lua_toboolean(L, -2);
     float radius = lua_tonumber(L, -3);
-    float z      = lua_tonumber(L, -4);
-    float x      = lua_tonumber(L, -5);
-    String zoneName  = lua_tostring(L, -6);
+	uint64 parentID = lua_tonumber(L, -4);
+    float z      = lua_tonumber(L, -5);
+    float x      = lua_tonumber(L, -6);
+    String zoneName  = lua_tostring(L, -7);
 
-    Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
 
-    if (zone == nullptr) {
-       instance()-> error("Zone == nullptr in DirectorManager::createNavMesh (" + zoneName + ")");
+	if (zoneServer == nullptr)
+		return 0;
+
+	Reference<SceneObject*> cellParent = nullptr;
+
+	if (parentID != 0) {
+		cellParent = zoneServer->getObject(parentID);
+
+		if (cellParent != nullptr && !cellParent->isCellObject()) {
+			cellParent = nullptr;
+		}
+	}
+
+	Zone* zone = zoneServer->getZone(zoneName);
+
+    if (zone == nullptr && cellParent == nullptr) {
+       instance()-> error("Zone or parent nullptr in DirectorManager::createNavMesh (" + zoneName + ")");
         ERROR_CODE = INCORRECT_ARGUMENTS;
         return 0;
     }
 
-    ManagedReference<NavArea*> navArea = ServerCore::getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"), "navareas", 0).castTo<NavArea*>();
+    ManagedReference<NavArea*> navArea = zoneServer->createObject(STRING_HASHCODE("object/region_navmesh.iff"), "navareas", 0).castTo<NavArea*>();
+
     if (name.length() == 0) {
         name = String::valueOf(navArea->getObjectID());
     }
@@ -3659,11 +3677,17 @@ int DirectorManager::createNavMesh(lua_State *L) {
 
 		Locker locker(navArea);
 
-        navArea->disableMeshUpdates(!dynamic);
-        navArea->initializeNavArea(position, radius, zone, str);
-        zone->transferObject(navArea, -1, false);
-        zone->getPlanetManager()->addNavArea(str, navArea);
+		navArea->disableMeshUpdates(!dynamic);
+        navArea->initializeNavArea(position, parentID, radius, zone, str);
+
+		if (cellParent != nullptr) {
+			cellParent->transferObject(navArea, -1, true);
+		} else {
+			zone->transferObject(navArea, -1, false);
+		}
+		zone->getPlanetManager()->addNavArea(str, navArea);
     }, "create_lua_navmesh", 1000);
+
     lua_pushlightuserdata(L, navArea);
     return 1;
 }
