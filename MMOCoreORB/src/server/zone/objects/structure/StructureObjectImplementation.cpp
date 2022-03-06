@@ -202,6 +202,13 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 
 	if (isGCWBase() && !isClientObject()) {
 		createNavMesh();
+	} else if (isClientObject()) {
+		String configKey = "Core3.StructureManager.CreateNavMesh." + objectName.getFullPath();
+
+		if (ConfigManager::instance()->getBool(configKey, false)) {
+			info() << configKey << " = true; building navArea around this structure.";
+			createNavMesh();
+		}
 	}
 }
 
