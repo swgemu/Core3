@@ -1789,9 +1789,8 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 				data.addAll(floor->getTransformedMeshData(fullTransform));
 			}
 
-#ifndef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
 			data.addAll(appr->getTransformedMeshData(fullTransform));
-#endif
+
 			const CellProperty* tmpl = pl->getCellProperty(0);
 
 			for (int i = 0; i < tmpl->getNumberOfPortals(); i++) {
@@ -1801,9 +1800,7 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 				data.emplace(MeshData::makeCopyNegateZ(mesh, fullTransform));
 			}
 
-#ifdef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
 			return data;
-#endif
 		}
 	}
 	data.addAll(SceneObjectImplementation::getTransformedMeshData(parentTransform));

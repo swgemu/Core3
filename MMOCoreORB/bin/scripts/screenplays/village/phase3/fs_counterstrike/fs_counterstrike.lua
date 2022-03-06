@@ -193,7 +193,7 @@ function FsCounterStrike:spawnCamps()
 			end
 		end
 
-		local pMesh = createNavMesh("dathomir", campLoc[2], campLoc[4], 60, true, "fs_counterstrike_" .. campLoc[1])
+		local pMesh = createNavMesh("dathomir", campLoc[2], campLoc[4], 0, 60, true, "fs_counterstrike_" .. campLoc[1])
 
 		if (pMesh == nil) then
 			printLuaError("FsCounterStrike:spawnCamps() failed to create navmesh for camp " .. campLoc[1] .. ".")

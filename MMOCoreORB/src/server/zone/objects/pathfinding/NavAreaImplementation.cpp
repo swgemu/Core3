@@ -6,7 +6,7 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 
-//#define NAVMESH_DEBUG
+// #define NAVMESH_DEBUG
 
 void NavAreaImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	disableUpdates = true;
@@ -39,12 +39,32 @@ void NavAreaImplementation::notifyLoadFromDatabase() {
 }
 
 AABB NavAreaImplementation::getBoundingBox() const {
+	ZoneServer* zoneServer = getZoneServer();
+	uint64 cellID = getCellObjectID();
+
+	if (cellID > 0 && zoneServer != nullptr) {
+		ManagedReference<SceneObject*> cell = zoneServer->getObject(cellID);
+
+		if (cell != nullptr && cell->isCellObject()) {
+			ManagedReference<SceneObject*> parentSceneO = cell->getParent().get();
+
+			if (parentSceneO != nullptr && parentSceneO->isBuildingObject()) {
+				const BaseBoundingVolume* boundingVolume = parentSceneO->getBoundingVolume();
+
+				if (boundingVolume != nullptr) {
+					return boundingVolume->getBoundingBox();
+				}
+			}
+		}
+	}
+
 	float f = radius;
 	float x = getPositionX();
 	float y = getPositionY();
 	Vector3 center(x, 0, y);
 	Vector3 radius(f, f, f);
-	return AABB(center-radius, center+radius);
+
+	return AABB(center - radius, center + radius);
 }
 
 void NavAreaImplementation::setRadius(float f) {
@@ -80,17 +100,20 @@ void NavAreaImplementation::updateNavMesh(const AABB& bounds) {
     }
 }
 
-void NavAreaImplementation::initializeNavArea(Vector3& position, float radius, Zone* zone, const String& name, bool forceRebuild) {
-    meshName = name;
-    recastNavMesh.setName(meshName);
-    setLoggingName("NavArea " + meshName);
-    initializePosition(position[0], position[1], position[2]);
-    setRadius(radius);
-    setZone(zone);
+void NavAreaImplementation::initializeNavArea(Vector3& position, uint64 parentID, float radius, Zone* zone, const String& name, bool forceRebuild) {
+	meshName = name;
+	recastNavMesh.setName(meshName);
 
-    if (forceRebuild || !recastNavMesh.isLoaded()) {
-        updateNavMesh(getBoundingBox());
-    }
+	setLoggingName("NavArea " + meshName);
+
+	setCellObjectID(parentID);
+	initializePosition(position.getX(), position.getZ(), position.getY());
+	setRadius(radius);
+	setZone(zone);
+
+	if (forceRebuild || !recastNavMesh.isLoaded()) {
+		updateNavMesh(getBoundingBox());
+	}
 }
 
 void NavAreaImplementation::initialize() {
