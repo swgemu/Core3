@@ -38,6 +38,8 @@
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 
+#define NAVMESH_DEBUG
+
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
@@ -76,6 +78,72 @@ void BuildingObjectImplementation::loadTemplateData(
 
 void BuildingObjectImplementation::createContainerComponent() {
 	TangibleObjectImplementation::createContainerComponent();
+}
+
+void BuildingObjectImplementation::createInteriorNavMesh() {
+#ifdef NAVMESH_DEBUG
+	info(true) << "create Interior NavMesh called for building: " << getObjectID();
+#endif
+	bool buildInteriorMeshes = ConfigManager::instance()->getBool("Core3.StructureManager.GenerateFloorMeshes", false);
+
+	if ((buildInteriorMeshes || server->getZoneServer()->shouldDeleteNavAreas()) && interiorNavArea != nullptr) {
+		ManagedReference<NavArea*> nav = interiorNavArea;
+		zone->getPlanetManager()->dropNavArea(nav->getMeshName());
+
+		Core::getTaskManager()->executeTask([nav] {
+			Locker locker(nav);
+			nav->destroyObjectFromWorld(true);
+			nav->destroyObjectFromDatabase(true);
+		}, "destroyInteriorNavAreaLambda");
+
+		interiorNavArea = nullptr;
+	}
+
+	if (!buildInteriorMeshes)
+		return;
+
+	if (interiorNavArea == nullptr) {
+		if (totalCellNumber > 0) {
+			// Cell 0 is exterior of structure
+			CellObject* mainCell = getCell(1);
+			ZoneServer* zoneServer = getZoneServer();
+
+			if (mainCell == nullptr || zoneServer == nullptr || zone == nullptr) {
+				return;
+			}
+
+			interiorNavArea = zoneServer->createObject(STRING_HASHCODE("object/region_navmesh.iff"), "navareas", isPersistent()).castTo<NavArea*>();
+
+			Locker clocker(interiorNavArea, _this.getReferenceUnsafeStaticCast());
+
+			StringBuffer meshName;
+			meshName << zone->getZoneName() << "_Floor_Mesh_" << String::valueOf(getObjectID());
+
+			float length = 32.0f;
+
+			const BaseBoundingVolume* boundingVolume = getBoundingVolume();
+			if (boundingVolume != nullptr) {
+				const AABB& box = boundingVolume->getBoundingBox();
+				float axis = box.extents()[box.longestAxis()];
+
+				if (axis > length)
+					length = axis;
+			}
+
+			Vector3 position(getPositionX(), 0, getPositionY());
+
+			interiorNavArea->disableMeshUpdates(true);
+			interiorNavArea->initializeNavArea(position, mainCell->getObjectID(), length * 1.35f, zone, meshName.toString(), true);
+			transferObject(interiorNavArea, -1, false);
+
+			zone->getPlanetManager()->addNavArea(meshName.toString(), interiorNavArea);
+		}
+	} else if (interiorNavArea->isNavMeshLoaded()) {
+		interiorNavArea->updateNavMesh(interiorNavArea->getBoundingBox());
+	}
+#ifdef NAVMESH_DEBUG
+	info(true) << "Finished - creatreInteriorNavMesh call for building: " << getObjectID();
+#endif
 }
 
 void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
@@ -1461,6 +1529,8 @@ void BuildingObjectImplementation::createChildObjects() {
 	} else {
 		StructureObjectImplementation::createChildObjects();
 	}
+
+	createInteriorNavMesh();
 }
 
 void BuildingObjectImplementation::spawnChildSceneObject(String& templatePath, float x, float z, float y, unsigned long long cellID, float dw, float dx, float dy, float dz) {
@@ -1789,9 +1859,9 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 				data.addAll(floor->getTransformedMeshData(fullTransform));
 			}
 
-#ifndef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
+//#ifndef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
 			data.addAll(appr->getTransformedMeshData(fullTransform));
-#endif
+//#endif
 			const CellProperty* tmpl = pl->getCellProperty(0);
 
 			for (int i = 0; i < tmpl->getNumberOfPortals(); i++) {
@@ -1802,7 +1872,7 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 			}
 
 #ifdef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
-			return data;
+			//return data;
 #endif
 		}
 	}
