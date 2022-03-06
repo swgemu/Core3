@@ -38,6 +38,8 @@
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 
+// #define NAVMESH_DEBUG
+
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
@@ -78,6 +80,73 @@ void BuildingObjectImplementation::createContainerComponent() {
 	TangibleObjectImplementation::createContainerComponent();
 }
 
+void BuildingObjectImplementation::createInteriorNavMesh() {
+#ifdef NAVMESH_DEBUG
+	info(true) << "create Interior NavMesh called for building: " << getObjectID();
+#endif
+	bool buildInteriorMeshes = ConfigManager::instance()->getBool("Core3.StructureManager.GenerateFloorMeshes", false);
+
+	if ((!buildInteriorMeshes || server->getZoneServer()->shouldDeleteNavAreas()) && interiorNavArea != nullptr) {
+		ManagedReference<NavArea*> nav = interiorNavArea;
+		zone->getPlanetManager()->dropNavArea(nav->getMeshName());
+
+		Core::getTaskManager()->executeTask([nav] {
+			Locker locker(nav);
+			nav->destroyObjectFromWorld(true);
+			nav->destroyObjectFromDatabase(true);
+		}, "destroyInteriorNavAreaLambda");
+
+		interiorNavArea = nullptr;
+	}
+
+	// Do not build interior mesh if config set to false or total cells is less than 1
+	if (!buildInteriorMeshes || totalCellNumber < 1)
+		return;
+
+	if (interiorNavArea == nullptr) {
+		CellObject* mainCell = getCell(1);
+		ZoneServer* zoneServer = getZoneServer();
+
+		if (mainCell == nullptr || zoneServer == nullptr || zone == nullptr) {
+			return;
+		}
+
+		interiorNavArea = zoneServer->createObject(STRING_HASHCODE("object/region_navmesh.iff"), "navareas", isPersistent()).castTo<NavArea*>();
+
+		if (interiorNavArea == nullptr)
+			return;
+
+		Locker clocker(interiorNavArea, _this.getReferenceUnsafeStaticCast());
+
+		StringBuffer meshName;
+		meshName << zone->getZoneName() << "_Floor_Mesh_" << String::valueOf(getObjectID());
+
+		float length = 32.0f;
+
+		const BaseBoundingVolume* boundingVolume = getBoundingVolume();
+		if (boundingVolume != nullptr) {
+			const AABB& box = boundingVolume->getBoundingBox();
+			float axis = box.extents()[box.longestAxis()];
+
+			if (axis > length)
+				length = axis;
+		}
+
+		Vector3 position(getPositionX(), 0, getPositionY());
+
+		interiorNavArea->disableMeshUpdates(true);
+		interiorNavArea->initializeNavArea(position, mainCell->getObjectID(), length * 1.25f, zone, meshName.toString(), true);
+		transferObject(interiorNavArea, -1, false);
+
+		zone->getPlanetManager()->addNavArea(meshName.toString(), interiorNavArea);
+	} else if (interiorNavArea->isNavMeshLoaded()) {
+		interiorNavArea->updateNavMesh(interiorNavArea->getBoundingBox());
+	}
+#ifdef NAVMESH_DEBUG
+	info(true) << "Finished - creatreInteriorNavMesh call for building: " << getObjectID();
+#endif
+}
+
 void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
 	StringBuffer newName;
 
@@ -100,6 +169,17 @@ void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
 
 		cell->onBuildingInsertedToZone(asBuildingObject());
 	}
+
+	Reference<BuildingObject*> building = _this.getReferenceUnsafeStaticCast();
+
+	Core::getTaskManager()->scheduleTask([building] {
+		if (building == nullptr)
+			return;
+
+		Locker Lock(building);
+
+		building->createInteriorNavMesh();
+	}, "createBuildingInteriorMeshLambda", 5000);
 
 #if ENABLE_STRUCTURE_JSON_EXPORT
 	if (getOwnerObjectID() != 0)
@@ -1781,13 +1861,14 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 			const AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
 			const FloorMesh *floor = TemplateManager::instance()->getFloorMesh(appr->getFloorMesh());
 
-			if (floor == nullptr) {
+			// This renders the exterior floormesh portion of buildings, which can overhang terain
+			/*if (floor == nullptr) {
 				floor = pl->getFloorMesh(0);
 			}
 
 			if (floor != nullptr) {
 				data.addAll(floor->getTransformedMeshData(fullTransform));
-			}
+			}*/
 
 #ifndef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
 			data.addAll(appr->getTransformedMeshData(fullTransform));

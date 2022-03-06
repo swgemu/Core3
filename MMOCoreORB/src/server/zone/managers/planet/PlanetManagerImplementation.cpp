@@ -409,7 +409,7 @@ void PlanetManagerImplementation::loadNavAreas(LuaObject* areas) {
 
 			Locker objLocker(areaObject);
 			Vector3 position(loc.get(0), 0, loc.get(1));
-			areaObject->initializeNavArea(position, loc.get(2), zone, name);
+			areaObject->initializeNavArea(position, 0, loc.get(2), zone, name);
 			areaObject->disableMeshUpdates(true);
 			navMeshAreas.put(name, areaObject);
 
