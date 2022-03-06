@@ -370,6 +370,30 @@
       "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4b5619a_5eea39ed",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3096,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-06T02:14:46Z",
+      "side": 1,
+      "message": "I checked it... setting it all to 0\u0027s leaves the quest in the journal with no tasks. Logging out and in does not clear it. The original method appears to be the only way to actually remove a quest from the journal.",
+      "parentUuid": "fb39f8d2_364d628f",
+      "range": {
+        "startLine": 3096,
+        "startChar": 1,
+        "endLine": 3096,
+        "endChar": 77
+      },
+      "revId": "9aafdbf60813be09c433dc430c82f674f1fecb48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
