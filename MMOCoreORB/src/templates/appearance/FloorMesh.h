@@ -257,6 +257,10 @@ public:
 		return pathGraph;
 	}
 
+	inline Vector<FloorMeshTriangleNode*> getTriangles() const {
+		return tris;
+	}
+
 	inline const FloorMeshTriangleNode* getTriangle(int tri) const {
 		return tris.get(tri);
 	}

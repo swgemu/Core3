@@ -201,6 +201,7 @@ function NabooTheedScreenPlay:start()
 		self:spawnGcwMobiles()
 		self:spawnPatrolMobiles()
 		self:spawnStationaryMobiles()
+		self:spawnCityInteriorNavmeshes()
 	end
 end
 
@@ -208,6 +209,10 @@ function NabooTheedScreenPlay:spawnSceneObjects()
 	--outside starport
 	spawnSceneObject(self.planet, "object/tangible/crafting/station/public_space_station.iff", -4830.96, 6, 4141.53, 0, math.rad(-140) )
 	spawnSceneObject(self.planet, "object/tangible/crafting/station/public_space_station.iff", -4886.07, 6, 4188.23, 0, math.rad(-140) )
+end
+
+function NabooTheedScreenPlay:spawnCityInteriorNavmeshes()
+	createNavMesh("naboo", 18, 1.7, 91, 32, true, "theed_cantina")
 end
 
 function NabooTheedScreenPlay:spawnMobiles()

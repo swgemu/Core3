@@ -22,6 +22,8 @@ class StructureObject extends TangibleObject {
 
 	protected NavArea navArea;
 
+	protected NavArea interiorNavArea;
+
 	@dereferenced
 	protected StructurePermissionList structurePermissionList;
 
@@ -67,6 +69,7 @@ class StructureObject extends TangibleObject {
 		permissionsFixed = false;
 
 		navArea = null;
+        interiorNavArea = null;
 	}
 
 	public native void initializeTransientMembers();
@@ -491,6 +494,16 @@ class StructureObject extends TangibleObject {
 	@read
 	public boolean hasNavmesh() {
 		return navArea;
+	}
+
+	@read
+	public NavArea getInteriorNavArea() {
+		return interiorNavArea;
+	}
+
+	@read
+	public boolean hasInteriorNavmesh() {
+		return interiorNavArea;
 	}
 
 	@preLocked

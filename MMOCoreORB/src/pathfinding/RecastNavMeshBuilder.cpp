@@ -24,15 +24,15 @@
 #include "terrain/layer/boundaries/BoundaryPolygon.h"
 #include "conf/ConfigManager.h"
 
-//#define NAVMESH_DEBUG
+#define NAVMESH_DEBUG
 
 inline unsigned int nextPow2(unsigned int v) {
 	v--;
-	v |= v>>1;
-	v |= v>>2;
-	v |= v>>4;
-	v |= v>>8;
-	v |= v>>16;
+	v |= v >> 1;
+	v |= v >> 2;
+	v |= v >> 4;
+	v |= v >> 8;
+	v |= v >> 16;
 	v++;
 	return v;
 }
@@ -40,39 +40,23 @@ inline unsigned int nextPow2(unsigned int v) {
 inline unsigned int ilog2(unsigned int v) {
 	unsigned int r;
 	unsigned int shift;
-	r = (v > 0xffff)<<4;
+	r = (v > 0xffff) << 4;
 	v >>= r;
-	shift = (v > 0xff)<<3;
+	shift = (v > 0xff) << 3;
 	v >>= shift;
 	r |= shift;
-	shift = (v > 0xf)<<2;
+	shift = (v > 0xf) << 2;
 	v >>= shift;
 	r |= shift;
-	shift = (v > 0x3)<<1;
+	shift = (v > 0x3) << 1;
 	v >>= shift;
 	r |= shift;
-	r |= (v>>1);
+	r |= (v >> 1);
 	return r;
 }
 
-RecastNavMeshBuilder::RecastNavMeshBuilder(Zone* zone, const String& name, const AtomicBoolean* jobStatus) :
-		Logger(name),
-		m_keepInterResults(false),
-		m_buildAll(true),
-		m_totalBuildTimeMs(0),
-		m_triareas(0),
-		m_solid(0),
-		m_chf(0),
-		m_cset(0),
-		m_pmesh(0),
-		m_dmesh(0),
-		m_maxTiles(0),
-		m_maxPolysPerTile(0),
-		bounds(Vector3(0, 0, 0), Vector3(0, 0, 0)),
-		lastTileBounds(Vector3(0, 0, 0), Vector3(0, 0, 0)),
-		m_tileTriCount(0),
-		running(jobStatus),
-		header() {
+RecastNavMeshBuilder::RecastNavMeshBuilder(Zone* zone, const String& name, const AtomicBoolean* jobStatus)
+	: Logger(name), m_keepInterResults(false), m_buildAll(true), m_totalBuildTimeMs(0), m_triareas(0), m_solid(0), m_chf(0), m_cset(0), m_pmesh(0), m_dmesh(0), m_maxTiles(0), m_maxPolysPerTile(0), bounds(Vector3(0, 0, 0), Vector3(0, 0, 0)), lastTileBounds(Vector3(0, 0, 0), Vector3(0, 0, 0)), m_tileTriCount(0), running(jobStatus), header() {
 	ProceduralTerrainAppearance* pta = zone->getPlanetManager()->getTerrainManager()->getProceduralTerrainAppearance();
 	if (pta->getUseGlobalWaterTable())
 		waterTableHeight = pta->getGlobalWaterTableHeight();
@@ -134,10 +118,10 @@ void RecastNavMeshBuilder::rebuildAreas(const Vector<AABB>& buildAreas, NavArea*
 	existingMesh->copyMeshTo(m_navMesh);
 	rLocker.release();
 
-    for (int i = buildAreas.size() - 1; i >= 0; i--) {
-        const AABB &aabb = buildAreas.get(i);
-        rebuildArea(aabb);
-    }
+	for (int i = buildAreas.size() - 1; i >= 0; i--) {
+		const AABB& aabb = buildAreas.get(i);
+		rebuildArea(aabb);
+	}
 }
 
 void RecastNavMeshBuilder::rebuildArea(const AABB& buildArea) {
@@ -145,9 +129,8 @@ void RecastNavMeshBuilder::rebuildArea(const AABB& buildArea) {
 	longest = Math::max(settings.m_tileSize * settings.m_cellSize * 2.25f, longest);
 
 	Vector3 center = buildArea.midPoint();
-	//un-fucking (or re-fucking) our coordinate system
-	AABB area = AABB(Vector3(center.getX() - longest, -100000, -center.getY() - longest),
-				Vector3(center.getX() + longest, 100000, -center.getY() + longest));
+	// un-fucking (or re-fucking) our coordinate system
+	AABB area = AABB(Vector3(center.getX() - longest, -100000, -center.getY() - longest), Vector3(center.getX() + longest, 100000, -center.getY() + longest));
 
 	int gw = 0, gh = 0;
 
@@ -158,25 +141,26 @@ void RecastNavMeshBuilder::rebuildArea(const AABB& buildArea) {
 	bmin[1] = bounds.getYMin();
 	bmin[2] = bounds.getZMin();
 
-
 	bmax[0] = bounds.getXMax();
 	bmax[1] = bounds.getYMax();
 	bmax[2] = bounds.getZMax();
 
 	rcCalcGridSize(bmin, bmax, settings.m_cellSize, &gw, &gh);
-	const int ts = (int) settings.m_tileSize;
+	const int ts = (int)settings.m_tileSize;
 	const int tw = (gw + ts - 1) / ts;
 	const int th = (gh + ts - 1) / ts;
 
 	// Max tiles and max polys affect how the tile IDs are caculated.
 	// There are 22 bits available for identifying a tile and a polygon.
-	int tileBits = rcMin((int) ilog2(nextPow2(tw * th)), 14);
+	int tileBits = rcMin((int)ilog2(nextPow2(tw * th)), 14);
 	int polyBits = 22 - tileBits;
-	m_maxTiles = 1<<tileBits;
-	m_maxPolysPerTile = 1<<polyBits;
+	m_maxTiles = 1 << tileBits;
+	m_maxPolysPerTile = 1 << polyBits;
 
-	if (!m_geom) return;
-	if (!m_navMesh) return;
+	if (!m_geom)
+		return;
+	if (!m_navMesh)
+		return;
 
 	buildAllTiles(area);
 }
@@ -202,29 +186,28 @@ bool RecastNavMeshBuilder::build() {
 	bmin[1] = bounds.getYMin();
 	bmin[2] = bounds.getZMin();
 
-
 	bmax[0] = bounds.getXMax();
 	bmax[1] = bounds.getYMax();
 	bmax[2] = bounds.getZMax();
 
 	rcCalcGridSize(bmin, bmax, settings.m_cellSize, &gw, &gh);
-	const int ts = (int) settings.m_tileSize;
+	const int ts = (int)settings.m_tileSize;
 	const int tw = (gw + ts - 1) / ts;
 	const int th = (gh + ts - 1) / ts;
 
 	// Max tiles and max polys affect how the tile IDs are caculated.
 	// There are 22 bits available for identifying a tile and a polygon.
-	int tileBits = rcMin((int) ilog2(nextPow2(tw * th)), 14);
+	int tileBits = rcMin((int)ilog2(nextPow2(tw * th)), 14);
 	int polyBits = 22 - tileBits;
-	m_maxTiles = 1<<tileBits;
-	m_maxPolysPerTile = 1<<polyBits;
+	m_maxTiles = 1 << tileBits;
+	m_maxPolysPerTile = 1 << polyBits;
 
 	dtNavMeshParams params;
 	params.orig[0] = bounds.getXMin();
 	params.orig[1] = bounds.getYMin();
 	params.orig[2] = bounds.getZMin();
 
-	//rcVcopy(params.orig, m_geom->getNavMeshBoundsMin());
+	// rcVcopy(params.orig, m_geom->getNavMeshBoundsMin());
 	params.tileWidth = settings.m_tileSize * settings.m_cellSize;
 	params.tileHeight = settings.m_tileSize * settings.m_cellSize;
 	params.maxTiles = m_maxTiles;
@@ -245,14 +228,16 @@ bool RecastNavMeshBuilder::build() {
 }
 
 void RecastNavMeshBuilder::buildAllTiles(const AABB& area) {
-	if (!m_geom) return;
-	if (!m_navMesh) return;
+	if (!m_geom)
+		return;
+	if (!m_navMesh)
+		return;
 
-	const Vector <Vector3>* vertArray = m_geom->getVerts();
-	const Vector <MeshTriangle>* triArray = m_geom->getTriangles();
+	const Vector<Vector3>* vertArray = m_geom->getVerts();
+	const Vector<MeshTriangle>* triArray = m_geom->getTriangles();
 
 	const int nverts = vertArray->size();
-	float* verts = new float[nverts * 3];//m_geom->getMesh()->getVerts();
+	float* verts = new float[nverts * 3]; // m_geom->getMesh()->getVerts();
 
 	int* tris = new int[triArray->size() * 3];
 	for (int i = 0; i < nverts; i++) {
@@ -273,13 +258,12 @@ void RecastNavMeshBuilder::buildAllTiles(const AABB& area) {
 	bmin[1] = bounds.getYMin();
 	bmin[2] = bounds.getZMin();
 
-
 	bmax[0] = bounds.getXMax();
 	bmax[1] = bounds.getYMax();
 	bmax[2] = bounds.getZMax();
 	int gw = 0, gh = 0;
 	rcCalcGridSize(bmin, bmax, settings.m_cellSize, &gw, &gh);
-	const int ts = (int) settings.m_tileSize;
+	const int ts = (int)settings.m_tileSize;
 	int tw = (gw + ts - 1) / ts;
 	int th = (gh + ts - 1) / ts;
 	const float tcs = settings.m_tileSize * settings.m_cellSize;
@@ -299,7 +283,7 @@ void RecastNavMeshBuilder::buildAllTiles(const AABB& area) {
 	builder.changeMesh(m_geom);
 	builder.setWater(water);
 
-	//info("Bounds: " + bounds.getMinBound()->toString() + " | " + bounds.getMaxBound()->toString() + "\n", true);
+	// info("Bounds: " + bounds.getMinBound()->toString() + " | " + bounds.getMaxBound()->toString() + "\n", true);
 
 	float zStart = (fabs(bounds.getZMin() - area.getZMin()) / tcs) - 1.0f;
 	float xStart = (fabs(bounds.getXMin() - area.getXMin()) / tcs) - 1.0f;
@@ -312,7 +296,7 @@ void RecastNavMeshBuilder::buildAllTiles(const AABB& area) {
 
 	for (int y = floor(zStart); y < th; ++y) {
 		float zTileStart = bmin[2] + ((y + 1) * tcs);
-		//info("zStart: " + String::valueOf(zTileStart), true);
+		// info("zStart: " + String::valueOf(zTileStart), true);
 		if (zTileStart < area.getZMin() || zTileStart > area.getZMax())
 			continue;
 
@@ -320,12 +304,10 @@ void RecastNavMeshBuilder::buildAllTiles(const AABB& area) {
 			return;
 
 		for (int x = floor(xStart); x < tw; ++x) {
-
 			float xTileStart = bmin[0] + ((x + 1) * tcs);
-			//info("xStart: " + String::valueOf(xTileStart), true);
+			// info("xStart: " + String::valueOf(xTileStart), true);
 			if (xTileStart < area.getXMin() || xTileStart > area.getXMax())
 				continue;
-
 
 			float minx = bmin[0] + x * tcs;
 			float miny = bmin[1];
@@ -359,20 +341,20 @@ void RecastNavMeshBuilder::buildAllTiles(const AABB& area) {
 #ifdef NAVMESH_DEBUG
 		info("Generating tiles: " + String::valueOf(progress.get() * 100 / (th * tw)) + "% complete", true);
 #endif
-
 	}
 }
 
-
 void RecastNavMeshBuilder::buildAllTiles() {
-	if (!m_geom) return;
-	if (!m_navMesh) return;
+	if (!m_geom)
+		return;
+	if (!m_navMesh)
+		return;
 
-	const Vector <Vector3>* vertArray = m_geom->getVerts();
-	const Vector <MeshTriangle>* triArray = m_geom->getTriangles();
+	const Vector<Vector3>* vertArray = m_geom->getVerts();
+	const Vector<MeshTriangle>* triArray = m_geom->getTriangles();
 
 	const int nverts = vertArray->size();
-	float* verts = new float[nverts * 3];//m_geom->getMesh()->getVerts();
+	float* verts = new float[nverts * 3]; // m_geom->getMesh()->getVerts();
 
 	int* tris = new int[triArray->size() * 3];
 	for (int i = 0; i < nverts; i++) {
@@ -393,13 +375,12 @@ void RecastNavMeshBuilder::buildAllTiles() {
 	bmin[1] = bounds.getYMin();
 	bmin[2] = bounds.getZMin();
 
-
 	bmax[0] = bounds.getXMax();
 	bmax[1] = bounds.getYMax();
 	bmax[2] = bounds.getZMax();
 	int gw = 0, gh = 0;
 	rcCalcGridSize(bmin, bmax, settings.m_cellSize, &gw, &gh);
-	const int ts = (int) settings.m_tileSize;
+	const int ts = (int)settings.m_tileSize;
 	const int tw = (gw + ts - 1) / ts;
 	const int th = (gh + ts - 1) / ts;
 	const float tcs = settings.m_tileSize * settings.m_cellSize;
@@ -420,12 +401,10 @@ void RecastNavMeshBuilder::buildAllTiles() {
 	builder.setWater(water);
 
 	for (int y = 0; y < th; ++y) {
-
 		if (!running->get())
 			return;
 
 		for (int x = 0; x < tw; ++x) {
-
 			float minx = bmin[0] + x * tcs;
 			float miny = bmin[1];
 			float minz = bmin[2] + y * tcs;
@@ -460,13 +439,10 @@ void RecastNavMeshBuilder::buildAllTiles() {
 	}
 }
 
-void
-RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const AABB& bounds, float distanceBetweenHeights) {
+void RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*>>& meshData, const AABB& bounds, ManagedReference<SceneObject*> parent, float distanceBetweenHeights) {
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
+	Reference<MeshData*> flattened;
 
-#ifdef NAVMESH_DEBUG
-	info("Building region terrain for: " + name, true);
-#endif
 
 	float boundsRadius = bounds.extents()[bounds.longestAxis()] * 2.0f;
 	assert(boundsRadius != 0.f);
@@ -475,27 +451,40 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 #ifdef NAVMESH_DEBUG
 	info(center.toString() + " Radius: " + String::valueOf(boundsRadius), true);
 #endif
-	meshData.add(getTerrainMesh(center, boundsRadius, terrainManager, 32,
-								distanceBetweenHeights));
 
-	Reference < MeshData * > flattened = flattenMeshData(meshData);
+	if (parent == nullptr) {
+#ifdef NAVMESH_DEBUG
+		info("Building region terrain for: " + name, true);
+#endif
+		meshData.add(getTerrainMesh(center, boundsRadius, terrainManager, 32, distanceBetweenHeights));
+	} else {
+#ifdef NAVMESH_DEBUG
+		info("Building floor mesh for: " + name, true);
+#endif
+		meshData.add(getFloorMesh(center, boundsRadius, 32, distanceBetweenHeights));
+	}
 
-	Vector <Reference<MeshData*>> test;
+	flattened = flattenMeshData(meshData);
+	Vector<Reference<MeshData*>> test;
+
 	test.add(flattened);
 	meshData.removeAll();
+
+	changeMesh(flattened);
 
 	if (ConfigManager::instance()->getDumpObjFiles()) {
 		String objName = name + ".obj";
 		dumpOBJ(objName, test);
 	}
 
-	changeMesh(flattened);
-
 #ifdef NAVMESH_DEBUG
 	info("Building region navmesh for: " + name, true);
 #endif
 	Vector<const Boundary*> water;
-	terrainManager->getProceduralTerrainAppearance()->getWaterBoundariesInAABB(bounds, &water);
+
+	if (parent == nullptr)
+		terrainManager->getProceduralTerrainAppearance()->getWaterBoundariesInAABB(bounds, &water);
+
 	// Render water as polygons
 	for (const Boundary* boundary : water) {
 		const BoundaryPolygon* bPoly = dynamic_cast<const BoundaryPolygon*>(boundary);
@@ -503,7 +492,7 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 		if (bPoly != NULL) {
 			const Vector<Point2D*>& points = bPoly->getVertices();
 
-			Reference < RecastPolygon * > poly = new RecastPolygon(points.size());
+			Reference<RecastPolygon*> poly = new RecastPolygon(points.size());
 			poly->type = SAMPLE_POLYAREA_WATER;
 
 			for (int i = points.size() - 1; i >= 0; i--) {
@@ -523,7 +512,7 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 			continue;
 
 		} else if (bRect != NULL) {
-			Reference < RecastPolygon * > poly = new RecastPolygon(4);
+			Reference<RecastPolygon*> poly = new RecastPolygon(4);
 			poly->type = SAMPLE_POLYAREA_WATER;
 			float tableHeight = bRect->getLocalWaterTableHeight();
 			poly->verts[0] = bRect->getMinX();
@@ -553,15 +542,15 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 	}
 }
 
-Reference<MeshData*> RecastNavMeshBuilder::flattenMeshData(Vector <Reference<MeshData*>>& data) {
+Reference<MeshData*> RecastNavMeshBuilder::flattenMeshData(Vector<Reference<MeshData*>>& data) {
 	MeshData* mesh = new MeshData();
-	Vector <Vector3>& newV = *mesh->getVerts();
-	Vector <MeshTriangle>& newT = *mesh->getTriangles();
+	Vector<Vector3>& newV = *mesh->getVerts();
+	Vector<MeshTriangle>& newT = *mesh->getTriangles();
 
 	for (int x = 0; x < data.size(); x++) {
 		MeshData* mesh = data.get(x);
-		Vector <Vector3>* verts = mesh->getVerts();
-		Vector <MeshTriangle>* tris = mesh->getTriangles();
+		Vector<Vector3>* verts = mesh->getVerts();
+		Vector<MeshTriangle>* tris = mesh->getTriangles();
 
 		for (int i = 0; i < verts->size(); i++) {
 			Vector3& vert = verts->get(i);
@@ -574,15 +563,13 @@ Reference<MeshData*> RecastNavMeshBuilder::flattenMeshData(Vector <Reference<Mes
 
 	int lastIndex = 0;
 	for (int x = 0; x < data.size(); x++) {
-
 		MeshData* mesh = data.get(x);
-		Vector <Vector3>* verts = mesh->getVerts();
-		Vector <MeshTriangle>* tris = mesh->getTriangles();
+		Vector<Vector3>* verts = mesh->getVerts();
+		Vector<MeshTriangle>* tris = mesh->getTriangles();
 
 		for (int i = 0; i < tris->size(); i++) {
 			MeshTriangle& tri = tris->get(i);
-			newT.add(MeshTriangle(lastIndex + tri.getVerts()[2], lastIndex + tri.getVerts()[1],
-								  lastIndex + tri.getVerts()[0]));
+			newT.add(MeshTriangle(lastIndex + tri.getVerts()[2], lastIndex + tri.getVerts()[1], lastIndex + tri.getVerts()[0]));
 		}
 
 		lastIndex += verts->size();
@@ -591,57 +578,49 @@ Reference<MeshData*> RecastNavMeshBuilder::flattenMeshData(Vector <Reference<Mes
 	return mesh;
 }
 
-void RecastNavMeshBuilder::dumpOBJ(const String& filename, Vector <Reference<MeshData*>>& data) {
-
+void RecastNavMeshBuilder::dumpOBJ(const String& filename, Vector<Reference<MeshData*>>& data) {
 	String outputFileName = "navmeshes/" + filename;
 	File file(outputFileName);
 	FileOutputStream outputStream(&file);
 
 	for (int x = 0; x < data.size(); x++) {
 		MeshData* mesh = data.get(x);
-		Vector <Vector3>* verts = mesh->getVerts();
-		Vector <MeshTriangle>* tris = mesh->getTriangles();
+		Vector<Vector3>* verts = mesh->getVerts();
+		Vector<MeshTriangle>* tris = mesh->getTriangles();
 
 		for (int i = 0; i < verts->size(); i++) {
 			Vector3& vert = verts->get(i);
 			float xPos = vert.getX();
 			float yPos = vert.getY();
 			float zPos = vert.getZ();
-			outputStream.write(
-					"v " + String::valueOf(xPos) + " " + String::valueOf(yPos) + " " + String::valueOf(zPos) + "\n");
+			outputStream.write("v " + String::valueOf(xPos) + " " + String::valueOf(yPos) + " " + String::valueOf(zPos) + "\n");
 		}
 	}
 
 	int lastIndex = 1;
 	for (int x = 0; x < data.size(); x++) {
 		MeshData* mesh = data.get(x);
-		Vector <Vector3>* verts = mesh->getVerts();
-		Vector <MeshTriangle>* tris = mesh->getTriangles();
+		Vector<Vector3>* verts = mesh->getVerts();
+		Vector<MeshTriangle>* tris = mesh->getTriangles();
 
 		for (int i = 0; i < tris->size(); i++) {
 			MeshTriangle& tri = tris->get(i);
-			outputStream.write("f " + String::valueOf(lastIndex + tri.getVerts()[0]) + " " + String::valueOf(
-					lastIndex + tri.getVerts()[1]) + " " + String::valueOf(lastIndex + tri.getVerts()[2]) + "\n");
+			outputStream.write("f " + String::valueOf(lastIndex + tri.getVerts()[0]) + " " + String::valueOf(lastIndex + tri.getVerts()[1]) + " " + String::valueOf(lastIndex + tri.getVerts()[2]) + "\n");
 		}
 		lastIndex += verts->size();
-
 	}
 	outputStream.flush();
 	file.close();
 }
 
-Reference<MeshData*>
-RecastNavMeshBuilder::getTerrainMesh(Vector3& position, float terrainSize, TerrainManager* terrainManager,
-									 float chunkSize, float distanceBetweenHeights) {
-
-
+Reference<MeshData*> RecastNavMeshBuilder::getTerrainMesh(Vector3& position, float terrainSize, TerrainManager* terrainManager, float chunkSize, float distanceBetweenHeights) {
 	float centerX = position.getX();
 	float centerY = position.getZ();
 
 	float originX = centerX + (-terrainSize / 2);
 	float originY = centerY + (-terrainSize / 2);
 
-	unsigned int numRows = static_cast<unsigned int>( terrainSize / chunkSize );
+	unsigned int numRows = static_cast<unsigned int>(terrainSize / chunkSize);
 	unsigned int numColumns = numRows;
 
 	float oneChunkRows = chunkSize / distanceBetweenHeights + 1;
@@ -650,20 +629,25 @@ RecastNavMeshBuilder::getTerrainMesh(Vector3& position, float terrainSize, Terra
 	int chunkNumRows = terrainSize / chunkSize;
 	int chunkNumColumns = chunkNumRows;
 
-	Reference < MeshData * > mesh = new MeshData();
+	Reference<MeshData*> mesh = new MeshData();
 
-	Vector <Vector3>* verts = mesh->getVerts();
-	Vector <MeshTriangle>* tris = mesh->getTriangles();
+	Vector<Vector3>* verts = mesh->getVerts();
+	Vector<MeshTriangle>* tris = mesh->getTriangles();
+
 	int numCells = terrainSize / distanceBetweenHeights;
+
 	for (int x = 0; x < numCells; x++) {
 		for (int y = 0; y < numCells; y++) {
 			float xPos = originX + x * distanceBetweenHeights;
 			float yPos = originY + y * distanceBetweenHeights;
-			verts->add(Vector3(xPos, terrainManager->getProceduralTerrainAppearance()->getHeight(xPos, yPos), -yPos));
+			float zPos = 0.f;
+
+			zPos = terrainManager->getProceduralTerrainAppearance()->getHeight(xPos, yPos);
+
+			verts->add(Vector3(xPos, zPos, -yPos));
 		}
 		//info("Building terrain verts Row #" + String::valueOf(x*numCells));
 	}
-
 
 	for (int x = 0; x < numCells - 1; x++) {
 		for (int y = 0; y < numCells - 1; y++) {
@@ -680,6 +664,71 @@ RecastNavMeshBuilder::getTerrainMesh(Vector3& position, float terrainSize, Terra
 			tris->add(tri);
 		}
 		//info("Building terrain Tris Row #" + String::valueOf(x*numCells));
+	}
+
+	return mesh;
+}
+
+Reference<MeshData*> RecastNavMeshBuilder::getFloorMesh(Vector3& position, float meshSize, float chunkSize, float distanceBetweenHeights) {
+	Reference<MeshData*> mesh = new MeshData();
+
+	float centerX = position.getX();
+	float centerY = position.getZ();
+
+	float originX = centerX + (-meshSize / 2);
+	float originY = centerY + (-meshSize / 2);
+
+	Vector<Vector3>* verts = mesh->getVerts();
+	Vector<MeshTriangle>* triangles = mesh->getTriangles();
+
+	Vector<MeshTriangle>* tris = mesh->getTriangles();
+	//int totalTriangles = mesh->getTriangleCount();
+
+
+	/*const PathGraph* graph = floor->getPathGraph();
+
+	if (graph == nullptr)
+		return nullptr;
+
+	const Vector<PathNode*>* pathNodes = graph->getPathNodes();*/
+
+	int numCells = meshSize / distanceBetweenHeights;
+
+	/*for (int x = 0; x < numCells; x++) {
+		for (int y = 0; y < numCells; y++) {
+			float xPos = originX + x * distanceBetweenHeights;
+			float yPos = originY + y * distanceBetweenHeights;
+
+			const TriangleNode* nearestTriangle = CollisionManager::getTriangle(Vector3(xPos, yPos, 0), mesh);
+
+			if (nearestTriangle == nullptr)
+				continue;
+
+			const PathNode* nearestNode = CollisionManager::findNearestPathNode(nearestTriangle, mesh, pointB.getPoint());
+
+			verts->add(Vector3(xPos, zPos, -yPos));
+		}
+	}*/
+
+	for (int x = 0; x < numCells; x++) {
+		for (int y = 0; y < numCells - 1; y++) {
+			/*float xPos = originX + x * distanceBetweenHeights;
+			float yPos = originY + y * distanceBetweenHeights;
+
+			verts->add(Vector3(xPos, 0.f, -yPos));*/
+
+			MeshTriangle tri;
+			tri.set(0, x + y * (numCells));
+			tri.set(1, x + 1 + y * (numCells));
+			tri.set(2, x + 1 + (y + 1) * (numCells)); // top right tri
+
+			tris->add(tri);
+
+			tri.set(0, x + 1 + (y + 1) * (numCells)); // bottom left tri
+			tri.set(1, x + (y + 1) * (numCells));
+			tri.set(2, x + y * (numCells));
+			tris->add(tri);
+		}
 	}
 
 	return mesh;

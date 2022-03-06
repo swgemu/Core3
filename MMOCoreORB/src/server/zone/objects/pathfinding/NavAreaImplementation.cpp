@@ -6,7 +6,7 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 
-//#define NAVMESH_DEBUG
+#define NAVMESH_DEBUG
 
 void NavAreaImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	disableUpdates = true;
@@ -24,7 +24,7 @@ void NavAreaImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 }
 
 void NavAreaImplementation::notifyLoadFromDatabase() {
-	//TODO: remove all this. It's just to get rid of old nav areas
+	// TODO: remove all this. It's just to get rid of old nav areas
 	String dbName;
 	uint16 tableID = (uint16)(getObjectID() >> 48);
 	ObjectDatabaseManager::instance()->getDatabaseName(tableID, dbName);
@@ -39,63 +39,103 @@ void NavAreaImplementation::notifyLoadFromDatabase() {
 }
 
 AABB NavAreaImplementation::getBoundingBox() const {
+	printf("\n");
+	printf("\n");
+	printf("____ GET BOUNDING BOX CALLED ______ \n");
+	printf("\n");
+	printf("\n");
+
+	ZoneServer* zoneServer = getZoneServer();
+	uint64 cellID = getCellObjectID();
+
+	if (cellID > 0 && zoneServer != nullptr) {
+		ManagedReference<SceneObject*> cell = zoneServer->getObject(cellID);
+
+		if (cell != nullptr && cell->isCellObject()) {
+			printf(" cell is not null \n");
+
+			ManagedReference<SceneObject*> parentSceneO = cell->getParent().get();
+
+			if (parentSceneO != nullptr && parentSceneO->isBuildingObject()) {
+				printf("building is not nullptr \n");
+
+				const BaseBoundingVolume* boundingVolume = parentSceneO->getBoundingVolume();
+
+				if (boundingVolume == nullptr)
+					printf("bounding volume is nullptr \n");
+
+				if (boundingVolume != nullptr) {
+#ifdef NAVMESH_DEBUG
+					info("Passing the bounding box of the parent of the navmesh", true);
+#endif
+					return boundingVolume->getBoundingBox();
+				}
+			}
+		}
+	}
+
+
 	float f = radius;
 	float x = getPositionX();
 	float y = getPositionY();
 	Vector3 center(x, 0, y);
 	Vector3 radius(f, f, f);
-	return AABB(center-radius, center+radius);
+
+	return AABB(center - radius, center + radius);
 }
 
 void NavAreaImplementation::setRadius(float f) {
-    ActiveAreaImplementation::setRadius(f);
-    float x = getPositionX();
-    float y = getPositionY();
-    Vector3 center(x, 0, y);
-    Vector3 radius(f, f, f);
-    meshBounds = AABB(center-radius, center+radius);
+	ActiveAreaImplementation::setRadius(f);
+	float x = getPositionX();
+	float y = getPositionY();
+	Vector3 center(x, 0, y);
+	Vector3 radius(f, f, f);
+	meshBounds = AABB(center - radius, center + radius);
 }
 
 bool NavAreaImplementation::isInRange(float x, float y, float range) {
-   const Vector3& worldPos = getWorldPosition();
+	const Vector3& worldPos = getWorldPosition();
 	float dx = worldPos.getX() - x;
 	float dy = worldPos.getY() - y;
 	float dist = dx * dx + dy * dy;
-	float max = (range * range + radius*radius);
+	float max = (range * range + radius * radius);
 
-    if (dist <= max)
-        return true;
+	if (dist <= max)
+		return true;
 
-    return false;
+	return false;
 }
 
 void NavAreaImplementation::updateNavMesh(const AABB& bounds) {
 	Locker locker(asNavArea());
 
-    static const RecastSettings settings;
-    if (!recastNavMesh.isLoaded()) {
-        NavMeshManager::instance()->enqueueJob(asNavArea(), meshBounds, settings, NavMeshManager::TileQueue);
-    } else {
-        NavMeshManager::instance()->enqueueJob(asNavArea(), bounds, settings, NavMeshManager::TileQueue);
-    }
+	static const RecastSettings settings;
+	if (!recastNavMesh.isLoaded()) {
+		NavMeshManager::instance()->enqueueJob(asNavArea(), meshBounds, settings, NavMeshManager::TileQueue);
+	} else {
+		NavMeshManager::instance()->enqueueJob(asNavArea(), bounds, settings, NavMeshManager::TileQueue);
+	}
 }
 
-void NavAreaImplementation::initializeNavArea(Vector3& position, float radius, Zone* zone, const String& name, bool forceRebuild) {
-    meshName = name;
-    recastNavMesh.setName(meshName);
-    setLoggingName("NavArea " + meshName);
-    initializePosition(position[0], position[1], position[2]);
-    setRadius(radius);
-    setZone(zone);
+void NavAreaImplementation::initializeNavArea(Vector3& position, uint64 parentID, float radius, Zone* zone, const String& name, bool forceRebuild) {
+	meshName = name;
+	recastNavMesh.setName(meshName);
 
-    if (forceRebuild || !recastNavMesh.isLoaded()) {
-        updateNavMesh(getBoundingBox());
-    }
+	setLoggingName("NavArea " + meshName);
+
+	setCellObjectID(parentID);
+	initializePosition(position.getX(), position.getZ(), position.getY());
+	setRadius(radius);
+	setZone(zone);
+
+	if (forceRebuild || !recastNavMesh.isLoaded()) {
+		updateNavMesh(getBoundingBox());
+	}
 }
 
 void NavAreaImplementation::initialize() {
-    meshName = String::valueOf(getObjectID());
-    setLoggingName("NavArea " + meshName);
+	meshName = String::valueOf(getObjectID());
+	setLoggingName("NavArea " + meshName);
 }
 
 bool NavAreaImplementation::objectInMesh(SceneObject* obj) const {
@@ -105,90 +145,93 @@ bool NavAreaImplementation::objectInMesh(SceneObject* obj) const {
 }
 
 void NavAreaImplementation::notifyEnter(SceneObject* object) {
-    if (disableUpdates || NavMeshManager::instance()->isStopped())
-        return;
+	if (disableUpdates || NavMeshManager::instance()->isStopped())
+		return;
 
-    if (object->getParentID() != 0)
-        return;
+	//if (object->getParentID() != 0)
+	//	return;
 
-    if (object->isCreatureObject() || object->isLairObject())
-        return;
+	if (object->isCreatureObject() || object->isLairObject())
+		return;
 
-    if (object->getGameObjectType() == SceneObjectType::FURNITURE)
-        return;
+	if (object->getGameObjectType() == SceneObjectType::FURNITURE)
+		return;
 
-    SharedObjectTemplate *shot = object->getObjectTemplate();
+	SharedObjectTemplate* shot = object->getObjectTemplate();
 
-    if (shot == nullptr)
-        return;
+	if (shot == nullptr)
+		return;
 
-    if (shot->getCollisionMaterialFlags() == 0 || shot->getCollisionMaterialBlockFlags() == 0) // soft object
-        return;
+	if (shot->getCollisionMaterialFlags() == 0 || shot->getCollisionMaterialBlockFlags() == 0) // soft object
+		return;
 
-    if (shot->getTemplateFileName().contains("construction_"))
-    	return;
+	if (shot->getTemplateFileName().contains("construction_"))
+		return;
 
-    updateNavMesh(object, false);
+	updateNavMesh(object, false);
 }
 
 void NavAreaImplementation::notifyExit(SceneObject* object) {
-    if (disableUpdates || NavMeshManager::instance()->isStopped())
-        return;
+	if (disableUpdates || NavMeshManager::instance()->isStopped())
+		return;
 
-    updateNavMesh(object, true);
+	updateNavMesh(object, true);
 }
 
-void NavAreaImplementation::updateNavMesh(SceneObject *object, bool remove) {
-    if (disableUpdates || NavMeshManager::instance()->isStopped()) // We check this redundantly as to not burden the zoneContainerComponent with this logic
-        return;
+void NavAreaImplementation::updateNavMesh(SceneObject* object, bool remove) {
+	if (disableUpdates || NavMeshManager::instance()->isStopped()) // We check this redundantly as to not burden the zoneContainerComponent with this logic
+		return;
 
-    ReadLocker rlocker(&containedLock);
+	ReadLocker rlocker(&containedLock);
 
-    if (remove) {
-    	if (!containedObjects.contains(object->getObjectID()))
-    		return;
-    } else {
-    	if (containedObjects.contains(object->getObjectID()))
-    		return;
-    }
+	if (remove) {
+		if (!containedObjects.contains(object->getObjectID()))
+			return;
+	} else {
+		if (containedObjects.contains(object->getObjectID()))
+			return;
+	}
 
-    rlocker.release();
+	rlocker.release();
 
 #ifdef NAVMESH_DEBUG
-        info(object->getObjectTemplate()->getTemplateFileName() + " caused navmesh rebuild with: collisionmaterialflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialFlags()) + "\ncollisionmaterialblockflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialBlockFlags())+ "\ncollisionmaterialpassflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialPassFlags()) + "\ncollisionmaterialactionflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionFlags())+ "\ncollisionmaterialactionpassflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionPassFlags()) + "\ncollisionmaterialactionBlockflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionBlockFlags()), true);
+	info(object->getObjectTemplate()->getTemplateFileName() + " caused navmesh rebuild with: collisionmaterialflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialFlags()) + "\ncollisionmaterialblockflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialBlockFlags()) +
+			 "\ncollisionmaterialpassflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialPassFlags()) + "\ncollisionmaterialactionflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionFlags()) + "\ncollisionmaterialactionpassflags " +
+			 String::valueOf(object->getObjectTemplate()->getCollisionActionPassFlags()) + "\ncollisionmaterialactionBlockflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionBlockFlags()),
+		 true);
 #endif
 
-    Vector3 position = object->getWorldPosition();
-    const BaseBoundingVolume *volume = object->getBoundingVolume();
-    if (volume) {
+	Vector3 position = object->getWorldPosition();
+	const BaseBoundingVolume* volume = object->getBoundingVolume();
 
-        AABB bbox = volume->getBoundingBox();
-        float len = bbox.extents()[bbox.longestAxis()];
-        len = (len / 32.0f) * 32;
-        Vector3 extents(len, len, len);
-        bbox = AABB(position-extents, position+extents);
+	if (volume) {
+		AABB bbox = volume->getBoundingBox();
+		float len = bbox.extents()[bbox.longestAxis()];
+		len = (len / 32.0f) * 32;
+		Vector3 extents(len, len, len);
+		bbox = AABB(position - extents, position + extents);
 #ifdef NAVMESH_DEBUG
-        info("Rebuilding from structure extents :\n" + bbox.getMinBound()->toString() + ", " + bbox.getMaxBound()->toString(), true);
+		info("Rebuilding from structure extents :\n" + bbox.getMinBound()->toString() + ", " + bbox.getMaxBound()->toString(), true);
 #endif
-        updateNavMesh(bbox);
+		updateNavMesh(bbox);
 
-        Locker containerLock(&containedLock);
+		Locker containerLock(&containedLock);
 
-        if (remove) {
-            containedObjects.remove(object->getObjectID());
-        } else {
-            containedObjects.add(object->getObjectID());
-        }
-    }
+		if (remove) {
+			containedObjects.remove(object->getObjectID());
+		} else {
+			containedObjects.add(object->getObjectID());
+		}
+	}
 }
 
 NavArea* NavAreaImplementation::asNavArea() {
-    return _this.getReferenceUnsafeStaticCast();
+	return _this.getReferenceUnsafeStaticCast();
 }
 
 bool NavAreaImplementation::containsPoint(float px, float py) const {
-    float dx = px - getPositionX();
-    float dy = py - getPositionY();
+	float dx = px - getPositionX();
+	float dy = py - getPositionY();
 
-    return ((dx * dx + dy * dy) < (radius * radius));
+	return ((dx * dx + dy * dy) < (radius * radius));
 }
