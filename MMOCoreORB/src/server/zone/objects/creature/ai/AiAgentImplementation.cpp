@@ -1900,6 +1900,15 @@ void AiAgentImplementation::updatePetSwimmingState() {
 	}
 }
 
+void AiAgentImplementation::updateHomeDirection() {
+	float dirDiff = fabs(getDirectionAngle() - homeLocation.getDirection());
+
+	if (dirDiff >= 0.5) {
+		setDirection(Math::deg2rad(homeLocation.getDirection()));
+		broadcastNextPositionUpdate(&homeLocation);
+	}
+}
+
 void AiAgentImplementation::checkNewAngle() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 
@@ -2625,6 +2634,10 @@ int AiAgentImplementation::setDestination() {
 
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
+		if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
+			homeLocation.setReached(false);
+			setMovementState(AiAgent::PATHING_HOME);
+		}
 		break;
 	case AiAgent::FLEEING: {
 		int64 fleeDiff = (fleeDelay.miliDifference() / 4) * -1;
@@ -2638,20 +2651,15 @@ int AiAgentImplementation::setDestination() {
 		break;
 	}
 	case AiAgent::LEASHING:
-		if (!isRetreating()) {
-			setMovementState(AiAgent::PATHING_HOME);
-			return setDestination();
-		}
-
 		clearPatrolPoints();
 
 		if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
 			homeLocation.setReached(false);
 			setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
 		} else {
-			setDirection(Math::deg2rad(homeLocation.getDirection()));
-			broadcastNextPositionUpdate(&homeLocation);
+			updateHomeDirection();
 			homeLocation.setReached(true);
+			setOblivious();
 		}
 
 		break;
@@ -2731,18 +2739,12 @@ int AiAgentImplementation::setDestination() {
 		clearPatrolPoints();
 
 		if (creatureBitmask & CreatureFlag::STATIC || homeLocation.getCell() != nullptr || getParent().get() != nullptr) {
-			if (!homeLocation.isInRange(asAiAgent(), 1.f)) {
+			if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
 				homeLocation.setReached(false);
 
 				setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
 			} else {
-				float dirDiff = fabs(getDirectionAngle() - homeLocation.getDirection());
-
-				if (dirDiff >= 0.5) {
-					setDirection(Math::deg2rad(homeLocation.getDirection()));
-					broadcastNextPositionUpdate(&homeLocation);
-				}
-
+				updateHomeDirection();
 				setOblivious();
 				homeLocation.setReached(true);
 			}
