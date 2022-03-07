@@ -406,6 +406,9 @@ class AiAgent extends CreatureObject {
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
 	@preLocked
+	public native void updateHomeDirection();
+
+	@preLocked
 	public native void checkNewAngle();
 
 	@dirty
@@ -881,7 +884,7 @@ class AiAgent extends CreatureObject {
 	@mock
 	@dirty
 	public abstract boolean isRetreating() {
-		return !homeLocation.isReached();
+		return getMovementState() == LEASHING;
 	}
 
 	public boolean isFleeing() {
