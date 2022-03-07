@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e761b32_717abf13",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-07T18:35:43Z",
+      "side": 1,
+      "message": "Consider making this into a table that you can index with your taskID instead. Make the ID\u0027s constants in the class and give them proper names.",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 4
+      },
+      "revId": "a3fd1a5de90246b5b32d7e513bd3eb700f75fd77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}

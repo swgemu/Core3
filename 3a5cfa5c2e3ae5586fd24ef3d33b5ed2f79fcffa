@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4c32b2ac_be7569ed",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-07T18:35:43Z",
+      "side": 1,
+      "message": "Yeah, missed that.",
+      "parentUuid": "6a411d70_8c0b53fc",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39173ea0_261de33f",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Yep all five are activated here, the last parameter bool is just telling the player object to only send the \"Task Updated\" system message only once, to avoid spam.",
       "parentUuid": "39173ea0_261de33f",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 66
+      },
+      "revId": "3a5cfa5c2e3ae5586fd24ef3d33b5ed2f79fcffa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f0f2fa2_6f6171df",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/risha_sinan.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-07T18:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "83c72ffb_b6f6bff2",
       "range": {
         "startLine": 57,
         "startChar": 1,
