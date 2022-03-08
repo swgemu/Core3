@@ -61,6 +61,14 @@ int ContrabandScanSessionImplementation::initializeSession() {
 	}
 	player->addActiveSession(SessionFacadeType::CONTRABANDSCAN, _this.getReferenceUnsafeStaticCast());
 
+	if (!(scanner->getCreatureBitmask() & CreatureFlag::FOLLOW))
+		scanner->addCreatureFlag(CreatureFlag::FOLLOW);
+
+	Locker clocker(player, scanner);
+
+	scanner->setFollowObject(player);
+	scanner->setMovementState(AiAgent::FOLLOWING);
+
 	return true;
 }
 
@@ -74,19 +82,10 @@ int ContrabandScanSessionImplementation::cancelSession() {
 		if (scanner != nullptr && !scanner->isInCombat()) {
 			Locker crossLocker(scanner, player);
 
-			scanner->setCreatureBitmask(scanner->getCreatureBitmask() - CreatureFlag::FOLLOW);
-			scanner->setFollowObject(nullptr);
+			scanner->removeCreatureFlag(CreatureFlag::FOLLOW);
 
-			PatrolPoint* home = scanner->getHomeLocation();
-
-			if (home != nullptr) {
-				if (scanner->getCreatureBitmask() & CreatureFlag::SCANNING_FOR_CONTRABAND) {
-					scanner->setMovementState(AiAgent::PATHING_HOME);
-					scanner->setNextPosition(home->getPositionX(), home->getPositionZ(), home->getPositionY());
-				}
-			} else {
-				scanner->leash();
-			}
+			scanner->setMovementState(AiAgent::LEASHING);
+			scanner->leash();
 		}
 
 		player->dropActiveSession(SessionFacadeType::CONTRABANDSCAN);
@@ -384,12 +383,6 @@ void ContrabandScanSessionImplementation::initiateScan(Zone* zone, AiAgent* scan
 		scanState = FINISHED;
 		return;
 	}
-
-	if (~scanner->getCreatureBitmask() & CreatureFlag::FOLLOW)
-		scanner->addCreatureFlag(CreatureFlag::FOLLOW);
-
-	scanner->setFollowObject(player);
-	scanner->setMovementState(AiAgent::FOLLOWING);
 
 	sendSystemMessage(scanner, player, "dismount_imperial", "dismount_rebel");
 

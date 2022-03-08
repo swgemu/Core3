@@ -651,6 +651,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("AI_FOLLOW_FORMATION", AiAgent::FOLLOW_FORMATION);
 	luaEngine->setGlobalInt("AI_MOVING_TO_HEAL", AiAgent::MOVING_TO_HEAL);
 	luaEngine->setGlobalInt("AI_NOTIFY_ALLY", AiAgent::NOTIFY_ALLY);
+	luaEngine->setGlobalInt("AI_CRACKDOWN_SCANNING", AiAgent::CRACKDOWN_SCANNING);
 
 	// Badges
 	const auto badges = BadgeList::instance()->getMap();

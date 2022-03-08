@@ -199,6 +199,7 @@ class AiAgent extends CreatureObject {
 	public static final int FOLLOW_FORMATION = 9;
 	public static final int MOVING_TO_HEAL = 10;
 	public static final int NOTIFY_ALLY = 11;
+	public static final int CRACKDOWN_SCANNING = 12;
 
 	public static final int MOB_HERBIVORE = 1;
 	public static final int MOB_CARNIVORE = 2;
@@ -770,7 +771,7 @@ class AiAgent extends CreatureObject {
 			if (this.isRetreating())
 				return;
 
-			if (followObject != obj) {
+			if (obj != null && followObject != obj) {
 				setMovementState(FOLLOWING);
 
 				setTargetObject(obj);

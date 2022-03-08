@@ -2613,6 +2613,8 @@ float AiAgentImplementation::getMaxDistance() {
 			return 1.5f;
 		case AiAgent::NOTIFY_ALLY:
 			return 1.0f;
+		case AiAgent::CRACKDOWN_SCANNING:
+			return 1.0f;
 	}
 
 	return 5.f;
@@ -2738,19 +2740,14 @@ int AiAgentImplementation::setDestination() {
 
 		clearPatrolPoints();
 
-		if (creatureBitmask & CreatureFlag::STATIC || homeLocation.getCell() != nullptr || getParent().get() != nullptr) {
-			if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
-				homeLocation.setReached(false);
+		if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
+			homeLocation.setReached(false);
 
-				setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
-			} else {
-				updateHomeDirection();
-				setOblivious();
-				homeLocation.setReached(true);
-			}
+			setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
 		} else {
-			homeLocation.setReached(true);
+			updateHomeDirection();
 			setOblivious();
+			homeLocation.setReached(true);
 		}
 
 		break;
@@ -2774,6 +2771,18 @@ int AiAgentImplementation::setDestination() {
 		break;
 	}
 	case AiAgent::NOTIFY_ALLY: {
+		break;
+	}
+	case AiAgent::CRACKDOWN_SCANNING: {
+		clearPatrolPoints();
+
+		if (followCopy == nullptr) {
+			break;
+		}
+
+		PatrolPoint nextPos = followCopy->getPosition();
+
+		setNextPosition(nextPos.getPositionX(), nextPos.getPositionZ(), nextPos.getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
 		break;
 	}
 	default:
