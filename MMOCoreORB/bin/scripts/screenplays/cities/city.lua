@@ -193,6 +193,8 @@ function CityScreenPlay:setupMobilePatrol(pMobile, num)
 
 	if combatNpc == false then
 		CreatureObject(pMobile):setPvpStatusBitmask(0)
+		AiAgent(pMobile):addCreatureFlag(AI_STATIONARY)
+
 		createEvent(getRandomNumber(40, 60) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
 		createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)
 	end

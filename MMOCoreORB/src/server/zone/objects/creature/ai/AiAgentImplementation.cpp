@@ -2630,13 +2630,13 @@ int AiAgentImplementation::setDestination() {
 	// info("homeLocation: " + homeLocation.toString(), true);
 
 	if (patrolPoints.size() > 20) {
-		info() << "Patrol points have oveflowed. Total points: " << patrolPoints.size();
+		info() << "Patrol points have overflowed. Total points: " << patrolPoints.size();
 		clearPatrolPoints();
 	}
 
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
-		if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
+		if (!(creatureBitmask & CreatureFlag::STATIONARY) && !homeLocation.isInRange(asAiAgent(), 1.0f)) {
 			homeLocation.setReached(false);
 			setMovementState(AiAgent::PATHING_HOME);
 		}
