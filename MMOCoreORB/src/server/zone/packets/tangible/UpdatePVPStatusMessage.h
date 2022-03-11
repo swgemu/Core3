@@ -6,7 +6,6 @@
 #define UPDATEPVPSTATUSMESSAGE_H_
 
 #include "engine/service/proto/BaseMessage.h"
-
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 class UpdatePVPStatusMessage : public BaseMessage {
@@ -25,10 +24,8 @@ public:
 		insertInt(pvpStatusBitmask);
 
 		unsigned int faction = 0;
-		if(!tano->isPlayerCreature() ||
-			tano->getFaction() == receiver->getFaction() ||
-			pvpStatusBitmask & CreatureFlag::OVERT) {
-				faction = tano->getFaction();
+		if (!tano->isPlayerCreature() || tano->getFaction() == receiver->getFaction() || pvpStatusBitmask & CreatureFlag::OVERT) {
+			faction = tano->getFaction();
 		}
 
 		insertInt(faction);

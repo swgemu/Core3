@@ -395,7 +395,11 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		if (agent == nullptr || !agent->isMonster() || agent->getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
+			return FAILURE;
+
 		ManagedReference<SceneObject*> tar = nullptr;
+
 		if (agent->peekBlackboard("targetProspect"))
 			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
@@ -414,13 +418,11 @@ public:
 		if (radius == 0)
 			radius = AiAgent::DEFAULTAGGRORADIUS;
 
-		if (!agent->isNonPlayerCreatureObject()) {
-			float distance = Math::max(dist, dist - radius * aggroMod);
+		float distance = Math::max(dist, dist - radius * aggroMod);
 
-			agent->writeBlackboard("fleeRange", distance);
-			agent->runAway(tar->asCreatureObject(), distance, false);
-			agent->showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
-		}
+		agent->writeBlackboard("fleeRange", distance);
+		agent->runAway(tar->asCreatureObject(), distance, false);
+		agent->showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 
 		return SUCCESS;
 	}
