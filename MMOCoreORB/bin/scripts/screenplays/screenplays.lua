@@ -339,6 +339,13 @@ includeFile("tasks/hero_of_tatooine/heroOfTatooine.lua")
 includeFile("tasks/hero_of_tatooine/heroOfTatooineContainerComponents.lua")
 includeFile("tasks/hero_of_tatooine/heroOfTatooineMenuComponents.lua")
 
+-- Darndroid Quests
+includeFile("tasks/darndroid/conversations/amarentConvoHandler.lua")
+includeFile("tasks/darndroid/conversations/c3tcConvoHandler.lua")
+includeFile("tasks/darndroid/conversations/selanConvoHandler.lua")
+includeFile("tasks/darndroid/conversations/valanceConvoHandler.lua")
+includeFile("tasks/darndroid/darndroid1.lua")
+
 -- Task/Quest
 includeFile("tasks/corellia/blk_sun_tasks.lua")
 includeFile("tasks/corellia/chertyl_ruluwoor.lua")
