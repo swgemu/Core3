@@ -101,6 +101,12 @@ includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_mother_conv.lua")
 includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_pirate_leader_conv.lua")
 includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_ranchers_wife_conv.lua")
 
+-- Darndroid Quests
+includeFile("conversations/tasks/darndroid/amarent_loren_conv.lua")
+includeFile("conversations/tasks/darndroid/c3tc_conv.lua")
+includeFile("conversations/tasks/darndroid/selan_ellison_conv.lua")
+includeFile("conversations/tasks/darndroid/valance_serth_conv.lua")
+
 -- Events
 includeFile("conversations/events/event_promoter_conv.lua")
 includeFile("conversations/events/race_droid_conv.lua")
