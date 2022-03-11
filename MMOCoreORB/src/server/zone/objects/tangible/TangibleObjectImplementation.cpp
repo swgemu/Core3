@@ -177,7 +177,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 			creature->sendSystemMessage("@faction_recruiter:covert_complete");
 
 			if (pvpStatusBitmask & CreatureFlag::OVERT)
-				pvpStatusBitmask -= CreatureFlag::OVERT;
+				pvpStatusBitmask &= ~CreatureFlag::OVERT;
 		} else if (factionStatus == FactionStatus::OVERT) {
 			if(!(pvpStatusBitmask & CreatureFlag::OVERT)) {
 				int cooldown = 300;
@@ -198,7 +198,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 			}
 		} else if (factionStatus == FactionStatus::ONLEAVE) {
 			if (pvpStatusBitmask & CreatureFlag::OVERT)
-				pvpStatusBitmask -= CreatureFlag::OVERT;
+				pvpStatusBitmask &= ~CreatureFlag::OVERT;
 
 			if (creature->getFaction() != 0)
 				creature->sendSystemMessage("@faction_recruiter:on_leave_complete");
@@ -245,18 +245,20 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	if (!(newPvpStatusBitmask & CreatureFlag::ATTACKABLE)) {
 		if (isAttackableBy(player))
 			newPvpStatusBitmask |= CreatureFlag::ATTACKABLE;
-	} else if (!isAttackableBy(player))
-		newPvpStatusBitmask -= CreatureFlag::ATTACKABLE;
+	} else if (!isAttackableBy(player)) {
+		newPvpStatusBitmask &= ~CreatureFlag::ATTACKABLE;
+	}
 
 	if (!(newPvpStatusBitmask & CreatureFlag::AGGRESSIVE)) {
 		if (isAggressiveTo(player))
 			newPvpStatusBitmask |= CreatureFlag::AGGRESSIVE;
-	} else if (!isAggressiveTo(player))
-		newPvpStatusBitmask -= CreatureFlag::AGGRESSIVE;
+	} else if (!isAggressiveTo(player)) {
+		newPvpStatusBitmask &= ~CreatureFlag::AGGRESSIVE;
+	}
 
 	if (newPvpStatusBitmask & CreatureFlag::TEF) {
 		if (player != asTangibleObject())
-			newPvpStatusBitmask -= CreatureFlag::TEF;
+			newPvpStatusBitmask &= ~CreatureFlag::TEF;
 	}
 
 	if (getFutureFactionStatus() == FactionStatus::OVERT)
@@ -289,7 +291,10 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
-		if (obj != nullptr && obj->isCreatureObject()) {
+		if (obj == nullptr)
+			continue;
+
+		if (obj->isCreatureObject()) {
 			CreatureObject* creo = obj->asCreatureObject();
 
 			if (creo->isPlayerCreature())
@@ -297,6 +302,20 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 
 			if (thisCreo != nullptr && thisCreo->isPlayerCreature())
 				creo->sendPvpStatusTo(thisCreo);
+		}
+
+		if (obj->isInstallationObject() && thisCreo != nullptr) {
+			obj->asTangibleObject()->sendPvpStatusTo(thisCreo);
+		}
+	}
+
+	closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::INSTALLATIONTYPE);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
+
+		if (obj != nullptr && obj->isInstallationObject() && thisCreo != nullptr) {
+			obj->asTangibleObject()->sendPvpStatusTo(thisCreo);
 		}
 	}
 }
@@ -1127,6 +1146,9 @@ ThreatMap* TangibleObjectImplementation::getThreatMap() {
 }
 
 bool TangibleObjectImplementation::isAttackableBy(TangibleObject* object) {
+	if (object == nullptr)
+		return  false;
+
 	if (object->isCreatureObject())
 		return isAttackableBy(object->asCreatureObject());
 
@@ -1136,9 +1158,11 @@ bool TangibleObjectImplementation::isAttackableBy(TangibleObject* object) {
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (object->isPlayerCreature()) {
 		Reference<PlayerObject*> ghost = object->getPlayerObject();
+
 		if (ghost != nullptr && ghost->hasCrackdownTefTowards(getFaction())) {
 			return true;
 		}
+
 		if (isImperial() && (!object->isRebel() || object->getFactionStatus() == 0)) {
 			return false;
 		}

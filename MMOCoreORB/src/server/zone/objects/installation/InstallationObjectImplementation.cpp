@@ -664,18 +664,24 @@ void InstallationObjectImplementation::updateStructureStatus() {
 	}
 }
 
-bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
-	if (!isAttackableBy(target) || target->isVehicleObject())
+bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* tarCreo) {
+	// info(true) << "InstallationObjectImp isAggressiveTo check called";
+
+	if (tarCreo->isVehicleObject())
 		return false;
 
-	if (target->isPlayerCreature()) {
-		Reference<PlayerObject*> ghost = target->getPlayerObject();
-		if (ghost != nullptr && ghost->hasCrackdownTefTowards(getFaction())) {
+	// Get factions
+	unsigned int thisFaction = getFaction();
+	unsigned int targetFaction = tarCreo->getFaction();
+
+	if (tarCreo->isPlayerCreature()) {
+		Reference<PlayerObject*> ghost = tarCreo->getPlayerObject();
+		if (ghost != nullptr && ghost->hasCrackdownTefTowards(thisFaction)) {
 			return true;
 		}
 	}
 
-	if (getFaction() != 0 && target->getFaction() != 0 && getFaction() != target->getFaction())
+	if (thisFaction != 0 && targetFaction != 0 && thisFaction != targetFaction)
 		return true;
 
 	SharedInstallationObjectTemplate* instTemplate = templateObject.castTo<SharedInstallationObjectTemplate*>();
@@ -684,13 +690,13 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 		String factionString = instTemplate->getFactionString();
 
 		if (!factionString.isEmpty()) {
-			if (target->isAiAgent()) {
-				AiAgent* targetAi = target->asAiAgent();
+			if (tarCreo->isAiAgent()) {
+				AiAgent* targetAi = tarCreo->asAiAgent();
 
 				if (FactionManager::instance()->isEnemy(factionString, targetAi->getFactionString()))
 					return true;
-			} else if (target->isPlayerCreature()) {
-				PlayerObject* ghost = target->getPlayerObject();
+			} else if (tarCreo->isPlayerCreature()) {
+				PlayerObject* ghost = tarCreo->getPlayerObject();
 
 				if (ghost == nullptr)
 					return false;
@@ -709,45 +715,52 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 					if (ghost->getFactionStanding(enemy) >= 3000)
 						return true;
 				}
+
+				if (thisFaction == 0 && isAttackableBy(tarCreo))
+					return true;
 			}
 		}
 	}
 
+	// info(true) << "InstallationObjectImp isAggressiveTo returning false";
+
 	return false;
 }
 
-bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
+bool InstallationObjectImplementation::isAttackableBy(CreatureObject* creature) {
+	if (creature == nullptr)
+		return false;
+
+	// info(true) << "InstallationObjectImp isAttackableBy called for " << getObjectID() << "  with attacker creature of " << creature->getObjectID();
+
 	if (!(getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
 		return false;
 	}
 
 	unsigned int thisFaction = getFaction();
-	unsigned int otherFaction = object->getFaction();
+	unsigned int otherFaction = creature->getFaction();
 
-	if (object->isPet()) {
-		ManagedReference<CreatureObject*> owner = object->getLinkedCreature().get();
+	if (creature->isPet()) {
+		ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
 
 		if (owner == nullptr)
 			return false;
 
 		return isAttackableBy(owner);
 
-	} else if (object->isPlayerCreature()) {
-		if (thisFaction != 0) {
-			Reference<PlayerObject*> ghost = object->getPlayerObject();
-			if (ghost != nullptr && ghost->hasCrackdownTefTowards(thisFaction)) {
-				return true;
-			}
-			if (otherFaction != 0 && otherFaction == thisFaction) {
-				return false;
-			}
-			if (object->getFactionStatus() == 0) {
-				return false;
-			}
+	} else if (creature->isPlayerCreature() && thisFaction != 0) {
+		Reference<PlayerObject*> ghost = creature->getPlayerObject();
 
-			if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFactionStatus() != FactionStatus::OVERT) {
-				return false;
-			}
+		if (ghost != nullptr && ghost->hasCrackdownTefTowards(thisFaction)) {
+			return true;
+		}
+
+		if (creature->getFactionStatus() == 0) {
+			return false;
+		}
+
+		if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && creature->getFactionStatus() != FactionStatus::OVERT) {
+			return false;
 		}
 	}
 
@@ -763,12 +776,14 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
 		String factionString = instTemplate->getFactionString();
 
 		if (!factionString.isEmpty()) {
-			if (object->isAiAgent() && !FactionManager::instance()->isEnemy(factionString, object->asAiAgent()->getFactionString()))
+			if (creature->isAiAgent() && !FactionManager::instance()->isEnemy(factionString, creature->asAiAgent()->getFactionString()))
 				return false;
-			else if (object->isPlayerCreature() && getObjectTemplate()->getFullTemplateString().contains("turret_fs_village"))
+			else if (creature->isPlayerCreature() && getObjectTemplate()->getFullTemplateString().contains("turret_fs_village"))
 				return false;
 		}
 	}
+
+	// info(true) << "InstallationObjectImp isAttackableBy returning true";
 
 	return true;
 }

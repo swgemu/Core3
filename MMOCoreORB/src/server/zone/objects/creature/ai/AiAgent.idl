@@ -712,27 +712,6 @@ class AiAgent extends CreatureObject {
 		respawnCounter = 0;
 	}
 
-	/**
-	 * Evaluates if this can be attacked by object
-	 * @pre { }
-	 * @post { }
-	 * @return returns true if object can attack this
-	 */
-	@dirty
-	public native boolean isAttackableBy(CreatureObject object);
-	@dirty
-	public native boolean isAttackableBy(TangibleObject object);
-
-	/**
-	 * Evaluates if this creature is aggresive to the object
-	 * @pre { }
-	 * @post { }
-	 * @return returns true if its aggressive
-	 */
-	@mock
-	@dirty
-	public abstract native boolean isAggressiveTo(CreatureObject object);
-
 	public void setOblivious() {
 		synchronized (targetMutex) {
 			setMovementState(OBLIVIOUS);

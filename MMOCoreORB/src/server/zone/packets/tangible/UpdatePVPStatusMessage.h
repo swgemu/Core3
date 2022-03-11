@@ -24,14 +24,12 @@ public:
 		insertInt(0x08A1C126);  //UpdatePVPStatusMessage
 		insertInt(pvpStatusBitmask);
 
-		unsigned int faction = 0;
-		if(!tano->isPlayerCreature() ||
-			tano->getFaction() == receiver->getFaction() ||
-			pvpStatusBitmask & CreatureFlag::OVERT) {
-				faction = tano->getFaction();
-		}
+		//unsigned int faction = 0;
+		//if (!tano->isPlayerCreature() || tano->getFaction() == receiver->getFaction() || pvpStatusBitmask & CreatureFlag::OVERT) {
+		//	faction = tano->getFaction();
+		//}
 
-		insertInt(faction);
+		insertInt(tano->getFaction());
 		insertLong(tano->getObjectID());
 	}
 };
