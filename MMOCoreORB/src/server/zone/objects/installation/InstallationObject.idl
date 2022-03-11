@@ -254,6 +254,9 @@ class InstallationObject extends StructureObject {
 
 	@read
 	public native float getHitChance();
+
+	@read
+	public abstract int getReceiverFlags() {
+		return CloseObjectsVector.INSTALLATIONTYPE | super.getReceiverFlags();
+	}
 }
-
-
