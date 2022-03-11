@@ -665,7 +665,7 @@ void InstallationObjectImplementation::updateStructureStatus() {
 }
 
 bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
-	if (!isAttackableBy(target) || target->isVehicleObject())
+	if (target->isVehicleObject())
 		return false;
 
 	if (target->isPlayerCreature()) {
@@ -716,38 +716,37 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 	return false;
 }
 
-bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
+bool InstallationObjectImplementation::isAttackableBy(CreatureObject* creature) {
+	// info(true) << "InstallationObjectImp isAttackableBy called for " << getObjectID() << "  with attacker creature of " << creature->getObjectID();
+
 	if (!(getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
 		return false;
 	}
 
 	unsigned int thisFaction = getFaction();
-	unsigned int otherFaction = object->getFaction();
+	unsigned int otherFaction = creature->getFaction();
 
-	if (object->isPet()) {
-		ManagedReference<CreatureObject*> owner = object->getLinkedCreature().get();
+	if (creature->isPet()) {
+		ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
 
 		if (owner == nullptr)
 			return false;
 
 		return isAttackableBy(owner);
 
-	} else if (object->isPlayerCreature()) {
-		if (thisFaction != 0) {
-			Reference<PlayerObject*> ghost = object->getPlayerObject();
-			if (ghost != nullptr && ghost->hasCrackdownTefTowards(thisFaction)) {
-				return true;
-			}
-			if (otherFaction != 0 && otherFaction == thisFaction) {
-				return false;
-			}
-			if (object->getFactionStatus() == 0) {
-				return false;
-			}
+	} else if (creature->isPlayerCreature() && thisFaction != 0) {
+		Reference<PlayerObject*> ghost = creature->getPlayerObject();
 
-			if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFactionStatus() != FactionStatus::OVERT) {
-				return false;
-			}
+		if (ghost != nullptr && ghost->hasCrackdownTefTowards(thisFaction)) {
+			return true;
+		}
+
+		if (creature->getFactionStatus() == 0) {
+			return false;
+		}
+
+		if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && creature->getFactionStatus() != FactionStatus::OVERT) {
+			return false;
 		}
 	}
 
@@ -763,12 +762,14 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
 		String factionString = instTemplate->getFactionString();
 
 		if (!factionString.isEmpty()) {
-			if (object->isAiAgent() && !FactionManager::instance()->isEnemy(factionString, object->asAiAgent()->getFactionString()))
+			if (creature->isAiAgent() && !FactionManager::instance()->isEnemy(factionString, creature->asAiAgent()->getFactionString()))
 				return false;
-			else if (object->isPlayerCreature() && getObjectTemplate()->getFullTemplateString().contains("turret_fs_village"))
+			else if (creature->isPlayerCreature() && getObjectTemplate()->getFullTemplateString().contains("turret_fs_village"))
 				return false;
 		}
 	}
+
+	// info(true) << "InstallationObjectImp isAttackableBy returning true";
 
 	return true;
 }

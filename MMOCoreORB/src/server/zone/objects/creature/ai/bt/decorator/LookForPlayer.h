@@ -65,7 +65,7 @@ public:
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
-		if (target == nullptr || target->isDead() || target->isFeigningDeath() || target->isInvulnerable() || target->isInvisible())
+		if (target == nullptr || target->isDead() || target->isFeigningDeath() || target->isInvisible())
 			return true;
 
 		SceneObject* agentParent = agent->getParent().get();
