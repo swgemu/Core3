@@ -81,7 +81,7 @@ public:
 		if (target == nullptr || target == agent || target->getPvpStatusBitmask() == CreatureFlag::NONE)
 			return true;
 
-		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvulnerable() || target->isInvisible() || !target->isAttackableBy(agent) || !agent->isAttackableBy(target))
+		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvisible() || !target->isAttackableBy(agent))
 			return true;
 
 		if (target->isVehicleObject() && !target->hasRidingCreature())

@@ -733,6 +733,10 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public abstract native boolean isAggressiveTo(CreatureObject object);
 
+	@mock
+	@dirty
+	public abstract native boolean isAggressive(CreatureObject object);
+
 	public void setOblivious() {
 		synchronized (targetMutex) {
 			setMovementState(OBLIVIOUS);
@@ -1509,7 +1513,7 @@ class AiAgent extends CreatureObject {
 	public int getMobType() {
 		if (npcTemplate.get() == null)
 			return 0;
-		
+
 		return npcTemplate.get().getMobType();
 	}
 

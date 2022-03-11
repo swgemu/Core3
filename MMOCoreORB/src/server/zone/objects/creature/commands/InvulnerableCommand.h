@@ -72,6 +72,8 @@ public:
 			}
 		}
 
+		player->broadcastPvpStatusBitmask();
+
 		return SUCCESS;
 	}
 
