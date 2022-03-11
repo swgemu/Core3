@@ -1130,12 +1130,12 @@ bool AiAgentImplementation::validateTarget(SceneObject* target) {
 	if (target->isCreatureObject()) {
 		CreatureObject* targetCreO = target->asCreatureObject();
 
-		if (targetCreO == nullptr || targetCreO->isInvulnerable() || targetCreO->isInvisible()) {
+		if (targetCreO == nullptr || targetCreO->isInvisible()) {
 			// info("validateTarget failed CREO checks", true);
 			return false;
 		}
 
-		if (!targetCreO->isAttackableBy(asAiAgent()) || targetCreO->isDead() || targetCreO->isIncapacitated()) {
+		if (!targetCreO->isAttackableBy(asAiAgent())) {
 			return false;
 		}
 	} else if (target->isTangibleObject()) {
@@ -3431,76 +3431,269 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 }
 
 bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
-	if (target->isIncapacitated() || !isAttackableBy(target) || !target->isAttackableBy(asAiAgent()) || target->isVehicleObject())
+	if (target == nullptr || asAiAgent() == target)
 		return false;
 
-	if (getParentID() != 0 && getParentID() != target->getParentID()) {
+	// info(true) << "AiAgent isAggressiveTo called for ID: " << getObjectID() << " towards creature: " << target->getObjectID();
+
+	if (isAggressive(target)) {
+		// info(true) << "AiAgent isAggressiveTo check returned true";
+		return true;
+	}
+
+	// info(true) << "AiAgent isAggressiveTo check returned FALSE";
+	return false;
+}
+
+bool AiAgentImplementation::isAggressive(CreatureObject* target) {
+	if (target == nullptr)
+		return false;
+
+	bool targetIsPlayer = target->isPlayerCreature();
+	bool targetIsAgent = target->isAiAgent();
+
+	// Get factions
+	uint32 thisFaction = getFaction();
+	uint32 targetFaction = target->getFaction();
+
+	//GCW Faction Checks -- Both the agent and attcking CreO have GCW Factions and they are different
+	if (thisFaction != 0 && targetFaction != 0 && thisFaction != targetFaction) {
+		// Target is an AiAgent
+		if (targetIsAgent) {
+			return true;
+		}
+
+		// this is the same thing, but ensures that if the target is a player, that they aren't on leave
+		if (targetIsPlayer && target->getFactionStatus() != FactionStatus::ONLEAVE) {
+			return true;
+		}
+	}
+
+	AiAgent* tarAgent = nullptr;
+
+	if (targetIsAgent)
+		tarAgent = target->asAiAgent();
+
+	if (isCarnivore() && targetIsAgent) {
+		if (tarAgent != nullptr && tarAgent->isHerbivore())
+			return true;
+	}
+
+	// Get this agents faction string agents faction string (which could include imp/reb)
+	String factionString = getFactionString();
+
+	// info(true) << " faction string == " << factionString;
+
+	if (!factionString.isEmpty()) {
+		if (tarAgent != nullptr) {
+			// AI can check the enemy strings directly vs other AI (since they don't have a standing)
+			if (FactionManager::instance()->isEnemy(factionString, tarAgent->getFactionString())) {
+				return true;
+			}
+		}
+
+		if (targetIsPlayer) {
+			PlayerObject* tarGhost = target->getPlayerObject();
+
+			if (tarGhost == nullptr) {
+				return false;
+			}
+
+			/* for players, we are only an enemy if the standing is less than -3000, but we are forced to non-aggressive
+			*  status if the standing is over 3000, otherwise use the pvpStatusBitmask to determine aggressiveness
+			*/
+			if (!(getOptionsBitmask() & CreatureFlag::IGNORE_FACTION_STANDING)) {
+				int minFactionStanding = -3000;
+				float targetsStanding = tarGhost->getFactionStanding(factionString);
+
+				// info(true) << " faction standing: " << targetsStanding;
+
+				if (targetsStanding <= minFactionStanding) {
+					return true;
+				} else if (targetsStanding >= 3000)
+					return false;
+			}
+		}
+	}
+
+	// Agent is not aggressive due to faction or standing, remaining aggressive check based on pvpStatusBitmask
+	return pvpStatusBitmask & CreatureFlag::AGGRESSIVE;
+}
+
+bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
+	/*
+	* This function should return true if this creature is attackable by the passed Tangible Object
+	*/
+
+	if (object == nullptr || asTangibleObject() == object)
+		return false;
+
+	// info(true) << "AiAgent::isAttackableBy TangibleObject Check -- Object ID = " << getObjectID() << " by attacking TanO ID = " << object->getObjectID();
+
+	// Initial check is this creature has an attackable pvpStatusBitmask
+	if (!(pvpStatusBitmask & CreatureFlag::ATTACKABLE) || optionsBitmask & OptionBitmask::INVULNERABLE)
+		return false;
+
+	if (isPet()) {
+		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && object->isNeutral())
+			return false;
+
+		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
+
+		if (owner == nullptr)
+			return false;
+
+		return owner->isAttackableBy(object, true);
+	}
+
+	if (getMovementState() == AiAgent::LEASHING)
+		return false;
+
+	// Get factions
+	uint32 thisFaction = getFaction();
+	uint32 tanoFaction = object->getFaction();
+
+	if (thisFaction != 0 && tanoFaction != 0) {
+		if (thisFaction == tanoFaction) {
+			return false;
+		}
+	}
+
+	// info(true) << "AiAgent::isAttackableBy TangibleObject Check returned true";
+
+	return true;
+}
+
+bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
+	if (creature == nullptr)
+		return false;
+
+	// info(true) << "AiAgent::isAttackableBy Creature Check -- Object ID = " << getObjectID() << " by attacking Creature ID = " << creature->getObjectID();
+
+	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & CreatureFlag::ATTACKABLE))
+		return false;
+
+	if (movementState == AiAgent::LEASHING)
+		return false;
+
+	// Handle Pets - Check against owner if they are the last commander
+	if (creature->isPet()) {
+		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (controlDevice != nullptr)  {
+			if (controlDevice->getPetType() == PetManager::FACTIONPET && isNeutral())
+				return false;
+
+			ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
+
+			if (owner == nullptr)
+				return false;
+
+			ManagedReference<SceneObject*> lastCommander = controlDevice->getLastCommander().get();
+
+			if (lastCommander != nullptr && lastCommander != owner && lastCommander->isCreatureObject()) {
+				return isAttackableBy(lastCommander->asCreatureObject());
+			}
+
+			return isAttackableBy(owner);
+		}
+	}
+
+	// Check against Vehicle Object Owner
+	if (creature->isVehicleObject()) {
+		ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
+
+		if (owner == nullptr)
+			return false;
+
+		return isAttackableBy(owner);
+	}
+
+	// Must have permission to walk into cell in order to attack
+	if (getParentID() != 0 && getParentID() != creature->getParentID()) {
 		Reference<CellObject*> curCell = getParent().get().castTo<CellObject*>();
 
 		if (curCell != nullptr) {
 			auto perms = curCell->getContainerPermissions();
 
 			if (!perms->hasInheritPermissionsFromParent()) {
-				if (!curCell->checkContainerPermission(target, ContainerPermissions::WALKIN)) {
+				if (!curCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
 					return false;
 				}
 			}
 		}
 	}
 
-	// grab the GCW faction
-	uint32 targetFaction = target->getFaction();
-	PlayerObject* ghost = target->getPlayerObject();
+	bool creatureIsAgent = creature->isAiAgent();
+	bool creatureIsPlayer = creature->isPlayerCreature();
 
-	if (ghost != nullptr && ghost->hasCrackdownTefTowards(getFaction())) {
-		return true;
-	}
+	// Get factions
+	uint32 thisFaction = getFaction();
+	uint32 creatureFaction = creature->getFaction();
 
-	// check the GCW factions if both entities have one
-	if (getFaction() != 0 && targetFaction != 0) {
+	// Faction Checks
+	if (thisFaction != 0) {
+		if (creatureIsPlayer) {
+			Reference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		// this is basically the isEnemy check, but with the GCW faction (they should both return the same thing)
-		if (ghost == nullptr && (targetFaction != getFaction()))
-			return true;
-		// this is the same thing, but ensures that if the target is a player, that they aren't on leave
-		else if (ghost != nullptr && (targetFaction != getFaction()) && target->getFactionStatus() != FactionStatus::ONLEAVE)
-			return true;
-	}
-
-	// now grab the generic faction (which could include imp/reb)
-	String factionString = getFactionString();
-
-	if (!factionString.isEmpty()) {
-		// for players, we are only an enemy if the standing is less than -3000, but we are
-		// forced to non-aggressive status if the standing is over 3000, otherwise use the
-		// pvpStatusBitmask to determine aggressiveness
-		if (target->isPlayerCreature() && ghost != nullptr && !(getOptionsBitmask() & CreatureFlag::IGNORE_FACTION_STANDING)) {
-			float targetsStanding = ghost->getFactionStanding(factionString);
-
-			if (targetsStanding <= -3000)
+			if (ghost != nullptr && ghost->hasCrackdownTefTowards(thisFaction)) {
 				return true;
-			else if (targetsStanding >= 3000)
-				return false;
-
-		// AI can check the enemy strings directly vs other AI (since they don't have a
-		// standing)
-		} else if (target->isAiAgent()) {
-			AiAgent* targetAi = target->asAiAgent();
-
-			if (targetAi != nullptr && FactionManager::instance()->isEnemy(factionString, targetAi->getFactionString()))
-				return true;
+			}
 		}
+
+		// Attacking creature has no faction
+		if (creatureFaction == 0)
+			return false;
+
+		// This faction and attacking creature are same faction
+		if (thisFaction == creatureFaction)
+			return false;
+
+		// Attack creature is not an AiAgent && their faction status is OnLeave
+		if (creatureIsPlayer && creature->getFactionStatus() < FactionStatus::COVERT)
+			return false;
 	}
 
-	if (isCarnivore() && target->isAiAgent()) {
-		AiAgent* targetAi = target->asAiAgent();
+	// Ai vs Ai Checks
+	if (creatureIsAgent) {
+		if ((getCreatureBitmask() & CreatureFlag::NOAIAGGRO) && !creature->isPet())
+			return false;
 
-		if (targetAi != nullptr && targetAi->isHerbivore())
-			return true;
+		// Faction check stricly for AI vs AI. Faction AI attamepting to attack non-faction AI
+		if (thisFaction == 0 && creatureFaction > 0)
+			return false;
+
+		AiAgent* creatureAgent = creature->asAiAgent();
+
+		if (creatureAgent == nullptr)
+			return false;
+
+		const CreatureTemplate* thisTemplate = getCreatureTemplate();
+		const CreatureTemplate* creoTemplate = creatureAgent->getCreatureTemplate();
+
+		if ((thisTemplate != nullptr && creoTemplate != nullptr) && (thisTemplate->getTemplateName() == creoTemplate->getTemplateName()))
+			return false;
+
+		uint32 thisSocialGroup = getSocialGroup().toLowerCase().hashCode();
+		uint32 targetSocialGroup = creatureAgent->getSocialGroup().toLowerCase().hashCode();
+
+		// AI from same social group
+		if ((targetSocialGroup != 0) && (targetSocialGroup != STRING_HASHCODE("self")) && (thisSocialGroup == targetSocialGroup))
+			return false;
+
+		uint32 thisLairTemplateCRC = getLairTemplateCRC();
+		uint32 targetLairTemplateCRC = creatureAgent->getLairTemplateCRC();
+
+		// AI from the same lair type
+		if ((targetLairTemplateCRC != 0) && (targetLairTemplateCRC == thisLairTemplateCRC))
+			return false;
 	}
 
-	// if we've made it this far then the target is a valid target, but we will only be aggressive based on the pvpStatusBitmask
-	return getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE;
+	// info(true) << "AiAgent::isAttackableBy Creature Check returning true";
+
+	return true;
 }
 
 bool AiAgentImplementation::hasLoot(){
@@ -3580,125 +3773,6 @@ bool AiAgentImplementation::hasSpecialAttack(int num) {
 
 	if (cmd.isEmpty()) {
 		return false;
-	}
-
-	return true;
-}
-
-bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
-	if (object == nullptr)
-		return false;
-
-	if (object->isCreatureObject())
-		return isAttackableBy(object->asCreatureObject());
-
-	if (isDead() || isIncapacitated() || getMovementState() == AiAgent::LEASHING)
-		return false;
-
-	if (isPet()) {
-		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
-
-		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && object->isNeutral())
-			return false;
-
-		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
-
-		if (owner == nullptr)
-			return false;
-
-		return owner->isAttackableBy(object, true);
-	}
-
-	if (pvpStatusBitmask == 0)
-		return false;
-
-	unsigned int targetFaction = object->getFaction();
-
-	if (targetFaction != 0 && getFaction() != 0) {
-		if (targetFaction == getFaction()) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
-	if (object == nullptr || object == asAiAgent())
-		return false;
-
-	if (isDead() || isIncapacitated() || getMovementState() == AiAgent::LEASHING)
-		return false;
-
-	if (isPet()) {
-		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
-		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && object->isNeutral()) {
-			return false;
-		}
-
-		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
-
-		if (owner == nullptr) {
-			return false;
-		}
-
-		return owner->isAttackableBy(object, true);
-	}
-
-	if (object->isPet() || object->isVehicleObject()) {
-		ManagedReference<PetControlDevice*> pcd = object->getControlDevice().get().castTo<PetControlDevice*>();
-
-		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral())
-			return false;
-
-		ManagedReference<CreatureObject*> owner = object->getLinkedCreature().get();
-
-		if (owner == nullptr)
-			return false;
-
-		return isAttackableBy(owner);
-	}
-
-	if (pvpStatusBitmask == 0)
-		return false;
-
-	if (object->isPlayerCreature()) {
-		Reference<PlayerObject*> ghost = object->getPlayerObject();
-		if (ghost != nullptr && ghost->hasCrackdownTefTowards(getFaction())) {
-			return true;
-		}
-	}
-
-	unsigned int targetFaction = object->getFaction();
-
-	if (getFaction() != 0) {
-		if (targetFaction == getFaction())
-			return false;
-
-		if (targetFaction == 0 || (object->isPlayerCreature() && object->getFactionStatus() == FactionStatus::ONLEAVE))
-			return false;
-	}
-
-	if (object->isAiAgent()) {
-		if ((creatureBitmask & CreatureFlag::NOAIAGGRO) && !object->isPet())
-			return false;
-
-		AiAgent* ai = object->asAiAgent();
-
-		const CreatureTemplate* targetTemplate = ai->getCreatureTemplate();
-
-		if ((npcTemplate.get() != nullptr && targetTemplate != nullptr) && (npcTemplate->getTemplateName() == targetTemplate->getTemplateName()))
-			return false;
-
-		String targetSocialGroup = ai->getSocialGroup().toLowerCase();
-
-		if (!targetSocialGroup.isEmpty() && targetSocialGroup != "self" && targetSocialGroup == getSocialGroup().toLowerCase())
-			return false;
-
-		uint32 targetLairTemplateCRC = ai->getLairTemplateCRC();
-
-		if (targetLairTemplateCRC != 0 && targetLairTemplateCRC == getLairTemplateCRC())
-			return false;
 	}
 
 	return true;
