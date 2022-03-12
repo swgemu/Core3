@@ -1291,12 +1291,14 @@ class AiAgent extends CreatureObject {
 
 	@preLocked
 	public void addCreatureFlag(unsigned int flag) {
-		creatureBitmask = creatureBitmask | flag;
+		if (!(creatureBitmask & flag))
+			creatureBitmask = creatureBitmask | flag;
 	}
 
 	@preLocked
 	public void removeCreatureFlag(unsigned int flag) {
-		creatureBitmask = creatureBitmask & ~flag;
+		if (creatureBitmask & flag)
+			creatureBitmask = creatureBitmask - flag;
 	}
 
 	@local
