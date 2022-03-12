@@ -1290,14 +1290,10 @@ class AiAgent extends CreatureObject {
 	public native void clearCreatureBit(unsigned int option);
 
 	@preLocked
-	public void addCreatureFlag(unsigned int flag) {
-		creatureBitmask = creatureBitmask | flag;
-	}
+	public native void addCreatureFlag(unsigned int flag);
 
 	@preLocked
-	public void removeCreatureFlag(unsigned int flag) {
-		creatureBitmask = creatureBitmask & ~flag;
-	}
+	public native void removeCreatureFlag(unsigned int flag);
 
 	@local
 	@dirty

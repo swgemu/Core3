@@ -3858,3 +3858,13 @@ void AiAgentImplementation::handleException(const Exception& ex, const String& c
 	auto trace = ex.getStackTrace();
 	error() << msg << endl << trace.toStringData() << endl << *this;
 }
+
+void AiAgentImplementation::addCreatureFlag(unsigned int flag) {
+	if (!(creatureBitmask & flag))
+		creatureBitmask |= flag;
+}
+
+void AiAgentImplementation::removeCreatureFlag(unsigned int flag) {
+	if (creatureBitmask & flag)
+		creatureBitmask &= ~flag;
+}

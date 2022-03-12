@@ -27,14 +27,22 @@ int ContrabandScanSessionImplementation::initializeSession() {
 	ManagedReference<AiAgent*> scanner = weakScanner.get();
 	ManagedReference<CreatureObject*> player = weakPlayer.get();
 
+	if (scanner == nullptr || player == nullptr)
+		return false;
+
 	if (!scanPrerequisitesMet(scanner, player)) {
 		return false;
 	} else {
 		player->info("Contraband scan started by scanner " + scanner->getDisplayedName() + " (" + String::valueOf(scanner->getObjectID()) + ") at " + scanner->getWorldPosition().toString());
 	}
 
-	adjustReinforcementStrength(scanner);
+	scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
 
+	if (player->getActiveSession(SessionFacadeType::CONTRABANDSCAN) != nullptr) {
+		return false;
+	}
+
+	adjustReinforcementStrength(scanner);
 	calculateSmugglingSuccess(player);
 
 	if (contrabandScanTask == nullptr) {
@@ -54,11 +62,6 @@ int ContrabandScanSessionImplementation::initializeSession() {
 		scannerFaction = currentWinningFaction = Factions::FACTIONIMPERIAL;
 	}
 
-	scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
-
-	if (player->getActiveSession(SessionFacadeType::CONTRABANDSCAN) != nullptr) {
-		player->dropActiveSession(SessionFacadeType::CONTRABANDSCAN);
-	}
 	player->addActiveSession(SessionFacadeType::CONTRABANDSCAN, _this.getReferenceUnsafeStaticCast());
 
 	if (!(scanner->getCreatureBitmask() & CreatureFlag::FOLLOW))
@@ -67,7 +70,7 @@ int ContrabandScanSessionImplementation::initializeSession() {
 	Locker clocker(player, scanner);
 
 	scanner->setFollowObject(player);
-	scanner->setMovementState(AiAgent::FOLLOWING);
+	scanner->setMovementState(AiAgent::CRACKDOWN_SCANNING);
 
 	return true;
 }
@@ -75,6 +78,10 @@ int ContrabandScanSessionImplementation::initializeSession() {
 int ContrabandScanSessionImplementation::cancelSession() {
 	ManagedReference<CreatureObject*> player = weakPlayer.get();
 	ManagedReference<AiAgent*> scanner = weakScanner.get();
+
+	if (contrabandScanTask != nullptr) {
+		contrabandScanTask->cancel();
+	}
 
 	if (player != nullptr) {
 		Locker locker(player);
@@ -89,10 +96,6 @@ int ContrabandScanSessionImplementation::cancelSession() {
 		}
 
 		player->dropActiveSession(SessionFacadeType::CONTRABANDSCAN);
-	}
-
-	if (contrabandScanTask != nullptr) {
-		contrabandScanTask->cancel();
 	}
 
 	return clearSession();
@@ -433,6 +436,9 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			sendSystemMessage(scanner, player, "discovered_imperial", "discovered_rebel");
 			scanner->doAnimation("point_accusingly");
 
+			scanner->removeCreatureFlag(CreatureFlag::FOLLOW);
+			scanner->setMovementState(AiAgent::FOLLOWING);
+
 			if (player->getFactionStatus() != FactionStatus::OVERT) {
 				player->setFactionStatus(FactionStatus::COVERT);
 			}
@@ -581,6 +587,9 @@ void ContrabandScanSessionImplementation::jediDetect(Zone* zone, AiAgent* scanne
 
 			String landingMessage = getFactionStringId(player, "containment_team_jedi_imperial", "containment_team_jedi_rebel");
 			callInLambdaShuttle(scanner, player, JEDIREINFORCEMENTDIFFICULTY, landingMessage);
+
+			scanner->removeCreatureFlag(CreatureFlag::FOLLOW);
+			scanner->setMovementState(AiAgent::FOLLOWING);
 
 			addCrackdownTef(player);
 			enforcedScan = false;

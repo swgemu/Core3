@@ -544,7 +544,7 @@ template<> bool CheckCrackdownScanner::check(AiAgent* agent) const {
 }
 
 template<> bool CheckCrackdownFollowTarget::check(AiAgent* agent) const {
-	if (~agent->getCreatureBitmask() & CreatureFlag::FOLLOW)
+	if (!(agent->getCreatureBitmask() & CreatureFlag::FOLLOW))
 		return false;
 
 	ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();

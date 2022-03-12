@@ -102,7 +102,6 @@ crackdownScanDefault = {
 	{id="2557331632",	name="If",	pid="2120293750"},
 	{id="3227701225",	name="CheckProspectInRange",	pid="2557331632",	args={condition=25.0}},
 	{id="1840897137",	name="ContrabandScan",	pid="2120293750"},
-	{id="1892817699",	name="SetMovementState",	pid="2120293750",	args={state=CRACKDOWN_SCANNING}},
 	{id="1246036558",	name="AlwaysFail",	pid="688534916"},
 	{id="1955645295",	name="EraseBlackboard",	pid="1246036558",	args={param="targetProspect"}}}
 addAiTemplate("crackdownScanDefault", crackdownScanDefault)
