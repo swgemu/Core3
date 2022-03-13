@@ -596,6 +596,42 @@ int PlayerManagerImplementation::getPlayerQuestID(const String& name) {
 	return -1;
 }
 
+QuestTasks* PlayerManagerImplementation::getQuestTasks(const unsigned int questCrc) {
+	Locker locker(questCrcTable);
+
+	if (!questCrcTable.contains(questCrc)) {
+		error(true) << "QuestTasks with CRC " << questCrc << " not found.";
+		return nullptr;
+	} else {
+		Locker clocker(questTasksCache, questCrcTable)
+		if (!questTasksCache.contains(questCrc)) {
+			String questPath = "datatables/questtask/" + questCrcTable.get(questCrc) + ".iff";
+
+			TemplateManager* templateManager = TemplateManager::instance();
+
+			IffStream* iffStream = templateManager->openIffFile(questPath);
+
+			if (iffStream == nullptr) {
+				error(true) << "QuestTask at " << questPath << " cannot be found.";
+				return nullptr;
+			}
+
+			DataTableIff dtable;
+			dtable.readObject(iffStream);
+
+			delete iffStream;
+
+			QuestTasks* questTasks = new QuestTasks();
+			questTasks->parseDataTable(dtable);
+
+			questTasksCache.put(questCrc, questTasks);
+		}
+
+		Reference<QuestTasks*> questTasks = questTasksCache.get(questCrc);
+		return questTasks;
+	}
+}
+
 String PlayerManagerImplementation::getPlayerQuestParent(int questID) {
 	QuestInfo* quest = questInfo.get(questID);
 
@@ -6060,7 +6096,6 @@ VectorMap<String, int> PlayerManagerImplementation::generateAdminList() {
 	Locker locker(&guard);
 
 	VectorMap<String, int> players;
-
 	HashTable<String, uint64> names = nameMap->getNames();
 	HashTableIterator<String, uint64> iter = names.iterator();
 
