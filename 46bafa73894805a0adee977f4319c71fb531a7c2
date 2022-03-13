@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b700602f_a6e6ad2d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/conversations/c3tcConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-13T06:44:12Z",
+      "side": 1,
+      "message": "Please us a different name in order to not overwrite the argument with the same name.",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6aba871_600ce01c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/conversations/selanConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-13T06:44:12Z",
+      "side": 1,
+      "message": "This is not needed.",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b95cce02_9ed6ee71",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/conversations/valanceConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-13T06:44:12Z",
+      "side": 1,
+      "message": "not needed.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 62
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e50d3f_a1946233",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/darndroid1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-13T06:44:12Z",
+      "side": 1,
+      "message": "The quest will complete even if the player inventory is full. Which will make the player not being able to receive the reward.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 105
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f3df83c_3f34450e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/darndroid1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-13T06:44:12Z",
+      "side": 1,
+      "message": "There is a duplicated method with the same name at the end of this file.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f79c0f1_528704b8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/darndroid1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-13T06:44:12Z",
+      "side": 1,
+      "message": "just combine with the method above instead.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 3
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50d830d_fb63269e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/darndroid1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-13T06:44:12Z",
+      "side": 1,
+      "message": "Copy paste error...",
+      "range": {
+        "startLine": 255,
+        "startChar": 3,
+        "endLine": 255,
+        "endChar": 13
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
