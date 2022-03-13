@@ -38,6 +38,7 @@ include server.zone.managers.collision.IntersectionResults;
 include server.zone.managers.player.VeteranRewardList;
 include server.zone.managers.player.JukeboxSong;
 include server.zone.managers.player.QuestInfo;
+include server.zone.managers.player.QuestTasks;
 include server.zone.objects.player.badges.Badge;
 include system.util.Vector;
 include system.lang.ref.Reference;
@@ -112,9 +113,15 @@ class PlayerManager extends Observer implements Logger {
 
 	@dereferenced
 	protected transient Vector<Reference<QuestInfo> > questInfo;
-	
+
 	@dereferenced
 	protected transient VectorMap<unsigned int, string> questCrcTable;
+
+	@dereferenced
+	private transient ReadWriteLock questTaskMutex;
+
+	@dereferenced
+	protected transient VectorMap<unsigned int, Reference<QuestTasks> > questTasksCache;
 
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
@@ -202,7 +209,7 @@ class PlayerManager extends Observer implements Logger {
 	public native SortedVector<SceneObject> getInsurableItems(CreatureObject player, boolean onlyInsurable = true);
 
 	/**
-	* Returns a collection of items, in the players inventory, whose GameObjectType is 
+	* Returns a collection of items, in the players inventory, whose GameObjectType is
 	* indicated in the given mask
 	* @param player The player for which to find the items.
 	* @param mask A bitmask representing the GambeObjectTypes to search for
@@ -481,6 +488,9 @@ class PlayerManager extends Observer implements Logger {
 	public native QuestInfo getQuestInfo(int questID) {
 		return questInfo.get(questID);
 	}
+
+	@local
+	public native QuestTasks getQuestTasks(final unsigned int questCrc);
 
 	/**
 	 * Sends a confirmation box to the student asking if they want to learn the skill.
