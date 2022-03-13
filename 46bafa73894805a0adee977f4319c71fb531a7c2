@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30866912_89ddaa4c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/conversations/c3tcConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-13T18:40:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b700602f_a6e6ad2d",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6aba871_600ce01c",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/conversations/selanConvoHandler.lua",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94f18a95_2dd9fed6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/conversations/selanConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-13T18:40:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c6aba871_600ce01c",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "92d73d75_1c50e60a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/conversations/valanceConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-13T18:40:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b95cce02_9ed6ee71",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 62
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9e50d3f_a1946233",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/darndroid1.lua",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9bf5623a_22adb2e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/darndroid1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-13T18:40:06Z",
+      "side": 1,
+      "message": "This NPC doesn\u0027t have a conv string for if the inventory is full... so I will borrow one from the crafting contractor.",
+      "parentUuid": "f9e50d3f_a1946233",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 105
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f3df83c_3f34450e",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/darndroid1.lua",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4860dbd_c3c66055",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/darndroid/darndroid1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5314
+      },
+      "writtenOn": "2022-03-13T18:40:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2f3df83c_3f34450e",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "46bafa73894805a0adee977f4319c71fb531a7c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
