@@ -1,7 +1,5 @@
 valance_serth_convo_handler = conv_handler:new {}
 
-local questCrc = 3408891851 --CRC of "quest/c_darndroid1"
-
 function valance_serth_convo_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	if (pPlayer == nil) then
 		return
@@ -19,9 +17,20 @@ function valance_serth_convo_handler:getInitialScreen(pPlayer, pNpc, pConvTempla
         return
     end
 
-	if (PlayerObject(pGhost):isJournalQuestTaskActive(questCrc, 5) == true and
-		PlayerObject(pGhost):isJournalQuestActive(questCrc) == true) then
+	if (DarnDroid2:isPlayerOnQuest1(pGhost)) then
 		return convoTemplate:getScreen("first_screen")
+	elseif (DarnDroid2:isPlayerReadyForQuest2(pGhost)) then
+		return convoTemplate:getScreen("need_help")
+	elseif (DarnDroid2:isPlayerOnQuest2Part1(pGhost)) then
+		return convoTemplate:getScreen("on_part1")
+	elseif (DarnDroid2:isPlayerDoneQuest2Part2(pGhost)) then
+		return convoTemplate:getScreen("completed_part2")
+	elseif (DarnDroid2:isPlayerFailedSpaceMission(pGhost)) then
+		return convoTemplate:getScreen("failed_space")
+	elseif (DarnDroid2:isPlayerDoneSpaceMission(pGhost)) then
+		return convoTemplate:getScreen("completed_space")
+	elseif (DarnDroid2:isPlayerCompletedAll(pGhost)) then
+		return convoTemplate:getScreen("completed_all")
 	else
 		return convoTemplate:getScreen("not_ready")
 	end
@@ -46,6 +55,12 @@ function valance_serth_convo_handler:runScreenHandlers(pConvTemplate, pPlayer, p
 		if (DarnDroid1:completeQuest(pPlayer) == false) then
 			return convoTemplate:getScreen("inventory_full")
 		end
+	elseif (screenID == "ill_help" or screenID == "will_help") then
+		DarnDroid2:giveQuest(pPlayer)
+	elseif (screenID == "tell_more") then
+		DarnDroid2:giveSpaceMission(pPlayer)
+	elseif (screenID == "do_that") then
+		DarnDroid2:giveMemWipeTask(pPlayer)
 	end
 
 	return pConvScreen
