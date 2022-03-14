@@ -345,6 +345,7 @@ includeFile("tasks/darndroid/conversations/c3tcConvoHandler.lua")
 includeFile("tasks/darndroid/conversations/selanConvoHandler.lua")
 includeFile("tasks/darndroid/conversations/valanceConvoHandler.lua")
 includeFile("tasks/darndroid/darndroid1.lua")
+includeFile("tasks/darndroid/darndroid2.lua")
 
 -- Task/Quest
 includeFile("tasks/corellia/blk_sun_tasks.lua")
