@@ -50,6 +50,8 @@ function c3tc_convo_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, sele
 		end
         clonedConversation:addOption("@conversation/c_ddroid_droid:s_140","no_use") --There's nothing that I can tell you that would be of any use right now.
 		clonedConversation:addOption("@conversation/c_ddroid_droid:s_136","maybe_no_tell") --Maybe.  I don't think I want to tell you though.
+	elseif(screenID == "no_thanks" or screenID == "run_this") then
+		DarnDroid2:completeQuest(pPlayer)
 	end
 
 	return pClonedConvScreen
