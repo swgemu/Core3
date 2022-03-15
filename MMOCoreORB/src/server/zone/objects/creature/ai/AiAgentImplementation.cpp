@@ -1609,15 +1609,14 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	clearRunningChain();
 	clearCombatState(true);
 
+	setFollowObject(nullptr);
+	storeFollowObject();
+
 	setPosture(CreaturePosture::UPRIGHT, false);
 
 	initializePosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
 
 	CellObject* cell = homeLocation.getCell();
-
-	setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
-	nextStepPosition.setPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
-	nextStepPosition.setCell(cell);
 
 	Locker zoneLocker(zone);
 
@@ -1625,6 +1624,9 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 		cell->transferObject(asAiAgent(), -1);
 	else
 		zone->transferObject(asAiAgent(), -1, true);
+
+	setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), cell);
+	currentFoundPath = nullptr;
 
 	respawnCounter++;
 
@@ -2031,7 +2033,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (currentParent != nullptr && !currentParent->isCellObject())
 			currentParent = nullptr;
 
-		if ((movementState == AiAgent::FOLLOWING || movementState == AiAgent::PATHING_HOME || movementState == AiAgent::NOTIFY_ALLY || movementState == AiAgent::MOVING_TO_HEAL)
+		if ((movementState == AiAgent::FOLLOWING || movementState == AiAgent::PATHING_HOME || movementState == AiAgent::NOTIFY_ALLY || movementState == AiAgent::MOVING_TO_HEAL || movementState == AiAgent::WATCHING)
 			&& endMovementCell == nullptr && currentParent == nullptr && currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 4 * 4) {
 
 			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(currentPoint.getCoordinates(), endMovementPosition.getCoordinates(), getZoneUnsafe()));
