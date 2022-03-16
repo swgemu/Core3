@@ -667,7 +667,7 @@ void InstallationObjectImplementation::updateStructureStatus() {
 bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 	// info(true) << "InstallationObjectImp isAggressiveTo check called";
 
-	if (target == nullptr || target->isVehicleObject())
+	if (target == nullptr || target->isVehicleObject() || target->isInvisible())
 		return false;
 
 	bool targetIsPlayer = target->isPlayerCreature();

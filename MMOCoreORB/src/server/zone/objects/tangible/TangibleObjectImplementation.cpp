@@ -1158,9 +1158,6 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* creature) {
 	if (!(pvpStatusBitmask & CreatureFlag::ATTACKABLE))
 		return false;
 
-	if (creature->isInvisible() || creature->isInvulnerable())
-		return false;
-
 	// Attacking CreO is AiAgent
 	if (creature->isAiAgent()) {
 		AiAgent* ai = creature->asAiAgent();

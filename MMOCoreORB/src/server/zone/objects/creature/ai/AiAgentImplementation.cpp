@@ -3449,6 +3449,9 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 	if (target == nullptr)
 		return false;
 
+	if (target->isInvisible())
+		return false;
+
 	bool targetIsPlayer = target->isPlayerCreature();
 	bool targetIsAgent = target->isAiAgent();
 

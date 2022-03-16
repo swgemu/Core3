@@ -3151,6 +3151,9 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* tarCreo) {
 
 	// info(true) << "CreatureObjectImp isAggressiveTo called for ID: " << getObjectID() << " towards creature: " << tarCreo->getObjectID();
 
+	if (tarCreo->isInvisible())
+		return false;
+
 	if (isPlayerCreature()) {
 		PlayerObject* ghost = getPlayerObject();
 
@@ -3219,13 +3222,13 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 
 	// info(true) << "CreatureObjectImplementation::isAttackableBy TangibleObject Check -- Object ID = " << getObjectID() << " by attacking TanO ID = " << object->getObjectID();
 
+	if (isInvisible() || isEventPerk())
+		return false;
+
 	if (isPlayerCreature()) {
 		PlayerObject* ghost = getPlayerObject();
 
 		if (ghost == nullptr)
-			return false;
-
-		if (isInvisible())
 			return false;
 
 		if (!bypassDeadCheck && (isDead() || (isIncapacitated() && !isFeigningDeath())))
@@ -3275,7 +3278,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 	if (creature == nullptr || creature == asCreatureObject())
 		return false;
 
-	if (isInvisible() || creature->isInvisible() || isEventPerk())
+	if (isInvisible() || isEventPerk())
 		return false;
 
 	// info(true) << "CreatureObjectImplementation::isAttackableBy Creature Check -- Object ID = " << getObjectID() << " by attacking Creature ID = " << creature->getObjectID();
