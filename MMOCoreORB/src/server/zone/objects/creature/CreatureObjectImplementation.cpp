@@ -3283,7 +3283,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 
 	// info(true) << "CreatureObjectImplementation::isAttackableBy Creature Check -- Object ID = " << getObjectID() << " by attacking Creature ID = " << creature->getObjectID();
 
-	if (!bypassDeadCheck && (isDead() || isIncapacitated()))
+	if (!bypassDeadCheck && isDead())
 		return false;
 
 	if (creature->getZoneUnsafe() != getZoneUnsafe())
@@ -3319,13 +3319,21 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 				return true;
 			}
 
-			// Faction aligned AI attacking player
-			if (thisFaction != 0 && (thisFaction == creatureFaction || (thisFaction != creatureFaction && getFactionStatus() <= FactionStatus::ONLEAVE))) {
+			// Player is neutral and agent is GCW Faction aligned
+			if (thisFaction == 0 && creatureFaction > 0) {
 				return false;
 			}
 
-			if (thisFaction == 0 && creatureFaction > 0) {
-				return false;
+			// Player is Faction Aligned
+			if (thisFaction != 0) {
+				// Player & Agent are the same GCW faction
+				if (thisFaction == creatureFaction)
+					return false;
+
+				// Player & Agent both have a GCW Faction & are different. Fail if the faction status of the player is onleave
+				if (creatureFaction != 0 && thisFaction != creatureFaction && getFactionStatus() <= FactionStatus::ONLEAVE) {
+					return false;
+				}
 			}
 		}
 

@@ -1,5 +1,8 @@
 aggroDefault = {
 	{id="2009948435",	name="Sequence",	pid="none"},
+	{id="474715055",	name="Not",	pid="2009948435"},
+	{id="3853408410",	name="If",	pid="474715055"},
+	{id="934996932",	name="CheckProspectIsIncapacitated",	pid="3853408410"},
 	{id="1351912750",	name="If",	pid="2009948435"},
 	{id="3646194541",	name="CheckProspectAggression",	pid="1351912750"},
 	{id="2493941910",	name="If",	pid="2009948435"},
