@@ -110,8 +110,8 @@ dolac_legasi_missions =
 npcMapDolacLegasi =
 	{
 		{
-			spawnData = { npcTemplate = "mozo_bondog", x = -6313, z = 128, y = 734, direction = -91, cellID = 0, position = STAND },
-			worldPosition = { x = -6313, y = 734 },
+			spawnData = { npcTemplate = "mozo_bondog", x = -6314, z = 128, y = 734, direction = -91, cellID = 0, position = STAND },
+			worldPosition = { x = -6314, y = 734 },
 			npcNumber = 1,
 			stfFile = "@static_npc/dathomir/dathomir_imperialprison_mozo_bondog",
 			missions = mozo_bondog_missions
