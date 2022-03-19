@@ -200,6 +200,7 @@ class AiAgent extends CreatureObject {
 	public static final int MOVING_TO_HEAL = 10;
 	public static final int NOTIFY_ALLY = 11;
 	public static final int CRACKDOWN_SCANNING = 12;
+	public static final int HARVESTING = 13;
 
 	public static final int MOB_HERBIVORE = 1;
 	public static final int MOB_CARNIVORE = 2;

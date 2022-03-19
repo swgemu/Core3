@@ -2617,6 +2617,8 @@ float AiAgentImplementation::getMaxDistance() {
 			return 1.0f;
 		case AiAgent::CRACKDOWN_SCANNING:
 			return 1.0f;
+		case AiAgent::HARVESTING:
+			return 1.0f;
 	}
 
 	return 5.f;
@@ -2785,6 +2787,9 @@ int AiAgentImplementation::setDestination() {
 		PatrolPoint nextPos = followCopy->getPosition();
 
 		setNextPosition(nextPos.getPositionX(), nextPos.getPositionZ(), nextPos.getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
+		break;
+	}
+	case AiAgent::HARVESTING: {
 		break;
 	}
 	default:
