@@ -45,6 +45,9 @@ function RishaSinan:spawnMobiles()
 end
 
 function RishaSinan:notifyEnteredMiteCaveArea(miteCaveArea, pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 	if (pGhost == nil) then
@@ -78,6 +81,10 @@ function RishaSinan:notifyEnteredMiteCaveArea(miteCaveArea, pPlayer)
 end
 
 function RishaSinan:isQuestComplete(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -97,6 +104,10 @@ function RishaSinan:isQuestComplete(pPlayer)
 end
 
 function RishaSinan:finalTask(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -127,6 +138,10 @@ function RishaSinan:finalTask(pPlayer)
 end
 
 function RishaSinan:completeQuest(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -156,6 +171,10 @@ function RishaSinan:completeQuest(pPlayer)
 end
 
 function RishaSinan:giveQuest(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -179,6 +198,10 @@ function RishaSinan:giveQuest(pPlayer)
 end
 
 function RishaSinan:giveWaypoints(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -280,6 +303,10 @@ function RishaSinan:notifyLootQueen(pLootedCreature, pLooter, nothing)
 end
 
 function RishaSinan:awardQuestItem(pPlayer, item)
+	if (pPlayer == nil) then
+		return
+	end
+
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 	if (pInventory ~= nil) then
@@ -296,6 +323,10 @@ end
 risha_sinan_convo_handler = conv_handler:new {}
 
 function risha_sinan_convo_handler:getInitialScreen(pPlayer, pNpn, pConvTemplate)
+	if (pPlayer == nil) then
+		return
+	end
+
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -314,6 +345,10 @@ function risha_sinan_convo_handler:getInitialScreen(pPlayer, pNpn, pConvTemplate
 end
 
 function risha_sinan_convo_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	if (pPlayer == nil) then
+		return
+	end
+
 	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
