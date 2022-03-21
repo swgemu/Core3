@@ -64,7 +64,9 @@ enum CheckType {
 	CHECK_CALLFORHELP,
 	CHECK_ISHARVESTER,
 	CHECK_HASHARVESTTARGETS,
-	CHECK_ISCAMOUFLAGED
+	CHECK_ISCAMOUFLAGED,
+	CHECK_SHOULDREST,
+	CHECK_STOPRESTING
 };
 
 // template class to reduce repeated code. Do this instead of inheritance so we
@@ -267,6 +269,12 @@ template<> bool CheckIsHarvester::check(AiAgent* agent) const;
 
 typedef _Check<bool, CHECK_HASHARVESTTARGETS> CheckHasHarvestTargets;
 template<> bool CheckHasHarvestTargets::check(AiAgent* agent) const;
+
+typedef _Check<bool, CHECK_SHOULDREST> CheckShouldRest;
+template<> bool CheckShouldRest::check(AiAgent* agent) const;
+
+typedef _Check<bool, CHECK_STOPRESTING> CheckStopResting;
+template<> bool CheckStopResting::check(AiAgent* agent) const;
 
 }
 }

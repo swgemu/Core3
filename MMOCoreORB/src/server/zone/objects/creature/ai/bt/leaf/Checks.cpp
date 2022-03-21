@@ -658,3 +658,53 @@ template<> bool CheckHasHarvestTargets::check(AiAgent* agent) const {
 
 	return module != nullptr && module->hasMoreTargets() ? true : false;
 }
+
+template<> bool CheckShouldRest::check(AiAgent* agent) const {
+	if (agent == nullptr)
+		return false;
+
+	Time* restDelay = agent->getRestDelay();
+
+	if (restDelay == nullptr || !restDelay->isPast())
+		return false;
+
+	int restChance = 25; // % chance out of 100
+	int restRoll = System::random(100);
+
+	// Chance is less than the roll, fail and add time to check again
+	if (restChance < restRoll) {
+		int delay = 45 * 1000; // Time in ms to delay checking again or resting again
+
+		restDelay->updateToCurrentTime();
+		restDelay->addMiliTime(delay);
+
+		return false;
+	}
+
+	return true;
+}
+
+template<> bool CheckStopResting::check(AiAgent* agent) const {
+	if (agent == nullptr)
+		return false;
+
+	Time* restDelay = agent->getRestDelay();
+
+	if (restDelay == nullptr)
+		return false;
+
+	// Default time to rest is 45s less the 5min set on the delay when set Resting in ms
+	int resting = 255 * 1000;
+
+	if (agent->peekBlackboard("restingTime"))
+		resting = agent->readBlackboard("restingTime").get<int>();
+
+	int restedTime = restDelay->miliDifference() * -1;
+
+	if (resting < restedTime)
+		return false;
+
+	agent->eraseBlackboard("restingTime");
+
+	return true;
+}
