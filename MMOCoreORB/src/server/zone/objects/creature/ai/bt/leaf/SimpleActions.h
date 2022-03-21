@@ -870,15 +870,34 @@ public:
 
 		agent->setMovementState(AiAgent::RESTING);
 
-		if (agent->isNpc() || System::random(3) > 0) {
+		// Chance to stop resting from 45s up to 2 minutes stored in ms
+		int restingTime = delay - ((45 + System::random(45)) * 1000);
+		agent->writeBlackboard("restingTime", restingTime);
+
+		int speciesID = agent->getSpecies();
+		bool canSitDown = false;
+
+		Zone* zone = agent->getZone();
+
+		// We are returning Success here since we have the state and delays set
+		if (zone == nullptr)
+			return SUCCESS;
+
+		ManagedReference<CreatureManager*> creoManager = zone->getCreatureManager();
+
+		if (creoManager != nullptr) {
+			AiSpeciesData* speciesData = creoManager->getAiSpeciesData(speciesID);
+
+			if (speciesData != nullptr) {
+				canSitDown = speciesData->canSitDown();
+			}
+		}
+
+		if (agent->isNpc() || (canSitDown && System::random(2) > 0)) {
 			agent->setPosture(CreaturePosture::SITTING, true);
 		} else {
 			agent->setPosture(CreaturePosture::LYINGDOWN, true);
 		}
-
-		// Chance to stop resting from 45s up to 2 minutes stored in ms
-		int restingTime = delay - ((45 + System::random(45)) * 1000);
-		agent->writeBlackboard("restingTime", restingTime);
 
 		return SUCCESS;
 	}
@@ -912,9 +931,6 @@ public:
 
 		agent->setPosture(CreaturePosture::UPRIGHT, true);
 		agent->setMovementState(AiAgent::PATROLLING);
-
-		agent->setWait(2000);
-		agent->writeBlackboard("isWaiting", true);
 
 		return SUCCESS;
 	}

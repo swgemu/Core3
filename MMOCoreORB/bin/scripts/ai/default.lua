@@ -185,6 +185,7 @@ idleDefault = {
 	{id="4292153828",	name="If",	pid="3620709194"},
 	{id="78723978",	name="CheckStopResting",	pid="4292153828"},
 	{id="2362734698",	name="StopResting",	pid="3620709194"},
+	{id="1864140521",	name="Wait",	pid="3620709194",	args={duration=5.0}},
 	{id="4072235030",	name="Sequence",	pid="3547969451"},
 	{id="401182658",	name="Not",	pid="4072235030"},
 	{id="2752118648",	name="If",	pid="401182658"},
