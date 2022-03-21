@@ -133,6 +133,9 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected transient Time healDelay;
 
+	@dereferenced
+	protected transient Time restDelay;
+
 	protected int reactionRank;
 
 	protected float respawnTimer;
@@ -201,6 +204,7 @@ class AiAgent extends CreatureObject {
 	public static final int NOTIFY_ALLY = 11;
 	public static final int CRACKDOWN_SCANNING = 12;
 	public static final int HARVESTING = 13;
+	public static final int RESTING = 14;
 
 	public static final int MOB_HERBIVORE = 1;
 	public static final int MOB_CARNIVORE = 2;
@@ -897,6 +901,10 @@ class AiAgent extends CreatureObject {
 		return getMovementState() == FLEEING;
 	}
 
+	public boolean isResting() {
+		return getMovementState() == RESTING;
+	}
+
 	@preLocked
 	public native void clearDespawnEvent();
 
@@ -1322,6 +1330,12 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public Time getHealDelay() {
 		return healDelay;
+	}
+
+	@local
+	@dirty
+	public Time getRestDelay() {
+		return restDelay;
 	}
 
 	@local

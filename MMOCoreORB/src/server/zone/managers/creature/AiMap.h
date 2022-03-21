@@ -169,6 +169,7 @@ public:
 		lua->setGlobalInt("NOTIFY_ALLY",				AiAgent::NOTIFY_ALLY					);
 		lua->setGlobalInt("CRACKDOWN_SCANNING",			AiAgent::CRACKDOWN_SCANNING				);
 		lua->setGlobalInt("HARVESTING",					AiAgent::HARVESTING						);
+		lua->setGlobalInt("RESTING",					AiAgent::RESTING						);
 
 		lua->setGlobalInt("UPRIGHT",					CreaturePosture::UPRIGHT				);
 		lua->setGlobalInt("CROUCHED",					CreaturePosture::CROUCHED				);
@@ -441,6 +442,8 @@ private:
 		_REGISTERLEAF(CheckCallForHelp);
 		_REGISTERLEAF(CheckIsHarvester);
 		_REGISTERLEAF(CheckHasHarvestTargets);
+		_REGISTERLEAF(CheckShouldRest);
+		_REGISTERLEAF(CheckStopResting);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -479,6 +482,8 @@ private:
 		_REGISTERLEAF(SendChatGreeting);
 		_REGISTERLEAF(CallForHelp);
 		_REGISTERLEAF(DroidHarvest);
+		_REGISTERLEAF(Rest);
+		_REGISTERLEAF(StopResting);
 	}
 
 	void putBitmask(Lua* lua, String key) {
