@@ -1793,11 +1793,13 @@ void AiAgentImplementation::activateRecovery() {
 }
 
 void AiAgentImplementation::activatePostureRecovery() {
+	// Handle AI being Knocked down
 	if (isKnockedDown() && !hasPostureChangeDelay()) {
 		enqueueCommand(STRING_HASHCODE("stand"), 0, 0, "");
 		return;
 	}
 
+	// Prone and kneeling, used for ranged NPC AI
 	if (isProne() || isKneeling()) {
 		if (isInCombat()) {
 			if (System::random(100) > 75 && postureSet.miliDifference() > 0) {
@@ -1817,6 +1819,11 @@ void AiAgentImplementation::activatePostureRecovery() {
 		} else {
 			enqueueCommand(STRING_HASHCODE("stand"), 0, 0, "");
 		}
+	}
+
+	// Lying down and sitting, should clear when in combat
+	if ((isLyingDown() || isSitting()) && isInCombat()) {
+		enqueueCommand(STRING_HASHCODE("stand"), 0, 0, "");
 	}
 }
 

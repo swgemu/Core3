@@ -84,7 +84,7 @@ public:
 			} else {
 				int chance = 40; // % chance out of 100 they creature will rest
 
-				if (!aiAgent->isResting() && chance > System::random(100) && !aiAgent->isAggressiveTo(creature)) {
+				if (!aiAgent->isResting() && !aiAgent->isInCombat() && chance > System::random(100)) {
 					Time* restDelay = aiAgent->getRestDelay();
 
 					if (restDelay != nullptr) {

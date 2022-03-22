@@ -1999,6 +1999,11 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@read
+	public boolean isLyingDown() {
+		return posture == CreaturePosture.LYINGDOWN;
+	}
+
+	@read
 	public boolean isSkillAnimating() {
 		return posture == CreaturePosture.SKILLANIMATING;
 	}
