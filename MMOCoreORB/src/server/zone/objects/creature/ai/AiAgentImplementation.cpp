@@ -1118,12 +1118,12 @@ bool AiAgentImplementation::validateTarget() {
 
 bool AiAgentImplementation::validateTarget(SceneObject* target) {
 	if (target == nullptr) {
-		//info("validateTarget target == nullptr", true);
+		// info("validateTarget target == nullptr", true);
 		return false;
 	}
 
 	if (!target->isInRange(asAiAgent(), 128)) {
-		//info("validateTarget not in range", true);
+		// info("validateTarget not in range", true);
 		return false;
 	}
 
@@ -1131,11 +1131,12 @@ bool AiAgentImplementation::validateTarget(SceneObject* target) {
 		CreatureObject* targetCreO = target->asCreatureObject();
 
 		if (targetCreO == nullptr || targetCreO->isInvisible()) {
-			// info("validateTarget failed CREO checks", true);
+			// info("validateTarget - target is null or invisible", true);
 			return false;
 		}
 
 		if (targetCreO->isIncapacitated() || !targetCreO->isAttackableBy(asAiAgent())) {
+			// info("validateTarget - target is incapacitated or failed isAttackable check", true);
 			return false;
 		}
 	} else if (target->isTangibleObject()) {
@@ -1149,7 +1150,8 @@ bool AiAgentImplementation::validateTarget(SceneObject* target) {
 		return false;
 	}
 
-	//info("validateTarget returning true", true);
+	if (!isPet())
+		info("validateTarget returning true", true);
 	return true;
 }
 
@@ -3597,27 +3599,34 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 	if (movementState == AiAgent::LEASHING || isDead() || isIncapacitated())
 		return false;
 
-	// Handle Pets - Check against owner if they are the last commander
+	// Handle Pets - Check against owner
+	if (isPet()) {
+		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
+		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && creature->isNeutral()) {
+			return false;
+		}
+
+		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
+
+		if (owner == nullptr) {
+			return false;
+		}
+
+		return owner->isAttackableBy(creature, true);
+	}
+
 	if (creature->isPet()) {
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
 
-		if (controlDevice != nullptr)  {
-			if (controlDevice->getPetType() == PetManager::FACTIONPET && isNeutral())
-				return false;
+		if (controlDevice != nullptr && controlDevice->getPetType() == PetManager::FACTIONPET && isNeutral())
+			return false;
 
-			ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
+		ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
 
-			if (owner == nullptr)
-				return false;
+		if (owner == nullptr)
+			return false;
 
-			ManagedReference<SceneObject*> lastCommander = controlDevice->getLastCommander().get();
-
-			if (lastCommander != nullptr && lastCommander != owner && lastCommander->isCreatureObject()) {
-				return isAttackableBy(lastCommander->asCreatureObject());
-			}
-
-			return isAttackableBy(owner);
-		}
+		return isAttackableBy(owner);
 	}
 
 	// Check against Vehicle Object Owner
@@ -3710,7 +3719,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 			return false;
 	}
 
-	// info(true) << "AiAgent::isAttackableBy Creature Check returning true";
+	// info(true) << "AiAgent::isAttackableBy Creature # "<< creature->getObjectID() << " Check returning true";
 
 	return true;
 }
