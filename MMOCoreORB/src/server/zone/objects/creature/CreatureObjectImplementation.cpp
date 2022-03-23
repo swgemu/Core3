@@ -3289,8 +3289,8 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 	if (creature->getZoneUnsafe() != getZoneUnsafe())
 		return false;
 
-	// Creature is a vehicle, use vehicle owner for check
-	if (isVehicleObject()) {
+	// Creature is a vehicle or pet, check against owner
+	if (isVehicleObject() || creature->isPet()) {
 		ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
 
 		if (owner == nullptr)
