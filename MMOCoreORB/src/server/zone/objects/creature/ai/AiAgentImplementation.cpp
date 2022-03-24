@@ -1111,7 +1111,7 @@ SceneObject* AiAgentImplementation::getTargetFromTargetsDefenders() {
 }
 
 bool AiAgentImplementation::validateTarget() {
-	ManagedReference<SceneObject*> followCopy = asAiAgent()->getFollowObject().get();
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 
 	return validateTarget(followCopy);
 }
@@ -1143,13 +1143,13 @@ bool AiAgentImplementation::validateTarget(SceneObject* target) {
 		TangibleObject* targetTangibleObject = target->asTangibleObject();
 
 		if (targetTangibleObject == nullptr || !targetTangibleObject->isAttackableBy(asAiAgent()) || targetTangibleObject->isDestroyed()) {
-			//info("validateTarget failed TANO checks", true);
+			// info("validateTarget failed TANO checks", true);
 			return false;
 		}
 	} else {
+		// info("validateTarget returning false as non tano or creature", true);
 		return false;
 	}
-
 
 	// info("validateTarget returning true", true);
 	return true;
@@ -3473,6 +3473,20 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 	bool targetIsPlayer = target->isPlayerCreature();
 	bool targetIsAgent = target->isAiAgent();
 
+	if (targetIsAgent && target->isPet()) {
+		ManagedReference<PetControlDevice*> pcd = target->getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral())
+			return false;
+
+		ManagedReference<CreatureObject*> owner = target->getLinkedCreature().get();
+
+		if (owner == nullptr)
+			return false;
+
+		return isAggressiveTo(owner);
+	}
+
 	// Get factions
 	uint32 thisFaction = getFaction();
 	uint32 targetFaction = target->getFaction();
@@ -3593,9 +3607,6 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 
 	// info(true) << "AiAgent::isAttackableBy Creature Check -- Object ID = " << getObjectID() << " by attacking Creature ID = " << creature->getObjectID();
 
-	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & CreatureFlag::ATTACKABLE))
-		return false;
-
 	if (movementState == AiAgent::LEASHING || isDead() || isIncapacitated())
 		return false;
 
@@ -3614,6 +3625,9 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 
 		return owner->isAttackableBy(creature, true);
 	}
+
+	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & CreatureFlag::ATTACKABLE))
+		return false;
 
 	if (creature->isPet()) {
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().get().castTo<PetControlDevice*>();
