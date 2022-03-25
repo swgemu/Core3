@@ -1,0 +1,16 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/MMOCoreORB",
+    "files.associations": {
+        "*.idl": "cpp",
+        "*.ipp": "cpp",
+        "*.tcc": "cpp",
+        "ratio": "cpp",
+        "system_error": "cpp",
+        "array": "cpp",
+        "functional": "cpp",
+        "regex": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp"
+    }
+}
