@@ -882,6 +882,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea
 			CreatureObject(pNpc):setOptionBit(INTERESTING)
 			CreatureObject(pNpc):setOptionBit(AIENABLED)
 			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
+
 			self:normalizeNpc(pNpc, 16, 3000)
 		elseif mission.missionType == "retrieve" or mission.missionType == "deliver" then
 			CreatureObject(pNpc):setPvpStatusBitmask(0)
@@ -2094,8 +2095,6 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 		return
 	end
 
-	AiAgent(pConversingNpc):setFollowObject(pConversingPlayer)
-
 	local playerFaction = CreatureObject(pConversingPlayer)
 	if (playerFaction == FACTIONREBEL or playerFaction == FACTIONIMPERIAL) and not CreatureObject(pConversingPlayer):isOnLeave() then
 		CreatureObject(pConversingNpc):setFaction(playerFaction)
@@ -2107,9 +2106,10 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 		end
 	end
 
-	AiAgent(pConversingNpc):removeCreatureFlag(AI_STATIC)
+	AiAgent(pConversingNpc):removeCreatureFlag(AI_STATIONARY)
 	AiAgent(pConversingNpc):addCreatureFlag(AI_NOAIAGGRO)
 	AiAgent(pConversingNpc):addCreatureFlag(AI_ESCORT)
+
 	AiAgent(pConversingNpc):setFollowObject(pConversingPlayer)
 	AiAgent(pConversingNpc):setMovementState(AI_FOLLOWING)
 end
