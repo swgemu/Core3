@@ -212,7 +212,7 @@ void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) co
 		if (!SkillModManager::instance()->isWearableModDisabled(name))
 		{
 			creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
-			creature->updateTerrainNegotiation();
+			creature->updateSpeedAndAccelerationMods();
 		}
 	}
 
@@ -231,7 +231,7 @@ void WearableObjectImplementation::removeSkillModsFrom(CreatureObject* creature)
 		if (!SkillModManager::instance()->isWearableModDisabled(name))
 		{
 			creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
-			creature->updateTerrainNegotiation();
+			creature->updateSpeedAndAccelerationMods();
 		}
 	}
 

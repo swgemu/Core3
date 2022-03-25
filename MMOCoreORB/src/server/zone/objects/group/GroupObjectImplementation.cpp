@@ -372,7 +372,7 @@ void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player) {
 	if (player->hasBuff(action.hashCode()))
 		player->removeBuff(action.hashCode());
 
-	player->updateTerrainNegotiation();
+	player->updateSpeedAndAccelerationMods();
 }
 
 float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player) {
