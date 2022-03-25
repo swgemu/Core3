@@ -316,7 +316,7 @@ CreatureObject* ThreatMap::getHighestDamageGroupLeader() {
 	for (int i = 0; i < size(); ++i) {
 		ThreatMapEntry* entry = &elementAt(i).getValue();
 
-		uint32 totalDamage = entry->getTotalDamage();
+		uint32 totalDamage = entry->getLootDamage();
 
 		TangibleObject* tano = elementAt(i).getKey();
 
