@@ -1256,7 +1256,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 }
 
 void AiAgentImplementation::runAway(CreatureObject* target, float range, bool random = false) {
-	if (getParent().get() != nullptr || getParentID() > 0 || target == nullptr || target->getParent().get() != nullptr || asAiAgent()->getZoneUnsafe() == nullptr) {
+	if (getParent().get() != nullptr || getParentID() > 0 || target == nullptr || target->getParent().get() != nullptr || getZoneUnsafe() == nullptr) {
 		return;
 	}
 
@@ -1297,6 +1297,18 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 		<< "  A Range of " << range; */
 
 		return;
+	}
+
+	if (isInNavMesh()) {
+		Vector3 runPoint(runTrajectory.getX(), runTrajectory.getY(), runTrajectory.getZ());
+		Sphere sphere(runPoint, 5.f);
+		Vector3 result;
+
+		if (PathFinderManager::instance()->getSpawnPointInArea(sphere, zone, result, true)) {
+			runTrajectory = result;
+		} else {
+			return;
+		}
 	}
 
 	stopWaiting();
