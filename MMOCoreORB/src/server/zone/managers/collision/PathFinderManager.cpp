@@ -1247,8 +1247,7 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 
 		for (int i=0; i<50; i++) {
 			try {
-				if (!((status = query->findRandomPointAroundCircle(startPoly, polyStart.toFloatArray(), radius, &m_spawnFilter,
-																   frand, &ref, pt)) & DT_SUCCESS)) {
+				if (!((status = query->findRandomPointAroundCircle(startPoly, polyStart.toFloatArray(), radius, &m_spawnFilter, frand, &ref, pt)) & DT_SUCCESS)) {
 					continue;
 				} else {
 					point = Vector3(pt[0], -pt[2], CollisionManager::getWorldFloorCollision(pt[0], -pt[2], zone, false));
@@ -1260,18 +1259,17 @@ bool PathFinderManager::getSpawnPointInArea(const Sphere& area, Zone *zone, Vect
 						temp.setX(temp.getX() * multiplier);
 						temp.setY(temp.getY() * multiplier);
 						point = center + temp;
+						radius = len;
 
 						point.setZ(CollisionManager::getWorldFloorCollision(point.getX(), point.getY(), zone, false));
 					}
-
-					if (checkPath) {
-						if (!getRecastPath(center, point, navArea, nullptr, len, false)) {
-							continue;
-						}
-					}
-
-					return true;
 				}
+
+				if (checkPath && !getRecastPath(center, point, navArea, nullptr, radius, false)) {
+					continue;
+				}
+
+				return true;
 			} catch (Exception& exc) {
 				error(exc.getMessage());
 			}

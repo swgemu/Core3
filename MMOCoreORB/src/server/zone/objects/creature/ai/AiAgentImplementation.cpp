@@ -1980,7 +1980,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	Vector3 currentWorldPos = getWorldPosition();
 	PatrolPoint endMovementPosition = getNextPosition();
 
-	float endDistanceSq = currentWorldPos.squaredDistanceTo(endMovementPosition.getWorldPosition());
+	Vector3 endDistDiff(currentWorldPos - endMovementPosition.getWorldPosition());
+	float endDistanceSq = (endDistDiff.getX() * endDistDiff.getX() + endDistDiff.getY() * endDistDiff.getY());
 	float maxSquared = Math::max(0.1f, maxDistance * maxDistance);
 
 	if (endDistanceSq <= maxSquared) {
@@ -2092,7 +2093,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	if (currentParentID != nextParentID && nextParentID > 0)
 		currentPosition = PathFinderManager::transformToModelSpace(currentPosition, nextMovementCell->getParent().get());
 
-	float nextMovementDistance = currentWorldPos.distanceTo(nextMovementPosition.getWorldPosition());
+	Vector3 movementDiff(currentWorldPos - nextMovementPosition.getWorldPosition());
+
+	// Determine the distance to the next point excluding the Z coordnate
+	float nextMovementDistance = Math::sqrt(movementDiff.getX() * movementDiff.getX() + movementDiff.getY() * movementDiff.getY());
 	float maxDist = maxSpeed;
 
 	if (endDistanceSq > maxSquared) {
@@ -2494,9 +2498,8 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 		Sphere sphere(homeCoords, dist);
 		Vector3 result;
 
-
 		for (int i = 0; i < num; i++) {
-			if (PathFinderManager::instance()->getSpawnPointInArea(sphere, zone, result, false)) {
+			if (PathFinderManager::instance()->getSpawnPointInArea(sphere, zone, result, true)) {
 				PatrolPoint point(result);
 
 				if (point.getPositionX() == currentPosition.getX() && point.getPositionY() == currentPosition.getY())
@@ -2668,7 +2671,7 @@ int AiAgentImplementation::setDestination() {
 	case AiAgent::LEASHING:
 		clearPatrolPoints();
 
-		if (!homeLocation.isInRange(asAiAgent(), 1.0f)) {
+		if (!homeLocation.isInRange(asAiAgent(), 4.0f)) {
 			homeLocation.setReached(false);
 			setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
 		} else {
