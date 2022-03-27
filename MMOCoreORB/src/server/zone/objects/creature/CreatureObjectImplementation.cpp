@@ -135,7 +135,6 @@ void CreatureObjectImplementation::initializeMembers() {
 	hueValue = -1;
 
 	stateBitmask = 0;
-	terrainNegotiation = 0.0f;
 
 	listenToID = 0;
 	watchToID = 0;
@@ -195,6 +194,7 @@ void CreatureObjectImplementation::loadTemplateData(
 	slopeModPercent = creoData->getSlopeModPercent();
 	slopeModAngle = creoData->getSlopeModAngle();
 	swimHeight = creoData->getSwimHeight();
+	waterModPercent = creoData->getWaterModPercent();
 
 	if (creoData->getMaxScale() == 0)
 		height = creoData->getMinScale();
@@ -1643,6 +1643,9 @@ void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
 	setAccelerationMultiplierMod(CreaturePosture::instance()->getAccelerationScale((uint8) posture), true);
 
 	setTurnScale(CreaturePosture::instance()->getTurnScale((uint8) posture), true);
+
+ 	// Priorly known as Terrain Negotiation.
+	setSlopeModPercent(CreaturePosture::instance()->getMovementScale((uint8) posture) + speedboost, true);
 }
 
 float CreatureObjectImplementation::calculateSpeed() {
@@ -1795,6 +1798,36 @@ void CreatureObjectImplementation::setTurnScale(
 	}
 }
 
+void CreatureObjectImplementation::setWalkSpeed(float value, bool notifyClient) {
+	if (walkSpeed == value)
+		return;
+
+	walkSpeed = value;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+		dcreo4->updateWalkSpeed();
+		dcreo4->close();
+
+		sendMessage(dcreo4);
+	}
+}
+
+void CreatureObjectImplementation::setWaterModPercent(float value, bool notifyClient) {
+	if (waterModPercent == value)
+		return;
+
+	waterModPercent = value;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+		dcreo4->updateWaterModPercent();
+		dcreo4->close();
+
+		sendMessage(dcreo4);
+	}
+}
+
 void CreatureObjectImplementation::setFactionRank(int rank, bool notifyClient) {
 	if (factionRank == rank)
 		return;
@@ -1924,24 +1957,23 @@ void CreatureObjectImplementation::setPerformanceAnimation(const String& animati
 	broadcastMessage(codm4, true);
 }
 
-void CreatureObjectImplementation::setTerrainNegotiation(float value,
-		bool notifyClient) {
-	terrainNegotiation = value;
+void CreatureObjectImplementation::setSlopeModPercent(float value, bool notifyClient) {
+	if (slopeModPercent == value)
+		return;
 
-	if (notifyClient)
-		updateTerrainNegotiation();
-}
+	slopeModPercent = value;
 
-void CreatureObjectImplementation::updateTerrainNegotiation()
-{
+	if (!notifyClient)
+		return;
+
 	CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(asCreatureObject());
-	codm4->updateTerrainNegotiation();
+	codm4->updateSlopeModPercent();
 	codm4->close();
 	sendMessage(codm4);
 }
 
-float CreatureObjectImplementation::getTerrainNegotiation() const {
-	float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + terrainNegotiation;
+float CreatureObjectImplementation::getSlopeModPercent() const {
+	float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + slopeModPercent;
 
 	if (slopeMod > 1)
 		slopeMod = 1;

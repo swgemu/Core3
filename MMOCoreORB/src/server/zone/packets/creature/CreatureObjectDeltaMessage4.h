@@ -32,55 +32,34 @@ public:
 		addFloatUpdate(0x05, creo->getSpeedMultiplierMod());
 	}
 
-	void updateRunSpeed() {
-		addFloatUpdate(0x07, creo->getRunSpeed());
-	}
-
-	void updateEntertainerValue(uint32 value) {
-		startUpdate(0x09);
-		insertInt(value);
-	}
-
 	void updateListenToID(uint64 objectid) {
 		startUpdate(0x06);
 		insertLong(objectid);
 	}
 
+	void updateRunSpeed() {
+		addFloatUpdate(0x07, creo->getRunSpeed());
+	}
 
-	void updateTerrainNegotiation() {
-		addFloatUpdate(0x09, creo->getTerrainNegotiation());
+	void updateSlopeModPercent() {
+		addFloatUpdate(0x08, creo->getSlopeModPercent());
+	}
+
+	void updateSlopeModAngle() {
+		addFloatUpdate(0x09, creo->getSlopeModAngle());
 	}
 
 	void updateTurnScale() {
 		addFloatUpdate(0x0A, creo->getTurnScale());
 	}
 
-	/*void updateAcceleration() {
-		addFloatUpdate(0x0B, creo->acceleration);
+	void updateWalkSpeed() {
+		addFloatUpdate(0x0B, creo->getWalkSpeed());
 	}
 
-
-
-	void startSkillModsUpdate(int skillModsToUpdate) {
-		startUpdate(0x03);
-		startList(skillModsToUpdate, creo->skillModsCounter += skillModsToUpdate);
+	void updateWaterModPercent() {
+		addFloatUpdate(0x0C, creo->getWaterModPercent());
 	}
-
-	void addSkillMod(const String& skillMod, int value) {
-		insertByte(0);
-		insertAscii(skillMod.toCharArray());
-		insertInt(value);
-		insertInt(0);
-	}
-
-	void removeSkillMod(const String& skillMod, int value) {
-		insertByte(1);
-		insertAscii(skillMod.toCharArray());
-		insertInt(value);
-		insertInt(0);
-	}
-
-	*/
 
 };
 
