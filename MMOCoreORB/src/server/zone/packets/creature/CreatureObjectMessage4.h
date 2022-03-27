@@ -12,38 +12,43 @@ class CreatureObjectMessage4 : public BaseLineMessage {
 public:
 	CreatureObjectMessage4(const CreatureObject* creo)
 			: BaseLineMessage(creo, 0x4352454F, 4, 0x0E) {
-		//
+
+		// Accelerations.
 		insertFloat(creo->getAccelerationMultiplierBase());
 		insertFloat(creo->getAccelerationMultiplierMod());
 
-		//Encumbrances
+		// Encumbrances.
 		const DeltaVector<int>* encumbrances = creo->getEncumbrances();
 		encumbrances->insertToMessage(this);
 
-		// skill mods
+		// Skill Mods.
 		const SkillModList* skillMods = creo->getSkillModList();
 		skillMods->insertToMessage(this);
 
-		//
+		// Speed Multipliers.
 		insertFloat(creo->getSpeedMultiplierBase());
 		insertFloat(creo->getSpeedMultiplierMod());
 
-		// listenToID
+		// Listen to ID (Entertainer)
 		insertLong(creo->getListenID());
 
+		// Run Speed.
 		insertFloat(creo->getRunSpeed());
 
-		insertFloat(1.00625f);
+		// Slope Mods (Terrain)
+		insertFloat(creo->getSlopeModAngle());
+		insertFloat(creo->getSlopeModPercent());  // Terrain Negotiation
 
-		insertFloat(creo->getTerrainNegotiation());  // Terrain Negotiation
-
-		// turn radius
+		// Turn Scale
 		insertFloat(creo->getTurnScale());
 
+		// Walk Speed
 		insertFloat(creo->getWalkSpeed());
-		insertFloat(creo->getSlopeModPercent());
 
-		//
+		// Water Mod (Swimming)
+		insertFloat(creo->getWaterModPercent());
+
+		// Group Critical Objects List (Unused.)
 		insertInt(0);
 		insertInt(0);
 
