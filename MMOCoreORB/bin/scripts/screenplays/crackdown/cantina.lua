@@ -177,6 +177,7 @@ function CrackdownCantina:startTrouble(pCantina)
 	writeData(cantinaID .. ":harasserID", SceneObject(pSpawn):getObjectID())
 	spatialChat(pSpawn, "@npc_reaction/imperial_crackdown_cantina:call_in_" .. factionName)
 
+	AiAgent(pSpawn):setMovementState(AI_PATROLLING)
 	createEvent(1000, "CrackdownCantina", "setupHarasser", pSpawn, "")
 end
 
