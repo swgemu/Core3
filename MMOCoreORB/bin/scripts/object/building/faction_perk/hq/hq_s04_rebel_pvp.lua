@@ -148,6 +148,16 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 
 	},
 
+	securityPatrols = {
+		{patrol = "rebel_small_4", x = 28.2, z = 0, y = 10.5, heading = 0},
+		{patrol = "rebel_small_4", x = -27.5, z = 0, y = 12, heading = 0},
+		{patrol = "rebel_small_4", x = -8.3, z = 0, y = 5.1, heading = 0},
+		{patrol = "rebel_small_4", x = 9.2, z = 0, y = 6.0, heading = 0},
+
+		{patrol = "rebel_large_4", x = 2, z = 0, y = 19.6, heading = 0},
+		{patrol = "rebel_large_4", x = 0, z = 0, y = 44.5, heading = 0},
+		{patrol = "rebel_large_4", x = 0, z = 0, y = -26.5, heading = 4.5},
+	},
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_hq_s04_rebel_pvp, "object/building/faction_perk/hq/hq_s04_rebel_pvp.iff")

@@ -37,8 +37,9 @@ public:
 		NOAIAGGRO				= 0x010000,
 		SCANNING_FOR_CONTRABAND = 0x020000,
 		IGNORE_FACTION_STANDING = 0x040000,
-		TEST					= 0x080000,
-		LASTAIMASK				= 0x100000, // keep this updated so we can loop through the masks
+		SQUAD					= 0x080000,
+		TEST					= 0x100000,
+		LASTAIMASK				= 0x200000, // keep this updated so we can loop through the masks
 
 		CARNIVORE               = 0x01,
 		HERBIVORE               = 0x02

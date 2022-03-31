@@ -17,7 +17,7 @@ include engine.log.Logger;
 include system.util.Vector;
 include engine.util.u3d.Vector3;
 
-class ContainmentTeamObserver extends Observer implements Logger {
+class SquadObserver extends Observer implements Logger {
 
 	@local
 	@dereferenced
@@ -26,10 +26,10 @@ class ContainmentTeamObserver extends Observer implements Logger {
 	@dereferenced
 	protected transient Mutex containmentTeamLock;
 
-	public ContainmentTeamObserver() {
+	public SquadObserver() {
 		super();
 
-		Logger.setLoggingName("ContainmentTeamObserver");
+		Logger.setLoggingName("SquadObserver");
 	}
 
 	@local

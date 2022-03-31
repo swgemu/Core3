@@ -177,9 +177,16 @@ object_building_faction_perk_hq_hq_s03_imp = object_building_faction_perk_hq_sha
 		{ mobile = "fbase_imperial_master_sergeant_hard", x = -2.3, z = -20.75, y = 35.5, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14},
 		{ mobile = "fbase_imperial_first_lieutenant_hard", x = 1.7, z = -20.75, y = 32.45, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14},
 		{ mobile = "imperial_recruiter", x = -5, z = -20.75, y = 32, cellid = 10, containmentType = -1, respawn = 60, heading = 1.57},
-
 	},
 
+	securityPatrols = {
+		{patrol = "imperial_small_3", x = 26.7, z = 0, y = 9.8, heading = 0},
+		{patrol = "imperial_small_3", x = -26.7, z = 0, y = 9.8, heading = 0},
+		{patrol = "imperial_small_3", x = 0, z = 0, y = 22.9, heading = 0},
+
+		{patrol = "imperial_large_3", x = -23.1, z = 0, y = 43.8, heading = 0},
+		{patrol = "imperial_large_3", x = 23.1, z = 0, y = 43.8, heading = 0},
+	},
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_hq_s03_imp, "object/building/faction_perk/hq/hq_s03_imp.iff")
