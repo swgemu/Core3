@@ -11,7 +11,7 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/chat/ChatManager.h"
-#include "server/zone/managers/gcw/observers/ContainmentTeamObserver.h"
+#include "server/zone/managers/gcw/observers/SquadObserver.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/creature/events/DroidHarvestTask.h"
@@ -776,19 +776,19 @@ public:
 		if (agent == nullptr)
 			return FAILURE;
 
-		ManagedReference<ContainmentTeamObserver*> containmentTeamObserver = nullptr;
+		ManagedReference<SquadObserver*> squadObserver = nullptr;
 		SortedVector<ManagedReference<Observer*>> observers = agent->getObservers(ObserverEventType::SQUAD);
 
 		for (int i = 0; i < observers.size(); i++) {
-			containmentTeamObserver = cast<ContainmentTeamObserver*>(observers.get(i).get());
-			if (containmentTeamObserver != nullptr)
+			squadObserver = cast<SquadObserver*>(observers.get(i).get());
+			if (squadObserver != nullptr)
 				break;
 		}
 
-		if (containmentTeamObserver == nullptr)
+		if (squadObserver == nullptr)
 			return FAILURE;
 
-		AiAgent* squadLeader = containmentTeamObserver->getMember(0);
+		AiAgent* squadLeader = squadObserver->getMember(0);
 
 		if (squadLeader == nullptr || squadLeader == agent)
 			return FAILURE;

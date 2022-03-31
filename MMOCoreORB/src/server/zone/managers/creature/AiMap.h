@@ -250,6 +250,7 @@ public:
 		lua->setGlobalInt("STATIC",						CreatureFlag::STATIC					);
 		lua->setGlobalInt("STATIONARY",					CreatureFlag::STATIONARY				);
 		lua->setGlobalInt("NOAIAGGRO",					CreatureFlag::NOAIAGGRO					);
+		lua->setGlobalInt("SQUAD",						CreatureFlag::SQUAD						);
 		lua->setGlobalInt("TEST",						CreatureFlag::TEST						);
 
 		lua->setGlobalInt("CARNIVORE",					CreatureFlag::CARNIVORE					);

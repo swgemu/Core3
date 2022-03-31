@@ -3,23 +3,23 @@
 		See file COPYING for copying conditions.
  */
 
-#include "server/zone/managers/gcw/observers/ContainmentTeamObserver.h"
+#include "server/zone/managers/gcw/observers/SquadObserver.h"
 
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 
-void ContainmentTeamObserverImplementation::addMember(AiAgent* member) {
+void SquadObserverImplementation::addMember(AiAgent* member) {
 	Locker locker(&containmentTeamLock);
 	teamMembers.add(member);
 }
 
-int ContainmentTeamObserverImplementation::size() {
+int SquadObserverImplementation::size() {
 	Locker locker(&containmentTeamLock);
 	return teamMembers.size();
 }
 
-AiAgent* ContainmentTeamObserverImplementation::getMember(unsigned int teamMemberIndex) {
+AiAgent* SquadObserverImplementation::getMember(unsigned int teamMemberIndex) {
 	Locker locker(&containmentTeamLock);
 	if (teamMemberIndex < teamMembers.size()) {
 		return teamMembers.get(teamMemberIndex);
@@ -28,14 +28,14 @@ AiAgent* ContainmentTeamObserverImplementation::getMember(unsigned int teamMembe
 	}
 }
 
-void ContainmentTeamObserverImplementation::removeMember(unsigned int teamMemberIndex) {
+void SquadObserverImplementation::removeMember(unsigned int teamMemberIndex) {
 	Locker locker(&containmentTeamLock);
 	if (teamMemberIndex < teamMembers.size()) {
 		teamMembers.remove(teamMemberIndex);
 	}
 }
 
-bool ContainmentTeamObserverImplementation::despawnMembersCloseToLambdaShuttle(const Vector3& landingPosition, bool forcedCleanup) {
+bool SquadObserverImplementation::despawnMembersCloseToLambdaShuttle(const Vector3& landingPosition, bool forcedCleanup) {
 	// Do not lock containmentTeamLock in this method to avoid deadlocks. Use the minimal locking methods above.
 	for (int i = size() - 1; i >= 0; i--) {
 		auto npc = getMember(i);

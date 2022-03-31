@@ -126,9 +126,18 @@ object_building_faction_perk_hq_hq_s02_rebel_pvp = object_building_faction_perk_
 		{ mobile = "fbase_rebel_master_sergeant_hard", x = -5.5, z = -13.75, y = -7.2, cellid = 9, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_first_lieutenant_hard", x = -4.1, z = -13.75, y = -17.3, cellid = 9, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "rebel_recruiter", x = 0, z = -13.75, y = -17, cellid = 9, respawn = 60, containmentType = -1, heading = 0},
-
 	},
 
+	securityPatrols = {
+		{patrol = "rebel_small_2", x = -19.8, z = 0, y = 32.5, heading = 0},
+		{patrol = "rebel_small_2", x = 23.8, z = 0, y = 32.5, heading = 0},
+		{patrol = "rebel_small_2", x = -23.8, z = 0, y = -9.8, heading = 0},
+		{patrol = "rebel_small_2", x = 19.8, z = 0, y = -9.8, heading = 0},
+
+		{patrol = "rebel_large_2", x = 0, z = 0, y = 18.1, heading = 0},
+		{patrol = "rebel_large_2", x = 0, z = 0, y = 51.2, heading = 0},
+		{patrol = "rebel_large_2", x = 0, z = 0, y = -19.5, heading = 0},
+	},
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_hq_s02_rebel_pvp, "object/building/faction_perk/hq/hq_s02_rebel_pvp.iff")
