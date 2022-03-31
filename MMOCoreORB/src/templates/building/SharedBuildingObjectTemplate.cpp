@@ -34,8 +34,7 @@ void SharedBuildingObjectTemplate::parseVariableData(const String& varName, LuaO
 		publicStructure = (bool) Lua::getByteParameter(state);
 	} else if (varName == "alwaysPublic") {
 		alwaysPublic = (bool) Lua::getByteParameter(state);
-	} else if ( varName == "childCreatureObjects" ) {
-
+	} else if (varName == "childCreatureObjects") {
 		LuaObject luaItemList(state);
 		int size = luaItemList.getTableSize();
 
@@ -53,6 +52,23 @@ void SharedBuildingObjectTemplate::parseVariableData(const String& varName, LuaO
 
 		luaItemList.pop();
 
+	} else if (varName == "securityPatrols") {
+		LuaObject luaItemList(state);
+		int size = luaItemList.getTableSize();
+		lua_State* L = luaItemList.getLuaState();
+
+		for (int i = 0; i < size; i++){
+			lua_rawgeti(L, -1, i + 1);
+			LuaObject securitySpawn(L);
+
+			SecurityPatrolSpawn spawn;
+			spawn.parseFromLua(&securitySpawn);
+
+			securitySpawns.add(spawn);
+			securitySpawn.pop();
+		}
+
+		luaItemList.pop();
 	} else if (varName == "ejectionPoint") {
 		LuaObject ejectPoint(state);
 		ejectionPoint.setX(ejectPoint.getFloatAt(1));
@@ -87,7 +103,7 @@ void SharedBuildingObjectTemplate::parseVariableData(const String& varName, LuaO
 	} else {
 
 		templateData->pop();
-	}	
+	}
 }
 
 void SharedBuildingObjectTemplate::parseFileData(IffStream* iffStream) {

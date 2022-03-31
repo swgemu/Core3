@@ -16,7 +16,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/managers/gcw/observers/ContainmentTeamObserver.h"
+#include "server/zone/managers/gcw/observers/SquadObserver.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "templates/faction/Factions.h"
 
@@ -27,7 +27,7 @@ public:
 private:
 	WeakReference<CreatureObject*> weakPlayer;
 	WeakReference<SceneObject*> weakLambdaShuttle;
-	ManagedReference<ContainmentTeamObserver*> containmentTeamObserver;
+	ManagedReference<SquadObserver*> squadObserver;
 	int difficulty;
 	int spawnNumber;
 	String chatMessageId;
@@ -168,8 +168,8 @@ private:
 				npc->addCreatureFlag(CreatureFlag::STATIONARY);
 			}
 
-			containmentTeamObserver->addMember(npc);
-			npc->registerObserver(ObserverEventType::SQUAD, containmentTeamObserver);
+			squadObserver->addMember(npc);
+			npc->registerObserver(ObserverEventType::SQUAD, squadObserver);
 		}
 	}
 
@@ -190,16 +190,16 @@ private:
 	}
 
 	void setupMovement(CreatureObject* player) {
-		if (containmentTeamObserver == nullptr)
+		if (squadObserver == nullptr)
 			return;
 
-		AiAgent* squadLeader = containmentTeamObserver->getMember(0);
+		AiAgent* squadLeader = squadObserver->getMember(0);
 
 		if (squadLeader != nullptr && player != nullptr) {
 			Locker slLock(squadLeader, player);
 
-			for (int i = 1; i <= containmentTeamObserver->size(); ++i) {
-				AiAgent* agent = containmentTeamObserver->getMember(i);
+			for (int i = 1; i <= squadObserver->size(); ++i) {
+				AiAgent* agent = squadObserver->getMember(i);
 
 				if (agent == nullptr || agent->isInCombat())
 					continue;
@@ -209,7 +209,7 @@ private:
 				agent->setFollowObject(squadLeader);
 			}
 
-			squadLeader->setCreatureBitmask(squadLeader->getCreatureBitmask() - CreatureFlag::STATIONARY);
+			squadLeader->removeCreatureFlag(CreatureFlag::STATIONARY);
 			squadLeader->addCreatureFlag(CreatureFlag::FOLLOW);
 			squadLeader->setFollowObject(player);
 		}
@@ -267,7 +267,7 @@ private:
 			state = DELAY;
 		} else {
 			--closingInTime;
-			auto npc = containmentTeamObserver->getMember(0);
+			auto npc = squadObserver->getMember(0);
 			if (npc == nullptr) {
 				state = DELAY;
 			} else if ((npc->getWorldPosition().squaredDistanceTo(player->getWorldPosition()) < 20 * 20) && !npc->isInCombat() && !npc->isDead()) {
@@ -301,7 +301,7 @@ private:
 	void despawnNpcs(SceneObject* lambdaShuttle) {
 		--cleanUpTime;
 
-		if (containmentTeamObserver->despawnMembersCloseToLambdaShuttle(spawnPosition, cleanUpTime < 0)) {
+		if (squadObserver->despawnMembersCloseToLambdaShuttle(spawnPosition, cleanUpTime < 0)) {
 			if (reinforcementType == CONTAINMENTTEAM) {
 				state = FINISHED;
 			} else {
@@ -345,7 +345,7 @@ private:
 public:
 	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, ReinforcementType reinforcementType) {
 		weakPlayer = player;
-		containmentTeamObserver = new ContainmentTeamObserver();
+		squadObserver = new SquadObserver();
 		if (difficulty > MAXDIFFICULTY) {
 			this->difficulty = MAXDIFFICULTY;
 		} else if (difficulty < MINDIFFICULTY) {

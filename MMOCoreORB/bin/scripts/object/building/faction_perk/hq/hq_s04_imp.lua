@@ -199,6 +199,14 @@ object_building_faction_perk_hq_hq_s04_imp = object_building_faction_perk_hq_sha
 
 	},
 
+	securityPatrols = {
+		{patrol = "imperial_small_4", x = -11.8, z = 0, y = 6.7, heading = 0},
+		{patrol = "imperial_small_4", x = 11.8, z = 0, y = 6.7, heading = 0},
+
+		{patrol = "imperial_large_4", x = 0, z = 0, y = 24.1, heading = 0},
+		{patrol = "imperial_large_4", x = 13.4, z = 0, y = 33.8, heading = 0},
+		{patrol = "imperial_large_4", x = -13.5, z = 0, y = 33.8, heading = 4.5},
+	},
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_hq_s04_imp, "object/building/faction_perk/hq/hq_s04_imp.iff")

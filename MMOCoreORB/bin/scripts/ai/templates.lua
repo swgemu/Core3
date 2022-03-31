@@ -113,6 +113,13 @@ bitmaskLookup = {
 		{NONE, "rootStatic"}
 	}},
 
+	{SQUAD, {
+		{NONE, "rootCrackdown"},
+		{AWARE, "awareCrackdown"},
+		{IDLE, "idleCrackdown"},
+		{LOOKAT, "lookCrackdown"}
+	}},
+
 	{TEST, {
 		{AWARE, "failTest"},
 		{IDLE, "succeedTest"},

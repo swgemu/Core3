@@ -461,4 +461,11 @@ class BuildingObject extends StructureObject {
 
 	@read
 	public native string getCellName(unsigned long cellID);
+
+	@preLocked
+	public void addChildCreatureObject(CreatureObject creature) {
+		if (creature != null) {
+			childCreatureObjects.put(creature);
+		}
+	}
 }
