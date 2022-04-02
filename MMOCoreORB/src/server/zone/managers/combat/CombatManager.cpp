@@ -303,6 +303,14 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 		}
 	}
 
+	if (attacker->isPlayerCreature() && defenderObject->isPlayerCreature()) {
+		PlayerObject* ghost = attacker->getPlayerObject();
+
+		if (ghost != nullptr && ghost->isInPvpArea(true)) {
+			ghost->updateLastPvpAreaCombatActionTimestamp();
+		}
+	}
+
 	return damage;
 }
 

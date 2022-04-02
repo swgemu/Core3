@@ -21,6 +21,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "setOptionsBitmask", &LuaTangibleObject::setOptionsBitmask },
 		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask },
 		{ "setPvpStatusBit", &LuaTangibleObject::setPvpStatusBit },
+		{ "broadcastPvpStatusBitmask", &LuaTangibleObject::broadcastPvpStatusBitmask },
 		{ "getPvpStatusBitmask", &LuaTangibleObject::getPvpStatusBitmask },
 		{ "isChangingFactionStatus", &LuaTangibleObject::isChangingFactionStatus },
 		{ "setFutureFactionStatus", &LuaTangibleObject::setFutureFactionStatus },
@@ -165,6 +166,12 @@ int LuaTangibleObject::getPvpStatusBitmask(lua_State* L) {
 	uint32 bitmask = realObject->getPvpStatusBitmask();
 
 	lua_pushinteger(L, bitmask);
+
+	return 1;
+}
+
+int LuaTangibleObject::broadcastPvpStatusBitmask(lua_State* L) {
+	realObject->broadcastPvpStatusBitmask();
 
 	return 1;
 }

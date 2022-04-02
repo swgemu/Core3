@@ -205,6 +205,7 @@ namespace server {
 		static int getBadgeListByType(lua_State* L);
 		static int getGalaxyName(lua_State* L);
 		static int getQuestTasks(lua_State* L);
+		static int broadcastToGalaxy(lua_State* L);
 
 	private:
 		static void setupLuaPackagePath(Lua* luaEngine);

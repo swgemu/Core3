@@ -948,14 +948,22 @@ void ChatManagerImplementation::broadcastGalaxy(const String& message, const Str
 	}
 }
 
-void ChatManagerImplementation::broadcastGalaxy(CreatureObject* player, const String& message) {
+void ChatManagerImplementation::broadcastGalaxy(CreatureObject* creature, const String& message) {
 	String firstName = "SKYNET";
 
-	if (player != nullptr)
-		firstName = player->getFirstName();
-
 	StringBuffer fullMessage;
-	fullMessage << "[" << firstName << "] " << message;
+
+	if (creature != nullptr) {
+		if (creature->isPlayerCreature()) {
+			firstName = creature->getFirstName();
+			fullMessage << "[" << firstName << "] ";
+		} else {
+			firstName = creature->getCustomObjectName().toString();
+			fullMessage << firstName << ": ";
+		}
+	}
+
+	fullMessage << message;
 
 	const auto stringMessage = fullMessage.toString();
 
