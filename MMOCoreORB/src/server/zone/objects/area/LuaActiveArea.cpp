@@ -21,6 +21,7 @@ Luna<LuaActiveArea>::RegType LuaActiveArea::Register[] = {
 		{ "setCellObjectID", &LuaActiveArea::setCellObjectID },
 		{ "getCellObjectID", &LuaActiveArea::getCellObjectID },
 		{ "setNoSpawnArea", &LuaActiveArea::setNoSpawnArea },
+		{ "setPvpArea", &LuaActiveArea::setPvpArea },
 		{ 0, 0 }
 };
 
@@ -101,6 +102,14 @@ int LuaActiveArea::setNoSpawnArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 	Locker realObjectLocker(realObject);
 	realObject->setNoSpawnArea(val);
+
+	return 0;
+}
+
+int LuaActiveArea::setPvpArea(lua_State* L) {
+	bool val = lua_toboolean(L, -1);
+	Locker realObjectLocker(realObject);
+	realObject->setPvpArea(val);
 
 	return 0;
 }

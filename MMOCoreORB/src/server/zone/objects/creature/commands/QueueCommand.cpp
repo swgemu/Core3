@@ -304,18 +304,29 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 	if (target->isPlayerCreature()) {
 		PlayerObject* targetGhost = target->getPlayerObject().get();
 
-		if (targetGhost != nullptr && !CombatManager::instance()->areInDuel(creature, target) && target->getFactionStatus() == FactionStatus::OVERT && targetGhost->hasPvpTef()) {
-			ghost->updateLastGcwPvpCombatActionTimestamp();
-		}
+		if (targetGhost != nullptr) {
+			if (!CombatManager::instance()->areInDuel(creature, target) && target->getFactionStatus() == FactionStatus::OVERT && targetGhost->hasPvpTef()) {
+				ghost->updateLastGcwPvpCombatActionTimestamp();
+			}
 
+			if (targetGhost->isInPvpArea(true)) {
+				ghost->updateLastPvpAreaCombatActionTimestamp();
+			}
+		}
 	} else if (target->isPet()) {
 		ManagedReference<CreatureObject*> owner = target->getLinkedCreature().get();
 
 		if (owner != nullptr && owner->isPlayerCreature()) {
 			PlayerObject* ownerGhost = owner->getPlayerObject().get();
 
-			if (ownerGhost != nullptr && !CombatManager::instance()->areInDuel(creature, owner) && owner->getFactionStatus() == FactionStatus::OVERT && ownerGhost->hasPvpTef()) {
-				ghost->updateLastGcwPvpCombatActionTimestamp();
+			if (ownerGhost != nullptr) {
+				if (!CombatManager::instance()->areInDuel(creature, owner) && owner->getFactionStatus() == FactionStatus::OVERT && ownerGhost->hasPvpTef()) {
+					ghost->updateLastGcwPvpCombatActionTimestamp();
+				}
+
+				if (ownerGhost->isInPvpArea(true)) {
+					ghost->updateLastPvpAreaCombatActionTimestamp();
+				}
 			}
 		}
 	}

@@ -479,6 +479,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("getBadgeListByType", getBadgeListByType);
 	luaEngine->registerFunction("getGalaxyName", getGalaxyName);
 	luaEngine->registerFunction("getQuestTasks", getQuestTasks);
+	luaEngine->registerFunction("broadcastToGalaxy", broadcastToGalaxy);
 
 	//Navigation Mesh Management
 	luaEngine->registerFunction("createNavMesh", createNavMesh);
@@ -3926,5 +3927,35 @@ int DirectorManager::getQuestTasks(lua_State* L) {
 	Reference<QuestTasks*> questTasks = playerManager->getQuestTasks(questCrc);
 
 	lua_pushlightuserdata(L, questTasks.get());
+	return 1;
+}
+
+int DirectorManager::broadcastToGalaxy(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::broadcastToGalaxy";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
+	String message = Lua::getStringParameter(L, -1);
+
+	if (creature == nullptr)
+		return 0;
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 0;
+	}
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	if (chatManager == nullptr)
+		return 0;
+
+	chatManager->broadcastGalaxy(creature, message);
+
 	return 1;
 }
