@@ -2450,6 +2450,10 @@ Time PlayerObjectImplementation::getLastGcwCrackdownCombatActionTimestamp() cons
 	return lastCrackdownGcwCombatActionTimestamp;
 }
 
+Time PlayerObjectImplementation::getLastPvpAreaCombatActionTimestamp() const {
+	return lastPvpAreaCombatActionTimestamp;
+}
+
 void PlayerObjectImplementation::updateLastCombatActionTimestamp(bool updateGcwCrackdownAction, bool updateGcwAction, bool updateBhAction) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
@@ -2493,12 +2497,29 @@ void PlayerObjectImplementation::updateLastGcwPvpCombatActionTimestamp() {
 	updateLastCombatActionTimestamp(false, true, false);
 }
 
+void PlayerObjectImplementation::updateLastPvpAreaCombatActionTimestamp() {
+	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
+
+	if (parent == nullptr)
+		return;
+
+	lastPvpAreaCombatActionTimestamp.updateToCurrentTime();
+	lastPvpAreaCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
+
+	if (!(parent->getPvpStatusBitmask() & CreatureFlag::TEF)) {
+		updateInRangeBuildingPermissions();
+		parent->setPvpStatusBit(CreatureFlag::TEF);
+	}
+
+	schedulePvpTefRemovalTask();
+}
+
 bool PlayerObjectImplementation::hasTef() const {
 	return hasCrackdownTef() || hasPvpTef();
 }
 
 bool PlayerObjectImplementation::hasPvpTef() const {
-	return !lastGcwPvpCombatActionTimestamp.isPast() || hasBhTef();
+	return !lastGcwPvpCombatActionTimestamp.isPast() || hasBhTef() || !lastPvpAreaCombatActionTimestamp.isPast();
 }
 
 bool PlayerObjectImplementation::hasBhTef() const {
@@ -2556,8 +2577,12 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeCrackdownG
 			auto gcwCrackdownTefMs = getLastGcwCrackdownCombatActionTimestamp().miliDifference();
 			auto gcwTefMs = getLastGcwPvpCombatActionTimestamp().miliDifference();
 			auto bhTefMs = getLastBhPvpCombatActionTimestamp().miliDifference();
+			auto pvpAreaMs = getLastPvpAreaCombatActionTimestamp().miliDifference();
+
 			auto scheduleTime = gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs;
 			scheduleTime = gcwCrackdownTefMs < scheduleTime ? gcwCrackdownTefMs : scheduleTime;
+			scheduleTime = pvpAreaMs < scheduleTime ? pvpAreaMs : scheduleTime;
+
 			pvpTefTask->schedule(llabs(scheduleTime));
 		} else {
 			pvpTefTask->execute();
@@ -3260,6 +3285,29 @@ void PlayerObjectImplementation::recalculateForcePower() {
 	maxForce += (forcePowerMod + forceControlMod) * 10;
 
 	setForcePowerMax(maxForce, true);
+}
+
+bool PlayerObjectImplementation::isInPvpArea(bool checkTimer) {
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (creature == nullptr || creature->isInvisible()) {
+		return false;
+	}
+
+	if (checkTimer && !lastPvpAreaCombatActionTimestamp.isPast())
+		return true;
+
+	SortedVector<ManagedReference<ActiveArea* > > areas = *creature->getActiveAreas();
+
+	for (int i = 0; i < areas.size(); ++i) {
+		ManagedReference<ActiveArea*>& area = areas.get(i);
+
+		if (area->isPvpArea()) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 String PlayerObjectImplementation::getMiliSecsTimeString(uint64 miliSecs, bool verbose) const {

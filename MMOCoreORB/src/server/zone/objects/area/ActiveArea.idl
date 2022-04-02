@@ -24,6 +24,8 @@ class ActiveArea extends SceneObject {
 
 	protected boolean noSpawnArea;
 
+	protected boolean pvpArea;
+
 	protected AreaShape areaShape;
 
 	@dereferenced
@@ -40,6 +42,8 @@ class ActiveArea extends SceneObject {
 		municipalZone = false;
 
 		noSpawnArea = false;
+
+		pvpArea = false;
 
 		areaShape = null;
 
@@ -169,6 +173,16 @@ class ActiveArea extends SceneObject {
 	@read
 	public boolean isNoSpawnArea() {
 		return noSpawnArea;
+	}
+
+	@preLocked
+	public void setPvpArea(boolean val) {
+		pvpArea = val;
+	}
+
+	@read
+	public boolean isPvpArea() {
+		return pvpArea;
 	}
 
 	@read
