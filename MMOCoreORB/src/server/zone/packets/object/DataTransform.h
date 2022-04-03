@@ -5,61 +5,82 @@
 #ifndef DATATRANSFORM_H_
 #define DATATRANSFORM_H_
 
-#include "ObjectControllerMessage.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "ObjectControllerMessageCallback.h"
-#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/zone/packets/object/ObjectControllerMessageCallback.h"
+#include "server/zone/packets/scene/LightUpdateTransformMessage.h"
+#include "server/zone/packets/scene/UpdateTransformMessage.h"
+#include "server/zone/packets/object/transform/Transform.h"
+
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/collision/IntersectionResults.h"
-#include "server/zone/Zone.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class DataTransform : public ObjectControllerMessage {
 public:
-	DataTransform(SceneObject* creo)
-			: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0x71) {
+	DataTransform(SceneObject* sceneO) : ObjectControllerMessage(sceneO->getObjectID(), 0x1B, 0x71) {
 
-		insertInt(creo->getMovementCounter());
+		insertInt(sceneO->getMovementCounter());
 
-		insertFloat(creo->getDirectionX());
-		insertFloat(creo->getDirectionY());
-		insertFloat(creo->getDirectionZ());
-		insertFloat(creo->getDirectionW());
+		insertFloat(sceneO->getDirectionX());
+		insertFloat(sceneO->getDirectionY());
+		insertFloat(sceneO->getDirectionZ());
+		insertFloat(sceneO->getDirectionW());
 
-		insertFloat(creo->getPositionX());
-		insertFloat(creo->getPositionZ());
-		insertFloat(creo->getPositionY());
+		insertFloat(sceneO->getPositionX());
+		insertFloat(sceneO->getPositionZ());
+		insertFloat(sceneO->getPositionY());
 
-		insertInt(0);
+		float speed = 0;
+
+		if (sceneO->isCreatureObject())
+			speed = sceneO->asCreatureObject()->getCurrentSpeed();
+
+		insertFloat(speed);
+
+		sceneO->debug() << "DataTransform sent.";
 	}
 
+	DataTransform(SceneObject* sceneO, const Vector3& position) : ObjectControllerMessage(sceneO->getObjectID(), 0x1B, 0x71) {
+		insertInt(sceneO->getMovementCounter());
+
+		insertFloat(sceneO->getDirectionX());
+		insertFloat(sceneO->getDirectionY());
+		insertFloat(sceneO->getDirectionZ());
+		insertFloat(sceneO->getDirectionW());
+
+		insertFloat(position.getX());
+		insertFloat(position.getZ());
+		insertFloat(position.getY());
+
+		float speed = 0;
+
+		if (sceneO->isCreatureObject())
+			speed = sceneO->asCreatureObject()->getCurrentSpeed();
+
+		insertFloat(speed);
+
+		sceneO->debug() << "DataTransform sent.";
+	}
 };
 
 class DataTransformCallback : public MessageCallback {
-	uint32 movementStamp;
-	uint32 movementCounter;
-
-	float directionX, directionY, directionZ, directionW;
-	float positionX, positionZ, positionY;
-	float parsedSpeed;
-
 	ObjectControllerMessageCallback* objectControllerMain;
-public:
-	DataTransformCallback(ObjectControllerMessageCallback* objectControllerCallback) :
-		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
-		movementStamp = 0;
-		movementCounter = 0;
-		directionX = 0;
-		directionY = 0;
-		directionZ = 0;
-		directionW = 0;
-		positionX = 0;
-		positionZ = 0;
-		positionY = 0;
-		parsedSpeed = 0;
 
+	ValidatedPosition validPosition;
+	Transform transform;
+
+	int deltaTime;
+
+public:
+	DataTransformCallback(ObjectControllerMessageCallback* objectControllerCallback) : MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
 		objectControllerMain = objectControllerCallback;
+
+		deltaTime = 0;
 
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
@@ -67,7 +88,7 @@ public:
 			Zone* zone = player->getZone();
 
 			if (zone != nullptr) {
-				String zoneName = zone->getZoneName();
+				const String& zoneName = zone->getZoneName();
 
 				setCustomTaskQueue(zoneName);
 			}
@@ -75,91 +96,91 @@ public:
 	}
 
 	void parse(Message* message) {
-		movementStamp = message->parseInt();
-		movementCounter = message->parseInt();
+		transform.parseDataTransform(message);
 
-		directionX = message->parseFloat();
-		directionY = message->parseFloat();
-		directionZ = message->parseFloat();
-		directionW = message->parseFloat();
-
-		positionX = message->parseFloat();
-		positionZ = message->parseFloat();
-		positionY = message->parseFloat();
-
-		parsedSpeed = message->parseFloat();
-
-		//client->info(message->toStringData(), true);
-
-		debug("datatransform parsed");
+		debug() << "DataTransform parsed.";
 	}
 
-	void bounceBack(CreatureObject* object, ValidatedPosition& pos) {
-		Vector3 teleportPoint = pos.getPosition();
-		uint64 teleportParentID = pos.getParent();
+	void updateError(CreatureObject* creO, const String& message, bool bounceBack = false) const {
+		if (!message.isEmpty() && message.beginsWith("@")) {
+			creO->sendSystemMessage(message);
+		}
 
-		object->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
+#ifdef TRANSFORM_DEBUG
+		String type = (bounceBack ? "error: " : (message.beginsWith("!") ? "warning: " : "info: "));
+		transform.sendDebug(creO, type + message, validPosition.getPosition(), deltaTime);
+#endif // TRANSFORM_DEBUG
+
+		if (bounceBack) {
+			if (creO->getCurrentSpeed() != 0.f) {
+				creO->setCurrentSpeed(0.f);
+				creO->updateLocomotion();
+			}
+
+			const Vector3& position = validPosition.getPosition();
+			creO->teleport(position.getX(), position.getZ(), position.getY(), validPosition.getParent());
+
+			Reference<PlayerObject*> ghost = creO->getPlayerObject();
+			if (ghost == nullptr) {
+				return;
+			}
+
+			ghost->setClientLastMovementStamp(transform.getTimeStamp());
+		}
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> object = client->getPlayer();
+		ManagedReference<CreatureObject*> creO = client->getPlayer();
 
-		if (object == nullptr)
-			return;
-
-		if (object->getZone() == nullptr)
-			return;
-
-		PlayerObject* ghost = object->getPlayerObject();
-
-		if (ghost == nullptr) {
+		if (creO == nullptr || creO->getZone() == nullptr) {
 			return;
 		}
 
-		int posture = object->getPosture();
+		Reference<PlayerObject*> ghost = creO->getPlayerObject();
 
-		auto parent = object->getParent().get();
+		if (ghost == nullptr || ghost->isTeleporting()) {
+			return updateError(creO, "!ghost");
+		}
 
-		if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
-			parent->wlock(object);
+		deltaTime = transform.getTimeStamp() - ghost->getClientLastMovementStamp();
+
+		if (deltaTime < Transform::MINDELTA) {
+			return updateError(creO, "deltaTime");
+		}
+
+		ManagedReference<SceneObject*> parent = creO->getParent().get();
+
+		if (parent != nullptr && !parent->isMount() && !parent->isVehicleObject()) {
+			parent = nullptr;
+		}
+
+		if (parent != nullptr) {
+			parent->wlock(creO);
+		}
+
+		if (ghost->isForcedTransform()) {
+			validPosition = *ghost->getLastValidatedPosition();
+		} else {
+			validPosition.update(creO);
 		}
 
 		try {
-			//TODO: This should be derived from the locomotion table
-			if (ghost->isForcedTransform() || (!object->hasDizzyEvent()
-					&& (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::CROUCHED || posture == CreaturePosture::DRIVINGVEHICLE || posture == CreaturePosture::RIDINGCREATURE
-					|| posture == CreaturePosture::SKILLANIMATING))) {
-
-				updatePosition(object);
+			if (validPosition.getParent() != transform.getParentID() || transform.get2dSquaredDistance(validPosition.getPosition()) >= 0.005625f) {
+				updatePosition(creO, parent);
 			} else {
-				object->setCurrentSpeed(0);
-
-				object->updateLocomotion();
-
-				ValidatedPosition pos;
-				pos.update(object);
-
-				Vector3 currentPos = pos.getPosition();
-				Vector3 newPos(positionX, positionY, positionZ);
-
-				object->setDirection(directionW, directionX, directionY, directionZ);
-
-				if (currentPos.squaredDistanceTo(newPos) > 0.01) {
-					bounceBack(object, pos);
-				} else {
-					ManagedReference<SceneObject*> currentParent = object->getParent().get();
-					bool light = objectControllerMain->getPriority() != 0x23;
-
-					if (currentParent != nullptr)
-						object->updateZoneWithParent(currentParent, light);
-					else
-						object->updateZone(light);
-				}
+				updateStatic(creO, parent);
 			}
-		} catch (...) {
-		}
 
-		if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
+#ifdef TRANSFORM_DEBUG
+		} catch (Exception& e) {
+			error() << e.what();
+			e.printStackTrace();
+		}
+#else
+		} catch (...) {}
+#endif // TRANSFORM_DEBUG
+
+		if (parent != nullptr) {
 			parent->unlock();
 		}
 
@@ -168,163 +189,156 @@ public:
 		}
 	}
 
-	void updatePosition(CreatureObject* object) {
-		PlayerObject* ghost = object->getPlayerObject();
-
-		if (ghost == nullptr)
-			return;
-
-#ifdef PLATFORM_WIN
-#undef isnan
-#undef isinf
-#endif
-
-		if (std::isnan(positionX) || std::isnan(positionY) || std::isnan(positionZ)) {
-			return;
+	void updatePosition(CreatureObject* creO, SceneObject* parent) {
+		if (!transform.isPositionValid()) {
+			return updateError(creO, "!isPositionValid", true);
 		}
 
-		if (std::isinf(positionX) || std::isinf(positionY) || std::isinf(positionZ)) {
-			return;
+		Reference<PlayerObject*> ghost = creO->getPlayerObject();
+
+		if (ghost == nullptr) {
+			return updateError(creO, "!ghost");
 		}
 
-		if (ghost->isTeleporting() && !ghost->isForcedTransform()) {
-			return;
-		}
+		if (!ghost->isForcedTransform()) {
+			if (!transform.isPostureValid(creO->getPosture())) {
+				return updateError(creO, "!posture", true);
+			}
 
-		/*if (!object->isInQuadTree())
-			return;*/
-
-		if (positionX > 7680.0f || positionX < -7680.0f || positionY > 7680.0f || positionY < -7680.0f) {
-			/*
-			StringBuffer msg;
-			msg << "position out of bounds";
-			object->error(msg.toString());
-			*/
-			return;
-		}
-
-		/*float floorHeight = CollisionManager::instance()->getWorldFloorCollision(positionX, positionY, object->getZone(), true);
-
-		printf("received height: %f calculated height: %f\n", positionZ, floorHeight); */
-
-		ManagedReference<PlanetManager*> planetManager = object->getZone()->getPlanetManager();
-
-		if (planetManager == nullptr)
-			return;
-
-		IntersectionResults intersections;
-
-		CollisionManager::getWorldFloorCollisions(positionX, positionY, object->getZone(), &intersections, (CloseObjectsVector*) object->getCloseObjects());
-
-		float z = planetManager->findClosestWorldFloor(positionX, positionY, positionZ, object->getSwimHeight(), &intersections, (CloseObjectsVector*) object->getCloseObjects());
-
-		if (z != positionZ) {
-			positionZ = z;
-		}
-
-		ValidatedPosition pos;
-		pos.update(object);
-
-		if (!ghost->hasGodMode()) {
-			SceneObject* inventory = object->getSlottedObject("inventory");
-
-			if (inventory != nullptr && inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
-				object->sendSystemMessage("Inventory Overloaded - Cannot Move");
-				bounceBack(object, pos);
-				return;
-			} else if (object->isFrozen()) {
-				bounceBack(object, pos);
-				return;
+			if (deltaTime < Transform::MIDDELTA && transform.getSpeed() < 7.5f && (int)transform.getSpeed() == (int)creO->getCurrentSpeed() && !transform.isYawUpdate(creO->getDirection())) {
+				return updateError(creO, "inertia");
 			}
 		}
 
-		/*
+		if (!ghost->hasGodMode()) {
+			if (creO->isFrozen()) {
+				return updateError(creO, "isFrozen", true);
+			}
 
-		if (CollisionManager::instance()->checkMovementCollision(object, positionX, positionZ, positionY, object->getZone())) {
-			Vector3 teleportPoint = pos.getPosition();
-			uint64 teleportParentID = pos.getParent();
+			Reference<SceneObject*> inventory = creO->getSlottedObject("inventory");
 
-			object->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
+			if (inventory == nullptr) {
+				return updateError(creO, "!inventory");
+			}
 
-			object->info("position update inside mesh detected pos[" + String::valueOf(positionX)
-				+ ", " + String::valueOf(positionZ) + ", " + String::valueOf(positionY) + "]", true);
-			return;
+			if (inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
+				creO->setState(CreatureState::FROZEN, true);
+				return updateError(creO, "@system_msg:move_fail_inventory_overloaded", true);
+			}
 		}
 
-		*/
-		uint32 objectMovementCounter = object->getMovementCounter();
+		Zone* zone = creO->getZone();
 
-		/*if (objectMovementCounter > movementCounter) { // we already parsed an more updated movement counter
-		StringBuffer msg;
-		msg << "trying to parse movement update: 0x" << hex << movementCounter << " but we already parsed 0x" << hex << objectMovementCounter;
-		bject->info(msg.toString(), true);
-		return;
-		}*/
+		if (zone == nullptr) {
+			return updateError(creO, "!zone");
+		}
+
+		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+		if (planetManager == nullptr) {
+			return updateError(creO, "!planetManager");
+		}
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		if (playerManager == nullptr)
-			return;
-
-		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0) {
-			return;
+		if (playerManager == nullptr) {
+			return updateError(creO, "!playerManager");
 		}
 
-		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, nullptr) != 0) {
-			return;
+		IntersectionResults intersections;
+		CloseObjectsVector* closeObjects = creO->getCloseObjects();
+		CollisionManager::getWorldFloorCollisions(transform.getPositionX(), transform.getPositionY() , zone, &intersections, closeObjects);
+
+		float positionZ = planetManager->findClosestWorldFloor(transform.getPositionX(), transform.getPositionY() ,transform.getPositionZ() , creO->getSwimHeight(), &intersections, closeObjects);
+
+		if (playerManager->checkSpeedHackFirstTest(creO, transform.getSpeed() , validPosition, 1.1f) != 0) {
+			return updateError(creO, "!checkSpeedHackFirstTest");
 		}
 
-		playerManager->updateSwimmingState(object, positionZ, &intersections, (CloseObjectsVector*) object->getCloseObjects());
-
-		object->setMovementCounter(movementCounter);
-		//object->setDirection(directionW, directionX, directionY, directionZ);
-
-		float oldX = object->getPositionX();
-		float oldY = object->getPositionY();
-		float oldZ = object->getPositionZ();
-
-		float dirw = object->getDirectionW();
-		float dirz = object->getDirectionZ();
-		float diry = object->getDirectionY();
-		float dirx = object->getDirectionX();
-
-		ghost->setClientLastMovementStamp(movementStamp);
-
-		if (oldX == positionX && oldY == positionY && oldZ == positionZ &&
-			dirw == directionW && dirz == directionZ && dirx == directionX && diry == directionY) {
-
-			return;
+		if (playerManager->checkSpeedHackSecondTest(creO, transform.getPositionX(), positionZ, transform.getPositionY(), transform.getTimeStamp(), nullptr) != 0) {
+			return updateError(creO, "!checkSpeedHackSecondTest");
 		}
 
-		/*StringBuffer degrees;
-		degrees << "angle: " << object->getDirectionAngle();
-		degrees << " special angle: " << object->getSpecialDirectionAngle();
-		object->info(degrees.toString(), true);*/
+		playerManager->updateSwimmingState(creO, positionZ, &intersections, closeObjects);
 
-		object->setPosition(positionX, positionZ, positionY);
-		//		ghost->setClientLastMovementStamp(movementStamp);
+		Vector3 position = transform.predictPosition(creO->getPosition(), creO->getDirection(), deltaTime);
 
-		object->setDirection(directionW, directionX, directionY, directionZ);
+#ifdef TRANSFORM_DEBUG
+		String type = transform.getPosition() != position ? "prediction" : "position";
+		transform.sendDebug(creO, type, position, deltaTime);
+#endif // TRANSFORM_DEBUG
 
-		/*StringBuffer posMsg;
-		posMsg << "setting position: " << positionX << " " << positionZ << " " << positionY;
-		object->info(posMsg.toString(), true);*/
+		creO->setPosition(transform.getPositionX(), positionZ, transform.getPositionY());
+		creO->setDirection(transform.getDirection());
+		creO->setCurrentSpeed(transform.getSpeed());
 
-		object->setCurrentSpeed(parsedSpeed);
-		object->updateLocomotion();
+		updateTransform(creO, parent, position);
+	}
 
-		if (objectControllerMain->getPriority() == 0x23) {
-			object->updateZone(false);
+	void updateStatic(CreatureObject* creO, SceneObject* parent) {
+		bool synchronize = creO->getMovementCounter() > 50 && creO->getCurrentSpeed() == 0.f && transform.getSpeed() == 0.f && !transform.isYawUpdate(creO->getDirection());
+		if (synchronize && deltaTime < 10000u) {
+			return updateError(creO, "inertUpdate");
+		}
+
+#ifdef TRANSFORM_DEBUG
+		String type = synchronize ? "synchronize" : "static";
+		transform.sendDebug(creO, type, creO->getPosition(), deltaTime);
+#endif // TRANSFORM_DEBUG
+
+		Quaternion direction = transform.getDirection();
+
+		if (synchronize) {
+			direction.normalize();
+		}
+
+		creO->setDirection(direction);
+		creO->setCurrentSpeed(0.f);
+
+		updateTransform(creO, parent, creO->getPosition());
+
+		if (synchronize) {
+			auto data = new DataTransform(creO, transform.getPosition());
+			creO->sendMessage(data);
+		}
+	}
+
+	void updateTransform(CreatureObject* creO, SceneObject* parent, const Vector3& position) const {
+		Reference<PlayerObject*> ghost = creO->getPlayerObject();
+
+		if (ghost == nullptr) {
+			return updateError(creO, "!ghost");
+		}
+
+		ghost->setClientLastMovementStamp(transform.getTimeStamp());
+
+		bool lightUpdate = objectControllerMain->getPriority() != 0x23;
+
+		creO->setMovementCounter(transform.getMoveCount());
+		creO->updateZone(lightUpdate, false);
+		creO->updateLocomotion();
+
+		CreatureObject* creature = nullptr;
+
+		if (parent != nullptr && parent->isCreatureObject()) {
+			parent->incrementMovementCounter();
+			creature = parent->asCreatureObject();
 		} else {
-			object->updateZone(true);
+			creature = creO;
 		}
 
-		if (ghost->isForcedTransform()) {
-			auto msg = object->info();
-			msg << "DataTransform - Player isForcedTransform == TRUE";
-			msg.flush();
+		if (creature == nullptr || creature->isInvisible()) {
+			return updateError(creO, "!creature");
+		}
+
+		if (lightUpdate) {
+			auto update = new LightUpdateTransformMessage(creature, position.getX(), position.getZ(), position.getY());
+			creature->broadcastMessage(update, false);
+		} else {
+			auto update = new UpdateTransformMessage(creature, position.getX(), position.getZ(), position.getY());
+			creature->broadcastMessage(update, false);
 		}
 	}
 };
 
-#endif /*DATATRANSFORM_H_*/
+#endif // DATATRANSFORM_H_
