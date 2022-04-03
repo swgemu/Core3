@@ -164,7 +164,15 @@ object_building_faction_perk_hq_hq_s02_imp = object_building_faction_perk_hq_sha
 		{ mobile = "fbase_dark_trooper", x = -7.6, z = -13.75, y = -12.6, cellid = 9, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "fbase_imperial_colonel", x = -2.5, z = -13.75, y = -14.9, cellid = 9, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "imperial_recruiter", x = 0, z = -13.75, y = -17, cellid = 9, containmentType = -1, respawn = 60, heading = 0},
+	},
 
+	securityPatrols = {
+		{patrol = "imperial_small_2", x = 11.8, z = 0, y = 1, heading = 0},
+		{patrol = "imperial_small_2", x = -11.8, z = 0, y = 1, heading = 0},
+		{patrol = "imperial_small_2", x = 0, z = 0, y = 17.8, heading = 0},
+
+		{patrol = "imperial_large_2", x = 12.8, z = 0, y = 28.9, heading = 0},
+		{patrol = "imperial_large_2", x = -12.8, z = 0, y = 28.9, heading = 0},
 	},
 }
 

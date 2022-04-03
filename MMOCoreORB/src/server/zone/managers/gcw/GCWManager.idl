@@ -25,6 +25,7 @@ include server.chat.StringIdChatParameter;
 include templates.faction.Factions;
 include system.util.Vector;
 include system.util.VectorMap;
+include engine.util.u3d.Vector3;
 include system.util.HashTable;
 include system.lang.ref.Reference;
 
@@ -122,6 +123,9 @@ class GCWManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient Vector<string> rebelStrongholds;
 
+	@dereferenced
+	protected transient VectorMap<string, Reference<Vector<string> > > squadFormations;
+
 	public GCWManager(Zone zne){
 		imperialBases = 0;
 		imperialScore = 0;
@@ -192,6 +196,8 @@ class GCWManager extends ManagedService implements Logger {
 	public native void addScanner(BuildingObject building, SceneObject scanner);
 	public native void addTurret(BuildingObject building, SceneObject turret);
 	public native void addBaseAlarm(BuildingObject building, SceneObject alarm);
+	public native void spawnSecurityPatrol(BuildingObject building, string patrol, @dereferenced Vector3 location, unsigned long parentID, float direction, boolean stationary = false, boolean attackable = true);
+	public native void spawnBaseSecurityPatrols(BuildingObject building);
 
 	public native void startVulnerability(BuildingObject building);
 	public native void endVulnerability(BuildingObject building);

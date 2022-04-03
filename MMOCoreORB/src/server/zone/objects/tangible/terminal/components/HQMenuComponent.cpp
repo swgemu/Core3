@@ -66,6 +66,8 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 	if (ghost == nullptr)
 		return;
 
+	bool privileged = ghost->isPrivileged();
+
 	if (!gcwMan->canUseTerminals(player, building, sceneObject))
 		return;
 
@@ -73,7 +75,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 		if (gcwMan->isPowerOverloaded(building) || gcwMan->isFacilityRebooting(building))
 			menuResponse->addRadialMenuItem(230, 3, "@hq:mnu_overload");  // Activate Overload
 
-		if (!ghost->isPrivileged())
+		if (!privileged)
 			return;
 	}
 
@@ -85,7 +87,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 		menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // Donate Defense
 	}
 
-	if (player->getFactionRank() < 4 && !ghost->isPrivileged()) {
+	if (player->getFactionRank() < 4 && !privileged) {
 		player->sendSystemMessage("@hq:admin_only"); // You must be at least faction rank 4 to use this terminal.
 		return;
 	}
@@ -93,7 +95,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 	menuResponse->addRadialMenuItem(210, 3, "@player_structure:management");
 	menuResponse->addRadialMenuItemToRadialID(210, 227, 3, "@player_structure:management_status");
 
-	if (building->getOwnerCreatureObject() == player || ghost->isPrivileged()) {
+	if (building->getOwnerCreatureObject() == player || privileged) {
 		menuResponse->addRadialMenuItemToRadialID(210, 228, 3, "@hq:mnu_defense_status");
 
 		if ((building->getPvpStatusBitmask() & CreatureFlag::OVERT) && !gcwMan->isBaseVulnerable(building)) {
@@ -103,6 +105,10 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 			menuResponse->addRadialMenuItemToRadialID(210, 236, 3, "@player_structure:permission_destroy");
 		} else if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
 			menuResponse->addRadialMenuItemToRadialID(210, 236, 3, "@player_structure:permission_destroy");
+		}
+
+		if (privileged) {
+			menuResponse->addRadialMenuItemToRadialID(210, 237, 3, "Spawn Security Patrols");
 		}
 	}
 }
@@ -216,6 +222,8 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 			gcwMan->resetVulnerability(creature, building);
 	} else if (selectedID == 236) {
 		creature->executeObjectControllerAction(0x18FC1726, building->getObjectID(), ""); //destroyStructure
+	} else if (selectedID == 237) {
+		gcwMan->spawnBaseSecurityPatrols(building);
 	}
 
 	return 0;
