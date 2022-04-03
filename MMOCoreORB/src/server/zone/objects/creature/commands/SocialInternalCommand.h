@@ -66,15 +66,15 @@ public:
 			return SUCCESS;
 		}
 
-		// If target is a pet, enqueue command to handle it
 		Reference<AiAgent*> aiAgent = creo->asAiAgent();
 
-		if (aiAgent == nullptr)
-			return SUCCESS;
+		if (aiAgent == nullptr || aiAgent->isDead() || aiAgent->isIncapacitated())
+			return GENERALERROR;
 
 		Locker crossLocker(aiAgent, creature);
 
 		if (aiAgent->isMonster()) {
+			// If target is a pet, enqueue command to handle it
 			if (aiAgent->isPet()) {
 				PetManager* petManager = aiAgent->getZoneServer()->getPetManager();
 				if (petManager == nullptr)
