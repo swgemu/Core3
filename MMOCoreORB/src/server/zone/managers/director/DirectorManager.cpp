@@ -409,6 +409,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("spawnSceneObject", spawnSceneObject);
 	luaEngine->registerFunction("spawnActiveArea", spawnActiveArea);
 	luaEngine->registerFunction("spawnBuilding", spawnBuilding);
+	luaEngine->registerFunction("spawnSecurityPatrol", spawnSecurityPatrol);
 	luaEngine->registerFunction("destroyBuilding", destroyBuilding);
 	luaEngine->registerFunction("getSceneObject", getSceneObject);
 	luaEngine->registerFunction("getCreatureObject", getCreatureObject);
@@ -2278,6 +2279,48 @@ int DirectorManager::spawnEventMobile(lua_State* L) {
 		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 		lua_pushlightuserdata(L, creature);
 	}
+
+	return 1;
+}
+
+int DirectorManager::spawnSecurityPatrol(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+
+	if (numberOfArguments != 5) {
+		String err = "incorrect number of arguments passed to DirectorManager::spawnSecurityPatrol";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	bool attackable = true;
+	bool stationary = false;
+	uint64 parentID = 0;
+	String patrol;
+
+	attackable = lua_toboolean(L, -1);
+	stationary = lua_toboolean(L, -2);
+	parentID = lua_tointeger(L, -3);
+	patrol = lua_tostring(L, -4);
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -5);
+
+	if (creature == nullptr)
+		return 0;
+
+	Zone* zone = creature->getZone();
+
+	if (zone == nullptr)
+		return 0;
+
+	GCWManager* gcwMan = zone->getGCWManager();
+
+	if (gcwMan == nullptr)
+		return 0;
+
+	Vector3 location(creature->getPositionX(), creature->getPositionY(), creature->getPositionZ());
+	float direction = creature->getDirection()->getRadians();
+
+	gcwMan->spawnSecurityPatrol(nullptr, patrol, location, parentID, direction, stationary, attackable);
 
 	return 1;
 }
