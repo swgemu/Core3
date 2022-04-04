@@ -1117,6 +1117,14 @@ class AiAgent extends CreatureObject {
 	}
 
 	@dirty
+	public string getHealerType() {
+		if (npcTemplate.get() == null)
+			return "";
+
+		return npcTemplate.get().getHealerType();
+	}
+
+	@dirty
 	public float getChanceHit() {
 		if (petDeed) {
 			return petDeed.getHitChance();
@@ -1133,7 +1141,7 @@ class AiAgent extends CreatureObject {
 
 	@dirty
 	public native int getDamageMax();
-	
+
 	@dirty
 	public float getSpecialDamageMult() {
 		if (npcTemplate.get() == null)

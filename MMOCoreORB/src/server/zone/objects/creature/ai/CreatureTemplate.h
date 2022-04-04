@@ -57,6 +57,7 @@ protected:
 	String socialGroup;
 	String faction;
 	int mobType;
+	String healerType;
 
 	bool tauntable;
 
@@ -448,6 +449,10 @@ public:
 
 	inline const String& getPersonalityStf() const {
 		return personalityStf;
+	}
+
+	inline const String& getHealerType() const {
+		return healerType;
 	}
 
 	inline bool isSpecialProtection(int resistType) const {

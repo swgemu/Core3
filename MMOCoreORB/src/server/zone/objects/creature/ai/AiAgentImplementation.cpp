@@ -1139,6 +1139,21 @@ bool AiAgentImplementation::validateTarget(SceneObject* target) {
 			// info("validateTarget - target is incapacitated or failed isAttackable check", true);
 			return false;
 		}
+
+		// Must have permission to walk into cell in order to attack
+		if (getParentID() != 0 && getParentID() != targetCreO->getParentID()) {
+			Reference<CellObject*> curCell = getParent().get().castTo<CellObject*>();
+
+			if (curCell != nullptr) {
+				auto perms = curCell->getContainerPermissions();
+
+				if (!perms->hasInheritPermissionsFromParent()) {
+					if (!curCell->checkContainerPermission(targetCreO, ContainerPermissions::WALKIN)) {
+						return false;
+					}
+				}
+			}
+		}
 	} else if (target->isTangibleObject()) {
 		TangibleObject* targetTangibleObject = target->asTangibleObject();
 
@@ -1416,11 +1431,15 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 		chatManager = zoneServer->getChatManager();
 #endif
 
-	asAiAgent()->clearQueueActions();
+	clearQueueActions();
 
-	uint32 socialGroup = getSocialGroup().hashCode();
+	uint32 socialGroup = getSocialGroup().toLowerCase().hashCode();
 
-	if (socialGroup == STRING_HASHCODE("nightsister") || socialGroup == STRING_HASHCODE("mtn_clan") || socialGroup == STRING_HASHCODE("force") || socialGroup == STRING_HASHCODE("spider_nightsister")) {
+	// Types are: force & nromal
+	uint32 healerType = getHealerType().toLowerCase().hashCode();
+	uint32 typeForce = STRING_HASHCODE("force");
+
+	if (healerType == typeForce || socialGroup == STRING_HASHCODE("nightsister") || socialGroup == STRING_HASHCODE("mtn_clan") || socialGroup == STRING_HASHCODE("force") || socialGroup == STRING_HASHCODE("spider_nightsister")) {
 		if (healTarget == asAiAgent()) {
 			healTarget->playEffect("clienteffect/pl_force_heal_self.cef");
 
@@ -3669,21 +3688,6 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 			return false;
 
 		return isAttackableBy(owner);
-	}
-
-	// Must have permission to walk into cell in order to attack
-	if (getParentID() != 0 && getParentID() != creature->getParentID()) {
-		Reference<CellObject*> curCell = getParent().get().castTo<CellObject*>();
-
-		if (curCell != nullptr) {
-			auto perms = curCell->getContainerPermissions();
-
-			if (!perms->hasInheritPermissionsFromParent()) {
-				if (!curCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
-					return false;
-				}
-			}
-		}
 	}
 
 	bool creatureIsAgent = creature->isAiAgent();
