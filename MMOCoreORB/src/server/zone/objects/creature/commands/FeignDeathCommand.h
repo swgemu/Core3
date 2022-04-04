@@ -39,7 +39,6 @@ public:
 
 		creature->addBuff(buff);
 
-
 		creature->sendSystemMessage("@cbt_spam:feign_get_hit_single");
 
 		return SUCCESS;
@@ -48,12 +47,12 @@ public:
 	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) const override {
 		ManagedReference<CreatureObject*> creo = creature->asCreatureObject();
 
-		if(creo == nullptr)
+		if (creo == nullptr)
 			return;
 
 		Locker lock(creo);
 
-		if(creo->canFeignDeath()) {
+		if (creo->canFeignDeath()) {
 			creo->feignDeath();
 		} else {
 			creo->sendSystemMessage("@cbt_spam:feign_fail_single");
