@@ -1423,7 +1423,7 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 	}
 
 #ifdef DEBUG_AIHEAL
-	ZoneServer* zoneServer = asAiAgent()->getZoneServer();
+	ZoneServer* zoneServer = getZoneServer();
 
 	ChatManager* chatManager = nullptr;
 
@@ -1431,11 +1431,9 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 		chatManager = zoneServer->getChatManager();
 #endif
 
-	clearQueueActions();
-
 	uint32 socialGroup = getSocialGroup().toLowerCase().hashCode();
 
-	// Types are: force & nromal
+	// Types are: force & normal
 	uint32 healerType = getHealerType().toLowerCase().hashCode();
 	uint32 typeForce = STRING_HASHCODE("force");
 
@@ -1445,20 +1443,20 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 
 #ifdef DEBUG_AIHEAL
 			if (chatManager != nullptr)
-				chatManager->broadcastChatMessage(asAiAgent(), "Healing myself!", 0, 0, asAiAgent()->getMoodID());
+				chatManager->broadcastChatMessage(asAiAgent(), "Force Healing myself!", 0, 0, asAiAgent()->getMoodID());
 #endif
 
 		} else {
-			asAiAgent()->doCombatAnimation(healTarget, STRING_HASHCODE("force_healing_1"), 0, 0xFF);
+			doCombatAnimation(healTarget, STRING_HASHCODE("force_healing_1"), 0, 0xFF);
 
 #ifdef DEBUG_AIHEAL
 			if (chatManager != nullptr)
-				chatManager->broadcastChatMessage(asAiAgent(), "Healing target!", 0, 0, asAiAgent()->getMoodID());
+				chatManager->broadcastChatMessage(asAiAgent(), "Force Healing target!", 0, 0, asAiAgent()->getMoodID());
 #endif
 		}
 	} else {
 		if (healTarget == asAiAgent()) {
-			asAiAgent()->doAnimation("heal_self");
+			doAnimation("heal_self");
 
 #ifdef DEBUG_AIHEAL
 			if (chatManager != nullptr)
@@ -1466,7 +1464,7 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 #endif
 
 		} else {
-			asAiAgent()->doAnimation("heal_other");
+			doAnimation("heal_other");
 
 #ifdef DEBUG_AIHEAL
 			if (chatManager != nullptr)
@@ -2654,8 +2652,17 @@ float AiAgentImplementation::getMaxDistance() {
 		case AiAgent::PATHING_HOME:
 			return 0.1f;
 			break;
-		case AiAgent::MOVING_TO_HEAL:
-			return 1.5f;
+		case AiAgent::MOVING_TO_HEAL: {
+			float healRange = 5.0f;
+			uint32 healerType = getHealerType().toLowerCase().hashCode();
+
+			if (healerType == STRING_HASHCODE("force")) {
+				// Force heals can be executed at 32m but we will move AI closer
+				healRange = 20.f;
+			}
+
+			return healRange;
+		}
 		case AiAgent::NOTIFY_ALLY:
 			return 1.0f;
 		case AiAgent::CRACKDOWN_SCANNING:
@@ -2801,10 +2808,12 @@ int AiAgentImplementation::setDestination() {
 	}
 	case AiAgent::MOVING_TO_HEAL: {
 		if (!peekBlackboard("healTarget")) {
-			if (followCopy != nullptr) {
-				setMovementState(AiAgent::FOLLOWING);
-			} else {
-				setMovementState(AiAgent::PATHING_HOME);
+			if (!isWaiting()) {
+				if (followCopy != nullptr) {
+					setMovementState(AiAgent::FOLLOWING);
+				} else {
+					setMovementState(AiAgent::PATHING_HOME);
+				}
 			}
 		} else {
 			ManagedReference<CreatureObject*> healTarget = readBlackboard("healTarget").get<ManagedReference<CreatureObject*> >().get();
@@ -3554,10 +3563,14 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 	// info(true) << " faction string == " << factionString;
 
 	if (!factionString.isEmpty()) {
-		if (tarAgent != nullptr) {
+		if (targetIsAgent && tarAgent != nullptr) {
+			String tarAgentFaction = tarAgent->getFactionString();
+
 			// AI can check the enemy strings directly vs other AI (since they don't have a standing)
-			if (FactionManager::instance()->isEnemy(factionString, tarAgent->getFactionString())) {
+			if (FactionManager::instance()->isEnemy(factionString, tarAgentFaction)) {
 				return true;
+			} else if (factionString.hashCode() == tarAgentFaction.hashCode()) {
+				return false;
 			}
 		}
 

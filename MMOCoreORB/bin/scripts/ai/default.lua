@@ -144,7 +144,8 @@ healDefault = {
 	{id="1528696497",	name="GetHealTarget",	pid="3642803509",	args={range=60.0}},
 	{id="3764376804",	name="AlwaysSucceed",	pid="3412645993"},
 	{id="3741964589",	name="TreeSocket",	pid="3764376804",	args={slot=MOVE}},
-	{id="2037341348",	name="HealTarget",	pid="3412645993"}}
+	{id="2037341348",	name="HealTarget",	pid="3412645993"},
+	{id="2730487382",	name="Wait",	pid="3412645993",	args={duration=6.0}}}
 addAiTemplate("healDefault", healDefault)
 
 idleDefault = {

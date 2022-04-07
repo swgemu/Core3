@@ -614,18 +614,25 @@ public:
 		}
 
 		bool healExecuted = false;
+		float range = 7.5f;
+		uint32 healerType = agent->getHealerType().toLowerCase().hashCode();
+
+		if (healerType == STRING_HASHCODE("force")) {
+			range = 32.f;
+		}
 
 		if (healTarget->getHAM(CreatureAttribute::HEALTH) < healTarget->getMaxHAM(CreatureAttribute::HEALTH) || healTarget->getHAM(CreatureAttribute::ACTION) < healTarget->getMaxHAM(CreatureAttribute::ACTION)) {
+			agent->clearQueueActions();
+
 			if (healTarget == agent) {
 				agent->healTarget(healTarget);
 				healExecuted = true;
 			} else {
-				if (agent->isInRange(healTarget, 2.0f)) {
+				if (agent->isInRange(healTarget, range)) {
 					Locker clocker(healTarget, agent);
 
 					agent->healTarget(healTarget);
 
-					agent->setMovementState(AiAgent::FOLLOWING);
 					healExecuted = true;
 				}
 			}
