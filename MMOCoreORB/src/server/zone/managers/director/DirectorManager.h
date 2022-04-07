@@ -197,6 +197,7 @@ namespace server {
 		static int createNavMesh(lua_State* L);
 		static int creatureTemplateExists(lua_State* L);
 		static int printLuaError(lua_State* L);
+		static int logLua(lua_State* L);
 		static int getSpawnPointInArea(lua_State* L);
 		static int getPlayerByName(lua_State* L);
 		static int sendMail(lua_State* L);
