@@ -473,6 +473,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("removeQuestVectorMap", removeQuestVectorMap);
 	luaEngine->registerFunction("creatureTemplateExists", creatureTemplateExists);
 	luaEngine->registerFunction("printLuaError", printLuaError);
+	luaEngine->registerFunction("logLua", logLua);
 	luaEngine->registerFunction("getPlayerByName", getPlayerByName);
 	luaEngine->registerFunction("sendMail", sendMail);
 	luaEngine->registerFunction("spawnTheaterObject", spawnTheaterObject);
@@ -3742,6 +3743,61 @@ int DirectorManager::printLuaError(lua_State* L) {
 	String error = lua_tostring(L, -1);
 
 	printTraceError(L, error);
+
+	return 0;
+}
+
+int DirectorManager::logLua(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::logLua";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	Lua* lua = instance()->getLuaInstance();
+
+	if (lua == nullptr) {
+		return 0;
+	}
+
+	/*	bin/scripts/utils/logger.lua
+		LT_ERROR = 1
+		LT_WARNING = 2
+		LT_LOG = 3
+		LT_INFO = 4
+		LT_DEBUG = 5
+		LT_TRACE = 6
+	*/
+
+	int logLevel = lua_tonumber(L, -2);
+	String message = lua_tostring(L, -1);
+
+	const int printTrace = 6;
+
+	switch(logLevel) {
+		case Logger::ERROR:
+			lua->error() << message;
+			break;
+		case Logger::WARNING:
+			lua->warning() << message;
+			break;
+		case Logger::LOG:
+			lua->log() << message;
+			break;
+		case Logger::INFO:
+			lua->info() << message;
+			break;
+		case Logger::DEBUG:
+			lua->debug() << message;
+			break;
+		case printTrace:
+			printTraceError(L, message);
+			break;
+		default:
+			lua->info() << message;
+			break;
+	}
 
 	return 0;
 }
