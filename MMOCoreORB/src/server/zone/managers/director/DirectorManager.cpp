@@ -476,6 +476,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("logLua", logLua);
 	luaEngine->registerFunction("getPlayerByName", getPlayerByName);
 	luaEngine->registerFunction("sendMail", sendMail);
+	luaEngine->registerFunction("sendMailToOnlinePlayers", sendMailToOnlinePlayers);
 	luaEngine->registerFunction("spawnTheaterObject", spawnTheaterObject);
 	luaEngine->registerFunction("getSchematicItemName", getSchematicItemName);
 	luaEngine->registerFunction("getBadgeListByType", getBadgeListByType);
@@ -3881,6 +3882,42 @@ int DirectorManager::sendMail(lua_State* L) {
 
 	if (chatManager != nullptr)
 		chatManager->sendMail(senderName, subject, body, recipient);
+
+	return 0;
+}
+
+int DirectorManager::sendMailToOnlinePlayers(lua_State* L) {
+	if (checkArgumentCount(L, 3) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::sendMailToOnlinePlayers";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr)
+		return 0;
+
+	PlayerManager* playerManager = zoneServer->getPlayerManager();
+	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
+
+	if (playerManager == nullptr || chatManager == nullptr)
+		return 0;
+
+	String body = lua_tostring(L, -1);
+	String subject = lua_tostring(L, -2);
+	String senderName = lua_tostring(L, -3);
+
+	auto playerList = playerManager->getOnlinePlayerList();
+	auto playername = "";
+
+	for (int i = 0; i < playerList.size(); i++) {
+		auto playerID = playerList.get(i);
+		auto playerName = playerManager->getPlayerName(playerID);
+
+		chatManager->sendMail(senderName, subject, body, playerName);
+	}
 
 	return 0;
 }

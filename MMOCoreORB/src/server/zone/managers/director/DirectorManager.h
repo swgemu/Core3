@@ -201,6 +201,7 @@ namespace server {
 		static int getSpawnPointInArea(lua_State* L);
 		static int getPlayerByName(lua_State* L);
 		static int sendMail(lua_State* L);
+		static int sendMailToOnlinePlayers(lua_State* L);
 		static int spawnTheaterObject(lua_State* L);
 		static int getSchematicItemName(lua_State* L);
 		static int getBadgeListByType(lua_State* L);
