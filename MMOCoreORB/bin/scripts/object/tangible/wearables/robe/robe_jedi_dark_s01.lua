@@ -64,7 +64,7 @@ object_tangible_wearables_robe_robe_jedi_dark_s01 = object_tangible_wearables_ro
 		"object/creature/player/zabrak_female.iff" },
 
 	maxCondition = 100,
-	volume = 1;
+	volume = 1,
 	jediRobe = true,
 
 	skillMods = {
