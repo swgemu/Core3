@@ -483,6 +483,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("getGalaxyName", getGalaxyName);
 	luaEngine->registerFunction("getQuestTasks", getQuestTasks);
 	luaEngine->registerFunction("broadcastToGalaxy", broadcastToGalaxy);
+	luaEngine->registerFunction("getWorldFloor", getWorldFloor);
 
 	//Navigation Mesh Management
 	luaEngine->registerFunction("createNavMesh", createNavMesh);
@@ -4089,6 +4090,35 @@ int DirectorManager::broadcastToGalaxy(lua_State* L) {
 		return 0;
 
 	chatManager->broadcastGalaxy(creature, message);
+
+	return 1;
+}
+
+int DirectorManager::getWorldFloor(lua_State* L) {
+	if (checkArgumentCount(L, 3) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::getWorldFloor";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr)
+		return 0;
+
+	float x = lua_tonumber(L, -3);
+	float y = lua_tonumber(L, -2);
+	String zoneName = lua_tostring(L, -1);
+
+	Zone* zone = zoneServer->getZone(zoneName);
+
+	if (zone == nullptr)
+		return 0;
+
+	float z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
+
+	lua_pushinteger(L, z);
 
 	return 1;
 }
