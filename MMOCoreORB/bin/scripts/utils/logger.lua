@@ -14,13 +14,22 @@ Logger = {}
 -- @param level the level of the log message.
 function Logger:log(message, level)
 	local info = debug.getinfo(2)
-	if info.name == nil then
-		info.name = "Function Not Defined"
-	else
-		info.name = "Function: " .. info.name
+
+	message = message .. " - "
+
+	if info.name ~= nil then
+		message = message .. "Function: " .. info.name .. " "
 	end
 
-	logLua(level, message .. " - " .. info.name)
+	if (info.source ~= nil) then
+		message = message .. " Source: " .. info.source .. " "
+	end
+
+	if (info.currentline ~= nil) then
+		message = message .. " Line: " .. info.currentline
+	end
+
+	logLua(level, message)
 end
 
 return Logger
