@@ -678,6 +678,10 @@ namespace conf {
 			return cachedAiAgentLoadTesting;
 		}
 #endif // DEBUG_AI
+
+		inline bool isPvpBroadcastChannelEnabled() {
+			return getBool("Core3.ChatManager.PvpBroadcastChannel", false);
+		}
 	};
 }
 

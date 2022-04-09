@@ -20,6 +20,7 @@
 #include "server/zone/managers/frs/FrsManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/packets/chat/ChatRoomMessage.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/skill/Performance.h"
@@ -1355,6 +1356,90 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 						if (!strongMan->handleDarkCouncilDeath(attackerStrongRef, playerStrongRef))
 							strongMan->handleSuddenDeathLoss(playerStrongRef, copyThreatMap);
 					}, "PvPFRSKillTask");
+				}
+			}
+		}
+	}
+
+	if (ConfigManager::instance()->isPvpBroadcastChannelEnabled() && attacker->isPlayerCreature() && ghost != nullptr) {
+		ZoneServer* zoneServer = player->getZoneServer();
+
+		if (zoneServer != nullptr) {
+			ChatManager* chatManager = zoneServer->getChatManager();
+			CreatureObject* attackerCreature = attacker->asCreatureObject();
+
+			if (chatManager != nullptr && attackerCreature != nullptr) {
+				StringBuffer broadcastMsg;
+				String rebelMsg = "\r\\#33CCFF Rebel Insurgent ";
+				String imperialMsg = "\r\\#FF0000 Imperial Agent ";
+				String lightMsg = "\r\\#33CCFF Light Jedi ";
+				String darkMsg = "\r\\#FF0000 Dark Jedi ";
+
+				bool areInDuel = CombatManager::instance()->areInDuel(attackerCreature, player);
+
+				// Destructed player
+				String playerName = player->getFirstName();
+				String playerJedi = "";
+				String playerFactionMsg = "";
+
+				if (ghost->getJediState() >= 4) {
+					bool light = ghost->isJediLight();
+
+					if (light)
+						playerJedi = lightMsg;
+					else
+						playerJedi = darkMsg;
+				} else {
+					uint32 playerFaction = player->getFaction();
+
+					if (playerFaction == Factions::FACTIONREBEL)
+						playerFactionMsg = rebelMsg;
+					else if(playerFaction == Factions::FACTIONIMPERIAL)
+						playerFactionMsg = imperialMsg;
+				}
+
+				// Attacker
+				String attackerName = attackerCreature->getFirstName();
+				String attackerJedi = "";
+				String attackerFactionMsg = "";
+
+				PlayerObject* attackerGhost = attackerCreature->getPlayerObject();
+
+				if (attackerGhost != nullptr && attackerGhost->isJedi()) {
+					bool light = attackerGhost->isJediLight();
+
+					if (light)
+						attackerJedi = lightMsg;
+					else
+						attackerJedi = darkMsg;
+				} else {
+					uint32 attackerFaction = attackerCreature->getFaction();
+
+					if (attackerFaction == Factions::FACTIONREBEL)
+						attackerFactionMsg = rebelMsg;
+					else if(attackerFaction == Factions::FACTIONIMPERIAL)
+						attackerFactionMsg = imperialMsg;
+				}
+
+				bool isHunting = attackerCreature->hasBountyMissionFor(player);
+
+				String type = areInDuel ? " in a duel." : " in GCW combat.";
+
+				if (!areInDuel && isHunting)
+					type = " fulfilling his Bounty Mission.";
+
+				broadcastMsg << attackerFactionMsg << attackerJedi << attackerName << "\r\\#FFFFFF";
+				broadcastMsg << " has bested " << playerFactionMsg << playerJedi << playerName << "\r\\#FFFFFF" << type;
+
+				UnicodeString message(broadcastMsg.toString());
+				UnicodeString formattedMsg(chatManager->formatMessage(message));
+
+				ManagedReference<ChatRoom*> pvpBroadcastRoom = chatManager->getPvpBroadcastRoom();
+
+				if (pvpBroadcastRoom != nullptr) {
+					BaseMessage* msg = new ChatRoomMessage("", server->getGalaxyName(), formattedMsg, pvpBroadcastRoom->getRoomID());
+
+					pvpBroadcastRoom->broadcastMessage(msg);
 				}
 			}
 		}
