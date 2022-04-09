@@ -75,6 +75,7 @@ void ChatManagerImplementation::stop() {
 	groupRoom = nullptr;
 	guildRoom = nullptr;
 	auctionRoom = nullptr;
+	pvpBroadcastRoom = nullptr;
 	gameRooms.removeAll();
 }
 
@@ -318,6 +319,13 @@ void ChatManagerImplementation::initiateRooms() {
 	auctionRoom->setCanEnter(true);
 	auctionRoom->setChatRoomType(ChatRoom::AUCTION);
 
+	if (ConfigManager::instance()->isPvpBroadcastChannelEnabled()) {
+		pvpBroadcastRoom = createRoom("PvPBroadcasts", galaxyRoom);
+		pvpBroadcastRoom->setCanEnter(true);
+		pvpBroadcastRoom->setAllowSubrooms(false);
+		pvpBroadcastRoom->setTitle("PvP death broadcasts.");
+		pvpBroadcastRoom->setChatRoomType(ChatRoom::CUSTOM);
+	}
 }
 
 void ChatManagerImplementation::initiatePlanetRooms() {

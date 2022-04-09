@@ -678,6 +678,19 @@ namespace conf {
 			return cachedAiAgentLoadTesting;
 		}
 #endif // DEBUG_AI
+
+		inline bool isPvpBroadcastChannelEnabled() {
+			static uint32 cachedVersion = 0;
+			static bool cachedPvpBroadcastChannel;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedPvpBroadcastChannel = getBool("Core3.ChatManager.PvpBroadcastChannel", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedPvpBroadcastChannel;
+		}
 	};
 }
 

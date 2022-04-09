@@ -34,6 +34,7 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/chat/ChatManager.h"
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -195,6 +196,18 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 				pvpStatusBitmask |= CreatureFlag::OVERT;
 
 				creature->sendSystemMessage("@faction_recruiter:overt_complete");
+			}
+
+			if (ConfigManager::instance()->isPvpBroadcastChannelEnabled()) {
+				ZoneServer* zoneServer = getZoneServer();
+
+				if (zoneServer != nullptr) {
+					ChatManager* chatManager = zoneServer->getChatManager();
+
+					if (chatManager != nullptr) {
+						ghost->addChatRoom(chatManager->getPvpBroadcastRoom()->getRoomID());
+					}
+				}
 			}
 		} else if (factionStatus == FactionStatus::ONLEAVE) {
 			if (pvpStatusBitmask & CreatureFlag::OVERT)
