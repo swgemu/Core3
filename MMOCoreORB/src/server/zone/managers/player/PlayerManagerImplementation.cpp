@@ -20,6 +20,7 @@
 #include "server/zone/managers/frs/FrsManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/packets/chat/ChatRoomMessage.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/skill/Performance.h"
@@ -1355,6 +1356,56 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 						if (!strongMan->handleDarkCouncilDeath(attackerStrongRef, playerStrongRef))
 							strongMan->handleSuddenDeathLoss(playerStrongRef, copyThreatMap);
 					}, "PvPFRSKillTask");
+				}
+			}
+		}
+	}
+
+	if (ConfigManager::instance()->getPvpBroadcastChannelEnabled() && attacker->isPlayerCreature() && ghost != nullptr) {
+		ZoneServer* zoneServer = attacker->getZoneServer();
+
+		if (zoneServer != nullptr) {
+			ChatManager* chatManager = zoneServer->getChatManager();
+			CreatureObject* attackerCreature = attacker->asCreatureObject();
+
+			if (chatManager != nullptr && attackerCreature != nullptr) {
+				StringBuffer broadcastMsg;
+
+				String playerName = player->getFirstName();
+				String playerJedi = ghost->isJedi() ? "Jedi " : "";
+
+				String attackerName = attackerCreature->getFirstName();
+				String attackerJedi = "";
+
+				PlayerObject* attackerGhost = attackerCreature->getPlayerObject();
+
+				if (attackerGhost != nullptr && attackerGhost->isJedi())
+					attackerJedi = "Jedi ";
+
+				bool areInDuel = CombatManager::instance()->areInDuel(attackerCreature, player);
+				bool isHunting = attackerCreature->hasBountyMissionFor(player);
+
+				String type = areInDuel ? " in a duel." : " in GCW combat.";
+
+				if (!areInDuel && isHunting)
+					type = " fulfilling his Bounty Mission";
+
+				broadcastMsg << "\r\\#FF0000" << attackerJedi << attackerName << "\r\\#FFFFFF";
+				broadcastMsg << " has bested \r\\#0000CC" << playerJedi << playerName << " \r\\#FFFFFF" << type;
+
+				UnicodeString formattedMessage(broadcastMsg.toString());
+
+				ManagedReference<ChatRoom*> pvpBroadcastRoom = chatManager->getPvpBroadcastRoom();
+
+				attacker->sendSystemMessage(" trying to send message ");
+
+				if (pvpBroadcastRoom != nullptr) {
+					BaseMessage* msg = new ChatRoomMessage("PvP-Broadcaster", server->getGalaxyName(), formattedMessage, pvpBroadcastRoom->getRoomID());
+
+					pvpBroadcastRoom->broadcastMessageCheckIgnore(msg, "PvP-Broadcaster");
+
+					attacker->sendSystemMessage(" message should be sent ");
+
 				}
 			}
 		}
