@@ -621,6 +621,10 @@ public:
 		for (int j = 0; j < defenseMods.size(); j++)
 			targetDefense += defender->getSkillMod(defenseMods.get(j));
 
+		Vector<String> jediDefenseMods = effect.getDefenderJediStateDefenseModifiers();
+		for (int j = 0; j < jediDefenseMods.size(); j++)
+			targetDefense += defender->getSkillMod(jediDefenseMods.get(j));
+
 		targetDefense -= mod;
 
 		uint32 duration = (uint32) Math::max(5.f, effect.getStateLength()*(1.f-targetDefense/120.f));
