@@ -365,10 +365,15 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		if (creature->getHueValue() >= 0)
 			creature->setHue(creature->getHueValue());
 
-		if (player->getPvpStatusBitmask() & CreatureFlag::PLAYER)
-			creature->setPvpStatusBitmask(player->getPvpStatusBitmask() - CreatureFlag::PLAYER, true);
-		else
-			creature->setPvpStatusBitmask(player->getPvpStatusBitmask(), true);
+		uint32 playerPvpStatusBitmask = player->getPvpStatusBitmask();
+
+		if (playerPvpStatusBitmask & CreatureFlag::PLAYER) {
+			playerPvpStatusBitmask &= ~CreatureFlag::PLAYER;
+
+			creature->setPvpStatusBitmask(playerPvpStatusBitmask);
+		} else {
+			creature->setPvpStatusBitmask(playerPvpStatusBitmask);
+		}
 
 		if (trainedAsMount && (creature->getOptionsBitmask() ^ 0x1000)) {
 			creature->setOptionBit(0x1000);

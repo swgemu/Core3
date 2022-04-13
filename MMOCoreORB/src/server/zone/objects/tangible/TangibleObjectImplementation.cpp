@@ -255,17 +255,18 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	uint32 newPvpStatusBitmask = pvpStatusBitmask;
 
-	if (!(newPvpStatusBitmask & CreatureFlag::ATTACKABLE)) {
-		if (isAttackableBy(player))
-			newPvpStatusBitmask |= CreatureFlag::ATTACKABLE;
-	} else if (!isAttackableBy(player)) {
+	bool attackable = isAttackableBy(player);
+	bool aggressive = isAggressiveTo(player);
+
+	if (attackable && !(newPvpStatusBitmask & CreatureFlag::ATTACKABLE)) {
+		newPvpStatusBitmask |= CreatureFlag::ATTACKABLE;
+	} else if (!attackable && newPvpStatusBitmask & CreatureFlag::ATTACKABLE) {
 		newPvpStatusBitmask &= ~CreatureFlag::ATTACKABLE;
 	}
 
-	if (!(newPvpStatusBitmask & CreatureFlag::AGGRESSIVE)) {
-		if (isAggressiveTo(player))
-			newPvpStatusBitmask |= CreatureFlag::AGGRESSIVE;
-	} else if (!isAggressiveTo(player)) {
+	if (aggressive && !(newPvpStatusBitmask & CreatureFlag::AGGRESSIVE)) {
+		newPvpStatusBitmask |= CreatureFlag::AGGRESSIVE;
+	} else if (!aggressive && newPvpStatusBitmask & CreatureFlag::AGGRESSIVE) {
 		newPvpStatusBitmask &= ~CreatureFlag::AGGRESSIVE;
 	}
 

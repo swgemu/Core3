@@ -3184,9 +3184,14 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* tarCreo) {
 			if ((pvpStatusBitmask & CreatureFlag::OVERT) && (tarCreo->getPvpStatusBitmask() & CreatureFlag::OVERT) && thisFaction != targetFaction)
 				return true;
 
-			if (ghost->hasBhTef() && (hasBountyMissionFor(tarCreo) || tarCreo->hasBountyMissionFor(asCreatureObject()))) {
+			if (hasBountyMissionFor(tarCreo)  && ghost->hasBhTef()) {
 				return true;
 			}
+
+			PlayerObject* tarGhost = tarCreo->getPlayerObject();
+
+			if (tarGhost != nullptr && tarCreo->hasBountyMissionFor(asCreatureObject()) && tarGhost->hasBhTef())
+				return true;
 
 			ManagedReference<GuildObject*> guildObject = guild.get();
 
@@ -3198,9 +3203,9 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* tarCreo) {
 		}
 	}
 
-	// info(true) << "CreatureObjectImp isAggressiveTo return true";
+	// info(true) << "CreatureObjectImp isAggressiveTo return false at end";
 
-	return true;
+	return false;
 }
 
 bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object) {
@@ -3292,16 +3297,6 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 	if (creature->getZoneUnsafe() != getZoneUnsafe())
 		return false;
 
-	// Attack creature is pet, use owner to check
-	if (creature->isPet()) {
-		ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
-
-		if (owner == nullptr)
-			return false;
-
-		return isAttackableBy(owner);
-	}
-
 	// Vehicle object, check against owner
 	if (isVehicleObject()) {
 		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
@@ -3327,6 +3322,22 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 		uint32 creatureFaction = creature->getFaction();
 
 		if (creature->isAiAgent()) {
+			// Attack creature is pet, use owner to check
+			if (creature->isPet()) {
+				ManagedReference<PetControlDevice*> pcd = creature->getControlDevice().get().castTo<PetControlDevice*>();
+
+				if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral()) {
+					return false;
+				}
+
+				ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
+
+				if (owner == nullptr)
+					return false;
+
+				return isAttackableBy(owner);
+			}
+
 			// Player has crackdown TEF, making them attackable from the faction AI that gave them the TEF
 			if (ghost->hasCrackdownTefTowards(creatureFaction)) {
 				return true;

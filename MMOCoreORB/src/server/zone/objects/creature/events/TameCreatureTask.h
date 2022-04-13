@@ -169,10 +169,15 @@ public:
 		creature->setCreatureLink(player);
 		creature->setFaction(player->getFaction());
 
-		if (player->getPvpStatusBitmask() & CreatureFlag::PLAYER)
-			creature->setPvpStatusBitmask(player->getPvpStatusBitmask() - CreatureFlag::PLAYER, false);
-		else
-			creature->setPvpStatusBitmask(player->getPvpStatusBitmask(), false);
+		uint32 playerPvpStatusBitmask = player->getPvpStatusBitmask();
+
+		if (playerPvpStatusBitmask & CreatureFlag::PLAYER) {
+			playerPvpStatusBitmask &= ~CreatureFlag::PLAYER;
+
+			creature->setPvpStatusBitmask(playerPvpStatusBitmask, false);
+		} else {
+			creature->setPvpStatusBitmask(playerPvpStatusBitmask, false);
+		}
 
 		creature->setBaby(false);
 

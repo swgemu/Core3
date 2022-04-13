@@ -3530,6 +3530,21 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 		return isAggressiveTo(owner);
 	}
 
+	if (isPet()) {
+		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && target->isNeutral()) {
+			return false;
+		}
+
+		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
+
+		if (owner == nullptr || target == owner)
+			return false;
+
+		return owner->isAggressiveTo(target);
+	}
+
 	// Get factions
 	uint32 thisFaction = getFaction();
 	uint32 targetFaction = target->getFaction();
