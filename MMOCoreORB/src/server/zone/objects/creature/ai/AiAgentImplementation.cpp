@@ -1852,8 +1852,11 @@ void AiAgentImplementation::activatePostureRecovery() {
 		}
 	}
 
-	// Lying down and sitting, should clear when in combat
-	if ((isLyingDown() || isSitting()) && isInCombat()) {
+	// Lying down and sitting, should clear when in combat or if their movement state changes
+	if ((isLyingDown() || isSitting()) && (getMovementState() != AiAgent::RESTING || isInCombat())) {
+		eraseBlackboard("restingTime");
+		restDelay.updateToCurrentTime();
+
 		enqueueCommand(STRING_HASHCODE("stand"), 0, 0, "");
 	}
 }

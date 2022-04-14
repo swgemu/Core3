@@ -663,6 +663,9 @@ template<> bool CheckShouldRest::check(AiAgent* agent) const {
 	if (agent == nullptr)
 		return false;
 
+	if (!agent->isNeutral())
+		return false;
+
 	Time* restDelay = agent->getRestDelay();
 
 	if (restDelay == nullptr || !restDelay->isPast())
@@ -688,10 +691,13 @@ template<> bool CheckStopResting::check(AiAgent* agent) const {
 	if (agent == nullptr)
 		return false;
 
+	if (agent->isInCombat())
+		return true;
+
 	Time* restDelay = agent->getRestDelay();
 
 	if (restDelay == nullptr)
-		return false;
+		return true;
 
 	// Default time to rest is 45s less the 5min set on the delay when set Resting in ms
 	int resting = 255 * 1000;
