@@ -323,6 +323,7 @@ void ChatManagerImplementation::initiateRooms() {
 		pvpBroadcastRoom = createRoom("PvPBroadcasts", galaxyRoom);
 		pvpBroadcastRoom->setCanEnter(true);
 		pvpBroadcastRoom->setAllowSubrooms(false);
+		pvpBroadcastRoom->setModerated(true);
 		pvpBroadcastRoom->setTitle("PvP death broadcasts.");
 		pvpBroadcastRoom->setChatRoomType(ChatRoom::CUSTOM);
 	}
