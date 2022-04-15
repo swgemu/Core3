@@ -1,5 +1,4 @@
 includeFile("default.lua")
-includeFile("acklay.lua")
 includeFile("cityPatrol.lua")
 includeFile("crackdown.lua")
 includeFile("deathWatch.lua")

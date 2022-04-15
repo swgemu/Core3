@@ -53,7 +53,7 @@ public:
 private:
 
 	void loadSchematicGroups();
-	void loadDraftSchematicFile();
+	void loadDraftSchematicFile(String file);
 	void buildSchematicGroups();
 };
 

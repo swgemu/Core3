@@ -17,7 +17,8 @@ FactionManager::FactionManager() {
 }
 
 void FactionManager::loadData() {
-	loadLuaConfig();
+	loadLuaConfig("scripts/managers/faction_manager.lua");
+	loadLuaConfig("scripts/custom_scripts/managers/faction_manager.lua");
 	loadFactionRanks();
 }
 
@@ -39,8 +40,8 @@ void FactionManager::loadFactionRanks() {
 	info("loaded " + String::valueOf(factionRanks.getCount()) + " ranks", true);
 }
 
-void FactionManager::loadLuaConfig() {
-	info("Loading config file.", true);
+void FactionManager::loadLuaConfig(String file) {
+	info("Loading config file: " + file, true);
 
 	FactionMap* fMap = getFactionMap();
 
@@ -48,7 +49,7 @@ void FactionManager::loadLuaConfig() {
 	lua->init();
 
 	//Load the faction manager lua file.
-	lua->runFile("scripts/managers/faction_manager.lua");
+	lua->runFile(file);
 
 	LuaObject luaObject = lua->getGlobalObject("factionList");
 
