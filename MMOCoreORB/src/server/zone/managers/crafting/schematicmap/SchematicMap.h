@@ -54,6 +54,7 @@ private:
 
 	void loadSchematicGroups();
 	void loadDraftSchematicFile();
+	void loadCustomSchematicFile();
 	void buildSchematicGroups();
 };
 
