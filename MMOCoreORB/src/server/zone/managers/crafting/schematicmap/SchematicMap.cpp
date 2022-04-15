@@ -34,6 +34,7 @@ void SchematicMap::initialize(ZoneServer* server) {
 
 	loadDraftSchematicDatabase();
 	loadDraftSchematicFile();
+	loadCustomSchematicFile();
 	loadSchematicGroups();
 }
 
@@ -149,6 +150,57 @@ void SchematicMap::loadDraftSchematicFile() {
 	info("Loaded " + String::valueOf(count) + " schematics from scripts", true);
 
 	serverScriptCRCList.pop();
+}
+
+void SchematicMap::loadCustomSchematicFile() {
+	int count = 0;
+
+	if (runFile("scripts/custom_scripts/managers/crafting/schematics.lua")) {
+		LuaObject serverScriptCRCList = getGlobalObject("schematics");
+
+		int size = serverScriptCRCList.getTableSize();
+
+		lua_State* L = serverScriptCRCList.getLuaState();
+
+		for (int i = 0; i < size; ++i) {
+
+			lua_rawgeti(L, -1, i + 1);
+			LuaObject luaObject(L);
+
+			String path = luaObject.getStringField("path");
+			uint32 servercrc = path.hashCode();
+
+			Reference<DraftSchematic*> schematic = schematicCrcMap.get(servercrc);
+
+			luaObject.pop();
+
+			if (schematic == nullptr) {
+				try {
+					schematic = dynamic_cast<DraftSchematic*> (objectManager->createObject(servercrc, 1, "draftschematics"));
+
+					if(schematic == nullptr) {
+						error("Custom Schematics - Could not create schematic with crc: " + String::valueOf(servercrc));
+						continue;
+					}
+
+				} catch (Exception& e) {
+					error(e.getMessage());
+					error("Custom Schematics - Could not create schematic with template: " + path);
+					continue;
+				}
+				if(!schematicCrcMap.contains(schematic->getServerObjectCRC()))
+					schematicCrcMap.put(schematic->getServerObjectCRC(), schematic);
+
+				if(!schematicCrcMap.contains(schematic->getClientObjectCRC()))
+					schematicCrcMap.put(schematic->getClientObjectCRC(), schematic);
+
+				count++;
+			}
+		}
+		serverScriptCRCList.pop();
+	}
+
+	info("Loaded " + String::valueOf(count) + " schematics from custom_scripts", true);
 }
 
 void SchematicMap::buildSchematicGroups() {
