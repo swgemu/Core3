@@ -33,7 +33,8 @@ void SchematicMap::initialize(ZoneServer* server) {
 	objectManager = zoneServer->getObjectManager();
 
 	loadDraftSchematicDatabase();
-	loadDraftSchematicFile();
+	loadDraftSchematicFile("scripts/managers/crafting/schematics.lua");
+	loadDraftSchematicFile("scripts/custom_scripts/managers/crafting/schematics.lua");
 	loadSchematicGroups();
 }
 
@@ -96,8 +97,8 @@ void SchematicMap::loadDraftSchematicDatabase() {
 	info("Loaded " + String::valueOf(count) + " schematics from database", true);
 }
 
-void SchematicMap::loadDraftSchematicFile() {
-	runFile("scripts/managers/crafting/schematics.lua");
+void SchematicMap::loadDraftSchematicFile(String file) {
+	runFile(file);
 
 	// Read and create all the items in the config unless they
 	// were already loaded from database.
@@ -146,7 +147,7 @@ void SchematicMap::loadDraftSchematicFile() {
 		}
 	}
 
-	info("Loaded " + String::valueOf(count) + " schematics from scripts", true);
+	info("Loaded " + String::valueOf(count) + " schematics from " + file, true);
 
 	serverScriptCRCList.pop();
 }

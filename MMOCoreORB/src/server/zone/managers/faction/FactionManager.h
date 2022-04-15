@@ -70,7 +70,7 @@ public:
 
 protected:
 	void loadFactionRanks();
-	void loadLuaConfig();
+	void loadLuaConfig(String file);
 };
 
 #endif /* FACTIONMANAGER_H_ */
