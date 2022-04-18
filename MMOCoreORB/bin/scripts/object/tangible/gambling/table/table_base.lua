@@ -42,6 +42,11 @@
 
 
 object_tangible_gambling_table_table_base = object_tangible_gambling_table_shared_table_base:new {
+	--Gambling table is categorized as a Terminal like the slot and roulette table, but this one needs
+	--a manual furniture/table type override as it's a craftable smuggler item.
+	templateType = FURNITURE,
+	gameObjectType = 8203,
+	clientGameObjectType = 8203,
 
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
