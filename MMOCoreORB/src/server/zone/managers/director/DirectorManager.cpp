@@ -366,7 +366,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	if (DEBUG_MODE) {
 		luaEngine->setLogLevel(Logger::DEBUG);
 	} else {
-		luaEngine->setLogLevel(Logger::INFO);
+		luaEngine->setLogLevel(ConfigManager::instance()->getLogLevel("Core3.LuaEngine.LogLevel", Logger::LOG));
 		luaEngine->setLogToConsole(false);
 	}
 
