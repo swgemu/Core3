@@ -45,7 +45,7 @@ function RishaSinan:spawnMobiles()
 end
 
 function RishaSinan:notifyEnteredMiteCaveArea(miteCaveArea, pPlayer)
-	if (pPlayer == nil) then
+	if pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() then
 		return 0
 	end
 
