@@ -1792,6 +1792,9 @@ class PlayerObject extends IntangibleObject {
 	@read
 	public native boolean hasBhTef();
 
+	@read
+	public native boolean hasGcwTef();
+
 	public native void setCrackdownTefTowards(unsigned int factionCrc, boolean scheduleTefRemovalTask = true);
 
 	@read

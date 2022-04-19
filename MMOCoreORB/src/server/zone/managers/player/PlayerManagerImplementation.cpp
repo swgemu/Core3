@@ -232,6 +232,7 @@ void PlayerManagerImplementation::loadLuaConfig() {
 
 	lua->runFile("scripts/managers/player_manager.lua");
 
+	gcwBhTefOverride = lua->getGlobalInt("gcwBhTefOverride");
 	allowSameAccountPvpRatingCredit = lua->getGlobalInt("allowSameAccountPvpRatingCredit");
 	onlineCharactersPerAccount = lua->getGlobalInt("onlineCharactersPerAccount");
 	performanceBuff = lua->getGlobalInt("performanceBuff");

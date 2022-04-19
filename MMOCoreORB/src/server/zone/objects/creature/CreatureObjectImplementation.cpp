@@ -3431,9 +3431,6 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	if (ghost == nullptr)
 		return false;
 
-	if (ghost->hasBhTef())
-		return false;
-
 	//if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 
 	CreatureObject* targetCreo = asCreatureObject();
@@ -3449,6 +3446,25 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	uint32 targetFactionStatus = targetCreo->getFactionStatus();
 	uint32 currentFactionStatus = object->getFactionStatus();
 
+	PlayerManager* pMan = getZoneServer()->getPlayerManager();
+
+	if (!pMan->getGcwBhTefOverride()){
+		if(ghost->hasBhTef())
+			return false;
+
+		if(targetCreo->isPlayerCreature()){
+			PlayerObject* targetGhost = targetCreo->getPlayerObject();
+			if(targetGhost!=nullptr && targetGhost->hasBhTef())
+				return false;
+		}	
+	} else {
+		if(targetCreo->isPlayerCreature()){
+			PlayerObject* targetGhost = targetCreo->getPlayerObject();
+			if(targetGhost!=nullptr && (ghost->hasBhTef() || targetGhost->hasBhTef()) && (!ghost->hasGcwTef() || !targetGhost->hasGcwTef()))
+				return false;
+			}	
+	}
+
 	if (getFaction() != object->getFaction() && !(targetFactionStatus == FactionStatus::ONLEAVE))
 		return false;
 
@@ -3457,12 +3473,6 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 
 	if (!(targetFactionStatus == FactionStatus::ONLEAVE) && (currentFactionStatus == FactionStatus::ONLEAVE))
 		return false;
-
-	if(targetCreo->isPlayerCreature()) {
-		PlayerObject* targetGhost = targetCreo->getPlayerObject();
-		if(targetGhost != nullptr && targetGhost->hasBhTef())
-			return false;
-	}
 
 	return true;
 }

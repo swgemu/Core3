@@ -2530,6 +2530,10 @@ bool PlayerObjectImplementation::hasBhTef() const {
 	return !lastBhPvpCombatActionTimestamp.isPast();
 }
 
+bool PlayerObjectImplementation::hasGcwTef() const {
+	return !lastGcwPvpCombatActionTimestamp.isPast();
+}
+
 void PlayerObjectImplementation::setCrackdownTefTowards(unsigned int factionCrc, bool scheduleTefRemovalTask) {
 	crackdownFactionTefCrc = factionCrc;
 	if (scheduleTefRemovalTask) {

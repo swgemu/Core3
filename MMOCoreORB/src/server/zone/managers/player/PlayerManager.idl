@@ -87,6 +87,7 @@ class PlayerManager extends Observer implements Logger {
 	protected int baseStoredShips;
 	protected boolean allowSameAccountPvpRatingCredit;
 	protected int onlineCharactersPerAccount;
+	protected boolean gcwBhTefOverride;
 
 	@dereferenced
 	protected XpBonusList xpBonusList;
@@ -588,6 +589,10 @@ class PlayerManager extends Observer implements Logger {
 
 	public int getOnlineCharactersPerAccount() {
 	    return onlineCharactersPerAccount;
+	}
+
+	public boolean getGcwBhTefOverride(){
+		return gcwBhTefOverride;
 	}
 
 	@local
