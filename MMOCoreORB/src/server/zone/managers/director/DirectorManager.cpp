@@ -277,6 +277,20 @@ uint64 DirectorManager::readSharedMemory(const String& key) {
 	return data;
 }
 
+Vector<String> DirectorManager::readStringVectorSharedMemory(const String& key) {
+#ifndef WITH_STM
+	DirectorManager::instance()->rlock();
+#endif
+
+	Vector<String> table = DirectorManager::instance()->sharedMemory->getStringVector(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->runlock();
+#endif
+
+	return table;
+}
+
 Vector<Reference<ScreenPlayTask*> > DirectorManager::getObjectEvents(SceneObject* obj) const {
 	Vector<Reference<ScreenPlayTask*> > eventList;
 
@@ -407,6 +421,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("readVector3SharedMemory", readVector3SharedMemory);
 	luaEngine->registerFunction("writeVector3SharedMemory", writeVector3SharedMemory);
 	luaEngine->registerFunction("deleteVector3SharedMemory", deleteVector3SharedMemory);
+	luaEngine->registerFunction("readStringVectorSharedMemory", readStringVectorSharedMemory);
+	luaEngine->registerFunction("writeStringVectorSharedMemory", writeStringVectorSharedMemory);
+	luaEngine->registerFunction("deleteStringVectorSharedMemory", deleteStringVectorSharedMemory);
 	luaEngine->registerFunction("spawnSceneObject", spawnSceneObject);
 	luaEngine->registerFunction("spawnActiveArea", spawnActiveArea);
 	luaEngine->registerFunction("spawnBuilding", spawnBuilding);
@@ -1253,6 +1270,97 @@ int DirectorManager::writeVector3SharedMemory(lua_State* L) {
 #endif
 
 	DirectorManager::instance()->sharedMemory->putVector3(key, newVector);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->unlock();
+#endif
+
+	return 0;
+}
+
+int DirectorManager::readStringVectorSharedMemory(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::readStringVectorSharedMemory";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String key = Lua::getStringParameter(L);
+
+	Vector<String> table = instance()->readStringVectorSharedMemory(key);
+	int tableSize = table.size();
+
+	lua_newtable(L);
+
+	for (int i = tableSize; i > 0; --i) {
+		const String str = table.get(i - 1);
+
+		lua_pushstring(L, str.toCharArray());
+	}
+
+	for (int j = tableSize; j > 0; --j) {
+		int rawSet = (j + 1) * -1;
+
+		lua_rawseti(L, rawSet, j);
+	}
+
+	return 1;
+}
+
+int DirectorManager::deleteStringVectorSharedMemory(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::deleteStringVectorSharedMemory";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String key = Lua::getStringParameter(L);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->wlock();
+#endif
+
+	DirectorManager::instance()->sharedMemory->removeStringVector(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->unlock();
+#endif
+
+	return 0;
+}
+
+int DirectorManager::writeStringVectorSharedMemory(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::writeStringVectorSharedMemory";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String key = lua_tostring(L, -2);
+
+	lua_settop(L, -1);
+
+	LuaObject table(L);
+	int tableSize = table.getTableSize();
+
+	Vector<String> strings;
+
+	for (int i = 1; i <= tableSize; ++i) {
+		String entry = table.getStringAt(i);
+
+		strings.add(entry);
+	}
+
+	table.pop();
+
+#ifndef WITH_STM
+	DirectorManager::instance()->wlock();
+#endif
+
+	DirectorManager::instance()->sharedMemory->putStringVector(key, strings);
 
 #ifndef WITH_STM
 	DirectorManager::instance()->unlock();
@@ -4119,7 +4227,7 @@ int DirectorManager::getWorldFloor(lua_State* L) {
 
 	float z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
 
-	lua_pushinteger(L, z);
+	lua_pushnumber(L, z);
 
 	return 1;
 }
