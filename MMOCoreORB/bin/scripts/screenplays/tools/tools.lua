@@ -3,7 +3,8 @@ StaffTools = {
 		{ "Shuttle Dropoff", "openShuttleConfig" },
 		{ "Firework Event", "openFireworkConfig" },
 		{ "GCW City Landing", "openCityLandingConfig" },
-		{ "Spawn GCW Formation", "openGCWFormationConfig" },
+		{ "GCW Formation", "openGCWFormationConfig" },
+		{ "Event Active Area", "openEventActiveAreaConfig" },
 	}
 }
 
@@ -56,6 +57,10 @@ end
 
 function StaffTools.openGCWFormationConfig(pPlayer)
 	GCWFormation:showMainUI(pPlayer)
+end
+
+function StaffTools.openEventActiveAreaConfig(pPlayer)
+	EventActiveArea:showMainUI(pPlayer)
 end
 
 function StaffTools:suiShuttleDropoffCallback(pPlayer, pSui, eventIndex, args)
