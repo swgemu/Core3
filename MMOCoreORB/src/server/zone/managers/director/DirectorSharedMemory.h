@@ -14,6 +14,7 @@ class DirectorSharedMemory : public Object {
 	HashTable<String, uint64> hashTable;
 	HashTable<String, String> stringTable;
 	HashTable<String, Vector3> vector3Table;
+	HashTable<String, Vector<String>> stringVectorTable;
 
 public:
 	uint64 get(const String& k) const {
@@ -28,6 +29,10 @@ public:
 		return vector3Table.get(k);
 	}
 
+	Vector<String> getStringVector(const String& k) const {
+		return stringVectorTable.get(k);
+	}
+
 	void put(const String& k, uint64 v) {
 		hashTable.put(k, v);
 	}
@@ -40,6 +45,10 @@ public:
 		vector3Table.put(k, v);
 	}
 
+	void putStringVector(const String& k, const Vector<String>& v) {
+		stringVectorTable.put(k, v);
+	}
+
 	void remove(const String& k) {
 		hashTable.remove(k);
 	}
@@ -50,6 +59,10 @@ public:
 
 	void removeVector3(const String& k) {
 		vector3Table.remove(k);
+	}
+
+	void removeStringVector(const String& k) {
+		stringVectorTable.remove(k);
 	}
 
 	void setNullValue(uint64 o) {
