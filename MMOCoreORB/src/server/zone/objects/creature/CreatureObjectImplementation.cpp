@@ -3233,6 +3233,13 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 	if (isInvisible() || isEventPerk())
 		return false;
 
+	for (int i = 0; i < activeAreas.size(); i++) {
+		ActiveArea* area = activeAreas.get(i);
+
+		if (area != nullptr && area->isNoCombatArea())
+			return false;
+	}
+
 	if (isPlayerCreature()) {
 		PlayerObject* ghost = getPlayerObject();
 
@@ -3305,6 +3312,13 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 			return false;
 
 		return isAttackableBy(owner);
+	}
+
+	for (int i = 0; i < activeAreas.size(); i++) {
+		ActiveArea* area = activeAreas.get(i);
+
+		if (area != nullptr && area->isNoCombatArea())
+			return false;
 	}
 
 	// This CreO is a player

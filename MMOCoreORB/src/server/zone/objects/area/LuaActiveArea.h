@@ -38,7 +38,22 @@ namespace area {
 		int getCellObjectID(lua_State* L);
 
 		int setNoSpawnArea(lua_State* L);
+		int isNoSpawnArea(lua_State* L);
+
 		int setPvpArea(lua_State* L);
+		int isPvpArea(lua_State* L);
+
+		int setRebelOnlyArea(lua_State* L);
+		int isRebelOnlyArea(lua_State* L);
+
+		int setImperialOnlyArea(lua_State* L);
+		int isImperialOnlyArea(lua_State* L);
+
+		int setNoCombatArea(lua_State* L);
+		int isNoCombatArea(lua_State* L);
+
+		int setNoPetArea(lua_State* L);
+		int isNoPetArea(lua_State* L);
 	private:
 		ActiveArea* realObject;
 	};

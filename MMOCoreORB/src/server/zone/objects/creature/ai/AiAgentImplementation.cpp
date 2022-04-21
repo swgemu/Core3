@@ -3664,6 +3664,13 @@ bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
 		}
 	}
 
+	for (int i = 0; i < activeAreas.size(); i++) {
+		ActiveArea* area = activeAreas.get(i);
+
+		if (area != nullptr && area->isNoCombatArea())
+			return false;
+	}
+
 	// info(true) << "AiAgent::isAttackableBy TangibleObject Check returned true";
 
 	return true;
@@ -3719,6 +3726,13 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 			return false;
 
 		return isAttackableBy(owner);
+	}
+
+	for (int i = 0; i < activeAreas.size(); i++) {
+		ActiveArea* area = activeAreas.get(i);
+
+		if (area != nullptr && area->isNoCombatArea())
+			return false;
 	}
 
 	bool creatureIsAgent = creature->isAiAgent();

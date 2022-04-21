@@ -33,6 +33,17 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
+	SortedVector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
+
+	for (int i = 0; i < areas->size(); i++) {
+		ActiveArea* area = areas->get(i);
+
+		if (area != nullptr && area->isNoPetArea()) {
+			player->sendSystemMessage("@pet/pet_menu:cant_call"); // You cannot call this pet right now.
+			return;
+		}
+	}
+
 	if (player->isRidingMount()) {
 		player->sendSystemMessage("@pet/pet_menu:mounted_call_warning"); // You cannot call a pet while mounted or riding a vehicle.
 		return;
