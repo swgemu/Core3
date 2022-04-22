@@ -20,6 +20,7 @@
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
 
 const char LuaAiAgent::className[] = "LuaAiAgent";
 
@@ -128,6 +129,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "addCreatureFlag", &LuaAiAgent::addCreatureFlag },
 		{ "removeCreatureFlag", &LuaAiAgent::removeCreatureFlag },
 		{ "setAIDebug", &LuaAiAgent::setAIDebug },
+		{ "storePet", &LuaAiAgent::storePet },
 		{ 0, 0 }
 };
 
@@ -1006,6 +1008,21 @@ int LuaAiAgent::setAIDebug(lua_State* L) {
 
 	Locker locker(realObject);
 	realObject->setAIDebug(true);
+
+	return 0;
+}
+
+int LuaAiAgent::storePet(lua_State* L) {
+	if (!realObject->isPet())
+		return 0;
+
+	CreatureObject* owner = realObject->getLinkedCreature().get();
+	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().get().castTo<PetControlDevice*>();
+
+	if (owner != nullptr && controlDevice != nullptr) {
+		Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(controlDevice, owner, true);
+		task->execute();
+	}
 
 	return 0;
 }

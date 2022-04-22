@@ -54,6 +54,9 @@ namespace area {
 
 		int setNoPetArea(lua_State* L);
 		int isNoPetArea(lua_State* L);
+
+		int setLockedArea(lua_State* L);
+		int isLockedArea(lua_State* L);
 	private:
 		ActiveArea* realObject;
 	};

@@ -32,6 +32,8 @@ Luna<LuaActiveArea>::RegType LuaActiveArea::Register[] = {
 		{ "setNoCombatArea", &LuaActiveArea::setNoCombatArea },
 		{ "isNoPetArea", &LuaActiveArea::isNoPetArea },
 		{ "setNoPetArea", &LuaActiveArea::setNoPetArea },
+		{ "isLockedArea", &LuaActiveArea::isLockedArea },
+		{ "setLockedArea", &LuaActiveArea::setLockedArea },
 		{ 0, 0 }
 };
 
@@ -198,6 +200,22 @@ int LuaActiveArea::setNoPetArea(lua_State* L) {
 
 int LuaActiveArea::isNoPetArea(lua_State* L) {
 	bool val = realObject->isNoPetArea();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaActiveArea::setLockedArea(lua_State* L) {
+	bool val = lua_toboolean(L, -1);
+	Locker realObjectLocker(realObject);
+	realObject->setLockedArea(val);
+
+	return 0;
+}
+
+int LuaActiveArea::isLockedArea(lua_State* L) {
+	bool val = realObject->isLockedArea();
 
 	lua_pushboolean(L, val);
 
