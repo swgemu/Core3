@@ -217,6 +217,7 @@ namespace server {
 
 	private:
 		static void setupLuaPackagePath(Lua* luaEngine);
+		static Logger& getEventLogger();
 		static void printTraceError(lua_State* L, const String& error);
 		void initializeLuaEngine(Lua* luaEngine);
 		int loadScreenPlays(Lua* luaEngine);
