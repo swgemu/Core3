@@ -29,7 +29,7 @@ function Logger:log(message, level)
 		message = message .. " Line: " .. info.currentline
 	end
 
-	logLua(level, message)
+	logLua(level or LT_INFO, message)
 end
 
 function Logger:logEvent(message, level)
@@ -49,7 +49,7 @@ function Logger:logEvent(message, level)
 		message = message .. " Line: " .. info.currentline
 	end
 
-	logLuaEvent(level, message)
+	logLuaEvent(level or LT_INFO, message)
 end
 
 return Logger

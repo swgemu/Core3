@@ -305,6 +305,21 @@ Vector<Reference<ScreenPlayTask*> > DirectorManager::getObjectEvents(SceneObject
 	return eventList;
 }
 
+Logger& DirectorManager::getEventLogger() {
+	auto static eventLogger = [] () {
+		Logger eventLogger("LuaEventLogger");
+
+		eventLogger.setFileLogger("log/luaEvent.log", true, ConfigManager::instance()->getRotateLogAtStart());
+		eventLogger.setLogToConsole(false);
+		eventLogger.setRotateLogSizeMB(ConfigManager::instance()->getRotateLogSizeMB());
+		eventLogger.setLogLevel(ConfigManager::instance()->getLogLevel("Core3.LuaEngine.LuaEventLogLevel", Logger::INFO));
+
+		return eventLogger;
+	} ();
+
+	return eventLogger;
+};
+
 void DirectorManager::printTraceError(lua_State* L, const String& error) {
 	Lua* lua = instance()->getLuaInstance();
 	luaL_traceback(L, L, error.toCharArray(), 0);
@@ -2795,11 +2810,11 @@ Lua* DirectorManager::getLuaInstance() {
 
 	if (lua == nullptr) {
 		lua = new Lua();
+		localLua.set(lua);
+
 		initializeLuaEngine(lua);
 		loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
-
-		localLua.set(lua);
 
 		if (!lua->checkStack(0)) {
 			error()
@@ -3924,35 +3939,23 @@ int DirectorManager::logLuaEvent(lua_State* L) {
 
 	int level = lua_tonumber(L, -2);
 	const char* message = lua_tostring(L, -1);
-
-	Logger* eventLogger = new Logger();
-
-	if (eventLogger == nullptr)
-		return 0;
-
-	eventLogger->setLoggingName("LuaEventLogger");
-	eventLogger->setFileLogger("log/luaEvent.log");
-	eventLogger->setLogLevel(ConfigManager::instance()->getLogLevel("Core3.LuaEngine.LuaEventLogLevel", Logger::INFO));
-	eventLogger->setLogToConsole(false);
-	eventLogger->setRotateLogSizeMB(ConfigManager::instance()->getRotateLogSizeMB());
-
 	const int printTrace = 6;
 
 	switch(level) {
 		case Logger::ERROR:
-			eventLogger->error() << message;
+			getEventLogger().error() << message;
 			break;
 		case Logger::WARNING:
-			eventLogger->warning() << message;
+			getEventLogger().warning() << message;
 			break;
 		case Logger::LOG:
-			eventLogger->log() << message;
+			getEventLogger().log() << message;
 			break;
 		case Logger::INFO:
-			eventLogger->info() << message;
+			getEventLogger().info() << message;
 			break;
 		case Logger::DEBUG:
-			eventLogger->debug() << message;
+			getEventLogger().debug() << message;
 			break;
 		case printTrace:
 			printTraceError(L, message);
