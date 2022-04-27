@@ -50,6 +50,7 @@ namespace creature {
 		int getTargetID(lua_State* L);
 		int clearCombatState(lua_State* L);
 		int getHAM(lua_State* L);
+		int getBaseHAM(lua_State* L);
 		int getMaxHAM(lua_State* L);
 		int inflictDamage(lua_State* L);
 		//int playEffect(lua_State* L);

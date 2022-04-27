@@ -44,6 +44,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setBaseHAM", &LuaCreatureObject::setBaseHAM },
 		{ "setMaxHAM", &LuaCreatureObject::setMaxHAM },
 		{ "getHAM", &LuaCreatureObject::getHAM },
+		{ "getBaseHAM", &LuaCreatureObject::getBaseHAM },
 		{ "getMaxHAM", &LuaCreatureObject::getMaxHAM },
 		{ "getTargetID", &LuaCreatureObject::getTargetID },
 		{ "clearCombatState", &LuaCreatureObject::clearCombatState },
@@ -533,6 +534,16 @@ int LuaCreatureObject::getHAM(lua_State* L) {
 	int type = lua_tonumber(L, -1);
 
 	int value = realObject->getHAM(type);
+
+	lua_pushnumber(L, value);
+
+	return 1;
+}
+
+int LuaCreatureObject::getBaseHAM(lua_State* L) {
+	int type = lua_tonumber(L, -1);
+
+	int value = realObject->getBaseHAM(type);
 
 	lua_pushnumber(L, value);
 
