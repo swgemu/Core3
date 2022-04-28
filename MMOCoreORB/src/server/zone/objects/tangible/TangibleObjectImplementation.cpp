@@ -1172,12 +1172,8 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* creature) {
 	if (!(pvpStatusBitmask & CreatureFlag::ATTACKABLE))
 		return false;
 
-	for (int i = 0; i < activeAreas.size(); i++) {
-		ActiveArea* area = activeAreas.get(i);
-
-		if (area != nullptr && area->isNoCombatArea())
-			return false;
-	}
+	if (isInNoCombatArea())
+		return false;
 
 	// Attacking CreO is AiAgent
 	if (creature->isAiAgent()) {
@@ -1233,6 +1229,9 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* creature) {
 void TangibleObjectImplementation::addActiveArea(ActiveArea* area) {
 	if (!area->isDeployed())
 		area->deploy();
+
+	if (area->isNoCombatArea())
+		inNoCombatArea = true;
 
 	Locker locker(&containerLock);
 
