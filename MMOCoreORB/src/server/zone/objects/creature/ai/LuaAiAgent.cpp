@@ -21,6 +21,7 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 const char LuaAiAgent::className[] = "LuaAiAgent";
 
@@ -130,6 +131,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "removeCreatureFlag", &LuaAiAgent::removeCreatureFlag },
 		{ "setAIDebug", &LuaAiAgent::setAIDebug },
 		{ "storePet", &LuaAiAgent::storePet },
+		{ "setEventArea", &LuaAiAgent::setEventArea },
 		{ 0, 0 }
 };
 
@@ -1023,6 +1025,19 @@ int LuaAiAgent::storePet(lua_State* L) {
 		Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(controlDevice, owner, true);
 		task->execute();
 	}
+
+	return 0;
+}
+
+int LuaAiAgent::setEventArea(lua_State* L) {
+	ActiveArea* area = (ActiveArea*) lua_touserdata(L, -1);
+
+	if (area == nullptr)
+		return 0;
+
+	Locker lock(realObject);
+
+	realObject->setEventArea(area);
 
 	return 0;
 }

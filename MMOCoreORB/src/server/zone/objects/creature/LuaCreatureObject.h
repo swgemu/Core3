@@ -120,6 +120,7 @@ namespace creature {
 		int villageKnightPrereqsMet(lua_State* L);
 		int getDamageDealerList(lua_State* L);
 		int getHealingThreatList(lua_State* L);
+		int dropFromThreatMap(lua_State* L);
 		int getSkillMod(lua_State* L);
 		int getGender(lua_State* L);
 		int isRidingMount(lua_State* L);
