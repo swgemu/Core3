@@ -2264,8 +2264,14 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		if (armorReduction >= 0)
 			damage *= getArmorPiercing(cast<AiAgent*>(defender), armorPiercing);
 
-		if (armorReduction > 0)
-			damage *= (1.f - (armorReduction / 100.f));
+		if (armorReduction > 0) {
+			float armorMit = damage * (armorReduction / 100.f);
+
+			//defender->info(true) << "Adding to resist mitigation: " << armorMit << " Total Damge Prior = " << damage;
+
+			defender->addResistMitigation(armorMit);
+			damage -= armorMit;
+		}
 
 		return damage;
 	} else if (defender->isVehicleObject()) {

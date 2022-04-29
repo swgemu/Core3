@@ -47,6 +47,7 @@ class TangibleObject extends SceneObject {
 	@dereferenced
 	protected CustomizationVariables customizationVariables;
 
+	protected unsigned int resistMitigation;
 	protected float conditionDamage;
 	protected int maxCondition;
 	protected int useCount;
@@ -131,6 +132,7 @@ class TangibleObject extends SceneObject {
 		useCount = 1;
 
 		conditionDamage = 0;
+		resistMitigation = 0;
 
 		sliceable = false;
 		sliced = false;
@@ -530,6 +532,16 @@ class TangibleObject extends SceneObject {
 	@read
 	public int getConditionDamage() {
 		return (int)conditionDamage;
+	}
+
+	@read
+	public unsigned int getResistMitigation() {
+		return (int)resistMitigation;
+	}
+
+	@preLocked
+	public native void addResistMitigation(float mitigation) {
+		resistMitigation += mitigation;
 	}
 
 	@read
