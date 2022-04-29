@@ -113,7 +113,7 @@ public:
 };
 
 TEST_F(ZoneTest, GalaxyList) {
-	auto galaxies = GalaxyList("admin");
+	auto galaxies = GalaxyList(1);
 
 	while(galaxies.next()) {
 		std::cerr << "[>>>>>>>>>>] " << galaxies.toString().toCharArray() << std::endl;

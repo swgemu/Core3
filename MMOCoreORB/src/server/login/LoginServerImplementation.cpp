@@ -167,7 +167,7 @@ void LoginServerImplementation::printInfo() {
 }
 
 LoginEnumCluster* LoginServerImplementation::getLoginEnumClusterMessage(Account* account) {
-	auto galaxies = GalaxyList(account->getUsername());
+	auto galaxies = GalaxyList(account->getAccountID());
 	uint32 galaxyCount = galaxies.size();
 
 	auto msg = new LoginEnumCluster(galaxyCount);
@@ -182,7 +182,7 @@ LoginEnumCluster* LoginServerImplementation::getLoginEnumClusterMessage(Account*
 }
 
 LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage(Account* account) {
-	auto galaxies = GalaxyList(account->getUsername());
+	auto galaxies = GalaxyList(account->getAccountID());
 	uint32 galaxyCount = galaxies.size();
 
 	auto msg = new LoginClusterStatus(galaxyCount);

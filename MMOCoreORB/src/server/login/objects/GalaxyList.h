@@ -135,9 +135,14 @@ class GalaxyList {
 	int curIdx = 0;
 
 public:
-	GalaxyList(const String& username) {
+	GalaxyList(uint32 accountid) {
 		StringBuffer query;
-		query << "SELECT * FROM galaxy";
+		query << "SELECT g.* FROM `galaxy` g"
+			<< " LEFT OUTER JOIN `galaxy_access` ga ON ga.`galaxy_id` = g.`galaxy_id` AND (ga.`account_id` = 0 OR ga.`account_id` = " << accountid << ")"
+			<< " WHERE (ga.`account_id` != 0 AND (ga.`expires` IS NULL OR ga.`expires` > NOW()))"
+			<< " OR NOT EXISTS (SELECT * FROM `galaxy_access` gb WHERE gb.`galaxy_id` = g.`galaxy_id`)"
+			<< " ORDER BY g.`galaxy_id`"
+			;
 
 		UniqueReference<ResultSet*> results(ServerDatabase::instance()->executeQuery(query));
 
@@ -145,23 +150,7 @@ public:
 			return;
 
 		while (results->next()) {
-			auto galaxy = Galaxy(results);
-
-			Vector<String> galaxyAccessList;
-
-			try {
-				galaxyAccessList = ConfigManager::instance()->getStringVector("Core3.GalaxyAccess." + galaxy.getName());
-			} catch (Exception& e) {
-				// Do nothing on error (key miss)
-			}
-
-			if (galaxyAccessList.size() > 0) {
-				for (auto& access_username : galaxyAccessList) {
-					if (access_username == username)
-						galaxies.add(galaxy);
-				}
-			} else
-				galaxies.add(galaxy);
+			galaxies.add(Galaxy(results));
 		}
 
 		curIdx = 0;

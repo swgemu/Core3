@@ -119,4 +119,13 @@ void ServerDatabase::updateDatabaseSchema() {
 		"ALTER TABLE `sessions`"
 		" MODIFY `session_id` CHAR(255) NOT NULL;"
 	);
+
+	alterDatabase(1005,
+		"CREATE TABLE `galaxy_access` ("
+		"`account_id` int(10) NOT NULL DEFAULT '0'"
+		",`galaxy_id` int(5) NOT NULL"
+		",`expires` datetime DEFAULT NULL"
+		",PRIMARY KEY (`account_id`,`galaxy_id`)"
+		") ENGINE=MyISAM DEFAULT CHARSET=latin1;"
+	);
 }
