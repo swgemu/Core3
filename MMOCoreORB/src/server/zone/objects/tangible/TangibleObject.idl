@@ -47,6 +47,7 @@ class TangibleObject extends SceneObject {
 	@dereferenced
 	protected CustomizationVariables customizationVariables;
 
+	protected int unmitigatedDamage;
 	protected float conditionDamage;
 	protected int maxCondition;
 	protected int useCount;
@@ -131,6 +132,7 @@ class TangibleObject extends SceneObject {
 		useCount = 1;
 
 		conditionDamage = 0;
+		unmitigatedDamage = 0;
 
 		sliceable = false;
 		sliced = false;
@@ -530,6 +532,16 @@ class TangibleObject extends SceneObject {
 	@read
 	public int getConditionDamage() {
 		return (int)conditionDamage;
+	}
+
+	@read
+	public int getUnmitigatedDamage() {
+		return unmitigatedDamage;
+	}
+
+	@preLocked
+	public native void addUnmitigatedDamage(float damage) {
+		unmitigatedDamage += (int)damage;
 	}
 
 	@read

@@ -216,7 +216,18 @@ void TurretDataComponent::fillAttributeList(AttributeListMessage* alm) {
 
 	ManagedReference<InstallationObject*> turret = cast<InstallationObject*>(getParent());
 
+	if (turret == nullptr)
+		return;
+
 	alm->insertAttribute("condition",String::valueOf(turret->getMaxCondition() - turret->getConditionDamage()) + "/" + String::valueOf(turret->getMaxCondition()));
+
+	int objectCount = turret->getSlottedObjectsSize();
+	int volumeLimit = turret->getContainerVolumeLimit();
+
+	StringBuffer contentsString;
+	contentsString << objectCount << "/" << volumeLimit;
+
+	alm->insertAttribute("contents", contentsString);
 
 	if (getArmorRating() == 0)
 		alm->insertAttribute("armorrating", "None");
@@ -230,109 +241,109 @@ void TurretDataComponent::fillAttributeList(AttributeListMessage* alm) {
 
 	if (getKinetic() > 90) {
 		StringBuffer txt;
-		txt << round(getKinetic()) << "%";
+		txt << Math::getPrecision(getKinetic(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", txt.toString());
 	}
 
 	if (getEnergy() > 90) {
 		StringBuffer txt;
-		txt << round(getEnergy()) << "%";
+		txt << Math::getPrecision(getEnergy(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", txt.toString());
 	}
 
 	if (getElectricity() > 90) {
 		StringBuffer txt;
-		txt << round(getElectricity()) << "%";
+		txt << Math::getPrecision(getElectricity(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", txt.toString());
 	}
 
 	if (getStun() > 90) {
 		StringBuffer txt;
-		txt << round(getStun()) << "%";
+		txt << Math::getPrecision(getStun(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", txt.toString());
 	}
 
 	if (getBlast() > 90) {
 		StringBuffer txt;
-		txt << round(getBlast()) << "%";
+		txt << Math::getPrecision(getBlast(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", txt.toString());
 	}
 
 	if (getHeat() > 90) {
 		StringBuffer txt;
-		txt << round(getHeat()) << "%";
+		txt << Math::getPrecision(getHeat(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", txt.toString());
 	}
 
 	if (getCold() > 90) {
 		StringBuffer txt;
-		txt << round(getCold()) << "%";
+		txt << Math::getPrecision(getCold(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", txt.toString());
 	}
 
 	if (getAcid() > 90) {
 		StringBuffer txt;
-		txt << round(getAcid()) << "%";
+		txt << Math::getPrecision(getAcid(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", txt.toString());
 	}
 
 	if (getLightSaber() > 90) {
 		StringBuffer txt;
-		txt << round(getLightSaber()) << "%";
+		txt << Math::getPrecision(getLightSaber(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", txt.toString());
 	}
 
 	if (getKinetic() > 0 && getKinetic() <= 90) {
 		StringBuffer txt;
-		txt << round(getKinetic()) << "%";
+		txt << Math::getPrecision(getKinetic(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.toString());
 	}
 
 	if (getEnergy() > 0 && getEnergy() <= 90) {
 		StringBuffer txt;
-		txt << round(getEnergy()) << "%";
+		txt << Math::getPrecision(getEnergy(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.toString());
 	}
 
 	if (getElectricity() > 0 && getElectricity() <= 90) {
 		StringBuffer txt;
-		txt << round(getElectricity()) << "%";
+		txt << Math::getPrecision(getElectricity(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.toString());
 	}
 
 	if (getStun() > 0 && getStun() <= 90) {
 		StringBuffer txt;
-		txt << round(getStun()) << "%";
+		txt << Math::getPrecision(getStun(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.toString());
 	}
 
 	if (getBlast() > 0 && getBlast() <= 90) {
 		StringBuffer txt;
-		txt << round(getBlast()) << "%";
+		txt << Math::getPrecision(getBlast(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.toString());
 	}
 
 	if (getHeat() > 0 && getHeat() <= 90) {
 		StringBuffer txt;
-		txt << round(getHeat()) << "%";
+		txt << Math::getPrecision(getHeat(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.toString());
 	}
 
 	if (getCold() > 0 && getCold() <= 90) {
 		StringBuffer txt;
-		txt << round(getCold()) << "%";
+		txt << Math::getPrecision(getCold(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.toString());
 	}
 
 	if (getAcid() > 0 && getAcid() <= 90) {
 		StringBuffer txt;
-		txt << round(getAcid()) << "%";
+		txt << Math::getPrecision(getAcid(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.toString());
 	}
 
 	if (getLightSaber() > 0 && getLightSaber() <= 90) {
 		StringBuffer txt;
-		txt << round(getLightSaber()) << "%";
+		txt << Math::getPrecision(getLightSaber(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.toString());
 	}
 
@@ -372,65 +383,109 @@ unsigned int TurretDataComponent::getArmorRating() {
 	return 0;
 }
 
+float TurretDataComponent::getArmorResistReduction(float value) {
+	if (value == -1) {
+		return value;
+	}
+
+	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(getParent());
+
+	if (turret == nullptr || turret->getZone() == nullptr)
+		return 0;
+
+	int maxCondition = turret->getMaxCondition();
+
+	// Damage not prevented by armor resists
+	int unmitigatedDamage = turret->getUnmitigatedDamage();
+
+	// Percent of damage not prevented by armor resists compared to maxCondition
+	// Only accounts if the turret has that resistance type.
+	float mitigatedAmount = unmitigatedDamage / (float)maxCondition;
+
+#ifdef DEBUG_RESIST_DECAY
+	turret->info (true) << " Value of damage mitigated by armor = " << mitigatedAmount;
+#endif
+
+	float newValue = value;
+
+	// Decay resists when unmitigated damage is greater than 25% of maxConiditon
+	if (mitigatedAmount > 0.25f) {
+		// Reduce resists 2% for every 1% of damage passed armor resists greater than 25% of max condition
+		// Range to reduce armor is 75% to 50% totaling a max of 50% reduction of resists
+		float reduction = (mitigatedAmount - 0.25f) * 2.f;
+
+		// Resists never drop below 50%
+		reduction = 1.f - (reduction > 0.50f ? 0.50f : reduction);
+
+		newValue = (value * reduction);
+
+#ifdef DEBUG_RESIST_DECAY
+		turret->info(true) << " max condition = " << maxCondition << " Total Damage Mitigated = " << unmitigatedDamage << " Start Armor value: " << value << " New Armor Value = " << newValue << " Reduction percent = " << reduction;
+#endif
+	}
+
+	return newValue;
+}
+
 float TurretDataComponent::getKinetic() {
 	if (templateData != nullptr)
-		return templateData->getKinetic();
+		return getArmorResistReduction(templateData->getKinetic());
 
 	return 0;
 }
 
 float TurretDataComponent::getEnergy() {
 	if (templateData != nullptr)
-		return templateData->getEnergy();
+		return getArmorResistReduction(templateData->getEnergy());
 
 	return 0;
 }
 
 float TurretDataComponent::getElectricity() {
 	if (templateData != nullptr)
-		return templateData->getElectricity();
+		return getArmorResistReduction(templateData->getElectricity());
 
 	return 0;
 }
 
 float TurretDataComponent::getStun() {
 	if (templateData != nullptr)
-		return templateData->getStun();
+		return getArmorResistReduction(templateData->getStun());
 
 	return 0;
 }
 
 float TurretDataComponent::getBlast() {
 	if (templateData != nullptr)
-		return templateData->getBlast();
+		return getArmorResistReduction(templateData->getBlast());
 
 	return 0;
 }
 
 float TurretDataComponent::getHeat() {
 	if (templateData != nullptr)
-		return templateData->getHeat();
+		return getArmorResistReduction(templateData->getHeat());
 
 	return 0;
 }
 
 float TurretDataComponent::getCold() {
 	if (templateData != nullptr)
-		return templateData->getCold();
+		return getArmorResistReduction(templateData->getCold());
 
 	return 0;
 }
 
 float TurretDataComponent::getAcid() {
 	if (templateData != nullptr)
-		return templateData->getAcid();
+		return getArmorResistReduction(templateData->getAcid());
 
 	return 0;
 }
 
 float TurretDataComponent::getLightSaber() {
 	if (templateData != nullptr)
-		return templateData->getLightSaber();
+		return getArmorResistReduction(templateData->getLightSaber());
 
 	return 0;
 }

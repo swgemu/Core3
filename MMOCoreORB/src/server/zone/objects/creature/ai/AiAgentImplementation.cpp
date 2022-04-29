@@ -3962,6 +3962,63 @@ float AiAgentImplementation::getEffectiveResist() {
 	return 0;
 }
 
+float AiAgentImplementation::getReducedResist(float value) {
+	if (value == -1) {
+		return value;
+	}
+
+	float newValue = value;
+
+	if (isPet()) {
+		float shockWounds = getShockWounds();
+
+		if (shockWounds <= 500) {
+			return newValue;
+		}
+
+		newValue = value - (value * (shockWounds - 500) * 0.001);
+
+		return newValue;
+	}
+
+	int totalHAM = 0;
+	int i = 0;
+
+	// Get total of max HAM pools
+	while (i <= 6) {
+		totalHAM += getMaxHAM(i);
+		i += 3;
+	}
+
+	// Total damage that was not resisted by armor
+	int unmitigatedDamage = getUnmitigatedDamage();
+
+	// Damage not prevented by armor resists compared to totalHAM
+	float percentUnmitigated = unmitigatedDamage / (float)totalHAM;
+
+#ifdef DEBUG_RESIST_DECAY
+	info (true) << " Value of HAM mitigated = " << mitigatedAmount;
+#endif
+
+	// Decay resists when mitigated damage is greater than 25% totalHAM
+	if (percentUnmitigated > 0.25f) {
+		// Reduce resists 2% for every 1% of damage mitigated by armor valued greater than 25% of totalHAM.
+		// Reduction Range is from 75% to 50% of totalHAM. totaling a max 50% reduction of resists
+		float reduction = (percentUnmitigated - 0.25f) * 2.f;
+
+		// Resists never drop below 50%
+		reduction = 1.f - (reduction > 0.50f ? 0.50f : reduction);
+
+		newValue = (value * reduction);
+
+#ifdef DEBUG_RESIST_DECAY
+		info(true) << "getReducedResist: totalHAM = " << totalHAM << " Resist Mitigation = " << unmitigatedDamage << " Start value: " << value << " New Value = " << newValue << " Reduction percent = " << reduction;
+#endif
+	}
+
+	return newValue;
+}
+
 void AiAgentImplementation::setPatrolPoints(PatrolPointsVector& pVector) {
 	Locker locker(&targetMutex);
 	patrolPoints = pVector;

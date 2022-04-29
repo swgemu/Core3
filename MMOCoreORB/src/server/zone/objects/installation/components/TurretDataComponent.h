@@ -133,6 +133,7 @@ public:
 	void fillAttributeList(AttributeListMessage* alm);
 
 	unsigned int getArmorRating();
+	float getArmorResistReduction(float value);
 	float getKinetic();
 	float getEnergy();
 	float getElectricity();
