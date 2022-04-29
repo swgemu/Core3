@@ -80,6 +80,7 @@ protected:
 	unsigned int pvpBitmask;
 	unsigned int creatureBitmask;
 	unsigned int diet;
+	int lightsaberColor;
 
 	Vector<int> hues;
 
@@ -369,6 +370,10 @@ public:
 
 	inline bool isTauntable() const {
 		return tauntable;
+	}
+
+	inline int getLightsaberColor() const {
+		return lightsaberColor;
 	}
 
 	inline const Vector<String>& getTemplates() const {
