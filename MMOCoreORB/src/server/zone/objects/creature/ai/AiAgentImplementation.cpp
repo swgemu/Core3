@@ -500,6 +500,15 @@ WeaponObject* AiAgentImplementation::createWeapon(uint32 templateCRC, bool prima
 			newWeapon->setAttackSpeed(petDeed->getAttackSpeed());
 		}
 
+		int lightsaberColor = npcTemplate->getLightsaberColor();
+
+		if (newWeapon->isJediWeapon() && lightsaberColor > 0) {
+			Locker weaplock(newWeapon);
+
+			newWeapon->setBladeColor(lightsaberColor);
+			newWeapon->setCustomizationVariable("/private/index_color_blade", lightsaberColor, true);
+		}
+
 		if (newWeapon != defaultWeapon) {
 			if (inventory->transferObject(newWeapon, -1, false, true))
 				inventory->broadcastObject(newWeapon, true);
