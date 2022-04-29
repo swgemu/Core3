@@ -39,6 +39,7 @@ class TangibleObject extends SceneObject {
 	protected int futureFactionStatus;
 
 	protected boolean invisible;
+	protected transient boolean inNoCombatArea;
 
 	@dereferenced
 	protected VectorMap<string, string> luaStringData;
@@ -101,6 +102,7 @@ class TangibleObject extends SceneObject {
 		initializeMembers();
 
 		invisible = false;
+		inNoCombatArea = false;
 
 		antiDecayKitObject = null;
 
@@ -814,6 +816,9 @@ class TangibleObject extends SceneObject {
 	public native void addActiveArea(ActiveArea area);
 
 	public void dropActiveArea(ActiveArea area) {
+		if (area.isNoCombatArea())
+			inNoCombatArea = false;
+
 		synchronized (super.getContainerLock()) {
 			activeAreas.drop(area);
 		}
@@ -839,6 +844,11 @@ class TangibleObject extends SceneObject {
 		}
 
 		return false;
+	}
+
+	@read
+	public boolean isInNoCombatArea() {
+		return inNoCombatArea;
 	}
 
 	@local

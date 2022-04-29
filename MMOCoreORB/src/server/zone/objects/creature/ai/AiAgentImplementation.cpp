@@ -3654,6 +3654,15 @@ bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
 	if (!(pvpStatusBitmask & CreatureFlag::ATTACKABLE) || optionsBitmask & OptionBitmask::INVULNERABLE)
 		return false;
 
+	if (eventArea.get() != nullptr) {
+		if (!object->hasActiveArea(eventArea.get())) {
+			return false;
+		}
+	}
+
+	if (isInNoCombatArea())
+		return false;
+
 	// Get factions
 	uint32 thisFaction = getFaction();
 	uint32 tanoFaction = object->getFaction();
@@ -3662,13 +3671,6 @@ bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
 		if (thisFaction == tanoFaction) {
 			return false;
 		}
-	}
-
-	for (int i = 0; i < activeAreas.size(); i++) {
-		ActiveArea* area = activeAreas.get(i);
-
-		if (area != nullptr && area->isNoCombatArea())
-			return false;
 	}
 
 	// info(true) << "AiAgent::isAttackableBy TangibleObject Check returned true";
@@ -3728,12 +3730,14 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 		return isAttackableBy(owner);
 	}
 
-	for (int i = 0; i < activeAreas.size(); i++) {
-		ActiveArea* area = activeAreas.get(i);
-
-		if (area != nullptr && area->isNoCombatArea())
+	if (eventArea.get() != nullptr) {
+		if (!creature->hasActiveArea(eventArea.get())) {
 			return false;
+		}
 	}
+
+	if (isInNoCombatArea())
+		return false;
 
 	bool creatureIsAgent = creature->isAiAgent();
 	bool creatureIsPlayer = creature->isPlayerCreature();

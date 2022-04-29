@@ -143,11 +143,13 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setFactionStatus", &LuaTangibleObject::setFactionStatus },
 		{ "getDamageDealerList", &LuaCreatureObject::getDamageDealerList },
 		{ "getHealingThreatList", &LuaCreatureObject::getHealingThreatList },
+		{ "dropFromThreatMap", &LuaCreatureObject::dropFromThreatMap },
 		{ "getSkillMod", &LuaCreatureObject::getSkillMod },
 		{ "getGender", &LuaCreatureObject::getGender },
 		{ "isRidingMount", &LuaCreatureObject::isRidingMount },
 		{ "dismount", &LuaCreatureObject::dismount },
 		{ "setAppearance", &LuaCreatureObject::setAppearance },
+		{ "getMainDefender", &LuaTangibleObject::getMainDefender },
 		{ 0, 0 }
 };
 
@@ -1124,6 +1126,34 @@ int LuaCreatureObject::getHealingThreatList(lua_State* L) {
 	}
 
 	return 1;
+}
+
+int LuaCreatureObject::dropFromThreatMap(lua_State* L) {
+	TangibleObject* attackerTano = (TangibleObject*)lua_touserdata(L, -1);
+
+	if (attackerTano == nullptr)
+		return 0;
+
+	Locker lock(realObject);
+
+	ThreatMap* threatMap = realObject->getThreatMap();
+
+	if (threatMap == nullptr)
+		return 0;
+
+	for (int i = 0; i < threatMap->size(); i++) {
+		TangibleObject* threatTano = threatMap->elementAt(i).getKey();
+
+		if (threatTano == nullptr)
+			continue;
+
+		if (threatTano == attackerTano) {
+			threatMap->remove(i);
+			return 0;
+		}
+	}
+
+	return 0;
 }
 
 int LuaCreatureObject::getSkillMod(lua_State* L) {

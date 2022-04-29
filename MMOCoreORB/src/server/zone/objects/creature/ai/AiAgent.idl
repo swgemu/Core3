@@ -43,6 +43,7 @@ include system.util.VectorMap;
 include engine.util.u3d.Vector3;
 import server.zone.objects.creature.ai.bt.BlackboardData;
 include server.zone.objects.creature.ai.bt.BlackboardDataMap;
+include server.zone.objects.area.ActiveArea;
 
 @mock
 @json
@@ -96,6 +97,9 @@ class AiAgent extends CreatureObject {
 
 	@weakReference
 	protected SceneObject homeObject;
+
+	@weakReference
+	protected ActiveArea eventArea;
 
 	//DEBUG
 	protected boolean showNextMovementPosition;
@@ -1285,6 +1289,18 @@ class AiAgent extends CreatureObject {
 	@weakReference
 	public SceneObject getHomeObject() {
 		return homeObject;
+	}
+
+	@preLocked
+	public void setEventArea(ActiveArea area) {
+		eventArea = area;
+	}
+
+	@read
+	@local
+	@weakReference
+	public ActiveArea getEventArea() {
+		return eventArea;
 	}
 
 	/**

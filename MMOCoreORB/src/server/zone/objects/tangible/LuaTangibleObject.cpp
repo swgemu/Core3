@@ -22,6 +22,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask },
 		{ "setPvpStatusBit", &LuaTangibleObject::setPvpStatusBit },
 		{ "broadcastPvpStatusBitmask", &LuaTangibleObject::broadcastPvpStatusBitmask },
+		{ "sendPvpStatusTo", &LuaTangibleObject::sendPvpStatusTo },
 		{ "getPvpStatusBitmask", &LuaTangibleObject::getPvpStatusBitmask },
 		{ "isChangingFactionStatus", &LuaTangibleObject::isChangingFactionStatus },
 		{ "setFutureFactionStatus", &LuaTangibleObject::setFutureFactionStatus },
@@ -52,6 +53,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "isBroken", &LuaTangibleObject::isBroken},
 		{ "isSliced", &LuaTangibleObject::isSliced},
 		{ "isNoTrade", &LuaTangibleObject::isNoTrade},
+		{ "getMainDefender", &LuaTangibleObject::getMainDefender},
 		{ 0, 0 }
 };
 
@@ -173,7 +175,18 @@ int LuaTangibleObject::getPvpStatusBitmask(lua_State* L) {
 int LuaTangibleObject::broadcastPvpStatusBitmask(lua_State* L) {
 	realObject->broadcastPvpStatusBitmask();
 
-	return 1;
+	return 0;
+}
+
+int LuaTangibleObject::sendPvpStatusTo(lua_State* L) {
+	CreatureObject* creature = (CreatureObject*) lua_touserdata(L, -1);
+
+	if (creature == nullptr)
+		return 0;
+
+	realObject->sendPvpStatusTo(creature);
+
+	return 0;
 }
 
 int LuaTangibleObject::isChangingFactionStatus(lua_State* L) {
@@ -393,6 +406,21 @@ int LuaTangibleObject::isNoTrade(lua_State* L){
 	bool noTrade = realObject->isNoTrade();
 
 	lua_pushboolean(L, noTrade);
+
+	return 1;
+}
+
+int LuaTangibleObject::getMainDefender(lua_State* L) {
+	Locker lock(realObject);
+
+	SceneObject* defender = realObject->getMainDefender();
+
+	if (defender == nullptr || !defender->isTangibleObject()) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	lua_pushlightuserdata(L, defender);
 
 	return 1;
 }
