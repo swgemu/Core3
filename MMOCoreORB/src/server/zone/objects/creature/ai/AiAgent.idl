@@ -1018,16 +1018,9 @@ class AiAgent extends CreatureObject {
 		return getReducedResist(npcTemplate.get().getLightSaber());
 	}
 
+	@local
 	@dirty
-	protected float getReducedResist(float value) {
-		if (super.shockWounds <= 500 || value == -1) {
-			return value;
-		}
-
-		float newValue = value - (value * (super.shockWounds - 500) * 0.001);
-
-		return newValue;
-	}
+	protected native float getReducedResist(float value);
 
 	@dirty
 	public abstract boolean isSpecialProtection(int resistType) {
