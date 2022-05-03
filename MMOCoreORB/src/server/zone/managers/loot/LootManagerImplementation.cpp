@@ -725,6 +725,49 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 	return true;
 }
 
+String LootManagerImplementation::createStringLoot(TransactionLog& trx, SceneObject* container, const String& lootGroup, int level) {
+	Reference<const LootGroupTemplate*> group = lootGroupMap->getLootGroupTemplate(lootGroup);
+
+	if (group == nullptr) {
+		warning("Loot group template requested does not exist: " + lootGroup);
+		return "false";
+	}
+
+	//Now we do the third roll for the item out of the group.
+	int roll = System::random(10000000);
+
+	String selection = group->getLootGroupEntryForRoll(roll);
+
+	//Check to see if the group entry is another group
+	if (lootGroupMap->lootGroupExists(selection)) {
+		createLoot(trx, container, selection, level, false);
+		return "false";
+	}
+
+	//Entry wasn't another group, it should be a loot item
+	Reference<const LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate(selection);
+
+	if (itemTemplate == nullptr) {
+		warning("Loot item template requested does not exist: " + group->getLootGroupEntryForRoll(roll) + " for templateName: " + group->getTemplateName());
+		return "false";
+	}
+
+	TangibleObject* obj = createLootObject(itemTemplate, level, false);
+
+	if (obj == nullptr)
+		return "false";
+
+	trx.setSubject(obj);
+	trx.addState("lootGroup", lootGroup);
+	trx.addState("lootLevel", level);
+	trx.addState("lootMaxCondition", false);
+
+	obj->destroyObjectFromWorld(false);
+	obj->destroyObjectFromDatabase(true);
+
+	return itemTemplate->getTemplateName();
+}
+
 bool LootManagerImplementation::createLootSet(TransactionLog& trx, SceneObject* container, const String& lootGroup, int level, bool maxCondition, int setSize) {
 	Reference<const LootGroupTemplate*> group = lootGroupMap->getLootGroupTemplate(lootGroup);
 
