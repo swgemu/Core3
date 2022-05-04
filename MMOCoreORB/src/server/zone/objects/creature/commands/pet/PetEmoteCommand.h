@@ -84,6 +84,8 @@ public:
 			} else if (speciesData->canLieDown()) {
 				pet->setPosture(CreaturePosture::LYINGDOWN);
 			}
+
+			pet->setMovementState(AiAgent::RESTING);
 		} else {
 			pet->doAnimation("happy");
 			pet->setPosture(CreaturePosture::UPRIGHT);
