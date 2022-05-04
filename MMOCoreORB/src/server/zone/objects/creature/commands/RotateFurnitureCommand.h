@@ -158,7 +158,7 @@ public:
 			return false;
 		}
 
-		if (!buildingObject->isOnAdminList(player)) {
+		if (!object->isVendor() && !buildingObject->isOnAdminList(player)) {
 			player->sendSystemMessage("@player_structure:admin_move_only"); // You must be an admin to manipulate objects.
 			return false;
 		}
