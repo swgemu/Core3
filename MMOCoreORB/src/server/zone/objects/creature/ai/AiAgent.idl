@@ -190,6 +190,8 @@ class AiAgent extends CreatureObject {
 	protected unsigned int nextActionCRC;
 	protected string nextActionArgs;
 
+	protected transient boolean mindTricked;
+
 	public static final int UPDATEMOVEMENTINTERVAL = 400; // msec
 
 	public static final int DEFAULTAGGRORADIUS = 24;
@@ -241,6 +243,8 @@ class AiAgent extends CreatureObject {
 		tauntable = true;
 
 		loadedOutfit = false;
+
+		mindTricked = false;
 
 		fleeRange = 192;
 		lairTemplateCRC = 0;
@@ -1588,6 +1592,12 @@ class AiAgent extends CreatureObject {
 		return type == MOB_ANDROID || type == MOB_NPC;
 	}
 
+	@read
+	public boolean isVehicleType() {
+		return getMobType() == MOB_VEHICLE;
+
+	}
+
 	@local
 	@dirty
 	public VectorMap<unsigned long, int> getTargetMissCount() {
@@ -1616,5 +1626,15 @@ class AiAgent extends CreatureObject {
 	@read
 	public boolean isTauntable() {
 		return tauntable;
+	}
+
+	@preLocked
+	public native void setMindTricked(boolean val) {
+		mindTricked = val;
+	}
+
+	@read
+	public boolean isMindTricked() {
+		return mindTricked;
 	}
 }
