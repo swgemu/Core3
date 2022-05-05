@@ -3328,8 +3328,10 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 		uint32 creatureFaction = creature->getFaction();
 
 		if (creature->isAiAgent()) {
+			AiAgent* agentCreo = creature->asAiAgent();
+
 			// Attack creature is pet, use owner to check
-			if (creature->isPet()) {
+			if (creature->isPet() && (agentCreo != nullptr && !agentCreo->isMindTricked())) {
 				ManagedReference<PetControlDevice*> pcd = creature->getControlDevice().get().castTo<PetControlDevice*>();
 
 				if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral()) {

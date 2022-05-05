@@ -73,6 +73,9 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
+	if (ghost == nullptr)
+		return;
+
 	if (ghost->hasActivePet(pet))
 		return;
 
@@ -140,7 +143,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		box->setCancelButton(true,"@bio_engineer:pet_sui_abort");
 		box->setOtherButton(true,"@bio_engineer:pet_sui_fix_level");
 		box->setUsingObject(_this.getReferenceUnsafeStaticCast());
-		player->getPlayerObject()->addSuiBox(box);
+		ghost->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
 		return;
 	}
@@ -235,7 +238,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
-	if (player->getCurrentCamp() == nullptr && player->getCityRegion() == nullptr) {
+	if (player->getCurrentCamp() == nullptr && player->getCityRegion() == nullptr && !ghost->isPrivileged()) {
 
 		Reference<CallPetTask*> callPet = new CallPetTask(_this.getReferenceUnsafeStaticCast(), player, "call_pet");
 
