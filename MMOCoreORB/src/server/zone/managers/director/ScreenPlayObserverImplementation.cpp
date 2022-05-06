@@ -40,3 +40,8 @@ int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Obse
 
 	return ret;
 }
+
+void ScreenPlayObserverImplementation::storeFloatValue(const String& dataKey, float dataVal) {
+	uint64 dataHash = dataKey.hashCode();
+	floatData.put(dataHash, dataVal);
+}
