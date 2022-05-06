@@ -92,6 +92,7 @@
 #include "server/zone/objects/intangible/TheaterObject.h"
 #include "server/zone/objects/tangible/misc/ContractCrate.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+#include "server/zone/managers/director/ScreenPlayObserver.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -529,6 +530,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("SAMPLE", ObserverEventType::SAMPLE);
 	luaEngine->setGlobalInt("CONVERSE", ObserverEventType::CONVERSE);
 	luaEngine->setGlobalInt("KILLEDCREATURE", ObserverEventType::KILLEDCREATURE);
+	luaEngine->setGlobalInt("QUESTKILL", ObserverEventType::QUESTKILL);
 	luaEngine->setGlobalInt("OBJECTREMOVEDFROMZONE", ObserverEventType::OBJECTREMOVEDFROMZONE);
 	luaEngine->setGlobalInt("ENTEREDAREA", ObserverEventType::ENTEREDAREA);
 	luaEngine->setGlobalInt("EXITEDAREA", ObserverEventType::EXITEDAREA);
@@ -547,6 +549,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("NEWBIECLOSEINVENTORY", ObserverEventType::NEWBIECLOSEINVENTORY);
 	luaEngine->setGlobalInt("OBJECTRADIALUSED", ObserverEventType::OBJECTRADIALUSED);
 	luaEngine->setGlobalInt("DAMAGERECEIVED", ObserverEventType::DAMAGERECEIVED);
+	luaEngine->setGlobalInt("DAMAGECHECKPOINT", ObserverEventType::DAMAGECHECKPOINT);
 	luaEngine->setGlobalInt("OBJECTNAMECHANGED", ObserverEventType::OBJECTNAMECHANGED);
 	luaEngine->setGlobalInt("SURVEY", ObserverEventType::SURVEY);
 	luaEngine->setGlobalInt("GETATTRIBUTESBATCHCOMMAND", ObserverEventType::GETATTRIBUTESBATCHCOMMAND);
@@ -750,6 +753,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaSkill>::Register(luaEngine->getLuaState());
 	Luna<LuaSkillManager>::Register(luaEngine->getLuaState());
 	Luna<LuaContractCrate>::Register(luaEngine->getLuaState());
+	Luna<LuaScreenPlayObserver>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {
@@ -2719,7 +2723,9 @@ int DirectorManager::createObserver(lua_State* L) {
 
 	sceneObject->registerObserver(eventType, observer);
 
-	return 0;
+	lua_pushlightuserdata(L, observer);
+
+	return 1;
 }
 
 int DirectorManager::hasObserver(lua_State* L) {
