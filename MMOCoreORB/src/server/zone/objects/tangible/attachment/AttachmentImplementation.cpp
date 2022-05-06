@@ -11,6 +11,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 void AttachmentImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -43,6 +44,25 @@ void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool
 		String modName = server->getZoneServer()->getLootManager()->getRandomLootableMod(gameObjectType);
 
 		skillModMap.put(modName, mod);
+	}
+
+	if (ConfigManager::instance()->skillModNamedAttachments()) {
+		HashTableIterator<String, int> iterator = skillModMap.iterator();
+
+		UnicodeString newName;
+		String modName = "";
+		int value = 0;
+
+		for (int j = 0; j < skillModMap.size(); ++j) {
+			iterator.getNextKeyAndValue(modName, value);
+
+			StringBuffer name;
+			name << "@stat_n:" << modName;
+			newName = StringIdManager::instance()->getStringId(name.toString().hashCode()) + " +" + String::valueOf(value) + " " + newName;
+		}
+
+		newName = newName + " - " + getDisplayedName();
+		setCustomObjectName(newName, false);
 	}
 }
 

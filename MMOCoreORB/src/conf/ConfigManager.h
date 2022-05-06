@@ -691,6 +691,19 @@ namespace conf {
 
 			return cachedPvpBroadcastChannel;
 		}
+
+		inline bool skillModNamedAttachments() {
+			static uint32 cachedVersion = 0;
+			static bool cachedSkillModNamedAttachments;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedSkillModNamedAttachments = getBool("Core3.LootManager.SkillModNamedAttachments", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedSkillModNamedAttachments;
+		}
 	};
 }
 
