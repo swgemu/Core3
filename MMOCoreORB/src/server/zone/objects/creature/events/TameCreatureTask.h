@@ -206,15 +206,20 @@ public:
 			}
 
 			agent->setLairTemplateCRC(0);
-			agent->setFollowObject(player);
-			agent->storeFollowObject();
-
-			agent->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
-			agent->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
-			agent->clearPatrolPoints();
 
 			agent->setCreatureBitmask(CreatureFlag::PET);
 			agent->setAITemplate();
+			agent->clearPatrolPoints();
+
+			agent->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
+			agent->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
+
+			controlDevice->setLastCommand(PetManager::FOLLOW);
+			controlDevice->setLastCommander(player);
+
+			agent->setFollowObject(player);
+			agent->storeFollowObject();
+			agent->setMovementState(AiAgent::FOLLOWING);
 		}
 
 		creature->getZone()->broadcastObject(creature, true);
