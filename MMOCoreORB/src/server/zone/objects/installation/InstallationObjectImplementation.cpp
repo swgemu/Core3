@@ -29,6 +29,8 @@
 #include "templates/params/OptionBitmask.h"
 #include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);
@@ -748,6 +750,12 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* creature) 
 	uint32 otherFaction = creature->getFaction();
 
 	if (creature->isPet()) {
+		ManagedReference<PetControlDevice*> pcd = creature->getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral()) {
+			return false;
+		}
+
 		ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
 
 		if (owner == nullptr)

@@ -1177,19 +1177,23 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* creature) {
 
 	// Attacking CreO is AiAgent
 	if (creature->isAiAgent()) {
-		AiAgent* ai = creature->asAiAgent();
+		AiAgent* agent = creature->asAiAgent();
 
-		if (ai->getHomeObject().get() == asTangibleObject()) {
+		if (agent == nullptr)
+			return false;
+
+		if (agent->getHomeObject().get() == asTangibleObject()) {
 			return false;
 		}
 
-		if (ai->isPet()) {
-			ManagedReference<PetControlDevice*> pcd = ai->getControlDevice().get().castTo<PetControlDevice*>();
+		if (agent->isPet()) {
+			ManagedReference<PetControlDevice*> pcd = agent->getControlDevice().get().castTo<PetControlDevice*>();
+
 			if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral()) {
 				return false;
 			}
 
-			ManagedReference<CreatureObject*> owner = ai->getLinkedCreature().get();
+			ManagedReference<CreatureObject*> owner = agent->getLinkedCreature().get();
 
 			if (owner == nullptr)
 				return false;
@@ -1221,7 +1225,7 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* creature) {
 		return false;
 	}
 
-	// info(true) << "RanO isAttackable check return true";
+	// info(true) << "TanO isAttackable check return true";
 
 	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
 }
