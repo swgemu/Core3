@@ -65,10 +65,16 @@ public:
 
 			target->inflictDamage(player, pool, damage, true);
 
+			bool eventMob = false;
+
+			if (target->isAiAgent() && target->asAiAgent()->isEventMob())
+				eventMob = true;
+
 			//Not sure on exact xp value, estimate now and update later
 			int xp = target->getLevel() * 15;
 			ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
-			if(playerManager != nullptr)
+
+			if (playerManager != nullptr && !eventMob)
 				playerManager->awardExperience(player, "trapping", xp, true);
 		}
 
