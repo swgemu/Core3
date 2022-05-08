@@ -31,8 +31,8 @@ public:
 		if (server == nullptr || server->isServerShuttingDown())
 			return;
 
-		if (!server->isServerOnline()) {
-			schedule(strongRef->getCrackdownScanInterval() * 10 + System::random(600000));
+		if (server->isServerLoading()) {
+			schedule(Math::max(10000, strongRef->getWildScanInterval()));
 			return;
 		}
 

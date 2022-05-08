@@ -56,26 +56,22 @@ crackdownScansEnabled = true
 difficutlyScalingThresholds = {0, 64}
 
 --[[
-	-- TESTING VALUES
-	crackdownScanPrivilegedPlayers = true
-	crackdownPlayerScanCooldown = 15 * 60  -- In seconds
-	crackdownContrabandFineCredits = 10000
-	crackdownContrabandFineFactionPoints = 100
-	crackdownPlanetsWithWildScans = { "corellia", "dantooine", "dathomir", "endor", "lok", "naboo", "rori", "talus", "tatooine", "yavin4"}
-	-- Radius for the area in which all players are retrieved in order to select one of them randomly to be scanned in the wild.
-	-- All objects in the quadtree in that radius will be iterated. Iteration will happen every 10s on each active planet.
-	crackdownPerformanceWildScanPlayerFindRadius = 2560 -- meter radius
+-- TESTING VALUES
+crackdownScanPrivilegedPlayers = true
+wildScanInterval = 2 * 60 -- In seconds
+crackdownPlayerScanCooldown = 15 * 60  -- In seconds
+crackdownContrabandFineCredits = 10000
+crackdownContrabandFineFactionPoints = 100
+crackdownPlanetsWithWildScans = { "corellia", "dantooine", "dathomir", "endor", "lok", "naboo", "rori", "talus", "tatooine", "yavin4"}
 ]]
-	-- PRODUCTION SERVER VALUES
-	crackdownScanPrivilegedPlayers = false
-	crackdownScanInterval = 10
-	crackdownPlayerScanCooldown = 2 * 24 * 60 * 60  -- In seconds, 48 hour cooldown
-	crackdownContrabandFineCredits = 10000
-	crackdownContrabandFineFactionPoints = 100
-	crackdownPlanetsWithWildScans = { "corellia", "dantooine", "dathomir", "endor", "lok", "naboo", "rori", "talus", "tatooine", "yavin4"}
-	-- Radius for the area in which all players are retrieved in order to select one of them randomly to be scanned in the wild.
-	-- All objects in the quadtree in that radius will be iterated. Iteration will happen every 10 s on each active planet.
-	crackdownPerformanceWildScanPlayerFindRadius = 256 -- 256m radius
+
+-- PRODUCTION SERVER VALUES
+crackdownScanPrivilegedPlayers = false
+wildScanInterval = 10 * 60 -- In seconds
+crackdownPlayerScanCooldown = 2 * 24 * 60 * 60  -- In seconds, 48 hour cooldown
+crackdownContrabandFineCredits = 10000
+crackdownContrabandFineFactionPoints = 100
+crackdownPlanetsWithWildScans = { "corellia", "dantooine", "dathomir", "endor", "lok", "naboo", "rori", "talus", "tatooine", "yavin4"}
 
 -- discount percentage for side losing&winning the gcw.  negative value of increase in price (penality).  positive for a decrease (Bonus)
 
