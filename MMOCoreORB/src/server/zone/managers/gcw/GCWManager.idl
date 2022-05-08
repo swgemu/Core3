@@ -82,11 +82,10 @@ class GCWManager extends ManagedService implements Logger {
 	private transient int winnerDifficultyScaling;
 	private transient boolean crackdownScansEnabled;
 	private transient boolean crackdownScanPrivilegedPlayers;
-	private transient int crackdownScanInterval;
+	private transient int wildScanInterval;
 	private transient int crackdownPlayerScanCooldown;
 	private transient int crackdownContrabandFineCredits;
 	private transient int crackdownContrabandFineFactionPoints;
-	private transient int crackdownPerformanceWildScanPlayerFindRadius;
 
 	public transient unsigned long gcwCheckTimer;
 	public transient int vulnerabilityDuration;
@@ -460,8 +459,8 @@ class GCWManager extends ManagedService implements Logger {
 
 	@local
 	@read
-	public int getCrackdownScanInterval() {
-		return crackdownScanInterval;
+	public int getWildScanInterval() {
+		return wildScanInterval;
 	}
 
 	@local

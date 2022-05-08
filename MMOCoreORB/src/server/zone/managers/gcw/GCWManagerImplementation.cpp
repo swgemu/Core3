@@ -77,7 +77,8 @@ void GCWManagerImplementation::start() {
 		auto contrabandScanTask = new CheckWildContrabandScanTask(_this.getReferenceUnsafeStaticCast());
 
 		if (contrabandScanTask != nullptr) {
-			uint64 delay = getCrackdownScanInterval() * 10 + System::random(600000);
+			// Server start delay Minimum 10min + gcw_manager delay
+			uint64 delay = getWildScanInterval() + 600000;
 			info(true) << "Scheduling crackdown scans to start in " << int(delay / 1000) << " seconds.";
 			contrabandScanTask->schedule(delay);
 		} else {
@@ -119,11 +120,10 @@ void GCWManagerImplementation::loadLuaConfig() {
 	spawnDefenses = lua->getGlobalInt("spawnDefenses");
 	crackdownScansEnabled = lua->getGlobalBoolean("crackdownScansEnabled");
 	crackdownScanPrivilegedPlayers = lua->getGlobalBoolean("crackdownScanPrivilegedPlayers");
-	crackdownScanInterval = lua->getGlobalInt("crackdownScanInterval") * 1000;
+	wildScanInterval = lua->getGlobalInt("wildScanInterval") * 1000;
 	crackdownPlayerScanCooldown = lua->getGlobalInt("crackdownPlayerScanCooldown") * 1000;
 	crackdownContrabandFineCredits = lua->getGlobalInt("crackdownContrabandFineCredits");
 	crackdownContrabandFineFactionPoints = lua->getGlobalInt("crackdownContrabandFineFactionPoints");
-	crackdownPerformanceWildScanPlayerFindRadius = lua->getGlobalInt("crackdownPerformanceWildScanPlayerFindRadius");
 
 	LuaObject nucleotides = lua->getGlobalObject("dnaNucleotides");
 	if (nucleotides.isValidTable()) {
@@ -3074,41 +3074,72 @@ String GCWManagerImplementation::getCrackdownInfo(CreatureObject* player) const 
 }
 
 void GCWManagerImplementation::performCheckWildContrabandScanTask() {
-	if (!crackdownScansEnabled || planetsWithWildScans.find(zone->getZoneName()) == Vector<String>::npos) {
+	if (!crackdownScansEnabled || !planetsWithWildScans.contains(zone->getZoneName())) {
 		return;
 	}
 
-	Timer profile;
+	auto zoneServer = ServerCore::getZoneServer();
 
-	profile.start();
+	if (zoneServer == nullptr)
+		return;
 
-	Vector3 hitPoint = zone->getPlanetManager()->getRandomSpawnPoint();
+	auto playerManager = zoneServer->getPlayerManager();
 
-	Reference<SortedVector<ManagedReference<QuadTreeEntry*>>*> closePlayers = new SortedVector<ManagedReference<QuadTreeEntry*>>();
+	if (playerManager == nullptr)
+		return;
 
-	zone->getInRangePlayers(hitPoint.getX(), hitPoint.getY(), crackdownPerformanceWildScanPlayerFindRadius, closePlayers);
+	auto playerList = playerManager->getOnlinePlayerList();
 
-	if (closePlayers->size() > 0) {
-		int playerIndex = int(System::random(closePlayers->size() - 1));
-		SceneObject* object = cast<SceneObject*>(closePlayers->get(playerIndex).get());
-		CreatureObject* player = object->asCreatureObject();
+	for (int i = 0; i < playerList.size(); i++) {
+		auto playerID = playerList.get(i);
 
-		if (player->checkCooldownRecovery("crackdown_scan") && (player->getParentID() == 0 || player->isRidingMount()) && player->getPlayerObject() != nullptr &&
-			player->getPlayerObject()->getSessionMiliSecs() > 60 * 1000 && !player->isDead() && !player->isIncapacitated() && !player->isFeigningDeath() && !player->isInCombat() &&
-			zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY())) {
-			if (crackdownScanPrivilegedPlayers || (player->getPlayerObject() != nullptr && !player->getPlayerObject()->isPrivileged())) {
-				WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
-				wildContrabandScanSession->initializeSession();
-			}
-		} else {
-			this->info() << "Wild contraband scan skipped due to player " << player->getDisplayedName() << " (" << player->getObjectID() << ") not being a valid scan target in " << nsToString(profile.stop());
+		auto object = zoneServer->getObject(playerID);
+
+		if (object == nullptr || !object->isPlayerCreature())
+			continue;
+
+		auto player = object->asCreatureObject();
+
+		if (player == nullptr)
+			continue;
+
+		if (player->getParentID() != 0 && !player->isRidingMount())
+			continue;
+
+		if (player->getCityRegion() != nullptr)
+			continue;
+
+		if (!player->checkCooldownRecovery("crackdown_scan"))
+			continue;
+
+		if (player->getPlayerObject()->getSessionMiliSecs() > 60 * 1000)
+			continue;
+
+		if (player->isDead() || player->isIncapacitated() || player->isFeigningDeath())
+			continue;
+
+		if (player->isInCombat())
+			continue;
+
+		auto ghost = player->getPlayerObject();
+
+		if (ghost == nullptr || (!crackdownScanPrivilegedPlayers && ghost->isPrivileged()))
+			continue;
+
+		if (zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY())) {
+			WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
+			wildContrabandScanSession->initializeSession();
+
+			break;
 		}
-	} else {
-		this->info() << "Wild contraband scan found no players at " + hitPoint.toString() << " in " << nsToString(profile.stop());
 	}
 
 	CheckWildContrabandScanTask* task = new CheckWildContrabandScanTask(_this.getReferenceUnsafeStaticCast());
-	task->schedule(Math::max(10000, crackdownScanInterval));
+
+	uint64 delay = getWildScanInterval() + System::random(600000);
+
+	// Minimum Delay is 5min
+	task->schedule(delay);
 }
 
 bool GCWManagerImplementation::isContraband(SceneObject* item) {

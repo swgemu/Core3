@@ -32,7 +32,9 @@ public:
 			return;
 
 		if (!server->isServerOnline()) {
-			schedule(strongRef->getCrackdownScanInterval() * 10 + System::random(600000));
+			uint64 delay = strongRef->getWildScanInterval() + System::random(600000);
+
+			schedule(delay);
 			return;
 		}
 
