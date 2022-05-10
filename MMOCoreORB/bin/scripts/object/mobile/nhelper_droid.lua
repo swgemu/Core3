@@ -42,6 +42,7 @@
 
 
 object_mobile_nhelper_droid = object_mobile_shared_nhelper_droid:new {
+	gameObjectType = 1039,
 
 }
 

@@ -4,6 +4,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/HelperDroidObject.h"
 #include "templates/params/creature/CreatureState.h"
 #include "templates/params/creature/CreatureFlag.h"
 
@@ -428,8 +429,8 @@ void CreatureObjectImplementation::playMusicMessage(const String& file) {
 	sendMessage(message);
 }
 
-void CreatureObjectImplementation::sendOpenHolocronToPageMessage() {
-	OpenHolocronToPageMessage* message = new OpenHolocronToPageMessage();
+void CreatureObjectImplementation::sendOpenHolocronToPageMessage(const String& page) {
+	OpenHolocronToPageMessage* message = new OpenHolocronToPageMessage(page);
 	sendMessage(message);
 }
 
@@ -1385,6 +1386,27 @@ void CreatureObjectImplementation::addSkill(Skill* skill, bool notifyClient) {
 		sendMessage(msg);
 	} else {
 		skillList.add(skill, nullptr);
+	}
+
+	if (skill->getSkillName().contains("_novice") && isPlayerCreature()) {
+		PlayerObject* ghost = getPlayerObject();
+
+		Locker lock(ghost);
+
+		if (ghost != nullptr && ghost->getActivePetsSize() > 0) {
+			for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+				AiAgent* petAgent= ghost->getActivePet(i);
+
+				if (petAgent != nullptr && petAgent->isHelperDroidObject()) {
+					Reference<HelperDroidObject*> helperDroid = cast<HelperDroidObject*>(petAgent);
+
+					if (helperDroid != nullptr) {
+						Locker clock(helperDroid, ghost);
+						helperDroid->notifyHelperDroidSkillTrained(asCreatureObject(), skill->getSkillName());
+					}
+				}
+			}
+		}
 	}
 
 	// Some skills affect player movement, update speed and acceleration.

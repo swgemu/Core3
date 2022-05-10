@@ -56,6 +56,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CreatureObject>(SceneObject::NPCCREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::HELPERDROIDCREATURE);
 
 	objectFactory.registerObject<PlayerCreature>(SceneObject::PLAYERCREATURE);
 	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);

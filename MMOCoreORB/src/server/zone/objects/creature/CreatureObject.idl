@@ -328,7 +328,7 @@ class CreatureObject extends TangibleObject {
 	public native void sendNewbieTutorialEnableHudElement(final string ui, boolean enable = true, float blinkCount = 0.0f);
 
 	@dirty
-	public native void sendOpenHolocronToPageMessage();
+	public native void sendOpenHolocronToPageMessage(final string page);
 
 	/**
 	 * Sends a system message to the client of this object
@@ -2136,6 +2136,11 @@ class CreatureObject extends TangibleObject {
 
 	@dirty
 	public abstract boolean isDroidObject() {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isHelperDroidObject() {
 		return false;
 	}
 

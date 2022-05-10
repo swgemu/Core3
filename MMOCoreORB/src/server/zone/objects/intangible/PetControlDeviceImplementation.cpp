@@ -6,6 +6,7 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/ai/HelperDroidObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
@@ -440,6 +441,15 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		droid->addPendingTask("droid_skill_mod", droidSkillModTask, 3000); // 3 sec
 	}
 
+	if (pet->isHelperDroidObject()) {
+		HelperDroidObject* helperDroid = cast<HelperDroidObject*>(pet);
+
+		if (helperDroid == nullptr )
+			return;
+
+		helperDroid->onCall();
+	}
+
 	// This will clear the points set by the BT and any stored points on the PCD
 	pet->clearPatrolPoints();
 	clearPatrolPoints();
@@ -452,7 +462,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (petType == PetManager::CREATUREPET) {
 		pet->setCreatureBitmask(CreatureFlag::PET);
 	}
-	if (petType == PetManager::DROIDPET) {
+	if (petType == PetManager::DROIDPET || petType == PetManager::HELPERDROIDPET) {
 		pet->setCreatureBitmask(CreatureFlag::DROID_PET);
 	}
 	if (petType == PetManager::FACTIONPET) {

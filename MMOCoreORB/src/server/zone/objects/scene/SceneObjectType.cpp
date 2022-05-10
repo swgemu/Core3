@@ -43,6 +43,7 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case CREATURE:					return "@got_n:creature";
 		case NPCCREATURE:				return "@got_n:creature_character";
 		case DROIDCREATURE:				return "@got_n:creature_droid";
+		case HELPERDROIDCREATURE:		return "@got_n:creature_droid";
 		case PROBOTCREATURE:			return "@got_n:creature_droid_probe";
 		case PLAYERCREATURE:			return "@got_n:creature_monster";
 		case TRAINERCREATURE:			return "got_n:creature";
