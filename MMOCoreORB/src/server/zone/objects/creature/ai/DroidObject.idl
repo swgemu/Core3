@@ -61,6 +61,8 @@ class DroidObject extends AiAgent {
 	 */
 	protected float hitChance;
 
+	protected boolean helperDroid;
+
 	public native void initializeTransientMembers();
 
 	/**
@@ -107,6 +109,7 @@ class DroidObject extends AiAgent {
 		armor = 0;
 		resist = 0;
 		hitChance = 0.2;
+		helperDroid = false;
 	}
 
 	/**
@@ -287,6 +290,9 @@ class DroidObject extends AiAgent {
 	@local
 	@preLocked
 	public native void unloadSkillMods(CreatureObject player);
+
+	@preLocked
+	public native void notifyHelperDroidSkillTrained(CreatureObject player, final string skillString);
 
 	/**
 	 * Handles chat messages to the droid and hands it off to the modules
@@ -532,5 +538,15 @@ class DroidObject extends AiAgent {
 			return attackSpeed;
 		else
 			return super.calculateAttackSpeed(level);
+	}
+
+	@read
+	public boolean isHelperDroid() {
+		return helperDroid;
+	}
+
+	@preLocked
+	public void setHelperDroid(boolean val) {
+		helperDroid = val;
 	}
 }
