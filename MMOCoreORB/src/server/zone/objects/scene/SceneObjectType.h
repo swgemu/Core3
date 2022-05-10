@@ -71,6 +71,7 @@ public:
 	const static int TRAINERCREATURE = 0x40A;
 	const static int INFORMANTCREATURE = 0x40D;
 	const static int VENDORCREATURE = 0x40E;
+	const static int HELPERDROIDCREATURE = 0x40F;
 	/// End not in client ************
 
 	const static int INTANGIBLE = 0x800;  // DATA
