@@ -121,6 +121,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	crackdownScansEnabled = lua->getGlobalBoolean("crackdownScansEnabled");
 	crackdownScanPrivilegedPlayers = lua->getGlobalBoolean("crackdownScanPrivilegedPlayers");
 	wildScanInterval = lua->getGlobalInt("wildScanInterval") * 1000;
+	wildScanChance = lua->getGlobalInt("wildScanChance");
 	crackdownPlayerScanCooldown = lua->getGlobalInt("crackdownPlayerScanCooldown") * 1000;
 	crackdownContrabandFineCredits = lua->getGlobalInt("crackdownContrabandFineCredits");
 	crackdownContrabandFineFactionPoints = lua->getGlobalInt("crackdownContrabandFineFactionPoints");
@@ -3093,7 +3094,7 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 	for (int i = 0; i < playerList.size(); i++) {
 		auto playerID = playerList.get(i);
 
-		auto object = zoneServer->getObject(playerID);
+		Reference<SceneObject*> object = zoneServer->getObject(playerID);
 
 		if (object == nullptr || !object->isPlayerCreature())
 			continue;
@@ -3126,7 +3127,7 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 		if (ghost == nullptr || (!crackdownScanPrivilegedPlayers && ghost->isPrivileged()))
 			continue;
 
-		if (zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY())) {
+		if (zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY()) && getWildScanChance() >= System::random(100)) {
 			WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
 			wildContrabandScanSession->initializeSession();
 
@@ -3138,7 +3139,7 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 
 	uint64 delay = getWildScanInterval() + System::random(600000);
 
-	// Minimum Delay is 5min
+	// Minimum Delay is 10 min
 	task->schedule(delay);
 }
 

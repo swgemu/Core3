@@ -59,6 +59,7 @@ difficutlyScalingThresholds = {0, 64}
 -- TESTING VALUES
 crackdownScanPrivilegedPlayers = true
 wildScanInterval = 2 * 60 -- In seconds
+wildScanChance = 75 -- % chance for a valid scan target to be scanned
 crackdownPlayerScanCooldown = 15 * 60  -- In seconds
 crackdownContrabandFineCredits = 10000
 crackdownContrabandFineFactionPoints = 100
@@ -68,6 +69,7 @@ crackdownPlanetsWithWildScans = { "corellia", "dantooine", "dathomir", "endor", 
 -- PRODUCTION SERVER VALUES
 crackdownScanPrivilegedPlayers = false
 wildScanInterval = 10 * 60 -- In seconds
+wildScanChance = 15 -- % chance for a valid scan target to be scanned
 crackdownPlayerScanCooldown = 2 * 24 * 60 * 60  -- In seconds, 48 hour cooldown
 crackdownContrabandFineCredits = 10000
 crackdownContrabandFineFactionPoints = 100
