@@ -649,7 +649,7 @@ function TutorialScreenPlay:handleRoomOne(pPlayer)
 		createObserver(CHAT, "TutorialScreenPlay", "chatEvent", pPlayer)
 
 	elseif (curStep == 4) then -- Holocron tutorial
-		CreatureObject(pPlayer):sendOpenHolocronToPageMessage()
+		CreatureObject(pPlayer):sendOpenHolocronToPageMessage("WelcomeToSWG")
 		createObserver(NEWBIETUTORIALHOLOCRON, "TutorialScreenPlay", "holocronEvent", pPlayer)
 		CreatureObject(pPlayer):sendNewbieTutorialRequest("closeHolocron")
 
