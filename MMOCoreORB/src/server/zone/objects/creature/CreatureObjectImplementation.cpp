@@ -428,8 +428,8 @@ void CreatureObjectImplementation::playMusicMessage(const String& file) {
 	sendMessage(message);
 }
 
-void CreatureObjectImplementation::sendOpenHolocronToPageMessage() {
-	OpenHolocronToPageMessage* message = new OpenHolocronToPageMessage();
+void CreatureObjectImplementation::sendOpenHolocronToPageMessage(const String& page) {
+	OpenHolocronToPageMessage* message = new OpenHolocronToPageMessage(page);
 	sendMessage(message);
 }
 
