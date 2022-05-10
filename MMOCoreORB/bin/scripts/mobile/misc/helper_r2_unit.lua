@@ -1,4 +1,6 @@
 helper_r2_unit = Creature:new {
+	randomNameType = NAME_R2,
+	randomNameTag = true,
 	objectName = "@mob/creature_names:nhelper_droid",
 	socialGroup = "",
 	faction = "",
@@ -23,7 +25,7 @@ helper_r2_unit = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/nhelper_droid.iff"},
@@ -34,11 +36,6 @@ helper_r2_unit = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
-	
-	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
-	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = {},
-	secondaryAttacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(helper_r2_unit, "helper_r2_unit")

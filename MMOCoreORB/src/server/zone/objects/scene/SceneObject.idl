@@ -1547,6 +1547,11 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@dirty
+	public abstract boolean isHelperDroidObject() {
+		return false;
+	}
+
+	@dirty
 	@local
 	@nativeStub
 	@virtualStub

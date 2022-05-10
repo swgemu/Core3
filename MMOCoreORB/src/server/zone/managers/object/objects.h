@@ -13,6 +13,7 @@
 #include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/ai/HelperDroidObject.h"
 #include "server/zone/objects/intangible/IntangibleObject.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"

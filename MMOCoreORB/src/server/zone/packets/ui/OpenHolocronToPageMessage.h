@@ -10,16 +10,13 @@
 
 class OpenHolocronToPageMessage : public BaseMessage {
 public:
-   OpenHolocronToPageMessage() : BaseMessage() {
+   OpenHolocronToPageMessage(const String& page) : BaseMessage() {
 		insertShort(0x09);
 		insertInt(0x7CB65021);  // CRC
 
-		//send Once to open, once to close.
-		insertShort(0); //??
-
-
+		insertAscii(page);
+		insertShort(0x00);
    }
-
 };
 
 #endif /* OPENHOLOCRONTOPAGEMESSAGE_H_ */
