@@ -16,6 +16,8 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/ZoneServer.h"
+#include "server/chat/ChatManager.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
@@ -23,6 +25,9 @@ void DroidObjectImplementation::initializeTransientMembers() {
 }
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
+	if (isHelperDroid())
+		return;
+
 	AiAgentImplementation::fillAttributeList(msg, object);
 
 	ManagedReference<ControlDevice*> device = getControlDevice().get();
@@ -46,6 +51,12 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 }
 
 int DroidObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	if (isHelperDroid()) {
+		// Quests and Menus called here from Lua Here
+
+		return 0;
+	}
+
 	auto pcd = getControlDevice().get().castTo<PetControlDevice*>();
 
 	if (getLinkedCreature().get() == player) {
@@ -64,6 +75,43 @@ int DroidObjectImplementation::handleObjectMenuSelect(CreatureObject* player, by
 }
 
 void DroidObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	if (isHelperDroid()) {
+		if (player == nullptr)
+			return;
+
+		// Droid Options
+		menuResponse->addRadialMenuItem(132, 3, "@pet/pet_menu:droid_options");
+		menuResponse->addRadialMenuItemToRadialID(132, 59, 3, "@pet/pet_menu:menu_store"); // Store
+		menuResponse->addRadialMenuItemToRadialID(132, 234, 3, "@pet/pet_menu:menu_recharge");
+
+		// Starship Pilot Help
+		menuResponse->addRadialMenuItem(181, 3, "@new_player:menu_space");
+
+		// Profession Quests
+		menuResponse->addRadialMenuItem(110, 3, "@new_player:menu_quests");
+
+		if (player->hasSkill("combat_brawler_novice"))
+			menuResponse->addRadialMenuItemToRadialID(110, 50, 3, "@new_player:submenu_brawler");
+		if (player->hasSkill("combat_marksman_novice"))
+			menuResponse->addRadialMenuItemToRadialID(110, 51, 3, "@new_player:submenu_marksman");
+		if (player->hasSkill("outdoors_scout_novice"))
+			menuResponse->addRadialMenuItemToRadialID(110, 52, 3, "@new_player:submenu_scout");
+		if (player->hasSkill("crafting_artisan_novice"))
+			menuResponse->addRadialMenuItemToRadialID(110, 53, 3, "@new_player:submenu_artisan");
+		if (player->hasSkill("science_medic_novice"))
+			menuResponse->addRadialMenuItemToRadialID(110, 54, 3, "@new_player:submenu_medic");
+		if (player->hasSkill("social_entertainer_novice"))
+			menuResponse->addRadialMenuItemToRadialID(110, 55, 3, "@new_player:submenu_entertainer");
+
+		// General Help
+		menuResponse->addRadialMenuItem(170, 3, "@new_player:menu_other");
+		menuResponse->addRadialMenuItemToRadialID(170, 167, 3, "@new_player:submenu_cloning");
+		menuResponse->addRadialMenuItemToRadialID(170, 168, 3, "@new_player:submenu_travel");
+		menuResponse->addRadialMenuItemToRadialID(170, 169, 3, "@new_player:submenu_vehicle");
+
+		return;
+	}
+
 	SceneObjectImplementation::fillObjectMenuResponse(menuResponse, player); // PetMenuComponent
 
 	if (isMerchantBarker() && getLinkedCreature().get() != player) {
@@ -302,6 +350,28 @@ void DroidObjectImplementation::onCall() {
 	for (int i = 0; i < modules.size(); i++) {
 		auto& module = modules.get(i);
 		module->onCall();
+	}
+
+	if (isHelperDroid()) {
+		ZoneServer* zoneServer = getZoneServer();
+
+		if (zoneServer == nullptr)
+			return;
+
+		ChatManager* chatManager = zoneServer->getChatManager();
+
+		if (chatManager != nullptr) {
+			int number = System::random(2) + 1;
+			StringBuffer greeting;
+			greeting << "@new_player:droid_greeting_begin_0" << String::valueOf(number);
+
+			StringIdChatParameter message = greeting.toString();
+			chatManager->broadcastChatMessage(asCreatureObject(), message, 0, 0, asCreatureObject()->getMoodID());
+
+			// I am your helper droid and will be helping you to learn more about any of the Starting Professions you wish to undertake. I have downloaded some tasks to help you get started. Would you like to begin?
+			StringIdChatParameter message2 = "@new_player:droid_greeting_end";
+			chatManager->broadcastChatMessage(asCreatureObject(), message2, 0, 0, asCreatureObject()->getMoodID());
+		}
 	}
 }
 

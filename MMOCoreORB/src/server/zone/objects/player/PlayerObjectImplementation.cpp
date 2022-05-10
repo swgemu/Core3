@@ -60,6 +60,7 @@
 #include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
 #include "server/zone/objects/player/events/RemoveSpouseTask.h"
 #include "server/zone/objects/player/events/PvpTefRemovalTask.h"
+#include "server/zone/objects/player/events/SpawnHelperDroidTask.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/objects/player/events/ForceRegenerationEvent.h"
@@ -486,7 +487,7 @@ void PlayerObjectImplementation::notifySceneReady() {
 	}
 
 	checkAndShowTOS();
-
+	createHelperDroid();
 }
 
 void PlayerObjectImplementation::sendFriendLists() {
@@ -3372,4 +3373,19 @@ String PlayerObjectImplementation::getPlayedTimeString(bool verbose) const {
 	}
 
 	return buf.toString();
+}
+
+void PlayerObjectImplementation::createHelperDroid() {
+	// Only spawn droid if character is less than 10 days old
+	//if (getCharacterAgeInDays() > 10)
+	if (getCharacterAgeInDays() > 365)
+		return;
+
+	CreatureObject* player = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (player == nullptr)
+		return;
+
+	Reference<Task*> createDroid = new SpawnHelperDroidTask(player);
+	createDroid->schedule(5000);
 }
