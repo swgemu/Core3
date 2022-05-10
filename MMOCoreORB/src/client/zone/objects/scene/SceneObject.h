@@ -57,6 +57,7 @@ public:
 	const static int CREATURE = 0x400;
 	const static int NPCCREATURE = 0x401;
 	const static int DROIDCREATURE = 0x402;
+	const static int HELPERDROIDCREATURE = 0x40F;
 	const static int PROBOTCREATURE = 0x403;
 	const static int PLAYERCREATURE = 0x409;
 

@@ -294,7 +294,9 @@ int LuaCreatureObject::setMoodString(lua_State* L) {
 }
 
 int LuaCreatureObject::sendOpenHolocronToPageMessage(lua_State* L) {
-	realObject->sendOpenHolocronToPageMessage();
+	String value = lua_tostring(L, -1);
+
+	realObject->sendOpenHolocronToPageMessage(value);
 
 	return 0;
 }
