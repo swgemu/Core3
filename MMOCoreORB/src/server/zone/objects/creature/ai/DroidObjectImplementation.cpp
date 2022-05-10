@@ -16,6 +16,9 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/ZoneServer.h"
+#include "server/chat/ChatManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
@@ -64,6 +67,9 @@ int DroidObjectImplementation::handleObjectMenuSelect(CreatureObject* player, by
 }
 
 void DroidObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
 	SceneObjectImplementation::fillObjectMenuResponse(menuResponse, player); // PetMenuComponent
 
 	if (isMerchantBarker() && getLinkedCreature().get() != player) {

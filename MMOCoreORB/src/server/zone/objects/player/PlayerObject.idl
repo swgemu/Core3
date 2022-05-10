@@ -501,6 +501,8 @@ class PlayerObject extends IntangibleObject {
 	@dirty
 	public native void checkAndShowTOS();
 
+	public native void createHelperDroid();
+
 	@dirty
 	public synchronized int getTotalOwnedStructureCount() {
 		return ownedStructures.size();
