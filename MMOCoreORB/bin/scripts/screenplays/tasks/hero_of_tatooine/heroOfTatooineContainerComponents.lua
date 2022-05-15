@@ -11,7 +11,7 @@ function heroOfTatooineRockCrevice:canAddObject(pCrevice, pIngredient, slot)
 		return TRANSFERCANTADD
 	end
 
-	local pParent = DeathWatchBunkerScreenPlay:getObjOwner(pIngredient)
+	local pParent = DeathWatchBunker:getObjOwner(pIngredient)
 
 	if (pParent == nil or not SceneObject(pParent):isPlayerCreature()) then
 		return TRANSFERCANTADD
@@ -36,7 +36,7 @@ function heroOfTatooineRockCrevice:transferObject(pCrevice, pIngredient, slot)
 		return TRANSFERFAIL
 	end
 
-	local pParent = DeathWatchBunkerScreenPlay:getObjOwner(pIngredient)
+	local pParent = DeathWatchBunker:getObjOwner(pIngredient)
 
 	if (pParent == nil or not SceneObject(pParent):isPlayerCreature()) then
 		return TRANSFERFAIL

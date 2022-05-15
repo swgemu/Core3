@@ -11,7 +11,7 @@ function deathWatchJetpackCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 		return TRANSFERCANTADD
 	end
 
-	local pParent = DeathWatchBunkerScreenPlay:getObjOwner(pIngredient)
+	local pParent = DeathWatchBunker:getObjOwner(pIngredient)
 
 	if (pParent == nil or not SceneObject(pParent):isPlayerCreature()) then
 		return TRANSFERCANTADD
@@ -28,8 +28,8 @@ function deathWatchJetpackCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 		return TRANSFERCANTADD
 	end
 
-	if CreatureObject(pParent):hasSkill(DeathWatchBunkerScreenPlay.terminalSkills[8]) == false then
-		CreatureObject(pParent):sendSystemMessage(DeathWatchBunkerScreenPlay.terminalSkillMessage[4])
+	if CreatureObject(pParent):hasSkill(DeathWatchBunker.terminalSkills[8]) == false then
+		CreatureObject(pParent):sendSystemMessage(DeathWatchBunker.terminalSkillMessage[4])
 		return TRANSFERCANTADD
 	end
 
@@ -42,37 +42,37 @@ function deathWatchJetpackCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 	local hasInjectorTank = readData(statusPrefix .. "injectortank")
 	local hasDispersionUnit = readData(statusPrefix .. "dispersionunit")
 
-	if template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackBase then
+	if template == DeathWatchBunker.bunkerItems.jetPackBase then
 		if hasJetpackBase == 0 then
 			return TRANSFERCANADD
 		else
 			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
 		end
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackStabilizer then
+	elseif template == DeathWatchBunker.bunkerItems.jetPackStabilizer then
 		if hasJetpackStabilizer == 0 then
 			return TRANSFERCANADD
 		else
 			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
 		end
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.ductedFan then
+	elseif template == DeathWatchBunker.bunkerItems.ductedFan then
 		if hasDuctedFan == 0 then
 			return TRANSFERCANADD
 		else
 			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
 		end
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.injectorTank then
+	elseif template == DeathWatchBunker.bunkerItems.injectorTank then
 		if hasInjectorTank == 0 then
 			return TRANSFERCANADD
 		else
 			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
 		end
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.dispersionUnit then
+	elseif template == DeathWatchBunker.bunkerItems.dispersionUnit then
 		if hasDispersionUnit == 0 then
 			return TRANSFERCANADD
 		else
 			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
 		end
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.alumMineral then
+	elseif template == DeathWatchBunker.bunkerItems.alumMineral then
 		if hasMineral == 0 then
 			return TRANSFERCANADD
 		else
@@ -91,28 +91,28 @@ function deathWatchJetpackCraftingDroid:transferObject(pDroid, pIngredient, slot
 		return TRANSFERFAIL
 	end
 
-	local pParent = DeathWatchBunkerScreenPlay:getObjOwner(pIngredient)
+	local pParent = DeathWatchBunker:getObjOwner(pIngredient)
 
 	local template = SceneObject(pIngredient):getTemplateObjectPath()
 
 	local number = readData(SceneObject(pDroid):getObjectID() .. ":dwb:craftingterminal")
 	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
 
-	if template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackBase then
+	if template == DeathWatchBunker.bunkerItems.jetPackBase then
 		writeData(statusPrefix .. "jetpackbase", 1)
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackStabilizer then
+	elseif template == DeathWatchBunker.bunkerItems.jetPackStabilizer then
 		writeData(statusPrefix .. "jetpackstabilizer", 1)
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.ductedFan then
+	elseif template == DeathWatchBunker.bunkerItems.ductedFan then
 		writeData(statusPrefix .. "ductedfan", 1)
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.injectorTank then
+	elseif template == DeathWatchBunker.bunkerItems.injectorTank then
 		writeData(statusPrefix .. "injectortank", 1)
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.dispersionUnit then
+	elseif template == DeathWatchBunker.bunkerItems.dispersionUnit then
 		writeData(statusPrefix .. "dispersionunit", 1)
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.alumMineral then
+	elseif template == DeathWatchBunker.bunkerItems.alumMineral then
 		writeData(statusPrefix .. "alummineral", 1)
 	end
 
-	createEvent(100, "DeathWatchBunkerScreenPlay", "destroyIngredient", pIngredient, "")
+	createEvent(100, "DeathWatchBunker", "destroyIngredient", pIngredient, "")
 
 	local hasMineral = readData(statusPrefix .. "alummineral")
 	local hasJetpackBase = readData(statusPrefix .. "jetpackbase")
@@ -150,7 +150,7 @@ function deathWatchJetpackCraftingDroid:transferObject(pDroid, pIngredient, slot
 		local spawn = deathWatchSpecialSpawns["droidengineerattack4"]
 		spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 
-		DeathWatchBunkerScreenPlay:startCraftingProcess(pParent, pDroid)
+		DeathWatchBunker:startCraftingProcess(pParent, pDroid)
 	else
 		CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:items_still_needed")
 		if hasJetpackBase == 0 then
@@ -196,7 +196,7 @@ function deathWatchCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 		return TRANSFERCANTADD
 	end
 
-	local pParent = DeathWatchBunkerScreenPlay:getObjOwner(pIngredient)
+	local pParent = DeathWatchBunker:getObjOwner(pIngredient)
 
 	if (pParent == nil or not SceneObject(pParent):isPlayerCreature()) then
 		return TRANSFERCANTADD
@@ -220,8 +220,8 @@ function deathWatchCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 		return TRANSFERCANTADD
 	end
 
-	if CreatureObject(pParent):hasSkill(DeathWatchBunkerScreenPlay.terminalSkills[number + 4]) == false then
-		CreatureObject(pParent):sendSystemMessage(DeathWatchBunkerScreenPlay.terminalSkillMessage[number])
+	if CreatureObject(pParent):hasSkill(DeathWatchBunker.terminalSkills[number + 4]) == false then
+		CreatureObject(pParent):sendSystemMessage(DeathWatchBunker.terminalSkillMessage[number])
 		return TRANSFERCANTADD
 	end
 
@@ -230,26 +230,26 @@ function deathWatchCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 	local hasPLC = readData(statusPrefix .. "protective")
 	local hasArmorPart = readData(statusPrefix .. "bharmorpart")
 
-	if template == DeathWatchBunkerScreenPlay.bunkerItems.binaryLiquid then
+	if template == DeathWatchBunker.bunkerItems.binaryLiquid then
 		if hasBL == 0 then
 			return TRANSFERCANADD
 		else
 			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
 		end
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.protectiveLiquid then
+	elseif template == DeathWatchBunker.bunkerItems.protectiveLiquid then
 		if hasPLC == 0 then
 			return TRANSFERCANADD
 		else
 			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
 		end
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.alumMineral then
+	elseif template == DeathWatchBunker.bunkerItems.alumMineral then
 		if hasMineral == 0 then
 			return TRANSFERCANADD
 		else
 			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
 		end
 	else
-		local table = DeathWatchBunkerScreenPlay.requiredDoorItems[number + 4]
+		local table = DeathWatchBunker.requiredDoorItems[number + 4]
 		for i,v in ipairs(table) do
 			if template == v then
 				if hasArmorPart == 0 then
@@ -272,7 +272,7 @@ function deathWatchCraftingDroid:transferObject(pDroid, pIngredient, slot)
 		return TRANSFERFAIL
 	end
 
-	local pParent = DeathWatchBunkerScreenPlay:getObjOwner(pIngredient)
+	local pParent = DeathWatchBunker:getObjOwner(pIngredient)
 	local template = SceneObject(pIngredient):getTemplateObjectPath()
 
 	local terminalId = SceneObject(pDroid):getObjectID()
@@ -280,14 +280,14 @@ function deathWatchCraftingDroid:transferObject(pDroid, pIngredient, slot)
 	local number = readData(terminalId .. ":dwb:craftingterminal")
 	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
 
-	if template == DeathWatchBunkerScreenPlay.bunkerItems.binaryLiquid then
+	if template == DeathWatchBunker.bunkerItems.binaryLiquid then
 		writeData(statusPrefix .. "binary", 1)
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.protectiveLiquid then
+	elseif template == DeathWatchBunker.bunkerItems.protectiveLiquid then
 		writeData(statusPrefix .. "protective", 1)
-	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.alumMineral then
+	elseif template == DeathWatchBunker.bunkerItems.alumMineral then
 		writeData(statusPrefix .. "alummineral", 1)
 	else
-		local table = DeathWatchBunkerScreenPlay.requiredDoorItems[number + 4]
+		local table = DeathWatchBunker.requiredDoorItems[number + 4]
 		for i,v in ipairs(table) do
 			if template == v then
 				writeData(statusPrefix .. "bharmorpart", 1)
@@ -299,7 +299,7 @@ function deathWatchCraftingDroid:transferObject(pDroid, pIngredient, slot)
 		end
 	end
 
-	createEvent(100, "DeathWatchBunkerScreenPlay", "destroyIngredient", pIngredient, "")
+	createEvent(100, "DeathWatchBunker", "destroyIngredient", pIngredient, "")
 
 	local hasMineral = readData(statusPrefix .. "alummineral")
 	local hasBL = readData(statusPrefix .. "binary")
@@ -346,7 +346,7 @@ function deathWatchCraftingDroid:transferObject(pDroid, pIngredient, slot)
 			spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		end
 
-		DeathWatchBunkerScreenPlay:startCraftingProcess(pParent, pDroid)
+		DeathWatchBunker:startCraftingProcess(pParent, pDroid)
 	else
 		CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:items_still_needed")
 		if hasBL == 0 then
@@ -358,7 +358,7 @@ function deathWatchCraftingDroid:transferObject(pDroid, pIngredient, slot)
 		end
 
 		if hasArmorPart == 0 then
-			CreatureObject(pParent):sendSystemMessage(DeathWatchBunkerScreenPlay.partStrings[number])
+			CreatureObject(pParent):sendSystemMessage(DeathWatchBunker.partStrings[number])
 		end
 
 		if hasMineral == 0 then

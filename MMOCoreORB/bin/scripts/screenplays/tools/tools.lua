@@ -13,7 +13,21 @@ function StaffTools:openToolsSUI(pCreature)
 		return
 	end
 
-	self:openSUI(pCreature)
+	local z = getTerrainHeight(pCreature, 0, 0)
+	local pMobile = spawnMobile("naboo", "fambaa", 0, 0, z, 0, 0, 0)
+
+	if (pMobile ~= nil) then
+		local pObserver = createObserver(DAMAGECHECKPOINT, "StaffTools", "damageCheckpoint", pMobile)
+		LuaScreenPlayObserver(pObserver):storeFloatValue("damageCheckpoint", 0.8)
+	end
+
+	--self:openSUI(pCreature)
+end
+
+function StaffTools:damageCheckpoint(pMobile)
+	printf("damageCheckpoint triggered, curHealth %i maxHealth %i percent %i\n", CreatureObject(pMobile):getHAM(0), CreatureObject(pMobile):getMaxHAM(0), CreatureObject(pMobile):getHAM(0) / CreatureObject(pMobile):getMaxHAM(0))
+	
+	return 0
 end
 
 function StaffTools:openSUI(pCreature)

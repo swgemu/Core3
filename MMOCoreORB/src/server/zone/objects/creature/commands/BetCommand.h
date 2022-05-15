@@ -5,7 +5,7 @@
 #ifndef BETCOMMAND_H_
 #define BETCOMMAND_H_
 
-#include "server/zone/managers/minigames/GamblingManager.h"
+#include "server/zone/managers/minigames/gambling/GamblingManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class BetCommand : public QueueCommand {
@@ -16,62 +16,55 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
-		if (!checkStateMask(creature))
+	int doQueueCommand(CreatureObject* player, const uint64& target, const UnicodeString& arguments) const {
+		if (!checkStateMask(player))
 			return INVALIDSTATE;
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(player))
 			return INVALIDLOCOMOTION;
+/*
+		GamblingManager* gamblingManager = server->getGamblingManager();
 
-		if (creature->isPlayerCreature()) {
 
-			CreatureObject* player = cast<CreatureObject*>(creature);
+		Reference<GamblingTerminal*> terminal = server->getZoneServer()->getObject(target, true).castTo<GamblingTerminal*>();
 
-			if (player == nullptr)
-				return GENERALERROR;
+		if (terminal == nullptr)
+			return GENERALERROR;
 
-			GamblingManager* gamblingManager = server->getGamblingManager();
-
-			if (gamblingManager == nullptr)
-				return GENERALERROR;
+		if (!terminal->isAcceptingBets()) {
+			player->sendSystemMessage("The table is not currently accepting bets!");
+			return GENERALERROR;
+		}
 
 			if (!gamblingManager->isPlaying(player) || !gamblingManager->bettingAllowed(player)) {
-				player->sendSystemMessage("@gambling/default_interface:bet_failed");
-				return GENERALERROR;
-			}
-
-			try {
-				StringTokenizer args(arguments.toString());
-
-				if (args.hasMoreTokens()) {
-					int amount = args.getIntToken();
-					String bet;
-					args.getStringToken(bet);
-
-					bet.toLowerCase();
-
-					int targetBet = -1;
-
-					for (int i=0; i<gamblingManager->getRoulette()->size(); ++i) {
-
-						if (gamblingManager->getRoulette()->get(i)==bet) {
-							targetBet = i;
-						}
-					}
-
-					if (targetBet == -1) {
-						player->sendSystemMessage("@gambling/default_interface:bet_failed_amt");
-						return GENERALERROR;
-					}
-
-					gamblingManager->bet(player, amount, targetBet, 0);
-				}
-			} catch (Exception& e) {
-				player->sendSystemMessage("@gambling/default_interface:bet_failed_amt");
-			}
-
+			player->sendSystemMessage("You cannot bet on a table you have not joined!");
+			return GENERALERROR;
 		}
+
+		if(!checkDistance(player, terminal, 15)) {
+			player->sendSystemMessage("@gambling/default_interface:bet_failed_distance"); // You are too far from the game station to complete the bet.
+			return TOOFAR;
+		}
+
+		StringTokenizer args(arguments.toString());
+		int amount = 0;
+		String bet = "";
+
+		if (args.hasMoreTokens()) {
+			amount = args.getIntToken();
+		}
+
+		if (args.hasMoreTokens()) {
+			args.getStringToken(bet);
+			bet.toLowerCase();
+		}
+
+		if (amount <= 0) {
+			player->sendSystemMessage("@gambling/default_interface:bet_failed_amt"); // You have entered an invalid amount. Please try again.
+			return GENERALERROR;
+		}
+
+		gamblingManager->handleBet(player, terminal, amount, bet);*/
 
 		return SUCCESS;
 	}

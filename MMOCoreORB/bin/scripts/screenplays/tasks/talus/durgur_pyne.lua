@@ -76,7 +76,7 @@ DurgurPyne = ThemeParkLogic:new {
 	className = "DurgurPyne",
 	screenPlayState = "durgur_pyne_tasks",
 	planetName = "talus",
-	distance = 900
+	distance = 300
 }
 
 registerScreenPlay("DurgurPyne", true)

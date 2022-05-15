@@ -38,7 +38,7 @@ function deathWatchHaldoConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 	elseif (screenID == "please_hurry") then
 		CreatureObject(pPlayer):setScreenPlayState(1, "death_watch_haldo")
 	elseif (screenID == "wont_help") then
-		DeathWatchBunkerScreenPlay:spawnAggroHaldo(pNpc, pPlayer)
+		DeathWatchBunker:spawnAggroHaldo(pNpc, pPlayer)
 	elseif (screenID == "thank_you") then
 		if (not CreatureObject(pPlayer):hasScreenPlayState(2, "death_watch_haldo")) then
 			local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")

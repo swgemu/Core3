@@ -214,8 +214,12 @@ function CorelliaBelaVistalScreenPlay:spawnMobiles()
 		end
 	end
 
+printf("*********\n********\n")
 	local pNpc = spawnMobile("corellia", "junk_dealer", 0, 6840.98, 315, -5630.49, -47, 0)
 	if pNpc ~= nil then
+	printf(CreatureObject(pNpc):getOptionsBitmask() .. "\n")
 		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+		printf(CreatureObject(pNpc):getOptionsBitmask() .. "\n")
 	end
+	printf("*********\n********\n")
 end

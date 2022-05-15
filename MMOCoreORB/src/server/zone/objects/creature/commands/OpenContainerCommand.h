@@ -39,7 +39,7 @@ public:
 		if (objectToOpen == nullptr) {
 			return GENERALERROR;
 		}
-
+		StackTrace::printStackTrace();
 		ManagedReference<SceneObject*> objectParent = objectToOpen->getParent().get();
 
 		if (objectParent != nullptr && objectParent->isCraftingStation()) {

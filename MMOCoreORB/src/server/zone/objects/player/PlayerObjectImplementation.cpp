@@ -1460,6 +1460,7 @@ void PlayerObjectImplementation::notifyOnline() {
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
 	if (missionManager != nullptr && playerCreature->hasSkill("force_title_jedi_rank_02")) {
+		setVisibility(8000);
 		uint64 id = playerCreature->getObjectID();
 
 		if (!missionManager->hasPlayerBountyTargetInList(id))

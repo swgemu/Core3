@@ -30,6 +30,7 @@ AtomicInteger TransactionLog::exportBacklog;
 
 TransactionLog::TransactionLog(SceneObject* src, SceneObject* dst, SceneObject* subject, TrxCode code, bool exportSubject, CAPTURE_CALLER_ARGS) {
 	if (!isEnabled()) {
+		printf("*** log not enabled\n");
 		return;
 	}
 

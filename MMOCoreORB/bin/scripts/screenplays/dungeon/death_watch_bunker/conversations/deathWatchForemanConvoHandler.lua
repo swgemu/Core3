@@ -83,7 +83,7 @@ function deathWatchForemanConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemp
 	end
 
 	-- Player has completed entire chain, returning for more ore
-	if (DeathWatchBunkerScreenPlay:checkTime(pPlayer) == true) then
+	if (DeathWatchBunker:checkTime(pPlayer) == true) then
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 		if (pInventory == nil) then
 			return convoTemplate:getScreen("no_ore_yet")
@@ -114,7 +114,7 @@ function deathWatchForemanConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 		CreatureObject(pPlayer):removeScreenPlayState(4, "death_watch_haldo")
 	end
 	if (screenID == "great_remember_medicine" or screenID == "return_great_remember_medicine") then
-		DeathWatchBunkerScreenPlay:startForemanQuestStage(1, pPlayer)
+		DeathWatchBunker:startForemanQuestStage(1, pPlayer)
 		CreatureObject(pPlayer):setScreenPlayState(2, "death_watch_foreman_stage")
 	end
 	if (screenID == "return_battery_cleaned_no_haldo_kill" or screenID == "return_battery_cleaned_killed_haldo") then
@@ -143,13 +143,13 @@ function deathWatchForemanConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 	if (screenID == "come_back_after_pumps" or screenID == "remember_tricky_pumps") then
 		CreatureObject(pPlayer):setScreenPlayState(32, "death_watch_foreman_stage")
 		CreatureObject(pPlayer):removeScreenPlayState(2, "death_watch_foreman_stage_failed")
-		DeathWatchBunkerScreenPlay:startForemanQuestStage(2, pPlayer)
+		DeathWatchBunker:startForemanQuestStage(2, pPlayer)
 	end
 	if (screenID == "ore_reward") then
 		CreatureObject(pPlayer):setScreenPlayState(128, "death_watch_foreman_stage")
 	end
 	if (screenID == "ore_reward" or screenID == "more_ore") then
-		DeathWatchBunkerScreenPlay:storeTime(pPlayer)
+		DeathWatchBunker:storeTime(pPlayer)
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory == nil) then

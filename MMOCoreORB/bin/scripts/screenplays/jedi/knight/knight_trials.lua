@@ -44,7 +44,7 @@ function KnightTrials:startNextKnightTrial(pPlayer)
 	local trialsCompleted = JediTrials:getTrialsCompleted(pPlayer)
 
 	if (trialsCompleted >= #knightTrialQuests) then
-		dropObserver(KILLEDCREATURE, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
+		dropObserver(QUESTKILL, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
 		deleteScreenPlayData(pPlayer, "JediTrials", "huntTarget")
 		deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetCount")
 		deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")
@@ -97,7 +97,7 @@ function KnightTrials:startNextKnightTrial(pPlayer)
 	sui.hideCancelButton()
 	sui.sendTo(pPlayer)
 
-	dropObserver(KILLEDCREATURE, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
+	dropObserver(QUESTKILL, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTarget")
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")
 	writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", 0)
@@ -116,7 +116,7 @@ function KnightTrials:startNextKnightTrial(pPlayer)
 		end
 
 		writeScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
-		createObserver(KILLEDCREATURE, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
+		createObserver(QUESTKILL, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
 	end
 end
 
@@ -441,8 +441,8 @@ function KnightTrials:onPlayerLoggedIn(pPlayer)
 		local trialData = knightTrialQuests[trialNumber]
 
 		if (trialData.trialType == TRIAL_HUNT or trialData.trialType == TRIAL_HUNT_FACTION) then
-			dropObserver(KILLEDCREATURE, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
-			createObserver(KILLEDCREATURE, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
+			dropObserver(QUESTKILL, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
+			createObserver(QUESTKILL, "KnightTrials", "notifyKilledHuntTarget", pPlayer)
 		end
 	end
 end

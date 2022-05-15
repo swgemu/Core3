@@ -18,6 +18,7 @@
 #include "PathFindCommand.h"
 #include "SpawnPointInAreaCommand.h"
 #include "ServerWhoCommand.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 
 class ServerCommand : public QueueCommand {
 	MethodFactory<String, CreatureObject*, uint64, const String&> methodFactory;
@@ -59,6 +60,12 @@ public:
 		String restOfArguments;
 		if (tokenizer.hasMoreTokens())
 			tokenizer.finalToken(restOfArguments);
+
+		if (commandName == "effect" && restOfArguments.length() > 0) {
+			PlayClientEffectLoc* effectLoc = new PlayClientEffectLoc(restOfArguments, creature->getZone()->getZoneName(), creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
+			creature->broadcastMessage(effectLoc, false);
+			return SUCCESS;
+		}
 
 		ServerCommand* unconst = const_cast<ServerCommand*>(this);
 		

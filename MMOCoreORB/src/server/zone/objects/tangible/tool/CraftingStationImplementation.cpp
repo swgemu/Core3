@@ -97,7 +97,7 @@ void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 
 				if (building != nullptr && !isASubChildOf(player)) {
 					if (building->isOnAdminList(player)) {
-						menuResponse->addRadialMenuItem(68, 3, "@ui_radial:craft_hopper_input"); // Input Hopper
+						menuResponse->addRadialMenuItem(77, 3, "@ui_radial:craft_hopper_input"); // Input Hopper
 					}
 				}
 			}
@@ -105,7 +105,7 @@ void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 int CraftingStationImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 68) {
+	if (selectedID == 77) {
 		if (getSlottedObject("ingredient_hopper") == nullptr && !getObjectNameStringIdName().contains("public")) {
 			createChildObjects();
 		}

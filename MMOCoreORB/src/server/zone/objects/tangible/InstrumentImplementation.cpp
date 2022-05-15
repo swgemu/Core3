@@ -101,6 +101,31 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 				instrumentPulse->cancel();
 		}
 
+		CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
+
+		if (vec != nullptr) {
+			SortedVector<QuadTreeEntry*> closeObjects;
+			vec->safeCopyTo(closeObjects);
+
+			for (int i = 0; i < closeObjects.size(); ++i) {
+				Instrument* areaInstrument = cast<Instrument*>(closeObjects.get(i));
+
+				if (areaInstrument == nullptr)
+					continue;
+
+				if (areaInstrument->getSpawnerPlayer() != player)
+					continue;
+
+				ManagedReference<SceneObject*> objectParent = areaInstrument->getParent().get();
+
+				if (objectParent != nullptr && !objectParent->isCellObject())
+					continue;
+
+				Locker locker(areaInstrument);
+				areaInstrument->destroyObjectFromWorld(true);
+			}
+		}
+
 		spawnedObject = ObjectManager::instance()->createObject(serverObjectCRC, 0, "sceneobjects");
 
 		if (spawnedObject == nullptr)

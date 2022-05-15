@@ -619,8 +619,8 @@ end
 
 function BestineElection:playerLoggedIn(pPlayer)
 	if (self:getQuestStep(pPlayer, self.VICTOR, self.VICTOR_TUSKEN_QUEST) == self.VICTOR_TUSKEN_QUEST_ACCEPTED) then
-		dropObserver(KILLEDCREATURE, "BestineElection", "notifyKilledCreature", pPlayer)
-		createObserver(KILLEDCREATURE, "BestineElection", "notifyKilledCreature", pPlayer)
+		dropObserver(QUESTKILL, "BestineElection", "notifyKilledCreature", pPlayer)
+		createObserver(QUESTKILL, "BestineElection", "notifyKilledCreature", pPlayer)
 	end
 end
 

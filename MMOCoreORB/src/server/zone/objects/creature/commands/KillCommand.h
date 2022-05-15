@@ -160,7 +160,7 @@ public:
 
 					Locker locker(targetCreature, creature);
 					//Deal damage if target is an attackable creature, in range, and not a player or pet
-					if (targetCreature->isAttackableBy(creature) && creature->isInRange(targetObject, range) && !targetObject->isPlayerCreature() && !targetObject->isPet()) {
+					if (creature->isInRange(targetObject, range) && !targetObject->isPlayerCreature() && !targetObject->isPet()) {
 						targetCreature->inflictDamage(creature, 0, healthDamage, true, true);
 						targetCreature->inflictDamage(creature, 3, actionDamage, true, true);
 						targetCreature->inflictDamage(creature, 6, mindDamage, true, true);

@@ -44,7 +44,7 @@ function deathWatchTechnicianConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 		CreatureObject(pPlayer):setScreenPlayState(1, "death_watch_bunker_technician_sidequest")
 		writeData("dwb:droidEscortStatus", 1)
 		writeData("dwb:droidEscortStarter", CreatureObject(pPlayer):getObjectID())
-		DeathWatchBunkerScreenPlay:doVentDroidStep(nil)
+		DeathWatchBunker:doVentDroidStep(nil)
 	elseif (screenID == "escort_failed") then
 		if (readData("dwb:ventDroidAvailable") == 1) then
 			clonedConversation:addOption("@conversation/death_watch_technician:s_7d875e15", "release_the_droid")

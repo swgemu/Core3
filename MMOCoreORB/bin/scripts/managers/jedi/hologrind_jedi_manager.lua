@@ -3,20 +3,16 @@ local ObjectManager = require("managers.object.object_manager")
 
 jediManagerName = "HologrindJediManager"
 
-NUMBEROFPROFESSIONSTOMASTER = 6
-MAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON = NUMBEROFPROFESSIONSTOMASTER - 2
+REQUIREDPROFESSIONS = 6
+PROFESSIONSUNTILSILENT = 4
 
 HologrindJediManager = JediManager:new {
 	screenplayName = jediManagerName,
 	jediManagerName = jediManagerName,
 	jediProgressionType = HOLOGRINDJEDIPROGRESSION,
 	startingEvent = nil,
-}
 
--- Return a list of all professions and their badge number that are available for the hologrind
--- @return a list of professions and their badge numbers.
-function HologrindJediManager:getGrindableProfessionList()
-	local grindableProfessions = {
+	grindableProfessions = {
 		-- String Id, badge number, profession name
 		--{ "pilot_rebel_navy_corellia", 	PILOT_REBEL_NAVY_CORELLIA },
 		--{ "pilot_imperial_navy_corellia", 	PILOT_IMPERIAL_NAVY_CORELLIA },
@@ -62,34 +58,42 @@ function HologrindJediManager:getGrindableProfessionList()
 		{ "combat_unarmed_master", 		COMBAT_UNARMED_MASTER  },
 	--{ "pilot_rebel_navy_naboo", 		PILOT_REBEL_NAVY_NABOO }
 	}
-	return grindableProfessions
-end
+}
 
 -- Handling of the onPlayerCreated event.
 -- Hologrind professions will be generated for the player.
--- @param pCreatureObject pointer to the creature object of the created player.
-function HologrindJediManager:onPlayerCreated(pCreatureObject)
-	local skillList = self:getGrindableProfessionList()
+-- @param pPlayer pointer to the creature object of the created player.
+function HologrindJediManager:onPlayerCreated(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
 
-	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+	self:pickHologrindProfessions(pPlayer)
+end
+
+function HologrindJediManager:pickHologrindProfessions(pPlayer)
+	local skillList = self.grindableProfessions
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return
 	end
 
-	for i = 1, NUMBEROFPROFESSIONSTOMASTER, 1 do
+	for i = 1, REQUIREDPROFESSIONS, 1 do
 		local numberOfSkillsInList = #skillList
 		local skillNumber = getRandomNumber(1, numberOfSkillsInList)
 		PlayerObject(pGhost):addHologrindProfession(skillList[skillNumber][2])
+		printf("adding profession " .. skillList[skillNumber][1] .. "\n")
 		table.remove(skillList, skillNumber)
 	end
 end
 
 -- Check and count the number of mastered hologrind professions.
--- @param pCreatureObject pointer to the creature object of the player which should get its number of mastered professions counted.
+-- @param pPlayer pointer to the creature object of the player which should get its number of mastered professions counted.
 -- @return the number of mastered hologrind professions.
-function HologrindJediManager:getNumberOfMasteredProfessions(pCreatureObject)
-	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+function HologrindJediManager:getMasteredProfessionCount(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return 0
@@ -97,19 +101,21 @@ function HologrindJediManager:getNumberOfMasteredProfessions(pCreatureObject)
 
 	local professions = PlayerObject(pGhost):getHologrindProfessions()
 	local masteredNumberOfProfessions = 0
+
 	for i = 1, #professions, 1 do
 		if PlayerObject(pGhost):hasBadge(professions[i]) then
 			masteredNumberOfProfessions = masteredNumberOfProfessions + 1
 		end
 	end
+
 	return masteredNumberOfProfessions
 end
 
 -- Check if the player is jedi.
--- @param pCreatureObject pointer to the creature object of the player to check if he is jedi.
+-- @param pPlayer pointer to the creature object of the player to check if he is jedi.
 -- @return returns if the player is jedi or not.
-function HologrindJediManager:isJedi(pCreatureObject)
-	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+function HologrindJediManager:isJedi(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return false
@@ -124,71 +130,85 @@ function HologrindJediManager:notifyOkPressed()
 end
 
 -- Send a sui window to the player about unlocking jedi and award jedi status and force sensitive skill.
--- @param pCreatureObject pointer to the creature object of the player who unlocked jedi.
-function HologrindJediManager:sendSuiWindow(pCreatureObject)
+-- @param pPlayer pointer to the creature object of the player who unlocked jedi.
+function HologrindJediManager:sendSuiWindow(pPlayer)
 	local suiManager = LuaSuiManager()
-	suiManager:sendMessageBox(pCreatureObject, pCreatureObject, "@quest/force_sensitive/intro:force_sensitive", "Perhaps you should meditate somewhere alone...", "@ok", "HologrindJediManager", "notifyOkPressed")
+	suiManager:sendMessageBox(pPlayer, pPlayer, "@quest/force_sensitive/intro:force_sensitive", "Perhaps you should meditate somewhere alone...", "@ok", "HologrindJediManager", "notifyOkPressed")
 end
 
 -- Award skill and jedi status to the player.
--- @param pCreatureObject pointer to the creature object of the player who unlocked jedi.
-function HologrindJediManager:awardJediStatusAndSkill(pCreatureObject)
-	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+-- @param pPlayer pointer to the creature object of the player who unlocked jedi.
+function HologrindJediManager:awardJediStatusAndSkill(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return
 	end
 
-	awardSkill(pCreatureObject, "force_title_jedi_novice")
+	awardSkill(pPlayer, "force_title_jedi_novice")
 	PlayerObject(pGhost):setJediState(1)
 end
 
 -- Check if the player has mastered all hologrind professions and send sui window and award skills.
--- @param pCreatureObject pointer to the creature object of the player to check the jedi progression on.
-function HologrindJediManager:checkIfProgressedToJedi(pCreatureObject)
-	if self:getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER and not self:isJedi(pCreatureObject) then
-		self:sendSuiWindow(pCreatureObject)
-		self:awardJediStatusAndSkill(pCreatureObject)
+-- @param pPlayer pointer to the creature object of the player to check the jedi progression on.
+function HologrindJediManager:checkIfProgressedToJedi(pPlayer)
+	if self:getMasteredProfessionCount(pPlayer) >= REQUIREDPROFESSIONS and not self:isJedi(pPlayer) then
+		self:sendSuiWindow(pPlayer)
+		self:awardJediStatusAndSkill(pPlayer)
 	end
 end
 
 -- Event handler for the BADGEAWARDED event.
--- @param pCreatureObject pointer to the creature object of the player who was awarded with a badge.
--- @param pCreatureObject2 pointer to the creature object of the player who was awarded with a badge.
+-- @param pPlayer pointer to the creature object of the player who was awarded with a badge.
+-- @param pPlayer2 pointer to the creature object of the player who was awarded with a badge.
 -- @param badgeNumber the badge number that was awarded.
 -- @return 0 to keep the observer active.
-function HologrindJediManager:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, badgeNumber)
-	if (pCreatureObject == nil) then
+function HologrindJediManager:badgeAwardedEventHandler(pPlayer, pPlayer2, badgeNumber)
+	if (pPlayer == nil) then
 		return 0
 	end
 
-	self:checkIfProgressedToJedi(pCreatureObject)
+	printf("Badge awarded\n")
+
+	self:checkIfProgressedToJedi(pPlayer)
 
 	return 0
 end
 
 -- Register observer on the player for observing badge awards.
--- @param pCreatureObject pointer to the creature object of the player to register observers on.
-function HologrindJediManager:registerObservers(pCreatureObject)
-	createObserver(BADGEAWARDED, "HologrindJediManager", "badgeAwardedEventHandler", pCreatureObject)
+-- @param pPlayer pointer to the creature object of the player to register observers on.
+function HologrindJediManager:registerObservers(pPlayer)
+	createObserver(BADGEAWARDED, "HologrindJediManager", "badgeAwardedEventHandler", pPlayer)
 end
 
 -- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
--- @param pCreatureObject pointer to the creature object of the player who logged in.
-function HologrindJediManager:onPlayerLoggedIn(pCreatureObject)
-	if (pCreatureObject == nil) then
+-- @param pPlayer pointer to the creature object of the player who logged in.
+function HologrindJediManager:onPlayerLoggedIn(pPlayer)
+	if (pPlayer == nil) then
 		return
 	end
 
-	self:checkIfProgressedToJedi(pCreatureObject)
-	self:registerObservers(pCreatureObject)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local professions = PlayerObject(pGhost):getHologrindProfessions()
+
+	if (professions == nil or #professions == 0) then
+		self:pickHologrindProfessions(pPlayer)
+	end
+
+	self:checkIfProgressedToJedi(pPlayer)
+	self:registerObservers(pPlayer)
 end
 
 -- Get the profession name from the badge number.
 -- @param badgeNumber the badge number to find the profession name for.
 -- @return the profession name associated with the badge number, Unknown profession returned if the badge number isn't found.
-function HologrindJediManager:getProfessionStringIdFromBadgeNumber(badgeNumber)
-	local skillList = self:getGrindableProfessionList()
+function HologrindJediManager:getProfessionFromBadge(badgeNumber)
+	local skillList = self.grindableProfessions
 	for i = 1, #skillList, 1 do
 		if skillList[i][2] == badgeNumber then
 			return skillList[i][1]
@@ -198,14 +218,13 @@ function HologrindJediManager:getProfessionStringIdFromBadgeNumber(badgeNumber)
 end
 
 -- Find out and send the response from the holocron to the player
--- @param pCreatureObject pointer to the creature object of the player who used the holocron.
-function HologrindJediManager:sendHolocronMessage(pCreatureObject)
-	if self:getNumberOfMasteredProfessions(pCreatureObject) >= MAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON then
-		-- The Holocron is quiet. The ancients' knowledge of the Force will no longer assist you on your journey. You must continue seeking on your own.
-		CreatureObject(pCreatureObject):sendSystemMessage("@jedi_spam:holocron_quiet")
+-- @param pPlayer pointer to the creature object of the player who used the holocron.
+function HologrindJediManager:sendHolocronMessage(pPlayer)
+	if self:getMasteredProfessionCount(pPlayer) >= PROFESSIONSUNTILSILENT then
+		CreatureObject(pPlayer):sendSystemMessage("@jedi_spam:holocron_quiet") -- The Holocron is quiet. The ancients' knowledge of the Force will no longer assist you on your journey. You must continue seeking on your own.
 		return true
 	else
-		local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost == nil) then
 			return false
@@ -213,9 +232,12 @@ function HologrindJediManager:sendHolocronMessage(pCreatureObject)
 
 		local professions = PlayerObject(pGhost):getHologrindProfessions()
 		for i = 1, #professions, 1 do
+			printf("checking prof " .. professions[i] .. "\n")
 			if not PlayerObject(pGhost):hasBadge(professions[i]) then
-				local professionText = self:getProfessionStringIdFromBadgeNumber(professions[i])
-				CreatureObject(pCreatureObject):sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)
+				local professionText = self:getProfessionFromBadge(professions[i])
+				CreatureObject(pPlayer):sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)
+
+				return false
 			end
 		end
 
@@ -226,17 +248,16 @@ end
 -- Handling of the useItem event.
 -- @param pSceneObject pointer to the item object.
 -- @param itemType the type of item that is used.
--- @param pCreatureObject pointer to the creature object that used the item.
-function HologrindJediManager:useItem(pSceneObject, itemType, pCreatureObject)
-	if (pCreatureObject == nil or pSceneObject == nil) then
+-- @param pPlayer pointer to the creature object that used the item.
+function HologrindJediManager:useItem(pSceneObject, itemType, pPlayer)
+	if (pPlayer == nil or pSceneObject == nil) then
 		return
 	end
 
 	if itemType == ITEMHOLOCRON then
-		local isSilent = self:sendHolocronMessage(pCreatureObject)
-		if isSilent then
-			return
-		else
+		local isSilent = self:sendHolocronMessage(pPlayer)
+
+		if not isSilent then
 			SceneObject(pSceneObject):destroyObjectFromWorld()
 			SceneObject(pSceneObject):destroyObjectFromDatabase()
 		end

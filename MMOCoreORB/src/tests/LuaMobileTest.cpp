@@ -229,10 +229,21 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		int level = creature->getLevel();
 		EXPECT_TRUE( level > 0 ) << "Level is not a positive value on mobile: " << templateName;
 
-		// Verify level
+		// Verify mob type
 		int mobType = creature->getMobType();
 		EXPECT_TRUE( mobType > 0 ) << "mobType is not a valid value on mobile: " << templateName;
 
+		if (mobType == 3) {
+			uint32 pvpBitmask = creature->getPvpBitmask();
+			if ((pvpBitmask & CreatureFlag::ATTACKABLE)) {
+				String primaryWeap = creature->getPrimaryWeapon();
+				String secondaryWeap = creature->getSecondaryWeapon();
+				EXPECT_TRUE( primaryWeap != "unarmed" ) << "attackable humanoid has unarmed primary: " << templateName;
+				EXPECT_TRUE( secondaryWeap != "unarmed" ) << "attackable humanoid has unarmed secondary: " << templateName;
+				EXPECT_TRUE( primaryWeap != "none" ) << "attackable humanoid has none primary: " << templateName;
+				EXPECT_TRUE( secondaryWeap != "none" ) << "attackable humanoid has none secondary: " << templateName;
+			}
+		}
 		// Verify hit chance
 		float hitChance = creature->getChanceHit();
 		EXPECT_TRUE( hitChance > 0 ) << "ChanceHit is not a positive value on mobile: " << templateName;

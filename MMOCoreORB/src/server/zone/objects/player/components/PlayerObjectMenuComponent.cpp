@@ -23,16 +23,24 @@ void PlayerObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 			menuResponse->addRadialMenuItem(51, 3, "@sui:teach");
 	}
 
-	if (creature->isPlayingMusic()) {
-		if (!player->isListening())
-			menuResponse->addRadialMenuItem(113, 3, "@radial_performance:listen");
-		else
+	uint64 listenID = player->getListenID();
+
+	if (player->isListening()) {
+		// Stop Listening radial if the target is the current listen target, or if the target is in the same group as the listen target
+		if (listenID == creature->getObjectID() || (group != nullptr && group->hasMember(listenID)))
 			menuResponse->addRadialMenuItem(115, 3, "@radial_performance:listen_stop");
+	} else {
+		// Listen radial if the target is playing music, and if either there is no current listen target or the current target is in a different group than the listen target
+		if (creature->isPlayingMusic() && (listenID == 0 || !group->hasMember(listenID)))
+			menuResponse->addRadialMenuItem(113, 3, "@radial_performance:listen");
+	}
+
+	uint64 watchID = player->getWatchToID();
+
+	if (watchID == creature->getObjectID()) {
+		menuResponse->addRadialMenuItem(116, 3, "@radial_performance:watch_stop");
 	} else if (creature->isDancing()) {
-		if (!player->isWatching())
-			menuResponse->addRadialMenuItem(114, 3, "@radial_performance:watch");
-		else
-			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:watch_stop");
+		menuResponse->addRadialMenuItem(114, 3, "@radial_performance:watch");
 	}
 
 	// Allow admins to grant divorce to married players

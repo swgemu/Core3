@@ -777,7 +777,7 @@ void ServerCore::initialize() {
 			loginServer->start(loginPort, loginAllowedConnections);
 		}
 
-		ObjectManager::instance()->scheduleUpdateToDatabase();
+		//ObjectManager::instance()->scheduleUpdateToDatabase();
 
 		StatisticsManager::instance()->markCoreInitialized();
 

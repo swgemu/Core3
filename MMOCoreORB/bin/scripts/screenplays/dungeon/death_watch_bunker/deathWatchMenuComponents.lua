@@ -2,15 +2,24 @@ local ObjectManager = require("managers.object.object_manager")
 
 deathWatchDoorControlTerminal = {  }
 
-function deathWatchDoorControlTerminal:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+function deathWatchDoorControlTerminal:fillObjectMenuResponse(pTerminal, pMenuResponse, pPlayer)
 	local response = LuaObjectMenuResponse(pMenuResponse)
 	response:addRadialMenuItem(20, 3, "@dungeon/death_watch:mnu_open_door")
 end
 
-function deathWatchDoorControlTerminal:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	if (selectedID == 20) then
-		DeathWatchBunkerScreenPlay:checkDoor(pSceneObject, pPlayer)
+function deathWatchDoorControlTerminal:handleObjectMenuSelect(pTerminal, pPlayer, selectedID)
+	if (selectedID ~= 20) then
+		return 0
 	end
+
+	local terminalType = readStringData(SceneObject(pTerminal):getObjectID() .. ":terminalType")
+
+	if (terminalType == "outside" or terminalType == "storage" or terminalType == "hall" or terminalType == mine) then
+		DeathWatchBunker:handleStandardDoor(pPlayer, terminalType)
+	elseif (terminalType == "armorsmith" or terminalType == "droidengineer" or terminalType == "tailor") then
+		DeathWatchBunker:handleCraftingDoor(pPlayer, terminalType)
+	end
+
 	return 0
 end
 
@@ -33,11 +42,11 @@ function deathWatchFilterDispenser:handleObjectMenuSelect(pSceneObject, pPlayer,
 			return 0
 		end
 
-		local oldFilter = getContainerObjectByTemplate(pInventory, DeathWatchBunkerScreenPlay.bunkerItems.filter, true)
+		local oldFilter = getContainerObjectByTemplate(pInventory, DeathWatchBunker.bunkerItems.filter, true)
 		if oldFilter ~= nil then
 			CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:already_has_filter")
 		else
-			local givenItem = giveItem(pInventory, DeathWatchBunkerScreenPlay.bunkerItems.filter, -1)
+			local givenItem = giveItem(pInventory, DeathWatchBunker.bunkerItems.filter, -1)
 			if (givenItem == nil) then
 				CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
 			else
@@ -70,8 +79,8 @@ function deathWatchWorkbench:handleObjectMenuSelect(pSceneObject, pPlayer, selec
 		return 0
 	end
 
-	local pRebreather = getContainerObjectByTemplate(pInventory, DeathWatchBunkerScreenPlay.bunkerItems.mandoRebreather, true)
-	local pEnhancedFilter = getContainerObjectByTemplate(pInventory, DeathWatchBunkerScreenPlay.bunkerItems.enhancedFilter, true)
+	local pRebreather = getContainerObjectByTemplate(pInventory, DeathWatchBunker.bunkerItems.mandoRebreather, true)
+	local pEnhancedFilter = getContainerObjectByTemplate(pInventory, DeathWatchBunker.bunkerItems.enhancedFilter, true)
 
 
 	if (pRebreather == nil or pEnhancedFilter == nil) then
@@ -109,7 +118,7 @@ function deathWatchFilter:handleObjectMenuSelect(pSceneObject, pPlayer, selected
 		return 0
 	end
 
-	local pAlumGel = getContainerObjectByTemplate(pInventory, DeathWatchBunkerScreenPlay.bunkerItems.alumGel, true)
+	local pAlumGel = getContainerObjectByTemplate(pInventory, DeathWatchBunker.bunkerItems.alumGel, true)
 
 	if (pAlumGel == nil or pSceneObject == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:missing_component2")
@@ -122,7 +131,7 @@ function deathWatchFilter:handleObjectMenuSelect(pSceneObject, pPlayer, selected
 		SceneObject(pAlumGel):destroyObjectFromDatabase()
 		SceneObject(pSceneObject):destroyObjectFromWorld()
 		SceneObject(pSceneObject):destroyObjectFromDatabase()
-		local givenItem = giveItem(pInventory, DeathWatchBunkerScreenPlay.bunkerItems.enhancedFilter, -1)
+		local givenItem = giveItem(pInventory, DeathWatchBunker.bunkerItems.enhancedFilter, -1)
 		if (givenItem == nil) then
 			CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
 		else
@@ -155,7 +164,7 @@ function deathWatchWaterValve:handleObjectMenuSelect(pSceneObject, pPlayer, sele
 
 	local terminalNumber = readData(SceneObject(pSceneObject):getObjectID() .. ":dwb:terminal")
 
-	DeathWatchBunkerScreenPlay:doValveSwitch(pPlayer, terminalNumber)
+	DeathWatchBunker:doValveSwitch(pPlayer, terminalNumber)
 
 	return 0
 end
@@ -204,10 +213,10 @@ function deathWatchMandalorianCraftingTerminal:handleObjectMenuSelect(pSceneObje
 
 	if isCrafting == 1 then
 		local suiManager = LuaSuiManager()
-		suiManager:sendConfirmSui(pTerminal, pPlayer, "DeathWatchBunkerScreenPlay", "craftingConfirmCallback", "@dungeon/death_watch:continue_manufacturing", "@dungeon/death_watch:continue_button")
+		suiManager:sendConfirmSui(pTerminal, pPlayer, "DeathWatchBunker", "craftingConfirmCallback", "@dungeon/death_watch:continue_manufacturing", "@dungeon/death_watch:continue_button")
 	elseif isCrafting == 3 then
 		local suiManager = LuaSuiManager()
-		suiManager:sendConfirmSui(pTerminal, pPlayer, "DeathWatchBunkerScreenPlay", "craftingConfirmCallback", "@dungeon/death_watch:finish_manufacturing", "@dungeon/death_watch:finish_button")
+		suiManager:sendConfirmSui(pTerminal, pPlayer, "DeathWatchBunker", "craftingConfirmCallback", "@dungeon/death_watch:finish_manufacturing", "@dungeon/death_watch:finish_button")
 	end
 
 	return 0

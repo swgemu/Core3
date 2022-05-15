@@ -5,7 +5,7 @@
 #ifndef CONFIGMANAGER_H_
 #define CONFIGMANAGER_H_
 
-// #define DEBUG_CONFIGMANAGER
+//#define DEBUG_CONFIGMANAGER
 
 #include "engine/engine.h"
 

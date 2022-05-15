@@ -47,5 +47,9 @@ bin/conf/*
 sql/insert_strings.sql
 build.out
 build.out.prev
-bin/screenlog*
-compile_commands.json
+bin/*screenlog*
+bin/scripts/managers/resource_manager_spawns*
+.gitignore
+
+/cmake-build-debug/
+/.idea/

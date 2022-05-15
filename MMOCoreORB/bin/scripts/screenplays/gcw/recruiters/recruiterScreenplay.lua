@@ -577,6 +577,8 @@ function recruiterScreenplay:transferItem(pPlayer, pInventory, faction, itemStri
 		elseif (faction == "rebel") then
 			TangibleObject(pItem):setFaction(FACTIONREBEL)
 		end
+
+		printf("Faction is " .. TangibleObject(pItem):getFaction() .. "\n")
 	end
 
 	return self.errorCodes.SUCCESS
