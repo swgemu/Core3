@@ -26,7 +26,7 @@ int HelperDroidObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 		if (lua == nullptr)
 			return 0;
 
-		if (selectedID >= 174 && selectedID <= 177) {
+		if (selectedID >= 182 && selectedID <= 185) {
 			// Space Information
 			Reference<LuaFunction*> luaSpaceInfo = lua->createFunction("HelperDroid", "spaceInformation", 0);
 
@@ -37,13 +37,13 @@ int HelperDroidObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 			*luaSpaceInfo << player;
 			String selection = "";
 
-			if (selectedID == 174) {
+			if (selectedID == 182) {
 				selection = "findShip";
-			} else if (selectedID == 175) {
+			} else if (selectedID == 183) {
 				selection = "checkEmail";
-			} else if (selectedID == 176) {
+			} else if (selectedID == 184) {
 				selection = "travel";
-			} else if (selectedID == 177) {
+			} else if (selectedID == 185) {
 				selection = "makeMoney";
 			}
 
@@ -52,7 +52,7 @@ int HelperDroidObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 			return 0;
 		}
 
-		if (selectedID >= 50 && selectedID <= 55) {
+		if (selectedID >= 111 && selectedID <= 115) {
 			// Quests called from Lua Here
 			Reference<LuaFunction*> luaProfessionQuest = lua->createFunction("HelperDroid", "professionQuest", 0);
 
@@ -63,22 +63,22 @@ int HelperDroidObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 			*luaProfessionQuest << player;
 			String profession = "";
 
-			if (selectedID == 50) {
+			if (selectedID == 111) {
 				// Brawler
 				profession = "brawler";
-			} else if (selectedID == 51) {
+			} else if (selectedID == 112) {
 				// Marksman
 				profession = "marksman";
-			} else if (selectedID == 52) {
+			} else if (selectedID == 113) {
 				// Scout
 				profession = "scout";
-			} else if (selectedID == 53) {
+			} else if (selectedID == 114) {
 				// Artisan
 				profession = "artisan";
-			} else if (selectedID == 54) {
+			} else if (selectedID == 115) {
 				// Medic
 				profession = "medic";
-			} else if (selectedID == 55) {
+			} else if (selectedID == 116) {
 				// Entertainer
 				profession = "entertainer";
 			}
@@ -88,7 +88,7 @@ int HelperDroidObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 			return 0;
 		}
 
-		if (selectedID >= 167 && selectedID <= 170) {
+		if (selectedID >= 170 && selectedID <= 172) {
 			// Helper Information called here
 			Reference<LuaFunction*> luaHelperInfo = lua->createFunction("HelperDroid", "helperInformation", 0);
 
@@ -102,10 +102,10 @@ int HelperDroidObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 			if (selectedID == 170) {
 				// General Help
 				selection = "general";
-			} else if (selectedID == 167) {
+			} else if (selectedID == 171) {
 				// Cloning
 				selection = "cloning";
-			} else if (selectedID == 168) {
+			} else if (selectedID == 172) {
 				// Travel
 				selection = "travel";
 			}
@@ -132,31 +132,31 @@ void HelperDroidObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 
 		// Starship Pilot Help
 		menuResponse->addRadialMenuItem(181, 3, "@new_player:menu_space");
-		menuResponse->addRadialMenuItemToRadialID(181, 174, 3, "@new_player:space_option_how_to_find_ship");
-		menuResponse->addRadialMenuItemToRadialID(181, 175, 3, "@new_player:space_option_how_to_check_email");
-		menuResponse->addRadialMenuItemToRadialID(181, 176, 3, "@new_player:space_option_how_to_travel");
-		menuResponse->addRadialMenuItemToRadialID(181, 177, 3, "@new_player:space_option_how_to_make_money");
+		menuResponse->addRadialMenuItemToRadialID(181, 182, 3, "@new_player:space_option_how_to_find_ship");
+		menuResponse->addRadialMenuItemToRadialID(181, 183, 3, "@new_player:space_option_how_to_check_email");
+		menuResponse->addRadialMenuItemToRadialID(181, 184, 3, "@new_player:space_option_how_to_travel");
+		menuResponse->addRadialMenuItemToRadialID(181, 185, 3, "@new_player:space_option_how_to_make_money");
 
 		// Profession Quests
 		menuResponse->addRadialMenuItem(110, 3, "@new_player:menu_quests");
 
 		if (player->hasSkill("combat_brawler_novice"))
-			menuResponse->addRadialMenuItemToRadialID(110, 50, 3, "@new_player:submenu_brawler");
+			menuResponse->addRadialMenuItemToRadialID(110, 111, 3, "@new_player:submenu_brawler");
 		if (player->hasSkill("combat_marksman_novice"))
-			menuResponse->addRadialMenuItemToRadialID(110, 51, 3, "@new_player:submenu_marksman");
+			menuResponse->addRadialMenuItemToRadialID(110, 112, 3, "@new_player:submenu_marksman");
 		if (player->hasSkill("outdoors_scout_novice"))
-			menuResponse->addRadialMenuItemToRadialID(110, 52, 3, "@new_player:submenu_scout");
+			menuResponse->addRadialMenuItemToRadialID(110, 113, 3, "@new_player:submenu_scout");
 		if (player->hasSkill("crafting_artisan_novice"))
-			menuResponse->addRadialMenuItemToRadialID(110, 53, 3, "@new_player:submenu_artisan");
+			menuResponse->addRadialMenuItemToRadialID(110, 114, 3, "@new_player:submenu_artisan");
 		if (player->hasSkill("science_medic_novice"))
-			menuResponse->addRadialMenuItemToRadialID(110, 54, 3, "@new_player:submenu_medic");
+			menuResponse->addRadialMenuItemToRadialID(110, 115, 3, "@new_player:submenu_medic");
 		if (player->hasSkill("social_entertainer_novice"))
-			menuResponse->addRadialMenuItemToRadialID(110, 55, 3, "@new_player:submenu_entertainer");
+			menuResponse->addRadialMenuItemToRadialID(110, 116, 3, "@new_player:submenu_entertainer");
 
 		// General Help
 		menuResponse->addRadialMenuItem(170, 3, "@new_player:menu_other");
-		menuResponse->addRadialMenuItemToRadialID(170, 167, 3, "@new_player:submenu_cloning");
-		menuResponse->addRadialMenuItemToRadialID(170, 168, 3, "@new_player:submenu_travel");
+		menuResponse->addRadialMenuItemToRadialID(170, 171, 3, "@new_player:submenu_cloning");
+		menuResponse->addRadialMenuItemToRadialID(170, 172, 3, "@new_player:submenu_travel");
 
 		return;
 	}

@@ -1057,7 +1057,9 @@ void ResourceSpawner::sendSampleResults(TransactionLog& trx, CreatureObject* pla
 		playerManager->awardExperience(player, "resource_harvesting_inorganic", xp, true);
 
 	addResourceToPlayerInventory(trx, player, resourceSpawn, unitsExtracted);
+
 	player->notifyObservers(ObserverEventType::SAMPLE, resourceSpawn, density * 100);
+	player->notifyObservers(ObserverEventType::SAMPLETAKEN, resourceSpawn, unitsExtracted);
 
 	if (resourceSpawn->isType("radioactive")) {
 		int wound = int((sampleRate / 30) - System::random(7));
