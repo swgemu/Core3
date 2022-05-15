@@ -1767,7 +1767,10 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	}
 
-
+	if (ConfigManager::instance()->getBool("Core3.PlayerManager.WipeFillingOnClone", false)) {
+		ghost->setFoodFilling(0);
+		ghost->setDrinkFilling(0);
+	}
 
 	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
 	task->schedule(3 * 1000);
