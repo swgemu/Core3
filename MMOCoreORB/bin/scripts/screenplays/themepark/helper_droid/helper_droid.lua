@@ -73,7 +73,7 @@ function HelperDroid:professionQuest(pDroid, pPlayer, profession)
 
 	self:playDroidSound(pPlayer)
 
-	--HelperDroidQuest:professionQuestSui(pDroid, pPlayer, profession)
+	HelperDroidQuest:professionQuestSui(pDroid, pPlayer, profession)
 end
 
 function HelperDroid:greetPlayer(pPlayer, pDroid)
@@ -109,9 +109,9 @@ function HelperDroid:greetPlayer(pPlayer, pDroid)
 
 		if (CreatureObject(pPlayer):hasSkill(string)) then
 			local profession = professions[i]
-			local questStatus = readData(playerID .. ":" .. profession .. ":HelperDroid:questStatus:")
+			local questsComplete = tonumber(getQuestStatus(playerID .. ":" .. profession .. ":HelperDroid:completeQuests:"))
 
-			if (questStatus == 0) then
+			if (questsComplete ~= nil) then
 				firstTime = false
 			end
 
@@ -159,7 +159,7 @@ function HelperDroid:greetingCallback(pPlayer, pSui, eventIndex, args)
 	deleteStringVectorSharedMemory(playerID .. ":HelperDroid:playerProfessions:")
 
 	if (pDroid ~= nil) then
-		--HelperDroidQuest:professionQuestSui(pDroid, pPlayer, playerProf)
+		HelperDroidQuest:professionQuestSui(pDroid, pPlayer, playerProf)
 	end
 end
 
