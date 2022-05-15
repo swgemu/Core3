@@ -73,7 +73,14 @@ function HelperDroid:professionQuest(pDroid, pPlayer, profession)
 
 	self:playDroidSound(pPlayer)
 
-	--HelperDroidQuest:professionQuestSui(pDroid, pPlayer, profession)
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local questsComplete = tonumber(getQuestStatus(playerID .. ":" .. profession .. ":HelperDroid:completeQuests:"))
+
+	if (questsComplete == nil or questsComplete == 0) then
+		HelperDroidQuest:startSui(pDroid, pPlayer, profession)
+	else
+		HelperDroidQuest:professionQuestSui(pDroid, pPlayer, profession)
+	end
 end
 
 function HelperDroid:greetPlayer(pPlayer, pDroid)
@@ -109,9 +116,9 @@ function HelperDroid:greetPlayer(pPlayer, pDroid)
 
 		if (CreatureObject(pPlayer):hasSkill(string)) then
 			local profession = professions[i]
-			local questStatus = readData(playerID .. ":" .. profession .. ":HelperDroid:questStatus:")
+			local questsComplete = tonumber(getQuestStatus(playerID .. ":" .. profession .. ":HelperDroid:completeQuests:"))
 
-			if (questStatus == 0) then
+			if (questsComplete ~= nil) then
 				firstTime = false
 			end
 
@@ -158,8 +165,14 @@ function HelperDroid:greetingCallback(pPlayer, pSui, eventIndex, args)
 	deleteData(playerID .. ":HelperDroidID:")
 	deleteStringVectorSharedMemory(playerID .. ":HelperDroid:playerProfessions:")
 
+	local questsComplete = tonumber(getQuestStatus(playerID .. ":" .. playerProf .. ":HelperDroid:completeQuests:"))
+
 	if (pDroid ~= nil) then
-		--HelperDroidQuest:professionQuestSui(pDroid, pPlayer, playerProf)
+		if (questsComplete == nil or questComplete == 0) then
+			HelperDroidQuest:startSui(pDroid, pPlayer, playerProf)
+		else
+			HelperDroidQuest:professionQuestSui(pDroid, pPlayer, playerProf)
+		end
 	end
 end
 
@@ -180,6 +193,8 @@ function HelperDroid:skillTrained(pDroid, pPlayer, skill)
 
 			self:playDroidSound(pPlayer)
 			spatialChat(pDroid, message)
+
+			createEvent(1000, "HelperDroidQuest", "giveProfessionItem", pPlayer, profession)
 			break
 		end
 	end
