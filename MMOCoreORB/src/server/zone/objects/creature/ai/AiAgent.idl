@@ -146,7 +146,7 @@ class AiAgent extends CreatureObject {
 	protected int respawnCounter;
 	protected boolean randomRespawn;
 	
-	protected boolean hamRegenDisabled;
+	protected transient boolean hamRegenDisabled;
 
 	protected float coordinateMin;
 	protected float coordinateMax;
