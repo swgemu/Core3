@@ -145,6 +145,8 @@ class AiAgent extends CreatureObject {
 	protected float respawnTimer;
 	protected int respawnCounter;
 	protected boolean randomRespawn;
+	
+	protected boolean hamRegenDisabled;
 
 	protected float coordinateMin;
 	protected float coordinateMax;
@@ -239,6 +241,7 @@ class AiAgent extends CreatureObject {
 		despawnOnNoPlayerInRange = false;
 
 		tauntable = true;
+		hamRegenDisabled = false;
 
 		loadedOutfit = false;
 
@@ -1616,5 +1619,15 @@ class AiAgent extends CreatureObject {
 	@read
 	public boolean isTauntable() {
 		return tauntable;
+	}
+	
+	@read
+	public boolean isHamRegenDisabled() {
+		return hamRegenDisabled;
+	}
+	
+	@preLocked
+	public void setHamRegenDisabled(boolean val) {
+		hamRegenDisabled = val;
 	}
 }
