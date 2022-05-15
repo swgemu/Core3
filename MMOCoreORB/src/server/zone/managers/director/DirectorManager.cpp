@@ -829,8 +829,15 @@ int DirectorManager::createLoot(lua_State* L) {
 	int level = lua_tonumber(L, -2);
 	bool maxCondition = lua_toboolean(L, -1);
 
-	if (container == nullptr || lootGroup == "")
+	if (container == nullptr) {
+		printTraceError(L, "Failed to generate loot in DirectorManager::createLoot, null inventory.");
 		return 0;
+	}
+
+	if (lootGroup == "") {
+		printTraceError(L, "Failed to generate loot in DirectorManager::createLoot, empty loot group.");
+		return 0;
+	}
 
 	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
 	TransactionLog trx(TrxCode::LUASCRIPT, container);
