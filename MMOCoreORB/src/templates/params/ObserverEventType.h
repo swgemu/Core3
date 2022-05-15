@@ -17,6 +17,7 @@ public:
 		OBJECTDESTRUCTION,			// ManagedObject arg1 = attacker, long arg2 = condition used when a certain object is destroyed
 		OBJECTDISABLED,				// ManagedObject arg1 = attacker, long arg2 = 0
 		SAMPLE,						// ManagedObject arg1 = ResourceSpawn, long arg2 = density
+		SAMPLETAKEN,				// ManagedObject arg1 = ResourceSpawn, long arg2 = amount harvested
 		CONVERSE,					// ManagedObject arg1 = converser, long arg2 = 0
 		KILLEDCREATURE,				// ManagedObject arg1 = destructedObject, long arg2 = 0 used when a player kills any creature
 		OBJECTREMOVEDFROMZONE,		// ManagedObject arg1 = null, long arg2 = 0
@@ -52,7 +53,7 @@ public:
 		PLAYERCLONED,				// ManagedObject arg1 = player, long arg2 = 0
 		CRAFTINGASSEMBLY,			// ManagedObject arg1 = player, long arg2 = 0
 		CRAFTINGEXPERIMENTATION,	// ManagedObject arg1 = player, long arg2 = 0
-		PROTOTYPECREATED,			// ManagedObject arg1 = prototype, long arg2 = 0
+		PROTOTYPECREATED,			// ManagedObject arg1 = prototype, long arg2 = 0 bool for practice mode
 		ENHANCINGPERFORMED,			// ManagedObject arg1 = player, long arg2 = enhance amount
 		WOUNDHEALINGRECEIVED,		// ManagedObject arg1 = player, long arg2 = wound heal amount
 		XPAWARDED,					// ManagedObject arg1 = player, long arg2 = xp amount
@@ -93,6 +94,10 @@ public:
 		SQUAD,						// ManagedObject arg1 = AiAgent, long arg2 = 0
 		QUESTKILL,					// ManagedObject arg1 = destructedObject, long arg2 = 0 Credit for quest/screenplay kills
 		DAMAGECHECKPOINT,
+		ABILITYUSED,				// ManagedObject arg1 = null, long arg2 = command CRC
+		HARVESTEDCREATURE,			// ManagedObject arg1 = resource spawn, long arg2 = Total creature resources harvested
+		DEPLOYEDCAMP,				// ManagedObject arg1 = camp area, long arg2 = 0
+		IMAGEDESIGNHAIR				// ManagedObject arg1 = null, long arg2 = 0
 	};
 };
 

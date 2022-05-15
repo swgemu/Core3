@@ -22,7 +22,12 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
+		int result = doCombatAction(creature, target);
+
+		if (result == SUCCESS)
+			creature->notifyObservers(ObserverEventType::ABILITYUSED, nullptr, STRING_HASHCODE("unarmedlunge1"));
+
+		return result;
 	}
 
 };
