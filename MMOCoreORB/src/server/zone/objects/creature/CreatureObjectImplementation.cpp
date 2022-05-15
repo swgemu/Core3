@@ -2077,6 +2077,10 @@ void CreatureObjectImplementation::activateQueueAction() {
 		nextAction.addMiliTime((uint32)(time * 1000));
 	}
 
+	// Helper Droid New Player Quest
+	if (isInCombat())
+		notifyObservers(ObserverEventType::ABILITYUSED, nullptr, action->getCommand());
+
 	if (creo->hasAttackDelay() || creo->hasPostureChangeDelay()) {
 		Reference<CommandQueueRemoveEvent*> removeEvent = new CommandQueueRemoveEvent(creo);
 
