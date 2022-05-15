@@ -129,6 +129,7 @@ namespace ai {
 		int setAIDebug(lua_State* L);
 		int storePet(lua_State* L);
 		int setEventArea(lua_State* L);
+		int setHamRegenDisabled(lua_State* L);
 	private:
 		AiAgent* realObject;
 	};

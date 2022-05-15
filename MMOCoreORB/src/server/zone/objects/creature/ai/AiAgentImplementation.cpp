@@ -1872,7 +1872,7 @@ void AiAgentImplementation::activatePostureRecovery() {
 }
 
 void AiAgentImplementation::activateHAMRegeneration(int latency) {
-	if (isIncapacitated() || isDead() || isInCombat())
+	if (isIncapacitated() || isDead() || isInCombat() || isHamRegenDisabled())
 		return;
 
 	uint32 healthTick = (uint32) Math::max(1.f, (float) ceil(getMaxHAM(CreatureAttribute::HEALTH) / 300000.f * latency));

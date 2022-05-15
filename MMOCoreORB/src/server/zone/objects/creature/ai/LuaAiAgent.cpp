@@ -132,6 +132,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "setAIDebug", &LuaAiAgent::setAIDebug },
 		{ "storePet", &LuaAiAgent::storePet },
 		{ "setEventArea", &LuaAiAgent::setEventArea },
+		{ "setHamRegenDisabled", &LuaAiAgent::setHamRegenDisabled },
 		{ 0, 0 }
 };
 
@@ -1038,6 +1039,16 @@ int LuaAiAgent::setEventArea(lua_State* L) {
 	Locker lock(realObject);
 
 	realObject->setEventArea(area);
+
+	return 0;
+}
+
+int LuaAiAgent::setHamRegenDisabled(lua_State* L) {
+	bool regenDisabled = lua_toboolean(L, -1);
+
+	Locker lock(realObject);
+
+	realObject->setHamRegenDisabled(regenDisabled);
 
 	return 0;
 }
