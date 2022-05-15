@@ -133,6 +133,7 @@ namespace server {
 		static int createLootSet(lua_State* L);
 		static int createLootFromCollection(lua_State* L);
 		static int getRandomNumber(lua_State* L);
+		static int getHashCode(lua_State* L);
 		static int spatialChat(lua_State* L);
 		static int spatialMoodChat(lua_State* L);
 		static int readSharedMemory(lua_State* L);

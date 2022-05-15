@@ -427,6 +427,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("spatialChat", spatialChat);
 	luaEngine->registerFunction("spatialMoodChat", spatialMoodChat);
 	luaEngine->registerFunction("getRandomNumber", getRandomNumber);
+	luaEngine->registerFunction("getHashCode", getHashCode);
 	luaEngine->registerFunction("forcePeace", forcePeace);
 	luaEngine->registerFunction("readSharedMemory", readSharedMemory);
 	luaEngine->registerFunction("writeSharedMemory", writeSharedMemory);
@@ -528,6 +529,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("OBJECTDESTRUCTION", ObserverEventType::OBJECTDESTRUCTION);
 	luaEngine->setGlobalInt("OBJECTDISABLED", ObserverEventType::OBJECTDISABLED);
 	luaEngine->setGlobalInt("SAMPLE", ObserverEventType::SAMPLE);
+	luaEngine->setGlobalInt("HARVESTEDCREATURE", ObserverEventType::HARVESTEDCREATURE);
+	luaEngine->setGlobalInt("DEPLOYEDCAMP", ObserverEventType::DEPLOYEDCAMP);
 	luaEngine->setGlobalInt("CONVERSE", ObserverEventType::CONVERSE);
 	luaEngine->setGlobalInt("KILLEDCREATURE", ObserverEventType::KILLEDCREATURE);
 	luaEngine->setGlobalInt("QUESTKILL", ObserverEventType::QUESTKILL);
@@ -583,6 +586,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("TUNEDCRYSTAL", ObserverEventType::TUNEDCRYSTAL);
 	luaEngine->setGlobalInt("PROTOTYPECREATED", ObserverEventType::PROTOTYPECREATED);
 	luaEngine->setGlobalInt("SLICED", ObserverEventType::SLICED);
+	luaEngine->setGlobalInt("ABILITYUSED", ObserverEventType::ABILITYUSED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
@@ -1781,6 +1785,24 @@ int DirectorManager::getRandomNumber(lua_State* L) {
 		random = min + System::random(max - min);
 	}
 	lua_pushinteger(L, random);
+
+	return 1;
+}
+
+int DirectorManager::getHashCode(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+
+	if (numberOfArguments != 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::getHashCode";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String argument = lua_tostring(L, -1);
+	uint32 hash = argument.hashCode();
+
+	lua_pushinteger(L, hash);
 
 	return 1;
 }

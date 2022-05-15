@@ -264,6 +264,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		player->sendSystemMessage("@camp:camp_complete");
 
+		player->notifyObservers(ObserverEventType::DEPLOYEDCAMP, campArea, 0);
+
 		/// Remove Camp
 		TangibleObject* tano = cast<TangibleObject*>(sceneObject);
 		if(tano != nullptr)
