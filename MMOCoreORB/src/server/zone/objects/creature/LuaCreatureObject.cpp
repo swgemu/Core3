@@ -151,6 +151,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "dismount", &LuaCreatureObject::dismount },
 		{ "setAppearance", &LuaCreatureObject::setAppearance },
 		{ "getMainDefender", &LuaTangibleObject::getMainDefender },
+		{ "getWeaponType", &LuaCreatureObject::getWeaponType },
 		{ 0, 0 }
 };
 
@@ -1252,4 +1253,20 @@ int LuaCreatureObject::setAppearance(lua_State* L){
 	}
 
 	return 0;
+}
+
+int LuaCreatureObject::getWeaponType(lua_State* L) {
+	Locker lock(realObject);
+
+	WeaponObject* weapon = realObject->getWeapon();
+	uint32 weaponType;
+
+	if (weapon == nullptr) {
+		weaponType = SharedWeaponObjectTemplate::UNARMEDWEAPON;
+	} else {
+		weaponType = weapon->getWeaponBitmask();
+	}
+
+	lua_pushinteger(L, weaponType);
+	return 1;
 }

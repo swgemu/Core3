@@ -54,7 +54,9 @@ public:
 		if (duration == 0 || efficacy == 0)
 			return GENERALERROR;
 
-		Buff* centered = new Buff(creature, STRING_HASHCODE("centerofbeing"), duration, BuffType::SKILL);
+		uint32 centerHash = STRING_HASHCODE("centerofbeing");
+
+		Buff* centered = new Buff(creature, centerHash, duration, BuffType::SKILL);
 
 		Locker locker(centered);
 
@@ -69,6 +71,9 @@ public:
 		centered->setEndFlyText("combat_effects", "center_stop_fly", 255, 0, 0);
 
 		creature->addBuff(centered);
+
+		if (creature->isInCombat())
+			creature->notifyObservers(ObserverEventType::ABILITYUSED, nullptr, centerHash);
 
 		return SUCCESS;
 	}

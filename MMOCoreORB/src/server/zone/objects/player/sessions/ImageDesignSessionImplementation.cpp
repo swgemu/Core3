@@ -175,6 +175,8 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 			if (hairObject != nullptr) {
 				Locker hlocker(hairObject);
 				hairObject->setCustomizationString(oldCustomization);
+
+				strongReferenceDesigner->notifyObservers(ObserverEventType::IMAGEDESIGNHAIR, nullptr, 0);
 			}
 
 			if (xpGranted < 100)

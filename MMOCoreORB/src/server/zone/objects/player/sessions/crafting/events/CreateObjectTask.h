@@ -32,6 +32,10 @@ public:
 		if (prototype == nullptr || practice) {
 			craftingTool->removeAllContainerObjects();
 			craftingTool->setReady();
+
+			if (practice && prototype != nullptr)
+				crafter->notifyObservers(ObserverEventType::PROTOTYPECREATED, prototype, 1);
+
 			return;
 		}
 
