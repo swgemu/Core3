@@ -19,8 +19,6 @@ void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm,
 			int value = getAttributeAndValue(attrib, i);
 			alm->insertAttribute(attrib, value);
 		}
-
-		alm->insertInt(0);
 }
 
 bool ResourceSpawnImplementation::inShift() const {
