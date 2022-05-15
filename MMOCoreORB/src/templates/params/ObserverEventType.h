@@ -93,6 +93,10 @@ public:
 		SQUAD,						// ManagedObject arg1 = AiAgent, long arg2 = 0
 		QUESTKILL,					// ManagedObject arg1 = destructedObject, long arg2 = 0 Credit for quest/screenplay kills
 		DAMAGECHECKPOINT,
+		ABILITYUSED,				// ManagedObject arg1 = null, long arg2 = command CRC
+		HARVESTEDCREATURE,			// ManagedObject arg1 = resource spawn, long arg2 = Total creature resources harvested
+		DEPLOYEDCAMP,				// ManagedObject arg1 = camp area, long arg2 = 0
+		IMAGEDESIGNHAIR				// ManagedObject arg1 = null, long arg2 = 0
 	};
 };
 
