@@ -1342,8 +1342,11 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 	setNextPosition(runTrajectory.getX(), getZoneUnsafe()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
 }
 
-void AiAgentImplementation::leash() {
+void AiAgentImplementation::leash(bool forcePeace) {
 	Locker locker(&targetMutex);
+
+	if (!forcePeace && getFollowObject() != nullptr)
+		removeDefender(getFollowObject().get());
 
 	clearPatrolPoints();
 	currentFoundPath = nullptr;
@@ -1358,7 +1361,8 @@ void AiAgentImplementation::leash() {
 	clearQueueActions();
 	clearDots();
 
-	CombatManager::instance()->forcePeace(asAiAgent());
+	if (forcePeace)
+		CombatManager::instance()->forcePeace(asAiAgent());
 }
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {

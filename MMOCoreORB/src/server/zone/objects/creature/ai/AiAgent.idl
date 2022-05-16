@@ -813,9 +813,9 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public native void runAway(CreatureObject target, float range, boolean random);
 
-	@mock
+	//@mock
 	@preLocked
-	public abstract native void leash();
+	public abstract native void leash(boolean forcePeace = true);
 
 	@mock
 	public abstract native boolean generatePatrol(int num, float dist);
