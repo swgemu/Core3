@@ -671,9 +671,17 @@ int LuaAiAgent::shouldRetreat(lua_State* L) {
 }
 
 int LuaAiAgent::leash(lua_State* L) {
+	bool forcePeace = true;
+
+	int numberOfArguments = lua_gettop(L);
+
+	if (numberOfArguments == 1) {
+		forcePeace = lua_toboolean(L, -1);
+	}
+
 	Locker locker(realObject);
 
-	realObject->leash();
+	realObject->leash(forcePeace);
 
 	return 0;
 }
