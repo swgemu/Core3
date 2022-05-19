@@ -143,6 +143,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setFactionStatus", &LuaTangibleObject::setFactionStatus },
 		{ "getDamageDealerList", &LuaCreatureObject::getDamageDealerList },
 		{ "getHealingThreatList", &LuaCreatureObject::getHealingThreatList },
+		{ "getAllThreatsList", &LuaCreatureObject::getAllThreatsList },
 		{ "dropFromThreatMap", &LuaCreatureObject::dropFromThreatMap },
 		{ "getSkillMod", &LuaCreatureObject::getSkillMod },
 		{ "getGender", &LuaCreatureObject::getGender },
@@ -1123,6 +1124,30 @@ int LuaCreatureObject::getHealingThreatList(lua_State* L) {
 			lua_pushlightuserdata(L, creoHealer);
 			lua_rawseti(L, -2, count);
 		}
+	}
+
+	return 1;
+}
+
+int LuaCreatureObject::getAllThreatsList(lua_State* L) {
+	ThreatMap* threatMap = realObject->getThreatMap();
+	ThreatMap copyThreatMap(*threatMap);
+
+	lua_newtable(L);
+	int count = 0;
+
+	for (int i = 0; i < copyThreatMap.size(); ++i) {
+		TangibleObject* attacker = copyThreatMap.elementAt(i).getKey();
+
+		if (attacker == nullptr || !attacker->isCreatureObject()) {
+			continue;
+		}
+
+		CreatureObject* creoAttacker = attacker->asCreatureObject();
+
+		count++;
+		lua_pushlightuserdata(L, creoAttacker);
+		lua_rawseti(L, -2, count);
 	}
 
 	return 1;
