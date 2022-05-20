@@ -840,15 +840,21 @@ int DirectorManager::createLoot(lua_State* L) {
 	}
 
 	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
+
 	TransactionLog trx(TrxCode::LUASCRIPT, container);
 	trx.addContextFromLua(L);
-	if (lootManager->createLoot(trx,container, lootGroup, level, maxCondition)) {
+
+	uint64 lootObjectID = lootManager->createLoot(trx,container, lootGroup, level, maxCondition);
+
+	if (lootObjectID > 0) {
 		trx.commit(true);
 	} else {
 		trx.abort() << __FUNCTION__ << " failed: lootGroup=" << lootGroup << "; level=" << level << "; maxCondition=" << maxCondition;
 	}
 
-	return 0;
+	lua_pushinteger(L, lootObjectID);
+
+	return 1;
 }
 
 int DirectorManager::createLootSet(lua_State* L) {

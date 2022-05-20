@@ -461,7 +461,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 				LootManager* lootManager = zserv->getLootManager();
 				TransactionLog trx(TrxCode::CHARACTERBUILDER, player);
-				if (lootManager->createLoot(trx, inventory, templatePath, 300, true)) {
+				if (lootManager->createLoot(trx, inventory, templatePath, 300, true) > 0) {
 					trx.commit(true);
 				} else {
 					trx.abort() << "createLoot " << templatePath << " failed.";

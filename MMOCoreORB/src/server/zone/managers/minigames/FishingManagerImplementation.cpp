@@ -511,19 +511,24 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 
 	if (fish > 80) { // Non-fish Item Caught
 		int chance = System::random(200) + player->getSkillMod("luck");
+		uint64 lootID = 0;
 
 		if (chance > 190) { // Rare Loot
 			if (System::random(4) > 1) {
-				lootManager->createLoot(trx, marker, "weapons_all", 40);
+				lootID = lootManager->createLoot(trx, marker, "weapons_all", 40);
 			} else {
-				lootManager->createLoot(trx, marker, "armor_all", 40);
+				lootID = lootManager->createLoot(trx, marker, "armor_all", 40);
 			}
-			sendReward(player, marker, nullptr);
 		} else { // Junk Loot Drop
-			lootManager->createLoot(trx, marker, "junk", 40);
-			sendReward(player, marker, nullptr);
+			lootID = lootManager->createLoot(trx, marker, "junk", 40);
 		}
-		trx.commit();
+
+		if (lootID > 0) {
+			trx.commit();
+			sendReward(player, marker, nullptr);
+		} else {
+			trx.abort() << "FishingManagerImplementation -- Loot Object ID == 0";
+		}
 	} else {
 		// Chance to toss fish away
 		int badLuck = System::random(20);
@@ -566,7 +571,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 
 				length = System::frandom(length) + quality;
 
-				Zone* zone = player->getZone(); 
+				Zone* zone = player->getZone();
 
 				if (zone == nullptr) {
 					trx.abort();

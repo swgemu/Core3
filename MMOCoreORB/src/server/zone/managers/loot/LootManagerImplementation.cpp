@@ -641,6 +641,8 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 }
 
 bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, SceneObject* container, const LootGroupCollection* lootCollection, int level) {
+	uint64 objectID = 0;
+
 	for (int i = 0; i < lootCollection->count(); ++i) {
 		const LootGroupCollectionEntry* entry = lootCollection->get(i);
 		int lootChance = entry->getLootChance();
@@ -670,21 +672,21 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 			if (tempChance < roll)
 				continue;
 
-			createLoot(trx, container, entry->getLootGroupName(), level);
+			objectID = createLoot(trx, container, entry->getLootGroupName(), level);
 
 			break;
 		}
 	}
 
-	return true;
+	return objectID > 0 ? true : false;
 }
 
-bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* container, const String& lootGroup, int level, bool maxCondition) {
+uint64 LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* container, const String& lootGroup, int level, bool maxCondition) {
 	Reference<const LootGroupTemplate*> group = lootGroupMap->getLootGroupTemplate(lootGroup);
 
 	if (group == nullptr) {
 		warning("Loot group template requested does not exist: " + lootGroup);
-		return false;
+		return 0;
 	}
 
 	//Now we do the third roll for the item out of the group.
@@ -701,13 +703,13 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 
 	if (itemTemplate == nullptr) {
 		warning("Loot item template requested does not exist: " + group->getLootGroupEntryForRoll(roll) + " for templateName: " + group->getTemplateName());
-		return false;
+		return 0;
 	}
 
 	TangibleObject* obj = createLootObject(itemTemplate, level, maxCondition);
 
 	if (obj == nullptr)
-		return false;
+		return 0;
 
 	trx.setSubject(obj);
 	trx.addState("lootGroup", lootGroup);
@@ -719,10 +721,10 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 	} else {
 		obj->destroyObjectFromDatabase(true);
 		trx.errorMessage() << "failed to transferObject to container.";
-		return false;
+		return 0;
 	}
 
-	return true;
+	return obj != nullptr ? obj->getObjectID() : 0;
 }
 
 bool LootManagerImplementation::createLootSet(TransactionLog& trx, SceneObject* container, const String& lootGroup, int level, bool maxCondition, int setSize) {

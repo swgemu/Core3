@@ -341,7 +341,7 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 			}
 		}
 
-		if(!lootManager->createLoot(trx, inventory, lootGroup, level)) {
+		if(lootManager->createLoot(trx, inventory, lootGroup, level) == 0) {
 			player->sendSystemMessage("Unable to create loot for lootgroup " + lootGroup);
 			trx.abort() << "Unabled to create loot for lootgroup " << lootGroup;
 			return false;

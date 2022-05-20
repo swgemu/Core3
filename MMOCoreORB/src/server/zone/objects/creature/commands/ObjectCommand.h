@@ -130,7 +130,7 @@ public:
 
 				TransactionLog trx(TrxCode::ADMINCOMMAND, creature);
 				trx.addState("commandType", commandType);
-				if (lootManager->createLoot(trx, inventory, lootGroup, level)) {
+				if (lootManager->createLoot(trx, inventory, lootGroup, level) > 0) {
 					creature->info(true) << "/object creatloot " << lootGroup << " trxId: " << trx.getTrxID();
 					trx.commit(true);
 				} else {
@@ -195,7 +195,7 @@ public:
 						if (inventory != nullptr) {
 							TransactionLog trx(creature, targetPlayer, nullptr, TrxCode::ADMINCOMMAND);
 							trx.addState("commandType", commandType);
-							if (lootManager->createLoot(trx, inventory, lootGroup, level)) {
+							if (lootManager->createLoot(trx, inventory, lootGroup, level) > 0) {
 								creature->info(true) << "/object creatlootarea " << lootGroup << " trxId: " << trx.getTrxID();
 								trx.commit(true);
 								targetPlayer->sendSystemMessage( "You have received a loot item!");

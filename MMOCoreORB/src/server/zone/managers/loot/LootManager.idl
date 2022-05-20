@@ -173,7 +173,7 @@ class LootManager extends ManagedService implements Logger {
 	public native boolean createLootFromCollection(@dereferenced TransactionLog trx, SceneObject container, final LootGroupCollection collection, int level);
 
 	@local
-	public native boolean createLoot(@dereferenced TransactionLog trx, SceneObject container, final string lootGroup, int level = -1, boolean maxCondition = false);
+	public native unsigned long createLoot(@dereferenced TransactionLog trx, SceneObject container, final string lootGroup, int level = -1, boolean maxCondition = false);
 
 	@local
 	public native boolean createLootSet(@dereferenced TransactionLog trx, SceneObject container, final string lootGroup, int level, boolean maxCondition,int setSize);
