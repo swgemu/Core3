@@ -631,16 +631,18 @@ void LootManagerImplementation::setSockets(TangibleObject* object, CraftingValue
 	}
 }
 
-bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* container, AiAgent* creature) {
+TangibleObject* LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* container, AiAgent* creature) {
 	auto lootCollection = creature->getLootGroups();
 
 	if (lootCollection == nullptr)
-		return false;
+		return nullptr;
 
 	return createLootFromCollection(trx, container, lootCollection, creature->getLevel());
 }
 
-bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, SceneObject* container, const LootGroupCollection* lootCollection, int level) {
+TangibleObject* LootManagerImplementation::createLootFromCollection(TransactionLog& trx, SceneObject* container, const LootGroupCollection* lootCollection, int level) {
+	TangibleObject* lootObject = nullptr;
+
 	for (int i = 0; i < lootCollection->count(); ++i) {
 		const LootGroupCollectionEntry* entry = lootCollection->get(i);
 		int lootChance = entry->getLootChance();
@@ -670,21 +672,21 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 			if (tempChance < roll)
 				continue;
 
-			createLoot(trx, container, entry->getLootGroupName(), level);
+			lootObject = createLoot(trx, container, entry->getLootGroupName(), level);
 
 			break;
 		}
 	}
 
-	return true;
+	return lootObject;
 }
 
-bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* container, const String& lootGroup, int level, bool maxCondition) {
+TangibleObject* LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* container, const String& lootGroup, int level, bool maxCondition) {
 	Reference<const LootGroupTemplate*> group = lootGroupMap->getLootGroupTemplate(lootGroup);
 
 	if (group == nullptr) {
 		warning("Loot group template requested does not exist: " + lootGroup);
-		return false;
+		return nullptr;
 	}
 
 	//Now we do the third roll for the item out of the group.
@@ -701,13 +703,13 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 
 	if (itemTemplate == nullptr) {
 		warning("Loot item template requested does not exist: " + group->getLootGroupEntryForRoll(roll) + " for templateName: " + group->getTemplateName());
-		return false;
+		return nullptr;
 	}
 
 	TangibleObject* obj = createLootObject(itemTemplate, level, maxCondition);
 
 	if (obj == nullptr)
-		return false;
+		return nullptr;
 
 	trx.setSubject(obj);
 	trx.addState("lootGroup", lootGroup);
@@ -719,10 +721,10 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 	} else {
 		obj->destroyObjectFromDatabase(true);
 		trx.errorMessage() << "failed to transferObject to container.";
-		return false;
+		return nullptr;
 	}
 
-	return true;
+	return obj;
 }
 
 bool LootManagerImplementation::createLootSet(TransactionLog& trx, SceneObject* container, const String& lootGroup, int level, bool maxCondition, int setSize) {
