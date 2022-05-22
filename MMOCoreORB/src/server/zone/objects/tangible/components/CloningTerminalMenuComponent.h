@@ -31,6 +31,8 @@ public:
 	 */
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const;
 
+	// Check is player has cloning coupon in their inventory
+	virtual bool hasCloningCoupon(CreatureObject* object) const;
 };
 
 
