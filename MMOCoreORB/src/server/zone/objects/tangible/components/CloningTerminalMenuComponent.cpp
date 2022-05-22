@@ -51,12 +51,21 @@ int CloningTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 		ManagedReference<SuiMessageBox*> cloneConfirm = new SuiMessageBox(player, SuiWindowType::CLONE_CONFIRM);
 		cloneConfirm->setUsingObject(sceneObject);
-		cloneConfirm->setPromptTitle("@base_player:clone_confirm_title");
-		cloneConfirm->setPromptText("@base_player:clone_confirm_prompt");
+
+		bool hasCoupon = hasCloningCoupon(player);
+
+		if (hasCoupon) {
+			cloneConfirm->setPromptTitle("@base_player:clone_confirm_coupon_title");
+			cloneConfirm->setPromptText("@base_player:clone_confirm_coupon_prompt");
+		} else {
+			cloneConfirm->setPromptTitle("@base_player:clone_confirm_title");
+			cloneConfirm->setPromptText("@base_player:clone_confirm_prompt");
+		}
+
 		cloneConfirm->setCancelButton(true, "");
 		cloneConfirm->setForceCloseDistance(32.f);
 
-		cloneConfirm->setCallback(new CloningStoreSuiCallback(server));
+		cloneConfirm->setCallback(new CloningStoreSuiCallback(server, hasCoupon));
 
 		ghost->addSuiBox(cloneConfirm);
 		player->sendMessage(cloneConfirm->generateMessage());
@@ -65,3 +74,28 @@ int CloningTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 	return 0;
 }
 
+bool CloningTerminalMenuComponent::hasCloningCoupon(CreatureObject* player) const {
+	if (player == nullptr)
+		return false;
+
+	Locker lock(player);
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+
+	if (inventory == nullptr)
+		return false;
+
+	uint32 couponCRC = STRING_HASHCODE("object/tangible/item/new_player/new_player_cloning_coupon.iff");
+
+	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+		SceneObject* sceneO = inventory->getContainerObject(i);
+
+		if (sceneO == nullptr)
+			continue;
+
+		if (sceneO->getServerObjectCRC() == couponCRC)
+			return true;
+	}
+
+	return false;
+}
