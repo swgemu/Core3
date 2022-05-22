@@ -14,9 +14,11 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 
 class CloningStoreSuiCallback : public SuiCallback {
+	bool hasCoupon;
+
 public:
-	CloningStoreSuiCallback(ZoneServer* server)
-		: SuiCallback(server) {
+	CloningStoreSuiCallback(ZoneServer* server, bool coupon) : SuiCallback(server) {
+		hasCoupon = coupon;
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
@@ -24,11 +26,6 @@ public:
 
 		if (!suiBox->isMessageBox() || cancelPressed || player == nullptr)
 			return;
-
-		int bank = player->getBankCredits();
-		int cash = player->getCashCredits();
-
-		int cost = 1000;
 
 		ManagedReference<SceneObject*> term = suiBox->getUsingObject().get();
 
@@ -47,7 +44,6 @@ public:
 			player->sendSystemMessage(params);
 			return;
 		}
-		//clone
 
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
@@ -55,30 +51,60 @@ public:
 			return;
 		}
 
-		if (bank < cost) {
-			int diff = cost - bank;
+		if (hasCoupon) {
+			Locker lock(player);
 
-			if (diff > cash) {
-				StringIdChatParameter params;
-				params.setStringId("@error_message:nsf_clone");
-				params.setDI((int)diff - cash);
-				player->sendSystemMessage(params);
+			SceneObject* inventory = player->getSlottedObject("inventory");
 
+			if (inventory == nullptr)
 				return;
+
+			uint32 couponCRC = STRING_HASHCODE("object/tangible/item/new_player/new_player_cloning_coupon.iff");
+
+			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+				SceneObject* sceneO = inventory->getContainerObject(i);
+
+				if (sceneO == nullptr)
+					continue;
+
+				if (sceneO->getServerObjectCRC() == couponCRC) {
+					Locker clock(sceneO, player);
+
+					sceneO->destroyObjectFromWorld(true);
+					sceneO->destroyObjectFromDatabase();
+				}
 			}
-
-			//pay bank portion
-			TransactionLog trxBank(player, TrxCode::CLONINGSYSTEM, cost - diff);
-
-			player->subtractBankCredits(cost - diff);
-
-			TransactionLog trxCash(player, TrxCode::CLONINGSYSTEM, diff, true);
-			trxCash.groupWith(trxBank);
-
-			player->subtractCashCredits(diff);
 		} else {
-			TransactionLog trx(player, TrxCode::INSURANCESYSTEM, cost);
-			player->subtractBankCredits(cost);
+			int bank = player->getBankCredits();
+			int cash = player->getCashCredits();
+
+			int cost = 1000;
+
+			if (bank < cost) {
+				int diff = cost - bank;
+
+				if (diff > cash) {
+					StringIdChatParameter params;
+					params.setStringId("@error_message:nsf_clone");
+					params.setDI((int)diff - cash);
+					player->sendSystemMessage(params);
+
+					return;
+				}
+
+				//pay bank portion
+				TransactionLog trxBank(player, TrxCode::CLONINGSYSTEM, cost - diff);
+
+				player->subtractBankCredits(cost - diff);
+
+				TransactionLog trxCash(player, TrxCode::CLONINGSYSTEM, diff, true);
+				trxCash.groupWith(trxBank);
+
+				player->subtractCashCredits(diff);
+			} else {
+				TransactionLog trx(player, TrxCode::INSURANCESYSTEM, cost);
+				player->subtractBankCredits(cost);
+			}
 		}
 
 		ManagedReference<SceneObject*> building = term->getRootParent();
