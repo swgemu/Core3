@@ -42,6 +42,7 @@
 
 
 object_tangible_item_new_player_new_player_vehicle_coupon = object_tangible_item_new_player_shared_new_player_vehicle_coupon:new {
+	objectMenuComponent = "RentalVehicleObjectMenuComponent",
 
 }
 
