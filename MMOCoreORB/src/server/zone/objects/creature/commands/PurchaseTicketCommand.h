@@ -10,6 +10,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/objects/player/sui/callbacks/TravelCouponUseSuiCallback.h"
 
 class PurchaseTicketCommand : public QueueCommand {
 public:
@@ -31,11 +32,13 @@ public:
 		vec->safeCopyTo(closeObjects);
 
 		bool nearTravelTerminal = false;
+		SceneObject* travelTerminal = nullptr;
 
 		for (int i = 0; i < closeObjects.size(); i++) {
 			SceneObject* object = cast<SceneObject*>( closeObjects.get(i));
 			if (object != nullptr && object->getGameObjectType() == SceneObjectType::TRAVELTERMINAL && checkDistance(creature, object, 8)) {
 				nearTravelTerminal = true;
+				travelTerminal = object;
 				break;
 			}
 
@@ -58,6 +61,7 @@ public:
 				departureTax = currentCity->getTravelTax();
 			}
 		}
+
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 		if (inventory == nullptr)
@@ -65,7 +69,6 @@ public:
 
 		String departurePlanet, departurePoint, arrivalPlanet, arrivalPoint, type;
 		bool roundTrip = true;
-
 
 		try {
 			UnicodeTokenizer tokenizer(arguments);
@@ -88,8 +91,13 @@ public:
 		arrivalPlanet = arrivalPlanet.replaceAll("_", " ");
 		arrivalPoint = arrivalPoint.replaceAll("_", " ");
 
-		ManagedReference<Zone*> departureZone = server->getZoneServer()->getZone(departurePlanet);
-		ManagedReference<Zone*> arrivalZone = server->getZoneServer()->getZone(arrivalPlanet);
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
+		ManagedReference<Zone*> departureZone = zoneServer->getZone(departurePlanet);
+		ManagedReference<Zone*> arrivalZone = zoneServer->getZone(arrivalPlanet);
 
 		if (departureZone == nullptr)
 			return GENERALERROR;
@@ -144,71 +152,120 @@ public:
 			return GENERALERROR;
 		}
 
-		int fare = baseFare + departureTax;
-
-		if (roundTrip)
-			fare *= 2;
-
 		//Make sure they have space in the inventory for the tickets before purchasing them.
 		Locker _lock(inventory, creature);
 
-		if (inventory->getContainerObjectsSize() + ((roundTrip) ? 2 : 1) > inventory->getContainerVolumeLimit()) {
+		int inventorySize = inventory->getContainerObjectsSize();
+
+		if (inventorySize + ((roundTrip) ? 2 : 1) > inventory->getContainerVolumeLimit()) {
 			creature->sendSystemMessage("@error_message:inv_full"); //Your inventory is full.
 			return GENERALERROR;
 		}
 
-		//Check if they have funds.
-		int bank = creature->getBankCredits();
-		int cash = creature->getCashCredits();
+		int fare = baseFare + departureTax;
 
-		if (bank < fare) {
-			int diff = fare - bank;
+		if (!roundTrip) {
+			// New Player Travel Coupon
+			bool hasCoupon = false;
+			ManagedReference<SceneObject*> voucher = nullptr;
 
-			if (diff > cash) {
-				ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, 0);
-				suiBox->setPromptTitle("");
-				suiBox->setPromptText("You do not have sufficient funds for that.");
+			uint32 couponCRC = STRING_HASHCODE("object/tangible/item/new_player/new_player_travel_coupon.iff");
 
-				creature->sendMessage(suiBox->generateMessage());
-				creature->sendSystemMessage("@travel:short_funds"); //You do not have enough money to complete the ticket purchase.
-				return GENERALERROR;
+			for (int i = 0; i < inventorySize; i++) {
+				SceneObject* sceneO = inventory->getContainerObject(i);
+
+				if (sceneO == nullptr)
+					continue;
+
+				if (sceneO->getServerObjectCRC() == couponCRC) {
+					hasCoupon = true;
+					voucher = sceneO;
+				}
 			}
 
-			TransactionLog trxBank(creature, TrxCode::TRAVELSYSTEM, bank, false);
-			trxBank.addState("departurePlanet", departurePlanet);
-			trxBank.addState("departurePoint", departurePoint);
-			trxBank.addState("arrivalPlanet", arrivalPlanet);
-			trxBank.addState("arrivalPoint", arrivalPoint);
+			if (hasCoupon && creature->isPlayerCreature()) {
+				_lock.release();
 
-			creature->subtractBankCredits(bank); //Take all from the bank, since they didn't have enough to cover.
+				PlayerObject* ghost = creature->getPlayerObject();
 
-			TransactionLog trxCash(creature, TrxCode::TRAVELSYSTEM, diff, true);
-			trxCash.groupWith(trxBank);
-			trxCash.addState("departurePlanet", departurePlanet);
-			trxCash.addState("departurePoint", departurePoint);
-			trxCash.addState("arrivalPlanet", arrivalPlanet);
-			trxCash.addState("arrivalPoint", arrivalPoint);
+				if (ghost == nullptr)
+					return GENERALERROR;
 
-			creature->subtractCashCredits(diff); //Take the rest from the cash.
-			trxCash.groupWith(trxBank);
+				ManagedReference<SuiMessageBox*> couponSui = new SuiMessageBox(creature, SuiWindowType::TRAVEL_TICKET_SELECTION);
+				couponSui->setCallback(new TravelCouponUseSuiCallback(zoneServer, voucher, fare, departurePlanet, departurePoint, arrivalPlanet, arrivalPoint));
+				couponSui->setPromptTitle("@new_player:travel_coupon");
+				StringBuffer prompt;
+				prompt << "@new_player:travel_coupon_use_text_option" <<  " " << fare;
+				couponSui->setPromptText(prompt.toString());
+				couponSui->setOkButton(true, "@new_player:travel_coupon_use_coupon_button");
+				couponSui->setCancelButton(true, "@new_player:travel_coupon_pay_credits_button");
+				couponSui->setUsingObject(travelTerminal);
+				couponSui->setForceCloseDistance(10);
+				ghost->addSuiBox(couponSui);
+				creature->sendMessage(couponSui->generateMessage());
+
+				return GENERALERROR;
+			}
 		} else {
-			TransactionLog trx(creature, TrxCode::TRAVELSYSTEM, fare, false);
-			trx.addState("departurePlanet", departurePlanet);
-			trx.addState("departurePoint", departurePoint);
-			trx.addState("arrivalPlanet", arrivalPlanet);
-			trx.addState("arrivalPoint", arrivalPoint);
+			if (roundTrip)
+				fare *= 2;
 
-			creature->subtractBankCredits(fare); //Take all of the fare from the bank.
+			//Check if they have funds.
+			int bank = creature->getBankCredits();
+			int cash = creature->getCashCredits();
+
+			if (bank < fare) {
+				int diff = fare - bank;
+
+				if (diff > cash) {
+					ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, 0);
+					suiBox->setPromptTitle("");
+					suiBox->setPromptText("You do not have sufficient funds for that.");
+
+					creature->sendMessage(suiBox->generateMessage());
+					creature->sendSystemMessage("@travel:short_funds"); //You do not have enough money to complete the ticket purchase.
+					return GENERALERROR;
+				}
+
+				TransactionLog trxBank(creature, TrxCode::TRAVELSYSTEM, bank, false);
+				trxBank.addState("departurePlanet", departurePlanet);
+				trxBank.addState("departurePoint", departurePoint);
+				trxBank.addState("arrivalPlanet", arrivalPlanet);
+				trxBank.addState("arrivalPoint", arrivalPoint);
+
+				creature->subtractBankCredits(bank); //Take all from the bank, since they didn't have enough to cover.
+
+				TransactionLog trxCash(creature, TrxCode::TRAVELSYSTEM, diff, true);
+				trxCash.groupWith(trxBank);
+				trxCash.addState("departurePlanet", departurePlanet);
+				trxCash.addState("departurePoint", departurePoint);
+				trxCash.addState("arrivalPlanet", arrivalPlanet);
+				trxCash.addState("arrivalPoint", arrivalPoint);
+
+				creature->subtractCashCredits(diff); //Take the rest from the cash.
+				trxCash.groupWith(trxBank);
+				trxBank.commit();
+			} else {
+				TransactionLog trx(creature, TrxCode::TRAVELSYSTEM, fare, false);
+				trx.addState("departurePlanet", departurePlanet);
+				trx.addState("departurePoint", departurePoint);
+				trx.addState("arrivalPlanet", arrivalPlanet);
+				trx.addState("arrivalPoint", arrivalPoint);
+
+				creature->subtractBankCredits(fare); //Take all of the fare from the bank.
+				trx.commit();
+			}
+
+
+			StringIdChatParameter params("@base_player:prose_pay_acct_success"); //You successfully make a payment of %DI credits to %TO.
+			params.setDI(baseFare + (roundTrip * baseFare));
+			params.setTO("@money/acct_n:travelsystem"); //the Galactic Travel Commission
+
+			creature->sendSystemMessage(params);
 		}
 
-
-		StringIdChatParameter params("@base_player:prose_pay_acct_success"); //You successfully make a payment of %DI credits to %TO.
-		params.setDI(baseFare + (roundTrip * baseFare));
-		params.setTO("@money/acct_n:travelsystem"); //the Galactic Travel Commission
-
-		creature->sendSystemMessage(params);
-
 		ManagedReference<SceneObject*> ticket1 = pmDeparture->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
+
 		if (ticket1 == nullptr) {
 			creature->sendSystemMessage("Error creating travel ticket.");
 			return GENERALERROR;
