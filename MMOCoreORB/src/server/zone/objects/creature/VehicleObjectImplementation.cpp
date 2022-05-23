@@ -116,6 +116,18 @@ void VehicleObjectImplementation::notifyInsertToZone(Zone* zone) {
 		--paintCount;
 	}
 
+	if (isRentalVehicle()) {
+		--rentalUses;
+
+		if (rentalUses < 1) {
+			StringIdChatParameter param("pet/pet_menu", "uses_left_last");
+			linkedCreature->sendSystemMessage(param);
+		} else {
+			StringIdChatParameter param("pet/pet_menu", "uses_left");
+			param.setDI(rentalUses);
+			linkedCreature->sendSystemMessage(param);
+		}
+	}
 }
 
 bool VehicleObjectImplementation::checkInRangeGarage() {
