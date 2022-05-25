@@ -21,6 +21,11 @@ CriesOfAlderaan = ScreenPlay:new {
 		{"rebel_recruiter", "lok", -4749, 4, 3525.5, 113},
 		{"rebel_recruiter", "yavin4", -4237, 183, 2284.1, -165},
 	},
+
+	episodeOneEnabled = true,
+	episodeTwoEnabled = true,
+	episodeThreeEnabled = true,
+	skipToThree = true
 }
 
 registerScreenPlay("CriesOfAlderaan", true)
@@ -36,4 +41,21 @@ function CriesOfAlderaan:spawnStaticNpcs()
 			spawnMobile(npc[2], npc[1], 0, npc[3], npc[4], npc[5], npc[6], 0)
 		end
 	end
+end
+
+function CriesOfAlderaan:getState(pPlayer, stateName)
+	local state = readScreenPlayData(pPlayer, stateName, "state")
+
+	if (state == nil or state == "") then
+		return 0
+	end
+
+	return tonumber(state)
+end
+
+function CriesOfAlderaan:setState(pPlayer, stateName, val)
+	printf("writing state: " .. stateName .. "\n")
+	printf("val: " .. val .. "\n")
+
+	writeScreenPlayData(pPlayer, stateName, "state", val)
 end

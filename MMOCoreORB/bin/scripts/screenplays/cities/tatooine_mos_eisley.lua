@@ -233,6 +233,7 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 
 		--Guild Hall 3429 -4730
 		{"trainer_artisan",0,-0.0585386,1.13306,-13.9039,0,1279964, ""},
+		{"coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,1279963, "calm"},
 
 		--Guild Hall 3479 -4684
 		{"trainer_2hsword",0,11,1.1,-11,0,1189637, ""},

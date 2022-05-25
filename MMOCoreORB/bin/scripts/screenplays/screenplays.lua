@@ -305,6 +305,7 @@ includeFile("events/bestine_election/convos/tour_aryon_conv_handler.lua")
 -- Cries of Alderaan
 includeFile("events/coa/coa.lua")
 includeFile("events/coa/coa2Screenplay.lua")
+includeFile("events/coa/coa3Screenplay.lua")
 includeFile("events/coa/conversations/imperial_commander_conv_handler.lua")
 includeFile("events/coa/conversations/imperial_coordinator_conv_handler.lua")
 includeFile("events/coa/conversations/imperial_informant_conv_handler.lua")
@@ -312,6 +313,7 @@ includeFile("events/coa/conversations/rebel_commander_conv_handler.lua")
 includeFile("events/coa/conversations/rebel_coordinator_conv_handler.lua")
 includeFile("events/coa/conversations/rebel_lyda_conv_handler.lua")
 includeFile("events/coa/conversations/rebel_sympathizer_conv_handler.lua")
+includeFile("events/coa/conversations/coa3_info_officer_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
