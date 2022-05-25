@@ -93,6 +93,7 @@
 #include "server/zone/objects/tangible/misc/ContractCrate.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/managers/director/ScreenPlayObserver.h"
+#include "server/zone/managers/resource/ResourceManager.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -427,6 +428,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("spatialChat", spatialChat);
 	luaEngine->registerFunction("spatialMoodChat", spatialMoodChat);
 	luaEngine->registerFunction("getRandomNumber", getRandomNumber);
+	luaEngine->registerFunction("getHashCode", getHashCode);
 	luaEngine->registerFunction("forcePeace", forcePeace);
 	luaEngine->registerFunction("readSharedMemory", readSharedMemory);
 	luaEngine->registerFunction("writeSharedMemory", writeSharedMemory);
@@ -475,6 +477,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("createLoot", createLoot);
 	luaEngine->registerFunction("createLootSet", createLootSet);
 	luaEngine->registerFunction("createLootFromCollection", createLootFromCollection);
+	luaEngine->registerFunction("givePlayerResource", givePlayerResource);
 
 	luaEngine->registerFunction("getRegion", getRegion);
 	luaEngine->registerFunction("writeScreenPlayData", writeScreenPlayData);
@@ -528,6 +531,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("OBJECTDESTRUCTION", ObserverEventType::OBJECTDESTRUCTION);
 	luaEngine->setGlobalInt("OBJECTDISABLED", ObserverEventType::OBJECTDISABLED);
 	luaEngine->setGlobalInt("SAMPLE", ObserverEventType::SAMPLE);
+	luaEngine->setGlobalInt("SAMPLETAKEN", ObserverEventType::SAMPLETAKEN);
+	luaEngine->setGlobalInt("HARVESTEDCREATURE", ObserverEventType::HARVESTEDCREATURE);
+	luaEngine->setGlobalInt("DEPLOYEDCAMP", ObserverEventType::DEPLOYEDCAMP);
 	luaEngine->setGlobalInt("CONVERSE", ObserverEventType::CONVERSE);
 	luaEngine->setGlobalInt("KILLEDCREATURE", ObserverEventType::KILLEDCREATURE);
 	luaEngine->setGlobalInt("QUESTKILL", ObserverEventType::QUESTKILL);
@@ -576,6 +582,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("CONTAINERCONTENTSCHANGED", ObserverEventType::CONTAINERCONTENTSCHANGED);
 	luaEngine->setGlobalInt("WASLISTENEDTO", ObserverEventType::WASLISTENEDTO);
 	luaEngine->setGlobalInt("WASWATCHED", ObserverEventType::WASWATCHED);
+	luaEngine->setGlobalInt("IMAGEDESIGNHAIR", ObserverEventType::IMAGEDESIGNHAIR);
 	luaEngine->setGlobalInt("PARENTCHANGED", ObserverEventType::PARENTCHANGED);
 	luaEngine->setGlobalInt("LOGGEDIN", ObserverEventType::LOGGEDIN);
 	luaEngine->setGlobalInt("LOGGEDOUT", ObserverEventType::LOGGEDOUT);
@@ -583,6 +590,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("TUNEDCRYSTAL", ObserverEventType::TUNEDCRYSTAL);
 	luaEngine->setGlobalInt("PROTOTYPECREATED", ObserverEventType::PROTOTYPECREATED);
 	luaEngine->setGlobalInt("SLICED", ObserverEventType::SLICED);
+	luaEngine->setGlobalInt("ABILITYUSED", ObserverEventType::ABILITYUSED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
@@ -917,6 +925,80 @@ int DirectorManager::createLootFromCollection(lua_State* L) {
 	} else {
 		trx.abort() << __FUNCTION__ << " failed: level=" << level;
 	}
+
+	return 0;
+}
+
+int DirectorManager::givePlayerResource(lua_State* L) {
+	if (checkArgumentCount(L, 3) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::givePlayerResource";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	const int quantity = lua_tointeger(L, -1);
+	const String typeString = lua_tostring(L, -2);
+	CreatureObject* player = (CreatureObject*)lua_touserdata(L, -3);
+
+	if (player == nullptr)
+		return 0;
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+	Zone* zone = player->getZone();
+
+	if (zoneServer == nullptr || zone == nullptr)
+		return 0;
+
+	ResourceManager* resourceManager = zoneServer->getResourceManager();
+
+	if (resourceManager == nullptr)
+		return 0;
+
+	int type = 0;
+
+	// TODO: Global resource types
+	// SOLAR = 1; CHEMICAL = 2; FLORA = 3; GAS = 4; GEOTHERMAL = 5; MINERAL = 6; WATER = 7; WIND = 8; FUSION = 9;
+	if (typeString == "organic")
+		type = -1;
+	else if (typeString == "solar")
+		type = 1;
+	else if (typeString == "chemical")
+		type = 2;
+	else if (typeString == "flora")
+		type = 3;
+	else if (typeString == "gas")
+		type = 4;
+	else if (typeString == "geothermal")
+		type = 5;
+	else if (typeString == "mineral")
+		type = 6;
+	else if (typeString == "water")
+		type = 7;
+	else if (typeString == "wind")
+		type = 8;
+	else if (typeString == "fusion")
+		type = 9;
+	else if (typeString == "inorganic")
+		type = 10;
+
+	Vector<ManagedReference<ResourceSpawn*> > resources;
+	resourceManager->getResourceListByType(resources, type, zone->getZoneName());
+
+	if (resources.size() < 1)
+		return 0;
+
+	ManagedReference<ResourceSpawn*> spawn = resources.get(System::random(resources.size() - 1));
+
+	if (spawn == nullptr) {
+		return 0;
+	}
+
+	TransactionLog trx(TrxCode::LUASCRIPT, player);
+	trx.addContextFromLua(L);
+
+	resourceManager->harvestResourceToPlayer(trx, player, spawn, quantity);
+	trx.commit();
 
 	return 0;
 }
@@ -1794,6 +1876,24 @@ int DirectorManager::getRandomNumber(lua_State* L) {
 		random = min + System::random(max - min);
 	}
 	lua_pushinteger(L, random);
+
+	return 1;
+}
+
+int DirectorManager::getHashCode(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+
+	if (numberOfArguments != 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::getHashCode";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String argument = lua_tostring(L, -1);
+	uint32 hash = argument.hashCode();
+
+	lua_pushinteger(L, hash);
 
 	return 1;
 }
