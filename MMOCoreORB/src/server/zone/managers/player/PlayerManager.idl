@@ -88,6 +88,8 @@ class PlayerManager extends Observer implements Logger {
 	protected boolean allowSameAccountPvpRatingCredit;
 	protected int onlineCharactersPerAccount;
 
+	protected unsigned int coaWinningFaction;
+
 	@dereferenced
 	protected XpBonusList xpBonusList;
 
@@ -491,6 +493,14 @@ class PlayerManager extends Observer implements Logger {
 
 	@local
 	public native QuestTasks getQuestTasks(final unsigned int questCrc);
+
+	public unsigned int getCoaWinningFaction() {
+		return coaWinningFaction;
+	}
+
+	public void setCoaWinningFaction(unsigned int faction) {
+		coaWinningFaction = faction;
+	}
 
 	/**
 	 * Sends a confirmation box to the student asking if they want to learn the skill.

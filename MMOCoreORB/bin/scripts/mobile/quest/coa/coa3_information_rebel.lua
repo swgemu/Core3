@@ -25,7 +25,7 @@ coa3_information_rebel = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_brigadier_general_rodian_female_01.iff"},
@@ -34,9 +34,9 @@ coa3_information_rebel = Creature:new {
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "imperial_weapons_heavy",
-	secondaryWeapon = "unarmed",
-	conversationTemplate = "",
-	
+	secondaryWeapon = "none",
+	conversationTemplate = "coa3InfoOfficerConvoTemplate",
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster),

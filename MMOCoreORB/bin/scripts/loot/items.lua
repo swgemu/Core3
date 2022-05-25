@@ -181,6 +181,8 @@ includeFile("items/coa/coa_reb_2.lua")
 includeFile("items/coa/coa_reb_3.lua")
 includeFile("items/coa/coa_reb_4.lua")
 includeFile("items/coa/coa_rebel_message.lua")
+includeFile("items/coa/coa3_encoded_disk.lua")
+includeFile("items/coa/coa3_alderaan_flora_loot.lua")
 
 -- component loot sub-folder
 includeFile("items/component_loot/biologic_effect_controller_advanced.lua")
