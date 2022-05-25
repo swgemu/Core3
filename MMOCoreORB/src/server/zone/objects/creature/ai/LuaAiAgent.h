@@ -45,6 +45,8 @@ namespace ai {
 		int setNextPosition(lua_State* L);
 		int getMaxDistance(lua_State* L);
 		int generatePatrol(lua_State* L);
+		int clearPatrolPoints(lua_State* L);
+		int clearCurrentPath(lua_State* L);
 		int setDestination(lua_State* L);
 		int isWaiting(lua_State* L);
 		int stopWaiting(lua_State* L);

@@ -2697,7 +2697,7 @@ int AiAgentImplementation::setDestination() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	unsigned int stateCopy = getMovementState();
 
-	// info(true) << "ID: " << getObjectID() << "  setDestination - stateCopy: " << String::valueOf(stateCopy) << "  Patrol Point Size:" << getPatrolPointSize();
+	//info(true) << "ID: " << getObjectID() << "  setDestination - stateCopy: " << String::valueOf(stateCopy) << "  Patrol Point Size:" << getPatrolPointSize();
 	// info("homeLocation: " + homeLocation.toString(), true);
 
 	if (patrolPoints.size() > 20) {
@@ -2707,7 +2707,7 @@ int AiAgentImplementation::setDestination() {
 
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
-		if (!(creatureBitmask & CreatureFlag::STATIONARY) && !homeLocation.isInRange(asAiAgent(), 1.0f)) {
+		if (!(creatureBitmask & CreatureFlag::EVENTCONTROL) && !(creatureBitmask & CreatureFlag::STATIONARY) && !homeLocation.isInRange(asAiAgent(), 1.0f)) {
 			homeLocation.setReached(false);
 			setMovementState(AiAgent::PATHING_HOME);
 		}

@@ -589,6 +589,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("POSTURESITTING", CreaturePosture::SITTING);
 	luaEngine->setGlobalInt("KNOCKEDDOWN", CreaturePosture::KNOCKEDDOWN);
 	luaEngine->setGlobalInt("CROUCHED", CreaturePosture::CROUCHED);
+	luaEngine->setGlobalInt("LYINGDOWN", CreaturePosture::LYINGDOWN);
 	luaEngine->setGlobalInt("STATESITTINGONCHAIR", CreatureState::SITTINGONCHAIR);
 
 	//Waypoint Colors
@@ -682,6 +683,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("AI_STATIC", CreatureFlag::STATIC);
 	luaEngine->setGlobalInt("AI_STATIONARY", CreatureFlag::STATIONARY);
 	luaEngine->setGlobalInt("AI_NOAIAGGRO", CreatureFlag::NOAIAGGRO);
+	luaEngine->setGlobalInt("AI_EVENTCONTROL", CreatureFlag::EVENTCONTROL);
 
 	// AI Movement States
 	luaEngine->setGlobalInt("AI_OBLIVIOUS", AiAgent::OBLIVIOUS);

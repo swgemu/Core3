@@ -44,6 +44,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "setNextPosition", &LuaAiAgent::setNextPosition },
 		{ "getMaxDistance", &LuaAiAgent::getMaxDistance },
 		{ "generatePatrol", &LuaAiAgent::generatePatrol },
+		{ "clearPatrolPoints", &LuaAiAgent::clearPatrolPoints },
+		{ "clearCurrentPath", &LuaAiAgent::clearCurrentPath },
 		{ "setDestination", &LuaAiAgent::setDestination },
 		{ "isWaiting", &LuaAiAgent::isWaiting },
 		{ "stopWaiting", &LuaAiAgent::stopWaiting },
@@ -295,6 +297,22 @@ int LuaAiAgent::generatePatrol(lua_State* L) {
 	lua_pushboolean(L, retVal);
 
 	return 1;
+}
+
+int LuaAiAgent::clearPatrolPoints(lua_State* L) {
+	Locker lock(realObject);
+
+	realObject->clearPatrolPoints();
+
+	return 0;
+}
+
+int LuaAiAgent::clearCurrentPath(lua_State* L) {
+	Locker lock(realObject);
+
+	realObject->clearCurrentPath();
+
+	return 0;
 }
 
 int LuaAiAgent::setDestination(lua_State* L) {

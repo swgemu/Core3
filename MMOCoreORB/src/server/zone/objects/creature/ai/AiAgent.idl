@@ -463,6 +463,12 @@ class AiAgent extends CreatureObject {
 		}
 	}
 
+	public void clearCurrentPath() {
+		synchronized (targetMutex) {
+			currentFoundPath = null;
+		}
+	}
+
 	public void clearSavedPatrolPoints() {
 		synchronized (targetMutex) {
 			savedPatrolPoints.removeAll();
