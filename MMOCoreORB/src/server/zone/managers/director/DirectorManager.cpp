@@ -500,6 +500,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("setQuestStatus", setQuestStatus);
 	luaEngine->registerFunction("getQuestStatus", getQuestStatus);
 	luaEngine->registerFunction("removeQuestStatus", removeQuestStatus);
+	luaEngine->registerFunction("setCoaWinningFaction", setCoaWinningFaction);
 	luaEngine->registerFunction("getControllingFaction", getControllingFaction);
 	luaEngine->registerFunction("getImperialScore", getImperialScore);
 	luaEngine->registerFunction("getRebelScore", getRebelScore);
@@ -525,6 +526,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 
 	//Navigation Mesh Management
 	luaEngine->registerFunction("createNavMesh", createNavMesh);
+	luaEngine->registerFunction("destroyNavMesh", destroyNavMesh);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -3654,6 +3656,26 @@ int DirectorManager::removeQuestStatus(lua_State* L) {
 	return 0;
 }
 
+int DirectorManager::setCoaWinningFaction(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::getCoaWinningFaction";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	uint32 faction = lua_tointeger(L, -1);
+
+	ManagedReference<PlayerManager*> playerManager = ServerCore::getZoneServer()->getPlayerManager();
+
+	if (playerManager == nullptr)
+		return 0;
+
+	playerManager->setCoaWinningFaction(faction);
+
+	return 0;
+}
+
 int DirectorManager::getControllingFaction(lua_State* L) {
 	if (checkArgumentCount(L, 1) == 1) {
 		String err = "incorrect number of arguments passed to DirectorManager::getControllingFaction";
@@ -3921,7 +3943,6 @@ void DirectorManager::removeQuestVectorMap(const String& keyString) {
 }
 
 int DirectorManager::createNavMesh(lua_State *L) {
-
     if (checkArgumentCount(L, 6) == 1) {
         String err = "incorrect number of arguments passed to DirectorManager::createNavMesh";
         printTraceError(L, err);
@@ -3961,6 +3982,35 @@ int DirectorManager::createNavMesh(lua_State *L) {
     }, "create_lua_navmesh", 1000);
     lua_pushlightuserdata(L, navArea);
     return 1;
+}
+
+int DirectorManager::destroyNavMesh(lua_State *L) {
+	if (checkArgumentCount(L, 1) == 1) {
+        String err = "incorrect number of arguments passed to DirectorManager::destroyNavMesh. Proper arguments is: (navmeshID)";
+        printTraceError(L, err);
+        ERROR_CODE = INCORRECT_ARGUMENTS;
+        return 0;
+    }
+
+	uint64 navMeshID = lua_tointeger(L, -1);
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr)
+		return 0;
+
+	ManagedReference<NavArea*> navMesh = zoneServer->getObject(navMeshID).castTo<NavArea*>();
+
+	if (navMesh != nullptr) {
+		Locker locker(navMesh);
+
+		navMesh->destroyObjectFromWorld(true);
+
+		if (navMesh->isPersistent())
+			navMesh->destroyObjectFromDatabase(true);
+	}
+
+	return 0;
 }
 
 int DirectorManager::creatureTemplateExists(lua_State* L) {

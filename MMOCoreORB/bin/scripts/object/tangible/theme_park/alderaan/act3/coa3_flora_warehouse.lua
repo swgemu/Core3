@@ -40,16 +40,11 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
+object_tangible_theme_park_coa3_flora_warehouse = object_building_military_shared_pirate_warehouse:new {
+	childObjects = {
+		{templateFile = "object/tangible/terminal/terminal_destructible_building.iff", x = 0, z = 0.3, y = -6.0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = 3, containmentType = -1},
+	},
 
+}
 
---Children folder includes
-
--- Server Objects
-includeFile("tangible/theme_park/alderaan/act3/alderaan_flora.lua")
-includeFile("tangible/theme_park/alderaan/act3/broken_grav_unit.lua")
-includeFile("tangible/theme_park/alderaan/act3/dead_eye_prototype.lua")
-includeFile("tangible/theme_park/alderaan/act3/encoded_data_disk.lua")
-includeFile("tangible/theme_park/alderaan/act3/grav_unit_repair_kit.lua")
-includeFile("tangible/theme_park/alderaan/act3/repaired_grav_unit.lua")
-includeFile("tangible/theme_park/alderaan/act3/research_facility.lua")
-includeFile("tangible/theme_park/alderaan/act3/coa3_flora_warehouse.lua")
+ObjectTemplates:addTemplate(object_tangible_theme_park_coa3_flora_warehouse, "object/tangible/theme_park/alderaan/act3/coa3_flora_warehouse.iff")
