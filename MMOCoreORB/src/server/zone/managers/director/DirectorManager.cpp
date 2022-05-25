@@ -500,6 +500,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("setQuestStatus", setQuestStatus);
 	luaEngine->registerFunction("getQuestStatus", getQuestStatus);
 	luaEngine->registerFunction("removeQuestStatus", removeQuestStatus);
+	luaEngine->registerFunction("setCoaWinningFaction", setCoaWinningFaction);
 	luaEngine->registerFunction("getControllingFaction", getControllingFaction);
 	luaEngine->registerFunction("getImperialScore", getImperialScore);
 	luaEngine->registerFunction("getRebelScore", getRebelScore);
@@ -3650,6 +3651,26 @@ int DirectorManager::removeQuestStatus(lua_State* L) {
 	String keyString = lua_tostring(L, -1);
 
 	instance()->removeQuestStatus(keyString);
+
+	return 0;
+}
+
+int DirectorManager::setCoaWinningFaction(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::getCoaWinningFaction";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	uint32 faction = lua_tointeger(L, -1);
+
+	ManagedReference<PlayerManager*> playerManager = ServerCore::getZoneServer()->getPlayerManager();
+
+	if (playerManager == nullptr)
+		return 0;
+
+	playerManager->setCoaWinningFaction(faction);
 
 	return 0;
 }
