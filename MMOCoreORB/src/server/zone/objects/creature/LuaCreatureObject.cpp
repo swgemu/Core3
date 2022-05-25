@@ -69,6 +69,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getPosture", &LuaCreatureObject::getPosture},
 		{ "setPosture", &LuaCreatureObject::setPosture},
 		{ "setMoodString", &LuaCreatureObject::setMoodString},
+		{ "getMoodString", &LuaCreatureObject::getMoodString},
 		{ "hasSkill", &LuaCreatureObject::hasSkill},
 		{ "removeSkill", &LuaCreatureObject::removeSkill},
 		{ "surrenderSkill", &LuaCreatureObject::surrenderSkill},
@@ -292,6 +293,14 @@ int LuaCreatureObject::setMoodString(lua_State* L) {
 	realObject->setMoodString(value);
 
 	return 0;
+}
+
+int LuaCreatureObject::getMoodString(lua_State* L) {
+	String mood = realObject->getMoodString();
+
+	lua_pushstring(L, mood.toCharArray());
+
+	return 1;
 }
 
 int LuaCreatureObject::sendOpenHolocronToPageMessage(lua_State* L) {
