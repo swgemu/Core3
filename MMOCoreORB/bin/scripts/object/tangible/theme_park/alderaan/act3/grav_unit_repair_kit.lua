@@ -42,6 +42,7 @@
 
 
 object_tangible_theme_park_alderaan_act3_grav_unit_repair_kit = object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit:new {
+	objectMenuComponent = "coa3GravUnitRepairKit",
 
 }
 

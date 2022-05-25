@@ -5,6 +5,8 @@ coa3CaravanLeaderConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
+-- Player has proper CoA state to talk to caravan leader
+
 init_has_mission = ConvoScreen:new {
 	id = "init_has_mission",
 	leftDialog = "@conversation/coa3sharedcaravanleader:s_1dde12ed", -- Are you the one I'm waiting on? Transporting this much... umm cargo... over land is dangerous. There are a lot of people that would love to hijack this shipment. With us being broke down; it's only a matter of time before they find us.
@@ -41,6 +43,8 @@ keep_on_passing = ConvoScreen:new {
 }
 coa3CaravanLeaderConvoTemplate:addScreen(keep_on_passing);
 
+-- Player has part repaired in their inventory
+
 init_has_part_repaired = ConvoScreen:new {
 	id = "init_has_part_repaired",
 	leftDialog = "@conversation/coa3sharedcaravanleader:s_d3ba3662", -- So is that part repaired yet?
@@ -58,6 +62,8 @@ take_this_disc = ConvoScreen:new {
 	options = {}
 }
 coa3CaravanLeaderConvoTemplate:addScreen(take_this_disc);
+
+-- Player has not repaired the part yet
 
 init_has_part_not_repaired = ConvoScreen:new {
 	id = "init_has_part_not_repaired",

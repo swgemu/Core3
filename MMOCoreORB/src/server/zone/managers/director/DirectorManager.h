@@ -191,6 +191,7 @@ namespace server {
 		static int setQuestStatus(lua_State* L);
 		static int getQuestStatus(lua_State* L);
 		static int removeQuestStatus(lua_State* L);
+		static int setCoaWinningFaction(lua_State* L);
 		static int getControllingFaction(lua_State* L);
 		static int getImperialScore(lua_State* L);
 		static int getRebelScore(lua_State* L);
@@ -202,6 +203,7 @@ namespace server {
 		static int removeQuestVectorMap(lua_State* L);
 		static int createQuestVectorMap(lua_State* L);
 		static int createNavMesh(lua_State* L);
+		static int destroyNavMesh(lua_State* L);
 		static int creatureTemplateExists(lua_State* L);
 		static int printLuaError(lua_State* L);
 		static int logLua(lua_State* L);
