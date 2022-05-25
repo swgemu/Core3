@@ -250,10 +250,8 @@ CorelliaTyrenaScreenPlay = CityScreenPlay:new {
 		--Guild Hall -5417 -2723
 		{"mercenary", 300,3.29,1.13306,-9.58,249.007,1935454, ""},
 		{"trainer_artisan", 0,0,1.13306,-14,0,1935454, ""},
-		{"coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,1935453, "calm"},
 
 		--Guild Hall -5463 -2722
-		{"coa3_tactical_rebel", 60,9.53575,1.13306,0.330446,310.824,1935441, "calm"},
 		{"trainer_marksman", 0,0,1.13306,-14,0,1935444, ""},
 		{"businessman", 60,3.32,1.13306,-8.49,228.007,1935444, ""},
 		{"bounty_hunter", 300,-14.01,1.13306,-8.53,120.004,1935445, ""},

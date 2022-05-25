@@ -128,7 +128,6 @@ TatooineBestineScreenPlay = CityScreenPlay:new {
 		{"trainer_medic",0,-8.7,0.2,0.1,91,4005383, ""},
 
 		--Guild Hall -1239 -3580
-		{"coa3_tactical_imperial",60,9.74537,1.13306,0.300803,93.0077,1028549, "npc_imperial"},
 		{"trainer_scout", 0, -11.6, 1.1, 4.6, 174, 1028550, ""},
 		{"brawler",300,-14.01,1.13306,-8.53,120.004,1028553, ""},
 		{"trainer_brawler",0,-11,1.1,-14,0,1028553, ""},
@@ -147,8 +146,6 @@ TatooineBestineScreenPlay = CityScreenPlay:new {
 		{"contractor",60,-3.69,1.13306,-6,11.0003,1028558, ""},
 		{"trainer_artisan",0,-0.0507306,1.13306,-13.747,0,1028562, ""},
 		{"mercenary",300,3.29,1.13306,-9.58,249.007,1028562, ""},
-
-		{"coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,1028561, "npc_imperial"},
 
 		--Guild Hall -1130 -3540
 		{"akal_colzet",60,0.436469,1.75,-14.4381,0,1212359, "npc_imperial"},

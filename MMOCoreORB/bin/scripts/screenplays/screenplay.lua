@@ -26,6 +26,18 @@ function readStringData(key)
 	return readStringSharedMemory(string.format(key))
 end
 
+function writeVector3Data(key, x, z, y)
+	writeVector3SharedMemory(string.format(key), x, z, y)
+end
+
+function readVector3Data(key)
+	return readVector3SharedMemory(string.format(key))
+end
+
+function deleteVector3Data(key)
+	deleteVector3SharedMemory(string.format(key))
+end
+
 ScreenPlay = Object:new {
 	screenplayName = "",
 	numerOfActs = 0,

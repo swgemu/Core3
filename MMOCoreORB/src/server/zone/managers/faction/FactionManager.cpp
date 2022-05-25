@@ -105,29 +105,8 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 
 	float gain = level * faction.getAdjustFactor();
 	float lose = gain * 2;
-
-	ghost->decreaseFactionStanding(factionName, lose);
-
-	//Lose faction standing to allies of the creature.
-	for (int i = 0; i < allies->size(); ++i) {
-		const String& ally = allies->get(i);
-
-		if ((ally == "rebel" || ally == "imperial")) {
-			continue;
-		}
-
-		if (!factionMap.contains(ally))
-			continue;
-
-		const Faction& allyFaction = factionMap.get(ally);
-
-		if (!allyFaction.isPlayerAllowed())
-			continue;
-
-		ghost->decreaseFactionStanding(ally, lose);
-	}
-
 	bool gcw = false;
+
 	if (factionName == "rebel" || factionName == "imperial") {
 		gcw = true;
 	}
@@ -149,6 +128,27 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 			continue;
 
 		ghost->increaseFactionStanding(enemy, gain);
+	}
+
+	ghost->decreaseFactionStanding(factionName, lose);
+
+	//Lose faction standing to allies of the creature.
+	for (int i = 0; i < allies->size(); ++i) {
+		const String& ally = allies->get(i);
+
+		if ((ally == "rebel" || ally == "imperial")) {
+			continue;
+		}
+
+		if (!factionMap.contains(ally))
+			continue;
+
+		const Faction& allyFaction = factionMap.get(ally);
+
+		if (!allyFaction.isPlayerAllowed())
+			continue;
+
+		ghost->decreaseFactionStanding(ally, lose);
 	}
 }
 
