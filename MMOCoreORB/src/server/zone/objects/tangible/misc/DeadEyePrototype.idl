@@ -1,0 +1,64 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.misc;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+include templates.tangible.DotPackTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+
+@json
+class DeadEyePrototype extends TangibleObject {
+	protected int effectiveness;
+	protected int duration;
+
+	public DeadEyePrototype() {
+		duration = 0;
+		effectiveness = 0;
+
+		setLoggingName("DeadEyePrototype");
+	}
+
+	@local
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
+		effectiveness = values.getCurrentValue("power");
+		setUseCount(values.getCurrentValue("charges"));
+		duration = values.getCurrentValue("duration");
+	}
+
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+
+		if (!templateData.isDotPackTemplate())
+			return;
+
+		DotPackTemplate dotPackTemplate = (DotPackTemplate) templateData;
+
+		effectiveness = dotPackTemplate.getEffectiveness();
+		duration = dotPackTemplate.getDuration();
+	}
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject player);
+
+	@preLocked
+	@arg1preLocked
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+}

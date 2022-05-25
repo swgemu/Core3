@@ -92,6 +92,7 @@ namespace scene {
 		int setContainerDefaultDenyPermission(lua_State* L);
 		int clearContainerDefaultDenyPermission(lua_State* L);
 		int setContainerOwnerID(lua_State* L);
+		int setContainerLockedStatus(lua_State* L);
 		int setObjectName(lua_State* L);
 		int isASubChildOf(lua_State* L);
 		int isOwned(lua_State* L);
