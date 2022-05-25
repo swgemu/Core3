@@ -5,49 +5,7 @@ coa3LeiaConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
-init_default = ConvoScreen:new {
-	id = "init_default",
-	leftDialog = "@conversation/coa3wcoolguy:s_a3621ded", -- I'm sorry, but we are very busy right now. If you want to help, you should go find one of our Coordinators.
-	stopConversation = "true",
-	options = {}
-}
-coa3LeiaConvoTemplate:addScreen(init_default);
-
-init_in_progress = ConvoScreen:new {
-	id = "init_in_progress",
-	leftDialog = "@conversation/coa3wcoolguy:s_a4053724", -- Did you complete the mission yet?
-	stopConversation = "false",
-	options = {
-		{"@conversation/coa3wcoolguy:s_83b68081", "good_luck_then"}, -- Not yet. I'm working on it.
-		{"@conversation/coa3wcoolguy:s_dc616180", "datapad_troubles"}, -- I need to get a new assignment, that last one had a bad waypoint.
-		{"@conversation/coa3wcoolguy:s_6428dedb", "sorry_to_hear"}, -- I can't complete this mission right now.
-	}
-}
-coa3LeiaConvoTemplate:addScreen(init_in_progress);
-
-good_luck_then = ConvoScreen:new {
-	id = "good_luck_then",
-	leftDialog = "@conversation/coa3wcoolguy:s_cf3aed9b", -- Good luck then. Come back when you're done.
-	stopConversation = "true",
-	options = {}
-}
-coa3LeiaConvoTemplate:addScreen(good_luck_then);
-
-datapad_troubles = ConvoScreen:new {
-	id = "datapad_troubles",
-	leftDialog = "@conversation/coa3wcoolguy:s_bb33eb73", -- Datapad troubles? That happens. I'll upload a new waypoint to your pad. Good luck.
-	stopConversation = "true",
-	options = {}
-}
-coa3LeiaConvoTemplate:addScreen(datapad_troubles);
-
-init_completed_everything = ConvoScreen:new {
-	id = "init_default",
-	leftDialog = "@conversation/coa3wcoolguy:s_c500ae34", -- The Rebellion owes you a debt of thanks. If we are able to finish this research, we will be able to replace the Alderaanian Flora with a suitable alternative and bring Dead Eye to our troops. While the Tactical Officers might have more missions to collect flora, we have asked all of you that we can. You have my personal thanks. May the Force be with you.
-	stopConversation = "true",
-	options = {}
-}
-coa3LeiaConvoTemplate:addScreen(init_default);
+-- Sent from coordinator
 
 init_sent_by_coordinator = ConvoScreen:new {
 	id = "init_sent_by_coordinator",
@@ -91,6 +49,56 @@ research_stations = ConvoScreen:new {
 	options = {}
 }
 coa3LeiaConvoTemplate:addScreen(research_stations);
+
+-- Accepted Mission to go to Facility
+
+init_in_progress = ConvoScreen:new {
+	id = "init_in_progress",
+	leftDialog = "@conversation/coa3wcoolguy:s_a4053724", -- Did you complete the mission yet?
+	stopConversation = "false",
+	options = {
+		{"@conversation/coa3wcoolguy:s_83b68081", "good_luck_then"}, -- Not yet. I'm working on it.
+		{"@conversation/coa3wcoolguy:s_dc616180", "datapad_troubles"}, -- I need to get a new assignment, that last one had a bad waypoint.
+		{"@conversation/coa3wcoolguy:s_6428dedb", "sorry_to_hear"}, -- I can't complete this mission right now.
+	}
+}
+coa3LeiaConvoTemplate:addScreen(init_in_progress);
+
+good_luck_then = ConvoScreen:new {
+	id = "good_luck_then",
+	leftDialog = "@conversation/coa3wcoolguy:s_cf3aed9b", -- Good luck then. Come back when you're done.
+	stopConversation = "true",
+	options = {}
+}
+coa3LeiaConvoTemplate:addScreen(good_luck_then);
+
+datapad_troubles = ConvoScreen:new {
+	id = "datapad_troubles",
+	leftDialog = "@conversation/coa3wcoolguy:s_bb33eb73", -- Datapad troubles? That happens. I'll upload a new waypoint to your pad. Good luck.
+	stopConversation = "true",
+	options = {}
+}
+coa3LeiaConvoTemplate:addScreen(datapad_troubles);
+
+-- Finished CoA3 Story Line
+
+init_completed_everything = ConvoScreen:new {
+	id = "init_default",
+	leftDialog = "@conversation/coa3wcoolguy:s_c500ae34", -- The Rebellion owes you a debt of thanks. If we are able to finish this research, we will be able to replace the Alderaanian Flora with a suitable alternative and bring Dead Eye to our troops. While the Tactical Officers might have more missions to collect flora, we have asked all of you that we can. You have my personal thanks. May the Force be with you.
+	stopConversation = "true",
+	options = {}
+}
+coa3LeiaConvoTemplate:addScreen(init_default);
+
+-- Generic Response
+
+init_default = ConvoScreen:new {
+	id = "init_default",
+	leftDialog = "@conversation/coa3wcoolguy:s_a3621ded", -- I'm sorry, but we are very busy right now. If you want to help, you should go find one of our Coordinators.
+	stopConversation = "true",
+	options = {}
+}
+coa3LeiaConvoTemplate:addScreen(init_default);
 
 sorry_to_hear = ConvoScreen:new {
 	id = "sorry_to_hear",
