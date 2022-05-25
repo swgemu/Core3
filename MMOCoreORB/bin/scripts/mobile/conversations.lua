@@ -83,6 +83,14 @@ includeFile("conversations/events/coa/rebel_coordinator_conv.lua")
 includeFile("conversations/events/coa/rebel_lyda_conv.lua")
 includeFile("conversations/events/coa/rebel_sympathizer_conv.lua")
 
+--Coa3
+includeFile("conversations/events/coa/coa3_info_officer_conv.lua")
+includeFile("conversations/events/coa/coa3_lookout_conv.lua")
+includeFile("conversations/events/coa/coa3_caravan_leader_conv.lua")
+includeFile("conversations/events/coa/coa3_tactical_officer_conv.lua")
+includeFile("conversations/events/coa/coa3_leia_conv.lua")
+includeFile("conversations/events/coa/coa3_veers_conv.lua")
+
 -- Hero of Tat
 includeFile("conversations/tasks/hero_of_tatooine/hermit_conv.lua")
 includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_bounty_hunter_conv.lua")

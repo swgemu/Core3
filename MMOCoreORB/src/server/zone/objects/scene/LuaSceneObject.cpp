@@ -13,6 +13,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
 #include "engine/lua/LuaPanicException.h"
+#include "server/zone/objects/tangible/Container.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";
 
@@ -78,6 +79,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "setContainerDefaultDenyPermission", &LuaSceneObject::setContainerDefaultDenyPermission },
 		{ "clearContainerDefaultDenyPermission", &LuaSceneObject::clearContainerDefaultDenyPermission },
 		{ "setContainerOwnerID", &LuaSceneObject::setContainerOwnerID },
+		{ "setContainerLockedStatus", &LuaSceneObject::setContainerLockedStatus },
 		{ "setObjectName", &LuaSceneObject::setObjectName },
 		{ "isASubChildOf", &LuaSceneObject::isASubChildOf },
 		{ "isOwned", &LuaSceneObject::isOwned },
@@ -718,6 +720,31 @@ int LuaSceneObject::setContainerOwnerID(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->setContainerOwnerID(ownerID);
+
+	return 0;
+}
+
+int LuaSceneObject::setContainerLockedStatus(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in setContainerLockedStatus in LuaSceneObject.";
+		return 0;
+	}
+
+	bool status = lua_toboolean(L, -1);
+
+	if (!realObject->isContainerObject())
+		return 0;
+
+	ManagedReference<Container*> container = realObject.castTo<Container*>();
+
+	if (container == nullptr)
+		return 0;
+
+	Locker locker(container);
+
+	container->setLockedStatus(status);
 
 	return 0;
 }

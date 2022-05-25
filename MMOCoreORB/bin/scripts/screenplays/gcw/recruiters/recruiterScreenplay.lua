@@ -8,7 +8,7 @@ recruiterScreenplay = Object:new {
 
 	errorCodes =  {
 		SUCCESS = 0, INVENTORYFULL = 1,  NOTENOUGHFACTION = 2, GENERALERROR = 3, ITEMCOST = 4, INVENTORYERROR = 5,
-		TEMPLATEPATHERROR = 6, GIVEERROR = 7, DATAPADFULL = 8, DATAPADERROR = 9, TOOMANYHIRELINGS = 10,
+		TEMPLATEPATHERROR = 6, GIVEERROR = 7, DATAPADFULL = 8, DATAPADERROR = 9, TOOMANYHIRELINGS = 10, SCHEMATICERROR = 11,
 	}
 }
 
@@ -144,6 +144,11 @@ function recruiterScreenplay:isInstallation(faction, strItem)
 	return factionRewardData.installations[strItem] ~= nil and factionRewardData.installations[strItem].type == factionRewardType.installation
 end
 
+function recruiterScreenplay:isSchematic(faction, strItem)
+	local factionRewardData = self:getFactionDataTable(faction)
+	return factionRewardData.schematic[strItem] ~= nil
+end
+
 function recruiterScreenplay:getWeaponsArmorOptions(faction, gcwDiscount, smugglerDiscount)
 	local optionsTable = { }
 	local factionRewardData = self:getFactionDataTable(faction)
@@ -192,6 +197,34 @@ function recruiterScreenplay:getHirelingsOptions(faction, gcwDiscount, smugglerD
 	return optionsTable
 end
 
+function recruiterScreenplay:getSchematicOptions(faction, gcwDiscount, smugglerDiscount)
+	local optionsTable = { }
+	local factionRewardData = self:getFactionDataTable(faction)
+	local coaWinningFaction = CriesOfAlderaan:getWinningFaction()
+	local winningFactionString
+
+	if (coaWinningFaction == FACTIONIMPERIAL) then
+		winningFactionString = "imperial"
+	else
+		winningFactionString = "rebel"
+	end
+
+	for k,v in pairs(factionRewardData.schematicList) do
+		if (factionRewardData.schematic[v] ~= nil and factionRewardData.schematic[v].display ~= nil and factionRewardData.schematic[v].cost ~= nil) then
+
+			if ((faction ~= winningFactionString) and (factionRewardData.schematicList[k] == "dead_eye_prototype")) then
+				goto skip
+			end
+
+			local option = {self:generateSuiString(factionRewardData.schematic[v].display, math.ceil(factionRewardData.schematic[v].cost * gcwDiscount * smugglerDiscount)), 0}
+			table.insert(optionsTable, option)
+
+			::skip::
+		end
+	end
+	return optionsTable
+end
+
 function recruiterScreenplay:getUniformsOptions(faction, gcwDiscount, smugglerDiscount)
 	local optionsTable = { }
 	local factionRewardData = self:getFactionDataTable(faction)
@@ -220,6 +253,8 @@ function recruiterScreenplay:getItemCost(faction, itemString)
 		return factionRewardData.installations[itemString].cost
 	elseif self:isHireling(faction, itemString) and factionRewardData.hirelings[itemString].cost ~= nil then
 		return factionRewardData.hirelings[itemString].cost
+	elseif self:isSchematic(faction, itemString) and factionRewardData.schematic[itemString].cost ~= nil then
+		return factionRewardData.schematic[itemString].cost
 	end
 	return nil
 end
@@ -236,6 +271,8 @@ function recruiterScreenplay:getTemplatePath(faction, itemString)
 		return factionRewardData.installations[itemString].item
 	elseif self:isHireling(faction, itemString) then
 		return factionRewardData.hirelings[itemString].item
+	elseif self:isSchematic(faction, itemString) then
+		return factionRewardData.schematic[itemString].item
 	end
 	return nil
 end
@@ -311,6 +348,8 @@ function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
 		options = self:getUniformsOptions(faction, gcwDiscount, smugglerDiscount)
 	elseif screenID == "fp_hirelings" then
 		options = self:getHirelingsOptions(faction, gcwDiscount, smugglerDiscount)
+	elseif screenID == "fp_schematics" then
+		options = self:getSchematicOptions(faction, gcwDiscount, smugglerDiscount)
 	end
 
 	suiManager:sendListBox(pNpc, pPlayer, "@faction_recruiter:faction_purchase", "@faction_recruiter:select_item_purchase", 2, "@cancel", "", "@ok", "recruiterScreenplay", "handleSuiPurchase", 32, options)
@@ -346,6 +385,8 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0
 
 	if (self:isHireling(faction, itemString)) then
 		awardResult = self:awardData(pCreature, faction, itemString)
+	elseif (self:isSchematic(faction, itemString)) then
+		awardResult = self:awardSchematic(pCreature, faction, itemString)
 	else
 		awardResult = self:awardItem(pCreature, faction, itemString)
 	end
@@ -369,6 +410,8 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0
 		CreatureObject(pCreature):sendSystemMessage("Error finding location to put item. Please post a report.")
 	elseif (awardResult == self.errorCodes.TEMPLATEPATHERROR) then
 		CreatureObject(pCreature):sendSystemMessage("Error determining data for item. Please post a bug report regarding the item you attempted to purchase..")
+	elseif (awardResult == self.errorCodes.SCHEMATICERROR) then
+		CreatureObject(pCreature):sendSystemMessage("@loot_schematic:already_have_schematic")
 	end
 end
 
@@ -453,6 +496,50 @@ function recruiterScreenplay:toTitleCase(str)
 		table.insert(buf, string.upper(first) .. string.lower(rest))
 	end
 	return table.concat(buf, " ")
+end
+
+function recruiterScreenplay:awardSchematic(pPlayer, faction, itemString)
+	if (pPlayer == nil) then
+		return self.errorCodes.GENERALERROR
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return self.errorCodes.DATAPADERROR
+	end
+
+	local factionStanding = PlayerObject(pGhost):getFactionStanding(faction)
+	local itemCost = self:getItemCost(faction, itemString)
+
+	if itemCost == nil then
+		return self.errorCodes.ITEMCOST
+	end
+
+	itemCost = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
+
+	if factionStanding < (itemCost + self.minimumFactionStanding) then
+		return self.errorCodes.NOTENOUGHFACTION
+	end
+
+	local templatePath = self:getTemplatePath(faction, itemString)
+
+	-- add schematic
+	local transferSchem = PlayerObject(pGhost):addRewardedSchematic(tostring(templatePath), 2, 1, true)
+
+	if (not transferSchem) then
+		return self.errorCodes.SCHEMATICERROR
+	end
+
+	local factionRewardData = self:getFactionDataTable(faction)
+	local messageString = LuaStringIdChatParameter("@loot_schematic:skill_granted")
+
+	messageString:setTO(getStringId(factionRewardData.schematic[itemString].display))
+	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+
+	PlayerObject(pGhost):decreaseFactionStanding(faction, itemCost)
+
+	return self.errorCodes.SUCCESS
 end
 
 function recruiterScreenplay:awardData(pPlayer, faction, itemString)
@@ -595,6 +682,8 @@ function recruiterScreenplay:getItemListTable(faction, screenID)
 		return dataTable.uniformList
 	elseif screenID == "fp_hirelings" then
 		return dataTable.hirelingList
+	elseif screenID == "fp_schematics" then
+		return dataTable.schematicList
 	end
 end
 

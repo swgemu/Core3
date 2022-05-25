@@ -1790,6 +1790,13 @@ int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, Creatur
 		}
 	}
 
+	// Add Dead Eye Prototype bonus
+	if (creoAttacker->isPlayerCreature() && creoAttacker->hasBuff(STRING_HASHCODE("dead_eye"))) {
+		uint32 deadEyeBonus = creoAttacker->getSkillModFromBuffs("dead_eye");
+
+		attackerAccuracy += (deadEyeBonus / 100.0f) * attackerAccuracy;
+	}
+
 	if (attackerAccuracy == 0)
 		attackerAccuracy = -15; // unskilled penalty, TODO: this might be -50 or -125, do research
 

@@ -422,7 +422,7 @@ faction_purchase = ConvoScreen:new {
 		{ "@conversation/faction_recruiter_imperial:s_328", "fp_installations" }, -- I need a base of operations.
 		{ "@conversation/faction_recruiter_imperial:s_332", "fp_uniforms"}, -- I need a new uniform.
 		{ "@conversation/faction_recruiter_imperial:s_336", "fp_weapons_armor" }, -- I need personal protection and armament.
-		--{ "@conversation/faction_recruiter_imperial:s_340", "fp_schematics" }, -- I want to see what schematics you have.
+		{ "@conversation/faction_recruiter_imperial:s_340", "fp_schematics" }, -- I want to see what schematics you have.
 		{ "@conversation/faction_recruiter_imperial:s_344", "fp_furniture"}, -- Furniture. I am improving my quality of my life.
 		{ "@conversation/faction_recruiter_imperial:s_348", "fp_hirelings" }, -- I would like to requisition additional troops.
 	},
