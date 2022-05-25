@@ -76,7 +76,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 			ghost->unloadSpawnedChildren();
 		}
 
-		player->notifyObservers(ObserverEventType::ZONESWITCHED);
+		player->notifyObservers(ObserverEventType::ZONESWITCHED, nullptr, newTerrainName.hashCode());
 	}
 
 	ZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);

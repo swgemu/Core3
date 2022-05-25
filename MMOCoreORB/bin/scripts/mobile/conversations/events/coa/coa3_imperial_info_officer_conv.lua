@@ -1,7 +1,7 @@
 coa3ImperialInfoOfficerConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "coa3ImperialInfoOfficerConvoHandler",
+	luaClassHandler = "coa3InfoOfficerConvoHandler",
 	screens = {}
 }
 
