@@ -757,6 +757,7 @@ class PlayerObject extends IntangibleObject {
 	 * @param amount The float amount of faction points to add.
 	 */
 	public native void increaseFactionStanding(final string factionName, float amount);
+	public native void giveCoaBonus(final string factionName, float amount, float currentStanding);
 	public native void decreaseFactionStanding(final string factionName, float amount);
 	public native void setFactionStanding(final string factionName, float amount);
 
@@ -1250,6 +1251,10 @@ class PlayerObject extends IntangibleObject {
 
 	public void setBadge(unsigned int badge) {
 		badges.setBadge(badge);
+	}
+
+	public void revokeBadge(unsigned int badge) {
+		badges.unsetBadge(badge);
 	}
 
 	public native void awardBadge(unsigned int badge);

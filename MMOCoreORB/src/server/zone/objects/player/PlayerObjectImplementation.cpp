@@ -1771,9 +1771,14 @@ void PlayerObjectImplementation::increaseFactionStanding(const String& factionNa
 	if (amount < 0)
 		return; //Don't allow negative values to be sent to this method.
 
-	CreatureObject* player = cast<CreatureObject*>( parent.get().get());
+	CreatureObject* player = cast<CreatureObject*>(parent.get().get());
+
 	if (player == nullptr)
 		return;
+
+	uint32 factionHash = factionName.hashCode();
+	uint32 factionCRC = 0;
+	bool playerIsFaction = player->getFaction() == factionHash;
 
 	//Get the current amount of faction standing
 	float currentAmount = factionStandingList.getFactionStanding(factionName);
@@ -1783,10 +1788,16 @@ void PlayerObjectImplementation::increaseFactionStanding(const String& factionNa
 
 	if (!factionStandingList.isPvpFaction(factionName))
 		newAmount = Math::min(5000.f, newAmount);
-	else if (player->getFaction() == factionName.hashCode())
+	else if (playerIsFaction) {
+		if (factionHash == STRING_HASHCODE("rebel"))
+			factionCRC = Factions::FACTIONREBEL;
+		else if (factionHash == STRING_HASHCODE("imperial"))
+			factionCRC = Factions::FACTIONIMPERIAL;
+
 		newAmount = Math::min((float) FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
-	else
+	} else {
 		newAmount = Math::min(1000.f, newAmount);
+	}
 
 	factionStandingList.put(factionName, newAmount);
 
@@ -1801,8 +1812,37 @@ void PlayerObjectImplementation::increaseFactionStanding(const String& factionNa
 		if (change == 0)
 			msg.setStringId("@base_player:prose_max_faction");
 
-
 		player->sendSystemMessage(msg);
+
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		// Need to give Cries of Alderaan Faction Bonus only if they are not maxed already
+		if (change > 0 && playerIsFaction && (playerManager != nullptr && playerManager->getCoaWinningFaction() == factionCRC)) {
+			giveCoaBonus(factionName, amount, newAmount);
+		}
+	}
+}
+
+void PlayerObjectImplementation::giveCoaBonus(const String& factionName, float amount, float currentStanding) {
+	CreatureObject* player = cast<CreatureObject*>(parent.get().get());
+
+	if (player == nullptr)
+		return;
+
+	float bonus = amount * 0.1f;
+	float newStanding = bonus + currentStanding;
+
+	newStanding = Math::min((float) FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newStanding);
+
+	if (newStanding > 0) {
+		factionStandingList.put(factionName, newStanding);
+		int bonusApplied = floor(newStanding - currentStanding);
+
+		StringIdChatParameter coaBonus("@base_player:prose_coa_bonus");
+
+		coaBonus.setDI(bonusApplied);
+		coaBonus.setTO("@faction/faction_names:" + factionName);
+		player->sendSystemMessage(coaBonus);
 	}
 }
 

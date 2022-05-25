@@ -1,9 +1,10 @@
 coa3_lookout = Creature:new {
-	objectName = "",
 	customName = "a Lookout",
-	socialGroup = "self",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	mobType = MOB_NPC,
 	faction = "jabba",
+	socialGroup = "self",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,
@@ -24,7 +25,7 @@ coa3_lookout = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = KILLER,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_jabba_henchman.iff"},
@@ -44,9 +45,9 @@ coa3_lookout = Creature:new {
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "pirate_weapons_heavy",
-	secondaryWeapon = "unarmed",
-	conversationTemplate = "",
-	
+	secondaryWeapon = "none",
+	conversationTemplate = "coa3LookoutConvoTemplate",
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(brawlermid,marksmanmid),
