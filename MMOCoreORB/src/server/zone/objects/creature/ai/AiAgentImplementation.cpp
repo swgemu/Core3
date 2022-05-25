@@ -2707,7 +2707,7 @@ int AiAgentImplementation::setDestination() {
 
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
-		if (!(creatureBitmask & CreatureFlag::STATIONARY) && !homeLocation.isInRange(asAiAgent(), 1.0f)) {
+		if (!(creatureBitmask & CreatureFlag::EVENTCONTROL) && !(creatureBitmask & CreatureFlag::STATIONARY) && !homeLocation.isInRange(asAiAgent(), 1.0f)) {
 			homeLocation.setReached(false);
 			setMovementState(AiAgent::PATHING_HOME);
 		}
