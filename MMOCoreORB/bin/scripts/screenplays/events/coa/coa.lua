@@ -21,12 +21,18 @@ CriesOfAlderaan = ScreenPlay:new {
 		{"rebel_recruiter", "lok", -4749, 4, 3525.5, 113},
 		{"rebel_recruiter", "yavin4", -4237, 183, 2284.1, -165},
 	},
+
+	episodeOneEnabled = true,
+	episodeTwoEnabled = true,
+	episodeThreeEnabled = true,
+	skipToThree = true
 }
 
 registerScreenPlay("CriesOfAlderaan", true)
 
 function CriesOfAlderaan:start()
 	self:spawnStaticNpcs()
+	self:determineWinningFaction()
 end
 
 function CriesOfAlderaan:spawnStaticNpcs()
@@ -36,4 +42,93 @@ function CriesOfAlderaan:spawnStaticNpcs()
 			spawnMobile(npc[2], npc[1], 0, npc[3], npc[4], npc[5], npc[6], 0)
 		end
 	end
+end
+
+function CriesOfAlderaan:getState(pPlayer, stateName)
+	local state = readScreenPlayData(pPlayer, stateName, "state")
+
+	if (state == nil or state == "") then
+		return 0
+	end
+
+	return tonumber(state)
+end
+
+function CriesOfAlderaan:setState(pPlayer, stateName, val)
+	writeScreenPlayData(pPlayer, stateName, "state", val)
+end
+
+function CriesOfAlderaan:determineWinningFaction()
+	local time = os.time(os.date("*t"))
+	local checkTime = getQuestStatus("CriesOfAlderaan:winningFactionUpdate:")
+	local winningFaction = getQuestStatus("CriesOfAlderaan:winningFaction:")
+
+	if (checkTime == nil) then
+		checkTime = 0
+	else
+		checkTime = tonumber(checkTime)
+	end
+
+	local checkDelay = 604800 -- 1 week in seconds
+
+	if ((checkTime + checkDelay) > time) then
+		local timeDiff = (checkTime + checkDelay) - time + 10
+
+		Logger:logEvent("CriesofAlderaan:determinewinningFfaction -- rescheduled in " .. timeDiff .. " seconds", LT_INFO)
+
+		createEvent(timeDiff * 1000, "CriesOfAlderaan", "determineWinningFaction", nullptr, "")
+		return
+	end
+
+	if (winningFaction ~= nil) then
+		winningFaction = tonumber(winningFaction)
+	end
+
+	-- compare scores
+	local rebelScore = getQuestStatus("CriesOfAlderaan:rebelScore:")
+	local imperialScore = getQuestStatus("CriesOfAlderaan:imperialScore:")
+
+	if (rebelScore == nil) then
+		rebelScore = 0
+	else
+		rebelScore = tonumber(rebelScore)
+	end
+
+	if (imperialScore == nil) then
+		imperialScore = 0
+	else
+		imperialScore = tonumber(imperialScore)
+	end
+
+	if (imperialScore > rebelScore) then
+		winningFaction = FACTIONIMPERIAL
+	elseif (rebelScore > imperialScore) then
+		winningFaction = FACTIONREBEL
+	else
+		local randScore = getRandomNumber(100)
+
+		if (randScore > 50) then
+			winningFaction = FACTIONREBEL
+		else
+			winningFaction = FACTIONIMPERIAL
+		end
+	end
+
+	Logger:logEvent("CriesofAlderaan:determineWinningFaction -- Set Winning Faction " .. winningFaction, LT_INFO)
+
+	setQuestStatus("CriesOfAlderaan:winningFaction:", winningFaction)
+	setCoaWinningFaction(winningFaction)
+
+	setQuestStatus("CriesOfAlderaan:winningFactionUpdate:", time)
+	createEvent(checkDelay * 1000, "CriesOfAlderaan", "determineWinningFaction", nullptr, "")
+end
+
+function CriesOfAlderaan:getWinningFaction()
+	local winningFaction = getQuestStatus("CriesOfAlderaan:winningFaction:")
+
+	if (winningFaction == nil or winningFaction == 0) then
+		return 0
+	end
+
+	return winningFaction
 end

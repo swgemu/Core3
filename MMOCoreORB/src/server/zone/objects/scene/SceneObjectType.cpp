@@ -123,6 +123,7 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case FSCRAFTINGCOMPONENT:		return "@got_n:misc";
 		case FSCSOBJECT:				return "@got_n:misc";
 		case FSBUFFITEM:				return "@got_n:misc";
+		case DEADEYEPROTOTYPE:			return "@got_n:misc";
 		case CONTRACTCRATE:				return "@got_n:misc";
 		case TERMINAL:					return "@got_n:terminal";
 		case BANK:						return "@got_n:terminal_bank";
