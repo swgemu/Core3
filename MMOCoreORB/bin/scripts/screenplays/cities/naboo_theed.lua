@@ -180,6 +180,8 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 		{"trainer_musician",0,23.8,2.12801,54,28,5475486, ""},
 		{"vendor",60,-11.5446,2.12878,76.8966,179.996,5475487, "happy"},
 		{"trainer_imagedesigner",0,-22.9,2.1287,74.7,121,5475488, ""},
+		
+		{"coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,1692083, "npc_imperial"},
 
 		--Starport
 		{"trainer_shipwright",0,0.2,0.7,-71.4,-177,1692101, "conversation"},

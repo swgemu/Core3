@@ -230,6 +230,7 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 
 		-- Guild Hall -177 -4390
 		{"trainer_artisan",0,0,1.13306,-14,0,1855517, ""},
+		{"coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,1855516, "calm"},
 
 		-- Med Center
 		{"trainer_combatmedic",0,26.676,0.26,5.41823,85,1855531, ""},
@@ -247,6 +248,7 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 		{"trainer_droidengineer",0,-11,1.13306,-14,0,1855528, ""},
 		{"trainer_merchant",0,12.1,1.1,5.8,177,1855524, ""},
 		{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1855527, ""},
+		{"coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,1855526, "calm"},
 
 		-- Capitol
 		{"noble",60,5.22842,0.3,2.91677,0,1855463, "conversation"},

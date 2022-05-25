@@ -24,7 +24,7 @@ coa3_caravan_leader = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD + KILLER,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_gran_thug_male_01.iff",
@@ -44,8 +44,8 @@ coa3_caravan_leader = Creature:new {
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "pirate_weapons_heavy",
 	secondaryWeapon = "unarmed",
-	conversationTemplate = "",
-	
+	conversationTemplate = "caravan_leader_conv_handler",
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(brawlermaster,marksmanmaster),

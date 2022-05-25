@@ -21,12 +21,18 @@ CriesOfAlderaan = ScreenPlay:new {
 		{"rebel_recruiter", "lok", -4749, 4, 3525.5, 113},
 		{"rebel_recruiter", "yavin4", -4237, 183, 2284.1, -165},
 	},
+
+	episodeOneEnabled = true,
+	episodeTwoEnabled = true,
+	episodeThreeEnabled = true,
+	skipToThree = true
 }
 
 registerScreenPlay("CriesOfAlderaan", true)
 
 function CriesOfAlderaan:start()
 	self:spawnStaticNpcs()
+	self:determineWinningFaction()
 end
 
 function CriesOfAlderaan:spawnStaticNpcs()
@@ -36,4 +42,80 @@ function CriesOfAlderaan:spawnStaticNpcs()
 			spawnMobile(npc[2], npc[1], 0, npc[3], npc[4], npc[5], npc[6], 0)
 		end
 	end
+end
+
+function CriesOfAlderaan:getState(pPlayer, stateName)
+	local state = readScreenPlayData(pPlayer, stateName, "state")
+
+	if (state == nil or state == "") then
+		return 0
+	end
+
+	return tonumber(state)
+end
+
+function CriesOfAlderaan:setState(pPlayer, stateName, val)
+	printf("writing state: " .. stateName .. "\n")
+	printf("val: " .. val .. "\n")
+
+	writeScreenPlayData(pPlayer, stateName, "state", val)
+end
+
+function CriesOfAlderaan:determineWinningFaction()
+	-- check against timer if we should update winning faction or not
+
+	-- TODO: add timer
+
+	local winningFaction = getQuestStatus("CriesOfAlderaan:winningFaction:")
+
+	if (winningFaction == nil or winningFaction == 0) then
+		local roll = getRandomNumber(2)
+
+		if (roll == 1) then
+			winningFaction = FACTIONREBEL
+		else
+			winningFaction = FACTIONIMPERIAL
+		end
+
+		setQuestStatus("CriesOfAlderaan:winningFaction:", winningFaction)
+		setCoaWinningFaction(winningFaction)
+		return
+	else
+		-- compare scores here
+		local rebelScore = getQuestStatus("CriesOfAlderaan:rebelScore:")
+		local imperialScore = getQuestStatus("CriesOfAlderaan:imperialScore:")
+
+		if (rebelScore == nil) then
+			rebelScore = 0
+		elseif (imperialScore == nil) then
+			imperialScore = 0
+		end
+
+		if (imperialScore > rebelScore) then
+			winningFaction = FACTIONIMPERIAL
+		elseif (rebelScore > imperialScore) then
+			winningFaction = FACTIONREBEL
+		else
+			local randScore = getRandomNumber(100)
+
+			if (randScore > 50) then
+				winningFaction = FACTIONREBEL
+			else
+				winningFaction = FACTIONIMPERIAL
+			end
+		end
+
+		setQuestStatus("CriesOfAlderaan:winningFaction:", winningFaction)
+		setCoaWinningFaction(winningFaction)
+	end
+end
+
+function CriesOfAlderaan:getWinningFaction()
+	local winningFaction = getQuestStatus("CriesOfAlderaan:winningFaction:")
+
+	if (winningFaction == nil or winningFaction == 0) then
+		return 0
+	end
+
+	return winningFaction
 end

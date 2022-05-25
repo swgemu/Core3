@@ -7,17 +7,65 @@ function rebelCoordinatorConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTempl
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
+
+	-- Quest Reset:
+	--CriesOfAlderaan:setState(pPlayer, "coa3_rebel", 0)
+
+
 	if TangibleObject(pPlayer):isImperial() then
 		return convoTemplate:getScreen("begin_wrong_faction")
-	elseif pGhost == nil or not PlayerObject(pGhost):hasBadge(EVENT_PROJECT_DEAD_EYE_1) then
+	elseif pGhost == nil or (not PlayerObject(pGhost):hasBadge(EVENT_PROJECT_DEAD_EYE_1) and not CriesOfAlderaan.skipToThree) then
 		return convoTemplate:getScreen("generic_response")
 	end
 
-	if (not PlayerObject(pGhost):hasBadge(EVENT_COA2_REBEL)) then
-		-- CoA2
-		local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
-		
-		if state == nil then
+	local append = "_w"
+
+	if (CriesOfAlderaan:getWinningFaction() == FACTIONIMPERIAL) then
+		append = "_l"
+	end
+
+	-- Has coa3 badge already
+	if (PlayerObject(pGhost):hasBadge(EVENT_COA3_REBEL)) then
+		return convoTemplate:getScreen("coa3_init_complete" .. append)
+
+	-- CoA3 Conversations: Has CoA2 badge or skipToThree is true
+	elseif (PlayerObject(pGhost):hasBadge(EVENT_COA2_REBEL) or CriesOfAlderaan.skipToThree) then
+
+		if (not CriesOfAlderaan.episodeThreeEnabled) then
+			return convoTemplate:getScreen("generic_response")
+		end
+
+		local state = CriesOfAlderaan:getState(pPlayer, "coa3_rebel")
+
+		print("state: " .. state .. " with append " .. append)
+
+		if state == 0 then
+			return convoTemplate:getScreen("coa3_init" .. append)
+		elseif (state == Coa3Screenplay.PRE_INFO_OFFICER) then
+			return convoTemplate:getScreen("coa3_init_go_to_info" .. append)
+		elseif (state == Coa3Screenplay.PRE_RETURN) then
+			return convoTemplate:getScreen("coa3_init_completed_info" .. append)
+		elseif (state >= Coa3Screenplay.M1_FIND_LOOKOUT and state <= Coa3Screenplay.M2_RETURNED_UNIT and Coa3Screenplay:hasDisk(pPlayer)) then
+			return convoTemplate:getScreen("coa3_init_has_disk")
+		elseif (state >= Coa3Screenplay.M1_FIND_LOOKOUT and state <= Coa3Screenplay.M2_RETURNED_UNIT and not Coa3Screenplay:hasDisk(pPlayer)) then
+			return convoTemplate:getScreen("coa3_init_has_lookout" .. append)
+		elseif (state >= Coa3Screenplay.M3_TACTICAL_OFFICER and state <= Coa3Screenplay.M3_WAREHOUSE_DESTROYED) then
+			return convoTemplate:getScreen("coa3_init_go_to_tact" .. append)
+		elseif (state == Coa3Screenplay.M3_COMPLETE) then
+			return convoTemplate:getScreen("coa3_init_completed_tact" .. append)
+		elseif (state >= Coa3Screenplay.M4_CELEBRITY) then
+			return convoTemplate:getScreen("coa3_init_go_to_princess" .. append)
+		end
+
+	-- CoA2 Conversations
+	else
+		if (not CriesOfAlderaan.episodeTwoEnabled) then
+			return convoTemplate:getScreen("generic_response")
+		end
+
+		local state = CriesOfAlderaan:getState(pPlayer, "rebel_coa2")
+
+		if state == 0 then
 			return convoTemplate:getScreen("coa2_m1_begin")
 		elseif state == Coa2Screenplay.M1_REFUSED then
 			return convoTemplate:getScreen("coa2_m1_refused")
@@ -56,9 +104,20 @@ function rebelCoordinatorConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTempl
 end
 
 function rebelCoordinatorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	if (pPlayer == nil) then
+		return
+	end
+
 	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
+	local append = "_w"
+
+	if (CriesOfAlderaan:getWinningFaction() == FACTIONIMPERIAL) then
+		append = "_l"
+	end
+
+	-- CoA2
 	if screenID == "coa2_m1_begin_no" then
 		writeScreenPlayData(pPlayer, "rebel_coa2", "state", Coa2Screenplay.M1_REFUSED)
 	elseif screenID == "coa2_m1_begin_yes" or screenID == "coa2_m1_refused_yes" then
@@ -97,6 +156,17 @@ function rebelCoordinatorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, 
 	elseif screenID == "coa2_m3_active_restart" then
 		Coa2Screenplay:cleanupMission(pPlayer)
 		Coa2Screenplay:startMissionThree(pPlayer, pNpc, "rebel")
+
+	-- CoA3
+	elseif (screenID == ("coa3_give_you_report" .. append)) then
+		CriesOfAlderaan:setState(pPlayer, "coa3_rebel", Coa3Screenplay.PRE_INFO_OFFICER)
+	elseif screenID == ("coa3_pose_as_them" .. append) or screenID == ("coa3_uploaded_lookout_location" .. append) then
+		CriesOfAlderaan:setState(pPlayer, "coa3_rebel", Coa3Screenplay.M1_FIND_LOOKOUT)
+		Coa3Screenplay:setupMission(pPlayer, pNpc, "rebel", 1)
+	elseif screenID == "coa3_ran_into_trouble" then
+		Coa3Screenplay:setupMission(pPlayer, pNpc, "rebel", 1)
+	elseif screenID == "coa3_come_back_later" then
+		Coa3Screenplay:abortMission(pPlayer, 1, false)
 	end
 
 	return pConvScreen
