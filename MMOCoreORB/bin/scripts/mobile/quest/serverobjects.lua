@@ -73,6 +73,8 @@ includeFile("quest/coa/coa3_tactical_rebel.lua")
 includeFile("quest/coa/coa3_warehouse_captain.lua")
 includeFile("quest/coa/coa3_warehouse_guard.lua")
 includeFile("quest/coa/coa3_warehouse_thug.lua")
+includeFile("quest/coa/coa3_leia_organa.lua")
+includeFile("quest/coa/coa3_veers.lua")
 
 -- Corellia
 includeFile("quest/corellia/aldalad.lua")

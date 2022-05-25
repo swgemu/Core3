@@ -1,5 +1,6 @@
 coa3_imperial_research_guard = Creature:new {
-	objectName = "",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "Imperial Research Guard",
 	socialGroup = "imperial",
 	mobType = MOB_NPC,
