@@ -1,7 +1,7 @@
 coa3RebelInfoOfficerConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "coa3RebelInfoOfficerConvoHandler",
+	luaClassHandler = "coa3InfoOfficerConvoHandler",
 	screens = {}
 }
 
@@ -34,8 +34,8 @@ situation_is_good = ConvoScreen:new {
 }
 coa3RebelInfoOfficerConvoTemplate:addScreen(situation_is_good);
 
-situation_is_good = ConvoScreen:new {
-	id = "situation_is_good",
+one_hurdle = ConvoScreen:new {
+	id = "one_hurdle",
 	leftDialog = "@conversation/coa3winfoofficer:s_e695be09", -- One hurdle we have not been able to overcome is the fact that the Dead Eye serum requires flora that only grew on Alderaan. Needless to say, the supplies of that flora are finite and very limited.
 	stopConversation = "false",
 	options = {
@@ -43,7 +43,7 @@ situation_is_good = ConvoScreen:new {
 		{"@conversation/coa3winfoofficer:s_7b8e8204", "didnt_mean_to_bore"}, -- I've heard enough.
 	}
 }
-coa3RebelInfoOfficerConvoTemplate:addScreen(situation_is_good);
+coa3RebelInfoOfficerConvoTemplate:addScreen(one_hurdle);
 
 produce_alternative = ConvoScreen:new {
 	id = "produce_alternative",

@@ -84,6 +84,8 @@ RoriNarmleScreenPlay = CityScreenPlay:new {
 		{"junk_dealer", 0, -14.1, 1.1, 2.8, 127, 4615372, ""},
 		{"junk_dealer", 0, -4981.81, 80, -2318.97, -176, 0, ""},
 
+		{"coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,2615383, "npc_imperial"},
+
 		--trainers
 		{"trainer_1hsword", 1, -5219, 80.6094, -2164, 0, 0, ""},
 		{"trainer_2hsword", 1, -5214, 80.4173, -2167, 0, 0, ""},

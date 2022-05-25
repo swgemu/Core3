@@ -164,6 +164,8 @@ TalusNashalScreenPlay = CityScreenPlay:new {
 
 		--Guild Hall 4291 5395
 		{"chiss_male",300,-14.01,1.13306,-8.53,120.004,4265407, ""},
+		
+		{"coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,4265395, "calm"},
 
 		--Hotel
 		{"farmer",60,-1.7,1,-2.5,37,4265422, "npc_sitting_chair"},

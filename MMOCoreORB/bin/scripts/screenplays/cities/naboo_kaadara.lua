@@ -116,6 +116,8 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 
 		--starport interior
 		{"chassis_dealer",60,6.3,0.6,65.8,-60,1741539, "neutral"},
+		
+		{"coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,1741509, "npc_imperial"},
 
 		--commoners
 		{"medic", 1, -3.5, -0.1, -3.3, 0, 1741514, ""},
