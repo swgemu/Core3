@@ -40,7 +40,7 @@ function imperialCoordinatorConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTe
 		end
 	else
 		-- CoA3
-		local state = tonumber(readScreenPlayData(pPlayer, "imperial_coa3", "state"))
+		local state = tonumber(readScreenPlayData(pPlayer, "coa3_imperial", "state"))
 	end
 
 	return convoTemplate:getScreen("generic_response")
