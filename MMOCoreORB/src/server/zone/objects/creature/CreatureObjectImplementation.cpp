@@ -1390,49 +1390,17 @@ void CreatureObjectImplementation::addSkill(Skill* skill, bool notifyClient) {
 	}
 
 	if (skill->getSkillName().contains("_novice") && isPlayerCreature()) {
-		PlayerObject* ghost = getPlayerObject();
+		Zone* zone = getZone();
 
-		Locker lock(ghost);
+		if (zone != nullptr && zone->getZoneName() != "tutorial") {
+			PlayerObject* ghost = getPlayerObject();
 
-		if (ghost != nullptr && ghost->getCharacterAgeInDays() < 1) {
-			bool helperDroidSpawned = false;
+			Locker lock(ghost);
 
-			if (ghost->getActivePetsSize() > 0) {
-				for (int i = 0; i < ghost->getActivePetsSize(); i++) {
-					AiAgent* petAgent= ghost->getActivePet(i);
+			if (ghost != nullptr && ghost->getCharacterAgeInDays() < 1) {
+				bool helperDroidSpawned = false;
 
-					if (petAgent != nullptr && petAgent->isHelperDroidObject()) {
-						Reference<HelperDroidObject*> helperDroid = cast<HelperDroidObject*>(petAgent);
-
-						if (helperDroid != nullptr) {
-							Locker clock(helperDroid, ghost);
-							helperDroid->notifyHelperDroidSkillTrained(asCreatureObject(), skill->getSkillName());
-							helperDroidSpawned = true;
-						}
-					}
-				}
-			}
-
-			if (!helperDroidSpawned) {
-				Reference<Task*> createDroid = new SpawnHelperDroidTask(asCreatureObject());
-
-				if (createDroid != nullptr)
-					createDroid->execute();
-
-				Reference<CreatureObject*> creoRef = asCreatureObject();
-				Reference<Skill*> skillRef = skill;
-
-				Core::getTaskManager()->scheduleTask([creoRef, skillRef]{
-					PlayerObject* ghost = creoRef->getPlayerObject();
-
-					if (ghost == nullptr)
-						return;
-
-					Locker lock(ghost);
-
-					if (ghost->getActivePetsSize() == 0)
-						return;
-
+				if (ghost->getActivePetsSize() > 0) {
 					for (int i = 0; i < ghost->getActivePetsSize(); i++) {
 						AiAgent* petAgent= ghost->getActivePet(i);
 
@@ -1441,11 +1409,47 @@ void CreatureObjectImplementation::addSkill(Skill* skill, bool notifyClient) {
 
 							if (helperDroid != nullptr) {
 								Locker clock(helperDroid, ghost);
-								helperDroid->notifyHelperDroidSkillTrained(creoRef, skillRef->getSkillName());
+								helperDroid->notifyHelperDroidSkillTrained(asCreatureObject(), skill->getSkillName());
+								helperDroidSpawned = true;
 							}
 						}
 					}
-				}, "HelperDroidProfessionLambda", 2000);
+				}
+
+				if (!helperDroidSpawned) {
+					Reference<Task*> createDroid = new SpawnHelperDroidTask(asCreatureObject());
+
+					if (createDroid != nullptr)
+						createDroid->execute();
+
+					Reference<CreatureObject*> creoRef = asCreatureObject();
+					Reference<Skill*> skillRef = skill;
+
+					Core::getTaskManager()->scheduleTask([creoRef, skillRef]{
+						PlayerObject* ghost = creoRef->getPlayerObject();
+
+						if (ghost == nullptr)
+							return;
+
+						Locker lock(ghost);
+
+						if (ghost->getActivePetsSize() == 0)
+							return;
+
+						for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+							AiAgent* petAgent= ghost->getActivePet(i);
+
+							if (petAgent != nullptr && petAgent->isHelperDroidObject()) {
+								Reference<HelperDroidObject*> helperDroid = cast<HelperDroidObject*>(petAgent);
+
+								if (helperDroid != nullptr) {
+									Locker clock(helperDroid, ghost);
+									helperDroid->notifyHelperDroidSkillTrained(creoRef, skillRef->getSkillName());
+								}
+							}
+						}
+					}, "HelperDroidProfessionLambda", 2000);
+				}
 			}
 		}
 	}
