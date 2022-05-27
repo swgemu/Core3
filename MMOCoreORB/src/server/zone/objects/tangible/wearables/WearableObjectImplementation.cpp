@@ -65,8 +65,10 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm,
 		CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
-	if (socketsLeft() > 0)
-		alm->insertAttribute("sockets", socketsLeft());
+	int remainingSockets = getRemainingSockets();
+
+	if (remainingSockets > 0)
+		alm->insertAttribute("sockets", remainingSockets);
 
 	for(int i = 0; i < wearableSkillMods.size(); ++i) {
 		String key = wearableSkillMods.elementAt(i).getKey();
@@ -106,53 +108,59 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 
 	if (craftingValues != nullptr) {
 		ManagedReference<ManufactureSchematic*> manuSchematic = craftingValues->getManufactureSchematic();
-		if(manuSchematic != nullptr) {
+
+		if (manuSchematic != nullptr) {
 			ManagedReference<DraftSchematic*> draftSchematic = manuSchematic->getDraftSchematic();
 			ManagedReference<CreatureObject*> player = manuSchematic->getCrafter().get();
 
 			if (player != nullptr && draftSchematic != nullptr) {
 				String assemblySkill = draftSchematic->getAssemblySkill();
-				skill = player->getSkillMod(assemblySkill) * 2.5; // 0 to 250 max
-				luck = System::random(player->getSkillMod("luck")
-						+ player->getSkillMod("force_luck"));
+
+				skill = player->getSkillMod(assemblySkill);
+
+				if (MIN_SOCKET_MOD > skill)
+					return;
+
+				luck = System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
 			}
 		}
 	}
 
-	int random = (System::random(750)) - 250; // -250 to 500
+	skill -= MIN_SOCKET_MOD;
+	int bonusMod = 65 - skill;
 
-	float roll = System::random(skill + luck + random);
+	if (bonusMod <= 0) {
+		bonusMod = 0;
+	} else {
+		bonusMod = System::random(bonusMod);
+	}
 
-	int generatedCount = int(float(MAXSOCKETS * roll) / float(MAXSOCKETS * 100));
+	int skillAdjust = skill + System::random(luck) + bonusMod;
+	int maxMod = 65 + System::random(skill);
+
+	float randomSkill = System::random(skillAdjust) * 10;
+	float roll = randomSkill / (400.f + maxMod);
+
+	float generatedCount = roll * MAXSOCKETS;
 
 	if (generatedCount > MAXSOCKETS)
 		generatedCount = MAXSOCKETS;
-	if (generatedCount < 0)
-		generatedCount = 0;
+	else if (generatedCount > 3 && generatedCount <= 3.75f)
+		generatedCount = floor(generatedCount);
 
-	// TODO: remove this backwards compatibility fix at next wipe. Only usedSocketCount variable should be used.
-	objectCreatedPreUsedSocketCountFix = false;
 	usedSocketCount = 0;
-
-	socketCount = generatedCount;
+	socketCount = (int)generatedCount;
 
 	socketsGenerated = true;
-}
 
-int WearableObjectImplementation::socketsUsed() const {
-	// TODO: remove this backwards compatibility fix at next wipe. Only usedSocketCount variable should be used.
-	if (objectCreatedPreUsedSocketCountFix) {
-		return wearableSkillMods.size() - modsNotInSockets;
-	} else {
-		return usedSocketCount;
-	}
+	return;
 }
 
 void WearableObjectImplementation::applyAttachment(CreatureObject* player, Attachment* attachment) {
 	if (!isASubChildOf(player))
 		return;
 
-	if (socketsLeft() > 0 && wearableSkillMods.size() < 6) {
+	if (getRemainingSockets() > 0 && wearableSkillMods.size() < 6) {
 		Locker locker(player);
 
 		if (isEquipped()) {
