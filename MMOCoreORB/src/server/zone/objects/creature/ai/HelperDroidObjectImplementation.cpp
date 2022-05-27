@@ -52,7 +52,7 @@ int HelperDroidObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 			return 0;
 		}
 
-		if (selectedID >= 111 && selectedID <= 115) {
+		if (selectedID >= 111 && selectedID <= 116) {
 			// Quests called from Lua Here
 			Reference<LuaFunction*> luaProfessionQuest = lua->createFunction("HelperDroid", "professionQuest", 0);
 

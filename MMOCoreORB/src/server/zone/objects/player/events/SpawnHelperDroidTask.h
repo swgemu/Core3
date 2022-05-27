@@ -50,10 +50,8 @@ public:
 		Locker plock(playerCreo);
 
 		SceneObject* datapad = playerCreo->getSlottedObject("datapad");
-		PlayerManager* playerManager = zoneServer->getPlayerManager();
-		ObjectManager* objectManager = zoneServer->getObjectManager();
 
-		if (datapad == nullptr || playerManager == nullptr || objectManager == nullptr) {
+		if (datapad == nullptr) {
 			return;
 		}
 
@@ -123,6 +121,8 @@ public:
 		controlDevice->setObjectName(s, false);
 		controlDevice->setPetType(PetManager::HELPERDROIDPET);
 		controlDevice->setControlledObject(creatureObject);
+		controlDevice->setMaxVitality(100);
+		controlDevice->setVitality(100);
 
 		if (!datapad->transferObject(controlDevice, -1)) {
 			controlDevice->destroyObjectFromDatabase(true);
