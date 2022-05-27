@@ -94,6 +94,7 @@
 #include "server/zone/managers/auction/AuctionSearchTask.h"
 #include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/managers/director/ScreenPlayObserver.h"
+#include "server/zone/objects/player/events/SpawnHelperDroidTask.h"
 
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376f;
 
@@ -1393,18 +1394,58 @@ void CreatureObjectImplementation::addSkill(Skill* skill, bool notifyClient) {
 
 		Locker lock(ghost);
 
-		if (ghost != nullptr && ghost->getActivePetsSize() > 0) {
-			for (int i = 0; i < ghost->getActivePetsSize(); i++) {
-				AiAgent* petAgent= ghost->getActivePet(i);
+		if (ghost != nullptr && ghost->getCharacterAgeInDays() < 1) {
+			bool helperDroidSpawned = false;
 
-				if (petAgent != nullptr && petAgent->isHelperDroidObject()) {
-					Reference<HelperDroidObject*> helperDroid = cast<HelperDroidObject*>(petAgent);
+			if (ghost->getActivePetsSize() > 0) {
+				for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+					AiAgent* petAgent= ghost->getActivePet(i);
 
-					if (helperDroid != nullptr) {
-						Locker clock(helperDroid, ghost);
-						helperDroid->notifyHelperDroidSkillTrained(asCreatureObject(), skill->getSkillName());
+					if (petAgent != nullptr && petAgent->isHelperDroidObject()) {
+						Reference<HelperDroidObject*> helperDroid = cast<HelperDroidObject*>(petAgent);
+
+						if (helperDroid != nullptr) {
+							Locker clock(helperDroid, ghost);
+							helperDroid->notifyHelperDroidSkillTrained(asCreatureObject(), skill->getSkillName());
+							helperDroidSpawned = true;
+						}
 					}
 				}
+			}
+
+			if (!helperDroidSpawned) {
+				Reference<Task*> createDroid = new SpawnHelperDroidTask(asCreatureObject());
+
+				if (createDroid != nullptr)
+					createDroid->execute();
+
+				Reference<CreatureObject*> creoRef = asCreatureObject();
+				Reference<Skill*> skillRef = skill;
+
+				Core::getTaskManager()->scheduleTask([creoRef, skillRef]{
+					PlayerObject* ghost = creoRef->getPlayerObject();
+
+					if (ghost == nullptr)
+						return;
+
+					Locker lock(ghost);
+
+					if (ghost->getActivePetsSize() == 0)
+						return;
+
+					for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+						AiAgent* petAgent= ghost->getActivePet(i);
+
+						if (petAgent != nullptr && petAgent->isHelperDroidObject()) {
+							Reference<HelperDroidObject*> helperDroid = cast<HelperDroidObject*>(petAgent);
+
+							if (helperDroid != nullptr) {
+								Locker clock(helperDroid, ghost);
+								helperDroid->notifyHelperDroidSkillTrained(creoRef, skillRef->getSkillName());
+							}
+						}
+					}
+				}, "HelperDroidProfessionLambda", 2000);
 			}
 		}
 	}

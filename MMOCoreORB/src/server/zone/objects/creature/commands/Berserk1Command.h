@@ -60,6 +60,8 @@ public:
 			(cast<CreatureObject*>(creature))->sendSystemMessage("@cbt_spam:berserk_success_single");
 
 		creature->sendStateCombatSpam("cbt_spam", "berserk_success", 0);
+		creature->notifyObservers(ObserverEventType::ABILITYUSED, nullptr, STRING_HASHCODE("berserk1"));
+
 		return SUCCESS;
 	}
 
