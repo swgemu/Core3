@@ -1,6 +1,8 @@
 local ObjectManager = require("managers.object.object_manager")
 
 HelperDroidQuest = ScreenPlay:new {
+	questsEnable = false,
+
 	brawler = {"survival_knife", "wooden_staff", "heavy_axe"},
 	marksman = {"cdef_pistol", "cdef_carbine", "cdef_rifle"},
 
@@ -51,6 +53,11 @@ registerScreenPlay("HelperDroidQuest", false)
 
 function HelperDroidQuest:startSui(pDroid, pPlayer, profession)
 	if (pDroid == nil or pPlayer == nil) then
+		return
+	end
+
+	if (not self.questsEnabled) then
+		CreatureObject(pPlayer):sendSystemMessage("Helper Droid quests are disabled at this time.")
 		return
 	end
 
@@ -114,6 +121,11 @@ end
 
 function HelperDroidQuest:professionQuestSui(pDroid, pPlayer, profession)
 	if (pDroid == nil or pPlayer == nil) then
+		return
+	end
+
+	if (not self.questsEnabled) then
+		CreatureObject(pPlayer):sendSystemMessage("Helper Droid quests are disabled at this time.")
 		return
 	end
 
@@ -508,6 +520,10 @@ end
 
 function HelperDroidQuest:giveProfessionItem(pPlayer, profession)
 	if (pPlayer == nil) then
+		return
+	end
+
+	if (not self.questsEnabled) then
 		return
 	end
 

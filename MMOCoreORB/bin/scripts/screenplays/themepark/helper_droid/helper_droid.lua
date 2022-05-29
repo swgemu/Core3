@@ -1,6 +1,8 @@
 local ObjectManager = require("managers.object.object_manager")
 
 HelperDroid = ScreenPlay:new {
+	questsEnable = false,
+
 	professions = {"brawler", "marksman", "scout", "artisan", "medic", "entertainer"},
 	skillStrings = {"combat_brawler_novice", "combat_marksman_novice", "outdoors_scout_novice", "crafting_artisan_novice", "science_medic_novice", "social_entertainer_novice"},
 
@@ -178,6 +180,10 @@ end
 
 function HelperDroid:skillTrained(pDroid, pPlayer, skill)
 	if (pDroid == nil or pPlayer == nil or skill == "") then
+		return
+	end
+
+	if (not self.questsEnabled) then
 		return
 	end
 
