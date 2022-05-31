@@ -11,13 +11,15 @@
 class ObserverEventType {
 public:
 	enum {
+		// Adding Observers above the crafting checks will cause the stored eventType on already crafted foods to be improper
+		// Add new Observers to the bottom of the list
+
 		POSITIONCHANGED,			// ManagedObject arg1 = null, long arg2 = 0
 		CLOSECONTAINER,				// ManagedObject arg1 = player that closes the container, long arg2 = 0
 		POSTURECHANGED,				// ManagedObject arg1 = nullptr, long arg2 = new posture
 		OBJECTDESTRUCTION,			// ManagedObject arg1 = attacker, long arg2 = condition used when a certain object is destroyed
 		OBJECTDISABLED,				// ManagedObject arg1 = attacker, long arg2 = 0
 		SAMPLE,						// ManagedObject arg1 = ResourceSpawn, long arg2 = density
-		SAMPLETAKEN,				// ManagedObject arg1 = ResourceSpawn, long arg2 = amount harvested
 		CONVERSE,					// ManagedObject arg1 = converser, long arg2 = 0
 		KILLEDCREATURE,				// ManagedObject arg1 = destructedObject, long arg2 = 0 used when a player kills any creature
 		OBJECTREMOVEDFROMZONE,		// ManagedObject arg1 = null, long arg2 = 0
@@ -94,6 +96,7 @@ public:
 		SQUAD,						// ManagedObject arg1 = AiAgent, long arg2 = 0
 		QUESTKILL,					// ManagedObject arg1 = destructedObject, long arg2 = 0 Credit for quest/screenplay kills
 		DAMAGECHECKPOINT,
+		SAMPLETAKEN,				// ManagedObject arg1 = ResourceSpawn, long arg2 = amount harvested
 		ABILITYUSED,				// ManagedObject arg1 = null, long arg2 = command CRC
 		HARVESTEDCREATURE,			// ManagedObject arg1 = resource spawn, long arg2 = Total creature resources harvested
 		DEPLOYEDCAMP,				// ManagedObject arg1 = camp area, long arg2 = 0
