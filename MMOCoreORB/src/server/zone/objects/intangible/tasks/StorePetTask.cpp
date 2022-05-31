@@ -21,6 +21,13 @@ void StorePetTask::run() {
 	if (player == nullptr || pet == nullptr)
 		return;
 
+	ZoneServer* zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr || zoneServer->isServerLoading()) {
+		schedule(10000 + System::random(5000));
+		return;
+	}
+
 	Locker locker(player);
 	Locker clocker(pet, player);
 
