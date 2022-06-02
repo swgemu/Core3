@@ -5,8 +5,8 @@
  *      Author: victor
  */
 
+#include "../../../packets/harvester/HarvesterObjectMessage7.h"
 #include "server/zone/objects/installation/generator/GeneratorObject.h"
-#include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/harvester/ResourceHarvesterActivatePageMessage.h"
 
