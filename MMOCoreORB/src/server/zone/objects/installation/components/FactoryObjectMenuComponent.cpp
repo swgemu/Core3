@@ -25,7 +25,7 @@ void FactoryObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 	menuResponse->addRadialMenuItem(29, 3, "@manf_station:options"); //Options
 
 	if(factory->getContainerObjectsSize() > 0) {
-		if(!factory->isOperating()) {
+		if(!factory->isActive()) {
 			menuResponse->addRadialMenuItemToRadialID(29, 69, 3, "@manf_station:activate"); //Start manufacturing objects.
 			menuResponse->addRadialMenuItemToRadialID(29, 68, 3, "@manf_station:ingredients"); //List ingredients needed for station
 		} else {
@@ -33,7 +33,7 @@ void FactoryObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 		}
 	}
 
-	if(!factory->isOperating()) {
+	if(!factory->isActive()) {
 		menuResponse->addRadialMenuItemToRadialID(29, 197, 3, "@manf_station:schematic"); //Access schematic slot.
 		menuResponse->addRadialMenuItemToRadialID(29, 195, 3, "@manf_station:input_hopper"); //Access station ingredient hopper
 		menuResponse->addRadialMenuItemToRadialID(29, 196, 3, "@manf_station:output_hopper"); //Access station output hopper

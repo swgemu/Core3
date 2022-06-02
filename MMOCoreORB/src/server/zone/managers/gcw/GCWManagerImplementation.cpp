@@ -35,6 +35,7 @@
 
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 #include "server/zone/objects/player/sui/callbacks/HQDefenseStatusSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/JamUplinkSuiCallback.h"

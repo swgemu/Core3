@@ -5,8 +5,8 @@
  *      Author: victor
  */
 
-#ifndef SYNCRHONIZEDUILISTENHARVESTERTASK_H_
-#define SYNCRHONIZEDUILISTENHARVESTERTASK_H_
+#ifndef INSTALLATIONTICKTASK_H_
+#define INSTALLATIONTICKTASK_H_
 
 #include "server/zone/objects/installation/InstallationObject.h"
 
@@ -16,10 +16,10 @@ namespace server {
    namespace installation {
 
 
-class SyncrhonizedUiListenInstallationTask : public Task, public Logger {
+class InstallationTickTask : public Task, public Logger {
 	ManagedWeakReference<InstallationObject*> installation;
 public:
-	SyncrhonizedUiListenInstallationTask(InstallationObject* inso) : Task(5000), Logger("SyncrhonizedUiListenInstallationTask") {
+	InstallationTickTask(InstallationObject* inso) : Task(5000), Logger("InstallationTickTask") {
 		installation = inso;
 	}
 
@@ -35,11 +35,7 @@ public:
 			if (strongRef->getZone() == nullptr)
 				return;
 
-			strongRef->updateInstallationWork();
-			//strongRef->updateOperators();
-			strongRef->verifyOperators();
-			strongRef->activateUiSync();
-
+			strongRef->doTick();
 		} catch (Exception& e) {
 			error(e.getMessage());
 			e.printStackTrace();
@@ -56,4 +52,4 @@ public:
 
 using namespace server::zone::objects::installation;
 
-#endif /* SyncrhonizedUiListenInstallationTask_H_ */
+#endif /* INSTALLATIONTICKTASK_H_ */

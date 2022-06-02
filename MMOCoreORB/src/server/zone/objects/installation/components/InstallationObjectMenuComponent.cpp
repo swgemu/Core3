@@ -14,6 +14,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/managers/radial/RadialOptions.h"
 
 void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isInstallationObject())
@@ -24,11 +25,17 @@ void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 	if (!installation->isOnAdminList(player))
 		return;
 
-	menuResponse->addRadialMenuItem(118, 3, "@player_structure:management");
-	menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
-	menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
-	menuResponse->addRadialMenuItemToRadialID(118, 129, 3, "@player_structure:management_pay"); //Pay Maintenance
+	menuResponse->addRadialMenuItem(RadialOptions::SERVER_TERMINAL_MANAGEMENT, 3, "@player_structure:management");
+	menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_TERMINAL_MANAGEMENT, RadialOptions::SERVER_TERMINAL_MANAGEMENT_DESTROY, 3, "@player_structure:permission_destroy"); // Destroy Structure
+
+	if (installation->isMinefield())
+		return;
+
+	menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_TERMINAL_MANAGEMENT, RadialOptions::SERVER_TERMINAL_MANAGEMENT_STATUS, 3, "@player_structure:management_status"); // Status
+	menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_TERMINAL_MANAGEMENT, RadialOptions::SERVER_TERMINAL_MANAGEMENT_PAY, 3, "@player_structure:management_pay"); // Pay Maintenance
+
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+
 	if(datapad != nullptr) {
 		for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 			ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
@@ -37,21 +44,24 @@ void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 				PetControlDevice* device = cast<PetControlDevice*>( object.get());
 
 				if (device->getPetType() == PetManager::DROIDPET) {
-					menuResponse->addRadialMenuItemToRadialID(118, 131, 3, "@player_structure:assign_droid"); //Assign Droid
+					menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_TERMINAL_MANAGEMENT, RadialOptions::SERVER_MENU5, 3, "@player_structure:assign_droid"); // Assign Droid
 					break;
 				}
 			}
 		}
 	}
-	menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@base_player:set_name"); //Set Name
 
-	if (!installation->isGeneratorObject()) {
-		menuResponse->addRadialMenuItemToRadialID(118, 51, 3, "@player_structure:management_power"); //Deposit Power
+	if (!installation->isTurretInstallation()) {
+		menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_TERMINAL_MANAGEMENT, RadialOptions::SERVER_MENU1, 3, "@base_player:set_name"); // Set Name
+
+		if (installation->getGameObjectType() != SceneObjectType::GENERATOR) {
+			menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_TERMINAL_MANAGEMENT, RadialOptions::SERVER_MENU6, 3, "@player_structure:management_power"); // Deposit Power
+		}
+
+		menuResponse->addRadialMenuItem(RadialOptions::SERVER_TERMINAL_PERMISSIONS, 3, "@player_structure:permissions"); //Structure Permissions
+		menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_TERMINAL_PERMISSIONS, RadialOptions::SERVER_TERMINAL_PERMISSIONS_ADMIN, 3, "@player_structure:permission_admin"); // Administrator List
+		menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_TERMINAL_PERMISSIONS, RadialOptions::SERVER_TERMINAL_PERMISSIONS_HOPPER, 3, "@player_structure:permission_hopper"); // Hopper List
 	}
-
-	menuResponse->addRadialMenuItem(117, 3, "@player_structure:permissions"); //Structure Permissions
-	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:permission_admin"); //Administrator List
-	menuResponse->addRadialMenuItemToRadialID(117, 123, 3, "@player_structure:permission_hopper"); //Hopper List
 
 }
 
@@ -72,8 +82,9 @@ int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 	StructureManager* structureManager = StructureManager::instance();
 
 	switch (selectedID) {
-	case 124:
-		player->executeObjectControllerAction(0x13F7E585, installation->getObjectID(), ""); //structureStatus
+	case RadialOptions::SERVER_TERMINAL_MANAGEMENT:
+	case RadialOptions::SERVER_TERMINAL_MANAGEMENT_STATUS:
+		player->sendCommand(STRING_HASHCODE("structureStatus"), "");
 		break;
 
 	case 129:
@@ -94,8 +105,8 @@ int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 
 	case 51:
 		//TODO: Move to structure manager.
-		if (!installation->isGeneratorObject()) {
-			installation->handleStructureAddEnergy(player);
+		if (installation->getGameObjectType() != SceneObjectType::GENERATOR) {
+			//installation->handleStructureAddEnergy(player);
 		}
 		break;
 
