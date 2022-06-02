@@ -45,7 +45,7 @@ void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 	}
 	menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@base_player:set_name"); //Set Name
 
-	if (!installation->isGeneratorObject()) {
+	if (installation->getGameObjectType() != SceneObjectType::GENERATOR) {
 		menuResponse->addRadialMenuItemToRadialID(118, 51, 3, "@player_structure:management_power"); //Deposit Power
 	}
 
@@ -94,8 +94,8 @@ int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 
 	case 51:
 		//TODO: Move to structure manager.
-		if (!installation->isGeneratorObject()) {
-			installation->handleStructureAddEnergy(player);
+		if (installation->getGameObjectType() != SceneObjectType::GENERATOR) {
+			//installation->handleStructureAddEnergy(player);
 		}
 		break;
 

@@ -1681,11 +1681,6 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@dirty
-	public abstract boolean isGeneratorObject() {
-		return false;
-	}
-
-	@dirty
 	public abstract boolean isCityTerminal() {
 		return false;
 	}

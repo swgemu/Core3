@@ -14,8 +14,7 @@
 class HopperList : public DeltaVector<ManagedReference<ResourceContainer*> > {
 public:
 
-	ManagedReference<ResourceContainer*> set(int idx,
-			const ManagedReference<ResourceContainer*>& newValue, DeltaMessage* message = nullptr, int updates = 1) override {
+	ManagedReference<ResourceContainer*> set(int idx, const ManagedReference<ResourceContainer*>& newValue, DeltaMessage* message = nullptr, int updates = 1) override {
 		ManagedReference<ResourceContainer*> object = vector.set(idx, newValue);
 
 		if (message != nullptr) {
