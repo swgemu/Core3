@@ -3186,13 +3186,14 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 }
 
 void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
-	if (!lastPackNotify.isPast())
+	auto closeObjectsVector = getCloseObjects();
+
+	if (!lastPackNotify.isPast() || closeObjectsVector == nullptr)
 		return;
 
 	lastPackNotify.updateToCurrentTime();
 	lastPackNotify.addMiliTime(30000);
 
-	auto closeObjectsVector = getCloseObjects();
 	Vector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
 	closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 	uint32 socialGroup = getSocialGroup().toLowerCase().hashCode();
