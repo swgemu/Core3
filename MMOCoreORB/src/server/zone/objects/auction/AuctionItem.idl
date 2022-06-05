@@ -7,11 +7,15 @@ package server.zone.objects.auction;
 import engine.core.ManagedObject;
 import server.zone.objects.scene.SceneObject;
 import engine.log.Logger;
+import system.lang.Time;
 include engine.log.LoggerHelperStream;
 include server.zone.objects.scene.variables.StringId;
 
 @json
 class AuctionItem extends ManagedObject {
+	@dereferenced
+	protected Time lastUpdateTime;
+
 	protected unsigned long vendorID;
 
 	protected unsigned long auctionedItemObjectID;
@@ -83,6 +87,7 @@ class AuctionItem extends ManagedObject {
 		updated = false;
 
 		auctionOptions = 0;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	public native void initializeTransientMembers();
@@ -111,66 +116,79 @@ class AuctionItem extends ManagedObject {
 	@preLocked
 	public void setVendorID(unsigned long val) {
 		vendorID = val;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setItemName(final string name) {
 		itemName = name;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setItemDescription(final string descr) {
 		itemDescription = descr;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setPrice(int newPrice) {
 		price = newPrice;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setProxy(int newProxy) {
 		proxyBid = newProxy;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setAuctionedItemObjectID(unsigned long objectID) {
 		auctionedItemObjectID = objectID;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setItemType(int type) {
 		itemType = type;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setOwnerID(unsigned long ownerObjectID) {
 		ownerID = ownerObjectID;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setOfferToID(unsigned long vendorOwnerID) {
 		offerToID = vendorOwnerID;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setBidderName(final string name) {
 		bidderName = name;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setOwnerName(final string name) {
 		ownerName = name;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setAuction(boolean isAuction) {
 		auction = isAuction;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setAuctionPremium() {
 		auctionOptions = auctionOptions | OPTION_PREMIUM;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
@@ -179,21 +197,25 @@ class AuctionItem extends ManagedObject {
 	@preLocked
 	public void setOnBazaar(boolean val) {
 		onBazaar = val;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setExpireTime(int time) {
 		expireTime = time;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setBuyerID(unsigned long id) {
 		buyerID = id;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setStatus(int value) {
 		status = value;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@read
@@ -237,6 +259,7 @@ class AuctionItem extends ManagedObject {
 	@preLocked
 	public void setVendorUID(final string uid) {
 		vuid = uid;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@read
@@ -316,6 +339,7 @@ class AuctionItem extends ManagedObject {
 	@preLocked
 	public void setSize(int s) {
 		size = s;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@read
@@ -331,6 +355,7 @@ class AuctionItem extends ManagedObject {
 	@preLocked
 	public void setCratedItemType(int type) {
 		cratedItemType = type;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@read
@@ -341,11 +366,13 @@ class AuctionItem extends ManagedObject {
 	@preLocked
 	public void setFactoryCrate(boolean crate) {
 		isCrate = crate;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@preLocked
 	public void setUpdated(boolean val) {
 		updated = val;
+		lastUpdateTime.updateToCurrentTime();
 	}
 
 	@read
@@ -370,4 +397,10 @@ class AuctionItem extends ManagedObject {
 	@dereferenced
 	@local
 	public native LoggerHelperStream debug();
+
+	@local
+	@preLocked
+	public Time getLastUpdateTime() {
+		return lastUpdateTime;
+	}
 }
