@@ -778,12 +778,18 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {
 	notifyObservers(ObserverEventType::OBJECTDESTRUCTION, attacker, condition);
 
-	if (threatMap != nullptr)
-		threatMap->removeAll();
+	if (isCombatAction) {
+		Locker lock(asTangibleObject());
 
-	dropFromDefenderLists();
+		if (threatMap != nullptr)
+			threatMap->removeAll();
 
-	attacker->removeDefender(asTangibleObject());
+		dropFromDefenderLists();
+
+		Locker clock(asTangibleObject(), attacker);
+
+		attacker->removeDefender(asTangibleObject());
+	}
 
 	return 1;
 }
