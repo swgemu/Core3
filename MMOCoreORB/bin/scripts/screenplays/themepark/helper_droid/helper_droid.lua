@@ -183,10 +183,6 @@ function HelperDroid:skillTrained(pDroid, pPlayer, skill)
 		return
 	end
 
-	if (not self.questsEnabled) then
-		return
-	end
-
 	local profession = ""
 
 	for i = 1, #self.skillStrings, 1 do
