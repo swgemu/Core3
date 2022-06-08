@@ -27,7 +27,7 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 
 	ManagedReference<ControlDevice*> device = getControlDevice().get();
 
-	if (device != nullptr && device->isASubChildOf(object)) {
+	if (device != nullptr && object != nullptr && device->isASubChildOf(object)) {
 		float percentPower = ((float)power / (float)MAX_POWER) * 100.0;
 		msg->insertAttribute("@obj_attr_n:battery_power", String::valueOf((int)percentPower) + "%");
 

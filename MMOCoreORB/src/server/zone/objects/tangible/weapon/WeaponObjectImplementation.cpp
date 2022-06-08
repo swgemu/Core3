@@ -215,12 +215,14 @@ String WeaponObjectImplementation::getWeaponType() const {
 void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
-	bool res = isCertifiedFor(object);
+	if (object != nullptr) {
+		bool res = isCertifiedFor(object);
 
-	if (res) {
-		alm->insertAttribute("weapon_cert_status", "Yes");
-	} else {
-		alm->insertAttribute("weapon_cert_status", "No");
+		if (res) {
+			alm->insertAttribute("weapon_cert_status", "Yes");
+		} else {
+			alm->insertAttribute("weapon_cert_status", "No");
+		}
 	}
 
 	/*if (usesRemaining > 0)

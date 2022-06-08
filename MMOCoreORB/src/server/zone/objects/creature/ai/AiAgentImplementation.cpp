@@ -3422,7 +3422,7 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 		}
 	}
 
-	if (player->getPlayerObject() && player->getPlayerObject()->hasGodMode()) {
+	if (player != nullptr && player->getPlayerObject() && player->getPlayerObject()->hasGodMode()) {
 		ManagedReference<SceneObject*> home = homeObject.get();
 
 		if (home != nullptr) {

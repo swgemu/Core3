@@ -77,7 +77,7 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
 	AiAgentImplementation::fillAttributeList(alm, player);
 
-	int creaKnowledge = player->getSkillMod("creature_knowledge");
+	int creaKnowledge = player != nullptr ?  player->getSkillMod("creature_knowledge") : 100;
 
 	if (getHideType().isEmpty() && getBoneType().isEmpty() && getMeatType().isEmpty()) {
 		if(!isPet()) // we do want to show this for pets
@@ -85,7 +85,7 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 	}
 
 	if (creaKnowledge >= 5) {
-		if (isAggressiveTo(player))
+		if (player != nullptr && isAggressiveTo(player))
 			alm->insertAttribute("aggro", "yes");
 		else
 			alm->insertAttribute("aggro", "no");

@@ -23,7 +23,7 @@ public:
 	 */
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* player, SceneObject* sceneObject) const {
 
-		if(!sceneObject->isTangibleObject())
+		if(player == nullptr || sceneObject == nullptr || !sceneObject->isTangibleObject())
 			return;
 
 		// Fill from parent

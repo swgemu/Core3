@@ -48,7 +48,9 @@ void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	Reference<TangibleObject*> prototype = getPrototype();
 
 	if(prototype == nullptr || !prototype->isTangibleObject()) {
-		object->sendSystemMessage("This crate is broken, please contact support if you get this message.");
+		if (object != nullptr) {
+			object->sendSystemMessage("This crate is broken, please contact support if you get this message.");
+		}
 		return;
 	}
 

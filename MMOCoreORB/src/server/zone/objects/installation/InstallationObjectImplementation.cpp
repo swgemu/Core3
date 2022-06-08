@@ -62,7 +62,7 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	//TangibleObjectImplementation::fillAttributeList(alm, object);
 
-	if (isOnAdminList(object)) {
+	if (object != nullptr && isOnAdminList(object)) {
 
 		//Add the owner name to the examine window.
 		ManagedReference<SceneObject*> obj = object->getZoneServer()->getObject(ownerObjectID);

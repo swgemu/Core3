@@ -45,11 +45,14 @@ int FsBuffItemImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 }
 
 void FsBuffItemImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
-	if (!player->checkCooldownRecovery("fs_buff_item_" + BuffAttribute::getName(buffAttribute))) {
-		const Time* timeRemaining = player->getCooldownTime("fs_buff_item_" + BuffAttribute::getName(buffAttribute));
-		alm->insertAttribute("reuse_time", getTimeString(timeRemaining->miliDifference() * -1));
-	} else {
-		alm->insertAttribute("reuse_time", "0");
+
+	if (player != nullptr) {
+		if (!player->checkCooldownRecovery("fs_buff_item_" + BuffAttribute::getName(buffAttribute))) {
+			const Time* timeRemaining = player->getCooldownTime("fs_buff_item_" + BuffAttribute::getName(buffAttribute));
+			alm->insertAttribute("reuse_time", getTimeString(timeRemaining->miliDifference() * -1));
+		} else {
+			alm->insertAttribute("reuse_time", "0");
+		}
 	}
 
 	alm->insertAttribute("examine_dot_attribute", BuffAttribute::getName(buffAttribute, true));

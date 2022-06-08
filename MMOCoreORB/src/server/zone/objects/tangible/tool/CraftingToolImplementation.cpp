@@ -105,6 +105,10 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 	if (forceCriticalExperiment > 0)
 		alm->insertAttribute("@crafting:crit_experiment", forceCriticalExperiment);
 
+	if (object == nullptr) {
+		return;
+	}
+
 	Reference<CraftingSession*> session = object->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
 	if(session == nullptr && getParent() != nullptr) {
 		disperseItems();

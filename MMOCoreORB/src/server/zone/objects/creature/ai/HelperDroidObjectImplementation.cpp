@@ -13,6 +13,9 @@ void HelperDroidObjectImplementation::initializeTransientMembers() {
 }
 
 void HelperDroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
+	if (object == nullptr) {
+		return;
+	}
 }
 
 int HelperDroidObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
