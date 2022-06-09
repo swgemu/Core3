@@ -91,6 +91,7 @@ protected:
 	SortedVector<String> loadedDerivedFiles;
 
 	bool noTrade;
+	bool forceNoTrade;
 	bool updatesNavMesh;
 	bool delayedContainerLoad;
 
@@ -330,6 +331,10 @@ public:
 
 	inline bool isNoTrade() const {
 		return noTrade;
+	}
+
+	inline bool isForceNoTrade() const {
+		return forceNoTrade;
 	}
 
 	inline float getScaleThresholdBeforeExtentTest() const {

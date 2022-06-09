@@ -1476,7 +1476,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@read
 	public boolean isForceNoTrade() {
-		return forceNoTrade;
+		return forceNoTrade || templateObject.isForceNoTrade();
 	}
 
 	@read

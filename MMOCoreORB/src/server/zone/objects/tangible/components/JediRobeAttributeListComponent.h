@@ -27,6 +27,12 @@ public:
 			StringBuffer cond;
 			cond << maxCondition << "/" << maxCondition;
 
+			auto config = ConfigManager::instance();
+
+			if (robe->isForceNoTrade()) {
+				cond << config->getForceNoTradeMessage();
+			}
+
 			alm->insertAttribute("condition", cond);
 		}
 

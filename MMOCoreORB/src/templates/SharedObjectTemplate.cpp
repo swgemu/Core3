@@ -45,6 +45,7 @@ SharedObjectTemplate::SharedObjectTemplate() : Logger("SharedObjectTemplate") {
 	inheritPermissionsFromParent = false;
 
 	noTrade = false;
+	forceNoTrade = false;
 	delayedContainerLoad = false;
 }
 
@@ -179,6 +180,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		inheritPermissionsFromParent = Lua::getBooleanParameter(state);
 	} else if (varName == "noTrade") {
 		noTrade = (bool) Lua::getByteParameter(state);
+	} else if (varName == "forceNoTrade") {
+		forceNoTrade = (bool) Lua::getByteParameter(state);
 	} else if (varName == "groupPermissions") {
 		groupPermissions.removeAll();
 
