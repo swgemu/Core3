@@ -1147,6 +1147,7 @@ function HelperDroidQuest:notifyParentChanged(pPlayer, pParent)
 			setQuestStatus(playerID .. ":" .. profession .. ":HelperDroid:completeQuests:", 2)
 
 			createEvent(100, "HelperDroidQuest", "giveReward", pPlayer, profession)
+
 			return 1
 		end
 	end
@@ -1164,6 +1165,17 @@ function HelperDroidQuest:notifyNewPatron(pPlayer, pPatron)
 	local questStatus = readData(playerID .. ":" .. profession .. ":HelperDroid:questStatus:")
 
 	if (profession == "entertainer" and questStatus == 6) then
+		local patronsList = readStringVectorSharedMemory(playerID .. ":" .. profession .. ":HelperDroid:patronsList:")
+		local patronID = SceneObject(pPatron):getObjectID()
+
+		for i = 1, #patronsList, 1 do
+			local listID = tonumber(patronsList[i])
+
+			if (listID == patronID) then
+				return 0
+			end
+		end
+
 		local totalPatrons = readData(playerID .. ":" .. profession .. ":HelperDroid:totalPatrons:") + 1
 
 		if (totalPatrons >= 7) then
@@ -1171,10 +1183,14 @@ function HelperDroidQuest:notifyNewPatron(pPlayer, pPatron)
 
 			createEvent(100, "HelperDroidQuest", "giveReward", pPlayer, profession)
 			deleteData(playerID .. ":" .. profession .. ":HelperDroid:totalPatrons:")
+			deleteStringVectorSharedMemory(playerID .. ":" .. profession .. ":HelperDroid:patronsList:")
 			return 1
 		end
 
+		patronsList[#patronsList + 1] = tostring(patronID)
+
 		writeData(playerID .. ":" .. profession .. ":HelperDroid:totalPatrons:", totalPatrons)
+		writeStringVectorSharedMemory(playerID .. ":" .. profession .. ":HelperDroid:patronsList:", patronsList)
 	end
 
 	return 0
