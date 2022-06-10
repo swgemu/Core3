@@ -2565,6 +2565,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeCrackdownG
 
 		if (removeGcwTefNow) {
 			lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
+			lastPvpAreaCombatActionTimestamp.updateToCurrentTime();
 		}
 
 		if (removeBhTefNow) {
