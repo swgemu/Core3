@@ -40,6 +40,7 @@ void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 
 	threatMap = nullptr;
+	inNoCombatArea = false;
 
 	setLoggingName("TangibleObject");
 

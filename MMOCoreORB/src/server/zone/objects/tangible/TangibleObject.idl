@@ -103,7 +103,6 @@ class TangibleObject extends SceneObject {
 		initializeMembers();
 
 		invisible = false;
-		inNoCombatArea = false;
 
 		antiDecayKitObject = null;
 
