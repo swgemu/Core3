@@ -1989,19 +1989,13 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 					creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
 				}
 
-				float delay = ((uint64)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f)));
-
-				// as long as the target is still valid, we still want to continue to queue auto attacks
-				cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", delay * 1000.f);
+				float weaponSpeed = ((uint64)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f)));
+				uint64 delay = weaponSpeed * 1000;
 
 				Locker lock(creature);
 
-				Time* nextAction = creature->getNextActionTime();
-
-				if (nextAction != nullptr) {
-					nextAction->updateToCurrentTime();
-					nextAction->addMiliTime((uint32)(delay) * 1000.f);
-				}
+				// as long as the target is still valid, we still want to continue to queue auto attacks
+				cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", delay);
 			} else {
 				creature->setTargetID(0);
 			}

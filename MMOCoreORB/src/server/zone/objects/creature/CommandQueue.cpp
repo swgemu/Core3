@@ -161,6 +161,24 @@ int CommandQueue::handleRunningState() {
 	if (nextActionTime == nullptr)
 		return 0;
 
+	CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
+
+	if (cooldownTimerMap != nullptr && !cooldownTimerMap->isPast("autoAttackDelay")) {
+		const Time* autoAttackTime = cooldownTimerMap->getTime("autoAttackDelay");
+
+		if (autoAttackTime != nullptr) {
+			auto autoTime = fabs(autoAttackTime->miliDifference());
+
+			if (autoTime > 100) {
+#ifdef DEBUG_QUEUE
+				if (creature->isPlayerCreature())
+					creature->info(true) << " auto attack time = " << autoTime;
+#endif
+				nextActionTime->addMiliTime(autoTime);
+			}
+		}
+	}
+
 	if (priority == QueueCommand::NORMAL && nextActionTime->isFuture()) {
 		Time currTime;
 		int remainingActionTime = nextActionTime->getMiliTime() - currTime.getMiliTime();
@@ -367,12 +385,14 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 
 	Time* nextAction = creature->getNextActionTime();
 
-	if (queueVector.size() > 0 && (nextAction != nullptr && !nextAction->isPast())) {
-		if (priority == QueueCommand::FRONT) {
-			action->setCompareToCounter(queueVector.get(0)->getCompareToCounter() - 1);
+	if (nextAction != nullptr) {
+		if (queueVector.size() > 0 && !nextAction->isPast()) {
+			if (priority == QueueCommand::FRONT) {
+				action->setCompareToCounter(queueVector.get(0)->getCompareToCounter() - 1);
+			}
+		} else {
+			nextAction->updateToCurrentTime();
 		}
-	} else {
-		nextAction->updateToCurrentTime();
 	}
 
 	queueVector.put(action.get());
