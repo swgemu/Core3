@@ -60,11 +60,16 @@ public:
 	}
 
 	DotPack* findDotPack(CreatureObject* creature, uint8 pool, bool poolGiven) const {
+		if (creature == nullptr)
+			return nullptr;
+
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
 		if (inventory == nullptr) {
 			return nullptr;
 		}
+
+		int combatMedUse = creature->getSkillMod("combat_healing_ability");
 
 		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 			SceneObject* item = inventory->getContainerObject(i);
@@ -74,6 +79,12 @@ public:
 			}
 
 			DotPack* pack = cast<DotPack*>(item);
+
+			if (pack == nullptr)
+				continue;
+
+			if (combatMedUse < pack->getMedicineUseRequired())
+				continue;
 
 			if ((skillName == "applypoison") && pack->isPoisonDeliveryUnit()) {
 				if (!poolGiven) {
