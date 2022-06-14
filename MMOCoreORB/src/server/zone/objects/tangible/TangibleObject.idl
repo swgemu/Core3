@@ -827,8 +827,10 @@ class TangibleObject extends SceneObject {
 	public native void addActiveArea(ActiveArea area);
 
 	public void dropActiveArea(ActiveArea area) {
-		if (area.isNoCombatArea())
+		if (area.isNoCombatArea()) {
 			inNoCombatArea = false;
+			broadcastPvpStatusBitmask();
+		}
 
 		synchronized (super.getContainerLock()) {
 			activeAreas.drop(area);

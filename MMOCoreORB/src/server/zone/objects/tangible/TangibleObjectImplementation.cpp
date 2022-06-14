@@ -1241,8 +1241,10 @@ void TangibleObjectImplementation::addActiveArea(ActiveArea* area) {
 	if (!area->isDeployed())
 		area->deploy();
 
-	if (area->isNoCombatArea())
+	if (area->isNoCombatArea()) {
 		inNoCombatArea = true;
+		broadcastPvpStatusBitmask();
+	}
 
 	Locker locker(&containerLock);
 
