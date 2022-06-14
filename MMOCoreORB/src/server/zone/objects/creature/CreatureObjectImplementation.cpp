@@ -3161,7 +3161,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 		return isAttackableBy(owner);
 	}
 
-	if (isInNoCombatArea())
+	if (isInNoCombatArea() || creature->isInNoCombatArea())
 		return false;
 
 	// This CreO is a player
@@ -3305,6 +3305,17 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 		}
 	}
 
+	bool targetIsPlayer = targetCreo->isPlayerCreature();
+	PlayerObject* targetGhost = nullptr;
+
+	if (targetIsPlayer) {
+		 targetGhost = targetCreo->getPlayerObject();
+
+		 if (targetGhost != nullptr && targetGhost->isInPvpArea(true) && getGroupID() != 0 && getGroupID() == targetCreo->getGroupID()) {
+			return true;
+		 }
+	}
+
 	uint32 targetFactionStatus = targetCreo->getFactionStatus();
 	uint32 currentFactionStatus = object->getFactionStatus();
 
@@ -3317,10 +3328,8 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	if (!(targetFactionStatus == FactionStatus::ONLEAVE) && (currentFactionStatus == FactionStatus::ONLEAVE))
 		return false;
 
-	if(targetCreo->isPlayerCreature()) {
-		PlayerObject* targetGhost = targetCreo->getPlayerObject();
-		if(targetGhost != nullptr && targetGhost->hasBhTef())
-			return false;
+	if (targetIsPlayer && targetGhost != nullptr && targetGhost->hasBhTef()) {
+		return false;
 	}
 
 	return true;
