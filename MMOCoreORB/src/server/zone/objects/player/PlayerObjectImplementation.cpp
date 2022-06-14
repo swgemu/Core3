@@ -290,6 +290,19 @@ void PlayerObjectImplementation::unload() {
 
 	unloadSpawnedChildren();
 
+	SortedVector<ManagedReference<ActiveArea*>>* activeAreas = creature->getActiveAreas();
+
+	if (activeAreas != nullptr) {
+		for (int i = 1; i < activeAreas->size(); i++) {
+			ActiveArea* area = activeAreas->get(i);
+
+			if (area == nullptr)
+				continue;
+
+			creature->dropActiveArea(area);
+		}
+	}
+
 	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
 	playerManager->ejectPlayerFromBuilding(creature);
 
