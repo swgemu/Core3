@@ -256,6 +256,16 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 		}
 
 		VisibilityManager::instance()->increaseVisibility(creature, visMod);
+
+		// Active Area pvp area TEF, applies TEF to healer if the target has the area TEF
+		if (!selfHeal && targetCreature->isPlayerCreature()) {
+			PlayerObject* targetGhost = targetCreature->getPlayerObject().get();
+
+			if (targetGhost != nullptr && targetGhost->isInPvpArea(true)) {
+				playerObject->updateLastPvpAreaCombatActionTimestamp();
+			}
+		}
+
 		return SUCCESS;
 	} else {
 		if (selfHeal) {
