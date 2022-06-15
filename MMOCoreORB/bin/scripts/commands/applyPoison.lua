@@ -43,6 +43,7 @@
 
 ApplyPoisonCommand = {
         name = "applypoison",
+		defaultTime = 4.0,
 }
 
 AddCommand(ApplyPoisonCommand)

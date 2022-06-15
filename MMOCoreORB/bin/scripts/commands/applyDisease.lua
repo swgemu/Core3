@@ -43,6 +43,7 @@
 
 ApplyDiseaseCommand = {
         name = "applydisease",
+		defaultTime = 4.0,
 }
 
 AddCommand(ApplyDiseaseCommand)
