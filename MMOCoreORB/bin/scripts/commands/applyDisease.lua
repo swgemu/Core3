@@ -42,7 +42,8 @@
 --true = 1, false = 0
 
 ApplyDiseaseCommand = {
-        name = "applydisease",
+		name = "applydisease",
+		defaultTime = 4.0,
 }
 
 AddCommand(ApplyDiseaseCommand)

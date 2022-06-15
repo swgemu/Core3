@@ -291,6 +291,9 @@ bool QueueCommand::checkForArenaDuel(CreatureObject* target) const {
 }
 
 void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target) const {
+	if (creature == nullptr || target == nullptr)
+		return;
+
 	if (!creature->isPlayerCreature() || creature == target) {
 		return;
 	}

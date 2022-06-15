@@ -42,7 +42,8 @@
 --true = 1, false = 0
 
 ApplyPoisonCommand = {
-        name = "applypoison",
+		name = "applypoison",
+		defaultTime = 4.0,
 }
 
 AddCommand(ApplyPoisonCommand)
