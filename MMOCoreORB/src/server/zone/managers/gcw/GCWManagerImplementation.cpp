@@ -710,9 +710,9 @@ void GCWManagerImplementation::addBaseAlarm(BuildingObject* building, SceneObjec
 	}
 }
 
-void GCWManagerImplementation::spawnSecurityPatrol(BuildingObject* building, String &patrol, Vector3 &location, uint64 parentID, float direction, bool stationary, bool attackable) {
+uint64 GCWManagerImplementation::spawnSecurityPatrol(BuildingObject* building, String &patrol, Vector3 &location, uint64 parentID, float direction, bool stationary, bool attackable) {
 	if (zone == nullptr || patrol == "")
-		return;
+		return 0;
 
 	Vector<String>* squadSpawns = nullptr;
 
@@ -727,14 +727,14 @@ void GCWManagerImplementation::spawnSecurityPatrol(BuildingObject* building, Str
 	}
 
 	if (squadSpawns == nullptr || squadSpawns->size() <= 0) {
-		return;
+		return 0;
 	}
 
 	CreatureManager* creatureManager = zone->getCreatureManager();
 	ManagedReference<SquadObserver*> squadObserver = new SquadObserver();
 
 	if (creatureManager == nullptr || squadObserver == nullptr)
-		return;
+		return 0;
 
 	AiAgent* squadLeader = nullptr;
 
@@ -772,8 +772,6 @@ void GCWManagerImplementation::spawnSecurityPatrol(BuildingObject* building, Str
 
 		float z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
 
-		// info(true) << "Spawning agent -- " << spawn << " with an xOffset of " << xOffset << " and a yOffset of " << yOffset << " ---- Stationary: " << (stationary ? "TRUE" : "false");
-
 		AiAgent* agent = cast<AiAgent*>(creatureManager->spawnCreature(spawn.hashCode(), 0, x, z, y, 0, false, direction));
 
 		if (agent == nullptr)
@@ -797,10 +795,10 @@ void GCWManagerImplementation::spawnSecurityPatrol(BuildingObject* building, Str
 			squadLeader = agent;
 
 			if (stationary) {
-				agent->addCreatureFlag(CreatureFlag::STATIC);
+				squadLeader->addCreatureFlag(CreatureFlag::STATIC);
 			} else {
-				agent->addCreatureFlag(CreatureFlag::SQUAD);
-				agent->setMovementState(AiAgent::PATROLLING);
+				squadLeader->addCreatureFlag(CreatureFlag::SQUAD);
+				squadLeader->setMovementState(AiAgent::PATROLLING);
 			}
 
 			// AI Template must be updated after the creature flags are set but before anything is written to Blackboard
@@ -832,6 +830,7 @@ void GCWManagerImplementation::spawnSecurityPatrol(BuildingObject* building, Str
 		}
 	}
 
+	return squadLeader != nullptr ? squadLeader->getObjectID() : 0;
 }
 
 void GCWManagerImplementation::spawnBaseSecurityPatrols(BuildingObject* building) {
@@ -844,8 +843,6 @@ void GCWManagerImplementation::spawnBaseSecurityPatrols(BuildingObject* building
 		return;
 
 	int spawns = baseTemplate->getSecuritySpawnsSize();
-
-	// info(true) << "spawn base security patrols called with a size of " << String::valueOf(spawns);
 
 	// Get the security spawns from the GCW base template
 	for (int i = 0; i < spawns; i++) {

@@ -128,6 +128,7 @@ namespace server {
 		static int spawnActiveArea(lua_State* L);
 		static int spawnBuilding(lua_State* L);
 		static int spawnSecurityPatrol(lua_State* L);
+		static int despawnSecurityPatrol(lua_State* L);
 		static int destroyBuilding(lua_State* L);
 		static int createLoot(lua_State* L);
 		static int createLootSet(lua_State* L);

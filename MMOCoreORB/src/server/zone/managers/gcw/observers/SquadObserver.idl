@@ -24,7 +24,7 @@ class SquadObserver extends Observer implements Logger {
 	protected Vector<AiAgent> teamMembers;
 
 	@dereferenced
-	protected transient Mutex containmentTeamLock;
+	protected transient Mutex squadLock;
 
 	public SquadObserver() {
 		super();
@@ -43,6 +43,9 @@ class SquadObserver extends Observer implements Logger {
 
 	@local
 	public native void removeMember(unsigned int teamMemberIndex);
+
+	@local
+	public native void despawnSquad();
 
 	@local
 	public native boolean despawnMembersCloseToLambdaShuttle(@dereferenced final Vector3 landingPosition, boolean forcedCleanup);
