@@ -323,6 +323,13 @@ includeFile("events/coa/components/grav_unit_repair_kit_menu_component.lua")
 includeFile("events/coa/components/coa3_container_component.lua")
 includeFile("events/coa/components/coa3DestroyFacilityMenuComponent.lua")
 
+-- Secrets of the Syren
+includeFile("events/syren/syren.lua")
+includeFile("events/syren/conversations/imperial_jevan_monsul_conv_handler.lua")
+includeFile("events/syren/conversations/neutral_tyla_jinn_conv_handler.lua")
+includeFile("events/syren/conversations/rebel_veega_madish_conv_handler.lua")
+includeFile("events/syren/conversations/doctor_edvar_vang_conv_handler.lua")
+
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
 includeFile("events/conversations/life_day_anarra_conv_handler.lua")
