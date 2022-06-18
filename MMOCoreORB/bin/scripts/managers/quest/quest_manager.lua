@@ -351,4 +351,26 @@ QuestManager.quests.FS_CRAFTING4_QUEST_FINISH 		= 185
 QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_04 		= 186
 QuestManager.quests.FS_CS_QUEST_DONE_NOTIFYONLY 	= 187
 
+-- Test quests and space quests not added.
+QuestManager.questCRC = {}
+
+QuestManager.questCRC.QUEST_C_DARNDROID1	= 0xCB2F8FCB
+QuestManager.questCRC.QUEST_C_DARNDROID2 	= 0xC66CA912
+QuestManager.questCRC.QUEST_C_IMPDEFECTOR 	= 0x7F09E9D5
+QuestManager.questCRC.QUEST_C_REBDEFECTOR 	= 0xEF9DF73A
+QuestManager.questCRC.QUEST_C_SINK_IMP 		= 0x75B55B94
+QuestManager.questCRC.QUEST_C_SINK_REB 		= 0xAB48A119
+QuestManager.questCRC.QUEST_C_STORY1_1_IMP 	= 0xB97727EE
+QuestManager.questCRC.QUEST_C_STORY1_1_NEU 	= 0x21F14842
+QuestManager.questCRC.QUEST_C_STORY1_1_REB 	= 0x678ADD63
+QuestManager.questCRC.QUEST_C_STORY1_2_IMP 	= 0x62608F79
+QuestManager.questCRC.QUEST_C_STORY1_2_NEU 	= 0xFAE6E0D5
+QuestManager.questCRC.QUEST_C_STORY1_2_REB 	= 0xBC9D75F4
+QuestManager.questCRC.QUEST_LF_DEADMITE 	= 0x6F853CB3
+QuestManager.questCRC.QUEST_LF_SAFETY1 		= 0xCA1445A8
+QuestManager.questCRC.QUEST_LF_SAFETY2 		= 0xC7576371
+QuestManager.questCRC.QUEST_LF_SAFETY3 		= 0xC3967EC6
+QuestManager.questCRC.QUEST_LF_SAFETY4 		= 0xDDD12EC3
+QuestManager.questCRC.QUEST_LF_SAFETY5 		= 0xD9103374
+
 return QuestManager
