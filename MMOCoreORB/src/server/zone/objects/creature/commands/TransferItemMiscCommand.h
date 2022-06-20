@@ -155,7 +155,7 @@ public:
 
 		// Check for any parent that is containerType == NONE
 		for (auto parent = objectToTransfer->getParent().get(); parent != nullptr; parent = parent->getParent().get()) {
-			Locker lock(parent);
+			Locker clocker(parent, creature);
 
 			if (parent->getContainerType() == ContainerType::NONE) {
 				creature->error() << "Trying to remove object from containerType==NONE: oid " << parent->getObjectID();
