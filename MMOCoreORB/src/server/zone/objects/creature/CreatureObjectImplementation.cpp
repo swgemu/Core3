@@ -2251,6 +2251,8 @@ void CreatureObjectImplementation::removeFeignedDeath() {
 	clearState(CreatureState::FEIGNDEATH); // This must always be done before setting the player upright
 	removeBuff(STRING_HASHCODE("private_feign_buff"));
 	removeBuff(STRING_HASHCODE("private_feign_damage_buff"));
+
+	creo->setPosture(CreaturePosture::UPRIGHT, true, true);
 }
 
 void CreatureObjectImplementation::setFeignedDeathState() {
@@ -2283,7 +2285,7 @@ bool CreatureObjectImplementation::canFeignDeath() {
 void CreatureObjectImplementation::feignDeath() {
 	ManagedReference<CreatureObject*> creo = asCreatureObject();
 
-	creo->setCountdownTimer(5, true);
+	creo->setCountdownTimer(5);
 	creo->updateCooldownTimer("command_message", 5 * 1000);
 	creo->setFeignedDeathState();
 	creo->setPosture(CreaturePosture::INCAPACITATED, true, true);
