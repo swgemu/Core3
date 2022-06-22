@@ -19,7 +19,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->isInCombat() == false) {
+		if (!creature->isInCombat()) {
 			creature->sendSystemMessage("@combat_effects:feign_no_combat");
 			return GENERALERROR;
 		}
@@ -42,6 +42,9 @@ public:
 	}
 
 	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) const override {
+		if (creature == nullptr || !creature->isCreatureObject())
+			return;
+
 		ManagedReference<CreatureObject*> creo = creature->asCreatureObject();
 
 		if (creo == nullptr)
@@ -49,11 +52,17 @@ public:
 
 		Locker lock(creo);
 
-		if (creo->canFeignDeath()) {
-			creo->feignDeath();
+		if (creo->hasState(CreatureState::FEIGNDEATH)) {
+			creo->removeFeignedDeath();
 		} else {
-			creo->removeBuff(STRING_HASHCODE("private_feign_buff"));
+			if (creo->canFeignDeath()) {
+				creo->feignDeath();
+			} else {
+				creo->sendSystemMessage("@cbt_spam:feign_fail_single");
+			}
 		}
+
+		creo->removeBuff(STRING_HASHCODE("private_feign_buff"));
 	}
 };
 
