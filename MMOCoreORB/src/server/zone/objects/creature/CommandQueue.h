@@ -48,7 +48,7 @@ public:
 	void run();
 	int handleRunningState();
 
-	bool checkForImmediateActions(CreatureObject* creature);
+	int checkActions(CreatureObject* creature);
 	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments, int priority, int compareCounter);
 	void sendCommand(uint32 crc, const UnicodeString& args, uint64 targetID, int priority);
 	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
