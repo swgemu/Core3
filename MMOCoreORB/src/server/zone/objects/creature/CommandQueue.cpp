@@ -87,6 +87,9 @@ CommandReference<CommandQueueAction*> CommandQueue::getNextAction() {
 		return nullptr;
 	}
 
+	bool hasFront = false;
+	int frontAction = -1;
+
 	// Check queue for immediate actions, they get executed first
 	for (int i = 0; i < queueVector.size(); i++) {
 		auto immediateAction = queueVector.get(i);
@@ -96,9 +99,23 @@ CommandReference<CommandQueueAction*> CommandQueue::getNextAction() {
 
 		auto queueCommand = objectController->getQueueCommand(immediateAction->getCommand());
 
-		if (queueCommand != nullptr && queueCommand->getDefaultPriority() == QueueCommand::IMMEDIATE) {
-			return immediateAction;
+		if (queueCommand != nullptr) {
+			int priority = queueCommand->getDefaultPriority();
+
+			if (priority == QueueCommand::IMMEDIATE && (!creature->hasAttackDelay() || !queueCommand->addToCombatQueue())) {
+				return immediateAction;
+			}
+
+			if (!hasFront && priority == QueueCommand::FRONT) {
+				hasFront = true;
+				frontAction = i;
+			}
 		}
+	}
+
+	// No immediate commands, however a front command is present
+	if (hasFront && frontAction > -1) {
+		return queueVector.get(frontAction);
 	}
 
 	// None of the queue actions were immediate, select first command in the queue
@@ -259,12 +276,18 @@ void CommandQueue::run() {
 			break;
 		}
 		case DELAY: {
-			if (!creature->hasAttackDelay() && !creature->hasPostureChangeDelay()) {
+			bool attackDelay = creature->hasAttackDelay();
+			bool postureDelay = creature->hasPostureChangeDelay();
+
+			if (!attackDelay && !postureDelay) {
 				state = WAITING;
 			}
 
-			if (!creature->hasAttackDelay() && checkForImmediateActions(creature))
-				state = RUNNING;
+			int actions = checkActions(creature);
+
+			if (actions == QueueCommand::NOCOMBATQUEUE || actions == QueueCommand::FRONT || (!attackDelay && actions == QueueCommand::IMMEDIATE)) {
+				state = WAITING;
+			}
 
 			queueTask->reschedule(DEFAULTTIME);
 		}
@@ -277,21 +300,24 @@ void CommandQueue::run() {
 #endif // DEBUG_QUEUE
 }
 
-bool CommandQueue::checkForImmediateActions(CreatureObject* creature) {
+int CommandQueue::checkActions(CreatureObject* creature) {
 	if (creature == nullptr)
-		return false;
+		return 0;
 
 	ZoneServer* zoneServer = creature->getZoneServer();
 
 	if (zoneServer == nullptr) {
-		return false;
+		return 0;
 	}
 
 	auto objectController = zoneServer->getObjectController();
 
 	if (objectController == nullptr) {
-		return false;
+		return 0;
 	}
+
+	bool hasImmediate = false;
+	bool hasFront = false;
 
 	Locker guard(&queueMutex);
 
@@ -303,12 +329,32 @@ bool CommandQueue::checkForImmediateActions(CreatureObject* creature) {
 
 		const QueueCommand* queueCommand = objectController->getQueueCommand(action->getCommand());
 
-		if (queueCommand != nullptr && queueCommand->getDefaultPriority() == QueueCommand::IMMEDIATE) {
-			return true;
+		if (queueCommand != nullptr) {
+			if (!queueCommand->addToCombatQueue())
+				return QueueCommand::NOCOMBATQUEUE;
+
+			int priority = queueCommand->getDefaultPriority();
+
+			if (priority == QueueCommand::IMMEDIATE) {
+				hasImmediate = true;
+			}
+
+			if (priority == QueueCommand::FRONT) {
+				hasFront = true;
+			}
 		}
+
+		// Queue contains both immediate and front commands, stop iteration
+		if (hasImmediate && hasFront)
+			break;
 	}
 
-	return false;
+	if (hasFront)
+		return QueueCommand::FRONT;
+	else if (hasImmediate)
+		return QueueCommand::IMMEDIATE;
+
+	return 0;
 }
 
 void CommandQueue::clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2) {
