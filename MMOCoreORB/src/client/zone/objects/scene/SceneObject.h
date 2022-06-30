@@ -79,6 +79,7 @@ public:
 	const static int HARVESTER = 0x1003;
 	const static int TURRET = 0x1004;
 	const static int MINEFIELD = 0x1005;
+	const static int COVERTSCANNER = 0x1008;
 
 	const static int TANGIBLE = 0x2000;
 	const static int AMMUNITION = 0x2001;

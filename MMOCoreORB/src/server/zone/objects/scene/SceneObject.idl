@@ -1405,9 +1405,9 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@local
 	@read
-	public boolean isDetector() {
+	public boolean isScanner() {
 		return dataObjectComponent.get() != null &&
-		dataObjectComponent.get().isDetectorData();
+		dataObjectComponent.get().isScannerData();
 	}
 
 	@local

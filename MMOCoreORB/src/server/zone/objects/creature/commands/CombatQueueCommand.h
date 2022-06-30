@@ -181,33 +181,37 @@ public:
 				if (ghost->isAFK())
 					return GENERALERROR;
 
-				ManagedReference<TangibleObject*> targetTano = targetObject.castTo<TangibleObject*>();
+				bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
-				if (targetTano != nullptr && creature->getFaction() != 0 && targetTano->getFaction() != 0 && targetTano->getFaction() != creature->getFaction() && creature->getFactionStatus() != FactionStatus::OVERT && !ghost->hasCrackdownTef()) {
-					if (targetTano->isCreatureObject()) {
-						ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
+				if (!covertOvert) {
+					ManagedReference<TangibleObject*> targetTano = targetObject.castTo<TangibleObject*>();
 
-						if (targetCreature != nullptr) {
-							if (targetCreature->isPlayerCreature()) {
+					if (targetTano != nullptr && creature->getFaction() != 0 && targetTano->getFaction() != 0 && targetTano->getFaction() != creature->getFaction() && creature->getFactionStatus() != FactionStatus::OVERT && !ghost->hasCrackdownTef()) {
+						if (targetTano->isCreatureObject()) {
+							ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
 
-								if (!CombatManager::instance()->areInDuel(creature, targetCreature) && !targetCreature->hasBountyMissionFor(creature) && !creature->hasBountyMissionFor(targetCreature) && targetCreature->getFactionStatus() == FactionStatus::OVERT)
-									ghost->doFieldFactionChange(FactionStatus::OVERT);
-							} else if (targetCreature->isPet()) {
-								ManagedReference<CreatureObject*> targetOwner = targetCreature->getLinkedCreature().get();
+							if (targetCreature != nullptr) {
+								if (targetCreature->isPlayerCreature()) {
 
-								if (targetOwner != nullptr && !creature->hasBountyMissionFor(targetOwner) && !targetOwner->hasBountyMissionFor(creature) && !CombatManager::instance()->areInDuel(creature, targetOwner) && targetOwner->getFactionStatus() == FactionStatus::OVERT) {
+									if (!CombatManager::instance()->areInDuel(creature, targetCreature) && !targetCreature->hasBountyMissionFor(creature) && !creature->hasBountyMissionFor(targetCreature) && targetCreature->getFactionStatus() == FactionStatus::OVERT)
 										ghost->doFieldFactionChange(FactionStatus::OVERT);
+								} else if (targetCreature->isPet()) {
+									ManagedReference<CreatureObject*> targetOwner = targetCreature->getLinkedCreature().get();
+
+									if (targetOwner != nullptr && !creature->hasBountyMissionFor(targetOwner) && !targetOwner->hasBountyMissionFor(creature) && !CombatManager::instance()->areInDuel(creature, targetOwner) && targetOwner->getFactionStatus() == FactionStatus::OVERT) {
+											ghost->doFieldFactionChange(FactionStatus::OVERT);
+									}
+								} else {
+									if (creature->getFactionStatus() == FactionStatus::ONLEAVE)
+										ghost->doFieldFactionChange(FactionStatus::COVERT);
 								}
-							} else {
-								if (creature->getFactionStatus() == FactionStatus::ONLEAVE)
-									ghost->doFieldFactionChange(FactionStatus::COVERT);
 							}
+						} else {
+							if (creature->getFactionStatus() == FactionStatus::ONLEAVE && !(targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
+								ghost->doFieldFactionChange(FactionStatus::COVERT);
+							else if ((targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
+								ghost->doFieldFactionChange(FactionStatus::OVERT);
 						}
-					} else {
-						if (creature->getFactionStatus() == FactionStatus::ONLEAVE && !(targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
-							ghost->doFieldFactionChange(FactionStatus::COVERT);
-						else if ((targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
-							ghost->doFieldFactionChange(FactionStatus::OVERT);
 					}
 				}
 			}

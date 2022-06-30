@@ -187,6 +187,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<GeneratorObject>(SceneObjectType::GENERATOR);
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::DESTRUCTIBLE);
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::MINEFIELD);
+	objectFactory.registerObject<InstallationObject>(SceneObjectType::COVERTSCANNER);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::WEAPON);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::MELEEWEAPON);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::PISTOL);
