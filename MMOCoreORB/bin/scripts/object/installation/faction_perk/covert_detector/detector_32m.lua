@@ -41,9 +41,14 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_installation_faction_perk_covert_detector_detector_base = object_installation_faction_perk_covert_detector_shared_detector_base:new {
-	dataObjectComponent = "DetectorDataComponent",
-	zoneComponent = "DetectorZoneComponent",
+object_installation_faction_perk_covert_detector_detector_32m = object_installation_faction_perk_covert_detector_shared_detector_base:new {
+	dataObjectComponent = "ScannerDataComponent",
+	zoneComponent = "ScannerZoneComponent",
+	gameObjectType = 4104,
+
+	pvpStatusBitmask = ATTACKABLE,
+	optionsBitmask = 0,
+	maxCondition = 50000,
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_covert_detector_detector_base, "object/installation/faction_perk/covert_detector/detector_base.iff")
+ObjectTemplates:addTemplate(object_installation_faction_perk_covert_detector_detector_32m, "object/installation/faction_perk/covert_detector/detector_32m.iff")

@@ -72,7 +72,7 @@ public:
 				return INVALIDTARGET;
 		}
 
-		if (structure->isTurret() || structure->isMinefield()) {
+		if (structure->isTurret() || structure->isMinefield() || structure->isScanner()) {
 			return INVALIDTARGET;
 		}
 

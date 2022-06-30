@@ -188,12 +188,20 @@ public:
 		return (minefieldSlots.get(indx) > 0);
 	}
 
+	bool isScannerSlotOccupied(int idx) {
+		return (scannerSlots.get(idx) > 0);
+	}
+
 	uint64 getTurretID(int indx) {
 		return turretSlots.elementAt(indx);
 	}
 
-	uint64 getMinefieldOID(int indx) {
+	uint64 getMinefieldID(int indx) {
 		return minefieldSlots.elementAt(indx);
+	}
+
+	uint64 getScannerID(int indx) {
+		return scannerSlots.elementAt(indx);
 	}
 
 	bool hasTurret(uint64 turretID) {
@@ -204,8 +212,12 @@ public:
 		return minefieldSlots.contains(minefieldOID);
 	}
 
+	bool hasScanner(uint64 minefieldOID) {
+		return scannerSlots.contains(minefieldOID);
+	}
+
 	bool hasDefense(uint64 defenseOID) {
-		return hasTurret(defenseOID) || hasMinefield(defenseOID);
+		return hasTurret(defenseOID) || hasMinefield(defenseOID) || hasScanner(defenseOID);
 	}
 
 	int getIndexOfTurret(uint64 turretID) {
@@ -226,16 +238,17 @@ public:
 		return -1;
 	}
 
+	int getIndexOfScanner(uint64 scannerOID) {
+		for (int i = 0; i < scannerSlots.size(); i++) {
+			if (scannerSlots.elementAt(i) == scannerOID)
+				return i;
+		}
+
+		return -1;
+	}
+
 	void setTurretID(int indx, uint64 turretOID) {
 		turretSlots.elementAt(indx) = turretOID;
-	}
-
-	void addScanner(int indx, uint64 scannerOID) {
-		scannerSlots.add(indx,scannerOID);
-	}
-
-	void addTurret(int indx, uint64 turretOID) {
-		turretSlots.add(indx, turretOID);
 	}
 
 	void setScannerID(int indx, uint64 scannerOID) {
@@ -244,6 +257,14 @@ public:
 
 	void setMinefieldID(int indx, uint64 minefieldOID) {
 		minefieldSlots.elementAt(indx) = minefieldOID;
+	}
+
+	void addScanner(int indx, uint64 scannerOID) {
+		scannerSlots.add(indx,scannerOID);
+	}
+
+	void addTurret(int indx, uint64 turretOID) {
+		turretSlots.add(indx, turretOID);
 	}
 
 	void addMinefield(int indx, uint64 minefieldOID) {

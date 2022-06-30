@@ -479,4 +479,174 @@ show_gcw_score = ConvoScreen:new {
 
 rebelRecruiterConvoTemplate:addScreen(show_gcw_score);
 
+--[[
+
+	Covert/Overt System Responses
+
+]]
+
+-- Greeting neutral
+
+neutral_start2 = ConvoScreen:new {
+	id = "greet_neutral_start2",
+	leftDialog = "@faction_recruiter:greeting", -- Greetings. What can I do for you today?
+	stopConversation = "false",
+	options = {
+		{"@faction_recruiter:response_join_faction", "join_military2"}, -- I would like to become a Covert member of your faction.
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(neutral_start2);
+
+-- Neutral joining
+
+join_military2 = ConvoScreen:new {
+	id = "join_military2",
+	leftDialog = "@faction_recruiter:join_faction_confirm", -- A wise decision! Are you certain you wish to join us?
+	stopConversation = "false",
+	options = {
+		{"@faction_recruiter:response_yes_to_join", "accept_join2"}, -- Yes. I am certain that I wish to join.
+		{"@faction_recruiter:response_no_to_join", "think_more2"}, -- No. I'd rather not join at this time.
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(join_military2);
+
+neutral_need_more_points2 = ConvoScreen:new {
+	id = "neutral_need_more_points2",
+	leftDialog = "@faction_recruiter:join_faction_denied", -- I am glad you've expressed such interest in joining us. You must, however, prove your devotion to our cause by increasing your %TO faction standing to at least %DI.
+	stopConversation = "true",
+	options = {
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(neutral_need_more_points2);
+
+accept_join2 = ConvoScreen:new {
+	id = "accept_join2",
+	leftDialog = "@faction_recruiter:welcome_to_faction", -- A fine decision!  Welcome to the %TO faction.  Perhaps you would like to hear about our faction services?
+	stopConversation = "false",
+	options = {
+		{"@faction_recruiter:response_yes_to_see_options", "faction_purchase"}, -- Yes. I would like to see what's available.
+		{"@faction_recruiter:response_no_to_see_options", "greet_member_start_covert2"}, -- No thanks.  Not right now.
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(accept_join2);
+
+think_more2 = ConvoScreen:new {
+	id = "think_more2",
+	leftDialog = "@faction_recruiter:join_faction_player_no", -- Sorry to hear it.  Speak with me again if you ever reconsider.
+	stopConversation = "true",
+	options = {
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(think_more2);
+
+
+-- Greeting Covert
+
+member_covert_start2 = ConvoScreen:new {
+	id = "greet_member_start_covert2",
+	leftDialog = "@faction_recruiter:greeting_member", -- Hello, %TO. What would you like to do?
+	stopConversation = "false",
+	options = {
+		--{"@faction_recruiter:option_go_declared", "confirm_declare"}, -- I would like to declare my faction affiliation.
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(member_covert_start2);
+
+-- Declaring overt faction status
+
+confirm_declare = ConvoScreen:new {
+	id = "confirm_declare",
+	leftDialog = "@faction_recruiter:go_declared_confirm", -- If you declare your affiliation, you will become open to attack from our enemies.  Furthermore, should you change your mind, returning to your covert status is not immediate.  Are you sure you want to do this?
+	stopConversation = "false",
+	options = {
+		{"@faction_recruiter:response_yes_to_go_declared", "declare_complete"}, -- Yes.  I'm certain I want to declare my affiliation.
+		{"@faction_recruiter:response_no_to_go_declared", ""}, -- On second thought, I'll stay covert for now.
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(confirm_declare);
+
+declare_complete = ConvoScreen:new {
+	id = "declare_complete",
+	leftDialog = "@faction_recruiter:go_declared_yes", -- Very well. Your affiliation is now apparent to all.  Do you need anything else?
+	stopConversation = "true",
+	options = {
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(declare_complete);
+
+
+-- Greeting overt
+
+member_overt_start2 = ConvoScreen:new {
+	id = "greet_member_start_overt2",
+	leftDialog = "@faction_recruiter:greeting_member", -- 	Hello, %TO. What would you like to do?
+	stopConversation = "false",
+	options = {
+		--{"@faction_recruiter:option_go_covert", "confirm_covert"}, -- I would like to become a covert faction member.
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(member_overt_start2);
+
+confirm_covert = ConvoScreen:new {
+	id = "confirm_covert",
+	leftDialog = "@faction_recruiter:go_covert_confirm", -- Becoming covert will shield you from attacks by our enemies, but will also prevent you from initiating conflicts with them.  Are you sure you this is what you want?
+	stopConversation = "false",
+	options = {
+		{"@faction_recruiter:response_yes_to_go_covert", "covert_complete"}, -- Yes, I wish to become a covert member.
+		{"@faction_recruiter:response_no_to_go_covert", ""}, -- No. I'd rather keep my allegiance declared.
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(confirm_covert);
+
+covert_complete = ConvoScreen:new {
+	id = "covert_complete",
+	leftDialog = "@faction_recruiter:go_covert_yes", -- Very well.  We will be able to conceal your affiliation in about %DI hours.  Is there anything else with which I can help you?
+	stopConversation = "true",
+	options = {
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(covert_complete);
+
+
+-- Resign Faction
+
+resign_faction = ConvoScreen:new {
+	id = "resign_faction",
+	leftDialog = "@faction_recruiter:resign_faction_confirm", -- We'd hate to lose you, %TU.  Your request will require %DI hours to process.  Be warned, if you resign all of your faction perks will be lost to you.  This includes your factional backpacks and anything contained within!  Are you sure you want to resign?
+	stopConversation = "false",
+	options = {
+		{"@faction_recruiter:response_yes_to_resign", "confirm_resign"}, -- Yes, I would like to leave the faction.
+		{"@faction_recruiter:response_no_to_resign", "dont_resign"} -- No.  I will stay for now.
+	}
+}
+rebelRecruiterConvoTemplate:addScreen(resign_faction);
+
+confirm_resign = ConvoScreen:new {
+	id = "confirm_resign",
+	leftDialog = "@faction_recruiter:resign_faction_yes", -- Very well. You will be removed from the %TO faction in %DI hours.
+	stopConversation = "true",
+	options = {}
+}
+rebelRecruiterConvoTemplate:addScreen(confirm_resign);
+
+dont_resign = ConvoScreen:new {
+	id = "dont_resign",
+	leftDialog = "@faction_recruiter:resign_faction_no", -- I'm glad you changed your mind.  What would you like to do?
+	stopConversation = "false",
+	options = {}
+}
+rebelRecruiterConvoTemplate:addScreen(dont_resign);
+
+cancel_resignation = ConvoScreen:new {
+	id = "cancel_resignation",
+	leftDialog = "@faction_recruiter:resignation_recinded", -- Glad to have you back!
+	stopConversation = "true",
+	options = {}
+}
+rebelRecruiterConvoTemplate:addScreen(cancel_resignation);
+
+
+
+-- End of file
+
 addConversationTemplate("rebelRecruiterConvoTemplate", rebelRecruiterConvoTemplate);

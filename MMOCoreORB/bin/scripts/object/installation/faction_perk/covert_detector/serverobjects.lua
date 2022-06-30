@@ -45,4 +45,4 @@
 --Children folder includes
 
 -- Server Objects
-includeFile("installation/faction_perk/covert_detector/detector_base.lua")
+includeFile("installation/faction_perk/covert_detector/detector_32m.lua")
