@@ -86,20 +86,9 @@ void MinefieldZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* 
 		return;
 
 	ManagedReference<TurretObserver*> observer = new TurretObserver();
-	installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION,observer);
 
-	// TODO: remove.  this is to get the pvpstatus bitmask correct for existing minefields
-	uint64 oid = installation->getOwnerObjectID();
-	if(oid != 0) {
-		ManagedReference<SceneObject*> sceno = zne->getZoneServer()->getObject(oid);
-		if(sceno != nullptr && sceno->isGCWBase()) {
-			ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceno.get());
-			if(building != nullptr){
-
-				installation->setPvpStatusBitmask(building->getPvpStatusBitmask() | 1);
-			}
-		}
-	}
+	if (observer != nullptr)
+		installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
 }
 
 void MinefieldZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const {

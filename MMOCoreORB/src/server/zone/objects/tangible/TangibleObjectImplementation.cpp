@@ -174,9 +174,14 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 
 		uint32 pvpStatusBitmask = creature->getPvpStatusBitmask();
 		uint32 oldStatusBitmask = pvpStatusBitmask;
+		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 		if (factionStatus == FactionStatus::COVERT) {
-			creature->sendSystemMessage("@faction_recruiter:covert_complete");
+			if (covertOvert) {
+				creature->sendSystemMessage("You are now a covert faction member.");
+			} else {
+				creature->sendSystemMessage("@faction_recruiter:covert_complete");
+			}
 
 			if (pvpStatusBitmask & CreatureFlag::OVERT)
 				pvpStatusBitmask &= ~CreatureFlag::OVERT;
@@ -196,7 +201,11 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 				creature->addCooldown("declare_overt_cooldown", cooldown * 1000);
 				pvpStatusBitmask |= CreatureFlag::OVERT;
 
-				creature->sendSystemMessage("@faction_recruiter:overt_complete");
+				if (covertOvert) {
+					creature->sendSystemMessage("You have declared your faction allegiance.");
+				} else {
+					creature->sendSystemMessage("@faction_recruiter:overt_complete");
+				}
 			}
 
 			if (ConfigManager::instance()->isPvpBroadcastChannelEnabled()) {

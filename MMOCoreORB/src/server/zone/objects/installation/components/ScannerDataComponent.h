@@ -1,25 +1,25 @@
 /*
- * DetectorDataComponent.h
+ * ScannerDataComponent.h
  *
  *  Created on: Nov 24, 2012
  *      Author: root
  */
 
-#ifndef DETECTORDATACOMPONENT_H_
-#define DETECTORDATACOMPONENT_H_
+#ifndef SCANNERDATACOMPONENT_H_
+#define SCANNERDATACOMPONENT_H_
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
 
-class DetectorDataComponent : public DataObjectComponent, public Logger {
+class ScannerDataComponent : public DataObjectComponent, public Logger {
 protected:
 	int maxrange;
 	uint64 nextScanTime;
-	constexpr static uint64 scanCooldown = 60;
+	constexpr static uint64 scanCooldown = 20; // set to 60
 
 public:
-	DetectorDataComponent()  {
+	ScannerDataComponent()  {
 		maxrange = 32;
 		nextScanTime = time(0);
-		this->setLoggingName("DetectorData");
+		this->setLoggingName("ScannerData");
 
 	}
 
@@ -38,7 +38,7 @@ public:
 		nextScanTime = time(0) + scanCooldown;
 	}
 
-	bool isDetectorData(){
+	bool isScannerData(){
 		return true;
 	}
 };
@@ -48,4 +48,4 @@ public:
 
 
 
-#endif /* DETECTORDATACOMPONENT_H_ */
+#endif /* SCANNERDATACOMPONENT_H_ */

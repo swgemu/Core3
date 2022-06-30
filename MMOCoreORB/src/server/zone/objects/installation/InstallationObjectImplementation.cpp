@@ -681,8 +681,18 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 
 	PlayerObject* ghost = target->getPlayerObject();
 
-	if (targetIsPlayer && ghost != nullptr && ghost->hasCrackdownTefTowards(thisFaction)) {
-		return true;
+	if (targetIsPlayer && ghost != nullptr) {
+		if (ghost->hasCrackdownTefTowards(thisFaction)) {
+			return true;
+		}
+
+		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
+		if (covertOvert) {
+			if (!ghost->hasGcwTef() && target->getFactionStatus() == FactionStatus::COVERT) {
+				return false;
+			}
+		}
 	}
 
 	if (thisFaction != 0 && targetFaction != 0 && thisFaction != targetFaction)
@@ -766,16 +776,25 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* creature) 
 	} else if (creatureIsPlayer && thisFaction != 0) {
 		Reference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost != nullptr && ghost->hasCrackdownTefTowards(thisFaction)) {
+		if (ghost == nullptr)
+			return false;
+
+		if (ghost->hasCrackdownTefTowards(thisFaction)) {
 			return true;
 		}
 
-		if (creature->getFactionStatus() == 0) {
+		int creatureStatus = creature->getFactionStatus();
+
+		if (creatureStatus == 0) {
 			return false;
 		}
 
-		if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && creature->getFactionStatus() != FactionStatus::OVERT) {
-			return false;
+		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
+		if (!covertOvert) {
+			if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && creatureStatus != FactionStatus::OVERT) {
+				return false;
+			}
 		}
 	}
 
