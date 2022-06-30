@@ -24,11 +24,11 @@
 #include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 #include "server/zone/objects/installation/components/MinefieldDataComponent.h"
-#include "server/zone/objects/installation/components/DetectorDataComponent.h"
+#include "server/zone/objects/installation/components/ScannerDataComponent.h"
 #include "server/zone/objects/installation/components/TurretZoneComponent.h"
 #include "server/zone/objects/installation/components/MinefieldZoneComponent.h"
 #include "server/zone/objects/installation/components/MinefieldContainerComponent.h"
-#include "server/zone/objects/installation/components/DetectorZoneComponent.h"
+#include "server/zone/objects/installation/components/ScannerZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/objects/building/components/BuildingDataComponent.h"
@@ -230,7 +230,7 @@ ComponentManager::ComponentManager() {
 	components.put("TurretZoneComponent", new TurretZoneComponent());
 	components.put("MinefieldZoneComponent", new MinefieldZoneComponent());
 	components.put("MinefieldContainerComponent", new MinefieldContainerComponent());
-	components.put("DetectorZoneComponent", new DetectorZoneComponent());
+	components.put("ScannerZoneComponent", new ScannerZoneComponent());
 	components.put("PersonnelPerkZoneComponent", new PersonnelPerkZoneComponent());
 
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
@@ -258,7 +258,7 @@ ComponentManager::ComponentManager() {
 
 	dataObjectFactory.registerObject<TurretDataComponent>("TurretDataComponent");
 	dataObjectFactory.registerObject<MinefieldDataComponent>("MinefieldDataComponent");
-	dataObjectFactory.registerObject<DetectorDataComponent>("DetectorDataComponent");
+	dataObjectFactory.registerObject<ScannerDataComponent>("ScannerDataComponent");
 
 	components.put("CreatureHabitatMenuComponent", new CreatureHabitatMenuComponent());
 	components.put("WearableObjectMenuComponent", new WearableObjectMenuComponent());

@@ -2580,6 +2580,10 @@ bool PlayerObjectImplementation::hasPvpTef() const {
 	return !lastGcwPvpCombatActionTimestamp.isPast() || hasBhTef() || !lastPvpAreaCombatActionTimestamp.isPast();
 }
 
+bool PlayerObjectImplementation::hasGcwTef() const {
+	return !lastGcwPvpCombatActionTimestamp.isPast();
+}
+
 bool PlayerObjectImplementation::hasBhTef() const {
 	return !lastBhPvpCombatActionTimestamp.isPast();
 }
