@@ -109,6 +109,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask},
 		{ "setPvpStatusBit", &LuaTangibleObject::setPvpStatusBit},
 		{ "isChangingFactionStatus", &LuaTangibleObject::isChangingFactionStatus },
+		{ "getFactionStatus", &LuaTangibleObject::getFactionStatus },
 		{ "setFutureFactionStatus", &LuaTangibleObject::setFutureFactionStatus },
 		{ "addDotState", &LuaCreatureObject::addDotState},
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject},

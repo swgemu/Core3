@@ -35,6 +35,7 @@ namespace tangible {
 		int broadcastPvpStatusBitmask(lua_State *L);
 		int sendPvpStatusTo(lua_State *L);
 		int isChangingFactionStatus(lua_State* L);
+		int getFactionStatus(lua_State* L);
 		int setFutureFactionStatus(lua_State* L);
 		int isOnLeave(lua_State* L);
 		int isOvert(lua_State* L);

@@ -98,6 +98,7 @@ namespace scene {
 		int isOwned(lua_State* L);
 		int playEffect(lua_State* L);
 		int addPendingTask(lua_State* L);
+		int hasPendingTask(lua_State* L);
 		int cancelPendingTask(lua_State* L);
 		int getChildObject(lua_State* L);
 		int getContainerOwnerID(lua_State* L);

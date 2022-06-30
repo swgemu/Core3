@@ -691,6 +691,19 @@ namespace conf {
 
 			return cachedPvpBroadcastChannel;
 		}
+
+		inline bool useCovertOvertSystem() {
+			static uint32 cachedVersion = 0;
+			static bool cachedCovertOvertSystem;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedCovertOvertSystem = getBool("Core3.GCWManager.useCovertOvertSystem", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedCovertOvertSystem;
+		}
 	};
 }
 

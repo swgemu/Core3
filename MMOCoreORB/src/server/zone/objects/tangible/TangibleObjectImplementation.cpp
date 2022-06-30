@@ -174,9 +174,14 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 
 		uint32 pvpStatusBitmask = creature->getPvpStatusBitmask();
 		uint32 oldStatusBitmask = pvpStatusBitmask;
+		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 		if (factionStatus == FactionStatus::COVERT) {
-			creature->sendSystemMessage("@faction_recruiter:covert_complete");
+			if (covertOvert) {
+				creature->sendSystemMessage("Your faction affiliation has now been hidden from others.");
+			} else {
+				creature->sendSystemMessage("@faction_recruiter:covert_complete");
+			}
 
 			if (pvpStatusBitmask & CreatureFlag::OVERT)
 				pvpStatusBitmask &= ~CreatureFlag::OVERT;
@@ -196,7 +201,11 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 				creature->addCooldown("declare_overt_cooldown", cooldown * 1000);
 				pvpStatusBitmask |= CreatureFlag::OVERT;
 
-				creature->sendSystemMessage("@faction_recruiter:overt_complete");
+				if (covertOvert) {
+					creature->sendSystemMessage("You successfully declare overt faction status. You may now be attacked by opposing faction members.");
+				} else {
+					creature->sendSystemMessage("@faction_recruiter:overt_complete");
+				}
 			}
 
 			if (ConfigManager::instance()->isPvpBroadcastChannelEnabled()) {
@@ -214,8 +223,16 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 			if (pvpStatusBitmask & CreatureFlag::OVERT)
 				pvpStatusBitmask &= ~CreatureFlag::OVERT;
 
-			if (creature->getFaction() != 0)
-				creature->sendSystemMessage("@faction_recruiter:on_leave_complete");
+			if (creature->getFaction() != 0) {
+				if (covertOvert) {
+					StringIdChatParameter resignation("faction_recruiter", "resign_complete");
+					resignation.setTO(creature->getFaction() == Factions::FACTIONREBEL ? "Rebel" : "Imperial");
+
+					creature->sendSystemMessage(resignation); // Your resignation from the %TO faction is complete.
+				} else {
+					creature->sendSystemMessage("@faction_recruiter:on_leave_complete");
+				}
+			}
 		}
 
 		if (oldStatusBitmask != CreatureFlag::NONE)

@@ -8,6 +8,7 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/frs/FrsManager.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 ForceHealQueueCommand::ForceHealQueueCommand(const String& name, ZoneProcessServer* server) : JediQueueCommand(name, server) {
 	speed = 3;
@@ -261,8 +262,23 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 		if (!selfHeal && targetCreature->isPlayerCreature()) {
 			PlayerObject* targetGhost = targetCreature->getPlayerObject().get();
 
-			if (targetGhost != nullptr && targetGhost->isInPvpArea(true)) {
-				playerObject->updateLastPvpAreaCombatActionTimestamp();
+			if (targetGhost != nullptr) {
+				bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
+				if (covertOvert) {
+					int healerStatus = creature->getFactionStatus();
+					int targetStatus = targetCreature->getFactionStatus();
+
+					if (!CombatManager::instance()->areInDuel(creature, targetCreature)) {
+						if ((healerStatus >= FactionStatus::COVERT && targetGhost->hasGcwTef()) || (targetStatus == FactionStatus::OVERT && healerStatus == FactionStatus::COVERT)) {
+							playerObject->updateLastGcwPvpCombatActionTimestamp();
+						}
+					}
+				}
+
+				if (targetGhost->isInPvpArea(true)) {
+					playerObject->updateLastPvpAreaCombatActionTimestamp();
+				}
 			}
 		}
 

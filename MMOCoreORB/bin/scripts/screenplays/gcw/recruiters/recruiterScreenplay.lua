@@ -2,6 +2,9 @@ local ObjectManager = require("managers.object.object_manager")
 includeFile("gcw/recruiters/factionPerkData.lua")
 
 recruiterScreenplay = Object:new {
+	useCovertOvertSystem = false,
+	covertOvertResignTime = 1, -- In Hours
+
 	minimumFactionStanding = 200,
 
 	factionHashCode = { rebel = 370444368, imperial = 3679112276 },
@@ -178,8 +181,15 @@ function recruiterScreenplay:getInstallationsOptions(faction, gcwDiscount, smugg
 	local factionRewardData = self:getFactionDataTable(faction)
 	for k,v in pairs(factionRewardData.installationsList) do
 		if ( factionRewardData.installations[v] ~= nil and factionRewardData.installations[v].display ~= nil and factionRewardData.installations[v].cost ~= nil ) then
+
+			if ((not self.useCovertOvertSystem) and (factionRewardData.installationsList[k] == "covert_detector_32m")) then
+				goto skip
+			end
+
 			local option = {self:generateSuiString(factionRewardData.installations[v].display, math.ceil(factionRewardData.installations[v].cost * gcwDiscount * smugglerDiscount)), 0}
 			table.insert(optionsTable, option)
+
+			::skip::
 		end
 	end
 	return optionsTable
@@ -697,11 +707,29 @@ function recruiterScreenplay:getSmugglerDiscount(pPlayer)
 end
 
 function recruiterScreenplay:handleGoOnLeave(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	if (CreatureObject(pPlayer):hasSkill("force_rank_light_novice") or CreatureObject(pPlayer):hasSkill("force_rank_dark_novice")) then
+		CreatureObject(pPlayer):sendSystemMessage("@faction_recruiter:jedi_cant_resign")
+		return
+	end
+
 	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
 	CreatureObject(pPlayer):setFactionStatus(0)
 end
 
 function recruiterScreenplay:handleGoCovert(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	if (CreatureObject(pPlayer):hasSkill("force_rank_light_novice") or CreatureObject(pPlayer):hasSkill("force_rank_dark_novice")) then
+		CreatureObject(pPlayer):sendSystemMessage("@faction_recruiter:jedi_cant_go_covert")
+		return
+	end
+
 	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
 	CreatureObject(pPlayer):setFactionStatus(1)
 end
@@ -712,17 +740,37 @@ function recruiterScreenplay:handleGoOvert(pPlayer)
 end
 
 function recruiterScreenplay:handleResign(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	if (CreatureObject(pPlayer):hasSkill("force_rank_light_novice") or CreatureObject(pPlayer):hasSkill("force_rank_dark_novice")) then
+		CreatureObject(pPlayer):sendSystemMessage("@faction_recruiter:jedi_cant_resign")
+		return
+	end
+
+	local playerID = CreatureObject(pPlayer):getObjectID()
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return
 	end
 
-	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
+	deleteData(playerID .. ":changingFactionStatus")
 	local oldFaction = CreatureObject(pPlayer):getFaction()
 	local oldFactionName = self:getFactionFromHashCode(oldFaction)
-	CreatureObject(pPlayer):setFactionRank(0)
-	CreatureObject(pPlayer):setFaction(0)
-	CreatureObject(pPlayer):setFactionStatus(0)
+
+	if (self.useCovertOvertSystem) then
+		CreatureObject(pPlayer):setFactionRank(0)
+		CreatureObject(pPlayer):setFactionStatus(0)
+		CreatureObject(pPlayer):setFaction(0)
+
+		TangibleObject(pPlayer):broadcastPvpStatusBitmask()
+	else
+		CreatureObject(pPlayer):setFactionRank(0)
+		CreatureObject(pPlayer):setFaction(0)
+		CreatureObject(pPlayer):setFactionStatus(0)
+	end
+
 	PlayerObject(pGhost):decreaseFactionStanding(oldFactionName, 0)
 end
