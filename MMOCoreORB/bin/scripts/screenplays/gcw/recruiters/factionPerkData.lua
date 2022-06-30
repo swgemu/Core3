@@ -36,7 +36,7 @@ rebelRewardData = {
 	installationsList = {
 		"hq_s01_pvp_rebel", "hq_s01_rebel", "hq_s02_pvp_rebel", "hq_s02_rebel", "hq_s03_pvp_rebel", "hq_s03_rebel", "hq_s04_pvp_rebel", "hq_s04_rebel", --"hq_s05_pvp_rebel",
 		"turret_block_lg", "turret_block_med", "turret_block_sm", "turret_dish_sm", "turret_dish_lg", "turret_tower_sm", "turret_tower_med", "turret_tower_lg",
-		"minefield_1x1",
+		"covert_detector_32m", "minefield_1x1",
 	},
 
 	installations = {
@@ -57,7 +57,7 @@ rebelRewardData = {
 		turret_tower_sm = { type=factionRewardType.installation, display="@deed:turret_tower_sm", item="object/tangible/deed/faction_perk/turret/tower_sm_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/tower_sm.iff", cost=1400 },
 		turret_tower_med = { type=factionRewardType.installation, display="@deed:turret_tower_med", item="object/tangible/deed/faction_perk/turret/tower_med_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/tower_med.iff", cost=4200 },
 		turret_tower_lg = { type=factionRewardType.installation, display="@deed:turret_tower_lg", item="object/tangible/deed/faction_perk/turret/tower_lg_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/tower_lg.iff", cost=6300 },
-		covert_detector_32m = { type=factionRewardType.installation, display="@deed:covert_detector_32m", item="object/tangible/deed/faction_perk/covert_detector/detector_32m_deed.iff", generatedObjectTemplate="object/installation/faction_perk/covert_detector/detector_base.iff", cost=3000 },
+		covert_detector_32m = { type=factionRewardType.installation, display="@deed:covert_detector_32m", item="object/tangible/deed/faction_perk/covert_detector/detector_32m_deed.iff", generatedObjectTemplate="object/installation/faction_perk/covert_detector/detector_32m.iff", cost=3000 },
 		minefield_1x1 = { type=factionRewardType.installation, display="@deed:minefield_1x1", item="object/tangible/deed/faction_perk/minefield/field_1x1_deed.iff", generatedObjectTemplate="object/installation/faction_perk/minefield/field_1x1.iff", cost=5000 },
 	},
 
@@ -152,8 +152,7 @@ imperialRewardData = {
 		"hq_s01_pvp_imperial", "hq_s01_imperial", "hq_s02_pvp_imperial", "hq_s02_imperial", "hq_s03_pvp_imperial", "hq_s03_imperial", "hq_s04_pvp_imperial", "hq_s04_imperial",
 		--"hq_s05_pvp_imperial",
 		"turret_block_lg", "turret_block_med", "turret_block_sm", "turret_dish_sm", "turret_dish_lg", "turret_tower_sm", "turret_tower_med", "turret_tower_lg",
-		--"covert_detector_32m",
-		"minefield_1x1",
+		"covert_detector_32m", "minefield_1x1",
 	},
 
 	installations = {
@@ -174,7 +173,7 @@ imperialRewardData = {
 		turret_tower_sm = { type=factionRewardType.installation, display="@deed:turret_tower_sm", item="object/tangible/deed/faction_perk/turret/tower_sm_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/tower_sm.iff", cost=1400 },
 		turret_tower_med = { type=factionRewardType.installation, display="@deed:turret_tower_med", item="object/tangible/deed/faction_perk/turret/tower_med_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/tower_med.iff", cost=4200 },
 		turret_tower_lg = { type=factionRewardType.installation, display="@deed:turret_tower_lg", item="object/tangible/deed/faction_perk/turret/tower_lg_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/tower_lg.iff", cost=6300 },
-		covert_detector_32m = { type=factionRewardType.installation, display="@deed:covert_detector_32m", item="object/tangible/deed/faction_perk/covert_detector/detector_32m_deed.iff", generatedObjectTemplate="object/installation/faction_perk/covert_detector/detector_base.iff", cost=3000 },
+		covert_detector_32m = { type=factionRewardType.installation, display="@deed:covert_detector_32m", item="object/tangible/deed/faction_perk/covert_detector/detector_32m_deed.iff", generatedObjectTemplate="object/installation/faction_perk/covert_detector/detector_32m.iff", cost=3000 },
 		minefield_1x1 = { type=factionRewardType.installation, display="@deed:minefield_1x1", item="object/tangible/deed/faction_perk/minefield/field_1x1_deed.iff", generatedObjectTemplate="object/installation/faction_perk/minefield/field_1x1.iff", cost=350 },
 	},
 

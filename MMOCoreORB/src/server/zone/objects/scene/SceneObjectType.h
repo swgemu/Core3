@@ -100,6 +100,7 @@ public:
 	/// Not in client **********
 	const static int GARAGEINSTALLATION = 0x1006;
 	const static int SHUTTLEINSTALLATION = 0x1007;
+	const static int COVERTSCANNER = 0x1008;
 	/// End **************
 
 	const static int TANGIBLE = 0x2000;  // MISC
