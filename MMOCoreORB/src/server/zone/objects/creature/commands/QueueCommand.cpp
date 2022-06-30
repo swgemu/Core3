@@ -304,12 +304,25 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 		return;
 	}
 
+	bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
 	if (target->isPlayerCreature()) {
 		PlayerObject* targetGhost = target->getPlayerObject().get();
 
 		if (targetGhost != nullptr) {
-			if (!CombatManager::instance()->areInDuel(creature, target) && target->getFactionStatus() == FactionStatus::OVERT && targetGhost->hasPvpTef()) {
-				ghost->updateLastGcwPvpCombatActionTimestamp();
+			if (covertOvert) {
+				int healerStatus = creature->getFactionStatus();
+				int targetStatus = target->getFactionStatus();
+
+				if (!CombatManager::instance()->areInDuel(creature, target)) {
+					if ((healerStatus >= FactionStatus::COVERT && targetGhost->hasGcwTef()) || (targetStatus == FactionStatus::OVERT && healerStatus == FactionStatus::COVERT)) {
+						ghost->updateLastGcwPvpCombatActionTimestamp();
+					}
+				}
+			} else {
+				if (!CombatManager::instance()->areInDuel(creature, target) && target->getFactionStatus() == FactionStatus::OVERT && targetGhost->hasPvpTef()) {
+					ghost->updateLastGcwPvpCombatActionTimestamp();
+				}
 			}
 
 			if (targetGhost->isInPvpArea(true)) {
@@ -323,8 +336,19 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 			PlayerObject* ownerGhost = owner->getPlayerObject().get();
 
 			if (ownerGhost != nullptr) {
-				if (!CombatManager::instance()->areInDuel(creature, owner) && owner->getFactionStatus() == FactionStatus::OVERT && ownerGhost->hasPvpTef()) {
-					ghost->updateLastGcwPvpCombatActionTimestamp();
+				if (covertOvert) {
+					int healerStatus = creature->getFactionStatus();
+					int targetStatus = owner->getFactionStatus();
+
+					if (!CombatManager::instance()->areInDuel(creature, target)) {
+						if ((healerStatus >= FactionStatus::COVERT && ownerGhost->hasGcwTef()) || (targetStatus == FactionStatus::OVERT && healerStatus == FactionStatus::COVERT)) {
+							ghost->updateLastGcwPvpCombatActionTimestamp();
+						}
+					}
+				} else {
+					if (!CombatManager::instance()->areInDuel(creature, owner) && owner->getFactionStatus() == FactionStatus::OVERT && ownerGhost->hasPvpTef()) {
+						ghost->updateLastGcwPvpCombatActionTimestamp();
+					}
 				}
 
 				if (ownerGhost->isInPvpArea(true)) {

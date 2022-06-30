@@ -3034,14 +3034,23 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* tarCreo) {
 			if (CombatManager::instance()->areInDuel(tarCreo, asCreatureObject()))
 				return true;
 
-			if ((pvpStatusBitmask & CreatureFlag::OVERT) && (tarCreo->getPvpStatusBitmask() & CreatureFlag::OVERT) && thisFaction != targetFaction)
-				return true;
+			PlayerObject* tarGhost = tarCreo->getPlayerObject();
+
+			if (thisFaction != targetFaction && thisFaction > 0 && targetFaction > 0) {
+				bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
+				if (covertOvert) {
+					if ((ghost->hasGcwTef() || (pvpStatusBitmask & CreatureFlag::OVERT)) && (tarCreo->getFactionStatus() == FactionStatus::OVERT || (tarGhost != nullptr && tarGhost->hasGcwTef())))
+						return true;
+				} else {
+					if ((pvpStatusBitmask & CreatureFlag::OVERT) && (tarCreo->getPvpStatusBitmask() & CreatureFlag::OVERT))
+						return true;
+				}
+			}
 
 			if (hasBountyMissionFor(tarCreo)  && ghost->hasBhTef()) {
 				return true;
 			}
-
-			PlayerObject* tarGhost = tarCreo->getPlayerObject();
 
 			if (tarGhost != nullptr && tarCreo->hasBountyMissionFor(asCreatureObject()) && tarGhost->hasBhTef())
 				return true;
@@ -3117,11 +3126,24 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 			if (thisFaction == 0 || getFactionStatus() == FactionStatus::ONLEAVE)
 				return false;
 
-			// if tano is overt, creature must be overt
-			if ((object->getPvpStatusBitmask() & CreatureFlag::OVERT) && !(getPvpStatusBitmask() & CreatureFlag::OVERT))
-				return false;
+			bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
-			// Remaining Options: Overt Creature / Overt tano, covert/covert, covert tano, overt creature. All should return attackable
+			if (covertOvert) {
+				PlayerObject* ghost = getPlayerObject();
+
+				if (ghost == nullptr)
+					return false;
+
+				if (getFactionStatus() == FactionStatus::ONLEAVE && !ghost->hasGcwTef()) {
+					return false;
+				}
+			} else {
+				// if tano is overt, creature must be overt
+				if ((object->getPvpStatusBitmask() & CreatureFlag::OVERT) && !(getPvpStatusBitmask() & CreatureFlag::OVERT))
+					return false;
+
+				// Remaining Options: Overt Creature / Overt tano, covert/covert, covert tano, overt creature. All should return attackable
+			}
 		}
 	}
 
@@ -3263,10 +3285,20 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 
 			// PvP - Different Factions. Both must be overt status or we return false
 			if (thisFaction != creatureFaction) {
-				if (getFactionStatus() == FactionStatus::OVERT && creature->getFactionStatus() == FactionStatus::OVERT) {
-					return true;
+				bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
+				if (covertOvert) {
+					if ((getFactionStatus() == FactionStatus::OVERT || ghost->hasGcwTef()) && creature->getFactionStatus() >= FactionStatus::COVERT) {
+						return true;
+					} else {
+						return false;
+					}
 				} else {
-					return false;
+					if (getFactionStatus() == FactionStatus::OVERT && creature->getFactionStatus() == FactionStatus::OVERT) {
+						return true;
+					} else {
+						return false;
+					}
 				}
 			}
 		}
@@ -3320,15 +3352,22 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 
 	uint32 targetFactionStatus = targetCreo->getFactionStatus();
 	uint32 currentFactionStatus = object->getFactionStatus();
+	bool covertOvert =  ConfigManager::instance()->useCovertOvertSystem();
 
-	if (getFaction() != object->getFaction() && !(targetFactionStatus == FactionStatus::ONLEAVE))
-		return false;
+	if (covertOvert) {
+		// Different Factions, or neutral, and target is overt
+		if (getFaction() != object->getFaction() && (targetFactionStatus == FactionStatus::OVERT))
+			return false;
+	} else {
+		if (getFaction() != object->getFaction() && !(targetFactionStatus == FactionStatus::ONLEAVE))
+			return false;
 
-	if ((targetFactionStatus == FactionStatus::OVERT) && !(currentFactionStatus == FactionStatus::OVERT))
-		return false;
+		if ((targetFactionStatus == FactionStatus::OVERT) && !(currentFactionStatus == FactionStatus::OVERT))
+			return false;
 
-	if (!(targetFactionStatus == FactionStatus::ONLEAVE) && (currentFactionStatus == FactionStatus::ONLEAVE))
-		return false;
+		if (!(targetFactionStatus == FactionStatus::ONLEAVE) && (currentFactionStatus == FactionStatus::ONLEAVE))
+			return false;
+	}
 
 	if (targetIsPlayer && targetGhost != nullptr && targetGhost->hasBhTef()) {
 		return false;

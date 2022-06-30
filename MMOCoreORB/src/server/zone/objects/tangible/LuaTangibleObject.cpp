@@ -25,6 +25,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "sendPvpStatusTo", &LuaTangibleObject::sendPvpStatusTo },
 		{ "getPvpStatusBitmask", &LuaTangibleObject::getPvpStatusBitmask },
 		{ "isChangingFactionStatus", &LuaTangibleObject::isChangingFactionStatus },
+		{ "getFactionStatus", &LuaTangibleObject::getFactionStatus },
 		{ "setFutureFactionStatus", &LuaTangibleObject::setFutureFactionStatus },
 		{ "isOnLeave", &LuaTangibleObject::isOnLeave },
 		{ "isOvert", &LuaTangibleObject::isOvert },
@@ -201,6 +202,12 @@ int LuaTangibleObject::setFutureFactionStatus(lua_State* L) {
 	realObject->setFutureFactionStatus(status);
 
 	return 0;
+}
+
+int LuaTangibleObject::getFactionStatus(lua_State* L) {
+	lua_pushinteger(L, realObject->getFactionStatus());
+
+	return 1;
 }
 
 int LuaTangibleObject::isOnLeave(lua_State* L) {

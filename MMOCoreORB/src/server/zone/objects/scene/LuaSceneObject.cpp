@@ -85,6 +85,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isOwned", &LuaSceneObject::isOwned },
 		{ "playEffect", &LuaSceneObject::playEffect },
 		{ "addPendingTask", &LuaSceneObject::addPendingTask },
+		{ "hasPendingTask", &LuaSceneObject::hasPendingTask },
 		{ "cancelPendingTask", &LuaSceneObject::cancelPendingTask },
 		{ "getChildObject", &LuaSceneObject::getChildObject },
 		{ "getContainerOwnerID", &LuaSceneObject::getContainerOwnerID },
@@ -788,6 +789,18 @@ int LuaSceneObject::addPendingTask(lua_State* L) {
 
 	return 0;
 }
+
+int LuaSceneObject::hasPendingTask(lua_State* L) {
+	String play = lua_tostring(L, -2);
+	String key = lua_tostring(L, -1);
+
+	String name = play + ":" + key;
+
+	lua_pushboolean(L, realObject->containsPendingTask(name));
+
+	return 1;
+}
+
 
 int LuaSceneObject::cancelPendingTask(lua_State* L) {
 	String play = lua_tostring(L, -2);

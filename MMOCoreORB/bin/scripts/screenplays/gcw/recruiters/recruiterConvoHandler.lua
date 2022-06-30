@@ -14,8 +14,10 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 
 	local pConvScreen = screen:cloneScreen()
 	local clonedConversation = LuaConversationScreen(pConvScreen)
+
 	if (screenID == "greet_member_start_covert" or screenID == "stay_covert" or screenID == "dont_resign_covert") then
 		self:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
+
 		if (recruiterScreenplay:getFactionFromHashCode(CreatureObject(pPlayer):getFaction()) == "rebel") then
 			clonedConversation:addOption("@conversation/faction_recruiter_rebel:s_480", "faction_purchase")
 		else
@@ -24,12 +26,12 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 	elseif (screenID == "greet_member_start_overt" or screenID == "stay_special_forces" or screenID == "stay_overt" or screenID == "dont_resign_overt") then
 		self:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
 		self:updateScreenWithBribe(pPlayer, pNpc, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
+
 		if (recruiterScreenplay:getFactionFromHashCode(CreatureObject(pPlayer):getFaction()) == "rebel") then
 			clonedConversation:addOption("@conversation/faction_recruiter_rebel:s_480", "faction_purchase")
 		else
 			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_324", "faction_purchase")
 		end
-
 	elseif (screenID == "accept_join") then
 		CreatureObject(pPlayer):setFaction(recruiterScreenplay:getRecruiterFactionHashCode(pNpc))
 		CreatureObject(pPlayer):setFactionStatus(1)
@@ -119,6 +121,113 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		clonedConversation:setDialogTextDI(getImperialScore(zoneName))
 		clonedConversation:setDialogTextTO(getRebelScore(zoneName))
 
+	-- Covert/Overt System
+	elseif (screenID == "accept_join2") then
+		local recruiterFaction = recruiterScreenplay:getRecruiterFaction(pNpc)
+		local convoTemplate = LuaConversationTemplate(pConvTemplate)
+
+		if (PlayerObject(pGhost):getFactionStanding(recruiterFaction) < recruiterScreenplay.minimumFactionStanding) then
+			local notEnoughScreen = convoTemplate:getScreen("neutral_need_more_points2")
+			local screenObject = LuaConversationScreen(notEnoughScreen)
+
+			pConvScreen = screenObject:cloneScreen()
+
+			screenObject = LuaConversationScreen(pConvScreen)
+			screenObject:setDialogTextTO(recruiterFaction)
+			screenObject:setDialogTextDI(recruiterScreenplay.minimumFactionStanding)
+
+			return pConvScreen
+		else
+			recruiterFaction = recruiterFaction:gsub("^%l", string.upper)
+			clonedConversation:setDialogTextTO(recruiterFaction)
+
+			CreatureObject(pPlayer):setFaction(recruiterScreenplay:getRecruiterFactionHashCode(pNpc))
+			CreatureObject(pPlayer):setFactionStatus(1)
+		end
+	elseif (screenID == "neutral_need_more_points2") then
+		clonedConversation:setDialogTextDI(recruiterScreenplay.minimumFactionStanding)
+		clonedConversation:setDialogTextTO(recruiterScreenplay:getRecruiterFaction(pNpc))
+	elseif (screenID == "resign_faction") then
+		clonedConversation:setDialogTextTU(CreatureObject(pPlayer):getFirstName())
+		clonedConversation:setDialogTextDI(recruiterScreenplay.covertOvertResignTime)
+	elseif (screenID == "confirm_resign") then
+		local convoTemplate = LuaConversationTemplate(pConvTemplate)
+
+		if (CreatureObject(pPlayer):hasSkill("force_rank_light_novice") or CreatureObject(pPlayer):hasSkill("force_rank_dark_novice")) then
+			CreatureObject(pPlayer):sendSystemMessage("@faction_recruiter:jedi_cant_resign")
+			return
+		end
+
+		local recruiterFaction = recruiterScreenplay:getRecruiterFaction(pNpc)
+		recruiterFaction = recruiterFaction:gsub("^%l", string.upper)
+
+		clonedConversation:setDialogTextTO(recruiterFaction)
+		clonedConversation:setDialogTextDI(recruiterScreenplay.covertOvertResignTime)
+
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
+
+		if (SceneObject(pPlayer):hasPendingTask("recruiterScreenplay", "handleResign")) then
+			SceneObject(pPlayer):cancelPendingTask("recruiterScreenplay", "handleResign")
+		end
+
+		local timer = recruiterScreenplay.covertOvertResignTime * 60 * 60 * 1000 -- 1hr in MS
+
+		SceneObject(pPlayer):addPendingTask(timer, "recruiterScreenplay", "handleResign")
+
+		return pConvScreen
+	elseif (screenID == "greet_member_start_covert2" or screenID == "greet_member_start_overt2" or screenID == "dont_resign") then
+		if (screenID == "dont_resign") then
+			clonedConversation:setDialogTextStringId("@faction_recruiter:resign_faction_no")
+		else
+			clonedConversation:setDialogTextTO(CreatureObject(pPlayer):getFirstName())
+		end
+
+		-- Cancel current resignation
+		if (SceneObject(pPlayer):hasPendingTask("recruiterScreenplay", "handleResign")) then
+			clonedConversation:addOption("@faction_recruiter:option_recind_resignation", "cancel_resignation")
+		else
+			if (screenID == "greet_member_start_covert2") then
+				clonedConversation:addOption("@faction_recruiter:option_go_declared", "confirm_declare")
+			elseif (not SceneObject(pPlayer):hasPendingTask("recruiterScreenplay", "handleGoCovert")) then
+				clonedConversation:addOption("@faction_recruiter:option_go_covert", "confirm_covert")
+			end
+
+			clonedConversation:addOption("@faction_recruiter:option_resign_from_faction", "resign_faction")
+		end
+
+		if (recruiterScreenplay:getRecruiterFaction(pNpc) == "imperial") then
+			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_410", "show_gcw_score")
+		else
+			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_410", "show_gcw_score")
+		end
+
+		self:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
+
+		if (screenID == "greet_member_start_overt2") then
+			self:updateScreenWithBribe(pPlayer, pNpc, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
+		end
+
+		clonedConversation:addOption("@faction_recruiter:option_purchase_items", "faction_purchase")
+	elseif (screenID == "cancel_resignation") then
+		deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
+		SceneObject(pPlayer):cancelPendingTask("recruiterScreenplay", "handleResign")
+	elseif (screenID == "declare_complete") then
+		CreatureObject(pPlayer):setFutureFactionStatus(2)
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
+		createEvent(1000, "recruiterScreenplay", "handleGoOvert", pPlayer, "")
+	elseif (screenID == "covert_complete") then
+		if (CreatureObject(pPlayer):hasSkill("force_rank_light_novice") or CreatureObject(pPlayer):hasSkill("force_rank_dark_novice")) then
+			CreatureObject(pPlayer):sendSystemMessage("@faction_recruiter:jedi_cant_go_covert")
+			return
+		end
+
+		clonedConversation:setDialogTextDI(recruiterScreenplay.covertOvertResignTime)
+
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
+
+		local timer = recruiterScreenplay.covertOvertResignTime * 60 * 60 * 1000 -- 1hr in MS
+
+		SceneObject(pPlayer):addPendingTask(timer, "recruiterScreenplay", "handleGoCovert")
 	end
 
 	return pConvScreen
@@ -143,18 +252,30 @@ function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 		return convoTemplate:getScreen("greet_enemy")
 	elseif factionStanding < -200 and PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterEnemyFaction(pNpc)) > 0 then
 		return convoTemplate:getScreen("greet_hated")
-	elseif (CreatureObject(pPlayer):isChangingFactionStatus()) then
+	elseif (CreatureObject(pPlayer):isChangingFactionStatus() and not recruiterScreenplay.useCovertOvertSystem) then
 		return convoTemplate:getScreen("greet_changing_status")
 	elseif (faction == recruiterScreenplay:getRecruiterFactionHashCode(pNpc)) then
 		if (CreatureObject(pPlayer):isOnLeave()) then
 			return convoTemplate:getScreen("greet_onleave_start")
 		elseif (CreatureObject(pPlayer):isCovert()) then
-			return convoTemplate:getScreen("greet_member_start_covert")
+			if (recruiterScreenplay.useCovertOvertSystem) then
+				return convoTemplate:getScreen("greet_member_start_covert2")
+			else
+				return convoTemplate:getScreen("greet_member_start_covert")
+			end
 		else
-			return convoTemplate:getScreen("greet_member_start_overt")
+			if (recruiterScreenplay.useCovertOvertSystem) then
+				return convoTemplate:getScreen("greet_member_start_overt2")
+			else
+				return convoTemplate:getScreen("greet_member_start_overt")
+			end
 		end
 	else
-		return convoTemplate:getScreen("greet_neutral_start")
+		if (recruiterScreenplay.useCovertOvertSystem) then
+			return convoTemplate:getScreen("greet_neutral_start2")
+		else
+			return convoTemplate:getScreen("greet_neutral_start")
+		end
 	end
 	return nil
 end
