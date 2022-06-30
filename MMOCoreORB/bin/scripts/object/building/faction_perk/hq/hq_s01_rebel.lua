@@ -78,6 +78,7 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 16.3, z = 0, y = 9.72, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -16.3, z = 0, y = 9.72, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
+		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 25, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 15.8, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
 		{ templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },

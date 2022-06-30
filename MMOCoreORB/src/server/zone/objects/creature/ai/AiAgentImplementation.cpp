@@ -3574,9 +3574,30 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 			return true;
 		}
 
-		// this is the same thing, but ensures that if the target is a player, that they aren't on leave
-		if (targetIsPlayer && target->getFactionStatus() != FactionStatus::ONLEAVE) {
-			return true;
+		if (targetIsPlayer) {
+			bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
+			if (covertOvert) {
+				PlayerObject* ghost = target->getPlayerObject();
+
+				if (ghost == nullptr)
+					return false;
+
+				uint32 targetStatus = target->getFactionStatus();
+				bool gcwTef = ghost->hasGcwTef();
+
+				if (!gcwTef && targetStatus == FactionStatus::COVERT)
+					return false;
+
+				if (targetStatus == FactionStatus::OVERT || gcwTef) {
+					return true;
+				}
+			} else {
+				// this is the same thing, but ensures that if the target is a player, that they aren't on leave
+				if (target->getFactionStatus() != FactionStatus::ONLEAVE) {
+					return true;
+				}
+			}
 		}
 	}
 
