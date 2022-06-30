@@ -2,6 +2,8 @@ local ObjectManager = require("managers.object.object_manager")
 includeFile("gcw/recruiters/factionPerkData.lua")
 
 recruiterScreenplay = Object:new {
+	useCovertOvertSystem = true,
+
 	minimumFactionStanding = 200,
 
 	factionHashCode = { rebel = 370444368, imperial = 3679112276 },
@@ -178,8 +180,15 @@ function recruiterScreenplay:getInstallationsOptions(faction, gcwDiscount, smugg
 	local factionRewardData = self:getFactionDataTable(faction)
 	for k,v in pairs(factionRewardData.installationsList) do
 		if ( factionRewardData.installations[v] ~= nil and factionRewardData.installations[v].display ~= nil and factionRewardData.installations[v].cost ~= nil ) then
+
+			if ((not self.useCovertOvertSystem) and (factionRewardData.installationsList[k] == "covert_detector_32m")) then
+				goto skip
+			end
+
 			local option = {self:generateSuiString(factionRewardData.installations[v].display, math.ceil(factionRewardData.installations[v].cost * gcwDiscount * smugglerDiscount)), 0}
 			table.insert(optionsTable, option)
+
+			::skip::
 		end
 	end
 	return optionsTable

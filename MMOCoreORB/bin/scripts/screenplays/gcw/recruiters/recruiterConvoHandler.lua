@@ -2,7 +2,7 @@ local ObjectManager = require("managers.object.object_manager")
 
 RecruiterConvoHandler = conv_handler:new {}
 
-function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -14,22 +14,32 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 
 	local pConvScreen = screen:cloneScreen()
 	local clonedConversation = LuaConversationScreen(pConvScreen)
-	if (screenID == "greet_member_start_covert" or screenID == "stay_covert" or screenID == "dont_resign_covert") then
+
+	if (screenID == "greet_member_start_covert" or screenID == "greet_member_start_covert2" or screenID == "stay_covert" or screenID == "dont_resign_covert") then
 		self:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
-		if (recruiterScreenplay:getFactionFromHashCode(CreatureObject(pPlayer):getFaction()) == "rebel") then
-			clonedConversation:addOption("@conversation/faction_recruiter_rebel:s_480", "faction_purchase")
-		else
-			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_324", "faction_purchase")
-		end
-	elseif (screenID == "greet_member_start_overt" or screenID == "stay_special_forces" or screenID == "stay_overt" or screenID == "dont_resign_overt") then
-		self:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
-		self:updateScreenWithBribe(pPlayer, pNpc, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
+
 		if (recruiterScreenplay:getFactionFromHashCode(CreatureObject(pPlayer):getFaction()) == "rebel") then
 			clonedConversation:addOption("@conversation/faction_recruiter_rebel:s_480", "faction_purchase")
 		else
 			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_324", "faction_purchase")
 		end
 
+		if (screenID == "greet_member_start_covert2") then
+			clonedConversation:setDialogTextTO(CreatureObject(pPlayer):getFirstName())
+		end
+	elseif (screenID == "greet_member_start_overt" or screenID == "greet_member_start_overt2" or screenID == "stay_special_forces" or screenID == "stay_overt" or screenID == "dont_resign_overt") then
+		self:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
+		self:updateScreenWithBribe(pPlayer, pNpc, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
+
+		if (recruiterScreenplay:getFactionFromHashCode(CreatureObject(pPlayer):getFaction()) == "rebel") then
+			clonedConversation:addOption("@conversation/faction_recruiter_rebel:s_480", "faction_purchase")
+		else
+			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_324", "faction_purchase")
+		end
+
+		if (screenID == "greet_member_start_overt2") then
+			clonedConversation:setDialogTextTO(CreatureObject(pPlayer):getFirstName())
+		end
 	elseif (screenID == "accept_join") then
 		CreatureObject(pPlayer):setFaction(recruiterScreenplay:getRecruiterFactionHashCode(pNpc))
 		CreatureObject(pPlayer):setFactionStatus(1)
@@ -111,14 +121,16 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 	elseif (screenID == "fp_furniture" or screenID == "fp_weapons_armor" or screenID == "fp_installations" or screenID == "fp_uniforms" or screenID == "fp_hirelings" or screenID == "fp_schematics") then
 		recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
 
-	elseif (screenID == "greet_neutral_start") then
+	elseif (screenID == "greet_neutral_start" or screenID == "greet_neutral_start2") then
 		self:addJoinMilitaryOption(recruiterScreenplay:getRecruiterFaction(pNpc), clonedConversation, PlayerObject(pGhost), pNpc)
 
 	elseif (screenID == "show_gcw_score") then
 		local zoneName = SceneObject(pNpc):getZoneName()
 		clonedConversation:setDialogTextDI(getImperialScore(zoneName))
 		clonedConversation:setDialogTextTO(getRebelScore(zoneName))
-
+	elseif (screenID == "neutral_need_more_points2") then
+		clonedConversation:setDialogTextDI(recruiterScreenplay.minimumFactionStanding)
+		clonedConversation:setDialogTextTO(recruiterScreenplay:getRecruiterFaction(pNpc))
 	end
 
 	return pConvScreen
@@ -149,12 +161,24 @@ function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 		if (CreatureObject(pPlayer):isOnLeave()) then
 			return convoTemplate:getScreen("greet_onleave_start")
 		elseif (CreatureObject(pPlayer):isCovert()) then
-			return convoTemplate:getScreen("greet_member_start_covert")
+			if (recruiterScreenplay.useCovertOvertSystem) then
+				return convoTemplate:getScreen("greet_member_start_covert2")
+			else
+				return convoTemplate:getScreen("greet_member_start_covert")
+			end
 		else
-			return convoTemplate:getScreen("greet_member_start_overt")
+			if (recruiterScreenplay.useCovertOvertSystem) then
+				return convoTemplate:getScreen("greet_member_start_overt2")
+			else
+				return convoTemplate:getScreen("greet_member_start_overt")
+			end
 		end
 	else
-		return convoTemplate:getScreen("greet_neutral_start")
+		if (recruiterScreenplay.useCovertOvertSystem) then
+			return convoTemplate:getScreen("greet_neutral_start2")
+		else
+			return convoTemplate:getScreen("greet_neutral_start")
+		end
 	end
 	return nil
 end
@@ -170,15 +194,27 @@ end
 function RecruiterConvoHandler:addJoinMilitaryOption(faction, screen, playerObject, pNpc)
 	if (faction == "rebel") then
 		if (playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc)) < recruiterScreenplay.minimumFactionStanding) then
-			screen:addOption("@conversation/faction_recruiter_rebel:s_580", "neutral_need_more_points")
+			if (recruiterScreenplay.useCovertOvertSystem) then
+				screen:addOption("@faction_recruiter:join_faction_denied", "neutral_need_more_points2")
+			else
+				screen:addOption("@conversation/faction_recruiter_rebel:s_580", "neutral_need_more_points")
+			end
 		else
 			screen:addOption("@conversation/faction_recruiter_rebel:s_580", "join_military")
 		end
 	elseif (faction == "imperial") then
 		if (playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc)) < recruiterScreenplay.minimumFactionStanding) then
-			screen:addOption("@conversation/faction_recruiter_imperial:s_428", "neutral_need_more_points")
+			if (recruiterScreenplay.useCovertOvertSystem) then
+				screen:addOption("@faction_recruiter:join_faction_denied", "neutral_need_more_points2")
+			else
+				screen:addOption("@conversation/faction_recruiter_imperial:s_428", "neutral_need_more_points")
+			end
 		else
-			screen:addOption("@conversation/faction_recruiter_imperial:s_428", "join_military")
+			if (recruiterScreenplay.useCovertOvertSystem) then
+				screen:addOption("@faction_recruiter:join_faction_confirm", "join_military2")
+			else
+				screen:addOption("@conversation/faction_recruiter_imperial:s_428", "join_military")
+			end
 		end
 	end
 end

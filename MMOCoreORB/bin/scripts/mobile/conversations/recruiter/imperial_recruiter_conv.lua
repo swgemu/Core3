@@ -488,4 +488,59 @@ show_gcw_score = ConvoScreen:new {
 
 imperialRecruiterConvoTemplate:addScreen(show_gcw_score);
 
+--[[
+
+	Covert/Overt System Responses
+
+]]
+
+neutral_start2 = ConvoScreen:new {
+	id = "greet_neutral_start2",
+	leftDialog = "@faction_recruiter:greeting", -- Greetings. What can I do for you today?
+	stopConversation = "false",
+	options = {
+	}
+}
+imperialRecruiterConvoTemplate:addScreen(neutral_start2);
+
+neutral_need_more_points2 = ConvoScreen:new {
+	id = "neutral_need_more_points2",
+	leftDialog = "@faction_recruiter:join_faction_denied", -- I am glad you've expressed such interest in joining us. You must, however, prove your devotion to our cause by increasing your %TO faction standing to at least %DI.
+	stopConversation = "true",
+	options = {
+	}
+}
+imperialRecruiterConvoTemplate:addScreen(neutral_need_more_points2);
+
+member_covert_start2 = ConvoScreen:new {
+	id = "greet_member_start_covert2",
+	leftDialog = "@faction_recruiter:greeting_member", -- Hello, %TO. What would you like to do?
+	stopConversation = "false",
+	options = {
+		{"@faction_recruiter:option_go_declared", "confirm_go_overt"}, -- I would like to declare my faction affiliation.
+		--{"@conversation/faction_recruiter_imperial:s_374", "leave_time_covert"}, -- I would like to use my personal leave time.
+		{"@faction_recruiter:option_resign_from_faction", "resign_covert"}, -- I believe it is time to end my tour of duty. I would like to resign.
+		{"@conversation/faction_recruiter_imperial:s_410", "show_gcw_score"}, -- How are we doing in the war effort against the Rebel scum?
+	}
+}
+imperialRecruiterConvoTemplate:addScreen(member_covert_start2);
+
+member_overt_start2 = ConvoScreen:new {
+	id = "greet_member_start_overt2",
+	leftDialog = "@faction_recruiter:greeting_member", -- 	Hello, %TO. What would you like to do?
+	stopConversation = "false",
+	options = {
+		{"@faction_recruiter:option_go_covert", "confirm_go_covert"}, -- I would like to become a covert faction member.
+		{"@conversation/faction_recruiter_imperial:s_374", "leave_time_overt"}, -- I would like to use my personal leave time.
+		{"@conversation/faction_recruiter_imperial:s_386", "resign_overt"}, -- I believe it is time to end my tour of duty. I would like to resign.
+		{"@conversation/faction_recruiter_imperial:s_410", "show_gcw_score"}, -- How are we doing in the war effort against the Rebel scum?
+	}
+}
+imperialRecruiterConvoTemplate:addScreen(member_overt_start2);
+
+
+
+
+
+-- End of file
 addConversationTemplate("imperialRecruiterConvoTemplate", imperialRecruiterConvoTemplate);

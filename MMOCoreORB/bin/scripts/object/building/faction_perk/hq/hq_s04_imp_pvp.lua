@@ -95,6 +95,7 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 		{ templateFile = "object/static/structure/corellia/corl_power_transformer_s02.iff", x = 8.01, z = 0, y = -7.99, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/static/structure/corellia/corl_power_bubble_node.iff", x = -7.99, z = 0, y = -7.99, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
+		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 48, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 38, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 14, z = 0, y = 21, ox = 0, oy = -0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
