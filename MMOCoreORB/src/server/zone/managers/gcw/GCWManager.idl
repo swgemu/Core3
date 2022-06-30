@@ -184,6 +184,8 @@ class GCWManager extends ManagedService implements Logger {
 	public native void stop();
 
 	public native void performGCWTasks();
+	private native void verifyMinefields(BuildingObject building);
+	private native void verifyScanners(BuildingObject building);
 	private native void verifyTurrets(BuildingObject building);
 
 	public native boolean canPlaceMoreBases(CreatureObject creature);
@@ -264,11 +266,13 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native void notifyInstallationDestruction(InstallationObject installation);
 	public native void notifyTurretDestruction(BuildingObject building, InstallationObject turret);
-	public native void notifyMinefieldDestruction(BuildingObject building, InstallationObject turret);
+	public native void notifyMinefieldDestruction(BuildingObject building, InstallationObject minefield);
+	public native void notifyScannerDestruction(BuildingObject building, InstallationObject scanner);
 
 	public native void sendSelectDeedToDonate(BuildingObject building, CreatureObject creature);
 	public native void performDefenseDonation(BuildingObject building, CreatureObject creature, unsigned long deedOID);
 	private native void performDonateMinefield(BuildingObject building, CreatureObject creature, Deed deed);
+	private native void performDonateScanner(BuildingObject building, CreatureObject creature, Deed deed);
 	private native void performDonateTurret(BuildingObject building, CreatureObject creature, Deed deed);
 	private native unsigned long addChildInstallationFromDeed(BuildingObject building, final ChildObject child, CreatureObject creature, Deed deed);
 
