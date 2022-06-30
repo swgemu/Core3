@@ -358,6 +358,16 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 		// No Accuracy / Defense Calculation for TanO defender. setHit to HIT value.
 		hitList->setHit(HIT);
+
+		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
+		if (covertOvert && attacker->isPlayerCreature()) {
+			PlayerObject* ghost = attacker->getPlayerObject();
+
+			if (ghost != nullptr && attacker->getFaction() != tano->getFaction() && attacker->getFactionStatus() >= FactionStatus::COVERT) {
+				ghost->updateLastCombatActionTimestamp(false, true, false);
+			}
+		}
 	}
 
 	if (damage > 0 && tano->isAiAgent()) {
@@ -703,18 +713,6 @@ void CombatManager::finalCombatSpam(TangibleObject* attacker, WeaponObject* weap
 		return;
 	}
 
-	CloseObjectsVector* vec = (CloseObjectsVector*)attacker->getCloseObjects();
-	SortedVector<QuadTreeEntry*> closeObjects;
-
-	if (vec != nullptr) {
-		closeObjects.removeAll(vec->size(), 10);
-		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
-	} else {
-#ifdef COV_DEBUG
-		info("Null closeobjects vector in CombatManager::finalCombatSpam", true);
-#endif
-		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), COMBAT_SPAM_RANGE, &closeObjects, true);
-	}
 
 	for (int i = 0; i < targetDefenders.size(); ++i) {
 		DefenderHitList* hitList = targetDefenders.get(i);
@@ -3203,8 +3201,14 @@ void CombatManager::checkForTefs(CreatureObject* attacker, CreatureObject* defen
 	}
 
 	if (attackingCreature != nullptr && targetCreature != nullptr) {
+		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
+		if (covertOvert && attackingCreature->getFaction() != targetCreature->getFaction() && attackingCreature->getFactionStatus() >= FactionStatus::COVERT) {
+			*shouldGcwTef = true;
+		}
+
 		if (attackingCreature->isPlayerCreature() && targetCreature->isPlayerCreature() && !areInDuel(attackingCreature, targetCreature)) {
-			if (!(*shouldGcwTef)) {
+			if (!(*shouldGcwTef) && !covertOvert) {
 				if (attackingCreature->getFaction() != targetCreature->getFaction() && attackingCreature->getFactionStatus() == FactionStatus::OVERT && targetCreature->getFactionStatus() == FactionStatus::OVERT) {
 					*shouldGcwTef = true;
 				}

@@ -351,6 +351,8 @@ void GCWManagerImplementation::performGCWTasks() {
 				imperialsScore += pointsValue;
 		}
 
+		verifyMinefields(building);
+		verifyScanners(building);
 		verifyTurrets(building);
 	}
 
@@ -364,6 +366,52 @@ void GCWManagerImplementation::performGCWTasks() {
 
 	CheckGCWTask* task = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());
 	task->schedule(gcwCheckTimer * 1000);
+}
+
+void GCWManagerImplementation::verifyMinefields(BuildingObject* building) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == nullptr)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	Locker blocker(building);
+
+	for (int i = 0; i < baseData->getTotalScannerCount(); ++i) {
+		uint64 minefieldID = baseData->getMinefieldID(i);
+
+		ManagedReference<SceneObject*> minefield = zoneServer->getObject(minefieldID);
+
+		if (minefield == nullptr)
+			baseData->setScannerID(i, 0);
+	}
+}
+
+void GCWManagerImplementation::verifyScanners(BuildingObject* building) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == nullptr)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	Locker blocker(building);
+
+	for (int i = 0; i < baseData->getTotalScannerCount(); ++i) {
+		uint64 scannerID = baseData->getScannerID(i);
+
+		ManagedReference<SceneObject*> scanner = zoneServer->getObject(scannerID);
+
+		if (scanner == nullptr)
+			baseData->setScannerID(i, 0);
+	}
 }
 
 void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
@@ -385,7 +433,8 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
 
 	for (int i = 0; i < baseData->getTotalTurretCount(); ++i) {
 		uint64 turretID = baseData->getTurretID(i);
-		ManagedReference<SceneObject*> turret = zoneServer->getObject(baseData->getTurretID(i));
+
+		ManagedReference<SceneObject*> turret = zoneServer->getObject(turretID);
 
 		if (turret != nullptr)
 			turretCount++;
@@ -647,10 +696,12 @@ void GCWManagerImplementation::addMinefield(BuildingObject* building, SceneObjec
 		baseData->addMinefield(baseData->getTotalMinefieldCount(), minefield->getObjectID());
 	else
 		baseData->addMinefield(baseData->getTotalMinefieldCount(), 0);
+
+	verifyMinefields(building);
 }
 
 void GCWManagerImplementation::addScanner(BuildingObject* building, SceneObject* scanner) {
-	if (building == nullptr)
+	if (building == nullptr || !ConfigManager::instance()->useCovertOvertSystem())
 		return;
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
@@ -664,6 +715,8 @@ void GCWManagerImplementation::addScanner(BuildingObject* building, SceneObject*
 		baseData->addScanner(baseData->getTotalScannerCount(), scanner->getObjectID());
 	else
 		baseData->addScanner(baseData->getTotalScannerCount(), 0);
+
+	verifyScanners(building);
 }
 
 void GCWManagerImplementation::addTurret(BuildingObject* building, SceneObject* turret) {
@@ -884,7 +937,10 @@ void GCWManagerImplementation::startVulnerability(BuildingObject* building) {
 	if (building->getZone() == nullptr)
 		return;
 
+	verifyMinefields(building);
+	verifyScanners(building);
 	verifyTurrets(building);
+
 	spawnBaseTerminals(building);
 
 	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT)
@@ -935,7 +991,11 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building) {
 
 	// schedule
 	scheduleVulnerabilityStart(building);
+
+	verifyMinefields(building);
+	verifyScanners(building);
 	verifyTurrets(building);
+
 	deactivateBaseAlarms(building);
 	building->broadcastCellPermissions();
 }
@@ -2400,6 +2460,9 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 			} else if (baseData != nullptr && baseData->hasMinefield(installation->getObjectID())) {
 				if (installation->isMinefield())
 					notifyMinefieldDestruction(building, installation);
+			} else if (baseData != nullptr && baseData->hasScanner(installation->getObjectID())) {
+				if (installation->isScanner())
+					notifyScannerDestruction(building, installation);
 			} else {
 				clock.release();
 				StructureManager::instance()->destroyStructure(installation);
@@ -2417,6 +2480,9 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 }
 
 void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building, InstallationObject* turret) {
+	if (building == nullptr || turret == nullptr)
+		return;
+
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
 	if (baseData == nullptr)
@@ -2436,7 +2502,11 @@ void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building,
 }
 
 void GCWManagerImplementation::notifyMinefieldDestruction(BuildingObject* building, InstallationObject* minefield) {
+	if (building == nullptr || minefield == nullptr)
+		return;
+
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
 	if (baseData == nullptr)
 		return;
 
@@ -2447,22 +2517,41 @@ void GCWManagerImplementation::notifyMinefieldDestruction(BuildingObject* buildi
 
 	baseData->setMinefieldID(indx, 0);
 
-	// see if all the turrets are destroyed
-	int defensecount = 0;
-
-	for (int i = 0; i < baseData->getTotalMinefieldCount(); i++) {
-		if (baseData->getMinefieldOID(i))
-			defensecount++;
-	}
-
 	minefield->destroyObjectFromWorld(true);
 	minefield->destroyObjectFromDatabase(true);
+
+	verifyMinefields(building);
+}
+
+void GCWManagerImplementation::notifyScannerDestruction(BuildingObject* building, InstallationObject* scanner) {
+	if (building == nullptr || scanner == nullptr)
+		return;
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == nullptr)
+		return;
+
+	int indx = baseData->getIndexOfScanner(scanner->getObjectID());
+
+	if (indx < 0)
+		return;
+
+	baseData->setScannerID(indx, 0);
+
+	scanner->destroyObjectFromWorld(true);
+	scanner->destroyObjectFromDatabase(true);
+
+	verifyScanners(building);
 }
 
 void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature) {
+	if (building == nullptr || creature == nullptr)
+		return;
+
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
-	if (creature == nullptr || baseData == nullptr)
+	if (baseData == nullptr)
 		return;
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
@@ -2495,11 +2584,19 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 
 		if (inventoryObject->isDeedObject()) {
 			ManagedReference<Deed*> deed = dynamic_cast<Deed*>(inventoryObject.get());
+
 			if (deed != nullptr) {
 				Reference<SharedObjectTemplate*> generatedTemplate = TemplateManager::instance()->getTemplate(deed->getGeneratedObjectTemplate().hashCode());
 
-				if (generatedTemplate != nullptr && (generatedTemplate->getGameObjectType() == SceneObjectType::MINEFIELD ||
-													 generatedTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE)) {
+				if (generatedTemplate == nullptr)
+					continue;
+
+				int objectType = generatedTemplate->getGameObjectType();
+
+				if (!ConfigManager::instance()->useCovertOvertSystem() && objectType == SceneObjectType::COVERTSCANNER)
+					continue;
+
+				if (objectType == SceneObjectType::MINEFIELD || objectType == SceneObjectType::DESTRUCTIBLE || objectType == SceneObjectType::COVERTSCANNER) {
 					donate->addMenuItem(inventoryObject->getDisplayedName(), inventoryObject->getObjectID());
 				}
 			}
@@ -2515,7 +2612,11 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 }
 
 void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, CreatureObject* creature, uint64 deedOID) {
+	if (building == nullptr || creature == nullptr)
+		return;
+
 	ZoneServer* zoneServer = zone->getZoneServer();
+
 	if (zoneServer == nullptr)
 		return;
 
@@ -2556,29 +2657,35 @@ void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, 
 		return;
 	}
 
-	if (defenseObj->isDeedObject()) {
-		ManagedReference<Deed*> deed = dynamic_cast<Deed*>(defenseObj.get());
-		if (deed != nullptr) {
-			Reference<SharedObjectTemplate*> generatedTemplate = TemplateManager::instance()->getTemplate(deed->getGeneratedObjectTemplate().hashCode());
+	if (!defenseObj->isDeedObject())
+		return;
 
-			if (generatedTemplate == nullptr) {
-				return;
-			}
+	ManagedReference<Deed*> deed = dynamic_cast<Deed*>(defenseObj.get());
 
-			if (generatedTemplate->getGameObjectType() == SceneObjectType::MINEFIELD) {
-				performDonateMinefield(building, creature, deed);
-				return;
-			} else if (generatedTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE) {
-				performDonateTurret(building, creature, deed);
-				return;
-			}
-		}
+	if (deed == nullptr)
+		return;
+
+	Reference<SharedObjectTemplate*> generatedTemplate = TemplateManager::instance()->getTemplate(deed->getGeneratedObjectTemplate().hashCode());
+
+	if (generatedTemplate == nullptr)
+			return;
+
+	const int objectType = generatedTemplate->getGameObjectType();
+
+	if (objectType == SceneObjectType::MINEFIELD) {
+		performDonateMinefield(building, creature, deed);
+		return;
+	} else if (objectType == SceneObjectType::COVERTSCANNER) {
+		performDonateScanner(building, creature, deed);
+		return;
+	} else if (objectType == SceneObjectType::DESTRUCTIBLE) {
+		performDonateTurret(building, creature, deed);
+		return;
+	} else {
+		StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
+		param.setTO(defenseObj->getObjectName());
+		creature->sendSystemMessage(param);
 	}
-
-	StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
-	param.setTO(defenseObj->getObjectName());
-	creature->sendSystemMessage(param);
-	return;
 }
 
 void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, CreatureObject* creature, Deed* deed) {
@@ -2600,14 +2707,15 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 	// go through it and inf the first available mine
 	int minefieldIndex = 0;
 	for (minefieldIndex = 0; minefieldIndex < baseData->getTotalMinefieldCount(); minefieldIndex++) {
-		if (baseData->getMinefieldOID(minefieldIndex) == 0)
+		if (baseData->getMinefieldID(minefieldIndex) == 0)
 			break;
 	}
 
-	// this is turret donation
+	// Minefield donation
 	int nextAvailableMinefield = 0;
+
 	for (nextAvailableMinefield = 0; nextAvailableMinefield < baseData->getTotalTurretCount(); nextAvailableMinefield++) {
-		if (baseData->getMinefieldOID(nextAvailableMinefield) == 0)
+		if (baseData->getMinefieldID(nextAvailableMinefield) == 0)
 			break;
 	}
 
@@ -2619,7 +2727,7 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 		return;
 	}
 
-	// now find the coords of the nth turret
+	// now find the coords of the nth minefield
 	for (int i = 0; i < baseServerTemplate->getChildObjectsSize(); ++i) {
 		child = baseServerTemplate->getChildObject(i);
 		minefieldTemplate = nullptr;
@@ -2652,12 +2760,92 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45"); //"You successfully donate a %TO deed to the current facility."
 		params.setTO(deed->getObjectNameStringIdFile(), deed->getObjectNameStringIdName());
 		creature->sendSystemMessage(params);
-		// TODO: Implement .. verify minefields
 
 		block.release();
+		verifyMinefields(building);
 
 		Locker clock(deed, creature);
 		deed->destroyObjectFromWorld(true);
+	}
+}
+
+void GCWManagerImplementation::performDonateScanner(BuildingObject* building, CreatureObject* creature,  Deed* scannerDeed) {
+	if (building == nullptr || creature == nullptr || scannerDeed == nullptr)
+		return;
+
+	String serverTemplatePath = scannerDeed->getGeneratedObjectTemplate();
+	TemplateManager* templateManager = TemplateManager::instance();
+	Reference<SharedObjectTemplate*> baseServerTemplate = building->getObjectTemplate();
+
+	Reference<SharedObjectTemplate*> scannerTemplate = nullptr;
+	const ChildObject* child = nullptr;
+	int currentScannerIndex = 0;
+
+	Locker block(building,creature);
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == nullptr)
+		return;
+
+	int nextAvailableScanner = 0;
+
+	for (nextAvailableScanner = 0; nextAvailableScanner < baseData->getTotalScannerCount(); nextAvailableScanner++) {
+		uint64 scannerID = baseData->getScannerID(nextAvailableScanner);
+
+		if (scannerID == 0)
+			break;
+	}
+
+	if (nextAvailableScanner >= baseData->getTotalScannerCount()) {
+		StringIdChatParameter params;
+		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response44"); // This facility cannot accept deeds of type '%TO' at this time. Cancelling donation...
+		params.setTO(scannerDeed->getObjectNameStringIdFile(), scannerDeed->getObjectNameStringIdName());
+		creature->sendSystemMessage(params);
+		return;
+	}
+
+	for (int i = 0; i < baseServerTemplate->getChildObjectsSize(); ++i) {
+		child = baseServerTemplate->getChildObject(i);
+		scannerTemplate = nullptr;
+
+		if (child != nullptr) {
+			scannerTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
+
+			if (scannerTemplate != nullptr && scannerTemplate->getGameObjectType() == SceneObjectType::COVERTSCANNER) {
+				if (currentScannerIndex == nextAvailableScanner) {
+					break;
+				} else {
+					currentScannerIndex++;
+				}
+			} else {
+				info("Invalid scanner template: " + child->getTemplateFile());
+			}
+		}
+	}
+
+	if (child == nullptr || scannerTemplate == nullptr) {
+		return;
+	}
+
+	uint64 scannerOID = addChildInstallationFromDeed(building, child, creature, scannerDeed);
+
+	if (scannerOID > 0) {
+		baseData->setScannerID(currentScannerIndex, scannerOID);
+
+		if (isBaseVulnerable(building))
+			baseData->setDefenseAddedThisVuln(true);
+
+		StringIdChatParameter params;
+		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45");  //"You successfully donate a %TO deed to the current facility."
+		params.setTO(scannerDeed->getObjectNameStringIdFile(), scannerDeed->getObjectNameStringIdName());
+		creature->sendSystemMessage(params);
+
+		block.release();
+		verifyScanners(building);
+
+		Locker clock(scannerDeed, creature);
+		scannerDeed->destroyObjectFromWorld(true);
 	}
 }
 
@@ -2728,8 +2916,8 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 		params.setTO(turretDeed->getObjectNameStringIdFile(), turretDeed->getObjectNameStringIdName());
 		creature->sendSystemMessage(params);
 
-		verifyTurrets(building);
 		block.release();
+		verifyTurrets(building);
 
 		Locker clock(turretDeed, creature);
 		turretDeed->destroyObjectFromWorld(true);
@@ -2772,19 +2960,21 @@ uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* bu
 
 	TangibleObject* tano = cast<TangibleObject*>(obj.get());
 
-	tano->setFaction(building->getFaction());
+	if (tano != nullptr) {
+		tano->setFaction(building->getFaction());
+		tano->setPvpStatusBitmask(building->getPvpStatusBitmask() | tano->getPvpStatusBitmask());
 
-	tano->setPvpStatusBitmask(building->getPvpStatusBitmask() | tano->getPvpStatusBitmask());
+		if (tano->isTurret())
+			tano->setDetailedDescription("Donated Turret");
 
-	if (tano->isTurret())
-		tano->setDetailedDescription("Donated Turret");
+		if (tano->isInstallationObject()) {
+			InstallationObject* instObject = cast<InstallationObject*>(tano);
 
-	if (tano->isInstallationObject()) {
-		InstallationObject* turret = cast<InstallationObject*>(tano);
-		if (turret != nullptr) {
-			turret->setOwner(building->getObjectID());
-			turret->createChildObjects();
-			turret->setDeedObjectID(deed->getObjectID());
+			if (instObject != nullptr) {
+				instObject->setOwner(building->getObjectID());
+				instObject->createChildObjects();
+				instObject->setDeedObjectID(deed->getObjectID());
+			}
 		}
 	}
 
