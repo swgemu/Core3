@@ -177,7 +177,9 @@ void PathFinderManager::getNavMeshCollisions(SortedVector<NavCollision*> *collis
 	float maxT = dir.normalize();
 
 	for (const ManagedReference<NavArea*>& area : *areas) {
-		if (area->getZone() == nullptr) {
+		Zone* zone = area->getZone();
+
+		if (zone == nullptr) {
 			String name = area->getMeshName();
 			error() << "Null zone on navmesh area " << name << " in getNavMeshCollisions";
 			continue;
@@ -187,7 +189,7 @@ void PathFinderManager::getNavMeshCollisions(SortedVector<NavCollision*> *collis
 
 		const Vector3& bPos = bounds->center();
 		Vector3 sPos(bPos.getX(), bPos.getZ(), 0);
-		sPos.setZ(CollisionManager::getWorldFloorCollision(sPos.getX(), sPos.getY(), area->getZone(), false));
+		sPos.setZ(CollisionManager::getWorldFloorCollision(sPos.getX(), sPos.getY(), zone, false));
 		const float radius = bounds->extents()[bounds->longestAxis()] * .975f;
 		float radiusSq = radius*radius;
 

@@ -290,6 +290,9 @@ Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObj
 }
 
 float CollisionManager::getWorldFloorCollision(float x, float y, float z, Zone* zone, bool testWater) {
+	if (zone == nullptr)
+		return 0.f;
+
 	PlanetManager* planetManager = zone->getPlanetManager();
 
 	if (planetManager == nullptr)
