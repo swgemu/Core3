@@ -359,6 +359,10 @@ includeFile("tasks/darndroid/conversations/valanceConvoHandler.lua")
 includeFile("tasks/darndroid/darndroid1.lua")
 includeFile("tasks/darndroid/darndroid2.lua")
 
+-- Safety Measures Quests
+includeFile("tasks/safety_measures/safety_measures.lua")
+includeFile("tasks/safety_measures/conversations/gerak_vurtimis_conv_handler.lua")
+
 -- Task/Quest
 includeFile("tasks/corellia/blk_sun_tasks.lua")
 includeFile("tasks/corellia/chertyl_ruluwoor.lua")
