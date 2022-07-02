@@ -215,7 +215,6 @@ TatooineBestineScreenPlay = CityScreenPlay:new {
 		{"informant_npc_lvl_1",0,-1053,12,-3726,90,0, ""},
 		{"informant_npc_lvl_1",0,-1023,12,-3677,225,0, ""},
 		{"informant_npc_lvl_1",0,-1220,12,-3560,45,0, ""},
-		{"gerak_vurtimis",60,-1252.5,12,-3617.35,278.1,0, ""},
 		{"gert_talnin",60,-1287.3,12,-3587.16,169.676,0, ""},
 		{"gunham",60,-1125.07,12.1959,-3622.83,83.2544,0, ""},
 		{"sol_windtide",60,-1203.12,12,-3612.74,236.494,0, ""},
