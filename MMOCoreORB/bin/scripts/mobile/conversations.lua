@@ -112,6 +112,9 @@ includeFile("conversations/tasks/darndroid/c3tc_conv.lua")
 includeFile("conversations/tasks/darndroid/selan_ellison_conv.lua")
 includeFile("conversations/tasks/darndroid/valance_serth_conv.lua")
 
+-- Safety Measures
+includeFile("conversations/tasks/safety_measures/gerak_vurtimis_conv.lua")
+
 -- Events
 includeFile("conversations/events/event_promoter_conv.lua")
 includeFile("conversations/events/race_droid_conv.lua")
