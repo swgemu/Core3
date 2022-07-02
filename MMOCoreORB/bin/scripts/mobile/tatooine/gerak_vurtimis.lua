@@ -24,7 +24,7 @@ gerak_vurtimis = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + INTERESTING + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_fat_human_male_01.iff"},
@@ -34,7 +34,7 @@ gerak_vurtimis = Creature:new {
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
-	conversationTemplate = "",
+	conversationTemplate = "gerakVurtimisConvoTemplate",
 	reactionStf = "@npc_reaction/townperson",
 
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
