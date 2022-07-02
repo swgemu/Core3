@@ -2973,6 +2973,10 @@ void PlayerObjectImplementation::clearJournalQuestTask(unsigned int questCrc, in
 
 bool PlayerObjectImplementation::isJournalQuestActive(unsigned int questCrc) {
 	PlayerQuestData questData = getQuestData(questCrc);
+
+	if (questData.getCompletedFlag())
+		return false;
+
 	return questData.getOwnerId() ? true : false;
 }
 
