@@ -112,6 +112,7 @@ function SecretsOfTheSyren:notifyEnteredQuestArea(pActiveArea, pPlayer)
                 ghost:activateJournalQuestTask(questCrc, Syren.act1.SPICE_FOUND, true)
                 ghost:completeJournalQuestTask(questCrc, Syren.act1.SPICE_FOUND, true)
                 ghost:activateJournalQuestTask(questCrc, Syren.act1.TALK_TO_CONTACT, true)
+                self:giveItems(pPlayer, taskIndex)
                 self:returnToContactWaypoint(questCrc, pPlayer, ghost)
             elseif taskIndex == Syren.act1.TALK_TO_MOXXAR then
                 -- Check inventory space
@@ -119,11 +120,37 @@ function SecretsOfTheSyren:notifyEnteredQuestArea(pActiveArea, pPlayer)
                 ghost:activateJournalQuestTask(questCrc, Syren.act1.SECOND_DATAPAD, true)
                 ghost:completeJournalQuestTask(questCrc, Syren.act1.SECOND_DATAPAD, true)
                 ghost:activateJournalQuestTask(questCrc, Syren.act1.RETURN_TO_CONTACT, true)
+                self:giveItems(pPlayer, taskIndex)
                 self:returnToContactWaypoint(questCrc, pPlayer, ghost)
             end
         end
     end
     return 0
+end
+
+function SecretsOfTheSyren:giveItems(pPlayer, taskIndex)
+    creature = LuaCreatureObject(pPlayer)
+	local pInventory = creature:getSlottedObject("inventory")
+	if pInventory == nil then
+        printLuaError("Unable to giveItems in SecretsOfTheSyren to player " .. creature:getObjectID())
+		return
+	end
+
+    if taskIndex == Syren.act1.CRASH_SITE_FOUND then
+	    local pItem = giveItem(pInventory, "object/tangible/mission/quest_item/syren1_locked_data.iff", -1, true)
+        if pItem == nil then
+            printLuaError("Unable to give syren1_locked_data in SecretsOfTheSyren to player " .. creature:getObjectID())
+        end
+	    local pItem = giveItem(pInventory, "object/tangible/mission/quest_item/syren1_spice.iff", -1, true)
+        if pItem == nil then
+            printLuaError("Unable to give syren1_spice in SecretsOfTheSyren to player " .. creature:getObjectID())
+        end
+    elseif taskIndex == Syren.act1.TALK_TO_MOXXAR then
+	    local pItem = giveItem(pInventory, "object/tangible/mission/quest_item/syren1_warning.iff", -1, true)
+        if pItem == nil then
+            printLuaError("Unable to give syren1_warning in SecretsOfTheSyren to player " .. creature:getObjectID())
+        end
+    end
 end
 
 function SecretsOfTheSyren:returnToContactWaypoint(questCrC, pPlayer, ghost)
