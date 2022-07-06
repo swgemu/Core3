@@ -40,8 +40,6 @@ function coa3LookoutConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 		deleteData(playerID .. ":CoA3:lookoutConvoFlow:")
 		deleteData(playerID .. ":CoA3:lookoutTracker:")
 
-		CriesOfAlderaan:setState(pPlayer, "coa3_" .. faction, Coa3Screenplay.M1_FIND_LOOKOUT)
-
 		return convoTemplate:getScreen("init_failed_trial")
 	elseif (state == Coa3Screenplay.M1_REFUSED) then
 		return convoTemplate:getScreen("init_passed_prior_refuse")
@@ -68,7 +66,7 @@ function coa3LookoutConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc,
 	local tracker = readData(playerID .. ":CoA3:lookoutTracker:")
 	local convoFlow = readData(playerID .. ":CoA3:lookoutConvoFlow:")
 
-	if (state == Coa3Screenplay.M1_FIND_LOOKOUT and (screenID == "response_valerian" or screenID == "reponse_alkhara" or screenID == "response_jabba")) then
+	if (state == Coa3Screenplay.M1_FIND_LOOKOUT and (screenID == "response_valerian" or screenID == "response_alkhara" or screenID == "response_jabba")) then
 		CriesOfAlderaan:setState(pPlayer, "coa3_" .. faction, Coa3Screenplay.M1_SPOKE_TO_LOOKOUT)
 		writeData(playerID .. ":CoA3:lookoutTracker:", 2)
 
@@ -108,8 +106,12 @@ function coa3LookoutConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc,
 			deleteData(playerID .. ":CoA3:lookoutConvoFlow:")
 			deleteData(playerID .. ":CoA3:lookoutTracker:")
 
-			CriesOfAlderaan:setState(pPlayer, "coa3_" .. faction, Coa3Screenplay.M1_FIND_LOOKOUT)
+			SceneObject(pPlayer):cancelPendingTask("Coa3Screenplay", "timeoutMission")
 
+			-- Timeout mission
+			createEvent(30 * 1000, "Coa3Screenplay", "timeoutMission", pPlayer, "")
+
+			TangibleObject(pNpc):setPvpStatusBit(AGGRESSIVE)
 			AiAgent(pNpc):setDefender(pPlayer)
 		end
 	end

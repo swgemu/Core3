@@ -59,7 +59,7 @@ Coa3Screenplay = ScreenPlay:new {
 		{"corellia", "coa3_tactical_rebel", 60,9.53575,1.13306,0.330446,310.824,1935441, "calm"},
 		{"tatooine", "coa3_tactical_imperial", 60,9.74537,1.13306,0.300803,93.0077,1028549, "npc_imperial"},
 		{"naboo", "coa3_tactical_imperial", 60, 9.8, 1.1, 0.9, 143, 1692071, "npc_imperial"},
-
+		{"naboo", "coa3_tactical_imperial", 60, 9.8, 1.1, 0.9, 143, 1741458, "npc_imperial"},
 	},
 
 	coa3commanders = {
@@ -690,9 +690,7 @@ function Coa3Screenplay:spawnFlora(pBuilding)
 	local pDrum = spawnSceneObject(planet, "object/tangible/container/drum/poi_prize_box_off.iff", -4.5, 0.13, -3.23, SceneObject(pCell):getObjectID(), math.rad(90))
 
 	if (pDrum ~= nil) then
-		SceneObject(pDrum):setContainerInheritPermissionsFromParent(false)
-		SceneObject(pDrum):setContainerDefaultDenyPermission(MOVEIN)
-		SceneObject(pDrum):setContainerDefaultAllowPermission(MOVEOUT)
+		SceneObject(pDrum):setContainerDefaultDenyPermission(MOVEIN + MOVECONTAINER)
 		SceneObject(pDrum):setContainerLockedStatus(true)
 
 		local drumID = SceneObject(pDrum):getObjectID()
@@ -1212,16 +1210,18 @@ function Coa3Screenplay:abortMission(pPlayer, missionNum, returnToNpc)
 		local returnLocation = readVector3Data(playerID .. ":CoA3:returnLoc:")
 		local returnPlanet = readStringData(playerID .. ":CoA3:returnPlanet:")
 
-		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+		if (returnPlanet ~= "") then
+			local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-		if (pGhost ~= nil) then
-			local faction = readStringData(playerID .. ":CoA3:Faction:")
-			local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_name_" .. missionNum
-			local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_desc_" .. missionNum
+			if (pGhost ~= nil) then
+				local faction = readStringData(playerID .. ":CoA3:Faction:")
+				local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_name_" .. missionNum
+				local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_desc_" .. missionNum
 
-			local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+				local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 
-			writeData(playerID .. ":CoA3:ReturnWaypoint:", wayID)
+				writeData(playerID .. ":CoA3:ReturnWaypoint:", wayID)
+			end
 		end
 	end
 
@@ -1325,6 +1325,7 @@ function Coa3Screenplay:removeMissionWaypoint(pPlayer)
 	local wayID = readData(playerID .. ":CoA3:Waypoint:")
 
 	PlayerObject(pGhost):removeWaypoint(wayID, true)
+	deleteData(playerID .. ":CoA3:Waypoint:")
 end
 
 function Coa3Screenplay:getMissionPlanet()
@@ -1358,8 +1359,6 @@ function Coa3Screenplay:timeoutMission(pPlayer)
 		deleteData(playerID .. ":CoA3:lookoutConvoFlow:")
 		deleteData(playerID .. ":CoA3:lookoutTracker:")
 		CriesOfAlderaan:setState(pPlayer, stateKey, Coa3Screenplay.M1_FIND_LOOKOUT)
-
-		CreatureObject(pPlayer):sendSystemMessage("@theme_park/alderaan/act3/shared_" .. faction .. "_missions:m" .. missionNum .. "_init_failure")
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("@theme_park/alderaan/act3/shared_" .. faction .. "_missions:m" .. missionNum .. "_init_failure")

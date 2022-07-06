@@ -150,7 +150,7 @@ coa3_init_has_lookout = ConvoScreen:new {
 	options = {
 		{"@conversation/coa3lcoordinator:s_a6f2327f", "coa3_cornered_market_reminder"}, -- What were the details of the mission again?
 		{"@conversation/coa3lcoordinator:s_7b9e2f5e", "coa3_ran_into_trouble"}, -- Can I have another waypoint?
-		{"@conversation/coa3lcoordinator:s_75565d5a", "coa3_friendly_first"}, -- Any hints?
+		{"@conversation/coa3lcoordinator:s_80af7773", "coa3_friendly_first"}, -- Got any advice for me?
 		{"@conversation/coa3lcoordinator:s_36142d2b", "coa3_come_back_later"}, -- I can't do this right now.
 	}
 }
