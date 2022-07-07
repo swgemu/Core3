@@ -306,14 +306,14 @@ public:
 
 			if (enhancePack == nullptr) {
 				enhancer->sendSystemMessage("@healing_response:healing_response_76"); // That item does not provide attribute enhancement.
-				return false;
+				return GENERALERROR;
 			}
 
 			int medicineUse = enhancer->getSkillMod("healing_ability");
 
 			if (enhancePack->getMedicineUseRequired() > medicineUse) {
 				enhancer->sendSystemMessage("@error_message:insufficient_skill"); // You lack the skill to use this item.
-				return false;
+				return GENERALERROR;
 			}
 
 			if (enhancePack->getAttribute() != attribute) {
@@ -404,7 +404,7 @@ public:
 			else
 				enhancer->sendSystemMessage("Your target's current enhancements are of greater power and cannot be re-applied.");
 
-			return 0;
+			return GENERALERROR;
 		}
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();

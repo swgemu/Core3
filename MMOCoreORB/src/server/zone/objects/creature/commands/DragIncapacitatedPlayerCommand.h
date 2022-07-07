@@ -60,39 +60,39 @@ public:
 		return;
 	}
 
-	void drag(CreatureObject* player, CreatureObject* targetPlayer, float maxRange, float maxMovement, bool needsConsent) const {
+	bool drag(CreatureObject* player, CreatureObject* targetPlayer, float maxRange, float maxMovement, bool needsConsent) const {
 		if (targetPlayer == nullptr) {
-			return;
+			return false;
 		}
 
 		if (targetPlayer == player) {
 			player->sendSystemMessage("@healing_response:healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
-			return;
+			return false;
 		}
 
 		float sqDistance = targetPlayer->getWorldPosition().squaredDistanceTo(player->getWorldPosition());
 
 		//Check minimum range.
 		if (sqDistance < 0.01f*0.01f) {
-			return;
+			return false;
 		}
 
 		if (sqDistance > maxRange*maxRange) {
 			StringIdChatParameter stringId("healing_response", "healing_response_b1"); //"Your maximum drag range is %DI meters! Try getting closer."
 			stringId.setDI(maxRange);
 			player->sendSystemMessage(stringId);
-			return;
+			return false;
 		}
 
 		if (!targetPlayer->isDead() && !targetPlayer->isIncapacitated()) {
 			player->sendSystemMessage("@healing_response:healing_response_a7"); //"You may only drag incapacitated or dying players!"
-			return;
+			return false;
 		}
 
 		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
 
 		if (targetGhost == nullptr) {
-			return;
+			return false;
 		}
 
 		if (needsConsent) {
@@ -105,7 +105,7 @@ public:
 
 			if (!hasConsentFrom && !isGroupedWith) {
 				player->sendSystemMessage("@healing_response:healing_response_b4"); //"You must be grouped with or have consent from your drag target!"
-				return;
+				return false;
 			}
 		}
 
@@ -117,10 +117,10 @@ public:
 		if (abs((int)heightDifference) > maxRange) {
 			if (heightDifference > 0) {
 				player->sendSystemMessage("@healing_response:healing_response_b2"); //"Your target is too far below you to drag"
-				return;
+				return false;
 			} else {
 				player->sendSystemMessage("@healing_response:healing_response_b3"); //"Your target is too far above you to drag."
-				return;
+				return false;
 			}
 		}
 
@@ -161,6 +161,8 @@ public:
 		player->sendSystemMessage(stringId);
 
 		targetPlayer->setSpeedMultiplierMod(0);
+
+		return true;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -236,11 +238,14 @@ public:
 
 		maxRange += (rangeMod * 0.2);
 
-		drag(player, targetPlayer, maxRange, maxMovement, needsConsent);
+		if (drag(player, targetPlayer, maxRange, maxMovement, needsConsent)) {
 
-		checkForTef(player, targetPlayer);
+			checkForTef(player, targetPlayer);
 
-		return SUCCESS;
+			return SUCCESS;
+		}
+
+		return GENERALERROR;
 	}
 
 };
