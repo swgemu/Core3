@@ -853,7 +853,6 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea
 			return false
 		end
 
-		AiAgent(pNpc):setNoAiAggro()
 		writeData(CreatureObject(pNpc):getObjectID() .. ":missionOwnerID", playerID)
 
 		if i == 1 then
@@ -878,10 +877,11 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea
 			createObserver(DEFENDERADDED, self.className, "notifyTriggeredBreechAggro", pNpc)
 			CreatureObject(pNpc):setOptionBit(INTERESTING)
 		elseif mission.missionType == "escort" then
-			CreatureObject(pNpc):setPvpStatusBitmask(0)
 			CreatureObject(pNpc):setOptionBit(INTERESTING)
 			CreatureObject(pNpc):setOptionBit(AIENABLED)
 			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
+
+			createObserver(OBJECTDESTRUCTION, self.className, "notifyEscortKilled", pNpc)
 
 			self:normalizeNpc(pNpc, 16, 3000)
 		elseif mission.missionType == "retrieve" or mission.missionType == "deliver" then
@@ -1258,6 +1258,21 @@ function ThemeParkLogic:notifyDefeatedTarget(pVictim, pAttacker)
 		if currentKillCount == self:getMissionKillCount(pOwner) then
 			self:completeMission(pOwner)
 		end
+	end
+
+	return 1
+end
+
+function ThemeParkLogic:notifyEscortKilled(pVictim, pAttacker)
+	if (pVictim == nil or pAttacker == nil or (not SceneObject(pVictim):isCreatureObject())) then
+		return 0
+	end
+
+	local ownerID = readData(CreatureObject(pVictim):getObjectID() .. ":missionOwnerID")
+	local pOwner = getSceneObject(ownerID)
+
+	if (pOwner ~= nil and SceneObject(pOwner):isCreatureObject()) then
+		self:failMission(pOwner)
 	end
 
 	return 1
@@ -1810,7 +1825,7 @@ function ThemeParkLogic:failMission(pConversingPlayer)
 		local giverId = readData(CreatureObject(pConversingPlayer):getObjectID() ..":genericGiverID")
 		local pGiver = getSceneObject(giverId)
 		if (pGiver == nil) then
-			printLuaError("ThemeParkLogic:completeMission(), unable to find generic quest giver.")
+			printLuaError("ThemeParkLogic:failMission(), unable to find generic quest giver.")
 			return
 		end
 		self:updateWaypoint(pConversingPlayer, SceneObject(pGiver):getZoneName(), SceneObject(pGiver):getWorldPositionX(), SceneObject(pGiver):getWorldPositionY(), "return")
@@ -2107,11 +2122,12 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 	end
 
 	AiAgent(pConversingNpc):removeCreatureFlag(AI_STATIONARY)
-	AiAgent(pConversingNpc):addCreatureFlag(AI_NOAIAGGRO)
+	AiAgent(pConversingNpc):addCreatureFlag(AI_FOLLOW)
 	AiAgent(pConversingNpc):addCreatureFlag(AI_ESCORT)
+	AiAgent(pConversingNpc):setAITemplate()
 
 	AiAgent(pConversingNpc):setFollowObject(pConversingPlayer)
-	AiAgent(pConversingNpc):setMovementState(AI_FOLLOWING)
+
 end
 
 function ThemeParkLogic:getMissionType(activeNpcNumber, pConversingPlayer)
