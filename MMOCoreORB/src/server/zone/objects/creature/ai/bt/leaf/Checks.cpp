@@ -666,6 +666,9 @@ template<> bool CheckShouldRest::check(AiAgent* agent) const {
 	if (!agent->isNeutral())
 		return false;
 
+	if (agent->getFollowObject() != nullptr)
+		return false;
+
 	Time* restDelay = agent->getRestDelay();
 
 	if (restDelay == nullptr || !restDelay->isPast())
@@ -691,7 +694,7 @@ template<> bool CheckStopResting::check(AiAgent* agent) const {
 	if (agent == nullptr)
 		return false;
 
-	if (agent->isInCombat())
+	if (agent->isInCombat() || agent->getFollowObject() != nullptr)
 		return true;
 
 	Time* restDelay = agent->getRestDelay();
