@@ -105,6 +105,7 @@ function Escort:setEscortFollow(pPlayer, pEscort)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local escortID = SceneObject(pEscort):getObjectID()
 
+	AiAgent(pEscort):removeCreatureFlag(AI_STATIONARY)
 	AiAgent(pEscort):addCreatureFlag(AI_NOAIAGGRO)
 	AiAgent(pEscort):addCreatureFlag(AI_ESCORT)
 	AiAgent(pEscort):setFollowObject(pPlayer)
