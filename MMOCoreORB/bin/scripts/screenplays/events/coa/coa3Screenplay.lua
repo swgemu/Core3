@@ -811,6 +811,9 @@ function Coa3Screenplay:onLootCaravanLeader(pLootedCreature, pLooter, nothing)
 		local pGhost = CreatureObject(pLooter):getPlayerObject()
 
 		if (pGhost ~= nil) then
+			local returnLocation = readVector3Data(playerID .. ":CoA3:returnLoc:")
+			local returnPlanet = readStringData(playerID .. ":CoA3:returnPlanet:")
+
 			local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_name_3"
 			local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_desc_3"
 
