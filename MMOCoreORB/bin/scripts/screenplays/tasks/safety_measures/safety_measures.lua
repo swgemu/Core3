@@ -296,7 +296,9 @@ function SafetyMeasures:removeWaypoint(pPlayer, giveReturn)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local currentID = readData(playerID .. ":SafetyMeasures:waypointID:")
 
-	ghost:removeWaypoint(currentID, true)
+	if (currentID > 0) then
+		ghost:removeWaypoint(currentID, true)
+	end
 
 	if (giveReturn > 0) then
 		local waypointID = ghost:addWaypoint(self.planet, "Gerak Vertimis", "Gerak Vertimis", self.questGiverLocation[1], self.questGiverLocation[3], WAYPOINTYELLOW, true, true, 0, 0)

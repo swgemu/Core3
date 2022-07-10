@@ -440,7 +440,7 @@ gerakVurtimisConvoTemplate:addScreen(turn_in5_3);
 
 thank_you = ConvoScreen:new {
 	id = "thank_you",
-	leftDialog = "@conversation/ld_safetyquestgiver:s_396", -- Thanks again for all your help.
+	leftDialog = "@conversation/lf_safetyquestgiver:s_396", -- Thanks again for all your help.
 	stopConversation = "true",
 	options = {}
 }

@@ -27,10 +27,13 @@ function GerakVurtimisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 	elseif (screenID == "give_quest2") then
 		SafetyMeasures:startQuest(pPlayer, pNpc, SafetyMeasures.KILLRILLS)
 	elseif (screenID == "give_quest3" or screenID == "new_loc3") then
+		SafetyMeasures:removeWaypoint(pPlayer, 0)
 		SafetyMeasures:startQuest(pPlayer, pNpc, SafetyMeasures.KILLBRIGANDS)
 	elseif (screenID == "give_quest4" or screenID == "new_loc4") then
+		SafetyMeasures:removeWaypoint(pPlayer, 0)
 		SafetyMeasures:startQuest(pPlayer, pNpc, SafetyMeasures.LOOTDATAPAD)
 	elseif (screenID == "give_quest5_1" or screenID == "give_quest5_2" or screenID == "new_loc5") then
+		SafetyMeasures:removeWaypoint(pPlayer, 0)
 		SafetyMeasures:startQuest(pPlayer, pNpc, SafetyMeasures.BRIGANDLEADER)
 
 	-- Statuses
