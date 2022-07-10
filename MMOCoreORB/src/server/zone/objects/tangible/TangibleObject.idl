@@ -864,6 +864,11 @@ class TangibleObject extends SceneObject {
 		return inNoCombatArea;
 	}
 
+	@preLocked
+	public void setInNoCombatArea(boolean val) {
+		inNoCombatArea = val;
+	}
+
 	@local
 	@dirty
 	public SortedVector<ActiveArea> getActiveAreas() {
