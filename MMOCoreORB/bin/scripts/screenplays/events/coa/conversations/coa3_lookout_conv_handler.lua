@@ -113,6 +113,20 @@ function coa3LookoutConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc,
 
 			TangibleObject(pNpc):setPvpStatusBit(AGGRESSIVE)
 			AiAgent(pNpc):setDefender(pPlayer)
+
+			local returnLocation = readVector3Data(playerID .. ":CoA3:returnLoc:")
+			local returnPlanet = readStringData(playerID .. ":CoA3:returnPlanet:")
+
+			local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+			if (pGhost ~= nil and returnPlanet ~= "") then
+				Coa3Screenplay:removeMissionWaypoint(pPlayer)
+
+				local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_name_2"
+				local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_desc_2"
+
+				local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+			end
 		end
 	end
 

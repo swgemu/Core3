@@ -153,38 +153,35 @@ function SafetyMeasures:startQuest(pPlayer, pNpc, quest)
 	local ghost = LuaPlayerObject(pGhost)
 	local playerID = SceneObject(pPlayer):getObjectID()
 
+	dropObserver(KILLEDCREATURE, "SafetyMeasures", "notifyKilledCreature", pPlayer)
+	createObserver(KILLEDCREATURE, "SafetyMeasures", "notifyKilledCreature", pPlayer)
+
 	if (quest == self.KILLWORRTS) then
 		ghost:activateJournalQuest(QuestManager.questCRC.QUEST_LF_SAFETY1, true)
-		createObserver(KILLEDCREATURE, "SafetyMeasures", "notifyKilledCreature", pPlayer)
 
 		CreatureObject(pNpc):doAnimation("nod")
 	elseif (quest == self.KILLRILLS) then
 		ghost:activateJournalQuest(QuestManager.questCRC.QUEST_LF_SAFETY2, true)
-		createObserver(KILLEDCREATURE, "SafetyMeasures", "notifyKilledCreature", pPlayer)
 
 		CreatureObject(pNpc):doAnimation("nod")
 	elseif (quest == self.KILLBRIGANDS) then
 		ghost:activateJournalQuest(QuestManager.questCRC.QUEST_LF_SAFETY3, true)
-		createObserver(KILLEDCREATURE, "SafetyMeasures", "notifyKilledCreature", pPlayer)
 
 		local waypointID = ghost:addWaypoint(self.planet, "Brigand Camp 1", "Brigand Camp 1", self.brigandCampLocation1[1], self.brigandCampLocation1[3], WAYPOINTYELLOW, true, true, 0, 0)
 		writeData(playerID .. ":SafetyMeasures:waypointID:", waypointID)
 		CreatureObject(pNpc):doAnimation("bow")
 	elseif (quest == self.LOOTDATAPAD) then
 		ghost:activateJournalQuest(QuestManager.questCRC.QUEST_LF_SAFETY4, true)
-		createObserver(KILLEDCREATURE, "SafetyMeasures", "notifyKilledCreature", pPlayer)
 
 		local waypointID = ghost:addWaypoint(self.planet, "Brigand Camp 2", "Brigand Camp 2", self.brigandCampLocation2[1], self.brigandCampLocation2[3], WAYPOINTYELLOW, true, true, 0, 0)
 		writeData(playerID .. ":SafetyMeasures:waypointID:", waypointID)
 		CreatureObject(pNpc):doAnimation("bow")
 	elseif (quest == self.BRIGANDLEADER) then
 		ghost:activateJournalQuest(QuestManager.questCRC.QUEST_LF_SAFETY5, true)
-		createObserver(KILLEDCREATURE, "SafetyMeasures", "notifyKilledCreature", pPlayer)
 
 		local waypointID = ghost:addWaypoint(self.planet, "Brigand Leader Camp", "Brigand Leader Camp", self.brigandLeaderLocation[1], self.brigandLeaderLocation[3], WAYPOINTYELLOW, true, true, 0, 0)
 		writeData(playerID .. ":SafetyMeasures:waypointID:", waypointID)
 
-		createObserver(KILLEDCREATURE, "SafetyMeasures", "notifyKilledCreature", pPlayer)
 		CreatureObject(pNpc):doAnimation("applause_excited")
 	end
 end
