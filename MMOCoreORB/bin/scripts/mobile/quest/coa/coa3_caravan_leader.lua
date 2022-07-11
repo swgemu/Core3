@@ -31,7 +31,13 @@ coa3_caravan_leader = Creature:new {
 	templates = {"object/mobile/dressed_gran_thug_male_01.iff",
 		"object/mobile/dressed_gran_thug_male_02.iff"},
 
-	lootGroups = {},
+		lootGroups = {
+			{
+				groups = {
+					{group = "coa3_caravan_disk", chance = 10000000},
+				},
+			}
+		},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary

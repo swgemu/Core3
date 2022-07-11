@@ -88,9 +88,7 @@ quest1_status = ConvoScreen:new {
 	id = "quest1_status",
 	leftDialog = "@conversation/lf_safetyquestgiver:s_162", -- How are you doing with the worrts?
 	stopConversation = "false",
-	options = {
-		{"@conversation/lf_safetyquestgiver:s_174", "not_finished1"}, -- I'm not finished yet.
-	}
+	options = {}
 }
 gerakVurtimisConvoTemplate:addScreen(quest1_status);
 
@@ -145,9 +143,7 @@ quest2_status = ConvoScreen:new {
 	id = "quest2_status",
 	leftDialog = "@conversation/lf_safetyquestgiver:s_202", -- How are you doing with the rills?
 	stopConversation = "false",
-	options = {
-		{"@conversation/lf_safetyquestgiver:s_206", "not_finished2"}, -- I'm not quite done yet.
-	}
+	options = {}
 }
 gerakVurtimisConvoTemplate:addScreen(quest2_status);
 
@@ -233,10 +229,7 @@ quest3_status = ConvoScreen:new {
 	id = "quest3_status",
 	leftDialog = "@conversation/lf_safetyquestgiver:s_268", -- Have you found everything yet?
 	stopConversation = "false",
-	options = {
-		{"@conversation/lf_safetyquestgiver:s_270", "transport"}, -- Not yet.
-		{"@conversation/lf_safetyquestgiver:s_284", "new_loc3"}, -- Actually, I'm lost.  Can you give me that waypoint again?
-	}
+	options = {}
 }
 gerakVurtimisConvoTemplate:addScreen(quest3_status);
 
@@ -327,10 +320,7 @@ quest4_status = ConvoScreen:new {
 	id = "quest4_status",
 	leftDialog = "@conversation/lf_safetyquestgiver:s_342", -- How did it go?
 	stopConversation = "false",
-	options = {
-		{"@conversation/lf_safetyquestgiver:s_344", "good_luck"}, -- I haven't found anything yet.
-		{"@conversation/lf_safetyquestgiver:s_352", "new_loc4"}, -- I need the location again.
-	}
+	options = {}
 }
 gerakVurtimisConvoTemplate:addScreen(quest4_status);
 
@@ -391,10 +381,7 @@ quest5_status = ConvoScreen:new {
 	id = "quest5_status",
 	leftDialog = "@conversation/lf_safetyquestgiver:s_366", -- I have been hearing rumors, but nothing confirmed.  How is it going?
 	stopConversation = "false",
-	options = {
-		{"@conversation/lf_safetyquestgiver:s_388", "leader_alive"}, -- I haven't gotten to the leader yet.
-		{"@conversation/lf_safetyquestgiver:s_392", "new_loc5"}, -- Actually, I need the location again.
-	}
+	options = {}
 }
 gerakVurtimisConvoTemplate:addScreen(quest5_status);
 

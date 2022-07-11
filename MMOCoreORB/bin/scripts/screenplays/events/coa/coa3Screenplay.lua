@@ -598,14 +598,7 @@ function Coa3Screenplay:setupCaravan(pPlayer)
 			if (i == 1) then
 				AiAgent(pMobile):addCreatureFlag(AI_STATIONARY)
 
-				local pInventory = SceneObject(pMobile):getSlottedObject("inventory")
-
-				if (pInventory ~= nil) then
-					SceneObject(pInventory):setContainerOwnerID(playerID)
-					createLoot(pInventory, "coa3_caravan_disk", 0, true)
-
-					createObserver(LOOTCREATURE, "Coa3Screenplay", "onLootCaravanLeader", pMobile)
-				end
+				createObserver(LOOTCREATURE, "Coa3Screenplay", "onLootCaravanLeader", pMobile)
 			end
 
 			local mobileID = SceneObject(pMobile):getObjectID()
@@ -814,10 +807,12 @@ function Coa3Screenplay:onLootCaravanLeader(pLootedCreature, pLooter, nothing)
 			local returnLocation = readVector3Data(playerID .. ":CoA3:returnLoc:")
 			local returnPlanet = readStringData(playerID .. ":CoA3:returnPlanet:")
 
-			local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_name_3"
-			local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_desc_3"
+			if (returnPlanet ~= "") then
+				local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_name_2"
+				local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_desc_2"
 
-			local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+				local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+			end
 		end
 		return 1
 	end
