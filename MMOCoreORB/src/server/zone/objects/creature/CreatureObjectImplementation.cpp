@@ -3092,6 +3092,16 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 
 	// info(true) << "CreatureObjectImplementation::isAttackableBy TangibleObject Check -- Object ID = " << getObjectID() << " by attacking TanO ID = " << object->getObjectID();
 
+	// Vehicle object, check against owner
+	if (isVehicleObject()) {
+		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
+
+		if (owner == nullptr)
+			return false;
+
+		return owner->isAttackableBy(object);
+	}
+
 	if (isInvisible() || isEventPerk())
 		return false;
 
@@ -3182,7 +3192,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 		if (owner == nullptr)
 			return false;
 
-		return isAttackableBy(owner);
+		return owner->isAttackableBy(creature);
 	}
 
 	if (isInNoCombatArea() || creature->isInNoCombatArea())
