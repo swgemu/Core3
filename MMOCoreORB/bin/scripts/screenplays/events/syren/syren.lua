@@ -2,6 +2,7 @@ local QuestManager = require("managers.quest.quest_manager")
 
 local Syren = {}
 Syren.act1 = {}
+Syren.act1.IMPERIAL_CRC = QuestManager.questCRC.QUEST_C_STORY1_1_IMP
 Syren.act1.REBEL_CRC = QuestManager.questCRC.QUEST_C_STORY1_1_REB
 Syren.act1.LOOK_FOR_PILOT = 0
 Syren.act1.CRASH_SITE_FOUND = 1
@@ -20,7 +21,7 @@ SecretsOfTheSyren = ScreenPlay:new {
 	staticNpcs = {
 		{"syren_veega_madish", "corellia", -5203, 21, -2572, 180, 0},
 		--{"syren_tyla_jinn", "naboo", -5181, 21, 4258, 50, 0},
-		--{"syren_jevan_monsul", "tatooine", -1399, 21, -3675, 50, 0},
+		{"syren_jevan_monsul", "tatooine", 7, -0.9, -5, 50, 1028647},
         {"syren_edvar_vang", "rori", -22, 0, -10, 0, 4635424}
         --{"MERCENARIES on Rori"}
 	},
@@ -31,6 +32,7 @@ registerScreenPlay("SecretsOfTheSyren", false)
 function SecretsOfTheSyren:start()
 	self:spawnStaticNpcs()
     self:spawnActiveAreas(Syren.act1.REBEL_CRC)
+    self:spawnActiveAreas(Syren.act1.IMPERIAL_CRC)
 end
 
 function SecretsOfTheSyren:spawnStaticNpcs()
@@ -105,8 +107,6 @@ function SecretsOfTheSyren:notifyEnteredQuestArea(pActiveArea, pPlayer)
             ghost:completeJournalQuestTask(questCrc, taskIndex, true)
             ghost:activateJournalQuestTask(questCrc, taskIndex + 1, true)
             if taskIndex == Syren.act1.CRASH_SITE_FOUND then
-                -- Check inventory space
-                -- Give items
                 ghost:activateJournalQuestTask(questCrc, Syren.act1.FOUND_DATAPAD, true)
                 ghost:completeJournalQuestTask(questCrc, Syren.act1.FOUND_DATAPAD, true)
                 ghost:activateJournalQuestTask(questCrc, Syren.act1.SPICE_FOUND, true)
@@ -115,8 +115,6 @@ function SecretsOfTheSyren:notifyEnteredQuestArea(pActiveArea, pPlayer)
                 self:giveItems(pPlayer, taskIndex)
                 self:returnToContactWaypoint(questCrc, pPlayer, ghost)
             elseif taskIndex == Syren.act1.TALK_TO_MOXXAR then
-                -- Check inventory space
-                -- Give item
                 ghost:activateJournalQuestTask(questCrc, Syren.act1.SECOND_DATAPAD, true)
                 ghost:completeJournalQuestTask(questCrc, Syren.act1.SECOND_DATAPAD, true)
                 ghost:activateJournalQuestTask(questCrc, Syren.act1.RETURN_TO_CONTACT, true)

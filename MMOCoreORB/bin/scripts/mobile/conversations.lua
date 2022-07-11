@@ -94,6 +94,7 @@ includeFile("conversations/events/coa/coa3_veers_conv.lua")
 -- Secrets of the Syren
 includeFile("conversations/events/syren/neutral_tyla_jinn_conv.lua")
 includeFile("conversations/events/syren/rebel_veega_madish_conv.lua")
+includeFile("conversations/events/syren/imperial_jevan_monsul_conv.lua")
 includeFile("conversations/events/syren/doctor_edvar_vang_conv.lua")
 
 -- Hero of Tat
