@@ -32,11 +32,7 @@ int ContrabandScanSessionImplementation::initializeSession() {
 
 	if (!scanPrerequisitesMet(scanner, player)) {
 		return false;
-	} else {
-		player->info("Contraband scan started by scanner " + scanner->getDisplayedName() + " (" + String::valueOf(scanner->getObjectID()) + ") at " + scanner->getWorldPosition().toString());
 	}
-
-	scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
 
 	if (player->getActiveSession(SessionFacadeType::CONTRABANDSCAN) != nullptr) {
 		return false;
@@ -45,6 +41,22 @@ int ContrabandScanSessionImplementation::initializeSession() {
 	adjustReinforcementStrength(scanner);
 	calculateSmugglingSuccess(player);
 
+	uint32 faction = scanner->getFaction();
+
+	if (faction == Factions::FACTIONIMPERIAL || faction == Factions::FACTIONREBEL) {
+		scannerFaction = faction;
+	} else {
+		scannerFaction = currentWinningFaction;
+	}
+
+	if (scannerFaction == 0) {
+		return false;
+	}
+
+	player->info("Contraband scan started by scanner " + scanner->getDisplayedName() + " (" + String::valueOf(scanner->getObjectID()) + ") at " + scanner->getWorldPosition().toString());
+
+	scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
+
 	if (contrabandScanTask == nullptr) {
 		contrabandScanTask = new ContrabandScanTask(player);
 	}
@@ -52,25 +64,10 @@ int ContrabandScanSessionImplementation::initializeSession() {
 		contrabandScanTask->schedule(TASKDELAY);
 	}
 
-	if (scanner->getFaction() == Factions::FACTIONIMPERIAL || scanner->getFaction() == Factions::FACTIONREBEL) {
-		scannerFaction = scanner->getFaction();
-	} else {
-		scannerFaction = currentWinningFaction;
-	}
-
-	if (scannerFaction == 0) {
-		scannerFaction = currentWinningFaction = Factions::FACTIONIMPERIAL;
-	}
+	if (scannerFaction == Factions::FACTIONIMPERIAL)
+		sendStormtrooperMessage(scanner, "follow_start");
 
 	player->addActiveSession(SessionFacadeType::CONTRABANDSCAN, _this.getReferenceUnsafeStaticCast());
-
-	if (!(scanner->getCreatureBitmask() & CreatureFlag::FOLLOW))
-		scanner->addCreatureFlag(CreatureFlag::FOLLOW);
-
-	Locker clocker(player, scanner);
-
-	scanner->setFollowObject(player);
-	scanner->setMovementState(AiAgent::CRACKDOWN_SCANNING);
 
 	return true;
 }
@@ -137,9 +134,15 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 
 	switch (scanState) {
 	case SCANCHANCE:
-		checkIfPlayerShouldBeScanned(player);
+		checkIfPlayerShouldBeScanned(player, scanner);
 		break;
 	case INITIATESCAN:
+		if (!(scanner->getCreatureBitmask() & CreatureFlag::FOLLOW))
+			scanner->addCreatureFlag(CreatureFlag::FOLLOW);
+
+		scanner->setFollowObject(player);
+		scanner->setMovementState(AiAgent::CRACKDOWN_SCANNING);
+
 		initiateScan(zone, scanner, player);
 		delay += 2000;
 		break;
@@ -200,6 +203,91 @@ void ContrabandScanSessionImplementation::sendScannerChatMessage(Zone* zone, AiA
 	StringIdChatParameter chatMessage;
 	chatMessage.setStringId(getFactionStringId(player, imperial, rebel));
 	zone->getZoneServer()->getChatManager()->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, 0);
+}
+
+void ContrabandScanSessionImplementation::sendBarkChatMessage(AiAgent* scanner, CreatureObject* player) {
+	if (scanner == nullptr || player == nullptr) {
+		return;
+	}
+
+	Zone* zone = scanner->getZone();
+
+	if (zone == nullptr)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	if (chatManager == nullptr)
+		return;
+
+	uint32 playerFaction = player->getFaction();
+	StringIdChatParameter chatMessage;
+
+	if (playerFaction == Factions::FACTIONIMPERIAL) {
+		// Imperial Specific greetings
+		String name = player->getFirstName();
+		byte playerRank = player->getFactionRank();
+		name[0] = toupper(name[0]);
+
+		if (playerRank >= 10) {
+			String rankString = FactionManager::instance()->getRankName(player->getFactionRank());
+			rankString[0] = toupper(rankString[0]);
+
+			chatMessage.setStringId("@conversation/crackdown_st_static:salute_name");
+			chatMessage.setTO(name);
+			chatMessage.setTT(rankString);
+			scanner->doAnimation("salute1");
+		} else {
+			chatMessage.setStringId("@conversation/crackdown_st_static:salute");
+			chatMessage.setTO(name);
+			scanner->doAnimation("salute2");
+		}
+	} else {
+		// Handle general bark Messages
+		String barkMessages[5] = {"bark_s1", "bark_s2", "bark_s3", "loiter_s1", "loiter_s2"};
+		int randomMsg = System::random(4);
+
+		StringBuffer chatMsg;
+		chatMsg << "@conversation/crackdown_st_static:" << barkMessages[randomMsg];
+
+		chatMessage.setStringId(chatMsg.toString());
+	}
+
+	chatManager->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, scanner->getMoodID());
+}
+
+void ContrabandScanSessionImplementation::sendStormtrooperMessage(AiAgent* scanner, const String& message) {
+	if (scanner == nullptr || message == "")
+		return;
+
+	Zone* zone = scanner->getZone();
+
+	if (zone == nullptr)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	if (chatManager == nullptr)
+		return;
+
+	StringIdChatParameter chatMessage;
+	StringBuffer chatMsg;
+	chatMsg << "@conversation/crackdown_st_static:" << message;
+
+	chatMessage.setStringId(chatMsg.toString());
+	chatMessage.setTO(scanner->getCustomObjectName());
+
+	chatManager->broadcastChatMessage(scanner, chatMessage, 0, 0, scanner->getMoodID());
 }
 
 void ContrabandScanSessionImplementation::sendPersonalizedScannerChatMessage(Zone* zone, AiAgent* scanner, CreatureObject* player, const String& imperial, const String& rebel = "") {
@@ -361,12 +449,16 @@ void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scann
 			} else {
 				player->info("Contraband scan finished, no contraband found.");
 			}
+
+			if (scannerFaction == Factions::FACTIONIMPERIAL)
+				sendStormtrooperMessage(scanner, "follow_giveup");
+
 			scanState = FINISHED;
 		}
 	}
 }
 
-void ContrabandScanSessionImplementation::checkIfPlayerShouldBeScanned(CreatureObject* player) {
+void ContrabandScanSessionImplementation::checkIfPlayerShouldBeScanned(CreatureObject* player, AiAgent* scanner) {
 	if (player == nullptr) {
 		scanState = FINISHED;
 		return;
@@ -376,6 +468,9 @@ void ContrabandScanSessionImplementation::checkIfPlayerShouldBeScanned(CreatureO
 		scanState = INITIATESCAN;
 		player->updateCooldownTimer("crackdown_scan", player->getZone()->getGCWManager()->getCrackdownPlayerScanCooldown());
 	} else {
+		if (scanner != nullptr && scanner->getFaction() == Factions::FACTIONIMPERIAL)
+			sendBarkChatMessage(scanner, player);
+
 		player->info("Contraband scan not initiated due to scan chance.");
 		scanState = FINISHED;
 	}
