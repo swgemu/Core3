@@ -60,6 +60,7 @@
 #include "templates/SharedObjectTemplate.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "templates/params/ObserverEventType.h"
+#include "server/zone/managers/gcw/observers/ImperialChatObserver.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 #include "server/zone/objects/scene/WorldCoordinates.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
@@ -265,6 +266,13 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	if (!factionString.isEmpty() && (factionString == "imperial" || factionString == "rebel")) {
 		setFaction(factionString.hashCode());
+
+		if (faction == Factions::FACTIONIMPERIAL) {
+			ImperialChatObserver* chatObserver = new ImperialChatObserver();
+
+			if (chatObserver != nullptr)
+				registerObserver(ObserverEventType::FACTIONCHAT, chatObserver);
+		}
 	}
 
 	if (!loadedOutfit) {

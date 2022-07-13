@@ -48,6 +48,7 @@
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/room/ChatRoomMap.h"
 #include "templates/string/StringFile.h"
+#include "templates/faction/Factions.h"
 
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
 	server = serv;
@@ -1101,7 +1102,9 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 			if (object == nullptr)
 				continue;
 
-			if (!sourceCreature->isInRange(object, range))
+			int distSquared = sourceCreature->getWorldPosition().squaredDistanceTo(object->getWorldPosition());
+
+			if ((range * range) < distSquared)
 				continue;
 
 			CreatureObject* creature = cast<CreatureObject*>(object);
@@ -1118,6 +1121,38 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 				PetManager* petManager = server->getPetManager();
 				Locker clocker(pet, sourceCreature);
 				petManager->handleChat(sourceCreature, pet, message.toString());
+				continue;
+			}
+
+			if (creature->isAiAgent() && creature->getFaction() == Factions::FACTIONIMPERIAL && creature->getObserverCount(ObserverEventType::FACTIONCHAT) && ((20 * 20) >= distSquared)) {
+				String msgString = message.toString().toLowerCase();
+
+				if (!msgString.contains("jedi"))
+					continue;
+
+				 SortedVector<ManagedReference<Observer*> > observers = creature->getObservers(ObserverEventType::FACTIONCHAT);
+
+				if (observers.size() > 0) {
+					Reference<CreatureObject*> sourceCreo = sourceCreature;
+					Reference<CreatureObject*> observingCreo = creature;
+
+					Core::getTaskManager()->executeTask([observingCreo, sourceCreo, observers] () {
+						if (sourceCreo == nullptr || observingCreo == nullptr)
+							return;
+
+						Locker locker(observingCreo);
+
+						Observer* observer = observers.get(0);
+
+						if (observer != nullptr) {
+							Locker clocker(observer, observingCreo);
+
+							if (observer->notifyObserverEvent(ObserverEventType::FACTIONCHAT, observingCreo, sourceCreo, 0) == 1)
+								observingCreo->dropObserver(ObserverEventType::FACTIONCHAT, observer);
+						}
+					}, "NotifyFactionChatObserverLambda");
+				}
+
 				continue;
 			}
 

@@ -276,7 +276,7 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 	ChatManager* chatManager = zoneServer->getChatManager();
 	PlayerObject* playerObject = emoteUser->getPlayerObject();
 
-	if (playerObject == nullptr)
+	if (chatManager == nullptr || playerObject == nullptr)
 		return;
 
 	if (emoteTarget->getDistanceTo(emoteUser) > 16.f)
@@ -295,7 +295,7 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 		box->setPromptText(suiFineMsg.toString());
 		box->setCallback(new ReactionFinePaymentSuiCallback(zoneServer));
 		box->setUsingObject(emoteTarget);
-		box->setForceCloseDistance(16.f);
+		box->setForceCloseDistance(20.f);
 		playerObject->addSuiBox(box);
 		emoteUser->sendMessage(box->generateMessage());
 
@@ -305,6 +305,24 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 	int reactionLevel = getReactionLevel(socialType);
 
 	if (reactionLevel == 0)
+		return;
+
+	reactionFine(emoteUser, emoteTarget, reactionLevel);
+}
+
+void ReactionManagerImplementation::reactionFine(CreatureObject* emoteUser, AiAgent* emoteTarget, int reactionLevel) {
+	if (emoteUser == nullptr || emoteTarget == nullptr)
+		return;
+
+	ZoneServer* zonerServer = emoteUser->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	PlayerObject* ghost = emoteUser->getPlayerObject();
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	if (ghost == nullptr)
 		return;
 
 	EmoteReactionFine* reactionFine = getEmoteReactionFine(emoteUser, emoteTarget, reactionLevel);
@@ -322,7 +340,7 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 	}
 
 	if (reactionFine->getFactionFine() != 0)
-		playerObject->decreaseFactionStanding("imperial", reactionFine->getFactionFine());
+		ghost->decreaseFactionStanding("imperial", reactionFine->getFactionFine());
 
 	if (reactionFine->shouldKnockdown()) {
 		doKnockdown(emoteUser, emoteTarget);
@@ -331,10 +349,10 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 	if (reactionFine->getCreditFine() != 0) {
 		StringBuffer suiFineMsg;
 		suiFineMsg << "@stormtrooper_attitude/st_response:imperial_fine_" << String::valueOf(reactionFine->getCreditFine());
-		if (playerObject->getReactionFines() != 0) {
-			suiFineMsg << " @stormtrooper_attitude/st_response:imperial_fine_outstanding " << String::valueOf(playerObject->getReactionFines() + reactionFine->getCreditFine()) << " @stormtrooper_attitude/st_response:imperial_fine_credits";
+		if (ghost->getReactionFines() != 0) {
+			suiFineMsg << " @stormtrooper_attitude/st_response:imperial_fine_outstanding " << String::valueOf(ghost->getReactionFines() + reactionFine->getCreditFine()) << " @stormtrooper_attitude/st_response:imperial_fine_credits";
 		} else {
-			playerObject->updateReactionFineTimestamp();
+			ghost->updateReactionFineTimestamp();
 		}
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(emoteUser, SuiWindowType::REACTION_FINE);
 		box->setPromptTitle("@stormtrooper_attitude/st_response:imperial_fine_t"); // Imperial Fine
@@ -343,10 +361,10 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 		box->setUsingObject(emoteTarget);
 		box->setForceCloseDistance(16.f);
 
-		playerObject->addSuiBox(box);
+		ghost->addSuiBox(box);
 		emoteUser->sendMessage(box->generateMessage());
 
-		playerObject->addToReactionFines(reactionFine->getCreditFine());
+		ghost->addToReactionFines(reactionFine->getCreditFine());
 
 	}
 }

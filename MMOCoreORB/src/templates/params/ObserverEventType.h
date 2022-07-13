@@ -101,7 +101,8 @@ public:
 		HARVESTEDCREATURE,			// ManagedObject arg1 = resource spawn, long arg2 = Total creature resources harvested
 		DEPLOYEDCAMP,				// ManagedObject arg1 = camp area, long arg2 = 0
 		IMAGEDESIGNHAIR,			// ManagedObject arg1 = null, long arg2 = 0
-		COMBATCOMMANDENQUEUED		// ManagedObject arg1 = player, long arg2 = 0
+		COMBATCOMMANDENQUEUED,		// ManagedObject arg1 = player, long arg2 = 0
+		FACTIONCHAT					// ManagedObject arg1 = AiAgent, long arg2 = playerID
 	};
 };
 
