@@ -702,6 +702,7 @@ includeFile("battlefields/battlefield_spawner.lua");
 
 --Tests
 includeFile("tests/tests.lua")
+includeFile("tests/ai_test.lua")
 
 -- Server Event Automation
 includeFile("events/ServerEventAutomation.lua")
