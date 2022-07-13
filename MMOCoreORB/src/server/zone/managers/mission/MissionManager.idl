@@ -166,7 +166,7 @@ class MissionManager extends Observer implements Logger {
 	public native void updatePlayerBountyReward(unsigned long targetId, int reward);
 	public native void updatePlayerBountyOnlineStatus(unsigned long targetId, boolean status);
 	public native void completePlayerBounty(unsigned long targetId, unsigned long bountyHunter);
-	public native void failPlayerBountyMission(unsigned long bountyHunter);
+	public native void failPlayerBountyMission(unsigned long bountyHunter, unsigned long targetID);
 
 	@local
 	@dereferenced

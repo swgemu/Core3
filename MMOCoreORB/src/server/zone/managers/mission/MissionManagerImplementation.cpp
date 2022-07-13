@@ -1964,7 +1964,7 @@ void MissionManagerImplementation::removePlayerFromBountyList(uint64 targetId) {
 		const SortedVector<uint64>* bountyHunters = target->getBountyHunters();
 
 		for (int i = 0; i < bountyHunters->size(); i++) {
-			failPlayerBountyMission(bountyHunters->get(i));
+			failPlayerBountyMission(bountyHunters->get(i), targetId);
 		}
 
 		ObjectManager::instance()->destroyObjectFromDatabase(target->_getObjectID());
@@ -2141,7 +2141,7 @@ void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 
 		for (int i = 0; i < bhSize; i++) {
 			if (activeBountyHunters.get(i) != bountyHunter) {
 				//Fail mission.
-				failPlayerBountyMission(activeBountyHunters.get(i));
+				failPlayerBountyMission(activeBountyHunters.get(i), targetId);
 			} else {
 				ManagedReference<CreatureObject*> creo = server->getObject(activeBountyHunters.get(i)).castTo<CreatureObject*>();
 				auto ghost = creo->getPlayerObject();
@@ -2152,7 +2152,7 @@ void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 
 	}
 }
 
-void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) {
+void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter, uint64 targetID) {
 	ManagedReference<CreatureObject*> creature = server->getObject(bountyHunter).castTo<CreatureObject*>();
 
 	if (creature != nullptr) {
@@ -2170,8 +2170,20 @@ void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) 
 					player->sendSystemMessage("@mission/mission_generic:failed");
 
 					auto ghost = player->getPlayerObject();
+
 					if (ghost != nullptr)
 						ghost->schedulePvpTefRemovalTask(false, false, true);
+				}
+
+				if (ConfigManager::instance()->getBool("Core3.MissionManager.PlayerBountyCooldown", true) && targetID > 0) {
+					PlayerBounty* playerBounty = playerBountyList.get(targetID);
+
+					if (playerBounty != nullptr) {
+						Time currentTime;
+						uint64 curTime = currentTime.getMiliTime();
+
+						playerBounty->addMissionCooldown(bountyHunter, curTime);
+					}
 				}
 
 				objective->fail();

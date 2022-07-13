@@ -398,7 +398,7 @@ void SkillManager::removeSkillRelatedMissions(CreatureObject* creature, Skill* s
 		if(zoneServer != nullptr) {
 			ManagedReference<MissionManager*> missionManager = zoneServer->getMissionManager();
 			if(missionManager != nullptr) {
-				missionManager->failPlayerBountyMission(creature->getObjectID());
+				missionManager->failPlayerBountyMission(creature->getObjectID(), 0);
 			}
 		}
 	}
