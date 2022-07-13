@@ -88,6 +88,8 @@ class ReactionManager extends ManagedService implements Logger {
 
 	public native void emoteReaction(CreatureObject emoteUser, AiAgent emoteTarget, int emoteid);
 
+	public native void reactionFine(CreatureObject emoteUser, AiAgent emoteTarget, int reactionLevel);
+
 	public native void doKnockdown(CreatureObject victim, AiAgent attacker);
 
 	public native void doReactionFineMailCheck(CreatureObject player);
