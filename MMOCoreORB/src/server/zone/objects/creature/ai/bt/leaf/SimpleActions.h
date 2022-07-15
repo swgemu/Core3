@@ -558,7 +558,10 @@ public:
 		if (agent->peekBlackboard("targetProspect"))
 			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
 
-		if (target == nullptr || !target->isPlayerCreature())
+		if (target == nullptr)
+			return FAILURE;
+
+		if (!agent->checkCooldownRecovery("crackdown_scan"))
 			return FAILURE;
 
 		Zone* zone = agent->getZone();

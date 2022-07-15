@@ -55,21 +55,10 @@ crackdownScansEnabled = true
 -- thresholds for scaling crackdown npc's difficulty, first threshold should always be 0.
 difficutlyScalingThresholds = {0, 64}
 
---[[
--- TESTING VALUES
-crackdownScanPrivilegedPlayers = true
-wildScanInterval = 2 * 60 -- In seconds
-wildScanChance = 75 -- % chance for a valid scan target to be scanned
-crackdownPlayerScanCooldown = 15 * 60  -- In seconds
-crackdownContrabandFineCredits = 10000
-crackdownContrabandFineFactionPoints = 100
-crackdownPlanetsWithWildScans = { "corellia", "dantooine", "dathomir", "endor", "lok", "naboo", "rori", "talus", "tatooine", "yavin4"}
-]]
-
 -- PRODUCTION SERVER VALUES
 crackdownScanPrivilegedPlayers = false
 wildScanInterval = 10 * 60 -- In seconds
-wildScanChance = 15 -- % chance for a valid scan target to be scanned
+wildScanChance = 20 -- % chance for a valid scan target to be scanned
 crackdownPlayerScanCooldown = 36 * 60 * 60  -- In seconds, 36 hour cooldown
 crackdownContrabandFineCredits = 10000
 crackdownContrabandFineFactionPoints = 100

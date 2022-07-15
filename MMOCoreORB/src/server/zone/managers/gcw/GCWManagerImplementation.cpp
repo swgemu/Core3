@@ -3219,30 +3219,36 @@ bool GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject
 	if (!crackdownScansEnabled)
 		return false;
 
+	if (scanner == nullptr || player == nullptr)
+		return false;
+
+	if (player->isIncapacitated() || player->isDead())
+		return false;
+
+	if (!crackdownScanPrivilegedPlayers && player->isPlayerCreature()) {
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost != nullptr && ghost->isPrivileged())
+			return false;
+	}
+
 	if (!CollisionManager::checkLineOfSight(scanner, player))
 		return false;
 
-	if (player->isIncapacitated())
-		return false;
-
-	if (!crackdownScanPrivilegedPlayers && player->isPlayerObject() && player->getPlayerObject()->isPrivileged())
-		return false;
-
-	if (!scanner->checkCooldownRecovery("crackdown_scan")) {
-		scanner->info("Contraband scan of " + player->getDisplayedName() + " (" + String::valueOf(player->getObjectID()) + ") skipped due to scanner cooldown.");
-	} else if (!player->checkCooldownRecovery("crackdown_scan")) {
+	if (!player->checkCooldownRecovery("crackdown_scan")) {
 		scanner->info("Contraband scan of " + player->getDisplayedName() + " (" + String::valueOf(player->getObjectID()) + ") skipped due to player cooldown.");
-	} else {
-		startContrabandScanSession(scanner, player, false);
-		return true;
+		return false;
 	}
 
-	return false;
+	startContrabandScanSession(scanner, player, false);
+	return true;
 }
 
 void GCWManagerImplementation::startContrabandScanSession(AiAgent* scanner, CreatureObject* player, bool enforced) {
 	ContrabandScanSession* contrabandScanSession = new ContrabandScanSession(scanner, player, getWinningFaction(), getWinningFactionDifficultyScaling(), enforced);
-	contrabandScanSession->initializeSession();
+
+	if (contrabandScanSession != nullptr)
+		contrabandScanSession->initializeSession();
 }
 
 String GCWManagerImplementation::getCrackdownInfo(CreatureObject* player) const {
