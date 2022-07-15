@@ -561,6 +561,9 @@ public:
 		if (target == nullptr || !target->isPlayerCreature())
 			return FAILURE;
 
+		if (!agent->checkCooldownRecovery("crackdown_scan"))
+			return FAILURE;
+
 		Zone* zone = agent->getZone();
 
 		if (zone == nullptr)
