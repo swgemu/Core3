@@ -267,12 +267,12 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	if (!factionString.isEmpty() && (factionString == "imperial" || factionString == "rebel")) {
 		setFaction(factionString.hashCode());
 
-		if (faction == Factions::FACTIONIMPERIAL) {
+		/*if (faction == Factions::FACTIONIMPERIAL) {
 			ImperialChatObserver* chatObserver = new ImperialChatObserver();
 
 			if (chatObserver != nullptr)
 				registerObserver(ObserverEventType::FACTIONCHAT, chatObserver);
-		}
+		}*/
 	}
 
 	if (!loadedOutfit) {
