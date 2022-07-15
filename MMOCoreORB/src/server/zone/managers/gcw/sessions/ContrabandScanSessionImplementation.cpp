@@ -60,12 +60,10 @@ int ContrabandScanSessionImplementation::initializeSession() {
 	if (contrabandScanTask == nullptr) {
 		contrabandScanTask = new ContrabandScanTask(player);
 	}
+
 	if (!contrabandScanTask->isScheduled()) {
 		contrabandScanTask->schedule(TASKDELAY);
 	}
-
-	if (scannerFaction == Factions::FACTIONIMPERIAL)
-		sendStormtrooperMessage(scanner, "follow_start");
 
 	player->addActiveSession(SessionFacadeType::CONTRABANDSCAN, _this.getReferenceUnsafeStaticCast());
 
@@ -137,6 +135,9 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 		checkIfPlayerShouldBeScanned(player, scanner);
 		break;
 	case INITIATESCAN:
+		if (scannerFaction == Factions::FACTIONIMPERIAL)
+			sendStormtrooperMessage(scanner, "follow_start");
+
 		if (!(scanner->getCreatureBitmask() & CreatureFlag::FOLLOW))
 			scanner->addCreatureFlag(CreatureFlag::FOLLOW);
 
@@ -468,7 +469,7 @@ void ContrabandScanSessionImplementation::checkIfPlayerShouldBeScanned(CreatureO
 		scanState = INITIATESCAN;
 		player->updateCooldownTimer("crackdown_scan", player->getZone()->getGCWManager()->getCrackdownPlayerScanCooldown());
 	} else {
-		if (scanner != nullptr && scanner->getFaction() == Factions::FACTIONIMPERIAL)
+		if (System::random(100) < 30 && scanner != nullptr && scanner->getFaction() == Factions::FACTIONIMPERIAL)
 			sendBarkChatMessage(scanner, player);
 
 		player->info("Contraband scan not initiated due to scan chance.");
