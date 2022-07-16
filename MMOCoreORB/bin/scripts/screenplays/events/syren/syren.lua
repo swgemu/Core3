@@ -3,6 +3,7 @@ local QuestManager = require("managers.quest.quest_manager")
 local Syren = {}
 Syren.act1 = {}
 Syren.act1.IMPERIAL_CRC = QuestManager.questCRC.QUEST_C_STORY1_1_IMP
+Syren.act1.NEUTRAL_CRC = QuestManager.questCRC.QUEST_C_STORY1_1_NEU
 Syren.act1.REBEL_CRC = QuestManager.questCRC.QUEST_C_STORY1_1_REB
 Syren.act1.LOOK_FOR_PILOT = 0
 Syren.act1.CRASH_SITE_FOUND = 1
@@ -20,10 +21,9 @@ SecretsOfTheSyren = ScreenPlay:new {
 	className = "SecretsOfTheSyren",
 	staticNpcs = {
 		{"syren_veega_madish", "corellia", -5203, 21, -2572, 180, 0},
-		--{"syren_tyla_jinn", "naboo", -5181, 21, 4258, 50, 0},
+		{"syren_tyla_jinn", "naboo", 6.4, -0.9, -6.5, 50, 91},
 		{"syren_jevan_monsul", "tatooine", 7, -0.9, -5, 50, 1028647},
 		{"syren_edvar_vang", "rori", -22, 0, -10, 0, 4635424}
-		--{"MERCENARIES on Rori"}
 	},
 }
 
@@ -33,6 +33,7 @@ function SecretsOfTheSyren:start()
 	self:spawnStaticNpcs()
 	self:spawnActiveAreas(Syren.act1.REBEL_CRC)
 	self:spawnActiveAreas(Syren.act1.IMPERIAL_CRC)
+	self:spawnActiveAreas(Syren.act1.NEUTRAL_CRC)
 end
 
 function SecretsOfTheSyren:spawnStaticNpcs()
@@ -154,7 +155,11 @@ end
 function SecretsOfTheSyren:returnToContactWaypoint(questCrC, pPlayer, ghost)
 	if questCrc == Syren.act1.REBEL_CRC then
 		self:updateWaypoint(pPlayer, ghost, "corellia", "Return to your contact", -5203, -2572)
-	end -- Add other factions
+	elseif questCrc == Syren.act1.IMPERIAL_CRC then
+		self:updateWaypoint(pPlayer, ghost, "tatooine", "Return to your contact", -1399, -3675)
+	elseif questCrc == Syren.act1.NEUTRAL_CRC then
+		self:updateWaypoint(pPlayer, ghost, "naboo", "Return to your contact", -5181, 4258)
+	end
 end
 
 function SecretsOfTheSyren:updateWaypoint(pPlayer, ghost, planet, text, x, y)

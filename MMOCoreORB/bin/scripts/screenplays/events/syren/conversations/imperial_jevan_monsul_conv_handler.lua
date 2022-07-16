@@ -43,7 +43,6 @@ function imperialJevanMonsulConvoHandler:runScreenHandlers(pConvTemplate, pPlaye
 		SecretsOfTheSyren:accept_quest_looking_for_pilot(pPlayer, Syren.act1.IMPERIAL_CRC)
 	elseif screenID == "doctor" then
 		SecretsOfTheSyren:accept_quest_talk_to_doctor(pPlayer, Syren.act1.IMPERIAL_CRC)
-		-- Remove datapad
 	elseif screenID == "finish_act1" then
 		SecretsOfTheSyren:completeAct1(pPlayer, Syren.act1.IMPERIAL_CRC)
 	end
