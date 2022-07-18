@@ -93,6 +93,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "setVisibility", &LuaPlayerObject::setVisibility },
 		{ "getPlayedTimeString", &LuaPlayerObject::getPlayedTimeString },
 		{ "getAccountID", &LuaPlayerObject::getAccountID },
+		{ "hasPvpTef", &LuaPlayerObject::hasPvpTef },
+		{ "hasGcwTef", &LuaPlayerObject::hasGcwTef },
 		{ 0, 0 }
 };
 
@@ -869,6 +871,18 @@ int LuaPlayerObject::getAccountID(lua_State* L) {
 	Locker locker(realObject);
 
 	lua_pushinteger(L, realObject->getAccountID());
+
+	return 1;
+}
+
+int LuaPlayerObject::hasPvpTef(lua_State* L) {
+	lua_pushboolean(L, realObject->hasPvpTef());
+
+	return 1;
+}
+
+int LuaPlayerObject::hasGcwTef(lua_State* L) {
+	lua_pushboolean(L, realObject->hasGcwTef());
 
 	return 1;
 }
