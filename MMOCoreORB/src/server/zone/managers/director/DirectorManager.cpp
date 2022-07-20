@@ -677,6 +677,10 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalLong("FACTIONIMPERIAL", Factions::FACTIONIMPERIAL);
 	luaEngine->setGlobalLong("FACTIONREBEL", Factions::FACTIONREBEL);
 
+	luaEngine->setGlobalInt("ONLEAVE", FactionStatus::ONLEAVE);
+	luaEngine->setGlobalInt("COVERT", FactionStatus::COVERT);
+	luaEngine->setGlobalInt("OVERT", FactionStatus::OVERT);
+
 	// AI/creature bitmasks
 	luaEngine->setGlobalInt("AI_NPC", CreatureFlag::NPC);
 	luaEngine->setGlobalInt("AI_PACK", CreatureFlag::PACK);
