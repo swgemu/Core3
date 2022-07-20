@@ -22,6 +22,7 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 const char LuaAiAgent::className[] = "LuaAiAgent";
 
@@ -92,6 +93,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "hasLoot", &LuaAiAgent::hasLoot },
 		{ "isEventMob", &LuaAiAgent::isEventMob },
 		{ "isPet", &LuaAiAgent::isPet },
+		{ "isFactionPet", &LuaAiAgent::isFactionPet },
 		{ "isCreature", &LuaSceneObject::isCreature},
 		{ "isAggressiveTo", &LuaAiAgent::isAggressiveTo },
 		{ "isAttackableBy", &LuaAiAgent::isAttackableBy },
@@ -639,6 +641,22 @@ int LuaAiAgent::isEventMob(lua_State* L) {
 
 int LuaAiAgent::isPet(lua_State* L) {
 	lua_pushboolean(L, realObject->isPet());
+	return 1;
+}
+
+int LuaAiAgent::isFactionPet(lua_State* L) {
+	bool factionPet = false;
+
+	if (realObject->isPet()) {
+		ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (controlDevice != nullptr) {
+			factionPet = controlDevice->getPetType() == PetManager::FACTIONPET;
+		}
+	}
+
+	lua_pushboolean(L, factionPet);
+
 	return 1;
 }
 
