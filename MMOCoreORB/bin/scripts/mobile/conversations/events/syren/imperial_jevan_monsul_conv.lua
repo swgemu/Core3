@@ -246,14 +246,14 @@ no_info = ConvoScreen:new {
 
 imperialJevanMonsulConvoTemplate:addScreen(no_info);
 
-kaila_waypoint = ConvoScreen:new {
-	id = "kaila_waypoint",
-	leftDialog = "@conversation/c_story1_1_imp_quest:s_294", -- No more of this for me.  I'm done.
+where_is_she = ConvoScreen:new {
+	id = "where_is_she",
+	leftDialog = "@conversation/c_story1_1_imp_quest:s_302", -- Kaila apparently hangs out at some dive in Narmle.  Here's a waypoint.  It should be safe enough there.
 	stopConversation = "true",
 	options = {}
 }
 
-imperialJevanMonsulConvoTemplate:addScreen(kaila_waypoint);
+imperialJevanMonsulConvoTemplate:addScreen(where_is_she);
 
 no_part = ConvoScreen:new {
 	id = "no_part",
@@ -273,14 +273,14 @@ welcome_back_no_datapad = ConvoScreen:new {
 
 imperialJevanMonsulConvoTemplate:addScreen(welcome_back_no_datapad);
 
-finish_act1 = ConvoScreen:new {
-	id = "finish_act1",
+finished = ConvoScreen:new {
+	id = "finished",
 	leftDialog = "@conversation/c_story1_1_reb_quest:s_301", -- Can I talk to you later?  I'm tracking down a tough bit of information.
 	stopConversation = "true",
 	options = {}
 }
 
-imperialJevanMonsulConvoTemplate:addScreen(finish_act1);
+imperialJevanMonsulConvoTemplate:addScreen(finished);
 
 welcome_back_with_spice_imperial = ConvoScreen:new {
 	id = "welcome_back_with_spice_imperial",

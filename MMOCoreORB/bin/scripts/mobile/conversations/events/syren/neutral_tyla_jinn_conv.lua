@@ -247,14 +247,14 @@ no_info = ConvoScreen:new {
 
 neutralTylaJinnConvoTemplate:addScreen(no_info);
 
-kaila_waypoint = ConvoScreen:new {
-	id = "kaila_waypoint",
+where_is_she = ConvoScreen:new {
+	id = "where_is_she",
 	leftDialog = "@conversation/c_story1_1_neu_quest:s_448", -- Kaila's a regular at some dive in Narmle.  I'll give you a waypoint.
 	stopConversation = "true",
 	options = {}
 }
 
-neutralTylaJinnConvoTemplate:addScreen(kaila_waypoint);
+neutralTylaJinnConvoTemplate:addScreen(where_is_she);
 
 no_part = ConvoScreen:new {
 	id = "no_part",
@@ -274,13 +274,13 @@ welcome_back_no_datapad = ConvoScreen:new {
 
 neutralTylaJinnConvoTemplate:addScreen(welcome_back_no_datapad);
 
-finish_act1 = ConvoScreen:new {
-	id = "finish_act1",
+finished = ConvoScreen:new {
+	id = "finished",
 	leftDialog = "@conversation/c_story1_1_neu_quest:s_466", -- I don't know what is going on, exactly, but I'm going to try to have more inforamtion for you as soon as I can.  It's not looking good so far.
 	stopConversation = "true",
 	options = {}
 }
 
-neutralTylaJinnConvoTemplate:addScreen(finish_act1);
+neutralTylaJinnConvoTemplate:addScreen(finished);
 
 addConversationTemplate("neutralTylaJinnConvoTemplate", neutralTylaJinnConvoTemplate);

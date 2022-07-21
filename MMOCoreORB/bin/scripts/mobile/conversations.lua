@@ -96,6 +96,7 @@ includeFile("conversations/events/syren/neutral_tyla_jinn_conv.lua")
 includeFile("conversations/events/syren/rebel_veega_madish_conv.lua")
 includeFile("conversations/events/syren/imperial_jevan_monsul_conv.lua")
 includeFile("conversations/events/syren/doctor_edvar_vang_conv.lua")
+includeFile("conversations/events/syren/kaila_min_conv.lua")
 
 -- Hero of Tat
 includeFile("conversations/tasks/hero_of_tatooine/hermit_conv.lua")

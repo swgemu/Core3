@@ -14,6 +14,23 @@ Syren.act1.TALK_TO_MOXXAR = 5
 Syren.act1.SECOND_DATAPAD = 6
 Syren.act1.RETURN_TO_CONTACT = 7
 Syren.act1.SPICE_FOUND = 8
+Syren.act2 = {}
+Syren.act2.IMPERIAL_CRC = QuestManager.questCRC.QUEST_C_STORY1_2_IMP
+Syren.act2.NEUTRAL_CRC = QuestManager.questCRC.QUEST_C_STORY1_2_NEU
+Syren.act2.REBEL_CRC = QuestManager.questCRC.QUEST_C_STORY1_2_REB
+Syren.act2.TALK_TO_KAILA = 0
+Syren.act2.GO_TO_AMBUSH = 1
+Syren.act2.AMBUSH_1 = 2
+Syren.act2.AMBUSH_2 = 3
+Syren.act2.AMBUSH_3 = 4
+Syren.act2.AMBUSH_COMPLETE = 6
+Syren.act2.GO_TO_BASE = 6
+Syren.act2.TALK_TO_TOVAR = 7
+Syren.act2.REWARD = 8
+Syren.act2.CLIFFHANGER = 9
+Syren.act2.FAILED_AMBUSH_3 = 10
+Syren.act2.FAILED_AMBUSH_2 = 11
+Syren.act2.FAILED_AMBUSH_1 = 12
 
 SecretsOfTheSyren = ScreenPlay:new {
 	SCREEN_PLAY_NAME = "secrets_of_the_syren",
@@ -23,7 +40,8 @@ SecretsOfTheSyren = ScreenPlay:new {
 		{"syren_veega_madish", "corellia", -5203, 21, -2572, 180, 0},
 		{"syren_tyla_jinn", "naboo", 6.4, -0.9, -6.5, 50, 91},
 		{"syren_jevan_monsul", "tatooine", 7, -0.9, -5, 50, 1028647},
-		{"syren_edvar_vang", "rori", -22, 0, -10, 0, 4635424}
+		{"syren_edvar_vang", "rori", -22, 0, -10, 0, 4635424},
+		{"syren_kaila_min", "rori", 22.3, 1.3, 10.6, 180, 4635594}
 	},
 }
 
@@ -152,7 +170,7 @@ function SecretsOfTheSyren:giveItems(pPlayer, taskIndex)
 	end
 end
 
-function SecretsOfTheSyren:returnToContactWaypoint(questCrC, pPlayer, ghost)
+function SecretsOfTheSyren:returnToContactWaypoint(questCrc, pPlayer, ghost)
 	if questCrc == Syren.act1.REBEL_CRC then
 		self:updateWaypoint(pPlayer, ghost, "corellia", "Return to your contact", -5203, -2572)
 	elseif questCrc == Syren.act1.IMPERIAL_CRC then
@@ -177,7 +195,7 @@ function SecretsOfTheSyren:activeTask(ghost, questCrc, taskIndex)
 			   not ghost:isJournalQuestComplete(questCrc) and not ghost:isJournalQuestTaskComplete(questCrc, taskIndex)
 end
 
-function SecretsOfTheSyren:accept_quest_looking_for_pilot(pPlayer, questCrc)
+function SecretsOfTheSyren:acceptQuestLookingForPilot(pPlayer, questCrc)
 	if pPlayer ~= nil and SceneObject(pPlayer):isPlayerCreature() then
 		local creature = LuaCreatureObject(pPlayer)
 		local pGhost = creature:getPlayerObject()
@@ -190,7 +208,7 @@ function SecretsOfTheSyren:accept_quest_looking_for_pilot(pPlayer, questCrc)
 	end
 end
 
-function SecretsOfTheSyren:accept_quest_talk_to_doctor(pPlayer, questCrc)
+function SecretsOfTheSyren:acceptQuestTalkToDoctor(pPlayer, questCrc)
 	if pPlayer ~= nil and SceneObject(pPlayer):isPlayerCreature() then
 		local creature = LuaCreatureObject(pPlayer)
 		local pGhost = creature:getPlayerObject()
@@ -203,7 +221,7 @@ function SecretsOfTheSyren:accept_quest_talk_to_doctor(pPlayer, questCrc)
 	end
 end
 
-function SecretsOfTheSyren:accept_quest_looking_for_moxxar(pPlayer, questCrc)
+function SecretsOfTheSyren:acceptQuestLookingForMoxxar(pPlayer, questCrc)
 	if pPlayer ~= nil and SceneObject(pPlayer):isPlayerCreature() then
 		local creature = LuaCreatureObject(pPlayer)
 		local pGhost = creature:getPlayerObject()
@@ -216,7 +234,20 @@ function SecretsOfTheSyren:accept_quest_looking_for_moxxar(pPlayer, questCrc)
 	end
 end
 
-function SecretsOfTheSyren:completeAct1(pPlayer, questCrc)
+function SecretsOfTheSyren:acceptQuestGoToAmbush(pPlayer, questCrc)
+	if pPlayer ~= nil and SceneObject(pPlayer):isPlayerCreature() then
+		local creature = LuaCreatureObject(pPlayer)
+		local pGhost = creature:getPlayerObject()
+		if pGhost ~= nil then
+			local ghost = LuaPlayerObject(pGhost)
+			ghost:completeJournalQuestTask(questCrc, Syren.act2.TALK_TO_KAILA, true)
+			ghost:activateJournalQuestTask(questCrc, Syren.act2.GO_TO_AMBUSH, true)
+			self:updateWaypoint(pPlayer, ghost, "rori", "Pirates Last Known Location", -2970, 947)
+		end
+	end
+end
+
+function SecretsOfTheSyren:finishAct1(pPlayer, questCrc)
 	if pPlayer ~= nil and SceneObject(pPlayer):isPlayerCreature() then
 		local creature = LuaCreatureObject(pPlayer)
 		local pGhost = creature:getPlayerObject()
@@ -224,6 +255,19 @@ function SecretsOfTheSyren:completeAct1(pPlayer, questCrc)
 			local ghost = LuaPlayerObject(pGhost)
 			ghost:completeJournalQuestTask(questCrc, Syren.act1.RETURN_TO_CONTACT, true)
 			ghost:completeJournalQuest(questCrc, true)
+		end
+	end
+end
+
+function SecretsOfTheSyren:acceptQuestGoToKailaMin(pPlayer, questCrc)
+	if pPlayer ~= nil and SceneObject(pPlayer):isPlayerCreature() then
+		local creature = LuaCreatureObject(pPlayer)
+		local pGhost = creature:getPlayerObject()
+		if pGhost ~= nil then
+			local ghost = LuaPlayerObject(pGhost)
+			ghost:activateJournalQuest(questCrc, true)
+			ghost:activateJournalQuestTask(questCrc, Syren.act2.TALK_TO_KAILA, true)
+			self:updateWaypoint(pPlayer, ghost, "rori", "Talk to Kaila Min", -5264, -2290)
 		end
 	end
 end

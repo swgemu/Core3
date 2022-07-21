@@ -329,6 +329,7 @@ includeFile("events/syren/conversations/imperial_jevan_monsul_conv_handler.lua")
 includeFile("events/syren/conversations/neutral_tyla_jinn_conv_handler.lua")
 includeFile("events/syren/conversations/rebel_veega_madish_conv_handler.lua")
 includeFile("events/syren/conversations/doctor_edvar_vang_conv_handler.lua")
+includeFile("events/syren/conversations/kaila_min_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")

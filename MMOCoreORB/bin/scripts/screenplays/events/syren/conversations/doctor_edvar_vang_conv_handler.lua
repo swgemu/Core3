@@ -36,11 +36,11 @@ function doctorEdvarVangConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 			if pGhost ~= nil then
 				local ghost = LuaPlayerObject(pGhost)
 				if ghost:isJournalQuestTaskActive(Syren.act1.REBEL_CRC, Syren.act1.TALK_TO_DOCTOR) then
-					SecretsOfTheSyren:accept_quest_looking_for_moxxar(pPlayer, Syren.act1.REBEL_CRC)
+					SecretsOfTheSyren:acceptQuestLookingForMoxxar(pPlayer, Syren.act1.REBEL_CRC)
 				elseif ghost:isJournalQuestTaskActive(Syren.act1.IMPERIAL_CRC, Syren.act1.TALK_TO_DOCTOR) then
-					SecretsOfTheSyren:accept_quest_looking_for_moxxar(pPlayer, Syren.act1.IMPERIAL_CRC)
+					SecretsOfTheSyren:acceptQuestLookingForMoxxar(pPlayer, Syren.act1.IMPERIAL_CRC)
 				elseif ghost:isJournalQuestTaskActive(Syren.act1.NEUTRAL_CRC, Syren.act1.TALK_TO_DOCTOR) then
-					SecretsOfTheSyren:accept_quest_looking_for_moxxar(pPlayer, Syren.act1.NEUTRAL_CRC)
+					SecretsOfTheSyren:acceptQuestLookingForMoxxar(pPlayer, Syren.act1.NEUTRAL_CRC)
 				end
 			end
 		end

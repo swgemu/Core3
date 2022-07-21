@@ -11,8 +11,12 @@ function neutralTylaJinnConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTempla
 		if pGhost ~= nil then
 			local ghost = LuaPlayerObject(pGhost)
 			if not creature:isRebel() and not creature:isImperial() then
-				if ghost:isJournalQuestTaskActive(Syren.act1.NEUTRAL_CRC, Syren.act1.RETURN_TO_CONTACT) then  -- Update for part 2
-					return convoTemplate:getScreen("finish_act1")
+				if ghost:isJournalQuestTaskComplete(Syren.act2.NEUTRAL_CRC, Syren.act2.TALK_TO_KAILA) then
+					return convoTemplate:getScreen("finished")
+				elseif ghost:isJournalQuestTaskActive(Syren.act2.NEUTRAL_CRC, Syren.act2.TALK_TO_KAILA) then
+					return convoTemplate:getScreen("where_is_she")
+				elseif ghost:isJournalQuestTaskActive(Syren.act1.NEUTRAL_CRC, Syren.act1.RETURN_TO_CONTACT) or ghost:isJournalQuestComplete(Syren.act1.NEUTRAL_CRC) then
+					return convoTemplate:getScreen("start_finish")
 				elseif ghost:isJournalQuestTaskComplete(Syren.act1.NEUTRAL_CRC, Syren.act1.TALK_TO_DOCTOR) then
 					return convoTemplate:getScreen("welcome_back_no_datapad")
 				elseif ghost:isJournalQuestTaskActive(Syren.act1.NEUTRAL_CRC, Syren.act1.TALK_TO_DOCTOR) then
@@ -40,11 +44,13 @@ function neutralTylaJinnConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 	local screenID = screen:getScreenID()
 
 	if screenID == "accept" or screenID == "accept_job" then
-		SecretsOfTheSyren:accept_quest_looking_for_pilot(pPlayer, Syren.act1.NEUTRAL_CRC)
+		SecretsOfTheSyren:acceptQuestLookingForPilot(pPlayer, Syren.act1.NEUTRAL_CRC)
 	elseif screenID == "doctor" then
-		SecretsOfTheSyren:accept_quest_talk_to_doctor(pPlayer, Syren.act1.NEUTRAL_CRC)
-	elseif screenID == "finish_act1" then
-		SecretsOfTheSyren:completeAct1(pPlayer, Syren.act1.NEUTRAL_CRC)
+		SecretsOfTheSyren:acceptQuestTalkToDoctor(pPlayer, Syren.act1.NEUTRAL_CRC)
+	elseif screenID == "start_finish" then
+		SecretsOfTheSyren:finishAct1(pPlayer, Syren.act1.NEUTRAL_CRC)
+	elseif screenID == "where_is_she" then
+		SecretsOfTheSyren:acceptQuestGoToKailaMin(pPlayer, Syren.act2.NEUTRAL_CRC)
 	end
 
 	return pConvScreen

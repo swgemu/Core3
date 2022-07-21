@@ -261,14 +261,14 @@ no_info = ConvoScreen:new {
 
 rebelVeegaMadishConvoTemplate:addScreen(no_info);
 
-kaila_waypoint = ConvoScreen:new {
-	id = "kaila_waypoint",
+where_is_she = ConvoScreen:new {
+	id = "where_is_she",
 	leftDialog = "@conversation/c_story1_1_reb_quest:s_265", -- She's a regular at Narmle's Gambling Hall.  I'll give you a waypoint.
 	stopConversation = "true",
 	options = {}
 }
 
-rebelVeegaMadishConvoTemplate:addScreen(kaila_waypoint);
+rebelVeegaMadishConvoTemplate:addScreen(where_is_she);
 
 no_part = ConvoScreen:new {
 	id = "no_part",
@@ -288,14 +288,14 @@ welcome_back_no_datapad = ConvoScreen:new {
 
 rebelVeegaMadishConvoTemplate:addScreen(welcome_back_no_datapad);
 
-finish_act1 = ConvoScreen:new {
-	id = "finish_act1",
+finished = ConvoScreen:new {
+	id = "finished",
 	leftDialog = "@conversation/c_story1_1_reb_quest:s_301", -- Can I talk to you later?  I'm tracking down a tough bit of information.
 	stopConversation = "true",
 	options = {}
 }
 
-rebelVeegaMadishConvoTemplate:addScreen(finish_act1);
+rebelVeegaMadishConvoTemplate:addScreen(finished);
 
 welcome_back_with_spice_imperial = ConvoScreen:new {
 	id = "welcome_back_with_spice_imperial",
