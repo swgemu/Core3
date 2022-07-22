@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_moncal = object_tangible_ship_components_shield_generator_shared_shd_moncal:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 6260.0,
+	hitpoints = 435.0,
+	armor = 220.0,
+	energyUsage = 2686.0,
+	shieldFront = 578.0,
+	shieldRear = 579.0,
+	rechargeRate = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_moncal, "object/tangible/ship/components/shield_generator/shd_moncal.iff")

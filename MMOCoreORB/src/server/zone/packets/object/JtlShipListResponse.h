@@ -10,54 +10,46 @@
 
 #include "ObjectControllerMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
 
 //TODO: This is very unsafe still...
 class JtlShipListResponse : public ObjectControllerMessage {
 public:
 	JtlShipListResponse(CreatureObject* creo, SceneObject* terminal)
-		: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x41D) {
-
-		insertInt(0); // size
+		: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0x41D) {
 
 
-		SceneObject* datapad = creo->getSlottedObject("datapad");
+			PlayerObject* ghost = creo->getPlayerObject();
+			if (ghost == nullptr)
+				return;
 
-		//int offs = getOffset();
+			int numShips = 0;
+			Vector<Reference<ShipObject*>> ships;
+			for (int i=0; i<ghost->getNumShips(); i++) {
+				ManagedReference<ShipObject*> ship = ghost->getShip(i);
+				if (ship)
+					ships.add(ship);
+			}
 
-		//insertInt(2);
+			insertInt(ships.size()+1); // Number of ships
+			insertLong(terminal->getObjectID()); // Space Terminal ID
+			String Current;
 
-		//insertLong(terminal->getObjectID());
+			if (terminal->getCityRegion().get() != nullptr)
+				Current = creo->getCityRegion().get()->getRegionDisplayedName();
+			else
+				Current = creo->getZone()->getZoneName();
 
-		/* TODO: Better method of this.
-		ManagedReference<ActiveArea*> region = terminal->getActiveRegion();
+			insertAscii(Current); //Player Location
 
-		if (region != nullptr && region->isRegion())
-			insertAscii(region->getDisplayedName());
-		else
-			insertAscii(terminal->getZone()->getZoneName());
-		*/
-
-		/*
-		insertAscii("cRush Rocks");
-
-		VectorMap<uint64, ManagedReference<SceneObject*> >* datapadObjects = datapad->getContainerObjects();
-
-		for (int i = 0; i < datapadObjects->size(); ++i) {
-			ManagedReference<SceneObject*> datapadObject = datapadObjects->get(i);
-
-			if (datapadObject->getGameObjectType() == SceneObjectType::SHIPCONTROLDEVICE) {
-				ManagedReference<ShipControlDevice*> shipControlDevice = cast<ShipControlDevice*>( datapadObject.get());
-
-				if (shipControlDevice->getControlledObject() != nullptr) {
-					ManagedReference<ShipObject*> ship = cast<ShipObject*>( shipControlDevice->getControlledObject());
-
-					insertLong(ship->getObjectID());
-					insertAscii("cRush Rocks"); //TODO: Fix to retrieve ship->getParkedLocation();
-				}
+			for (auto &ship : ships) {
+				insertLong(ship->getObjectID());
+				String parked = ship->getStoredLocation();
+				if (parked == "")
+					ship->setStoredLocation(Current);
+				insertAscii(parked);
 			}
 		}
-		*/
-	}
 };
 
 #endif /* JTLSHIPLISTRESPONSE_H_ */

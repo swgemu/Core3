@@ -76,7 +76,7 @@ public:
 
 			StringBuffer results;
 
-			SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
+			SortedVector<ManagedReference<TreeEntry*> > objects(512, 512);
 			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &objects, true);
 
 			for (int i = 0; i < objects.size(); ++i) {

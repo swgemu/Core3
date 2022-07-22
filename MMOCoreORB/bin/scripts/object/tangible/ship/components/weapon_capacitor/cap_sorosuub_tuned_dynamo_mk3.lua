@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_sorosuub_tuned_dynamo_mk3 = object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_tuned_dynamo_mk3:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 17941.0,
+	hitpoints = 935.0,
+	armor = 476.0,
+	energyUsage = 1154.0,
+	rechargeRate = 34.0,
+	rechargeRateMod = 4.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_sorosuub_tuned_dynamo_mk3, "object/tangible/ship/components/weapon_capacitor/cap_sorosuub_tuned_dynamo_mk3.iff")

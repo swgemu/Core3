@@ -18,7 +18,7 @@
 #include "server/zone/objects/intangible/TheaterObject.h"
 
 void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
-	debug("inserting to zone");
+	//info("inserting to zone", true);
 
 	if (newZone == nullptr)
 		return;
@@ -215,7 +215,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		CloseObjectsVector* closeObjects = sceneObject->getCloseObjects();
 
 		if (closeObjects != nullptr) {
-			SortedVector<QuadTreeEntry*> objects(closeObjects->size(), 10);
+			SortedVector<TreeEntry*> objects(closeObjects->size(), 10);
 			closeObjects->safeCopyTo(objects);
 
 			for (int i = 0; i < objects.size(); ++i) {
@@ -394,7 +394,7 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 
 	locker.release();
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+	SortedVector<ManagedReference<TreeEntry*> > closeSceneObjects;
 
 	CloseObjectsVector* closeobjects = sceneObject->getCloseObjects();
 	ManagedReference<SceneObject*> vectorOwner = sceneObject;
@@ -426,7 +426,7 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 		zone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, false);
 
 		for (int i = 0; i < closeSceneObjects.size(); ++i) {
-			QuadTreeEntry* obj = closeSceneObjects.getUnsafe(i);
+			TreeEntry* obj = closeSceneObjects.getUnsafe(i);
 
 			if (obj != sceneObject && obj->getCloseObjects() != nullptr)
 				obj->removeInRangeObject(sceneObject);
@@ -470,7 +470,7 @@ void ZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) const {
 }
 
 void ZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector *closeobjects,
-					SortedVector<ManagedReference<QuadTreeEntry *> > &closeSceneObjects,
+					SortedVector<ManagedReference<TreeEntry *> > &closeSceneObjects,
 					SceneObject *sceneObject, SceneObject *vectorOwner) {
 	for (int i = 0; closeobjects->size() != 0 && i < 100; i++) {
 		closeobjects->safeCopyTo(closeSceneObjects);

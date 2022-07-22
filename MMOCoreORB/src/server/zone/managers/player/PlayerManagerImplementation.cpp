@@ -214,7 +214,7 @@ bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
 
 	onlinePlayerLogTask->schedulePeriodic(0, logSecs * 1000);
 
-	info(true) << "Loging online players every " << logSecs << " seconds.";
+	info(true) << "Logging online players every " << logSecs << " seconds.";
 
 	return true;
 }
@@ -3492,7 +3492,7 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 	Locker _locker(zone);
 
 	CloseObjectsVector* closeObjs = (CloseObjectsVector*)creature->getCloseObjects();
-	SortedVector<QuadTreeEntry*> closeObjects;
+	SortedVector<TreeEntry*> closeObjects;
 	closeObjs->safeCopyReceiversTo(closeObjects, CloseObjectsVector::STRUCTURETYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
@@ -3793,7 +3793,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	if (newParent != nullptr) {
 		ManagedReference<SceneObject*> root = newParent->getRootParent();
 
-		if (!root->isBuildingObject())
+		if (!root->isBuildingObject() && !root->isShipObject())
 			return 1;
 
 		float length = Math::sqrt(newX * newX + newY * newY);
@@ -4101,7 +4101,7 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 	//Locker locker(zone);
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
-	SortedVector<QuadTreeEntry*> closeObjects(vec->size(), 10);
+	SortedVector<TreeEntry*> closeObjects(vec->size(), 10);
 	vec->safeCopyTo(closeObjects);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {

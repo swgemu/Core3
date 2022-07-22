@@ -2,7 +2,7 @@
 
 using namespace server::zone;
 
-ActiveAreaQuadTreeNode::ActiveAreaQuadTreeNode(float minx, float miny, float maxx, float maxy, const ActiveAreaQuadTreeNode* parent)
+ActiveAreaTreeNode::ActiveAreaTreeNode(float minx, float miny, float maxx, float maxy, const ActiveAreaTreeNode* parent)
 	: minX(minx), minY(miny), maxX(maxx), maxY(maxy), parentNode(parent) {
 	dividerX = (minX + maxX) / 2;
 	dividerY = (minY + maxY) / 2;
@@ -12,7 +12,7 @@ ActiveAreaQuadTreeNode::ActiveAreaQuadTreeNode(float minx, float miny, float max
 
 #ifndef AREA_TREE_SIMPLE
 
-void ActiveAreaQuadTree::insert(ActiveAreaQuadTreeNode& node, ActiveArea* area) {
+void ActiveAreaQuadTree::insert(ActiveAreaTreeNode& node, ActiveArea* area) {
 	if (!node.hasSubNodes()) {
 		if ((node.maxX - node.minX <= 8) && (node.maxY - node.minY <= 8)) {
 			node.insertArea(area);
@@ -28,23 +28,23 @@ void ActiveAreaQuadTree::insert(ActiveAreaQuadTreeNode& node, ActiveArea* area) 
 	if (node.testAreaInside(x, y, radius)) {
 		if (node.testInSWArea(x, y, radius)) {
 			if (node.swNode == nullptr) {
-				node.swNode = makeUnique<ActiveAreaQuadTreeNode>(node.minX, node.minY, node.dividerX, node.dividerY, &node);
+				node.swNode = makeUnique<ActiveAreaTreeNode>(node.minX, node.minY, node.dividerX, node.dividerY, &node);
 			}
 
 			insert(*node.swNode, area);
 		} else if (node.testInNWArea(x, y, radius)) {
 			if (node.nwNode == nullptr)
-				node.nwNode = makeUnique<ActiveAreaQuadTreeNode>(node.minX, node.dividerY, node.dividerX, node.maxY, &node);
+				node.nwNode = makeUnique<ActiveAreaTreeNode>(node.minX, node.dividerY, node.dividerX, node.maxY, &node);
 
 			insert(*node.nwNode, area);
 		} else if (node.testInSEArea(x, y, radius)) {
 			if (node.seNode == nullptr)
-				node.seNode = makeUnique<ActiveAreaQuadTreeNode>(node.dividerX, node.minY, node.maxX, node.dividerY, &node);
+				node.seNode = makeUnique<ActiveAreaTreeNode>(node.dividerX, node.minY, node.maxX, node.dividerY, &node);
 
 			insert(*node.seNode, area);
 		} else if (node.testInNEArea(x, y, radius)) {
 			if (node.neNode == nullptr)
-				node.neNode = makeUnique<ActiveAreaQuadTreeNode>(node.dividerX, node.dividerY, node.maxX, node.maxY, &node);
+				node.neNode = makeUnique<ActiveAreaTreeNode>(node.dividerX, node.dividerY, node.maxX, node.maxY, &node);
 
 			insert(*node.neNode, area);
 		} else {
@@ -59,7 +59,7 @@ void ActiveAreaQuadTree::remove(Reference<ActiveArea*> area) {
 	removeActiveArea(*root, area);
 }
 
-void ActiveAreaQuadTree::removeActiveArea(ActiveAreaQuadTreeNode& node, ActiveArea* area) {
+void ActiveAreaQuadTree::removeActiveArea(ActiveAreaTreeNode& node, ActiveArea* area) {
 	node.dropArea(area);
 
 	const auto& nodeSW = node.swNode;

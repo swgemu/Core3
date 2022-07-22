@@ -1,0 +1,8 @@
+//
+// Created by g on 12/12/17.
+//
+
+#ifndef CORE3_SHIPPARKINGMESSAGE_H
+#define CORE3_SHIPPARKINGMESSAGE_H
+
+#endif //CORE3_SHIPPARKINGMESSAGE_H

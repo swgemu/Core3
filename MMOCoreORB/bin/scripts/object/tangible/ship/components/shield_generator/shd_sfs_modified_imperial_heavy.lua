@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_sfs_modified_imperial_heavy = object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_heavy:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 7564.0,
+	hitpoints = 636.0,
+	armor = 327.0,
+	energyUsage = 2810.0,
+	shieldFront = 856.0,
+	shieldRear = 852.0,
+	rechargeRate = 12.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_sfs_modified_imperial_heavy, "object/tangible/ship/components/shield_generator/shd_sfs_modified_imperial_heavy.iff")

@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_corellian_ag1g_laser = object_tangible_ship_components_weapon_shared_wpn_corellian_ag1g_laser:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 31403.0,
+	hitpoints = 1175.0,
+	armor = 585.0,
+	energyUsage = 2110.0,
+	minDamage = 1799.0,
+	maxDamage = 2770.0,
+	refireRate = 6.0,
+	energyPerShot = 38.0,
+	shieldEffectiveness = 9.0,
+	armorEffectiveness = 3.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_corellian_ag1g_laser, "object/tangible/ship/components/weapon/wpn_corellian_ag1g_laser.iff")

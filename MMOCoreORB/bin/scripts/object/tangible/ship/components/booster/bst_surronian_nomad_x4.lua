@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_surronian_nomad_x4 = object_tangible_ship_components_booster_shared_bst_surronian_nomad_x4:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1406.0,
+	hitpoints = 235.0,
+	armor = 120.0,
+	energyUsage = 507.0,
+	speed = 25.0,
+	maxEnergy = 1506.0,
+	rechargeRate = 45.0,
+	boosterDrain = 160.0,
+	boosterAccel = 34.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_surronian_nomad_x4, "object/tangible/ship/components/booster/bst_surronian_nomad_x4.iff")

@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_moncal_improved_light_weave = object_tangible_ship_components_armor_shared_arm_moncal_improved_light_weave:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1219.0,
+	hitpoints = 212.0,
+	armor = 208.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_moncal_improved_light_weave, "object/tangible/ship/components/armor/arm_moncal_improved_light_weave.iff")

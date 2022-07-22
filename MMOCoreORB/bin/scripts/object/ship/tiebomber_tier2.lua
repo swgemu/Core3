@@ -43,6 +43,18 @@
 
 object_ship_tiebomber_tier2 = object_ship_shared_tiebomber_tier2:new {
 
+	name = "tiebomber_tier2",
+	slideFactor = 1.66,
+	chassisHitpoints = 900,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 428.1471, armor = 435.3303,},
+	engine = { name = "eng_qualdex_kyromaster", hitpoints = 428.0607, armor = 445.9983, speed = 42.92041, pitch = 23.25889, roll = 28.19028, yaw = 17.98068, acceleration = 10.12533, rollRate = 52.09534, pitchRate = 46.71903, deceleration = 8.523304, yawRate = 39.38122,},
+	shield_0 = { name = "shd_generic", hitpoints = 439.4425, armor = 444.5743, regen = 3.927353, front = 1292.408, back = 1348.52,},
+	armor_0 = { name = "arm_generic", hitpoints = 1408.772, armor = 1405.247,},
+	armor_1 = { name = "arm_generic", hitpoints = 1406.202, armor = 1401.865,},
+	capacitor = { name = "cap_generic", hitpoints = 429.1382, armor = 443.5058, rechargeRate = 96.48699, energy = 4986.825,},
+	weapon_0 = { name = "wpn_generic", hitpoints = 435.8378, armor = 430.5501, rate = 0.7557479, drain = 0.979591, maxDamage = 85.84564, shieldEfficiency = 0.5557585, minDamage = 62.09147, ammo = 0, ammo_type = 0, armorEfficiency = 0.5327722,},
+	weapon_1 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 438.4771, armor = 442.2261, rate = 2.856867, drain = 0.973939, maxDamage = 260.3927, shieldEfficiency = 0.7495818, minDamage = 125.0909, ammo = 4, ammo_type = 17, armorEfficiency = 0.7335442,},
 }
 
 ObjectTemplates:addTemplate(object_ship_tiebomber_tier2, "object/ship/tiebomber_tier2.iff")

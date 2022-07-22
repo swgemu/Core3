@@ -43,6 +43,19 @@
 
 object_ship_player_player_awing = object_ship_player_shared_player_awing:new {
 
+	name = "player_awing",
+	slideFactor = 1.68,
+	chassisHitpoints = 1125,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 292.4938, armor = 293.254,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.62638, armor = 99.53873, speed = 58.49604, pitch = 54.38784, roll = 51.79129, yaw = 51.6744, acceleration = 15.62266, rollRate = 71.09726, pitchRate = 66.57938, deceleration = 10.89445, yawRate = 65.4823,},
+	shield_0 = { name = "shd_generic", hitpoints = 389.9558, armor = 483.2215, regen = 3.978801, front = 583.4476, back = 588.3502,},
+	armor_0 = { name = "arm_generic", hitpoints = 368.3198, armor = 374.6463,},
+	armor_1 = { name = "arm_generic", hitpoints = 372.1447, armor = 363.5598,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 37.40336, energy = 590.8511,},
+	weapon_0 = { name = "wpn_awing_blaster", hitpoints = 192.7826, armor = 196.4264, rate = 0.3420266, drain = 24.23798, maxDamage = 488.6028, shieldEfficiency = 0, minDamage = 343.2561, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_slayn_imagerec_missile_s01", hitpoints = 195.1021, armor = 190.1535, rate = 9.298404, drain = 22.53142, maxDamage = 721.2959, shieldEfficiency = 0.7642616, minDamage = 319.8891, ammo = 16, ammo_type = 5, armorEfficiency = 0.3130159,},
+	weapon_2 = { name = "wpn_std_countermeasure", hitpoints = 245.7827, armor = 245.6506, rate = 0.09964385, drain = 23.41895, maxDamage = 95.01245, shieldEfficiency = 0, minDamage = 23.99893, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_awing, "object/ship/player/player_awing.iff")

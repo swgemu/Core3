@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_kse_performance_mk2 = object_tangible_ship_components_weapon_capacitor_shared_cap_kse_performance_mk2:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4375.0,
+	hitpoints = 500.0,
+	armor = 252.0,
+	energyUsage = 1000.0,
+	rechargeRate = 35.0,
+	rechargeRateMod = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_kse_performance_mk2, "object/tangible/ship/components/weapon_capacitor/cap_kse_performance_mk2.iff")

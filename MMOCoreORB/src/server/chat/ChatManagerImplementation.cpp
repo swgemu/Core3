@@ -850,7 +850,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) sender->getCloseObjects();
 
-	SortedVector<QuadTreeEntry* > closeEntryObjects(200, 50);
+	SortedVector<TreeEntry* > closeEntryObjects(200, 50);
 
 	if (vec != nullptr) {
 		vec->safeCopyReceiversTo(closeEntryObjects, CloseObjectsVector::PLAYERTYPE);
@@ -1077,7 +1077,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) sourceCreature->getCloseObjects();
 
-	SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
+	SortedVector<TreeEntry*> closeEntryObjects(200, 50);
 
 	if (closeObjects != nullptr) {
 		closeObjects->safeCopyReceiversTo(closeEntryObjects, CloseObjectsVector::CREOTYPE);
@@ -1254,7 +1254,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) sourceCreature->getCloseObjects();
 
-	SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
+	SortedVector<TreeEntry*> closeEntryObjects(200, 50);
 
 	if (closeObjects != nullptr) {
 		closeObjects->safeCopyReceiversTo(closeEntryObjects, CloseObjectsVector::PLAYERTYPE);
@@ -1437,7 +1437,7 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 
 		return;
 	}
-	
+
 	Reference<CreatureObject*> receiver = getPlayer(fname);
 
 	if (receiver == nullptr) {

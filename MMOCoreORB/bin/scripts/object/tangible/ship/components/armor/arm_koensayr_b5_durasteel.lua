@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_koensayr_b5_durasteel = object_tangible_ship_components_armor_shared_arm_koensayr_b5_durasteel:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 891.0,
+	hitpoints = 175.0,
+	armor = 176.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_koensayr_b5_durasteel, "object/tangible/ship/components/armor/arm_koensayr_b5_durasteel.iff")

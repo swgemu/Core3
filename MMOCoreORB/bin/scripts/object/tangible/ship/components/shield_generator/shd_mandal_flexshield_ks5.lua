@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_mandal_flexshield_ks5 = object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks5:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 8253.0,
+	hitpoints = 640.0,
+	armor = 322.0,
+	energyUsage = 2807.0,
+	shieldFront = 851.0,
+	shieldRear = 851.0,
+	rechargeRate = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_mandal_flexshield_ks5, "object/tangible/ship/components/shield_generator/shd_mandal_flexshield_ks5.iff")

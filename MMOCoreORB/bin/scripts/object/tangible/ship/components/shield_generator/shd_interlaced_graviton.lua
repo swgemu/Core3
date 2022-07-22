@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_interlaced_graviton = object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 64354.0,
+	hitpoints = 1105.0,
+	armor = 553.0,
+	energyUsage = 3063.0,
+	shieldFront = 1474.0,
+	shieldRear = 1474.0,
+	rechargeRate = 12.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_interlaced_graviton, "object/tangible/ship/components/shield_generator/shd_interlaced_graviton.iff")

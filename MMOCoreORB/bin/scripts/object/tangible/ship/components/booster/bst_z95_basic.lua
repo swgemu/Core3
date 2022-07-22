@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_z95_basic = object_tangible_ship_components_booster_shared_bst_z95_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 800.0,
+	hitpoints = 150.0,
+	armor = 80.0,
+	energyUsage = 507.0,
+	speed = 15.0,
+	maxEnergy = 1009.0,
+	rechargeRate = 29.0,
+	boosterDrain = 105.0,
+	boosterAccel = 28.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_z95_basic, "object/tangible/ship/components/booster/bst_z95_basic.iff")

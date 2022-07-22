@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_subpro_light_engines = object_tangible_ship_components_engine_shared_eng_subpro_light_engines:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 904.0,
+	hitpoints = 157.0,
+	armor = 85.0,
+	energyUsage = 1507.0,
+	speed = 46.0,
+	pitch = 53.0,
+	yaw = 49.0,
+	roll = 51.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_subpro_light_engines, "object/tangible/ship/components/engine/eng_subpro_light_engines.iff")

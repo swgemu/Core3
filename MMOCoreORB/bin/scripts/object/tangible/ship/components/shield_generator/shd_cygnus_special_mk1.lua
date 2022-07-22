@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_cygnus_special_mk1 = object_tangible_ship_components_shield_generator_shared_shd_cygnus_special_mk1:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 2511.0,
+	hitpoints = 189.0,
+	armor = 95.0,
+	energyUsage = 2566.0,
+	shieldFront = 256.0,
+	shieldRear = 255.0,
+	rechargeRate = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_cygnus_special_mk1, "object/tangible/ship/components/shield_generator/shd_cygnus_special_mk1.iff")

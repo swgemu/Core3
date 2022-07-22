@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_kessel_imperial_sds_secret_ops = object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_ops:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 62046.0,
+	hitpoints = 2321.0,
+	armor = 1163.0,
+	energyUsage = 7.0,
+	maxEnergy = 28002.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_kessel_imperial_sds_secret_ops, "object/tangible/ship/components/reactor/rct_kessel_imperial_sds_secret_ops.iff")

@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_kessel_imperial_rendili_hyperbattery = object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_rendili_hyperbattery:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 44853.0,
+	hitpoints = 1048.0,
+	armor = 530.0,
+	energyUsage = 1153.0,
+	rechargeRate = 31.0,
+	rechargeRateMod = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_kessel_imperial_rendili_hyperbattery, "object/tangible/ship/components/weapon_capacitor/cap_kessel_imperial_rendili_hyperbattery.iff")

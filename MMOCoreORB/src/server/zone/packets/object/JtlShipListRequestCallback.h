@@ -34,6 +34,7 @@ public:
 		if (player == nullptr)
 			return;
 
+		player->info(true) << String::valueOf(terminalObjectID);
 		ManagedReference<SceneObject*> invokedObject = server->getZoneServer()->getObject(terminalObjectID);
 
 		if (invokedObject == nullptr)

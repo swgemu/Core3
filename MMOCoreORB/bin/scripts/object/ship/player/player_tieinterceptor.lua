@@ -43,6 +43,20 @@
 
 object_ship_player_player_tieinterceptor = object_ship_player_shared_player_tieinterceptor:new {
 
+	name = "player_tieinterceptor",
+	slideFactor = 1.95,
+	chassisHitpoints = 6000,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 3121.869, armor = 1536.193,},
+	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 3142.305, armor = 1518.367, speed = 59.74054, pitch = 47.48366, roll = 45.87457, yaw = 46.3578, acceleration = 16.51296, rollRate = 71.13919, pitchRate = 68.87661, deceleration = 14.90916, yawRate = 71.39978,},
+	shield_0 = { name = "shd_generic", hitpoints = 3056.586, armor = 1544.068, regen = 29.96742, front = 9790.87, back = 9655.143,},
+	armor_0 = { name = "arm_generic", hitpoints = 7994.37, armor = 7776.441,},
+	armor_1 = { name = "arm_generic", hitpoints = 7840.048, armor = 7681.589,},
+	capacitor = { name = "cap_generic", hitpoints = 3049.717, armor = 1545.358, rechargeRate = 47.68914, energy = 995.4575,},
+	booster = { name = "bst_generic", hitpoints = 19.5317, armor = 19.35275, energy = 98.4522, acceleration = 19.16425, speed = 14.65189, energyUsage = 9.533919, rechargeRate = 4.80651,},
+	weapon_0 = { name = "wpn_generic", hitpoints = 3031.25, armor = 1553.814, rate = 0.3080769, drain = 29.32105, maxDamage = 5278.455, shieldEfficiency = 0, minDamage = 3910.032, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_sienar_heatseeker_missile_s01", hitpoints = 3132.48, armor = 1525.354, rate = 0.9553757, drain = 285.002, maxDamage = 11949.5, shieldEfficiency = 0.8711885, minDamage = 9623.874, ammo = 12, ammo_type = 3, armorEfficiency = 0.7309372,},
+	weapon_2 = { name = "wpn_std_countermeasure", hitpoints = 247.7015, armor = 243.9529, rate = 0.09653933, drain = 22.77921, maxDamage = 98.3455, shieldEfficiency = 0, minDamage = 24.10794, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_tieinterceptor, "object/ship/player/player_tieinterceptor.iff")

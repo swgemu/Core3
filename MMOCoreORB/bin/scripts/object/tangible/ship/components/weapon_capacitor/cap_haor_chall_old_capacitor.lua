@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_haor_chall_old_capacitor = object_tangible_ship_components_weapon_capacitor_shared_cap_haor_chall_old_capacitor:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 706.0,
+	hitpoints = 110.0,
+	armor = 62.0,
+	energyUsage = 704.0,
+	rechargeRate = 22.0,
+	rechargeRateMod = 4.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_haor_chall_old_capacitor, "object/tangible/ship/components/weapon_capacitor/cap_haor_chall_old_capacitor.iff")

@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_kessel_imperial_sds_experimental_b7 = object_tangible_ship_components_booster_shared_bst_kessel_imperial_sds_experimental_b7:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 45124.0,
+	hitpoints = 1657.0,
+	armor = 833.0,
+	energyUsage = 604.0,
+	speed = 41.0,
+	maxEnergy = 2200.0,
+	rechargeRate = 55.0,
+	boosterDrain = 224.0,
+	boosterAccel = 50.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_kessel_imperial_sds_experimental_b7, "object/tangible/ship/components/booster/bst_kessel_imperial_sds_experimental_b7.iff")

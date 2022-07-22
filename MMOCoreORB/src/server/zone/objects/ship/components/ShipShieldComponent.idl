@@ -1,0 +1,60 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipComponent;
+import server.zone.objects.ship.ShipObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+
+class ShipShieldComponent extends ShipComponent {
+
+    float rearHitpoints;
+    float frontHitpoints;
+    float rechargeRate;
+
+	public float getRearHitpoints() {
+		return rearHitpoints;
+	}
+
+	public float getFrontHitpoints() {
+		return frontHitpoints;
+	}
+
+	public float getRechargeRate() {
+		return rechargeRate;
+	}
+
+	public void setRearHitpoints(float value) {
+		rearHitpoints = value;
+	}
+
+	public void setFrontHitpoints(float value) {
+		frontHitpoints = value;
+	}
+
+	public void setRechargeRate(float value) {
+		rechargeRate = value;
+	}
+
+    public ShipShieldComponent() {
+        super();
+    }
+
+    @local
+    public native void loadTemplateData(SharedObjectTemplate templateData);
+
+    @local
+    public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+    @local
+    @dirty
+    public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+    public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+}

@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_sorosuub_fusion_reactor_2 = object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 5780.0,
+	hitpoints = 574.0,
+	armor = 294.0,
+	energyUsage = 3.0,
+	maxEnergy = 13509.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_sorosuub_fusion_reactor_2, "object/tangible/ship/components/reactor/rct_sorosuub_fusion_reactor_2.iff")

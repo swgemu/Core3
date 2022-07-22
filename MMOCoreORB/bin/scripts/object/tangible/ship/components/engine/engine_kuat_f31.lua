@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_kuat_f31 = object_tangible_ship_components_engine_shared_engine_kuat_f31:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 16153.0,
+	hitpoints = 941.0,
+	armor = 474.0,
+	energyUsage = 1730.0,
+	speed = 62.0,
+	pitch = 57.0,
+	yaw = 59.0,
+	roll = 60.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_kuat_f31, "object/tangible/ship/components/engine/engine_kuat_f31.iff")

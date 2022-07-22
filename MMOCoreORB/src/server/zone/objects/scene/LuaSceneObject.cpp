@@ -11,6 +11,7 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
 #include "engine/lua/LuaPanicException.h"
 #include "server/zone/objects/tangible/Container.h"
@@ -205,6 +206,12 @@ int LuaSceneObject::getZoneName(lua_State* L) {
 		name = zone->getZoneName();
 	}
 
+	SpaceZone* spaceZone = realObject->getSpaceZone();
+
+	if (spaceZone != nullptr) {
+		name = spaceZone->getZoneName();
+	}
+
 	lua_pushstring(L, name.toCharArray());
 
 	return 1;
@@ -270,7 +277,7 @@ int LuaSceneObject::isInRange(lua_State* L) {
 	float y = lua_tonumber(L, -2);
 	float x = lua_tonumber(L, -3);
 
-	bool res = (static_cast<QuadTreeEntry*>(realObject))->isInRange(x, y, range);
+	bool res = (static_cast<TreeEntry*>(realObject))->isInRange(x, y, range);
 
 	lua_pushnumber(L, res);
 
@@ -863,7 +870,7 @@ int LuaSceneObject::getPlayersInRange(lua_State *L) {
 
 	lua_newtable(L);
 
-	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> playerObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+	Reference<SortedVector<ManagedReference<TreeEntry*> >*> playerObjects = new SortedVector<ManagedReference<TreeEntry*> >();
 	thisZone->getInRangePlayers(realObject->getWorldPositionX(), realObject->getWorldPositionY(), range, playerObjects);
 	int numPlayers = 0;
 

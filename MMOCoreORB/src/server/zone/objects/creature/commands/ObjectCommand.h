@@ -174,7 +174,7 @@ public:
 					return GENERALERROR;
 
 				// Find all objects in range
-				SortedVector<QuadTreeEntry*> closeObjects;
+				SortedVector<TreeEntry*> closeObjects;
 				CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
 				if (closeObjectsVector == nullptr) {
 					zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
@@ -256,7 +256,7 @@ public:
 			creature->sendSystemMessage("SYNTAX: /object createarealoot <loottemplate> [<range>] [<level>]");
 			creature->sendSystemMessage("SYNTAX: /object checklooted");
 			creature->sendSystemMessage("SYNTAX: /object characterbuilder");
-                  
+
 			return INVALIDPARAMETERS;
 		}
 

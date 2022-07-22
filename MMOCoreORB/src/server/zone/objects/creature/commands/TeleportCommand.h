@@ -28,6 +28,13 @@ public:
 		if (zone == nullptr)
 			return GENERALERROR;
 
+/*
+		//String zoneName = "";
+
+		SceneObject* cz = creature->getZone();
+		String zoneName = cz->getDisplayedName();
+*/
+
 		String zoneName = zone->getZoneName();
 		uint64 parentID = 0;
 
@@ -44,10 +51,17 @@ public:
 				z = tokenizer.getFloatToken();
 				parentID = tokenizer.getLongToken();
 			} else {
-				Zone* newZone = creature->getZoneServer()->getZone(zoneName);
+				if (zoneName.contains("space"))
+				{
+					SpaceZone* newZone = creature->getZoneServer()->getSpaceZone(zoneName);
+				}
 
-				if (newZone != nullptr)
-					z = CollisionManager::getWorldFloorCollision(x, y, newZone, false);
+				else {
+					Zone* newZone = creature->getZoneServer()->getGroundZone(zoneName);
+
+					if (newZone != nullptr)
+						z = CollisionManager::getWorldFloorCollision(x, y, newZone, false);
+				}
 			}
 
 			creature->setDirection(0);

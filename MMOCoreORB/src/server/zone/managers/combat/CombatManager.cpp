@@ -807,7 +807,7 @@ void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject
 		return;
 
 	CloseObjectsVector* vec = (CloseObjectsVector*)attacker->getCloseObjects();
-	SortedVector<QuadTreeEntry*> closeObjects;
+	SortedVector<TreeEntry*> closeObjects;
 
 	if (vec != nullptr) {
 		closeObjects.removeAll(vec->size(), 10);
@@ -940,7 +940,7 @@ Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAr
 
 		CloseObjectsVector* vec = (CloseObjectsVector*)attacker->getCloseObjects();
 
-		SortedVector<QuadTreeEntry*> closeObjects;
+		SortedVector<TreeEntry*> closeObjects;
 
 		if (vec != nullptr) {
 			closeObjects.removeAll(vec->size(), 10);

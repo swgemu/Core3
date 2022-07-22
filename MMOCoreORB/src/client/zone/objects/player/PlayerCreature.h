@@ -4,6 +4,7 @@
 #include "client/zone/objects/creature/CreatureObject.h"
 
 class Zone;
+class SpaceZone;
 
 class PlayerCreature : public CreatureObject {
 protected:
@@ -13,6 +14,7 @@ public:
 	PlayerCreature(LuaObject* templateData);
 
 	void insertToZone(Zone* zone);
+	void insertToZone(SpaceZone* zone);
 	void updatePosition(float x, float z, float y);
 
 	void activatePositionUpdate();

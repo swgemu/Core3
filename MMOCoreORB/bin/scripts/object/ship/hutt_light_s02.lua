@@ -43,6 +43,18 @@
 
 object_ship_hutt_light_s02 = object_ship_shared_hutt_light_s02:new {
 
+	name = "hutt_light_s02",
+	slideFactor = 1.81,
+	chassisHitpoints = 519,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 289.373, armor = 297.2937,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 98.41382, armor = 95.98478, speed = 52.91775, pitch = 32.82121, roll = 33.87024, yaw = 33.9141, acceleration = 15.97858, rollRate = 58.50536, pitchRate = 60.82196, deceleration = 8.305563, yawRate = 60.23152,},
+	shield_0 = { name = "shd_generic", hitpoints = 385.8282, armor = 494.1139, regen = 4.816782, front = 298.2745, back = 490.4568,},
+	armor_0 = { name = "arm_generic", hitpoints = 293.9883, armor = 286.9332,},
+	armor_1 = { name = "arm_generic", hitpoints = 286.7292, armor = 292.3092,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.28038, energy = 545.4581,},
+	booster = { name = "bst_xwing_booster_s01", hitpoints = 19.90373, armor = 19.92349, energy = 0, acceleration = 0, speed = 0, energyUsage = 0, rechargeRate = 0,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 198.8108, armor = 192.7256, rate = 0.3445816, drain = 22.85086, maxDamage = 242.8218, shieldEfficiency = 0, minDamage = 119.2512, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_hutt_light_s02, "object/ship/hutt_light_s02.iff")

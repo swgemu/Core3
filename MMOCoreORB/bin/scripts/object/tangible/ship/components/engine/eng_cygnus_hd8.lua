@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_cygnus_hd8 = object_tangible_ship_components_engine_shared_eng_cygnus_hd8:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 10816.0,
+	hitpoints = 799.0,
+	armor = 404.0,
+	energyUsage = 1655.0,
+	speed = 71.0,
+	pitch = 69.0,
+	yaw = 63.0,
+	roll = 72.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_cygnus_hd8, "object/tangible/ship/components/engine/eng_cygnus_hd8.iff")

@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_incom_enhanced_mynock = object_tangible_ship_components_booster_shared_bst_incom_enhanced_mynock:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3682.0,
+	hitpoints = 521.0,
+	armor = 267.0,
+	energyUsage = 529.0,
+	speed = 25.0,
+	maxEnergy = 1657.0,
+	rechargeRate = 47.0,
+	boosterDrain = 169.0,
+	boosterAccel = 39.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_incom_enhanced_mynock, "object/tangible/ship/components/booster/bst_incom_enhanced_mynock.iff")

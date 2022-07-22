@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_mission_reward_neutral_hk_military_blaster = object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_hk_military_blaster:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 5691.0,
+	hitpoints = 525.0,
+	armor = 265.0,
+	energyUsage = 2608.0,
+	minDamage = 922.0,
+	maxDamage = 1297.0,
+	refireRate = 1.0,
+	energyPerShot = 33.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 1.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mission_reward_neutral_hk_military_blaster, "object/tangible/ship/components/weapon/wpn_mission_reward_neutral_hk_military_blaster.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_mandalor_flexshield_ks18 = object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks18:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 7570.0,
+	hitpoints = 636.0,
+	armor = 326.0,
+	energyUsage = 2814.0,
+	shieldFront = 851.0,
+	shieldRear = 847.0,
+	rechargeRate = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_mandalor_flexshield_ks18, "object/tangible/ship/components/shield_generator/shd_mandalor_flexshield_ks18.iff")

@@ -78,6 +78,8 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/ServerCore.h"
+#include "server/zone/objects/ship/ShipObject.h"
+
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
 #endif // WITH_SESSION_API
@@ -1992,6 +1994,11 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 	if (creature == nullptr)
 		return;
 
+	/*Reference<SceneObject*> creoParent = creature->getParent().get();
+	if (creoParent != nullptr && creoParent->isShipObject()) {
+		creoParent->asShipObject()->doRecovery(latency);
+	}*/
+
 	if (!isTeleporting()) {
 		creature->removeOutOfRangeObjects();
 	}
@@ -2701,7 +2708,7 @@ void PlayerObjectImplementation::updateInRangeBuildingPermissions() {
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) parent->getCloseObjects();
 
-	SortedVector<QuadTreeEntry*> closeObjects;
+	SortedVector<TreeEntry*> closeObjects;
 	vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::STRUCTURETYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {

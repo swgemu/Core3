@@ -316,7 +316,7 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 
 	CreatureObject* thisCreo = asCreatureObject();
 
-	SortedVector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
+	SortedVector<TreeEntry*> closeObjects(closeobjects->size(), 10);
 
 	closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 

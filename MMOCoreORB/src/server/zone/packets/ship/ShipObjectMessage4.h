@@ -14,14 +14,14 @@ public:
 	ShipObjectMessage4(ShipObject* ship)
 			: BaseLineMessage(ship->getObjectID(), 0x53484950, 4, 0x06) {
 
-		insertFloat(0.80000001f); //mass
-		insertFloat(512.f); //mass max
+		insertFloat(ship->getChassisMass()); //m_chassisComponentMassCurrent
+		insertFloat(ship->getChassisSpeed()); //m_chassisSpeedMaximumModifier
 
-		insertFloat(100.f); // capacitor ?
-		insertFloat(0); //float
+		insertFloat(ship->getCapacitorEnergy()); // m_capacitorEnergyCurrent
+		insertFloat(ship->getBoosterEnergy()); //m_boosterEnergyCurrent
 
-		insertInt(0); //const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
+        ship->getComponentRefireEfficiency()->insertToMessage(this);
+                
 
 		setSize();
 	}

@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_dual_deflector_s2 = object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s2:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1108.0,
+	hitpoints = 157.0,
+	armor = 79.0,
+	energyUsage = 2557.0,
+	shieldFront = 201.0,
+	shieldRear = 204.0,
+	rechargeRate = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_dual_deflector_s2, "object/tangible/ship/components/shield_generator/shd_dual_deflector_s2.iff")

@@ -32,7 +32,7 @@ using namespace server::zone::objects::scene;
 using namespace server::zone::objects::building;
 using namespace server::zone;
 
-#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/TreeEntry.h"
 
 class ZoneComponent : public SceneObjectComponent, public Logger {
 protected:
@@ -84,16 +84,16 @@ public:
 	 */
 	virtual void updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets = true) const;
 
-	virtual void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+	virtual void notifyPositionUpdate(SceneObject* sceneObject, TreeEntry* entry) const {
 
 	}
 
 	virtual void notifySelfPositionUpdate(SceneObject* sceneObject) const;
 
-	virtual void notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+	virtual void notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
 	}
 
-	virtual void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+	virtual void notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const {
 	}
 
 	void updateInRangeObjectsOnMount(SceneObject* sceneObject) const;
@@ -103,7 +103,7 @@ public:
 	void removeObjectFromZone(SceneObject* sceneObject, Zone* zone, SceneObject* par) const;
 
 	static void removeAllObjectsFromCOV(CloseObjectsVector *closeobjects,
-										SortedVector<ManagedReference<QuadTreeEntry *> > &closeSceneObjects,
+										SortedVector<ManagedReference<TreeEntry *> > &closeSceneObjects,
 										SceneObject *sceneObject, SceneObject *vectorOwner);
 };
 

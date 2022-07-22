@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_incom_deluxe_fynock = object_tangible_ship_components_booster_shared_bst_incom_deluxe_fynock:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 25118.0,
+	hitpoints = 1411.0,
+	armor = 705.0,
+	energyUsage = 582.0,
+	speed = 36.0,
+	maxEnergy = 2002.0,
+	rechargeRate = 50.0,
+	boosterDrain = 207.0,
+	boosterAccel = 45.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_incom_deluxe_fynock, "object/tangible/ship/components/booster/bst_incom_deluxe_fynock.iff")

@@ -43,6 +43,16 @@
 
 object_ship_player_player_prototype_z95 = object_ship_player_shared_player_prototype_z95:new {
 
+	name = "player_prototype_z95",
+	slideFactor = 1.95,
+	chassisHitpoints = 800,
+	chassisMass = 11000,
+	reactor = { name = "rct_prototype", hitpoints = 198.6076, armor = 98.58342,},
+	engine = { name = "eng_prototype", hitpoints = 193.1231, armor = 99.77211, speed = 44.91402, pitch = 46.40807, roll = 49.72561, yaw = 45.87107, acceleration = 14.01144, rollRate = 75.18142, pitchRate = 71.61748, deceleration = 12.15011, yawRate = 69.51454,},
+	shield_0 = { name = "shd_prototype", hitpoints = 195.2813, armor = 96.5105, regen = 1.989931, front = 290.9135, back = 297.9356,},
+	armor_0 = { name = "arm_prototype", hitpoints = 245.9183, armor = 248.944,},
+	armor_1 = { name = "arm_prototype", hitpoints = 239.831, armor = 240.3884,},
+	capacitor = { name = "cap_prototype", hitpoints = 196.7573, armor = 99.72215, rechargeRate = 19.40641, energy = 475.8217,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_prototype_z95, "object/ship/player/player_prototype_z95.iff")
