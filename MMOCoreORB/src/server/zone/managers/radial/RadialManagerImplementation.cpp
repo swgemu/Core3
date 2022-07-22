@@ -24,7 +24,7 @@ void RadialManagerImplementation::handleObjectMenuRequest(CreatureObject* player
 	//Pre: Player is WLOCKED
 	//Post: Player is WLOCKED
 	ManagedReference<SceneObject*> menuObject = zoneServer->getObject(objectID);
-
+	//player->info(true) << String::valueOf(objectID);
 	if (menuObject != nullptr) {
 		Locker clocker(menuObject, player);
 
@@ -43,11 +43,7 @@ void RadialManagerImplementation::handleObjectMenuRequest(CreatureObject* player
 }
 
 void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectID, uint64 objectID) {
-	//Pre: player is NOT wlocked upon entry
-	//Post: nothing is WLOCKED
-
-	//System::out << "entering radial call 1" << endl;
-
+	player->info(true) << String::valueOf(objectID);
 	ManagedReference<SceneObject*> selectedObject = zoneServer->getObject(objectID);
 
 	if (selectedObject == nullptr) {

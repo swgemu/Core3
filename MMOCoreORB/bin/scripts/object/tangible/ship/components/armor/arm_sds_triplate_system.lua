@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_sds_triplate_system = object_tangible_ship_components_armor_shared_arm_sds_triplate_system:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3866.0,
+	hitpoints = 475.0,
+	armor = 481.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_sds_triplate_system, "object/tangible/ship/components/armor/arm_sds_triplate_system.iff")

@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_kse_enhanced_bti2 = object_tangible_ship_components_booster_shared_bst_kse_enhanced_bti2:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 9616.0,
+	hitpoints = 960.0,
+	armor = 483.0,
+	energyUsage = 550.0,
+	speed = 34.0,
+	maxEnergy = 1815.0,
+	rechargeRate = 51.0,
+	boosterDrain = 190.0,
+	boosterAccel = 41.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_kse_enhanced_bti2, "object/tangible/ship/components/booster/bst_kse_enhanced_bti2.iff")

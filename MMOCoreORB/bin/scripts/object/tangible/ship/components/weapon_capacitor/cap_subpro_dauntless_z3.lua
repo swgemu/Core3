@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_subpro_dauntless_z3 = object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z3:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 31397.0,
+	hitpoints = 1406.0,
+	armor = 710.0,
+	energyUsage = 1151.0,
+	rechargeRate = 45.0,
+	rechargeRateMod = 3.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_subpro_dauntless_z3, "object/tangible/ship/components/weapon_capacitor/cap_subpro_dauntless_z3.iff")

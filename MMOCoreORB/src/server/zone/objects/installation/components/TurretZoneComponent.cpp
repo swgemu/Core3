@@ -35,7 +35,7 @@ void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne
 	installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
 }
 
-void TurretZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void TurretZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
 	if (!sceneObject->isTurret() || target == nullptr || !target->isPlayerCreature())
@@ -63,7 +63,7 @@ void TurretZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 	}
 }
 
-void TurretZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void TurretZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const {
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
 	if (!sceneObject->isTurret() || target == nullptr || !target->isPlayerCreature())

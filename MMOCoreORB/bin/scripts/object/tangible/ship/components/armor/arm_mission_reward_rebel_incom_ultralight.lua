@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_mission_reward_rebel_incom_ultralight = object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_incom_ultralight:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 591.0,
+	hitpoints = 161.0,
+	armor = 166.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mission_reward_rebel_incom_ultralight, "object/tangible/ship/components/armor/arm_mission_reward_rebel_incom_ultralight.iff")

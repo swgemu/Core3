@@ -43,6 +43,22 @@
 
 object_ship_player_player_decimator = object_ship_player_shared_player_decimator:new {
 
+	name = "player_decimator",
+	slideFactor = 1.85,
+	chassisHitpoints = 5000,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 395.0898, armor = 393.2448,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.26176, armor = 96.47783, speed = 63.61601, pitch = 53.90641, roll = 53.77215, yaw = 20.96006, acceleration = 14.29806, rollRate = 80.7669, pitchRate = 73.72273, deceleration = 13.31472, yawRate = 37.25309,},
+	shield_0 = { name = "shd_generic", hitpoints = 383.4029, armor = 490.7114, regen = 2.854131, front = 1576.617, back = 1591.529,},
+	armor_0 = { name = "arm_generic", hitpoints = 1092.34, armor = 1052.53,},
+	armor_1 = { name = "arm_generic", hitpoints = 1051.848, armor = 1070.727,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 35.51637, energy = 1101.85,},
+	booster = { name = "bst_generic", hitpoints = 19.69023, armor = 19.73825, energy = 98.89352, acceleration = 19.44626, speed = 14.42604, energyUsage = 9.96958, rechargeRate = 4.918709,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 190.0977, armor = 192.0175, rate = 0.3419655, drain = 22.89144, maxDamage = 1468.528, shieldEfficiency = 0, minDamage = 745.0324, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_incom_disruptor", hitpoints = 191.437, armor = 192.2777, rate = 0.331361, drain = 22.71493, maxDamage = 949.7935, shieldEfficiency = 0, minDamage = 609.7089, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_2 = { name = "wpn_xwing_missile_s01", hitpoints = 19.22288, armor = 19.00229, rate = 5.818878, drain = 23.56116, maxDamage = 22.4802, shieldEfficiency = 0, minDamage = 23.33798, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_3 = { name = "wpn_std_countermeasure", hitpoints = 243.146, armor = 243.0917, rate = 0.09659296, drain = 23.08529, maxDamage = 99.77181, shieldEfficiency = 0, minDamage = 24.74274, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
+	lots = 4,
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_decimator, "object/ship/player/player_decimator.iff")

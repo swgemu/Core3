@@ -43,6 +43,22 @@
 
 object_ship_nebulon = object_ship_shared_nebulon:new {
 
+	name = "nebulon",
+	slideFactor = 1,
+	chassisHitpoints = 30000,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 4869.983, armor = 96.127,},
+	engine = { name = "eng_generic", hitpoints = 4820.414, armor = 98.78848, speed = 9.807441, pitch = 2.907051, roll = 0, yaw = 2.99829, acceleration = 1.930248, rollRate = 0, pitchRate = 2.914913, deceleration = 0.9852591, yawRate = 2.904445,},
+	shield_0 = { name = "shd_generic", hitpoints = 4954.367, armor = 191.872, regen = 4.846699, front = 193.4337, back = 199.7664,},
+	shield_1 = { name = "shd_generic", hitpoints = 4975.484, armor = 198.3498, regen = 4.902131, front = 195.3655, back = 198.47,},
+	armor_0 = { name = "arm_generic", hitpoints = 4864.32, armor = 4882.47,},
+	armor_1 = { name = "arm_generic", hitpoints = 4916.466, armor = 4788.276,},
+	capacitor = { name = "cap_generic", hitpoints = 4806.581, armor = 0, rechargeRate = 66.5183, energy = 1706.356,},
+	bridge = { name = "bdg_generic", hitpoints = 0, armor = 19.44116,},
+	hangar = { name = "hgr_generic", hitpoints = 0, armor = 19.1554,},
+	targeting_station = { name = "tst_generic", hitpoints = 0, armor = 19.21219,},
+	weapon_0 = { name = "wpn_capitalship_turret_test", hitpoints = 193.199, armor = 195.1185, rate = 0.3395525, drain = 22.84831, maxDamage = 19.71223, shieldEfficiency = 0, minDamage = 9.773687, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_capitalship_turret_test", hitpoints = 191.3585, armor = 192.1416, rate = 0.334125, drain = 22.78276, maxDamage = 19.11772, shieldEfficiency = 0, minDamage = 9.965345, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_nebulon, "object/ship/nebulon.iff")

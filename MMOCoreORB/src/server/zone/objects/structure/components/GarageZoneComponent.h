@@ -11,8 +11,8 @@
 class GarageZoneComponent : public StructureZoneComponent {
 
 public:
-	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const;
-	void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const;
+	void notifyPositionUpdate(SceneObject* sceneObject, TreeEntry* entry) const;
+	void notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const;
 };
 
 #endif /* GARAGEZONECOMPONENT_H_ */

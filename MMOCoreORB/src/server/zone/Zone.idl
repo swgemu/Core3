@@ -5,7 +5,7 @@
 package server.zone;
 
 import server.zone.QuadTree;
-import server.zone.QuadTreeEntry;
+import server.zone.TreeEntry;
 include server.chat.room.ChatRoom;
 
 import system.lang.Time;
@@ -72,6 +72,10 @@ class Zone extends SceneObject {
 	private transient AtomicBoolean managersStarted;
 	private transient boolean zoneCleared;
 
+	protected boolean zone;
+	protected boolean spaceZone;
+	protected string name;
+
 	public native Zone(ZoneProcessServer processor, final string zoneName);
 	public native void initializeTransientMembers();
 	public native void finalize();
@@ -87,16 +91,16 @@ class Zone extends SceneObject {
 	}
 
 	@local
-	public native int getInRangeSolidObjects(float x, float y, float range, SortedVector<QuadTreeEntry> objects, boolean readLockZone);
+	public native int getInRangeSolidObjects(float x, float y, float range, SortedVector<TreeEntry> objects, boolean readLockZone);
 
 	@local
-	public native int getInRangeObjects(float x, float y, float range, SortedVector<QuadTreeEntry> objects, boolean readLockZone, boolean includeBuildingObjects = true);
+	public native int getInRangeObjects(float x, float y, float range, SortedVector<TreeEntry> objects, boolean readLockZone, boolean includeBuildingObjects = true);
 
 	@local
 	public native int getInRangeObjects(float x, float y, float range, InRangeObjectsVector objects, boolean readLockZone, boolean includeBuildingObjects = true);
 
 	@local
-	public native int getInRangePlayers(float x, float y, float range, SortedVector<QuadTreeEntry> objects);
+	public native int getInRangePlayers(float x, float y, float range, SortedVector<TreeEntry> objects);
 
 	public native void createContainerComponent();
 
@@ -112,16 +116,16 @@ class Zone extends SceneObject {
 	public native SortedVector<SceneObject> getPlanetaryObjectList(final string mapObjectLocationType);
 
 	@local
-	public native void insert(QuadTreeEntry entry);
+	public native void insert(TreeEntry entry);
 
 	@local
-	public native void remove(QuadTreeEntry entry);
+	public native void remove(TreeEntry entry);
 
 	@local
-	public native void update(QuadTreeEntry entry);
+	public native void update(TreeEntry entry);
 
 	@local
-	public native void inRange(QuadTreeEntry entry, float range);
+	public native void inRange(TreeEntry entry, float range);
 
 	public native void updateActiveAreas(TangibleObject tano);
 
@@ -143,6 +147,11 @@ class Zone extends SceneObject {
 	@arg1preLocked
 	@preLocked
 	public native void addSceneObject(SceneObject object);
+
+
+	public void setZoneName(string n) {
+		zoneName = n;
+	}
 
 	public void addCityRegionToUpdate(CityRegion city) {
 		cityRegionUpdateVector.put(city);
@@ -217,6 +226,11 @@ class Zone extends SceneObject {
 	public native boolean isWithinBoundaries(@dereferenced final Vector3 position);
 
 	public native float getBoundingRadius();
+
+	@dirty
+	public boolean isGroundZone() {
+		return zone;
+	}
 
 	/**
 	 * Registers the object to the planetary map. This also makes the object visible to the find command.

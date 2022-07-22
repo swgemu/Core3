@@ -15,9 +15,17 @@
 #include "ShipUpdateTransformMessage.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
-
+#include "server/zone/objects/ship/ShipObject.h"
 #include "PackedVelocity.h"
 #include "PackedRotationRate.h"
+#include "PackedPosition.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/scene/UpdateTransformMessage.h"
+#include "server/zone/objects/ship/ShipObject.h"
+
+#include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 class ShipUpdateTransformCallback : public MessageCallback {
 	uint16 shipId;
@@ -25,6 +33,8 @@ class ShipUpdateTransformCallback : public MessageCallback {
 	//PackedTransform dir is multiplied by 127, positions by 4.0958748
 	uint8 dirX, dirY, dirZ, dirW;
 	int16 posX, posZ, posY;
+
+	PackedPosition pos;
 
 	//PackedVelocity
 	//int16 velocitySpeed, velocityDirection;
@@ -44,125 +54,101 @@ public:
 	void parse(Message* message) {
 		//info(message->toStringData(), true);
 		shipId = message->parseShort();
-
 		dirX = message->parseByte();
 		dirY = message->parseByte();
 		dirZ = message->parseByte();
 		dirW = message->parseByte();
-
 		posX = message->parseSignedShort();
-		posZ = message->parseSignedShort();
 		posY = message->parseSignedShort();
-
-		velocity.parse(message);
-
-		yawRate.parse(message);
-		pitchRate.parse(message);
-		rollRate.parse(message);
-
-		counter = message->parseInt();
+		posZ = message->parseSignedShort();
+		velocity.parse(message); //Short velocity
+		yawRate.parse(message); // int8 rate
+		pitchRate.parse(message); //int8 rate
+		rollRate.parse(message); //int8 rate
+		counter = message->parseInt(); //int32
 	}
 
 	void run() {
 		float positionMultiplier = 4.0958748f;
 		float positionX = posX / positionMultiplier;
 		float positionY = posY / positionMultiplier;
-		float positionZ = posZ / positionMultiplier;
+		float positionZ = posZ / positionMultiplier;;
 
-		float directionX = (float)dirX / 127.f;
-		float directionY = (float)dirY / 127.f;
-		float directionZ = (float)dirZ / 127.f;
-		float directionW = (float)dirW / 127.f;
+		float directionX = dirX <= 127.f ? dirX / 127.f : (dirX - 255) / 127.f;
+		float directionY = dirY <= 127.f ? dirY / 127.f : (dirY - 255) / 127.f;
+		float directionZ = dirZ <= 127.f ? dirZ / 127.f : (dirZ - 255) / 127.f;
+		float directionW = dirW <= 127.f ? dirW / 127.f : (dirW - 255) / 127.f;
 
-		/*StringBuffer msg;
-		msg << "short: 0x" << hex << unknownShort;
-		info(msg.toString(), true);
-
-		StringBuffer msg;
-		msg << "positionX: " << posX << " positionZ:" << posZ << " positionY:" << posY;
-		info(msg.toString(), true);
-
-		StringBuffer msg;
-		msg << "velA:" << velA << " velB:" << velB;
-		info(msg.toString(), true);*/
-
-		ManagedReference<CreatureObject*> object = client->getPlayer();
-
-		if (object == nullptr)
-			return;
-
-		Locker _locker(object);
-
-		PlayerObject* ghost = object->getPlayerObject();
-
-		if (ghost == nullptr)
-			return;
-
-		if (std::isnan(positionX) || std::isnan(positionY) || std::isnan(positionZ))
-			return;
-
-		if (std::isinf(positionX) || std::isinf(positionY) || std::isinf(positionZ))
-			return;
-
-		if (ghost->isTeleporting())
-			return;
-
-		if (object->getZone() == nullptr)
-			return;
-
-		if (positionX > 8000.0f || positionX < -8000.0f || positionY > 8000.0f || positionY < -8000.0f) {
-			/*
-			StringBuffer msg;
-			msg << "position out of bounds";
-			object->error(msg.toString());
-			*/
-
+		if (positionX > 8000.0f || positionX < -8000.0f || positionY > 8000.0f || positionY < -8000.0f || positionZ < -8000.0f || positionZ > 8000.0f) {
 			return;
 		}
 
-		ManagedReference<ShipObject*> ship = dynamic_cast<ShipObject*>(object->getParent().get().get());
-
-		if (ship == nullptr)
+		const ManagedReference<CreatureObject*> pilot = client->getPlayer();
+		if (pilot == nullptr) {
 			return;
+		}
 
-		Locker clocker(ship, object);
 
-		Vector3 collisionPoint, targetPosition(positionX, positionY, positionZ);
+		const Reference<PlayerObject*> ghost = pilot->getPlayerObject();
+		if (ghost == nullptr || ghost->isTeleporting()) {
+			return;
+		}
 
-		if (CollisionManager::checkShipCollision(ship, targetPosition, collisionPoint)) {
-			//ship->teleport(ship->getPositionX(), ship->getPositionZ(), ship->getPositionY());
-			//ship->info("colliding with terrain", true);
-			//ship->setDirection(directionW, directionX, directionY, directionZ);
+		ShipObject* ship = dynamic_cast<ShipObject*>(pilot->getParent().get().get());
+		if (ship == nullptr || ship->getSpaceZone() == nullptr || ship->isHyperspacing()) {
+			return;
+		}
+/*
+		Logger::console.info("Directions for: " + ship->getDisplayedName(), true);
+		Logger::console.info("Direction X: " + String::valueOf(dirX), true);
+		Logger::console.info("Direction Y: " + String::valueOf(dirY), true);
+		Logger::console.info("Direction Z: " + String::valueOf(dirZ), true);
+		Logger::console.info("Direction W: " + String::valueOf(dirW), true);
+		Logger::console.info("End Directions", true);
+*/
+		if (pilot->getSpaceZone() == nullptr) {
+			pilot->setSpaceZone(ship->getSpaceZone());
+		}
+		Locker pLock(pilot);
+		Locker cLock(ship, pilot);
+//
+		Vector3 collisionPoint(positionX, positionY, positionZ);
+		bool collision = CollisionManager::checkShipCollision(ship, collisionPoint, collisionPoint);
+//
+		Quaternion direction(directionW, directionX, directionZ, directionY);
+		direction.normalize();
+
+		if (collision) {
+			ship->setDirection(direction);
 			ship->setMovementCounter(counter);
 
-			ShipUpdateTransformCollisionMessage* msg = new ShipUpdateTransformCollisionMessage(ship);
-			object->broadcastMessage(msg, true);
+			auto crash = new ShipUpdateTransformCollisionMessage(ship);
+			ship->broadcastMessage(crash, true);
 
-			PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(ship, "clienteffect/space_collision.cef", "");
-			object->broadcastMessage(effect, true);
+			auto effect = new PlayClientEffectObjectMessage(ship, "clienteffect/space_collision.cef", "");
+			ship->broadcastMessage(effect, true);
+		} else {
+			// No Collision
+			ship->setMovementCounter(counter);
+			bool lightUpdate = ghost->getServerMovementTimeDelta() < 3000U;
 
-			return;
+			//Logger::console.info("positionX = " + String::valueOf(positionX), true);
+			auto shipMessage = new ShipUpdateTransformMessage(ship, direction.getX(), direction.getY(), direction.getZ(), direction.getW(), positionX, positionZ, positionY, velocity, yawRate, pitchRate, rollRate);
+			ship->broadcastMessage(shipMessage, false);
+
+			if (!lightUpdate) {
+				ship->setDirection(direction);
+				pilot->setDirection(direction);
+				pilot->setPosition(positionX, positionZ, positionY);
+				ship->setPosition(positionX, positionZ, positionY);
+				pilot->updateZone(false);
+				ghost->updateServerLastMovementStamp();
+			}
+			else
+				pilot->updateZone(true, false);
 		}
-
-		ship->setMovementCounter(counter);
-		ship->setPosition(positionX, positionZ, positionY);
-		ship->setDirection(directionW, directionX, directionY, directionZ);
-		ship->updateZone(false, false);
-
-		object->setPosition(positionX, positionZ, positionY);
-		//object->setDirection(directionW, directionX, directionY, directionZ);
-
-		object->updateZone(false, false);
-
-		ShipUpdateTransformMessage* msga = new ShipUpdateTransformMessage(ship, dirX, dirY, dirZ, dirW, posX, posZ, posY,
-				velocity, yawRate, pitchRate, rollRate);
-		object->broadcastMessage(msga, false);
-
-		ValidatedPosition* last = ghost->getLastValidatedPosition();
-		last->setPosition(positionX, positionZ, positionY);
-		ghost->updateServerLastMovementStamp();
+		cLock.release();
 	}
 };
-
 
 #endif /* SHIPUPDATETRANSFORMCALLBACK_H_ */

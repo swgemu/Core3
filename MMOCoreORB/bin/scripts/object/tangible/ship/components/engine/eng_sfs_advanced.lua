@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_sfs_advanced = object_tangible_ship_components_engine_shared_eng_sfs_advanced:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 42130.0,
+	hitpoints = 1103.0,
+	armor = 555.0,
+	energyUsage = 1805.0,
+	speed = 79.0,
+	pitch = 58.0,
+	yaw = 60.0,
+	roll = 55.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_sfs_advanced, "object/tangible/ship/components/engine/eng_sfs_advanced.iff")

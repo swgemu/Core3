@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_kse_modified_light_durasteel = object_tangible_ship_components_armor_shared_arm_kse_modified_light_durasteel:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1554.0,
+	hitpoints = 208.0,
+	armor = 215.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_kse_modified_light_durasteel, "object/tangible/ship/components/armor/arm_kse_modified_light_durasteel.iff")

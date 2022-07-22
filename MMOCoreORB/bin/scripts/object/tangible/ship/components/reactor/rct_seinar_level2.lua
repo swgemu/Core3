@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_seinar_level2 = object_tangible_ship_components_reactor_shared_rct_seinar_level2:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 3302.0,
+	hitpoints = 311.0,
+	armor = 160.0,
+	energyUsage = 8.0,
+	maxEnergy = 11000.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_seinar_level2, "object/tangible/ship/components/reactor/rct_seinar_level2.iff")

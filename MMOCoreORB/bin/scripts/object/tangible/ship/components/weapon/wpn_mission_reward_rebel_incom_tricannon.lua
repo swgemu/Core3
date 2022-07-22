@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_mission_reward_rebel_incom_tricannon = object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_incom_tricannon:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 38221.0,
+	hitpoints = 1411.0,
+	armor = 703.0,
+	energyUsage = 2802.0,
+	minDamage = 2388.0,
+	maxDamage = 3692.0,
+	refireRate = 6.0,
+	energyPerShot = 15.0,
+	shieldEffectiveness = 2.0,
+	armorEffectiveness = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mission_reward_rebel_incom_tricannon, "object/tangible/ship/components/weapon/wpn_mission_reward_rebel_incom_tricannon.iff")

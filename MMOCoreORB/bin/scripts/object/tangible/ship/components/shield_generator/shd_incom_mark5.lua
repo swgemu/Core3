@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_incom_mark5 = object_tangible_ship_components_shield_generator_shared_shd_incom_mark5:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1327.0,
+	hitpoints = 153.0,
+	armor = 81.0,
+	energyUsage = 2559.0,
+	shieldFront = 207.0,
+	shieldRear = 205.0,
+	rechargeRate = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_incom_mark5, "object/tangible/ship/components/shield_generator/shd_incom_mark5.iff")

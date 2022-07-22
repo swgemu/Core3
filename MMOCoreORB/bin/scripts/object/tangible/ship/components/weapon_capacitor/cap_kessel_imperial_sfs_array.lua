@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_kessel_imperial_sfs_array = object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sfs_array:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 46809.0,
+	hitpoints = 1103.0,
+	armor = 559.0,
+	energyUsage = 1203.0,
+	rechargeRate = 39.0,
+	rechargeRateMod = 0.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_kessel_imperial_sfs_array, "object/tangible/ship/components/weapon_capacitor/cap_kessel_imperial_sfs_array.iff")

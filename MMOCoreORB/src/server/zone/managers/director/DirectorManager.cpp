@@ -2721,7 +2721,7 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	Zone* zone = zoneServer->getZone(zoneID);
-
+	//SpaceZone* spaceZone = zoneServer->getSpaceZone(zoneID);
 	if (zone == nullptr) {
 		lua_pushnil(L);
 		return 1;
@@ -3268,12 +3268,24 @@ int DirectorManager::getZoneByName(lua_State* L) {
 
 	String zoneid = lua_tostring(L, -1);
 
-	Zone* zone = ServerCore::getZoneServer()->getZone(zoneid);
+	if (zoneid.contains("space")) {
+		SpaceZone* zone = ServerCore::getZoneServer()->getSpaceZone(zoneid);
 
-	if (zone == nullptr) {
-		lua_pushnil(L);
-	} else {
-		lua_pushlightuserdata(L, zone);
+		if (zone == nullptr) {
+			lua_pushnil(L);
+		} else {
+			lua_pushlightuserdata(L, zone);
+		}
+	}
+
+	else {
+		Zone* zone = ServerCore::getZoneServer()->getZone(zoneid);
+
+		if (zone == nullptr) {
+			lua_pushnil(L);
+		} else {
+			lua_pushlightuserdata(L, zone);
+		}
 	}
 
 	return 1;

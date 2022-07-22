@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_incom_vynock = object_tangible_ship_components_booster_shared_bst_incom_vynock:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 5500.0,
+	hitpoints = 636.0,
+	armor = 325.0,
+	energyUsage = 557.0,
+	speed = 22.0,
+	maxEnergy = 1211.0,
+	rechargeRate = 37.0,
+	boosterDrain = 121.0,
+	boosterAccel = 29.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_incom_vynock, "object/tangible/ship/components/booster/bst_incom_vynock.iff")

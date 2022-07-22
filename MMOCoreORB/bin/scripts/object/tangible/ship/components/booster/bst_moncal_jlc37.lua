@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_moncal_jlc37 = object_tangible_ship_components_booster_shared_bst_moncal_jlc37:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 808.0,
+	hitpoints = 150.0,
+	armor = 76.0,
+	energyUsage = 505.0,
+	speed = 18.0,
+	maxEnergy = 1003.0,
+	rechargeRate = 33.0,
+	boosterDrain = 104.0,
+	boosterAccel = 27.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_moncal_jlc37, "object/tangible/ship/components/booster/bst_moncal_jlc37.iff")

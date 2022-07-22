@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_freitek_standard = object_tangible_ship_components_armor_shared_arm_freitek_standard:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3866.0,
+	hitpoints = 477.0,
+	armor = 475.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_freitek_standard, "object/tangible/ship/components/armor/arm_freitek_standard.iff")

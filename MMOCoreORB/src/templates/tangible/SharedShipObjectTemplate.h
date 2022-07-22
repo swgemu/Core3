@@ -13,8 +13,13 @@
 class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	StringParam interiorLayoutFileName;
 	StringParam cockpitFilename;
+    String shipName;
+    VectorMap<String, String> componentNames;
+	VectorMap<String, VectorMap<String, float>> componentValues;
+
 	BoolParam hasWings;
 	BoolParam playerControlled;
+
 public:
 	SharedShipObjectTemplate() {
 
@@ -24,9 +29,100 @@ public:
 
 	}
 
+	const VectorMap<String, String>& getComponentNames() const {
+		return componentNames;
+	}
+
+	const VectorMap<String, VectorMap<String, float>>& getComponentValues() const {
+		return componentValues;
+	}
+
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
-	}
+		//if (!templateData->isValidTable())
+			//return;
+
+		shipName = templateData->getStringField("name");
+
+		const static char* components[] = {"reactor", "engine", "capacitor", "booster", "droid_interface", "bridge", "hangar",
+								  "targeting_station", "armor_0", "armor_1", "shield_0", "shield_1", "weapon_0",
+								  "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5","weapon_6", "weapon_7"};
+		const int numComponents = 20;
+		try {
+			for (int i = 0; i < 20; i++) {
+				String k = components[i];
+				LuaObject component = templateData->getObjectField(k);
+				if (component.isValidTable()) {
+					VectorMap<String, float> map;
+					String name = component.getStringField("name", "");
+					char **fields = NULL;
+					switch (i) {
+						case 0: {
+							const char *fields[] = {"hitpoints", "armor"};
+							loadMap(fields, 2, map, component);
+							break;
+						}
+						case 1: {
+							const char *fields[] = {"hitpoints", "armor", "speed", "pitch", "roll", "yaw",
+													"acceleration",
+													"deceleration", "pitchRate", "rollRate", "yawRate"};
+							loadMap(fields, 11, map, component);
+							break;
+						}
+						case 2: {
+							const char *fields[] = {"hitpoints", "armor", "rechargeRate", "energy"};
+							loadMap(fields, 4, map, component);
+							break;
+						}
+						case 3: {
+							const char *fields[] = {"hitpoints", "armor", "rechargeRate", "energy", "acceleration",
+													"speed"};
+							loadMap(fields, 6, map, component);
+							break;
+						}
+						case 4:
+						case 5:
+						case 6:
+						case 7:
+						case 8:
+						case 9: {
+							const char *fields[] = {"hitpoints", "armor"};
+							loadMap(fields, 2, map, component);
+							break;
+						}
+						case 10:
+						case 11: {
+							const char *fields[] = {"hitpoints", "armor", "front", "back", "regen"};
+							loadMap(fields, 5, map, component);
+							break;
+						}
+						case 12:
+						case 13:
+						case 14:
+						case 15:
+						case 16:
+						case 17:
+						case 18:
+						case 19: {
+							const char *fields[] = {"hitpoints", "armor", "rate", "drain", "maxDamage", "minDamage",
+													"shieldEfficiency", "armorEfficiency", "ammo", "ammo_type"};
+							loadMap(fields, 10, map, component);
+							break;
+						}
+					};
+					componentValues.put(components[i], map);
+					componentNames.put(components[i], name);
+				}
+				component.pop();
+			}
+		} catch (Exception& e) {
+			e.printStackTrace();
+		}
+    }
+
+    String getShipName() {
+        return shipName;
+    }
 
 	void parseVariableData(const String& varName, Chunk* data) {
 		if (varName == "interiorLayoutFileName") {
@@ -37,6 +133,12 @@ public:
 			hasWings.parse(data);
 		} else if (varName == "playerControlled") {
 			playerControlled.parse(data);
+		}
+	}
+
+    void loadMap(const char** fields, int fieldsLen, VectorMap<String, float>& map, LuaObject& obj) {
+		for (int i=0; i<fieldsLen; i++) {
+			map.put(fields[i], obj.getFloatField(fields[i]));
 		}
 	}
 

@@ -80,7 +80,7 @@ public:
 		}
 
 		/// Check if anything is attackable in range
-		SortedVector<QuadTreeEntry*> objects(512, 512);
+		SortedVector<TreeEntry*> objects(512, 512);
 		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*)creature->getCloseObjects();
 
 		if (closeObjectsVector == nullptr) {

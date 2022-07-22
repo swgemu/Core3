@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_qualdex_conservator_qx5 = object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx5:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 39003.0,
+	hitpoints = 1101.0,
+	armor = 556.0,
+	energyUsage = 1202.0,
+	rechargeRate = 33.0,
+	rechargeRateMod = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_qualdex_conservator_qx5, "object/tangible/ship/components/weapon_capacitor/cap_qualdex_conservator_qx5.iff")

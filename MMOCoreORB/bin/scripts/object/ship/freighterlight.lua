@@ -43,6 +43,17 @@
 
 object_ship_freighterlight = object_ship_shared_freighterlight:new {
 
+	name = "freighterlight",
+	slideFactor = 2,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 95.67672, armor = 98.67852,},
+	engine = { name = "eng_generic", hitpoints = 99.92226, armor = 98.52696, speed = 19.52843, pitch = 18.75626, roll = 18.3391, yaw = 18.61446, acceleration = 33.48952, rollRate = 23.65349, pitchRate = 23.83459, deceleration = 29.76271, yawRate = 23.11585,},
+	shield_0 = { name = "shd_generic", hitpoints = 199.0001, armor = 194.5894, regen = 4.832321, front = 289.9491, back = 579.186,},
+	armor_0 = { name = "arm_generic", hitpoints = 481.9307, armor = 483.9367,},
+	armor_1 = { name = "arm_generic", hitpoints = 499.1988, armor = 484.5253,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 17.10498, energy = 414.4222,},
+	weapon_0 = { name = "wpn_generic", hitpoints = 197.9496, armor = 198.8005, rate = 0.1698542, drain = 8.066095, maxDamage = 466.3789, shieldEfficiency = 0, minDamage = 237.6042, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_freighterlight, "object/ship/freighterlight.iff")

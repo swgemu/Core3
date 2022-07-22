@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_novaldex_small_capacitor = object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_small_capacitor:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 954.0,
+	hitpoints = 144.0,
+	armor = 78.0,
+	energyUsage = 957.0,
+	rechargeRate = 19.0,
+	rechargeRateMod = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_novaldex_small_capacitor, "object/tangible/ship/components/weapon_capacitor/cap_novaldex_small_capacitor.iff")

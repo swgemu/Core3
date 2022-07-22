@@ -6,6 +6,9 @@
 #define HYPERSPACE_H_
 
 #include "CombatQueueCommand.h"
+#include "server/zone/managers/ship/ShipManager.h"
+#include "server/zone/packets/object/OrientForHyperspace.h"
+#include "server/zone/objects/ship/events/HyperspaceToLocationTask.h"
 
 class HyperspaceCommand : public CombatQueueCommand {
 public:
@@ -22,7 +25,22 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
+		String destName = arguments.toString();
+		ShipManager* sman = ShipManager::instance();
+		if (!sman->hyperspaceLocationExists(destName)) {
+			creature->sendSystemMessage("Invalid hyperspace location " + destName);
+		}
+
+		const String& zone = sman->getHyperspaceZone(destName);
+		const Vector3& loc = sman->getHyperspaceLocation(destName);
+        ManagedReference<ShipObject*> ship = cast<ShipObject*>(creature->getRootParent());
+        if (ship == nullptr) {
+            creature->error("Attempting hyperspace with no ship object");
+        }
+        HyperspaceToLocationTask *task = new HyperspaceToLocationTask(creature, ship, zone, loc);
+        task->execute();
+
+		return SUCCESS;
 	}
 
 };

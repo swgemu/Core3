@@ -65,7 +65,7 @@ string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed 
 
 		CloseObjectsVector* vec = (CloseObjectsVector*) creature->getCloseObjects();
 
-		SortedVector<QuadTreeEntry*> closeObjects;
+		SortedVector<TreeEntry*> closeObjects;
 		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::STRUCTURETYPE);
 
 		for (int i = 0; i < closeObjects.size(); ++i) {

@@ -9,21 +9,26 @@
 
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
+#include "server/zone/TreeEntry.h"
 
-void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
+void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, SceneObject* newZone) const {
 
+	bool isSpaceZone = false;
+	Zone* zone = cast<Zone*>(newZone);
 	if (sceneObject->isPlayerCreature() && newZone != nullptr) {
 		PlayerObject* ghost = sceneObject->asCreatureObject()->getPlayerObject();
-
+		zone = cast<Zone*>(newZone);
 		if (ghost != nullptr)
-			ghost->setSavedTerrainName(newZone->getZoneName());
+			ghost->setSavedTerrainName(zone->getZoneName());
 	}
 
-	ZoneComponent::notifyInsertToZone(sceneObject, newZone);
+	ZoneComponent::notifyInsertToZone(sceneObject, zone);
 }
 
-void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
 	SceneObject* scno = static_cast<SceneObject*>( entry);
 
 	if (scno == sceneObject)
@@ -45,7 +50,7 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 	scno->sendTo(sceneObject, true, false);
 }
 
-void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const {
 	SceneObject* scno = static_cast<SceneObject*>( entry);
 
 	if (scno == sceneObject)

@@ -16,24 +16,25 @@
 class ShipUpdateTransformMessage : public BaseMessage {
 public:
 	ShipUpdateTransformMessage(ShipObject* scno, int8 dirX, int8 dirY, int8 dirZ, int8 dirW, int16 posX, int16 posZ, int16 posY, int16 velA, int16 velB, int8 rA, int8 rB, int8 rC) : BaseMessage(50) {
-		insertShort(0x08);
-		insertInt(0x76026fb9);
-	   // insertLong(scno->getObjectID());
 
+		Logger::console.info("shipUpdateTransformMessage1", true);
+
+		float positionMultiplier = 4.0958748f;
+
+		insertShort(0x08); //Opcode
+		insertInt(0x76026fb9); //Message
 	    insertShort(scno->getUniqueID());
 
-		// add coordinates
 
 	    //direction
 	    insertByte((byte)dirX);
-	    insertByte((byte)dirY);
 	    insertByte((byte)dirZ);
+	    insertByte((byte)dirY);
 	    insertByte((byte)dirW);
 
-
-	    insertShort((int16)posX);
-	    insertShort((int16)posZ);
-	    insertShort((int16)posY);
+		insertShort((int16)posX*positionMultiplier);
+	    insertShort((int16)posY*positionMultiplier);
+		insertShort((int16)posZ*positionMultiplier);
 
 	    insertShort(0);
 	    insertShort(0);
@@ -48,23 +49,24 @@ public:
 	ShipUpdateTransformMessage(ShipObject* scno, int8 dirX, int8 dirY, int8 dirZ, int8 dirW,
 			int16 posX, int16 posZ, int16 posY,
 			PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC) : BaseMessage(50) {
-			insertShort(0x08);
-			insertInt(0x76026fb9);
-		   // insertLong(scno->getObjectID());
 
-		    insertShort(scno->getUniqueID());
+			//Logger::console.info("shipUpdateTransformMessage2", true);
 
-			// add coordinates
+			float positionMultiplier = 4.0958748f;
+			insertShort(0x08); //opcode
+
+			insertInt(0x76026fb9); //Message
+			insertShort(scno->getUniqueID());
 
 		    //direction
-		    insertByte((byte)dirX);
-		    insertByte((byte)dirY);
-		    insertByte((byte)dirZ);
 		    insertByte((byte)dirW);
+		    insertByte((byte)dirX);
+		    insertByte((byte)dirZ);
+		    insertByte((byte)dirY);
 
-		    insertShort((int16)posX);
-		    insertShort((int16)posZ);
-		    insertShort((int16)posY);
+			insertShort((int16)posX*positionMultiplier);
+			insertShort((int16)posY*positionMultiplier);
+			insertShort((int16)posZ*positionMultiplier);
 
 		    velocity.write(this);
 
@@ -72,7 +74,7 @@ public:
 		    rB.write(this);
 		    rC.write(this);
 
-		    insertInt(scno->getMovementCounter());
+			insertInt(scno->getMovementCounter());
 		}
 
 };

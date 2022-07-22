@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_corellian_improved_advanced_durasteel = object_tangible_ship_components_armor_shared_arm_corellian_improved_advanced_durasteel:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 24599.0,
+	hitpoints = 1292.0,
+	armor = 1290.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_corellian_improved_advanced_durasteel, "object/tangible/ship/components/armor/arm_corellian_improved_advanced_durasteel.iff")

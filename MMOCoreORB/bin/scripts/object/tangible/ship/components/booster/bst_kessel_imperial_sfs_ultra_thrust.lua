@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_kessel_imperial_sfs_ultra_thrust = object_tangible_ship_components_booster_shared_bst_kessel_imperial_sfs_ultra_thrust:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 37448.0,
+	hitpoints = 1104.0,
+	armor = 559.0,
+	energyUsage = 608.0,
+	speed = 30.0,
+	maxEnergy = 1468.0,
+	rechargeRate = 38.0,
+	boosterDrain = 153.0,
+	boosterAccel = 39.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_kessel_imperial_sfs_ultra_thrust, "object/tangible/ship/components/booster/bst_kessel_imperial_sfs_ultra_thrust.iff")

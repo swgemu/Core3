@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_moncal_light_blaster = object_tangible_ship_components_weapon_shared_wpn_moncal_light_blaster:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1704.0,
+	hitpoints = 195.0,
+	armor = 103.0,
+	energyUsage = 1922.0,
+	minDamage = 365.0,
+	maxDamage = 494.0,
+	refireRate = 2.0,
+	energyPerShot = 35.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_moncal_light_blaster, "object/tangible/ship/components/weapon/wpn_moncal_light_blaster.iff")

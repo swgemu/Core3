@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_freitek_ew6_prototype = object_tangible_ship_components_armor_shared_armor_freitek_ew6_prototype:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2217.0,
+	hitpoints = 383.0,
+	armor = 381.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_freitek_ew6_prototype, "object/tangible/ship/components/armor/armor_freitek_ew6_prototype.iff")

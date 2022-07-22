@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_kuat_tc40 = object_tangible_ship_components_engine_shared_engine_kuat_tc40:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 29485.0,
+	hitpoints = 1175.0,
+	armor = 592.0,
+	energyUsage = 1726.0,
+	speed = 81.0,
+	pitch = 74.0,
+	yaw = 75.0,
+	roll = 69.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_kuat_tc40, "object/tangible/ship/components/engine/engine_kuat_tc40.iff")

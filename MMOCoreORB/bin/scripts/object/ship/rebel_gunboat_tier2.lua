@@ -43,6 +43,20 @@
 
 object_ship_rebel_gunboat_tier2 = object_ship_shared_rebel_gunboat_tier2:new {
 
+	name = "rebel_gunboat_tier2",
+	slideFactor = 1.76,
+	chassisHitpoints = 6000,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 4306.434, armor = 4290.42,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 4466.283, armor = 4363.873, speed = 42.36829, pitch = 22.99141, roll = 28.72104, yaw = 18.04197, acceleration = 10.09636, rollRate = 52.3083, pitchRate = 46.13125, deceleration = 8.717518, yawRate = 39.42461,},
+	shield_0 = { name = "shd_generic", hitpoints = 4410.493, armor = 4281.361, regen = 7.93043, front = 17225.58, back = 17250.61,},
+	armor_0 = { name = "arm_generic", hitpoints = 9137.128, armor = 9473.155,},
+	armor_1 = { name = "arm_generic", hitpoints = 9405.384, armor = 9409.022,},
+	capacitor = { name = "cap_generic", hitpoints = 4496.785, armor = 4468.329, rechargeRate = 96.69292, energy = 4806.693,},
+	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 4405.325, armor = 4491.803, rate = 0.769633, drain = 0.9677165, maxDamage = 214.3226, shieldEfficiency = 0.5468827, minDamage = 151.4535, ammo = 0, ammo_type = 0, armorEfficiency = 0.5421988,},
+	weapon_1 = { name = "wpn_incom_blaster", hitpoints = 4467.263, armor = 4405.085, rate = 0.7431962, drain = 0.9730938, maxDamage = 209.0087, shieldEfficiency = 0.5417797, minDamage = 155.5438, ammo = 0, ammo_type = 0, armorEfficiency = 0.5388024,},
+	weapon_2 = { name = "wpn_incom_disruptor", hitpoints = 4304.33, armor = 4477.133, rate = 0.7756609, drain = 0.9542989, maxDamage = 212.2054, shieldEfficiency = 0.5491979, minDamage = 149.7348, ammo = 0, ammo_type = 0, armorEfficiency = 0.5332336,},
+	weapon_3 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 4374.007, armor = 4409.571, rate = 2.871089, drain = 0.9961456, maxDamage = 643.3702, shieldEfficiency = 0.7278856, minDamage = 305.3642, ammo = 5, ammo_type = 17, armorEfficiency = 0.7362959,},
 }
 
 ObjectTemplates:addTemplate(object_ship_rebel_gunboat_tier2, "object/ship/rebel_gunboat_tier2.iff")

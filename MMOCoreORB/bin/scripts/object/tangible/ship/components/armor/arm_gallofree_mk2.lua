@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_gallofree_mk2 = object_tangible_ship_components_armor_shared_arm_gallofree_mk2:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2211.0,
+	hitpoints = 382.0,
+	armor = 383.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_gallofree_mk2, "object/tangible/ship/components/armor/arm_gallofree_mk2.iff")

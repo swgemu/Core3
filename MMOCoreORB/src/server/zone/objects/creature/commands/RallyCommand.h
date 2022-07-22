@@ -140,7 +140,7 @@ public:
 
 		//Send to players near the leader and not in group.
 		CloseObjectsVector* vec = (CloseObjectsVector*) leader->getCloseObjects();
-		SortedVector<QuadTreeEntry*> closeObjects;
+		SortedVector<TreeEntry*> closeObjects;
 		if (vec != nullptr) {
 			closeObjects.removeAll(vec->size(), 10);
 			vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);

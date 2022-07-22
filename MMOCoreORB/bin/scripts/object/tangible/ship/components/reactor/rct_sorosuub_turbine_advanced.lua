@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_sorosuub_turbine_advanced = object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 51488.0,
+	hitpoints = 1110.0,
+	armor = 551.0,
+	energyUsage = 8.0,
+	maxEnergy = 27555.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_sorosuub_turbine_advanced, "object/tangible/ship/components/reactor/rct_sorosuub_turbine_advanced.iff")

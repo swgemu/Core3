@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_mission_reward_rebel_corellian_triplate = object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_corellian_triplate:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 9185.0,
+	hitpoints = 1278.0,
+	armor = 1272.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mission_reward_rebel_corellian_triplate, "object/tangible/ship/components/armor/arm_mission_reward_rebel_corellian_triplate.iff")

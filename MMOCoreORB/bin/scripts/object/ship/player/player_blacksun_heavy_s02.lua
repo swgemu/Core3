@@ -43,6 +43,21 @@
 
 object_ship_player_player_blacksun_heavy_s02 = object_ship_player_shared_player_blacksun_heavy_s02:new {
 
+	name = "player_blacksun_heavy_s02",
+	slideFactor = 1.91,
+	chassisHitpoints = 519,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 298.5643, armor = 290.8233,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 99.33198, armor = 97.57671, speed = 40.67111, pitch = 20.59248, roll = 20.88879, yaw = 20.75872, acceleration = 11.85273, rollRate = 42.78871, pitchRate = 42.86503, deceleration = 15.57675, yawRate = 42.67835,},
+	shield_0 = { name = "shd_generic", hitpoints = 773.0718, armor = 486.4986, regen = 4.869394, front = 577.5036, back = 790.7836,},
+	armor_0 = { name = "arm_generic", hitpoints = 687.2841, armor = 693.7894,},
+	armor_1 = { name = "arm_generic", hitpoints = 689.0114, armor = 673.8834,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 33.68177, energy = 562.0052,},
+	booster = { name = "bst_xwing_booster_s01", hitpoints = 19.42347, armor = 19.25525, energy = 0, acceleration = 0, speed = 0, energyUsage = 0, rechargeRate = 0,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 197.6118, armor = 191.2112, rate = 0.3379147, drain = 23.23726, maxDamage = 394.2346, shieldEfficiency = 0, minDamage = 310.9335, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_incom_disruptor", hitpoints = 198.2586, armor = 192.2109, rate = 0.3415117, drain = 22.8, maxDamage = 23.43193, shieldEfficiency = 0, minDamage = 22.95926, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_2 = { name = "wpn_incom_disruptor", hitpoints = 19.93216, armor = 19.87826, rate = 0.3423414, drain = 23.1964, maxDamage = 22.66079, shieldEfficiency = 0, minDamage = 22.90214, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_3 = { name = "wpn_xwing_missile_s01", hitpoints = 0, armor = 0, rate = 0, drain = 0, maxDamage = 0, shieldEfficiency = 0, minDamage = 0, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_blacksun_heavy_s02, "object/ship/player/player_blacksun_heavy_s02.iff")

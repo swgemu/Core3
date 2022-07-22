@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_moncal_deluxe_standard = object_tangible_ship_components_booster_shared_bst_moncal_deluxe_standard:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3681.0,
+	hitpoints = 527.0,
+	armor = 261.0,
+	energyUsage = 528.0,
+	speed = 26.0,
+	maxEnergy = 1657.0,
+	rechargeRate = 48.0,
+	boosterDrain = 170.0,
+	boosterAccel = 33.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_moncal_deluxe_standard, "object/tangible/ship/components/booster/bst_moncal_deluxe_standard.iff")

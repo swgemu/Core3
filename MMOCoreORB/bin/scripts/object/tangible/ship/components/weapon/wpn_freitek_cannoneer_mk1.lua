@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_freitek_cannoneer_mk1 = object_tangible_ship_components_weapon_shared_wpn_freitek_cannoneer_mk1:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2626.0,
+	hitpoints = 352.0,
+	armor = 173.0,
+	energyUsage = 2107.0,
+	minDamage = 615.0,
+	maxDamage = 862.0,
+	refireRate = 8.0,
+	energyPerShot = 24.0,
+	shieldEffectiveness = 10.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_freitek_cannoneer_mk1, "object/tangible/ship/components/weapon/wpn_freitek_cannoneer_mk1.iff")

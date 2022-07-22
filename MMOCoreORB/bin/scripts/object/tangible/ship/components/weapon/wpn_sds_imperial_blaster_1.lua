@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_sds_imperial_blaster_1 = object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_1:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1106.0,
+	hitpoints = 167.0,
+	armor = 85.0,
+	energyUsage = 2006.0,
+	minDamage = 295.0,
+	maxDamage = 397.0,
+	refireRate = 1.0,
+	energyPerShot = 28.0,
+	shieldEffectiveness = 7.0,
+	armorEffectiveness = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_sds_imperial_blaster_1, "object/tangible/ship/components/weapon/wpn_sds_imperial_blaster_1.iff")

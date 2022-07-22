@@ -225,7 +225,7 @@ void JukeboxImplementation::changeMusic(const String& song) {
 
 	curSong = song;
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	SortedVector<ManagedReference<TreeEntry*> > closeObjects;
 	zone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), radius, &closeObjects, true);
 
 	PlayMusicMessage* pmm = new PlayMusicMessage(song);

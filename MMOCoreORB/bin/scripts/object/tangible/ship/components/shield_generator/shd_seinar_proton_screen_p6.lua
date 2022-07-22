@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_seinar_proton_screen_p6 = object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p6:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1933.0,
+	hitpoints = 195.0,
+	armor = 102.0,
+	energyUsage = 2563.0,
+	shieldFront = 259.0,
+	shieldRear = 254.0,
+	rechargeRate = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_seinar_proton_screen_p6, "object/tangible/ship/components/shield_generator/shd_seinar_proton_screen_p6.iff")

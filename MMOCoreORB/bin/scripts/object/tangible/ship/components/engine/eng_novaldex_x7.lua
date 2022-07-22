@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_novaldex_x7 = object_tangible_ship_components_engine_shared_eng_novaldex_x7:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 17557.0,
+	hitpoints = 757.0,
+	armor = 381.0,
+	energyUsage = 1428.0,
+	speed = 66.0,
+	pitch = 58.0,
+	yaw = 61.0,
+	roll = 59.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_novaldex_x7, "object/tangible/ship/components/engine/eng_novaldex_x7.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_sfs_limited_advanced = object_tangible_ship_components_shield_generator_shared_shd_sfs_limited_advanced:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 13221.0,
+	hitpoints = 798.0,
+	armor = 406.0,
+	energyUsage = 2807.0,
+	shieldFront = 1060.0,
+	shieldRear = 1063.0,
+	rechargeRate = 14.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_sfs_limited_advanced, "object/tangible/ship/components/shield_generator/shd_sfs_limited_advanced.iff")

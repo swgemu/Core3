@@ -43,6 +43,22 @@
 
 object_ship_imperial_gunboat_tier1 = object_ship_shared_imperial_gunboat_tier1:new {
 
+	name = "imperial_gunboat_tier1",
+	slideFactor = 1.81,
+	chassisHitpoints = 2400,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 1496.323, armor = 1433.725,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 1448.597, armor = 1497.429, speed = 41.91073, pitch = 22.91126, roll = 28.07258, yaw = 17.9514, acceleration = 9.951235, rollRate = 49.81882, pitchRate = 45.28458, deceleration = 8.687152, yawRate = 38.07715,},
+	shield_0 = { name = "shd_generic", hitpoints = 1441.244, armor = 1433.361, regen = 4.423146, front = 5878.96, back = 5980.609,},
+	armor_0 = { name = "arm_generic", hitpoints = 3071.642, armor = 3166.895,},
+	armor_1 = { name = "arm_generic", hitpoints = 3128.012, armor = 3058.719,},
+	capacitor = { name = "cap_generic", hitpoints = 1451.938, armor = 1477.331, rechargeRate = 96.01223, energy = 4980.338,},
+	weapon_0 = { name = "wpn_tieadvanced_blaster", hitpoints = 1462.32, armor = 1437.442, rate = 0.7430714, drain = 0.9844221, maxDamage = 97.20923, shieldEfficiency = 0.5349555, minDamage = 73.70153, ammo = 0, ammo_type = 0, armorEfficiency = 0.5331927,},
+	weapon_1 = { name = "wpn_tieadvanced_blaster", hitpoints = 1493.626, armor = 1474.14, rate = 0.7735398, drain = 0.9991081, maxDamage = 97.25191, shieldEfficiency = 0.5478529, minDamage = 71.98171, ammo = 0, ammo_type = 0, armorEfficiency = 0.5510976,},
+	weapon_2 = { name = "wpn_tieadvanced_blaster", hitpoints = 1448.541, armor = 1446.683, rate = 0.7797201, drain = 0.9696248, maxDamage = 97.38015, shieldEfficiency = 0.5496696, minDamage = 73.7812, ammo = 0, ammo_type = 0, armorEfficiency = 0.5366559,},
+	weapon_3 = { name = "wpn_tieadvanced_blaster", hitpoints = 1477.36, armor = 1462.887, rate = 0.7460926, drain = 0.9814803, maxDamage = 97.17272, shieldEfficiency = 0.5426858, minDamage = 74.22118, ammo = 0, ammo_type = 0, armorEfficiency = 0.5358465,},
+	weapon_4 = { name = "wpn_tieadvanced_blaster", hitpoints = 1488.316, armor = 1474.419, rate = 0.7625096, drain = 0.9759084, maxDamage = 96.5268, shieldEfficiency = 0.5371077, minDamage = 74.43044, ammo = 0, ammo_type = 0, armorEfficiency = 0.5568292,},
+	weapon_5 = { name = "wpn_tieadvanced_blaster", hitpoints = 1479.984, armor = 1468.199, rate = 0.7663631, drain = 0.9606003, maxDamage = 99.85787, shieldEfficiency = 0.5393257, minDamage = 71.94412, ammo = 0, ammo_type = 0, armorEfficiency = 0.5393692,},
 }
 
 ObjectTemplates:addTemplate(object_ship_imperial_gunboat_tier1, "object/ship/imperial_gunboat_tier1.iff")

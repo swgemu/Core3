@@ -1,0 +1,136 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.tangible.component.Component;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.ship.ShipObject;
+import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+include server.zone.objects.ship.ShipComponentData;
+class ShipComponent extends Component {
+
+    @weakReference
+    protected ShipObject ship;
+
+    protected float mass;
+    protected float hitpointsMax;
+    protected float armorMax;
+    protected float hitpoints;
+    protected float armor;
+    protected float energyCost;
+    protected float energyEfficiency;
+    protected float efficiency;
+    protected float collisionRange;
+    protected string componentDataName;
+    protected int flags;
+    protected int slot;
+
+    public ShipComponent() {
+        mass = 500.0f;
+        hitpoints = 100.0f;
+        armor = 100.0f;
+        energyCost = 100.0f;
+        flags = 0.0f;
+        slot = -1;
+        collisionRange = 0.0f;
+    }
+
+    @local
+    public native void updateComponentData(boolean notifyClient = false);
+
+    @local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+
+    public void setComponentDataName(final string name) {
+        componentDataName = name;
+    }
+
+    @dirty
+    public float getCollisionRange() {
+        return collisionRange;
+    }
+
+    public void setCollisionRange(float range) {
+        collisionRange = range;
+    }
+
+    @dirty
+    public string getComponentDataName() {
+        return componentDataName;
+    }
+
+	public void setMass(float value) {
+		mass = value;
+	}
+
+	public void setEnergyCost(float value) {
+	energyCost = value;
+	}
+
+	public void setEnergyEfficiency(float value) {
+	energyEfficiency = value;
+	}
+
+	public void setEfficiency(float value) {
+	efficiency = value;
+	}
+
+	public void setHitpointsMax(float value) {
+	hitpointsMax = value;
+	}
+
+	public void setArmorMax(float value) {
+	armorMax = value;
+	}
+
+	public void setArmor(float value) {
+	    armor = value;
+	}
+
+	public void setHitpoints(float value) {
+	    hitpoints = value;
+	}
+	public float getEfficiency() {
+	    return efficiency;
+	}
+
+	public float getEnergyEfficiency() {
+	    return efficiency;
+	}
+	public float getMass() {
+		return mass;
+	}
+
+	public float getMaxHitpoints() {
+		return hitpointsMax;
+	}
+	public float getHitpoints() {
+		return hitpoints;
+	}
+	public float getMaxArmor() {
+		return armorMax;
+	}
+
+	public float getArmor() {
+		return armor;
+	}
+
+	public float getEnergyCost() {
+		return energyCost;
+	}
+
+    @local
+    public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+    @local
+    @dirty
+    public abstract native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+    public abstract native void install(CreatureObject owner, ShipObject ship, int slot, boolean notifyClient);
+}

@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_sfs_imperial_standard = object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_standard:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 5056.0,
+	hitpoints = 438.0,
+	armor = 222.0,
+	energyUsage = 2689.0,
+	shieldFront = 581.0,
+	shieldRear = 576.0,
+	rechargeRate = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_sfs_imperial_standard, "object/tangible/ship/components/shield_generator/shd_sfs_imperial_standard.iff")

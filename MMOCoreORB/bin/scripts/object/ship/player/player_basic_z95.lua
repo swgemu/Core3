@@ -43,6 +43,18 @@
 
 object_ship_player_player_basic_z95 = object_ship_player_shared_player_basic_z95:new {
 
+	name = "player_basic_z95",
+	slideFactor = 1.95,
+	chassisHitpoints = 400,
+	chassisMass = 5000,
+	reactor = { name = "rct_z95_basic", hitpoints = 195.4478, armor = 95.32938,},
+	engine = { name = "eng_z95_basic", hitpoints = 191.5668, armor = 97.06787, speed = 41.88384, pitch = 46.81169, roll = 51.68658, yaw = 46.4142, acceleration = 13.31924, rollRate = 75.79074, pitchRate = 69.65774, deceleration = 12.221, yawRate = 71.19044,},
+	shield_0 = { name = "shd_z95_basic", hitpoints = 194.8245, armor = 97.74313, regen = 1.941474, front = 296.7128, back = 297.2658,},
+	armor_0 = { name = "armor_z95_basic", hitpoints = 244.803, armor = 241.0139,},
+	armor_1 = { name = "armor_z95_basic", hitpoints = 244.9245, armor = 245.6187,},
+	capacitor = { name = "cap_z95_basic", hitpoints = 191.4282, armor = 97.19357, rechargeRate = 19.43088, energy = 487.1414,},
+	droid_interface = { name = "ddi_z95_basic", hitpoints = 197.8011, armor = 96.56534,},
+	weapon_0 = { name = "wpn_z95_basic", hitpoints = 197.299, armor = 96.90126, rate = 0.3433608, drain = 16.95366, maxDamage = 402.8612, shieldEfficiency = 0, minDamage = 324.0421, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_basic_z95, "object/ship/player/player_basic_z95.iff")

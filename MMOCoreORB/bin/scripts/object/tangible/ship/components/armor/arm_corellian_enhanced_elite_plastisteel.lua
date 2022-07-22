@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_corellian_enhanced_elite_plastisteel = object_tangible_ship_components_armor_shared_arm_corellian_enhanced_elite_plastisteel:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 40655.0,
+	hitpoints = 1537.0,
+	armor = 1537.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_corellian_enhanced_elite_plastisteel, "object/tangible/ship/components/armor/arm_corellian_enhanced_elite_plastisteel.iff")

@@ -43,6 +43,18 @@
 
 object_ship_yt1300_tier3 = object_ship_shared_yt1300_tier3:new {
 
+	name = "yt1300_tier3",
+	slideFactor = 1.85,
+	chassisHitpoints = 2400,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 2090.954, armor = 2052.401,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 2091.144, armor = 2115.262, speed = 44.20745, pitch = 24.19577, roll = 30.13369, yaw = 19.29313, acceleration = 10.56992, rollRate = 53.276, pitchRate = 47.90217, deceleration = 9.202867, yawRate = 38.95155,},
+	shield_0 = { name = "shd_generic", hitpoints = 2154.436, armor = 2065.636, regen = 18.44824, front = 8258.109, back = 8429.642,},
+	armor_0 = { name = "arm_generic", hitpoints = 4392.858, armor = 4388.932,},
+	armor_1 = { name = "arm_generic", hitpoints = 4517.886, armor = 4483.257,},
+	capacitor = { name = "cap_generic", hitpoints = 2091.26, armor = 2117.334, rechargeRate = 99.03902, energy = 4841.878,},
+	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 2136.974, armor = 2122.331, rate = 0.7786305, drain = 0.9904791, maxDamage = 322.8206, shieldEfficiency = 0.5383444, minDamage = 218.1174, ammo = 0, ammo_type = 0, armorEfficiency = 0.5388076,},
+	weapon_1 = { name = "wpn_incom_blaster", hitpoints = 2082.176, armor = 2156.647, rate = 0.7514755, drain = 0.9693829, maxDamage = 318.5084, shieldEfficiency = 0.5508767, minDamage = 215.2661, ammo = 0, ammo_type = 0, armorEfficiency = 0.5534758,},
 }
 
 ObjectTemplates:addTemplate(object_ship_yt1300_tier3, "object/ship/yt1300_tier3.iff")

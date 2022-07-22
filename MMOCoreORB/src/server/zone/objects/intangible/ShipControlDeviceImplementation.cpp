@@ -49,7 +49,7 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool f
 
 	Locker clocker(controlledObject, player);
 
-	if (!controlledObject->isInQuadTree())
+	if (!controlledObject->isInOctTree())
 		return;
 
 	Zone* zone = player->getZone();
@@ -58,24 +58,22 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool f
 		return;
 
 	zone->transferObject(player, -1, false);
-	
+
 	controlledObject->destroyObjectFromWorld(true);
 
 	transferObject(controlledObject, 4, true);
-	
+
 	updateStatus(0);
 }
 
 void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	//ControlDeviceImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
 	if (!controlledObject->isInQuadTree()) {
 		menuResponse->addRadialMenuItem(60, 3, "Launch Ship"); //Launch
 	} else
-		menuResponse->addRadialMenuItem(61, 3, "Land Ship"); //Launch
-	//menuResponse->addRadialMenuItem(61, 3, "Launch Ship"); //Launch
+		menuResponse->addRadialMenuItem(61, 3, "Land Ship"); // TESTING
 }
 
 bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, CreatureObject* receiver, int numberInTrade) {

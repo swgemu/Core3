@@ -6,13 +6,13 @@
 #include "GarageDataComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
-void GarageZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void GarageZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, TreeEntry* entry) const {
 
 	ManagedReference<SceneObject*> obj = cast<SceneObject*>(entry);
 
 	if (obj == nullptr)
 		return;
-	
+
 	if (obj->isVehicleObject())
 	{
 		obj = obj->getSlottedObject("rider");
@@ -25,10 +25,10 @@ void GarageZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 		return;
 
 	CreatureObject* player = obj->asCreatureObject();
-	
+
 	if (player == nullptr)
 		return;
-	
+
 	GarageDataComponent* data = cast<GarageDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
 	if (data == nullptr)
@@ -58,7 +58,7 @@ void GarageZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 	}
 }
 
-void GarageZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void GarageZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const {
 	StructureZoneComponent::notifyDissapear(sceneObject, entry);
 
 	ManagedReference<SceneObject*> obj = cast<SceneObject*>(entry);
@@ -78,7 +78,7 @@ void GarageZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntr
 		return;
 
 	CreatureObject* player = obj->asCreatureObject();
-	
+
 	if (player == nullptr)
 		return;
 

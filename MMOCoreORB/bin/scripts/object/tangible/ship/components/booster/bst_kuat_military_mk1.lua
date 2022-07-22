@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_kuat_military_mk1 = object_tangible_ship_components_booster_shared_bst_kuat_military_mk1:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 803.0,
+	hitpoints = 160.0,
+	armor = 83.0,
+	energyUsage = 509.0,
+	speed = 25.0,
+	maxEnergy = 1002.0,
+	rechargeRate = 30.0,
+	boosterDrain = 104.0,
+	boosterAccel = 24.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_kuat_military_mk1, "object/tangible/ship/components/booster/bst_kuat_military_mk1.iff")

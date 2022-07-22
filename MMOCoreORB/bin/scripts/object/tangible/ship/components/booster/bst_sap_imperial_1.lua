@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_sap_imperial_1 = object_tangible_ship_components_booster_shared_bst_sap_imperial_1:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1402.0,
+	hitpoints = 228.0,
+	armor = 115.0,
+	energyUsage = 501.0,
+	speed = 32.0,
+	maxEnergy = 1506.0,
+	rechargeRate = 39.0,
+	boosterDrain = 158.0,
+	boosterAccel = 32.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_sap_imperial_1, "object/tangible/ship/components/booster/bst_sap_imperial_1.iff")

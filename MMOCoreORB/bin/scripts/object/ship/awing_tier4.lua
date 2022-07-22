@@ -43,6 +43,17 @@
 
 object_ship_awing_tier4 = object_ship_shared_awing_tier4:new {
 
+	name = "awing_tier4",
+	slideFactor = 1.62,
+	chassisHitpoints = 1728,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 1865.39, armor = 1858.281,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 1817.45, armor = 1779.09, speed = 50.22786, pitch = 24.22741, roll = 30.23187, yaw = 19.22723, acceleration = 11.65444, rollRate = 55.54942, pitchRate = 49.3686, deceleration = 9.061271, yawRate = 40.10781,},
+	shield_0 = { name = "shd_generic", hitpoints = 1815.266, armor = 1851.839, regen = 14.63671, front = 7129.199, back = 7459.819,},
+	armor_0 = { name = "arm_generic", hitpoints = 3979.71, armor = 3955.833,},
+	armor_1 = { name = "arm_generic", hitpoints = 3968.089, armor = 3934.492,},
+	capacitor = { name = "cap_generic", hitpoints = 1791.506, armor = 1790.958, rechargeRate = 96.55721, energy = 4897.22,},
+	weapon_0 = { name = "wpn_awing_blaster", hitpoints = 1811.481, armor = 1865.079, rate = 0.7757519, drain = 0.9646059, maxDamage = 250.7197, shieldEfficiency = 0.5387068, minDamage = 161.7296, ammo = 0, ammo_type = 0, armorEfficiency = 0.554134,},
 }
 
 ObjectTemplates:addTemplate(object_ship_awing_tier4, "object/ship/awing_tier4.iff")
