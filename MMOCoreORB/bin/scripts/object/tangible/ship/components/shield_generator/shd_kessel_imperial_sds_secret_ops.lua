@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_kessel_imperial_sds_secret_ops = object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sds_secret_ops:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 77550.0,
+	hitpoints = 1521.0,
+	armor = 763.0,
+	energyUsage = 3056.0,
+	shieldFront = 1956.0,
+	shieldRear = 1952.0,
+	rechargeRate = 21.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_kessel_imperial_sds_secret_ops, "object/tangible/ship/components/shield_generator/shd_kessel_imperial_sds_secret_ops.iff")

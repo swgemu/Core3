@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_incom_techscreen_elite = object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 72384.0,
+	hitpoints = 1380.0,
+	armor = 696.0,
+	energyUsage = 3066.0,
+	shieldFront = 1836.0,
+	shieldRear = 1838.0,
+	rechargeRate = 16.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_incom_techscreen_elite, "object/tangible/ship/components/shield_generator/shd_incom_techscreen_elite.iff")

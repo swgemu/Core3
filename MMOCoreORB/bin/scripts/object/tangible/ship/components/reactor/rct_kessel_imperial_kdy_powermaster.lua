@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_kessel_imperial_kdy_powermaster = object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermaster:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 51486.0,
+	hitpoints = 1328.0,
+	armor = 666.0,
+	energyUsage = 9.0,
+	maxEnergy = 27260.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_kessel_imperial_kdy_powermaster, "object/tangible/ship/components/reactor/rct_kessel_imperial_kdy_powermaster.iff")

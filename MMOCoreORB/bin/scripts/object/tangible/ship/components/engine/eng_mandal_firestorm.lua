@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_mandal_firestorm = object_tangible_ship_components_engine_shared_eng_mandal_firestorm:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 16148.0,
+	hitpoints = 935.0,
+	armor = 473.0,
+	energyUsage = 1729.0,
+	speed = 63.0,
+	pitch = 54.0,
+	yaw = 59.0,
+	roll = 59.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_mandal_firestorm, "object/tangible/ship/components/engine/eng_mandal_firestorm.iff")

@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_rendili_fr9_disruptor = object_tangible_ship_components_weapon_shared_wpn_rendili_fr9_disruptor:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4596.0,
+	hitpoints = 437.0,
+	armor = 220.0,
+	energyUsage = 2104.0,
+	minDamage = 770.0,
+	maxDamage = 1079.0,
+	refireRate = 4.0,
+	energyPerShot = 34.0,
+	shieldEffectiveness = 4.0,
+	armorEffectiveness = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_rendili_fr9_disruptor, "object/tangible/ship/components/weapon/wpn_rendili_fr9_disruptor.iff")

@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_kessel_imperial_sds_unknown_prototype = object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sds_unknown_prototype:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 23503.0,
+	hitpoints = 1659.0,
+	armor = 829.0,
+	energyUsage = 507.0,
+	droidSpeed = 13.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_kessel_imperial_sds_unknown_prototype, "object/tangible/ship/components/droid_interface/ddi_kessel_imperial_sds_unknown_prototype.iff")

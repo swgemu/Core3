@@ -138,7 +138,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		SortedVector<QuadTreeEntry*> closeObjects;
+		SortedVector<TreeEntry*> closeObjects;
 		vec->safeCopyTo(closeObjects);
 
 		for (int i = 0; i < closeObjects.size(); ++i) {

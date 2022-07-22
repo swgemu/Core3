@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_corellian_ag2g_quad_laser = object_tangible_ship_components_weapon_shared_wpn_corellian_ag2g_quad_laser:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 56401.0,
+	hitpoints = 1384.0,
+	armor = 697.0,
+	energyUsage = 2200.0,
+	minDamage = 2231.0,
+	maxDamage = 3617.0,
+	refireRate = 2.0,
+	energyPerShot = 39.0,
+	shieldEffectiveness = 1.0,
+	armorEffectiveness = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_corellian_ag2g_quad_laser, "object/tangible/ship/components/weapon/wpn_corellian_ag2g_quad_laser.iff")

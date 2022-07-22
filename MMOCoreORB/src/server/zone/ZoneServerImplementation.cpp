@@ -8,6 +8,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/SpaceZone.h"
+
 #include "server/db/ServerDatabase.h"
 
 #include "conf/ConfigManager.h"
@@ -39,6 +41,7 @@
 #include "ZonePacketHandler.h"
 #include "ZoneHandler.h"
 
+#include "SpaceZoneLoadManagersTask.h"
 #include "ZoneLoadManagersTask.h"
 #include "ShutdownTask.h"
 
@@ -48,7 +51,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	configManager = config;
 
 	galaxyID = config->getZoneGalaxyID();
-	galaxyName = "Core3";
+	galaxyName = "JTL";
 
 	processor = nullptr;
 
@@ -127,6 +130,7 @@ void ZoneServerImplementation::initialize() {
 	processor->initialize();
 
 	zones = new VectorMap<String, ManagedReference<Zone*> >();
+	spaceZones = new VectorMap<String, ManagedReference<SpaceZone*> >();
 
 	objectManager = ObjectManager::instance();
 	objectManager->setZoneProcessor(processor);
@@ -185,6 +189,7 @@ void ZoneServerImplementation::initialize() {
 	petManager->initialize();
 
 	startZones();
+	startSpaceZones();
 
 	startManagers();
 
@@ -227,6 +232,45 @@ void ZoneServerImplementation::startZones() {
 
 	for (int i = 0; i < zones->size(); ++i) {
 		Zone* zone = zones->get(i);
+
+		if (zone != nullptr) {
+			while (!zone->hasManagersStarted())
+				Thread::sleep(500);
+		}
+	}
+}
+
+void ZoneServerImplementation::startSpaceZones() {
+	info ("Starting Space Zones..", true);
+
+	auto enabledSpaceZones = configManager->getEnabledSpaceZones();
+
+	for (int i = 0; i < enabledSpaceZones.size(); ++i) {
+		String spaceZoneName = enabledSpaceZones.get(i);
+
+		info("Loading Space Zone " + spaceZoneName + ".");
+
+		SpaceZone* zone = new SpaceZone(processor, spaceZoneName);
+		zone->setZoneName(spaceZoneName);
+			//info("Setting zone name: " + spaceZoneName);
+		zone->createContainerComponent();
+
+		zone->initializePrivateData();
+		zone->deploy("Zone " + spaceZoneName);
+
+		spaceZones->put(spaceZoneName, zone);
+	}
+
+	for (int i = 0; i < spaceZones->size(); ++i) {
+		SpaceZone* zone = spaceZones->get(i);
+		if (zone != nullptr) {
+			SpaceZoneLoadManagersTask* task = new SpaceZoneLoadManagersTask(_this.getReferenceUnsafeStaticCast(), zone);
+			task->execute();
+		}
+	}
+
+	for (int i = 0; i < spaceZones->size(); ++i) {
+		SpaceZone* zone = spaceZones->get(i);
 
 		if (zone != nullptr) {
 			while (!zone->hasManagersStarted())
@@ -404,7 +448,7 @@ void ZoneServerImplementation::stopManagers() {
 
 void ZoneServerImplementation::clearZones() {
 	info("clearing all zones..", true);
-
+	// Clear Ground Zones
 	for (int i = 0; i < zones->size(); ++i) {
 		ManagedReference<Zone*> zone = zones->get(i);
 
@@ -424,7 +468,32 @@ void ZoneServerImplementation::clearZones() {
 		}
 	}
 
-	info("all zones clear", true);
+	info("Ground zones cleared...", true);
+
+	//Clear Space Zones
+
+	for (int i = 0; i < spaceZones->size(); ++i) {
+		ManagedReference<SpaceZone*> szone = spaceZones->get(i);
+
+		if (szone != nullptr) {
+			Core::getTaskManager()->executeTask([=] () {
+				szone->clearZone();
+			}, "ClearZoneLambda");
+		}
+	}
+
+	for (int i = 0; i < spaceZones->size(); ++i) {
+		SpaceZone* szone = spaceZones->get(i);
+
+		if (szone != nullptr) {
+			while (!szone->isZoneCleared())
+				Thread::sleep(500);
+		}
+	}
+
+	info("Space zones cleared...", true);
+
+	info("All zones clear", true);
 }
 
 ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {

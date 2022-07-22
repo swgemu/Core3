@@ -43,6 +43,17 @@
 
 object_ship_tieinterceptor_tier1 = object_ship_shared_tieinterceptor_tier1:new {
 
+	name = "tieinterceptor_tier1",
+	slideFactor = 1.64,
+	chassisHitpoints = 240,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 145.0486, armor = 145.1537,},
+	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 149.0014, armor = 144.1081, speed = 49.6269, pitch = 21.99977, roll = 27.94775, yaw = 17.88688, acceleration = 11.12594, rollRate = 49.54115, pitchRate = 46.01398, deceleration = 8.294804, yawRate = 37.75788,},
+	shield_0 = { name = "shd_generic", hitpoints = 148.0725, armor = 146.4354, regen = 2.493789, front = 508.5944, back = 498.9008,},
+	armor_0 = { name = "arm_generic", hitpoints = 308.1021, armor = 319.3904,},
+	armor_1 = { name = "arm_generic", hitpoints = 314.58, armor = 314.3841,},
+	capacitor = { name = "cap_generic", hitpoints = 149.0734, armor = 146.9709, rechargeRate = 99.9427, energy = 4758.062,},
+	weapon_0 = { name = "wpn_tieadvanced_blaster", hitpoints = 145.2646, armor = 144.3096, rate = 0.751349, drain = 0.9944501, maxDamage = 39.22985, shieldEfficiency = 0.5340895, minDamage = 29.18281, ammo = 0, ammo_type = 0, armorEfficiency = 0.5382541,},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieinterceptor_tier1, "object/ship/tieinterceptor_tier1.iff")

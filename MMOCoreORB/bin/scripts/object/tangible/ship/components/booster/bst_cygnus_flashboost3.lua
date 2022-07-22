@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_cygnus_flashboost3 = object_tangible_ship_components_booster_shared_bst_cygnus_flashboost3:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1408.0,
+	hitpoints = 232.0,
+	armor = 119.0,
+	energyUsage = 502.0,
+	speed = 24.0,
+	maxEnergy = 1504.0,
+	rechargeRate = 41.0,
+	boosterDrain = 158.0,
+	boosterAccel = 32.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_cygnus_flashboost3, "object/tangible/ship/components/booster/bst_cygnus_flashboost3.iff")

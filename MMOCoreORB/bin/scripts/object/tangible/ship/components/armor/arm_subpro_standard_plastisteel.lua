@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_subpro_standard_plastisteel = object_tangible_ship_components_armor_shared_arm_subpro_standard_plastisteel:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3946.0,
+	hitpoints = 477.0,
+	armor = 484.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_subpro_standard_plastisteel, "object/tangible/ship/components/armor/arm_subpro_standard_plastisteel.iff")

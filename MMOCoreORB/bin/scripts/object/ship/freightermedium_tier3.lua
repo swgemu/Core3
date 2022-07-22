@@ -43,6 +43,16 @@
 
 object_ship_freightermedium_tier3 = object_ship_shared_freightermedium_tier3:new {
 
+	name = "freightermedium_tier3",
+	slideFactor = 1.87,
+	chassisHitpoints = 2400,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 2137.504, armor = 2072.528,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 2119.626, armor = 2154.599, speed = 43.44228, pitch = 23.34284, roll = 30.24805, yaw = 19.04215, acceleration = 10.49199, rollRate = 53.40024, pitchRate = 46.78446, deceleration = 9.222301, yawRate = 40.04214,},
+	shield_0 = { name = "shd_generic", hitpoints = 2109.113, armor = 2145.308, regen = 11.48495, front = 16971.12, back = 16919.22,},
+	armor_0 = { name = "arm_generic", hitpoints = 9023.489, armor = 8960.555,},
+	armor_1 = { name = "arm_generic", hitpoints = 8759.734, armor = 8921.938,},
+	capacitor = { name = "cap_generic", hitpoints = 2110.199, armor = 2054.25, rechargeRate = 95.67603, energy = 4779.484,},
 }
 
 ObjectTemplates:addTemplate(object_ship_freightermedium_tier3, "object/ship/freightermedium_tier3.iff")

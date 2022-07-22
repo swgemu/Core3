@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_incom_elite_quad_blaster = object_tangible_ship_components_weapon_shared_wpn_incom_elite_quad_blaster:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 56402.0,
+	hitpoints = 1384.0,
+	armor = 697.0,
+	energyUsage = 2407.0,
+	minDamage = 2481.0,
+	maxDamage = 4020.0,
+	refireRate = 6.0,
+	energyPerShot = 43.0,
+	shieldEffectiveness = 10.0,
+	armorEffectiveness = 4.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_incom_elite_quad_blaster, "object/tangible/ship/components/weapon/wpn_incom_elite_quad_blaster.iff")

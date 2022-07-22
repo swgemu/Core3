@@ -43,6 +43,19 @@
 
 object_ship_decimator_tier1 = object_ship_shared_decimator_tier1:new {
 
+	name = "decimator_tier1",
+	slideFactor = 1.69,
+	chassisHitpoints = 480,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 293.5404, armor = 287.8472,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 288.4495, armor = 286.0468, speed = 41.78825, pitch = 22.95482, roll = 28.57805, yaw = 18.06454, acceleration = 9.830862, rollRate = 49.67852, pitchRate = 44.8877, deceleration = 8.309277, yawRate = 38.29203,},
+	shield_0 = { name = "shd_generic", hitpoints = 285.6295, armor = 290.0041, regen = 5.949239, front = 1196.092, back = 1159.598,},
+	armor_0 = { name = "arm_generic", hitpoints = 615.5135, armor = 616.041,},
+	armor_1 = { name = "arm_generic", hitpoints = 617.7331, armor = 608.2418,},
+	capacitor = { name = "cap_generic", hitpoints = 299.8088, armor = 296.999, rechargeRate = 95.34566, energy = 4878.504,},
+	weapon_0 = { name = "wpn_tieadvanced_blaster", hitpoints = 298.616, armor = 289.3673, rate = 0.7578185, drain = 0.9955444, maxDamage = 77.61373, shieldEfficiency = 0.5460684, minDamage = 57.92361, ammo = 0, ammo_type = 0, armorEfficiency = 0.5484538,},
+	weapon_1 = { name = "wpn_tieadvanced_blaster", hitpoints = 291.0769, armor = 299.8797, rate = 0.7480574, drain = 0.9693886, maxDamage = 77.65221, shieldEfficiency = 0.5370379, minDamage = 57.85472, ammo = 0, ammo_type = 0, armorEfficiency = 0.5320773,},
+	weapon_2 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 290.965, armor = 293.9679, rate = 2.881977, drain = 0.9946571, maxDamage = 235.25, shieldEfficiency = 0.7207777, minDamage = 114.2198, ammo = 5, ammo_type = 16, armorEfficiency = 0.7490097,},
 }
 
 ObjectTemplates:addTemplate(object_ship_decimator_tier1, "object/ship/decimator_tier1.iff")

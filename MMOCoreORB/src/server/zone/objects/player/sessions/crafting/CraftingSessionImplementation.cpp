@@ -486,7 +486,7 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 
 	Locker locker(tano);
 
-	if (tano->getRootParent() == NULL) {
+	if (tano->getRootParent() == nullptr) {
 		sendSlotMessage(clientCounter, IngredientSlot::INVALIDINGREDIENT);
 		return;
 	}

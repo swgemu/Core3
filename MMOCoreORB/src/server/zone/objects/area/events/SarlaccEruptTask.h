@@ -26,7 +26,7 @@ public:
 
 		Zone* zone = sarlaccArea->getZone();
 
-		Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+		Reference<SortedVector<ManagedReference<TreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<TreeEntry*> >();
 		zone->getInRangeObjects(sarlaccArea->getWorldPositionX(), sarlaccArea->getWorldPositionY(), 60, closeObjects, true);
 
 		for (int i = 0; i < closeObjects->size(); ++i) {

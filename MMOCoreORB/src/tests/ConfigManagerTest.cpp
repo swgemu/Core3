@@ -51,7 +51,7 @@ TEST_F(ConfigManagerTest, Int16Test) {
 	const uint16& dbPort = configManager->getDBPort();
 	ASSERT_EQ(dbPort, 3306);
 }
-
+// Add EnabledSpaceZones
 TEST_F(ConfigManagerTest, EnabledZones) {
 	auto enabledZones = configManager->getEnabledZones();
 	ASSERT_TRUE(enabledZones.size() != 0);

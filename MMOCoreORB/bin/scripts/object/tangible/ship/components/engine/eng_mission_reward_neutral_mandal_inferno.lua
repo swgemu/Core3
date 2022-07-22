@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_mission_reward_neutral_mandal_inferno = object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_inferno:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 13774.0,
+	hitpoints = 1112.0,
+	armor = 562.0,
+	energyUsage = 2104.0,
+	speed = 79.0,
+	pitch = 65.0,
+	yaw = 67.0,
+	roll = 69.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_mission_reward_neutral_mandal_inferno, "object/tangible/ship/components/engine/eng_mission_reward_neutral_mandal_inferno.iff")

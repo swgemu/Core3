@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_corellian_tuned_heavy_thrust_enhancer = object_tangible_ship_components_booster_shared_bst_corellian_tuned_heavy_thrust_enhancer:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 9617.0,
+	hitpoints = 959.0,
+	armor = 483.0,
+	energyUsage = 556.0,
+	speed = 35.0,
+	maxEnergy = 1815.0,
+	rechargeRate = 46.0,
+	boosterDrain = 183.0,
+	boosterAccel = 40.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_corellian_tuned_heavy_thrust_enhancer, "object/tangible/ship/components/booster/bst_corellian_tuned_heavy_thrust_enhancer.iff")

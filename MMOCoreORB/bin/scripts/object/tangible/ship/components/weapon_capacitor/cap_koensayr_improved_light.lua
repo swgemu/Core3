@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_koensayr_improved_light = object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_improved_light:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2751.0,
+	hitpoints = 368.0,
+	armor = 187.0,
+	energyUsage = 1104.0,
+	rechargeRate = 28.0,
+	rechargeRateMod = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_koensayr_improved_light, "object/tangible/ship/components/weapon_capacitor/cap_koensayr_improved_light.iff")

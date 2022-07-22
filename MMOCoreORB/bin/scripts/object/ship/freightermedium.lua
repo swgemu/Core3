@@ -43,6 +43,17 @@
 
 object_ship_freightermedium = object_ship_shared_freightermedium:new {
 
+	name = "freightermedium",
+	slideFactor = 2,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 96.48953, armor = 99.59495,},
+	engine = { name = "eng_generic", hitpoints = 97.34251, armor = 95.45883, speed = 15.46101, pitch = 15.28065, roll = 15.71315, yaw = 15.80318, acceleration = 25.47562, rollRate = 21.65451, pitchRate = 21.32055, deceleration = 22.05575, yawRate = 21.03679,},
+	shield_0 = { name = "shd_generic", hitpoints = 192.3368, armor = 194.2559, regen = 4.926056, front = 398.8176, back = 677.7628,},
+	armor_0 = { name = "arm_generic", hitpoints = 596.9176, armor = 574.3787,},
+	armor_1 = { name = "arm_generic", hitpoints = 573.0746, armor = 584.9464,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.49744, energy = 831.6958,},
+	weapon_0 = { name = "wpn_generic", hitpoints = 194.0252, armor = 191.2548, rate = 0.3231426, drain = 15.58567, maxDamage = 505.5446, shieldEfficiency = 0, minDamage = 287.7425, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_freightermedium, "object/ship/freightermedium.iff")

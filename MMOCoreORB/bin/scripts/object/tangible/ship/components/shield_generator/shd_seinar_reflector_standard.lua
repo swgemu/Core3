@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_seinar_reflector_standard = object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_standard:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 3310.0,
+	hitpoints = 353.0,
+	armor = 179.0,
+	energyUsage = 2688.0,
+	shieldFront = 466.0,
+	shieldRear = 464.0,
+	rechargeRate = 13.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_seinar_reflector_standard, "object/tangible/ship/components/shield_generator/shd_seinar_reflector_standard.iff")

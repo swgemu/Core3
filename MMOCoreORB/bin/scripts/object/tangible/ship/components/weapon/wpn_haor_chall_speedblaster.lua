@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_haor_chall_speedblaster = object_tangible_ship_components_weapon_shared_wpn_haor_chall_speedblaster:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2632.0,
+	hitpoints = 350.0,
+	armor = 173.0,
+	energyUsage = 2110.0,
+	minDamage = 617.0,
+	maxDamage = 866.0,
+	refireRate = 2.0,
+	energyPerShot = 25.0,
+	shieldEffectiveness = 9.0,
+	armorEffectiveness = 3.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_haor_chall_speedblaster, "object/tangible/ship/components/weapon/wpn_haor_chall_speedblaster.iff")

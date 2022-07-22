@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_mission_reward_neutral_koensayr_ds23 = object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_koensayr_ds23:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 6263.0,
+	hitpoints = 524.0,
+	armor = 269.0,
+	energyUsage = 2682.0,
+	shieldFront = 905.0,
+	shieldRear = 902.0,
+	rechargeRate = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_mission_reward_neutral_koensayr_ds23, "object/tangible/ship/components/shield_generator/shd_mission_reward_neutral_koensayr_ds23.iff")

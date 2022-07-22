@@ -80,6 +80,7 @@ protected:
 	AtomicReference<AppearanceTemplate*> appearanceTemplate;
 	AtomicBoolean loadedPortalLayout, loadedAppearanceTemplate;
 	String zoneComponent, attributeListComponent;
+	String spaceZoneComponent;
 	String containerComponent;
 	String objectMenuComponent;
 
@@ -398,6 +399,10 @@ public:
 
 	inline const String& getZoneComponent() const {
 		return zoneComponent;
+	}
+
+	inline const String& getSpaceZoneComponent() const {
+		return spaceZoneComponent;
 	}
 
 	inline const String& getObjectMenuComponent() const {

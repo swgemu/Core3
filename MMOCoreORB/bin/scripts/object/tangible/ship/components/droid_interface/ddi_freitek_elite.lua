@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_freitek_elite = object_tangible_ship_components_droid_interface_shared_ddi_freitek_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 23504.0,
+	hitpoints = 1656.0,
+	armor = 833.0,
+	energyUsage = 501.0,
+	droidSpeed = 14.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_freitek_elite, "object/tangible/ship/components/droid_interface/ddi_freitek_elite.iff")

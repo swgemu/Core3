@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_kessel_imperial_cygnus_dp44 = object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_cygnus_dp44:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 19502.0,
+	hitpoints = 1101.0,
+	armor = 555.0,
+	energyUsage = 508.0,
+	droidSpeed = 14.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_kessel_imperial_cygnus_dp44, "object/tangible/ship/components/droid_interface/ddi_kessel_imperial_cygnus_dp44.iff")

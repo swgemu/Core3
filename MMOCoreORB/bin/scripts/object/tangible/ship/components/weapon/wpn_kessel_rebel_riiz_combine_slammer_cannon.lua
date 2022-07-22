@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_kessel_rebel_riiz_combine_slammer_cannon = object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_riiz_combine_slammer_cannon:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 46810.0,
+	hitpoints = 1110.0,
+	armor = 554.0,
+	energyUsage = 2402.0,
+	minDamage = 1989.0,
+	maxDamage = 3219.0,
+	refireRate = 1.0,
+	energyPerShot = 31.0,
+	shieldEffectiveness = 3.0,
+	armorEffectiveness = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_kessel_rebel_riiz_combine_slammer_cannon, "object/tangible/ship/components/weapon/wpn_kessel_rebel_riiz_combine_slammer_cannon.iff")

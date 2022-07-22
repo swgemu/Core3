@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_mission_reward_rebel_novaldex_low_latency = object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_novaldex_low_latency:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 16381.0,
+	hitpoints = 1689.0,
+	armor = 848.0,
+	energyUsage = 606.0,
+	droidSpeed = 20.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_mission_reward_rebel_novaldex_low_latency, "object/tangible/ship/components/droid_interface/ddi_mission_reward_rebel_novaldex_low_latency.iff")

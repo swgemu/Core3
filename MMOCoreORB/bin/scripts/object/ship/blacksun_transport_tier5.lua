@@ -43,6 +43,16 @@
 
 object_ship_blacksun_transport_tier5 = object_ship_shared_blacksun_transport_tier5:new {
 
+	name = "blacksun_transport_tier5",
+	slideFactor = 1.83,
+	chassisHitpoints = 4915.2,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 6056.049, armor = 6055.759,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 6278.898, armor = 6182.442, speed = 46.25061, pitch = 25.24295, roll = 31.16173, yaw = 20.50418, acceleration = 10.94334, rollRate = 56.90259, pitchRate = 50.54977, deceleration = 9.480227, yawRate = 42.14759,},
+	shield_0 = { name = "shd_generic", hitpoints = 6279.458, armor = 6355.366, regen = 22.77335, front = 37247.15, back = 37735.27,},
+	armor_0 = { name = "arm_generic", hitpoints = 20328.66, armor = 19474.75,},
+	armor_1 = { name = "arm_generic", hitpoints = 19472.76, armor = 19592.8,},
+	capacitor = { name = "cap_generic", hitpoints = 6267.797, armor = 6245.303, rechargeRate = 96.19553, energy = 4918.252,},
 }
 
 ObjectTemplates:addTemplate(object_ship_blacksun_transport_tier5, "object/ship/blacksun_transport_tier5.iff")

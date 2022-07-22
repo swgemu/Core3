@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_haor_chall_old_engine = object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 998.0,
+	hitpoints = 123.0,
+	armor = 67.0,
+	energyUsage = 1206.0,
+	speed = 51.0,
+	pitch = 47.0,
+	yaw = 50.0,
+	roll = 55.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_haor_chall_old_engine, "object/tangible/ship/components/engine/eng_haor_chall_old_engine.iff")

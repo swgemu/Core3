@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_armek_military_grade_mk2 = object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_mk2:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 1256.0,
+	hitpoints = 352.0,
+	armor = 176.0,
+	energyUsage = 509.0,
+	droidSpeed = 38.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_armek_military_grade_mk2, "object/tangible/ship/components/droid_interface/ddi_armek_military_grade_mk2.iff")

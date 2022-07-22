@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_seinar_ion_cannon = object_tangible_ship_components_weapon_shared_wpn_seinar_ion_cannon:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1756.0,
+	hitpoints = 197.0,
+	armor = 96.0,
+	energyUsage = 2203.0,
+	minDamage = 379.0,
+	maxDamage = 509.0,
+	refireRate = 2.0,
+	energyPerShot = 26.0,
+	shieldEffectiveness = 8.0,
+	armorEffectiveness = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_seinar_ion_cannon, "object/tangible/ship/components/weapon/wpn_seinar_ion_cannon.iff")

@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_mandal_heavy_annihilator = object_tangible_ship_components_weapon_shared_wpn_mandal_heavy_annihilator:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 31395.0,
+	hitpoints = 1169.0,
+	armor = 589.0,
+	energyUsage = 2307.0,
+	minDamage = 1996.0,
+	maxDamage = 3083.0,
+	refireRate = 5.0,
+	energyPerShot = 40.0,
+	shieldEffectiveness = 6.0,
+	armorEffectiveness = 6.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mandal_heavy_annihilator, "object/tangible/ship/components/weapon/wpn_mandal_heavy_annihilator.iff")

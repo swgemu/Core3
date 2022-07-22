@@ -42,7 +42,7 @@
 
 
 object_ship_base_ship_base = object_ship_base_shared_ship_base:new {
-
+    name = "ship_base"
 }
 
 ObjectTemplates:addTemplate(object_ship_base_ship_base, "object/ship/base/ship_base.iff")

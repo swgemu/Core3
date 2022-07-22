@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_seinar_gx7 = object_tangible_ship_components_shield_generator_shared_shd_seinar_gx7:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 1159.0,
+	hitpoints = 147.0,
+	armor = 81.0,
+	energyUsage = 2558.0,
+	shieldFront = 205.0,
+	shieldRear = 201.0,
+	rechargeRate = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_seinar_gx7, "object/tangible/ship/components/shield_generator/shd_seinar_gx7.iff")

@@ -3,8 +3,8 @@
  Distribution of this file for usage outside of Core3 is prohibited.
  */
 
-#ifndef ZONEQUADTREENODE_H_
-#define ZONEQUADTREENODE_H_
+#ifndef ZONETreeNode_H_
+#define ZONETreeNode_H_
 
 /*
  Quad tree interface
@@ -44,37 +44,41 @@
 namespace server {
 namespace zone {
 
+class TreeEntry;
+class TreeEntryImplementation;
+class OctTree;
 class QuadTree;
-class QuadTreeEntry;
-class QuadTreeEntryImplementation;
 
-class QuadTreeNode: public Object {
-	SortedVector<Reference<QuadTreeEntry*> > objects;
+class TreeNode: public Object {
+	SortedVector<Reference<TreeEntry*> > objects;
 
-	WeakReference<QuadTreeNode*> parentNode;
-	Reference<QuadTreeNode*> nwNode;
-	Reference<QuadTreeNode*> neNode;
-	Reference<QuadTreeNode*> swNode;
-	Reference<QuadTreeNode*> seNode;
+	WeakReference<TreeNode*> parentNode;
+	Reference<TreeNode*> nwNode;
+	Reference<TreeNode*> neNode;
+	Reference<TreeNode*> swNode;
+	Reference<TreeNode*> seNode;
+	Reference<TreeNode*> nwNode2;
+	Reference<TreeNode*> neNode2;
+	Reference<TreeNode*> swNode2;
+	Reference<TreeNode*> seNode2;
 
-	float minX, minY;
-	float maxX, maxY;
+	float minX, minY, minZ;
+	float maxX, maxY, maxZ;
 
-	float dividerX, dividerY;
+	float dividerX, dividerY, dividerZ;
 
 public:
-	QuadTreeNode();
-	QuadTreeNode(float minx, float miny, float maxx, float maxy,
-			QuadTreeNode *parent);
-
-	~QuadTreeNode();
+	TreeNode();
+	TreeNode(float minx, float miny, float minz, float maxx, float maxy, float maxz, TreeNode *parent);
+	TreeNode(float minx, float miny, float maxx, float maxy, TreeNode *parent);
+	~TreeNode();
 
 	Object* clone() {
-		return ObjectCloner<QuadTreeNode>::clone(this);
+		return ObjectCloner<TreeNode>::clone(this);
 	}
 
 	Object* clone(void* object) {
-		return TransactionalObjectCloner<QuadTreeNode>::clone(this);
+		return TransactionalObjectCloner<TreeNode>::clone(this);
 	}
 
 	void free() {
@@ -82,29 +86,40 @@ public:
 	}
 
 	// Add a object to this node
-	void addObject(QuadTreeEntry *obj);
+	void addObject(TreeEntry *obj);
 
-	QuadTreeEntry* getObject(int index) {
+	TreeEntry* getObject(int index) {
 		return objects.get(index);
 	}
 
 	// Remove a object by GUID
-	void removeObject(QuadTreeEntry *obj);
+	void removeObject(TreeEntry *obj);
 
 	void removeObject(int index);
 
 	// Approximative test if a circle with center in x,y and
 	// given radius crosses this node.
+	bool testInRange(float x, float y, float z, float range) const;
+
 	bool testInRange(float x, float y, float range) const;
 
 	// Check if this node makes any sense to exist
 	void check();
 
 	bool validateNode() const {
-		if (minX > maxX || minY > maxY/* || objects.size() > 1000*/)
+		if (dividerZ != 0) {
+			if (minX > maxX || minY > maxY || minZ > maxZ) {
+				return false;
+			}
+		} else if (minX > maxX || minY > maxY) {
 			return false;
-		else
-			return true;
+		}
+
+		return true;
+	}
+
+	bool isTreeNode() {
+		return true;
 	}
 
 	// Check if this node has any associated objects
@@ -115,25 +130,30 @@ public:
 	// Check if this node has children nodes
 	inline bool hasSubNodes() const {
 		return nwNode != nullptr || neNode != nullptr || swNode != nullptr || seNode
-				!= nullptr;
+				!= nullptr || nwNode2 != nullptr || neNode2 != nullptr || swNode2 != nullptr || seNode2 != nullptr;
 	}
 
 	// Test if the point is inside this node
+	inline bool testInside(float x, float y, float z) const {
+		return x >= minX && x < maxX && y >= minY && y < maxY && z >= minZ && z < maxZ;
+	}
+
 	inline bool testInside(float x, float y) const {
 		return x >= minX && x < maxX && y >= minY && y < maxY;
 	}
 
 	// Test if the object is inside this node
-	bool testInside(QuadTreeEntry* obj) const;
+	bool testInside(TreeEntry* obj) const;
 
-	String toStringData() const;
+	String toStringData();
 
+	friend class server::zone::TreeEntryImplementation;
+	friend class server::zone::OctTree;
 	friend class server::zone::QuadTree;
-	friend class server::zone::QuadTreeEntryImplementation;
 };
 
 } // namespace server
 } // namespace zone
 
 
-#endif /*QUADTREENODE_H_*/
+#endif /*TREENODE_H_*/

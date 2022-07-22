@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_mandal_tuned_powermaster_mk2 = object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_tuned_powermaster_mk2:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 4601.0,
+	hitpoints = 527.0,
+	armor = 259.0,
+	energyUsage = 1056.0,
+	rechargeRate = 39.0,
+	rechargeRateMod = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_mandal_tuned_powermaster_mk2, "object/tangible/ship/components/weapon_capacitor/cap_mandal_tuned_powermaster_mk2.iff")

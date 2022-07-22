@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_koensayr_racer_mk3 = object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk3:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 37444.0,
+	hitpoints = 1101.0,
+	armor = 558.0,
+	energyUsage = 601.0,
+	speed = 27.0,
+	maxEnergy = 1469.0,
+	rechargeRate = 38.0,
+	boosterDrain = 151.0,
+	boosterAccel = 36.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_koensayr_racer_mk3, "object/tangible/ship/components/booster/bst_koensayr_racer_mk3.iff")

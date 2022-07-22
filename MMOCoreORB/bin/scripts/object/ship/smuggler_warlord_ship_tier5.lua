@@ -43,6 +43,21 @@
 
 object_ship_smuggler_warlord_ship_tier5 = object_ship_shared_smuggler_warlord_ship_tier5:new {
 
+	name = "smuggler_warlord_ship_tier5",
+	slideFactor = 1.76,
+	chassisHitpoints = 24576,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 31386.49, armor = 30293.33,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 30389.72, armor = 30835.02, speed = 47.26063, pitch = 25.03313, roll = 31.91826, yaw = 19.66456, acceleration = 11.11269, rollRate = 57.05925, pitchRate = 51.61772, deceleration = 9.771538, yawRate = 41.20433,},
+	shield_0 = { name = "shd_generic", hitpoints = 31402.46, armor = 31010.43, regen = 33.14576, front = 122274.7, back = 121739.1,},
+	armor_0 = { name = "arm_generic", hitpoints = 66708.64, armor = 65379.82,},
+	armor_1 = { name = "arm_generic", hitpoints = 66254.77, armor = 67684.44,},
+	capacitor = { name = "cap_generic", hitpoints = 31114.65, armor = 30418.6, rechargeRate = 96.73544, energy = 4795.968,},
+	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 31080.04, armor = 31538.75, rate = 0.7740622, drain = 0.9541933, maxDamage = 822.608, shieldEfficiency = 0.543123, minDamage = 500.4481, ammo = 0, ammo_type = 0, armorEfficiency = 0.5484719,},
+	weapon_1 = { name = "wpn_incom_disruptor", hitpoints = 30631.83, armor = 31157.42, rate = 0.7592158, drain = 0.9543359, maxDamage = 786.8008, shieldEfficiency = 0.5462517, minDamage = 499.3675, ammo = 0, ammo_type = 0, armorEfficiency = 0.5474174,},
+	weapon_2 = { name = "wpn_incom_blaster", hitpoints = 30718.37, armor = 31543.01, rate = 0.7739112, drain = 0.9513081, maxDamage = 793.236, shieldEfficiency = 0.5322735, minDamage = 504.7442, ammo = 0, ammo_type = 0, armorEfficiency = 0.5376089,},
+	weapon_3 = { name = "wpn_incom_disruptor", hitpoints = 31456.62, armor = 30455.06, rate = 0.7774477, drain = 0.9541983, maxDamage = 807.7487, shieldEfficiency = 0.5575209, minDamage = 492.3758, ammo = 0, ammo_type = 0, armorEfficiency = 0.5576629,},
+	weapon_4 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 30513.63, armor = 30367.95, rate = 2.948318, drain = 0.9596375, maxDamage = 2372.608, shieldEfficiency = 0.7232905, minDamage = 1000.985, ammo = 4, ammo_type = 20, armorEfficiency = 0.719323,},
 }
 
 ObjectTemplates:addTemplate(object_ship_smuggler_warlord_ship_tier5, "object/ship/smuggler_warlord_ship_tier5.iff")

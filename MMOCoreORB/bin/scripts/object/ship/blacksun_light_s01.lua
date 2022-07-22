@@ -43,6 +43,17 @@
 
 object_ship_blacksun_light_s01 = object_ship_shared_blacksun_light_s01:new {
 
+	name = "blacksun_light_s01",
+	slideFactor = 1.81,
+	chassisHitpoints = 519,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 293.0975, armor = 299.4683,},
+	engine = { name = "eng_generic", hitpoints = 96.34592, armor = 95.92737, speed = 52.97753, pitch = 33.03342, roll = 32.61266, yaw = 32.31016, acceleration = 16.27676, rollRate = 58.24209, pitchRate = 60.85304, deceleration = 8.33995, yawRate = 59.25087,},
+	shield_0 = { name = "shd_generic", hitpoints = 391.0511, armor = 494.1241, regen = 4.846959, front = 296.6703, back = 478.2641,},
+	armor_0 = { name = "arm_generic", hitpoints = 289.9044, armor = 289.124,},
+	armor_1 = { name = "arm_generic", hitpoints = 296.4264, armor = 298.3781,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.81828, energy = 544.4305,},
+	booster = { name = "bst_xwing_booster_s01", hitpoints = 19.31518, armor = 19.15918, energy = 0, acceleration = 0, speed = 0, energyUsage = 0, rechargeRate = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_blacksun_light_s01, "object/ship/blacksun_light_s01.iff")

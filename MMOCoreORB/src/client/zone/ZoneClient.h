@@ -14,6 +14,7 @@ class ZoneClient : public ServiceHandler {
 	Reference<BaseClient*> client;
 
 	Zone* zone;
+	SpaceZone* sZone;
 
 	Reference<PlayerCreature*> player;
 
@@ -86,6 +87,12 @@ public:
 
 	void setZone(Zone* zone) {
 		ZoneClient::zone = zone;
+		ZoneClient::sZone = nullptr;
+	}
+
+	void setZone(SpaceZone* zone) {
+		ZoneClient::sZone = zone;
+		ZoneClient::zone = nullptr;
 	}
 
 	void setAccountID(uint32 id) {
@@ -110,6 +117,10 @@ public:
 
 	Zone* getZone() {
 		return zone;
+	}
+
+	SpaceZone* getSpaceZone() {
+		return sZone;
 	}
 
 	uint32 getKey(){

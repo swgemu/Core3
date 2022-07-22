@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_unknown_proton_projector = object_tangible_ship_components_shield_generator_shared_shd_unknown_proton_projector:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1935.0,
+	hitpoints = 197.0,
+	armor = 97.0,
+	energyUsage = 2558.0,
+	shieldFront = 256.0,
+	shieldRear = 258.0,
+	rechargeRate = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_unknown_proton_projector, "object/tangible/ship/components/shield_generator/shd_unknown_proton_projector.iff")

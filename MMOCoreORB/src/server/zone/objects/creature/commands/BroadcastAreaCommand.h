@@ -65,7 +65,7 @@ public:
 		}
 
 		//Get nearby objects from player
-		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+		SortedVector<ManagedReference<TreeEntry*> > closeObjects;
 		Zone* zone = creature->getZone();
 
 		if (creature->getCloseObjects() == nullptr || range > ZoneServer::CLOSEOBJECTRANGE) {

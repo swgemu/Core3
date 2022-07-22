@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_koensayr_small_ionjet = object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 864.0,
+	hitpoints = 154.0,
+	armor = 81.0,
+	energyUsage = 1507.0,
+	speed = 48.0,
+	pitch = 54.0,
+	yaw = 45.0,
+	roll = 49.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_koensayr_small_ionjet, "object/tangible/ship/components/engine/eng_koensayr_small_ionjet.iff")

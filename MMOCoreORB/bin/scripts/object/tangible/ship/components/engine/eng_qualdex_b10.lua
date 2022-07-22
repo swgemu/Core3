@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_qualdex_b10 = object_tangible_ship_components_engine_shared_eng_qualdex_b10:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 18961.0,
+	hitpoints = 943.0,
+	armor = 467.0,
+	energyUsage = 1727.0,
+	speed = 67.0,
+	pitch = 62.0,
+	yaw = 58.0,
+	roll = 60.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_qualdex_b10, "object/tangible/ship/components/engine/eng_qualdex_b10.iff")

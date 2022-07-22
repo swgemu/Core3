@@ -10,24 +10,24 @@
 namespace server {
 namespace zone {
 
-class ActiveAreaQuadTreeNode {
+class ActiveAreaTreeNode {
 protected:
 	SortedVector<Reference<ActiveArea*>> areas;
 
-	UniqueReference<ActiveAreaQuadTreeNode*> nwNode{};
-	UniqueReference<ActiveAreaQuadTreeNode*> neNode{};
-	UniqueReference<ActiveAreaQuadTreeNode*> swNode{};
-	UniqueReference<ActiveAreaQuadTreeNode*> seNode{};
+	UniqueReference<ActiveAreaTreeNode*> nwNode{};
+	UniqueReference<ActiveAreaTreeNode*> neNode{};
+	UniqueReference<ActiveAreaTreeNode*> swNode{};
+	UniqueReference<ActiveAreaTreeNode*> seNode{};
 
 	float minX = 0, minY = 0;
 	float maxX = 0, maxY = 0;
 
-	const ActiveAreaQuadTreeNode* parentNode;
+	const ActiveAreaTreeNode* parentNode;
 
 	float dividerX = 0, dividerY = 0;
 
 public:
-	ActiveAreaQuadTreeNode(float minx, float miny, float maxx, float maxy, const ActiveAreaQuadTreeNode* parent);
+	ActiveAreaTreeNode(float minx, float miny, float maxx, float maxy, const ActiveAreaTreeNode* parent);
 
 	bool isEmpty() const {
 		return areas.isEmpty();
@@ -76,13 +76,13 @@ class ActiveAreaQuadTree : public Object {
 #ifdef AREA_TREE_SIMPLE
 	SortedVector<Reference<ActiveArea*>> areas;
 #else
-	UniqueReference<ActiveAreaQuadTreeNode*> root{};
+	UniqueReference<ActiveAreaTreeNode*> root{};
 #endif
 
 public:
 	ActiveAreaQuadTree(float minx, float miny, float maxx, float maxy) {
 #ifndef AREA_TREE_SIMPLE
-		root = makeUnique<ActiveAreaQuadTreeNode>(minx, miny, maxx, maxy, nullptr);
+		root = makeUnique<ActiveAreaTreeNode>(minx, miny, maxx, maxy, nullptr);
 #else
 		areas.setNoDuplicateInsertPlan();
 #endif
@@ -119,11 +119,11 @@ public:
 
 protected:
 #ifndef AREA_TREE_SIMPLE
-	void insert(ActiveAreaQuadTreeNode& node, ActiveArea* area);
-	void removeActiveArea(ActiveAreaQuadTreeNode& node, ActiveArea* area);
+	void insert(ActiveAreaTreeNode& node, ActiveArea* area);
+	void removeActiveArea(ActiveAreaTreeNode& node, ActiveArea* area);
 
 	template <typename AreaType>
-	void getActiveAreas(ActiveAreaQuadTreeNode* node, float x, float y, ArrayList<AreaType>& areas) const {
+	void getActiveAreas(ActiveAreaTreeNode* node, float x, float y, ArrayList<AreaType>& areas) const {
 		if (node == nullptr) {
 			return;
 		}

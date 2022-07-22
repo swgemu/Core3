@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_sfs_imperial_mk5 = object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_mk5:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 19510.0,
+	hitpoints = 1105.0,
+	armor = 555.0,
+	energyUsage = 503.0,
+	droidSpeed = 22.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_sfs_imperial_mk5, "object/tangible/ship/components/droid_interface/ddi_sfs_imperial_mk5.iff")

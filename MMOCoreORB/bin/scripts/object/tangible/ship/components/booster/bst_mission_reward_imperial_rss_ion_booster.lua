@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_mission_reward_imperial_rss_ion_booster = object_tangible_ship_components_booster_shared_bst_mission_reward_imperial_rss_ion_booster:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3155.0,
+	hitpoints = 679.0,
+	armor = 338.0,
+	energyUsage = 459.0,
+	speed = 25.0,
+	maxEnergy = 1986.0,
+	rechargeRate = 51.0,
+	boosterDrain = 205.0,
+	boosterAccel = 38.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_mission_reward_imperial_rss_ion_booster, "object/tangible/ship/components/booster/bst_mission_reward_imperial_rss_ion_booster.iff")

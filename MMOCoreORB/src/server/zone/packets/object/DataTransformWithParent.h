@@ -6,16 +6,17 @@
 #define DATATRANSFORMWITHPARENT_H_
 
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
-
 #include "server/zone/packets/object/ObjectControllerMessageCallback.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
 #include "server/zone/packets/object/transform/Transform.h"
-
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/collision/IntersectionResults.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -65,11 +66,16 @@ public:
 
 		if (player != nullptr) {
 			Zone* zone = player->getZone();
+			SpaceZone* spaceZone = player->getSpaceZone();
 
 			if (zone != nullptr) {
 				const String& zoneName = zone->getZoneName();
-
 				setCustomTaskQueue(zoneName);
+			}
+
+			if (spaceZone != nullptr) {
+				const String& spaceZoneName = spaceZone->getZoneName();
+				setCustomTaskQueue(spaceZoneName);
 			}
 		}
 	}

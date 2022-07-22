@@ -28,7 +28,7 @@ public:
 
 		CloseObjectsVector* closeSceneObjects = (CloseObjectsVector*) creature->getCloseObjects();
 
-		SortedVector<QuadTreeEntry*> closeObjects;
+		SortedVector<TreeEntry*> closeObjects;
 		closeSceneObjects->safeCopyTo(closeObjects);
 
 		for (int i=0; i < closeObjects.size(); i++) {

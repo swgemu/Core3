@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_armor_baktoid_mtt_prototype = object_tangible_ship_components_armor_shared_armor_baktoid_mtt_prototype:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1532.0,
+	hitpoints = 211.0,
+	armor = 208.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_baktoid_mtt_prototype, "object/tangible/ship/components/armor/armor_baktoid_mtt_prototype.iff")

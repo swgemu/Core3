@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_nubian_221_racing_mod = object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 48654.0,
+	hitpoints = 1382.0,
+	armor = 688.0,
+	energyUsage = 1806.0,
+	speed = 85.0,
+	pitch = 81.0,
+	yaw = 78.0,
+	roll = 78.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_nubian_221_racing_mod, "object/tangible/ship/components/engine/engine_nubian_221_racing_mod.iff")

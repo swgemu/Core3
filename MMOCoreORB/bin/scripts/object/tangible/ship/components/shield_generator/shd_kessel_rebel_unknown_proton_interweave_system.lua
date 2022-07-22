@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_kessel_rebel_unknown_proton_interweave_system = object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_unknown_proton_interweave_system:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 51484.0,
+	hitpoints = 1103.0,
+	armor = 557.0,
+	energyUsage = 3128.0,
+	shieldFront = 1474.0,
+	shieldRear = 1476.0,
+	rechargeRate = 18.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_kessel_rebel_unknown_proton_interweave_system, "object/tangible/ship/components/shield_generator/shd_kessel_rebel_unknown_proton_interweave_system.iff")

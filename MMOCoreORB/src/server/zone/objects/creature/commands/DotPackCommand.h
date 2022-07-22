@@ -160,7 +160,7 @@ public:
 		try {
 			CloseObjectsVector* vec = (CloseObjectsVector*)attackerCreo->getCloseObjects();
 
-			SortedVector<QuadTreeEntry*> closeObjects;
+			SortedVector<TreeEntry*> closeObjects;
 
 			if (vec != nullptr) {
 				closeObjects.removeAll(vec->size(), 10);

@@ -82,7 +82,7 @@ public:
 
 		// Get nearby people and bark
 		CloseObjectsVector* vec = (CloseObjectsVector*) droid->getCloseObjects();
-		SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
+		SortedVector<TreeEntry*> closeEntryObjects(200, 50);
 		if (vec != nullptr) {
 			vec->safeCopyReceiversTo(closeEntryObjects, CloseObjectsVector::PLAYERTYPE);
 		} else {

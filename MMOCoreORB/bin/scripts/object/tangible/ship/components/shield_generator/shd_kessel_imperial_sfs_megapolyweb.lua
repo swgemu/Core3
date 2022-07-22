@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_kessel_imperial_sfs_megapolyweb = object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sfs_megapolyweb:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 51488.0,
+	hitpoints = 1104.0,
+	armor = 553.0,
+	energyUsage = 3061.0,
+	shieldFront = 1473.0,
+	shieldRear = 1468.0,
+	rechargeRate = 13.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_kessel_imperial_sfs_megapolyweb, "object/tangible/ship/components/shield_generator/shd_kessel_imperial_sfs_megapolyweb.iff")

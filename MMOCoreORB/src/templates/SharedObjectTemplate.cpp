@@ -164,6 +164,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		luaItemList.pop();
 	} else if (varName == "zoneComponent") {
 		zoneComponent = Lua::getStringParameter(state);
+	} else if (varName == "spaceZoneComponent") {
+		spaceZoneComponent = Lua::getStringParameter(state);
 	} else if (varName == "objectMenuComponent") {
 		objectMenuComponent = Lua::getStringParameter(state);
 	} else if (varName == "attributeListComponent") {
@@ -346,7 +348,9 @@ void SharedObjectTemplate::loadDerv(IffStream* stream) {
 
 		delete luaObject;
 	} else {
+		#ifdef SHOT_DEBUG
 		warning() << "could not open lua derv: " << serverTemplate;
+		#endif
 	}
 
 	stream->closeChunk();

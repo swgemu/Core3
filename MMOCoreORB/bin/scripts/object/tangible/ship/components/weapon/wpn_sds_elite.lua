@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_sds_elite = object_tangible_ship_components_weapon_shared_wpn_sds_elite:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 50700.0,
+	hitpoints = 1216.0,
+	armor = 612.0,
+	energyUsage = 2405.0,
+	minDamage = 1982.0,
+	maxDamage = 3219.0,
+	refireRate = 0.0,
+	energyPerShot = 39.0,
+	shieldEffectiveness = 5.0,
+	armorEffectiveness = 7.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_sds_elite, "object/tangible/ship/components/weapon/wpn_sds_elite.iff")

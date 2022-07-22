@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_taim_elite = object_tangible_ship_components_shield_generator_shared_shd_taim_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 62042.0,
+	hitpoints = 1383.0,
+	armor = 698.0,
+	energyUsage = 3065.0,
+	shieldFront = 1840.0,
+	shieldRear = 1841.0,
+	rechargeRate = 24.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_taim_elite, "object/tangible/ship/components/shield_generator/shd_taim_elite.iff")

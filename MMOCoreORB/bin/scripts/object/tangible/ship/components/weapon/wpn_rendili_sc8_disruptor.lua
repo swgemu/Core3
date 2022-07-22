@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_rendili_sc8_disruptor = object_tangible_ship_components_weapon_shared_wpn_rendili_sc8_disruptor:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 17942.0,
+	hitpoints = 935.0,
+	armor = 468.0,
+	energyUsage = 2505.0,
+	minDamage = 1642.0,
+	maxDamage = 2537.0,
+	refireRate = 3.0,
+	energyPerShot = 37.0,
+	shieldEffectiveness = 4.0,
+	armorEffectiveness = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_rendili_sc8_disruptor, "object/tangible/ship/components/weapon/wpn_rendili_sc8_disruptor.iff")

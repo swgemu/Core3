@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_incom_performance_nkj31 = object_tangible_ship_components_booster_shared_bst_incom_performance_nkj31:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1409.0,
+	hitpoints = 229.0,
+	armor = 117.0,
+	energyUsage = 506.0,
+	speed = 28.0,
+	maxEnergy = 1503.0,
+	rechargeRate = 39.0,
+	boosterDrain = 154.0,
+	boosterAccel = 39.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_incom_performance_nkj31, "object/tangible/ship/components/booster/bst_incom_performance_nkj31.iff")

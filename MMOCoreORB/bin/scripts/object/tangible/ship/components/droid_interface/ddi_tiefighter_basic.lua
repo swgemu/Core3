@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_tiefighter_basic = object_tangible_ship_components_droid_interface_shared_ddi_tiefighter_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 509.0,
+	hitpoints = 150.0,
+	armor = 82.0,
+	energyUsage = 507.0,
+	droidSpeed = 37.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_tiefighter_basic, "object/tangible/ship/components/droid_interface/ddi_tiefighter_basic.iff")
