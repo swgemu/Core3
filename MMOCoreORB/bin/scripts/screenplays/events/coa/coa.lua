@@ -25,7 +25,7 @@ CriesOfAlderaan = ScreenPlay:new {
 	episodeOneEnabled = true,
 	episodeTwoEnabled = true,
 	episodeThreeEnabled = true,
-	skipToThree = true
+	skipToThree = false
 }
 
 registerScreenPlay("CriesOfAlderaan", true)

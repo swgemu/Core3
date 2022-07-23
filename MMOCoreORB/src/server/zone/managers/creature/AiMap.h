@@ -368,7 +368,7 @@ public:
 	}
 
 private:
-	static const bool DEBUG_MODE = true;
+	static const bool DEBUG_MODE = false;
 	BehaviorFactory factory;
 
 	void registerBehaviors() {
