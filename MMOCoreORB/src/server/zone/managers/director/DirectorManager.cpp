@@ -4437,7 +4437,11 @@ int DirectorManager::getQuestTasks(lua_State* L) {
 
 	Reference<QuestTasks*> questTasks = playerManager->getQuestTasks(questCrc);
 
-	lua_pushlightuserdata(L, questTasks.get());
+	if (questTasks) {
+		lua_pushlightuserdata(L, questTasks.get());
+	} else {
+		lua_pushnil(L);
+	}
 	return 1;
 }
 

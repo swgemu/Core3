@@ -622,9 +622,15 @@ QuestTasks* PlayerManagerImplementation::getQuestTasks(const unsigned int questC
 			delete iffStream;
 
 			QuestTasks* questTasks = new QuestTasks();
-			questTasks->parseDataTable(dtable);
+			try {
+				questTasks->parseDataTable(dtable);
 
-			questTasksCache.put(questCrc, questTasks);
+				questTasksCache.put(questCrc, questTasks);
+			}
+			catch (UnknownDatatableException& e) {
+				error() << "Parsing of " << questPath << " - " << e.getMessage();
+				return nullptr;
+			}
 		}
 
 		Reference<QuestTasks*> questTasks = questTasksCache.get(questCrc);

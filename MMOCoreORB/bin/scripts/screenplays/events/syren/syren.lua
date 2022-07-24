@@ -67,7 +67,7 @@ function SecretsOfTheSyren:spawnActiveAreas(questCrc)
 	local pSyrenTasks = getQuestTasks(questCrc)
 
 	if pSyrenTasks == nil then
-		printLuaError("SecretsOfTheSyren: Could not retrieve quest tasks to set up active areas.")
+		printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
 		return
 	end
 
@@ -77,7 +77,7 @@ function SecretsOfTheSyren:spawnActiveAreas(questCrc)
 		local pQuestTask = syrenTasks:getTask(taskIndex)
 
 		if pQuestTask == nil then
-			printLuaError("SecretsOfTheSyren: Could not retrieve quest task to set up active areas.")
+			printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
 			return
 		end
 
@@ -92,7 +92,8 @@ function SecretsOfTheSyren:spawnActiveAreas(questCrc)
 				local pQuestArea = spawnActiveArea(questTask:getPlanetName(), "object/active_area.iff", questTask:getLocationX(), questTask:getLocationY(), questTask:getLocationZ(), questTask:getRadius(), cellid)
 
 				if pQuestArea == nil then
-					return false
+					printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+					return
 				end
 
 				ActiveArea(pQuestArea):setNoBuildArea(true)
@@ -103,7 +104,8 @@ function SecretsOfTheSyren:spawnActiveAreas(questCrc)
 				writeData(questAreaID .. ":questCrc", questCrc)
 				writeData(questAreaID .. ":taskIndex", taskIndex)
 			else
-				printf(questTask:getPlanetName() .. "is not loaded")
+				printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+				printf(questTask:getPlanetName() .. "is not loaded.\n")
 			end
 		end
 	end
