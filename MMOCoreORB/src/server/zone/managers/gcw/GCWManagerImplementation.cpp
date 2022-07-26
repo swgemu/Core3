@@ -106,11 +106,20 @@ void GCWManagerImplementation::loadLuaConfig() {
 	dnaStrandLength = lua->getGlobalInt("dnaStrandLength");
 	powerSwitchCount = lua->getGlobalInt("powerSwitchCount");
 	destructionTimer = lua->getGlobalInt("destructionTimer");
-	maxBases = lua->getGlobalInt("maxBases");
+
+	maxBasesPerPlanet = lua->getGlobalInt("maxBasesPerPlanet");
+	maxBasesPerPlayer = lua->getGlobalInt("maxBasesPerPlayer");
+	basePlacementDelay = lua->getGlobalInt("basePlacementDelay");
+	placeInCombat = lua->getGlobalBoolean("placeInCombat");
+	allowPveBases = lua->getGlobalBoolean("allowPveBases");
+	allowBaseComplex = lua->getGlobalBoolean("allowBaseComplex");
+	baseComplexSize = lua->getGlobalInt("baseComplexSize");
+	nearbyBaseDistance = lua->getGlobalInt("nearbyBaseDistance");
+	donationCooldown = lua->getGlobalInt("donationCooldown");
+
 	overtCooldown = lua->getGlobalInt("overtCooldown");
 	reactivationTimer = lua->getGlobalInt("reactivationTimer");
 	turretAutoFireTimeout = lua->getGlobalInt("turretAutoFireTimeout");
-	maxBasesPerPlayer = lua->getGlobalInt("maxBasesPerPlayer");
 	spawnBaseAlarms = lua->getGlobalBoolean("spawnBaseAlarms");
 	bonusXP = lua->getGlobalInt("bonusXP");
 	winnerBonus = lua->getGlobalInt("winnerBonus");
@@ -336,6 +345,11 @@ void GCWManagerImplementation::performGCWTasks() {
 		if (building == nullptr)
 			continue;
 
+		if (!allowPveBases && !(building->getPvpStatusBitmask() & CreatureFlag::OVERT) && building->getFactionBaseType() == PLAYERFACTIONBASE) {
+			scheduleBaseDestruction(building, nullptr);
+			continue;
+		}
+
 		String templateString = building->getObjectTemplate()->getFullTemplateString();
 		int pointsValue = getPointValue(templateString);
 
@@ -532,7 +546,7 @@ bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
 		return true;
 
 	SortedVector<QuadTreeEntry*> inRangeObjects;
-	zone->getInRangeObjects(x, y, 600, &inRangeObjects, true, false);
+	zone->getInRangeObjects(x, y, nearbyBaseDistance, &inRangeObjects, true, false);
 	int count = 0;
 
 	for (int i = 0; i < inRangeObjects.size(); ++i) {
@@ -545,8 +559,11 @@ bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
 			count++;
 	}
 
-	if (count >= 3)
+	if (!allowBaseComplex && count > 0) {
 		return true;
+	} else if (allowBaseComplex && count >= baseComplexSize) {
+		return true;
+	}
 
 	return false;
 }
@@ -2549,6 +2566,11 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	if (building == nullptr || creature == nullptr)
 		return;
 
+	if (!building->checkCooldownRecovery("defense_donation")) {
+		creature->sendSystemMessage("This GCW base cannot have more defenses donated at this time.");
+		return;
+	}
+
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
 	if (baseData == nullptr)
@@ -2761,6 +2783,8 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 		params.setTO(deed->getObjectNameStringIdFile(), deed->getObjectNameStringIdName());
 		creature->sendSystemMessage(params);
 
+		building->addCooldown("defense_donation", donationCooldown * 1000);
+
 		block.release();
 		verifyMinefields(building);
 
@@ -2841,6 +2865,8 @@ void GCWManagerImplementation::performDonateScanner(BuildingObject* building, Cr
 		params.setTO(scannerDeed->getObjectNameStringIdFile(), scannerDeed->getObjectNameStringIdName());
 		creature->sendSystemMessage(params);
 
+		building->addCooldown("defense_donation", donationCooldown * 1000);
+
 		block.release();
 		verifyScanners(building);
 
@@ -2915,6 +2941,8 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45"); // You successfully donate a %TO deed to the current facility.
 		params.setTO(turretDeed->getObjectNameStringIdFile(), turretDeed->getObjectNameStringIdName());
 		creature->sendSystemMessage(params);
+
+		building->addCooldown("defense_donation", donationCooldown * 1000);
 
 		block.release();
 		verifyTurrets(building);

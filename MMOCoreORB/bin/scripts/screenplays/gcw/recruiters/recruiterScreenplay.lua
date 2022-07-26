@@ -3,6 +3,7 @@ includeFile("gcw/recruiters/factionPerkData.lua")
 
 recruiterScreenplay = Object:new {
 	useCovertOvertSystem = false,
+	allowPveBases = true,
 	covertOvertResignTime = 1, -- In Hours
 
 	minimumFactionStanding = 200,
@@ -186,6 +187,10 @@ function recruiterScreenplay:getInstallationsOptions(faction, gcwDiscount, smugg
 				goto skip
 			end
 
+			if ((not self.allowPveBases) and (not string.find(factionRewardData.installationsList[k], "pvp"))) then
+				goto skip
+			end
+
 			local option = {self:generateSuiString(factionRewardData.installations[v].display, math.ceil(factionRewardData.installations[v].cost * gcwDiscount * smugglerDiscount)), 0}
 			table.insert(optionsTable, option)
 
@@ -321,6 +326,10 @@ function recruiterScreenplay:getControlledObjectTemplate(faction, itemString)
 end
 
 function recruiterScreenplay:getBonusItems(faction, itemString)
+	if (not self.allowPveBases) then
+		return nil
+	end
+
 	local factionRewardData = self:getFactionDataTable(faction)
 	if self:isInstallation(faction, itemString) and factionRewardData.installations[itemString].bonus ~= nil then
 		return factionRewardData.installations[itemString].bonus
@@ -460,6 +469,10 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 	local slotsremaining = SceneObject(pInventory):getContainerVolumeLimit() - SceneObject(pInventory):getCountableObjectsRecursive()
 
 	local bonusItemCount = self:getBonusItemCount(faction, itemString)
+
+	if (not self.allowPveBases) then
+		bonusItemCount = 0
+	end
 
 	if (slotsremaining < (1 + bonusItemCount)) then
 		return self.errorCodes.INVENTORYFULL
