@@ -97,11 +97,20 @@ class GCWManager extends ManagedService implements Logger {
 	public transient int powerSwitchCount;
 	public transient int dnaStrandLength;
 	public transient int destructionTimer;
-	public transient int maxBases;
+
+	public transient int maxBasesPerPlanet;
+	public transient int maxBasesPerPlayer;
+	public transient int basePlacementDelay;
+	public transient boolean placeInCombat;
+	public transient boolean allowPveBases;
+	public transient boolean allowBaseComplex;
+	public transient int baseComplexSize;
+	public transient int nearbyBaseDistance;
+	public transient int donationCooldown;
+
 	public transient int overtCooldown;
 	public transient int reactivationTimer;
 	public transient int turretAutoFireTimeout;
-	public transient int maxBasesPerPlayer;
 	public transient int bonusXP;
 	public transient int winnerBonus;
 	public transient int loserBonus;
@@ -142,12 +151,21 @@ class GCWManager extends ManagedService implements Logger {
 		totalDNASamples = 10;
 		dnaStrandLength = 23;
 		destructionTimer = 600;
-		maxBases = -1;
+
+		maxBasesPerPlanet = -1;
+		maxBasesPerPlayer = 3;
+		basePlacementDelay = 10;
+		placeInCombat = true;
+		allowPveBases = true;
+		allowBaseComplex = true;
+		baseComplexSize = 3;
+		nearbyBaseDistance = 600;
+		donationCooldown = 1;
+
 		powerSwitchCount = 7;
 		overtCooldown = 300;
 		reactivationTimer = 300;
 		turretAutoFireTimeout = 20;
-		maxBasesPerPlayer = 3;
 		bonusXP = 15;
 		loserBonus = 0;
 		winnerBonus = 30;
@@ -383,8 +401,17 @@ class GCWManager extends ManagedService implements Logger {
 		return maxBasesPerPlayer;
 	}
 
+	public int getBasePlacementDelay() {
+		return basePlacementDelay;
+	}
+
 	public synchronized boolean isPlanetCapped() {
-		return maxBases <= gcwBaseList.size();
+		return maxBasesPerPlanet <= gcwBaseList.size();
+	}
+
+	@read
+	public boolean canPlaceGcwBaseInCombat() {
+		return placeInCombat;
 	}
 
 	public int getImperialBaseCount() {

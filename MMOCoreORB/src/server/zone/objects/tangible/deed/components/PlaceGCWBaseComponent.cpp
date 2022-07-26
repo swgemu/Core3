@@ -33,8 +33,13 @@ int PlaceGCWBaseComponent::placeStructure(StructureDeed* deed, CreatureObject* c
 	if (gcwMan == nullptr)
 		return 1;
 
+	if (creature->isInCombat() && !gcwMan->canPlaceGcwBaseInCombat()) {
+		creature->sendSystemMessage("You cannot place a GCW Faction base while in combat.");
+		return 1;
+	}
+
 	if (gcwMan->isPlanetCapped()) {
-		creature->sendSystemMessage("This planet is capped for player faction bases.");
+		creature->sendSystemMessage("This planet has reached capacity for GCW faction bases.");
 		return 1;
 	}
 
