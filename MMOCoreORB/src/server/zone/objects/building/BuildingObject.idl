@@ -25,6 +25,8 @@ include templates.appearance.MeshData;
 include templates.collision.BaseBoundingVolume;
 include system.lang.ref.Reference;
 include system.util.VectorMap;
+include server.zone.objects.creature.variables.CooldownTimerMap;
+import system.lang.Time;
 
 @json
 class BuildingObject extends StructureObject {
@@ -52,6 +54,9 @@ class BuildingObject extends StructureObject {
 
 	@dereferenced
 	protected transient SynchronizedSortedVector<unsigned long> registeredPlayerIdList;
+
+	@transactional
+	protected transient CooldownTimerMap cooldownTimerMap;
 
 	public boolean publicStructure;
 
@@ -467,5 +472,20 @@ class BuildingObject extends StructureObject {
 		if (creature != null) {
 			childCreatureObjects.put(creature);
 		}
+	}
+
+	@read
+	public boolean checkCooldownRecovery(final string cooldown) {
+		return cooldownTimerMap.isPast(cooldown);
+	}
+
+	@read
+	@local
+	public final Time getCooldownTime(final string cooldown) {
+		return cooldownTimerMap.getTime(cooldown);
+	}
+
+	public void addCooldown(final string name, unsigned long miliseconds) {
+		cooldownTimerMap.updateToCurrentAndAddMili(name, miliseconds);
 	}
 }
