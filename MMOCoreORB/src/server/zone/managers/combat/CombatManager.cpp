@@ -360,11 +360,12 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		hitList->setHit(HIT);
 
 		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+		uint32 tanoFaction = tano->getFaction();
 
-		if (covertOvert && attacker->isPlayerCreature()) {
+		if (covertOvert && attacker->isPlayerCreature() && tanoFaction > 0 && attacker->getFaction() != tanoFaction && attacker->getFactionStatus() >= FactionStatus::COVERT) {
 			PlayerObject* ghost = attacker->getPlayerObject();
 
-			if (ghost != nullptr && attacker->getFaction() != tano->getFaction() && attacker->getFactionStatus() >= FactionStatus::COVERT) {
+			if (ghost != nullptr) {
 				ghost->updateLastCombatActionTimestamp(false, true, false);
 			}
 		}
@@ -3202,8 +3203,9 @@ void CombatManager::checkForTefs(CreatureObject* attacker, CreatureObject* defen
 
 	if (attackingCreature != nullptr && targetCreature != nullptr) {
 		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+		uint32 targetFaction = targetCreature->getFaction();
 
-		if (covertOvert && attackingCreature->getFaction() != targetCreature->getFaction() && attackingCreature->getFactionStatus() >= FactionStatus::COVERT) {
+		if (covertOvert && targetFaction > 0 && attackingCreature->getFaction() != targetFaction && attackingCreature->getFactionStatus() >= FactionStatus::COVERT) {
 			*shouldGcwTef = true;
 		}
 
