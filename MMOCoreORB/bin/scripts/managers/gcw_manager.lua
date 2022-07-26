@@ -26,7 +26,26 @@ dnaStrandLength = 23
 destructionTimer = 600
 
 -- maximum bases per planet
-maxBases = 25
+maxBasesPerPlanet = 25
+
+-- Maximum bases placeable per player
+maxBasesPerPlayer = 3
+
+-- The construction delay when placing a GCW base in seconds
+basePlacementDelay = 10
+
+-- allow the placement of PvE Faction bases. Setting this false will begin the destruction sequence task for PvE bases when the server loads
+allowPveBases = true
+
+-- Allow bases to be place together
+allowBaseComplex = true
+baseComplexSize = 3
+
+-- Range at which bases can be placed near one another. If base complexes are enabled they will adhere to this distance
+nearbyBaseDistance = 600
+
+-- Cooldown on dotations to GCW bases in seconds
+donationCooldown = 1
 
 -- time in seconds that a player must be overt before aborting a facility shutdown
 overtCooldown = 300
@@ -40,8 +59,6 @@ reactivationTimer = 300
 -- amount of time in seconds that a turret must wait after the last manual turret activity
 -- X seconds after the last manual activity the turret will be able to auto fire
 turretAutoFireTimeout = 20
-
-maxBasesPerPlayer = 3
 
 -- Enable Alarms on player GCW bases
 spawnBaseAlarms = false
