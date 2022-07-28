@@ -88,10 +88,10 @@
 #include "server/chat/ChatManager.h"
 
 //#define DEBUG
-//#define DEBUG_PATHING
-//#define SHOW_PATH
-//#define SHOW_NEXT_POSITION
-//#define DEBUG_FINDNEXTPOSITION
+#define DEBUG_PATHING
+#define SHOW_PATH
+#define SHOW_NEXT_POSITION
+#define DEBUG_FINDNEXTPOSITION
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
