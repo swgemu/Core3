@@ -274,7 +274,9 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 
 		Locker plocker(pcd, speaker);
 		pcd->setLastCommander(speaker);
-		pcd->setLastCommand(command);
+
+		if (command != GROUP)
+			pcd->setLastCommand(command);
 	}
 }
 
