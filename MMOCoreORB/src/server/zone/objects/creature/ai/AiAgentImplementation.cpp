@@ -2037,9 +2037,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	Vector3 endDistDiff(currentWorldPos - endMovementPosition.getWorldPosition());
 	float endDistanceSq = (endDistDiff.getX() * endDistDiff.getX() + endDistDiff.getY() * endDistDiff.getY());
 	float maxSquared = Math::max(0.1f, maxDistance * maxDistance);
+	float zDiff = endDistDiff.getZ();
 
-	if (endDistanceSq <= maxSquared) {
-		//info(true) << "findNextPosition -- ID: " <<  getObjectID() << " endDistSquared = " << endDistanceSq << "  maxSquared = " << maxSquared << "   For:  " << getObjectID();
+	if (endDistanceSq <= maxSquared && zDiff < 0 && fabs(zDiff) < maxDistance) {
+#ifdef DEBUG_FINDNEXTPOSITION
+		info(true) << "findNextPosition -- ID: " <<  getObjectID() << " endDistSquared = " << endDistanceSq << "  maxSquared = " << maxSquared << " endDistDiff Z = " << zDiff << " Max Distance = " << maxDistance;
+#endif
 
 		currentFoundPath = nullptr;
 
