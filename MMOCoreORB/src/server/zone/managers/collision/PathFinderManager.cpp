@@ -20,6 +20,7 @@
 #include "pathfinding/recast/DetourCommon.h"
 
 //#define DEBUG_PATHING
+#define DEBUG_INDOORPATHING
 
 const static constexpr int MAX_QUERY_NODES = 2048 * 2;
 
@@ -668,6 +669,11 @@ const FloorMesh* PathFinderManager::getFloorMesh(CellObject* cell) {
 }
 
 int PathFinderManager::getFloorPath(const Vector3& pointA, const Vector3& pointB, const FloorMesh* floor, Vector<const Triangle*>*& nodes) {
+#ifdef DEBUG_PATHING
+	info(true) << "getFloorPath called";
+#endif
+
+
 	/*Vector3 objectPos = pointA;
 	Vector3 targetPos = pointB;
 
@@ -699,14 +705,26 @@ int PathFinderManager::getFloorPath(const Vector3& pointA, const Vector3& pointB
 	nodes = nullptr;
 
 	if (objectFloor == targetFloor) { // we are on the same triangle, returning pointB
+#ifdef DEBUG_PATHING
+		info(true) << "getFloorPath -- we are on the same triangle, returning pointB";
+#endif
+
 		return -1;
-	} else if (objectFloor == nullptr || targetFloor == nullptr)
+	} else if (objectFloor == nullptr || targetFloor == nullptr) {
+#ifdef DEBUG_PATHING
+		info(true) << "getFloorPath -- our Floord node or the target floor node is nullptr";
+#endif
 		return 1;
+	}
 
 	nodes = TriangulationAStarAlgorithm::search(pointA, pointB, objectFloor, targetFloor);
 
-	if (nodes == nullptr)
+	if (nodes == nullptr) {
+#ifdef DEBUG_PATHING
+		error() << "getFloorPath -- FAILED TO FIND NODES";
+#endif
 		return 1;
+	}
 
 	return 0;
 }
@@ -750,8 +768,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	path->add(pointA);
 
 	CellObject* ourCell = pointA.getCell();
+
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( ourCell->getParent().get().get());
 	int ourCellID = ourCell->getCellNumber();
+
 	SharedObjectTemplate* templateObject = ourCell->getParent().get()->getObjectTemplate();
 
 	if (templateObject == nullptr) {
@@ -806,6 +826,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 		return nullptr;
 	}
 
+	// exit of the cell
 	const PathNode* exitNode = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, sourceFloorMesh, transformedPosition);//targetPathGraph->findNearestNode(pointB.getPoint());
 
 	if (exitNode == nullptr) {
@@ -940,9 +961,10 @@ void PathFinderManager::addTriangleNodeEdges(const Vector3& source, const Vector
 }
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
-#ifdef DEBUG_PATHING
-	info ("findPathFromCellToDifferentCell", true);
+#ifdef DEBUG_INDOORPATHING
+	info(true) << "findPathFromCellToDifferentCell called";
 #endif
+
 	CellObject* ourCell = pointA.getCell();
 	CellObject* targetCell = pointB.getCell();
 
@@ -968,57 +990,61 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	if (portalLayout == nullptr)
 		return nullptr;
 
-	const FloorMesh* floorMesh1 = portalLayout->getFloorMesh(ourCellID);
-	const FloorMesh* floorMesh2 = portalLayout->getFloorMesh(targetCellID);
+	const FloorMesh* sourceFloorMesh = portalLayout->getFloorMesh(ourCellID);
+	const FloorMesh* targetFloorMesh = portalLayout->getFloorMesh(targetCellID);
 
-	if (floorMesh2->getCellID() != targetCellID)
-		error("floorMes2 cellID != targetCellID");
+	if (targetFloorMesh->getCellID() != targetCellID) {
+		error() << "targetFloorMeshcellID != targetCellID";
+		return nullptr;
+	}
 
-	//info("targetCellID:" + String::valueOf(targetCellID), true);
+#ifdef DEBUG_INDOORPATHING
+	info(true) << "findPathFromCellToDifferentCell -- Target Cell ID: " << targetCellID;
+#endif
 
-	const PathGraph* pathGraph1 = floorMesh1->getPathGraph();
-	const PathGraph* pathGraph2 = floorMesh2->getPathGraph();
+	const PathGraph* sourceGraph = sourceFloorMesh->getPathGraph();
+	const PathGraph* targetGraph = targetFloorMesh->getPathGraph();
 
-	if (pathGraph1 == nullptr || pathGraph2 == nullptr)
+	if (sourceGraph == nullptr || targetGraph == nullptr)
 		return nullptr;
 
 	Vector<WorldCoordinates>* path = new Vector<WorldCoordinates>(5, 1);
-	path->add(pointA); // adding source
 
-	//PathNode* source = pathGraph1->findNearestNode(pointA.getPoint());
-	const TriangleNode* nearestSourceNodeTriangle = CollisionManager::getTriangle(pointA.getPoint(), floorMesh1);
+	// Add starting point
+	path->add(pointA);
+
+	const TriangleNode* nearestSourceNodeTriangle = CollisionManager::getTriangle(pointA.getPoint(), sourceFloorMesh);
 
 	if (nearestSourceNodeTriangle == nullptr) {
 		delete path;
 		return nullptr;
 	}
 
-	const PathNode* source = CollisionManager::findNearestPathNode(nearestSourceNodeTriangle, floorMesh1, pointA.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
-
-	if (source == nullptr) {
-		delete path;
-		return nullptr;
-	}
-
-	//PathNode* target = pathGraph2->findNearestNode(pointB.getPoint());
-	const TriangleNode* nearestTargetNodeTriangle = CollisionManager::getTriangle(pointB.getPoint(), floorMesh2);
+	const TriangleNode* nearestTargetNodeTriangle = CollisionManager::getTriangle(pointB.getPoint(), targetFloorMesh);
 
 	if (nearestTargetNodeTriangle == nullptr) {
 		delete path;
 		return nullptr;
 	}
 
-	const PathNode* target = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, floorMesh2, pointB.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
+	const PathNode* sourceExitNode = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, sourceFloorMesh, pointA.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
+
+	if (sourceExitNode == nullptr) {
+		delete path;
+		return nullptr;
+	}
+
+	const PathNode* target = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, targetFloorMesh, pointB.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
 
 	if (target == nullptr) {
 		delete path;
 		return nullptr;
 	}
 
-	Vector<const PathNode*>* nodes = portalLayout->getPath(source, target);
+	Vector<const PathNode*>* nodes = portalLayout->getPath(sourceExitNode, target);
 
 	if (nodes == nullptr) {
-		log() << "Could not find path from " << source
+		log() << "Could not find path from " << sourceExitNode
 				<< " to " << target << " in building: "
 				<< templateObject->getFullTemplateString();
 
@@ -1031,7 +1057,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		auto zone = building1->getZone();
 		String zoneName = zone == nullptr ? "unknown" : zone->getZoneName();
 
-		error() << "getPath from " << source << " to " << target
+		error() << "getPath from " << sourceExitNode << " to " << target
 			   << " nodes->size() == 1 for building " << templateObject->getFullTemplateString()
 				<< " from " << pointA << " to " << pointB << " in zone " << zoneName;
 
@@ -1042,7 +1068,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	// path from our position to path node
 	Vector<const Triangle*>* trianglePath = nullptr;
 
-	int res = getFloorPath(pointA.getPoint(), nodes->get(1)->getPosition(), floorMesh1, trianglePath);
+	int res = getFloorPath(pointA.getPoint(), nodes->get(1)->getPosition(), sourceFloorMesh, trianglePath);
 
 	if (res != -1 && trianglePath != nullptr)
 		addTriangleNodeEdges(pointA.getPoint(), nodes->get(1)->getPosition(), trianglePath, path, ourCell);
@@ -1052,7 +1078,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		trianglePath = nullptr;
 	}
 
-	WorldCoordinates sourceCellNode(source->getPosition(), ourCell);
+	WorldCoordinates sourceCellNode(sourceExitNode->getPosition(), ourCell);
 
 	path->add(sourceCellNode);
 
@@ -1068,7 +1094,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		if (cellID == 0) {
 			// We should never have a cellID of 0 when moving cell to cell
 			nodes->remove(i);
-#ifdef DEBUG_PATHING
+#ifdef DEBUG_INDOORPATHING
 			printf("Removing node with cellID = 0 \n");
 #endif
 		} else {
@@ -1079,7 +1105,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 			WorldCoordinates coord(pathNode->getPosition(), pathCell);
 
-#ifdef DEBUG_PATHING
+#ifdef DEBUG_INDOORPATHING
 			printf("Adding Path Node with Cell ID = %i, ", cellID);
 			printf(" X = %f ,", coord.getX());
 			printf("Y = %f \n", coord.getY());
@@ -1105,7 +1131,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	// path from cell entrance to destination point
 	trianglePath = nullptr;
 
-	res = getFloorPath(path->get(path->size() - 1).getPoint(), pointB.getPoint(), floorMesh2, trianglePath);
+	res = getFloorPath(path->get(path->size() - 1).getPoint(), pointB.getPoint(), targetFloorMesh, trianglePath);
 
 	if (res != -1 && trianglePath != nullptr)
 		addTriangleNodeEdges(path->get(path->size() - 1).getPoint(), pointB.getPoint(), trianglePath, path, targetCell);
@@ -1115,7 +1141,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 	path->add(pointB);
 
-#ifdef DEBUG_PATHING
+#ifdef DEBUG_INDOORPATHING
 	printf(" FINAL PATH POINTS cell to other cell: \n");
 
 	for (int i = 0; i < path->size(); ++i) {
@@ -1136,14 +1162,22 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 }
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
+#ifdef DEBUG_INDOORPATHING
+	info(true) << "findPathFromCellToCell";
+#endif
+
 	CellObject* ourCell = pointA.getCell();
 	CellObject* targetCell = pointB.getCell();
 
 	if (ourCell == nullptr || targetCell == nullptr)
 		return nullptr;
 
-	if (ourCell != targetCell)
+	if (ourCell != targetCell) {
+#ifdef DEBUG_INDOORPATHING
+		info(true) << "findPathFromCellToCell -- different cells. Callling findPathFromCellToDifferentCell";
+#endif
 		return findPathFromCellToDifferentCell(pointA, pointB);
+	}
 
 	int ourCellID = ourCell->getCellNumber();
 
@@ -1165,18 +1199,22 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 	Vector<WorldCoordinates>* path = new Vector<WorldCoordinates>(5, 1);
 	path->add(pointA); // adding source
 
-	//info("same cell... trying to calculate triangle path", true);
+#ifdef DEBUG_INDOORPATHING
+		info(true) << "findPathFromCellToCell -- searching floorMesh for cellID " << ourCellID;
+#endif
 
 	Vector<const Triangle*>* trianglePath = nullptr;
-
-	//info("searching floorMesh for cellID " + String::valueOf(ourCellID), true);
 
 	int res = getFloorPath(pointA.getPoint(), pointB.getPoint(), floorMesh1, trianglePath);
 
 	if (res == -1) { //points in the same triangle
-		path->add(pointB);
+#ifdef DEBUG_INDOORPATHING
+		info(true) << "findPathFromCellToCell -- points in the same triangle -- returning null path";
+#endif
+		//path->add(pointB);
+		delete path;
 
-		return path;
+		return nullptr;
 	}
 
 	if (trianglePath == nullptr) { // returning nullptr, no path found

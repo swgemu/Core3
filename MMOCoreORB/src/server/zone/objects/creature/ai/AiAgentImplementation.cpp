@@ -89,8 +89,8 @@
 
 //#define DEBUG
 //#define DEBUG_PATHING
-//#define SHOW_PATH
-//#define SHOW_NEXT_POSITION
+#define SHOW_PATH
+#define SHOW_NEXT_POSITION
 //#define DEBUG_FINDNEXTPOSITION
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -2185,7 +2185,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	printf(" Y = %f \n", nextMovementPosition.getY());
 	printf("nextMovementDistance = %f \n", nextMovementDistance);
 
-	/*printf(" - Current Path Points - \n");
+	printf(" - Current Path Points - \n");
 
 	for (int i = 0; i < path->size(); ++i) {
 		WorldCoordinates pos = path->get(i);
@@ -2197,7 +2197,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		if (pos.getCell() == nullptr)
 			printf(" Cell is null \n");
-	}*/
+	}
 #endif
 	Vector3 newPosition;
 
