@@ -192,7 +192,7 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 	}
 }
 
-registerScreenPlay("NabooTheedScreenPlay", true)
+registerScreenPlay("NabooTheedScreenPlay", false)
 
 function NabooTheedScreenPlay:start()
 	if (isZoneEnabled(self.planet)) then
