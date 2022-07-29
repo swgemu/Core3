@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7a718ec_fbe18aa0",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/QuestTasks.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-07-29T17:10:08Z",
+      "side": 1,
+      "message": "This should be prerequisiteTasks",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 20
+      },
+      "revId": "e68c7ea3e0704dfa33db88ed4269cc6d1817847f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f4cb5b0_2ab7021e",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/QuestTasks.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-07-29T17:10:08Z",
+      "side": 1,
+      "message": "This should be exclusionTasks",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "e68c7ea3e0704dfa33db88ed4269cc6d1817847f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
