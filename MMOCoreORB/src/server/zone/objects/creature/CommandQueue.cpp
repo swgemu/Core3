@@ -122,11 +122,11 @@ CommandReference<CommandQueueAction*> CommandQueue::getNextAction() {
 	return queueVector.get(0);
 }
 
-int CommandQueue::handleRunningState() {
+void CommandQueue::handleRunningState() {
 	auto creature = weakCreature.get();
 
 	if (creature == nullptr) {
-		return 0;
+		return;
 	}
 
 	Locker guard(&queueMutex);
@@ -136,24 +136,24 @@ int CommandQueue::handleRunningState() {
 #endif
 
 	if (queueVector.size() <= 0)
-		return 0;
+		return;
 
 	ZoneServer* zoneServer = creature->getZoneServer();
 
 	if (zoneServer == nullptr) {
-		return 0;
+		return;
 	}
 
 	auto objectController = zoneServer->getObjectController();
 
 	if (objectController == nullptr) {
-		return 0;
+		return;
 	}
 
 	auto action = getNextAction();
 
 	if (action == nullptr) {
-		return 0;
+		return;
 	}
 
 	guard.release();
@@ -163,7 +163,7 @@ int CommandQueue::handleRunningState() {
 	auto queueCommand = objectController->getQueueCommand(action->getCommand());
 
 	if (queueCommand == nullptr)
-		return 0;
+		return;
 
 	int priority = queueCommand->getDefaultPriority();
 
@@ -176,7 +176,7 @@ int CommandQueue::handleRunningState() {
 	Time* nextActionTime = creature->getNextActionTime();
 
 	if (nextActionTime == nullptr)
-		return 0;
+		return;
 
 	CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
 
@@ -204,11 +204,11 @@ int CommandQueue::handleRunningState() {
 		creature->info(true) << "Next normal action is future returning time of " << remainingActionTime;
 #endif
 
-		return remainingActionTime;
+		return;
 	}
 
 	if (queueCommand->addToCombatQueue() && ((creature->hasPostureChangeDelay() && priority != QueueCommand::IMMEDIATE) || creature->hasAttackDelay())) {
-		return DEFAULTTIME;
+		return;
 	}
 
 	time = objectController->activateCommand(creature, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
@@ -223,8 +223,6 @@ int CommandQueue::handleRunningState() {
 
 	if (time > 0)
 		nextActionTime->addMiliTime((uint32)(time * 1000));
-
-	return time * 1000;
 }
 
 void CommandQueue::run() {
@@ -261,17 +259,13 @@ void CommandQueue::run() {
 				break;
 			}
 
-			int delay = handleRunningState();
+			handleRunningState();
 
 			if (creature->hasAttackDelay() || creature->hasPostureChangeDelay()) {
 				state = DELAY;
-				delay = DEFAULTTIME;
 			}
 
-			if (delay <= 0)
-				delay = DEFAULTTIME;
-
-			queueTask->reschedule(delay);
+			queueTask->reschedule(DEFAULTTIME);
 
 			break;
 		}
