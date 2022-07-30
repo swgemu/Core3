@@ -370,7 +370,10 @@ void FrsManagerImplementation::playerLoggedIn(CreatureObject* player) {
 	Locker lock(player);
 
 	validatePlayerData(player);
-	deductDebtExperience(player);
+
+	if (!ConfigManager::instance()->getBool("Core3.FrsManager.ImmediateMaintXpDeduction", false)) {
+		deductDebtExperience(player);
+	}
 }
 
 bool FrsManagerImplementation::isBanned(CreatureObject* player) {
@@ -848,24 +851,26 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 	if (ghost == nullptr)
 		return;
 
+	if (!player->isOnline())
+		sendSystemMessage = false;
+
 	TransactionLog trx(TrxCode::EXPERIENCE, player);
 
 	if (amount > 0) {
-
-          	if (ghost->hasCappedExperience("force_rank_xp"))
-                {
-                	StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
-                	message.setTO("exp_n", "force_rank_xp");
-                	player->sendSystemMessage(message);
-                	return;
-                }
+		if (ghost->hasCappedExperience("force_rank_xp")) {
+			if (sendSystemMessage) {
+				StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
+				message.setTO("exp_n", "force_rank_xp");
+				player->sendSystemMessage(message);
+			}
+			return;
+		}
 
 		ghost->addExperience(trx, "force_rank_xp", amount, true);
 
 		if (sendSystemMessage) {
 			StringIdChatParameter param("@force_rank:experience_granted"); // You have gained %DI Force Rank experience.
 			param.setDI(amount);
-
 			player->sendSystemMessage(param);
 		}
 	} else {
@@ -901,8 +906,13 @@ void FrsManagerImplementation::adjustFrsExperience(CreatureObject* player, int a
 
 		int reqXp = rankingData->getRequiredExperience();
 
-		if (reqXp > curExperience)
+		if (reqXp > curExperience) {
+			auto zoneServer = this->zoneServer.get();
+			ChatManager* chatManager = zoneServer->getChatManager();
+
+			chatManager->sendMail("Enclave Records", "@force_rank:demote_xp_debt_sub", "@force_rank:demote_xp_debt_body", player->getFirstName());
 			demotePlayer(player);
+		}
 	}
 }
 
@@ -976,11 +986,26 @@ void FrsManagerImplementation::deductMaintenanceXp(CreatureObject* player) {
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	StringIdChatParameter mailBody("@force_rank:xp_maintenance_body"); // You have lost %DI Force Rank experience. All members of Rank 1 or higher must pay experience each day to remain in their current positions. (Note: This loss may not take effect until your next login.)
-	mailBody.setDI(maintXp);
 
-	chatManager->sendMail("Enclave Records", "@force_rank:xp_maintenace_sub", mailBody, player->getFirstName(), nullptr);
+	if (ConfigManager::instance()->getBool("Core3.FrsManager.ImmediateMaintXpDeduction", false)) {
+		Locker clocker(managerData, player);
+		int curDebt = managerData->getExperienceDebt(player->getObjectID());
 
-	addExperienceDebt(player, maintXp);
+		String msg = "You have lost " + String::valueOf(maintXp) + " Force Rank experience. All members of Rank 1 or higher must pay experience each day to remain in their current positions.";
+
+		if (curDebt > 0) {
+			maintXp += curDebt;
+			msg = "You have lost " + String::valueOf(maintXp) + " Force Rank experience. This includes " + String::valueOf(curDebt) + " previously banked experience debt. All members of Rank 1 or higher must pay experience each day to remain in their current positions.";
+		}
+		chatManager->sendMail("Enclave Records", "@force_rank:xp_maintenace_sub", msg, player->getFirstName());
+		adjustFrsExperience(player, maintXp * -1);
+	} else {
+		addExperienceDebt(player, maintXp);
+		StringIdChatParameter mailBody("@force_rank:xp_maintenance_body"); // You have lost %DI Force Rank experience. All members of Rank 1 or higher must pay experience each day to remain in their current positions. (Note: This loss may not take effect until your next login.)
+		mailBody.setDI(maintXp);
+
+		chatManager->sendMail("Enclave Records", "@force_rank:xp_maintenace_sub", mailBody, player->getFirstName(), nullptr);
+	}
 }
 
 void FrsManagerImplementation::addExperienceDebt(CreatureObject* player, int amount) {
