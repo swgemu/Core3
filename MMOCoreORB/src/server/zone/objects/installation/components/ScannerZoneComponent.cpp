@@ -101,9 +101,9 @@ void ScannerZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTr
 					}
 				}
 
-				Locker lock(player);
+				Locker lock(playerObject);
 
-				player->setFactionStatus(FactionStatus::OVERT);
+				playerObject->updateLastGcwPvpCombatActionTimestamp();
 			}
 		}
 	}
