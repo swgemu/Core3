@@ -1847,7 +1847,7 @@ void AiAgentImplementation::activateRecovery() {
 
 void AiAgentImplementation::activatePostureRecovery() {
 	// Handle AI being Knocked down
-	if (isKnockedDown() && !hasPostureChangeDelay()) {
+	if (isKnockedDown() && !hasPostureChangeDelay() && (!isNpc() || System::random(100) < 40)) {
 		enqueueCommand(STRING_HASHCODE("stand"), 0, 0, "");
 		return;
 	}

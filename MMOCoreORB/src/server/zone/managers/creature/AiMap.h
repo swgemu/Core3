@@ -446,6 +446,7 @@ private:
 		_REGISTERLEAF(CheckHasHarvestTargets);
 		_REGISTERLEAF(CheckShouldRest);
 		_REGISTERLEAF(CheckStopResting);
+		_REGISTERLEAF(CheckQueueSize);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);

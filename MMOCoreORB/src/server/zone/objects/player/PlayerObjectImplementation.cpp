@@ -2043,17 +2043,21 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 			ManagedReference<SceneObject*> targetObject = zoneServer->getObject(creature->getTargetID());
 
 			if (targetObject != nullptr) {
-				if (targetObject->isInRange(creature, Math::max(10, creature->getWeapon()->getMaxRange()) + targetObject->getTemplateRadius() + creature->getTemplateRadius())) {
-					creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
+				WeaponObject* weapon = creature->getWeapon();
+
+				if (weapon != nullptr) {
+					if (targetObject->isInRange(creature, Math::max(10, weapon->getMaxRange()) + targetObject->getTemplateRadius() + creature->getTemplateRadius())) {
+						creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
+					}
+
+					float weaponSpeed = CombatManager::instance()->calculateWeaponAttackSpeed(creature, weapon, 1.f);
+					float delay = weaponSpeed * 1000;
+
+					Locker lock(creature);
+
+					// as long as the target is still valid, we still want to continue to queue auto attacks
+					cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", (uint64)delay);
 				}
-
-				float weaponSpeed = ((uint64)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f)));
-				uint64 delay = weaponSpeed * 1000;
-
-				Locker lock(creature);
-
-				// as long as the target is still valid, we still want to continue to queue auto attacks
-				cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", delay);
 			} else {
 				creature->setTargetID(0);
 			}
