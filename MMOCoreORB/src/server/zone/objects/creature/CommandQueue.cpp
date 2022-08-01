@@ -122,11 +122,11 @@ CommandReference<CommandQueueAction*> CommandQueue::getNextAction() {
 	return queueVector.get(0);
 }
 
-void CommandQueue::handleRunningState() {
+int CommandQueue::handleRunningState() {
 	auto creature = weakCreature.get();
 
 	if (creature == nullptr) {
-		return;
+		return 0;
 	}
 
 	Locker guard(&queueMutex);
@@ -136,34 +136,34 @@ void CommandQueue::handleRunningState() {
 #endif
 
 	if (queueVector.size() <= 0)
-		return;
+		return 0;
 
 	ZoneServer* zoneServer = creature->getZoneServer();
 
 	if (zoneServer == nullptr) {
-		return;
+		return 0;
 	}
 
 	auto objectController = zoneServer->getObjectController();
 
 	if (objectController == nullptr) {
-		return;
+		return 0;
 	}
 
 	auto action = getNextAction();
 
 	if (action == nullptr) {
-		return;
+		return 0;
 	}
 
 	guard.release();
 
-	float time = 0.1f;
+	float time = 0.f;
 
 	auto queueCommand = objectController->getQueueCommand(action->getCommand());
 
 	if (queueCommand == nullptr)
-		return;
+		return time;
 
 	int priority = queueCommand->getDefaultPriority();
 
@@ -176,39 +176,44 @@ void CommandQueue::handleRunningState() {
 	Time* nextActionTime = creature->getNextActionTime();
 
 	if (nextActionTime == nullptr)
-		return;
+		return time;
 
-	CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
+	Time currTime;
+	int remainingActionTime = nextActionTime->getMiliTime() - currTime.getMiliTime();
 
-	if (cooldownTimerMap != nullptr && !cooldownTimerMap->isPast("autoAttackDelay")) {
-		const Time* autoAttackTime = cooldownTimerMap->getTime("autoAttackDelay");
-
-		if (autoAttackTime != nullptr) {
-			auto autoTime = fabs(autoAttackTime->miliDifference());
-
-			if (autoTime > 100) {
+	// Auto attack timer only applies to players
+	if (creature->isPlayerCreature()) {
 #ifdef DEBUG_QUEUE
-				if (creature->isPlayerCreature())
-					creature->info(true) << " auto attack time = " << autoTime;
+		creature->info(true) << "Remaining action time = " << remainingActionTime;
 #endif
-				nextActionTime->addMiliTime(autoTime);
+
+		CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
+
+		if (cooldownTimerMap != nullptr && !cooldownTimerMap->isPast("autoAttackDelay")) {
+			const Time* autoAttackTime = cooldownTimerMap->getTime("autoAttackDelay");
+
+			if (autoAttackTime != nullptr) {
+				auto autoTime = fabs(autoAttackTime->miliDifference());
+
+				if (autoTime > remainingActionTime) {
+	#ifdef DEBUG_QUEUE
+					creature->info(true) << "Auto attack delay is > than remainingActionTime adding to delay = " << autoTime;
+	#endif
+					nextActionTime->addMiliTime(autoTime);
+				}
 			}
 		}
 	}
 
 	if (priority == QueueCommand::NORMAL && nextActionTime->isFuture()) {
-		Time currTime;
-		int remainingActionTime = nextActionTime->getMiliTime() - currTime.getMiliTime();
-
 #ifdef DEBUG_QUEUE
 		creature->info(true) << "Next normal action is future returning time of " << remainingActionTime;
 #endif
-
-		return;
+		return remainingActionTime;
 	}
 
 	if (queueCommand->addToCombatQueue() && ((creature->hasPostureChangeDelay() && priority != QueueCommand::IMMEDIATE) || creature->hasAttackDelay())) {
-		return;
+		return DEFAULTTIME;
 	}
 
 	time = objectController->activateCommand(creature, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
@@ -219,10 +224,26 @@ void CommandQueue::handleRunningState() {
 
 	removeAction(action);
 
-	nextActionTime->updateToCurrentTime();
+	if (priority == QueueCommand::NORMAL)
+		nextActionTime->updateToCurrentTime();
 
-	if (time > 0)
-		nextActionTime->addMiliTime((uint32)(time * 1000));
+	 if (creature->isAiAgent()) {
+		if (priority == QueueCommand::NORMAL) {
+			time = 2;
+			nextActionTime->addMiliTime(2000);
+		} else {
+			return DEFAULTTIME;
+		}
+	} else if (time > 0) {
+		uint64 miliTime = time * 1000;
+#ifdef DEBUG_QUEUE
+		creature->info(true) << "Command Delay Time > 0 -- adding to next action time " << miliTime;
+#endif
+
+		nextActionTime->addMiliTime(miliTime);
+	}
+
+	return time * 1000;
 }
 
 void CommandQueue::run() {
@@ -259,13 +280,21 @@ void CommandQueue::run() {
 				break;
 			}
 
-			handleRunningState();
+			int delay = handleRunningState();
+			Time* nextActionTime = creature->getNextActionTime();
 
-			if (creature->hasAttackDelay() || creature->hasPostureChangeDelay()) {
+			if (creature->hasAttackDelay() || creature->hasPostureChangeDelay() || (nextActionTime != nullptr && creature->isPlayerCreature() && nextActionTime->isFuture())) {
 				state = DELAY;
+				delay = DEFAULTTIME;
 			}
 
-			queueTask->reschedule(DEFAULTTIME);
+			if (delay <= 0)
+				delay = DEFAULTTIME;
+
+			if (creature->isAiAgent())
+				queueTask->reschedule(delay);
+			else
+				queueTask->reschedule(DEFAULTTIME);
 
 			break;
 		}
@@ -273,14 +302,11 @@ void CommandQueue::run() {
 			bool attackDelay = creature->hasAttackDelay();
 			bool postureDelay = creature->hasPostureChangeDelay();
 
-			if (!attackDelay && !postureDelay) {
-				state = WAITING;
-			}
-
+			Time* nextActionTime = creature->getNextActionTime();
 			int actions = checkActions(creature);
 
-			if (actions == QueueCommand::NOCOMBATQUEUE || actions == QueueCommand::FRONT || (!attackDelay && actions == QueueCommand::IMMEDIATE)) {
-				state = WAITING;
+			if ((!attackDelay && !postureDelay && nextActionTime != nullptr && !nextActionTime->isFuture()) || actions == QueueCommand::NOCOMBATQUEUE || actions == QueueCommand::FRONT || (!attackDelay && actions == QueueCommand::IMMEDIATE)) {
+				state = RUNNING;
 			}
 
 			queueTask->reschedule(DEFAULTTIME);
@@ -423,15 +449,11 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 	int oldSize = queueVector.size();
 #endif
 
-	Time* nextAction = creature->getNextActionTime();
+	if (priority == QueueCommand::FRONT) {
+		Time* nextAction = creature->getNextActionTime();
 
-	if (nextAction != nullptr) {
-		if (queueVector.size() > 0 && !nextAction->isPast()) {
-			if (priority == QueueCommand::FRONT) {
-				action->setCompareToCounter(queueVector.get(0)->getCompareToCounter() - 1);
-			}
-		} else {
-			nextAction->updateToCurrentTime();
+		if (nextAction != nullptr && queueVector.size() > 0 && !nextAction->isPast()) {
+			action->setCompareToCounter(queueVector.get(0)->getCompareToCounter() - 1);
 		}
 	}
 
@@ -443,7 +465,7 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 
 	if (state == WAITING && !queueTask->isScheduled()) {
 #ifdef DEBUG_QUEUE
-	creature->info(true) << "Scheduling for DEFAULTTIME";
+		creature->info(true) << "Scheduling for DEFAULTTIME";
 #endif // DEBUG_QUEUE
 		queueTask->schedule(DEFAULTTIME);
 	}

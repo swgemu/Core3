@@ -14,6 +14,9 @@ addAiTemplate("aggroDefault", aggroDefault)
 
 attackDefault = {
 	{id="4024177786",	name="Sequence",	pid="none"},
+	{id="2284645252",	name="Not",	pid="4024177786"},
+	{id="2988398068",	name="If",	pid="2284645252"},
+	{id="1262112190",	name="CheckQueueSize",	pid="2988398068"},
 	{id="2812006626",	name="RandomSelector",	pid="4024177786"},
 	{id="169743063",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
 	{id="1932903383",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},

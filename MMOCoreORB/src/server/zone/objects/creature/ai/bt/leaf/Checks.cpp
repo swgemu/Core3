@@ -717,3 +717,16 @@ template<> bool CheckStopResting::check(AiAgent* agent) const {
 
 	return true;
 }
+
+template<> bool CheckQueueSize::check(AiAgent* agent) const {
+	if (agent == nullptr)
+		return false;
+
+	int size = agent->getCommandQueueSize();
+
+	if (size >= 4) {
+		return true;
+	}
+
+	return false;
+}
