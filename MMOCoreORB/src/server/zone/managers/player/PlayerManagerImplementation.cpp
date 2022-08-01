@@ -6337,6 +6337,8 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 	int frsXpAdjustment = 0;
 	bool throttleOnly = true;
 
+	bool accountVictimList = ConfigManager::instance()->getBool("PlayerManager.accountVictimList", false);
+
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
 		TangibleObject* attacker = threatMap->elementAt(i).getKey();
@@ -6373,7 +6375,13 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			highDamageAttacker = attackerCreo;
 		}
 
-		if (attackerGhost->hasOnVictimList(player->getObjectID())) {
+		uint64 victimId = player->getObjectID();
+
+		if (accountVictimList) {
+			victimId = ghost->getAccountID();
+		}
+
+		if (attackerGhost->hasOnVictimList(victimId)) {
 			String stringFile;
 
 			if (attackerCreo->getSpecies() == CreatureObject::TRANDOSHAN)
@@ -6423,7 +6431,7 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 			}
 		}
 
-		attackerGhost->addToVictimList(player->getObjectID());
+		attackerGhost->addToVictimList(victimId);
 		throttleOnly = false;
 
 		if (defenderPvpRating > PlayerObject::PVP_RATING_FLOOR) {
