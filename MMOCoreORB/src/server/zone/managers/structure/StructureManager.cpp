@@ -1020,7 +1020,7 @@ void StructureManager::reportStructureStatus(CreatureObject* creature, Structure
 					+ structure->getMaintenanceMods());
 	}
 
-	if (structure->isInstallationObject() && !structure->isGeneratorObject() && !structure->isCivicStructure()) {
+	if (structure->isInstallationObject() && structure->getGameObjectType() != SceneObjectType::GENERATOR && !structure->isCivicStructure()) {
 		InstallationObject* installation = cast<InstallationObject*>(structure);
 
 		float secsRemainingPower = 0.f;

@@ -4,81 +4,46 @@
 
 package server.zone.objects.installation;
 
-import system.util.SortedVector;
-import engine.service.proto.BasePacket;
 import server.zone.objects.structure.StructureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
 include templates.SharedObjectTemplate;
-import server.zone.objects.installation.SyncrhonizedUiListenInstallationTask;
-import server.zone.objects.resource.ResourceSpawn;
-import server.zone.objects.resource.ResourceContainer;
+import server.zone.objects.installation.InstallationTickTask;
 import system.lang.Time;
 import server.zone.objects.scene.SceneObject;
-include server.zone.objects.installation.HopperList;
 include server.zone.CloseObjectsVector;
-
 import server.zone.objects.tangible.wearables.ArmorObject;
+include server.zone.objects.scene.SceneObjectType;
+include server.zone.objects.installation.HopperList;
 
 @json
 class InstallationObject extends StructureObject {
-	protected transient SyncrhonizedUiListenInstallationTask syncUiTask;
-
-	protected boolean operating;
-
+	protected transient InstallationTickTask tickTask;
+	
 	@dereferenced
-	protected transient SortedVector<CreatureObject> operatorList;
+	protected Time lastTickTime;
 
+	protected boolean activated;
 	protected int installationType;
-
+	protected float power;
+	protected float powerRate;
+	
 	@dereferenced
-	protected Time resourceHopperTimestamp;
-
-	@dereferenced
-	protected Time lastStartTime;
-
-	@dereferenced
-	protected Time lastStopTime;
-
-	@dereferenced
-	protected HopperList resourceHopper; // ID + Size
-
-	protected float hopperSizeMax;
-	protected float extractionRate;
-	protected float extractionRemainder;
-	protected float spawnDensity;
-	protected ResourceSpawn currentSpawn;
+	protected HopperList resourceHopper; // No longer used, this is just here for conversion
 
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
 
 		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
-		operating = false;
+		activated = false;
 
 		installationType = 0;
-		extractionRemainder = 0;
-
-		operatorList.setNoDuplicateInsertPlan();
-
-		hopperSizeMax = 10000;
-		extractionRate = 100;
-		spawnDensity = 0;
+		power = 0.f;
+		powerRate = 0.f;
 	}
 
-	public void initializeTransientMembers() {
-		super.initializeTransientMembers();
-
-		super.staticObject = false;
-
-		operatorList.setNoDuplicateInsertPlan();
-
-		Logger.setLoggingName("InstallationObject");
-
-		/*if (resourceHopper.size() != 0) {
-			Logger.info("loaded with hopper size:" + String.valueOf(resourceHopper.size()), true);
-		}*/
-	}
+	public native void initializeTransientMembers();
 
 	/**
 	 * Destroys this object from database
@@ -103,80 +68,18 @@ class InstallationObject extends StructureObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 
 	@preLocked
-	public native void updateResourceContainerQuantity(ResourceContainer container, int newQuantity, boolean notifyClient = true);
-
+	public abstract native void doTick();
+	
 	@preLocked
-	public abstract native void setOperating(boolean operating, boolean notifyClient = true);
-
-	@preLocked
-	public native void activateUiSync();
-
-	@dirty
-	public abstract void updateOperators() {
-
+	public abstract void scheduleTickTask(boolean immediate = false) {
+		return;
 	}
-
+	
 	@preLocked
-	public native void verifyOperators();
-
+	public native void activate(CreatureObject player = null);
+	
 	@preLocked
-	public abstract native void updateInstallationWork();
-
-	public native void handleStructureAddEnergy(CreatureObject player);
-
-	@preLocked
-	public native void setActiveResource(ResourceContainer container);
-	@preLocked
-	public native void changeActiveResourceID(unsigned long spawnObjectID);
-	@preLocked
-	public native void addResourceToHopper(ResourceContainer container);
-	@preLocked
-	public native void clearResourceHopper();
-
-	@dirty
-	public native float getHopperSize();
-
-	/**
-	 * @param workingTime Time till when the installation can work
-	 * @returns true if to continue working, false to shutdown after next hopper update
-	 */
-	@local
-	@preLocked
-	public native boolean updateMaintenance(@dereferenced Time workingTime);
-
-	/**
-	 * @param workingTime time till when harvester can work
-	 */
-	@local
-	public native void updateHopper(@dereferenced Time workingTime, boolean shutdownAfterUpdate);
-
-	@dirty
-	public native int getHopperItemQuantity(ResourceSpawn spawn);
-	@dirty
-	public native ResourceContainer getContainerFromHopper(ResourceSpawn spawn);
-
-	@dirty
-	public native unsigned long getActiveResourceSpawnID();
-
-	@dirty
-	public native float getActualRate();
-
-	@dirty
-	@local
-	public native void broadcastToOperators(BasePacket packet);
-
-	@preLocked
-	public void addOperator(CreatureObject player) {
-		operatorList.put(player);
-	}
-
-	@preLocked
-	public void removeOperator(CreatureObject player) {
-		operatorList.drop(player);
-	}
-
-	@dirty
-	public native void sendBaselinesTo(SceneObject player);
+	public native void deactivate();
 
 	@dirty
 	public boolean isInstallationObject() {
@@ -184,8 +87,8 @@ class InstallationObject extends StructureObject {
 	}
 
 	@read
-	public boolean isOperating() {
-		return operating;
+	public boolean isActive() {
+		return activated;
 	}
 
 	@read
@@ -193,52 +96,40 @@ class InstallationObject extends StructureObject {
 		return installationType;
 	}
 
-	@read
-	public float getExtractionRate() {
-		return extractionRate;
-	}
-
-	@read
-	public float getHopperSizeMax() {
-		return hopperSizeMax;
-	}
-
-	@preLocked
-	public native void updateStructureStatus();
-
-	@local
-	@dirty
-	public HopperList getHopperList() {
-		return resourceHopper;
-	}
-
 	@dirty
 	public abstract boolean isHarvesterObject() {
 		return false;
 	}
-
+	
 	@dirty
-	public abstract boolean isGeneratorObject() {
-		return false;
+	public boolean isGenerator() {
+		return getGameObjectType() == SceneObjectType.GENERATOR;
+	}
+	
+	@dirty
+	public boolean isFactory() {
+		return getGameObjectType() == SceneObjectType.FACTORY;
+	}
+	
+	@dirty
+	public boolean isMinefield() {
+		return getGameObjectType() == SceneObjectType.MINEFIELD;
 	}
 
 	@dirty
-	public abstract boolean isShuttleInstallation() {
-		return false;
+	public boolean isShuttleInstallation() {
+		return getGameObjectType() == SceneObjectType.SHUTTLEINSTALLATION;
 	}
-
-	@local
-	@preLocked
-	public native void setHopperSizeMax(float size);
-
-	@local
-	@preLocked
-	public native void setExtractionRate(float rate);
-
-	//public native void setCombatState();
+	
+	@dirty
+	public boolean isTurretInstallation() {
+		return getGameObjectType() == SceneObjectType.DESTRUCTIBLE;
+	}
 
 	@dirty
 	public native boolean isAggressiveTo(CreatureObject object);
+	
+	public native unsigned long getOutOfPowerTime();
 
 	/**
 	* Evaluates if this can be attacked by object
@@ -258,5 +149,30 @@ class InstallationObject extends StructureObject {
 	@read
 	public abstract int getReceiverFlags() {
 		return CloseObjectsVector.INSTALLATIONTYPE | super.getReceiverFlags();
+	}
+	
+	@preLocked
+	public void updateLastTickTime() {
+		lastTickTime.updateToCurrentTime();
+	}
+	
+	@read
+	public float getPower() {
+		return power;
+	}
+	
+	@read
+	public float getPowerRate() {
+		return powerRate;
+	}
+	
+	@preLocked
+	public void setPower(float newPower) {
+		power = newPower;
+	}
+	
+	@preLocked
+	public void setPowerRate(float newRate) {
+		powerRate = newRate;
 	}
 }

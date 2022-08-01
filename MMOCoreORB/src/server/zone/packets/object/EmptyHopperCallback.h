@@ -8,32 +8,32 @@
 #ifndef EMPTYHOPPERCALLBACK_H_
 #define EMPTYHOPPERCALLBACK_H_
 
+#include "../harvester/HarvesterObjectMessage7.h"
 #include "ObjectControllerMessageCallback.h"
 #include "GenericResponse.h"
-#include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
 
 class EmptyHopperCallback : public MessageCallback {
+	uint64 playerId;
 	uint64 harvesterId;
 	uint64 resourceId;
-	uint32 quantity;
-	uint8 byte1;
-	uint8 byte2;
+	int quantity;
+	bool discard;
+	uint8 sequenceId;
 
 	ObjectControllerMessageCallback* objectControllerMain;
 public:
 	EmptyHopperCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
-		harvesterId(0), resourceId(0), quantity(0), byte1(0), byte2(0), objectControllerMain(objectControllerCallback) {
+		playerId(0), harvesterId(0), resourceId(0), quantity(0), discard(false), sequenceId(0), objectControllerMain(objectControllerCallback) {
 	}
 
 	void parse(Message* message) {
-		message->shiftOffset(12);
-		 // skip passed player
+		playerId = message->parseLong();
 		harvesterId = message->parseLong();
 		resourceId = message->parseLong();
-		quantity = message->parseInt(); // need to verify the quantity exists in the hopper
-		byte1 = message->parseByte(); // Retrieve(0) vs Discard(1)
-		byte2 = message->parseByte(); // checksum?
+		quantity = message->parseInt();
+		discard = message->parseByte();
+		sequenceId = message->parseByte();
 	}
 
 	void run() {
@@ -44,103 +44,31 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(harvesterId);
 
-		if (object == nullptr || !object->isInstallationObject()) {
-			//player->error("not parsing right");
+		if (object == nullptr || !object->isHarvesterObject())
 			return;
-		}
-
-		GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
-		player->sendMessage(gr);
-
-		InstallationObject* inso = cast<InstallationObject*>( object.get());
 		
-		if (inso == nullptr)
-			return;
+		HarvesterObject* harvester = cast<HarvesterObject*>( object.get());
 
-		/*if (!inso->isHarvesterObject())
+		if (harvester == nullptr)
 			return;
-
-		HarvesterObject* harvester = cast<HarvesterObject*>( inso);*/
 
 		try {
-			Locker clocker(inso, player);
+			Locker clocker(harvester, player);
 
-			if (!inso->isOnAdminList(player)) {
+			if (!harvester->isOnAdminList(player)) {
 				return;
 			}
 
-			if (!inso->isInRange(player, 20)) {
-				player->sendSystemMessage("You are too far away");
+			if (!harvester->isInRange(player, 20)) {
+				player->sendSystemMessage("You are too far away to use that.");
 				return;
 			}
 
-			SceneObject* inventory = player->getSlottedObject("inventory");
-
-			ManagedReference<ResourceSpawn*> resourceSpawn = server->getZoneServer()->getObject(resourceId).castTo<ResourceSpawn*>();
-
-			if (resourceSpawn == nullptr) {
-				player->error("wrong spawn id");
-				return;
-			}
-
-			ManagedReference<ResourceContainer*> container = inso->getContainerFromHopper(resourceSpawn);
-
-			if (container == nullptr) {
-				player->error("null container");
-				return;
-			}
-
-			if (container->getQuantity() == 0) {
-				return;
-			}
-
-			if (byte1 == 0 && quantity > container->getQuantity()) {
-				player->error("too much splitting");
-				return;
-			}
-
-			if (byte1 == 0 && quantity > ResourceContainer::MAXSIZE) {
-				quantity = ResourceContainer::MAXSIZE;
-			}
-
-			if (byte1 == 1) {
-				//inso->removeResourceFromHopper(container);
-				int oldQuantity = container->getQuantity();
-				int newQuantity = oldQuantity - quantity;
-
-				if(newQuantity < 0)
-					newQuantity = 0;
-
-				if(newQuantity > ResourceContainer::MAXSIZE)
-					newQuantity = ResourceContainer::MAXSIZE;
-
-				inso->updateResourceContainerQuantity(container, newQuantity, true);
-			} else if (byte1 == 0) {
-				if (!inventory->isContainerFullRecursive()) {
-					Reference<ResourceSpawn*> resSpawn = container->getSpawnObject();
-					Locker locker(resSpawn);
-
-					ManagedReference<ResourceContainer*> newContainer = resSpawn->createResource(quantity);
-					if (inventory->transferObject(newContainer, -1, false)) {
-						inventory->broadcastObject(newContainer, true);
-
-						inso->updateResourceContainerQuantity(container, container->getQuantity() - quantity, true);
-					} else {
-						newContainer->destroyObjectFromDatabase(true);
-					}
-				} else {
-					StringIdChatParameter stringId("error_message", "inv_full");
-					player->sendSystemMessage(stringId);
-				}
-			}
-
-			inso->broadcastToOperators(new HarvesterObjectMessage7(inso));
+			harvester->emptyHopper(player, resourceId, quantity, discard, sequenceId);
 
 		} catch (Exception& e) {
 			player->error("unreported exception caught in EmptyHopperCallback::run");
 		}
-
-		//if (byte1 == 0 && player->getInventory()->getUnequippedItemCount() >= InventoryImplementation::MAXUNEQUIPPEDCOUNT)
 	}
 };
 

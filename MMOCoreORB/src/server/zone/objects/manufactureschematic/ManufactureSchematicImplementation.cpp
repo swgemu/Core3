@@ -123,7 +123,7 @@ void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schem
 	draftSchematic = schematic;
 }
 
-void ManufactureSchematicImplementation::synchronizedUIListen(CreatureObject* player, int value) {
+void ManufactureSchematicImplementation::synchronizedUIListen(CreatureObject* player) {
 
 	if (!player->isPlayerCreature() || draftSchematic == nullptr)
 		return;
@@ -262,7 +262,7 @@ void ManufactureSchematicImplementation::sendMsco7(CreatureObject* player) {
 	player->sendMessage(mcso7);
 }
 
-void ManufactureSchematicImplementation::synchronizedUIStopListen(CreatureObject* player, int value) {
+void ManufactureSchematicImplementation::synchronizedUIStopListen(CreatureObject* player) {
 
 }
 

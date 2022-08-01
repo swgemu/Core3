@@ -9,7 +9,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/Zone.h"
 
@@ -26,10 +26,10 @@ int PlaceStructureComponent::notifyStructurePlaced(StructureDeed* deed, Creature
 	structureObject->setSurplusMaintenance(deed->getSurplusMaintenance());
 	structureObject->setSurplusPower(deed->getSurplusPower());
 
-	if (structureObject->isInstallationObject()) {
-		InstallationObject* installationObject = cast<InstallationObject*>(structureObject);
-		installationObject->setExtractionRate(deed->getExtractionRate());
-		installationObject->setHopperSizeMax(deed->getHopperSize());
+	if (structureObject->isHarvesterObject()) {
+		HarvesterObject* harvester = cast<HarvesterObject*>(structureObject);
+		harvester->setMaxExtractionRate(deed->getExtractionRate());
+		harvester->setMaxHopperSize(deed->getHopperSize());
 	}
 
 	return 0;

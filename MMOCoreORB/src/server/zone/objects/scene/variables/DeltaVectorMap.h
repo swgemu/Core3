@@ -159,6 +159,11 @@ public:
 	inline void setNullValue(const V& val) {
 		vectorMap.setNullValue(val);
 	}
+
+	inline void removeAll() {
+		vectorMap.removeAll();
+		updateCounter++;
+	}
 };
 
 

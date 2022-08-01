@@ -180,11 +180,11 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<PoiBuilding>(SceneObjectType::POIBUILDING);
 	objectFactory.registerObject<TutorialBuildingObject>(SceneObjectType::TUTORIALBUILDING);
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::INSTALLATION);
-	objectFactory.registerObject<GarageInstallation>(SceneObjectType::GARAGEINSTALLATION);
-	objectFactory.registerObject<ShuttleInstallation>(SceneObjectType::SHUTTLEINSTALLATION);
+	objectFactory.registerObject<InstallationObject>(SceneObjectType::GARAGEINSTALLATION);
+	objectFactory.registerObject<InstallationObject>(SceneObjectType::SHUTTLEINSTALLATION);
 	objectFactory.registerObject<HarvesterObject>(SceneObjectType::HARVESTER);
 	objectFactory.registerObject<FactoryObject>(SceneObjectType::FACTORY);
-	objectFactory.registerObject<GeneratorObject>(SceneObjectType::GENERATOR);
+	objectFactory.registerObject<HarvesterObject>(SceneObjectType::GENERATOR);
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::DESTRUCTIBLE);
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::MINEFIELD);
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::COVERTSCANNER);
