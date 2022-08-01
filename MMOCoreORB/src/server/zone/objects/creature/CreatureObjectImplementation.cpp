@@ -2553,7 +2553,7 @@ void CreatureObjectImplementation::queueDizzyFallEvent() {
 		return;
 
 	dizzyFallDownEvent = new DizzyFallDownEvent(asCreatureObject());
-	dizzyFallDownEvent->schedule(200);
+	dizzyFallDownEvent->schedule(100);
 }
 
 void CreatureObjectImplementation::activateStateRecovery() {

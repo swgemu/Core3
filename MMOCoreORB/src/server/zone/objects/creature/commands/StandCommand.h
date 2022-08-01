@@ -31,15 +31,17 @@ public:
 			}
 		}
 
-		creature->setPosture(CreaturePosture::UPRIGHT, true, true);
-
 		if (creature->isAiAgent()) {
 			if (creature->isNonPlayerCreatureObject() && creature->isDizzied() && System::random(100) < 85) {
 				creature->queueDizzyFallEvent();
+				return SUCCESS;
 			}
 		} else if (creature->isDizzied() && System::random(100) < 85) {
 			creature->queueDizzyFallEvent();
+			return SUCCESS;
 		}
+
+		creature->setPosture(CreaturePosture::UPRIGHT, true, true);
 
 		return SUCCESS;
 	}
