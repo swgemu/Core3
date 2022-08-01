@@ -3040,8 +3040,24 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* tarCreo) {
 				bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 				if (covertOvert) {
-					if ((ghost->hasGcwTef() || (pvpStatusBitmask & CreatureFlag::OVERT)) && (tarCreo->getFactionStatus() == FactionStatus::OVERT || (tarGhost != nullptr && tarGhost->hasGcwTef())))
-						return true;
+					if (tarGhost != nullptr) {
+						int thisFactionStatus = getFactionStatus();
+						int targetFactionStatus = tarCreo->getFactionStatus();
+
+						bool thisGcwTef = ghost->hasGcwTef();
+						bool targetGcwTef = tarGhost->hasGcwTef();
+
+						// Overt vs Overt
+						if ((thisFactionStatus == FactionStatus::OVERT) && (targetFactionStatus == FactionStatus::OVERT)) {
+							return true;
+						// Covert with GCW TEF and attacker is GCW TEF and Overt or Covert
+						} else if ((thisGcwTef && thisFactionStatus == FactionStatus::COVERT) && targetGcwTef && (targetFactionStatus == FactionStatus::OVERT || targetFactionStatus == FactionStatus::COVERT)) {
+							return true;
+						// Overt with GCW TEF and attacker is Covert with GCW TEF
+						} else if ((thisGcwTef && thisFactionStatus == FactionStatus::OVERT) && (targetGcwTef && targetFactionStatus == FactionStatus::COVERT)) {
+							return true;
+						}
+					}
 				} else {
 					if ((pvpStatusBitmask & CreatureFlag::OVERT) && (tarCreo->getPvpStatusBitmask() & CreatureFlag::OVERT))
 						return true;
@@ -3138,16 +3154,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 
 			bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
-			if (covertOvert) {
-				PlayerObject* ghost = getPlayerObject();
-
-				if (ghost == nullptr)
-					return false;
-
-				if (getFactionStatus() == FactionStatus::ONLEAVE && !ghost->hasGcwTef()) {
-					return false;
-				}
-			} else {
+			if (!covertOvert) {
 				// if tano is overt, creature must be overt
 				if ((object->getPvpStatusBitmask() & CreatureFlag::OVERT) && !(getPvpStatusBitmask() & CreatureFlag::OVERT))
 					return false;
@@ -3294,11 +3301,24 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 				return false;
 
 			// PvP - Different Factions. Both must be overt status or we return false
-			if (thisFaction != creatureFaction) {
+			if (thisFaction != creatureFaction && thisFaction > 0 && creatureFaction > 0) {
 				bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 				if (covertOvert) {
-					if ((getFactionStatus() == FactionStatus::OVERT || ghost->hasGcwTef()) && creature->getFactionStatus() >= FactionStatus::COVERT) {
+					int thisFactionStatus = getFactionStatus();
+					int creatureFactionStatus = creature->getFactionStatus();
+
+					bool thisGcwTef = ghost->hasGcwTef();
+					bool targetGcwTef = targetGhost->hasGcwTef();
+
+					// Overt vs Overt
+					if (thisFactionStatus == FactionStatus::OVERT && creatureFactionStatus == FactionStatus::OVERT) {
+						return true;
+					// Covert with GCW TEF and attacker is Overt or Covert with GCW TEF
+					} else if ((thisGcwTef && thisFactionStatus == FactionStatus::COVERT) && (creatureFactionStatus == FactionStatus::OVERT || (targetGcwTef && creatureFactionStatus == FactionStatus::COVERT))) {
+						return true;
+					// Overt with GCW TEF and attacker is Covert with GCW TEF
+					} else if ((thisGcwTef && thisFactionStatus == FactionStatus::OVERT) && (targetGcwTef && creatureFactionStatus == FactionStatus::COVERT)) {
 						return true;
 					} else {
 						return false;

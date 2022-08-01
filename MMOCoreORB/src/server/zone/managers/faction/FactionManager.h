@@ -20,6 +20,7 @@ public:
 	FactionManager();
 
 	static const int TEFTIMER = 300000;
+	static const int GCWTEFTIMER = 900000;
 
 	/**
 	 * Loads faction configuration information from the faction manager lua file: managers/faction_manager.lua
