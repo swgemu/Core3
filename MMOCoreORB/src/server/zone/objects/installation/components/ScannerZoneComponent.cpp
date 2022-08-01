@@ -63,7 +63,7 @@ void ScannerZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTr
 	if (sceneObject->isScanner() && target->isPlayerCreature() && sceneObject->isInRange(target, 32)){
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
 
-		if (player == nullptr)
+		if (player == nullptr || player->isDead() || player->isIncapacitated())
 			return;
 
 		ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
