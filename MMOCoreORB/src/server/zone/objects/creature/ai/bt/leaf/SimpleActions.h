@@ -446,13 +446,18 @@ public:
 		if (agent->getPosture() != CreaturePosture::UPRIGHT)
 			agent->setPosture(CreaturePosture::UPRIGHT, true);
 
-		if (show) {
+		ManagedReference<SceneObject*> target = nullptr;
+
+		if (agent->peekBlackboard("targetProspect"))
+			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
+
+		if (show && target != nullptr && target->isPlayerCreature()) {
 			agent->showFlyText("npc_reaction/flytext", "alert", 255, 0, 0);
 
-			if (agent->isNpc() && agent->getFaction() > 0)
+			if (agent->isNpc() && agent->getFaction() > 0 && agent->isAggressiveTo(target->asCreatureObject()))
 				agent->doAnimation("search");
 
-			agent->sendReactionChat(nullptr, ReactionManager::ALERT);
+			agent->sendReactionChat(target, ReactionManager::ALERT);
 		}
 
 		return SUCCESS;
@@ -704,7 +709,8 @@ public:
 		if (sqrDist > 35 * 35 || sqrDist < 25 * 25) // Between 35m and 25m
 			return FAILURE;
 
-		agent->faceObject(target, true);
+		if (!(agent->getCreatureBitmask() & CreatureFlag::STATIC))
+			agent->faceObject(target, true);
 
 		if (target->isFacingObject(agent))
 			agent->sendReactionChat(target, ReactionManager::HI);

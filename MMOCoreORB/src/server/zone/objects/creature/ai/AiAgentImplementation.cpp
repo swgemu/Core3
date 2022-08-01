@@ -2757,8 +2757,6 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::WATCHING:
-		if (followCopy != nullptr)
-			faceObject(followCopy, true);
 
 		break;
 	case AiAgent::STALKING:
