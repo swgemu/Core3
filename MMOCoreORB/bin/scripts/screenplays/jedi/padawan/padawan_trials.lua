@@ -183,7 +183,7 @@ function PadawanTrials:startTrial(pPlayer, trialNum, skipNotification)
 		skipNotification = false
 	end
 
-	dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+	dropObserver(QUESTKILL, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 	dropObserver(PROTOTYPECREATED, "PadawanTrials", "notifyCraftedTrainingSaber", pPlayer)
 	dropObserver(TUNEDCRYSTAL, "PadawanTrials", "notifyTunedLightsaberCrystal", pPlayer)
 
@@ -395,8 +395,8 @@ function PadawanTrials:setupHuntTrial(pPlayer)
 	writeScreenPlayData(pPlayer, "JediTrials", "huntTarget", trialData.huntTarget)
 	writeScreenPlayData(pPlayer, "JediTrials", "huntTargetCount", 0)
 	writeScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal", trialData.huntGoal)
-	dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
-	createObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+	dropObserver(QUESTKILL, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+	createObserver(QUESTKILL, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 end
 
 function PadawanTrials:hasCompletedHunt(pPlayer)
@@ -979,7 +979,7 @@ function PadawanTrials:failTrial(pPlayer)
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetCount")
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")
 	
-	dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+	dropObserver(QUESTKILL, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 
 	local failAmount = JediTrials:getTrialFailureCount(pPlayer)
 	local failAmountMsg = nil
@@ -1040,7 +1040,7 @@ function PadawanTrials:passTrial(pPlayer)
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetCount")
 	deleteScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")
 	
-	dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+	dropObserver(QUESTKILL, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 
 	deleteData(playerID .. ":JediTrials:acceptedTask")
 	deleteData(playerID .. ":JediTrials:killedTarget")
@@ -1130,12 +1130,12 @@ function PadawanTrials:onPlayerLoggedIn(pPlayer)
 		local trialState = JediTrials:getTrialStateName(pPlayer, trialNumber)
 
 		if (trialData.trialType == TRIAL_HUNT and tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal")) ~= nil) then
-			dropObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+			dropObserver(QUESTKILL, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 
 			if (self:hasCompletedHunt(pPlayer) and not JediTrials:hasTrialArea(pPlayer)) then
 				self:createMainLocation(pPlayer)
 			elseif (not self:hasCompletedHunt(pPlayer)) then
-				createObserver(KILLEDCREATURE, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
+				createObserver(QUESTKILL, "PadawanTrials", "notifyKilledHuntTarget", pPlayer)
 			end
 		elseif (trialData.trialType == TRIAL_LIGHTSABER and not CreatureObject(pPlayer):hasScreenPlayState(1, trialState .. "_crystal")) then
 			if (CreatureObject(pPlayer):hasScreenPlayState(1, trialState .. "_saber")) then
