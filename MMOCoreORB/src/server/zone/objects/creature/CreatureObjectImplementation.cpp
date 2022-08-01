@@ -3373,11 +3373,17 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	PlayerObject* targetGhost = nullptr;
 
 	if (targetIsPlayer) {
-		 targetGhost = targetCreo->getPlayerObject();
+		targetGhost = targetCreo->getPlayerObject();
 
-		 if (targetGhost != nullptr && targetGhost->isInPvpArea(true) && getGroupID() != 0 && getGroupID() == targetCreo->getGroupID()) {
+		if (targetGhost == nullptr)
+			return false;
+
+		if (targetGhost->isLinkDead() && ghost->getAccountID() == targetGhost->getAccountID() && !ConfigManager::instance()->getBool("Core3.CombatManager.AllowSameAccountLinkDeadBeneficialActions", true))
+			return false;
+
+		if (targetGhost->isInPvpArea(true) && getGroupID() != 0 && getGroupID() == targetCreo->getGroupID()) {
 			return true;
-		 }
+		}
 	}
 
 	uint32 targetFactionStatus = targetCreo->getFactionStatus();
