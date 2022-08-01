@@ -46,7 +46,7 @@ public:
 	~CommandQueue();
 
 	void run();
-	void handleRunningState();
+	int handleRunningState();
 
 	int checkActions(CreatureObject* creature);
 	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments, int priority, int compareCounter);
