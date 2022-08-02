@@ -784,7 +784,7 @@ function ThemeParkLogic:startHuntMission(mission, pConversingPlayer)
 	end
 
 	self:updateWaypoint(pConversingPlayer, planetName, mission.huntTarget.waypointX, mission.huntTarget.waypointY, "target")
-	createObserver(QUESTKILL, self.className, "notifyKilledHuntTarget", pConversingPlayer)
+	createObserver(KILLEDCREATURE, self.className, "notifyKilledHuntTarget", pConversingPlayer)
 
 	return true
 end
