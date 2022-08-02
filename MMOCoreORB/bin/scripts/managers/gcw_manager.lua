@@ -28,7 +28,7 @@ destructionTimer = 600
 -- maximum bases per planet
 maxBasesPerPlanet = 25
 
--- Maximum bases placeable per player
+-- Maximum bases placeable per player. Reducing this number will automatically remove extra bases from players upon login
 maxBasesPerPlayer = 3
 
 -- The construction delay when placing a GCW base in seconds
