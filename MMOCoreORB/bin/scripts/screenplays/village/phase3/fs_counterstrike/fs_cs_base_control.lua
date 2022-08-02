@@ -355,7 +355,7 @@ function FsCsBaseControl:attemptPowerDownShield(pPlayer, campName)
 				self:powerDownShield(pTheater)
 				QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_CS_INTRO)
 				QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_CS_KILL5_GUARDS)
-				createObserver(QUESTKILL, "FsCsBaseControl", "notifyKilledGuard", pPlayer)
+				createObserver(KILLEDCREATURE, "FsCsBaseControl", "notifyKilledGuard", pPlayer)
 
 				CreatureObject(pPlayer):sendSystemMessage("@fs_quest_village:fs_cs_step_intro_complete")
 

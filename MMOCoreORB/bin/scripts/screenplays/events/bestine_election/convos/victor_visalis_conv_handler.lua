@@ -186,8 +186,8 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 		BestineElection:setQuestStep(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_TUSKEN_QUEST, BestineElection.VICTOR_TUSKEN_QUEST_COMPLETED)
 	elseif (screenID == "leave_with_haste") then
 		BestineElection:setQuestStep(pPlayer, BestineElection.VICTOR, BestineElection.VICTOR_TUSKEN_QUEST, BestineElection.VICTOR_TUSKEN_QUEST_ACCEPTED)
-		dropObserver(QUESTKILL, "BestineElection", "notifyKilledCreature", pPlayer)
-		createObserver(QUESTKILL, "BestineElection", "notifyKilledCreature", pPlayer)
+		dropObserver(KILLEDCREATURE, "BestineElection", "notifyKilledCreature", pPlayer)
+		createObserver(KILLEDCREATURE, "BestineElection", "notifyKilledCreature", pPlayer)
 
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
