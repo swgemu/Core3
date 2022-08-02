@@ -196,10 +196,13 @@ int CommandQueue::handleRunningState() {
 				auto autoTime = fabs(autoAttackTime->miliDifference());
 
 				if (autoTime > remainingActionTime) {
-	#ifdef DEBUG_QUEUE
+#ifdef DEBUG_QUEUE
 					creature->info(true) << "Auto attack delay is > than remainingActionTime adding to delay = " << autoTime;
-	#endif
+#endif
 					nextActionTime->addMiliTime(autoTime);
+
+					if (priority == QueueCommand::NORMAL)
+						return autoTime;
 				}
 			}
 		}
