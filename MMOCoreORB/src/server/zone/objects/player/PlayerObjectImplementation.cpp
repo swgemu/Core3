@@ -67,6 +67,7 @@
 #include "server/login/account/AccountManager.h"
 #include "templates/creature/SharedCreatureObjectTemplate.h"
 #include "server/zone/objects/player/sessions/survey/SurveySession.h"
+#include "server/zone/objects/player/events/PlayerBaseRemovalTask.h"
 
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/managers/player/QuestInfo.h"
@@ -237,6 +238,12 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 						ghost->updateLastValidatedPosition();
 					}
 			}, "PlayerObjNotifyLoadDb");
+
+			PlayerBaseRemovalTask* baseTask = new PlayerBaseRemovalTask(player);
+
+			if (baseTask != nullptr) {
+				baseTask->schedule((System::random(5) + 1) * 60 * 1000);
+			}
 		}
 	}
 
@@ -2038,7 +2045,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 
 	if (isOnline()) {
 		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && !creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && !creature->hasAttackDelay() && !creature->hasPostureChangeDelay() &&
-		creature->isNextActionPast() && creature->getCommandQueueSize() == 0 && !creature->isDead() && !creature->isIncapacitated() && cooldownTimerMap->isPast("autoAttackDelay") && !creature->hasAttackDelay() && !creature->hasPostureChangeDelay()) {
+		creature->isNextActionPast() && creature->getCommandQueueSize() == 0 && !creature->isDead() && !creature->isIncapacitated() && cooldownTimerMap->isPast("autoAttackDelay")) {
 
 			ManagedReference<SceneObject*> targetObject = zoneServer->getObject(creature->getTargetID());
 

@@ -207,7 +207,7 @@ class GCWManager extends ManagedService implements Logger {
 	private native void verifyTurrets(BuildingObject building);
 
 	public native boolean canPlaceMoreBases(CreatureObject creature);
-	public native int getBaseCount(CreatureObject creature);
+	public native int getBaseCount(CreatureObject creature, boolean pvpOnly = false);
 	public native boolean hasTooManyBasesNearby(int x, int y);
 	public native void registerGCWBase(BuildingObject building, boolean initializeBase);
 	public native void unregisterGCWBase(BuildingObject building);
@@ -264,7 +264,7 @@ class GCWManager extends ManagedService implements Logger {
 	private native void createPowerRegulatorRules(BuildingObject building);
 	private native void flipPowerSwitch(BuildingObject building, @dereferenced Vector<boolean> switchStates, int flipSwitch);
 
-	public native void scheduleBaseDestruction(BuildingObject building, CreatureObject creature);
+	public native void scheduleBaseDestruction(BuildingObject building, CreatureObject creature, boolean force = false);
 	public native void doBaseDestruction(StructureObject structure);
 	public native void doBaseDestruction(BuildingObject building);
 
@@ -409,9 +409,12 @@ class GCWManager extends ManagedService implements Logger {
 		return maxBasesPerPlanet <= gcwBaseList.size();
 	}
 
-	@read
 	public boolean canPlaceGcwBaseInCombat() {
 		return placeInCombat;
+	}
+
+	public boolean allowPveBasePlacement() {
+		return allowPveBases;
 	}
 
 	public int getImperialBaseCount() {

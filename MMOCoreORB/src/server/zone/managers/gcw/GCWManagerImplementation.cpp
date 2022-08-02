@@ -346,7 +346,7 @@ void GCWManagerImplementation::performGCWTasks() {
 			continue;
 
 		if (!allowPveBases && !(building->getPvpStatusBitmask() & CreatureFlag::OVERT) && building->getFactionBaseType() == PLAYERFACTIONBASE) {
-			scheduleBaseDestruction(building, nullptr);
+			scheduleBaseDestruction(building, nullptr, true);
 			continue;
 		}
 
@@ -477,7 +477,7 @@ bool GCWManagerImplementation::canPlaceMoreBases(CreatureObject* creature) {
 	return true;
 }
 
-int GCWManagerImplementation::getBaseCount(CreatureObject* creature) {
+int GCWManagerImplementation::getBaseCount(CreatureObject* creature, bool pvpOnly) {
 	if (creature == nullptr || !creature->isPlayerCreature())
 		return 0;
 
@@ -496,8 +496,16 @@ int GCWManagerImplementation::getBaseCount(CreatureObject* creature) {
 	for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
 		ManagedReference<SceneObject*> structure = server->getObject(ghost->getOwnedStructure(i));
 
-		if (structure != nullptr && structure->isGCWBase())
-			baseCount++;
+		if (structure != nullptr && structure->isGCWBase()) {
+			if (pvpOnly) {
+				Reference<BuildingObject*> building = structure->asBuildingObject();
+
+				if (building != nullptr && (building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+					baseCount++;
+			} else {
+				baseCount++;
+			}
+		}
 	}
 
 	return baseCount;
@@ -2074,8 +2082,8 @@ void GCWManagerImplementation::flipPowerSwitch(BuildingObject* building, Vector<
 	switchStates.get(affectedSwitch) = !switchStates.get(affectedSwitch);
 }
 
-void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature) {
-	if (isBaseVulnerable(building) && !hasDestroyTask(building->getObjectID())) {
+void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature, bool force) {
+	if ((force || isBaseVulnerable(building)) && !hasDestroyTask(building->getObjectID())) {
 		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
 		if (baseData == nullptr)
