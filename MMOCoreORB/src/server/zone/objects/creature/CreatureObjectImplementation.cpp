@@ -3301,7 +3301,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 				return false;
 
 			// PvP - Different Factions. Both must be overt status or we return false
-			if (thisFaction != creatureFaction && thisFaction > 0 && creatureFaction > 0) {
+			if (thisFaction != creatureFaction) {
 				bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 				if (covertOvert) {
