@@ -536,7 +536,11 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			scanner->setMovementState(AiAgent::FOLLOWING);
 
 			if (player->getFactionStatus() != FactionStatus::OVERT) {
-				player->setFactionStatus(FactionStatus::COVERT);
+				if (ConfigManager::instance()->useCovertOvertSystem()) {
+					player->setFactionStatus(FactionStatus::OVERT);
+				} else  {
+					player->setFactionStatus(FactionStatus::COVERT);
+				}
 			}
 
 			String landingMessage = getFactionStringId(player, "containment_team_imperial", "containment_team_rebel");
