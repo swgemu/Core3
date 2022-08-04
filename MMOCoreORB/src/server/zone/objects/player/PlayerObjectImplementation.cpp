@@ -2553,11 +2553,7 @@ void PlayerObjectImplementation::updateLastCombatActionTimestamp(bool updateGcwC
 	if (updateGcwAction) {
 		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
 
-		if (ConfigManager::instance()->useCovertOvertSystem()) {
-			lastGcwPvpCombatActionTimestamp.addMiliTime(FactionManager::GCWTEFTIMER);
-		} else {
-			lastGcwPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
-		}
+		lastGcwPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
 	}
 
 	schedulePvpTefRemovalTask();

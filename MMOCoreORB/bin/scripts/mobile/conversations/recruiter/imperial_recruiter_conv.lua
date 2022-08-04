@@ -609,7 +609,8 @@ imperialRecruiterConvoTemplate:addScreen(confirm_covert);
 
 covert_complete = ConvoScreen:new {
 	id = "covert_complete",
-	leftDialog = "@faction_recruiter:go_covert_yes", -- Very well.  We will be able to conceal your affiliation in about %DI hours.  Is there anything else with which I can help you?
+	--leftDialog = "@faction_recruiter:go_covert_yes", -- Very well.  We will be able to conceal your affiliation in about %DI hours.  Is there anything else with which I can help you?
+	customDialogText = "Very well. We will be able to conceal your affiliation in about 15 minutes. Is there anything else with which I can help you?",
 	stopConversation = "true",
 	options = {
 	}
@@ -621,7 +622,8 @@ imperialRecruiterConvoTemplate:addScreen(covert_complete);
 
 resign_faction = ConvoScreen:new {
 	id = "resign_faction",
-	leftDialog = "@faction_recruiter:resign_faction_confirm", -- We'd hate to lose you, %TU.  Your request will require %DI hours to process.  Be warned, if you resign all of your faction perks will be lost to you.  This includes your factional backpacks and anything contained within!  Are you sure you want to resign?
+	--leftDialog = "@faction_recruiter:resign_faction_confirm", -- We'd hate to lose you, %TU.  Your request will require %DI hours to process.  Be warned, if you resign all of your faction perks will be lost to you.  This includes your factional backpacks and anything contained within!  Are you sure you want to resign?
+	customDialogText = "We'd hate to lose you. Your request will require 15 minutes to process. Be warned, if you resign all of your faction perks will be lost to you. Are you sure you want to resign?",
 	stopConversation = "false",
 	options = {
 		{"@faction_recruiter:response_yes_to_resign", "confirm_resign"}, -- Yes, I would like to leave the faction.
@@ -632,7 +634,8 @@ imperialRecruiterConvoTemplate:addScreen(resign_faction);
 
 confirm_resign = ConvoScreen:new {
 	id = "confirm_resign",
-	leftDialog = "@faction_recruiter:resign_faction_yes", -- Very well. You will be removed from the %TO faction in %DI hours.
+	--leftDialog = "@faction_recruiter:resign_faction_yes", -- Very well. You will be removed from the %TO faction in %DI hours.
+	customDialogText = "Very well. You will be removed from the Imperial faction in 15 minutes.",
 	stopConversation = "true",
 	options = {}
 }

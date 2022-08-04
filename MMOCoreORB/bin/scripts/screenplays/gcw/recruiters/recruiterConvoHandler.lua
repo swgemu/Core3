@@ -158,19 +158,13 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 			return
 		end
 
-		local recruiterFaction = recruiterScreenplay:getRecruiterFaction(pNpc)
-		recruiterFaction = recruiterFaction:gsub("^%l", string.upper)
-
-		clonedConversation:setDialogTextTO(recruiterFaction)
-		clonedConversation:setDialogTextDI(recruiterScreenplay.covertOvertResignTime)
-
 		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
 
 		if (SceneObject(pPlayer):hasPendingTask("recruiterScreenplay", "handleResign")) then
 			SceneObject(pPlayer):cancelPendingTask("recruiterScreenplay", "handleResign")
 		end
 
-		local timer = recruiterScreenplay.covertOvertResignTime * 60 * 60 * 1000 -- 1hr in MS
+		local timer = recruiterScreenplay.covertOvertResignTime * 60 * 1000 -- Minutes
 
 		SceneObject(pPlayer):addPendingTask(timer, "recruiterScreenplay", "handleResign")
 
@@ -221,11 +215,7 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 			return
 		end
 
-		clonedConversation:setDialogTextDI(recruiterScreenplay.covertOvertResignTime)
-
-		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
-
-		local timer = recruiterScreenplay.covertOvertResignTime * 60 * 60 * 1000 -- 1hr in MS
+		local timer = recruiterScreenplay.covertOvertResignTime * 60 * 1000 -- Minutes
 
 		SceneObject(pPlayer):addPendingTask(timer, "recruiterScreenplay", "handleGoCovert")
 	end

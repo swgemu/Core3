@@ -48,6 +48,9 @@ public:
 			ghost->updateInRangeBuildingPermissions();
 			ghost->setCrackdownTefTowards(0, false);
 			player->clearPvpStatusBit(CreatureFlag::TEF, true);
+
+			if (ConfigManager::instance()->useCovertOvertSystem())
+				player->broadcastPvpStatusBitmask();
 		}
 
 		if (!ghost->hasBhTef())
