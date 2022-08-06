@@ -438,6 +438,8 @@ class GuildObject extends SceneObject {
 	@preLocked
 	public native unsigned long getMemberWithHighestPermission();
 
+	public native void notifyGuildMemberStatus(CreatureObject member, boolean online);
+
 	@dirty
 	@local
 	public native int writeRecursiveJSON(@dereferenced JSONSerializationType j, int maxDepth, Vector<unsigned long> oidPath=null);
