@@ -704,6 +704,19 @@ namespace conf {
 
 			return cachedCovertOvertSystem;
 		}
+
+		inline bool useGuildEnhancements() {
+			static uint32 cachedVersion = 0;
+			static bool cachedGuildEnhancements;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedGuildEnhancements = getBool("Core3.PlayerManager.GuildEnhancements", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedGuildEnhancements;
+		}
 	};
 }
 

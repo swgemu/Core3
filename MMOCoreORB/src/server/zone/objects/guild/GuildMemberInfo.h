@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "engine/util/json_utils.h"
+#include <system/lang/Time.h>
 
 namespace server {
 namespace zone {
@@ -23,12 +24,15 @@ namespace guild {
 		String guildTitle;
 		uint8 permissions;
 		uint64 declaredAllegiance; // TODO: remove after wipe
+		bool onlineStatus;
+		Time lastLogin;
 
 	public:
 		GuildMemberInfo() {
 			playerID = 0;
 			permissions = 0;
 			declaredAllegiance = 0;
+			onlineStatus = false;
 
 			//addSerializableVariables();
 		}
@@ -40,6 +44,8 @@ namespace guild {
 			guildTitle = gmi.guildTitle;
 			permissions = gmi.permissions;
 			declaredAllegiance = gmi.declaredAllegiance;
+			onlineStatus = gmi.onlineStatus;
+			lastLogin = gmi.lastLogin;
 
 			//addSerializableVariables();
 		}
@@ -119,6 +125,25 @@ namespace guild {
 		inline bool hasPermission(uint8 permission) {
 			return (permissions & permission);
 		}
+
+		inline void setOnlineStatus(bool status) {
+			onlineStatus = status;
+
+			if (status) {
+				Time now;
+				lastLogin = now;
+			}
+		}
+
+		inline bool isOnline() {
+			return onlineStatus;
+		}
+
+		inline Time& getLastLoginTime() {
+			return lastLogin;
+		}
+
+
 	};
 }
 }

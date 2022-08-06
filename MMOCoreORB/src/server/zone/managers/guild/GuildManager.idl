@@ -12,6 +12,7 @@ import server.zone.ZoneServer;
 import server.chat.ChatManager;
 import server.chat.room.ChatRoom;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.terminal.guild.GuildTerminal;
 import server.zone.objects.creature.CreatureObject;
 
@@ -128,11 +129,11 @@ class GuildManager extends ManagedService implements Logger {
 
 	public native void sendGuildDisbandConfirmTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
 
-	public native void sendGuildSponsoredListTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
+	public native void sendGuildSponsoredListTo(CreatureObject player, GuildObject guild, TangibleObject guildTerminal);
 
-	public native void sendGuildSponsoredOptionsTo(CreatureObject player, GuildObject guild, unsigned long playerID, GuildTerminal guildTerminal);
+	public native void sendGuildSponsoredOptionsTo(CreatureObject player, GuildObject guild, unsigned long playerID, TangibleObject terminal);
 
-	public native void sendGuildSponsorTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
+	public native void sendGuildSponsorTo(CreatureObject player, GuildObject guild, TangibleObject guildTerminal);
 
 	public native void sendGuildKickPromptTo(CreatureObject player, CreatureObject target);
 

@@ -12,6 +12,9 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/guild/GuildMemberInfo.h"
 #include "server/zone/objects/guild/GuildUpdateEvent.h"
+#include "server/chat/ChatManager.h"
+#include "server/zone/packets/chat/ChatRoomMessage.h"
+#include "server/chat/room/ChatRoom.h"
 
 #define EVENT_RANDOM_MAX_DELTA 3600 * 2 /*2 hours*/
 
@@ -259,6 +262,57 @@ uint64 GuildObjectImplementation::getMemberWithHighestPermission() {
 	}
 
 	return highestMember;
+}
+
+void GuildObjectImplementation::notifyGuildMemberStatus(CreatureObject* member, bool online) {
+	if (member == nullptr)
+		return;
+
+	ManagedReference<ChatRoom*> guildChat = getChatRoom();
+
+	if (guildChat == nullptr)
+		return;
+
+	auto zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	if (chatManager == nullptr)
+		return;
+
+	String playerName = member->getFirstName();
+	StringBuffer bufferMessage;
+	Time now;
+
+	bufferMessage << "\r\\#99FF00" << now.getFormattedTime("%m-%d-%Y %H:%M:%S") << " <" << guildName << ">";
+
+	if (isGuildLeader(member))
+		bufferMessage << " Guild Leader ";
+	else
+		bufferMessage << " Guild Member ";
+
+	bufferMessage << playerName;
+
+	GuildMemberInfo* gmi = getMember(member->getObjectID());
+
+	if (gmi != nullptr) {
+		gmi->setOnlineStatus(online);
+	}
+
+	if (online) {
+		bufferMessage << " is online.";
+	} else {
+		bufferMessage << " has gone offline.";
+	}
+
+	UnicodeString message(bufferMessage.toString());
+	UnicodeString formattedMsg(chatManager->formatMessage(message));
+
+	BaseMessage* msg = new ChatRoomMessage("", zoneServer->getGalaxyName(), formattedMsg, guildChat->getRoomID());
+	guildChat->broadcastMessage(msg);
 }
 
 int GuildObjectImplementation::writeRecursiveJSON(JSONSerializationType& j, int maxDepth, Vector<uint64>* oidPath) {
