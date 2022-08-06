@@ -16,6 +16,7 @@ import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
 import server.zone.objects.player.events.ForceRegenerationEvent;
 import server.zone.objects.player.events.PvpTefRemovalTask;
+import server.zone.objects.player.events.PlayerBaseRemovalTask;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
 import server.zone.objects.waypoint.WaypointObject;
@@ -259,6 +260,9 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected transient Reference<PvpTefRemovalTask> pvpTefTask;
+
+	@dereferenced
+	protected transient Reference<PlayerBaseRemovalTask> baseRemovalTask;
 
 	@dereferenced
 	protected Time lastDigestion;
