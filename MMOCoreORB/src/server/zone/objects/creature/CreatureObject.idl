@@ -2120,6 +2120,11 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@dirty
+	public abstract boolean isGuildManagementDroid() {
+		return false;
+	}
+
+	@dirty
 	public native boolean isPlayerCreature();
 
 	@read

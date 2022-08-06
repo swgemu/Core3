@@ -51,14 +51,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == nullptr || !obj->isTerminal()) {
-			guildManager->removePendingGuild(playerID);
-			return;
-		}
-
-		Terminal* terminal = cast<Terminal*>( obj.get());
-
-		if (!terminal->isGuildTerminal()) {
+		if (obj == nullptr || (!obj->isGuildTerminal() && !obj->isGuildManagementDroid())) {
 			guildManager->removePendingGuild(playerID);
 			return;
 		}

@@ -1,0 +1,38 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+include server.zone.objects.creature.ai.DroidObject;
+import engine.log.Logger;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.intangible.IntangibleObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.packets.object.ObjectMenuResponse;
+include server.zone.packets.scene.AttributeListMessage;
+
+@json
+class GuildManagementDroid extends DroidObject {
+	public native void initializeTransientMembers();
+
+	public GuildManagementDroid() {
+		Logger.setLoggingName("GuildManagementDroid");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
+	}
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
+
+	@dirty
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@dirty
+	public abstract boolean isGuildManagementDroid() {
+		return true;
+	}
+}
