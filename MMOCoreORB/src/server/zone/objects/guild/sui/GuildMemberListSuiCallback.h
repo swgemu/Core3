@@ -34,17 +34,16 @@ public:
 		if (index == -1)
 			return;
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
+		ManagedReference<SceneObject*> sceneO = suiBox->getUsingObject().get();
 
-		if (obj == nullptr || !obj->isTerminal())
+		if (sceneO == nullptr || (!sceneO->isGuildTerminal() && !sceneO->isGuildManagementDroid())) {
 			return;
+		}
 
-		Terminal* terminal = cast<Terminal*>( obj.get());
+		TangibleObject* tanO = sceneO->asTangibleObject();
 
-		if (!terminal->isGuildTerminal())
+		if (tanO == nullptr)
 			return;
-
-		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
@@ -59,7 +58,7 @@ public:
 			return;
 		}
 
-		guildManager->sendGuildMemberOptionsTo(player, guild, memberID, guildTerminal);
+		guildManager->sendGuildMemberOptionsTo(player, guild, memberID, tanO);
 	}
 };
 
