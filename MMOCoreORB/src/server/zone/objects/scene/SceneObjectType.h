@@ -198,6 +198,7 @@ public:
 	const static int SCAVENGERCHEST = 0x401C;
 	const static int SHUTTLEBEACON = 0x401D;
 	const static int SCAVENGERDROID = 0x401E;
+	const static int GUILDMANAGEMENTDROID = 0x401F;
 	/// end not in client ***************
 
 	const static int TOOL = 0x8000;

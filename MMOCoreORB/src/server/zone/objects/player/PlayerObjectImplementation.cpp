@@ -1465,15 +1465,19 @@ void PlayerObjectImplementation::notifyOnline() {
 		ManagedReference<GuildObject*> guild = playerCreature->getGuildObject().get();
 		uint64 playerId = playerCreature->getObjectID();
 
-		if (guild != nullptr && !guild->hasMember(playerId)) {
-			playerCreature->setGuildObject(nullptr);
+		if (guild != nullptr) {
+			if (!guild->hasMember(playerId)) {
+				playerCreature->setGuildObject(nullptr);
 
-			CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(playerCreature);
-			creod6->updateGuildID();
-			creod6->close();
-			playerCreature->broadcastMessage(creod6, true);
+				CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(playerCreature);
+				creod6->updateGuildID();
+				creod6->close();
+				playerCreature->broadcastMessage(creod6, true);
 
-			updateInRangeBuildingPermissions();
+				updateInRangeBuildingPermissions();
+			} else if (ConfigManager::instance()->getBool("Core3.PlayerManager.GuildEnhancements", false)) {
+				guild->notifyGuildMemberStatus(playerCreature, true);
+			}
 		}
 	}
 
@@ -1574,6 +1578,12 @@ void PlayerObjectImplementation::notifyOffline() {
 	SessionAPIClient::instance()->notifyPlayerOffline(client != nullptr ? client->getIPAddress() : sessionStatsIPAddress, getAccountID(),
 			playerCreature->getObjectID());
 #endif // WITH_SESSION_API
+
+	ManagedReference<GuildObject*> guild = playerCreature->getGuildObject().get();
+
+	if (guild != nullptr && ConfigManager::instance()->getBool("Core3.PlayerManager.GuildEnhancements", false)) {
+		guild->notifyGuildMemberStatus(playerCreature, false);
+	}
 }
 
 void PlayerObjectImplementation::incrementSessionMovement(float moveDelta) {

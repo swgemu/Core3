@@ -2681,7 +2681,7 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 						return false;
 
 					receiverDroidsTraded++;
-				} else if (petControlDevice->getPetType() == PetManager::HELPERDROIDPET) {
+				} else if (petControlDevice->getPetType() == PetManager::HELPERDROIDPET || petControlDevice->getPetType() == PetManager::GUILDMANAGEMENTDROIDPET) {
 					return false;
 				}
 			} else if (scene->isVehicleControlDevice()) {

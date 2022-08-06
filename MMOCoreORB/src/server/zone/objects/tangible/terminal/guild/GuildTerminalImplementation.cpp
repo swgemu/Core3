@@ -5,7 +5,6 @@
  *      Author: crush
  */
 
-
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -14,6 +13,11 @@
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/ai/GuildManagementDroid.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 
 void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -109,6 +113,9 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 
 	if (playerGhost->isPrivileged())
 		menuResponse->addRadialMenuItemToRadialID(193, 76, 3, "Process Guild Update"); //TODO: Remove this temporary ability
+
+	if ((isLeader || playerGhost->isPrivileged()) && ConfigManager::instance()->getBool("Core3.PlayerManager.GuildEnhancements", false))
+		menuResponse->addRadialMenuItem(200, 3, "Receive Guild Management Droid");
 
 	return;
 }
@@ -243,6 +250,9 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			guildManager->sendGuildChangeNameTo(player, guildObject);
 		}
 		break;
+	case 200: {
+		giveManagementDroid(player);
+	}
 	default:
 		return TerminalImplementation::handleObjectMenuSelect(player, selectedID);
 	}
@@ -250,4 +260,97 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 	return 0;
 }
 
+void GuildTerminalImplementation::giveManagementDroid(CreatureObject* player) {
+	if (player == nullptr)
+		return;
 
+	ZoneServer* zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	String controlDeviceObjectTemplate = "object/intangible/pet/3po_protocol_droid_red.iff";
+	String mobileTemplate = "guild_management_droid";
+	String generatedObjectTemplate = "object/mobile/3po_guild_management_droid.iff";
+
+	Locker plock(player);
+
+	SceneObject* datapad = player->getSlottedObject("datapad");
+
+	if (datapad == nullptr) {
+		return;
+	}
+
+	// Do not give new droid if the player already has an existing one
+	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+		Reference<SceneObject*> obj = datapad->getContainerObject(i).castTo<SceneObject*>();
+
+		if (obj != nullptr && obj->isPetControlDevice()) {
+			Reference<PetControlDevice*> controlDevice = cast<PetControlDevice*>(obj.get());
+
+			if (controlDevice != nullptr && controlDevice->getPetType() == PetManager::GUILDMANAGEMENTDROIDPET) {
+				player->sendSystemMessage("You are already in possession of a Guild Management Droid.");
+				return;
+			}
+		}
+	}
+
+	CreatureManager* creatureManager = player->getZone()->getCreatureManager();
+
+	if (creatureManager == nullptr)
+		return;
+
+	CreatureTemplate* creatureTemplate = CreatureTemplateManager::instance()->getTemplate(mobileTemplate.hashCode());
+
+	if (creatureTemplate == nullptr) {
+		return;
+	}
+
+	ManagedReference<PetControlDevice*> controlDevice = zoneServer->createObject(controlDeviceObjectTemplate.hashCode(), 1).castTo<PetControlDevice*>();
+
+	if (controlDevice == nullptr) {
+		return;
+	}
+
+	Locker cdlocker(controlDevice);
+
+	Reference<CreatureObject*> creatureObject = creatureManager->createCreature(generatedObjectTemplate.hashCode(), true, mobileTemplate.hashCode());
+
+	if (creatureObject == nullptr) {
+		controlDevice->destroyObjectFromDatabase(true);
+		return;
+	}
+
+	Locker clocker(creatureObject, player);
+
+	Reference<GuildManagementDroid*> guildDroid = creatureObject.castTo<GuildManagementDroid*>();
+
+	if (guildDroid == nullptr) {
+		controlDevice->destroyObjectFromDatabase(true);
+		creatureObject->destroyObjectFromDatabase(true);
+		return;
+	}
+
+	guildDroid->loadTemplateData(creatureTemplate);
+	guildDroid->createChildObjects();
+	guildDroid->setControlDevice(controlDevice);
+
+	UnicodeString name(guildDroid->getCustomObjectName());
+	controlDevice->setCustomObjectName(name, false);
+	controlDevice->setPetType(PetManager::GUILDMANAGEMENTDROIDPET);
+	controlDevice->setControlledObject(creatureObject);
+	controlDevice->setMaxVitality(100);
+	controlDevice->setVitality(100);
+
+	if (!datapad->transferObject(controlDevice, -1)) {
+		controlDevice->destroyObjectFromDatabase(true);
+		creatureObject->destroyObjectFromDatabase(true);
+	}
+
+	datapad->broadcastObject(controlDevice, true);
+
+	player->sendSystemMessage("Your Guild Management Droid has been transferred to you datapad.");
+	datapad->broadcastObject(controlDevice, true);
+
+	controlDevice->callObject(player);
+}
