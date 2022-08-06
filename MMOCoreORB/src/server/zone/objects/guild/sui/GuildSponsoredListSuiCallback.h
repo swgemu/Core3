@@ -39,15 +39,15 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == nullptr || !obj->isTerminal())
+		if (obj == nullptr || (!obj->isTerminal() && !obj->isPlayerCreature()))
 			return;
 
-		Terminal* terminal = cast<Terminal*>( obj.get());
+		if (obj->isTerminal()) {
+			Terminal* terminal = cast<Terminal*>( obj.get());
 
-		if (!terminal->isGuildTerminal())
-			return;
-
-		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
+			if (!terminal->isGuildTerminal())
+				return;
+		}
 
 		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
@@ -60,7 +60,7 @@ public:
 
 		uint64 playerID = listBox->getMenuObjectID(index);
 
-		guildManager->sendGuildSponsoredOptionsTo(player, guild, playerID, guildTerminal);
+		guildManager->sendGuildSponsoredOptionsTo(player, guild, playerID, obj->asTangibleObject());
 	}
 };
 

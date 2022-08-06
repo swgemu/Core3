@@ -42,6 +42,7 @@ public:
 		GUILD_TAKE_LOTS                    = 40,
 		GUILD_VOTE                         = 41,
 		GUILD_ELECTION_STANDING            = 42,
+		GUILD_ACCESS_DEVICE                = 43,
 
 
 		//Travel 51 - 60

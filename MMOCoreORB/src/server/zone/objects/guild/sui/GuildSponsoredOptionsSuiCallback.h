@@ -32,13 +32,15 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
-		if (obj == nullptr || !obj->isTerminal())
+		if (obj == nullptr || (!obj->isTerminal() && !obj->isPlayerCreature()))
 			return;
 
-		Terminal* terminal = cast<Terminal*>( obj.get());
+		if (obj->isTerminal()) {
+			Terminal* terminal = cast<Terminal*>( obj.get());
 
-		if (!terminal->isGuildTerminal())
-			return;
+			if (!terminal->isGuildTerminal())
+				return;
+		}
 
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 

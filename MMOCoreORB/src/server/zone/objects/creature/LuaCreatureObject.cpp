@@ -19,6 +19,10 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/guild/GuildManager.h"
+#include "server/zone/objects/guild/GuildObject.h"
+#include "server/zone/objects/guild/GuildMemberList.h"
+#include "server/zone/objects/guild/GuildMemberInfo.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
@@ -154,6 +158,15 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setAppearance", &LuaCreatureObject::setAppearance },
 		{ "getMainDefender", &LuaTangibleObject::getMainDefender },
 		{ "getWeaponType", &LuaCreatureObject::getWeaponType },
+		{ "isInGuild", &LuaCreatureObject::isInGuild },
+		{ "getGuildLeaderID", &LuaCreatureObject::getGuildLeaderID },
+		{ "getGuildName", &LuaCreatureObject::getGuildName },
+		{ "getGuildAbbreviation", &LuaCreatureObject::getGuildAbbreviation },
+		{ "getGuildOnlineMembers", &LuaCreatureObject::getGuildOnlineMembers },
+		{ "getGuildOfflineMembers", &LuaCreatureObject::getGuildOfflineMembers },
+		{ "getEnemyGuilds", &LuaCreatureObject::getEnemyGuilds },
+		{ "sponsorGuildMember", &LuaCreatureObject::sponsorGuildMember },
+		{ "getSponsoredGuildMembers", &LuaCreatureObject::getSponsoredGuildMembers },
 		{ 0, 0 }
 };
 
@@ -1279,4 +1292,282 @@ int LuaCreatureObject::getWeaponType(lua_State* L) {
 
 	lua_pushinteger(L, weaponType);
 	return 1;
+}
+
+int LuaCreatureObject::isInGuild(lua_State* L) {
+	if (!ConfigManager::instance()->useGuildEnhancements())
+		return 0;
+
+	Locker lock(realObject);
+
+	GuildObject* guild = realObject->getGuildObject().get();
+
+	bool isInGuild = guild != nullptr ? true : false;
+
+	lua_pushboolean(L, isInGuild);
+
+	return 1;
+}
+
+int LuaCreatureObject::getGuildLeaderID(lua_State* L) {
+	if (!ConfigManager::instance()->useGuildEnhancements())
+		return 0;
+
+	GuildObject* guild = realObject->getGuildObject().get();
+
+	if (guild == nullptr)
+		return 0;
+
+	uint64 leaderID = guild->getGuildLeaderID();
+
+	lua_pushinteger(L, leaderID);
+
+	return 1;
+}
+
+int LuaCreatureObject::getGuildName(lua_State* L) {
+	if (!ConfigManager::instance()->useGuildEnhancements())
+		return 0;
+
+	Locker lock(realObject);
+
+	GuildObject* guild = realObject->getGuildObject().get();
+
+	if (guild == nullptr)
+		return 0;
+
+	String guildName = guild->getGuildName();
+
+	lua_pushstring(L, guildName.toCharArray());
+
+	return 1;
+}
+
+int LuaCreatureObject::getGuildAbbreviation(lua_State* L) {
+	if (!ConfigManager::instance()->useGuildEnhancements())
+		return 0;
+
+	Locker lock(realObject);
+
+	GuildObject* guild = realObject->getGuildObject().get();
+
+	if (guild == nullptr)
+		return 0;
+
+	String guildAbbrev = guild->getGuildAbbrev();
+
+	lua_pushstring(L, guildAbbrev.toCharArray());
+
+	return 1;
+}
+
+int LuaCreatureObject::getGuildOnlineMembers(lua_State* L) {
+	Locker lock(realObject);
+
+	GuildObject* guild = realObject->getGuildObject().get();
+
+	if (guild == nullptr)
+		return 0;
+
+	ZoneServer* zoneServer = realObject->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return 0;
+
+	GuildMemberList* memberList = guild->getGuildMemberList();
+	auto playerManager = zoneServer->getPlayerManager();
+
+	if (memberList == nullptr || playerManager == nullptr)
+		return 0;
+
+	Vector<String> infoList;
+	uint64 leaderID = guild->getGuildLeaderID();
+
+	for (int i = 0; i < memberList->size(); ++i) {
+		GuildMemberInfo* gmi = &memberList->get(i);
+
+		if (gmi == nullptr || !gmi->isOnline())
+			continue;
+
+		// Name & online status
+		uint64 memberID = gmi->getPlayerID();
+		String memberName = playerManager->getPlayerName(memberID);
+
+		StringBuffer memberInfo;
+		memberInfo << memberName;
+
+		if (leaderID == memberID)
+			memberInfo << " (Guild Leader)";
+
+		infoList.add(memberInfo.toString());
+	}
+
+	int listSize = infoList.size();
+
+	lua_newtable(L);
+
+	for (int i = listSize; i > 0; --i) {
+		const String str = infoList.get(i - 1);
+
+		lua_pushstring(L, str.toCharArray());
+	}
+
+	for (int j = listSize; j > 0; --j) {
+		int rawSet = (j + 1) * -1;
+
+		lua_rawseti(L, rawSet, j);
+	}
+
+	return 1;
+}
+
+int LuaCreatureObject::getGuildOfflineMembers(lua_State* L) {
+	Locker lock(realObject);
+
+	GuildObject* guild = realObject->getGuildObject().get();
+
+	if (guild == nullptr)
+		return 0;
+
+	ZoneServer* zoneServer = realObject->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return 0;
+
+	GuildMemberList* memberList = guild->getGuildMemberList();
+	auto playerManager = zoneServer->getPlayerManager();
+
+	if (memberList == nullptr || playerManager == nullptr)
+		return 0;
+
+	Vector<String> infoList;
+
+	for (int i = 0; i < memberList->size(); ++i) {
+		GuildMemberInfo* gmi = &memberList->get(i);
+
+		if (gmi == nullptr || gmi->isOnline())
+			continue;
+
+		// Name & online status
+		uint64 memberID = gmi->getPlayerID();
+		String memberName = playerManager->getPlayerName(memberID);
+
+		StringBuffer memberInfo;
+		memberInfo << memberName;
+
+		Time lastLogin = gmi->getLastLoginTime();
+		memberInfo << " - Last Seen: " << lastLogin.getFormattedTime("%m-%d-%Y %H:%M:%S");
+
+		infoList.add(memberInfo.toString());
+	}
+
+	int listSize = infoList.size();
+
+	lua_newtable(L);
+
+	for (int i = listSize; i > 0; --i) {
+		const String str = infoList.get(i - 1);
+
+		lua_pushstring(L, str.toCharArray());
+	}
+
+	for (int j = listSize; j > 0; --j) {
+		int rawSet = (j + 1) * -1;
+
+		lua_rawseti(L, rawSet, j);
+	}
+
+	return 1;
+}
+
+int LuaCreatureObject::getEnemyGuilds(lua_State* L) {
+	GuildObject* guild = realObject->getGuildObject().get();
+
+	if (guild == nullptr)
+		return 0;
+
+	ZoneServer* zoneServer = realObject->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return 0;
+
+	lua_newtable(L);
+
+	guild->wlock();
+	VectorMap<uint64, byte> enemyGuilds = *guild->getWaringGuilds();
+	guild->unlock();
+
+	int listSize = 0;
+
+	for (int i = 0; i < enemyGuilds.size(); ++i) {
+		VectorMapEntry<uint64, byte>* entry = &enemyGuilds.elementAt(i);
+
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(entry->getKey());
+
+		if (obj == nullptr || !obj->isGuildObject())
+			continue;
+
+		GuildObject* waringGuild = obj.castTo<GuildObject*>();
+
+		Locker _lock(waringGuild);
+
+		String listing;
+		listing += (char) entry->getValue();
+
+		StringBuffer enemy;
+		enemy << listing << " <" << waringGuild->getGuildAbbrev() << "> " << waringGuild->getGuildName() ;
+
+		lua_pushstring(L, enemy.toString().toCharArray());
+		listSize++;
+	}
+
+	for (int j = listSize; j > 0; --j) {
+		int rawSet = (j + 1) * -1;
+
+		lua_rawseti(L, rawSet, j);
+	}
+
+	return 1;
+}
+
+int LuaCreatureObject::sponsorGuildMember(lua_State* L) {
+	GuildObject* guild = realObject->getGuildObject().get();
+
+	if (guild == nullptr)
+		return 0;
+
+	ZoneServer* zoneServer = realObject->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return 0;
+
+	GuildManager* guildManager = zoneServer->getGuildManager();
+
+	if (guildManager == nullptr)
+		return 0;
+
+	guildManager->sendGuildSponsorTo(realObject, guild, realObject);
+
+	return 0;
+}
+
+int LuaCreatureObject::getSponsoredGuildMembers(lua_State* L) {
+	GuildObject* guild = realObject->getGuildObject().get();
+
+	if (guild == nullptr)
+		return 0;
+
+	ZoneServer* zoneServer = realObject->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return 0;
+
+	GuildManager* guildManager = zoneServer->getGuildManager();
+
+	if (guildManager == nullptr)
+		return 0;
+
+	guildManager->sendGuildSponsoredListTo(realObject, guild, realObject);
+
+	return 0;
 }
