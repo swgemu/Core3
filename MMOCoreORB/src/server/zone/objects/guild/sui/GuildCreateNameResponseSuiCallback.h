@@ -35,17 +35,16 @@ public:
 
 		String guildName = args->get(0).toString();
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
+		ManagedReference<SceneObject*> sceneO = suiBox->getUsingObject().get();
 
-		if (obj == nullptr || !obj->isTerminal())
+		if (sceneO == nullptr || (!sceneO->isGuildTerminal() && !sceneO->isGuildManagementDroid())) {
 			return;
+		}
 
-		Terminal* terminal = cast<Terminal*>( obj.get());
+		TangibleObject* tanO = sceneO->asTangibleObject();
 
-		if (!terminal->isGuildTerminal())
+		if (tanO == nullptr)
 			return;
-
-		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
@@ -57,7 +56,7 @@ public:
 
 		if (guildManager->validateGuildName(player, guildName)) {
 			guildManager->addPendingGuild(playerID, guildName);
-			guildManager->sendGuildCreateAbbrevTo(player, guildTerminal);
+			guildManager->sendGuildCreateAbbrevTo(player, tanO);
 			return;
 		}
 
