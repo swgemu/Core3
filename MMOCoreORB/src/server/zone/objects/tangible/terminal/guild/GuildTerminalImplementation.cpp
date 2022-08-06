@@ -5,7 +5,6 @@
  *      Author: crush
  */
 
-
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -107,8 +106,8 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 		menuResponse->addRadialMenuItemToRadialID(70, 75, 3, "@guild:menu_enable_elections"); // Enable Elections
 	}
 
-	if (playerGhost->isPrivileged())
-		menuResponse->addRadialMenuItemToRadialID(193, 76, 3, "Process Guild Update"); //TODO: Remove this temporary ability
+	if (ConfigManager::instance()->useGuildEnhancements())
+		menuResponse->addRadialMenuItem(200, 3, "Retrieve Management Droid");
 
 	return;
 }
@@ -195,12 +194,6 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			guildManager->toggleElection(guildObject, player);
 		}
 		break;
-	case 76:
-		if (playerGhost->isPrivileged()) {
-			Locker locker(guildObject);
-			guildManager->processGuildUpdate(guildObject);
-		}
-		break;
 	case 185:
 		if (guildObject == nullptr && player == owner) {
 			guildManager->sendGuildCreateNameTo(player, _this.getReferenceUnsafeStaticCast());
@@ -243,6 +236,9 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			guildManager->sendGuildChangeNameTo(player, guildObject);
 		}
 		break;
+	case 200: {
+		giveAccessDevice(player);
+	}
 	default:
 		return TerminalImplementation::handleObjectMenuSelect(player, selectedID);
 	}
@@ -250,4 +246,53 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 	return 0;
 }
 
+void GuildTerminalImplementation::giveAccessDevice(CreatureObject* player) {
+	if (player == nullptr)
+		return;
 
+	ZoneServer* zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	String accessDeviceTemplate = "object/intangible/data_item/guild_access_device.iff";
+
+	Locker plock(player);
+
+	SceneObject* datapad = player->getSlottedObject("datapad");
+
+	if (datapad == nullptr) {
+		return;
+	}
+
+	// Do not give new droid if the player already has an existing one
+	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+		Reference<SceneObject*> obj = datapad->getContainerObject(i).castTo<SceneObject*>();
+
+		if (obj != nullptr && obj->getCustomObjectName() == "Guild Access Device") {
+			player->sendSystemMessage("You are already in possession of a Guild Access Device.");
+			return;
+		}
+	}
+
+	ManagedReference<SceneObject*> accessDevice = zoneServer->createObject(accessDeviceTemplate.hashCode(), 1).castTo<SceneObject*>();
+
+	if (accessDevice == nullptr) {
+		return;
+	}
+
+	Locker cdlocker(accessDevice);
+
+	UnicodeString name("Guild Access Device");
+	accessDevice->setCustomObjectName(name, false);
+
+	if (!datapad->transferObject(accessDevice, -1)) {
+		accessDevice->destroyObjectFromDatabase(true);
+		return;
+	}
+
+	datapad->broadcastObject(accessDevice, true);
+
+	player->sendSystemMessage("Your Guild Access Device has been transferred to you datapad.");
+	datapad->broadcastObject(accessDevice, true);
+}
