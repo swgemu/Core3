@@ -472,7 +472,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (petType == PetManager::CREATUREPET) {
 		pet->setCreatureBitmask(CreatureFlag::PET);
 	}
-	if (petType == PetManager::DROIDPET || petType == PetManager::HELPERDROIDPET) {
+	if (petType == PetManager::DROIDPET || petType == PetManager::HELPERDROIDPET || petType == PetManager::GUILDMANAGEMENTDROIDPET) {
 		pet->setCreatureBitmask(CreatureFlag::DROID_PET);
 	}
 	if (petType == PetManager::FACTIONPET) {

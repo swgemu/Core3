@@ -30,15 +30,11 @@ public:
 		if (guildManager == nullptr)
 			return;
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
+		ManagedReference<SceneObject*> sceneO = suiBox->getUsingObject().get();
 
-		if (obj == nullptr || !obj->isTerminal())
+		if (sceneO == nullptr || (!sceneO->isGuildTerminal() && !sceneO->isGuildManagementDroid())) {
 			return;
-
-		Terminal* terminal = cast<Terminal*>( obj.get());
-
-		if (!terminal->isGuildTerminal())
-			return;
+		}
 
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 

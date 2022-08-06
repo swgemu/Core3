@@ -41,24 +41,23 @@ public:
 		if (guildManager == nullptr)
 			return;
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
+		ManagedReference<SceneObject*> sceneO = suiBox->getUsingObject().get();
 
-		if (obj == nullptr || !obj->isTerminal())
+		if (sceneO == nullptr || (!sceneO->isGuildTerminal() && !sceneO->isGuildManagementDroid())) {
 			return;
+		}
 
-		Terminal* terminal = cast<Terminal*>( obj.get());
+		TangibleObject* tanO = sceneO->asTangibleObject();
 
-		if (!terminal->isGuildTerminal())
+		if (tanO == nullptr)
 			return;
-
-		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
 		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		if (guild == nullptr)
 			return;
 
-		guildManager->toggleGuildPermission(player, memberID, index, guildTerminal);
+		guildManager->toggleGuildPermission(player, memberID, index, tanO);
 	}
 };
 

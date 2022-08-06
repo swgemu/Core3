@@ -475,7 +475,7 @@ void GuildManagerImplementation::destroyGuild(GuildObject* guild, StringIdChatPa
 
 }
 
-void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, GuildTerminal* terminal) {
+void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, TangibleObject* terminal) {
 	if (player->isInGuild()) {
 		player->sendSystemMessage("@guild:create_fail_in_guild"); // You cannot create a guild while already in a guild.
 		return;
@@ -561,7 +561,7 @@ bool GuildManagerImplementation::guildNameExists(const String& guildName) {
 	return false;
 }
 
-void GuildManagerImplementation::sendGuildCreateAbbrevTo(CreatureObject* player, GuildTerminal* terminal) {
+void GuildManagerImplementation::sendGuildCreateAbbrevTo(CreatureObject* player, TangibleObject* terminal) {
 	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_CREATE_ABBREV);
 
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATE_ABBREV);
@@ -795,7 +795,7 @@ void GuildManagerImplementation::renameGuild(GuildObject* guild) {
 	sendGuildMail("@guildmail:namechange_subject", params, guild);
 }
 
-void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, GuildObject* guild, TangibleObject* guildTerminal) {
 	if (guild == nullptr)
 		return;
 
@@ -827,7 +827,7 @@ void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, 
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildDisbandConfirmTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildDisbandConfirmTo(CreatureObject* player, GuildObject* guild, TangibleObject* guildTerminal) {
 	if (guild == nullptr)
 		return;
 
@@ -874,7 +874,9 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 	return true;
 }
 
-void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, TangibleObject* guildTerminal) {
+	if (player == nullptr || guildTerminal == nullptr)
+		return;
 
 	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_TRANSFER_LEADER);
 
@@ -1058,11 +1060,13 @@ void GuildManagerImplementation::sendAcceptLotsTo(CreatureObject* newOwner, Guil
 	newOwner->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, GuildObject* guild, TangibleObject* guildTerminal) {
 	if (guild == nullptr)
 		return;
 
 	Locker _lock(guild);
+
+	info(true) << " send guild member list to called ";
 
 	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_MEMBER_LIST);
 
@@ -1087,8 +1091,27 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 		if (obj == nullptr || !obj->isPlayerCreature())
 			continue;
 
-		CreatureObject* member = cast<CreatureObject*>( obj.get());
-		suiBox->addMenuItem(member->getDisplayedName(), playerID);
+		CreatureObject* member = cast<CreatureObject*>(obj.get());
+
+		if (member == nullptr)
+			continue;
+
+		StringBuffer memberInfo;
+		String memberName = member->getDisplayedName();
+
+		memberInfo << memberName;
+
+		if (ConfigManager::instance()->useGuildEnhancements()) {
+			PlayerObject* ghost = member->getPlayerObject();
+
+			if (ghost != nullptr && ghost->isOnline()) {
+				memberInfo << "    \r\\#99FF00 ONLINE";
+			} else {
+				memberInfo << "    \r\\#FF0000 OFFLINE";
+			}
+		}
+
+		suiBox->addMenuItem(memberInfo.toString(), playerID);
 	}
 
 	suiBox->setCancelButton(true, "@cancel");
@@ -1096,8 +1119,8 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player, GuildObject* guild, uint64 memberID, GuildTerminal* guildTerminal) {
-	if (guild == nullptr)
+void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player, GuildObject* guild, uint64 memberID, TangibleObject* guildTerminal) {
+	if (guild == nullptr || guildTerminal == nullptr)
 		return;
 
 	Locker _locker(player);
@@ -1300,7 +1323,7 @@ void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObje
 	chatManager->sendMail(guild->getGuildName(), subject, params, target->getFirstName());
 }
 
-void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player, uint64 targetID, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player, uint64 targetID, TangibleObject* guildTerminal) {
 	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 	if (guild == nullptr || !guild->isGuildLeader(player)) {
@@ -1342,7 +1365,7 @@ void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player,
 	player->sendMessage(listBox->generateMessage());
 }
 
-void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, uint64 targetID, int permissionIndex, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, uint64 targetID, int permissionIndex, TangibleObject* guildTerminal) {
 
 	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
@@ -1389,7 +1412,7 @@ void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, u
 	sendMemberPermissionsTo(player, targetID, guildTerminal);
 }
 
-void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, GuildObject* guild, TangibleObject* guildTerminal) {
 	if (guild == nullptr)
 		return;
 
@@ -1523,7 +1546,7 @@ void GuildManagerImplementation::acceptSponsorshipRequest(CreatureObject* player
 	sendGuildMail("@guildmail:sponsor_subject", params, guild);
 }
 
-void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player, GuildObject* guild, TangibleObject* guildTerminal) {
 	if (guild == nullptr)
 		return;
 
@@ -1556,7 +1579,7 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObject* guild, uint64 playerID, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObject* guild, uint64 playerID, TangibleObject* guildTerminal) {
 	if (guild == nullptr) {
 		return;
 	}
@@ -1696,7 +1719,7 @@ void GuildManagerImplementation::declineSponsoredPlayer(CreatureObject* player, 
 	chatManager->sendMail(guild->getGuildName(), "@guildmail:decline_target_subject", params, target->getFirstName());
 }
 
-void GuildManagerImplementation::sendGuildWarStatusTo(CreatureObject* player, GuildObject* guild, GuildTerminal* terminal) {
+void GuildManagerImplementation::sendGuildWarStatusTo(CreatureObject* player, GuildObject* guild, TangibleObject* terminal) {
 	if (guild == nullptr)
 		return;
 
@@ -2210,7 +2233,7 @@ void GuildManagerImplementation::unregisterFromElection(GuildObject* guild, Crea
 	player->sendSystemMessage("@guild:vote_unregistered"); // You have unregistered from the race.
 }
 
-void GuildManagerImplementation::promptCastVote(GuildObject* guild, CreatureObject* player, GuildTerminal* terminal) {
+void GuildManagerImplementation::promptCastVote(GuildObject* guild, CreatureObject* player, TangibleObject* terminal) {
 	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_VOTE);
 
 	Locker locker(guild);
@@ -2276,7 +2299,7 @@ void GuildManagerImplementation::castVote(GuildObject* guild, CreatureObject* pl
 	}
 }
 
-void GuildManagerImplementation::viewElectionStandings(GuildObject* guild, CreatureObject* player, GuildTerminal* terminal) {
+void GuildManagerImplementation::viewElectionStandings(GuildObject* guild, CreatureObject* player, TangibleObject* terminal) {
 	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_ELECTION_STANDING);
 
 	Locker locker(guild);
