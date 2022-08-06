@@ -7,22 +7,29 @@
 #define PLAYERBASEREMOVALTASK_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/Zone.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace events {
+
 class PlayerBaseRemovalTask: public Task {
-	ManagedReference<CreatureObject*> player;
+	ManagedWeakReference<CreatureObject*> creature;
 
 public:
 	PlayerBaseRemovalTask(CreatureObject* pl) {
-		player = pl;
+		creature = pl;
 	}
 
 	void run() {
+		ManagedReference<CreatureObject*> player = creature.get();
+
 		if (player == nullptr)
 			return;
-
-		Locker lock(player);
 
 		try {
 			Zone* zone = player->getZone();
@@ -42,10 +49,12 @@ public:
 			int maxBases = gcwMan->getMaxBasesPerPlayer();
 
 			if (baseCount > maxBases) {
-				PlayerObject* ghost = player->getPlayerObject();
+				ManagedReference<PlayerObject*> ghost = player->getPlayerObject().get();
 				ZoneServer* zoneServer = player->getZoneServer();
 
 				if (ghost != nullptr && zoneServer != nullptr) {
+					Locker lock(player);
+
 					int totalStructures = ghost->getTotalOwnedStructureCount();
 					int basesDestroyed = 0;
 
@@ -57,7 +66,6 @@ public:
 #ifdef DEBUG
 						player->info(true) << " Getting structure #" << i;
 #endif
-
 						if (basesDestroyed == (baseCount - maxBases))
 							break;
 
@@ -88,5 +96,13 @@ public:
 		}
 	}
 };
+
+}
+}
+}
+}
+}
+
+using namespace server::zone::objects::player::events;
 
 #endif /* PLAYERBASEREMOVALTASK_H_ */

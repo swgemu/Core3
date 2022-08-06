@@ -238,12 +238,6 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 						ghost->updateLastValidatedPosition();
 					}
 			}, "PlayerObjNotifyLoadDb");
-
-			PlayerBaseRemovalTask* baseTask = new PlayerBaseRemovalTask(player);
-
-			if (baseTask != nullptr) {
-				baseTask->schedule((System::random(5) + 1) * 60 * 1000);
-			}
 		}
 	}
 
@@ -513,6 +507,14 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	checkAndShowTOS();
 	createHelperDroid();
+
+	if (baseRemovalTask == nullptr)
+		baseRemovalTask = new PlayerBaseRemovalTask(creature);
+
+	if (baseRemovalTask->isScheduled())
+		baseRemovalTask->cancel();
+
+	baseRemovalTask->schedule((System::random(5) + 1) * 60 * 1000);
 }
 
 void PlayerObjectImplementation::sendFriendLists() {
