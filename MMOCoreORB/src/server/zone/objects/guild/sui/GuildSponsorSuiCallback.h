@@ -30,8 +30,6 @@ public:
 
 		String playerName = args->get(0).toString();
 
-		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
-
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject().get();
 
 		if (obj == nullptr || !obj->isTerminal())
@@ -39,7 +37,12 @@ public:
 
 		Terminal* terminal = cast<Terminal*>( obj.get());
 
-		if (!terminal->isGuildTerminal())
+		if (terminal == nullptr || !terminal->isGuildTerminal())
+			return;
+
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
+
+		if (guildManager == nullptr)
 			return;
 
 		guildManager->sponsorPlayer(player, playerName);

@@ -1552,6 +1552,11 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@dirty
+	public abstract boolean isGuildManagementDroid() {
+		return false;
+	}
+
+	@dirty
 	@local
 	@nativeStub
 	@virtualStub
@@ -2167,6 +2172,11 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@dirty
 	public abstract boolean isEventPerkItem() {
+		return false;
+	}
+
+	@dirty
+	public boolean isGuildTerminal() {
 		return false;
 	}
 

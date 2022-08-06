@@ -45,11 +45,9 @@ public:
 		if (!terminal->isGuildTerminal())
 			return;
 
-		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
-
 		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
-		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
+		SuiListBox* listBox = cast<SuiListBox*>(suiBox);
 
 		uint64 candidateID = listBox->getMenuObjectID(index);
 

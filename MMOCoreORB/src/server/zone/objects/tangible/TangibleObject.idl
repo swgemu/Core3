@@ -991,4 +991,9 @@ class TangibleObject extends SceneObject {
 
 	@dirty
 	public native boolean isInNavMesh();
+
+	@dirty
+	public boolean isGuildTerminal() {
+		return false;
+	}
 }
