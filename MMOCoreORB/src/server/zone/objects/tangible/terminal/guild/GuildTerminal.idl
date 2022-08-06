@@ -30,4 +30,6 @@ class GuildTerminal extends Terminal {
 	public boolean isGuildTerminal() {
 		return true;
 	}
+
+	public native void giveAccessDevice(CreatureObject player);
 }

@@ -14,6 +14,7 @@ SuiEventType = {
 }
 
 SuiWindowType = {
+	GUILD_ACCESS_DEVICE = 43,
 	FS_EXP_CONVERT = 1042
 }
 

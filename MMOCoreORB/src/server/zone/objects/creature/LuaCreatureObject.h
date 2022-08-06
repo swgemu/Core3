@@ -129,6 +129,15 @@ namespace creature {
 		int dismount(lua_State* L);
 		int setAppearance(lua_State* L);
 		int getWeaponType(lua_State* L);
+		int isInGuild(lua_State* L);
+		int getGuildName(lua_State* L);
+		int getGuildAbbreviation(lua_State* L);
+		int getGuildOnlineMembers(lua_State* L);
+		int getGuildOfflineMembers(lua_State* L);
+		int getEnemyGuilds(lua_State* L);
+		int sponsorGuildMember(lua_State* L);
+		int getSponsoredGuildMembers(lua_State* L);
+		int getGuildLeaderID(lua_State* L);
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;
