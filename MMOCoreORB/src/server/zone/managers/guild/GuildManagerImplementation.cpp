@@ -875,6 +875,8 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 }
 
 void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, GuildTerminal* guildTerminal) {
+	if (player == nullptr || guildTerminal == nullptr)
+		return;
 
 	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_TRANSFER_LEADER);
 
@@ -1074,6 +1076,10 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 	suiBox->setForceCloseDistance(32);
 
 	GuildMemberList* memberList = guild->getGuildMemberList();
+	auto playerManager = server->getPlayerManager();
+
+	if (memberList == nullptr || playerManager == nullptr)
+		return;
 
 	for (int i = 0; i < memberList->size(); ++i) {
 		GuildMemberInfo* gmi = &memberList->get(i);
@@ -1082,13 +1088,12 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 			continue;
 
 		uint64 playerID = gmi->getPlayerID();
-		ManagedReference<SceneObject*> obj = server->getObject(playerID);
+		String memberName = playerManager->getPlayerName(playerID);
 
-		if (obj == nullptr || !obj->isPlayerCreature())
-			continue;
+		StringBuffer memberInfo;
+		memberInfo << memberName;
 
-		CreatureObject* member = cast<CreatureObject*>( obj.get());
-		suiBox->addMenuItem(member->getDisplayedName(), playerID);
+		suiBox->addMenuItem(memberInfo.toString(), playerID);
 	}
 
 	suiBox->setCancelButton(true, "@cancel");
@@ -1097,7 +1102,7 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 }
 
 void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player, GuildObject* guild, uint64 memberID, GuildTerminal* guildTerminal) {
-	if (guild == nullptr)
+	if (guild == nullptr || guildTerminal == nullptr)
 		return;
 
 	Locker _locker(player);
@@ -1389,7 +1394,7 @@ void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, u
 	sendMemberPermissionsTo(player, targetID, guildTerminal);
 }
 
-void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, GuildObject* guild, TangibleObject* guildTerminal) {
 	if (guild == nullptr)
 		return;
 
@@ -1523,7 +1528,7 @@ void GuildManagerImplementation::acceptSponsorshipRequest(CreatureObject* player
 	sendGuildMail("@guildmail:sponsor_subject", params, guild);
 }
 
-void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player, GuildObject* guild, TangibleObject* guildTerminal) {
 	if (guild == nullptr)
 		return;
 
@@ -1556,7 +1561,7 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObject* guild, uint64 playerID, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObject* guild, uint64 playerID, TangibleObject* guildTerminal) {
 	if (guild == nullptr) {
 		return;
 	}
