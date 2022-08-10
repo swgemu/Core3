@@ -107,21 +107,17 @@ object_weapon_melee_baton_victor_baton_gaderiffi = object_weapon_melee_baton_sha
 	actionAttackCost = 33,
 	mindAttackCost = 13,
 	forceCost = 0,
-	
-	pointBlankAccuracy = 0,
-	pointBlankRange = -13,
-	
-	idealRange = -13,
-	idealAccuracy = 3,
-	
-	maxRange = -13,
-	maxRangeAccuracy = 5,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -13,
+	idealRange = 3,
+	idealAccuracy = -13,
+	maxRange = 5,
+	maxRangeAccuracy = -13,
 
 	minDamage = 48,
 	maxDamage = 148,
-	
 	attackSpeed = 3.8,
-
 	woundsRatio = 16,
 }
 

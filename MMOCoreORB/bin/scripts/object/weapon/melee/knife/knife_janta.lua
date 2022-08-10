@@ -104,21 +104,17 @@ object_weapon_melee_knife_knife_janta = object_weapon_melee_knife_shared_knife_j
 	actionAttackCost = 15,
 	mindAttackCost = 6,
 	forceCost = 0,
-	
-	pointBlankAccuracy = 0,
-	pointBlankRange = 3,
-	
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = 3,
 	idealRange = 3,
 	idealAccuracy = 3,
-	
-	maxRange = 3,
-	maxRangeAccuracy = 4,
+	maxRange = 4,
+	maxRangeAccuracy = 3,
 
 	minDamage = 11,
 	maxDamage = 22,
-	
-	attackSpeed = 3.0,
-
+	attackSpeed = 3,
 	woundsRatio = 6,
 }
 

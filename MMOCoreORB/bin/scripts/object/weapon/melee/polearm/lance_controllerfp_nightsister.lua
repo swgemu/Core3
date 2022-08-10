@@ -105,22 +105,17 @@ object_weapon_melee_polearm_lance_controllerfp_nightsister = object_weapon_melee
 	mindAttackCost = 29,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 5,
-
-	idealRange = 5,
-	idealAccuracy = 3,
-
+	pointBlankRange = 0,
+	pointBlankAccuracy = 7,
+	idealRange = 3,
+	idealAccuracy = 7,
 	maxRange = 5,
-	maxRangeAccuracy = 5,
+	maxRangeAccuracy = 7,
 
 	minDamage = 10,
 	maxDamage = 190,
-
 	attackSpeed = 5.15,
-
 	woundsRatio = 14,
-
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_lance_controllerfp_nightsister, "object/weapon/melee/polearm/lance_controllerfp_nightsister.iff")

@@ -105,22 +105,17 @@ object_weapon_melee_polearm_lance_staff_janta = object_weapon_melee_polearm_shar
 	mindAttackCost = 15,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 6,
-
-	idealRange = 6,
-	idealAccuracy = 3,
-
-	maxRange = 6,
-	maxRangeAccuracy = 5,
+	pointBlankRange = 0,
+	pointBlankAccuracy = 6,
+	idealRange = 3,
+	idealAccuracy = 6,
+	maxRange = 5,
+	maxRangeAccuracy = 6,
 
 	minDamage = 25,
 	maxDamage = 56,
-
 	attackSpeed = 5.8,
-
 	woundsRatio = 7,
-
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_lance_staff_janta, "object/weapon/melee/polearm/lance_staff_janta.iff")

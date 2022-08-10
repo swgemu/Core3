@@ -105,22 +105,17 @@ object_weapon_melee_sword_sword_curved_nyax = object_weapon_melee_sword_shared_s
 	mindAttackCost = 32,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 3,
-
+	pointBlankRange = 0,
+	pointBlankAccuracy = 7,
 	idealRange = 3,
-	idealAccuracy = 3,
-
-	maxRange = 3,
-	maxRangeAccuracy = 4,
+	idealAccuracy = 7,
+	maxRange = 4,
+	maxRangeAccuracy = 7,
 
 	minDamage = 17,
 	maxDamage = 78,
-
-	attackSpeed = 4.0,
-
+	attackSpeed = 4,
 	woundsRatio = 15,
-
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_sword_curved_nyax, "object/weapon/melee/sword/sword_curved_nyax.iff")
