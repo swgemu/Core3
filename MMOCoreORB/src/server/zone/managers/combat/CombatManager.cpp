@@ -2790,11 +2790,13 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			targetDefense /= 1.5;
 			targetDefense += playerLevel;
 
-			if (targetDefense > 90) {
-				targetDefense = 90.f;
-			}
+			// Run roll to check against
+			int roll = System::random(100);
 
-			if (System::random(100) > accuracyMod - targetDefense) {
+			// Chance to apply needs to always be 10% no matter the calc
+			int calc = Math::max(10, (int)(accuracyMod - targetDefense));
+
+			if (roll > calc) {
 				failed = true;
 			}
 
@@ -2809,10 +2811,10 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 					targetDefense /= 1.5;
 					targetDefense += playerLevel;
 
-					if (targetDefense > 90)
-						targetDefense = 90.f;
+					// Chance to apply needs to always be 10% no matter the calc
+					calc = Math::max(10, (int)(accuracyMod - targetDefense));
 
-					if (System::random(100) > accuracyMod - targetDefense) {
+					if (roll > calc) {
 						failed = true;
 						break;
 					}
