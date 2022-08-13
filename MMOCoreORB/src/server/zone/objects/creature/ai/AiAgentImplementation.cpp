@@ -2757,6 +2757,8 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::WATCHING:
+		if ((getCreatureBitmask() & CreatureFlag::ESCORT) && followCopy != nullptr)
+			setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
 
 		break;
 	case AiAgent::STALKING:
