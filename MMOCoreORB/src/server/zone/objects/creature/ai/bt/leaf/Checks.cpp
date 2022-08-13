@@ -730,3 +730,9 @@ template<> bool CheckQueueSize::check(AiAgent* agent) const {
 
 	return false;
 }
+
+template<> bool CheckIsEscort::check(AiAgent* agent) const {
+	Locker lock(agent);
+
+	return agent->getCreatureBitmask() & CreatureFlag::ESCORT;
+}

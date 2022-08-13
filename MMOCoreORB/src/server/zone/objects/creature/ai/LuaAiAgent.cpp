@@ -968,8 +968,12 @@ int LuaAiAgent::setHomeLocation(lua_State* L) {
 int LuaAiAgent::setNoAiAggro(lua_State* L) {
 	Locker locker(realObject);
 
-	if (!(realObject->getCreatureBitmask() & CreatureFlag::NOAIAGGRO))
-		realObject->setCreatureBitmask(realObject->getCreatureBitmask() + CreatureFlag::NOAIAGGRO);
+	if (!(realObject->getCreatureBitmask() & CreatureFlag::NOAIAGGRO)) {
+		uint32 creatureBitmask = realObject->getCreatureBitmask();
+		creatureBitmask |= CreatureFlag::NOAIAGGRO;
+
+		realObject->setCreatureBitmask(creatureBitmask);
+	}
 
 	return 0;
 }

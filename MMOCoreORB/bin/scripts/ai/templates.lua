@@ -91,6 +91,7 @@ bitmaskLookup = {
 	}},
 
 	{ESCORT, {
+		{AWARE, "awareEscort"},
 		{IDLE, "runEscort"},
 		{MOVE, "moveEscort"},
 		{TARGET, "targetDefault"}

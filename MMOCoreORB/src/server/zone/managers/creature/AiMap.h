@@ -447,6 +447,7 @@ private:
 		_REGISTERLEAF(CheckShouldRest);
 		_REGISTERLEAF(CheckStopResting);
 		_REGISTERLEAF(CheckQueueSize);
+		_REGISTERLEAF(CheckIsEscort);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
