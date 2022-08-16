@@ -12,8 +12,7 @@
 
 class PlayersNearYouMessage : public ObjectControllerMessage {
 public:
-	PlayersNearYouMessage(CreatureObject* creo) 
-: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x1E7) {
+	PlayersNearYouMessage(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x1E7) {
 		insertInt(0); // No players.
 	}
 
@@ -21,13 +20,22 @@ public:
 		// Bitmask.
 		PlayerObject* ghost = player->getPlayerObject();
 
-		uint32 playerBitmask = 0;
+		if (ghost != nullptr) {
+			if (ghost->isLFG()) {
+				insertInt(1);
+				insertInt(PlayerBitmasks::LFG);
+			}
 
-		if (ghost != nullptr)
-			playerBitmask = ghost->getCharacterBitmask();
+			if (ghost->isNewbieHelper()) {
+				insertInt(1);
+				insertInt(PlayerBitmasks::NEWBIEHELPER);
+			}
 
-		insertInt(1);
-		insertInt(playerBitmask); // Flags bitmask.
+			if (ghost->isRoleplayer()) {
+				insertInt(1);
+				insertInt(PlayerBitmasks::ROLEPLAYER);
+			}
+		}
 
 		insertUnicode(player->getDisplayedName()); // Player name.
 
