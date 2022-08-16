@@ -1727,7 +1727,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	}
 
 	if (ConfigManager::instance()->useCovertOvertSystem()) {
-		if ((player->getFactionStatus() == FactionStatus::OVERT) && !player->hasSkill("force_title_jedi_rank_03"))
+		if ((player->getFactionStatus() == FactionStatus::OVERT) && !player->hasSkill("force_rank_light_novice") && !player->hasSkill("force_rank_dark_novice"))
 			player->setFactionStatus(FactionStatus::COVERT);
 	} else {
 		if (player->getFactionStatus() != FactionStatus::ONLEAVE && cbot->getFacilityType() != CloningBuildingObjectTemplate::FACTION_IMPERIAL && cbot->getFacilityType() != CloningBuildingObjectTemplate::FACTION_REBEL && !player->hasSkill("force_title_jedi_rank_03"))

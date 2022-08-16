@@ -182,7 +182,7 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		else
 			if (screenID == "greet_member_start_covert2") then
 				clonedConversation:addOption("@faction_recruiter:option_go_declared", "confirm_declare")
-			elseif (not SceneObject(pPlayer):hasPendingTask("recruiterScreenplay", "handleGoCovert")) then
+			elseif (screenID == "greet_member_start_overt2") then
 				clonedConversation:addOption("@faction_recruiter:option_go_covert", "confirm_covert")
 			end
 
@@ -213,6 +213,10 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		if (CreatureObject(pPlayer):hasSkill("force_rank_light_novice") or CreatureObject(pPlayer):hasSkill("force_rank_dark_novice")) then
 			CreatureObject(pPlayer):sendSystemMessage("@faction_recruiter:jedi_cant_go_covert")
 			return
+		end
+
+		if (SceneObject(pPlayer):hasPendingTask("recruiterScreenplay", "handleGoCovert")) then
+			SceneObject(pPlayer):cancelPendingTask("recruiterScreenplay", "handleGoCovert")
 		end
 
 		local timer = recruiterScreenplay.covertOvertResignTime * 60 * 1000 -- Minutes
