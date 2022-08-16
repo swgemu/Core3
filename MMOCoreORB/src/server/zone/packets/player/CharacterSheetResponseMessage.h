@@ -11,17 +11,24 @@
 class CharacterSheetResponseMessage : public BaseMessage {
 public:
     CharacterSheetResponseMessage(CreatureObject* player) : BaseMessage() {
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost == nullptr)
+			return;
+
+		ZoneServer* zoneServer = ghost->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return;
+
 		insertShort(0x0D);
 		insertInt(0x9B3A17C4); // CRC
 
-		//We should be passing playerobject into this method, rather than PlayerCreature.
-		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-
-		insertInt(0); //??
-		insertInt(0); //??
+		insertInt(0); // Spacer
+		insertInt(0); // Spacer
 
 		uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
-		ManagedReference<SceneObject*> cloningFacility = player->getZoneServer()->getObject(preDesignatedFacilityOid);
+		ManagedReference<SceneObject*> cloningFacility = zoneServer->getObject(preDesignatedFacilityOid);
 
 		if (cloningFacility != nullptr && cloningFacility->getZone() != nullptr) {
 			insertFloat(cloningFacility->getPositionX());
@@ -42,7 +49,7 @@ public:
 
 		uint64 declaredOidResidence = ghost->getDeclaredResidence();
 
-		ManagedReference<SceneObject*> declaredResidence = player->getZoneServer()->getObject(declaredOidResidence);
+		ManagedReference<SceneObject*> declaredResidence = zoneServer->getObject(declaredOidResidence);
 
 		if (declaredResidence != nullptr && declaredResidence->getZone() != nullptr) {
 			insertFloat(declaredResidence->getPositionX()); //Home Location X
