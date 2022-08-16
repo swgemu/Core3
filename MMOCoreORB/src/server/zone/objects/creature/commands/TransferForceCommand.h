@@ -94,6 +94,9 @@ public:
 
 		VisibilityManager::instance()->increaseVisibility(creature, visMod);
 
+		if (ConfigManager::instance()->useCovertOvertSystem())
+			checkForTef(creature, targetCreature);
+
 		return SUCCESS;
 	}
 

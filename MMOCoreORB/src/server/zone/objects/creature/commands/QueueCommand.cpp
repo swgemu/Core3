@@ -315,7 +315,7 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 				int targetStatus = target->getFactionStatus();
 
 				if (!CombatManager::instance()->areInDuel(creature, target)) {
-					if ((healerStatus >= FactionStatus::COVERT && targetGhost->hasGcwTef()) || (targetStatus == FactionStatus::OVERT && healerStatus == FactionStatus::COVERT)) {
+					if (creature->getFaction() == target->getFaction() && ((healerStatus >= FactionStatus::COVERT && targetGhost->hasGcwTef()) || (targetStatus == FactionStatus::OVERT && healerStatus == FactionStatus::COVERT))) {
 						ghost->updateLastGcwPvpCombatActionTimestamp();
 					}
 				}

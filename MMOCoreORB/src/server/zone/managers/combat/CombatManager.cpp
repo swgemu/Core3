@@ -3207,7 +3207,7 @@ void CombatManager::checkForTefs(CreatureObject* attacker, CreatureObject* defen
 		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 		uint32 targetFaction = targetCreature->getFaction();
 
-		if (covertOvert && targetFaction > 0 && attackingCreature->getFaction() != targetFaction && attackingCreature->getFactionStatus() >= FactionStatus::COVERT) {
+		if (covertOvert && !areInDuel(attackingCreature, targetCreature) && targetFaction > 0 && attackingCreature->getFaction() != targetFaction && attackingCreature->getFactionStatus() >= FactionStatus::COVERT) {
 			*shouldGcwTef = true;
 		}
 
