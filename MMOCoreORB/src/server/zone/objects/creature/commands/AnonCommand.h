@@ -28,14 +28,8 @@ public:
 
 		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-		if (ghost->isAnonymous())
-			creature->sendSystemMessage("@ui_who:anonymous_false");
-		else
-			creature->sendSystemMessage("@ui_who:anonymous_true");
-
 		if (ghost != nullptr)
-			ghost->toggleCharacterBit(PlayerObject::ANONYMOUS);
-
+			ghost->toggleCharacterBit(PlayerBitmasks::ANONYMOUS);
 
 		return SUCCESS;
 	}
