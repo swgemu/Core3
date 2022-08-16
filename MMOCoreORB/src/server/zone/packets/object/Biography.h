@@ -15,7 +15,7 @@ public:
 
 		PlayerObject* ghost = player->getPlayerObject();
 
-		insertUnicode(ghost->getBiography());		
+		insertUnicode(ghost->getBiography());
 	}
 
 };

@@ -47,12 +47,18 @@ include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaBitArray;
 include server.zone.objects.transaction.TransactionLog;
+include server.zone.objects.player.PlayerBitmasks;
 
 @json
 class PlayerObject extends IntangibleObject {
 	protected int playerLogLevel;
 
-	protected unsigned int characterBitmask;
+	@dereferenced
+	protected PlayerBitmasks playerBitmasks;
+
+	@dereferenced
+	protected transient PlayerBitmasks profileBitmasks;
+
 	protected string title;
 
 	protected string savedTerrainName;
@@ -60,6 +66,8 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected Badges badges;
+
+	protected int birthDate;
 
 	protected int forcePower;
 	protected int forcePowerMax;
@@ -309,14 +317,6 @@ class PlayerObject extends IntangibleObject {
 	protected transient unsigned long sessionStatsTotalCredits;
 	protected transient string sessionStatsIPAddress;
 
-	public static final int LFG = 1;
-	public static final int NEWBIEHELPER = 2;
-	public static final int ROLEPLAYER = 4;
-	public static final int AFK = 0x80;
-	public static final int LD = 0x100;
-	public static final int FACTIONRANK = 0x200;
-	public static final int ANONYMOUS = 0x80000000;
-
 	public static final int ONLINE = 1;
 	public static final int OFFLINE = 2;
 	public static final int LINKDEAD = 3;
@@ -327,8 +327,6 @@ class PlayerObject extends IntangibleObject {
 
 	public PlayerObject() {
 		playerLogLevel = 4; // INFO
-
-		characterBitmask = 0;
 
 		commandMessageStrings.setNoDuplicateInsertPlan();
 
@@ -355,6 +353,8 @@ class PlayerObject extends IntangibleObject {
 		skillPoints = 0;
 
 		conversatingCreature = 0;
+
+		birthDate = 0;
 
 		forcePower = 0;
 		forcePowerMax = 0;
@@ -1074,6 +1074,10 @@ class PlayerObject extends IntangibleObject {
 		savedTerrainName = name;
 	}
 
+	public void setBirthDate(int date) {
+		birthDate = date;
+	}
+
 	public native void setForcePower(int fp, boolean notifyClient = true);
 
 	public native void setForcePowerMax(int newValue, boolean notifyClient = true);
@@ -1324,10 +1328,22 @@ class PlayerObject extends IntangibleObject {
 		return commandMessageStrings.contains(actionCRC);
 	}
 
+	@local
 	@read
-	public unsigned int getCharacterBitmask() {
-		return characterBitmask;
+	public final PlayerBitmasks getPlayerBitmasks() {
+		return playerBitmasks;
 	}
+
+	@local
+	@read
+	public final PlayerBitmasks getProfileBitmasks() {
+		return profileBitmasks;
+	}
+
+	/*@local
+	public DeltaVectorMap<string, int> getExperienceList() {
+		return experienceList;
+	}*/
 
 	@read
 	public string getTitle() {
@@ -1376,12 +1392,8 @@ class PlayerObject extends IntangibleObject {
 		return (adminLevel == 15 && hasAbility("admin"));
 	}
 
-	public void setCharacterBitmask(unsigned int bitmask) {
-		characterBitmask = bitmask;
-	}
-
-	public native boolean setCharacterBit(unsigned int bit, boolean notifyClient = false);
-	public native boolean clearCharacterBit(unsigned int bit, boolean notifyClient = false);
+	public native boolean setPlayerBitmask(unsigned int bit, boolean notifyClient = false);
+	public native boolean clearPlayerBitmask(unsigned int bit, boolean notifyClient = false);
 	public native void toggleCharacterBit(unsigned int bit);
 	/**
 	 * is the player AFK
@@ -1440,6 +1452,14 @@ class PlayerObject extends IntangibleObject {
 	@read
 	public final DeltaBitArray getCompletedQuests() {
 		return completedQuests;
+	}
+
+	// The client tracks time played in 30s intervals
+	@read
+	public int getTotalPlayedTime() {
+		int totalTime = miliSecsPlayed / 1000 / 30;
+
+		return totalTime;
 	}
 
 	@read
@@ -1956,6 +1976,9 @@ class PlayerObject extends IntangibleObject {
 
 	@dirty
 	public native int getCharacterAgeInDays();
+
+	@dirty
+	public native int getBirthDate();
 
 	public void addToReactionFines(int fine) {
 		reactionFines = reactionFines + fine;
