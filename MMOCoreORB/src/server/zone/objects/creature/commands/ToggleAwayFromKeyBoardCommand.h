@@ -29,7 +29,7 @@ public:
 		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		if (ghost != nullptr)
-			ghost->toggleCharacterBit(PlayerObject::AFK);
+			ghost->toggleCharacterBit(PlayerBitmasks::AFK);
 
 		return SUCCESS;
 	}

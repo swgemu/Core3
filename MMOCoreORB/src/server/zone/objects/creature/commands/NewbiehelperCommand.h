@@ -29,7 +29,7 @@ public:
 		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		if (ghost != nullptr)
-			ghost->toggleCharacterBit(PlayerObject::NEWBIEHELPER);
+			ghost->toggleCharacterBit(PlayerBitmasks::NEWBIEHELPER);
 
 		return SUCCESS;
 	}

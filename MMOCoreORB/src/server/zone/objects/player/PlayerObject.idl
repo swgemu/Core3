@@ -47,12 +47,16 @@ include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaBitArray;
 include server.zone.objects.transaction.TransactionLog;
+include server.zone.objects.player.PlayerBitmasks;
 
 @json
 class PlayerObject extends IntangibleObject {
 	protected int playerLogLevel;
 
-	protected unsigned int characterBitmask;
+	//TODO: remove transient when finished testing
+	@dereferenced
+	protected transient PlayerBitmasks playerBitmasks;
+
 	protected string title;
 
 	protected string savedTerrainName;
@@ -309,14 +313,6 @@ class PlayerObject extends IntangibleObject {
 	protected transient unsigned long sessionStatsTotalCredits;
 	protected transient string sessionStatsIPAddress;
 
-	public static final int LFG = 1;
-	public static final int NEWBIEHELPER = 2;
-	public static final int ROLEPLAYER = 4;
-	public static final int AFK = 0x80;
-	public static final int LD = 0x100;
-	public static final int FACTIONRANK = 0x200;
-	public static final int ANONYMOUS = 0x80000000;
-
 	public static final int ONLINE = 1;
 	public static final int OFFLINE = 2;
 	public static final int LINKDEAD = 3;
@@ -327,8 +323,6 @@ class PlayerObject extends IntangibleObject {
 
 	public PlayerObject() {
 		playerLogLevel = 4; // INFO
-
-		characterBitmask = 0;
 
 		commandMessageStrings.setNoDuplicateInsertPlan();
 
@@ -1324,10 +1318,16 @@ class PlayerObject extends IntangibleObject {
 		return commandMessageStrings.contains(actionCRC);
 	}
 
+	@local
 	@read
-	public unsigned int getCharacterBitmask() {
-		return characterBitmask;
+	public final PlayerBitmasks getPlayerBitmasks() {
+		return playerBitmasks;
 	}
+
+	/*@local
+	public DeltaVectorMap<string, int> getExperienceList() {
+		return experienceList;
+	}*/
 
 	@read
 	public string getTitle() {
@@ -1376,12 +1376,8 @@ class PlayerObject extends IntangibleObject {
 		return (adminLevel == 15 && hasAbility("admin"));
 	}
 
-	public void setCharacterBitmask(unsigned int bitmask) {
-		characterBitmask = bitmask;
-	}
-
-	public native boolean setCharacterBit(unsigned int bit, boolean notifyClient = false);
-	public native boolean clearCharacterBit(unsigned int bit, boolean notifyClient = false);
+	public native boolean setPlayerBitmask(unsigned int bit, boolean notifyClient = false);
+	public native boolean clearPlayerBitmask(unsigned int bit, boolean notifyClient = false);
 	public native void toggleCharacterBit(unsigned int bit);
 	/**
 	 * is the player AFK
