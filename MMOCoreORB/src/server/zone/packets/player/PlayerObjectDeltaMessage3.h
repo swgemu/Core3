@@ -9,32 +9,48 @@
 #include "server/zone/objects/player/PlayerObject.h"
 
 class PlayerObjectDeltaMessage3 : public DeltaMessage {
-	PlayerObject* play;
-	
+	PlayerObject* ghost;
+
 public:
-	PlayerObjectDeltaMessage3(PlayerObject* pl)
-			: DeltaMessage(pl->getObjectID(), 0x504C4159, 3) {
-		play = pl;
+	PlayerObjectDeltaMessage3(PlayerObject* pl) : DeltaMessage(pl->getObjectID(), 0x504C4159, 3) {
+		ghost = pl;
+	}
+
+	void updatePlayerBitmasks() {
+		startUpdate(0x05);
+		insertInt(0x04);
+
+		const PlayerBitmasks* playerBits = ghost->getPlayerBitmasks();
+
+		for (int i = 0; i < 4; ++i) {
+			insertInt(playerBits->getBitmask(i));
+		}
+	}
+
+	void updateProfileBitmasks() {
+		startUpdate(0x06);
+		insertInt(0x04);
+
+		const PlayerBitmasks* profileBits = ghost->getProfileBitmasks();
+
+		for (int i = 0; i < 4; ++i) {
+			insertInt(profileBits->getBitmask(i));
+		}
 	}
 
 	void setCurrentTitle(const String& pTitle) {
-		startUpdate(7);
+		startUpdate(0x07);
 		insertAscii(pTitle);
 	}
-	
-	void setUpdateTypeNine(int value) {
-		startUpdate(9);
-		insertInt(value);
+
+	void setBirthDate() {
+		startUpdate(0x08);
+		insertInt(ghost->getBirthDate());
 	}
-	
-	void updateCharacterBitmask(uint32 bitmask) {
-		startUpdate(5);
-		insertInt(4);
-		insertInt(bitmask);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
+
+	void setTotalPlayTime() {
+		startUpdate(0x09);
+		insertInt(ghost->getTotalPlayedTime());
 	}
-	
 };
 #endif /*PLAYEROBJECTDELTAMESSAGE3_H_*/
