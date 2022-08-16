@@ -3371,73 +3371,72 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 	return true;
 }
 
-bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
-	if (object == asCreatureObject())
+bool CreatureObjectImplementation::isHealableBy(CreatureObject* healerCreo) {
+	if (healerCreo == asCreatureObject())
 		return true;
 
 	if (isInvisible())
 		return false;
 
-	if (isAttackableBy(object))
+	if (isAttackableBy(healerCreo))
 		return false;
 
-	PlayerObject* ghost = object->getPlayerObject(); // ghost is the healer
+	 // healerGhost is the healer
+	PlayerObject* healerGhost = healerCreo->getPlayerObject();
 
-	if (ghost == nullptr)
+	if (healerGhost == nullptr)
 		return false;
 
-	if (ghost->hasBhTef())
+	if (healerGhost->hasBhTef())
 		return false;
 
-	//if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
-
-	CreatureObject* targetCreo = asCreatureObject();
+	CreatureObject* thisCreo = asCreatureObject();
 
 	if (isPet()) {
 		auto linkedCreature = getLinkedCreature().get();
 
 		if (linkedCreature != nullptr) {
-			targetCreo = linkedCreature.get();
+			thisCreo = linkedCreature.get();
 		}
 	}
 
-	bool targetIsPlayer = targetCreo->isPlayerCreature();
-	PlayerObject* targetGhost = nullptr;
+	bool thisIsPlayer = thisCreo->isPlayerCreature();
+	PlayerObject* thisGhost = nullptr;
 
-	if (targetIsPlayer) {
-		targetGhost = targetCreo->getPlayerObject();
+	if (thisIsPlayer) {
+		thisGhost = thisCreo->getPlayerObject();
 
-		if (targetGhost == nullptr)
+		if (thisGhost == nullptr)
 			return false;
 
-		if (targetGhost->isLinkDead() && ghost->getAccountID() == targetGhost->getAccountID() && !ConfigManager::instance()->getBool("Core3.CombatManager.AllowSameAccountLinkDeadBeneficialActions", true))
+		if (thisGhost->isLinkDead() && healerGhost->getAccountID() == thisGhost->getAccountID() && !ConfigManager::instance()->getBool("Core3.CombatManager.AllowSameAccountLinkDeadBeneficialActions", true))
 			return false;
 
-		if (targetGhost->isInPvpArea(true) && getGroupID() != 0 && getGroupID() == targetCreo->getGroupID()) {
+		if (thisGhost->isInPvpArea(true) && getGroupID() != 0 && getGroupID() == thisCreo->getGroupID()) {
 			return true;
 		}
 	}
 
-	uint32 targetFactionStatus = targetCreo->getFactionStatus();
-	uint32 currentFactionStatus = object->getFactionStatus();
+	uint32 thisFactionStatus = thisCreo->getFactionStatus();
+	uint32 healerFactionStatus = healerCreo->getFactionStatus();
 	bool covertOvert =  ConfigManager::instance()->useCovertOvertSystem();
 
 	if (covertOvert) {
 		// Different Factions, or neutral, and target is overt
-		if (getFaction() != object->getFaction() && (targetFactionStatus == FactionStatus::OVERT))
+		if (getFaction() != thisCreo->getFaction() && (thisFactionStatus == FactionStatus::OVERT))
 			return false;
 	} else {
-		if (getFaction() != object->getFaction() && !(targetFactionStatus == FactionStatus::ONLEAVE))
+		if (getFaction() != thisCreo->getFaction() && !(thisFactionStatus == FactionStatus::ONLEAVE))
 			return false;
 
-		if ((targetFactionStatus == FactionStatus::OVERT) && !(currentFactionStatus == FactionStatus::OVERT))
+		if ((healerFactionStatus == FactionStatus::OVERT) && !(healerFactionStatus == FactionStatus::OVERT))
 			return false;
 
-		if (!(targetFactionStatus == FactionStatus::ONLEAVE) && (currentFactionStatus == FactionStatus::ONLEAVE))
+		if (!(thisFactionStatus == FactionStatus::ONLEAVE) && (healerFactionStatus == FactionStatus::ONLEAVE))
 			return false;
 	}
 
-	if (targetIsPlayer && targetGhost != nullptr && targetGhost->hasBhTef()) {
+	if (thisIsPlayer && thisGhost != nullptr && thisGhost->hasBhTef()) {
 		return false;
 	}
 
