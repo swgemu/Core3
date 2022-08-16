@@ -538,8 +538,10 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 		lastValidatedPosition->update(playerCreature);
 
 		ghost->setBiography(bio);
-
 		ghost->setLanguageID(playerTemplate->getDefaultLanguage());
+
+		Time now;
+		ghost->setBirthDate(now.getTime());
 	}
 
 	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(

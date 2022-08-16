@@ -10,31 +10,31 @@
 
 class PlayerObjectMessage3 : public IntangibleObjectMessage3 {
 public:
-	PlayerObjectMessage3(PlayerObject* play)
-			: IntangibleObjectMessage3(play, 0x504C4159, 0x0B) {
-		/*insertFloat(1);
+	PlayerObjectMessage3(PlayerObject* ghost) : IntangibleObjectMessage3(ghost, 0x504C4159, 0x0B) {
+		// Player Bitmasks
+		insertInt(0x04);
+		const PlayerBitmasks* playerBits = ghost->getPlayerBitmasks();
 
-		insertAscii("String_id_table");
-		insertInt(0);
-		insertAscii("");
+		for (int i = 0; i < 4; ++i) {
+			insertInt(playerBits->getBitmask(i));
+		}
 
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);*/
+		// Profile Settings
+		insertInt(0x04);
+		const PlayerBitmasks* profileBits = ghost->getProfileBitmasks();
 
-		insertInt(4);
-		insertInt(play->getCharacterBitmask());
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
+		for (int i = 0; i < 4; ++i) {
+			insertInt(profileBits->getBitmask(i));
+		}
 
-		insertInt(4);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
+		// Skill Title
+		insertAscii(ghost->getTitle());
 
-		insertAscii(play->getTitle());
+		// Born Date
+		insertInt(ghost->getBirthDate());
+
+		// Total Play Time
+		insertInt(ghost->getTotalPlayedTime());
 
 		insertInt(0x6C2);
 		insertInt(0xDC62);

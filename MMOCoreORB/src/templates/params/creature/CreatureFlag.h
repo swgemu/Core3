@@ -42,8 +42,8 @@ public:
 		TEST					= 0x200000,
 		LASTAIMASK				= 0x400000, // keep this updated so we can loop through the masks
 
-		CARNIVORE               = 0x01,
-		HERBIVORE               = 0x02
+		CARNIVORE				= 0x01,
+		HERBIVORE				= 0x02
 	};
 };
 
