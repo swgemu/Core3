@@ -2028,8 +2028,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	float updateTicks = float(UPDATEMOVEMENTINTERVAL) / 1000.f;
 	float maxSpeed = newSpeed * updateTicks; // maxSpeed is the distance able to travel in time updateTicks
 
-	updateLocomotion();
-
 	Vector3 currentPosition = getPosition();
 	Vector3 currentWorldPos = getWorldPosition();
 	PatrolPoint endMovementPosition = getNextPosition();
@@ -2037,13 +2035,15 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	Vector3 endDistDiff(currentWorldPos - endMovementPosition.getWorldPosition());
 	float endDistanceSq = (endDistDiff.getX() * endDistDiff.getX() + endDistDiff.getY() * endDistDiff.getY());
 	float maxSquared = Math::max(0.1f, maxDistance * maxDistance);
-	float zDiff = Math::getPrecision(endDistDiff.getZ(), 3);
+
+	float endDistZSq = endDistDiff.getZ() * endDistDiff.getZ();
+	endDistZSq = Math::getPrecision(endDistZSq, 2);
 
 #ifdef DEBUG_FINDNEXTPOSITION
-		info(true) << "findNextPosition -- ID: " <<  getObjectID() << " endDistSquared = " << endDistanceSq << "  maxSquared = " << maxSquared << " endDistDiff Z = " << zDiff << " Max Distance = " << maxDistance;
+	info(true) << "findNextPosition -- ID: " <<  getObjectID() << " endDistSquared = " << endDistanceSq << "  maxSquared = " << maxSquared << " endDistDiff Z = " << endDistZSq << " Max Distance = " << maxDistance;
 #endif
 
-	if (endDistanceSq <= maxSquared && zDiff < 1.f && fabs(zDiff) < maxDistance) {
+	if (endDistanceSq <= maxSquared && fabs(endDistZSq) < (maxDistance + 1.f)) {
 		currentFoundPath = nullptr;
 
 		if (patrolPoints.size() > 0)
@@ -2052,8 +2052,25 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (movementState != AiAgent::FOLLOWING)
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
+		setCurrentSpeed(0.f);
+
 		return false;
 	}
+
+	float currentSpeed = getCurrentSpeed();
+
+	// Handle speed up and slow down
+	if ((((currentSpeed * currentSpeed) * maxSquared) > endDistanceSq) && newSpeed > 0.4f) {
+		newSpeed = Math::max(0.2f, (currentSpeed - 0.4f));
+	} else if (currentSpeed < newSpeed) {
+		float speedDiff = newSpeed - currentSpeed;
+
+		if (speedDiff > 0.4f)
+			newSpeed = currentSpeed + 0.4f;
+	}
+
+	setCurrentSpeed(newSpeed);
+	updateLocomotion();
 
 #ifdef DEBUG_FINDNEXTPOSITION
 	printf("--- !!!!    findNextPosition -- Start -- !!!! ----- \n");
