@@ -34,7 +34,7 @@ public:
 			creature->sendSystemMessage("@ui_who:anonymous_true");
 
 		if (ghost != nullptr)
-			ghost->toggleCharacterBit(PlayerObject::ANONYMOUS);
+			ghost->toggleCharacterBit(CreatureFlag::ANONYMOUS);
 
 
 		return SUCCESS;

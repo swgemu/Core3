@@ -42,8 +42,16 @@ public:
 		TEST					= 0x200000,
 		LASTAIMASK				= 0x400000, // keep this updated so we can loop through the masks
 
-		CARNIVORE               = 0x01,
-		HERBIVORE               = 0x02
+		CARNIVORE				= 0x01,
+		HERBIVORE				= 0x02,
+
+		LFG						= 0x01,
+		NEWBIEHELPER			= 0x02,
+		ROLEPLAYER				= 0x04,
+		AFK						= 0x80,
+		LD						= 0x100,
+		FACTIONRANK				= 0x200,
+		ANONYMOUS				= 0x400
 	};
 };
 

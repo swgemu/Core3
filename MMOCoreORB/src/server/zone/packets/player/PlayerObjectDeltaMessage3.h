@@ -9,32 +9,35 @@
 #include "server/zone/objects/player/PlayerObject.h"
 
 class PlayerObjectDeltaMessage3 : public DeltaMessage {
-	PlayerObject* play;
-	
+	PlayerObject* ghost;
+
 public:
-	PlayerObjectDeltaMessage3(PlayerObject* pl)
-			: DeltaMessage(pl->getObjectID(), 0x504C4159, 3) {
-		play = pl;
+	PlayerObjectDeltaMessage3(PlayerObject* pl) : DeltaMessage(pl->getObjectID(), 0x504C4159, 3) {
+		ghost = pl;
+	}
+
+
+	void updatePlayerBitmasks() {
+		startUpdate(0x05);
+		//insertInt(4);
+
+		ghost->info(true) << " PlayerObjectDeltaMessage3 called ";
+
+		const DeltaVector<uint16>* playerBitmasks = ghost->getPlayerBitmasks();
+		playerBitmasks->insertToMessage(this);
+
+		setSize(playerBitmasks->size());
 	}
 
 	void setCurrentTitle(const String& pTitle) {
-		startUpdate(7);
+		startUpdate(0x07);
 		insertAscii(pTitle);
 	}
-	
-	void setUpdateTypeNine(int value) {
-		startUpdate(9);
+
+	void setTotalPlayTime(int value) {
+		startUpdate(0x09);
 		insertInt(value);
 	}
-	
-	void updateCharacterBitmask(uint32 bitmask) {
-		startUpdate(5);
-		insertInt(4);
-		insertInt(bitmask);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-	}
-	
+
 };
 #endif /*PLAYEROBJECTDELTAMESSAGE3_H_*/

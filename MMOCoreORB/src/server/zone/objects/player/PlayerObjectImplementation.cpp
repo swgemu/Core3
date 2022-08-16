@@ -176,7 +176,7 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	SharedPlayerObjectTemplate* sply = dynamic_cast<SharedPlayerObjectTemplate*>(templateData);
 
-	characterBitmask = 0;
+	//characterBitmask = 0;
 
 	adminLevel = 0;
 
@@ -553,57 +553,60 @@ void PlayerObjectImplementation::sendMessage(BasePacket* msg) {
 	}
 }
 
-bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool notifyClient) {
-	if (!(characterBitmask & bit)) {
-		characterBitmask |= bit;
+bool PlayerObjectImplementation::setPlayerBitmask(uint32 bit, bool notifyClient) {
+	if (!playerBitmasks.contains(bit)) {
+		playerBitmasks.add((uint16)bit);
 
 		if (notifyClient) {
 			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3(asPlayerObject());
-			delta->updateCharacterBitmask(characterBitmask);
+			delta->updatePlayerBitmasks();
 			delta->close();
 
 			broadcastMessage(delta, true);
 		}
+
 		return true;
-	} else
-		return false;
+	}
+
+	return false;
 }
 
 bool PlayerObjectImplementation::isAnonymous() const {
-	return (characterBitmask & ((uint32)ANONYMOUS)) != 0;
+	return playerBitmasks.contains(CreatureFlag::ANONYMOUS);
 }
 
 bool PlayerObjectImplementation::isAFK() const {
-	return (characterBitmask & ((uint32)AFK)) != 0;
+	return playerBitmasks.contains(CreatureFlag::AFK);
 }
 
 bool PlayerObjectImplementation::isRoleplayer() const {
-	return (characterBitmask & ((uint32)ROLEPLAYER)) != 0;
+	return playerBitmasks.contains(CreatureFlag::ROLEPLAYER);
 }
 
 bool PlayerObjectImplementation::isNewbieHelper() const {
-	return (characterBitmask & ((uint32)NEWBIEHELPER)) != 0;
+	return playerBitmasks.contains(CreatureFlag::NEWBIEHELPER);
 }
 
 bool PlayerObjectImplementation::isLFG() const {
-	return (characterBitmask & ((uint32)LFG)) != 0;
+	return playerBitmasks.contains(CreatureFlag::LFG);
 }
 
-bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient) {
-	if (characterBitmask & bit) {
-		characterBitmask &= ~bit;
+bool PlayerObjectImplementation::clearPlayerBitmask(uint32 bit, bool notifyClient) {
+	if (playerBitmasks.contains(bit)) {
+		playerBitmasks.remove(bit);
 
 		if (notifyClient) {
 			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3(asPlayerObject());
-			delta->updateCharacterBitmask(characterBitmask);
+			delta->updatePlayerBitmasks();
 			delta->close();
 
 			broadcastMessage(delta, true);
 		}
 
 		return true;
-	} else
-		return false;
+	}
+
+	return false;
 }
 
 void PlayerObjectImplementation::sendBadgesResponseTo(CreatureObject* player) {
@@ -1746,10 +1749,10 @@ void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient)
 }
 
 void PlayerObjectImplementation::toggleCharacterBit(uint32 bit) {
-	if (characterBitmask & bit) {
-		clearCharacterBit(bit, true);
+	if (playerBitmasks.contains(bit)) {
+		clearPlayerBitmask(bit, true);
 	} else {
-		setCharacterBit(bit, true);
+		setPlayerBitmask(bit, true);
 	}
 }
 
@@ -2266,7 +2269,7 @@ void PlayerObjectImplementation::setLinkDead(bool isSafeLogout) {
 		logoutTimeStamp.addMiliTime(ConfigManager::instance()->getInt("Core3.Tweaks.PlayerObject.LinkDeadDelay", 3 * 60) * 1000); // 3 minutes if unsafe
 	}
 
-	setCharacterBit(PlayerObjectImplementation::LD, true);
+	setPlayerBitmask(CreatureFlag::LD, true);
 
 	activateRecovery();
 
@@ -2280,7 +2283,7 @@ void PlayerObjectImplementation::setOnline() {
 
 	TransactionLog trx(TrxCode::PLAYERONLINE, getParentRecursively(SceneObjectType::PLAYERCREATURE));
 
-	clearCharacterBit(PlayerObjectImplementation::LD, true);
+	clearPlayerBitmask(CreatureFlag::LD, true);
 
 	doRecovery(1000);
 
