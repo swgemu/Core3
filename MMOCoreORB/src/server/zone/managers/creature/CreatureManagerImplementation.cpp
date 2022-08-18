@@ -660,13 +660,13 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			}
 		}
 
-		Reference<AiAgent*> strongReferenceDestructedObject = destructedObject;
+		Reference<AiAgent*> strongDestructed = destructedObject;
 
-		Core::getTaskManager()->executeTask([=] () {
-			Locker locker(strongReferenceDestructedObject);
+		Core::getTaskManager()->scheduleTask([strongDestructed] () {
+			Locker locker(strongDestructed);
 
-			CombatManager::instance()->attemptPeace(strongReferenceDestructedObject);
-		}, "AttemptPeaceLambda");
+			CombatManager::instance()->attemptPeace(strongDestructed);
+		}, "AttemptPeaceLambda", 200);
 
 		// Check to see if we can expedite the despawn of this corpse
 		// We can expedite the despawn when corpse has no loot, no credits, player cannot harvest, and no group members in range can harvest
