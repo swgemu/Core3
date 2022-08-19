@@ -3429,7 +3429,7 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* healerCreo) {
 		if (getFaction() != thisCreo->getFaction() && !(thisFactionStatus == FactionStatus::ONLEAVE))
 			return false;
 
-		if ((healerFactionStatus == FactionStatus::OVERT) && !(healerFactionStatus == FactionStatus::OVERT))
+		if ((thisFactionStatus == FactionStatus::OVERT) && (healerFactionStatus != FactionStatus::OVERT))
 			return false;
 
 		if (!(thisFactionStatus == FactionStatus::ONLEAVE) && (healerFactionStatus == FactionStatus::ONLEAVE))

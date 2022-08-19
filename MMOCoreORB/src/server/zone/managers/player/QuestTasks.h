@@ -65,6 +65,24 @@ protected:
 
 public:
 	QuestTask() {
+		isVisible = true;
+		showSystemMessages = false;
+		allowRepeats = false;
+		experienceAmount = 0;
+		factionAmount = 0;
+		bankCredits = 0;
+		locationX = 0;
+		locationY = 0;
+		locationZ = 0;
+		radius = 0;
+		minTime = 0;
+		maxTime = 0;
+		count = 0;
+		minDistance = 0;
+		maxDistance = 0;
+		rewardCredits = 0;
+		lootItemsRequired = 0;
+		lootDropPercent = 0;
 	}
 
 	void parseDataTableRow(const DataTableRow* row, const DataTableIff& dTable) {
