@@ -37,7 +37,7 @@ public:
 	void run() {
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
-		if (strongRef == nullptr)
+		if (strongRef == nullptr || strongRef->isDead() || strongRef->isIncapacitated())
 			return;
 
 		Locker locker(strongRef);
