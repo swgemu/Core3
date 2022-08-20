@@ -192,7 +192,7 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		if (recruiterScreenplay:getRecruiterFaction(pNpc) == "imperial") then
 			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_410", "show_gcw_score")
 		else
-			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_410", "show_gcw_score")
+			clonedConversation:addOption("@conversation/faction_recruiter_rebel:s_410", "show_gcw_score")
 		end
 
 		self:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
