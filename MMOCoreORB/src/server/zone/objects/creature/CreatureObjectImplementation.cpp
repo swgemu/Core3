@@ -3192,6 +3192,8 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 					return false;
 
 				// Remaining Options: Overt Creature / Overt tano, covert/covert, covert tano, overt creature. All should return attackable
+			} else if (!(getPvpStatusBitmask() & CreatureFlag::OVERT) && !ghost->hasGcwTef()) {
+				return false;
 			}
 		}
 	}
