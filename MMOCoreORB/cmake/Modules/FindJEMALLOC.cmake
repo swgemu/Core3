@@ -41,7 +41,6 @@ set(JEMALLOC_INCLUDE_DIRS ${JEMALLOC_INCLUDE_DIR})
 include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set JEMALLOC_FOUND to TRUE
 # if all listed variables are TRUE
-find_package_handle_standard_args(jemalloc DEFAULT_MSG
-  JEMALLOC_LIBRARY JEMALLOC_INCLUDE_DIR)
+find_package_handle_standard_args(JEMALLOC DEFAULT_MSG JEMALLOC_LIBRARY JEMALLOC_INCLUDE_DIR)
 
 mark_as_advanced(JEMALLOC_INCLUDE_DIR JEMALLOC_LIBRARY)
