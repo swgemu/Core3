@@ -64,7 +64,7 @@ include(UseGold)
 find_package(Git QUIET)
 
 # Add lua includes and libraries
-find_package(Lua "5.3" REQUIRED)
+find_package(Lua "5.3" EXACT REQUIRED)
 include_directories(${LUA_INCLUDE_DIR})
 
 # Find mysql includes and libraries
