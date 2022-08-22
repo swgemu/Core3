@@ -712,12 +712,15 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 #endif
 
 	for (int i = 0; i < closeNoneReference.size(); ++i) {
-		SceneObject* scno = static_cast<SceneObject*>(closeNoneReference.getUnsafe(i));
+		SceneObject* sceneO = static_cast<SceneObject*>(closeNoneReference.getUnsafe(i));
+
+		if (sceneO == nullptr || sceneO == selfObject)
+			continue;
 
 #ifdef LOCKFREE_BCLIENT_BUFFERS
 		scno->sendMessage(pack);
 #else
-		scno->sendMessage(message->clone());
+		sceneO->sendMessage(message->clone());
 #endif
 	}
 
