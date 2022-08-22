@@ -2,7 +2,6 @@ local ObjectManager = require("managers.object.object_manager")
 includeFile("gcw/recruiters/factionPerkData.lua")
 
 recruiterScreenplay = Object:new {
-	useCovertOvertSystem = false,
 	allowPveBases = true,
 	covertOvertResignTime = 15, -- In Minutes
 
@@ -180,10 +179,12 @@ end
 function recruiterScreenplay:getInstallationsOptions(faction, gcwDiscount, smugglerDiscount)
 	local optionsTable = { }
 	local factionRewardData = self:getFactionDataTable(faction)
+	local covertOvert = useCovertOvert()
+
 	for k,v in pairs(factionRewardData.installationsList) do
 		if ( factionRewardData.installations[v] ~= nil and factionRewardData.installations[v].display ~= nil and factionRewardData.installations[v].cost ~= nil ) then
 
-			if ((not self.useCovertOvertSystem) and (factionRewardData.installationsList[k] == "covert_detector_32m")) then
+			if ((not covertOvert) and (factionRewardData.installationsList[k] == "covert_detector_32m")) then
 				goto skip
 			end
 
@@ -772,8 +773,9 @@ function recruiterScreenplay:handleResign(pPlayer)
 	deleteData(playerID .. ":changingFactionStatus")
 	local oldFaction = CreatureObject(pPlayer):getFaction()
 	local oldFactionName = self:getFactionFromHashCode(oldFaction)
+	local covertOvert = useCovertOvert()
 
-	if (self.useCovertOvertSystem) then
+	if (covertOvert) then
 		CreatureObject(pPlayer):setFactionRank(0)
 		CreatureObject(pPlayer):setFactionStatus(0)
 		CreatureObject(pPlayer):setFaction(0)

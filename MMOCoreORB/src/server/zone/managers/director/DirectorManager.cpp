@@ -525,6 +525,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("getQuestTasks", getQuestTasks);
 	luaEngine->registerFunction("broadcastToGalaxy", broadcastToGalaxy);
 	luaEngine->registerFunction("getWorldFloor", getWorldFloor);
+	luaEngine->registerFunction("useCovertOvert", useCovertOvert);
 
 	//Navigation Mesh Management
 	luaEngine->registerFunction("createNavMesh", createNavMesh);
@@ -4497,6 +4498,14 @@ int DirectorManager::getWorldFloor(lua_State* L) {
 	float z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
 
 	lua_pushnumber(L, z);
+
+	return 1;
+}
+
+int DirectorManager::useCovertOvert(lua_State* L) {
+	bool result = ConfigManager::instance()->useCovertOvertSystem();
+
+	lua_pushboolean(L, result);
 
 	return 1;
 }

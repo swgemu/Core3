@@ -219,6 +219,7 @@ namespace server {
 		static int getQuestTasks(lua_State* L);
 		static int broadcastToGalaxy(lua_State* L);
 		static int getWorldFloor(lua_State* L);
+		static int useCovertOvert(lua_State* L);
 
 	private:
 		static void setupLuaPackagePath(Lua* luaEngine);

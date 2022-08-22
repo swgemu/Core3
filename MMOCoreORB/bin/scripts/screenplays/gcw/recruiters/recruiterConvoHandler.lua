@@ -192,7 +192,7 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		if (recruiterScreenplay:getRecruiterFaction(pNpc) == "imperial") then
 			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_410", "show_gcw_score")
 		else
-			clonedConversation:addOption("@conversation/faction_recruiter_rebel:s_410", "show_gcw_score")
+			clonedConversation:addOption("@conversation/faction_recruiter_rebel:s_562", "show_gcw_score")
 		end
 
 		self:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
@@ -242,30 +242,32 @@ function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 		recruiterScreenplay:handleGoCovert(pPlayer)
 	end
 
+	local covertOvert = useCovertOvert()
+
 	if (faction == recruiterScreenplay:getRecruiterEnemyFactionHashCode(pNpc)) then
 		return convoTemplate:getScreen("greet_enemy")
 	elseif factionStanding < -200 and PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterEnemyFaction(pNpc)) > 0 then
 		return convoTemplate:getScreen("greet_hated")
-	elseif (CreatureObject(pPlayer):isChangingFactionStatus() and not recruiterScreenplay.useCovertOvertSystem) then
+	elseif (CreatureObject(pPlayer):isChangingFactionStatus() and not covertOvert) then
 		return convoTemplate:getScreen("greet_changing_status")
 	elseif (faction == recruiterScreenplay:getRecruiterFactionHashCode(pNpc)) then
 		if (CreatureObject(pPlayer):isOnLeave()) then
 			return convoTemplate:getScreen("greet_onleave_start")
 		elseif (CreatureObject(pPlayer):isCovert()) then
-			if (recruiterScreenplay.useCovertOvertSystem) then
+			if (covertOvert) then
 				return convoTemplate:getScreen("greet_member_start_covert2")
 			else
 				return convoTemplate:getScreen("greet_member_start_covert")
 			end
 		else
-			if (recruiterScreenplay.useCovertOvertSystem) then
+			if (covertOvert) then
 				return convoTemplate:getScreen("greet_member_start_overt2")
 			else
 				return convoTemplate:getScreen("greet_member_start_overt")
 			end
 		end
 	else
-		if (recruiterScreenplay.useCovertOvertSystem) then
+		if (covertOvert) then
 			return convoTemplate:getScreen("greet_neutral_start2")
 		else
 			return convoTemplate:getScreen("greet_neutral_start")
