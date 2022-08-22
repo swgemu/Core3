@@ -46,20 +46,28 @@ Coa3Screenplay = ScreenPlay:new {
 
 	staticMobiles = {
 		{"corellia", "coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,1855516, "calm"},
-		{"corellia", "coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,1855526, "calm"},
 		{"corellia", "coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,1935453, "calm"},
 		{"talus", "coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,4265395, "calm"},
 		{"tatooine", "coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,1279963, "calm"},
 		{"tatooine", "coa3_information_rebel",60,14.2091,1.13306,-10.1408,205.638,1256010, ""},
+
 		{"naboo", "coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,1741509, "npc_imperial"},
 		{"naboo", "coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,1692083, "npc_imperial"},
-		{"rori", "coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,2615383, "npc_imperial"},
+		{"rori", "coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,4615383, "npc_imperial"},
+		{"rori", "coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,4635663, "npc_imperial"},
 		{"tatooine", "coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,1028561, "npc_imperial"},
 
 		{"corellia", "coa3_tactical_rebel", 60,9.53575,1.13306,0.330446,310.824,1935441, "calm"},
+		{"corellia", "coa3_tactical_rebel", 60,9.53575,1.13306,0.330446,310.824,1855504, "calm"},
+		{"talus", "coa3_tactical_rebel", 60,9.53575,1.13306,0.330446,310.824,4265403, "calm"},
+		{"tatooine", "coa3_tactical_rebel", 60,9.53575,1.13306,0.330446,310.824,1189635, "calm"},
+		{"tatooine", "coa3_tactical_rebel", 60,9.53575,1.13306,0.330446,310.824,1255990, "calm"},
+
 		{"tatooine", "coa3_tactical_imperial", 60,9.74537,1.13306,0.300803,93.0077,1028549, "npc_imperial"},
 		{"naboo", "coa3_tactical_imperial", 60, 9.8, 1.1, 0.9, 143, 1692071, "npc_imperial"},
 		{"naboo", "coa3_tactical_imperial", 60, 9.8, 1.1, 0.9, 143, 1741458, "npc_imperial"},
+		{"rori", "coa3_tactical_imperial", 60,9.74537,1.13306,0.300803,93.0077,4615371, "npc_imperial"},
+		{"rori", "coa3_tactical_imperial", 60,9.74537,1.13306,0.300803,93.0077,4635687, "npc_imperial"},
 	},
 
 	coa3commanders = {
