@@ -880,8 +880,16 @@ function CorellianCorvette:transportPlayer(pPlayer)
 	local corvetteFaction = self:getBuildingFaction(pCorvette)
 	local factionCRC = self:getFactionCRC(corvetteFaction)
 
-	if (corvetteFaction ~= "neutral" and (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or ThemeParkLogic:isOnLeave(pPlayer) or TangibleObject(pPlayer):isChangingFactionStatus())) then
-		return
+	if (corvetteFaction ~= "neutral") then
+		local covertOvert = useCovertOvert()
+
+		if (covertOvert) then
+			if (not ThemeParkLogic:isInFaction(self.faction, pPlayer) or not CreatureObject(pPlayer):isOvert() or TangibleObject(pPlayer):isChangingFactionStatus()) then
+				return
+			end
+		elseif (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or (factionStatus < COVERT) or TangibleObject(pPlayer):isChangingFactionStatus()) then
+			return
+		end
 	end
 
 	local pCell = BuildingObject(pCorvette):getCell(1)
