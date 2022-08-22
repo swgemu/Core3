@@ -321,6 +321,7 @@ void AuctionsMapImplementation::removeFromCommodityLimit(AuctionItem* item) {
 			ManagedReference<AuctionItem*> itemB = items->get(i);
 			if(itemB == item ) {
 				items->remove(i);
+				break;
 			}
 		}
 
