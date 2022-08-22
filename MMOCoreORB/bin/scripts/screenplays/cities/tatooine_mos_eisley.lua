@@ -106,6 +106,11 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		{"ecik",60,1.1,0.639421,66.3,101.522,1106372, "neutral"},
 		{"trainer_shipwright",60,-3.2,0.6,67.6,160,1106372, "neutral"},
 
+		-- Front of Starport
+		{"vincie_kalhoon", 0, 3525.6, 5.0, -4799.7, 123, 0, ""},
+		{"mooch_davoney", 0, 3526.8, 5.0, -4799.0, 123, 0, ""},
+		{"guillo_parootchie", 0, 3528.1, 5.0, -4799.4, 172, 0, ""},
+
 		--Cantina
 		{"commoner_old",60,36,0.1,0.7,310,1082876, "npc_sitting_chair"},
 		{"commoner_tatooine",60,29.6,0.1,-7.4,71,1082876, "npc_sitting_chair"},
