@@ -316,10 +316,16 @@ void AuctionsMapImplementation::removeFromCommodityLimit(AuctionItem* item) {
 		return;
 
 	Vector<ManagedWeakReference<AuctionItem*> >* items = &commoditiesLimit.get(item->getOwnerID());
-	if(items != nullptr)
-		items->removeElement(item);
+	if(items != nullptr) {
+		for(int i = items->size() -1; i >= 0; --i) {
+			ManagedReference<AuctionItem*> itemB = items->get(i);
+			if(itemB == item ) {
+				items->remove(i);
+			}
+		}
+
+	}
 
 	if(items->isEmpty())
 		commoditiesLimit.drop(item->getOwnerID());
 }
-
