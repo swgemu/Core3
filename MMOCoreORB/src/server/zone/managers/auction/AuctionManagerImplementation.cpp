@@ -892,8 +892,8 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 		item->setExpireTime(commodityExpire);
 	}
 
-	updateAuctionOwner(item, player);
 	ObjectManager::instance()->persistObject(item, 0, "auctionitems");
+	updateAuctionOwner(item, player);
 
 	return item;
 }
