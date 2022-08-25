@@ -97,7 +97,7 @@ function CorelliaStaticSpawnsScreenPlay:spawnMobiles()
 	--Imperial Detachment HQ (-2975 2908) Outside Kor Vella, populated in city kor_vella screenplay
 
 	-- Research Camp (-1421 1980)
-	spawnMobile("corellia", "commoner_technician", 1, -1416.0, 85.2822, 1985.7, 25, 0)
+	spawnMobile("corellia", "commoner_technician", 360, -1416.0, 85.2822, 1985.7, 25, 0)
 	spawnMobile("corellia", "scientist", 1, -1419.6, 85.2822, 1985.4, -55, 0)
 	spawnMobile("corellia", "r4", 1, -1423.0, 85.2822, 1986.6, 93, 0)
 	spawnMobile("corellia", "scientist", 1, -1424.6, 85.2822, 1977.2, -9, 0)
