@@ -504,9 +504,11 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 
 	scanState = SCANDELAY;
 	unsigned int detectionChance = BASEFACTIONDETECTIONCHANCE + RANKDETECTIONCHANCEMODIFIER * player->getFactionRank();
+	int playerStatus = player->getFactionStatus();
+
 	if (scannerFaction == player->getFaction()) {
 		bool recognized = false;
-		if (player->getFactionStatus() == FactionStatus::OVERT) {
+		if (playerStatus == FactionStatus::OVERT) {
 			recognized = true;
 			sendScannerChatMessage(zone, scanner, player, "business_imperial", "business_rebel");
 		} else if (player->getFactionRank() >= RECOGNIZEDFACTIONRANK) {
@@ -523,19 +525,23 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			scanState = FINISHED;
 		}
 	} else if (player->getFaction() != Factions::FACTIONNEUTRAL) {
-		if (player->getFactionStatus() == FactionStatus::OVERT || (System::random(100) < detectionChance && !smugglerAvoidedScan)) {
+		if (playerStatus == FactionStatus::OVERT || (System::random(100) < detectionChance && !smugglerAvoidedScan)) {
 			if (player->getFactionRank() < RECOGNIZEDFACTIONRANK) {
 				sendScannerChatMessage(zone, scanner, player, "discovered_chat_imperial", "discovered_chat_rebel");
 			} else {
 				sendPersonalizedScannerChatMessage(zone, scanner, player, "discovered_officer_imperial", "discovered_officer_rebel");
 			}
+
 			sendSystemMessage(scanner, player, "discovered_imperial", "discovered_rebel");
 			scanner->doAnimation("point_accusingly");
 
 			scanner->removeCreatureFlag(CreatureFlag::FOLLOW);
 			scanner->setMovementState(AiAgent::FOLLOWING);
 
-			if (player->getFactionStatus() != FactionStatus::OVERT) {
+			if (ConfigManager::instance()->useCovertOvertSystem()) {
+				if (playerStatus < FactionStatus::OVERT)
+					player->setFactionStatus(FactionStatus::OVERT);
+			} else if (playerStatus < FactionStatus::COVERT) {
 				player->setFactionStatus(FactionStatus::COVERT);
 			}
 

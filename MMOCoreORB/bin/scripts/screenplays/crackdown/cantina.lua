@@ -679,8 +679,10 @@ function CrackdownCantina:doFinalFight(pMobile)
 		CreatureObject(pTarget):sendSystemMessage("Debug: You are final fight target")
 	end
 
-	if (CreatureObject(pTarget):isOnLeave()) then
-		CreatureObject(pTarget):setFactionStatus(1)
+	if (useCovertOvert() and CreatureObject(pTarget):getFactionStatus() < OVERT) then
+		CreatureObject(pTarget):setFactionStatus(OVERT)
+	elseif (CreatureObject(pTarget):isOnLeave()) then
+		CreatureObject(pTarget):setFactionStatus(COVERT)
 	end
 
 	if (readData(mobileID .. ":calledForBackup") ~= 1) then
