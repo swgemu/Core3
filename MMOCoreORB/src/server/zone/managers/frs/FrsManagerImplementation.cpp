@@ -989,13 +989,15 @@ void FrsManagerImplementation::deductMaintenanceXp(CreatureObject* player) {
 
 	if (ConfigManager::instance()->getBool("Core3.FrsManager.ImmediateMaintXpDeduction", false)) {
 		Locker clocker(managerData, player);
-		int curDebt = managerData->getExperienceDebt(player->getObjectID());
+		uint64 playerID = player->getObjectID();
+		int curDebt = managerData->getExperienceDebt(playerID);
 
 		String msg = "You have lost " + String::valueOf(maintXp) + " Force Rank experience. All members of Rank 1 or higher must pay experience each day to remain in their current positions.";
 
 		if (curDebt > 0) {
 			maintXp += curDebt;
 			msg = "You have lost " + String::valueOf(maintXp) + " Force Rank experience. This includes " + String::valueOf(curDebt) + " previously banked experience debt. All members of Rank 1 or higher must pay experience each day to remain in their current positions.";
+			managerData->removeExperienceDebt(playerID);
 		}
 		chatManager->sendMail("Enclave Records", "@force_rank:xp_maintenace_sub", msg, player->getFirstName());
 		adjustFrsExperience(player, maintXp * -1);
