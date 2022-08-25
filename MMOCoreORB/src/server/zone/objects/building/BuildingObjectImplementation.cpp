@@ -39,6 +39,8 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
+	cooldownTimerMap = new CooldownTimerMap();
+
 	StructureObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("BuildingObject");

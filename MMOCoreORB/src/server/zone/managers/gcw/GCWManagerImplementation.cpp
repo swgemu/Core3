@@ -2574,6 +2574,8 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	if (building == nullptr || creature == nullptr)
 		return;
 
+	Locker lock (building);
+
 	if (!building->checkCooldownRecovery("defense_donation")) {
 		creature->sendSystemMessage("This GCW base cannot have more defenses donated at this time.");
 		return;
