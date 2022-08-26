@@ -24,6 +24,8 @@ Luna<LuaActiveArea>::RegType LuaActiveArea::Register[] = {
 		{ "setNoSpawnArea", &LuaActiveArea::setNoSpawnArea },
 		{ "isPvpArea", &LuaActiveArea::isPvpArea },
 		{ "setPvpArea", &LuaActiveArea::setPvpArea },
+		{ "isOvertOnlyArea", &LuaActiveArea::isOvertOnlyArea },
+		{ "setOvertOnlyArea", &LuaActiveArea::setOvertOnlyArea },
 		{ "isRebelOnlyArea", &LuaActiveArea::isRebelOnlyArea },
 		{ "setRebelOnlyArea", &LuaActiveArea::setRebelOnlyArea },
 		{ "isImperialOnlyArea", &LuaActiveArea::isImperialOnlyArea },
@@ -136,6 +138,22 @@ int LuaActiveArea::setPvpArea(lua_State* L) {
 
 int LuaActiveArea::isPvpArea(lua_State* L) {
 	bool val = realObject->isPvpArea();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaActiveArea::setOvertOnlyArea(lua_State* L) {
+	bool val = lua_toboolean(L, -1);
+	Locker realObjectLocker(realObject);
+	realObject->setOvertOnlyArea(val);
+
+	return 0;
+}
+
+int LuaActiveArea::isOvertOnlyArea(lua_State* L) {
+	bool val = realObject->isOvertOnlyArea();
 
 	lua_pushboolean(L, val);
 

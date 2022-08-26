@@ -26,6 +26,8 @@ class ActiveArea extends SceneObject {
 
 	protected boolean pvpArea;
 
+	protected boolean overtOnlyArea;
+
 	protected boolean rebelOnlyArea;
 
 	protected boolean imperialOnlyArea;
@@ -54,6 +56,8 @@ class ActiveArea extends SceneObject {
 		noSpawnArea = false;
 
 		pvpArea = false;
+
+		overtOnlyArea = false;
 
 		rebelOnlyArea = false;
 
@@ -203,6 +207,16 @@ class ActiveArea extends SceneObject {
 	@read
 	public boolean isPvpArea() {
 		return pvpArea;
+	}
+
+	@preLocked
+	public void setOvertOnlyArea(boolean val) {
+		overtOnlyArea = val;
+	}
+
+	@read
+	public boolean isOvertOnlyArea() {
+		return overtOnlyArea;
 	}
 
 	@preLocked
