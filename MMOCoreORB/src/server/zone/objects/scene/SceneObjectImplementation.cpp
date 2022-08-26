@@ -718,7 +718,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 			continue;
 
 #ifdef LOCKFREE_BCLIENT_BUFFERS
-		scno->sendMessage(pack);
+		sceneO->sendMessage(pack);
 #else
 		sceneO->sendMessage(message->clone());
 #endif
