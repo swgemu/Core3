@@ -48,6 +48,7 @@ void StorePetTask::run() {
 		pet->setHAM(CreatureAttribute::MIND, 1);
 
 	pet->setPosture(CreaturePosture::UPRIGHT, true);
+	pet->clearState(CreatureState::SWIMMING);
 	pet->clearCombatState(true);
 	pet->setOblivious();
 	pet->storeFollowObject();
