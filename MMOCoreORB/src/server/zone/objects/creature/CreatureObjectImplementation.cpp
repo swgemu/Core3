@@ -192,7 +192,7 @@ void CreatureObjectImplementation::loadTemplateData(
 		return;
 
 	slopeModPercent = creoData->getSlopeModPercent();
-	slopeModAngle = creoData->getSlopeModAngle();
+	slopeModAngle = ((creoData->getSlopeModAngle() * M_PI) / 180.f);
 	swimHeight = creoData->getSwimHeight();
 	waterModPercent = creoData->getWaterModPercent();
 
@@ -901,7 +901,9 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 				sendSystemMessage("@cbt_spam:peace_single");
 				sendStateCombatSpam("cbt_spam", "peace", 0);
 				break;
-
+			case CreatureState::SWIMMING:
+				updateSpeedAndAccelerationMods();
+				break;
 			default:
 				break;
 			}
@@ -983,6 +985,9 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 			}
 			break;
 		}
+		case CreatureState::SWIMMING:
+			updateSpeedAndAccelerationMods();
+			break;
 		default:
 			break;
 		}
@@ -1558,22 +1563,18 @@ void CreatureObjectImplementation::addSkill(const String& skill,
 }
 
 void CreatureObjectImplementation::updatePostures(bool immediate) {
-
 	updateSpeedAndAccelerationMods();
 
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
 	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
 
-	if (posture != CreaturePosture::SITTING && hasState(
-			CreatureState::SITTINGONCHAIR))
+	if (posture != CreaturePosture::SITTING && hasState(CreatureState::SITTINGONCHAIR))
 		clearState(CreatureState::SITTINGONCHAIR);
-
 
 	Vector<BasePacket*> messages;
 
 	if (immediate) {
-
 		// This invokes an immediate posture change animation - Attacks and animations which force a creature to change postures should not send this.
 		PostureMessage* octrl = new PostureMessage(asCreatureObject());
 		messages.add(octrl);
@@ -1595,8 +1596,7 @@ void CreatureObjectImplementation::updatePostures(bool immediate) {
 
 	// This will not instantly force a posture change animation but will update the creatures posture variable in the client.
 	// Failing to send this will result in the creature returning to it's previous posture after a CombatAction
-	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
-			asCreatureObject());
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
 	dcreo3->updatePosture();
 	//dcreo3->updateState();
 	dcreo3->close();
@@ -1605,8 +1605,7 @@ void CreatureObjectImplementation::updatePostures(bool immediate) {
 
 	broadcastMessages(&messages, true);
 
-	if(posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE
-				&& posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING ) {
+	if(posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE && posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING) {
 		setCurrentSpeed(0);
 	}
 
@@ -1633,9 +1632,8 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool immediate, bo
 void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
 	float speedboost = 0;
 
-	if(posture == CreaturePosture::PRONE && !hasBuff(CreatureState::COVER)) {
-		speedboost = getSkillMod("slope_move") >= 50
-				? ((getSkillMod("slope_move") - 50.0f) / 100.0f) / 2 : 0;
+	if (posture == CreaturePosture::PRONE && !hasBuff(CreatureState::COVER)) {
+		speedboost = getSkillMod("slope_move") >= 50 ? ((getSkillMod("slope_move") - 50.0f) / 100.0f) / 2 : 0;
 	}
 
 	setSpeedMultiplierMod(CreaturePosture::instance()->getMovementScale((uint8) posture) + speedboost, true);
@@ -1644,8 +1642,9 @@ void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
 
 	setTurnScale(CreaturePosture::instance()->getTurnScale((uint8) posture), true);
 
- 	// Priorly known as Terrain Negotiation.
-	setSlopeModPercent(CreaturePosture::instance()->getMovementScale((uint8) posture) + speedboost, true);
+	// Terrain Negotiation.
+	updateSlopeMods(true);
+	updateWaterMod();
 }
 
 float CreatureObjectImplementation::calculateSpeed() {
@@ -1674,14 +1673,11 @@ void CreatureObjectImplementation::updateLocomotion() {
 	float hysteresis = walkSpeed / 10.f * (oldSpeed == CreatureLocomotion::FAST ? -1.f : 1.f);
 
 	if (currentSpeed <= abs(hysteresis))
-		locomotion = CreaturePosture::instance()->getLocomotion(posture,
-				CreatureLocomotion::STATIONARY);
+		locomotion = CreaturePosture::instance()->getLocomotion(posture, CreatureLocomotion::STATIONARY);
 	else if (currentSpeed <= walkSpeed + hysteresis)
-		locomotion = CreaturePosture::instance()->getLocomotion(posture,
-				CreatureLocomotion::SLOW);
+		locomotion = CreaturePosture::instance()->getLocomotion(posture, CreatureLocomotion::SLOW);
 	else
-		locomotion = CreaturePosture::instance()->getLocomotion(posture,
-				CreatureLocomotion::FAST);
+		locomotion = CreaturePosture::instance()->getLocomotion(posture, CreatureLocomotion::FAST);
 }
 
 UnicodeString CreatureObjectImplementation::getCreatureName() const {
@@ -1799,29 +1795,12 @@ void CreatureObjectImplementation::setTurnScale(
 }
 
 void CreatureObjectImplementation::setWalkSpeed(float value, bool notifyClient) {
-	if (walkSpeed == value)
-		return;
-
-	walkSpeed = value;
+	if (walkSpeed != value)
+		walkSpeed = value;
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
 		dcreo4->updateWalkSpeed();
-		dcreo4->close();
-
-		sendMessage(dcreo4);
-	}
-}
-
-void CreatureObjectImplementation::setWaterModPercent(float value, bool notifyClient) {
-	if (waterModPercent == value)
-		return;
-
-	waterModPercent = value;
-
-	if (notifyClient) {
-		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
-		dcreo4->updateWaterModPercent();
 		dcreo4->close();
 
 		sendMessage(dcreo4);
@@ -1957,19 +1936,42 @@ void CreatureObjectImplementation::setPerformanceAnimation(const String& animati
 	broadcastMessage(codm4, true);
 }
 
-void CreatureObjectImplementation::setSlopeModPercent(float value, bool notifyClient) {
-	if (slopeModPercent == value)
-		return;
+void CreatureObjectImplementation::updateWaterMod(bool notifyClient) {
+	auto creatureTemplate = dynamic_cast<SharedCreatureObjectTemplate*>(getObjectTemplate());
 
-	slopeModPercent = value;
+	if (creatureTemplate != nullptr) {
+		setWaterModPercent(creatureTemplate->getWaterModPercent(), notifyClient);
+	}
+}
 
-	if (!notifyClient)
-		return;
+void CreatureObjectImplementation::setWaterModPercent(float value, bool notifyClient) {
+	if (waterModPercent != value)
+		waterModPercent = value;
 
-	CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(asCreatureObject());
-	codm4->updateSlopeModPercent();
-	codm4->close();
-	sendMessage(codm4);
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+		dcreo4->updateWaterModPercent();
+		dcreo4->close();
+
+		sendMessage(dcreo4);
+	}
+}
+
+void CreatureObjectImplementation::updateSlopeMods(bool notifyClient) {
+	auto creatureTemplate = dynamic_cast<SharedCreatureObjectTemplate*>(getObjectTemplate());
+
+	if (creatureTemplate != nullptr) {
+		slopeModPercent = creatureTemplate->getSlopeModPercent();
+		slopeModAngle = ((creatureTemplate->getSlopeModAngle() * M_PI) / 180.f);
+	}
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+		codm4->updateSlopeModAngle();
+		codm4->updateSlopeModPercent();
+		codm4->close();
+		sendMessage(codm4);
+	}
 }
 
 float CreatureObjectImplementation::getSlopeModPercent() const {

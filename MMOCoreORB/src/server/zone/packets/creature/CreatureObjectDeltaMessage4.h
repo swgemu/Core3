@@ -41,12 +41,12 @@ public:
 		addFloatUpdate(0x07, creo->getRunSpeed());
 	}
 
-	void updateSlopeModPercent() {
-		addFloatUpdate(0x08, creo->getSlopeModPercent());
+	void updateSlopeModAngle() {
+		addFloatUpdate(0x08, creo->getSlopeModAngle());
 	}
 
-	void updateSlopeModAngle() {
-		addFloatUpdate(0x09, creo->getSlopeModAngle());
+	void updateSlopeModPercent() {
+		addFloatUpdate(0x09, creo->getSlopeModPercent());
 	}
 
 	void updateTurnScale() {
