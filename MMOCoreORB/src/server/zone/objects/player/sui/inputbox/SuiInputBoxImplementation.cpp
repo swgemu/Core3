@@ -42,15 +42,13 @@ BaseMessage* SuiInputBoxImplementation::generateMessage() {
 
 	addSetting("3", "txtInput", "MaxLength", String::valueOf(maxInputSize));
 
-	if (isFilterBox()) {
-		if (defaultInput != "") {
-			addSetting("3", "txtInput", "Text", defaultInput);
-		} else {
-			addSetting("3", "txtInput", "Text", "");
-		}
+	if (defaultInput != "") {
+		addSetting("3", "txtInput", "Text", defaultInput);
 	} else {
-		addSetting("3", "cmbInput", "MaxLength", String::valueOf(maxInputSize));
+		addSetting("3", "txtInput", "Text", "");
 	}
+
+	addSetting("3", "cmbInput", "MaxLength", String::valueOf(maxInputSize));
 
 	//Generate Packet:
 	if (isFilterBox()) {
