@@ -861,11 +861,20 @@ class CreatureObject extends TangibleObject {
 	/**
 	 * Sets the slope mod percent.
 	 * @pre { this object is locked }
-	 * @post { this object is locked, this object has the specified slope mod percent. }
+	 * @post { this object is locked, this object has the specified slope mod andgle & percent. }
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	@preLocked
-	public native void setSlopeModPercent(float value, boolean notifyClient = true);
+	public native void updateSlopeMods(boolean notifyClient = true);
+
+	/**
+	 * Sets the slope mod percent.
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified slope mod andgle & percent. }
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	@preLocked
+	public native void updateWaterMod(boolean notifyClient = true);
 
 	/**
 	 * Adds the specified skillbox to this object
@@ -1673,14 +1682,16 @@ class CreatureObject extends TangibleObject {
 
 	@read
 	public float getSlopeModAngle() {
-	    return slopeModAngle;
+		return slopeModAngle;
 	}
 
 	@read
-    public float getWaterModPercent() {
-        return waterModPercent;
-    }
+	public native float getSlopeModPercent();
 
+	@read
+	public float getWaterModPercent() {
+		return waterModPercent;
+	}
 
 	@read
 	public float getRunSpeed() {
@@ -1696,9 +1707,6 @@ class CreatureObject extends TangibleObject {
 	public float getTurnScale() {
 		return turnScale;
 	}
-
-	@read
-	public native float getSlopeModPercent();
 
 	@read
 	public float getRunAcceleration() {

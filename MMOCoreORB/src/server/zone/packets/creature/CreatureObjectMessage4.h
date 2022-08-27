@@ -35,9 +35,9 @@ public:
 		// Run Speed.
 		insertFloat(creo->getRunSpeed());
 
-		// Slope Mods (Terrain)
+		// Slope Mods - Terrain Negotiation
 		insertFloat(creo->getSlopeModAngle());
-		insertFloat(creo->getSlopeModPercent());  // Terrain Negotiation
+		insertFloat(creo->getSlopeModPercent());
 
 		// Turn Scale
 		insertFloat(creo->getTurnScale());
