@@ -292,30 +292,25 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 	richSampleLocation = Coordinate(surveyer->getPositionX(), surveyer->getPositionZ(), surveyer->getPositionY());
 	richSampleLocation.randomizePosition(50);
 
-	ManagedReference<WaypointObject*> newwaypoint = nullptr;
-
 	// Get previous survey waypoint
 	ManagedReference<WaypointObject*> waypoint = ghost->getSurveyWaypoint();
 
 	// Create new waypoint
 	if (waypoint == nullptr)
-		newwaypoint = ( surveyer->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
-	else {
-		ghost->removeWaypoint(waypoint->getObjectID(), true, false);
-		newwaypoint = waypoint.get();
-	}
+		waypoint = ( surveyer->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
 
-	Locker locker(newwaypoint);
+	Locker locker(waypoint);
 
 	// Update new waypoint
-	newwaypoint->setCustomObjectName(UnicodeString("Resource Survey"), false);
-	newwaypoint->setPlanetCRC(surveyer->getZone()->getZoneCRC());
-	newwaypoint->setPosition(richSampleLocation.getPositionX(), 0, richSampleLocation.getPositionY());
-	newwaypoint->setColor(WaypointObject::COLOR_BLUE);
-	newwaypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
-	newwaypoint->setActive(true);
+	waypoint->setCustomObjectName(UnicodeString("Resource Survey"), false);
+	waypoint->setPlanetCRC(surveyer->getZone()->getZoneCRC());
+	waypoint->setPosition(richSampleLocation.getPositionX(), 0, richSampleLocation.getPositionY());
+	waypoint->setColor(WaypointObject::COLOR_BLUE);
+	waypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
+	waypoint->setActive(true);
 
-	ghost->addWaypoint(newwaypoint, false, true); // Should second argument be true, and waypoints with the same name thus remove their old version?
+	ghost->addWaypoint(waypoint, true, true);
+
 	surveyer->sendSystemMessage("@survey:node_waypoint");
 
 	// Player must be kneeling to sample
