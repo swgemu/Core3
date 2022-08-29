@@ -17,14 +17,7 @@ public:
 		// Complexity
 		insertFloat(1);
 
-		// STF File
-		insertAscii("");
-
-		// Int Spacer
-		insertInt(0);
-
-		// STF Name
-		insertAscii(itno->getObjectName()->toString());
+		insertStringId(itno->getObjectName());
 
 		// Custom Name
 		insertUnicode(itno->getCustomObjectName());
