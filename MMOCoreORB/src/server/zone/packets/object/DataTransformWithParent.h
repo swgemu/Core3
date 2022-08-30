@@ -195,7 +195,7 @@ public:
 				return updateError(creO, "!posture", true);
 			}
 
-			if (deltaTime < Transform::MIDDELTA && transform.getSpeed() < 7.5f && (int)transform.getSpeed() == (int)creO->getCurrentSpeed() && !transform.isYawUpdate(creO->getDirection())) {
+			if (deltaTime < Transform::MIDDELTA && transform.getSpeed() < 7.f && (int)transform.getSpeed() == (int)creO->getCurrentSpeed() && !transform.isYawUpdate(creO->getDirection())) {
 				return updateError(creO, "inertia");
 			}
 		}
@@ -380,13 +380,14 @@ public:
 		ghost->setClientLastMovementStamp(transform.getTimeStamp());
 
 		bool lightUpdate = objectControllerMain->getPriority() != 0x23;
+		bool sendPackets = creO->getParentID() != 0;
 
 		creO->setMovementCounter(transform.getMoveCount());
 		creO->updateZoneWithParent(parent, lightUpdate, false);
 		creO->updateLocomotion();
 
-		if (creO->isInvisible()) {
-			return updateError(creO, "isInvisible");
+		if (!sendPackets || creO->isInvisible()) {
+			return updateError(creO, "!sendPackets");
 		}
 
 		if (lightUpdate) {

@@ -182,24 +182,20 @@ public:
 			return position;
 		}
 
-		float vector = (int)speed + 1.f;
-
-		if (vector > 7.5f) {
-			vector = 7.5f;
-		}
-
-		int interval = (int)(deltaTime * 0.005f);
+		float interval = (int)(deltaTime * 0.005f);
 		float range = speed * interval * 0.2f;
+		float vector = 7.f;
 
+		vector *= (5.f > speed) ? speed / 5.f : 1.f;
 		vector *= getMoveScale(creoPosition, range);
 		vector *= getTurnScale(creoDirection);
 
-		if (vector < 1.f || vector > 7.5f) {
+		if (vector <= 1.f || vector > 7.f) {
 			return position;
 		}
 
 		if (interval > 1) {
-			vector /= (float)interval;
+			vector /= interval;
 		}
 
 		float x = ((position.getX() - creoPosition.getX()) * vector) + creoPosition.getX();
@@ -216,11 +212,11 @@ public:
 
 		sendFlyText(creature, message, deltaTime);
 
-		if (!message.beginsWith("info")) {
+		if (!message.beginsWith("info") && !message.beginsWith("warning")) {
 			sendPathMessage(creature, newPosition);
 		}
 
-		if (message.beginsWith("error")) {
+		if (message.beginsWith("warning") || message.beginsWith("error")) {
 			sendSystemMessage(creature, newPosition, message, deltaTime);
 		}
 	}
