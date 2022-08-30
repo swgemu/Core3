@@ -195,7 +195,7 @@ public:
 				return updateError(creO, "!posture", true);
 			}
 
-			if (deltaTime < Transform::MIDDELTA && transform.getSpeed() < 7.5f && (int)transform.getSpeed() == (int)creO->getCurrentSpeed() && !transform.isYawUpdate(creO->getDirection())) {
+			if (deltaTime < Transform::MIDDELTA && transform.getSpeed() < Transform::MAXINERTIA && (int)transform.getSpeed() == (int)creO->getCurrentSpeed() && !transform.isYawUpdate(creO->getDirection())) {
 				return updateError(creO, "inertia");
 			}
 		}
@@ -344,8 +344,8 @@ public:
 	}
 
 	void updateStatic(CreatureObject* creO, SceneObject* parent) {
-		bool synchronize = creO->getMovementCounter() > 50 && creO->getCurrentSpeed() == 0.f && transform.getSpeed() == 0.f && !transform.isYawUpdate(creO->getDirection());
-		if (synchronize && deltaTime < 10000u) {
+		bool synchronize = creO->getMovementCounter() > Transform::SYNCCOUNT && creO->getCurrentSpeed() == 0.f && transform.getSpeed() == 0.f && !transform.isYawUpdate(creO->getDirection());
+		if (synchronize && deltaTime < Transform::SYNCDELTA) {
 			return updateError(creO, "inertUpdate");
 		}
 
@@ -380,13 +380,14 @@ public:
 		ghost->setClientLastMovementStamp(transform.getTimeStamp());
 
 		bool lightUpdate = objectControllerMain->getPriority() != 0x23;
+		bool sendPackets = deltaTime > Transform::SYNCDELTA || creO->getParentID() != 0;
 
 		creO->setMovementCounter(transform.getMoveCount());
 		creO->updateZoneWithParent(parent, lightUpdate, false);
 		creO->updateLocomotion();
 
-		if (creO->isInvisible()) {
-			return updateError(creO, "isInvisible");
+		if (!sendPackets || creO->isInvisible()) {
+			return updateError(creO, "!sendPackets");
 		}
 
 		if (lightUpdate) {

@@ -22,9 +22,15 @@ protected:
 	float speed;
 
 public:
-	const static int MINDELTA = 200;
-	const static int MIDDELTA = 400;
-	const static int MAXDELTA = 800;
+	const static constexpr float MAXINERTIA = 5.376 * 1.1f; // maximum speed to slow update tick to mid delta
+	const static constexpr float POSITIONMOD = 7.f; // broadcast position update distance multiplier
+
+	const static int MINDELTA = 200; // minimum ms elapsed between updates
+	const static int MIDDELTA = 400; // ideal ms between low priority update
+	const static int MAXDELTA = 800; // maximum ms before high priority update
+
+	const static int SYNCDELTA = 10000; // minimum ms before synchronize update
+	const static int SYNCCOUNT = 50; // minimum moveCount for synchronize update
 
 	Transform() {
 		timeStamp = 0u;
@@ -182,24 +188,20 @@ public:
 			return position;
 		}
 
-		float vector = (int)speed + 1.f;
-
-		if (vector > 7.5f) {
-			vector = 7.5f;
-		}
-
-		int interval = (int)(deltaTime * 0.005f);
+		float interval = (int)(deltaTime * 0.005f);
 		float range = speed * interval * 0.2f;
+		float vector = POSITIONMOD;
 
+		vector *= (5.f > speed) ? speed / 5.f : 1.f;
 		vector *= getMoveScale(creoPosition, range);
 		vector *= getTurnScale(creoDirection);
 
-		if (vector < 1.f || vector > 7.5f) {
+		if (vector <= 1.f || vector > POSITIONMOD) {
 			return position;
 		}
 
 		if (interval > 1) {
-			vector /= (float)interval;
+			vector /= interval;
 		}
 
 		float x = ((position.getX() - creoPosition.getX()) * vector) + creoPosition.getX();
@@ -216,11 +218,11 @@ public:
 
 		sendFlyText(creature, message, deltaTime);
 
-		if (!message.beginsWith("info")) {
+		if (!message.beginsWith("info") && !message.beginsWith("warning")) {
 			sendPathMessage(creature, newPosition);
 		}
 
-		if (message.beginsWith("error")) {
+		if (message.beginsWith("warning") || message.beginsWith("error")) {
 			sendSystemMessage(creature, newPosition, message, deltaTime);
 		}
 	}
