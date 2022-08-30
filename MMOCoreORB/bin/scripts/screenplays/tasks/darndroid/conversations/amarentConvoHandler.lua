@@ -1,8 +1,5 @@
 amarent_loren_convo_handler = conv_handler:new {}
 
-local questCrc = 3408891851 --CRC of "quest/c_darndroid1"
-local imperialCrc = 3679112276 --CRC of "imperial"
-
 local shipTask = { --How did the player get Amarent to talk?
 	bribe_credits = "bribe",
 	life_worth = "threaten",
@@ -23,9 +20,9 @@ function amarent_loren_convo_handler:getInitialScreen(pPlayer, pNpc, pConvTempla
 		return
 	end
 
-	if (PlayerObject(pGhost):isJournalQuestTaskActive(questCrc, 3) == true) then
+	if (PlayerObject(pGhost):isJournalQuestTaskActive(DarnDroid1.questCrc, DarnDroid1.TASK_TALKTOAMARENT)) then
 		return convoTemplate:getScreen("first_screen")
-	elseif (PlayerObject(pGhost):isJournalQuestTaskActive(questCrc, 4) == true) then
+	elseif (PlayerObject(pGhost):isJournalQuestTaskActive(DarnDroid1.questCrc, DarnDroid1.TASK_FINDSHIP)) then
 		return convoTemplate:getScreen("more_help")
 	else
 		return convoTemplate:getScreen("not_ready")
@@ -49,25 +46,28 @@ function amarent_loren_convo_handler:runScreenHandlers(pConvTemplate, pPlayer, p
 		return
 	end
 
-	if (screenID == "life_worth" or screenID == "come_on" or screenID == "forgiven" or screenID == "bribe_credits") then
+	if (screenID == "first_screen") then
+		PlayerObject(pGhost):completeJournalQuestTask(DarnDroid1.questCrc, DarnDroid1.TASK_TALKTOAMARENT, true)
+	elseif (screenID == "life_worth" or screenID == "come_on" or screenID == "forgiven" or screenID == "bribe_credits") then
+		if (screenID == "life_worth") then
+			PlayerObject(pGhost):activateJournalQuestTask(DarnDroid1.questCrc, DarnDroid1.TASK_INTIMIDATEDAMARENT, false)
+		elseif (screenID == "bribe_credits") then
+			PlayerObject(pGhost):activateJournalQuestTask(DarnDroid1.questCrc, DarnDroid1.TASK_BRIBEDAMARENT, false)
+		end
+
 		DarnDroid1:giveShipTask(pPlayer, shipTask[screenID])
-	end
-
-	if (screenID == "need_waypoint") then
-		DarnDroid1:giveShipWaypoint(pPlayer)
-	end
-
-	if (screenID == "sent_me") then
+	elseif (screenID == "need_waypoint") then
+		DarnDroid1:giveWaypoint(pPlayer, "talus", "Talus Crash Site", -2368, 2043)
+	elseif (screenID == "sent_me") then
 		local rank = CreatureObject(pPlayer):getFactionRank()
 		local factionCrc = TangibleObject(pPlayer):getFaction()
 
-		if (factionCrc == imperialCrc and rank > 0) then
-	        clonedConversation:addOption("@conversation/c_ddroid_amarent:s_285","my_influence") --I'm sure you can make time for someone of my influence.
+		if (factionCrc == DarnDroid1.imperialCrc and rank > 0) then
+			clonedConversation:addOption("@conversation/c_ddroid_amarent:s_285","my_influence") --I'm sure you can make time for someone of my influence.
 		end
-		clonedConversation:addOption("@conversation/c_ddroid_amarent:s_301","need_info") --I need information about a ship that may be lost.
-	end
 
-	if (screenID == "need_info") then
+		clonedConversation:addOption("@conversation/c_ddroid_amarent:s_301","need_info") --I need information about a ship that may be lost.
+	elseif (screenID == "need_info") then
 		if (CreatureObject(pPlayer):getCashCredits() >= 1000) then
 			clonedConversation:addOption("@conversation/c_ddroid_amarent:s_305","bribe_credits") --Would these 1000 credits show that I'm a member of the Imperial Transit Authority?
 		end
