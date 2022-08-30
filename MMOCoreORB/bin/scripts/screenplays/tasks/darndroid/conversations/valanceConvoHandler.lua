@@ -13,9 +13,9 @@ function valance_serth_convo_handler:getInitialScreen(pPlayer, pNpc, pConvTempla
 		return
 	end
 
-    if (CreatureObject(pPlayer):isInCombat() or CreatureObject(pNpc):isInCombat()) then
-        return
-    end
+	if (CreatureObject(pPlayer):isInCombat() or CreatureObject(pNpc):isInCombat()) then
+		return
+	end
 
 	if (DarnDroid2:isPlayerOnQuest1(pGhost)) then
 		return convoTemplate:getScreen("first_screen")
@@ -51,8 +51,8 @@ function valance_serth_convo_handler:runScreenHandlers(pConvTemplate, pPlayer, p
 		return
 	end
 
-    if (screenID == "happy_help" or screenID == "expect_return") then
-		if (DarnDroid1:completeQuest(pPlayer) == false) then
+	if (screenID == "happy_help" or screenID == "expect_return") then
+		if (DarnDroid1:completeQuest(pPlayer)) then
 			return convoTemplate:getScreen("inventory_full")
 		end
 	elseif (screenID == "ill_help" or screenID == "will_help") then

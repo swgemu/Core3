@@ -24,7 +24,7 @@ valance_serth = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED + CONVERSABLE + INVULNERABLE,
+	optionsBitmask = AIENABLED + CONVERSABLE + INVULNERABLE + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {

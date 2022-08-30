@@ -13,6 +13,10 @@ DarnDroid2 = ScreenPlay:new {
 	TASK_RETURNTOVALANCE = 4, --Once you have killed 8 Black Sun Initiates, 5 Black Sun Smugglers, and 1 Black Sun Minion, return to Valance Serth.
 	TASK_KILLTRANSPORT = 5, --Talk to Valance once the space transport is dead.
 	TASK_WIPEMEM = 6, --Wipe C-3TC's memory.
+
+	mobiles = {"black_sun_minion", "black_sun_smuggler", "black_sun_smuggler", "black_sun_smuggler", "black_sun_initiate",
+		"black_sun_initiate", "black_sun_initiate", "black_sun_initiate", "black_sun_initiate"
+	},
 }
 
 registerScreenPlay("DarnDroid2", true)
@@ -34,34 +38,20 @@ end
 
 function DarnDroid2:spawnMobiles()
 	if (isZoneEnabled("talus")) then
-		local npc = spawnMobile("talus", "black_sun_minion", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyMinionDead", npc)
-		npc = spawnMobile("talus", "black_sun_smuggler", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifySmugglerDead", npc)
-		npc = spawnMobile("talus", "black_sun_smuggler", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifySmugglerDead", npc)
-		npc = spawnMobile("talus", "black_sun_smuggler", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifySmugglerDead", npc)
-		npc = spawnMobile("talus", "black_sun_smuggler", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifySmugglerDead", npc)
-		npc = spawnMobile("talus", "black_sun_smuggler", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifySmugglerDead", npc)
-		npc = spawnMobile("talus", "black_sun_initiate", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyInitiateDead", npc)
-		npc = spawnMobile("talus", "black_sun_initiate", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyInitiateDead", npc)
-		npc = spawnMobile("talus", "black_sun_initiate", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyInitiateDead", npc)
-		npc = spawnMobile("talus", "black_sun_initiate", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyInitiateDead", npc)
-		npc = spawnMobile("talus", "black_sun_initiate", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyInitiateDead", npc)
-		npc = spawnMobile("talus", "black_sun_initiate", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyInitiateDead", npc)
-		npc = spawnMobile("talus", "black_sun_initiate", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyInitiateDead", npc)
-		npc = spawnMobile("talus", "black_sun_initiate", 480, 5379, 97, 5675, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyInitiateDead", npc)
+		for i = 1, #self.mobiles, 1 do
+			local mobile = self.mobiles[i]
+			local pNpc = spawnMobile("talus", mobile, -1, 5379, 97, 5675, 0, 0)
+
+			if (pNpc ~= nil) then
+				if (mobile == "black_sun_minion") then
+					createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyMinionDead", pNpc)
+				elseif (mobile == "black_sun_smuggler") then
+					createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifySmugglerDead", pNpc)
+				elseif (mobile == "black_sun_initiate") then
+					createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyInitiateDead", pNpc)
+				end
+			end
+		end
 	end
 end
 
@@ -76,11 +66,11 @@ function DarnDroid2:notifyEnteredBlackSunArea(pArea, pPlayer)
 		return 0
 	end
 
-	if (PlayerObject(pGhost):isJournalQuestActive(self.quest2Crc) == false) then
+	if (not PlayerObject(pGhost):isJournalQuestActive(self.quest2Crc)) then
 		return 0
 	end
 
-	if (PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_FINDSTAGING) == true) then
+	if (PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_FINDSTAGING)) then
 		return 0
 	end
 
@@ -98,37 +88,51 @@ function DarnDroid2:notifyEnteredBlackSunArea(pArea, pPlayer)
 end
 
 function DarnDroid2:notifyMinionDead(pMinion, pPlayer)
-	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
-		return 0
+	createEvent(300 * 1000, "DarnDroid2", "respawnMinion", nil, "")
+
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() or pMinion == nil) then
+		return 1
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return 0
+		return 1
 	end
 
-	if (PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLMINION) == true) then
-		return 0
+	if (not PlayerObject(pGhost):isJournalQuestActive(self.quest2Crc)) then
+		return 1
+	end
+
+	if (PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLMINION)) then
+		return 1
 	end
 
 	PlayerObject(pGhost):completeJournalQuestTask(self.quest2Crc, self.TASK_KILLMINION, true);
 	self:returnToValance(pPlayer)
-	return 0
+
+	return 1
 end
 
 function DarnDroid2:notifySmugglerDead(pSmuggler, pPlayer)
-	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
-		return 0
+	createEvent(300 * 1000, "DarnDroid2", "respawnSmuggler", nil, "")
+
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() or pSmuggler == nil) then
+		return 1
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
 	if (pGhost == nil) then
-		return 0
+		return 1
 	end
 
-	if (PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLSMUGGLER) == true) then
-		return 0
+	if (not PlayerObject(pGhost):isJournalQuestActive(self.quest2Crc)) then
+		return 1
+	end
+
+	if (PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLSMUGGLER)) then
+		return 1
 	end
 
 	local playerID = CreatureObject(pPlayer):getObjectID()
@@ -146,29 +150,37 @@ function DarnDroid2:notifySmugglerDead(pSmuggler, pPlayer)
 		self:returnToValance(pPlayer)
 	end
 
-	return 0
+	return 1
 end
 
-function DarnDroid2:notifyInitiateDead(pSmuggler, pPlayer)
-	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
-		return 0
+function DarnDroid2:notifyInitiateDead(pInitiate, pPlayer)
+	createEvent(300 * 1000, "DarnDroid2", "respawnInitiate", nil, "")
+
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() or pInitiate == nil) then
+		return 1
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return 0
+		return 1
 	end
 
-	if (PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLINITIATE) == true) then
-		return 0
+	if (not PlayerObject(pGhost):isJournalQuestActive(self.quest2Crc)) then
+		return 1
+	end
+
+	if (PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLINITIATE)) then
+		return 1
 	end
 
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	local count = tonumber(getQuestStatus(playerID .. "darnDroid2InitiatesKilled"))
+
 	if (count == nil) then
 		count = 0
 	end
+
 	count = count + 1
 	setQuestStatus(playerID .. "darnDroid2InitiatesKilled", count)
 
@@ -177,7 +189,35 @@ function DarnDroid2:notifyInitiateDead(pSmuggler, pPlayer)
 		self:returnToValance(pPlayer)
 	end
 
-	return 0
+	return 1
+end
+
+-- Respawn Minion, Smugglers & Initiates
+
+function DarnDroid2:respawnMinion()
+	local npc = spawnMobile("talus", "black_sun_minion", -1, 5379, 97, 5675, 0, 0)
+
+	if (pNpc ~= nil) then
+		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyMinionDead", npc)
+	end
+end
+
+function DarnDroid2:respawnSmuggler()
+	local npc = spawnMobile("talus", "black_sun_smuggler", -1, 5379, 97, 5675, 0, 0)
+
+	if (pNpc ~= nil) then
+		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyMinionDead", npc)
+	end
+end
+
+function DarnDroid2:respawnInitiate()
+	local npc = spawnMobile("talus", "black_sun_initiate", -1, 5379, 97, 5675, 0, 0)
+
+	if (pNpc ~= nil) then
+		createObserver(OBJECTDESTRUCTION, "DarnDroid2", "notifyMinionDead", npc)
+	end
+
+
 end
 
 function DarnDroid2:returnToValance(pPlayer)
@@ -191,12 +231,12 @@ function DarnDroid2:returnToValance(pPlayer)
 		return
 	end
 
-	if (PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLMINION) == true and
-		PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLSMUGGLER) == true and
-		PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLINITIATE) == true) then
+	if (PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLMINION) and
+		PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLSMUGGLER) and
+		PlayerObject(pGhost):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLINITIATE)) then
 
 		DarnDroid2:clearValanceWaypoint(pPlayer)
-		DarnDroid2:giveWaypoint(pPlayer,  "talus", "Return to Valance Serth", -2389, 2043)
+		DarnDroid2:giveWaypoint(pPlayer, "talus", "Return to Valance Serth", -2389, 2043)
 		PlayerObject(pGhost):activateJournalQuestTask(self.quest2Crc, self.TASK_RETURNTOVALANCE, true);
 	end
 end
@@ -388,7 +428,12 @@ function DarnDroid2:isPlayerOnQuest1(pPlayer)
 		return false
 	end
 
-	if (PlayerObject(pPlayer):isJournalQuestTaskActive(self.quest1Crc, 5) and PlayerObject(pPlayer):isJournalQuestActive(self.quest1Crc)) then
+	if (PlayerObject(pPlayer):isJournalQuestComplete(DarnDroid1.questCrc)) then
+		return false
+	end
+
+	-- Should return true if player is still on DarnDroid1
+	if (PlayerObject(pPlayer):isJournalQuestTaskActive(DarnDroid1.questCrc, DarnDroid1.TASK_TALKTOVALANCE)) then
 		return true
 	end
 
@@ -400,7 +445,11 @@ function DarnDroid2:isPlayerReadyForQuest2(pPlayer)
 		return false
 	end
 
-	if (PlayerObject(pPlayer):isJournalQuestComplete(self.quest1Crc) and PlayerObject(pPlayer):isJournalQuestActive(self.quest2Crc)) then
+	if (PlayerObject(pPlayer):isJournalQuestTaskActive(self.quest2Crc, self.TASK_RETURNTOVALANCE)) then
+		return false
+	end
+
+	if (PlayerObject(pPlayer):isJournalQuestComplete(DarnDroid1.questCrc) and not PlayerObject(pPlayer):isJournalQuestActive(self.quest2Crc)) then
 		return true
 	end
 
@@ -412,10 +461,10 @@ function DarnDroid2:isPlayerDoneQuest2Part2(pPlayer)
 		return false
 	end
 
-	if (PlayerObject(pPlayer):isJournalQuestTaskActive(self.quest2Crc, self.TASK_RETURNTOVALANCE) == true and
-		PlayerObject(pPlayer):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLMINION) == true and
-		PlayerObject(pPlayer):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLSMUGGLER) == true and
-		PlayerObject(pPlayer):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLINITIATE) == true) then
+	if (PlayerObject(pPlayer):isJournalQuestTaskActive(self.quest2Crc, self.TASK_RETURNTOVALANCE) and
+		PlayerObject(pPlayer):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLMINION) and
+		PlayerObject(pPlayer):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLSMUGGLER) and
+		PlayerObject(pPlayer):isJournalQuestTaskComplete(self.quest2Crc, self.TASK_KILLINITIATE)) then
 		return true
 	end
 
@@ -456,7 +505,7 @@ function DarnDroid2:isPlayerCompletedAll(pPlayer)
 		return false
 	end
 
-	if (PlayerObject(pPlayer):isJournalQuestComplete(self.quest1Crc) and	PlayerObject(pPlayer):isJournalQuestComplete(self.quest2Crc)) then
+	if (PlayerObject(pPlayer):isJournalQuestComplete(DarnDroid1.questCrc) and PlayerObject(pPlayer):isJournalQuestComplete(self.quest2Crc)) then
 		return true
 	end
 
