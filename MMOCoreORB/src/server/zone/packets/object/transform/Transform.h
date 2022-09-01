@@ -169,7 +169,7 @@ public:
 		float sqrDistance = get2dSquaredDistance(creoPosition);
 		float sqrQuotient = sqrDistance > sqrRange ? sqrRange / sqrDistance : sqrDistance / sqrRange;
 
-		return (int)((sqrQuotient * 10.f) + 0.5f) * 0.1f;
+		return (int)((sqrQuotient * 100.f) + 0.5f) * 0.01f;
 	}
 
 	float getTurnScale(const Quaternion* creoDirection) const {
@@ -192,13 +192,14 @@ public:
 		float range = speed * interval * 0.2f;
 		float vector = POSITIONMOD;
 
-		vector *= (5.f > speed) ? speed / 5.f : 1.f;
 		vector *= getMoveScale(creoPosition, range);
 		vector *= getTurnScale(creoDirection);
 
 		if (vector <= 1.f || vector > POSITIONMOD) {
 			return position;
 		}
+
+		vector += (deltaTime / (float)MINDELTA) - interval;
 
 		if (interval > 1) {
 			vector /= interval;
