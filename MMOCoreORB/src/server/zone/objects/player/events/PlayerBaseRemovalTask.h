@@ -58,12 +58,12 @@ public:
 					int totalStructures = ghost->getTotalOwnedStructureCount();
 					int basesDestroyed = 0;
 
-#ifdef DEBUG
+#ifdef DEBUG_BASE_REMOVAL
 					player->info(true) << "PlayerBaseRemovalTask called - player base count = " << baseCount << "  maxBases = " << maxBases << "  total owned structures = " << totalStructures;
 #endif
 
 					for (int i = 0; i < totalStructures; ++i) {
-#ifdef DEBUG
+#ifdef DEBUG_BASE_REMOVAL
 						player->info(true) << " Getting structure #" << i;
 #endif
 						if (basesDestroyed == (baseCount - maxBases))
@@ -79,9 +79,12 @@ public:
 
 							// Check against all bases or if pveBase are not allowed then only try to remove the PvP bases. The PvE bases are auto removed on server boot.
 							if (!pvpBasesOnly || (pvpBasesOnly && (building->getPvpStatusBitmask() & CreatureFlag::OVERT))) {
-#ifdef DEBUG
+#ifdef DEBUG_BASE_REMOVAL
 								player->info(true) << " Destroying GCW Base #" << i << "  Total bases destroy = " << basesDestroyed;
 #endif
+
+								player->info(true) << "GCW base set for destruction for Player: " << player->getFirstName() << " Base ID: " << building->getObjectID();
+
 								gcwMan->scheduleBaseDestruction(building, player, true);
 								basesDestroyed++;
 							}

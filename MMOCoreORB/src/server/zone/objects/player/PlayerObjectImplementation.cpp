@@ -506,13 +506,10 @@ void PlayerObjectImplementation::notifySceneReady() {
 	checkAndShowTOS();
 	createHelperDroid();
 
-	if (baseRemovalTask == nullptr)
-		baseRemovalTask = new PlayerBaseRemovalTask(creature);
+	PlayerBaseRemovalTask* baseRemovalTask = new PlayerBaseRemovalTask(creature);
 
-	if (baseRemovalTask->isScheduled())
-		baseRemovalTask->cancel();
-
-	baseRemovalTask->schedule((System::random(5) + 1) * 60 * 1000);
+	if (baseRemovalTask != nullptr)
+		baseRemovalTask->schedule(5000);
 }
 
 void PlayerObjectImplementation::sendFriendLists() {
