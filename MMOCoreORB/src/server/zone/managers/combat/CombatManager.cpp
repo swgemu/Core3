@@ -273,6 +273,16 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 		broadcastCombatAction(attacker, weapon, targetDefenders, data);
 	}
 
+	int defenderSize = targetDefenders.size();
+
+	for (int i = defenderSize - 1; i >= 0; i--) {
+		DefenderHitList* list = targetDefenders.get(i);
+
+		delete list;
+	}
+
+	targetDefenders.removeAll();
+
 	// Update PvP TEF Duration
 	if (shouldGcwCrackdownTef || shouldGcwTef || shouldBhTef) {
 		ManagedReference<CreatureObject*> attackingCreature = nullptr;
@@ -784,7 +794,7 @@ void CombatManager::finalCombatSpam(TangibleObject* attacker, WeaponObject* weap
 							applyStates(attacker->asCreatureObject(), defenderCreo, hitList, data);
 						}
 
-						woundCreatureTarget(defenderCreo, weapon, hitList->getPoolsToWound());
+						woundCreatureTarget(defenderCreo, weapon, hitList);
 					}
 
 					if (foodMit > 0) {
@@ -1551,10 +1561,15 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	return damage;
 }
 
-void CombatManager::woundCreatureTarget(CreatureObject* defender, WeaponObject* weapon, Vector<int> poolsToWound) const {
-	if (defender == nullptr || poolsToWound.size() <= 0) {
+void CombatManager::woundCreatureTarget(CreatureObject* defender, WeaponObject* weapon, DefenderHitList* defenderHitList) const {
+	if (defender == nullptr || defenderHitList == nullptr) {
 		return;
 	}
+
+	const Vector<int>& poolsToWound = defenderHitList->getPoolsToWound();
+
+	if (poolsToWound.size() <= 0)
+		return;
 
 	Locker wlock(defender);
 

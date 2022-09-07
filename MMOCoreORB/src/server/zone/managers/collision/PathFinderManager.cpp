@@ -985,7 +985,6 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	Vector<WorldCoordinates>* path = new Vector<WorldCoordinates>(5, 1);
 	path->add(pointA); // adding source
 
-	//PathNode* source = pathGraph1->findNearestNode(pointA.getPoint());
 	const TriangleNode* nearestSourceNodeTriangle = CollisionManager::getTriangle(pointA.getPoint(), floorMesh1);
 
 	if (nearestSourceNodeTriangle == nullptr) {
@@ -993,22 +992,25 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		return nullptr;
 	}
 
-	const PathNode* source = CollisionManager::findNearestPathNode(nearestSourceNodeTriangle, floorMesh1, pointA.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
+	const Vector3& pointALoc = pointA.getPoint();
+
+	const PathNode* source = CollisionManager::findNearestPathNode(nearestSourceNodeTriangle, floorMesh1, pointALoc);//targetPathGraph->findNearestNode(pointB.getPoint());
 
 	if (source == nullptr) {
 		delete path;
 		return nullptr;
 	}
 
-	//PathNode* target = pathGraph2->findNearestNode(pointB.getPoint());
-	const TriangleNode* nearestTargetNodeTriangle = CollisionManager::getTriangle(pointB.getPoint(), floorMesh2);
+	const Vector3& pointBLoc = pointB.getPoint();
+
+	const TriangleNode* nearestTargetNodeTriangle = CollisionManager::getTriangle(pointBLoc, floorMesh2);
 
 	if (nearestTargetNodeTriangle == nullptr) {
 		delete path;
 		return nullptr;
 	}
 
-	const PathNode* target = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, floorMesh2, pointB.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
+	const PathNode* target = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, floorMesh2, pointBLoc);//targetPathGraph->findNearestNode(pointB.getPoint());
 
 	if (target == nullptr) {
 		delete path;
@@ -1042,10 +1044,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	// path from our position to path node
 	Vector<const Triangle*>* trianglePath = nullptr;
 
-	int res = getFloorPath(pointA.getPoint(), nodes->get(1)->getPosition(), floorMesh1, trianglePath);
+	int res = getFloorPath(pointALoc, nodes->get(1)->getPosition(), floorMesh1, trianglePath);
 
 	if (res != -1 && trianglePath != nullptr)
-		addTriangleNodeEdges(pointA.getPoint(), nodes->get(1)->getPosition(), trianglePath, path, ourCell);
+		addTriangleNodeEdges(pointALoc, nodes->get(1)->getPosition(), trianglePath, path, ourCell);
 
 	if (trianglePath != nullptr) {
 		delete trianglePath;
@@ -1105,10 +1107,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	// path from cell entrance to destination point
 	trianglePath = nullptr;
 
-	res = getFloorPath(path->get(path->size() - 1).getPoint(), pointB.getPoint(), floorMesh2, trianglePath);
+	res = getFloorPath(path->get(path->size() - 1).getPoint(), pointBLoc, floorMesh2, trianglePath);
 
 	if (res != -1 && trianglePath != nullptr)
-		addTriangleNodeEdges(path->get(path->size() - 1).getPoint(), pointB.getPoint(), trianglePath, path, targetCell);
+		addTriangleNodeEdges(path->get(path->size() - 1).getPoint(), pointBLoc, trianglePath, path, targetCell);
 
 	if (trianglePath != nullptr)
 		delete trianglePath;

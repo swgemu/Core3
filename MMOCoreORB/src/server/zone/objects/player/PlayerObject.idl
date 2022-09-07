@@ -1336,11 +1336,6 @@ class PlayerObject extends IntangibleObject {
 		return profileBitmasks;
 	}
 
-	/*@local
-	public DeltaVectorMap<string, int> getExperienceList() {
-		return experienceList;
-	}*/
-
 	@read
 	public string getTitle() {
 		return title;
