@@ -40,7 +40,6 @@ public:
 		forceAbsorb = 0;
 		psgMitigation = 0;
 		armorMitigation = 0;
-		poolsToWound;
 	}
 
 
@@ -113,7 +112,7 @@ public:
 		armorMitigation = armorMit;
 	}
 
-	void setPoolsToWound(Vector<int> woundPools) {
+	void setPoolsToWound(const Vector<int>& woundPools) {
 		poolsToWound = woundPools;
 	}
 
@@ -165,7 +164,7 @@ public:
 		return armorMitigation;
 	}
 
-	Vector<int> getPoolsToWound() {
+	const Vector<int>& getPoolsToWound() {
 		return poolsToWound;
 	}
 };

@@ -2276,12 +2276,6 @@ void PlayerObjectImplementation::setOnline() {
 
 	clearPlayerBitmask(PlayerBitmasks::LD, true);
 
-	PlayerObjectDeltaMessage3* dplay3 = new PlayerObjectDeltaMessage3(asPlayerObject());
-	dplay3->setBirthDate();
-	dplay3->setTotalPlayTime();
-	dplay3->close();
-	broadcastMessage(dplay3, true);
-
 	doRecovery(1000);
 
 	activateMissions();
