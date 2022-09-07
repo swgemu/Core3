@@ -2104,6 +2104,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 	PatrolPoint currentPoint(currentPosition);
 	const WorldCoordinates endMovementCoords = endMovementPosition.getCoordinates();
+	const WorldCoordinates& currentPointCoords = currentPoint.getCoordinates();
 	CellObject* endMovementCell = endMovementPosition.getCell();
 
 	if (currentFoundPath == nullptr) {
@@ -2112,7 +2113,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			currentPoint.setCell(currentParent.castTo<CellObject*>());
 		}
 
-		path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(currentPoint.getCoordinates(), endMovementCoords, getZoneUnsafe()));
+		path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(currentPointCoords, endMovementCoords, getZoneUnsafe()));
 	} else {
 		if (currentParent != nullptr && !currentParent->isCellObject())
 			currentParent = nullptr;
@@ -2120,7 +2121,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if ((movementState == AiAgent::FOLLOWING || movementState == AiAgent::PATHING_HOME || movementState == AiAgent::NOTIFY_ALLY || movementState == AiAgent::MOVING_TO_HEAL || movementState == AiAgent::WATCHING)
 			&& endMovementCell == nullptr && currentParent == nullptr && currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().squaredDistanceTo(endMovementCoords.getWorldPosition()) > 4 * 4) {
 
-			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(currentPoint.getCoordinates(), endMovementPosition.getCoordinates(), getZoneUnsafe()));
+			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(currentPointCoords, endMovementPosition.getCoordinates(), getZoneUnsafe()));
 		} else {
 			currentFoundPath->set(0, WorldCoordinates(currentPosition, currentParent.castTo<CellObject*>()));
 			path = currentFoundPath;
