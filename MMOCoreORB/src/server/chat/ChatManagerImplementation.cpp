@@ -1095,7 +1095,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	if (specialRange != -1)
 		range = specialRange;
 
-	bool recentSpatialFine = false;
+	bool noRecentFine = sourceCreature->checkCooldownRecovery("imperial_spatial_fine");
 
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
@@ -1126,23 +1126,19 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 				continue;
 			}
 
-			if (creature->isAiAgent() && !recentSpatialFine && (20 * 20) >= distSquared && creature->getFaction() == Factions::FACTIONIMPERIAL && creature->getObserverCount(ObserverEventType::FACTIONCHAT)) {
-				if (!sourceCreature->checkCooldownRecovery("imperial_spatial_fine")) {
-					recentSpatialFine = true;
-					continue;
-				}
-
+			if (noRecentFine && creature->isAiAgent() && creature->getFaction() == Factions::FACTIONIMPERIAL && (20 * 20) >= distSquared && creature->getObserverCount(ObserverEventType::FACTIONCHAT)) {
 				String msgString = message.toString().toLowerCase();
 
 				if (!msgString.contains("jedi"))
 					continue;
 
 				Locker slock(sourceCreature);
-				// Check for fine only once every 20s
-				sourceCreature->updateCooldownTimer("imperial_spatial_fine", 20000);
+
+				// Check for fine only once every 5s
+				sourceCreature->updateCooldownTimer("imperial_spatial_fine", 5000);
 				slock.release();
 
-				 SortedVector<ManagedReference<Observer*> > observers = creature->getObservers(ObserverEventType::FACTIONCHAT);
+				SortedVector<ManagedReference<Observer*> > observers = creature->getObservers(ObserverEventType::FACTIONCHAT);
 
 				if (observers.size() > 0) {
 					Reference<CreatureObject*> sourceCreo = sourceCreature;
@@ -1154,7 +1150,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 							return;
 
 						Locker locker(observingCreo);
-						Locker clocker(observer, observingCreo);
+						Locker clocker(sourceCreo, observingCreo);
 
 						if (observer->notifyObserverEvent(ObserverEventType::FACTIONCHAT, observingCreo, sourceCreo, 0) == 1)
 							observingCreo->dropObserver(ObserverEventType::FACTIONCHAT, observer);
