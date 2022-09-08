@@ -130,6 +130,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	crackdownScansEnabled = lua->getGlobalBoolean("crackdownScansEnabled");
 	crackdownScanPrivilegedPlayers = lua->getGlobalBoolean("crackdownScanPrivilegedPlayers");
 	wildScanInterval = lua->getGlobalInt("wildScanInterval") * 1000;
+	wildScanLoginDelay = lua->getGlobalInt("wildScanLoginDelay") * 1000;
 	wildScanChance = lua->getGlobalInt("wildScanChance");
 	crackdownPlayerScanCooldown = lua->getGlobalInt("crackdownPlayerScanCooldown") * 1000;
 	crackdownContrabandFineCredits = lua->getGlobalInt("crackdownContrabandFineCredits");
@@ -3344,9 +3345,6 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 		if (!player->checkCooldownRecovery("crackdown_scan"))
 			continue;
 
-		if (player->getPlayerObject()->getSessionMiliSecs() > 60 * 1000)
-			continue;
-
 		if (player->isDead() || player->isIncapacitated() || player->isFeigningDeath())
 			continue;
 
@@ -3355,8 +3353,17 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 
 		auto ghost = player->getPlayerObject();
 
-		if (ghost == nullptr || (!crackdownScanPrivilegedPlayers && ghost->isPrivileged()))
-			continue;
+		if (ghost != nullptr) {
+			if (ghost->isLinkDead())
+				continue;
+
+			if (!crackdownScanPrivilegedPlayers && ghost->isPrivileged())
+				continue;
+
+			// No scan until player session time passes the login delay
+			if (ghost->getSessionMiliSecs() < getWildScanLoginDelay())
+				continue;
+		}
 
 		if (zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY()) && getWildScanChance() >= System::random(100)) {
 			WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
