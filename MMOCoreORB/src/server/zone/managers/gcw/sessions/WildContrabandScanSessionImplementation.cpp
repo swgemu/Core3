@@ -31,6 +31,8 @@ int WildContrabandScanSessionImplementation::initializeSession() {
 		return false;
 	}
 
+	Locker lock(player);
+
 	if (wildContrabandScanTask == nullptr) {
 		wildContrabandScanTask = new WildContrabandScanTask(player);
 	}
@@ -39,7 +41,10 @@ int WildContrabandScanSessionImplementation::initializeSession() {
 		wildContrabandScanTask->schedule(TASKDELAY);
 	}
 
-	player->updateCooldownTimer("crackdown_scan", zone->getGCWManager()->getCrackdownPlayerScanCooldown());
+	GCWManager* gcwMan = zone->getGCWManager();
+
+	if (gcwMan != nullptr)
+		player->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownPlayerScanCooldown());
 
 	if (player->getActiveSession(SessionFacadeType::WILDCONTRABANDSCAN) != nullptr) {
 		player->dropActiveSession(SessionFacadeType::WILDCONTRABANDSCAN);
@@ -56,6 +61,7 @@ int WildContrabandScanSessionImplementation::cancelSession() {
 	ManagedReference<CreatureObject*> player = weakPlayer.get();
 
 	AiAgent* droid = getDroid();
+
 	if (droid != nullptr) {
 		Locker dlocker(droid);
 		droid->destroyObjectFromWorld(true);
@@ -93,6 +99,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 	}
 
 	AiAgent* droid = getDroid();
+
 	if (droid != nullptr && droid->isInCombat()) {
 		scanState = INCOMBAT;
 	}
@@ -201,6 +208,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 				}
 
 				AiAgent* droid = getDroid();
+
 				if (droid != nullptr && !droid->isDead()) {
 					Locker dlocker(droid);
 					PatrolPoint* homeLocation = droid->getHomeLocation();
@@ -210,7 +218,6 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 
 					droid->setMovementState(AiAgent::PATROLLING);
 					droid->setNextPosition(homeLocation->getPositionX(), homeLocation->getPositionZ(), homeLocation->getPositionY());
-					droid->stopWaiting();
 
 					droid->showFlyText("imperial_presence/contraband_search", "probot_support_fly", 255, 0, 0);
 				}
@@ -241,6 +248,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 			scanState = TAKINGOFF;
 			timeLeft = 7;
 			AiAgent* droid = getDroid();
+
 			if (droid != nullptr) {
 				Locker dlocker(droid);
 				droid->setPosture(CreaturePosture::SITTING, true); // Takeoff

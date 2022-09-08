@@ -9,7 +9,7 @@ import engine.core.Task;
 
 class ContrabandScanSession extends Facade {
 
-	private static final int CONTRABANDSCANCOOLDOWN = 180000; // Time should be at least a few seconds longer than the longest time a scan takes. Current maximum scan time is 80 s.
+	private static final int CONTRABANDSCANCOOLDOWN = 120000; // Time should be at least a few seconds longer than the longest time a scan takes. Current maximum scan time is 80 s.
 	private static final int SCANINITIATECHANCE = 8; // 1/8 chance to initiate scan - 12.5 % chance.
 	private static final int TASKDELAY = 2000; // 2s delay.
 	private static final int IMMEDIATELY = 1; // Minimum delay.

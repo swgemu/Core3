@@ -540,6 +540,9 @@ template<> bool CheckIsDroid::check(AiAgent* agent) const {
 }
 
 template<> bool CheckCrackdownScanner::check(AiAgent* agent) const {
+	if (!agent->checkCooldownRecovery("crackdown_scan"))
+		return false;
+
 	return agent->getCreatureBitmask() & CreatureFlag::SCANNING_FOR_CONTRABAND;
 }
 
