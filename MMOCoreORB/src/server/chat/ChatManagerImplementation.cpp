@@ -1132,6 +1132,8 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 				if (!msgString.contains("jedi"))
 					continue;
 
+				noRecentFine = false;
+
 				Locker slock(sourceCreature);
 
 				// Check for fine only once every 5s
