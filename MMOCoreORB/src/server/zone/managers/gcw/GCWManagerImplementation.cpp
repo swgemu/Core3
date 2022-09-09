@@ -337,6 +337,7 @@ void GCWManagerImplementation::performGCWTasks() {
 	uint64 thisOid;
 	int rebelCheck = 0, rebelsScore = 0;
 	int imperialCheck = 0, imperialsScore = 0;
+	int totalPlayerBases = 0;
 
 	for (int i = 0; i < gcwBaseList.size(); i++) {
 		thisOid = getBase(i)->getObjectID();
@@ -346,9 +347,25 @@ void GCWManagerImplementation::performGCWTasks() {
 		if (building == nullptr)
 			continue;
 
-		if (!allowPveBases && !(building->getPvpStatusBitmask() & CreatureFlag::OVERT) && building->getFactionBaseType() == PLAYERFACTIONBASE) {
-			scheduleBaseDestruction(building, nullptr, true);
-			continue;
+		if (building->getFactionBaseType() == PLAYERFACTIONBASE) {
+			// If PvE Bases are disallowed, schedule for destruct and do not add to count
+			if (!allowPveBases && !(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+				building->info(true) << " GCW PvE Base scheduled for destruction -- Base ID: " << building->getObjectID();
+
+				scheduleBaseDestruction(building, nullptr, true);
+				continue;
+			}
+
+			// Update Base Count
+			totalPlayerBases++;
+
+			// Total bases on the planet are greater then the set amount in gcw_manager.lua schedule bases over the alowed amount for destruct
+			if (totalPlayerBases > maxBasesPerPlanet) {
+				building->info(true) << " GCW Base over Planet Capacity scheduled for destruction -- Base ID: " << building->getObjectID();
+
+				scheduleBaseDestruction(building, nullptr, true);
+				continue;
+			}
 		}
 
 		String templateString = building->getObjectTemplate()->getFullTemplateString();
@@ -490,6 +507,7 @@ int GCWManagerImplementation::getBaseCount(CreatureObject* creature, bool pvpOnl
 		return 0;
 
 	ZoneServer* server = zone->getZoneServer();
+
 	if (server == nullptr)
 		return 0;
 

@@ -182,13 +182,12 @@ function recruiterScreenplay:getInstallationsOptions(faction, gcwDiscount, smugg
 	local covertOvert = useCovertOvert()
 
 	for k,v in pairs(factionRewardData.installationsList) do
-		if ( factionRewardData.installations[v] ~= nil and factionRewardData.installations[v].display ~= nil and factionRewardData.installations[v].cost ~= nil ) then
-
+		if (factionRewardData.installations[v] ~= nil and factionRewardData.installations[v].display ~= nil and factionRewardData.installations[v].cost ~= nil) then
 			if ((not covertOvert) and (factionRewardData.installationsList[k] == "covert_detector_32m")) then
 				goto skip
 			end
 
-			if ((not self.allowPveBases) and (not string.find(factionRewardData.installationsList[k], "pvp"))) then
+			if ((not self.allowPveBases) and (factionRewardData.installations[v].status ~= nil) and (factionRewardData.installations[v].status == COVERT)) then
 				goto skip
 			end
 
@@ -701,7 +700,22 @@ function recruiterScreenplay:getItemListTable(faction, screenID)
 	elseif screenID == "fp_weapons_armor" then
 		return dataTable.weaponsArmorList
 	elseif screenID == "fp_installations" then
-		return dataTable.installationsList
+		local list = dataTable.installationsList
+		local table = {}
+
+		for i = 1, #list, 1 do
+			local itemString = list[i]
+
+			if ((not self.allowPveBases) and (string.find(itemString, "hq_")) and (not string.find(itemString, "_pvp_"))) then
+				goto skip
+			end
+
+			table[#table + 1] = itemString
+
+			::skip::
+		end
+
+		return table
 	elseif screenID == "fp_uniforms" then
 		return dataTable.uniformList
 	elseif screenID == "fp_hirelings" then
