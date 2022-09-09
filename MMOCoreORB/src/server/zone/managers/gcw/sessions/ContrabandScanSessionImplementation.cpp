@@ -57,8 +57,6 @@ int ContrabandScanSessionImplementation::initializeSession() {
 
 	player->info("Contraband scan started by scanner " + scanner->getDisplayedName() + " (" + String::valueOf(scanner->getObjectID()) + ") at " + scanner->getWorldPosition().toString());
 
-	Locker lock(player);
-
 	GCWManager* gcwMan = zone->getGCWManager();
 
 	if (gcwMan != nullptr) {
@@ -67,7 +65,6 @@ int ContrabandScanSessionImplementation::initializeSession() {
 	}
 
 	// Update the scanners cooldown
-	Locker clock(scanner, player);
 	scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
 
 	adjustReinforcementStrength(scanner);
