@@ -2668,7 +2668,11 @@ bool CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
 bool CreatureObjectImplementation::removeStateBuff(uint64 state) {
 	bool ret = removeBuff(Long::hashCode(state));
 
-	fatal(!hasState(state), "state was not removed after removeBuff");
+	if (hasState(state)) {
+		StringBuffer message;
+		message << "state was not removed after removeStateBuff -- State #" << state;
+		error(message.toString());
+	}
 
 	return ret;
 }
