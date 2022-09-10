@@ -25,6 +25,7 @@ public:
 	const static constexpr float MAXINERTIA = 5.376 * 1.1f; // maximum speed to slow update tick to mid delta
 	const static constexpr float POSITIONMOD = 7.f; // broadcast position update distance multiplier
 
+	const static int DELTAERROR = -100000; // Check if client is not sending proper timestamps
 	const static int MINDELTA = 200; // minimum ms elapsed between updates
 	const static int MIDDELTA = 400; // ideal ms between low priority update
 	const static int MAXDELTA = 800; // maximum ms before high priority update
@@ -229,6 +230,9 @@ public:
 	}
 
 	void sendFlyText(CreatureObject* creature, const String& type, int deltaTime) const {
+		if (creature == nullptr)
+			return;
+
 		int r = 128;
 		int g = 128;
 		int b = 128;
@@ -254,11 +258,15 @@ public:
 	}
 
 	void sendPathMessage(CreatureObject* creature, const Vector3& newPosition) const {
+		if (creature == nullptr)
+			return;
+
 		if (parentID != 0.f) {
 			return;
 		}
 
-		Reference<PlayerObject*> ghost = creature->getPlayerObject();
+		PlayerObject* ghost = creature->getPlayerObject();
+
 		if (ghost == nullptr) {
 			return;
 		}
@@ -280,7 +288,8 @@ public:
 	}
 
 	void sendSystemMessage(CreatureObject* creature, const Vector3& newPosition, const String& type, int deltaTime) const {
-		Reference<PlayerObject*> ghost = creature->getPlayerObject();
+		PlayerObject* ghost = creature->getPlayerObject();
+
 		if (ghost == nullptr) {
 			return;
 		}
