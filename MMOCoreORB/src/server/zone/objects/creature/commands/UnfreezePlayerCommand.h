@@ -36,15 +36,15 @@ public:
 		StringTokenizer args(arguments.toString());
 
 		if (object == nullptr || !object->isPlayerCreature()) {
-
 			String firstName;
+
 			if (args.hasMoreTokens()) {
 				args.getStringToken(firstName);
 				targetPlayer = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
 			}
 
 		} else {
-			targetPlayer = cast<CreatureObject*>( object.get());
+			targetPlayer = cast<CreatureObject*>(object.get());
 		}
 
 		if (targetPlayer == nullptr) {
@@ -60,18 +60,19 @@ public:
 		}
 
 		try {
-
 			Locker playerlocker(targetPlayer);
 
-			targetGhost->setMutedState(false);
+			if (targetGhost->isMuted()) {
+				targetGhost->setMutedState(false);
+			}
+
 			String mutedResonse = "";
 			targetGhost->setMutedReason(mutedResonse);
 
 			targetPlayer->removeStateBuff(CreatureState::FROZEN);
-			targetPlayer->sendSystemMessage("You have been unfrozen and unmuted by \'" + player->getFirstName() + "\'");
-
 			targetPlayer->setSpeedMultiplierBase(1.f, true);
 
+			targetPlayer->sendSystemMessage("You have been unfrozen and unmuted by \'" + player->getFirstName() + "\'");
 			player->sendSystemMessage(targetPlayer->getFirstName() + " has been unfrozen and unmuted.");
 
 		} catch (Exception& e) {

@@ -99,7 +99,7 @@ public:
 			const Vector3& position = validPosition.getPosition();
 			creO->teleport(position.getX(), position.getZ(), position.getY(), validPosition.getParent());
 
-			Reference<PlayerObject*> ghost = creO->getPlayerObject();
+			PlayerObject* ghost = creO->getPlayerObject();
 
 			if (ghost == nullptr) {
 				return;
@@ -116,7 +116,7 @@ public:
 			return;
 		}
 
-		Reference<PlayerObject*> ghost = creO->getPlayerObject();
+		PlayerObject* ghost = creO->getPlayerObject();
 
 		if (ghost == nullptr || ghost->isTeleporting()) {
 			return updateError(creO, "!ghost");
@@ -125,6 +125,9 @@ public:
 		deltaTime = transform.getTimeStamp() - ghost->getClientLastMovementStamp();
 
 		if (deltaTime < Transform::MINDELTA) {
+			if (deltaTime < Transform::DELTAERROR)
+				creO->sendSystemMessage("Your client timestamps are not sending properly. Please restart your computer. If the issue continues, contact QA.");
+
 			return updateError(creO, "deltaTime");
 		}
 
@@ -184,7 +187,7 @@ public:
 			return updateError(creO, "@base_player:no_entry_while_mounted", true);
 		}
 
-		Reference<PlayerObject*> ghost = creO->getPlayerObject();
+		PlayerObject* ghost = creO->getPlayerObject();
 
 		if (ghost == nullptr) {
 			return updateError(creO, "!ghost");
@@ -200,19 +203,20 @@ public:
 			}
 		}
 
-		if (!ghost->hasGodMode()) {
+		if (!ghost->isPrivileged()) {
 			if (creO->isFrozen()) {
+				creO->sendSystemMessage("You are frozen and cannot move.");
 				return updateError(creO, "isFrozen", true);
 			}
 
-			Reference<SceneObject*> inventory = creO->getSlottedObject("inventory");
+			SceneObject* inventory = creO->getSlottedObject("inventory");
 
 			if (inventory == nullptr) {
 				return updateError(creO, "!inventory");
 			}
 
 			if (inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
-				creO->setState(CreatureState::FROZEN, true);
+				creO->sendSystemMessage("@ui_inv:inventory_full");
 				return updateError(creO, "@system_msg:move_fail_inventory_overloaded", true);
 			}
 		}
@@ -223,14 +227,14 @@ public:
 			return updateError(creO, "!newCell");
 		}
 
-		Reference<SceneObject*> oldParent = creO->getParent().get();
+		SceneObject* oldParent = creO->getParent().get();
 
 		if (oldParent != nullptr && !oldParent->isCellObject()) {
 			return updateError(creO, "!oldParent");
 		}
 
 		if (oldParent != parent) {
-			Reference<SceneObject*> cellParent = parent->getParent().get();
+			SceneObject* cellParent = parent->getParent().get();
 
 			if (cellParent == nullptr || !cellParent->isBuildingObject()) {
 				return updateError(creO, "!cellParent");
@@ -242,12 +246,12 @@ public:
 				return updateError(creO, "!building");
 			}
 
-			if (!ghost->hasGodMode() && !building->isAllowedEntry(creO)) {
+			if (!ghost->isPrivileged() && !building->isAllowedEntry(creO)) {
 				return updateError(creO, "!isAllowedEntry", true);
 			}
 
 			if (oldParent != nullptr) {
-				CellObject* currentCell = oldParent.castTo<CellObject*>();
+				CellObject* currentCell = cast<CellObject*>(oldParent);
 
 				if (currentCell == nullptr) {
 					return updateError(creO, "!currentCell");
@@ -371,7 +375,7 @@ public:
 	}
 
 	void broadcastTransform(CreatureObject* creO, SceneObject* parent, const Vector3& position) const {
-		Reference<PlayerObject*> ghost = creO->getPlayerObject();
+		PlayerObject* ghost = creO->getPlayerObject();
 
 		if (ghost == nullptr) {
 			return updateError(creO, "!ghost");
