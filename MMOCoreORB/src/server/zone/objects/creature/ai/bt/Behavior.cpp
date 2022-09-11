@@ -39,8 +39,27 @@ Behavior::Behavior(const String& className, const uint32 id, const LuaObject& ar
 	: Object(), className(className), id(id), parent() {}
 
 bool Behavior::checkConditions(AiAgent* agent) const {
-	// placeholder for more robust checkConditions
-	return agent != nullptr && !agent->isDead() && !agent->isIncapacitated() && agent->getZone() != nullptr;
+	if (agent == nullptr)
+		return false;
+
+	if (agent->isDead() || agent->isIncapacitated())
+		return false;
+
+	Zone* zone = agent->getZone();
+
+	if (zone == nullptr)
+		return false;
+
+	ZoneServer* zoneServer = agent->getZoneServer();
+
+	if (zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
+		agent->wipeBlackboard();
+		agent->cancelMovementEvent();
+
+		return false;
+	}
+
+	return true;
 }
 
 Behavior::Status Behavior::doAction(AiAgent* agent) const {
@@ -59,14 +78,17 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 	}
 #endif // DEBUG_AI
 
-	if (!this->checkConditions(agent)) {
+	if (!checkConditions(agent)) {
 		if (agent != nullptr) {
 			// TODO: Should this be done here or in realizations of specific actions?
 			agent->clearCombatState(true);
-			agent->info() << "Invalid return from " << print() << " in " << agent->getErrorContext();
+
+//#ifdef DEBUG_AI
+			agent->info() << " CheckConiditions returned false " << print() << " in " << agent->getErrorContext();
+//#endif
 		}
 
-		return INVALID; // TODO: should this be FAILURE?
+		return FAILURE;
 	}
 
 	// Step 1:	check if this behavior is in the running chain

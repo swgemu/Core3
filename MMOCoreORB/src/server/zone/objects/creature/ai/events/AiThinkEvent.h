@@ -40,12 +40,16 @@ public:
 		if (strongRef == nullptr || strongRef->isDead() || strongRef->isIncapacitated())
 			return;
 
+		ZoneServer* zoneServer = strongRef->getZoneServer();
+
+		if (zoneServer != nullptr && zoneServer->isServerShuttingDown())
+			return;
+
 		Locker locker(strongRef);
 		strongRef->doRecovery(startTime.miliDifference());
 	}
 
-	void schedule(uint64 delay = 0)
-	{
+	void schedule(uint64 delay = 0) {
 		startTime.updateToCurrentTime();
 		Task::schedule(delay);
 	}

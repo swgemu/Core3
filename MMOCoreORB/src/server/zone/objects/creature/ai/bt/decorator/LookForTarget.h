@@ -26,9 +26,15 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+#ifdef DEBUG_AI
+		bool alwaysActive = ConfigManager::instance()->getAiAgentLoadTesting();
+#else // DEBUG_AI
+		bool alwaysActive = false;
+#endif // DEBUG_AI
+
 		if ((agent->getOptionsBitmask() & OptionBitmask::AIENABLED) == 0 || agent->isDead() || agent->isIncapacitated()
 				|| (agent->getPvpStatusBitmask() == CreatureFlag::NONE && !(agent->isDroidObject() && agent->isPet()))
-				|| agent->getNumberOfPlayersInRange() <= 0 || agent->isRetreating() || agent->isFleeing() || agent->isInCombat())
+				|| (!alwaysActive && agent->getNumberOfPlayersInRange() <= 0) || agent->isRetreating() || agent->isFleeing() || agent->isInCombat())
 			return FAILURE;
 
 		assert(child != nullptr);
