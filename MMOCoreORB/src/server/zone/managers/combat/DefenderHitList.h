@@ -40,29 +40,9 @@ public:
 		forceAbsorb = 0;
 		psgMitigation = 0;
 		armorMitigation = 0;
-		poolsToWound;
 	}
 
-
-	DefenderHitList& operator= (const DefenderHitList& hitList) {
-		if (this == &hitList)
-			return *this;
-
-		defender = hitList.defender;
-		hit = hitList.hit;
-		hitLocation = hitList.hitLocation;
-		animationCRC = hitList.animationCRC;
-		initialDamage = hitList.initialDamage;
-		damageMultiplier = hitList.damageMultiplier;
-		foodMitigation = hitList.foodMitigation;
-		jediMitigation = hitList.jediMitigation;
-		forceFeedback = hitList.forceFeedback;
-		forceAbsorb = hitList.forceAbsorb;
-		psgMitigation = hitList.psgMitigation;
-		armorMitigation = hitList.armorMitigation;
-		poolsToWound = hitList.poolsToWound;
-
-		return *this;
+	~DefenderHitList() {
 	}
 
 	void setDefender(TangibleObject* tano) {
@@ -113,7 +93,7 @@ public:
 		armorMitigation = armorMit;
 	}
 
-	void setPoolsToWound(Vector<int> woundPools) {
+	void setPoolsToWound(const Vector<int>& woundPools) {
 		poolsToWound = woundPools;
 	}
 
@@ -165,7 +145,7 @@ public:
 		return armorMitigation;
 	}
 
-	Vector<int> getPoolsToWound() {
+	const Vector<int>& getPoolsToWound() {
 		return poolsToWound;
 	}
 };

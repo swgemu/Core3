@@ -273,6 +273,14 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 		broadcastCombatAction(attacker, weapon, targetDefenders, data);
 	}
 
+	int defenderSize = targetDefenders.size();
+
+	for (int i = defenderSize - 1; i >= 0; i--) {
+		DefenderHitList* list = targetDefenders.get(i);
+
+		delete list;
+	}
+
 	// Update PvP TEF Duration
 	if (shouldGcwCrackdownTef || shouldGcwTef || shouldBhTef) {
 		ManagedReference<CreatureObject*> attackingCreature = nullptr;
@@ -523,6 +531,14 @@ int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon
 
 	// Send out CombatSpam broadcast now that attack is complete. TanO attackers CombatAction packets are sent out in tanoTargetCombatAction
 	finalCombatSpam(attacker, weapon, targetDefenders, data);
+
+	int defenderSize = targetDefenders.size();
+
+	for (int i = defenderSize - 1; i >= 0; i--) {
+		DefenderHitList* list = targetDefenders.get(i);
+
+		delete list;
+	}
 
 	return damage;
 }
