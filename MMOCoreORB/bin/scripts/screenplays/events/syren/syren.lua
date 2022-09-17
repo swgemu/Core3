@@ -23,7 +23,7 @@ Syren.act2.GO_TO_AMBUSH = 1
 Syren.act2.AMBUSH_1 = 2
 Syren.act2.AMBUSH_2 = 3
 Syren.act2.AMBUSH_3 = 4
-Syren.act2.AMBUSH_COMPLETE = 6
+Syren.act2.AMBUSH_COMPLETE = 5
 Syren.act2.GO_TO_BASE = 6
 Syren.act2.TALK_TO_TOVAR = 7
 Syren.act2.REWARD = 8
@@ -41,7 +41,8 @@ SecretsOfTheSyren = ScreenPlay:new {
 		{"syren_tyla_jinn", "naboo", 6.4, -0.9, -6.5, 50, 91},
 		{"syren_jevan_monsul", "tatooine", 7, -0.9, -5, 50, 1028647},
 		{"syren_edvar_vang", "rori", -22, 0, -10, 0, 4635424},
-		{"syren_kaila_min", "rori", 22.3, 1.3, 10.6, 180, 4635594}
+		{"syren_kaila_min", "rori", 22.3, 1.3, 10.6, 180, 4635594},
+		{"syren_tovar_blackmoor", "rori", 48, -20, 157.5, 180, 3566235}
 	},
 }
 
@@ -52,6 +53,9 @@ function SecretsOfTheSyren:start()
 	self:spawnActiveAreas(Syren.act1.REBEL_CRC)
 	self:spawnActiveAreas(Syren.act1.IMPERIAL_CRC)
 	self:spawnActiveAreas(Syren.act1.NEUTRAL_CRC)
+	self:spawnActiveAreas(Syren.act2.REBEL_CRC)
+	self:spawnActiveAreas(Syren.act2.IMPERIAL_CRC)
+	self:spawnActiveAreas(Syren.act2.NEUTRAL_CRC)
 end
 
 function SecretsOfTheSyren:spawnStaticNpcs()
@@ -127,7 +131,7 @@ function SecretsOfTheSyren:notifyEnteredQuestArea(pActiveArea, pPlayer)
 		if self:activeTask(ghost, questCrc, taskIndex) then
 			ghost:completeJournalQuestTask(questCrc, taskIndex, true)
 			ghost:activateJournalQuestTask(questCrc, taskIndex + 1, true)
-			if taskIndex == Syren.act1.CRASH_SITE_FOUND then
+			if taskIndex == Syren.act1.CRASH_SITE_FOUND and self:act1(questCrc) then
 				ghost:activateJournalQuestTask(questCrc, Syren.act1.FOUND_DATAPAD, true)
 				ghost:completeJournalQuestTask(questCrc, Syren.act1.FOUND_DATAPAD, true)
 				ghost:activateJournalQuestTask(questCrc, Syren.act1.SPICE_FOUND, true)
@@ -135,20 +139,223 @@ function SecretsOfTheSyren:notifyEnteredQuestArea(pActiveArea, pPlayer)
 				ghost:activateJournalQuestTask(questCrc, Syren.act1.TALK_TO_CONTACT, true)
 				self:giveItems(pPlayer, taskIndex)
 				self:returnToContactWaypoint(questCrc, pPlayer, ghost)
-			elseif taskIndex == Syren.act1.TALK_TO_MOXXAR then
+			elseif taskIndex == Syren.act1.TALK_TO_MOXXAR and self:act1(questCrc)  then
 				ghost:activateJournalQuestTask(questCrc, Syren.act1.SECOND_DATAPAD, true)
 				ghost:completeJournalQuestTask(questCrc, Syren.act1.SECOND_DATAPAD, true)
 				ghost:activateJournalQuestTask(questCrc, Syren.act1.RETURN_TO_CONTACT, true)
 				self:giveItems(pPlayer, taskIndex)
 				self:returnToContactWaypoint(questCrc, pPlayer, ghost)
+			elseif taskIndex == Syren.act2.GO_TO_AMBUSH and self:act2(questCrc)  then
+				self:startAmbush(questCrc, pPlayer, creature, ghost)
 			end
 		end
 	end
 	return 0
 end
 
+function SecretsOfTheSyren:startAmbush(questCrc, pPlayer, creature, ghost)
+	local pSyrenTasks = getQuestTasks(questCrc)
+
+	if pSyrenTasks == nil then
+		printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+		return
+	end
+
+	local syrenTasks = LuaQuestTasks(pSyrenTasks)
+
+	if self:activeTask(ghost, questCrc, Syren.act2.AMBUSH_1) then
+		self:spawnAmbushNpcs(pPlayer, creature, syrenTasks:getTask(Syren.act2.AMBUSH_1), questCrc)
+	elseif self:activeTask(ghost, questCrc, Syren.act2.AMBUSH_2) then
+		self:spawnAmbushNpcs(pPlayer, creature, syrenTasks:getTask(Syren.act2.AMBUSH_2), questCrc)
+	elseif self:activeTask(ghost, questCrc, Syren.act2.AMBUSH_3) then
+		self:spawnAmbushNpcs(pPlayer, creature, syrenTasks:getTask(Syren.act2.AMBUSH_3), questCrc)
+	end
+
+	creature:sendSystemMessage("Starting ambush")
+end
+
+function SecretsOfTheSyren:spawnAmbushNpcs(pPlayer, creature, pQuestTask, questCrc)
+	if pQuestTask == nil then
+		printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+		return
+	end
+
+	local questTask = LuaQuestTask(pQuestTask)
+	local playerID = creature:getObjectID()
+	writeData(playerID .. ":ambushNpcs", questTask:getCount())
+	writeData(playerID .. ":questCrc", questCrc)
+	createObserver(OBJECTDESTRUCTION, self.className, "notifyPlayerKilled", pPlayer)
+
+	for i = 1, questTask:getCount() do
+		local spawnPoint = getSpawnPoint("rori", creature:getWorldPositionX(), creature:getWorldPositionY(), questTask:getMinDistance(), questTask:getMaxDistance(), true)
+		if spawnPoint == nil then
+			printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+			return
+		else
+			local pNpc = spawnMobile("rori", questTask:getCreatureType(), 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
+			if pNpc == nil then
+				printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+				return
+			else
+				local aiAgent = LuaAiAgent(pNpc)
+				local npcID = aiAgent:getObjectID()
+				writeData(playerID .. ":ambushNpc" .. i, npcID)
+				writeData(npcID .. ":playerID", playerID)
+				writeData(npcID .. ":npcNo", i)
+				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTarget", pNpc)
+
+				aiAgent:setDefender(pPlayer)
+			end
+		end
+	end
+end
+
+function SecretsOfTheSyren:notifyDefeatedTarget(pVictim, pAttacker)
+	if (pVictim == nil) or (pAttacker == nil) or (not SceneObject(pVictim):isCreatureObject()) or (not SceneObject(pAttacker):isCreatureObject()) then
+		return 0
+	end
+
+	local victimID = CreatureObject(pVictim):getObjectID()
+	local attackerID = CreatureObject(pAttacker):getObjectID()
+	local npcNo = readData(victimID .. ":npcNo")
+	local playerID = readData(victimID .. ":playerID")
+
+	if npcNo ~= 0 and playerID ~= 0 then
+		writeData(playerID .. ":ambushNpc" .. npcNo, 0)
+		self:allAmbushNpcsKilled(attackerID)
+	end
+
+	return 1
+end
+
+function SecretsOfTheSyren:allAmbushNpcsKilled(playerID)
+	local numberOfNpcs = readData(playerID .. ":ambushNpcs")
+	local questCrc = readData(playerID .. ":questCrc")
+	local pSyrenTasks = getQuestTasks(questCrc)
+
+	if pSyrenTasks == nil then
+		printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+		return
+	end
+
+	local syrenTasks = LuaQuestTasks(pSyrenTasks)
+
+	local npcsLeft = 0
+	for i = 1, numberOfNpcs do
+		local npcID = readData(playerID .. ":ambushNpc" .. i)
+		if npcID ~= 0 then
+			npcsLeft = npcsLeft + 1
+		end
+	end
+	if npcsLeft == 0 then
+		local pPlayer = getCreatureObject(playerID)
+		if pPlayer ~= nil then
+			dropObserver(OBJECTDESTRUCTION, pPlayer)
+			local creature = LuaCreatureObject(pPlayer)
+			local pGhost = creature:getPlayerObject()
+			if pGhost ~= nil then
+				local ghost = LuaPlayerObject(pGhost)
+				if self:activeTask(ghost, questCrc, Syren.act2.AMBUSH_3) then
+					ghost:completeJournalQuestTask(questCrc, Syren.act2.AMBUSH_1, true)
+					ghost:completeJournalQuestTask(questCrc, Syren.act2.AMBUSH_3, false)
+					ghost:activateJournalQuestTask(questCrc, Syren.act2.AMBUSH_COMPLETE, true)
+					ghost:completeJournalQuestTask(questCrc, Syren.act2.AMBUSH_COMPLETE, true)
+					ghost:activateJournalQuestTask(questCrc, Syren.act2.GO_TO_BASE, true)
+					self:giveItems(pPlayer, Syren.act2.AMBUSH_COMPLETE)
+				elseif self:activeTask(ghost, questCrc, Syren.act2.AMBUSH_2) then
+					ghost:completeJournalQuestTask(questCrc, Syren.act2.AMBUSH_2, false)
+					ghost:activateJournalQuestTask(questCrc, Syren.act2.AMBUSH_3, false)
+					self:spawnAmbushNpcs(pPlayer, creature, syrenTasks:getTask(Syren.act2.AMBUSH_3), questCrc)
+				elseif self:activeTask(ghost, questCrc, Syren.act2.AMBUSH_1) then
+					ghost:activateJournalQuestTask(questCrc, Syren.act2.AMBUSH_2, false)
+					self:spawnAmbushNpcs(pPlayer, creature, syrenTasks:getTask(Syren.act2.AMBUSH_2), questCrc)
+				else
+					printf("### No task active: " .. questCrc .. "\n")
+				end
+			else
+				printf("### pGhost is nil\n")
+			end
+		else
+			printf("### pPlayer is nil\n")
+		end
+	end
+end
+
+function SecretsOfTheSyren:notifyPlayerKilled(pVictim, pAttacker)
+	if (pVictim == nil) or (pAttacker == nil) or (not SceneObject(pVictim):isCreatureObject()) or (not SceneObject(pAttacker):isCreatureObject()) then
+		return 0
+	end
+
+	local victimID = CreatureObject(pVictim):getObjectID()
+	local attackerID = CreatureObject(pAttacker):getObjectID()
+
+	if victimID ~= 0 and attackerID ~= 0 then
+		if self:playerKilledByAmbushNpc(victimID, attackerID) then
+			self:failAmbush(victimID)
+			return 1
+		end
+	end
+
+	return 0
+end
+
+function SecretsOfTheSyren:failAmbush(playerID)
+	local pPlayer = getCreatureObject(playerID)
+	SceneObject(pPlayer):addPendingTask((60 * 1000), "SecretsOfTheSyren", "despawnAmbushNpcs")
+	if pPlayer ~= nil then
+		local player = LuaCreatureObject(pPlayer)
+		local pGhost = player:getPlayerObject()
+		if pGhost ~= nil then
+			local ghost = LuaPlayerObject(pGhost)
+
+			if self:activeTask(ghost, questCrc, Syren.act2.AMBUSH_1) then
+				ghost:activateJournalQuestTask(questCrc, Syren.act2.FAILED_AMBUSH_1, true)
+				ghost:completeJournalQuestTask(questCrc, Syren.act2.FAILED_AMBUSH_1, true)
+			elseif self:activeTask(ghost, questCrc, Syren.act2.AMBUSH_2) then
+				ghost:activateJournalQuestTask(questCrc, Syren.act2.FAILED_AMBUSH_2, true)
+				ghost:completeJournalQuestTask(questCrc, Syren.act2.FAILED_AMBUSH_2, true)
+			elseif self:activeTask(ghost, questCrc, Syren.act2.AMBUSH_3) then
+				ghost:activateJournalQuestTask(questCrc, Syren.act2.FAILED_AMBUSH_3, true)
+				ghost:completeJournalQuestTask(questCrc, Syren.act2.FAILED_AMBUSH_3, true)
+			end
+			ghost:clearJournalQuestTask(questCrc, Syren.act2.TALK_TO_KAILA, true)
+			ghost:clearJournalQuestTask(questCrc, Syren.act2.GO_TO_AMBUSH, true)
+			ghost:clearJournalQuestTask(questCrc, Syren.act2.AMBUSH_2, true)
+			ghost:clearJournalQuestTask(questCrc, Syren.act2.AMBUSH_3, true)
+			ghost:clearJournalQuestTask(questCrc, Syren.act2.AMBUSH_3, true)
+			ghost:activateJournalQuestTask(questCrc, Syren.act2.TALK_TO_KAILA, true)
+		end
+	end
+end
+
+function SecretsOfTheSyren:despawnAmbushNpcs(pPlayer)
+	if pPlayer ~= nil then
+		local player = LuaCreatureObject(pPlayer)
+		local playerID = player:getObjectID()
+
+		local numberOfNpcs = readData(playerID .. ":ambushNpcs")
+		for i = 1, numberOfNpcs do
+			local npcID = readData(playerID .. ":ambushNpc" .. i)
+			if npcID ~= 0 then
+				local pNpc = getCreatureObject(npcID)
+				local npc = LuaCreatureObject(pNpc)
+				npc:destroyObjectFromWorld()
+				local npcID = writeData(playerID .. ":ambushNpc" .. i, 0)
+			end
+		end
+	end
+end
+
+function SecretsOfTheSyren:act1(questCrc)
+	return questCrc == Syren.act1.IMPERIAL_CRC or questCrc == Syren.act1.NEUTRAL_CRC or questCrc == Syren.act1.REBEL_CRC
+end
+
+function SecretsOfTheSyren:act2(questCrc)
+	return questCrc == Syren.act2.IMPERIAL_CRC or questCrc == Syren.act2.NEUTRAL_CRC or questCrc == Syren.act2.REBEL_CRC
+end
+
 function SecretsOfTheSyren:giveItems(pPlayer, taskIndex)
-	creature = LuaCreatureObject(pPlayer)
+	local creature = LuaCreatureObject(pPlayer)
 	local pInventory = creature:getSlottedObject("inventory")
 	if pInventory == nil then
 		printLuaError("Unable to giveItems in SecretsOfTheSyren to player " .. creature:getObjectID())
@@ -166,6 +373,16 @@ function SecretsOfTheSyren:giveItems(pPlayer, taskIndex)
 		end
 	elseif taskIndex == Syren.act1.TALK_TO_MOXXAR then
 		local pItem = giveItem(pInventory, "object/tangible/mission/quest_item/syren1_warning.iff", -1, true)
+		if pItem == nil then
+			printLuaError("Unable to give syren1_warning in SecretsOfTheSyren to player " .. creature:getObjectID())
+		end
+	elseif taskIndex == Syren.act2.AMBUSH_COMPLETE then
+		local pItem = giveItem(pInventory, "object/tangible/mission/quest_item/syren2_blacksun_base.iff", -1, true)
+		if pItem == nil then
+			printLuaError("Unable to give syren1_warning in SecretsOfTheSyren to player " .. creature:getObjectID())
+		end
+	elseif taskIndex == Syren.act2.REWARD then
+		local pItem = giveItem(pInventory, "object/tangible/loot/loot_schematic/shisa_schematic.iff", -1, true)
 		if pItem == nil then
 			printLuaError("Unable to give syren1_warning in SecretsOfTheSyren to player " .. creature:getObjectID())
 		end
@@ -245,6 +462,20 @@ function SecretsOfTheSyren:acceptQuestGoToAmbush(pPlayer, questCrc)
 			ghost:completeJournalQuestTask(questCrc, Syren.act2.TALK_TO_KAILA, true)
 			ghost:activateJournalQuestTask(questCrc, Syren.act2.GO_TO_AMBUSH, true)
 			self:updateWaypoint(pPlayer, ghost, "rori", "Pirates Last Known Location", -2970, 947)
+		end
+	end
+end
+
+function SecretsOfTheSyren:getReward(pPlayer, questCrc)
+	if pPlayer ~= nil and SceneObject(pPlayer):isPlayerCreature() then
+		local creature = LuaCreatureObject(pPlayer)
+		local pGhost = creature:getPlayerObject()
+		if pGhost ~= nil then
+			local ghost = LuaPlayerObject(pGhost)
+			ghost:completeJournalQuestTask(questCrc, Syren.act2.TALK_TO_TOVAR, true)
+			ghost:completeJournalQuestTask(questCrc, Syren.act2.REWARD, true)
+			ghost:completeJournalQuestTask(questCrc, Syren.act2.CLIFFHANGER, true)
+			self:giveItems(pPlayer, Syren.act2.REWARD)
 		end
 	end
 end

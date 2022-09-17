@@ -82,6 +82,7 @@ includeFile("quest/syren/syren_tyla_jinn.lua")
 includeFile("quest/syren/syren_veega_madish.lua")
 includeFile("quest/syren/syren_edvar_vang.lua")
 includeFile("quest/syren/syren_kaila_min.lua")
+includeFile("quest/syren/syren_tovar_blackmoor.lua")
 
 -- Corellia
 includeFile("quest/corellia/aldalad.lua")
