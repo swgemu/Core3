@@ -239,6 +239,7 @@ void VendorManager::promptRenameVendorTo(CreatureObject* player, TangibleObject*
 	input->setCancelButton(true, "@cancel");
 	input->setPromptTitle("@player_structure:name_t");
 	input->setPromptText("@player_structure:name_d");
+	input->setDefaultInput(vendor->getCustomObjectName().toString());
 
 	player->sendMessage(input->generateMessage());
 	player->getPlayerObject()->addSuiBox(input);
