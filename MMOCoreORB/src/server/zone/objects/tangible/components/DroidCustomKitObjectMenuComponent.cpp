@@ -102,11 +102,6 @@ int DroidCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* scene
 		return 0;
 	}
 
-	DroidObject* painted = cast<DroidObject*>(droid);
-	if (painted != nullptr){
-		painted->refreshPaint();
-	}
-
 	ManagedReference<SuiListBox*> frameTrimSelector = new SuiListBox(player, SuiWindowType::CUSTOMIZE_KIT);
 	frameTrimSelector->setUsingObject(player);
 	frameTrimSelector->setCallback(new CustomDroidSuiCallback(server, numPalette, kitTano));

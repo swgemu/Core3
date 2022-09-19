@@ -103,11 +103,6 @@ int VehicleCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sce
 		return 0;
 	}
 
-	VehicleObject* painted = cast<VehicleObject*>(vehicle);
-	if (painted != nullptr){
-		painted->refreshPaint();
-	}
-
 	ManagedReference<SuiListBox*> frameTrimSelector = new SuiListBox(player, SuiWindowType::CUSTOMIZE_KIT);
 	frameTrimSelector->setUsingObject(player);
 	frameTrimSelector->setCallback(new CustomVehicleSuiCallback(server, numPalette, kitTano ));

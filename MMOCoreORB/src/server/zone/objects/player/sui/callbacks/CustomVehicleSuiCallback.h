@@ -75,7 +75,12 @@ public:
 					if (varkey.contains("color")){
 						if (count == index){
 							ManagedReference<SuiColorBox*> cbox = new SuiColorBox(creature, SuiWindowType::COLOR_ARMOR);
-							cbox->setCallback(new ColorWithKitSuiCallback(server, customizationKit));
+							cbox->setCallback(new ColorWithKitSuiCallback(server, customizationKit, [] (ManagedReference<TangibleObject*> target) {
+								VehicleObject* painted = cast<VehicleObject*>(target.get());
+								if (painted != nullptr) {
+									painted->refreshPaint();
+								}
+							}));
 							cbox->setColorPalette(variables.elementAt(i).getKey());
 							cbox->setUsingObject(target);
 

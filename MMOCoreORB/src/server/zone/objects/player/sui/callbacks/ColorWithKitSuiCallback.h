@@ -11,13 +11,16 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
-
 class ColorWithKitSuiCallback : public SuiCallback {
 	TangibleObject* customizationKit;
-
+	void (*onUseHook) (ManagedReference<TangibleObject*>);
 public:
 	ColorWithKitSuiCallback(ZoneServer* serv, TangibleObject* kitTano ):
-		SuiCallback(serv), customizationKit( kitTano ) {
+		SuiCallback(serv), customizationKit( kitTano ), onUseHook(nullptr) {
+	}
+
+	ColorWithKitSuiCallback(ZoneServer* serv, TangibleObject* kitTano, void (*onUseHook) (ManagedReference<TangibleObject*>)):
+		SuiCallback(serv), customizationKit( kitTano ), onUseHook(onUseHook) {
 	}
 
 	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
@@ -45,6 +48,10 @@ public:
 			Locker clocker(target, creature);
 
 			target->setCustomizationVariable(palette, index, true);
+
+			// done with main work - now we are running the onUseHook
+			if (onUseHook != nullptr)
+				onUseHook(target);
 
 			clocker.release();
 
