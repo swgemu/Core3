@@ -927,7 +927,8 @@ object_resource_container_shared_resource_container_inorganic_minerals_lg = Shar
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_minerals_lg, "object/resource_container/shared_resource_container_inorganic_minerals_lg.iff")
 
 object_resource_container_shared_resource_container_inorganic_petrochem_liquid = SharedResourceContainerObjectTemplate:new {
-	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_petrochem_liquid.iff"
+	-- mantis 8579 overwrite the template file so this is no longer a water container
+	clientTemplateFileName = "object/resource_container/shared_resource_container_energy_liquid.iff"
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	appearanceFilename = "appearance/eqp_bottle_s03.apt",

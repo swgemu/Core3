@@ -42,9 +42,12 @@
 
 
 object_resource_container_inorganic_petrochem_liquid = object_resource_container_shared_resource_container_inorganic_petrochem_liquid:new {
-	
-
-
+	-- mantis 8579 overwrite the type
+	gameObjectType = 4194306,
+	clientGameObjectType = 4194306
+	-- detailedDescription = "@resource_container_d:energy_liquid_small",
+	-- appearanceFilename = "appearance/con_gen_energy_liquid_sml.apt",
+	-- objectName = "@resource_container_n:energy_liquid_small"
 }
 
 ObjectTemplates:addTemplate(object_resource_container_inorganic_petrochem_liquid, "object/resource_container/inorganic_petrochem_liquid.iff")
