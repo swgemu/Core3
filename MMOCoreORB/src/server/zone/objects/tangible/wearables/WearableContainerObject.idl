@@ -6,17 +6,34 @@ package server.zone.objects.tangible.wearables;
 
 import server.zone.objects.tangible.Container;
 import server.zone.packets.scene.AttributeListMessage;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.objects.tangible.attachment.Attachment;
 import server.zone.objects.creature.CreatureObject;
 
 include system.util.VectorMap;
 
 @json
 class WearableContainerObject extends Container {
+	protected int socketCount;
+	protected boolean socketsGenerated;
+	protected int usedSocketCount;
+
+	protected int modsNotInSockets;
+
+	public static final int MAXSOCKETS = 4;
+	public static final int MIN_SOCKET_MOD = 60;
+	public static final boolean ALLOW_SEA = false;
+
 	@dereferenced
 	protected VectorMap<string, int> wearableSkillMods;
 
 	public WearableContainerObject() {
 		super();
+		socketsGenerated = false;
+		socketCount = 0;
+		usedSocketCount = 0;
+		modsNotInSockets = 0;
+
 		Logger.setLoggingName("WearableContainerObject");
 		wearableSkillMods.setAllowOverwriteInsertPlan();
 	}
@@ -33,6 +50,9 @@ class WearableContainerObject extends Container {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean initialUpdate);
 
 	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
 		wearableSkillMods.put(skillMod, value);
@@ -55,5 +75,22 @@ class WearableContainerObject extends Container {
 	@dirty
 	public boolean isWearableContainerObject() {
 		return true;
+	}
+
+	@read
+	public int getRemainingSockets() {
+		return socketCount - usedSocketCount;
+	}
+
+	private native void generateSockets(CraftingValues craftingValues);
+
+	public void setMaxSockets(int maxSockets) {
+		if (maxSockets < 0) {
+			maxSockets = 0;
+		} else if (maxSockets > MAXSOCKETS) {
+			maxSockets = MAXSOCKETS;
+		}
+		socketCount = maxSockets;
+		socketsGenerated = true;
 	}
 }

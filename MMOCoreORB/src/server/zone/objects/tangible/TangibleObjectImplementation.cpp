@@ -35,6 +35,7 @@
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -616,6 +617,25 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 		alm->insertAttribute("contents", contentsString);
 	} else {
 		alm->insertAttribute("volume", volume);
+	}
+
+	if (isWearableObject() || isWearableContainerObject()) {
+		int remainingSockets = 0;
+
+		if (isWearableObject()) {
+			WearableObject* wearable = cast<WearableObject*>(asTangibleObject());
+
+			if (wearable != nullptr)
+				remainingSockets = wearable->getRemainingSockets();
+		} else {
+			WearableContainerObject* container = cast<WearableContainerObject*>(asTangibleObject());
+
+			if (container != nullptr)
+				remainingSockets = container->getRemainingSockets();
+		}
+
+		if (remainingSockets > 0)
+			alm->insertAttribute("sockets", remainingSockets);
 	}
 
 	if (!craftersName.isEmpty()) {
