@@ -40,6 +40,9 @@ public:
 
 		StringTokenizer tokenizer(arguments.toString());
 
+		if (!tokenizer.hasMoreTokens())
+			return GENERALERROR;
+
 		uint64 destinationID = tokenizer.getLongToken();
 		int transferType = tokenizer.getIntToken(); // containment type .. -1 container, >=4 slotted container
 		float unknown1 = tokenizer.getFloatToken();
