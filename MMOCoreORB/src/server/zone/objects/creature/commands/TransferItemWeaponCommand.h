@@ -37,6 +37,9 @@ public:
 
 		StringTokenizer tokenizer(arguments.toString());
 
+		if (!tokenizer.hasMoreTokens())
+			return GENERALERROR;
+
 		uint64 destinationID = tokenizer.getLongToken();
 		int transferType = tokenizer.getIntToken(); // I've seen -1 usually.. 4 when equipping most clothes (I think -1 is remove)
 		float unknown1 = tokenizer.getFloatToken();
