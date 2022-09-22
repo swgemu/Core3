@@ -11,26 +11,23 @@ function Coa3ContainerComponent:transferObject(pContainer, pObj, slot)
 		return TRANSFERFAIL
 	end
 
-	local containerName = SceneObject(pContainer):getObjectName()
 	local faction = CreatureObject(pContainer):getFaction()
 	local stateKey = Coa3Screenplay:getStateKey(faction)
 	local state = CriesOfAlderaan:getState(pPlayer, stateKey)
 
-	if (string.find(containerName, "coa3_tactical_") and state >= Coa3Screenplay.M3_WAREHOUSE_DESTROYED) then
-		SceneObject(pObj):destroyObjectFromWorld()
-		SceneObject(pObj):destroyObjectFromDatabase()
+	SceneObject(pObj):destroyObjectFromWorld()
+	SceneObject(pObj):destroyObjectFromDatabase()
 
-		local factionString = "imperial"
+	local factionString = "imperial"
 
-		if (faction == FACTIONREBEL) then
-			factionString = "rebel"
-		end
+	if (faction == FACTIONREBEL) then
+		factionString = "rebel"
+	end
 
-		ThemeParkLogic:giveFaction(pPlayer, factionString, 50)
+	ThemeParkLogic:giveFaction(pPlayer, factionString, 50)
 
-		if (state < Coa3Screenplay.M3_COMPLETE) then
-			CriesOfAlderaan:setState(pPlayer, stateKey, Coa3Screenplay.M3_COMPLETE)
-		end
+	if (state < Coa3Screenplay.M3_COMPLETE) then
+		CriesOfAlderaan:setState(pPlayer, stateKey, Coa3Screenplay.M3_COMPLETE)
 	end
 
 	return 1
@@ -51,8 +48,9 @@ function Coa3ContainerComponent:canAddObject(pContainer, pObj, slot)
 	local faction = CreatureObject(pContainer):getFaction()
 	local stateKey = Coa3Screenplay:getStateKey(faction)
 	local state = CriesOfAlderaan:getState(pPlayer, stateKey)
+	local objectTemplate = SceneObject(pObj):getTemplateObjectPath()
 
-	if (string.find(containerName, "coa3_tactical_") and state >= Coa3Screenplay.M3_WAREHOUSE_DESTROYED) then
+	if (string.find(containerName, "coa3_tactical_") and state >= Coa3Screenplay.M3_WAREHOUSE_DESTROYED and string.find(objectTemplate, "alderaan/act3/alderaan_flora.iff")) then
 		return TRANSFERCANADD
 	end
 
