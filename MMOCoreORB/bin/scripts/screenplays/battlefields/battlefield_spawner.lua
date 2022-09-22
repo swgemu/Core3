@@ -5,6 +5,8 @@ BattlefieldSpawner = ScreenPlay:new {
 
 	planets = {"corellia", "naboo", "tatooine", "dathomir", "yavin4", "talus", "rori", "endor"},
 
+	noBuildRadius = 768,
+
 	battlefields = {
 		--{objecTemplate, x, z, y, size}
 
@@ -97,7 +99,7 @@ function BattlefieldSpawner:spawnActiveArea(location, num, planetName)
 
 	local sceneObjectTable = location[num]
 
-	local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", sceneObjectTable[2], sceneObjectTable[3], sceneObjectTable[4], sceneObjectTable[5], 0)
+	local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", sceneObjectTable[2], sceneObjectTable[3], sceneObjectTable[4], self.noBuildRadius, 0)
 
 	if (pActiveArea ~= nil) then
 		ActiveArea(pActiveArea):setNoBuildArea(true)
