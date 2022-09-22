@@ -8,6 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
 #include "templates/creature/SharedCreatureObjectTemplate.h"
+#include "server/zone/packets/object/DataTransform.h"
 
 class DismountCommand : public QueueCommand {
 	Vector<uint32> restrictedBuffCRCs;
@@ -147,6 +148,14 @@ public:
 					buff->removeAllModifiers();
 				}, "RemoveGallopModsLambda");
 			}
+		}
+
+		if (vehicle->getParentID() == 0) {
+			vehicle->setCurrentSpeed(0.f);
+			vehicle->incrementMovementCounter();
+
+			auto data = new DataTransform(vehicle);
+			vehicle->broadcastMessage(data, false);
 		}
 
 		return SUCCESS;
