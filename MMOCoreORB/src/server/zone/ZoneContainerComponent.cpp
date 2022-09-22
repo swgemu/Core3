@@ -248,7 +248,9 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 	zoneLocker.release();
 
-	object->notifyInsertToZone(zone);
+	if (notifyClient) {
+		object->notifyInsertToZone(zone);
+	}
 
 	object->notifyObservers(ObserverEventType::PARENTCHANGED, nullptr);
 
