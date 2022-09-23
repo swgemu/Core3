@@ -10,6 +10,8 @@
 #define COLORWITHKITSUICALLBACK_H
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/VehicleObject.h"
 
 
 class ColorWithKitSuiCallback : public SuiCallback {
@@ -45,6 +47,16 @@ public:
 			Locker clocker(target, creature);
 
 			target->setCustomizationVariable(palette, index, true);
+
+			if (target->isDroidObject()) {
+				DroidObject* droid = cast<DroidObject*>(target.get());
+				if (droid != nullptr)
+					droid->refreshPaint();
+			} else if (target->isVehicleObject()) {
+				VehicleObject* painted = cast<VehicleObject*>(target.get());
+				if (painted != nullptr)
+					painted->refreshPaint();
+			}
 
 			clocker.release();
 
