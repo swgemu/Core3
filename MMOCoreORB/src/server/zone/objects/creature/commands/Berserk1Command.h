@@ -16,7 +16,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -25,46 +24,49 @@ public:
 
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 
-		if (!weapon->isMeleeWeapon() && !weapon->isUnarmedWeapon()) {
-			if (creature->isPlayerCreature())
-				(cast<CreatureObject*>(creature))->sendSystemMessage("@cbt_spam:berserk_fail_single");
-
+		if (weapon == nullptr || (!weapon->isMeleeWeapon() && !weapon->isUnarmedWeapon())) {
+			creature->sendSystemMessage("@cbt_spam:berserk_fail_single");
 			creature->sendStateCombatSpam("cbt_spam", "berserk_fail", 0);
+
 			return INVALIDWEAPON;
 		}
 
-		if (!creature->isInCombat()) {
-			if (creature->isPlayerCreature())
-				(cast<CreatureObject*>(creature))->sendSystemMessage("@cbt_spam:berserk_fail_single");
+		// Roll chance to fail
+		int mod = creature->getSkillMod("berserk");
+		int roll = System::random(100) + mod;
 
+		if (roll < 25) {
+			creature->sendSystemMessage("@cbt_spam:berserk_fail_single");
 			creature->sendStateCombatSpam("cbt_spam", "berserk_fail", 0);
+
 			return GENERALERROR;
 		}
 
-		int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 50);
+		float healthCost = creature->calculateCostAdjustment(CreatureAttribute::STRENGTH, 100);
+		float actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 100);
+		float mindCost = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, 50);
 
-		if (creature->getHAM(CreatureAttribute::ACTION) <= actionCost) {
-			if (creature->isPlayerCreature())
-				(cast<CreatureObject*>(creature))->sendSystemMessage("@cbt_spam:berserk_fail_single");
-
+		if (creature->getHAM(CreatureAttribute::HEALTH) <= healthCost || creature->getHAM(CreatureAttribute::ACTION) <= actionCost || creature->getHAM(CreatureAttribute::MIND) <= mindCost) {
+			creature->sendSystemMessage("@cbt_spam:berserk_fail_single");
 			creature->sendStateCombatSpam("cbt_spam", "berserk_fail", 0);
+
 			return GENERALERROR;
 		}
 
-		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
+		creature->inflictDamage(creature, CreatureAttribute::HEALTH, healthCost, false, true, false);
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, false, true, false);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false, true, false);
 
-		creature->setBerserkedState(20);
-		//creature->setBerserkDamage(25);
+		int time = 20;
+		creature->setBerserkedState(time);
 
-		if (creature->isPlayerCreature())
-			(cast<CreatureObject*>(creature))->sendSystemMessage("@cbt_spam:berserk_success_single");
-
+		creature->sendSystemMessage("@cbt_spam:berserk_success_single");
 		creature->sendStateCombatSpam("cbt_spam", "berserk_success", 0);
+
 		creature->notifyObservers(ObserverEventType::ABILITYUSED, nullptr, STRING_HASHCODE("berserk1"));
 
 		return SUCCESS;
 	}
-
 };
 
 #endif //BERSERK1COMMAND_H_
