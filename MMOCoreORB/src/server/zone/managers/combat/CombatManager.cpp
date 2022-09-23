@@ -1287,9 +1287,11 @@ float CombatManager::applyDamageModifiers(CreatureObject* attacker, WeaponObject
 			damage += attacker->getSkillMod(weaponDamageMods->get(i));
 		}
 
-		if (weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK)
+		int attackType = weapon->getAttackType();
+
+		if (attackType == SharedWeaponObjectTemplate::MELEEATTACK) // Berserk Bonus
 			damage += attacker->getSkillMod("private_melee_damage_bonus");
-		if (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK)
+		if (attackType == SharedWeaponObjectTemplate::RANGEDATTACK)
 			damage += attacker->getSkillMod("private_ranged_damage_bonus");
 	}
 

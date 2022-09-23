@@ -2483,10 +2483,8 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 		state->setStartFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
 		state->setEndFlyText("combat_effects", "no_berserk", 0xFF, 0, 0);
 
-		int mod = getSkillMod("berserk");
-
-		state->setSkillModifier("private_melee_accuracy_bonus", 20 + mod);
-		state->setSkillModifier("private_melee_damage_bonus", 75 + mod);
+		state->setSkillModifier("private_melee_accuracy_bonus", 20);
+		state->setSkillModifier("private_melee_damage_bonus", 75);
 		state->setSkillModifier("private_melee_defense", -60);
 		state->setSkillModifier("private_ranged_defense", -60);
 
