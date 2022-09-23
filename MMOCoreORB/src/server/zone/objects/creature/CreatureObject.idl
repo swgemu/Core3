@@ -423,7 +423,7 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	@preLocked
-	public native void setAccelerationMultiplierMod(float newMultiplierMod, boolean notifyClient = true);
+	public native void setAccelerationMultiplierMod(float newMultiplierMod, boolean notifyClient = true, boolean recalculateBuffs = true);
 
 	/**
 	 * Updates the speed multiplier base
@@ -443,7 +443,7 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	@preLocked
-	public native abstract void setSpeedMultiplierMod(float newMultiplierMod, boolean notifyClient = true);
+	public native abstract void setSpeedMultiplierMod(float newMultiplierMod, boolean notifyClient = true, boolean recalculateBuffs = true);
 
 	/**
 	 * Updates the turn scale mod
@@ -2196,6 +2196,15 @@ class CreatureObject extends TangibleObject {
 
 	@read
 	public native float calculateCostAdjustment(byte stat, float baseCost);
+
+	@read
+	public native float getSpeedModifier();
+
+	@read
+	public native float getAccelerationModifier();
+
+	@local
+	public native void sendSpeedAndAccelerationMods(SceneObject player);
 
 	@preLocked
 	public native void updateSpeedAndAccelerationMods();
