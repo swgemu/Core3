@@ -22,10 +22,8 @@ protected:
 	float speed;
 
 public:
-	const static constexpr float MAXINERTIA = 5.376 * 1.1f; // maximum speed to slow update tick to mid delta
-	const static constexpr float POSITIONMOD = 7.f; // broadcast position update distance multiplier
+	const static constexpr float POSITIONMOD = 6.f; // broadcast position update distance multiplier
 
-	const static int DELTAERROR = -100000; // Check if client is not sending proper timestamps
 	const static int MINDELTA = 200; // minimum ms elapsed between updates
 	const static int MIDDELTA = 400; // ideal ms between low priority update
 	const static int MAXDELTA = 800; // maximum ms before high priority update
@@ -151,6 +149,14 @@ public:
 		}
 	}
 
+	bool isInertiaUpdate(const Vector3& creoPosition, const Quaternion* creoDirection, float creoSpeed) const {
+		return speed != creoSpeed || isYawUpdate(creoDirection) || getSquaredMoveScale(creoPosition, 1) < 0.975f;
+	}
+
+	bool isSynchronizeUpdate(const Quaternion* creoDirection, float creoSpeed) const {
+		return moveCount >= SYNCCOUNT && speed == 0.f && creoSpeed == 0.f && !isYawUpdate(creoDirection);
+	}
+
 	bool isYawUpdate(const Quaternion* creoDirection) const {
 		float deltaW = creoDirection->getW() - direction.getW();
 		float deltaY = creoDirection->getY() - direction.getY();
@@ -165,23 +171,25 @@ public:
 		return (deltaX * deltaX) + (deltaY * deltaY);
 	}
 
-	float getMoveScale(const Vector3& creoPosition, float range) const {
-		float sqrRange = range * range;
+	float getSquaredMoveScale(const Vector3& creoPosition, float interval) const {
 		float sqrDistance = get2dSquaredDistance(creoPosition);
-		float sqrQuotient = sqrDistance > sqrRange ? sqrRange / sqrDistance : sqrDistance / sqrRange;
+		float range = speed * interval * 0.2f;
+		float sqrRange = range * range;
 
-		return (int)((sqrQuotient * 100.f) + 0.5f) * 0.01f;
+		return sqrDistance > sqrRange ? (sqrRange / sqrDistance) : (sqrDistance / sqrRange);
 	}
 
-	float getTurnScale(const Quaternion* creoDirection) const {
-		if (!isYawUpdate(creoDirection)) {
-			return 1.f;
-		}
+	float getMoveScale(const Vector3& creoPosition, float interval) const {
+		float distance = sqrt(get2dSquaredDistance(creoPosition));
+		float range = speed * interval * 0.2f;
 
-		float deltaRad = fabs(creoDirection->getRadians() - direction.getRadians());
-		float deltaPi = fabs(M_PI - deltaRad);
+		return distance > range ? (range / distance) : (distance / range);
+	}
 
-		return deltaPi * M_1_PI;
+	float getTurnScale(const Quaternion* creoDirection, float radians) const {
+		float deltaR = (radians - creoDirection->getRadians()) * M_1_PI;
+
+		return deltaR > 1.f ? (deltaR - 2.f) : deltaR < -1.f ? (deltaR + 2.f) : (deltaR);
 	}
 
 	Vector3 predictPosition(const Vector3& creoPosition, const Quaternion* creoDirection, int deltaTime) const {
@@ -190,24 +198,37 @@ public:
 		}
 
 		float interval = (int)(deltaTime * 0.005f);
-		float range = speed * interval * 0.2f;
 		float vector = POSITIONMOD;
 
-		vector *= getMoveScale(creoPosition, range);
-		vector *= getTurnScale(creoDirection);
+		vector *= (getMoveScale(creoPosition, interval) * 2.f) -1.f;
 
-		if (vector <= 1.f || vector > POSITIONMOD) {
+		float deltaX = position.getX() - creoPosition.getX();
+		float deltaY = position.getY() - creoPosition.getY();
+
+		if (speed > 2.f && isYawUpdate(creoDirection)) {
+			float deltaR = getTurnScale(creoDirection, atan2(deltaX, deltaY)) * M_PI_2;
+
+			vector *= 1.f - (deltaR < 0.f ? (-deltaR) : (deltaR));
+
+			if (deltaR < M_PI_4 && deltaR > -M_PI_4) {
+				float cosR = Math::cos(deltaR);
+				float sinR = Math::sin(deltaR);
+
+				deltaX = (deltaX * cosR) + (deltaY * sinR);
+				deltaY = (-deltaX * sinR) + (deltaY * cosR);
+			}
+		}
+
+		if (vector <= interval || vector > POSITIONMOD) {
 			return position;
 		}
 
-		vector += (deltaTime / (float)MINDELTA) - interval;
-
-		if (interval > 1) {
+		if (interval > 1.f) {
 			vector /= interval;
 		}
 
-		float x = ((position.getX() - creoPosition.getX()) * vector) + creoPosition.getX();
-		float y = ((position.getY() - creoPosition.getY()) * vector) + creoPosition.getY();
+		float x = (deltaX * vector) + creoPosition.getX();
+		float y = (deltaY * vector) + creoPosition.getY();
 
 		return Vector3(x, y, position.getZ());
 	}
