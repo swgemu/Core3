@@ -37,6 +37,7 @@
 #include "server/zone/objects/building/components/EnclaveContainerComponent.h"
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	cooldownTimerMap = new CooldownTimerMap();
@@ -1554,8 +1555,7 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate() {
 					e.printStackTrace();
 				}
 
-			} // create the creature outside
-			else {
+			} else { // create the creature outside
 				String mobilename = child->getMobile();
 				float angle = getDirection()->getRadians();
 
@@ -1581,6 +1581,14 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate() {
 			if (creature->isAiAgent()) {
 				AiAgent* ai = cast<AiAgent*>(creature);
 				ai->setRespawnTimer(child->getRespawnTimer());
+
+				if (isGCWBase()) {
+					if (getPvpStatusBitmask() & CreatureFlag::OVERT) {
+						creature->setFactionStatus(FactionStatus::OVERT);
+					} else {
+						creature->setFactionStatus(FactionStatus::COVERT);
+					}
+				}
 			}
 
 			childCreatureObjects.put(creature);

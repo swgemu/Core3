@@ -300,6 +300,24 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	if (getFactionStatus() == FactionStatus::OVERT && getFutureFactionStatus() == FactionStatus::COVERT)
 		newPvpStatusBitmask |= CreatureFlag::WASDECLARED;
 
+	if (player->isPlayerCreature() && getFaction() > 0 && player->getFaction() > 0 && getFactionStatus() >= FactionStatus::COVERT) {
+		if (ConfigManager::instance()->useCovertOvertSystem()) {
+			PlayerObject* ghost = player->getPlayerObject();
+
+			if (getFaction() != player->getFaction() && (player->getFactionStatus() == FactionStatus::OVERT || (ghost != nullptr && ghost->hasGcwTef()))) {
+				newPvpStatusBitmask |= CreatureFlag::ENEMY;
+			} else if (newPvpStatusBitmask & CreatureFlag::ENEMY) {
+				newPvpStatusBitmask &= ~CreatureFlag::ENEMY;
+			}
+		} else {
+			if (getFaction() != player->getFaction() && player->getFactionStatus() >= FactionStatus::COVERT) {
+				newPvpStatusBitmask |= CreatureFlag::ENEMY;
+			} else if (newPvpStatusBitmask & CreatureFlag::ENEMY) {
+				newPvpStatusBitmask &= ~CreatureFlag::ENEMY;
+			}
+		}
+	}
+
 	BaseMessage* pvp = new UpdatePVPStatusMessage(asTangibleObject(), player, newPvpStatusBitmask);
 	player->sendMessage(pvp);
 }
