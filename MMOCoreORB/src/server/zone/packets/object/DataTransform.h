@@ -118,15 +118,9 @@ public:
 			}
 
 			const Vector3& position = validPosition.getPosition();
-			creO->teleport(position.getX(), position.getZ(), position.getY(), validPosition.getParent());
+			const uint64& parentID = validPosition.getParent();
 
-			PlayerObject* ghost = creO->getPlayerObject();
-
-			if (ghost == nullptr) {
-				return;
-			}
-
-			ghost->setClientLastMovementStamp(transform.getTimeStamp());
+			creO->teleport(position.getX(), position.getZ(), position.getY(), parentID);
 		}
 	}
 
@@ -145,10 +139,12 @@ public:
 
 		deltaTime = transform.getTimeStamp() - ghost->getClientLastMovementStamp();
 
-		if (deltaTime < Transform::MINDELTA) {
-			if (deltaTime < Transform::DELTAERROR)
-				creO->sendSystemMessage("Your client timestamps are not sending properly. Please restart your computer. If the issue continues, contact QA.");
+		if (deltaTime < -Transform::SYNCDELTA) {
+			validPosition.update(creO);
+			return updateError(creO, "syncDelta", true);
+		}
 
+		if (deltaTime < Transform::MINDELTA) {
 			return updateError(creO, "deltaTime");
 		}
 
@@ -169,7 +165,7 @@ public:
 		}
 
 		try {
-			if (validPosition.getParent() != transform.getParentID() || transform.get2dSquaredDistance(validPosition.getPosition()) >= 0.005625f) {
+			if (validPosition.getParent() != transform.getParentID() || transform.get2dSquaredDistance(validPosition.getPosition()) >= 0.015625f) {
 				updatePosition(creO, parent);
 			} else {
 				updateStatic(creO, parent);
@@ -209,7 +205,7 @@ public:
 				return updateError(creO, "!posture", true);
 			}
 
-			if (deltaTime < Transform::MIDDELTA && transform.getSpeed() < Transform::MAXINERTIA && (int)transform.getSpeed() == (int)creO->getCurrentSpeed() && !transform.isYawUpdate(creO->getDirection())) {
+			if (deltaTime < Transform::MIDDELTA && !transform.isInertiaUpdate(creO->getPosition(), creO->getDirection(), creO->getCurrentSpeed())) {
 				return updateError(creO, "inertia");
 			}
 		}
@@ -281,7 +277,7 @@ public:
 	}
 
 	void updateStatic(CreatureObject* creO, SceneObject* parent) {
-		bool synchronize = creO->getMovementCounter() > Transform::SYNCCOUNT && creO->getCurrentSpeed() == 0.f && transform.getSpeed() == 0.f && !transform.isYawUpdate(creO->getDirection());
+		bool synchronize = transform.isSynchronizeUpdate(creO->getDirection(), creO->getCurrentSpeed());
 		if (synchronize && deltaTime < Transform::SYNCDELTA) {
 			return updateError(creO, "inertUpdate");
 		}
