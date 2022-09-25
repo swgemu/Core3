@@ -3469,7 +3469,7 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* healerCreo) {
 		auto linkedCreature = getLinkedCreature().get();
 
 		if (linkedCreature != nullptr) {
-			thisCreo = linkedCreature.get();
+			return linkedCreature->isHealableBy(healerCreo);
 		}
 	}
 
@@ -3498,8 +3498,6 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* healerCreo) {
 	bool covertOvert =  ConfigManager::instance()->useCovertOvertSystem();
 
 	if (covertOvert) {
-
-
 		// Healer and thisCreature are different Factions/neutral and this creature is overt or has GCW Tef
 		if (thisFaction != healerFaction && (thisFactionStatus == FactionStatus::OVERT || (thisGhost != nullptr && thisGhost->hasGcwTef())))
 			return false;

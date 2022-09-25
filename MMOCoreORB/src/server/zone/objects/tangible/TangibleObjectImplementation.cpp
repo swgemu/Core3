@@ -294,23 +294,26 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 			newPvpStatusBitmask &= ~CreatureFlag::TEF;
 	}
 
-	if (getFutureFactionStatus() == FactionStatus::OVERT)
+	int thisFactionStatus = getFactionStatus();
+	int thisFutureStatus = getFutureFactionStatus();
+
+	if (thisFutureStatus == FactionStatus::OVERT)
 		newPvpStatusBitmask |= CreatureFlag::WILLBEDECLARED;
 
-	if (getFactionStatus() == FactionStatus::OVERT && getFutureFactionStatus() == FactionStatus::COVERT)
+	if (thisFactionStatus == FactionStatus::OVERT && thisFutureStatus == FactionStatus::COVERT)
 		newPvpStatusBitmask |= CreatureFlag::WASDECLARED;
 
-	if (player->isPlayerCreature() && getFaction() > 0 && player->getFaction() > 0 && getFactionStatus() >= FactionStatus::COVERT) {
+	if (isAiAgent() && !isPet() && getFaction() > 0 && player->isPlayerCreature() && player->getFaction() > 0 && getFaction() != player->getFaction() && thisFactionStatus >= FactionStatus::COVERT) {
 		if (ConfigManager::instance()->useCovertOvertSystem()) {
 			PlayerObject* ghost = player->getPlayerObject();
 
-			if (getFaction() != player->getFaction() && (player->getFactionStatus() == FactionStatus::OVERT || (ghost != nullptr && ghost->hasGcwTef()))) {
+			if (player->getFactionStatus() == FactionStatus::OVERT || (ghost != nullptr && ghost->hasGcwTef())) {
 				newPvpStatusBitmask |= CreatureFlag::ENEMY;
 			} else if (newPvpStatusBitmask & CreatureFlag::ENEMY) {
 				newPvpStatusBitmask &= ~CreatureFlag::ENEMY;
 			}
 		} else {
-			if (getFaction() != player->getFaction() && player->getFactionStatus() >= FactionStatus::COVERT) {
+			if (player->getFactionStatus() >= FactionStatus::COVERT) {
 				newPvpStatusBitmask |= CreatureFlag::ENEMY;
 			} else if (newPvpStatusBitmask & CreatureFlag::ENEMY) {
 				newPvpStatusBitmask &= ~CreatureFlag::ENEMY;
