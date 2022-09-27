@@ -199,7 +199,7 @@ coa3_come_out_on_top_l = ConvoScreen:new {
 	leftDialog = "@conversation/coa3lcoordinator:s_976a6f0", -- Great! A lot has happened since we last spoke. I don't have time to go over all of the details with you right now. Go and speak with our Information Officer and listen to what he has to say. You can find him in the Commerce Guild Hall in this city.
 	stopConversation = "false",
 	options = {
-		{"@conversation/coa3lcoordinator:s_f595b0cb", "coa3_give_you_report"}, -- Ok, I'll go see what he has to say.
+		{"@conversation/coa3lcoordinator:s_f595b0cb", "coa3_give_you_report_l"}, -- Ok, I'll go see what he has to say.
 	}
 }
 rebelCoordinatorConvoTemplate:addScreen(coa3_come_out_on_top_l);

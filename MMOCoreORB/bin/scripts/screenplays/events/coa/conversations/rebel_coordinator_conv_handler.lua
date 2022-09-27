@@ -34,43 +34,39 @@ function rebelCoordinatorConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTempl
 			return convoTemplate:getScreen("generic_response")
 		end
 
-		local state = CriesOfAlderaan:getState(pPlayer, "coa3_rebel")
+		local state3 = CriesOfAlderaan:getState(pPlayer, "coa3_rebel")
 
-		if state == 0 then
+		if state3 == 0 then
 			return convoTemplate:getScreen("coa3_init" .. append)
-		elseif (state == Coa3Screenplay.PRE_INFO_OFFICER) then
+		elseif (state3 == Coa3Screenplay.PRE_INFO_OFFICER) then
 			return convoTemplate:getScreen("coa3_init_go_to_info" .. append)
-		elseif (state == Coa3Screenplay.PRE_RETURN) then
+		elseif (state3 == Coa3Screenplay.PRE_RETURN) then
 			return convoTemplate:getScreen("coa3_init_completed_info" .. append)
-		elseif (state >= Coa3Screenplay.M1_FIND_LOOKOUT and state <= Coa3Screenplay.M2_RETURNED_UNIT and Coa3Screenplay:hasDisk(pPlayer)) then
+		elseif (state3 >= Coa3Screenplay.M1_FIND_LOOKOUT and state3 <= Coa3Screenplay.M2_RETURNED_UNIT and Coa3Screenplay:hasDisk(pPlayer)) then
 			CriesOfAlderaan:setState(pPlayer, "coa3_rebel", Coa3Screenplay.M3_TACTICAL_OFFICER)
 
 			return convoTemplate:getScreen("coa3_init_has_disk")
-		elseif (state >= Coa3Screenplay.M1_FIND_LOOKOUT and state <= Coa3Screenplay.M2_RETURNED_UNIT and not Coa3Screenplay:hasDisk(pPlayer)) then
+		elseif (state3 >= Coa3Screenplay.M1_FIND_LOOKOUT and state3 <= Coa3Screenplay.M2_RETURNED_UNIT and not Coa3Screenplay:hasDisk(pPlayer)) then
 			return convoTemplate:getScreen("coa3_init_has_lookout" .. append)
-		elseif (state >= Coa3Screenplay.M3_TACTICAL_OFFICER and state <= Coa3Screenplay.M3_WAREHOUSE_DESTROYED) then
+		elseif (state3 >= Coa3Screenplay.M3_TACTICAL_OFFICER and state3 <= Coa3Screenplay.M3_WAREHOUSE_DESTROYED) then
 			return convoTemplate:getScreen("coa3_init_go_to_tact")
-		elseif (state == Coa3Screenplay.M3_COMPLETE) then
+		elseif (state3 == Coa3Screenplay.M3_COMPLETE) then
 			return convoTemplate:getScreen("coa3_init_completed_tact")
-		elseif (state >= Coa3Screenplay.M4_COMMANDER) then
+		elseif (state3 >= Coa3Screenplay.M4_COMMANDER) then
 			return convoTemplate:getScreen("coa3_init_go_to_princess" .. append)
 		end
 
-	-- CoA2 Conversations
-	else
-		if (not CriesOfAlderaan.episodeTwoEnabled) then
-			return convoTemplate:getScreen("generic_response")
-		end
+	-- CoA2
+	elseif (PlayerObject(pGhost):hasBadge(EVENT_PROJECT_DEAD_EYE_1) and CriesOfAlderaan.episodeTwoEnabled) then
+		local state2 = CriesOfAlderaan:getState(pPlayer, "rebel_coa2")
 
-		local state = CriesOfAlderaan:getState(pPlayer, "rebel_coa2")
-
-		if state == 0 then
+		if state2 == 0 then
 			return convoTemplate:getScreen("coa2_m1_begin")
-		elseif state == Coa2Screenplay.M1_REFUSED then
+		elseif state2 == Coa2Screenplay.M1_REFUSED then
 			return convoTemplate:getScreen("coa2_m1_refused")
-		elseif state == Coa2Screenplay.M1_ACTIVE then
+		elseif state2 == Coa2Screenplay.M1_ACTIVE then
 			return convoTemplate:getScreen("coa2_m1_active")
-		elseif state == Coa2Screenplay.M1_RETURN then
+		elseif state2 == Coa2Screenplay.M1_RETURN then
 			if Coa2Screenplay:hasDisk(pPlayer, "decoded") then
 				return convoTemplate:getScreen("coa2_m1_finish_decoded")
 			elseif Coa2Screenplay:hasDisk(pPlayer, "encoded") then
@@ -78,23 +74,23 @@ function rebelCoordinatorConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTempl
 			else
 				return convoTemplate:getScreen("coa2_m1_active")
 			end
-		elseif state == Coa2Screenplay.M1_COMPLETE then
+		elseif state2 == Coa2Screenplay.M1_COMPLETE then
 			if Coa2Screenplay:hasDisk(pPlayer, "decoded") then
 				return convoTemplate:getScreen("coa2_m2_begin")
 			else
 				return convoTemplate:getScreen("coa2_m2_begin_encoded")
 			end
-		elseif state == Coa2Screenplay.M2_REFUSED then
+		elseif state2 == Coa2Screenplay.M2_REFUSED then
 			return convoTemplate:getScreen("coa2_m2_refused")
-		elseif state == Coa2Screenplay.M2_ACTIVE then
+		elseif state2 == Coa2Screenplay.M2_ACTIVE then
 			return convoTemplate:getScreen("coa2_m2_active")
-		elseif state == Coa2Screenplay.M2_RETURN then
+		elseif state2 == Coa2Screenplay.M2_RETURN then
 			return convoTemplate:getScreen("coa2_m2_finish")
-		elseif state == Coa2Screenplay.M2_COMPLETE then
+		elseif state2 == Coa2Screenplay.M2_COMPLETE then
 			return convoTemplate:getScreen("coa2_m3_begin")
-		elseif state == Coa2Screenplay.M3_4_ACTIVE then
+		elseif state2 == Coa2Screenplay.M3_4_ACTIVE then
 			return convoTemplate:getScreen("coa2_m3_active")
-		elseif state > Coa2Screenplay.M3_4_ACTIVE then
+		elseif state2 > Coa2Screenplay.M3_4_ACTIVE then
 			return convoTemplate:getScreen("coa2_m3_finish")
 		end
 	end
