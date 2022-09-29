@@ -3699,7 +3699,7 @@ int DirectorManager::removeQuestStatus(lua_State* L) {
 
 int DirectorManager::setCoaWinningFaction(lua_State* L) {
 	if (checkArgumentCount(L, 1) == 1) {
-		String err = "incorrect number of arguments passed to DirectorManager::getCoaWinningFaction";
+		String err = "incorrect number of arguments passed to DirectorManager::setCoaWinningFaction";
 		printTraceError(L, err);
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;

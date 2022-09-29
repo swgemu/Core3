@@ -189,7 +189,7 @@ coa3_init_l = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/coa3lcoordinator:s_c4ae7e31", "coa3_come_out_on_top_l"}, -- I'd love to help out again.
-		{"@conversation/coa3lcoordinator:s_c4ae7e31", "coa3_must_be_very_busy"}, -- I need to do something else right now.
+		{"@conversation/coa3lcoordinator:s_20eec74a", "coa3_must_be_very_busy"}, -- I need to do something else right now.
 	}
 }
 rebelCoordinatorConvoTemplate:addScreen(coa3_init_l);
@@ -206,7 +206,7 @@ rebelCoordinatorConvoTemplate:addScreen(coa3_come_out_on_top_l);
 
 coa3_give_you_report_l = ConvoScreen:new {
 	id = "coa3_give_you_report_l",
-	leftDialog = "@conversation/coa3lcoordinator:s_4f6ac618", -- Good. He'll give you a status report. By the time you return from the Commerce Guild Hall I should have updated intel on our next move. See you soon.
+	leftDialog = "@conversation/coa3lcoordinator:s_223c5db", -- Great, once you get all filled in on the details feel free to come back and see me. I'm not quite finished with what I'm working on but I think I may need to call upon your top notch talents once again.
 	stopConversation = "true",
 	options = {}
 }

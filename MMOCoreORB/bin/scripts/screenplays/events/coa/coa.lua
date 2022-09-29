@@ -25,7 +25,9 @@ CriesOfAlderaan = ScreenPlay:new {
 	episodeOneEnabled = true,
 	episodeTwoEnabled = true,
 	episodeThreeEnabled = true,
-	skipToThree = false
+	skipToThree = false,
+
+	CHECK_FOR_WINNING_DELAY = 7 * 24 * 60 * 60, -- 1 week in seconds
 }
 
 registerScreenPlay("CriesOfAlderaan", true)
@@ -59,30 +61,7 @@ function CriesOfAlderaan:setState(pPlayer, stateName, val)
 end
 
 function CriesOfAlderaan:determineWinningFaction()
-	local time = os.time(os.date("*t"))
-	local checkTime = getQuestStatus("CriesOfAlderaan:winningFactionUpdate:")
-	local winningFaction = getQuestStatus("CriesOfAlderaan:winningFaction:")
-
-	if (checkTime == nil) then
-		checkTime = 0
-	else
-		checkTime = tonumber(checkTime)
-	end
-
-	local checkDelay = 604800 -- 1 week in seconds
-
-	if ((checkTime + checkDelay) > time) then
-		local timeDiff = (checkTime + checkDelay) - time + 10
-
-		Logger:logEvent("CriesofAlderaan:determinewinningFfaction -- rescheduled in " .. timeDiff .. " seconds", LT_INFO)
-
-		createEvent(timeDiff * 1000, "CriesOfAlderaan", "determineWinningFaction", nullptr, "")
-		return
-	end
-
-	if (winningFaction ~= nil) then
-		winningFaction = tonumber(winningFaction)
-	end
+	local winningFaction = 0
 
 	-- compare scores
 	local rebelScore = getQuestStatus("CriesOfAlderaan:rebelScore:")
@@ -100,26 +79,33 @@ function CriesOfAlderaan:determineWinningFaction()
 		imperialScore = tonumber(imperialScore)
 	end
 
+	local winningString = ""
+
 	if (imperialScore > rebelScore) then
 		winningFaction = FACTIONIMPERIAL
+		winningString = "Imperial"
 	elseif (rebelScore > imperialScore) then
 		winningFaction = FACTIONREBEL
+		winningString = "Rebel"
 	else
 		local randScore = getRandomNumber(100)
 
 		if (randScore > 50) then
 			winningFaction = FACTIONREBEL
+			winningString = "Rebel"
 		else
 			winningFaction = FACTIONIMPERIAL
+			winningString = "Imperial"
 		end
 	end
 
-	Logger:logEvent("CriesofAlderaan:determineWinningFaction -- Set Winning Faction " .. winningFaction, LT_INFO)
+	local checkDelay = self.CHECK_FOR_WINNING_DELAY
+
+	Logger:logEvent("CriesofAlderaan: determine Winning Faction -- Set Winning Faction: " .. winningString .. " " .. winningFaction .. " scheduling to re-check in " .. checkDelay .. " seconds.", LT_INFO)
 
 	setQuestStatus("CriesOfAlderaan:winningFaction:", winningFaction)
 	setCoaWinningFaction(winningFaction)
 
-	setQuestStatus("CriesOfAlderaan:winningFactionUpdate:", time)
 	createEvent(checkDelay * 1000, "CriesOfAlderaan", "determineWinningFaction", nullptr, "")
 end
 
