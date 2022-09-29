@@ -215,13 +215,15 @@ end
 function recruiterScreenplay:getSchematicOptions(faction, gcwDiscount, smugglerDiscount)
 	local optionsTable = { }
 	local factionRewardData = self:getFactionDataTable(faction)
-	local coaWinningFaction = CriesOfAlderaan:getWinningFaction()
+	local coaWinningFaction = tonumber(CriesOfAlderaan:getWinningFaction())
 	local winningFactionString
 
-	if (coaWinningFaction == FACTIONIMPERIAL) then
+	if (coaWinningFaction == self.factionHashCode.imperial) then
 		winningFactionString = "imperial"
-	else
+	elseif (coaWinningFaction == self.factionHashCode.rebel) then
 		winningFactionString = "rebel"
+	else
+		winningFactionString = ""
 	end
 
 	for k,v in pairs(factionRewardData.schematicList) do
