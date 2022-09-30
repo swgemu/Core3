@@ -324,7 +324,7 @@ rebelCoordinatorConvoTemplate:addScreen(coa3_init_has_lookout_l);
 
 coa3_init_go_to_princess_l = ConvoScreen:new {
 	id = "coa3_init_go_to_princess_l",
-	leftDialog = "@conversation/coa3lcoordinator:s_c9282e23", -- Have you been to see the Princess yet? You probably don't want to keep her waiting. Anyway, was there something I can help you with right now?
+	leftDialog = "@conversation/coa3wcoordinator:s_c9282e23", -- Have you been to see the Princess yet? You probably don't want to keep her waiting. Anyway, was there something I can help you with right now?
 	stopConversation = "false",
 	options = {
 		{"@conversation/coa3lcoordinator:s_bc0e9972", "coa3_leave_soon"}, -- Nothing for right now, thanks.
