@@ -18,7 +18,7 @@ class CustomDroidSuiCallback : public SuiCallback {
 	TangibleObject* customizationKit;
 
 public:
-	CustomDroidSuiCallback( ZoneServer* serv, int palette, TangibleObject* kitTano ) :
+	CustomDroidSuiCallback(ZoneServer* serv, int palette, TangibleObject* kitTano) :
 		SuiCallback(serv), numPalette(palette), customizationKit(kitTano) {
 	}
 
@@ -30,49 +30,60 @@ public:
 
 		SuiListBox* listBox = cast<SuiListBox*>( sui);
 
-		if(!creature->isPlayerCreature())
+		if (!creature->isPlayerCreature())
 			return;
+
 		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
 
-		if(obj == nullptr)
+		if (obj == nullptr)
 			return;
 
-		if( customizationKit == nullptr )
+		if (customizationKit == nullptr )
 			return;
 
 		ManagedReference<TangibleObject*> target = cast<TangibleObject*>(obj.get());
 
-		if(!cancelPressed) {
-
+		if (!cancelPressed) {
 			int index = Integer::valueOf(args->get(0).toString());
 
-			if(index < 0 || index > 3)
+			if (index < 0 || index > 3)
 				return;
 
-			if(server != nullptr) {
-
+			if (server != nullptr) {
 				if (target == nullptr || !target->isDroidObject()) {
-					creature->sendSystemMessage("You can only use this tool to customize droids");
+					creature->sendSystemMessage("@tool/customizer:droid_pet_only"); // You may only use this tool to customize droid pets.
 					return;
 				}
 
 				String appearanceFilename = target->getObjectTemplate()->getAppearanceFilename();
 				VectorMap<String, Reference<CustomizationVariable*> > variables;
 				AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+
 				int count = 0;
-				for(int i = 0; i< variables.size(); ++i){
-					String varkey = variables.elementAt(i).getKey();
-					if (varkey.contains("color")){
-						if (count == index){
-							ManagedReference<SuiColorBox*> cbox = new SuiColorBox(creature, SuiWindowType::COLOR_ARMOR);
+
+				for (int i = 0; i < variables.size(); ++i) {
+					String varKey = variables.elementAt(i).getKey();
+
+					if (varKey.contains("color")) {
+						if (count == index) {
+							ManagedReference<SuiColorBox*> cbox = new SuiColorBox(creature, SuiWindowType::CUSTOMIZE_KIT);
+
 							cbox->setCallback(new ColorWithKitSuiCallback(server, customizationKit));
-							cbox->setColorPalette(variables.elementAt(i).getKey());
+							cbox->setColorPalette(varKey);
 							cbox->setUsingObject(target);
+
+							int skillMod = creature->getSkillMod("droid_customization");
+
+							if (skillMod < 32)
+								skillMod = 32;
+							else if (skillMod > 64)
+								skillMod = 64;
+
+							cbox->setSkillMod(skillMod);
 
 							ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 							ghost->addSuiBox(cbox);
 							creature->sendMessage(cbox->generateMessage());
-
 						}
 						++count;
 					}
