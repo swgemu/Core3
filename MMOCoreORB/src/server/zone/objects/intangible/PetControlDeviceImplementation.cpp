@@ -489,6 +489,10 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	trainingCommand = 0;
 
 	pet->faceObject(player, true);
+
+	setLastCommander(player);
+	setLastCommandTarget(nullptr);
+	setLastCommand(PetManager::FOLLOW);
 }
 
 void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
