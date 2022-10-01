@@ -11,6 +11,7 @@ import server.zone.objects.player.sui.SuiBox;
 class SuiColorBox extends SuiBox {
 
 	protected string variable;
+	protected int skillMod;
 
 	public SuiColorBox(CreatureObject player, unsigned int windowType) {
 		super(player, windowType, SuiBox.COLORPICKER);
@@ -26,7 +27,15 @@ class SuiColorBox extends SuiBox {
 	public void setColorPalette(string pal) {
 		variable = pal;
 	}
-	
+
+	public int getSkillMod() {
+		return skillMod;
+	}
+
+	public void setSkillMod(int mod) {
+		skillMod = mod;
+	}
+
 	public boolean isColorPicker() {
 		return true;
 	}
