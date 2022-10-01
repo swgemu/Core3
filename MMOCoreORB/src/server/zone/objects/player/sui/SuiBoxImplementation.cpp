@@ -94,6 +94,8 @@ void SuiBoxImplementation::addSetting(const String& optType, const String& varia
 		optStr+=("~"+setName+"~"+setVal);
 	}
 
+	info(true) << " option string = " << optStr;
+
 	// Insert the option into the list:
 	optionSets.add(optStr);
 }

@@ -14,12 +14,17 @@ BaseMessage* SuiColorBoxImplementation::generateMessage() {
 	addHeader("ColorPicker", "SelectedIndex");
 	addHeader("bg.caption.lblTitle", "Text");
 
+	//Set Body Options:
+	addSetting("3", "bg.caption.lblTitle", "Text", "@base_player:swg");
+
+	StringBuffer closeDistance;
+	closeDistance << forceCloseDistance;
+
+	addSetting("3", "ColorPicker", "TargetRangeMax", closeDistance.toString().toCharArray());
+
 	StringBuffer id;
 	id << usingObject.get()->getObjectID();
 
-	//Set Body Options:
-	addSetting("3", "bg.caption.lblTitle", "Text", "@base_player:swg");
-	addSetting("3", "ColorPicker", "TargetRangeMax", "500");
 	addSetting("3", "ColorPicker", "TargetNetworkId", id.toString().toCharArray());
 	addSetting("3", "ColorPicker", "TargetVariable", variable.toCharArray());
 
