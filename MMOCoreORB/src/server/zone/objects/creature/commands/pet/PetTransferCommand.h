@@ -25,6 +25,7 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
+
 		if (pet == nullptr)
 			return GENERALERROR;
 
@@ -116,9 +117,16 @@ public:
 
 		targetCrosslocker.release();
 
-		Locker clocker(player, pet);
-
+		Locker plocker(player, pet);
 		ghost->removeFromActivePets(pet);
+		plocker.release();
+
+		Locker deviceLocker(controlDevice);
+		Locker targetLock(targetPlayer, controlDevice);
+
+		controlDevice->setLastCommander(targetPlayer);
+		controlDevice->setLastCommandTarget(nullptr);
+		controlDevice->setLastCommand(PetManager::FOLLOW);
 
 		return SUCCESS;
 	}
