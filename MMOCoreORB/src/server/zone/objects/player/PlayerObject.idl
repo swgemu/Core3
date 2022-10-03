@@ -55,9 +55,6 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected PlayerBitmasks playerBitmasks;
 
-	@dereferenced
-	protected transient PlayerBitmasks profileBitmasks;
-
 	protected string title;
 
 	protected string savedTerrainName;
@@ -1328,12 +1325,6 @@ class PlayerObject extends IntangibleObject {
 	@read
 	public final PlayerBitmasks getPlayerBitmasks() {
 		return playerBitmasks;
-	}
-
-	@local
-	@read
-	public final PlayerBitmasks getProfileBitmasks() {
-		return profileBitmasks;
 	}
 
 	/*@local

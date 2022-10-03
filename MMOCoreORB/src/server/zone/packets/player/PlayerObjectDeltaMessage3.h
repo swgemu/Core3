@@ -30,12 +30,10 @@ public:
 	void updateProfileBitmasks() {
 		startUpdate(0x06);
 		insertInt(0x04);
-
-		const PlayerBitmasks* profileBits = ghost->getProfileBitmasks();
-
-		for (int i = 0; i < 4; ++i) {
-			insertInt(profileBits->getBitmask(i));
-		}
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
 	}
 
 	void setCurrentTitle(const String& pTitle) {
