@@ -543,8 +543,8 @@ void PlayerObjectImplementation::sendMessage(BasePacket* msg) {
 }
 
 bool PlayerObjectImplementation::setPlayerBitmask(uint32 bit, bool notifyClient) {
-	if (!playerBitmasks.hasPlayerBitmask(bit)) {
-		playerBitmasks.setPlayerBitmask(bit);
+	if (!playerBitmask.hasPlayerBitmask(bit)) {
+		playerBitmask.setPlayerBitmask(bit);
 
 		if (notifyClient) {
 			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3(asPlayerObject());
@@ -559,8 +559,8 @@ bool PlayerObjectImplementation::setPlayerBitmask(uint32 bit, bool notifyClient)
 }
 
 bool PlayerObjectImplementation::clearPlayerBitmask(uint32 bit, bool notifyClient) {
-	if (playerBitmasks.hasPlayerBitmask(bit)) {
-		playerBitmasks.removePlayerBitmask(bit);
+	if (playerBitmask.hasPlayerBitmask(bit)) {
+		playerBitmask.removePlayerBitmask(bit);
 
 		if (notifyClient) {
 			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3(asPlayerObject());
@@ -575,23 +575,23 @@ bool PlayerObjectImplementation::clearPlayerBitmask(uint32 bit, bool notifyClien
 }
 
 bool PlayerObjectImplementation::isAnonymous() const {
-	return playerBitmasks.hasPlayerBitmask(PlayerBitmasks::ANONYMOUS);
+	return playerBitmask.hasPlayerBitmask(PlayerBitmasks::ANONYMOUS);
 }
 
 bool PlayerObjectImplementation::isAFK() const {
-	return playerBitmasks.hasPlayerBitmask(PlayerBitmasks::AFK);
+	return playerBitmask.hasPlayerBitmask(PlayerBitmasks::AFK);
 }
 
 bool PlayerObjectImplementation::isRoleplayer() const {
-	return playerBitmasks.hasPlayerBitmask(PlayerBitmasks::ROLEPLAYER);
+	return playerBitmask.hasPlayerBitmask(PlayerBitmasks::ROLEPLAYER);
 }
 
 bool PlayerObjectImplementation::isNewbieHelper() const {
-	return playerBitmasks.hasPlayerBitmask(PlayerBitmasks::NEWBIEHELPER);
+	return playerBitmask.hasPlayerBitmask(PlayerBitmasks::NEWBIEHELPER);
 }
 
 bool PlayerObjectImplementation::isLFG() const {
-	return playerBitmasks.hasPlayerBitmask(PlayerBitmasks::LFG);
+	return playerBitmask.hasPlayerBitmask(PlayerBitmasks::LFG);
 }
 
 void PlayerObjectImplementation::sendBadgesResponseTo(CreatureObject* player) {
@@ -1734,11 +1734,17 @@ void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient)
 }
 
 void PlayerObjectImplementation::toggleCharacterBit(uint32 bit) {
-	if (playerBitmasks.hasPlayerBitmask(bit)) {
-		clearPlayerBitmask(bit, true);
+	if (playerBitmask.hasPlayerBitmask(bit)) {
+		playerBitmask.removePlayerBitmask(bit);
 	} else {
-		setPlayerBitmask(bit, true);
+		playerBitmask.setPlayerBitmask(bit);
 	}
+
+	PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3(asPlayerObject());
+	delta->updatePlayerBitmasks();
+	delta->close();
+
+	broadcastMessage(delta, true);
 }
 
 void PlayerObjectImplementation::setFoodFilling(int newValue, bool notifyClient) {

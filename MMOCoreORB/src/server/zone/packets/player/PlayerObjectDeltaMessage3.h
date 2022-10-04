@@ -23,7 +23,8 @@ public:
 		const PlayerBitmasks* playerBits = ghost->getPlayerBitmasks();
 
 		for (int i = 0; i < 4; ++i) {
-			insertInt(playerBits->getBitmask(i));
+			uint32 bit = playerBits->getBitmask(i);
+			insertInt(bit);
 		}
 	}
 
