@@ -11,6 +11,8 @@
 #include "engine/engine.h"
 #include "engine/util/json_utils.h"
 
+// #define DEBUG_PLAYERBITMASKS
+
 class PlayerBitmasks : public Serializable, public ReadWriteLock {
 	uint32 playerBitmask[4];
 public:
@@ -66,71 +68,57 @@ public:
 	}
 
 	void setPlayerBitmask(const uint32 bitmask) {
-		Locker locker(this);
-
-		int bitmaskNumber = bitmask >> 4;
-		uint32 bit = bitmask % 128;
+		uint32 bit = bitmask % 32;
 		uint32 value = 1 << bit;
 
-		if (bitmask == PlayerBitmasks::ANONYMOUS)
-			bitmaskNumber = 3;
+#ifdef DEBUG_PLAYERBITMASKS
+		Logger::console.info("setPlayerBitmask - Bitmask = " + String::valueOf(bitmask) + " bit = " + String::valueOf(bit) + " value = " + String::valueOf(value), true);
+#endif
+		Locker locker(this);
 
-		// Logger::console.info("setPlayerBitmask - Bitmask = " + String::valueOf(bitmask) + " bitmaskNumber = " + String::valueOf(bitmaskNumber) + " bit = " + String::valueOf(bit) + " value = " + String::valueOf(value), true);
-
-		if (bitmaskNumber > 3 || bitmaskNumber < 0) {
-			Logger::console.error("PlayerBitmask::setPlayerBitmask error " + String::valueOf(bitmask));
-
-			return;
-		}
-
-		if (!(playerBitmask[bitmaskNumber] & value)) {
-			playerBitmask[bitmaskNumber] |= value;
+		// Anonymous flag is stored in int 3
+		if (bitmask == PlayerBitmasks::ANONYMOUS) {
+			if (!(playerBitmask[3] & value))
+				playerBitmask[3] |= value;
+		} else if (!(playerBitmask[0] & value)) {
+			playerBitmask[0] |= value;
 		}
 	}
 
 	void removePlayerBitmask(const uint32 bitmask) {
-		Locker locker(this);
-
-		int bitmaskNumber = bitmask >> 4;
-		uint32 bit = bitmask % 128;
+		uint32 bit = bitmask % 32;
 		uint32 value = 1 << bit;
 
-		if (bitmask == PlayerBitmasks::ANONYMOUS)
-			bitmaskNumber = 3;
+#ifdef DEBUG_PLAYERBITMASKS
+		Logger::console.info("removePlayerBitmask - Bitmask = " + String::valueOf(bitmask) + " bit = " + String::valueOf(bit) + " value = " + String::valueOf(value), true);
+#endif
+		Locker locker(this);
 
-		// Logger::console.info("removePlayerBitmask - Bitmask = " + String::valueOf(bitmask) + " bitmaskNumber = " + String::valueOf(bitmaskNumber) + " bit = " + String::valueOf(bit) + " value = " + String::valueOf(value), true);
-
-		if (bitmaskNumber > 3 || bitmaskNumber < 0) {
-			Logger::console.error("PlayerBitmask::removePlayerBitmask error " + String::valueOf(bitmask));
-
-			return;
-		}
-
-		if (playerBitmask[bitmaskNumber] & value) {
-			playerBitmask[bitmaskNumber] -= value;
+		// Anonymous flag is stored in int 3
+		if (bitmask == PlayerBitmasks::ANONYMOUS) {
+			if ((playerBitmask[3] & value))
+				playerBitmask[3] &= ~value;
+		} else if ((playerBitmask[0] & value)) {
+			playerBitmask[0] &= ~value;
 		}
 	}
 
 	bool hasPlayerBitmask(const uint32 bitmask) const {
-		int bitmaskNumber = bitmask >> 4;
+		int bitmaskNumber = 0;
+		uint32 bit = bitmask % 32;
+		uint32 value = 1 << bit;
+
+#ifdef DEBUG_PLAYERBITMASKS
+		Logger::console.info("hasPlayerBitmask - Bitmask = " + String::valueOf(bitmask) + " bitmaskNumber = " + String::valueOf(bitmaskNumber) + " bit = " + String::valueOf(bit) + " value = " + String::valueOf(value), true);
+#endif
+		ReadLocker locker(this);
 
 		if (bitmask == PlayerBitmasks::ANONYMOUS)
 			bitmaskNumber = 3;
 
-		if (bitmaskNumber > 3 || bitmaskNumber < 0) {
-			Logger::console.error("PlayerBitmask::hasPlayerBitmask improper bit " + String::valueOf(bitmask));
+		bool result = playerBitmask[bitmaskNumber] & value;
 
-			return false;
-		}
-
-		uint32 bit = bitmask % 32;
-		uint32 value = 1 << bit;
-
-		ReadLocker locker(this);
-
-		bool res = playerBitmask[bitmaskNumber] & value;
-
-		return res;
+		return result;
 	}
 
 	uint32 getBitmask(int index) const {
