@@ -884,7 +884,7 @@ function CorellianCorvette:transportPlayer(pPlayer)
 		local covertOvert = useCovertOvert()
 
 		if (covertOvert) then
-			if (not ThemeParkLogic:isInFaction(self.faction, pPlayer) or not CreatureObject(pPlayer):isOvert() or TangibleObject(pPlayer):isChangingFactionStatus()) then
+			if (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or not CreatureObject(pPlayer):isOvert() or TangibleObject(pPlayer):isChangingFactionStatus()) then
 				return
 			end
 		elseif (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or (factionStatus < COVERT) or TangibleObject(pPlayer):isChangingFactionStatus()) then
