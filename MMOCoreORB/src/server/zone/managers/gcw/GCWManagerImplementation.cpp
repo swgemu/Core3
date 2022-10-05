@@ -1347,6 +1347,29 @@ bool GCWManagerImplementation::isFacilityRebooting(BuildingObject* building) {
 	return (baseData->getState() == DestructibleBuildingDataComponent::REBOOTSEQUENCE);
 }
 
+bool GCWManagerImplementation::isPlanetCapped() {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	int totalBases = gcwBaseList.size();
+	int totalPlayerBases = 0;
+
+	for (int i = 0; i < totalBases; i++) {
+		uint64 baseID = getBase(i)->getObjectID();
+
+		Reference<BuildingObject*> building = zone->getZoneServer()->getObject(baseID).castTo<BuildingObject*>();
+
+		if (building == nullptr)
+			continue;
+
+		if (!(building->getFactionBaseType() == PLAYERFACTIONBASE))
+			continue;
+
+		totalPlayerBases++;
+	}
+
+	return maxBasesPerPlanet <= totalPlayerBases;
+}
+
 DestructibleBuildingDataComponent* GCWManagerImplementation::getDestructibleBuildingData(BuildingObject* building) {
 	DestructibleBuildingDataComponent* baseData = nullptr;
 
