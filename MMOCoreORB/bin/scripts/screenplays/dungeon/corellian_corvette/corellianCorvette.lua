@@ -887,7 +887,7 @@ function CorellianCorvette:transportPlayer(pPlayer)
 			if (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or not CreatureObject(pPlayer):isOvert() or TangibleObject(pPlayer):isChangingFactionStatus()) then
 				return
 			end
-		elseif (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or (factionStatus < COVERT) or TangibleObject(pPlayer):isChangingFactionStatus()) then
+		elseif (not ThemeParkLogic:isInFaction(factionCRC, pPlayer) or CreatureObject(pPlayer):isOnLeave() or TangibleObject(pPlayer):isChangingFactionStatus()) then
 			return
 		end
 	end
