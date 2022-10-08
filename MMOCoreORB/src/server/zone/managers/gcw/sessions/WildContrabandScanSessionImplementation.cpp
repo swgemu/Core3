@@ -52,7 +52,9 @@ int WildContrabandScanSessionImplementation::initializeSession() {
 
 	player->addActiveSession(SessionFacadeType::WILDCONTRABANDSCAN, _this.getReferenceUnsafeStaticCast());
 
-	landingCoordinates = getLandingCoordinates(zone, player);
+	Vector3 playerPos = player->getPosition();
+
+	landingCoordinates = getLandingCoordinates(zone, player, playerPos);
 
 	return true;
 }
@@ -197,14 +199,15 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 
 				if (spawnPoint != nullptr) {
 					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", *spawnPoint->getPosition(), *spawnPoint->getDirection(), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
-					lambdaTask->schedule(1);
+					lambdaTask->schedule(1000);
 				} else {
 					float spawnDirection = player->getDirection()->getRadians() + Math::PI;
 					if (spawnDirection >= 2 * Math::PI) {
 						spawnDirection -= 2 * Math::PI;
 					}
+
 					Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", landingCoordinates, Quaternion(Vector3(0, 1, 0), spawnDirection), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLESCAN);
-					lambdaTask->schedule(1);
+					lambdaTask->schedule(1000);
 				}
 
 				AiAgent* droid = getDroid();
@@ -284,18 +287,23 @@ void WildContrabandScanSessionImplementation::landProbeDroid(Zone* zone, Creatur
 	timeLeft = 3;
 }
 
-Vector3 WildContrabandScanSessionImplementation::getLandingCoordinates(Zone* zone, CreatureObject* player) {
-	if (zone == nullptr) {
-		return player->getPosition();
+Vector3 WildContrabandScanSessionImplementation::getLandingCoordinates(Zone* zone, CreatureObject* player, Vector3& playerPos) {
+	if (zone == nullptr || player == nullptr) {
+		return playerPos;
 	}
 
 	PlanetManager* planetManager = zone->getPlanetManager();
 
 	if (planetManager == nullptr) {
-		return player->getPosition();
+		return playerPos;
 	}
 
-	return planetManager->getInSightSpawnPoint(player, 30, 120, 15);
+	Vector3 coords = planetManager->getInSightSpawnPoint(player, 30, 120, 25);
+	float z = CollisionManager::getWorldFloorCollision(coords.getX(), coords.getY(), coords.getZ(), zone, true);
+
+	coords.setZ(z);
+
+	return coords;
 }
 
 void WildContrabandScanSessionImplementation::sendSystemMessage(CreatureObject* player, const String& messageName) {

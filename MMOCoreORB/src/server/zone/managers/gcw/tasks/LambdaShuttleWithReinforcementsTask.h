@@ -132,7 +132,7 @@ private:
 		if (reinforcementType == CONTAINMENTTEAM) {
 			z = player->getPositionZ();
 		} else {
-			z = CollisionManager::getWorldFloorCollision(x, y, zone, false);
+			z = CollisionManager::getWorldFloorCollision(x, y, zone, true);
 		}
 
 		Reference<AiAgent*> npc = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false, spawnDirection.getRadians()));
@@ -248,17 +248,17 @@ private:
 
 	void lambdaShuttleLanding(SceneObject* lambdaShuttle) {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
-		lambdaShuttleCreature->setPosture(CreaturePosture::PRONE);
+		lambdaShuttleCreature->setPosture(CreaturePosture::PRONE, true, true);
 	}
 
 	void lambdaShuttleUpright(SceneObject* lambdaShuttle) {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
-		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
+		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT, true, true);
 	}
 
 	void lambdaShuttleTakeoff(SceneObject* lambdaShuttle) {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
-		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
+		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT, true, true);
 		timeToDespawnLambdaShuttle = LAMBDATAKEOFFDESPAWNTIME;
 	}
 
@@ -346,6 +346,7 @@ public:
 	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty, String chatMessageId, Vector3 position, Quaternion direction, ReinforcementType reinforcementType) {
 		weakPlayer = player;
 		squadObserver = new SquadObserver();
+
 		if (difficulty > MAXDIFFICULTY) {
 			this->difficulty = MAXDIFFICULTY;
 		} else if (difficulty < MINDIFFICULTY) {
@@ -374,7 +375,6 @@ public:
 		} else {
 			state = SPAWNSHUTTLE;
 		}
-		spawnPosition.setZ(player->getZone()->getHeight(spawnPosition.getX(), spawnPosition.getY()));
 	}
 
 	void run() {

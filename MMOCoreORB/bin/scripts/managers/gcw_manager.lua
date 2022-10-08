@@ -77,10 +77,10 @@ difficutlyScalingThresholds = {0, 64}
 
 -- PRODUCTION SERVER VALUES
 crackdownScanPrivilegedPlayers = false
-wildScanInterval = 10 * 60 -- In seconds, 10 minutes + System::random(600000) 10 minuutes
-wildScanLoginDelay = 2 * 60 -- In Seconds, 2 minutes
-wildScanChance = 10 -- % chance for a valid scan target to be scanned
-crackdownPlayerScanCooldown = 36 * 60 * 60  -- In seconds, 36 hour cooldown
+wildScanInterval = 15 * 60 -- In seconds, 15 minutes + System::random(600000) 10 minuutes
+wildScanLoginDelay = 4 * 60 -- In Seconds, 4 minutes
+wildScanChance = 5 -- % chance for a valid scan target to be scanned
+crackdownPlayerScanCooldown = 48 * 60 * 60  -- In seconds, 48 hour cooldown
 crackdownContrabandFineCredits = 2000
 crackdownContrabandFineFactionPoints = 100
 crackdownPlanetsWithWildScans = { "corellia", "dantooine", "dathomir", "endor", "lok", "naboo", "rori", "talus", "tatooine", "yavin4"}
