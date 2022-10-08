@@ -128,6 +128,13 @@ public:
 		if (targetCreature->hasDotImmunity(dotType))
 			return false;
 
+		if (targetCreature->isAiAgent()) {
+			AiAgent* targetAgent = targetCreature->asAiAgent();
+
+			if (targetAgent != nullptr && (targetAgent->getCreatureBitmask() & CreatureFlag::NODOT))
+				return false;
+		}
+
 		if (!CollisionManager::checkLineOfSight(creature, targetCreature))
 			return false;
 

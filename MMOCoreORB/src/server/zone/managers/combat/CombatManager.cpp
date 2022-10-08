@@ -1648,6 +1648,13 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 	if (defender->isInvulnerable())
 		return;
 
+	if (defender->isAiAgent()) {
+		AiAgent* defAgent = defender->asAiAgent();
+
+		if (defAgent != nullptr && (defAgent->getCreatureBitmask() & CreatureFlag::NODOT))
+			return;
+	}
+
 	for (int i = 0; i < dotEffects->size(); i++) {
 		const DotEffect& effect = dotEffects->get(i);
 
@@ -1695,6 +1702,13 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 	if (!weapon->isCertifiedFor(attacker))
 		return;
+
+	if (defender->isAiAgent()) {
+		AiAgent* defAgent = defender->asAiAgent();
+
+		if (defAgent != nullptr && (defAgent->getCreatureBitmask() & CreatureFlag::NODOT))
+			return;
+	}
 
 	for (int i = 0; i < weapon->getNumberOfDots(); i++) {
 		if (weapon->getDotUses(i) <= 0)
