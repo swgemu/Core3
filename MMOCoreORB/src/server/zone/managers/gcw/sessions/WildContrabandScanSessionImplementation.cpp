@@ -295,7 +295,12 @@ Vector3 WildContrabandScanSessionImplementation::getLandingCoordinates(Zone* zon
 		return player->getPosition();
 	}
 
-	return planetManager->getInSightSpawnPoint(player, 30, 120, 15);
+	Vector3 coords = planetManager->getInSightSpawnPoint(player, 30, 120, 15);
+	IntersectionResults intersections;
+
+	coords.setZ(planetManager->findClosestWorldFloor(coords.getX(), coords.getY(), coords.getZ(), 0.f, &intersections, nullptr));
+
+	return coords;
 }
 
 void WildContrabandScanSessionImplementation::sendSystemMessage(CreatureObject* player, const String& messageName) {
