@@ -72,7 +72,7 @@ kailaMinConvoTemplate:addScreen(someone_else);
 
 ambush = ConvoScreen:new {
 	id = "ambush",
-	leftDialog = "You offend me with your accusations. I will not give you any more information.",
+	leftDialog = "@static_npc/naboo/kima_nazith:npc_breech_2", -- If you mess with me, you flirt with death! Sssss!
 	stopConversation = "true",
 	options = {}
 }

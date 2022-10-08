@@ -64,7 +64,7 @@ blacksun = ConvoScreen:new {
 	leftDialog = "@conversation/c_story1_2_chemist:s_106", -- Not this kind.  That's what you don't understand.  It's being smuggled and hoarded by the Rebel Alliance.  They must know where it comes from and are keeping it for themselves.  The pilot that you are looking for was smuggling the spice for them.
 	stopConversation = "false",
 	options = {
-		{"@conversation/c_story1_2_chemist:s_104", "reward"}, -- What does the Black Sun want with it? Most rare medicines are publically available.
+		{"@conversation/c_story1_2_chemist:s_110", "reward"}, -- Doesn't surprise me in the least.  Those rock-sucking terrorists would do anything.
 	}
 }
 
@@ -78,5 +78,14 @@ reward = ConvoScreen:new {
 }
 
 tovarBlackmoorConvoTemplate:addScreen(reward);
+
+someone_else = ConvoScreen:new {
+	id = "someone_else",
+	leftDialog = "@conversation/c_story1_2_mole:s_43", --All right.  We all make mistakes.
+	stopConversation = "true",
+	options = {}
+}
+
+tovarBlackmoorConvoTemplate:addScreen(someone_else);
 
 addConversationTemplate("tovarBlackmoorConvoTemplate", tovarBlackmoorConvoTemplate);

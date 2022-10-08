@@ -137,16 +137,19 @@ function SecretsOfTheSyren:notifyEnteredQuestArea(pActiveArea, pPlayer)
 				ghost:activateJournalQuestTask(questCrc, Syren.act1.SPICE_FOUND, true)
 				ghost:completeJournalQuestTask(questCrc, Syren.act1.SPICE_FOUND, true)
 				ghost:activateJournalQuestTask(questCrc, Syren.act1.TALK_TO_CONTACT, true)
-				self:giveItems(pPlayer, taskIndex)
+				self:giveItems(pPlayer, taskIndex, questCrc)
 				self:returnToContactWaypoint(questCrc, pPlayer, ghost)
 			elseif taskIndex == Syren.act1.TALK_TO_MOXXAR and self:act1(questCrc)  then
 				ghost:activateJournalQuestTask(questCrc, Syren.act1.SECOND_DATAPAD, true)
 				ghost:completeJournalQuestTask(questCrc, Syren.act1.SECOND_DATAPAD, true)
 				ghost:activateJournalQuestTask(questCrc, Syren.act1.RETURN_TO_CONTACT, true)
-				self:giveItems(pPlayer, taskIndex)
+				self:giveItems(pPlayer, taskIndex, questCrc)
 				self:returnToContactWaypoint(questCrc, pPlayer, ghost)
 			elseif taskIndex == Syren.act2.GO_TO_AMBUSH and self:act2(questCrc)  then
 				self:startAmbush(questCrc, pPlayer, creature, ghost)
+			elseif taskIndex == Syren.act2.GO_TO_BASE and self:act2(questCrc)  then
+				ghost:completeJournalQuestTask(questCrc, Syren.act2.GO_TO_BASE, true)
+				ghost:activateJournalQuestTask(questCrc, Syren.act2.TALK_TO_TOVAR, true)
 			end
 		end
 	end
@@ -171,7 +174,7 @@ function SecretsOfTheSyren:startAmbush(questCrc, pPlayer, creature, ghost)
 		self:spawnAmbushNpcs(pPlayer, creature, syrenTasks:getTask(Syren.act2.AMBUSH_3), questCrc)
 	end
 
-	creature:sendSystemMessage("Starting ambush")
+	creature:sendSystemMessage("You have been ambushed!")
 end
 
 function SecretsOfTheSyren:spawnAmbushNpcs(pPlayer, creature, pQuestTask, questCrc)
@@ -261,7 +264,8 @@ function SecretsOfTheSyren:allAmbushNpcsKilled(playerID)
 					ghost:activateJournalQuestTask(questCrc, Syren.act2.AMBUSH_COMPLETE, true)
 					ghost:completeJournalQuestTask(questCrc, Syren.act2.AMBUSH_COMPLETE, true)
 					ghost:activateJournalQuestTask(questCrc, Syren.act2.GO_TO_BASE, true)
-					self:giveItems(pPlayer, Syren.act2.AMBUSH_COMPLETE)
+					self:giveItems(pPlayer, Syren.act2.AMBUSH_COMPLETE, questCrc)
+					self:updateWaypoint(pPlayer, ghost, "rori", "Go to the location found on the datapad", 4846, -1084)
 				elseif self:activeTask(ghost, questCrc, Syren.act2.AMBUSH_2) then
 					ghost:completeJournalQuestTask(questCrc, Syren.act2.AMBUSH_2, false)
 					ghost:activateJournalQuestTask(questCrc, Syren.act2.AMBUSH_3, false)
@@ -354,7 +358,7 @@ function SecretsOfTheSyren:act2(questCrc)
 	return questCrc == Syren.act2.IMPERIAL_CRC or questCrc == Syren.act2.NEUTRAL_CRC or questCrc == Syren.act2.REBEL_CRC
 end
 
-function SecretsOfTheSyren:giveItems(pPlayer, taskIndex)
+function SecretsOfTheSyren:giveItems(pPlayer, taskIndex, questCrc)
 	local creature = LuaCreatureObject(pPlayer)
 	local pInventory = creature:getSlottedObject("inventory")
 	if pInventory == nil then
@@ -371,12 +375,12 @@ function SecretsOfTheSyren:giveItems(pPlayer, taskIndex)
 		if pItem == nil then
 			printLuaError("Unable to give syren1_spice in SecretsOfTheSyren to player " .. creature:getObjectID())
 		end
-	elseif taskIndex == Syren.act1.TALK_TO_MOXXAR then
+	elseif taskIndex == Syren.act1.TALK_TO_MOXXAR and self:act1(questCrc) then
 		local pItem = giveItem(pInventory, "object/tangible/mission/quest_item/syren1_warning.iff", -1, true)
 		if pItem == nil then
 			printLuaError("Unable to give syren1_warning in SecretsOfTheSyren to player " .. creature:getObjectID())
 		end
-	elseif taskIndex == Syren.act2.AMBUSH_COMPLETE then
+	elseif taskIndex == Syren.act2.AMBUSH_COMPLETE and self:act2(questCrc) then
 		local pItem = giveItem(pInventory, "object/tangible/mission/quest_item/syren2_blacksun_base.iff", -1, true)
 		if pItem == nil then
 			printLuaError("Unable to give syren1_warning in SecretsOfTheSyren to player " .. creature:getObjectID())
@@ -385,6 +389,18 @@ function SecretsOfTheSyren:giveItems(pPlayer, taskIndex)
 		local pItem = giveItem(pInventory, "object/tangible/loot/loot_schematic/shisa_schematic.iff", -1, true)
 		if pItem == nil then
 			printLuaError("Unable to give syren1_warning in SecretsOfTheSyren to player " .. creature:getObjectID())
+		end
+		creature:addCashCredits(5000, true)
+		creature:sendSystemMessage("Tovar Blackmoor gave you 5000 credits and a Shisha schematic.")
+		local faction = creature:getFaction()
+		if faction == FACTIONREBEL or faction == FACTIONIMPERIAL then
+			local pGhost = creature:getPlayerObject()
+			if pGhost == nil then
+				printLuaError("Unable to give faction points to player " .. creature:getObjectID())
+			else
+				local ghost = LuaPlayerObject(pGhost)
+				ghost:increaseFactionStanding(creature:getFaction(), 100)
+			end
 		end
 	end
 end
@@ -473,9 +489,12 @@ function SecretsOfTheSyren:getReward(pPlayer, questCrc)
 		if pGhost ~= nil then
 			local ghost = LuaPlayerObject(pGhost)
 			ghost:completeJournalQuestTask(questCrc, Syren.act2.TALK_TO_TOVAR, true)
+			ghost:activateJournalQuestTask(questCrc, Syren.act2.REWARD, true)
 			ghost:completeJournalQuestTask(questCrc, Syren.act2.REWARD, true)
+			ghost:activateJournalQuestTask(questCrc, Syren.act2.CLIFFHANGER, true)
 			ghost:completeJournalQuestTask(questCrc, Syren.act2.CLIFFHANGER, true)
-			self:giveItems(pPlayer, Syren.act2.REWARD)
+			ghost:completeJournalQuest(questCrc, true)
+			self:giveItems(pPlayer, Syren.act2.REWARD, questCrc)
 		end
 	end
 end
