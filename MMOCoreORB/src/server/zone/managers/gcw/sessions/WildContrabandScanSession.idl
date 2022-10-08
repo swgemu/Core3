@@ -64,7 +64,7 @@ class WildContrabandScanSession extends Facade {
 
 	@local
 	@dereferenced
-	private native Vector3 getLandingCoordinates(Zone zone, CreatureObject player);
+	private native Vector3 getLandingCoordinates(Zone zone, CreatureObject player, @dereferenced Vector3 playerPos);
 
 	private native void sendSystemMessage(CreatureObject player, final string messageName);
 	private native AiAgent getDroid();

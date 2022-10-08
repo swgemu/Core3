@@ -56,10 +56,13 @@ bool SquadObserverImplementation::despawnMembersCloseToLambdaShuttle(const Vecto
 		if (npc != nullptr) {
 			Locker npcLock(npc);
 			auto distance = npc->getWorldPosition().squaredDistanceTo(landingPosition);
+
 			if (npc->isDead()) {
 				removeMember(i);
 				continue;
 			} else if (!npc->isInCombat()) {
+				npc->info(true) << " Distance to shuttle = " << distance;
+
 				npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat", 60000);
 
 				npc->eraseBlackboard("formationOffset");
@@ -68,10 +71,11 @@ bool SquadObserverImplementation::despawnMembersCloseToLambdaShuttle(const Vecto
 				npc->clearPatrolPoints();
 				npc->setNextPosition(landingPosition.getX(), landingPosition.getZ(), landingPosition.getY());
 
-				if (forcedCleanup)
-					npc->leash();
-
 				if (distance < 8 * 8) {
+					npc->destroyObjectFromWorld(true);
+					removeMember(i);
+				} else if (forcedCleanup) {
+					npc->leash();
 					npc->destroyObjectFromWorld(true);
 					removeMember(i);
 				}
