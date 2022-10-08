@@ -12,6 +12,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/combat/CreatureAttackData.h"
 #include "server/zone/managers/collision/CollisionManager.h"
@@ -636,9 +637,17 @@ public:
 		case CommandEffect::DIZZY:
 			defender->setDizziedState(duration);
 			break;
-		case CommandEffect::INTIMIDATE:
+		case CommandEffect::INTIMIDATE: {
+			if (defender->isAiAgent()) {
+				AiAgent* defenderAgent = defender->asAiAgent();
+
+				if (defenderAgent != nullptr && (defenderAgent->getCreatureBitmask() & CreatureFlag::NOINTIMIDATE))
+					break;
+			}
+
 			defender->setIntimidatedState(duration);
 			break;
+		}
 		case CommandEffect::STUN:
 			defender->setStunnedState(duration);
 			break;

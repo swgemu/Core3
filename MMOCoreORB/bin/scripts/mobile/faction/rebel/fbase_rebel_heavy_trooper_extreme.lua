@@ -24,7 +24,7 @@ fbase_rebel_heavy_trooper_extreme = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + STALKER + KILLER,
+	creatureBitmask = PACK + STALKER + KILLER + NOINTIMIDATE,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
