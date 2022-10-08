@@ -35,7 +35,17 @@ public:
 			return INVALIDTARGET;
 		}
 
-		CreatureObject *tarCreo = targetObject->asCreatureObject();
+		CreatureObject* tarCreo = targetObject->asCreatureObject();
+
+		if (tarCreo == nullptr)
+			return GENERALERROR;
+
+		if (tarCreo->isAiAgent()) {
+			AiAgent* tarAgent = tarCreo->asAiAgent();
+
+			if (tarAgent != nullptr && (tarAgent->getCreatureBitmask() & CreatureFlag::NOINTIMIDATE))
+				return INVALIDTARGET;
+		}
 
 		int res = doCombatAction(creature, target);
 

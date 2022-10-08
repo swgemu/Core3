@@ -28,13 +28,22 @@ public:
 		if (targetObject == nullptr || !targetObject->isCreatureObject())
 			return INVALIDTARGET;
 
+		CreatureObject* tarCreo = targetObject->asCreatureObject();
+
+		if (tarCreo != nullptr && tarCreo->isAiAgent()) {
+			AiAgent* tarAgent = tarCreo->asAiAgent();
+
+			if (tarAgent != nullptr && (tarAgent->getCreatureBitmask() & CreatureFlag::NOINTIMIDATE))
+				return INVALIDTARGET;
+		}
+
 		int res = doCombatAction(creature, target);
 
 		if (res == TOOFAR && creature->isPlayerCreature()) {
 			CombatSpam* msg = new CombatSpam(creature, targetObject, creature, nullptr, 0, "cbt_spam", "intim_out_of_range", 0);
 			creature->sendMessage(msg);
 		}
-		
+
 		if (res == SUCCESS && creature->isPlayerCreature()) {
 			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
