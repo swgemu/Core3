@@ -248,17 +248,17 @@ private:
 
 	void lambdaShuttleLanding(SceneObject* lambdaShuttle) {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
-		lambdaShuttleCreature->setPosture(CreaturePosture::PRONE);
+		lambdaShuttleCreature->setPosture(CreaturePosture::PRONE, true, true);
 	}
 
 	void lambdaShuttleUpright(SceneObject* lambdaShuttle) {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
-		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
+		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT, true, true);
 	}
 
 	void lambdaShuttleTakeoff(SceneObject* lambdaShuttle) {
 		CreatureObject* lambdaShuttleCreature = lambdaShuttle->asCreatureObject();
-		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT);
+		lambdaShuttleCreature->setPosture(CreaturePosture::UPRIGHT, true, true);
 		timeToDespawnLambdaShuttle = LAMBDATAKEOFFDESPAWNTIME;
 	}
 
@@ -300,6 +300,8 @@ private:
 
 	void despawnNpcs(SceneObject* lambdaShuttle) {
 		--cleanUpTime;
+
+		Logger::console.info(" Clean Up Time = " + String::valueOf(cleanUpTime));
 
 		if (squadObserver->despawnMembersCloseToLambdaShuttle(spawnPosition, cleanUpTime < 0)) {
 			if (reinforcementType == CONTAINMENTTEAM) {
