@@ -46,7 +46,7 @@ SecretsOfTheSyren = ScreenPlay:new {
 	},
 }
 
-registerScreenPlay("SecretsOfTheSyren", false)
+registerScreenPlay("SecretsOfTheSyren", true)
 
 function SecretsOfTheSyren:start()
 	self:spawnStaticNpcs()
