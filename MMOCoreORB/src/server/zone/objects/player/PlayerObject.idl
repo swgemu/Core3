@@ -1374,8 +1374,8 @@ class PlayerObject extends IntangibleObject {
 		return (adminLevel == 15 && hasAbility("admin"));
 	}
 
-	public native boolean setPlayerBitmask(unsigned int bit, boolean notifyClient = false);
-	public native boolean clearPlayerBitmask(unsigned int bit, boolean notifyClient = false);
+	public native boolean setPlayerBit(unsigned int bit, boolean notifyClient = false);
+	public native boolean clearPlayerBit(unsigned int bit, boolean notifyClient = false);
 	public native void toggleCharacterBit(unsigned int bit);
 
 	@read

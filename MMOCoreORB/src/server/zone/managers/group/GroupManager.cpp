@@ -209,7 +209,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 		// clear invitee's LFG setting once a group is joined
 		Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 		if (ghost != nullptr)
-			ghost->clearPlayerBitmask(PlayerBitmasks::LFG, true);
+			ghost->clearPlayerBit(PlayerBitmasks::LFG, true);
 
 		ManagedReference<ChatRoom*> groupChat = group->getChatRoom();
 		if (groupChat != nullptr) {
@@ -254,7 +254,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	// clear inviter's LFG setting once a group is created
 	Reference<PlayerObject*> ghost = leader->getSlottedObject("ghost").castTo<PlayerObject*>();
 	if (ghost != nullptr)
-		ghost->clearPlayerBitmask(PlayerBitmasks::LFG, true);
+		ghost->clearPlayerBit(PlayerBitmasks::LFG, true);
 
 	if (leader->getGroupInviterID() != 0)
 		leader->updateGroupInviterID(0);
