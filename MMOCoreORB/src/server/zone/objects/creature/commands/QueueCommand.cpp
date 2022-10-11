@@ -386,6 +386,13 @@ void QueueCommand::checkForDotTef(CreatureObject* attacker, CreatureObject* targ
 				}
 			}
 		}
+	} else if (target->isAiAgent() && ConfigManager::instance()->useCovertOvertSystem()) {
+		int attackerFaction = attacker->getFaction();
+		int targetFaction = target->getFaction();
+
+		if (attackerFaction != 0 && targetFaction != 0 && attackerFaction != targetFaction && attacker->getFactionStatus() >= FactionStatus::COVERT) {
+			ghost->updateLastGcwPvpCombatActionTimestamp();
+		}
 	}
 }
 
