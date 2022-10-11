@@ -242,7 +242,7 @@ public:
 			creature->sendSystemMessage(stringId);
 		}
 
-		checkForTef(creature, targetCreature);
+		checkForDotTef(creature, targetCreature);
 	}
 
 	int hasCost(CreatureObject* creature) const {
@@ -342,7 +342,7 @@ public:
 		// Checks Successful
 		Locker clocker(targetCreature, creature);
 
-		checkForTef(creature, targetCreature);
+		checkForDotTef(creature, targetCreature);
 		doAnimationsRange(creature, targetCreature, dotPack->getObjectID(), creature->getWorldPosition().distanceTo(targetCreature->getWorldPosition()), dotPack->isArea());
 
 		float modSkill = (float)creature->getSkillMod("healing_range_speed");
