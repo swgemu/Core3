@@ -74,7 +74,7 @@ class DataTransformCallback : public MessageCallback {
 	ValidatedPosition validPosition;
 	Transform transform;
 
-	int deltaTime;
+	long deltaTime;
 
 public:
 	DataTransformCallback(ObjectControllerMessageCallback* objectControllerCallback) : MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {

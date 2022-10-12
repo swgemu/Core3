@@ -52,7 +52,7 @@ class DataTransformWithParentCallback : public MessageCallback {
 	ValidatedPosition validPosition;
 	Transform transform;
 
-	int deltaTime;
+	long deltaTime;
 
 public:
 	DataTransformWithParentCallback (ObjectControllerMessageCallback* objectControllerCallback) :
