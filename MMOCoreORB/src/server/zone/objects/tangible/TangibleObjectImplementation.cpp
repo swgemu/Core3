@@ -154,7 +154,9 @@ void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* tano6 = new TangibleObjectMessage6(thisPointer);
 	player->sendMessage(tano6);
 
-	if (player->isPlayerCreature())
+	ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+
+	if (player->isPlayerCreature() && parent == nullptr)
 		sendPvpStatusTo(player->asCreatureObject());
 }
 

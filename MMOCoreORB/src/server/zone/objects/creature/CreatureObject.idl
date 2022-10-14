@@ -253,10 +253,7 @@ class CreatureObject extends TangibleObject {
 	public native void initializeTransientMembers();
 
 	@preLocked
-	public abstract void setCountdownTimer(unsigned int newCount, boolean notifyClient = true) {
-		super.setCountdownTimer(newCount, notifyClient);
-		cooldownTimerMap.updateToCurrentAndAddMili("incapTimer", getUseCount()*1000);
-	}
+	public native void setIncapacitationTimer(unsigned int newCount, boolean notifyClient = true);
 
 	/**
 	 * Sends a CommandQueueRemove ObjectControllerMessage to the owner client of this object

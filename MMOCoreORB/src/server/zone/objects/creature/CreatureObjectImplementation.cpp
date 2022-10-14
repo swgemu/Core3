@@ -563,16 +563,26 @@ void CreatureObjectImplementation::setHeight(float height, bool notifyClient) {
 	broadcastMessage(msg, true);
 }
 
-void CreatureObjectImplementation::setShockWounds(int newShock,
-		bool notifyClient) {
+void CreatureObjectImplementation::setIncapacitationTimer(uint32 timer, bool notifyClient) {
+	cooldownTimerMap->updateToCurrentAndAddMili("incapTimer", timer*1000);
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
+		dcreo3->updateIncapacitationRecoveryTime(timer);
+		dcreo3->close();
+
+		broadcastMessage(dcreo3, true);
+	}
+}
+
+void CreatureObjectImplementation::setShockWounds(int newShock, bool notifyClient) {
 	if (shockWounds == newShock)
 		return;
 
 	shockWounds = newShock;
 
 	if (notifyClient) {
-		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
-				asCreatureObject());
+		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
 		dcreo3->updateShockWounds();
 		dcreo3->close();
 
@@ -717,7 +727,7 @@ void CreatureObjectImplementation::setCombatState() {
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
 		dcreo3->updateCreatureBitmask(getOptionsBitmask());
-		dcreo3->updateState();
+		dcreo3->updateStatesBitmask();
 		dcreo3->close();
 
 		broadcastMessage(dcreo3, true);
@@ -749,10 +759,9 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 
 		stateBitmask &= ~CreatureState::COMBAT;
 
-		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
-				asCreatureObject());
+		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
 		dcreo3->updateCreatureBitmask(getOptionsBitmask());
-		dcreo3->updateState();
+		dcreo3->updateStatesBitmask();
 		dcreo3->close();
 
 		broadcastMessage(dcreo3, true);
@@ -811,9 +820,10 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 					}
 
 					SitOnObject* soo = new SitOnObject(asCreatureObject(), getPositionX(), getPositionZ(), getPositionY());
+
 					CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
 					dcreo3->updatePosture();
-					dcreo3->updateState();
+					dcreo3->updateStatesBitmask();
 					dcreo3->close();
 
 #ifdef LOCKFREE_BCLIENT_BUFFERS
@@ -845,7 +855,7 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 				}
 			} else {
 				CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
-				dcreo3->updateState();
+				dcreo3->updateStatesBitmask();
 				dcreo3->close();
 
 				broadcastMessage(dcreo3, true);
@@ -933,9 +943,8 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 		stateBitmask &= ~state;
 
 		if (notifyClient) {
-			CreatureObjectDeltaMessage3* dcreo3 =
-					new CreatureObjectDeltaMessage3(asCreatureObject());
-			dcreo3->updateState();
+			CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
+			dcreo3->updateStatesBitmask();
 			dcreo3->close();
 
 			broadcastMessage(dcreo3, true);
@@ -1211,8 +1220,7 @@ void CreatureObjectImplementation::setBaseHAM(int type, int value,
 	}
 }
 
-void CreatureObjectImplementation::setWounds(int type, int value,
-		bool notifyClient) {
+void CreatureObjectImplementation::setWounds(int type, int value, bool notifyClient) {
 	if (value < 0)
 		value = 0;
 
@@ -1223,8 +1231,7 @@ void CreatureObjectImplementation::setWounds(int type, int value,
 		return;
 
 	if (notifyClient) {
-		CreatureObjectDeltaMessage3* msg = new CreatureObjectDeltaMessage3(
-				asCreatureObject());
+		CreatureObjectDeltaMessage3* msg = new CreatureObjectDeltaMessage3(asCreatureObject());
 		msg->startUpdate(0x11);
 		wounds.set(type, value, msg);
 		msg->close();
@@ -1600,7 +1607,6 @@ void CreatureObjectImplementation::updatePostures(bool immediate) {
 	// Failing to send this will result in the creature returning to it's previous posture after a CombatAction
 	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
 	dcreo3->updatePosture();
-	//dcreo3->updateState();
 	dcreo3->close();
 
 	messages.add(dcreo3);
