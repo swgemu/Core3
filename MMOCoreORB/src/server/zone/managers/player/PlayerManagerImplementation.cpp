@@ -1110,8 +1110,8 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 	// Switch the sign of the value
 	int value = -condition;
 
-	if (value < 0)
-		return 0;
+	if (value < 5)
+		return 5;
 
 	int recoveryTime = (value / 5); // In seconds - 3 seconds is recoveryEvent timer
 
@@ -1174,13 +1174,12 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	if (ghost->getIncapacitationCounter() >= 3) {
 		killPlayer(destructor, playerCreature, 0, isCombatAction);
 	} else {
-
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true, true);
 		playerCreature->clearCombatState(false);
 		playerCreature->clearState(CreatureState::FEIGNDEATH); // We got incapped for real - Remove the state so we can be DB'd
 
 		uint8 incapTime = calculateIncapacitationTimer(playerCreature, condition);
-		playerCreature->setCountdownTimer((uint32) incapTime, true);
+		playerCreature->setIncapacitationTimer((uint32) incapTime, true);
 
 		Reference<Task*> oldTask = playerCreature->getPendingTask("incapacitationRecovery");
 
