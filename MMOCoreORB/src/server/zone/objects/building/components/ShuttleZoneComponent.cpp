@@ -12,13 +12,27 @@
 void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
 	ZoneComponent::notifyInsertToZone(sceneObject, zone);
 
-	if (sceneObject == nullptr || !sceneObject->isCreatureObject())
+	if (sceneObject == nullptr) {
+		error() << "ShuttleZoneComponent::notifyInsertToZone -- inserted object is null";
 		return;
+	}
+
+	if (!sceneObject->isCreatureObject()) {
+		error() << "ShuttleZoneComponent::notifyInsertToZone -- inserted object is not a Creature Object";
+		return;
+	}
 
 	CreatureObject* shuttle = cast<CreatureObject*>( sceneObject);
 
 	Reference<ScheduleShuttleTask*> task = new ScheduleShuttleTask(shuttle, zone);
-	task->schedule(1000);
+
+	int delay = 60; //(System::random(10) + 1) * 60;
+
+#ifdef SHUTTLE_TIMER_DEBUG
+	info(true) << "ScheduleShuttleTask for " << zone->getZoneName() << " scheduled due to server loading in " << delay << " seconds.";
+#endif
+
+	task->schedule(delay * 1000);
 }
 
 void ShuttleZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {

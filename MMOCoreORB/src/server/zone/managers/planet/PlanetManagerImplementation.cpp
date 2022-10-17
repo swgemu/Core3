@@ -170,23 +170,23 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	// Configure shuttleport timing
 	if ((shuttleportAwayTime = lua->getGlobalInt("shuttleportAwayTime")) <= 0)
-	  shuttleportAwayTime = 300;
+		shuttleportAwayTime = 300;
 
 	if ((shuttleportLandedTime = lua->getGlobalInt("shuttleportLandedTime")) <= 0)
-	  shuttleportLandedTime = 120;
+		shuttleportLandedTime = 120;
 
 	if ((shuttleportLandingTime = lua->getGlobalInt("shuttleportLandingTime")) <= 0)
-	  shuttleportLandingTime = 11;
+		shuttleportLandingTime = 11;
 
 	// Configure starport timing
 	if ((starportAwayTime = lua->getGlobalInt("starportAwayTime")) <= 0)
-	  starportAwayTime = 60;
+		starportAwayTime = 60;
 
 	if ((starportLandedTime = lua->getGlobalInt("starportLandedTime")) <= 0)
-	  starportLandedTime = 120;
+		starportLandedTime = 120;
 
 	if ((starportLandingTime = lua->getGlobalInt("starportLandingTime")) <= 0)
-	  starportLandingTime = 120;
+		starportLandingTime = 14;
 
 	ReadLocker rLock(&regionMap);
 	int numRegions = regionMap.getTotalRegions();
@@ -1345,8 +1345,9 @@ void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle, int s
 		break;
 	}
 
-	shuttleMap.put(oid, task);
+	task->setShuttleType(shuttleType);
 
+	shuttleMap.put(oid, task);
 
 	task->schedule((task->getLandedTime() + task->getLandingTime()) * 1000);
 }

@@ -2398,6 +2398,10 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 
 void AiAgentImplementation::doMovement() {
 	try {
+#ifdef DEBUG_AI
+		Time startTime;
+		startTime.updateToCurrentTime();
+#endif
 		//info("doMovement", true);
 		Reference<Behavior*> rootBehavior = getBehaviorTree(BehaviorTreeSlot::NONE);
 		assert(rootBehavior != nullptr);
@@ -2419,9 +2423,6 @@ void AiAgentImplementation::doMovement() {
 
 		if (actionStatus == Behavior::RUNNING)
 			popRunningChain(); // don't keep root in the running chain
-
-		Time startTime;
-		startTime.updateToCurrentTime();
 
 		//if (actionStatus == Behavior::RUNNING) {
 		//	std::cout << "Running chain: (" << runningChain.size() << ")" << std::endl;

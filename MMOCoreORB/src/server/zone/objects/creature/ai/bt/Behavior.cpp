@@ -52,7 +52,10 @@ bool Behavior::checkConditions(AiAgent* agent) const {
 
 	ZoneServer* zoneServer = agent->getZoneServer();
 
-	if (zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
+	if (zoneServer == nullptr || zoneServer->isServerLoading())
+		return false;
+
+	if (zoneServer->isServerShuttingDown()) {
 		agent->wipeBlackboard();
 		agent->cancelMovementEvent();
 

@@ -1417,7 +1417,7 @@ void SceneObjectImplementation::createChildObjects() {
 				}
 			}
 
-			if (!getZoneUnsafe()->transferObject(obj, -1, false)) {
+			if (!getZoneUnsafe()->transferObject(obj, -1, true)) {
 				obj->destroyObjectFromDatabase(true);
 				continue;
 			}

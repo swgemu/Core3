@@ -60,10 +60,10 @@ public:
 
 		// Is there a shuttle object related to this point?
 		if (shuttle == nullptr) {
-			creature->error("WARNING: Missing a shuttle object:" + closestPoint->toString());
+			creature->error("No Shuttle Object assigned to " + closestPoint->toString());
 
 			// Different error so it's obvious from in-game that the shuttle did not link to this travel point.
-			creature->sendSystemMessage("Shuttle destroyed by terrorists.");
+			creature->sendSystemMessage("Travel from this location is unavailable at this time.");
 			return GENERALERROR;
 		}
 
