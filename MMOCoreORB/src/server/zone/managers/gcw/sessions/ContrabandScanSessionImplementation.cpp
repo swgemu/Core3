@@ -59,10 +59,8 @@ int ContrabandScanSessionImplementation::initializeSession() {
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if (gcwMan != nullptr) {
-		// Update the cooldown on the player
-		player->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownPlayerScanCooldown());
-	}
+	if (gcwMan != nullptr)
+		player->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownPlayerScanCooldown() * 1000);
 
 	// Update the scanners cooldown
 	scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
@@ -480,7 +478,6 @@ void ContrabandScanSessionImplementation::checkIfPlayerShouldBeScanned(CreatureO
 
 	if (System::random(SCANINITIATECHANCE) >= SCANINITIATECHANCE - 1 || enforcedScan) { // 1 in SCANINITIATECHANCE chance to initiate the scan.
 		scanState = INITIATESCAN;
-		player->updateCooldownTimer("crackdown_scan", player->getZone()->getGCWManager()->getCrackdownPlayerScanCooldown());
 	} else {
 		if (System::random(100) < 30 && scanner != nullptr && scanner->getFaction() == Factions::FACTIONIMPERIAL)
 			sendBarkChatMessage(scanner, player);

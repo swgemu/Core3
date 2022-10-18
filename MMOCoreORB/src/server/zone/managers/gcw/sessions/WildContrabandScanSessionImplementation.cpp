@@ -27,7 +27,7 @@ int WildContrabandScanSessionImplementation::initializeSession() {
 
 	ManagedReference<Zone*> zone = player->getZone();
 
-	if (zone == nullptr || zone->getGCWManager() == nullptr) {
+	if (zone == nullptr) {
 		return false;
 	}
 
@@ -44,7 +44,7 @@ int WildContrabandScanSessionImplementation::initializeSession() {
 	GCWManager* gcwMan = zone->getGCWManager();
 
 	if (gcwMan != nullptr)
-		player->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownPlayerScanCooldown());
+		player->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownPlayerScanCooldown() * 1000);
 
 	if (player->getActiveSession(SessionFacadeType::WILDCONTRABANDSCAN) != nullptr) {
 		player->dropActiveSession(SessionFacadeType::WILDCONTRABANDSCAN);
