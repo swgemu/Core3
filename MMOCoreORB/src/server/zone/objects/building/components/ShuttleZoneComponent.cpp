@@ -9,6 +9,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/tasks/ScheduleShuttleTask.h"
 
+//#define SHUTTLE_TIMER_DEBUG
+
 void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
 	ZoneComponent::notifyInsertToZone(sceneObject, zone);
 
@@ -26,7 +28,8 @@ void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zo
 
 	Reference<ScheduleShuttleTask*> task = new ScheduleShuttleTask(shuttle, zone);
 
-	int delay = 60; //(System::random(10) + 1) * 60;
+	// Shuttles delayed 10 minutes for server start
+	int delay = 10 * 60;
 
 #ifdef SHUTTLE_TIMER_DEBUG
 	info(true) << "ScheduleShuttleTask for " << zone->getZoneName() << " scheduled due to server loading in " << delay << " seconds.";

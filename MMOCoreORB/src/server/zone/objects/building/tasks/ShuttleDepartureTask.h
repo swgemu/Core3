@@ -11,6 +11,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "engine/engine.h"
 
+//#define SHUTTLE_TIMER_DEBUG
+
 class ShuttleDepartureTask : public Task, public Logger {
 	ManagedWeakReference<CreatureObject*> shuttleObject;
 

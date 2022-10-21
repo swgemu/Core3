@@ -30,16 +30,6 @@ public:
 			return;
 		}
 
-		ZoneServer* zoneServer = zone->getZoneServer();
-
-		// Delay During Server Loading
-		if (zoneServer != nullptr && zoneServer->isServerLoading()) {
-			int delay = System::random(60) + 30;
-
-			schedule(delay * 1000);
-			return;
-		}
-
 		Locker _lock(strongReference);
 
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
