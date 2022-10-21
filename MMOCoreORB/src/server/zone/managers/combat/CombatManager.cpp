@@ -1345,9 +1345,9 @@ int CombatManager::calculatePoolsToDamage(int poolsToDamage) const {
 	if (poolsToDamage & RANDOM) {
 		int rand = System::random(100);
 
-		if (rand < 50) {
+		if (rand < 70) {
 			poolsToDamage = HEALTH;
-		} else if (rand < 85) {
+		} else if (rand < 95) {
 			poolsToDamage = ACTION;
 		} else {
 			poolsToDamage = MIND;
@@ -1385,10 +1385,20 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	int numberOfPoolsDamaged = (healthDamaged ? 1 : 0) + (actionDamaged ? 1 : 0) + (mindDamaged ? 1 : 0);
 	Vector<int> poolsToWound;
 
+#ifdef DEBUG_SPILL_DAMAGE
+	StringBuffer spillOverDebug;
+	spillOverDebug << " ========== Spill Over Debug ==========\n";
+#endif
+
 	int numSpillOverPools = 3 - numberOfPoolsDamaged;
 
-	float spillMultPerPool = (0.1f * numSpillOverPools) / Math::max(numberOfPoolsDamaged, 1);
+	float spillMultPerPool = (0.05f * numSpillOverPools) / Math::max(numberOfPoolsDamaged, 1);
 	int totalSpillOver = 0; // Accumulate our total spill damage
+
+#ifdef DEBUG_SPILL_DAMAGE
+	spillOverDebug << " Number of Spill Over Pools: " << numSpillOverPools << "\n";
+	spillOverDebug << " Spill Over Multiplier: " << spillMultPerPool << "\n";
+#endif
 
 	// from screenshots, it appears that food mitigation and armor mitigation were independently calculated
 	// and then added together.
@@ -1416,9 +1426,17 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		healthDamage -= foodMitigation;
 		totalFoodMit += foodMitigation;
 
+#ifdef DEBUG_SPILL_DAMAGE
+		spillOverDebug << " Non-Spill Health Damaged: " << healthDamage << "\n";
+#endif
+
 		int spilledDamage = (int)(healthDamage * spillMultPerPool); // Cut our damage by the spill percentage
 		healthDamage -= spilledDamage;								// subtract spill damage from total damage
 		totalSpillOver += spilledDamage;							// accumulate spill damage
+
+#ifdef DEBUG_SPILL_DAMAGE
+		spillOverDebug << " Health Spill Over Amount: " << spilledDamage << "\n";
+#endif
 
 		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType, true, true);
 
@@ -1443,9 +1461,17 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		actionDamage -= foodMitigation;
 		totalFoodMit += foodMitigation;
 
+#ifdef DEBUG_SPILL_DAMAGE
+		spillOverDebug << " Non-Spill Action Damaged: " << actionDamage << "\n";
+#endif
+
 		int spilledDamage = (int)(actionDamage * spillMultPerPool);
 		actionDamage -= spilledDamage;
 		totalSpillOver += spilledDamage;
+
+#ifdef DEBUG_SPILL_DAMAGE
+		spillOverDebug << " Action Spill Over Amount: " << spilledDamage << "\n";
+#endif
 
 		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true, xpType, true, true);
 
@@ -1469,9 +1495,17 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		mindDamage -= foodMitigation;
 		totalFoodMit += foodMitigation;
 
+#ifdef DEBUG_SPILL_DAMAGE
+		spillOverDebug << " Non-Spill Mind Damaged: " << mindDamage << "\n";
+#endif
+
 		int spilledDamage = (int)(mindDamage * spillMultPerPool);
 		mindDamage -= spilledDamage;
 		totalSpillOver += spilledDamage;
+
+#ifdef DEBUG_SPILL_DAMAGE
+		spillOverDebug << " Mind Spill Over Amount: " << spilledDamage << "\n";
+#endif
 
 		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true, xpType, true, true);
 
@@ -1479,19 +1513,32 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	}
 
 	if (numSpillOverPools > 0) {
+#ifdef DEBUG_SPILL_DAMAGE
+		spillOverDebug << " Total Spill Over Damage: " << totalSpillOver << "\n";
+#endif
+
 		int spillDamagePerPool = (int)(totalSpillOver / numSpillOverPools); // Split the spill over damage between the pools damaged
 		int spillOverRemainder = (totalSpillOver % numSpillOverPools) + spillDamagePerPool;
 		int spillToApply = (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder);
 
 		if ((poolsToDamage ^ 0x7) & HEALTH) {
+#ifdef DEBUG_SPILL_DAMAGE
+			spillOverDebug << " Health Spill Over Damage: " << spillToApply << "\n";
+#endif
 			defender->inflictDamage(attacker, CreatureAttribute::HEALTH, spillToApply, true, xpType, true, true);
 		}
 
 		if ((poolsToDamage ^ 0x7) & ACTION) {
+#ifdef DEBUG_SPILL_DAMAGE
+			spillOverDebug << " Action Spill Over Damage: " << spillToApply << "\n";
+#endif
 			defender->inflictDamage(attacker, CreatureAttribute::ACTION, spillToApply, true, xpType, true, true);
 		}
 
 		if ((poolsToDamage ^ 0x7) & MIND) {
+#ifdef DEBUG_SPILL_DAMAGE
+			spillOverDebug << " Mind Spill Over Damage: " << spillToApply << "\n";
+#endif
 			defender->inflictDamage(attacker, CreatureAttribute::MIND, spillToApply, true, xpType, true, true);
 		}
 	}
@@ -1507,6 +1554,11 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	defenderHitList->setHitLocation(hitLocation);
 	defenderHitList->setFoodMitigation(totalFoodMit);
 	defenderHitList->setPoolsToWound(poolsToWound);
+
+#ifdef DEBUG_SPILL_DAMAGE
+	spillOverDebug << " ========== END Spill Over Debug ==========\n";
+	attacker->info(true) << spillOverDebug.toString();
+#endif
 
 	return totalDamage;
 }
