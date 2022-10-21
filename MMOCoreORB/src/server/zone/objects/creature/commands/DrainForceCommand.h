@@ -17,7 +17,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -28,10 +27,9 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		// Fail if target is not a player...
-
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
+		// Fail if target is not a player...
 		if (object == nullptr || !object->isPlayerCreature())
 			return INVALIDTARGET;
 
@@ -40,11 +38,15 @@ public:
 		if (targetCreature == nullptr || targetCreature->isDead() || (targetCreature->isIncapacitated() && !targetCreature->isFeigningDeath()) || !targetCreature->isAttackableBy(creature))
 			return INVALIDTARGET;
 
-		if(!checkDistance(creature, targetCreature, range))
+		if (!checkDistance(creature, targetCreature, range))
 			return TOOFAR;
 
 		if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
 			creature->sendSystemMessage("@combat_effects:cansee_fail");//You cannot see your target.
+			return GENERALERROR;
+		}
+
+		if (!playerEntryCheck(creature, targetCreature)) {
 			return GENERALERROR;
 		}
 
@@ -60,6 +62,7 @@ public:
 
 		if (manager->startCombat(creature, targetCreature, false)) { //lockDefender = false because already locked above.
 			int forceSpace = playerGhost->getForcePowerMax() - playerGhost->getForcePower();
+
 			if (forceSpace <= 0) //Cannot Force Drain if attacker can't hold any more Force.
 				return GENERALERROR;
 

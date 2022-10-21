@@ -68,7 +68,7 @@ public:
 			targetObject = commander;
 		}
 
-		 if (targetObject != commander && !CollisionManager::checkLineOfSight(commander, targetObject)) {
+		 if (targetObject != commander && (!CollisionManager::checkLineOfSight(commander, targetObject) || !playerEntryCheck(commander, targetObject))) {
 			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return GENERALERROR;
 		}
