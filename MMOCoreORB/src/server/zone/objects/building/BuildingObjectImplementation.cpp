@@ -1425,7 +1425,7 @@ void BuildingObjectImplementation::createChildObjects() {
 				if (obj->isTurret() || obj->isMinefield())
 					obj->createChildObjects();
 
-				thisZone->transferObject(obj, -1, false);
+				thisZone->transferObject(obj, -1, true);
 			}
 
 			if (obj->isTurretControlTerminal()) {
