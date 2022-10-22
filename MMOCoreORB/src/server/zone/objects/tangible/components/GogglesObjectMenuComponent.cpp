@@ -35,7 +35,7 @@ int GogglesObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 	if (!sceneObject->isASubChildOf(player))
 		return 0;
-		
+
 	if (selectedID == 81 || selectedID == 82) {
 
 		ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
@@ -58,10 +58,12 @@ int GogglesObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			// The Sui Box.
 			ManagedReference<SuiColorBox*> cbox = new SuiColorBox(player, SuiWindowType::COLOR_GOGGLES);
 			cbox->setCallback(new ColorGogglesSuiCallback(server));
+
 			if (selectedID == 81)
 				cbox->setColorPalette(variables.elementAt(1).getKey());
 			else
 				cbox->setColorPalette(variables.elementAt(0).getKey());
+
 			cbox->setUsingObject(sceneObject);
 
 			// Add to player.

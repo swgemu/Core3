@@ -17,7 +17,6 @@
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 
 void ArmorObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-
 	if (!sceneObject->isWearableObject())
 		return;
 
@@ -32,32 +31,29 @@ void ArmorObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, 
 			if (!buio->isOnAdminList(player))
 				return;
 		}
-	}
-	else
-	{
+	} else {
 		if (!sceneObject->isASubChildOf(player))
 			return;
 	}
 
 	String text = "Color Change";
 	menuResponse->addRadialMenuItem(81, 3, text);
-	
-    WearableObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player); 	
+
+	WearableObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player); 
 }
 
 int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 
 	if (selectedID == 81) {
-		
 		ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
-	
+
 		if (parent == nullptr)
 			return 0;
-	
+
 		if (parent->isPlayerCreature()) {
 			player->sendSystemMessage("@armor_rehue:equipped");
 			return 0;
-		}	
+		}
 
 		if (parent->isCellObject()) {
 			ManagedReference<SceneObject*> obj = parent->getParent().get();
@@ -68,35 +64,41 @@ int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 				if (!buio->isOnAdminList(player))
 					return 0;
 			}
-		}
-		else
-		{
+		} else {
 			if (!sceneObject->isASubChildOf(player))
 				return 0;
 		}
 
 		ZoneServer* server = player->getZoneServer();
 
-		if (server != nullptr) {		
+		if (server != nullptr) {
+			// The color index.
+			String appearanceFilename = sceneObject->getObjectTemplate()->getAppearanceFilename();
+			VectorMap<String, Reference<CustomizationVariable*> > variables;
+			AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
 
-		// The color index.
-		String appearanceFilename = sceneObject->getObjectTemplate()->getAppearanceFilename();
-		VectorMap<String, Reference<CustomizationVariable*> > variables;
-		AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+			// The Sui Box.
+			ManagedReference<SuiColorBox*> cbox = new SuiColorBox(player, SuiWindowType::COLOR_ARMOR);
+			cbox->setCallback(new ColorArmorSuiCallback(server));
+			cbox->setColorPalette(variables.elementAt(1).getKey()); // First one seems to be the frame of it? Skip to 2nd.
+			cbox->setUsingObject(sceneObject);
 
-		// The Sui Box.
-		ManagedReference<SuiColorBox*> cbox = new SuiColorBox(player, SuiWindowType::COLOR_ARMOR);
-		cbox->setCallback(new ColorArmorSuiCallback(server));
-		cbox->setColorPalette(variables.elementAt(1).getKey()); // First one seems to be the frame of it? Skip to 2nd.
-		cbox->setUsingObject(sceneObject);
+			int skillMod = player->getSkillMod("armor_customization");
 
-		// Add to player.
-		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-		ghost->addSuiBox(cbox);
-		player->sendMessage(cbox->generateMessage());
+			if (skillMod < 120)
+				skillMod = 120;
+			else if (skillMod > 255)
+				skillMod = 255;
+
+			cbox->setSkillMod(skillMod);
+
+			// Add to player.
+			ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+			ghost->addSuiBox(cbox);
+			player->sendMessage(cbox->generateMessage());
 		}
 
 	}
-	
+
 	return WearableObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }
