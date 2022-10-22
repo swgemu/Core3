@@ -83,7 +83,7 @@ public:
 #endif
 
 		//Make sure the shuttle isn't still landing
-		if (landedCalc <= landingTime)
+		if (landingTime >= landedCalc)
 			return false;
 
 		return true;
@@ -103,7 +103,7 @@ public:
 		info(true) << " isLanded - landing time = " << landingTime << " landed calc = " << landedCalc;
 #endif
 
-		if (strongReference->isStanding() && landedTime <= landingTime)
+		if (strongReference->isStanding() && landedCalc <= landingTime)
 			return true;
 
 		return false;
