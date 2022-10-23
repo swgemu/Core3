@@ -108,6 +108,8 @@ function Escort:setEscortFollow(pPlayer, pEscort)
 	AiAgent(pEscort):removeCreatureFlag(AI_STATIONARY)
 	AiAgent(pEscort):addCreatureFlag(AI_NOAIAGGRO)
 	AiAgent(pEscort):addCreatureFlag(AI_ESCORT)
+	AiAgent(pEscort):addCreatureFlag(AI_FOLLOW)
+
 	AiAgent(pEscort):setFollowObject(pPlayer)
 	AiAgent(pEscort):setMovementState(AI_FOLLOWING)
 
@@ -138,6 +140,7 @@ function Escort:taskFinish(pPlayer)
 
 	if (pEscort ~= nil) then
 		AiAgent(pEscort):setFollowObject(nil)
+		AiAgent(pEscort):removeCreatureFlag(AI_FOLLOW)
 		createEvent(self.escortDespawnTime, self.taskName, "handleEscortDespawn", pEscort, "")
 	end
 
