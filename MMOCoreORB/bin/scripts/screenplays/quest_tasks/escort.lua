@@ -108,6 +108,7 @@ function Escort:setEscortFollow(pPlayer, pEscort)
 	AiAgent(pEscort):addCreatureFlag(AI_NOAIAGGRO)
 	AiAgent(pEscort):addCreatureFlag(AI_ESCORT)
 	AiAgent(pEscort):setFollowObject(pPlayer)
+	AiAgent(pEscort):addCreatureFlag(AI_FOLLOW)
 	AiAgent(pEscort):setMovementState(AI_FOLLOWING)
 
 	writeData(playerID .. self.taskName .. "escortID", escortID)
