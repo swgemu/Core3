@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19210e18_07f9c4e5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/escort.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2022-10-24T13:29:07Z",
+      "side": 1,
+      "message": "This flag should be added before the follow object is set or the AI will still be running the other branch of the Behavior Tree and drop its follow object.",
+      "revId": "e627d2f967f39578e36fe2e64e8af282f33d8aa3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfd75670_381289e9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/conversations/heroOfTatMotherConvoHandler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2022-10-24T13:29:07Z",
+      "side": 1,
+      "message": "Same thing here for both of these.",
+      "revId": "e627d2f967f39578e36fe2e64e8af282f33d8aa3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
