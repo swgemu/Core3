@@ -96,7 +96,14 @@ public:
 	String print() const;
 
 	virtual bool checkConditions(AiAgent* agent) const {
-		return children.size() > 0 && Behavior::checkConditions(agent);
+		if (children.size() <= 0)
+			return false;
+
+		if (!Behavior::checkConditions(agent)) {
+			return true;
+		}
+
+		return true;
 	}
 
 	Behavior::Status doAction(AiAgent* agent) const;

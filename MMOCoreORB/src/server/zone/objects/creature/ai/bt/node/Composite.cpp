@@ -21,8 +21,9 @@ Behavior::Status Composite::doAction(AiAgent* agent) const {
 	}
 #endif // DEBUG_AI
 
-	if (!this->checkConditions(agent))
-		return INVALID;
+		if (!checkConditions(agent)) {
+			return INVALID;
+		}
 
 	// Step 1:  check if this behavior is in the running chain
 	//          if it isn't, then call start(), but if it is,
