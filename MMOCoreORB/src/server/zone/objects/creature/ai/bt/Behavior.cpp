@@ -35,14 +35,10 @@ namespace {
 
 using namespace server::zone::objects::creature::ai::bt;
 
-Behavior::Behavior(const String& className, const uint32 id, const LuaObject& args)
-	: Object(), className(className), id(id), parent() {}
+Behavior::Behavior(const String& className, const uint32 id, const LuaObject& args) : Object(), className(className), id(id), parent() {}
 
 bool Behavior::checkConditions(AiAgent* agent) const {
-	if (agent == nullptr)
-		return false;
-
-	if (agent->isDead() || agent->isIncapacitated())
+	if (agent == nullptr || agent->isDead() || agent->isIncapacitated())
 		return false;
 
 	Zone* zone = agent->getZone();
@@ -67,9 +63,9 @@ bool Behavior::checkConditions(AiAgent* agent) const {
 
 Behavior::Status Behavior::doAction(AiAgent* agent) const {
 #ifdef DEBUG_AI
-	//agent->info("0x" + String::hexvalueOf((int)id) + " " + print().toCharArray(), true);
 	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
 		StringBuffer msg;
+
 		msg << "0x" << hex << id << " " << print().toCharArray();
 		agent->info(msg.toString(), true);
 
@@ -82,16 +78,7 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 #endif // DEBUG_AI
 
 	if (!checkConditions(agent)) {
-		if (agent != nullptr) {
-			// TODO: Should this be done here or in realizations of specific actions?
-			agent->clearCombatState(true);
-
-//#ifdef DEBUG_AI
-			agent->info() << " CheckConiditions returned false " << print() << " in " << agent->getErrorContext();
-//#endif
-		}
-
-		return FAILURE;
+		return INVALID;
 	}
 
 	// Step 1:	check if this behavior is in the running chain
@@ -110,7 +97,6 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 	Behavior::Status result = this->execute(agent);
 
 #ifdef DEBUG_AI
-	//agent->info("0x" + String::hexvalueOf((int)id) + " " + print().toCharArray() + " result: " + result, true);
 	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
 		StringBuffer msg;
 		msg << "0x" << hex << id << " " << print() << " result: " << result;
@@ -123,7 +109,9 @@ Behavior::Status Behavior::doAction(AiAgent* agent) const {
 	//			add this->id to the front. As the chain unwinds, the composite
 	//			parents will push_front to the chain until the root node
 	if (result == RUNNING) {
-		if (!isSocket()) agent->clearRunningChain();
+		if (!isSocket())
+			agent->clearRunningChain();
+
 		agent->addRunningID(id);
 	} else
 		this->end(agent);

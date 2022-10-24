@@ -78,7 +78,14 @@ public:
 	}
 
 	virtual bool checkConditions(AiAgent* agent) const {
-		return child != nullptr && Behavior::checkConditions(agent);
+		if (child == nullptr)
+			return false;
+
+		if (!Behavior::checkConditions(agent)) {
+			return true;
+		}
+
+		return true;
 	}
 
 	Behavior::Status doAction(AiAgent* agent) const {
@@ -91,8 +98,9 @@ public:
 		}
 #endif // DEBUG_AI
 
-		if (!this->checkConditions(agent))
-			return INVALID; // TODO: should this be FAILURE?
+		if (!checkConditions(agent)) {
+			return INVALID;
+		}
 
 		if (!agent->isRunningBehavior(id))
 			this->start(agent);
