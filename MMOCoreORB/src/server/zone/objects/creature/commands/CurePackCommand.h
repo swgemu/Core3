@@ -38,11 +38,17 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	void parseModifier(const String& modifier, uint64& objectId) const {
-		if (!modifier.isEmpty())
-			objectId = Long::valueOf(modifier);
-		else
-			objectId = 0;
+	uint64 parseObjectID(const String& objectIDString) const {
+		// Ensure that we are receiving a proper objectID
+		for (int i = 0; i < objectIDString.length(); i++) {
+			if (!Character::isDigit(objectIDString.charAt(i)))
+				return 0;
+		}
+
+		if (!objectIDString.isEmpty())
+			return Long::valueOf(objectIDString);
+
+		return 0;
 	}
 
 	CurePack* findCurePack(CreatureObject* creature) const {
@@ -371,7 +377,7 @@ public:
 
 		uint64 objectId = 0;
 
-		parseModifier(arguments.toString(), objectId);
+		objectId = parseObjectID(arguments.toString());
 
 		ManagedReference<CurePack*> curePack;
 
