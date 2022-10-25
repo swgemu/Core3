@@ -45,7 +45,7 @@ function heroOfTatMotherConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 		AiAgent(pNpc):addCreatureFlag(AI_FOLLOW)
 
 		AiAgent(pNpc):setFollowObject(pPlayer)
-		AIAgent(pNpc):setMovementState(AI_FOLLOWING)
+		AiAgent(pNpc):setMovementState(AI_FOLLOWING)
 
 		writeData("hero_of_tat:altruismEscortStatus", 1)
 		writeData("hero_of_tat:altruismEscorterID", SceneObject(pPlayer):getObjectID())
