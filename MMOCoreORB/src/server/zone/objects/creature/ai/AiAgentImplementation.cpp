@@ -2295,7 +2295,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			if (cellObject != nullptr) {
 				cellObject->transferObject(movementMarker, -1, true);
 			} else {
-				getZone()->transferObject(movementMarker, -1, false);
+				getZone()->transferObject(movementMarker, -1, true);
 			}
 
 			movementMarkers.add(movementMarker);

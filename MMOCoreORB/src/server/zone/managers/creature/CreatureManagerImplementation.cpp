@@ -125,7 +125,7 @@ SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate,
  	building->registerObserver(ObserverEventType::AIMESSAGE, lairObserver);
  	building->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, lairObserver);
 
- 	zone->transferObject(building, -1, false);
+ 	zone->transferObject(building, -1, true);
 
 	lairObserver->checkForNewSpawns(building, nullptr, true);
 
@@ -173,7 +173,7 @@ SceneObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTempla
  	building->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, theaterObserver);
 
 
- 	zone->transferObject(building, -1, false);
+ 	zone->transferObject(building, -1, true);
 
  	theaterObserver->spawnInitialMobiles(building);
 
@@ -213,7 +213,7 @@ SceneObject* CreatureManagerImplementation::spawnDynamicSpawn(unsigned int lairT
 	theater->registerObserver(ObserverEventType::CREATUREDESPAWNED, dynamicObserver);
 	theater->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, dynamicObserver);
 
-	zone->transferObject(theater, -1, false);
+	zone->transferObject(theater, -1, true);
 
 	theater->createChildObjects();
 	dynamicObserver->spawnInitialMobiles(theater);

@@ -243,7 +243,7 @@ void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyC
 				Zone* zone = getZone();
 
 				if (zone != nullptr)
-					zone->transferObject(object, -1, false);
+					zone->transferObject(object, -1, true);
 			}
 		}
 

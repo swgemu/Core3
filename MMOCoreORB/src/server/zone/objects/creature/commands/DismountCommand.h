@@ -76,7 +76,7 @@ public:
 		if (terrainManager == nullptr)
 			return GENERALERROR;
 
-		zone->transferObject(creature, -1, false);
+		zone->transferObject(creature, -1, true);
 
 		IntersectionResults intersections;
 		CollisionManager::getWorldFloorCollisions(creature->getPositionX(), creature->getPositionY(), zone, &intersections, (CloseObjectsVector*) creature->getCloseObjects());

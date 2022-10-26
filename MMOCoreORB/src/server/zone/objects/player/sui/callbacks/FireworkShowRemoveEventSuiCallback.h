@@ -55,7 +55,7 @@ public:
 
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-		inventory->transferObject(firework, -1, false);
+		inventory->transferObject(firework, -1, true);
 		firework->sendTo(player, true);
 
 		ManagedReference<TangibleObject*> fireworkShowObject = fireworkShow.castTo<TangibleObject*>();
