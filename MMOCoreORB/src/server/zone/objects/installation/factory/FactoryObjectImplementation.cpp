@@ -688,7 +688,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 		return nullptr;
 	}
 
-	outputHopper->transferObject(crate, -1, false);
+	outputHopper->transferObject(crate, -1, true);
 
 	for(int i = 0; i < operatorList.size(); ++i) {
 		crate->sendTo(operatorList.get(i), true);

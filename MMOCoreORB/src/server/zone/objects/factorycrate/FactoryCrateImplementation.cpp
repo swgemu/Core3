@@ -298,7 +298,7 @@ void FactoryCrateImplementation::split(int newStackSize) {
 
 	Locker nlocker(newCrate);
 
-	if (!newCrate->transferObject(protoclone, -1, false)) {
+	if (!newCrate->transferObject(protoclone, -1, true)) {
 		protoclone->destroyObjectFromDatabase(true);
 		newCrate->destroyObjectFromDatabase(true);
 		return;
@@ -309,7 +309,7 @@ void FactoryCrateImplementation::split(int newStackSize) {
 
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 	if (strongParent != nullptr) {
-		if(	strongParent->transferObject(newCrate, -1, false)) {
+		if(	strongParent->transferObject(newCrate, -1, true)) {
 			strongParent->broadcastObject(newCrate, true);
 			setUseCount(getUseCount() - newStackSize, true);
 		} else {

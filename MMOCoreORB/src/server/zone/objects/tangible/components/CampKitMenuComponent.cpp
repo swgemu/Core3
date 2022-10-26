@@ -252,7 +252,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		campArea->setNoBuildArea(true);
 		campArea->initializePosition(player->getPositionX(), 0, player->getPositionY());
 
-		if (!zone->transferObject(campArea, -1, false)) {
+		if (!zone->transferObject(campArea, -1, true)) {
 			structureObject->destroyObjectFromDatabase(true);
 			campArea->destroyObjectFromDatabase(true);
 			return 1;

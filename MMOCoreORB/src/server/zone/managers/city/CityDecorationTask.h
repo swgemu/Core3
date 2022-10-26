@@ -158,7 +158,7 @@ public:
 		} else {
 			Locker tlock(obj, mayor);
 
-			if(	inv->transferObject(obj, -1, true)) {
+			if (inv->transferObject(obj, -1, true)) {
 				inv->broadcastObject(obj, true);
 				tlock.release();
 				Locker clock(city, mayor);

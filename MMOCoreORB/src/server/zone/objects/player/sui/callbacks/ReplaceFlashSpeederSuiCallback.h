@@ -50,7 +50,7 @@ public:
 		}
 
 		// Transfer to player
-		if( !inventory->transferObject(speederDeed, -1, false, false) ){ // No overflow
+		if (!inventory->transferObject(speederDeed, -1, false, false) ){ // No overflow
 			speederDeed->destroyObjectFromDatabase(true);
 			player->sendSystemMessage( "@veteran:flash_speeder_no_inv_space" ); // "You do not have any inventory space remaining for the Flash Speeder deed."
 			return;
