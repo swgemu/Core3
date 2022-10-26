@@ -364,7 +364,7 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 
 	TransactionLog trx(asSceneObject(), player, schematic, TrxCode::FACTORYOPERATION);
 
-	if(datapad->transferObject(schematic, -1, false)) {
+	if(datapad->transferObject(schematic, -1, true)) {
 		datapad->broadcastObject(schematic, true);
 
 		StringIdChatParameter message("manf_station", "schematic_removed"); //Schematic %TT has been removed from the station and been placed in your datapad. Have a nice day!
@@ -688,7 +688,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 		return nullptr;
 	}
 
-	outputHopper->transferObject(crate, -1, false);
+	outputHopper->transferObject(crate, -1, true);
 
 	for(int i = 0; i < operatorList.size(); ++i) {
 		crate->sendTo(operatorList.get(i), true);

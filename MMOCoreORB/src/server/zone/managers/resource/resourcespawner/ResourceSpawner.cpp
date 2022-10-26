@@ -1118,7 +1118,7 @@ bool ResourceSpawner::addResourceToPlayerInventory(TransactionLog& trx, Creature
 
 	trx.addRelatedObject(harvestedResource);
 
-	if (inventory->transferObject(harvestedResource, -1, false)) {
+	if (inventory->transferObject(harvestedResource, -1, true)) {
 		trx.addState("resourceType", resourceSpawn->getType());
 		trx.addState("resourceID", resourceSpawn->getObjectID());
 		trx.addState("resourceName", resourceSpawn->getName());

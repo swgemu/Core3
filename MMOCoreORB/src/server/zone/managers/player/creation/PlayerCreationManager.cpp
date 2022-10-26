@@ -687,7 +687,7 @@ void PlayerCreationManager::addStartingItems(CreatureObject* creature,
 			ManagedReference<SceneObject*> item = zoneServer->createObject(
 					commonStartingItems.get(itemNumber).hashCode(), 1);
 			if (item != nullptr) {
-				if (!inventory->transferObject(item, -1, false)) {
+				if (!inventory->transferObject(item, -1, true)) {
 					item->destroyObjectFromDatabase(true);
 				}
 			}

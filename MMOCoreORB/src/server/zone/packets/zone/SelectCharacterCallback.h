@@ -188,7 +188,7 @@ public:
 					objectToInsert = player;
 
 				Locker clocker(objectToInsert, player);
-				zone->transferObject(objectToInsert, -1, false);
+				zone->transferObject(objectToInsert, -1, true);
 			}
 
 			player->sendToOwner(true);

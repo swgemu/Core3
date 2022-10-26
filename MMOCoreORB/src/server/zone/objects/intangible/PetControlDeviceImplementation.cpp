@@ -733,7 +733,7 @@ void PetControlDeviceImplementation::destroyObjectFromDatabase(bool destroyConta
 				Zone* zone = getZone();
 
 				if (zone != nullptr)
-					zone->transferObject(object, -1, false);
+					zone->transferObject(object, -1, true);
 			}
 		}
 

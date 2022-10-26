@@ -229,7 +229,7 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 
 	TransactionLog trx(TrxCode::VENDORLIFECYCLE, player, vendor);
 
-	if(!inventory->transferObject(vendor, -1, false)) {
+	if(!inventory->transferObject(vendor, -1, true)) {
 		trx.abort() << "transferObject failed.";
 		player->sendSystemMessage("@player_structure:create_failed");
 		vendor->destroyObjectFromDatabase(true);
