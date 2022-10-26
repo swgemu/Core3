@@ -153,14 +153,14 @@ public:
 				playerParent = nullptr;
 			} else {
 				if (!(playerParent->isCellObject() && playerParent == root)) {
-					playerParent->transferObject(player, -1, false);
+					playerParent->transferObject(player, -1, true);
 				}
 
 				if (player->getParent() == nullptr) {
-					zone->transferObject(player, -1, false);
+					zone->transferObject(player, -1, true);
 				} else if (root->getZone() == nullptr) {
 					Locker clocker(root, player);
-					zone->transferObject(root, -1, false);
+					zone->transferObject(root, -1, true);
 				}
 
 				player->sendToOwner(true);
@@ -188,7 +188,7 @@ public:
 					objectToInsert = player;
 
 				Locker clocker(objectToInsert, player);
-				zone->transferObject(objectToInsert, -1, false);
+				zone->transferObject(objectToInsert, -1, true);
 			}
 
 			player->sendToOwner(true);

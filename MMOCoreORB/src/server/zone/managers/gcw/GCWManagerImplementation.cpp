@@ -3056,7 +3056,7 @@ uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* bu
 		}
 	}
 
-	zone->transferObject(obj, -1, false);
+	zone->transferObject(obj, -1, true);
 	building->getChildObjects()->put(obj);
 
 	return obj->getObjectID();
