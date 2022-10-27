@@ -118,6 +118,8 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	private transient Mutex movementEventMutex;
 	private int nextMovementInterval;
+	@dereferenced
+	private transient Mutex thinkEventMutex;
 
 	@dereferenced
 	protected transient Time lastDamageReceived;
@@ -310,6 +312,14 @@ class AiAgent extends CreatureObject {
 	 */
 	@preLocked
 	public abstract native void cancelMovementEvent();
+
+	/**
+	 * Stops the think event task
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
+	@preLocked
+	public abstract native void cancelThinkEvent();
 
 	/**
 	 * Does a recovery tick
@@ -606,8 +616,7 @@ class AiAgent extends CreatureObject {
 		numberOfPlayersInRange.set(0);
 
 		if (moveEvent) {
-			moveEvent.clearCreatureObject();
-			moveEvent = null;
+			cancelMovementEvent();
 		}
 	}
 
@@ -764,7 +773,6 @@ class AiAgent extends CreatureObject {
 			setMovementState(OBLIVIOUS);
 			setTargetObject(null);
 			clearState(CreatureState.PEACE);
-			//activateMovementEvent();
 		}
 	}
 
@@ -776,7 +784,6 @@ class AiAgent extends CreatureObject {
 			setMovementState(WATCHING);
 
 			setTargetObject(obj);
-			//activateMovementEvent();
 		}
 	}
 
@@ -788,7 +795,6 @@ class AiAgent extends CreatureObject {
 			setMovementState(STALKING);
 
 			setTargetObject(obj);
-			//activateMovementEvent();
 		}
 	}
 
@@ -801,7 +807,6 @@ class AiAgent extends CreatureObject {
 				setMovementState(FOLLOWING);
 
 				setTargetObject(obj);
-				//activateMovementEvent();
 			}
 		}
 	}
