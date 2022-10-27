@@ -1834,6 +1834,8 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 			}
 		}
 	}
+
+	activateAiBehavior();
 }
 
 void AiAgentImplementation::activateRecovery() {
@@ -2397,8 +2399,18 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 
 void AiAgentImplementation::runBehaviorTree() {
 	try {
-		// Check for AIENABLED flag. Other Conditions are checked in Behavior::checkConditions
-		if (!(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
+		if (getZoneUnsafe() == nullptr || !(getOptionsBitmask() & OptionBitmask::AIENABLED))
+			return;
+
+#ifdef DEBUG_AI
+		bool alwaysActive = ConfigManager::instance()->getAiAgentLoadTesting();
+#else // DEBUG_AI
+		bool alwaysActive = false;
+#endif // DEBUG_AI
+
+		ZoneServer* zoneServer = getZoneServer();
+
+		if ((!alwaysActive && numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) || zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()) {
 			cancelBehaviorEvent();
 			setFollowObject(nullptr);
 			return;
