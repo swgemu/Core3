@@ -11,8 +11,8 @@ import system.lang.Exception;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.commands.QueueCommand;
-import server.zone.objects.creature.ai.events.AiThinkEvent;
-import server.zone.objects.creature.ai.events.AiMoveEvent;
+import server.zone.objects.creature.ai.events.AiRecoveryEvent;
+import server.zone.objects.creature.ai.events.AiBehaviorEvent;
 import system.lang.ref.Reference;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.tangible.weapon.WeaponObject;
@@ -48,9 +48,9 @@ include server.zone.objects.area.ActiveArea;
 @mock
 @json
 class AiAgent extends CreatureObject {
-	protected transient AiThinkEvent thinkEvent;
+	protected transient AiRecoveryEvent recoveryEvent;
 
-	protected transient AiMoveEvent moveEvent;
+	protected transient AiBehaviorEvent behaviorEvent;
 
 	@dereferenced
 	protected transient ReadWriteLock despawnMutex;
@@ -116,10 +116,10 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	private transient Mutex targetMutex;
 	@dereferenced
-	private transient Mutex movementEventMutex;
-	private int nextMovementInterval;
+	private transient Mutex behaviorEventMutex;
+	private int nextBehaviorInterval;
 	@dereferenced
-	private transient Mutex thinkEventMutex;
+	private transient Mutex recoveryEventMutex;
 
 	@dereferenced
 	protected transient Time lastDamageReceived;
@@ -147,7 +147,7 @@ class AiAgent extends CreatureObject {
 	protected float respawnTimer;
 	protected int respawnCounter;
 	protected boolean randomRespawn;
-	
+
 	protected transient boolean hamRegenDisabled;
 
 	protected float coordinateMin;
@@ -196,7 +196,7 @@ class AiAgent extends CreatureObject {
 
 	protected transient boolean mindTricked;
 
-	public static final int UPDATEMOVEMENTINTERVAL = 400; // msec
+	public static final int BEHAVIORINTERVAL = 400; // msec
 
 	public static final int DEFAULTAGGRORADIUS = 24;
 
@@ -232,7 +232,7 @@ class AiAgent extends CreatureObject {
 		respawnCounter = 0;
 		randomRespawn = false;
 
-		nextMovementInterval = UPDATEMOVEMENTINTERVAL;
+		nextBehaviorInterval = BEHAVIORINTERVAL;
 
 		reactionRank = 0;
 
@@ -303,7 +303,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this is locked }
 	 */
 	@preLocked
-	public abstract native void activateMovementEvent(boolean reschedule = false);
+	public abstract native void activateAiBehavior(boolean reschedule = false);
 
 	/**
 	 * Stops the movement event task
@@ -311,7 +311,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this is locked }
 	 */
 	@preLocked
-	public abstract native void cancelMovementEvent();
+	public abstract native void cancelBehaviorEvent();
 
 	/**
 	 * Stops the think event task
@@ -336,7 +336,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this object is locked, this AI will have performed one update tick }
 	 */
 	@preLocked
-	public native void doMovement();
+	public native void runBehaviorTree();
 
 	@local
 	@preLocked
@@ -615,8 +615,8 @@ class AiAgent extends CreatureObject {
 
 		numberOfPlayersInRange.set(0);
 
-		if (moveEvent) {
-			cancelMovementEvent();
+		if (behaviorEvent) {
+			cancelBehaviorEvent();
 		}
 	}
 

@@ -751,7 +751,7 @@ int LuaAiAgent::activateRecovery(lua_State* L) {
 
 int LuaAiAgent::executeBehavior(lua_State* L) {
 	Locker locker(realObject);
-	realObject->activateMovementEvent();
+	realObject->activateAiBehavior();
 	return 0;
 }
 
