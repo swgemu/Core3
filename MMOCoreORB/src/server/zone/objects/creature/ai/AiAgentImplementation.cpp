@@ -1694,12 +1694,15 @@ void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
 
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	cancelMovementEvent();
+	cancelThinkEvent();
 
+#ifdef SHOW_NEXT_POSITION
 	for (int i = 0; i < movementMarkers.size(); ++i) {
 		ManagedReference<SceneObject*> marker = movementMarkers.get(i);
 		Locker clocker(marker, asAiAgent());
 		marker->destroyObjectFromWorld(false);
 	}
+#endif
 
 	SceneObject* creatureInventory = asAiAgent()->getSlottedObject("inventory");
 
@@ -1746,10 +1749,6 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	setTargetObject(nullptr);
 	setFollowObject(nullptr);
 
-	//asAiAgent()->printReferenceHolders();
-
-	//printf("%d ref count\n", asAiAgent()->getReferenceCount());
-
 	ManagedReference<SceneObject*> home = homeObject.get();
 
 	if (home != nullptr) {
@@ -1758,6 +1757,9 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	}
 
 	notifyObservers(ObserverEventType::CREATUREDESPAWNED);
+
+	//printReferenceHolders();
+	//info(true) << "ID: " << getObjectID() << " Reference Count: " << getReferenceCount();
 
 	if (respawnTimer <= 0) {
 		return;
@@ -1805,6 +1807,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 
 	if (scno->isPlayerCreature()) {
 		CreatureObject* creo = scno->asCreatureObject();
+
 		if (!creo->isInvisible()) {
 			int32 newValue = (int32) numberOfPlayersInRange.decrement();
 
@@ -1829,8 +1832,6 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 			} else if (newValue < 0) {
 				error("numberOfPlayersInRange below 0");
 			}
-
-			activateMovementEvent();
 		}
 	}
 }
@@ -1839,20 +1840,18 @@ void AiAgentImplementation::activateRecovery() {
 	ZoneServer* zoneServer = getZoneServer();
 
 	if (zoneServer != nullptr && zoneServer->isServerShuttingDown()) {
-			if (thinkEvent != nullptr && thinkEvent->isScheduled())
-				thinkEvent->cancel();
+		cancelThinkEvent();
 
-			thinkEvent = nullptr;
-			return;
+		return;
 	}
+
+	Locker tLock(&thinkEventMutex);
 
 	if (thinkEvent == nullptr) {
 		thinkEvent = new AiThinkEvent(asAiAgent());
 
 		thinkEvent->schedule(2000);
-	}
-
-	if (!thinkEvent->isScheduled())
+	} else if (!thinkEvent->isScheduled())
 		thinkEvent->schedule(2000);
 }
 
@@ -3124,6 +3123,20 @@ void AiAgentImplementation::cancelMovementEvent() {
 
 	moveEvent->clearCreatureObject();
 	moveEvent = nullptr;
+}
+
+void AiAgentImplementation::cancelThinkEvent() {
+	Locker locker(&thinkEventMutex);
+
+	if (thinkEvent == nullptr) {
+		return;
+	}
+
+	if (thinkEvent->isScheduled())
+		thinkEvent->cancel();
+
+	thinkEvent->clearAgentObject();
+	thinkEvent = nullptr;
 }
 
 void AiAgentImplementation::setNextPosition(float x, float z, float y, CellObject* cell) {
