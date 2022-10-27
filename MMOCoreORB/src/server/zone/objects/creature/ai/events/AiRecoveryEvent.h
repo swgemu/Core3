@@ -1,12 +1,12 @@
 /*
- * AiThinkEvent.h
+ * AiRecoveryEvent.h
  *
  *  Created on: 23/06/2010
- *      Author: victor
+ *  Author: victor
  */
 
-#ifndef AiThinkEvent_H_
-#define AiThinkEvent_H_
+#ifndef AIRECOVERYEVENT_H_
+#define AIRECOVERYEVENT_H_
 
 
 #include "server/zone/objects/creature/ai/AiAgent.h"
@@ -19,18 +19,18 @@ namespace creature {
 namespace ai {
 namespace events {
 
-class AiThinkEvent : public Task {
+class AiRecoveryEvent : public Task {
 	ManagedWeakReference<AiAgent*> agent;
 	Time startTime;
 
 public:
-	AiThinkEvent(AiAgent* aiAgent) : Task(1000) {
+	AiRecoveryEvent(AiAgent* aiAgent) : Task(1000) {
 		agent = aiAgent;
 		startTime.updateToCurrentTime();
 		AiMap::instance()->activeRecoveryEvents.increment();
 	}
 
-	~AiThinkEvent() {
+	~AiRecoveryEvent() {
 		AiMap::instance()->activeRecoveryEvents.decrement();
 	}
 
@@ -69,4 +69,4 @@ public:
 using namespace server::zone::objects::creature::events;
 
 
-#endif /* AiThinkEvent_H_ */
+#endif /* AIRECOVERYEVENT_H_ */

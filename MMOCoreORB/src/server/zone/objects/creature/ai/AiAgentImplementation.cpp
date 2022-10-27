@@ -69,8 +69,8 @@
 #include "templates/params/creature/CreaturePosture.h"
 #include "templates/params/creature/CreatureState.h"
 #include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-#include "server/zone/objects/creature/ai/events/AiMoveEvent.h"
-#include "server/zone/objects/creature/ai/events/AiThinkEvent.h"
+#include "server/zone/objects/creature/ai/events/AiBehaviorEvent.h"
+#include "server/zone/objects/creature/ai/events/AiRecoveryEvent.h"
 #include "server/zone/objects/creature/events/CamoTask.h"
 #include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
@@ -1394,7 +1394,7 @@ bool AiAgentImplementation::killPlayer(SceneObject* prospect) {
 
 	PatrolPoint point = prospect->getPosition();
 	setNextPosition(point.getPositionX(), point.getPositionZ(), point.getPositionY(), prospect->getParent().get().castTo<CellObject*>());
-	activateMovementEvent();
+	activateAiBehavior();
 
 	if (prospect->isInRange(asAiAgent(), 6.f)) {
 		ZoneServer* zoneServer = getZoneServer();
@@ -1607,7 +1607,7 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 
 	if (creo != nullptr && !creo->isInvisible() && creo->isPlayerCreature()) {
 		int newValue = (int) numberOfPlayersInRange.increment();
-		activateMovementEvent();
+		activateAiBehavior();
 	}
 }
 
@@ -1683,7 +1683,7 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 
 	respawnCounter++;
 
-	activateMovementEvent();
+	activateAiBehavior();
 }
 
 void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
@@ -1693,7 +1693,7 @@ void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
-	cancelMovementEvent();
+	cancelBehaviorEvent();
 	cancelThinkEvent();
 
 #ifdef SHOW_NEXT_POSITION
@@ -1834,6 +1834,8 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 			}
 		}
 	}
+
+	activateAiBehavior();
 }
 
 void AiAgentImplementation::activateRecovery() {
@@ -1845,14 +1847,14 @@ void AiAgentImplementation::activateRecovery() {
 		return;
 	}
 
-	Locker tLock(&thinkEventMutex);
+	Locker tLock(&recoveryEventMutex);
 
-	if (thinkEvent == nullptr) {
-		thinkEvent = new AiThinkEvent(asAiAgent());
+	if (recoveryEvent == nullptr) {
+		recoveryEvent = new AiRecoveryEvent(asAiAgent());
 
-		thinkEvent->schedule(2000);
-	} else if (!thinkEvent->isScheduled())
-		thinkEvent->schedule(2000);
+		recoveryEvent->schedule(2000);
+	} else if (!recoveryEvent->isScheduled())
+		recoveryEvent->schedule(2000);
 }
 
 void AiAgentImplementation::activatePostureRecovery() {
@@ -2035,7 +2037,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	if (hasState(CreatureState::FROZEN))
 		newSpeed = 0.01f;
 
-	float updateTicks = float(UPDATEMOVEMENTINTERVAL) / 1000.f;
+	float updateTicks = float(BEHAVIORINTERVAL) / 1000.f;
 	float maxSpeed = newSpeed * updateTicks; // maxSpeed is the distance able to travel in time updateTicks
 
 	Vector3 currentPosition = getPosition();
@@ -2328,8 +2330,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		setDirection(directionAngle);
 	}
 
-	auto interval = UPDATEMOVEMENTINTERVAL;
-	nextMovementInterval = Math::min((int)((Math::min(nextMovementDistance, maxDist) / newSpeed) * 1000 + 0.5), interval);
+	auto interval = BEHAVIORINTERVAL;
+	nextBehaviorInterval = Math::min((int)((Math::min(nextMovementDistance, maxDist) / newSpeed) * 1000 + 0.5), interval);
 	currentSpeed = newSpeed;
 
 	updateCurrentPosition(&nextStepPosition);
@@ -2395,11 +2397,21 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 	return zCoord;
 }
 
-void AiAgentImplementation::doMovement() {
+void AiAgentImplementation::runBehaviorTree() {
 	try {
-		// Check for AIENABLED flag. Other Conditions are checked in Behavior::checkConditions
-		if (!(getOptionsBitmask() & OptionBitmask::AIENABLED)) {
-			cancelMovementEvent();
+		if (getZoneUnsafe() == nullptr || !(getOptionsBitmask() & OptionBitmask::AIENABLED))
+			return;
+
+	#ifdef DEBUG_AI
+		bool alwaysActive = ConfigManager::instance()->getAiAgentLoadTesting();
+	#else // DEBUG_AI
+		bool alwaysActive = false;
+	#endif // DEBUG_AI
+
+		ZoneServer* zoneServer = getZoneServer();
+
+		if ((!alwaysActive && numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) || zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()) {
+			cancelBehaviorEvent();
 			setFollowObject(nullptr);
 			return;
 		}
@@ -2426,9 +2438,9 @@ void AiAgentImplementation::doMovement() {
 			info("rootBehavior->doAction() took " + String::valueOf((int)startTime.miliDifference()) + "ms to complete.", true);
 #endif // DEBUG_AI
 
-		activateMovementEvent(true);
+		activateAiBehavior(true);
 	} catch (Exception& ex) {
-		cancelMovementEvent();
+		cancelBehaviorEvent();
 		handleException(ex, __FUNCTION__);
 	}
 }
@@ -2442,8 +2454,8 @@ void AiAgentImplementation::setAIDebug(bool flag) {
 	if (flag) {
 		setLogLevel(LogLevel::DEBUG);
 		debug() << "setAIDebug(" << flag << ")";
-		debug() << "moveEvent->isScheduled = " << (moveEvent != nullptr ? moveEvent->isScheduled() : -1);
-		debug() << "thinkEvent->isScheduled = " << (thinkEvent != nullptr ? thinkEvent->isScheduled() : -1);
+		debug() << "behaviorEvent->isScheduled = " << (behaviorEvent != nullptr ? behaviorEvent->isScheduled() : -1);
+		debug() << "recoveryEvent->isScheduled = " << (recoveryEvent != nullptr ? recoveryEvent->isScheduled() : -1);
 		debug() << "primaryAttackMap.size = " << (primaryAttackMap != nullptr ? primaryAttackMap->size() : -1);
 		debug() << "secondaryAttackMap.size = " << (secondaryAttackMap != nullptr ? secondaryAttackMap->size() : -1);
 		debug() << "defaultAttackMap.size = " << (defaultAttackMap != nullptr ? defaultAttackMap->size() : -1);
@@ -2514,7 +2526,7 @@ void AiAgentImplementation::setAITemplate() {
 		setTree(btree, slot);
 	}
 
-	activateMovementEvent();
+	activateAiBehavior();
 }
 
 Behavior* AiAgentImplementation::getBehaviorTree(const BehaviorTreeSlot& slot) {
@@ -3076,7 +3088,7 @@ bool AiAgentImplementation::isCamouflaged(CreatureObject* creature) {
 	return success;
 }
 
-void AiAgentImplementation::activateMovementEvent(bool reschedule) {
+void AiAgentImplementation::activateAiBehavior(bool reschedule) {
 	if (getZoneUnsafe() == nullptr || !(getOptionsBitmask() & OptionBitmask::AIENABLED))
 		return;
 
@@ -3088,55 +3100,55 @@ void AiAgentImplementation::activateMovementEvent(bool reschedule) {
 
 	ZoneServer* zoneServer = getZoneServer();
 
-	if ((!alwaysActive && numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) || zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
-		cancelMovementEvent();
+	if ((!alwaysActive && numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) || zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()) {
+		cancelBehaviorEvent();
 		return;
 	}
 
-	Locker locker(&movementEventMutex);
+	Locker locker(&behaviorEventMutex);
 
-	if (moveEvent == nullptr) {
-		moveEvent = new AiMoveEvent(asAiAgent());
-		moveEvent->schedule(Math::max(10, nextMovementInterval));
+	if (behaviorEvent == nullptr) {
+		behaviorEvent = new AiBehaviorEvent(asAiAgent());
+		behaviorEvent->schedule(Math::max(10, nextBehaviorInterval));
 	} else {
 		if (reschedule) {
 			try {
-				if (!moveEvent->isScheduled())
-					moveEvent->schedule(Math::max(10, nextMovementInterval));
+				if (!behaviorEvent->isScheduled())
+					behaviorEvent->schedule(Math::max(10, nextBehaviorInterval));
 			} catch (IllegalArgumentException& e) {
 			}
 		}
 	}
 
-	nextMovementInterval = UPDATEMOVEMENTINTERVAL;
+	nextBehaviorInterval = BEHAVIORINTERVAL;
 }
 
-void AiAgentImplementation::cancelMovementEvent() {
-	Locker locker(&movementEventMutex);
+void AiAgentImplementation::cancelBehaviorEvent() {
+	Locker locker(&behaviorEventMutex);
 
-	if (moveEvent == nullptr) {
+	if (behaviorEvent == nullptr) {
 		return;
 	}
 
-	if (moveEvent->isScheduled())
-		moveEvent->cancel();
+	if (behaviorEvent->isScheduled())
+		behaviorEvent->cancel();
 
-	moveEvent->clearCreatureObject();
-	moveEvent = nullptr;
+	behaviorEvent->clearCreatureObject();
+	behaviorEvent = nullptr;
 }
 
 void AiAgentImplementation::cancelThinkEvent() {
-	Locker locker(&thinkEventMutex);
+	Locker locker(&recoveryEventMutex);
 
-	if (thinkEvent == nullptr) {
+	if (recoveryEvent == nullptr) {
 		return;
 	}
 
-	if (thinkEvent->isScheduled())
-		thinkEvent->cancel();
+	if (recoveryEvent->isScheduled())
+		recoveryEvent->cancel();
 
-	thinkEvent->clearAgentObject();
-	thinkEvent = nullptr;
+	recoveryEvent->clearAgentObject();
+	recoveryEvent = nullptr;
 }
 
 void AiAgentImplementation::setNextPosition(float x, float z, float y, CellObject* cell) {

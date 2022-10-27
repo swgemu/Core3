@@ -1155,7 +1155,7 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageT
 
 				if (pet != nullptr && player != nullptr) {
 					pet->setFollowObject(player);
-					pet->activateMovementEvent();
+					pet->activateAiBehavior();
 				}
 			}
 		}

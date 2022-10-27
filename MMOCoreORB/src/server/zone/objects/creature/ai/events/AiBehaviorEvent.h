@@ -1,12 +1,12 @@
 /*
- * AiMoveEvent.h
+ * AiBehaviorEvent.h
  *
  *  Created on: 10/07/2010
  *      Author: victor
  */
 
-#ifndef AiMoveEvent_H_
-#define AiMoveEvent_H_
+#ifndef AiBehaviorEvent_H_
+#define AiBehaviorEvent_H_
 
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/creature/AiMap.h"
@@ -18,43 +18,43 @@ namespace creature {
 namespace ai {
 namespace events {
 
-class AiMoveEvent : public Task {
+class AiBehaviorEvent : public Task {
 	ManagedWeakReference<AiAgent*> creature;
 	bool hasFollowObject;
 	bool isRetreating;
 
 public:
-	AiMoveEvent(AiAgent* pl) : Task(1000), creature(pl), hasFollowObject(false), isRetreating(false) {
-		AiMap::instance()->activeMoveEvents.increment();
+	AiBehaviorEvent(AiAgent* pl) : Task(1000), creature(pl), hasFollowObject(false), isRetreating(false) {
+		AiMap::instance()->activeBehaviorEvents.increment();
 	}
 
-	~AiMoveEvent() {
-		AiMap::instance()->activeMoveEvents.decrement();
+	~AiBehaviorEvent() {
+		AiMap::instance()->activeBehaviorEvents.decrement();
 
 		if (hasFollowObject) {
-			AiMap::instance()->moveEventsWithFollowObject.decrement();
+			AiMap::instance()->behaviorsWithFollowObject.decrement();
 
 			hasFollowObject = false;
 		}
 
 		if (isRetreating) {
-			AiMap::instance()->moveEventsRetreating.decrement();
+			AiMap::instance()->behaviorsRetreating.decrement();
 
 			isRetreating = false;
 		}
 	}
 
 	void run() {
-		AiMap::instance()->scheduledMoveEvents.decrement();
+		AiMap::instance()->scheduledBehaviorEvents.decrement();
 
 		if (hasFollowObject) {
-			AiMap::instance()->moveEventsWithFollowObject.decrement();
+			AiMap::instance()->behaviorsWithFollowObject.decrement();
 
 			hasFollowObject = false;
 		}
 
 		if (isRetreating) {
-			AiMap::instance()->moveEventsRetreating.decrement();
+			AiMap::instance()->behaviorsRetreating.decrement();
 
 			isRetreating = false;
 		}
@@ -66,11 +66,11 @@ public:
 
 		Locker locker(strongRef);
 
-		strongRef->doMovement();
+		strongRef->runBehaviorTree();
 	}
 
 	void schedule(uint64 delay = 0) {
-		AiMap::instance()->scheduledMoveEvents.increment();
+		AiMap::instance()->scheduledBehaviorEvents.increment();
 
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
@@ -87,27 +87,27 @@ public:
 
 			if (strongRef != nullptr) {
 				if (strongRef->getFollowObject() != nullptr && !hasFollowObject) {
-					AiMap::instance()->moveEventsWithFollowObject.increment();
+					AiMap::instance()->behaviorsWithFollowObject.increment();
 
 					hasFollowObject = true;
 				} else if (strongRef->getFollowObject() == nullptr && hasFollowObject) {
-					AiMap::instance()->moveEventsWithFollowObject.decrement();
+					AiMap::instance()->behaviorsWithFollowObject.decrement();
 
 					hasFollowObject = false;
 				}
 
 				if (strongRef->isRetreating() && !isRetreating) {
-					AiMap::instance()->moveEventsRetreating.increment();
+					AiMap::instance()->behaviorsRetreating.increment();
 
 					isRetreating = true;
 				} else if (!strongRef->isRetreating() && isRetreating) {
-					AiMap::instance()->moveEventsRetreating.decrement();
+					AiMap::instance()->behaviorsRetreating.decrement();
 
 					isRetreating = false;
 				}
 			}
 		} catch (...) {
-			AiMap::instance()->scheduledMoveEvents.decrement();
+			AiMap::instance()->scheduledBehaviorEvents.decrement();
 		}
 	}
 
@@ -115,16 +115,16 @@ public:
 		bool ret = false;
 
 		if ((ret = Task::cancel())) {
-			AiMap::instance()->scheduledMoveEvents.decrement();
+			AiMap::instance()->scheduledBehaviorEvents.decrement();
 
 			if (hasFollowObject) {
-				AiMap::instance()->moveEventsWithFollowObject.decrement();
+				AiMap::instance()->behaviorsWithFollowObject.decrement();
 
 				hasFollowObject = false;
 			}
 
 			if (isRetreating) {
-				AiMap::instance()->moveEventsRetreating.decrement();
+				AiMap::instance()->behaviorsRetreating.decrement();
 
 				isRetreating = false;
 			}
