@@ -116,7 +116,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 
 		zone = rootParent->getZone();
 
-		zone->transferObject(sceneObject, -1, true);
+		zone->transferObject(sceneObject, -1, false);
 
 		zone->unlock();
 		zoneUnlocked = true;
