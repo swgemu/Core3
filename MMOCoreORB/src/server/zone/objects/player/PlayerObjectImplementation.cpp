@@ -1082,8 +1082,13 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 	if (playerToAddGhost == nullptr)
 		return;
 
-	if (strongParent != nullptr && strongParent->isCreatureObject())
-		playerToAddGhost->addReverseFriend(cast<CreatureObject*>(strongParent.get())->getFirstName());
+	String firstName = "";
+
+	if (strongParent != nullptr && strongParent->isCreatureObject()) {
+		firstName = cast<CreatureObject*>(strongParent.get())->getFirstName();
+		playerToAddGhost->addReverseFriend(firstName);
+	}
+
 	playerToAddGhost->updateToDatabase();
 
 	if (notifyClient && strongParent != nullptr) {
@@ -1093,7 +1098,8 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 		ChatOnChangeFriendStatus* add = new ChatOnChangeFriendStatus(strongParent->getObjectID(),	nameLower, zoneServer->getGalaxyName(), true);
 		strongParent->sendMessage(add);
 
-		if (playerToAdd->isOnline()) {
+		// other player is online and is not ignoring this player?
+		if (playerToAdd->isOnline() && !playerToAddGhost->isIgnoring(firstName)) {
 			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(nameLower, zoneServer->getGalaxyName(), true);
 			strongParent->sendMessage(notifyStatus);
 		}
