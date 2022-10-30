@@ -1,3 +1,5 @@
+local Logger = require("utils.logger")
+
 Coa3Screenplay = ScreenPlay:new {
 	-- Quest Steps
 	PRE_INFO_OFFICER = 1, -- Sent to info officer
@@ -200,7 +202,12 @@ function Coa3Screenplay:updateMissionLocation(pPlayer, nill, zoneNameHash)
 	local maxDistance = readData(playerID .. ":CoA3:redirectMaxDistance:")
 	local location = readVector3Data(playerID .. ":CoA3:missionLocation:")
 
-	local missionLoc = getSpawnArea(planet, location[1], location[3], minDistance, maxDistance, 20, 10, true)
+	local missionLoc = getSpawnArea(planet, location[1], location[3], minDistance, maxDistance, 20, 75, true)
+
+	if (missionLoc == nil) then
+		Logger:log("missionLoc is nil", LT_ERROR)
+		return 0
+	end
 
 	writeVector3Data(playerID .. ":CoA3:missionLocation:", missionLoc[1], missionLoc[2], missionLoc[3])
 
