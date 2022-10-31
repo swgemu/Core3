@@ -3463,13 +3463,11 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* healerCreo) {
 	if (healerGhost == nullptr)
 		return false;
 
-	if (healerGhost->hasBhTef())
-		return false;
-
-	CreatureObject* thisCreo = asCreatureObject();
-
-	if (thisCreo == nullptr)
-		return false;
+	/* BH TEF should prevent incoming helpful actions to the TEFed individual, not prevent them helping others
+	* See Git History, this was implemented without proper evidence. All evidence states those with BH TEF cannot receive helpful actions.  -- Hakry
+	* if (healerGhost->hasBhTef())
+	*	return false;
+	*/
 
 	if (isPet()) {
 		auto linkedCreature = getLinkedCreature().get();
@@ -3479,11 +3477,11 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* healerCreo) {
 		}
 	}
 
-	bool thisIsPlayer = thisCreo->isPlayerCreature();
-	PlayerObject* thisGhost = nullptr;
+	bool thisIsPlayer = isPlayerCreature();
+	bool factionChecks = healFactionChecks(healerCreo, thisIsPlayer);
 
 	if (thisIsPlayer) {
-		thisGhost = thisCreo->getPlayerObject();
+		PlayerObject* thisGhost = getPlayerObject();
 
 		if (thisGhost == nullptr)
 			return false;
@@ -3491,22 +3489,39 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* healerCreo) {
 		if (thisGhost->isLinkDead() && healerGhost->getAccountID() == thisGhost->getAccountID() && !ConfigManager::instance()->getBool("Core3.CombatManager.AllowSameAccountLinkDeadBeneficialActions", true))
 			return false;
 
-		if (thisGhost->isInPvpArea(true) && getGroupID() != 0 && getGroupID() == thisCreo->getGroupID()) {
-			return true;
+		// In the same group
+		if (getGroupID() != 0 && getGroupID() == healerCreo->getGroupID()) {
+			if (thisGhost->isInPvpArea(true))
+				return true;
+		}
+
+		// This player has a BH TEF and cannot be healed.
+		if (thisGhost->hasBhTef()) {
+			return false;
 		}
 	}
 
-	uint32 thisFactionStatus = thisCreo->getFactionStatus();
+	return factionChecks;
+}
+
+bool CreatureObjectImplementation::healFactionChecks(CreatureObject* healerCreo, bool isPlayer) {
+	if (healerCreo == nullptr)
+		return false;
+
+	uint32 thisFactionStatus = getFactionStatus();
 	uint32 healerFactionStatus = healerCreo->getFactionStatus();
 	int thisFaction = getFaction();
 	int healerFaction = healerCreo->getFaction();
 
-	bool covertOvert =  ConfigManager::instance()->useCovertOvertSystem();
+	if (ConfigManager::instance()->useCovertOvertSystem()) {
+		// Only need to check against players. Faction mobs are prevented by the isAttackable Checks in the parent function
+		if (isPlayer) {
+			PlayerObject* thisGhost = getPlayerObject();
 
-	if (covertOvert) {
-		// Healer and thisCreature are different Factions/neutral and this creature is overt or has GCW Tef
-		if (thisFaction != healerFaction && (thisFactionStatus == FactionStatus::OVERT || (thisGhost != nullptr && thisGhost->hasGcwTef())))
-			return false;
+			// Healer and thisCreature are different Factions/neutral and this creature is overt or has GCW Tef
+			if (thisFaction != healerFaction && (thisFactionStatus == FactionStatus::OVERT || (thisGhost != nullptr && thisGhost->hasGcwTef())))
+				return false;
+		}
 	} else {
 		if (thisFaction != healerFaction && !(thisFactionStatus == FactionStatus::ONLEAVE))
 			return false;
@@ -3516,10 +3531,6 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* healerCreo) {
 
 		if (!(thisFactionStatus == FactionStatus::ONLEAVE) && (healerFactionStatus == FactionStatus::ONLEAVE))
 			return false;
-	}
-
-	if (thisIsPlayer && thisGhost != nullptr && thisGhost->hasBhTef()) {
-		return false;
 	}
 
 	return true;
