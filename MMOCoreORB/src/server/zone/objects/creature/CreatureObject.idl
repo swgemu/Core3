@@ -1087,6 +1087,9 @@ class CreatureObject extends TangibleObject {
 	public native boolean isHealableBy(CreatureObject object);
 
 	@dirty
+	public native boolean healFactionChecks(CreatureObject object, boolean isPlayer);
+
+	@dirty
 	public native boolean isInvulnerable();
 
 	/**
