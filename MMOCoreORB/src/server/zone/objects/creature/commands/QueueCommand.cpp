@@ -363,6 +363,10 @@ void QueueCommand::checkForDotTef(CreatureObject* attacker, CreatureObject* targ
 	}
 
 	if (target->isPlayerCreature()) {
+		// No TEFs applied from duels
+		if (CombatManager::instance()->areInDuel(attacker, target))
+			return;
+
 		PlayerObject* targetGhost = target->getPlayerObject();
 
 		if (targetGhost != nullptr) {
@@ -377,11 +381,11 @@ void QueueCommand::checkForDotTef(CreatureObject* attacker, CreatureObject* targ
 			int targetStatus = target->getFactionStatus();
 
 			if (ConfigManager::instance()->useCovertOvertSystem()) {
-				if (!CombatManager::instance()->areInDuel(attacker, target) && attacker->getFaction() != target->getFaction() && (attackerStatus >= FactionStatus::COVERT && (targetGhost->hasGcwTef() || targetStatus == FactionStatus::OVERT))) {
+				if (attacker->getFaction() != target->getFaction() && (attackerStatus >= FactionStatus::COVERT && (targetGhost->hasGcwTef() || targetStatus == FactionStatus::OVERT))) {
 					ghost->updateLastGcwPvpCombatActionTimestamp();
 				}
 			} else {
-				if (!CombatManager::instance()->areInDuel(attacker, target) && targetStatus == FactionStatus::OVERT && attackerStatus == FactionStatus::OVERT) {
+				if (targetStatus == FactionStatus::OVERT && attackerStatus == FactionStatus::OVERT) {
 					ghost->updateLastGcwPvpCombatActionTimestamp();
 				}
 			}
