@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a42b25f_7a916165",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2022-10-31T13:27:43Z",
+      "side": 1,
+      "message": "This need to be moved under the strongParent null check and object class check before it is called and cast. Can just initialize firstName as a blank string.",
+      "revId": "b71e738d6f57d819db0b6621128f4c1c3cfc4106",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
