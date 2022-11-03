@@ -523,6 +523,16 @@ function recruiterScreenplay:toTitleCase(str)
 	return table.concat(buf, " ")
 end
 
+function recruiterScreenplay:getUseCount(faction, itemString)
+	local factionRewardData = self:getFactionDataTable(faction)
+
+	if self:isSchematic(faction, itemString) and factionRewardData.schematic[itemString].useCount ~= nil then
+		return factionRewardData.schematic[itemString].useCount
+	end
+
+	return nil
+end
+
 function recruiterScreenplay:awardSchematic(pPlayer, faction, itemString)
 	if (pPlayer == nil) then
 		return self.errorCodes.GENERALERROR
@@ -549,8 +559,10 @@ function recruiterScreenplay:awardSchematic(pPlayer, faction, itemString)
 
 	local templatePath = self:getTemplatePath(faction, itemString)
 
+	local useCount = self:getUseCount(faction, itemString)
+
 	-- add schematic
-	local transferSchem = PlayerObject(pGhost):addRewardedSchematic(tostring(templatePath), 2, 1, true)
+	local transferSchem = PlayerObject(pGhost):addRewardedSchematic(tostring(templatePath), 2, useCount, true)
 
 	if (not transferSchem) then
 		return self.errorCodes.SCHEMATICERROR
