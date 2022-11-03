@@ -106,7 +106,7 @@ rebelRewardData = {
 	},
 
 	schematic = {
-		dead_eye_prototype = {type = factionRewardType.schematic, display = "@item_n:dead_eye_prototype", item = "object/draft_schematic/item/theme_park/alderaan/act3/dead_eye_prototype.iff", cost = 750},
+		dead_eye_prototype = {type = factionRewardType.schematic, display = "@item_n:dead_eye_prototype", item = "object/draft_schematic/item/theme_park/alderaan/act3/dead_eye_prototype.iff", cost = 750, useCount = 10},
 	},
 }
 
@@ -229,6 +229,6 @@ imperialRewardData = {
 	},
 
 	schematic = {
-		dead_eye_prototype = {type = factionRewardType.schematic, display = "@item_n:dead_eye_prototype", item = "object/draft_schematic/item/theme_park/alderaan/act3/dead_eye_prototype.iff", cost = 750},
+		dead_eye_prototype = {type = factionRewardType.schematic, display = "@item_n:dead_eye_prototype", item = "object/draft_schematic/item/theme_park/alderaan/act3/dead_eye_prototype.iff", cost = 750, useCount = 10},
 	},
 }
