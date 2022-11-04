@@ -60,6 +60,9 @@ public:
 
 		CombatManager* manager = CombatManager::instance();
 
+		if (manager == nullptr)
+			return GENERALERROR;
+
 		if (manager->startCombat(creature, targetCreature, false)) { //lockDefender = false because already locked above.
 			int forceSpace = playerGhost->getForcePowerMax() - playerGhost->getForcePower();
 
@@ -99,6 +102,11 @@ public:
 			}
 
 			VisibilityManager::instance()->increaseVisibility(creature, visMod);
+
+			bool shouldGcwCrackdownTef = false, shouldGcwTef = false, shouldBhTef = false;
+
+			manager->checkForTefs(creature, targetCreature, &shouldGcwCrackdownTef, &shouldGcwTef, &shouldBhTef);
+			playerGhost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
 
 			return SUCCESS;
 
