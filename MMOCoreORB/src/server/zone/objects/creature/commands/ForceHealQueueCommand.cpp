@@ -258,29 +258,8 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 
 		VisibilityManager::instance()->increaseVisibility(creature, visMod);
 
-		// Active Area pvp area TEF, applies TEF to healer if the target has the area TEF
-		if (!selfHeal && targetCreature->isPlayerCreature()) {
-			PlayerObject* targetGhost = targetCreature->getPlayerObject().get();
-
-			if (targetGhost != nullptr) {
-				bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
-
-				if (covertOvert) {
-					int healerStatus = creature->getFactionStatus();
-					int targetStatus = targetCreature->getFactionStatus();
-
-					if (!CombatManager::instance()->areInDuel(creature, targetCreature)) {
-						if ((healerStatus >= FactionStatus::COVERT && targetGhost->hasGcwTef()) || (targetStatus == FactionStatus::OVERT && healerStatus == FactionStatus::COVERT)) {
-							playerObject->updateLastGcwPvpCombatActionTimestamp();
-						}
-					}
-				}
-
-				if (targetGhost->isInPvpArea(true)) {
-					playerObject->updateLastPvpAreaCombatActionTimestamp();
-				}
-			}
-		}
+		if (!selfHeal)
+			checkForTef(creature, targetCreature);
 
 		return SUCCESS;
 	} else {

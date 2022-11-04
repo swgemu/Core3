@@ -313,7 +313,7 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 		target = owner;
 	}
 
-	if (target->isPlayerCreature()) {
+	if (target->isPlayerCreature() && !CombatManager::instance()->areInDuel(creature, target)) {
 		PlayerObject* targetGhost = target->getPlayerObject().get();
 
 		if (targetGhost != nullptr) {
@@ -321,13 +321,11 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 				int healerStatus = creature->getFactionStatus();
 				int targetStatus = target->getFactionStatus();
 
-				if (!CombatManager::instance()->areInDuel(creature, target)) {
-					if (creature->getFaction() == target->getFaction() && ((healerStatus >= FactionStatus::COVERT && targetGhost->hasGcwTef()) || (healerStatus == FactionStatus::COVERT && targetStatus == FactionStatus::OVERT))) {
-						ghost->updateLastGcwPvpCombatActionTimestamp();
-					}
+				if (creature->getFaction() == target->getFaction() && ((healerStatus >= FactionStatus::COVERT && targetGhost->hasGcwTef()) || (healerStatus == FactionStatus::COVERT && targetStatus == FactionStatus::OVERT))) {
+					ghost->updateLastGcwPvpCombatActionTimestamp();
 				}
 			} else {
-				if (!CombatManager::instance()->areInDuel(creature, target) && target->getFactionStatus() == FactionStatus::OVERT && targetGhost->hasPvpTef()) {
+				if (target->getFactionStatus() == FactionStatus::OVERT && targetGhost->hasPvpTef()) {
 					ghost->updateLastGcwPvpCombatActionTimestamp();
 				}
 			}
