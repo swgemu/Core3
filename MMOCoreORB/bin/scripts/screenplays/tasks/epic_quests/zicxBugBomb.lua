@@ -174,11 +174,16 @@ function ZicxBugBomb:spawnNpcs()
 
 		local pNpc = spawnMobile(planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
 
-		if pNpc ~= nil and npcSpawnData.position == SIT then
-			CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
-		end
-		if (pNpc ~= nil and npcSpawnData.npcTemplate == "goru_rainstealer") then
-			SceneObject(pNpc):setContainerComponent("ZicxContainerComponent")
+		if (pNpc ~= nil) then
+			if npcSpawnData.position == SIT then
+				CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+			end
+
+			if (npcSpawnData.npcTemplate == "goru_rainstealer") then
+				SceneObject(pNpc):setContainerComponent("ZicxContainerComponent")
+			end
+
+			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
 		end
 	end
 end
