@@ -217,6 +217,9 @@ public:
 			controlDevice->setLastCommand(PetManager::FOLLOW);
 			controlDevice->setLastCommander(player);
 
+			agent->eraseBlackboard("restingTime");
+			agent->setPosture(CreaturePosture::UPRIGHT, true, true);
+
 			agent->setFollowObject(player);
 			agent->storeFollowObject();
 			agent->setMovementState(AiAgent::FOLLOWING);
