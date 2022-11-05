@@ -30,7 +30,7 @@ class CommandQueue : public Object {
 	CommandQueueActionVector queueVector;
 	Reference<CommandQueueTask*> queueTask;
 	State state = NONE;
-	static const int DEFAULTTIME = 100;
+	static const int DEFAULTTIME = 50;
 #ifdef DEBUG_QUEUE
 	uint64 runNumber = 0;
 	Time lastRun;
