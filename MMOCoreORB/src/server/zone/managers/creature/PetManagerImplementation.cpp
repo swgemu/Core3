@@ -481,7 +481,6 @@ void PetManagerImplementation::enqueuePetCommand(CreatureObject* player, AiAgent
 
 void PetManagerImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player, AiAgent* pet, uint32 command, const String& args) {
 	ManagedReference<CreatureObject*> linkedCreature = pet->getLinkedCreature().get();
-
 	if (linkedCreature == nullptr)
 		return;
 
@@ -491,7 +490,7 @@ void PetManagerImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player
 
 	// CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
 	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID(), 1);
-	enqueueCommand->schedule(50);
+	enqueueCommand->execute();
 }
 
 int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition, bool isCombatAction) {
