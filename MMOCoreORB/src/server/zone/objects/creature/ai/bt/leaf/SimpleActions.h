@@ -128,10 +128,11 @@ public:
 
 		uint32 weapon = agent->readBlackboard("stagedWeapon").get<uint32>();
 
-		if (weapon == DataVal::PRIMARYWEAPON)
+		if (weapon == DataVal::PRIMARYWEAPON) {
 			agent->equipPrimaryWeapon();
-		else if (weapon == DataVal::SECONDARYWEAPON)
+		} else if (weapon == DataVal::SECONDARYWEAPON) {
 			agent->equipSecondaryWeapon();
+		}
 
 		return SUCCESS;
 	}

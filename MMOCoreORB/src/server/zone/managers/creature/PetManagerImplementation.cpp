@@ -476,7 +476,7 @@ void PetManagerImplementation::enqueuePetCommand(CreatureObject* player, AiAgent
 
 	// CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
 	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, targetID, 1);
-	enqueueCommand->execute();
+	enqueueCommand->schedule(50);
 }
 
 void PetManagerImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player, AiAgent* pet, uint32 command, const String& args) {
@@ -490,7 +490,7 @@ void PetManagerImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player
 		return;
 
 	// CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID(), 1);
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID(), 0);
 	enqueueCommand->schedule(50);
 }
 

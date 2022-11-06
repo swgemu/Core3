@@ -3958,6 +3958,10 @@ bool AiAgentImplementation::hasRangedWeapon() {
 	return (primaryWeapon != nullptr && primaryWeapon->isRangedWeapon()) || (secondaryWeapon != nullptr && secondaryWeapon->isRangedWeapon());
 }
 
+bool AiAgentImplementation::hasMeleeWeapon() {
+	return (primaryWeapon != nullptr && (primaryWeapon->isMeleeWeapon() || primaryWeapon->isUnarmedWeapon())) || (secondaryWeapon != nullptr && (secondaryWeapon->isMeleeWeapon() || secondaryWeapon->isUnarmedWeapon()));
+}
+
 bool AiAgentImplementation::getUseRanged() {
 	if (isPet()) {
 		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();

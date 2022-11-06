@@ -736,3 +736,15 @@ template<> bool CheckIsEscort::check(AiAgent* agent) const {
 
 	return agent->getCreatureBitmask() & CreatureFlag::ESCORT;
 }
+
+template<> bool CheckHasRangedWeapon::check(AiAgent* agent) const {
+	Locker lock(agent);
+
+	return agent->hasRangedWeapon();
+}
+
+template<> bool CheckHasMeleeWeapon::check(AiAgent* agent) const {
+	Locker lock(agent);
+
+	return agent->hasMeleeWeapon();
+}

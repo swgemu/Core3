@@ -448,6 +448,8 @@ private:
 		_REGISTERLEAF(CheckStopResting);
 		_REGISTERLEAF(CheckQueueSize);
 		_REGISTERLEAF(CheckIsEscort);
+		_REGISTERLEAF(CheckHasRangedWeapon);
+		_REGISTERLEAF(CheckHasMeleeWeapon);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
