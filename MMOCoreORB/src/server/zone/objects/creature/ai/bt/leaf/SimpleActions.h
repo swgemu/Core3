@@ -95,7 +95,10 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		agent->clearQueueActions();
+		if (!agent->isInCombat())
+			return FAILURE;
+
+		agent->clearQueueActions(true);
 		agent->clearCombatState(clearDefenders);
 
 		return !agent->isInCombat() ? SUCCESS : FAILURE;
@@ -631,7 +634,7 @@ public:
 		}
 
 		if (healTarget->getHAM(CreatureAttribute::HEALTH) < healTarget->getMaxHAM(CreatureAttribute::HEALTH) || healTarget->getHAM(CreatureAttribute::ACTION) < healTarget->getMaxHAM(CreatureAttribute::ACTION)) {
-			agent->clearQueueActions();
+			agent->clearQueueActions(true);
 
 			if (healTarget == agent) {
 				agent->healTarget(healTarget);

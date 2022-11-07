@@ -16,6 +16,7 @@
 #include "templates/datatables/DataTableRow.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 
 void PetManagerImplementation::loadLuaConfig() {
 	info("Loading configuration file.", true);
@@ -475,7 +476,7 @@ void PetManagerImplementation::enqueuePetCommand(CreatureObject* player, AiAgent
 		targetID = player->getTargetID();
 
 	// CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, targetID, 1);
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, targetID, QueueCommand::NOCOMBATQUEUE);
 	enqueueCommand->schedule(50);
 }
 
@@ -490,7 +491,7 @@ void PetManagerImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player
 		return;
 
 	// CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID(), 0);
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID(), QueueCommand::NOCOMBATQUEUE);
 	enqueueCommand->schedule(50);
 }
 

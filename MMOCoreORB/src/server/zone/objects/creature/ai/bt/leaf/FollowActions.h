@@ -682,7 +682,7 @@ public:
 
 				float distance = System::random(20) + 25;
 
-				agent->clearQueueActions();
+				agent->clearQueueActions(true);
 				agent->writeBlackboard("fleeRange", distance);
 
 				agent->runAway(targetCreo, distance, false);
