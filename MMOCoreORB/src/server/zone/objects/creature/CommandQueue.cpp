@@ -284,6 +284,7 @@ void CommandQueue::run() {
 			}
 
 			int delay = handleRunningState();
+
 			Time* nextActionTime = creature->getNextActionTime();
 
 			if (creature->hasAttackDelay() || creature->hasPostureChangeDelay() || (nextActionTime != nullptr && creature->isPlayerCreature() && nextActionTime->isFuture())) {
@@ -400,7 +401,7 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 	}
 
 #ifdef DEBUG_QUEUE
-	creature->info(true) << "CommandQueue - enqueueCommand Called: " << toString();
+	creature->info(true) << "CommandQueue - enqueueCommand Called -- " << toString();
 #endif // DEBUG_QUEUE
 
 	ZoneServer* zoneServer = creature->getZoneServer();
@@ -434,7 +435,7 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 
 	int size = queueVector.size();
 
-	if (priority != QueueCommand::FRONT) {
+	if (priority == QueueCommand::NORMAL) {
 		if ((creature->isAiAgent() && size >= 5) || size > 15) {
 			clearQueueAction(actionCount, 0, 0, 0);
 			return;
@@ -447,9 +448,7 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 		action->setCompareToCounter((int)compareCounter);
 
 #ifdef DEBUG_QUEUE
-	creature->info(true) << "Enquing Command " << queueCommand->getQueueCommandName() << ": with priority - " << priority << " compareCount of " << compareCounter;
-
-	int oldSize = queueVector.size();
+	creature->info(true) << "Enqueuing Command " << queueCommand->getQueueCommandName() << ": with priority - " << priority << " compareCount of " << compareCounter;
 #endif
 
 	if (priority == QueueCommand::FRONT) {
@@ -463,6 +462,8 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 	queueVector.put(action.get());
 
 #ifdef DEBUG_QUEUE
+	int oldSize = queueVector.size();
+
 	creature->info() << "Queue Vector size changed from " << oldSize << " to " << queueVector.size();
 #endif
 

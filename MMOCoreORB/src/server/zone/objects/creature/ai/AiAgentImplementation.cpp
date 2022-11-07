@@ -890,7 +890,7 @@ bool AiAgentImplementation::selectSpecialAttack() {
 				Locker lock(strongAiAgent);
 
 				if (strongAiAgent->getThrownWeapon() != nullptr) {
-					strongAiAgent->enqueueCommand(STRING_HASHCODE("throwgrenade"), 0, targetID, String::valueOf(strongWeapon->getObjectID()), 1);
+					strongAiAgent->enqueueCommand(STRING_HASHCODE("throwgrenade"), 0, targetID, String::valueOf(strongWeapon->getObjectID()), QueueCommand::NORMAL);
 
 					Locker locker(strongWeapon);
 
@@ -1366,7 +1366,7 @@ void AiAgentImplementation::leash(bool forcePeace) {
 
 	eraseBlackboard("targetProspect");
 
-	clearQueueActions();
+	clearQueueActions(true);
 	clearDots();
 
 	if (forcePeace)

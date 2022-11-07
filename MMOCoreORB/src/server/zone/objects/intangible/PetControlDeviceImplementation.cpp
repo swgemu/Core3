@@ -27,6 +27,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/frs/FrsManager.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != nullptr) {
@@ -283,8 +284,8 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		player->getCooldownTimerMap()->updateToCurrentAndAddMili("petCallOrStoreCooldown", 1000); // 1 sec
 	}
 
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, String("petFollow").toLowerCase().hashCode(), String::valueOf(player->getObjectID()), player->getObjectID(), 1);
-	enqueueCommand->execute();
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, String("petFollow").toLowerCase().hashCode(), String::valueOf(player->getObjectID()), player->getObjectID(), QueueCommand::NORMAL);
+	enqueueCommand->schedule(50);
 }
 
 int PetControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
