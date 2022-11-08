@@ -1,4 +1,5 @@
 local QuestManager = require("managers.quest.quest_manager")
+local Logger = require("utils.logger")
 
 local Syren = {}
 Syren.act1 = {}
@@ -71,7 +72,7 @@ function SecretsOfTheSyren:spawnActiveAreas(questCrc)
 	local pSyrenTasks = getQuestTasks(questCrc)
 
 	if pSyrenTasks == nil then
-		printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+		Logger:log("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.", LT_ERROR)
 		return
 	end
 
@@ -81,7 +82,7 @@ function SecretsOfTheSyren:spawnActiveAreas(questCrc)
 		local pQuestTask = syrenTasks:getTask(taskIndex)
 
 		if pQuestTask == nil then
-			printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+			Logger:log("Secrets of the Syren: pQuestTask is nil", LT_ERROR)
 			return
 		end
 
@@ -96,7 +97,7 @@ function SecretsOfTheSyren:spawnActiveAreas(questCrc)
 				local pQuestArea = spawnActiveArea(questTask:getPlanetName(), "object/active_area.iff", questTask:getLocationX(), questTask:getLocationY(), questTask:getLocationZ(), questTask:getRadius(), cellid)
 
 				if pQuestArea == nil then
-					printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+					Logger:log("Secrets of the Syren: pQuestArea is nil.", LT_ERROR)
 					return
 				end
 
@@ -108,8 +109,7 @@ function SecretsOfTheSyren:spawnActiveAreas(questCrc)
 				writeData(questAreaID .. ":questCrc", questCrc)
 				writeData(questAreaID .. ":taskIndex", taskIndex)
 			else
-				printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
-				printf(questTask:getPlanetName() .. "is not loaded.\n")
+				Logger:log(questTask:getPlanetName() .. "is not loaded. Could not load Secrets of the Syren. Quest line will not function correctly", LT_ERROR)
 			end
 		end
 	end
@@ -160,7 +160,7 @@ function SecretsOfTheSyren:startAmbush(questCrc, pPlayer, creature, ghost)
 	local pSyrenTasks = getQuestTasks(questCrc)
 
 	if pSyrenTasks == nil then
-		printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+		Logger:log("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.", LT_ERROR)
 		return
 	end
 
@@ -179,7 +179,7 @@ end
 
 function SecretsOfTheSyren:spawnAmbushNpcs(pPlayer, creature, pQuestTask, questCrc)
 	if pQuestTask == nil then
-		printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+		Logger:log("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.", LT_ERROR)
 		return
 	end
 
@@ -192,12 +192,12 @@ function SecretsOfTheSyren:spawnAmbushNpcs(pPlayer, creature, pQuestTask, questC
 	for i = 1, questTask:getCount() do
 		local spawnPoint = getSpawnPoint("rori", creature:getWorldPositionX(), creature:getWorldPositionY(), questTask:getMinDistance(), questTask:getMaxDistance(), true)
 		if spawnPoint == nil then
-			printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+			Logger:log("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.", LT_ERROR)
 			return
 		else
 			local pNpc = spawnMobile("rori", questTask:getCreatureType(), 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
 			if pNpc == nil then
-				printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+				Logger:log("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.", LT_ERROR)
 				return
 			else
 				local aiAgent = LuaAiAgent(pNpc)
@@ -237,7 +237,7 @@ function SecretsOfTheSyren:allAmbushNpcsKilled(playerID)
 	local pSyrenTasks = getQuestTasks(questCrc)
 
 	if pSyrenTasks == nil then
-		printf("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.\n")
+		Logger:log("ERROR: Could not load Secrets of the Syren correctly. Quest line will not function correctly.", LT_ERROR)
 		return
 	end
 
@@ -274,13 +274,13 @@ function SecretsOfTheSyren:allAmbushNpcsKilled(playerID)
 					ghost:activateJournalQuestTask(questCrc, Syren.act2.AMBUSH_2, false)
 					self:spawnAmbushNpcs(pPlayer, creature, syrenTasks:getTask(Syren.act2.AMBUSH_2), questCrc)
 				else
-					printf("### No task active: " .. questCrc .. "\n")
+					Logger:log("### No task active: " .. questCrc .. "", LT_ERROR)
 				end
 			else
-				printf("### pGhost is nil\n")
+				Logger:log("### pGhost is nil", LT_ERROR)
 			end
 		else
-			printf("### pPlayer is nil\n")
+			Logger:log("### pPlayer is nil", LT_ERROR)
 		end
 	end
 end
@@ -301,6 +301,24 @@ function SecretsOfTheSyren:notifyPlayerKilled(pVictim, pAttacker)
 	end
 
 	return 0
+end
+
+function SecretsOfTheSyren:playerKilledByAmbushNpc(victimID, attackerID)
+	if (victimID == 0) or (attackerID == 0) then
+		return false
+	end
+
+	local numberOfNpcs = readData(victimID .. ":ambushNpcs")
+
+	for i = 1, numberOfNpcs do
+		local npcID = readData(victimID .. ":ambushNpc" .. i)
+
+		if npcID == attackerID then
+			return true;
+		end
+	end
+
+	return false
 end
 
 function SecretsOfTheSyren:failAmbush(playerID)
@@ -342,9 +360,12 @@ function SecretsOfTheSyren:despawnAmbushNpcs(pPlayer)
 			local npcID = readData(playerID .. ":ambushNpc" .. i)
 			if npcID ~= 0 then
 				local pNpc = getCreatureObject(npcID)
-				local npc = LuaCreatureObject(pNpc)
-				npc:destroyObjectFromWorld()
-				local npcID = writeData(playerID .. ":ambushNpc" .. i, 0)
+
+				if (pNpc ~= nil) then
+					local npc = LuaCreatureObject(pNpc)
+					npc:destroyObjectFromWorld()
+					deleteData(playerID .. ":ambushNpc" .. i)
+				end
 			end
 		end
 	end
