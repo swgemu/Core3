@@ -94,6 +94,10 @@ public:
 		if (pet->isInCombat())
 			CombatManager::instance()->attemptPeace(pet);
 
+		Locker clocker(controlDevice, creature);
+		controlDevice->setLastCommandTarget(targetObject);
+		clocker.release();
+
 		pet->setFollowObject(targetObject);
 		pet->storeFollowObject();
 
