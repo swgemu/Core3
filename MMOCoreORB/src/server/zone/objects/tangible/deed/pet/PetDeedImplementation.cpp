@@ -109,27 +109,27 @@ void PetDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 	alm->insertAttribute("creature_tohit", hitdisplayValue);
 	alm->insertAttribute("creature_damage", String::valueOf(damageMin) + " - " + String::valueOf(damageMax));
 
-	if (special1 != "none" && special1 != "defaultattack"){
+	if (special1 != "none" && special1 != "defaultattack") {
 		String str = StringIdManager::instance()->getStringId(("@combat_effects:" + special1).hashCode()).toString();
 		alm->insertAttribute("spec_atk_1", str);
 	} else
 		alm->insertAttribute("spec_atk_1", "---");
 
-	if (special2 != "none" && special2 != "defaultattack"){
+	if (special2 != "none" && special2 != "defaultattack") {
 		String str = StringIdManager::instance()->getStringId(("@combat_effects:" + special2).hashCode()).toString();
 		alm->insertAttribute("spec_atk_2", str);
 	} else
 		alm->insertAttribute("spec_atk_2", "---");
 
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-	Reference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+	Reference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate(mobileTemplate.hashCode());
 	bool allowRanged = false;
 	if (petTemplate != nullptr) {
 		if (petTemplate->getPrimaryWeapon() != petTemplate->getDefaultWeapon()) {
 			allowRanged = true;
 		}
 	}
-	if(ranged && allowRanged)
+	if (ranged && allowRanged)
 		alm->insertAttribute("dna_comp_ranged_attack", "Yes");
 	else
 		alm->insertAttribute("dna_comp_ranged_attack", "No");
@@ -144,42 +144,42 @@ void PetDeedImplementation::setupAttacks() {
 	attacks.removeAll();
 	if (special1 != "none" && special1 != "defaultattack") {
 		String args = "";
-		if (special1.contains("creature") || special1.contains("poison") || special1.contains("disease")){
-			attacks.addAttack(special1,args);
-		} else if(special1.contains("blind")) {
-			attacks.addAttack(special1,"blindChance=50");
-		}else if(special1.contains("dizzy")) {
-			attacks.addAttack(special1,"dizzyChance=50");
-		}else if(special1.contains("intimidation")) {
-			attacks.addAttack(special1,"intimidationChance=50");
-		}else if(special1.contains("stun")) {
-			attacks.addAttack(special1,"stunChance=50");
-		}else if(special1.contains("knockdown")) {
-			attacks.addAttack(special1,"knockdownChance=50");
-		}else if(special1.contains("posturedown")) {
-			attacks.addAttack(special1,"postureDownChance=50");
-		}else if(special1.contains("postureup")) {
-			attacks.addAttack(special1,"postureUpChance=50");
+		if (special1.contains("creature") || special1.contains("poison") || special1.contains("disease")) {
+			attacks.addAttack(special1, args);
+		} else if (special1.contains("blind")) {
+			attacks.addAttack(special1, "blindChance=50");
+		} else if (special1.contains("dizzy")) {
+			attacks.addAttack(special1, "dizzyChance=50");
+		} else if (special1.contains("intimidation")) {
+			attacks.addAttack(special1, "intimidationChance=50");
+		} else if (special1.contains("stun")) {
+			attacks.addAttack(special1, "stunChance=50");
+		} else if (special1.contains("knockdown")) {
+			attacks.addAttack(special1, "knockdownChance=50");
+		} else if (special1.contains("posturedown")) {
+			attacks.addAttack(special1, "postureDownChance=50");
+		} else if (special1.contains("postureup")) {
+			attacks.addAttack(special1, "postureUpChance=50");
 		}
 	}
 	if (special2 != "none" && special2 != "defaultattack") {
 		String args = "";
-		if (special2.contains("creature") || special2.contains("poison") || special2.contains("disease")){
-			attacks.addAttack(special2,args);
-		} else if(special2.contains("blind")) {
-			attacks.addAttack(special2,"blindChance=50");
-		}else if(special2.contains("dizzy")) {
-			attacks.addAttack(special2,"dizzyChance=50");
-		}else if(special2.contains("intimidation")) {
-			attacks.addAttack(special2,"intimidationChance=50");
-		}else if(special2.contains("stun")) {
-			attacks.addAttack(special2,"stunChance=50");
-		}else if(special2.contains("knockdown")) {
-			attacks.addAttack(special2,"knockdownChance=50");
-		}else if(special2.contains("posturedown")) {
-			attacks.addAttack(special2,"postureDownChance=50");
-		}else if(special2.contains("postureup")) {
-			attacks.addAttack(special2,"postureUpChance=50");
+		if (special2.contains("creature") || special2.contains("poison") || special2.contains("disease")) {
+			attacks.addAttack(special2, args);
+		} else if (special2.contains("blind")) {
+			attacks.addAttack(special2, "blindChance=50");
+		} else if (special2.contains("dizzy")) {
+			attacks.addAttack(special2, "dizzyChance=50");
+		} else if (special2.contains("intimidation")) {
+			attacks.addAttack(special2, "intimidationChance=50");
+		} else if (special2.contains("stun")) {
+			attacks.addAttack(special2, "stunChance=50");
+		} else if (special2.contains("knockdown")) {
+			attacks.addAttack(special2, "knockdownChance=50");
+		} else if (special2.contains("posturedown")) {
+			attacks.addAttack(special2, "postureDownChance=50");
+		} else if (special2.contains("postureup")) {
+			attacks.addAttack(special2, "postureUpChance=50");
 		}
 	}
 }
@@ -190,7 +190,7 @@ const CreatureAttackMap* PetDeedImplementation::getAttacks() const {
 
 String PetDeedImplementation::getTemplateName() const {
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-	Reference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+	Reference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate(mobileTemplate.hashCode());
 	if (petTemplate == nullptr) {
 		return "";
 	}
@@ -228,11 +228,12 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 
 	for (int i = 0; i < manufact->getSlotCount(); ++i) {
 		// Dna Component Slots
-		Reference<IngredientSlot* > iSlot = manufact->getSlot(i);
+		Reference<IngredientSlot*> iSlot = manufact->getSlot(i);
+
 		if (iSlot->isComponentSlot()) {
 			ComponentSlot* cSlot = cast<ComponentSlot*>(iSlot.get());
 			ManagedReference<TangibleObject*> tano = cSlot->getPrototype();
-			ManagedReference<GeneticComponent*> component = cast<GeneticComponent*>( tano.get());
+			ManagedReference<GeneticComponent*> component = cast<GeneticComponent*>(tano.get());
 			// Now we can suck in the values
 			clFactor = component->getLevel();
 			quality = component->getQuality();
@@ -287,8 +288,10 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 			level = Genetics::calculatePetLevel(component);
 		}
 	}
+
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-	Reference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+	Reference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate(mobileTemplate.hashCode());
+
 	if (petTemplate != nullptr) {
 		// get min CL from the template
 		int skinFactor = petTemplate->getLevel();
@@ -299,6 +302,7 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 			level = skinFactor;
 		}
 	}
+
 	// setup attack map
 	setupAttacks();
 }
@@ -306,10 +310,10 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 void PetDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	DeedImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if(isASubChildOf(player))
+	if (isASubChildOf(player))
 		menuResponse->addRadialMenuItem(20, 3, "@pet/pet_menu:menu_tame");
 	// Bio engineers can sample a deed
-	if(player->hasSkill("outdoors_bio_engineer_novice") && isASubChildOf(player))
+	if (player->hasSkill("outdoors_bio_engineer_novice") && isASubChildOf(player))
 		menuResponse->addRadialMenuItem(21, 3, "@sui:harvest_dna");
 }
 
@@ -323,7 +327,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 			return 1;
 		}
 
-		if(player->getPendingTask("sampledeed") != nullptr) {
+		if (player->getPendingTask("sampledeed") != nullptr) {
 			player->sendSystemMessage("@bio_engineer:harvest_dna_already_harvesting");
 			return 1;
 		}
@@ -336,16 +340,17 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		Locker clocker(_this.getReferenceUnsafeStaticCast());
 
 		Reference<SampleDeedTask*> task = new SampleDeedTask(_this.getReferenceUnsafeStaticCast(), player);
-		player->addPendingTask("sampledeed",task,0);
+
+		player->addPendingTask("sampledeed", task, 0);
 		return 0;
 	}
-	if (selectedID == 20) {
 
+	if (selectedID == 20) {
 		if (generated || !isASubChildOf(player))
 			return 1;
 
 		if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING) != nullptr) {
-			player->sendSystemMessage("@pet/pet_menu:cant_call"); //You can only unpack vehicles while Outside and not in Combat.
+			player->sendSystemMessage("@pet/pet_menu:cant_call"); // You can only unpack vehicles while Outside and not in Combat.
 			return 1;
 		}
 
@@ -369,17 +374,17 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 			ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
 			if (object != nullptr && object->isPetControlDevice()) {
-				PetControlDevice* device = cast<PetControlDevice*>( object.get());
+				PetControlDevice* device = cast<PetControlDevice*>(object.get());
 
 				if (device->getPetType() == PetManager::CREATUREPET) {
 					if (++numberStored >= maxStoredPets) {
 						player->sendSystemMessage("@pet/pet_menu:sys_too_many_stored"); // There are too many pets stored in this container. Release some of them to make room for more.
 						return 1;
 					}
-
 				}
 			}
 		}
+
 		// Can the player control it
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
@@ -408,16 +413,16 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		}
 
 		Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();
-		if( creatureManager == nullptr ){
+		if (creatureManager == nullptr) {
 			player->sendSystemMessage("Internal Pet Deed Error #307");
 			return 1;
 		}
 
 		CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-		Reference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+		Reference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate(mobileTemplate.hashCode());
 
 		if (petTemplate == nullptr) {
-			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]" );
+			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]");
 			return 1;
 		}
 
@@ -439,32 +444,32 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		ManagedReference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
 
 		if (controlDevice == nullptr) {
-			player->sendSystemMessage("wrong pet control device;controlDevice=[" + controlDeviceObjectTemplate + "]" );
+			player->sendSystemMessage("wrong pet control device;controlDevice=[" + controlDeviceObjectTemplate + "]");
 			return 1;
 		}
 
 		Locker locker(controlDevice);
 
 		String templateToSpawn = creatureManager->getTemplateToSpawn(mobileTemplate.hashCode());
-		ManagedReference<CreatureObject*> creatureObject = creatureManager->createCreature(templateToSpawn.hashCode(), true, 0 );
-		if( creatureObject == nullptr ) {
+		ManagedReference<CreatureObject*> creatureObject = creatureManager->createCreature(templateToSpawn.hashCode(), true, 0);
+		if (creatureObject == nullptr) {
 			controlDevice->destroyObjectFromDatabase(true);
-			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]" );
+			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]");
 			return 1;
 		}
 
 		Locker clocker(creatureObject, player);
 
 		ManagedReference<Creature*> pet = creatureObject.castTo<Creature*>();
-		if( pet == nullptr ) {
+		if (pet == nullptr) {
 			controlDevice->destroyObjectFromDatabase(true);
 			creatureObject->destroyObjectFromDatabase(true);
-			player->sendSystemMessage("Internal Pet Deed Error #348" );
+			player->sendSystemMessage("Internal Pet Deed Error #348");
 			return 1;
 		}
 
 		pet->setPetDeed(_this.getReferenceUnsafeStaticCast());
-		pet->loadTemplateData( petTemplate );
+		pet->loadTemplateData(petTemplate);
 		pet->setCustomObjectName(StringIdManager::instance()->getStringId(*pet->getObjectName()), true);
 		pet->createChildObjects();
 		pet->setBaby(false);
@@ -473,13 +478,13 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 		// Copy color customization from deed to pet
 		CustomizationVariables* customVars = getCustomizationVariables();
-		if( customVars != nullptr ){
+		if (customVars != nullptr) {
 			for (int i = 0; i < customVars->size(); ++i) {
 				uint8 id = customVars->elementAt(i).getKey();
 				int16 val = customVars->elementAt(i).getValue();
 
 				String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
-				pet->setCustomizationVariable( name, val, true );
+				pet->setCustomizationVariable(name, val, true);
 			}
 		}
 		// then this is complete
@@ -499,10 +504,10 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		}
 
 		datapad->broadcastObject(controlDevice, true);
-		controlDevice->growPet(player,true);
+		controlDevice->growPet(player, true);
 		controlDevice->callObject(player);
 
-		//Remove the deed from it's container.
+		// Remove the deed from it's container.
 		ManagedReference<SceneObject*> deedContainer = getParent().get();
 
 		if (deedContainer != nullptr) {
@@ -535,7 +540,7 @@ void PetDeedImplementation::adjustPetLevel(CreatureObject* player, CreatureObjec
 	pet->reloadTemplate();
 	player->sendSystemMessage("@bio_engineer:pet_sui_level_fixed");
 }
-bool PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObject *pet) {
+bool PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObject* pet) {
 	int oldLevel = level;
 	if (oldLevel < 1) {
 		player->sendSystemMessage("@bio_engineer:pet_sui_fix_error");
@@ -546,38 +551,40 @@ bool PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObjec
 		oldLevel = 75;
 	}
 
-	int ham = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel);
+	int ham = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL, oldLevel);
 	health = ham;
 	action = ham;
 	mind = ham;
-	regen = DnaManager::instance()->valueForLevel(DnaManager::REG_LEVEL,oldLevel);
-	float dps = DnaManager::instance()->valueForLevel(DnaManager::DPS_LEVEL,oldLevel);
+
+	regen = DnaManager::instance()->valueForLevel(DnaManager::REG_LEVEL, oldLevel);
+	float dps = DnaManager::instance()->valueForLevel(DnaManager::DPS_LEVEL, oldLevel);
+
 	damageMin = round((dps * 2.0) * 0.5);
 	attackSpeed = 2.0;
 	damageMax = round((dps * 2.0) * 1.5);
-	chanceHit = DnaManager::instance()->valueForLevel(DnaManager::HIT_LEVEL,oldLevel);
+	chanceHit = DnaManager::instance()->valueForLevel(DnaManager::HIT_LEVEL, oldLevel);
 
 	// Adjust Armor Now
-	fortitude = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,oldLevel);
-	armor = fortitude/500;
+	fortitude = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL, oldLevel);
+	armor = fortitude / 500;
 	float effectiveness = (int)(((fortitude - (armor * 500)) / 50) * 5);
 	if (!isSpecialResist(SharedWeaponObjectTemplate::KINETIC) && kinResist > 0)
 		kinResist = effectiveness;
-	if(!isSpecialResist(SharedWeaponObjectTemplate::ACID) && acidResist > 0)
+	if (!isSpecialResist(SharedWeaponObjectTemplate::ACID) && acidResist > 0)
 		acidResist = effectiveness;
-	if(!isSpecialResist(SharedWeaponObjectTemplate::BLAST) && blastResist > 0)
+	if (!isSpecialResist(SharedWeaponObjectTemplate::BLAST) && blastResist > 0)
 		blastResist = effectiveness;
-	if(!isSpecialResist(SharedWeaponObjectTemplate::COLD) && coldResist > 0)
+	if (!isSpecialResist(SharedWeaponObjectTemplate::COLD) && coldResist > 0)
 		coldResist = effectiveness;
-	if(!isSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY) && elecResist > 0)
+	if (!isSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY) && elecResist > 0)
 		elecResist = effectiveness;
-	if(!isSpecialResist(SharedWeaponObjectTemplate::ENERGY) && energyResist > 0)
+	if (!isSpecialResist(SharedWeaponObjectTemplate::ENERGY) && energyResist > 0)
 		energyResist = effectiveness;
-	if(!isSpecialResist(SharedWeaponObjectTemplate::HEAT) && heatResist > 0)
+	if (!isSpecialResist(SharedWeaponObjectTemplate::HEAT) && heatResist > 0)
 		heatResist = effectiveness;
-	if(!isSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER) && saberResist > 0)
+	if (!isSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER) && saberResist > 0)
 		saberResist = effectiveness;
-	if(!isSpecialResist(SharedWeaponObjectTemplate::STUN) && stunResist > 0)
+	if (!isSpecialResist(SharedWeaponObjectTemplate::STUN) && stunResist > 0)
 		stunResist = effectiveness;
 
 	// ensure the stats are set
