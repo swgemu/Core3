@@ -140,8 +140,10 @@ void PetDeedImplementation::initializeTransientMembers() {
 	setupAttacks();
 	setLoggingName("PetDeed");
 }
+
 void PetDeedImplementation::setupAttacks() {
 	attacks.removeAll();
+
 	if (special1 != "none" && special1 != "defaultattack") {
 		String args = "";
 		if (special1.contains("creature") || special1.contains("poison") || special1.contains("disease")) {
@@ -162,6 +164,7 @@ void PetDeedImplementation::setupAttacks() {
 			attacks.addAttack(special1, "postureUpChance=50");
 		}
 	}
+
 	if (special2 != "none" && special2 != "defaultattack") {
 		String args = "";
 		if (special2.contains("creature") || special2.contains("poison") || special2.contains("disease")) {
@@ -473,6 +476,10 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		pet->setCustomObjectName(StringIdManager::instance()->getStringId(*pet->getObjectName()), true);
 		pet->createChildObjects();
 		pet->setBaby(false);
+
+		// Equip the pets primary weapon in order to show their attacks on the control device
+		pet->equipPrimaryWeapon();
+
 		// update base stats on the pet now
 		// We will store the deed pointer to the aiagent before serialization
 
@@ -487,6 +494,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 				pet->setCustomizationVariable(name, val, true);
 			}
 		}
+
 		// then this is complete
 		StringId s;
 		s.setStringId(pet->getObjectName()->getFullPath());
