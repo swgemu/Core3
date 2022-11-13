@@ -16,6 +16,9 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/callbacks/EnclaveCouncilRankSuiCallback.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 const char LuaPlayerObject::className[] = "LuaPlayerObject";
 
@@ -89,6 +92,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "setFrsRank", &LuaPlayerObject::setFrsRank },
 		{ "getFrsRank", &LuaPlayerObject::getFrsRank },
 		{ "getFrsCouncil", &LuaPlayerObject::getFrsCouncil },
+		{ "showCouncilRank", &LuaPlayerObject::showCouncilRank },
 		{ "startSlicingSession", &LuaPlayerObject::startSlicingSession },
 		{ "setVisibility", &LuaPlayerObject::setVisibility },
 		{ "getPlayedTimeString", &LuaPlayerObject::getPlayedTimeString },
@@ -824,6 +828,42 @@ int LuaPlayerObject::getFrsCouncil(lua_State* L) {
 	lua_pushinteger(L, frsData->getCouncilType());
 
 	return 1;
+}
+
+int LuaPlayerObject::showCouncilRank(lua_State* L) {
+	int council = lua_tointeger(L, -1);
+
+	ManagedReference<CreatureObject*> player = realObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
+
+	if (player == nullptr)
+		return 0;
+
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return 0;
+
+	Locker lock(realObject);
+
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::ENCLAVE_VOTING, SuiListBox::HANDLETWOBUTTON);
+
+	box->setCallback(new EnclaveCouncilRankSuiCallback(zoneServer, council));
+	box->setPromptText("Select the rank whose members you wish to view.");
+	box->setPromptTitle("@force_rank:rank_selection"); // Rank Selection
+	box->setUsingObject(player);
+	box->setOkButton(true, "@ok");
+	box->setCancelButton(true, "@cancel");
+
+	for (int i = 1; i < 12; i++) {
+		String stfRank = "@force_rank:rank" + String::valueOf(i);
+		String rankString = StringIdManager::instance()->getStringId(stfRank.hashCode()).toString();
+		box->addMenuItem(rankString);
+	}
+
+	realObject->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
+
+	return 0;
 }
 
 int LuaPlayerObject::startSlicingSession(lua_State* L) {
