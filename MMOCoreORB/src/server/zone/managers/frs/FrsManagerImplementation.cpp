@@ -535,6 +535,9 @@ void FrsManagerImplementation::setPlayerRank(CreatureObject* player, int rank) {
 		groupName = "DarkEnclaveRank";
 
 	int curRank = playerData->getRank();
+	int curExperience = ghost->getExperience("force_rank_xp");
+
+	log(true) << "setPlayerRank for " << player->getFirstName() << " ID: " << player->getObjectID() << " Current FRS Rank = " << curRank << " New FRS Rank = " << rank << " Current FRS XP = " << curExperience;
 
 	if (isFrsEnabled() && curRank > 0 && (councilType == COUNCIL_LIGHT || councilType == COUNCIL_DARK)) {
 		ghost->removePermissionGroup(groupName + String::valueOf(curRank), true);
@@ -2885,15 +2888,17 @@ void FrsManagerImplementation::sendRankPlayerList(CreatureObject* player, int co
 	if (ghost == nullptr)
 		return;
 
-	FrsData* playerData = ghost->getFrsData();
-	int playerCouncil = playerData->getCouncilType();
-	int curPlayerRank = playerData->getRank();
+	if (!ghost->isPrivileged()) {
+		FrsData* playerData = ghost->getFrsData();
+		int playerCouncil = playerData->getCouncilType();
+		int curPlayerRank = playerData->getRank();
 
-	if (curPlayerRank < 0)
-		return;
+		if (curPlayerRank < 0)
+			return;
 
-	if (playerCouncil != councilType)
-		return;
+		if (playerCouncil != councilType)
+			return;
+	}
 
 	ManagedReference<FrsRank*> rankData = getFrsRank(councilType, rank);
 
