@@ -337,67 +337,6 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 	}
 }
 
-void QueueCommand::checkForDotTef(CreatureObject* attacker, CreatureObject* target) const {
-	if (attacker == nullptr || target == nullptr)
-		return;
-
-	if (!attacker->isPlayerCreature() || attacker == target) {
-		return;
-	}
-
-	PlayerObject* ghost = attacker->getPlayerObject();
-
-	if (ghost == nullptr) {
-		return;
-	}
-
-	if (target->isPet()) {
-		ManagedReference<CreatureObject*> owner = target->getLinkedCreature().get();
-
-		if (owner == nullptr)
-			return;
-
-		target = owner;
-	}
-
-	if (target->isPlayerCreature()) {
-		// No TEFs applied from duels
-		if (CombatManager::instance()->areInDuel(attacker, target))
-			return;
-
-		PlayerObject* targetGhost = target->getPlayerObject();
-
-		if (targetGhost != nullptr) {
-			if (attacker->hasBountyMissionFor(target) || target->hasBountyMissionFor(attacker)) {
-				ghost->updateLastBhPvpCombatActionTimestamp();
-				return;
-			} else if (targetGhost->isInPvpArea(true)) {
-				ghost->updateLastPvpAreaCombatActionTimestamp();
-			}
-
-			int attackerStatus = attacker->getFactionStatus();
-			int targetStatus = target->getFactionStatus();
-
-			if (ConfigManager::instance()->useCovertOvertSystem()) {
-				if (attacker->getFaction() != target->getFaction() && (attackerStatus >= FactionStatus::COVERT && (targetGhost->hasGcwTef() || targetStatus == FactionStatus::OVERT))) {
-					ghost->updateLastGcwPvpCombatActionTimestamp();
-				}
-			} else {
-				if (targetStatus == FactionStatus::OVERT && attackerStatus == FactionStatus::OVERT) {
-					ghost->updateLastGcwPvpCombatActionTimestamp();
-				}
-			}
-		}
-	} else if (target->isAiAgent() && ConfigManager::instance()->useCovertOvertSystem()) {
-		int attackerFaction = attacker->getFaction();
-		int targetFaction = target->getFaction();
-
-		if (attackerFaction != 0 && targetFaction != 0 && attackerFaction != targetFaction && attacker->getFactionStatus() >= FactionStatus::COVERT) {
-			ghost->updateLastGcwPvpCombatActionTimestamp();
-		}
-	}
-}
-
 bool QueueCommand::checkCooldown(CreatureObject* creo) const {
 	if (cooldown == 0) {
 		return true;

@@ -376,7 +376,6 @@ public:
 	int doCommonMedicalCommandChecks(CreatureObject* creature) const;
 
 	void checkForTef(CreatureObject* creature, CreatureObject* target) const;
-	void checkForDotTef(CreatureObject* creature, CreatureObject* target) const;
 
 	String toStringData() const {
 		StringBuffer buf;

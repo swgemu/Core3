@@ -29,27 +29,29 @@ public:
 		effectName = "clienteffect/healing_healenhance.cef";
 	}
 
-	void doAnimationsRange(CreatureObject* creature, CreatureObject* targetCreature, uint64 oid, float range, bool area) const {
-		String crc;
+	void doAnimationsRange(CreatureObject* creature, CreatureObject* targetCreature, uint64 oid, float range, bool area, bool isPoisonDot) const {
+		StringBuffer crc;
+		StringBuffer type;
 
-		if (range < 10.0f) {
-			if (area)
-				crc = "throw_grenade_near_area_poison";
-			else
-				crc = "throw_grenade_near_poison";
-		} else if (10.0f <= range && range < 20.f) {
-			if (area)
-				crc = "throw_grenade_medium_area_poison";
-			else
-				crc = "throw_grenade_medium_poison";
-		} else {
-			if (area)
-				crc = "throw_grenade_far_area_poison";
-			else
-				crc = "throw_grenade_far_poison";
+		if (area) {
+			type << "area_";
 		}
 
-		CombatAction* action = new CombatAction(creature, targetCreature,  crc.hashCode(), 0x01, 0L);
+		if (isPoisonDot) {
+			type << "poison";
+		} else {
+			type << "disease";
+		}
+
+		if (range < 20.0f) {
+			crc << "throw_grenade_near_" << type;
+		} else if (range >= 20.0f && range < 40.f) {
+			crc << "throw_grenade_medium_" << type;
+		} else {
+			crc << "throw_grenade_far_" << type;
+		}
+
+		CombatAction* action = new CombatAction(creature, targetCreature,  crc.toString().hashCode(), 0x01, 0L);
 		creature->broadcastMessage(action, true);
 	}
 
@@ -242,7 +244,16 @@ public:
 			creature->sendSystemMessage(stringId);
 		}
 
-		checkForDotTef(creature, targetCreature);
+		if (creature->isPlayerCreature()) {
+			PlayerObject* ghost = creature->getPlayerObject();
+
+			if (ghost != nullptr) {
+				bool shouldGcwCrackdownTef = false, shouldGcwTef = false, shouldBhTef = false, shouldGroupTef = false, shouldBhGroupTef = false;
+
+				CombatManager::instance()->checkForTefs(creature, targetCreature, &shouldGcwCrackdownTef, &shouldGcwTef, &shouldBhTef);
+				ghost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
+			}
+		}
 	}
 
 	int hasCost(CreatureObject* creature) const {
@@ -342,9 +353,6 @@ public:
 		// Checks Successful
 		Locker clocker(targetCreature, creature);
 
-		checkForDotTef(creature, targetCreature);
-		doAnimationsRange(creature, targetCreature, dotPack->getObjectID(), creature->getWorldPosition().distanceTo(targetCreature->getWorldPosition()), dotPack->isArea());
-
 		float modSkill = (float)creature->getSkillMod("healing_range_speed");
 		int delay = (int)round(12.0f - (6.0f * modSkill / 100 ));
 
@@ -367,8 +375,9 @@ public:
 
 		int dotPower = dotPack->calculatePower(creature);
 		int dotDMG = 0;
+		bool isPoisonDot = dotPack->isPoisonDeliveryUnit();
 
-		if (dotPack->isPoisonDeliveryUnit()) {
+		if (isPoisonDot) {
 			if (!targetCreature->hasDotImmunity(dotPack->getDotType())) {
 				StringIdChatParameter stringId("healing", "apply_poison_self");
 				stringId.setTT(targetCreature->getObjectID());
@@ -418,6 +427,20 @@ public:
 
 			handleArea(creature, targetCreature, dotPack, dotPack->getArea());
 		}
+
+		// Check for TEFs
+		if (creature->isPlayerCreature()) {
+			PlayerObject* ghost = creature->getPlayerObject();
+
+			if (ghost != nullptr) {
+				bool shouldGcwCrackdownTef = false, shouldGcwTef = false, shouldBhTef = false;
+
+				CombatManager::instance()->checkForTefs(creature, targetCreature, &shouldGcwCrackdownTef, &shouldGcwTef, &shouldBhTef);
+				ghost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
+			}
+		}
+
+		doAnimationsRange(creature, targetCreature, dotPack->getObjectID(), creature->getWorldPosition().distanceTo(targetCreature->getWorldPosition()), dotPack->isArea(), isPoisonDot);
 
 		if (targetCreature != creature)
 			clocker.release();
