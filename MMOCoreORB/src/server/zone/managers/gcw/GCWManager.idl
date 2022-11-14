@@ -209,7 +209,7 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native boolean canPlaceMoreBases(CreatureObject creature);
 	public native int getBaseCount(CreatureObject creature, boolean pvpOnly = false);
-	public native boolean hasTooManyBasesNearby(int x, int y);
+	public native boolean hasTooManyBasesNearby(float x, float y);
 	public native void registerGCWBase(BuildingObject building, boolean initializeBase);
 	public native void unregisterGCWBase(BuildingObject building);
 	private native void initializeBaseTimers(BuildingObject building);

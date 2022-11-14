@@ -568,28 +568,32 @@ void GCWManagerImplementation::spawnGcwControlBanners() {
 	luaSpawnCityControlBanners->callFunction();
 }
 
-bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
+bool GCWManagerImplementation::hasTooManyBasesNearby(float x, float y) {
 	if (zone == nullptr)
 		return true;
 
-	SortedVector<QuadTreeEntry*> inRangeObjects;
-	zone->getInRangeObjects(x, y, nearbyBaseDistance, &inRangeObjects, true, false);
-	int count = 0;
+	SortedVector<QuadTreeEntry* > closeEntryObjects;
+	zone->getInRangeObjects(x, y, nearbyBaseDistance, &closeEntryObjects, true, false);
 
-	for (int i = 0; i < inRangeObjects.size(); ++i) {
-		SceneObject* scene = cast<SceneObject*>(inRangeObjects.get(i));
+	int count = 0;
+	uint32 tempStrucHash = STRING_HASHCODE("temporary_structure");
+
+	for (int i = 0; i < closeEntryObjects.size(); ++i) {
+		SceneObject* scene = cast<SceneObject*>(closeEntryObjects.get(i));
 
 		if (scene == nullptr)
 			continue;
 
-		if (scene->isGCWBase())
+		// Check for other bases or structures being placed
+		if (scene->isGCWBase() || (scene->isInstallationObject() && (scene->getObjectNameStringIdName().hashCode() == tempStrucHash)))
 			count++;
-	}
 
-	if (!allowBaseComplex && count > 0) {
-		return true;
-	} else if (allowBaseComplex && count >= baseComplexSize) {
-		return true;
+		// Stop iteration if the count breaks the config options
+		if (!allowBaseComplex && count > 0) {
+			return true;
+		} else if (allowBaseComplex && count >= baseComplexSize) {
+			return true;
+		}
 	}
 
 	return false;
