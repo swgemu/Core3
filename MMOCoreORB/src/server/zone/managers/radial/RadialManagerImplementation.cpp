@@ -48,6 +48,11 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 
 	//System::out << "entering radial call 1" << endl;
 
+	if (zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
+		player->info() << "Zone Server shutting down -- RadialManagerImplementation::handleObjectMenuSelect(player=" << player->getObjectID() << ", selectID=" << selectID << ", objectID=" << objectID << "): accessed radial menu.";
+		return;
+	}
+
 	ManagedReference<SceneObject*> selectedObject = zoneServer->getObject(objectID);
 
 	if (selectedObject == nullptr) {
