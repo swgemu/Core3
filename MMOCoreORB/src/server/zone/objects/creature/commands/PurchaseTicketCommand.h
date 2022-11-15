@@ -52,6 +52,7 @@ public:
 		ManagedReference<CityRegion*> currentCity = creature->getCityRegion().get();
 
 		int departureTax = 0;
+
 		if (currentCity != nullptr){
 			if (currentCity->isBanned(creature->getObjectID())) {
 				creature->sendSystemMessage("@city/city:city_cant_purchase_ticket"); //You are banned from using the services of this city. You cannot purchase a ticket.
@@ -156,8 +157,9 @@ public:
 		Locker _lock(inventory, creature);
 
 		int inventorySize = inventory->getContainerObjectsSize();
+		int spaceNeeded = roundTrip ? 2 : 1;
 
-		if (inventorySize + ((roundTrip) ? 2 : 1) > inventory->getContainerVolumeLimit()) {
+		if ((inventorySize + spaceNeeded) > (inventory->getContainerVolumeLimit() - 1)) {
 			creature->sendSystemMessage("@error_message:inv_full"); //Your inventory is full.
 			return GENERALERROR;
 		}
