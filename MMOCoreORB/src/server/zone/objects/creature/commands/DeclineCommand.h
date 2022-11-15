@@ -36,28 +36,15 @@ public:
 
 		creature->updateGroupInviterID(0);
 
-		bool galaxyWide = ConfigManager::instance()->getBool("Core3.PlayerManager.GalaxyWideGrouping", false);
-
 		StringIdChatParameter stringId;
 		stringId.setStringId("group", "decline_leader");
 
-		if (galaxyWide) {
-			stringId.setTT(creature->getDisplayedName());
-		} else {
-			stringId.setTT(creature->getObjectID());
-		}
+		stringId.setTT(creature->getDisplayedName());
 
 		inviter->sendSystemMessage(stringId);
 		creature->sendSystemMessage("@group:decline_self");
 
 		return SUCCESS;
-		/*DECLINE DUEL CODE
-				CombatManager* combatManager = server->getCombatManager();
-				if (combatManager == nullptr)
-					return false;
-
-				 uint64 target = packet->parseLong();
-				 combatManager->declineDuel(player, target);*/
 	}
 
 };
