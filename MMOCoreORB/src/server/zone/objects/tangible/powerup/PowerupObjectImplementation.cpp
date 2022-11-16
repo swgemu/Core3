@@ -5,7 +5,6 @@
  *      Author: Kyle
  */
 
-
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
 #include "templates/tangible/PowerupTemplate.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
@@ -15,12 +14,11 @@ float PowerupObjectImplementation::MAXPRIMARY = 33.16f;
 float PowerupObjectImplementation::MAXSECONDARY = 16.33f;
 
 void PowerupObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	alm->insertAttribute("cat_pup.pup_uses", uses);
 
-	for(int i  = 0; i < modifiers.size(); ++i) {
+	for (int i = 0; i < modifiers.size(); ++i) {
 		PowerupStat* stat = &modifiers.get(i);
 		StringBuffer val;
 		val << Math::getPrecision(stat->getValue(), 2) << "%";
@@ -29,10 +27,9 @@ void PowerupObjectImplementation::fillAttributeList(AttributeListMessage* alm, C
 }
 
 void PowerupObjectImplementation::fillWeaponAttributeList(AttributeListMessage* alm, WeaponObject* weapon) {
-
 	alm->insertAttribute("cat_pup.pup_uses", uses);
 
-	for(int i  = 0; i < modifiers.size(); ++i) {
+	for (int i = 0; i < modifiers.size(); ++i) {
 		PowerupStat* stat = &modifiers.get(i);
 
 		float value = getWeaponStat(stat->getAttributeToModify(), weapon, true);
@@ -42,7 +39,7 @@ void PowerupObjectImplementation::fillWeaponAttributeList(AttributeListMessage* 
 
 		float pupvalue = (stat->getValue() / 100.f) * valueNoPup;
 
-		if(pupvalue >= 0)
+		if (pupvalue >= 0)
 			sign = "+";
 
 		StringBuffer val;
@@ -88,16 +85,15 @@ void PowerupObjectImplementation::updateCraftingValues(CraftingValues* values, b
 	/// effect 1-100
 
 	Reference<PowerupTemplate*> pup = cast<PowerupTemplate*>(templateObject.get());
-	if(pup == nullptr) {
+	if (pup == nullptr) {
 		return;
 	}
 
-	if(firstUpdate) {
-
+	if (firstUpdate) {
 		String key;
 		String value;
 
-		if(pup->hasPrimaryAttribute()) {
+		if (pup->hasPrimaryAttribute()) {
 			PowerupStat stat = pup->getRandomPrimaryAttribute();
 			modifiers.add(stat);
 
@@ -111,19 +107,17 @@ void PowerupObjectImplementation::updateCraftingValues(CraftingValues* values, b
 		uses = 100; // Powerups are always 100 uses
 
 	} else {
-
-		if(pup->hasSecondaryAttribute()) {
-
+		if (pup->hasSecondaryAttribute()) {
 			PowerupStat stat = pup->getRandomSecondaryAttribute();
 
-			if(System::random(3) == 1) {
-				for(int i = 0; i < modifiers.size(); ++i) {
-					if(stat == modifiers.get(i))  {
+			if (System::random(3) == 1) {
+				for (int i = 0; i < modifiers.size(); ++i) {
+					if (stat == modifiers.get(i)) {
 						return;
 					}
 				}
 
-				if(modifiers.size() == 1) {
+				if (modifiers.size() == 1) {
 					StringBuffer name;
 					name << getCustomObjectName().toString() << " of " << stat.getName();
 
@@ -137,28 +131,25 @@ void PowerupObjectImplementation::updateCraftingValues(CraftingValues* values, b
 
 	float val = values->getCurrentValue("effect");
 
-	for(int i  = 0; i < modifiers.size(); ++i) {
+	for (int i = 0; i < modifiers.size(); ++i) {
 		PowerupStat* stat = &modifiers.get(i);
 
 		// Primary Stat always increases
-		if(i == 0) {
+		if (i == 0) {
 			stat->setValue((val / values->getMaxValue("effect")) * MAXPRIMARY);
 			continue;
 		}
 
 		// First secondary stat has weird rules
-		if(i == 1) {
-
+		if (i == 1) {
 			/// If there is only 1 secondary stat, it increases as expected
-			if(modifiers.size() == 2) {
-
+			if (modifiers.size() == 2) {
 				stat->setValue((val / values->getMaxValue("effect")) * MAXSECONDARY);
 				continue;
 
-			/// If there are more than 1 secondary stat, and the values
-			/// is less than 10, the first secondary stat doesn't increase
-			} else if(modifiers.size() >= 2 && stat->getValue() < 10) {
-
+				/// If there are more than 1 secondary stat, and the values
+				/// is less than 10, the first secondary stat doesn't increase
+			} else if (modifiers.size() >= 2 && stat->getValue() < 10) {
 				continue;
 			}
 		}
@@ -175,13 +166,10 @@ void PowerupObjectImplementation::updateCraftingValues(CraftingValues* values, b
 }
 
 float PowerupObjectImplementation::getPowerupStat(const String& attribName) const {
-
-	for(int i = 0; i < modifiers.size(); ++i) {
+	for (int i = 0; i < modifiers.size(); ++i) {
 		const PowerupStat* stat = &modifiers.get(i);
 
-		if(attribName.toLowerCase() ==
-				stat->getAttributeToModify().toLowerCase()) {
-
+		if (attribName.toLowerCase() == stat->getAttributeToModify().toLowerCase()) {
 			return stat->getValue() / 100.f;
 		}
 	}
