@@ -28,14 +28,19 @@ void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zo
 
 	Reference<ScheduleShuttleTask*> task = new ScheduleShuttleTask(shuttle, zone);
 
-	// Shuttles delayed 10 minutes for server start
-	int delay = 10 * 60;
+	uint32 startDiff = zone->getZoneServer()->getStartTimestamp()->miliDifference();
+
+	// Shuttles delayed 5 minutes for server start
+	int delay = (5 * 60 * 1000) - startDiff;
+
+	if (delay <= 0)
+		delay = 50;
 
 #ifdef SHUTTLE_TIMER_DEBUG
-	info(true) << "ScheduleShuttleTask for " << zone->getZoneName() << " scheduled due to server loading in " << delay << " seconds.";
+	info(true) << "ScheduleShuttleTask for " << zone->getZoneName() << " scheduled due to server loading: militime since server start - " << startDiff << "  shuttle dealy time - " << delay << " miliseconds.";
 #endif
 
-	task->schedule(delay * 1000);
+	task->schedule(delay);
 }
 
 void ShuttleZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
