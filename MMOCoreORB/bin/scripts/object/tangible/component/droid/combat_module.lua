@@ -52,7 +52,7 @@ object_tangible_component_droid_combat_module = object_tangible_component_droid_
 	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "cmbt_module"},
 	experimentalMin = {0, 0, 5, 1000, -10, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 110},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 0, 0, 0, 1},
 	experimentalCombineType = {0, 0, 1, 4, 1, 1},
 }
 

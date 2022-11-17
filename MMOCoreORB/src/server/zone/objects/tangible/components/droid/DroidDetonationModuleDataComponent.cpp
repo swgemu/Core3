@@ -27,7 +27,7 @@ String DroidDetonationModuleDataComponent::getModuleName() const {
 }
 
 void DroidDetonationModuleDataComponent::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	rating = values->getCurrentValue("bomb_level");
+	rating = Math::getPrecision(values->getCurrentValue("bomb_level"), 1);
 }
 
 void DroidDetonationModuleDataComponent::initialize(DroidObject* droid) {
@@ -54,7 +54,7 @@ void DroidDetonationModuleDataComponent::initializeTransientMembers() {
 	}*/
 
 	if (droidComponent->hasKey("bomb_level")) {
-		rating = droidComponent->getAttributeValue("bomb_level");
+		rating = Math::getPrecision(droidComponent->getAttributeValue("bomb_level"), 1);
 	}
 
 	if (droidComponent->hasKey("module_count")) {
@@ -73,9 +73,9 @@ void DroidDetonationModuleDataComponent::initializeTransientMembers() {
 void DroidDetonationModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
 	if (mseDroid) {
 		int bonus = moduleCount * 10;
-		alm->insertAttribute("bomb_level", rating + bonus);
+		alm->insertAttribute("bomb_level", (float)rating + bonus);
 	} else {
-		alm->insertAttribute( "bomb_level", rating);
+		alm->insertAttribute("bomb_level", (float)rating);
 	}
 }
 
@@ -105,7 +105,7 @@ int DroidDetonationModuleDataComponent::calculateDamage(DroidObject* droid) {
 		bonus = moduleCount * 10;
 
 	// generate a damage value 150 - 200 per module 175 is mid so we calc 150 + 1..50 as damage output
-	return (System::random(50) + 150) * (bonus + rating);
+	return (System::random(50) + 150) * (bonus + (float)rating);
 }
 
 void DroidDetonationModuleDataComponent::setSpecies(int i) {

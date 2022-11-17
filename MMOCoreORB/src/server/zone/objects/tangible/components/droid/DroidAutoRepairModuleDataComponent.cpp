@@ -28,7 +28,7 @@ void DroidAutoRepairModuleDataComponent::initializeTransientMembers() {
 	}
 
 	if( droidComponent->hasKey( "auto_repair_power") ){
-		autoRepairPower = droidComponent->getAttributeValue( "auto_repair_power");
+		autoRepairPower = Math::getPrecision(droidComponent->getAttributeValue( "auto_repair_power"), 1);
 	}
 	else{
 		info( "auto_repair_power attribute not found" );
@@ -40,7 +40,7 @@ void DroidAutoRepairModuleDataComponent::updateCraftingValues(CraftingValues* va
 }
 
 void DroidAutoRepairModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
-	alm->insertAttribute( "auto_repair_power", autoRepairPower );
+	alm->insertAttribute( "auto_repair_power", (float)autoRepairPower );
 }
 
 void DroidAutoRepairModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {

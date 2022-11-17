@@ -52,7 +52,7 @@ void DroidHarvestModuleDataComponent::initializeTransientMembers() {
 	}
 
 	if (droidComponent->hasKey("harvest_power")) {
-		harvestBonus = droidComponent->getAttributeValue("harvest_power");
+		harvestBonus = Math::getPrecision(droidComponent->getAttributeValue("harvest_power"), 1);
 	} else {
 		info("harvest_power attribute not found");
 	}
@@ -81,7 +81,7 @@ void DroidHarvestModuleDataComponent::fillAttributeList(AttributeListMessage* al
 
 void DroidHarvestModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	// Add to Droid Options subradial from PetMenuComponent
-	// add top level optins
+	// add top level options
 	// then the sub menus
 	// multiple levels
 	if (player->hasSkill("outdoors_scout_novice")) {

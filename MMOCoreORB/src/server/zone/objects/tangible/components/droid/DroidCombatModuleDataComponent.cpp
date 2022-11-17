@@ -27,7 +27,7 @@ void DroidCombatModuleDataComponent::initializeTransientMembers() {
 	}
 
 	if (droidComponent->hasKey("cmbt_module")) {
-		rating = droidComponent->getAttributeValue("cmbt_module");
+		rating = Math::getPrecision(droidComponent->getAttributeValue("cmbt_module"), 1);
 	}
 }
 

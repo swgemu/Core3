@@ -41,7 +41,7 @@ void DroidStimpackModuleDataComponent::initializeTransientMembers() {
 	}
 
 	if (droidComponent->hasKey("stimpack_speed")) {
-		speed = droidComponent->getAttributeValue("stimpack_speed");
+		speed = Math::getPrecision(droidComponent->getAttributeValue("stimpack_speed"), 1);
 	}
 }
 
@@ -58,7 +58,7 @@ void DroidStimpackModuleDataComponent::fillAttributeList(AttributeListMessage* a
 	sb << capacity;
 
 	alm->insertAttribute("stimpack_capacity", sb.toString());
-	alm->insertAttribute("stimpack_speed", speed);
+	alm->insertAttribute("stimpack_speed", (float)speed);
 
 	float power = 0;
 
