@@ -50,15 +50,15 @@ object_tangible_powerup_weapon_ranged_power = object_tangible_powerup_weapon_sha
 	baseName = "Coupler",
 
 	primary = {
-		{"minDamage", "Short-Circuit", "cat_pup.pup_wpn_damage_min"}, 
-		{"attackSpeed", "Quick-Charge", "cat_pup.pup_wpn_attack_speed"}, 
-  		{"maxDamage", "Hot-Wired", "cat_pup.pup_wpn_damage_max"},
+		{"maxDamage", "Hot-Wired", "cat_pup.pup_wpn_damage_max"},
+		{"attackSpeed", "Quick-Charge", "cat_pup.pup_wpn_attack_speed"},
+		{"minDamage", "Short-Circuited", "cat_pup.pup_wpn_damage_min"},
 		{"actionAttackCost", "Tweaked", "cat_pup.pup_wpn_attack_cost_action"}
 	},
 
 	secondary = {
-		{"idealRange", "Overpowering", "cat_pup.pup_wpn_range_attack_mod_mid"}, 
-		{"mindAttackCost", "Compensation", "cat_pup.pup_wpn_attack_cost_mind"}, 
+		{"mindAttackCost", "Compensation", "cat_pup.pup_wpn_attack_cost_mind"},
+		{"idealRange", "Overpowering", "cat_pup.pup_wpn_range_attack_mod_mid"},
 		{"pointBlankAccuracy", "Searing", "cat_pup.pup_wpn_range_attack_mod_zero"}
 	},
 

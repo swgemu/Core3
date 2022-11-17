@@ -50,9 +50,9 @@ object_tangible_powerup_weapon_mine_explosive = object_tangible_powerup_weapon_s
 	baseName = "Mine Powerup",
 
 	primary = {
-		{"damageRadius", "Concussion", "cat_pup.pup_wpn_damage_radius"}, 
-		{"maxDamage", "Clustered", "cat_pup.pup_wpn_damage_max"}, 
-  		{"minDamage", "Directional", "cat_pup.pup_wpn_damage_min"},
+		{"damageRadius", "Concussion", "cat_pup.pup_wpn_damage_radius"},
+		{"maxDamage", "Clustered", "cat_pup.pup_wpn_damage_max"},
+		{"minDamage", "Directional", "cat_pup.pup_wpn_damage_min"}
 	},
 
 	secondary = {
