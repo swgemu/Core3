@@ -58,7 +58,7 @@ void DroidStimpackModuleDataComponent::fillAttributeList(AttributeListMessage* a
 	sb << capacity;
 
 	alm->insertAttribute("stimpack_capacity", sb.toString());
-	alm->insertAttribute("stimpack_speed", speed);
+	alm->insertAttribute("stimpack_speed", (int)speed);
 
 	float power = 0;
 

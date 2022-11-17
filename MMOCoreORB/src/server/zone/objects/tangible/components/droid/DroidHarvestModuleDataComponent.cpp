@@ -65,7 +65,7 @@ void DroidHarvestModuleDataComponent::updateCraftingValues(CraftingValues* value
 }
 
 void DroidHarvestModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
-	alm->insertAttribute("harvest_power", harvestBonus);
+	alm->insertAttribute("harvest_power", (int)harvestBonus);
 	if (interest == INTEREST_BONE)
 		alm->insertAttribute("pet_command_21", "@pet/droid_modules:interest_set_bone");
 	if (interest == INTEREST_MEAT)
@@ -81,7 +81,7 @@ void DroidHarvestModuleDataComponent::fillAttributeList(AttributeListMessage* al
 
 void DroidHarvestModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	// Add to Droid Options subradial from PetMenuComponent
-	// add top level optins
+	// add top level options
 	// then the sub menus
 	// multiple levels
 	if (player->hasSkill("outdoors_scout_novice")) {

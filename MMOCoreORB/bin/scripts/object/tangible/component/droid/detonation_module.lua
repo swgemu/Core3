@@ -51,7 +51,7 @@ object_tangible_component_droid_detonation_module = object_tangible_component_dr
 	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "bomb_level"},
 	experimentalMin = {0, 0, 5, 1000, -10, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 10},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 0, 0, 0, 1},
 	experimentalCombineType = {0, 0, 1, 4, 1, 1},
 }
 
