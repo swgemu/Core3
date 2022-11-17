@@ -19,7 +19,7 @@ class DroidDetonationModuleDataComponent : public BaseDroidModuleComponent {
 
 protected:
 	bool initialized;
-	int rating;
+	float rating;
 	int moduleCount;
 	bool started;
 	bool mseDroid;

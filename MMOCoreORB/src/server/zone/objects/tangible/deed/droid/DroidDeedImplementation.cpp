@@ -76,42 +76,66 @@ void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 	DeedImplementation::fillAttributeList(alm, object);
 
 	// Deed needs to show a few important bits
-	// 1.) HAM
+	// HAM
 	int maxHam = DroidMechanics::determineHam(overallQuality,species);
-	alm->insertAttribute("challenge_level", level);
 	alm->insertAttribute("creature_health", maxHam);
 	alm->insertAttribute("creature_action", maxHam);
 	alm->insertAttribute("creature_mind", maxHam);
-	if(combatRating > 0 || (species == DroidObject::DZ70 || species == DroidObject::PROBOT) ) {
+
+	// Level and Damage
+    //Check for combat module
+	float damageMin = DroidMechanics::determineMinDamage(species,combatRating);
+	float damageMax = DroidMechanics::determineMaxDamage(species,combatRating);
+	
+	// Use damageMin to set challenge_level
+	if (damageMin > 175) {
+		level = 19;
+	} else if (damageMin > 125) {
+		level = 18;
+	} else if (damageMin > 75) {
+		level = 10;
+	} else {
+		level = 1;
+	}
+
+	alm->insertAttribute("challenge_level", level);
+
+	if (combatRating > 0) {
 		StringBuffer attdisplayValue;
+		StringBuffer hitdisplayValue;
+
 		float attackSpeed = DroidMechanics::determineSpeed(species,maxHam);
 		float chanceHit = DroidMechanics::determineHit(species,maxHam);
-		// do we have a combat module installed?
-		float damageMin = DroidMechanics::determineMinDamage(species,combatRating);
-		float damageMax = DroidMechanics::determineMaxDamage(species,combatRating);
+		
 		attdisplayValue << Math::getPrecision(attackSpeed, 2);
-		StringBuffer hitdisplayValue;
 		hitdisplayValue << Math::getPrecision(chanceHit, 2);
+
 		alm->insertAttribute("creature_attack", attdisplayValue);
 		alm->insertAttribute("creature_tohit", hitdisplayValue);
 		alm->insertAttribute("creature_damage", String::valueOf(damageMin) + " - " + String::valueOf(damageMax));
 	}
+	
 	// hit and speed?
 	// if object is the master
 	String key;
 	ManagedReference<DroidComponent*> comp = nullptr;
 	HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
+
 	for(int i = 0; i < modules.size(); ++i) {
 		iterator.getNextKeyAndValue(key, comp);
+
 		if (comp) {
 			DataObjectComponentReference* data = comp->getDataObjectComponent();
 			BaseDroidModuleComponent* module = nullptr;
+
 			if(data != nullptr && data->get() != nullptr && data->get()->isDroidModuleData() ){
 				module = cast<BaseDroidModuleComponent*>(data->get());
 			}
+
 			if (module == nullptr) {
 				continue;
 			}
+
 			module->fillAttributeList(alm,object);
 		}
 	}

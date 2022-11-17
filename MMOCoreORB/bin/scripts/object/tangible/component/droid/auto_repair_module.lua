@@ -52,7 +52,7 @@ object_tangible_component_droid_auto_repair_module = object_tangible_component_d
 	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "auto_repair_power"},
 	experimentalMin = {0, 0, 5, 1000, -10, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 25},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 0, 0, 0, 1},
 	experimentalCombineType = {0, 0, 1, 4, 1, 1},
 }
 

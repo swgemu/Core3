@@ -40,7 +40,7 @@ void DroidAutoRepairModuleDataComponent::updateCraftingValues(CraftingValues* va
 }
 
 void DroidAutoRepairModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
-	alm->insertAttribute( "auto_repair_power", autoRepairPower );
+	alm->insertAttribute( "auto_repair_power", (int)autoRepairPower);
 }
 
 void DroidAutoRepairModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {

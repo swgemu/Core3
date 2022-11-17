@@ -48,7 +48,7 @@ void DroidTrapModuleDataComponent::updateCraftingValues(CraftingValues* values, 
 
 void DroidTrapModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
 	// convert module rating to actual rating
-	alm->insertAttribute( "trap_bonus", trapBonus);
+	alm->insertAttribute( "trap_bonus", (int)trapBonus);
 	ManagedReference<DroidObject*> d = getDroidObject();
 	TangibleObject* o;
 	if (d != nullptr) {
@@ -80,8 +80,8 @@ void DroidTrapModuleDataComponent::addToStack(BaseDroidModuleComponent* other) {
 	modules += 1;
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 	if (droidComponent != nullptr){
-		droidComponent->changeAttributeValue("trap_bonus",(float)trapBonus);
-		droidComponent->changeAttributeValue("module_count",(float)modules);
+		droidComponent->changeAttributeValue("trap_bonus", (float)trapBonus);
+		droidComponent->changeAttributeValue("module_count", (float)modules);
 	}
 }
 
@@ -93,8 +93,8 @@ void DroidTrapModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 	modules = 1;
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 	if (droidComponent != nullptr){
-		droidComponent->addProperty("trap_bonus",(float)trapBonus,0,"exp_effectiveness");
-		droidComponent->addProperty("module_count",(float)modules,0,"hidden",true);
+		droidComponent->addProperty("trap_bonus", (float)trapBonus,0,"exp_effectiveness");
+		droidComponent->addProperty("module_count", (float)modules,0,"hidden",true);
 	}
 }
 
