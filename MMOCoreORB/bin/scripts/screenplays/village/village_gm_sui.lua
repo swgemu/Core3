@@ -948,7 +948,7 @@ function VillageGmSui:suiSetFrsRankCallback(pPlayer, pSui, eventIndex, args)
 
 	local msg = SceneObject(pPlayer):getCustomObjectName() .. " ID: " .. SceneObject(pPlayer):getObjectID() .. " used GMFSVillage:suiSetFrsRankCallback on " .. SceneObject(pTarget):getCustomObjectName() .. " ID: " .. targetID
 	msg = msg .. " granting them Rank " .. rank
-	Logger:log(msg, LT_INFO)
+	Logger:log(msg, LT_WARNING)
 
 	CreatureObject(pPlayer):sendSystemMessage(msg)
 end
@@ -983,19 +983,13 @@ function VillageGmSui:suiSetFrsXpCallback(pPlayer, pSui, eventIndex, args)
 		return
 	end
 
-	local pGhost = CreatureObject(pTarget):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-
 	local amount = tonumber(args)
 
-	CreatureObject(pPlayer):awardExperience("force_rank_xp", amount, true)
+	CreatureObject(pTarget):awardExperience("force_rank_xp", amount, true)
 
 	local msg = SceneObject(pPlayer):getCustomObjectName() .. " ID: " .. SceneObject(pPlayer):getObjectID() .. " used GMFSVillage:suiSetFrsXpCallback on " .. SceneObject(pTarget):getCustomObjectName() .. " ID: " .. targetID
 	msg = msg .. " granting them " .. amount .. " Force Rank Experience"
-	Logger:log(msg, LT_INFO)
+	Logger:log(msg, LT_WARNING)
 
 	CreatureObject(pPlayer):sendSystemMessage(msg)
 end
@@ -1032,7 +1026,7 @@ function VillageGmSui.unlockLightFrs(pPlayer, targetID)
 	JediTrials:unlockJediKnight(pTarget)
 
 	local msg = SceneObject(pPlayer):getCustomObjectName() .. " ID: " .. SceneObject(pPlayer):getObjectID() .. " used GMFSVillage:unlockLightFrs on Player: " .. SceneObject(pTarget):getCustomObjectName() .. " ID: " .. targetID
-	Logger:log(msg, LT_INFO)
+	Logger:log(msg, LT_WARNING)
 
 	CreatureObject(pPlayer):sendSystemMessage(SceneObject(pTarget):getCustomObjectName() .. " ID: " .. targetID .. " is now a member of the Light Jedi Enclave.")
 end
@@ -1069,7 +1063,7 @@ function VillageGmSui.unlockDarkFrs(pPlayer, targetID)
 	JediTrials:unlockJediKnight(pTarget)
 
 	local msg = SceneObject(pPlayer):getCustomObjectName() .. " ID: " .. SceneObject(pPlayer):getObjectID() .. " used GMFSVillage:unlockDarkFrs on Player: " .. SceneObject(pTarget):getCustomObjectName() .. " ID: " .. targetID
-	Logger:log(msg, LT_INFO)
+	Logger:log(msg, LT_WARNING)
 
 	CreatureObject(pPlayer):sendSystemMessage(SceneObject(pTarget):getCustomObjectName() .. " ID: " .. targetID .. " is now a member of the Dark Jedi Enclave.")
 end
@@ -1088,7 +1082,7 @@ function VillageGmSui.showLightRanks(pPlayer)
 	PlayerObject(pGhost):showCouncilRank(JediTrials.COUNCIL_LIGHT)
 
 	local msg = SceneObject(pPlayer):getCustomObjectName() .. " ID: " .. SceneObject(pPlayer):getObjectID() .. " used GMFSVillage:showLightRanks."
-	Logger:log(msg, LT_INFO)
+	Logger:log(msg, LT_WARNING)
 end
 
 function VillageGmSui.showDarkRanks(pPlayer)
@@ -1105,7 +1099,7 @@ function VillageGmSui.showDarkRanks(pPlayer)
 	PlayerObject(pGhost):showCouncilRank(JediTrials.COUNCIL_DARK)
 
 	local msg = SceneObject(pPlayer):getCustomObjectName() .. " ID: " .. SceneObject(pPlayer):getObjectID() .. " used GMFSVillage:showDarkRanks."
-	Logger:log(msg, LT_INFO)
+	Logger:log(msg, LT_WARNING)
 end
 
 --[[
