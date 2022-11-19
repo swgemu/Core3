@@ -31,8 +31,8 @@ kliknik_defender = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/kliknik_hue.iff",
 	scale = 1.05,
 	lootGroups = {
-	 {
-	        groups = {
+		 {
+			groups = {
 				{group = "kliknik_common", chance = 10000000}
 			},
 			lootChance = 1540000
@@ -42,13 +42,13 @@ kliknik_defender = Creature:new {
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "object/weapon/ranged/creature/creature_spit_spray_toxicgreen.iff",
-	secondaryWeapon = "object/weapon/ranged/creature/creature_spit_spray_toxicgreen.iff",
+	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = { {"",""}, {"intimidationattack",""} },
-	secondaryAttacks = { }
+	secondaryAttacks = { {"intimidationattack",""} }
 }
 
 CreatureTemplates:addCreatureTemplate(kliknik_defender, "kliknik_defender")
