@@ -1221,6 +1221,12 @@ class AiAgent extends CreatureObject {
 	}
 
 	@local
+	@dirty
+	public final CreatureAttackMap getPrimaryAttackMap() {
+		return primaryAttackMap;
+	}
+
+	@local
 	@read
 	public final LootGroupCollection getLootGroups() {
 		if (npcTemplate.get() == null || isEventMob())
