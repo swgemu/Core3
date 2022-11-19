@@ -37,7 +37,7 @@ public:
 	void run() {
 		ManagedReference<AiAgent*> strongRef = agent.get();
 
-		if (strongRef == nullptr || strongRef->isDead() || strongRef->isIncapacitated())
+		if (strongRef == nullptr || (!strongRef->isPet() && (strongRef->isDead() || strongRef->isIncapacitated())))
 			return;
 
 		ZoneServer* zoneServer = strongRef->getZoneServer();

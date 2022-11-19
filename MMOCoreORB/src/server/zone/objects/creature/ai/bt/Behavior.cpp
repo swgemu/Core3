@@ -38,7 +38,7 @@ using namespace server::zone::objects::creature::ai::bt;
 Behavior::Behavior(const String& className, const uint32 id, const LuaObject& args) : Object(), className(className), id(id), parent() {}
 
 bool Behavior::checkConditions(AiAgent* agent) const {
-	if (agent == nullptr || agent->isDead() || agent->isIncapacitated())
+	if (agent == nullptr || (!agent->isPet() && (agent->isDead() || agent->isIncapacitated())))
 		return false;
 
 	Zone* zone = agent->getZone();
