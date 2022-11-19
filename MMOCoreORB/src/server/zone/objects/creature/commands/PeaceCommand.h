@@ -23,7 +23,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		creature->clearQueueActions();
+		creature->clearQueueActions(true);
 
 		CombatManager::instance()->attemptPeace(creature);
 
