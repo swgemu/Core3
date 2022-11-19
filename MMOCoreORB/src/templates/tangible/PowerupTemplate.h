@@ -37,8 +37,12 @@ public:
 		return primaryAttributes.size() > 0;
 	}
 
-	PowerupStat getRandomSecondaryAttribute() {
-		return secondaryAttributes.get(System::random(secondaryAttributes.size() - 1));
+	Vector<PowerupStat> getSecondaryAttributes() {
+		return secondaryAttributes;
+	}
+
+	int getTotalSecondaryAttributes() {
+		return secondaryAttributes.size();
 	}
 
 	bool hasSecondaryAttribute() {

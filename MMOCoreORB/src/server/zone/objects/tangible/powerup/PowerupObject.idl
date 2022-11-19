@@ -12,12 +12,13 @@ include templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;
+include templates.tangible.PowerupTemplate;
 
 @lua
 @json
 class PowerupObject extends TangibleObject {
-	public transient static float MAXPRIMARY;
-	public transient static float MAXSECONDARY;
+	public static final float MAXPRIMARY = 33.16;
+	public static final float MAXSECONDARY = 16.33;
 
 	@dereferenced
 	protected PowerupStatVector modifiers;
@@ -85,6 +86,8 @@ class PowerupObject extends TangibleObject {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	@local
+	public native void addSecondaryStat(CraftingValues values, PowerupTemplate pupTemplate);
 
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
