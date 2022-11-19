@@ -60,7 +60,7 @@ public:
 		if (targetCreature == nullptr)
 			return GENERALERROR;
 
-		if (targetCreature != player && targetCreature->isAttackableBy(creature) && !CollisionManager::checkLineOfSight(player, targetObject)) {
+		if (targetCreature != player && (targetCreature->isAttackableBy(creature) || !CollisionManager::checkLineOfSight(player, targetObject))) {
 			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return INVALIDTARGET;
 		}
