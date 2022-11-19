@@ -767,7 +767,7 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 		broadcastMessage(dcreo3, true);
 	}
 
-	clearQueueActions(false);
+	clearQueueActions(true);
 
 	if (removedefenders)
 		removeDefenders();

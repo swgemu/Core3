@@ -429,10 +429,6 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 		creature->notifyObservers(ObserverEventType::COMBATCOMMANDENQUEUED);
 	}
 
-	if (priority < 0) {
-		priority = queueCommand->getDefaultPriority();
-	}
-
 	int size = queueVector.size();
 
 	if (priority == QueueCommand::NORMAL) {
@@ -447,9 +443,10 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 	if (compareCounter >= 0)
 		action->setCompareToCounter((int)compareCounter);
 
-#ifdef DEBUG_QUEUE
-	creature->info(true) << "Enqueuing Command " << queueCommand->getQueueCommandName() << ": with priority - " << priority << " compareCount of " << compareCounter;
-#endif
+//#ifdef DEBUG_QUEUE
+	if (creature->isPet())
+		creature->info(true) << "Enqueuing Command " << queueCommand->getQueueCommandName() << ": with priority - " << priority << " compareCount of " << compareCounter << " Queue Size = " << queueVector.size();
+//#endif
 
 	if (priority == QueueCommand::FRONT) {
 		Time* nextAction = creature->getNextActionTime();
@@ -529,8 +526,9 @@ void CommandQueue::clearQueueActions(bool combatOnly) {
 			if (queueCommand == nullptr)
 				continue;
 
-			if (!queueCommand->isCombatCommand())
+			if (!queueCommand->isCombatCommand()) {
 				continue;
+			}
 		}
 
 		if (command->getActionCounter() != 0)
