@@ -251,6 +251,10 @@ public:
 	const static int COMMUNITYCRAFTINGCOMPONENT = 0x4000D;
 	const static int DNACOMPONENT = 0x4000E;
 
+	// Not in client ************
+	const static int DE10BARRELCOMPONENT = 0x4000F;
+	// **************************
+
 	const static int WEAPONPOWERUP = 0x80000;
 	const static int MELEEWEAPONPOWERUP = 0x80001;
 	const static int RANGEDWEAPONPOWERUP = 0x80002;

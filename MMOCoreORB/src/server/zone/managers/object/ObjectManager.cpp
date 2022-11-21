@@ -315,6 +315,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Component>(SceneObjectType::RANGEDWEAPONCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::STRUCTURECOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::TISSUECOMPONENT);
+	objectFactory.registerObject<De10BarrelComponent>(SceneObjectType::DE10BARRELCOMPONENT);
 	objectFactory.registerObject<PowerupObject>(SceneObjectType::WEAPONPOWERUP);
 	objectFactory.registerObject<PowerupObject>(SceneObjectType::MELEEWEAPONPOWERUP);
 	objectFactory.registerObject<PowerupObject>(SceneObjectType::RANGEDWEAPONPOWERUP);

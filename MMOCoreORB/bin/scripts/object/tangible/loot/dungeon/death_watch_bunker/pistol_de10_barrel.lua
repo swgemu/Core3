@@ -42,7 +42,17 @@
 
 
 object_tangible_loot_dungeon_death_watch_bunker_pistol_de10_barrel = object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel:new {
+	gameObjectType = 262159,
 
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2},
+	experimentalProperties = {"XX", "XX", "CD", "SR", "CD", "SR", "CD", "SR", "CD", "SR", "CD", "SR", "XX", "XX", "XX", "CD", "SR"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 2, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "null", "null", "null", "expRange"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "null", "null", "null", "midrangemod"},
+	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 0},
+	experimentalMax = {0, 0, 25, 25, -1.2, 15, 100, 0, 0, 0, 30},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_pistol_de10_barrel, "object/tangible/loot/dungeon/death_watch_bunker/pistol_de10_barrel.iff")

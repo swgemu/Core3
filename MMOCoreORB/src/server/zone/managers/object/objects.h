@@ -72,6 +72,7 @@
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
+#include "server/zone/objects/tangible/component/weapon/De10BarrelComponent.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/tangible/deed/vehicle/VehicleDeed.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
