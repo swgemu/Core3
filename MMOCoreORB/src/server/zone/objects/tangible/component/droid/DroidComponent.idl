@@ -13,13 +13,34 @@ import server.zone.objects.creature.CreatureObject;
 class DroidComponent extends Component {
 	protected float quality;
 	protected float durability;
+
+	// Droid module floats for more precise crafting results
+	protected float autoRepairPower;
+	protected float combatRating;
+	protected float detonationRating;
+	protected float harvestBonus;
+	protected float stimpackSpeed;
+	protected float trapBonus;
+
 	protected boolean surveyDroid;
+	protected boolean autoRepairDroid;
+	protected boolean combatDroid;
+	protected boolean detonationDroid;
+	protected boolean harvestDroid;
+	protected boolean stimpackDroid;
+	protected boolean trapDroid;
 
 	public DroidComponent() {
 		Logger.setLoggingName("DroidComponent");
 		quality = 0;
 		durability = 0;
 		surveyDroid = false;
+		autoRepairDroid = false;
+		combatDroid = false;
+		detonationDroid = false;
+		harvestDroid = false;
+		stimpackDroid = false;
+		trapDroid = false;
 	}
 
 	/**

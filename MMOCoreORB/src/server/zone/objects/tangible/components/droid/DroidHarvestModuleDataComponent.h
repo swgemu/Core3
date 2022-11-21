@@ -19,7 +19,7 @@ namespace droid {
 class DroidHarvestModuleDataComponent : public BaseDroidModuleComponent {
 
 protected:
-	int harvestBonus;
+	float harvestBonus;
 	int interest;
 	bool active;
 	ManagedReference<DroidHarvestObserver*> observer;
@@ -59,7 +59,7 @@ public:
 		return active;
 	}
 
-	int getHarvestPower(){
+	float getHarvestPower(){
 		return harvestBonus;
 	}
 
