@@ -50,13 +50,21 @@ int SlicingToolImplementation::handleObjectMenuSelect(CreatureObject* player, by
 	return 0;
 }
 
-void SlicingToolImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	TangibleObjectImplementation::fillAttributeList(msg, object);
+void SlicingToolImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
+	alm->insertAttribute("volume", volume);
+
+	if (!craftersName.isEmpty()) {
+		alm->insertAttribute("crafter", craftersName);
+	}
+
+	if (!objectSerial.isEmpty()) {
+		alm->insertAttribute("serial_number", objectSerial);
+	}
 
 	uint32 gameObjType = getGameObjectType();
 
-	if (gameObjType != SceneObjectType::MOLECULARCLAMP)
-		msg->insertAttribute("craft_tool_effectiveness", Math::getPrecision(effectiveness, 2));
+	if (gameObjType != SceneObjectType::MOLECULARCLAMP && gameObjType != SceneObjectType::LASERKNIFE)
+		alm->insertAttribute("craft_tool_effectiveness", Math::getPrecision(effectiveness, 2));
 }
 
 void SlicingToolImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {

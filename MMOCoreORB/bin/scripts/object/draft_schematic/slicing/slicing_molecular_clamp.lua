@@ -42,39 +42,35 @@
 
 
 object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_slicing_shared_slicing_molecular_clamp:new {
+	templateType = DRAFTSCHEMATIC,
 
-   templateType = DRAFTSCHEMATIC,
+	customObjectName = "Molecular Clamp",
 
-   customObjectName = "Molecular Clamp",
+	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 7,
+	size = 1,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
-   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 7, 
-   size = 1, 
-   factoryCrateType = "object/factory/factory_crate_electronics.iff",
-   
-   xpType = "crafting_general", 
-   xp = 180, 
+	xpType = "crafting_general",
+	xp = 180,
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "spice_customization", 
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "spice_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"clamp_body", "controller", "molecular_fuser"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"metal", "metal", "metal_nonferrous"},
-   resourceQuantities = {25, 25, 40},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"clamp_body", "controller", "molecular_fuser"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"metal", "metal", "metal_nonferrous"},
+	resourceQuantities = {25, 25, 40},
+	contribution = {100, 100, 100},
 
 
-   targetTemplate = "object/tangible/slicing/slicing_molecular_clamp.iff",
+	targetTemplate = "object/tangible/slicing/slicing_molecular_clamp.iff",
 
-   additionalTemplates = {
-             }
-
-}
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_slicing_molecular_clamp, "object/draft_schematic/slicing/slicing_molecular_clamp.iff")
+	additionalTemplates = { }
+} ObjectTemplates:addTemplate(object_draft_schematic_slicing_slicing_molecular_clamp, "object/draft_schematic/slicing/slicing_molecular_clamp.iff")

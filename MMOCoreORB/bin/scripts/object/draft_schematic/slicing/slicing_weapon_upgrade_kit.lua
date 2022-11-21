@@ -42,39 +42,35 @@
 
 
 object_draft_schematic_slicing_slicing_weapon_upgrade_kit = object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit:new {
+	templateType = DRAFTSCHEMATIC,
 
-   templateType = DRAFTSCHEMATIC,
+	customObjectName = "Weapon Upgrade Kit",
 
-   customObjectName = "Weapon Upgrade Kit",
+	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 1,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
-   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 1, 
-   factoryCrateType = "object/factory/factory_crate_electronics.iff",
-   
-   xpType = "crafting_weapons_general", 
-   xp = 60, 
+	xpType = "crafting_weapons_general",
+	xp = 60,
 
-   assemblySkill = "weapon_assembly", 
-   experimentingSkill = "weapon_experimentation", 
-   customizationSkill = "weapon_customization", 
+	assemblySkill = "weapon_assembly",
+	experimentingSkill = "weapon_experimentation",
+	customizationSkill = "weapon_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"assembly_enclosure", "tools", "chemicals"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"metal", "metal", "chemical"},
-   resourceQuantities = {10, 10, 10},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"assembly_enclosure", "tools", "chemicals"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"metal", "metal", "chemical"},
+	resourceQuantities = {10, 10, 10},
+	contribution = {100, 100, 100},
 
 
-   targetTemplate = "object/tangible/slicing/slicing_weapon_upgrade_kit.iff",
+	targetTemplate = "object/tangible/slicing/slicing_weapon_upgrade_kit.iff",
 
-   additionalTemplates = {
-             }
-
-}
-ObjectTemplates:addTemplate(object_draft_schematic_slicing_slicing_weapon_upgrade_kit, "object/draft_schematic/slicing/slicing_weapon_upgrade_kit.iff")
+	additionalTemplates = { }
+} ObjectTemplates:addTemplate(object_draft_schematic_slicing_slicing_weapon_upgrade_kit, "object/draft_schematic/slicing/slicing_weapon_upgrade_kit.iff")
