@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_subpro_valiant_z2 = object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z2:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 2507.0,
+	hitpoints = 336.0,
+	armor = 165.0,
+	energyUsage = 1000.0,
+	rechargeRate = 29.0,
+	rechargeRateMod = 8.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_subpro_valiant_z2, "object/tangible/ship/components/weapon_capacitor/cap_subpro_valiant_z2.iff")

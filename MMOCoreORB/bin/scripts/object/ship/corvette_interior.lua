@@ -43,6 +43,27 @@
 
 object_ship_corvette_interior = object_ship_shared_corvette_interior:new {
 
+	name = "corvette_interior",
+	slideFactor = 1.76,
+	chassisHitpoints = 30000,
+	chassisMass = 50000,
+	reactor = { name = "rct_generic", hitpoints = 4804.422, armor = 1970.196,},
+	engine = { name = "eng_generic", hitpoints = 4963.667, armor = 1937.152, speed = 30.60647, pitch = 2.889934, roll = 2.900048, yaw = 2.95273, acceleration = 7.938663, rollRate = 2.950962, pitchRate = 2.923276, deceleration = 7.912291, yawRate = 2.940777,},
+	shield_0 = { name = "shd_generic", hitpoints = 9748.484, armor = 2932.082, regen = 48.52613, front = 5984.953, back = 5996.455,},
+	shield_1 = { name = "shd_generic", hitpoints = 4860.984, armor = 2883.421, regen = 39.03818, front = 2963.118, back = 2923.01,},
+	armor_0 = { name = "arm_generic", hitpoints = 4834.403, armor = 4816.615,},
+	armor_1 = { name = "arm_generic", hitpoints = 4852.749, armor = 4906.538,},
+	capacitor = { name = "cap_generic", hitpoints = 4937.227, armor = 994.8969, rechargeRate = 127.5653, energy = 2312.452,},
+	bridge = { name = "bdg_generic", hitpoints = 4808.085, armor = 4984.758,},
+	hangar = { name = "hgr_generic", hitpoints = 9665.141, armor = 9510.316,},
+	targeting_station = { name = "tst_generic", hitpoints = 1977.683, armor = 1925.883,},
+	weapon_0 = { name = "wpn_corvette_turret_sm_s01", hitpoints = 960.4971, armor = 584.9735, rate = 0.4627544, drain = 42.41002, maxDamage = 639.845, shieldEfficiency = 0, minDamage = 502.185, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_corvette_turret_sm_s01", hitpoints = 963.1765, armor = 574.8383, rate = 0.4604894, drain = 43.60727, maxDamage = 629.8862, shieldEfficiency = 0, minDamage = 508.5163, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_2 = { name = "wpn_corvette_turret_sm_s01", hitpoints = 990.0389, armor = 589.8812, rate = 0.4499912, drain = 42.99593, maxDamage = 617.4939, shieldEfficiency = 0, minDamage = 508.2635, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_3 = { name = "wpn_corvette_turret_sm_s01", hitpoints = 982.6238, armor = 575.062, rate = 0.4687122, drain = 42.32259, maxDamage = 622.2676, shieldEfficiency = 0, minDamage = 516.2555, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_4 = { name = "wpn_corvette_turret_sm_s01", hitpoints = 980.2834, armor = 584.1869, rate = 0.470078, drain = 41.77011, maxDamage = 638.7194, shieldEfficiency = 0, minDamage = 507.8376, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_5 = { name = "wpn_corvette_turret_sm_s01", hitpoints = 954.9688, armor = 575.6172, rate = 0.4695181, drain = 42.65598, maxDamage = 611.2302, shieldEfficiency = 0, minDamage = 509.77, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_6 = { name = "wpn_corvette_turret_sm_s01", hitpoints = 982.5795, armor = 578.5784, rate = 0.4682359, drain = 42.43586, maxDamage = 610.5309, shieldEfficiency = 0, minDamage = 497.47, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_corvette_interior, "object/ship/corvette_interior.iff")

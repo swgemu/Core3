@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_rss_enhanced_imperial_1 = object_tangible_ship_components_droid_interface_shared_ddi_rss_enhanced_imperial_1:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 875.0,
+	hitpoints = 230.0,
+	armor = 116.0,
+	energyUsage = 502.0,
+	droidSpeed = 36.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_rss_enhanced_imperial_1, "object/tangible/ship/components/droid_interface/ddi_rss_enhanced_imperial_1.iff")

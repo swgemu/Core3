@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_subpro_aurora_max = object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 20596.0,
+	hitpoints = 940.0,
+	armor = 472.0,
+	energyUsage = 1.0,
+	maxEnergy = 25353.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_subpro_aurora_max, "object/tangible/ship/components/reactor/rct_subpro_aurora_max.iff")

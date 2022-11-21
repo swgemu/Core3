@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_seinar_disruptor = object_tangible_ship_components_weapon_shared_wpn_seinar_disruptor:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1754.0,
+	hitpoints = 197.0,
+	armor = 96.0,
+	energyUsage = 2002.0,
+	minDamage = 369.0,
+	maxDamage = 489.0,
+	refireRate = 9.0,
+	energyPerShot = 29.0,
+	shieldEffectiveness = 6.0,
+	armorEffectiveness = 10.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_seinar_disruptor, "object/tangible/ship/components/weapon/wpn_seinar_disruptor.iff")

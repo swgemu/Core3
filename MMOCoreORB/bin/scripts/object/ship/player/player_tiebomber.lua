@@ -43,6 +43,22 @@
 
 object_ship_player_player_tiebomber = object_ship_player_shared_player_tiebomber:new {
 
+	name = "player_tiebomber",
+	slideFactor = 1.88,
+	chassisHitpoints = 2131,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 297.1225, armor = 298.5394,},
+	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 291.1327, armor = 291.4838, speed = 49.77505, pitch = 40.96615, roll = 40.48449, yaw = 20.71066, acceleration = 19.92171, rollRate = 59.77399, pitchRate = 59.32515, deceleration = 15.39316, yawRate = 40.19766,},
+	shield_0 = { name = "shd_generic", hitpoints = 286.4963, armor = 293.7139, regen = 0, front = 1233.986, back = 1201.105,},
+	armor_0 = { name = "arm_generic", hitpoints = 380.6682, armor = 390.2642,},
+	armor_1 = { name = "arm_generic", hitpoints = 390.0657, armor = 395.0224,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 78.74741, energy = 1398.319,},
+	booster = { name = "bst_generic", hitpoints = 19.57087, armor = 19.6666, energy = 97.41641, acceleration = 19.29302, speed = 14.83059, energyUsage = 9.64123, rechargeRate = 4.884814,},
+	weapon_0 = { name = "wpn_generic", hitpoints = 196.8255, armor = 196.3449, rate = 0.2844186, drain = 27.02139, maxDamage = 571.19, shieldEfficiency = 0, minDamage = 503.3419, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_generic", hitpoints = 198.6888, armor = 193.5129, rate = 0.2754076, drain = 27.29931, maxDamage = 563.499, shieldEfficiency = 0.7923369, minDamage = 501.4572, ammo = 32, ammo_type = 4, armorEfficiency = 0.536827,},
+	weapon_2 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 19.42762, armor = 19.98304, rate = 0.3448843, drain = 22.75517, maxDamage = 22.98563, shieldEfficiency = 0, minDamage = 23.4936, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
+	weapon_3 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 19.37656, armor = 19.90893, rate = 0.335216, drain = 22.67477, maxDamage = 22.79446, shieldEfficiency = 0, minDamage = 23.37662, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
+	weapon_4 = { name = "wpn_std_countermeasure", hitpoints = 248.3909, armor = 244.0308, rate = 0.09544036, drain = 22.69649, maxDamage = 95.20827, shieldEfficiency = 0, minDamage = 23.93103, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_tiebomber, "object/ship/player/player_tiebomber.iff")

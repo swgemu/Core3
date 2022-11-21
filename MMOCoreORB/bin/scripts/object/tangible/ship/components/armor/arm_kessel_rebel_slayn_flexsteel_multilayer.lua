@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_kessel_rebel_slayn_flexsteel_multilayer = object_tangible_ship_components_armor_shared_arm_kessel_rebel_slayn_flexsteel_multilayer:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 46537.0,
+	hitpoints = 1836.0,
+	armor = 1837.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_kessel_rebel_slayn_flexsteel_multilayer, "object/tangible/ship/components/armor/arm_kessel_rebel_slayn_flexsteel_multilayer.iff")

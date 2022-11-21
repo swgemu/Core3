@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_mandal_military_grade_mk2 = object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk2:new {
 
+	reverseEngineeringLevel = 3,
+	mass = 1251.0,
+	hitpoints = 351.0,
+	armor = 180.0,
+	energyUsage = 503.0,
+	droidSpeed = 38.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_mandal_military_grade_mk2, "object/tangible/ship/components/droid_interface/ddi_mandal_military_grade_mk2.iff")

@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_mission_reward_imperial_rendili_k_class = object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_imperial_rendili_k_class:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 9776.0,
+	hitpoints = 1049.0,
+	armor = 524.0,
+	energyUsage = 1157.0,
+	rechargeRate = 46.0,
+	rechargeRateMod = 2.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_mission_reward_imperial_rendili_k_class, "object/tangible/ship/components/weapon_capacitor/cap_mission_reward_imperial_rendili_k_class.iff")

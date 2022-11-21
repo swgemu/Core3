@@ -43,6 +43,17 @@
 
 object_ship_droid_fighter_tier4 = object_ship_shared_droid_fighter_tier4:new {
 
+	name = "droid_fighter_tier4",
+	slideFactor = 1.92,
+	chassisHitpoints = 1920,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 2059.873, armor = 2055.98,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 2044.096, armor = 1998.473, speed = 44.8854, pitch = 24.72549, roll = 29.81529, yaw = 19.14608, acceleration = 10.79832, rollRate = 55.65337, pitchRate = 50.18822, deceleration = 9.384644, yawRate = 40.09525,},
+	shield_0 = { name = "shd_generic", hitpoints = 1993.237, armor = 2045.874, regen = 14.62505, front = 8089.994, back = 7956.828,},
+	armor_0 = { name = "arm_generic", hitpoints = 4351.913, armor = 4351.372,},
+	armor_1 = { name = "arm_generic", hitpoints = 4324.767, armor = 4409.92,},
+	capacitor = { name = "cap_generic", hitpoints = 2015.354, armor = 2073.416, rechargeRate = 97.49385, energy = 4792.98,},
+	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 2056.918, armor = 2050.273, rate = 0.7639044, drain = 0.9809104, maxDamage = 249.6993, shieldEfficiency = 0.5464978, minDamage = 158.4243, ammo = 0, ammo_type = 0, armorEfficiency = 0.5393805,},
 }
 
 ObjectTemplates:addTemplate(object_ship_droid_fighter_tier4, "object/ship/droid_fighter_tier4.iff")

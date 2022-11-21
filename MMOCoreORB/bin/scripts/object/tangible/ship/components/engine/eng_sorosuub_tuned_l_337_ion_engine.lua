@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_sorosuub_tuned_l_337_ion_engine = object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engine:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1583.0,
+	hitpoints = 192.0,
+	armor = 97.0,
+	energyUsage = 1503.0,
+	speed = 59.0,
+	pitch = 57.0,
+	yaw = 57.0,
+	roll = 64.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_sorosuub_tuned_l_337_ion_engine, "object/tangible/ship/components/engine/eng_sorosuub_tuned_l_337_ion_engine.iff")

@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_kessel_rebel_mandal_lightning_m1 = object_tangible_ship_components_booster_shared_bst_kessel_rebel_mandal_lightning_m1:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 37441.0,
+	hitpoints = 1108.0,
+	armor = 559.0,
+	energyUsage = 603.0,
+	speed = 28.0,
+	maxEnergy = 1465.0,
+	rechargeRate = 42.0,
+	boosterDrain = 151.0,
+	boosterAccel = 34.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_kessel_rebel_mandal_lightning_m1, "object/tangible/ship/components/booster/bst_kessel_rebel_mandal_lightning_m1.iff")

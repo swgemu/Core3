@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_z95_basic = object_tangible_ship_components_engine_shared_eng_z95_basic:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 902.0,
+	hitpoints = 152.0,
+	armor = 85.0,
+	energyUsage = 1508.0,
+	speed = 43.0,
+	pitch = 46.0,
+	yaw = 49.0,
+	roll = 55.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_z95_basic, "object/tangible/ship/components/engine/eng_z95_basic.iff")

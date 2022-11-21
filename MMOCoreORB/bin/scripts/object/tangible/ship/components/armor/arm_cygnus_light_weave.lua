@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_cygnus_light_weave = object_tangible_ship_components_armor_shared_arm_cygnus_light_weave:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1554.0,
+	hitpoints = 215.0,
+	armor = 211.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_cygnus_light_weave, "object/tangible/ship/components/armor/arm_cygnus_light_weave.iff")

@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_gallofree_advanced = object_tangible_ship_components_engine_shared_eng_gallofree_advanced:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 42121.0,
+	hitpoints = 1104.0,
+	armor = 552.0,
+	energyUsage = 1810.0,
+	speed = 75.0,
+	pitch = 61.0,
+	yaw = 65.0,
+	roll = 61.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_gallofree_advanced, "object/tangible/ship/components/engine/eng_gallofree_advanced.iff")

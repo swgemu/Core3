@@ -43,6 +43,10 @@
 
 object_tangible_ship_components_armor_arm_slayn_tech_weave = object_tangible_ship_components_armor_shared_arm_slayn_tech_weave:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1545.0,
+	hitpoints = 207.0,
+	armor = 209.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_slayn_tech_weave, "object/tangible/ship/components/armor/arm_slayn_tech_weave.iff")

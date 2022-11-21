@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_armek_phase_grinder = object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 62044.0,
+	hitpoints = 1492.0,
+	armor = 750.0,
+	energyUsage = 10.0,
+	maxEnergy = 30003.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_armek_phase_grinder, "object/tangible/ship/components/reactor/rct_armek_phase_grinder.iff")

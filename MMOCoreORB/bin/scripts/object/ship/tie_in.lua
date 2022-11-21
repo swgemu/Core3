@@ -43,6 +43,19 @@
 
 object_ship_tie_in = object_ship_shared_tie_in:new {
 
+	name = "tie_in",
+	slideFactor = 1.75,
+	chassisHitpoints = 412,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 97.9703, armor = 96.82117,},
+	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 98.38796, armor = 96.48996, speed = 46.44867, pitch = 25.41997, roll = 25.3077, yaw = 26.03273, acceleration = 13.58535, rollRate = 49.74815, pitchRate = 50.02429, deceleration = 6.010502, yawRate = 51.67767,},
+	shield_0 = { name = "shd_generic", hitpoints = 191.983, armor = 198.7326, regen = 4.925221, front = 0, back = 0,},
+	armor_0 = { name = "arm_generic", hitpoints = 494.4838, armor = 489.7073,},
+	armor_1 = { name = "arm_generic", hitpoints = 485.3305, armor = 475.5244,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 49.73822, energy = 1252.217,},
+	weapon_0 = { name = "wpn_generic", hitpoints = 192.6737, armor = 197.0276, rate = 0.4908042, drain = 24.09557, maxDamage = 212.0546, shieldEfficiency = 0, minDamage = 178.5757, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 190.9543, armor = 199.5383, rate = 2.995811, drain = 24.16496, maxDamage = 23.70049, shieldEfficiency = 0, minDamage = 24.52886, ammo = 50, ammo_type = 2, armorEfficiency = 0,},
+	weapon_2 = { name = "wpn_std_countermeasure", hitpoints = 19.34585, armor = 19.65992, rate = 0.9652068, drain = 24.1164, maxDamage = 23.97001, shieldEfficiency = 0, minDamage = 24.24528, ammo = 50, ammo_type = 7, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_tie_in, "object/ship/tie_in.iff")

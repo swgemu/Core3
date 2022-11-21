@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_corellian_modified_bt3 = object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 62047.0,
+	hitpoints = 1651.0,
+	armor = 832.0,
+	energyUsage = 4.0,
+	maxEnergy = 28005.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_corellian_modified_bt3, "object/tangible/ship/components/reactor/rct_corellian_modified_bt3.iff")

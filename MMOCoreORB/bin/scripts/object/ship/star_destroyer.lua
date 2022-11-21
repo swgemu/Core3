@@ -43,6 +43,20 @@
 
 object_ship_star_destroyer = object_ship_shared_star_destroyer:new {
 
+	objectName = "@space/ship_names:star_destroyer",
+	name = "star_destroyer",
+	slideFactor = 1.88,
+	chassisHitpoints = 100000,
+	chassisMass = 50000,
+	reactor = { name = "rct_generic", hitpoints = 47895.11, armor = 24073.38,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 47726.46, armor = 24325.88, speed = 0, pitch = 0, roll = 0, yaw = 0, acceleration = 0, rollRate = 0, pitchRate = 0, deceleration = 0, yawRate = 0,},
+	shield_0 = { name = "shd_generic", hitpoints = 48678.32, armor = 24544.36, regen = 4.994371, front = 73725.48, back = 74250.3,},
+	shield_1 = { name = "shd_generic", hitpoints = 48902.54, armor = 23771.22, regen = 4.899793, front = 72374.73, back = 74665.23,},
+	armor_0 = { name = "arm_generic", hitpoints = 48266.24, armor = 24070.05,},
+	armor_1 = { name = "arm_generic", hitpoints = 48089.07, armor = 23996.28,},
+	capacitor = { name = "cap_generic", hitpoints = 48591.38, armor = 23857.92, rechargeRate = 67.81511, energy = 1739.767,},
+	bridge = { name = "bdg_generic", hitpoints = 191364.6, armor = 194944.1,},
+	hangar = { name = "hgr_generic", hitpoints = 195158, armor = 191223.4,},
 }
 
 ObjectTemplates:addTemplate(object_ship_star_destroyer, "object/ship/star_destroyer.iff")

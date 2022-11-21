@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_armek_plasma_shell_s3 = object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s3:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 7569.0,
+	hitpoints = 636.0,
+	armor = 321.0,
+	energyUsage = 2810.0,
+	shieldFront = 855.0,
+	shieldRear = 851.0,
+	rechargeRate = 15.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_armek_plasma_shell_s3, "object/tangible/ship/components/shield_generator/shd_armek_plasma_shell_s3.iff")

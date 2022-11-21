@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_sds_enhanced_imperial_2 = object_tangible_ship_components_booster_shared_bst_sds_enhanced_imperial_2:new {
 
+	reverseEngineeringLevel = 4,
+	mass = 3679.0,
+	hitpoints = 520.0,
+	armor = 266.0,
+	energyUsage = 533.0,
+	speed = 32.0,
+	maxEnergy = 1659.0,
+	rechargeRate = 51.0,
+	boosterDrain = 169.0,
+	boosterAccel = 36.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_sds_enhanced_imperial_2, "object/tangible/ship/components/booster/bst_sds_enhanced_imperial_2.iff")

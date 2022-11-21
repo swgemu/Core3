@@ -43,6 +43,17 @@
 
 object_ship_firespray_tier3 = object_ship_shared_firespray_tier3:new {
 
+	name = "firespray_tier3",
+	slideFactor = 1.81,
+	chassisHitpoints = 1560,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 1356.765, armor = 1339.391,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 1364.179, armor = 1344.244, speed = 43.15681, pitch = 24.38127, roll = 30.05296, yaw = 19.29794, acceleration = 10.29006, rollRate = 54.9911, pitchRate = 47.84895, deceleration = 9.040998, yawRate = 39.41249,},
+	shield_0 = { name = "shd_generic", hitpoints = 1387.6, armor = 1377.389, regen = 11.76928, front = 5587.229, back = 5591.351,},
+	armor_0 = { name = "arm_generic", hitpoints = 2866.321, armor = 2908.273,},
+	armor_1 = { name = "arm_generic", hitpoints = 2929.674, armor = 2883.648,},
+	capacitor = { name = "cap_generic", hitpoints = 1403.177, armor = 1334.859, rechargeRate = 99.9101, energy = 4909.16,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 1389.305, armor = 1386.69, rate = 0.7691214, drain = 0.9947638, maxDamage = 206.6859, shieldEfficiency = 0.551897, minDamage = 143.743, ammo = 0, ammo_type = 0, armorEfficiency = 0.5370359,},
 }
 
 ObjectTemplates:addTemplate(object_ship_firespray_tier3, "object/ship/firespray_tier3.iff")

@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_unknown_multicore = object_tangible_ship_components_reactor_shared_rct_unknown_multicore:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 14425.0,
+	hitpoints = 954.0,
+	armor = 478.0,
+	energyUsage = 1.0,
+	maxEnergy = 20706.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_unknown_multicore, "object/tangible/ship/components/reactor/rct_unknown_multicore.iff")

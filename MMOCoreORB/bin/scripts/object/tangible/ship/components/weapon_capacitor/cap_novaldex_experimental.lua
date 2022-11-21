@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_novaldex_experimental = object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 58755.0,
+	hitpoints = 1736.0,
+	armor = 867.0,
+	energyUsage = 1251.0,
+	rechargeRate = 53.0,
+	rechargeRateMod = 4.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_novaldex_experimental, "object/tangible/ship/components/weapon_capacitor/cap_novaldex_experimental.iff")

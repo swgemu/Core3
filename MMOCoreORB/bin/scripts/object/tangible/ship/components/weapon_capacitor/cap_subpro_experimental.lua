@@ -43,6 +43,13 @@
 
 object_tangible_ship_components_weapon_capacitor_cap_subpro_experimental = object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_experimental:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 56407.0,
+	hitpoints = 1659.0,
+	armor = 827.0,
+	energyUsage = 1402.0,
+	rechargeRate = 50.0,
+	rechargeRateMod = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_subpro_experimental, "object/tangible/ship/components/weapon_capacitor/cap_subpro_experimental.iff")

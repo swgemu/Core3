@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_incom_mark4 = object_tangible_ship_components_reactor_shared_rct_incom_mark4:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 20600.0,
+	hitpoints = 850.0,
+	armor = 427.0,
+	energyUsage = 4.0,
+	maxEnergy = 25505.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_incom_mark4, "object/tangible/ship/components/reactor/rct_incom_mark4.iff")

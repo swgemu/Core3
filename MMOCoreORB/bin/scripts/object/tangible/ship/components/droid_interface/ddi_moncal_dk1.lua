@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_moncal_dk1 = object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk1:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 502.0,
+	hitpoints = 151.0,
+	armor = 79.0,
+	energyUsage = 506.0,
+	droidSpeed = 43.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_moncal_dk1, "object/tangible/ship/components/droid_interface/ddi_moncal_dk1.iff")

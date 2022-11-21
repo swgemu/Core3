@@ -43,6 +43,16 @@
 
 object_ship_rebel_shuttle_tier5 = object_ship_shared_rebel_shuttle_tier5:new {
 
+	name = "rebel_shuttle_tier5",
+	slideFactor = 1.74,
+	chassisHitpoints = 7372.8,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 6340.857, armor = 6331.828,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 6184.335, armor = 6210.672, speed = 45.46261, pitch = 24.91576, roll = 31.39679, yaw = 20.04262, acceleration = 11.19291, rollRate = 58.5865, pitchRate = 50.57949, deceleration = 9.74021, yawRate = 41.06018,},
+	shield_0 = { name = "shd_generic", hitpoints = 6160.398, armor = 6158.439, regen = 44.39045, front = 48433, back = 49931.71,},
+	armor_0 = { name = "arm_generic", hitpoints = 19982.21, armor = 19579.73,},
+	armor_1 = { name = "arm_generic", hitpoints = 19645.79, armor = 19904.86,},
+	capacitor = { name = "cap_generic", hitpoints = 6257.294, armor = 6177.662, rechargeRate = 98.34201, energy = 4831.732,},
 }
 
 ObjectTemplates:addTemplate(object_ship_rebel_shuttle_tier5, "object/ship/rebel_shuttle_tier5.iff")

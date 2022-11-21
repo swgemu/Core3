@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_mission_reward_imperial_cygnus_holoscreen = object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_cygnus_holoscreen:new {
 
+	reverseEngineeringLevel = 8,
+	mass = 43548.0,
+	hitpoints = 1403.0,
+	armor = 708.0,
+	energyUsage = 2938.0,
+	shieldFront = 2442.0,
+	shieldRear = 2434.0,
+	rechargeRate = 16.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_mission_reward_imperial_cygnus_holoscreen, "object/tangible/ship/components/shield_generator/shd_mission_reward_imperial_cygnus_holoscreen.iff")

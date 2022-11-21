@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_koensayr_supernova_mk3 = object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3:new {
 
+	reverseEngineeringLevel = 5,
+	mass = 8253.0,
+	hitpoints = 640.0,
+	armor = 323.0,
+	energyUsage = 6.0,
+	maxEnergy = 15808.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_koensayr_supernova_mk3, "object/tangible/ship/components/reactor/rct_koensayr_supernova_mk3.iff")

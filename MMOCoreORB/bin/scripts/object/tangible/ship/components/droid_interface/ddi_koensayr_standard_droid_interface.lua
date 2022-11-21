@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_droid_interface_ddi_koensayr_standard_droid_interface = object_tangible_ship_components_droid_interface_shared_ddi_koensayr_standard_droid_interface:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 882.0,
+	hitpoints = 232.0,
+	armor = 117.0,
+	energyUsage = 506.0,
+	droidSpeed = 41.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_koensayr_standard_droid_interface, "object/tangible/ship/components/droid_interface/ddi_koensayr_standard_droid_interface.iff")

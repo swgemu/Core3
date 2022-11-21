@@ -43,6 +43,17 @@
 
 object_ship_merchant_cruiser_light_tier2 = object_ship_shared_merchant_cruiser_light_tier2:new {
 
+	name = "merchant_cruiser_light_tier2",
+	slideFactor = 1.76,
+	chassisHitpoints = 6000,
+	chassisMass = 5000,
+	reactor = { name = "rct_generic", hitpoints = 4347.321, armor = 4328.156,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 4423.859, armor = 4371.578, speed = 41.44782, pitch = 23.09884, roll = 28.99439, yaw = 18.37297, acceleration = 10.4846, rollRate = 51.97251, pitchRate = 45.76473, deceleration = 8.850859, yawRate = 38.41758,},
+	shield_0 = { name = "shd_generic", hitpoints = 4307.012, armor = 4318.098, regen = 7.817811, front = 17394.71, back = 17566.64,},
+	armor_0 = { name = "arm_generic", hitpoints = 9365.46, armor = 9452.584,},
+	armor_1 = { name = "arm_generic", hitpoints = 9256.517, armor = 9161.956,},
+	capacitor = { name = "cap_generic", hitpoints = 4290.778, armor = 4408.794, rechargeRate = 95.03651, energy = 4784.807,},
+	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 4442.517, armor = 4300.353, rate = 0.7731364, drain = 0.9581708, maxDamage = 217.4103, shieldEfficiency = 0.5367162, minDamage = 153.7688, ammo = 0, ammo_type = 0, armorEfficiency = 0.5576748,},
 }
 
 ObjectTemplates:addTemplate(object_ship_merchant_cruiser_light_tier2, "object/ship/merchant_cruiser_light_tier2.iff")

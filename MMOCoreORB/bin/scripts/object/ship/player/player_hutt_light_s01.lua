@@ -43,6 +43,19 @@
 
 object_ship_player_player_hutt_light_s01 = object_ship_player_shared_player_hutt_light_s01:new {
 
+	name = "player_hutt_light_s01",
+	slideFactor = 1.95,
+	chassisHitpoints = 6000,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 3088.099, armor = 1527.99,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 3136.135, armor = 1581.261, speed = 58.72906, pitch = 46.54525, roll = 47.6611, yaw = 46.58419, acceleration = 16.82825, rollRate = 70.91674, pitchRate = 70.14632, deceleration = 14.25979, yawRate = 69.08958,},
+	shield_0 = { name = "shd_generic", hitpoints = 3135.652, armor = 1586.758, regen = 29.61802, front = 9606.966, back = 9779.191,},
+	armor_0 = { name = "arm_generic", hitpoints = 7629.503, armor = 7855.571,},
+	armor_1 = { name = "arm_generic", hitpoints = 7789.208, armor = 7609.071,},
+	capacitor = { name = "cap_generic", hitpoints = 3047.057, armor = 1570.661, rechargeRate = 49.48987, energy = 975.1318,},
+	booster = { name = "bst_generic", hitpoints = 19.47985, armor = 19.81534, energy = 96.9072, acceleration = 19.69485, speed = 14.44987, energyUsage = 9.768956, rechargeRate = 4.964502,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 3034.379, armor = 1565.307, rate = 0.3184879, drain = 29.52462, maxDamage = 5235.119, shieldEfficiency = 0, minDamage = 3900.653, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_2 = { name = "wpn_std_countermeasure", hitpoints = 240.8438, armor = 249.4026, rate = 0.09872283, drain = 23.52345, maxDamage = 98.52152, shieldEfficiency = 0, minDamage = 24.50502, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_hutt_light_s01, "object/ship/player/player_hutt_light_s01.iff")

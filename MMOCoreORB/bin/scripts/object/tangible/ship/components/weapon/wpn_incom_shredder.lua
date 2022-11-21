@@ -43,6 +43,17 @@
 
 object_tangible_ship_components_weapon_wpn_incom_shredder = object_tangible_ship_components_weapon_shared_wpn_incom_shredder:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 1931.0,
+	hitpoints = 208.0,
+	armor = 107.0,
+	energyUsage = 2009.0,
+	minDamage = 364.0,
+	maxDamage = 493.0,
+	refireRate = 3.0,
+	energyPerShot = 34.0,
+	shieldEffectiveness = 9.0,
+	armorEffectiveness = 5.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_incom_shredder, "object/tangible/ship/components/weapon/wpn_incom_shredder.iff")

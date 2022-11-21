@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_novaldex_pulsar_advanced = object_tangible_ship_components_booster_shared_bst_novaldex_pulsar_advanced:new {
 
+	reverseEngineeringLevel = 9,
+	mass = 37442.0,
+	hitpoints = 1110.0,
+	armor = 553.0,
+	energyUsage = 610.0,
+	speed = 28.0,
+	maxEnergy = 1472.0,
+	rechargeRate = 37.0,
+	boosterDrain = 149.0,
+	boosterAccel = 36.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_novaldex_pulsar_advanced, "object/tangible/ship/components/booster/bst_novaldex_pulsar_advanced.iff")

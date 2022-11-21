@@ -43,6 +43,14 @@
 
 object_tangible_ship_components_shield_generator_shd_moncal_deluxe_ionweb_a = object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_a:new {
 
+	reverseEngineeringLevel = 2,
+	mass = 2315.0,
+	hitpoints = 193.0,
+	armor = 97.0,
+	energyUsage = 2562.0,
+	shieldFront = 253.0,
+	shieldRear = 251.0,
+	rechargeRate = 9.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_moncal_deluxe_ionweb_a, "object/tangible/ship/components/shield_generator/shd_moncal_deluxe_ionweb_a.iff")

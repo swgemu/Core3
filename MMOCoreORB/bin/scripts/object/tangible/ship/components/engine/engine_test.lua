@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_engine_test = object_tangible_ship_components_engine_shared_engine_test:new {
 
+	reverseEngineeringLevel = 1,
+	mass = 901.0,
+	hitpoints = 157.0,
+	armor = 84.0,
+	energyUsage = 1503.0,
+	speed = 47.0,
+	pitch = 50.0,
+	yaw = 50.0,
+	roll = 49.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_test, "object/tangible/ship/components/engine/engine_test.iff")

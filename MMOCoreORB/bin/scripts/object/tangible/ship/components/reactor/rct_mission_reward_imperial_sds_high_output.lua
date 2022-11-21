@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_mission_reward_imperial_sds_high_output = object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_high_output:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 14427.0,
+	hitpoints = 1248.0,
+	armor = 620.0,
+	energyUsage = 6.0,
+	maxEnergy = 19002.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_mission_reward_imperial_sds_high_output, "object/tangible/ship/components/reactor/rct_mission_reward_imperial_sds_high_output.iff")

@@ -43,6 +43,21 @@
 
 object_ship_blacksun_heavy_s01 = object_ship_shared_blacksun_heavy_s01:new {
 
+	name = "blacksun_heavy_s01",
+	slideFactor = 1.91,
+	chassisHitpoints = 519,
+	chassisMass = 10000,
+	reactor = { name = "rct_generic", hitpoints = 292.1168, armor = 287.4563,},
+	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.13712, armor = 96.53938, speed = 40.83212, pitch = 20.29032, roll = 20.26504, yaw = 20.7813, acceleration = 11.60626, rollRate = 42.26531, pitchRate = 41.75356, deceleration = 14.92155, yawRate = 41.42518,},
+	shield_0 = { name = "shd_generic", hitpoints = 792.137, armor = 479.3623, regen = 4.953176, front = 591.0793, back = 774.5934,},
+	armor_0 = { name = "arm_generic", hitpoints = 667.6582, armor = 681.3739,},
+	armor_1 = { name = "arm_generic", hitpoints = 691.666, armor = 699.6349,},
+	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.94182, energy = 559.7447,},
+	booster = { name = "bst_xwing_booster_s01", hitpoints = 19.72693, armor = 19.48062, energy = 0, acceleration = 0, speed = 0, energyUsage = 0, rechargeRate = 0,},
+	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 198.7599, armor = 197.0094, rate = 0.3409268, drain = 22.87353, maxDamage = 408.2436, shieldEfficiency = 0, minDamage = 316.5556, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_1 = { name = "wpn_incom_disruptor", hitpoints = 191.5975, armor = 198.3509, rate = 0.3339383, drain = 22.88681, maxDamage = 23.11802, shieldEfficiency = 0, minDamage = 23.51607, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_2 = { name = "wpn_incom_disruptor", hitpoints = 19.40996, armor = 19.26176, rate = 0.3334805, drain = 22.82965, maxDamage = 22.52002, shieldEfficiency = 0, minDamage = 23.29776, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+	weapon_3 = { name = "wpn_xwing_missile_s01", hitpoints = 194.675, armor = 193.6782, rate = 5.972951, drain = 43.18543, maxDamage = 1493.766, shieldEfficiency = 0.8716478, minDamage = 448.0993, ammo = 12, ammo_type = 5, armorEfficiency = 0.2274433,},
 }
 
 ObjectTemplates:addTemplate(object_ship_blacksun_heavy_s01, "object/ship/blacksun_heavy_s01.iff")

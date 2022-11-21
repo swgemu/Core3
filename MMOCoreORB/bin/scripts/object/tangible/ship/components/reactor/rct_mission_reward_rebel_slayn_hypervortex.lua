@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_reactor_rct_mission_reward_rebel_slayn_hypervortex = object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hypervortex:new {
 
+	reverseEngineeringLevel = 6,
+	mass = 14426.0,
+	hitpoints = 1240.0,
+	armor = 623.0,
+	energyUsage = 3.0,
+	maxEnergy = 19010.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_mission_reward_rebel_slayn_hypervortex, "object/tangible/ship/components/reactor/rct_mission_reward_rebel_slayn_hypervortex.iff")

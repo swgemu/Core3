@@ -43,6 +43,15 @@
 
 object_tangible_ship_components_engine_eng_incom_elite = object_tangible_ship_components_engine_shared_eng_incom_elite:new {
 
+	reverseEngineeringLevel = 10,
+	mass = 54994.0,
+	hitpoints = 1514.0,
+	armor = 763.0,
+	energyUsage = 1804.0,
+	speed = 84.0,
+	pitch = 74.0,
+	yaw = 77.0,
+	roll = 80.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_incom_elite, "object/tangible/ship/components/engine/eng_incom_elite.iff")

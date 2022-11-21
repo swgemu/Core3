@@ -43,6 +43,16 @@
 
 object_tangible_ship_components_booster_bst_novaldex_quasar = object_tangible_ship_components_booster_shared_bst_novaldex_quasar:new {
 
+	reverseEngineeringLevel = 7,
+	mass = 14357.0,
+	hitpoints = 941.0,
+	armor = 471.0,
+	energyUsage = 580.0,
+	speed = 22.0,
+	maxEnergy = 1338.0,
+	rechargeRate = 37.0,
+	boosterDrain = 139.0,
+	boosterAccel = 36.0,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_novaldex_quasar, "object/tangible/ship/components/booster/bst_novaldex_quasar.iff")
