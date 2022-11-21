@@ -1,0 +1,38 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.component;
+
+import server.zone.objects.tangible.component.Component;
+import server.zone.packets.scene.AttributeListMessage;
+include server.zone.objects.creature.CreatureObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+
+@json
+class De10BarrelComponent extends Component {
+
+	public De10BarrelComponent() {
+		Logger.setLoggingName("De10BarrelComponent");
+	}
+
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+}
