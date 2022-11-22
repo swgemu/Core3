@@ -4,6 +4,7 @@
  */
 
 #include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/objects/tangible/LairObject.h"
 #include "templates/params/ObserverEventType.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
@@ -16,6 +17,7 @@
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DisseminateExperienceTask.h"
+#include "server/zone/managers/creature/LairRepopulateTask.h"
 
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	int i = 0;
@@ -64,6 +66,15 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 				continue;
 
 			agent->notifyObservers(arg2, sourceObject);
+		}
+
+		break;
+	case ObserverEventType::NOPLAYERSINRANGE:
+		if (!(getMobType() == LairTemplate::NPC) && getSpawnNumber() >= 3 && getLivingCreatureCount() >= 1) {
+			Reference<LairRepopulateTask*> repopTask = new LairRepopulateTask(lair, lairObserver);
+
+			if (repopTask != nullptr)
+				repopTask->schedule(15 * 1000);
 		}
 
 		break;
@@ -338,4 +349,34 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 	}
 
 	return objectsToSpawn.size() > 0;
+}
+
+void LairObserverImplementation::repopulateLair(TangibleObject* lairTano) {
+	if (lairTano == nullptr) {
+		return;
+	}
+
+	Locker lock(lairTano);
+
+	int lairCond = lairTano->getMaxCondition();
+
+	if (lairCond > (lairCond * 0.5f))
+		return;
+
+	lairTano->setMaxCondition(lairCond * 0.75);
+	lairTano->healDamage(lairTano, 0, lairCond, true);
+	spawnNumber.set(0);
+
+	LairObject* lair = cast<LairObject*>(lairTano);
+
+	if (lair != nullptr)
+		lair->setLairRepopulated(true);
+
+	Reference<LairObserver*> lairObserver = _this.getReferenceUnsafeStaticCast();
+	Reference<TangibleObject*> lairTanoRef = lairTano;
+
+	Core::getTaskManager()->scheduleTask([lairTanoRef, lairObserver]() {
+		Locker locker(lairTanoRef);
+		lairObserver->checkForNewSpawns(lairTanoRef, nullptr);
+	}, "CheckForNewSpawnsLambda", 1000);
 }
