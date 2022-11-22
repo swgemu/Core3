@@ -1829,6 +1829,16 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 					despawnEvent = new DespawnCreatureOnPlayerDissappear(asAiAgent());
 					despawnEvent->schedule(30000);
 				}
+
+				if (isCreature()) {
+					Creature* creature = cast<Creature*>(asAiAgent());
+
+					if (creature != nullptr && creature->hasBeenMilked()) {
+						Locker clock(creature);
+
+						creature->setMilkState(CreatureManager::NOTMILKED);
+					}
+				}
 			} else if (newValue < 0) {
 				error("numberOfPlayersInRange below 0");
 			}

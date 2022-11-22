@@ -1142,16 +1142,9 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 	int mask = creature->getPvpStatusBitmask();
 	creature->setPvpStatusBitmask(0, true);
 
-	if (creature->isAiAgent()) {
-		AiAgent* agent = creature->asAiAgent();
-
-		if (agent == nullptr)
-			return;
-
-		agent->clearPatrolPoints();
-		agent->addCreatureFlag(CreatureFlag::STATIONARY);
-		agent->setAITemplate();
-	}
+	creature->clearPatrolPoints();
+	creature->addCreatureFlag(CreatureFlag::STATIONARY);
+	creature->setAITemplate();
 
 	Reference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force, adult);
 
@@ -1177,6 +1170,10 @@ void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* pla
 	Locker clocker(creature);
 
 	creature->setMilkState(BEINGMILKED);
+
+	creature->clearPatrolPoints();
+	creature->addCreatureFlag(CreatureFlag::STATIONARY);
+	creature->setAITemplate();
 
 	Reference<MilkCreatureTask*> task = new MilkCreatureTask(creature, player);
 

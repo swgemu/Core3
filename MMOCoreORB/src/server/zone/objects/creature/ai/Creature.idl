@@ -237,5 +237,8 @@ class Creature extends AiAgent {
 
 		return super.npcTemplate.getLevel();
 	}
+
+	@read
+	public native boolean hasBeenMilked();
 }
 
