@@ -6,6 +6,7 @@
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/LairAggroTask.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/tangible/LairObject.h"
 
 void DestroyMissionLairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
 	if (getMobType() == LairTemplate::NPC)
@@ -29,6 +30,12 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 	}
 
 	int spawnLimit = lairTemplate->getSpawnLimit() + spawnLimitAdjustment;
+	spawnLimitAdjustment = spawnLimit;
+
+	LairObject* lairObject = cast<LairObject*>(lair);
+
+	if (lairObject != nullptr && lairObject->isRepopulated())
+		spawnLimit *= 2;
 
 	if (forceSpawn) {
 		spawnNumber.increment();
@@ -89,9 +96,9 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 		int amountToSpawn = 0;
 
 		if (getMobType() == LairTemplate::CREATURE) {
-			amountToSpawn = spawnLimit / 3;
+			amountToSpawn = spawnLimitAdjustment / 3;
 		} else {
-			amountToSpawn = System::random(2) + (spawnLimit / 3);
+			amountToSpawn = System::random(2) + (spawnLimitAdjustment / 3);
 		}
 
 		if (amountToSpawn < 1)

@@ -4,6 +4,7 @@
  */
 
 #include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/objects/tangible/LairObject.h"
 #include "templates/params/ObserverEventType.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
@@ -16,6 +17,7 @@
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DisseminateExperienceTask.h"
+#include "server/zone/managers/creature/LairRepopulateTask.h"
 
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	int i = 0;
@@ -64,6 +66,16 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 				continue;
 
 			agent->notifyObservers(arg2, sourceObject);
+		}
+
+		break;
+	case ObserverEventType::NOPLAYERSINRANGE:
+		if (!(getMobType() == LairTemplate::NPC) && getSpawnNumber() >= 2 && getLivingCreatureCount() >= 1) {
+			Reference<LairRepopulateTask*> repopTask = new LairRepopulateTask(lair, lairObserver);
+
+			if (repopTask != nullptr) {
+				repopTask->schedule(10 * 1000);
+			}
 		}
 
 		break;
@@ -171,7 +183,6 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 			continue;
 		}
 
-		//  TODO: Range check
 		damageToHeal += lairMaxCondition / 100;
 	}
 
@@ -196,7 +207,14 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 	if (zone == nullptr)
 		return false;
 
-	if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit() && !lairTemplate->hasBossMobs())
+	int spawnLimit = lairTemplate->getSpawnLimit();
+
+	LairObject* lairObject = cast<LairObject*>(lair);
+
+	if (lairObject != nullptr && lairObject->isRepopulated())
+		spawnLimit *= 2;
+
+	if (spawnedCreatures.size() >= spawnLimit && !lairTemplate->hasBossMobs())
 		return false;
 
 	if (forceSpawn) {
@@ -281,7 +299,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 	uint32 lairTemplateCRC = getLairTemplateName().hashCode();
 
 	for (int i = 0; i < objectsToSpawn.size(); ++i) {
-		if (spawnNumber != 4 && spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
+		if (spawnNumber != 4 && spawnedCreatures.size() >= spawnLimit)
 			return true;
 
 		const String& templateToSpawn = objectsToSpawn.elementAt(i).getKey();
@@ -338,4 +356,31 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 	}
 
 	return objectsToSpawn.size() > 0;
+}
+
+void LairObserverImplementation::repopulateLair(TangibleObject* lairTano) {
+	if (lairTano == nullptr) {
+		return;
+	}
+
+	Locker lock(lairTano);
+
+	int lairCond = lairTano->getMaxCondition();
+
+	lairTano->setMaxCondition(lairCond * 0.75);
+	lairTano->healDamage(lairTano, 0, lairCond, true);
+	spawnNumber.set(0);
+
+	LairObject* lair = cast<LairObject*>(lairTano);
+
+	if (lair != nullptr)
+		lair->setLairRepopulated(true);
+
+	Reference<LairObserver*> lairObserver = _this.getReferenceUnsafeStaticCast();
+	Reference<TangibleObject*> lairTanoRef = lairTano;
+
+	Core::getTaskManager()->scheduleTask([lairTanoRef, lairObserver]() {
+		Locker locker(lairTanoRef);
+		lairObserver->checkForNewSpawns(lairTanoRef, nullptr);
+	}, "CheckForNewSpawnsLambda", 1000);
 }

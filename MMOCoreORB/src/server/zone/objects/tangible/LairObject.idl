@@ -22,6 +22,8 @@ class LairObject extends TangibleObject {
 
 	protected transient DespawnLairOnPlayerDisappear despawnEvent;
 
+	protected boolean repopulated;
+
 	public LairObject() {
 		Logger.setLoggingName("LairObject");
 
@@ -29,6 +31,7 @@ class LairObject extends TangibleObject {
 		super.closeobjects.setNoDuplicateInsertPlan();
 
 		despawnOnNoPlayersInRange = false;
+		repopulated = false;
 	}
 
 	@dirty
@@ -41,9 +44,19 @@ class LairObject extends TangibleObject {
 		return despawnOnNoPlayersInRange;
 	}
 
+	@read
+	public boolean isRepopulated() {
+		return repopulated;
+	}
+
 	@preLocked
 	public void setDespawnOnNoPlayersInRange(boolean b) {
 		despawnOnNoPlayersInRange = b;
+	}
+
+	@preLocked
+	public void setLairRepopulated(boolean repop) {
+		repopulated = repop;
 	}
 
 	public void notifyInsert(QuadTreeEntry entry) {
@@ -72,8 +85,13 @@ class LairObject extends TangibleObject {
 			if (!creo.isInvisible()) {
 				int val = numberOfPlayersInRange.decrement();
 
-				if (val <= 0 && despawnOnNoPlayersInRange)
-					activateDespawnEvent();
+				if (val <= 0) {
+					if (despawnOnNoPlayersInRange)
+						activateDespawnEvent();
+
+					if (!repopulated && (super.getConditionDamage() > (super.getMaxCondition() * 0.5f)))
+						notifyObservers(ObserverEventType.NOPLAYERSINRANGE);
+				}
 			}
 		}
 	}
