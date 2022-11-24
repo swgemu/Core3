@@ -157,6 +157,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 			// It has room. Check if it's not equipped and on a player.
 			ManagedReference<WearableContainerObject*> wearable = cast<WearableContainerObject*>(wearableParent.get());
+
 			if (!wearable->isEquipped() && playerParent != nullptr) {
 				SceneObject* inventory = playerParent->getSlottedObject("inventory");
 				SceneObject* bank = playerParent->getSlottedObject("bank");
@@ -176,6 +177,9 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 						return TransferErrorCode::CONTAINERFULL;
 					}
+
+					if (!playerParent->isNearBank())
+						return TransferErrorCode::NOTNEARBANK;
 				}
 			}
 		} else {
@@ -197,13 +201,16 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 								return TransferErrorCode::CONTAINERFULL;
 							}
-							// Return if it's in a player bank that doesn't have room
+						// Return if it's in a player bank that doesn't have room
 						} else if (thisParent == bank) {
 							if (bank->getContainerVolumeLimit() < bank->getCountableObjectsRecursive() + objectSize) {
 								errorDescription = "@container_error_message:container03"; // This container is full.
 
 								return TransferErrorCode::CONTAINERFULL;
 							}
+
+							if (!playerParent->isNearBank())
+								return TransferErrorCode::NOTNEARBANK;
 						}
 					}
 				}

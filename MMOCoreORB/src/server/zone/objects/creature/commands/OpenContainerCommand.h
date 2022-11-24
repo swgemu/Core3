@@ -24,11 +24,11 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		// creature->info("OpenContainerCommand", true);
-
 		ManagedReference<SceneObject*> objectToOpen = nullptr;
 
 		StringTokenizer args(arguments.toString());
+
+		// creature->info(true) << "OpenContainerCommand called Target = " << target << " Args = " << arguments.toString();
 
 		int counter = 0;
 		if (args.hasMoreTokens())
