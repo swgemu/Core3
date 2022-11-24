@@ -31,12 +31,11 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		/*
-		creature->info("transfer item misc");
+		/*creature->info("transfer item misc");
 
 		StringBuffer infoMsg;
 		infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
-		creature->info(infoMsg.toString(), true); */
+		creature->info(infoMsg.toString(), true);*/
 
 		StringTokenizer tokenizer(arguments.toString());
 
@@ -168,11 +167,20 @@ public:
 			}
 		}
 
+		ManagedReference<SceneObject*> parent = objectToTransfer->getParent().get();
+
+		// Check bank transfer
+		SceneObject* bank = creature->getSlottedObject("bank");
+
+		if (bank != nullptr && (bank == destinationObject || bank == parent) && !creature->isNearBank()) {
+			trx.discard();
+			return TOOFAR;
+		}
+
 		Zone* zoneObject = objectToTransfer->getZone();
 
 		if (zoneObject != nullptr) {
 			ManagedReference<SceneObject*> rootParent = objectToTransfer->getRootParent();
-			ManagedReference<SceneObject*> parent = objectToTransfer->getParent().get();
 
 			float maxDistance =  16.5;
 
@@ -273,7 +281,7 @@ public:
 				creature->sendSystemMessage(errorDescription);
 			else
 				creature->error() << "cannot add objectToTransfer to destinationObject: errorNumber: " << errorNumber << " destinationID: " << destinationObject->getObjectID();
-			if (errorNumber == TransferErrorCode::CONTAINERFULL) {
+			if (errorNumber == TransferErrorCode::CONTAINERFULL || errorNumber == TransferErrorCode::NOTNEARBANK) {
 				// Very noisy and not really useful
 				trx.discard();
 			} else {

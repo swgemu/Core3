@@ -2204,4 +2204,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public abstract boolean canBeTransferred(SceneObject newContainer) {
 		return true;
 	}
+
+	@dirty
+	public native boolean isNearBank();
 }
