@@ -42,6 +42,7 @@
 
 
 object_tangible_loot_quest_anakin_helmet = object_tangible_loot_quest_shared_anakin_helmet:new {
+	gameObjectType = 258,
 
 }
 
