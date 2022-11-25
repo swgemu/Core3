@@ -78,6 +78,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/ServerCore.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
 #endif // WITH_SESSION_API
@@ -2786,6 +2787,21 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 							}, "SetMayorIDLambda");
 						}
 					}
+
+					continue;
+				} else if (structure->isGCWBase()) {
+					Reference<BuildingObject*> baseRef = structure->asBuildingObject();
+					Reference<Zone*> zoneRef = zone;
+
+					Core::getTaskManager()->executeTask([baseRef, zoneRef] () {
+						if (baseRef == nullptr || zoneRef == nullptr)
+							return;
+
+						GCWManager* gcwMan = zoneRef->getGCWManager();
+
+						if (gcwMan != nullptr)
+							gcwMan->scheduleBaseDestruction(baseRef, nullptr, true);
+					}, "DestroyBaseLambda");
 
 					continue;
 				}
