@@ -62,7 +62,8 @@ namespace player {
 		int getLootDropPercent(lua_State* L);
 
 	private:
-		Reference<QuestTask*> realObject;
+		// Removed Reference<> to prevent being cleaned up by GC while in Lua
+		QuestTask* realObject;
 	};
 
 }
