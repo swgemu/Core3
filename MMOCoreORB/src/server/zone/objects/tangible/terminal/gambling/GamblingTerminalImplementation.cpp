@@ -333,7 +333,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 
 					if (player != nullptr) {
 						player->sendSystemMessage("Slot Machine Pay Line");
-						player->sendSystemMessage("-- | " + String::valueOf(first) + " | | " + String::valueOf(second) + " | | " + String::valueOf(third) + "| --");
+						player->sendSystemMessage("-- | " + String::valueOf(first) + " | | " + String::valueOf(second) + " | | " + String::valueOf(third) + " | --");
 					}
 
 					break;
