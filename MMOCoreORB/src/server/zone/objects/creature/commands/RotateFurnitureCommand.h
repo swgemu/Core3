@@ -158,7 +158,15 @@ public:
 			return false;
 		}
 
-		if (!object->isVendor() && !buildingObject->isOnAdminList(player)) {
+		bool onAdmin = buildingObject->isOnAdminList(player);
+		bool onVendor = buildingObject->isOnPermissionList("VENDOR", player);
+
+		if (object->isVendor()) {
+			if (!onAdmin && !onVendor) {
+				player->sendSystemMessage("@player_structure:admin_move_only"); // You must be an admin to manipulate objects.
+				return false;
+			}
+		} else if (!onAdmin) {
 			player->sendSystemMessage("@player_structure:admin_move_only"); // You must be an admin to manipulate objects.
 			return false;
 		}
