@@ -23,7 +23,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -34,7 +33,6 @@ public:
 
 		// We don't do anything if for some reason it isn't a player
 		if (creature->isPlayerCreature()) {
-
 			Reference<Task*> sampletask = creature->getPendingTask("sample");
 			Reference<Task*> surveytask = creature->getPendingTask("survey");
 
@@ -42,9 +40,15 @@ public:
 			if (sampletask != nullptr) {
 				AtomicTime nextExecutionTime;
 				Core::getTaskManager()->getNextExecutionTime(sampletask, nextExecutionTime);
-				int seconds = (int) ((nextExecutionTime.getMiliTime() - Time().getMiliTime()) / 1000.0f);
-				if(seconds < 1)
-					seconds = 1;
+
+				uint64 milliNow = Time().getMiliTime();
+				uint64 nextExecution = nextExecutionTime.getMiliTime();
+				int64 diffCalc = (nextExecution - milliNow);
+
+				if (diffCalc < 0)
+					diffCalc = 500;
+
+				int seconds = (int)(diffCalc / 1000);
 
 				StringIdChatParameter message("survey","tool_recharge_time");
 				message.setDI(seconds);
@@ -64,7 +68,7 @@ public:
 
 			ManagedReference<SurveySession*> session = creature->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 
-			if(session == nullptr) {
+			if (session == nullptr) {
 				creature->sendSystemMessage("@ui:survey_notool");
 				return GENERALERROR;
 			}
