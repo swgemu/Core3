@@ -22,6 +22,7 @@ include system.util.Vector;
 include system.util.VectorMap;
 include engine.log.Logger;
 include engine.util.u3d.Vector3;
+import server.zone.Zone;
 
 @dirty
 class MissionManager extends Observer implements Logger {
@@ -194,7 +195,7 @@ class MissionManager extends Observer implements Logger {
 	public native Vector<unsigned long> getHuntersHuntingTarget(unsigned long targetId);
 
 	@local
-	public native void allocateMissionNpcs(NpcSpawnPoint target, NpcSpawnPoint destination, TerrainManager terrainManager, CreatureManager creatureManager);
+	public native void allocateMissionNpcs(NpcSpawnPoint target, NpcSpawnPoint destination, Zone zone, CreatureManager creatureManager);
 	@local
 	public native void freeMissionNpc(AiAgent npc);
 	@local

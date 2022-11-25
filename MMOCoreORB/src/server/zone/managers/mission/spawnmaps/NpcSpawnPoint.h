@@ -165,7 +165,7 @@ public:
 		return "NpcSpawnPoint at " + position.toString() + " of spawntype " + String::valueOf(spawnType) + " is " + (inUseByNumberOfMissions > 0 ? " in use." : "free.");
 	}
 
-	void allocateNpc(TerrainManager* terrainManager, CreatureManager* creatureManager);
+	void allocateNpc(Zone* zone, CreatureManager* creatureManager);
 
 	void freeNpc(Reference<MissionManager*> missionManager);
 
