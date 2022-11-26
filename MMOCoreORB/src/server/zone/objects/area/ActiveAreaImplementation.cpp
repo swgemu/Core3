@@ -8,6 +8,8 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "events/ActiveAreaEvent.h"
 #include "server/zone/objects/area/areashapes/AreaShape.h"
+#include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/managers/creature/SpawnAreaMap.h"
 
 bool ActiveAreaImplementation::containsPoint(float px, float py, uint64 cellid) const {
 	if (cellObjectID != 0 && cellObjectID != cellid)
@@ -52,18 +54,23 @@ void ActiveAreaImplementation::notifyEnter(SceneObject* obj) {
 	if (cellObjectID == 0 || cellObjectID == obj->getParentID())
 		notifyObservers(ObserverEventType::ENTEREDAREA, obj);
 
-	if (obj->isPlayerCreature() && attachedScenery.size() > 0) {
-		ManagedReference<SceneObject*> sceno = obj;
-		Vector<ManagedReference<SceneObject* > > scene = attachedScenery;
+	if (obj->isPlayerCreature()) {
+		if (attachedScenery.size() > 0) {
+			ManagedReference<SceneObject*> sceno = obj;
+			Vector<ManagedReference<SceneObject* > > scene = attachedScenery;
 
-		Core::getTaskManager()->executeTask([=] () {
-			for (int i = 0; i < scene.size(); i++) {
-				SceneObject* scenery = scene.get(i);
-				Locker locker(scenery);
+			Core::getTaskManager()->executeTask([=] () {
+				for (int i = 0; i < scene.size(); i++) {
+					SceneObject* scenery = scene.get(i);
+					Locker locker(scenery);
 
-				scenery->sendTo(sceno, true);
-			}
-		}, "SendSceneryLambda");
+					scenery->sendTo(sceno, true);
+				}
+			}, "SendSceneryLambda");
+		}
+
+		if (obj->isDebuggingRegions())
+			sendDebugMessage(obj, true);
 	}
 }
 
@@ -71,19 +78,83 @@ void ActiveAreaImplementation::notifyExit(SceneObject* obj) {
 	if (cellObjectID == 0 || cellObjectID != obj->getParentID())
 		notifyObservers(ObserverEventType::EXITEDAREA, obj);
 
-	if (obj->isPlayerCreature() && attachedScenery.size() > 0) {
-		ManagedReference<SceneObject*> sceno = obj;
-		Vector<ManagedReference<SceneObject* > > scene = attachedScenery;
+	if (obj->isPlayerCreature()) {
+		if (attachedScenery.size() > 0) {
+			ManagedReference<SceneObject*> sceno = obj;
+			Vector<ManagedReference<SceneObject* > > scene = attachedScenery;
 
-		Core::getTaskManager()->executeTask([=] () {
-			for (int i = 0; i < scene.size(); i++) {
-				SceneObject* scenery = scene.get(i);
-				Locker locker(scenery);
+			Core::getTaskManager()->executeTask([=] () {
+				for (int i = 0; i < scene.size(); i++) {
+					SceneObject* scenery = scene.get(i);
+					Locker locker(scenery);
 
-				scenery->sendDestroyTo(sceno);
-			}
-		}, "SendDestroySceneryLambda");
+					scenery->sendDestroyTo(sceno);
+				}
+			}, "SendDestroySceneryLambda");
+		}
+
+		if (obj->isDebuggingRegions())
+			sendDebugMessage(obj, false);
 	}
+}
+
+void ActiveAreaImplementation::sendDebugMessage(SceneObject* object, bool entry) {
+	if (object == nullptr || !object->isPlayerCreature())
+		return;
+
+	CreatureObject* creature = object->asCreatureObject();
+
+	if (creature == nullptr)
+		return;
+
+	StringBuffer debugMsg;
+	String name = getObjectNameStringIdName();
+
+	if (entry) {
+		debugMsg << "Entering Region:  " << name << "  -  ";
+	} else {
+		debugMsg << "Exiting Region:  " << name << "  -  ";
+	}
+
+	String shapeString = areaShape == nullptr ? " City " : areaShape->isRectangularAreaShape() ? " rectangle " : areaShape->isCircularAreaShape() ? " circle "
+		: areaShape->isRingAreaShape() ? " ring " : " none ";
+
+	debugMsg << " Region Shape = " << shapeString;
+	debugMsg << " Radius = " << getRadius() << "  ";
+
+	Vector3 playerCoords = creature->getWorldPosition();
+	debugMsg << " Player Coords: X = " << playerCoords.getX() <<  "  Z = " << playerCoords.getZ() <<"  Y = " << playerCoords.getY() << " ";
+
+	Vector3 coords = getWorldPosition();
+	debugMsg << " Area Coords - X = " << coords.getX() <<  " Z = " << coords.getZ() <<"  Y = " << coords.getY() << " ";
+
+	ManagedReference<ActiveArea*> area = _this.getReferenceUnsafeStaticCast();
+
+	if (area != nullptr) {
+		SpawnArea* spawnArea = area.castTo<SpawnArea*>();
+
+		if (spawnArea != nullptr) {
+			uint32 tier = spawnArea->getTier();
+			StringBuffer regionTypes;
+
+			if (tier & SpawnAreaMap::UNDEFINEDAREA)
+				regionTypes << "UNDEFINEDAREA ";
+			if (tier & SpawnAreaMap::SPAWNAREA)
+				regionTypes << "SPAWNAREA ";
+			if (tier & SpawnAreaMap::NOSPAWNAREA)
+				regionTypes << "NOSPAWNAREA ";
+			if (tier & SpawnAreaMap::WORLDSPAWNAREA)
+				regionTypes << "WORLDSPAWNAREA ";
+			if (tier & SpawnAreaMap::NOWORLDSPAWNAREA)
+				regionTypes << "NOWORLDSPAWNAREA ";
+			if (tier & SpawnAreaMap::NOBUILDZONEAREA)
+				regionTypes << "NOBUILDZONEAREA";
+
+			debugMsg << " Region Types: (" << regionTypes.toString() << ")";
+		}
+	}
+
+	creature->sendSystemMessage(debugMsg.toString());
 }
 
 void ActiveAreaImplementation::setZone(Zone* zone) {

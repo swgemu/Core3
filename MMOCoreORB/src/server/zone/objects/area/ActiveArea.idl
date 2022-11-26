@@ -100,6 +100,8 @@ class ActiveArea extends SceneObject {
 	@dirty
 	public native abstract void notifyExit(SceneObject object);
 
+	public native void sendDebugMessage(SceneObject creature, boolean entry);
+
 	public native void setZone(Zone zone);
 
 	@dirty
