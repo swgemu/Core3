@@ -130,7 +130,7 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
-#include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/objects/tangible/misc/ContractCrate.h"
 #include "server/zone/objects/tangible/misc/DeadEyePrototype.h"
 

@@ -2113,10 +2113,6 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 		return;
 	}
 
-	if (creature->getCityRegion() != nullptr) {
-		return;
-	}
-
 	SortedVector<ManagedReference<ActiveArea* > > areas = *creature->getActiveAreas();
 	Vector<SpawnArea*> spawnAreas;
 	int totalWeighting = 0;
@@ -2127,28 +2123,35 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 	for (int i = 0; i < areas.size(); ++i) {
 		ManagedReference<ActiveArea*>& area = areas.get(i);
 
-		if (area->isNoSpawnArea()) {
-			return;
-		}
+		if (area == nullptr || !area->isRegion())
+			continue;
 
-		SpawnArea* spawnArea = area.castTo<SpawnArea*>();
+		//if (area->isNoSpawnArea()) {
+		//	info(true) << "area is no spawn area";
+		//	return;
+		//}
 
-		if (spawnArea == nullptr) {
+		Region* region = area.castTo<Region*>();
+
+		if (region == nullptr) {
 			continue;
 		}
 
-		int tier = spawnArea->getTier();
-
-		if (!(tier & SpawnAreaMap::SPAWNAREA)) {
+		if (!region->isSpawnArea() && !region->isWorldSpawnArea()) {
 			continue;
 		}
 
-		if (tier & SpawnAreaMap::WORLDSPAWNAREA) {
+		SpawnArea* spawnArea = cast<SpawnArea*>(region);
+
+		if (spawnArea == nullptr)
+			continue;
+
+		if (spawnArea->isWorldSpawnArea()) {
 			worldSpawnAreas.add(spawnArea);
 			continue;
 		}
 
-		if (tier & SpawnAreaMap::NOWORLDSPAWNAREA) {
+		if (spawnArea->isNoWorldSpawnArea()) {
 			includeWorldSpawnAreas = false;
 		}
 
@@ -2164,11 +2167,16 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 		}
 	}
 
+	int spawnAreasSize = spawnAreas.size();
+
+	if (spawnAreasSize <= 0)
+		return;
+
 	int choice = System::random(totalWeighting - 1);
 	int counter = 0;
 	ManagedReference<SpawnArea*> finalArea = nullptr;
 
-	for (int i = 0; i < spawnAreas.size(); i++) {
+	for (int i = 0; i < spawnAreasSize; i++) {
 		SpawnArea* area = spawnAreas.get(i);
 
 		counter += area->getTotalWeighting();

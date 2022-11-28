@@ -5,17 +5,16 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/SpawnGroup.h"
-//#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/area/SpawnAreaObserver.h"
+#include "server/zone/objects/region/SpawnAreaObserver.h"
 #include "server/zone/objects/area/areashapes/AreaShape.h"
 #include "server/ServerCore.h"
-#include "events/RemoveNoSpawnAreaTask.h"
+#include "server/zone/objects/area/events/RemoveNoSpawnAreaTask.h"
 
 void SpawnAreaImplementation::buildSpawnList(Vector<uint32>* groupCRCs) {
 	CreatureTemplateManager* ctm = CreatureTemplateManager::instance();
@@ -120,8 +119,9 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 		return;
 	}
 
-	if (totalSpawnCount >= maxSpawnLimit)
+	if (totalSpawnCount >= maxSpawnLimit) {
 		return;
+	}
 
 	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL)
 		return;
@@ -142,8 +142,9 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 		}
 	}
 
-	if (finalSpawn == nullptr)
+	if (finalSpawn == nullptr) {
 		return;
+	}
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
@@ -161,12 +162,11 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 
 	randomPosition.setZ(spawnZ);
 
-	//lets check if we intersect with some object (buildings, etc..)
-	//if (CollisionManager::checkSphereCollision(randomPosition, 64.f + finalSpawn->getSize(), zone))
-	//	return;
-
 	// Check the spot to see if spawning is allowed
-	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 64.f)) {
+	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize())) { // + 64.f)) {
+#ifdef DEBUG_REGIONS
+		info(true) << "spawning not permitted";
+#endif // DEBUG_REGIONS
 		return;
 	}
 

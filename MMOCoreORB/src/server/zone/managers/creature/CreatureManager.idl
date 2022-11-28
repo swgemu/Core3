@@ -8,7 +8,7 @@ import server.zone.objects.creature.ai.Creature;
 import server.zone.managers.ZoneManager;
 import server.zone.managers.creature.CreatureTemplateManager;
 import server.zone.managers.creature.DnaManager;
-import server.zone.objects.area.SpawnArea;
+import server.zone.objects.region.SpawnArea;
 import system.util.Vector;
 import system.util.SynchronizedVector;
 include server.zone.managers.creature.SpawnAreaMap;
@@ -47,7 +47,6 @@ class CreatureManager extends ZoneManager {
 	}
 
 	public void initialize() {
-		loadSpawnAreas();
 	}
 
 	public native void stop();
@@ -93,8 +92,6 @@ class CreatureManager extends ZoneManager {
 	@arg2preLocked
 	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition, boolean isCombatAction);
 
-	public native void loadSpawnAreas();
-
 	public native void unloadSpawnAreas();
 
 	private native boolean createCreatureChildrenObjects(CreatureObject creature, unsigned int templateCRC, boolean persistent = false, unsigned int mobileTemplateCRC = 0);
@@ -115,6 +112,18 @@ class CreatureManager extends ZoneManager {
 	@local
 	public SynchronizedVector<SpawnArea> getWorldSpawnAreas() {
 		return spawnAreaMap.getWorldSpawnAreas();
+	}
+
+	public void addSpawnAreaToMap(unsigned int nameHash, SpawnArea area) {
+		spawnAreaMap.put(nameHash, area);
+	}
+
+	public void addWorldSpawnArea(SpawnArea area) {
+		spawnAreaMap.addWorldSpawnArea(area);
+	}
+
+	public void addNoSpawnArea(SpawnArea area) {
+		spawnAreaMap.addNoSpawnArea(area);
 	}
 
 	@local

@@ -55,7 +55,7 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 	zone->addCityRegionToUpdate(_this.getReferenceUnsafeStaticCast());
 
 	if (isRegistered())
-		zone->getPlanetManager()->addRegion(_this.getReferenceUnsafeStaticCast());
+		zone->getPlanetManager()->addCityRegion(_this.getReferenceUnsafeStaticCast());
 }
 
 void CityRegionImplementation::initialize() {
@@ -138,9 +138,7 @@ Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
 	region->setObjectName(regionName, false);
-
-	if (isClientRegion())
-		region->setNoBuildArea(true);
+	region->setRegionName(regionName.toString());
 
 	zone->transferObject(region, -1, false);
 

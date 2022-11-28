@@ -8,7 +8,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "events/ActiveAreaEvent.h"
 #include "server/zone/objects/area/areashapes/AreaShape.h"
-#include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/managers/creature/SpawnAreaMap.h"
 
 bool ActiveAreaImplementation::containsPoint(float px, float py, uint64 cellid) const {
@@ -128,26 +128,23 @@ void ActiveAreaImplementation::sendDebugMessage(SceneObject* object, bool entry)
 	Vector3 coords = getWorldPosition();
 	debugMsg << " Area Coords - X = " << coords.getX() <<  " Z = " << coords.getZ() <<"  Y = " << coords.getY() << " ";
 
-	ManagedReference<ActiveArea*> area = _this.getReferenceUnsafeStaticCast();
+	if (isRegion()) {
+		Region* region = _this.castTo<Region*>();
 
-	if (area != nullptr) {
-		SpawnArea* spawnArea = area.castTo<SpawnArea*>();
-
-		if (spawnArea != nullptr) {
-			uint32 tier = spawnArea->getTier();
+		if (region != nullptr) {
 			StringBuffer regionTypes;
 
-			if (tier & SpawnAreaMap::UNDEFINEDAREA)
+			if (region->isUndefinedRegion())
 				regionTypes << "UNDEFINEDAREA ";
-			if (tier & SpawnAreaMap::SPAWNAREA)
+			if (region->isSpawnArea())
 				regionTypes << "SPAWNAREA ";
-			if (tier & SpawnAreaMap::NOSPAWNAREA)
+			if (region->isNoSpawnArea())
 				regionTypes << "NOSPAWNAREA ";
-			if (tier & SpawnAreaMap::WORLDSPAWNAREA)
+			if (region->isWorldSpawnArea())
 				regionTypes << "WORLDSPAWNAREA ";
-			if (tier & SpawnAreaMap::NOWORLDSPAWNAREA)
+			if (region->isNoWorldSpawnArea())
 				regionTypes << "NOWORLDSPAWNAREA ";
-			if (tier & SpawnAreaMap::NOBUILDZONEAREA)
+			if (region->isNoBuildZoneArea())
 				regionTypes << "NOBUILDZONEAREA";
 
 			debugMsg << " Region Types: (" << regionTypes.toString() << ")";

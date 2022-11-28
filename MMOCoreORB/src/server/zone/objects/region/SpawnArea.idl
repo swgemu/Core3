@@ -2,22 +2,23 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-package server.zone.objects.area;
+package server.zone.objects.region;
 
-import server.zone.objects.area.ActiveArea;
+import server.zone.objects.region.Region;
 import system.util.HashTable;
 import engine.core.ManagedObject;
-import server.zone.objects.area.SpawnAreaObserver;
+import server.zone.objects.region.SpawnAreaObserver;
 import engine.util.Observable;
 import server.zone.objects.scene.SceneObject;
 import system.lang.Time;
+import engine.log.Logger;
 
 include server.zone.managers.creature.LairSpawn;
 include system.util.Vector;
 include engine.util.u3d.Vector3;
 
 @json
-class SpawnArea extends ActiveArea {
+class SpawnArea extends Region {
 	@dereferenced
 	@rawTemplate(value = "Reference<LairSpawn*>")
 	protected transient Vector possibleSpawns;
@@ -41,10 +42,8 @@ class SpawnArea extends ActiveArea {
 	@dereferenced
 	@rawTemplate(value = "ManagedWeakReference<SpawnArea*>")
 	protected Vector noSpawnAreas;
-	
-	protected boolean worldSpawnArea;
 
-	protected int tier;
+	protected boolean worldSpawnArea;
 
 	public final static int MINSPAWNINTERVAL = 2000; //msec
 
@@ -55,7 +54,8 @@ class SpawnArea extends ActiveArea {
 		spawnTypes.setNullValue(0);
 		exitObserver = null;
 		worldSpawnArea = false;
-		Logger.setLoggingName("SpawnArea");
+
+		setLoggingName("SpawnArea");
 	}
 
 	@local
@@ -76,16 +76,6 @@ class SpawnArea extends ActiveArea {
 		return possibleSpawns;
 	}
 
-	@preLocked
-	public void setTier(int n) {
-		tier = n;
-	}
-
-	@read
-	public int getTier() {
-		return tier;
-	}
-
 	@read
 	public int getTotalWeighting() {
 		return totalWeighting;
@@ -102,7 +92,12 @@ class SpawnArea extends ActiveArea {
 	}
 
 	public native void tryToSpawn(SceneObject object);
-	
+
+	@dirty
+	public boolean isSpawnAreaObject() {
+		return true;
+	}
+
 	@read
 	public boolean isWorldSpawnArea() {
 		return worldSpawnArea;

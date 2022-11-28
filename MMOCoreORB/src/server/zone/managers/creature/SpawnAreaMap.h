@@ -8,11 +8,10 @@
 #ifndef SPAWNAREAMAP_H_
 #define SPAWNAREAMAP_H_
 
-#include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/Zone.h"
 
 class SpawnAreaMap : public SynchronizedVectorMap<uint32, ManagedReference<SpawnArea*> > , public Logger {
-	Reference<Lua*> lua;
 protected:
 
 	ManagedReference<Zone*> zone;
@@ -21,46 +20,23 @@ protected:
 
 	SynchronizedVector<ManagedReference<SpawnArea*> > worldSpawnAreas;
 
-	void readAreaObject(LuaObject& areaObj);
-	void loadRegions();
-
 public:
-
-	enum {
-		UNDEFINEDAREA       = 0x00000000,
-		SPAWNAREA           = 0x00000001,
-		NOSPAWNAREA         = 0x00000002,
-		WORLDSPAWNAREA      = 0x00000010,
-		NOWORLDSPAWNAREA    = 0x00000020,
-		NOBUILDZONEAREA     = 0x00000100
-	};
-
-	enum {
-		CIRCLE = 1,
-		RECTANGLE,
-		RING
-	};
-
 	SpawnAreaMap() : Logger("SpawnAreaMap") {
-		lua = new Lua();
 		setAllowDuplicateInsertPlan();
 	}
 
 	SpawnAreaMap(const SpawnAreaMap& l) : SynchronizedVectorMap<uint32, ManagedReference<SpawnArea*> >(l) , Logger("SpawnAreaMap"),
 			zone(l.zone), noSpawnAreas(l.noSpawnAreas), worldSpawnAreas(l.worldSpawnAreas) {
-
-		lua = l.lua;
 	}
 
-	SpawnAreaMap& operator=(const SpawnAreaMap& l) {
-		if (this == &l) {
+	SpawnAreaMap& operator=(const SpawnAreaMap& m) {
+		if (this == &m) {
 			return *this;
 		}
 
-		lua = l.lua;
-		zone = l.zone;
-		noSpawnAreas = l.noSpawnAreas;
-		worldSpawnAreas = l.worldSpawnAreas;
+		zone = m.zone;
+		noSpawnAreas = m.noSpawnAreas;
+		worldSpawnAreas = m.worldSpawnAreas;
 
 		return *this;
 	}
@@ -68,14 +44,23 @@ public:
 	virtual ~SpawnAreaMap() {
 	}
 
-	void loadMap(Zone* z);
-
 	void unloadMap();
 
 	SynchronizedVector<ManagedReference<SpawnArea*> >* getWorldSpawnAreas() {
 		return &worldSpawnAreas;
 	}
 
+	void addSpawnArea(uint32 spawnHash, ManagedReference<SpawnArea*> area) {
+		put(spawnHash, area);
+	}
+
+	void addWorldSpawnArea(ManagedReference<SpawnArea*> area) {
+		worldSpawnAreas.add(area);
+	}
+
+	void addNoSpawnArea(ManagedReference<SpawnArea*> area) {
+		noSpawnAreas.add(area);
+	}
 };
 
 

@@ -1766,7 +1766,7 @@ void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* m
 
 	ManagedReference<Region*> aa = city->getRegion(0);
 	aa->setPlanetMapCategory(cityCat);
-	aa->getZone()->getPlanetManager()->addRegion(city);
+	aa->getZone()->getPlanetManager()->addCityRegion(city);
 	aa->getZone()->registerObjectWithPlanetaryMap(aa);
 
 	for (int i = 0; i < city->getStructuresCount(); i++) {

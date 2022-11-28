@@ -11,6 +11,7 @@ import engine.log.Logger;
 import system.util.VectorMap;
 import system.util.SynchronizedVectorMap;
 import system.util.SynchronizedSortedVector;
+import server.zone.objects.region.Region;
 import server.zone.objects.region.CityRegion;
 import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.gcw.GCWManager;
@@ -164,6 +165,12 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	public native void loadClientRegions(LuaObject outposts);
 
+	@local
+	public native void loadRegions();
+
+	@local
+	public native void readRegionObject(@dereferenced LuaObject luaObject);
+
 	public native void loadClientPoiData();
 	public native void start();
 
@@ -264,8 +271,8 @@ class PlanetManager extends ManagedService implements Logger {
 		return terrainManager;
 	}
 
-	public int getRegionCount() {
-		return regionMap.getTotalRegions();
+	public int getCityRegionCount() {
+		return regionMap.getTotalCityRegions();
 	}
 
 	public int getNumberOfCities() {
@@ -276,24 +283,48 @@ class PlanetManager extends ManagedService implements Logger {
 		numberOfCities = numberOfCities + 1;
 	}
 
-	public CityRegion getRegion(int index) {
+	public CityRegion getCityRegion(int index) {
+		return regionMap.getCityRegion(index);
+	}
+
+	public CityRegion getCityRegion(final string region) {
+		return regionMap.getCityRegion(region);
+	}
+
+	public CityRegion getCityRegionAt(float x, float y) {
+		return regionMap.getCityRegionAt(x, y);
+	}
+
+	public Region getRegion(int index) {
 		return regionMap.getRegion(index);
 	}
 
-	public CityRegion getRegion(final string region) {
+	public Region getRegion(final string region) {
 		return regionMap.getRegion(region);
 	}
 
-	public CityRegion getRegionAt(float x, float y) {
+	public Region getRegionAt(float x, float y) {
 		return regionMap.getRegionAt(x, y);
 	}
 
-	public synchronized void addRegion(CityRegion region) {
+	public synchronized void addCityRegion(CityRegion region) {
+		regionMap.addCityRegion(region);
+	}
+
+	public synchronized void addRegion(Region region) {
 		regionMap.addRegion(region);
+	}
+
+	public synchronized void dropCityRegion(final string region) {
+		regionMap.dropCityRegion(region);
 	}
 
 	public synchronized void dropRegion(final string region) {
 		regionMap.dropRegion(region);
+	}
+
+	public boolean hasCityRegion(final string name) {
+		return regionMap.containsCityRegion(name);
 	}
 
 	public boolean hasRegion(final string name) {

@@ -2,12 +2,12 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-package server.zone.objects.area;
+package server.zone.objects.region;
 
 import engine.util.Observer;
 import engine.util.Observable;
 
-include server.zone.objects.area.SpawnArea;
+include server.zone.objects.region.SpawnArea;
 include engine.log.Logger;
 import engine.core.ManagedObject;
 
