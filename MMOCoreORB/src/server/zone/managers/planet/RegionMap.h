@@ -33,7 +33,7 @@ public:
 	inline void addCityRegion(CityRegion* cityRegion) {
 		wlock();
 
-		cityRegions.put(cityRegion->getRegionName(), cityRegion);
+		cityRegions.put(cityRegion->getCityRegionName(), cityRegion);
 
 		unlock();
 	}
@@ -49,7 +49,7 @@ public:
 	inline void addRegion(Region* region) {
 		wlock();
 
-		regions.put(region->getRegionName(), region);
+		regions.put(region->getAreaName(), region);
 
 		unlock();
 	}

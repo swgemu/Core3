@@ -328,7 +328,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
 	@dirty
-	public native string getRegionName();
+	public native string getCityRegionName();
 
 	@dirty
 	public native string getRegionDisplayedName();

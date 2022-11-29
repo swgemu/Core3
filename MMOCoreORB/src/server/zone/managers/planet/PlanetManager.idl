@@ -137,6 +137,12 @@ class PlanetManager extends ManagedService implements Logger {
 	private native void loadPlanetObjects(LuaObject lua);
 
 	@local
+	public native void loadRegions();
+
+	@local
+	public native void readRegionObject(@dereferenced LuaObject luaObject);
+
+	@local
 	private native void loadBadgeAreas(LuaObject lua);
 
 	@local
@@ -164,12 +170,6 @@ class PlanetManager extends ManagedService implements Logger {
 
 	@local
 	public native void loadClientRegions(LuaObject outposts);
-
-	@local
-	public native void loadRegions();
-
-	@local
-	public native void readRegionObject(@dereferenced LuaObject luaObject);
 
 	public native void loadClientPoiData();
 	public native void start();

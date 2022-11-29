@@ -212,11 +212,11 @@ class CityManager extends ManagedService implements Logger {
 	}
 
 	public boolean renameCity(CityRegion city, final string newName) {
-		if(cities.contains(city.getRegionName())){
-			cities.drop(city.getRegionName());
+		if(cities.contains(city.getCityRegionName())){
+			cities.drop(city.getCityRegionName());
 			cities.put(newName, city);
 			return true;
-		}	
+		}
 
 		return false;
 

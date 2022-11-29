@@ -51,7 +51,7 @@ public:
 		Locker clocker(city, player);
 
 		StringIdChatParameter params;
-		params.setTO(city->getRegionName());
+		params.setTO(city->getCityRegionName());
 
 		CityManager* cityManager = server->getCityManager();
 

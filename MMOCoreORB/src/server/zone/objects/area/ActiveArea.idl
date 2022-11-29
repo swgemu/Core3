@@ -8,21 +8,15 @@ include server.zone.objects.scene.SceneObject;
 include server.zone.objects.area.areashapes.AreaShape;
 include system.util.Vector;
 
+
 import server.zone.Zone;
 import server.zone.objects.pathfinding.NavArea;
+import server.zone.objects.region.Region;
 
 @mock
 @json
 class ActiveArea extends SceneObject {
-	protected boolean noBuildArea;
-
-	protected boolean campingPermitted;
-
-	protected boolean municipalZone;
-
 	protected unsigned long cellObjectID;
-
-	protected boolean noSpawnArea;
 
 	protected boolean pvpArea;
 
@@ -43,17 +37,27 @@ class ActiveArea extends SceneObject {
 	@dereferenced
 	protected transient Vector<SceneObject> attachedScenery;
 
+	protected unsigned int areaFlags;
+
+	protected string areaName;
+
+	public static final int UNDEFINEDAREA = 0x000000;
+	public static final int SPAWNAREA = 0x000001;
+	public static final int NOSPAWNAREA = 0x000002;
+	public static final int WORLDSPAWNAREA = 0x000004;
+	public static final int NOWORLDSPAWNAREA = 0x000008;
+	public static final int NOBUILDZONEAREA = 0x000010;
+	public static final int CAMPINGAREA = 0x000020;
+	public static final int OUTPOST = 0x000040;
+	public static final int CITY = 0x000080;
+	public static final int MUNICIPLEZONE = 0x000100;
+
+	public static final int CIRCLE = 1;
+	public static final int RECTANGLE = 2;
+	public static final int RING = 3;
+
 	public ActiveArea() {
 		cellObjectID = 0;
-
-		noBuildArea = false;
-
-		// By default camping is not permitted, in PlanetManagerImplementation::loadClientRegions it's changed to true around city no builds
-		campingPermitted = false;
-
-		municipalZone = false;
-
-		noSpawnArea = false;
 
 		pvpArea = false;
 
@@ -71,6 +75,10 @@ class ActiveArea extends SceneObject {
 
 		areaShape = null;
 
+		areaName = "";
+
+		areaFlags = 0;
+
 		Logger.setLoggingName("ActiveArea");
 	}
 
@@ -83,7 +91,6 @@ class ActiveArea extends SceneObject {
 	 */
 	@dirty
 	public native void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true) {
-
 	}
 
 	@mock
@@ -103,6 +110,37 @@ class ActiveArea extends SceneObject {
 	public native void sendDebugMessage(SceneObject creature, boolean entry);
 
 	public native void setZone(Zone zone);
+
+	@read
+	public native boolean containsPoint(float x, float y, unsigned long cellid);
+
+	@read
+	public abstract native boolean containsPoint(float x, float y);
+
+	@read
+	public native boolean intersectsWith(ActiveArea area);
+
+	@dirty
+	@local
+	public abstract NavArea asNavArea() {
+		return null;
+	}
+
+	@dirty
+	@local
+	public abstract Region asRegion() {
+		return null;
+	}
+
+	@preLocked
+	public native void setRegionFlags(unsigned int flags) {
+		areaFlags = flags;
+	}
+
+	@preLocked
+	public void setAreaName(final string name) {
+		areaName = name;
+	}
 
 	@dirty
 	public boolean isActiveArea() {
@@ -125,57 +163,95 @@ class ActiveArea extends SceneObject {
 	}
 
 	@dirty
-	@local
-	public abstract NavArea asNavArea() {
-		return null;
+	public abstract boolean isCampArea() {
+		return false;
 	}
 
 	@read
-	public boolean isNoBuildArea() {
-		return noBuildArea;
+	public boolean isUndefinedRegion() {
+		return areaFlags & UNDEFINEDAREA;
 	}
 
 	@read
-	public boolean isCampingPermitted() {
-		return campingPermitted;
+	public boolean isSpawnArea() {
+		return areaFlags & SPAWNAREA;
 	}
 
 	@read
-	public native boolean containsPoint(float x, float y, unsigned long cellid);
-
-	@read
-	public abstract native boolean containsPoint(float x, float y);
-
-	@read
-	public float getRadius2() {
-		float radius = getRadius();
-
-		return radius * radius;
+	public boolean isNoSpawnArea() {
+		return areaFlags & NOSPAWNAREA;
 	}
 
 	@read
-	public float getRadius() {
-		if (areaShape) {
-			return areaShape.getRadius();
-		} else {
-			return super.getRadius();
-		}
+	public boolean isWorldSpawnArea() {
+		return areaFlags & WORLDSPAWNAREA;
+	}
+
+	@read
+	public boolean isNoWorldSpawnArea() {
+		return areaFlags & NOWORLDSPAWNAREA;
+	}
+
+	@read
+	public boolean isNoBuildZone() {
+		return areaFlags & NOBUILDZONEAREA;
+	}
+
+	@read
+	public boolean isCampingArea() {
+		return areaFlags & CAMPINGAREA;
+	}
+
+	@read
+	public boolean isMunicipalZone() {
+		return areaFlags & MUNICIPLEZONE;
+	}
+
+	@read
+	public boolean isPvpArea() {
+		return pvpArea;
+	}
+
+	@read
+	public boolean isOvertOnlyArea() {
+		return overtOnlyArea;
+	}
+
+	@read
+	public boolean isRebelOnlyArea() {
+		return rebelOnlyArea;
+	}
+
+	@read
+	public boolean isImperialOnlyArea() {
+		return imperialOnlyArea;
+	}
+
+	@read
+	public boolean isNoCombatArea() {
+		return noCombatArea;
+	}
+
+	@read
+	public boolean isNoPetArea() {
+		return noPetArea;
+	}
+
+	@read
+	public boolean isLockedArea() {
+		return lockedArea;
+	}
+
+	@read
+	public boolean isRectangularAreaShape() {
+		return areaShape && areaShape.isRectangularAreaShape();
 	}
 
 	@preLocked
-	public void setNoBuildArea(boolean val) {
-		noBuildArea = val;
-	}
+	public native void addAreaFlag(unsigned int flag);
 
 	@preLocked
-	public void setCampingPermitted(boolean val) {
-		campingPermitted = val;
-	}
-
-	@preLocked
-	public void setMunicipalZone(boolean val) {
-		municipalZone = val;
-	}
+	public native void removeAreaFlag(unsigned int flag);
 
 	@preLocked
 	public void setRadius(float r) {
@@ -186,39 +262,15 @@ class ActiveArea extends SceneObject {
 		super.setRadius(r);
 	}
 
-	@dirty
-	public abstract boolean isCampArea() {
-		return false;
-	}
-
-	@preLocked
-	public void setNoSpawnArea(boolean val) {
-		noSpawnArea = val;
-	}
-
-	@read
-	public boolean isNoSpawnArea() {
-		return noSpawnArea;
-	}
-
 	@preLocked
 	public void setPvpArea(boolean val) {
 		pvpArea = val;
 	}
 
-	@read
-	public boolean isPvpArea() {
-		return pvpArea;
-	}
 
 	@preLocked
 	public void setOvertOnlyArea(boolean val) {
 		overtOnlyArea = val;
-	}
-
-	@read
-	public boolean isOvertOnlyArea() {
-		return overtOnlyArea;
 	}
 
 	@preLocked
@@ -226,19 +278,10 @@ class ActiveArea extends SceneObject {
 		rebelOnlyArea = val;
 	}
 
-	@read
-	public boolean isRebelOnlyArea() {
-		return rebelOnlyArea;
-	}
 
 	@preLocked
 	public void setImperialOnlyArea(boolean val) {
 		imperialOnlyArea = val;
-	}
-
-	@read
-	public boolean isImperialOnlyArea() {
-		return imperialOnlyArea;
 	}
 
 	@preLocked
@@ -246,39 +289,14 @@ class ActiveArea extends SceneObject {
 		noCombatArea = val;
 	}
 
-	@read
-	public boolean isNoCombatArea() {
-		return noCombatArea;
-	}
-
 	@preLocked
 	public void setNoPetArea(boolean val) {
 		noPetArea = val;
 	}
 
-	@read
-	public boolean isNoPetArea() {
-		return noPetArea;
-	}
-
 	@preLocked
 	public void setLockedArea(boolean val) {
 		lockedArea = val;
-	}
-
-	@read
-	public boolean isLockedArea() {
-		return lockedArea;
-	}
-
-	@read
-	public boolean isMunicipalZone() {
-		return municipalZone;
-	}
-
-	@read
-	public unsigned long getCellObjectID() {
-		return cellObjectID;
 	}
 
 	@preLocked
@@ -296,17 +314,40 @@ class ActiveArea extends SceneObject {
 	}
 
 	@read
+	public int getAreaFlags() {
+		return areaFlags;
+	}
+
+	@read
+	public float getRadius2() {
+		float radius = getRadius();
+
+		return radius * radius;
+	}
+
+	@read
+	public float getRadius() {
+		if (areaShape) {
+			return areaShape.getRadius();
+		} else {
+			return super.getRadius();
+		}
+	}
+
+	@read
+	public unsigned long getCellObjectID() {
+		return cellObjectID;
+	}
+
+	@read
 	public AreaShape getAreaShape() {
 		return areaShape;
 	}
 
 	@read
-	public boolean isRectangularAreaShape() {
-		return areaShape && areaShape.isRectangularAreaShape();
+	public string getAreaName() {
+		return areaName;
 	}
-
-	@read
-	public native boolean intersectsWith(ActiveArea area);
 
 	@preLocked
 	public void attachScenery(SceneObject scene) {

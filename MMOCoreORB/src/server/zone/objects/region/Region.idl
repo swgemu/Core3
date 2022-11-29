@@ -13,36 +13,13 @@ class Region extends ActiveArea {
 	@weakReference
 	protected CityRegion cityRegion;
 
-	protected string regionName;
-
-	protected unsigned int regionFlags;
-
-	public static final int UNDEFINEDAREA = 0x00000000;
-	public static final int SPAWNAREA = 0x00000001;
-	public static final int NOSPAWNAREA = 0x00000002;
-	public static final int WORLDSPAWNAREA = 0x00000004;
-	public static final int NOWORLDSPAWNAREA = 0x00000020;
-	public static final int NOBUILDZONEAREA = 0x00000100;
-	public static final int CAMPINGAREA = 0x00000200;
-
-	public static final int CIRCLE = 1;
-	public static final int RECTANGLE = 2;
-	public static final int RING = 3;
-
 	public Region() {
 		super();
-
-		regionName = "";
 	}
 
 	@preLocked
 	public void setCityRegion(CityRegion city) {
 		cityRegion = city;
-	}
-
-	@preLocked
-	public void setRegionName(final string name) {
-		regionName = name;
 	}
 
 	@weakReference
@@ -92,56 +69,7 @@ class Region extends ActiveArea {
 		return true;
 	}
 
-	public string getRegionName() {
-		return regionName;
-	}
-
 	public boolean isSpawnAreaObject() {
 		return false;
-	}
-
-	@preLocked
-	public native void setRegionFlags(unsigned int flags) {
-		regionFlags = flags;
-	}
-
-	@read
-	public int getRegionFlags() {
-		return regionFlags;
-	}
-
-	@read
-	public boolean isUndefinedRegion() {
-		return regionFlags & UNDEFINEDAREA;
-	}
-
-	@read
-	public boolean isSpawnArea() {
-		return regionFlags & SPAWNAREA;
-	}
-
-	@read
-	public boolean isNoSpawnArea() {
-		return regionFlags & NOSPAWNAREA;
-	}
-
-	@read
-	public boolean isWorldSpawnArea() {
-		return regionFlags & WORLDSPAWNAREA;
-	}
-
-	@read
-	public boolean isNoWorldSpawnArea() {
-		return regionFlags & NOWORLDSPAWNAREA;
-	}
-
-	@read
-	public boolean isNoBuildZoneArea() {
-		return regionFlags & NOBUILDZONEAREA;
-	}
-
-	@read
-	public boolean isCampingArea() {
-		return regionFlags & CAMPINGAREA;
 	}
 }

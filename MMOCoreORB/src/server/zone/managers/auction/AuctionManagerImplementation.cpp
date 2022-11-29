@@ -830,7 +830,7 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 	String region = "@planet_n:" + planetStr;
 
 	if (cityRegion != nullptr)
-		region = cityRegion->getRegionName();
+		region = cityRegion->getCityRegionName();
 
 	String name = objectToSell->getDisplayedName();
 
@@ -929,7 +929,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 	if( city != nullptr) {
 		tax = item->getPrice() - ( item->getPrice() / ( 1.0f + (city->getSalesTax() / 100.f)));
-		vendorRegionName = city->getRegionName();
+		vendorRegionName = city->getCityRegionName();
 	}
 
 	String playername = player->getFirstName().toLowerCase();
@@ -1340,12 +1340,12 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 
 
 	if (vendor->isBazaarTerminal()) {
-		ManagedReference<CityRegion*> region = vendor->getCityRegion().get();
+		ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion().get();
 
 		String location = vendor->getZone()->getZoneName() + ".";
 
-		if (region != nullptr) {
-			location += region->getRegionName();
+		if (cityRegion != nullptr) {
+			location += cityRegion->getCityRegionName();
 			//String region = terminal->getBazaarRegion();
 
 			if (!item->getVendorUID().beginsWith(location)) {
@@ -1736,7 +1736,7 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int locationT
 	case LT_REGION:
 		city = player->getCityRegion().get();
 		if (city != nullptr)
-			region = city->getRegionName();
+			region = city->getCityRegionName();
 		else {
 			region = "@planet_n:" + player->getZone()->getZoneName();
 			vendor = vendorInUse;
@@ -2034,7 +2034,7 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 
 	ManagedReference<CityRegion*> city = vendor->getCityRegion().get();
 	if (city != nullptr) {
-		vendorRegionName = city->getRegionName();
+		vendorRegionName = city->getCityRegionName();
 	}
 
 	Time expireTime;

@@ -14,8 +14,8 @@ class FsVillageArea extends ActiveArea {
 	public FsVillageArea() {
 		super();
 
-		super.noBuildArea = true;
-		super.noSpawnArea = true;
+		super.addAreaFlag(ActiveArea.NOBUILDZONEAREA);
+		super.addAreaFlag(ActiveArea.NOSPAWNAREA);
 	}
 
 	@dirty

@@ -111,10 +111,10 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 	} else if (!object->isGCWBase()) { // Everything else except faction bases are just named by the city it's in
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
-		ManagedReference<CityRegion *> region = planetManager->getCityRegionAt(object->getWorldPositionX(), object->getWorldPositionY());
+		ManagedReference<CityRegion *> cityRegion = planetManager->getCityRegionAt(object->getWorldPositionX(), object->getWorldPositionY());
 
-		if (region != nullptr) {
-			newName = region->getRegionName();
+		if (cityRegion != nullptr) {
+			newName = cityRegion->getCityRegionName();
 		}
 	}
 

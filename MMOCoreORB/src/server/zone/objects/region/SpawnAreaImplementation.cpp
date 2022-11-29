@@ -96,7 +96,7 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 			Locker locker(area);
 
 			area->setRadius(64);
-			area->setNoSpawnArea(true);
+			area->addAreaFlag(ActiveArea::NOSPAWNAREA);
 			area->initializePosition(sceno->getPositionX(), sceno->getPositionZ(), sceno->getPositionY());
 
 			thisZone->transferObject(area, -1, true);

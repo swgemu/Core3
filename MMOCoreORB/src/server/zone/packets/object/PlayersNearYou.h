@@ -48,7 +48,7 @@ public:
 			CityRegion* cityRegion = planetManager->getCityRegionAt(player->getWorldPositionX(), player->getWorldPositionY());
 
 			if (cityRegion != nullptr)
-				regionName = cityRegion->getRegionName();
+				regionName = cityRegion->getCityRegionName();
 		}
 
 		insertAscii(regionName); //Region Name

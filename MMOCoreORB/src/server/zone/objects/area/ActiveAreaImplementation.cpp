@@ -128,28 +128,22 @@ void ActiveAreaImplementation::sendDebugMessage(SceneObject* object, bool entry)
 	Vector3 coords = getWorldPosition();
 	debugMsg << " Area Coords - X = " << coords.getX() <<  " Z = " << coords.getZ() <<"  Y = " << coords.getY() << " ";
 
-	if (isRegion()) {
-		Region* region = _this.castTo<Region*>();
+	StringBuffer regionTypes;
 
-		if (region != nullptr) {
-			StringBuffer regionTypes;
+	if (isUndefinedRegion())
+		regionTypes << "UNDEFINEDAREA ";
+	if (isSpawnArea())
+		regionTypes << "SPAWNAREA ";
+	if (isNoSpawnArea())
+		regionTypes << "NOSPAWNAREA ";
+	if (isWorldSpawnArea())
+		regionTypes << "WORLDSPAWNAREA ";
+	if (isNoWorldSpawnArea())
+		regionTypes << "NOWORLDSPAWNAREA ";
+	if (isNoBuildZone())
+		regionTypes << "NOBUILDZONEAREA";
 
-			if (region->isUndefinedRegion())
-				regionTypes << "UNDEFINEDAREA ";
-			if (region->isSpawnArea())
-				regionTypes << "SPAWNAREA ";
-			if (region->isNoSpawnArea())
-				regionTypes << "NOSPAWNAREA ";
-			if (region->isWorldSpawnArea())
-				regionTypes << "WORLDSPAWNAREA ";
-			if (region->isNoWorldSpawnArea())
-				regionTypes << "NOWORLDSPAWNAREA ";
-			if (region->isNoBuildZoneArea())
-				regionTypes << "NOBUILDZONEAREA";
-
-			debugMsg << " Region Types: (" << regionTypes.toString() << ")";
-		}
-	}
+	debugMsg << " Region Types: (" << regionTypes.toString() << ")";
 
 	creature->sendSystemMessage(debugMsg.toString());
 }
@@ -171,5 +165,17 @@ void ActiveAreaImplementation::initializeChildObject(SceneObject* controllerObje
 
 	if (objectParent != nullptr && objectParent->isCellObject()) {
 		setCellObjectID(objectParent->getObjectID());
+	}
+}
+
+void ActiveAreaImplementation::addAreaFlag(uint32 flag) {
+	if (!(areaFlags & flag)) {
+		areaFlags |= flag;
+	}
+}
+
+void ActiveAreaImplementation::removeAreaFlag(uint32 flag) {
+	if (areaFlags & flag) {
+		areaFlags &= ~flag;
 	}
 }

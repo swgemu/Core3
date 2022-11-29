@@ -137,8 +137,9 @@ Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool
 	region->setCityRegion(_this.getReferenceUnsafeStaticCast());
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
+
 	region->setObjectName(regionName, false);
-	region->setRegionName(regionName.toString());
+	region->setAreaName(regionName.toString());
 
 	zone->transferObject(region, -1, false);
 
@@ -218,7 +219,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		CreatureObject* creature = cast<CreatureObject*>(object);
 
 		StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
-		params.setTT(getRegionName());
+		params.setTT(getCityRegionName());
 
 		UnicodeString strRank = StringIdManager::instance()->getStringId(String("@city/city:rank" + String::valueOf(cityRank)).hashCode());
 
@@ -357,7 +358,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		CreatureObject* creature = cast<CreatureObject*>(object);
 
 		StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
-		params.setTO(getRegionName());
+		params.setTO(getCityRegionName());
 
 		creature->sendSystemMessage(params);
 
@@ -503,7 +504,7 @@ void CityRegionImplementation::destroyNavMesh() {
 }
 
 void CityRegionImplementation::createNavMesh(const String& queue, bool forceRebuild) {
-	String name = getRegionName();
+	String name = getCityRegionName();
 	name = name.subString(name.lastIndexOf(':')+1);
 
 	if (!isClientRegion())
@@ -609,7 +610,7 @@ void CityRegionImplementation::setCustomRegionName(const String& name) {
 
 	StringBuffer logName;
 
-	logName << "CityRegion " << getObjectID() << " " << getRegionName();
+	logName << "CityRegion " << getObjectID() << " " << getCityRegionName();
 
 	if (zone != nullptr) {
 		logName << " on " << zone->getZoneName();
@@ -672,11 +673,11 @@ void CityRegionImplementation::cancelTasks() {
 	}
 }
 
-String CityRegionImplementation::getRegionName() {
+String CityRegionImplementation::getCityRegionName() {
 	if(!customRegionName.isEmpty())
 		return customRegionName;
 
-	return regionName.getFullPath();
+	return cast<ActiveArea*>(this)->getAreaName();
 }
 
 String CityRegionImplementation::getRegionDisplayedName() {

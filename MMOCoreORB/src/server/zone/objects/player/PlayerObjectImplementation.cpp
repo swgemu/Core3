@@ -2123,25 +2123,17 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 	for (int i = 0; i < areas.size(); ++i) {
 		ManagedReference<ActiveArea*>& area = areas.get(i);
 
-		if (area == nullptr || !area->isRegion())
+		if (area == nullptr)
 			continue;
 
-		//if (area->isNoSpawnArea()) {
-		//	info(true) << "area is no spawn area";
-		//	return;
-		//}
-
-		Region* region = area.castTo<Region*>();
-
-		if (region == nullptr) {
-			continue;
+		if (area->isNoWorldSpawnArea()) {
+			includeWorldSpawnAreas = false;
 		}
 
-		if (!region->isSpawnArea() && !region->isWorldSpawnArea()) {
+		 if (!area->isSpawnArea() && !area->isWorldSpawnArea())
 			continue;
-		}
 
-		SpawnArea* spawnArea = cast<SpawnArea*>(region);
+		SpawnArea* spawnArea = area.castTo<SpawnArea*>();
 
 		if (spawnArea == nullptr)
 			continue;
@@ -2151,9 +2143,6 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 			continue;
 		}
 
-		if (spawnArea->isNoWorldSpawnArea()) {
-			includeWorldSpawnAreas = false;
-		}
 
 		spawnAreas.add(spawnArea);
 		totalWeighting += spawnArea->getTotalWeighting();
