@@ -203,7 +203,7 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 	city->setZone(mayor->getZone());
 	city->setCityRank(OUTPOST);
 	city->setMayorID(mayor->getObjectID());
-	Region* region = city->addRegion(x, y, radiusPerRank.get(OUTPOST - 1), true);
+	Region* region = city->createNewRegion(x, y, radiusPerRank.get(OUTPOST - 1), true);
 
 	city->resetVotingPeriod();
 	city->setAssessmentPending(true);

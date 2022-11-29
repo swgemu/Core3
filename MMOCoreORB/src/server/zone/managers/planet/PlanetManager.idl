@@ -169,7 +169,7 @@ class PlanetManager extends ManagedService implements Logger {
 	public native abstract void initialize();
 
 	@local
-	public native void loadClientRegions(LuaObject outposts);
+	public native void buildCityNavMeshes();
 
 	public native void loadClientPoiData();
 	public native void start();

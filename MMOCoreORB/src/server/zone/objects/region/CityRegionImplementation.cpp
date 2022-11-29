@@ -119,7 +119,7 @@ void CityRegionImplementation::updateNavmesh(const AABB& bounds, const String& q
 	}
 }
 
-Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool persistent) {
+Region* CityRegionImplementation::createNewRegion(float x, float y, float radius, bool persistent) {
 	if (zone == nullptr) {
 		return nullptr;
 	}
@@ -507,8 +507,9 @@ void CityRegionImplementation::createNavMesh(const String& queue, bool forceRebu
 	String name = getCityRegionName();
 	name = name.subString(name.lastIndexOf(':')+1);
 
-	if (!isClientRegion())
+	if (!isClientRegion()) {
 		name = name + "_player_city";
+	}
 
 	if (navMesh == nullptr) {
 		navMesh = zone->getPlanetManager()->getNavArea(name);
@@ -619,13 +620,17 @@ void CityRegionImplementation::setCustomRegionName(const String& name) {
 	setLoggingName(logName.toString());
 }
 
+void CityRegionImplementation::setRegionName(const String& name) {
+	regionName.setStringId(name);
+}
+
 void CityRegionImplementation::setRadius(float rad) {
 	if (regions.size() <= 0)
 		return;
 
 	ManagedReference<Region*> oldRegion = regions.get(0).get();
 
-	ManagedReference<Region*> newRegion = addRegion(oldRegion->getPositionX(), oldRegion->getPositionY(), rad, true);
+	ManagedReference<Region*> newRegion = createNewRegion(oldRegion->getPositionX(), oldRegion->getPositionY(), rad, true);
 
 	Locker locker(oldRegion, _this.getReferenceUnsafeStaticCast());
 
@@ -677,7 +682,7 @@ String CityRegionImplementation::getCityRegionName() {
 	if(!customRegionName.isEmpty())
 		return customRegionName;
 
-	return cast<ActiveArea*>(this)->getAreaName();
+	return regionName.getStringID();
 }
 
 String CityRegionImplementation::getRegionDisplayedName() {

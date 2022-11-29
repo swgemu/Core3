@@ -58,6 +58,7 @@ void PlanetManagerImplementation::initialize() {
 
 	// Load Planet Regions
 	loadRegions();
+	buildCityNavMeshes();
 
 	if (zone->getZoneName() == "dathomir") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(STRING_HASHCODE("object/fs_village_area.iff"), 0).castTo<ActiveArea*>();
@@ -794,11 +795,7 @@ void PlanetManagerImplementation::loadClientPoiData() {
 	delete iffStream;
 }
 
-void PlanetManagerImplementation::loadClientRegions(LuaObject* outposts) {
-
-	// TODO: set cities to build navmeshes
-
-	// Build City Nav Meshes
+void PlanetManagerImplementation::buildCityNavMeshes() {
 	ReadLocker rLock(&regionMap);
 
 	int numCityRegions = regionMap.getTotalCityRegions();
@@ -806,12 +803,12 @@ void PlanetManagerImplementation::loadClientRegions(LuaObject* outposts) {
 
 	for (int i = 0; i < numCityRegions; i++) {
 		CityRegion* city = regionMap.getCityRegion(i);
+
 		Locker locker(city);
 		city->createNavMesh(NavMeshManager::MeshQueue, forceRebuild);
 	}
 
 	rLock.release();
-
 }
 
 void PlanetManagerImplementation::loadRegions() {
@@ -995,46 +992,6 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 	region->setRegionFlags(type);
 	region->initializePosition(x, 0, y);
 
-	if (type & ActiveArea::CITY) {
-		Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
-
-		if (cityCat != nullptr)
-			region->setPlanetMapCategory(cityCat);
-
-		// Register with Planetary Map
-		zone->registerObjectWithPlanetaryMap(region);
-
-		// Attach Scenery
-		ManagedReference<SceneObject*> scenery = nullptr;
-
-		if (gcwManager != nullptr) {
-			int strongholdFaction = gcwManager->isStrongholdCity(name);
-
-			if (strongholdFaction == Factions::FACTIONIMPERIAL || name.contains("imperial")) {
-				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_imperial.iff"), 0);
-			} else if (strongholdFaction == Factions::FACTIONREBEL || name.contains("rebel")) {
-				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_rebel.iff"), 0);
-			} else {
-				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships.iff"), 0);
-			}
-		} else {
-			scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships.iff"), 0);
-		}
-
-		if (scenery != nullptr) {
-			Locker slocker(scenery, region);
-			scenery->initializePosition(x, zone->getHeight(x, y) + 100, y);
-			region->attachScenery(scenery);
-		}
-
-		/*ManagedReference<Region*> region = cityRegion->addRegion(x, y, radius, false);
-
-		if (cityRegion->getRegionsCount() == 1) {//Register the first region only.
-			region->setPlanetMapCategory(cityCat);
-
-		}*/
-	}
-
 	if (spawnAreaRegion) {
 #ifdef DEBUG_REGIONS
 		info(true) << "Adding Spawn Area";
@@ -1093,13 +1050,66 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 		region->setZone(zone);
 	}
 
+	// Region is a City, add to cityRegionMap list
+	if (type & ActiveArea::CITY) {
+		ManagedReference<CityRegion*> cityRegion = region.castTo<CityRegion*>();
+
+		if (cityRegion == nullptr)
+			cityRegion = new CityRegion();
+
+		Locker cityLocker(cityRegion);
+		cityRegion->deploy();
+		cityRegion->setRegionName(nameID.getFullPath());
+		cityRegion->setZone(zone);
+
+		region->setZone(zone);
+		cityRegion->addRegion(region);
+		regionMap.addCityRegion(cityRegion);
+		cityLocker.release();
+
+#ifdef DEBUG_REGIONS
+		info(true) << "Adding City: " << nameID.getFullPath();
+#endif // DEBUG_REGIONS
+
+		Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
+
+		if (cityCat != nullptr)
+			region->setPlanetMapCategory(cityCat);
+
+		// Register with Planetary Map
+		zone->registerObjectWithPlanetaryMap(region);
+
+		// Attach Scenery
+		ManagedReference<SceneObject*> scenery = nullptr;
+
+		if (gcwManager != nullptr) {
+			int strongholdFaction = gcwManager->isStrongholdCity(name);
+
+			if (strongholdFaction == Factions::FACTIONIMPERIAL || name.contains("imperial")) {
+				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_imperial.iff"), 0);
+			} else if (strongholdFaction == Factions::FACTIONREBEL || name.contains("rebel")) {
+				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_rebel.iff"), 0);
+			} else {
+				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships.iff"), 0);
+			}
+		} else {
+			scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships.iff"), 0);
+		}
+
+		if (scenery != nullptr) {
+			Locker slocker(scenery, region);
+			scenery->initializePosition(x, zone->getHeight(x, y) + 100, y);
+			region->attachScenery(scenery);
+		}
+	} else {
+		// Add Region to map
+		regionMap.addRegion(region);
+		region->updateToDatabase();
+	}
+
 #ifdef DEBUG_REGIONS
 	info(true) << "readRegion -- Name: " << name << "   COMPLETE";
 #endif // DEBUG_REGIONS
-
-	// Add Region to map
-	regionMap.addRegion(region);
-	region->updateToDatabase();
 }
 
 bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* creature, float x, float y) {

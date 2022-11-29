@@ -180,7 +180,12 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void notifyExit(SceneObject object);
 
 	@preLocked
-	public native Region addRegion(float x, float y, float radius, boolean persistent);
+	public native Region createNewRegion(float x, float y, float radius, boolean persistent);
+
+	@preLocked
+	public void addRegion(Region region) {
+		regions.put(region);
+	}
 
 	@preLocked
 	public native void rescheduleUpdateEvent(unsigned int seconds);
@@ -452,9 +457,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
 	@preLocked
-	public void setRegionName(final string fullPath) {
-		regionName.setStringId(fullPath);
-	}
+	public native void setRegionName(final string fullPath);
 
 	@local
 	@preLocked
