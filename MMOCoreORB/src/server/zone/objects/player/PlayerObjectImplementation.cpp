@@ -2094,7 +2094,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 
 	if (cooldownTimerMap->isPast("spawnCheckTimer")) {
 		checkForNewSpawns();
-		cooldownTimerMap->updateToCurrentAndAddMili("spawnCheckTimer", 3000);
+		cooldownTimerMap->updateToCurrentAndAddMili("spawnCheckTimer", 1000);
 	}
 
 	activateRecovery();
@@ -2143,7 +2143,6 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 			continue;
 		}
 
-
 		spawnAreas.add(spawnArea);
 		totalWeighting += spawnArea->getTotalWeighting();
 	}
@@ -2163,6 +2162,7 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 
 	int choice = System::random(totalWeighting - 1);
 	int counter = 0;
+
 	ManagedReference<SpawnArea*> finalArea = nullptr;
 
 	for (int i = 0; i < spawnAreasSize; i++) {

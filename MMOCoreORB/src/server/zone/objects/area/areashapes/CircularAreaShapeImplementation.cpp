@@ -9,6 +9,8 @@
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"
 
+//#define DEBUG_POSITION
+
 bool CircularAreaShapeImplementation::containsPoint(float x, float y) const {
 	Vector3 position;
 	position.set(x, 0, y);
@@ -31,20 +33,50 @@ Vector3 CircularAreaShapeImplementation::getRandomPosition() const {
 }
 
 Vector3 CircularAreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) const {
+#ifdef DEBUG_POSITION
+	info(true) << "Circle - getRandomPosition called";
+#endif // DEBUG_POSITION
+
 	Vector3 position;
+	float distance = areaCenter.distanceTo(origin);
+	float spawnDistanceDelta = System::random(maxDistance - minDistance);
+
+	if (spawnDistanceDelta < minDistance)
+		spawnDistanceDelta = minDistance;
+
+	if (distance > radius) {
+#ifdef DEBUG_POSITION
+		info(true) << "Circle - getRandomPosition -- origin distance is greater than the radius";
+#endif // DEBUG_POSITION
+
+		distance = radius;
+	}
+
+	float dx = origin.getX() - areaCenter.getX();
+	float dy = origin.getY() - areaCenter.getY();
+
+#ifdef DEBUG_POSITION
+	info(true) << "Circle - getRandomPosition -- spawnDistanceDelta = " << spawnDistanceDelta;
+#endif // DEBUG_POSITION
+
 	bool found = false;
 	int retries = 5;
 
 	while (!found && retries-- > 0) {
-		float distance = System::random((int)(maxDistance - minDistance)) + minDistance;
-		float angle = System::random(360) * Math::DEG2RAD;
-		position.set(origin.getX() + distance * Math::cos(angle), 0, origin.getY() + distance * Math::sin(angle));
+		position.setX(origin.getX() + System::random((spawnDistanceDelta * (dx / distance))));
+		position.setY(origin.getY() + System::random((spawnDistanceDelta * (dy / distance))));
 
 		found = containsPoint(position);
 	}
 
-	if (!found)
-		return getRandomPosition();
+	if (!found) {
+#ifdef DEBUG_POSITION
+		info(true) << "Circle - Position not found !!!";
+#endif // DEBUG_POSITION
+
+		position.set(0, 0, 0);
+		return position;
+	}
 
 	return position;
 }

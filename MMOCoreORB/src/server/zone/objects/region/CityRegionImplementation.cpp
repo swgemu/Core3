@@ -486,7 +486,7 @@ bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 
 void CityRegionImplementation::createNavMesh() {
 	// This is invoked when a new city hall is placed, always force a rebuild
-    createNavMesh(NavMeshManager::TileQueue, true);
+	createNavMesh(NavMeshManager::TileQueue, true);
 }
 
 void CityRegionImplementation::destroyNavMesh() {
@@ -505,7 +505,7 @@ void CityRegionImplementation::destroyNavMesh() {
 
 void CityRegionImplementation::createNavMesh(const String& queue, bool forceRebuild) {
 	String name = getCityRegionName();
-	name = name.subString(name.lastIndexOf(':')+1);
+	name = name.subString(name.lastIndexOf(':')+ 1);
 
 	if (!isClientRegion()) {
 		name = name + "_player_city";
@@ -679,14 +679,14 @@ void CityRegionImplementation::cancelTasks() {
 }
 
 String CityRegionImplementation::getCityRegionName() {
-	if(!customRegionName.isEmpty())
+	if (!customRegionName.isEmpty())
 		return customRegionName;
 
-	return regionName.getStringID();
+	return regionName.toString();
 }
 
 String CityRegionImplementation::getRegionDisplayedName() {
-	if(!customRegionName.isEmpty())
+	if (!customRegionName.isEmpty())
 		return customRegionName;
 
 	return StringIdManager::instance()->getStringId(regionName.getFullPath().hashCode()).toString();

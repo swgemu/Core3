@@ -9,6 +9,8 @@
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"
 #include "engine/util/u3d/Segment.h"
 
+//#define DEBUG_POSITION
+
 bool RectangularAreaShapeImplementation::containsPoint(float x, float y) const {
 	return (x >= blX) && (x <= urX) && (y >= blY) && (y <= urY);
 }
@@ -30,20 +32,42 @@ Vector3 RectangularAreaShapeImplementation::getRandomPosition() const {
 }
 
 Vector3 RectangularAreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) const {
-	bool found = false;
+#ifdef DEBUG_POSITION
+	info(true) << "Rectangle - getRandomPosition called";
+#endif // DEBUG_POSITION
+
 	Vector3 position;
+	float distance = areaCenter.distanceTo(origin);
+	float spawnDistanceDelta = System::random(maxDistance - minDistance);
+
+	if (spawnDistanceDelta < minDistance)
+		spawnDistanceDelta = minDistance;
+
+	float dx = origin.getX() - areaCenter.getX();
+	float dy = origin.getY() - areaCenter.getY();
+
+#ifdef DEBUG_POSITION
+	info(true) << "Rectangle - getRandomPosition -- spawnDistanceDelta = " << spawnDistanceDelta;
+#endif // DEBUG_POSITION
+
+	bool found = false;
 	int retries = 5;
 
 	while (!found && retries-- > 0) {
-		int distance = System::random((int)(maxDistance - minDistance)) + minDistance;
-		int angle = System::random(360) * Math::DEG2RAD;
-		position.set(origin.getX() + distance * Math::cos(angle), 0, origin.getY() + distance * Math::sin(angle));
+		position.setX(origin.getX() + System::random((spawnDistanceDelta * (dx / distance))));
+		position.setY(origin.getY() + System::random((spawnDistanceDelta * (dy / distance))));
 
 		found = containsPoint(position);
 	}
 
-	if (!found)
-		return getRandomPosition();
+	if (!found) {
+#ifdef DEBUG_POSITION
+		info(true) << "Rectangle - Position not found!!!";
+#endif // DEBUG_POSITION
+
+		position.set(0, 0, 0);
+		return position;
+	}
 
 	return position;
 }

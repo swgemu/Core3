@@ -116,7 +116,7 @@ void ActiveAreaImplementation::sendDebugMessage(SceneObject* object, bool entry)
 		debugMsg << "Exiting Region:  " << name << "  -  ";
 	}
 
-	String shapeString = areaShape == nullptr ? " City " : areaShape->isRectangularAreaShape() ? " rectangle " : areaShape->isCircularAreaShape() ? " circle "
+	String shapeString = areaShape == nullptr ? " null shape " : areaShape->isRectangularAreaShape() ? " rectangle " : areaShape->isCircularAreaShape() ? " circle "
 		: areaShape->isRingAreaShape() ? " ring " : " none ";
 
 	debugMsg << " Region Shape = " << shapeString;

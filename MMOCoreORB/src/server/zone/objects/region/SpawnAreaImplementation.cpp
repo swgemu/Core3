@@ -16,6 +16,8 @@
 #include "server/ServerCore.h"
 #include "server/zone/objects/area/events/RemoveNoSpawnAreaTask.h"
 
+//#define DEBUG_SPAWNING
+
 void SpawnAreaImplementation::buildSpawnList(Vector<uint32>* groupCRCs) {
 	CreatureTemplateManager* ctm = CreatureTemplateManager::instance();
 
@@ -34,15 +36,31 @@ void SpawnAreaImplementation::buildSpawnList(Vector<uint32>* groupCRCs) {
 	}
 }
 
+// This should return a random position inside the Area
 Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 	Vector3 position;
+
+	if (player == nullptr) {
+		position.set(0, 0, 0);
+		return position;
+	}
+
+#ifdef DEBUG_SPAWNING
+		info(true) << getAreaName() << " getRandomPosition -- for Player: " << player->getObjectID();
+		info(true) << getAreaName() << " Location = " << getPositionX() << " , " << getPositionY();
+#endif // DEBUG_SPAWNING
+
 	bool positionFound = false;
 	int retries = 10;
 
 	const auto worldPosition = player->getWorldPosition();
 
 	while (!positionFound && retries-- > 0) {
-		position = areaShape->getRandomPosition(worldPosition, 64.0f, 256.0f);
+		#ifdef DEBUG_SPAWNING
+			info(true) << "getRandomPosition -- Normal Spawn Area";
+#endif // DEBUG_SPAWNING
+
+		position = areaShape->getRandomPosition(worldPosition, 64.0f, ZoneServer::CLOSEOBJECTRANGE);
 
 		positionFound = true;
 
@@ -51,6 +69,10 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 
 			if (noSpawnArea != nullptr && noSpawnArea->containsPoint(position.getX(), position.getY())) {
 				positionFound = false;
+
+#ifdef DEBUG_SPAWNING
+				info(true) << "getRandomPosition -- position found is no spawn area";
+#endif // DEBUG_SPAWNING
 				break;
 			}
 		}
@@ -120,11 +142,18 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	}
 
 	if (totalSpawnCount >= maxSpawnLimit) {
+#ifdef DEBUG_SPAWNING
+		info(true) << "total spawn count is great than max spawn limit";
+#endif // DEBUG_SPAWNING
 		return;
 	}
 
-	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL)
+	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL) {
+#ifdef DEBUG_SPAWNING
+		info(true) << "tryToSpawn total spawn count is great than max spawn limit";
+#endif // DEBUG_SPAWNING
 		return;
+	}
 
 	int choice = System::random(totalWeighting - 1);
 	int counter = 0;
@@ -143,6 +172,9 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	}
 
 	if (finalSpawn == nullptr) {
+#ifdef DEBUG_SPAWNING
+		info(true) << "tryToSpawn Final Spawn is nullptr";
+#endif // DEBUG_SPAWNING
 		return;
 	}
 
@@ -155,6 +187,9 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	}
 
 	if (!zone->isWithinBoundaries(randomPosition)) {
+#ifdef DEBUG_SPAWNING
+		info(true) << "tryToSpawn failed due to server boundaries";
+#endif // DEBUG_SPAWNING
 		return;
 	}
 
@@ -164,9 +199,9 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 
 	// Check the spot to see if spawning is allowed
 	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize())) { // + 64.f)) {
-#ifdef DEBUG_REGIONS
-		info(true) << "spawning not permitted";
-#endif // DEBUG_REGIONS
+#ifdef DEBUG_SPAWNING
+		info(true) << "tryToSpawn Spawning is not permitted at " << randomPosition.toString();
+#endif // DEBUG_SPAWNING
 		return;
 	}
 
@@ -197,7 +232,9 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	ManagedReference<SceneObject*> obj = creatureManager->spawn(lairHashCode, difficultyLevel, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), finalSpawn->getSize());
 
 	if (obj != nullptr) {
-		obj->debug() << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY();
+#ifdef DEBUG_SPAWNING
+		info(true) << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY();
+#endif // DEBUG_SPAWNING
 	} else {
 		error("could not spawn lair " + lairTemplate);
 
@@ -222,6 +259,10 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	++totalSpawnCount;
 
 	spawnCountByType.put(lairTemplate.hashCode(), currentSpawnCount);
+
+#ifdef DEBUG_SPAWNING
+		info(true) << "tryToSpawn Complete";
+#endif // DEBUG_SPAWNING
 
 	return;
 }

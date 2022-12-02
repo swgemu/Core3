@@ -165,8 +165,8 @@ talus_regions = {
 	{"river", 2848, -6688, {RECTANGLE, 6112, -1120}, UNDEFINEDAREA},
 	{"prairie", -3696, 1456, {CIRCLE, 3533}, UNDEFINEDAREA},
 	{"prairie_1", -6304, -6624, {RECTANGLE, 6560, 1568}, UNDEFINEDAREA},
-	{"dearic", 425, -3000, {CIRCLE, 400}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"nashal", 4360, 5251, {CIRCLE, 350}, NOSPAWNAREA + NOBUILDZONEAREA},
+	{"dearic", 425, -3000, {CIRCLE, 400}, CITY},
+	{"nashal", 4360, 5251, {CIRCLE, 350}, CITY},
 	{"world_spawner", -8000, -8000, {RECTANGLE, 8000, 8000}, UNDEFINEDAREA},
 	{"hard_guf_drolg_ne", -4192, -3467, {CIRCLE, 500}, UNDEFINEDAREA},
 	{"hard_aakuan_se", -4842, 1533, {CIRCLE, 500}, UNDEFINEDAREA},
@@ -247,11 +247,11 @@ talus_regions = {
 	{"collection_flower_18", -3164, 6824, {CIRCLE, 25}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"collection_datapad_06", -6681, 7267, {CIRCLE, 25}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"collection_steaming_stone_10", 7535, 891, {CIRCLE, 15}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"global", "talus_world"}, 2048},
 	{"new_region_0", 5347.59, 4455.28, {RECTANGLE, 5447.59, 4644.28}, UNDEFINEDAREA},
-	{"new_region_0", 3555.34, 4675.32, {RECTANGLE, 3759.34, 4636.32}, UNDEFINEDAREA},
-	{"mountains_se_edge", 5811.91, 164.655, {RECTANGLE, 1000, 5003}, UNDEFINEDAREA},
-	{"mountains_north_edge", 2327.53, 5388.94, {RECTANGLE, 2000, 2000}, UNDEFINEDAREA},
-	{"mountains_west_edge", -7410.75, 1063.09, {RECTANGLE, 2000, 2000}, UNDEFINEDAREA}
+	{"new_region_1", 3555.34, 4636.32, {RECTANGLE, 3759.34, 4675.32}, UNDEFINEDAREA},
+	--{"mountains_se_edge", 5811.91, 164.655, {RECTANGLE, 1000, 5003}, UNDEFINEDAREA},
+	--{"mountains_north_edge", 2327.53, 5388.94, {RECTANGLE, 2000, 2000}, UNDEFINEDAREA},
+	--{"mountains_west_edge", -7410.75, 1063.09, {RECTANGLE, 2000, 2000}, UNDEFINEDAREA},
 
+	{"world_spawner", 0, 0, {CIRCLE, -1}, WORLDSPAWNAREA, {"global", "talus_world"}, 2048}
 }
