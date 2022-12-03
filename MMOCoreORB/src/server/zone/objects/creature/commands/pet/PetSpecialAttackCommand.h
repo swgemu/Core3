@@ -55,31 +55,14 @@ public:
 		if (player == nullptr)
 			return GENERALERROR;
 
-		if (player->isSwimming()) {
+		if (player->isSwimming() || pet->isSwimming()) {
 			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return GENERALERROR;
 		}
 
-		if (pet->isSwimming()) {
-			return GENERALERROR;
-		}
-
-		if (!CollisionManager::checkLineOfSight(player, targetObject)) {
+		if (!CollisionManager::checkLineOfSight(player, targetObject) || !playerEntryCheck(player, targetObject)) {
 			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return INVALIDTARGET;
-		}
-
-		Reference<CellObject*> targetCell = targetObject->getParent().get().castTo<CellObject*>();
-
-		if (targetCell != nullptr) {
-			auto perms = targetCell->getContainerPermissions();
-
-			if (!perms->hasInheritPermissionsFromParent()) {
-				if (!targetCell->checkContainerPermission(player, ContainerPermissions::WALKIN)) {
-					pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
-					return INVALIDTARGET;
-				}
-			}
 		}
 
 		ManagedReference<TangibleObject*> targetTano = targetObject.castTo<TangibleObject*>();
