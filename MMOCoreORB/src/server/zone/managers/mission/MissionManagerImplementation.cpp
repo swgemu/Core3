@@ -1792,23 +1792,13 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 	} else if (type == MissionTypes::HUNTING) {
 		CreatureManager* creatureManager = zone->getCreatureManager();
-		auto worldAreas = creatureManager->getWorldSpawnAreas();
 
-		ManagedReference<SpawnArea*> spawnArea = nullptr;
+		if (creatureManager != nullptr) {
+			SpawnArea* spawnArea = creatureManager->getWorldSpawnArea();
 
-		if (worldAreas == nullptr || worldAreas->size() == 0) {
-			return nullptr;
+			if (spawnArea != nullptr)
+				availableLairList = spawnArea->getSpawnList();
 		}
-
-		int rand = System::random(worldAreas->size() - 1);
-
-		spawnArea = worldAreas->get(rand);
-
-		if (spawnArea == nullptr) {
-			return nullptr;
-		}
-
-		availableLairList = spawnArea->getSpawnList();
 	}
 
 	if (availableLairList == nullptr || availableLairList->size() == 0) {

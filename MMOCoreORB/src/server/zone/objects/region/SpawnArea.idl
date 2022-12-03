@@ -12,13 +12,18 @@ import engine.util.Observable;
 import server.zone.objects.scene.SceneObject;
 import system.lang.Time;
 import engine.log.Logger;
+import server.zone.QuadTreeEntry;
 
 include server.zone.managers.creature.LairSpawn;
 include system.util.Vector;
 include engine.util.u3d.Vector3;
+include system.thread.atomic.AtomicInteger;
 
 @json
 class SpawnArea extends Region {
+	@dereferenced
+	protected transient AtomicInteger numberOfPlayersInRange;
+
 	@dereferenced
 	@rawTemplate(value = "Reference<LairSpawn*>")
 	protected transient Vector possibleSpawns;
@@ -37,23 +42,32 @@ class SpawnArea extends Region {
 	@dereferenced
 	protected Time lastSpawn;
 
-	protected SpawnAreaObserver exitObserver;
+	protected SpawnAreaObserver spawnAreaObserver;
 
 	@dereferenced
 	@rawTemplate(value = "ManagedWeakReference<SpawnArea*>")
 	protected Vector noSpawnAreas;
 
-	public final static int MINSPAWNINTERVAL = 2000; //msec
+	public final static int MINSPAWNINTERVAL = 1000; //msec
 
 	public SpawnArea() {
 		totalWeighting = 0;
 		totalSpawnCount = 0;
 		maxSpawnLimit = 0;
 		spawnTypes.setNullValue(0);
-		exitObserver = null;
+		spawnAreaObserver = null;
 
 		setLoggingName("SpawnArea");
 	}
+
+	@dirty
+	public native void notifyPositionUpdate(QuadTreeEntry entry);
+
+	@dirty
+	public native abstract void notifyEnter(SceneObject object);
+
+	@dirty
+	public native abstract void notifyExit(SceneObject object);
 
 	@local
 	@dereferenced

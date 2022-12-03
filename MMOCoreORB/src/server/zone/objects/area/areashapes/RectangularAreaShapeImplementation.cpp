@@ -47,15 +47,18 @@ Vector3 RectangularAreaShapeImplementation::getRandomPosition(const Vector3& ori
 	float dy = origin.getY() - areaCenter.getY();
 
 #ifdef DEBUG_POSITION
-	info(true) << "Rectangle - getRandomPosition -- spawnDistanceDelta = " << spawnDistanceDelta;
+	info(true) << "Rectangle - getRandomPosition -- Distance = " << distance << " spawn Distance Delta = " << spawnDistanceDelta;
 #endif // DEBUG_POSITION
 
 	bool found = false;
-	int retries = 5;
+	int retries = 10;
 
 	while (!found && retries-- > 0) {
-		position.setX(origin.getX() + System::random((spawnDistanceDelta * (dx / distance))));
-		position.setY(origin.getY() + System::random((spawnDistanceDelta * (dy / distance))));
+		float xCalc = spawnDistanceDelta * (dx / distance);
+		float yCalc = spawnDistanceDelta * (dy / distance);
+
+		position.setX(origin.getX() + (System::random(xCalc) - System::random(xCalc)));
+		position.setY(origin.getY() + (System::random(yCalc) - System::random(yCalc)));
 
 		found = containsPoint(position);
 	}

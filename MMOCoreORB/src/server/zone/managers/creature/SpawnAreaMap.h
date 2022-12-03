@@ -18,15 +18,13 @@ protected:
 
 	SynchronizedVector<ManagedReference<SpawnArea*> > noSpawnAreas;
 
-	SynchronizedVector<ManagedReference<SpawnArea*> > worldSpawnAreas;
-
 public:
 	SpawnAreaMap() : Logger("SpawnAreaMap") {
 		setAllowDuplicateInsertPlan();
 	}
 
 	SpawnAreaMap(const SpawnAreaMap& l) : SynchronizedVectorMap<uint32, ManagedReference<SpawnArea*> >(l) , Logger("SpawnAreaMap"),
-			zone(l.zone), noSpawnAreas(l.noSpawnAreas), worldSpawnAreas(l.worldSpawnAreas) {
+		zone(l.zone), noSpawnAreas(l.noSpawnAreas) {
 	}
 
 	SpawnAreaMap& operator=(const SpawnAreaMap& m) {
@@ -36,7 +34,6 @@ public:
 
 		zone = m.zone;
 		noSpawnAreas = m.noSpawnAreas;
-		worldSpawnAreas = m.worldSpawnAreas;
 
 		return *this;
 	}
@@ -46,16 +43,8 @@ public:
 
 	void unloadMap();
 
-	SynchronizedVector<ManagedReference<SpawnArea*> >* getWorldSpawnAreas() {
-		return &worldSpawnAreas;
-	}
-
 	void addSpawnArea(uint32 spawnHash, ManagedReference<SpawnArea*> area) {
 		put(spawnHash, area);
-	}
-
-	void addWorldSpawnArea(ManagedReference<SpawnArea*> area) {
-		worldSpawnAreas.add(area);
 	}
 
 	void addNoSpawnArea(ManagedReference<SpawnArea*> area) {

@@ -60,11 +60,14 @@ Vector3 CircularAreaShapeImplementation::getRandomPosition(const Vector3& origin
 #endif // DEBUG_POSITION
 
 	bool found = false;
-	int retries = 5;
+	int retries = 10;
 
 	while (!found && retries-- > 0) {
-		position.setX(origin.getX() + System::random((spawnDistanceDelta * (dx / distance))));
-		position.setY(origin.getY() + System::random((spawnDistanceDelta * (dy / distance))));
+		float xCalc = spawnDistanceDelta * (dx / distance);
+		float yCalc = spawnDistanceDelta * (dy / distance);
+
+		position.setX(origin.getX() + (System::random(xCalc) - System::random(xCalc)));
+		position.setY(origin.getY() + (System::random(yCalc) - System::random(yCalc)));
 
 		found = containsPoint(position);
 	}

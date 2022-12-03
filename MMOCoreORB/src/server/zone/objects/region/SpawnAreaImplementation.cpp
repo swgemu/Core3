@@ -18,6 +18,61 @@
 
 //#define DEBUG_SPAWNING
 
+void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+	if (numberOfPlayersInRange <= 0)
+		return;
+
+	if (entry == nullptr)
+		return;
+
+	SceneObject* sceneObject = cast<SceneObject*>(entry);
+
+	if (sceneObject == nullptr || !sceneObject->isPlayerCreature())
+		return;
+
+#ifdef DEBUG_SPAWNING
+	info(true) << getAreaName() << " --SpawnAreaImplementation::notifyPositionUpdate called ";
+#endif // DEBUG_SPAWNING
+
+	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL)
+		return;
+
+	tryToSpawn(sceneObject);
+}
+
+void SpawnAreaImplementation::notifyEnter(SceneObject* sceneO) {
+	if (sceneO == nullptr || !sceneO->isPlayerCreature())
+		return;
+
+	if (sceneO->isDebuggingRegions())
+		sendDebugMessage(sceneO, true);
+
+#ifdef DEBUG_SPAWNING
+	info(true) << getAreaName() << " --SpawnAreaImplementation::notifyEnter for " << sceneO->getCustomObjectName();
+#endif // DEBUG_SPAWNING
+
+	numberOfPlayersInRange.increment();
+
+}
+
+void SpawnAreaImplementation::notifyExit(SceneObject* sceneO) {
+	if (sceneO == nullptr || !sceneO->isPlayerCreature())
+		return;
+
+	if (sceneO->isDebuggingRegions())
+		sendDebugMessage(sceneO, false);
+
+#ifdef DEBUG_SPAWNING
+	info(true) << getAreaName() << " --SpawnAreaImplementation::notifyExit for " << sceneO->getCustomObjectName();
+#endif // DEBUG_SPAWNING
+
+	numberOfPlayersInRange.decrement();
+
+	if (numberOfPlayersInRange < 0) {
+		numberOfPlayersInRange.set(0);
+	}
+}
+
 void SpawnAreaImplementation::buildSpawnList(Vector<uint32>* groupCRCs) {
 	CreatureTemplateManager* ctm = CreatureTemplateManager::instance();
 
@@ -46,7 +101,7 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 	}
 
 #ifdef DEBUG_SPAWNING
-		info(true) << getAreaName() << " getRandomPosition -- for Player: " << player->getObjectID();
+		info(true) << getAreaName() << " -- getRandomPosition -- for Player " << player->getObjectName() << " ID: " << player->getObjectID();
 		info(true) << getAreaName() << " Location = " << getPositionX() << " , " << getPositionY();
 #endif // DEBUG_SPAWNING
 
@@ -57,7 +112,7 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 
 	while (!positionFound && retries-- > 0) {
 		#ifdef DEBUG_SPAWNING
-			info(true) << "getRandomPosition -- Normal Spawn Area";
+			info(true) << "getRandomPosition -- using area shape";
 #endif // DEBUG_SPAWNING
 
 		position = areaShape->getRandomPosition(worldPosition, 64.0f, ZoneServer::CLOSEOBJECTRANGE);
@@ -89,14 +144,18 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 	if (eventType != ObserverEventType::OBJECTREMOVEDFROMZONE)
 		return 0;
 
-	SceneObject* sceno = dynamic_cast<SceneObject*>(observable);
+	SceneObject* sceneO = dynamic_cast<SceneObject*>(observable);
 
-	if (sceno == nullptr)
+	if (sceneO == nullptr)
 		return 1;
+
+#ifdef DEBUG_SPAWNING
+	info(true) << "SpawnAreaImplementation::notifyObserverEvent -- Event Type: " << eventType << " for " << sceneO->getCustomObjectName() << " ID: " << sceneO->getObjectID();
+#endif // DEBUG_SPAWNING
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	uint32 lairTemplate = spawnTypes.remove(sceno->getObjectID());
+	uint32 lairTemplate = spawnTypes.remove(sceneO->getObjectID());
 
 	if (lairTemplate != 0) {
 		int currentSpawnCount = spawnCountByType.get(lairTemplate) - 1;
@@ -112,14 +171,14 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 
 		Zone* thisZone = getZone();
 
-		if (sceno->isLairObject() && thisZone != nullptr) {
+		if (sceneO->isLairObject() && thisZone != nullptr) {
 			ManagedReference<ActiveArea*> area = (ServerCore::getZoneServer()->createObject(STRING_HASHCODE("object/active_area.iff"), 0)).castTo<ActiveArea*>();
 
 			Locker locker(area);
 
 			area->setRadius(64);
 			area->addAreaFlag(ActiveArea::NOSPAWNAREA);
-			area->initializePosition(sceno->getPositionX(), sceno->getPositionZ(), sceno->getPositionY());
+			area->initializePosition(sceneO->getPositionX(), sceneO->getPositionZ(), sceneO->getPositionY());
 
 			thisZone->transferObject(area, -1, true);
 
@@ -132,6 +191,13 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 }
 
 void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
+	if (object == nullptr)
+		return;
+
+	#ifdef DEBUG_SPAWNING
+		info(true) << "SpawnAreaImplementation::tryToSpawn for " << object->getObjectName() << " ID: " << object->getObjectID() << " Possible Spawns Size = " << possibleSpawns.size();
+#endif // DEBUG_SPAWNING
+
 	ReadLocker _readlocker(_this.getReferenceUnsafeStaticCast());
 
 	Zone* zone = getZone();
@@ -150,7 +216,7 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 
 	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL) {
 #ifdef DEBUG_SPAWNING
-		info(true) << "tryToSpawn total spawn count is great than max spawn limit";
+		info(true) << "tryToSpawn total spawn count is greater than max spawn limit -- returning";
 #endif // DEBUG_SPAWNING
 		return;
 	}
@@ -198,7 +264,7 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	randomPosition.setZ(spawnZ);
 
 	// Check the spot to see if spawning is allowed
-	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize())) { // + 64.f)) {
+	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 64.f)) {
 #ifdef DEBUG_SPAWNING
 		info(true) << "tryToSpawn Spawning is not permitted at " << randomPosition.toString();
 #endif // DEBUG_SPAWNING
@@ -245,16 +311,16 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 
 	lastSpawn.updateToCurrentTime();
 
-	if (exitObserver == nullptr) {
-		exitObserver = new SpawnAreaObserver(_this.getReferenceUnsafeStaticCast());
-		exitObserver->deploy();
+	if (spawnAreaObserver == nullptr) {
+		spawnAreaObserver = new SpawnAreaObserver(_this.getReferenceUnsafeStaticCast());
+		spawnAreaObserver->deploy();
 	}
 
 	spawnTypes.put(obj->getObjectID(), lairHashCode);
 
 	Locker clocker(obj, _this.getReferenceUnsafeStaticCast());
 
-	obj->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, exitObserver);
+	obj->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, spawnAreaObserver);
 
 	++totalSpawnCount;
 

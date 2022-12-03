@@ -999,41 +999,34 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 #endif // DEBUG_REGIONS
 
 		CreatureManager* creatureMan = zone->getCreatureManager();
+		ManagedReference<SpawnArea*> area = region.castTo<SpawnArea*>();
 
-		if (creatureMan != nullptr) {
-			ManagedReference<SpawnArea*> area = region.castTo<SpawnArea*>();
+		if (creatureMan != nullptr && area != nullptr) {
+			if ((type & ActiveArea::SPAWNAREA) || (type & ActiveArea::WORLDSPAWNAREA)) {
+				area->setMaxSpawnLimit(regionObject.getIntAt(7));
+				LuaObject spawnGroups = regionObject.getObjectAt(6);
 
-			if (area != nullptr) {
-				if (type & ActiveArea::SPAWNAREA) {
-					area->setMaxSpawnLimit(regionObject.getIntAt(7));
-					LuaObject spawnGroups = regionObject.getObjectAt(6);
+				if (spawnGroups.isValidTable()) {
+					Vector<uint32> groups;
 
-					if (spawnGroups.isValidTable()) {
-						Vector<uint32> groups;
+					for (int i = 1; i <= spawnGroups.getTableSize(); i++) {
+						uint32 groupHash = spawnGroups.getStringAt(i).hashCode();
 
-						for (int i = 1; i <= spawnGroups.getTableSize(); i++) {
-							uint32 groupHash = spawnGroups.getStringAt(i).hashCode();
-
-							// TODO: REMOVE
-							if (groupHash == STRING_HASHCODE("insert_spawnlist_here"))
-								continue;
+						// TODO: REMOVE
+						if (groupHash == STRING_HASHCODE("insert_spawnlist_here"))
+							continue;
 
 #ifdef DEBUG_REGIONS
-							info(true) << "Adding Spawn Group: #" << i << " Name: " << spawnGroups.getStringAt(i);
+						info(true) << "Adding Spawn Group: #" << i << " Name: " << spawnGroups.getStringAt(i);
 #endif // DEBUG_REGIONS
 
-							groups.add(spawnGroups.getStringAt(i).hashCode());
-						}
-
-						area->buildSpawnList(&groups);
+						groups.add(spawnGroups.getStringAt(i).hashCode());
 					}
 
-					spawnGroups.pop();
+					area->buildSpawnList(&groups);
 				}
 
-				if (type & ActiveArea::WORLDSPAWNAREA) {
-					creatureMan->addWorldSpawnArea(area);
-				}
+				spawnGroups.pop();
 
 				if (type & ActiveArea::NOSPAWNAREA) {
 					creatureMan->addNoSpawnArea(area);

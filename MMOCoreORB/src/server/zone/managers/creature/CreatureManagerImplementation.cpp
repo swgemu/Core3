@@ -1210,6 +1210,20 @@ void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* p
 
 }
 
+SpawnArea* CreatureManagerImplementation::getWorldSpawnArea() {
+	for (int i = 0; i < spawnAreaMap.size(); i++) {
+		SpawnArea* area = spawnAreaMap.get(i);
+
+		if (area == nullptr || !area->isWorldSpawnArea()) {
+			continue;
+		}
+
+		return area;
+	}
+
+	return nullptr;
+}
+
 bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
 	if (!clothing->isWearableObject() && !clothing->isWeaponObject())
 		return false;

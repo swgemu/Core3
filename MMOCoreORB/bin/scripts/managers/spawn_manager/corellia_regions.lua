@@ -188,5 +188,5 @@ corellia_regions = {
 	{"collection_steaming_stone_07", -7404, 7513, {CIRCLE, 37}, NOBUILDZONEAREA},
 	{"collection_manipulator_arm", 1773, 4668, {CIRCLE, 15}, NOBUILDZONEAREA},
 	{"droid_dungeon", -6323, 388, {CIRCLE, 138}, NOBUILDZONEAREA},
-	{"world_spawner", -8000, -8000, {RECTANGLE, 8000, 8000}, WORLDSPAWNAREA, {"corellia_world", "global"}, 2048}
+	{"world_spawner", -8192, -8192, {RECTANGLE, 8192, 8192}, WORLDSPAWNAREA, {"corellia_world", "global"}, 5000}
 }

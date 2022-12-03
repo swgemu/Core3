@@ -375,8 +375,6 @@ dantooine_regions = {
 	{"wooden_bridge_49", 2528, -2867, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"wooden_platform_15", 1347, 5211, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"wooden_platform_43", 4329, 3903, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"dantooine_world", "global_hard"}, 2048},
-	{"world_spawner", -8000, -8000, {RECTANGLE, 8000, 8000}, UNDEFINEDAREA},
-	{"worship_area", 6092, -6475, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA}
-
+	{"worship_area", 6092, -6475, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
+	{"world_spawner", -8192, -8192, {RECTANGLE, 8192, 8192}, WORLDSPAWNAREA, {"dantooine_world", "global_hard"}, 5000}
 }

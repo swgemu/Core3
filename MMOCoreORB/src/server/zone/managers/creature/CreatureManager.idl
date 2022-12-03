@@ -110,16 +110,10 @@ class CreatureManager extends ZoneManager {
 	public native void sample(Creature creature, CreatureObject player);
 
 	@local
-	public SynchronizedVector<SpawnArea> getWorldSpawnAreas() {
-		return spawnAreaMap.getWorldSpawnAreas();
-	}
+	public native SpawnArea getWorldSpawnArea();
 
 	public void addSpawnAreaToMap(unsigned int nameHash, SpawnArea area) {
 		spawnAreaMap.put(nameHash, area);
-	}
-
-	public void addWorldSpawnArea(SpawnArea area) {
-		spawnAreaMap.addWorldSpawnArea(area);
 	}
 
 	public void addNoSpawnArea(SpawnArea area) {

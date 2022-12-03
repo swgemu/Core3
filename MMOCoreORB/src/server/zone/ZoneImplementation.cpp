@@ -525,31 +525,6 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 				//activeArea->notifyEnter(object);
 			}
 		}
-
-		// update world areas
-		if (creatureManager != nullptr) {
-			auto worldAreas = creatureManager->getWorldSpawnAreas();
-
-			if (worldAreas != nullptr && worldAreas->size()) {
-				Reference<TangibleObject*> tanoStrong = tano;
-
-				Core::getTaskManager()->executeTask([worldAreas, tanoStrong] () {
-					Locker lockerO(tanoStrong);
-
-					for (int i = 0; i < worldAreas->size(); ++i) {
-						auto activeArea = worldAreas->get(i);
-
-						if (!tanoStrong->hasActiveArea(activeArea)) {
-							tanoStrong->addActiveArea(activeArea);
-							//activeArea->enqueueEnterEvent(object);
-							activeArea->notifyEnter(tanoStrong);
-						} else {
-							activeArea->notifyPositionUpdate(tanoStrong);
-						}
-					}
-				}, "UpdateWorldActiveAreas", zoneName);
-			}
-		}
 	} catch (...) {
 		error("unexpected exception caught in void ZoneImplementation::updateActiveAreas(SceneObject* object) {");
 		managedRef->wlock(!readlock);

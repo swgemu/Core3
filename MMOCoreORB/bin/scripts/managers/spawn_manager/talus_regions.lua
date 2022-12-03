@@ -253,5 +253,5 @@ talus_regions = {
 	--{"mountains_north_edge", 2327.53, 5388.94, {RECTANGLE, 2000, 2000}, UNDEFINEDAREA},
 	--{"mountains_west_edge", -7410.75, 1063.09, {RECTANGLE, 2000, 2000}, UNDEFINEDAREA},
 
-	{"world_spawner", 0, 0, {CIRCLE, -1}, WORLDSPAWNAREA, {"global", "talus_world"}, 2048}
+	{"world_spawner", -8192, -8192, {RECTANGLE, 8192, 8192}, WORLDSPAWNAREA, {"global", "talus_world"}, 5000}
 }

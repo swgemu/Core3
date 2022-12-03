@@ -160,5 +160,5 @@ lok_regions = {
 	{"western_mountains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"western_plains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"wind_farm", -2883, -236, {CIRCLE, 75}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"lok_world", "global_hard"}, 2048}
+	{"world_spawner", -8192, -8192, {RECTANGLE, 8192, 8192}, WORLDSPAWNAREA, {"lok_world", "global", "global_hard"}, 5000}
 }
