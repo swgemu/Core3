@@ -33,20 +33,10 @@ Vector3 RectangularAreaShapeImplementation::getRandomPosition() const {
 
 Vector3 RectangularAreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) const {
 #ifdef DEBUG_POSITION
-	info(true) << "Rectangle - getRandomPosition called";
+	info(true) << "getRandomPosition called";
 #endif // DEBUG_POSITION
 
 	Vector3 position;
-	float distance = areaCenter.distanceTo(origin);
-
-
-	float dx = origin.getX() - areaCenter.getX();
-	float dy = origin.getY() - areaCenter.getY();
-
-#ifdef DEBUG_POSITION
-	info(true) << "Rectangle - getRandomPosition -- Distance = " << distance;
-#endif // DEBUG_POSITION
-
 	bool found = false;
 	int retries = 10;
 

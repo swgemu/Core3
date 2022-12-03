@@ -38,7 +38,6 @@ Vector3 CircularAreaShapeImplementation::getRandomPosition(const Vector3& origin
 #endif // DEBUG_POSITION
 
 	Vector3 position;
-
 	bool found = false;
 	int retries = 10;
 
