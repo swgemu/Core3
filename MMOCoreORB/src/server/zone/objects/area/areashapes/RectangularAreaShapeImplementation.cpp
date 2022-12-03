@@ -38,27 +38,35 @@ Vector3 RectangularAreaShapeImplementation::getRandomPosition(const Vector3& ori
 
 	Vector3 position;
 	float distance = areaCenter.distanceTo(origin);
-	float spawnDistanceDelta = System::random(maxDistance - minDistance);
 
-	if (spawnDistanceDelta < minDistance)
-		spawnDistanceDelta = minDistance;
 
 	float dx = origin.getX() - areaCenter.getX();
 	float dy = origin.getY() - areaCenter.getY();
 
 #ifdef DEBUG_POSITION
-	info(true) << "Rectangle - getRandomPosition -- Distance = " << distance << " spawn Distance Delta = " << spawnDistanceDelta;
+	info(true) << "Rectangle - getRandomPosition -- Distance = " << distance;
 #endif // DEBUG_POSITION
 
 	bool found = false;
 	int retries = 10;
 
 	while (!found && retries-- > 0) {
-		float xCalc = spawnDistanceDelta * (dx / distance);
-		float yCalc = spawnDistanceDelta * (dy / distance);
+		float spawnDistanceDelta = System::random(maxDistance - minDistance);
+		int randDirection = System::random(360);
 
-		position.setX(origin.getX() + (System::random(xCalc) - System::random(xCalc)));
-		position.setY(origin.getY() + (System::random(yCalc) - System::random(yCalc)));
+		if (spawnDistanceDelta < minDistance)
+			spawnDistanceDelta = minDistance;
+
+		float xCalc = Math::cos(randDirection) - spawnDistanceDelta * Math::sin(randDirection);
+		float yCalc = Math::sin(randDirection) - spawnDistanceDelta * Math::cos(randDirection);
+
+		position.setX(origin.getX() + xCalc);
+		position.setY(origin.getY() + yCalc);
+
+#ifdef DEBUG_POSITION
+		info(true) << " X Calc = " << xCalc << " Y Calc = " << yCalc << " Spawn Distance Delta = " << spawnDistanceDelta;
+		info(true) << "Checking Position: " << position.toString();
+#endif // DEBUG_POSITION
 
 		found = containsPoint(position);
 	}

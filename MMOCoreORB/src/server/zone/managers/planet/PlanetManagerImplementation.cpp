@@ -892,7 +892,7 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 		if (radius <= 0)
 			radius = 1.f;
 
-		if (radius <= 0/* && !(type & ActiveArea::WORLDSPAWNAREA)*/) {
+		if (radius <= 0) {
 			error("Invalid radius of " + String::valueOf(radius) + " must be > 0 for circular spawn region " + name);
 			return;
 		}
@@ -902,7 +902,7 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 		int rectWidth = x2 - x;
 		int rectHeight = y2 - y;
 
-		if (/*!(type & ActiveArea::WORLDSPAWNAREA) && */(rectWidth <= 0 || rectHeight <= 0)) {
+		if ((rectWidth <= 0 || rectHeight <= 0)) {
 			error("Invalid corner coordinates for rectangular spawn region " + name + ", total height: " + String::valueOf(rectHeight) + ", total width: " + String::valueOf(rectWidth));
 			return;
 		}
@@ -1041,12 +1041,6 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 
 	zone->transferObject(region, -1, true);
 	//region->setZone(zone);
-
-	/*if (!(type & ActiveArea::WORLDSPAWNAREA)) {
-		zone->transferObject(region, -1, true);
-	} else {
-		region->setZone(zone);
-	}*/
 
 	// Region is a City, add to cityRegionMap list
 	if (type & ActiveArea::CITY) {
