@@ -91,7 +91,7 @@ void SpawnAreaImplementation::buildSpawnList(Vector<uint32>* groupCRCs) {
 	}
 }
 
-// This should return a random position inside the Area
+// This will return a random position near the player within the area shape
 Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 	Vector3 position;
 
@@ -101,41 +101,27 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 	}
 
 #ifdef DEBUG_SPAWNING
-		info(true) << getAreaName() << " -- getRandomPosition -- for Player " << player->getObjectName() << " ID: " << player->getObjectID();
-		info(true) << getAreaName() << " Location = " << getPositionX() << " , " << getPositionY();
+	info(true) << getAreaName() << " -- getRandomPosition -- for Player " << player->getObjectName() << " ID: " << player->getObjectID();
+	info(true) << getAreaName() << " Location = " << getPositionX() << " , " << getPositionY();
 #endif // DEBUG_SPAWNING
-
-	bool positionFound = false;
-	int retries = 10;
 
 	const auto worldPosition = player->getWorldPosition();
 
-	while (!positionFound && retries-- > 0) {
-		#ifdef DEBUG_SPAWNING
-			info(true) << "getRandomPosition -- using area shape";
-#endif // DEBUG_SPAWNING
+	position = areaShape->getRandomPosition(worldPosition, 64.0f, ZoneServer::CLOSEOBJECTRANGE);
 
-		position = areaShape->getRandomPosition(worldPosition, 64.0f, ZoneServer::CLOSEOBJECTRANGE);
+	/* These are already checked by the planet manager...
+	for (int i = 0; i < noSpawnAreas.size(); ++i) {
+		auto noSpawnArea = noSpawnAreas.get(i).get();
 
-		positionFound = true;
-
-		for (int i = 0; i < noSpawnAreas.size(); ++i) {
-			auto noSpawnArea = noSpawnAreas.get(i).get();
-
-			if (noSpawnArea != nullptr && noSpawnArea->containsPoint(position.getX(), position.getY())) {
-				positionFound = false;
+		if (noSpawnArea != nullptr && noSpawnArea->containsPoint(position.getX(), position.getY())) {
+			position.set(0, 0, 0);
 
 #ifdef DEBUG_SPAWNING
-				info(true) << "getRandomPosition -- position found is no spawn area";
+			info(true) << "getRandomPosition -- position found is no spawn area";
 #endif // DEBUG_SPAWNING
-				break;
-			}
+			break;
 		}
-	}
-
-	if (!positionFound) {
-		position.set(0, 0, 0);
-	}
+	}*/
 
 	return position;
 }
@@ -264,7 +250,7 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	randomPosition.setZ(spawnZ);
 
 	// Check the spot to see if spawning is allowed
-	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 64.f)) {
+	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 64.f, isWorldSpawnArea())) {
 #ifdef DEBUG_SPAWNING
 		info(true) << "tryToSpawn Spawning is not permitted at " << randomPosition.toString();
 #endif // DEBUG_SPAWNING

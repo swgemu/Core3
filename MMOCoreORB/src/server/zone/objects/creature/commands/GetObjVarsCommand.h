@@ -83,33 +83,46 @@ public:
 					msg << "AI Enabled: " << aiEnabled << endl;
 					msg << "PvP Status Bitmask: " << creoObject->getPvpStatusBitmask() << endl;
 					msg << "Options Bitmask: " << creoObject->getOptionsBitmask() << endl;
-				}
 
-				if (object->isAiAgent()) {
-					AiAgent* objectAgent = object->asAiAgent();
+					if (object->isAiAgent()) {
+						AiAgent* objectAgent = object->asAiAgent();
 
-					if (objectAgent != nullptr) {
-						msg << "Creature Bitmask: " << objectAgent->getCreatureBitmask() << endl;
-						msg << "Creature Movement Sate: " << objectAgent->getMovementState() << endl;
+						if (objectAgent != nullptr) {
+							msg << "Creature Bitmask: " << objectAgent->getCreatureBitmask() << endl;
+							msg << "Creature Movement Sate: " << objectAgent->getMovementState() << endl;
 
-						ManagedReference<SceneObject*> followCopy = objectAgent->getFollowObject();
-						StringBuffer hasFollow;
+							ManagedReference<SceneObject*> followCopy = objectAgent->getFollowObject();
+							StringBuffer hasFollow;
 
-						if (followCopy != nullptr) {
-							hasFollow << "True - " << " OID: " << followCopy->getObjectID();
-						} else {
-							hasFollow << "False";
+							if (followCopy != nullptr) {
+								hasFollow << "True - " << " OID: " << followCopy->getObjectID();
+							} else {
+								hasFollow << "False";
+							}
+
+							msg << "Has Follow Object: " << hasFollow.toString() << endl;
+							msg << "Current total Patrol Points: " << objectAgent->getPatrolPointSize() << endl;
+							msg << "Is in navmesh: " << (objectAgent->isInNavMesh() ? "True" : "False") << endl;
 						}
+					}
 
-						msg << "Has Follow Object: " << hasFollow.toString() << endl;
-						msg << "Current total Patrol Points: " << objectAgent->getPatrolPointSize() << endl;
-						msg << "Is in navmesh: " << (objectAgent->isInNavMesh() ? "True" : "False") << endl;
+					SortedVector<ManagedReference<ActiveArea*> >* areas = creoObject->getActiveAreas();
+
+					if (areas != nullptr) {
+						for (int i = 0; i < areas->size(); i++) {
+							ActiveArea* area = areas->get(i);
+
+							if (area == nullptr)
+								continue;
+
+							msg << "Area #" << i << " -- " << area->getAreaName() << endl;
+						}
 					}
 				}
 			}
 
 			if (object->getZone() != nullptr) {
-				msg << "Location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionZ()) << " " << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName() << endl;
+				msg << "Location: " << object->getPosition().toString() << " " << object->getZone()->getZoneName() << endl;
 				msg << "Direction Angle - Radians: " << object->getDirection()->getRadians() << endl;
 			}
 
