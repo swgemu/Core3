@@ -1115,11 +1115,18 @@ bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* crea
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	for (int i = 0; i < regionMap.getTotalRegions(); ++i) {
+	for (int i = 0; i < regionMap.getTotalCityRegions(); ++i) {
 		CityRegion* cityRegion = regionMap.getCityRegion(i);
+
+		if (cityRegion == nullptr)
+			continue;
 
 		for (int j = 0; j < cityRegion->getRegionsCount(); ++j) {
 			Region* activeRegion = cityRegion->getRegion(j);
+
+			if (activeRegion == nullptr)
+				continue;
+
 			float radius = activeRegion->getRadius();
 
 			if (radius < 512)
