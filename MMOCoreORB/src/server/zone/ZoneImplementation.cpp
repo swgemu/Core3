@@ -483,9 +483,6 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 
 	managedRef->runlock(readlock);
 
-	//locker.release();
-
-
 	managedRef->unlock(!readlock);
 
 	try {
@@ -493,17 +490,16 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 		// update old ones
 		for (int i = 0; i < areas.size(); ++i) {
 			ManagedReference<ActiveArea*>& area = areas.getUnsafe(i);
-//			Locker lockerO(object);
 
-//			Locker locker(area, object);
-			SpawnArea* spawnArea = area.castTo<SpawnArea*>();
+			/*SpawnArea* spawnArea = area.castTo<SpawnArea*>();
 
 			if (spawnArea != nullptr && spawnArea->isWorldSpawnArea()) {
 				area->notifyPositionUpdate(tano);
-			} else if (!area->containsPoint(worldPos.getX(), worldPos.getY(), tano->getParentID())) {
+			} else*/
+
+			if (!area->containsPoint(worldPos.getX(), worldPos.getY(), tano->getParentID())) {
 				tano->dropActiveArea(area);
 				area->enqueueExitEvent(tano);
-//				area->notifyExit(object);
 			} else {
 				area->notifyPositionUpdate(tano);
 			}
@@ -516,13 +512,8 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 			ActiveArea* activeArea = static_cast<ActiveArea*>(entryObjects.getUnsafe(i));
 
 			if (!tano->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY(), tano->getParentID())) {
-				//Locker lockerO(object);
-
-				//Locker locker(activeArea, object);
-
 				tano->addActiveArea(activeArea);
 				activeArea->enqueueEnterEvent(tano);
-				//activeArea->notifyEnter(object);
 			}
 		}
 	} catch (...) {

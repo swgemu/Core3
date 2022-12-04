@@ -109,20 +109,6 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 
 	position = areaShape->getRandomPosition(worldPosition, 64.0f, ZoneServer::CLOSEOBJECTRANGE);
 
-	/* These are already checked by the planet manager...
-	for (int i = 0; i < noSpawnAreas.size(); ++i) {
-		auto noSpawnArea = noSpawnAreas.get(i).get();
-
-		if (noSpawnArea != nullptr && noSpawnArea->containsPoint(position.getX(), position.getY())) {
-			position.set(0, 0, 0);
-
-#ifdef DEBUG_SPAWNING
-			info(true) << "getRandomPosition -- position found is no spawn area";
-#endif // DEBUG_SPAWNING
-			break;
-		}
-	}*/
-
 	return position;
 }
 
@@ -189,7 +175,6 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	Zone* zone = getZone();
 
 	if (zone == nullptr) {
-		warning("zone is nullptr");
 		return;
 	}
 

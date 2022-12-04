@@ -222,7 +222,7 @@ class PlanetManager extends ManagedService implements Logger {
 
 	private native boolean noInterferingObjects(CreatureObject creature, @dereferenced final Vector3 position);
 
-	public native boolean isSpawningPermittedAt(float x, float y, float margin = 0, boolean worldSpawn = false);
+	public native boolean isSpawningPermittedAt(float x, float y, float margin, boolean isWorldSpawnArea = false);
 
 	public native boolean isBuildingPermittedAt(float x, float y, SceneObject objectTryingToBuild = null, float margin = 0, boolean checkFootprint = true);
 
