@@ -79,11 +79,11 @@ CorelliaCoronetScreenPlay = CityScreenPlay:new {
 		{"stormtrooper_squad_leader", "specforce_wilderness_operative", -226.3, 28, -4378.4, 90, 0, "", ""},
 		{"stormtrooper_squad_leader", "specforce_wilderness_operative", -12.4, 28.6, -4404.7, 181.005, 0, "", "", true},
 		{"stormtrooper_squad_leader", "specforce_wilderness_operative", -175.938, 28, -4767.14, 86.307, 0, "npc_imperial", "conversation"},
-		{"corsec_agent", "corsec_agent", -671.712,6.15933,-4169.03,37.6923,0, "", ""},
+		--{"corsec_agent", "corsec_agent", -671.712,6.15933,-4169.03,37.6923,0, "", ""},
 		{"corsec_detective", "corsec_detective", -526.1,28,-4702,-41,0, "", ""},
 		{"corsec_master_sergeant", "corsec_master_sergeant", -172.8,28,-4167.1,0,0, "", ""},
-		{"corsec_trooper", "corsec_trooper", -662.805,9.26289,-4182.05,196.426,0, "", ""},
-		{"corsec_detective", "corsec_detective", -672.123,5.60327,-4164.83,340.354,0, "", ""},
+		--{"corsec_trooper", "corsec_trooper", -662.805,9.26289,-4182.05,196.426,0, "", ""},
+		--{"corsec_detective", "corsec_detective", -672.123,5.60327,-4164.83,340.354,0, "", ""},
 		{"corsec_agent", "corsec_agent", -240.2,28,-4450.9,94,0, "", ""},
 		{"corsec_cadet", "corsec_cadet", -172.8,28.0929,-4165.5,179,0, "", ""},
 		{"corsec_captain", "corsec_captain", -528.144,28,-4699.89,132.784,0, "", ""},
@@ -387,66 +387,4 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 		self:setCustomName(pNpc, "Hunter Javeezo")
 		CreatureObject(pNpc):clearOptionBit(AIENABLED)
 	end
-
-	--Meatlump's outside
-	spawnMobile(self.planet, "meatlump_buffoon",300,-145,28.9,-4959.8,63,0)
-	spawnMobile(self.planet, "meatlump_buffoon",300,-54.3,28.2,-4963.4,-90,0)
-	spawnMobile(self.planet, "meatlump_buffoon",300,-20.1,28,-4922.2,109,0)
-	spawnMobile(self.planet, "meatlump_buffoon",300,266.9,28.5,-4656.5,-109,0)
-	spawnMobile(self.planet, "meatlump_buffoon",300,284.5,29,-4541.7,-175,0)
-	spawnMobile(self.planet, "meatlump_buffoon",300,258.2,28,-4424.1,-5,0)
-	spawnMobile(self.planet, "meatlump_buffoon",300,-365.3,28,-4658.5,26,0)
-	spawnMobile(self.planet, "meatlump_buffoon",300,-270.1,28,-4923,-97,0)
-	spawnMobile(self.planet, "meatlump_clod",300,-130.2,31.1,-4993.8,72,0)
-	spawnMobile(self.planet, "meatlump_clod",300,-11.4,28,-4920.5,63,0)
-	spawnMobile(self.planet, "meatlump_clod",300,93.4,27.1,-4865,60,0)
-	spawnMobile(self.planet, "meatlump_cretin",300,-89.4,30.3,-4985.2,33,0)
-	spawnMobile(self.planet, "meatlump_cretin",300,188.1,27.1,-4770.2,-99,0)
-	spawnMobile(self.planet, "meatlump_cretin",300,287.1,29.3,-4558,-95,0)
-	spawnMobile(self.planet, "meatlump_cretin",300,-236.2,28.4,-4947.9,-16,0)
-	spawnMobile(self.planet, "meatlump_fool",300,172.6,27.9,-4773,-87,0)
-	spawnMobile(self.planet, "meatlump_fool",300,277.9,28.6,-4545.9,-99,0)
-	spawnMobile(self.planet, "meatlump_fool",300,266.6,28,-4408.9,68,0)
-	spawnMobile(self.planet, "meatlump_fool",300,-361.8,28,-4655,164,0)
-	spawnMobile(self.planet, "meatlump_fool",300,-297.3,28,-4918.8,-86,0)
-	spawnMobile(self.planet, "meatlump_fool",300,-257,30,-4968.4,24,0)
-	spawnMobile(self.planet, "meatlump_loon", 300, -163, 28.2, -4949.3, 102, 0)
-	spawnMobile(self.planet, "meatlump_loon",300,176,27.3,-4763.6,-7,0)
-	spawnMobile(self.planet, "meatlump_oaf",300,-136,28.8,-4958.5,83,0)
-	spawnMobile(self.planet, "meatlump_oaf",300,-72,28,-4973.1,-77,0)
-	spawnMobile(self.planet, "meatlump_oaf",300,97.6,26.6,-4867.1,101,0)
-	spawnMobile(self.planet, "meatlump_oaf",300,255,28.3,-4666.8,-51,0)
-	spawnMobile(self.planet, "meatlump_oaf",300,249.6,28,-4418.9,92,0)
-	spawnMobile(self.planet, "meatlump_oaf",300,-366,28,-4655,148,0)
-	spawnMobile(self.planet, "meatlump_oaf",300,-308,28,-4897.9,64,0)
-	spawnMobile(self.planet, "meatlump_stooge",300,-133.5,28.2,-4946,72,0)
-	spawnMobile(self.planet, "meatlump_stooge",300,-12.6,27.9,-4931.6,-19,0)
-	spawnMobile(self.planet, "meatlump_stooge",300,90.7,26.6,-4872.1,73,0)
-	spawnMobile(self.planet, "meatlump_stooge",300,252.9,28.3,-4657.7,-3,0)
-	spawnMobile(self.planet, "meatlump_stooge",300,293.9,29.7,-4552.4,-93,0)
-
-	--Ragtag's outside
-	spawnMobile(self.planet, "ragtag_kook",300,-217.315,28,-4927.23,40.3799,0)
-	spawnMobile(self.planet, "ragtag_kook",300,-213.219,28,-4926.08,204.867,0)
-	spawnMobile(self.planet, "ragtag_kook",300,-225.238,28,-4931.01,254.658,0)
-	spawnMobile(self.planet, "ragtag_kook",300,-212.993,28,-4922.77,38.0909,0)
-	spawnMobile(self.planet, "ragtag_kook",300,-712.063,5.13106,-4304.96,315.72,0)
-	spawnMobile(self.planet, "ragtag_kook",300,-719.18,4.19027,-4309.55,164.033,0)
-	spawnMobile(self.planet, "ragtag_kook",300,-703.067,2.97988,-4657.98,93.9451,0)
-	spawnMobile(self.planet, "ragtag_kook",300,-711.002,2.29761,-4657.71,82.4599,0)
-	spawnMobile(self.planet, "ragtag_loon",300,-396.754,28,-4869.82,8.29735,0)
-	spawnMobile(self.planet, "ragtag_loon",300,-397.655,28,-4875.17,8.04579,0)
-	spawnMobile(self.planet, "ragtag_loon",300,227.709,28,-4494.78,296.837,0)
-	spawnMobile(self.planet, "ragtag_loon",300,229.296,28,-4484.62,54.5993,0)
-	spawnMobile(self.planet, "ragtag_loon",300,234.249,28,-4490.03,258.204,0)
-	spawnMobile(self.planet, "ragtag_loon",300,227.363,28,-4490.61,140.577,0)
-	spawnMobile(self.planet, "ragtag_loon",300,177.412,28,-4413.68,227.101,0)
-	spawnMobile(self.planet, "ragtag_loon",300,177.412,28,-4411.68,159.855,0)
-	spawnMobile(self.planet, "ragtag_loon",300,-205.027,28.3091,-3998.32,80.3182,0)
-	spawnMobile(self.planet, "ragtag_loon",300,-208.5,29.2,-3999.9,191.197,0)
-	spawnMobile(self.planet, "ragtag_loon",300,-205.027,29.2182,-4001.32,192.016,0)
-	spawnMobile(self.planet, "ragtag_loon",300,-201.8,28.6,-4000.2,-122,0)
-	spawnMobile(self.planet, "ragtag_loon",300,-525.124,5.82557,-4079.84,207.519,0)
-	spawnMobile(self.planet, "ragtag_loon",300,-534.124,6.67109,-4078.84,149.496,0)
-	spawnMobile(self.planet, "ragtag_maniac",300,-691.483,7.08209,-4227.75,29.5129,0)
 end

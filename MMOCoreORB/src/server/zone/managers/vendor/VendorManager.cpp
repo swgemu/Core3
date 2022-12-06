@@ -126,9 +126,10 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	String region = "@planet_n:" + vendor->getZone()->getZoneName();
 
 
-	ManagedReference<CityRegion*> regionObject = vendor->getCityRegion().get();
-	if(regionObject != nullptr)
-		region = regionObject->getRegionName();
+	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion().get();
+
+	if(cityRegion != nullptr)
+		region = cityRegion->getCityRegionName();
 
 	TerminalListVector vendorList = auctionsMap->getVendorTerminalData(planet, region, vendor);
 

@@ -16,7 +16,7 @@ Luna<LuaActiveArea>::RegType LuaActiveArea::Register[] = {
 		{ "setRadius", &LuaActiveArea::setRadius },
 		{ "getRadius", &LuaActiveArea::getRadius },
 		{ "setNoBuildArea", &LuaActiveArea::setNoBuildArea },
-		{ "isNoBuildArea", &LuaActiveArea::isNoBuildArea },
+		{ "isNoBuildZone", &LuaActiveArea::isNoBuildZone },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "setCellObjectID", &LuaActiveArea::setCellObjectID },
 		{ "getCellObjectID", &LuaActiveArea::getCellObjectID },
@@ -83,13 +83,18 @@ int LuaActiveArea::setRadius(lua_State* L) {
 int LuaActiveArea::setNoBuildArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 	Locker realObjectLocker(realObject);
-	realObject->setNoBuildArea(val);
+
+	if (val) {
+		realObject->addAreaFlag(ActiveArea::NOBUILDZONEAREA);
+	} else {
+		realObject->removeAreaFlag(ActiveArea::NOBUILDZONEAREA);
+	}
 
 	return 0;
 }
 
-int LuaActiveArea::isNoBuildArea(lua_State* L) {
-	bool val = realObject->isNoBuildArea();
+int LuaActiveArea::isNoBuildZone(lua_State* L) {
+	bool val = realObject->isNoBuildZone();
 
 	lua_pushboolean(L, val);
 
@@ -115,7 +120,14 @@ int LuaActiveArea::getCellObjectID(lua_State* L) {
 int LuaActiveArea::setNoSpawnArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 	Locker realObjectLocker(realObject);
-	realObject->setNoSpawnArea(val);
+
+	if (val) {
+		realObject->addAreaFlag(ActiveArea::NOSPAWNAREA);
+		realObject->addAreaFlag(ActiveArea::NOWORLDSPAWNAREA);
+	} else {
+		realObject->removeAreaFlag(ActiveArea::NOSPAWNAREA);
+		realObject->removeAreaFlag(ActiveArea::NOWORLDSPAWNAREA);
+	}
 
 	return 0;
 }

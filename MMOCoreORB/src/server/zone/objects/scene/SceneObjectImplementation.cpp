@@ -140,6 +140,7 @@ void SceneObjectImplementation::initializePrivateData() {
 	originalObjectID = 0;
 
 	forceNoTrade = false;
+	debuggingRegions = false;
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

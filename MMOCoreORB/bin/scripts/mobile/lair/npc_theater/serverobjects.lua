@@ -19,6 +19,7 @@ includeFile("lair/npc_theater/corellia_lord_nyax_church_neutral_medium_theater.l
 includeFile("lair/npc_theater/corellia_lord_nyax_visionary_neutral_large_theater.lua")
 includeFile("lair/npc_theater/corellia_meatlump_camp_neutral_medium_theater.lua")
 includeFile("lair/npc_theater/corellia_meatlump_outpost_neutral_medium_theater.lua")
+includeFile("lair/npc_theater/corellia_ragtag_camp_neutral_medium_theater.lua")
 includeFile("lair/npc_theater/corellia_monumenter_base_neutral_medium_theater.lua")
 includeFile("lair/npc_theater/corellia_selonian_base_neutral_large_theater.lua")
 includeFile("lair/npc_theater/corellia_selonian_outpost_neutral_large_theater.lua")

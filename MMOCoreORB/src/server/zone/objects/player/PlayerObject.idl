@@ -782,8 +782,6 @@ class PlayerObject extends IntangibleObject {
 
 	public native void doRecovery(int latency);
 
-	private native void checkForNewSpawns();
-
 	public native void disconnect(boolean closeClient, boolean doLock);
 
 	public native void reload(ZoneClientSession client);

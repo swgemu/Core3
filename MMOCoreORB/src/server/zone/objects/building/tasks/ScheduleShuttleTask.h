@@ -54,7 +54,7 @@ public:
 			cityRegion->setShuttleID(strongReference->getObjectID());
 			clocker.release();
 
-			PlanetTravelPoint* planetTravelPoint = new PlanetTravelPoint(zoneName, cityRegion->getRegionName(), arrivalVector, arrivalVector, strongReference);
+			PlanetTravelPoint* planetTravelPoint = new PlanetTravelPoint(zoneName, cityRegion->getCityRegionName(), arrivalVector, arrivalVector, strongReference);
 			planetManager->addPlayerCityTravelPoint(planetTravelPoint);
 			planetManager->scheduleShuttle(strongReference, PlanetManager::SHUTTLEPORT);
 

@@ -32,7 +32,7 @@ namespace area {
 		int getRadius(lua_State *L);
 
 		int setNoBuildArea(lua_State* L);
-		int isNoBuildArea(lua_State* L);
+		int isNoBuildZone(lua_State* L);
 
 		int setCellObjectID(lua_State* L);
 		int getCellObjectID(lua_State* L);

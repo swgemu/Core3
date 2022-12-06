@@ -19,7 +19,7 @@
 #include "server/zone/objects/mission/HuntingMissionObjective.h"
 #include "server/zone/objects/mission/ReconMissionObjective.h"
 #include "server/zone/objects/mission/BountyMissionObjective.h"
-#include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "templates/manager/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -1792,23 +1792,13 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 	} else if (type == MissionTypes::HUNTING) {
 		CreatureManager* creatureManager = zone->getCreatureManager();
-		auto worldAreas = creatureManager->getWorldSpawnAreas();
 
-		ManagedReference<SpawnArea*> spawnArea = nullptr;
+		if (creatureManager != nullptr) {
+			SpawnArea* spawnArea = creatureManager->getWorldSpawnArea();
 
-		if (worldAreas == nullptr || worldAreas->size() == 0) {
-			return nullptr;
+			if (spawnArea != nullptr)
+				availableLairList = spawnArea->getSpawnList();
 		}
-
-		int rand = System::random(worldAreas->size() - 1);
-
-		spawnArea = worldAreas->get(rand);
-
-		if (spawnArea == nullptr) {
-			return nullptr;
-		}
-
-		availableLairList = spawnArea->getSpawnList();
 	}
 
 	if (availableLairList == nullptr || availableLairList->size() == 0) {

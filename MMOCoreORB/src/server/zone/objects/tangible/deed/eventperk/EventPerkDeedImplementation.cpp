@@ -189,7 +189,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		for (int i = 0; i < activeAreas.size(); ++i) {
 			ActiveArea* area = activeAreas.get(i);
 
-			if (area->isNoBuildArea()) {
+			if (area->isNoBuildZone()) {
 				player->sendSystemMessage("@event_perk:too_close_something"); // You are too close to an object to deploy your Rental here. Move away from it.
 				return 1;
 			}

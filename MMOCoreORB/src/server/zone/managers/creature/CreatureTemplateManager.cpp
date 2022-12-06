@@ -19,7 +19,9 @@ int CreatureTemplateManager::ERROR_CODE = NO_ERROR;
 CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateManager") {
 	/*setLogging(false);
 		setGlobalLogging(true);*/
-	//setLoggingName("CreatureTemplateManager");
+
+	setLoggingName("CreatureTemplateManager");
+
 	globalAttackSpeedOverride = 0.0f;
 
 	lua = new Lua();
@@ -305,6 +307,10 @@ int CreatureTemplateManager::addSpawnGroup(lua_State* L) {
 
 	String ascii = lua_tostring(L, -2);
 	uint32 crc = (uint32) ascii.hashCode();
+
+#ifdef DEBUG_REGIONS
+	Logger::console.info(true) << "Adding spawn group: " << ascii;
+#endif // DEBUG_REGIONS
 
 	LuaObject obj(L);
 	CreatureTemplateManager::instance()->spawnGroupMap.put(crc, new SpawnGroup(ascii, obj));

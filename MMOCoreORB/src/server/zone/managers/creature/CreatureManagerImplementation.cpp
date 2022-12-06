@@ -27,7 +27,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
-#include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
@@ -501,10 +501,6 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 	}
 
 	return true;
-}
-
-void CreatureManagerImplementation::loadSpawnAreas() {
-	spawnAreaMap.loadMap(zone);
 }
 
 void CreatureManagerImplementation::unloadSpawnAreas() {
@@ -1212,6 +1208,20 @@ void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* p
 	Reference<SampleDnaTask*> task = new SampleDnaTask(creature, player);
 	player->addPendingTask("sampledna",task,0);
 
+}
+
+SpawnArea* CreatureManagerImplementation::getWorldSpawnArea() {
+	for (int i = 0; i < spawnAreaMap.size(); i++) {
+		SpawnArea* area = spawnAreaMap.get(i);
+
+		if (area == nullptr || !area->isWorldSpawnArea()) {
+			continue;
+		}
+
+		return area;
+	}
+
+	return nullptr;
 }
 
 bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
