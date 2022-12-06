@@ -30,6 +30,11 @@ void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	if (sceneObject == nullptr || !sceneObject->isPlayerCreature())
 		return;
 
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer != nullptr && (zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()))
+		return;
+
 #ifdef DEBUG_SPAWNING
 	info(true) << getAreaName() << " --SpawnAreaImplementation::notifyPositionUpdate called ";
 #endif // DEBUG_SPAWNING
