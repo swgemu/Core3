@@ -340,7 +340,7 @@ bool ShuttleBeaconImplementation::canSpawnShuttle(CreatureObject* player) {
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
 
-		if (area->isNoBuildArea())
+		if (area->isNoBuildZone())
 			return false;
 	}
 

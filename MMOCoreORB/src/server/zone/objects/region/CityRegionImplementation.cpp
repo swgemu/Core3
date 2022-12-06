@@ -55,7 +55,7 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 	zone->addCityRegionToUpdate(_this.getReferenceUnsafeStaticCast());
 
 	if (isRegistered())
-		zone->getPlanetManager()->addRegion(_this.getReferenceUnsafeStaticCast());
+		zone->getPlanetManager()->addCityRegion(_this.getReferenceUnsafeStaticCast());
 }
 
 void CityRegionImplementation::initialize() {
@@ -119,7 +119,7 @@ void CityRegionImplementation::updateNavmesh(const AABB& bounds, const String& q
 	}
 }
 
-Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool persistent) {
+Region* CityRegionImplementation::createNewRegion(float x, float y, float radius, bool persistent) {
 	if (zone == nullptr) {
 		return nullptr;
 	}
@@ -137,10 +137,9 @@ Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool
 	region->setCityRegion(_this.getReferenceUnsafeStaticCast());
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
-	region->setObjectName(regionName, false);
 
-	if (isClientRegion())
-		region->setNoBuildArea(true);
+	region->setObjectName(regionName, false);
+	region->setAreaName(regionName.toString());
 
 	zone->transferObject(region, -1, false);
 
@@ -220,7 +219,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		CreatureObject* creature = cast<CreatureObject*>(object);
 
 		StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
-		params.setTT(getRegionName());
+		params.setTT(getCityRegionName());
 
 		UnicodeString strRank = StringIdManager::instance()->getStringId(String("@city/city:rank" + String::valueOf(cityRank)).hashCode());
 
@@ -359,7 +358,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		CreatureObject* creature = cast<CreatureObject*>(object);
 
 		StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
-		params.setTO(getRegionName());
+		params.setTO(getCityRegionName());
 
 		creature->sendSystemMessage(params);
 
@@ -487,7 +486,7 @@ bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 
 void CityRegionImplementation::createNavMesh() {
 	// This is invoked when a new city hall is placed, always force a rebuild
-    createNavMesh(NavMeshManager::TileQueue, true);
+	createNavMesh(NavMeshManager::TileQueue, true);
 }
 
 void CityRegionImplementation::destroyNavMesh() {
@@ -505,11 +504,12 @@ void CityRegionImplementation::destroyNavMesh() {
 }
 
 void CityRegionImplementation::createNavMesh(const String& queue, bool forceRebuild) {
-	String name = getRegionName();
-	name = name.subString(name.lastIndexOf(':')+1);
+	String name = getCityRegionName();
+	name = name.subString(name.lastIndexOf(':')+ 1);
 
-	if (!isClientRegion())
+	if (!isClientRegion()) {
 		name = name + "_player_city";
+	}
 
 	if (navMesh == nullptr) {
 		navMesh = zone->getPlanetManager()->getNavArea(name);
@@ -611,7 +611,7 @@ void CityRegionImplementation::setCustomRegionName(const String& name) {
 
 	StringBuffer logName;
 
-	logName << "CityRegion " << getObjectID() << " " << getRegionName();
+	logName << "CityRegion " << getObjectID() << " " << getCityRegionName();
 
 	if (zone != nullptr) {
 		logName << " on " << zone->getZoneName();
@@ -620,13 +620,17 @@ void CityRegionImplementation::setCustomRegionName(const String& name) {
 	setLoggingName(logName.toString());
 }
 
+void CityRegionImplementation::setRegionName(const String& name) {
+	regionName.setStringId(name);
+}
+
 void CityRegionImplementation::setRadius(float rad) {
 	if (regions.size() <= 0)
 		return;
 
 	ManagedReference<Region*> oldRegion = regions.get(0).get();
 
-	ManagedReference<Region*> newRegion = addRegion(oldRegion->getPositionX(), oldRegion->getPositionY(), rad, true);
+	ManagedReference<Region*> newRegion = createNewRegion(oldRegion->getPositionX(), oldRegion->getPositionY(), rad, true);
 
 	Locker locker(oldRegion, _this.getReferenceUnsafeStaticCast());
 
@@ -674,15 +678,15 @@ void CityRegionImplementation::cancelTasks() {
 	}
 }
 
-String CityRegionImplementation::getRegionName() {
-	if(!customRegionName.isEmpty())
+String CityRegionImplementation::getCityRegionName() {
+	if (!customRegionName.isEmpty())
 		return customRegionName;
 
-	return regionName.getFullPath();
+	return regionName.toString();
 }
 
 String CityRegionImplementation::getRegionDisplayedName() {
-	if(!customRegionName.isEmpty())
+	if (!customRegionName.isEmpty())
 		return customRegionName;
 
 	return StringIdManager::instance()->getStringId(regionName.getFullPath().hashCode()).toString();

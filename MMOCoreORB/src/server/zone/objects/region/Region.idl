@@ -68,5 +68,8 @@ class Region extends ActiveArea {
 	public boolean isRegion() {
 		return true;
 	}
-}
 
+	public boolean isSpawnAreaObject() {
+		return false;
+	}
+}

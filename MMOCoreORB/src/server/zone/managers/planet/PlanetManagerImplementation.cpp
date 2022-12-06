@@ -31,10 +31,17 @@
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
+#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
+#include "server/zone/objects/area/areashapes/RingAreaShape.h"
+#include "server/zone/objects/region/SpawnArea.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+
 #include "conf/ConfigManager.h"
 #include "PlanetTravelPoint.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
+
+//#define DEBUG_REGIONS
 
 ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;
 Mutex PlanetManagerImplementation::poiMutex;
@@ -48,6 +55,10 @@ void PlanetManagerImplementation::initialize() {
 
 	loadLuaConfig();
 	loadTravelFares();
+
+	// Load Planet Regions
+	loadRegions();
+	buildCityNavMeshes();
 
 	if (zone->getZoneName() == "dathomir") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(STRING_HASHCODE("object/fs_village_area.iff"), 0).castTo<ActiveArea*>();
@@ -124,9 +135,9 @@ void PlanetManagerImplementation::loadLuaConfig() {
 	LuaObject luaObject = lua->getGlobalObject(planetName);
 
 	if (luaObject.isValidTable()) {
-
 		bool weatherEnabled = luaObject.getIntField("weatherEnabled");
-		if(weatherEnabled) {
+
+		if (weatherEnabled) {
 			weatherManager = new WeatherManager(zone);
 			weatherManager->initialize();
 		} else {
@@ -134,13 +145,11 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		}
 
 		bool gcwEnabled = luaObject.getIntField("gcwEnabled");
-		if(gcwEnabled) {
+
+		if (gcwEnabled) {
 			gcwManager = new GCWManager(zone);
 			gcwManager->initialize();
 		}
-
-		LuaObject outposts = luaObject.getObjectField("outpostRegionNames");
-		loadClientRegions(&outposts);
 
 		loadClientPoiData();
 
@@ -187,17 +196,6 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	if ((starportLandingTime = lua->getGlobalInt("starportLandingTime")) <= 0)
 		starportLandingTime = 14;
-
-	ReadLocker rLock(&regionMap);
-	int numRegions = regionMap.getTotalRegions();
-	bool forceRebuild = server->getZoneServer()->shouldDeleteNavAreas();
-	for (int i=0; i<numRegions; i++) {
-		CityRegion* city = regionMap.getRegion(i);
-		Locker locker(city);
-		city->createNavMesh(NavMeshManager::MeshQueue, forceRebuild);
-	}
-
-	rLock.release();
 
 	delete lua;
 	lua = nullptr;
@@ -706,7 +704,7 @@ Vector3 PlanetManagerImplementation::getRandomSpawnPoint() {
 		position.setX(System::random(diameterX) + minX);
 		position.setY(System::random(diameterY) + minY);
 
-		found = isSpawningPermittedAt(position.getX(), position.getY());
+		found = isSpawningPermittedAt(position.getX(), position.getY(), 0);
 
 		retries--;
 	}
@@ -797,137 +795,319 @@ void PlanetManagerImplementation::loadClientPoiData() {
 	delete iffStream;
 }
 
-void PlanetManagerImplementation::loadClientRegions(LuaObject* outposts) {
-	VectorMap<String, Vector<float> > outpostData;
+void PlanetManagerImplementation::buildCityNavMeshes() {
+	ReadLocker rLock(&regionMap);
 
-	if (outposts->isValidTable()) {
-		for (int i = 1; i <= outposts->getTableSize(); ++i) {
-			lua_State* L = outposts->getLuaState();
-			lua_rawgeti(L, -1, i);
+	int numCityRegions = regionMap.getTotalCityRegions();
+	bool forceRebuild = server->getZoneServer()->shouldDeleteNavAreas();
 
-			LuaObject outpost(L);
+	for (int i = 0; i < numCityRegions; i++) {
+		CityRegion* city = regionMap.getCityRegion(i);
 
-			if (outpost.isValidTable()) {
-				String name = outpost.getStringField("name");
-				Vector<float> coords;
-				coords.add(outpost.getFloatField("x"));
-				coords.add(outpost.getFloatField("y"));
-				outpostData.put(name, coords);
-			}
+		if (city == nullptr)
+			continue;
 
-			outpost.pop();
-		}
+		Locker locker(city);
+		city->createNavMesh(NavMeshManager::MeshQueue, forceRebuild);
 	}
 
-	outposts->pop();
+	rLock.release();
+}
 
-	TemplateManager* templateManager = TemplateManager::instance();
+void PlanetManagerImplementation::loadRegions() {
+	Lua* lua = new Lua();
+	lua->init();
 
-	IffStream* iffStream = templateManager->openIffFile("datatables/clientregion/" + zone->getZoneName() + ".iff");
+	String planetName = zone->getZoneName();
 
-	Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
+	info(true) << "Loading " << planetName << " regions...";
 
-	if (iffStream == nullptr) {
-		info("No client regions found.");
+	lua->runFile("scripts/managers/spawn_manager/" + planetName + "_regions.lua");
+	LuaObject regionObjects = lua->getGlobalObject(planetName + "_regions");
+
+	lua_State* s = regionObjects.getLuaState();
+
+	for (int i = 1; i <= regionObjects.getTableSize(); ++i) {
+		lua_rawgeti(s, -1, i);
+		LuaObject regionObject(s);
+
+		if (regionObject.isValidTable())
+			readRegionObject(regionObject);
+
+		regionObject.pop();
+	}
+
+	regionObjects.pop();
+
+	delete lua;
+	lua = nullptr;
+
+	info(true) << "Loaded " + String::valueOf(regionMap.getTotalRegions()) + " regions.";
+
+	/* TODO: Fix??
+
+	for (int i = 0; i < size(); ++i) {
+		SpawnArea* area = get(i);
+
+		Locker locker(area);
+
+		for (int j = 0; j < noSpawnAreas.size(); ++j) {
+			SpawnArea* notHere = noSpawnAreas.get(j);
+
+			if (area->intersectsWith(notHere)) {
+				area->addNoSpawnArea(notHere);
+			}
+		}
+	}*/
+}
+
+void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
+	String name = regionObject.getStringAt(1);
+	float x = regionObject.getFloatAt(2);
+	float y = regionObject.getFloatAt(3);
+	int type = regionObject.getIntAt(5);
+
+	float radius = 0;
+	float x2 = 0;
+	float y2 = 0;
+	float innerRadius = 0;
+	float outerRadius = 0;
+
+#ifdef DEBUG_REGIONS
+	info(true) << "readRegion -- Name: " << name << " x = " << x << " y = " << y;
+#endif // DEBUG_REGIONS
+
+	LuaObject areaShapeObject = regionObject.getObjectAt(4);
+
+	if (!areaShapeObject.isValidTable()) {
+		error("Invalid area shape table for spawn region " + name);
 		return;
 	}
 
-	DataTableIff dtiff;
-	dtiff.readObject(iffStream);
+	int regionShape = areaShapeObject.getIntAt(1);
 
-	String zoneName = zone->getZoneName();
-	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
-		String regionName;
-		float x, y, radius;
+	if (regionShape == ActiveArea::CIRCLE) {
+		radius = areaShapeObject.getFloatAt(2);
 
-		DataTableRow* row = dtiff.getRow(i);
-		row->getValue(0, regionName);
-		row->getValue(1, x);
-		row->getValue(2, y);
-		row->getValue(3, radius);
+		if (radius <= 0)
+			radius = 1.f;
 
-		for (int i = 0; i < outpostData.size(); i++) {
-			if (x == outpostData.get(i).get(0) && y == outpostData.get(i).get(1)) {
-				regionName = outpostData.elementAt(i).getKey();
+		if (radius <= 0) {
+			error("Invalid radius of " + String::valueOf(radius) + " must be > 0 for circular spawn region " + name);
+			return;
+		}
+	} else if (regionShape == ActiveArea::RECTANGLE) {
+		x2 = areaShapeObject.getFloatAt(2);
+		y2 = areaShapeObject.getFloatAt(3);
+		int rectWidth = x2 - x;
+		int rectHeight = y2 - y;
+
+		if ((rectWidth <= 0 || rectHeight <= 0)) {
+			error("Invalid corner coordinates for rectangular spawn region " + name + ", total height: " + String::valueOf(rectHeight) + ", total width: " + String::valueOf(rectWidth));
+			return;
+		}
+	} else if (regionShape == ActiveArea::RING) {
+		innerRadius = areaShapeObject.getFloatAt(2);
+		outerRadius = areaShapeObject.getFloatAt(3);
+
+		if (innerRadius <= 0) {
+			error("Invalid inner radius of " + String::valueOf(innerRadius) + " must be > 0 for ring spawn region " + name);
+			return;
+		} else if (outerRadius <= 0) {
+			error("Invalid outer radius of " + String::valueOf(outerRadius) + " must be > 0 for ring spawn region " + name);
+			return;
+		}
+	} else {
+		error("Invalid area type of " + String::valueOf(regionShape) + " for spawn region " + name);
+		return;
+	}
+
+	areaShapeObject.pop();
+
+	if (radius == 0 && x2 == 0 && y2 == 0 && innerRadius == 0 && outerRadius == 0)
+		return;
+
+	ManagedReference<Region*> region = nullptr;
+	bool spawnAreaRegion = ((type & ActiveArea::SPAWNAREA) || (type & ActiveArea::WORLDSPAWNAREA) || (type & ActiveArea::NOSPAWNAREA));
+
+	if (spawnAreaRegion) {
+		region = dynamic_cast<Region*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/spawn_area.iff"), 0, "spawnareas"));
+#ifdef DEBUG_REGIONS
+		info(true) << " ~~~ Creating spawn_area object ~~~ ";
+#endif // DEBUG_REGIONS
+	} else {
+		region = dynamic_cast<Region*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/region_area.iff"), 0, "regions"));
+#ifdef DEBUG_REGIONS
+		info(true) << " --- Creating region_area object --- ";
+#endif // DEBUG_REGIONS
+	}
+
+	if (region == nullptr)
+		return;
+
+	StringId nameID(zone->getZoneName() + "_region_names", name);
+
+	// Lock Region
+	Locker lock(region);
+
+	region->setObjectName(nameID, false);
+	region->setAreaName(nameID.toString());
+
+	if (regionShape == ActiveArea::RECTANGLE) {
+		ManagedReference<RectangularAreaShape*> rectangularAreaShape = new RectangularAreaShape();
+
+		Locker shapeLocker(rectangularAreaShape);
+
+		rectangularAreaShape->setDimensions(x, y, x2, y2);
+		float centerX = x + ((x2 - x) / 2);
+		float centerY = y + ((y2 - y) / 2);
+
+		rectangularAreaShape->setAreaCenter(centerX, centerY);
+
+		region->setAreaShape(rectangularAreaShape);
+	} else if (regionShape == ActiveArea::CIRCLE) {
+		ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
+
+		Locker shapeLocker(circularAreaShape);
+
+		circularAreaShape->setAreaCenter(x, y);
+
+		if (radius > 0)
+			circularAreaShape->setRadius(radius);
+		else
+			circularAreaShape->setRadius(zone->getBoundingRadius());
+
+		region->setAreaShape(circularAreaShape);
+	} else if (regionShape == ActiveArea::RING) {
+		ManagedReference<RingAreaShape*> ringAreaShape = new RingAreaShape();
+
+		Locker shapeLocker(ringAreaShape);
+
+		ringAreaShape->setAreaCenter(x, y);
+		ringAreaShape->setInnerRadius(innerRadius);
+		ringAreaShape->setOuterRadius(outerRadius);
+
+		region->setAreaShape(ringAreaShape);
+	}
+
+	region->setRegionFlags(type);
+	region->initializePosition(x, 0, y);
+
+	if (spawnAreaRegion) {
+#ifdef DEBUG_REGIONS
+		info(true) << "Adding Spawn Area";
+#endif // DEBUG_REGIONS
+
+		CreatureManager* creatureMan = zone->getCreatureManager();
+		ManagedReference<SpawnArea*> area = region.castTo<SpawnArea*>();
+
+		if (creatureMan != nullptr && area != nullptr) {
+			if ((type & ActiveArea::SPAWNAREA) || (type & ActiveArea::WORLDSPAWNAREA)) {
+				area->setMaxSpawnLimit(regionObject.getIntAt(7));
+				LuaObject spawnGroups = regionObject.getObjectAt(6);
+
+				if (spawnGroups.isValidTable()) {
+					Vector<uint32> groups;
+
+					for (int i = 1; i <= spawnGroups.getTableSize(); i++) {
+						uint32 groupHash = spawnGroups.getStringAt(i).hashCode();
+
+						// TODO: REMOVE
+						if (groupHash == STRING_HASHCODE("insert_spawnlist_here"))
+							continue;
+
+#ifdef DEBUG_REGIONS
+						info(true) << "Adding Spawn Group: #" << i << " Name: " << spawnGroups.getStringAt(i);
+#endif // DEBUG_REGIONS
+
+						groups.add(spawnGroups.getStringAt(i).hashCode());
+					}
+
+					area->buildSpawnList(&groups);
+				}
+
+				spawnGroups.pop();
+
+				if (type & ActiveArea::NOSPAWNAREA) {
+					creatureMan->addNoSpawnArea(area);
+				}
+
+				// Add to Spawn Area Map
+				creatureMan->addSpawnAreaToMap(nameID.getStringID().hashCode(), area);
 			}
 		}
+	}
 
-		ManagedReference<CityRegion*> cityRegion = regionMap.getRegion(regionName);
+
+	zone->transferObject(region, -1, true);
+	//region->setZone(zone);
+
+	// Region is a City, add to cityRegionMap list
+	if (type & ActiveArea::CITY) {
+		ManagedReference<CityRegion*> cityRegion = region.castTo<CityRegion*>();
 
 		if (cityRegion == nullptr) {
 			cityRegion = new CityRegion();
 
-			Locker locker(cityRegion);
+			Locker cityLocker(cityRegion);
+
 			cityRegion->deploy();
-			cityRegion->setRegionName(regionName);
+			cityRegion->setRegionName("@" + nameID.getFullPath());
+
 			cityRegion->setZone(zone);
 
-			regionMap.addRegion(cityRegion);
+			addCityRegion(cityRegion);
 		}
 
-		Locker locker(cityRegion);
+		Locker clocker(cityRegion, region);
 
-		ManagedReference<Region*> region = cityRegion->addRegion(x, y, radius, false);
+		cityRegion->addRegion(region);
+		region->setCityRegion(cityRegion);
 
-		locker.release();
+#ifdef DEBUG_REGIONS
+		info(true) << "Adding City: " << nameID.getFullPath();
+#endif // DEBUG_REGIONS
 
-		if (region != nullptr) {
-			Locker rlocker(region);
+		Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
 
-			if (cityRegion->getRegionsCount() == 1) {//Register the first region only.
-				region->setPlanetMapCategory(cityCat);
-				zone->registerObjectWithPlanetaryMap(region);
-			}
+		if (cityCat != nullptr)
+			region->setPlanetMapCategory(cityCat);
 
-			region->setMunicipalZone(true);
+		// Register with Planetary Map
+		zone->registerObjectWithPlanetaryMap(region);
 
-			ManagedReference<SceneObject*> scenery = nullptr;
+		// Attach Scenery
+		ManagedReference<SceneObject*> scenery = nullptr;
 
-			if (gcwManager != nullptr) {
-				int strongholdFaction = gcwManager->isStrongholdCity(regionName);
+		if (gcwManager != nullptr) {
+			int strongholdFaction = gcwManager->isStrongholdCity(name);
 
-				if (strongholdFaction == Factions::FACTIONIMPERIAL || regionName.contains("imperial")) {
-					scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_imperial.iff"), 0);
-				} else if (strongholdFaction == Factions::FACTIONREBEL || regionName.contains("rebel")) {
-					scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_rebel.iff"), 0);
-				} else {
-					scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships.iff"), 0);
-				}
+			if (strongholdFaction == Factions::FACTIONIMPERIAL || name.contains("imperial")) {
+				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_imperial.iff"), 0);
+			} else if (strongholdFaction == Factions::FACTIONREBEL || name.contains("rebel")) {
+				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_rebel.iff"), 0);
 			} else {
 				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships.iff"), 0);
 			}
+		} else {
+			scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships.iff"), 0);
+		}
 
+		if (scenery != nullptr) {
 			Locker slocker(scenery, region);
 			scenery->initializePosition(x, zone->getHeight(x, y) + 100, y);
 			region->attachScenery(scenery);
 		}
-
-		ManagedReference<ActiveArea*> noBuild = zone->getZoneServer()->createObject(STRING_HASHCODE("object/active_area.iff"), 0).castTo<ActiveArea*>();
-
-		Locker areaLocker(noBuild);
-
-		noBuild->initializePosition(x, 0, y);
-
-		ManagedReference<CircularAreaShape*> areaShape = new CircularAreaShape();
-
-		Locker shapeLocker(areaShape);
-
-		areaShape->setRadius(radius * 2);
-		areaShape->setAreaCenter(x, y);
-		noBuild->setAreaShape(areaShape);
-		noBuild->setRadius(radius * 2);
-		noBuild->setNoBuildArea(true);
-		// Cities already have "Municipal" protection so the structure no-build should not apply to camps
-		noBuild->setCampingPermitted(true);
-
-		Locker zoneLocker(zone);
-
-		zone->transferObject(noBuild, -1, true);
+	} else {
+		// Add Region to map
+		regionMap.addRegion(region);
 	}
 
-	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");
+	region->updateToDatabase();
 
-	delete iffStream;
+#ifdef DEBUG_REGIONS
+	info(true) << "readRegion -- Name: " << name << "   COMPLETE";
+#endif // DEBUG_REGIONS
 }
 
 bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* creature, float x, float y) {
@@ -935,11 +1115,18 @@ bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* crea
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	for (int i = 0; i < regionMap.getTotalRegions(); ++i) {
-		CityRegion* region = regionMap.getRegion(i);
+	for (int i = 0; i < regionMap.getTotalCityRegions(); ++i) {
+		CityRegion* cityRegion = regionMap.getCityRegion(i);
 
-		for (int j = 0; j < region->getRegionsCount(); ++j) {
-			Region* activeRegion = region->getRegion(j);
+		if (cityRegion == nullptr)
+			continue;
+
+		for (int j = 0; j < cityRegion->getRegionsCount(); ++j) {
+			Region* activeRegion = cityRegion->getRegion(j);
+
+			if (activeRegion == nullptr)
+				continue;
+
 			float radius = activeRegion->getRadius();
 
 			if (radius < 512)
@@ -951,7 +1138,7 @@ bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* crea
 
 			if (position.squaredDistanceTo(testPosition) <= range * range) {
 				StringIdChatParameter msg("player_structure", "city_too_close");
-				msg.setTO(region->getRegionName());
+				msg.setTO(cityRegion->getCityRegionName());
 
 				creature->sendSystemMessage(msg);
 				return false;
@@ -970,7 +1157,7 @@ bool PlanetManagerImplementation::validateRegionName(const String& name) {
 		return false;
 
 	for (int i = 0; i < regionMap.getTotalRegions(); ++i) {
-		String regionName = regionMap.getRegion(i)->getRegionName();
+		String regionName = regionMap.getRegion(i)->getAreaName();
 
 		if (regionName.beginsWith("@")) {
 			String fullName = StringIdManager::instance()->getStringId(regionName.hashCode()).toString().toLowerCase();
@@ -1061,7 +1248,7 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 	return false;
 }
 
-bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float margin) {
+bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float margin, bool worldSpawnArea) {
 	SortedVector<ActiveArea*> activeAreas;
 
 	Vector3 targetPos(x, y, 0);
@@ -1076,9 +1263,12 @@ bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
 
-		if (area->isRegion() || area->isMunicipalZone() || area->isNoSpawnArea()) {
+		if (area->isCityRegion() || area->isMunicipalZone() || area->isNoSpawnArea()) {
 			return false;
 		}
+
+		if (worldSpawnArea && area->isNoWorldSpawnArea())
+			return false;
 	}
 
 	if (isInObjectsNoBuildZone(x, y, margin)) {
@@ -1089,8 +1279,8 @@ bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float 
 		return false;
 	}
 
-	if (isInRangeWithPoi(x, y, 150))
-		return false;
+	//if (isInRangeWithPoi(x, y, 150))
+		//return false;
 
 	if (terrainManager->getHighestHeightDifference(x - 10, y - 10, x + 10, y + 10) > 15.0)
 		return false;
@@ -1113,7 +1303,7 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
 
-		if (area->isNoBuildArea()) {
+		if (area->isNoBuildZone()) {
 			return false;
 		}
 	}
@@ -1142,14 +1332,17 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
 
+		if (area == nullptr)
+			continue;
+
 		// Skip areas explicitly marked as camping allowed
-		if (area->isCampingPermitted()) {
+		if (area->isCampingArea()) {
 			continue;
 		}
 
 		// Honor no-build after checking for areas that camping is explicitly allowed
-		if (area->isNoBuildArea()) {
-				return false;
+		if (area->isNoBuildZone()) {
+			return false;
 		}
 	}
 

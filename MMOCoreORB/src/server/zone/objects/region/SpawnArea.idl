@@ -2,22 +2,28 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-package server.zone.objects.area;
+package server.zone.objects.region;
 
-import server.zone.objects.area.ActiveArea;
+import server.zone.objects.region.Region;
 import system.util.HashTable;
 import engine.core.ManagedObject;
-import server.zone.objects.area.SpawnAreaObserver;
+import server.zone.objects.region.SpawnAreaObserver;
 import engine.util.Observable;
 import server.zone.objects.scene.SceneObject;
 import system.lang.Time;
+import engine.log.Logger;
+import server.zone.QuadTreeEntry;
 
 include server.zone.managers.creature.LairSpawn;
 include system.util.Vector;
 include engine.util.u3d.Vector3;
+include system.thread.atomic.AtomicInteger;
 
 @json
-class SpawnArea extends ActiveArea {
+class SpawnArea extends Region {
+	@dereferenced
+	protected transient AtomicInteger numberOfPlayersInRange;
+
 	@dereferenced
 	@rawTemplate(value = "Reference<LairSpawn*>")
 	protected transient Vector possibleSpawns;
@@ -36,27 +42,32 @@ class SpawnArea extends ActiveArea {
 	@dereferenced
 	protected Time lastSpawn;
 
-	protected SpawnAreaObserver exitObserver;
+	protected SpawnAreaObserver spawnAreaObserver;
 
 	@dereferenced
 	@rawTemplate(value = "ManagedWeakReference<SpawnArea*>")
 	protected Vector noSpawnAreas;
-	
-	protected boolean worldSpawnArea;
 
-	protected int tier;
-
-	public final static int MINSPAWNINTERVAL = 2000; //msec
+	public final static int MINSPAWNINTERVAL = 1000; //msec
 
 	public SpawnArea() {
 		totalWeighting = 0;
 		totalSpawnCount = 0;
 		maxSpawnLimit = 0;
 		spawnTypes.setNullValue(0);
-		exitObserver = null;
-		worldSpawnArea = false;
-		Logger.setLoggingName("SpawnArea");
+		spawnAreaObserver = null;
+
+		setLoggingName("SpawnArea");
 	}
+
+	@dirty
+	public native void notifyPositionUpdate(QuadTreeEntry entry);
+
+	@dirty
+	public native abstract void notifyEnter(SceneObject object);
+
+	@dirty
+	public native abstract void notifyExit(SceneObject object);
 
 	@local
 	@dereferenced
@@ -76,16 +87,6 @@ class SpawnArea extends ActiveArea {
 		return possibleSpawns;
 	}
 
-	@preLocked
-	public void setTier(int n) {
-		tier = n;
-	}
-
-	@read
-	public int getTier() {
-		return tier;
-	}
-
 	@read
 	public int getTotalWeighting() {
 		return totalWeighting;
@@ -102,14 +103,9 @@ class SpawnArea extends ActiveArea {
 	}
 
 	public native void tryToSpawn(SceneObject object);
-	
-	@read
-	public boolean isWorldSpawnArea() {
-		return worldSpawnArea;
-	}
 
-	@preLocked
-	public void setWorldSpawnArea(boolean val) {
-		worldSpawnArea = val;
+	@dirty
+	public boolean isSpawnAreaObject() {
+		return true;
 	}
 }
