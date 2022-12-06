@@ -21,7 +21,7 @@ public:
 		return areas.add(region);
 	}
 
-	bool isNoBuildArea(float x, float y, StringId& fullAreaName) {
+	bool isNoBuildZone(float x, float y, StringId& fullAreaName) {
 		for (int i = 0; i < areas.size(); i++) {
 			Region* region = areas.get(i);
 

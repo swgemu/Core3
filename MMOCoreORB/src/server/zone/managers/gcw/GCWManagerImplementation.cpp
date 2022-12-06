@@ -3344,7 +3344,7 @@ String GCWManagerImplementation::getCrackdownInfo(CreatureObject* player) const 
 			"\nScans enabled on this planet - " + String::valueOf(planetsWithWildScans.find(zone->getZoneName()) != Vector<String>::npos) +
 			"\nPlayer has no scan cooldown - " + String::valueOf(player->checkCooldownRecovery("crackdown_scan")) +
 			"\nPlayer outside - " + String::valueOf(player->getParentID() == 0 || player->isRidingMount()) +
-			"\nIs spawning permitted at the coordinates - " + String::valueOf(zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY())) +
+			"\nIs spawning permitted at the coordinates - " + String::valueOf(zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY(), 0)) +
 			"\nIs player privileged - " + String::valueOf(player->getPlayerObject()->isPrivileged());
 	}
 }
@@ -3408,7 +3408,7 @@ void GCWManagerImplementation::performCheckWildContrabandScanTask() {
 				continue;
 		}
 
-		if (zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY()) && getWildScanChance() >= System::random(100)) {
+		if (zone->getPlanetManager()->isSpawningPermittedAt(player->getWorldPositionX(), player->getWorldPositionY(), 0) && getWildScanChance() >= System::random(100)) {
 			WildContrabandScanSession* wildContrabandScanSession = new WildContrabandScanSession(player, getWinningFactionDifficultyScaling());
 			wildContrabandScanSession->initializeSession();
 

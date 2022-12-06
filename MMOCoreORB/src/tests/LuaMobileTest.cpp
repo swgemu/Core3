@@ -757,11 +757,11 @@ TEST_F(LuaMobileTest, LuaSpawnManagerTest) {
 			String area = region.getStringAt(1);
 			int tier = region.getIntAt(5);
 
-			if (tier & SpawnAreaMap::WORLDSPAWNAREA) {
-				EXPECT_TRUE( tier & SpawnAreaMap::SPAWNAREA ) << "World spawn area " << std::string(area.toCharArray()) << " on planet " << std::string(zoneNames.get(i).toCharArray()) << " is not a spawn area.";
+			if (tier & Region::WORLDSPAWNAREA) {
+				EXPECT_TRUE( tier & Region::SPAWNAREA ) << "World spawn area " << std::string(area.toCharArray()) << " on planet " << std::string(zoneNames.get(i).toCharArray()) << " is not a spawn area.";
 			}
 
-			if (tier & SpawnAreaMap::SPAWNAREA) {
+			if (tier & Region::SPAWNAREA) {
 				LuaObject spawnGroups = region.getObjectAt(6);
 
 				ASSERT_TRUE( spawnGroups.isValidTable() ) << "Invalid spawnGroups table in spawn area " << std::string(area.toCharArray()) << " in " << zoneNames.get(i).toCharArray() << "_regions.";

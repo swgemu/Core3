@@ -45,10 +45,10 @@ public:
 			zoneName = zone->getZoneName();
 
 			PlanetManager* planetManager = zone->getPlanetManager();
-			CityRegion* cityRegion = planetManager->getRegionAt(player->getWorldPositionX(), player->getWorldPositionY());
+			CityRegion* cityRegion = planetManager->getCityRegionAt(player->getWorldPositionX(), player->getWorldPositionY());
 
 			if (cityRegion != nullptr)
-				regionName = cityRegion->getRegionName();
+				regionName = cityRegion->getCityRegionName();
 		}
 
 		insertAscii(regionName); //Region Name

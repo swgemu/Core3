@@ -6,8 +6,9 @@ package server.zone.objects.area.areashapes;
 
 import server.zone.objects.area.areashapes.AreaShape;
 include engine.util.u3d.Vector3;
+import engine.log.Logger;
 
-class RectangularAreaShape extends AreaShape {
+class RectangularAreaShape extends AreaShape implements Logger {
 
 	/** The bottom left corner of the rectangle. */
 	protected float blX;
@@ -24,6 +25,8 @@ class RectangularAreaShape extends AreaShape {
 		blY = 0;
 		urX = 0;
 		urY = 0;
+
+		Logger.setLoggingName("RectangularAreaShape");
 	}
 
 	/**

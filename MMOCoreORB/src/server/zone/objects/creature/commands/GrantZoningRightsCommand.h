@@ -57,7 +57,7 @@ public:
 
 			StringIdChatParameter params;
 			params.setStringId("@city/city:rights_granted"); //You have been granted zoning rights in the city of %TO for 24 hours.
-			params.setTO(city->getRegionName());
+			params.setTO(city->getCityRegionName());
 			targetPlayer->sendSystemMessage(params);
 
 			params.setStringId("@city/city:rights_granted_self"); //You have granted %TO zoning rights for 24 hours.

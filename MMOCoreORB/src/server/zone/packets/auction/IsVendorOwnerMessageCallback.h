@@ -50,7 +50,7 @@ public:
 
 		ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion().get();
 		if (cityRegion != nullptr)
-			vendorRegion = cityRegion->getRegionName();
+			vendorRegion = cityRegion->getCityRegionName();
 
 		IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(sceno, player, planetString, vendorRegion);
 		client->sendMessage(msg);

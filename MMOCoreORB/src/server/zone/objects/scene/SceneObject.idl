@@ -140,6 +140,8 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	protected boolean forceNoTrade;
 
+	protected transient boolean debuggingRegions;
+
 	/**
 	 * SceneObject constructor, used to initialize the object.
 	 * @pre { templateData is a valid SharedObjectTemplate LuaObject that contains the necessary values to initialize SceneObject }
@@ -2207,4 +2209,14 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@dirty
 	public native boolean isNearBank();
+
+	@preLocked
+	public void setDebuggingRegions(boolean val) {
+		debuggingRegions = val;
+	}
+
+	@read
+	public boolean isDebuggingRegions() {
+		return debuggingRegions;
+	}
 }

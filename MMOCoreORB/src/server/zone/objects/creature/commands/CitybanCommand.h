@@ -58,7 +58,7 @@ public:
 
 			StringIdChatParameter params("city/city", "csr_ban_attempt_msg");
 			params.setTT(creature->getDisplayedName());
-			params.setTO(city->getRegionName());
+			params.setTO(city->getCityRegionName());
 
 			targetCreature->sendSystemMessage(params); //%TT tried to /cityBan you from %TO!
 			return GENERALERROR;
