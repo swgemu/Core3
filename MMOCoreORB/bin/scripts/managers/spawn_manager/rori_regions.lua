@@ -202,7 +202,5 @@ rori_regions = {
 	{"western_mountains_3", -7408, 4624, {CIRCLE, 500}, SPAWNAREA, {"rori_world"}, 256},
 	{"western_mountains_4", -6816, -1952, {CIRCLE, 800}, SPAWNAREA, {"rori_world"}, 256},
 
-
-
-	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"global", "rori_world"}, 2048}
+	{"world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"global", "rori_world"}, 2048}
 }

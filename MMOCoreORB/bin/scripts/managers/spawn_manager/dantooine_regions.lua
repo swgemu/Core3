@@ -304,5 +304,5 @@ dantooine_regions = {
 	{"western_mountains_1", -7238, 736, {CIRCLE, 600}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
 	{"western_mountains_2", -7200, 112, {CIRCLE, 650}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
 
-	--{"world_spawner", -6000, -5000, {RECTANGLE, 6000, 5000}, WORLDSPAWNAREA, {"dantooine_world", "dantooine_world_npc", "global", "global_hard"}, 2048}
+	{"world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"dantooine_world", "dantooine_world_npc", "global", "global_hard"}, 2048}
 }

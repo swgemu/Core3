@@ -486,16 +486,12 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 	managedRef->unlock(!readlock);
 
 	try {
-
 		// update old ones
 		for (int i = 0; i < areas.size(); ++i) {
 			ManagedReference<ActiveArea*>& area = areas.getUnsafe(i);
 
-			/*SpawnArea* spawnArea = area.castTo<SpawnArea*>();
-
-			if (spawnArea != nullptr && spawnArea->isWorldSpawnArea()) {
-				area->notifyPositionUpdate(tano);
-			} else*/
+			if (area == nullptr || area->isWorldSpawnArea())
+				continue;
 
 			if (!area->containsPoint(worldPos.getX(), worldPos.getY(), tano->getParentID())) {
 				tano->dropActiveArea(area);
@@ -505,7 +501,6 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 			}
 		}
 
-
 		// we update the ones in quadtree.
 		for (int i = 0; i < entryObjects.size(); ++i) {
 			//update in new ones
@@ -514,6 +509,27 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 			if (!tano->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY(), tano->getParentID())) {
 				tano->addActiveArea(activeArea);
 				activeArea->enqueueEnterEvent(tano);
+			}
+		}
+
+		// update Zones World Spawn Area
+		if (creatureManager != nullptr) {
+			auto worldArea = creatureManager->getWorldSpawnArea();
+
+			if (worldArea != nullptr) {
+				Reference<TangibleObject*> tanoStrong = tano;
+				Reference<ActiveArea*> areaStrong = worldArea;
+
+				Core::getTaskManager()->executeTask([areaStrong, tanoStrong] () {
+					Locker lockerO(tanoStrong);
+
+					if (!tanoStrong->hasActiveArea(areaStrong)) {
+						tanoStrong->addActiveArea(areaStrong);
+						areaStrong->notifyEnter(tanoStrong);
+					} else {
+						areaStrong->notifyPositionUpdate(tanoStrong);
+					}
+				}, "UpdateWorldActiveArea", zoneName);
 			}
 		}
 	} catch (...) {

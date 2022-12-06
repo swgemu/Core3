@@ -243,5 +243,5 @@ talus_regions = {
 	{"binyare_pirates_medium", 5673, -3977, {CIRCLE, 500}, SPAWNAREA, {"talus_medium"}, 384},
 	{"northern_imperial_hard", -2233, 2317, {CIRCLE, 500}, SPAWNAREA, {"talus_world"}, 384},
 
-	{"world_spawner", -8000, -8000, {RECTANGLE, 8000, 8000}, WORLDSPAWNAREA + SPAWNAREA, {"global", "talus_world"}, 5000}
+	{"world_spawner", 0, 0, {RECTANGLE, 0, 0}, WORLDSPAWNAREA + SPAWNAREA, {"global", "talus_world"}, 2048}
 }

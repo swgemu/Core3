@@ -56,7 +56,7 @@ Vector3 CircularAreaShapeImplementation::getRandomPosition(const Vector3& origin
 
 #ifdef DEBUG_POSITION
 		info(true) << " X Calc = " << xCalc << " Y Calc = " << yCalc << " Spawn Distance Delta = " << spawnDistanceDelta;
-		info(true) << "Checking Position: " << position.toString();
+		info(true) << "Checking Position: " << position.toString() << "   Squared Distance: " << areaCenter.squaredDistanceTo(position) << "  Squared Radius = " << radius2;
 #endif // DEBUG_POSITION
 
 		found = containsPoint(position);

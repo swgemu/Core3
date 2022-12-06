@@ -122,12 +122,13 @@ yavin4_regions = {
 	{"wayward_jungle_6", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"western_peak", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"woolamander_temple", 525, -642, {CIRCLE, 150}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"yavin4_world", "global_hard"}, 2048},
 	{"yavin4_imperial_base", 4032.5, -6235, {CIRCLE, 225}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"yavin4_imperial_base_2", 4030.5, -6508, {CIRCLE, 65}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"yavin4_imperial_fort", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"yavin4_labor_outpost", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"yavin4_mining_outpost", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"yunteh_mountains_1", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"yunteh_mountains_2", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA}
+	{"yunteh_mountains_2", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
+
+	{"world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"yavin4_world", "global_hard"}, 2048}
 }

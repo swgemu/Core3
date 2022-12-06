@@ -160,5 +160,5 @@ corellia_regions = {
 	{"southwestern_medium", -7870, -5200, {RECTANGLE, -2090, 0}, SPAWNAREA, {"corellia_world", "corellia_medium"}, 256},
 	{"swamp1", 816, 4560, {CIRCLE, 1497}, SPAWNAREA, {"corellia_world", "corellia_medium"}, 256},
 
-	{"world_spawner", -8192, -8192, {RECTANGLE, 8192, 8192}, WORLDSPAWNAREA + SPAWNAREA, {"corellia_world", "global"}, 2048}
+	{"world_spawner", 0, 0, {RECTANGLE, 0, 0}, WORLDSPAWNAREA + SPAWNAREA, {"corellia_world", "global"}, 2048}
 }

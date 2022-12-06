@@ -517,5 +517,5 @@ naboo_regions = {
 	{"theed_easy_newbie_2", -4940, 4030, {CIRCLE, 1750}, SPAWNAREA + NOWORLDSPAWNAREA, {"naboo_easy"}, 192},
 	{"theed_medium_newbie", -5212, 4205, {RING, 1750, 2800}, SPAWNAREA + NOWORLDSPAWNAREA, {"naboo_medium"}, 448},
 
-	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"global", "naboo_world"}, 2048},
+	{"world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"global", "naboo_world"}, 2048},
 }

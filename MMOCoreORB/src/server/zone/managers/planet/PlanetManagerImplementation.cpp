@@ -891,18 +891,13 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 
 		if (radius <= 0)
 			radius = 1.f;
-
-		if (radius <= 0) {
-			error("Invalid radius of " + String::valueOf(radius) + " must be > 0 for circular spawn region " + name);
-			return;
-		}
 	} else if (regionShape == ActiveArea::RECTANGLE) {
 		x2 = areaShapeObject.getFloatAt(2);
 		y2 = areaShapeObject.getFloatAt(3);
 		int rectWidth = x2 - x;
 		int rectHeight = y2 - y;
 
-		if ((rectWidth <= 0 || rectHeight <= 0)) {
+		if (!(type & ActiveArea::WORLDSPAWNAREA) && (rectWidth <= 0 || rectHeight <= 0)) {
 			error("Invalid corner coordinates for rectangular spawn region " + name + ", total height: " + String::valueOf(rectHeight) + ", total width: " + String::valueOf(rectWidth));
 			return;
 		}
@@ -924,7 +919,7 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 
 	areaShapeObject.pop();
 
-	if (radius == 0 && x2 == 0 && y2 == 0 && innerRadius == 0 && outerRadius == 0)
+	if (!(type & ActiveArea::WORLDSPAWNAREA) && radius == 0 && x2 == 0 && y2 == 0 && innerRadius == 0 && outerRadius == 0)
 		return;
 
 	ManagedReference<Region*> region = nullptr;
@@ -972,10 +967,9 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 
 		circularAreaShape->setAreaCenter(x, y);
 
-		if (radius > 0)
+		if (radius > 0) {
 			circularAreaShape->setRadius(radius);
-		else
-			circularAreaShape->setRadius(zone->getBoundingRadius());
+		}
 
 		region->setAreaShape(circularAreaShape);
 	} else if (regionShape == ActiveArea::RING) {
@@ -1002,7 +996,7 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 		ManagedReference<SpawnArea*> area = region.castTo<SpawnArea*>();
 
 		if (creatureMan != nullptr && area != nullptr) {
-			if ((type & ActiveArea::SPAWNAREA) || (type & ActiveArea::WORLDSPAWNAREA)) {
+			if (type & ActiveArea::SPAWNAREA) {
 				area->setMaxSpawnLimit(regionObject.getIntAt(7));
 				LuaObject spawnGroups = regionObject.getObjectAt(6);
 

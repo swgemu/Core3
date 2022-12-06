@@ -137,7 +137,6 @@ dathomir_regions = {
 	{"vass_meindras_6", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"wall", 7439, -3018, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"western_mountains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"dathomir_world", "global_hard"}, 2048},
 	{"sarlacc_spawner", -2075, 3135, {CIRCLE, 1250}, UNDEFINEDAREA, {"dathomir_sarlacc_mutant"}, 256},
 	{"tarpits_spawner", 645, -4890, {CIRCLE, 1250}, UNDEFINEDAREA, {"dathomir_sarlacc_mutant"}, 256},
 	{"worship_shrine", -6949, -3034, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
@@ -170,4 +169,6 @@ dathomir_regions = {
 	{ "fs_cs_psi", -410, 2506, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{ "fs_cs_omega", 1369, 1217, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{ "fs_cs_zed", 3076, 2174, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
+
+	{"world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"dathomir_world", "global_hard"}, 2048}
 }

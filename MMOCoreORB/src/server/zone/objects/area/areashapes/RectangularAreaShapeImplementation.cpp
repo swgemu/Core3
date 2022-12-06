@@ -12,6 +12,10 @@
 //#define DEBUG_POSITION
 
 bool RectangularAreaShapeImplementation::containsPoint(float x, float y) const {
+	// World Spawners are rectangles with no size
+	if ((blX == 0) && (urX == 0) && (blY == 0) && (urY == 0))
+		return true;
+
 	return (x >= blX) && (x <= urX) && (y >= blY) && (y <= urY);
 }
 
@@ -55,7 +59,7 @@ Vector3 RectangularAreaShapeImplementation::getRandomPosition(const Vector3& ori
 
 #ifdef DEBUG_POSITION
 		info(true) << " X Calc = " << xCalc << " Y Calc = " << yCalc << " Spawn Distance Delta = " << spawnDistanceDelta;
-		info(true) << "Checking Position: " << position.toString();
+		info(true) << "Checking Position: " << position.toString() << " Bottom Left X = " << blX << " Bottom Left Y = " << blY << " Upper right X = " << urX << " Upper rigth Y = " << urY;
 #endif // DEBUG_POSITION
 
 		found = containsPoint(position);
