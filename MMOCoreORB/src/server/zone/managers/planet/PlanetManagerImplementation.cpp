@@ -843,28 +843,17 @@ void PlanetManagerImplementation::loadRegions() {
 	lua = nullptr;
 
 	info(true) << "Loaded " + String::valueOf(regionMap.getTotalRegions()) + " regions.";
-
-	/* TODO: Fix??
-
-	for (int i = 0; i < size(); ++i) {
-		SpawnArea* area = get(i);
-
-		Locker locker(area);
-
-		for (int j = 0; j < noSpawnAreas.size(); ++j) {
-			SpawnArea* notHere = noSpawnAreas.get(j);
-
-			if (area->intersectsWith(notHere)) {
-				area->addNoSpawnArea(notHere);
-			}
-		}
-	}*/
 }
 
 void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 	String name = regionObject.getStringAt(1);
 	float x = regionObject.getFloatAt(2);
 	float y = regionObject.getFloatAt(3);
+
+#ifdef DEBUG_REGIONS
+	info(true) << "readRegion -- Name: " << name << " x = " << x << " y = " << y;
+#endif // DEBUG_REGIONS
+
 	int type = regionObject.getIntAt(5);
 
 	float radius = 0;
@@ -873,9 +862,7 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 	float innerRadius = 0;
 	float outerRadius = 0;
 
-#ifdef DEBUG_REGIONS
-	info(true) << "readRegion -- Name: " << name << " x = " << x << " y = " << y;
-#endif // DEBUG_REGIONS
+
 
 	LuaObject areaShapeObject = regionObject.getObjectAt(4);
 
@@ -930,6 +917,11 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 #ifdef DEBUG_REGIONS
 		info(true) << " ~~~ Creating spawn_area object ~~~ ";
 #endif // DEBUG_REGIONS
+	/*} else if (type & ActiveArea::CITY) {
+		region = dynamic_cast<Region*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/city_area.iff"), 0, "cityregions"));
+#ifdef DEBUG_REGIONS
+		info(true) << " --- Creating city_area object --- ";
+#endif // DEBUG_REGIONS*/
 	} else {
 		region = dynamic_cast<Region*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/region_area.iff"), 0, "regions"));
 #ifdef DEBUG_REGIONS
@@ -940,13 +932,10 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 	if (region == nullptr)
 		return;
 
-	StringId nameID(zone->getZoneName() + "_region_names", name);
-
-	// Lock Region
 	Locker lock(region);
 
-	region->setObjectName(nameID, false);
-	region->setAreaName(nameID.toString());
+	region->setObjectName(name, false);
+	region->setAreaName(name);
 
 	if (regionShape == ActiveArea::RECTANGLE) {
 		ManagedReference<RectangularAreaShape*> rectangularAreaShape = new RectangularAreaShape();
@@ -985,7 +974,6 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 	}
 
 	region->setRegionFlags(type);
-	region->initializePosition(x, 0, y);
 
 	if (spawnAreaRegion) {
 #ifdef DEBUG_REGIONS
@@ -1027,39 +1015,17 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 				}
 
 				// Add to Spawn Area Map
-				creatureMan->addSpawnAreaToMap(nameID.getStringID().hashCode(), area);
+				creatureMan->addSpawnAreaToMap(name.hashCode(), area);
 			}
 		}
 	}
-
-
-	zone->transferObject(region, -1, true);
-	//region->setZone(zone);
 
 	// Region is a City, add to cityRegionMap list
 	if (type & ActiveArea::CITY) {
 		ManagedReference<CityRegion*> cityRegion = region.castTo<CityRegion*>();
 
-		if (cityRegion == nullptr) {
-			cityRegion = new CityRegion();
-
-			Locker cityLocker(cityRegion);
-
-			cityRegion->deploy();
-			cityRegion->setRegionName("@" + nameID.getFullPath());
-
-			cityRegion->setZone(zone);
-
-			addCityRegion(cityRegion);
-		}
-
-		Locker clocker(cityRegion, region);
-
-		cityRegion->addRegion(region);
-		region->setCityRegion(cityRegion);
-
 #ifdef DEBUG_REGIONS
-		info(true) << "Adding City: " << nameID.getFullPath();
+		info(true) << "Adding City: " << name;
 #endif // DEBUG_REGIONS
 
 		Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
@@ -1097,7 +1063,8 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 		regionMap.addRegion(region);
 	}
 
-	region->updateToDatabase();
+	region->initializePosition(x, 0, y);
+	zone->transferObject(region, -1, true);
 
 #ifdef DEBUG_REGIONS
 	info(true) << "readRegion -- Name: " << name << "   COMPLETE";

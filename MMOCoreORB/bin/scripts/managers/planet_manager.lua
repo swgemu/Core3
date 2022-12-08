@@ -57,8 +57,6 @@ corellia = {
 	weatherEnabled = 1,
 	gcwEnabled = 1,
 
-	outpostRegionNames = { },
-
 	planetTravelPoints = {
 		{name = "Coronet Shuttle B", x = -329.76605, z = 28, y = -4641.23, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
 		{name = "Coronet Shuttle A", x = -25.671804, z = 28, y = -4409.7847, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
@@ -104,12 +102,6 @@ dantooine = {
 	weatherEnabled = 1,
 	gcwEnabled = 1,
 
-	outpostRegionNames = {
-		{name = "@dantooine_region_names:dantooine_mining_outpost", x = -640, y = 2486},
-		{name = "@dantooine_region_names:dantooine_pirate_outpost", x = 1588, y = -6399},
-		{name = "@dantooine_region_names:dantooine_imperial_outpost", x = -4224, y = -2400},
-	},
-
 	planetTravelPoints = {
 		{name = "Dantooine Mining Outpost", x = -635.96887, z = 3, y = 2507.0115, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
 		{name = "Dantooine Imperial Outpost", x = -4208.6602, z = 3, y = -2350.24, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
@@ -143,8 +135,6 @@ dantooine = {
 dathomir = {
 	weatherEnabled = 1,
 	gcwEnabled = 1,
-
-	outpostRegionNames = { },
 
 	planetTravelPoints = {
 		{name = "Trade Outpost", x = 618.89258, z = 6.039608, y = 3092.0142, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
@@ -205,11 +195,6 @@ endor = {
 	weatherEnabled = 1,
 	gcwEnabled = 1,
 
-	outpostRegionNames = {
-		{name = "@endor_region_names:endor_smuggler_outpost", x = -905, y = 1584},
-		{name = "@endor_region_names:endor_neutral_outpost", x = 3221, y = -3471},
-	},
-
 	planetTravelPoints = {
 		{name = "Smuggler Outpost", x = -950.59241, z = 73, y = 1553.4125, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
 		{name = "Research Outpost", x = 3201.6599, z = 24, y = -3499.76, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1}
@@ -247,10 +232,6 @@ lok = {
 	weatherEnabled = 1,
 	gcwEnabled = 1,
 
-	outpostRegionNames = {
-		{name = "@lok_region_names:lok_imperial_outpost", x = -1920, y = -3084},
-	},
-
 	planetTravelPoints = {
 		{name = "Nym's Stronghold", x = 478.92676, z = 9, y = 5511.9565, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1}
 	},
@@ -284,8 +265,6 @@ lok = {
 naboo = {
 	weatherEnabled = 1,
 	gcwEnabled = 1,
-
-	outpostRegionNames = { },
 
 	planetTravelPoints = {
 		{name = "Keren Starport", x = 1371.5938, z = 13, y = 2747.9043, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
@@ -344,10 +323,6 @@ naboo = {
 rori = {
 	weatherEnabled = 1,
 	gcwEnabled = 1,
-
-	outpostRegionNames = {
-		{name = "@rori_region_names:sdungeon_rebel_outpost", x = 3677, y = -6447},
-	},
 
 	planetTravelPoints = {
 		{name = "Restuss Starport", x = 5340, z = 80, y = 5734, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
@@ -423,10 +398,6 @@ rori = {
 talus = {
 	weatherEnabled = 1,
 	gcwEnabled = 1,
-
-	outpostRegionNames = {
-		{name = "@talus_region_names:talus_imperial_outpost", x = -2178, y = 2300},
-	},
 
 	planetTravelPoints = {
 		{name = "Dearic Starport", x = 263.58401, z = 6, y = -2952.1284, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
@@ -508,8 +479,6 @@ tatooine = {
 	weatherEnabled = 1,
 	gcwEnabled = 1,
 
-	outpostRegionNames = { },
-
 	planetTravelPoints = {
 		{name = "Mos Eisley Shuttleport", x = 3416.6914, z = 5, y = -4648.1411, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
 		{name = "Mos Eisley Starport", x = 3599.894, z = 5, y = -4780.4487, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
@@ -573,11 +542,6 @@ tatooine = {
 yavin4 = {
 	weatherEnabled = 1,
 	gcwEnabled = 1,
-
-	outpostRegionNames = {
-		{name = "@yavin4_region_names:yavin4_mining_outpost", x = -312, y = 4865},
-		{name = "@yavin4_region_names:yavin4_labor_outpost", x = -6925, y = -5707},
-	},
 
 	planetTravelPoints = {
 		{name = "Yavin IV Labor Outpost", x = -6921.6733, z = 73, y = -5726.5161, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
