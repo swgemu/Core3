@@ -1052,7 +1052,7 @@ void BuildingObjectImplementation::updateSignName(bool notifyClient)  {
 }
 
 bool BuildingObjectImplementation::isInPlayerCity() {
-	ManagedReference<CityRegion*> city = this->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = this->getCityRegion().get();
 
 	if (city != nullptr) {
 		return (!city->isClientRegion());

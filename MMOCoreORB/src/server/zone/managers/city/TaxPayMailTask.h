@@ -9,7 +9,7 @@
 #define TAXPAYMAILTASK_H_
 
 #include "server/chat/ChatManager.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/credit/CreditManager.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 
@@ -17,11 +17,11 @@ class TaxPayMailTask : public Task {
 	Vector<uint64> citizens;
 	String mayorName;
 	ManagedReference<ChatManager*> chatManager;
-	ManagedReference<CityRegion*> city;
+	ManagedReference<NewCityRegion*> city;
 
 	int incomeTax;
 public:
-	TaxPayMailTask(int tax, const String& mayor, ManagedReference<ChatManager*> chat, ManagedReference<CityRegion*> cityRegion) {
+	TaxPayMailTask(int tax, const String& mayor, ManagedReference<ChatManager*> chat, ManagedReference<NewCityRegion*> cityRegion) {
 		mayorName = mayor;
 		chatManager = chat;
 		incomeTax = tax;

@@ -17,7 +17,7 @@ namespace creature {
 	class CreatureObject;
 }
 namespace region {
-	class CityRegion;
+	class NewCityRegion;
 }
 }
 }
@@ -27,10 +27,10 @@ using namespace server::zone::objects::creature;
 using namespace server::zone::objects::region;
 
 class CityManageMilitiaSuiCallback : public SuiCallback {
-	ManagedWeakReference<CityRegion*> cityRegion;
+	ManagedWeakReference<NewCityRegion*> cityRegion;
 
 public:
-	CityManageMilitiaSuiCallback(ZoneServer* server, CityRegion* city)
+	CityManageMilitiaSuiCallback(ZoneServer* server, NewCityRegion* city)
 		: SuiCallback(server) {
 
 		cityRegion = city;

@@ -14,7 +14,7 @@
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/chat/StringIdChatParameterVector.h"
 #include "server/chat/WaypointChatParameterVector.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/region/CitizenList.h"
 #include "server/zone/packets/chat/ChatOnSendPersistentMessage.h"
 
@@ -128,7 +128,7 @@ public:
 			}
 
 			// Player must be the mayor of the city where he resides
-			ManagedReference<CityRegion*> declaredCity = declaredResidence->getCityRegion().get();
+			ManagedReference<NewCityRegion*> declaredCity = declaredResidence->getCityRegion().get();
 			if (declaredCity != nullptr && declaredCity->isMayor(player->getObjectID())) {
 
 				Locker cityLocker(declaredCity);

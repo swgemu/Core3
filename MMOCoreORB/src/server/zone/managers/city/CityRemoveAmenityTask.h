@@ -2,15 +2,15 @@
 #ifndef CITYREMOVEAMENITYTASK_H_
 #define CITYREMOVEAMENITYTASK_H_
 
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
 class CityRemoveAmenityTask : public Task {
 	ManagedReference<SceneObject*> amenity;
-	ManagedReference<CityRegion*> city;
+	ManagedReference<NewCityRegion*> city;
 
 public:
-	CityRemoveAmenityTask(SceneObject* sceno, CityRegion* cityRegion) {
+	CityRemoveAmenityTask(SceneObject* sceno, NewCityRegion* cityRegion) {
 		amenity = sceno;
 		city = cityRegion;
 	}

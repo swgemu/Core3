@@ -8,7 +8,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace region {
-	class CityRegion;
+	class NewCityRegion;
 
 	class LuaCityRegion {
 	public:
@@ -23,12 +23,12 @@ namespace region {
 		int isClientRegion(lua_State* L);
 
 	protected:
-		CityRegion* _getRealCityRegion() {
+		NewCityRegion* _getRealCityRegion() {
 			return realObject.get();
 		}
 
 	private:
-		Reference<CityRegion*> realObject;
+		Reference<NewCityRegion*> realObject;
 	};
 
 }

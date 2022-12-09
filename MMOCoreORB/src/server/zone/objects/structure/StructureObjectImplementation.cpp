@@ -192,6 +192,36 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 
 		scheduleMaintenanceExpirationEvent();
 	} else if(getOwnerObjectID() != 0 && getCityRegion().get() == nullptr && !isTurret() && !isMinefield() && !isScanner()) {
+		/*SortedVector<ManagedReference<ActiveArea*> >* activeAreas = getActiveAreas();
+		ManagedReference<ActiveArea*> area = nullptr;
+
+		// Missing city region, check current areas
+		if (activeAreas != nullptr) {
+			info(true) << " Null city region checkking current areas -- Total = " << activeAreas->size();
+
+			for (int i = 0; i < activeAreas->size(); i++) {
+				ActiveArea* area = activeAreas->get(i);
+
+				if (area == nullptr)
+					continue;
+
+				info(true) << " Checking Area #" << i << " Named: " << area->getAreaName() << " Object Name: " << area->getObjectName()->getFullPath();
+
+				if (area->getPositionX() == getPositionX() && area->getPositionY() == getPositionY()) {
+					Locker lock(area);
+					area->addAreaFlag(ActiveArea::CITY);
+					area->setAreaName(area->getObjectName()->getFullPath());
+
+
+					info(true) << " setting city region";
+					setCityRegion(cast<NewCityRegion*>(area));
+					break;
+				}
+			}
+
+		}*/
+
+
 		auto ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
 
 		if (ssot == nullptr)
@@ -346,7 +376,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 
 		float cityTax = 0.0f;
 
-		ManagedReference<CityRegion*> city = _this.getReferenceUnsafeStaticCast()->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = _this.getReferenceUnsafeStaticCast()->getCityRegion().get();
 
 		if(city != nullptr) {
 			cityTax = city->getPropertyTax();
@@ -516,7 +546,7 @@ void StructureObjectImplementation::updateStructureStatus() {
 		lastMaintenanceTime.updateToCurrentTime();
 	}
 
-	ManagedReference<CityRegion*> city = getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = getCityRegion().get();
 
 	if(isBuildingObject() && city != nullptr && !city->isClientRegion() && city->getPropertyTax() > 0){
 		cityTaxDue = city->getPropertyTax() / 100.0f * maintenanceDue;

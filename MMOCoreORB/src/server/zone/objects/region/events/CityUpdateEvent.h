@@ -32,10 +32,10 @@ namespace server {
 
 		class CityUpdateEvent : public Task {
 			ManagedReference<ZoneServer*> zoneServer;
-			ManagedWeakReference<CityRegion*> cityRegion;
+			ManagedWeakReference<NewCityRegion*> cityRegion;
 
 		public:
-			CityUpdateEvent(CityRegion* city, ZoneServer* zserv);
+			CityUpdateEvent(NewCityRegion* city, ZoneServer* zserv);
 
 			void run();
 		};

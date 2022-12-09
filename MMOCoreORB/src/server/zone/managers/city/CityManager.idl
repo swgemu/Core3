@@ -14,6 +14,7 @@ import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.waypoint.WaypointObject;
 import server.zone.objects.structure.StructureObject;
+include server.zone.objects.region.NewCityRegion;
 include server.zone.objects.region.CityRegion;
 include server.chat.StringIdChatParameter;
 include server.zone.managers.city.CitiesAllowed;
@@ -55,7 +56,7 @@ class CityManager extends ManagedService implements Logger {
 	public transient static float maintenanceDiscount;
 
 	@dereferenced
-	private transient VectorMap<string, CityRegion> cities;
+	private transient VectorMap<string, NewCityRegion> cities;
 
 	//City Ranks
 	public static final byte CLIENT = 0;
@@ -85,104 +86,107 @@ class CityManager extends ManagedService implements Logger {
 
 	public native void stop();
 
+	@preLocked
+	public native void convertCity(CityRegion city);
+
 	public native boolean validateCityName(final string name);
 
 	public native boolean isCityInRange(Zone zone, float x, float y);
 
 	@preLocked
 	@arg1preLocked
-	public native CityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
+	public native NewCityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
 
-	public native void assessCitizens(CityRegion city);
+	public native void assessCitizens(NewCityRegion city);
 
-	public native void processCityUpdate(CityRegion city);
+	public native void processCityUpdate(NewCityRegion city);
 
 	/**
 	 * Processes income tax from all citizens
 	 * @pre city locked
 	 * @post city locked
 	 */
-	public native void processIncomeTax(CityRegion city);
+	public native void processIncomeTax(NewCityRegion city);
  
 	/**
 	 * Handles the voting of the city, tallys votes, see's who won. Resets the voting process.
 	 * @pre city locked
 	 * @post city locked
 	 */
-	public native void updateCityVoting(CityRegion city, boolean override = false);
+	public native void updateCityVoting(NewCityRegion city, boolean override = false);
 
-	public native void deductCityMaintenance(CityRegion city);
+	public native void deductCityMaintenance(NewCityRegion city);
 
-	public native int collectNonStructureMaintenance(SceneObject object, CityRegion city, int maintenanceDue);
+	public native int collectNonStructureMaintenance(SceneObject object, NewCityRegion city, int maintenanceDue);
 
-	public native int collectCivicStructureMaintenance(StructureObject structure, CityRegion city, int maintenanceDue);
+	public native int collectCivicStructureMaintenance(StructureObject structure, NewCityRegion city, int maintenanceDue);
 
-	public native void sendMaintenanceEmail(CityRegion city, int maintenancePaid);
+	public native void sendMaintenanceEmail(NewCityRegion city, int maintenancePaid);
 
-	public native void sendMaintenanceDecayEmail(CityRegion city, StructureObject structure, int maintenanceDue);
+	public native void sendMaintenanceDecayEmail(NewCityRegion city, StructureObject structure, int maintenanceDue);
 
-	public native void sendMaintenanceDestroyEmail(CityRegion city, SceneObject object);
+	public native void sendMaintenanceDestroyEmail(NewCityRegion city, SceneObject object);
 
-	public native void sendMaintenanceRepairEmail(CityRegion city, StructureObject structure);
+	public native void sendMaintenanceRepairEmail(NewCityRegion city, StructureObject structure);
 
-	public native void contractCity(CityRegion city);
+	public native void contractCity(NewCityRegion city);
 
-	public native void expandCity(CityRegion city);
+	public native void expandCity(NewCityRegion city);
 
-	public native void destroyCity(CityRegion city);
+	public native void destroyCity(NewCityRegion city);
 
-	public native void sendStatusReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void sendStatusReport(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
-	public native void promptCitySpecialization(CityRegion city, CreatureObject mayor, SceneObject terminal = null);
+	public native void promptCitySpecialization(NewCityRegion city, CreatureObject mayor, SceneObject terminal = null);
 
-	public native void changeCitySpecialization(CityRegion city, CreatureObject mayor, final string spec);
+	public native void changeCitySpecialization(NewCityRegion city, CreatureObject mayor, final string spec);
 
-	public native void promptWithdrawCityTreasury(CityRegion city, CreatureObject mayor, SceneObject terminal = null);
+	public native void promptWithdrawCityTreasury(NewCityRegion city, CreatureObject mayor, SceneObject terminal = null);
 
-	public native void promptDepositCityTreasury(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void promptDepositCityTreasury(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
-	public native void withdrawFromCityTreasury(CityRegion city, CreatureObject mayor, int value, final string reason, SceneObject terminal = null);
+	public native void withdrawFromCityTreasury(NewCityRegion city, CreatureObject mayor, int value, final string reason, SceneObject terminal = null);
 
-	public native void depositToCityTreasury(CityRegion city, CreatureObject creature, int value);
+	public native void depositToCityTreasury(NewCityRegion city, CreatureObject creature, int value);
 
-	public native void sendTreasuryReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void sendTreasuryReport(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
-	public native void sendCitizenshipReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void sendCitizenshipReport(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
-	public native void registerCitizen(CityRegion city, CreatureObject creature);
+	public native void registerCitizen(NewCityRegion city, CreatureObject creature);
 
-	public native void unregisterCitizen(CityRegion city, CreatureObject creature);
+	public native void unregisterCitizen(NewCityRegion city, CreatureObject creature);
 
-	public native void sendManageMilitia(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void sendManageMilitia(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
-	public native void promptAddMilitiaMember(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void promptAddMilitiaMember(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
-	public native void addMilitiaMember(CityRegion city, CreatureObject mayor, final string playerName);
+	public native void addMilitiaMember(NewCityRegion city, CreatureObject mayor, final string playerName);
 
-	public native void removeMilitiaMember(CityRegion city, CreatureObject mayor, unsigned long militiaid);
+	public native void removeMilitiaMember(NewCityRegion city, CreatureObject mayor, unsigned long militiaid);
 
-	public native void sendCityAdvancement(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void sendCityAdvancement(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
-	public native string getNextUpdateTimeString(CityRegion city);
+	public native string getNextUpdateTimeString(NewCityRegion city);
 
-	public native void promptRegisterCity(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void promptRegisterCity(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
-	public native void promptUnregisterCity(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void promptUnregisterCity(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
-	public native void registerCity(CityRegion city, CreatureObject mayor);
+	public native void registerCity(NewCityRegion city, CreatureObject mayor);
 
-	public native void unregisterCity(CityRegion city, CreatureObject mayor);
+	public native void unregisterCity(NewCityRegion city, CreatureObject mayor);
 
-	public native void promptAdjustTaxes(CityRegion city, CreatureObject mayor, SceneObject terminal = null);
+	public native void promptAdjustTaxes(NewCityRegion city, CreatureObject mayor, SceneObject terminal = null);
 
-	public native void promptSetTax(CityRegion city, CreatureObject mayor, int selectedTax, SceneObject terminal = null);
+	public native void promptSetTax(NewCityRegion city, CreatureObject mayor, int selectedTax, SceneObject terminal = null);
 
-	public native void setTax(CityRegion city, CreatureObject mayor, int selectedTax, int value);
+	public native void setTax(NewCityRegion city, CreatureObject mayor, int selectedTax, int value);
 
-	public native void sendMaintenanceReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void sendMaintenanceReport(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
 	@local
-	public native void sendMail(CityRegion city, final string sender, final unicode subject, @dereferenced StringIdChatParameter params, WaypointObject waypoint);
+	public native void sendMail(NewCityRegion city, final string sender, final unicode subject, @dereferenced StringIdChatParameter params, WaypointObject waypoint);
 
 	public synchronized boolean containsCityName(final string name) {
 		return cities.contains(name);
@@ -194,9 +198,9 @@ class CityManager extends ManagedService implements Logger {
 
 	public native boolean validateCityInRange(CreatureObject creature, Zone zone, float x, float y);
 
-	public native void promptToggleZoningEnabled(CityRegion city, CreatureObject mayor);
+	public native void promptToggleZoningEnabled(NewCityRegion city, CreatureObject mayor);
 
-	public void toggleZoningEnabled(CityRegion city, CreatureObject mayor) {
+	public void toggleZoningEnabled(NewCityRegion city, CreatureObject mayor) {
 		boolean val = city.isZoningEnabled();
 		city.setZoningEnabled(!val);
 
@@ -211,7 +215,7 @@ class CityManager extends ManagedService implements Logger {
 		return cities.size();
 	}
 
-	public boolean renameCity(CityRegion city, final string newName) {
+	public boolean renameCity(NewCityRegion city, final string newName) {
 		if(cities.contains(city.getCityRegionName())){
 			cities.drop(city.getCityRegionName());
 			cities.put(newName, city);
@@ -226,28 +230,28 @@ class CityManager extends ManagedService implements Logger {
 	 * @pre city locked, creature locked, sceneObject locked
 	 * @post city locked, creature locked, sceneObject locked
 	 */
-	public native void sendMayoralStandings(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void sendMayoralStandings(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
 	/**
 	 * @pre city locked, creature locked, sceneObject locked
 	 * @post city locked, creature locked, sceneObject locked
 	 */
-	public native void promptMayoralVote(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void promptMayoralVote(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
 	/**
 	 * @pre city locked, creature locked
 	 * @post city locked, creature locked
 	 */
-	public native void registerForMayoralRace(CityRegion city, CreatureObject creature);
-	public native void unregisterFromMayoralRace(CityRegion city, CreatureObject creature, boolean force);
+	public native void registerForMayoralRace(NewCityRegion city, CreatureObject creature);
+	public native void unregisterFromMayoralRace(NewCityRegion city, CreatureObject creature, boolean force);
 
-	public native void castMayoralVote(CityRegion city, CreatureObject creature, unsigned long oid);
+	public native void castMayoralVote(NewCityRegion city, CreatureObject creature, unsigned long oid);
 
-	public native void sendStructureReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	public native void sendStructureReport(NewCityRegion city, CreatureObject creature, SceneObject terminal = null);
 
-	public native boolean canSupportMoreDecorations(CityRegion city);
-	public native boolean canSupportMoreTrainers(CityRegion city);
-	public native boolean canSupportMoreMissionTerminals(CityRegion city);
+	public native boolean canSupportMoreDecorations(NewCityRegion city);
+	public native boolean canSupportMoreTrainers(NewCityRegion city);
+	public native boolean canSupportMoreMissionTerminals(NewCityRegion city);
 
 	@local
 	public native final CitySpecialization getCitySpecialization(final string cityspec);
@@ -255,13 +259,13 @@ class CityManager extends ManagedService implements Logger {
 	@local
 	public native final CityTax getCityTax(int idx);
 
-	public native void sendChangeCityName(CityRegion city, CreatureObject mayor);
+	public native void sendChangeCityName(NewCityRegion city, CreatureObject mayor);
 
-	public native void sendAddStructureMails(CityRegion city, StructureObject structure);
+	public native void sendAddStructureMails(NewCityRegion city, StructureObject structure);
 
-	public native void promptForceRank(CityRegion city, CreatureObject player, boolean rankUp);
+	public native void promptForceRank(NewCityRegion city, CreatureObject player, boolean rankUp);
 
-	public native void promptForceUpdate(CityRegion city, CreatureObject player);
+	public native void promptForceUpdate(NewCityRegion city, CreatureObject player);
 
-	public native void alignAmenity(CityRegion city, CreatureObject player, SceneObject amenity, int direction);
+	public native void alignAmenity(NewCityRegion city, CreatureObject player, SceneObject amenity, int direction);
 }
