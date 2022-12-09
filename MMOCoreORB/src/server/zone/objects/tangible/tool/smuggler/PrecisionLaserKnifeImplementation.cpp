@@ -9,7 +9,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/Zone.h"
@@ -46,7 +46,7 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 		if (terminal == nullptr || terminal->isBountyTerminal())
 			return 0;
 
-		ManagedReference<CityRegion*> city = player->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = player->getCityRegion().get();
 		if (city != nullptr && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
 			player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
 			return 0;

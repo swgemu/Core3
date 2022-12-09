@@ -14,7 +14,7 @@
 #include "server/zone/objects/tangible/eventperk/ShuttleBeacon.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/EnclaveCouncilRankSuiCallback.h"

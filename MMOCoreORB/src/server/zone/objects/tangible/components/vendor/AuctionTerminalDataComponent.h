@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/managers/auction/AuctionManager.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/Zone.h"
 
 class AuctionTerminalDataComponent : public DataObjectComponent {
@@ -56,7 +56,7 @@ public:
 		uid = strongParent->getZone()->getZoneName() + ".";
 
 		String region = "@planet_n:" + strongParent->getZone()->getZoneName();
-		ManagedReference<CityRegion*> cityRegion = strongParent->getCityRegion().get();
+		ManagedReference<NewCityRegion*> cityRegion = strongParent->getCityRegion().get();
 		if(cityRegion != nullptr)
 			region = cityRegion->getCityRegionName();
 

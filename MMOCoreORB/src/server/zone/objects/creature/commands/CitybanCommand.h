@@ -33,7 +33,7 @@ public:
 
 		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
 
-		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = creature->getCityRegion().get();
 
 		if (city == nullptr || city != targetObject->getCityRegion().get()) {
 			creature->sendSystemMessage("@city/city:not_in_city"); //You must be in a city to use this command.

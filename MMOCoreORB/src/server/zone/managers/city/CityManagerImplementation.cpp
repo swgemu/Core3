@@ -16,6 +16,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/player/sessions/CitySpecializationSession.h"
 #include "server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.h"
@@ -151,7 +152,8 @@ void CityManagerImplementation::loadCityRegions() {
 
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 
-	ObjectDatabase* cityRegionsDB = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
+	// New City Loading
+	ObjectDatabase* cityRegionsDB = ObjectDatabaseManager::instance()->loadObjectDatabase("newcityregions", true);
 
 	if (cityRegionsDB == nullptr) {
 		error("Could not load the city regions database.");
@@ -168,13 +170,15 @@ void CityManagerImplementation::loadCityRegions() {
 		uint64 objectID;
 
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			Reference<CityRegion*> cityRegion = Core::getObjectBroker()->lookUp(objectID).castTo<CityRegion*>();
+			info(true) << " Trying to load: " << objectID;
+
+			Reference<NewCityRegion*> cityRegion = Core::getObjectBroker()->lookUp(objectID).castTo<NewCityRegion*>();
 
 			if (cityRegion != nullptr && cityRegion->getZone() != nullptr) {
 				++i;
 				cities.put(cityRegion->getCityRegionName(), cityRegion);
 			} else {
-				error("Failed to load city region with objectid: " + String::valueOf(objectID));
+				error("Failed to load new city region with objectid: " + String::valueOf(objectID));
 			}
 
 			objectData->clear();
@@ -186,6 +190,51 @@ void CityManagerImplementation::loadCityRegions() {
 		return;
 	}
 
+	// Old City Conversion
+	ObjectDatabase* oldCityRegionsDB = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
+
+	if (oldCityRegionsDB == nullptr) {
+		error("Could not load the OLD city regions database.");
+		return;
+	}
+
+	int j = 0;
+
+	try {
+		ObjectDatabaseIterator iterator(oldCityRegionsDB);
+
+		ObjectInputStream* objectData = new ObjectInputStream(2000);
+
+		uint64 objectID;
+
+		while (iterator.getNextKeyAndValue(objectID, objectData)) {
+			Reference<CityRegion*> cityRegion = Core::getObjectBroker()->lookUp(objectID).castTo<CityRegion*>();
+
+			// Convert Old Cities to new CityRegion object
+
+			if (cityRegion != nullptr && !cityRegion->isConverted()) {
+				++j;
+
+				info(true) << "Coverting Old City Region = " << cityRegion->getCityRegionName();
+
+				Locker lock(cityRegion);
+				convertCity(cityRegion);
+
+			} else {
+				info(true) << "Skipping City Region: " << objectID << " due to being already converted to new city region.";
+			}
+
+			objectData->clear();
+		}
+
+		delete objectData;
+	} catch (DatabaseException& e) {
+		error("Failed loading OLD city regions: " + e.getMessage());
+		return;
+	}
+
+	// Loading Complete
+
 	info("Loaded " + String::valueOf(cities.size()) + " player city regions.", true);
 }
 
@@ -193,22 +242,174 @@ void CityManagerImplementation::stop() {
 	cities.removeAll();
 }
 
-CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const String& cityName, float x, float y) {
-	ManagedReference<CityRegion*> city = new CityRegion(true);
-	ObjectManager::instance()->persistObject(city, 1, "cityregions");
+void CityManagerImplementation::convertCity(CityRegion* city) {
+	if (city == nullptr || zoneServer == nullptr)
+		return;
 
-	Locker clocker(city, mayor);
+	static const String temp = "object/city_area.iff";
+	ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(STRING_HASHCODE("object/city_area.iff"), 1, "newcityregions");
 
-	city->setCustomRegionName(cityName);
-	city->setZone(mayor->getZone());
-	city->setCityRank(OUTPOST);
-	city->setMayorID(mayor->getObjectID());
-	Region* region = city->createNewRegion(x, y, radiusPerRank.get(OUTPOST - 1), true);
+	if (obj == nullptr) {
+		return;
+	}
 
-	city->resetVotingPeriod();
-	city->setAssessmentPending(true);
-	city->scheduleCitizenAssessment(newCityGracePeriod * 60);
-	city->rescheduleUpdateEvent(cityUpdateInterval * 60); //Minutes
+	ManagedReference<NewCityRegion*> cityRegion = cast<NewCityRegion*>(obj.get());
+
+	if (cityRegion == nullptr)
+		return;
+
+	Locker lock(cityRegion);
+
+	uint64 mayorID = city->getMayorID();
+
+	ManagedReference<CreatureObject*> mayor = zoneServer->getObject(mayorID).castTo<CreatureObject*>();
+	Zone* zone = city->getZone();
+
+	if (mayor == nullptr || zone == nullptr)
+		return;
+
+	Locker clocker(mayor, cityRegion);
+
+	// All pertintent information from previous City Region must be set on new CityRegion
+	String cityName = city->getCityRegionName();
+
+	StringBuffer playerCityName;
+	playerCityName << cityName << "_player_city";
+
+	cityRegion->setObjectName(playerCityName.toString(), true);
+	cityRegion->setAreaName(playerCityName.toString());
+	cityRegion->setCustomRegionName(cityName);
+
+	cityRegion->setRadius(city->getRadius());
+	cityRegion->addAreaFlag(ActiveArea::CITY);
+	cityRegion->addAreaFlag(ActiveArea::NOSPAWNAREA);
+	cityRegion->setMayorID(mayorID);
+
+	cityRegion->setZone(zone);
+	cityRegion->setCityRank(city->getCityRank());
+	cityRegion->setMayorID(mayor->getObjectID());
+
+	cityRegion->addToCityTreasury(city->getCityTreasury());
+	cityRegion->setCitySpecialization(city->getCitySpecialization());
+
+	cityRegion->setCityHall(city->getCityHall());
+	cityRegion->setRegistered(city->isRegistered());
+
+	if (city->hasShuttleInstallation()) {
+		cityRegion->setShuttleID(city->getShuttleID());
+	}
+
+	// TODO: Mission Terminals & Decorations
+
+
+
+	cityRegion->rescheduleUpdateEvent(city->getTimeToUpdate()); //Minutes
+	cityRegion->scheduleCitizenAssessment(round(city->getNextAssessmentTime()->miliDifference() / -1000.f));
+
+	// Initialize and transfer the City Region into the zone
+	cityRegion->initializePosition(city->getPositionX(), 0, city->getPositionY());
+	zone->transferObject(cityRegion, -1, false);
+
+	// Add citizens, Militia and banned players
+	CitizenList* citizens = city->getCitizenList();
+
+	if (citizens != nullptr) {
+		for (int i = 0; i < citizens->size(); i++) {
+			uint64 citizenID = citizens->get(i);
+
+			if (citizenID > 0)
+				cityRegion->addCitizen(citizenID);
+		}
+	}
+
+	CitizenList* militiaList = city->getMilitiaMembers();
+
+	if (militiaList != nullptr) {
+		for (int i = 0; i < militiaList->size(); i++) {
+			uint64 milititaID = militiaList->get(i);
+
+			if (milititaID > 0)
+				cityRegion->addMilitiaMember(milititaID);
+		}
+	}
+
+	CitizenList* bannedList = city->getBannedPlayers();
+
+	if (bannedList != nullptr) {
+		for (int i = 0; i < bannedList->size(); i++) {
+			uint64 bannedID = bannedList->get(i);
+
+			if (bannedID > 0)
+				cityRegion->addBannedPlayer(bannedID);
+		}
+	}
+
+	//cityRegion->resetVotingPeriod();
+	//cityRegion->setAssessmentPending(true);
+	//
+	//
+
+	cityRegion->updateToDatabase();
+
+	cities.put(cityName, cityRegion);
+
+	city->destroyActiveAreas();
+	city->destroyNavMesh();
+	city->setConverted(true);
+	city->updateToDatabase();
+
+	info(true) << "City: " << cityName << " has been converted to the new City Region.";
+	info(true) << "Zone: " << zone->getZoneName() << " Location: " << cityRegion->getPositionX() << ", " << cityRegion->getPositionY();
+	info(true) << "Radius: " << cityRegion->getRadius() << " Rank: " << cityRegion->getCityRank();
+}
+
+NewCityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const String& cityName, float x, float y) {
+	if (mayor == nullptr)
+		return nullptr;
+
+	Zone* zone = mayor->getZone();
+
+	if (zone == nullptr)
+		return nullptr;
+
+	static const String temp = "object/city_area.iff";
+	ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(STRING_HASHCODE("object/city_area.iff"), 1, "cityregions");
+
+	if (obj == nullptr) {
+		return nullptr;
+	}
+
+	ManagedReference<NewCityRegion*> cityRegion = cast<NewCityRegion*>(obj.get());
+
+	if (cityRegion == nullptr)
+		return nullptr;
+
+	Locker lock(cityRegion);
+	Locker clocker(mayor, cityRegion);
+
+	cityRegion->setRadius(radiusPerRank.get(OUTPOST - 1));
+	cityRegion->addAreaFlag(ActiveArea::CITY);
+
+	StringBuffer playerCityName;
+	playerCityName << cityName << "_player_city";
+
+	cityRegion->setObjectName(playerCityName.toString(), true);
+	cityRegion->setAreaName(playerCityName.toString());
+
+	cityRegion->setCustomRegionName(cityName);
+	cityRegion->setZone(mayor->getZone());
+	cityRegion->setCityRank(OUTPOST);
+	cityRegion->setMayorID(mayor->getObjectID());
+
+	cityRegion->initializePosition(x, 0, y);
+	zone->transferObject(cityRegion, -1, false);
+
+	cityRegion->resetVotingPeriod();
+	cityRegion->setAssessmentPending(true);
+	cityRegion->scheduleCitizenAssessment(newCityGracePeriod * 60);
+	cityRegion->rescheduleUpdateEvent(cityUpdateInterval * 60); //Minutes
+
+	cityRegion->updateToDatabase();
 
 	StringIdChatParameter params("city/city", "new_city_body");
 	params.setTO(mayor->getObjectID());
@@ -217,9 +418,9 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 	ChatManager* chatManager = zoneServer->getChatManager();
 	chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), nullptr);
 
-	cities.put(cityName, city);
+	cities.put(cityName, cityRegion);
 
-	return city;
+	return cityRegion;
 }
 
 bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte rank) {
@@ -230,7 +431,7 @@ bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte 
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < cities.size(); ++i) {
-		CityRegion* city = cities.get(i);
+		NewCityRegion* city = cities.get(i);
 
 		Zone* cityZone = city->getZone();
 
@@ -278,7 +479,7 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 	report << "oid, mayorid, cityhallid, regions, citizens, civicstructures, totalstructures, treasury, Loc, Next Update, next citizen Assessment (if pending)" << endl;
 
 	for (int i = 0; i < cities.size(); ++i) {
-		CityRegion* city = cities.get(i);
+		NewCityRegion* city = cities.get(i);
 
 		Zone* cityZone = city->getZone();
 
@@ -311,8 +512,7 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 			report << ", nullptr";
 		}
 
-		report << ", " << String::valueOf(city->getRegionsCount())
-			<< ", " << String::valueOf(city->getCitizenCount())
+		report << ", " << String::valueOf(city->getCitizenCount())
 			<< ", " << String::valueOf(city->getStructuresCount())
 			<< ", " << String::valueOf(city->getAllStructuresCount())
 			<< ", " << String::valueOf((int)city->getCityTreasury())
@@ -353,7 +553,7 @@ bool CityManagerImplementation::validateCityInRange(CreatureObject* creature, Zo
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < cities.size(); ++i) {
-		CityRegion* city = cities.get(i);
+		NewCityRegion* city = cities.get(i);
 		Zone* cityZone = city->getZone();
 
 		if (cityZone == zone) {
@@ -386,7 +586,7 @@ bool CityManagerImplementation::validateCityName(const String& name) {
 	return true;
 }
 
-void CityManagerImplementation::promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
+void CityManagerImplementation::promptCitySpecialization(NewCityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
 	PlayerObject* ghost = mayor->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -401,7 +601,7 @@ void CityManagerImplementation::promptCitySpecialization(CityRegion* city, Creat
 	session->initializeSession();
 }
 
-void CityManagerImplementation::changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec) {
+void CityManagerImplementation::changeCitySpecialization(NewCityRegion* city, CreatureObject* mayor, const String& spec) {
 	Locker _clock(city, mayor);
 
 	city->setCitySpecialization(spec);
@@ -424,7 +624,7 @@ void CityManagerImplementation::changeCitySpecialization(CityRegion* city, Creat
 	city->setRadius(city->getRadius());
 }
 
-void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::sendStatusReport(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	/* Status Report - Lists basic information about the city.
 	 * Shows the city name, current Mayor, the waypoint for the city,
 	 * the city radius, number of citizens, number of structures in the city, the city specialization,
@@ -482,7 +682,7 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 	creature->sendMessage(list->generateMessage());
 }
 
-void CityManagerImplementation::sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::sendStructureReport(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -514,7 +714,7 @@ void CityManagerImplementation::sendStructureReport(CityRegion* city, CreatureOb
 	creature->sendMessage(maintList->generateMessage());
 }
 
-void CityManagerImplementation::promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
+void CityManagerImplementation::promptWithdrawCityTreasury(NewCityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
 	if (!city->isMayor(mayor->getObjectID()))
 		return;
 
@@ -528,7 +728,7 @@ void CityManagerImplementation::promptWithdrawCityTreasury(CityRegion* city, Cre
 	session->initializeSession();
 }
 
-void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, const String& reason, SceneObject* terminal) {
+void CityManagerImplementation::withdrawFromCityTreasury(NewCityRegion* city, CreatureObject* mayor, int value, const String& reason, SceneObject* terminal) {
 	/**
 	 string/en/city/city.stf	264	treasury_withdraw_from	City Treasury Authority
 	 string/en/city/city.stf	265	treasury_withdraw_subject	City Treasury Withdrawal
@@ -595,7 +795,7 @@ void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, Creat
 	sendMail(city, "@city/city:treasury_withdraw_from", "@city/city:treasury_withdraw_subject", emailBody, nullptr);
 }
 
-void CityManagerImplementation::promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::promptDepositCityTreasury(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -614,7 +814,7 @@ void CityManagerImplementation::promptDepositCityTreasury(CityRegion* city, Crea
 	creature->sendMessage(transfer->generateMessage());
 }
 
-void CityManagerImplementation::depositToCityTreasury(CityRegion* city, CreatureObject* creature, int amount) {
+void CityManagerImplementation::depositToCityTreasury(NewCityRegion* city, CreatureObject* creature, int amount) {
 	int cash = creature->getCashCredits();
 
 	int total = cash - amount;
@@ -643,7 +843,7 @@ void CityManagerImplementation::depositToCityTreasury(CityRegion* city, Creature
 	creature->sendSystemMessage(params);
 }
 
-void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::sendCitizenshipReport(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -679,7 +879,7 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, Creature
 	creature->sendMessage(listbox->generateMessage());
 }
 
-void CityManagerImplementation::assessCitizens(CityRegion* city) {
+void CityManagerImplementation::assessCitizens(NewCityRegion* city) {
 	Locker locker(city);
 
 	if (zoneServer->isServerLoading()) {
@@ -732,7 +932,7 @@ void CityManagerImplementation::assessCitizens(CityRegion* city) {
 	}
 }
 
-void CityManagerImplementation::processCityUpdate(CityRegion* city) {
+void CityManagerImplementation::processCityUpdate(NewCityRegion* city) {
 	auto zone = city->getZone();
 
 	if (zone == nullptr) {
@@ -808,7 +1008,7 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 
 }
 
-void CityManagerImplementation::processIncomeTax(CityRegion* city) {
+void CityManagerImplementation::processIncomeTax(NewCityRegion* city) {
 	int incomeTax = city->getIncomeTax();
 
 	if (incomeTax <= 0)
@@ -839,7 +1039,7 @@ void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 	task->execute();
 }
 
-void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
+void CityManagerImplementation::deductCityMaintenance(NewCityRegion* city) {
 	int totalPaid = 0;
 
 	Locker _lock(city);
@@ -930,7 +1130,7 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 	sendMaintenanceEmail(city, totalPaid);
 }
 
-int CityManagerImplementation::collectNonStructureMaintenance(SceneObject* object, CityRegion* city, int maintenanceDue) {
+int CityManagerImplementation::collectNonStructureMaintenance(SceneObject* object, NewCityRegion* city, int maintenanceDue) {
 	if(object == nullptr || city == nullptr)
 		return 0;
 
@@ -957,7 +1157,7 @@ int CityManagerImplementation::collectNonStructureMaintenance(SceneObject* objec
 
 	return amountPaid;
 }
-int CityManagerImplementation::collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue) {
+int CityManagerImplementation::collectCivicStructureMaintenance(StructureObject* structure, NewCityRegion* city, int maintenanceDue) {
 	if(structure == nullptr || city == nullptr)
 		return 0;
 
@@ -1031,7 +1231,7 @@ int CityManagerImplementation::collectCivicStructureMaintenance(StructureObject*
 	return amountPaid;
 }
 
-void CityManagerImplementation::sendMaintenanceEmail(CityRegion* city, int maint) {
+void CityManagerImplementation::sendMaintenanceEmail(NewCityRegion* city, int maint) {
 	if(zoneServer != nullptr) {
 		ManagedReference<CreatureObject*> mayor = zoneServer->getObject(city->getMayorID()).castTo<CreatureObject*>();
 
@@ -1051,7 +1251,7 @@ void CityManagerImplementation::sendMaintenanceEmail(CityRegion* city, int maint
 	}
 }
 
-void CityManagerImplementation::sendMaintenanceRepairEmail(CityRegion* city, StructureObject* structure) {
+void CityManagerImplementation::sendMaintenanceRepairEmail(NewCityRegion* city, StructureObject* structure) {
 	if(zoneServer != nullptr) {
 		ManagedReference<CreatureObject*> mayor = zoneServer->getObject(city->getMayorID()).castTo<CreatureObject*>();
 
@@ -1071,7 +1271,7 @@ void CityManagerImplementation::sendMaintenanceRepairEmail(CityRegion* city, Str
 	}
 }
 
-void CityManagerImplementation::sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue) {
+void CityManagerImplementation::sendMaintenanceDecayEmail(NewCityRegion* city, StructureObject* structure, int maintenanceDue) {
 	if(zoneServer != nullptr) {
 		ManagedReference<CreatureObject*> mayor = zoneServer->getObject(city->getMayorID()).castTo<CreatureObject*>();
 
@@ -1092,7 +1292,7 @@ void CityManagerImplementation::sendMaintenanceDecayEmail(CityRegion* city, Stru
 	}
 }
 
-void CityManagerImplementation::sendMaintenanceDestroyEmail(CityRegion* city, SceneObject* object) {
+void CityManagerImplementation::sendMaintenanceDestroyEmail(NewCityRegion* city, SceneObject* object) {
 	if(zoneServer != nullptr) {
 		ManagedReference<CreatureObject*> mayor = zoneServer->getObject(city->getMayorID()).castTo<CreatureObject*>();
 
@@ -1112,7 +1312,7 @@ void CityManagerImplementation::sendMaintenanceDestroyEmail(CityRegion* city, Sc
 	}
 }
 
-void CityManagerImplementation::updateCityVoting(CityRegion* city, bool override) {
+void CityManagerImplementation::updateCityVoting(NewCityRegion* city, bool override) {
 	if (!city->isVotingPeriodOver() && !override)
 		return;
 
@@ -1251,7 +1451,7 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city, bool override
 
 }
 
-void CityManagerImplementation::contractCity(CityRegion* city) {
+void CityManagerImplementation::contractCity(NewCityRegion* city) {
 	uint8 newRank = city->getCityRank() - 1;
 	bool startedAssessment = false;
 
@@ -1309,7 +1509,7 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 	city->sendStructureInvalidMails();
 }
 
-void CityManagerImplementation::expandCity(CityRegion* city) {
+void CityManagerImplementation::expandCity(NewCityRegion* city) {
 	uint8 currentRank = city->getCityRank();
 
 	if (currentRank == METROPOLIS) //City doesn't expand if it's metropolis.
@@ -1354,7 +1554,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 	}
 }
 
-void CityManagerImplementation::destroyCity(CityRegion* city) {
+void CityManagerImplementation::destroyCity(NewCityRegion* city) {
 	info("Destroying city: " + city->getRegionDisplayedName(), true);
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
@@ -1379,8 +1579,6 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	city->removeAllSkillTrainers();
 	city->removeAllDecorations();
 
-	city->destroyActiveAreas();
-
 	ManagedReference<StructureObject*> cityhall = city->getCityHall();
 
 	if (cityhall != nullptr) {
@@ -1397,9 +1595,10 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	zoneServer->destroyObjectFromDatabase(city->_getObjectID());
 
 	city->setZone(nullptr);
+	city->destroyObjectFromWorld(false);
 }
 
-void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject* creature) {
+void CityManagerImplementation::registerCitizen(NewCityRegion* city, CreatureObject* creature) {
 	if (city == nullptr || creature == nullptr || !creature->isPlayerCreature() || city->isCitizen(creature->getObjectID())) {
 		return;
 	}
@@ -1430,7 +1629,7 @@ void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject
 	city->addCitizen(creature->getObjectID());
 }
 
-void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObject* creature) {
+void CityManagerImplementation::unregisterCitizen(NewCityRegion* city, CreatureObject* creature) {
 	if (city == nullptr || creature == nullptr || !city->isCitizen(creature->getObjectID())) {
 		return;
 	}
@@ -1457,7 +1656,7 @@ void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObje
 	}
 }
 
-void CityManagerImplementation::sendManageMilitia(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::sendManageMilitia(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -1494,7 +1693,7 @@ void CityManagerImplementation::sendManageMilitia(CityRegion* city, CreatureObje
 	creature->sendMessage(listbox->generateMessage());
 }
 
-void CityManagerImplementation::promptAddMilitiaMember(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::promptAddMilitiaMember(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -1511,7 +1710,7 @@ void CityManagerImplementation::promptAddMilitiaMember(CityRegion* city, Creatur
 	creature->sendMessage(input->generateMessage());
 }
 
-void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName) {
+void CityManagerImplementation::addMilitiaMember(NewCityRegion* city, CreatureObject* mayor, const String& playerName) {
 	Locker clocker(city, mayor);
 
 	PlayerObject* ghost = mayor->getPlayerObject();
@@ -1553,7 +1752,7 @@ void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObjec
 	city->addMilitiaMember(militiaid);
 }
 
-void CityManagerImplementation::removeMilitiaMember(CityRegion* city, CreatureObject* mayor, uint64 militiaid) {
+void CityManagerImplementation::removeMilitiaMember(NewCityRegion* city, CreatureObject* mayor, uint64 militiaid) {
 	Locker clocker(city, mayor);
 
 	PlayerObject* ghost = mayor->getPlayerObject();
@@ -1576,7 +1775,7 @@ void CityManagerImplementation::removeMilitiaMember(CityRegion* city, CreatureOb
 	city->removeMilitiaMember(militiaid);
 }
 
-void CityManagerImplementation::sendTreasuryReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::sendTreasuryReport(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature, SuiWindowType::CITY_TREASURY_REPORT);
 	listbox->setPromptTitle("@city/city:treasury_balance_t"); //Treasury Balance
 	listbox->setPromptText("@city/city:treasury_balance_d"); //A report on the current treasury follows.
@@ -1588,7 +1787,7 @@ void CityManagerImplementation::sendTreasuryReport(CityRegion* city, CreatureObj
 	creature->sendMessage(listbox->generateMessage());
 }
 
-void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::sendCityAdvancement(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature, SuiWindowType::CITY_ADVANCEMENT);
 	listbox->setPromptTitle("@city/city:rank_info_t"); //City Rank Info
 	listbox->setPromptText("@city/city:rank_info_d"); //The following report shows the current city rank, the current city population, the abilities of the city and the population required for the next rank.  If you have met your rank requirement, the city will advance in rank during the next city update.  Check the maintenance report for a projected time to the next update.
@@ -1644,7 +1843,7 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 	creature->sendSystemMessage(params);
 }
 
-String CityManagerImplementation::getNextUpdateTimeString(CityRegion* city) {
+String CityManagerImplementation::getNextUpdateTimeString(NewCityRegion* city) {
 	if (city == nullptr)
 		return "";
 
@@ -1706,7 +1905,7 @@ String CityManagerImplementation::getNextUpdateTimeString(CityRegion* city) {
 	return updateStr;
 }
 
-void CityManagerImplementation::promptRegisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::promptRegisterCity(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -1736,7 +1935,7 @@ void CityManagerImplementation::promptRegisterCity(CityRegion* city, CreatureObj
 	creature->sendMessage(box->generateMessage());
 }
 
-void CityManagerImplementation::promptUnregisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::promptUnregisterCity(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -1756,22 +1955,29 @@ void CityManagerImplementation::promptUnregisterCity(CityRegion* city, CreatureO
 	creature->sendMessage(box->generateMessage());
 }
 
-void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* mayor) {
+void CityManagerImplementation::registerCity(NewCityRegion* city, CreatureObject* mayor) {
+	if (city == nullptr || mayor == nullptr)
+		return;
+
 	Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
 
 	if (cityCat == nullptr)
 		return;
 
+	Zone* zone = city->getZone();
+
+	if (zone == nullptr)
+		return;
+
 	city->setRegistered(true);
 
-	ManagedReference<Region*> aa = city->getRegion(0);
-	aa->setPlanetMapCategory(cityCat);
-	aa->getZone()->getPlanetManager()->addCityRegion(city);
-	aa->getZone()->registerObjectWithPlanetaryMap(aa);
+	city->setPlanetMapCategory(cityCat);
+	zone->getPlanetManager()->addCityRegion(city);
+	zone->getZone()->registerObjectWithPlanetaryMap(city);
 
 	for (int i = 0; i < city->getStructuresCount(); i++) {
 		ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
-		aa->getZone()->registerObjectWithPlanetaryMap(structure);
+		zone->registerObjectWithPlanetaryMap(structure);
 
 		SortedVector<ManagedReference<SceneObject*> >* children = structure->getChildObjects();
 
@@ -1779,68 +1985,68 @@ void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* m
 			SceneObject* child = children->get(j);
 
 			if (child != nullptr)
-				aa->getZone()->registerObjectWithPlanetaryMap(child);
+				zone->registerObjectWithPlanetaryMap(child);
 		}
 	}
 
 	for (int i = 0; i < city->getCommercialStructuresCount(); i++) {
 		ManagedReference<StructureObject*> structure = city->getCommercialStructure(i);
-		aa->getZone()->registerObjectWithPlanetaryMap(structure);
+		zone->registerObjectWithPlanetaryMap(structure);
 	}
 
 	for (int i = 0; i < city->getSkillTrainerCount(); i++) {
 		ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
-		aa->getZone()->registerObjectWithPlanetaryMap(trainer);
+		zone->registerObjectWithPlanetaryMap(trainer);
 	}
 
 	mayor->sendSystemMessage("@city/city:registered"); //Your city is now registered on the planetary map. All civic and major commercial structures in the city are also registered and can be found with the /find command.
 }
 
-void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject* mayor) {
+void CityManagerImplementation::unregisterCity(NewCityRegion* city, CreatureObject* mayor) {
+	if (city == nullptr)
+		return;
+
 	city->setRegistered(false);
 
-	if (city->getRegionsCount() != 0) {
-		ManagedReference<Region*> aa = city->getRegion(0);
-		Zone* aaZone = aa->getZone();
+	Zone* zone = city->getZone();
 
-		if (aaZone != nullptr) {
-			aaZone->unregisterObjectWithPlanetaryMap(aa);
+	if (zone != nullptr) {
+		zone->unregisterObjectWithPlanetaryMap(city);
 
-			aaZone->getPlanetManager()->dropRegion(city->getCityRegionName());
+		zone->getPlanetManager()->dropRegion(city->getCityRegionName());
 
-			for (int i = 0; i < city->getStructuresCount(); i++) {
-				ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
-				aaZone->unregisterObjectWithPlanetaryMap(structure);
+		for (int i = 0; i < city->getStructuresCount(); i++) {
+			ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
+			zone->unregisterObjectWithPlanetaryMap(structure);
 
-				SortedVector<ManagedReference<SceneObject*> >* children = structure->getChildObjects();
+			SortedVector<ManagedReference<SceneObject*> >* children = structure->getChildObjects();
 
-				for (int j = 0; j < children->size(); j++) {
-					SceneObject* child = children->get(j);
+			for (int j = 0; j < children->size(); j++) {
+				SceneObject* child = children->get(j);
 
-					if (child != nullptr)
-						aa->getZone()->unregisterObjectWithPlanetaryMap(child);
-				}
-			}
-
-			for (int i = 0; i < city->getCommercialStructuresCount(); i++) {
-				ManagedReference<StructureObject*> structure = city->getCommercialStructure(i);
-				aaZone->unregisterObjectWithPlanetaryMap(structure);
-			}
-
-			for (int i = 0; i < city->getSkillTrainerCount(); i++) {
-				ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
-				aaZone->unregisterObjectWithPlanetaryMap(trainer);
+				if (child != nullptr)
+					zone->unregisterObjectWithPlanetaryMap(child);
 			}
 		}
 
-		aa->setPlanetMapCategory(nullptr);
+		for (int i = 0; i < city->getCommercialStructuresCount(); i++) {
+			ManagedReference<StructureObject*> structure = city->getCommercialStructure(i);
+			zone->unregisterObjectWithPlanetaryMap(structure);
+		}
+
+		for (int i = 0; i < city->getSkillTrainerCount(); i++) {
+			ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
+			zone->unregisterObjectWithPlanetaryMap(trainer);
+		}
 	}
+
+	city->setPlanetMapCategory(nullptr);
 
 	if (mayor != nullptr)
 		mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
 }
 
-void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
+void CityManagerImplementation::promptAdjustTaxes(NewCityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
 	ManagedReference<PlayerObject*> ghost = mayor->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -1872,7 +2078,7 @@ void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObje
 	mayor->sendMessage(listbox->generateMessage());
 }
 
-void CityManagerImplementation::promptSetTax(CityRegion* city, CreatureObject* mayor, int selectedTax, SceneObject* terminal) {
+void CityManagerImplementation::promptSetTax(NewCityRegion* city, CreatureObject* mayor, int selectedTax, SceneObject* terminal) {
 	const CityTax* cityTax = getCityTax(selectedTax);
 
 	if (cityTax == nullptr)
@@ -1909,7 +2115,7 @@ void CityManagerImplementation::promptSetTax(CityRegion* city, CreatureObject* m
 	mayor->sendMessage(inputbox->generateMessage());
 }
 
-void CityManagerImplementation::setTax(CityRegion* city, CreatureObject* mayor, int selectedTax, int value) {
+void CityManagerImplementation::setTax(NewCityRegion* city, CreatureObject* mayor, int selectedTax, int value) {
 	const CityTax* cityTax = getCityTax(selectedTax);
 
 	if (cityTax == nullptr)
@@ -1939,7 +2145,7 @@ void CityManagerImplementation::setTax(CityRegion* city, CreatureObject* mayor, 
 	sendMail(city, "@city/city:new_city_from", cityTax->getEmailSubject(), params, nullptr);
 }
 
-void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::sendMaintenanceReport(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	if (city == nullptr || creature == nullptr)
 		return;
 
@@ -2084,7 +2290,7 @@ bool CityManagerImplementation::isCityInRange(Zone* zone, float x, float y) {
 	return true;
 }
 
-void CityManagerImplementation::sendMayoralStandings(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::sendMayoralStandings(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	if (!city->isCitizen(creature->getObjectID()) && !creature->getPlayerObject()->isPrivileged())
 			return;
 
@@ -2128,7 +2334,7 @@ void CityManagerImplementation::sendMayoralStandings(CityRegion* city, CreatureO
 	creature->sendMessage(listbox->generateMessage());
 }
 
-void CityManagerImplementation::promptMayoralVote(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::promptMayoralVote(NewCityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	if (!city->isCitizen(creature->getObjectID())) {
 		creature->sendSystemMessage("@city/city:vote_noncitizen"); //You must be a citizen of the city to vote for Mayor.
 		return;
@@ -2173,7 +2379,7 @@ void CityManagerImplementation::promptMayoralVote(CityRegion* city, CreatureObje
 	creature->sendMessage(listbox->generateMessage());
 }
 
-void CityManagerImplementation::castMayoralVote(CityRegion* city, CreatureObject* creature, uint64 oid) {
+void CityManagerImplementation::castMayoralVote(NewCityRegion* city, CreatureObject* creature, uint64 oid) {
 
 	if (!city->isCitizen(creature->getObjectID())) {
 		creature->sendSystemMessage("@city/city:vote_noncitizen"); //You must be a citizen of the city to vote for Mayor.
@@ -2201,7 +2407,7 @@ void CityManagerImplementation::castMayoralVote(CityRegion* city, CreatureObject
 	city->setMayoralVote(creature->getObjectID(), oid);
 }
 
-void CityManagerImplementation::registerForMayoralRace(CityRegion* city, CreatureObject* creature) {
+void CityManagerImplementation::registerForMayoralRace(NewCityRegion* city, CreatureObject* creature) {
 	uint64 objectid = creature->getObjectID();
 
 	if (!city->isCitizen(objectid)) {
@@ -2230,7 +2436,7 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 	ManagedReference<BuildingObject*> declaredResidence = creature->getZoneServer()->getObject(declaredOidResidence).castTo<BuildingObject*>();
 
 	if (declaredResidence != nullptr) {
-		ManagedReference<CityRegion*> declaredCity = declaredResidence->getCityRegion().get();
+		ManagedReference<NewCityRegion*> declaredCity = declaredResidence->getCityRegion().get();
 
 		if (declaredCity != nullptr && declaredCity->isMayor(objectid) && city != declaredCity) {
 			creature->sendSystemMessage("@city/city:already_mayor"); //You are already the mayor of a city.  You may not be mayor of another city.
@@ -2260,7 +2466,7 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 	sendMail(city, "@city/city:new_city_from", "@city/city:registered_citizen_email_subject", params, nullptr); // New Mayoral Challenger!
 }
 
-void CityManagerImplementation::unregisterFromMayoralRace(CityRegion* city, CreatureObject* creature, bool force) {
+void CityManagerImplementation::unregisterFromMayoralRace(NewCityRegion* city, CreatureObject* creature, bool force) {
 	uint64 objectid = creature->getObjectID();
 
 	if (city->isVotingLocked() && !force) {
@@ -2296,7 +2502,7 @@ const CityTax* CityManagerImplementation::getCityTax(int idx) {
 	return &cityTaxes.get(idx);
 }
 
-void CityManagerImplementation::sendMail(CityRegion* city, const String& sender, const UnicodeString& subject,
+void CityManagerImplementation::sendMail(NewCityRegion* city, const String& sender, const UnicodeString& subject,
 		StringIdChatParameter& params, WaypointObject* waypoint) {
 	ChatManager* chat = zoneServer->getChatManager();
 
@@ -2319,28 +2525,28 @@ void CityManagerImplementation::sendMail(CityRegion* city, const String& sender,
 	}
 }
 
-bool CityManagerImplementation::canSupportMoreDecorations(CityRegion* city) {
+bool CityManagerImplementation::canSupportMoreDecorations(NewCityRegion* city) {
 	if (city == nullptr)
 		return false;
 
 	return city->getDecorationCount() < (decorationsPerRank * city->getCityRank());
 }
 
-bool CityManagerImplementation::canSupportMoreTrainers(CityRegion* city) {
+bool CityManagerImplementation::canSupportMoreTrainers(NewCityRegion* city) {
 	if (city == nullptr)
 		return false;
 
 	return city->getSkillTrainerCount() < (trainersPerRank * city->getCityRank());
 }
 
-bool CityManagerImplementation::canSupportMoreMissionTerminals(CityRegion* city) {
+bool CityManagerImplementation::canSupportMoreMissionTerminals(NewCityRegion* city) {
 	if (city == nullptr)
 		return false;
 
 	return city->getMissionTerminalCount() < (missionTerminalsPerRank * city->getCityRank());
 }
 
-void CityManagerImplementation::sendChangeCityName(CityRegion* city, CreatureObject* mayor){
+void CityManagerImplementation::sendChangeCityName(NewCityRegion* city, CreatureObject* mayor){
 	PlayerObject* ghost = mayor->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -2367,7 +2573,7 @@ void CityManagerImplementation::sendChangeCityName(CityRegion* city, CreatureObj
 	mayor->sendMessage(inputBox->generateMessage());
 }
 
-void CityManagerImplementation::sendAddStructureMails(CityRegion* city, StructureObject* structure) {
+void CityManagerImplementation::sendAddStructureMails(NewCityRegion* city, StructureObject* structure) {
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	ManagedReference<CreatureObject*> owner = structure->getOwnerCreatureObject();
@@ -2398,7 +2604,7 @@ void CityManagerImplementation::sendAddStructureMails(CityRegion* city, Structur
 	}
 }
 
-void CityManagerImplementation::promptToggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
+void CityManagerImplementation::promptToggleZoningEnabled(NewCityRegion* city, CreatureObject* mayor) {
 	PlayerObject* ghost = mayor->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -2429,7 +2635,7 @@ void CityManagerImplementation::promptToggleZoningEnabled(CityRegion* city, Crea
 	mayor->sendMessage(box->generateMessage());
 }
 
-void CityManagerImplementation::promptForceRank(CityRegion* city, CreatureObject* player, bool rankUp) {
+void CityManagerImplementation::promptForceRank(NewCityRegion* city, CreatureObject* player, bool rankUp) {
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -2448,7 +2654,7 @@ void CityManagerImplementation::promptForceRank(CityRegion* city, CreatureObject
 	player->sendMessage(box->generateMessage());
 }
 
-void CityManagerImplementation::promptForceUpdate(CityRegion* city, CreatureObject* player) {
+void CityManagerImplementation::promptForceUpdate(NewCityRegion* city, CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost == nullptr)
@@ -2467,7 +2673,7 @@ void CityManagerImplementation::promptForceUpdate(CityRegion* city, CreatureObje
 	player->sendMessage(box->generateMessage());
 }
 
-void CityManagerImplementation::alignAmenity(CityRegion* city, CreatureObject* player, SceneObject* amenity, int direction) {
+void CityManagerImplementation::alignAmenity(NewCityRegion* city, CreatureObject* player, SceneObject* amenity, int direction) {
 	if (amenity == nullptr || player == nullptr || city == nullptr)
 		return;
 

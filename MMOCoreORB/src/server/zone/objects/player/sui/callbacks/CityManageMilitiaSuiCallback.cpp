@@ -8,7 +8,7 @@
 #include "CityManageMilitiaSuiCallback.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/managers/city/CityManager.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sessions/CityRemoveMilitiaSession.h"
 
@@ -18,7 +18,7 @@ void CityManageMilitiaSuiCallback::run(CreatureObject* player, SuiBox* suiBox, u
 	if (!suiBox->isListBox() || player == nullptr || cancelPressed || args->size() <= 0)
 		return;
 
-	ManagedReference<CityRegion*> city = cityRegion.get();
+	ManagedReference<NewCityRegion*> city = cityRegion.get();
 
 	if (city == nullptr)
 		return;

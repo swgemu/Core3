@@ -126,7 +126,7 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	String region = "@planet_n:" + vendor->getZone()->getZoneName();
 
 
-	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion().get();
+	ManagedReference<NewCityRegion*> cityRegion = vendor->getCityRegion().get();
 
 	if(cityRegion != nullptr)
 		region = cityRegion->getCityRegionName();

@@ -12,7 +12,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/callbacks/InsuranceMenuSuiCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 void InsuranceTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
@@ -27,7 +27,7 @@ int InsuranceTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 	if (!player->isPlayerCreature())
 		return 0;
 
-	ManagedReference<CityRegion* > region = sceneObject->getCityRegion().get();
+	ManagedReference<NewCityRegion* > region = sceneObject->getCityRegion().get();
 
 	if (region != nullptr) {
 		if (region->isBanned(player->getObjectID())) {

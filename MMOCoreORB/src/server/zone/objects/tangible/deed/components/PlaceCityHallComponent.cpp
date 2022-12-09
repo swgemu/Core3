@@ -9,7 +9,7 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -39,7 +39,7 @@ int PlaceCityHallComponent::placeStructure(StructureDeed* deed, CreatureObject* 
 	ManagedReference<BuildingObject*> declaredResidence = zone->getZoneServer()->getObject(declaredOidResidence).castTo<BuildingObject*>();
 
 	if (declaredResidence != nullptr) {
-		ManagedReference<CityRegion*> city = declaredResidence->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = declaredResidence->getCityRegion().get();
 
 		if (city != nullptr && city->isMayor(creature->getObjectID())) {
 			creature->sendSystemMessage("@city/city:already_mayor"); //You are already the mayor of a city.  You may not be mayor of another city.
@@ -66,7 +66,7 @@ int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureO
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost != nullptr && structure->isBuildingObject()) {
-		ManagedReference<CityRegion*> city = structure->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = structure->getCityRegion().get();
 
 		if (city != nullptr && city->isMayor(creature->getObjectID())) {
 			Locker locker(city);
