@@ -16,7 +16,7 @@
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/TicketSelectionSuiCallback.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 #include "server/zone/objects/group/GroupObject.h"
@@ -136,7 +136,7 @@ public:
 		ManagedReference<CreatureObject*> targetShuttleObject = arrivalPoint->getShuttle();
 
 		if (targetShuttleObject != nullptr) {
-			ManagedReference<CityRegion*> region = targetShuttleObject->getCityRegion().get();
+			ManagedReference<NewCityRegion*> region = targetShuttleObject->getCityRegion().get();
 
 			if (region != nullptr) {
 #ifdef ENABLE_CITY_TRAVEL_LIMIT
@@ -152,7 +152,7 @@ public:
 			}
 		}
 
-		ManagedReference<CityRegion*> departCity = shuttle->getCityRegion().get();
+		ManagedReference<NewCityRegion*> departCity = shuttle->getCityRegion().get();
 
 		if (departCity != nullptr){
 			if (departCity->isBanned(creature->getObjectID())) {
@@ -168,7 +168,7 @@ public:
 
 		p.initializePosition(arrivalPoint->getArrivalPosition());
 
-		ManagedReference<CityRegion*> region = targetShuttleObject != nullptr ? targetShuttleObject->getCityRegion().get() : nullptr;
+		ManagedReference<NewCityRegion*> region = targetShuttleObject != nullptr ? targetShuttleObject->getCityRegion().get() : nullptr;
 
 		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other
 		// For NPC cities, use the generic method

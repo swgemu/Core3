@@ -2677,7 +2677,7 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 					task->execute();
 
 					if (structure->isCityHall()) {
-						ManagedReference<CityRegion*> city = structure->getCityRegion().get();
+						ManagedReference<NewCityRegion*> city = structure->getCityRegion().get();
 
 						if (city != nullptr) {
 							Core::getTaskManager()->executeTask([=] () {

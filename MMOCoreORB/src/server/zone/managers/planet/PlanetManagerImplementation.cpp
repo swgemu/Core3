@@ -26,7 +26,7 @@
 #include "server/zone/packets/player/PlanetTravelPointListResponse.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 #include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
@@ -802,7 +802,7 @@ void PlanetManagerImplementation::buildCityNavMeshes() {
 	bool forceRebuild = server->getZoneServer()->shouldDeleteNavAreas();
 
 	for (int i = 0; i < numCityRegions; i++) {
-		CityRegion* city = regionMap.getCityRegion(i);
+		NewCityRegion* city = regionMap.getCityRegion(i);
 
 		if (city == nullptr)
 			continue;
@@ -917,8 +917,8 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 #ifdef DEBUG_REGIONS
 		info(true) << " ~~~ Creating spawn_area object ~~~ ";
 #endif // DEBUG_REGIONS
-	/*} else if (type & ActiveArea::CITY) {
-		region = dynamic_cast<Region*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/city_area.iff"), 0, "cityregions"));
+	} else if (type & ActiveArea::CITY) {
+		region = dynamic_cast<Region*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/city_area.iff"), 0, "newcityregions"));
 #ifdef DEBUG_REGIONS
 		info(true) << " --- Creating city_area object --- ";
 #endif // DEBUG_REGIONS*/
@@ -1022,11 +1022,16 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 
 	// Region is a City, add to cityRegionMap list
 	if (type & ActiveArea::CITY) {
-		ManagedReference<CityRegion*> cityRegion = region.castTo<CityRegion*>();
+		ManagedReference<NewCityRegion*> cityRegion = region.castTo<NewCityRegion*>();
+
+		if (cityRegion == nullptr)
+			return;
 
 #ifdef DEBUG_REGIONS
 		info(true) << "Adding City: " << name;
 #endif // DEBUG_REGIONS
+
+		cityRegion->setCityRank(NewCityRegion::RANK_CLIENT);
 
 		Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
 
@@ -1077,33 +1082,26 @@ bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* crea
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < regionMap.getTotalCityRegions(); ++i) {
-		CityRegion* cityRegion = regionMap.getCityRegion(i);
+		NewCityRegion* cityRegion = regionMap.getCityRegion(i);
 
 		if (cityRegion == nullptr)
 			continue;
 
-		for (int j = 0; j < cityRegion->getRegionsCount(); ++j) {
-			Region* activeRegion = cityRegion->getRegion(j);
+		float radius = cityRegion->getRadius();
 
-			if (activeRegion == nullptr)
-				continue;
+		if (radius < 512)
+			radius = 512;
 
-			float radius = activeRegion->getRadius();
+		float range = radius * 2;
 
-			if (radius < 512)
-				radius = 512;
+		Vector3 position(cityRegion->getPositionX(), cityRegion->getPositionY(), 0);
 
-			float range = radius * 2;
+		if (position.squaredDistanceTo(testPosition) <= range * range) {
+			StringIdChatParameter msg("player_structure", "city_too_close");
+			msg.setTO(cityRegion->getCityRegionName());
 
-			Vector3 position(activeRegion->getPositionX(), activeRegion->getPositionY(), 0);
-
-			if (position.squaredDistanceTo(testPosition) <= range * range) {
-				StringIdChatParameter msg("player_structure", "city_too_close");
-				msg.setTO(cityRegion->getCityRegionName());
-
-				creature->sendSystemMessage(msg);
-				return false;
-			}
+			creature->sendSystemMessage(msg);
+			return false;
 		}
 	}
 

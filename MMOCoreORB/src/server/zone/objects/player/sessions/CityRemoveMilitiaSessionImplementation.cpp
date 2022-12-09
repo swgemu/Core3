@@ -8,14 +8,14 @@
 #include "server/zone/objects/player/sessions/CityRemoveMilitiaSession.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/CityRemoveMilitiaMemberSuiCallback.h"
 
 int CityRemoveMilitiaSessionImplementation::initializeSession() {
 	ManagedReference<CreatureObject*> creature = creatureObject.get();
-	ManagedReference<CityRegion*> city = cityRegion.get();
+	ManagedReference<NewCityRegion*> city = cityRegion.get();
 
 	if (creature == nullptr || city == nullptr)
 		return cancelSession();

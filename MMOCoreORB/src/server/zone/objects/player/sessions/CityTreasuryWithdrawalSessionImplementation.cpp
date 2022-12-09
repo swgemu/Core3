@@ -9,7 +9,7 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
@@ -18,7 +18,7 @@
 
 int CityTreasuryWithdrawalSessionImplementation::initializeSession() {
 	ManagedReference<CreatureObject*> creatureObject = this->creatureObject.get();
-	ManagedReference<CityRegion*> cityRegion = this->cityRegion.get();
+	ManagedReference<NewCityRegion*> cityRegion = this->cityRegion.get();
 
 	PlayerObject* ghost = creatureObject->getPlayerObject();
 
@@ -43,7 +43,7 @@ int CityTreasuryWithdrawalSessionImplementation::sendTransferBox(const String& r
 	setReason(reason);
 
 	ManagedReference<CreatureObject*> creatureObject = this->creatureObject.get();
-	ManagedReference<CityRegion*> cityRegion = this->cityRegion.get();
+	ManagedReference<NewCityRegion*> cityRegion = this->cityRegion.get();
 
 	PlayerObject* ghost = creatureObject->getPlayerObject();
 
@@ -69,7 +69,7 @@ int CityTreasuryWithdrawalSessionImplementation::sendTransferBox(const String& r
 
 int CityTreasuryWithdrawalSessionImplementation::withdrawCredits(int value) {
 	ManagedReference<CreatureObject*> creatureObject = this->creatureObject.get();
-	ManagedReference<CityRegion*> cityRegion = this->cityRegion.get();
+	ManagedReference<NewCityRegion*> cityRegion = this->cityRegion.get();
 
 	if (cityRegion == nullptr)
 		return cancelSession();

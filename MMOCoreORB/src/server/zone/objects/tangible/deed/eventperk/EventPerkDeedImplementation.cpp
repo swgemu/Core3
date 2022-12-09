@@ -6,7 +6,7 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "templates/tangible/EventPerkDeedTemplate.h"
@@ -105,7 +105,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		ManagedReference<CityRegion*> city = player->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = player->getCityRegion().get();
 
 		if (city != nullptr) {
 			if (city->isClientRegion()) {

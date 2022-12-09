@@ -9,7 +9,7 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
@@ -82,7 +82,7 @@ int CitySpecializationSessionImplementation::sendConfirmationBox(const String& c
 		return cancelSession();
 
 	if (choice != "@city/city:null") {
-		if (cityRegion->getCityRank() < CityRegion::RANK_TOWNSHIP) {
+		if (cityRegion->getCityRank() < NewCityRegion::RANK_TOWNSHIP) {
 			creatureObject->sendSystemMessage("@city/city:no_rank_spec"); //Your city must be at least rank 3 before you can set a specialization
 			return cancelSession();
 		}

@@ -1,16 +1,16 @@
 #include "CitizenAssessmentEvent.h"
 
 #include "server/zone/managers/city/CityManager.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 
-CitizenAssessmentEvent::CitizenAssessmentEvent(CityRegion* city, ZoneServer* zserv) : Task() {
+CitizenAssessmentEvent::CitizenAssessmentEvent(NewCityRegion* city, ZoneServer* zserv) : Task() {
 	cityRegion = city;
 	zoneServer = zserv;
 }
 
 
 void CitizenAssessmentEvent::run() {
-	Reference<CityRegion*> city = cityRegion.get();
+	Reference<NewCityRegion*> city = cityRegion.get();
 
 	if (city == nullptr)
 		return;

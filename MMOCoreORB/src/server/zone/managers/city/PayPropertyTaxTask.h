@@ -8,13 +8,13 @@
 #ifndef PAYCITYTAXTASK_H_
 #define PAYCITYTAXTASK_H_
 
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 
 class PayPropertyTaxTask : public Task {
-	ManagedWeakReference<CityRegion*> cityObject;
+	ManagedWeakReference<NewCityRegion*> cityObject;
 	float amount;
 public:
-	PayPropertyTaxTask(CityRegion* city, float tax) {
+	PayPropertyTaxTask(NewCityRegion* city, float tax) {
 
 		cityObject = city;
 		amount = tax;
@@ -22,7 +22,7 @@ public:
 
 	void run() {
 
-		ManagedReference<CityRegion*> strongRefCity = cityObject.get();
+		ManagedReference<NewCityRegion*> strongRefCity = cityObject.get();
 
 		if (strongRefCity == nullptr)
 			return;
