@@ -629,7 +629,7 @@ void ObjectVersionUpdateManager::updateCityTreasury(){
 
 	info("---------------MOdifying City Treasury---------------------",true);
 	info("Converting treasury to float for all cities ", true);
-	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
+	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("newcityregions", true);
 	ObjectInputStream objectData(2000);
 
 	String className;
@@ -689,7 +689,7 @@ void ObjectVersionUpdateManager::updateCityTreasuryToDouble(){
 
 	info("---------------MOdifying City Treasury---------------------",true);
 	info("Converting treasury to double for all cities ", true);
-	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
+	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("newcityregions", true);
 	ObjectInputStream objectData(2000);
 
 	String className;

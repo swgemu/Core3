@@ -192,6 +192,36 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 
 		scheduleMaintenanceExpirationEvent();
 	} else if(getOwnerObjectID() != 0 && getCityRegion().get() == nullptr && !isTurret() && !isMinefield() && !isScanner()) {
+		/*SortedVector<ManagedReference<ActiveArea*> >* activeAreas = getActiveAreas();
+		ManagedReference<ActiveArea*> area = nullptr;
+
+		// Missing city region, check current areas
+		if (activeAreas != nullptr) {
+			info(true) << " Null city region checkking current areas -- Total = " << activeAreas->size();
+
+			for (int i = 0; i < activeAreas->size(); i++) {
+				ActiveArea* area = activeAreas->get(i);
+
+				if (area == nullptr)
+					continue;
+
+				info(true) << " Checking Area #" << i << " Named: " << area->getAreaName() << " Object Name: " << area->getObjectName()->getFullPath();
+
+				if (area->getPositionX() == getPositionX() && area->getPositionY() == getPositionY()) {
+					Locker lock(area);
+					area->addAreaFlag(ActiveArea::CITY);
+					area->setAreaName(area->getObjectName()->getFullPath());
+
+
+					info(true) << " setting city region";
+					setCityRegion(cast<CityRegion*>(area));
+					break;
+				}
+			}
+
+		}*/
+
+
 		auto ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
 
 		if (ssot == nullptr)

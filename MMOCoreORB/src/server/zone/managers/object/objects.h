@@ -128,6 +128,7 @@
 #include "server/zone/objects/area/FsVillageArea.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 #include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
 #include "server/zone/objects/region/SpawnArea.h"

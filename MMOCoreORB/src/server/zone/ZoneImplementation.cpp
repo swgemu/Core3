@@ -762,13 +762,8 @@ void ZoneImplementation::updateCityRegions() {
 		if (!city->isRegistered())
 			continue;
 
-		if (city->getRegionsCount() == 0)
-			continue;
-
-		Region* region = city->getRegion(0);
-
-		unregisterObjectWithPlanetaryMap(region);
-		registerObjectWithPlanetaryMap(region);
+		unregisterObjectWithPlanetaryMap(city);
+		registerObjectWithPlanetaryMap(city);
 
 		for(int i = 0; i < city->getStructuresCount(); i++){
 			ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
