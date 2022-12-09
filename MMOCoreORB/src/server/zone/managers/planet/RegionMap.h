@@ -8,11 +8,11 @@
 #ifndef REGIONMAP_H_
 #define REGIONMAP_H_
 
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/region/Region.h"
 
 class RegionMap : public ReadWriteLock, public Object, public Logger {
-	VectorMap<String, ManagedReference<CityRegion*> > cityRegions;
+	VectorMap<String, ManagedReference<NewCityRegion*> > cityRegions;
 
 	VectorMap<String, ManagedReference<Region*> > regions;
 
@@ -30,7 +30,7 @@ public:
 	~RegionMap() {
 	}
 
-	inline void addCityRegion(CityRegion* cityRegion) {
+	inline void addCityRegion(NewCityRegion* cityRegion) {
 		wlock();
 
 		cityRegions.put(cityRegion->getCityRegionName(), cityRegion);
@@ -68,11 +68,11 @@ public:
 	 * @param y The y coordinate.
 	 * @return Returns a city region or nullptr if one was not found.
 	 */
-	CityRegion* getCityRegionAt(float x, float y) {
+	NewCityRegion* getCityRegionAt(float x, float y) {
 		rlock();
 
 		for (int i = 0; i < cityRegions.size(); ++i) {
-			CityRegion* cityRegion = cityRegions.get(i);
+			NewCityRegion* cityRegion = cityRegions.get(i);
 
 			if (cityRegion->containsPoint(x, y)) {
 				runlock();
@@ -116,11 +116,11 @@ public:
 		return regions.contains(name);
 	}
 
-	inline CityRegion* getCityRegion(int index) {
+	inline NewCityRegion* getCityRegion(int index) {
 		return cityRegions.get(index);
 	}
 
-	inline CityRegion* getCityRegion(const String& name) {
+	inline NewCityRegion* getCityRegion(const String& name) {
 		return cityRegions.get(name);
 	}
 

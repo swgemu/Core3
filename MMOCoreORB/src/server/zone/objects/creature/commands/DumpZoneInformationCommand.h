@@ -41,7 +41,7 @@ public:
 
 		int cityPlayerCount = 0;
 
-		ManagedReference<CityRegion*> city = player->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = player->getCityRegion().get();
 
 		if (city != nullptr) {
 			cityPlayerCount = city->getCurrentPlayerCount();

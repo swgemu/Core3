@@ -71,7 +71,7 @@
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/packets/object/StartingLocationListMessage.h"
 
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/objects/player/sui/callbacks/CloningRequestSuiCallback.h"
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
@@ -1528,7 +1528,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 
 	//Get the name of the pre-designated facility
 	if (preDesignatedFacility != nullptr) {
-		ManagedReference<CityRegion*> cr = preDesignatedFacility->getCityRegion().get();
+		ManagedReference<NewCityRegion*> cr = preDesignatedFacility->getCityRegion().get();
 
 		if (preDesignatedFacility->getZone() != zone) {
 			predesignatedName = "off-planet (unavailable)";
@@ -1557,7 +1557,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 			if (!isValidClosestCloner(player, location))
 				continue;
 
-			ManagedReference<CityRegion*> cr = location->getCityRegion().get();
+			ManagedReference<NewCityRegion*> cr = location->getCityRegion().get();
 
 			String name = "";
 
@@ -1575,7 +1575,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 		}
 
 	} else {
-		ManagedReference<CityRegion*> cr = closestCloning->getCityRegion().get();
+		ManagedReference<NewCityRegion*> cr = closestCloning->getCityRegion().get();
 
 		if (cr != nullptr)
 			closestName = cr->getRegionDisplayedName();
@@ -1630,7 +1630,7 @@ bool PlayerManagerImplementation::isValidClosestCloner(CreatureObject* player, S
 	if (cloner == nullptr)
 		return false;
 
-	ManagedReference<CityRegion*> cr = cloner->getCityRegion().get();
+	ManagedReference<NewCityRegion*> cr = cloner->getCityRegion().get();
 
 	if (cr != nullptr && cr->isBanned(player->getObjectID()))
 		return false;

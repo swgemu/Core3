@@ -31,7 +31,7 @@ public:
 		if (player->getParent() != nullptr)
 			return;
 
-		ManagedReference<CityRegion*> city = player->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = player->getCityRegion().get();
 		CityManager* cityManager = player->getZoneServer()->getCityManager();
 		if (city == nullptr || cityManager == nullptr)
 			return;

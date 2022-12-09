@@ -181,7 +181,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 		}
 	}
 
-	ManagedReference<CityRegion*> terminalCity = missionTerminal->getCityRegion().get();
+	ManagedReference<NewCityRegion*> terminalCity = missionTerminal->getCityRegion().get();
 
 	if (terminalCity != nullptr) {
 		if (terminalCity.get()->isBanned(player->getObjectID())) {

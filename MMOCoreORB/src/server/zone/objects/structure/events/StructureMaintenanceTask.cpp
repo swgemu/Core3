@@ -13,7 +13,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/credit/CreditManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
@@ -74,7 +74,7 @@ void StructureMaintenanceTask::run() {
 	int oneWeekMaintenance = 7 * 24 * strongRef->getMaintenanceRate() - strongRef->getSurplusMaintenance();
 
 	// add city tax to the week maintenance
-	ManagedReference<CityRegion*> city = strongRef->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = strongRef->getCityRegion().get();
 	if(strongRef->isBuildingObject() && city != nullptr){
 		oneWeekMaintenance += city->getPropertyTax() / 100.0f * oneWeekMaintenance;
 	}

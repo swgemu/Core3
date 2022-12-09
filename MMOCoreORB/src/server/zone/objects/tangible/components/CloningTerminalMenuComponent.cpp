@@ -13,7 +13,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/sui/callbacks/CloningStoreSuiCallback.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/ZoneServer.h"
 
 void CloningTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
@@ -28,7 +28,7 @@ int CloningTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 	if (!player->isPlayerCreature())
 		return 0;
 
-	ManagedReference<CityRegion* > region = sceneObject->getCityRegion().get();
+	ManagedReference<NewCityRegion* > region = sceneObject->getCityRegion().get();
 
 	if (region != nullptr) {
 		if (region->isBanned(player->getObjectID())) {

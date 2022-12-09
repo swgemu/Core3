@@ -1,6 +1,6 @@
 
 #include "server/zone/objects/region/LuaCityRegion.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 
 const char LuaCityRegion::className[] = "LuaCityRegion";
 
@@ -12,7 +12,7 @@ Luna<LuaCityRegion>::RegType LuaCityRegion::Register[] = {
 };
 
 LuaCityRegion::LuaCityRegion(lua_State *L) {
-	realObject = reinterpret_cast<CityRegion*>(lua_touserdata(L, 1));
+	realObject = reinterpret_cast<NewCityRegion*>(lua_touserdata(L, 1));
 }
 
 LuaCityRegion::~LuaCityRegion() {
@@ -28,7 +28,7 @@ int LuaCityRegion::_getObject(lua_State* L) {
 }
 
 int LuaCityRegion::_setObject(lua_State* L) {
-	realObject = reinterpret_cast<CityRegion*>(lua_touserdata(L, -1));
+	realObject = reinterpret_cast<NewCityRegion*>(lua_touserdata(L, -1));
 
 	return 0;
 }
