@@ -8,7 +8,7 @@
 #ifndef CITYDECORATIONTASK_H_
 #define CITYDECORATIONTASK_H_
 
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -46,7 +46,7 @@ public:
 	void placeDecoration() {
 		Locker _lock(mayor);
 
-		ManagedReference<CityRegion*> city = mayor->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = mayor->getCityRegion().get();
 
 		if(city == nullptr) {
 			mayor->sendSystemMessage("@player_structure:cant_place_civic"); //This structure must be placed within the borders of the city in which you are mayor.
@@ -132,7 +132,7 @@ public:
 	void removeDecoration() {
 		Locker _lock(mayor);
 
-		ManagedReference<CityRegion*> city = mayor->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = mayor->getCityRegion().get();
 
 		if(city == nullptr)
 			return;

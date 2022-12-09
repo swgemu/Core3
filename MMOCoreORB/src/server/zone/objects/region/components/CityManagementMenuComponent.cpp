@@ -6,7 +6,7 @@
  */
 
 #include "CityManagementMenuComponent.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/city/CityManager.h"
@@ -17,7 +17,7 @@
 #endif
 
 void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-	ManagedReference<CityRegion*> city = sceneObject->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = sceneObject->getCityRegion().get();
 
 	if (city == nullptr) {
 		sceneObject->error("city region null in CityManagementMenuComponent::fillObjectMenuResponse");
@@ -83,7 +83,7 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 }
 
 int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectID) const {
-	ManagedReference<CityRegion*> city = sceneObject->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = sceneObject->getCityRegion().get();
 
 	if (city == nullptr)
 		return 1;

@@ -64,7 +64,7 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/AiMap.h"
 #include "server/chat/LuaStringIdChatParameter.h"
@@ -3604,7 +3604,7 @@ int DirectorManager::getCityRegionAt(lua_State* L) {
 	if (zone != nullptr) {
 		PlanetManager* planetManager = zone->getPlanetManager();
 
-		CityRegion* cityRegion = planetManager->getCityRegionAt(x, y);
+		NewCityRegion* cityRegion = planetManager->getCityRegionAt(x, y);
 
 		if (cityRegion != nullptr) {
 			lua_pushlightuserdata(L, cityRegion);

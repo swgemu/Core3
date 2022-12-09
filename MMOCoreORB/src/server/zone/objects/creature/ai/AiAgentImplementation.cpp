@@ -3542,7 +3542,7 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	}
 
 	if (conversationTemplate->getConversationTemplateType() == ConversationTemplate::ConversationTemplateTypeLua && conversationTemplate->getLuaClassHandler() == "trainerConvHandler") {
-		ManagedReference<CityRegion*> city = player->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = player->getCityRegion().get();
 
 		if (city != nullptr && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
 			playerCreature->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.

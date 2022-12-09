@@ -17,7 +17,7 @@ namespace creature {
 	class CreatureObject;
 }
 namespace region {
-	class CityRegion;
+	class NewCityRegion;
 }
 }
 }
@@ -27,17 +27,17 @@ using namespace server::zone::objects::creature;
 using namespace server::zone::objects::region;
 
 class CityAddMilitiaMemberSuiCallback : public SuiCallback {
-	ManagedWeakReference<CityRegion*> cityRegion;
+	ManagedWeakReference<NewCityRegion*> cityRegion;
 
 public:
-	CityAddMilitiaMemberSuiCallback(ZoneServer* server, CityRegion* city) : SuiCallback(server) {
+	CityAddMilitiaMemberSuiCallback(ZoneServer* server, NewCityRegion* city) : SuiCallback(server) {
 		cityRegion = city;
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		ManagedReference<CityRegion*> city = cityRegion.get();
+		ManagedReference<NewCityRegion*> city = cityRegion.get();
 
 		if (city == nullptr)
 			return;

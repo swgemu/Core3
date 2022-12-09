@@ -8,7 +8,7 @@
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/city/CityRemoveAmenityTask.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
@@ -16,7 +16,7 @@
 void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TerminalImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	ManagedReference<CityRegion*> city = player->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = player->getCityRegion().get();
 
 	if (city != nullptr && city->isMayor(player->getObjectID()) && getParent().get() == nullptr) {
 
@@ -31,7 +31,7 @@ void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	ManagedReference<CityRegion*> city = player->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = player->getCityRegion().get();
 
 	if (selectedID == 69 && player->hasSkill("combat_smuggler_slicing_01")) {
 		if (isBountyTerminal())

@@ -27,11 +27,11 @@ using namespace server::zone::objects::creature;
 using namespace server::zone::objects::region;
 
 class CitySetTaxSuiCallback : public SuiCallback {
-	ManagedWeakReference<CityRegion*> cityRegion;
+	ManagedWeakReference<NewCityRegion*> cityRegion;
 	int taxSelected;
 
 public:
-	CitySetTaxSuiCallback(ZoneServer* server, CityRegion* city, int tax)
+	CitySetTaxSuiCallback(ZoneServer* server, NewCityRegion* city, int tax)
 		: SuiCallback(server) {
 
 		cityRegion = city;
@@ -41,7 +41,7 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		ManagedReference<CityRegion*> city = cityRegion.get();
+		ManagedReference<NewCityRegion*> city = cityRegion.get();
 
 		if (city == nullptr || !suiBox->isInputBox() || player == nullptr || cancelPressed || args->size() <= 0) {
 			return;

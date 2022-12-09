@@ -11,7 +11,7 @@
 #include "MapLocationType.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -111,7 +111,7 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 	} else if (!object->isGCWBase()) { // Everything else except faction bases are just named by the city it's in
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
-		ManagedReference<CityRegion *> cityRegion = planetManager->getCityRegionAt(object->getWorldPositionX(), object->getWorldPositionY());
+		ManagedReference<NewCityRegion *> cityRegion = planetManager->getCityRegionAt(object->getWorldPositionX(), object->getWorldPositionY());
 
 		if (cityRegion != nullptr) {
 			newName = cityRegion->getCityRegionName();

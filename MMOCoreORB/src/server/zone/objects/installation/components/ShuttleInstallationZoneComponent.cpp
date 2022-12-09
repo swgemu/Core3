@@ -10,7 +10,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 
 void ShuttleInstallationZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
 	StructureZoneComponent::notifyInsertToZone(sceneObject, zone);
@@ -32,7 +32,7 @@ void ShuttleInstallationZoneComponent::destroyObjectFromWorld(SceneObject* scene
 
 			if (installationObject->isShuttleInstallation()) {
 
-				ManagedReference<CityRegion*> cityRegion = structureObject->getCityRegion().get();
+				ManagedReference<NewCityRegion*> cityRegion = structureObject->getCityRegion().get();
 				ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
 				if (cityRegion != nullptr) {
