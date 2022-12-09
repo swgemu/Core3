@@ -8,14 +8,14 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "CityDecorationMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/city/CityDecorationTask.h"
 
 void CityDecorationMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
-	ManagedReference<CityRegion*> city = player->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = player->getCityRegion().get();
 
 
 	if(isInInventory(sceneObject, player) && player->getParent() == nullptr) {
@@ -54,7 +54,7 @@ int CityDecorationMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		return 0;
 
 	} else if (selectedID == 74 || selectedID == 75 || selectedID == 76 || selectedID == 77) {
-		ManagedReference<CityRegion*> city = player->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = player->getCityRegion().get();
 
 		CityManager* cityManager = sceneObject->getZoneServer()->getCityManager();
 		cityManager->alignAmenity(city, player, sceneObject, selectedID - 74);

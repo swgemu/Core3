@@ -2,18 +2,18 @@ package server.zone.objects.player.sessions;
 
 import engine.util.Facade;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.region.CityRegion;
+import server.zone.objects.region.NewCityRegion;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.scene.SessionFacadeType;
 
 class CitySpecializationSession extends Facade {
 	protected CreatureObject creatureObject;
-	protected CityRegion cityRegion;
+	protected NewCityRegion cityRegion;
 	protected SceneObject terminalObject;
 	
 	protected string specialization;
 	
-	public CitySpecializationSession(CreatureObject creature, CityRegion city, SceneObject terminal = null) {
+	public CitySpecializationSession(CreatureObject creature, NewCityRegion city, SceneObject terminal = null) {
 		Logger.setLoggingName("CitySpecializationSession");
 		Logger.setLogging(true);
 		

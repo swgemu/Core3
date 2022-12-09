@@ -7,7 +7,7 @@
 
 #include "CityHallZoneComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/ZoneServer.h"
@@ -20,7 +20,7 @@ void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, boo
 		return;
 	}
 
-	ManagedReference<CityRegion*> cityRegion = sceneObject->getCityRegion().get();
+	ManagedReference<NewCityRegion*> cityRegion = sceneObject->getCityRegion().get();
 
 	if (cityRegion != nullptr ) {
 		Locker clocker(cityRegion, sceneObject);

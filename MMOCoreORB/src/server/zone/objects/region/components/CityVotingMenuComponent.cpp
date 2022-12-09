@@ -7,13 +7,13 @@
 
 #include "CityVotingMenuComponent.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 void CityVotingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-	ManagedReference<CityRegion*> city = sceneObject->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = sceneObject->getCityRegion().get();
 
 	if (city == nullptr || (!city->isCitizen(player->getObjectID()) && !player->getPlayerObject()->isPrivileged()))
 			return;
@@ -35,7 +35,7 @@ void CityVotingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, O
 }
 
 int CityVotingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectID) const {
-	ManagedReference<CityRegion*> city = sceneObject->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = sceneObject->getCityRegion().get();
 
 	if (city == nullptr)
 		return 0;
