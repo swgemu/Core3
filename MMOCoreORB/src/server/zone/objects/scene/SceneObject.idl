@@ -45,7 +45,7 @@ include server.zone.objects.scene.components.ContainerComponent;
 include server.zone.objects.scene.components.AttributeListComponent;
 include server.zone.objects.scene.components.DataObjectComponentReference;
 include server.zone.objects.scene.variables.ContainerPermissions;
-import server.zone.objects.region.CityRegion;
+import server.zone.objects.region.NewCityRegion;
 import engine.util.u3d.Matrix4;
 import system.thread.ReadWriteLock;
 import system.thread.Mutex;
@@ -117,7 +117,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	protected unicode customName;
 
 	@weakReference
-	protected transient CityRegion cityRegion;
+	protected transient NewCityRegion cityRegion;
 
 	protected transient SceneObject savedRootParent;
 
@@ -957,12 +957,12 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	@read
 	@local
 	@weakReference
-	public abstract CityRegion getCityRegion() {
+	public abstract NewCityRegion getCityRegion() {
 		return cityRegion;
 	}
 
 	@local
-	public void setCityRegion(CityRegion region) {
+	public void setCityRegion(NewCityRegion region) {
 		cityRegion = region;
 	}
 

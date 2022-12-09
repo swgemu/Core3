@@ -126,7 +126,7 @@ public:
 				msg << "Direction Angle - Radians: " << object->getDirection()->getRadians() << endl;
 			}
 
-			ManagedReference<CityRegion*> city = object->getCityRegion().get();
+			ManagedReference<NewCityRegion*> city = object->getCityRegion().get();
 			if (city != nullptr)
 				msg << "City Region oid: " << String::valueOf(city->getObjectID()) << ", name: " << city->getRegionDisplayedName() << endl;
 

@@ -9,13 +9,13 @@
 #define CITYTREASURYDEPOSITSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 
 class CityTreasuryDepositSuiCallback : public SuiCallback {
-	ManagedWeakReference<CityRegion*> cityRegion;
+	ManagedWeakReference<NewCityRegion*> cityRegion;
 
 public:
-	CityTreasuryDepositSuiCallback(ZoneServer* server, CityRegion* region)
+	CityTreasuryDepositSuiCallback(ZoneServer* server, NewCityRegion* region)
 			: SuiCallback(server) {
 		cityRegion = region;
 	}
@@ -29,7 +29,7 @@ public:
 
 		int amount = Integer::valueOf(args->get(0).toString());
 
-		ManagedReference<CityRegion*> city = cityRegion.get();
+		ManagedReference<NewCityRegion*> city = cityRegion.get();
 
 		if (city == nullptr)
 			return;

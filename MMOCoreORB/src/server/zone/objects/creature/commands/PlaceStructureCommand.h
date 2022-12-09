@@ -33,7 +33,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = creature->getCityRegion().get();
 
 		if (city != nullptr && city->isClientRegion()) {
 			creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.

@@ -7,7 +7,7 @@ namespace server {
 	namespace zone {
 		namespace objects {
 			namespace region {
-				class CityRegion;
+				class NewCityRegion;
 			}
 		}
 	}
@@ -15,10 +15,10 @@ namespace server {
 
 class CitizenAssessmentEvent : public Task {
 	Reference<ZoneServer*> zoneServer;
-	WeakReference<server::zone::objects::region::CityRegion*> cityRegion;
+	WeakReference<server::zone::objects::region::NewCityRegion*> cityRegion;
 
 public:
-	CitizenAssessmentEvent(server::zone::objects::region::CityRegion* city, ZoneServer* zserv);
+	CitizenAssessmentEvent(server::zone::objects::region::NewCityRegion* city, ZoneServer* zserv);
 
 	void run();
 };

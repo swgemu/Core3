@@ -39,7 +39,7 @@ public:
 			return;
 		}
 
-		ManagedReference<CityRegion*> cityRegion = strongReference->getCityRegion().get();
+		ManagedReference<NewCityRegion*> cityRegion = strongReference->getCityRegion().get();
 
 		if ((cityRegion != nullptr) && (cityRegion->getMayorID() != 0)) {
 			float x = strongReference->getWorldPositionX();

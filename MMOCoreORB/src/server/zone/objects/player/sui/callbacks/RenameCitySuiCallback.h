@@ -9,7 +9,7 @@
 #define RENAMECITYSUICALLBACK_H_
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -17,10 +17,10 @@
 
 class RenameCitySuiCallback : public SuiCallback {
 	ManagedWeakReference<Zone*> zne;
-	ManagedWeakReference<CityRegion*> city;
+	ManagedWeakReference<NewCityRegion*> city;
 
 public:
-	RenameCitySuiCallback(Zone* zone, CityRegion* city) : SuiCallback(zone->getZoneServer()) {
+	RenameCitySuiCallback(Zone* zone, NewCityRegion* city) : SuiCallback(zone->getZoneServer()) {
 		this->zne = zone;
 		this->city = city;
 	}
@@ -31,7 +31,7 @@ public:
 		if(cancelPressed || server == nullptr)
 			return;
 
-		ManagedReference<CityRegion*> cityRegion = city.get();
+		ManagedReference<NewCityRegion*> cityRegion = city.get();
 		if(cityRegion == nullptr)
 			return;
 

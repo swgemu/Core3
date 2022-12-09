@@ -6,7 +6,7 @@
 #define TRANSFERSTRUCTURECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
@@ -166,7 +166,7 @@ public:
 		//TODO:
 		//@player_structure:trail_no_transfer Trial accounts may not be involved in a property ownership transfer.
 
-		ManagedReference<CityRegion*> region = structure->getCityRegion().get();
+		ManagedReference<NewCityRegion*> region = structure->getCityRegion().get();
 
 		if (region != nullptr && ghost != nullptr) {
 			Locker locker(region);
