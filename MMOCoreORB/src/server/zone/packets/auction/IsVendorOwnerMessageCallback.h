@@ -11,7 +11,7 @@
 #include "server/zone/packets/MessageCallback.h"
 
 #include "IsVendorOwnerResponseMessage.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/Zone.h"
 
 class IsVendorOwnerMessageCallback : public MessageCallback {
@@ -48,7 +48,7 @@ public:
 		String vendorRegion = zone->getZoneName();
 
 
-		ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion().get();
+		ManagedReference<NewCityRegion*> cityRegion = sceno->getCityRegion().get();
 		if (cityRegion != nullptr)
 			vendorRegion = cityRegion->getCityRegionName();
 

@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/managers/city/CityManager.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 
 namespace server {
 namespace zone {
@@ -25,12 +25,12 @@ namespace creature {
 using namespace server::zone::objects::creature;
 
 class CityRegisterSuiCallback : public SuiCallback {
-	ManagedWeakReference<CityRegion*> cityRegion;
+	ManagedWeakReference<NewCityRegion*> cityRegion;
 
 	bool unregister;
 
 public:
-	CityRegisterSuiCallback(ZoneServer* server, CityRegion* city, bool unregister = false)
+	CityRegisterSuiCallback(ZoneServer* server, NewCityRegion* city, bool unregister = false)
 		: SuiCallback(server) {
 
 		cityRegion = city;
@@ -40,7 +40,7 @@ public:
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		ManagedReference<CityRegion*> city = cityRegion.get();
+		ManagedReference<NewCityRegion*> city = cityRegion.get();
 
 		if (city == nullptr || cancelPressed)
 			return;

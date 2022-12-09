@@ -13,7 +13,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
 #include "server/zone/objects/player/sessions/sui/FindSessionSuiCallback.h"
@@ -128,7 +128,7 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 		return;
 	}
 
-	ManagedReference<CityRegion*> cityRegion = object->getCityRegion().get();
+	ManagedReference<NewCityRegion*> cityRegion = object->getCityRegion().get();
 	String regFullName = "";
 
 	if (cityRegion != nullptr) {

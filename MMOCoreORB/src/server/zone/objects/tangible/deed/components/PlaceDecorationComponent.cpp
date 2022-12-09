@@ -8,14 +8,14 @@
 #include "PlaceDecorationComponent.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/structure/StructureManager.h"
 
 int PlaceDecorationComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const {
 	if(creature == nullptr || creature->getZoneServer() == nullptr)
 		return 1;
 
-	ManagedReference<CityRegion*> city = creature->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = creature->getCityRegion().get();
 
 	if (city == nullptr)
 		return 1;

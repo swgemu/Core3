@@ -13,7 +13,7 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/creature/sui/RepairVehicleSuiCallback.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
@@ -187,7 +187,7 @@ void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
 		if (activeArea != nullptr && activeArea->isRegion()) {
 			Region* region = cast<Region*>( activeArea.get());
 
-			ManagedReference<CityRegion*> gb = region->getCityRegion().get();
+			ManagedReference<NewCityRegion*> gb = region->getCityRegion().get();
 
 			if (gb == nullptr)
 				return;
@@ -229,7 +229,7 @@ void VehicleObjectImplementation::sendRepairConfirmTo(CreatureObject* player) {
 	int totalFunds = player->getBankCredits();
 	int tax = 0;
 
-	ManagedReference<CityRegion*> city = getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = getCityRegion().get();
 	if(city != nullptr && city->getGarageTax() > 0){
 		repairCost += repairCost * city->getGarageTax() / 100;
 	}

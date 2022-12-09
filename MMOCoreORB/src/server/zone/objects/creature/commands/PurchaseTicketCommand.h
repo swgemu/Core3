@@ -8,7 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/objects/player/sui/callbacks/TravelCouponUseSuiCallback.h"
 
@@ -49,7 +49,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<CityRegion*> currentCity = creature->getCityRegion().get();
+		ManagedReference<NewCityRegion*> currentCity = creature->getCityRegion().get();
 
 		int departureTax = 0;
 
@@ -130,7 +130,7 @@ public:
 			return GENERALERROR;
 
 
-		ManagedReference<CityRegion*> destCity = arrivalShuttle->getCityRegion().get();
+		ManagedReference<NewCityRegion*> destCity = arrivalShuttle->getCityRegion().get();
 
 		if (destCity != nullptr){
 			if (destCity.get()->isBanned(creature->getObjectID())) {

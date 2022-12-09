@@ -83,7 +83,7 @@ public:
 					continue;
 				}
 
-				ManagedReference<CityRegion*> city = shuttle->getCityRegion().get();
+				ManagedReference<NewCityRegion*> city = shuttle->getCityRegion().get();
 
 				if(city == nullptr) {
 					message->insertInt(0);

@@ -30,7 +30,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.pathfinding.NavArea;
 import system.thread.atomic.AtomicInteger;
 include system.thread.atomic.AtomicBoolean;
-include server.zone.objects.region.CityRegion;
+include server.zone.objects.region.NewCityRegion;
 import server.zone.ActiveAreaQuadTree;
 
 @mock
@@ -50,7 +50,7 @@ class Zone extends SceneObject {
 	private transient ChatRoom planetChatRoom;
 
 	@dereferenced
-	private transient SynchronizedSortedVector<CityRegion> cityRegionUpdateVector;
+	private transient SynchronizedSortedVector<NewCityRegion> cityRegionUpdateVector;
 
 	private transient ZoneServer server;
 
@@ -144,7 +144,7 @@ class Zone extends SceneObject {
 	@preLocked
 	public native void addSceneObject(SceneObject object);
 
-	public void addCityRegionToUpdate(CityRegion city) {
+	public void addCityRegionToUpdate(NewCityRegion city) {
 		cityRegionUpdateVector.put(city);
 	}
 

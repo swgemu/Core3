@@ -1,21 +1,18 @@
 /*
- * CityRegion.h
+ * NewCityRegion.h
  *
- *  Created on: Feb 9, 2012
- *      Author: xyborn
+ *  Created on: Dec 09, 2022
+ *
  */
-
 
 package server.zone.objects.region;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.Zone;
 import system.thread.Mutex;
 import engine.util.u3d.AABB;
 import server.zone.objects.pathfinding.NavArea;
 
-include server.zone.ZoneReference;
 include server.zone.objects.region.Region;
 include server.zone.objects.scene.variables.StringId;
 include system.lang.Time;
@@ -33,14 +30,11 @@ include engine.log.Logger;
 include server.zone.objects.creature.CreatureObject;
 
 @json
-class CityRegion extends ManagedObject implements Logger {
+class NewCityRegion extends Region {
 	@weakReference
 	protected NavArea navMesh;
 
 	protected byte cityRank;
-
-	@dereferenced
-	protected StringId regionName;
 
 	@dereferenced
 	protected VectorMap<unsigned long, int> candidates;
@@ -52,9 +46,6 @@ class CityRegion extends ManagedObject implements Logger {
 	protected AtomicInteger currentPlayers;
 
 	protected string customRegionName;
-
-	@dereferenced
-	protected ZoneReference zone;
 
 	@dereferenced
 	protected VectorMap<unsigned long, unsigned int> zoningRights;
@@ -111,9 +102,6 @@ class CityRegion extends ManagedObject implements Logger {
 	protected StructureObject cityHall;
 
 	@dereferenced
-	protected SortedVector<Region> regions;
-
-	@dereferenced
 	protected Vector<StructureObject> structures;
 
 	@dereferenced
@@ -131,8 +119,6 @@ class CityRegion extends ManagedObject implements Logger {
 	@dereferenced
 	protected transient VectorMap<unsigned long, TangibleObject> bazaars;
 
-	protected boolean converted;
-
 	public static final byte RANK_CLIENT = 0;
 	public static final byte RANK_OUTPOST = 1;
 	public static final byte RANK_VILLAGE = 2;
@@ -146,7 +132,7 @@ class CityRegion extends ManagedObject implements Logger {
 	public static final byte TAX_TRAVEL = 3;
 	public static final byte TAX_GARAGE = 4;
 
-	public CityRegion(boolean newCity = false) {
+	public NewCityRegion(boolean newCity = false) {
 		loaded = newCity;
 
 		initialize();
@@ -182,20 +168,9 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void notifyExit(SceneObject object);
 
 	@preLocked
-	public native Region createNewRegion(float x, float y, float radius, boolean persistent);
-
-	@preLocked
-	public void addRegion(Region region) {
-		regions.put(region);
-	}
-
-	@preLocked
 	public native void rescheduleUpdateEvent(unsigned int seconds);
 	@preLocked
 	public native void scheduleCitizenAssessment(unsigned int seconds);
-
-	@preLocked
-	public native void destroyActiveAreas();
 
 	@preLocked
 	public native void cancelTasks();
@@ -223,18 +198,6 @@ class CityRegion extends ManagedObject implements Logger {
 
 	@dirty
 	public native boolean hasZoningRights(unsigned long objectid);
-
-	@read
-	public boolean containsPoint(float x, float y) {
-		for (int i = 0; i < regions.size(); ++i) {
-			Region aa = regions.get(i);
-
-			if (aa.containsPoint(x, y))
-				return true;
-		}
-
-		return false;
-	}
 
 	public native void cleanupCitizens();
 
@@ -324,19 +287,9 @@ class CityRegion extends ManagedObject implements Logger {
 		return militiaMembers;
 	}
 
-	@local
-	public CitizenList getBannedPlayers() {
-		return bannedList;
-	}
-
 	@read
 	public boolean isRegistered() {
 		return registered;
-	}
-
-	@dirty
-	public Zone getZone() {
-		return zone.get();
 	}
 
 	@dirty
@@ -348,52 +301,6 @@ class CityRegion extends ManagedObject implements Logger {
 	@read
 	public unsigned long getMayorID() {
 		return mayorID;
-	}
-
-	@dirty
-	public float getPositionX() {
-		Region aa = regions.get(0);
-
-		if (!aa)
-			return 0.0;
-
-		return aa.getPositionX();
-	}
-
-	@dirty
-	public float getPositionY() {
-		Region aa = regions.get(0);
-
-		if (!aa)
-			return 0.0;
-
-		return aa.getPositionY();
-	}
-
-	@dirty
-	public float getRadius() {
-		if (regions.size() == 0) {
-			Logger.error("getRadius called with 0 regions for stringid:" + regionName.getFullPath() + " customName:" + customRegionName);
-
-			return 0.0;
-		}
-
-		Region aa = regions.get(0);
-
-		if (!aa)
-			return 0.0;
-
-		return aa.getRadius();
-	}
-
-	@dirty
-	public Region getRegion(int idx) {
-		return regions.get(idx);
-	}
-
-	@dirty
-	public int getRegionsCount() {
-		return regions.size();
 	}
 
 	@dirty
@@ -451,10 +358,6 @@ class CityRegion extends ManagedObject implements Logger {
 		return cityHall;
 	}
 
-	//Setters
-	@preLocked
-	public native void setZone(Zone zne);
-
 	@preLocked
 	public native void setCustomRegionName(final string name);
 
@@ -462,9 +365,6 @@ class CityRegion extends ManagedObject implements Logger {
 	public void setCitySpecialization(final string spec) {
 		citySpecialization = spec;
 	}
-
-	@preLocked
-	public native void setRegionName(final string fullPath);
 
 	@local
 	@preLocked
@@ -507,10 +407,6 @@ class CityRegion extends ManagedObject implements Logger {
 	@local
 	public native Vector<TangibleObject> getVendorsInCity();
 
-	@local
-	@preLocked
-	public native void setRegionName(@dereferenced final StringId name);
-
 	@preLocked
 	public void setCityRank(byte rank) {
 		cityRank = rank;
@@ -539,9 +435,6 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
 	@preLocked
-	public native void setRadius(float rad);
-
-	@preLocked
 	public void setCityHall(StructureObject building) {
 		cityHall = building;
 	}
@@ -561,11 +454,6 @@ class CityRegion extends ManagedObject implements Logger {
 	public void setShuttleID(unsigned long id) {
 		shuttleID = id;
 		hasShuttle = true;
-	}
-
-	@read
-	public unsigned long getShuttleID() {
-		return shuttleID;
 	}
 
 	@dirty
@@ -869,14 +757,4 @@ class CityRegion extends ManagedObject implements Logger {
 
 	@read
 	public native unsigned long getObjectID();
-
-	@read
-	public boolean isConverted() {
-		return converted;
-	}
-
-	@preLocked
-	public void setConverted(boolean val) {
-		converted = val;
-	}
 }

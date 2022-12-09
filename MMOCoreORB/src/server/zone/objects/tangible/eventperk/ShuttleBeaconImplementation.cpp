@@ -7,7 +7,7 @@
 #include "templates/tangible/EventPerkDeedTemplate.h"
 #include "server/zone/objects/tangible/tasks/RemoveEventPerkItemTask.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
@@ -287,7 +287,7 @@ bool ShuttleBeaconImplementation::canSpawnShuttle(CreatureObject* player) {
 	if (player->isSwimming())
 		return false;
 
-	ManagedReference<CityRegion*> city = player->getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = player->getCityRegion().get();
 
 	if (city != nullptr) {
 		if (city->isClientRegion())

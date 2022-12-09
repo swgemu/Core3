@@ -17,6 +17,7 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/OldCityRegion.h"
 #include "server/zone/objects/player/sessions/CitySpecializationSession.h"
 #include "server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
@@ -151,14 +152,57 @@ void CityManagerImplementation::loadCityRegions() {
 
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 
-	ObjectDatabase* cityRegionsDB = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
+	// Old City Loading
+
+	ObjectDatabase* oldCityRegionsDB = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
+
+	if (oldCityRegionsDB == nullptr) {
+		error("Could not load the OLD city regions database.");
+		return;
+	}
+
+	int i = 0;
+
+	try {
+		ObjectDatabaseIterator iterator(oldCityRegionsDB);
+
+		ObjectInputStream* objectData = new ObjectInputStream(2000);
+
+		uint64 objectID;
+
+		while (iterator.getNextKeyAndValue(objectID, objectData)) {
+			Reference<OldCityRegion*> cityRegion = Core::getObjectBroker()->lookUp(objectID).castTo<OldCityRegion*>();
+
+			// Convert Old Cities to new CityRegion object
+
+			if (cityRegion != nullptr) {
+				++i;
+				//cities.put(cityRegion->getCityRegionName(), cityRegion);
+
+				info(true) << "Old City Region = " << cityRegion->getCityRegionName() << " Radius: " << cityRegion->getRadius();
+				info(true) << "City Rank = " << cityRegion->getCityRank();
+			} else {
+				error("Failed to load OLD city region with objectid: " + String::valueOf(objectID));
+			}
+
+			objectData->clear();
+		}
+
+		delete objectData;
+	} catch (DatabaseException& e) {
+		error("Failed loading OLD city regions: " + e.getMessage());
+		return;
+	}
+
+	// New City Loading
+	ObjectDatabase* cityRegionsDB = ObjectDatabaseManager::instance()->loadObjectDatabase("newcityregions", true);
 
 	if (cityRegionsDB == nullptr) {
 		error("Could not load the city regions database.");
 		return;
 	}
 
-	int i = 0;
+	int j = 0;
 
 	try {
 		ObjectDatabaseIterator iterator(cityRegionsDB);
@@ -170,8 +214,10 @@ void CityManagerImplementation::loadCityRegions() {
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
 			Reference<CityRegion*> cityRegion = Core::getObjectBroker()->lookUp(objectID).castTo<CityRegion*>();
 
+			// issue here when loading old cities
+
 			if (cityRegion != nullptr && cityRegion->getZone() != nullptr) {
-				++i;
+				++j;
 				cities.put(cityRegion->getCityRegionName(), cityRegion);
 			} else {
 				error("Failed to load city region with objectid: " + String::valueOf(objectID));
@@ -186,6 +232,8 @@ void CityManagerImplementation::loadCityRegions() {
 		return;
 	}
 
+	// Loading Complete
+
 	info("Loaded " + String::valueOf(cities.size()) + " player city regions.", true);
 }
 
@@ -194,21 +242,52 @@ void CityManagerImplementation::stop() {
 }
 
 CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const String& cityName, float x, float y) {
-	ManagedReference<CityRegion*> city = new CityRegion(true);
-	ObjectManager::instance()->persistObject(city, 1, "cityregions");
+	if (mayor == nullptr)
+		return nullptr;
 
-	Locker clocker(city, mayor);
+	Zone* zone = mayor->getZone();
 
-	city->setCustomRegionName(cityName);
-	city->setZone(mayor->getZone());
-	city->setCityRank(OUTPOST);
-	city->setMayorID(mayor->getObjectID());
-	Region* region = city->createNewRegion(x, y, radiusPerRank.get(OUTPOST - 1), true);
+	if (zone == nullptr)
+		return nullptr;
 
-	city->resetVotingPeriod();
-	city->setAssessmentPending(true);
-	city->scheduleCitizenAssessment(newCityGracePeriod * 60);
-	city->rescheduleUpdateEvent(cityUpdateInterval * 60); //Minutes
+	static const String temp = "object/city_area.iff";
+	ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(STRING_HASHCODE("object/city_area.iff"), 1, "cityregions");
+
+	if (obj == nullptr) {
+		return nullptr;
+	}
+
+	ManagedReference<CityRegion*> cityRegion = cast<CityRegion*>(obj.get());
+
+	if (cityRegion == nullptr)
+		return nullptr;
+
+	Locker lock(cityRegion);
+	Locker clocker(mayor, cityRegion);
+
+	cityRegion->setRadius(radiusPerRank.get(OUTPOST - 1));
+	cityRegion->addAreaFlag(ActiveArea::CITY);
+
+	StringBuffer playerCityName;
+	playerCityName << cityName << "_player_city";
+
+	cityRegion->setObjectName(playerCityName.toString(), true);
+	cityRegion->setAreaName(playerCityName.toString());
+
+	cityRegion->setCustomRegionName(cityName);
+	cityRegion->setZone(mayor->getZone());
+	cityRegion->setCityRank(OUTPOST);
+	cityRegion->setMayorID(mayor->getObjectID());
+
+	cityRegion->initializePosition(x, 0, y);
+	zone->transferObject(cityRegion, -1, false);
+
+	cityRegion->resetVotingPeriod();
+	cityRegion->setAssessmentPending(true);
+	cityRegion->scheduleCitizenAssessment(newCityGracePeriod * 60);
+	cityRegion->rescheduleUpdateEvent(cityUpdateInterval * 60); //Minutes
+
+	cityRegion->updateToDatabase();
 
 	StringIdChatParameter params("city/city", "new_city_body");
 	params.setTO(mayor->getObjectID());
@@ -217,9 +296,9 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 	ChatManager* chatManager = zoneServer->getChatManager();
 	chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), nullptr);
 
-	cities.put(cityName, city);
+	cities.put(cityName, cityRegion);
 
-	return city;
+	return cityRegion;
 }
 
 bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte rank) {
@@ -311,8 +390,7 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 			report << ", nullptr";
 		}
 
-		report << ", " << String::valueOf(city->getRegionsCount())
-			<< ", " << String::valueOf(city->getCitizenCount())
+		report << ", " << String::valueOf(city->getCitizenCount())
 			<< ", " << String::valueOf(city->getStructuresCount())
 			<< ", " << String::valueOf(city->getAllStructuresCount())
 			<< ", " << String::valueOf((int)city->getCityTreasury())
@@ -1379,8 +1457,6 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	city->removeAllSkillTrainers();
 	city->removeAllDecorations();
 
-	city->destroyActiveAreas();
-
 	ManagedReference<StructureObject*> cityhall = city->getCityHall();
 
 	if (cityhall != nullptr) {
@@ -1397,6 +1473,7 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	zoneServer->destroyObjectFromDatabase(city->_getObjectID());
 
 	city->setZone(nullptr);
+	city->destroyObjectFromWorld(false);
 }
 
 void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject* creature) {
@@ -1757,21 +1834,28 @@ void CityManagerImplementation::promptUnregisterCity(CityRegion* city, CreatureO
 }
 
 void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* mayor) {
+	if (city == nullptr || mayor == nullptr)
+		return;
+
 	Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
 
 	if (cityCat == nullptr)
 		return;
 
+	Zone* zone = city->getZone();
+
+	if (zone == nullptr)
+		return;
+
 	city->setRegistered(true);
 
-	ManagedReference<Region*> aa = city->getRegion(0);
-	aa->setPlanetMapCategory(cityCat);
-	aa->getZone()->getPlanetManager()->addCityRegion(city);
-	aa->getZone()->registerObjectWithPlanetaryMap(aa);
+	city->setPlanetMapCategory(cityCat);
+	zone->getPlanetManager()->addCityRegion(city);
+	zone->getZone()->registerObjectWithPlanetaryMap(city);
 
 	for (int i = 0; i < city->getStructuresCount(); i++) {
 		ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
-		aa->getZone()->registerObjectWithPlanetaryMap(structure);
+		zone->registerObjectWithPlanetaryMap(structure);
 
 		SortedVector<ManagedReference<SceneObject*> >* children = structure->getChildObjects();
 
@@ -1779,62 +1863,62 @@ void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* m
 			SceneObject* child = children->get(j);
 
 			if (child != nullptr)
-				aa->getZone()->registerObjectWithPlanetaryMap(child);
+				zone->registerObjectWithPlanetaryMap(child);
 		}
 	}
 
 	for (int i = 0; i < city->getCommercialStructuresCount(); i++) {
 		ManagedReference<StructureObject*> structure = city->getCommercialStructure(i);
-		aa->getZone()->registerObjectWithPlanetaryMap(structure);
+		zone->registerObjectWithPlanetaryMap(structure);
 	}
 
 	for (int i = 0; i < city->getSkillTrainerCount(); i++) {
 		ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
-		aa->getZone()->registerObjectWithPlanetaryMap(trainer);
+		zone->registerObjectWithPlanetaryMap(trainer);
 	}
 
 	mayor->sendSystemMessage("@city/city:registered"); //Your city is now registered on the planetary map. All civic and major commercial structures in the city are also registered and can be found with the /find command.
 }
 
 void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject* mayor) {
+	if (city == nullptr)
+		return;
+
 	city->setRegistered(false);
 
-	if (city->getRegionsCount() != 0) {
-		ManagedReference<Region*> aa = city->getRegion(0);
-		Zone* aaZone = aa->getZone();
+	Zone* zone = city->getZone();
 
-		if (aaZone != nullptr) {
-			aaZone->unregisterObjectWithPlanetaryMap(aa);
+	if (zone != nullptr) {
+		zone->unregisterObjectWithPlanetaryMap(city);
 
-			aaZone->getPlanetManager()->dropRegion(city->getCityRegionName());
+		zone->getPlanetManager()->dropRegion(city->getCityRegionName());
 
-			for (int i = 0; i < city->getStructuresCount(); i++) {
-				ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
-				aaZone->unregisterObjectWithPlanetaryMap(structure);
+		for (int i = 0; i < city->getStructuresCount(); i++) {
+			ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
+			zone->unregisterObjectWithPlanetaryMap(structure);
 
-				SortedVector<ManagedReference<SceneObject*> >* children = structure->getChildObjects();
+			SortedVector<ManagedReference<SceneObject*> >* children = structure->getChildObjects();
 
-				for (int j = 0; j < children->size(); j++) {
-					SceneObject* child = children->get(j);
+			for (int j = 0; j < children->size(); j++) {
+				SceneObject* child = children->get(j);
 
-					if (child != nullptr)
-						aa->getZone()->unregisterObjectWithPlanetaryMap(child);
-				}
-			}
-
-			for (int i = 0; i < city->getCommercialStructuresCount(); i++) {
-				ManagedReference<StructureObject*> structure = city->getCommercialStructure(i);
-				aaZone->unregisterObjectWithPlanetaryMap(structure);
-			}
-
-			for (int i = 0; i < city->getSkillTrainerCount(); i++) {
-				ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
-				aaZone->unregisterObjectWithPlanetaryMap(trainer);
+				if (child != nullptr)
+					zone->unregisterObjectWithPlanetaryMap(child);
 			}
 		}
 
-		aa->setPlanetMapCategory(nullptr);
+		for (int i = 0; i < city->getCommercialStructuresCount(); i++) {
+			ManagedReference<StructureObject*> structure = city->getCommercialStructure(i);
+			zone->unregisterObjectWithPlanetaryMap(structure);
+		}
+
+		for (int i = 0; i < city->getSkillTrainerCount(); i++) {
+			ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
+			zone->unregisterObjectWithPlanetaryMap(trainer);
+		}
 	}
+
+	city->setPlanetMapCategory(nullptr);
 
 	if (mayor != nullptr)
 		mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.

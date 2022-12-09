@@ -2,7 +2,7 @@ package server.zone.objects.player.sessions;
 
 import engine.util.Facade;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.region.CityRegion;
+import server.zone.objects.region.NewCityRegion;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.scene.SessionFacadeType;
 
@@ -11,14 +11,14 @@ class CityTreasuryWithdrawalSession extends Facade {
 	protected CreatureObject creatureObject;
 	
 	@weakReference
-	protected CityRegion cityRegion;
+	protected NewCityRegion cityRegion;
 	
 	@weakReference
 	protected SceneObject terminalObject;
 	
 	protected string reason;
 	
-	public CityTreasuryWithdrawalSession(CreatureObject creature, CityRegion city, SceneObject terminal = null) {
+	public CityTreasuryWithdrawalSession(CreatureObject creature, NewCityRegion city, SceneObject terminal = null) {
 		Logger.setLoggingName("CityTreasuryWithdrawalSession");
 		Logger.setLogging(true);
 		

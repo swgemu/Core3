@@ -29,10 +29,10 @@ using namespace server::zone::objects::creature;
 using namespace server::zone::objects::region;
 
 class CityRemoveMilitiaMemberSuiCallback : public SuiCallback {
-	ManagedWeakReference<CityRegion*> cityRegion;
+	ManagedWeakReference<NewCityRegion*> cityRegion;
 
 public:
-	CityRemoveMilitiaMemberSuiCallback(ZoneServer* server, CityRegion* city) : SuiCallback(server) {
+	CityRemoveMilitiaMemberSuiCallback(ZoneServer* server, NewCityRegion* city) : SuiCallback(server) {
 		cityRegion = city;
 	}
 
@@ -44,7 +44,7 @@ public:
 		if (session == nullptr)
 			return;
 
-		ManagedReference<CityRegion*> city = cityRegion.get();
+		ManagedReference<NewCityRegion*> city = cityRegion.get();
 
 		if (city == nullptr || cancelPressed) {
 			session->cancelSession();
