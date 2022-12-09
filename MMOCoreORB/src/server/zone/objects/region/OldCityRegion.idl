@@ -1,18 +1,21 @@
 /*
- * CityRegion.h
+ * OldCityRegion.h
  *
- *  Created on: Dec 09, 2022
- *
+ *  Created on: Feb 9, 2012
+ *      Author: xyborn
  */
+
 
 package server.zone.objects.region;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.Zone;
 import system.thread.Mutex;
 import engine.util.u3d.AABB;
 import server.zone.objects.pathfinding.NavArea;
 
+include server.zone.ZoneReference;
 include server.zone.objects.region.Region;
 include server.zone.objects.scene.variables.StringId;
 include system.lang.Time;
@@ -30,11 +33,14 @@ include engine.log.Logger;
 include server.zone.objects.creature.CreatureObject;
 
 @json
-class CityRegion extends Region {
+class OldCityRegion extends ManagedObject implements Logger {
 	@weakReference
 	protected NavArea navMesh;
 
 	protected byte cityRank;
+
+	@dereferenced
+	protected StringId regionName;
 
 	@dereferenced
 	protected VectorMap<unsigned long, int> candidates;
@@ -46,6 +52,9 @@ class CityRegion extends Region {
 	protected AtomicInteger currentPlayers;
 
 	protected string customRegionName;
+
+	@dereferenced
+	protected ZoneReference zone;
 
 	@dereferenced
 	protected VectorMap<unsigned long, unsigned int> zoningRights;
@@ -102,6 +111,9 @@ class CityRegion extends Region {
 	protected StructureObject cityHall;
 
 	@dereferenced
+	protected SortedVector<Region> regions;
+
+	@dereferenced
 	protected Vector<StructureObject> structures;
 
 	@dereferenced
@@ -132,7 +144,7 @@ class CityRegion extends Region {
 	public static final byte TAX_TRAVEL = 3;
 	public static final byte TAX_GARAGE = 4;
 
-	public CityRegion(boolean newCity = false) {
+	public OldCityRegion(boolean newCity = false) {
 		loaded = newCity;
 
 		initialize();
@@ -168,9 +180,20 @@ class CityRegion extends Region {
 	public native void notifyExit(SceneObject object);
 
 	@preLocked
+	public native Region createNewRegion(float x, float y, float radius, boolean persistent);
+
+	@preLocked
+	public void addRegion(Region region) {
+		regions.put(region);
+	}
+
+	@preLocked
 	public native void rescheduleUpdateEvent(unsigned int seconds);
 	@preLocked
 	public native void scheduleCitizenAssessment(unsigned int seconds);
+
+	@preLocked
+	public native void destroyActiveAreas();
 
 	@preLocked
 	public native void cancelTasks();
@@ -198,6 +221,18 @@ class CityRegion extends Region {
 
 	@dirty
 	public native boolean hasZoningRights(unsigned long objectid);
+
+	@read
+	public boolean containsPoint(float x, float y) {
+		for (int i = 0; i < regions.size(); ++i) {
+			Region aa = regions.get(i);
+
+			if (aa.containsPoint(x, y))
+				return true;
+		}
+
+		return false;
+	}
 
 	public native void cleanupCitizens();
 
@@ -293,6 +328,11 @@ class CityRegion extends Region {
 	}
 
 	@dirty
+	public Zone getZone() {
+		return zone.get();
+	}
+
+	@dirty
 	public native string getCityRegionName();
 
 	@dirty
@@ -301,6 +341,52 @@ class CityRegion extends Region {
 	@read
 	public unsigned long getMayorID() {
 		return mayorID;
+	}
+
+	@dirty
+	public float getPositionX() {
+		Region aa = regions.get(0);
+
+		if (!aa)
+			return 0.0;
+
+		return aa.getPositionX();
+	}
+
+	@dirty
+	public float getPositionY() {
+		Region aa = regions.get(0);
+
+		if (!aa)
+			return 0.0;
+
+		return aa.getPositionY();
+	}
+
+	@dirty
+	public float getRadius() {
+		if (regions.size() == 0) {
+			Logger.error("getRadius called with 0 regions for stringid:" + regionName.getFullPath() + " customName:" + customRegionName);
+
+			return 0.0;
+		}
+
+		Region aa = regions.get(0);
+
+		if (!aa)
+			return 0.0;
+
+		return aa.getRadius();
+	}
+
+	@dirty
+	public Region getRegion(int idx) {
+		return regions.get(idx);
+	}
+
+	@dirty
+	public int getRegionsCount() {
+		return regions.size();
 	}
 
 	@dirty
@@ -358,6 +444,10 @@ class CityRegion extends Region {
 		return cityHall;
 	}
 
+	//Setters
+	@preLocked
+	public native void setZone(Zone zne);
+
 	@preLocked
 	public native void setCustomRegionName(final string name);
 
@@ -365,6 +455,9 @@ class CityRegion extends Region {
 	public void setCitySpecialization(final string spec) {
 		citySpecialization = spec;
 	}
+
+	@preLocked
+	public native void setRegionName(final string fullPath);
 
 	@local
 	@preLocked
@@ -407,6 +500,10 @@ class CityRegion extends Region {
 	@local
 	public native Vector<TangibleObject> getVendorsInCity();
 
+	@local
+	@preLocked
+	public native void setRegionName(@dereferenced final StringId name);
+
 	@preLocked
 	public void setCityRank(byte rank) {
 		cityRank = rank;
@@ -433,6 +530,9 @@ class CityRegion extends Region {
 	public void setZoningEnabled(boolean val) {
 		zoningEnabled = val;
 	}
+
+	@preLocked
+	public native void setRadius(float rad);
 
 	@preLocked
 	public void setCityHall(StructureObject building) {

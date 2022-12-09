@@ -48,6 +48,7 @@ ObjectManager::ObjectManager(bool initializeTemplates) : DOBObjectManager() {
 	databaseManager->loadObjectDatabase("missionobjectives", true);
 	databaseManager->loadObjectDatabase("missionobservers", true);
 	databaseManager->loadObjectDatabase("cityregions", true);
+	databaseManager->loadObjectDatabase("newcityregions", true);
 	databaseManager->loadObjectDatabase("guilds", true);
 	databaseManager->loadObjectDatabase("spawnareas", true);
 	databaseManager->loadObjectDatabase("spawnobservers", true);
@@ -101,6 +102,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<SpawnArea>(SceneObjectType::SPAWNAREA);
 	objectFactory.registerObject<CampSiteActiveArea>(SceneObjectType::CAMPAREA);
 	objectFactory.registerObject<Region>(SceneObjectType::REGIONAREA);
+		objectFactory.registerObject<CityRegion>(SceneObjectType::CITYAREA);
 	objectFactory.registerObject<NavArea>(SceneObjectType::NAVMESHAREA);
 	objectFactory.registerObject<StaticObject>(SceneObjectType::STATICOBJECT);
 	objectFactory.registerObject<Creature>(SceneObjectType::CREATURE);

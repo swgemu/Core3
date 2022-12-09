@@ -263,6 +263,7 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case MISSIONSPAWNAREA:			return "@got_n:misc";
 		case MISSIONRECONAREA:			return "@got_n:misc";
 		case SPAWNAREA:					return "@got_n:misc";
+		case CITYAREA:					return "@got_n:misc";
 		case ACTIVEAREA:				return "@got_n:misc";
 		case CAMPAREA:					return "@got_n:misc";
 		case FSVILLAGEAREA:				return "@got_n:misc";
