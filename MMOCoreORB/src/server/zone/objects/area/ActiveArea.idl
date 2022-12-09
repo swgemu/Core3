@@ -152,19 +152,19 @@ class ActiveArea extends SceneObject {
 		return false;
 	}
 
-	@dirty
-	public abstract boolean isCityRegion() {
-		return false;
-	}
-
 	@read
 	public abstract boolean isNavArea() {
 		return false;
 	}
 
 	@dirty
+	public abstract boolean isCityRegion() {
+		return areaFlags & CITY;
+	}
+
+	@dirty
 	public abstract boolean isCampArea() {
-		return false;
+		return areaFlags & CAMPINGAREA;
 	}
 
 	@read

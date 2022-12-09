@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/guild/GuildObject.h"
 
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/resource/ResourceManager.h"

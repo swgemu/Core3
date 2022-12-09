@@ -25,7 +25,7 @@
 #include "terrain/manager/TerrainManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/NewCityRegion.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
@@ -326,7 +326,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 	SortedVector<ManagedReference<ActiveArea*> > objects;
 	zone->getInRangeActiveAreas(x, y, &objects, true);
 
-	ManagedReference<CityRegion*> city;
+	ManagedReference<NewCityRegion*> city;
 
 	for (int i = 0; i < objects.size(); ++i) {
 		ActiveArea* area = objects.get(i).get();
@@ -666,7 +666,7 @@ int StructureManager::declareResidence(CreatureObject* player, StructureObject* 
 	uint64 declaredOidResidence = ghost->getDeclaredResidence();
 
 	ManagedReference<BuildingObject*> declaredResidence = server->getObject(declaredOidResidence).castTo<BuildingObject*>();
-	ManagedReference<CityRegion*> cityRegion = buildingObject->getCityRegion().get();
+	ManagedReference<NewCityRegion*> cityRegion = buildingObject->getCityRegion().get();
 
 	CityManager* cityManager = server->getCityManager();
 
@@ -676,7 +676,7 @@ int StructureManager::declareResidence(CreatureObject* player, StructureObject* 
 			return 1;
 		}
 
-		ManagedReference<CityRegion*> residentCity = declaredResidence->getCityRegion().get();
+		ManagedReference<NewCityRegion*> residentCity = declaredResidence->getCityRegion().get();
 
 		if (residentCity != nullptr) {
 			Locker lock(residentCity, player);
@@ -991,7 +991,7 @@ void StructureManager::reportStructureStatus(CreatureObject* creature, Structure
 	if (!structure->isCivicStructure() && !structure->isGCWBase()) {
 		// property tax
 		float propertytax = 0.f;
-		ManagedReference<CityRegion*> city = structure->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = structure->getCityRegion().get();
 		if (city != nullptr) {
 			propertytax = city->getPropertyTax() / 100.f * structure->getMaintenanceRate();
 			status->addMenuItem("@city/city:property_tax_prompt : " + String::valueOf(ceil(propertytax)) + " cr/hr");

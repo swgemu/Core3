@@ -121,7 +121,7 @@ public:
 			if (!(trainerCreo->getOptionsBitmask() & OptionBitmask::CONVERSE))
 				continue;
 
-			ManagedReference<CityRegion*> city = trainerCreo->getCityRegion().get();
+			ManagedReference<NewCityRegion*> city = trainerCreo->getCityRegion().get();
 
 			// Make sure it's not a player-city trainer.
 			if (city != nullptr && !city->isClientRegion())

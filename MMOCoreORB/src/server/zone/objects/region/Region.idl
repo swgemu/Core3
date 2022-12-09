@@ -17,17 +17,6 @@ class Region extends ActiveArea {
 		super();
 	}
 
-	@preLocked
-	public void setCityRegion(CityRegion city) {
-		cityRegion = city;
-	}
-
-	@weakReference
-	@read
-	public CityRegion getCityRegion() {
-		return cityRegion;
-	}
-
 	public native void notifyLoadFromDatabase();
 
 	public void enqueueEnterEvent(SceneObject obj) {
@@ -36,32 +25,6 @@ class Region extends ActiveArea {
 
 	public void enqueueExitEvent(SceneObject obj) {
 		notifyExit(obj);
-	}
-
-	public void notifyEnter(SceneObject object) {
-		super.notifyEnter(object);
-
-		CityRegion strongReference = cityRegion;
-
-		if (!strongReference)
-			return;
-
-		synchronized (strongReference) {
-			strongReference.notifyEnter(object);
-		}
-	}
-
-	public void notifyExit(SceneObject object) {
-		super.notifyExit(object);
-
-		CityRegion strongReference = cityRegion;
-
-		if (!strongReference)
-			return;
-
-		synchronized (strongReference) {
-			strongReference.notifyExit(object);
-		}
 	}
 
 	@dirty

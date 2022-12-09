@@ -346,7 +346,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 
 		float cityTax = 0.0f;
 
-		ManagedReference<CityRegion*> city = _this.getReferenceUnsafeStaticCast()->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = _this.getReferenceUnsafeStaticCast()->getCityRegion().get();
 
 		if(city != nullptr) {
 			cityTax = city->getPropertyTax();
@@ -516,7 +516,7 @@ void StructureObjectImplementation::updateStructureStatus() {
 		lastMaintenanceTime.updateToCurrentTime();
 	}
 
-	ManagedReference<CityRegion*> city = getCityRegion().get();
+	ManagedReference<NewCityRegion*> city = getCityRegion().get();
 
 	if(isBuildingObject() && city != nullptr && !city->isClientRegion() && city->getPropertyTax() > 0){
 		cityTaxDue = city->getPropertyTax() / 100.0f * maintenanceDue;

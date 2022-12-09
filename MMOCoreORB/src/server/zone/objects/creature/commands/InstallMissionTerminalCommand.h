@@ -31,7 +31,7 @@ public:
 		if (!ghost->hasAbility("installmissionterminal"))
 			return GENERALERROR;
 
-		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
+		ManagedReference<NewCityRegion*> city = creature->getCityRegion().get();
 
 		if (city == nullptr)
 			return GENERALERROR;
