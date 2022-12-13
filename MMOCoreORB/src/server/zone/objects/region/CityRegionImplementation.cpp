@@ -505,14 +505,22 @@ void CityRegionImplementation::destroyNavMesh() {
 
 void CityRegionImplementation::createNavMesh(const String& queue, bool forceRebuild) {
 	String name = getCityRegionName();
-	name = name.subString(name.lastIndexOf(':')+ 1);
+
+	//name = name.subString(name.lastIndexOf(':')+ 1);
 
 	if (!isClientRegion()) {
 		name = name + "_player_city";
 	}
 
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	if (planetManager == nullptr) {
+		error() << "Failed to create NavMesh for City Region: " << name;
+		return;
+	}
+
 	if (navMesh == nullptr) {
-		navMesh = zone->getPlanetManager()->getNavArea(name);
+		navMesh = planetManager->getNavArea(name);
 	}
 
 	if (forceRebuild)
@@ -597,7 +605,7 @@ void CityRegionImplementation::createNavMesh(const String& queue, bool forceRebu
 
 	navMesh = strongMesh;
 
-	zone->getPlanetManager()->addNavArea(name, strongMesh);
+	planetManager->addNavArea(name, strongMesh);
 }
 
 void CityRegionImplementation::setZone(Zone* zne) {
@@ -682,12 +690,18 @@ String CityRegionImplementation::getCityRegionName() {
 	if (!customRegionName.isEmpty())
 		return customRegionName;
 
-	return regionName.toString();
+	if (getRegion(0) != nullptr)
+		getRegion(0)->getAreaName();
+
+	return regionName.getFullPath();
 }
 
 String CityRegionImplementation::getRegionDisplayedName() {
 	if (!customRegionName.isEmpty())
 		return customRegionName;
+
+	if (getRegion(0) != nullptr)
+		getRegion(0)->getAreaName();
 
 	return StringIdManager::instance()->getStringId(regionName.getFullPath().hashCode()).toString();
 }

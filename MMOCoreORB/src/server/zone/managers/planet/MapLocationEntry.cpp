@@ -118,7 +118,6 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 		}
 	}
 
-
 	displayName = newName;
 }
 
@@ -160,8 +159,26 @@ bool MapLocationEntry::insertToMessage(BaseMessage* message, CreatureObject* pla
 
 	message->insertUnicode(displayName);
 
-	message->insertFloat(object->getWorldPositionX());
-	message->insertFloat(object->getWorldPositionY());
+	float x = object->getWorldPositionX();
+	float y = object->getWorldPositionY();
+
+	if (object->isRegion()) {
+		Region* region = object.castTo<Region*>();
+
+		if (region != nullptr) {
+			AreaShape* shape = region->getAreaShape();
+
+			if (shape != nullptr) {
+				Vector3 location = shape->getAreaCenter();
+
+				x = location.getX();
+				y = location.getY();
+			}
+		}
+	}
+
+	message->insertFloat(x);
+	message->insertFloat(y);
 
 	message->insertByte(category->getIndex());
 	message->insertByte((object->getPlanetMapSubCategory() != nullptr) ? object->getPlanetMapSubCategory()->getIndex() : 0);

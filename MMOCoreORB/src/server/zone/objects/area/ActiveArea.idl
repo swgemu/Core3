@@ -152,11 +152,6 @@ class ActiveArea extends SceneObject {
 		return false;
 	}
 
-	@dirty
-	public abstract boolean isCityRegion() {
-		return false;
-	}
-
 	@read
 	public abstract boolean isNavArea() {
 		return false;
@@ -170,6 +165,11 @@ class ActiveArea extends SceneObject {
 	@read
 	public boolean isUndefinedRegion() {
 		return areaFlags & UNDEFINEDAREA;
+	}
+
+	@read
+	public boolean isCityRegion() {
+		return  areaFlags & CITY;
 	}
 
 	@read
