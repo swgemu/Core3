@@ -862,8 +862,6 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 	float innerRadius = 0;
 	float outerRadius = 0;
 
-
-
 	LuaObject areaShapeObject = regionObject.getObjectAt(4);
 
 	if (!areaShapeObject.isValidTable()) {
@@ -910,18 +908,13 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 		return;
 
 	ManagedReference<Region*> region = nullptr;
-	bool spawnAreaRegion = ((type & ActiveArea::SPAWNAREA) || (type & ActiveArea::WORLDSPAWNAREA) || (type & ActiveArea::NOSPAWNAREA));
+	bool spawnAreaRegion = ((type & ActiveArea::SPAWNAREA) || (type & ActiveArea::WORLDSPAWNAREA));
 
 	if (spawnAreaRegion) {
 		region = dynamic_cast<Region*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/spawn_area.iff"), 0, "spawnareas"));
 #ifdef DEBUG_REGIONS
 		info(true) << " ~~~ Creating spawn_area object ~~~ ";
 #endif // DEBUG_REGIONS
-	/*} else if (type & ActiveArea::CITY) {
-		region = dynamic_cast<Region*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/city_area.iff"), 0, "cityregions"));
-#ifdef DEBUG_REGIONS
-		info(true) << " --- Creating city_area object --- ";
-#endif // DEBUG_REGIONS*/
 	} else {
 		region = dynamic_cast<Region*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/region_area.iff"), 0, "regions"));
 #ifdef DEBUG_REGIONS
@@ -975,12 +968,12 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 
 	region->setRegionFlags(type);
 
+	CreatureManager* creatureMan = zone->getCreatureManager();
+
 	if (spawnAreaRegion) {
 #ifdef DEBUG_REGIONS
 		info(true) << "Adding Spawn Area";
 #endif // DEBUG_REGIONS
-
-		CreatureManager* creatureMan = zone->getCreatureManager();
 		ManagedReference<SpawnArea*> area = region.castTo<SpawnArea*>();
 
 		if (creatureMan != nullptr && area != nullptr) {
@@ -1010,9 +1003,7 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 
 				spawnGroups.pop();
 
-				if (type & ActiveArea::NOSPAWNAREA) {
-					creatureMan->addNoSpawnArea(area);
-				}
+
 
 				// Add to Spawn Area Map
 				creatureMan->addSpawnAreaToMap(name.hashCode(), area);
@@ -1020,21 +1011,31 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 		}
 	}
 
+	region->initializePosition(x, 0, y);
+	zone->transferObject(region, -1, true);
+
 	// Region is a City, add to cityRegionMap list
 	if (type & ActiveArea::CITY) {
-		ManagedReference<CityRegion*> cityRegion = region.castTo<CityRegion*>();
+		ManagedReference<CityRegion*> cityRegion = new CityRegion();
+
+		if (cityRegion == nullptr) {
+			region->destroyObjectFromWorld(false);
+			return;
+		}
 
 #ifdef DEBUG_REGIONS
 		info(true) << "Adding City: " << name;
 #endif // DEBUG_REGIONS
 
-		Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
+		Locker clocker(cityRegion, region);
 
-		if (cityCat != nullptr)
-			region->setPlanetMapCategory(cityCat);
+		cityRegion->deploy();
 
-		// Register with Planetary Map
-		zone->registerObjectWithPlanetaryMap(region);
+		cityRegion->setRegionName(name);
+		cityRegion->setZone(zone);
+
+		cityRegion->addRegion(region);
+		region->setCityRegion(cityRegion);
 
 		// Attach Scenery
 		ManagedReference<SceneObject*> scenery = nullptr;
@@ -1058,13 +1059,21 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 			scenery->initializePosition(x, zone->getHeight(x, y) + 100, y);
 			region->attachScenery(scenery);
 		}
+
+		regionMap.addCityRegion(cityRegion);
+
+		// Register City on Map
+		Reference<const PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
+
+		if (cityCat != nullptr)
+			region->setPlanetMapCategory(cityCat);
+
+		// Register with Planetary Map
+		zone->registerObjectWithPlanetaryMap(region);
 	} else {
 		// Add Region to map
 		regionMap.addRegion(region);
 	}
-
-	region->initializePosition(x, 0, y);
-	zone->transferObject(region, -1, true);
 
 #ifdef DEBUG_REGIONS
 	info(true) << "readRegion -- Name: " << name << "   COMPLETE";

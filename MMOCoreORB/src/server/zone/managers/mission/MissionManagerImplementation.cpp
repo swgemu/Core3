@@ -826,7 +826,12 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 				SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 				zone->getInRangeActiveAreas(startPos.getX(), startPos.getY(), &activeAreas, true);
 				for (int i = 0; i < activeAreas.size(); ++i) {
-					if (activeAreas.get(i)->isMunicipalZone()) {
+					ActiveArea* area = activeAreas.get(i);
+
+					if (area == nullptr)
+						continue;
+
+					if (area->isMunicipalZone() || area->isCityRegion()) {
 						foundPosition = false;
 					}
 				}
