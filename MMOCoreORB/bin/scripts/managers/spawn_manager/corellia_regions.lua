@@ -20,7 +20,7 @@ corellia_regions = {
 	{"southedge_corellia_nobuild", -7995, -8000, {RECTANGLE, 8000, -7640}, NOBUILDZONEAREA},
 	{"eastedge_corellia_nobuild", 7640, -7640, {RECTANGLE, 8000, 7640}, NOBUILDZONEAREA},
 
-	-- POIs and Decor
+	-- Named Regions, POIs and Decor
 	{"sdungeon_rogue_corsec_bunker", 5225, 1567, {CIRCLE, 128}, NOBUILDZONEAREA},
 	{"sdungeon_imperial_outpost", 4664, -5784, {CIRCLE, 128}, NOBUILDZONEAREA},
 	{"corellia_rebel_hideout", -6507, 5992, {CIRCLE, 225}, NOBUILDZONEAREA},

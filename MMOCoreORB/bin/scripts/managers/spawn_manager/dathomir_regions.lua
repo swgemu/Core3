@@ -21,7 +21,7 @@ dathomir_regions = {
 	{"eastedge_dathomir_nobuild", 7640, -7640, {RECTANGLE, 8000, 7640}, NOBUILDZONEAREA},
 	{"old_battlefield_nobuild_dath1", 4162, -4279, {CIRCLE, 256}, NOBUILDZONEAREA},
 
-	-- POIs and Decor
+	-- Named Regions, POIs and Decor
 	{"@dathomir_region_names:nightsister_clan", -4069, -184, {CIRCLE, 400}, NOBUILDZONEAREA + NOSPAWNAREA},
 	{"dathomir_survey_outpost_1", -99, -1590, {CIRCLE, 10}, UNDEFINEDAREA},
 	{"dathomir_survey_outpost_2", -78.512398, -1618, {CIRCLE, 10}, UNDEFINEDAREA},
@@ -162,7 +162,7 @@ dathomir_regions = {
 	{ "dathomir_fs_combat_camp24", 1369, 1217, {CIRCLE, 150}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{ "dathomir_fs_combat_camp25", 3076, 2174, {CIRCLE, 150}, NOSPAWNAREA + NOBUILDZONEAREA},
 
-	-- Cities / Outpost
+	-- Cities / Outposts
 	{"@dathomir_region_names:dathomir_survey_outpost", -85, -1600, {CIRCLE, 400}, CITY + NOSPAWNAREA},
 	{"dathomir_survey_outpost_nobuild_1", -85, -1600, {CIRCLE, 200}, NOBUILDZONEAREA},
 	{"@dathomir_region_names:dathomir_trade_outpost", 599, 3071, {CIRCLE, 400}, CITY + NOSPAWNAREA},

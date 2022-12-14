@@ -45,18 +45,21 @@ public:
 			zoneName = zone->getZoneName();
 		}
 
-		SortedVector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
+		if (player->getCityRegion() != nullptr) {
+			CityRegion* cityRegion = player->getCityRegion().get();
 
-		for (int i = 0; i < areas->size(); i++) {
-			ActiveArea* area = areas->get(i);
+			if (cityRegion != nullptr)
+				regionName =  cityRegion->getCityRegionName();
+		} else {
+			SortedVector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
 
-			if (area == nullptr || area->isSpawnArea())
-				continue;
+			for (int i = 0; i < areas->size(); i++) {
+				ActiveArea* area = areas->get(i);
 
-			String areaName = area->getAreaName();
+				if (area == nullptr || !area->isNamedRegion())
+					continue;
 
-			if (areaName.contains("@")) {
-				regionName = areaName;
+				regionName = area->getAreaName();
 				break;
 			}
 		}

@@ -843,6 +843,10 @@ void PlanetManagerImplementation::loadRegions() {
 	lua = nullptr;
 
 	info(true) << "Loaded " + String::valueOf(regionMap.getTotalRegions()) + " regions.";
+
+
+
+	// TODO: Handle building navmeshes for the regions that are marked NAVAREA - H
 }
 
 void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
@@ -1233,7 +1237,7 @@ bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
 
-		if (area->isCityRegion() || area->isMunicipalZone() || area->isNoSpawnArea()) {
+		if (area->isCityRegion() || area->isNoSpawnArea()) {
 			return false;
 		}
 

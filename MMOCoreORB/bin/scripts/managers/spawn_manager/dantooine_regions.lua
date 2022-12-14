@@ -21,7 +21,7 @@ dantooine_regions = {
 	{"dantooine_the_warren_nobuild_1", -555, -3834, {CIRCLE, 250}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"westedge_dantooine_nobuild", -8000, -8000, {RECTANGLE, -7640, 7640}, NOSPAWNAREA + NOBUILDZONEAREA},
 
-	-- PoI's and Decor
+	-- Named Regions, POIs and Decor
 	{"2_statues_52", 5779, -2997, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"3_walls_31", 1937, 2170, {CIRCLE, 25}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"Circle_of_stones", -4553, 2744, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},

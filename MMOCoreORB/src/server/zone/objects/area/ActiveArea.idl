@@ -48,9 +48,9 @@ class ActiveArea extends SceneObject {
 	public static final int NOWORLDSPAWNAREA = 0x000008;
 	public static final int NOBUILDZONEAREA = 0x000010;
 	public static final int CAMPINGAREA = 0x000020;
-	public static final int OUTPOST = 0x000040;
-	public static final int CITY = 0x000080;
-	public static final int MUNICIPLEZONE = 0x000100;
+	public static final int CITY = 0x000040;
+	public static final int NAVAREA = 0x000080;
+	public static final int NAMEDREGION = 0x000100;
 
 	public static final int CIRCLE = 1;
 	public static final int RECTANGLE = 2;
@@ -203,8 +203,13 @@ class ActiveArea extends SceneObject {
 	}
 
 	@read
-	public boolean isMunicipalZone() {
-		return areaFlags & MUNICIPLEZONE;
+	public boolean shouldBuildNavmesh() {
+		return areaFlags & NAVAREA;
+	}
+
+	@read
+	public boolean isNamedRegion() {
+		return areaFlags & NAMEDREGION;
 	}
 
 	@read

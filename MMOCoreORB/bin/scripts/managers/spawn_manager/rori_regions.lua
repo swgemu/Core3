@@ -23,7 +23,7 @@ rori_regions = {
 	{"old_battlefield_nobuild_ror2", 2879, -1277, {CIRCLE, 256}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"old_battlfield_nobuild_ror3", -3372, -6972, {CIRCLE, 192}, NOSPAWNAREA + NOBUILDZONEAREA},
 
-	-- POIs and Decor
+	-- Named Regions, POIs and Decor
 	{"area", 960.867, 4041.38, {CIRCLE, 30}, UNDEFINEDAREA},
 	{"area0", -426.142, 3259.27, {CIRCLE, 30}, UNDEFINEDAREA},
 	{"area11", -752.173, -4090.2, {CIRCLE, 30}, UNDEFINEDAREA},
