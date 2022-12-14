@@ -24,7 +24,7 @@ naboo_regions = {
 	{"westedge_naboo_nobuild", -8000, -8000, {RECTANGLE, -7621, 7640}, NOBUILDZONEAREA},
 
 
-	-- POIs and Deco
+	-- Named Regions, POIs and Decor
 	{"bounty_hunter_camp", 5029, 4156, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"campfire_and_bones", 3939, 2701, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"campfire_and_ruins", -1771, 2387, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
@@ -440,17 +440,17 @@ naboo_regions = {
 	{"wreckage", 6314, 4248, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 
 	-- Cities
-	{"deeja_peak", 5048, -1528, {CIRCLE, 616}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
+	{"@naboo_region_names:deeja_peak", 5048, -1528, {CIRCLE, 616}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
 	{"deeja_peak_nobuild_1", 5048, -1528, {CIRCLE, 1200}, NOBUILDZONEAREA},
-	{"kaadara", 5168, 6704, {CIRCLE, 320}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
+	{"@naboo_region_names:kaadara", 5168, 6704, {CIRCLE, 320}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
 	{"kaadara_nobuild_1", 5168, 6704, {CIRCLE, 640}, NOBUILDZONEAREA},
-	{"keren", 336, 2140, {RECTANGLE, 2512, 3264}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
+	{"@naboo_region_names:keren", 336, 2140, {RECTANGLE, 2512, 3264}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
 	{"keren_nobuild_1", -200, 1756, {RECTANGLE, 3000, 3700}, NOBUILDZONEAREA},
-	{"moenia", 4800, -4784, {CIRCLE, 336}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
+	{"@naboo_region_names:moenia", 4800, -4784, {CIRCLE, 336}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
 	{"moenia_nobuild_1", 4800, -4784, {CIRCLE, 700}, NOBUILDZONEAREA},
-	{"theed", -6160, 3920, {RECTANGLE, -4480, 4816}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
+	{"@naboo_region_names:theed", -6160, 3920, {RECTANGLE, -4480, 4816}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
 	{"theed_nobuild_1", -6600, 3420, {RECTANGLE, -3980, 5316}, NOBUILDZONEAREA},
-	{"lake_retreat", -5568, 0, {CIRCLE, 176}, CITY + NOSPAWNAREA + NOBUILDZONEAREA},
+	{"@naboo_region_names:lake_retreat", -5568, 0, {CIRCLE, 176}, CITY + NOSPAWNAREA + NOBUILDZONEAREA},
 
 	--Spawns
 	{"central_mountain_range", -7540, -1942, {RECTANGLE, 7640, 1000}, SPAWNAREA, {"naboo_world"}, 256},

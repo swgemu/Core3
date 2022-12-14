@@ -831,7 +831,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 					if (area == nullptr)
 						continue;
 
-					if (area->isMunicipalZone() || area->isCityRegion()) {
+					if (area->isCityRegion()) {
 						foundPosition = false;
 					}
 				}

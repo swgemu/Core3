@@ -23,7 +23,7 @@ talus_regions = {
 	{"old_battlefield_nobuild_tal2", -5355, 2784, {CIRCLE, 256}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"old_battlefield_nobuild_tal3", -411, 4639, {CIRCLE, 256}, NOSPAWNAREA + NOBUILDZONEAREA},
 
-	-- POIs and Decor
+	-- Named Regions, POIs and Decor
 	{"aakuan_champions_cave", 5928, 4656, {CIRCLE, 75}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"aakuan_tent", -3685.93, -551.716, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"animal_skull", 2119.59, 1272.85, {CIRCLE, 15}, NOSPAWNAREA + NOBUILDZONEAREA},
@@ -188,11 +188,11 @@ talus_regions = {
 	{"gcw_base_01_talus_nobuild", -5186, 280, {CIRCLE, 200}, NOSPAWNAREA + NOBUILDZONEAREA},
 
 	-- Cities
-	{"dearic", 425, -3000, {CIRCLE, 400}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
+	{"@talus_region_names:dearic", 425, -3000, {CIRCLE, 400}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
 	{"dearic_nobuild_1", 425, -3000, {CIRCLE, 1000}, NOBUILDZONEAREA},
-	{"nashal", 4360, 5251, {CIRCLE, 350}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
+	{"@talus_region_names:nashal", 4360, 5251, {CIRCLE, 350}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
 	{"nashal_nobuild_1", 4361, 5251, {CIRCLE, 800}, NOBUILDZONEAREA},
-	{"talus_imperial_outpost", -2171.24, 2296.33, {CIRCLE, 240}, CITY + NOSPAWNAREA + NOBUILDZONEAREA},
+	{"@talus_region_names:talus_imperial_outpost", -2171.24, 2296.33, {CIRCLE, 240}, CITY + NOSPAWNAREA + NOBUILDZONEAREA},
 
 	-- Spawn Areas
 	{"dearic_easy_newbie", 432, -3008, {CIRCLE, 1750}, SPAWNAREA + NOWORLDSPAWNAREA, {"talus_easy"}, 256},
