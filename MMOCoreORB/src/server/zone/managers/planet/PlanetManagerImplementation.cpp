@@ -58,6 +58,7 @@ void PlanetManagerImplementation::initialize() {
 
 	// Load Planet Regions
 	loadRegions();
+	buildRegionNavAreas();
 	buildCityNavMeshes();
 
 	if (zone->getZoneName() == "dathomir") {
@@ -166,11 +167,6 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		LuaObject badges = luaObject.getObjectField("badgeAreas");
 		loadBadgeAreas(&badges);
 		badges.pop();
-
-		LuaObject navAreas = luaObject.getObjectField("navAreas");
-		loadNavAreas(&navAreas);
-		navAreas.pop();
-
 	} else {
 		warning("Configuration settings not found.");
 	}
@@ -292,26 +288,42 @@ void PlanetManagerImplementation::loadBadgeAreas(LuaObject* badges) {
 	}
 }
 
-void PlanetManagerImplementation::loadNavAreas(LuaObject* areas) {
-	VectorMap<String, Vector<float>> configAreas;
+void PlanetManagerImplementation::buildRegionNavAreas() {
+	int totalRegions = regionMap.getTotalRegions();
 
-	if (areas->isValidTable()) {
-		for (int i = 1; i <= areas->getTableSize(); ++i) {
-			lua_State* L = areas->getLuaState();
-			lua_rawgeti(L, -1, i);
+	VectorMap<String, Vector<float>> navAreas;
 
-			LuaObject areaTable(L);
+	for (int i = 0; i < totalRegions; i++) {
+		Region* region = regionMap.getRegion(i);
 
-			String name = areaTable.getStringAt(1);
-			Vector<float> locs;
-			locs.add(areaTable.getFloatAt(2));
-			locs.add(areaTable.getFloatAt(3));
-			locs.add(areaTable.getFloatAt(4));
+		if (region == nullptr || !region->shouldBuildNavmesh())
+			continue;
 
-			configAreas.put(name, locs);
+		String name = region->getAreaName();
 
-			areaTable.pop();
+		if (name.contains(":")) {
+			name = name.subString(name.lastIndexOf(':') + 1);
 		}
+
+		name = zone->getZoneName() + "_region_" + name;
+
+		float x = region->getPositionX();
+		float y = region->getPositionY();
+		float radius = region->getRadius();
+
+		if (region->getAreaShape() != nullptr) {
+			Vector3 centerLoc = region->getAreaShape()->getAreaCenter();
+
+			x = centerLoc.getX();
+			y = centerLoc.getY();
+		}
+
+		Vector<float> location;
+		location.add(x);
+		location.add(y);
+		location.add(radius);
+
+		navAreas.put(name, location);
 	}
 
 	String zoneName = zone->getZoneName();
@@ -371,15 +383,17 @@ void PlanetManagerImplementation::loadNavAreas(LuaObject* areas) {
 
 	uint32 hashCode = STRING_HASHCODE("object/region_navmesh.iff");
 
-	for (int i = 0; i < configAreas.size(); i++) {
-		String name = configAreas.elementAt(i).getKey();
-		Vector<float> loc = configAreas.get(name);
-		bool create = false, destroy = server->getZoneServer()->shouldDeleteNavAreas();
+	for (int i = 0; i < navAreas.size(); i++) {
+		String name = navAreas.elementAt(i).getKey();
+
+		Vector<float> location = navAreas.get(name);
+		bool create = false;
+		bool destroy = server->getZoneServer()->shouldDeleteNavAreas();
 
 		if (navMeshAreas.contains(name)) {
 			NavArea* area = navMeshAreas.get(name);
 
-			if (area->getPositionX() != loc.get(0) || area->getPositionY() != loc.get(1) || area->getRadius() != loc.get(2)) {
+			if (area->getPositionX() != location.get(0) || area->getPositionY() != location.get(1) || area->getRadius() != location.get(2)) {
 				destroy = true;
 			}
 		} else {
@@ -406,8 +420,10 @@ void PlanetManagerImplementation::loadNavAreas(LuaObject* areas) {
 			ManagedReference<NavArea*> areaObject = server->getZoneServer()->createObject(hashCode, "navareas", 1).castTo<NavArea*>();
 
 			Locker objLocker(areaObject);
-			Vector3 position(loc.get(0), 0, loc.get(1));
-			areaObject->initializeNavArea(position, loc.get(2), zone, name);
+
+			Vector3 position(location.get(0), 0, location.get(1));
+
+			areaObject->initializeNavArea(position, location.get(2), zone, name);
 			areaObject->disableMeshUpdates(true);
 			navMeshAreas.put(name, areaObject);
 
@@ -843,10 +859,6 @@ void PlanetManagerImplementation::loadRegions() {
 	lua = nullptr;
 
 	info(true) << "Loaded " + String::valueOf(regionMap.getTotalRegions()) + " regions.";
-
-
-
-	// TODO: Handle building navmeshes for the regions that are marked NAVAREA - H
 }
 
 void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
@@ -1006,8 +1018,6 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 				}
 
 				spawnGroups.pop();
-
-
 
 				// Add to Spawn Area Map
 				creatureMan->addSpawnAreaToMap(name.hashCode(), area);

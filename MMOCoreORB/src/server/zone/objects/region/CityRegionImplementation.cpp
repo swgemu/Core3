@@ -506,16 +506,19 @@ void CityRegionImplementation::destroyNavMesh() {
 void CityRegionImplementation::createNavMesh(const String& queue, bool forceRebuild) {
 	String name = getCityRegionName();
 
-	//name = name.subString(name.lastIndexOf(':')+ 1);
+	if (name.contains(":"))
+		name = name.subString(name.lastIndexOf(':') + 1);
+
+	name = zone->getZoneName() + "_city_" + name;
 
 	if (!isClientRegion()) {
-		name = name + "_player_city";
+		name = name + "_player";
 	}
 
 	PlanetManager* planetManager = zone->getPlanetManager();
 
 	if (planetManager == nullptr) {
-		error() << "Failed to create NavMesh for City Region: " << name;
+		error() << "Planet Manager is nullptr in create NavMesh for City Region: " << name;
 		return;
 	}
 
@@ -567,8 +570,15 @@ void CityRegionImplementation::createNavMesh(const String& queue, bool forceRebu
 				continue;
 
 			//const Sphere &sphere = region->regionBounds.get(s);
+			Vector3 centerLoc = region->getWorldPosition();
+
+			if (region->getAreaShape() != nullptr) {
+				centerLoc = region->getAreaShape()->getAreaCenter();
+			}
+
+			const Vector3 &vert = centerLoc;
 			const float &radius = region->getRadius();
-			const Vector3 &vert = region->getWorldPosition();
+
 			const float &x = vert.getX();
 			const float &y = vert.getY();
 			const float &z = vert.getZ();

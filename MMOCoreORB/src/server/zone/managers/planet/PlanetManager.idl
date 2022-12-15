@@ -146,7 +146,7 @@ class PlanetManager extends ManagedService implements Logger {
 	private native void loadBadgeAreas(LuaObject lua);
 
 	@local
-	private native void loadNavAreas(LuaObject lua);
+	private native void buildRegionNavAreas();
 
 	public void addNavArea(final string name, NavArea area) {
 		navMeshAreas.put(name, area);
