@@ -11,7 +11,7 @@
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-require("scripts.managers.spawn_manager.regions")
+require("scripts.screenplays.regions.regions")
 
 tatooine_regions = {
 	{"alkhara_camp", -1260, 5463, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},

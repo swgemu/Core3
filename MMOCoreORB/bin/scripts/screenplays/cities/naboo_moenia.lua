@@ -173,7 +173,7 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "mummer_punk", 300, getRandomNumber(10) + 4856.8, 4.2, getRandomNumber(10) + -4701.5, getRandomNumber(360), 0)
 
 	--newb grind starter spawns
-	spawnMobile(self.planet, "diseased_nuna", 300, getRandomNumber(10) + 4599.2, 5.0, getRandomNumber(10) + -4806.4, getRandomNumber(360), 0)
+	--[[spawnMobile(self.planet, "diseased_nuna", 300, getRandomNumber(10) + 4599.2, 5.0, getRandomNumber(10) + -4806.4, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "diseased_nuna", 300, getRandomNumber(10) + 4599.2, 5.0, getRandomNumber(10) + -4806.4, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "diseased_nuna", 300, getRandomNumber(10) + 4599.2, 5.0, getRandomNumber(10) + -4806.4, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "gungan_hermit", 300, getRandomNumber(10) + 4782, 4.2, getRandomNumber(10) + -4526, getRandomNumber(360), 0)
@@ -192,5 +192,5 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "mott", 300, getRandomNumber(10) + 4577, 6.5, getRandomNumber(10) + -4622, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "mummer_thug", 300, getRandomNumber(10) + 4681, 4.0, getRandomNumber(10) + -4730, getRandomNumber(360), 0)
 	spawnMobile(self.planet, "mummer_thug", 300, getRandomNumber(10) + 4681, 4.0, getRandomNumber(10) + -4730, getRandomNumber(360), 0)
-	spawnMobile(self.planet, "mummer_thug", 300, getRandomNumber(10) + 4681, 4.0, getRandomNumber(10) + -4730, getRandomNumber(360), 0)
+	spawnMobile(self.planet, "mummer_thug", 300, getRandomNumber(10) + 4681, 4.0, getRandomNumber(10) + -4730, getRandomNumber(360), 0)]]
 end

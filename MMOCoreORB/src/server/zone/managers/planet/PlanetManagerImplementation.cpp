@@ -838,7 +838,7 @@ void PlanetManagerImplementation::loadRegions() {
 
 	info(true) << "Loading " << planetName << " regions...";
 
-	lua->runFile("scripts/managers/spawn_manager/" + planetName + "_regions.lua");
+	lua->runFile("scripts/screenplays/regions/" + planetName + "_regions.lua");
 	LuaObject regionObjects = lua->getGlobalObject(planetName + "_regions");
 
 	lua_State* s = regionObjects.getLuaState();
