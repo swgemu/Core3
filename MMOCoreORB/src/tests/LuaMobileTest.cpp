@@ -742,7 +742,7 @@ TEST_F(LuaMobileTest, LuaSpawnManagerTest) {
 
 	for (int i = 0; i < zoneNames.size(); i++) {
 		// Verify regions
-		lua->runFile("scripts/managers/spawn_manager/" + zoneNames.get(i) + "_regions.lua");
+		lua->runFile("scripts/screenplays/regions/" + zoneNames.get(i) + "_regions.lua");
 
 		LuaObject regions = lua->getGlobalObject(zoneNames.get(i) + "_regions");
 

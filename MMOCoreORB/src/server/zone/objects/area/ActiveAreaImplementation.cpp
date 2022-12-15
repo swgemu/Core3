@@ -140,7 +140,16 @@ void ActiveAreaImplementation::sendDebugMessage(SceneObject* object, bool entry)
 	if (isNoWorldSpawnArea())
 		regionTypes << "NOWORLDSPAWNAREA ";
 	if (isNoBuildZone())
-		regionTypes << "NOBUILDZONEAREA";
+		regionTypes << "NOBUILDZONEAREA ";
+	if (isCampingArea())
+		regionTypes << "CAMPINGAREA ";
+	if (isCityRegion())
+		regionTypes << "CITY ";
+	if (shouldBuildNavmesh())
+		regionTypes << "NAVAREA ";
+	if (isNamedRegion())
+		regionTypes << "NAMEDREGION";
+
 
 	debugMsg << " Region Types: (" << regionTypes.toString() << ")";
 
