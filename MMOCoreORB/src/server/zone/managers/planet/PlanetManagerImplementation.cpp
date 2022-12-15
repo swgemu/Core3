@@ -130,7 +130,7 @@ void PlanetManagerImplementation::loadLuaConfig() {
 	Lua* lua = new Lua();
 	lua->init();
 
-	lua->runFile("scripts/managers/planet_manager.lua");
+	lua->runFile("scripts/managers/planet/planet_manager.lua");
 
 	//Get's the configuration settings object for this planet.
 	LuaObject luaObject = lua->getGlobalObject(planetName);
@@ -838,7 +838,7 @@ void PlanetManagerImplementation::loadRegions() {
 
 	info(true) << "Loading " << planetName << " regions...";
 
-	lua->runFile("scripts/screenplays/regions/" + planetName + "_regions.lua");
+	lua->runFile("scripts/managers/planet/" + planetName + "_regions.lua");
 	LuaObject regionObjects = lua->getGlobalObject(planetName + "_regions");
 
 	lua_State* s = regionObjects.getLuaState();

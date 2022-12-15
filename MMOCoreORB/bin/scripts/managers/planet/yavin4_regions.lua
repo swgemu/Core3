@@ -11,7 +11,7 @@
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-require("scripts.screenplays.regions.regions")
+require("scripts.managers.planet.regions")
 
 yavin4_regions = {
 	{"an_outpost", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
