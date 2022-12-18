@@ -45,6 +45,8 @@ includeFile("spawn/talus/talus_medium.lua")
 includeFile("spawn/tatooine/tatooine_world.lua")
 includeFile("spawn/tatooine/tatooine_easy.lua")
 includeFile("spawn/tatooine/tatooine_medium.lua")
+includeFile("spawn/tatooine/tatooine_krayt.lua")
+includeFile("spawn/tatooine/tatooine_krayt_graveyard.lua")
 
 -- Yavin 4
 includeFile("spawn/yavin4/yavin4_world.lua")

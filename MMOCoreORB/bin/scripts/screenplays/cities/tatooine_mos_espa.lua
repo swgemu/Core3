@@ -409,6 +409,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	end
 
 	--Creatures
+	--[[
 	spawnMobile(self.planet, "dwarf_eopie",300,-3217.87,6.7851,2010.86,329.47,0)
 	spawnMobile(self.planet, "dwarf_eopie",300,-3205.35,6.01035,2016.06,32.4216,0)
 	spawnMobile(self.planet, "dwarf_eopie",300,-3208.98,6.12053,2017.03,118.154,0)
@@ -559,4 +560,5 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "worrt",300,-2589.82,5,2226.13,110.267,0)
 	spawnMobile(self.planet, "worrt",300,-2613.31,5.08118,1969.82,347.531,0)
 	spawnMobile(self.planet, "worrt",300,-2628.18,5.04651,1955.15,351.895,0)
+	]]
 end

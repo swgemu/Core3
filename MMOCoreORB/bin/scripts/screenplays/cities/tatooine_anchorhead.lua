@@ -125,7 +125,7 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	end
 
 	--Outside
-	spawnMobile("tatooine", "bantha",300,216.9,11.7,-5425.4,-121,0)
+	--[[spawnMobile("tatooine", "bantha",300,216.9,11.7,-5425.4,-121,0)
 	spawnMobile("tatooine", "cu_pa",300,75.5625,88.9439,-5217.41,276.531,0)
 	spawnMobile("tatooine", "cu_pa",300,81.1976,85.0672,-5200.6,174.759,0)
 	spawnMobile("tatooine", "cu_pa",300,14.564,23.6794,-5543.66,99.0125,0)
@@ -143,5 +143,5 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "zucca_boar",300,176.37,29.6614,-5228.44,23.7572,0)
 	spawnMobile("tatooine", "zucca_boar",300,177.37,29.3367,-5227.44,202.645,0)
 	spawnMobile("tatooine", "zucca_boar",300,171.993,33.695,-5229.99,181.173,0)
-	spawnMobile("tatooine", "zucca_boar",300,-35.6792,30,-5439.35,11.3066,0)
+	spawnMobile("tatooine", "zucca_boar",300,-35.6792,30,-5439.35,11.3066,0)]]
 end
