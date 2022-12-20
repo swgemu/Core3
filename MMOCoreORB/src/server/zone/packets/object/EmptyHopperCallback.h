@@ -11,6 +11,7 @@
 #include "ObjectControllerMessageCallback.h"
 #include "GenericResponse.h"
 #include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 class EmptyHopperCallback : public MessageCallback {
 	uint64 harvesterId;
@@ -117,16 +118,34 @@ public:
 				inso->updateResourceContainerQuantity(container, newQuantity, true);
 			} else if (byte1 == 0) {
 				if (!inventory->isContainerFullRecursive()) {
+					auto zoneServer = player->getZoneServer();
+
+					if (zoneServer == nullptr) {
+						player->error("nullptr zoneServer");
+						return;
+					}
+
+					auto resourceManager = zoneServer->getResourceManager();
+
+					if (resourceManager == nullptr) {
+						player->error("nullptr resourceManager");
+						return;
+					}
+
+					auto resourceSpawner = resourceManager->getResourceSpawner();
+
+					if (resourceSpawner == nullptr) {
+						player->error("nullptr resourceSpawner");
+						return;
+					}
+
 					Reference<ResourceSpawn*> resSpawn = container->getSpawnObject();
 					Locker locker(resSpawn);
 
-					ManagedReference<ResourceContainer*> newContainer = resSpawn->createResource(quantity);
-					if (inventory->transferObject(newContainer, -1, false)) {
-						inventory->broadcastObject(newContainer, true);
+					TransactionLog trx(inso, player, TrxCode::MINED);
 
+					if (resourceSpawner->addResourceToPlayerInventory(trx, player, resSpawn, quantity)) {
 						inso->updateResourceContainerQuantity(container, container->getQuantity() - quantity, true);
-					} else {
-						newContainer->destroyObjectFromDatabase(true);
 					}
 				} else {
 					StringIdChatParameter stringId("error_message", "inv_full");
