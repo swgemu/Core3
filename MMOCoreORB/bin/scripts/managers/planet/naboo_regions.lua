@@ -25,11 +25,11 @@ naboo_regions = {
 
 
 	-- Named Regions, POIs and Decor
-	{"battle_statue", -3603, 3119, {CIRCLE, 32}, NOSPAWNAREA + NOBUILDZONEAREA},
+	{"battle_statue", -3603, 3119, {CIRCLE, 32}, NOBUILDZONEAREA},
 	{"bounty_hunter_camp", 5029, 4156, {CIRCLE, 32}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"campfire_and_bones", 3939, 2701, {CIRCLE, 32}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"campfire_and_ruins", -1771, 2387, {CIRCLE, 32}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"dead_tree", -675, 5203, {CIRCLE, 16}, NOSPAWNAREA + NOBUILDZONEAREA},
+	{"campfire_and_bones", 3939, 2701, {CIRCLE, 32}, NOBUILDZONEAREA},
+	{"campfire_and_ruins", -1771, 2387, {CIRCLE, 32}, NOBUILDZONEAREA},
+	{"dead_tree", -675, 5203, {CIRCLE, 16}, NOBUILDZONEAREA},
 	{"gungan_statue", -1695, 5427, {CIRCLE, 32}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"debris", -2957, 1699, {CIRCLE, 64}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"debris_2", -2405, 566, {CIRCLE, 32}, NOSPAWNAREA + NOBUILDZONEAREA},
@@ -101,7 +101,8 @@ naboo_regions = {
 	{"kaadara_nobuild_1", 5168, 6704, {CIRCLE, 640}, NOBUILDZONEAREA},
 	{"keren_nobuild_1", -200, 1756, {RECTANGLE, 3000, 3700}, NOBUILDZONEAREA},
 	{"moenia_nobuild_1", 4800, -4784, {CIRCLE, 700}, NOBUILDZONEAREA},
-	{"theed_nobuild_1", -6600, 3420, {RECTANGLE, -3980, 5316}, NOBUILDZONEAREA},
+	{"theed_nobuild_1", -6600, 3420, {RECTANGLE, -5270, 5316}, NOBUILDZONEAREA},
+	{"theed_nobuild_2", -5270, 3420, {RECTANGLE, -3980, 5316}, NOBUILDZONEAREA},
 
 	--Spawns
 	{"@naboo_region_names:gallo_mountains", -4584, -7999, {RECTANGLE, 7999, -1500}, SPAWNAREA + NAMEDREGION, {"naboo_world"}, 256},
@@ -161,6 +162,7 @@ naboo_regions = {
 	{"@naboo_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"global", "naboo_world"}, 2048},
 
 	-- Deliver Mission Locations
+	--[[
 	{"deeja_peak_deliver_10", 4998, -1461, {CIRCLE, 2}, UNDEFINEDAREA},
 	{"deeja_peak_deliver_11", 4948, -1536, {CIRCLE, 2}, UNDEFINEDAREA},
 	{"deeja_peak_deliver_12", 5012, -1570, {CIRCLE, 2}, UNDEFINEDAREA},
@@ -522,4 +524,5 @@ naboo_regions = {
 	{"theed_deliver_97", -5219, 4292, {CIRCLE, 5}, UNDEFINEDAREA},
 	{"theed_deliver_98", -5282, 4326, {CIRCLE, 5}, UNDEFINEDAREA},
 	{"theed_deliver_99", -5328, 4267, {CIRCLE, 5}, UNDEFINEDAREA},
+	]]
 }

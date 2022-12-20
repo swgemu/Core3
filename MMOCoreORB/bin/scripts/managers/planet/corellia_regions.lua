@@ -98,13 +98,13 @@ corellia_regions = {
 	{"old_battlefield_nobuild_cor3", 3785, -4037, {CIRCLE, 192}, NOBUILDZONEAREA},
 
 	-- Cities
-	{"@corellia_region_names:coronet", -178, -4504, {CIRCLE, 581}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
-	{"@corellia_region_names:tyrena", -5282, -2526, {CIRCLE, 622}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
-	{"@corellia_region_names:bela_vistal", 6788, -5654, {CIRCLE, 480}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
-	{"@corellia_region_names:kor_vella", -3512, 3184, {CIRCLE, 758}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
-	{"@corellia_region_names:doaba_guerfel", 3272, 5456, {CIRCLE, 632}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
-	{"@corellia_region_names:vreni_island", -5472, -6272, {CIRCLE, 690}, CITY + NOWORLDSPAWNAREA + NOSPAWNAREA},
-	{"@corellia_region_names:vreni_island_1", -5488, -6288, {CIRCLE, 528}, UNDEFINEDAREA},
+	{"@corellia_region_names:coronet", -178, -4504, {CIRCLE, 581}, CITY + NOSPAWNAREA},
+	{"@corellia_region_names:tyrena", -5282, -2526, {CIRCLE, 622}, CITY + NOSPAWNAREA},
+	{"@corellia_region_names:bela_vistal", 6788, -5654, {CIRCLE, 480}, CITY + NOSPAWNAREA},
+	{"@corellia_region_names:kor_vella", -3512, 3184, {CIRCLE, 758}, CITY + NOSPAWNAREA},
+	{"@corellia_region_names:doaba_guerfel", 3272, 5456, {CIRCLE, 632}, CITY + NOSPAWNAREA},
+	{"@corellia_region_names:vreni_island", -5472, -6272, {CIRCLE, 690}, CITY + NOSPAWNAREA},
+	{"@corellia_region_names:vreni_island_1", -5488, -6288, {CIRCLE, 528}, NOBUILDZONEAREA},
 
 	{"coronet_nobuild_1", -178, -4504, {CIRCLE, 1000}, CAMPINGAREA + NOBUILDZONEAREA},
 	{"tyrena_nobuild_1", -5282, -2526, {CIRCLE, 1200}, CAMPINGAREA + NOBUILDZONEAREA},
@@ -112,7 +112,7 @@ corellia_regions = {
 	{"vreni_island_nobuild_1", -5472, -6272, {CIRCLE, 1400}, CAMPINGAREA + NOBUILDZONEAREA},
 	{"kor_vella_nobuild_1", -3512, 3184, {CIRCLE, 1500}, CAMPINGAREA + NOBUILDZONEAREA},
 	{"daoba_guerfel_nobuild_1", 3272, 5456, {CIRCLE, 1200}, CAMPINGAREA + NOBUILDZONEAREA},
-	{"corellia_vreni_island_outdoor_theater", -5442, -6283, {RECTANGLE, -5398, -6221}, NOBUILDZONEAREA + NOSPAWNAREA},
+	{"corellia_vreni_island_outdoor_theater", -5442, -6283, {RECTANGLE, -5398, -6221}, NOBUILDZONEAREA},
 
 	-- Spawn Areas
 	{"@corellia_region_names:beach1", -5352, -5160, {CIRCLE, 2600}, SPAWNAREA, {"corellia_meatlump"}, 256},
