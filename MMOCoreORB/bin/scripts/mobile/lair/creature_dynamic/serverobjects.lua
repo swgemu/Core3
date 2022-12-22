@@ -1,6 +1,7 @@
 
 includeFile("lair/creature_dynamic/corellia_bageraset_herd_neutral_none.lua")
 includeFile("lair/creature_dynamic/corellia_canoid_pack_neutral_none.lua")
+includeFile("lair/creature_dynamic/corellia_canoid_hunter_pack_neutral_none.lua")
 includeFile("lair/creature_dynamic/corellia_carrion_spat_flock_neutral_none.lua")
 includeFile("lair/creature_dynamic/corellia_corellian_butterfly_drone_large_neutral_none.lua")
 includeFile("lair/creature_dynamic/corellia_corellian_butterfly_flight_neutral_none.lua")
@@ -38,6 +39,7 @@ includeFile("lair/creature_dynamic/corellia_plumed_rasp_howling_large_neutral_no
 includeFile("lair/creature_dynamic/corellia_razor_cat_cub_hunt_neutral_none.lua")
 includeFile("lair/creature_dynamic/corellia_rogue_bageraset_herd_neutral_none.lua")
 includeFile("lair/creature_dynamic/corellia_savage_humbaba_herd_neutral_none.lua")
+includeFile("lair/creature_dynamic/corellia_scavenger_rat_neutral_small.lua")
 includeFile("lair/creature_dynamic/corellia_scavenger_rat_pack_neutral_none.lua")
 includeFile("lair/creature_dynamic/corellia_sharnaff_herd_neutral_none.lua")
 includeFile("lair/creature_dynamic/corellia_slice_hound_pack_neutral_none.lua")
