@@ -2,6 +2,8 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#include "QueueCommand.h"
+
 #ifndef UNSTICKCOMMAND_H_
 #define UNSTICKCOMMAND_H_
 
@@ -21,8 +23,17 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (!creature->checkCooldownRecovery("unstick")) {
+			creature->sendSystemMessage("You can't /unstick yet, please wait a bit before trying again.");
+			return GENERALERROR;
+		}
+
+		creature->addCooldown("unstick", 1800 * 1000); // Wait 30 mins before they can try again
+
 		if (creature != nullptr)
 			creature->error("used /unstick " + arguments.toString());
+
+		creature->sendSystemMessage("@cmd_err:unstick_request_cancelled"); // Unstick request was cancelled
 
 		/*
 string/en/cmd_err.stf	7	unstick_in_progress	Unstick in progress
