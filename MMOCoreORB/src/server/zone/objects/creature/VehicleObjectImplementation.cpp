@@ -179,41 +179,46 @@ void VehicleObjectImplementation::sendMessage(BasePacket* msg) {
 }
 
 void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
+	// check if the vehicle requires repairs
+	if (getConditionDamage() == 0) {
+		player->sendSystemMessage("@pet/pet_menu:undamaged_vehicle"); //The targeted vehicle does not require any repairs at the moment.
+		return;
+	}
+
 	if (!player->getPlayerObject()->isPrivileged()) {
-		//Need to check if they are city banned.
-
-		ManagedReference<ActiveArea*> activeArea = getActiveRegion();
-
-		if (activeArea != nullptr && activeArea->isRegion()) {
-			Region* region = cast<Region*>( activeArea.get());
-
-			ManagedReference<CityRegion*> gb = region->getCityRegion().get();
-
-			if (gb == nullptr)
-				return;
-
-			if (gb->isBanned(player->getObjectID()))  {
-				player->sendSystemMessage("@city/city:garage_banned"); //You are city banned and cannot use this garage.
-				return;
-			}
-
-
-		if (getConditionDamage() == 0) {
-			player->sendSystemMessage("@pet/pet_menu:undamaged_vehicle"); //The targeted vehicle does not require any repairs at the moment.
+		// Check for Garage in Range
+		if (!checkInRangeGarage()) {
+			player->sendSystemMessage("@pet/pet_menu:repair_unrecognized_garages"); //Your vehicle does not recognize any local garages. Try again in a garage repair zone.
 			return;
 		}
 
+		// Check if Vehicle is Disabled
 		if (isDisabled()) {
 			player->sendSystemMessage("@pet/pet_menu:cannot_repair_disabled"); //You may not repair a disabled vehicle.
 			return;
 		}
 
-		if (!checkInRangeGarage()) {
-			player->sendSystemMessage("@pet/pet_menu:repair_unrecognized_garages"); //Your vehicle does not recognize any local garages. Try again in a garage repair zone.
+		//Need to check if they are city banned.
+		ManagedReference<ActiveArea*> activeArea = getActiveRegion();
+
+		if (activeArea == nullptr)
 			return;
+
+		if (activeArea->isCityRegion()) {
+			Region* region = cast<Region*>(activeArea.get());
+
+			ManagedReference<CityRegion*> cityRegion = region->getCityRegion().get();
+
+			if (cityRegion != nullptr && cityRegion->isBanned(player->getObjectID())) {
+				player->sendSystemMessage("@city/city:garage_banned"); //You are city banned and cannot use this garage.
+				return;
 			}
 		}
 	}
+
 	sendRepairConfirmTo(player);
 }
 
