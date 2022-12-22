@@ -190,13 +190,6 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 		return;
 	}
 
-	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL) {
-#ifdef DEBUG_SPAWNING
-		info(true) << "tryToSpawn total spawn count is greater than max spawn limit -- returning";
-#endif // DEBUG_SPAWNING
-		return;
-	}
-
 	int choice = System::random(totalWeighting - 1);
 	int counter = 0;
 
@@ -240,7 +233,7 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	randomPosition.setZ(spawnZ);
 
 	// Check the spot to see if spawning is allowed
-	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 64.f, isWorldSpawnArea())) {
+	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 32.f, isWorldSpawnArea())) {
 #ifdef DEBUG_SPAWNING
 		info(true) << "tryToSpawn Spawning is not permitted at " << randomPosition.toString();
 #endif // DEBUG_SPAWNING
@@ -278,8 +271,7 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 		info(true) << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY();
 #endif // DEBUG_SPAWNING
 	} else {
-		error("could not spawn lair " + lairTemplate);
-
+		error("Failed to spawn lair: " + lairTemplate);
 		return;
 	}
 

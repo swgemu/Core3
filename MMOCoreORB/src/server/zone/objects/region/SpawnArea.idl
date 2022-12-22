@@ -48,7 +48,7 @@ class SpawnArea extends Region {
 	@rawTemplate(value = "ManagedWeakReference<SpawnArea*>")
 	protected Vector noSpawnAreas;
 
-	public final static int MINSPAWNINTERVAL = 1000; //msec
+	public final static int MINSPAWNINTERVAL = 500; //msec
 
 	public SpawnArea() {
 		totalWeighting = 0;
