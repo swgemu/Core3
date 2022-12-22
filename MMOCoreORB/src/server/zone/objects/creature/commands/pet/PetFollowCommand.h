@@ -60,22 +60,9 @@ public:
 		if (targetCreature == nullptr)
 			return GENERALERROR;
 
-		if (targetCreature != player && (targetCreature->isAttackableBy(creature) || !CollisionManager::checkLineOfSight(player, targetObject))) {
+		if (targetCreature != player && (targetCreature->isAttackableBy(pet) || !CollisionManager::checkLineOfSight(player, targetCreature) || !playerEntryCheck(player, targetCreature)) ) {
 			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return INVALIDTARGET;
-		}
-
-		Reference<CellObject*> targetCell = targetObject->getParent().get().castTo<CellObject*>();
-
-		if (targetCell != nullptr) {
-			auto perms = targetCell->getContainerPermissions();
-
-			if (!perms->hasInheritPermissionsFromParent()) {
-				if (!targetCell->checkContainerPermission(player, ContainerPermissions::WALKIN)) {
-					pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
-					return INVALIDTARGET;
-				}
-			}
 		}
 
 		// Check if droid has power
