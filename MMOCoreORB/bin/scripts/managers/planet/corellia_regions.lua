@@ -98,9 +98,9 @@ corellia_regions = {
 	{"old_battlefield_nobuild_cor3", 3785, -4037, {CIRCLE, 192}, NOBUILDZONEAREA},
 
 	-- Cities
+	{"@corellia_region_names:bela_vistal", 6788, -5654, {CIRCLE, 480}, CITY + NOSPAWNAREA},
 	{"@corellia_region_names:coronet", -178, -4504, {CIRCLE, 581}, CITY + NOSPAWNAREA},
 	{"@corellia_region_names:tyrena", -5282, -2526, {CIRCLE, 622}, CITY + NOSPAWNAREA},
-	{"@corellia_region_names:bela_vistal", 6788, -5654, {CIRCLE, 480}, CITY + NOSPAWNAREA},
 	{"@corellia_region_names:kor_vella", -3512, 3184, {CIRCLE, 758}, CITY + NOSPAWNAREA},
 	{"@corellia_region_names:doaba_guerfel", 3272, 5456, {CIRCLE, 632}, CITY + NOSPAWNAREA},
 	{"@corellia_region_names:vreni_island", -5472, -6272, {CIRCLE, 690}, CITY + NOSPAWNAREA},
@@ -115,8 +115,8 @@ corellia_regions = {
 	{"corellia_vreni_island_outdoor_theater", -5442, -6283, {RECTANGLE, -5398, -6221}, NOBUILDZONEAREA},
 
 	-- Spawn Areas
-	{"@corellia_region_names:bela_vistal_easy_newbie", 6788, -5654, {CIRCLE, 800}, SPAWNAREA + NOWORLDSPAWNAREA, {"bela_vistal_easy_newbie"}, 64},
-	{"@corellia_region_names:bela_vistal_medium_newbie", 6788, -5654, {CIRCLE, 1200}, SPAWNAREA + NOWORLDSPAWNAREA, {"bela_vistal_medium_newbie"}, 128},
+	{"@corellia_region_names:bela_vistal_easy_newbie", 6788, -5654, {RING, 480, 800}, SPAWNAREA + NOWORLDSPAWNAREA, {"bela_vistal_easy_newbie"}, 32},
+	{"@corellia_region_names:bela_vistal_medium_newbie", 6788, -5654, {RING, 800, 1200}, SPAWNAREA + NOWORLDSPAWNAREA, {"bela_vistal_medium_newbie"}, 32},
 	{"@corellia_region_names:central_easy", 825, -1959, {RECTANGLE, 4090, 4570}, SPAWNAREA, {"corellia_central_easy"}, 320},
 	{"@corellia_region_names:central_medium", -2075, -1959, {RECTANGLE, 840, 4570}, SPAWNAREA, {"corellia_central_medium"}, 256},
 	{"@corellia_region_names:central_plains", -3296, -2312, {RECTANGLE, 4224, 1496}, SPAWNAREA + NAMEDREGION, {"corellia_central_plains"}, 32},
@@ -130,79 +130,68 @@ corellia_regions = {
 	{"@corellia_region_names:forest1", -3696, -1968, {CIRCLE, 608}, SPAWNAREA, {"corellia_forest_1"}, 32},
 	{"@corellia_region_names:forest2", -2047, 3272, {CIRCLE, 615}, SPAWNAREA, {"corellia_forest_2"}, 32},
 	{"@corellia_region_names:forest3", -2336, -784, {RECTANGLE, -1056, 1120}, SPAWNAREA, {"corellia_forest_3"}, 32},
-	--{"@corellia_region_names:forest4", -1862, 5878, {RECTANGLE, 3766, 7434}, SPAWNAREA, {"corellia_medium"}, 256},
-	--{"@corellia_region_names:forest5", 6888, -7208, {CIRCLE, 750}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:hard_crimson_sand_panther_sw", -5166, -1426, {CIRCLE, 3000}, SPAWNAREA, {"corellia_hard_crimson_sand_panther_sw"}, 128},
-	{"@corellia_region_names:hard_greater_gulginaw_nw", -4238, 6235, {CIRCLE, 1200}, SPAWNAREA, {"corellia_hard_greater_gulginaw_nw"}, 64},
-	{"@corellia_region_names:hard_gronda_ne", 5194, 6056, {CIRCLE, 1200}, SPAWNAREA, {"corellia_hard_gronda_ne"}, 64},
-	{"@corellia_region_names:hard_gronda_nw", -4238, 6235, {CIRCLE, 1200}, SPAWNAREA, {"corellia_hard_gronda_nw"}, 64},
-	{"@corellia_region_names:hard_gronda_sw", -3708, 83, {CIRCLE, 1200}, SPAWNAREA, {"corellia_hard_gronda_sw"}, 64},
-	{"@corellia_region_names:hard_gulginaw_ne", 5194, 6056, {CIRCLE, 1200}, SPAWNAREA, {"corellia_hard_gulginaw_ne"}, 64},
-	{"@corellia_region_names:hard_gulginaw_sw", -3708, 83, {CIRCLE, 1200}, SPAWNAREA, {"corellia_hard_gulginaw_sw"}, 64},
-
-
-
-	{"@corellia_region_names:kor_vella_easy_newbie", -5352, -5160, {CIRCLE, 2600}, SPAWNAREA, {"corellia_meatlump"}, 256},
-	{"@corellia_region_names:kor_vella_medium_newbie", -5352, -5160, {CIRCLE, 2600}, SPAWNAREA, {"corellia_meatlump"}, 256},
-	{"@corellia_region_names:tyrena_easy_newbie", -5352, -5160, {CIRCLE, 2600}, SPAWNAREA, {"corellia_meatlump"}, 256},
-	{"@corellia_region_names:tyrena_medium_newbie", -5352, -5160, {CIRCLE, 2600}, SPAWNAREA, {"corellia_meatlump"}, 256},
-	{"@corellia_region_names:vreni_island_medium_newbie", -5352, -5160, {CIRCLE, 2600}, SPAWNAREA, {"corellia_meatlump"}, 256},
-	{"@corellia_region_names:beach1", -5352, -5160, {CIRCLE, 2600}, SPAWNAREA, {"corellia_meatlump"}, 256},
-	{"@corellia_region_names:beach2", -3048, -4888, {CIRCLE, 3060}, SPAWNAREA, {"corellia_meatlump"}, 256},
-	{"@corellia_region_names:beach3", 976, -5664, {CIRCLE, 845}, SPAWNAREA, {"corellia_meatlump"}, 256},
-	{"@corellia_region_names:beach4", 4160, -2176, {RECTANGLE, 8000, 5280}, {"corellia_meatlump"}, 256},
-	{"@corellia_region_names:grassland1", -4088, 3176, {CIRCLE, 1896}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:grassland2", 3200, 3728, {CIRCLE, 864}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:grassland3", 5368, 5016, {CIRCLE, 1112}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:grassland4", -5360, -1376, {CIRCLE, 1392}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:grassland5", -992, -320, {CIRCLE, 2720}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:grassland6", 3536, -720, {CIRCLE, 1552}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:grassland7", 3336, -4536, {CIRCLE, 3323}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:grassland8", 6760, -3000, {CIRCLE, 1200}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:lake1", 2264, -152, {CIRCLE, 1016}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:lake2", -5744, -1984, {RECTANGLE, -2912, -736}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:lord_nyax_hard", 1650, -500, {CIRCLE, 175}, SPAWNAREA, {"corellia_world"}, 256},
-	{"meatlump_1_spawn_block", -143, -5016, {CIRCLE, 75}, SPAWNAREA, {"corellia_meatlump"}, 50},
-	{"meatlump_2_spawn_block", -75, -4983, {CIRCLE, 75}, SPAWNAREA, {"corellia_meatlump"}, 50},
-	{"meatlump_3_spawn_block", -74, -5069, {CIRCLE, 75}, SPAWNAREA, {"corellia_meatlump"}, 50},
-	{"@corellia_region_names:mountain1", 4440, -4136, {CIRCLE, 1080}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:mountain2", 6032, -8000, {RECTANGLE, 8000, -3952}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:mountain3", -6152, 1320, {CIRCLE, 1800}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:mountain4", -6368, 5424, {CIRCLE, 1600}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:mountain5", -2224, 5136, {CIRCLE, 1360}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:mountain6", -2032, 5440, {RECTANGLE, 4464, 7488}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:mountain7", 7112, 6552, {CIRCLE, 850}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:mountain8", 232, 2728, {CIRCLE, 1272}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:northwestern_medium", -7875, 8, {RECTANGLE, -2090, 7870}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:northeastern_hard", -2092, 4570, {RECTANGLE, 7950, 7882}, SPAWNAREA, {"corellia_world"}, 256},
-	{"@corellia_region_names:northeastern_dark_adept_hard", 5478, 7079, {CIRCLE, 250}, SPAWNAREA, {"global"}, 256},
-	{"@corellia_region_names:northwestern_gronda_hard", -3241, 4099, {CIRCLE, 250}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:northern_beladonas_hard", 6229, 5779, {CIRCLE, 221}, SPAWNAREA, {"corellia_world"}, 256},
-	{"@corellia_region_names:northern_selonian_hard", 2442, 5012, {CIRCLE, 250}, SPAWNAREA, {"corellia_world"}, 256},
-	{"@corellia_region_names:se_medium", 290, -7859, {RECTANGLE, 8000, -6070}, SPAWNAREA, {"corellia_medium"}, 256},
-	{"@corellia_region_names:southern_central_easy", -2090, -6075, {RECTANGLE, 4080, -1950}, SPAWNAREA, {"corellia_easy"}, 256},
-	{"@corellia_region_names:southwestern_medium", -7870, -5200, {RECTANGLE, -2090, 0}, SPAWNAREA, {"corellia_medium"}, 256},
+	{"@corellia_region_names:forest4", -1862, 5878, {RECTANGLE, 3766, 7434}, SPAWNAREA, {"corellia_northwest_forest"}, 256},
+	{"@corellia_region_names:forest5", 6888, -7208, {CIRCLE, 750}, SPAWNAREA, {"corellia_southwest_forest"}, 256},
+	{"@corellia_region_names:kor_vella_easy_newbie", -3512, 3184, {RING, 758, 1200}, SPAWNAREA, {"kor_vella_easy_newbie"}, 32},
+	{"@corellia_region_names:kor_vella_medium_newbie", -3512, 3184, {RING, 1200, 1600}, SPAWNAREA, {"kor_vella_medium_newbie"}, 32},
+	{"@corellia_region_names:lord_nyax_hard", 1650, -500, {CIRCLE, 175}, SPAWNAREA, {"corellia_lord_nyax_hard"}, 8},
 	{"@corellia_region_names:swamp1", 816, 4560, {CIRCLE, 1497}, SPAWNAREA, {"agrilat_swamp"}, 128},
+	{"@corellia_region_names:tyrena_easy_newbie", -5352, -5160, {RING, 622, 1000}, SPAWNAREA, {"tyrena_easy_newbie"}, 256},
+	{"@corellia_region_names:tyrena_medium_newbie", -5352, -5160, {RING, 1000, 1400}, SPAWNAREA, {"tyrena_medium_newbie"}, 256},
+	{"@corellia_region_names:vreni_island_medium_newbie", -5352, -5160, {CIRCLE, 2600}, SPAWNAREA, {"vreni_island_medium_newbie"}, 256},
 
+	-- North
+	{"@corellia_region_names:northern_beladonas_hard", 6229, 5779, {CIRCLE, 221}, SPAWNAREA, {"corellia_northern_beladonas_hard"}, 8},
+	{"@corellia_region_names:northern_selonian_hard", 2442, 5012, {CIRCLE, 250}, SPAWNAREA, {"corellia_northern_selonian_hard"}, 8},
+	-- North East
+	{"@corellia_region_names:northeastern_hard", -2092, 4570, {RECTANGLE, 7950, 7882}, SPAWNAREA, {"corellia_northeastern_hard"}, 1211},
+	{"@corellia_region_names:northeastern_dark_adept_hard", 5478, 7079, {CIRCLE, 250}, SPAWNAREA, {"corellia_northeastern_dark_adept_hard"}, 8},
 
+	-- North West
+	{"@corellia_region_names:northwestern_medium", -7875, 8, {RECTANGLE, -2090, 7870}, SPAWNAREA, {"corellia_northwestern_medium"}, 512},
+	{"@corellia_region_names:northwestern_gronda_hard", -3241, 4099, {CIRCLE, 250}, SPAWNAREA, {"corellia_northwestern_gronda_hard", "corellia_hard_gronda_nw"}, 8},
+	--corellia_hard_greater_gulginaw_nw
+	--corellia_medium_murra_nw
+
+	-- South East
+	{"@corellia_region_names:se_medium", 290, -7859, {RECTANGLE, 8000, -6070}, SPAWNAREA, {"corellia_se_medium" ,"corellia_medium_dire_cat_se", "corellia_medium_murra_se", "corellia_medium_sand_panther_se", "corellia_medium_slice_hound_se"}, 256},
+
+	-- South West
+	{"@corellia_region_names:southwestern_medium", -7870, -5200, {RECTANGLE, -2090, 0}, SPAWNAREA, {"corellia_southerwestern_medium"}, 256},
+	{"@corellia_region_names:hard_crimson_sand_panther_sw", -5166, -1426, {CIRCLE, 3000}, SPAWNAREA, {"corellia_hard_crimson_sand_panther_sw"}, 128},
+
+	--corellia_medium_slice_hound_sw
+
+	-- South Central
+	{"@corellia_region_names:southern_central_easy", -2090, -6075, {RECTANGLE, 4080, -1950}, SPAWNAREA, {"corellia_southern_central_easy"}, 256},
+
+	{"@corellia_region_names:grassland1", -4088, 3176, {CIRCLE, 1896}, SPAWNAREA, {"corellia_northwest_plains"}, 192},
+	{"@corellia_region_names:grassland2", 3200, 3728, {CIRCLE, 864}, SPAWNAREA, {"corellia_medium_dire_cat_ne"}, 32},
+	{"@corellia_region_names:grassland3", 5368, 5016, {CIRCLE, 1112}, SPAWNAREA, {"corellia_hard_gronda_ne", "corellia_hard_gulginaw_ne"}, 64},
+	{"@corellia_region_names:grassland4", -5360, -1376, {CIRCLE, 1392}, SPAWNAREA, {"corellia_hard_gronda_sw", "corellia_hard_gulginaw_sw"}, 256},
+	{"@corellia_region_names:grassland5", -992, -320, {CIRCLE, 2720}, SPAWNAREA, {"corellia_western_plains"}, 256},
+	{"@corellia_region_names:grassland6", 3536, -720, {CIRCLE, 1552}, SPAWNAREA, {"corellia_southeast_plains"}, 192},
+	{"@corellia_region_names:grassland7", 3336, -4536, {CIRCLE, 3323}, SPAWNAREA, {"corellia_southeast_plains"}, 256},
+	{"@corellia_region_names:grassland8", 6760, -3000, {CIRCLE, 1200}, SPAWNAREA, {"corellia_southeast_plains"}, 64},
+
+	{"@corellia_region_names:mountain1", 4440, -4136, {CIRCLE, 1080}, SPAWNAREA, {"corellia_southeast_mountain_peak"}, 64},
+	{"@corellia_region_names:mountain2", 6032, -8000, {RECTANGLE, 8000, -3952}, SPAWNAREA, {"corellia_southeast_mountain_range"}, 256},
+	{"@corellia_region_names:mountain3", -6152, 1320, {CIRCLE, 1800}, SPAWNAREA, {"corellia_western_mountain_forest"}, 64},
+	{"@corellia_region_names:mountain4", -6368, 5424, {CIRCLE, 1600}, SPAWNAREA, {"corellia_northwest_mountains"}, 64},
+	{"@corellia_region_names:mountain5", -2224, 5136, {CIRCLE, 1360}, SPAWNAREA, {"corellia_northwest_mountain_peak", "corellia_northwest_mountains"}, 64},
+	{"@corellia_region_names:mountain6", -2032, 5440, {RECTANGLE, 4464, 7488}, SPAWNAREA, {"corellia_north_central_mountains"}, 256},
+	{"@corellia_region_names:mountain7", 7112, 6552, {CIRCLE, 850}, SPAWNAREA, {"corellia_northeast_mountains"}, 32},
+	{"@corellia_region_names:mountain8", 232, 2728, {CIRCLE, 1272}, SPAWNAREA, {"corellia_north_central_mountains"}, 64},
+
+	-- TBD
 	--[[
-	stringFiles[466].addEntry("medium_dire_cat_ne", "Corellia");
-	stringFiles[466].addEntry("medium_dire_cat_se", "Corellia");
-	stringFiles[466].addEntry("medium_murra_nw", "Corellia");
-	stringFiles[466].addEntry("medium_murra_se", "Corellia");
-	stringFiles[466].addEntry("medium_plumed_rasp_ne", "Corellia");
-	stringFiles[466].addEntry("medium_sand_panther_se", "Corellia");
-	stringFiles[466].addEntry("medium_slice_hound_nw", "Corellia");
-	stringFiles[466].addEntry("medium_slice_hound_se", "Corellia");
-	stringFiles[466].addEntry("medium_slice_hound_sw", "Corellia");
-	stringFiles[466].addEntry("southeast_mountain_peak", "Corellia");
-	stringFiles[466].addEntry("southeast_mountain_range", "Corellia");
-	stringFiles[466].addEntry("southeast_plains", "Corellia");
-	stringFiles[466].addEntry("southwest_forest", "Corellia");
-	stringFiles[466].addEntry("western_mountain_forest", "Corellia");
-	stringFiles[466].addEntry("western_plains", "Corellia");
+	{"@corellia_region_names:beach1", -5352, -5160, {CIRCLE, 2600}, SPAWNAREA, {""}, 256},
+	{"@corellia_region_names:beach2", -3048, -4888, {CIRCLE, 3060}, SPAWNAREA, {""}, 256},
+	{"@corellia_region_names:beach3", 976, -5664, {CIRCLE, 845}, SPAWNAREA, {""}, 32},
+	{"@corellia_region_names:beach4", 4160, -2176, {RECTANGLE, 8000, 5280}, {""}, 256},
+	{"@corellia_region_names:lake1", 2264, -152, {CIRCLE, 1016}, SPAWNAREA, {""}, 64},
+	{"@corellia_region_names:lake2", -5744, -1984, {RECTANGLE, -2912, -736}, SPAWNAREA, {""}, 256},
 	]]
-
 
 	{"@corellia_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, WORLDSPAWNAREA + SPAWNAREA, {"corellia_world"}, 2048}
 }

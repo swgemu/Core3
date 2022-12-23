@@ -143,6 +143,8 @@ includeFile("lair/npc_theater/global/global_rebel_warrant_officer_camp_rebel_med
 includeFile("lair/npc_theater/global/global_rodian_thug_camp_neutral_small_theater.lua")
 includeFile("lair/npc_theater/global/global_slave_camp_neutral_small_theater.lua")
 includeFile("lair/npc_theater/global/global_slicer_camp_neutral_small_theater.lua")
+includeFile("lair/npc_theater/global/global_spaceforce_lieutenant_squad_rebel_none.lua")
+includeFile("lair/npc_theater/global/global_spaceforce_major_rebel_none.lua")
 includeFile("lair/npc_theater/global/global_spaceforce_marine_rebel_none.lua")
 includeFile("lair/npc_theater/global/global_spaceforce_pathfinder_rebel_none.lua")
 includeFile("lair/npc_theater/global/global_terrorist_camp_neutral_small_theater.lua")
