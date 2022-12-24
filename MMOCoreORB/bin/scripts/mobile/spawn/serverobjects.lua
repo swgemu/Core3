@@ -66,6 +66,21 @@ includeFile("spawn/corellia/corellia_western_plains.lua")
 
 -- Dantooine Spawns
 includeFile("spawn/dantooine/dantooine_world.lua")
+includeFile("spawn/dantooine/dantooine_central_easy.lua")
+includeFile("spawn/dantooine/dantooine_central_medium.lua")
+includeFile("spawn/dantooine/dantooine_central_western_medium.lua")
+includeFile("spawn/dantooine/dantooine_eastern_medium.lua")
+includeFile("spawn/dantooine/dantooine_eastern_mountains.lua")
+includeFile("spawn/dantooine/dantooine_hard_dantari_ne.lua")
+
+
+includeFile("spawn/dantooine/dantooine_hard_dantari_nw.lua")
+includeFile("spawn/dantooine/dantooine_hard_dantari_sw.lua")
+includeFile("spawn/dantooine/dantooine_hard_graul_nw.lua")
+includeFile("spawn/dantooine/dantooine_hard_graul_se.lua")
+
+
+
 includeFile("spawn/dantooine/dantooine_hard_graul.lua")
 includeFile("spawn/dantooine/dantooine_world_npc.lua")
 

@@ -225,14 +225,43 @@ dantooine_regions = {
 	{"dantooine_pirate_outpost_9", 1575, -6396, {CIRCLE, 2}, UNDEFINEDAREA},
 
 	-- Spawn Areas
+	{"@dantooine_region_names:eastern_mountains_1", 7264, -832, {RECTANGLE, 8000, 8000}, SPAWNAREA, {"dantooine_eastern_mountains"}, 128},
+	{"@dantooine_region_names:eastern_mountains_2", 7100, -1700, {RECTANGLE, 8000, -800}, SPAWNAREA, {"dantooine_eastern_mountains"}, 128},
+
+
+
+	-- dantooine_hard_dantari_ne
+	-- dantooine_hard_dantari_nw
+	-- dantooine_hard_dantari_sw
+	-- dantooine_hard_graul_nw
+	-- dantooine_hard_graul_se
+
+
+	-- North
+
+
+	-- South
+
+	-- East
+	{"@dantooine_region_names:eastern_medium", 1025, 991, {RECTANGLE, 7873, 4000}, SPAWNAREA, {"dantooine_eastern_medium"}, 256},
+
+
+	-- West
+
+
+	-- Central
+	{"@dantooine_region_names:central_easy", -1995, 990, {RECTANGLE, 1028, 4000}, SPAWNAREA, {"dantooine_central_easy"}, 256},
+	{"@dantooine_region_names:central_medium", -2000, -4005, {RECTANGLE, 4000, 992}, SPAWNAREA, {"dantooine_central_medium"}, 256},
+	{"@dantooine_region_names:central_western_medium", -5010, -4000, {RECTANGLE, -2000, 2080}, SPAWNAREA, {"dantooine_central_western_medium"}, 256},
+
+
+
+	-- Non - updated
 	{"@dantooine_region_names:ataahua_slopes_1_m", -5696, -2976, {CIRCLE, 1440}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
-	{"@dantooine_region_names:central_easy", -1995, 990, {RECTANGLE, 1028, 4000}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
-	{"@dantooine_region_names:central_medium", -2000, -4005, {RECTANGLE, 4000, 992}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
 	{"@dantooine_region_names:central_steppes_1", 2512, 1776, {CIRCLE, 1168}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
-	{"@dantooine_region_names:central_western_medium", -5010, -4000, {RECTANGLE, -2000, 2080}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
-	{"@dantooine_region_names:eastern_medium", 1025, 991, {RECTANGLE, 7873, 4000}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
-	{"@dantooine_region_names:eastern_mountains_1", 7264, -832, {RECTANGLE, 8000, 8000}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
-	{"@dantooine_region_names:eastern_mountains_2", 7100, -1700, {RECTANGLE, 8000, -800}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
+
+
+
 	{"@dantooine_region_names:eastern_steppes_1", 5504, 192, {CIRCLE, 1298}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
 	{"@dantooine_region_names:northeastern_hard", 3000, 4000, {RECTANGLE, 7856, 7970}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc", "global_hard"}, 1024},
 	{"@dantooine_region_names:northeastern_mountains_1", 6896, 6800, {CIRCLE, 1100}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
@@ -302,5 +331,5 @@ dantooine_regions = {
 	{"@dantooine_region_names:western_mountains_1", -7238, 736, {CIRCLE, 600}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
 	{"@dantooine_region_names:western_mountains_2", -7200, 112, {CIRCLE, 650}, SPAWNAREA, {"dantooine_world", "dantooine_world_npc"}, 1024},
 
-	{"@dantooine_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"dantooine_world", "dantooine_world_npc", "global", "global_hard"}, 2048}
+	{"@dantooine_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"dantooine_world"}, 2048}
 }
