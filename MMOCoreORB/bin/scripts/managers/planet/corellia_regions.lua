@@ -136,9 +136,9 @@ corellia_regions = {
 	{"@corellia_region_names:kor_vella_medium_newbie", -3512, 3184, {RING, 1200, 1600}, SPAWNAREA, {"kor_vella_medium_newbie"}, 32},
 	{"@corellia_region_names:lord_nyax_hard", 1650, -500, {CIRCLE, 175}, SPAWNAREA, {"corellia_lord_nyax_hard"}, 8},
 	{"@corellia_region_names:swamp1", 816, 4560, {CIRCLE, 1497}, SPAWNAREA, {"agrilat_swamp"}, 128},
-	{"@corellia_region_names:tyrena_easy_newbie", -5352, -5160, {RING, 622, 1000}, SPAWNAREA, {"tyrena_easy_newbie"}, 256},
-	{"@corellia_region_names:tyrena_medium_newbie", -5352, -5160, {RING, 1000, 1400}, SPAWNAREA, {"tyrena_medium_newbie"}, 256},
-	{"@corellia_region_names:vreni_island_medium_newbie", -5352, -5160, {CIRCLE, 2600}, SPAWNAREA, {"vreni_island_medium_newbie"}, 256},
+	{"@corellia_region_names:tyrena_easy_newbie", -5282, -2526, {RING, 622, 1000}, SPAWNAREA, {"tyrena_easy_newbie"}, 256},
+	{"@corellia_region_names:tyrena_medium_newbie", -5282, -2526, {RING, 1000, 1400}, SPAWNAREA, {"tyrena_medium_newbie"}, 256},
+	{"@corellia_region_names:vreni_island_medium_newbie", -5472, -6272, {CIRCLE, 2600}, SPAWNAREA, {"vreni_island_medium_newbie"}, 256},
 
 	-- North
 	{"@corellia_region_names:northern_beladonas_hard", 6229, 5779, {CIRCLE, 221}, SPAWNAREA, {"corellia_northern_beladonas_hard"}, 8},
