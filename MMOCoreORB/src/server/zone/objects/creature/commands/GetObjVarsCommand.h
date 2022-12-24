@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/group/GroupObject.h"
 
 class GetObjVarsCommand : public QueueCommand {
 public:
@@ -17,7 +18,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -104,6 +104,21 @@ public:
 							msg << "Current total Patrol Points: " << objectAgent->getPatrolPointSize() << endl;
 							msg << "Is in navmesh: " << (objectAgent->isInNavMesh() ? "True" : "False") << endl;
 						}
+					} else if (creoObject->isPlayerCreature()) {
+						auto playerManager = server->getPlayerManager();
+
+						if (playerManager != nullptr) {
+							int playerLevel = playerManager->calculatePlayerLevel(creoObject);
+
+							msg << "Player Level: " << playerLevel << endl;
+						}
+					}
+
+					if (creoObject->isGrouped()) {
+						GroupObject* group = creoObject->getGroup();
+
+						if (group != nullptr)
+							msg << "Group Level: " << group->getGroupLevel() << endl;
 					}
 
 					SortedVector<ManagedReference<ActiveArea*> >* areas = creoObject->getActiveAreas();
@@ -127,6 +142,7 @@ public:
 			}
 
 			ManagedReference<CityRegion*> city = object->getCityRegion().get();
+
 			if (city != nullptr)
 				msg << "City Region oid: " << String::valueOf(city->getObjectID()) << ", name: " << city->getRegionDisplayedName() << endl;
 
