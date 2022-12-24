@@ -1,0 +1,78 @@
+dantooine_medium_piket_ne = {
+	lairSpawns = {
+		{
+			lairTemplateName = "dantooine_mokk_soothsayer_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_shaman_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 30,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_leader_camp_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 40,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_hunter_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 30,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_scout_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 40,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_warrior_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 10,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 15,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_shaman_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 25,
+			size = 15,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_rockshaper_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 30,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 25,
+			size = 15,
+		},
+	}
+}
+
+addSpawnGroup("dantooine_medium_piket_ne", dantooine_medium_piket_ne);

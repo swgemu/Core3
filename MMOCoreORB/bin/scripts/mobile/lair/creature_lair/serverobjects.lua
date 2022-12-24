@@ -79,6 +79,7 @@ includeFile("lair/creature_lair/dantooine/dantooine_graul_frenzied_lair_neutral_
 includeFile("lair/creature_lair/dantooine/dantooine_graul_lair_neutral_medium.lua")
 includeFile("lair/creature_lair/dantooine/dantooine_graul_mauler_lair_neutral_large.lua")
 includeFile("lair/creature_lair/dantooine/dantooine_graul_mauler_lair_neutral_large_boss_01.lua")
+includeFile("lair/creature_lair/dantooine/dathomir_graul_mauler_lair_neutral_large.lua")
 includeFile("lair/creature_lair/dantooine/dantooine_huurton_howler_lair_neutral_medium.lua")
 includeFile("lair/creature_lair/dantooine/dantooine_huurton_howler_lair_neutral_medium_boss_01.lua")
 includeFile("lair/creature_lair/dantooine/dantooine_huurton_matron_lair_neutral_medium.lua")
