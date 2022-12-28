@@ -69,7 +69,7 @@ dathomir_regions = {
 	{"dathomir_force_shrine_03", 3087, 4887, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"dathomir_force_shrine_04", 5571, -1513, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"dathomir_force_shrine_05", 1654, -5765, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
-	--{"@dathomir_region_names:the_great_canyon", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
+	{"@dathomir_region_names:the_great_canyon", -6144, 480, {RECTANGLE, -4704, 6464}, NAMEDREGION},
 
 	{"abandoned_camp", 2871, -2531, {CIRCLE, 30}, NOBUILDZONEAREA},
 	{"bridge", -429, 4177, {CIRCLE, 30}, NOBUILDZONEAREA},
@@ -170,48 +170,43 @@ dathomir_regions = {
 	{"dathomir_trade_outpost_8", 586, 3052, {CIRCLE, 2}, UNDEFINEDAREA},
 
 	-- Spawns
-	{"@dathomir_region_names:canyon", -6144, 480, {RECTANGLE, -4704, 6464}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:desert", -6560, -6528, {RECTANGLE, 5792, -3680}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:forest_1", -4704, -416, {RECTANGLE, -1472, 6304}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:forest_2", -500, 128, {RECTANGLE, 5664, 6464}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:forest_3", 4192, -3360, {RECTANGLE, 6368, 480}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:forest_4", -6176, -3520, {RECTANGLE, -2144, 1152}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:forest_5", -7999, -7999, {RECTANGLE, 7999, 7999}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:mountain_1", -7584, 6752, {RECTANGLE, -2784, 7872}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:mountain_2", -7744, -7776, {RECTANGLE, -5000, 7904}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:mountain_3", -7680, -7648, {RECTANGLE, 7648, -6912}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:mountain_4", 6496, -7616, {RECTANGLE, 7520, 7008}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:mountain_5", -4224, -3008, {RECTANGLE, -1888, -672}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:mountain_6", -1500, -3232, {RECTANGLE, 2656, 0}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:mountain_7", 4096, 1568, {RECTANGLE, 5261, 3840}, SPAWNAREA, {"dathomir_world"}, 256},
-	{"@dathomir_region_names:mountain_8", -1824, 2208, {RECTANGLE, -384, 2880}, SPAWNAREA, {"dathomir_world"}, 256},
+	{"@dathomir_region_names:canyon", -6144, 480, {RECTANGLE, -4704, 6464}, SPAWNAREA, {"dathomir_the_great_canyon"}, 256},
+	{"@dathomir_region_names:desert", -6560, -6528, {RECTANGLE, 5792, -3680}, SPAWNAREA, {"dathomir_southern_desert"}, 256},
+	{"@dathomir_region_names:forest_1", -4704, -416, {RECTANGLE, -1472, 6304}, SPAWNAREA, {"dathomir_hard_rancor_nw", "dathomir_hard_purbole_nw"}, 256},
+	{"@dathomir_region_names:forest_2", -500, 128, {RECTANGLE, 5664, 6464}, SPAWNAREA, {"dathomir_singing_mountain"}, 256},
+	{"@dathomir_region_names:forest_3", 4192, -3360, {RECTANGLE, 6368, 480}, SPAWNAREA, {"dathomir_dry_rock_mountains_se", "dathomir_hard_graul_se"}, 128},
+	{"@dathomir_region_names:forest_4", -6176, -3520, {RECTANGLE, -2144, 1152}, SPAWNAREA, {"dathomir_dry_rock_mountains_sw", "dathomir_hard_graul_sw", "dathomir_hard_purbole_sw", "dathomir_hard_reptilian_flyer_sw"}, 256},
 
-	--[[
-	-- TBD
-	{"@dathomir_region_names:dry_rock_mountains_se", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:dry_rock_mountains_sw", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:hard_gaping_spider_se", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:hard_graul_se", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:hard_graul_sw", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:hard_malklok_se", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:hard_purbole_nw", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:hard_purbole_sw", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:hard_rancor_nw", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:hard_reptilian_flyer_ne", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:hard_reptilian_flyer_sw", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:hard_shear_mite_ne", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:eastern_mountains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:medium_baz_nitch_nw", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:medium_baz_nitch_se", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:nightsister_lands", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:northern_mountains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:red_hills_ne", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:red_hills_nw", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:southern_desert", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:southern_mountains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@dathomir_region_names:western_mountains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	]]
+	-- North
+	{"@dathomir_region_names:northern_hard", -3025, 3990, {RECTANGLE, 1980, 8000}, SPAWNAREA ,{"dathomir_northern_hard"} , 448},
+	{"@dathomir_region_names:northeastern_medium", 1983, 2958, {RECTANGLE, 7950, 8000}, SPAWNAREA ,{"dathomir_northeastern_medium"} , 448},
+	{"@dathomir_region_names:northwestern_medium", -7992, 3992, {RECTANGLE, -3025, 8000}, SPAWNAREA ,{"dathomir_northwestern_medium"}, 256},
+	-- South
+	{"@dathomir_region_names:southern_medium", -2009, -8000, {RECTANGLE, 2000, -2970}, SPAWNAREA ,{"dathomir_southern_medium"} ,256},
+	{"@dathomir_region_names:southeastern_medium", 1991, -8000, {RECTANGLE, 7973, -2150}, SPAWNAREA ,{"dathomir_southeastern_medium"}, 512},
+	{"@dathomir_region_names:southwestern_hard", -8000, -8000, {RECTANGLE, -1990, -4000}, SPAWNAREA ,{"dathomir_southwestern_hard"} ,320},
+	{"@dathomir_region_names:southwestern_medium", -8000, -3992, {RECTANGLE, -1990, -990}, SPAWNAREA ,{"dathomir_southwestern_medium"} ,256},
+	-- East
+	{"@dathomir_region_names:eastern_hard", 1983, -2150, {RECTANGLE, 7980, 2950}, SPAWNAREA ,{"dathomir_eastern_hard"} , 448},
+	-- West
+	{"@dathomir_region_names:western_hard", -7992, -992, {RECTANGLE, -2000, 3990}, SPAWNAREA ,{"dathomir_western_hard"} ,256},
+	-- Central
+	{"@dathomir_region_names:central_easy", -1992, -2970, {RECTANGLE, 1990, 3999}, SPAWNAREA ,{"dathomir_central_easy"}, 448},
 
+	-- North Mountains
+	{"@dathomir_region_names:mountain_1", -7584, 6752, {RECTANGLE, -2784, 7872}, SPAWNAREA, {"dathomir_northern_mountains"}, 256},
+	-- West Mountains
+	{"@dathomir_region_names:mountain_2", -7744, -7776, {RECTANGLE, -5000, 7904}, SPAWNAREA, {"dathomir_western_mountains"}, 256},
+	{"@dathomir_region_names:mountain_3", -7680, -7648, {RECTANGLE, 7648, -6912}, SPAWNAREA, {"dathomir_western_mountains"}, 256},
+	{"@dathomir_region_names:mountain_5", -4224, -3008, {RECTANGLE, -1888, -672}, SPAWNAREA, {"dathomir_western_mountains"}, 256},
+	{"@dathomir_region_names:mountain_6", -1500, -3232, {RECTANGLE, 2656, 0}, SPAWNAREA, {"dathomir_western_mountains"}, 256},
+	{"@dathomir_region_names:mountain_8", -1824, 2208, {RECTANGLE, -384, 2880}, SPAWNAREA, {"dathomir_red_hills_nw"}, 256},
+
+	-- East Mountains
+	{"@dathomir_region_names:mountain_4", 6496, -7616, {RECTANGLE, 7520, 7008}, SPAWNAREA, {"dathomir_eastern_mountains"}, 256},
+	{"@dathomir_region_names:mountain_7", 4096, 1568, {RECTANGLE, 5216, 3840}, SPAWNAREA, {"dathomir_red_hills_ne"}, 256},
+
+	--{"@dathomir_region_names:forest_5", -7999, -7999, {RECTANGLE, 7999, 7999}, SPAWNAREA, {"dathomir_world"}, 256},
 
 	{"@dathomir_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"dathomir_world", "global_hard"}, 2048}
 }
