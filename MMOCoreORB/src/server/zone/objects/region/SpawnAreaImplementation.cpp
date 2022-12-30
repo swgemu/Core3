@@ -8,6 +8,7 @@
 #include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/SpawnGroup.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -36,13 +37,13 @@ void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		return;
 
 #ifdef DEBUG_SPAWNING
-	info(true) << getAreaName() << " --SpawnAreaImplementation::notifyPositionUpdate called ";
+	info(true) << getAreaName() << " --SpawnAreaImplementation::notifyPositionUpdate called";
 #endif // DEBUG_SPAWNING
 
 	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL)
 		return;
 
-	tryToSpawn(sceneObject);
+	tryToSpawn(sceneObject->asCreatureObject());
 }
 
 void SpawnAreaImplementation::notifyEnter(SceneObject* sceneO) {
@@ -167,12 +168,12 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 	return 1;
 }
 
-void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
-	if (object == nullptr)
+void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
+	if (player == nullptr)
 		return;
 
-	#ifdef DEBUG_SPAWNING
-		info(true) << "SpawnAreaImplementation::tryToSpawn for " << object->getObjectName() << " ID: " << object->getObjectID() << " Possible Spawns Size = " << possibleSpawns.size();
+#ifdef DEBUG_SPAWNING
+	info(true) << "SpawnAreaImplementation::tryToSpawn for " << player->getObjectName() << " ID: " << player->getObjectID() << " Possible Spawns Size = " << possibleSpawns.size();
 #endif // DEBUG_SPAWNING
 
 	ReadLocker _readlocker(_this.getReferenceUnsafeStaticCast());
@@ -215,7 +216,7 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
-	Vector3 randomPosition = getRandomPosition(object);
+	Vector3 randomPosition = getRandomPosition(player);
 
 	if (randomPosition.getX() == 0 && randomPosition.getY() == 0) {
 		return;
@@ -252,13 +253,26 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 			return;
 	}
 
-	int maxDiff = finalSpawn->getMaxDifficulty();
-	int minDiff = finalSpawn->getMinDifficulty();
-	int difficultyLevel = System::random(maxDiff - minDiff) + minDiff;
-	int difficulty = (float)(difficultyLevel - minDiff) / ((maxDiff > (minDiff + 5) ? (float)(maxDiff - minDiff) : 5.f) / 5.f);
+	int maxDifficulty = finalSpawn->getMaxDifficulty();
+	int minDifficulty = finalSpawn->getMinDifficulty();
+	int playerLevel = getPlayerSpawnLevel(player);
+
+	if (maxDifficulty == 500)
+		maxDifficulty = minDifficulty + (playerLevel * 2.f);
+
+	float difficultyLevel = (((maxDifficulty - minDifficulty) / 25.f) * playerLevel) + minDifficulty + System::random(5);
+
+	if (difficultyLevel < minDifficulty)
+		difficultyLevel = minDifficulty;
+
+	int difficulty = (float)(difficultyLevel - minDifficulty) / ((maxDifficulty > (minDifficulty + 5) ? (float)(maxDifficulty - minDifficulty) : 5.f) / 5.f);
 
 	if (difficulty >= 5)
 		difficulty = 4;
+
+#ifdef DEBUG_SPAWNING
+	info(true) << "Player Level = " << playerLevel << " Min Difficulty = " << minDifficulty << " Max Difficulty = " << maxDifficulty << " Calculated Difficulty Level: " << difficultyLevel << " Difficulty: " << difficulty;
+#endif // DEBUG_SPAWNING
 
 	_readlocker.release();
 
@@ -299,4 +313,30 @@ void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 #endif // DEBUG_SPAWNING
 
 	return;
+}
+
+int SpawnAreaImplementation::getPlayerSpawnLevel(CreatureObject* player) {
+	int level = 0;
+
+	if (player == nullptr)
+		return level;
+
+	if (player->isGrouped()) {
+		GroupObject* group = player->getGroup();
+
+		if (group != nullptr) {
+			level = group->getGroupLevel();
+		}
+	} else {
+		ZoneServer* zoneServer = player->getZoneServer();
+
+		if (zoneServer != nullptr) {
+			PlayerManager* playerMan = zoneServer->getPlayerManager();
+
+			if (playerMan != nullptr)
+				level = playerMan->calculatePlayerLevel(player);
+		}
+	}
+
+	return level;
 }
