@@ -1,0 +1,78 @@
+lok_northeastern_easy = {
+	lairSpawns = {
+		{
+			lairTemplateName = "lok_blood_razor_pack2_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_blood_razor_pack3_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_snorbal_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_gurk_lair_neutral_small",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_kusak_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_kusak_pack2_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_mynock_pack_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_marooned_pirate_patrol_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+	}
+}
+
+addSpawnGroup("lok_northeastern_easy", lok_northeastern_easy);

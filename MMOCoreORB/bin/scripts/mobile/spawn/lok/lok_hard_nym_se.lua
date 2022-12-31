@@ -1,0 +1,78 @@
+lok_hard_nym_se = {
+	lairSpawns = {
+		{
+			lairTemplateName = "lok_nym_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "lok_nym_camp2_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "lok_nym_base_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "lok_nym_base2_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "lok_nym_patrol_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "lok_nym_patrol2_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "lok_nym_patrol3_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+		{
+			lairTemplateName = "lok_nym_patrol4_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 60,
+			size = 15,
+		},
+	}
+}
+
+addSpawnGroup("lok_hard_nym_se", lok_hard_nym_se);

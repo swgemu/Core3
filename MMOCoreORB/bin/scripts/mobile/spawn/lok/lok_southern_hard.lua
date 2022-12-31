@@ -1,0 +1,78 @@
+lok_southern_hard = {
+	lairSpawns = {
+		{
+			lairTemplateName = "lok_droideka_patrol_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_pharple_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_pharple_pack_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_mercenary_camp2_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_mercenary_patrol2_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_mercenary_patrol2_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_mercenary_patrol_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_pharple_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+	}
+}
+
+addSpawnGroup("lok_southern_hard", lok_southern_hard);
