@@ -159,6 +159,27 @@ lok_regions = {
 	{"lok_imperial_outpost_nobuild_1", -1920, -3084, {CIRCLE, 402}, NOBUILDZONEAREA},
 
 	-- Spawn Areas
+	{"@lok_region_names:central_north_medium", -3992, 990, {RECTANGLE, 2010, 3980}, SPAWNAREA, {"lok_central_north_medium"}, 448},
+	{"@lok_region_names:central_south_Kimogilas_hard", 4185, 72, {CIRCLE, 165}, SPAWNAREA, {"lok_central_south_kimogilas_hard"}, 256},
+	{"@lok_region_names:central_south_medium", -3992, -2000, {RECTANGLE, 2025, 990}, SPAWNAREA, {"lok_central_south_medium"}, 256},
+	{"@lok_region_names:eastern_medium", 2008, -1990, {RECTANGLE, 8000, 3999}, SPAWNAREA, {"lok_eastern_medium"}, 256},
+	{"@lok_region_names:easy_gurnaset_nw", -4602, -1602, {CIRCLE, 90}, SPAWNAREA, {"lok_easy_gurnaset_nw"}, 256},
+
+
+
+
+	-- lok_east_sulphur_flats
+	-- lok_eastern_mountains
+	-- lok_hard_canyon_corsair_se
+	-- lok_hard_canyon_corsair_sw
+	-- lok_hard_kimogilla_nw
+	-- lok_hard_kimogilla_sw
+	-- lok_hard_kusak_ne
+	-- lok_hard_langlatch_ne
+	-- lok_hard_langlatch_se
+
+
+
 	{"@lok_region_names:mountains_1", -8000, 5120, {RECTANGLE, 8000, 8000}, SPAWNAREA, {"lok_world"}, 256},
 	{"@lok_region_names:mountains_2", -8000, -8000, {RECTANGLE, -6016, 8000}, SPAWNAREA, {"lok_world"}, 256},
 	{"@lok_region_names:mountains_3", -8000, -8000, {RECTANGLE, 8000, -5696}, SPAWNAREA, {"lok_world"}, 256},
@@ -189,18 +210,18 @@ lok_regions = {
 	{"@lok_region_names:wasteland_13", -2416, -1008, {CIRCLE, 1008}, SPAWNAREA, {"lok_world"}, 256},
 	{"@lok_region_names:hard_nym_se", 354, 5046, {CIRCLE, 296}, SPAWNAREA, {"lok_world"}, 256},
 	{"@lok_region_names:medium_vesp_sw", 3703, 2274, {CIRCLE, 85}, SPAWNAREA, {"lok_world"}, 256},
-	{"@lok_region_names:easy_gurnaset_nw", -4602, -1602, {CIRCLE, 90}, SPAWNAREA, {"lok_world"}, 256},
+
 	{"@lok_region_names:southwestern_hard", -7925, -7820, {RECTANGLE, -3990, -1985}, SPAWNAREA, {"lok_world"}, 256},
 	{"@lok_region_names:western_medium", -7925, -1985, {RECTANGLE, -3985, 3990}, SPAWNAREA, {"lok_world"}, 256},
 	{"@lok_region_names:northwestern_medium", -7925, 3991, {RECTANGLE, -1990, 7920}, SPAWNAREA, {"lok_world"}, 256},
 	{"@lok_region_names:northern_easy", -1991, 3992, {RECTANGLE, 2000, 7920}, SPAWNAREA, {"lok_world"}, 256},
 	{"@lok_region_names:northeastern_easy", 2008, 3990, {RECTANGLE, 7990, 7920}, SPAWNAREA, {"lok_world"}, 256},
-	{"@lok_region_names:central_north_medium", -3992, 990, {RECTANGLE, 2010, 3980}, SPAWNAREA, {"lok_world"}, 256},
-	{"@lok_region_names:central_south_medium", -3992, -2000, {RECTANGLE, 2025, 990}, SPAWNAREA, {"lok_world"}, 256},
+
+
 	{"@lok_region_names:southern_hard", -3992, -7825, {RECTANGLE, 2040, -1990}, SPAWNAREA, {"lok_world"}, 256},
-	{"@lok_region_names:eastern_medium", 2008, -1990, {RECTANGLE, 8000, 3999}, SPAWNAREA, {"lok_world"}, 256},
+
 	{"@lok_region_names:southeastern_hard", 2041, -7820, {RECTANGLE, 8000, -1985}, SPAWNAREA, {"lok_world"}, 256},
-	{"@lok_region_names:central_south_Kimogilas_hard", 4185, 72, {CIRCLE, 165}, SPAWNAREA, {"lok_world"}, 256},
+
 
 	{"@lok_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, WORLDSPAWNAREA + SPAWNAREA, {"lok_world", "global_hard"}, 2048}
 }

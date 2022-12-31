@@ -140,7 +140,26 @@ includeFile("spawn/dathomir/dathomir_sarlacc_mutant.lua")
 includeFile("spawn/endor/endor_world.lua")
 
 -- Lok
+includeFile("spawn/lok/lok_central_north_medium.lua")
+includeFile("spawn/lok/lok_central_south_kimogilas_hard.lua")
+includeFile("spawn/lok/lok_central_south_medium.lua")
+includeFile("spawn/lok/lok_east_sulphur_flats.lua")
+includeFile("spawn/lok/lok_eastern_medium.lua")
+includeFile("spawn/lok/lok_eastern_mountains.lua")
+includeFile("spawn/lok/lok_easy_gurnaset_nw.lua")
+includeFile("spawn/lok/lok_hard_canyon_corsair_se.lua")
+includeFile("spawn/lok/lok_hard_canyon_corsair_sw.lua")
+includeFile("spawn/lok/lok_hard_kimogilla_nw.lua")
+includeFile("spawn/lok/lok_hard_kimogilla_sw.lua")
+includeFile("spawn/lok/lok_hard_kusak_ne.lua")
+includeFile("spawn/lok/lok_hard_langlatch_ne.lua")
+includeFile("spawn/lok/lok_hard_langlatch_se.lua")
+
+
+
+
 includeFile("spawn/lok/lok_world.lua")
+
 
 -- Naboo Spawns
 includeFile("spawn/naboo/naboo_world.lua")
