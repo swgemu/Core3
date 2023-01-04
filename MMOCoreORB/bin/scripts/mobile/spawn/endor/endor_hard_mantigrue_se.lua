@@ -1,4 +1,4 @@
-endor_world = {
+endor_hard_mantigrue_se = {
 	lairSpawns = {
 		{
 			lairTemplateName = "endor_arachne_drone_lair_neutral_small",
@@ -13,6 +13,24 @@ endor_world = {
 			lairTemplateName = "endor_arachne_drone_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 25,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 50,
+			size = 15,
+		},
+		{
+			lairTemplateName = "endor_arachne_hatchling_lair_neutral_small",
+			spawnLimit = -1,
+			minDifficulty = 17,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 50,
+			size = 15,
+		},
+		{
+			lairTemplateName = "endor_arachne_hatchling_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 17,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
 			weighting = 50,
@@ -181,7 +199,7 @@ endor_world = {
 			size = 15,
 		},
 		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_01",
+			lairTemplateName = "endor_pubam_vicious_battlelord_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 35,
 			maxDifficulty = 500,
@@ -190,27 +208,18 @@ endor_world = {
 			size = 15,
 		},
 		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_02",
+			lairTemplateName = "endor_pubam_dark_shaman_neutral_medium_theater",
 			spawnLimit = -1,
-			minDifficulty = 35,
+			minDifficulty = 45,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
 			weighting = 50,
 			size = 15,
 		},
 		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_03",
+			lairTemplateName = "endor_pubam_beguiling_scout_neutral_none",
 			spawnLimit = -1,
-			minDifficulty = 35,
-			maxDifficulty = 500,
-			numberToSpawn = 15,
-			weighting = 50,
-			size = 15,
-		},
-		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_04",
-			spawnLimit = -1,
-			minDifficulty = 35,
+			minDifficulty = 25,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
 			weighting = 50,
@@ -219,4 +228,4 @@ endor_world = {
 	}
 }
 
-addSpawnGroup("endor_world", endor_world);
+addSpawnGroup("endor_hard_mantigrue_se", endor_hard_mantigrue_se);
