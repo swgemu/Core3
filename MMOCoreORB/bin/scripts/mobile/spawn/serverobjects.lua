@@ -137,6 +137,13 @@ includeFile("spawn/dathomir/dathomir_world.lua")
 includeFile("spawn/dathomir/dathomir_sarlacc_mutant.lua")
 
 -- Endor
+includeFile("spawn/endor/endor_central_desert.lua")
+includeFile("spawn/endor/endor_central_east_medium.lua")
+includeFile("spawn/endor/endor_central_forest.lua")
+includeFile("spawn/endor/endor_central_peak.lua")
+
+
+
 includeFile("spawn/endor/endor_world.lua")
 
 -- Lok
