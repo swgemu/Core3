@@ -1,4 +1,4 @@
-endor_world = {
+endor_medium_bolma_se = {
 	lairSpawns = {
 		{
 			lairTemplateName = "endor_arachne_drone_lair_neutral_small",
@@ -13,6 +13,24 @@ endor_world = {
 			lairTemplateName = "endor_arachne_drone_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 25,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 50,
+			size = 15,
+		},
+		{
+			lairTemplateName = "endor_arachne_hatchling_lair_neutral_small",
+			spawnLimit = -1,
+			minDifficulty = 17,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 50,
+			size = 15,
+		},
+		{
+			lairTemplateName = "endor_arachne_hatchling_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 17,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
 			weighting = 50,
@@ -180,43 +198,7 @@ endor_world = {
 			weighting = 50,
 			size = 15,
 		},
-		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_01",
-			spawnLimit = -1,
-			minDifficulty = 35,
-			maxDifficulty = 500,
-			numberToSpawn = 15,
-			weighting = 50,
-			size = 15,
-		},
-		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_02",
-			spawnLimit = -1,
-			minDifficulty = 35,
-			maxDifficulty = 500,
-			numberToSpawn = 15,
-			weighting = 50,
-			size = 15,
-		},
-		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_03",
-			spawnLimit = -1,
-			minDifficulty = 35,
-			maxDifficulty = 500,
-			numberToSpawn = 15,
-			weighting = 50,
-			size = 15,
-		},
-		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_04",
-			spawnLimit = -1,
-			minDifficulty = 35,
-			maxDifficulty = 500,
-			numberToSpawn = 15,
-			weighting = 50,
-			size = 15,
-		},
 	}
 }
 
-addSpawnGroup("endor_world", endor_world);
+addSpawnGroup("endor_medium_bolma_se", endor_medium_bolma_se);

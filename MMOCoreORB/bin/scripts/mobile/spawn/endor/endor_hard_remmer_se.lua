@@ -1,4 +1,4 @@
-endor_world = {
+endor_hard_remmer_se = {
 	lairSpawns = {
 		{
 			lairTemplateName = "endor_arachne_drone_lair_neutral_small",
@@ -13,6 +13,24 @@ endor_world = {
 			lairTemplateName = "endor_arachne_drone_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 25,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 50,
+			size = 15,
+		},
+		{
+			lairTemplateName = "endor_arachne_hatchling_lair_neutral_small",
+			spawnLimit = -1,
+			minDifficulty = 17,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 50,
+			size = 15,
+		},
+		{
+			lairTemplateName = "endor_arachne_hatchling_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 17,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
 			weighting = 50,
@@ -181,36 +199,27 @@ endor_world = {
 			size = 15,
 		},
 		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_01",
+			lairTemplateName = "endor_gondula_masterful_warrior_neutral_none",
 			spawnLimit = -1,
-			minDifficulty = 35,
+			minDifficulty = 10,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
 			weighting = 50,
 			size = 15,
 		},
 		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_02",
+			lairTemplateName = "endor_gondula_loremaster_neutral_small_theater",
 			spawnLimit = -1,
-			minDifficulty = 35,
+			minDifficulty = 19,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
 			weighting = 50,
 			size = 15,
 		},
 		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_03",
+			lairTemplateName = "endor_gondula_archaic_ritualist_neutral_small_theater",
 			spawnLimit = -1,
-			minDifficulty = 35,
-			maxDifficulty = 500,
-			numberToSpawn = 15,
-			weighting = 50,
-			size = 15,
-		},
-		{
-			lairTemplateName = "endor_arachne_lair_neutral_boss_04",
-			spawnLimit = -1,
-			minDifficulty = 35,
+			minDifficulty = 30,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
 			weighting = 50,
@@ -219,4 +228,4 @@ endor_world = {
 	}
 }
 
-addSpawnGroup("endor_world", endor_world);
+addSpawnGroup("endor_hard_remmer_se", endor_hard_remmer_se);
