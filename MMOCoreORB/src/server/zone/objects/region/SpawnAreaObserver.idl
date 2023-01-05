@@ -1,0 +1,34 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.region;
+
+import engine.util.Observer;
+import engine.util.Observable;
+
+include server.zone.objects.region.SpawnArea;
+include engine.log.Logger;
+import engine.core.ManagedObject;
+
+@json
+class SpawnAreaObserver extends Observer implements Logger {
+	@weakReference
+	protected SpawnArea spawnArea;
+
+	public SpawnAreaObserver(SpawnArea area) {
+		spawnArea = area;
+
+		Logger.setLoggingName("SpawnAreaObserver");
+	}
+
+	@dirty
+	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
+		SpawnArea area = spawnArea;
+
+		if (!area)
+			return 1;
+		else
+			return area.notifyObserverEvent(eventType, observable, arg1, arg2);
+	}
+}

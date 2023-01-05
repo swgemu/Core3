@@ -78,6 +78,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/ServerCore.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
 #endif // WITH_SESSION_API
@@ -2091,107 +2092,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 			logSessionStats(false);
 	}
 
-	if (cooldownTimerMap->isPast("spawnCheckTimer")) {
-		checkForNewSpawns();
-		cooldownTimerMap->updateToCurrentAndAddMili("spawnCheckTimer", 3000);
-	}
-
 	activateRecovery();
-}
-
-void PlayerObjectImplementation::checkForNewSpawns() {
-	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
-
-	if (creature->isInvisible()) {
-		return;
-	}
-
-	ManagedReference<SceneObject*> parent = creature->getParent().get();
-
-	if (parent != nullptr && parent->isCellObject()) {
-		return;
-	}
-
-	if (creature->getCityRegion() != nullptr) {
-		return;
-	}
-
-	SortedVector<ManagedReference<ActiveArea* > > areas = *creature->getActiveAreas();
-	Vector<SpawnArea*> spawnAreas;
-	int totalWeighting = 0;
-
-	bool includeWorldSpawnAreas = true;
-	Vector<SpawnArea*> worldSpawnAreas;
-
-	for (int i = 0; i < areas.size(); ++i) {
-		ManagedReference<ActiveArea*>& area = areas.get(i);
-
-		if (area->isNoSpawnArea()) {
-			return;
-		}
-
-		SpawnArea* spawnArea = area.castTo<SpawnArea*>();
-
-		if (spawnArea == nullptr) {
-			continue;
-		}
-
-		int tier = spawnArea->getTier();
-
-		if (!(tier & SpawnAreaMap::SPAWNAREA)) {
-			continue;
-		}
-
-		if (tier & SpawnAreaMap::WORLDSPAWNAREA) {
-			worldSpawnAreas.add(spawnArea);
-			continue;
-		}
-
-		if (tier & SpawnAreaMap::NOWORLDSPAWNAREA) {
-			includeWorldSpawnAreas = false;
-		}
-
-		spawnAreas.add(spawnArea);
-		totalWeighting += spawnArea->getTotalWeighting();
-	}
-
-	if (includeWorldSpawnAreas) {
-		for (int i = 0; i < worldSpawnAreas.size(); ++i) {
-			SpawnArea* currentWorldSpawnArea = worldSpawnAreas.get(i);
-			spawnAreas.add(currentWorldSpawnArea);
-			totalWeighting += currentWorldSpawnArea->getTotalWeighting();
-		}
-	}
-
-	int choice = System::random(totalWeighting - 1);
-	int counter = 0;
-	ManagedReference<SpawnArea*> finalArea = nullptr;
-
-	for (int i = 0; i < spawnAreas.size(); i++) {
-		SpawnArea* area = spawnAreas.get(i);
-
-		counter += area->getTotalWeighting();
-
-		if (choice < counter) {
-			finalArea = area;
-			break;
-		}
-	}
-
-	if (finalArea == nullptr) {
-		return;
-	}
-
-	String zoneName;
-	auto zone = creature->getZone();
-
-	if (zone != nullptr) {
-		zoneName = zone->getZoneName();
-	}
-
-	Core::getTaskManager()->executeTask([=] () {
-		finalArea->tryToSpawn(creature);
-	}, "TryToSpawnLambda", zoneName.toCharArray());
 }
 
 void PlayerObjectImplementation::activateRecovery() {
@@ -2786,6 +2687,21 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 							}, "SetMayorIDLambda");
 						}
 					}
+
+					continue;
+				} else if (structure->isGCWBase()) {
+					Reference<BuildingObject*> baseRef = structure->asBuildingObject();
+					Reference<Zone*> zoneRef = zone;
+
+					Core::getTaskManager()->executeTask([baseRef, zoneRef] () {
+						if (baseRef == nullptr || zoneRef == nullptr)
+							return;
+
+						GCWManager* gcwMan = zoneRef->getGCWManager();
+
+						if (gcwMan != nullptr)
+							gcwMan->scheduleBaseDestruction(baseRef, nullptr, true);
+					}, "DestroyBaseLambda");
 
 					continue;
 				}

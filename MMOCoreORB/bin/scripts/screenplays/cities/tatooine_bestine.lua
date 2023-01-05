@@ -292,6 +292,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	end
 
 	--Creatures
+	--[[
 	spawnMobile(self.planet, "lesser_desert_womp_rat",300,-1062.1,23.7,-3451.8,-110,0)
 	spawnMobile(self.planet, "lesser_desert_womp_rat",300,-1068.2,23.2,-3452.5,98,0)
 	spawnMobile(self.planet, "lesser_desert_womp_rat",300,-1064.3,22.7,-3455.2,27,0)
@@ -324,4 +325,5 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "worrt",300,-1340.4,16,-3431.5,-152,0)
 	spawnMobile(self.planet, "worrt",300,-1341.43,15.3175,-3434.23,284.1,0)
 	spawnMobile(self.planet, "worrt",300,-1337.28,15.0418,-3434.8,360.011,0)
+	]]
 end

@@ -351,14 +351,20 @@ bool CreatureImplementation::isVicious() {
 }
 
 bool CreatureImplementation::canMilkMe(CreatureObject* player) {
+	if (player == nullptr)
+		return false;
 
 	if (!hasMilk() || milkState != CreatureManager::NOTMILKED  || _this.getReferenceUnsafeStaticCast()->isInCombat() || _this.getReferenceUnsafeStaticCast()->isDead() || isPet())
 		return false;
 
-	if(!player->isInRange(_this.getReferenceUnsafeStaticCast(), 5.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || !(player->hasState(CreatureState::MASKSCENT)))
+	if(!player->isInRange(_this.getReferenceUnsafeStaticCast(), 7.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || !(player->hasState(CreatureState::MASKSCENT)))
 		return false;
 
 	return true;
+}
+
+bool CreatureImplementation::hasBeenMilked() const {
+	return milkState == CreatureManager::ALREADYMILKED;
 }
 
 bool CreatureImplementation::hasSkillToSampleMe(CreatureObject* player) {

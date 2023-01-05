@@ -17,7 +17,7 @@ namespace droid {
 class DroidTrapModuleDataComponent : public BaseDroidModuleComponent {
 
 protected:
-	int trapBonus;
+	float trapBonus;
 	int modules;
 	ManagedReference<TangibleObject*> trap;
 public:
@@ -47,7 +47,7 @@ public:
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 	void decrementTrap();
 	ManagedReference<TangibleObject*> getTrap() { return trap;}
-	int getTrapBonus() { return trapBonus;}
+	float getTrapBonus() { return trapBonus;}
 
 	void writeJSON(nlohmann::json& j) const {
 		BaseDroidModuleComponent::writeJSON(j);

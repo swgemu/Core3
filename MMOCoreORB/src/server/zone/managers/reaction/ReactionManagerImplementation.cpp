@@ -111,7 +111,7 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, SceneObject* 
 			if (planetManager != nullptr) {
 				bool failRoll = false;
 
-				CityRegion* cityRegion = planetManager->getRegionAt(npc->getPositionX(), npc->getPositionY());
+				CityRegion* cityRegion = planetManager->getCityRegionAt(npc->getPositionX(), npc->getPositionY());
 
 				if (cityRegion != nullptr) {
 					if (cityRegion->isClientRegion() && System::random(100) > 1) {

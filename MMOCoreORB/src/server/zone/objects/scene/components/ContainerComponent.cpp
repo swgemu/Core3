@@ -286,7 +286,23 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		ManagedReference<Zone*> newRootZone = object->getZone();
 
 		if (newRootZone != nullptr && newRootZone != oldRootZone) {
-			newRootZone->registerObjectWithPlanetaryMap(object);
+			bool shouldRegister = true;
+
+			// Prevent GCW PvE Base Terminals Registering when inserted in cell container
+			if (object->isTerminal() && sceneObject->getParent().get() != nullptr) {
+				SceneObject* containerParent = sceneObject->getParent().get();
+
+				if (containerParent != nullptr && containerParent->isBuildingObject()) {
+					BuildingObject* building = containerParent->asBuildingObject();
+
+					if (building != nullptr && building->isGCWBase() && !(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+						shouldRegister = false;
+					}
+				}
+			}
+
+			if (shouldRegister)
+				newRootZone->registerObjectWithPlanetaryMap(object);
 		}
 	} else {
 		sceneObject->error("unknown containment type " + String::valueOf(containmentType));

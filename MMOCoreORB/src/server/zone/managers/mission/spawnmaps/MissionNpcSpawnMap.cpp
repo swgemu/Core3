@@ -32,8 +32,7 @@ void MissionNpcSpawnMap::loadSpawnPointsFromLua() {
 	}
 }
 
-NpcSpawnPoint* MissionNpcSpawnMap::getRandomNpcSpawnPoint(const uint32 planetCRC, const Vector3* position,
-		const int spawnType, const float minDistance, const float maxDistance) {
+NpcSpawnPoint* MissionNpcSpawnMap::getRandomNpcSpawnPoint(const uint32 planetCRC, const Vector3* position, const int spawnType, const float minDistance, const float maxDistance) {
 	Reference<PlanetSpawnMap* > planet = spawnMap.getPlanet(planetCRC);
 
 	if (planet != nullptr) {

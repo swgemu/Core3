@@ -9,6 +9,8 @@
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"
 
+//#define DEBUG_POSITION
+
 bool CircularAreaShapeImplementation::containsPoint(float x, float y) const {
 	Vector3 position;
 	position.set(x, 0, y);
@@ -31,20 +33,43 @@ Vector3 CircularAreaShapeImplementation::getRandomPosition() const {
 }
 
 Vector3 CircularAreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) const {
+#ifdef DEBUG_POSITION
+	info(true) << "Circle - getRandomPosition called";
+#endif // DEBUG_POSITION
+
 	Vector3 position;
 	bool found = false;
-	int retries = 5;
+	int retries = 10;
 
 	while (!found && retries-- > 0) {
-		float distance = System::random((int)(maxDistance - minDistance)) + minDistance;
-		float angle = System::random(360) * Math::DEG2RAD;
-		position.set(origin.getX() + distance * Math::cos(angle), 0, origin.getY() + distance * Math::sin(angle));
+		float spawnDistanceDelta = System::random(maxDistance - minDistance);
+		int randDirection = System::random(360);
+
+		if (spawnDistanceDelta < minDistance)
+			spawnDistanceDelta = minDistance;
+
+		float xCalc = Math::cos(randDirection) - spawnDistanceDelta * Math::sin(randDirection);
+		float yCalc = Math::sin(randDirection) - spawnDistanceDelta * Math::cos(randDirection);
+
+		position.setX(origin.getX() + xCalc);
+		position.setY(origin.getY() + yCalc);
+
+#ifdef DEBUG_POSITION
+		info(true) << " X Calc = " << xCalc << " Y Calc = " << yCalc << " Spawn Distance Delta = " << spawnDistanceDelta;
+		info(true) << "Checking Position: " << position.toString() << "   Squared Distance: " << areaCenter.squaredDistanceTo(position) << "  Squared Radius = " << radius2;
+#endif // DEBUG_POSITION
 
 		found = containsPoint(position);
 	}
 
-	if (!found)
-		return getRandomPosition();
+	if (!found) {
+#ifdef DEBUG_POSITION
+		info(true) << "Circle - Position not found !!!";
+#endif // DEBUG_POSITION
+
+		position.set(0, 0, 0);
+		return position;
+	}
 
 	return position;
 }

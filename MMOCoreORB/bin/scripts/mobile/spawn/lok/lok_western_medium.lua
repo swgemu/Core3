@@ -1,0 +1,78 @@
+lok_western_medium = {
+	lairSpawns = {
+		{
+			lairTemplateName = "lok_canyon_corsair_camp2_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_canyon_corsair_patrol2_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_spinded_snake_lair2_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_spined_snake_pack2_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_gurnaset_herd_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_gurnaset_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_perlek_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_perlek_pack_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+	}
+}
+
+addSpawnGroup("lok_western_medium", lok_western_medium);

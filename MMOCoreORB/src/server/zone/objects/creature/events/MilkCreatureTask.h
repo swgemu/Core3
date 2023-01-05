@@ -28,7 +28,7 @@ public:
 
 		Locker _clocker(player, creature);
 
-		if (!creature->isInRange(player, 5.f) || creature->isDead()) {
+		if (!creature->isInRange(player, 7.f) || creature->isDead()) {
 			updateMilkState(CreatureManager::NOTMILKED);
 			player->sendSystemMessage("@skl_use:milk_too_far"); // The creature has moved too far away to continue milking it.
 			return;
@@ -82,6 +82,7 @@ public:
 				this->reschedule(10000);
 			} else {
 				updateMilkState(CreatureManager::NOTMILKED);
+				clearStationary();
 				_clocker.release();
 				CombatManager::instance()->startCombat(creature, player, true);
 			}
@@ -92,6 +93,7 @@ public:
 				giveMilkToPlayer();
 			} else {
 				updateMilkState(CreatureManager::NOTMILKED);
+				clearStationary();
 				_clocker.release();
 				CombatManager::instance()->startCombat(creature, player, true);
 			}
@@ -134,9 +136,15 @@ public:
 		updateMilkState(CreatureManager::ALREADYMILKED);
 	}
 
+	void clearStationary() {
+		creature->removeCreatureFlag(CreatureFlag::STATIONARY);
+		creature->setAITemplate();
+	}
+
 	void updateMilkState(const short milkState) {
 		Locker clocker(creature);
 		creature->setMilkState(milkState);
+		clearStationary();
 	}
 };
 

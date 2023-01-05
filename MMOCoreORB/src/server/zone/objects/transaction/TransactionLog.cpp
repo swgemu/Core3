@@ -927,6 +927,7 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::INSTANTBUY:               return "instantbuy";                // Instant Buy
 	case TrxCode::LOTTERYDROID:             return "lotterydroid";              // Lottery Droid
 	case TrxCode::LUASCRIPT:                return "luascript";                 // LUA Script
+	case TrxCode::MINED:                    return "mined";                     // Resouces mined by installations
 	case TrxCode::MISSIONCOMPLETE:          return "missioncomplete";           // Mission Completed Summary
 	case TrxCode::NPCLOOTCLAIM:             return "npclootclaim";              // NPC Loot Claimed
 	case TrxCode::PERMISSIONLIST:           return "permissionlist";            // Permission List Changes

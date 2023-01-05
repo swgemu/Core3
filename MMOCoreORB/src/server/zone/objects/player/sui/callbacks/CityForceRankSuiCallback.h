@@ -53,7 +53,7 @@ public:
 		Locker clocker(city, player);
 
 		StringIdChatParameter params("city/city", "force_city_rank"); // Forcing a city rank change for city %TO.
-		params.setTO(city->getRegionName());
+		params.setTO(city->getCityRegionName());
 		player->sendSystemMessage(params);
 
 		CityManager* cityManager = server->getCityManager();

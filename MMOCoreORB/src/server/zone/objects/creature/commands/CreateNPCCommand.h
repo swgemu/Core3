@@ -67,6 +67,15 @@ public:
 			}
 
 			creature->sendSystemMessage(msg.toString());
+		} else if (arg == "debugregions") {
+			if (creature->isDebuggingRegions()) {
+				creature->setDebuggingRegions(false);
+				creature->sendSystemMessage("Region System Message Debug Disabled");
+			} else {
+				creature->setDebuggingRegions(true);
+				creature->sendSystemMessage("Region System Message Debug Enabled");
+			}
+
 		}
 
 		return SUCCESS;

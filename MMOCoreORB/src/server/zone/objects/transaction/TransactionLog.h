@@ -82,6 +82,7 @@ enum class TrxCode {
 	INSTANTBUY,                 // Instant Buy
 	LOTTERYDROID,               // Lottery Droid
 	LUASCRIPT,                  // LUA Script
+	MINED,                      // Resouces mined by installations
 	MISSIONCOMPLETE,            // Mission Completed Summary
 	NPCLOOTCLAIM,               // NPC Loot Claimed
 	PERMISSIONLIST,             // Permission List changes

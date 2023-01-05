@@ -1,0 +1,78 @@
+dantooine_northeastern_hard = {
+	lairSpawns = {
+		{
+			lairTemplateName = "dantooine_force_wilder_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_force_crypt_crawler_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_force_renegade_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_force_mystic_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_untrained_dark_side_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "global_dark_jedi_camp_dark_jedi_theater",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_force_crystal_hunter_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_dark_side_savage_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 60,
+			maxDifficulty = 70,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+	}
+}
+
+addSpawnGroup("dantooine_northeastern_hard", dantooine_northeastern_hard);

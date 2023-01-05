@@ -25,7 +25,7 @@ corvette_imperial_inquisitor = Creature:new {
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + NOINTIMIDATE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_inquisitor_human_male_01.iff"},

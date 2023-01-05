@@ -27,7 +27,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
-#include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
@@ -124,6 +124,7 @@ SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate,
  	building->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);
  	building->registerObserver(ObserverEventType::AIMESSAGE, lairObserver);
  	building->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, lairObserver);
+	building->registerObserver(ObserverEventType::NOPLAYERSINRANGE, lairObserver);
 
  	zone->transferObject(building, -1, true);
 
@@ -500,10 +501,6 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 	}
 
 	return true;
-}
-
-void CreatureManagerImplementation::loadSpawnAreas() {
-	spawnAreaMap.loadMap(zone);
 }
 
 void CreatureManagerImplementation::unloadSpawnAreas() {
@@ -1142,16 +1139,9 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 	int mask = creature->getPvpStatusBitmask();
 	creature->setPvpStatusBitmask(0, true);
 
-	if (creature->isAiAgent()) {
-		AiAgent* agent = creature->asAiAgent();
-
-		if (agent == nullptr)
-			return;
-
-		agent->clearPatrolPoints();
-		agent->addCreatureFlag(CreatureFlag::STATIONARY);
-		agent->setAITemplate();
-	}
+	creature->clearPatrolPoints();
+	creature->addCreatureFlag(CreatureFlag::STATIONARY);
+	creature->setAITemplate();
 
 	Reference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force, adult);
 
@@ -1177,6 +1167,10 @@ void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* pla
 	Locker clocker(creature);
 
 	creature->setMilkState(BEINGMILKED);
+
+	creature->clearPatrolPoints();
+	creature->addCreatureFlag(CreatureFlag::STATIONARY);
+	creature->setAITemplate();
 
 	Reference<MilkCreatureTask*> task = new MilkCreatureTask(creature, player);
 
@@ -1214,6 +1208,20 @@ void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* p
 	Reference<SampleDnaTask*> task = new SampleDnaTask(creature, player);
 	player->addPendingTask("sampledna",task,0);
 
+}
+
+SpawnArea* CreatureManagerImplementation::getWorldSpawnArea() {
+	for (int i = 0; i < spawnAreaMap.size(); i++) {
+		SpawnArea* area = spawnAreaMap.get(i);
+
+		if (area == nullptr || !area->isWorldSpawnArea()) {
+			continue;
+		}
+
+		return area;
+	}
+
+	return nullptr;
 }
 
 bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {

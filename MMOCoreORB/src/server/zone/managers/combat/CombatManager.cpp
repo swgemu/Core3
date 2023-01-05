@@ -1648,6 +1648,13 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 	if (defender->isInvulnerable())
 		return;
 
+	if (defender->isAiAgent()) {
+		AiAgent* defAgent = defender->asAiAgent();
+
+		if (defAgent != nullptr && (defAgent->getCreatureBitmask() & CreatureFlag::NODOT))
+			return;
+	}
+
 	for (int i = 0; i < dotEffects->size(); i++) {
 		const DotEffect& effect = dotEffects->get(i);
 
@@ -1695,6 +1702,13 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 	if (!weapon->isCertifiedFor(attacker))
 		return;
+
+	if (defender->isAiAgent()) {
+		AiAgent* defAgent = defender->asAiAgent();
+
+		if (defAgent != nullptr && (defAgent->getCreatureBitmask() & CreatureFlag::NODOT))
+			return;
+	}
 
 	for (int i = 0; i < weapon->getNumberOfDots(); i++) {
 		if (weapon->getDotUses(i) <= 0)
@@ -2810,15 +2824,23 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 	Locker statelock(targetCreature, creature);
 
 	int playerLevel = 0;
+
 	if (targetCreature->isPlayerCreature()) {
 		ZoneServer* server = targetCreature->getZoneServer();
+
 		if (server != nullptr) {
 			PlayerManager* pManager = server->getPlayerManager();
+
 			if (pManager != nullptr) {
 				playerLevel = pManager->calculatePlayerLevel(targetCreature) - 5;
 			}
 		}
 	}
+
+#ifdef DEBUG_STATES
+	StringBuffer stateDebug;
+	stateDebug << "---------- Starting state application Calculation --------- Player Level: " << playerLevel << "\n";
+#endif
 
 	// loop through all the states in the command
 	for (int i = 0; i < stateEffects->size(); i++) {
@@ -2826,14 +2848,25 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		bool failed = false;
 		uint8 effectType = effect.getEffectType();
 
+#ifdef DEBUG_STATES
+		stateDebug << "- Type: " << effectType << "\n";
+#endif
+
 		float accuracyMod = effect.getStateChance() + stateAccuracyBonus;
 		if (data.isStateOnlyAttack()) {
 			accuracyMod += creature->getSkillMod(data.getCommand()->getAccuracySkillMod());
 		}
 
+#ifdef DEBUG_STATES
+		stateDebug << "- Accuracy Mod: " << accuracyMod << "\n";
+#endif
+
 		// Check for state immunity.
 		if (targetCreature->hasEffectImmunity(effectType)) {
 			failed = true;
+#ifdef DEBUG_STATES
+			stateDebug << " -- FAILED DUE TO IMMUNITY -- \n";
+#endif
 		}
 
 		if (!failed) {
@@ -2857,17 +2890,42 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				targetDefense += targetCreature->getSkillMod(defenseMods.get(j));
 			}
 
+#ifdef DEBUG_STATES
+			stateDebug << " - Target Defense Base = " << targetDefense << "\n";
+#endif
+
 			targetDefense /= 1.5;
+
+#ifdef DEBUG_STATES
+			stateDebug << " - Target Defense /= 1.5 = " << targetDefense << "\n";
+#endif
+
 			targetDefense += playerLevel;
+
+#ifdef DEBUG_STATES
+			stateDebug << " - Target Defense + playerLevel = " << targetDefense << "\n";
+#endif
 
 			// Run roll to check against
 			int roll = System::random(100);
 
-			// Chance to apply needs to always be 10% no matter the calc
-			int calc = Math::max(10, (int)(accuracyMod - targetDefense));
+#ifdef DEBUG_STATES
+			stateDebug << " - Roll = " << roll << "\n";
+#endif
+
+			// Players are able to be state immune.
+			int calc = (int)(accuracyMod - targetDefense);
+
+#ifdef DEBUG_STATES
+			stateDebug << " - Calc = " << calc << "\n";
+#endif
 
 			if (roll > calc) {
 				failed = true;
+
+#ifdef DEBUG_STATES
+				stateDebug << " -- ROLL FAILED -- \n";
+#endif
 			}
 
 			// no reason to apply jedi defenses if primary defense was successful
@@ -2881,8 +2939,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 					targetDefense /= 1.5;
 					targetDefense += playerLevel;
 
-					// Chance to apply needs to always be 10% no matter the calc
-					calc = Math::max(10, (int)(accuracyMod - targetDefense));
+					calc = (int)(accuracyMod - targetDefense);
 
 					if (roll > calc) {
 						failed = true;
@@ -2899,6 +2956,10 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				stringId.setDI(effect.getStateLength());
 				creature->sendSystemMessage(stringId);
 			}
+
+#ifdef DEBUG_STATES
+			stateDebug << " -- RULL SUCCESS -- Effect applied with a strength of: " << effect.getStateStrength() + stateAccuracyBonus << "\n";
+#endif
 
 			data.getCommand()->applyEffect(creature, targetCreature, effectType, effect.getStateStrength() + stateAccuracyBonus);
 
@@ -2960,6 +3021,11 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				data.getCommand()->sendAttackCombatSpam(creature, targetCreature, HIT, 0, data);
 			}
 		}
+
+#ifdef DEBUG_STATES
+		stateDebug << "---------- End of calc --------- \n";
+		info(true) << stateDebug.toString();
+#endif
 	}
 }
 

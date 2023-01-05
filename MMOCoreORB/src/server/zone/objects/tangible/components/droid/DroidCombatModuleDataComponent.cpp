@@ -37,7 +37,7 @@ void DroidCombatModuleDataComponent::updateCraftingValues(CraftingValues* values
 
 void DroidCombatModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* creature) {
 	// convert module rating to actual rating
-	alm->insertAttribute("cmbt_module", rating);
+	alm->insertAttribute("cmbt_module", (int)rating);
 
 	// Should insert Base Stuff for hit/min/max/speed values
 	ManagedReference<DroidObject*> droid = getDroidObject();

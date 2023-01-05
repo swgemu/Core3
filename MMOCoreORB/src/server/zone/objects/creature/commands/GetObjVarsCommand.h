@@ -7,6 +7,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
 class GetObjVarsCommand : public QueueCommand {
 public:
@@ -17,7 +19,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -25,6 +26,11 @@ public:
 			return INVALIDLOCOMOTION;
 
 		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerObject* ghost = creature->getPlayerObject();
+
+		if (ghost == nullptr)
 			return GENERALERROR;
 
 		uint64 objectID = 0;
@@ -43,16 +49,15 @@ public:
 			objectID = target;
 		}
 
-		if ( objectID == 0 ) {
+		if ( objectID == 0) {
 			creature->sendSystemMessage("You need to target an object or specify an object id: /getobjvars <objectID> ");
 		}
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(objectID, false);
 
-		if ( object == nullptr) {
+		if (object == nullptr) {
 			creature->sendSystemMessage("ERROR GETTIGN OBJECT - nullptr " + String::valueOf(objectID));
 		} else {
-
 			String strClassName = object->getObjectNameStringIdName();
 			String strDescription = object->getDetailedDescription();
 			bool bMarkedForDelete = object->_isMarkedForDeletion();
@@ -83,37 +88,66 @@ public:
 					msg << "AI Enabled: " << aiEnabled << endl;
 					msg << "PvP Status Bitmask: " << creoObject->getPvpStatusBitmask() << endl;
 					msg << "Options Bitmask: " << creoObject->getOptionsBitmask() << endl;
-				}
 
-				if (object->isAiAgent()) {
-					AiAgent* objectAgent = object->asAiAgent();
+					if (object->isAiAgent()) {
+						AiAgent* objectAgent = object->asAiAgent();
 
-					if (objectAgent != nullptr) {
-						msg << "Creature Bitmask: " << objectAgent->getCreatureBitmask() << endl;
-						msg << "Creature Movement Sate: " << objectAgent->getMovementState() << endl;
+						if (objectAgent != nullptr) {
+							msg << "Creature Bitmask: " << objectAgent->getCreatureBitmask() << endl;
+							msg << "Creature Movement Sate: " << objectAgent->getMovementState() << endl;
 
-						ManagedReference<SceneObject*> followCopy = objectAgent->getFollowObject();
-						StringBuffer hasFollow;
+							ManagedReference<SceneObject*> followCopy = objectAgent->getFollowObject();
+							StringBuffer hasFollow;
 
-						if (followCopy != nullptr) {
-							hasFollow << "True - " << " OID: " << followCopy->getObjectID();
-						} else {
-							hasFollow << "False";
+							if (followCopy != nullptr) {
+								hasFollow << "True - " << " OID: " << followCopy->getObjectID();
+							} else {
+								hasFollow << "False";
+							}
+
+							msg << "Has Follow Object: " << hasFollow.toString() << endl;
+							msg << "Current total Patrol Points: " << objectAgent->getPatrolPointSize() << endl;
+							msg << "Is in navmesh: " << (objectAgent->isInNavMesh() ? "True" : "False") << endl;
 						}
+					} else if (creoObject->isPlayerCreature()) {
+						auto playerManager = server->getPlayerManager();
 
-						msg << "Has Follow Object: " << hasFollow.toString() << endl;
-						msg << "Current total Patrol Points: " << objectAgent->getPatrolPointSize() << endl;
-						msg << "Is in navmesh: " << (objectAgent->isInNavMesh() ? "True" : "False") << endl;
+						if (playerManager != nullptr) {
+							int playerLevel = playerManager->calculatePlayerLevel(creoObject);
+
+							msg << "Player Level: " << playerLevel << endl;
+						}
+					}
+
+					if (creoObject->isGrouped()) {
+						GroupObject* group = creoObject->getGroup();
+
+						if (group != nullptr)
+							msg << "Group Level: " << group->getGroupLevel() << endl;
+					}
+
+					SortedVector<ManagedReference<ActiveArea*> >* areas = creoObject->getActiveAreas();
+
+					if (areas != nullptr) {
+						for (int i = 0; i < areas->size(); i++) {
+							ActiveArea* area = areas->get(i);
+
+							if (area == nullptr)
+								continue;
+
+							msg << "Area #" << i << " -- " << area->getAreaName() << endl;
+						}
 					}
 				}
 			}
 
 			if (object->getZone() != nullptr) {
-				msg << "Location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionZ()) << " " << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName() << endl;
+				msg << "Location: " << object->getPosition().toString() << " " << object->getZone()->getZoneName() << endl;
 				msg << "Direction Angle - Radians: " << object->getDirection()->getRadians() << endl;
 			}
 
 			ManagedReference<CityRegion*> city = object->getCityRegion().get();
+
 			if (city != nullptr)
 				msg << "City Region oid: " << String::valueOf(city->getObjectID()) << ", name: " << city->getRegionDisplayedName() << endl;
 
@@ -122,12 +156,23 @@ public:
 			ChatManager* chatManager = server->getZoneServer()->getChatManager();
 			String title = "getObjVars - " + String::valueOf(objectID);
 			chatManager->sendMail("System", title , msg.toString(), creature->getFirstName());
-		}
 
+			ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
+
+			if (box != nullptr) {
+				StringBuffer titleStr;
+				titleStr << "GetObjVars: " << objectID;
+
+				box->setPromptTitle(titleStr.toString());
+				box->setPromptText(msg.toString());
+
+				ghost->addSuiBox(box);
+				creature->sendMessage(box->generateMessage());
+			}
+		}
 
 		return SUCCESS;
 	}
-
 };
 
 #endif //GETOBJVARSCOMMAND_H_

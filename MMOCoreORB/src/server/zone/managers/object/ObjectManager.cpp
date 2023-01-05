@@ -115,7 +115,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::BODYARMOR); //chest plates
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::HEADARMOR);
-	objectFactory.registerObject<ClothingObject>(SceneObjectType::MISCARMOR); // Some Belts Bando's'
+	objectFactory.registerObject<ArmorObject>(SceneObjectType::MISCARMOR); // Some Belts Bando's'
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::LEGARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::HANDARMOR);
@@ -315,6 +315,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Component>(SceneObjectType::RANGEDWEAPONCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::STRUCTURECOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::TISSUECOMPONENT);
+	objectFactory.registerObject<De10BarrelComponent>(SceneObjectType::DE10BARRELCOMPONENT);
 	objectFactory.registerObject<PowerupObject>(SceneObjectType::WEAPONPOWERUP);
 	objectFactory.registerObject<PowerupObject>(SceneObjectType::MELEEWEAPONPOWERUP);
 	objectFactory.registerObject<PowerupObject>(SceneObjectType::RANGEDWEAPONPOWERUP);

@@ -19,7 +19,7 @@
 #include "server/zone/objects/mission/HuntingMissionObjective.h"
 #include "server/zone/objects/mission/ReconMissionObjective.h"
 #include "server/zone/objects/mission/BountyMissionObjective.h"
-#include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "templates/manager/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -826,7 +826,12 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 				SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 				zone->getInRangeActiveAreas(startPos.getX(), startPos.getY(), &activeAreas, true);
 				for (int i = 0; i < activeAreas.size(); ++i) {
-					if (activeAreas.get(i)->isMunicipalZone()) {
+					ActiveArea* area = activeAreas.get(i);
+
+					if (area == nullptr)
+						continue;
+
+					if (area->isCityRegion()) {
 						foundPosition = false;
 					}
 				}
@@ -1244,8 +1249,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	//Find a spawn point in current city.
 	float minDistance = 10.0f;
 	float maxDistance = 300.0f;
-	auto startNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), startPosition,
-			getDeliverMissionSpawnType(faction), minDistance, maxDistance);
+	auto startNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), startPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance);
 
 	if (startNpc == nullptr) {
 		//Couldn't find a suitable spawn point.
@@ -1257,8 +1261,8 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	if (!inTownMission) {
 		//Find city center of another city and use as position to search for spawn points from.
 		endPosition = missionNpcSpawnMap.getRandomCityCoordinates(planetName.hashCode(), startPosition);
-
 	}
+
 	//Search in all parts of the city for the end spawn.
 	minDistance = 15.0f;
 	maxDistance = 1500.0f;
@@ -1266,8 +1270,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	const NpcSpawnPoint* endNpc = nullptr;
 	int retries = 10;
 	while ((endNpc == nullptr || endNpc == startNpc) && (retries > 0)) {
-		endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition,
-				getDeliverMissionSpawnType(faction), minDistance, maxDistance);
+		endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance);
 		retries--;
 	}
 
@@ -1794,23 +1797,13 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 	} else if (type == MissionTypes::HUNTING) {
 		CreatureManager* creatureManager = zone->getCreatureManager();
-		auto worldAreas = creatureManager->getWorldSpawnAreas();
 
-		ManagedReference<SpawnArea*> spawnArea = nullptr;
+		if (creatureManager != nullptr) {
+			SpawnArea* spawnArea = creatureManager->getWorldSpawnArea();
 
-		if (worldAreas == nullptr || worldAreas->size() == 0) {
-			return nullptr;
+			if (spawnArea != nullptr)
+				availableLairList = spawnArea->getSpawnList();
 		}
-
-		int rand = System::random(worldAreas->size() - 1);
-
-		spawnArea = worldAreas->get(rand);
-
-		if (spawnArea == nullptr) {
-			return nullptr;
-		}
-
-		availableLairList = spawnArea->getSpawnList();
 	}
 
 	if (availableLairList == nullptr || availableLairList->size() == 0) {
@@ -2205,12 +2198,12 @@ Vector<uint64> MissionManagerImplementation::getHuntersHuntingTarget(uint64 targ
 	return values;
 }
 
-void MissionManagerImplementation::allocateMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager) {
+void MissionManagerImplementation::allocateMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, Zone* zone, CreatureManager* creatureManager) {
 	//Lock mission spawn points.
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 
-	target->allocateNpc(terrainManager, creatureManager);
-	destination->allocateNpc(terrainManager, creatureManager);
+	target->allocateNpc(zone, creatureManager);
+	destination->allocateNpc(zone, creatureManager);
 }
 
 void MissionManagerImplementation::freeMissionNpc(AiAgent* npc) {

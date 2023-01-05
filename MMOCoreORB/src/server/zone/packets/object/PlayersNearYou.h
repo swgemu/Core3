@@ -43,12 +43,25 @@ public:
 
 		if (zone != nullptr) {
 			zoneName = zone->getZoneName();
+		}
 
-			PlanetManager* planetManager = zone->getPlanetManager();
-			CityRegion* cityRegion = planetManager->getRegionAt(player->getWorldPositionX(), player->getWorldPositionY());
+		if (player->getCityRegion() != nullptr) {
+			CityRegion* cityRegion = player->getCityRegion().get();
 
 			if (cityRegion != nullptr)
-				regionName = cityRegion->getRegionName();
+				regionName =  cityRegion->getCityRegionName();
+		} else {
+			SortedVector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
+
+			for (int i = 0; i < areas->size(); i++) {
+				ActiveArea* area = areas->get(i);
+
+				if (area == nullptr || !area->isNamedRegion())
+					continue;
+
+				regionName = area->getAreaName();
+				break;
+			}
 		}
 
 		insertAscii(regionName); //Region Name

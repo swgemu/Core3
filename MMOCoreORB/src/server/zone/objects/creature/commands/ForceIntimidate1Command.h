@@ -35,7 +35,10 @@ public:
 			return INVALIDTARGET;
 		}
 
-		CreatureObject *tarCreo = targetObject->asCreatureObject();
+		CreatureObject* tarCreo = targetObject->asCreatureObject();
+
+		if (tarCreo == nullptr)
+			return GENERALERROR;
 
 		int res = doCombatAction(creature, target);
 

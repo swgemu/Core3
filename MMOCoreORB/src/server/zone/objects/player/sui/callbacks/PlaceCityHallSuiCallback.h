@@ -18,7 +18,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneProcessServer.h"
 
-class PlaceCityHallSuiCallback : public SuiCallback {
+class PlaceCityHallSuiCallback : public SuiCallback, public Logger {
 	ManagedWeakReference<Zone*> zone;
 	ManagedWeakReference<StructureDeed*> deed;
 
@@ -35,6 +35,8 @@ public:
 		this->x = x;
 		this->y = y;
 		this->angle = angle;
+
+		setLoggingName("PlaceCityHallSuiCallback");
 	}
 
 	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
@@ -81,28 +83,30 @@ public:
 		PlanetManager* planetManager = zone->getPlanetManager();
 		CityManager* cityManager = server->getCityManager();
 
-		Locker locker(cityManager);
-
-		if (!cityManager->validateCityInRange(creature, zone, x, y) || !planetManager->validateClientCityInRange(creature, x, y))
-			return;
-
-		if (!planetManager->validateRegionName(cityName) || !cityManager->validateCityName(cityName)) {
-			creature->sendSystemMessage("@player_structure:cityname_not_unique"); //Another city already has this name. Your city's name must be unique.
-			//Resend the sui.
+		if (planetManager == nullptr || cityManager == nullptr) {
 			return;
 		}
 
-		/*SortedVector<ManagedReference<ActiveArea*> > activeAreas;
-		zone->getInRangeActiveAreas(x, y, activeAreas, true);
+		try {
+			Locker locker(cityManager);
 
-		for (int i = 0; i < activeAreas.size(); ++i) {
-			Region*
-		}*/
+			if (!cityManager->validateCityInRange(creature, zone, x, y) || !planetManager->validateClientCityInRange(creature, x, y)) {
+				return;
+			}
 
-		int result = StructureManager::instance()->placeStructureFromDeed(creature, deed.get(), x, y, angle);
+			if (!planetManager->validateRegionName(cityName) || !cityManager->validateCityName(cityName)) {
+				creature->sendSystemMessage("@player_structure:cityname_not_unique"); //Another city already has this name. Your city's name must be unique.
+				//Resend the sui.
+				return;
+			}
 
-		if (result == 0) {
-			cityManager->createCity(creature, cityName, x, y);
+			int result = StructureManager::instance()->placeStructureFromDeed(creature, deed.get(), x, y, angle);
+
+			if (result == 0) {
+				cityManager->createCity(creature, cityName, x, y);
+			}
+		} catch (const Exception& e) {
+			e.printStackTrace();
 		}
 	}
 };
