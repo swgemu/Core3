@@ -80,6 +80,7 @@ protected:
 	AtomicReference<AppearanceTemplate*> appearanceTemplate;
 	AtomicBoolean loadedPortalLayout, loadedAppearanceTemplate;
 	String zoneComponent, attributeListComponent;
+	String spaceZoneComponent;
 	String containerComponent;
 	String objectMenuComponent;
 
@@ -400,6 +401,10 @@ public:
 		return zoneComponent;
 	}
 
+	inline const String& getSpaceZoneComponent() const {
+		return spaceZoneComponent;
+	}
+
 	inline const String& getObjectMenuComponent() const {
 		return objectMenuComponent;
 	}
@@ -707,15 +712,15 @@ public:
 	}
 
 	virtual bool isRecycleToolTemplate() const {
-	    	return false;
+			return false;
 	}
 
 	virtual bool isVehicleCustomKitTemplate() {
-	    	return false;
+			return false;
 	}
 
 	virtual bool isDnaSampleTemplate() {
-	    	return false;
+			return false;
 	}
 
 	virtual bool isPetDeedTemplate() {
@@ -723,19 +728,19 @@ public:
 	}
 
 	virtual bool isDroidCustomKitTemplate() {
-	    	return false;
+			return false;
 	}
 
 	virtual bool isDroidComponentTemplate() {
-	    	return false;
+			return false;
 	}
 
 	virtual bool isDroidCraftingModuleTemplate() {
-	    	return false;
+			return false;
 	}
 
 	virtual bool isDroidEffectsModuleTemplate() {
-	    	return false;
+			return false;
 	}
 
 	virtual bool isVehicleObjectTemplate() {
