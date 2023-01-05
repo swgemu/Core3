@@ -103,7 +103,7 @@ public:
 				return;
 			}
 
-			int newQuality = (quality * 25 + plant->getNutrientQuality() * waterLevel) / (waterLevel + 25);
+			int newQuality = (quality * 25 + plant->getWaterQuality() * waterLevel) / (waterLevel + 25);
 			waterLevel += 5;
 
 			plant->setWaterQuality(newQuality);
