@@ -222,17 +222,6 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 		return;
 	}
 
-	if (!zone->isWithinBoundaries(randomPosition)) {
-#ifdef DEBUG_SPAWNING
-		info(true) << "tryToSpawn failed due to server boundaries";
-#endif // DEBUG_SPAWNING
-		return;
-	}
-
-	float spawnZ = zone->getHeight(randomPosition.getX(), randomPosition.getY());
-
-	randomPosition.setZ(spawnZ);
-
 	// Check the spot to see if spawning is allowed
 	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 32.f, isWorldSpawnArea())) {
 #ifdef DEBUG_SPAWNING
@@ -240,6 +229,9 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 #endif // DEBUG_SPAWNING
 		return;
 	}
+
+	float spawnZ = zone->getHeight(randomPosition.getX(), randomPosition.getY());
+	randomPosition.setZ(spawnZ);
 
 	int spawnLimit = finalSpawn->getSpawnLimit();
 

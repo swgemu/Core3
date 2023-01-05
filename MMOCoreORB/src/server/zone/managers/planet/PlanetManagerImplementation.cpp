@@ -1240,15 +1240,23 @@ bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float 
 	if (!zone->isWithinBoundaries(targetPos))
 		return false;
 
-	targetPos.setZ(zone->getHeight(x, y));
-
 	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
 
+		if (area == nullptr)
+			continue;
+
 		if (area->isCityRegion() || area->isNoSpawnArea()) {
 			return false;
+		}
+
+		if (area->isRegion()) {
+			Region* region = cast<Region*>(area);
+
+			if (region != nullptr && region->isPlayerCity())
+				return false;
 		}
 
 		if (worldSpawnArea && area->isNoWorldSpawnArea())
@@ -1262,9 +1270,6 @@ bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float 
 	if (isInWater(x, y)) {
 		return false;
 	}
-
-	//if (isInRangeWithPoi(x, y, 150))
-		//return false;
 
 	if (terrainManager->getHighestHeightDifference(x - 10, y - 10, x + 10, y + 10) > 15.0)
 		return false;
