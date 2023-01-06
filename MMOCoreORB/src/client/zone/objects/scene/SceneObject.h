@@ -9,6 +9,7 @@
 
 class ZoneClient;
 class Zone;
+class SpaceZone;
 
 class SceneObject : public Coordinate, public Mutex, public Logger, public Object {
 protected:
@@ -33,6 +34,7 @@ protected:
 
 	ZoneClient* client;
 	Zone* zone;
+	SpaceZone* spaceZone;
 
 public:
 	SceneObject(LuaObject* templateData);
@@ -303,6 +305,12 @@ public:
 
 	inline void setZone(Zone* zn) {
 		zone = zn;
+		spaceZone = nullptr;
+	}
+
+	inline void setZone(SpaceZone* zn) {
+		spaceZone = zn;
+		zone = nullptr;
 	}
 };
 

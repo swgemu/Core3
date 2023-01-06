@@ -38,7 +38,7 @@ public:
 		ManagedReference<Zone*> zone = creature->getZone();
 
 		if (zone != nullptr) {
-			SortedVector<QuadTreeEntry*> closeObjects;
+			SortedVector<TreeEntry*> closeObjects;
 			CloseObjectsVector* actualCloseObjects = (CloseObjectsVector*) creature->getCloseObjects();
 
 			if (actualCloseObjects != nullptr) {

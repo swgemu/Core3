@@ -572,7 +572,7 @@ bool GCWManagerImplementation::hasTooManyBasesNearby(float x, float y) {
 	if (zone == nullptr)
 		return true;
 
-	SortedVector<QuadTreeEntry* > closeEntryObjects;
+	SortedVector<TreeEntry* > closeEntryObjects;
 	zone->getInRangeObjects(x, y, nearbyBaseDistance, &closeEntryObjects, true, false);
 
 	int count = 0;
@@ -2231,7 +2231,7 @@ void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, Strin
 	if (zone == nullptr)
 		return;
 
-	SortedVector<QuadTreeEntry*> closeObjects;
+	SortedVector<TreeEntry*> closeObjects;
 	if (building->getCloseObjects() == nullptr) {
 #ifdef COV_DEBUG
 		building->info("Null closeobjects vector in GCWManagerImplementation::broadcastBuilding", true);

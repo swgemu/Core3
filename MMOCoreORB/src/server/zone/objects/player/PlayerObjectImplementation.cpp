@@ -79,6 +79,8 @@
 #include "server/db/ServerDatabase.h"
 #include "server/ServerCore.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/objects/ship/ShipObject.h"
+
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
 #endif // WITH_SESSION_API
@@ -2162,6 +2164,7 @@ void PlayerObjectImplementation::setLinkDead(bool isSafeLogout) {
 	trx.addState("isSafeLogout", isSafeLogout);
 
 	logoutTimeStamp.updateToCurrentTime();
+
 	if(!isSafeLogout) {
 		info("went link dead");
 		logoutTimeStamp.addMiliTime(ConfigManager::instance()->getInt("Core3.Tweaks.PlayerObject.LinkDeadDelay", 3 * 60) * 1000); // 3 minutes if unsafe
@@ -2618,7 +2621,7 @@ void PlayerObjectImplementation::updateInRangeBuildingPermissions() {
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) parent->getCloseObjects();
 
-	SortedVector<QuadTreeEntry*> closeObjects;
+	SortedVector<TreeEntry*> closeObjects;
 	vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::STRUCTURETYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {

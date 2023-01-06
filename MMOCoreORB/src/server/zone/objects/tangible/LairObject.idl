@@ -11,7 +11,7 @@ include server.zone.CloseObjectsVector;
 include system.thread.atomic.AtomicInteger;
 include engine.log.Logger;
 import server.zone.objects.scene.SceneObject;
-import server.zone.QuadTreeEntry;
+import server.zone.TreeEntry;
 
 @json
 class LairObject extends TangibleObject {
@@ -59,7 +59,7 @@ class LairObject extends TangibleObject {
 		repopulated = repop;
 	}
 
-	public void notifyInsert(QuadTreeEntry entry) {
+	public void notifyInsert(TreeEntry entry) {
 		SceneObject obj = (SceneObject) entry;
 
 		if (obj == this)
@@ -74,7 +74,7 @@ class LairObject extends TangibleObject {
 		}
 	}
 
-	public void notifyDissapear(QuadTreeEntry entry) {
+	public void notifyDissapear(TreeEntry entry) {
 		SceneObject obj = (SceneObject) entry;
 
 		if (obj == this)

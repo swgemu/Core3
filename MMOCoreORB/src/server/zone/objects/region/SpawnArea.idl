@@ -13,7 +13,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import system.lang.Time;
 import engine.log.Logger;
-import server.zone.QuadTreeEntry;
+import server.zone.TreeEntry;
 
 include server.zone.managers.creature.LairSpawn;
 include system.util.Vector;
@@ -62,7 +62,7 @@ class SpawnArea extends Region {
 	}
 
 	@dirty
-	public native void notifyPositionUpdate(QuadTreeEntry entry);
+	public native void notifyPositionUpdate(TreeEntry entry);
 
 	@dirty
 	public native abstract void notifyEnter(SceneObject object);

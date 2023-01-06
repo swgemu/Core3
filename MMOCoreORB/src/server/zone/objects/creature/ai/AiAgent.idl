@@ -16,7 +16,7 @@ import server.zone.objects.creature.ai.events.AiBehaviorEvent;
 import system.lang.ref.Reference;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.tangible.weapon.WeaponObject;
-import server.zone.QuadTreeEntry;
+import server.zone.TreeEntry;
 include server.zone.objects.creature.ai.PatrolPointsVector;
 include server.zone.objects.creature.ai.PatrolPoint;
 import engine.core.ManagedObject;
@@ -447,7 +447,7 @@ class AiAgent extends CreatureObject {
 	public native void setNextStepPosition(float x, float z, float y, CellObject cell = null);
 
 	@dirty
-	public native void notifyPositionUpdate(QuadTreeEntry entry);
+	public native void notifyPositionUpdate(TreeEntry entry);
 
 	@local
 	@preLocked
@@ -505,10 +505,10 @@ class AiAgent extends CreatureObject {
 	}
 
 	@local
-	public native void notifyInsert(QuadTreeEntry entry);
+	public native void notifyInsert(TreeEntry entry);
 
 	@local
-	public native void notifyDissapear(QuadTreeEntry entry);
+	public native void notifyDissapear(TreeEntry entry);
 
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
@@ -1659,12 +1659,12 @@ class AiAgent extends CreatureObject {
 	public boolean isMindTricked() {
 		return mindTricked;
 	}
-	
+
 	@read
 	public boolean isHamRegenDisabled() {
 		return hamRegenDisabled;
 	}
-	
+
 	@preLocked
 	public void setHamRegenDisabled(boolean val) {
 		hamRegenDisabled = val;

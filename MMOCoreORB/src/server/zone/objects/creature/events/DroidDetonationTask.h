@@ -97,7 +97,7 @@ public:
 
 				// find all valid targets in 17 m range and hit them with the damage
 				CloseObjectsVector* vec = (CloseObjectsVector*) droid->getCloseObjects();
-				SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+				SortedVector<ManagedReference<TreeEntry*> > closeObjects;
 
 				if (vec != nullptr) {
 					closeObjects.removeAll(vec->size(), 10);

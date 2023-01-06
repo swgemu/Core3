@@ -100,7 +100,7 @@ public:
 							args.getStringToken(faction);
 						}
 
-						SortedVector<QuadTreeEntry*> closeObjects;
+						SortedVector<TreeEntry*> closeObjects;
 						Zone* zone = creature->getZone();
 
 						if (creature->getCloseObjects() == nullptr) {

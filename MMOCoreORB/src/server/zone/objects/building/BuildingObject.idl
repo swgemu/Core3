@@ -5,7 +5,7 @@
 package server.zone.objects.building;
 
 import server.zone.objects.structure.StructureObject;
-include server.zone.QuadTreeEntry;
+include server.zone.TreeEntry;
 import system.util.SortedVector;
 import system.util.SynchronizedSortedVector;
 import system.util.Vector;
@@ -196,30 +196,30 @@ class BuildingObject extends StructureObject {
 	public native void notifyRemoveFromZone();
 
 	@local
-	public native void notifyInsert(QuadTreeEntry obj);
+	public native void notifyInsert(TreeEntry obj);
 
 	public native void notifyInsertToZone(Zone zone);
 
 	@local
-	public native void notifyDissapear(QuadTreeEntry obj);
+	public native void notifyDissapear(TreeEntry obj);
 
 	@dirty
 	@local
-	public native void notifyPositionUpdate(QuadTreeEntry entry);
+	public native void notifyPositionUpdate(TreeEntry entry);
 
 	public native void notifyObjectInsertedToZone(SceneObject object);
 
 	@local
-	public native void insert(QuadTreeEntry obj);
+	public native void insert(TreeEntry obj);
 
 	@local
-	public native void remove(QuadTreeEntry obj);
+	public native void remove(TreeEntry obj);
 
 	@local
-	public native void update(QuadTreeEntry obj);
+	public native void update(TreeEntry obj);
 
 	@local
-	public native void inRange(QuadTreeEntry obj, float range);
+	public native void inRange(TreeEntry obj, float range);
 
 	@dirty
 	public native void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
