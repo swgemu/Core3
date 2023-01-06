@@ -73,4 +73,8 @@ class Region extends ActiveArea {
 	public boolean isSpawnAreaObject() {
 		return false;
 	}
+
+	public boolean isPlayerCity() {
+		return cityRegion != null;
+	}
 }
