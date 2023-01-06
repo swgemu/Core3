@@ -3,8 +3,8 @@
  Distribution of this file for usage outside of Core3 is prohibited.
  */
 
-#ifndef ZONETreeNode_H_
-#define ZONETreeNode_H_
+#ifndef ZONETREENODE_H_
+#define ZONETREENODE_H_
 
 /*
  Quad tree interface
@@ -44,10 +44,10 @@
 namespace server {
 namespace zone {
 
+class QuadTree;
+class OctTree;
 class TreeEntry;
 class TreeEntryImplementation;
-class OctTree;
-class QuadTree;
 
 class TreeNode: public Object {
 	SortedVector<Reference<TreeEntry*> > objects;
@@ -118,10 +118,6 @@ public:
 		return true;
 	}
 
-	bool isTreeNode() {
-		return true;
-	}
-
 	// Check if this node has any associated objects
 	inline bool isEmpty() const {
 		return objects.isEmpty();
@@ -130,7 +126,7 @@ public:
 	// Check if this node has children nodes
 	inline bool hasSubNodes() const {
 		return nwNode != nullptr || neNode != nullptr || swNode != nullptr || seNode
-				!= nullptr || nwNode2 != nullptr || neNode2 != nullptr || swNode2 != nullptr || seNode2 != nullptr;
+			!= nullptr || nwNode2 != nullptr || neNode2 != nullptr || swNode2 != nullptr || seNode2 != nullptr;
 	}
 
 	// Test if the point is inside this node
@@ -147,13 +143,13 @@ public:
 
 	String toStringData();
 
-	friend class server::zone::TreeEntryImplementation;
-	friend class server::zone::OctTree;
 	friend class server::zone::QuadTree;
+	friend class server::zone::OctTree;
+	friend class server::zone::TreeEntryImplementation;
 };
 
 } // namespace server
 } // namespace zone
 
 
-#endif /*TREENODE_H_*/
+#endif /*ZONETREENODE_H_*/

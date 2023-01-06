@@ -63,14 +63,47 @@ namespace server {
 		void free() {
 			TransactionalMemoryManager::instance()->destroy(this);
 		}
+
+		/**
+		 * Clear all the objects from the quadtree and set it to have
+		 * given size.
+		 */
 		void setSize(float minx, float miny, float maxx, float maxy);
 
+		/**
+		 * Insert a object into the quad tree.
+		 */
 		void insert(TreeEntry *obj);
 
+	 	/**
+		 * Remove the object from the quad tree.
+		 */
 		void remove(TreeEntry *obj);
 
+		/**
+		 * Remove all objects from the quad tree
+		 */
 		void removeAll();
 
+		/**
+		 * Return a list of all objects found in the given range from the
+		 * given point matching a specific type.
+		 * @arg x
+		 *   The X coordinate
+		 * @arg y
+		 *   The Y coordinate
+		 * @arg range
+		 *   The range to search for objects from the given point
+		 * @arg Results
+		 *   The output vector where all objects in this range will be placed.
+		 * @arg TypeMask
+		 *   The mask to AND with the Object->GetType (). If you pass 0 here,
+		 *   and TypeValue is also 0, the function will return ALL objects.
+		 * @arg TypeValue
+		 *   This is the value that will be compared with the result of
+		 *   (Object->GetType () & TypeMask). If they are equal, the object
+		 *   will be considered matching.
+		 */
 		void inRange(TreeEntry *obj, float range);
 
 		/**
@@ -87,6 +120,18 @@ namespace server {
 		int inRange(float x, float y, float range, SortedVector<ManagedReference<TreeEntry*> >& objects) const;
 		int inRange(float x, float y, float range, SortedVector<TreeEntry*>& objects) const;
 
+	 	/**
+		 * Update object's position in the quad tree.
+	 	 * Must be called after every time object changes position.
+		 * It is cheap to call if the object haven't moved to a different node,
+		 * so you should'nt make any unneccessary optimizations to call Update
+		 * less often if the object position has't changed.
+		 * @arg data
+		 *   The object that possibly has changed his position.
+		 * @return
+		 *   true if object is still within the boundaries of the quad tree
+		 *   false if object has moved outside the topmost square.
+		 */
 		bool update(TreeEntry *obj);
 
 	private:
