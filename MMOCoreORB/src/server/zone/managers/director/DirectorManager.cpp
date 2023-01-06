@@ -3273,12 +3273,22 @@ int DirectorManager::getZoneByName(lua_State* L) {
 
 	String zoneid = lua_tostring(L, -1);
 
-	Zone* zone = ServerCore::getZoneServer()->getZone(zoneid);
+	if (zoneid.contains("space")) {
+		SpaceZone* zone = ServerCore::getZoneServer()->getSpaceZone(zoneid);
 
-	if (zone == nullptr) {
-		lua_pushnil(L);
+		if (zone == nullptr) {
+			lua_pushnil(L);
+		} else {
+			lua_pushlightuserdata(L, zone);
+		}
 	} else {
-		lua_pushlightuserdata(L, zone);
+		Zone* zone = ServerCore::getZoneServer()->getZone(zoneid);
+
+		if (zone == nullptr) {
+			lua_pushnil(L);
+		} else {
+			lua_pushlightuserdata(L, zone);
+		}
 	}
 
 	return 1;
