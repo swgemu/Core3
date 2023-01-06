@@ -8,6 +8,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
@@ -22,7 +23,16 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ() + 10, player->getPositionY());
 
-	player->getZone()->transferObject(controlledObject, -1, true);
+	try {
+		if (player->getZone() != nullptr) {
+			player->getZone()->transferObject(controlledObject, -1, true);
+		} else if (player->getSpaceZone() != nullptr) {
+			player->getSpaceZone()->transferObject(controlledObject, -1, true);
+		}
+	} catch (ArrayIndexOutOfBoundsException& e) {
+		e.printStackTrace();
+	}
+
 	//controlledObject->insertToZone(player->getZone());
 
 	//removeObject(controlledObject, true);
@@ -49,7 +59,7 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool f
 
 	Locker clocker(controlledObject, player);
 
-	if (!controlledObject->isInQuadTree())
+	if (!controlledObject->isInOctTree())
 		return;
 
 	Zone* zone = player->getZone();
@@ -58,24 +68,20 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool f
 		return;
 
 	zone->transferObject(player, -1, false);
-	
+
 	controlledObject->destroyObjectFromWorld(true);
 
 	transferObject(controlledObject, 4, true);
-	
+
 	updateStatus(0);
 }
 
 void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	//ControlDeviceImplementation::fillObjectMenuResponse(menuResponse, player);
+}
 
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 
-	if (!controlledObject->isInQuadTree()) {
-		menuResponse->addRadialMenuItem(60, 3, "Launch Ship"); //Launch
-	} else
-		menuResponse->addRadialMenuItem(61, 3, "Land Ship"); //Launch
-	//menuResponse->addRadialMenuItem(61, 3, "Launch Ship"); //Launch
+	return 0;
 }
 
 bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, CreatureObject* receiver, int numberInTrade) {
@@ -97,7 +103,7 @@ bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Crea
 		}
 	}
 
-	if( shipsInDatapad >= maxStoredShips){
+	if (shipsInDatapad >= maxStoredShips){
 		player->sendSystemMessage("That person has too many ships in their datapad");
 		receiver->sendSystemMessage("You already have the maximum number of ships that you can own.");
 		return false;

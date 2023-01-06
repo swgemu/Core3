@@ -147,6 +147,12 @@ public:
 	 * @param container the target container
 	 */
 	void addStartingItemsInto(CreatureObject* creature, SceneObject* container) const;
+
+	/**
+	 * Adds starter ship to players datapad
+	 * @param creature the player creature
+	 */
+	void createStarterShip(CreatureObject* player) const;
 };
 
 }

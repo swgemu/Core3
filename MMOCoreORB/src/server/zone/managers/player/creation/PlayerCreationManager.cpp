@@ -26,6 +26,10 @@
 #include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/managers/ship/ShipManager.h"
+
+#define JTL_DEBUG
 
 PlayerCreationManager::PlayerCreationManager() :
 		Logger("PlayerCreationManager") {
@@ -434,9 +438,9 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 		ghost->setStarterProfession(profession);
 	}
 
-	addCustomization(playerCreature, customization,
-			playerTemplate->getAppearanceFilename());
+	addCustomization(playerCreature, customization, playerTemplate->getAppearanceFilename());
 	addHair(playerCreature, hairTemplate, hairCustomization);
+
 	if (!doTutorial) {
 		addProfessionStartingItems(playerCreature, profession, clientTemplate,
 				false);
@@ -448,10 +452,10 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 		addProfessionStartingItems(playerCreature, profession, clientTemplate,
 				true);
 		addStartingItems(playerCreature, clientTemplate, true);
-		addRacialMods(playerCreature, fileName,
-				&playerTemplate->getStartingSkills(),
-				&playerTemplate->getStartingItems(), true);
+		addRacialMods(playerCreature, fileName, &playerTemplate->getStartingSkills(), &playerTemplate->getStartingItems(), true);
 	}
+
+	createStarterShip(playerCreature);
 
 	if (ghost != nullptr) {
 		int accID = client->getAccountID();
@@ -1064,6 +1068,48 @@ void PlayerCreationManager::addRacialMods(CreatureObject* creature,
 				}
 
 			}
+		}
+	}
+}
+
+void PlayerCreationManager::createStarterShip(CreatureObject* player) const {
+	if (player == nullptr || !player->isPlayerCreature())
+		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	ManagedReference<ShipControlDevice*> shipControlDevice = zoneServer.get()->createObject(STRING_HASHCODE("object/intangible/ship/tiefighter_pcd.iff"), 1).castTo<ShipControlDevice*>();
+
+	if (shipControlDevice != nullptr) {
+		ManagedReference<ShipObject*> ship = ShipManager::instance()->generateImperialNewbieShip(player);
+
+		Locker lock(shipControlDevice);
+
+		if (ship == nullptr) {
+			shipControlDevice->destroyObjectFromDatabase();
+			return;
+		}
+
+		Locker clock(ship, shipControlDevice);
+
+		if (!shipControlDevice->transferObject(ship, 4)) {
+			error("PlayerCreationManager::createStarterShip - Failed to transfer Ship to Control Device.");
+			shipControlDevice->destroyObjectFromDatabase();
+			return;
+		}
+
+		shipControlDevice->setControlledObject(ship);
+
+		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+
+		if (datapad != nullptr && datapad->transferObject(shipControlDevice, -1)) {
+			ghost->addShip(ship);
+		} else {
+			shipControlDevice->destroyObjectFromDatabase(true);
+			error("PlayerCreationManager::createStarterShip - could not get datapad from player");
 		}
 	}
 }
