@@ -44,10 +44,12 @@ public:
 				z = tokenizer.getFloatToken();
 				parentID = tokenizer.getLongToken();
 			} else {
-				Zone* newZone = creature->getZoneServer()->getZone(zoneName);
+				if (!zoneName.contains("space")) {
+					Zone* newZone = creature->getZoneServer()->getGroundZone(zoneName);
 
-				if (newZone != nullptr)
-					z = CollisionManager::getWorldFloorCollision(x, y, newZone, false);
+					if (newZone != nullptr)
+						z = CollisionManager::getWorldFloorCollision(x, y, newZone, false);
+				}
 			}
 
 			creature->setDirection(0);
