@@ -25,6 +25,16 @@ public:
 		}
 	}
 
+	void update(int newValue, bool broadcastStandalone = false, SceneObject* obj = NULL, DeltaMessage* message = NULL) {
+		set(newValue);
+
+		if (message) {
+			addToDeltaMessage(message);
+		} else if (broadcastStandalone) {
+			broadcastStandaloneDeltaMessage(obj);
+		}
+	}
+
 	void broadcastStandaloneDeltaMessage(SceneObject* obj) {
 		DeltaMessage* msg = new DeltaMessage(obj->getObjectID(), BaselineName, Type);
 		addToDeltaMessage(msg);

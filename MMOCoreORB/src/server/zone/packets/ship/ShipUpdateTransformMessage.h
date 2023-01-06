@@ -2,7 +2,7 @@
  * ShipUpdateTransformMessage.h
  *
  *  Created on: 01/09/2011
- *      Author: TheAnswer
+ *	  Author: TheAnswer
  */
 
 #ifndef SHIPUPDATETRANSFORMMESSAGE_H_
@@ -16,65 +16,65 @@
 class ShipUpdateTransformMessage : public BaseMessage {
 public:
 	ShipUpdateTransformMessage(ShipObject* scno, int8 dirX, int8 dirY, int8 dirZ, int8 dirW, int16 posX, int16 posZ, int16 posY, int16 velA, int16 velB, int8 rA, int8 rB, int8 rC) : BaseMessage(50) {
-		insertShort(0x08);
-		insertInt(0x76026fb9);
-	   // insertLong(scno->getObjectID());
 
-	    insertShort(scno->getUniqueID());
+		Logger::console.info("shipUpdateTransformMessage1", true);
 
-		// add coordinates
+		float positionMultiplier = 4.0958748f;
 
-	    //direction
-	    insertByte((byte)dirX);
-	    insertByte((byte)dirY);
-	    insertByte((byte)dirZ);
-	    insertByte((byte)dirW);
+		insertShort(0x08); //Opcode
+		insertInt(0x76026fb9); //Message
+		insertShort(scno->getUniqueID());
 
 
-	    insertShort((int16)posX);
-	    insertShort((int16)posZ);
-	    insertShort((int16)posY);
+		//direction
+		insertByte((byte)dirX);
+		insertByte((byte)dirZ);
+		insertByte((byte)dirY);
+		insertByte((byte)dirW);
 
-	    insertShort(0);
-	    insertShort(0);
+		insertShort((int16)posX*positionMultiplier);
+		insertShort((int16)posY*positionMultiplier);
+		insertShort((int16)posZ*positionMultiplier);
 
-	    insertByte(0);
-	    insertByte(0);
-	    insertByte(0);
+		insertShort(0);
+		insertShort(0);
 
-	    insertInt(scno->getMovementCounter());
+		insertByte(0);
+		insertByte(0);
+		insertByte(0);
+
+		insertInt(scno->getMovementCounter());
 	}
 
-	ShipUpdateTransformMessage(ShipObject* scno, int8 dirX, int8 dirY, int8 dirZ, int8 dirW,
-			int16 posX, int16 posZ, int16 posY,
-			PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC) : BaseMessage(50) {
-			insertShort(0x08);
-			insertInt(0x76026fb9);
-		   // insertLong(scno->getObjectID());
+	ShipUpdateTransformMessage(ShipObject* scno, int8 dirX, int8 dirY, int8 dirZ, int8 dirW, int16 posX, int16 posZ, int16 posY,
+		PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC) : BaseMessage(50) {
 
-		    insertShort(scno->getUniqueID());
+		//Logger::console.info("shipUpdateTransformMessage2", true);
 
-			// add coordinates
+		float positionMultiplier = 4.0958748f;
+		insertShort(0x08); //opcode
 
-		    //direction
-		    insertByte((byte)dirX);
-		    insertByte((byte)dirY);
-		    insertByte((byte)dirZ);
-		    insertByte((byte)dirW);
+		insertInt(0x76026fb9); //Message
+		insertShort(scno->getUniqueID());
 
-		    insertShort((int16)posX);
-		    insertShort((int16)posZ);
-		    insertShort((int16)posY);
+		//direction
+		insertByte((byte)dirW);
+		insertByte((byte)dirX);
+		insertByte((byte)dirZ);
+		insertByte((byte)dirY);
 
-		    velocity.write(this);
+		insertShort((int16)posX*positionMultiplier);
+		insertShort((int16)posY*positionMultiplier);
+		insertShort((int16)posZ*positionMultiplier);
 
-		    rA.write(this);
-		    rB.write(this);
-		    rC.write(this);
+		velocity.write(this);
 
-		    insertInt(scno->getMovementCounter());
-		}
+		rA.write(this);
+		rB.write(this);
+		rC.write(this);
 
+		insertInt(scno->getMovementCounter());
+	}
 };
 
 #endif /* SHIPUPDATETRANSFORMMESSAGE_H_ */

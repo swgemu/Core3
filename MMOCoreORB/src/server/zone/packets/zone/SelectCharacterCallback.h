@@ -11,6 +11,7 @@
 #include "server/zone/packets/MessageCallback.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
@@ -100,14 +101,20 @@ public:
 		client->setPlayer(player);
 
 		String zoneName = ghost->getSavedTerrainName();
-		Zone* zone = zoneServer->getZone(zoneName);
+		bool inSpaceZone = false;
 
-		if (zone == nullptr) {
+		Zone* zone = zoneServer->getZone(zoneName);
+		SpaceZone* spaceZone = zoneServer->getSpaceZone(zoneName);
+
+		if ((zone == nullptr) && (spaceZone == nullptr)) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "The planet where your character was stored is disabled!", 0x0);
 			client->sendMessage(errMsg);
 
 			return;
 		}
+
+		if (spaceZone != nullptr)
+			inSpaceZone = true;
 
 		if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
 			auto maxOnline = zoneServer->getPlayerManager()->getOnlineCharactersPerAccount();
@@ -127,7 +134,7 @@ public:
 		player->setMovementCounter(0);
 		ghost->setClientLastMovementStamp(0);
 
-		if (player->getZone() == nullptr) {
+		if (player->getZone() == nullptr && player->getSpaceZone() == nullptr) {
 			ghost->setOnLoadScreen(true);
 		}
 
@@ -157,7 +164,10 @@ public:
 				}
 
 				if (player->getParent() == nullptr) {
-					zone->transferObject(player, -1, true);
+					if (!inSpaceZone)
+						zone->transferObject(player, -1, false);
+					else
+						spaceZone->transferObject(player, -1, false);
 				} else if (root->getZone() == nullptr) {
 					Locker clocker(root, player);
 					zone->transferObject(root, -1, true);
@@ -188,7 +198,11 @@ public:
 					objectToInsert = player;
 
 				Locker clocker(objectToInsert, player);
-				zone->transferObject(objectToInsert, -1, true);
+
+				if (!inSpaceZone)
+					zone->transferObject(objectToInsert, -1, false);
+				else
+					spaceZone->transferObject(objectToInsert, -1, false);
 			}
 
 			player->sendToOwner(true);
