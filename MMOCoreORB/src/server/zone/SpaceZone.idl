@@ -1,0 +1,190 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone;
+
+import server.zone.OctTree;
+import server.zone.TreeEntry;
+include server.chat.room.ChatRoom;
+import server.zone.Zone;
+import system.lang.Time;
+import server.zone.ZoneProcessServer;
+include server.zone.ZoneServer;
+include server.zone.InRangeObjectsVector;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.managers.planet.PlanetManager;
+import server.zone.managers.space.SpaceManager;
+import system.util.SortedVector;
+import system.util.SynchronizedSortedVector;
+include engine.util.u3d.Vector3;
+include server.zone.OctTreeReference;
+
+include server.zone.managers.object.ObjectMap;
+
+import server.zone.objects.tangible.TangibleObject;
+import system.thread.atomic.AtomicInteger;
+include system.thread.atomic.AtomicBoolean;
+
+@mock
+class SpaceZone extends SceneObject {
+	private string zoneName;
+
+	private unsigned int zoneCRC;
+
+	private transient ZoneProcessServer processor;
+
+	private transient PlanetManager planetManager;
+
+	private transient SpaceManager spaceManager;
+
+	private transient ChatRoom planetChatRoom;
+
+	private transient ZoneServer server;
+
+	private transient ObjectMap objectMap;
+
+	@dereferenced
+	private OctTreeReference octTree;
+
+	@dereferenced
+	private transient Time galacticTime;
+
+	@dereferenced
+	private transient AtomicBoolean managersStarted;
+
+	protected boolean spaceZone;
+
+	private string name;
+
+	private transient boolean zoneCleared;
+
+	public native SpaceZone(ZoneProcessServer processor, final string zoneName);
+	public native void initializeTransientMembers();
+	public native void finalize();
+
+	public native void initializePrivateData();
+
+	@local
+	public native int getInRangeSolidObjects(float x, float y, float z, float range, SortedVector<TreeEntry> objects, boolean readLockZone);
+
+	@local
+	public native int getInRangeObjects(float x, float y, float z, float range, SortedVector<TreeEntry> objects, boolean readLockZone);
+
+	@local
+	public native int getInRangeObjects(float x, float y, float z, float range, InRangeObjectsVector objects, boolean readLockZone);
+
+	@local
+	public native void insert(TreeEntry entry);
+
+	public native void createContainerComponent();
+
+	@local
+	public native void remove(TreeEntry entry);
+
+	@local
+	public native void update(TreeEntry entry);
+
+	@local
+	public native void inRange(TreeEntry entry, float range);
+
+	public native void startManagers();
+
+	public native void stopManagers();
+
+	public native void clearZone();
+
+	@arg1preLocked
+	@preLocked
+	public native void addSceneObject(SceneObject object);
+
+	@arg1preLocked
+	@preLocked
+	public native void dropSceneObject(SceneObject object);
+
+	@dirty
+	public PlanetManager getPlanetManager() {
+		return planetManager;
+	}
+
+	@dirty
+	public SpaceManager getSpaceManager() {
+		return spaceManager;
+	}
+
+	@dirty
+	public native void setZoneName(string n) {
+		zoneName = n;
+	}
+
+	@dirty
+	public ZoneServer getZoneServer() {
+		return server;
+	}
+
+	@read
+	public unsigned long getGalacticTime() {
+		return galacticTime.miliDifference() / 1000;
+	}
+
+	@dirty
+	public boolean hasManagersStarted() {
+		return managersStarted.get();
+	}
+
+	@read
+	public boolean isZoneCleared() {
+		return zoneCleared;
+	}
+
+	/**
+	 * These functions return the size of the terrain file for this zone.
+	 */
+	@dirty
+	public native float getMinX();
+
+	@dirty
+	public native float getMaxX();
+
+	@dirty
+	public native float getMinY();
+
+	@dirty
+	public native float getMaxY();
+
+	@dirty
+	public native float getMinZ();
+
+	@dirty
+	public native float getMaxZ();
+
+	@dirty
+	@local
+	public native boolean isWithinBoundaries(@dereferenced final Vector3 position);
+
+	@dirty
+	public boolean isSpaceZone() {
+	    return spaceZone;
+	}
+
+	@dirty
+	public string getZoneName() {
+		return zoneName;
+	}
+
+	@dirty
+	public unsigned int getZoneCRC() {
+		return zoneCRC;
+	}
+
+	public void setPlanetChatRoom(ChatRoom room) {
+		planetChatRoom = room;
+	}
+
+	public ChatRoom getPlanetChatRoom() {
+		return planetChatRoom;
+	}
+
+}
+

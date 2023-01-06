@@ -64,11 +64,7 @@ void ZoneImplementation::createContainerComponent() {
 }
 
 void ZoneImplementation::initializePrivateData() {
-	if (zoneName.contains("space_")) {
-		planetManager = new SpaceManager(_this.getReferenceUnsafeStaticCast(), processor);
-	} else {
-		planetManager = new PlanetManager(_this.getReferenceUnsafeStaticCast(), processor);
-	}
+	planetManager = new PlanetManager(_this.getReferenceUnsafeStaticCast(), processor);
 
 	creatureManager = new CreatureManager(_this.getReferenceUnsafeStaticCast());
 	creatureManager->deploy("CreatureManager " + zoneName);
@@ -177,30 +173,44 @@ float ZoneImplementation::getHeightNoCache(float x, float y) {
 	return 0;
 }
 
-void ZoneImplementation::insert(QuadTreeEntry* entry) {
+void ZoneImplementation::insert(TreeEntry* entry) {
+	if (entry == nullptr)
+		return;
+
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	quadTree->insert(entry);
+
+	SceneObject* sceneO = cast<SceneObject*>(entry);
+
+	if (sceneO != nullptr && sceneO->isPlayerCreature())
+		info(true) << "Inserting player into Quad Tree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
 }
 
-void ZoneImplementation::remove(QuadTreeEntry* entry) {
+void ZoneImplementation::remove(TreeEntry* entry) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (entry->isInQuadTree())
+	if (entry->isInQuadTree()) {
 		quadTree->remove(entry);
+
+		SceneObject* sceneO = cast<SceneObject*>(entry);
+
+		if (sceneO != nullptr && sceneO->isPlayerCreature())
+			info(true) << "Removing player from Quad Tree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+	}
 }
 
-void ZoneImplementation::update(QuadTreeEntry* entry) {
+void ZoneImplementation::update(TreeEntry* entry) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	quadTree->update(entry);
 }
 
-void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
+void ZoneImplementation::inRange(TreeEntry* entry, float range) {
 	quadTree->safeInRange(entry, range);
 }
 
-int ZoneImplementation::getInRangeSolidObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone) {
+int ZoneImplementation::getInRangeSolidObjects(float x, float y, float range, SortedVector<ManagedReference<TreeEntry*> >* objects, bool readLockZone) {
 	objects->setNoDuplicateInsertPlan();
 
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
@@ -250,7 +260,7 @@ int ZoneImplementation::getInRangeSolidObjects(float x, float y, float range, So
 	return objects->size();
 }
 
-int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone, bool includeBuildingObjects) {
+int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<TreeEntry*> >* objects, bool readLockZone, bool includeBuildingObjects) {
 	objects->setNoDuplicateInsertPlan();
 
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
@@ -266,7 +276,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 	}
 
 	if (includeBuildingObjects) {
-		Vector<ManagedReference<QuadTreeEntry*> > buildingObjects;
+		Vector<ManagedReference<TreeEntry*> > buildingObjects;
 
 		for (int i = 0; i < objects->size(); ++i) {
 			SceneObject* sceneObject = static_cast<SceneObject*>(objects->getUnsafe(i).get());
@@ -324,7 +334,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, InRange
 	}
 
 	if (includeBuildingObjects) {
-		Vector<QuadTreeEntry*> buildingObjects;
+		Vector<TreeEntry*> buildingObjects;
 
 		for (int i = 0; i < objects->size(); ++i) {
 			SceneObject* sceneObject = static_cast<SceneObject*>(objects->getUnsafe(i));
@@ -366,8 +376,8 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, InRange
 	return objects->size();
 }
 
-int ZoneImplementation::getInRangePlayers(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* players) {
-	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+int ZoneImplementation::getInRangePlayers(float x, float y, float range, SortedVector<ManagedReference<TreeEntry*> >* players) {
+	Reference<SortedVector<ManagedReference<TreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<TreeEntry*> >();
 
 	getInRangeObjects(x, y, range, closeObjects, true);
 
