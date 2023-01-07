@@ -9,6 +9,8 @@ Distribution of this file for usage outside of Core3 is prohibited.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 
+//#define DEBUG_TREE_ENTRY
+
 TreeEntryImplementation::TreeEntryImplementation(TreeNode *n) {
 	node = n;
 	bounding = false;
@@ -29,15 +31,27 @@ void TreeEntryImplementation::setNode(TreeNode *n) {
 }
 
 bool TreeEntryImplementation::containsPoint(float px, float py) {
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::containsPoint";
+#endif
+
 	return (((px - getPositionX()) * (px - getPositionX())) + ((py - getPositionY()) * (py - getPositionY())) <= radius * radius );
 }
 
 bool TreeEntryImplementation::containsPoint(float px, float py, float pz) {
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::containsPoint";
+#endif
+
 	return ((((px - getPositionX()) * (px - getPositionX())) + ((py - getPositionY()) * (py - getPositionY()))
 			+ ((pz - getPositionZ()) * (pz - getPositionZ()))) <= radius * radius * radius );
 }
 
 bool TreeEntryImplementation::isInSWArea(TreeNode *node) const {
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.Logger::console.info(true) << "TreeEntryImplementation::isInSWArea -- Divider Z: " << node->dividerZ;
+#endif
+
 	if (node->dividerZ != 0)
 		return coordinates.getPositionX() >= node->minX && coordinates.getPositionX() < node->dividerX &&
 			coordinates.getPositionY() >= node->minY && coordinates.getPositionY() < node->dividerY &&
@@ -46,11 +60,13 @@ bool TreeEntryImplementation::isInSWArea(TreeNode *node) const {
 	else
 		return coordinates.getPositionX() >= node->minX && coordinates.getPositionX() < node->dividerX &&
 			coordinates.getPositionY() >= node->minY && coordinates.getPositionY() < node->dividerY;
-
-	Logger::console.info(String::valueOf(node->dividerZ), true);
 }
 
 bool TreeEntryImplementation::isInSEArea(TreeNode* node) const {
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::isInSEArea -- Divider Z: " << node->dividerZ;
+#endif
+
 	if (node->dividerZ != 0)
 		return coordinates.getPositionX() >= node->dividerX && coordinates.getPositionX() < node->maxX &&
 			coordinates.getPositionY() >= node->minY && coordinates.getPositionY() < node->dividerY &&
@@ -58,10 +74,13 @@ bool TreeEntryImplementation::isInSEArea(TreeNode* node) const {
 	else
 		return coordinates.getPositionX() >= node->dividerX && coordinates.getPositionX() < node->maxX &&
 			coordinates.getPositionY() >= node->minY && coordinates.getPositionY() < node->dividerY;
-	Logger::console.info(String::valueOf(node->dividerZ), true);
 }
 
 bool TreeEntryImplementation::isInNWArea(TreeNode* node) const {
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::isInNEArea -- Divider Z: " << node->dividerZ;
+#endif
+
 	if (node->dividerZ != 0)
 		return coordinates.getPositionX() >= node->minX && coordinates.getPositionX() < node->dividerX &&
 			coordinates.getPositionY() >= node->dividerY && coordinates.getPositionY() < node->maxY &&
@@ -69,11 +88,13 @@ bool TreeEntryImplementation::isInNWArea(TreeNode* node) const {
 	else
 		return coordinates.getPositionX() >= node->minX && coordinates.getPositionX() < node->dividerX &&
 			coordinates.getPositionY() >= node->dividerY && coordinates.getPositionY() < node->maxY;
-
-	Logger::console.info(String::valueOf(node->dividerZ), true);
 }
 
 bool TreeEntryImplementation::isInNEArea(TreeNode* node) const {
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::isInNEArea -- Divider Z: " << node->dividerZ;
+#endif
+
 	if (node->dividerZ != 0)
 		return coordinates.getPositionX() >= node->dividerX && coordinates.getPositionX() < node->maxX &&
 			coordinates.getPositionY() >= node->dividerY && coordinates.getPositionY() < node->maxY &&
@@ -81,54 +102,68 @@ bool TreeEntryImplementation::isInNEArea(TreeNode* node) const {
 	else
 		return coordinates.getPositionX() >= node->dividerX && coordinates.getPositionX() < node->maxX &&
 			coordinates.getPositionY() >= node->dividerY && coordinates.getPositionY() < node->maxY;
-
-	Logger::console.info(String::valueOf(node->dividerZ), true);
 }
 
 bool TreeEntryImplementation::isInSW2Area(TreeNode* node) const {
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::isInSW2Area -- Divider Z: " << node->dividerZ;
+#endif
+
 	if (node->dividerZ != 0)
 		return coordinates.getPositionX() >= node->minX && coordinates.getPositionX() < node->dividerX &&
 			coordinates.getPositionY() >= node->minY && coordinates.getPositionY() < node->dividerY &&
 				coordinates.getPositionZ() >= node->dividerZ && coordinates.getPositionZ() < node->maxZ;
 	else
 		return 0;
-	Logger::console.info(String::valueOf(node->dividerZ), true);
 }
 
 bool TreeEntryImplementation::isInSE2Area(TreeNode* node) const {
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::isInSE2Area -- Divider Z: " << node->dividerZ;
+#endif
+
 	if (node->dividerZ != 0)
 		return coordinates.getPositionX() >= node->dividerX && coordinates.getPositionX() < node->maxX &&
 			coordinates.getPositionY() >= node->minY && coordinates.getPositionY() < node->dividerY &&
 				coordinates.getPositionZ() >= node->dividerZ && coordinates.getPositionZ() < node->maxZ;
 	else
 		return 0;
-Logger::console.info(String::valueOf(node->dividerZ), true);
+
 }
 
 bool TreeEntryImplementation::isInNE2Area(TreeNode* node) const {
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::isInNE2Area -- Divider Z: " << node->dividerZ;
+#endif
+
 	if (node->dividerZ != 0)
 		return coordinates.getPositionX() >= node->dividerX && coordinates.getPositionX() < node->maxX &&
 			coordinates.getPositionY() >= node->dividerY && coordinates.getPositionY() < node->maxY &&
 				coordinates.getPositionZ() >= node->dividerZ && coordinates.getPositionZ() < node->maxZ;
 	else
 		return 0;
-Logger::console.info(String::valueOf(node->dividerZ), true);
 }
 
 bool TreeEntryImplementation::isInNW2Area(TreeNode* node) const {
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::isInNW2Area -- Divider Z: " << node->dividerZ;
+#endif
+
 	if (node->dividerZ != 0)
 		return coordinates.getPositionX() >= node->minX && coordinates.getPositionX() < node->dividerX &&
 			coordinates.getPositionY() >= node->dividerY && coordinates.getPositionY() < node->maxY &&
 				coordinates.getPositionZ() >= node->dividerZ && coordinates.getPositionZ() < node->maxZ;
 	else
 		return 0;
-Logger::console.info(String::valueOf(node->dividerZ), true);
 }
 
 bool TreeEntryImplementation::isInArea(TreeNode* node) const {
-		return (coordinates.getPositionX() + radius > node->dividerX && coordinates.getPositionX() - radius < node->dividerX) ||
-			(coordinates.getPositionY() + radius > node->dividerY && coordinates.getPositionY() - radius < node->dividerY);
-Logger::console.info(String::valueOf(node->dividerZ), true);
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::isInArea -- Divider Z: " << node->dividerZ;
+#endif
+
+	return (coordinates.getPositionX() + radius > node->dividerX && coordinates.getPositionX() - radius < node->dividerX) ||
+		(coordinates.getPositionY() + radius > node->dividerY && coordinates.getPositionY() - radius < node->dividerY);
 }
 
 uint64 TreeEntryImplementation::getObjectID() {
@@ -198,7 +233,7 @@ uint64 TreeEntryImplementation::getDirtyObjectID() {
 }
 
 float TreeEntryImplementation::getOutOfRangeDistance() const {
-	if (isInQuadTree() == true) {
+	if (isInQuadTree()) {
 		return ZoneServer::CLOSEOBJECTRANGE;
 	} else {
 		return ZoneServer::SPACEOBJECTRANGE;

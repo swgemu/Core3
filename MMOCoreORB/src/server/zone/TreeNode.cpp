@@ -104,12 +104,25 @@ void TreeNode::removeObject(int index) {
 	obj->setNode(nullptr);
 }
 
-bool TreeNode::testInside(TreeEntry* obj) const {
+bool TreeNode::testInsideQuadTree(TreeEntry* obj) const {
+	float x = obj->getPositionX();
+	float y = obj->getPositionY();
+
+	//Logger::console.info(true) << "TreeNode::testInsideQuadTree called - X = " << x << " Y = " << y;
+	//Logger::console.info(true) << " minX = " << minX << " maxX = " << maxX << " minZ = " << minZ << " maxZ = " << maxZ << " minY = " << minY << " maxY = " << maxY;
+
+	return x >= minX && x <= maxX && y >= minY && y <= maxY;
+}
+
+bool TreeNode::testInsideOctTree(TreeEntry* obj) const {
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
 	float z = obj->getPositionZ();
 
-	return x >= minX && x < maxX && y >= minY && y < maxY && z >= minZ && z < maxZ;
+	//Logger::console.info(true) << "TreeNode::testInsideOctTree called - X = " << x << " Z = " << z << " Y = " << y;
+	//Logger::console.info(true) << " minX = " << minX << " maxX = " << maxX << " minZ = " << minZ << " maxZ = " << maxZ << " minY = " << minY << " maxY = " << maxY;
+
+	return x >= minX && x <= maxX && y >= minY && y <= maxY && z >= minZ && z <= maxZ;
 }
 
 bool TreeNode::testInRange(float x, float y, float z, float range) const {

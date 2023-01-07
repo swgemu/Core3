@@ -49,8 +49,8 @@ void OctTree::insert(TreeEntry *obj) {
 	try {
 		if (OctTree::doLog()) { //--------------------------------------- HERE
 			SceneObject* scno = cast<SceneObject*>(obj);
-			System::out << hex << "object [" << scno->getDisplayedName() <<  "] inserting\n";
-			System::out << "(" << String::valueOf(obj->getPositionX()) << ", " << String::valueOf(obj->getPositionY()) << ", " << String::valueOf(obj->getPositionZ()) << ")\n";
+			Logger::console.info(true) << "object [" << scno->getDisplayedName() <<  "] inserting\n";
+			Logger::console.info(true) << "(" << String::valueOf(obj->getPositionX()) << ", " << String::valueOf(obj->getPositionY()) << ", " << String::valueOf(obj->getPositionZ()) << ")\n";
 		}
 
 		if (obj->getNode() != nullptr)
@@ -61,9 +61,9 @@ void OctTree::insert(TreeEntry *obj) {
 		SceneObject* scno = cast<SceneObject*>(obj);
 
 		if (OctTree::doLog())
-			System::out << hex << "object [" << obj->getObjectID() <<  "] finished inserting\n" << scno->getDisplayedName() << "\n";
+			Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] finished inserting\n" << scno->getDisplayedName() << "\n";
 	} catch (Exception& e) {
-		System::out << "[OctTree] error - " << e.getMessage() << "\n";
+		Logger::console.info(true) << "[OctTree] error - " << e.getMessage() << "\n";
 		e.printStackTrace();
 	}
 }
@@ -76,7 +76,7 @@ bool OctTree::update(TreeEntry *obj) {
 	try {
 		if (OctTree::doLog()) {
 			SceneObject* scno = cast<SceneObject*>(obj);
-			System::out << hex << "object [" << scno->getDisplayedName() << "] " << "Current Position:" << "(" << String::valueOf(scno->getPositionX())
+			Logger::console.info(true) << "object [" << scno->getDisplayedName() << "] " << "Current Position:" << "(" << String::valueOf(scno->getPositionX())
 					<< ", " << String::valueOf(scno->getPositionY()) << ", " << String::valueOf(scno->getPositionZ()) << ")\n";
 		}
 		TreeNode* node = obj->getNode();
@@ -107,7 +107,7 @@ bool OctTree::update(TreeEntry *obj) {
 
 		if (node == nullptr) {
 #ifdef OUTPUTQTERRORS
-			System::out << hex << "object [" << obj->getObjectID() <<  "] updating error\n";
+			Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] updating error\n";
 #endif
 			return false;
 		}
@@ -115,11 +115,11 @@ bool OctTree::update(TreeEntry *obj) {
 		bool res = _update(node, obj);
 
 		if (OctTree::doLog())
-			System::out << hex << "object [" << obj->getObjectID() <<  "] finished updating\n";
+			Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] finished updating\n";
 
 		return res;
 	} catch (Exception& e) {
-		System::out << "[OctTree] error - " << e.getMessage() << "\n";
+		Logger::console.info(true) << "[OctTree] error - " << e.getMessage() << "\n";
 		e.printStackTrace();
 
 		return false;
@@ -182,17 +182,15 @@ void OctTree::inRange(TreeEntry *obj, float range) {
 			SceneObject* scno = cast<SceneObject*>(obj);
 
 			if (OctTree::doLog()) {
-				System::out << hex << "object [" << scno->getDisplayedName() <<  "] in range (";
+				Logger::console.info(true) << "object [" << scno->getDisplayedName() <<  "] in range (";
 
 				/*for (int i = 0; i < obj->inRangeObjectCount(); ++i) {
-				System::out << hex << obj->getInRangeObject(i)->getObjectID() << ", ";
-			}*/
-
-				System::out << "\n";
+					Logger::console.info(true) << obj->getInRangeObject(i)->getObjectID() << ", ";
+				}*/
 			}
 
 	} catch (Exception& e) {
-		System::out << "[OctTree] " << e.getMessage() << "\n";
+		Logger::console.info(true) << "[OctTree] " << e.getMessage();
 		e.printStackTrace();
 	}
 }
@@ -203,7 +201,7 @@ int OctTree::inRange(float x, float y, float z, float range, SortedVector<Manage
 	try {
 		return _inRange(root, x, y, z, range, objects);
 	} catch (Exception& e) {
-		System::out << "[OctTree] " << e.getMessage() << "\n";
+		Logger::console.info(true) << "[OctTree] " << e.getMessage();
 		e.printStackTrace();
 	}
 
@@ -217,7 +215,7 @@ int OctTree::inRange(float x, float y, float z, float range,
 	try {
 		return _inRange(root, x, y, z, range, objects);
 	} catch (Exception& e) {
-		System::out << "[OctTree] " << e.getMessage() << "\n";
+		Logger::console.info(true) << "[OctTree] " << e.getMessage();
 		e.printStackTrace();
 	}
 
@@ -229,14 +227,13 @@ void OctTree::remove(TreeEntry *obj) {
 	Locker locker(&mutex);
 
 	if (OctTree::doLog())
-		System::out << hex << "object [" << obj->getObjectID() <<  "] removing\n";
+		Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] removing\n";
 
 	TreeNode* node = obj->getNode().castTo<TreeNode*>();
 
 	if (node != nullptr) {
 		if (!node->validateNode()) {
-			System::out << "[OctTree] " << obj->getObjectID() << " error on remove() - invalid Node"
-					<< node->toStringData() << "\n";
+			Logger::console.info(true) << "[OctTree] " << obj->getObjectID() << " error on remove() - invalid Node" << node->toStringData();
 		}
 
 		node->removeObject(obj);
@@ -244,12 +241,12 @@ void OctTree::remove(TreeEntry *obj) {
 		node->check();
 		obj->setNode(nullptr);
 	} else {
-		System::out << hex << "object [" << obj->getObjectID() <<  "] ERROR - removing the node\n";
+		Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] ERROR - removing the node\n";
 		StackTrace::printStackTrace();
 	}
 
 	if (OctTree::doLog())
-		System::out << hex << "object [" << obj->getObjectID() <<  "] finished removing\n";
+		Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] finished removing\n";
 }
 
 void OctTree::removeAll() {
@@ -372,15 +369,15 @@ void OctTree::_insert(const Reference<TreeNode*>& node, TreeEntry *obj) {
 }
 
 bool OctTree::_update(const Reference<TreeNode*>& node, TreeEntry *obj) {
-	//System::out << "(" << obj->getPositionX() << "," << obj->getPositionY() << "," << obj->getPositionZ() << ")\n";
+	//Logger::console.info(true) << "(" << obj->getPositionX() << "," << obj->getPositionY() << "," << obj->getPositionZ() << ")\n";
 
 	//Logger::console.info("OctTree::_Update", true);
 
-	if (node->testInside(obj))
+	if (node->testInsideOctTree(obj))
 		return true;
 
 	Reference<TreeNode*> cur = node->parentNode.get();
-	while (cur != nullptr && !cur->testInside(obj))
+	while (cur != nullptr && !cur->testInsideOctTree(obj))
 		cur = cur->parentNode.get();
 
 	remove(obj);
@@ -390,7 +387,7 @@ bool OctTree::_update(const Reference<TreeNode*>& node, TreeEntry *obj) {
 	}
 #ifdef OUTPUTOTERRORS
 	else
-		System::out << "[OctTree] error on update() - invalid Node\n";
+		Logger::console.info(true) << "[OctTree] error on update() - invalid Node\n";
 #endif
 	return cur != nullptr;
 }
@@ -452,7 +449,7 @@ void OctTree::safeInRange(TreeEntry* obj, float range) {
 						o->addInRangeObject(obj);
 				}
 			} catch (...) {
-				System::out << "unreported exception caught in safeInRange()\n";
+				Logger::console.info(true) << "unreported exception caught in safeInRange()\n";
 			}
 		} else {
 			if (obj->getCloseObjects() != nullptr)
@@ -611,7 +608,7 @@ int OctTree::inRange(float x, float y, float z, SortedVector<ManagedReference<Tr
 	try {
 		return _inRange(root, x, y, z, objects);
 	} catch (Exception& e) {
-		System::out << "[OctTree] " << e.getMessage() << "\n";
+		Logger::console.info(true) << "[OctTree] " << e.getMessage();
 		e.printStackTrace();
 	}
 
@@ -624,7 +621,7 @@ int OctTree::inRange(float x, float y, float z, SortedVector<TreeEntry*>& object
 	try {
 		return _inRange(root, x, y, z, objects);
 	} catch (Exception& e) {
-		System::out << "[OctTree] " << e.getMessage() << "\n";
+		Logger::console.info(true) << "[OctTree] " << e.getMessage();
 		e.printStackTrace();
 	}
 
