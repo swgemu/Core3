@@ -35,7 +35,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 		//StackTrace::printStackTrace();
 	}
 
-	activeArea->setZone(newZone);
+	activeArea->setGroundZone(newZone);
 
 	auto areaTree = newZone->getActiveAreaTree();
 
@@ -141,7 +141,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	activeArea->notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, nullptr, 0);
 
-	activeArea->setZone(nullptr);
+	activeArea->setGroundZone(nullptr);
 
 	return true;
 }
@@ -197,7 +197,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 		object->setParent(nullptr, false);
 	}
 
-	object->setZone(newZone);
+	object->setGroundZone(newZone);
 	zone = newZone;
 
 	zone->addSceneObject(object);
@@ -393,7 +393,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 	object->notifyRemoveFromZone();
 
-	object->setZone(nullptr);
+	object->setGroundZone(nullptr);
 
 	return true;
 }
