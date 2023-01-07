@@ -279,22 +279,22 @@ class TreeEntry extends Observable {
 
 	@read
 	public abstract int registerToCloseObjectsReceivers() {
-	    return receiverFlags;
+		return receiverFlags;
 	}
 
 	@read
 	public abstract int getReceiverFlags() {
-	    return receiverFlags;
+		return receiverFlags;
 	}
 
 	@read
 	public boolean isInQuadTree() {
-		return false;
+		return node && node.dividerZ == 0;
 	}
 
 	@read
 	public boolean isInOctTree() {
-		return false; // node != nullptr wtf not working
+		return node && node.dividerZ != 0;
 	}
 
 	/*@read

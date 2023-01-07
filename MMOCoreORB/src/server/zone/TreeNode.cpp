@@ -73,14 +73,14 @@ TreeNode::~TreeNode() {
 
 void TreeNode::addObject(TreeEntry *obj) {
 	if (dividerZ != 0 && OctTree::doLog())
-		System::out << hex << "object [" << obj->getObjectID() <<  "] added to OctTree"
+		Logger::console.info(true) << hex << "object [" << obj->getObjectID() <<  "] added to OctTree"
 		<< toStringData() << "\n";
 	else if (dividerZ == 0 && QuadTree::doLog())
-		System::out << hex << "object [" << obj->getObjectID() <<  "] added to QuadTree"
+		Logger::console.info(true) << hex << "object [" << obj->getObjectID() <<  "] added to QuadTree"
 		<< toStringData() << "\n";
 
 	if (!validateNode())
-		System::out << "[Tree] invalid node in addObject() - " << toStringData() << "\n";
+		Logger::console.error() << "[TreeNode] invalid node in addObject() - " << toStringData() << "\n";
 
 	objects.put(obj);
 	obj->setNode(this);
@@ -88,13 +88,13 @@ void TreeNode::addObject(TreeEntry *obj) {
 
 void TreeNode::removeObject(TreeEntry *obj) {
 	if (!objects.drop(obj)) {
-		System::out << hex << "object [" << obj->getObjectID() <<  "] not found on Tree"
+		Logger::console.info(true) << hex << "object [" << obj->getObjectID() <<  "] not found on Tree"
 				<< toStringData() << "\n";
 	} else {
 		obj->setNode(nullptr);
 
 		if (OctTree::doLog())
-			System::out <<  hex << "object [" << obj->getObjectID() <<  "] removed Tree"
+			Logger::console.info(true) <<  hex << "object [" << obj->getObjectID() <<  "] removed Tree"
 			<< toStringData() << "\n";
 	}
 }
@@ -104,12 +104,25 @@ void TreeNode::removeObject(int index) {
 	obj->setNode(nullptr);
 }
 
-bool TreeNode::testInside(TreeEntry* obj) const {
+bool TreeNode::testInsideQuadTree(TreeEntry* obj) const {
+	float x = obj->getPositionX();
+	float y = obj->getPositionY();
+
+	//Logger::console.info(true) << "TreeNode::testInsideQuadTree called - X = " << x << " Y = " << y;
+	//Logger::console.info(true) << " minX = " << minX << " maxX = " << maxX << " minZ = " << minZ << " maxZ = " << maxZ << " minY = " << minY << " maxY = " << maxY;
+
+	return x >= minX && x <= maxX && y >= minY && y <= maxY;
+}
+
+bool TreeNode::testInsideOctTree(TreeEntry* obj) const {
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
 	float z = obj->getPositionZ();
 
-	return x >= minX && x < maxX && y >= minY && y < maxY && z >= minZ && z < maxZ;
+	//Logger::console.info(true) << "TreeNode::testInsideOctTree called - X = " << x << " Z = " << z << " Y = " << y;
+	//Logger::console.info(true) << " minX = " << minX << " maxX = " << maxX << " minZ = " << minZ << " maxZ = " << maxZ << " minY = " << minY << " maxY = " << maxY;
+
+	return x >= minX && x <= maxX && y >= minY && y <= maxY && z >= minZ && z <= maxZ;
 }
 
 bool TreeNode::testInRange(float x, float y, float z, float range) const {
@@ -168,7 +181,7 @@ void TreeNode::check () {
 			parentNode->seNode2 = nullptr;
 
 		if (OctTree::doLog())
-			System::out << "deleting node (" << this << ")\n";
+			Logger::console.info(true) << "deleting node (" << this << ")\n";
 
 		//delete this;
 	}

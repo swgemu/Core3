@@ -138,8 +138,11 @@ public:
 		return x >= minX && x < maxX && y >= minY && y < maxY;
 	}
 
-	// Test if the object is inside this node
-	bool testInside(TreeEntry* obj) const;
+	// Test if the object is inside this quad tree node
+	bool testInsideQuadTree(TreeEntry* obj) const;
+
+	// Test if the object is inside this oct tree node
+	bool testInsideOctTree(TreeEntry* obj) const;
 
 	String toStringData();
 

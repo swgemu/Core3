@@ -104,7 +104,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	areaTree->remove(activeArea);
 
-	// lets remove the in range active areas of players
+	// Remove active area from in range objects
 	SortedVector<TreeEntry*> objects;
 	float range = activeArea->getRadius() + 64;
 
