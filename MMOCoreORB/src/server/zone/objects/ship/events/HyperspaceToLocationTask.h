@@ -37,72 +37,67 @@ public:
 
 		int currentIter = iteration++;
 
-		switch(currentIter) {
-			case 0:
-				creo->sendSystemMessage("@space/space_interaction:hyperspace_route_begin");
-				reschedule(5000);
+		switch (currentIter) {
+		case 0:
+			creo->sendSystemMessage("@space/space_interaction:hyperspace_route_begin");
+			reschedule(5000);
+			return;
+		case 1: // 25%
+		case 2: // 50%
+		case 3: { // 75%
+			String strid = "@space/space_interaction:hyperspace_route_calculation_";
+			strid += String::valueOf(currentIter);
+			creo->sendSystemMessage(strid);
+			reschedule(5000);
+			return;
+		}
+		case 4: // 100%
+			orientShip();
+		case 5: // t-4
+		case 6: // t-3
+		case 7: // t-2
+		case 8: { // t-1
+			String strid = "@space/space_interaction:hyperspace_route_calculation_";
+			strid += String::valueOf(currentIter);
+			creo->sendSystemMessage(strid);
+			reschedule(1000);
+			return;
+		}
+		case 9:
+			beginHyperspace();
+			reschedule(6000);
+			return;
+		case 10: {
+			ShipObject *shipObject = scno->asShipObject();
+			if (shipObject == nullptr)
 				return;
-			case 1: // 25%
-			case 2: // 50%
-			case 3: // 75%
-			{
-				String strid = "@space/space_interaction:hyperspace_route_calculation_";
-				strid += String::valueOf(currentIter);
-				creo->sendSystemMessage(strid);
-				reschedule(5000);
+
+			Locker locker(scno);
+			SpaceZone *newZone = shipObject->getSpaceZone();
+			shipObject->setHyperspacing(true);
+			shipObject->destroyObjectFromWorld(true);
+			reschedule(1000);
+			return;
+		}
+		case 11: {
+			SpaceZone *newZone = ServerCore::getZoneServer()->getSpaceZone(zone);
+
+			if (newZone == nullptr)
 				return;
-			}
-			case 4: // 100%
-				orientShip();
-			case 5: // t-4
-			case 6: // t-3
-			case 7: // t-2
-			case 8: // t-1
-			{
-				String strid = "@space/space_interaction:hyperspace_route_calculation_";
-				strid += String::valueOf(currentIter);
-				creo->sendSystemMessage(strid);
-				reschedule(1000);
-				return;
-			}
-			case 9:
-				beginHyperspace();
-				reschedule(6000);
-				return;
-			case 10:
-			{
-				ShipObject *shipObject = scno->asShipObject();
-				if (shipObject == nullptr)
-					return;
 
-				Locker locker(scno);
-				SpaceZone *newZone = shipObject->getSpaceZone();
-				shipObject->setHyperspacing(true);
-				shipObject->destroyObjectFromWorld(true);
-				reschedule(1000);
-				return;
-			}
-			case 11:
-			{
-				SpaceZone *newZone = ServerCore::getZoneServer()->getSpaceZone(zone);
+			Locker locker(scno);
+			Locker zoneCross(newZone, scno);
 
-				if (newZone == nullptr)
-					return;
+			scno->initializePosition(location.getX(), location.getZ(), location.getY());
+			newZone->transferObject(scno, -1, false);
 
-				Locker locker(scno);
-				Locker zoneCross(newZone, scno);
+			zoneCross.release();
 
-				scno->initializePosition(location.getX(), location.getZ(), location.getY());
-				newZone->transferObject(scno, -1, false);
+			Locker creoCross(creo, scno);
 
-				zoneCross.release();
-
-				Locker creoCross(creo, scno);
-				//scno->transferObject(creo, 5, false);
-				//creo->setState(CreatureState::PILOTINGSHIP);
-				creo->sendToOwner(true);
-				return;
-			}
+			creo->sendToOwner(true);
+			return;
+		}
 		}
 	}
 
@@ -125,4 +120,4 @@ public:
 	}
 };
 
-#endif //CORE3_HYPERSPACETOLOCATIONTASK_H
+#endif // CORE3_HYPERSPACETOLOCATIONTASK_H
