@@ -1010,7 +1010,10 @@ void SceneObjectImplementation::updateDirection(float angleHeadingRadians) {
 }
 
 void SceneObjectImplementation::notifyRemoveFromZone() {
-	zoneComponent->notifyRemoveFromZone(asSceneObject());
+	if (spaceZone.get() != nullptr)
+		spaceZoneComponent->notifyRemoveFromZone(asSceneObject());
+	else
+		zoneComponent->notifyRemoveFromZone(asSceneObject());
 }
 
 int SceneObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {

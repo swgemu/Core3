@@ -343,7 +343,10 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	 * Destroys the object from the world
 	 */
 	public abstract void destroyObjectFromWorld(boolean sendSelfDestroy) {
-		zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
+		if (spaceZone.get() != null)
+			spaceZoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
+		else
+			zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
 	}
 
 	/**
@@ -991,6 +994,11 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@read
 	public Zone getLocalZone() {
 		return zone.get();
+	}
+
+	@read
+	public SpaceZone getLocalSpaceZone() {
+		return spaceZone.get();
 	}
 
 	@local
