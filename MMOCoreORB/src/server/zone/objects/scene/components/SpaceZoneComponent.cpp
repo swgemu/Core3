@@ -357,8 +357,8 @@ void SpaceZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool s
 		sceneObject->broadcastDestroy(sceneObject, sendSelfDestroy);
 	}
 
-	SpaceZone* rootZone = sceneObject->getSpaceZone();
-	SpaceZone* zone = sceneObject->getSpaceZone();
+	SpaceZone* rootSpaceZone = sceneObject->getSpaceZone();
+	SpaceZone* spaceZone = sceneObject->getLocalSpaceZone();
 
 	if (par != nullptr) {
 		uint64 parentID = sceneObject->getParentID();
@@ -376,26 +376,27 @@ void SpaceZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool s
 		}
 
 		sceneObject->notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, sceneObject, 0);
-	} else if (zone != nullptr) {
-		zone->removeObject(sceneObject, nullptr, false);
+	} else if (spaceZone != nullptr) {
+		spaceZone->removeObject(sceneObject, nullptr, false);
 	}
 
-	removeObjectFromZone(sceneObject, rootZone, par);
+	removeObjectFromZone(sceneObject, rootSpaceZone, par);
 }
 
-void SpaceZoneComponent::removeObjectFromZone(SceneObject* sceneObject, SpaceZone* zone, SceneObject* par) const {
-	if (zone == nullptr)
+void SpaceZoneComponent::removeObjectFromZone(SceneObject* sceneObject, SpaceZone* spaceZone, SceneObject* par) const {
+	if (spaceZone == nullptr) {
 		return;
+	}
 
-	Locker locker(zone);
+	Locker locker(spaceZone);
 
-	zone->dropSceneObject(sceneObject);
+	spaceZone->dropSceneObject(sceneObject);
 
 	if (sceneObject->isActiveArea()) {
 		return;
 	}
 
-	zone->remove(sceneObject);
+	spaceZone->remove(sceneObject);
 
 	locker.release();
 
@@ -428,7 +429,7 @@ void SpaceZoneComponent::removeObjectFromZone(SceneObject* sceneObject, SpaceZon
 		sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
 #endif
 
-		zone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), sceneObject->getPositionZ() ,ZoneServer::SPACEOBJECTRANGE + 64, &closeSceneObjects, false);
+		spaceZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), sceneObject->getPositionZ(), ZoneServer::SPACEOBJECTRANGE, &closeSceneObjects, false);
 
 		for (int i = 0; i < closeSceneObjects.size(); ++i) {
 			TreeEntry* obj = closeSceneObjects.getUnsafe(i);

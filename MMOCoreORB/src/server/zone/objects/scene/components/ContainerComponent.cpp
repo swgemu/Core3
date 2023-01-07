@@ -205,16 +205,21 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	if (sceneObject == object) {
 		return false;
 	}
-	ManagedReference<Zone*> objZone = nullptr;
-	bool isSpaceZone = false;
+
+	if (!object->canBeTransferred(sceneObject))
+		return false;
 
 	ManagedReference<SceneObject*> objParent = object->getParent().get();
+	ManagedReference<Zone*> objZone = nullptr;
+	ManagedReference<SpaceZone*> objSpaceZone = nullptr;
+
+	bool isSpaceZone = false;
 
 	if (object->getSpaceZone() != nullptr) {
 		isSpaceZone = true;
+		objSpaceZone = object->getLocalSpaceZone();
 	} else if (object->getZone() != nullptr) {
 		objZone = object->getLocalZone();
-		isSpaceZone = false;
 	}
 
 	ManagedReference<Zone*> oldRootZone = object->getZone();
@@ -227,7 +232,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		}
 	}
 
-	if (objParent != nullptr) {
+	if (objParent != nullptr || objZone != nullptr || objSpaceZone != nullptr) {
 		if (objParent != nullptr)
 			objParent->removeObject(object, sceneObject, notifyClient);
 
@@ -237,26 +242,20 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 			return false;
 		}
 
-		if (!isSpaceZone) {
-			Zone* objZone = object->getZone();
+		if (objZone != nullptr) {
+			objZone->remove(object);
 
-			if (objZone != nullptr) {
-				objZone->remove(object);
-				object->setSpaceZone(nullptr);
-				//object->setZone(nullptr);
-				if (objParent == nullptr)
+			object->setGroundZone(nullptr);
+
+			if (objParent == nullptr)
 					objParent = objZone;
-			}
-		} else {
-			SpaceZone* objZone = object->getSpaceZone();
+		} else if (objSpaceZone != nullptr) {
+			objSpaceZone->remove(object);
 
-			if (objZone != nullptr) {
-				objZone->remove(object);
-				object->setZone(nullptr);
+			object->setSpaceZone(nullptr);
 
-				if (objParent == nullptr)
-					objParent = objZone;
-			}
+			if (objParent == nullptr)
+				objParent = objSpaceZone;
 		}
 	}
 
@@ -333,18 +332,10 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	contLocker.release();
 
-	if (!isSpaceZone) {
-		Zone* objZone = object->getLocalZone();
-		if ((containmentType >= 4) && (objZone == NULL && false)) //TODO: FIX
-			sceneObject->broadcastObject(object, true);
-		else if (notifyClient)
-			sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
-	} else if (isSpaceZone) {
-		SpaceZone* objZone = object->getSpaceZone();
-		if ((containmentType >= 4) && (objZone == NULL && false)) //TODO: FIX
-			sceneObject->broadcastObject(object, true);
-		else if (notifyClient)
-			sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
+	if ((containmentType >= 4) && (objZone == nullptr || objSpaceZone == nullptr)) {
+		sceneObject->broadcastObject(object, true);
+	} else if (notifyClient) {
+		sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
 	}
 
 	notifyObjectInserted(sceneObject, object);

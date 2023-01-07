@@ -165,7 +165,7 @@ class SpaceZone extends SceneObject {
 
 	@dirty
 	public boolean isSpaceZone() {
-	    return spaceZone;
+		return true;
 	}
 
 	@dirty

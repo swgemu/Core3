@@ -5,6 +5,7 @@
 #include "server/zone/TreeEntry.h"
 #include "server/zone/QuadTree.h"
 #include "server/zone/OctTree.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 #define NO_ENTRY_REF_COUNTING
 
@@ -72,12 +73,13 @@ TreeNode::~TreeNode() {
 }
 
 void TreeNode::addObject(TreeEntry *obj) {
-	if (dividerZ != 0 && OctTree::doLog())
+	/*if (dividerZ != 0 && OctTree::doLog())
 		Logger::console.info(true) << hex << "object [" << obj->getObjectID() <<  "] added to OctTree"
 		<< toStringData() << "\n";
 	else if (dividerZ == 0 && QuadTree::doLog())
 		Logger::console.info(true) << hex << "object [" << obj->getObjectID() <<  "] added to QuadTree"
 		<< toStringData() << "\n";
+	*/
 
 	if (!validateNode())
 		Logger::console.error() << "[TreeNode] invalid node in addObject() - " << toStringData() << "\n";
@@ -86,20 +88,27 @@ void TreeNode::addObject(TreeEntry *obj) {
 	obj->setNode(this);
 }
 
-void TreeNode::removeObject(TreeEntry *obj) {
+void TreeNode::removeObject(TreeEntry* obj) {
+
+
 	if (!objects.drop(obj)) {
-		Logger::console.info(true) << hex << "object [" << obj->getObjectID() <<  "] not found on Tree"
-				<< toStringData() << "\n";
+		Logger::console.info(true) << "TreeNode::removeObject -- Object ID: " << obj->getObjectID() <<  "] not found on Tree" << toStringData() << "\n";
 	} else {
 		obj->setNode(nullptr);
 
-		if (OctTree::doLog())
-			Logger::console.info(true) <<  hex << "object [" << obj->getObjectID() <<  "] removed Tree"
-			<< toStringData() << "\n";
+		if (OctTree::doLog()) {
+			SceneObject* sceneO = cast<SceneObject*>(obj);
+
+			if (sceneO != nullptr && dividerX != 0) {
+				Logger::console.info(true) << "TreeNode::removeObject -- OctTree Object ID: " << sceneO->getObjectID() <<  " - removed objects Tree Node" << toStringData() << "\n";
+			}
+		}
 	}
 }
 
 void TreeNode::removeObject(int index) {
+	//Logger::console.info(true) << "TreeNode::removeObject by index #" << index;
+
 	TreeEntry* obj = objects.remove(index);
 	obj->setNode(nullptr);
 }

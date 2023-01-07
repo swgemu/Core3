@@ -109,10 +109,12 @@ void SpaceZoneImplementation::insert(TreeEntry* entry) {
 
 	octTree->insert(entry);
 
+	/*
 	SceneObject* sceneO = cast<SceneObject*>(entry);
 
 	if (sceneO != nullptr)
 		info(true) << "Inserting object into Oct Tree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+	*/
 }
 
 void SpaceZoneImplementation::remove(TreeEntry* entry) {
@@ -121,10 +123,12 @@ void SpaceZoneImplementation::remove(TreeEntry* entry) {
 	if (entry->isInOctTree()) {
 		octTree->remove(entry);
 
+		/*
 		SceneObject* sceneO = cast<SceneObject*>(entry);
 
 		if (sceneO != nullptr)
 			info(true) << "Removing object from Oct Tree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+		*/
 	}
 }
 

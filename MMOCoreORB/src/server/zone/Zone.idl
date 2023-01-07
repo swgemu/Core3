@@ -229,7 +229,7 @@ class Zone extends SceneObject {
 
 	@dirty
 	public boolean isGroundZone() {
-		return zone;
+		return true;
 	}
 
 	/**
