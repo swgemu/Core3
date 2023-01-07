@@ -213,8 +213,20 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 	zone->inRange(object, ZoneServer::CLOSEOBJECTRANGE);
 
 	TangibleObject* tanoObject = object->asTangibleObject();
+
 	if (tanoObject != nullptr) {
 		zone->updateActiveAreas(tanoObject);
+
+		if (tanoObject->isPlayerCreature()) {
+			CreatureObject* player = tanoObject->asCreatureObject();
+
+			if (player != nullptr) {
+				if (player->hasState(CreatureState::PILOTINGSHIP))
+					player->clearState(CreatureState::PILOTINGSHIP);
+				else if (player->hasState(CreatureState::PILOTINGPOBSHIP))
+					player->clearState(CreatureState::PILOTINGPOBSHIP);
+			}
+		}
 	} else if (object->isStaticObjectClass()) {
 		// hack to get around notifyEnter/Exit only working with tangible objects
 		Vector3 worldPos = object->getWorldPosition();

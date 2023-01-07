@@ -50,7 +50,8 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 }
 
 void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool force) {
-	player->clearState(CreatureState::PILOTINGSHIP);
+	if (player == nullptr)
+		return;
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
