@@ -189,7 +189,10 @@ public:
 				player->initializePosition(x, z, y);
 			}
 
-			zone->transferObject(player, -1, true);
+			if (zone != nullptr)
+				zone->transferObject(player, -1, true);
+			else if (spaceZone != nullptr)
+				spaceZone->transferObject(player, -1, true);
 		} else {
 			if (player->getZone() == nullptr) {
 				ManagedReference<SceneObject*> objectToInsert = currentParent != nullptr ? player->getRootParent() : player;
@@ -199,10 +202,13 @@ public:
 
 				Locker clocker(objectToInsert, player);
 
-				if (!inSpaceZone)
+				Zone* objZone = objectToInsert->getZone();
+				SpaceZone* objSpaceZone = objectToInsert->getSpaceZone();
+
+				if (objZone != nullptr)
 					zone->transferObject(objectToInsert, -1, false);
-				else
-					spaceZone->transferObject(objectToInsert, -1, false);
+				else if (objSpaceZone != nullptr)
+					objSpaceZone->transferObject(objectToInsert, -1, false);
 			}
 
 			player->sendToOwner(true);
