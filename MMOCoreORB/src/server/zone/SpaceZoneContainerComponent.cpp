@@ -16,26 +16,22 @@
 bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
 	SpaceZone* newZone = dynamic_cast<SpaceZone*>(sceneObject);
 
-//	Logger::console.info("spaceZone transferObject", true);
-
 	if (newZone == nullptr)
 		return false;
 
-	SpaceZone* zone = object->getSpaceZone();
+	SpaceZone* spaceZone = object->getSpaceZone();
 /*
 	if (object->isActiveArea())
 		return insertActiveArea(newZone, dynamic_cast<ActiveArea*>(object));
 */
 	Locker zoneLocker(newZone);
 
-	if (object->isInOctTree() && newZone != zone) {
-		object->error("trying to insert to zone an object that is already in a different octtree");
+	if (object->isInOctTree() && newZone != spaceZone) {
+		object->error("trying to insert to spaceZone an object that is already in a different octtree");
 
 		object->destroyObjectFromWorld(true);
 
 		return false;
-
-		//StackTrace::printStackTrace();
 	}
 
 	ManagedReference<SceneObject*> parent = object->getParent().get();
@@ -67,11 +63,11 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	} else {
 		object->setParent(nullptr, false);
 	}
-///here
-	object->setZone(newZone);
-	zone = newZone;
 
-	zone->addSceneObject(object);
+	object->setSpaceZone(newZone);
+	spaceZone = newZone;
+
+	spaceZone->addSceneObject(object);
 
 	if (notifyClient)
 		object->sendToOwner(true);
@@ -79,13 +75,13 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	if (parent == nullptr)
 		object->initializePosition(object->getPositionX(), object->getPositionZ(), object->getPositionY());
 
-	zone->insert(object);
+	spaceZone->insert(object);
 
-	zone->inRange(object, ZoneServer::SPACEOBJECTRANGE);
+	spaceZone->inRange(object, ZoneServer::SPACEOBJECTRANGE);
 
 	zoneLocker.release();
 
-	object->notifyInsertToZone(zone);
+	object->notifyInsertToZone(spaceZone);
 
 	object->notifyObservers(ObserverEventType::PARENTCHANGED, nullptr);
 
@@ -93,41 +89,40 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 }
 
 bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
-
-	SpaceZone* zone = dynamic_cast<SpaceZone*>(sceneObject);
+	SpaceZone* spaceZone = dynamic_cast<SpaceZone*>(sceneObject);
 
 	ManagedReference<SceneObject*> parent = object->getParent().get();
 
 	try {
 		Locker locker(object);
 
-		if (zone == nullptr)
+		if (spaceZone == nullptr)
 			return false;
 
 		object->debug("removing from space zone");
 
-		Locker zoneLocker(zone);
+		Locker zoneLocker(spaceZone);
 
 		if (parent != nullptr) {
 			parent->removeObject(object, nullptr, false);
 		} else
-			zone->remove(object);
+			spaceZone->remove(object);
 
-		SpaceZone* oldZone = zone;
+		SpaceZone* oldZone = spaceZone;
 
 		auto closeObjects = object->getCloseObjects();
 
 		if (closeObjects != nullptr) {
 			SortedVector<ManagedReference<TreeEntry*> > closeSceneObjects;
 
-			ZoneComponent::removeAllObjectsFromCOV(closeObjects, closeSceneObjects, sceneObject, object);
+			SpaceZoneComponent::removeAllObjectsFromCOV(closeObjects, closeSceneObjects, sceneObject, object);
 		} else {
 #ifdef COV_DEBUG
 			object->info("Null closeobjects vector in SpaceZoneContainerComponent::removeObject", true);
 #endif
 			SortedVector<ManagedReference<TreeEntry*> > closeSceneObjects;
 
-			zone->getInRangeObjects(object->getPositionX(), object->getPositionY(), object->getPositionZ(), 512, &closeSceneObjects, false);
+			spaceZone->getInRangeObjects(object->getPositionX(), object->getPositionY(), object->getPositionZ(), ZoneServer::SPACEOBJECTRANGE, &closeSceneObjects, false);
 
 			for (int i = 0; i < closeSceneObjects.size(); ++i) {
 				TreeEntry* obj = closeSceneObjects.get(i);
@@ -137,7 +132,7 @@ bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneOb
 			}
 		}
 
-		zone = nullptr;
+		spaceZone = nullptr;
 
 		oldZone->dropSceneObject(object);
 
@@ -180,7 +175,7 @@ bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneOb
 
 	object->notifyRemoveFromZone();
 
-	object->setZone(nullptr);
+	object->setSpaceZone(nullptr);
 
 	return true;
 }

@@ -103,8 +103,14 @@ public:
 		String zoneName = ghost->getSavedTerrainName();
 		bool inSpaceZone = false;
 
-		Zone* zone = zoneServer->getZone(zoneName);
-		SpaceZone* spaceZone = zoneServer->getSpaceZone(zoneName);
+		Zone* zone = nullptr;
+		SpaceZone* spaceZone = nullptr;
+
+		if (zoneName.contains("space")) {
+			spaceZone = zoneServer->getSpaceZone(zoneName);
+		} else {
+			zone = zoneServer->getZone(zoneName);
+		}
 
 		if ((zone == nullptr) && (spaceZone == nullptr)) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "The planet where your character was stored is disabled!", 0x0);

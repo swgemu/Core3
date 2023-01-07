@@ -32,6 +32,7 @@
 #include "server/zone/objects/installation/components/ScannerZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
+#include "server/zone/objects/player/components/PlayerSpaceZoneComponent.h"
 #include "server/zone/objects/building/components/BuildingDataComponent.h"
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/building/components/ShuttleZoneComponent.h"
@@ -163,6 +164,7 @@ ComponentManager::ComponentManager() {
 	components.put("ZoneComponent", new ZoneComponent());
 	components.put("SpaceZoneComponent", new SpaceZoneComponent());
 	components.put("PlayerZoneComponent", new PlayerZoneComponent());
+	components.put("PlayerSpaceZoneComponent", new PlayerSpaceZoneComponent());
 	components.put("StructureZoneComponent", new StructureZoneComponent());
 	components.put("ShuttleZoneComponent", new ShuttleZoneComponent());
 	components.put("ShuttleInstallationZoneComponent", new ShuttleInstallationZoneComponent());

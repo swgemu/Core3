@@ -103,16 +103,13 @@ class TreeEntry extends Observable {
 
 	@dirty
 	public abstract boolean isInRange(float x, float y, float z, float range) {
-		float rangecb = range * range * range;
+		float rangesq = range * range;
 
-		float deltaX = x - coordinates.getPositionX();
-		float deltaY = y - coordinates.getPositionY();
-		float deltaZ = z - coordinates.getPositionZ();
+		float deltaX = coordinates.getPositionX() - x;
+		float deltaY = coordinates.getPositionY() - y;
+		float deltaZ = coordinates.getPositionZ() - z;
 
-		if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ <= rangecb)
-			return true;
-		else
-			return false;
+		return deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ <= rangesq;
 	}
 
 	@dirty
@@ -289,12 +286,12 @@ class TreeEntry extends Observable {
 
 	@read
 	public boolean isInQuadTree() {
-		return node && node.dividerZ == 0;
+		return node;
 	}
 
 	@read
 	public boolean isInOctTree() {
-		return node && node.dividerZ != 0;
+		return node;
 	}
 
 	/*@read

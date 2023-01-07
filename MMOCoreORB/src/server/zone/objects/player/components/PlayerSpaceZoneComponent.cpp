@@ -11,46 +11,24 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/SpaceZone.h"
 #include "server/zone/TreeEntry.h"
 
-void PlayerSpaceZoneComponent::notifyInsertToZone(SceneObject* sceneObject, SceneObject* newZone) const {
+void PlayerSpaceZoneComponent::notifyInsertToZone(SceneObject* sceneObject, SpaceZone* newSpaceZone) const {
+	String zoneName = newSpaceZone->getZoneName();
 
-	bool isSpaceZone = false;
-	String zoneName = "";
-	SceneObject* zone = nullptr;
-	//Logger::console.info("notify insert to player space zone");
-	if (newZone->isSpaceZone()) {
-		SpaceZone* zone = cast<SpaceZone*>(newZone);
-		isSpaceZone = true;
-		zoneName = zone->getZoneName();
-		//Logger::console.info("New zone is space zone", true);
-	} else {
-		Zone* zone = cast<Zone*>(newZone);
-		zoneName = zone->getZoneName();
-	}
-
-	//Logger::console.info("New zone name: " + zoneName);
-
-	if (sceneObject->isPlayerCreature() && zone != nullptr) {
+	if (sceneObject->isPlayerCreature() && newSpaceZone != nullptr) {
 		PlayerObject* ghost = sceneObject->asCreatureObject()->getPlayerObject();
 
-		if (ghost != nullptr)
+		if (ghost != nullptr) {
 			ghost->setSavedTerrainName(zoneName);
-
-		//Logger::console.info("saved terrain name: " + ghost->getSavedTerrainName());
+		}
 	}
 
-	if (isSpaceZone)
-		SpaceZoneComponent::notifyInsertToZone(sceneObject, cast<SpaceZone*>(newZone));
-	//else {
-	//	ZoneComponent::notifyInsertToZone(sceneObject, cast<Zone*>(newZone));
-	//}
+	SpaceZoneComponent::notifyInsertToZone(sceneObject, newSpaceZone);
 }
 
 void PlayerSpaceZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
-	//Logger::console.info("notifyInsert", true);
 	SceneObject* scno = static_cast<SceneObject*>( entry);
 
 	if (scno == sceneObject)
@@ -82,7 +60,6 @@ void PlayerSpaceZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEnt
 }
 
 void PlayerSpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
-	//Logger::console.info("switch zone");
 	if (sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
 		PlayerObject* ghost = player->getPlayerObject();
@@ -104,12 +81,10 @@ void PlayerSpaceZoneComponent::switchZone(SceneObject* sceneObject, const String
 			ghost->unloadSpawnedChildren();
 		}
 
-		player->setMovementCounter(0);
-
-		player->notifyObservers(ObserverEventType::ZONESWITCHED);
+		player->notifyObservers(ObserverEventType::ZONESWITCHED, nullptr, newTerrainName.hashCode());
 	}
-	if (newTerrainName.contains("space"))
-		SpaceZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
+
+	SpaceZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
 }
 
 void PlayerSpaceZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {
@@ -128,8 +103,7 @@ void PlayerSpaceZoneComponent::teleport(SceneObject* sceneObject, float newPosit
 		}
 	}
 
-	if (sceneObject->getSpaceZone() != nullptr)
-		SpaceZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
+	SpaceZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
 
 	if (player != nullptr) {
 		PlayerObject* ghost = player->getPlayerObject();
@@ -151,28 +125,31 @@ void PlayerSpaceZoneComponent::teleport(SceneObject* sceneObject, float newPosit
  * @param lightUpdate if true a standalone message is sent to the in range objects
  */
 void PlayerSpaceZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) const {
-	if (sceneObject->getSpaceZone() != nullptr)
-		SpaceZoneComponent::updateZone(sceneObject, lightUpdate, sendPackets);
+	SpaceZoneComponent::updateZone(sceneObject, lightUpdate, sendPackets);
 
 	if (sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
-		PlayerObject* ghost = player->getPlayerObject();
 
-		if (ghost != nullptr)
-			ghost->setSavedParentID(0);
+		if (player != nullptr) {
+			PlayerObject* ghost = player->getPlayerObject();
+
+			if (ghost != nullptr)
+				ghost->setSavedParentID(0);
+		}
 	}
 }
 
 void PlayerSpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) const {
-	Logger::console.info("updateZoneWithParent", true);
-	if (newParent->isSpaceZone())
-		SpaceZoneComponent::updateZoneWithParent(sceneObject, newParent, lightUpdate, sendPackets);
+	SpaceZoneComponent::updateZoneWithParent(sceneObject, newParent, lightUpdate, sendPackets);
 
 	if (sceneObject->getParent() != nullptr && sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
-		PlayerObject* ghost = player->getPlayerObject();
 
-		if (ghost != nullptr)
-			ghost->setSavedParentID(sceneObject->getParentID());
+		if (player != nullptr) {
+			PlayerObject* ghost = player->getPlayerObject();
+
+			if (ghost != nullptr)
+				ghost->setSavedParentID(sceneObject->getParentID());
+		}
 	}
 }

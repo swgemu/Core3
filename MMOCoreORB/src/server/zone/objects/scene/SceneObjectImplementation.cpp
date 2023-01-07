@@ -975,10 +975,10 @@ void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ,
 }
 
 void SceneObjectImplementation::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) {
-	if (!newTerrainName.contains("space"))
-		zoneComponent->switchZone(asSceneObject(), newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
-	else
+	if (newTerrainName.contains("space"))
 		spaceZoneComponent->switchZone(asSceneObject(), newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
+	else
+		zoneComponent->switchZone(asSceneObject(), newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
 }
 
 void SceneObjectImplementation::updateDirection(float fw, float fx, float fy, float fz) {
@@ -1010,7 +1010,10 @@ void SceneObjectImplementation::updateDirection(float angleHeadingRadians) {
 }
 
 void SceneObjectImplementation::notifyRemoveFromZone() {
-	zoneComponent->notifyRemoveFromZone(asSceneObject());
+	if (spaceZone.get() != nullptr)
+		spaceZoneComponent->notifyRemoveFromZone(asSceneObject());
+	else
+		zoneComponent->notifyRemoveFromZone(asSceneObject());
 }
 
 int SceneObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
@@ -1622,42 +1625,22 @@ void SceneObjectImplementation::removeSlottedObject(int index) {
 	slottedObjects.remove(index);
 }
 
-void SceneObjectImplementation::setZone(SceneObject* z) {
-	if (z == nullptr)
-		return;
-	SpaceZone* szone = nullptr;
-	Zone* gzone = nullptr;
-	String zoneName = z->_getName();
+void SceneObjectImplementation::setSpaceZone(SpaceZone* spaceZ) {
+	this->spaceZone = spaceZ;
 
-	if (zoneName.contains("space")) {
-		szone = dynamic_cast<SpaceZone*>(z);
-		if (zone != nullptr)
-			setGroundZone(nullptr);
-		setSpaceZone(szone);
-
-		if (szone == nullptr)
-			updateSavedRootParentRecursive(nullptr);
-		else
-			updateSavedRootParentRecursive(asSceneObject());
-	} else {
-		gzone = dynamic_cast<Zone*>(z);
-		if (spaceZone != nullptr)
-			setSpaceZone(nullptr);
-		setGroundZone(gzone);
-
-		if (gzone == nullptr)
-			updateSavedRootParentRecursive(nullptr);
-		else
-			updateSavedRootParentRecursive(asSceneObject());
-	}
+	if (spaceZ == nullptr)
+		updateSavedRootParentRecursive(nullptr);
+	else
+		updateSavedRootParentRecursive(asSceneObject());
 }
 
-void SceneObjectImplementation::setSpaceZone(SpaceZone* sz) {
-	this->spaceZone = sz;
-}
+void SceneObjectImplementation::setGroundZone(Zone* groundZone) {
+	this->zone = groundZone;
 
-void SceneObjectImplementation::setGroundZone(Zone* gz) {
-	this->zone = gz;
+	if (groundZone == nullptr)
+		updateSavedRootParentRecursive(nullptr);
+	else
+		updateSavedRootParentRecursive(asSceneObject());
 }
 
 void SceneObjectImplementation::showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue, bool isPrivate) {

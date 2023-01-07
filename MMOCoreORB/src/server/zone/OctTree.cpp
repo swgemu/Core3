@@ -16,6 +16,8 @@ using namespace server::zone;
 
 bool OctTree::logTree = false;
 
+//#define OUTPUT_OT_ERRORS
+
 OctTree::OctTree() {
 	root = nullptr;
 }
@@ -41,7 +43,9 @@ void OctTree::setSize(float minx, float miny, float minz, float maxx, float maxy
 }
 
 void OctTree::insert(TreeEntry *obj) {
-	//Logger::console.info("OctTee::insert", true);
+	if (OctTree::doLog())
+		Logger::console.info("OctTee::insert", true);
+
 	assert(obj->getParent() == nullptr);
 
 	Locker locker(&mutex);
@@ -49,8 +53,7 @@ void OctTree::insert(TreeEntry *obj) {
 	try {
 		if (OctTree::doLog()) { //--------------------------------------- HERE
 			SceneObject* scno = cast<SceneObject*>(obj);
-			Logger::console.info(true) << "object [" << scno->getDisplayedName() <<  "] inserting\n";
-			Logger::console.info(true) << "(" << String::valueOf(obj->getPositionX()) << ", " << String::valueOf(obj->getPositionY()) << ", " << String::valueOf(obj->getPositionZ()) << ")\n";
+			Logger::console.info(true) << "OctTree - Object ID " << scno->getObjectID() << " " << scno->getDisplayedName() <<  " inserting at: (" << obj->getPositionX() << ", " << obj->getPositionY() << ", " << obj->getPositionZ() << ")";
 		}
 
 		if (obj->getNode() != nullptr)
@@ -61,7 +64,7 @@ void OctTree::insert(TreeEntry *obj) {
 		SceneObject* scno = cast<SceneObject*>(obj);
 
 		if (OctTree::doLog())
-			Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] finished inserting\n" << scno->getDisplayedName() << "\n";
+			Logger::console.info(true) << "OctTree - Object ID # [" << scno->getObjectID() <<  "] finished inserting " << scno->getDisplayedName() << " Total Objects in Node: " << root->objects.size();
 	} catch (Exception& e) {
 		Logger::console.info(true) << "[OctTree] error - " << e.getMessage() << "\n";
 		e.printStackTrace();
@@ -71,12 +74,15 @@ void OctTree::insert(TreeEntry *obj) {
 bool OctTree::update(TreeEntry *obj) {
 	//assert(obj->getParent() == nullptr);
 
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::update";
+
 	Locker locker(&mutex);
 
 	try {
 		if (OctTree::doLog()) {
 			SceneObject* scno = cast<SceneObject*>(obj);
-			Logger::console.info(true) << "object [" << scno->getDisplayedName() << "] " << "Current Position:" << "(" << String::valueOf(scno->getPositionX())
+			Logger::console.info(true) << "OctTree - Object ID # [" << scno->getDisplayedName() << "] " << "Current Position:" << "(" << String::valueOf(scno->getPositionX())
 					<< ", " << String::valueOf(scno->getPositionY()) << ", " << String::valueOf(scno->getPositionZ()) << ")\n";
 		}
 		TreeNode* node = obj->getNode();
@@ -106,8 +112,8 @@ bool OctTree::update(TreeEntry *obj) {
 			}*/
 
 		if (node == nullptr) {
-#ifdef OUTPUTQTERRORS
-			Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] updating error\n";
+#ifdef OUTPUT_OT_ERRORS
+			Logger::console.info(true) << "OctTree - Object ID # [" << obj->getObjectID() <<  "] updating error\n";
 #endif
 			return false;
 		}
@@ -115,7 +121,7 @@ bool OctTree::update(TreeEntry *obj) {
 		bool res = _update(node, obj);
 
 		if (OctTree::doLog())
-			Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] finished updating\n";
+			Logger::console.info(true) << "OctTree - Object ID # [" << obj->getObjectID() <<  "] finished updating\n";
 
 		return res;
 	} catch (Exception& e) {
@@ -127,12 +133,14 @@ bool OctTree::update(TreeEntry *obj) {
 }
 
 void OctTree::inRange(TreeEntry *obj, float range) {
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::inRange-1";
 
 	ReadLocker locker(&mutex);
 
 	CloseObjectsVector* closeObjects = obj->getCloseObjects();
 
-	float rangecb = range * range * range;
+	float rangesq = range * range;
 
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
@@ -153,16 +161,16 @@ void OctTree::inRange(TreeEntry *obj, float range) {
 					o = rootParent;
 
 				if (o != obj) {
-					float deltaX = x - o->getPositionX();
-					float deltaY = y - o->getPositionY();
-					float deltaZ = z - o->getPositionZ();
+					float deltaX = o->getPositionX() - x;
+					float deltaY = o->getPositionY() - y;
+					float deltaZ = o->getPositionZ() - z;
 
-					if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ > rangecb) {
-						float oldDeltaX = oldx - o->getPositionX();
-						float oldDeltaY = oldy - o->getPositionY();
-						float oldDeltaZ = oldz - o->getPositionZ();
+					if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ > rangesq) {
+						float oldDeltaX = o->getPositionX() - oldz;
+						float oldDeltaY = o->getPositionY() - oldy;
+						float oldDeltaZ = o->getPositionZ() - oldz;
 
-						if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY + oldDeltaZ * oldDeltaZ <= rangecb) {
+						if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY + oldDeltaZ * oldDeltaZ <= rangesq) {
 							obj->removeInRangeObject(objectToRemove);
 
 							CloseObjectsVector* objCloseObjects = objectToRemove->getCloseObjects();
@@ -175,14 +183,13 @@ void OctTree::inRange(TreeEntry *obj, float range) {
 			}
 		}
 
-
 		//	try {
 			_inRange(root, obj, range);
 
 			SceneObject* scno = cast<SceneObject*>(obj);
 
 			if (OctTree::doLog()) {
-				Logger::console.info(true) << "object [" << scno->getDisplayedName() <<  "] in range (";
+				Logger::console.info(true) << "OctTree - Object ID # [" << scno->getDisplayedName() <<  "] in range (";
 
 				/*for (int i = 0; i < obj->inRangeObjectCount(); ++i) {
 					Logger::console.info(true) << obj->getInRangeObject(i)->getObjectID() << ", ";
@@ -198,6 +205,9 @@ void OctTree::inRange(TreeEntry *obj, float range) {
 int OctTree::inRange(float x, float y, float z, float range, SortedVector<ManagedReference<TreeEntry*> >& objects) const {
 	ReadLocker locker(&mutex);
 
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::inRange-2";
+
 	try {
 		return _inRange(root, x, y, z, range, objects);
 	} catch (Exception& e) {
@@ -208,9 +218,11 @@ int OctTree::inRange(float x, float y, float z, float range, SortedVector<Manage
 	return 0;
 }
 
-int OctTree::inRange(float x, float y, float z, float range,
-		SortedVector<TreeEntry*>& objects) const {
+int OctTree::inRange(float x, float y, float z, float range, SortedVector<TreeEntry*>& objects) const {
 	ReadLocker locker(&mutex);
+
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::inRange-3";
 
 	try {
 		return _inRange(root, x, y, z, range, objects);
@@ -223,17 +235,16 @@ int OctTree::inRange(float x, float y, float z, float range,
 }
 
 void OctTree::remove(TreeEntry *obj) {
-
 	Locker locker(&mutex);
 
 	if (OctTree::doLog())
-		Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] removing\n";
+		Logger::console.info(true) << "OctTree - Object ID # [" << obj->getObjectID() <<  "] removing\n";
 
 	TreeNode* node = obj->getNode().castTo<TreeNode*>();
 
 	if (node != nullptr) {
 		if (!node->validateNode()) {
-			Logger::console.info(true) << "[OctTree] " << obj->getObjectID() << " error on remove() - invalid Node" << node->toStringData();
+			Logger::console.info(true) << "OctTree - Object ID # " << obj->getObjectID() << " error on remove() - invalid Node" << node->toStringData();
 		}
 
 		node->removeObject(obj);
@@ -241,12 +252,12 @@ void OctTree::remove(TreeEntry *obj) {
 		node->check();
 		obj->setNode(nullptr);
 	} else {
-		Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] ERROR - removing the node\n";
+		Logger::console.info(true) << "OctTree - Object ID # [" << obj->getObjectID() <<  "] ERROR - removing the node\n";
 		StackTrace::printStackTrace();
 	}
 
 	if (OctTree::doLog())
-		Logger::console.info(true) << "object [" << obj->getObjectID() <<  "] finished removing\n";
+		Logger::console.info(true) << "OctTree - Object ID # " << obj->getObjectID() <<  " finished removing\n";
 }
 
 void OctTree::removeAll() {
@@ -259,6 +270,9 @@ void OctTree::removeAll() {
 }
 
 void OctTree::_insert(const Reference<TreeNode*>& node, TreeEntry *obj) {
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::_insert called - Object ID # " << obj->getObjectID();
+
 	obj->clearBounding();
 
 	if (!node->isEmpty() && !node->hasSubNodes()) {
@@ -274,6 +288,9 @@ void OctTree::_insert(const Reference<TreeNode*>& node, TreeEntry *obj) {
 				continue;
 
 			node->removeObject(i);
+
+			if (OctTree::doLog())
+				Logger::console.info(true) << "OctTree::_insert - Object ID # " << obj->getObjectID() << " is Removing Object #" << existing->getObjectID();
 
 			if (existing->isInSWArea(node)) {
 				if (node->swNode == nullptr)
@@ -318,7 +335,21 @@ void OctTree::_insert(const Reference<TreeNode*>& node, TreeEntry *obj) {
 			}
 		}
 	}
+
+	if (obj->isInArea(node)) {
+		obj->setBounding();
+		node->addObject(obj);
+
+		if (OctTree::doLog())
+			Logger::console.info(true) << "OctTree::_insert Object ID # " << obj->getObjectID() << " is in area, adding to node and setBounding";
+
+		return;
+	}
+
 	if (node->hasSubNodes()) {
+		if (OctTree::doLog())
+			Logger::console.info(true) << "OctTree::_insert Object ID # " << obj->getObjectID() << " node has subnodes";
+
 		if (obj->isInSWArea(node)) {
 			if (node->swNode == nullptr)
 				node->swNode = new TreeNode(node->minX, node->minY, node->minZ, node->dividerX, node->dividerY, node->dividerZ, node);
@@ -339,7 +370,7 @@ void OctTree::_insert(const Reference<TreeNode*>& node, TreeEntry *obj) {
 				node->neNode = new TreeNode(node->dividerX, node->dividerY, node->minZ, node->maxX, node->maxY, node->dividerZ, node);
 
 			_insert(node->neNode, obj);
-			////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		} else if (obj->isInSW2Area(node)) {
 			if (node->swNode2 == nullptr)
 				node->swNode2 = new TreeNode(node->minX, node->minY, node->dividerZ, node->dividerX, node->dividerY, node->maxZ, node);
@@ -362,16 +393,21 @@ void OctTree::_insert(const Reference<TreeNode*>& node, TreeEntry *obj) {
 			_insert(node->neNode2, obj);
 		}
 
+		if (OctTree::doLog())
+			Logger::console.info(true) << "OctTree::_insert Object ID # " << obj->getObjectID() << " HITTING RETURN, object not added!";
+
 		return;
 	}
 
 	node->addObject(obj);
+
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::_insert Object ID # " << obj->getObjectID() << " node added object - Total Objects: " << node->objects.size();
 }
 
 bool OctTree::_update(const Reference<TreeNode*>& node, TreeEntry *obj) {
-	//Logger::console.info(true) << "(" << obj->getPositionX() << "," << obj->getPositionY() << "," << obj->getPositionZ() << ")\n";
-
-	//Logger::console.info("OctTree::_Update", true);
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::_update -- Poisition (" << obj->getPositionX() << "," << obj->getPositionY() << "," << obj->getPositionZ() << ")\n";
 
 	if (node->testInsideOctTree(obj))
 		return true;
@@ -385,7 +421,7 @@ bool OctTree::_update(const Reference<TreeNode*>& node, TreeEntry *obj) {
 	if (cur != nullptr) {
 		_insert(cur, obj);
 	}
-#ifdef OUTPUTOTERRORS
+#ifdef OUTPUT_OT_ERRORS
 	else
 		Logger::console.info(true) << "[OctTree] error on update() - invalid Node\n";
 #endif
@@ -408,7 +444,8 @@ void OctTree::safeInRange(TreeEntry* obj, float range) {
 		cov->safeCopyTo(closeObjectsCopy);
 	}
 
-	float rangecb = range * range * range;
+	float rangesq = range * range;
+
 	SceneObject* item = cast<SceneObject*>(obj);
 	SceneObject* parent = item->getParent().get();
 	float x = obj->getPositionX();
@@ -432,11 +469,11 @@ void OctTree::safeInRange(TreeEntry* obj, float range) {
 		SceneObject* item = cast<SceneObject*>(o);
 
 		if (o != obj) {
-			float deltaX = x - o->getPositionX();
-			float deltaY = y - o->getPositionY();
-			float deltaZ = z - o->getPositionZ();
+			float deltaX = o->getPositionX() - x;
+			float deltaY = o->getPositionY() - y;
+			float deltaZ = o->getPositionZ() - z;
 			try {
-				if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ <= rangecb) {
+				if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ <= rangesq) {
 
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 
@@ -522,7 +559,10 @@ void OctTree::copyObjects(const Reference<TreeNode*>& node, float x, float y, fl
 void OctTree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float range) {
 	Reference<TreeNode*> refNode = node;
 
-	float rangecb = range * range * range;
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::_inRange-1 -- Total Objects = " << node->objects.size();
+
+	float rangesq = range * range;
 
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
@@ -536,12 +576,13 @@ void OctTree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float r
 		TreeEntry *o = refNode->objects.get(i);
 
 		if (o != obj) {
-			float deltaX = x - o->getPositionX();
-			float deltaY = y - o->getPositionY();
-			float deltaZ = z - o->getPositionZ();
+			float deltaX = o->getPositionX() - x;
+			float deltaY = o->getPositionY() - y;
+			float deltaZ = o->getPositionZ() - z;
 
-			if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ <= rangecb) {
+			if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ <= rangesq) {
 				CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
+
 				if (objCloseObjects != nullptr && !objCloseObjects->contains(o)) {
 					obj->addInRangeObject(o, false);
 					//obj->notifyInsert(o);
@@ -558,11 +599,11 @@ void OctTree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float r
 				/*obj->addInRangeObject(o, false);
 				o->addInRangeObject(obj);*/
 			} else {
-				float oldDeltaX = oldx - o->getPositionX();
-				float oldDeltaY = oldy - o->getPositionY();
-				float oldDeltaZ = oldz - o->getPositionZ();
+				float oldDeltaX =  o->getPositionX() - oldx;
+				float oldDeltaY = o->getPositionY() - oldy;
+				float oldDeltaZ = o->getPositionZ() - oldz;
 
-				if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY + oldDeltaZ * oldDeltaZ <= rangecb) {
+				if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY + oldDeltaZ * oldDeltaZ <= rangesq) {
 
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 					if (objCloseObjects != nullptr)
@@ -628,9 +669,11 @@ int OctTree::inRange(float x, float y, float z, SortedVector<TreeEntry*>& object
 	return 0;
 }
 
-int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z,
-		SortedVector<ManagedReference<TreeEntry*> >& objects) const {
+int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, SortedVector<ManagedReference<TreeEntry*> >& objects) const {
 	int count = 0;
+
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::_inRange-2 -- Total Objects = " << node->objects.size();
 
 	for (int i = 0; i < node->objects.size(); i++) {
 		TreeEntry *o = node->objects.get(i);
@@ -664,9 +707,11 @@ int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float 
 	return count;
 }
 
-int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z,
-		SortedVector<TreeEntry* >& objects) const {
+int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, SortedVector<TreeEntry* >& objects) const {
 	int count = 0;
+
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::_inRange-3 -- Total Objects = " << node->objects.size();
 
 	for (int i = 0; i < node->objects.size(); i++) {
 		TreeEntry *o = node->objects.get(i);
@@ -700,9 +745,11 @@ int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float 
 	return count;
 }
 
-int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, float range,
-		SortedVector<ManagedReference<TreeEntry*> >& objects) const {
+int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, float range, SortedVector<ManagedReference<TreeEntry*> >& objects) const {
 	int count = 0;
+
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::_inRange-4 -- Total Objects = " << node->objects.size();
 
 	for (int i = 0; i < node->objects.size(); i++) {
 		TreeEntry *o = node->objects.get(i);
@@ -736,9 +783,11 @@ int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float 
 	return count;
 }
 
-int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, float range,
-		SortedVector<TreeEntry* >& objects) const {
+int OctTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, float range,	SortedVector<TreeEntry* >& objects) const {
 	int count = 0;
+
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::_inRange-5 -- Total Objects = " << node->objects.size();
 
 	for (int i = 0; i < node->objects.size(); i++) {
 		TreeEntry *o = node->objects.getUnsafe(i);

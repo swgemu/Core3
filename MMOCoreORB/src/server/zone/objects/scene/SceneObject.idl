@@ -343,7 +343,10 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	 * Destroys the object from the world
 	 */
 	public abstract void destroyObjectFromWorld(boolean sendSelfDestroy) {
-		zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
+		if (spaceZone.get() != null)
+			spaceZoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
+		else
+			zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
 	}
 
 	/**
@@ -641,12 +644,18 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 
 	@local
 	public void notifyInsert(TreeEntry entry) {
-		zoneComponent.notifyInsert(this, entry);
+		if (spaceZone.get() != null)
+			spaceZoneComponent.notifyInsert(this, entry);
+		else
+			zoneComponent.notifyInsert(this, entry);
 	}
 
 	@local
 	public void notifyDissapear(TreeEntry entry) {
-		zoneComponent.notifyDissapear(this, entry);
+		if (spaceZone.get() != null)
+			spaceZoneComponent.notifyDissapear(this, entry);
+		else
+			zoneComponent.notifyDissapear(this, entry);
 	}
 
 	public native abstract void notifyRemoveFromZone();
@@ -991,6 +1000,11 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@read
 	public Zone getLocalZone() {
 		return zone.get();
+	}
+
+	@read
+	public SpaceZone getLocalSpaceZone() {
+		return spaceZone.get();
 	}
 
 	@local
@@ -1942,8 +1956,6 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	public ZoneProcessServer getZoneProcessServer() {
 		return server;
 	}
-
-	public abstract native void setZone(SceneObject zone);
 
 	public abstract native void setSpaceZone(SpaceZone sZone);
 

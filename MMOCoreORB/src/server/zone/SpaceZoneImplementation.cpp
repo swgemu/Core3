@@ -253,10 +253,13 @@ bool SpaceZoneImplementation::isWithinBoundaries(const Vector3& position) {
 	float maxZ = getMaxZ() * 15 / 16;
 	float minZ = getMinZ() * 15 / 16;
 
-	if (maxX >= position.getX() && minX <= position.getX() &&
-			maxY >= position.getY() && minY <= position.getY() &&
-				maxZ >= position.getZ() && minZ <= position.getZ())
-			 {
+	float posX = position.getX();
+	float posY = position.getY();
+	float posZ = position.getZ();
+
+	//info(true) << "Min X = " << minX << " Max X = " << maxX << " Min Y = " << minY << " Max Y = " << maxY << " Min Z = " << minZ << " Max Z = " << maxZ;
+
+	if (maxX >= position.getX() && minX <= position.getX() && maxY >= position.getY() && minY <= position.getY() && maxZ >= position.getZ() && minZ <= position.getZ()) {
 		return true;
 	} else {
 		return false;

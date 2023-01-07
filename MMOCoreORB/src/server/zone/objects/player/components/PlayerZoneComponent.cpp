@@ -14,19 +14,18 @@
 #include "server/zone/SpaceZone.h"
 #include "server/zone/TreeEntry.h"
 
-void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, SceneObject* newZone) const {
-	bool isSpaceZone = false;
-
-	Zone* zone = cast<Zone*>(newZone);
+void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
+	String zoneName = newZone->getZoneName();
 
 	if (sceneObject->isPlayerCreature() && newZone != nullptr) {
 		PlayerObject* ghost = sceneObject->asCreatureObject()->getPlayerObject();
-		zone = cast<Zone*>(newZone);
-		if (ghost != nullptr)
-			ghost->setSavedTerrainName(zone->getZoneName());
+
+		if (ghost != nullptr) {
+			ghost->setSavedTerrainName(zoneName);
+		}
 	}
 
-	ZoneComponent::notifyInsertToZone(sceneObject, zone);
+	ZoneComponent::notifyInsertToZone(sceneObject, newZone);
 }
 
 void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
