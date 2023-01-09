@@ -45,6 +45,7 @@ object_creature_player_sullustan_female = object_creature_player_shared_sullusta
 	baseHAM = { 150, 0, 0, 250, 50, 50, 200, 100, 100 },
 	gameObjectType = 1033,
 	zoneComponent = "PlayerZoneComponent",
+	spaceZoneComponent = "PlayerSpaceZoneComponent",
 	objectMenuComponent = "PlayerObjectMenuComponent",
 	containerComponent = "PlayerContainerComponent",
 	pvpStatusBitmask = PLAYER,

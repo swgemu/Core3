@@ -45,6 +45,7 @@ object_creature_player_trandoshan_male = object_creature_player_shared_trandosha
 	baseHAM = { 250, 300, 400, 0, 0, 0, 0, 0, 100 },
 	gameObjectType = 1033,
 	zoneComponent = "PlayerZoneComponent",
+	spaceZoneComponent = "PlayerSpaceZoneComponent",
 	objectMenuComponent = "PlayerObjectMenuComponent",
 	containerComponent = "PlayerContainerComponent",
 	pvpStatusBitmask = PLAYER,
