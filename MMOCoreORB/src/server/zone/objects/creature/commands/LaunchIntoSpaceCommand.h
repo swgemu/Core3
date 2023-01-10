@@ -113,46 +113,34 @@ public:
 				return GENERALERROR;
 			}
 
-			const Vector3 position = planetMan->getJtlLaunchLocations();
-			creature->switchZone(jtlZoneName, position.getX(), position.getZ(), position.getY(), 0);
+			SpaceZone* spaceZone = zoneServer->getSpaceZone(jtlZoneName);
 
-			Reference<SpaceZone*> newZone = creature->getSpaceZone();
-			Reference<CreatureObject*> strongCreo = creature;
+			if (spaceZone == nullptr)
+				return GENERALERROR;
 
-			Core::getTaskManager()->executeTask([newZone, ship, strongCreo, position] {
-				Locker locker(ship);
-				Locker cross(ship, newZone);
-				ship->initializePosition(strongCreo->getPositionX(), strongCreo->getPositionZ(), strongCreo->getPositionY());
-				cross.release();
+			uint64 parentID = ship->getObjectID();
 
-				Locker creoCross(ship, strongCreo);
-				// -------------------------------------------------------------------------------
-				if (ship->getContainerObjectsSize() > 0) { // POB Ship
-					ManagedReference<CellObject*> cockpit = ship->getCell("cockpit");
-					Core::getTaskManager()->executeTask(
-						[cockpit, strongCreo, newZone] {
-							Locker locker(strongCreo);
-							Locker cross(cockpit, strongCreo);
-							cross.release();
-							cockpit->transferObject(strongCreo, -1, false);
-							strongCreo->initializePosition(13.43, 0.14, 12.88);
-							strongCreo->sendToOwner(true);
-							PlayerObject* player = strongCreo->getPlayerObject();
-							player->notifySceneReady();
-						},
-						"cockpit_transfer");
-					// --------------------------------------------------------------------------------
-				} else { // Non-POB ship
-					Locker creoCross(strongCreo, ship);
-					PlayerObject* player = strongCreo->getPlayerObject();
-					newZone->transferObject(ship, -1, true);
-					ship->transferObject(strongCreo, 5, true);
-					player->setTeleporting(true);
-					player->sendToOwner(true);
-					ship->sendToOwner(true);
-					strongCreo->setState(CreatureState::PILOTINGSHIP);
-				}
-			},"TransferShipTask");
+			// POB Ship
+			if (ship->getContainerObjectsSize() > 0) {
+				ManagedReference<CellObject*> cockpit = ship->getCell("cockpit");
+
+				if (cockpit != nullptr)
+					parentID = cockpit->getObjectID();
+			}
+
+			Vector3 position = planetMan->getJtlLaunchLocations();
+			Locker creoCross(ship, creature);
+
+			Locker zoneLock(spaceZone, ship);
+			spaceZone->transferObject(ship, -1, true);
+			zoneLock.release();
+
+			ship->initializePosition(position.getX(), position.getZ(), position.getY());
+
+			creature->switchZone(jtlZoneName, position.getX(), position.getZ(), position.getY(), ship->getObjectID());
+			creature->setState(CreatureState::PILOTINGSHIP);
+
+			creature->synchronizeCloseObjects();
 		}
 
 		return SUCCESS;

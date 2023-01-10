@@ -234,6 +234,12 @@ public:
 	const static int SKIRT = 0x1000012;
 	const static int ITHOGARB = 0x1000013;
 
+	const static int SHIP = 0x20000000;
+	const static int SHIPFIGHTER = 0x20000001;
+	const static int SHIPCAPITAL = 0x20000002;
+	const static int SHIPSTATION = 0x20000003;
+	const static int SHIPTRANSPORT = 0x20000004;
+
 	virtual void parseBaseline3(Message* message) {
 	}
 

@@ -265,6 +265,8 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	SpaceZone* newZone = sceneObject->getZoneServer()->getSpaceZone(newTerrainName);
 
+	//info(true) << "SpaceZoneComponent::switchZone called for: " << sceneObject->getDisplayedName();
+
 	if (newZone == nullptr) {
 		sceneObject->error("attempting to switch to unkown/disabled space zone " + newTerrainName);
 		return;
@@ -272,11 +274,16 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	ManagedReference<SceneObject*> newParent = sceneObject->getZoneServer()->getObject(parentID);
 
-	if (newParent != nullptr && newParent->getZone() == nullptr)
+	if (newParent == nullptr || (!newParent->isShipObject() && !newParent->isCellObject())) {
+		error() << "SpaceZoneComponent::switchZone new parent is a nullptr or is not a ship or cell object.";
 		return;
+	}
 
-	if (newParent != nullptr && !newParent->isCellObject())
-		newParent = nullptr;
+	if (newParent->getSpaceZone() == nullptr) {
+		error() << "SpaceZoneComponent::switchZone parent SpaceZone is null, returning";
+
+		return;
+	}
 
 	sceneObject->destroyObjectFromWorld(false);
 
@@ -293,6 +300,7 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 
+	/*
 	if (newParent != nullptr) {
 		if (spaceZone == newZone) {
 			if (newParent->transferObject(sceneObject, -1, false)) {
@@ -312,9 +320,15 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 		}
 	} else {
 		newZone->transferObject(sceneObject, -1, true);
-	}
+	}*/
 
 	newZone->transferObject(sceneObject, -1, true);
+
+	if (newParent->isShipObject() && newParent->transferObject(sceneObject, 5, true)) {
+		newParent->sendTo(sceneObject, false);
+
+		//info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
+	}
 
 	sceneObject->setMovementCounter(0);
 }
@@ -324,6 +338,8 @@ void SpaceZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
 
 void SpaceZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const {
 	ManagedReference<SceneObject*> par = sceneObject->getParent().get();
+
+	//info(true) << "SpaceZoneComponent::destroyObjectFromWorld called for: " << sceneObject->getDisplayedName();
 
 	if (!sceneObject->isActiveArea()) {
 		sceneObject->broadcastDestroy(sceneObject, sendSelfDestroy);
