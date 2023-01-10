@@ -983,7 +983,6 @@ class ShipObject extends TangibleObject {
 		return maxPitchRate.get();
 	}
 
-
 	public float getCurrentYawRate() {
 		return currentYawRate.get();
 	}
@@ -1010,11 +1009,6 @@ class ShipObject extends TangibleObject {
 
 	public float getMaxSpeed() {
 		return maxSpeed.get();
-	}
-
-	@read
-	public boolean isShipObject() {
-		return true;
 	}
 
 	public string getShipName() {
@@ -1060,6 +1054,11 @@ class ShipObject extends TangibleObject {
 
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@dirty
+	@local
+	@nativeStub
+	public native boolean isShipObject();
 
 	@dirty
 	public boolean isHyperspacing() {
