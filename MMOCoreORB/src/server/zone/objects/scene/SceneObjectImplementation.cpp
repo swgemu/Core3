@@ -1966,6 +1966,14 @@ bool SceneObject::isBuildingObject() {
 	return false;
 }
 
+bool SceneObjectImplementation::isShipObject() {
+	return false;
+}
+
+bool SceneObject::isShipObject() {
+	return false;
+}
+
 AiAgent* SceneObjectImplementation::asAiAgent() {
 	return nullptr;
 }
@@ -1991,11 +1999,11 @@ CreatureObject* SceneObject::asCreatureObject() {
 }
 
 ShipObject* SceneObject::asShipObject() {
-    return nullptr;
+	return nullptr;
 }
 
 ShipObject* SceneObjectImplementation::asShipObject() {
-    return nullptr;
+	return nullptr;
 }
 
 Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) const {

@@ -153,6 +153,12 @@ public:
 	 * @param creature the player creature
 	 */
 	void createStarterShip(CreatureObject* player) const;
+
+	/**
+	* Adds starter POB ship to players datapad
+	* @param creature the player creature
+	*/
+	void createStarterPobShip(CreatureObject* player) const;
 };
 
 }

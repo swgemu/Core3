@@ -489,3 +489,11 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 		}
 	}
 }
+
+bool ShipObject::isShipObject() {
+	return true;
+}
+
+bool ShipObjectImplementation::isShipObject() {
+	return true;
+}

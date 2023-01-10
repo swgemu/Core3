@@ -455,7 +455,9 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 		addRacialMods(playerCreature, fileName, &playerTemplate->getStartingSkills(), &playerTemplate->getStartingItems(), true);
 	}
 
+	// Handle JTL Ship creation
 	createStarterShip(playerCreature);
+	createStarterPobShip(playerCreature);
 
 	if (ghost != nullptr) {
 		int accID = client->getAccountID();
@@ -1110,6 +1112,48 @@ void PlayerCreationManager::createStarterShip(CreatureObject* player) const {
 		} else {
 			shipControlDevice->destroyObjectFromDatabase(true);
 			error("PlayerCreationManager::createStarterShip - could not get datapad from player");
+		}
+	}
+}
+
+void PlayerCreationManager::createStarterPobShip(CreatureObject* player) const {
+	if (player == nullptr || !player->isPlayerCreature())
+		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	ManagedReference<ShipControlDevice*> shipControlDevice = zoneServer.get()->createObject(STRING_HASHCODE("object/intangible/ship/sorosuub_space_yacht_pcd.iff"), 1).castTo<ShipControlDevice*>();
+
+	if (shipControlDevice != nullptr) {
+		ManagedReference<ShipObject*> ship = ShipManager::instance()->generatePOBShip(player);
+
+		Locker lock(shipControlDevice);
+
+		if (ship == nullptr) {
+			shipControlDevice->destroyObjectFromDatabase();
+			return;
+		}
+
+		Locker clock(ship, shipControlDevice);
+
+		if (!shipControlDevice->transferObject(ship, 4)) {
+			error("PlayerCreationManager::createStarterPobShip - Failed to transfer Ship to Control Device.");
+			shipControlDevice->destroyObjectFromDatabase();
+			return;
+		}
+
+		shipControlDevice->setControlledObject(ship);
+
+		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+
+		if (datapad != nullptr && datapad->transferObject(shipControlDevice, -1)) {
+			ghost->addShip(ship);
+		} else {
+			shipControlDevice->destroyObjectFromDatabase(true);
+			error("PlayerCreationManager::createStarterPobShip - could not get datapad from player");
 		}
 	}
 }
