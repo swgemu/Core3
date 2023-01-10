@@ -29,10 +29,12 @@ void PlayerSpaceZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Spac
 }
 
 void PlayerSpaceZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
-	SceneObject* scno = static_cast<SceneObject*>( entry);
+	SceneObject* scno = static_cast<SceneObject*>(entry);
 
 	if (scno == sceneObject)
 		return;
+
+	//info(true) << "PlayerSpaceZoneComponent::notifyInsert -- " << scno->getDisplayedName();
 
 	if (scno->isTangibleObject()) {
 		TangibleObject* tano = scno->asTangibleObject();
@@ -60,6 +62,8 @@ void PlayerSpaceZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEnt
 }
 
 void PlayerSpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
+	info(true) << "PlayerSpaceZoneComponent::switchZone called for: " << sceneObject->getDisplayedName();
+
 	if (sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
 		PlayerObject* ghost = player->getPlayerObject();
