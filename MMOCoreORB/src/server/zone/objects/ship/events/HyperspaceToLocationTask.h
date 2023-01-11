@@ -14,7 +14,7 @@
 
 class HyperspaceToLocationTask : public Task {
 	ManagedWeakReference<CreatureObject*> play;
-	ManagedWeakReference<SceneObject*> ship;
+	ManagedWeakReference<ShipObject*> ship;
 	String zone;
 	Vector3 location;
 	int iteration;
@@ -29,25 +29,30 @@ public:
 	}
 
 	void run() {
-		Reference<CreatureObject*> creo = play.get();
-		Reference<SceneObject*> scno = ship.get();
+		CreatureObject* player = play.get();
+		ShipObject* shipObject = ship.get();
 
-		if (creo == nullptr || scno == nullptr)
+		if (player == nullptr || shipObject == nullptr)
 			return;
 
 		int currentIter = iteration++;
 
+		Locker locker(shipObject);
+
 		switch (currentIter) {
 		case 0:
-			creo->sendSystemMessage("@space/space_interaction:hyperspace_route_begin");
+			player->sendSystemMessage("@space/space_interaction:hyperspace_route_begin");
 			reschedule(5000);
 			return;
 		case 1: // 25%
 		case 2: // 50%
 		case 3: { // 75%
 			String strid = "@space/space_interaction:hyperspace_route_calculation_";
+
 			strid += String::valueOf(currentIter);
-			creo->sendSystemMessage(strid);
+
+			player->sendSystemMessage(strid);
+
 			reschedule(5000);
 			return;
 		}
@@ -59,64 +64,65 @@ public:
 		case 8: { // t-1
 			String strid = "@space/space_interaction:hyperspace_route_calculation_";
 			strid += String::valueOf(currentIter);
-			creo->sendSystemMessage(strid);
+
+			player->sendSystemMessage(strid);
+
 			reschedule(1000);
 			return;
 		}
 		case 9:
 			beginHyperspace();
+
+			shipObject->setHyperspacing(true);
+
 			reschedule(6000);
 			return;
 		case 10: {
-			ShipObject *shipObject = scno->asShipObject();
-			if (shipObject == nullptr)
-				return;
-
-			Locker locker(scno);
-			SpaceZone *newZone = shipObject->getSpaceZone();
-			shipObject->setHyperspacing(true);
 			shipObject->destroyObjectFromWorld(true);
+
 			reschedule(1000);
 			return;
 		}
 		case 11: {
-			SpaceZone *newZone = ServerCore::getZoneServer()->getSpaceZone(zone);
+			SpaceZone* newZone = ServerCore::getZoneServer()->getSpaceZone(zone);
 
 			if (newZone == nullptr)
 				return;
 
-			Locker locker(scno);
-			Locker zoneCross(newZone, scno);
+			shipObject->setHyperspacing(false);
 
-			scno->initializePosition(location.getX(), location.getZ(), location.getY());
-			newZone->transferObject(scno, -1, false);
+			Locker zoneCross(newZone, shipObject);
+
+			shipObject->initializePosition(location.getX(), location.getZ(), location.getY());
+			newZone->transferObject(shipObject, -1, false);
 
 			zoneCross.release();
 
-			Locker creoCross(creo, scno);
+			Locker playerCross(player, shipObject);
 
-			creo->sendToOwner(true);
+			player->sendToOwner(true);
 			return;
 		}
 		}
 	}
 
 	void orientShip() {
-		Reference<CreatureObject*> creo = play.get();
-		if (creo == nullptr)
+		Reference<CreatureObject*> player = play.get();
+		if (player == nullptr)
 			return;
 
-		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(creo->getObjectID(), zone, location.getX(), location.getY(), location.getZ());
-		creo->sendMessage(msg);
+		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(player->getObjectID(), zone, location.getX(), location.getY(), location.getZ());
+		player->sendMessage(msg);
 	}
 
 	void beginHyperspace() {
-		Reference<CreatureObject*> creo = play.get();
-		if (creo == nullptr)
+		Reference<CreatureObject*> player = play.get();
+
+		if (player == nullptr)
 			return;
 
-		BeginHyperspaceMessage *msg = new BeginHyperspaceMessage(creo->getObjectID(), zone, location.getX(), location.getY(), location.getZ());
-		creo->sendMessage(msg);
+		BeginHyperspaceMessage *msg = new BeginHyperspaceMessage(player->getObjectID(), zone, location.getX(), location.getY(), location.getZ());
+		player->sendMessage(msg);
 	}
 };
 
