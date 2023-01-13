@@ -10,13 +10,7 @@
 #include "server/zone/SpaceZone.h"
 #include "server/zone/packets/object/DataTransform.h"
 #include "server/zone/packets/object/DataTransformWithParent.h"
-#include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/packets/ship/ShipUpdateTransformMessage.h"
-#include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
-#include "server/zone/packets/scene/LightUpdateTransformMessage.h"
-#include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
-#include "templates/building/SharedBuildingObjectTemplate.h"
-#include "server/zone/objects/intangible/TheaterObject.h"
 
 void SpaceZoneComponent::notifyInsertToZone(SceneObject* sceneObject, SpaceZone* newSpaceZone) const {
 	if (newSpaceZone == nullptr)
@@ -24,7 +18,6 @@ void SpaceZoneComponent::notifyInsertToZone(SceneObject* sceneObject, SpaceZone*
 
 	if (sceneObject->getGameObjectType() != SceneObjectType::PLAYEROBJECT)
 		sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
-
 	insertChildObjectsToZone(sceneObject, newSpaceZone);
 }
 
@@ -49,26 +42,6 @@ void SpaceZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, 
 	ZoneServer* zoneServer = sceneObject->getZoneServer();
 	SpaceZone* zone = sceneObject->getSpaceZone();
 
-	CreatureObject* player = nullptr;
-
-	if (sceneObject->isPlayerCreature()) {
-		player = sceneObject->asCreatureObject();
-	}
-
-	ManagedReference<SceneObject*> par = sceneObject->getParent().get();
-
-	if (player != nullptr) {
-		PlayerObject* ghost = player->getPlayerObject();
-
-		if (ghost != nullptr) {
-			ghost->setTeleporting(true);
-			ghost->updateLastValidatedPosition();
-			ghost->setClientLastMovementStamp(0);
-		}
-
-		player->setMovementCounter(0);
-	}
-
 	if (zone == nullptr)
 		return;
 
@@ -85,6 +58,8 @@ void SpaceZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, 
 			sceneObject->updateZoneWithParent(newParent, false, false);
 		}
 
+		//sceneObject->incrementMovementCounter();
+
 		DataTransformWithParent* pack = new DataTransformWithParent(sceneObject);
 		sceneObject->broadcastMessage(pack, true, false);
 	} else {
@@ -92,6 +67,8 @@ void SpaceZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, 
 			sceneObject->setPosition(newPositionX, newPositionZ, newPositionY);
 			sceneObject->updateZone(false, false);
 		}
+
+		//sceneObject->incrementMovementCounter();
 
 		DataTransform* pack = new DataTransform(sceneObject);
 		sceneObject->broadcastMessage(pack, true, false);
@@ -141,25 +118,40 @@ void SpaceZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, 
 			info("error", true);
 			sceneObject->error(e.getMessage());
 			e.printStackTrace();
-			}
-	}
-		try {
-			notifySelfPositionUpdate(sceneObject);
-		} catch (Exception& e) {
-			sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in ZoneComponent::updateZone");
-			sceneObject->error(e.getMessage());
 		}
+	}
+
+	try {
+		/*
+		bool isInvis = false;
+
+		TangibleObject* tano = sceneObject->asTangibleObject();
+
+		if (tano != nullptr) {
+			spaceZone->updateActiveAreas(tano);
+
+			if (tano->isInvisible())
+				isInvis = true;
+		}
+
+		if (!isInvis && sendPackets && (parent == nullptr || (!parent->isVehicleObject() && !parent->isMount()))) {
+			if (lightUpdate) {
+				LightUpdateTransformMessage* message = new LightUpdateTransformMessage(sceneObject);
+				sceneObject->broadcastMessage(message, false, true);
+			} else {
+				UpdateTransformMessage* message = new UpdateTransformMessage(sceneObject);
+				sceneObject->broadcastMessage(message, false, true);
+			}
+		}*/
+
+		notifySelfPositionUpdate(sceneObject);
+	} catch (Exception& e) {
+		sceneObject->error(e.getMessage());
+		e.printStackTrace();
+	}
 
 	if (zoneUnlocked)
 		spaceZone->wlock();
-
-	if (sceneObject->isPlayerCreature()) {
-		CreatureObject* player = sceneObject->asCreatureObject();
-		PlayerObject* ghost = player->getPlayerObject();
-
-		if (ghost != nullptr)
-			ghost->setSavedParentID(0);
-	}
 }
 
 void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) const {
@@ -176,28 +168,23 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 
 	if (oldParent == nullptr) { // we are in zone, enter cell
 		newParent->transferObject(sceneObject, -1, true);
-
-		spaceZone->unlock();
-	} else { // we are in cell already
-		if (oldParent != newParent) {
-			newParent->transferObject(sceneObject, -1, true);
-
-			spaceZone->unlock();
-		} else {
-			spaceZone->unlock();
-
-			/*try {
-				TangibleObject* tano = sceneObject->asTangibleObject();
-
-				if (tano != nullptr) {
-					spaceZone->updateActiveAreas(tano);
-				}
-			} catch (Exception& e) {
-				sceneObject->error(e.getMessage());
-				e.printStackTrace();
-			}*/
-		}
+	// we are in cell already
+	} else if (newParent->isCellObject() && oldParent != newParent) {
+		newParent->transferObject(sceneObject, -1, true);
 	}
+
+	/*try {
+		TangibleObject* tano = sceneObject->asTangibleObject();
+
+		if (tano != nullptr) {
+			spaceZone->updateActiveAreas(tano);
+		}
+	} catch (Exception& e) {
+		sceneObject->error(e.getMessage());
+		e.printStackTrace();
+	}*/
+
+	spaceZone->unlock();
 
 	//notify in range objects that i moved
 	try {
@@ -250,13 +237,6 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 
 	spaceZone->wlock();
 
-	if (sceneObject->getParent() != nullptr && sceneObject->isPlayerCreature()) {
-		CreatureObject* player = sceneObject->asCreatureObject();
-		PlayerObject* ghost = player->getPlayerObject();
-
-		if (ghost != nullptr)
-			ghost->setSavedParentID(sceneObject->getParentID());
-	}
 }
 
 void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
@@ -432,9 +412,7 @@ void SpaceZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) cons
 	sceneObject->notifySelfPositionUpdate();
 }
 
-void SpaceZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector *closeobjects,
-											SortedVector<ManagedReference<TreeEntry *> > &closeSceneObjects,
-											SceneObject *sceneObject, SceneObject *vectorOwner) {
+void SpaceZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector *closeobjects, SortedVector<ManagedReference<TreeEntry *> > &closeSceneObjects, SceneObject *sceneObject, SceneObject *vectorOwner) {
 	for (int i = 0; closeobjects->size() != 0 && i < 100; i++) {
 		closeobjects->safeCopyTo(closeSceneObjects);
 
