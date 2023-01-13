@@ -11,7 +11,6 @@
 class ShipObjectMessage1 : public BaseLineMessage {
 public:
 	ShipObjectMessage1(ShipObject* ship) : BaseLineMessage(ship->getObjectID(), 0x53484950, 1, 0x29) {
-
 		//ship->info(true) << "ShipObjectMessage1 sent";
 
 		insertInt(0); //start ServerObject

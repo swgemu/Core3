@@ -11,8 +11,7 @@
 class ShipObjectMessage6 : public TangibleObjectMessage6 {
 public:
 	ShipObjectMessage6(ShipObject* ship) : TangibleObjectMessage6(ship, 0x53484950, 0x18) {
-		ship->info(true) << "ShipObjectMessage6 sent";
-
+		//ship->info(true) << "ShipObjectMessage6 sent";
 
 		insertShort(ship->getUniqueID()); // ShipID
 		insertFloat(ship->getShipAccelerationRate()); // acceleration rate
