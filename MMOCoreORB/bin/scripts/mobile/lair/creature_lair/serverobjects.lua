@@ -333,6 +333,7 @@ includeFile("lair/creature_lair/naboo/naboo_nightspider_lair_neutral_small_03.lu
 includeFile("lair/creature_lair/naboo/naboo_nightspider_lair_neutral_small_04.lua")
 includeFile("lair/creature_lair/naboo/naboo_nuna_lair_neutral_medium.lua")
 includeFile("lair/creature_lair/naboo/naboo_peko_peko_eyrie_neutral_large.lua")
+includeFile("lair/creature_lair/naboo/naboo_peko_peko.lua")
 includeFile("lair/creature_lair/naboo/naboo_plains_tusk_cat_pride_neutral_medium.lua")
 includeFile("lair/creature_lair/naboo/naboo_sharupat_family_diseased_neutral_medium.lua")
 includeFile("lair/creature_lair/naboo/naboo_sharupat_family_neutral_medium.lua")
