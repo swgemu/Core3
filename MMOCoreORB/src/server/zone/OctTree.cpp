@@ -53,7 +53,7 @@ void OctTree::insert(TreeEntry *obj) {
 	try {
 		if (OctTree::doLog()) { //--------------------------------------- HERE
 			SceneObject* scno = cast<SceneObject*>(obj);
-			Logger::console.info(true) << "OctTree - Object ID " << scno->getObjectID() << " " << scno->getDisplayedName() <<  " inserting at: (" << obj->getPositionX() << ", " << obj->getPositionY() << ", " << obj->getPositionZ() << ")";
+			Logger::console.info(true) << "OctTree - Object ID " << scno->getObjectID() << " " << scno->getDisplayedName() <<  " inserting at: (" << obj->getPositionX() << ", " << obj->getPositionZ() << ", " << obj->getPositionY() << ")";
 		}
 
 		if (obj->getNode() != nullptr)
@@ -83,18 +83,20 @@ bool OctTree::update(TreeEntry *obj) {
 		if (OctTree::doLog()) {
 			SceneObject* scno = cast<SceneObject*>(obj);
 			Logger::console.info(true) << "OctTree - Object ID # [" << scno->getDisplayedName() << "] " << "Current Position:" << "(" << String::valueOf(scno->getPositionX())
-					<< ", " << String::valueOf(scno->getPositionY()) << ", " << String::valueOf(scno->getPositionZ()) << ")\n";
+					<< ", " << scno->getPositionZ() << ", " << scno->getPositionY() << ")\n";
 		}
+
 		TreeNode* node = obj->getNode();
 
 		// Print COV
-	/*	SceneObject* scno = cast<SceneObject*>(obj);
+		/*SceneObject* scno = cast<SceneObject*>(obj);
 
 		Locker locker(obj);
 
 		if (scno->isShipObject())
 			{
 				SceneObject* pilot = scno->getSlottedObject("ship_pilot");
+
 				auto vec = (CloseObjectsVector*)pilot->getCloseObjects();
 				Logger::console.info("Close objects for: " + pilot->getDisplayedName(), true);
 				if (vec != nullptr) {
@@ -140,7 +142,7 @@ void OctTree::inRange(TreeEntry *obj, float range) {
 
 	CloseObjectsVector* closeObjects = obj->getCloseObjects();
 
-	float rangesq = range * range;
+	int rangesq = range * range;
 
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
@@ -161,16 +163,18 @@ void OctTree::inRange(TreeEntry *obj, float range) {
 					o = rootParent;
 
 				if (o != obj) {
-					float deltaX = o->getPositionX() - x;
-					float deltaY = o->getPositionY() - y;
-					float deltaZ = o->getPositionZ() - z;
+					float deltaX = x - o->getPositionX();
+					float deltaY = y - o->getPositionY();
+					float deltaZ = z - o->getPositionZ();
+					int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
-					if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ > rangesq) {
-						float oldDeltaX = o->getPositionX() - oldz;
-						float oldDeltaY = o->getPositionY() - oldy;
-						float oldDeltaZ = o->getPositionZ() - oldz;
+					if (deltaCalc > rangesq) {
+						float oldDeltaX = oldx - o->getPositionX();
+						float oldDeltaY = oldy - o->getPositionY();
+						float oldDeltaZ = oldz - o->getPositionZ();
+						int deltaCalc2 = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
-						if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY + oldDeltaZ * oldDeltaZ <= rangesq) {
+						if (deltaCalc2 <= rangesq) {
 							obj->removeInRangeObject(objectToRemove);
 
 							CloseObjectsVector* objCloseObjects = objectToRemove->getCloseObjects();
@@ -407,7 +411,7 @@ void OctTree::_insert(const Reference<TreeNode*>& node, TreeEntry *obj) {
 
 bool OctTree::_update(const Reference<TreeNode*>& node, TreeEntry *obj) {
 	if (OctTree::doLog())
-		Logger::console.info(true) << "OctTree::_update -- Poisition (" << obj->getPositionX() << "," << obj->getPositionY() << "," << obj->getPositionZ() << ")\n";
+		Logger::console.info(true) << "OctTree::_update -- Poisition (" << obj->getPositionX() << "," << obj->getPositionZ() << "," << obj->getPositionY() << ")\n";
 
 	if (node->testInsideOctTree(obj))
 		return true;
@@ -444,46 +448,60 @@ void OctTree::safeInRange(TreeEntry* obj, float range) {
 		cov->safeCopyTo(closeObjectsCopy);
 	}
 
-	float rangesq = range * range;
+	int rangesq = range * range;
 
-	SceneObject* item = cast<SceneObject*>(obj);
-	SceneObject* parent = item->getParent().get();
+	SceneObject* sceneO = cast<SceneObject*>(obj);
+	SceneObject* parent = sceneO->getParent().get();
+
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
 	float z = obj->getPositionZ();
 
 #ifdef NO_ENTRY_REF_COUNTING
-	SortedVector<TreeEntry*> SpaceinRangeObjects(500, 250);
+	SortedVector<TreeEntry*> inRangeObjects(500, 250);
 #else
-	SortedVector<ManagedReference<TreeEntry*> > SpaceinRangeObjects(500, 250);
+	SortedVector<ManagedReference<TreeEntry*> > inRangeObjects(500, 250);
 #endif
 
 	ReadLocker locker(&mutex);
 
-	copyObjects(root, x, y, z, range, SpaceinRangeObjects);
+	copyObjects(root, x, y, z, range, inRangeObjects);
 
 	locker.release();
 
-	for (int i = 0; i < SpaceinRangeObjects.size(); ++i) {
-		TreeEntry *o = SpaceinRangeObjects.getUnsafe(i);
-		SceneObject* item = cast<SceneObject*>(o);
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::safeInRange -- called - For: " << sceneO->getDisplayedName() << " Checking Range: " << range << " Total Objects: " << inRangeObjects.size();
 
-		if (o != obj) {
-			float deltaX = o->getPositionX() - x;
-			float deltaY = o->getPositionY() - y;
-			float deltaZ = o->getPositionZ() - z;
+	for (int i = 0; i < inRangeObjects.size(); ++i) {
+		TreeEntry* nearEntry = inRangeObjects.getUnsafe(i);
+
+		if (nearEntry == nullptr)
+			continue;
+
+		SceneObject* nearSceneO = cast<SceneObject*>(nearEntry);
+
+		if (nearSceneO != nullptr && nearSceneO != sceneO) {
+			Vector3 nearObjPos = nearSceneO->getPosition();
+
+			float deltaX = x - nearObjPos.getX();
+			float deltaY = y - nearObjPos.getY();
+			float deltaZ = z - nearObjPos.getZ();
+			int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
+
+			if (OctTree::doLog())
+				Logger::console.info(true) << "OctTree::safeInRange -- called - For: " << sceneO->getDisplayedName() << " Checking For: " << nearSceneO->getDisplayedName() << " Range Sq: " << rangesq << " Delta Calc: " << deltaCalc << " Obj Position: " << nearObjPos.getX() << " " << nearObjPos.getZ() << " " << nearObjPos.getY();
+
 			try {
-				if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ <= rangesq) {
-
+				if (deltaCalc <= rangesq) {
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 
 					if (objCloseObjects != nullptr)
-						obj->addInRangeObject(o); // <-- changed to true
+						nearSceneO->addInRangeObject(nearSceneO);
 
-					CloseObjectsVector* oCloseObjects = o->getCloseObjects();
+					CloseObjectsVector* oCloseObjects = nearSceneO->getCloseObjects();
 
 					if (oCloseObjects != nullptr)
-						o->addInRangeObject(obj);
+						nearSceneO->addInRangeObject(obj);
 				}
 			} catch (...) {
 				Logger::console.info(true) << "unreported exception caught in safeInRange()\n";
@@ -493,8 +511,6 @@ void OctTree::safeInRange(TreeEntry* obj, float range) {
 				obj->addInRangeObject(obj, false);
 		}
 	}
-
-
 }
 
 void OctTree::copyObjects(const Reference<TreeNode*>& node, float x, float y, float z, float range, SortedVector<ManagedReference<server::zone::TreeEntry*> >& objects) {
@@ -562,7 +578,7 @@ void OctTree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float r
 	if (OctTree::doLog())
 		Logger::console.info(true) << "OctTree::_inRange-1 -- Total Objects = " << node->objects.size();
 
-	float rangesq = range * range;
+	int rangesq = range * range;
 
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
@@ -576,11 +592,12 @@ void OctTree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float r
 		TreeEntry *o = refNode->objects.get(i);
 
 		if (o != obj) {
-			float deltaX = o->getPositionX() - x;
-			float deltaY = o->getPositionY() - y;
-			float deltaZ = o->getPositionZ() - z;
+			float deltaX = x - o->getPositionX();
+			float deltaY = y - o->getPositionY();
+			float deltaZ = z - o->getPositionZ();
+			int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
-			if (deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ <= rangesq) {
+			if (deltaCalc <= rangesq) {
 				CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 
 				if (objCloseObjects != nullptr && !objCloseObjects->contains(o)) {
@@ -599,16 +616,15 @@ void OctTree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float r
 				/*obj->addInRangeObject(o, false);
 				o->addInRangeObject(obj);*/
 			} else {
-				float oldDeltaX =  o->getPositionX() - oldx;
-				float oldDeltaY = o->getPositionY() - oldy;
-				float oldDeltaZ = o->getPositionZ() - oldz;
+				float oldDeltaX = oldx - o->getPositionX();
+				float oldDeltaY = oldy - o->getPositionY();
+				float oldDeltaZ = oldz - o->getPositionZ();
+				int deltaCalc2 = oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY + oldDeltaZ * oldDeltaZ;
 
-				if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY + oldDeltaZ * oldDeltaZ <= rangesq) {
-
+				if (deltaCalc2 <= rangesq) {
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 					if (objCloseObjects != nullptr)
 						obj->removeInRangeObject(o);
-
 
 					CloseObjectsVector* oCloseObjects = o->getCloseObjects();
 
