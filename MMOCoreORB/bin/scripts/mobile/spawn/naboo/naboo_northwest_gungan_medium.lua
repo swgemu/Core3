@@ -1,0 +1,78 @@
+naboo_northwest_gungan_medium = {
+	lairSpawns = {
+		{
+			lairTemplateName = "naboo_gungan_camp",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 25,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "gungan_kaadu",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 25,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "naboo_ankura_gungan_camp_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 25,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "naboo_gungan_mercenary_camp_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 25,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "naboo_gungan_military_base_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 25,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "naboo_gungan_war_troop_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 25,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "naboo_peko_peko_giant_pair_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 25,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "naboo_narglatch_youngling_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 25,
+			numberToSpawn = 15,
+			weighting = 15,
+			size = 25,
+		},
+	}
+}
+
+addSpawnGroup("naboo_northwest_gungan_medium", naboo_northwest_gungan_medium);

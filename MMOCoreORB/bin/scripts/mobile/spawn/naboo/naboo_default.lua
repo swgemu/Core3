@@ -1,4 +1,4 @@
-naboo_world = {
+naboo_default = {
 	lairSpawns = {
 		{
 			lairTemplateName = "naboo_gnort_group_neutral_none",
@@ -453,4 +453,4 @@ naboo_world = {
 	}
 }
 
-addSpawnGroup("naboo_world", naboo_world);
+addSpawnGroup("naboo_default", naboo_default);
