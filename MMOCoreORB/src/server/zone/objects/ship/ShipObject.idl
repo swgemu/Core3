@@ -5,6 +5,7 @@
 
 package server.zone.objects.ship;
 
+import engine.log.Logger;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.ship.components.ShipComponent;
 include server.zone.objects.scene.SceneObject;
@@ -25,7 +26,7 @@ class ShipObject extends TangibleObject {
 
 	public static final int WEAPON_COMPONENT_START = 12;
 
-	protected boolean hyperspacing;
+	protected transient boolean hyperspacing;
 
 	public string storedLocation;
 
@@ -332,6 +333,8 @@ class ShipObject extends TangibleObject {
 		Logger.setLoggingName("ShipObject");
 
 		super.objectVisible = 1;
+
+		hyperspacing = false;
 
 		totalMass = 500.0;
 
