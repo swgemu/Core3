@@ -428,8 +428,10 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 			return false;
 	}
 
-	if (skillName.beginsWith("force_") && !(JediManager::instance()->canSurrenderSkill(creature, skillName)))
-		return false;
+	if (!ConfigManager::instance()->getBool("Core3.JediManager.CanSurrenderPadawan", true)) {
+		if (skillName.beginsWith("force_") && !(JediManager::instance()->canSurrenderSkill(creature, skillName)))
+			return false;
+	}
 
 	removeSkillRelatedMissions(creature, skill);
 
