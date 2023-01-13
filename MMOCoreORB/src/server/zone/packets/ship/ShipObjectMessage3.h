@@ -11,6 +11,8 @@
 class ShipObjectMessage3 : public TangibleObjectMessage3 {
 public:
 	ShipObjectMessage3(ShipObject* ship) : TangibleObjectMessage3(ship, 0x53484950, 0x16) {
+		//ship->info(true) << "ShipObjectMessage3 sent";
+
 
 		//11
 		insertFloat(ship->getSlip()); //?Speed or Acceleration?

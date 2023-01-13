@@ -334,8 +334,6 @@ class ShipObject extends TangibleObject {
 
 		super.objectVisible = 1;
 
-		hyperspacing = false;
-
 		totalMass = 500.0;
 
 		super.closeobjects = new CloseObjectsVector();

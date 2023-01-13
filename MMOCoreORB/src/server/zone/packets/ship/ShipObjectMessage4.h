@@ -12,12 +12,14 @@
 class ShipObjectMessage4 : public BaseLineMessage {
 public:
 	ShipObjectMessage4(ShipObject* ship) : BaseLineMessage(ship->getObjectID(), 0x53484950, 4, 0x06) {
+		ship->info(true) << "ShipObjectMessage4 sent";
 
-		insertFloat(ship->getChassisMass()); //m_chassisComponentMassCurrent
-		insertFloat(ship->getChassisSpeed()); //m_chassisSpeedMaximumModifier
 
-		insertFloat(ship->getCapacitorEnergy()); // m_capacitorEnergyCurrent
-		insertFloat(ship->getBoosterEnergy()); //m_boosterEnergyCurrent
+		insertFloat(ship->getChassisMass()); // Current Mass
+		insertFloat(ship->getChassisSpeed()); // Chassis Speed
+
+		insertFloat(ship->getCapacitorEnergy()); // Cpacitor Energy
+		insertFloat(ship->getBoosterEnergy()); // Booster Energy
 
 		ship->getComponentRefireEfficiency()->insertToMessage(this);
 

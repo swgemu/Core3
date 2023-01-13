@@ -12,6 +12,8 @@ class ShipObjectMessage1 : public BaseLineMessage {
 public:
 	ShipObjectMessage1(ShipObject* ship) : BaseLineMessage(ship->getObjectID(), 0x53484950, 1, 0x29) {
 
+		//ship->info(true) << "ShipObjectMessage1 sent";
+
 		insertInt(0); //start ServerObject
 		insertInt(0); // EndServerObject
 
@@ -30,9 +32,10 @@ public:
 		ship->getCurrentAmmoMap()->insertToMessage(this);
 		ship->getMaxAmmoMap()->insertToMessage(this); // 15
 		ship->getAmmoClassMap()->insertToMessage(this);
-		insertFloat(ship->getTotalMass()); //const Archive::AutoDeltaVariable<float>::`vftable'
+
+		insertFloat(ship->getTotalMass());
 		insertFloat(ship->getShieldRechargeRate()); //shield recharge rate
-		insertFloat(ship->getCapacitorMaxEnergy()); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(ship->getCapacitorMaxEnergy());
 		insertFloat(ship->getCapacitorRechargeRate()); // 20
 		insertFloat(ship->getEngineAccelerationRate()); //
 		insertFloat(ship->getEngineDecelerationRate());//
@@ -51,7 +54,7 @@ public:
 		insertFloat(ship->getBoosterMaxSpeed()); // 35
 		insertFloat(ship->getDroidCommandSpeed());
 
-		insertLong(0); //m_installedDroidControlDevice Archive::AutoDeltaVariableCallback<NetworkId,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::DroidPcdChanged,NetworkId>,ShipObject>::`vftable'
+		insertLong(0);
 
 		setSize();
 	}

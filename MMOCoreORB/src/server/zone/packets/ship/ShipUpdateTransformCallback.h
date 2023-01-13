@@ -20,7 +20,6 @@
 #include "PackedRotationRate.h"
 #include "PackedPosition.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
 #include "server/zone/Zone.h"
@@ -32,94 +31,117 @@ class ShipUpdateTransformCallback : public MessageCallback {
 
 	//PackedTransform dir is multiplied by 127, positions by 4.0958748
 	uint8 dirX, dirY, dirZ, dirW;
-	int16 posX, posZ, posY;
-
-	PackedPosition pos;
-
-	//PackedVelocity
-	//int16 velocitySpeed, velocityDirection;
+	Vector3 position;
 	PackedVelocity velocity;
-
-	//3 PackedRotationRate
 	PackedRotationRate yawRate, pitchRate, rollRate;
 
 	uint32 counter;
 
 public:
-	ShipUpdateTransformCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server), shipId(0), dirX(0), dirY(0), dirZ(0), dirW(0),
-		posX(0), posZ(0), posY(0), counter(0) {
+	ShipUpdateTransformCallback(ZoneClientSession* client, ZoneProcessServer* server) : MessageCallback(client, server) {
 	}
 
 	void parse(Message* message) {
-		//info(message->toStringData(), true);
 		shipId = message->parseShort();
 		dirX = message->parseByte();
 		dirY = message->parseByte();
 		dirZ = message->parseByte();
 		dirW = message->parseByte();
-		posX = message->parseSignedShort();
-		posY = message->parseSignedShort();
-		posZ = message->parseSignedShort();
-		velocity.parse(message); //Short velocity
-		yawRate.parse(message); // int8 rate
-		pitchRate.parse(message); //int8 rate
-		rollRate.parse(message); //int8 rate
-		counter = message->parseInt(); //int32
+
+		PackedPosition pos;
+		pos.parse(message);
+		Vector3 loc(pos.get());
+
+		position.setX(loc.getX());
+		position.setZ(loc.getY());
+		position.setY(loc.getZ());
+
+		velocity.parse(message);
+
+		yawRate.parse(message);
+		pitchRate.parse(message);
+		rollRate.parse(message);
+		counter = message->parseInt();
 	}
 
 	void run() {
-		float positionMultiplier = 4.0958748f;
-		float positionX = posX / positionMultiplier;
-		float positionY = posY / positionMultiplier;
-		float positionZ = posZ / positionMultiplier;;
+		Quaternion direction(dirW, dirX, dirY, dirZ);
 
-		float directionX = dirX <= 127.f ? dirX / 127.f : (dirX - 255) / 127.f;
-		float directionY = dirY <= 127.f ? dirY / 127.f : (dirY - 255) / 127.f;
-		float directionZ = dirZ <= 127.f ? dirZ / 127.f : (dirZ - 255) / 127.f;
-		float directionW = dirW <= 127.f ? dirW / 127.f : (dirW - 255) / 127.f;
+		/*info(true) << "ShipUpdateTransformCallback::run";
 
-		if (positionX > 8000.0f || positionX < -8000.0f || positionY > 8000.0f || positionY < -8000.0f || positionZ < -8000.0f || positionZ > 8000.0f) {
+		StringBuffer callMsg;
+		callMsg << "Callback data: " << shipId << "\n";
+		callMsg << "Dir W: " << dirW << "\n";
+		callMsg << "Dir X: " << dirX << "\n";
+		callMsg << "Dir Y: " << dirY << "\n";
+		callMsg << "Dir Z: " << dirZ << "\n";
+
+		callMsg << "Pos X: " << position.getX() << "\n";
+		callMsg << "Pos Z: " << position.getZ() << "\n";
+		callMsg << "Pos Y: " << position.getY() << "\n";
+
+		callMsg << "Velocity: " << velocity.get().toString() << "\n";
+		info(true) << callMsg.toString();*/
+
+		if (position.getX() > 8000.0f || position.getX() < -8000.0f || position.getY() > 8000.0f || position.getY() < -8000.0f || position.getZ() < -8000.0f || position.getZ() > 8000.0f) {
+			info(true) << "ShipUpdateTransformCallback -- FAIL 1";
 			return;
 		}
 
 		const ManagedReference<CreatureObject*> pilot = client->getPlayer();
 
 		if (pilot == nullptr) {
+			info(true) << "ShipUpdateTransformCallback -- FAIL 2";
 			return;
 		}
-
 
 		const Reference<PlayerObject*> ghost = pilot->getPlayerObject();
 
 		if (ghost == nullptr || ghost->isTeleporting()) {
+			info(true) << "ShipUpdateTransformCallback -- FAIL 3";
 			return;
 		}
 
 		ShipObject* ship = dynamic_cast<ShipObject*>(pilot->getParent().get().get());
 
-		if (ship == nullptr || ship->getSpaceZone() == nullptr || ship->isHyperspacing()) {
+		if (ship == nullptr) {
+			info(true) << "ShipUpdateTransformCallback -- FAIL 4";
 			return;
 		}
-/*
-		Logger::console.info("Directions for: " + ship->getDisplayedName(), true);
-		Logger::console.info("Direction X: " + String::valueOf(dirX), true);
-		Logger::console.info("Direction Y: " + String::valueOf(dirY), true);
-		Logger::console.info("Direction Z: " + String::valueOf(dirZ), true);
-		Logger::console.info("Direction W: " + String::valueOf(dirW), true);
-		Logger::console.info("End Directions", true);
-*/
+
+		if (ship->getSpaceZone() == nullptr) {
+			info(true) << "ShipUpdateTransformCallback -- FAIL 5";
+			return;
+		}
+
+		if (ship->isHyperspacing()) {
+			info(true) << "ShipUpdateTransformCallback -- FAIL 6";
+			return;
+		}
+
+		/*StringBuffer dirMsg;
+		dirMsg << "Directions for: " + ship->getDisplayedName() << "\n";
+		dirMsg << "Direction W: " << dirW << "\n";
+		dirMsg << "Direction X: " << dirX << "\n";
+		dirMsg << "Direction Y: " << dirY << "\n";
+		dirMsg << "Direction Z: " << dirZ << "\n";
+
+		dirMsg << "Position X: " << position.getX() << "\n";
+		dirMsg << "Position Z: " << position.getZ() << "\n";
+		dirMsg << "Position Y: " << position.getY() << "\n";
+		dirMsg << "Velocity: " << velocity.get().toString() << "\n";
+		info(true) << dirMsg.toString();
+		*/
+
 		if (pilot->getSpaceZone() == nullptr) {
 			pilot->setSpaceZone(ship->getSpaceZone());
+			error() << "ShipUpdateTransformCallback -- Pilot has a null space zone";
 		}
-		Locker pLock(pilot);
-		Locker cLock(ship, pilot);
-//
-		Vector3 collisionPoint(positionX, positionY, positionZ);
-		bool collision = CollisionManager::checkShipCollision(ship, collisionPoint, collisionPoint);
-//
-		Quaternion direction(directionW, directionX, directionZ, directionY);
-		direction.normalize();
+
+		Locker slock(ship);
+		Locker plock(pilot, ship);
+
+		bool collision = CollisionManager::checkShipCollision(ship, position, position);
 
 		if (collision) {
 			ship->setDirection(direction);
@@ -132,25 +154,21 @@ public:
 			ship->broadcastMessage(effect, true);
 		} else {
 			// No Collision
-			ship->setMovementCounter(counter);
-			bool lightUpdate = ghost->getServerMovementTimeDelta() < 3000U;
+			uint32 deltaTime = ghost->getServerMovementTimeDelta();
+			bool lightUpdate = deltaTime < 500;
 
-			//Logger::console.info("positionX = " + String::valueOf(positionX), true);
-			auto shipMessage = new ShipUpdateTransformMessage(ship, direction.getX(), direction.getY(), direction.getZ(), direction.getW(), positionX, positionZ, positionY, velocity, yawRate, pitchRate, rollRate);
-			ship->broadcastMessage(shipMessage, false);
+			//info(true) << "ShipUpdateTransformCallback -- Server Movement Time Delta = " << deltaTime << "  ShipUpdateTransformMessage called ";
 
 			if (!lightUpdate) {
 				ship->setDirection(direction);
-				pilot->setDirection(direction);
-				pilot->setPosition(positionX, positionZ, positionY);
-				ship->setPosition(positionX, positionZ, positionY);
-				pilot->updateZone(false);
-				ghost->updateServerLastMovementStamp();
+				ship->setPosition(position.getX(), position.getZ(), position.getY());
 			}
-			else
-				pilot->updateZone(true, false);
 		}
-		cLock.release();
+
+		ship->updateZone(false, true);
+
+		auto shipMessage = new ShipUpdateTransformMessage(ship, velocity, yawRate, pitchRate, rollRate);
+		ship->broadcastMessage(shipMessage, false);
 	}
 };
 

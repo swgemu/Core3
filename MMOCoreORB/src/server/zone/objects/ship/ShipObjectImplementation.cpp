@@ -26,6 +26,8 @@
 //#include "server/zone/packets/tangible/TangibleObjectMessage9.h"
 
 void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
+	//info(true) << "ShipObjectImplementation::sendTo -- " << player->getDisplayedName();
+
 	BaseMessage* msg = new SceneObjectCreateMessage(asSceneObject());
 	player->sendMessage(msg);
 
@@ -41,8 +43,6 @@ void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool fo
 		error(e.getMessage());
 		e.printStackTrace();
 	}
-
-	auto closeObjects = player->getCloseObjects();
 
 	// for some reason client doesnt like when you send cell creatures while sending cells?
 	for (int i = 0; i < cells.size(); ++i) {
@@ -70,7 +70,7 @@ void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool fo
 		}
 	}
 
-	SceneObjectImplementation::sendSlottedObjectsTo(player);
+	//SceneObjectImplementation::sendSlottedObjectsTo(player);
 }
 
 void ShipObjectImplementation::setShipName(const String& name, bool notifyClient) {
@@ -111,6 +111,8 @@ void ShipObjectImplementation::storeShip(SceneObject* creature) {
 }
 
 void ShipObjectImplementation::initializeTransientMembers() {
+	hyperspacing = false;
+
 	TangibleObjectImplementation::initializeTransientMembers();
 }
 
@@ -248,21 +250,22 @@ uint16 ShipObjectImplementation::getUniqueID() {
 }
 
 void ShipObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	//info("sending ship baselines", true);
+	//info(true) << "ShipObjectImplementation::sendBaselinesTo -- " << player->getDisplayedName();
 
-	BaseMessage* ship3 = new ShipObjectMessage3(_this.getReferenceUnsafeStaticCast());
+	ShipObjectMessage3* ship3 = new ShipObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(ship3);
 
 
 	//if (player->getParent().get() == _this.getReferenceUnsafeStaticCast() || getRootParent().get() == player) {
-		BaseMessage* ship4 = new ShipObjectMessage4(_this.getReferenceUnsafeStaticCast());
-		player->sendMessage(ship4);
 
-		BaseMessage* ship1 = new ShipObjectMessage1(_this.getReferenceUnsafeStaticCast());
-		player->sendMessage(ship1);
+	ShipObjectMessage4* ship4 = new ShipObjectMessage4(_this.getReferenceUnsafeStaticCast());
+	player->sendMessage(ship4);
+
+	ShipObjectMessage1* ship1 = new ShipObjectMessage1(_this.getReferenceUnsafeStaticCast());
+	player->sendMessage(ship1);
 	//}
 
-	BaseMessage* ship6 = new ShipObjectMessage6(_this.getReferenceUnsafeStaticCast());
+	ShipObjectMessage6* ship6 = new ShipObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(ship6);
 /*
 	BaseMessage* ship8 = new TangibleObjectMessage8(_this);

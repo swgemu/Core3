@@ -190,18 +190,16 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 }
 
 void SceneObjectImplementation::setZoneComponent(const String& name) {
-	if(name.isEmpty())
+	if (name.isEmpty())
 		return;
 
-	spaceZoneComponent = nullptr;
 	zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(name);
 }
 
 void SceneObjectImplementation::setSpaceZoneComponent(const String& name) {
-	if(name.isEmpty())
+	if (name.isEmpty())
 		return;
 
-	zoneComponent = nullptr;
 	spaceZoneComponent = ComponentManager::instance()->getComponent<SpaceZoneComponent*>(name);
 }
 
@@ -920,10 +918,10 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	if (getZone() != nullptr)
-		zoneComponent->updateZone(asSceneObject(), lightUpdate, sendPackets);
-	else if (getSpaceZone() != nullptr)
+	if (getSpaceZone() != nullptr)
 		spaceZoneComponent->updateZone(asSceneObject(), lightUpdate, sendPackets);
+	else
+		zoneComponent->updateZone(asSceneObject(), lightUpdate, sendPackets);
 }
 
 void SceneObjectImplementation::notifySelfPositionUpdate() {
@@ -945,18 +943,18 @@ void SceneObjectImplementation::notifyPositionUpdate(TreeEntry* entry) {
 	//Core::getTaskManager()->executeTask(new PositionUpdateTask(asSceneObject(), entry));
 	//#endif
 
-	if (getZone() != nullptr) {
-		zoneComponent->notifyPositionUpdate(asSceneObject(), entry);
-	} else if (getSpaceZone() != nullptr) {
+	if (getSpaceZone() != nullptr) {
 		spaceZoneComponent->notifyPositionUpdate(asSceneObject(), entry);
+	} else {
+		zoneComponent->notifyPositionUpdate(asSceneObject(), entry);
 	}
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	if (getZone() != nullptr)
-		zoneComponent->updateZoneWithParent(asSceneObject(), newParent, lightUpdate, sendPackets);
-	else if (getSpaceZone() != nullptr)
+	if (getSpaceZone() != nullptr)
 		spaceZoneComponent->updateZoneWithParent(asSceneObject(), newParent, lightUpdate, sendPackets);
+	else
+		zoneComponent->updateZoneWithParent(asSceneObject(), newParent, lightUpdate, sendPackets);
 }
 
 void SceneObjectImplementation::notifyInsertToZone(Zone* newZone) {
@@ -968,10 +966,10 @@ void SceneObjectImplementation::notifyInsertToZone(SpaceZone* newZone) {
 }
 
 void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
-	if (getZone() != nullptr)
-		zoneComponent->teleport(asSceneObject(), newPositionX, newPositionZ, newPositionY, parentID);
-	else if (getSpaceZone() != nullptr)
+	if (getSpaceZone() != nullptr)
 		spaceZoneComponent->teleport(asSceneObject(), newPositionX, newPositionZ, newPositionY, parentID);
+	else
+		zoneComponent->teleport(asSceneObject(), newPositionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObjectImplementation::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) {
