@@ -409,7 +409,7 @@ void OctTree::_insert(const Reference<TreeNode*>& node, TreeEntry *obj) {
 		Logger::console.info(true) << "OctTree::_insert Object ID # " << obj->getObjectID() << " node added object - Total Objects: " << node->objects.size();
 }
 
-bool OctTree::_update(const Reference<TreeNode*>& node, TreeEntry *obj) {
+bool OctTree::_update(const Reference<TreeNode*>& node, TreeEntry* obj) {
 	if (OctTree::doLog())
 		Logger::console.info(true) << "OctTree::_update -- Poisition (" << obj->getPositionX() << "," << obj->getPositionZ() << "," << obj->getPositionY() << ")\n";
 
@@ -495,13 +495,15 @@ void OctTree::safeInRange(TreeEntry* obj, float range) {
 				if (deltaCalc <= rangesq) {
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 
-					if (objCloseObjects != nullptr)
-						nearSceneO->addInRangeObject(nearSceneO);
+					if (objCloseObjects != nullptr) {
+						obj->addInRangeObject(nearEntry, false);
+
+					}
 
 					CloseObjectsVector* oCloseObjects = nearSceneO->getCloseObjects();
 
 					if (oCloseObjects != nullptr)
-						nearSceneO->addInRangeObject(obj);
+						nearEntry->addInRangeObject(obj);
 				}
 			} catch (...) {
 				Logger::console.info(true) << "unreported exception caught in safeInRange()\n";
