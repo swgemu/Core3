@@ -42,7 +42,6 @@
 
 
 object_ship_player_player_yt1300 = object_ship_player_shared_player_yt1300:new {
-
 	name = "player_yt1300",
 	slideFactor = 1.85,
 	chassisHitpoints = 5000,
@@ -59,6 +58,11 @@ object_ship_player_player_yt1300 = object_ship_player_shared_player_yt1300:new {
 	weapon_2 = { name = "wpn_xwing_missile_s01", hitpoints = 19.89749, armor = 19.02803, rate = 5.740155, drain = 23.16122, maxDamage = 22.6369, shieldEfficiency = 0, minDamage = 22.91667, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 	weapon_3 = { name = "wpn_std_countermeasure", hitpoints = 19.2737, armor = 19.12519, rate = 0.3286487, drain = 23.17929, maxDamage = 22.90508, shieldEfficiency = 0, minDamage = 23.23277, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 	lots = 4,
+
+	childObjects = {
+		{templateFile = "object/tangible/shipcontrol/shipcontrol_falcon.iff", x = 12.2, z = 0.1, y = 12.8, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1},
+		--{templateFile = "object/tangible/shipcontrol/shipoperations_falcon.iff", x = 13.6, z = 0.1, y = 12.8, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1},
+	}
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_yt1300, "object/ship/player/player_yt1300.iff")

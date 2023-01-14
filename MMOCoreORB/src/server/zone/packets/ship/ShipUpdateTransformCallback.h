@@ -102,7 +102,7 @@ public:
 			return;
 		}
 
-		ShipObject* ship = dynamic_cast<ShipObject*>(pilot->getParent().get().get());
+		ShipObject* ship = dynamic_cast<ShipObject*>(pilot->getRootParent());
 
 		if (ship == nullptr) {
 			info(true) << "ShipUpdateTransformCallback -- FAIL 4";

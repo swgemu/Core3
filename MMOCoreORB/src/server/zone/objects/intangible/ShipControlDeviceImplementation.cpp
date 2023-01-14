@@ -33,13 +33,7 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 		e.printStackTrace();
 	}
 
-	//controlledObject->insertToZone(player->getZone());
-
-	//removeObject(controlledObject, true);
-
 	controlledObject->transferObject(player, 5, true);
-	player->setState(CreatureState::PILOTINGSHIP);
-	//controlledObject->inflictDamage(player, 0, System::random(50), true);
 
 	updateStatus(1);
 

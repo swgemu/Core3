@@ -133,11 +133,19 @@ public:
 
 			// POB Ship
 			if (ship->getContainerObjectsSize() > 0) {
-				auto cockpit = ship->getCell(0);
+				auto pilotChair = ship->getPilotChair().get();
 
-				if (cockpit != nullptr) {
-					parentID = cockpit->getObjectID();
+				if (pilotChair == nullptr) {
+					error() << "Pilot Chair is a nullptr in LaunchIntoSpace command for POB ship.";
+					ship->destroyObjectFromWorld(true);
+
+					return GENERALERROR;
 				}
+
+				parentID = pilotChair->getObjectID();
+				position = pilotChair->getPosition();
+
+				creature->setState(CreatureState::PILOTINGPOBSHIP);
 			} else {
 				creature->setState(CreatureState::PILOTINGSHIP);
 			}

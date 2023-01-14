@@ -42,7 +42,6 @@
 
 
 object_ship_player_player_sorosuub_space_yacht = object_ship_player_shared_player_sorosuub_space_yacht:new {
-
 	name = "player_sorosuub_space_yacht",
 	slideFactor = 1.76,
 	chassisHitpoints = 1512,
@@ -57,7 +56,7 @@ object_ship_player_player_sorosuub_space_yacht = object_ship_player_shared_playe
 	lots = 4,
 
 	childObjects = {
-		{ templateFile = "object/tangible/shipcontrol/pilot_chair.iff", x = 0.0, z = 0.4, y = 21.6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 0, containmentType = -1 },
+		{ templateFile = "object/tangible/shipcontrol/shipcontrol_falcon.iff", x = 0.0, z = 0.4, y = 21.6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 0, containmentType = -1 },
 	}
 }
 

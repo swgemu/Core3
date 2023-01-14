@@ -141,7 +141,9 @@ void ShipObjectImplementation::createChildObjects() {
 		if (child == nullptr)
 			continue;
 
-		ManagedReference<SceneObject *> obj = zoneServer->createObject(child->getTemplateFile().hashCode(), getPersistenceLevel());
+		uint32 childHash = child->getTemplateFile().hashCode();
+
+		ManagedReference<SceneObject *> obj = zoneServer->createObject(childHash, getPersistenceLevel());
 
 		if (obj == nullptr)
 			continue;
@@ -158,13 +160,17 @@ void ShipObjectImplementation::createChildObjects() {
 		try {
 			if (totalCells >= child->getCellId()) {
 				ManagedReference<CellObject *> cellObject = getCell(child->getCellId());
+
 				info("Inserting into " + String::valueOf(cellObject->getObjectID()), true);
+
 				if (cellObject != nullptr) {
 					if (!cellObject->transferObject(obj, child->getContainmentType(), true)) {
 						obj->destroyObjectFromDatabase(true);
 						continue;
+					} else {
+						if (obj->getGameObjectType() == SceneObjectType::PILOTCHAIR)
+							setPilotChair(obj);
 					}
-					//cellObject->broadcastObject(obj, false);
 				} else {
 					error("nullptr CELL OBJECT");
 					obj->destroyObjectFromDatabase(true);
