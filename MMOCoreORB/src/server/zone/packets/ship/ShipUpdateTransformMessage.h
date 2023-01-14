@@ -19,17 +19,15 @@ public:
 	ShipUpdateTransformMessage(ShipObject* ship, PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC) : BaseMessage(50) {
 		//Logger::console.info("shipUpdateTransformMessage NEW", true);
 
-		float positionMultiplier = 4.0958748f;
-
 		insertShort(0x08); //Opcode
 		insertInt(0x76026fb9); //Message
 		insertShort(ship->getUniqueID());
 
 		//direction
-		insertByte((byte)ship->getDirectionW());
-		insertByte((byte)ship->getDirectionX());
-		insertByte((byte)ship->getDirectionY());
-		insertByte((byte)ship->getDirectionZ());
+		insertSignedByte((byte)ship->getDirectionW());
+		insertSignedByte((byte)ship->getDirectionX());
+		insertSignedByte((byte)ship->getDirectionY());
+		insertSignedByte((byte)ship->getDirectionZ());
 
 		PackedPosition packed;
 		packed.set(ship->getPosition());
@@ -54,21 +52,21 @@ public:
 		insertShort(scno->getUniqueID());
 
 		//direction
-		insertByte((byte)dirW);
-		insertByte((byte)dirX);
-		insertByte((byte)dirY);
-		insertByte((byte)dirZ);
+		insertSignedByte((byte)dirW);
+		insertSignedByte((byte)dirX);
+		insertSignedByte((byte)dirY);
+		insertSignedByte((byte)dirZ);
 
-		insertShort((int16)posX * positionMultiplier);
-		insertShort((int16)posY * positionMultiplier);
-		insertShort((int16)posZ * positionMultiplier);
+		insertSignedShort((int16)posX * positionMultiplier);
+		insertSignedShort((int16)posY * positionMultiplier);
+		insertSignedShort((int16)posZ * positionMultiplier);
 
-		insertShort(velA);
-		insertShort(velB);
+		insertSignedShort(velA);
+		insertSignedShort(velB);
 
-		insertByte(rA);
-		insertByte(rB);
-		insertByte(rC);
+		insertSignedByte(rA);
+		insertSignedByte(rB);
+		insertSignedByte(rC);
 
 		insertInt(scno->getMovementCounter());
 	}
@@ -83,14 +81,14 @@ public:
 		insertShort(scno->getUniqueID());
 
 		//direction
-		insertByte((byte)direction.getW());
-		insertByte((byte)direction.getX());
-		insertByte((byte)direction.getY());
-		insertByte((byte)direction.getZ());
+		insertSignedByte((byte)direction.getW());
+		insertSignedByte((byte)direction.getX());
+		insertSignedByte((byte)direction.getY());
+		insertSignedByte((byte)direction.getZ());
 
-		insertShort((int16)position.getX() * positionMultiplier);
-		insertShort((int16)position.getY() * positionMultiplier);
-		insertShort((int16)position.getZ() * positionMultiplier);
+		insertSignedShort((int16)position.getX() * positionMultiplier);
+		insertSignedShort((int16)position.getY() * positionMultiplier);
+		insertSignedShort((int16)position.getZ() * positionMultiplier);
 
 		velocity.write(this);
 

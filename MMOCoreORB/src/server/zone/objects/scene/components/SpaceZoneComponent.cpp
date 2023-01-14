@@ -280,34 +280,25 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 
-	/*
-	if (newParent != nullptr) {
-		if (spaceZone == newZone) {
-			if (newParent->transferObject(sceneObject, -1, false)) {
-				sceneObject->sendToOwner(true);
-			}
-		} else {
-			if (newParent->transferObject(sceneObject, -1, false, false, false)) {
-				sceneObject->sendToOwner(true);
-
-				if (newParent->isCellObject()) {
-					auto rootParent = sceneObject->getRootParent();
-
-					if (rootParent != nullptr)
-						rootParent->notifyObjectInsertedToChild(sceneObject, newParent, nullptr);
-				}
-			}
-		}
-	} else {
-		newZone->transferObject(sceneObject, -1, true);
-	}*/
-
+	// Object needs to be in zone before being inserted into parent
 	newZone->transferObject(sceneObject, -1, true);
 
-	if (newParent->isShipObject() && newParent->transferObject(sceneObject, 5, true)) {
-		newParent->sendTo(sceneObject, false);
+	if (newParent != nullptr) {
+		if (newParent->isShipObject()) {
+			newParent->transferObject(sceneObject, 5, true);
+			newParent->sendTo(sceneObject, true);
 
-		//info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
+			//info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
+		} else if (newParent->isCellObject()) {
+
+			sceneObject->initializePosition(13,0,13);
+			sceneObject->setDirection(1,0,0,0);
+
+			newParent->transferObject(sceneObject, -1, true);
+			sceneObject->sendToOwner(true);
+
+			//info(true) << "SpaceZoneComponent::switchZone object transferred into POB ship";
+		}
 	}
 
 	sceneObject->setMovementCounter(0);

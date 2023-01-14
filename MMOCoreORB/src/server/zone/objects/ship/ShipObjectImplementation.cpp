@@ -25,9 +25,27 @@
 //#include "server/zone/packets/tangible/TangibleObjectMessage8.h"
 //#include "server/zone/packets/tangible/TangibleObjectMessage9.h"
 
-void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
-	//info(true) << "ShipObjectImplementation::sendTo -- " << player->getDisplayedName();
+void ShipObjectImplementation::initializeTransientMembers() {
+	hyperspacing = false;
 
+	TangibleObjectImplementation::initializeTransientMembers();
+}
+
+void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	SharedShipObjectTemplate *shipTempl = dynamic_cast<SharedShipObjectTemplate*>(templateData);
+	setShipName(shipTempl->getShipName());
+
+	auto portal = shipTempl->getPortalLayout();
+
+	if (portal == nullptr)
+		totalCellNumber = 0;
+	else
+		totalCellNumber = portal->getCellTotalNumber();
+}
+
+void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
 	BaseMessage* msg = new SceneObjectCreateMessage(asSceneObject());
 	player->sendMessage(msg);
 
@@ -35,42 +53,16 @@ void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool fo
 
 	try {
 		sendBaselinesTo(player);
-		SceneObjectImplementation::close(player);
-		sendContainerObjectsTo(player, forceLoadContainer);
-
 		sendSlottedObjectsTo(player);
+		sendContainerObjectsTo(player, false);
+
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
 	}
 
-	// for some reason client doesnt like when you send cell creatures while sending cells?
-	for (int i = 0; i < cells.size(); ++i) {
-		CellObject* cell = cells.get(i);
-
-		auto perms = cell->getContainerPermissions();
-
-		if (!perms->hasInheritPermissionsFromParent()) {
-			CreatureObject* creo = cast<CreatureObject*>(player);
-
-			if (creo != nullptr && !cell->checkContainerPermission(creo, ContainerPermissions::WALKIN)) {
-				BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), false);
-				player->sendMessage(perm);
-			}
-		}
-
-		if (!cell->isContainerLoaded())
-			continue;
-
-		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			ManagedReference<SceneObject*> containerObject = cell->getContainerObject(j);
-
-			if (containerObject != nullptr && ((containerObject->isCreatureObject())))
-				containerObject->sendTo(player, true, false);
-		}
-	}
-
-	//SceneObjectImplementation::sendSlottedObjectsTo(player);
+	if (doClose)
+		SceneObjectImplementation::close(player);
 }
 
 void ShipObjectImplementation::setShipName(const String& name, bool notifyClient) {
@@ -110,27 +102,9 @@ void ShipObjectImplementation::storeShip(SceneObject* creature) {
 	shipControlDevice->updateStatus(0);
 }
 
-void ShipObjectImplementation::initializeTransientMembers() {
-	hyperspacing = false;
-
-	TangibleObjectImplementation::initializeTransientMembers();
-}
-
-void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	TangibleObjectImplementation::loadTemplateData(templateData);
-
-	SharedShipObjectTemplate *shipTempl = dynamic_cast<SharedShipObjectTemplate*>(templateData);
-	setShipName(shipTempl->getShipName());
-	auto portal = shipTempl->getPortalLayout();
-
-	if (portal == nullptr)
-		totalCellNumber = 0;
-	else
-		totalCellNumber = portal->getCellTotalNumber();
-}
-
 void ShipObjectImplementation::createChildObjects() {
 	auto layout = getObjectTemplate()->getPortalLayout();
+
 	if (layout == nullptr)
 		return;
 
@@ -207,17 +181,68 @@ void ShipObjectImplementation::createChildObjects() {
 }
 
 void ShipObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool forceLoad) {
+	auto creo = player->asCreatureObject();
+
+	if (creo == nullptr) {
+		return;
+	}
+
+	for (int i = 0; i < containerObjects.size(); ++i) {
+		auto object = containerObjects.get(i);
+
+		if (object == nullptr) {
+			continue;
+		}
+
+		object->sendTo(creo, true);
+	}
+
 	for (int i = 0; i < cells.size(); ++i) {
-		CellObject* cell = cells.get(i);
+		auto cell = cells.get(i);
 
-		cell->sendTo(player, true);
+		if (cell == nullptr || !cell->isContainerLoaded()) {
+			continue;
+		}
+
+		auto perms = cell->getContainerPermissions();
+		if (perms == nullptr) {
+			continue;
+		}
+
+		cell->sendPermissionsTo(player->asCreatureObject(), true);
+
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			ManagedReference<SceneObject*> containerObject = cell->getContainerObject(j);
-
-			if (containerObject != nullptr && ((!containerObject->isCreatureObject()))) {
-				containerObject->sendTo(player, true, false);
-				info("Sent: " + containerObject->getObjectTemplate()->getTemplateFileName() + " " + String::valueOf(containerObject->getObjectID()), true);
+			auto object = cell->getContainerObject(j);
+			if (object == nullptr) {
+				continue;
 			}
+
+			object->sendTo(creo, true);
+		}
+	}
+}
+
+void ShipObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
+	VectorMap<String, ManagedReference<SceneObject* > > slotted;
+	getSlottedObjects(slotted);
+
+	SortedVector<uint64> objects(slotted.size(), slotted.size());
+	objects.setNoDuplicateInsertPlan();
+
+	for (int i = 0; i < slotted.size(); ++i) {
+		SceneObject* object = slotted.get(i);
+		if (object == nullptr || objects.put(object->getObjectID()) == -1) {
+			continue;
+		}
+
+		if (object == player && player->getMovementCounter() != 0) {
+			continue;
+		}
+
+		if (object->isInOctTree()) {
+			notifyInsert(object);
+		} else {
+			object->sendTo(player, true, false);
 		}
 	}
 }

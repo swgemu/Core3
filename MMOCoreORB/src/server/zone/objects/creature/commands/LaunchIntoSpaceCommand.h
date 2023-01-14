@@ -118,27 +118,31 @@ public:
 			if (spaceZone == nullptr)
 				return GENERALERROR;
 
-			uint64 parentID = ship->getObjectID();
-
-			// POB Ship
-			if (ship->getContainerObjectsSize() > 0) {
-				ManagedReference<CellObject*> cockpit = ship->getCell("cockpit");
-
-				if (cockpit != nullptr)
-					parentID = cockpit->getObjectID();
-			}
-
 			Vector3 position = planetMan->getJtlLaunchLocations();
 			Locker creoCross(ship, creature);
 
 			Locker zoneLock(spaceZone, ship);
+			ship->initializePosition(position.getX(), position.getZ(), position.getY());
 			spaceZone->transferObject(ship, -1, true);
 			zoneLock.release();
 
-			ship->initializePosition(position.getX(), position.getZ(), position.getY());
+			ship->setFaction(creature->getFaction());
+			ship->setFactionStatus(creature->getFactionStatus());
 
-			creature->switchZone(jtlZoneName, position.getX(), position.getZ(), position.getY(), ship->getObjectID());
-			creature->setState(CreatureState::PILOTINGSHIP);
+			uint64 parentID = ship->getObjectID();
+
+			// POB Ship
+			if (ship->getContainerObjectsSize() > 0) {
+				auto cockpit = ship->getCell(0);
+
+				if (cockpit != nullptr) {
+					parentID = cockpit->getObjectID();
+				}
+			} else {
+				creature->setState(CreatureState::PILOTINGSHIP);
+			}
+
+			creature->switchZone(jtlZoneName, position.getX(), position.getZ(), position.getY(), parentID);
 
 			creature->synchronizeCloseObjects();
 		}

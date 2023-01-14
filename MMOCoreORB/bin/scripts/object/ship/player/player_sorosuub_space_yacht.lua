@@ -55,6 +55,10 @@ object_ship_player_player_sorosuub_space_yacht = object_ship_player_shared_playe
 	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 31.42095, energy = 490.3307,},
 	booster = { name = "bst_generic", hitpoints = 19.26239, armor = 19.92333, energy = 97.1871, acceleration = 19.26703, speed = 14.25545, energyUsage = 9.939795, rechargeRate = 4.928347,},
 	lots = 4,
+
+	childObjects = {
+		{ templateFile = "object/tangible/shipcontrol/pilot_chair.iff", x = 0.0, z = 0.4, y = 21.6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 0, containmentType = -1 },
+	}
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_sorosuub_space_yacht, "object/ship/player/player_sorosuub_space_yacht.iff")
