@@ -43,8 +43,12 @@ bool TreeEntryImplementation::containsPoint(float px, float py, float pz) {
 	Logger::console.info(true) << "TreeEntryImplementation::containsPoint";
 #endif
 
-	return ((((px - getPositionX()) * (px - getPositionX())) + ((py - getPositionY()) * (py - getPositionY()))
-			+ ((pz - getPositionZ()) * (pz - getPositionZ()))) <= radius * radius * radius );
+	float deltaX = px - getPositionX();
+	float deltaY = py - getPositionY();
+	float deltaZ = pz - getPositionZ();
+	int radiusSq = radius * radius;
+
+	return ((deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ)) <= radiusSq;
 }
 
 bool TreeEntryImplementation::isInSWArea(TreeNode *node) const {
