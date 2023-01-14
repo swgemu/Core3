@@ -8,6 +8,7 @@ package server.zone.objects.ship;
 import engine.log.Logger;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.ship.components.ShipComponent;
+import server.zone.objects.ship.events.ShipRecoveryEvent;
 include server.zone.objects.scene.SceneObject;
 include server.zone.objects.creature.CreatureObject;
 include server.zone.CloseObjectsVector;
@@ -21,6 +22,7 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
 include server.zone.objects.cell.CellObject;
 include system.util.VectorMap;
+include system.lang.ref.Reference;
 
 class ShipObject extends TangibleObject {
 
@@ -37,6 +39,9 @@ class ShipObject extends TangibleObject {
 
 	@dereferenced
 	protected VectorMap<unsigned int, CellObject> cells;
+
+	@dereferenced
+	protected transient Reference<ShipRecoveryEvent> shipRecoveryEvent;
 
 	protected int totalCellNumber;
 
@@ -363,6 +368,8 @@ class ShipObject extends TangibleObject {
 
 	public native void doRecovery(int latency);
 
+	public native void scheduleRecovery();
+
 	@dirty
 	@nativeStub
 	@local
@@ -414,6 +421,8 @@ class ShipObject extends TangibleObject {
 	@local
 	public void setCapacitorEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
 		capacitorEnergy.update(value, notifyClient, this, delta);
+
+		scheduleRecovery();
 	}
 
 	@local

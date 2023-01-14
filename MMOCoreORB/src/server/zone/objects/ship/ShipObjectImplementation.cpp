@@ -11,6 +11,7 @@
 #include "server/zone/managers/ship/ShipManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/events/ShipRecoveryEvent.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/components/ShipComponent.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -27,6 +28,10 @@
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
+
+	if (shipRecoveryEvent == nullptr) {
+		shipRecoveryEvent = new ShipRecoveryEvent(asShipObject());
+	}
 
 	TangibleObjectImplementation::initializeTransientMembers();
 }
@@ -503,6 +508,7 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 	for (const auto& entry : components) {
 		int slot = entry.getKey();
 		ShipComponent* component = entry.getValue();
+
 		switch (slot) {
 			case Components::SHIELD0:
 			case Components::SHIELD1:
@@ -517,11 +523,20 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 			{
 				float amount = getCapacitorRechargeRate() * dt;
 				float cur = getCapacitorEnergy();
-				setCapacitorEnergy(Math::min(cur+amount, getCapacitorMaxEnergy()), true);
+
+				setCapacitorEnergy(Math::min(cur + amount, getCapacitorMaxEnergy()), true);
 				break;
 			}
 		}
 	}
+
+	if (shipRecoveryEvent != nullptr && !shipRecoveryEvent->isScheduled() && (getCapacitorEnergy() < getCapacitorMaxEnergy()))
+		shipRecoveryEvent->schedule(1000);
+}
+
+void ShipObjectImplementation::scheduleRecovery() {
+	if (shipRecoveryEvent != nullptr && !shipRecoveryEvent->isScheduled())
+		shipRecoveryEvent->schedule(1000);
 }
 
 bool ShipObject::isShipObject() {
