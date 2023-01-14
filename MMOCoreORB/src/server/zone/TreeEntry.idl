@@ -136,11 +136,7 @@ class TreeEntry extends Observable {
 		float deltaY = y - coordinates.getPositionY();
 		float deltaZ = z - coordinates.getPositionZ();
 
-		//(if space change to rangecb)
-		if (obj.getNode().dividerZ != 0)
-			return Math.cbrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
-		else
-			return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+		return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 	}
 
 	@local

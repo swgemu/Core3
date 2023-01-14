@@ -57,7 +57,7 @@ TreeNode::TreeNode(float minx, float miny, float maxx, float maxy, TreeNode *par
 	minY = miny;
 	maxX = maxx;
 	maxY = maxy;
-	dividerZ = 0;
+	dividerZ = -1.f;
 
 	if (!validateNode() || minX > maxX || minY > maxY) {
 	StringBuffer msg;
@@ -73,7 +73,7 @@ TreeNode::~TreeNode() {
 }
 
 void TreeNode::addObject(TreeEntry *obj) {
-	/*if (dividerZ != 0 && OctTree::doLog())
+	/*if (dividerZ != -1 && OctTree::doLog())
 		Logger::console.info(true) << hex << "object [" << obj->getObjectID() <<  "] added to OctTree"
 		<< toStringData() << "\n";
 	else if (dividerZ == 0 && QuadTree::doLog())

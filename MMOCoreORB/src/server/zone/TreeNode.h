@@ -107,7 +107,7 @@ public:
 	void check();
 
 	bool validateNode() const {
-		if (dividerZ != 0) {
+		if (dividerZ != -1) {
 			if (minX > maxX || minY > maxY || minZ > maxZ) {
 				return false;
 			}

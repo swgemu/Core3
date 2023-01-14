@@ -91,6 +91,7 @@ void SpaceZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, 
 	Locker _locker(spaceZone);
 	bool zoneUnlocked = false;
 
+	/*
 	// in POB ship or spacestation?
 	if (parent != nullptr && parent->isCellObject()) {
 		SceneObject* rootParent = parent->getRootParent();
@@ -104,52 +105,60 @@ void SpaceZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, 
 		zoneUnlocked = true;
 	} else {
 		// Normal Ship
-		spaceZone->unlock();
-		zoneUnlocked = true;
-		try {
-			if (parent != nullptr && parent->isShipObject()) {
-				spaceZone->update(parent);
-				spaceZone->inRange(parent, ZoneServer::SPACEOBJECTRANGE);
+	*/
 
-			} else if (sceneObject->isShipObject()) {
-				spaceZone->update(sceneObject);
-				spaceZone->inRange(sceneObject, ZoneServer::SPACEOBJECTRANGE);
-			}
-		} catch (Exception& e) {
-			info("error", true);
-			sceneObject->error(e.getMessage());
-			e.printStackTrace();
-		}
-	}
+		/*if (parent != nullptr && parent->isShipObject()) {
+			spaceZone->update(parent);
+			spaceZone->inRange(parent, ZoneServer::SPACEOBJECTRANGE);
+		} else */
 
 	try {
-		/*
-		bool isInvis = false;
+		if (sceneObject->isShipObject()) {
+			spaceZone->update(sceneObject);
+			spaceZone->inRange(sceneObject, ZoneServer::SPACEOBJECTRANGE);
 
-		TangibleObject* tano = sceneObject->asTangibleObject();
+			ShipObject* ship = sceneObject->asShipObject();
 
-		if (tano != nullptr) {
-			spaceZone->updateActiveAreas(tano);
+			if (ship != nullptr) {
+				SceneObject* pilot = nullptr;
 
-			if (tano->isInvisible())
-				isInvis = true;
+				if (ship->getPilotChair().get() != nullptr) {
+					SceneObject* pilotChair = ship->getPilotChair().get();
+
+					if (pilotChair != nullptr)
+						pilot = pilotChair->getSlottedObject("ship_pilot_pob");
+				} else {
+					pilot = sceneObject->getSlottedObject("ship_pilot");
+				}
+
+				if (pilot != nullptr) {
+					spaceZone->update(pilot);
+					spaceZone->inRange(pilot, ZoneServer::SPACEOBJECTRANGE);
+				}
+			}
 		}
 
-		if (!isInvis && sendPackets && (parent == nullptr || (!parent->isVehicleObject() && !parent->isMount()))) {
-			if (lightUpdate) {
-				LightUpdateTransformMessage* message = new LightUpdateTransformMessage(sceneObject);
-				sceneObject->broadcastMessage(message, false, true);
-			} else {
-				UpdateTransformMessage* message = new UpdateTransformMessage(sceneObject);
-				sceneObject->broadcastMessage(message, false, true);
-			}
-		}*/
+		spaceZone->unlock();
+		zoneUnlocked = true;
 
 		notifySelfPositionUpdate(sceneObject);
 	} catch (Exception& e) {
+		info("error", true);
 		sceneObject->error(e.getMessage());
 		e.printStackTrace();
 	}
+
+	/*
+	bool isInvis = false;
+
+	TangibleObject* tano = sceneObject->asTangibleObject();
+
+	if (tano != nullptr) {
+		spaceZone->updateActiveAreas(tano);
+
+		if (tano->isInvisible())
+			isInvis = true;
+	}*/
 
 	if (zoneUnlocked)
 		spaceZone->wlock();
