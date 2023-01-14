@@ -10,10 +10,19 @@ PilotSeatMenuComponent = {}
 
 function PilotSeatMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
 	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
-	menuResponse:addRadialMenuItem(120, 3, "@space/space_interaction:pilot_ship") -- Search
+	menuResponse:addRadialMenuItem(120, 3, "@space/space_interaction:pilot_ship")
 end
 
 function PilotSeatMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, selectedID)
-	SceneObject(pContainer):transferObject(pPlayer, 15, 1)
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
+		return
+	end
+
+	if (selectedID == 120) then
+		CreatureObject(pPlayer):setState(PILOTINGPOBSHIP)
+
+		SceneObject(pContainer):transferObject(pPlayer, 15, 1)
+	end
+
 	return 0
 end

@@ -43,6 +43,9 @@ class ShipObject extends TangibleObject {
 	@weakReference
 	protected SceneObject owner;
 
+	@weakReference
+	protected SceneObject pilotChair;
+
 	@dereferenced
 	protected VectorMap<unsigned int, ShipComponent> components;
 
@@ -1042,6 +1045,15 @@ class ShipObject extends TangibleObject {
 
 	public void setOwner(SceneObject obj) {
 		owner = obj;
+	}
+
+	@weakReference
+	public SceneObject getPilotChair() {
+		return pilotChair;
+	}
+
+	public void setPilotChair(SceneObject obj) {
+		pilotChair = obj;
 	}
 
 	public void setComponentTargetable(int slot, boolean targetable) {

@@ -18,6 +18,7 @@ void SpaceZoneComponent::notifyInsertToZone(SceneObject* sceneObject, SpaceZone*
 
 	if (sceneObject->getGameObjectType() != SceneObjectType::PLAYEROBJECT)
 		sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
+
 	insertChildObjectsToZone(sceneObject, newSpaceZone);
 }
 
@@ -25,8 +26,8 @@ void SpaceZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Spac
 	SortedVector<ManagedReference<SceneObject*> >* childObjects = sceneObject->getChildObjects();
 
 	for (int i = 0; i < childObjects->size(); ++i) {
-
 		ManagedReference<SceneObject*> outdoorChild = childObjects->get(i);
+
 		if (outdoorChild == nullptr)
 			continue;
 
@@ -254,7 +255,7 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	ManagedReference<SceneObject*> newParent = sceneObject->getZoneServer()->getObject(parentID);
 
-	if (newParent == nullptr || (!newParent->isShipObject() && !newParent->isCellObject())) {
+	if (newParent == nullptr || (!newParent->isShipObject() && !newParent->isCellObject() && !(newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR))) {
 		error() << "SpaceZoneComponent::switchZone new parent is a nullptr or is not a ship or cell object.";
 		return;
 	}
@@ -267,14 +268,13 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	sceneObject->destroyObjectFromWorld(false);
 
-	/*
 	if (toggleInvisibility) {
 		TangibleObject* tano = sceneObject->asTangibleObject();
 
 		if (tano != nullptr) {
 			tano->setInvisible(!tano->isInvisible());
 		}
-	}*/
+	}
 
 	Locker locker(newZone);
 
@@ -289,15 +289,23 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 			newParent->sendTo(sceneObject, true);
 
 			//info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
+		} if (newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR) {
+			newParent->transferObject(sceneObject, 15, true);
+			sceneObject->setDirection(*newParent->getDirection());
+
+			SceneObject* rootParent = newParent->getRootParent();
+
+			if (rootParent != nullptr) {
+				rootParent->sendTo(sceneObject, true);;
+			}
+
+			//info(true) << "SpaceZoneComponent::switchZone object transferred into POB ship with new parent: " << newParent->getDisplayedName();
 		} else if (newParent->isCellObject()) {
-
-			sceneObject->initializePosition(13,0,13);
-			sceneObject->setDirection(1,0,0,0);
-
+			// group members should have their locations set in launch
 			newParent->transferObject(sceneObject, -1, true);
 			sceneObject->sendToOwner(true);
 
-			//info(true) << "SpaceZoneComponent::switchZone object transferred into POB ship";
+			// info(true) << "SpaceZoneComponent::switchZone object transferred into ship CELL";
 		}
 	}
 
