@@ -566,7 +566,14 @@ void PlayerManagerImplementation::writePlayerLog(PlayerObject* ghost, const Stri
 	if (ghost == nullptr)
 		return;
 
-	Reference<CreatureObject*> creature = ghost->getParent().get()->asCreatureObject();
+	auto object = ghost->getParent().get();
+
+	if (object == nullptr) {
+		error() << "Ghost has null parent -- ID: " << ghost->getObjectID();
+		return;
+	}
+
+	Reference<CreatureObject*> creature = object->asCreatureObject();
 
 	if (creature == nullptr)
 		return;
