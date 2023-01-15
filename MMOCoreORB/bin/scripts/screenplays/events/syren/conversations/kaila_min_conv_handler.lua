@@ -10,9 +10,9 @@ function kailaMinConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 		local pGhost = creature:getPlayerObject()
 		if pGhost ~= nil then
 			local ghost = LuaPlayerObject(pGhost)
-			if ghost:isJournalQuestTaskComplete(Syren.act2.REBEL_CRC, Syren.act2.TALK_TO_KAILA) or
-				ghost:isJournalQuestTaskComplete(Syren.act2.IMPERIAL_CRC, Syren.act2.TALK_TO_KAILA) or
-				ghost:isJournalQuestTaskComplete(Syren.act2.NEUTRAL_CRC, Syren.act2.TALK_TO_KAILA) then
+			if ghost:isJournalQuestTaskComplete(Syren.act2.REBEL_CRC, Syren.act2.AMBUSH_COMPLETE) or
+				ghost:isJournalQuestTaskComplete(Syren.act2.IMPERIAL_CRC, Syren.act2.AMBUSH_COMPLETE) or
+				ghost:isJournalQuestTaskComplete(Syren.act2.NEUTRAL_CRC, Syren.act2.AMBUSH_COMPLETE) then
 				return convoTemplate:getScreen("start_ambushed")
 			elseif ghost:isJournalQuestTaskActive(Syren.act2.REBEL_CRC, Syren.act2.TALK_TO_KAILA) or
 				ghost:isJournalQuestTaskActive(Syren.act2.IMPERIAL_CRC, Syren.act2.TALK_TO_KAILA) or
