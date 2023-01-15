@@ -219,13 +219,12 @@ function SecretsOfTheSyren:notifyDefeatedTarget(pVictim, pAttacker)
 	end
 
 	local victimID = CreatureObject(pVictim):getObjectID()
-	local attackerID = CreatureObject(pAttacker):getObjectID()
 	local npcNo = readData(victimID .. ":npcNo")
 	local playerID = readData(victimID .. ":playerID")
 
 	if npcNo ~= 0 and playerID ~= 0 then
 		writeData(playerID .. ":ambushNpc" .. npcNo, 0)
-		self:allAmbushNpcsKilled(attackerID)
+		self:allAmbushNpcsKilled(playerID)
 	end
 
 	return 1
