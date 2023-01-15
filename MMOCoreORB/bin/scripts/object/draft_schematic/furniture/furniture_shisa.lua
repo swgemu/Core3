@@ -50,6 +50,7 @@ object_draft_schematic_furniture_furniture_shisa = object_draft_schematic_furnit
     complexity = 18,
     size = 1,
     factoryCrateType = "object/factory/factory_crate_furniture.iff",
+    factoryCrateSize = 0,
 
     xpType = "crafting_spice",
     xp = 340,
