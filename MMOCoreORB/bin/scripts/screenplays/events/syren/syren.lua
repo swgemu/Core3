@@ -150,6 +150,7 @@ function SecretsOfTheSyren:notifyEnteredQuestArea(pActiveArea, pPlayer)
 			elseif taskIndex == Syren.act2.GO_TO_BASE and self:act2(questCrc)  then
 				ghost:completeJournalQuestTask(questCrc, Syren.act2.GO_TO_BASE, true)
 				ghost:activateJournalQuestTask(questCrc, Syren.act2.TALK_TO_TOVAR, true)
+				self:removeWaypoint(pPlayer, ghost)
 			end
 		end
 	end
@@ -414,12 +415,18 @@ function SecretsOfTheSyren:giveItems(pPlayer, taskIndex, questCrc)
 		creature:sendSystemMessage("Tovar Blackmoor gave you 5000 credits and a Shisha schematic.")
 		local faction = creature:getFaction()
 		if faction == FACTIONREBEL or faction == FACTIONIMPERIAL then
+			local awardFaction
+			if faction == FACTIONREBEL then
+				awardFaction = "rebel"
+			elseif faction == FACTIONIMPERIAL then
+				awardFaction = "imperial"
+			end
 			local pGhost = creature:getPlayerObject()
 			if pGhost == nil then
 				printLuaError("Unable to give faction points to player " .. creature:getObjectID())
 			else
 				local ghost = LuaPlayerObject(pGhost)
-				ghost:increaseFactionStanding(creature:getFaction(), 100)
+				ghost:increaseFactionStanding(awardFaction, 100)
 			end
 		end
 	end
@@ -435,12 +442,18 @@ function SecretsOfTheSyren:returnToContactWaypoint(questCrc, pPlayer, ghost)
 	end
 end
 
-function SecretsOfTheSyren:updateWaypoint(pPlayer, ghost, planet, text, x, y)
+function SecretsOfTheSyren:removeWaypoint(pPlayer, ghost)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local previousWaypointID = readData(playerID .. ":syrent:waypointID")
 	if previousWaypointID ~= nil then
 		ghost:removeWaypoint(previousWaypointID, true)
 	end
+end
+
+function SecretsOfTheSyren:updateWaypoint(pPlayer, ghost, planet, text, x, y)
+	self:removeWaypoint(pPlayer, ghost)
+
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local waypointID = ghost:addWaypoint(planet, text, "", x, y, WAYPOINTPURPLE, true, true, WAYPOINTQUESTTASK, 0)
 	writeData(playerID .. ":syrent:waypointID", waypointID)
 end
