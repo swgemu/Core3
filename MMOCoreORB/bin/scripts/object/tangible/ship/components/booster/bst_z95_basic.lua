@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_z95_basic = object_tangible_ship_com
 	speed = 15.0,
 	maxEnergy = 1009.0,
 	rechargeRate = 29.0,
-	boosterDrain = 105.0,
+	energyConsumptionRate = 105.0,
 	boosterAccel = 28.0,
 }
 

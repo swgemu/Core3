@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_sds_enhanced_imperial_2 = object_tan
 	speed = 32.0,
 	maxEnergy = 1659.0,
 	rechargeRate = 51.0,
-	boosterDrain = 169.0,
+	energyConsumptionRate = 169.0,
 	boosterAccel = 36.0,
 }
 

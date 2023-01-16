@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_koensayr_elite = object_tangible_shi
 	speed = 24.0,
 	maxEnergy = 1465.0,
 	rechargeRate = 44.0,
-	boosterDrain = 155.0,
+	energyConsumptionRate = 155.0,
 	boosterAccel = 33.0,
 }
 

@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_incom_nkj31 = object_tangible_ship_c
 	speed = 22.0,
 	maxEnergy = 1004.0,
 	rechargeRate = 25.0,
-	boosterDrain = 104.0,
+	energyConsumptionRate = 104.0,
 	boosterAccel = 26.0,
 }
 

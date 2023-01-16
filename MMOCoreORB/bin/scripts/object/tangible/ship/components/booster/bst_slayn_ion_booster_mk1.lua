@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_slayn_ion_booster_mk1 = object_tangi
 	speed = 16.0,
 	maxEnergy = 1008.0,
 	rechargeRate = 29.0,
-	boosterDrain = 102.0,
+	energyConsumptionRate = 102.0,
 	boosterAccel = 30.0,
 }
 

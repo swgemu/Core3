@@ -6,6 +6,7 @@
 package server.zone.objects.ship;
 
 import engine.log.Logger;
+import system.lang.Time;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.ship.components.ShipComponent;
 import server.zone.objects.ship.events.ShipRecoveryEvent;
@@ -25,7 +26,6 @@ include system.util.VectorMap;
 include system.lang.ref.Reference;
 
 class ShipObject extends TangibleObject {
-
 	public static final int WEAPON_COMPONENT_START = 12;
 
 	protected transient boolean hyperspacing;
@@ -60,10 +60,13 @@ class ShipObject extends TangibleObject {
 
 	protected string parkingLocation;
 
+	@dereferenced
+	protected Time boostTimer;
+
 	@preLocked
 	public native void createChildObjects();
 
-	//ShipObjectMessage6 variables
+	// ShipObjectMessage6 variables
 	@dereferenced
 	protected string shipName;
 
@@ -316,7 +319,6 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected DeltaVectorMap<unsigned int, unsigned int> componentAmmoClass;
 
-
 	// 3:15
 	@dereferenced
 	protected DeltaVectorMap<unsigned int, float> componentMaxArmor;
@@ -370,6 +372,8 @@ class ShipObject extends TangibleObject {
 
 	public native void scheduleRecovery();
 
+	public native void cancelRecovery();
+
 	@dirty
 	@nativeStub
 	@local
@@ -421,8 +425,6 @@ class ShipObject extends TangibleObject {
 	@local
 	public void setCapacitorEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
 		capacitorEnergy.update(value, notifyClient, this, delta);
-
-		scheduleRecovery();
 	}
 
 	@local
@@ -537,7 +539,8 @@ class ShipObject extends TangibleObject {
 	}
 
 	@local
-	public void setBoosterConsumptionRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+	public void setBoosterEnergyConsumptionRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		info(true) << "ShipObjectImplementation::setBoosterEnergyConsumptionRate -- called";
 		boosterConsumptionRate.update(value, notifyClient, this, delta);
 	}
 
@@ -608,133 +611,177 @@ class ShipObject extends TangibleObject {
 
 	@local
 	public void setEfficiency(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(2); }
+		if (message != null) {
+			message.startUpdate(2);
+		}
 		componentEfficiency.set(slot, value, message);
 	}
 
 	@local
 	public void setEnergyEfficiency(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(3); }
+		if (message != null) {
+			message.startUpdate(3);
+		}
 		componentEnergyEfficiency.set(slot, value, message);
 	}
 
 	@local
 	public void setEnergyCost(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(4); }
+		if (message != null) {
+			message.startUpdate(4);
+		}
 		componentEnergyCost.set(slot, value, message);
 	}
 
 	@local
 	public void setComponentMass(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(5); }
+		if (message != null) {
+			message.startUpdate(5);
+		}
 		componentMass.set(slot, value, message);
 	}
 
 	@local
 	public void setComponentName(int slot, @dereferenced unicode value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(6); }
+		if (message != null) {
+			message.startUpdate(6);
+		}
 		componentNames.set(slot, value, message);
 	}
 
 	@local
 	public void setComponentCreator(int slot, unsigned long value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(7); }
+		if (message != null) {
+			message.startUpdate(7);
+		}
 		componentCreator.set(slot, value, message);
 	}
 
 	@local
 	public void setMaxDamage(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(8); }
+		if (message != null) {
+			message.startUpdate(8);
+		}
 		componentMaxDamage.set(slot, value, message);
 	}
 
 	@local
 	public void setMinDamage(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(9); }
+		if (message != null) {
+			message.startUpdate(9);
+		}
 		componentMinDamage.set(slot, value, message);
 	}
 	@local
 	public void setShieldEffectiveness(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(10); }
+		if (message != null) {
+			message.startUpdate(10);
+		}
 		componentShieldEffectiveness.set(slot, value, message);
 	}
 
 	@local
 	public void setArmorEffectiveness(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(11); }
+		if (message != null) {
+			message.startUpdate(11);
+		}
 		componentArmorEffectiveness.set(slot, value, message);
 	}
 
 	@local
 	public void setEnergyPerShot(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(12); }
+		if (message != null) {
+			message.startUpdate(12);
+		}
 		componentEnergyPerShot.set(slot, value, message);
 	}
 
 	@local
 	public void setRefireRate(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(13); }
+		if (message != null) {
+			message.startUpdate(13);
+		}
 		componentRefire.set(slot, value, message);
 	}
 
 	@local
 	public void setRefireEfficiency(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(4); }
+		if (message != null) {
+			message.startUpdate(4);
+		}
 		componentRefireEfficiency.set(slot, value, message);
 	}
 
 	@local
 	public void setCurrentAmmo(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(14); }
+		if (message != null) {
+			message.startUpdate(14);
+		}
 		componentAmmoCurrent.set(slot, value, message);
 	}
 
 	@local
 	public void setMaxAmmo(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(15); }
+		if (message != null) {
+			message.startUpdate(15);
+		}
 		componentAmmoMax.set(slot, value, message);
 	}
 
 	@local
 	public void setAmmoClass(int slot, unsigned int value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(16); }
+		if (message != null) {
+			message.startUpdate(16);
+		}
 		componentAmmoClass.set(slot, value, message);
 	}
 
 	@local
 	public void setComponentMaxArmor(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(15); }
+		if (message != null) {
+			message.startUpdate(15);
+		}
 		componentMaxArmor.set(slot, value, message);
 	}
 
 	@local
 	public void setComponentArmor(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(16); }
+		if (message != null) {
+			message.startUpdate(16);
+		}
 		componentCurrentArmor.set(slot, value, message);
 	}
 
 	@local
 	public void setComponentHitpoints(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(17); }
+		if (message != null) {
+			message.startUpdate(17);
+		}
 		componentCurrentHitpoints.set(slot, value, message);
 	}
 
 	@local
 	public void setComponentMaxHitpoints(int slot, float value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(18); }
+		if (message != null) {
+			message.startUpdate(18);
+		}
 		componentMaxHitpoints.set(slot, value, message);
 	}
 
 	@local
 	public void setComponentOptions(int slot, unsigned int value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(19); }
+		if (message != null) {
+			message.startUpdate(19);
+		}
+
 		componentOptions.set(slot, value, message);
 	}
 
-
 	@local
 	public void setComponentCRC(int slot, unsigned int value, DeltaMessage message = null) {
-		if (message != null) { message.startUpdate(15); }
+		if (message != null) {
+			message.startUpdate(15);
+		}
 		shipComponents.set(slot, value, message);
 	}
 
@@ -837,7 +884,6 @@ class ShipObject extends TangibleObject {
 	public DeltaVectorMap<unsigned int, unsigned int> getAmmoClassMap() {
 		return componentAmmoClass;
 	}
-
 
 	// 3:15
 	@local
@@ -1035,6 +1081,10 @@ class ShipObject extends TangibleObject {
 		return storedLocation;
 	}
 
+	public float getComponentEnergyEfficiency(int slot) {
+		return componentEnergyEfficiency.get(slot);
+	}
+
 	public void setStoredLocation(string location) {
 		storedLocation = location;
 	}
@@ -1090,6 +1140,11 @@ class ShipObject extends TangibleObject {
 		return hyperspacing;
 	}
 
+	@dirty
+	public boolean isBoosterActive() {
+		return componentOptions.get(7);
+	}
+
 	public void setHyperspacing(boolean state) {
 		hyperspacing = state;
 	}
@@ -1103,7 +1158,18 @@ class ShipObject extends TangibleObject {
 	}
 
 	@dirty
-	public SceneObject getComponentObject(unsigned int slot) {
+	public ShipComponent getComponentObject(unsigned int slot) {
 		return components.get(slot);
 	}
+
+	@dirty
+	public boolean isReadyToBoost() {
+		return boostTimer.isPast();
+	}
+
+	public native void addComponentFlag(unsigned int slot, unsigned int flag, boolean notify = true);
+
+	public native void removeComponentFlag(unsigned int slot, unsigned int flag, boolean notify = true);
+
+	public native void restartBooster();
 }

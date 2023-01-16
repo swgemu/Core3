@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_mission_reward_rebel_novaldex_hypern
 	speed = 35.0,
 	maxEnergy = 1987.0,
 	rechargeRate = 53.0,
-	boosterDrain = 206.0,
+	energyConsumptionRate = 206.0,
 	boosterAccel = 37.0,
 }
 

@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_mission_reward_rebel_qualdex_halcyon
 	speed = 31.0,
 	maxEnergy = 2397.0,
 	rechargeRate = 62.0,
-	boosterDrain = 241.0,
+	energyConsumptionRate = 241.0,
 	boosterAccel = 49.0,
 }
 

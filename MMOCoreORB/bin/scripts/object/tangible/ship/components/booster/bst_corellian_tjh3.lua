@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_corellian_tjh3 = object_tangible_shi
 	speed = 22.0,
 	maxEnergy = 1002.0,
 	rechargeRate = 28.0,
-	boosterDrain = 102.0,
+	energyConsumptionRate = 102.0,
 	boosterAccel = 22.0,
 }
 

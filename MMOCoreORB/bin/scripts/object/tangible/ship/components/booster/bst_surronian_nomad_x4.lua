@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_surronian_nomad_x4 = object_tangible
 	speed = 25.0,
 	maxEnergy = 1506.0,
 	rechargeRate = 45.0,
-	boosterDrain = 160.0,
+	energyConsumptionRate = 160.0,
 	boosterAccel = 34.0,
 }
 

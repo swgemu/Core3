@@ -27,7 +27,7 @@ class ShipComponent extends Component {
 	protected float efficiency;
 	protected float collisionRange;
 	protected string componentDataName;
-	protected int flags;
+	protected unsigned int componentBitmask;
 	protected int slot;
 
 	public ShipComponent() {
@@ -35,9 +35,11 @@ class ShipComponent extends Component {
 		hitpoints = 100.0f;
 		armor = 100.0f;
 		energyCost = 100.0f;
-		flags = 0.0f;
+		componentBitmask = 0;
 		slot = -1;
 		collisionRange = 0.0f;
+		energyEfficiency = 1.0f;
+		efficiency = 1.0f;
 	}
 
 	@local
@@ -102,7 +104,7 @@ class ShipComponent extends Component {
 	}
 
 	public float getEnergyEfficiency() {
-		return efficiency;
+		return energyEfficiency;
 	}
 
 	public float getMass() {

@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_kse_bti1 = object_tangible_ship_comp
 	speed = 18.0,
 	maxEnergy = 1105.0,
 	rechargeRate = 31.0,
-	boosterDrain = 110.0,
+	energyConsumptionRate = 110.0,
 	boosterAccel = 24.0,
 }
 

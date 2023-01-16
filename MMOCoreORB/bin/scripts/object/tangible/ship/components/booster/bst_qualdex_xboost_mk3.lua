@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_qualdex_xboost_mk3 = object_tangible
 	speed = 27.0,
 	maxEnergy = 1217.0,
 	rechargeRate = 32.0,
-	boosterDrain = 123.0,
+	energyConsumptionRate = 123.0,
 	boosterAccel = 29.0,
 }
 

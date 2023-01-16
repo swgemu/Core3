@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_kessel_imperial_sds_experimental_b7 
 	speed = 41.0,
 	maxEnergy = 2200.0,
 	rechargeRate = 55.0,
-	boosterDrain = 224.0,
+	energyConsumptionRate = 224.0,
 	boosterAccel = 50.0,
 }
 

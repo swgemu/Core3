@@ -80,7 +80,7 @@ protected:
 	float shipYaw;
 	float shipRoll;
 	float boosterAcceleration;
-	float boosterDrain;
+	float energyConsumptionRate;
 	float droidCommandSpeed;
 	float weaponShieldEffectiveness;
 	float weaponArmorEffectiveness;
@@ -281,8 +281,8 @@ public:
 		return shipRoll;
 	}
 
-	inline float getBoosterDrain() const {
-		return boosterDrain;
+	inline float getBoosterEnergyConsumptionRate() const {
+		return energyConsumptionRate;
 	}
 
 	inline float getBoosterAcceleration() const {

@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_corellian_advanced_thrust_enhancer =
 	speed = 25.0,
 	maxEnergy = 1339.0,
 	rechargeRate = 38.0,
-	boosterDrain = 141.0,
+	energyConsumptionRate = 141.0,
 	boosterAccel = 33.0,
 }
 
