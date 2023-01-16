@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_koensayr_racer_mk2 = object_tangible
 	speed = 24.0,
 	maxEnergy = 1334.0,
 	rechargeRate = 36.0,
-	boosterDrain = 141.0,
+	energyConsumptionRate = 141.0,
 	boosterAccel = 30.0,
 }
 

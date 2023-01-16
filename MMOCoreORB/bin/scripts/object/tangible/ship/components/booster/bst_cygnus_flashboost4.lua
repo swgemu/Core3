@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_cygnus_flashboost4 = object_tangible
 	speed = 22.0,
 	maxEnergy = 1108.0,
 	rechargeRate = 32.0,
-	boosterDrain = 117.0,
+	energyConsumptionRate = 117.0,
 	boosterAccel = 27.0,
 }
 

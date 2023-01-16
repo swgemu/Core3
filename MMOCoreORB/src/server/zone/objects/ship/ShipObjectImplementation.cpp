@@ -5,6 +5,7 @@
 #include "system/lang/UnicodeString.h"
 
 #include "ComponentSlots.h"
+#include "ShipComponentFlag.h"
 #include "server/zone/Zone.h"
 #include "server/zone/SpaceZone.h"
 #include "server/zone/ZoneClientSession.h"
@@ -321,21 +322,25 @@ ShipObject* ShipObject::asShipObject() {
 
 void ShipObjectImplementation::install(CreatureObject* owner, SceneObject* sceno, int slot, bool notifyClient) {
 	ManagedReference<ShipComponent*> shipComponent = dynamic_cast<ShipComponent*>(sceno);
+
 	if (shipComponent == nullptr)
 		return;
 
 	//info("DataName: " + shipComponent->getComponentDataName() + " hash: " + String::hexvalueOf((int64)shipComponent->getComponentDataName().hashCode()), true);
 	const ShipComponentData *component = ShipManager::instance()->getShipComponent(shipComponent->getComponentDataName());
+
 	if (component == nullptr) {
 		fatal("nullptr ShipComponentData");
 	}
 
 	DeltaMessage *message = notifyClient ? new DeltaMessage(getObjectID(), 'SHIP', 6) : nullptr;
 	UnicodeString string = UnicodeString(component->getName());
-	//info("Loading: " + component->getName(), true);
+
 	components.put(slot, cast<ShipComponent*>(sceno));
+
 	setComponentCRC(slot, component->getName().hashCode(), message);
 	setComponentName(slot, string, message);
+
 	if (message != nullptr) {
 		message->close();
 		owner->sendMessage(message);
@@ -503,40 +508,113 @@ void ShipObjectImplementation::damageArmor(float damage, DeltaMessage* delta) {
 }
 
 void ShipObjectImplementation::doRecovery(int mselapsed) {
-	float dt = mselapsed/1000.0f;
+	float deltaTime = mselapsed / 1000.0f;
+	bool reschedule = false;
+
+	ShipObject* ship = _this.getReferenceUnsafeStaticCast();
+
+	if (ship == nullptr)
+		return;
+
+	// Ship is locked
+	Locker lock(ship);
+
+	SceneObject* strongOwner = owner.get();
 
 	for (const auto& entry : components) {
 		int slot = entry.getKey();
 		ShipComponent* component = entry.getValue();
 
+		if (component == nullptr)
+			continue;
+
+		// Component crosslocked to ship
+		Locker clock(component, ship);
+
 		switch (slot) {
 			case Components::SHIELD0:
 			case Components::SHIELD1:
 				break;
-			case Components::REACTOR:
-			{
+			case Components::REACTOR: {
 				break;
 			}
 			case Components::ENGINE:
 				break;
-			case Components::CAPACITOR:
-			{
-				float amount = getCapacitorRechargeRate() * dt;
-				float cur = getCapacitorEnergy();
+			case Components::CAPACITOR: {
+				float amount = getCapacitorRechargeRate() * deltaTime;
+				float currentEnergy = getCapacitorEnergy();
+				float capMax = getCapacitorMaxEnergy();
 
-				setCapacitorEnergy(Math::min(cur + amount, getCapacitorMaxEnergy()), true);
+				setCapacitorEnergy(Math::min(currentEnergy + amount, capMax), true);
+
+				if (getCapacitorEnergy() < capMax) {
+					reschedule = true;
+				}
+
 				break;
+			}
+			case Components::BOOSTER: {
+				if (isBoosterActive()) {
+					int time = boostTimer.miliDifference() / 1000.f;
+
+					// TODO: Fix these values when component data loading is functional
+					float compEfficiency = 1.0f; //getComponentEnergyEfficiency(Components::BOOSTER);
+					float rate = 150.0f; //getBoosterConsumptionRate();
+
+					float consumedAmount = (rate * time) * compEfficiency;
+					float currentEnergy = Math::max(0.0f, getBoosterEnergy() - consumedAmount);
+
+					//info(true) << "Time: " << time << " Consumed Amount: " << consumedAmount << " Current Energy: " << currentEnergy << " Consumption Rate: " << rate << " Component Efficiency = " << compEfficiency;
+
+					if (currentEnergy > 0) {
+						setBoosterEnergy(currentEnergy, true);
+					} else {
+						ship->removeComponentFlag(Components::BOOSTER, ShipComponentFlag::DISABLED, true);
+
+						if (strongOwner != nullptr && strongOwner->isCreatureObject()) {
+							StringIdChatParameter param;
+							param.setStringId("@space/space_interaction:booster_energy_depleted");
+							strongOwner->asCreatureObject()->sendSystemMessage(param);
+						}
+
+						ship->restartBooster();
+					}
+
+					reschedule = true;
+				} else {
+					float amount = getBoosterRechargeRate() * deltaTime;
+					float cur = getBoosterEnergy();
+					float boosterMax = getBoosterMaxEnergy();
+
+					setBoosterEnergy(Math::min(cur + amount, boosterMax), true);
+
+					if (getBoosterEnergy() < boosterMax) {
+						reschedule = true;
+					}
+				}
 			}
 		}
 	}
 
-	if (shipRecoveryEvent != nullptr && !shipRecoveryEvent->isScheduled() && (getCapacitorEnergy() < getCapacitorMaxEnergy()))
-		shipRecoveryEvent->schedule(1000);
+	if (reschedule) {
+		scheduleRecovery();
+	} else {
+		cancelRecovery();
+	}
 }
 
 void ShipObjectImplementation::scheduleRecovery() {
+	Locker lock(_this.getReferenceUnsafeStaticCast());
+
 	if (shipRecoveryEvent != nullptr && !shipRecoveryEvent->isScheduled())
 		shipRecoveryEvent->schedule(1000);
+}
+
+void ShipObjectImplementation::cancelRecovery() {
+	Locker lock(_this.getReferenceUnsafeStaticCast());
+
+	if (shipRecoveryEvent != nullptr && shipRecoveryEvent->isScheduled())
+		shipRecoveryEvent->cancel();
 }
 
 bool ShipObject::isShipObject() {
@@ -545,4 +623,63 @@ bool ShipObject::isShipObject() {
 
 bool ShipObjectImplementation::isShipObject() {
 	return true;
+}
+
+void ShipObjectImplementation::addComponentFlag(uint32 slot, uint32 bit, bool notifyClient) {
+	if (slot == -1)
+		return;
+
+	ShipComponent* component = getComponentObject(slot);
+
+	if (component == nullptr)
+		return;
+
+	Locker lock(component);
+
+	if (notifyClient) {
+		DeltaMessage* message = new DeltaMessage(getObjectID(), 'SHIP', 3);
+
+		setComponentOptions(slot, bit, message);
+		message->close();
+
+		broadcastMessage(message, true);
+	}
+}
+
+void ShipObjectImplementation::removeComponentFlag(uint32 slot, uint32 bit, bool notifyClient) {
+	if (slot == -1)
+		return;
+
+	ShipComponent* component = getComponentObject(slot);
+
+	if (component == nullptr)
+		return;
+
+	Locker lock(component);
+
+	if (notifyClient) {
+		DeltaMessage* message = new DeltaMessage(getObjectID(), 'SHIP', 3);
+
+		setComponentOptions(slot, 0, message);
+		message->close();
+
+		broadcastMessage(message, true);
+	}
+}
+
+void ShipObjectImplementation::restartBooster() {
+	float boosterMax = getBoosterMaxSpeed();
+	float deceleration = getShipDecelerationRate();
+	float boostTime = 0.0f;
+
+	if (deceleration > 0.0f) {
+		boostTime = boosterMax / deceleration;
+	}
+
+	boostTime = Math::clamp(2.0f, boostTime, 10.0f);
+
+	boostTimer.updateToCurrentTime();
+	boostTimer.addMiliTime(boostTime * 1000);
+
+	scheduleRecovery();
 }

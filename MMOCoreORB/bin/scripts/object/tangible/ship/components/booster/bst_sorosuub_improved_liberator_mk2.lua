@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_sorosuub_improved_liberator_mk2 = ob
 	speed = 34.0,
 	maxEnergy = 1655.0,
 	rechargeRate = 48.0,
-	boosterDrain = 172.0,
+	energyConsumptionRate = 172.0,
 	boosterAccel = 35.0,
 }
 

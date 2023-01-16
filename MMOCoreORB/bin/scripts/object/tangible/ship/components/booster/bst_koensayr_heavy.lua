@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_koensayr_heavy = object_tangible_shi
 	speed = 24.0,
 	maxEnergy = 1215.0,
 	rechargeRate = 39.0,
-	boosterDrain = 124.0,
+	energyConsumptionRate = 124.0,
 	boosterAccel = 33.0,
 }
 

@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_kessel_imperial_sfs_ultra_thrust = o
 	speed = 30.0,
 	maxEnergy = 1468.0,
 	rechargeRate = 38.0,
-	boosterDrain = 153.0,
+	energyConsumptionRate = 153.0,
 	boosterAccel = 39.0,
 }
 

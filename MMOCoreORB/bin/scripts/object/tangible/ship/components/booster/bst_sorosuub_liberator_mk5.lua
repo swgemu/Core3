@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_sorosuub_liberator_mk5 = object_tang
 	speed = 29.0,
 	maxEnergy = 1468.0,
 	rechargeRate = 41.0,
-	boosterDrain = 154.0,
+	energyConsumptionRate = 154.0,
 	boosterAccel = 39.0,
 }
 

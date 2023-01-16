@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_mission_reward_imperial_rss_ion_boos
 	speed = 25.0,
 	maxEnergy = 1986.0,
 	rechargeRate = 51.0,
-	boosterDrain = 205.0,
+	energyConsumptionRate = 205.0,
 	boosterAccel = 38.0,
 }
 

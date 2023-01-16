@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_incom_intimidator_mk4 = object_tangi
 	speed = 29.0,
 	maxEnergy = 1334.0,
 	rechargeRate = 40.0,
-	boosterDrain = 139.0,
+	energyConsumptionRate = 139.0,
 	boosterAccel = 35.0,
 }
 

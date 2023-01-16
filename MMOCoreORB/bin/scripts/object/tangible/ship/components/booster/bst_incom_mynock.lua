@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_incom_mynock = object_tangible_ship_
 	speed = 17.0,
 	maxEnergy = 1108.0,
 	rechargeRate = 33.0,
-	boosterDrain = 117.0,
+	energyConsumptionRate = 117.0,
 	boosterAccel = 32.0,
 }
 

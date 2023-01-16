@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_surronian_nomad_x8 = object_tangible
 	speed = 33.0,
 	maxEnergy = 1656.0,
 	rechargeRate = 45.0,
-	boosterDrain = 172.0,
+	energyConsumptionRate = 172.0,
 	boosterAccel = 42.0,
 }
 

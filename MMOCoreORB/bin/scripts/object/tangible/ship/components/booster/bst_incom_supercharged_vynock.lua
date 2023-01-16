@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_incom_supercharged_vynock = object_t
 	speed = 31.0,
 	maxEnergy = 1823.0,
 	rechargeRate = 51.0,
-	boosterDrain = 184.0,
+	energyConsumptionRate = 184.0,
 	boosterAccel = 40.0,
 }
 

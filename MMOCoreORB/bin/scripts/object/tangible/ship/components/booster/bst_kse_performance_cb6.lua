@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_kse_performance_cb6 = object_tangibl
 	speed = 32.0,
 	maxEnergy = 1501.0,
 	rechargeRate = 47.0,
-	boosterDrain = 156.0,
+	energyConsumptionRate = 156.0,
 	boosterAccel = 35.0,
 }
 

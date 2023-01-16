@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_kuat_military_mk4 = object_tangible_
 	speed = 36.0,
 	maxEnergy = 2204.0,
 	rechargeRate = 55.0,
-	boosterDrain = 225.0,
+	energyConsumptionRate = 225.0,
 	boosterAccel = 53.0,
 }
 

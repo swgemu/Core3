@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_incom_elite_sls_1 = object_tangible_
 	speed = 39.0,
 	maxEnergy = 2202.0,
 	rechargeRate = 55.0,
-	boosterDrain = 227.0,
+	energyConsumptionRate = 227.0,
 	boosterAccel = 47.0,
 }
 

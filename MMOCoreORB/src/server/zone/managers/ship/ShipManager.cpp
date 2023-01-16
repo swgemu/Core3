@@ -22,6 +22,7 @@
 #include "server/zone/ZoneServer.h"
 #include "templates/tangible/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/ComponentSlots.h"
+#include "server/zone/objects/ship/ShipComponentFlag.h"
 #include "server/zone/packets/ship/DestroyShipMessage.h"
 
 /*ShipManager::ShipManager() {
@@ -205,8 +206,8 @@ bool ShipManager::damageComponent(ShipObject* ship, float& damage, int closestSl
 
 	if (armor <= 0 && damage <= 0) {
 		int flags = ship->getComponentOptionsMap()->get(closestSlot);
-		if (!(flags & 0x08)) {
-			flags |= 0x08;
+
+		if (!(flags & ShipComponentFlag::DEMOLISHED)) {
 			ship->setComponentOptions(closestSlot, flags, delta);
 		}
 	}
@@ -451,6 +452,7 @@ ShipObject* ShipManager::generateShip(String templateName) {
 	ZoneServer* server = ServerCore::getZoneServer();
 
 	SharedShipObjectTemplate* tmpl = (SharedShipObjectTemplate*)ship->getObjectTemplate();
+
 	if (tmpl == nullptr)
 		return nullptr;
 
@@ -460,6 +462,7 @@ ShipObject* ShipManager::generateShip(String templateName) {
 
 	for (int i = 0; i < 20; i++) {
 		String k = components[i];
+
 		if (componentValues.contains(k)) {
 			const VectorMap<String, float> values = componentValues.get(k);
 			float hitpoints = values.get("hitpoints");
@@ -468,28 +471,35 @@ ShipObject* ShipManager::generateShip(String templateName) {
 			const ShipComponentData* componentData = getShipComponent(componentName);
 			const ShipChassisData::ComponentSlotData* slotData = data->getComponentSlotData(i);
 			const auto& hardpoints = slotData->getHardpoint(componentName);
+
 			float range = 0.0f;
+
 			if (hardpoints.size() > 0) {
 				const ShipChassisData::ComponentHardpoint* hardpoint = hardpoints.get(0);
 				range = hardpoint->getRange();
 			}
+
 			if (componentData == nullptr)
 				Logger::console.fatal("nullptr component data for " + componentName);
 
 			String templateName = componentData->getSharedObjectTemplate().replaceFirst("shared_", "");
 
-			// Logger::console.info("Attempting to load component: " + componentName, true);
+			//Logger::console.info("Attempting to load component: " + componentName, true);
+
 			if (componentName == "bdg_generic" || componentName == "hgr_generic") { // These aren't real components
 				ship->setComponentCRC(i, componentName.hashCode());
 				continue;
 			}
 
 			ManagedReference<ShipComponent*> shipComponent = server->createObject(templateName.hashCode()).castTo<ShipComponent*>();
+
 			if (shipComponent == nullptr) {
 				ship->error("Failed to create component " + componentName);
 				continue;
 			}
+
 			Locker locker(shipComponent);
+
 			if (hitpoints > 0) {
 				shipComponent->setHitpointsMax(hitpoints);
 				shipComponent->setHitpoints(hitpoints);
@@ -499,6 +509,7 @@ ShipObject* ShipManager::generateShip(String templateName) {
 				shipComponent->setArmorMax(armor);
 				shipComponent->setArmor(armor);
 			}
+
 			shipComponent->setComponentDataName(componentData->getName());
 			shipComponent->setCollisionRange(range);
 			// shipComponent->setName(componentName);
@@ -553,17 +564,26 @@ ShipObject* ShipManager::generateShip(String templateName) {
 				break;
 			}
 			case Components::BOOSTER: {
-				ShipBoosterComponent* booster = shipComponent.castTo<ShipBoosterComponent*>();
 				float rechargeRate = values.get("rechargeRate");
 				float energy = values.get("energy");
 				float accel = values.get("acceleration");
 				float decel = values.get("deceleration");
 				float speed = values.get("speed");
-				booster->setBoosterRechargeRate(rechargeRate);
-				booster->setBoosterEnergy(energy);
-				booster->setBoosterAcceleration(accel);
-				booster->setBoosterSpeed(speed);
-				// TODO: FIXME TOO
+				float usage = values.get("energyUsage");
+				float consumptionRate = values.get("energyConsumptionRate");
+
+				//info(true) << "ShipManaged::generate ship -- CALLED for component " << k << " \n\n\n - consumption rate = " << consumptionRate << " Energy Usage = " << usage << "\n\n\n";
+
+				ShipBoosterComponent* booster = shipComponent.castTo<ShipBoosterComponent*>();
+
+				if (booster != nullptr) {
+					booster->setBoosterRechargeRate(rechargeRate);
+					booster->setBoosterEnergy(energy);
+					booster->setEnergyEfficiency(usage);
+					booster->setBoosterAcceleration(accel);
+					booster->setBoosterSpeed(speed);
+					booster->setBoosterEnergyConsumptionRate(consumptionRate);
+				}
 				break;
 			}
 			default: {

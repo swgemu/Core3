@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_kessel_rebel_incom_quicksilver = obj
 	speed = 29.0,
 	maxEnergy = 1466.0,
 	rechargeRate = 40.0,
-	boosterDrain = 152.0,
+	energyConsumptionRate = 152.0,
 	boosterAccel = 34.0,
 }
 

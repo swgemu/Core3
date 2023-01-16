@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_novaldex_quasar = object_tangible_sh
 	speed = 22.0,
 	maxEnergy = 1338.0,
 	rechargeRate = 37.0,
-	boosterDrain = 139.0,
+	energyConsumptionRate = 139.0,
 	boosterAccel = 36.0,
 }
 
