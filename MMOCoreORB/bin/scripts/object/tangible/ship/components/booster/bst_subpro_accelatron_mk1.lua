@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_subpro_accelatron_mk1 = object_tangi
 	speed = 17.0,
 	maxEnergy = 1010.0,
 	rechargeRate = 29.0,
-	boosterDrain = 101.0,
+	energyConsumptionRate = 101.0,
 	boosterAccel = 26.0,
 }
 

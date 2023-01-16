@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_surronian_accelerator_mk2 = object_t
 	speed = 35.0,
 	maxEnergy = 1997.0,
 	rechargeRate = 56.0,
-	boosterDrain = 208.0,
+	energyConsumptionRate = 208.0,
 	boosterAccel = 43.0,
 }
 

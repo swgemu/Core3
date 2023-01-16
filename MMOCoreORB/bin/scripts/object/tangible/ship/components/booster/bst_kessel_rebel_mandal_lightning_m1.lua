@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_kessel_rebel_mandal_lightning_m1 = o
 	speed = 28.0,
 	maxEnergy = 1465.0,
 	rechargeRate = 42.0,
-	boosterDrain = 151.0,
+	energyConsumptionRate = 151.0,
 	boosterAccel = 34.0,
 }
 

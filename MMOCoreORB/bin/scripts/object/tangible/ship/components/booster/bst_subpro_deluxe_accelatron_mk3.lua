@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_subpro_deluxe_accelatron_mk3 = objec
 	speed = 29.0,
 	maxEnergy = 1819.0,
 	rechargeRate = 51.0,
-	boosterDrain = 186.0,
+	energyConsumptionRate = 186.0,
 	boosterAccel = 39.0,
 }
 

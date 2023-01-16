@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_moncal_advanced = object_tangible_sh
 	speed = 28.0,
 	maxEnergy = 1335.0,
 	rechargeRate = 41.0,
-	boosterDrain = 142.0,
+	energyConsumptionRate = 142.0,
 	boosterAccel = 29.0,
 }
 

@@ -9,6 +9,7 @@
 #define SHAREDSHIPOBJECTTEMPLATE_H_
 
 #include "templates/SharedTangibleObjectTemplate.h"
+#include "server/zone/objects/ship/ComponentSlots.h"
 
 class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	StringParam interiorLayoutFileName;
@@ -45,8 +46,7 @@ public:
 		shipName = templateData->getStringField("name");
 
 		const static char* components[] = {"reactor", "engine", "capacitor", "booster", "droid_interface", "bridge", "hangar",
-								  "targeting_station", "armor_0", "armor_1", "shield_0", "shield_1", "weapon_0",
-								  "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5","weapon_6", "weapon_7"};
+			 "targeting_station", "armor_0", "armor_1", "shield_0", "shield_1", "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5","weapon_6", "weapon_7"};
 		const int numComponents = 20;
 		try {
 			for (int i = 0; i < 20; i++) {
@@ -57,33 +57,35 @@ public:
 					String name = component.getStringField("name", "");
 					char **fields = NULL;
 					switch (i) {
-						case 0: {
+						case Components::REACTOR: {
 							const char *fields[] = {"hitpoints", "armor"};
 							loadMap(fields, 2, map, component);
 							break;
 						}
-						case 1: {
+						case Components::ENGINE: {
 							const char *fields[] = {"hitpoints", "armor", "speed", "pitch", "roll", "yaw",
-													"acceleration",
-													"deceleration", "pitchRate", "rollRate", "yawRate"};
+													"acceleration", "deceleration", "pitchRate", "rollRate", "yawRate"};
 							loadMap(fields, 11, map, component);
 							break;
 						}
-						case 2: {
+						case Components::SHIELD0: {
 							const char *fields[] = {"hitpoints", "armor", "rechargeRate", "energy"};
 							loadMap(fields, 4, map, component);
 							break;
 						}
-						case 3: {
+						case Components::SHIELD1: {
 							const char *fields[] = {"hitpoints", "armor", "rechargeRate", "energy", "acceleration",
 													"speed"};
 							loadMap(fields, 6, map, component);
 							break;
 						}
-						case 4:
-						case 5:
-						case 6:
-						case 7:
+						case Components::ARMOR0:
+						case Components::ARMOR1:
+						case Components::CAPACITOR:
+						case Components::BOOSTER: {
+							const char* fields[] = {"rechargeRate", "energy", "acceleration", "deceleration", "speed", "energyUsage", "energyConsumptionRate"};
+							loadMap(fields, 7, map, component);
+						}
 						case 8:
 						case 9: {
 							const char *fields[] = {"hitpoints", "armor"};

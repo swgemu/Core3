@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_moncal_jlc37 = object_tangible_ship_
 	speed = 18.0,
 	maxEnergy = 1003.0,
 	rechargeRate = 33.0,
-	boosterDrain = 104.0,
+	energyConsumptionRate = 104.0,
 	boosterAccel = 27.0,
 }
 

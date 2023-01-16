@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_tiefighter_basic = object_tangible_s
 	speed = 21.0,
 	maxEnergy = 1004.0,
 	rechargeRate = 26.0,
-	boosterDrain = 104.0,
+	energyConsumptionRate = 104.0,
 	boosterAccel = 27.0,
 }
 

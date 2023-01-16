@@ -10,7 +10,7 @@ void ShipBoosterComponentImplementation::loadTemplateData(SharedObjectTemplate* 
 		error("nullptr Template");
 	}
 
-	energyConsumptionRate = tmpl->getBoosterDrain();
+	energyConsumptionRate = tmpl->getBoosterEnergyConsumptionRate();
 	boosterAcceleration = tmpl->getBoosterAcceleration();
 	boosterEnergy = tmpl->getShipMaxEnergy();
 	boosterRechargeRate = tmpl->getShipRechargeRate();
@@ -19,18 +19,13 @@ void ShipBoosterComponentImplementation::loadTemplateData(SharedObjectTemplate* 
 
 void ShipBoosterComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
-		String attribute;
-		float min;
-		float max;
-		float current;
-
-		attribute = values->getExperimentalPropertySubtitle(i);
-		min = values->getMinValue(attribute);
-		max = values->getMaxValue(attribute);
-		current = values->getCurrentValue(attribute);
+		String attribute = values->getExperimentalPropertySubtitle(i);
+		float min = values->getMinValue(attribute);
+		float max = values->getMaxValue(attribute);
+		float current = values->getCurrentValue(attribute);
 
 		if (attribute == "ship_component_booster_energy_consumption_rate") {
-			energyConsumptionRate = (min+max) + current;
+			energyConsumptionRate = (min + max) + current;
 		} else if(attribute == "ship_component_booster_acceleration") {
 			boosterAcceleration = current;
 		} else if (attribute == "ship_component_booster_energy") {
@@ -59,15 +54,17 @@ void ShipBoosterComponentImplementation::fillAttributeList(AttributeListMessage*
 }
 
 void ShipBoosterComponentImplementation::install(CreatureObject* owner, ShipObject* ship, int slot, bool notifyClient) {
-	DeltaMessage *message = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
+	DeltaMessage* message = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
+
 	ship->setBoosterMaxSpeed(boosterSpeed, notifyClient, message);
 	ship->setBoosterMaxEnergy(boosterEnergy, notifyClient, message);
-	ship->setBoosterConsumptionRate(energyConsumptionRate, notifyClient, message);
+	ship->setBoosterEnergyConsumptionRate(energyConsumptionRate, notifyClient, message);
 	ship->setBoosterAcceleration(boosterAcceleration, notifyClient, message);
 	ship->setBoosterRechargeRate(boosterRechargeRate, notifyClient, message);
 	ship->setEnergyCost(slot, getEnergyCost(), message);
 
-	DeltaMessage *message2 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 3) : nullptr;
+	DeltaMessage* message2 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 3) : nullptr;
+
 	ship->setComponentMaxHitpoints(slot, getMaxHitpoints(), message2);
 	ship->setComponentHitpoints(slot, getHitpoints(), message2);
 	ship->setComponentArmor(slot, getArmor(), message2);

@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_koensayr_standard = object_tangible_
 	speed = 19.0,
 	maxEnergy = 1107.0,
 	rechargeRate = 33.0,
-	boosterDrain = 113.0,
+	energyConsumptionRate = 113.0,
 	boosterAccel = 28.0,
 }
 

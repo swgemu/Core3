@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_gallofree_light = object_tangible_sh
 	speed = 24.0,
 	maxEnergy = 1005.0,
 	rechargeRate = 28.0,
-	boosterDrain = 109.0,
+	energyConsumptionRate = 109.0,
 	boosterAccel = 22.0,
 }
 

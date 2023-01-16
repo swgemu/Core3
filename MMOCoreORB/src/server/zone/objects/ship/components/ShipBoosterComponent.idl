@@ -21,6 +21,11 @@ class ShipBoosterComponent extends ShipComponent {
 	float boosterSpeed;
 
 	public ShipBoosterComponent() {
+		energyConsumptionRate = 1.0f;
+		boosterAcceleration = 1.0f;
+		boosterEnergy = 1.0f;
+		boosterRechargeRate = 1.0f;
+		boosterSpeed = 1.0f;
 	}
 
 	public void setBoosterAcceleration(float accel) {

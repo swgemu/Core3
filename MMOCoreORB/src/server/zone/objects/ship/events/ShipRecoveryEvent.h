@@ -27,7 +27,6 @@ public:
 		if (ship == nullptr)
 			return;
 
-		Locker lock(ship);
 		ship->doRecovery(1000);
 	}
 };

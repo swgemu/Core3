@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_kessel_rebel_incom_windrunner = obje
 	speed = 36.0,
 	maxEnergy = 2197.0,
 	rechargeRate = 56.0,
-	boosterDrain = 229.0,
+	energyConsumptionRate = 229.0,
 	boosterAccel = 48.0,
 }
 

@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_incom_deluxe_fynock = object_tangibl
 	speed = 36.0,
 	maxEnergy = 2002.0,
 	rechargeRate = 50.0,
-	boosterDrain = 207.0,
+	energyConsumptionRate = 207.0,
 	boosterAccel = 45.0,
 }
 

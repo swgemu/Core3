@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_incom_performance_nkj31 = object_tan
 	speed = 28.0,
 	maxEnergy = 1503.0,
 	rechargeRate = 39.0,
-	boosterDrain = 154.0,
+	energyConsumptionRate = 154.0,
 	boosterAccel = 39.0,
 }
 

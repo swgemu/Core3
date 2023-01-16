@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_mission_reward_neutral_mandal_m_seri
 	speed = 31.0,
 	maxEnergy = 1980.0,
 	rechargeRate = 52.0,
-	boosterDrain = 200.0,
+	energyConsumptionRate = 200.0,
 	boosterAccel = 42.0,
 }
 

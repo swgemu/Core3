@@ -29,15 +29,10 @@ void ShipComponentImplementation::loadTemplateData(SharedObjectTemplate* templat
 
 void ShipComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
-		String attribute;
-		float min;
-		float max;
-		float current;
-
-		attribute = values->getExperimentalPropertySubtitle(i);
-		min = values->getMinValue(attribute);
-		max = values->getMaxValue(attribute);
-		current = values->getCurrentValue(attribute);
+		String attribute = values->getExperimentalPropertySubtitle(i);
+		float min = values->getMinValue(attribute);
+		float max = values->getMaxValue(attribute);
+		float current = values->getCurrentValue(attribute);
 
 		if (attribute == "energy_maintenance" || attribute == "ship_component_energy_required") {
 			energyCost = (min + max) - current;
@@ -64,16 +59,15 @@ void ShipComponentImplementation::updateComponentData(bool notifyClient) {
 	if (strong == nullptr || slot == -1)
 		return;
 
-	Reference<CreatureObject*> creo = strong->getOwner().get().castTo<CreatureObject*>();
-	DeltaMessage *delta = notifyClient ? new DeltaMessage(strong->getObjectID(), 'SHIP', 3) : nullptr;
+	DeltaMessage* delta = notifyClient ? new DeltaMessage(strong->getObjectID(), 'SHIP', 3) : nullptr;
 
-	strong->setComponentOptions(slot, flags, delta);
+	strong->setComponentOptions(slot, componentBitmask, delta);
 
-	if (!delta || !creo)
+	if (delta == nullptr)
 		return;
 
 	delta->close();
-	creo->broadcastMessage(delta, true, true);
+	strong->broadcastMessage(delta, true, false);
 }
 
 void ShipComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {

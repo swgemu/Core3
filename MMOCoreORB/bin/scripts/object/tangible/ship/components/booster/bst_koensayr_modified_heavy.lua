@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_koensayr_modified_heavy = object_tan
 	speed = 32.0,
 	maxEnergy = 1816.0,
 	rechargeRate = 50.0,
-	boosterDrain = 185.0,
+	energyConsumptionRate = 185.0,
 	boosterAccel = 45.0,
 }
 
