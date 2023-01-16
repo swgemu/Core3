@@ -152,7 +152,9 @@ public:
 	 * Adds starter ship to players datapad
 	 * @param creature the player creature
 	 */
-	void createStarterShip(CreatureObject* player) const;
+	void createImperialStarterShip(CreatureObject* player) const;
+	void createRebelStarterShip(CreatureObject* player) const;
+	void createNeutralStarterShip(CreatureObject* player) const;
 
 	/**
 	* Adds starter POB ship to players datapad
