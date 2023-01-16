@@ -49,27 +49,27 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 	skillMods.setNoDuplicateInsertPlan();
 	skillMods.setNullValue(0);
 
-	shipMaxEnergy= 0.0f;
-	shipRechargeRate= 0.0f;
-	shipHitpoints= 0.0f;
-	shipArmor= 0.0f;
-	shipEnergyConsumption= 0.0f;
-	shipMass= 0.0f;
-	shipRELevel= 0.0f;
-	shipSpeed= 0.0f;
-	shipPitch= 0.0f;
-	shipMinDamage= 0.0f;
-	shipMaxDamage= 0.0f;
-	shipYaw= 0.0f;
-	shipRoll= 0.0f;
-	boosterAcceleration= 0.0f;
-	boosterDrain= 0.0f;
-	droidCommandSpeed= 0.0f;
-	weaponShieldEffectiveness= 0.0f;
-	weaponArmorEffectiveness= 0.0f;
-	energyPerShot= 0.0f;
-	shieldHitpointsFront= 0.0f;
-	shieldHitpointsRear= 0.0f;
+	shipMaxEnergy = 0.0f;
+	shipRechargeRate = 0.0f;
+	shipHitpoints = 0.0f;
+	shipArmor = 0.0f;
+	shipEnergyConsumption = 0.0f;
+	shipMass = 0.0f;
+	shipRELevel = 0.0f;
+	shipSpeed = 0.0f;
+	shipPitch = 0.0f;
+	shipMinDamage = 0.0f;
+	shipMaxDamage = 0.0f;
+	shipYaw = 0.0f;
+	shipRoll = 0.0f;
+	boosterAcceleration = 0.0f;
+	energyConsumptionRate = 0.0f;
+	droidCommandSpeed = 0.0f;
+	weaponShieldEffectiveness = 0.0f;
+	weaponArmorEffectiveness = 0.0f;
+	energyPerShot = 0.0f;
+	shieldHitpointsFront = 0.0f;
+	shieldHitpointsRear = 0.0f;
 }
 
 SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
@@ -284,8 +284,8 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		shipMaxDamage = Lua::getFloatParameter(state);
 	} else if (varName == "boosterAccel") {
 		boosterAcceleration = Lua::getFloatParameter(state);
-	} else if (varName == "boosterDrain") {
-		boosterDrain = Lua::getFloatParameter(state);
+	} else if (varName == "energyConsumptionRate") {
+		energyConsumptionRate = Lua::getFloatParameter(state);
 	} else if (varName == "droidSpeed") {
 		droidCommandSpeed = Lua::getFloatParameter(state);
 	} else if (varName == "shieldEffectiveness") {

@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_novaldex_pulsar_advanced = object_ta
 	speed = 28.0,
 	maxEnergy = 1472.0,
 	rechargeRate = 37.0,
-	boosterDrain = 149.0,
+	energyConsumptionRate = 149.0,
 	boosterAccel = 36.0,
 }
 

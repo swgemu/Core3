@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_mandal_modified_jbj_mk2 = object_tan
 	speed = 32.0,
 	maxEnergy = 1656.0,
 	rechargeRate = 50.0,
-	boosterDrain = 165.0,
+	energyConsumptionRate = 165.0,
 	boosterAccel = 39.0,
 }
 

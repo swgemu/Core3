@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_sap_imperial_1 = object_tangible_shi
 	speed = 32.0,
 	maxEnergy = 1506.0,
 	rechargeRate = 39.0,
-	boosterDrain = 158.0,
+	energyConsumptionRate = 158.0,
 	boosterAccel = 32.0,
 }
 

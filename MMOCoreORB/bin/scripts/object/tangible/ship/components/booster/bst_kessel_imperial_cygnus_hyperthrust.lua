@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_kessel_imperial_cygnus_hyperthrust =
 	speed = 26.0,
 	maxEnergy = 1468.0,
 	rechargeRate = 40.0,
-	boosterDrain = 153.0,
+	energyConsumptionRate = 153.0,
 	boosterAccel = 31.0,
 }
 

@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_corellian_highly_modified_elite_thru
 	speed = 40.0,
 	maxEnergy = 2200.0,
 	rechargeRate = 57.0,
-	boosterDrain = 229.0,
+	energyConsumptionRate = 229.0,
 	boosterAccel = 52.0,
 }
 

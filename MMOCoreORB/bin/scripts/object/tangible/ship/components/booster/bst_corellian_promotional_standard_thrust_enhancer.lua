@@ -51,7 +51,7 @@ object_tangible_ship_components_booster_bst_corellian_promotional_standard_thrus
 	speed = 27.0,
 	maxEnergy = 1651.0,
 	rechargeRate = 51.0,
-	boosterDrain = 172.0,
+	energyConsumptionRate = 172.0,
 	boosterAccel = 34.0,
 }
 

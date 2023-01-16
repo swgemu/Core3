@@ -120,7 +120,8 @@ public:
 		}
 
 		Locker cross(ship, object);
-		ship->setCapacitorEnergy(currentEnergy-cost, true);
+		ship->setCapacitorEnergy(currentEnergy - cost, true);
+		ship->scheduleRecovery();
 
 		// TODO: Validate shot
 		ShipManager::ShipProjectile* projectile = new ShipManager::ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), System::getMiliTime());
