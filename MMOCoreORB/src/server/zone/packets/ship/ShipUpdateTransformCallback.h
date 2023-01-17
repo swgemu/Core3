@@ -8,168 +8,282 @@
 #ifndef SHIPUPDATETRANSFORMCALLBACK_H_
 #define SHIPUPDATETRANSFORMCALLBACK_H_
 
-#include "server/zone/packets/MessageCallback.h"
+//#define SHIP_TRANSFORM_DEBUG
+
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "ShipUpdateTransformCollisionMessage.h"
-#include "ShipUpdateTransformMessage.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/packets/MessageCallback.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
-#include "server/zone/objects/ship/ShipObject.h"
-#include "PackedVelocity.h"
-#include "PackedRotationRate.h"
-#include "PackedPosition.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/packets/ship/ShipUpdateTransformCollisionMessage.h"
+#include "server/zone/packets/ship/ShipUpdateTransformMessage.h"
+#include "server/zone/packets/ship/PackedVelocity.h"
+#include "server/zone/packets/ship/PackedRotationRate.h"
 
-#include "server/zone/Zone.h"
-#include "server/zone/SpaceZone.h"
-#include "server/zone/objects/area/ActiveArea.h"
+#ifdef SHIP_TRANSFORM_DEBUG
+#include "server/zone/packets/ui/CreateClientPathMessage.h"
+#include "server/zone/packets/object/ShowFlyText.h"
+#endif // SHIP_TRANSFORM_DEBUG
 
 class ShipUpdateTransformCallback : public MessageCallback {
+private:
+	const static bool errorLog = false;
+
+#ifdef SHIP_TRANSFORM_DEBUG
+	const static bool sendText = true;
+	const static bool sendPath = true;
+#endif // SHIP_TRANSFORM_DEBUG
+
+protected:
+	const static constexpr float positionScale = 8000.f / 32768.f;
+	const static constexpr float directionScale = 1.f / 127.f;
+
 	uint16 shipId;
 
-	//PackedTransform dir is multiplied by 127, positions by 4.0958748
-	uint8 dirX, dirY, dirZ, dirW;
-	Vector3 position;
+	int8 dirX;
+	int8 dirY;
+	int8 dirZ;
+	int8 dirW;
+
+	int16 posX;
+	int16 posZ;
+	int16 posY;
+
 	PackedVelocity velocity;
-	PackedRotationRate yawRate, pitchRate, rollRate;
+	PackedRotationRate yawRate;
+	PackedRotationRate pitchRate;
+	PackedRotationRate rollRate;
 
 	uint32 counter;
 
+	float positionX;
+	float positionY;
+	float positionZ;
+
+	float directionX;
+	float directionY;
+	float directionZ;
+	float directionW;
+
 public:
 	ShipUpdateTransformCallback(ZoneClientSession* client, ZoneProcessServer* server) : MessageCallback(client, server) {
+		shipId = 0;
+
+		dirX = 0;
+		dirY = 0;
+		dirZ = 0;
+		dirW = 0;
+
+		posX = 0;
+		posZ = 0;
+		posY = 0;
+
+		counter = 0;
+
+		positionX = 0;
+		positionZ = 0;
+		positionY = 0;
+
+		directionX = 0;
+		directionY = 0;
+		directionZ = 0;
+		directionW = 0;
 	}
 
 	void parse(Message* message) {
 		shipId = message->parseShort();
-		dirX = message->parseByte();
-		dirY = message->parseByte();
-		dirZ = message->parseByte();
-		dirW = message->parseByte();
 
-		PackedPosition pos;
-		pos.parse(message);
-		Vector3 loc(pos.get());
+		dirW = message->parseSignedByte();
+		dirX = message->parseSignedByte();
+		dirY = message->parseSignedByte();
+		dirZ = message->parseSignedByte();
 
-		position.setX(loc.getX());
-		position.setZ(loc.getY());
-		position.setY(loc.getZ());
+		directionW = dirW * directionScale;
+		directionX = dirX * directionScale;
+		directionY = dirY * directionScale;
+		directionZ = dirZ * directionScale;
+
+		posX = message->parseSignedShort();
+		posZ = message->parseSignedShort();
+		posY = message->parseSignedShort();
+
+		positionX = posX * positionScale;
+		positionY = posY * positionScale;
+		positionZ = posZ * positionScale;
 
 		velocity.parse(message);
-
 		yawRate.parse(message);
 		pitchRate.parse(message);
 		rollRate.parse(message);
+
 		counter = message->parseInt();
 	}
 
 	void run() {
-		Quaternion direction(dirW, dirX, dirY, dirZ);
-
-		/*info(true) << "ShipUpdateTransformCallback::run";
-
-		StringBuffer callMsg;
-		callMsg << "Callback data: " << shipId << "\n";
-		callMsg << "Dir W: " << dirW << "\n";
-		callMsg << "Dir X: " << dirX << "\n";
-		callMsg << "Dir Y: " << dirY << "\n";
-		callMsg << "Dir Z: " << dirZ << "\n";
-
-		callMsg << "Pos X: " << position.getX() << "\n";
-		callMsg << "Pos Z: " << position.getZ() << "\n";
-		callMsg << "Pos Y: " << position.getY() << "\n";
-
-		callMsg << "Velocity: " << velocity.get().toString() << "\n";
-		info(true) << callMsg.toString();*/
-
-		if (position.getX() > 8000.0f || position.getX() < -8000.0f || position.getY() > 8000.0f || position.getY() < -8000.0f || position.getZ() < -8000.0f || position.getZ() > 8000.0f) {
-			info(true) << "ShipUpdateTransformCallback -- FAIL 1";
-			return;
-		}
-
-		const ManagedReference<CreatureObject*> pilot = client->getPlayer();
-
+		ManagedReference<CreatureObject*> pilot = client->getPlayer();
 		if (pilot == nullptr) {
-			info(true) << "ShipUpdateTransformCallback -- FAIL 2";
-			return;
+			return sendError("!pilot");
 		}
 
-		const Reference<PlayerObject*> ghost = pilot->getPlayerObject();
-
+		PlayerObject* ghost = pilot->getPlayerObject();
 		if (ghost == nullptr || ghost->isTeleporting()) {
-			info(true) << "ShipUpdateTransformCallback -- FAIL 3";
-			return;
+			return sendError("!ghost");
 		}
 
-		ShipObject* ship = dynamic_cast<ShipObject*>(pilot->getRootParent());
-
-		if (ship == nullptr) {
-			info(true) << "ShipUpdateTransformCallback -- FAIL 4";
-			return;
+		ManagedReference<SceneObject*> parent = pilot->getParent().get();
+		if (parent == nullptr) {
+			return sendError("!parent");
 		}
 
-		if (ship->getSpaceZone() == nullptr) {
-			info(true) << "ShipUpdateTransformCallback -- FAIL 5";
-			return;
+		ShipObject* ship = parent->asShipObject();
+		if (ship == nullptr|| ship->isHyperspacing()) {
+			return sendError("!ship");
 		}
 
-		if (ship->isHyperspacing()) {
-			info(true) << "ShipUpdateTransformCallback -- FAIL 6";
-			return;
+		SpaceZone* zone = ship->getSpaceZone();
+		if (zone == nullptr) {
+			return sendError("!zone");
 		}
 
-		/*StringBuffer dirMsg;
-		dirMsg << "Directions for: " + ship->getDisplayedName() << "\n";
-		dirMsg << "Direction W: " << dirW << "\n";
-		dirMsg << "Direction X: " << dirX << "\n";
-		dirMsg << "Direction Y: " << dirY << "\n";
-		dirMsg << "Direction Z: " << dirZ << "\n";
-
-		dirMsg << "Position X: " << position.getX() << "\n";
-		dirMsg << "Position Z: " << position.getZ() << "\n";
-		dirMsg << "Position Y: " << position.getY() << "\n";
-		dirMsg << "Velocity: " << velocity.get().toString() << "\n";
-		info(true) << dirMsg.toString();
-		*/
-
-		if (pilot->getSpaceZone() == nullptr) {
-			pilot->setSpaceZone(ship->getSpaceZone());
-			error() << "ShipUpdateTransformCallback -- Pilot has a null space zone";
+		if (!isPositionValid()) {
+			return sendError("!isPositionValid");
 		}
 
-		Locker slock(ship);
-		Locker plock(pilot, ship);
+		Locker pLock(pilot);
+		Locker cLock(ship, pilot);
 
-		bool collision = CollisionManager::checkShipCollision(ship, position, position);
-
-		if (collision) {
-			ship->setDirection(direction);
-			ship->setMovementCounter(counter);
-
-			auto crash = new ShipUpdateTransformCollisionMessage(ship);
-			ship->broadcastMessage(crash, true);
-
-			auto effect = new PlayClientEffectObjectMessage(ship, "clienteffect/space_collision.cef", "");
-			ship->broadcastMessage(effect, true);
-		} else {
-			// No Collision
-			uint32 deltaTime = ghost->getServerMovementTimeDelta();
-			bool lightUpdate = deltaTime < 500;
-
-			//info(true) << "ShipUpdateTransformCallback -- Server Movement Time Delta = " << deltaTime << "  ShipUpdateTransformMessage called ";
-
-			if (!lightUpdate) {
-				ship->setDirection(direction);
-				ship->setPosition(position.getX(), position.getZ(), position.getY());
-			}
+		if (ship->getMovementCounter() == 0) {
+			return synchronize(ship, pilot);
 		}
 
-		ship->updateZone(false, true);
+		Vector3 targetPosition = Vector3(positionX, positionY, positionZ);
+		Vector3 collisionPoint;
 
-		auto shipMessage = new ShipUpdateTransformMessage(ship, velocity, yawRate, pitchRate, rollRate);
-		ship->broadcastMessage(shipMessage, false);
+		if (CollisionManager::checkShipCollision(ship, targetPosition, collisionPoint)) {
+			return updateCollision(ship, pilot);
+		}
+
+		updatePosition(ship, pilot);
 	}
+
+	bool isPositionValid() const {
+		if (positionX > 8000.f || positionX < -8000.f || positionY > 8000.f || positionY < -8000.f || positionZ > 8000.f || positionZ < -8000.f) {
+			return false;
+		}
+
+		return true;
+	}
+
+	void updatePosition(ShipObject* ship, CreatureObject* pilot) {
+#ifdef SHIP_TRANSFORM_DEBUG
+		sendDebug(pilot, ship, "updatePosition", Vector3(positionX, positionY, positionZ));
+#endif // SHIP_TRANSFORM_DEBUG
+
+		Quaternion direction(directionW, directionX, directionY, directionZ);
+
+		ship->setPosition(positionX, positionZ, positionY);
+		ship->setMovementCounter(counter);
+		ship->setDirection(direction);
+		ship->updateZone(true, false);
+
+		if (velocity.speed != 0.f) {
+			auto data = new ShipUpdateTransformMessage(ship, velocity, yawRate, pitchRate, rollRate);
+			ship->broadcastMessage(data, false);
+		} else {
+			auto data = new ShipUpdateTransformMessage(ship);
+			ship->broadcastMessage(data, false);
+		}
+
+		auto ghost = pilot->getPlayerObject();
+		if (ghost == nullptr) {
+			return;
+		}
+
+		ghost->setClientLastMovementStamp(counter);
+	}
+
+	void synchronize(ShipObject* ship, CreatureObject* pilot) {
+#ifdef SHIP_TRANSFORM_DEBUG
+		sendDebug(pilot, ship, "synchronize", Vector3(positionX, positionY, positionZ));
+#endif // SHIP_TRANSFORM_DEBUG
+
+		if (pilot->getSpaceZone() == nullptr && ship->getSpaceZone() != nullptr) {
+			pilot->setSpaceZone(ship->getSpaceZone());
+		}
+
+		Quaternion direction = *ship->getDirection();
+		direction.normalize();
+
+		ship->setMovementCounter(counter);
+		ship->setDirection(direction);
+
+		auto data = new DataTransform(ship);
+		pilot->sendMessage(data);
+	}
+
+	void updateCollision(ShipObject* ship, CreatureObject* pilot) {
+#ifdef SHIP_TRANSFORM_DEBUG
+		sendDebug(pilot, ship, "updateCollision", Vector3(positionX, positionY, positionZ));
+#endif // SHIP_TRANSFORM_DEBUG
+
+		Quaternion direction(directionW, directionX, directionY, directionZ);
+		direction.normalize();
+
+		ship->setMovementCounter(counter);
+		ship->setDirection(direction);
+
+		auto collide = new ShipUpdateTransformCollisionMessage(ship);
+		pilot->broadcastMessage(collide, true);
+
+		auto effect = new PlayClientEffectObjectMessage(ship, "clienteffect/space_collision.cef", "");
+		pilot->broadcastMessage(effect, true);
+	}
+
+	void sendError(const String& message) {
+		if (errorLog) {
+			info(true) << "ShipUpdateTransformCallback: " << message;
+		}
+	}
+
+#ifdef SHIP_TRANSFORM_DEBUG
+	void sendDebug(CreatureObject* pilot, ShipObject* ship, const String& message, const Vector3& position) {
+		if (sendText) {
+			sendDebugMessage(pilot, ship, message, position);
+		}
+
+		if (sendPath) {
+			sendDebugPath(pilot, ship, position);
+		}
+	}
+
+	void sendDebugMessage(CreatureObject* pilot, ShipObject* ship, const String& message, const Vector3& position) {
+		StringBuffer msg;
+
+		msg << "Transform:   " << message << endl
+			<< " ShipId:     " << shipId << endl
+			<< " Position:   " << positionX  << ", " << positionZ  << ", " << positionY << endl
+			<< " Direction:  " << directionW  << ", " << directionX  << ", " << directionY << ", " << directionZ << endl
+			<< " Velocity:   " << velocity.get().getX() << ", " << velocity.get().getY() << ", " << velocity.get().getZ() << endl
+			<< " yawRate:    " << yawRate.get() << endl
+			<< " pitchRate:  " << pitchRate.get() << endl
+			<< " rollRate:   " << rollRate.get() << endl
+			<< " syncStamp:  " << counter << endl
+			<< "--------------------------------";
+
+		pilot->sendSystemMessage(msg.toString());
+	}
+
+	void sendDebugPath(CreatureObject* pilot, ShipObject* ship, const Vector3& newPosition) {
+		Vector3 shipPosition = ship->getPosition();
+
+		auto path = new CreateClientPathMessage();
+		path->addCoordinate(shipPosition.getX(), shipPosition.getZ(), shipPosition.getY());
+		path->addCoordinate(positionX, positionZ, positionY);
+		path->addCoordinate(newPosition.getX(), newPosition.getZ(), newPosition.getY());
+
+		pilot->sendMessage(path);
+	}
+#endif // SHIP_TRANSFORM_DEBUG
 };
 
 #endif /* SHIPUPDATETRANSFORMCALLBACK_H_ */

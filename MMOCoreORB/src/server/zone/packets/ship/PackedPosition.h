@@ -12,11 +12,20 @@
 #include "engine/util/u3d/Vector3.h"
 
 class PackedPosition {
-	short x, y, z;
+public:
+	static const constexpr float positionScale = 32767.f / 8000.f;
+	static const constexpr float inversePositionScale = 8000.f / 32767.f;
+
+protected:
+	int16 x;
+	int16 y;
+	int16 z;
 
 public:
 	PackedPosition() {
-
+		x = 0;
+		y = 0;
+		z = 0;
 	}
 
 	PackedPosition(const Vector3& vector) {
@@ -25,24 +34,24 @@ public:
 
 	void parse(Message* message) {
 		x = message->readSignedShort();
-		y = message->readSignedShort();
 		z = message->readSignedShort();
+		y = message->readSignedShort();
 	}
 
 	void write(Message* message) {
-		message->writeShort(x);
-		message->writeShort(y);
-		message->writeShort(z);
+		message->writeSignedShort(x);
+		message->writeSignedShort(z);
+		message->writeSignedShort(y);
 	}
 
-	void set(const Vector3& v) {
-		x = static_cast<int16>(clamp(-8000.0f, v.getX(), 8000.f)*(32767.f / 8000.f));
-		y = static_cast<int16>(clamp(-8000.0f, v.getY(), 8000.f)*(32767.f / 8000.f));
-		z = static_cast<int16>(clamp(-8000.0f, v.getZ(), 8000.f)*(32767.f / 8000.f));
+	void set(const Vector3& vector) {
+		x = (int16)(Math::clamp(-8000.0f, vector.getX(), 8000.f) * positionScale);
+		y = (int16)(Math::clamp(-8000.0f, vector.getY(), 8000.f) * positionScale);
+		z = (int16)(Math::clamp(-8000.0f, vector.getZ(), 8000.f) * positionScale);
 	}
 
 	Vector3 get() {
-		return Vector3((x*(8000.f / 32767.f)), (y*(8000.f / 32767.f)), (z*(8000.f / 32767.f)));
+		return Vector3(x,y,z) * inversePositionScale;
 	}
 };
 

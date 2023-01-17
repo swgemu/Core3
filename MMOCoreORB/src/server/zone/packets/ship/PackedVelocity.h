@@ -11,10 +11,10 @@
 #include "PackedUnitVector.h"
 
 class PackedVelocity {
+public:
 	int16 speed;
 	PackedUnitVector direction;
 
-public:
 	PackedVelocity() : speed(0) {
 
 	}
