@@ -1597,7 +1597,7 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	}
 
 	@dirty
-	public abstract boolean isHyperSpacing() {
+	public abstract boolean isHyperspacing() {
 		return false;
 	}
 

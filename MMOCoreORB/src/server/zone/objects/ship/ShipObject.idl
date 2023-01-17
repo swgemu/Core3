@@ -26,6 +26,8 @@ include system.util.VectorMap;
 include system.lang.ref.Reference;
 
 class ShipObject extends TangibleObject {
+	public static final int HYPERSPACE_DELAY = 40;
+
 	public static final int WEAPON_COMPONENT_START = 12;
 
 	protected transient boolean hyperspacing;
@@ -62,6 +64,9 @@ class ShipObject extends TangibleObject {
 
 	@dereferenced
 	protected Time boostTimer;
+
+	@dereferenced
+	protected Time hyperspaceTime;
 
 	@preLocked
 	public native void createChildObjects();
@@ -350,6 +355,7 @@ class ShipObject extends TangibleObject {
 		super.closeobjects.setNoDuplicateInsertPlan();
 		storedLocation = "";
 		controlDeviceID = 0;
+		hyperspacing = false;
 	}
 
 	/**
@@ -370,8 +376,10 @@ class ShipObject extends TangibleObject {
 
 	public native void doRecovery(int latency);
 
+	@preLocked
 	public native void scheduleRecovery();
 
+	@preLocked
 	public native void cancelRecovery();
 
 	@dirty
@@ -1118,6 +1126,18 @@ class ShipObject extends TangibleObject {
 		componentTargetableBitfield.setBit(slot, targetable);
 	}
 
+	@preLocked
+	public void setHyperspacing(boolean value) {
+		hyperspacing = value;
+
+		if (hyperspacing) {
+			setHyperspaceDelay();
+		}
+	}
+
+	@preLocked
+	public native void setHyperspaceDelay();
+
 	public native string getParkingLocation();
 
 	public native void install(CreatureObject owner, SceneObject component, int slot, boolean notifyClient = false);
@@ -1144,10 +1164,9 @@ class ShipObject extends TangibleObject {
 		return componentOptions.get(7);
 	}
 
-	public void setHyperspacing(boolean state) {
-		hyperspacing = state;
-	}
+	public native int getHyperspaceDelay();
 
+	@preLocked
 	public void setControlDeviceID(unsigned long oid) {
 		controlDeviceID = oid;
 	}

@@ -35,6 +35,10 @@ public:
 		if (player == nullptr || shipObject == nullptr)
 			return;
 
+		if (!shipObject->isHyperspacing()) {
+			return;
+		}
+
 		int currentIter = iteration++;
 
 		Locker locker(shipObject);
@@ -73,8 +77,6 @@ public:
 		case 9:
 			beginHyperspace();
 
-			shipObject->setHyperspacing(true);
-
 			reschedule(6000);
 			return;
 		case 10: {
@@ -93,7 +95,7 @@ public:
 
 			Locker zoneCross(newZone, shipObject);
 
-			shipObject->initializePosition(location.getX(), location.getZ(), location.getY());
+			shipObject->initializePosition(location.getX() + System::random(100), location.getZ() + System::random(100), location.getY() + System::random(100));
 			newZone->transferObject(shipObject, -1, false);
 
 			zoneCross.release();

@@ -604,15 +604,11 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 }
 
 void ShipObjectImplementation::scheduleRecovery() {
-	Locker lock(_this.getReferenceUnsafeStaticCast());
-
 	if (shipRecoveryEvent != nullptr && !shipRecoveryEvent->isScheduled())
 		shipRecoveryEvent->schedule(1000);
 }
 
 void ShipObjectImplementation::cancelRecovery() {
-	Locker lock(_this.getReferenceUnsafeStaticCast());
-
 	if (shipRecoveryEvent != nullptr && shipRecoveryEvent->isScheduled())
 		shipRecoveryEvent->cancel();
 }
@@ -682,4 +678,14 @@ void ShipObjectImplementation::restartBooster() {
 	boostTimer.addMiliTime(boostTime * 1000);
 
 	scheduleRecovery();
+}
+
+void ShipObjectImplementation::setHyperspaceDelay() {
+	hyperspaceTime.updateToCurrentTime();
+	hyperspaceTime.addMiliTime(HYPERSPACE_DELAY * 1000);
+}
+
+int ShipObjectImplementation::getHyperspaceDelay() {
+	Time now;
+	return (now.miliDifference() - hyperspaceTime.miliDifference()) / 1000;
 }
