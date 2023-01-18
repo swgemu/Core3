@@ -6,9 +6,10 @@ package server.zone.objects.area.areashapes;
 
 include engine.core.ManagedObject;
 include engine.util.u3d.Vector3;
+import engine.log.Logger;
 
 @mock
-class AreaShape extends ManagedObject {
+class AreaShape extends ManagedObject implements Logger {
 
 	/** The center coordinate of the area. */
 	@dereferenced
@@ -17,6 +18,8 @@ class AreaShape extends ManagedObject {
 	/** Constructor */
 	public AreaShape() {
 		areaCenter.set(0, 0, 0);
+
+		Logger.setLoggingName("AreaShape");
 	}
 
 	/**

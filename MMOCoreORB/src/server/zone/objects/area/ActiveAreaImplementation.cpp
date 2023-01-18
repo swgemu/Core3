@@ -187,3 +187,10 @@ void ActiveAreaImplementation::removeAreaFlag(uint32 flag) {
 		areaFlags &= ~flag;
 	}
 }
+
+Vector3 ActiveAreaImplementation::getAreaCenter() const {
+	if (areaShape != nullptr)
+		return areaShape->getAreaCenter();
+	else
+		return getPosition();
+}

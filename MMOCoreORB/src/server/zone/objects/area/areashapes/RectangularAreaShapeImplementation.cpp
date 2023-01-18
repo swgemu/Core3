@@ -8,13 +8,15 @@
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"
 #include "engine/util/u3d/Segment.h"
+#include "engine/log/Logger.h"
 
 //#define DEBUG_POSITION
 
 bool RectangularAreaShapeImplementation::containsPoint(float x, float y) const {
 	// World Spawners are rectangles with no size
-	if ((blX == 0) && (urX == 0) && (blY == 0) && (urY == 0))
+	if ((blX == 0) && (urX == 0) && (blY == 0) && (urY == 0)) {
 		return true;
+	}
 
 	return (x >= blX) && (x <= urX) && (y >= blY) && (y <= urY);
 }
@@ -114,15 +116,15 @@ Vector3 RectangularAreaShapeImplementation::getClosestPoint(const Vector3& posit
 
 	// Find the closes of the four side points.
 	Vector3 point = top;
-	if (point.distanceTo(position) > right.distanceTo(position)) {
+	if (point.squaredDistanceTo(position) > right.squaredDistanceTo(position)) {
 		point = right;
 	}
 
-	if (point.distanceTo(position) > bottom.distanceTo(position)) {
+	if (point.squaredDistanceTo(position) > bottom.squaredDistanceTo(position)) {
 		point = bottom;
 	}
 
-	if (point.distanceTo(position) > left.distanceTo(position)) {
+	if (point.squaredDistanceTo(position) > left.squaredDistanceTo(position)) {
 		point = left;
 	}
 
@@ -139,13 +141,13 @@ Vector3 RectangularAreaShapeImplementation::getFarthestPoint(const Vector3& posi
 
 	// Find the farthest of the four corners.
 	Vector3 point = topLeft;
-	if (point.distanceTo(position) < topRight.distanceTo(position)) {
+	if (point.squaredDistanceTo(position) < topRight.squaredDistanceTo(position)) {
 		point = topRight;
 	}
-	if (point.distanceTo(position) < bottomLeft.distanceTo(position)) {
+	if (point.squaredDistanceTo(position) < bottomLeft.squaredDistanceTo(position)) {
 		point = bottomLeft;
 	}
-	if (point.distanceTo(position) < bottomRight.distanceTo(position)) {
+	if (point.squaredDistanceTo(position) < bottomRight.squaredDistanceTo(position)) {
 		point = bottomRight;
 	}
 
@@ -153,5 +155,7 @@ Vector3 RectangularAreaShapeImplementation::getFarthestPoint(const Vector3& posi
 }
 
 float RectangularAreaShapeImplementation::getRadius() const {
-	return Math::sqrt(getHeight() * getHeight() + getWidth() * getWidth()) / 2;
+	float rad = Math::sqrt(getHeight() * getHeight() + getWidth() * getWidth()) / 2;
+
+	return rad;
 }

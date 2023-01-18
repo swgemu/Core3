@@ -10,7 +10,7 @@
 namespace server {
 namespace zone {
 
-class ActiveAreaQuadTreeNode {
+class ActiveAreaQuadTreeNode : public Logger {
 protected:
 	SortedVector<Reference<ActiveArea*>> areas;
 
@@ -72,7 +72,7 @@ public:
 	friend class ActiveAreaQuadTree;
 };
 
-class ActiveAreaQuadTree : public Object {
+class ActiveAreaQuadTree : public Object, public Logger {
 #ifdef AREA_TREE_SIMPLE
 	SortedVector<Reference<ActiveArea*>> areas;
 #else
@@ -86,6 +86,8 @@ public:
 #else
 		areas.setNoDuplicateInsertPlan();
 #endif
+
+		setLoggingName("ActiveAreaQuadTree");
 	}
 
 	template <typename AreaType>

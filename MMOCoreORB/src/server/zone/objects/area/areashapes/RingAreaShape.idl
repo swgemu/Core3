@@ -7,9 +7,8 @@ package server.zone.objects.area.areashapes;
 import server.zone.objects.area.areashapes.AreaShape;
 import server.zone.objects.area.areashapes.CircularAreaShape;
 include engine.util.u3d.Vector3;
-import engine.log.Logger;
 
-class RingAreaShape extends AreaShape implements Logger {
+class RingAreaShape extends AreaShape {
 
 	/** The radius to the inner edge of the ring. */
 	protected float innerRadius;
