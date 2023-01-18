@@ -8,7 +8,7 @@ import server.zone.objects.area.areashapes.AreaShape;
 include engine.util.u3d.Vector3;
 import engine.log.Logger;
 
-class RectangularAreaShape extends AreaShape implements Logger {
+class RectangularAreaShape extends AreaShape {
 
 	/** The bottom left corner of the rectangle. */
 	protected float blX;
@@ -40,6 +40,10 @@ class RectangularAreaShape extends AreaShape implements Logger {
 		blY = y1;
 		urX = x2;
 		urY = y2;
+	}
+
+	public void logDimensions() {
+		Logger.info(true) << "Lower Left: X = " << blX <<  " Y = " << blY << " Upper Right: X = " << urX << " Y = " << urY;
 	}
 
 	/**

@@ -1,13 +1,16 @@
 #include "server/zone/ActiveAreaQuadTree.h"
+#include "engine/log/Logger.h"
+#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 
 using namespace server::zone;
 
-ActiveAreaQuadTreeNode::ActiveAreaQuadTreeNode(float minx, float miny, float maxx, float maxy, const ActiveAreaQuadTreeNode* parent)
-	: minX(minx), minY(miny), maxX(maxx), maxY(maxy), parentNode(parent) {
+ActiveAreaQuadTreeNode::ActiveAreaQuadTreeNode(float minx, float miny, float maxx, float maxy, const ActiveAreaQuadTreeNode* parent) : minX(minx), minY(miny), maxX(maxx), maxY(maxy), parentNode(parent) {
 	dividerX = (minX + maxX) / 2;
 	dividerY = (minY + maxY) / 2;
 
 	areas.setNoDuplicateInsertPlan();
+
+	setLoggingName("ActiveAreaQuadTreeNode");
 }
 
 #ifndef AREA_TREE_SIMPLE
@@ -21,8 +24,9 @@ void ActiveAreaQuadTree::insert(ActiveAreaQuadTreeNode& node, ActiveArea* area) 
 		}
 	}
 
-	const float x = area->getPositionX();
-	const float y = area->getPositionY();
+	Vector3 location = area->getAreaCenter();
+	const float x = location.getX();
+	const float y = location.getY();
 	const float radius = area->getRadius();
 
 	if (node.testAreaInside(x, y, radius)) {

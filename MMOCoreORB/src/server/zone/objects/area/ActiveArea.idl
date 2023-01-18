@@ -8,7 +8,7 @@ include server.zone.objects.scene.SceneObject;
 include server.zone.objects.area.areashapes.AreaShape;
 include system.util.Vector;
 
-
+import engine.util.u3d.Vector3;
 import server.zone.Zone;
 import server.zone.objects.pathfinding.NavArea;
 import server.zone.objects.region.Region;
@@ -322,6 +322,11 @@ class ActiveArea extends SceneObject {
 	public int getAreaFlags() {
 		return areaFlags;
 	}
+
+	@dereferenced
+	@local
+	@read
+	public native Vector3 getAreaCenter();
 
 	@read
 	public float getRadius2() {
