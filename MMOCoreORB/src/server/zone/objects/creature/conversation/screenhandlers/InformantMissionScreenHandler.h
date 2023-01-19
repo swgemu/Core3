@@ -25,7 +25,7 @@ public:
 
 	InformantMissionScreenHandler() : ScreenHandler(), Logger("InformantMissionScreenHandler") {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, SceneObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		return true;

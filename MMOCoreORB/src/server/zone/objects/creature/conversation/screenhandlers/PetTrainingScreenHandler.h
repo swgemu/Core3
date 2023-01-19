@@ -37,7 +37,7 @@ public:
 
 	PetTrainingScreenHandler() : ScreenHandler(), Logger("PetTrainingScreenHandler") {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, SceneObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		return true;

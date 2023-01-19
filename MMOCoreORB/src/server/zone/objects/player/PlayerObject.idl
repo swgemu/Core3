@@ -921,7 +921,7 @@ class PlayerObject extends IntangibleObject {
 		lastNpcConvoOptions.removeAll();
 	}
 
-	public void setConversatingCreature(CreatureObject creature) {
+	public void setConversatingCreature(SceneObject creature) {
 		if (!creature)
 			conversatingCreature = 0;
 		else
