@@ -9,6 +9,7 @@ include server.zone.objects.area.areashapes.AreaShape;
 include system.util.Vector;
 
 import engine.util.u3d.Vector3;
+import engine.util.u3d.Vector4;
 import server.zone.Zone;
 import server.zone.objects.pathfinding.NavArea;
 import server.zone.objects.region.Region;
@@ -343,6 +344,17 @@ class ActiveArea extends SceneObject {
 			return super.getRadius();
 		}
 	}
+
+	@read
+	public native float getHeight();
+
+	@read
+	public native float getWidth();
+
+	@dereferenced
+	@local
+	@read
+	public native Vector4 getRectangularDimensions();
 
 	@read
 	public unsigned long getCellObjectID() {

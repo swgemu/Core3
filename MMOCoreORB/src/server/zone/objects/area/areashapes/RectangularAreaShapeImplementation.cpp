@@ -159,3 +159,9 @@ float RectangularAreaShapeImplementation::getRadius() const {
 
 	return rad;
 }
+
+Vector4 RectangularAreaShapeImplementation::getRectangularDimensions() const {
+	Vector4 dimensions(blX, blY, urX, urY);
+
+	return dimensions;
+}
