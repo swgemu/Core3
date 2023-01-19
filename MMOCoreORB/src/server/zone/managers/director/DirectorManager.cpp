@@ -8,6 +8,7 @@
 #include "DirectorManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/creature/LuaCreatureObject.h"
+#include "server/zone/objects/ship/LuaShipObject.h"
 #include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/scene/LuaSceneObject.h"
 #include "server/zone/objects/building/LuaBuildingObject.h"
@@ -737,6 +738,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaCellObject>::Register(luaEngine->getLuaState());
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
 	Luna<LuaCreatureObject>::Register(luaEngine->getLuaState());
+	Luna<LuaShipObject>::Register(luaEngine->getLuaState());
 	Luna<LuaSceneObject>::Register(luaEngine->getLuaState());
 	Luna<LuaConversationScreen>::Register(luaEngine->getLuaState());
 	Luna<LuaConversationSession>::Register(luaEngine->getLuaState());
@@ -3056,7 +3058,7 @@ void DirectorManager::startScreenPlay(CreatureObject* creatureObject, const Stri
 	startScreenPlay.callFunction();
 }
 
-ConversationScreen* DirectorManager::getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC) {
+ConversationScreen* DirectorManager::getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption, SceneObject* conversingNPC) {
 	Lua* lua = getLuaInstance();
 
 	LuaFunction runMethod(lua->getLuaState(), luaClass, "getNextConversationScreen", 1);
@@ -3074,7 +3076,7 @@ ConversationScreen* DirectorManager::getNextConversationScreen(const String& lua
 	return result;
 }
 
-ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, SceneObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	Lua* lua = getLuaInstance();
 
 	LuaFunction runMethod(lua->getLuaState(), luaClass, "runScreenHandlers", 1);
