@@ -101,8 +101,7 @@ naboo_regions = {
 	{"kaadara_nobuild_1", 5168, 6704, {CIRCLE, 640}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
 	{"keren_nobuild_1", -200, 1756, {RECTANGLE, 3000, 3700}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
 	{"moenia_nobuild_1", 4800, -4784, {CIRCLE, 700}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
-	{"theed_nobuild_1", -6600, 3420, {RECTANGLE, -5270, 5316}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
-	{"theed_nobuild_2", -5270, 3420, {RECTANGLE, -3980, 5316}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
+	{"theed_nobuild_1", -6600, 3420, {RECTANGLE, -3980, 5316}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
 
 	--Spawns
 	{"deeja_easy_newbie", 5060, -1470, {CIRCLE, 1300}, SPAWNAREA, {"naboo_deeja_easy_newbie"}, 64},
@@ -159,7 +158,7 @@ naboo_regions = {
 	{"@naboo_region_names:rainforest_1", -432, 2064, {CIRCLE, 976}, SPAWNAREA, {"naboo_central_jungle_swamp"}, 32},
 	{"@naboo_region_names:rainforest_2", 3856, 2640, {CIRCLE, 1000}, SPAWNAREA, {"naboo_north_eastern_jungle_swamp"}, 32},
 	{"@naboo_region_names:rainforest_3", 6464, 6592, {CIRCLE, 500}, SPAWNAREA, {"naboo_north_eastern_jungle_swamp"}, 16},
-	{"@naboo_region_names:forest_1", -6768, 2928, {CIRCLE, 845}, SPAWNAREA, {"naboo_hard_peko_peko_nw"}, 8},
+	{"@naboo_region_names:forest_1", -6768, 2928, {CIRCLE, 845}, SPAWNAREA, {"naboo_hard_peko_peko_nw", "naboo_medium_tusk_cat_nw"}, 8},
 	{"@naboo_region_names:gallo_jungle_1", -8000, -448, {RECTANGLE, 8000, 1856}, SPAWNAREA, {"naboo_central_jungle_swamp"}, 256},
 	{"@naboo_region_names:gallo_jungle_2", -8000, -5276, {RECTANGLE, 8000, -3076}, SPAWNAREA, {"naboo_southeast_swamp", "naboo_southwest_swamp", "naboo_hard_gungan_sw"}, 256},
 	{"@naboo_region_names:gallo_forest_1", -8000, -3008, {RECTANGLE, 8000, -448}, SPAWNAREA, {"naboo_world"}, 256},
