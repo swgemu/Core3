@@ -41,6 +41,7 @@
 #include "server/zone/objects/scene/components/LuaContainerComponent.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/SpaceStationObject.h"
 //#include "PositionUpdateTask.h"
 
 #include "variables/ContainerPermissions.h"
@@ -1972,6 +1973,14 @@ bool SceneObject::isShipObject() {
 	return false;
 }
 
+bool SceneObjectImplementation::isSpaceStationObject() {
+	return false;
+}
+
+bool SceneObject::isSpaceStationObject() {
+	return false;
+}
+
 AiAgent* SceneObjectImplementation::asAiAgent() {
 	return nullptr;
 }
@@ -2001,6 +2010,14 @@ ShipObject* SceneObject::asShipObject() {
 }
 
 ShipObject* SceneObjectImplementation::asShipObject() {
+	return nullptr;
+}
+
+SpaceStationObject* SceneObject::asSpaceStationObject() {
+	return nullptr;
+}
+
+SpaceStationObject* SceneObjectImplementation::asSpaceStationObject() {
 	return nullptr;
 }
 
