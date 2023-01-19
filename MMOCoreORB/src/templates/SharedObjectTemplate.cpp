@@ -166,6 +166,10 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		zoneComponent = Lua::getStringParameter(state);
 	} else if (varName == "spaceZoneComponent") {
 		spaceZoneComponent = Lua::getStringParameter(state);
+	} else if (varName == "conversationTemplate") {
+		conversationTemplate = Lua::getStringParameter(state);
+	} else if (varName == "conversationMobile") {
+		conversationMobile = Lua::getStringParameter(state);
 	} else if (varName == "objectMenuComponent") {
 		objectMenuComponent = Lua::getStringParameter(state);
 	} else if (varName == "attributeListComponent") {

@@ -86,6 +86,10 @@ protected:
 
 	String dataObjectComponent;
 
+	// Used for SpaceStations/Ships
+	String conversationTemplate;
+	String conversationMobile;
+
 	bool inheritPermissionsFromParent;
 	HashTable<uint32, uint32> groupPermissions;
 
@@ -403,6 +407,14 @@ public:
 
 	inline const String& getSpaceZoneComponent() const {
 		return spaceZoneComponent;
+	}
+
+	inline const String& getConversationTemplate() {
+		return conversationTemplate;
+	}
+
+	inline const String& getConversationMobile() {
+		return conversationMobile;
 	}
 
 	inline const String& getObjectMenuComponent() const {
