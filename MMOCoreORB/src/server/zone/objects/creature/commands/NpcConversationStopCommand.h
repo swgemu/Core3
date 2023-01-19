@@ -5,6 +5,8 @@
 #ifndef NPCCONVERSATIONSTOPCOMMAND_H_
 #define NPCCONVERSATIONSTOPCOMMAND_H_
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 class NpcConversationStopCommand : public QueueCommand {
 public:
 
@@ -28,7 +30,7 @@ public:
 		PlayerObject* ghost = player->getPlayerObject();
 
 		uint64 conversationCreatureOid = ghost->getConversatingCreature();
-		ManagedReference<CreatureObject*> object = (server->getZoneServer()->getObject(conversationCreatureOid)).castTo<CreatureObject*>();
+		ManagedReference<SceneObject*> object = (server->getZoneServer()->getObject(conversationCreatureOid)).castTo<SceneObject*>();
 
 		if (object != nullptr) {
 

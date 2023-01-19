@@ -291,6 +291,7 @@ includeFile("conversations/racetracks/nashalconversation.lua")
 
 -- Space
 includeFile("conversations/space/chassis_dealer_conv.lua")
+includeFile("conversations/space/spacestation_yavin4.lua")
 
 -- Record Keepers
 includeFile("conversations/record_keepers/planet_record_keeper_dantooine_conv.lua")

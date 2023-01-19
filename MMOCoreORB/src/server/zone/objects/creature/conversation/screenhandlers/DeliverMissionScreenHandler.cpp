@@ -8,7 +8,7 @@
 
 const String DeliverMissionScreenHandler::STARTSCREENHANDLERID = "convoscreenstart";
 
-MissionObject* DeliverMissionScreenHandler::getRelevantMissionObject(CreatureObject* player, CreatureObject* npc) {
+MissionObject* DeliverMissionScreenHandler::getRelevantMissionObject(CreatureObject* player, SceneObject* npc) {
 	if (player == nullptr || npc == nullptr) {
 		return nullptr;
 	}
@@ -43,7 +43,7 @@ MissionObject* DeliverMissionScreenHandler::getRelevantMissionObject(CreatureObj
 	return nullptr;
 }
 
-bool DeliverMissionScreenHandler::isTargetNpc(DeliverMissionObjective* objective, CreatureObject* npc) {
+bool DeliverMissionScreenHandler::isTargetNpc(DeliverMissionObjective* objective, SceneObject* npc) {
 	ManagedReference<AiAgent*> targetNpc = objective->getTargetSpawn();
 
 	if (targetNpc == nullptr) {
@@ -53,7 +53,7 @@ bool DeliverMissionScreenHandler::isTargetNpc(DeliverMissionObjective* objective
 	return targetNpc == npc;
 }
 
-bool DeliverMissionScreenHandler::isDestinationNpc(DeliverMissionObjective* objective, CreatureObject* npc) {
+bool DeliverMissionScreenHandler::isDestinationNpc(DeliverMissionObjective* objective, SceneObject* npc) {
 	ManagedReference<AiAgent*> destinationNpc = objective->getDestinationSpawn();
 
 	if (destinationNpc == nullptr) {
@@ -119,7 +119,7 @@ void DeliverMissionScreenHandler::performDeliverConversation(ConversationScreen*
 	}
 }
 
-ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* conversingPlayer, SceneObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	//Get relevant mission object if it exists.
 	MissionObject* mission = getRelevantMissionObject(conversingPlayer, conversingNPC);
 
