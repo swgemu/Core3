@@ -62,6 +62,7 @@ include server.metrics.Metrics;
 include engine.util.JSONSerializationType;
 include server.zone.objects.scene.variables.OrderedTaskExecutioner;
 import server.zone.objects.ship.ShipObject;
+import server.zone.objects.ship.SpaceStationObject;
 
 @mock
 @json
@@ -1574,6 +1575,19 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@nativeStub
 	@virtualStub
 	public native abstract ShipObject asShipObject();
+
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isSpaceStationObject();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract SpaceStationObject asSpaceStationObject();
 
 	@dirty
 	public abstract boolean isCreature() {

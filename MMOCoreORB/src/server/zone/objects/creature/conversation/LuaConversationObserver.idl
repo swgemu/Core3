@@ -10,6 +10,7 @@ include server.zone.objects.creature.conversation.ConversationTemplate;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.conversation.ConversationScreen;
 include server.zone.managers.director.DirectorManager;
+include server.zone.objects.scene.SceneObject;
 
 class LuaConversationObserver extends ConversationObserver {
 	public LuaConversationObserver(unsigned int convoTemplateCRC) {
@@ -17,14 +18,14 @@ class LuaConversationObserver extends ConversationObserver {
 	}
 
 	@local
-	public ConversationScreen getNextConversationScreen(CreatureObject conversingPlayer, int selectedOption, CreatureObject conversingNPC) {
+	public ConversationScreen getNextConversationScreen(CreatureObject conversingPlayer, int selectedOption, SceneObject conversingNPC) {
 		ConversationTemplate conversationTemplate = getConversationTemplate();
 
 		return DirectorManager.instance().getNextConversationScreen(conversationTemplate.getLuaClassHandler(), conversationTemplate, conversingPlayer, selectedOption, conversingNPC);
 	}
 
 	@local
-	public ConversationScreen runScreenHandlers(CreatureObject conversingPlayer, CreatureObject conversingNPC, int selectedOption, ConversationScreen conversationScreen) {
+	public ConversationScreen runScreenHandlers(CreatureObject conversingPlayer, SceneObject conversingNPC, int selectedOption, ConversationScreen conversationScreen) {
 		ConversationTemplate conversationTemplate = getConversationTemplate();
 
 		return DirectorManager.instance().runScreenHandlers(conversationTemplate.getLuaClassHandler(),conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen);

@@ -5,10 +5,22 @@
 
 package server.zone.objects.ship;
 
-import server.zone.objects.ship.ShipObject;
+import engine.log.Logger;
+import server.zone.objects.tangible.TangibleObject;
+include server.zone.objects.scene.SceneObject;
 
-class SpaceStationObject extends ShipObject {
+class SpaceStationObject extends SceneObject {
+
 	public SpaceStationObject() {
 		Logger.setLoggingName("SpaceStationObject");
 	}
+
+	@dirty
+	@local
+	@nativeStub
+	public native boolean isSpaceStationObject();
+
+	@dirty
+	@preLocked
+	public native boolean sendConversationStartTo(SceneObject player);
 }
