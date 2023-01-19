@@ -27,6 +27,7 @@ include system.lang.ref.Reference;
 
 class ShipObject extends TangibleObject {
 	public static final int HYPERSPACE_DELAY = 40;
+	public static final int NAVIGATOR_DELAY = 20;
 
 	public static final int WEAPON_COMPONENT_START = 12;
 
@@ -48,7 +49,7 @@ class ShipObject extends TangibleObject {
 	protected int totalCellNumber;
 
 	@weakReference
-	protected SceneObject owner;
+	protected CreatureObject owner;
 
 	@weakReference
 	protected SceneObject pilotChair;
@@ -1105,11 +1106,11 @@ class ShipObject extends TangibleObject {
 	}
 
 	@weakReference
-	public SceneObject getOwner() {
+	public CreatureObject getOwner() {
 		return owner;
 	}
 
-	public void setOwner(SceneObject obj) {
+	public void setOwner(CreatureObject obj) {
 		owner = obj;
 	}
 

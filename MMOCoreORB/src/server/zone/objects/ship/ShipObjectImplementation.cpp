@@ -77,7 +77,7 @@ void ShipObjectImplementation::setShipName(const String& name, bool notifyClient
 }
 
 void ShipObjectImplementation::storeShip(SceneObject* creature) {
-	CreatureObject* creo = owner.get()->asCreatureObject();
+	CreatureObject* creo = owner.get();
 
 	if (creo == nullptr)
 		return;
@@ -320,7 +320,7 @@ ShipObject* ShipObject::asShipObject() {
 	return this;
 }
 
-void ShipObjectImplementation::install(CreatureObject* owner, SceneObject* sceno, int slot, bool notifyClient) {
+void ShipObjectImplementation::install(CreatureObject* player, SceneObject* sceno, int slot, bool notifyClient) {
 	ManagedReference<ShipComponent*> shipComponent = dynamic_cast<ShipComponent*>(sceno);
 
 	if (shipComponent == nullptr)
@@ -343,17 +343,16 @@ void ShipObjectImplementation::install(CreatureObject* owner, SceneObject* sceno
 
 	if (message != nullptr) {
 		message->close();
-		owner->sendMessage(message);
+		broadcastMessage(message, true, false);
 	}
 
-	shipComponent->install(owner, _this.getReferenceUnsafeStaticCast(), slot, notifyClient);
+	shipComponent->install(player, _this.getReferenceUnsafeStaticCast(), slot, notifyClient);
 	shipComponent->destroyObjectFromWorld(true);
-
 }
 
 String ShipObjectImplementation::getParkingLocation() {
 	if (parkingLocation == "") {
-		ManagedReference<SceneObject*> creo = owner.get();
+		ManagedReference<CreatureObject*> creo = owner.get();
 		if (creo != nullptr) {
 			parkingLocation = creo->getCityRegion().get()->getRegionDisplayedName();
 		}
@@ -363,11 +362,13 @@ String ShipObjectImplementation::getParkingLocation() {
 
 void ShipObjectImplementation::uninstall(CreatureObject* owner, int slot, bool notifyClient) {
 	DeltaMessage* message = new DeltaMessage(getObjectID(), 'SHIP', 6);
+
 	message->startUpdate(15);
 	shipComponents.set(slot, 0, message);
 	components.remove(0);
 	message->close();
-	owner->sendMessage(message);
+
+	broadcastMessage(message, true, false);
 }
 
 int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
@@ -519,7 +520,7 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 	// Ship is locked
 	Locker lock(ship);
 
-	SceneObject* strongOwner = owner.get();
+	CreatureObject* strongOwner = owner.get();
 
 	for (const auto& entry : components) {
 		int slot = entry.getKey();
@@ -571,10 +572,10 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 					} else {
 						ship->removeComponentFlag(Components::BOOSTER, ShipComponentFlag::DISABLED, true);
 
-						if (strongOwner != nullptr && strongOwner->isCreatureObject()) {
+						if (strongOwner != nullptr) {
 							StringIdChatParameter param;
 							param.setStringId("@space/space_interaction:booster_energy_depleted");
-							strongOwner->asCreatureObject()->sendSystemMessage(param);
+							strongOwner->sendSystemMessage(param);
 						}
 
 						ship->restartBooster();
@@ -681,8 +682,19 @@ void ShipObjectImplementation::restartBooster() {
 }
 
 void ShipObjectImplementation::setHyperspaceDelay() {
+	int delay = HYPERSPACE_DELAY;
+
+	ManagedReference<CreatureObject*> player = owner.get();
+
+	if (player != nullptr && player->isPlayerCreature()) {
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost != nullptr && ghost->hasAbility("space_navigator"))
+			delay = NAVIGATOR_DELAY;
+	}
+
 	hyperspaceTime.updateToCurrentTime();
-	hyperspaceTime.addMiliTime(HYPERSPACE_DELAY * 1000);
+	hyperspaceTime.addMiliTime(delay * 1000);
 }
 
 int ShipObjectImplementation::getHyperspaceDelay() {
