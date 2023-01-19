@@ -10,7 +10,7 @@
 namespace server {
 namespace zone {
 
-class ActiveAreaQuadTreeNode {
+class ActiveAreaQuadTreeNode : public Logger {
 protected:
 	SortedVector<Reference<ActiveArea*>> areas;
 
@@ -46,7 +46,36 @@ public:
 	}
 
 	bool testAreaInside(float x, float y, float radius) const {
-		return (x - radius) >= minX && (x + radius) < maxX && (y - radius) >= minY && (y + radius) < maxY;
+		float xDelta1 = x - radius;
+		float xDelta2 = x + radius;
+		float yDelta1 = y - radius;
+		float yDelta2 = y + radius;
+
+		bool runTest = (xDelta1 >= minX && xDelta2 < maxX && yDelta1 >= minY && yDelta2 < maxY);
+		return runTest;
+	}
+
+	bool testAreaInsideRectangle(ActiveArea* area) const {
+		if (area == nullptr)
+			return false;
+
+		Vector3 center = area->getAreaCenter();
+		Vector4 bounds = area->getRectangularDimensions();
+
+		float width = area->getWidth();
+		float height = area->getHeight();
+		float radius = area->getRadius();
+
+		float llX = bounds[0];
+		float llY = bounds[1];
+		float urX = bounds[2];
+		float urY = bounds[3];
+
+		bool runTest = (llX >= minX && urX < maxX && llY >= minY && urY < maxY);
+
+		//info(true) << "testAreaInside -- llX = " << llX << " llY = " << llY << " urX = " << urX << " urY = " << urY;
+
+		return runTest;
 	}
 
 	bool hasSubNodes() const {
@@ -72,7 +101,7 @@ public:
 	friend class ActiveAreaQuadTree;
 };
 
-class ActiveAreaQuadTree : public Object {
+class ActiveAreaQuadTree : public Object, public Logger {
 #ifdef AREA_TREE_SIMPLE
 	SortedVector<Reference<ActiveArea*>> areas;
 #else
@@ -86,6 +115,8 @@ public:
 #else
 		areas.setNoDuplicateInsertPlan();
 #endif
+
+		setLoggingName("ActiveAreaQuadTree");
 	}
 
 	template <typename AreaType>

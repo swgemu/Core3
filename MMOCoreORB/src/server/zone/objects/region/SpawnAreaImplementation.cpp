@@ -223,7 +223,7 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 	}
 
 	// Check the spot to see if spawning is allowed
-	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 32.f, isWorldSpawnArea())) {
+	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 64.f, isWorldSpawnArea())) {
 #ifdef DEBUG_SPAWNING
 		info(true) << "tryToSpawn Spawning is not permitted at " << randomPosition.toString();
 #endif // DEBUG_SPAWNING

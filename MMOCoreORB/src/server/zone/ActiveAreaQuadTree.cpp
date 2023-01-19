@@ -1,18 +1,31 @@
 #include "server/zone/ActiveAreaQuadTree.h"
+#include "engine/log/Logger.h"
+#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 
 using namespace server::zone;
 
-ActiveAreaQuadTreeNode::ActiveAreaQuadTreeNode(float minx, float miny, float maxx, float maxy, const ActiveAreaQuadTreeNode* parent)
-	: minX(minx), minY(miny), maxX(maxx), maxY(maxy), parentNode(parent) {
+ActiveAreaQuadTreeNode::ActiveAreaQuadTreeNode(float minx, float miny, float maxx, float maxy, const ActiveAreaQuadTreeNode* parent) : minX(minx), minY(miny), maxX(maxx), maxY(maxy), parentNode(parent) {
 	dividerX = (minX + maxX) / 2;
 	dividerY = (minY + maxY) / 2;
 
 	areas.setNoDuplicateInsertPlan();
+
+	setLoggingName("ActiveAreaQuadTreeNode");
 }
 
 #ifndef AREA_TREE_SIMPLE
 
 void ActiveAreaQuadTree::insert(ActiveAreaQuadTreeNode& node, ActiveArea* area) {
+	//info(true) << "ActiveAreaQuadTree::insert -- called " << area->getAreaName() << " Center Point = " << area->getAreaCenter().toString() << " Radius = " << area->getRadius();
+	//info(true) << "ActiveAreaQuadTree::insert  -- Node Info: minX = " << node.minX << " minY = " << node.minY << " maxX = " << node.maxX << " maxY = " << node.maxY << " DividerX = " << node.dividerX << " dividerY = " << node.dividerY;
+
+	/*if (area->isRectangularAreaShape()) {
+		RectangularAreaShape* rect = cast<RectangularAreaShape*>(area->getAreaShape());
+
+		info(true) << "ActiveAreaQuadTree::insert  --  Rectangle Info = ";
+		 rect->logDimensions();
+	}*/
+
 	if (!node.hasSubNodes()) {
 		if ((node.maxX - node.minX <= 8) && (node.maxY - node.minY <= 8)) {
 			node.insertArea(area);
@@ -21,11 +34,13 @@ void ActiveAreaQuadTree::insert(ActiveAreaQuadTreeNode& node, ActiveArea* area) 
 		}
 	}
 
-	const float x = area->getPositionX();
-	const float y = area->getPositionY();
+	Vector3 location = area->getAreaCenter();
+	const float x = location.getX();
+	const float y = location.getY();
 	const float radius = area->getRadius();
+	bool isRectangle = area->isRectangularAreaShape();
 
-	if (node.testAreaInside(x, y, radius)) {
+	if ((isRectangle && node.testAreaInsideRectangle(area)) || node.testAreaInside(x, y, radius)) {
 		if (node.testInSWArea(x, y, radius)) {
 			if (node.swNode == nullptr) {
 				node.swNode = makeUnique<ActiveAreaQuadTreeNode>(node.minX, node.minY, node.dividerX, node.dividerY, &node);

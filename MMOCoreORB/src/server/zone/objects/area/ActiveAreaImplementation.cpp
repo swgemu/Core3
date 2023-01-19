@@ -10,6 +10,7 @@
 #include "server/zone/objects/area/areashapes/AreaShape.h"
 #include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/managers/creature/SpawnAreaMap.h"
+#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 
 bool ActiveAreaImplementation::containsPoint(float px, float py, uint64 cellid) const {
 	if (cellObjectID != 0 && cellObjectID != cellid)
@@ -186,4 +187,46 @@ void ActiveAreaImplementation::removeAreaFlag(uint32 flag) {
 	if (areaFlags & flag) {
 		areaFlags &= ~flag;
 	}
+}
+
+Vector3 ActiveAreaImplementation::getAreaCenter() const {
+	if (areaShape != nullptr)
+		return areaShape->getAreaCenter();
+	else
+		return getPosition();
+}
+
+float ActiveAreaImplementation::getHeight() const {
+	if (isRectangularAreaShape()) {
+		RectangularAreaShape* rect = cast<RectangularAreaShape*>(areaShape.get());
+
+		if (rect != nullptr)
+			return rect->getHeight();
+	}
+
+	return 0.0f;
+}
+
+float ActiveAreaImplementation::getWidth() const {
+	if (isRectangularAreaShape()) {
+		RectangularAreaShape* rect = dynamic_cast<RectangularAreaShape*>(areaShape.get());
+
+		if (rect != nullptr)
+			return rect->getHeight();
+	}
+
+	return 0.0f;
+}
+
+Vector4 ActiveAreaImplementation::getRectangularDimensions() const {
+	Vector4 dimsensions;
+
+	if (isRectangularAreaShape()) {
+		RectangularAreaShape* rect = dynamic_cast<RectangularAreaShape*>(areaShape.get());
+
+		if (rect != nullptr)
+			dimsensions = rect->getRectangularDimensions();
+	}
+
+	return dimsensions;
 }
