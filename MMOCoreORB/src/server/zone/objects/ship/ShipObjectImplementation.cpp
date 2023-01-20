@@ -23,6 +23,7 @@
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "templates/tangible/SharedShipObjectTemplate.h"
+#include "server/zone/objects/intangible/ShipControlDevice.h"
 
 //#include "server/zone/packets/tangible/TangibleObjectMessage8.h"
 //#include "server/zone/packets/tangible/TangibleObjectMessage9.h"
@@ -76,36 +77,26 @@ void ShipObjectImplementation::setShipName(const String& name, bool notifyClient
 	shipNameCRC.update(name.hashCode(), false);
 }
 
-void ShipObjectImplementation::storeShip(SceneObject* creature) {
-	CreatureObject* creo = owner.get();
+void ShipObjectImplementation::storeShip(CreatureObject* player) {
 
-	if (creo == nullptr)
+	ShipObject* ship = asShipObject();
+
+	if (player == nullptr || ship == nullptr)
 		return;
 
-	Locker lock(creo);
+	Locker lock(player);
 
-	creo->clearState(CreatureState::PILOTINGSHIP);
-
-	ZoneServer* zoneServer = creo->getZoneServer();
+	player->clearState(CreatureState::PILOTINGSHIP);
+	ZoneServer* zoneServer = player->getZoneServer();
 
 	if (zoneServer == nullptr)
 		return;
 
 	ShipControlDevice* shipControlDevice = zoneServer->getObject(getControlDeviceID()).castTo<ShipControlDevice*>();
 
-	if (shipControlDevice == nullptr)
-		return;
+	Locker locker(shipControlDevice);
 
-	Locker locker(asShipObject());
-	Locker locker2(shipControlDevice);
-
-	String storedLocation = creo->getCityRegion().get()->getRegionDisplayedName();
-
-	setStoredLocation(storedLocation);
-	destroyObjectFromWorld(true);
-
-	shipControlDevice->transferObject(this->asShipObject(), 4, true);
-	shipControlDevice->updateStatus(0);
+	shipControlDevice->storeShip(player, ship);
 }
 
 void ShipObjectImplementation::createChildObjects() {

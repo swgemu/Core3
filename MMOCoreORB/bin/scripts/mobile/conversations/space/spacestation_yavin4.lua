@@ -66,8 +66,8 @@ spacestation_yavin4_land_labor_main = ConvoScreen:new {
     leftDialog = "@conversation/station_yavin4:s_b942e498",
     stopConversation = "false",
     options = {
-        {"@conversation/station_yavin4:s2dc4697a", "spacestation_yavin4_land_labor_land"},
-        {"conversation/station_yavin4:s_b989d1b3", "spacestation_yavin4_land_all_abort"},
+        {"@conversation/station_yavin4:s_2dc4697a", "spacestation_yavin4_land_labor_land"},
+        {"@conversation/station_yavin4:s_b989d1b3", "spacestation_yavin4_land_all_abort"},
     }
 }
 
@@ -91,8 +91,8 @@ spacestation_yavin4_land_imperial_main = ConvoScreen:new {
     leftDialog = "@conversation/station_yavin4:s_238a5da3",
     stopConversation = "false",
     options = {
-        {"@conversation/station_yavin4:s2dc4697a", "spacestation_yavin4_land_imperial_land"},
-        {"conversation/station_yavin4:s_b989d1b3", "spacestation_yavin4_land_all_abort"},
+        {"@conversation/station_yavin4:s_2dc4697a", "spacestation_yavin4_land_imperial_land"},
+        {"@conversation/station_yavin4:s_b989d1b3", "spacestation_yavin4_land_all_abort"},
     }
 }
 
