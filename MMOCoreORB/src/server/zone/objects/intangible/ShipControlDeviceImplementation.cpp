@@ -10,6 +10,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/SpaceZone.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/ship/ShipObject.h"
 
 void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 	//info("generating ship", true);
@@ -43,30 +44,22 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 		ghost->setTeleporting(true);
 }
 
-void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool force) {
-	if (player == nullptr)
+void ShipControlDeviceImplementation::storeShip(CreatureObject* player, ShipObject* ship) {
+	if (player == nullptr || !player->isInQuadTree())
 		return;
 
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-
-	if (controlledObject == nullptr)
+	if (ship == nullptr || !ship->isInOctTree())
 		return;
 
-	Locker clocker(controlledObject, player);
+	Locker locker(ship);
 
-	if (!controlledObject->isInOctTree())
-		return;
+	String storedLocation = player->getCityRegion().get()->getRegionDisplayedName();
 
-	Zone* zone = player->getZone();
+	ship->setStoredLocation(storedLocation);
 
-	if (zone == nullptr)
-		return;
+	ship->destroyObjectFromWorld(true);
 
-	zone->transferObject(player, -1, false);
-
-	controlledObject->destroyObjectFromWorld(true);
-
-	transferObject(controlledObject, 4, true);
+	transferObject(ship, 4, true);
 
 	updateStatus(0);
 }

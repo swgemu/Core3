@@ -3550,7 +3550,7 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 		}
 	}
 
-	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
+	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), 0, "");
 	player->sendMessage(conv);
 
 	SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::STARTCONVERSATION);

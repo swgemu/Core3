@@ -54,7 +54,7 @@ int LuaShipObject::storeShip(lua_State* L) {
 	if (realObject == nullptr)
 		return 0;
 
-	SceneObject* creo = static_cast<SceneObject*>(lua_touserdata(L, -1));
+	CreatureObject* creo = static_cast<CreatureObject*>(lua_touserdata(L, -1));
 
 	if (creo == nullptr)
 		return 0;

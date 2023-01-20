@@ -10,6 +10,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.managers.radial.RadialOptions;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.ship.ShipObject;
 
 @json
 class ShipControlDevice extends ControlDevice {
@@ -19,7 +20,7 @@ class ShipControlDevice extends ControlDevice {
 
 	@preLocked
 	@arg1preLocked
-	public native void storeObject(CreatureObject player, boolean force = false);
+	public native void storeShip(CreatureObject player, ShipObject ship);
 
 	@preLocked
 	@arg1preLocked

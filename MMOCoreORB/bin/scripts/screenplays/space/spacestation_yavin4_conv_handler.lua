@@ -34,7 +34,6 @@ end
 
 function spacestation_yavin4_conv_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 
-    Logger:log("yavin4 runScreenHandler", LT_ERROR)
     local player = LuaSceneObject(conversingPlayer)
     local screen = LuaConversationScreen(conversationScreen)
     local screenID = screen:getScreenID()
