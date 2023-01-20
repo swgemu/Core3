@@ -29,7 +29,7 @@ bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* play
 
 	uint32 mobileCRC = (uint32)mobile.hashCode();
 
-	StartNpcConversation* conv = new StartNpcConversation(playerCreature, oid, "test", mobileCRC);
+	StartNpcConversation* conv = new StartNpcConversation(playerCreature, oid, 0 , "", mobileCRC);
 
 	player->sendMessage(conv);
 

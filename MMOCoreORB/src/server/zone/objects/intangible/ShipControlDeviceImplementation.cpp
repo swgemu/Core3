@@ -4,6 +4,7 @@
 */
 
 #include "server/zone/objects/intangible/ShipControlDevice.h"
+#include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -12,12 +13,20 @@
 #include "server/zone/managers/player/PlayerManager.h"
 
 void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
-	//info("generating ship", true);
+	info("generating ship", true);
 	//return;
 
 	ZoneServer* zoneServer = getZoneServer();
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
+	ShipObject* ship = controlledObject.castTo<ShipObject*>();
+
+	if (ship == nullptr)
+		return;
+
+	if (ship->getControlDeviceID() != 0)
+		ship->setControlDeviceID(getObjectID());
 
 	Locker clocker(controlledObject, player);
 
@@ -43,30 +52,22 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 		ghost->setTeleporting(true);
 }
 
-void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool force) {
-	if (player == nullptr)
+void ShipControlDeviceImplementation::storeShip(CreatureObject* player, ShipObject* ship) {
+
+	if (player == nullptr || !player->isInQuadTree())
 		return;
 
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-
-	if (controlledObject == nullptr)
+	if (ship == nullptr || !ship->isInOctTree())
 		return;
 
-	Locker clocker(controlledObject, player);
+	Locker locker(ship);
 
-	if (!controlledObject->isInOctTree())
-		return;
+	String storedLocation = player->getCityRegion().get()->getRegionDisplayedName();
 
-	Zone* zone = player->getZone();
+	ship->setStoredLocation(storedLocation);
+	ship->destroyObjectFromWorld(true);
 
-	if (zone == nullptr)
-		return;
-
-	zone->transferObject(player, -1, false);
-
-	controlledObject->destroyObjectFromWorld(true);
-
-	transferObject(controlledObject, 4, true);
+	transferObject(ship, 4, true);
 
 	updateStatus(0);
 }

@@ -34,8 +34,8 @@ end
 
 function spacestation_yavin4_conv_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 
-    Logger:log("yavin4 runScreenHandler", LT_ERROR)
-    local player = LuaSceneObject(conversingPlayer)
+    local player = LuaCreatureObject(conversingPlayer)
+    local playerscno = LuaSceneObject(conversingPlayer)
     local screen = LuaConversationScreen(conversationScreen)
     local screenID = screen:getScreenID()
     local pConvScreen = screen:cloneScreen()
@@ -43,15 +43,15 @@ function spacestation_yavin4_conv_handler:runScreenHandlers(conversationTemplate
     local pShip = SceneObject(conversingPlayer):getParent()
 
     if (screenID == "spacestation_yavin4_land_mining_land") then
-        player:switchZone("yavin4", -267, 35, 4896, 0)
+        playerscno:switchZone("yavin4", -267, 35, 4896, 0)
         LuaShipObject(pShip):storeShip(conversingPlayer)
 
     elseif (screenID == "spacestation_yavin4_land_labor_land") then
-        player:switchZone("yavin4", -6921, 73, -5726, 0)
+        playerscno:switchZone("yavin4", -6921, 73, -5726, 0)
         LuaShipObject(pShip):storeShip(conversingPlayer)
 
     elseif (screenID == "spacestation_yavin4_land_imperial_land") then
-        player:switchZone("yavin4", 4054, 37, -6216, 0)
+        playerscno:switchZone("yavin4", 4054, 37, -6216, 0)
         LuaShipObject(pShip):storeShip(conversingPlayer)
     end
 
