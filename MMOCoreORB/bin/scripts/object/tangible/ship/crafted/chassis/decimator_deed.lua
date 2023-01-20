@@ -43,8 +43,10 @@
 
 object_tangible_ship_crafted_chassis_decimator_deed = object_tangible_ship_crafted_chassis_shared_decimator_deed:new {
 
-    templateType = SHIPDEED,
-	shipControlObject = "object/intangible/ship/decimator_pcd.iff",
+	templateType = SHIPDEED,
+	gameObjectType = 8388617,
+
+	controlDeviceObjectTemplate = "object/intangible/ship/decimator_pcd.iff",
 	generatedObjectTemplate = "object/ship/player/player_decimator.iff",
 }
 

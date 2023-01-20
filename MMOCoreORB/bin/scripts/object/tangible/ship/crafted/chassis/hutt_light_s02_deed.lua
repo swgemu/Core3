@@ -43,8 +43,10 @@
 
 object_tangible_ship_crafted_chassis_hutt_light_s02_deed = object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed:new {
 
-    templateType = SHIPDEED,
-	shipControlObject = "object/intangible/ship/hutt_light_02_pcd.iff",
+	templateType = SHIPDEED,
+	gameObjectType = 8388617,
+
+	controlDeviceObjectTemplate = "object/intangible/ship/hutt_light_02_pcd.iff",
 	generatedObjectTemplate = "object/ship/player/player_hutt_light_s02.iff",
 }
 
