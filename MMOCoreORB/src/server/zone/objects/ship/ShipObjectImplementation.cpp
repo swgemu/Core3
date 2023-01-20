@@ -76,17 +76,17 @@ void ShipObjectImplementation::setShipName(const String& name, bool notifyClient
 	shipNameCRC.update(name.hashCode(), false);
 }
 
-void ShipObjectImplementation::storeShip(SceneObject* creature) {
-	CreatureObject* creo = owner.get();
+void ShipObjectImplementation::storeShip(CreatureObject* player) {
+	ShipObject* ship = asShipObject();
 
-	if (creo == nullptr)
+	if (player == nullptr || ship == nullptr)
 		return;
 
-	Locker lock(creo);
+	Locker lock(player);
 
-	creo->clearState(CreatureState::PILOTINGSHIP);
+	player->clearState(CreatureState::PILOTINGSHIP);
 
-	ZoneServer* zoneServer = creo->getZoneServer();
+	ZoneServer* zoneServer = player->getZoneServer();
 
 	if (zoneServer == nullptr)
 		return;
@@ -96,16 +96,10 @@ void ShipObjectImplementation::storeShip(SceneObject* creature) {
 	if (shipControlDevice == nullptr)
 		return;
 
-	Locker locker(asShipObject());
-	Locker locker2(shipControlDevice);
+	Locker locker(shipControlDevice);
 
-	String storedLocation = creo->getCityRegion().get()->getRegionDisplayedName();
+	shipControlDevice->storeShip(player, ship);
 
-	setStoredLocation(storedLocation);
-	destroyObjectFromWorld(true);
-
-	shipControlDevice->transferObject(this->asShipObject(), 4, true);
-	shipControlDevice->updateStatus(0);
 }
 
 void ShipObjectImplementation::createChildObjects() {

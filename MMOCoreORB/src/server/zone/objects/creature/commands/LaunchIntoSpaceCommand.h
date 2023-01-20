@@ -93,6 +93,11 @@ public:
 
 			Vector3 dest = planetMan->getJtlTravelDestination(arrivalPointName);
 			creature->switchZone(arrivalPlanet, dest.getX(), dest.getY(), dest.getZ(), 0);
+
+			String storedLocation = creature->getCityRegion().get()->getRegionDisplayedName();
+
+			ship->setStoredLocation(storedLocation);
+
 		} else { // launch into space
 			Zone* zone = creature->getZone();
 

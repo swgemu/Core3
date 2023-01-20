@@ -1107,6 +1107,8 @@ void PlayerCreationManager::createImperialStarterShip(CreatureObject* player) co
 
 		shipControlDevice->setControlledObject(ship);
 
+		ship->setControlDeviceID(shipControlDevice->getObjectID());
+
 		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
 		if (datapad != nullptr && datapad->transferObject(shipControlDevice, -1)) {
@@ -1148,6 +1150,8 @@ void PlayerCreationManager::createRebelStarterShip(CreatureObject* player) const
 		}
 
 		shipControlDevice->setControlledObject(ship);
+
+		ship->setControlDeviceID(shipControlDevice->getObjectID());
 
 		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
@@ -1191,6 +1195,8 @@ void PlayerCreationManager::createNeutralStarterShip(CreatureObject* player) con
 
 		shipControlDevice->setControlledObject(ship);
 
+		ship->setControlDeviceID(shipControlDevice->getObjectID());
+
 		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
 		if (datapad != nullptr && datapad->transferObject(shipControlDevice, -1)) {
@@ -1232,6 +1238,8 @@ void PlayerCreationManager::createStarterPobShip(CreatureObject* player) const {
 		}
 
 		shipControlDevice->setControlledObject(ship);
+
+		ship->setControlDeviceID(shipControlDevice->getObjectID());
 
 		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
