@@ -77,6 +77,7 @@
 #include "server/zone/objects/tangible/deed/vehicle/VehicleDeed.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
 #include "server/zone/objects/tangible/deed/droid/DroidDeed.h"
+#include "server/zone/objects/tangible/deed/ship/ShipDeed.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
