@@ -56,6 +56,7 @@ ShipManager::ShipManager() {
 	loadShipComponentData();
 	loadShipWeaponData();
 	loadHyperspaceLocations();
+
 	projectileThread = new ProjectileThread();
 	projectileThread->start();
 }

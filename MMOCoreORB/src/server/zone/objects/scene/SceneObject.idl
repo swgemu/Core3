@@ -1805,6 +1805,11 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	}
 
 	@dirty
+	public abstract boolean isShipDeedObject() {
+		return false;
+	}
+
+	@dirty
 	public abstract boolean isSignObject() {
 		return false;
 	}

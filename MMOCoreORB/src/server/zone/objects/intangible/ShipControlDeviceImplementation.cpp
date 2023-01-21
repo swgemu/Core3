@@ -12,38 +12,6 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
-void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
-	//info("generating ship", true);
-	//return;
-
-	ZoneServer* zoneServer = getZoneServer();
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-
-	Locker clocker(controlledObject, player);
-
-	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ() + 10, player->getPositionY());
-
-	try {
-		if (player->getZone() != nullptr) {
-			player->getZone()->transferObject(controlledObject, -1, true);
-		} else if (player->getSpaceZone() != nullptr) {
-			player->getSpaceZone()->transferObject(controlledObject, -1, true);
-		}
-	} catch (ArrayIndexOutOfBoundsException& e) {
-		e.printStackTrace();
-	}
-
-	controlledObject->transferObject(player, 5, true);
-
-	updateStatus(1);
-
-	PlayerObject* ghost = player->getPlayerObject();
-
-	if (ghost != nullptr)
-		ghost->setTeleporting(true);
-}
-
 void ShipControlDeviceImplementation::storeShip(CreatureObject* player, ShipObject* ship) {
 	if (player == nullptr || !player->isInQuadTree())
 		return;
@@ -80,22 +48,52 @@ bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Crea
 
 	ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 
-	int shipsInDatapad = numberInTrade;
+	int totalShips = numberInTrade;
+	int pobShips = 0;
 	int maxStoredShips = playerManager->getBaseStoredShips();
 
 	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
 		Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
 
-		if (obj != nullptr && obj->isShipControlDevice() ){
-			shipsInDatapad++;
+		if (obj == nullptr)
+			continue;
+
+		if (obj->isShipControlDevice()) {
+			totalShips++;
+
+			ShipControlDevice* shipDevice = obj.castTo<ShipControlDevice*>();
+
+			if (shipDevice != nullptr && shipDevice->isPobShipController())
+				pobShips++;
 		}
 	}
 
-	if (shipsInDatapad >= maxStoredShips){
-		player->sendSystemMessage("That person has too many ships in their datapad");
-		receiver->sendSystemMessage("You already have the maximum number of ships that you can own.");
-		return false;
+	if (totalShips >= maxStoredShips) {
+		StringIdChatParameter maxShips("space_interaction", "toomanyships"); // You have too many ships in your datapad already!
+		player->sendSystemMessage(maxShips);
+
+		return 1;
 	}
 
+	/*
+	if (pobShips > 1) {
+		StringIdChatParameter maxPobShips("space_interaction", "too_many_pobs"); // You cannot launch another ship with an interior. Empty out one of your other ships and you may take off with this ship.
+		player->sendSystemMessage(maxPobShips);
+
+		return 1;
+	}*/
+
 	return true;
+}
+
+bool ShipControlDeviceImplementation::isPobShipController() {
+	TangibleObject* shipTanO = getControlledObject();
+
+	if (shipTanO == nullptr || !shipTanO->isShipObject())
+		return false;
+
+	if (shipTanO->getContainerObjectsSize() > 0)
+		return true;
+
+	return false;
 }

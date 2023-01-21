@@ -24,10 +24,6 @@ class ShipControlDevice extends ControlDevice {
 
 	@preLocked
 	@arg1preLocked
-	public native void generateObject(CreatureObject player);
-
-	@preLocked
-	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
 	/**
@@ -42,6 +38,9 @@ class ShipControlDevice extends ControlDevice {
 
 	@dirty
 	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
+
+	@dirty
+	public native boolean isPobShipController();
 
 	@dirty
 	public boolean isShipControlDevice() {
