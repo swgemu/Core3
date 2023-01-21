@@ -14,17 +14,17 @@ import server.zone.objects.ship.ShipObject;
 
 @json
 class ShipControlDevice extends ControlDevice {
+	protected int shipType;
+
 	public ShipControlDevice() {
 		Logger.setLoggingName("ShipControlDevice");
+
+		shipType = 0;
 	}
 
 	@preLocked
 	@arg1preLocked
 	public native void storeShip(CreatureObject player, ShipObject ship);
-
-	@preLocked
-	@arg1preLocked
-	public native void generateObject(CreatureObject player);
 
 	@preLocked
 	@arg1preLocked
@@ -42,6 +42,17 @@ class ShipControlDevice extends ControlDevice {
 
 	@dirty
 	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
+
+	@local
+	@preLocked
+	public void setShipType(int type) {
+		shipType = type;
+	}
+
+	@read
+	public int getShipType() {
+		return shipType;
+	}
 
 	@dirty
 	public boolean isShipControlDevice() {

@@ -24,6 +24,7 @@ class ShipManager : public Singleton<ShipManager>, public Object, public Logger 
 			}
 		}
 	};
+
 	HashTable<uint32, Reference<ShipComponentData*>> shipComponents;
 	HashTable<String, ShipComponentData*> shipComponentTemplateNames;
 
@@ -44,6 +45,13 @@ class ShipManager : public Singleton<ShipManager>, public Object, public Logger 
 	bool doComponentDamage(ShipObject* ship, const Vector3& collisionPoint, const Vector3& direction, float& damage, int& slot, float& previous, float& current) const;
 
 public:
+	enum {
+		SHIP = 0,
+		FIGHTERSHIP = 1,
+		POBSHIP = 2,
+		SPACESTATION = 3
+	};
+
 	ShipManager();
 
 	static void notifyShipHit(ShipObject* target, const Vector3& localDir, int type, float curHealth, float prevHealth);
@@ -75,6 +83,11 @@ public:
 	ShipProjectileData* getProjectileData(uint32 hash) {
 		return shipProjectileData.get(hash);
 	}
+
+	const ShipChassisData* getChassisData(String shipName) {
+		return chassisData.get(shipName);
+	}
+
 	ShipObject* generateShip(String templateName);
 	ShipObject* generateImperialNewbieShip(Reference<CreatureObject*> owner);
 	ShipObject* generateRebelNewbieShip(Reference<CreatureObject*> owner);

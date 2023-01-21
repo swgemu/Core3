@@ -11,11 +11,13 @@
 #include "templates/tangible/DeedTemplate.h"
 
 class ShipDeedTemplate : public DeedTemplate {
-private:
-	String controlDeviceObjectTemplate;
+	String shipControlDevice;
+	int shipType;
 
 public:
 	ShipDeedTemplate() {
+		shipControlDevice = "";
+		shipType = 0;
 	}
 
 	~ShipDeedTemplate() {
@@ -24,11 +26,20 @@ public:
 	void readObject(LuaObject* templateData) {
 		DeedTemplate::readObject(templateData);
 
-		controlDeviceObjectTemplate = templateData->getStringField("controlDeviceObjectTemplate");
+		shipControlDevice = templateData->getStringField("shipControlDevice");
+		shipType = templateData->getIntField("shipType");
 	}
 
-	const String getControlDeviceObjectTemplate() {
-		return controlDeviceObjectTemplate;
+	inline const String& getShipControlDeviceTemplate() {
+		return shipControlDevice;
+	}
+
+	inline int getShipType() {
+		return shipType;
+	}
+
+	bool isShipDeedTemplate() {
+		return true;
 	}
 };
 
