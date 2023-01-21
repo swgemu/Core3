@@ -24,6 +24,7 @@ class ShipManager : public Singleton<ShipManager>, public Object, public Logger 
 			}
 		}
 	};
+
 	HashTable<uint32, Reference<ShipComponentData*>> shipComponents;
 	HashTable<String, ShipComponentData*> shipComponentTemplateNames;
 
@@ -75,6 +76,11 @@ public:
 	ShipProjectileData* getProjectileData(uint32 hash) {
 		return shipProjectileData.get(hash);
 	}
+
+	const ShipChassisData* getChassisData(String shipName) {
+		return chassisData.get(shipName);
+	}
+
 	ShipObject* generateShip(String templateName);
 	ShipObject* generateImperialNewbieShip(Reference<CreatureObject*> owner);
 	ShipObject* generateRebelNewbieShip(Reference<CreatureObject*> owner);
