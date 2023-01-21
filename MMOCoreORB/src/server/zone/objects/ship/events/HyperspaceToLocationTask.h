@@ -110,11 +110,17 @@ public:
 
 	void orientShip() {
 		Reference<CreatureObject*> player = play.get();
-		if (player == nullptr)
+		ShipObject* shipObject = ship.get();
+		if (player == nullptr || shipObject == nullptr)
 			return;
 
 		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(player->getObjectID(), zone, location.getX(), location.getY(), location.getZ());
 		player->sendMessage(msg);
+
+		//close s-foils as the ship is orienting if they're still open
+		uint32 optionsBitmask = shipObject->getOptionsBitmask();
+		if (optionsBitmask & OptionBitmask::WINGS_OPEN)
+			shipObject->clearOptionBit(OptionBitmask::WINGS_OPEN);
 	}
 
 	void beginHyperspace() {
