@@ -96,7 +96,7 @@ public:
 					//Logger::console.info(fileName + " Loading hardpoint: " + name + " Transform: " + toString(transform), true);
 					iffStream->closeChunk('HPNT');
 				}
-			} catch (Exception e) {
+			} catch (Exception &e) {
 				e.printStackTrace();
 			}
 			iffStream->closeForm('HPTS');
