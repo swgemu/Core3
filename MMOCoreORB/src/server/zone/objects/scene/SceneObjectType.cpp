@@ -58,7 +58,7 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case DATA2:						return "@got_n:data_fictional";
 		case PETCONTROLDEVICE:			return "@got_n:data_pet_control_device";
 		case VEHICLECONTROLDEVICE:		return "@got_n:data_vehicle_control_device";
-		case SHIPCONTROLDEVICE:			return "@got_n:data_ship_control_deice";
+		case SHIPCONTROLDEVICE:			return "@got_n:data_ship_control_device";
 		case DROIDCONTROLDEVICE:		return "@got_n:data_droid_control_device";
 		case THEATEROBJECT:				return "@got_n:misc";
 		case INSTALLATION:				return "@got_n:installation";
