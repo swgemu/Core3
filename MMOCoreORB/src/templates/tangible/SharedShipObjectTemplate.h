@@ -126,6 +126,10 @@ public:
 		return shipName;
 	}
 
+	inline bool shipHasWings() const {
+		return hasWings;
+	}
+
 	void parseVariableData(const String& varName, Chunk* data) {
 		if (varName == "interiorLayoutFileName") {
 			interiorLayoutFileName.parse(data);

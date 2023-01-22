@@ -69,6 +69,8 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected Time hyperspaceTime;
 
+	protected boolean hasWings;
+
 	@preLocked
 	public native void createChildObjects();
 
@@ -226,6 +228,10 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected DeltaFloatVariable currentRollRate;
 
+	@rawTemplate(value = "'SHIP', 6, 11")
+	@dereferenced
+	protected DeltaFloatVariable currentSpeed;
+
 	@rawTemplate(value = "'SHIP', 6, 20")
 	@dereferenced
 	protected DeltaFloatVariable frontShield;
@@ -357,6 +363,7 @@ class ShipObject extends TangibleObject {
 		storedLocation = "";
 		controlDeviceID = 0;
 		hyperspacing = false;
+		hasWings = false;
 	}
 
 	/**
@@ -439,6 +446,11 @@ class ShipObject extends TangibleObject {
 	@local
 	public void setBoosterEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
 		boosterEnergy.update(value, notifyClient, this, delta);
+	}
+
+	@local
+	public void setHasWings(boolean value) {
+		hasWings = value;
 	}
 
 	@dirty
@@ -559,6 +571,9 @@ class ShipObject extends TangibleObject {
 
 	@local
 	public void setBoosterMaxSpeed(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		if (value < 1.0f)
+			value = 1.0f;
+
 		boosterMaxSpeed.update(value, notifyClient, this, delta);
 	}
 
@@ -605,6 +620,11 @@ class ShipObject extends TangibleObject {
 	@local
 	public void setCurrentRollRate(float scale, boolean notifyClient = true, DeltaMessage delta = null) {
 		currentRollRate.update(scale, notifyClient, this, delta);
+	}
+
+	@local
+	public void setCurrentSpeed(float speed, boolean notifyClient = true, DeltaMessage delta = null) {
+		currentSpeed.update(speed, notifyClient, this, delta);
 	}
 
 	@local
@@ -1065,6 +1085,10 @@ class ShipObject extends TangibleObject {
 		return currentPitchRate.get();
 	}
 
+	public float getCurrentSpeed() {
+		return currentSpeed.get();
+	}
+
 	public float getFrontShield() {
 		return frontShield.get();
 	}
@@ -1081,6 +1105,8 @@ class ShipObject extends TangibleObject {
 		return maxSpeed.get();
 	}
 
+	public native float getActualSpeed();
+
 	public string getShipName() {
 		return shipName;
 	}
@@ -1093,30 +1119,21 @@ class ShipObject extends TangibleObject {
 		return componentEnergyEfficiency.get(slot);
 	}
 
-	public void setStoredLocation(string location) {
-		storedLocation = location;
-	}
 
 	public unsigned int getShipNameCRC() {
 		return shipNameCRC.get();
+	}
+
+	public void setStoredLocation(string location) {
+		storedLocation = location;
 	}
 
 	public void setParkingLocation(string location) {
 		parkingLocation = location;
 	}
 
-	@weakReference
-	public CreatureObject getOwner() {
-		return owner;
-	}
-
 	public void setOwner(CreatureObject obj) {
 		owner = obj;
-	}
-
-	@weakReference
-	public SceneObject getPilotChair() {
-		return pilotChair;
 	}
 
 	public void setPilotChair(SceneObject obj) {
@@ -1139,6 +1156,16 @@ class ShipObject extends TangibleObject {
 	@preLocked
 	public native void setHyperspaceDelay();
 
+	@weakReference
+	public CreatureObject getOwner() {
+		return owner;
+	}
+
+	@weakReference
+	public SceneObject getPilotChair() {
+		return pilotChair;
+	}
+
 	public native string getParkingLocation();
 
 	public native void install(CreatureObject owner, SceneObject component, int slot, boolean notifyClient = false);
@@ -1158,6 +1185,11 @@ class ShipObject extends TangibleObject {
 	@dirty
 	public boolean isHyperspacing() {
 		return hyperspacing;
+	}
+
+	@dirty
+	public boolean hasShipWings() {
+		return hasWings;
 	}
 
 	@dirty

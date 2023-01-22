@@ -133,6 +133,7 @@ public:
 
 			ship->setFaction(creature->getFaction());
 			ship->setFactionStatus(creature->getFactionStatus());
+			ship->scheduleRecovery();
 
 			uint64 parentID = ship->getObjectID();
 

@@ -13,6 +13,16 @@ public:
 	ShipObjectMessage6(ShipObject* ship) : TangibleObjectMessage6(ship, 0x53484950, 0x18) {
 		//ship->info(true) << "ShipObjectMessage6 sent";
 
+		CreatureObject* owner = ship->getOwner().get();
+		uint64 targetID = 0;
+		uint64 guildID = 0;
+
+
+		if (owner != nullptr) {
+			targetID = owner->getTargetID();
+			guildID = owner->getGuildID();
+		}
+
 		insertShort(ship->getUniqueID()); // ShipID
 		insertFloat(ship->getShipAccelerationRate()); // acceleration rate
 		insertFloat(ship->getShipDecelerationRate()); // decelleration rate
@@ -24,26 +34,37 @@ public:
 		insertFloat(ship->getMaxPitchRate()); //8 Pitch Acceleration
 		insertFloat(ship->getMaxYawRate()); //9 Yaw Acceleration
 		insertFloat(ship->getMaxRollRate()); //10 Roll Acceleration
-		insertFloat(ship->getMaxSpeed()); //11 max speed
+		insertFloat(ship->getActualSpeed()); // This is the current possible max speed
 
 		// look at target
-		insertLong(0); //12 const
-
+		insertLong(targetID); //12 target ID that is stored on the ship
 		insertInt(0); //13 m_pilotLookAtTargetSlot
 
 		ship->getTargetableBitfield()->insertToMessage(this);
 
 		ship->getShipComponentMap()->insertToMessage(this); //15
 
-		insertAscii("");
-		insertAscii("");
-		insertAscii("");
-		insertAscii("");
+		//TODO: FIX
+		StringBuffer name;
+		name << "@space/ship_names:" << ship->getShipName();
+		insertAscii(name.toString());
+
+		StringBuffer type;
+		type << "@space/space_mobile_type:" << "ship_base";
+		insertAscii(type.toString()); // ship type
+
+		StringBuffer difficulty;
+		difficulty << "@space/space_difficulty:" << "light";
+		insertAscii(difficulty.toString()); // space_difficulty
+
+		StringBuffer faction;
+		faction << "@space/space_faction:" << "rebel";
+		insertAscii(faction.toString()); // space_faction
 
 		insertFloat(ship->getFrontShield()); //20 front shield current
 		insertFloat(ship->getRearShield()); //21 back shield current
 
-		insertInt(0); // Guild ID?
+		insertInt(guildID); // Guild ID?
 
 		setSize();
 	}

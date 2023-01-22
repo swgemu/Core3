@@ -12,6 +12,8 @@
 #include "server/zone/managers/ship/ShipManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/components/ShipComponent.h"
+#include "server/zone/objects/ship/components/ShipEngineComponent.h"
 #include "server/zone/objects/ship/events/ShipRecoveryEvent.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/components/ShipComponent.h"
@@ -23,9 +25,7 @@
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "templates/tangible/SharedShipObjectTemplate.h"
-
-//#include "server/zone/packets/tangible/TangibleObjectMessage8.h"
-//#include "server/zone/packets/tangible/TangibleObjectMessage9.h"
+#include "server/zone/objects/ship/ShipChassisData.h"
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
@@ -42,6 +42,7 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 
 	SharedShipObjectTemplate *shipTempl = dynamic_cast<SharedShipObjectTemplate*>(templateData);
 	setShipName(shipTempl->getShipName());
+	setHasWings(shipTempl->shipHasWings());
 
 	auto portal = shipTempl->getPortalLayout();
 
@@ -61,7 +62,6 @@ void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool fo
 		sendBaselinesTo(player);
 		sendSlottedObjectsTo(player);
 		sendContainerObjectsTo(player, false);
-
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
@@ -281,29 +281,19 @@ uint16 ShipObjectImplementation::getUniqueID() {
 }
 
 void ShipObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	//info(true) << "ShipObjectImplementation::sendBaselinesTo -- " << player->getDisplayedName();
+	//TODO: What packets are a must when sending baslines
+
+	ShipObjectMessage1* ship1 = new ShipObjectMessage1(_this.getReferenceUnsafeStaticCast());
+	player->sendMessage(ship1);
 
 	ShipObjectMessage3* ship3 = new ShipObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(ship3);
 
-
-	//if (player->getParent().get() == _this.getReferenceUnsafeStaticCast() || getRootParent().get() == player) {
-
 	ShipObjectMessage4* ship4 = new ShipObjectMessage4(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(ship4);
 
-	ShipObjectMessage1* ship1 = new ShipObjectMessage1(_this.getReferenceUnsafeStaticCast());
-	player->sendMessage(ship1);
-	//}
-
 	ShipObjectMessage6* ship6 = new ShipObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(ship6);
-/*
-	BaseMessage* ship8 = new TangibleObjectMessage8(_this);
-	player->sendMessage(ship8);
-
-	BaseMessage* ship9 = new TangibleObjectMessage9(_this);
-	player->sendMessage(ship9);*/
 }
 
 ShipObject* ShipObjectImplementation::asShipObject() {
@@ -511,6 +501,8 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 	if (ship == nullptr)
 		return;
 
+	//info(true) << "ShipObjectImplementation::doRecovery -- called";
+
 	// Ship is locked
 	Locker lock(ship);
 
@@ -582,20 +574,22 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 					float boosterMax = getBoosterMaxEnergy();
 
 					setBoosterEnergy(Math::min(cur + amount, boosterMax), true);
-
-					if (getBoosterEnergy() < boosterMax) {
-						reschedule = true;
-					}
 				}
 			}
 		}
 	}
 
-	if (reschedule) {
-		scheduleRecovery();
-	} else {
-		cancelRecovery();
+	// Update current max speed
+	float calculateSpeed = getActualSpeed();
+
+	if (getCurrentSpeed() != calculateSpeed) {
+		DeltaMessage* message6 = new DeltaMessage(ship->getObjectID(), 'SHIP', 6);
+		setCurrentSpeed(calculateSpeed, true, message6);
+		message6->close();
+		broadcastMessage(message6, true);
 	}
+
+	scheduleRecovery();
 }
 
 void ShipObjectImplementation::scheduleRecovery() {
@@ -671,8 +665,6 @@ void ShipObjectImplementation::restartBooster() {
 
 	boostTimer.updateToCurrentTime();
 	boostTimer.addMiliTime(boostTime * 1000);
-
-	scheduleRecovery();
 }
 
 void ShipObjectImplementation::setHyperspaceDelay() {
@@ -694,4 +686,56 @@ void ShipObjectImplementation::setHyperspaceDelay() {
 int ShipObjectImplementation::getHyperspaceDelay() {
 	Time now;
 	return (now.miliDifference() - hyperspaceTime.miliDifference()) / 1000;
+}
+
+float ShipObjectImplementation::getActualSpeed() {
+	float totalMax = 0.0f;
+
+	if (getComponentObject(Components::ENGINE) != nullptr) {
+		ShipEngineComponent* engineComp = cast<ShipEngineComponent*>(getComponentObject(Components::ENGINE));
+
+		if (engineComp != nullptr) {
+			//TODO: Fix when efficiencies are loaded properly
+			float engEfficiency = 1.0f; // getComponentEnergyEfficiency(Components::ENGINE);
+			float engineMax = engineComp->getMaxSpeed();
+			float engineTotal = engEfficiency * engineMax;
+
+			//info(true) << "Engine efficiency = " << engEfficiency << " Engine Max = " << engineMax << " Engine Total Speed = " << engineTotal;
+
+			totalMax += engineTotal;
+		}
+	}
+
+	if (getComponentObject(Components::BOOSTER) != nullptr && isBoosterActive()) {
+		float boostEfficiency = 1.0f; //getComponentEnergyEfficiency(Components::BOOSTER);
+		float boosterMax = getBoosterMaxSpeed();
+		float boosterBonus = boostEfficiency * boosterMax;
+
+		//info(true) << "Booster Eff: " << boostEfficiency << " Booster Max: " << boosterMax << " Total Booster Bonus: " << boosterBonus;
+
+		totalMax += boosterBonus;
+	}
+
+	if (hasShipWings() && (getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
+		const ShipChassisData* chassis = ShipManager::instance()->getChassisData(getShipName());
+
+		if (chassis != nullptr) {
+			totalMax *= chassis->getWingOpenSpeed();
+
+			//info(true) << "Wings open multiplier = " << chassis->getWingOpenSpeed();
+
+		}
+	}
+
+	totalMax *= getChassisSpeed();
+
+	float slipMulti = Math::max(1.0f, getSlip());
+
+	//info(true) << "Chassis multiplier = " << getChassisSpeed() << " Slip = " << slipMulti;
+
+	totalMax = Math::min(512.0f, totalMax * slipMulti);
+
+	//info(true) << "getActualSpeed = " << totalMax;
+
+	return totalMax;
 }
