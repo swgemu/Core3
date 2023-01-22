@@ -97,6 +97,7 @@
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/gcw/observers/SquadObserver.h"
 #include "server/zone/managers/ship/ShipManager.h"
+#include "templates/params/creature/PlayerArrangement.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -608,6 +609,29 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("STATESITTINGONCHAIR", CreatureState::SITTINGONCHAIR);
 	luaEngine->setGlobalInt("PILOTINGSHIP", CreatureState::PILOTINGSHIP);
 	luaEngine->setGlobalLong("PILOTINGPOBSHIP", CreatureState::PILOTINGPOBSHIP);
+
+	//Player Arrangements
+	luaEngine->setGlobalLong("RIDER", PlayerArrangement::RIDER);
+	luaEngine->setGlobalLong("SHIP_PILOT", PlayerArrangement::SHIP_PILOT);
+	luaEngine->setGlobalLong("SHIP_OPERATIONS", PlayerArrangement::SHIP_OPERATIONS);
+	luaEngine->setGlobalLong("SHIP_GUNNER0", PlayerArrangement::SHIP_GUNNER0);
+	luaEngine->setGlobalLong("SHIP_GUNNER1", PlayerArrangement::SHIP_GUNNER1);
+	luaEngine->setGlobalLong("SHIP_GUNNER2", PlayerArrangement::SHIP_GUNNER2);
+	luaEngine->setGlobalLong("SHIP_GUNNER3", PlayerArrangement::SHIP_GUNNER3);
+	luaEngine->setGlobalLong("SHIP_GUNNER4", PlayerArrangement::SHIP_GUNNER4);
+	luaEngine->setGlobalLong("SHIP_GUNNER5", PlayerArrangement::SHIP_GUNNER5);
+	luaEngine->setGlobalLong("SHIP_GUNNER6", PlayerArrangement::SHIP_GUNNER6);
+	luaEngine->setGlobalLong("SHIP_GUNNER7", PlayerArrangement::SHIP_GUNNER7);
+	luaEngine->setGlobalLong("SHIP_PILOT_POB", PlayerArrangement::SHIP_PILOT_POB);
+	luaEngine->setGlobalLong("SHIP_OPERATIONS_POB", PlayerArrangement::SHIP_OPERATIONS_POB);
+	luaEngine->setGlobalLong("SHIP_GUNNER0_POB", PlayerArrangement::SHIP_GUNNER0_POB);
+	luaEngine->setGlobalLong("SHIP_GUNNER1_POB", PlayerArrangement::SHIP_GUNNER1_POB);
+	luaEngine->setGlobalLong("SHIP_GUNNER2_POB", PlayerArrangement::SHIP_GUNNER2_POB);
+	luaEngine->setGlobalLong("SHIP_GUNNER3_POB", PlayerArrangement::SHIP_GUNNER3_POB);
+	luaEngine->setGlobalLong("SHIP_GUNNER4_POB", PlayerArrangement::SHIP_GUNNER4_POB);
+	luaEngine->setGlobalLong("SHIP_GUNNER5_POB", PlayerArrangement::SHIP_GUNNER5_POB);
+	luaEngine->setGlobalLong("SHIP_GUNNER6_POB", PlayerArrangement::SHIP_GUNNER6_POB);
+	luaEngine->setGlobalLong("SHIP_GUNNER7_POB", PlayerArrangement::SHIP_GUNNER7_POB);
 
 	//Waypoint Colors
 	luaEngine->setGlobalInt("WAYPOINTBLUE", WaypointObject::COLOR_BLUE);

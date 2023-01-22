@@ -21,7 +21,7 @@ function PilotSeatMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, sele
 	if (selectedID == 120) then
 		CreatureObject(pPlayer):setState(PILOTINGPOBSHIP)
 
-		SceneObject(pContainer):transferObject(pPlayer, 15, 1)
+		SceneObject(pContainer):transferObject(pPlayer, SHIP_PILOT_POB, 1)
 	end
 
 	return 0

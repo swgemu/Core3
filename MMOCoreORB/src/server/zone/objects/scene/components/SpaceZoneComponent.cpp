@@ -11,6 +11,7 @@
 #include "server/zone/packets/object/DataTransform.h"
 #include "server/zone/packets/object/DataTransformWithParent.h"
 #include "server/zone/packets/ship/ShipUpdateTransformMessage.h"
+#include "templates/params/creature/PlayerArrangement.h"
 
 void SpaceZoneComponent::notifyInsertToZone(SceneObject* sceneObject, SpaceZone* newSpaceZone) const {
 	if (newSpaceZone == nullptr)
@@ -294,12 +295,12 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	if (newParent != nullptr) {
 		if (newParent->isShipObject()) {
-			newParent->transferObject(sceneObject, 5, true);
+			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT, true);
 			newParent->sendTo(sceneObject, true);
 
 			//info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
 		} if (newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR) {
-			newParent->transferObject(sceneObject, 15, true);
+			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT_POB, true);
 			sceneObject->setDirection(*newParent->getDirection());
 
 			SceneObject* rootParent = newParent->getRootParent();

@@ -1,0 +1,35 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+#ifndef PLAYERARRANGEMENT_H_
+#define PLAYERARRANGEMENT_H_
+
+class PlayerArrangement {
+public:
+	enum {
+		RIDER			= 4,
+		SHIP_PILOT		= 5,
+		SHIP_OPERATIONS		= 6,
+		SHIP_GUNNER0		= 7,
+		SHIP_GUNNER1		= 8,
+		SHIP_GUNNER2		= 9,
+		SHIP_GUNNER3		= 10,
+		SHIP_GUNNER4		= 11,
+		SHIP_GUNNER5		= 12,
+		SHIP_GUNNER6		= 13,
+		SHIP_GUNNER7		= 14,
+		SHIP_PILOT_POB		= 15,
+		SHIP_OPERATIONS_POB	= 16,
+		SHIP_GUNNER0_POB	= 17,
+		SHIP_GUNNER1_POB	= 18,
+		SHIP_GUNNER2_POB	= 19,
+		SHIP_GUNNER3_POB	= 20,
+		SHIP_GUNNER4_POB	= 21,
+		SHIP_GUNNER5_POB	= 22,
+		SHIP_GUNNER6_POB	= 23,
+		SHIP_GUNNER7_POB	= 24,
+	};
+};
+
+#endif /* PLAYERARRANGEMENT_H_ */
