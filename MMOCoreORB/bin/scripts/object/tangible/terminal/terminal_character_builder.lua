@@ -1149,9 +1149,105 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					},
 					"Master", "combat_polearm_master"
 				},
-				--"Pilot",
-				--{
-				--},
+				"Alliance Starfighter Pilot",
+				{
+					"Alliance Recruit", "pilot_rebel_navy_novice",
+					"Droids",
+					{
+						"Droid Interface Basics", "pilot_rebel_navy_droid_01",
+						"Engineering Algorithms", "pilot_rebel_navy_droid_02",
+						"System Balance Programming", "pilot_rebel_navy_droid_03",
+						"Droid Intelligence Theory", "pilot_rebel_navy_droid_04"
+					},
+					"Procedures",
+					{
+						"Special Weapons and Tactics", "pilot_rebel_navy_procedures_01",
+						"Space Combat Techniques", "pilot_rebel_navy_procedures_02",
+						"Advanced Space Combat", "pilot_rebel_navy_procedures_03",
+						"Special Weapons and Tactics", "pilot_rebel_navy_procedures_04"
+					},
+					"Starships",
+					{
+						"Basic Starfighter Continuation Training", "pilot_rebel_navy_starships__01",
+						"Multi-role Craft", "pilot_rebel_navy_starships_02",
+						"Space Superiority Fighters", "pilot_rebel_navy_starships_03",
+						"Hyper-Maneuverable Starfighters", "pilot_rebel_navy_starships_04"
+					},
+					"Weapons",
+					{
+						"Basic Alliance Starship Ordnance", "pilot_rebel_navy_weapons_01",
+						"Intermediate Alliance Starship Ordnance", "pilot_rebel_navy_weapons_02",
+						"Advanced Alliance Starship Ordnance", "pilot_rebel_navy_weapons_03",
+						"Heavy Alliance Starship Ordnance", "pilot_rebel_navy_weapons_04"
+					},
+					"Rebel Alliance Master Pilot", "pilot_rebel_navy_master"
+				},
+				"Imperial Navy Pilot",
+				{
+					"Imperial Cadet", "pilot_imperial_navy_novice",
+					"Droids",
+					{
+						"Droid Interface Basics", "pilot_imperial_navy_droid_01",
+						"Engineering Algorithms", "pilot_imperial_navy_droid_02",
+						"System Balance Programming", "pilot_imperial_navy_droid_03",
+						"Droid Intelligence Theory", "pilot_imperial_navy_droid_04"
+					},
+					"Procedures",
+					{
+						"Basic Training", "pilot_imperial_navy_procedures_01",
+						"Imperial Regular", "pilot_imperial_navy_procedures_02",
+						"Special Forces", "pilot_imperial_navy_procedures_03",
+						"Elite TIE Guard", "pilot_imperial_navy_procedures_04"
+					},
+					"Starships",
+					{
+						"Intermediate TIE Combat Craft Operations", "pilot_imperial_navy_starships__01",
+						"Advanced TIE Combat Craft Operations", "pilot_imperial_navy_starships_02",
+						"Advanced Capability TIE Vessels", "pilot_imperial_navy_starships_03",
+						"TIE Experimental Vessels", "pilot_imperial_navy_starships_04"
+					},
+					"Weapons",
+					{
+						"Basic Imperial Starship Ordnance", "pilot_imperial_navy_weapons_01",
+						"Intermediate Imperial Starship Ordnance", "pilot_imperial_navy_weapons_02",
+						"Advanced Imperial Starship Ordnance", "pilot_imperial_navy_weapons_03",
+						"Heavy Imperial Starship Ordnance", "pilot_imperial_navy_weapons_04"
+					},
+					"Imperial Pilot Champion", "pilot_imperial_navy_master"
+				},
+				"Pilot",
+				{
+					"Basic Pilot", "pilot_neutral_novice",
+					"Droids",
+					{
+						"Droid Interface Basics", "pilot_neutral_droid_01",
+						"Engineering Algorithms", "pilot_neutral_droid_02",
+						"System Balance Programming", "pilot_neutral_droid_03",
+						"Droid Intelligence Theory", "pilot_neutral_droid_04"
+					},
+					"Procedures",
+					{
+						"Basic Training", "pilot_neutral_procedures_01",
+						"Starship Defense", "pilot_neutral_procedures_02",
+						"Advanced Technique", "pilot_neutral_procedures_03",
+						"Expert Technique", "pilot_neutral_procedures_04"
+					},
+					"Starships",
+					{
+						"Basic Fighters", "pilot_neutral_starships__01",
+						"Advanced Fighters", "pilot_neutral_starships_02",
+						"Special Warships", "pilot_neutral_starships_03",
+						"Exotic Vessels", "pilot_neutral_starships_04"
+					},
+					"Weapons",
+					{
+						"Basic Starship Ordnance", "pilot_neutral_weapons_01",
+						"Intermediate Starship Ordnance", "pilot_neutral_weapons_02",
+						"Advanced Starship Ordnance", "pilot_neutral_weapons_03",
+						"Heavy Starship Ordnance", "pilot_neutral_weapons_04"
+					},
+					"Flight Artistry", "pilot_neutral_master"
+				},
 				"Pistoleer",
 				{
 					"Novice", "combat_pistol_novice",
@@ -1869,6 +1965,14 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				--"Landspeeder av21", "object/tangible/deed/vehicle_deed/landspeeder_av21_deed.iff",
 				--"Landspeeder x31", "object/tangible/deed/vehicle_deed/landspeeder_x31_deed.iff",
 				--"Landspeeder x34", "object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff"
+				},
+				"Ship Deeds",
+				{
+					"YT-1300 Deed", "object/tangible/ship/crafted/chassis/yt1300_deed.iff",
+					"X-Wing Deed", "object/tangible/ship/crafted/chassis/xwing_deed.iff",
+					"Tie Interceptor Deed", "object/tangible/ship/crafted/chassis/tieinterceptor_deed.iff",
+					"KSE Firespray Deed", "object/tangible/ship/crafted/chassis/firespray_deed.iff",
+					"Y-Wing Deed", "object/tangible/ship/crafted/chassis/ywing_deed.iff",
 				},
 				"Structure Deeds",
 				{

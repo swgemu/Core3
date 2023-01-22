@@ -42,8 +42,6 @@
 
 
 object_tangible_ship_crafted_chassis_xwing_customization_kit = object_tangible_ship_crafted_chassis_shared_xwing_customization_kit:new {
-
-
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},

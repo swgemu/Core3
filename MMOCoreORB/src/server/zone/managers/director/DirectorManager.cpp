@@ -96,6 +96,7 @@
 #include "server/zone/managers/director/ScreenPlayObserver.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/gcw/observers/SquadObserver.h"
+#include "server/zone/managers/ship/ShipManager.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -721,6 +722,12 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("AI_CRACKDOWN_SCANNING", AiAgent::CRACKDOWN_SCANNING);
 	luaEngine->setGlobalInt("AI_HARVESTING", AiAgent::HARVESTING);
 	luaEngine->setGlobalInt("AI_RESTING", AiAgent::RESTING);
+
+	// Ship Types
+	luaEngine->setGlobalInt("SHIP", ShipManager::SHIP);
+	luaEngine->setGlobalInt("FIGHTERSHIP", ShipManager::FIGHTERSHIP);
+	luaEngine->setGlobalInt("POBSHIP", ShipManager::POBSHIP);
+	luaEngine->setGlobalInt("SPACESTATION", ShipManager::SPACESTATION);
 
 	// Badges
 	const auto badges = BadgeList::instance()->getMap();
