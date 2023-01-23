@@ -42,7 +42,6 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_z95_basic = object_tangible_ship_components_droid_interface_shared_ddi_z95_basic:new {
-
 	reverseEngineeringLevel = 1,
 	mass = 505.0,
 	hitpoints = 151.0,
