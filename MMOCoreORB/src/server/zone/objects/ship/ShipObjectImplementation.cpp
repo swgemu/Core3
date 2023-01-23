@@ -2,10 +2,10 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.
 */
-#include "system/lang/UnicodeString.h"
 
 #include "ComponentSlots.h"
 #include "ShipComponentFlag.h"
+#include "system/lang/UnicodeString.h"
 #include "server/zone/Zone.h"
 #include "server/zone/SpaceZone.h"
 #include "server/zone/ZoneClientSession.h"
@@ -16,7 +16,6 @@
 #include "server/zone/objects/ship/components/ShipEngineComponent.h"
 #include "server/zone/objects/ship/events/ShipRecoveryEvent.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
-#include "server/zone/objects/ship/components/ShipComponent.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/ship/ShipObjectMessage1.h"
 #include "server/zone/packets/ship/ShipObjectMessage3.h"
@@ -77,14 +76,8 @@ void ShipObjectImplementation::setShipName(const String& name, bool notifyClient
 }
 
 void ShipObjectImplementation::storeShip(CreatureObject* player) {
-	ShipObject* ship = asShipObject();
-
-	if (player == nullptr || ship == nullptr)
+	if (player == nullptr)
 		return;
-
-	Locker lock(player);
-
-	player->clearState(CreatureState::PILOTINGSHIP);
 
 	ZoneServer* zoneServer = player->getZoneServer();
 
@@ -96,10 +89,7 @@ void ShipObjectImplementation::storeShip(CreatureObject* player) {
 	if (shipControlDevice == nullptr)
 		return;
 
-	Locker locker(shipControlDevice);
-
-	shipControlDevice->storeShip(player, ship);
-
+	shipControlDevice->storeShip(player);
 }
 
 void ShipObjectImplementation::createChildObjects() {

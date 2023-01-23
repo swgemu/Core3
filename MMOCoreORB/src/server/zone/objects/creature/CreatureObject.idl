@@ -2121,6 +2121,26 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@read
+	public boolean isPilotingShip() {
+		return (stateBitmask & CreatureState.PILOTINGSHIP) || (stateBitmask & CreatureState.PILOTINGPOBSHIP);
+	}
+
+	@read
+	public boolean isOnboardPobShip() {
+		return (stateBitmask & CreatureState.SHIPINTERIOR) || (stateBitmask & CreatureState.SHIPOPERATIONS) || (stateBitmask & CreatureState.SHIPGUNNER);
+	}
+
+	@read
+	public boolean isPobShipOperator() {
+		return stateBitmask & CreatureState.SHIPOPERATIONS;
+	}
+
+	@read
+	public boolean isShipGunner() {
+		return stateBitmask & CreatureState.SHIPGUNNER;
+	}
+
+	@read
 	public boolean isWalking() {
 		return currentSpeed <= walkSpeed;
 	}

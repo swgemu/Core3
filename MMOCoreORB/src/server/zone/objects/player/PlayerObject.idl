@@ -43,6 +43,7 @@ include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
 include server.zone.objects.player.variables.WaypointList;
 include server.zone.objects.player.variables.PlayerQuestData;
+include server.zone.objects.player.variables.SpaceLaunchPoint;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaBitArray;
@@ -296,6 +297,9 @@ class PlayerObject extends IntangibleObject {
 
 	@weakReference
 	protected transient SceneObject currentClientPathWaypoint;
+
+	@dereferenced
+	protected SpaceLaunchPoint launchPoint;
 
 	/**
 	 * the key is the quest.hashCode()
@@ -968,6 +972,11 @@ class PlayerObject extends IntangibleObject {
 	 * Unloads all the spawned creatures from the datapad control devices
 	 */
 	public native void unloadSpawnedChildren();
+
+	/**
+	 * Unloads the currently called ship
+	 */
+	public native void unloadShip();
 
 	public void addToConsentList(final string name) {
 		consentList.put(name);
@@ -2054,6 +2063,18 @@ class PlayerObject extends IntangibleObject {
 
 	public void setCloning(boolean val) {
 		isPlayerCloning = val;
+	}
+
+	public void setSpaceLaunchZone(string zoneName) {
+		launchPoint.setGroundZoneName(zoneName);
+	}
+
+	public void setSpaceLaunchCityName(string cityName) {
+		launchPoint.setCityName(cityName);
+	}
+
+	public void setSpaceLaunchLocation(@dereferenced Vector3 location) {
+		launchPoint.setLocation(location);
 	}
 
 	@read

@@ -12,25 +12,37 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/managers/ship/ShipManager.h"
+#include "templates/params/creature/PlayerArrangement.h"
 
-void ShipControlDeviceImplementation::storeShip(CreatureObject* player, ShipObject* ship) {
-	if (player == nullptr || !player->isInQuadTree())
+void ShipControlDeviceImplementation::storeShip(CreatureObject* player) {
+	if (player == nullptr || !isShipLaunched())
 		return;
 
-	if (ship == nullptr || !ship->isInOctTree())
+	ShipObject* ship = cast<ShipObject*>(getControlledObject());
+
+	if (ship == nullptr)
 		return;
 
-	Locker locker(ship);
+	ShipControlDevice* device = _this.getReferenceUnsafeStaticCast();
 
-	String storedLocation = player->getCityRegion().get()->getRegionDisplayedName();
+	Locker lock(device);
+	Locker clock(ship, device);
 
-	ship->setStoredLocation(storedLocation);
+	CityRegion* cityRegion = player->getCityRegion().get();
+
+	// City Region for player can be a nullptr when they log off in the ship. The ship will still have its launch
+	// point as a stored location and the player will be transported back there as well.
+	if (cityRegion != nullptr) {
+		String storedLocation = cityRegion->getRegionDisplayedName();
+
+		ship->setStoredLocation(storedLocation);
+	}
 
 	ship->destroyObjectFromWorld(true);
 
-	transferObject(ship, 4, true);
+	transferObject(ship, PlayerArrangement::RIDER, true);
 
-	updateStatus(0);
+	setShipLaunchStatus(false);
 }
 
 void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
