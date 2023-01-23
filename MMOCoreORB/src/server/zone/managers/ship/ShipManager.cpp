@@ -24,6 +24,7 @@
 #include "server/zone/objects/ship/ComponentSlots.h"
 #include "server/zone/objects/ship/ShipComponentFlag.h"
 #include "server/zone/packets/ship/DestroyShipMessage.h"
+#include "templates/params/OptionBitmask.h"
 
 /*ShipManager::ShipManager() {
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile(
@@ -237,6 +238,13 @@ void ShipManager::notifyShipHit(ShipObject* target, const Vector3& localdir, int
 }
 
 bool ShipManager::applyDamage(const ShipManager::ShipProjectile* projectile, Reference<ShipObject*>& ship, const Vector3& collisionPoint, const Vector<ManagedReference<SceneObject*>>& collidedObject) const {
+
+	//if (ship->getOptionsBitmask() & OptionBitmask::INVULNERABLE)
+	//	return false;
+
+	if (ship->isSpaceStationObject())
+		return false;
+
 	info("Collison with : " + collidedObject.get(0)->getDisplayedName() + " at " + collisionPoint.toString(), true);
 	Vector3 reverse = (collisionPoint - projectile->startPosition);
 	reverse.normalize();
