@@ -3,7 +3,7 @@
 		See file COPYING for copying conditions.*/
 
 #include "server/zone/SpaceZone.h"
-
+#include "server/zone/Zone.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -13,14 +13,14 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 #include "templates/SharedObjectTemplate.h"
-/// TEST
 
-SpaceZoneImplementation::SpaceZoneImplementation(ZoneProcessServer* serv, const String& name) {
+SpaceZoneImplementation::SpaceZoneImplementation(ZoneProcessServer* serv, const String& name) : ZoneImplementation(serv, name) {
 	processor = serv;
 	server = processor->getZoneServer();
 
 	zoneName = name;
 	zoneCRC = name.hashCode();
+
 	octTree = new server::zone::OctTree(-8192, -8192, -8192, 8192, 8192, 8192);
 
 	objectMap = new ObjectMap();
