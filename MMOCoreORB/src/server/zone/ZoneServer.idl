@@ -317,6 +317,22 @@ class ZoneServer extends ManagedService implements Logger {
 		return zones.size();
 	}
 
+	@dirty
+	public SpaceZone getSpaceZone(int idx) {
+		if (!spaceZones)
+			return null;
+
+		return spaceZones.get(idx);
+	}
+
+	@read
+	public int getSpaceZoneCount() {
+		if (!spaceZones)
+			return 0;
+
+		return spaceZones.size();
+	}
+
 	@read
 	public int getMaxPlayers() {
 		return maximumPlayers.get();
