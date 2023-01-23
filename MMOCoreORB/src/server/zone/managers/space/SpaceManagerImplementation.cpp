@@ -84,7 +84,7 @@ void SpaceManagerImplementation::loadLuaConfig() {
 			float z = launchLocation.getFloatAt(4);
 			jtlLaunchLocation = Vector3(x, y, z);
 			launchLocation.pop();
-		} catch (Exception e) {
+		} catch (Exception &e) {
 			error(e.getMessage());
 		}
 	} else {

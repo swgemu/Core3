@@ -1105,6 +1105,7 @@ void PlayerCreationManager::createImperialStarterShip(CreatureObject* player) co
 			return;
 		}
 
+		shipControlDevice->setShipType(ShipManager::FIGHTERSHIP);
 		shipControlDevice->setControlledObject(ship);
 
 		ship->setControlDeviceID(shipControlDevice->getObjectID());
@@ -1149,6 +1150,7 @@ void PlayerCreationManager::createRebelStarterShip(CreatureObject* player) const
 			return;
 		}
 
+		shipControlDevice->setShipType(ShipManager::FIGHTERSHIP);
 		shipControlDevice->setControlledObject(ship);
 
 		ship->setControlDeviceID(shipControlDevice->getObjectID());
@@ -1193,6 +1195,7 @@ void PlayerCreationManager::createNeutralStarterShip(CreatureObject* player) con
 			return;
 		}
 
+		shipControlDevice->setShipType(ShipManager::FIGHTERSHIP);
 		shipControlDevice->setControlledObject(ship);
 
 		ship->setControlDeviceID(shipControlDevice->getObjectID());
@@ -1237,6 +1240,7 @@ void PlayerCreationManager::createStarterPobShip(CreatureObject* player) const {
 			return;
 		}
 
+		shipControlDevice->setShipType(ShipManager::POBSHIP);
 		shipControlDevice->setControlledObject(ship);
 
 		ship->setControlDeviceID(shipControlDevice->getObjectID());

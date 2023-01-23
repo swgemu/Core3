@@ -45,6 +45,7 @@ public:
 		insertFloat(ship->getEngineMaxYawRate()); //
 		insertFloat(ship->getEngineMaxRollRate()); //
 		insertFloat(ship->getMaxSpeed()); //
+
 		insertFloat(ship->getReactorGenerationRate()); // 30
 		insertFloat(ship->getBoosterMaxEnergy()); //
 		insertFloat(ship->getBoosterRechargeRate()); //

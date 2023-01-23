@@ -60,42 +60,44 @@ void ShipEngineComponentImplementation::fillAttributeList(AttributeListMessage* 
 
 void ShipEngineComponentImplementation::install(CreatureObject* owner, ShipObject* ship, int slot, bool notifyClient) {
 	// TODO: acceleration/deceleration rate?
-	DeltaMessage* message = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
-	ship->setEnginePitchRate(maxPitch, notifyClient, message);
-	ship->setEngineYawRate(maxYaw, notifyClient, message);
-	ship->setEngineRollRate(maxRoll, notifyClient, message);
-	ship->setEngineMaxPitchRate(maxPitch, notifyClient, message);
-	ship->setEngineMaxYawRate(maxYaw, notifyClient, message);
-	ship->setEngineMaxRollRate(maxRoll, notifyClient, message);
-	ship->setEngineAccelerationRate(acceleration, notifyClient, message);
-	ship->setEngineDecelerationRate(deceleration, notifyClient, message);
-	ship->setMaxSpeed(maxSpeed, notifyClient, message);
-	ship->setChassisSpeed(1.0f, notifyClient, message);
-	ship->setEnergyCost(slot, getEnergyCost(), message);
-	ship->setComponentMass(slot, getMass(), message);
+	DeltaMessage* message1 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
+	ship->setEnginePitchRate(maxPitch, notifyClient, message1);
+	ship->setEngineYawRate(maxYaw, notifyClient, message1);
+	ship->setEngineRollRate(maxRoll, notifyClient, message1);
+	ship->setEngineMaxPitchRate(maxPitch, notifyClient, message1);
+	ship->setEngineMaxYawRate(maxYaw, notifyClient, message1);
+	ship->setEngineMaxRollRate(maxRoll, notifyClient, message1);
+	ship->setEngineAccelerationRate(acceleration, notifyClient, message1);
+	ship->setEngineDecelerationRate(deceleration, notifyClient, message1);
+	ship->setMaxSpeed(maxSpeed, notifyClient, message1);
+	ship->setChassisSpeed(1.0f, notifyClient, message1);
+	ship->setEnergyCost(slot, getEnergyCost(), message1);
+	ship->setComponentMass(slot, getMass(), message1);
 
-	DeltaMessage* message2 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 3) : nullptr;
-	ship->setComponentMaxHitpoints(slot, getMaxHitpoints(), message2);
-	ship->setComponentHitpoints(slot, getHitpoints(), message2);
-	ship->setComponentArmor(slot, getArmor(), message2);
-	ship->setComponentMaxArmor(slot, getMaxArmor(), message2);
+	DeltaMessage* message3 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 3) : nullptr;
+	ship->setComponentMaxHitpoints(slot, getMaxHitpoints(), message3);
+	ship->setComponentHitpoints(slot, getHitpoints(), message3);
+	ship->setComponentArmor(slot, getArmor(), message3);
+	ship->setComponentMaxArmor(slot, getMaxArmor(), message3);
 
-	DeltaMessage* message3 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 6) : nullptr;
-	ship->setShipAccelerationRate(acceleration, notifyClient, message);
-	ship->setShipDecelerationRate(deceleration, notifyClient, message);
-	ship->setMaxPitchRate(maxPitch, notifyClient, message);
-	ship->setMaxRollRate(maxRoll, notifyClient, message);
-	ship->setMaxYawRate(maxYaw, notifyClient, message);
-	ship->setCurrentPitchRate(maxPitch, notifyClient, message);
-	ship->setCurrentRollRate(maxRoll, notifyClient, message);
-	ship->setCurrentYawRate(maxYaw, notifyClient, message);
+	DeltaMessage* message6 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 6) : nullptr;
+	ship->setShipAccelerationRate(acceleration, notifyClient, message6);
+	ship->setShipDecelerationRate(deceleration, notifyClient, message6);
+
+	ship->setCurrentPitchRate(maxPitch, notifyClient, message6);
+	ship->setCurrentYawRate(maxYaw, notifyClient, message6);
+	ship->setCurrentRollRate(maxRoll, notifyClient, message6);
+
+	ship->setMaxPitchRate(maxPitch, notifyClient, message6);
+	ship->setMaxYawRate(maxYaw, notifyClient, message6);
+	ship->setMaxRollRate(maxRoll, notifyClient, message6);
 
 	if (notifyClient) {
-		message->close();
-		message2->close();
+		message1->close();
 		message3->close();
-		owner->sendMessage(message);
-		owner->sendMessage(message2);
+		message6->close();
+		owner->sendMessage(message1);
 		owner->sendMessage(message3);
+		owner->sendMessage(message6);
 	}
 }
