@@ -61,6 +61,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isCreature", &LuaSceneObject::isCreature },
 		{ "isBuildingObject", &LuaSceneObject::isBuildingObject },
 		{ "isActiveArea", &LuaSceneObject::isActiveArea },
+		{ "isShipObject", &LuaSceneObject::isShipObject },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
 		{ "getDisplayedName", &LuaSceneObject::getDisplayedName },
@@ -594,6 +595,14 @@ int LuaSceneObject::isBuildingObject(lua_State* L) {
 
 int LuaSceneObject::isActiveArea(lua_State* L) {
 	bool val = realObject->isActiveArea();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaSceneObject::isShipObject(lua_State* L) {
+	bool val = realObject->isShipObject();
 
 	lua_pushboolean(L, val);
 
