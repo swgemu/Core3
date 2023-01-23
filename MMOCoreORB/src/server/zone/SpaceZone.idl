@@ -28,7 +28,7 @@ import system.thread.atomic.AtomicInteger;
 include system.thread.atomic.AtomicBoolean;
 
 @mock
-class SpaceZone extends SceneObject {
+class SpaceZone extends Zone {
 	private string zoneName;
 
 	private unsigned int zoneCRC;

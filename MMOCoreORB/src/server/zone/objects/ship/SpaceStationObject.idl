@@ -6,10 +6,10 @@
 package server.zone.objects.ship;
 
 import engine.log.Logger;
-import server.zone.objects.tangible.TangibleObject;
-include server.zone.objects.scene.SceneObject;
+import server.zone.objects.ship.ShipObject;
+import server.zone.objects.scene.SceneObject;
 
-class SpaceStationObject extends SceneObject {
+class SpaceStationObject extends ShipObject {
 
 	public SpaceStationObject() {
 		Logger.setLoggingName("SpaceStationObject");
