@@ -277,9 +277,10 @@ includeFile("spawn/naboo/naboo_theed_medium_newbie.lua")
 includeFile("spawn/naboo/naboo_world.lua")
 
 -- Rori Spawns
+
+
+
 includeFile("spawn/rori/rori_world.lua")
-includeFile("spawn/rori/rori_easy.lua")
-includeFile("spawn/rori/rori_medium.lua")
 
 -- Talus Spawns
 includeFile("spawn/talus/talus_world.lua")
