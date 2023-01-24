@@ -366,14 +366,14 @@ void PlayerObjectImplementation::unload() {
 		Zone* newZone = getZoneServer()->getZone(groundZoneName);
 
 		if (newZone != nullptr) {
-			setSavedParentID(0);
-
 			newZone->transferObject(creature, -1, false);
+			setSavedParentID(0);
 
 			Vector3 launchLoc = launchPoint.getLocation();
 
-			creature->setPosition(launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
 			updateLastValidatedPosition();
+			creature->initializePosition(launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
+			creature->incrementMovementCounter();
 
 			savedTerrainName = groundZoneName;
 

@@ -483,6 +483,9 @@ void ShipObjectImplementation::damageArmor(float damage, DeltaMessage* delta) {
 }
 
 void ShipObjectImplementation::doRecovery(int mselapsed) {
+	if (getSpaceZone() == nullptr)
+		return;
+
 	float deltaTime = mselapsed / 1000.0f;
 	bool reschedule = false;
 
@@ -713,7 +716,6 @@ float ShipObjectImplementation::getActualSpeed() {
 			totalMax *= chassis->getWingOpenSpeed();
 
 			//info(true) << "Wings open multiplier = " << chassis->getWingOpenSpeed();
-
 		}
 	}
 
