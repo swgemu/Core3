@@ -22,7 +22,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (!creature->isPilotingShip()) {
+		if (!creature->hasState(CreatureState::PILOTINGSHIP) && !creature->hasState(CreatureState::PILOTINGPOBSHIP)) {
 			return INVALIDSTATE;
 		}
 
