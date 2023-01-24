@@ -127,13 +127,37 @@ public:
 			Locker creoCross(ship, creature);
 
 			Locker zoneLock(spaceZone, ship);
-			ship->initializePosition(position.getX(), position.getZ(), position.getY());
+
+			ship->initializePosition(position.getX() + System::random(100.f), position.getZ() + System::random(100.f), position.getY() + System::random(100.f));
 			spaceZone->transferObject(ship, -1, true);
 			zoneLock.release();
+
+			Locker devLock(pcd, ship);
+			pcd->setShipLaunchStatus(true);
+			devLock.release();
 
 			ship->setFaction(creature->getFaction());
 			ship->setFactionStatus(creature->getFactionStatus());
 			ship->scheduleRecovery();
+
+			if (creature->isPlayerCreature()) {
+				PlayerObject* ghost = creature->getPlayerObject();
+
+				if (ghost != nullptr) {
+					String zoneName = zone->getZoneName();
+					String launchCity = ship->getParkingLocation();
+
+					ghost->setSpaceLaunchZone(zoneName);
+					ghost->setSpaceLaunchCityName(launchCity);
+
+					PlanetTravelPoint* ptp = planetMan->getNearestPlanetTravelPoint(creature->getWorldPosition(), 64.f);
+
+					if (ptp != nullptr) {
+						Vector3 location = ptp->getArrivalPosition();
+						ghost->setSpaceLaunchLocation(location);
+					}
+				}
+			}
 
 			uint64 parentID = ship->getObjectID();
 
