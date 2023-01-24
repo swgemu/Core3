@@ -15,16 +15,16 @@ import server.zone.objects.ship.ShipObject;
 @json
 class ShipControlDevice extends ControlDevice {
 	protected int shipType;
-	protected boolean launched;
 
 	public ShipControlDevice() {
 		Logger.setLoggingName("ShipControlDevice");
 
 		shipType = 0;
-		launched = false;
 	}
 
-	public native void storeShip(CreatureObject player);
+	@preLocked
+	@arg1preLocked
+	public native void storeShip(CreatureObject player, ShipObject ship);
 
 	@preLocked
 	@arg1preLocked
@@ -49,19 +49,9 @@ class ShipControlDevice extends ControlDevice {
 		shipType = type;
 	}
 
-	@preLocked
-	public void setShipLaunchStatus(boolean val) {
-		launched = val;
-	}
-
 	@read
 	public int getShipType() {
 		return shipType;
-	}
-
-	@read
-	public boolean isShipLaunched() {
-		return launched;
 	}
 
 	@dirty
