@@ -696,7 +696,19 @@ includeFile("racetracks/racetracks.lua")
 --Space
 includeFile("space/space_chassis_dealer_conv_handler.lua")
 includeFile("space/pilot_seat_menu_component.lua")
-includeFile("space/spacestation_yavin4_conv_handler.lua")
+
+--Space Stations
+includeFile("space/spacestations/spacestation.lua")
+includeFile("space/spacestations/spacestation_corellia_conv_handler.lua")
+includeFile("space/spacestations/spacestation_dantooine_conv_handler.lua")
+includeFile("space/spacestations/spacestation_dathomir_conv_handler.lua")
+includeFile("space/spacestations/spacestation_endor_conv_handler.lua")
+includeFile("space/spacestations/spacestation_lok_conv_handler.lua")
+includeFile("space/spacestations/spacestation_naboo_conv_handler.lua")
+includeFile("space/spacestations/spacestation_rori_conv_handler.lua")
+includeFile("space/spacestations/spacestation_talus_conv_handler.lua")
+includeFile("space/spacestations/spacestation_tatooine_conv_handler.lua")
+includeFile("space/spacestations/spacestation_yavin4_conv_handler.lua")
 
 --Record Keepers
 includeFile("record_keepers/record_keepers.lua")
