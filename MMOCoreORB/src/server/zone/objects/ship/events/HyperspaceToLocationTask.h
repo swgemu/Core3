@@ -70,6 +70,7 @@ public:
 			strid += String::valueOf(currentIter);
 
 			player->sendSystemMessage(strid);
+			player->playMusicMessage("sound/ship_hyperspace_countdown.snd");
 
 			reschedule(1000);
 			return;
@@ -95,12 +96,32 @@ public:
 
 			Locker zoneCross(newZone, shipObject);
 
-			shipObject->initializePosition(location.getX() + System::random(100), location.getZ() + System::random(100), location.getY() + System::random(100));
+			shipObject->initializePosition(location.getX() + System::random(100.f), location.getZ() + System::random(100.f), location.getY() + System::random(100.f));
+
 			newZone->transferObject(shipObject, -1, false);
 
 			zoneCross.release();
 
+			uint64 parentID = shipObject->getObjectID();
+
+			// POB Ship
+			if (shipObject->getContainerObjectsSize() > 0) {
+				auto pilotChair = shipObject->getPilotChair().get();
+
+				if (pilotChair == nullptr) {
+					player->sendSystemMessage("Pilot Chair is a nullptr in HyperspaceToLocationTask for POB ship.");
+					return;
+				}
+
+				parentID = pilotChair->getObjectID();
+				location = pilotChair->getPosition();
+			}
+
 			Locker playerCross(player, shipObject);
+
+			player->switchZone(zone, location.getX(), location.getZ(), location.getY(), parentID);
+			player->removeInRangeObjects();
+			player->synchronizeCloseObjects();
 
 			player->sendToOwner(true);
 			return;
