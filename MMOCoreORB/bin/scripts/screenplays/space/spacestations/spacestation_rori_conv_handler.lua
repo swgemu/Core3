@@ -1,10 +1,9 @@
 local Logger = require("utils.logger")
 require("utils.helpers")
 
-spacestation_yavin4_conv_handler = Object:new {
-}
+spacestation_rori_conv_handler = Object:new {}
 
-function spacestation_yavin4_conv_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
+function spacestation_rori_conv_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	lastConversation = nil
@@ -21,7 +20,7 @@ function spacestation_yavin4_conv_handler:getNextConversationScreen(conversation
 	end
 
 	if (lastConversationScreen == nil) then
-		nextConversationScreen = conversation:getScreen("spacestation_yavin4_greeting")
+		nextConversationScreen = conversation:getScreen("spacestation_rori_greeting")
 	else
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
@@ -32,7 +31,7 @@ function spacestation_yavin4_conv_handler:getNextConversationScreen(conversation
 	return nextConversationScreen
 end
 
-function spacestation_yavin4_conv_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+function spacestation_rori_conv_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	local player = LuaSceneObject(conversingPlayer)
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
@@ -44,17 +43,11 @@ function spacestation_yavin4_conv_handler:runScreenHandlers(conversationTemplate
 		return pConvScreen
 	end
 
-	if (screenID == "spacestation_yavin4_land_mining_land") then
-		player:switchZone("yavin4", -267, 35, 4896, 0)
-		LuaShipObject(pShip):storeShip(conversingPlayer)
+	if (screenID == "spacestation_rori_land_narmle_complete") then
+		createEvent(1 * 1000, "SpaceStationScreenPlay", "landShip", conversingPlayer, "narmle")
 
-	elseif (screenID == "spacestation_yavin4_land_labor_land") then
-		player:switchZone("yavin4", -6921, 73, -5726, 0)
-		LuaShipObject(pShip):storeShip(conversingPlayer)
-
-	elseif (screenID == "spacestation_yavin4_land_imperial_land") then
-		player:switchZone("yavin4", 4054, 37, -6216, 0)
-		LuaShipObject(pShip):storeShip(conversingPlayer)
+	elseif (screenID == "spacestation_rori_land_restuss_complete") then
+		createEvent(1 * 1000, "SpaceStationScreenPlay", "landShip", conversingPlayer, "restuss")
 	end
 
 	return pConvScreen

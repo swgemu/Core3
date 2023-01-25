@@ -52,7 +52,7 @@ spacestation_yavin4_convotemplate:addScreen(spacestation_yavin4_land_mining_main
 
 spacestation_yavin4_land_mining_land = ConvoScreen:new {
     id = "spacestation_yavin4_land_mining_land",
-    leftDialog = "",
+    leftDialog = "@conversation/station_yavin4:s_914cece8",
     stopConversation = "true",
     options = {}
 }
@@ -77,7 +77,7 @@ spacestation_yavin4_convotemplate:addScreen(spacestation_yavin4_land_labor_main)
 
 spacestation_yavin4_land_labor_land = ConvoScreen:new {
     id = "spacestation_yavin4_land_labor_land",
-    leftDialog = "",
+    leftDialog = "@conversation/station_yavin4:s_914cece8",
     stopConversation = "true",
     options = {}
 }
@@ -102,7 +102,7 @@ spacestation_yavin4_convotemplate:addScreen(spacestation_yavin4_land_imperial_ma
 
 spacestation_yavin4_land_imperial_land = ConvoScreen:new {
     id = "spacestation_yavin4_land_imperial_land",
-    leftDialog = "",
+    leftDialog = "@conversation/station_yavin4:s_914cece8",
     stopConversation = "true",
     options = {}
 }
