@@ -1,5 +1,5 @@
 object_ship_spacestation_naboo = object_ship_shared_spacestation_neutral:new {
-    objectName = "@space/ship_names:station_naboo",
+    objectName = "@space/space_mobile_type:station_naboo",
     conversationTemplate = "spacestation_naboo_convotemplate",
     conversationMobile = "object/mobile/shared_space_comm_station_naboo.iff"
 }
