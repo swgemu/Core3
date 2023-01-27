@@ -210,5 +210,5 @@ lok_regions = {
 	{"@lok_region_names:hills_4", -3984, -4496, {CIRCLE, 2416}, SPAWNAREA, {"lok_hard_kimogilla_sw"}, 128},
 	{"@lok_region_names:hills_5", 5056, -5152, {CIRCLE, 1568}, SPAWNAREA, {"lok_hard_canyon_corsair_se", "lok_volcano"}, 64},
 
-	{"@lok_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, WORLDSPAWNAREA + SPAWNAREA, {"lok_world", "global_hard"}, 2048}
+	{"@lok_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, WORLDSPAWNAREA + SPAWNAREA, {"lok_world"}, 2048}
 }

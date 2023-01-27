@@ -183,5 +183,5 @@ yavin4_regions = {
 	{"@yavin4_region_names:hard_skreeg_sw", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	]]
 
-	{"@yavin4_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"yavin4_world", "global_hard"}, 2048},
+	{"@yavin4_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"yavin4_world"}, 2048},
 }

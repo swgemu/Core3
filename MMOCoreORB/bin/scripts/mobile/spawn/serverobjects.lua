@@ -1,9 +1,5 @@
 -- Spawn Groups
 
--- Global Spawns
-includeFile("spawn/global.lua")
-includeFile("spawn/global_hard.lua")
-
 -- Corellia Spawns
 includeFile("spawn/corellia/corellia_world.lua")
 includeFile("spawn/corellia/agrilat_swamp.lua")

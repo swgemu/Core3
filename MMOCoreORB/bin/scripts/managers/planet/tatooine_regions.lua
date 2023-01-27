@@ -289,7 +289,7 @@ tatooine_regions = {
 	]]
 
 
-	{"@tatooine_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"tatooine_world", "global", "global_hard"}, 2048},
+	{"@tatooine_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"tatooine_world"}, 2048},
 
 	-- Espa Track
 	{"mos_espa_circuit_track_1", 1943, 4792, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
