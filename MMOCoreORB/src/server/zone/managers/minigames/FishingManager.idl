@@ -29,7 +29,7 @@ class FishingManager extends Observer implements Logger {
 	protected transient VectorMap<string, int> fishColors;
 
 	@dereferenced
-	protected transient VectorMap<string, int> fishLengths;
+	protected transient VectorMap<string, float> fishLengths;
 
 	@dereferenced
 	protected Vector<string> fishingActions;
