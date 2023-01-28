@@ -15,10 +15,10 @@ require("scripts.managers.planet.regions")
 
 tatooine_regions = {
 	-- No Build Zones
-	{"northedge_tatooine_nobuild", -7980, 7640, {RECTANGLE, 8000, 8000}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"westedge_tatooine_nobuild", -7980, -7641, {RECTANGLE, -7640, 7640}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"southedge_tatooine_nobuild", -8000, -8000, {RECTANGLE, 8000, -7640}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"eastedge_tatooine_nobuild", 7640, -7640, {RECTANGLE, 8000, 7640}, NOSPAWNAREA + NOBUILDZONEAREA},
+	{"northedge_tatooine_nobuild", -7980, 7640, {RECTANGLE, 8000, 8000}, NOBUILDZONEAREA},
+	{"westedge_tatooine_nobuild", -7980, -7641, {RECTANGLE, -7640, 7640}, NOBUILDZONEAREA},
+	{"southedge_tatooine_nobuild", -8000, -8000, {RECTANGLE, 8000, -7640}, NOBUILDZONEAREA},
+	{"eastedge_tatooine_nobuild", 7640, -7640, {RECTANGLE, 8000, 7640}, NOBUILDZONEAREA},
 	{"old_battlefield_nobuild_tat1", 2488, 4388, {CIRCLE, 192}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"old_battlefield_nobuild_tat2", 4950, 4650, {CIRCLE, 256}, NOSPAWNAREA + NOBUILDZONEAREA},
 
@@ -31,7 +31,7 @@ tatooine_regions = {
 	{"@tatooine_region_names:jundland_wastes_2", -4400, -2300, {RECTANGLE, -2912, -160}, NAMEDREGION},
 	{"@tatooine_region_names:valley_of_the_wind", -6917, -5397, {RECTANGLE, -6330, -4330}, NAMEDREGION},
 	--{"@tatooine_region_names:lowland_basin", 0, 0, {CIRCLE, 0}, NAMEDREGION},
-	{"@tatooine_region_names:lowland_basin_1", -2656, -5696, {CIRCLE, 1376}, NAMEDREGION},
+
 	{"@tatooine_region_names:arch_mesa", -289, 3851, {CIRCLE, 300}, NAMEDREGION},
 	{"@tatooine_region_names:grand_arena_flats_1", 2592, 4096, {CIRCLE, 512}, NAMEDREGION},
 	{"@tatooine_region_names:grand_arena_flats_2", 1568, 3872, {RECTANGLE, 2720, 4384}, NAMEDREGION},
@@ -49,7 +49,8 @@ tatooine_regions = {
 	{"@tatooine_region_names:imperial_oasis", -5300, 2681, {CIRCLE, 90}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"@tatooine_region_names:imperial_oasis_1", -5311, 2684, {CIRCLE, 200}, NAMEDREGION},
 	{"@tatooine_region_names:oasis_south", 1828, -6053, {CIRCLE, 150}, NAMEDREGION},
-	{"@tatooine_region_names:krayt_graveyard_1", 6560, 4096, {RECTANGLE, 7488, 4608}, NAMEDREGION + NOBUILDZONEAREA},
+	{"@tatooine_region_names:krayt_graveyard", 7451, 4510, {CIRCLE, 500}, NAMEDREGION + NOBUILDZONEAREA + NAVAREA},
+	{"@tatooine_region_names:krayt_graveyard_1", 6560, 4096, {RECTANGLE, 7488, 4608}, NAMEDREGION + NOBUILDZONEAREA + NAVAREA},
 	{"@tatooine_region_names:w_dune_sea_1", -5952, -2176, {CIRCLE, 1344}, NAMEDREGION},
 	{"@tatooine_region_names:w_dune_sea_2", -6112, -6016, {RECTANGLE, -4384, -2112}, NAMEDREGION},
 	{"@tatooine_region_names:w_dune_sea_3", -4944, -4816, {CIRCLE, 950}, NAMEDREGION},
@@ -59,7 +60,7 @@ tatooine_regions = {
 	{"@tatooine_region_names:e_dune_sea_4", 2880, 5440, {RECTANGLE, 3808, 7392}, NAMEDREGION},
 	{"@tatooine_region_names:tusken_march", -5312, 6048, {CIRCLE, 1376}, NAMEDREGION},
 	--{"@tatooine_region_names:southern_reach", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@tatooine_region_names:southern_reach_1", 1664, -6336, {CIRCLE, 992}, NAMEDREGION},
+
 	{"@tatooine_region_names:mesric_plateau_1", -336, 368, {CIRCLE, 1360}, NAMEDREGION},
 	{"@tatooine_region_names:mesric_plateau_2", 1104, -784, {CIRCLE, 1648}, NAMEDREGION},
 	{"@tatooine_region_names:mesric_plateau_3", 3424, -2336, {CIRCLE, 1600}, NAMEDREGION},
@@ -172,20 +173,6 @@ tatooine_regions = {
 	{"village_ruins", 5695, 1877, {CIRCLE, 200}, NOSPAWNAREA + NOBUILDZONEAREA + NAVAREA},
 	{"wind_harvest_unit", -2910, -6249, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 
-	-- Unknown Named regions
-	{"@tatooine_region_names:west_dune_sea_3", 0, 0, {CIRCLE, 0}, NAMEDREGION},
-	{"@tatooine_region_names:burning_bone_altar", 0, 0, {CIRCLE, 0}, NAMEDREGION},
-	{"@tatooine_region_names:arch_mesa", 0, 0, {CIRCLE, 0}, NAMEDREGION},
-	{"@tatooine_region_names:canyon_maze", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@tatooine_region_names:central_mountains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@tatooine_region_names:eastern_peaks", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@tatooine_region_names:northeastern_desert", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@tatooine_region_names:northern_wasteland", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@tatooine_region_names:northwestern_mountains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@tatooine_region_names:southeastern_mountains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@tatooine_region_names:two_fortresses", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-	{"@tatooine_region_names:desert", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
-
 	-- Cities
 	{"@tatooine_region_names:bestine", -1218, -3688, {CIRCLE, 336}, CITY + NOSPAWNAREA},
 	{"@tatooine_region_names:mos_eisley", 3460, -4768, {CIRCLE, 456}, CITY + NOSPAWNAREA},
@@ -194,102 +181,107 @@ tatooine_regions = {
 	{"@tatooine_region_names:mos_taike", 3832, 2360, {CIRCLE, 264}, CITY + NOSPAWNAREA},
 	{"@tatooine_region_names:wayfar", -5174, -6582, {CIRCLE, 230}, CITY + NOSPAWNAREA},
 	{"@tatooine_region_names:anchorhead", 102, -5360, {CIRCLE, 125}, CITY + NOSPAWNAREA},
-	{"bestine_nobuild_1", -1218, -3688, {CIRCLE, 700},  NOBUILDZONEAREA},
-	{"mos_eisley_nobuild_1", 3460, -4768, {CIRCLE, 900}, NOBUILDZONEAREA},
-	{"mos_entha_nobuild_1", 1488, 3256, {CIRCLE, 900}, NOBUILDZONEAREA},
-	{"mos_espa_nobuild_1", -2712, 2464, {CIRCLE, 1100}, NOBUILDZONEAREA},
-	{"mos_taike_nobuild_1", 3832, 2360, {CIRCLE, 500}, NOBUILDZONEAREA},
-	{"wayfar_nobuild_1", -5174, -6582, {CIRCLE, 500}, NOBUILDZONEAREA},
-	{"anchorhead_nobuild_1", 102, -5360, {CIRCLE, 400}, NOBUILDZONEAREA},
+	{"bestine_nobuild_1", -1218, -3688, {CIRCLE, 700},  NOBUILDZONEAREA + NOWORLDSPAWNAREA},
+	{"mos_eisley_nobuild_1", 3460, -4768, {CIRCLE, 900}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
+	{"mos_entha_nobuild_1", 1488, 3256, {CIRCLE, 900}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
+	{"mos_espa_nobuild_1", -2712, 2464, {CIRCLE, 1100}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
+	{"mos_taike_nobuild_1", 3832, 2360, {CIRCLE, 500}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
+	{"wayfar_nobuild_1", -5174, -6582, {CIRCLE, 500}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
+	{"anchorhead_nobuild_1", 102, -5360, {CIRCLE, 400}, NOBUILDZONEAREA + NOWORLDSPAWNAREA},
 
 	-- Spawn Areas
-	{"@tatooine_region_names:plateau", -1408, -7088, {RECTANGLE, 7760, 1376}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:eastern_oasis", 6289, -441, {CIRCLE, 500}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:northeastern_oasis", 5361, 3945, {CIRCLE, 1175}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:southern_oasis", 1032, -7755, {CIRCLE, 200}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:western_oasis", -7127, 1408, {CIRCLE, 500}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:eastern_dune_sea", 2320, 784, {RECTANGLE, 8000, 7696}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:western_dune_sea_1", -8000, -8000, {RECTANGLE, -3728, -432}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:western_dune_sea_2", -2160, -5920, {CIRCLE, 1968}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:mospic_high_range_1", -344, 344, {CIRCLE, 1648}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:mospic_high_range_2", 1200, -832, {CIRCLE, 1808}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:mospic_high_range_3", 3496, -2584, {CIRCLE, 1500}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:mospic_high_range_4", 1624, -6248, {CIRCLE, 850}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:mospic_high_range_5", 616, -3352, {CIRCLE, 900}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:mospic_high_range_6", -6008, -4600, {CIRCLE, 1100}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:jundland_waste_1", -3488, 4240, {CIRCLE, 1125}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:jundland_waste_2", -3296, -1016, {CIRCLE, 1250}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:grand_arena", 872, 5000, {CIRCLE, 1130}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:western_dune_sea_3", -4904, -2536, {CIRCLE, 2424}, SPAWNAREA, {"tatooine_world"}, 256},
-	{"@tatooine_region_names:southwestern_desert", -7600, -7720, {RECTANGLE, -2915, 3933}, SPAWNAREA, {"tatooine_world"} ,256},
+	{"@tatooine_region_names:anchorhead_easy_newbie", 0, -5350, {CIRCLE, 500}, SPAWNAREA, {"tatooine_anchorhead_easy_newbie"}, 64},
+	{"@tatooine_region_names:anchorhead_medium_newbie", 0, -5350, {RING, 500, 900}, SPAWNAREA, {"tatooine_anchorhead_medium_newbie"}, 64},
+	{"@tatooine_region_names:bestine_medium_newbie", -1216, -3660, {CIRCLE, 1200}, SPAWNAREA, {"tatooine_bestine_easy_newbie"}, 64},
+	{"@tatooine_region_names:bestine_easy_newbie", -1212, -3676, {CIRCLE, 650}, SPAWNAREA, {"tatooine_bestine_medium_newbie"}, 64},
+	{"@tatooine_region_names:mos_eisley_medium_newbie", 3400, -4775, {RING, 800, 1400}, SPAWNAREA, {"tatooine_mos_eisley_medium_newbie"}, 64},
+	{"@tatooine_region_names:mos_eisley_easy_newbie", 3496, -4784, {CIRCLE, 800}, SPAWNAREA, {"tatooine_mos_eisley_easy_newbie"},64},
+	{"@tatooine_region_names:mos_eisley_se_medium", 630, -7692, {RECTANGLE, 6750, -2100}, SPAWNAREA, {"tatooine_mos_eisley_se_medium"} ,256},
+	{"@tatooine_region_names:mos_eisley_se_hard", -2909, -7700, {RECTANGLE, 7841, 930}, SPAWNAREA, {"tatooine_mos_eisley_se_hard"} ,256},
+	{"@tatooine_region_names:mos_eisley_easy_newbie_sw", 2408, -5992, {RECTANGLE, 3346, -5012}, SPAWNAREA, {"tatooine_mos_eisley_easy_newbie_sw"} ,256},
+	{"@tatooine_region_names:mos_entha_easy_newbie", 1490, 3165, {CIRCLE, 800}, SPAWNAREA, {"tatooine_mos_entha_easy_newbie"}, 64},
+	{"@tatooine_region_names:mos_entha_medium_newbie", 1490, 3165, {RING, 800, 1500}, SPAWNAREA, {"tatooine_mos_entha_medium_newbie"}, 64},
+	{"@tatooine_region_names:mos_entha_medium", -2895, 940, {RECTANGLE, 900, 5350}, SPAWNAREA, {"tatooine_mos_entha_medium"}, 64},
+	{"@tatooine_region_names:mos_entha_weequay", -2419, 1909, {CIRCLE, 250}, SPAWNAREA, {"tatooine_mos_entha_weequay"}, 16},
+	{"@tatooine_region_names:wayfar_easy_newbie", -5195, -6535, {CIRCLE, 600}, SPAWNAREA, {"tatooine_wayfar_easy_newbie"}, 64},
+	{"@tatooine_region_names:wayfar_medium_newbie", -5195, -6535, {RING, 600, 1000}, SPAWNAREA, {"tatooine_wayfar_medium_newbie"}, 64},
+	{"@tatooine_region_names:mos_espa_easy_newbie", -2950, 2222, {CIRCLE, 900}, SPAWNAREA, {"tatooine_mos_espa_easy_newbie"}, 64},
+	{"@tatooine_region_names:mos_espa_medium_newbie", -2950, 2222, {RING, 900, 1600}, SPAWNAREA, {"tatooine_mos_espa_medium_newbie"}, 64},
+	{"@tatooine_region_names:mos_taike_easy_newbie", 3835, 2350, {CIRCLE, 600}, SPAWNAREA, {"tatooine_mos_taike_easy_newbie"}, 64},
+	{"@tatooine_region_names:mos_taike_medium_newbie", 3835, 2350, {RING, 600, 1100}, SPAWNAREA, {"tatooine_mos_taike_medium_newbie"}, 64},
 
-	{"@tatooine_region_names:hard_krayt_ne", 6515, 4215, {CIRCLE, 785}, SPAWNAREA, {"tatooine_krayt"}, 512},
-	{"@tatooine_region_names:krayt_graveyard", 7451, 4510, {CIRCLE, 500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_krayt_graveyard"} , 192},
+	{"@tatooine_region_names:hard_krayt_ne", 6515, 4215, {CIRCLE, 785}, SPAWNAREA + NAVAREA, {"tatooine_hard_krayt_ne"}, 8},
+	{"@tatooine_region_names:north_eastern_krayt_background", 908, 930, {RECTANGLE, 7830, 5357}, SPAWNAREA, {"tatooine_north_eastern_krayt_background"}, 256},
+	{"@tatooine_region_names:jundland_waste_1", -3488, 4240, {CIRCLE, 1125}, SPAWNAREA, {"tatooine_jundland_wastes"}, 64},
+	{"@tatooine_region_names:jundland_waste_2", -3296, -1016, {CIRCLE, 1250}, SPAWNAREA, {"tatooine_jundland_wastes"}, 64},
+	{"@tatooine_region_names:eastern_dune_sea", 2320, 784, {RECTANGLE, 8000, 7696}, SPAWNAREA, {"tatooine_hard_dune_sea"}, 256},
+	{"@tatooine_region_names:western_dune_sea_1", -8000, -8000, {RECTANGLE, -3728, -432}, SPAWNAREA, {"tatooine_hard_dune_sea"}, 256},
+	{"@tatooine_region_names:western_dune_sea_2", -2160, -5920, {CIRCLE, 1968}, SPAWNAREA, {"tatooine_hard_dune_sea"}, 64},
+	{"@tatooine_region_names:western_dune_sea_3", -4904, -2536, {CIRCLE, 2424}, SPAWNAREA, {"tatooine_hard_dune_sea"}, 128},
+	{"@tatooine_region_names:southwestern_desert", -7600, -7720, {RECTANGLE, -2915, 3933}, SPAWNAREA, {"tatooine_southwestern_desert"}, 128},
+	{"@tatooine_region_names:medium_imperial_patrol", 408, -1042, {CIRCLE, 250}, SPAWNAREA, {"tatooine_medium_imperial_patrol"}, 8},
+	{"@tatooine_region_names:medium_rebel_patrol", 2904, -1452, {CIRCLE, 250}, SPAWNAREA, {"tatooine_medium_rebel_patrol"}, 8},
+	{"@tatooine_region_names:medium_rodian_patrol", -205, -2080, {CIRCLE, 250}, SPAWNAREA, {"tatooine_medium_rodian_patrol"}, 8},
+	{"@tatooine_region_names:medium_squill_caves", 19, -22, {CIRCLE, 461}, SPAWNAREA, {"tatooine_medium_squill_caves"}, 16},
+	{"@tatooine_region_names:hard_squill_caves", 7, 0, {CIRCLE, 274}, SPAWNAREA, {"tatooine_hard_squill_caves"}, 8},
+	{"@tatooine_region_names:jabba_camps_sw", -6467, -7067, {CIRCLE, 500}, SPAWNAREA, {"tatooine_jabba_camps_sw"}, 16},
+	{"@tatooine_region_names:medium_criminals", -3867, -4292, {CIRCLE, 250}, SPAWNAREA, {"tatooine_medium_criminals"}, 8},
+	{"@tatooine_region_names:nw_tusken_medium", -7590, 3925, {RECTANGLE, -2900, 7780}, SPAWNAREA, {"tatooine_nw_tusken_medium"}, 32},
+	{"@tatooine_region_names:north_eastern_hard", -2900, 5359, {RECTANGLE, 7800, 7782}, SPAWNAREA, {"tatooine_north_eastern_hard"}, 128},
+	{"@tatooine_region_names:nw_tusken_hard", -4046, 6104, {CIRCLE, 521}, SPAWNAREA, {"tatooine_nw_tusken_hard"}, 16},
+	{"@tatooine_region_names:northeast_imperial_medium", 4697, 2126, {CIRCLE, 250}, SPAWNAREA, {"tatooine_northeast_imperial_medium"}, 8},
+	{"@tatooine_region_names:northeast_rebel_medium", 6192, 1562, {CIRCLE, 250}, SPAWNAREA, {"tatooine_northeast_rebel_medium"}, 8},
+	{"@tatooine_region_names:nw_rebel_hard", -6644, 4789, {CIRCLE, 250}, SPAWNAREA, {"tatooine_nw_rebel_hard"}, 8},
+	{"@tatooine_region_names:nw_imperial_hard", -5541, 7126, {CIRCLE, 250}, SPAWNAREA, {"tatooine_nw_imperial_hard"}, 8},
+	{"@tatooine_region_names:jundlan_eopie", -6112, -3375, {CIRCLE, 256}, SPAWNAREA, {"tatooine_jundlan_eopie"}, 8},
+	{"@tatooine_region_names:medium_womprats", -2500, -5400, {CIRCLE, 250}, SPAWNAREA, {"tatooine_medium_womprats"}, 8},
+	{"@tatooine_region_names:lowland_basin_1", -2656, -5696, {CIRCLE, 1376}, NAMEDREGION + SPAWNAREA, {"tatooine_lowland_basin"}, 64},
+	{"@tatooine_region_names:southern_reach_1", 1664, -6336, {CIRCLE, 992}, NAMEDREGION + SPAWNAREA, {"tatooine_southern_reach"}, 64},
 
-	{"@tatooine_region_names:anchorhead_easy_newbie", 0, -5350, {CIRCLE, 700}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 96},
-	{"@tatooine_region_names:anchorhead_medium_newbie", 0, -5350, {RING, 700, 1200}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 160},
-	{"@tatooine_region_names:bestine_medium_newbie", -1216, -3660, {CIRCLE, 1100}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 384},
-	{"@tatooine_region_names:bestine_easy_newbie", -1212, -3676, {CIRCLE, 850}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 256},
-	{"@tatooine_region_names:mos_eisley_medium_newbie", 3400, -4775, {RING, 1750, 2500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 384},
-	{"@tatooine_region_names:mos_eisley_easy_newbie", 3496, -4784, {CIRCLE, 1100}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"},256},
-	{"@tatooine_region_names:mos_entha_easy_newbie", 1490, 3165, {CIRCLE, 1750}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 256},
-	{"@tatooine_region_names:mos_entha_medium_newbie", 1490, 3165, {RING, 1750, 2500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 384},
-	{"@tatooine_region_names:wayfar_easy_newbie", -5195, -6535, {CIRCLE, 600}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 64},
-	{"@tatooine_region_names:wayfar_medium_newbie", -5195, -6535, {RING, 600, 1000}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 128},
-	{"@tatooine_region_names:mos_espa_easy_newbie", -2950, 2222, {CIRCLE, 1750}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 256},
-	{"@tatooine_region_names:mos_espa_medium_newbie", -2950, 2222, {RING, 1750, 2500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 384},
-	{"@tatooine_region_names:mos_taike_easy_newbie", 3835, 2350, {CIRCLE, 900}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 128},
-	{"@tatooine_region_names:mos_taike_medium_newbie", 3835, 2350, {RING, 900, 1500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 196},
-
-	--[[
-	{"easy_bugland_ne", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_criminals_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_desert_demons_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_militia_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_pirate_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_swoopers_nw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_villages_2_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_villages_ne", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_villages_nw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_villages_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_villages_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_villiages_2_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_villiages_ne", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_villiages_nw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_villiages_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"easy_villiages_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_criminals_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_giant_worrt_nw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_jabba_thug_2_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_jabba_thug_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_jawa_nw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_kitonaks_nw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_kitonaks_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_rodians_nw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_scyks_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_scyks_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_slavers_ne", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_slavers_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_slavers_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_squill_sw", 0, 0, {CIRCLE, 256}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_swoopers_nw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_swoopers_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_tusken_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_valarian_ne", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"medium_weequay_ne", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"hard_alkhara_ne", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"hard_bugland_ne", 6560, -1250, {CIRCLE, 256}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"hard_criminals_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"hard_dune_sea", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"hard_jabba_thug_sw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"hard_jawa_nw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"hard_krayt_ne", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"hard_tusken_nw", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	{"hard_valarian_se", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
-	]]
-
+	{"@tatooine_region_names:plateau", -1408, -7088, {RECTANGLE, 7760, 1376}, SPAWNAREA, {"tatooine_easy_criminals_se", "tatooine_easy_militia_se", "tatooine_easy_villiages_se", "tatooine_medium_slavers_se"}, 256},
+	{"@tatooine_region_names:eastern_oasis", 6289, -441, {CIRCLE, 500}, SPAWNAREA, {"tatooine_eastern_peaks"}, 32},
+	{"@tatooine_region_names:northeastern_oasis", 5361, 3945, {CIRCLE, 1175}, SPAWNAREA, {"tatooine_northeastern_desert"}, 32},
+	{"@tatooine_region_names:southern_oasis", 1032, -7755, {CIRCLE, 200}, SPAWNAREA, {"tatooine_world"}, 8},
+	{"@tatooine_region_names:western_oasis", -7127, 1408, {CIRCLE, 500}, SPAWNAREA, {"tatooine_hard_jawa_nw", "tatooine_medium_jawa_nw"}, 16},
+	{"@tatooine_region_names:mospic_high_range_1", -344, 344, {CIRCLE, 1648}, SPAWNAREA, {"tatooine_central_mountains"}, 64},
+	{"@tatooine_region_names:mospic_high_range_2", 1200, -832, {CIRCLE, 1808}, SPAWNAREA, {"tatooine_hard_criminals_se", "tatooine_medium_criminals_se"}, 64},
+	{"@tatooine_region_names:mospic_high_range_3", 3496, -2584, {CIRCLE, 1500}, SPAWNAREA, {"tatooine_hard_valarian_se"}, 64},
+	{"@tatooine_region_names:mospic_high_range_4", 1624, -6248, {CIRCLE, 850}, SPAWNAREA, {"tatooine_southeastern_mountains"}, 16},
+	{"@tatooine_region_names:mospic_high_range_5", 616, -3352, {CIRCLE, 900}, SPAWNAREA, {"tatooine_medium_scyks_se", "tatooine_medium_swoopers_se", "tatooine_medium_kitonaks_se"}, 16},
+	{"@tatooine_region_names:mospic_high_range_6", -6008, -4600, {CIRCLE, 1100}, SPAWNAREA, {"tatooine_hard_jabba_thug_sw"}, 32},
+	{"@tatooine_region_names:grand_arena", 872, 5000, {CIRCLE, 1130}, SPAWNAREA, {"tatooine_northern_wasteland"}, 32},
 
 	{"@tatooine_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"tatooine_world"}, 2048},
+
+	--[[ TBD
+	tatooine_northwestern_mountains
+	tatooine_easy_bugland_ne
+	tatooine_easy_desert_demons_sw
+	tatooine_easy_pirate_sw
+	tatooine_easy_swoopers_nw
+	tatooine_easy_villiages_2_sw
+	tatooine_easy_villiages_ne
+	tatooine_easy_villiages_nw
+	tatooine_easy_villiages_sw
+	tatooine_hard_alkhara_ne
+	tatooine_hard_bugland_ne
+	tatooine_hard_tusken_nw
+	tatooine_jabba_lowbie_zone
+	tatooine_medium_bugland_ne
+	tatooine_medium_giant_worrt_nw
+	tatooine_medium_jabba_thug_2_sw
+	tatooine_medium_jabba_thug_sw
+	tatooine_medium_kitonaks_nw
+	tatooine_medium_rodians_nw
+	tatooine_medium_scyks_sw
+	tatooine_medium_slavers_ne
+	tatooine_medium_slavers_sw
+	tatooine_medium_squill_sw
+	tatooine_medium_swoopers_nw
+	tatooine_medium_tusken_sw
+	tatooine_medium_valarian_ne
+	tatooine_medium_weequay_ne
+	]]
 
 	-- Espa Track
 	{"mos_espa_circuit_track_1", 1943, 4792, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
@@ -309,6 +301,7 @@ tatooine_regions = {
 	{"mos_espa_circuit_track_15", 2132, 4346, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 
 	-- Deliver Missions
+	--[[
 	{"bestine_deliver_1", -1034, -3645, {CIRCLE, 5}, UNDEFINEDAREA},
 	{"bestine_deliver_2", -1010, -3729, {CIRCLE, 2}, UNDEFINEDAREA},
 	{"bestine_deliver_3", -1142, -3673, {CIRCLE, 2}, UNDEFINEDAREA},
@@ -368,4 +361,5 @@ tatooine_regions = {
 	{"mos_espa_deliver_10", -2914, 1985, {CIRCLE, 15}, UNDEFINEDAREA},
 	{"mos_espa_deliver_11", -2952, 2088, {CIRCLE, 15}, UNDEFINEDAREA},
 	{"mos_espa_deliver_12", -2914, 2466, {CIRCLE, 10}, UNDEFINEDAREA},
+	]]
 }
