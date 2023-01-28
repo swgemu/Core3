@@ -2206,6 +2206,9 @@ class CreatureObject extends TangibleObject {
 	@local
 	public native void sendSpeedAndAccelerationMods(SceneObject player);
 
+	@local
+	public native void broadcastSpeedAndAccelerationMods(boolean sendSelf = true);
+
 	@preLocked
 	public native void updateSpeedAndAccelerationMods();
 
