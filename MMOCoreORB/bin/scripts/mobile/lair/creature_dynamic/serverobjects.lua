@@ -348,6 +348,7 @@ includeFile("lair/creature_dynamic/talus/talus_wolf_kima_pack_neutral_none.lua")
 includeFile("lair/creature_dynamic/talus/talus_woodland_kima_pack_neutral_none.lua")
 includeFile("lair/creature_dynamic/talus/talus_wrix_pack_neutral_none.lua")
 
+includeFile("lair/creature_dynamic/tatooine/tatooine_bocatt_pack_neutral_medium.lua")
 includeFile("lair/creature_dynamic/tatooine/tatooine_bocatt_pack_neutral_none.lua")
 includeFile("lair/creature_dynamic/tatooine/tatooine_bull_bantha_herd_neutral_none.lua")
 includeFile("lair/creature_dynamic/tatooine/tatooine_cannibal_dewback_herd_neutral_none.lua")

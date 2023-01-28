@@ -368,11 +368,48 @@ includeFile("spawn/talus/talus_western_plains.lua")
 includeFile("spawn/talus/talus_world.lua")
 
 -- Tatooine Spawns
+includeFile("spawn/tatooine/tatooine_anchorhead_easy_newbie.lua")
+includeFile("spawn/tatooine/tatooine_anchorhead_medium_newbie.lua")
+includeFile("spawn/tatooine/tatooine_bestine_easy_newbie.lua")
+includeFile("spawn/tatooine/tatooine_bestine_medium_newbie.lua")
+includeFile("spawn/tatooine/tatooine_central_mountains.lua")
+includeFile("spawn/tatooine/tatooine_eastern_peaks.lua")
+includeFile("spawn/tatooine/tatooine_easy_bugland_ne.lua")
+includeFile("spawn/tatooine/tatooine_easy_criminals_se.lua")
+includeFile("spawn/tatooine/tatooine_easy_desert_demons_sw.lua")
+includeFile("spawn/tatooine/tatooine_easy_militia_se.lua")
+includeFile("spawn/tatooine/tatooine_easy_pirate_sw.lua")
+includeFile("spawn/tatooine/tatooine_easy_swoopers_nw.lua")
+includeFile("spawn/tatooine/tatooine_easy_villiages_2_sw.lua")
+includeFile("spawn/tatooine/tatooine_easy_villiages_ne.lua")
+includeFile("spawn/tatooine/tatooine_easy_villiages_nw.lua")
+includeFile("spawn/tatooine/tatooine_easy_villiages_se.lua")
+includeFile("spawn/tatooine/tatooine_easy_villiages_sw.lua")
+includeFile("spawn/tatooine/tatooine_hard_alkhara_ne.lua")
+
+
+
+
+
+
 includeFile("spawn/tatooine/tatooine_world.lua")
-includeFile("spawn/tatooine/tatooine_easy.lua")
-includeFile("spawn/tatooine/tatooine_medium.lua")
-includeFile("spawn/tatooine/tatooine_krayt.lua")
-includeFile("spawn/tatooine/tatooine_krayt_graveyard.lua")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- Yavin 4
 includeFile("spawn/yavin4/yavin4_world.lua")

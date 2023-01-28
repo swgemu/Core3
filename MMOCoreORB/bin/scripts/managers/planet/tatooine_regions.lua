@@ -223,23 +223,23 @@ tatooine_regions = {
 	{"@tatooine_region_names:western_dune_sea_3", -4904, -2536, {CIRCLE, 2424}, SPAWNAREA, {"tatooine_world"}, 256},
 	{"@tatooine_region_names:southwestern_desert", -7600, -7720, {RECTANGLE, -2915, 3933}, SPAWNAREA, {"tatooine_world"} ,256},
 
-	{"@tatooine_region_names:hard_krayt_ne", 6515, 4215, {CIRCLE, 785}, SPAWNAREA, {"tatooine_krayt"}, 512},
-	{"@tatooine_region_names:krayt_graveyard", 7451, 4510, {CIRCLE, 500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_krayt_graveyard"} , 192},
+	{"@tatooine_region_names:hard_krayt_ne", 6515, 4215, {CIRCLE, 785}, SPAWNAREA, {"tatooine_world"}, 512},
+	{"@tatooine_region_names:krayt_graveyard", 7451, 4510, {CIRCLE, 500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"} , 192},
 
-	{"@tatooine_region_names:anchorhead_easy_newbie", 0, -5350, {CIRCLE, 700}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 96},
-	{"@tatooine_region_names:anchorhead_medium_newbie", 0, -5350, {RING, 700, 1200}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 160},
-	{"@tatooine_region_names:bestine_medium_newbie", -1216, -3660, {CIRCLE, 1100}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 384},
-	{"@tatooine_region_names:bestine_easy_newbie", -1212, -3676, {CIRCLE, 850}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 256},
-	{"@tatooine_region_names:mos_eisley_medium_newbie", 3400, -4775, {RING, 1750, 2500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 384},
-	{"@tatooine_region_names:mos_eisley_easy_newbie", 3496, -4784, {CIRCLE, 1100}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"},256},
-	{"@tatooine_region_names:mos_entha_easy_newbie", 1490, 3165, {CIRCLE, 1750}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 256},
-	{"@tatooine_region_names:mos_entha_medium_newbie", 1490, 3165, {RING, 1750, 2500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 384},
-	{"@tatooine_region_names:wayfar_easy_newbie", -5195, -6535, {CIRCLE, 600}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 64},
-	{"@tatooine_region_names:wayfar_medium_newbie", -5195, -6535, {RING, 600, 1000}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 128},
-	{"@tatooine_region_names:mos_espa_easy_newbie", -2950, 2222, {CIRCLE, 1750}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 256},
-	{"@tatooine_region_names:mos_espa_medium_newbie", -2950, 2222, {RING, 1750, 2500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 384},
-	{"@tatooine_region_names:mos_taike_easy_newbie", 3835, 2350, {CIRCLE, 900}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_easy"}, 128},
-	{"@tatooine_region_names:mos_taike_medium_newbie", 3835, 2350, {RING, 900, 1500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_medium"}, 196},
+	{"@tatooine_region_names:anchorhead_easy_newbie", 0, -5350, {CIRCLE, 700}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 96},
+	{"@tatooine_region_names:anchorhead_medium_newbie", 0, -5350, {RING, 700, 1200}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 160},
+	{"@tatooine_region_names:bestine_medium_newbie", -1216, -3660, {CIRCLE, 1100}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 384},
+	{"@tatooine_region_names:bestine_easy_newbie", -1212, -3676, {CIRCLE, 850}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 256},
+	{"@tatooine_region_names:mos_eisley_medium_newbie", 3400, -4775, {RING, 1750, 2500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 384},
+	{"@tatooine_region_names:mos_eisley_easy_newbie", 3496, -4784, {CIRCLE, 1100}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"},256},
+	{"@tatooine_region_names:mos_entha_easy_newbie", 1490, 3165, {CIRCLE, 1750}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 256},
+	{"@tatooine_region_names:mos_entha_medium_newbie", 1490, 3165, {RING, 1750, 2500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 384},
+	{"@tatooine_region_names:wayfar_easy_newbie", -5195, -6535, {CIRCLE, 600}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 64},
+	{"@tatooine_region_names:wayfar_medium_newbie", -5195, -6535, {RING, 600, 1000}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 128},
+	{"@tatooine_region_names:mos_espa_easy_newbie", -2950, 2222, {CIRCLE, 1750}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 256},
+	{"@tatooine_region_names:mos_espa_medium_newbie", -2950, 2222, {RING, 1750, 2500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 384},
+	{"@tatooine_region_names:mos_taike_easy_newbie", 3835, 2350, {CIRCLE, 900}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 128},
+	{"@tatooine_region_names:mos_taike_medium_newbie", 3835, 2350, {RING, 900, 1500}, SPAWNAREA + NOWORLDSPAWNAREA, {"tatooine_world"}, 196},
 
 	--[[
 	{"easy_bugland_ne", 0, 0, {CIRCLE, 0}, SPAWNAREA , {"tatooine_world"} ,256},
@@ -309,6 +309,7 @@ tatooine_regions = {
 	{"mos_espa_circuit_track_15", 2132, 4346, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 
 	-- Deliver Missions
+	--[[
 	{"bestine_deliver_1", -1034, -3645, {CIRCLE, 5}, UNDEFINEDAREA},
 	{"bestine_deliver_2", -1010, -3729, {CIRCLE, 2}, UNDEFINEDAREA},
 	{"bestine_deliver_3", -1142, -3673, {CIRCLE, 2}, UNDEFINEDAREA},
@@ -368,4 +369,5 @@ tatooine_regions = {
 	{"mos_espa_deliver_10", -2914, 1985, {CIRCLE, 15}, UNDEFINEDAREA},
 	{"mos_espa_deliver_11", -2952, 2088, {CIRCLE, 15}, UNDEFINEDAREA},
 	{"mos_espa_deliver_12", -2914, 2466, {CIRCLE, 10}, UNDEFINEDAREA},
+	]]
 }
