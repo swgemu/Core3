@@ -10,14 +10,10 @@
 
 class SelectDraftSchematicCommand : public QueueCommand {
 public:
-
-	SelectDraftSchematicCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	SelectDraftSchematicCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -29,20 +25,20 @@ public:
 		 * This argument is the index of the schematic in the players schematic list
 		 */
 
-	    if(!creature->isPlayerCreature())
+		if (!creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-	    ManagedReference<TradeSession*> tradeContainer = creature->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
+		ManagedReference<TradeSession*> tradeContainer = creature->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
-	    if (tradeContainer != nullptr) {
-	    	server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(creature);
-	    }
+		if (tradeContainer != nullptr) {
+			server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(creature);
+		}
 
-	    ManagedReference<CreatureObject* > player = creature;
+		ManagedReference<CreatureObject*> player = creature;
 
 		Reference<CraftingSession*> session = creature->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
 
-		if(session == nullptr) {
+		if (session == nullptr) {
 			return GENERALERROR;
 		}
 
@@ -50,8 +46,7 @@ public:
 
 		int index = 0;
 
-		if(tokenizer.hasMoreTokens()) {
-
+		if (tokenizer.hasMoreTokens()) {
 			index = tokenizer.getIntToken();
 
 		} else {
@@ -64,7 +59,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
 
-#endif //SELECTDRAFTSCHEMATICCOMMAND_H_
+#endif // SELECTDRAFTSCHEMATICCOMMAND_H_

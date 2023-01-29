@@ -8,6 +8,7 @@ import server.zone.objects.tangible.tool.CraftingStation;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.objects.player.sessions.crafting.events.ProgressCraftingTask;
 include system.util.Vector;
 include system.util.VectorMap;
 include system.lang.ref.Reference;
@@ -16,78 +17,120 @@ import server.zone.managers.crafting.CraftingManager;
 include templates.customization.CustomizationVariable;
 
 class CraftingSession extends Facade {
+	// Crafting States
+	public static final byte INIT_SESSION = 1;
+	public static final byte START = 2;
+	public static final byte SELECT_SCHEM = 3;
+	public static final byte ADD_RESOURCE = 4;
+	public static final byte ASSEMBLE = 5;
+	public static final byte EXPERIMENT = 6;
+
+	protected ProgressCraftingTask craftingTask;
+
 	@weakReference
 	protected transient CreatureObject crafter;
-	
+
 	@weakReference
 	protected transient PlayerObject crafterGhost;
-	
+
 	@weakReference
 	protected transient CraftingTool craftingTool;
-	
+
 	@weakReference
 	protected transient CraftingStation craftingStation;
 
 	@weakReference
 	protected transient CraftingManager craftingManager;
-	
+
 	@weakReference
 	protected transient ManufactureSchematic manufactureSchematic;
-	
+
 	@weakReference
 	protected transient TangibleObject prototype;
 
 	protected transient int experimentationPointsTotal;
 	protected transient int experimentationPointsUsed;
-	
+
 	protected transient byte state;
-	
+
 	@dereferenced
 	protected transient Vector<DraftSchematic> currentSchematicList;
-	
+
 	protected transient byte assemblyResult;
 	protected transient byte experimentationResult;
 
 	/// For experiment hacking attempts
 	protected transient unsigned long lastExperimentTime;
-	
+
 	@dereferenced
 	protected transient VectorMap<string, Reference<CustomizationVariable> > variables;
-	
-	public CraftingSession(CreatureObject creature) {
-		Logger.setLoggingName("CraftingSession");
-		Logger.setLogging(true);
-		
-		crafter = creature;
-		craftingManager = null;
-	}
+
+	// Constructor
+	public native CraftingSession(CreatureObject player);
 
 	/**
 	 * The crafting tool and station have been identified pre calling initializeSession
 	 */
 	public native int initializeSession(CraftingTool tool, CraftingStation station);
-	
+
+	public native void run();
+
+
+
+
+
+
+
+
+	// Setters
+
+	public void setCrafter(CreatureObject player) {
+		crafter = player;
+	}
+
+
+
+	// getters
+
+	@weakReference
+	public CreatureObject getCrafter() {
+		return crafter;
+	}
+
+
+
+
+
+
+
+
+
+
+	// Old Functions TBD
+
+
+
 	/**
 	 * Sends the packets and creates the objects to start
 	 * the crafting session
 	 */
 	private native int startSession();
-	
+
 	/**
 	 * Cancels the current session
 	 */
 	public native int cancelSession();
-	
+
 	/*
 	 * Cancels the current session via slash cancelCraftingSession which also closes the window
 	 */
 	public native int cancelSessionCommand();
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public native int clearSession();
-	
+
 	@weakReference
 	public ManufactureSchematic getSchematic() {
 		return manufactureSchematic;
@@ -101,10 +144,10 @@ class CraftingSession extends Facade {
 	/**
 	 * Sends various crafting messages
 	 */
-	
+
 	private native void sendSlotMessage(int counter, int message);
 
-	
+
 	/**
 	 * The SelectDraftSchematicCommand uses this
 	 */
@@ -115,23 +158,23 @@ class CraftingSession extends Facade {
 	 * Creates the needed objects when a schematic is selected
 	 */
 	private native boolean createSessionObjects(DraftSchematic draftSchematic);
-	
+
 	/**
 	 * Creates the manufacture schematic
 	 */
 	private native boolean createManufactureSchematic(DraftSchematic draftschematic);
-	
+
 	/**
 	 * Creates the prototype to be crafted
 	 */
 	private native boolean createPrototypeObject(DraftSchematic draftschematic);
-	
+
 	/**
 	 * Sends ingredients on ManufactureSchematic::synchronizedUIListen
 	 */
 	@preLocked
 	public native void sendIngredientForUIListen();
-	
+
 	/**
 	 * The CraftingAddIngredientCallback executes this method
 	 * when an object is added in the crafting window
@@ -157,13 +200,12 @@ class CraftingSession extends Facade {
 	 * unrecoverable
 	 */
 	private native void initialAssembly(int clientCounter);
-	
+
 	/**
 	 * Sends the crafting process to customization
 	 */
 	private native void finishAssembly(int clientCounter);
 
-	
 	/**
 	 * The CraftingExperimentCallback executes this method
 	 * when a player experiments in a crafting tool
@@ -172,28 +214,28 @@ class CraftingSession extends Facade {
 	public native void experiment(int rowsAttempted, final string expAttempt, int clientCounter);
 
 	/**
-	 * The CraftingCustomizationCallback executes this method 
+	 * The CraftingCustomizationCallback executes this method
 	 * a user customizes a tano in the crafting tool
 	 */
 	@preLocked
 	public native void customization(final string name, byte templateChoice, int schematicCount, final string customizationString);
 
 	/**
-	 * 
+	 *
 	 */
 	private native void finishStage1(int clientCounter);
 
 	/**
-	 * 
+	 *
 	 */
 	private native void finishStage2(int clientCounter);
-	
+
 	/**
 	 * CreatePrototypeCommand calls this
 	 */
 	@preLocked
 	public native void createPrototype(int clientCounter, boolean practice);
-	
+
 	/**
 	 * CreateManfSchematicCommand calls this
 	 */
@@ -209,7 +251,7 @@ class CraftingSession extends Facade {
 	public int getState() {
 		return state;
 	}
-	
+
 	private native void addSkillMods();
 
 	private native void addWeaponDots();

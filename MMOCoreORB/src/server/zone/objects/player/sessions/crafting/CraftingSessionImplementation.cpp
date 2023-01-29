@@ -23,6 +23,7 @@
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
 
+//#include "server/zone/objects/player/sessions/crafting/events/ProgressCraftingTask.h"
 #include "server/zone/objects/player/sessions/crafting/events/CreateObjectTask.h"
 #include "server/zone/objects/player/sessions/crafting/events/UpdateToolCountdownTask.h"
 
@@ -30,9 +31,17 @@
 #include "templates/params/RangedIntCustomizationVariable.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 
+// This should be a proper state machine
+
+
+CraftingSessionImplementation::CraftingSessionImplementation(CreatureObject* player) {
+	setLoggingName("CraftingSession");
+	setLogging(true);
+
+	setCrafter(player);
+}
 
 int CraftingSessionImplementation::initializeSession(CraftingTool* tool, CraftingStation* station) {
-
 	craftingTool = tool;
 	craftingStation = station;
 
@@ -53,8 +62,29 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 	experimentationPointsTotal = 0;
 	experimentationPointsUsed = 0;
 
-	return startSession();
+	return 0;
 }
+
+
+
+void CraftingSessionImplementation::run() {
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
 
 int CraftingSessionImplementation::startSession() {
 	// crafter and craftingTool locked already in initializeSession
