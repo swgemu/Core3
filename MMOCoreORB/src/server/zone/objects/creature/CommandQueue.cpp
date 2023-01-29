@@ -219,7 +219,12 @@ int CommandQueue::handleRunningState() {
 		return DEFAULTTIME;
 	}
 
-	time = objectController->activateCommand(creature, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+	try {
+		time = objectController->activateCommand(creature, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+	} catch (const Exception &e) {
+		Logger::console.error() << "CommandQueue ERROR -- Creature: " << creature->getDisplayedName() << " ID: " << creature->getObjectID() << " Command Name: " << queueCommand->getName() << " Issue: " << e.getMessage();
+		e.printStackTrace();
+	}
 
 #ifdef DEBUG_QUEUE
 	creature->info(true) << "Command Queue activateCommand called -- time = " << time;
