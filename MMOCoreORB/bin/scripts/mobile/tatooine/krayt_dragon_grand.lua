@@ -28,7 +28,7 @@ krayt_dragon_grand = Creature:new {
 
 	templates = {"object/mobile/krayt_dragon_hue.iff"},
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
-	scale = 1.1;
+	scale = 2.35;
 	lootGroups = {
 		{
 	        groups = {
