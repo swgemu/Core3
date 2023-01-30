@@ -57,7 +57,7 @@ object_draft_schematic_space_weapon_missile_wpn_launcher_concussion_mk3 = object
 	xp = 1250,
 
 	assemblySkill = "weapon_systems",
-	experimentingSkill = "weapons_systems_experimentation",
+	experimentingSkill = "weapon_systems_experimentation",
 	customizationSkill = "weapon_customization",
 
 	customizationOptions = {},

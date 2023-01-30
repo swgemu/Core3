@@ -55,8 +55,8 @@ object_draft_schematic_space_weapon_shield_effectiveness_intensifier_mk4 = objec
    xpType = "shipwright", 
    xp = 313, 
 
-   assemblySkill = "shields_assembly", 
-   experimentingSkill = "shields_experimentation", 
+   assemblySkill = "weapon_systems",
+   experimentingSkill = "weapon_systems_experimentation",
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},

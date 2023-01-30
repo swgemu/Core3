@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_missile_countermeasure_em_pack = object_tang
 	experimentalSubGroupTitles = {"null", "null", "fltmaxeffectiveness", "fltmineffectiveness", "fltrefirerate", "fltmaxammo", "energy_per_shot"},
 	experimentalMin = {0, 0, 102, 77, 289, 7, 0},
 	experimentalMax = {0, 0, 138, 104, 391, 9, 0},
-	experimentalPrecision = {0, 0, 10, 10, 0, 10, 0},
+	experimentalPrecision = {0, 0, 9, 9, 9, 0, 9},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 

@@ -57,7 +57,7 @@ object_draft_schematic_space_weapon_missile_countermeasure_chaff_launcher = obje
 	xp = 50,
 
 	assemblySkill = "weapon_systems",
-	experimentingSkill = "weapons_systems_experimentation",
+	experimentingSkill = "weapon_systems_experimentation",
 	customizationSkill = "medicine_customization",
 
 	customizationOptions = {},
