@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_ywing_longprobe_chassis_token = object_t
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 2000, 165750},
 	experimentalMax = {0, 0, 3000, 174250},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

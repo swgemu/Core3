@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_blacksun_light_s01_chassis_token = objec
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 1400, 39250},
 	experimentalMax = {0, 0, 1950, 40750},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 
