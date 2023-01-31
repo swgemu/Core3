@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_wpn_advanced_blaster_green = object_tangible
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "damage_max", "damage_min", "effective_shields", "effective_armor", "energy_per_shot", "refire_rate"},
 	experimentalMin = {0, 0, 864, 1, 15093, 432, 1, 2473, 2277, 1472, 463, 463, 24, 366},
 	experimentalMax = {0, 0, 1005, 1, 12987, 502, 1, 2128, 2646, 1711, 538, 538, 21, 315},
-	experimentalPrecision = {0, 0, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9},
+	experimentalPrecision = {0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 

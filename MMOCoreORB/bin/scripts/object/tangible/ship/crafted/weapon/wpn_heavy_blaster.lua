@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_wpn_heavy_blaster = object_tangible_ship_cra
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "damage_max", "damage_min", "effective_shields", "effective_armor", "energy_per_shot", "refire_rate"},
 	experimentalMin = {0, 0, 587, 1, 6047, 294, 1, 2365, 1467, 994, 463, 463, 22, 366},
 	experimentalMax = {0, 0, 682, 1, 5203, 341, 1, 2035, 1704, 1155, 538, 538, 19, 315},
-	experimentalPrecision = {0, 0, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9},
+	experimentalPrecision = {0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 

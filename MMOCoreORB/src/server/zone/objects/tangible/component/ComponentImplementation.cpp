@@ -47,7 +47,7 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
 
 			StringBuffer displayvalue;
 
-			displayvalue << Math::getPrecision(value, precision);
+			displayvalue.append(value, precision);
 
 			displayvalue << footer;
 

@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_hutt_medium_s01_chassis_token = object_t
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 2200, 83250},
 	experimentalMax = {0, 0, 2750, 86750},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 
