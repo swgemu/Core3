@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_tie_light_duty_chassis_token = object_ta
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 1200, 11700},
 	experimentalMax = {0, 0, 1750, 12300},
-	experimentalPrecision = {0, 0, 10, 10},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

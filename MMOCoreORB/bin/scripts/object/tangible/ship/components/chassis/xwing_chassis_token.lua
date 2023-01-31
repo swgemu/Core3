@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_xwing_chassis_token = object_tangible_sh
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 1500, 97500},
 	experimentalMax = {0, 0, 2200, 102500},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

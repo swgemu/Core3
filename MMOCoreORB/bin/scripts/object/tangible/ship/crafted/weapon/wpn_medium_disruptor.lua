@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_wpn_medium_disruptor = object_tangible_ship_
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "damage_max", "damage_min", "effective_shields", "effective_armor", "energy_per_shot", "refire_rate"},
 	experimentalMin = {0, 0, 319, 1, 2419, 160, 1, 2258, 794, 563, 231, 694, 20, 366},
 	experimentalMax = {0, 0, 371, 1, 2081, 185, 1, 1943, 922, 655, 269, 806, 17, 315},
-	experimentalPrecision = {0, 0, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9},
+	experimentalPrecision = {0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 

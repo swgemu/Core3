@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_decimator_chassis_token = object_tangibl
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 3200, 4995000},
 	experimentalMax = {0, 0, 4200, 5005000},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 
