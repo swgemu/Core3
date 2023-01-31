@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_missile_countermeasure_microchaff_pack = obj
 	experimentalSubGroupTitles = {"null", "null", "fltmaxeffectiveness", "fltmineffectiveness", "fltrefirerate", "fltmaxammo", "energy_per_shot"},
 	experimentalMin = {0, 0, 85, 60, 289, 12, 0},
 	experimentalMax = {0, 0, 115, 81, 391, 16, 0},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1, 1, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 
