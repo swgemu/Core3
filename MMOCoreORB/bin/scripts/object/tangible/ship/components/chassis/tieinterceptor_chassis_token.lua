@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_tieinterceptor_chassis_token = object_ta
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 1750, 48750},
 	experimentalMax = {0, 0, 2250, 51250},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 
