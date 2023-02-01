@@ -226,7 +226,7 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		{"entertainer",60,0,0.5,-5.8,175,1187999, "entertained"},
 		{"entertainer",60,-2.3,0.5,-6.4,-133,1187999, "entertained"},
 		{"entertainer",60,0,0.5,-2.5,160,1187999, "npc_sitting_ground"},
-		{"commoner_technician",60,-22.4,1.0,-9.0,-106,1188001, "sad"},
+		{"commoner_technician",300,-22.4,1.0,-9.0,-106,1188001, "sad"},
 
 		--large house west B
 		{"chiss_male",60,-2.3,1.0,6.7,90,1187871, "npc_sitting_chair"},
@@ -296,7 +296,7 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		{"rodian_clan_captain", 300, 5.07127, 2.6, 6.65958, 0, 1105851, "conversation"},
 		{"noble",60,26.93,2.12878,58.19,222.007,1105852, ""},
 		{"noble",60,19.26,2.12847,56.13,266.008,1105853, ""},
-		{"brawler",60,17.0318,2.12878,75.3601,0,1105853, "conversation"},
+		{"brawler",300,17.0318,2.12878,75.3601,0,1105853, "conversation"},
 		{"dede_chesmi",60,26.7839,2.12847,70.8524,180.013,1105853, "conversation"},
 		{"mebi_axane",60,26.7839,2.12876,69.7524,360.011,1105853, "conversation"},
 		{"medic",300,17.0318,2.12878,76.3601,179.996,1105853, "conversation"},

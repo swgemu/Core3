@@ -175,13 +175,13 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		{"entertainer",60,13.1,1.3,-15.5,163,1233976, "conversation"},
 
 		--center Tavern A
-		{"commoner_technician",60,5.1,1.0,10.2,2,1153934, "npc_use_terminal_high"},
+		{"commoner_technician",300,5.1,1.0,10.2,2,1153934, "npc_use_terminal_high"},
 		{"businessman",60,-1.9,1,6.8,-95,1153936, ""},
 		{"artisan",60,-7.2,0.4,-6.4,-88,1153935, "default"},
 		{"patron_ithorian",60,-9.3,1.0,6.7,90,1153936, "explain"},
 
 		--center Tavern B
-		{"brawler",60,9.2,0.4,-1.7,90,1154209, "bored"},
+		{"brawler",300,9.2,0.4,-1.7,90,1154209, "bored"},
 
 		--center Tavern C
 		{"probot",60,3.0,0.4,-3.5,65,1153961, "neutral"},
@@ -218,7 +218,7 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		{"mouse_droid",60,-1.3,0.4,-5.2,46,1157653, "worried"},
 
 		--small house b
-		{"commoner_technician",60,0.5,0.3,4.0,-170,1157641, "npc_use_terminal_high"},
+		{"commoner_technician",300,0.5,0.3,4.0,-170,1157641, "npc_use_terminal_high"},
 
 		--north Tavern b
 		{"artisan",60,4.9,0.4,-10.0,-179,1157666, "bored"},
@@ -233,7 +233,7 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		{"surgical_droid_21b",60,10.1,0.4,-5.7,72,1144135, "default"},
 		{"medic",60,4.6,0.4,1.9,-21,1144135, "calm"},
 		{"teras_kasi_master",360,6.6,-9.5,-7.0,-37,1144145, "calm"},
-		{"brawler",60,5.7,-9.5,-5.7,137,1144145, "angry"},
+		{"brawler",300,5.7,-9.5,-5.7,137,1144145, "angry"},
 		{"artisan",60,4.6,1.0,8.7,-103,1144134, "npc_use_terminal_high"},
 
 		--northeast large house
@@ -313,7 +313,7 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		{"bounty_hunter",300,27.2773,2.12878,57.8777,180.278,1153602, "conversation"},
 		{"medic",60,27.2719,2.12878,56.7798,0.27412,1153602, "conversation"},
 		{"noble",60,19.26,2.12847,56.13,266.008,1153603, ""},
-		{"brawler",60,3.25667,2.12878,71.8841,360.011,1153603, "conversation"},
+		{"brawler",300,3.25667,2.12878,71.8841,360.011,1153603, "conversation"},
 		{"theater_manager",60,21.99,2.12804,64.05,4.00007,1153603, ""},
 		{"thivauwrai_aphereef",60,3.25667,2.12878,72.8841,180.009,1153603, "conversation"},
 		{"trainer_dancer",0,17.812,2.12873,53.8433,1,1153603, ""},

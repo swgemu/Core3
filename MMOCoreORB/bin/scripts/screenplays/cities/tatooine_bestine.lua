@@ -155,7 +155,7 @@ TatooineBestineScreenPlay = CityScreenPlay:new {
 		{"bounty_hunter",300,-10.2,1.0,7.1,-7,1028169, "npc_accusing"},
 
 		--east Tavern -1074 -3640
-		{"commoner_technician",60,4.6,1.0,7.5,90,1528396, "npc_use_terminal_high"},
+		{"commoner_technician",300,4.6,1.0,7.5,90,1528396, "npc_use_terminal_high"},
 		{"chiss_female",60,10.2,0.4,-4.5,0,1528397, "npc_angry"},
 		{"chiss_male",60,10.3,0.4,-5.6,90,1528397, "sad"},
 		{"patron_ithorian",60,1.6,0.4,-6.0,90,1528397, "npc_sitting_ground"},

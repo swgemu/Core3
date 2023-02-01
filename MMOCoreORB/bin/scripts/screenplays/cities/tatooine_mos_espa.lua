@@ -156,7 +156,7 @@ TatooineMosEspaScreenPlay = CityScreenPlay:new {
 		{"patron_ishitib",60,-4.5,0.4,-5.5,-40,1261582, ""},
 		{"patron_klaatu",60,-5.1,0.4,-4.3,149,1261582, "conversation"},
 		{"contractor",60,-6.5,-4.0,-6.8,-90,1261586, "worried"},
-		{"commoner_technician",60,-6.3,-4.0,-5.9,-112,1261586, "sad"},
+		{"commoner_technician",300,-6.3,-4.0,-5.9,-112,1261586, "sad"},
 
 		--west Tavern
 		{"commoner_naboo",60,-3.6,1.0,9.3,0,1261570, ""},
@@ -198,12 +198,12 @@ TatooineMosEspaScreenPlay = CityScreenPlay:new {
 		{"trainer_combatmedic",0,7.93319,0.184067,5.54261,86,4005424, ""},
 
 		--Hotel
-		{"commoner_technician",60,20.2715,1.28309,-1.14578,360.011,1261018, "conversation"},
+		{"commoner_technician",300,20.2715,1.28309,-1.14578,360.011,1261018, "conversation"},
 		{"noble",60,20.2715,1.28309,-0.0457823,179.998,1261018, "conversation"},
 		{"medic",300,19.1715,1.28309,-0.0457823,134.998,1261018, "conversation"},
 		{"scientist",60,20.3,1.6,13.7,-5,1261018, ""},
 		{"mercenary",300,7.41432,1.00001,-5.80893,180.003,1261017, "angry"},
-		{"commoner_technician",60,7.41432,1.00001,-6.90893,0,1261017, "conversation"},
+		{"commoner_technician",300,7.41432,1.00001,-6.90893,0,1261017, "conversation"},
 
 		--Junk Shop
 		{"junk_nado", 0, 1.2, -0.5, 5.5, -144, 1255997, ""},

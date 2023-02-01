@@ -314,7 +314,7 @@ CorelliaKorVellaScreenPlay = CityScreenPlay:new {
 		{"trainer_entertainer", 1, 26.2, -0.9, 10.25, 260, 3005399, ""},
 		{"bartender", 60, 6.4, -0.9, -2.3, 156, 3005399, ""},
 		{"corellia_times_investigator", 300, 20.6, -0.9, -18.6, 180, 3005400, ""},
-		{"commoner_technician", 60, 20.6, -0.9, -19.6, 0, 3005400, ""},
+		{"commoner_technician", 300, 20.6, -0.9, -19.6, 0, 3005400, ""},
 		{"brawler", 60, 22.6, -0.9, 19.6, 0, 3005401, ""},
 		{"commoner", 60, 21.5, -0.9, 20.7, 135, 3005401, ""},
 		{"farmer_rancher", 300, 22.6, -0.9, 20.7, 180, 3005401, ""},
