@@ -28,6 +28,8 @@ include system.lang.ref.Reference;
 class ShipObject extends TangibleObject {
 	public static final int HYPERSPACE_DELAY = 40;
 	public static final int NAVIGATOR_DELAY = 20;
+	public static final int SPACESTATION_COMM_MAX_DISTANCE = 1000;
+	public static final int CONVO_DELAY = 60;
 
 	public static final int WEAPON_COMPONENT_START = 12;
 
@@ -77,6 +79,24 @@ class ShipObject extends TangibleObject {
 	// ShipObjectMessage6 variables
 	@dereferenced
 	protected string shipName;
+
+	@dereferenced
+	protected string conversationTemplate;
+
+	@dereferenced
+	protected string conversationMobile;
+
+	@dereferenced
+	protected string conversationMessage;
+
+	@dereferenced
+	protected string shipDifficulty;
+
+	@dereferenced
+	protected string shipFaction;
+
+	@dereferenced
+	protected string shipType;
 
 	@rawTemplate(value = "'SHIP', 3, 14")
 	@dereferenced
@@ -1196,6 +1216,64 @@ class ShipObject extends TangibleObject {
 	public boolean isBoosterActive() {
 		return componentOptions.get(7);
 	}
+
+	@dirty
+	public void setConversationTemplate(final string convoTemplate) {
+		conversationTemplate = convoTemplate;
+	}
+
+	@dirty
+	public void setConversationMobile(final string mobile) {
+		conversationMobile = mobile;
+	}
+
+	@dirty
+	public void setConversationMessage(final string message) {
+		conversationMessage = message;
+	}
+
+	@dirty
+	public void setShipDifficulty(final string difficulty) {
+		shipDifficulty = difficulty;
+	}
+
+	@dirty
+	public void setShipFaction(final string faction) {
+		shipFaction = faction;
+	}
+
+	@dirty
+	public void setShipType(final string type) {
+		shipType = type;
+	}
+
+	public string getConversationTemplate() {
+		return conversationTemplate;
+	}
+
+	public string getConversationMobile() {
+		return conversationMobile;
+	}
+
+	public string getConversationMessage() {
+		return conversationMessage;
+	}
+
+	public string getShipDifficulty() {
+		return shipDifficulty;
+	}
+
+	public string getShipFaction() {
+		return shipFaction;
+	}
+
+	public string getShipType() {
+		return shipType;
+	}
+
+	@dirty
+	@local
+	public native boolean checkInConvoRange(SceneObject object);
 
 	public native int getHyperspaceDelay();
 

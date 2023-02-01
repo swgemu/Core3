@@ -25,6 +25,7 @@
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "templates/tangible/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/ShipChassisData.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
@@ -42,6 +43,12 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	SharedShipObjectTemplate *shipTempl = dynamic_cast<SharedShipObjectTemplate*>(templateData);
 	setShipName(shipTempl->getShipName());
 	setHasWings(shipTempl->shipHasWings());
+	setConversationMessage(shipTempl->getConversationMessage());
+	setConversationMobile(shipTempl->getConversationMobile());
+	setConversationTemplate(shipTempl->getConversationTemplate());
+	setShipFaction(shipTempl->getShipFaction());
+	setShipType(shipTempl->getShipType());
+	setShipDifficulty(shipTempl->getShipDifficulty());
 
 	auto portal = shipTempl->getPortalLayout();
 
@@ -730,4 +737,20 @@ float ShipObjectImplementation::getActualSpeed() {
 	//info(true) << "getActualSpeed = " << totalMax;
 
 	return totalMax;
+}
+
+bool ShipObjectImplementation::checkInConvoRange(SceneObject* targetObject) {
+	if (targetObject == nullptr)
+		return false;
+
+	int sqDistance = getWorldPosition().squaredDistanceTo(targetObject->getWorldPosition());
+
+	if (targetObject->isSpaceStationObject()) {
+		int maxSqDistance = SPACESTATION_COMM_MAX_DISTANCE * SPACESTATION_COMM_MAX_DISTANCE;
+
+		if (sqDistance < maxSqDistance)
+			return true;
+	}
+
+	return false;
 }
