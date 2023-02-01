@@ -13,19 +13,44 @@
 #include "server/zone/packets/object/NpcConversationMessage.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/object/StringList.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* player) {
 
-	SceneObject* spaceStation = this->asSceneObject();
+	SceneObject* spaceStation = asSceneObject();
 
 	if (spaceStation == nullptr || player == nullptr)
 		return false;
 
-	CreatureObject* playerCreature = cast<CreatureObject*>(player);
+	SceneObject* playerParent = player->getParent().get();
+
+	ShipObject* ship = cast<ShipObject*>(playerParent);
+
+	ShipObject* stationObject = asShipObject();
+
+	if (ship == nullptr)
+		return false;
+
+	Locker locker(ship);
 
 	uint64 oid = getObjectID();
 
-	String mobile = spaceStation->getObjectTemplate()->getConversationMobile();
+	if (!ship->checkConvoInRange(spaceStation, ship)) {
+		//spacestation->getConversationMessage()
+		String messageString = stationObject->getConversationMessage();
+		Logger::console.info(messageString);
+
+		ship->receiveMessage(spaceStation, player, messageString, false);
+
+		return false;
+	}
+
+	CreatureObject* playerCreature = cast<CreatureObject*>(player);
+
+	Locker plocker(player);
+
+	// ship->getConversationMobile()
+	String mobile = stationObject->getConversationMobile();
 
 	uint32 mobileCRC = (uint32)mobile.hashCode();
 
@@ -33,7 +58,8 @@ bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* play
 
 	player->sendMessage(conv);
 
-	String convo = spaceStation->getObjectTemplate()->getConversationTemplate();
+	//SpaceStation->getConversationTemplate();
+	String convo = stationObject->getConversationTemplate();
 	uint32 convoCRC = (uint32) convo.hashCode();
 
 	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoCRC);

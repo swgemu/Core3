@@ -10,6 +10,7 @@
 
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/objects/ship/ComponentSlots.h"
+#include "templates/manager/TemplateManager.h"
 
 class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	StringParam interiorLayoutFileName;
@@ -20,6 +21,13 @@ class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 
 	BoolParam hasWings;
 	BoolParam playerControlled;
+
+	String conversationTemplate;
+	String conversationMobile;
+	String conversationMessage;
+	String shipDifficulty;
+	String shipFaction;
+	String shipType;
 
 public:
 	SharedShipObjectTemplate() {
@@ -44,11 +52,17 @@ public:
 			//return;
 
 		shipName = templateData->getStringField("name");
+		conversationTemplate = templateData->getStringField("conversationTemplate");
+		conversationMobile = templateData->getStringField("conversationMobile");
+		conversationMessage = templateData->getStringField("conversationMessage");
+		shipDifficulty = templateData->getStringField("difficulty");
+		shipFaction = templateData->getStringField("faction");
+		shipType = templateData->getStringField("type");
 
 		const static char* components[] = {"reactor", "engine", "capacitor", "booster", "droid_interface", "bridge", "hangar",
 			 "targeting_station", "armor_0", "armor_1", "shield_0", "shield_1", "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5","weapon_6", "weapon_7"};
 		const int numComponents = 20;
-		try {
+		try { //Components
 			for (int i = 0; i < 20; i++) {
 				String k = components[i];
 				LuaObject component = templateData->getObjectField(k);
@@ -128,6 +142,30 @@ public:
 
 	inline bool shipHasWings() const {
 		return hasWings;
+	}
+
+	String getConversationTemplate() {
+		return conversationTemplate;
+	}
+
+	String getConversationMobile() {
+		return conversationMobile;
+	}
+
+	String getConversationMessage() {
+		return conversationMessage;
+	}
+
+	String getShipDifficulty() {
+		return shipDifficulty;
+	}
+
+	String getShipType() {
+		return shipType;
+	}
+
+	String getShipFaction() {
+		return shipFaction;
 	}
 
 	void parseVariableData(const String& varName, Chunk* data) {
