@@ -17,8 +17,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
-
 		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
 		}
@@ -31,26 +29,33 @@ public:
 			return GENERALERROR;
 		}
 
-		CreatureObject* player = cast<CreatureObject*>(creature);
-		PlayerObject* ghost = player->getPlayerObject();
+		ZoneServer* zoneServer = creature->getZoneServer();
 
-		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+		if (zoneServer == nullptr)
+			return GENERALERROR;
 
-		if (object != nullptr && object->isCreatureObject()) {
+		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
+		PlayerObject* ghost = creature->getPlayerObject();
+
+		if (object == nullptr || ghost == nullptr)
+			return GENERALERROR;
+
+		if (object->isCreatureObject()) {
 			CreatureObject* creatureObject = cast<CreatureObject*>(object.get());
 
 			try {
 				Locker clocker(creatureObject, creature);
 				ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
 				uint64 parentid = validPosition->getParent();
+
 				if (parentid != creatureObject->getParentID()) {
 					return TOOFAR;
 				}
 
-				if (checkDistance(player, creatureObject, 5)) {
-					ghost->setConversatingCreature(creatureObject);
+				if (checkDistance(creature, creatureObject, 5)) {
+					ghost->setConversatingObject(creatureObject);
 					if (creatureObject->sendConversationStartTo(creature)) {
-						creatureObject->notifyObservers(ObserverEventType::STARTCONVERSATION, player);
+						creatureObject->notifyObservers(ObserverEventType::STARTCONVERSATION, creature);
 					}
 				} else {
 					return TOOFAR;
@@ -60,24 +65,26 @@ public:
 				e.printStackTrace();
 				creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
 			}
-		}
+		} else if (object->isSpaceStationObject()) {
+			try {
+				SpaceStationObject* spaceStationObj = cast<SpaceStationObject*>(object.get());
 
-		else if (object != nullptr && object->isSpaceStationObject()) {
+				if (spaceStationObj == nullptr)
+					return INVALIDTARGET;
 
-			SpaceStationObject* spaceStationObj = cast<SpaceStationObject*>(object.get());
+				Locker lock(spaceStationObj, creature);
 
-			ghost->setConversatingCreature(spaceStationObj);
+				ghost->setConversatingObject(spaceStationObj);
 
-			if (spaceStationObj->sendConversationStartTo(creature))
-				spaceStationObj->notifyObservers(ObserverEventType::STARTCONVERSATION, player);
-
-		} else {
-			return INVALIDTARGET;
+				if (spaceStationObj->sendConversationStartTo(creature))
+					spaceStationObj->notifyObservers(ObserverEventType::STARTCONVERSATION, creature);
+			} catch (Exception& e) {
+				e.printStackTrace();
+			}
 		}
 
 		return SUCCESS;
 	}
-
 };
 
 #endif //NPCCONVERSATIONSTARTCOMMAND_H_

@@ -45,6 +45,7 @@ import system.util.SynchronizedVectorMap;
 import server.zone.managers.auction.AuctionSearchTask;
 import server.zone.objects.tangible.Instrument;
 include server.zone.objects.creature.CommandQueue;
+include server.zone.objects.ship.ShipObject;
 
 @mock
 @json
@@ -1119,6 +1120,12 @@ class CreatureObject extends TangibleObject {
 	public abstract void selectConversationOption(int option, SceneObject obj) {
 
 	}
+
+	/**
+	* send creature conversation message for space
+	*/
+	@dirty
+	public native void sendSpaceConversation(ShipObject sendingShip, final string messageString, boolean customString = false);
 
 	/**
 	 * Sends a message to client

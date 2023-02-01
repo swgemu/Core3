@@ -13,28 +13,52 @@
 #include "server/zone/packets/object/NpcConversationMessage.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/object/StringList.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* player) {
-
-	SceneObject* spaceStation = this->asSceneObject();
-
-	if (spaceStation == nullptr || player == nullptr)
+	if (player == nullptr || !player->isPlayerCreature())
 		return false;
 
-	CreatureObject* playerCreature = cast<CreatureObject*>(player);
+	CreatureObject* playerCreature = player->asCreatureObject();
+
+	if (playerCreature == nullptr)
+		return false;
+
+	SceneObject* playerParent = nullptr;
+
+	if (playerCreature->hasState(CreatureState::PILOTINGSHIP)) {
+		playerParent = playerCreature->getParent().get();
+	} else if (playerCreature->hasState(CreatureState::PILOTINGPOBSHIP)) {
+		playerParent = playerCreature->getRootParent();
+	}
+
+	if (playerParent == nullptr || !playerParent->isShipObject())
+		return false;
+
+	ShipObject* playerShip = playerParent->asShipObject();
+
+	if (playerShip == nullptr)
+		return false;
 
 	uint64 oid = getObjectID();
 
-	String mobile = spaceStation->getObjectTemplate()->getConversationMobile();
+	if (!playerShip->checkInConvoRange(asShipObject())) {
+		String messageString = getConversationMessage();
 
-	uint32 mobileCRC = (uint32)mobile.hashCode();
+		playerCreature->sendSpaceConversation(asShipObject(), messageString, false);
+
+		return false;
+	}
+
+	String mobile = getConversationMobile();
+	uint32 mobileCRC = mobile.hashCode();
 
 	StartNpcConversation* conv = new StartNpcConversation(playerCreature, oid, 0, "", mobileCRC);
 
-	player->sendMessage(conv);
+	playerCreature->sendMessage(conv);
 
-	String convo = spaceStation->getObjectTemplate()->getConversationTemplate();
-	uint32 convoCRC = (uint32) convo.hashCode();
+	String convo = getConversationTemplate();
+	uint32 convoCRC = convo.hashCode();
 
 	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoCRC);
 
