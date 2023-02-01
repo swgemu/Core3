@@ -44,22 +44,10 @@ public:
 
 		ship->getShipComponentMap()->insertToMessage(this); //15
 
-		//TODO: FIX
-		StringBuffer name;
-		name << "@space/ship_names:" << ship->getShipName();
-		insertAscii(name.toString());
-
-		StringBuffer type;
-		type << "@space/space_mobile_type:" << "ship_base";
-		insertAscii(type.toString()); // ship type
-
-		StringBuffer difficulty;
-		difficulty << "@space/space_difficulty:" << "light";
-		insertAscii(difficulty.toString()); // space_difficulty
-
-		StringBuffer faction;
-		faction << "@space/space_faction:" << "rebel";
-		insertAscii(faction.toString()); // space_faction
+		insertAscii(ship->getShipName());
+		insertAscii(ship->getShipType()); // ship type
+		insertAscii(ship->getShipDifficulty()); // space_difficulty
+		insertAscii(ship->getShipFaction()); // space_faction
 
 		insertFloat(ship->getFrontShield()); //20 front shield current
 		insertFloat(ship->getRearShield()); //21 back shield current

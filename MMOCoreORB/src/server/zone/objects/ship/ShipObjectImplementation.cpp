@@ -25,6 +25,12 @@
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "templates/tangible/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/ShipChassisData.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/packets/object/StartNpcConversation.h"
+#include "server/zone/packets/object/StopNpcConversation.h"
+#include "server/zone/packets/object/NpcConversationMessage.h"
+#include "server/zone/managers/ship/tasks/SpaceCommTimerTask.h"
+#include "server/zone/objects/player/sessions/ConversationSession.h"
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
@@ -42,6 +48,12 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	SharedShipObjectTemplate *shipTempl = dynamic_cast<SharedShipObjectTemplate*>(templateData);
 	setShipName(shipTempl->getShipName());
 	setHasWings(shipTempl->shipHasWings());
+	setConversationMessage(shipTempl->getConversationMessage());
+	setConversationMobile(shipTempl->getConversationMobile());
+	setConversationTemplate(shipTempl->getConversationTemplate());
+	setShipFaction(shipTempl->getShipFaction());
+	setShipType(shipTempl->getShipType());
+	setShipDifficulty(shipTempl->getShipDifficulty());
 
 	auto portal = shipTempl->getPortalLayout();
 
@@ -730,4 +742,73 @@ float ShipObjectImplementation::getActualSpeed() {
 	//info(true) << "getActualSpeed = " << totalMax;
 
 	return totalMax;
+}
+
+void ShipObjectImplementation::receiveMessage(SceneObject* sender, SceneObject* player, const String& messageString, bool customString) {
+
+	if (sender == nullptr || player == nullptr)
+		return;
+
+	uint64 oid = sender->getObjectID();
+
+	ShipObject* ship = sender->asShipObject();
+
+	String mobile = ship->getConversationMobile();
+
+	uint32 mobileCRC = (uint32)mobile.hashCode();
+
+	CreatureObject* creature = player->asCreatureObject();
+
+	StartNpcConversation* conv = new StartNpcConversation(creature, oid, 1, "", mobileCRC);
+
+	player->sendMessage(conv);
+
+	if (customString) {
+
+		UnicodeString convoMessage(messageString);
+
+		NpcConversationMessage* message = new NpcConversationMessage(creature, convoMessage);
+
+		player->sendMessage(message);
+
+	} else {
+
+		StringIdChatParameter msg(messageString);
+
+		msg.setTU(player->getDisplayedName());
+		msg.setNU(player->asCreatureObject()->getFirstName());
+
+		NpcConversationMessage* message =new NpcConversationMessage(creature, msg);
+
+		player->sendMessage(message);
+	}
+
+	player->addActiveSession(SessionFacadeType::CONVERSATION, new ConversationSession(sender));
+
+	SpaceCommTimerTask* task = new SpaceCommTimerTask(player,oid, 10000);
+
+	task->schedule();
+
+
+}
+
+bool ShipObjectImplementation::checkConvoInRange(SceneObject* object,  ShipObject* playerShip) {
+
+	ShipObject* ship = playerShip;
+
+	if (ship == nullptr)
+		return false;
+
+	int distance = ship->getDistanceTo(object);
+
+	if (object->isSpaceStationObject()) {
+
+		int maxDistance = SPACESTATION_COMM_MAX_DISTANCE;
+
+		if (distance > maxDistance)
+			return false;
+	}
+
+	return true;
+
 }
