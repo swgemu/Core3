@@ -25,6 +25,10 @@
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "templates/tangible/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/ShipChassisData.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/packets/object/StartNpcConversation.h"
+#include "server/zone/packets/object/StopNpcConversation.h"
+#include "server/zone/packets/object/NpcConversationMessage.h"
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
@@ -730,4 +734,63 @@ float ShipObjectImplementation::getActualSpeed() {
 	//info(true) << "getActualSpeed = " << totalMax;
 
 	return totalMax;
+}
+
+void ShipObjectImplementation::receiveMessage(SceneObject* sender, SceneObject* player, const String& messageString, bool customString) {
+
+	if (sender == nullptr || player == nullptr)
+		return;
+
+	uint64 oid = sender->getObjectID();
+
+	String mobile = sender->getObjectTemplate()->getConversationMobile();
+
+	uint32 mobileCRC = (uint32)mobile.hashCode();
+
+	CreatureObject* creature = player->asCreatureObject();
+
+	StartNpcConversation* conv = new StartNpcConversation(creature, oid, 1, "", mobileCRC);
+
+	player->sendMessage(conv);
+
+	if (customString) {
+
+		UnicodeString convoMessage(messageString);
+
+		NpcConversationMessage* message = new NpcConversationMessage(creature, convoMessage);
+
+		player->sendMessage(message);
+
+	} else {
+
+		StringIdChatParameter msg(messageString);
+
+		msg.setTU(player->getDisplayedName());
+		msg.setNU(player->asCreatureObject()->getFirstName());
+
+		NpcConversationMessage* message =new NpcConversationMessage(creature, msg);
+
+		player->sendMessage(message);
+	}
+}
+
+bool ShipObjectImplementation::checkConvoInRange(SceneObject* object,  ShipObject* playerShip) {
+
+	ShipObject* ship = playerShip;
+
+	if (ship == nullptr)
+		return false;
+
+	int distance = ship->getDistanceTo(object);
+
+	if (object->isSpaceStationObject()) {
+
+		int maxDistance = SPACESTATION_COMM_MAX_DISTANCE;
+
+		if (distance > maxDistance)
+			return false;
+	}
+
+	return true;
+
 }

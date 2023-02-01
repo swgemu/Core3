@@ -13,17 +13,43 @@
 #include "server/zone/packets/object/NpcConversationMessage.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/object/StringList.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/managers/ship/tasks/SpaceCommTimerTask.h"
 
 bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* player) {
 
-	SceneObject* spaceStation = this->asSceneObject();
+	SceneObject* spaceStation = asSceneObject();
 
 	if (spaceStation == nullptr || player == nullptr)
 		return false;
 
-	CreatureObject* playerCreature = cast<CreatureObject*>(player);
+	SceneObject* playerParent = player->getParent().get();
+
+	ShipObject* ship = cast<ShipObject*>(playerParent);
+
+	if (ship == nullptr)
+		return false;
+
+	Locker locker(ship);
 
 	uint64 oid = getObjectID();
+
+	if (!ship->checkConvoInRange(spaceStation, ship)) {
+
+		String messageString = spaceStation->getObjectTemplate()->getConversationMessage();
+
+		ship->receiveMessage(spaceStation, player, messageString, false);
+
+		SpaceCommTimerTask* task = new SpaceCommTimerTask(player,oid);
+
+		task->schedule(100);
+
+		return false;
+	}
+
+	CreatureObject* playerCreature = cast<CreatureObject*>(player);
+
+	Locker plocker(player);
 
 	String mobile = spaceStation->getObjectTemplate()->getConversationMobile();
 

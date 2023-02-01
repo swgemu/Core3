@@ -89,6 +89,7 @@ protected:
 	// Used for SpaceStations/Ships
 	String conversationTemplate;
 	String conversationMobile;
+	String conversationMessage;
 
 	bool inheritPermissionsFromParent;
 	HashTable<uint32, uint32> groupPermissions;
@@ -415,6 +416,10 @@ public:
 
 	inline const String& getConversationMobile() {
 		return conversationMobile;
+	}
+
+	inline const String& getConversationMessage() {
+		return conversationMessage;
 	}
 
 	inline const String& getObjectMenuComponent() const {
