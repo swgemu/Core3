@@ -3,7 +3,7 @@ AncientKraytSkeletonScreenPlay = ScreenPlay:new {
 
 }
 
-registerScreenPlay("AncientKraytSkeletonScreenPlay", true)
+registerScreenPlay("AncientKraytSkeletonScreenPlay", false)
 
 function AncientKraytSkeletonScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then

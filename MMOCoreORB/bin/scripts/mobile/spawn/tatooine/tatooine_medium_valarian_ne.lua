@@ -276,7 +276,7 @@ tatooine_medium_valarian_ne = {
 			minDifficulty = 1,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
-			weighting = 100,
+			weighting = 5,
 			size = 20,
 		},
 		{
