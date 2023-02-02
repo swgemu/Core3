@@ -6,7 +6,7 @@ tatooine_hard_krayt_ne = {
 			minDifficulty = 122,
 			maxDifficulty = 276,
 			numberToSpawn = 0,
-			weighting = 5,
+			weighting = 50,
 			size = 20
 		},
 		{
@@ -15,7 +15,7 @@ tatooine_hard_krayt_ne = {
 			minDifficulty = 275,
 			maxDifficulty = 304,
 			numberToSpawn = 0,
-			weighting = 3,
+			weighting = 30,
 			size = 20
 		},
 		{
@@ -24,7 +24,7 @@ tatooine_hard_krayt_ne = {
 			minDifficulty = 320,
 			maxDifficulty = 350,
 			numberToSpawn = 0,
-			weighting = 1,
+			weighting = 15,
 			size = 20,
 		},
 		{
@@ -33,7 +33,7 @@ tatooine_hard_krayt_ne = {
 			minDifficulty = 320,
 			maxDifficulty = 350,
 			numberToSpawn = 0,
-			weighting = 1,
+			weighting = 15,
 			size = 20,
 		},
 	}

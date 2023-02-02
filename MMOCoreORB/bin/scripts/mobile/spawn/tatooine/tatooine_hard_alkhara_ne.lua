@@ -249,7 +249,7 @@ tatooine_hard_alkhara_ne = {
 			minDifficulty = 1,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
-			weighting = 200,
+			weighting = 30,
 			size = 20,
 		},
 		{

@@ -204,7 +204,7 @@ tatooine_northeastern_desert = {
 			minDifficulty = 300,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
-			weighting = 5,
+			weighting = 20,
 			size = 20,
 		},
 		{

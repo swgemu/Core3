@@ -143,7 +143,7 @@ tatooine_regions = {
 	{"@tatooine_region_names:escape_pod", -3931, -4420, {CIRCLE, 500}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:lars_homestead", -2582, -5509, {CIRCLE, 500}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:old_ben_kenobis hut", -4490, -2274, {CIRCLE, 500}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
-	{"@tatooine_region_names:sarlacc_pit", -6161, -3375, {CIRCLE, 500}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
+	{"@tatooine_region_names:sarlacc_pit", -6161, -3375, {CIRCLE, 500}, NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:cave_central", 0, 0, {CIRCLE, 300}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"tatooine_force_shrine_01", -6506, -3668, {CIRCLE, 199}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"tatooine_force_shrine_02", 5264, 113, {CIRCLE, 199}, NOSPAWNAREA + NOBUILDZONEAREA},
