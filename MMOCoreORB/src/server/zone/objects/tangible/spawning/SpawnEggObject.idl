@@ -1,0 +1,94 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.spawning;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.packets.scene.AttributeListMessage;
+
+@json
+@lua
+class SpawnEggObject extends TangibleObject {
+	public transient boolean active;
+	public transient int respawnTime;
+	public transient int respawnCount;
+
+	public transient string areaName;
+	public transient string spawnName;
+
+	public SpawnEggObject() {
+		Logger.setLoggingName("SpawnEggObject");
+
+		active = false;
+		respawnTime = 300;
+	}
+
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
+
+	@dirty
+	public void setActiveStatus(boolean val) {
+		active = val;
+	}
+
+	@dirty
+	public void setRespawnTime(int seconds) {
+		respawnTime = seconds;
+	}
+
+	@dirty
+	public void incrementRespawnCount() {
+		respawnCount++;
+	}
+
+	@dirty
+	public void resetRespawnCount() {
+		respawnCount = 0;
+	}
+
+	@dirty
+	public void setSpawn(string name) {
+		spawnName = name;
+	}
+
+	@dirty
+	public void setAreaName(string name) {
+		areaName = name;
+	}
+
+
+	@read
+	public boolean isActive() {
+		return active;
+	}
+
+	@read
+	public int getRespawnTime() {
+		return respawnTime;
+	}
+
+	@read
+	public int getRespawnCount() {
+		return respawnCount;
+	}
+
+	@read
+	public string getSpawn() {
+		return spawnName;
+	}
+
+	@read
+	public string getAreaName() {
+		return areaName;
+	}
+
+	@dirty
+	public boolean isSpawnEggObject() {
+		return true;
+	}
+}

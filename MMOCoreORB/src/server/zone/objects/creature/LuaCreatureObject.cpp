@@ -154,6 +154,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setAppearance", &LuaCreatureObject::setAppearance },
 		{ "getMainDefender", &LuaTangibleObject::getMainDefender },
 		{ "getWeaponType", &LuaCreatureObject::getWeaponType },
+		{ "setSpawnerID", &LuaCreatureObject::setSpawnerID },
+		{ "getSpawnerID", &LuaCreatureObject::getSpawnerID },
 		{ 0, 0 }
 };
 
@@ -1278,5 +1280,22 @@ int LuaCreatureObject::getWeaponType(lua_State* L) {
 	}
 
 	lua_pushinteger(L, weaponType);
+	return 1;
+}
+
+int LuaCreatureObject::setSpawnerID(lua_State* L) {
+	uint64 spawnerID = lua_tointeger(L, -1);
+
+	Locker lock(realObject);
+	realObject->setSpawnerID(spawnerID);
+
+	return 0;
+}
+
+int LuaCreatureObject::getSpawnerID(lua_State* L) {
+	uint64 spawnerID = realObject->getSpawnerID();
+
+	lua_pushnumber(L, spawnerID);
+
 	return 1;
 }

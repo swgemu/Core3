@@ -42,6 +42,8 @@
 
 
 object_tangible_spawning_spawn_egg = object_tangible_spawning_shared_spawn_egg:new {
+	invisible = 0,
+	gameObjectType = 4259841,
 
 }
 

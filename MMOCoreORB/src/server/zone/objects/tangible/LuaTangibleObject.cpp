@@ -55,6 +55,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "isSliced", &LuaTangibleObject::isSliced},
 		{ "isNoTrade", &LuaTangibleObject::isNoTrade},
 		{ "getMainDefender", &LuaTangibleObject::getMainDefender},
+		{ "setInvisible", &LuaTangibleObject::setInvisible},
 		{ 0, 0 }
 };
 
@@ -249,6 +250,7 @@ int LuaTangibleObject::setMaxCondition(lua_State* L) {
 int LuaTangibleObject::setFaction(lua_State* L){
 	uint32 faction = lua_tointeger(L, -1);
 
+	Locker lock(realObject);
 	realObject->setFaction(faction);
 
 	return 0;
@@ -372,6 +374,8 @@ int LuaTangibleObject::getCraftersName(lua_State* L) {
 int LuaTangibleObject::setFactionStatus(lua_State* L) {
 	int status = lua_tointeger(L, -1);
 
+	Locker lock(realObject);
+
 	realObject->setFactionStatus(status);
 
 	return 0;
@@ -430,4 +434,13 @@ int LuaTangibleObject::getMainDefender(lua_State* L) {
 	lua_pushlightuserdata(L, defender);
 
 	return 1;
+}
+
+int LuaTangibleObject::setInvisible(lua_State* L) {
+	bool val = lua_toboolean(L, -1);
+
+	Locker lock(realObject);
+	realObject->setInvisible(val);
+
+	return 0;
 }

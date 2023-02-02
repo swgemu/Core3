@@ -197,6 +197,8 @@ class CreatureObject extends TangibleObject {
 
 	protected transient string alternateAppearance;
 
+	protected transient unsigned long spawnerID;
+
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
 	public static final int TRANDOSHAN = 2;
@@ -1033,6 +1035,11 @@ class CreatureObject extends TangibleObject {
 	 */
 	@preLocked
 	public native void setAlternateAppearance(final string appearanceTeamplate, boolean notifyClient = true);
+
+	@preLocked
+	public void setSpawnerID(unsigned long spawnID) {
+		spawnerID = spawnID;
+	}
 
 	/**
 	 * Cleares a state from the state bitmask
@@ -2281,4 +2288,9 @@ class CreatureObject extends TangibleObject {
 
 	@local
 	public native Instrument getPlayableInstrument();
+
+	@read
+	public unsigned long getSpawnerID() {
+		return spawnerID;
+	}
 }
