@@ -141,7 +141,6 @@ tatooine_regions = {
 	{"@tatooine_region_names:cave_southwest", 6551, -1212, {CIRCLE, 300}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:cave_west", 5144, 622, {CIRCLE, 300}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:escape_pod", -3931, -4420, {CIRCLE, 500}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
-	{"@tatooine_region_names:krayt_skeleton_1", -4649, -4361, {CIRCLE, 500}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:lars_homestead", -2582, -5509, {CIRCLE, 500}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:old_ben_kenobis hut", -4490, -2274, {CIRCLE, 500}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:sarlacc_pit", -6161, -3375, {CIRCLE, 500}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
@@ -210,6 +209,7 @@ tatooine_regions = {
 	{"@tatooine_region_names:mos_taike_easy_newbie", 3835, 2350, {CIRCLE, 600}, SPAWNAREA, {"tatooine_mos_taike_easy_newbie"}, 64},
 	{"@tatooine_region_names:mos_taike_medium_newbie", 3835, 2350, {RING, 600, 1100}, SPAWNAREA, {"tatooine_mos_taike_medium_newbie"}, 64},
 
+	{"@tatooine_region_names:krayt_skeleton_1", -4649, -4361, {CIRCLE, 500}, SPAWNAREA + NOBUILDZONEAREA + NAMEDREGION, {"tatooine_hard_krayt_ne"}, 4},
 	{"@tatooine_region_names:hard_krayt_ne", 6515, 4215, {CIRCLE, 785}, SPAWNAREA + NAVAREA, {"tatooine_hard_krayt_ne"}, 8},
 	{"@tatooine_region_names:north_eastern_krayt_background", 908, 930, {RECTANGLE, 7830, 5357}, SPAWNAREA, {"tatooine_north_eastern_krayt_background"}, 256},
 	{"@tatooine_region_names:jundland_waste_1", -3488, 4240, {CIRCLE, 1125}, SPAWNAREA, {"tatooine_jundland_wastes"}, 64},
