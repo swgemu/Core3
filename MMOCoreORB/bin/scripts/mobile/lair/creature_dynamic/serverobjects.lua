@@ -378,6 +378,7 @@ includeFile("lair/creature_dynamic/tatooine/tatooine_greater_womprat_herd_neutra
 includeFile("lair/creature_dynamic/tatooine/tatooine_grizzled_dewback_herd_neutral_none.lua")
 includeFile("lair/creature_dynamic/tatooine/tatooine_jundland_eopie_herd_neutral_none.lua")
 includeFile("lair/creature_dynamic/tatooine/tatooine_krayt_dragon_ancient_neutral_none.lua")
+includeFile("lair/creature_dynamic/tatooine/tatooine_krayt_dragon_grand_neutral_none.lua")
 includeFile("lair/creature_dynamic/tatooine/tatooine_kreetle_herd_neutral_none.lua")
 includeFile("lair/creature_dynamic/tatooine/tatooine_kreetle_over_neutral_none.lua")
 includeFile("lair/creature_dynamic/tatooine/tatooine_matriarch_bantha_herd_neutral_none.lua")

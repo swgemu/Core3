@@ -222,7 +222,7 @@ tatooine_jundland_wastes = {
 			minDifficulty = 125,
 			maxDifficulty = 500,
 			numberToSpawn = 15,
-			weighting = 150,
+			weighting = 5,
 			size = 15,
 		},
 		{
