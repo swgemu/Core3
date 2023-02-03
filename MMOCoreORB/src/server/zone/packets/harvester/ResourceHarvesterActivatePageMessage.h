@@ -11,6 +11,7 @@
 class ResourceHarvesterActivatePageMessage : public BaseMessage {
 public:
 	ResourceHarvesterActivatePageMessage(uint64 oid) : BaseMessage() {
+		printf("ResourceHarvesterActivatePageMessage\n");
     	insertShort(0x02);
     	insertInt(0xBD18C679);  // CRC
     	insertLong(oid);

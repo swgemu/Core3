@@ -5,25 +5,86 @@
 package server.zone.objects.installation.harvester;
 
 import server.zone.objects.installation.InstallationObject;
+include server.zone.objects.installation.InstallationSynchronizedUi;
+include server.zone.objects.installation.InstallationResourceData;
 import server.zone.packets.object.ObjectMenuResponse;
 include templates.SharedObjectTemplate;
 include engine.log.Logger;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
+include server.zone.objects.resource.ResourceSpawn;
+import system.util.Vector;
+import system.util.VectorMap;
+import system.lang.Time;
+include server.zone.objects.scene.variables.DeltaVectorMap;
 
-@json
+//@json
 class HarvesterObject extends InstallationObject {
-
 	protected boolean selfPowered;
+	
+	protected float installedExtractionRate;
+	protected unsigned long resourceType;
+	protected float maxExtractionRate;
+	protected float currentExtractionRate;
+	protected int maxHopperAmount;
+	
+	@dereferenced 
+	protected transient Vector<ResourceSpawn> surveyList;
+	
+	@dereferenced
+	protected Time lastSurveyTime;
+	
+	@dereferenced
+	protected DeltaVectorMap<unsigned long, float> hopperContents;
+	
+	@dereferenced
+	protected transient Vector<CreatureObject> currentOperators;
+	
+	protected transient InstallationSynchronizedUi syncUi;
 
 	public HarvesterObject() {
 		Logger.setLoggingName("HarvesterObject");
 		selfPowered = false;
+		
+		hopperContents.setNullValue(0);
+		
+		installedExtractionRate = 0;
+		resourceType = 0;
+		maxExtractionRate = 0;
+		currentExtractionRate = 0;
+		maxHopperAmount = 0;
 	}
+	
+	public native void initializeTransientMembers();
 
 	@preLocked
 	public void setSelfPowered(boolean isSelfPowered) {
 		selfPowered = isSelfPowered;
+	}
+	
+	@read
+	public float getCurrentExtractionRate() {
+		return currentExtractionRate;
+	}
+	
+	@read
+	public float getMaxExtractionRate() {
+		return maxExtractionRate;
+	}
+	
+	@read
+	public float getInstalledExtractionRate() {
+		return installedExtractionRate;
+	}
+	
+	@read
+	public unsigned long getResourceType() {
+		return resourceType;
+	}
+	
+	@read
+	public int getMaxHopperAmount() {
+		return maxHopperAmount;
 	}
 
 	@read
@@ -37,6 +98,19 @@ class HarvesterObject extends InstallationObject {
 			return 0;
 		else
 			return super.getBasePowerRate();
+	}
+	
+	public void setMaxExtractionRate(float rate) {
+		if (currentExtractionRate > rate)
+			currentExtractionRate = rate;
+		
+		maxExtractionRate = rate;
+	}
+	
+	public native void setCurrentExtractionRate(float rate);
+
+	public void setMaxHopperSize(int size) {
+		maxHopperAmount = size;
 	}
 
 	/**
@@ -72,35 +146,10 @@ class HarvesterObject extends InstallationObject {
 	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
-	/**
-	 * Calls the appropriate UI Listener Function
-	 * @pre { this object is locked, object is locked }
-	 * @post {this object is locked, object is locked }
-	 * @param player CreatureObject using the item
-	 * @param value value from packet
-	 */
-	@preLocked
-	public native void synchronizedUIListen(CreatureObject player, int value);
-
-	/**
-	 * Calls the appropriate UI Stop Listener Function
-	 * @pre { this object is locked, object is locked }
-	 * @post {this object is locked, object is locked }
-	 * @param player CreatureObject using the item
-	 * @param value value from packet
-	 */
-	@preLocked
-	public native void synchronizedUIStopListen(CreatureObject player, int value);
-
-	public native void updateOperators();
-
 	@dirty
 	public boolean isHarvesterObject() {
 		return true;
 	}
-
-	@dirty
-	public native string getRedeedMessage();
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -112,4 +161,80 @@ class HarvesterObject extends InstallationObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+	
+	public native ResourceSpawn getSelectedResourcePool();
+	
+	@local
+	public native float getHopperContents(DeltaVectorMap<unsigned long, float> hopperList = null);
+	
+	@preLocked
+	public native void activate(CreatureObject player = null);
+	
+	@preLocked
+	public native void doTick();
+	
+	@preLocked
+	public native void deactivate();
+	
+	@preLocked
+	public native void harvest();
+	
+	@preLocked
+	public native void roundHopperContents();
+	
+	@preLocked
+	public native void scheduleTickTask(boolean immediate = false);
+	
+	@local
+	@dirty
+	public native void selectResource(unsigned long resourceID, CreatureObject player);
+	
+	@preLocked
+	@local
+	public native void emptyHopper(CreatureObject player, unsigned long resourceID, int amount, boolean discard, byte sequenceID);
+	
+	public native void addResource(unsigned long resourceId, float amount);
+	
+	public int getOperatorCount() {
+		return currentOperators.size();
+	}
+	
+	@preLocked
+	public void discardHopperContents() {
+		hopperContents.removeAll();
+	}
+	
+	@preLocked
+	public native void takeSurvey();
+	
+	@local
+	public native InstallationSynchronizedUi getSynchronizedUi();
+	
+	@local
+	@dereferenced
+	@dirty
+	public native Vector<ResourceSpawn> getSurveyTypes();
+
+	@local
+	public native void getResourceData(@dereferenced Vector<InstallationResourceData> data);
+	
+	public void addOperator(CreatureObject newOperator) {
+		currentOperators.add(newOperator);
+		scheduleTickTask(false);
+	}
+	
+	public void removeOperator(CreatureObject op) {
+		currentOperators.removeElement(op);
+		scheduleTickTask(false);
+	}
+	
+	@preLocked
+	public native void synchronizedUIListen(CreatureObject player);
+	
+	@preLocked
+	public native void synchronizedUIStopListen(CreatureObject player);
+	
+	public native void broadcastDeltas();
+	
+	public native void broadcastToOperators();
 }

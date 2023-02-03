@@ -14,6 +14,7 @@ class InstallationObjectDeltaMessage3 : public TangibleObjectDeltaMessage3 {
 public:
 	InstallationObjectDeltaMessage3(InstallationObject* ins)
 			: TangibleObjectDeltaMessage3(ins, 0x494E534F) {
+				printf("InstallationObjectDeltaMessage3\n");
 		inso = ins;
 	}
 

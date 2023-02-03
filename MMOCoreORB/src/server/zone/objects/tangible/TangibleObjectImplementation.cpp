@@ -419,13 +419,13 @@ void TangibleObjectImplementation::clearPvpStatusBit(uint32 pvpStatus, bool noti
 	}
 }
 
-void TangibleObjectImplementation::synchronizedUIListen(CreatureObject* player, int value) {
+void TangibleObjectImplementation::synchronizedUIListen(CreatureObject* player) {
 	// Send TANO7 Baseline
 	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(asTangibleObject());
 	player->sendMessage(tano7);
 }
 
-void TangibleObjectImplementation::synchronizedUIStopListen(CreatureObject* player, int value) {
+void TangibleObjectImplementation::synchronizedUIStopListen(CreatureObject* player) {
 
 }
 

@@ -378,7 +378,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param value value from packet
 	 */
 	@dirty
-	public abstract void synchronizedUIListen(CreatureObject player, int value) {
+	public abstract void synchronizedUIListen(CreatureObject player) {
 		Logger.info("Unhandled synchronizedUIListen", true);
 	}
 
@@ -390,7 +390,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param value value from packet
 	 */
 	@dirty
-	public abstract void synchronizedUIStopListen(CreatureObject player, int value) {
+	public abstract void synchronizedUIStopListen(CreatureObject player) {
 		Logger.info("Unhandled synchronizedUIStopListen", true);
 	}
 
@@ -1679,11 +1679,6 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@dirty
 	public abstract boolean isHarvesterObject() {
-		return false;
-	}
-
-	@dirty
-	public abstract boolean isGeneratorObject() {
 		return false;
 	}
 

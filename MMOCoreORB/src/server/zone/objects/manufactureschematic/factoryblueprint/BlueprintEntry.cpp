@@ -164,7 +164,7 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 			dtano3->updateCountdownTimer();
 			dtano3->close();
 
-			factory->broadcastToOperators(dtano3);
+			//factory->broadcastToOperators(dtano3);
 		} else {
 
 			ResourceContainer* container = cast<ResourceContainer*>(object);
@@ -175,7 +175,7 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 			rcnod3->updateQuantity();
 			rcnod3->close();
 
-			factory->broadcastToOperators(rcnod3);
+			//factory->broadcastToOperators(rcnod3);
 		}
 
 		if(object->getUseCount() <= 0)

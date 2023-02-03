@@ -12,6 +12,7 @@ class HarvesterObjectMessage3 : public BaseLineMessage {
 public:
 	HarvesterObjectMessage3(HarvesterObject * hino)
 			: BaseLineMessage(hino->getObjectID(), 0x48494E4F, 3, 0x05) {
+		printf("HarvesterObjectMessage3\n");
 		insertFloat(1.0);
 		insertAscii("installation_n"); // STF File
 		insertInt(0); //nothing.

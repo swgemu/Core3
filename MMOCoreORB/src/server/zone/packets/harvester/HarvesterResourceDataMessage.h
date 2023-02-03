@@ -9,58 +9,38 @@
 
 class HarvesterResourceDataMessage : public ObjectControllerMessage {
 public:
-	HarvesterResourceDataMessage(CreatureObject* player, InstallationObject* hino, Zone* zone)
+	HarvesterResourceDataMessage(CreatureObject* player, HarvesterObject* hino, Zone* zone)
 		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0xEA) {
-
+			printf("HarvesterResourceDataMessage\n");
 		insertLong(hino->getObjectID()); // Harvester Object
 
-		Vector<ManagedReference<ResourceSpawn*> > resourceList;
+		Vector<InstallationResourceData*> data;
+		hino->getResourceData(data);
 
-		ResourceManager* resourceManager = hino->getZoneServer()->getResourceManager();
-		resourceManager->getResourceListByType(resourceList, hino->getInstallationType(), zone->getZoneName());
-
-		/*StringBuffer msg;
-		msg << "resource list for type " << hino->getInstallationType() << " with size " << resourceList.size();
-		hino->info(msg.toString(), true);*/
-
-		insertResourceList(&resourceList, hino);
+		insertResourceList(data, hino);
 
 	}
 
-	void insertResourceList(Vector<ManagedReference<ResourceSpawn*> >* list, InstallationObject* hino) {
-
-		//System::out << "insertResourceList size(): " << list->size() << endl;
-		insertInt(list->size()); // list size
+	void insertResourceList(Vector<InstallationResourceData*>& list, HarvesterObject* hino) {
+		insertInt(list.size()); // list size
 
 /*		LONG:		Resource ID
 		ASTRING:	Resource Name
 		ASTRING:	Resource Type
 		BYTE:		Resource Density
 */
-		for (int x = 0; x < list->size(); x++) {
-			ResourceSpawn* ri = list->get(x);
-			//System::out << "insertResourceList() ObjectID: " << hex << ri->getObjectID() << endl;
-			insertLong(ri->getObjectID());
-			insertAscii(ri->getName());
-			insertAscii(ri->getType());
-			auto zone = hino->getZone();
-
-			if (zone != nullptr) {
-				insertByte((int) (ri->getDensityAt(zone->getZoneName(), hino->getPositionX(), hino->getPositionY()) * 100.f));
-			} else {
-				insertByte((int) 0);
-			}
+printf("HarvesterResourceDataMessage adding %i resources\n", list.size());
+		for (int x = 0; x < list.size(); x++) {
+			InstallationResourceData* data = list.get(x);
+			hino->info(true) << "id " << data->getId() << ", name " << data->getName() << ", parent " << data->getParentName() << ", efficiency " << (int)data->getEfficiency();
+			insertLong(data->getId());
+			insertAscii(data->getName());
+			insertAscii(data->getParentName());
+			insertByte((int)data->getEfficiency());
 		}
 
 	}
 
 };
-
-/*
-
-if (list == nullptr)
-	System::out << "list was null!" << endl;
-*/
-
 
 #endif /* HARVESTERRESOURCEDATAMESSAGE_H_ */
