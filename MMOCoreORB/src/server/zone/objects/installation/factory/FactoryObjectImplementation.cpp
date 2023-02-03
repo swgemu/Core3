@@ -41,7 +41,7 @@ void FactoryObjectImplementation::notifyLoadFromDatabase() {
 
 	setLoggingName("FactoryObject");
 
-	if (operating) {
+	if (activated) {
 		Core::getTaskManager()->executeTask([factory = WeakReference<FactoryObject*>(_this.getReferenceUnsafeStaticCast())]() {
 			auto factoryStrong = factory.get();
 
@@ -100,7 +100,7 @@ void FactoryObjectImplementation::createChildObjects() {
 void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	InstallationObjectImplementation::fillAttributeList(alm, object);
 
-	if (operating && object != nullptr && isOnAdminList(object)) {
+	if (activated && object != nullptr && isOnAdminList(object)) {
 		if (getContainerObjectsSize() == 0)
 			return;
 
@@ -271,8 +271,8 @@ void FactoryObjectImplementation::openHopper(Observable* observable, ManagedObje
 	if(creo == nullptr || outputHopper == nullptr || !creo->isPlayerCreature())
 		return;
 
-	if(observable == outputHopper)
-		operatorList.add(creo);
+//	if(observable == outputHopper)
+//		operatorList.add(creo);
 }
 
 void FactoryObjectImplementation::closeHopper(Observable* observable, ManagedObject* arg1) {
@@ -284,8 +284,8 @@ void FactoryObjectImplementation::closeHopper(Observable* observable, ManagedObj
 	if(creo == nullptr || hopper != nullptr || outputHopper == nullptr || !creo->isPlayerCreature())
 		return;
 
-	if(observable == outputHopper)
-		operatorList.removeElement(creo);
+//	if(observable == outputHopper)
+	//	operatorList.removeElement(creo);
 
 	for(int i = 0; i < outputHopper->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> item = outputHopper->getContainerObject(i);
@@ -402,7 +402,7 @@ void FactoryObjectImplementation::handleOperateToggle(CreatureObject* player) {
 		return;
 	}
 
-	if(!operating) {
+	if(!isActive()) {
 		currentUserName = player->getFirstName();
 		currentRunCount = 0;
 		if(startFactory()) {
@@ -452,7 +452,7 @@ bool FactoryObjectImplementation::startFactory() {
 	Reference<CreateFactoryObjectTask* > createFactoryObjectTask = new CreateFactoryObjectTask(_this.getReferenceUnsafeStaticCast());
 	addPendingTask("createFactoryObject", createFactoryObjectTask, timer * 1000);
 
-	operating = true;
+	//operating = true;
 
 	return true;
 }
@@ -478,7 +478,7 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
-	operating = false;
+	activated = false;
 	Reference<Task* > pending = getPendingTask("createFactoryObject");
 	removePendingTask("createFactoryObject");
 
@@ -553,7 +553,8 @@ void FactoryObjectImplementation::createNewObject() {
 
 	/// Shutdown when out of power or maint
 	Time timeToWorkTill;
-	bool shutdownAfterWork = updateMaintenance(timeToWorkTill);
+	//bool shutdownAfterWork = updateMaintenance(timeToWorkTill);
+	bool shutdownAfterWork = true;
 
 	if(shutdownAfterWork) {
 
@@ -571,7 +572,7 @@ void FactoryObjectImplementation::createNewObject() {
 		return;
 	}
 
-	verifyOperators();
+//	verifyOperators();
 
 	String type = "";
 	String displayedName = "";
@@ -605,7 +606,7 @@ void FactoryObjectImplementation::createNewObject() {
 			dfcty3->setQuantity(crate->getUseCount());
 			dfcty3->close();
 
-			broadcastToOperators(dfcty3);
+			//broadcastToOperators(dfcty3);
 		}
 
 		if (crate == nullptr) {
@@ -690,9 +691,9 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 
 	outputHopper->transferObject(crate, -1, true);
 
-	for(int i = 0; i < operatorList.size(); ++i) {
-		crate->sendTo(operatorList.get(i), true);
-	}
+//	for(int i = 0; i < operatorList.size(); ++i) {
+//		crate->sendTo(operatorList.get(i), true);
+//	}
 
 	return crate;
 }
@@ -721,9 +722,9 @@ TangibleObject* FactoryObjectImplementation::createNewUncratedItem(TangibleObjec
 	protoclone->setParent(nullptr);
 	outputHopper->transferObject(protoclone, -1, false);
 
-	for (int i = 0; i < operatorList.size(); ++i) {
-		protoclone->sendTo(operatorList.get(i), true);
-	}
+	//for (int i = 0; i < operatorList.size(); ++i) {
+	//	protoclone->sendTo(operatorList.get(i), true);
+	//}
 
 	return protoclone;
 }
@@ -785,7 +786,7 @@ void FactoryObjectImplementation::collectMatchesInInputHopper(
 
 String FactoryObjectImplementation::getRedeedMessage() {
 
-	if(operating)
+	if(activated)
 		return "deactivate_factory_for_delete";
 
 	if(getContainerObjectsSize() > 0)

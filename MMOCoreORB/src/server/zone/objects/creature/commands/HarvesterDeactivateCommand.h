@@ -6,6 +6,7 @@
 #define HARVESTERDEACTIVATECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/installation/harvester/HarvesterObject.h"
 
 class HarvesterDeactivateCommand : public QueueCommand {
 public:
@@ -27,16 +28,16 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == nullptr || !object->isInstallationObject())
+		if (object == nullptr || !object->isHarvesterObject())
 			return GENERALERROR;
 
-		InstallationObject* inso = cast<InstallationObject*>( object.get());
+		HarvesterObject* harvester = cast<HarvesterObject*>( object.get());
 
 		try {
-			Locker clocker(inso, player);
+			Locker clocker(harvester, player);
 
-			if (inso->isOnAdminList(player) && inso->isInRange(player, 20))
-				inso->setOperating(false);
+			if (harvester->isOnAdminList(player) && harvester->isInRange(player, 20))
+				harvester->deactivate();
 			else
 				player->sendSystemMessage("You are too far.");
 

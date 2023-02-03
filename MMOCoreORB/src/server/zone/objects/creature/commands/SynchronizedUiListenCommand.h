@@ -25,20 +25,15 @@ public:
 			return INVALIDLOCOMOTION;
 
 		ManagedReference<SceneObject*> object = (creature->getZoneServer()->getObject(target)).castTo<SceneObject*>();
-		int value = 0;
 
-		StringTokenizer tokenizer(arguments.toString());
+		if (object == nullptr)
+			return GENERALERROR;
 
-		if (tokenizer.hasMoreTokens())
-			value = tokenizer.getIntToken();
+		try {
+			Locker clocker(object, creature);
 
-		if (object != nullptr && creature->isPlayerCreature()) {
-			try {
-				Locker clocker(object, creature);
-
-				object->synchronizedUIListen(creature, value);
-			} catch (Exception& e) {
-			}
+			object->synchronizedUIListen(creature);
+		} catch (Exception& e) {
 		}
 
 		return SUCCESS;

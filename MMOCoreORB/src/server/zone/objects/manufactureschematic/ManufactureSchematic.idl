@@ -159,19 +159,17 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }
 	 * @param player CreatureObject using the item
-	 * @param value value from packet
 	 */
 	@preLocked
-	public native abstract void synchronizedUIListen(CreatureObject player, int value);
+	public native abstract void synchronizedUIListen(CreatureObject player);
 
 	/**
 	 * Calls the appropriate UI Stop Listener Function
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }
 	 * @param player CreatureObject using the item
-	 * @param value value from packet
 	 */
-	public native abstract void synchronizedUIStopListen(CreatureObject player, int value);
+	public native abstract void synchronizedUIStopListen(CreatureObject player);
 
 	@dirty
 	public boolean isManufactureSchematic() {

@@ -847,7 +847,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 		state = 2;
 
 		// re-setup the slots and ingredients
-		manufactureSchematic->synchronizedUIListen(crafter, 0);
+		manufactureSchematic->synchronizedUIListen(crafter);
 
 		// Start Dplay9 **************************************
 		// Reset crafting state
