@@ -133,7 +133,8 @@ tatooine_regions = {
 	{"@tatooine_region_names:small_stone_hutt", 5776, 3975, {CIRCLE, 75}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:ruins_on_a_wall", 3280, -3680, {CIRCLE, 75}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:strange_arches_lined_up", -845, 2701, {CIRCLE, 100}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
-	{"@tatooine_region_names:krayt_skeleton_on_a_hill", -2834, 6061, {CIRCLE, 75}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
+	{"@tatooine_region_names:krayt_skeleton_1", -4649, -4361, {CIRCLE, 500}, NOBUILDZONEAREA + NAMEDREGION},
+	{"@tatooine_region_names:krayt_skeleton_on_a_hill", -2834, 6061, {CIRCLE, 75}, NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:three_short_archways_lined_up_in_a_row", 1856, 1472, {CIRCLE, 75}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:long_destroyed_wall", 2992, -480, {CIRCLE, 100}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
 	{"@tatooine_region_names:single_platform_with_two_arches_on_top", 3657, -3375, {CIRCLE, 100}, NOSPAWNAREA + NOBUILDZONEAREA + NAMEDREGION},
@@ -209,7 +210,6 @@ tatooine_regions = {
 	{"@tatooine_region_names:mos_taike_easy_newbie", 3835, 2350, {CIRCLE, 600}, SPAWNAREA, {"tatooine_mos_taike_easy_newbie"}, 64},
 	{"@tatooine_region_names:mos_taike_medium_newbie", 3835, 2350, {RING, 600, 1100}, SPAWNAREA, {"tatooine_mos_taike_medium_newbie"}, 64},
 
-	{"@tatooine_region_names:krayt_skeleton_1", -4649, -4361, {CIRCLE, 500}, SPAWNAREA + NOBUILDZONEAREA + NAMEDREGION, {"tatooine_hard_krayt_ne"}, 4},
 	{"@tatooine_region_names:hard_krayt_ne", 6515, 4215, {CIRCLE, 785}, SPAWNAREA + NAVAREA, {"tatooine_hard_krayt_ne"}, 8},
 	{"@tatooine_region_names:north_eastern_krayt_background", 908, 930, {RECTANGLE, 7830, 5357}, SPAWNAREA, {"tatooine_north_eastern_krayt_background"}, 256},
 	{"@tatooine_region_names:jundland_waste_1", -3488, 4240, {CIRCLE, 1125}, SPAWNAREA, {"tatooine_jundland_wastes"}, 64},

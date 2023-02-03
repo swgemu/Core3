@@ -2,8 +2,8 @@ KraytGraveyardScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
 }
-
-registerScreenPlay("KraytGraveyardScreenPlay", true)
+-- Disabled. Krayt spawning handled by regions
+registerScreenPlay("KraytGraveyardScreenPlay", false)
 
 function KraytGraveyardScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then
@@ -12,10 +12,6 @@ function KraytGraveyardScreenPlay:start()
 end
 
 function KraytGraveyardScreenPlay:spawnMobiles()
-	spawnMobile("tatooine", "krayt_dragon_grand", 1800, 7432, 6.4, 4561, 0, 0)
-	spawnMobile("tatooine", "krayt_dragon_ancient", 3600, 7428, 8.4, 4529, 0, 0)
-
-	--[[ Old Spawns
 	spawnMobile("tatooine", "canyon_krayt_dragon", 1800, 7227.5, 33.2, 4495.8, -116, 0)
 	spawnMobile("tatooine", "juvenile_canyon_krayt_dragon", 1500, 7233.2, 30.1, 4487.1, -116, 0)
 	spawnMobile("tatooine", "canyon_krayt_dragon", 1800, 7178, 24.5, 4429.9, -100, 0)
@@ -45,5 +41,4 @@ function KraytGraveyardScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "krayt_dragon_adolescent", 1800, 7077.4, 20.0, 4447.3, -123, 0)
 	spawnMobile("tatooine", "krayt_dragon_adolescent", 1800, 7003.0, 86.3, 4200.4, 10, 0)
 	spawnMobile("tatooine", "krayt_dragon_adolescent", 1800, 6726.8, 19.5, 4288.6, -91, 0)
-	]]
 end
