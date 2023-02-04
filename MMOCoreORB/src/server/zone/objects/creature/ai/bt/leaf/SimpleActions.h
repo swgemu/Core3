@@ -340,7 +340,7 @@ public:
 		if (agent->peekBlackboard("moveMode"))
 			mode = static_cast<DataVal>(agent->readBlackboard("moveMode").get<uint32>());
 
-		return agent->findNextPosition(agent->getMaxDistance(), mode == DataVal::WALK) ? RUNNING : SUCCESS;
+		return agent->findNextPosition(agent->getMaxDistance(), mode == DataVal::WALK) ? SUCCESS : FAILURE;
 	}
 };
 
