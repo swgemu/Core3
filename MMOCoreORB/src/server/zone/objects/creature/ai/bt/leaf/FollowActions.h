@@ -26,12 +26,10 @@ namespace leaf {
 
 class GetProspectFromThreatMap : public Behavior {
 public:
-	GetProspectFromThreatMap(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args) {
+	GetProspectFromThreatMap(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
 	}
 
-	GetProspectFromThreatMap(const GetProspectFromThreatMap& a)
-			: Behavior(a) {
+	GetProspectFromThreatMap(const GetProspectFromThreatMap& a) : Behavior(a) {
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
@@ -76,12 +74,10 @@ public:
 
 class GetProspectFromTarget : public Behavior {
 public:
-	GetProspectFromTarget(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args) {
+	GetProspectFromTarget(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
 	}
 
-	GetProspectFromTarget(const GetProspectFromTarget& a)
-			: Behavior(a) {
+	GetProspectFromTarget(const GetProspectFromTarget& a) : Behavior(a) {
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
@@ -129,10 +125,10 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		agent->eraseBlackboard("targetProspect");
-
-		if (!agent->isPet())
+		if (agent == nullptr || !agent->isPet())
 			return FAILURE;
+
+		agent->eraseBlackboard("targetProspect");
 
 		Reference<PetControlDevice*> cd = agent->getControlDevice().castTo<PetControlDevice*>();
 		if (cd == nullptr)
@@ -731,6 +727,9 @@ public:
 			if (controlDevice->getPatrolPointSize() == 0)
 				return FAILURE;
 
+			Locker dlocker(controlDevice, agent);
+			controlDevice->setLastCommandTarget(nullptr);
+
 			agent->setFollowObject(nullptr);
 			agent->setMovementState(AiAgent::PATROLLING);
 			agent->clearSavedPatrolPoints();
@@ -743,14 +742,18 @@ public:
 			return SUCCESS;
 		} else if (lastCommand == PetManager::GUARD || lastCommand == PetManager::FOLLOWOTHER) {
 			newFollow = controlDevice->getLastCommandTarget();
+		} else {
+			newFollow = agent->getLinkedCreature().get();
 		}
 
 		if (newFollow == nullptr) {
 			return FAILURE;
 		}
 
-		Locker clocker(newFollow, agent);
+		Locker dlocker(controlDevice, agent);
+		controlDevice->setLastCommandTarget(newFollow);
 
+		Locker flocker(newFollow, agent);
 		agent->setFollowObject(newFollow);
 
 		return SUCCESS;

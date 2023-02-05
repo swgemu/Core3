@@ -327,20 +327,25 @@ public:
 
 class FindNextPosition : public Behavior {
 public:
-	FindNextPosition(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args) {
+	FindNextPosition(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
 	}
 
-	FindNextPosition(const FindNextPosition& a)
-			: Behavior(a) {
+	FindNextPosition(const FindNextPosition& a) : Behavior(a) {
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		DataVal mode = DataVal::WALK;
+
 		if (agent->peekBlackboard("moveMode"))
 			mode = static_cast<DataVal>(agent->readBlackboard("moveMode").get<uint32>());
 
-		return agent->findNextPosition(agent->getMaxDistance(), mode == DataVal::WALK) ? SUCCESS : FAILURE;
+		uint32 movementState = agent->getMovementState();
+
+		if (movementState == AiAgent::FOLLOWING) {
+			return agent->findNextPosition(agent->getMaxDistance(), mode == DataVal::WALK) ? SUCCESS : FAILURE;
+		}
+
+		return agent->findNextPosition(agent->getMaxDistance(), mode == DataVal::WALK) ? RUNNING : SUCCESS;
 	}
 };
 
