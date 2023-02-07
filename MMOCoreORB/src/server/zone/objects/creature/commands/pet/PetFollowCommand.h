@@ -57,17 +57,15 @@ public:
 
 		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
 
-		if (targetCreature == nullptr)
-			return GENERALERROR;
-
-		if (targetCreature != player && (targetCreature->isAttackableBy(pet) || !CollisionManager::checkLineOfSight(player, targetCreature) || !playerEntryCheck(player, targetCreature)) ) {
+		if (targetCreature == nullptr) {
 			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
-			return INVALIDTARGET;
+			return GENERALERROR;
 		}
 
 		// Check if droid has power
 		if (controlDevice->getPetType() == PetManager::DROIDPET) {
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
+
 			if (droidPet == nullptr)
 				return GENERALERROR;
 
@@ -77,15 +75,20 @@ public:
 			}
 		}
 
+		if (targetCreature != player && (targetCreature->isAttackableBy(pet) || targetCreature->isDead() || !CollisionManager::checkLineOfSight(player, targetCreature) || !playerEntryCheck(player, targetCreature))) {
+			pet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
+			targetCreature = player;
+		}
+
 		// attempt peace if the pet is in combat
 		if (pet->isInCombat())
 			CombatManager::instance()->attemptPeace(pet);
 
 		Locker clocker(controlDevice, creature);
-		controlDevice->setLastCommandTarget(targetObject);
+		controlDevice->setLastCommandTarget(targetCreature);
 		clocker.release();
 
-		pet->setFollowObject(targetObject);
+		pet->setFollowObject(targetCreature);
 		pet->storeFollowObject();
 
 		if (pet->isResting()) {
