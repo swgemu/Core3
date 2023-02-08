@@ -718,16 +718,13 @@ public:
 			return FAILURE;
 
 		ManagedReference<SceneObject*> newFollow = controlDevice->getLastCommander();
-
 		uint32 lastCommand = controlDevice->getLastCommand();
+		Locker clocker(controlDevice, agent);
 
 		if (lastCommand == PetManager::PATROL) {
-			Locker clocker(controlDevice, agent);
-
 			if (controlDevice->getPatrolPointSize() == 0)
 				return FAILURE;
 
-			Locker dlocker(controlDevice, agent);
 			controlDevice->setLastCommandTarget(nullptr);
 
 			agent->setFollowObject(nullptr);
@@ -750,8 +747,8 @@ public:
 			return FAILURE;
 		}
 
-		Locker dlocker(controlDevice, agent);
 		controlDevice->setLastCommandTarget(newFollow);
+		clocker.release();
 
 		Locker flocker(newFollow, agent);
 		agent->setFollowObject(newFollow);
