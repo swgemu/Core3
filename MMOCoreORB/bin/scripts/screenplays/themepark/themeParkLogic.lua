@@ -2124,10 +2124,9 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 	AiAgent(pConversingNpc):removeCreatureFlag(AI_STATIONARY)
 	AiAgent(pConversingNpc):addCreatureFlag(AI_FOLLOW)
 	AiAgent(pConversingNpc):addCreatureFlag(AI_ESCORT)
-	AiAgent(pConversingNpc):setAITemplate()
-
 	AiAgent(pConversingNpc):setFollowObject(pConversingPlayer)
 
+	AiAgent(pConversingNpc):setAITemplate()
 end
 
 function ThemeParkLogic:getMissionType(activeNpcNumber, pConversingPlayer)
