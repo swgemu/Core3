@@ -63,6 +63,7 @@ bitmaskLookup = {
 
 	{PET, {
 		{NONE, "rootPet"},
+		{ATTACK, "attackPet"},
 		{AWARE, "awarePet"},
 		{EQUIP, "equipPet"},
 		{IDLE, "idlePet"},
@@ -73,6 +74,7 @@ bitmaskLookup = {
 
 	{FACTION_PET, {
 		{NONE, "rootPet"},
+		{ATTACK, "attackPet"},
 		{AWARE, "awarePet"},
 		{EQUIP, "equipPet"},
 		{IDLE, "idlePet"},

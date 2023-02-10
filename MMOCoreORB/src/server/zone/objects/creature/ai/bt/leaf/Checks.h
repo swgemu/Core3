@@ -70,7 +70,8 @@ enum CheckType {
 	CHECK_QUEUESIZE,
 	CHECK_ISESCORT,
 	CHECK_HASRANGEDWEAPON,
-	CHECK_HASMELEEWEAPON
+	CHECK_HASMELEEWEAPON,
+	CHECK_ISSWIMMING
 };
 
 // template class to reduce repeated code. Do this instead of inheritance so we
@@ -291,6 +292,9 @@ template<> bool CheckHasRangedWeapon::check(AiAgent* agent) const;
 
 typedef _Check<bool, CHECK_HASMELEEWEAPON> CheckHasMeleeWeapon;
 template<> bool CheckHasMeleeWeapon::check(AiAgent* agent) const;
+
+typedef _Check<bool, CHECK_ISSWIMMING> CheckIsSwimming;
+template<> bool CheckIsSwimming::check(AiAgent* agent) const;
 
 }
 }

@@ -1,3 +1,31 @@
+attackPet = {
+	{id="2571844594",	name="Sequence",	pid="none"},
+	{id="2163088287",	name="Not",	pid="2571844594"},
+	{id="2896823263",	name="If",	pid="2163088287"},
+	{id="1728581678",	name="CheckQueueSize",	pid="2896823263"},
+	{id="3278792310",	name="Not",	pid="2571844594"},
+	{id="737775493",	name="If",	pid="3278792310"},
+	{id="3177206211",	name="CheckIsSwimming",	pid="737775493"},
+	{id="3131619822",	name="RandomSelector",	pid="2571844594"},
+	{id="1207017249",	name="WriteBlackboard",	pid="3131619822",	args={val=DEFAULT, key="attackType"}},
+	{id="2663427717",	name="WriteBlackboard",	pid="3131619822",	args={val=DEFAULT, key="attackType"}},
+	{id="1934836801",	name="WriteBlackboard",	pid="3131619822",	args={val=DEFAULT, key="attackType"}},
+	{id="3605243030",	name="EraseBlackboard",	pid="3131619822",	args={param="attackType"}},
+	{id="1167360521",	name="Sequence",	pid="2571844594"},
+	{id="2057152981",	name="Sequence",	pid="1167360521"},
+	{id="1765222686",	name="SelectAttack",	pid="2057152981",	args={attackNum=-1}},
+	{id="3468400432",	name="If",	pid="2057152981"},
+	{id="2285109384",	name="CheckAttackInRange",	pid="3468400432"},
+	{id="3399948101",	name="If",	pid="2057152981"},
+	{id="1739021609",	name="CheckAttackIsValid",	pid="3399948101"},
+	{id="2496815121",	name="EnqueueAttack",	pid="2057152981"},
+	{id="2125538853",	name="AlwaysSucceed",	pid="2057152981"},
+	{id="288387210",	name="Sequence",	pid="2125538853"},
+	{id="607631489",	name="If",	pid="288387210"},
+	{id="3101412556",	name="CheckIsType",	pid="607631489",	args={condition=NPCTYPE}},
+	{id="257014571",	name="SetAttackPosture",	pid="288387210"}}
+addAiTemplate("attackPet", attackPet)
+
 awarePet = {
 	{id="2672408205",	name="Sequence",	pid="none"},
 	{id="2428980616",	name="Not",	pid="2672408205"},
