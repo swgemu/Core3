@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 class PlaceStructureCommand : public QueueCommand {
 public:
@@ -40,17 +41,22 @@ public:
 			return GENERALERROR;
 		}
 
+		Vector3 playerPosition = creature->getPosition();
+		Vector3 placementLoc;
+
 		uint64 deedID;
-		float x, y;
 		int angle;
 
 		try {
 			UnicodeTokenizer tokenizer(arguments);
 
 			deedID = tokenizer.getLongToken();
-			x = tokenizer.getFloatToken();
-			y = tokenizer.getFloatToken();
-			angle = tokenizer.getIntToken() * 90;
+			placementLoc.setX(tokenizer.getFloatToken());
+			placementLoc.setY(tokenizer.getFloatToken());
+			angle = tokenizer.getIntToken();
+
+			if (angle > 3)
+				return GENERALERROR;
 
 			// Validate player position -vs- attempted placement
 			Zone* zone = creature->getZone();
@@ -58,28 +64,48 @@ public:
 			if (zone == nullptr)
 				return GENERALERROR;
 
-			Vector3 position(x, y, zone->getHeight(x, y));
-			Vector3 playerPosition = creature->getPosition();
-			float distance = position.distanceTo(playerPosition);
+			placementLoc.setZ(CollisionManager::getWorldFloorCollision(placementLoc.getX(), placementLoc.getY(), zone, false));
+
+			float distance = placementLoc.distanceTo(playerPosition);
+			float heightDiff = playerPosition.getZ() - placementLoc.getZ();
 
 			// Client will only scroll about 100m from the placement start position
-			if (distance > 100.0f) {
-				CreatureObject* player = cast<CreatureObject*>(creature);
+			if ((distance > 100.0f) || (heightDiff > 10.f)) {
+				StringBuffer msg;
 
-				player->sendSystemMessage("@system_msg:out_of_range");
+				msg << "Player: " << creature->getFirstName() << " ID: " << creature->getObjectID() << " attempted invalid PlaceStructureCommand on "
+					<< zone->getZoneName() << " at " << placementLoc.toString()	<< " With a Player Position of: " << playerPosition.toString()
+					<< " Distance from placement Location: " << distance << " Height Difference: " << heightDiff;
 
-				player->error(player->getFirstName()
-					+ " attempted invalid placeStructure on "
-					+ zone->getZoneName()
-					+ " @ x: " + String::valueOf(x)
-					+ ", y: " + String::valueOf(y)
-					+ ", z: " + String::valueOf(zone->getHeight(x, y))
-					+ " while player @ x: " + String::valueOf(playerPosition.getX())
-					+ ", y: " + String::valueOf(playerPosition.getY())
-					+ ", z: " + String::valueOf(playerPosition.getZ())
-					+ " range: " + String::valueOf(position.distanceTo(playerPosition)) + "m"
-				);
+				creature->error(msg.toString());
+				creature->sendSystemMessage("@system_msg:out_of_range");
 
+				return GENERALERROR;
+			}
+
+			SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+
+			zone->getInRangeActiveAreas(placementLoc.getX(), placementLoc.getY(), &activeAreas, true);
+
+			for (int i = 0; i < activeAreas.size(); ++i) {
+				ActiveArea* area = activeAreas.get(i);
+
+				if (area == nullptr)
+					continue;
+
+				if (area->isNoBuildZone()) {
+					creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
+					return GENERALERROR;
+				}
+			}
+
+			PlanetManager* planetMan = zone->getPlanetManager();
+
+			if (planetMan == nullptr)
+				return GENERALERROR;
+
+			if (planetMan->isInObjectsNoBuildZone(placementLoc.getX(), placementLoc.getY(), 15.0f)) {
+				creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
 				return GENERALERROR;
 			}
 		} catch (Exception& e) {
@@ -91,7 +117,7 @@ public:
 		ManagedReference<StructureDeed*> deed = server->getZoneServer()->getObject(deedID).castTo<StructureDeed*>();
 
 		if (deed != nullptr)
-			deed->placeStructure(creature, x, y, angle);
+			deed->placeStructure(creature, placementLoc.getX(), placementLoc.getY(), angle * 90);
 
 		return SUCCESS;
 	}
