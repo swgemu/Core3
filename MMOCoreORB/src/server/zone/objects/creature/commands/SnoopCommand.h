@@ -514,31 +514,54 @@ public:
 
 		StringBuffer body;
 		body << "Player Name:\t" << target->getFirstName() << endl << endl;
-		body << "Min\tMax \tWounds\tMods\tEnc" << endl;
 
 		for (int i = 0; i < 9; i++) {
-			body << String::valueOf(target->getHAM(i)) + " / ";
-			body << "\t" + String::valueOf(target->getMaxHAM(i) - target->getWounds(i));
-			body << "   \t" + String::valueOf(target->getWounds(i)) << "\t";
 
 			switch (i) {
 			case 0:
+				body << "Health: ";
+				break;
+			case 1:
+				body << "Strength: ";
+				break;
+			case 2:
+				body << "Constitution: ";
+				break;
 			case 3:
+				body << "Action: ";
+				break;
+			case 4:
+				body << "Quickness: ";
+				break;
+			case 5:
+				body << "Stamina: ";
+				break;
 			case 6:
-				body << "\t" + String::valueOf(target->getMaxHAM(i) - target->getBaseHAM(i));
-				body << "\t0" << endl;
+				body << "Mind: ";
+				break;
+			case 7:
+				body << "Focus: ";
+				break;
+			case 8:
+				body << "Willpower: ";
 				break;
 			default:
-				body << "\t" + String::valueOf(target->getMaxHAM(i) - target->getBaseHAM(i) + target->getEncumbrance(i / 3));
-				body << "\t" + String::valueOf(target->getEncumbrance(i / 3)) << endl;
 				break;
 			}
+
+			body << target->getHAM(i) << " / " << target->getMaxHAM(i) << "\n";
+			body << "Wounds: " << target->getWounds(i) << "\n";
+			body << "Modifiers: " << (target->getMaxHAM(i) - target->getBaseHAM(i) + target->getEncumbrance(i / 3)) << "\n";
+			body << "Encumbrance: " << target->getEncumbrance(i / 3) << "\n";
+
+			body << "\n\n";
 		}
 
-		if(targetGhost != nullptr) { // if we're not a PlayerObject, we don't hold force values
+		if (targetGhost != nullptr) { // if we're not a PlayerObject, we don't hold force values
 			body << "Force Power:\t" << targetGhost->getForcePower() << " / " << targetGhost->getForcePowerMax() << endl;
 			body << "Force Regen:\t" << target->getSkillMod("jedi_force_power_regen") << endl;
 		}
+
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
 		box->setPromptTitle("Player HAM");
 		box->setPromptText(body.toString());
