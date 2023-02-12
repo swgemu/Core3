@@ -31,8 +31,6 @@ class ActiveArea extends SceneObject {
 
 	protected boolean noPetArea;
 
-	protected boolean lockedArea;
-
 	protected AreaShape areaShape;
 
 	@dereferenced
@@ -52,6 +50,7 @@ class ActiveArea extends SceneObject {
 	public static final int CITY = 0x000040;
 	public static final int NAVAREA = 0x000080;
 	public static final int NAMEDREGION = 0x000100;
+	public static final int LOCKEDAREA = 0x000200;
 
 	public static final int CIRCLE = 1;
 	public static final int RECTANGLE = 2;
@@ -71,8 +70,6 @@ class ActiveArea extends SceneObject {
 		noCombatArea = false;
 
 		noPetArea = false;
-
-		lockedArea = false;
 
 		areaShape = null;
 
@@ -214,6 +211,11 @@ class ActiveArea extends SceneObject {
 	}
 
 	@read
+	public boolean isLockedArea() {
+		return areaFlags & LOCKEDAREA;
+	}
+
+	@read
 	public boolean isPvpArea() {
 		return pvpArea;
 	}
@@ -241,11 +243,6 @@ class ActiveArea extends SceneObject {
 	@read
 	public boolean isNoPetArea() {
 		return noPetArea;
-	}
-
-	@read
-	public boolean isLockedArea() {
-		return lockedArea;
 	}
 
 	@read
@@ -302,7 +299,11 @@ class ActiveArea extends SceneObject {
 
 	@preLocked
 	public void setLockedArea(boolean val) {
-		lockedArea = val;
+		if (val) {
+			addAreaFlag(LOCKEDAREA);
+		} else {
+			removeAreaFlag(LOCKEDAREA);
+		}
 	}
 
 	@preLocked
@@ -377,4 +378,7 @@ class ActiveArea extends SceneObject {
 	}
 
 	public native void initializeChildObject(SceneObject controllerObject);
+
+	@local
+	public native boolean ejectFromArea(SceneObject object);
 }
