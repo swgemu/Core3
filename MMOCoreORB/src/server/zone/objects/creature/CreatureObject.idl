@@ -193,6 +193,9 @@ class CreatureObject extends TangibleObject {
 	protected transient Time lastCombatActionTime;
 
 	@dereferenced
+	protected transient Time nextAllowedMoveTime;
+
+	@dereferenced
 	protected transient Vector3 lastCombatPosition;
 
 	protected transient string alternateAppearance;
@@ -1412,6 +1415,16 @@ class CreatureObject extends TangibleObject {
 		return cooldownTimerMap.isPast("knockdownRecovery");
 	}
 
+	@preLocked
+	public void setNextAllowedMoveTime(unsigned long time) {
+		nextAllowedMoveTime.updateToCurrentTime();
+		nextAllowedMoveTime.addMiliTime(time);
+	}
+
+	@read
+	public boolean isMovementAllowed() {
+		return nextAllowedMoveTime.isPast();
+	}
 
 	// Updates directional arrows and planet names for group members out of range
 	@dirty

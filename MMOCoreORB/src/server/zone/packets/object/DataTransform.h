@@ -252,6 +252,10 @@ public:
 
 		float positionZ = planetManager->findClosestWorldFloor(transform.getPositionX(), transform.getPositionY() ,transform.getPositionZ() , creO->getSwimHeight(), &intersections, closeObjects);
 
+		if (!creO->isMovementAllowed()) {
+			return updateError(creO, "animationLock", true);
+		}
+
 		if (playerManager->checkSpeedHackFirstTest(creO, transform.getSpeed() , validPosition, 1.1f) != 0) {
 			return updateError(creO, "!checkSpeedHackFirstTest");
 		}

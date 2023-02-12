@@ -315,6 +315,10 @@ public:
 			return updateError(creO, "!worldDistance", true);
 		}
 
+		if (!creO->isMovementAllowed()) {
+			return updateError(creO, "animationLock", true);
+		}
+
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
 		if (playerManager == nullptr) {
