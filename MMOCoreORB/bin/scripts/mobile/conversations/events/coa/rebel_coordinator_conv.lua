@@ -336,18 +336,11 @@ rebelCoordinatorConvoTemplate:addScreen(coa3_init_go_to_princess_l);
 
 coa3_init_complete_l = ConvoScreen:new {
 	id = "coa3_init_complete_l",
-	leftDialog = "@conversation/coa3lcoordinator:s_e2c3d142", -- Good to see you again. Thanks to your efforts we stand a good chance of finding an alternative source of flora for Dead Eye. You're to be commended. I don't have anything else I need from you right now, but you might ask our Tactical Officer at the Combat Guild if he still needs helping tracking down and destroying those warehouses.
+	leftDialog = "@conversation/coa3wcoordinator:s_e2c3d142", -- Good to see you again. Thanks to your efforts we stand a good chance of finding an alternative source of flora for Dead Eye. You're to be commended. I don't have anything else I need from you right now, but you might ask our Tactical Officer at the Combat Guild if he still needs helping tracking down and destroying those warehouses.
 	stopConversation = "true",
 	options = {}
 }
 rebelCoordinatorConvoTemplate:addScreen(coa3_init_complete_l);
-
-
-
-
-
-
-
 
 
 
