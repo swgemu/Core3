@@ -13,8 +13,7 @@
 
 class GamblingRouletteSuiCallback : public SuiCallback {
 public:
-	GamblingRouletteSuiCallback(ZoneServer* server)
-		: SuiCallback(server) {
+	GamblingRouletteSuiCallback(ZoneServer* server) : SuiCallback(server) {
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {

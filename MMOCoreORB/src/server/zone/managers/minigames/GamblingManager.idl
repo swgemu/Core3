@@ -242,8 +242,6 @@ class GamblingManager extends Observer implements Logger {
 		}
 	}
 
-	public native void kickAllPlayersOutOfRange(GamblingTerminal terminal);
-
 	/**
 	 * Get maximum allowed bet for a player.
 	 * This method looks through the already placed bets and calculates the amount of credits remaining for the player until
@@ -418,4 +416,5 @@ class GamblingManager extends Observer implements Logger {
 		return (slotGames.contains(player) || rouletteGames.contains(player));
 	}
 
+	public native void removeGambler(CreatureObject player, int machineType);
 }
