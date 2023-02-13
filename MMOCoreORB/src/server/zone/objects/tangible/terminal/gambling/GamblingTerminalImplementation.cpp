@@ -116,6 +116,7 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	gamblingManager->removeOutOfRangePlayers(_this.getReferenceUnsafeStaticCast());
+
 	switch (machineType) {
 		case SLOTMACHINE: {
 			if (state == SLOTGAMEENDED) {//begin new round
@@ -125,7 +126,7 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 
 				playersWindows.drop(player);
 
-				playersWindows.put(player, gamblingManager->createSlotWindow(player, 0));
+				addPlayerWindow(player, gamblingManager->createSlotWindow(player, 0));
 
 			} else {
 				if (checkJoin(player)) {
@@ -135,7 +136,7 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 
 					gamblingManager->registerPlayer(_this.getReferenceUnsafeStaticCast(), player);
 
-					playersWindows.put(player, gamblingManager->createWindow(_this.getReferenceUnsafeStaticCast(), player));
+					addPlayerWindow(player, gamblingManager->createWindow(_this.getReferenceUnsafeStaticCast(), player));
 
 					statusUpdate(player, JOINTERMINAL);
 
@@ -151,7 +152,7 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 
 				gamblingManager->registerPlayer(_this.getReferenceUnsafeStaticCast(), player);
 
-				playersWindows.put(player, gamblingManager->createWindow(_this.getReferenceUnsafeStaticCast(), player));
+				addPlayerWindow(player, gamblingManager->createWindow(_this.getReferenceUnsafeStaticCast(), player));
 
 				statusUpdate(player, JOINTERMINAL);
 
@@ -171,43 +172,53 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 }
 
 void GamblingTerminalImplementation::closeMenu(CreatureObject* player, bool payout) {
+	if (player == nullptr)
+		return;
+
 	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
 	uint32 boxID = playersWindows.get(player);
 
 	if (ghost->hasSuiBox(boxID)) {
-
 		ManagedReference<SuiSlotMachineBox*> box = ghost->getSuiBox(boxID).castTo<SuiSlotMachineBox*>();
 
-		if (payout) {
+		if (payout && box != nullptr) {
 			uint32 payoutBoxID = box->getPayoutBoxID();
 
-			ManagedReference<SuiBox*> sui = ghost->getSuiBox(payoutBoxID);
-			if (sui != nullptr) {
-				player->sendMessage(sui->generateCloseMessage());
-				ghost->removeSuiBox(payoutBoxID);
+			if (payoutBoxID > 0) {
+				ghost->removeSuiBox(payoutBoxID, true);
 			}
 		}
 
-		if (box != nullptr)
-			player->sendMessage(box->generateCloseMessage());
-
-		ghost->removeSuiBox(boxID);
+		ghost->removeSuiBox(boxID, true);
 	}
 }
 
 void GamblingTerminalImplementation::closeAllMenus() {
+	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
+
 	switch (machineType) {
 		case SLOTMACHINE: {
-
-			if (playersWindows.size() != 0)
+			if (playersWindows.size() > 0)
 				closeMenu(playersWindows.elementAt(0).getKey(),true);
 
 			break;
 		}
 		case ROULETTEMACHINE: {
+			for (int i = 0; i < playersWindows.size(); i++) {
+				CreatureObject* player = playersWindows.elementAt(i).getKey();
 
-			for (int i = 0; i < playersWindows.size(); ++i) {
-				closeMenu(playersWindows.elementAt(i).getKey(),false);
+				if (player == nullptr)
+					continue;
+
+				closeMenu(player, false);
+
+				// drop gambler here
+				if (gamblingManager != nullptr)
+					gamblingManager->removeGambler(player, machineType);
 			}
 
 			break;
@@ -221,23 +232,20 @@ void GamblingTerminalImplementation::leaveTerminal(CreatureObject* player) {
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
 	switch (machineType) {
 		case SLOTMACHINE: {
-
 			closeMenu(player, true);
 
 			statusUpdate(player, LEAVETERMINAL);
 
-			playersWindows.drop(player);
+			removePlayer(player);
 			gamblingManager->stopGame(_this.getReferenceUnsafeStaticCast(), true);
 
 			break;
 		}
 		case ROULETTEMACHINE: {
-
 			closeMenu(player, false);
 
 			statusUpdate(player, LEAVETERMINAL);
-
-			playersWindows.drop(player);
+			removePlayer(player);
 
 			winnings.drop(player);
 

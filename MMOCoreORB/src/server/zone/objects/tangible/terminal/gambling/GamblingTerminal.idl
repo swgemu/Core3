@@ -25,7 +25,7 @@ class GamblingTerminal extends Terminal {
 
 	// Used to store/close SUI windows
 	@dereferenced
-	protected VectorMap<CreatureObject, unsigned int> playersWindows;
+	protected transient VectorMap<CreatureObject, unsigned int> playersWindows;
 
 	protected transient GamblingEvent event;
 
@@ -294,6 +294,16 @@ class GamblingTerminal extends Terminal {
 		} else {
 			return false;
 		}
+	}
+
+	@dirty
+	public void removePlayer(CreatureObject player) {
+		playersWindows.drop(player);
+	}
+
+	@dirty
+	public void addPlayerWindow(CreatureObject player, unsigned int boxID) {
+		playersWindows.put(player, boxID);
 	}
 
 	/**
