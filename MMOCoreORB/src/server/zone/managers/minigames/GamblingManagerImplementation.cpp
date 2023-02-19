@@ -110,9 +110,7 @@ uint32 GamblingManagerImplementation::createSlotWindow(CreatureObject* player, u
 	box->setForceCloseDistance(32.f);
 	box->setCallback(new GamblingSlotSuiCallback(server));
 
-
 	player->getPlayerObject()->addSuiBox(box);
-
 	player->sendMessage(box->generateMessage());
 
 	return box->getBoxID();
@@ -213,15 +211,18 @@ uint32 GamblingManagerImplementation::createPayoutWindow(CreatureObject* player)
 }
 
 void GamblingManagerImplementation::refreshRouletteMenu(CreatureObject* player) {
+	if (player == nullptr)
+		return;
 
-	if (player != nullptr) {
+	ManagedReference<GamblingTerminal*> terminal = rouletteGames.get(player);
 
-		ManagedReference<GamblingTerminal*> terminal = rouletteGames.get(player);
-		terminal->closeMenu(player, false);
+	if (terminal == nullptr)
+		return;
 
-		terminal->getPlayersWindows()->drop(player);
-		terminal->getPlayersWindows()->put(player, createRouletteWindow(player));
-	}
+	terminal->closeMenu(player, false);
+
+	terminal->removePlayer(player);
+	terminal->addPlayerWindow(player, createRouletteWindow(player));
 }
 
 void GamblingManagerImplementation::refreshSlotMenu(CreatureObject* player, GamblingTerminal* terminal) {
@@ -230,8 +231,8 @@ void GamblingManagerImplementation::refreshSlotMenu(CreatureObject* player, Gamb
 
 	terminal->closeMenu(player, false);
 
-	terminal->getPlayersWindows()->drop(player);
-	terminal->getPlayersWindows()->put(player, createSlotWindow(player, 0));
+	terminal->removePlayer(player);
+	terminal->addPlayerWindow(player, createRouletteWindow(player));
 }
 
 void GamblingManagerImplementation::removeOutOfRangePlayers(GamblingTerminal* terminal) {
@@ -240,7 +241,9 @@ void GamblingManagerImplementation::removeOutOfRangePlayers(GamblingTerminal* te
 	}
 
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
+
 	auto games = slotGames;
+
 	switch (terminal->getMachineType()) {
 		case GamblingTerminal::SLOTMACHINE: {
 			games = slotGames;
@@ -345,9 +348,9 @@ void GamblingManagerImplementation::bet(CreatureObject* player, int amount, int 
 	if (player == nullptr)
 		return;
 
-	if (machineType == 0) {
+	if (machineType == GamblingTerminal::ROULETTEMACHINE) {
 		bet(rouletteGames.get(player), player, amount, target);
-	} else if (machineType == 1) {
+	} else if (machineType == GamblingTerminal::SLOTMACHINE) {
 		bet(slotGames.get(player), player, amount, target);
 	}
 }
@@ -359,7 +362,6 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObje
 	switch (terminal->getMachineType()) {
 		case GamblingTerminal::SLOTMACHINE: {
 			if (amount > terminal->getMaxBet()) {
-
 				StringIdChatParameter body("gambling/default_interface","bet_above_max");
 				body.setDI(terminal->getMaxBet());
 
@@ -413,37 +415,36 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObje
 		}
 		case GamblingTerminal::ROULETTEMACHINE: {
 			if (amount > getMaximumAllowedBet(terminal, player, target)) {
-
 				StringIdChatParameter body("gambling/default_interface","bet_above_max");
 				body.setDI(terminal->getMaxBet());
 
 				player->sendSystemMessage(body);
-
 			} else if (player->getCashCredits() < amount) {
-
 				player->sendSystemMessage("@gambling/default_interface:player_broke");
 
 			} else if (!player->isInRange(terminal, 25.0)) {
-
 				player->sendSystemMessage("@gambling/default_interface:bet_failed_distance");
 
 			} else if (amount < terminal->getMinBet()) {
-
 				StringIdChatParameter body("gambling/default_interface","bet_below_min");
 				body.setDI(terminal->getMinBet());
 
 				player->sendSystemMessage(body);
-
 			} else {
 				Locker _locker(terminal);
+
 				{
 					TransactionLog trx(player, TrxCode::GAMBLINGROULETTE, amount, true);
 					player->subtractCashCredits(amount);
 				}
+
 				terminal->getBets()->add(new GamblingBet(player, amount, roulette.get(target)));
+
 				StringIdChatParameter textPlayer("gambling/default_interface","prose_bet_placed");
 				textPlayer.setDI(amount);
 				player->sendSystemMessage(textPlayer);
+
+				refreshRouletteMenu(player);
 			}
 			break;
 		}
@@ -506,7 +507,6 @@ void GamblingManagerImplementation::createEvent(GamblingTerminal* terminal, int 
 }
 
 void GamblingManagerImplementation::continueGame(GamblingTerminal* terminal) {
-
 	if (terminal != nullptr) {
 		Locker _locker(terminal);
 
@@ -520,13 +520,10 @@ void GamblingManagerImplementation::continueGame(GamblingTerminal* terminal) {
 						terminal->joinTerminal(terminal->getPlayersWindows()->elementAt(0).getKey());
 
 					} else {
-
 						if (terminal->getState() == GamblingTerminal::END) {
-
 							stopGame(terminal, false);
 
 						} else {
-
 							terminal->setState(terminal->getState() + 1);
 
 							terminal->statusUpdate(terminal->getState());
@@ -563,16 +560,16 @@ void GamblingManagerImplementation::stopGame(GamblingTerminal* terminal, bool ca
 	if (terminal != nullptr) {
 		Locker _locker(terminal);
 
-		switch (terminal->getMachineType()) {
-			case GamblingTerminal::SLOTMACHINE: {
+		int machineType = terminal->getMachineType();
 
+		switch (machineType) {
+			case GamblingTerminal::SLOTMACHINE: {
 				if (!cancel) {
 					calculateOutcome(terminal);
 
 					terminal->closeAllMenus();
 
 					terminal->setState(GamblingTerminal::SLOTGAMEENDED);
-
 					terminal->statusUpdate(terminal->getState());
 
 					terminal->getBets()->removeAll();
@@ -591,16 +588,13 @@ void GamblingManagerImplementation::stopGame(GamblingTerminal* terminal, bool ca
 				break;
 			}
 			case GamblingTerminal::ROULETTEMACHINE: {
-
 				if (!cancel) {
-
 					calculateOutcome(terminal);
 
 					terminal->closeAllMenus();
 
 					terminal->reset();
 				} else {
-
 					terminal->closeAllMenus();
 
 					if (terminal->getEvent() != nullptr) {
@@ -612,30 +606,17 @@ void GamblingManagerImplementation::stopGame(GamblingTerminal* terminal, bool ca
 				break;
 			}
 		}
-		kickAllPlayersOutOfRange(terminal);
 
+		removeOutOfRangePlayers(terminal);
 	}
 }
 
-void GamblingManagerImplementation::kickAllPlayersOutOfRange(GamblingTerminal* terminal) {
-	for (int i = 0; i < terminal->getPlayersWindows()->size(); i++) {
-		VectorMapEntry<ManagedReference<CreatureObject*>, unsigned int> item = terminal->getPlayersWindows()->elementAt(i);
-		auto player = item.getKey();
-		if (player != nullptr && !player->isInRange(terminal, 20.0f)) {
-			terminal->leaveTerminal(player);
-		}
-	}
-}
 
 void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal) {
-
-
 	if (terminal != nullptr) {
-
 		Locker locker(terminal);
 
 		switch (terminal->getMachineType()) {
-
 			case GamblingTerminal::SLOTMACHINE: {
 
 				GamblingBet* bet = terminal->getBets()->get(0);
@@ -811,13 +792,11 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 				}
 
 				for (int i = 0; i < winnings->size(); ++i) { // send money and messages to players
-
 					if (winnings->get(i) == 0) {
 
 						winnings->elementAt(i).getKey()->sendSystemMessage("You don't win anything");
 
 					} else {
-
 						CreatureObject* player = winnings->elementAt(i).getKey();
 
 						if (player != nullptr) {
@@ -850,9 +829,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 }
 
 void GamblingManagerImplementation::leaveTerminal(CreatureObject* player, int machineType) {
-
 	if (player != nullptr) {
-
 		switch (machineType) {
 			case GamblingTerminal::SLOTMACHINE: {
 
@@ -871,7 +848,6 @@ void GamblingManagerImplementation::leaveTerminal(CreatureObject* player, int ma
 				break;
 			}
 			case GamblingTerminal::ROULETTEMACHINE: {
-
 				ManagedReference<GamblingTerminal*> terminal = rouletteGames.get(player);
 
 				if (terminal != nullptr) {
@@ -886,7 +862,15 @@ void GamblingManagerImplementation::leaveTerminal(CreatureObject* player, int ma
 				break;
 			}
 		}
-
 	}
+}
 
+void GamblingManagerImplementation::removeGambler(CreatureObject* player, int machineType) {
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
+
+	if (machineType ==  GamblingTerminal::SLOTMACHINE) {
+		slotGames.drop(player);
+	} else if (machineType ==  GamblingTerminal::ROULETTEMACHINE) {
+		rouletteGames.drop(player);
+	}
 }

@@ -78,7 +78,7 @@ TatooineWayfarScreenPlay = CityScreenPlay:new {
 		{"info_broker",60,4.7,1.0,4.6,-148,1499418, "sad"},
 		{"entertainer",60,6.82411,0.40827,-8.7422,0,1499419, "conversation"},
 		{"brawler",300,6.82411,0.408269,-7.6422,180,1499419, "angry"},
-		{"commoner_technician",60,5.72411,0.408269,-7.6422,135.001,1499419, "conversation"},
+		{"commoner_technician",300,5.72411,0.408269,-7.6422,135.001,1499419, "conversation"},
 		{"trainer_medic",0,-8.4035,1.00421,8.19643,110,1499420, ""},
 		{"brawler",300,-7.85116,-3.96617,6.43429,272.53,1499424, ""},
 		{"devaronian_male",60,-2.4,0.4,-10.1,176,1499419, "neutral"},

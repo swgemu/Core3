@@ -58,7 +58,7 @@ idleCrackdown = {
 	{id="4166375638",	name="CheckHasPatrol",	pid="3784279889"},
 	{id="1983393494",	name="If",	pid="3251981835"},
 	{id="4120748463",	name="CheckIsStationary",	pid="1983393494"},
-	{id="2865816838",	name="GeneratePatrol",	pid="3251981835",	args={distFromHome=15.0, numPoints=5}},
+	{id="2865816838",	name="GeneratePatrol",	pid="3251981835",	args={distFromHome=30.0, numPoints=5}},
 	{id="1025565676",	name="Sequence",	pid="341662921"},
 	{id="3326622834",	name="Selector",	pid="1025565676"},
 	{id="3071138585",	name="Sequence",	pid="3326622834"},

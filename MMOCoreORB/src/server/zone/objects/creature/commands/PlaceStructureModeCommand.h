@@ -13,9 +13,7 @@
 class PlaceStructureModeCommand : public QueueCommand {
 public:
 
-	PlaceStructureModeCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	PlaceStructureModeCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -34,7 +32,6 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
-
 
 		if (creature->getParent() != nullptr) {
 			creature->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.

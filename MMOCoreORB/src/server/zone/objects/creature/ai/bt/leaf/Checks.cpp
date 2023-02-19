@@ -748,3 +748,9 @@ template<> bool CheckHasMeleeWeapon::check(AiAgent* agent) const {
 
 	return agent->hasMeleeWeapon();
 }
+
+template<> bool CheckIsSwimming::check(AiAgent* agent) const {
+	Locker lock(agent);
+
+	return agent->isSwimming();
+}

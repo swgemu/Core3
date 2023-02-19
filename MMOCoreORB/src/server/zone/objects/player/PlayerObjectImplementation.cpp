@@ -663,7 +663,7 @@ void PlayerObjectImplementation::awardBadge(uint32 badge) {
 
 int PlayerObjectImplementation::addExperience(TransactionLog& trx, const String& xpType, int xp, bool notifyClient) {
 	if (xp == 0) {
-		trx.setExperience(xpType, 0, experienceList.contains(xpType) ? experienceList.get(xpType) : 0);
+		trx.discard();
 		return 0;
 	}
 

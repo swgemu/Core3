@@ -15,9 +15,9 @@ awareEscort = {
 	{id="1309909222",	name="Sequence",	pid="4080409789"},
 	{id="29650036",	name="Selector",	pid="1309909222"},
 	{id="811268585",	name="If",	pid="29650036"},
-	{id="4022376893",	name="CheckMovementState",	pid="811268585",	args={condition=OBLIVIOUS}},
+	{id="4022376893",	name="CheckMovementState",	pid="811268585",	args={condition=WATCHING}},
 	{id="1679770289",	name="If",	pid="29650036"},
-	{id="2862541032",	name="CheckMovementState",	pid="1679770289",	args={condition=OBLIVIOUS}},
+	{id="2862541032",	name="CheckMovementState",	pid="1679770289",	args={condition=STALKING}},
 	{id="3188946710",	name="Selector",	pid="1309909222"},
 	{id="1405127172",	name="Sequence",	pid="3188946710"},
 	{id="3897217871",	name="If",	pid="1405127172"},
@@ -43,14 +43,12 @@ moveEscort = {
 addAiTemplate("moveEscort", moveEscort)
 
 runEscort = {
-	{id="2928311771",	name="Selector",	pid="none"},
-	{id="3097333621",	name="Sequence",	pid="2928311771"},
+	{id="3097333621",	name="Sequence",	pid="none"},
 	{id="911353460",	name="If",	pid="3097333621"},
 	{id="1225716325",	name="CheckIsEscort",	pid="911353460"},
 	{id="2773567267",	name="SetMovementState",	pid="3097333621",	args={state=FOLLOWING}},
 	{id="3216658477",	name="WriteBlackboard",	pid="3097333621",	args={key="moveMode", val=RUN}},
-	{id="3054819924",	name="TreeSocket",	pid="3097333621",	args={slot=MOVE}},
-	{id="599779045",	name="Wait",	pid="2928311771",	args={duration=-1.0}}}
+	{id="3054819924",	name="TreeSocket",	pid="3097333621",	args={slot=MOVE}}}
 addAiTemplate("runEscort", runEscort)
 
 walkEscort = {

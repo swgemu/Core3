@@ -91,7 +91,7 @@ bool FishingManagerImplementation::loadConfigData() {
 
 			if (lengthsByFish.isValidTable()) {
 				String fishSpecies = lengthsByFish.getStringAt(1);
-				int length = lengthsByFish.getIntAt(2);
+				float length = lengthsByFish.getFloatAt(2);
 
 				fishLengths.put(fishSpecies, length);
 			}
@@ -550,26 +550,19 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 				String time = getTime();
 				String name = player->getFirstName() + " " + player->getLastName();
 
-				ManagedReference<FishingPoleObject*> pole = getPole(player);
+				// Determine fish length
+				float length = fishLengths.get(fishName);
+				float totalLength = length;
+				float harvestingMod = player->getSkillMod("creature_harvesting");
+				float randBonus = System::frandom(length * 0.5f) - System::frandom(length * 0.5f);
 
-				int quality = 1;
-				int poleQuality = pole->getQuality();
+				totalLength += randBonus;
 
-				if (pole != nullptr) {
-					if (poleQuality != 0)
-						quality += (int)ceil((float)poleQuality / 20);
-				}
-
-				int factor = 1;
-				int harvestingMod = player->getSkillMod("creature_harvesting");
-
+				// Bonus for creature harvesting mod
 				if (harvestingMod > 0) {
-					factor = harvestingMod / 100;
+					harvestingMod = (System::frandom(harvestingMod) / 100.0f) + 1.f;
+					totalLength *= harvestingMod;
 				}
-
-				float length = fish * factor;
-
-				length = System::frandom(length) + quality;
 
 				Zone* zone = player->getZone();
 
@@ -580,14 +573,9 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 
 				String zoneName = zone->getZoneName();
 
-				lootFishObject->setAttributes(name, zoneName, time, length / 100);
+				lootFishObject->setAttributes(name, zoneName, time, (totalLength / 100.f));
 
-				int xp;
-
-				if (fish == 1)
-					xp = length * 5;
-				else
-					xp = length * 2;
+				int xp = (totalLength / length) * 90;
 
 				ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 
@@ -602,7 +590,6 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 					if (fishingPlanet == zoneName) {
 						color = fishColors.elementAt(j).getValue();
 					}
-
 				}
 
 				lootFishObject->setCustomizationVariable("/private/index_color_1", color);
@@ -631,9 +618,9 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 					}
 				}
 
-				String resourceString = zoneName;
-				resourceString = "seafood_fish_" + resourceString;
-				int amount = System::random(50) + factor;
+				String resourceString = "seafood_fish_" + zoneName;
+				int amount = harvestingMod * 50;
+
 				ManagedReference<ResourceManager*> resourceManager = zoneServer->getResourceManager();
 				ManagedReference<SceneObject*> resource = cast<SceneObject*>(resourceManager->harvestResource(player, resourceString, amount));
 

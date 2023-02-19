@@ -61,6 +61,23 @@ public:
 		addFloatUpdate(0x0C, creo->getWaterModPercent());
 	}
 
+	void updateSpeedAndAccelerationMods(bool sendSelf = true) {
+		float aScale = creo->getAccelerationMultiplierMod();
+		float mScale = creo->getSpeedMultiplierMod();
+		float tScale = creo->getTurnScale();
+
+		if (aScale == 0.f && mScale == 0.f) {
+			aScale = 0.1f;
+		}
+
+		if (mScale == 0.f && !sendSelf) {
+			mScale = 0.1f;
+		}
+
+		addFloatUpdate(0x01, aScale); // accelerationMultiplierMod
+		addFloatUpdate(0x05, mScale); // speedMultiplierMod
+		addFloatUpdate(0x0A, tScale); // turnScale
+	}
 };
 
 #endif /*CREATUREOBJECTDELTAMESSAGE4_H_*/

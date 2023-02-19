@@ -47,6 +47,9 @@ function heroOfTatMotherConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 		AiAgent(pNpc):setFollowObject(pPlayer)
 		AiAgent(pNpc):setMovementState(AI_FOLLOWING)
 
+		AiAgent(pDaughter):setAITemplate()
+		AiAgent(pNpc):setAITemplate()
+
 		writeData("hero_of_tat:altruismEscortStatus", 1)
 		writeData("hero_of_tat:altruismEscorterID", SceneObject(pPlayer):getObjectID())
 		createEvent(2000, "HeroOfTatooineScreenPlay", "escortRangeCheckEvent", pPlayer, "")

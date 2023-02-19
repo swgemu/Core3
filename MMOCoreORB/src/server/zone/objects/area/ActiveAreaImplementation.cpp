@@ -11,6 +11,7 @@
 #include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/managers/creature/SpawnAreaMap.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 bool ActiveAreaImplementation::containsPoint(float px, float py, uint64 cellid) const {
 	if (cellObjectID != 0 && cellObjectID != cellid)
@@ -54,6 +55,10 @@ void ActiveAreaImplementation::enqueueExitEvent(SceneObject* obj) {
 void ActiveAreaImplementation::notifyEnter(SceneObject* obj) {
 	if (cellObjectID == 0 || cellObjectID == obj->getParentID())
 		notifyObservers(ObserverEventType::ENTEREDAREA, obj);
+
+	if (isLockedArea() && ejectFromArea(obj)) {
+		return;
+	}
 
 	if (obj->isPlayerCreature()) {
 		if (attachedScenery.size() > 0) {
@@ -149,7 +154,9 @@ void ActiveAreaImplementation::sendDebugMessage(SceneObject* object, bool entry)
 	if (shouldBuildNavmesh())
 		regionTypes << "NAVAREA ";
 	if (isNamedRegion())
-		regionTypes << "NAMEDREGION";
+		regionTypes << "NAMEDREGION ";
+	if (isLockedArea())
+		regionTypes << "LOCKEDAREA";
 
 
 	debugMsg << " Region Types: (" << regionTypes.toString() << ")";
@@ -229,4 +236,45 @@ Vector4 ActiveAreaImplementation::getRectangularDimensions() const {
 	}
 
 	return dimsensions;
+}
+
+bool ActiveAreaImplementation::ejectFromArea(SceneObject* object) {
+	if (object == nullptr || !object->isCreatureObject()) {
+		return false;
+	}
+
+	CreatureObject* creature = object->asCreatureObject();
+
+	if (creature == nullptr)
+		return false;
+
+	try {
+		if (creature->isPlayerCreature()) {
+			PlayerObject* ghost = creature->getPlayerObject();
+
+			if (ghost != nullptr && ghost->isPrivileged()) {
+				return false;
+			}
+		}
+
+		float x = creature->getPositionX();
+		float y = creature->getPositionY();
+
+		float diffX = x - getPositionX();
+		float diffY = y - getPositionY();
+
+		float angle = atan2(diffY, diffX);
+		float rad = getRadius() + 20.f;
+
+		float newPosX = getPositionX() + (cos(angle) * rad);
+		float newPosY = getPositionY() + (sin(angle) * rad);
+
+		creature->teleport(newPosX, creature->getPositionZ(), newPosY, 0);
+		creature->sendSystemMessage("You are not permitted to enter this area.");
+	} catch (Exception& e) {
+		e.printStackTrace();
+		return false;
+	}
+
+	return true;
 }

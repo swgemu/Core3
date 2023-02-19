@@ -17,13 +17,13 @@ fishColors = {
 }
 
 fishLengths = {
-	{"blackfish", 25},
-	{"blowfish", 15},
-	{"bluefish", 30},
-	{"faa", 30},
-	{"laa", 30},
-	{"ray", 35},
-	{"striped", 40},
+	{"blackfish", 25.0},
+	{"blowfish", 15.0},
+	{"bluefish", 30.0},
+	{"faa", 30.0},
+	{"laa", 30.0},
+	{"ray", 35.0},
+	{"striped", 40.0},
  }
 
 fishingActions = {"None", "Tug Up", "Tug Right", "Tug Left", "Small Reel", "Stop Fishing"}

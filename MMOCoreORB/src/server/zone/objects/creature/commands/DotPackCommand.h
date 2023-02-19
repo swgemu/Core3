@@ -43,9 +43,9 @@ public:
 			type << "disease";
 		}
 
-		if (range < 20.0f) {
+		if (range < 10.0f) {
 			crc << "throw_grenade_near_" << type;
-		} else if (range >= 20.0f && range < 40.f) {
+		} else if (range >= 10.0f && range < 25.f) {
 			crc << "throw_grenade_medium_" << type;
 		} else {
 			crc << "throw_grenade_far_" << type;
@@ -456,6 +456,9 @@ public:
 
 		dotPack->decreaseUseCount();
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
+
+		// Ensure the player does not break the throw animation
+		creature->setNextAllowedMoveTime(4 * 1000);
 
 		return SUCCESS;
 	}

@@ -206,7 +206,7 @@ CorelliaTyrenaScreenPlay = CityScreenPlay:new {
 		{"info_broker",300,-1.85381,0.639422,55.3013,360.011,1935687, "conversation"},
 
 		--Med Center
-		{"brawler",60,24.4668,0.26,4.56238,180.004,1935831, "angry"},
+		{"brawler",300,24.4668,0.26,4.56238,180.004,1935831, "angry"},
 		{"entertainer",60,24.4668,0.26,3.56238,0,1935831, "worried"},
 		{"trainer_doctor", 0,21,0.26,-5,0,1935831, ""},
 		{"trainer_medic", 0,13.8906,0.26,3.8275,183,1935831, ""},

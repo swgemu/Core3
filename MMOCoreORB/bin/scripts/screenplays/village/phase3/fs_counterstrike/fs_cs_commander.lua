@@ -107,6 +107,8 @@ function FsCsCommander:setPlayerAsEscorter(pCommander, pPlayer)
 
 	AiAgent(pCommander):setFollowObject(pPlayer)
 	AiAgent(pCommander):setMovementState(AI_FOLLOWING)
+
+	AiAgent(pCommander):setAITemplate()
 end
 
 function FsCsCommander:createCommander(pTheater)

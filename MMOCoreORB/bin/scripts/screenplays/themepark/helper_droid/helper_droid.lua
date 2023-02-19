@@ -164,6 +164,11 @@ function HelperDroid:greetingCallback(pPlayer, pSui, eventIndex, args)
 	local argNum = #playerProfs - tonumber(args)
 	local playerProf = playerProfs[argNum]
 
+	if (playerProf == nil) then
+		deleteData(playerID .. ":HelperDroidID:")
+		return;
+	end
+
 	deleteData(playerID .. ":HelperDroidID:")
 	deleteStringVectorSharedMemory(playerID .. ":HelperDroid:playerProfessions:")
 

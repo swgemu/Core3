@@ -96,6 +96,7 @@ corellia_regions = {
 	{"old_battlefield_nobuild_cor1", 263, 4620, {CIRCLE, 256}, NOBUILDZONEAREA},
 	{"old_battlefield_nobuild_cor2", -1870, -1223, {CIRCLE, 192}, NOBUILDZONEAREA},
 	{"old_battlefield_nobuild_cor3", 3785, -4037, {CIRCLE, 192}, NOBUILDZONEAREA},
+	{"coronet_square_walls", -184.2, -4759.9, {RECTANGLE, -168.1, -4743.8}, LOCKEDAREA},
 
 	-- Cities
 	{"@corellia_region_names:bela_vistal", 6788, -5654, {CIRCLE, 480}, CITY + NOSPAWNAREA},

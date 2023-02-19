@@ -1055,8 +1055,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		return 0;
 
 	int currentValue = hamList.get(damageType);
-
-	int newValue = currentValue - (int) damage;
+	int newValue = currentValue - damage;
 
 	if (!destroy && newValue <= 0)
 		newValue = 1;
@@ -1674,14 +1673,21 @@ float CreatureObjectImplementation::getAccelerationModifier() const {
 }
 
 void CreatureObjectImplementation::sendSpeedAndAccelerationMods(SceneObject* player) {
-	auto dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+	bool sendSelf = player == asSceneObject() || player->isASubChildOf(asSceneObject());
 
-	dcreo4->updateAccelerationMultiplierMod();
-	dcreo4->updateSpeedMultiplierMod();
-	dcreo4->updateTurnScale();
+	auto dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+	dcreo4->updateSpeedAndAccelerationMods(sendSelf);
 	dcreo4->close();
 
 	player->sendMessage(dcreo4);
+}
+
+void CreatureObjectImplementation::broadcastSpeedAndAccelerationMods(bool sendSelf) {
+	auto dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+	dcreo4->updateSpeedAndAccelerationMods(sendSelf);
+	dcreo4->close();
+
+	broadcastMessage(dcreo4, sendSelf);
 }
 
 void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
@@ -1695,51 +1701,41 @@ void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
 	float mScale = creaturePosture->getMovementScale(posture);
 	float tScale = creaturePosture->getTurnScale(posture);
 
-	if (isPlayerCreature()) {
-		auto dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
-		int updateSize = 0;
-
+	if (aScale != 0.f) {
 		aScale *= getAccelerationModifier();
+	}
+
+	if (mScale != 0.f) {
 		mScale *= getSpeedModifier();
+	}
 
-		if (aScale == 0.f && mScale == 0.f) {
-			aScale = 0.1f;
-		}
+	int updateSize = 0;
 
-		if (accelerationMultiplierMod != aScale) {
-			setAccelerationMultiplierMod(aScale, false, false);
-			dcreo4->updateAccelerationMultiplierMod();
-			updateSize++;
-		}
+	if (accelerationMultiplierMod != aScale) {
+		setAccelerationMultiplierMod(aScale, false, false);
+		updateSize++;
+	}
 
-		if (speedMultiplierMod != mScale) {
-			setSpeedMultiplierMod(mScale, false, false);
-			dcreo4->updateSpeedMultiplierMod();
-			updateSize++;
-		}
+	if (speedMultiplierMod != mScale) {
+		setSpeedMultiplierMod(mScale, false, false);
+		updateSize++;
+	}
 
-		if (turnScale != tScale) {
-			setTurnScale(tScale, false);
-			dcreo4->updateTurnScale();
-			updateSize++;
-		}
-
-		if (updateSize != 0) {
-			dcreo4->close();
-			broadcastMessage(dcreo4, true);
-		} else {
-			delete dcreo4;
-			dcreo4 = nullptr;
-		}
-	} else {
-		setAccelerationMultiplierMod(aScale, false, true);
-		setSpeedMultiplierMod(mScale, false, true);
+	if (turnScale != tScale) {
 		setTurnScale(tScale, false);
+		updateSize++;
+	}
+
+	bool notifyClient = isPlayerCreature();
+
+	if (notifyClient && updateSize != 0) {
+		broadcastSpeedAndAccelerationMods(false);
+		sendSpeedAndAccelerationMods(asSceneObject());
 	}
 
 	// Terrain Negotiation.
-	updateSlopeMods(true);
-	updateWaterMod(true);
+	updateSlopeMods(notifyClient);
+	updateWaterMod(notifyClient);
 }
 
 float CreatureObjectImplementation::calculateSpeed() {

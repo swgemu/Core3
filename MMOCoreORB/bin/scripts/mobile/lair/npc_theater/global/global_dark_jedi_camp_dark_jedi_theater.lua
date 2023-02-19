@@ -1,5 +1,5 @@
 global_dark_jedi_camp_dark_jedi_theater = Lair:new {
-	mobiles = {{"dark_jedi_knight",1}},
+	mobiles = {{"dark_jedi_knight",1}, {"dark_jedi_master",1}},
 	spawnLimit = 3,
 	buildingsVeryEasy = {"object/building/poi/dathomir_nightsister_small1.iff","object/building/poi/dathomir_nightsister_small2.iff","object/building/poi/dathomir_nightsister_small3.iff"},
 	buildingsEasy = {"object/building/poi/dathomir_nightsister_small1.iff","object/building/poi/dathomir_nightsister_small2.iff","object/building/poi/dathomir_nightsister_small3.iff"},

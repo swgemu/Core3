@@ -206,7 +206,7 @@ idleDefault = {
 	{id="1384587681",	name="CheckMovementState",	pid="3807314026",	args={condition=PATHING_HOME}},
 	{id="3483017378",	name="If",	pid="4072235030"},
 	{id="776089883",	name="CheckOutdoors",	pid="3483017378"},
-	{id="1547268873",	name="GeneratePatrol",	pid="4072235030",	args={distFromHome=15.0, numPoints=5}}}
+	{id="1547268873",	name="GeneratePatrol",	pid="4072235030",	args={distFromHome=30.0, numPoints=5}}}
 addAiTemplate("idleDefault", idleDefault)
 
 killDefault = {

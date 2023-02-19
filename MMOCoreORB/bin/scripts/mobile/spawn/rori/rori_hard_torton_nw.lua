@@ -1,0 +1,78 @@
+rori_hard_torton_nw = {
+	lairSpawns = {
+		{
+			lairTemplateName = "rori_ravenous_torton_lair_neutral_large",
+			spawnLimit = -1,
+			minDifficulty = 52,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 55,
+			size = 25,
+		},
+		{
+			lairTemplateName = "rori_ravenous_torton_pack_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 52,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 55,
+			size = 25,
+		},
+		{
+			lairTemplateName = "rori_shallow_torton_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 52,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 55,
+			size = 25,
+		},
+		{
+			lairTemplateName = "rori_shallow_torton_pack_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 52,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 55,
+			size = 25,
+		},
+		{
+			lairTemplateName = "rori_tattered_torton_lair_neutral_large",
+			spawnLimit = -1,
+			minDifficulty = 52,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 55,
+			size = 25,
+		},
+		{
+			lairTemplateName = "rori_tattered_torton_pack_neutral_large",
+			spawnLimit = -1,
+			minDifficulty = 52,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 55,
+			size = 25,
+		},
+		{
+			lairTemplateName = "rori_torton_lair_neutral_large",
+			spawnLimit = -1,
+			minDifficulty = 52,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 55,
+			size = 25,
+		},
+		{
+			lairTemplateName = "rori_torton_pack_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 52,
+			maxDifficulty = 60,
+			numberToSpawn = 15,
+			weighting = 55,
+			size = 25,
+		},
+	}
+}
+
+addSpawnGroup("rori_hard_torton_nw", rori_hard_torton_nw);

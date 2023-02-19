@@ -208,5 +208,5 @@ dathomir_regions = {
 
 	--{"@dathomir_region_names:forest_5", -7999, -7999, {RECTANGLE, 7999, 7999}, SPAWNAREA, {"dathomir_world"}, 256},
 
-	{"@dathomir_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"dathomir_world", "global_hard"}, 2048}
+	{"@dathomir_region_names:world_spawner", 0, 0, {RECTANGLE, 0, 0}, SPAWNAREA + WORLDSPAWNAREA, {"dathomir_world"}, 2048}
 }

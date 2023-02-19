@@ -40,11 +40,11 @@ function kidnappedNobleConvoHandler:doRunAway(pCreature)
 
 	AiAgent(pCreature):addCreatureFlag(AI_NOAIAGGRO)
 	AiAgent(pCreature):addCreatureFlag(AI_FOLLOW)
-	AiAgent(pCreature):setAITemplate() -- Don't move unless patrol point is added to list
+
 	AiAgent(pCreature):setMovementState(AI_PATROLLING)
-	AiAgent(pCreature):stopWaiting()
+	AiAgent(pCreature):setAITemplate()
+
 	AiAgent(pCreature):setNextPosition(xPos, zPos, yPos, 0)
-	AiAgent(pCreature):executeBehavior()
 
 	createEvent(30000, "kidnappedNobleConvoHandler", "destroyNoble", pCreature, "")
 end
