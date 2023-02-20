@@ -53,11 +53,12 @@ void PlanetManagerImplementation::initialize() {
 
 	planetTravelPointList->setZoneName(zone->getZoneName());
 
+	// Load Planet Regions
+	loadRegions();
+
 	loadLuaConfig();
 	loadTravelFares();
 
-	// Load Planet Regions
-	loadRegions();
 	buildRegionNavAreas();
 	buildCityNavMeshes();
 
