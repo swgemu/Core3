@@ -3672,12 +3672,18 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 
 	AiAgent* tarAgent = nullptr;
 
-	if (targetIsAgent)
+	if (targetIsAgent) {
 		tarAgent = target->asAiAgent();
 
-	if (isCarnivore() && targetIsAgent) {
-		if (tarAgent != nullptr && tarAgent->isHerbivore())
-			return true;
+		if (tarAgent != nullptr) {
+			if (isCarnivore() && tarAgent->isHerbivore())
+				return true;
+
+			uint32 socialGroup = getSocialGroup().toLowerCase().hashCode();
+
+			if (socialGroup == STRING_HASHCODE("poacher") && tarAgent->isMonster())
+				return true;
+		}
 	}
 
 	// Get this agents faction string agents faction string (which could include imp/reb)
