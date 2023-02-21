@@ -2817,6 +2817,15 @@ int AiAgentImplementation::setDestination() {
 			break;
 		}
 
+		if (!isPet() && !checkLineOfSight(followCopy) && !homeLocation.isInRange(asAiAgent(), AiAgent::MAX_OOS_RANGE)) {
+			if (++outOfSightCounter > AiAgent::MAX_OOS_COUNT && System::random(100) <= AiAgent::MAX_OOS_PERCENT) {
+			    leash();
+			    return setDestination();
+			}
+		} else if (outOfSightCounter > 0) {
+			--outOfSightCounter;
+		}
+
 		if (!isPet() && followCopy->getParent().get() != nullptr) {
 			ManagedReference<SceneObject*> rootParent = followCopy->getRootParent();
 

@@ -223,7 +223,13 @@ class AiAgent extends CreatureObject {
 	public static final int MOB_ANDROID = 5;
 	public static final int MOB_VEHICLE = 6;
 
+	public static final int MAX_OOS_COUNT = 30;
+	public static final int MAX_OOS_PERCENT = 40;
+	public static final float MAX_OOS_RANGE = 20.0f;
+
 	protected transient unsigned long customAiMap;
+
+	protected transient int outOfSightCounter;
 
 	public AiAgent() {
 		movementState = OBLIVIOUS;
@@ -259,6 +265,7 @@ class AiAgent extends CreatureObject {
 
 		coordinateMin = -8192;
 		coordinateMax = 8192;
+		outOfSightCounter = 0;
 	}
 
 	/**
