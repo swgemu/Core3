@@ -784,7 +784,7 @@ npcMapImperial =
 permissionMapImperial = {
 	{
 		planetName = "naboo",
-		regionName = "emperors_retreat",
+		regionName = "@naboo_region_names:emperors_retreat",
 		permissions =
 		{
 			{
