@@ -20,7 +20,7 @@ class ShipManager : public Singleton<ShipManager>, public Object, public Logger 
 		void run() {
 			while (true) {
 				ShipManager::instance()->checkProjectiles();
-				Thread::sleep(5);
+				Thread::sleep(200);
 			}
 		}
 	};

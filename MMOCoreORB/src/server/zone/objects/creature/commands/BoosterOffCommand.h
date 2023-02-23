@@ -37,7 +37,7 @@ public:
 
 		Locker slock(ship, creature);
 
-		ship->removeComponentFlag(Components::BOOSTER, ShipComponentFlag::DISABLED, true);
+		ship->removeComponentFlag(Components::BOOSTER, ShipComponentFlag::ACTIVE, true);
 
 		return SUCCESS;
 	}

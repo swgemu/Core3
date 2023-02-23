@@ -13,123 +13,174 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/ship/ShipManager.h"
 #include "server/zone/objects/ship/components/ShipWeaponComponent.h"
+#include "server/zone/packets/MessageCallback.h"
 
 class CreateProjectileMessage : public BaseMessage {
+private:
+	const static constexpr float positionScale = 32767.f / 8000.f;
+
 public:
-	CreateProjectileMessage() : BaseMessage() {
-		insertShort(0x12);
-		insertInt(0xB88AF9A5);  // CRC
-
-		insertShort(0); // shipID
-		insertByte(0); // weaponIndex
-		insertByte(0); // projectileIndex
-		insertByte(0); // component
-		insertShort(0); // startPosition
-		insertShort(0);
-		insertShort(0);
-
-		insertShort(0); // direction
-		insertShort(0);
-		insertShort(0);
-
-		insertInt(0); // sequence
-	}
-
 	CreateProjectileMessage(Vector3 position, Vector3 direction, uint8 component, uint8 projectile, uint8 weapon, uint16 shipID, uint32 sequence) {
 		insertShort(0x12);
 		insertInt(0xB88AF9A5);
+
 		insertShort(shipID);
 		insertByte(weapon);
 		insertByte(projectile);
 		insertByte(component);
-		PackedPosition packed;
-		packed.set(position);
-		packed.write(this);
 
-		packed.set(direction);
-		packed.write(this);
+		insertSignedShort((int16) (position.getX() * positionScale));
+		insertSignedShort((int16) (position.getZ() * positionScale));
+		insertSignedShort((int16) (position.getY() * positionScale));
+
+		insertSignedShort((int16) (direction.getX() * positionScale));
+		insertSignedShort((int16) (direction.getZ() * positionScale));
+		insertSignedShort((int16) (direction.getY() * positionScale));
+
 		insertInt(sequence);
 	}
 };
 
 class CreateProjectileMessageCallback : public MessageCallback {
 	uint16 shipID;
+
 	uint8 weaponIndex;
 	uint8 projectileType;
 	uint8 componentIndex;
+
 	Vector3 position;
 	Vector3 direction;
+
 	uint32 sequence;
 
-	ObjectControllerMessageCallback* objectControllerMain;
+	float speed;
+	float range;
+
 public:
 	CreateProjectileMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) : MessageCallback(client, server) {
+		shipID = 0;
+
+		weaponIndex = 0;
+		projectileType = 0;
+		componentIndex = 0;
+
+		position = Vector3(0,0,0);
+		direction = Vector3(0,0,0);
+
+		sequence = 0;
+
+		speed = 0.f;
+		range = 0.f;
 	}
 
 	void parse(Message* message) {
 		shipID = message->parseShort();
+
 		weaponIndex = message->parseByte();
 		projectileType = message->parseByte();
 		componentIndex = message->parseByte();
-		PackedPosition packed;
-		packed.parse(message);
 
-		position = packed.get();
+		float posX = message->parseSignedShort();
+		float posZ = message->parseSignedShort();
+		float posY = message->parseSignedShort();
+		position = Vector3(posX, posY, posZ) * (8000.f / 32767.f);
 
-		packed.parse(message);
-		direction = packed.get();
+		float dirX = message->parseSignedShort();
+		float dirZ = message->parseSignedShort();
+		float dirY = message->parseSignedShort();
+		direction = Vector3(dirX, dirY, dirZ) * (8000.f / 32767.f);
 
 		sequence = message->parseInt();
 	}
 
 	void run() {
-		StringBuffer buffer;
-		buffer << "CreateProjectileMessage: " << shipID << endl << "weapon: " << weaponIndex << endl << "projectileType:" << projectileType << endl;
-		buffer << "ComponentIndex:" << componentIndex << endl << "position: " << position.toString() << endl << "direction: " << direction.toString() << endl << "sequence: " << sequence << endl;
-		static Logger logger;
-		//logger.info(buffer.toString(), true);
-
-		//
-		ManagedReference<CreatureObject*> object = client->getPlayer();
-
-		if (object == nullptr)
+		auto pilot = client->getPlayer();
+		if (pilot == nullptr) {
 			return;
+		}
 
-		Locker _locker(object);
-
-		ManagedReference<ShipObject*> ship = dynamic_cast<ShipObject*>(object->getParent().get().get());
-
-		if (ship == nullptr)
+		auto root = pilot->getRootParent();
+		if (root == nullptr) {
 			return;
+		}
 
-		String name = ship->getComponentNameMap()->get(ShipObject::WEAPON_COMPONENT_START+weaponIndex).toString();
-		const ShipProjectileData* data = ShipManager::instance()->getProjectileData(name.hashCode());
+		auto ship = root->asShipObject();
+		if (ship == nullptr) {
+			return;
+		}
 
-		ShipWeaponComponent *weapon = cast<ShipWeaponComponent*>(ship->getComponentObject(ShipObject::WEAPON_COMPONENT_START+weaponIndex));
+		auto component = ship->getComponentObject(ShipObject::WEAPON_COMPONENT_START + weaponIndex);
+		if (component == nullptr) {
+			return;
+		}
 
+		auto weapon = dynamic_cast<ShipWeaponComponent*>(component);
 		if (weapon == nullptr) {
-			ship->error("Attempted to create projectile with missing weapon : " + String::valueOf(weaponIndex));
 			return;
+		}
+
+		auto shipManager = ShipManager::instance();
+		if (shipManager == nullptr) {
+			return;
+		}
+
+		auto data = shipManager->getProjectileData(component->getComponentDataName().hashCode());
+		if (data == nullptr) {
+			return;
+		}
+
+		range = data->getRange();
+		if (range == 0.f) {
+			range = 512.f;
+		}
+
+		speed = data->getSpeed();
+		if (speed == 0.f) {
+			speed = 550.f;
+		}
+
+		uint16 uniqueID = ship->getUniqueID();
+		if (shipID != uniqueID) {
+			shipID = uniqueID;
 		}
 
 		float currentEnergy = ship->getCapacitorEnergy();
 		float cost = weapon->getEnergyPerShot();
-		if (cost > currentEnergy) {
-			ship->error("Attempted to create projectile with insufficient energy");
+		if (currentEnergy < cost) {
 			return;
 		}
 
-		Locker cross(ship, object);
+		Locker lock(pilot);
+		Locker cross(ship, pilot);
+
 		ship->setCapacitorEnergy(currentEnergy - cost, true);
 
-		// TODO: Validate shot
-		ShipManager::ShipProjectile* projectile = new ShipManager::ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), System::getMiliTime());
+		auto projectile = new ShipManager::ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, speed, range, System::getMiliTime());
+		shipManager->addProjectile(projectile);
 
-		// compensate latency for outgoing message
-		ShipManager::instance()->addProjectile(projectile);
-		CreateProjectileMessage *message = new CreateProjectileMessage(position, direction, componentIndex, projectileType, weaponIndex, ship->getUniqueID(), sequence);
+		CreateProjectileMessage* message = new CreateProjectileMessage(position, direction, componentIndex, projectileType, weaponIndex, shipID, sequence);
+		pilot->broadcastMessage(message, false);
 
-		object->broadcastMessage(message, false);
+/*
+		uint32 syncStamp = System::getMiliTime() & 0xFFFFFFFF;
+
+		StringBuffer msg;
+
+		msg << "CreateProjectileMessageCallback: " << endl
+		<< " shipID:         " << shipID << endl
+		<< " weaponIndex:    " << weaponIndex << endl
+		<< " projectileType: " << projectileType << endl
+		<< " componentIndex: " << componentIndex << endl
+		<< " position:       " << position.getX() << ", " << position.getZ() << ", "  << position.getY() << endl
+		<< " direction:      " << direction.getX() << ", " << direction.getZ() << ", "  << direction.getY() << endl
+		<< " range:          " << range << endl
+		<< " speed:          " << speed << endl
+		<< " sequence:       " << sequence << endl
+		<< " syncLong:       " << syncStamp << endl
+		<< "----------------------------------------------------------------";
+
+		pilot->sendSystemMessage(msg.toString());
+*/
 	}
 
 	const char* getTaskName() {

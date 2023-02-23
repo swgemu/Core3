@@ -1,7 +1,7 @@
 /*
-Copyright <SWGEmu>
-See file COPYING for copying conditions.
-*/
+ Copyright <SWGEmu>
+ See file COPYING for copying conditions.
+ */
 
 package server.zone.objects.ship.components;
 
@@ -13,20 +13,22 @@ import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 
 class ShipWeaponComponent extends ShipComponent {
+	protected float maxDamage;
+	protected float minDamage;
+	protected float armorEffectiveness;
+	protected float shieldEffectiveness;
+	protected float refireRate;
+	protected float energyPerShot;
 
-	float shieldEffectiveness;
-	float armorEffectiveness;
-	float maxDamage;
-	float minDamage;
-	float refireRate;
-	float energyPerShot;
+	public ShipWeaponComponent() {
+		super();
 
-	public float getShieldEffectiveness() {
-		return shieldEffectiveness;
-	}
-
-	public float getArmorEffectiveness() {
-		return armorEffectiveness;
+		maxDamage = 0.f;
+		minDamage = 0.f;
+		armorEffectiveness = 0.f;
+		shieldEffectiveness = 0.f;
+		refireRate = 0.f;
+		energyPerShot = 0.f;
 	}
 
 	public float getMaxDamage() {
@@ -37,6 +39,14 @@ class ShipWeaponComponent extends ShipComponent {
 		return minDamage;
 	}
 
+	public float getShieldEffectiveness() {
+		return shieldEffectiveness;
+	}
+
+	public float getArmorEffectiveness() {
+		return armorEffectiveness;
+	}
+
 	public float getRefireRate() {
 		return refireRate;
 	}
@@ -45,32 +55,34 @@ class ShipWeaponComponent extends ShipComponent {
 		return energyPerShot;
 	}
 
-	public void setShieldEffectiveness(float value) {
-		shieldEffectiveness = value;
-	}
-
-	public void setArmorEffectiveness(float value) {
-		armorEffectiveness = value;
-	}
-
+	@local
 	public void setMaxDamage(float value) {
 		maxDamage = value;
 	}
 
+	@local
 	public void setMinDamage(float value) {
 		minDamage = value;
 	}
 
+	@local
+	public void setShieldEffectiveness(float value) {
+		shieldEffectiveness = value;
+	}
+
+	@local
+	public void setArmorEffectiveness(float value) {
+		armorEffectiveness = value;
+	}
+
+	@local
 	public void setRefireRate(float value) {
 		refireRate = value;
 	}
 
+	@local
 	public void setEnergyPerShot(float value) {
 		energyPerShot = value;
-	}
-
-	public ShipWeaponComponent() {
-		super();
 	}
 
 	@local
@@ -83,5 +95,9 @@ class ShipWeaponComponent extends ShipComponent {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	@local
 	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
 }

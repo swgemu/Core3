@@ -1,7 +1,7 @@
 /*
-Copyright <SWGEmu>
-See file COPYING for copying conditions.
-*/
+ Copyright <SWGEmu>
+ See file COPYING for copying conditions.
+ */
 
 package server.zone.objects.ship.components;
 
@@ -14,13 +14,20 @@ include templates.SharedObjectTemplate;
 
 class ShipArmorComponent extends ShipComponent {
 
-	public ShipArmorComponent() {
+public ShipArmorComponent() {
 		super();
 	}
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	@local
 	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
 }

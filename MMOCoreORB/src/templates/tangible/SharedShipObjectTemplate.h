@@ -10,24 +10,30 @@
 
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/objects/ship/ComponentSlots.h"
-#include "templates/manager/TemplateManager.h"
 
 class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	StringParam interiorLayoutFileName;
 	StringParam cockpitFilename;
-	String shipName;
+
+	StringParam chassisDataName;
+	StringParam chassisTypeName;
+
 	VectorMap<String, String> componentNames;
 	VectorMap<String, VectorMap<String, float>> componentValues;
 
 	BoolParam hasWings;
 	BoolParam playerControlled;
 
-	String conversationTemplate;
-	String conversationMobile;
-	String conversationMessage;
-	String shipDifficulty;
-	String shipFaction;
-	String shipType;
+	FloatParam chassisHitpoints;
+	FloatParam chassisSlipRate;
+	FloatParam chassisSpeed;
+	FloatParam chassisMass;
+
+	StringParam conversationTemplate;
+	StringParam conversationMobile;
+	StringParam conversationMessage;
+	StringParam shipDifficulty;
+	StringParam shipFaction;
 
 public:
 	SharedShipObjectTemplate() {
@@ -51,84 +57,126 @@ public:
 		//if (!templateData->isValidTable())
 			//return;
 
-		shipName = templateData->getStringField("name");
+		chassisDataName = templateData->getStringField("name");
+		chassisTypeName = templateData->getStringField("type");
+
+		if (chassisTypeName == "") {
+			chassisTypeName = chassisDataName;
+		}
+
+		chassisHitpoints = templateData->getFloatField("chassisHitpoints", 100.f);
+		chassisSlipRate = templateData->getFloatField("slideFactor", 1.75f);
+		chassisSpeed = templateData->getFloatField("chassisSpeed", 1.f);
+		chassisMass = templateData->getFloatField("chassisMass", 10000.f);
+
+		shipDifficulty = templateData->getStringField("difficulty");
+		shipFaction = templateData->getStringField("faction");
+
 		conversationTemplate = templateData->getStringField("conversationTemplate");
 		conversationMobile = templateData->getStringField("conversationMobile");
 		conversationMessage = templateData->getStringField("conversationMessage");
-		shipDifficulty = templateData->getStringField("difficulty");
-		shipFaction = templateData->getStringField("faction");
-		shipType = templateData->getStringField("type");
 
-		const static char* components[] = {"reactor", "engine", "capacitor", "booster", "droid_interface", "bridge", "hangar",
-			 "targeting_station", "armor_0", "armor_1", "shield_0", "shield_1", "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5","weapon_6", "weapon_7"};
-		const int numComponents = 20;
-		try { //Components
+		try {
+			const static char* components[] = { "reactor", "engine",  "shield_0", "shield_1", "armor_0", "armor_1", "capacitor", "booster", "droid_interface",
+					"bridge", "hangar", "targeting_station", "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5", "weapon_6", "weapon_7" };
+
 			for (int i = 0; i < 20; i++) {
-				String k = components[i];
-				LuaObject component = templateData->getObjectField(k);
-				if (component.isValidTable()) {
-					VectorMap<String, float> map;
-					String name = component.getStringField("name", "");
-					char **fields = NULL;
-					switch (i) {
-						case Components::REACTOR: {
-							const char *fields[] = {"hitpoints", "armor"};
-							loadMap(fields, 2, map, component);
-							break;
-						}
-						case Components::ENGINE: {
-							const char *fields[] = {"hitpoints", "armor", "speed", "pitch", "roll", "yaw",
-													"acceleration", "deceleration", "pitchRate", "rollRate", "yawRate"};
-							loadMap(fields, 11, map, component);
-							break;
-						}
-						case Components::SHIELD0: {
-							const char *fields[] = {"hitpoints", "armor", "rechargeRate", "energy"};
-							loadMap(fields, 4, map, component);
-							break;
-						}
-						case Components::SHIELD1: {
-							const char *fields[] = {"hitpoints", "armor", "rechargeRate", "energy", "acceleration",
-													"speed"};
-							loadMap(fields, 6, map, component);
-							break;
-						}
-						case Components::ARMOR0:
-						case Components::ARMOR1:
-						case Components::CAPACITOR:
-						case Components::BOOSTER: {
-							const char* fields[] = {"rechargeRate", "energy", "acceleration", "deceleration", "speed", "energyUsage", "energyConsumptionRate"};
-							loadMap(fields, 7, map, component);
-						}
-						case 8:
-						case 9: {
-							const char *fields[] = {"hitpoints", "armor"};
-							loadMap(fields, 2, map, component);
-							break;
-						}
-						case 10:
-						case 11: {
-							const char *fields[] = {"hitpoints", "armor", "front", "back", "regen"};
-							loadMap(fields, 5, map, component);
-							break;
-						}
-						case 12:
-						case 13:
-						case 14:
-						case 15:
-						case 16:
-						case 17:
-						case 18:
-						case 19: {
-							const char *fields[] = {"hitpoints", "armor", "rate", "drain", "maxDamage", "minDamage",
-													"shieldEfficiency", "armorEfficiency", "ammo", "ammo_type"};
-							loadMap(fields, 10, map, component);
-							break;
-						}
-					};
-					componentValues.put(components[i], map);
-					componentNames.put(components[i], name);
+				String key = components[i];
+				LuaObject component = templateData->getObjectField(key);
+
+				if (!component.isValidTable()) {
+					component.pop();
+					continue;
 				}
+
+				String name = component.getStringField("name", "");
+				VectorMap<String, float> map;
+				map.setNullValue(0.f);
+
+				switch (i) {
+					case Components::REACTOR: {
+						const char *fields[] = {"hitpoints", "armor"};
+						loadMap(fields, 2, map, component);
+						break;
+					}
+
+					case Components::ENGINE: {
+						const char *fields[] = {"hitpoints", "armor", "speed", "pitch", "roll", "yaw", "acceleration", "deceleration", "pitchRate", "rollRate", "yawRate"};
+						loadMap(fields, 11, map, component);
+						break;
+					}
+
+					case Components::SHIELD0: {
+						const char *fields[] = {"hitpoints", "armor", "front", "back", "regen"};
+						loadMap(fields, 5, map, component);
+						break;
+					}
+
+					case Components::SHIELD1: {
+						const char *fields[] = {"hitpoints", "armor", "front", "back", "regen"};
+						loadMap(fields, 5, map, component);
+						break;
+					}
+
+					case Components::ARMOR0: {
+						const char *fields[] = {"hitpoints", "armor"};
+						loadMap(fields, 2, map, component);
+						break;
+					}
+
+					case Components::ARMOR1: {
+						const char *fields[] = {"hitpoints", "armor"};
+						loadMap(fields, 2, map, component);
+						break;
+					}
+
+					case Components::CAPACITOR: {
+						const char *fields[] = {"hitpoints", "armor", "rechargeRate", "energy"};
+						loadMap(fields, 4, map, component);
+						break;
+					}
+
+					case Components::BOOSTER: {
+						const char *fields[] = {"hitpoints", "armor", "energy", "acceleration", "speed", "energyUsage", "rechargeRate"};
+						loadMap(fields, 7, map, component);
+						break;
+					}
+
+					case Components::DROID_INTERFACE: {
+						const char *fields[] = {"hitpoints", "armor"};
+						loadMap(fields, 2, map, component);
+						break;
+					}
+
+					case Components::BRIDGE: {
+						const char *fields[] = {"hitpoints", "armor"};
+						loadMap(fields, 2, map, component);
+						break;
+					}
+
+					case Components::HANGAR: {
+						const char *fields[] = {"hitpoints", "armor"};
+						loadMap(fields, 2, map, component);
+						break;
+					}
+
+					case Components::TARGETING_STATION: {
+						const char *fields[] = {"hitpoints", "armor"};
+						loadMap(fields, 2, map, component);
+						break;
+					}
+
+					case Components::WEAPON_START:
+					default: {
+						const char *fields[] = {"hitpoints", "armor", "rate", "drain", "maxDamage", "minDamage", "shieldEfficiency", "armorEfficiency", "ammo", "ammo_type"};
+						loadMap(fields, 10, map, component);
+						break;
+					}
+				};
+
+				componentNames.put(key, name);
+				componentValues.put(key, map);
+
 				component.pop();
 			}
 		} catch (Exception& e) {
@@ -136,36 +184,52 @@ public:
 		}
 	}
 
-	String getShipName() {
-		return shipName;
+	inline const String& getShipName() const {
+		return chassisDataName.get();
+	}
+
+	inline const String& getShipType() const {
+		return chassisTypeName.get();
+	}
+
+	inline float getChassisHitpoints() const {
+		return chassisHitpoints;
+	}
+
+	inline float getChassisSlipRate() const {
+		return chassisSlipRate;
+	}
+
+	inline float getChassisSpeed() const {
+		return chassisSpeed;
+	}
+
+	inline float getChassisMass() const {
+		return chassisMass;
 	}
 
 	inline bool shipHasWings() const {
 		return hasWings;
 	}
 
-	String getConversationTemplate() {
-		return conversationTemplate;
+	inline const String& getConversationTemplate() const {
+		return conversationTemplate.get();
 	}
 
-	String getConversationMobile() {
-		return conversationMobile;
+	inline const String& getConversationMobile() const {
+		return conversationMobile.get();
 	}
 
-	String getConversationMessage() {
-		return conversationMessage;
+	inline const String& getConversationMessage() const {
+		return conversationMessage.get();
 	}
 
-	String getShipDifficulty() {
-		return shipDifficulty;
+	inline const String& getShipDifficulty() const {
+		return shipDifficulty.get();
 	}
 
-	String getShipType() {
-		return shipType;
-	}
-
-	String getShipFaction() {
-		return shipFaction;
+	inline const String& getShipFaction() const {
+		return shipFaction.get();
 	}
 
 	void parseVariableData(const String& varName, Chunk* data) {

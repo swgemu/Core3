@@ -566,7 +566,7 @@ ShipObject* ShipManager::generateShip(String templateName) {
 			}
 			case Components::BOOSTER: {
 				float rechargeRate = values.get("rechargeRate");
-				float energy = values.get("energy");
+				float energy = values.get("maxEnergy");
 				float accel = values.get("acceleration");
 				float decel = values.get("deceleration");
 				float speed = values.get("speed");
