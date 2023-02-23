@@ -10,8 +10,16 @@
 
 #include "engine/engine.h"
 #include "engine/util/json_utils.h"
-
 #include "server/zone/packets/DeltaMessage.h"
+
+class DeltaMapCommands {
+public:
+	enum Commands : uint8 {
+		ADD,
+		DROP,
+		SET
+	};
+};
 
 template <class K, class V> class DeltaVectorMap : public Serializable {
 protected:
@@ -64,6 +72,24 @@ public:
 		j["updateCounter"] = map.updateCounter;
 	}
 
+	virtual int add(const K& key, const V& value, DeltaMessage* message = nullptr, int updates = 1) {
+		int pos = vectorMap.put(key, value);
+
+		if (message != nullptr) {
+			if (updates != 0)
+				message->startList(updates, updateCounter += updates);
+
+			message->insertByte(DeltaMapCommands::ADD);
+
+			K& nonconstK = const_cast<K&>(key);
+			V& nonconstV = const_cast<V&>(value);
+			TypeInfo<K>::toBinaryStream(&nonconstK, message);
+			TypeInfo<V>::toBinaryStream(&nonconstV, message);
+		}
+
+		return pos;
+	}
+
 	virtual int set(const K& key, const V& value, DeltaMessage* message = nullptr, int updates = 1) {
 		int pos = vectorMap.put(key, value);
 
@@ -71,7 +97,7 @@ public:
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
 
-			message->insertByte(0);
+			message->insertByte(DeltaMapCommands::SET);
 
 			K& nonconstK = const_cast<K&>(key);
 			V& nonconstV = const_cast<V&>(value);
@@ -92,7 +118,7 @@ public:
 			if (updates != 0)
 				message->startList(updates, updateCounter += updates);
 
-			message->insertByte(1);
+			message->insertByte(DeltaMapCommands::DROP);
 
 			K& nonconstK = const_cast<K&>(key);
 			V& nonconstV = const_cast<V&>(value);
@@ -113,7 +139,7 @@ public:
 			const K& key = getKeyAt(i);
 			const V& value = getValueAt(i);
 
-			msg->insertByte(0);
+			msg->insertByte(DeltaMapCommands::ADD);
 
 			TypeInfo<K>::toBinaryStream(const_cast<K*>(&key), msg);
 			TypeInfo<V>::toBinaryStream(const_cast<V*>(&value), msg);

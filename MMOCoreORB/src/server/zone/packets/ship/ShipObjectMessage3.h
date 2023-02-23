@@ -8,31 +8,96 @@
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
-class ShipObjectMessage3 : public TangibleObjectMessage3 {
+class ShipObjectMessage3 : public BaseLineMessage {
+protected:
+	enum index : int {
+		complexity = 0,
+		objectName = 1,
+		customObjectName = 2,
+		volume = 3,
+		customizationString = 4,
+		visibleComponents = 5,
+		optionsBitmask = 6,
+		useCount = 7,
+		condition = 8,
+		conditionMax = 9,
+		visible = 10,
+		chassisSlideFactor = 11,
+		chassisCurrentHealth = 12,
+		chassisMaxHealth = 13,
+		chassisTypeCRC = 14,
+		componentMaxArmorMap = 15,
+		componentCurrentArmorMap = 16,
+		componentCurrentHitpointsMap = 17,
+		componentMaxHitpointsMap = 18,
+		componentOptionsMap = 19,
+		maxFrontShield = 20,
+		maxRearShield = 21
+	};
+
 public:
-	ShipObjectMessage3(ShipObject* ship) : TangibleObjectMessage3(ship, 0x53484950, 0x16) {
-		//ship->info(true) << "ShipObjectMessage3 sent";
+	ShipObjectMessage3(ShipObject* ship) : BaseLineMessage(ship, 0x53484950, 3, 22) {
+		insertFloat(ship->getComplexity());
+		insertStringId(ship->getObjectName());
 
+		UnicodeString name = getCustomObjectName(ship);
+		insertUnicode(name);
 
-		//11
-		insertFloat(ship->getSlip()); //?Speed or Acceleration?
+		insertInt(ship->getVolume());
 
-		insertFloat(ship->getChassisCurrentHealth()); //chassis cur
-		insertFloat(ship->getChassisMaxHealth()); //chassis max
+		String app;
+		ship->getCustomizationString(app);
+		insertAscii(app);
 
-		insertInt(ship->getShipNameCRC()); //chassis type
+		auto visibleComponents = ship->getVisibleComponents();
+		visibleComponents->insertToMessage(this);
 
-		ship->getMaxArmorMap()->insertToMessage(this); //15
+		insertInt(ship->getOptionsBitmask());
+		insertInt(ship->getUseCount());
+		insertInt(ship->getConditionDamage());
+		insertInt(ship->getMaxCondition());
+		insertByte(ship->getObjectVisible());
+
+		insertFloat(ship->getSlip());
+		insertFloat(ship->getChassisCurrentHealth());
+		insertFloat(ship->getChassisMaxHealth());
+
+		insertInt(ship->getShipNameCRC());
+
+		ship->getMaxArmorMap()->insertToMessage(this);
 		ship->getCurrentArmorMap()->insertToMessage(this);
 		ship->getCurrentHitpointsMap()->insertToMessage(this);
 		ship->getMaxHitpointsMap()->insertToMessage(this);
-		ship->getComponentOptionsMap()->insertToMessage(this); // 19
+		ship->getComponentOptionsMap()->insertToMessage(this);
 
-
-		insertFloat(ship->getMaxFrontShield()); //front shield max
-		insertFloat(ship->getMaxRearShield()); // back shield max
+		insertFloat(ship->getMaxFrontShield());
+		insertFloat(ship->getMaxRearShield());
 
 		setSize();
+	}
+
+	UnicodeString getCustomObjectName(ShipObject* ship) {
+		UnicodeString name = "";
+
+		auto owner = ship->getOwner().get();
+		if (owner == nullptr) {
+			return name;
+		}
+
+		PlayerObject* ghost = owner->getPlayerObject();
+		if (ghost == nullptr || !ghost->hasGodMode()) {
+			return name;
+		}
+
+		name = ship->getDisplayedName();
+		if (name.isEmpty()) {
+			name = owner->getDisplayedName();
+		}
+
+		UnicodeString tag = PermissionLevelList::instance()->getPermissionTag(ghost->getAdminLevel());
+		name = name + " \\#ffff00[" + tag + "]\\#.";
+
+		return name;
 	}
 };
 

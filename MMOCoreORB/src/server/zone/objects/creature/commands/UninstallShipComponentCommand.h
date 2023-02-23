@@ -17,34 +17,49 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
-		if (!checkStateMask(creature))
+		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
+		}
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(creature)) {
 			return INVALIDLOCOMOTION;
+		}
 
-		StringTokenizer tokenizer(arguments.toString());
-		long shipId = tokenizer.getLongToken();
-		int slot = tokenizer.getIntToken();
+		try {
 
-		ZoneServer* zoneServer = server->getZoneServer();
+			StringTokenizer tokens(arguments.toString());
 
-		if (zoneServer == nullptr)
-			return GENERALERROR;
+			long shipId = tokens.hasMoreTokens() ? tokens.getLongToken() : 0;
+			int slot = tokens.hasMoreTokens() ? tokens.getIntToken() : -1;
 
-		ManagedReference<SceneObject*> shipSceneO = zoneServer->getObject(shipId);
+			if (shipId == 0 || slot == -1) {
+				return GENERALERROR;
+			}
 
-		if (shipSceneO == nullptr)
-			return GENERALERROR;
+			ZoneServer* zoneServer = server->getZoneServer();
 
-		ManagedReference<ShipObject*> ship = shipSceneO.castTo<ShipObject*>();
+			if (zoneServer == nullptr) {
+				return GENERALERROR;
+			}
 
-		if (ship == nullptr)
-			return GENERALERROR;
+			ManagedReference<SceneObject*> sceneO = zoneServer->getObject(shipId);
 
-		Locker locker(ship);
+			if (sceneO == nullptr) {
+				return GENERALERROR;
+			}
 
-		ship->uninstall(creature, slot, true);
+			ManagedReference<ShipObject*> ship = sceneO->asShipObject();
+
+			if (ship == nullptr) {
+				return GENERALERROR;
+			}
+
+			Locker locker(ship);
+			ship->uninstall(creature, slot, true);
+
+		} catch (Exception& e) {
+			error() << "UninstallShipComponentCommand exception: " << e.what();
+		}
 
 		return SUCCESS;
 	}

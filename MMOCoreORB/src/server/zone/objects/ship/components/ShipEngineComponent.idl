@@ -1,7 +1,7 @@
 /*
-Copyright <SWGEmu>
-See file COPYING for copying conditions.
-*/
+ Copyright <SWGEmu>
+ See file COPYING for copying conditions.
+ */
 
 package server.zone.objects.ship.components;
 
@@ -12,61 +12,23 @@ include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 
-class ShipEngineComponent extends ShipComponent {
+class ShipEngineComponent extends ShipComponent {	
+	protected float maxPitch;
+	protected float maxRoll;
+	protected float maxYaw;
+	protected float maxSpeed;
+	protected float acceleration;
+	protected float deceleration;
 
-	float maxPitch;
-	float maxRoll;
-	float maxYaw;
-	float maxSpeed;
-	float acceleration;
-	float deceleration;
+	public ShipEngineComponent() {
+		super();
 
-	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
-
-	public native void initializeTransientMembers();
-
-	@local
-	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
-
-	@local
-	@dirty
-	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-
-	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
-
-	public void setMaxSpeed(float value) {
-		maxSpeed = value;
-	}
-
-	public void setMaxAcceleration(float value) {
-		acceleration = value;
-	}
-
-	public void setMaxDeceleration(float value) {
-		deceleration = value;
-	}
-
-	public void setMaxYaw(float value) {
-		if (value < 1.0f)
-			value = 1.0f;
-			maxYaw = value;
-	}
-
-	public void setMaxRoll(float value) {
-		if (value < 1.0f)
-			value = 1.0f;
-			maxRoll = value;
-	}
-
-	public void setMaxPitch(float value) {
-		if (value < 1.0f)
-			value = 1.0f;
-			maxPitch = value;
-	}
-
-	public float getMaxSpeed() {
-		return maxSpeed;
+		maxPitch = 0.f;
+		maxRoll = 0.f;
+		maxYaw = 0.f;
+		maxSpeed = 0.f;
+		acceleration = 0.f;
+		deceleration = 0.f;
 	}
 
 	public float getMaxPitch() {
@@ -81,12 +43,55 @@ class ShipEngineComponent extends ShipComponent {
 		return maxRoll;
 	}
 
-	public ShipEngineComponent() {
-		super();
-		maxPitch = 1.0f;
-		maxYaw = 1.0f;
-		maxRoll = 1.0f;
-		acceleration = 40.0f;
-		deceleration = 40.0f;
+	public float getMaxSpeed() {
+		return maxSpeed;
 	}
+
+	public float getMaxAcceleration() {
+		return acceleration;
+	}
+
+	public float getMaxDeceleration() {
+		return deceleration;
+	}
+
+	public void setMaxYaw(float value) {
+		maxYaw = value;
+	}
+
+	public void setMaxRoll(float value) {
+		maxRoll = value;
+	}
+
+	public void setMaxPitch(float value) {
+		maxPitch = value;
+	}
+
+	public void setMaxSpeed(float value) {
+		maxSpeed = value;
+	}
+
+	public void setMaxAcceleration(float value) {
+		acceleration = value;
+	}
+
+	public void setMaxDeceleration(float value) {
+		deceleration = value;
+	}
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
 }

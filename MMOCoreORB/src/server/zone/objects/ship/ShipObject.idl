@@ -15,8 +15,9 @@ include server.zone.objects.creature.CreatureObject;
 include server.zone.CloseObjectsVector;
 include system.lang.UnicodeString;
 include server.zone.packets.DeltaMessage;
-include server.zone.objects.scene.variables.DeltaFloatVariable;
-include server.zone.objects.scene.variables.DeltaIntVariable;
+include server.zone.objects.scene.variables.DeltaAutoVariable;
+include server.zone.objects.scene.variables.DeltaAutoMap;
+include server.zone.objects.scene.variables.DeltaAutoPackedMap;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaBitArray;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
@@ -24,17 +25,19 @@ include templates.SharedObjectTemplate;
 include server.zone.objects.cell.CellObject;
 include system.util.VectorMap;
 include system.lang.ref.Reference;
+include server.zone.objects.ship.ComponentSlots;
+include server.zone.objects.ship.ShipComponentFlag;
 
 class ShipObject extends TangibleObject {
 	public static final int HYPERSPACE_DELAY = 40;
 	public static final int NAVIGATOR_DELAY = 20;
 	public static final int SPACESTATION_COMM_MAX_DISTANCE = 1000;
 	public static final int CONVO_DELAY = 60;
-
 	public static final int WEAPON_COMPONENT_START = 12;
 
 	protected transient boolean hyperspacing;
 
+	@dereferenced
 	public string storedLocation;
 
 	public unsigned long controlDeviceID;
@@ -59,10 +62,7 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected VectorMap<unsigned int, ShipComponent> components;
 
-	protected float totalMass;
-
-	protected float currentMass;
-
+	@dereferenced
 	protected string parkingLocation;
 
 	@dereferenced
@@ -70,15 +70,6 @@ class ShipObject extends TangibleObject {
 
 	@dereferenced
 	protected Time hyperspaceTime;
-
-	protected boolean hasWings;
-
-	@preLocked
-	public native void createChildObjects();
-
-	// ShipObjectMessage6 variables
-	@dereferenced
-	protected string shipName;
 
 	@dereferenced
 	protected string conversationTemplate;
@@ -89,388 +80,1187 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected string conversationMessage;
 
+	protected boolean hasWings;
+
+	protected float openWingSpeed;
+
+	protected string chassisDataName;
+
+	// DeltaAutoVariable template<typename K, int BaselineName, uint8 Type, int DeltaID, bool NotifyZone>
+
+	@rawTemplate(value = "float, 'SHIP', 1, 17")
 	@dereferenced
-	protected string shipDifficulty;
+	protected DeltaAutoVariable chassisMaxMass;
 
+	@rawTemplate(value = "float, 'SHIP', 1, 18")
 	@dereferenced
-	protected string shipFaction;
+	protected DeltaAutoVariable shieldRechargeRate;
 
+	@rawTemplate(value = "float, 'SHIP', 1, 19")
 	@dereferenced
-	protected string shipType;
+	protected DeltaAutoVariable capacitorMaxEnergy;
 
-	@rawTemplate(value = "'SHIP', 3, 14")
+	@rawTemplate(value = "float, 'SHIP', 1, 20")
 	@dereferenced
-	protected DeltaIntVariable shipNameCRC;
+	protected DeltaAutoVariable capacitorRechargeRate;
 
-	@rawTemplate(value = "'SHIP', 1, 18")
+	@rawTemplate(value = "float, 'SHIP', 1, 21")
 	@dereferenced
-	protected DeltaFloatVariable shieldRechargeRate;
+	protected DeltaAutoVariable engineAccelerationRate;
 
-	@rawTemplate(value = "'SHIP', 1, 19")
+	@rawTemplate(value = "float, 'SHIP', 1, 22")
 	@dereferenced
-	protected DeltaFloatVariable capacitorMaxEnergy;
+	protected DeltaAutoVariable engineDecelerationRate;
 
-	@rawTemplate(value = "'SHIP', 1, 20")
+	@rawTemplate(value = "float, 'SHIP', 1, 23")
 	@dereferenced
-	protected DeltaFloatVariable capacitorRechargeRate;
+	protected DeltaAutoVariable enginePitch;
 
-	@rawTemplate(value = "'SHIP', 1, 21")
+	@rawTemplate(value = "float, 'SHIP', 1, 24")
 	@dereferenced
-	protected DeltaFloatVariable engineAccelerationRate;
+	protected DeltaAutoVariable engineYaw;
 
-	@rawTemplate(value = "'SHIP', 1, 22")
+	@rawTemplate(value = "float, 'SHIP', 1, 25")
 	@dereferenced
-	protected DeltaFloatVariable engineDecelerationRate;
+	protected DeltaAutoVariable engineRoll;
 
-	@rawTemplate(value = "'SHIP', 1, 23")
+	@rawTemplate(value = "float, 'SHIP', 1, 26")
 	@dereferenced
-	protected DeltaFloatVariable enginePitch;
+	protected DeltaAutoVariable engineMaxPitch;
 
-	@rawTemplate(value = "'SHIP', 1, 24")
+	@rawTemplate(value = "float, 'SHIP', 1, 27")
 	@dereferenced
-	protected DeltaFloatVariable engineYaw;
+	protected DeltaAutoVariable engineMaxYaw;
 
-	@rawTemplate(value = "'SHIP', 1, 25")
+	@rawTemplate(value = "float, 'SHIP', 1, 28")
 	@dereferenced
-	protected DeltaFloatVariable engineRoll;
+	protected DeltaAutoVariable engineMaxRoll;
 
-	@rawTemplate(value = "'SHIP', 1, 26")
+	@rawTemplate(value = "float, 'SHIP', 1, 29")
 	@dereferenced
-	protected DeltaFloatVariable engineMaxPitch;
+	protected DeltaAutoVariable maxSpeed;
 
-	@rawTemplate(value = "'SHIP', 1, 27")
+	@rawTemplate(value = "float, 'SHIP', 1, 30")
 	@dereferenced
-	protected DeltaFloatVariable engineMaxYaw;
+	protected DeltaAutoVariable reactorGenerationRate;
 
-	@rawTemplate(value = "'SHIP', 1, 28")
+	@rawTemplate(value = "float, 'SHIP', 1, 31")
 	@dereferenced
-	protected DeltaFloatVariable engineMaxRoll;
+	protected DeltaAutoVariable boosterMaxEnergy;
 
-	@rawTemplate(value = "'SHIP', 1, 29")
+	@rawTemplate(value = "float, 'SHIP', 1, 32")
 	@dereferenced
-	protected DeltaFloatVariable maxSpeed;
+	protected DeltaAutoVariable boosterRechargeRate;
 
-	@rawTemplate(value = "'SHIP', 1, 30")
+	@rawTemplate(value = "float, 'SHIP', 1, 33")
 	@dereferenced
-	protected DeltaFloatVariable reactorGenerationRate;
+	protected DeltaAutoVariable boosterConsumptionRate;
 
-	@rawTemplate(value = "'SHIP', 1, 31")
+	@rawTemplate(value = "float, 'SHIP', 1, 34")
 	@dereferenced
-	protected DeltaFloatVariable boosterMaxEnergy;
+	protected DeltaAutoVariable boosterAcceleration;
 
-	@rawTemplate(value = "'SHIP', 1, 32")
+	@rawTemplate(value = "float, 'SHIP', 1, 35")
 	@dereferenced
-	protected DeltaFloatVariable boosterRechargeRate;
+	protected DeltaAutoVariable boosterMaxSpeed;
 
-	@rawTemplate(value = "'SHIP', 1, 33")
+	@rawTemplate(value = "float, 'SHIP', 1, 36")
 	@dereferenced
-	protected DeltaFloatVariable boosterConsumptionRate;
+	protected DeltaAutoVariable droidCommandSpeed;
 
-	@rawTemplate(value = "'SHIP', 1, 34")
+	@rawTemplate(value = "uint64, 'SHIP', 1, 37")
 	@dereferenced
-	protected DeltaFloatVariable boosterAcceleration;
+	protected DeltaAutoVariable shipDroidID;
 
-	@rawTemplate(value = "'SHIP', 1, 35")
+	@rawTemplate(value = "float, 'SHIP', 3, 11")
 	@dereferenced
-	protected DeltaFloatVariable boosterMaxSpeed;
+	protected DeltaAutoVariable slip;
 
-	@rawTemplate(value = "'SHIP', 1, 36")
+	@rawTemplate(value = "float, 'SHIP', 3, 12")
 	@dereferenced
-	protected DeltaFloatVariable droidCommandSpeed;
+	protected DeltaAutoVariable chassisCurrentHealth;
 
-	@rawTemplate(value = "'SHIP', 3, 12")
+	@rawTemplate(value = "float, 'SHIP', 3, 13")
 	@dereferenced
-	protected DeltaFloatVariable slip;
+	protected DeltaAutoVariable chassisMaxHealth;
 
-	@rawTemplate(value = "'SHIP', 3, 12")
+	@rawTemplate(value = "uint32, 'SHIP', 3, 14")
 	@dereferenced
-	protected DeltaFloatVariable chassisCurrentHealth;
+	protected DeltaAutoVariable shipNameCRC;
 
-	@rawTemplate(value = "'SHIP', 3, 14")
+	@rawTemplate(value = "float, 'SHIP', 3, 20")
 	@dereferenced
-	protected DeltaFloatVariable chassisMaxHealth;
+	protected DeltaAutoVariable frontShieldMax;
 
-	@rawTemplate(value = "'SHIP', 3, 20")
+	@rawTemplate(value = "float, 'SHIP', 3, 21")
 	@dereferenced
-	protected DeltaFloatVariable frontShieldMax;
+	protected DeltaAutoVariable rearShieldMax;
 
-	@rawTemplate(value = "'SHIP', 3, 21")
+	@rawTemplate(value = "float, 'SHIP', 4, 0")
 	@dereferenced
-	protected DeltaFloatVariable rearShieldMax;
+	protected DeltaAutoVariable chassisMass;
 
-	@rawTemplate(value = "'SHIP', 6, 3")
+	@rawTemplate(value = "float, 'SHIP', 4, 1")
 	@dereferenced
-	protected DeltaFloatVariable shipAccelerationRate;
+	protected DeltaAutoVariable chassisSpeed;
 
-	@rawTemplate(value = "'SHIP', 6, 4")
+	@rawTemplate(value = "float, 'SHIP', 4, 2")
 	@dereferenced
-	protected DeltaFloatVariable shipDecelerationRate;
+	protected DeltaAutoVariable capacitorEnergy;
 
-	/**
-	 * stored in radians
-	 */
-	@rawTemplate(value = "'SHIP', 6, 8")
+	@rawTemplate(value = "float, 'SHIP', 4, 3")
 	@dereferenced
-	protected DeltaFloatVariable maxYawRate;
+	protected DeltaAutoVariable boosterEnergy;
 
-	/**
-	 * stored in radians
-	 */
-	@rawTemplate(value = "'SHIP', 6, 9")
+	@rawTemplate(value = "uint16, 'SHIP', 6, 2")
 	@dereferenced
-	protected DeltaFloatVariable maxPitchRate;
+	protected DeltaAutoVariable uniqueID;
 
-	/**
-	 * stored in radians
-	 */
-	@rawTemplate(value = "'SHIP', 6, 10")
+	@rawTemplate(value = "float, 'SHIP', 6, 3")
 	@dereferenced
-	protected DeltaFloatVariable maxRollRate;
+	protected DeltaAutoVariable shipAccelerationRate;
 
-	/**
-	 * scale factor between 0 and 1
-	 */
-	@rawTemplate(value = "'SHIP', 6, 5")
+	@rawTemplate(value = "float, 'SHIP', 6, 4")
 	@dereferenced
-	protected DeltaFloatVariable currentYawRate;
+	protected DeltaAutoVariable shipDecelerationRate;
 
-	/**
-	 * scale factor between 0 and 1
-	 */
-	@rawTemplate(value = "'SHIP', 6, 6")
+	@rawTemplate(value = "float, 'SHIP', 6, 5")
 	@dereferenced
-	protected DeltaFloatVariable currentPitchRate;
+	protected DeltaAutoVariable currentPitchRate;
 
-	/**
-	 * scale factor between 0 and 1
-	 */
-	@rawTemplate(value = "'SHIP', 6, 7")
+	@rawTemplate(value = "float, 'SHIP', 6, 6")
 	@dereferenced
-	protected DeltaFloatVariable currentRollRate;
+	protected DeltaAutoVariable currentYawRate;
 
-	@rawTemplate(value = "'SHIP', 6, 11")
+	@rawTemplate(value = "float, 'SHIP', 6, 7")
 	@dereferenced
-	protected DeltaFloatVariable currentSpeed;
+	protected DeltaAutoVariable currentRollRate;
 
-	@rawTemplate(value = "'SHIP', 6, 20")
+	@rawTemplate(value = "float, 'SHIP', 6, 8")
 	@dereferenced
-	protected DeltaFloatVariable frontShield;
+	protected DeltaAutoVariable maxPitchRate;
 
-	@rawTemplate(value = "'SHIP', 6, 21")
+	@rawTemplate(value = "float, 'SHIP', 6, 9")
 	@dereferenced
-	protected DeltaFloatVariable rearShield;
+	protected DeltaAutoVariable maxYawRate;
 
-
-	@rawTemplate(value = "'SHIP', 4, 0")
+	@rawTemplate(value = "float, 'SHIP', 6, 10")
 	@dereferenced
-	protected DeltaFloatVariable chassisMass;
+	protected DeltaAutoVariable maxRollRate;
 
-	@rawTemplate(value = "'SHIP', 4, 1")
+	@rawTemplate(value = "float, 'SHIP', 6, 11")
 	@dereferenced
-	protected DeltaFloatVariable chassisSpeed;
+	protected DeltaAutoVariable currentSpeed;
 
-	@rawTemplate(value = "'SHIP', 4, 2")
+	@rawTemplate(value = "uint64, 'SHIP', 6, 12")
 	@dereferenced
-	protected DeltaFloatVariable capacitorEnergy;
+	protected DeltaAutoVariable shipTargetID;
 
-	@rawTemplate(value = "'SHIP', 4, 3")
+	@rawTemplate(value = "uint32, 'SHIP', 6, 13")
 	@dereferenced
-	protected DeltaFloatVariable boosterEnergy;
+	protected DeltaAutoVariable shipTargetSlot;
 
+	@rawTemplate(value = "String, 'SHIP', 6, 17")
+	@dereferenced
+	protected DeltaAutoVariable shipType;
+
+	@rawTemplate(value = "String, 'SHIP', 6, 18")
+	@dereferenced
+	protected DeltaAutoVariable shipDifficulty;
+
+	@rawTemplate(value = "String, 'SHIP', 6, 19")
+	@dereferenced
+	protected DeltaAutoVariable shipFaction;
+
+	@rawTemplate(value = "float, 'SHIP', 6, 20")
+	@dereferenced
+	protected DeltaAutoVariable frontShield;
+
+	@rawTemplate(value = "float, 'SHIP', 6, 21")
+	@dereferenced
+	protected DeltaAutoVariable rearShield;
+
+	@rawTemplate(value = "uint32, 'SHIP', 6, 22")
+	@dereferenced
+	protected DeltaAutoVariable shipGuildID;
+
+	// DeltaAutoMap template <class K, class V, int BaselineName, uint8 Type, int DeltaID>
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 1, 2")
+	@dereferenced
+	protected DeltaAutoPackedMap componentEfficiency;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 1, 3")
+	@dereferenced
+	protected DeltaAutoPackedMap componentEnergyEfficiency;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 1, 4")
+	@dereferenced
+	protected DeltaAutoPackedMap componentEnergyCost;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 1, 5")
+	@dereferenced
+	protected DeltaAutoPackedMap componentMass;
+
+	@rawTemplate(value = "uint32, UnicodeString, 'SHIP', 1, 6")
+	@dereferenced
+	protected DeltaAutoPackedMap componentNames;
+
+	@rawTemplate(value = "uint32, uint64, 'SHIP', 1, 7")
+	@dereferenced
+	protected DeltaAutoPackedMap componentCreator;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 1, 8")
+	@dereferenced
+	protected DeltaAutoPackedMap componentMaxDamage;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 1, 9")
+	@dereferenced
+	protected DeltaAutoPackedMap componentMinDamage;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 1, 10")
+	@dereferenced
+	protected DeltaAutoPackedMap componentShieldEffectiveness;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 1, 11")
+	@dereferenced
+	protected DeltaAutoPackedMap componentArmorEffectiveness;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 1, 12")
+	@dereferenced
+	protected DeltaAutoPackedMap componentEnergyPerShot;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 1, 13")
+	@dereferenced
+	protected DeltaAutoPackedMap componentRefire;
+
+	@rawTemplate(value = "uint32, int, 'SHIP', 1, 14")
+	@dereferenced
+	protected DeltaAutoPackedMap componentAmmoCurrent;
+
+	@rawTemplate(value = "uint32, int, 'SHIP', 1, 15")
+	@dereferenced
+	protected DeltaAutoPackedMap componentAmmoMax;
+
+	@rawTemplate(value = "uint32, uint32, 'SHIP', 1, 16")
+	@dereferenced
+	protected DeltaAutoPackedMap componentAmmoClass;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 3, 15")
+	@dereferenced
+	protected DeltaAutoPackedMap componentMaxArmor;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 3, 16")
+	@dereferenced
+	protected DeltaAutoPackedMap componentCurrentArmor;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 3, 17")
+	@dereferenced
+	protected DeltaAutoPackedMap componentCurrentHitpoints;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 3, 18")
+	@dereferenced
+	protected DeltaAutoPackedMap componentMaxHitpoints;
+
+	@rawTemplate(value = "uint32, uint32, 'SHIP', 3, 19")
+	@dereferenced
+	protected DeltaAutoPackedMap componentOptions;
+
+	@rawTemplate(value = "uint32, float, 'SHIP', 4, 4")
+	@dereferenced
+	protected DeltaAutoPackedMap componentRefireEfficiency;
+
+	// 6:14
 	@dereferenced
 	DeltaBitArray componentTargetableBitfield;
 
-	/**
-	 * Maps installed components to slots
-	 */
-
-	// SHIP 6:15
+	@rawTemplate(value = "uint32, uint32, 'SHIP', 6, 15")
 	@dereferenced
-	protected DeltaVectorMap<unsigned int, unsigned int> shipComponents;
-
-	// 1:2
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentEfficiency;
-	// 1:3
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentEnergyEfficiency;
-
-	// 1:4
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentEnergyCost;
-
-	// 1:5
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentMass;
-
-	// 1:6
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, unicode> componentNames;
-
-	// 1:7
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, unsigned long> componentCreator;
-
-	// 1:8
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentMaxDamage;
-
-	// 1:9
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentMinDamage;
-
-	// 1:10
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentShieldEffectiveness;
-
-	// 1:11
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentArmorEffectiveness;
-
-	// 1:12
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentEnergyPerShot;
-
-	// 1:13
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentRefire;
-
-	// 4:5
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentRefireEfficiency;
-
-	// 1:14
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, int> componentAmmoCurrent;
-
-	// 1:15
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, int> componentAmmoMax;
-
-	// 1:16
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, unsigned int> componentAmmoClass;
-
-	// 3:15
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentMaxArmor;
-
-	// 3:16
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentCurrentArmor;
-
-	// 3:17
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentCurrentHitpoints;
-
-	//  3:18
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, float> componentMaxHitpoints;
-
-	// 3:19
-	@dereferenced
-	protected DeltaVectorMap<unsigned int, unsigned int> componentOptions;
+	protected DeltaAutoMap componentCRCs;
 
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
-
 		super.objectVisible = 1;
-
-		totalMass = 500.0;
 
 		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
 		storedLocation = "";
-		controlDeviceID = 0;
 		hyperspacing = false;
 		hasWings = false;
+		openWingSpeed = 0.f;
 	}
 
-	/**
-	 * Sends the contained non slotted objects to the specified player
-	 * @pre { this object is locked }
-	 * @post { this object is locked, player received the container objects }
-	 * @param player SceneObject that will receive the objects
-	 */
-	@dirty
-	public native void sendContainerObjectsTo(SceneObject player, boolean forceLoad);
+	// delta variable set
+
+	// 1:17
+	@local
+	public void setChassisMaxMass(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		chassisMaxMass.update(value, notifyClient, this, delta);
+	}
+
+	// 1:18
+	@local
+	public void setShieldRechargeRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		shieldRechargeRate.update(value, notifyClient, this, delta);
+	}
+
+	// 1:19
+	@local
+	public void setCapacitorMaxEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		capacitorMaxEnergy.update(value, notifyClient, this, delta);
+	}
+
+	// 1:20
+	@local
+	public void setCapacitorRechargeRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		capacitorRechargeRate.update(value, notifyClient, this, delta);
+	}
+
+	// 1:21
+	@local
+	public void setEngineAccelerationRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		engineAccelerationRate.update(value, notifyClient, this, delta);
+	}
+
+	// 1:22
+	@local
+	public void setEngineDecelerationRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		engineDecelerationRate.update(value, notifyClient, this, delta);
+	}
+
+	// 1:23
+	@local
+	public void setEnginePitchRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		enginePitch.update(value, notifyClient, this, delta);
+	}
+
+	// 1:24
+	@local
+	public void setEngineYawRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		engineYaw.update(value, notifyClient, this, delta);
+	}
+
+	// 1:25
+	@local
+	public void setEngineRollRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		engineRoll.update(value, notifyClient, this, delta);
+	}
+
+	// 1:26
+	@local
+	public void setEngineMaxPitchRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		engineMaxPitch.update(value, notifyClient, this, delta);
+	}
+
+	// 1:27
+	@local
+	public void setEngineMaxYawRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		engineMaxYaw.update(value, notifyClient, this, delta);
+	}
+
+	// 1:28
+	@local
+	public void setEngineMaxRollRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		engineMaxRoll.update(value, notifyClient, this, delta);
+	}
+
+	// 1:29
+	@local
+	public void setMaxSpeed(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		maxSpeed.update(value, notifyClient, this, delta);
+	}
+
+	// 1:30
+	@local
+	public void setReactorGenerationRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		reactorGenerationRate.update(value, notifyClient, this, delta);
+	}
+
+	// 1:31
+	@local
+	public void setBoosterMaxEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		boosterMaxEnergy.update(value, notifyClient, this, delta);
+	}
+
+	// 1:32
+	@local
+	public void setBoosterRechargeRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		boosterRechargeRate.update(value, notifyClient, this, delta);
+	}
+
+	// 1:33
+	@local
+	public void setBoosterEnergyConsumptionRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		boosterConsumptionRate.update(value, notifyClient, this, delta);
+	}
+
+	// 1:34
+	@local
+	public void setBoosterAcceleration(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		boosterAcceleration.update(value, notifyClient, this, delta);
+	}
+
+	// 1:35
+	@local
+	public void setBoosterMaxSpeed(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		boosterMaxSpeed.update(value, notifyClient, this, delta);
+	}
+
+	// 1:36
+	@local
+	public void setDroidCommandSpeed(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		droidCommandSpeed.update(value, notifyClient, this, delta);
+	}
+
+	// 1:37
+	@local
+	public void setShipDroidID(unsigned long value, boolean notifyClient = true, DeltaMessage delta = null) {
+		shipDroidID.update(value, notifyClient, this, delta);
+	}
+
+	// 3:11
+	@local
+	public void setSlipRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		slip.update(value, notifyClient, this, delta);
+	}
+
+	// 3:12
+	@local
+	public void setCurrentChassisHealth(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		chassisCurrentHealth.update(value, notifyClient, this, delta);
+	}
+
+	// 3:13
+	@local
+	public void setChassisMaxHealth(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		chassisMaxHealth.update(value, notifyClient, this, delta);
+	}
+
+	// 3:13
+	@local
+	public void setShipNameCRC(unsigned int value, boolean notifyClient = true, DeltaMessage delta = null) {
+		shipNameCRC.update(value, notifyClient, this, delta);
+	}
+
+	// 3:20
+	@local
+	public void setFrontShieldMax(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		frontShieldMax.update(value, notifyClient, this, delta);
+	}
+
+	// 3:21
+	@local
+	public void setRearShieldMax(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		rearShieldMax.update(value, notifyClient, this, delta);
+	}
+
+	// 4:0
+	@local
+	public void setChassisMass(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		chassisMass.update(value, notifyClient, this, delta);
+	}
+
+	// 4:1
+	@local
+	public void setChassisSpeed(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		chassisSpeed.update(value, notifyClient, this, delta);
+	}
+
+	// 4:2
+	@local
+	public void setCapacitorEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		capacitorEnergy.update(value, notifyClient, this, delta);
+	}
+
+	// 4:3
+	@local
+	public void setBoosterEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		boosterEnergy.update(value, notifyClient, this, delta);
+	}
+
+	// 6:2
+	@local
+	public void setUniqueID(unsigned short value, boolean notifyClient = true, DeltaMessage delta = null) {
+		uniqueID.update(value, notifyClient, this, delta);
+	}
+
+	// 6:3
+	@local
+	public void setShipAccelerationRate(float radians, boolean notifyClient = true, DeltaMessage delta = null) {
+		shipAccelerationRate.update(radians, notifyClient, this, delta);
+	}
+
+	// 6:4
+	@local
+	public void setShipDecelerationRate(float radians, boolean notifyClient = true, DeltaMessage delta = null) {
+		shipDecelerationRate.update(radians, notifyClient, this, delta);
+	}
+
+	// 6:6
+	@local
+	public void setCurrentYawRate(float scale, boolean notifyClient = true, DeltaMessage delta = null) {
+		currentYawRate.update(scale, notifyClient, this, delta);
+	}
+
+	// 6:5
+	@local
+	public void setCurrentPitchRate(float scale, boolean notifyClient = true, DeltaMessage delta = null) {
+		currentPitchRate.update(scale, notifyClient, this, delta);
+	}
+
+	// 6:7
+	@local
+	public void setCurrentRollRate(float scale, boolean notifyClient = true, DeltaMessage delta = null) {
+		currentRollRate.update(scale, notifyClient, this, delta);
+	}
+
+	// 6:8
+	@local
+	public void setMaxPitchRate(float radians, boolean notifyClient = true, DeltaMessage delta = null) {
+		maxPitchRate.update(radians, notifyClient, this, delta);
+	}
+
+	// 6:9
+	@local
+	public void setMaxYawRate(float radians, boolean notifyClient = true, DeltaMessage delta = null) {
+		maxYawRate.update(radians, notifyClient, this, delta);
+	}
+
+	// 6:10
+	@local
+	public void setMaxRollRate(float radians, boolean notifyClient = true, DeltaMessage delta = null) {
+		maxRollRate.update(radians, notifyClient, this, delta);
+	}
+
+	// 6:11
+	@local
+	public void setCurrentSpeed(float speed, boolean notifyClient = true, DeltaMessage delta = null) {
+		currentSpeed.update(speed, notifyClient, this, delta);
+	}
+
+	// 6:12
+	@local
+	public void setShipTargetID(unsigned long value, boolean notifyClient = true, DeltaMessage delta = null) {
+		shipTargetID.update(value, notifyClient, this, delta);
+	}
+
+	// 6:13
+	@local
+	public void setShipTargetSlot(int value, boolean notifyClient = true, DeltaMessage delta = null) {
+		shipTargetSlot.update(value, notifyClient, this, delta);
+	}
+
+	// 6:17
+	@local
+	public void setShipType(@dereferenced final string value, boolean notifyClient = true, DeltaMessage delta = null) {
+		shipType.update(value, notifyClient, this, delta);
+	}
+
+	// 6:18
+	@local
+	public void setShipDifficulty(@dereferenced final string value, boolean notifyClient = true, DeltaMessage delta = null) {
+		shipDifficulty.update(value, notifyClient, this, delta);
+	}
+
+	// 6:19
+	@local
+	public void setShipFaction(@dereferenced final string value, boolean notifyClient = true, DeltaMessage delta = null) {
+		shipFaction.update(value, notifyClient, this, delta);
+	}
+
+	// 6:20
+	@local
+	public void setFrontShield(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		frontShield.update(value, notifyClient, this, delta);
+	}
+
+	// 6:21
+	@local
+	public void setRearShield(float value, boolean notifyClient = true, DeltaMessage delta = null) {
+		rearShield.update(value, notifyClient, this, delta);
+	}
+
+	// 6:22
+	@local
+	public void setShipGuildID(unsigned int value, boolean notifyClient = true, DeltaMessage delta = null) {
+		shipGuildID.update(value, notifyClient, this, delta);
+	}
+
+	// delta vector set
+
+	// 1:2
+	@local
+	public void setEfficiency(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentEfficiency.update(slot, value, message, command);
+	}
+
+	// 1:3
+	@local
+	public void setEnergyEfficiency(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentEnergyEfficiency.update(slot, value, message, command);
+	}
+
+	// 1:4
+	@local
+	public void setEnergyCost(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentEnergyCost.update(slot, value, message, command);
+	}
+
+	// 1:5
+	@local
+	public void setComponentMass(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentMass.update(slot, value, message, command);
+	}
+
+	// 1:6
+	@local
+	public void setComponentName(int slot, @dereferenced final string value, DeltaMessage message = null, byte command = 0) {
+		componentNames.update(slot, value, message, command);
+	}
+
+	// 1:7
+	@local
+	public void setComponentCreator(int slot, unsigned long value, DeltaMessage message = null, byte command = 0) {
+		componentCreator.update(slot, value, message, command);
+	}
+
+	// 1:8
+	@local
+	public void setMaxDamage(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentMaxDamage.update(slot, value, message, command);
+	}
+
+	// 1:9
+	@local
+	public void setMinDamage(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentMinDamage.update(slot, value, message, command);
+	}
+
+	// 1:10
+	@local
+	public void setShieldEffectiveness(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentShieldEffectiveness.update(slot, value, message, command);
+	}
+
+	// 1:11
+	@local
+	public void setArmorEffectiveness(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentArmorEffectiveness.update(slot, value, message, command);
+	}
+
+	// 1:12
+	@local
+	public void setEnergyPerShot(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentEnergyPerShot.update(slot, value, message, command);
+	}
+
+	// 1:13
+	@local
+	public void setRefireRate(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentRefire.update(slot, value, message, command);
+	}
+
+	// 1:14
+	@local
+	public void setCurrentAmmo(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentAmmoCurrent.update(slot, value, message, command);
+	}
+
+	// 1:15
+	@local
+	public void setMaxAmmo(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentAmmoMax.update(slot, value, message, command);
+	}
+
+	// 1:16
+	@local
+	public void setAmmoClass(int slot, unsigned int value, DeltaMessage message = null, byte command = 0) {
+		componentAmmoClass.update(slot, value, message, command);
+	}
+
+	// 3:15
+	@local
+	public void setComponentMaxArmor(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentMaxArmor.update(slot, value, message, command);
+	}
+
+	// 3:16
+	@local
+	public void setComponentArmor(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentCurrentArmor.update(slot, value, message, command);
+	}
+
+	// 3:17
+	@local
+	public void setComponentHitpoints(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentCurrentHitpoints.update(slot, value, message, command);
+	}
+
+	// 3:18
+	@local
+	public void setComponentMaxHitpoints(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentMaxHitpoints.update(slot, value, message, command);
+	}
+
+	// 3:19
+	@local
+	public void setComponentOptions(int slot, unsigned int value, DeltaMessage message = null, byte command = 0) {
+		componentOptions.update(slot, value, message, command);
+	}
+
+	// 4:4
+	@local
+	public void setRefireEfficiency(int slot, float value, DeltaMessage message = null, byte command = 0) {
+		componentRefireEfficiency.update(slot, value, message, command);
+	}
+
+	// 6:15
+	@local
+	public void setComponentCRC(int slot, unsigned int value, DeltaMessage message = null, byte command = 0) {
+		componentCRCs.update(slot, value, message, command);
+	}
+
+	// delta vector get
+
+	// 1:2
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getComponentEfficiencyMap() {
+		return componentEfficiency;
+	}
+
+	// 1:3
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getComponentEnergyEfficiencyMap() {
+		return componentEnergyEfficiency;
+	}
+
+	// 1:4
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getComponentEnergyCostMap() {
+		return componentEnergyCost;
+	}
+
+	// 1:5
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getComponentMassMap() {
+		return componentMass;
+	}
+
+	// 1:6
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, unicode> getComponentNameMap() {
+		return componentNames;
+	}
+
+	// 1:7
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, unsigned long> getComponentCreatorMap() {
+		return componentCreator;
+	}
+
+	// 1:8
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getComponentMaxDamageMap() {
+		return componentMaxDamage;
+	}
+
+	// 1:9
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getComponentMinDamageMap() {
+		return componentMinDamage;
+	}
+
+	// 1:10
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getShieldEffectivenessMap() {
+		return componentShieldEffectiveness;
+	}
+
+	// 1:11
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getArmorEffectivenessMap() {
+		return componentArmorEffectiveness;
+	}
+
+	// 1:12
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getEnergyPerShotMap() {
+		return componentEnergyPerShot;
+	}
+
+	// 1:13
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getComponentRefireRate() {
+		return componentRefire;
+	}
+
+	// 1:14
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, int> getCurrentAmmoMap() {
+		return componentAmmoCurrent;
+	}
+
+	// 1:15
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, int> getMaxAmmoMap() {
+		return componentAmmoMax;
+	}
+
+	// 1:16
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, unsigned int> getAmmoClassMap() {
+		return componentAmmoClass;
+	}
+
+	// 3:15
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getMaxArmorMap() {
+		return componentMaxArmor;
+	}
+
+	// 3:16
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getCurrentArmorMap() {
+		return componentCurrentArmor;
+	}
+
+	// 3:17
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getCurrentHitpointsMap() {
+		return componentCurrentHitpoints;
+	}
+
+	//  3:18
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getMaxHitpointsMap() {
+		return componentMaxHitpoints;
+	}
+
+	// 3:19
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, unsigned int> getComponentOptionsMap() {
+		return componentOptions;
+	}
+
+	// 4:4
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, float> getComponentRefireEfficiency() {
+		return componentRefireEfficiency;
+	}
+
+	// 6:14
+	@local
+	@read
+	public final DeltaBitArray getTargetableBitfield() {
+		return componentTargetableBitfield;
+	}
+
+	// 6:15
+	@local
+	@read
+	public final DeltaVectorMap<unsigned int, unsigned int> getShipComponentMap() {
+		return componentCRCs;
+	}
+
+	// delta variable get
+
+	// 1:17
+	public float getChassisMaxMass() {
+		return chassisMaxMass.get();
+	}
+
+	// 1:18
+	public float getShieldRechargeRate() {
+		return shieldRechargeRate.get();
+	}
+
+	// 1:19
+	public float getCapacitorMaxEnergy() {
+		return capacitorMaxEnergy.get();
+	}
+
+	// 1:20
+	public float getCapacitorRechargeRate() {
+		return capacitorRechargeRate.get();
+	}
+
+	// 1:21
+	public float getEngineAccelerationRate() {
+		return engineAccelerationRate.get();
+	}
+
+	// 1:22
+	public float getEngineDecelerationRate() {
+		return engineDecelerationRate.get();
+	}
+
+	// 1:23
+	public float getEnginePitchRate() {
+		return enginePitch.get();
+	}
+
+	// 1:24
+	public float getEngineYawRate() {
+		return engineYaw.get();
+	}
+
+	// 1:25
+	public float getEngineRollRate() {
+		return engineRoll.get();
+	}
+
+	// 1:26
+	public float getEngineMaxPitchRate() {
+		return engineMaxPitch.get();
+	}
+
+	// 1:27
+	public float getEngineMaxYawRate() {
+		return engineMaxYaw.get();
+	}
+
+	// 1:28
+	public float getEngineMaxRollRate() {
+		return engineMaxRoll.get();
+	}
+
+	// 1:29
+	public float getMaxSpeed() {
+		return maxSpeed.get();
+	}
+
+	// 1:30
+	public float getReactorGenerationRate() {
+		return reactorGenerationRate.get();
+	}
+
+	// 1:31
+	public float getBoosterMaxEnergy() {
+		return boosterMaxEnergy.get();
+	}
+
+	// 1:32
+	public float getBoosterRechargeRate() {
+		return boosterRechargeRate.get();
+	}
+
+	// 1:33
+	public float getBoosterConsumptionRate() {
+		return boosterConsumptionRate.get();
+	}
+
+	// 1:34
+	public float getBoosterAcceleration() {
+		return boosterAcceleration.get();
+	}
+
+	// 1:35
+	public float getBoosterMaxSpeed() {
+		return boosterMaxSpeed.get();
+	}
+
+	// 1:36
+	public float getDroidCommandSpeed() {
+		return droidCommandSpeed.get();
+	}
+
+	// 1:37
+	public unsigned long getShipDroidID() {
+		return shipDroidID.get();
+	}
+
+	// 3:11
+	public float getSlip() {
+		return slip.get();
+	}
+
+	// 3:12
+	public float getChassisCurrentHealth() {
+		return chassisCurrentHealth.get();
+	}
+
+	// 3:13
+	public float getChassisMaxHealth() {
+		return chassisMaxHealth.get();
+	}
+
+	// 3:14
+	public unsigned int getShipNameCRC() {
+		return shipNameCRC.get();
+	}
+
+	// 3:20
+	public float getMaxFrontShield() {
+		return frontShieldMax.get();
+	}
+
+	// 3:21
+	public float getMaxRearShield() {
+		return rearShieldMax.get();
+	}
+
+	// 4:0
+	public float getChassisMass() {
+		return chassisMass.get();
+	}
+
+	// 4:1
+	public float getChassisSpeed() {
+		return chassisSpeed.get();
+	}
+
+	// 4:2
+	public float getCapacitorEnergy() {
+		return capacitorEnergy.get();
+	}
+
+	// 4:3
+	public float getBoosterEnergy() {
+		return boosterEnergy.get();
+	}
+
+	// 6:2
+	public unsigned short getUniqueID() {
+		return generateUniqueID();
+	}
+
+	// 6:3
+	public float getShipAccelerationRate() {
+		return shipAccelerationRate.get();
+	}
+
+	// 6:4
+	public float getShipDecelerationRate() {
+		return shipDecelerationRate.get();
+	}
+
+	// 6:5
+	public float getCurrentPitchRate() {
+		return currentPitchRate.get();
+	}
+
+	// 6:6
+	public float getCurrentYawRate() {
+		return currentYawRate.get();
+	}
+
+	// 6:7
+	public float getCurrentRollRate() {
+		return currentRollRate.get();
+	}
+
+	// 6:8
+	public float getMaxPitchRate() {
+		return maxPitchRate.get();
+	}
+
+	// 6:9
+	public float getMaxYawRate() {
+		return maxYawRate.get();
+	}
+
+	// 6:10
+	public float getMaxRollRate() {
+		return maxRollRate.get();
+	}
+
+	// 6:11
+	public float getCurrentSpeed() {
+		return currentSpeed.get();
+	}
+
+	// 6:12
+	public unsigned long getShipTargetID() {
+		return shipTargetID.get();
+	}
+
+	// 6:13
+	public int getShipTargetSlot() {
+		return shipTargetSlot.get();
+	}
+
+	// 6:17
+	@read
+	@dereferenced
+	public string getShipType() {
+		return shipType.get();
+	}
+
+	// 6:18
+	@read
+	@dereferenced
+	public string getShipDifficulty() {
+		return shipDifficulty.get();
+	}
+
+	// 6:19
+	@read
+	@dereferenced
+	public string getShipFaction() {
+		return shipFaction.get();
+	}
+
+	// 6:20
+	public float getFrontShield() {
+		return frontShield.get();
+	}
+
+	// 6:21
+	public float getRearShield() {
+		return rearShield.get();
+	}
+
+	// 6:22
+	public unsigned int getShipGuildID() {
+		return shipGuildID.get();
+	}
+
+	// deltas end
 
 	@dirty
-	public native abstract void sendSlottedObjectsTo(SceneObject player);
-
-	public native unsigned short getUniqueID();
-
-	public native void initializeTransientMembers();
-
-	public native void doRecovery(int latency);
-
-	@preLocked
-	public native void scheduleRecovery();
-
-	@preLocked
-	public native void cancelRecovery();
+	@local
+	@nativeStub
+	public native boolean isShipObject();
 
 	@dirty
 	@nativeStub
 	@local
 	public native ShipObject asShipObject();
 
-	public native void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
-	public native void sendBaselinesTo(SceneObject player);
-
-	public native void storeShip(CreatureObject player);
-
-	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
-	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
-
 	@local
-	public void setSlipRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		slip.update(value, notifyClient, this, delta);
+	public void setControlDeviceID(unsigned long value) {
+		controlDeviceID = value;
 	}
 
-	@local
-	public void setCurrentChassisHealth(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		chassisCurrentHealth.update(value, notifyClient, this, delta);
+	@read
+	@dereferenced
+	public unsigned long getControlDeviceID() {
+		return controlDeviceID;
 	}
 
-	@local
-	public void setChassisMaxHealth(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		chassisMaxHealth.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setFrontShieldMax(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		frontShieldMax.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setRearShieldMax(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		rearShieldMax.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setChassisMass(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		chassisMass.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setChassisSpeed(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		chassisSpeed.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setCapacitorEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		capacitorEnergy.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setBoosterEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		boosterEnergy.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setHasWings(boolean value) {
-		hasWings = value;
+	public void setComponentTargetable(int slot, boolean targetable) {
+		componentTargetableBitfield.setBit(slot, targetable);
 	}
 
 	@dirty
@@ -483,489 +1273,12 @@ class ShipObject extends TangibleObject {
 		return componentMaxArmor.get(4) + componentMaxArmor.get(5);
 	}
 
-	@local
-	public native void damageArmor(float damage, DeltaMessage delta);
-
-	public float getChassisMass() {
-		return chassisMass.get();
-	}
-
-	public float getChassisSpeed() {
-		return chassisSpeed.get();
-	}
-
-	public float getCapacitorEnergy() {
-		return capacitorEnergy.get();
-	}
-
-	public float getBoosterEnergy() {
-		return boosterEnergy.get();
-	}
-
-	public native void setShipName(final string name, boolean notifyClient = true);
-
-	@local
-	public void setShieldRechargeRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		shieldRechargeRate.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setCapacitorMaxEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		capacitorMaxEnergy.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setCapacitorRechargeRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		capacitorRechargeRate.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setEngineAccelerationRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		engineAccelerationRate.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setEngineDecelerationRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		engineDecelerationRate.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setEngineMaxPitchRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		engineMaxPitch.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setEngineMaxYawRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		engineMaxYaw.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setEngineMaxRollRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		engineMaxRoll.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setEnginePitchRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		enginePitch.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setEngineYawRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		engineYaw.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setEngineRollRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		engineRoll.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setMaxSpeed(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		maxSpeed.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setReactorGenerationRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		reactorGenerationRate.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setBoosterMaxEnergy(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		boosterMaxEnergy.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setBoosterRechargeRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		boosterRechargeRate.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setBoosterEnergyConsumptionRate(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		boosterConsumptionRate.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setBoosterAcceleration(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		boosterAcceleration.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setBoosterMaxSpeed(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		if (value < 1.0f)
-			value = 1.0f;
-
-		boosterMaxSpeed.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setDroidCommandSpeed(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		droidCommandSpeed.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setShipAccelerationRate(float radians, boolean notifyClient = true, DeltaMessage delta = null) {
-		shipAccelerationRate.update(radians, notifyClient, this, delta);
-	}
-
-	@local
-	public void setShipDecelerationRate(float radians, boolean notifyClient = true, DeltaMessage delta = null) {
-		shipDecelerationRate.update(radians, notifyClient, this, delta);
-	}
-
-	@local
-	public void setMaxYawRate(float radians, boolean notifyClient = true, DeltaMessage delta = null) {
-		maxYawRate.update(radians, notifyClient, this, delta);
-	}
-
-	@local
-	public void setCurrentYawRate(float scale, boolean notifyClient = true, DeltaMessage delta = null) {
-		currentYawRate.update(scale, notifyClient, this, delta);
-	}
-
-	@local
-	public void setMaxPitchRate(float radians, boolean notifyClient = true, DeltaMessage delta = null) {
-		maxPitchRate.update(radians, notifyClient, this, delta);
-	}
-
-	@local
-	public void setCurrentPitchRate(float scale, boolean notifyClient = true, DeltaMessage delta = null) {
-		currentPitchRate.update(scale, notifyClient, this, delta);
-	}
-
-	@local
-	public void setMaxRollRate(float radians, boolean notifyClient = true, DeltaMessage delta = null) {
-		maxRollRate.update(radians, notifyClient, this, delta);
-	}
-
-	@local
-	public void setCurrentRollRate(float scale, boolean notifyClient = true, DeltaMessage delta = null) {
-		currentRollRate.update(scale, notifyClient, this, delta);
-	}
-
-	@local
-	public void setCurrentSpeed(float speed, boolean notifyClient = true, DeltaMessage delta = null) {
-		currentSpeed.update(speed, notifyClient, this, delta);
-	}
-
-	@local
-	public void setFrontShield(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		frontShield.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setRearShield(float value, boolean notifyClient = true, DeltaMessage delta = null) {
-		rearShield.update(value, notifyClient, this, delta);
-	}
-
-	@local
-	public void setEfficiency(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(2);
-		}
-		componentEfficiency.set(slot, value, message);
-	}
-
-	@local
-	public void setEnergyEfficiency(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(3);
-		}
-		componentEnergyEfficiency.set(slot, value, message);
-	}
-
-	@local
-	public void setEnergyCost(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(4);
-		}
-		componentEnergyCost.set(slot, value, message);
-	}
-
-	@local
-	public void setComponentMass(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(5);
-		}
-		componentMass.set(slot, value, message);
-	}
-
-	@local
-	public void setComponentName(int slot, @dereferenced unicode value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(6);
-		}
-		componentNames.set(slot, value, message);
-	}
-
-	@local
-	public void setComponentCreator(int slot, unsigned long value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(7);
-		}
-		componentCreator.set(slot, value, message);
-	}
-
-	@local
-	public void setMaxDamage(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(8);
-		}
-		componentMaxDamage.set(slot, value, message);
-	}
-
-	@local
-	public void setMinDamage(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(9);
-		}
-		componentMinDamage.set(slot, value, message);
-	}
-	@local
-	public void setShieldEffectiveness(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(10);
-		}
-		componentShieldEffectiveness.set(slot, value, message);
-	}
-
-	@local
-	public void setArmorEffectiveness(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(11);
-		}
-		componentArmorEffectiveness.set(slot, value, message);
-	}
-
-	@local
-	public void setEnergyPerShot(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(12);
-		}
-		componentEnergyPerShot.set(slot, value, message);
-	}
-
-	@local
-	public void setRefireRate(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(13);
-		}
-		componentRefire.set(slot, value, message);
-	}
-
-	@local
-	public void setRefireEfficiency(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(4);
-		}
-		componentRefireEfficiency.set(slot, value, message);
-	}
-
-	@local
-	public void setCurrentAmmo(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(14);
-		}
-		componentAmmoCurrent.set(slot, value, message);
-	}
-
-	@local
-	public void setMaxAmmo(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(15);
-		}
-		componentAmmoMax.set(slot, value, message);
-	}
-
-	@local
-	public void setAmmoClass(int slot, unsigned int value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(16);
-		}
-		componentAmmoClass.set(slot, value, message);
-	}
-
-	@local
-	public void setComponentMaxArmor(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(15);
-		}
-		componentMaxArmor.set(slot, value, message);
-	}
-
-	@local
-	public void setComponentArmor(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(16);
-		}
-		componentCurrentArmor.set(slot, value, message);
-	}
-
-	@local
-	public void setComponentHitpoints(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(17);
-		}
-		componentCurrentHitpoints.set(slot, value, message);
-	}
-
-	@local
-	public void setComponentMaxHitpoints(int slot, float value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(18);
-		}
-		componentMaxHitpoints.set(slot, value, message);
-	}
-
-	@local
-	public void setComponentOptions(int slot, unsigned int value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(19);
-		}
-
-		componentOptions.set(slot, value, message);
-	}
-
-	@local
-	public void setComponentCRC(int slot, unsigned int value, DeltaMessage message = null) {
-		if (message != null) {
-			message.startUpdate(15);
-		}
-		shipComponents.set(slot, value, message);
-	}
-
-	@local
-	public DeltaVectorMap<unsigned int, unsigned int> getShipComponentMap() {
-		return shipComponents;
-	}
-
-	// 1:2
-	@local
-	public DeltaVectorMap<unsigned int, float> getComponentEfficiencyMap() {
-		return componentEfficiency;
-	}
-	// 1:3
-	@local
-	public DeltaVectorMap<unsigned int, float> getComponentEnergyEfficiencyMap() {
-		return componentEnergyEfficiency;
-	}
-
-	// 1:4
-	@local
-	public DeltaVectorMap<unsigned int, float> getComponentEnergyCostMap() {
-		return componentEnergyCost;
-	}
-
-	// 1:5
-	@local
-	public DeltaVectorMap<unsigned int, float> getComponentMassMap() {
-		return componentMass;
-	}
-
-	// 1:6
-	@local
-	public DeltaVectorMap<unsigned int, unicode> getComponentNameMap() {
-		return componentNames;
-	}
-
-	// 1:7
-	@local
-	public DeltaVectorMap<unsigned int, unsigned long> getComponentCreatorMap() {
-		return componentCreator;
-	}
-
-	// 1:8
-	@local
-	public DeltaVectorMap<unsigned int, float> getComponentMaxDamageMap() {
-		return componentMaxDamage;
-	}
-
-	// 1:9
-	@local
-	public DeltaVectorMap<unsigned int, float> getComponentMinDamageMap() {
-		return componentMinDamage;
-	}
-
-	// 1:10
-	@local
-	public DeltaVectorMap<unsigned int, float> getShieldEffectivenessMap() {
-		return componentShieldEffectiveness;
-	}
-
-	// 1:11
-	@local
-	public DeltaVectorMap<unsigned int, float> getArmorEffectivenessMap() {
-		return componentArmorEffectiveness;
-	}
-
-	// 1:12
-	@local
-	public DeltaVectorMap<unsigned int, float> getEnergyPerShotMap() {
-		return componentEnergyPerShot;
-	}
-
-	// 1:13
-	@local
-	public DeltaVectorMap<unsigned int, float> getComponentRefireRate() {
-		return componentRefire;
-	}
-
-	// 4:4
-	@local
-	public DeltaVectorMap<unsigned int, float> getComponentRefireEfficiency() {
-		return componentRefireEfficiency;
-	}
-
-	// 1:14
-	@local
-	public DeltaVectorMap<unsigned int, int> getCurrentAmmoMap() {
-		return componentAmmoCurrent;
-	}
-
-	// 1:15
-	@local
-	public DeltaVectorMap<unsigned int, int> getMaxAmmoMap() {
-		return componentAmmoMax;
-	}
-
-	// 1:16
-	@local
-	public DeltaVectorMap<unsigned int, unsigned int> getAmmoClassMap() {
-		return componentAmmoClass;
-	}
-
-	// 3:15
-	@local
-	public DeltaVectorMap<unsigned int, float> getMaxArmorMap() {
-		return componentMaxArmor;
-	}
-
-	// 3:16
-	@local
-	public DeltaVectorMap<unsigned int, float> getCurrentArmorMap() {
-		return componentCurrentArmor;
-	}
-
-	// 3:17
-	@local
-	public DeltaVectorMap<unsigned int, float> getCurrentHitpointsMap() {
-		return componentCurrentHitpoints;
-	}
-
-	//  3:18
-	@local
-	public DeltaVectorMap<unsigned int, float> getMaxHitpointsMap() {
-		return componentMaxHitpoints;
-	}
-
-	// 3:19
-	@local
-	public DeltaVectorMap<unsigned int, unsigned int> getComponentOptionsMap() {
-		return componentOptions;
+	public unsigned int getComponentCRC(unsigned int slot) {
+		return componentCRCs.get(slot);
 	}
 
-	@local
-	public DeltaBitArray getTargetableBitfield() {
-		return componentTargetableBitfield;
+	public boolean hasComponentFlag(unsigned int slot, unsigned int value) {
+		return getComponentOptionsMap().get(slot) & value;
 	}
 
 	@dirty
@@ -982,186 +1295,30 @@ class ShipObject extends TangibleObject {
 		return totalCellNumber;
 	}
 
-	public float getShieldRechargeRate() {
-		return shieldRechargeRate.get();
-	}
-
-	public float getCapacitorMaxEnergy() {
-		return capacitorMaxEnergy.get();
-	}
-
-	public float getCapacitorRechargeRate() {
-		return capacitorRechargeRate.get();
-	}
-
-	public float getEngineAccelerationRate() {
-		return engineAccelerationRate.get();
-	}
-
-	public float getEngineDecelerationRate() {
-		return engineDecelerationRate.get();
-	}
-
-	public float getEnginePitchRate() {
-		return enginePitch.get();
-	}
-
-	public float getEngineYawRate() {
-		return engineYaw.get();
-	}
-
-	public float getEngineRollRate() {
-		return engineRoll.get();
-	}
-
-	public float getEngineMaxPitchRate() {
-		return engineMaxPitch.get();
-	}
-
-	public float getEngineMaxYawRate() {
-		return engineMaxYaw.get();
-	}
-
-	public float getEngineMaxRollRate() {
-		return engineMaxRoll.get();
-	}
-
-	public float getReactorGenerationRate() {
-		return reactorGenerationRate.get();
-	}
-
-	public float getBoosterMaxEnergy() {
-		return boosterMaxEnergy.get();
-	}
-
-	public float getBoosterRechargeRate() {
-		return boosterRechargeRate.get();
-	}
-
-	public float getBoosterConsumptionRate() {
-		return boosterConsumptionRate.get();
-	}
-
-	public float getBoosterAcceleration() {
-		return boosterAcceleration.get();
-	}
-
-	public float getBoosterMaxSpeed() {
-		return boosterMaxSpeed.get();
-	}
-
-	public float getDroidCommandSpeed() {
-		return droidCommandSpeed.get();
-	}
-
-	public float getSlip() {
-		return slip.get();
-	}
-
-	public float getChassisMaxHealth() {
-		return chassisMaxHealth.get();
-	}
-
-	public float getChassisCurrentHealth() {
-		return chassisCurrentHealth.get();
-	}
-
-	public float getMaxFrontShield() {
-		return frontShieldMax.get();
-	}
-
-	public float getMaxRearShield() {
-		return rearShieldMax.get();
-	}
-
-	public float getShipAccelerationRate() {
-		return shipAccelerationRate.get();
-	}
-
-	public float getShipDecelerationRate() {
-		return shipDecelerationRate.get();
-	}
-	public float getMaxYawRate() {
-		return maxYawRate.get();
-	}
-
-	public float getMaxRollRate() {
-		return maxRollRate.get();
-	}
-
-	public float getMaxPitchRate() {
-		return maxPitchRate.get();
-	}
-
-	public float getCurrentYawRate() {
-		return currentYawRate.get();
-	}
-
-	public float getCurrentRollRate() {
-		return currentRollRate.get();
-	}
-
-	public float getCurrentPitchRate() {
-		return currentPitchRate.get();
-	}
-
-	public float getCurrentSpeed() {
-		return currentSpeed.get();
-	}
-
-	public float getFrontShield() {
-		return frontShield.get();
-	}
-
-	public float getRearShield() {
-		return rearShield.get();
-	}
-
-	public float getTotalMass() {
-		return totalMass;
-	}
-
-	public float getMaxSpeed() {
-		return maxSpeed.get();
-	}
-
-	public native float getActualSpeed();
-
-	public string getShipName() {
-		return shipName;
-	}
-
+	@read
+	@dereferenced
 	public string getStoredLocation() {
 		return storedLocation;
 	}
 
-	public float getComponentEnergyEfficiency(int slot) {
-		return componentEnergyEfficiency.get(slot);
-	}
-
-
-	public unsigned int getShipNameCRC() {
-		return shipNameCRC.get();
-	}
-
-	public void setStoredLocation(string location) {
+	@local
+	public void setStoredLocation(@dereferenced final string location) {
 		storedLocation = location;
 	}
 
-	public void setParkingLocation(string location) {
+	@local
+	public void setParkingLocation(@dereferenced final string location) {
 		parkingLocation = location;
 	}
 
+	@local
 	public void setOwner(CreatureObject obj) {
 		owner = obj;
 	}
 
+	@local
 	public void setPilotChair(SceneObject obj) {
 		pilotChair = obj;
-	}
-
-	public void setComponentTargetable(int slot, boolean targetable) {
-		componentTargetableBitfield.setBit(slot, targetable);
 	}
 
 	@preLocked
@@ -1173,9 +1330,6 @@ class ShipObject extends TangibleObject {
 		}
 	}
 
-	@preLocked
-	public native void setHyperspaceDelay();
-
 	@weakReference
 	public CreatureObject getOwner() {
 		return owner;
@@ -1186,21 +1340,10 @@ class ShipObject extends TangibleObject {
 		return pilotChair;
 	}
 
-	public native string getParkingLocation();
-
-	public native void install(CreatureObject owner, SceneObject component, int slot, boolean notifyClient = false);
-	public native void uninstall(CreatureObject owner, int slot, boolean notifyClient);
-
 	@local
-	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
-
-	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
-
-	@dirty
-	@local
-	@nativeStub
-	public native boolean isShipObject();
+	public void setHasWings(boolean value) {
+		hasWings = value;
+	}
 
 	@dirty
 	public boolean isHyperspacing() {
@@ -1213,82 +1356,13 @@ class ShipObject extends TangibleObject {
 	}
 
 	@dirty
-	public boolean isBoosterActive() {
-		return componentOptions.get(7);
-	}
-
-	@dirty
-	public void setConversationTemplate(final string convoTemplate) {
-		conversationTemplate = convoTemplate;
-	}
-
-	@dirty
-	public void setConversationMobile(final string mobile) {
-		conversationMobile = mobile;
-	}
-
-	@dirty
-	public void setConversationMessage(final string message) {
-		conversationMessage = message;
-	}
-
-	@dirty
-	public void setShipDifficulty(final string difficulty) {
-		shipDifficulty = difficulty;
-	}
-
-	@dirty
-	public void setShipFaction(final string faction) {
-		shipFaction = faction;
-	}
-
-	@dirty
-	public void setShipType(final string type) {
-		shipType = type;
-	}
-
-	public string getConversationTemplate() {
-		return conversationTemplate;
-	}
-
-	public string getConversationMobile() {
-		return conversationMobile;
-	}
-
-	public string getConversationMessage() {
-		return conversationMessage;
-	}
-
-	public string getShipDifficulty() {
-		return shipDifficulty;
-	}
-
-	public string getShipFaction() {
-		return shipFaction;
-	}
-
-	public string getShipType() {
-		return shipType;
-	}
-
-	@dirty
-	@local
-	public native boolean checkInConvoRange(SceneObject object);
-
-	public native int getHyperspaceDelay();
-
-	@preLocked
-	public void setControlDeviceID(unsigned long oid) {
-		controlDeviceID = oid;
-	}
-
-	public unsigned long getControlDeviceID() {
-		return controlDeviceID;
-	}
-
-	@dirty
 	public ShipComponent getComponentObject(unsigned int slot) {
 		return components.get(slot);
+	}
+
+	@local
+	public void setComponentObject(unsigned int slot, ShipComponent object) {
+		components.put(slot, object);
 	}
 
 	@dirty
@@ -1296,9 +1370,124 @@ class ShipObject extends TangibleObject {
 		return boostTimer.isPast();
 	}
 
+	public boolean isBoosterActive() {
+		return getComponentOptionsMap().get(7) & 4;
+	}
+
+	@read
+	public string getConversationTemplate() {
+		return conversationTemplate;
+	}
+
+	@read
+	public string getConversationMobile() {
+		return conversationMobile;
+	}
+
+	@read
+	public string getConversationMessage() {
+		return conversationMessage;
+	}
+
+	@dirty
+	public void setConversationTemplate(@dereferenced final string convoTemplate) {
+		conversationTemplate = convoTemplate;
+	}
+
+	@dirty
+	public void setConversationMobile(@dereferenced final string mobile) {
+		conversationMobile = mobile;
+	}
+
+	@dirty
+	public void setConversationMessage(@dereferenced final string message) {
+		conversationMessage = message;
+	}
+
+	public float getOpenWingSpeed() {
+		return openWingSpeed;
+	}
+
+	@local
+	public void setOpenWingSpeed(float value) {
+		openWingSpeed = value;
+	}
+
+	@dereferenced
+	@read
+	public string getShipName() {
+		return chassisDataName;
+	}
+
+	@local
+	public void setShipName(@dereferenced final string value) {
+		chassisDataName = value;
+	}
+
+	@local
+	public native void damageArmor(float damage, DeltaMessage delta);
+
+	@preLocked
+	public native void createChildObjects();
+
+	@preLocked
+	public native void setHyperspaceDelay();
+
+	public native int getHyperspaceDelay();
+
+	public native string getParkingLocation();
+
+	@local
+	public native void install(CreatureObject owner, SceneObject component, int slot, boolean notifyClient = false);
+
+	@local
+	public native void uninstall(CreatureObject owner, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@dirty
+	public native void sendContainerObjectsTo(SceneObject player, boolean forceLoad);
+
+	@dirty
+	public native abstract void sendSlottedObjectsTo(SceneObject player);
+
+	public native void initializeTransientMembers();
+
+	public native void doRecovery(int latency);
+
+	@preLocked
+	public native void scheduleRecovery();
+
+	@preLocked
+	public native void cancelRecovery();
+
+	public native void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
+
+	public native void sendBaselinesTo(SceneObject player);
+
+	public native void storeShip(CreatureObject player);
+
+	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
+
+	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
+
 	public native void addComponentFlag(unsigned int slot, unsigned int flag, boolean notify = true);
 
 	public native void removeComponentFlag(unsigned int slot, unsigned int flag, boolean notify = true);
 
 	public native void restartBooster();
+
+	public native float getActualSpeed();
+
+	@dirty
+	@local
+	public native boolean checkInConvoRange(SceneObject object);
+
+	public abstract native void setFaction(unsigned int crc);
+
+	public native unsigned short generateUniqueID();
 }

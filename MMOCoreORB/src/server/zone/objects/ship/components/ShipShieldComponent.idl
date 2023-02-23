@@ -1,7 +1,7 @@
 /*
-Copyright <SWGEmu>
-See file COPYING for copying conditions.
-*/
+ Copyright <SWGEmu>
+ See file COPYING for copying conditions.
+ */
 
 package server.zone.objects.ship.components;
 
@@ -13,10 +13,17 @@ import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 
 class ShipShieldComponent extends ShipComponent {
+	protected float rearHitpoints;
+	protected float frontHitpoints;
+	protected float rechargeRate;
 
-	float rearHitpoints;
-	float frontHitpoints;
-	float rechargeRate;
+	public ShipShieldComponent() {
+		super();
+
+		rearHitpoints = 0.f;
+		frontHitpoints = 0.f;
+		rechargeRate = 0.f;
+	}
 
 	public float getRearHitpoints() {
 		return rearHitpoints;
@@ -42,10 +49,6 @@ class ShipShieldComponent extends ShipComponent {
 		rechargeRate = value;
 	}
 
-	public ShipShieldComponent() {
-		super();
-	}
-
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 
@@ -56,5 +59,9 @@ class ShipShieldComponent extends ShipComponent {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	@local
 	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
 }
