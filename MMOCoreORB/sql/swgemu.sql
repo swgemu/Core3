@@ -2101,7 +2101,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `swgemu`.`sessions`;
 CREATE TABLE  `swgemu`.`sessions` (
   `account_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `session_id` int(10) unsigned NOT NULL,
+  `session_id` varchar(64) NOT NULL,
   `ip` varchar(15) NOT NULL,
   `expires` datetime NOT NULL,
   PRIMARY KEY (`account_id`) USING BTREE
