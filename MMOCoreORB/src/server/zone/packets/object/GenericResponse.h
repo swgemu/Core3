@@ -8,6 +8,8 @@
 #ifndef GENERICRESPONSE_H_
 #define GENERICRESPONSE_H_
 
+#include "server/zone/packets/object/ObjectControllerMessage.h"
+
 class GenericResponse : public ObjectControllerMessage {
 public:
 	GenericResponse(CreatureObject* play, uint32 msg, uint8 byte1, uint8 byte2)
