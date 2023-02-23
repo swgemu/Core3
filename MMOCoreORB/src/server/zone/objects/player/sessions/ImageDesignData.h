@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
-class ImageDesignData : public Object {
+class ImageDesignData : public Object, Logger {
 protected:
 	String hairTemplate;
 	CustomizationVariables hairCustomizationVariables;
@@ -42,6 +42,7 @@ public:
 		offeredPayment(0), designerAccepted(0), targetAccepted(0), statMigrationRequested(0),
 		bodySkillMod(0), faceSkillMod(0), markingsSkillMod(0), hairSkillMod(0) {
 
+		setLoggingName("ImageDesignData");
 	}
 
 	ImageDesignData(const ImageDesignData& idd) : Object() {
@@ -82,54 +83,57 @@ public:
 		hairSkillMod = idd.hairSkillMod;
 		bodyAttributes = idd.bodyAttributes;
 		colorAttributes = idd.colorAttributes;
-		holoEmote = idd.holoEmote;
+		holoEmote = idd.holoEmote;//info(true)
 
 		return *this;
 	}
 
 	void parse(Message* message) {
+		//info(true) << "ImageDesignData -- Parse: ";
+
 		message->parseAscii(hairTemplate);
-		//System::out << "hairTemplate " << hairTemplate << "\n";
+		//info(true) << "hairTemplate: " << hairTemplate;
 
 		String customizationString;
 		message->parseAscii(customizationString);
 
-		//System::out << "parsing customization string size:" << customizationString.length() << "\n";
+		//info(true) << "parsing customization string size:" << customizationString.length();
 
 		hairCustomizationVariables.parseFromClientString(customizationString);
 
 		sessionID = message->parseInt();
-		//System::out << "sessionID " << sessionID << "\n";
+		//info(true) << "sessionID: " << sessionID;
 
 		timestamp = message->parseInt();
-		//System::out << "timestamp " << timestamp << "\n";
+		//info(true) << "timestamp: " << timestamp;
 
 		requiredPayment = message->parseInt();
-		//System::out << "requiredPayment " << requiredPayment << "\n";
+		//info(true) << "requiredPayment: " << requiredPayment;
 
 		offeredPayment = message->parseInt();
-		//System::out << "offeredPayment " << offeredPayment << "\n";
+		//info(true) << "offeredPayment: " << offeredPayment;
 
 		designerAccepted = message->parseByte();
-		//System::out << "designerAccepted " << designerAccepted << "\n";
+		//info(true) << "DESIGNER --- designerAccepted: " << designerAccepted;
 
 		targetAccepted = message->parseInt();
-		//System::out << "targetAccepted " << targetAccepted << "\n";
+		//info(true) << "TARTGET -- targetAccepted: " << targetAccepted;
 
 		statMigrationRequested = message->parseByte();
+		//info(true) << "statMigrationRequested: " << (statMigrationRequested ? " true" : " false" );
 
 		bodySkillMod = message->parseInt();
-		//System::out << "unk1 " << unk1 << "\n";
+		//info(true) << "bodySkillMod: " << bodySkillMod;
 		faceSkillMod = message->parseInt();
-		//System::out << "unk2 " << unk2 << "\n";
+		//info(true) << "faceSkillMod: " << faceSkillMod;
 		markingsSkillMod = message->parseInt();
-		//System::out << "unk3 " << unk3 << "\n";
+		//info(true) << "markingsSkillMod: " << markingsSkillMod;
 		hairSkillMod = message->parseInt();
-		//System::out << "unk4 " << unk4 << "\n";
+		//info(true) << "hairSkillMod: " << hairSkillMod;
 
 		int size = message->parseInt();
 
-		//System::out << "body parts " << size << "\n";
+		//info(true) << "body parts: " << size;
 
 		for (int i = 0; i < size; ++i) {
 			String attr;
@@ -139,20 +143,20 @@ public:
 
 			bodyAttributes.put(attr, val);
 
-			////System::out << attr << " " << val << "\n";
+			//info(true) << attr << " " << val;
 		}
 
 		size = message->parseInt();
 
-		//System::out << "color parts " << size << "\n";
+		//info(true) << "color parts: " << size;
 
 		for (int i = 0; i < size; ++i) {
 			String attr;
 			message->parseAscii(attr);
 
 			uint32 val = message->parseInt();
-			//////System::out << attr + String::valueOf(val) << "\n";
-			////System::out << attr << " " << val << "\n";
+			//info(true) << attr + String::valueOf(val);
+			//info(true) << attr << " " << val;
 
 			colorAttributes.put(attr, val);
 		}

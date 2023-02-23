@@ -22,7 +22,6 @@ class ImageDesignChangeMessageCallback : public MessageCallback {
 
 	ImageDesignData imageDesignData;
 
-
 public:
 	ImageDesignChangeMessageCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
@@ -61,7 +60,6 @@ public:
 
 		session->updateImageDesign(player, designerID, targetID, tentID, type, imageDesignData);
 	}
-
 };
 
 
