@@ -967,7 +967,7 @@ npcMapRebel =
 permissionMapRebel = {
 	{
 		planetName = "corellia",
-		regionName = "rebel_hideout",
+		regionName = "corellia_rebel_hideout",
 		permissions =
 		{
 			{
@@ -981,7 +981,7 @@ permissionMapRebel = {
 	},
 	{
 		planetName = "dantooine",
-		regionName = "abandoned_rebel_base_1",
+		regionName = "@dantooine_region_names:abandoned_rebel_base_1",
 		permissions =
 		{
 			{
@@ -995,7 +995,7 @@ permissionMapRebel = {
 	},
 	{
 		planetName = "yavin4",
-		regionName = "temple_of_exar_kun",
+		regionName = "@yavin4_region_names:temple_of_exar_kun",
 		permissions =
 		{
 			{

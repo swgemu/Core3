@@ -36,6 +36,7 @@ Luna<LuaActiveArea>::RegType LuaActiveArea::Register[] = {
 		{ "setNoPetArea", &LuaActiveArea::setNoPetArea },
 		{ "isLockedArea", &LuaActiveArea::isLockedArea },
 		{ "setLockedArea", &LuaActiveArea::setLockedArea },
+		{ "getAreaName", &LuaActiveArea::getAreaName },
 		{ 0, 0 }
 };
 
@@ -248,6 +249,14 @@ int LuaActiveArea::isLockedArea(lua_State* L) {
 	bool val = realObject->isLockedArea();
 
 	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaActiveArea::getAreaName(lua_State* L) {
+	String name = realObject->getAreaName();
+
+	lua_pushstring(L, name.toCharArray());
 
 	return 1;
 }

@@ -152,9 +152,13 @@ function ThemeParkLogic:permissionObservers()
 		end
 
 		self:setupPermissionGroups(permission)
+
 		local pRegion = getRegion(permission.planetName, permission.regionName)
+
 		if pRegion ~= nil then
 			createObserver(ENTEREDAREA, self.className, "cellPermissionsObserver", pRegion)
+		else
+			Logger:log("ThemeParkLogic:permissionObservers - region is nil -- Planet: " .. permission.planetName .. " Region Name: " .. permission.regionName, LT_ERROR)
 		end
 	end
 
@@ -179,15 +183,19 @@ function ThemeParkLogic:setupPermissionGroups(permission)
 end
 
 function ThemeParkLogic:cellPermissionsObserver(pRegion, pCreature)
-	if pRegion == nil or pCreature == nil then
+	if (pRegion == nil or pCreature == nil) then
 		return 0
 	end
 
-	if SceneObject(pCreature):isCreatureObject() then
-		for i = 1, # self.permissionMap, 1 do
-			if self.permissionMap[i].regionName == SceneObject(pRegion):getObjectName() then
-				self:setCellPermissions(self.permissionMap[i], pCreature)
-			end
+	if (not SceneObject(pCreature):isCreatureObject() or not SceneObject(pRegion):isActiveArea()) then
+		return 0
+	end
+
+	local permMap = self.permissionMap
+
+	for i = 1, #permMap, 1 do
+		if permMap[i].regionName == ActiveArea(pRegion):getAreaName() then
+			self:setCellPermissions(permMap[i], pCreature)
 		end
 	end
 
