@@ -70,6 +70,7 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 	energyPerShot = 0.0f;
 	shieldHitpointsFront = 0.0f;
 	shieldHitpointsRear = 0.0f;
+	refireRate = 0.f;
 }
 
 SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
@@ -266,7 +267,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		shipHitpoints = Lua::getFloatParameter(state);
 	} else if (varName == "armor") {
 		shipArmor = Lua::getFloatParameter(state);
-	} else if (varName == "energyConsumption") {
+	} else if (varName == "energyUsage") {
 		shipEnergyConsumption = Lua::getFloatParameter(state);
 	} else if (varName == "mass") {
 		shipMass = Lua::getFloatParameter(state);
@@ -298,6 +299,10 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		shieldHitpointsFront = Lua::getFloatParameter(state);
 	} else if (varName == "shieldRear") {
 		shieldHitpointsRear = Lua::getFloatParameter(state);
+	} else if (varName == "refireRate") {
+		refireRate = Lua::getFloatParameter(state);
+	} else if (varName == "reverseEngineeringLevel") {
+		shipRELevel = Lua::getFloatParameter(state);
 	} else {
 		data->pop();
 	}

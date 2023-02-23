@@ -8,51 +8,68 @@
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
-class ShipObjectMessage6 : public TangibleObjectMessage6 {
+class ShipObjectMessage6 : public BaseLineMessage {
+protected:
+	enum index : int {
+		flags = 0,
+		defenders = 1,
+		uniqueID = 2,
+		currentAccelerationRate = 3,
+		currentDecelerationRate = 4,
+		currentPitchRate = 5,
+		currentYawRate = 6,
+		currentRollRate = 7,
+		currentMaxPitchRate = 8,
+		currentMaxYawRate = 9,
+		currentMaxRollRate = 10,
+		currentMaxSpeed = 11,
+		targetID = 12,
+		targetIDSlot = 13,
+		targetableBitfield = 14,
+		shipComponentMap = 15,
+		wingName = 16,
+		typeName = 17,
+		difficulty = 18,
+		faction = 19,
+		frontShield = 20,
+		rearShield = 21,
+		guildId = 22,
+	};
+
 public:
-	ShipObjectMessage6(ShipObject* ship) : TangibleObjectMessage6(ship, 0x53484950, 0x18) {
-		//ship->info(true) << "ShipObjectMessage6 sent";
+	ShipObjectMessage6(ShipObject* ship) : BaseLineMessage(ship, 0x53484950, 6, 23) {
+		insertInt(0x76); // 0x3D in creos
 
-		CreatureObject* owner = ship->getOwner().get();
-		uint64 targetID = 0;
-		uint64 guildID = 0;
+		ship->getDefenderList()->insertToMessage(this);
 
+		insertShort(ship->getUniqueID());
+		insertFloat(ship->getShipAccelerationRate());
+		insertFloat(ship->getShipDecelerationRate());
 
-		if (owner != nullptr) {
-			targetID = owner->getTargetID();
-			guildID = owner->getGuildID();
-		}
+		insertFloat(ship->getCurrentPitchRate());
+		insertFloat(ship->getCurrentYawRate());
+		insertFloat(ship->getCurrentRollRate());
 
-		insertShort(ship->getUniqueID()); // ShipID
-		insertFloat(ship->getShipAccelerationRate()); // acceleration rate
-		insertFloat(ship->getShipDecelerationRate()); // decelleration rate
+		insertFloat(ship->getMaxPitchRate());
+		insertFloat(ship->getMaxYawRate());
+		insertFloat(ship->getMaxRollRate());
+		insertFloat(ship->getActualSpeed());
 
-		insertFloat(ship->getCurrentPitchRate()); //5 Pitch Acceleration Max
-		insertFloat(ship->getCurrentYawRate()); // 6 Yaw Acceleration Max
-		insertFloat(ship->getCurrentRollRate()); //7 Roll Acceleration Max
-
-		insertFloat(ship->getMaxPitchRate()); //8 Pitch Acceleration
-		insertFloat(ship->getMaxYawRate()); //9 Yaw Acceleration
-		insertFloat(ship->getMaxRollRate()); //10 Roll Acceleration
-		insertFloat(ship->getActualSpeed()); // This is the current possible max speed
-
-		// look at target
-		insertLong(targetID); //12 target ID that is stored on the ship
-		insertInt(0); //13 m_pilotLookAtTargetSlot
+		insertLong(ship->getShipTargetID());
+		insertInt(ship->getShipTargetSlot());
 
 		ship->getTargetableBitfield()->insertToMessage(this);
+		ship->getShipComponentMap()->insertToMessage(this);
 
-		ship->getShipComponentMap()->insertToMessage(this); //15
+		insertAscii("");
+		insertAscii(ship->getShipType());
+		insertAscii(ship->getShipDifficulty());
+		insertAscii(ship->getShipFaction());
 
-		insertAscii(ship->getShipName());
-		insertAscii(ship->getShipType()); // ship type
-		insertAscii(ship->getShipDifficulty()); // space_difficulty
-		insertAscii(ship->getShipFaction()); // space_faction
+		insertFloat(ship->getFrontShield());
+		insertFloat(ship->getRearShield());
 
-		insertFloat(ship->getFrontShield()); //20 front shield current
-		insertFloat(ship->getRearShield()); //21 back shield current
-
-		insertInt(guildID); // Guild ID?
+		insertInt(0);
 
 		setSize();
 	}

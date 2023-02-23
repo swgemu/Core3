@@ -1,7 +1,7 @@
 /*
-Copyright <SWGEmu>
-See file COPYING for copying conditions.
-*/
+ Copyright <SWGEmu>
+ See file COPYING for copying conditions.
+ */
 
 package server.zone.objects.ship.components;
 
@@ -12,11 +12,9 @@ import server.zone.objects.ship.ShipObject;
 import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 include server.zone.objects.ship.ShipComponentData;
+include server.zone.packets.DeltaMessage;
+
 class ShipComponent extends Component {
-
-	@weakReference
-	protected ShipObject ship;
-
 	protected float mass;
 	protected float hitpointsMax;
 	protected float armorMax;
@@ -26,77 +24,41 @@ class ShipComponent extends Component {
 	protected float energyEfficiency;
 	protected float efficiency;
 	protected float collisionRange;
-	protected string componentDataName;
 	protected unsigned int componentBitmask;
-	protected int slot;
+
+	protected int componentSlot;
+	protected int reverseEngineeringLevel;
+
+	@weakReference
+	protected ShipObject componentShip;
+
+	@dereferenced
+	protected string componentDataName;
 
 	public ShipComponent() {
-		mass = 500.0f;
-		hitpoints = 100.0f;
-		armor = 100.0f;
-		energyCost = 100.0f;
+		mass = 0.f;
+		hitpointsMax = 0.f;
+		armorMax = 0.f;
+		hitpoints = 0.f;
+		armor = 0.f;
+		energyCost = 0.f;
+
+		energyEfficiency = 1.f;
+		efficiency = 1.f;
+		collisionRange = 0.f;
 		componentBitmask = 0;
-		slot = -1;
-		collisionRange = 0.0f;
-		energyEfficiency = 1.0f;
-		efficiency = 1.0f;
+		componentSlot = -1;
+		reverseEngineeringLevel = 1;
 	}
 
-	@local
-	public native void updateComponentData(boolean notifyClient = false);
-
-	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
-
-
-	public void setComponentDataName(final string name) {
-		componentDataName = name;
-	}
-
-	@dirty
-	public float getCollisionRange() {
-		return collisionRange;
-	}
-
-	public void setCollisionRange(float range) {
-		collisionRange = range;
-	}
-
-	@dirty
+	@read
+	@dereferenced
 	public string getComponentDataName() {
 		return componentDataName;
 	}
 
-	public void setMass(float value) {
-		mass = value;
-	}
-
-	public void setEnergyCost(float value) {
-		energyCost = value;
-	}
-
-	public void setEnergyEfficiency(float value) {
-		energyEfficiency = value;
-	}
-
-	public void setEfficiency(float value) {
-		efficiency = value;
-	}
-
-	public void setHitpointsMax(float value) {
-		hitpointsMax = value;
-	}
-
-	public void setArmorMax(float value) {
-		armorMax = value;
-	}
-
-	public void setArmor(float value) {
-		armor = value;
-	}
-
-	public void setHitpoints(float value) {
-		hitpoints = value;
+	public unsigned int getComponentBitmask() {
+		return componentBitmask;
 	}
 
 	public float getEfficiency() {
@@ -104,7 +66,7 @@ class ShipComponent extends Component {
 	}
 
 	public float getEnergyEfficiency() {
-		return energyEfficiency;
+		return efficiency;
 	}
 
 	public float getMass() {
@@ -130,6 +92,87 @@ class ShipComponent extends Component {
 	public float getEnergyCost() {
 		return energyCost;
 	}
+	
+	public float getCollisionRange() {
+		return collisionRange;
+	}
+
+	public int getReverseEngineeringLevel() {
+		return reverseEngineeringLevel;
+	}
+
+	public boolean hasComponentFlag(unsigned int value) {
+		return componentBitmask & value;
+	}
+
+	@local
+	public void setComponentDataName(final string name) {
+		componentDataName = name;
+	}
+
+	@local
+	public void setReverseEngineeringLevel(int value) {
+		reverseEngineeringLevel = value;
+	}
+
+	@local
+	public void setCollisionRange(float range) {
+		collisionRange = range;
+	}
+
+	@local
+	public void setMass(float value) {
+		mass = value;
+	}
+
+	@local
+	public void setEnergyCost(float value) {
+		energyCost = value;
+	}
+
+	@local
+	public void setEnergyEfficiency(float value) {
+		energyEfficiency = value;
+	}
+
+	@local
+	public void setEfficiency(float value) {
+		efficiency = value;
+	}
+
+	@local
+	public void setHitpointsMax(float value) {
+		hitpointsMax = value;
+	}
+
+	@local
+	public void setArmorMax(float value) {
+		armorMax = value;
+	}
+
+	@local
+	public void setArmor(float value) {
+		armor = value;
+	}
+
+	@local
+	public void setHitpoints(float value) {
+		hitpoints = value;
+	}
+
+	@local
+	public void setComponentBitmask(unsigned int value) {
+		componentBitmask = value;
+	}
+
+	@local
+	public native void addComponentFlag(unsigned int value);
+
+	@local
+	public native void removeComponentFlag(unsigned int value);
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 
 	@local
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
@@ -138,5 +181,9 @@ class ShipComponent extends Component {
 	@dirty
 	public abstract native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
-	public abstract native void install(CreatureObject owner, ShipObject ship, int slot, boolean notifyClient);
+	@local
+	public abstract native void install(CreatureObject pilot, ShipObject ship, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject pilot, ShipObject ship, int slot, boolean notifyClient);
 }

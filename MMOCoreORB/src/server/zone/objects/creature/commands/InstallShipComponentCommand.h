@@ -17,36 +17,56 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
-		if (!checkStateMask(creature))
+		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
+		}
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(creature)) {
 			return INVALIDLOCOMOTION;
+		}
 
-		StringTokenizer tokenizer(arguments.toString());
-		long shipId = tokenizer.getLongToken();
-		int slot = tokenizer.getIntToken();
-		long componentId = tokenizer.getLongToken();
+		try {
 
-		ZoneServer* zoneServer = server->getZoneServer();
+			StringTokenizer tokens(arguments.toString());
 
-		if (zoneServer == nullptr)
-			return GENERALERROR;
+			unsigned long shipId = tokens.hasMoreTokens() ? tokens.getLongToken() : 0;
+			unsigned int slot = tokens.hasMoreTokens() ? tokens.getIntToken() : -1;
+			unsigned long compId = tokens.hasMoreTokens() ? tokens.getLongToken() : 0;
 
-		ManagedReference<SceneObject*> component = zoneServer->getObject(componentId);
-		ManagedReference<SceneObject*> shipSceneO = zoneServer->getObject(shipId);
+			if (shipId == 0 || slot == -1 || compId == 0) {
+				return GENERALERROR;
+			}
 
-		if (component == nullptr || shipSceneO == nullptr)
-			return GENERALERROR;
+			ZoneServer* zoneServer = server->getZoneServer();
 
-		ManagedReference<ShipObject*> ship = shipSceneO.castTo<ShipObject*>();
+			if (zoneServer == nullptr) {
+				return GENERALERROR;
+			}
 
-		if (ship == nullptr)
-			return GENERALERROR;
+			ManagedReference<SceneObject*> component = zoneServer->getObject(compId);
 
-		Locker locker(ship);
-		//info("Attempting to install component(" + String::valueOf((int64)componentId) + ") at slot: " + String::valueOf(slot), true);
-		ship->install(creature, component, slot);
+			if (component == nullptr) {
+				return GENERALERROR;
+			}
+
+			ManagedReference<SceneObject*> sceneO = zoneServer->getObject(shipId);
+
+			if (sceneO == nullptr) {
+				return GENERALERROR;
+			}
+
+			ManagedReference<ShipObject*> ship = sceneO->asShipObject();
+
+			if (ship == nullptr) {
+				return GENERALERROR;
+			}
+
+			Locker locker(ship);
+			ship->install(creature, component, slot, true);
+
+		} catch (Exception& e) {
+			error() << "UninstallShipComponentCommand exception: " << e.what();
+		}
 
 		return SUCCESS;
 	}

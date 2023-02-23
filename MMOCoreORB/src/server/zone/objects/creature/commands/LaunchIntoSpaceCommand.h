@@ -161,17 +161,9 @@ public:
 
 			uint64 parentID = ship->getObjectID();
 
-			// POB Ship
-			if (ship->getContainerObjectsSize() > 0) {
-				auto pilotChair = ship->getPilotChair().get();
+			auto pilotChair = ship->getPilotChair().get();
 
-				if (pilotChair == nullptr) {
-					error() << "Pilot Chair is a nullptr in LaunchIntoSpace command for POB ship.";
-					ship->destroyObjectFromWorld(true);
-
-					return GENERALERROR;
-				}
-
+			if (pilotChair != nullptr) {
 				parentID = pilotChair->getObjectID();
 				position = pilotChair->getPosition();
 

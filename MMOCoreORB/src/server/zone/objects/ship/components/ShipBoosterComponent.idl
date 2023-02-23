@@ -1,7 +1,7 @@
 /*
-Copyright <SWGEmu>
-See file COPYING for copying conditions.
-*/
+ Copyright <SWGEmu>
+ See file COPYING for copying conditions.
+ */
 
 package server.zone.objects.ship.components;
 
@@ -13,37 +13,63 @@ import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 
 class ShipBoosterComponent extends ShipComponent {
-
-	float energyConsumptionRate;
-	float boosterAcceleration;
-	float boosterEnergy;
-	float boosterRechargeRate;
-	float boosterSpeed;
+	protected float boosterConsumptionRate;
+	protected float boosterAcceleration;
+	protected float boosterEnergy;
+	protected float boosterRechargeRate;
+	protected float boosterSpeed;
 
 	public ShipBoosterComponent() {
-		energyConsumptionRate = 1.0f;
-		boosterAcceleration = 1.0f;
-		boosterEnergy = 1.0f;
-		boosterRechargeRate = 1.0f;
-		boosterSpeed = 1.0f;
+		super();
+
+		boosterConsumptionRate = 0.f;
+		boosterAcceleration = 0.f;
+		boosterEnergy = 0.f;
+		boosterRechargeRate = 0.f;
+		boosterSpeed = 0.f;
 	}
 
+	public float getBoosterAcceleration() {
+		return boosterAcceleration;
+	}
+
+	public float getBoosterEnergyConsumptionRate() {
+		return boosterConsumptionRate;
+	}
+
+	public float getBoosterEnergy() {
+		return boosterEnergy;
+	}
+
+	public float getBoosterRechargeRate() {
+		return boosterRechargeRate;
+	}
+
+	public float getBoosterSpeed() {
+		return boosterSpeed;
+	}
+
+	@local
 	public void setBoosterAcceleration(float accel) {
 		boosterAcceleration = accel;
 	}
 
+	@local
 	public void setBoosterEnergyConsumptionRate(float rate) {
-		energyConsumptionRate = rate;
+		boosterConsumptionRate = rate;
 	}
 
+	@local
 	public void setBoosterEnergy(float energy) {
 		boosterEnergy = energy;
 	}
 
+	@local
 	public void setBoosterRechargeRate(float rate) {
 		boosterRechargeRate = rate;
 	}
 
+	@local
 	public void setBoosterSpeed(float speed) {
 		boosterSpeed = speed;
 	}
@@ -58,5 +84,9 @@ class ShipBoosterComponent extends ShipComponent {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	@local
 	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
 }

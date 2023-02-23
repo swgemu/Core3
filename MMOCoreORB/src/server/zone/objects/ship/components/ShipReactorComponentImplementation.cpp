@@ -1,58 +1,61 @@
 #include "server/zone/objects/ship/components/ShipReactorComponent.h"
-#include "server/zone/packets/DeltaMessage.h"
+#include "server/zone/objects/ship/components/ShipComponent.h"
 #include "server/zone/objects/ship/ShipObject.h"
-
-void ShipReactorComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
-		String attribute;
-		float min;
-		float max;
-		float current;
-
-		attribute = values->getExperimentalPropertySubtitle(i);
-		min = values->getMinValue(attribute);
-		max = values->getMaxValue(attribute);
-		current = values->getCurrentValue(attribute);
-
-		if (attribute == "ship_component_reactor_generation_rate") {
-			reactorGenerationRate = current;
-		}
-	}
-	ShipComponentImplementation::updateCraftingValues(values, firstUpdate);
-}
+#include "templates/tangible/SharedShipObjectTemplate.h"
+#include "server/zone/packets/DeltaMessage.h"
 
 void ShipReactorComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipComponentImplementation::loadTemplateData(templateData);
-	SharedTangibleObjectTemplate* tmpl = static_cast<SharedTangibleObjectTemplate*>(templateData);
-	if (tmpl == nullptr) {
-		error("nullptr Template");
-	}
 
-	reactorGenerationRate = tmpl->getShipMaxEnergy();
+	auto shot = dynamic_cast<SharedTangibleObjectTemplate*>(templateData);
+
+	if (shot != nullptr) {
+		reactorGenerationRate = shot->getShipMaxEnergy();
+	}
+}
+
+void ShipReactorComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	ShipComponentImplementation::updateCraftingValues(values, firstUpdate);
+
+	if(values->hasProperty("ship_component_reactor_generation_rate")) {
+		reactorGenerationRate = values->getCurrentValue("ship_component_reactor_generation_rate");
+	}
 }
 
 void ShipReactorComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	ShipComponentImplementation::fillAttributeList(alm, object);
 
-	alm->insertAttribute("ship_component_reactor_generation_rate", String::valueOf(Math::getPrecision(reactorGenerationRate, 1)));
+	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_reactor_generation_rate", String::valueOf(Math::getPrecision(reactorGenerationRate, 1)));
+
+	if (craftersName.isEmpty()) {
+		alm->insertAttribute("@obj_attr_n:reverseengineeringlevel", getReverseEngineeringLevel());
+	}
 }
 
-void ShipReactorComponentImplementation::install(CreatureObject* owner, ShipObject* ship, int slot, bool notifyClient) {
-	DeltaMessage* message = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
-	ship->setReactorGenerationRate(reactorGenerationRate, true, message);
-	ship->setEnergyCost(slot, getEnergyCost(), message);
-	ship->setComponentMass(slot, getMass(), message);
+void ShipReactorComponentImplementation::install(CreatureObject* pilot, ShipObject* ship, int slot, bool notifyClient) {
+	ShipComponentImplementation::install(pilot, ship, slot, notifyClient);
 
-	DeltaMessage* message2 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 3) : nullptr;
-	ship->setComponentMaxHitpoints(slot, getMaxHitpoints(), message2);
-	ship->setComponentHitpoints(slot, getHitpoints(), message2);
-	ship->setComponentArmor(slot, getArmor(), message2);
-	ship->setComponentMaxArmor(slot, getMaxArmor(), message2);
+	DeltaMessage* ship1 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
+
+	ship->setReactorGenerationRate(reactorGenerationRate, false, ship1);
 
 	if (notifyClient) {
-		message->close();
-		message2->close();
-		owner->sendMessage(message);
-		owner->sendMessage(message2);
+		ship1->close();
+
+		pilot->sendMessage(ship1);
+	}
+}
+
+void ShipReactorComponentImplementation::uninstall(CreatureObject* pilot, ShipObject* ship, int slot, bool notifyClient) {
+	ShipComponentImplementation::uninstall(pilot, ship, slot, notifyClient);
+
+	DeltaMessage* ship1 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
+
+	ship->setReactorGenerationRate(0.f, false, ship1);
+
+	if (notifyClient) {
+		ship1->close();
+
+		pilot->sendMessage(ship1);
 	}
 }

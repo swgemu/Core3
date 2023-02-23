@@ -1,7 +1,7 @@
 /*
-Copyright <SWGEmu>
-See file COPYING for copying conditions.
-*/
+ Copyright <SWGEmu>
+ See file COPYING for copying conditions.
+ */
 
 package server.zone.objects.ship.components;
 
@@ -13,8 +13,15 @@ import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 
 class ShipCapacitorComponent extends ShipComponent {
-	float capacitorEnergy;
-	float capacitorRechargeRate;
+	protected float capacitorEnergy;
+	protected float capacitorRechargeRate;
+
+	public ShipCapacitorComponent() {
+		super();
+
+		capacitorEnergy = 0.f;
+		capacitorRechargeRate = 0.f;
+	}
 
 	public float getCapacitorEnergy() {
 		return capacitorEnergy;
@@ -24,16 +31,14 @@ class ShipCapacitorComponent extends ShipComponent {
 		return capacitorRechargeRate;
 	}
 
+	@local
 	public void setCapacitorEnergy(float value) {
 		capacitorEnergy = value;
 	}
 
+	@local
 	public void setRechargeRate(float value) {
 		capacitorRechargeRate = value;
-	}
-
-	public ShipCapacitorComponent() {
-		super();
 	}
 
 	@local
@@ -46,5 +51,9 @@ class ShipCapacitorComponent extends ShipComponent {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	@local
 	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
 }
