@@ -159,6 +159,9 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 }
 
 void InstallationObjectImplementation::setActiveResource(ResourceContainer* container) {
+	if (container == nullptr || !container->getSpawnObject()->inShift()) {
+		return;
+	}
 
 	Time timeToWorkTill;
 
@@ -357,10 +360,54 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 		addResourceToHopper(currentSpawn->createResource(0));
 	}
 
-	ManagedReference<ResourceContainer*> container = resourceHopper.get(0);
+	ManagedReference<ResourceContainer*> container = nullptr;
+	String errorString;
 
-	if(currentSpawn == nullptr)
-		currentSpawn = container->getSpawnObject();
+	if (currentSpawn != nullptr) {
+		container = getContainerFromHopper(currentSpawn);
+
+		if (container == nullptr) {
+			Locker locker(currentSpawn);
+			container = currentSpawn->createResource(0);
+
+			addResourceToHopper(container);
+		}
+
+		if (!currentSpawn->inShift() || container->getSpawnID() != currentSpawn->getObjectID()) {
+			errorString = "harvester_resource_depleted"; // Resource has been depleted.  Shutting down.
+		}
+	} else {
+		errorString = "harvester_no_resource"; // No resource selected.  Shutting down.
+	}
+
+	if (!errorString.isEmpty()) {
+		if (isOperating()) {
+			StringIdChatParameter stringId("shared", errorString);
+			broadcastToOperators(new ChatSystemMessage(stringId));
+
+			resourceHopperTimestamp.updateToCurrentTime();
+			currentSpawn = nullptr;
+			setOperating(false);
+			auto msg = error();
+
+			msg << errorString;
+
+			for (int i = 0; i < operatorList.size(); ++i) {
+				if (i == 0) {
+					msg << "; Operators:";
+				}
+
+				auto player = operatorList.get(i);
+
+				msg << " " << player->getObjectID();
+			}
+
+			msg << ".";
+			msg.flush();
+		}
+
+		return;
+	}
 
 	Time currentTime = workingTime;
 
@@ -483,11 +530,19 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 		updateInstallationWork();
 	}
 
-	currentSpawn = getZoneServer()->getObject(spawnID).castTo<ResourceSpawn*>();
-	if (currentSpawn == nullptr) {
-		error("new spawn null");
+	auto newSpawn = getZoneServer()->getObject(spawnID).castTo<ResourceSpawn*>();
+
+	if (newSpawn == nullptr) {
+		error() << __FUNCTION__ << ": newSpawn is null for spawnID [" << spawnID << "]";
 		return;
 	}
+
+	if (!newSpawn->inShift()) {
+		error() << __FUNCTION__ << ": tried to set an inactive spawnID [" << spawnID << "]";
+		return;
+	}
+
+	currentSpawn = newSpawn;
 
 	Time timeToWorkTill;
 
