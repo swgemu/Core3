@@ -40,17 +40,32 @@ void ShipObjectImplementation::initializeTransientMembers() {
 void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	SharedShipObjectTemplate *shipTempl = dynamic_cast<SharedShipObjectTemplate*>(templateData);
-	setShipName(shipTempl->getShipName());
-	setHasWings(shipTempl->shipHasWings());
-	setConversationMessage(shipTempl->getConversationMessage());
-	setConversationMobile(shipTempl->getConversationMobile());
-	setConversationTemplate(shipTempl->getConversationTemplate());
-	setShipFaction(shipTempl->getShipFaction());
-	setShipType(shipTempl->getShipType());
-	setShipDifficulty(shipTempl->getShipDifficulty());
+	SharedShipObjectTemplate* ssot = dynamic_cast<SharedShipObjectTemplate*>(templateData);
 
-	auto portal = shipTempl->getPortalLayout();
+	if (ssot != nullptr) {
+		setShipName(ssot->getShipName());
+		setShipType(ssot->getShipType(), false);
+		setShipNameCRC(chassisDataName.hashCode(), false);
+		setUniqueID(getUniqueID(), false);
+
+		setChassisMaxHealth(ssot->getChassisHitpoints(), false);
+		setCurrentChassisHealth(ssot->getChassisHitpoints(), false);
+
+		setSlipRate(ssot->getChassisSlipRate(), false);
+		setChassisSpeed(ssot->getChassisSpeed(), false);
+		setChassisMaxMass(ssot->getChassisMass(), false);
+
+		setShipFaction(ssot->getShipFaction(), false);
+		setShipDifficulty(ssot->getShipDifficulty(), false);
+
+		setConversationMessage(ssot->getConversationMessage());
+		setConversationMobile(ssot->getConversationMobile());
+		setConversationTemplate(ssot->getConversationTemplate());
+
+		setHasWings(ssot->shipHasWings());
+	}
+
+	auto portal = ssot->getPortalLayout();
 
 	if (portal == nullptr)
 		totalCellNumber = 0;
@@ -78,7 +93,7 @@ void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool fo
 }
 
 void ShipObjectImplementation::setShipName(const String& name, bool notifyClient) {
-	shipName = name;
+	chassisDataName = name;
 	shipNameCRC.update(name.hashCode(), false);
 }
 
@@ -344,8 +359,7 @@ String ShipObjectImplementation::getParkingLocation() {
 void ShipObjectImplementation::uninstall(CreatureObject* owner, int slot, bool notifyClient) {
 	DeltaMessage* message = new DeltaMessage(getObjectID(), 'SHIP', 6);
 
-	message->startUpdate(15);
-	shipComponents.set(slot, 0, message);
+	setComponentCRC(slot, 0, message);
 	components.remove(0);
 	message->close();
 
@@ -689,54 +703,39 @@ int ShipObjectImplementation::getHyperspaceDelay() {
 }
 
 float ShipObjectImplementation::getActualSpeed() {
-	float totalMax = 0.0f;
+	auto componentMap = getShipComponentMap();
 
-	if (getComponentObject(Components::ENGINE) != nullptr) {
-		ShipEngineComponent* engineComp = cast<ShipEngineComponent*>(getComponentObject(Components::ENGINE));
+	float componentActual = 0.f;
 
-		if (engineComp != nullptr) {
-			//TODO: Fix when efficiencies are loaded properly
-			float engEfficiency = 1.0f; // getComponentEnergyEfficiency(Components::ENGINE);
-			float engineMax = engineComp->getMaxSpeed();
-			float engineTotal = engEfficiency * engineMax;
-
-			//info(true) << "Engine efficiency = " << engEfficiency << " Engine Max = " << engineMax << " Engine Total Speed = " << engineTotal;
-
-			totalMax += engineTotal;
-		}
+	if (componentMap->get(Components::ENGINE) != 0) {
+		//float engineEfficiency = getComponentEfficiencyMap()->get(Components::ENGINE);
+		float engineSpeed = getMaxSpeed();
+		componentActual += engineSpeed;
 	}
 
-	if (getComponentObject(Components::BOOSTER) != nullptr && isBoosterActive()) {
-		float boostEfficiency = 1.0f; //getComponentEnergyEfficiency(Components::BOOSTER);
-		float boosterMax = getBoosterMaxSpeed();
-		float boosterBonus = boostEfficiency * boosterMax;
+	if (componentMap->get(Components::BOOSTER) != 0 && isBoosterActive()) {
+		//float boosterEfficiency = getComponentEfficiencyMap()->get(Components::BOOSTER);
+		float boosterSpeed = getBoosterMaxSpeed();
+		componentActual += boosterSpeed;
+	}
 
-		//info(true) << "Booster Eff: " << boostEfficiency << " Booster Max: " << boosterMax << " Total Booster Bonus: " << boosterBonus;
+	float chassisActual = 1.f;
 
-		totalMax += boosterBonus;
+	if (getChassisSpeed() != 0.f) {
+		float typeSpeed = getChassisSpeed();
+		chassisActual *= typeSpeed;
 	}
 
 	if (hasShipWings() && (getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
 		const ShipChassisData* chassis = ShipManager::instance()->getChassisData(getShipName());
 
 		if (chassis != nullptr) {
-			totalMax *= chassis->getWingOpenSpeed();
-
-			//info(true) << "Wings open multiplier = " << chassis->getWingOpenSpeed();
+			float openWingSpeed = chassis->getWingOpenSpeed();
+			chassisActual *= openWingSpeed;
 		}
 	}
 
-	totalMax *= getChassisSpeed();
-
-	float slipMulti = Math::max(1.0f, getSlip());
-
-	//info(true) << "Chassis multiplier = " << getChassisSpeed() << " Slip = " << slipMulti;
-
-	totalMax = Math::min(512.0f, totalMax * slipMulti);
-
-	//info(true) << "getActualSpeed = " << totalMax;
-
-	return totalMax;
+	return componentActual * chassisActual;
 }
 
 bool ShipObjectImplementation::checkInConvoRange(SceneObject* targetObject) {
