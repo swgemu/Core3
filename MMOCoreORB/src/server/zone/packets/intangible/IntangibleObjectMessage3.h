@@ -11,9 +11,7 @@
 
 class IntangibleObjectMessage3 : public BaseLineMessage {
 public:
-	IntangibleObjectMessage3(IntangibleObject* itno, uint32 objType = 0x4F4E5449, uint16 opcnt = 5)
-			: BaseLineMessage(itno->getObjectID(), objType , 3, opcnt) {
-
+	IntangibleObjectMessage3(IntangibleObject* itno, uint32 objType = 0x4F4E5449, uint16 opcnt = 5) : BaseLineMessage(itno->getObjectID(), objType , 3, opcnt) {
 		// Complexity
 		insertFloat(1);
 
