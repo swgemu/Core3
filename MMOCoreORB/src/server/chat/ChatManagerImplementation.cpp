@@ -1363,6 +1363,13 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 
 		tokenizer.finalToken(msg);
 
+		if (msg.length() > IM_MAXSIZE) {
+			StringBuffer err;
+			err << "Your message was " << commas << msg.length() << " characters long, which exceeds the " << IM_MAXSIZE << " limit. Message was not sent.";
+			player->sendSystemMessage(err.toString());
+			return;
+		}
+
 		UnicodeString formattedMessage(formatMessage(msg));
 		broadcastChatMessage(player, formattedMessage, targetID, spatialChatType, moodType, chatFlags, languageID);
 
@@ -1976,6 +1983,10 @@ UnicodeString ChatManagerImplementation::formatMessage(const UnicodeString& mess
 
 	while ((index = text.indexOf("\\>")) >= 0) {
 		text = text.replaceFirst("\\>", "");
+	}
+
+	while ((index = text.indexOf("\\@")) >= 0) {
+		text = text.replaceFirst("\\@", "");
 	}
 
 	return text;
