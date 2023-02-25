@@ -8,7 +8,6 @@
 #include "server/chat/ChatManager.h"
 
 int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-
 	if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
 		despawnSpawns();
 		return 1;
@@ -22,13 +21,14 @@ int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	if (ai == nullptr || spawn == nullptr)
 		return 0;
 
-	if (ai->getRespawnCounter() > 1) {
+	// Each creature should spawn 4 times
+	if (ai->getRespawnCounter() > 2) {
 		spawnedCreatures.removeElement(ai.get());
 		ai->setHomeObject(nullptr);
 		ai->resetRespawnCounter();
 
+		// Despawn dynamic lair if all the creatures have spawned 4 times
 		if (spawnedCreatures.isEmpty()) {
-
 			Reference<Task*> task = new DespawnDynamicSpawnTask(spawn);
 			task->schedule(60000);
 
