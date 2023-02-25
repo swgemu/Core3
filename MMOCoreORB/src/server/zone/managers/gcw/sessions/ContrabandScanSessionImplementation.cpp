@@ -513,7 +513,7 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 	}
 
 	scanState = SCANDELAY;
-	unsigned int detectionChance = BASEFACTIONDETECTIONCHANCE + RANKDETECTIONCHANCEMODIFIER * player->getFactionRank();
+	uint32 detectionChance = BASEFACTIONDETECTIONCHANCE + (RANKDETECTIONCHANCEMODIFIER * player->getFactionRank()) + player->getSkillMod("force_persuade");
 	int playerStatus = player->getFactionStatus();
 
 	if (scannerFaction == player->getFaction()) {
@@ -587,7 +587,7 @@ void ContrabandScanSessionImplementation::performJediMindTrick(Zone* zone, AiAge
 		return;
 	}
 
-	if (player->hasSkill("force_title_jedi_rank_02") && !smugglerAvoidedScan) { // Jedi Padawan
+	if (!smugglerAvoidedScan && player->hasSkill("force_title_jedi_rank_02")) { // Jedi Padawan or Force Persuasion
 		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
 		String stringId = "@imperial_presence/contraband_search:";
 		String mood = dependingOnJediSkills(player, "firm", "confident", "angry");
@@ -624,8 +624,9 @@ void ContrabandScanSessionImplementation::reactOnJediMindTrick(Zone* zone, AiAge
 	scanState = JEDIMINDTRICKSCANNERCHAT;
 }
 
-unsigned int ContrabandScanSessionImplementation::jediMindTrickSuccessChance(CreatureObject* player) {
-	unsigned int successChance = JEDIMINDTRICKSUCCESSCHANCEBASE;
+uint32 ContrabandScanSessionImplementation::jediMindTrickSuccessChance(CreatureObject* player) {
+	uint32 successChance = JEDIMINDTRICKSUCCESSCHANCEBASE;
+
 	if (player->hasSkill("force_discipline_powers_master")) {
 		successChance = 100;
 	} else if (player->hasSkill("force_title_jedi_master")) {
