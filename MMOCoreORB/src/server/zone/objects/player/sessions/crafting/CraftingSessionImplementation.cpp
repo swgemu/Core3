@@ -344,8 +344,7 @@ bool CraftingSessionImplementation::createManufactureSchematic(DraftSchematic* d
 	ManagedReference<PlayerObject*> crafterGhost = this->crafterGhost.get();
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 
-	manufactureSchematic =
-			 (draftschematic->createManufactureSchematic(craftingTool)).castTo<ManufactureSchematic*>();
+	manufactureSchematic = (draftschematic->createManufactureSchematic(craftingTool)).castTo<ManufactureSchematic*>();
 
 	auto schematic = manufactureSchematic.get();
 
@@ -1310,12 +1309,10 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 		return;
 	}
 
-	if (manufactureSchematic->isAssembled()
-			&& !manufactureSchematic->isCompleted()) {
+	if (manufactureSchematic->isAssembled()	&& !manufactureSchematic->isCompleted()) {
 
 		//Object Controller
-		ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-				crafter->getObjectID(), 0x1B, 0x010C);
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(crafter->getObjectID(), 0x1B, 0x010C);
 		objMsg->insertInt(0x10B);
 		objMsg->insertInt(1);
 		objMsg->insertByte(clientCounter);
