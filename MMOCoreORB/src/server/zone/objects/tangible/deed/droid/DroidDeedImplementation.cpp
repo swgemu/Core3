@@ -362,6 +362,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		droid->setCustomObjectName(StringIdManager::instance()->getStringId(*droid->getObjectName()), true);
 		droid->createChildObjects();
 		droid->setControlDevice(controlDevice);
+		droid->setLevel(level);
 
 		float maxHam = DroidMechanics::determineHam(overallQuality, species);
 		for (int i = 0; i < 9; ++i) {
