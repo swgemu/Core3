@@ -828,9 +828,22 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	}
 
 	if (newConditionDamage >= maxCondition) {
-		notifyObjectDestructionObservers(attacker, newConditionDamage, isCombatAction);
 		notifyObservers(ObserverEventType::OBJECTDISABLED, attacker);
 		setDisabled(true);
+
+		Reference<TangibleObject*> refTano = asTangibleObject();
+		Reference<TangibleObject*> attackerRef = attacker;
+
+		Core::getTaskManager()->scheduleTask([refTano, attackerRef, newConditionDamage, isCombatAction] () {
+			if (refTano == nullptr || attackerRef == nullptr)
+				return;
+
+			Locker lock(refTano);
+			Locker clocker(attackerRef, refTano);
+
+			refTano->notifyObjectDestructionObservers(attackerRef, newConditionDamage, isCombatAction);
+
+		}, "notifyDestroyLambda", 200);
 	}
 
 	return 0;
