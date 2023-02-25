@@ -343,4 +343,9 @@ class ManufactureSchematic extends IntangibleObject {
 
 	@dirty
 	public native string getFactoryCrateType();
+
+	@read
+	public float getDataSize() {
+		return dataSize;
+	}
 }

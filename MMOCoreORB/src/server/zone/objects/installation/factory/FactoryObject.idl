@@ -97,7 +97,7 @@ class FactoryObject extends InstallationObject {
 	 * factory
 	 */
 	@preLocked
-	public native void handleRemoveFactorySchem(CreatureObject player);
+	public native boolean handleRemoveFactorySchem(CreatureObject player);
 
 	@preLocked
 	public native void handleOperateToggle(CreatureObject player);
@@ -127,4 +127,7 @@ class FactoryObject extends InstallationObject {
 
 	@dirty
 	public native string getRedeedMessage();
+
+	@dirty
+	public native void sendRemoveFailureMessage(CreatureObject player, ManufactureSchematic schematic);
 }
