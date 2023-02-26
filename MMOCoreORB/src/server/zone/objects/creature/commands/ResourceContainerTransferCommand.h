@@ -39,7 +39,7 @@ public:
 		if (parent == nullptr)
 			return GENERALERROR;
 
-		if (parent->getContainerObjectsSize() > parent->getContainerVolumeLimit()) {
+		if (parent->getContainerObjectsSize() >= parent->getContainerVolumeLimit()) {
 			creature->sendSystemMessage("@error_message:inv_full"); //Your inventory is full.
 			return GENERALERROR;
 		}
