@@ -171,6 +171,7 @@ includeFile("lair/npc_theater/lok/lok_nym_base_neutral_large_theater.lua")
 includeFile("lair/npc_theater/lok/lok_nym_camp2_neutral_medium_theater.lua")
 includeFile("lair/npc_theater/lok/lok_nym_camp_neutral_medium_theater.lua")
 
+includeFile("lair/npc_theater/naboo/imperial_compforce_base.lua")
 includeFile("lair/npc_theater/naboo/mauler_gang.lua")
 includeFile("lair/npc_theater/naboo/naboo_ankura_gungan_camp_neutral_large_theater.lua")
 includeFile("lair/npc_theater/naboo/naboo_borvos_camp_neutral_small_theater.lua")
