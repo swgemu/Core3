@@ -542,7 +542,62 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 		return;
 	}
 
+	auto resourceManager = getZoneServer()->getResourceManager();
+
+	Vector<ManagedReference<ResourceSpawn*> > resourceList;
+
+	resourceManager->getResourceListByType(resourceList, getInstallationType(), zone->getZoneName());
+
+	bool found = false;
+
+	for (int i = 0;i < resourceList.size(); ++i) {
+		auto resource = resourceList.get(i);
+
+		if (resource == nullptr) {
+			continue;
+		}
+
+		if (resource.getObjectID() == newSpawn->getObjectID()) {
+			found = true;
+			break;
+		}
+	}
+
+	if (!found) {
+		StringIdChatParameter stringId("shared", "harvester_resource_depleted"); // Resource has been depleted.  Shutting down.
+		broadcastToOperators(new ChatSystemMessage(stringId));
+
+		if (isOperating()) {
+			resourceHopperTimestamp.updateToCurrentTime();
+			currentSpawn = nullptr;
+			setOperating(false);
+
+		}
+
+		auto msg = error();
+
+		msg << __FUNCTION__ << ": attempt to set an invalid spawnID [" << spawnID << "] (" << newSpawn->getFinalClass() << ")";
+
+		for (int i = 0; i < operatorList.size(); ++i) {
+			if (i == 0) {
+				msg << "; Operators:";
+			}
+
+			auto player = operatorList.get(i);
+
+			if (player != nullptr) {
+				msg << " " << player->getFirstName() << " (" << player->getObjectID() << ")";
+			}
+		}
+
+		msg << ".";
+		msg.flush();
+
+		return;
+	}
+
 	currentSpawn = newSpawn;
+	spawnDensity = currentSpawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
 
 	Time timeToWorkTill;
 
