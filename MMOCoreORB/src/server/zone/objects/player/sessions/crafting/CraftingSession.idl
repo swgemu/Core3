@@ -66,6 +66,11 @@ class CraftingSession extends Facade {
 	 * The crafting tool and station have been identified pre calling initializeSession
 	 */
 	public native int initializeSession(CraftingTool tool, CraftingStation station);
+
+	/**
+	 * Validate the session, make sure crafting station still nearby if needed etc.
+	 */
+	private native boolean validateSession();
 	
 	/**
 	 * Sends the packets and creates the objects to start

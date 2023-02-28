@@ -22,6 +22,7 @@
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 #include "server/zone/objects/player/sessions/crafting/events/CreateObjectTask.h"
 #include "server/zone/objects/player/sessions/crafting/events/UpdateToolCountdownTask.h"
@@ -56,7 +57,54 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 	return startSession();
 }
 
+bool CraftingSessionImplementation::validateSession() {
+	auto invalidSession = [&] () -> bool {
+		Logger::console.info(true) << "Invalid Session!";
+
+		closeCraftingWindow(0, false);
+		cancelSession();
+		return false;
+	};
+
+	auto strongCrafter = crafter.get();
+
+	if (strongCrafter == nullptr) {
+		return invalidSession();
+	}
+
+	auto strongGhost = crafterGhost.get();
+
+	if (strongGhost == nullptr) {
+		StringIdChatParameter param("ui_craft", "err_no_owner"); // Internal server error: no owner for player.
+		strongCrafter->sendMessage(new ChatSystemMessage(param));
+		return invalidSession();
+	}
+
+	auto strongTool = craftingTool.get();
+
+	if (strongTool == nullptr) {
+		StringIdChatParameter param("ui_craft", "err_no_crafting_tool"); // Internal server error: no crafting tool found.
+		strongCrafter->sendMessage(new ChatSystemMessage(param));
+		return invalidSession();
+	}
+
+	auto strongStation = craftingStation.get();
+
+	if (strongStation != nullptr && !strongStation->isInRange(strongCrafter, 7.0f)) {
+		StringIdChatParameter param("ui", "sui_out_of_range_prose"); // You have gone out of range of %TT, closing interface.
+		param.setTT(strongStation->getObjectID());
+		strongCrafter->sendMessage(new ChatSystemMessage(param));
+		return invalidSession();
+	}
+
+	return true;
+}
+
 int CraftingSessionImplementation::startSession() {
+	if (!validateSession()) {
+		return 1;
+	}
+
 	// crafter and craftingTool locked already in initializeSession
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
@@ -270,6 +318,10 @@ void CraftingSessionImplementation::sendSlotMessage(int counter, int message) {
 }
 
 void CraftingSessionImplementation::selectDraftSchematic(int index) {
+	if (!validateSession()) {
+		return;
+	}
+
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<PlayerObject*> crafterGhost = this->crafterGhost.get();
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
@@ -367,6 +419,10 @@ bool CraftingSessionImplementation::createManufactureSchematic(DraftSchematic* d
 }
 
 bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* draftschematic) {
+	if (!validateSession()) {
+		return false;
+	}
+
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<PlayerObject*> crafterGhost = this->crafterGhost.get();
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
@@ -404,6 +460,10 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 }
 
 void CraftingSessionImplementation::sendIngredientForUIListen() {
+	if (!validateSession()) {
+		return;
+	}
+
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<PlayerObject*> crafterGhost = this->crafterGhost.get();
@@ -450,6 +510,10 @@ void CraftingSessionImplementation::sendIngredientForUIListen() {
 }
 
 void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot, int clientCounter) {
+	if (!validateSession()) {
+		return;
+	}
+
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<PlayerObject*> crafterGhost = this->crafterGhost.get();
@@ -523,6 +587,10 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 }
 
 void CraftingSessionImplementation::removeIngredient(TangibleObject* tano, int slotUpdated, int clientCounter) {
+	if (!validateSession()) {
+		return;
+	}
+
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<PlayerObject*> crafterGhost = this->crafterGhost.get();
 	ManagedReference<ManufactureSchematic*> manufactureSchematic = this->manufactureSchematic.get();
@@ -578,6 +646,10 @@ void CraftingSessionImplementation::removeIngredient(TangibleObject* tano, int s
 }
 
 void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
+	if (!validateSession()) {
+		return;
+	}
+
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<ManufactureSchematic*> manufactureSchematic = this->manufactureSchematic.get();
 	ManagedReference<TangibleObject*> prototype = this->prototype.get();
@@ -897,6 +969,10 @@ void CraftingSessionImplementation::finishAssembly(int clientCounter) {
 }
 
 void CraftingSessionImplementation::experiment(int rowsAttempted, const String& expAttempt, int clientCounter) {
+	if (!validateSession()) {
+		return;
+	}
+
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<PlayerObject*> crafterGhost = this->crafterGhost.get();
@@ -1042,6 +1118,10 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 }
 
 void CraftingSessionImplementation::customization(const String& name, byte templateChoice, int schematicCount, const String& customizationString) {
+	if (!validateSession()) {
+		return;
+	}
+
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<ManufactureSchematic*> manufactureSchematic = this->manufactureSchematic.get();
@@ -1290,6 +1370,10 @@ void CraftingSessionImplementation::startCreationTasks(int timer, bool practice)
 }
 
 void CraftingSessionImplementation::createManufactureSchematic(int clientCounter) {
+	if (!validateSession()) {
+		return;
+	}
+
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<ManufactureSchematic*> manufactureSchematic = this->manufactureSchematic.get();
 	ManagedReference<TangibleObject*> prototype = this->prototype.get();
