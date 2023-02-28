@@ -24,7 +24,7 @@ theme_park_jabba_escort = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
-	optionsBitmask = INVULNERABLE + CONVERSABLE,
+	optionsBitmask = CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_aakuan_defender_human_male_01.iff"},
