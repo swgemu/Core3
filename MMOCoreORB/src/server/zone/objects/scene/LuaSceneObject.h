@@ -94,6 +94,7 @@ namespace scene {
 		int setContainerOwnerID(lua_State* L);
 		int setContainerLockedStatus(lua_State* L);
 		int setObjectName(lua_State* L);
+		int setRadius(lua_State* L);
 		int isASubChildOf(lua_State* L);
 		int isOwned(lua_State* L);
 		int playEffect(lua_State* L);

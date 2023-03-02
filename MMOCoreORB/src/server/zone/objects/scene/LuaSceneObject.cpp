@@ -81,6 +81,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "setContainerOwnerID", &LuaSceneObject::setContainerOwnerID },
 		{ "setContainerLockedStatus", &LuaSceneObject::setContainerLockedStatus },
 		{ "setObjectName", &LuaSceneObject::setObjectName },
+		{ "setRadius", &LuaSceneObject::setRadius },
 		{ "isASubChildOf", &LuaSceneObject::isASubChildOf },
 		{ "isOwned", &LuaSceneObject::isOwned },
 		{ "playEffect", &LuaSceneObject::playEffect },
@@ -760,6 +761,22 @@ int LuaSceneObject::setObjectName(lua_State* L) {
 	realObject->setObjectName(stringid, notifyClient);
 
 	return 0;
+}
+
+int LuaSceneObject::setRadius(lua_State* L) {
+	float radius = lua_tonumber(L, -1);
+
+	if (radius < 0.5f || radius > ZoneServer::CLOSEOBJECTRANGE * 4.0f) {
+		realObject->error() << __FUNCTION__ << "() invalid radius of " << radius;
+		lua_pushnil(L);
+		return 0;
+	}
+
+	realObject->setRadius(radius);
+
+	lua_pushboolean(L, true);
+
+	return 1;
 }
 
 int LuaSceneObject::isASubChildOf(lua_State* L) {

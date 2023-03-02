@@ -118,5 +118,9 @@ uint64 QuadTreeEntryImplementation::getDirtyObjectID() {
 }
 
 float QuadTreeEntryImplementation::getOutOfRangeDistance() const {
+	if (radius > ZoneServer::CLOSEOBJECTRANGE / 2.0f) {
+		return ZoneServer::CLOSEOBJECTRANGE + radius;
+	}
+
 	return ZoneServer::CLOSEOBJECTRANGE;
 }
