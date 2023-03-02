@@ -772,29 +772,28 @@ void ResourceSpawner::sendResourceListForSurvey(CreatureObject* player,
 	}
 
 	ResourceListForSurveyMessage* message = new ResourceListForSurveyMessage();
-	ManagedReference<ResourceSpawn*> resourceSpawn;
-	Vector<ManagedReference<ResourceSpawn*> > matchingResources;
+	VectorMap<uint64, ManagedReference<ResourceSpawn*> > matchingResources;
+	matchingResources.setAllowDuplicateInsertPlan();
 
 	for (int i = 0; i < zoneMap->size(); ++i) {
-		resourceSpawn = zoneMap->get(i);
+		auto resourceSpawn = zoneMap->get(i);
 
 		if (!resourceSpawn->inShift())
 			continue;
 
 		if (resourceSpawn->getSurveyToolType() == toolType || (toolType == SurveyTool::INORGANIC && resourceSpawn->isType("inorganic"))) {
-			matchingResources.add(resourceSpawn);
-			message->addResource(resourceSpawn->getName(),
-					resourceSpawn->getType(), resourceSpawn->_getObjectID());
+			matchingResources.put(resourceSpawn->getDespawned(), resourceSpawn);
 		}
+	}
+
+	for (int i = matchingResources.size() - 1; i >= 0; --i) {
+		auto resourceSpawn = matchingResources.elementAt(i).getValue();
+		message->addResource(resourceSpawn->getName(), resourceSpawn->getType(), resourceSpawn->_getObjectID());
 	}
 
 	message->finish(surveyType, player->getObjectID());
 
 	player->sendMessage(message);
-
-	/*for (int i = 0; i < matchingResources.size(); ++i) {
-
-	 }*/
 }
 
 void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) const {
