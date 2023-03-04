@@ -175,13 +175,13 @@ void ManufactureSchematicImplementation::sendMsco7(CreatureObject* player) {
 	// ************
 
 	/// Experimenting names
-	int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
+	int titleCount = craftingValues->getTotalVisibleAttributeGroups();
 
 	mcso7->insertInt(titleCount);
 	mcso7->insertInt(titleCount);
 
 	for (int i = 0; i < titleCount; i++) {
-		String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
+		String title = craftingValues->getVisibleAttributeGroup(i);
 
 		mcso7->insertAscii("crafting");
 		mcso7->insertInt(0);
@@ -194,7 +194,7 @@ void ManufactureSchematicImplementation::sendMsco7(CreatureObject* player) {
 	mcso7->insertInt(titleCount);
 
 	for (int i = 0; i < titleCount; i++) {
-		String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
+		String title = craftingValues->getVisibleAttributeGroup(i);
 		mcso7->insertFloat(craftingValues->getCurrentVisiblePercentage(title));
 	}
 	// ************

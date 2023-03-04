@@ -57,26 +57,24 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 		effectiveSpecial = pickSpecialAttack(effectiveSpecial,b,c,d,e,odds+100,otherSpecial);// pick another default mantis #5598 max loop count is 8 (i.e. odds starting at 100, at 8 calls it picks defaultattack
 	return effectiveSpecial;
 }
+
 void GeneticLabratory::recalculateResist(CraftingValues* craftingValues) {
-	String experimentalPropTitle, attributeName;
 	float percentage = 0.f, min = 0.f, max = 0.f, newValue = 0.f, oldValue = 0.f;
 	bool hidden = false;
-	for (int i = 0; i < craftingValues->getSubtitleCount(); ++i) {
 
-		attributeName = craftingValues->getExperimentalPropertySubtitle(i);
+	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
+		String attribute = craftingValues->getAttribute(i);
+		String group = craftingValues->getAttributeGroup(attribute);
 
-		experimentalPropTitle = craftingValues->getExperimentalPropertyTitle(attributeName);
+		min = craftingValues->getMinValue(attribute);
+		max = craftingValues->getMaxValue(attribute);
 
-		min = craftingValues->getMinValue(attributeName);
-		max = craftingValues->getMaxValue(attributeName);
+		hidden = craftingValues->isHidden(attribute);
 
-		hidden = craftingValues->isHidden(attributeName);
+		percentage = craftingValues->getCurrentPercentage(attribute);
+		oldValue = craftingValues->getCurrentValue(attribute);
 
-		percentage = craftingValues->getCurrentPercentage(attributeName);//experimentalPropTitle);
-
-		oldValue = craftingValues->getCurrentValue(attributeName);
-
-		if(max != min) {
+		if (max != min) {
 			if (max > min)
 				newValue = (percentage * (max - min)) + min;
 			else
@@ -84,8 +82,9 @@ void GeneticLabratory::recalculateResist(CraftingValues* craftingValues) {
 		} else if(max == min) {
 			newValue = max;
 		}
-		if (hidden && experimentalPropTitle == "resists") {
-			craftingValues->setCurrentValue(attributeName, newValue);
+
+		if (hidden && group == "resists") {
+			craftingValues->setCurrentValue(attribute, newValue);
 		}
 	}
 
@@ -104,12 +103,12 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	String itemName;
 
 	// These 2 values are pretty standard, adding these
-	itemName = "xp";
 	value = float(draftSchematic->getXpAmount());
-	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, ValuesMap::OVERRIDECOMBINE);
-	itemName = "complexity";
+	craftingValues->addExperimentalAttribute("xp", "", value, value, 0, true, AttributesMap::OVERRIDECOMBINE);
+
 	value = manufactureSchematic->getComplexity();
-	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("complexity", "", value, value, 0, true, AttributesMap::OVERRIDECOMBINE);
+
 	float modifier = calculateAssemblyValueModifier(assemblySuccess);
 
 	// Cast component to genetic
@@ -235,43 +234,42 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	// Step 2. At this point we know the max values for all stats and we have calculated any armor specials needed
 	// So now we need to setup the min and initial values of stats and define the experimental attributes. // Ranges are 0 to 100 for any one of these
 	// set current value to be 70% less than max calculated as the experimentation range. i.e.
-	craftingValues->addExperimentalProperty("expPhysiqueProfile", "fortitude", 0, fortMax, 0, false, ValuesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expPhysiqueProfile", "hardiness", 0, harMax, 0, false, ValuesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expProwessProfile", "dexterity", 0, dexMax, 0, false, ValuesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expProwessProfile", "endurance", 0, endMax, 0, false, ValuesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expMentalProfile", "intellect", 0, intMax, 0, false, ValuesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expMentalProfile", "cleverness", 0, cleMax, 0, false, ValuesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expPsychologicalProfile", "dependability", 0, depMax, 0, false, ValuesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expPsychologicalProfile", "courage", 0, couMax, 0, false, ValuesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expAggressionProfile", "fierceness", 0, fieMax, 0, false, ValuesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expAggressionProfile", "power", 0, powMax, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("fortitude", "expPhysiqueProfile", 0, fortMax, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("hardiness", "expPhysiqueProfile", 0, harMax, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("dexterity", "expProwessProfile", 0, dexMax, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("endurance", "expProwessProfile",  0, endMax, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("intellect", "expMentalProfile", 0, intMax, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("cleverness", "expMentalProfile", 0, cleMax, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("dependability", "expPsychologicalProfile", 0, depMax, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("courage", "expPsychologicalProfile", 0, couMax, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("fierceness", "expAggressionProfile", 0, fieMax, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("power", "expAggressionProfile", 0, powMax, 0, false, AttributesMap::LINEARCOMBINE);
 
-	String title;
 	int armorBase = 0;
 	int effectiveness = 0;
 
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); i++) {
-		title = craftingValues->getExperimentalPropertySubtitle(i);
+	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); i++) {
+		String attriute = craftingValues->getAttribute(i);
 
-		if (craftingValues->isHidden(title))
+		if (craftingValues->isHidden(attriute))
 			continue;
 
 		// We need to accoutn for assembly percentage. do some swapping around as well.
-		float maxValue = craftingValues->getMaxValue(title);
-		float initialValue = Genetics::initialValue(craftingValues->getMaxValue(title));
+		float maxValue = craftingValues->getMaxValue(attriute);
+		float initialValue = Genetics::initialValue(craftingValues->getMaxValue(attriute));
 
 		// determine max percentage
-		craftingValues->setMaxPercentage(title, maxValue/1000.0f);
-		craftingValues->setMaxValue(title,1000);
+		craftingValues->setMaxPercentage(attriute, maxValue/1000.0f);
+		craftingValues->setMaxValue(attriute,1000);
 
 		// using assembly to accoutn for a 1 +% increase
 		currentPercentage = getAssemblyPercentage(initialValue) * modifier;
 
-		//craftingValues->setMaxPercentage(title, maxPercentage);
-		craftingValues->setCurrentPercentage(title, currentPercentage);
+		//craftingValues->setMaxPercentage(attriute, maxPercentage);
+		craftingValues->setCurrentPercentage(attriute, currentPercentage);
 
-		if (title == "fortitude") {
-			armorBase = craftingValues->getCurrentValue(title);
+		if (attriute == "fortitude") {
+			armorBase = craftingValues->getCurrentValue(attriute);
 		}
 	}
 
@@ -279,26 +277,26 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	effectiveness = (int)(((armorBase - (armorValue * 500)) / 50) * 5);
 
 	// Store off armor data
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_kinetic", spKinetic ? kineticMax : kineticMax < 0 ? -1 : effectiveness, kineticMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_blast", spBlast ? blastMax : blastMax < 0 ? -1 : effectiveness, blastMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_energy", spEnergy ? energyMax : energyMax < 0 ? -1 : effectiveness, energyMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_heat", spHeat ? heatMax : heatMax < 0 ? -1 :  effectiveness, heatMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_cold", spCold ? coldMax : coldMax < 0 ? -1 : effectiveness, coldMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_electric", spElectric ? electricMax : electricMax < 0 ? -1 : effectiveness, electricMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_acid", spAcid ? acidMax : acidMax < 0 ? -1 : effectiveness, acidMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_stun", spStun ? stunMax : stunMax < 0 ? -1 : effectiveness, stunMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_saber", spSaber ? saberMax : saberMax < 0 ? -1 : effectiveness, saberMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("dna_comp_armor_kinetic", "resists", spKinetic ? kineticMax : kineticMax < 0 ? -1 : effectiveness, kineticMax, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("dna_comp_armor_blast", "resists", spBlast ? blastMax : blastMax < 0 ? -1 : effectiveness, blastMax, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("dna_comp_armor_energy", "resists", spEnergy ? energyMax : energyMax < 0 ? -1 : effectiveness, energyMax, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("dna_comp_armor_heat", "resists", spHeat ? heatMax : heatMax < 0 ? -1 :  effectiveness, heatMax, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("dna_comp_armor_cold", "resists", spCold ? coldMax : coldMax < 0 ? -1 : effectiveness, coldMax, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("dna_comp_armor_electric", "resists", spElectric ? electricMax : electricMax < 0 ? -1 : effectiveness, electricMax, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("dna_comp_armor_acid", "resists", spAcid ? acidMax : acidMax < 0 ? -1 : effectiveness, acidMax, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("dna_comp_armor_stun", "resists", spStun ? stunMax : stunMax < 0 ? -1 : effectiveness, stunMax, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("dna_comp_armor_saber", "resists", spSaber ? saberMax : saberMax < 0 ? -1 : effectiveness, saberMax, 0, true, AttributesMap::OVERRIDECOMBINE);
 
 	// Store off special information
-	craftingValues->addExperimentalProperty("specials", "kineticeffectiveness", spKinetic ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials", "blasteffectiveness", spBlast ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials", "energyeffectiveness", spEnergy ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials", "heateffectiveness", spHeat ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials", "coldeffectiveness", spCold ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials", "electricityeffectiveness", spElectric ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials", "acideffectiveness", spAcid ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials", "stuneffectiveness", spStun ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials", "lightsabereffectiveness", spSaber ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("kineticeffectiveness", "specials", spKinetic ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("blasteffectiveness", "specials", spBlast ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("energyeffectiveness", "specials", spEnergy ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("heateffectiveness", "specials", spHeat ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("coldeffectiveness", "specials", spCold ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("electricityeffectiveness", "specials", spElectric ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("acideffectiveness", "specials", spAcid ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("stuneffectiveness", "specials", spStun ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("lightsabereffectiveness", "specials", spSaber ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
 
 	int quality = ( ((float)phy->getQuality() * 0.2)+ ((float)pro->getQuality()*0.2) + ((float)men->getQuality()*0.2) + ((float)psy->getQuality()*0.2) + ((float)agr->getQuality()*0.2));
 	bool ranged = false;
@@ -326,6 +324,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	// determine avg sample levels to choose a level of this template for output generation
 	int level = Genetics::physchologicalFormula(phy->getLevel(),pro->getLevel(),men->getLevel(), psy->getLevel() ,agr->getLevel());
 	genetic->setLevel(level);
+
 	craftingValues->recalculateValues(true);
 }
 
@@ -346,66 +345,77 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 	// Step 3. Profit.
 	// RULES: AMAZING + 15% (+5% if lucky), GREAT: 1% GOOD: 0.5% MODERATE: 0.25% SUCCESS: 0.15% MARGINAL: 0% OK: -0.5% BARELY: -1% CRITICAL FAILURE: -1% + random state reduced by 10%
 	// use normal line mechanics, just add the extra in.
+
 	float modifier = 0, newValue = 0;
-	String title, subtitle, subtitlesTitle, screwedTitle;
-	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
-		if (subtitlesTitle == title) {
-			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
-			if (experimentationResult == CraftingManager::AMAZINGSUCCESS)
-				modifier = 0.15f * (float)pointsAttempted; //
-			if (experimentationResult == CraftingManager::GREATSUCCESS)
-				modifier = 0.10 * (float)pointsAttempted; //
-			if (experimentationResult == CraftingManager::GOODSUCCESS)
-				modifier = 0.05 * (float)pointsAttempted;
-			if (experimentationResult == CraftingManager::MODERATESUCCESS)
-				modifier = 0.025 * (float)pointsAttempted;
-			if (experimentationResult == CraftingManager::SUCCESS)
-				modifier = 0.015 * (float)pointsAttempted;
-			if (experimentationResult == CraftingManager::MARGINALSUCCESS)
-				modifier = 0.0;
-			if (experimentationResult == CraftingManager::OK)
-				modifier = -0.05 * (float)pointsAttempted;
-			if (experimentationResult == CraftingManager::BARELYSUCCESSFUL)
-				modifier = -0.1 * (float)pointsAttempted;
-			if (experimentationResult == CraftingManager::CRITICALFAILURE) {
-				modifier = -0.1 * (float)pointsAttempted;
-				// pick a random attribute
-				int which = System::random(10);
-				while(which != i) {
-					which = System::random(10);
-				}
-				screwedTitle = craftingValues->getExperimentalPropertySubtitle(which);
-				float current = craftingValues->getCurrentPercentage(which);
-				craftingValues->setCurrentPercentage(screwedTitle,current * (-0.1)); // reduce a random attribute by 10%
-			}
-			//modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
-			newValue = craftingValues->getCurrentPercentage(subtitle) + modifier;
-			if (newValue > craftingValues->getMaxPercentage(subtitle))
-				newValue = craftingValues->getMaxPercentage(subtitle);
+	String experimentedGroup = craftingValues->getVisibleAttributeGroup(rowEffected);
 
-			if (newValue < 0)
-				newValue = 0;
+	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
+		String attribute = craftingValues->getAttribute(i);
+		String group = craftingValues->getAttributeGroup(attribute);
 
-			craftingValues->setCurrentPercentage(subtitle, newValue);
+		if (group != experimentedGroup) {
+			continue;
 		}
+
+		if (experimentationResult == CraftingManager::AMAZINGSUCCESS)
+			modifier = 0.15f * (float)pointsAttempted; //
+		if (experimentationResult == CraftingManager::GREATSUCCESS)
+			modifier = 0.10 * (float)pointsAttempted; //
+		if (experimentationResult == CraftingManager::GOODSUCCESS)
+			modifier = 0.05 * (float)pointsAttempted;
+		if (experimentationResult == CraftingManager::MODERATESUCCESS)
+			modifier = 0.025 * (float)pointsAttempted;
+		if (experimentationResult == CraftingManager::SUCCESS)
+			modifier = 0.015 * (float)pointsAttempted;
+		if (experimentationResult == CraftingManager::MARGINALSUCCESS)
+			modifier = 0.0;
+		if (experimentationResult == CraftingManager::OK)
+			modifier = -0.05 * (float)pointsAttempted;
+		if (experimentationResult == CraftingManager::BARELYSUCCESSFUL)
+			modifier = -0.1 * (float)pointsAttempted;
+		if (experimentationResult == CraftingManager::CRITICALFAILURE) {
+			modifier = -0.1 * (float)pointsAttempted;
+			// pick a random attribute
+			int which = System::random(10);
+			while(which != i) {
+				which = System::random(10);
+			}
+
+			String failedGroup = craftingValues->getAttribute(which);
+
+			float current = craftingValues->getCurrentPercentage(which);
+			craftingValues->setCurrentPercentage(failedGroup, current * (-0.1)); // reduce a random attribute by 10%
+		}
+
+		//modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
+		newValue = craftingValues->getCurrentPercentage(attribute) + modifier;
+
+		if (newValue > craftingValues->getMaxPercentage(attribute))
+			newValue = craftingValues->getMaxPercentage(attribute);
+
+		if (newValue < 0)
+			newValue = 0;
+
+		craftingValues->setCurrentPercentage(attribute, newValue);
 	}
 
 	craftingValues->recalculateValues(false);
+
 	float currentFort = craftingValues->getCurrentValue("fortitude");
 	int armorValue = currentFort/500;
 	float currentEffective = (int)(((currentFort - (armorValue * 500)) / 50) * 5);
 
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
-		subtitle = craftingValues->getExperimentalPropertySubtitle(i);
-		float minValue = craftingValues->getMinValue(subtitle);
+	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
+		String attribute = craftingValues->getAttribute(i);
+		String group = craftingValues->getAttributeGroup(attribute);
 
-		if (subtitlesTitle == "resists" && minValue >= 0) {
-			float maxValue = craftingValues->getMaxValue(subtitle);
+		float minValue = craftingValues->getMinValue(attribute);
+
+		if (group == "resists" && minValue >= 0) {
+			float maxValue = craftingValues->getMaxValue(attribute);
+
 			if (craftingValues->getCurrentValue(i) < maxValue) {
-				craftingValues->setCurrentValue(subtitle, Math::min(currentEffective, maxValue));
+				craftingValues->setCurrentValue(attribute, Math::min(currentEffective, maxValue));
 			}
 		}
 	}

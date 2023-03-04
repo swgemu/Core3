@@ -10,6 +10,8 @@
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
 
+//#define DEBUG_RESOURCE_LAB
+
 ResourceLabratory::ResourceLabratory() {
 	setLoggingName("ResourceLabratory");
 }
@@ -35,43 +37,51 @@ void ResourceLabratory::initialize(ZoneServer* server) {
 
 }
 void ResourceLabratory::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
+#ifdef DEBUG_RESOURCE_LAB
+	info(true) << "---------- ResourceLabratory::setInitialCraftingValues --------";
+#endif
 
-	if(manufactureSchematic == nullptr || manufactureSchematic->getDraftSchematic() == nullptr)
+	if (manufactureSchematic == nullptr || manufactureSchematic->getDraftSchematic() == nullptr)
 		return;
 
 	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
 	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
+
 	float value, maxPercentage, currentPercentage, weightedSum;
-	String itemName;
+
 	// These 2 values are pretty standard, adding these
-	itemName = "xp";
 	value = float(draftSchematic->getXpAmount());
-	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, ValuesMap::OVERRIDECOMBINE);
-	itemName = "complexity";
+	craftingValues->addExperimentalAttribute("xp", "", value, value, 0, true, AttributesMap::OVERRIDECOMBINE);
+
 	value = manufactureSchematic->getComplexity();
-	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("complexity", "", value, value, 0, true, AttributesMap::OVERRIDECOMBINE);
+
 	float modifier = calculateAssemblyValueModifier(assemblySuccess);
-	int subtitleCounter = 0;
 
 	for (int i = 0; i < draftSchematic->getResourceWeightCount(); ++i) {
 		// Grab the first weight group
 		Reference<ResourceWeight* > resourceWeight = draftSchematic->getResourceWeight(i);
-		// Getting the title ex: expDamage
-		String experimentalTitle = resourceWeight->getExperimentalTitle();
-		// Getting the subtitle ex: minDamage
-		String property = resourceWeight->getPropertyName();
-		weightedSum = 0;
-		craftingValues->addExperimentalProperty(experimentalTitle, property,
-				resourceWeight->getMinValue(), resourceWeight->getMaxValue(),
-				resourceWeight->getPrecision(), resourceWeight->isFiller(),
-				resourceWeight->getCombineType());
 
-		for (int ii = 0; ii < resourceWeight->getPropertyListSize(); ++ii) {
+		// Getting the title ex: expDamage
+		String group = resourceWeight->getExperimentalTitle();
+
+		// Getting the subtitle ex: minDamage
+		String attribute = resourceWeight->getPropertyName();
+
+#ifdef DEBUG_RESOURCE_LAB
+		info(true) << "setInitialCraftingValues -- adding attribute " << attribute << " with the group " << group;
+#endif
+		weightedSum = 0;
+		craftingValues->addExperimentalAttribute(attribute, group, resourceWeight->getMinValue(), resourceWeight->getMaxValue(), resourceWeight->getPrecision(), resourceWeight->isFiller(), resourceWeight->getCombineType());
+
+		for (int j = 0; j < resourceWeight->getPropertyListSize(); ++j) {
 			// Based on the script we cycle through each exp group
 			// Get the type from the type/weight
-			int type = (resourceWeight->getTypeAndWeight(ii) >> 4);
+			int type = (resourceWeight->getTypeAndWeight(j) >> 4);
+
 			// Get the calculation percentage
-			float percentage = resourceWeight->getPropertyPercentage(ii);
+			float percentage = resourceWeight->getPropertyPercentage(j);
+
 			// add to the weighted sum based on type and percentage
 			weightedSum += getWeightedValue(manufactureSchematic, type) * percentage;
 		}
@@ -84,15 +94,16 @@ void ResourceLabratory::setInitialCraftingValues(TangibleObject* prototype, Manu
 
 			// Based on the weighted sum, we can get the initial %
 			currentPercentage = getAssemblyPercentage(weightedSum) * modifier;
-			craftingValues->setMaxPercentage(property, maxPercentage);
-			craftingValues->setCurrentPercentage(property, currentPercentage);
-			subtitleCounter++;
+			craftingValues->setCurrentPercentage(attribute, currentPercentage, maxPercentage);
 		}
 	}
 
 	craftingValues->recalculateValues(true);
 
-	if (applyComponentStats(prototype,manufactureSchematic)) {
+	if (applyComponentStats(prototype, manufactureSchematic)) {
+#ifdef DEBUG_RESOURCE_LAB
+		info(true) << "Apply Component Stats is TRUE --  recalculateValues AGAIN";
+#endif
 		craftingValues->recalculateValues(true);
 	}
 
@@ -100,51 +111,87 @@ void ResourceLabratory::setInitialCraftingValues(TangibleObject* prototype, Manu
 		prototype->setIsCraftedEnhancedItem(true);
 		prototype->addMagicBit(false);
 	}
+
+#ifdef DEBUG_RESOURCE_LAB
+	info(true) << "---------- END ResourceLabratory::setInitialCraftingValues --------";
+#endif
 }
 
-void ResourceLabratory::experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult){
+void ResourceLabratory::experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult){
+	String experimentedGroup = craftingValues->getVisibleAttributeGroup(rowEffected);
 
-	float modifier, newValue;
-	String title, subtitle, subtitlesTitle;
-	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
-		if (subtitlesTitle == title) {
-			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
-			modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
-			newValue = craftingValues->getCurrentPercentage(subtitle) + modifier;
+#ifdef DEBUG_RESOURCE_LAB
+	info(true) << "---------- ResourceLabratory::experimentRow for Row #" << rowEffected << " with Experimented Group Name " << experimentedGroup << " with a total Experimental attributes " << craftingValues->getTotalExperimentalAttributes() << " using " << pointsAttempted << " points. -----------";
+#endif
 
-			if (newValue > craftingValues->getMaxPercentage(subtitle))
-				newValue = craftingValues->getMaxPercentage(subtitle);
+	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
+		String attribute = craftingValues->getAttribute(i);
+		String group = craftingValues->getAttributeGroup(attribute);
 
-			if (newValue < 0)
-				newValue = 0;
+#ifdef DEBUG_RESOURCE_LAB
+		info(true) << "Checking #" << i << " Attribute: " << attribute << " with Group: " << group;
+#endif
 
-			craftingValues->setCurrentPercentage(subtitle, newValue);
+		if (group != experimentedGroup)
+			continue;
+
+		float modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
+		float newValue = craftingValues->getCurrentPercentage(attribute) + modifier;
+		float maxPercent = craftingValues->getMaxPercentage(attribute);
+
+		if (newValue > maxPercent) {
+			newValue = maxPercent;
 		}
+
+		if (newValue < 0)
+			newValue = 0;
+
+#ifdef DEBUG_RESOURCE_LAB
+		info(true) << "Experimenting on " << attribute << " with a modifier " << modifier << " and new calculated value of " << newValue << " and max percentage of " << maxPercent;
+#endif
+		craftingValues->setCurrentPercentage(attribute, newValue);
 	}
+
+#ifdef DEBUG_RESOURCE_LAB
+	info(true) << "---------- END ResourceLabratory::experimentRow ----------";
+#endif
 }
+
 int ResourceLabratory::getCreationCount(ManufactureSchematic* manufactureSchematic) {
 	return 1;
 }
 
 bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic) {
+#ifdef DEBUG_RESOURCE_LAB
+	info(true) << "----- ResourceLabratory::applyComponentStats called ------";
+#endif
 
-	if(manufactureSchematic == nullptr || manufactureSchematic->getDraftSchematic() == nullptr)
+	if (manufactureSchematic == nullptr || manufactureSchematic->getDraftSchematic() == nullptr)
 		return false;
 
 	float max, min, currentvalue, propertyvalue;
 	int precision;
 	bool modified = false;
 	bool hidden;
-	String experimentalTitle, property;
+	String attribute, group;
 
 	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
 
+#ifdef DEBUG_RESOURCE_LAB
+	info(true) << "applyComponentStats -- Manufacture schematic Info: " << manufactureSchematic->getObjectNameStringIdName() << " Total Experimental Attributes: " << craftingValues->getTotalExperimentalAttributes();
+
+	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
+		info(true) << "Schematic Attribute #" << i << " - " << craftingValues->getAttribute(i);
+	}
+#endif
+
 	bool isYellow = false;
 
 	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
+#ifdef DEBUG_RESOURCE_LAB
+		info(true) << "applyComponentStats -- Component #" << i;
+#endif
 
 		Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getSlot(i);
 		Reference<DraftSlot* > draftSlot = draftSchematic->getDraftSlot(i);
@@ -162,87 +209,112 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 		if (tano == nullptr || !tano->isComponent())
 			continue;
 
-		ManagedReference<Component*> component = cast<Component*>( tano.get());
+		ManagedReference<Component*> component = cast<Component*>(tano.get());
 
 		if (prototype->isWearableObject() && !prototype->isArmorObject()) {
-
 			if (component->getObjectTemplate()->getObjectName() == "@craft_clothing_ingredients_n:reinforced_fiber_panels" || component->getObjectTemplate()->getObjectName() == "@craft_clothing_ingredients_n:synthetic_cloth"){
-
 				for (int k = 0; k < component->getPropertyCount(); ++k) {
-					const String property = component->getProperty(k);
+					attribute = component->getProperty(k);
 
-					if (property == "" || property == "null") {
+					if (attribute == "" || attribute == "null") {
 						continue;
 					}
 
-					String key = checkBioSkillMods(property);
+					String key = checkBioSkillMods(attribute);
 
-					if (key == "") {
+					if (key == "")
 						continue;
-					} else {
-						currentvalue = component->getAttributeValue(property);
-						precision = component->getAttributePrecision(property);
-						int preciseValue = Math::getPrecision(currentvalue, precision);
-						WearableObject* clothing = cast<WearableObject*>(prototype);
-						const VectorMap<String, int>* clothingMods = clothing->getWearableSkillMods();
 
-						int existingValue = 0;
-						if(clothingMods->contains(key)) {
-							existingValue = clothingMods->get(key);
-						}
-						preciseValue += existingValue;
-						if (preciseValue > 25)
-							preciseValue = 25;
-						clothing->addSkillMod(SkillModManager::WEARABLE, key, preciseValue);
-						isYellow = true;
+					currentvalue = component->getAttributeValue(attribute);
+					precision = component->getAttributePrecision(attribute);
+
+					int preciseValue = Math::getPrecision(currentvalue, precision);
+
+					WearableObject* clothing = cast<WearableObject*>(prototype);
+					const VectorMap<String, int>* clothingMods = clothing->getWearableSkillMods();
+
+					int existingValue = 0;
+
+					if (clothingMods->contains(key)) {
+						existingValue = clothingMods->get(key);
 					}
+
+					preciseValue += existingValue;
+
+					if (preciseValue > 25)
+						preciseValue = 25;
+
+					clothing->addSkillMod(SkillModManager::WEARABLE, key, preciseValue);
+					isYellow = true;
 				}
 			}
 		} else {
-
 			for (int j = 0; j < component->getPropertyCount(); ++j) {
-				property = component->getProperty(j);
+				attribute = component->getProperty(j);
 				modified = true;
 
-				if (craftingValues->hasProperty(property)) {
-					max = craftingValues->getMaxValue(property);
-					min = craftingValues->getMinValue(property);
-					hidden = craftingValues->isHidden(property);
-					currentvalue = craftingValues->getCurrentValue(property);
-					propertyvalue = component->getAttributeValue(property) * draftSlot->getContribution();
-					short combineType = craftingValues->getCombineType(property);
+#ifdef DEBUG_RESOURCE_LAB
+				info(true) << "Component Attribute: " << attribute;
+#endif
+
+				bool contains = false;
+
+				for (int k = 0; k < craftingValues->getTotalExperimentalAttributes(); ++k) {
+					String compAtt = craftingValues->getAttribute(k);
+
+#ifdef DEBUG_RESOURCE_LAB
+					info(true) << "Checking #" << k << " Name: " << compAtt;
+#endif
+
+					if (compAtt == attribute) {
+						contains = true;
+						break;
+					}
+				}
+
+				if (craftingValues->hasExperimentalAttribute(attribute)) {
+#ifdef DEBUG_RESOURCE_LAB
+					info(true) << "Crafting values contains attribute: " << attribute << " updating values and percentages.";
+#endif
+
+					max = craftingValues->getMaxValue(attribute);
+					min = craftingValues->getMinValue(attribute);
+					hidden = craftingValues->isHidden(attribute);
+					currentvalue = craftingValues->getCurrentValue(attribute);
+					propertyvalue = component->getAttributeValue(attribute) * draftSlot->getContribution();
+					short combineType = craftingValues->getCombineType(attribute);
 
 					switch(combineType) {
-					case ValuesMap::LINEARCOMBINE:
+					case AttributesMap::LINEARCOMBINE:
 						currentvalue += propertyvalue;
 						min += propertyvalue;
 						max += propertyvalue;
 
-						craftingValues->setMinValue(property, min);
-						craftingValues->setMaxValue(property, max);
+						craftingValues->setMinValue(attribute, min);
+						craftingValues->setMaxValue(attribute, max);
 
-						craftingValues->setCurrentValue(property, currentvalue);
+						craftingValues->setCurrentValue(attribute, currentvalue);
 						break;
-					case ValuesMap::PERCENTAGECOMBINE:
+					case AttributesMap::PERCENTAGECOMBINE:
 						currentvalue += propertyvalue;
 						min += propertyvalue;
 						max += propertyvalue;
 
-						craftingValues->setMinValue(property, min);
-						craftingValues->setMaxValue(property, max);
+						craftingValues->setMinValue(attribute, min);
+						craftingValues->setMaxValue(attribute, max);
 
-						craftingValues->setCurrentPercentage(property, currentvalue);
+						craftingValues->setCurrentPercentage(attribute, currentvalue);
 						break;
-					case ValuesMap::BITSETCOMBINE:
+					case AttributesMap::BITSETCOMBINE:
 						currentvalue = (int)currentvalue | (int)propertyvalue;
 
-						craftingValues->setCurrentValue(property , currentvalue);
+						craftingValues->setCurrentValue(attribute, currentvalue);
 						break;
-					case ValuesMap::OVERRIDECOMBINE:
+					case AttributesMap::OVERRIDECOMBINE:
 						// Do nothing because the values should override whatever is
 						// on the component
 						break;
-					case ValuesMap::LIMITEDCOMBINE:
+					case AttributesMap::LIMITEDCOMBINE:
 						currentvalue += propertyvalue;
 
 						if (currentvalue < min)
@@ -251,7 +323,7 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 						if (currentvalue > max)
 							currentvalue = max;
 
-						craftingValues->setCurrentValue(property, currentvalue);
+						craftingValues->setCurrentValue(attribute, currentvalue);
 
 						modified = false;
 						break;
@@ -260,16 +332,17 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 					}
 
 				} else {
+#ifdef DEBUG_RESOURCE_LAB
+					info(true) << "Crafting values DOES NOT contain attribute: " << attribute << " addingExperimentalAttribute.";
+#endif
+					currentvalue = component->getAttributeValue(attribute);
+					precision = component->getAttributePrecision(attribute);
+					group = component->getAttributeGroup(attribute);
 
-					currentvalue = component->getAttributeValue(property);
-					precision = component->getAttributePrecision(property);
-					experimentalTitle = component->getAttributeTitle(property);
-
-					craftingValues->addExperimentalProperty(experimentalTitle, property,
-						currentvalue, currentvalue, precision, component->getAttributeHidden(property), ValuesMap::LINEARCOMBINE);
-					craftingValues->setCurrentPercentage(property, 0);
-					craftingValues->setMaxPercentage(property, 0);
-					craftingValues->setCurrentValue(property, currentvalue);
+					craftingValues->addExperimentalAttribute(attribute, group, currentvalue, currentvalue, precision, component->getAttributeHidden(attribute), AttributesMap::LINEARCOMBINE);
+					craftingValues->setCurrentPercentage(attribute, 0);
+					craftingValues->setMaxPercentage(attribute, 0);
+					craftingValues->setCurrentValue(attribute, currentvalue);
 				}
 			}
 		}
@@ -280,10 +353,14 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 		prototype->addMagicBit(false);
 	}
 
+#ifdef DEBUG_RESOURCE_LAB
+	info(true) << "----- END ResourceLabratory::applyComponentStats called ------";
+#endif
+
 	return modified;
 }
-String ResourceLabratory::checkBioSkillMods(const String& property) {
 
+String ResourceLabratory::checkBioSkillMods(const String& property) {
 	for (int l = 0; l < bioMods.size(); ++l) {
 
 		String key = bioMods.elementAt(l);

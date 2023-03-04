@@ -45,7 +45,7 @@ void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, 
 	 * hitpoints			1000-1000 (Don't Use)
 	 */
 	if (initialUpdate) {
-		if(values->hasProperty("sockets") && values->getCurrentValue("sockets") >= 0)
+		if(values->hasExperimentalAttribute("sockets") && values->getCurrentValue("sockets") >= 0)
 			generateSockets(values);
 	}
 }
