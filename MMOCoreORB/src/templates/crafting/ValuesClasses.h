@@ -54,11 +54,8 @@ public:
 		combineType = val.combineType;
 	}
 
-	Values(Values&& val) : Object(), values(std::move(val.values)),
-					  name(std::move(val.name)), minValue(val.minValue),
-					  maxValue(val.maxValue), precision(val.precision),
-	      				  combineType(val.combineType), locked(val.locked),
-					  experimentalProperties(val.experimentalProperties) {
+	Values(Values&& val) : Object(), values(std::move(val.values)), name(std::move(val.name)), minValue(val.minValue), maxValue(val.maxValue), precision(val.precision),
+		combineType(val.combineType), locked(val.locked), experimentalProperties(val.experimentalProperties) {
 	}
 
 	~Values(){
@@ -209,6 +206,14 @@ public:
 
 		values.put("currentPercentage", value);
 	}
+
+	inline void setCombineType(short combine) {
+		if (locked)
+			return;
+
+		combineType = combine;
+	}
+
 	inline void resetValue() {
 		float reset = (getMaxPercentage() * 10.0f) * (0.000015f * (getMaxPercentage() * 10.0f) + 0.015f);
 		setPercentage(reset);
@@ -222,7 +227,7 @@ public:
 	}
 
 };
-
+/*
 class Subclasses : public Object {
 	VectorMap<String, Reference<Values*> > valueList;
 	float avePercentage;
@@ -233,9 +238,7 @@ class Subclasses : public Object {
 public:
 	Subclasses() = delete;
 
-	Subclasses(const String& title, const String& subtitle, const float
-			min, const float max, const int precision, const bool filler, const int combine) {
-
+	Subclasses(const String& title, const String& subtitle, const float min, const float max, const int precision, const bool filler, const int combine) {
 		classTitle = title;
 
 		name = subtitle;
@@ -270,14 +273,11 @@ public:
 		}
 	}
 
-	Subclasses(Subclasses&& sub) : Object(), valueList(std::move(sub.valueList)),
-					avePercentage(sub.avePercentage), name(std::move(sub.name)),
-					classTitle(std::move(sub.classTitle)), hidden(sub.hidden) {
+	Subclasses(Subclasses&& sub) : Object(), valueList(std::move(sub.valueList)), avePercentage(sub.avePercentage), name(std::move(sub.name)), classTitle(std::move(sub.classTitle)), hidden(sub.hidden) {
 	}
 
 	~Subclasses(){
 	}
-
 	void addSubtitle(const String& s, const float min, const float max, const int precision, const bool filler, const int combine) {
 
 		if (valueList.contains(s)) {
@@ -387,5 +387,5 @@ public:
 		return str.toString();
 	}
 };
-
+*/
 #endif /*VALUESCLASSES_H_*/

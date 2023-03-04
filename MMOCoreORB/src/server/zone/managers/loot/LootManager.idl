@@ -132,7 +132,7 @@ class LootManager extends ManagedService implements Logger {
 	private native void loadDefaultConfig();
 
 	@local
-	private native void setInitialObjectStats(final LootItemTemplate templateObject, CraftingValues craftingValues, TangibleObject prototype);
+	private native void setCustomizationData(final LootItemTemplate templateObject, TangibleObject prototype);
 
 	@local
 	private native void setSkillMods(TangibleObject object, final LootItemTemplate templateObject, int level, float excMod);

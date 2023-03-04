@@ -5,7 +5,7 @@
 #ifndef CRAFTINGVALUES_H_
 #define CRAFTINGVALUES_H_
 
-#include "templates/crafting/ValuesMap.h"
+#include "templates/crafting/AttributesMap.h"
 #include "engine/engine.h"
 
 namespace server {
@@ -44,7 +44,7 @@ namespace server {
 
 
 class CraftingValues : public Serializable, public Logger {
-	ValuesMap experimentalValuesMap;
+	AttributesMap attributesMap;
 
 	Vector<String> valuesToSend;
 
@@ -64,7 +64,7 @@ public:
 public:
 	CraftingValues();
 	CraftingValues(const CraftingValues& values);
-	CraftingValues(const ValuesMap& values);
+	CraftingValues(const AttributesMap& map);
 
 	~CraftingValues();
 
@@ -73,160 +73,142 @@ public:
 	void setPlayer(CreatureObject* play);
 	CreatureObject* getPlayer();
 
-	// Experimental Titles
-	void addExperimentalProperty(const String& title, const String& subtitle,
-			const float min, const float max, const int precision,
-			const bool filler, const int combine) {
-		experimentalValuesMap.addExperimentalProperty(title, subtitle, min, max, precision, filler, combine);
+	// new Implementation of AttributesMap
+	void addExperimentalAttribute(const String& attribute, const String& group, const float min, const float max, const int precision, const bool filler, const int combine) {
+		attributesMap.addExperimentalAttribute(attribute, group, min, max, precision, filler, combine);
 	}
 
-	const String& getExperimentalPropertyTitle(const String& subtitle) const {
-		return experimentalValuesMap.getExperimentalPropertyTitle(subtitle);
+	const String& getAttribute(const int i) const {
+		return attributesMap.getAttribute(i);
 	}
 
-	const String& getExperimentalPropertyTitle(const int i) const {
-		return experimentalValuesMap.getExperimentalPropertyTitle(i);
+	const String& getAttributeGroup(const String& attribute) const {
+		return attributesMap.getAttributeGroup(attribute);
 	}
 
-	const String& getVisibleExperimentalPropertyTitle(const int i) const {
-		return experimentalValuesMap.getVisibleExperimentalPropertyTitle(i);
+	const String& getVisibleAttributeGroup(const int i) const {
+		return attributesMap.getVisibleAttributeGroup(i);
 	}
 
-	const String& getExperimentalPropertySubtitlesTitle(const int i) const {
-		return experimentalValuesMap.getExperimentalPropertySubtitlesTitle(i);
+	int getTotalExperimentalAttributes() const {
+		return attributesMap.getSize();
 	}
 
-	const String& getExperimentalPropertySubtitle(const int i) const {
-		return experimentalValuesMap.getExperimentalPropertySubtitle(i);
-	}
-
-	const String& getExperimentalPropertySubtitle(const String title, const int i) const {
-		return experimentalValuesMap.getExperimentalPropertySubtitle(title, i);
-	}
-
-	int getExperimentalPropertySubtitleSize() const {
-		return experimentalValuesMap.getExperimentalPropertySubtitleSize();
-	}
-
-	int getExperimentalPropertySubtitleSize(const String title) const {
-		return experimentalValuesMap.getExperimentalPropertySubtitleSize(title);
-	}
-
-	bool hasProperty(const String& attribute) const {
-		return experimentalValuesMap.hasProperty(attribute);
+	bool hasExperimentalAttribute(const String& attribute) const {
+		return attributesMap.hasExperimentalAttribute(attribute);
 	}
 
 	bool isHidden(const String& attribute) const {
-		return experimentalValuesMap.isHidden(attribute);
+		return attributesMap.isHidden(attribute);
 	}
 
 	void setHidden(const String& attribute) {
-		experimentalValuesMap.setHidden(attribute);
+		attributesMap.setHidden(attribute);
 	}
 
 	void unsetHidden(const String& attribute) {
-		experimentalValuesMap.unsetHidden(attribute);
+		attributesMap.unsetHidden(attribute);
 	}
 
 	short getCombineType(const String& attribute) const {
-		return experimentalValuesMap.getCombineType(attribute);
+		return attributesMap.getCombineType(attribute);
 	}
 
 	void setCurrentValue(const String& attribute, const float value) {
-		experimentalValuesMap.setCurrentValue(attribute, value);
+		attributesMap.setCurrentValue(attribute, value);
 	}
 
 	void setCurrentValue(const String& attribute, const float value, const float min, const float max) {
-		experimentalValuesMap.setCurrentValue(attribute, value, min, max);
+		attributesMap.setCurrentValue(attribute, value, min, max);
 	}
 
 	float getCurrentValue(const String& attribute) const {
-		return experimentalValuesMap.getCurrentValue(attribute);
+		return attributesMap.getCurrentValue(attribute);
 	}
 
 	float getCurrentValue(const int i) const {
-		return experimentalValuesMap.getCurrentValue(i);
+		return attributesMap.getCurrentValue(i);
 	}
 
 	void lockValue(const String& attribute) {
-		experimentalValuesMap.lockValue(attribute);
+		attributesMap.lockValue(attribute);
 	}
 
 	void unlockValue(const String& attribute) {
-		experimentalValuesMap.unlockValue(attribute);
+		attributesMap.unlockValue(attribute);
 	}
 
 	void resetValue(const String& attribute) {
-		experimentalValuesMap.resetValue(attribute);
+		attributesMap.resetValue(attribute);
 	}
 
 	void setCurrentPercentage(const String& subtitle, const float value) {
-		experimentalValuesMap.setCurrentPercentage(subtitle, value);
+		attributesMap.setCurrentPercentage(subtitle, value);
 	}
 
 	void setCurrentPercentage(const String& subtitle, const float value, const float max) {
-		experimentalValuesMap.setCurrentPercentage(subtitle, value, max);
+		attributesMap.setCurrentPercentage(subtitle, value, max);
 	}
 
 	float getCurrentPercentage(const String& attribute) const {
-		return experimentalValuesMap.getCurrentPercentage(attribute);
+		return attributesMap.getCurrentPercentage(attribute);
 	}
 
 	float getCurrentPercentage(const int i) const {
-		return experimentalValuesMap.getCurrentPercentage(i);
+		return attributesMap.getCurrentPercentage(i);
 	}
 
 	float getCurrentVisiblePercentage(const String title) const {
-		return experimentalValuesMap.getCurrentVisiblePercentage(title);
+		return attributesMap.getCurrentVisiblePercentage(title);
 	}
 
 	void setMaxPercentage(const String& attribute, const float value) {
-		experimentalValuesMap.setMaxPercentage(attribute, value);
+		attributesMap.setMaxPercentage(attribute, value);
 	}
 
 	float getMaxPercentage(const String& attribute) const {
-		return experimentalValuesMap.getMaxPercentage(attribute);
+		return attributesMap.getMaxPercentage(attribute);
 	}
 
 	float getMaxPercentage(const int i) const {
-		return experimentalValuesMap.getMaxPercentage(i);
+		return attributesMap.getMaxPercentage(i);
 	}
 
 	float getMaxVisiblePercentage(const int i) const {
-		return experimentalValuesMap.getMaxVisiblePercentage(i);
+		return attributesMap.getMaxVisiblePercentage(i);
 	}
 
 	float getMinValue(const String& attribute) const {
-		return experimentalValuesMap.getMinValue(attribute);
+		return attributesMap.getMinValue(attribute);
 	}
 
 	float getMaxValue(const String& attribute) const {
-		return experimentalValuesMap.getMaxValue(attribute);
+		return attributesMap.getMaxValue(attribute);
 	}
 
 	void setMinValue(const String& attribute, const float value) {
-		experimentalValuesMap.setMinValue(attribute, value);
+		attributesMap.setMinValue(attribute, value);
 	}
 
 	void setMaxValue(const String& attribute, const float value) {
-		experimentalValuesMap.setMaxValue(attribute, value);
+		attributesMap.setMaxValue(attribute, value);
 	}
 
 	int getPrecision(const String& attribute) const {
-		return experimentalValuesMap.getPrecision(attribute);
+		return attributesMap.getPrecision(attribute);
 	}
 
 	void setPrecision(const String& attribute, const int precision) {
-		experimentalValuesMap.setPrecision(attribute, precision);
+		attributesMap.setPrecision(attribute, precision);
+	}
+
+	inline int getTotalVisibleAttributeGroups() const {
+		return attributesMap.getTotalVisibleAttributeGroups();
 	}
 
 	void recalculateValues(bool initial);
 
 	String toString() const;
-
-	inline int getExperimentalPropertyTitleSize() const {
-		return experimentalValuesMap.size();
-	}
 
 	inline void setSlot(const String& value, bool filled) {
 		slots.put(value, filled);
@@ -243,20 +225,8 @@ public:
 		return slots.get(name);
 	}
 
-	inline int getVisibleExperimentalPropertyTitleSize() const {
-		return experimentalValuesMap.getVisibleExperimentalPropertyTitleSize();
-	}
-
-	inline int getSubtitleCount() const {
-		return experimentalValuesMap.getSubtitleCount();
-	}
-
 	inline int getValuesToSendSize() const {
 		return valuesToSend.size();
-	}
-
-	inline int getTitleLine(const String& title) const {
-		return experimentalValuesMap.getTitleLine(title);
 	}
 
 	const String& getValuesToSend(const int i) const {
@@ -264,7 +234,7 @@ public:
 	}
 
 	float getAttributeAndValue(const String& attribute, const int i) const {
-		String attributeName = getExperimentalPropertySubtitle(i);
+		String attributeName = getAttribute(i);
 
 		return getCurrentValue(attributeName);
 	}
@@ -275,7 +245,6 @@ public:
 	}
 
 	void clearAll();
-
 };
 
 }
