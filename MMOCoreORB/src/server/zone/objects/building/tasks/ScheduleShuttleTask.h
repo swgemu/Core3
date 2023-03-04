@@ -23,6 +23,18 @@ public:
 			return;
 		}
 
+		auto zoneServer = zone->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			error() << " zoneServer is nullptr.";
+			return;
+		}
+
+		if (zoneServer->isServerLoading()) {
+			schedule(1000);
+			return;
+		}
+
 		ManagedReference<CreatureObject*> strongReference = shuttleObject.get();
 
 		if (strongReference == nullptr) {
