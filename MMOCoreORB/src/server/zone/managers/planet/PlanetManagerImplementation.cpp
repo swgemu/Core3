@@ -1096,6 +1096,9 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 }
 
 bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* creature, float x, float y) {
+
+	// issue here
+
 	Vector3 testPosition(x, y, 0);
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());

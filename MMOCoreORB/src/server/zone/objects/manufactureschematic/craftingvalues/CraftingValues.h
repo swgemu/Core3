@@ -74,46 +74,28 @@ public:
 	CreatureObject* getPlayer();
 
 	// Experimental Titles
-	void addExperimentalProperty(const String& title, const String& subtitle,
-			const float min, const float max, const int precision,
-			const bool filler, const int combine) {
-		experimentalValuesMap.addExperimentalProperty(title, subtitle, min, max, precision, filler, combine);
+	void addExperimentalAttribute(const String& attribute, const String& group, const float min, const float max, const int precision, const bool filler, const int combine) {
+		experimentalValuesMap.addExperimentalAttribute(attribute, group, min, max, precision, filler, combine);
 	}
 
-	const String& getExperimentalPropertyTitle(const String& subtitle) const {
-		return experimentalValuesMap.getExperimentalPropertyTitle(subtitle);
+	const String& getAttribute(const int i) const {
+		return experimentalValuesMap.getAttribute(i);
 	}
 
-	const String& getExperimentalPropertyTitle(const int i) const {
-		return experimentalValuesMap.getExperimentalPropertyTitle(i);
+	const String& getAttributeGroup(const String& attribute) const {
+		return experimentalValuesMap.getAttributeGroup(attribute);
 	}
 
-	const String& getVisibleExperimentalPropertyTitle(const int i) const {
-		return experimentalValuesMap.getVisibleExperimentalPropertyTitle(i);
+	const String& getVisibleAttributeGroup(const int i) const {
+		return experimentalValuesMap.getVisibleAttributeGroup(i);
 	}
 
-	const String& getExperimentalPropertySubtitlesTitle(const int i) const {
-		return experimentalValuesMap.getExperimentalPropertySubtitlesTitle(i);
+	int getTotalExperimentalAttributes() const {
+		return experimentalValuesMap.getSize();
 	}
 
-	const String& getExperimentalPropertySubtitle(const int i) const {
-		return experimentalValuesMap.getExperimentalPropertySubtitle(i);
-	}
-
-	const String& getExperimentalPropertySubtitle(const String title, const int i) const {
-		return experimentalValuesMap.getExperimentalPropertySubtitle(title, i);
-	}
-
-	int getExperimentalPropertySubtitleSize() const {
-		return experimentalValuesMap.getExperimentalPropertySubtitleSize();
-	}
-
-	int getExperimentalPropertySubtitleSize(const String title) const {
-		return experimentalValuesMap.getExperimentalPropertySubtitleSize(title);
-	}
-
-	bool hasProperty(const String& attribute) const {
-		return experimentalValuesMap.hasProperty(attribute);
+	bool hasAttribute(const String& attribute) const {
+		return experimentalValuesMap.hasAttribute(attribute);
 	}
 
 	bool isHidden(const String& attribute) const {
@@ -224,10 +206,6 @@ public:
 
 	String toString() const;
 
-	inline int getExperimentalPropertyTitleSize() const {
-		return experimentalValuesMap.size();
-	}
-
 	inline void setSlot(const String& value, bool filled) {
 		slots.put(value, filled);
 	}
@@ -243,20 +221,12 @@ public:
 		return slots.get(name);
 	}
 
-	inline int getVisibleExperimentalPropertyTitleSize() const {
-		return experimentalValuesMap.getVisibleExperimentalPropertyTitleSize();
-	}
-
-	inline int getSubtitleCount() const {
-		return experimentalValuesMap.getSubtitleCount();
+	inline int getTotalVisibleAttributeGroups() const {
+		return experimentalValuesMap.getTotalVisibleAttributeGroups();
 	}
 
 	inline int getValuesToSendSize() const {
 		return valuesToSend.size();
-	}
-
-	inline int getTitleLine(const String& title) const {
-		return experimentalValuesMap.getTitleLine(title);
 	}
 
 	const String& getValuesToSend(const int i) const {
@@ -264,7 +234,7 @@ public:
 	}
 
 	float getAttributeAndValue(const String& attribute, const int i) const {
-		String attributeName = getExperimentalPropertySubtitle(i);
+		String attributeName = getAttribute(i);
 
 		return getCurrentValue(attributeName);
 	}
@@ -275,7 +245,6 @@ public:
 	}
 
 	void clearAll();
-
 };
 
 }

@@ -10,8 +10,10 @@
 
 #include "templates/LuaTemplate.h"
 #include "templates/crafting/ValuesMap.h"
+#include "templates/manager/TemplateManager.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
-class LootItemTemplate: public LuaTemplate {
+class LootItemTemplate: public LuaTemplate, public Logger {
 protected:
 	String templateName;
 	String customObjectName;
@@ -45,6 +47,8 @@ public:
 		junkMinValue = 0;
 		junkMaxValue = 0;
 		suppressSerialNumber = false;
+
+		setLoggingName("LootItemTemplate");
 	}
 
 	void readObject(LuaObject* templateData) {
@@ -56,25 +60,50 @@ public:
 		junkMinValue = templateData->getIntField("junkMinValue");
 		junkMaxValue = templateData->getIntField("junkMaxValue");
 
-		//TODO: At this point, we should go ahead and pull in the tangible objects stats
+		// info(true) << "---------- Loading data for " << directObjectTemplate << " ----------";
+
+		// set lootItemTemplate values
+		// shared tangible object template draft schematic data set as base valueMap
+		auto tanoTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(TemplateManager::instance()->getTemplate(directObjectTemplate.hashCode()));
+
+		if (tanoTemplate != nullptr) {
+			const auto groups = tanoTemplate->getExperimentalGroups();
+			const auto attributes = tanoTemplate->getExperimentalAttributes();
+			const auto minValues = tanoTemplate->getExperimentalMin();
+			const auto maxValues = tanoTemplate->getExperimentalMax();
+			const auto precisionValues = tanoTemplate->getExperimentalPrecision();
+			const auto combines = tanoTemplate->getExperimentalWeights();
+
+			//info(true) << "Template: " << directObjectTemplate << " Total attributes: " << attributes->size();
+
+			for (int i = 0; i < attributes->size(); ++i) {
+				const String& attribute = attributes->get(i);
+				const String& group = groups->get(i);
+				float min = minValues->get(i);
+				float max = maxValues->get(i);
+				short int precision = precisionValues->get(i);
+				short int combine = combines->get(i);
+				bool hidden = min == max && max == 0.f;
+
+				craftingValues.addExperimentalAttribute(attribute, group, min, max, precision, hidden, combine);
+				craftingValues.setMaxPercentage(attribute, 1.f);
+			}
+		}
 
 		LuaObject craftvals = templateData->getObjectField("craftingValues");
 
-		lua_State* L = craftvals.getLuaState();
-
 		if (craftvals.isValidTable()) {
 			for (int i = 1; i <= craftvals.getTableSize(); ++i) {
-				lua_rawgeti(L, -1, i);
-
-				LuaObject row(L);
+				LuaObject row = craftvals.getObjectAt(i);
 
 				if (row.isValidTable()) {
-					String property = row.getStringAt(1);
+					String attribute = row.getStringAt(1);
+
 					float min = row.getFloatAt(2);
 					float max = row.getFloatAt(3);
-					float prec = 0;
+					int prec = 0;
 					bool hidden = false;
-					short combineType = ValuesMap::LINEARCOMBINE;
+					int combineType = ValuesMap::LINEARCOMBINE;
 
 					if (row.getTableSize() > 3)
 						prec = row.getFloatAt(4);
@@ -85,16 +114,16 @@ public:
 					if (row.getTableSize() > 5)
 						combineType = row.getIntAt(6);
 
-					craftingValues.addExperimentalProperty(property, property,
-							min, max, prec, hidden, combineType);
-					craftingValues.setMaxPercentage(property, 1.0f);
+					// The ValuesMap will automatically handle if the attribute already exists and only updates the values.
+					craftingValues.addExperimentalAttribute(attribute, attribute, min, max, prec, hidden, combineType);
+					craftingValues.setMaxPercentage(attribute, 1.0f);
 				}
 
 				row.pop();
 			}
-		}
 
-		craftvals.pop();
+			craftvals.pop();
+		}
 
 		LuaObject customizationStringNamesList = templateData->getObjectField("customizationStringNames");
 
@@ -184,6 +213,7 @@ public:
 			dotValuesTable.pop();
 		}
 
+		// info(true) << "---------- FINISHED Loading data for " << directObjectTemplate << " ----------";
 	}
 
 	const String& getTemplateName() const {

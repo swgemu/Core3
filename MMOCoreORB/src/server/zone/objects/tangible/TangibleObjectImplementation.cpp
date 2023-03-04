@@ -956,15 +956,15 @@ void TangibleObjectImplementation::updateCraftingValues(CraftingValues* values,
 		bool firstUpdate) {
 	/// I know its kind dirty, but we want generics to have quantities
 	/// Without needing their own classes
-	if (values->hasProperty("quantity")) {
+	if (values->hasAttribute("quantity")) {
 		setUseCount(values->getCurrentValue("quantity"));
 	}
 
-	if (values->hasProperty("charges")) {
+	if (values->hasAttribute("charges")) {
 		setUseCount(values->getCurrentValue("charges"));
 	}
 
-	if (values->hasProperty("charge")) {
+	if (values->hasAttribute("charge")) {
 		setUseCount(values->getCurrentValue("charge"));
 	}
 }

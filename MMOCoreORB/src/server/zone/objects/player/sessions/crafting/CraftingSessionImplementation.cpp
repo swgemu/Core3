@@ -733,7 +733,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	}
 
 	// Flag to get the experimenting window
-	if (craftingStation != nullptr && (craftingValues->getVisibleExperimentalPropertyTitleSize() > 0 || manufactureSchematic->allowFactoryRun()))
+	if (craftingStation != nullptr && (craftingValues->getTotalVisibleAttributeGroups() > 0 || manufactureSchematic->allowFactoryRun()))
 		// Assemble with Experimenting
 		state = 3;
 
@@ -927,26 +927,27 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	Reference<CraftingValues*> craftingValues = manufactureSchematic->getCraftingValues();
 	craftingValues->clear();
-	int numberOfRows = craftingValues->getVisibleExperimentalPropertyTitleSize();
+	int numberOfRows = craftingValues->getTotalVisibleAttributeGroups();
 	if (rowsAttempted > numberOfRows || rowsAttempted < 1) {
 		cancelSession();
 		return;
 	}
 	// Loop through all the lines of experimentation
 	for (int i = 0; i < rowsAttempted; ++i) {
-
 		rowEffected = tokenizer.getIntToken();
 		pointsAttempted = tokenizer.getIntToken();
+
 		// check for hack attempts
 		if (pointsAttempted > (experimentationPointsTotal - experimentationPointsUsed) || pointsAttempted < 1 || rowEffected < 0 || rowEffected > (numberOfRows - 1)){
 			cancelSession();
 			return;
 		}
+
 		experimentationPointsUsed += pointsAttempted;
+
 		// Each line gets it's own rolls
 		// Calcualte a new failure rate for each line of experimentation
-		failure = craftingManager->calculateExperimentationFailureRate(crafter,
-				manufactureSchematic, pointsAttempted);
+		failure = craftingManager->calculateExperimentationFailureRate(crafter, manufactureSchematic, pointsAttempted);
 
 		if (experimentationPointsUsed <= experimentationPointsTotal) {
 			// Set the experimentation result ie:  Amazing Success
@@ -973,13 +974,10 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 		prototype->setComplexity(manufactureSchematic->getComplexity());
 
 		// Do the experimenting - sets new percentages
-		craftingManager->experimentRow(manufactureSchematic, craftingValues, rowEffected,
-				pointsAttempted, failure, experimentationResult);
-
+		craftingManager->experimentRow(manufactureSchematic, craftingValues, rowEffected, pointsAttempted, failure, experimentationResult);
 	}
 
-	manufactureSchematic->setExperimentingCounter(
-			manufactureSchematic->getExperimentingCounter() + rowsAttempted);
+	manufactureSchematic->setExperimentingCounter(manufactureSchematic->getExperimentingCounter() + rowsAttempted);
 
 	// Use percentages to recalculate the values
 	craftingValues->recalculateValues(false);
