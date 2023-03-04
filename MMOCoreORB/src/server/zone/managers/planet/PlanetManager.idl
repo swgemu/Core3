@@ -233,6 +233,9 @@ class PlanetManager extends ManagedService implements Logger {
 
 	public native boolean isInRangeWithPoi(float x, float y, float range);
 
+	@reference
+	public native SceneObject findObjectInNoBuildZone(float x, float y, float extraMargin, boolean checkFootprint = true);
+
 	public native boolean isInObjectsNoBuildZone(float x, float y, float extraMargin, boolean checkFootprint = true);
 
 	/**
