@@ -7,7 +7,13 @@
 
 #include "ValuesClasses.h"
 
-class ValuesMap : public VectorMap<String, Reference<Subclasses*> > {
+//class ValuesMap : public VectorMap<String, Reference<Subclasses*> >, public Logger {
+class ValuesMap : public Object, public Logger {
+	SortedVector<String> attributes;
+	SortedVector<String> visibleGroups;
+	VectorMap<String, String> attributeGroups;
+	VectorMap<String, Reference<Values*>> attributeValues;
+
 	const static String EMPTY;
 
 public:
@@ -21,22 +27,31 @@ public:
 	static const short OVERRIDECOMBINE = 0x04;
 	static const short LIMITEDCOMBINE = 0x05;
 
-	void addExperimentalProperty(const String& title, const String& subtitle,
-			const float min, const float max, const int precision,
-			const bool filler, const int combine);
+	ValuesMap() {
+		setLoggingName("ValuesMap");
 
-	const String& getExperimentalPropertyTitle(const String& subtitle) const;
-	const String& getExperimentalPropertyTitle(const int i) const;
-	const String& getVisibleExperimentalPropertyTitle(const int i) const;
+		attributes.setNoDuplicateInsertPlan();
+		visibleGroups.setNoDuplicateInsertPlan();
+		attributeGroups.setNoDuplicateInsertPlan();
+		attributeValues.setNoDuplicateInsertPlan();
 
-	const String& getExperimentalPropertySubtitlesTitle(const int i) const;
-	const String& getExperimentalPropertySubtitle(const int i) const;
-	const String& getExperimentalPropertySubtitle(const String& title, const int i) const;
+		attributeValues.setNullValue(nullptr);
+	}
 
-	int getExperimentalPropertySubtitleSize() const;
-	int getExperimentalPropertySubtitleSize(const String& title) const;
+	~ValuesMap() {
+	}
 
-	bool hasProperty(const String& attribute) const;
+	void addExperimentalAttribute(const String& attribute, const String& group, const float min, const float max, const int precision, const bool filler, const int combine);
+
+	// Returns the attribute name from the index
+	const String& getAttribute(const int i) const;
+
+	const String& getAttributeGroup(const String& attribute) const;
+
+	const String& getVisibleAttributeGroup(const int i) const;
+	int getTotalVisibleAttributeGroups() const;
+
+	bool hasAttribute(const String& attribute) const;
 
 	bool isHidden(const String& attribute) const;
 	void setHidden(const String& attribute);
@@ -78,54 +93,8 @@ public:
 	int getPrecision(const String& attribute) const;
 	void setPrecision(const String& attribute, const int precision);
 
-	inline int getVisibleExperimentalPropertyTitleSize() const {
-		int tempSize = 0;
-		const Subclasses* subclasses;
-
-		for(int i = 0; i < size(); ++i) {
-			subclasses = get(i);
-
-			if(!subclasses->hasAllHiddenItems())
-				tempSize++;
-		}
-
-		return tempSize;
-	}
-
-	inline int getSubtitleCount() const {
-		const Subclasses* subclasses;
-
-		int count = 0;
-
-		for (int j = 0; j < size(); ++j) {
-			subclasses = get(j);
-
-			count += subclasses->size();
-		}
-
-		return count;
-	}
-
-	inline int getTitleLine(const String& title) const {
-		const Subclasses* subClasses;
-		String exptitle;
-		int counter = 0;
-
-		for (int j = 0; j < size(); ++j) {
-
-			subClasses = get(j);
-
-			exptitle = subClasses->getClassTitle();
-
-			if (!subClasses->isClassHidden()) {
-				if (title == exptitle)
-					return counter;
-
-				counter++;
-			}
-		}
-
-		return -1;
+	inline int getSize() const {
+		return attributes.size();
 	}
 };
 

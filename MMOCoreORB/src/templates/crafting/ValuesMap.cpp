@@ -7,467 +7,274 @@
 float ValuesMap::VALUENOTFOUND = -999999;
 const String ValuesMap::EMPTY;
 
-void ValuesMap::addExperimentalProperty(const String& title, const String& subtitle,
-		const float min, const float max, const int precision, const bool filler, const int combine) {
-	Subclasses* subclasses;
+// #define DEBUG_VALUES_MAP
 
-	if (contains(title)) {
-		subclasses = get(title);
+/*
+	The Values Map Constsist of the following:
 
-		subclasses->addSubtitle(subtitle, min, max, precision, filler, combine);
+	Attributes List
+	Visible Attribute Group List
+
+	attributeGroups VectorMap
+	Contains the property and the group that it is effected by. Example <maxdamage, expDamage>
+
+	attributeValues VectorMap
+	Contains the property and the Value Object to store the data for that property.
+*/
+
+void ValuesMap::addExperimentalAttribute(const String& attribute, const String& group, const float min, const float max, const int precision, const bool filler, const int combine) {
+#ifdef DEBUG_VALUES_MAP
+	info(true) << "ValuesMap::addExperimentalAttribute called for: " << attribute << " Group: " << group;
+#endif
+
+	// The attribute is not on the map, add it.
+	if (!attributes.contains(attribute)) {
+		attributes.add(attribute);
+		attributeGroups.put(attribute, group);
+
+		Values* value = new Values(attribute, min, max, precision, filler, combine);
+		attributeValues.put(attribute, value);
 	} else {
-		subclasses = new Subclasses(title, subtitle, min, max, precision, filler, combine);
+		// The attribute is already on the map, we only want to update its values
+		Reference<Values*> attValues = attributeValues.get(attribute);
 
-		put(title, subclasses);
-	}
-}
-
-const String& ValuesMap::getExperimentalPropertyTitle(const String& subtitle) const {
-	Subclasses* subclasses;
-	Values* values;
-
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
-
-		for (int j = 0; j < subclasses->size(); ++j) {
-			values = subclasses->get(j);
-
-			if (values->getName() == subtitle) {
-				return subclasses->getClassTitle();
-			}
+		if (attValues == nullptr) {
+			error() << "Values are nullptr for Experimental Attribute: " << attribute << " with group: " << group;
 		}
+
+		attValues->setMinValue(min);
+		attValues->setMaxValue(max);
+		attValues->setPrecision(precision);
+		attValues->setFiller(filler);
+		attValues->setCombineType(combine);
 	}
 
-	return EMPTY;
-}
-
-const String& ValuesMap::getExperimentalPropertyTitle(const int i) const {
-	auto subclasses = get(i);
-
-	if (subclasses != nullptr) {
-		return subclasses->getClassTitle();
+	if (!filler && !visibleGroups.contains(group)) {
+		visibleGroups.add(group);
 	}
-
-	return EMPTY;
 }
 
-const String& ValuesMap::getVisibleExperimentalPropertyTitle(const int i) const {
-	const Subclasses* subclasses;
-	int counter = -1;
-	String title;
-
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
-
-		if (!subclasses->hasAllHiddenItems())
-			counter++;
-
-		if (counter == i)
-			return subclasses->getClassTitle();
-	}
-
-	return EMPTY;
-}
-
-const String& ValuesMap::getExperimentalPropertySubtitlesTitle(const int i) const {
-	const Subclasses* subclasses;
-	int count = 0;
-
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
-
-		if (count + subclasses->size() <= i) {
-			count += subclasses->size();
-		} else {
-			return subclasses->getClassTitle();
-		}
-	}
-
-	return EMPTY;
-}
-
-const String& ValuesMap::getExperimentalPropertySubtitle(const int i) const {
-	const Subclasses* subclasses;
-	int count = 0;
-
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
-
-		if (count + subclasses->size() <= i) {
-			count += subclasses->size();
-		} else {
-			count = i - count;
-
-			const Values* values = subclasses->get(count);
-
-			return values->getName();
-		}
-	}
-
-	return EMPTY;
-}
-
-const String& ValuesMap::getExperimentalPropertySubtitle(const String& title, const int i) const {
-	const Subclasses* subclasses = get(title);
-
-	if (subclasses != nullptr)
-		return subclasses->get(i)->getName();
-	else
+const String& ValuesMap::getAttribute(const int i) const {
+	if (attributes.size() <= i)
 		return EMPTY;
+
+	return attributes.get(i);
 }
 
-int ValuesMap::getExperimentalPropertySubtitleSize() const {
-	const Subclasses* subclasses;
-	int subtitleSize = 0;
+const String& ValuesMap::getAttributeGroup(const String& attribute) const {
+	if (attributeGroups.contains(attribute))
+		return attributeGroups.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
-
-		subtitleSize += subclasses->size();
-	}
-
-	return subtitleSize;
+	return EMPTY;
 }
 
-int ValuesMap::getExperimentalPropertySubtitleSize(const String& title) const {
-	const Subclasses* subclasses = get(title);
-
-	if (subclasses != nullptr)
-		return subclasses->size();
-
-	return (int)VALUENOTFOUND;
+const String& ValuesMap::getVisibleAttributeGroup(const int i) const {
+	return visibleGroups.get(i);
 }
 
-bool ValuesMap::hasProperty(const String& attribute) const {
-	const Subclasses* subclasses;
-	const Values* values;
+int ValuesMap::getTotalVisibleAttributeGroups() const {
+	return visibleGroups.size();
+}
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
-
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				return true;
-			}
-		}
-	}
-
-	return false;
+bool ValuesMap::hasAttribute(const String& attribute) const {
+	return attributes.contains(attribute);
 }
 
 bool ValuesMap::isHidden(const String& attribute) const {
-	const Subclasses* subclasses;
-	const Values* values;
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (values == nullptr)
+		return false;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				return values->isFiller();
-			}
-		}
-	}
-
-	return false;
+	return values->isFiller();
 }
 
 void ValuesMap::setHidden(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (values == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
+	values->setFiller(true);
 
-			if (values->getName() == attribute) {
-				values->setFiller(true);
-			}
-		}
+	String group;
+
+	if (visibleGroups.contains(attribute)) {
+		visibleGroups.drop(attribute);
 	}
 }
 
 void ValuesMap::unsetHidden(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (values == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				values->setFiller(false);
-			}
-		}
-	}
+	values->setFiller(false);
 }
 
 short ValuesMap::getCombineType(const String& attribute) const {
-	const Subclasses* subclasses;
-	const Values* values;
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (values == nullptr)
+		return (int)VALUENOTFOUND;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				return values->getCombineType();
-			}
-		}
-	}
-
-	return (int)VALUENOTFOUND;
+	return values->getCombineType();
 }
 
 void ValuesMap::setCurrentValue(const String& attribute, const float value) {
-	Subclasses* subclasses;
-	Values* values;
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (values == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				values->setValue(value);
-				return;
-			}
-		}
-	}
+	values->setValue(value);
 }
 
 void ValuesMap::setCurrentValue(const String& attribute, const float value, const float min, const float max) {
-	Subclasses* subclasses;
-	Values* values;
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (values == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				values->setMaxValue(max);
-				values->setMinValue(min);
-
-				values->setValue(value);
-				return;
-			}
-		}
-	}
+	values->setValue(value);
+	values->setMaxValue(max);
+	values->setMinValue(min);
 }
 
 float ValuesMap::getCurrentValue(const String& attribute) const {
-	const Subclasses* subclasses;
-	const Values* values;
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (values == nullptr)
+		return VALUENOTFOUND;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
+#ifdef DEBUG_VALUES_MAP
+	info(true) << " ValuesMap::getCurrentValue called for " << attribute << " with a value of " << values->getValue();
+#endif
 
-			if (values->getName() == attribute) {
-				return values->getValue();
-			}
-		}
-	}
-
-	return VALUENOTFOUND;
+	return values->getValue();
 }
 
 float ValuesMap::getCurrentValue(const int i) const {
-	const Subclasses* subclasses;
-	int count = 0;
+	const Values* value = attributeValues.get(i);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return VALUENOTFOUND;
 
-		if (count + subclasses->size() <= i) {
-			count += subclasses->size();
-		} else {
-			count = i - count;
-
-			const Values* values = subclasses->get(count);
-
-			return values->getValue();
-		}
-	}
-
-	return VALUENOTFOUND;
+	return value->getValue();
 }
 
 void ValuesMap::lockValue(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+	Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				values->lockValue();
-				return;
-			}
-		}
-	}
+	value->lockValue();
 }
 
 void ValuesMap::unlockValue(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+	Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				values->unlockValue();
-				return;
-			}
-		}
-	}
+	value->unlockValue();
 }
 
 void ValuesMap::resetValue(const String& attribute) {
-	Subclasses* subclasses;
-	Values* values;
+	Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				values->resetValue();
-				return;
-			}
-		}
-	}
+	value->resetValue();
 }
 
-void ValuesMap::setCurrentPercentage(const String& subtitle, float value) {
-	float max = 0.0f;
+void ValuesMap::setCurrentPercentage(const String& attribute, float amount) {
+	Reference<Values*> value = attributeValues.get(attribute);
 
-	Subclasses* subclasses;
-	Values* values;
+#ifdef DEBUG_VALUES_MAP
+	info(true) << "---------- ValuesMap::setCurrentPercentage 1 for " << attribute << " setting amount: " << amount;
+#endif
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
+	float max = value->getMaxPercentage();
 
-			if (values->getName() == subtitle) {
-				max = values->getMaxPercentage();
+	if (amount > max)
+		amount = max;
 
-				if (value > max)
-					values->setPercentage(max);
-				else
-					values->setPercentage(value);
+#ifdef DEBUG_VALUES_MAP
+	info(true) << "Current Percentage Set: " << amount << " With a max of " << max;
+#endif
 
-				return;
-			}
-		}
-	}
+	value->setPercentage(amount);
+
+#ifdef DEBUG_VALUES_MAP
+	info(true) << "---------- END ValuesMap::setCurrentPercentage 1";
+#endif
 }
 
-void ValuesMap::setCurrentPercentage(const String& subtitle, float value, float max) {
-	Subclasses* subclasses;
-	Values* values;
+void ValuesMap::setCurrentPercentage(const String& attribute, float amount, float max) {
+	Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+#ifdef DEBUG_VALUES_MAP
+	info(true) << "---------- ValuesMap::setCurrentPercentage 2 for " << attribute << " setting amount: " << amount;
+#endif
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
+	if (value == nullptr)
+		return;
 
-			if (values->getName() == subtitle) {
-				values->setMaxPercentage(max);
+	if (amount > max)
+		amount = max;
 
-				if (value > max)
-					values->setPercentage(max);
-				else
-					values->setPercentage(value);
+	value->setMaxPercentage(max);
+	value->setPercentage(amount);
 
-				return;
-			}
-		}
-	}
+#ifdef DEBUG_VALUES_MAP
+	info(true) << "---------- END ValuesMap::setCurrentPercentage 2";
+#endif
 }
 
 float ValuesMap::getCurrentPercentage(const String& attribute) const {
-	const Subclasses* subclasses;
-	const Values* values;
+	const Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return VALUENOTFOUND;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				return values->getPercentage();
-			}
-		}
-	}
-
-	return VALUENOTFOUND;
+	return value->getPercentage();
 }
 
 float ValuesMap::getCurrentPercentage(const int i) const {
-	const Subclasses* subclasses;
-	int count = 0;
+	const Reference<Values*> value = attributeValues.get(i);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return VALUENOTFOUND;
 
-		if (count + subclasses->size() <= i) {
-			count += subclasses->size();
-		} else {
-			count = i - count;
-
-			const Values* values = subclasses->get(count);
-
-			return values->getPercentage();
-		}
-	}
-
-	return VALUENOTFOUND;
+	return value->getPercentage();
 }
 
-float ValuesMap::getCurrentVisiblePercentage(const String title) const {
-	const Subclasses* subclasses = get(title);
+float ValuesMap::getCurrentVisiblePercentage(const String group) const {
+	float value = 0.f;
 
-	if (subclasses == nullptr)
-		return -1;
-
-	const Values* values;
-	float value = 0;
+#ifdef DEBUG_VALUES_MAP
+	info(true) << "---------- ValuesMap::getCurrentVisiblePercentage called for group: " << group << " with attribute value size: " << attributeValues.size() << " ----------";
+#endif
 
 	// shouldnt this show the avg so with 1 item who cares, but more than 1 we wanna should avg of all not the LAST one
-	for (int j = 0; j < subclasses->size(); ++j) {
-		values = subclasses->get(j);
+	for (int j = 0; j < attributeValues.size(); ++j) {
+		const Values* values = attributeValues.get(j);
 
-		if (values->getMinValue() != values->getMaxValue() &&
-				values->getMaxPercentage() <= 1.0f && !values->isFiller()) {
+		if (values == nullptr)
+			continue;
 
+#ifdef DEBUG_VALUES_MAP
+		info(true) << " Checking attribute: " << attributeValues.elementAt(j).getKey() << " with a percentage of " << values->getPercentage();
+#endif
+
+		if (values->getMinValue() != values->getMaxValue() && values->getMaxPercentage() <= 1.0f && !values->isFiller()) {
 			float item = values->getPercentage();
 
 			if (item > value)
@@ -475,196 +282,132 @@ float ValuesMap::getCurrentVisiblePercentage(const String title) const {
 		}
 	}
 
+#ifdef DEBUG_VALUES_MAP
+	info(true) << "---------- END ValuesMap::getCurrentVisiblePercentage returning " << value << " ----------";
+#endif
+
 	return value;
 }
 
-void ValuesMap::setMaxPercentage(const String& attribute, float value) {
-	float max;
+void ValuesMap::setMaxPercentage(const String& attribute, float amount) {
+	Reference<Values*> value = attributeValues.get(attribute);
 
-	Subclasses* subclasses;
-	Values* values;
+	if (value == nullptr)
+		return;
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
-
-		for (int i = 0; i < subclasses->size(); ++i) {
-
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				values->setMaxPercentage(value);
-				return;
-			}
-		}
-	}
+	value->setMaxPercentage(amount);
 }
 
 float ValuesMap::getMaxPercentage(const String& attribute) const {
-	const Subclasses* subclasses;
-	const Values* values;
+	const Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return VALUENOTFOUND;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				return values->getMaxPercentage();
-			}
-		}
-	}
-
-	return VALUENOTFOUND;
+	return value->getMaxPercentage();
 }
 
 float ValuesMap::getMaxPercentage(const int i) const {
-	const Subclasses* subclasses;
-	int count = 0;
+	const Reference<Values*> value = attributeValues.get(i);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return VALUENOTFOUND;
 
-		if (count + subclasses->size() <= i) {
-			count += subclasses->size();
-		} else {
-			count = i - count;
-
-			const Values* values = subclasses->get(count);
-
-			return values->getMaxPercentage();
-		}
-	}
-
-	return VALUENOTFOUND;
+	return value->getMaxPercentage();
 }
 
 float ValuesMap::getMaxVisiblePercentage(const int i) const {
-	String title = getVisibleExperimentalPropertyTitle(i);
-	const Subclasses* subclasses = get(title);
-	const Values* values;
-
 	float value = 0;
-	float count = 0;
+	String group = getVisibleAttributeGroup(i);
 
-	for (int j = 0; j < subclasses->size(); ++j) {
-		values = subclasses->get(j);
+#ifdef DEBUG_VALUES_MAP
+	info(true) << "---------- ValuesMap::getMaxVisiblePercentage called for group: " << group << " with attribute value size: " << attributeValues.size() << " ----------";
+#endif
 
-		if (values->getMinValue() != values->getMaxValue() &&
-				values->getMaxPercentage() <= 1.0f && !values->isFiller()) {
+	for (int j = 0; j < attributeValues.size(); ++j) {
+		const Values* values = attributeValues.get(j);
 
-			if (values->getMaxPercentage() > value)
-				value = values->getMaxPercentage();
+		if (values == nullptr || values->isFiller())
+			continue;
+
+		if ((values->getMinValue() != values->getMaxValue()) && (values->getMaxPercentage() <= 1.0f) && (values->getMaxPercentage() > value)) {
+			value = values->getMaxPercentage();
 		}
 	}
+
+#ifdef DEBUG_VALUES_MAP
+	info(true) << "---------- END ValuesMap::getMaxVisiblePercentage returning: " << value << " ----------";
+#endif
 
 	return value;
 }
 
 float ValuesMap::getMinValue(const String& attribute) const {
-	const Subclasses* subclasses;
-	const Values* values;
+	const Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return VALUENOTFOUND;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
+#ifdef DEBUG_VALUES_MAP
+	info(true) << " ValuesMap::getMinValue called for " << attribute << " with a value of " << value->getMinValue();
+#endif
 
-			if (values->getName() == attribute) {
-				return values->getMinValue();
-			}
-		}
-	}
-
-	return VALUENOTFOUND;
+	return value->getMinValue();
 }
 
 float ValuesMap::getMaxValue(const String& attribute) const {
-	const Subclasses* subclasses;
-	const Values* values;
+	const Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return VALUENOTFOUND;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
+#ifdef DEBUG_VALUES_MAP
+	info(true) << " ValuesMap::getMaxValue called for " << attribute << " with a value of " << value->getMaxValue();
+#endif
 
-			if (values->getName() == attribute) {
-				return values->getMaxValue();
-			}
-		}
-	}
-
-	return VALUENOTFOUND;
+	return value->getMaxValue();
 }
 
-void ValuesMap::setMinValue(const String& attribute, const float value) {
-	Subclasses* subclasses;
-	Values* values;
+void ValuesMap::setMinValue(const String& attribute, const float min) {
+	Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
+#ifdef DEBUG_VALUES_MAP
+	info(true) << " ValuesMap::setMaxValue for " << attribute << " setting a value of " << min;
+#endif
 
-			if (values->getName() == attribute) {
-				values->setMinValue(value);
-			}
-		}
-	}
+	value->setMinValue(min);
 }
 
-void ValuesMap::setMaxValue(const String& attribute, const float value) {
-	Subclasses* subclasses;
-	Values* values;
+void ValuesMap::setMaxValue(const String& attribute, const float max) {
+	Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
+#ifdef DEBUG_VALUES_MAP
+	info(true) << " ValuesMap::setMaxValue for " << attribute << " setting a value of " << max;
+#endif
 
-			if (values->getName() == attribute) {
-				values->setMaxValue(value);
-			}
-		}
-	}
+	value->setMaxValue(max);
 }
 
 int ValuesMap::getPrecision(const String& attribute) const {
-	const Subclasses* subclasses;
-	const Values* values;
+	const Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return (int)VALUENOTFOUND;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				return values->getPrecision();
-			}
-		}
-	}
-
-	return (int)VALUENOTFOUND;
+	return value->getPrecision();
 }
 
-void ValuesMap::setPrecision(const String& attribute, const int value) {
-	Subclasses* subclasses;
-	Values* values;
+void ValuesMap::setPrecision(const String& attribute, const int amount) {
+	Reference<Values*> value = attributeValues.get(attribute);
 
-	for (int j = 0; j < size(); ++j) {
-		subclasses = get(j);
+	if (value == nullptr)
+		return;
 
-		for (int i = 0; i < subclasses->size(); ++i) {
-			values = subclasses->get(i);
-
-			if (values->getName() == attribute) {
-				values->setPrecision(value);
-			}
-		}
-	}
+	value->setPrecision(amount);
 }
