@@ -18,11 +18,14 @@ void ComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 }
 
-void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
-		CreatureObject* object) {
-	TangibleObjectImplementation::fillAttributeList(alm, object);
+void ComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
+	// info(true) << "ComponentImplementation::fillAttributeList - called for: " << getCustomObjectName();
 
-	String attribute;
+	alm->insertAttribute("volume", 1);
+	alm->insertAttribute("crafter", craftersName);
+	alm->insertAttribute("serial_number", objectSerial);
+
+	String attribute, listedName;
 
 	float value;
 	double power;
@@ -39,7 +42,19 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
 		precision = precisionMap.get(attribute);
 		hidden = hiddenMap.get(attribute);
 
+		// info(true) << "Adding #" << i << " Attribute: " << attribute << " with a value of " << value;
+
 		if (precision >= 0 && !hidden) {
+			if (attribute == "attackhealthcost") {
+				listedName = "wpn_attack_cost_health";
+			} else if (attribute == "attackactioncost") {
+				listedName = "wpn_attack_cost_action";
+			} else if (attribute == "attackmindcost") {
+				listedName = "wpn_attack_cost_mind";
+			} else {
+				listedName = attribute;
+			}
+
 			if (precision >= 10) {
 				footer = "%";
 				precision -= 10;
@@ -48,10 +63,9 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
 			StringBuffer displayvalue;
 
 			displayvalue << Math::getPrecision(value, precision);
-
 			displayvalue << footer;
 
-			alm->insertAttribute(attribute, displayvalue.toString());
+			alm->insertAttribute(listedName, displayvalue.toString());
 		}
 	}
 }
@@ -82,10 +96,9 @@ void ComponentImplementation::setPropertyToHidden(const String& property) {
 }
 
 void ComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	String attribute;
+	String attribute, group;
 	float value;
 	int precision;
-	String title;
 	bool hidden;
 
 	attributeMap.removeAll();
@@ -93,23 +106,27 @@ void ComponentImplementation::updateCraftingValues(CraftingValues* values, bool 
 	titleMap.removeAll();
 	keyList.removeAll();
 
-	if(firstUpdate && values->hasProperty("useCount")) {
+	if (firstUpdate && values->hasAttribute("useCount")) {
 		int count = values->getCurrentValue("useCount");
 
 		// Crafting components dropped or crafted with a single use do not display a "1" (#6924)
-		if(count > 1)
+		if (count > 1)
 			setUseCount(count);
 	}
 
-	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
-		attribute = values->getExperimentalPropertySubtitle(i);
+	// info(true) << "ComponentImplementation::updateCraftingValues called with total attributes #" << values->getTotalExperimentalAttributes();
 
-		if(attribute == "useCount")
+	for (int i = 0; i < values->getTotalExperimentalAttributes(); ++i) {
+		attribute = values->getAttribute(i);
+
+		// info(true) << "updateCraftingValues -- #" << i << " Attribute: " << attribute;
+
+		if (attribute == "useCount")
 			continue;
 
 		value = values->getCurrentValue(attribute);
 		precision = values->getPrecision(attribute);
-		title = values->getExperimentalPropertyTitle(attribute);
+		group = values->getAttributeGroup(attribute);
 		hidden = values->isHidden(attribute);
 
 		if (!hasKey(attribute))
@@ -117,15 +134,15 @@ void ComponentImplementation::updateCraftingValues(CraftingValues* values, bool 
 
 		attributeMap.put(attribute, value);
 		precisionMap.put(attribute, precision);
-		titleMap.put(attribute, title);
+		titleMap.put(attribute, group);
 
-		if(firstUpdate)
+		if (firstUpdate)
 			hiddenMap.put(attribute, hidden);
 	}
 }
 
 void ComponentImplementation::addProperty(const String& attributeName, const float value,
-		const int precision, const String& craftingTitle, const bool hidden) {
+	const int precision, const String& craftingTitle, const bool hidden) {
 
 	if (!hasKey(attributeName))
 		keyList.add(attributeName);
@@ -137,7 +154,6 @@ void ComponentImplementation::addProperty(const String& attributeName, const flo
 }
 
 void ComponentImplementation::addProperty(const String& attribute, const float value, const int precision, const String& title) {
-
 	if (!attributeMap.contains(attribute)) {
 
 		keyList.add(attribute);
@@ -147,13 +163,11 @@ void ComponentImplementation::addProperty(const String& attribute, const float v
 		titleMap.put(attribute, title);
 		hiddenMap.put(attribute, false);
 	} else {
-
 		attributeMap.put(attribute, value);
 	}
 }
 
 bool ComponentImplementation::changeAttributeValue(const String& property, float value) {
-
 	if (!hasKey(property))
 		return false;
 
