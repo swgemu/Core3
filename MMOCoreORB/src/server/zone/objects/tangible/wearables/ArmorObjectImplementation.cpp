@@ -377,7 +377,7 @@ void ArmorObjectImplementation::calculateSpecialProtection(CraftingValues* craft
 		String subtitle = getStringType(type);
 		float value = craftingValues->getCurrentValue(subtitle);
 
-		if (value != ValuesMap::VALUENOTFOUND) {
+		if (value != AttributesMap::VALUENOTFOUND) {
 			specialResists |= type;
 			setProtectionValue(type, value);
 		}

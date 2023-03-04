@@ -35,7 +35,7 @@ class CurePack extends PharmaceuticalObject {
 		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
 		setUseCount(values.getCurrentValue("charges"));
 
-		if (values.hasProperty("area")) {
+		if (values.hasExperimentalAttribute("area")) {
 			area = values.getCurrentValue("area");
 		}
 	}

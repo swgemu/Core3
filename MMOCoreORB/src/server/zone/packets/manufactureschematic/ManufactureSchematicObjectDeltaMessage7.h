@@ -40,14 +40,14 @@ public:
 
 		startUpdate(8);
 
-		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getTotalVisibleAttributeGroups();
 		int counter = manufactureSchematic->getExperimentingCounter();
 
 		insertInt(titleCount);
 		insertInt(titleCount);
 
 		for (int i = 0; i < titleCount; i++) {
-			String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
+			String title = craftingValues->getVisibleAttributeGroup(i);
 
 			insertByte(1);
 			insertShort(i);
@@ -104,7 +104,7 @@ public:
 
 		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
-		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getTotalVisibleAttributeGroups();
 
 		if (initial) {
 			manufactureSchematic->setExperimentingCounter(titleCount * 2);
@@ -119,7 +119,7 @@ public:
 
 		for (int i = 0; i < titleCount; i++) {
 
-			String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
+			String title = craftingValues->getVisibleAttributeGroup(i);
 
 			float value = craftingValues->getCurrentVisiblePercentage(title);
 
@@ -137,7 +137,7 @@ public:
 
 		startUpdate(0x0A);
 
-		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getTotalVisibleAttributeGroups();
 
 		startList(titleCount, titleCount * 2);
 
@@ -152,7 +152,7 @@ public:
 
 		startUpdate(0x0B);
 
-		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getTotalVisibleAttributeGroups();
 
 		startList(titleCount, titleCount * 2);
 
@@ -167,7 +167,7 @@ public:
 
 		startUpdate(0x0C);
 
-		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getTotalVisibleAttributeGroups();
 
 		startList(titleCount, titleCount * 2);
 

@@ -2,12 +2,19 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#ifndef VALUESMAP_H_
-#define VALUESMAP_H_
+#ifndef ATTRIBUTESMAP_H_
+#define ATTRIBUTESMAP_H_
 
 #include "ValuesClasses.h"
 
-class ValuesMap : public VectorMap<String, Reference<Subclasses*> > {
+class AttributesMap : public Object, public Logger {
+	Mutex mutex;
+
+	SortedVector<String> attributes;
+	SortedVector<String> visibleGroups;
+	VectorMap<String, String> attributeGroups;
+	VectorMap<String, Reference<Values*>> attributeValues;
+
 	const static String EMPTY;
 
 public:
@@ -21,22 +28,24 @@ public:
 	static const short OVERRIDECOMBINE = 0x04;
 	static const short LIMITEDCOMBINE = 0x05;
 
-	void addExperimentalProperty(const String& title, const String& subtitle,
-			const float min, const float max, const int precision,
-			const bool filler, const int combine);
+	AttributesMap() {
+		setLoggingName("AttributesMap");
 
-	const String& getExperimentalPropertyTitle(const String& subtitle) const;
-	const String& getExperimentalPropertyTitle(const int i) const;
-	const String& getVisibleExperimentalPropertyTitle(const int i) const;
+		attributeValues.setNullValue(nullptr);
+	}
 
-	const String& getExperimentalPropertySubtitlesTitle(const int i) const;
-	const String& getExperimentalPropertySubtitle(const int i) const;
-	const String& getExperimentalPropertySubtitle(const String& title, const int i) const;
+	~AttributesMap() {
+	}
 
-	int getExperimentalPropertySubtitleSize() const;
-	int getExperimentalPropertySubtitleSize(const String& title) const;
+	void addExperimentalAttribute(const String& attribute, const String& group, const float min, const float max, const int precision, const bool filler, const int combine);
 
-	bool hasProperty(const String& attribute) const;
+	// Returns the attribute name from the index
+	const String& getAttribute(const int i) const;
+
+	const String& getAttributeGroup(const String& attribute) const;
+
+	const String& getVisibleAttributeGroup(const int i) const;
+	int getTotalVisibleAttributeGroups() const;
 
 	bool isHidden(const String& attribute) const;
 	void setHidden(const String& attribute);
@@ -78,55 +87,46 @@ public:
 	int getPrecision(const String& attribute) const;
 	void setPrecision(const String& attribute, const int precision);
 
-	inline int getVisibleExperimentalPropertyTitleSize() const {
-		int tempSize = 0;
-		const Subclasses* subclasses;
-
-		for(int i = 0; i < size(); ++i) {
-			subclasses = get(i);
-
-			if(!subclasses->hasAllHiddenItems())
-				tempSize++;
-		}
-
-		return tempSize;
+	inline int getSize() const {
+		return attributes.size();
 	}
 
-	inline int getSubtitleCount() const {
-		const Subclasses* subclasses;
+	inline void addAttribute(const String& attribute) {
+		if (attributes.contains(attribute))
+			return;
 
-		int count = 0;
-
-		for (int j = 0; j < size(); ++j) {
-			subclasses = get(j);
-
-			count += subclasses->size();
-		}
-
-		return count;
+		attributes.add(attribute);
 	}
 
-	inline int getTitleLine(const String& title) const {
-		const Subclasses* subClasses;
-		String exptitle;
-		int counter = 0;
+	inline void addVisibleGroup(const String& group) {
+		if (visibleGroups.contains(group))
+			return;
 
-		for (int j = 0; j < size(); ++j) {
+		visibleGroups.add(group);
+	}
 
-			subClasses = get(j);
+	inline bool hasExperimentalAttribute(const String& attribute) const {
+		// info(true) << "hasExperimentalAttribute has a attributes size of " << attributes.size() << " and is checking for " << attribute;
+		uint32 attributeHash = attribute.hashCode();
 
-			exptitle = subClasses->getClassTitle();
+		for (int i = 0; i < attributes.size(); ++i) {
+			uint32 iteratedHash = attributes.get(i).hashCode();
 
-			if (!subClasses->isClassHidden()) {
-				if (title == exptitle)
-					return counter;
-
-				counter++;
-			}
+			if (iteratedHash == attributeHash)
+				return true;
 		}
 
-		return -1;
+		return false;
+	}
+
+	inline void removeAll() {
+		Locker lock(&mutex);
+
+		attributes.removeAll();
+		visibleGroups.removeAll();
+		attributeGroups.removeAll();
+		attributeValues.removeAll();
 	}
 };
 
-#endif /*VALUESMAP_H_*/
+#endif /*ATTRIBUTESMAP_H_*/

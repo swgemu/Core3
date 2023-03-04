@@ -16,6 +16,8 @@
 #include "LootGroupMap.h"
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 
+// #define DEBUG_LOOT_MAN
+
 void LootManagerImplementation::initialize() {
 	info("Loading configuration.");
 
@@ -195,28 +197,10 @@ void LootManagerImplementation::loadDefaultConfig() {
 
 }
 
-void LootManagerImplementation::setInitialObjectStats(const LootItemTemplate* templateObject, CraftingValues* craftingValues, TangibleObject* prototype) {
-	SharedTangibleObjectTemplate* tanoTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(prototype->getObjectTemplate());
-
-	if (tanoTemplate != nullptr) {
-		const auto titles = tanoTemplate->getExperimentalGroupTitles();
-		const auto props = tanoTemplate->getExperimentalSubGroupTitles();
-		const auto mins = tanoTemplate->getExperimentalMin();
-		const auto  maxs = tanoTemplate->getExperimentalMax();
-		const auto prec = tanoTemplate->getExperimentalPrecision();
-
-		for (int i = 0; i < props->size(); ++i) {
-			const String& title = titles->get(i);
-			const String& property = props->get(i);
-
-			if (craftingValues->hasProperty(property))
-				continue;
-
-			craftingValues->addExperimentalProperty(property, property, mins->get(i), maxs->get(i), prec->get(i), false, ValuesMap::LINEARCOMBINE);
-			if (title == "null")
-				craftingValues->setHidden(property);
-		}
-	}
+void LootManagerImplementation::setCustomizationData(const LootItemTemplate* templateObject, TangibleObject* prototype) {
+#ifdef DEBUG_LOOT_MAN
+	info(true) << " ========== LootManagerImplementation::setCustomizationData -- called ==========";
+#endif
 
 	const Vector<String>* customizationData = templateObject->getCustomizationStringNames();
 	const Vector<Vector<int> >* customizationValues = templateObject->getCustomizationValues();
@@ -228,9 +212,17 @@ void LootManagerImplementation::setInitialObjectStats(const LootItemTemplate* te
 		if (values->size() > 0) {
 			int randomValue = values->get(System::random(values->size() - 1));
 
+#ifdef DEBUG_LOOT_MAN
+		info(true) << "Setting Customization String: " << customizationString << " To a value: " << randomValue;
+#endif
+
 			prototype->setCustomizationVariable(customizationString, randomValue, false);
 		}
 	}
+
+#ifdef DEBUG_LOOT_MAN
+	info(true) << " ========== LootManagerImplementation::setCustomizationData -- COMPLETE ==========";
+#endif
 }
 
 void LootManagerImplementation::setCustomObjectName(TangibleObject* object, const LootItemTemplate* templateObject) {
@@ -258,6 +250,10 @@ int LootManagerImplementation::calculateLootCredits(int level) {
 
 TangibleObject* LootManagerImplementation::createLootObject(const LootItemTemplate* templateObject, int level, bool maxCondition) {
 	int uncappedLevel = level;
+
+#ifdef DEBUG_LOOT_MAN
+	info(true) << " ---------- LootManagerImplementation::createLootObject -- called ----------";
+#endif
 
 	if(level < 1)
 		level = 1;
@@ -289,15 +285,26 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 	float junkMaxValue = templateObject->getJunkMaxValue() * junkValueModifier;
 	float fJunkValue = junkMinValue+System::random(junkMaxValue-junkMinValue);
 
-	if (level>0 && templateObject->getJunkDealerTypeNeeded()>1){
+	if (level > 0 && templateObject->getJunkDealerTypeNeeded()>1){
 		fJunkValue=fJunkValue + (fJunkValue * ((float)level / 100)); // This is the loot value calculation if the item has a level
 	}
 
-	ValuesMap valuesMap = templateObject->getValuesMapCopy();
-	CraftingValues* craftingValues = new CraftingValues(valuesMap);
+	AttributesMap attributesMap = templateObject->getAttributesMapCopy();
+	CraftingValues* craftingValues = new CraftingValues(attributesMap);
 
-	setInitialObjectStats(templateObject, craftingValues, prototype);
+#ifdef DEBUG_LOOT_MAN
+	info(true) << "---- Iterating the initial values map copied from Loot Template Object -----";
 
+	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
+		String attribute = craftingValues->getAttribute(i);
+
+		info(true) << "Crafting Values Attribute: " << attribute;
+	}
+
+	info(true) << "---- END Iterating the initial values map copied from Loot Template Object -----";
+#endif
+
+	setCustomizationData(templateObject, prototype);
 	setCustomObjectName(prototype, templateObject);
 
 	float excMod = 1.0;
@@ -331,18 +338,22 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 			crystal->setItemLevel(uncappedLevel);
 	}
 
-	String subtitle;
+	String attribute;
 	bool yellow = false;
 
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-		subtitle = craftingValues->getExperimentalPropertySubtitle(i);
+	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
+		attribute = craftingValues->getAttribute(i);
 
-		if (subtitle == "hitpoints" && !prototype->isComponent()) {
+#ifdef DEBUG_LOOT_MAN
+		info(true) << "LootMan:: updating Crafting attribute: " << attribute;
+#endif
+
+		if (attribute == "hitpoints" && !prototype->isComponent()) {
 			continue;
 		}
 
-		float min = craftingValues->getMinValue(subtitle);
-		float max = craftingValues->getMaxValue(subtitle);
+		float min = craftingValues->getMinValue(attribute);
+		float max = craftingValues->getMaxValue(attribute);
 
 		if (min == max)
 			continue;
@@ -354,26 +365,27 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 		// of possible values (min -> max), otherwise only an exact roll of
 		// 10000 will result in the top of the range being chosen.
 		// (Mantis #7869)
-		int precision = craftingValues->getPrecision(subtitle);
-		if (precision == (int)ValuesMap::VALUENOTFOUND) {
-			error ("No precision found for " + subtitle);
+		int precision = craftingValues->getPrecision(attribute);
+
+		if (precision == (int)AttributesMap::VALUENOTFOUND) {
+			error ("No precision found for " + attribute);
 		} else if (precision == 0) {
 			int range = abs(max-min);
 			int randomValue = System::random(range);
 			percentage = (float)randomValue / (float)(range);
 		}
 
-		craftingValues->setCurrentPercentage(subtitle, percentage);
+		craftingValues->setCurrentPercentage(attribute, percentage);
 
-		if (subtitle == "maxrange" || subtitle == "midrange" || subtitle == "zerorangemod" || subtitle == "maxrangemod" || subtitle == "forcecost") {
+		if (attribute == "maxrange" || attribute == "midrange" || attribute == "zerorangemod" || attribute == "maxrangemod" || attribute == "forcecost") {
 			continue;
 		}
 
-		if (subtitle == "midrangemod" && !prototype->isComponent()) {
+		if (attribute == "midrangemod" && !prototype->isComponent()) {
 			continue;
 		}
 
-		if (subtitle == "useCount" || subtitle == "quantity" || subtitle == "charges" || subtitle == "uses" || subtitle == "charge") {
+		if (attribute == "useCount" || attribute == "quantity" || attribute == "charges" || attribute == "uses" || attribute == "charge") {
 			continue;
 		}
 
@@ -437,8 +449,13 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 			yellowLooted.increment();
 		}
 
-		craftingValues->setMinValue(subtitle, min);
-		craftingValues->setMaxValue(subtitle, max);
+		craftingValues->setMinValue(attribute, min);
+		craftingValues->setMaxValue(attribute, max);
+
+#ifdef DEBUG_LOOT_MAN
+		info(true) << attribute << " min value = " << min;
+		info(true) << attribute << " max value = " << max;
+#endif
 	}
 
 	if (yellow) {
@@ -455,12 +472,12 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 	// Use percentages to recalculate the values
 	craftingValues->recalculateValues(false);
 
-	craftingValues->addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("creatureLevel", "creatureLevel", level, level, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setHidden("creatureLevel");
 
 	//check weapons and weapon components for min damage > max damage
 	if (prototype->isComponent() || prototype->isWeaponObject()) {
-		if (craftingValues->hasProperty("mindamage") && craftingValues->hasProperty("maxdamage")) {
+		if (craftingValues->hasExperimentalAttribute("mindamage") && craftingValues->hasExperimentalAttribute("maxdamage")) {
 			float oldMin = craftingValues->getCurrentValue("mindamage");
 			float oldMax = craftingValues->getCurrentValue("maxdamage");
 
@@ -487,6 +504,10 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 		addConditionDamage(prototype, craftingValues);
 
 	delete craftingValues;
+
+#ifdef DEBUG_LOOT_MAN
+	info(true) << " ---------- LootManagerImplementation::createLootObject -- COMPLETE ----------";
+#endif
 
 	return prototype;
 }
@@ -624,7 +645,7 @@ String LootManagerImplementation::getRandomLootableMod( unsigned int sceneObject
 }
 
 void LootManagerImplementation::setSockets(TangibleObject* object, CraftingValues* craftingValues) {
-	if (object->isWearableObject() && craftingValues->hasProperty("sockets")) {
+	if (object->isWearableObject() && craftingValues->hasExperimentalAttribute("sockets")) {
 		ManagedReference<WearableObject*> wearableObject = cast<WearableObject*>(object);
 		// Round number of sockets to closes integer.
 		wearableObject->setMaxSockets(craftingValues->getCurrentValue("sockets") + 0.5);

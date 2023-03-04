@@ -54,8 +54,8 @@ protected:
 	Vector<short>* numberExperimentalProperties;
 	Vector<String>* experimentalProperties;
 	Vector<short>* experimentalWeights;
-	Vector<String>* experimentalGroupTitles;
-	Vector<String>* experimentalSubGroupTitles;
+	Vector<String>* experimentalAttributes;
+	Vector<String>* experimentalGroups;
 	Vector<float>* experimentalMin;
 	Vector<float>* experimentalMax;
 	Vector<short>* experimentalPrecision;
@@ -178,12 +178,12 @@ public:
 		return experimentalWeights;
 	}
 
-	const Vector<String>* getExperimentalGroupTitles() const {
-		return experimentalGroupTitles;
+	const Vector<String>* getExperimentalGroups() const {
+		return experimentalGroups;
 	}
 
-	const Vector<String>* getExperimentalSubGroupTitles() const {
-		return experimentalSubGroupTitles;
+	const Vector<String>* getExperimentalAttributes() const {
+		return experimentalAttributes;
 	}
 
 	const Vector<float>* getExperimentalMin() const {

@@ -10,7 +10,7 @@ geo_sword_core = {
 		{"maxdamage",21,63,0},
 		{"attackspeed",-0.1,-0.7,1},
 		{"woundchance",0,8,0},
-		{"hitpoints",100,500,0},
+		{"hitpoints",100,500,0, true},
 		{"midrangemod",8,24,0},
 		{"attackhealthcost",13,-1,0},
 		{"attackactioncost",13,-1,0},

@@ -36,7 +36,7 @@ void WearableContainerObjectImplementation::fillAttributeList(AttributeListMessa
 
 void WearableContainerObjectImplementation::updateCraftingValues(CraftingValues* values, bool initialUpdate) {
 	if (initialUpdate) {
-		if(values->hasProperty("sockets") && values->getCurrentValue("sockets") >= 0)
+		if(values->hasExperimentalAttribute("sockets") && values->getCurrentValue("sockets") >= 0)
 			generateSockets(values);
 	}
 }
