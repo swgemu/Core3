@@ -8,6 +8,9 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "QueueCommand.h"
 
 class PlaceStructureCommand : public QueueCommand {
 public:
@@ -37,7 +40,9 @@ public:
 		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
 
 		if (city != nullptr && city->isClientRegion()) {
-			creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
+			StringIdChatParameter param("player_structure", "city_too_close"); // You cannot place here. It is too close to %TO.
+			param.setTO(city->getCityRegionName());
+			creature->sendMessage(new ChatSystemMessage(param));
 			return GENERALERROR;
 		}
 
@@ -104,8 +109,15 @@ public:
 			if (planetMan == nullptr)
 				return GENERALERROR;
 
-			if (planetMan->isInObjectsNoBuildZone(placementLoc.getX(), placementLoc.getY(), 15.0f)) {
-				creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
+			auto conflict = planetMan->findObjectInNoBuildZone(placementLoc.getX(), placementLoc.getY(), 0.0f);
+
+			if (conflict != nullptr) {
+				StringIdChatParameter param("player_structure", "city_too_close"); // You cannot place here. It is too close to %TO.
+				param.setTO(conflict->getDisplayedName());
+				creature->sendMessage(new ChatSystemMessage(param));
+#ifdef NDEBUG
+				Logger::console.info(true) << "\033[41;30m" << __FUNCTION__ << " at " << placementLoc << " conflict = " << *conflict << "\033[0m";
+#endif
 				return GENERALERROR;
 			}
 		} catch (Exception& e) {

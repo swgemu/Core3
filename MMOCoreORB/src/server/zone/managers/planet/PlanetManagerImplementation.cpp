@@ -1214,6 +1214,12 @@ bool PlanetManagerImplementation::isInRangeWithPoi(float x, float y, float range
 }
 
 bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float extraMargin, bool checkFootprint) {
+	auto hit = findObjectInNoBuildZone(x, y, extraMargin, checkFootprint);
+
+	return hit != nullptr;
+}
+
+Reference<SceneObject* > PlanetManagerImplementation::findObjectInNoBuildZone(float x, float y, float extraMargin, bool checkFootprint) {
 	SortedVector<QuadTreeEntry*> closeObjects;
 
 	Vector3 targetPos(x, y, zone->getHeight(x, y));
@@ -1221,7 +1227,7 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 	zone->getInRangeObjects(x, y, 512, &closeObjects, true, false);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(i));
+		Reference<SceneObject*> obj = static_cast<SceneObject*>(closeObjects.get(i));
 
 		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
 
@@ -1236,20 +1242,20 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 				Vector3 objWorldPos = obj->getWorldPosition();
 
 				if (objWorldPos.squaredDistanceTo(targetPos) < radius * radius) {
-					return true;
+					return obj;
 				}
 			}
 
 			// Check if it's within a structure's footprint
-			if (objectTemplate->isSharedStructureObjectTemplate()) {
-				if (checkFootprint && StructureManager::instance()->isInStructureFootprint(cast<StructureObject*>(obj), x, y, extraMargin)) {
-					return true;
+			if (checkFootprint && objectTemplate->isSharedStructureObjectTemplate()) {
+				if (StructureManager::instance()->isInStructureFootprint(cast<StructureObject*>(obj.get()), x, y, extraMargin)) {
+					return obj;
 				}
 			}
 		}
 	}
 
-	return false;
+	return nullptr;
 }
 
 bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float margin, bool worldSpawnArea) {
@@ -1374,7 +1380,7 @@ Reference<SceneObject*> PlanetManagerImplementation::findObjectTooCloseToDecorat
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 
-		ManagedReference<SceneObject*> obj = cast<SceneObject*>(closeObjects.get(i).get());
+		Reference<SceneObject*> obj = cast<SceneObject*>(closeObjects.get(i).get());
 
 		if(obj == nullptr || obj->isCreatureObject() || obj->getObjectTemplate() == nullptr)
 			continue;
