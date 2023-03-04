@@ -65,10 +65,9 @@ void De10BarrelComponentImplementation::fillAttributeList(AttributeListMessage* 
 }
 
 void De10BarrelComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	String attribute;
+	String attribute, group;
 	float value;
 	int precision;
-	String title;
 
 	attributeMap.removeAll();
 	precisionMap.removeAll();
@@ -76,7 +75,7 @@ void De10BarrelComponentImplementation::updateCraftingValues(CraftingValues* val
 	keyList.removeAll();
 
 	if (firstUpdate) {
-		if (values->hasProperty("useCount")) {
+		if (values->hasExperimentalAttribute("useCount")) {
 			int count = values->getCurrentValue("useCount");
 
 			// Crafting components dropped or crafted with a single use do not display a "1" (#6924)
@@ -85,22 +84,22 @@ void De10BarrelComponentImplementation::updateCraftingValues(CraftingValues* val
 		}
 	}
 
-	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
-		attribute = values->getExperimentalPropertySubtitle(i);
+	for (int i = 0; i < values->getTotalExperimentalAttributes(); ++i) {
+		attribute = values->getAttribute(i);
 
 		if (attribute == "useCount")
 			continue;
 
 		value = values->getCurrentValue(attribute);
 		precision = values->getPrecision(attribute);
-		title = values->getExperimentalPropertyTitle(attribute);
+		group = values->getAttributeGroup(attribute);
 
 		if (!hasKey(attribute))
 			keyList.add(attribute);
 
 		attributeMap.put(attribute, value);
 		precisionMap.put(attribute, precision);
-		titleMap.put(attribute, title);
+		titleMap.put(attribute, group);
 
 		if (firstUpdate) {
 			// All values on DE-10 Pistol Barrels are hidden

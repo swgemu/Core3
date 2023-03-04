@@ -125,25 +125,26 @@ public:
 			craftingValues->setManufactureSchematic(manuSchematic);
 			craftingValues->setPlayer(player);
 
-			int nRows = craftingValues->getVisibleExperimentalPropertyTitleSize();
+			int nRows = craftingValues->getTotalVisibleAttributeGroups();
 
 			prototype->updateCraftingValues(craftingValues, true);
 
 			if (quality > 0) {
 				for (int i = 0; i < nRows; i++) {
-					String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
-					for (int j = 0; j < craftingValues->getExperimentalPropertySubtitleSize(); ++j) {
-						String subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(j);
-						if (subtitlesTitle == title) {
-							String subtitle = craftingValues->getExperimentalPropertySubtitle(j);
+					String visibleGroup = craftingValues->getVisibleAttributeGroup(i);
 
-							float maxValue = craftingValues->getMaxValue(subtitle);
-							float minValue = craftingValues->getMinValue(subtitle);
+					for (int j = 0; j < craftingValues->getTotalExperimentalAttributes(); ++j) {
+						String attribute = craftingValues->getAttribute(j);
+						String group = craftingValues->getAttributeGroup(attribute);
+
+						if (group == visibleGroup) {
+							float maxValue = craftingValues->getMaxValue(attribute);
+							float minValue = craftingValues->getMinValue(attribute);
 
 							//float newValue = fabs(maxValue-minValue)*((float)quality/100.f) + Math::max(minValue, maxValue);
-							//craftingValues->setCurrentValue(subtitle, newValue);
+							//craftingValues->setCurrentValue(attribute, newValue);
 
-							craftingValues->setCurrentPercentage(subtitle, (float)quality/100.f, 5.f);
+							craftingValues->setCurrentPercentage(attribute, (float)quality/100.f, 5.f);
 						}
 					}
 				}

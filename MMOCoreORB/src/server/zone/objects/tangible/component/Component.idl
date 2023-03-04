@@ -81,7 +81,7 @@ class Component extends TangibleObject {
 	public native int getAttributePrecision(final string attributeName);
 
 	@dirty
-	public native string getAttributeTitle(final string attributeName);
+	public native string getAttributeGroup(final string attributeName);
 
 	@dirty
 	public native boolean getAttributeHidden(final string attributeName);
