@@ -59,10 +59,10 @@ void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool
 	}
 
 	if (!isSpice()) {
-		if(values->hasProperty("filling")) {
+		if(values->hasExperimentalAttribute("filling")) {
 
 			filling = (fillingMax - fillingMin) * values->getCurrentPercentage("filling") + fillingMin;
-			if(values->hasProperty("add_filling"))
+			if(values->hasExperimentalAttribute("add_filling"))
 				filling *= (1 -(values->getCurrentValue("add_filling") / 100.f));
 
 		}
@@ -77,31 +77,31 @@ void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool
 		//The container multiplier also stacks with any BE quantity enhancer. So if you use both a +150 quantity tissue (which gives a 2.5x multiplier) and a cask, the final drink will have 7.5x as many doses as one made with a small glass and without the tissue.
 		//T'illa T'ill is the only exception. This appears to be designed as a single-dose item (although why a 10-15% reduction in the food stomach is considered that powerful is beyond me). This will always come out with a single dose no matter what container or BE tissue you include in it, so stick to small glasses.
 
-		if(values->hasProperty("quantity")) {
+		if(values->hasExperimentalAttribute("quantity")) {
 			int quant = (quantityMax - quantityMin) * values->getCurrentPercentage("quantity") + quantityMin;
 
-			if(values->hasProperty("quantity_bonus"))
+			if(values->hasExperimentalAttribute("quantity_bonus"))
 				quant *= values->getCurrentValue("quantity_bonus");
 
 
-			if(values->hasProperty("add_quantity"))
+			if(values->hasExperimentalAttribute("add_quantity"))
 				quant *= (1 + (values->getCurrentValue("add_quantity") / 100.f));
 
 			setUseCount(quant, true);
 		}
 
-		if(values->hasProperty("flavor")) {
+		if(values->hasExperimentalAttribute("flavor")) {
 			duration = (flavorMax - flavorMin) * values->getCurrentPercentage("flavor") + flavorMin;
 
-			if(values->hasProperty("add_flavor"))
+			if(values->hasExperimentalAttribute("add_flavor"))
 				duration *= (1 + (values->getCurrentValue("add_flavor") / 100.f));
 
 		}
 
-		if(values->hasProperty("nutrition")) {
+		if(values->hasExperimentalAttribute("nutrition")) {
 			nutrition = (nutritionMax - nutritionMin) * values->getCurrentPercentage("nutrition") + nutritionMin;
 
-			if(values->hasProperty("add_nutrition"))
+			if(values->hasExperimentalAttribute("add_nutrition"))
 				nutrition *= (1 + (values->getCurrentValue("add_nutrition") / 100.f));
 		}
 	}

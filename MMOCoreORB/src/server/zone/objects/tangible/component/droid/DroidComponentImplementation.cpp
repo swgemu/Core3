@@ -23,7 +23,7 @@ void DroidComponentImplementation::updateCraftingValues(CraftingValues* values, 
 	stimpackSpeed = values->getCurrentValue("stimpack_speed");
 	trapBonus = values->getCurrentValue("trap_bonus");
 
-	if (values->hasProperty("droid_count")) {
+	if (values->hasExperimentalAttribute("droid_count")) {
 		setUseCount(values->getCurrentValue("droid_count"));
 		surveyDroid = true;
 	} else if (autoRepairPower > 0) {
