@@ -6,7 +6,6 @@
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
 CraftingValues::CraftingValues() {
-	experimentalValuesMap.setNullValue(nullptr);
 	doHide = true;
 	setLoggingName("CraftingValues");
 	setLogging(false);
@@ -18,41 +17,21 @@ CraftingValues::CraftingValues(const CraftingValues& values) : Object(), Seriali
 	doHide = values.doHide;
 	schematic = values.schematic;
 	player = values.player;
-
-	for (int i = 0; i < values.experimentalValuesMap.size(); ++i) {
-		VectorMapEntry<String, Reference<Subclasses*> > entry = values.experimentalValuesMap.elementAt(i);
-
-		Subclasses* subclass = entry.getValue();
-
-		Subclasses* subclasses = new Subclasses(*subclass);
-
-		experimentalValuesMap.put(entry.getKey(), subclasses);
-	}
+	experimentalValuesMap = values.experimentalValuesMap;
 
 	setLoggingName("CraftingValues");
 	setLogging(false);
 }
 
 CraftingValues::CraftingValues(const ValuesMap& values) : Object(), Serializable(), Logger() {
-	experimentalValuesMap.setNullValue(nullptr);
 	doHide = true;
-
-	for (int i = 0; i < values.size(); ++i) {
-		VectorMapEntry<String, Reference<Subclasses*> > entry = values.elementAt(i);
-
-		Subclasses* subclass = entry.getValue();
-
-		Subclasses* subclasses = new Subclasses(*subclass);
-
-		experimentalValuesMap.put(entry.getKey(), subclasses);
-	}
+	experimentalValuesMap = values;
 
 	setLoggingName("CraftingValues");
 	setLogging(false);
 }
 
 CraftingValues::~CraftingValues() {
-	experimentalValuesMap.removeAll();
 	schematic = nullptr;
 	player = nullptr;
 }
@@ -78,9 +57,9 @@ void CraftingValues::recalculateValues(bool initial) {
 	float percentage = 0.f, min = 0.f, max = 0.f, newValue = 0.f, oldValue = 0.f;
 	bool hidden = false;
 
-	for (int i = 0; i < getSubtitleCount(); ++i) {
-		attributeName = getExperimentalPropertySubtitle(i);
-		experimentalPropTitle = getExperimentalPropertyTitle(attributeName);
+	for (int i = 0; i < getTotalExperimentalAttributes(); ++i) {
+		attributeName = getAttribute(i);
+		experimentalPropTitle = getAttributeGroup(attributeName);
 
 		min = getMinValue(attributeName);
 		max = getMaxValue(attributeName);
@@ -114,7 +93,7 @@ void CraftingValues::recalculateValues(bool initial) {
 
 void CraftingValues::clearAll() {
 	doHide = true;
-	experimentalValuesMap.removeAll();
+	//experimentalValuesMap.removeAll();
 	valuesToSend.removeAll();
 	schematic = nullptr;
 	player = nullptr;
@@ -122,17 +101,14 @@ void CraftingValues::clearAll() {
 }
 
 String CraftingValues::toString() const {
-	const Subclasses* tempSubclasses;
-
 	StringBuffer str;
 
-	for (int i = 0;i < experimentalValuesMap.size(); ++i) {
-		tempSubclasses = experimentalValuesMap.get(i);
+	for (int i = 0;i < experimentalValuesMap.getSize(); ++i) {
+		String property = experimentalValuesMap.getAttribute(i);
 
 		str << "\n*************************" << endl;
-		str << "Subclass " << i << endl;
-		str << "Class: " << tempSubclasses->getClassTitle() << endl;
-		str << tempSubclasses->toString();
+		str << "Property: #" << i << property << endl;
+		str << "Group: " << experimentalValuesMap.getAttributeGroup(i) << endl;
 		str << "**************************" << endl;
 	}
 

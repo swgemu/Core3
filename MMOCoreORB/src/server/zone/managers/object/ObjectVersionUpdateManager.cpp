@@ -287,16 +287,12 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 			}
 
 
-			const Vector<String>* subGroups = tanotmp->getExperimentalSubGroupTitles();
+			const Vector<String>* attributes = tanotmp->getExperimentalAttributes();
 
-			for(int i=0; i<subGroups->size(); i++) {
-				String subGroupTitle = subGroups->get(i).toLowerCase();
+			for(int i=0; i < attributes->size(); i++) {
+				String attribute = attributes->get(i).toLowerCase();
 
-				if(subGroupTitle == "usecount" ||
-						subGroupTitle == "quantity" ||
-						subGroupTitle == "charges" ||
-						subGroupTitle == "uses" ||
-						subGroupTitle == "charge") {
+				if (attribute == "usecount" || attribute == "quantity" || attribute == "charges" || attribute == "uses" || attribute == "charge") {
 					templateKeys.put(key);
 					info("Adding Tangible Template: " + tanotmp->getTemplateFileName(), true);
 					continue;
@@ -315,20 +311,15 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 
 		Reference<LootItemTemplate*> lootTmpl = lootIter.next();
 
-		ValuesMap craftingValues = lootTmpl->getValuesMapCopy();
+		ValuesMap valuesMap = lootTmpl->getValuesMapCopy();
 
-		for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
+		for (int i = 0; i < valuesMap.getSize(); ++i) {
 
-			String subtitle = craftingValues.getExperimentalPropertySubtitle(i);
+			String attribute = valuesMap.getAttribute(i);
 
 			// if a loot template contains any of the following subtitles then it will be generated in stacks
 			// add the base template to the exclusion list
-			if (subtitle == "useCount" ||
-				subtitle == "quantity" ||
-				subtitle == "charges" ||
-				subtitle == "uses" ||
-				subtitle == "charge") {
-
+			if (attribute == "useCount" || attribute == "quantity" || attribute == "charges" || attribute == "uses" || attribute == "charge") {
 				uint32 hash = lootTmpl->getDirectObjectTemplate().hashCode();
 
 				SharedObjectTemplate *tmpl = templateMap.get(hash);

@@ -733,7 +733,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	}
 
 	// Flag to get the experimenting window
-	if (craftingStation != nullptr && (craftingValues->getVisibleExperimentalPropertyTitleSize() > 0 || manufactureSchematic->allowFactoryRun()))
+	if (craftingStation != nullptr && (craftingValues->getTotalVisibleAttributeGroups() > 0 || manufactureSchematic->allowFactoryRun()))
 		// Assemble with Experimenting
 		state = 3;
 
@@ -927,7 +927,7 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	Reference<CraftingValues*> craftingValues = manufactureSchematic->getCraftingValues();
 	craftingValues->clear();
-	int numberOfRows = craftingValues->getVisibleExperimentalPropertyTitleSize();
+	int numberOfRows = craftingValues->getTotalVisibleAttributeGroups();
 	if (rowsAttempted > numberOfRows || rowsAttempted < 1) {
 		cancelSession();
 		return;
