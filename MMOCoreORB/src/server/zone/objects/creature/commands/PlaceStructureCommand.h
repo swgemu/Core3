@@ -9,7 +9,6 @@
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "QueueCommand.h"
 
 class PlaceStructureCommand : public QueueCommand {
@@ -42,7 +41,7 @@ public:
 		if (city != nullptr && city->isClientRegion()) {
 			StringIdChatParameter param("player_structure", "city_too_close"); // You cannot place here. It is too close to %TO.
 			param.setTO(city->getCityRegionName());
-			creature->sendMessage(new ChatSystemMessage(param));
+			creature->sendSystemMessage(param);
 			return GENERALERROR;
 		}
 
@@ -114,7 +113,7 @@ public:
 			if (conflict != nullptr) {
 				StringIdChatParameter param("player_structure", "city_too_close"); // You cannot place here. It is too close to %TO.
 				param.setTO(conflict->getDisplayedName());
-				creature->sendMessage(new ChatSystemMessage(param));
+				creature->sendSystemMessage(param);
 #ifdef NDEBUG
 				Logger::console.info(true) << "\033[41;30m" << __FUNCTION__ << " at " << placementLoc << " conflict = " << *conflict << "\033[0m";
 #endif

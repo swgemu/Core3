@@ -11,7 +11,6 @@
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 #include "server/zone/packets/resource/SurveyMessage.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "templates/params/ObserverEventType.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
@@ -886,8 +885,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	// Send survey start message
 	StringIdChatParameter message("survey", "start_survey");
 	message.setTO(resname);
-	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
-	player->sendMessage(sysMessage);
+	player->sendSystemMessage(message);
 
 	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname.toLowerCase());
 

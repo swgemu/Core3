@@ -22,7 +22,6 @@
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 #include "server/zone/objects/player/sessions/crafting/events/CreateObjectTask.h"
 #include "server/zone/objects/player/sessions/crafting/events/UpdateToolCountdownTask.h"
@@ -76,7 +75,7 @@ bool CraftingSessionImplementation::validateSession() {
 
 	if (strongGhost == nullptr) {
 		StringIdChatParameter param("ui_craft", "err_no_owner"); // Internal server error: no owner for player.
-		strongCrafter->sendMessage(new ChatSystemMessage(param));
+		strongCrafter->sendSystemMessage(param);
 		return invalidSession();
 	}
 
@@ -84,7 +83,7 @@ bool CraftingSessionImplementation::validateSession() {
 
 	if (strongTool == nullptr) {
 		StringIdChatParameter param("ui_craft", "err_no_crafting_tool"); // Internal server error: no crafting tool found.
-		strongCrafter->sendMessage(new ChatSystemMessage(param));
+		strongCrafter->sendSystemMessage(param);
 		return invalidSession();
 	}
 
@@ -93,7 +92,7 @@ bool CraftingSessionImplementation::validateSession() {
 	if (strongStation != nullptr && !strongStation->isInRange(strongCrafter, 7.0f)) {
 		StringIdChatParameter param("ui", "sui_out_of_range_prose"); // You have gone out of range of %TT, closing interface.
 		param.setTT(strongStation->getObjectID());
-		strongCrafter->sendMessage(new ChatSystemMessage(param));
+		strongCrafter->sendSystemMessage(param);
 		return invalidSession();
 	}
 
