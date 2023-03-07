@@ -683,7 +683,6 @@ void ServerCore::initialize() {
 		if (configManager->getMakeLogin()) {
 			loginServer = new LoginServer(configManager);
 			loginServer->deploy("LoginServer");
-			database->instance()->executeStatement("TRUNCATE TABLE sessions");
 		}
 
 		if (configManager->getMakeZone()) {

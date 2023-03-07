@@ -67,20 +67,14 @@ public:
 				client->setSessionID(sessionID);
 				client->setAccountID(accountID);
 
-				StringBuffer delQuery;
-				delQuery << "DELETE FROM sessions WHERE account_id = " << accountID << ";";
+				auto account = AccountManager::getAccount(accountID, true);
 
-				try {
-					ServerDatabase::instance()->executeStatement(delQuery);
-				} catch (const DatabaseException& e) {
-					client->info(e.getMessage(), true);
-				}
-
-				ManagedReference<Account*> account = AccountManager::getAccount(accountID, true);
 				if (account == nullptr)
 					return;
 
 				Locker alocker(account);
+
+				AccountManager::expireSession(account, sessionID);
 
 				client->resetCharacters();
 
