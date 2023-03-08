@@ -35,7 +35,31 @@ int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* terminal, Creatur
 	float newY = playerCreo->getPositionY();
 	float newZ = playerCreo->getPositionZ();
 
-	Vector<float>* floors = CollisionManager::getCellFloorCollision(newX, newY, cell);
+	Vector<float>* floors = nullptr;
+	int tries = 0;
+
+	while(floors == nullptr && ++tries < 10) {
+		// Randomize enough other clients will consume the update
+		auto xofs = System::random(100) > 50 ? -0.34 : +0.34;
+		auto yofs = System::random(100) > 50 ? -0.34 : +0.34;
+
+		newX = playerCreo->getPositionX() + xofs;
+		newY = playerCreo->getPositionY() + yofs;
+
+		floors = CollisionManager::getCellFloorCollision(newX, newY, cell);
+	}
+
+	if (floors == nullptr) {
+		error() << "ElevatorMenuComponent failed to find new position after " << tries << " tries for player " << playerCreo->getObjectID()
+			<< " at x: " << playerCreo->getPositionX() << " y: " << playerCreo->getPositionY() << " z: " << playerCreo->getPositionZ()
+			<< " from terminal " << terminal->getObjectID()
+			<< " in cell " << parent->getObjectID()
+			;
+
+		playerCreo->sendSystemMessage("Sorry the elevator malfunctioned, please try again.");
+		return 0;
+	}
+
 	int floorCount = floors->size();
 
 	int i = 0;
@@ -79,8 +103,6 @@ int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* terminal, Creatur
 	floors = nullptr;
 
 	playerCreo->teleport(newX, newZ, newY, parent->getObjectID());
-
-	parent->broadcastObject(playerCreo, true);
 
 	PlayerObject* ghost = playerCreo->getPlayerObject();
 
