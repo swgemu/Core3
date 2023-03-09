@@ -59,11 +59,13 @@ int ContrabandScanSessionImplementation::initializeSession() {
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if (gcwMan != nullptr)
-		player->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownPlayerScanCooldown() * 1000);
+	if (gcwMan != nullptr) {
+		// Update the players cooldown
+		player->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownPlayerScanCooldown());
 
-	// Update the scanners cooldown
-	scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
+		// Update the scanners cooldown
+		scanner->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownScannerCooldown());
+	}
 
 	adjustReinforcementStrength(scanner);
 	calculateSmugglingSuccess(player);
@@ -198,12 +200,15 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 }
 
 String ContrabandScanSessionImplementation::getFactionStringId(CreatureObject* player, const String& imperial, const String& rebel) {
-	const String stringId = "@imperial_presence/contraband_search:";
-	if (scannerFaction == Factions::FACTIONIMPERIAL || (player != nullptr && player->getFactionStatus() > FactionStatus::ONLEAVE && player->getFaction() == Factions::FACTIONREBEL) || rebel == "") {
-		return stringId + imperial;
+	String stringID = "@imperial_presence/contraband_search:";
+
+	if (scannerFaction == Factions::FACTIONIMPERIAL || rebel == "") {
+		stringID = stringID + imperial;
 	} else {
-		return stringId + rebel;
+		stringID = stringID + rebel;
 	}
+
+	return stringID;
 }
 
 void ContrabandScanSessionImplementation::sendScannerChatMessage(Zone* zone, AiAgent* scanner, CreatureObject* player, const String& imperial, const String& rebel = "") {
@@ -212,9 +217,18 @@ void ContrabandScanSessionImplementation::sendScannerChatMessage(Zone* zone, AiA
 		return;
 	}
 
-	StringIdChatParameter chatMessage;
-	chatMessage.setStringId(getFactionStringId(player, imperial, rebel));
-	zone->getZoneServer()->getChatManager()->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, 0);
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	if (zoneServer != nullptr) {
+		ChatManager* chatMan = zoneServer->getChatManager();
+
+		if (chatMan != nullptr) {
+			StringIdChatParameter chatMessage;
+			chatMessage.setStringId(getFactionStringId(player, imperial, rebel));
+
+			chatMan->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, 0);
+		}
+	}
 }
 
 void ContrabandScanSessionImplementation::sendBarkChatMessage(AiAgent* scanner, CreatureObject* player) {
