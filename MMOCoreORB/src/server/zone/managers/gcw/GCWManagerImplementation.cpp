@@ -133,6 +133,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	wildScanLoginDelay = lua->getGlobalInt("wildScanLoginDelay") * 1000;
 	wildScanChance = lua->getGlobalInt("wildScanChance");
 	crackdownPlayerScanCooldown = lua->getGlobalInt("crackdownPlayerScanCooldown") * 1000;
+	crackdownScannerCooldown = lua->getGlobalInt("crackdownScannerCooldown") * 1000;
 	crackdownContrabandFineCredits = lua->getGlobalInt("crackdownContrabandFineCredits");
 	crackdownContrabandFineFactionPoints = lua->getGlobalInt("crackdownContrabandFineFactionPoints");
 
