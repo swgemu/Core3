@@ -38,13 +38,12 @@ void ResourceContainerImplementation::setUseCount(uint32 newQuantity, bool notif
 	setQuantity(newQuantity, notifyClient);
 }
 
-void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify, bool ignoreMax) {
+void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify, bool ignoreMax, bool destroyEmpty) {
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
 	ManagedReference<SceneObject*> parent = getParent().get();
 	stackQuantity = quantity;
 
-	if (stackQuantity < 1) {
-
+	if (destroyEmpty && stackQuantity < 1) {
 		if (parent != nullptr) {
 			destroyObjectFromWorld(true);
 		}
