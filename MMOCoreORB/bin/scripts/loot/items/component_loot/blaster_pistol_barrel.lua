@@ -8,9 +8,11 @@ blaster_pistol_barrel = {
 	craftingValues = {
 		{"mindamage", 2,10,0},
 		{"maxdamage", 2,10,0},
-		{"attackspeed",-0.2,-1.0,1},
-		{"woundchance",1,5,1},
-		{"hitpoints",20,100,0},
+		{"attackspeed",-0.2,-1.0,2},
+		{"woundchance",1,5,0},
+		{"hitpoints",20,100,0, true},
+		{"zerorangemod",0,0,0, false},
+		{"maxrangemod",0,0,0, false},
 		{"midrangemod",2,10,0},
 		{"useCount",3,7,0}
 	},

@@ -7,6 +7,8 @@ solid_delivery_shell = {
 	directObjectTemplate = "object/tangible/component/chemistry/solid_delivery_shell.iff",
 	craftingValues = {
 		{"power", 4,20,0},
+		{"charges", 5,30,0},
+		{"hitpoints", 5,50,0, true},
 		{"useCount",3,7,0}
 	},
 	customizationStringName = {},

@@ -10,7 +10,7 @@ stock = {
 		{"maxdamage", 4,20,0},
 		{"attackspeed",0.8,0.0,1},
 		{"woundchance",1,5,1},
-		{"hitpoints",20,100,0},
+		{"hitpoints",20,100,0, true},
 		{"midrangemod",4,20,0},
 		{"attackhealthcost",20,0,0},
 		{"attackactioncost",20,0,0},

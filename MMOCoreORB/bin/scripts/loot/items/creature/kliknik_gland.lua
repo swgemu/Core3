@@ -6,8 +6,8 @@ kliknik_gland = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/munition/kliknick_gland.iff",
 	craftingValues = {
-		{"maxdamage",50,90,0},
 		{"mindamage",20,20,0},
+		{"maxdamage",50,90,0},
 		{"woundchance",10,20,0},
 		{"useCount",1,11,0}
 	},

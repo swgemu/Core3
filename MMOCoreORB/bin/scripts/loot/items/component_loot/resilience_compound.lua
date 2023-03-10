@@ -6,6 +6,10 @@ resilience_compound = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/resilience_compound.iff",
 	craftingValues = {
+		{"power", 0,0,0, false},
+		{"charges", 0,0,0, false},
+		{"range", 0,0,0, false},
+		{"area", 0,0,0, false},
 		{"potency", 6,30,0},
 		{"duration",12,60,0},
 		{"useCount",3,7,0}
