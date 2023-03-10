@@ -8,8 +8,8 @@ projectile_feed_mechanism = {
 	craftingValues = {
 		{"mindamage", 2,10,0},
 		{"maxdamage", 4,20,0},
-		{"attackspeed",-0.1,-0.5,1},
-		{"hitpoints",20,100,0},
+		{"attackspeed",-0.1,-0.5,2},
+		{"hitpoints",20,100,0, true},
 		{"useCount",3,11,0}
 	},
 	customizationStringName = {},

@@ -32,11 +32,7 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 	int precision;
 	bool hidden;
 
-	String footer;
-
 	for (int i = 0; i < keyList.size(); ++i) {
-		footer = "";
-
 		attribute = keyList.get(i);
 		value = attributeMap.get(attribute);
 		precision = precisionMap.get(attribute);
@@ -50,6 +46,7 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 			switch (attributeHash) {
 			case STRING_HASHCODE("zerorangemod"):
 				listedName = "wpn_range_attack_mod_zero";
+				break;
 			case STRING_HASHCODE("midrangemod"):
 				listedName = "wpn_range_attack_mod_mid";
 				break;
@@ -74,19 +71,26 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 			case STRING_HASHCODE("armor_integrity"):
 				listedName = "baseintegrity";
 				break;
+			case STRING_HASHCODE("armor_health_encumbrance"):
+				listedName = "healthencumbrance";
+				break;
+			case STRING_HASHCODE("armor_action_encumbrance"):
+				listedName = "actionencumbrance";
+				break;
+			case STRING_HASHCODE("armor_mind_encumbrance"):
+				listedName = "mindencumbrance";
+				break;
 			default:
 				listedName = attribute;
 			}
 
-			if (precision >= 10) {
-				footer = "%";
-				precision -= 10;
-			}
-
 			StringBuffer displayvalue;
 
-			displayvalue << Math::getPrecision(value, precision);
-			displayvalue << footer;
+			if (precision >= 10) {
+				displayvalue << Math::getPrecision(value, (precision - 10)) << "%";
+			} else {
+				displayvalue << Math::getPrecision(value, precision);
+			}
 
 			alm->insertAttribute(listedName, displayvalue.toString());
 		}
