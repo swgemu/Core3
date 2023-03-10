@@ -9,7 +9,7 @@ de10_pistol_barrel = {
 		{"mindamage", 5, 50, 0},
 		{"maxdamage", 5, 50, 0},
 		{"woundchance", 1, 20, 0},
-		{"attackspeed", -0.1, -1.5, 0},
+		{"attackspeed", -0.1, -1.5, 2},
 		{"zerorangemod", 5, 15, 0},
 		{"midrangemod", 5, 15, 0},
 		{"maxrangemod", 5, 15, 0},

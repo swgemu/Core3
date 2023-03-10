@@ -10,7 +10,7 @@ stock_advanced = {
 		{"maxdamage", 8,40,0},
 		{"attackspeed",0.8,0.0,1},
 		{"woundchance",3,15,1},
-		{"hitpoints",20,100,0},
+		{"hitpoints",20,100,0, true},
 		{"midrangemod",12,60,0},
 		{"attackhealthcost",28,0,0},
 		{"attackactioncost",28,0,0},

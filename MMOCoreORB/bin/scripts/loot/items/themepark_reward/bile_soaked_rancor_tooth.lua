@@ -10,6 +10,7 @@ bile_soaked_rancor_tooth = {
 		{"maxdamage",65,65,0},
 		{"attackspeed",0.3,0.3,1},
 		{"woundchance",25,25,0},
+		{"midrangemod",-4,4,0},
 		{"attackhealthcost",30,30,0},
 		{"attackactioncost",25,25,0},
 		{"attackmindcost",25,25,0},

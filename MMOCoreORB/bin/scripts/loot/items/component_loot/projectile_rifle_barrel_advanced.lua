@@ -8,9 +8,9 @@ projectile_rifle_barrel_advanced = {
 	craftingValues = {
 		{"mindamage", 5,25,0},
 		{"maxdamage", 5,25,0},
-		{"attackspeed",-0.2,-0.7,1},
+		{"attackspeed",-0.2,-0.7,2},
 		{"woundchance",3,15,1},
-		{"hitpoints",20,100,0},
+		{"hitpoints",20,100,0, true},
 		{"midrangemod",8,40,0},
 		{"useCount",3,7,0}
 	},

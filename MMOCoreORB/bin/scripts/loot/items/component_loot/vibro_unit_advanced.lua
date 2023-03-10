@@ -8,11 +8,9 @@ vibro_unit_advanced = {
 	craftingValues = {
 		{"mindamage", 10,50,0},
 		{"maxdamage", 15,75,0},
-		{"attackspeed",-0.2,-0.7,1},
+		{"attackspeed",-0.2,-0.7,2},
 		{"woundchance",3,15,1},
-		{"hitpoints",20,100,0},
-		{"zerorangemod",6,30,0},
-		{"maxrangemod",6,30,0},
+		{"hitpoints",20,100,0, true},
 		{"midrangemod",6,30,0},
 		{"attackhealthcost",7,-3,0},
 		{"attackactioncost",7,-3,0},
