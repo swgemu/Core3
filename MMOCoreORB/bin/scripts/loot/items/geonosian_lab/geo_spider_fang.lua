@@ -8,6 +8,7 @@ geo_spider_fang = {
 	craftingValues = {
 		{"maxdamage",15,35,0},
 		{"attackspeed",0,-2,5},
+		{"attackhealthcost",13,-10,0},
 		{"useCount",1,5,0},
 	},
 	customizationStringNames = {},

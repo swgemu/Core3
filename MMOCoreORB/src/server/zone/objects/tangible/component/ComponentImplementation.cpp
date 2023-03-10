@@ -50,6 +50,7 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 			switch (attributeHash) {
 			case STRING_HASHCODE("zerorangemod"):
 				listedName = "wpn_range_attack_mod_zero";
+				break;
 			case STRING_HASHCODE("midrangemod"):
 				listedName = "wpn_range_attack_mod_mid";
 				break;
@@ -73,6 +74,15 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 				break;
 			case STRING_HASHCODE("armor_integrity"):
 				listedName = "baseintegrity";
+				break;
+			case STRING_HASHCODE("armor_health_encumbrance"):
+				listedName = "healthencumbrance";
+				break;
+			case STRING_HASHCODE("armor_action_encumbrance"):
+				listedName = "actionencumbrance";
+				break;
+			case STRING_HASHCODE("armor_mind_encumbrance"):
+				listedName = "mindencumbrance";
 				break;
 			default:
 				listedName = attribute;
