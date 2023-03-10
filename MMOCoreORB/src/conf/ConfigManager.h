@@ -704,6 +704,19 @@ namespace conf {
 
 			return cachedCovertOvertSystem;
 		}
+
+		inline bool getLoginEnableSessionId() {
+			static uint32 cachedVersion = 0;
+			static bool cachedEnableSessionId;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedEnableSessionId = getBool("Core3.Login.EnableSessionId", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedEnableSessionId;
+		}
 	};
 }
 

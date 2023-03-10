@@ -27,7 +27,6 @@ AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager"
 	loginServer = loginserv;
 
 	autoRegistration = true;
-	enableSessionId = ConfigManager::instance()->getBool("Core3.Login.EnableSessionId", false);
 	requiredVersion = "";
 	maxOnlineCharacters = 1;
 
@@ -44,10 +43,6 @@ AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager"
 		} catch (const Exception& e) {
 			error(e.getMessage());
 		}
-	}
-
-	if (!enableSessionId) {
-		UniqueReference<ResultSet*> res(ServerDatabase::instance()->executeQuery("TRUNCATE TABLE sessions"));
 	}
 }
 
@@ -145,27 +140,45 @@ void AccountManager::loginApprovedAccount(LoginClient* client, ManagedReference<
 }
 
 Reference<Account*> AccountManager::validateAccountCredentials(LoginClient* client, const String& username, const String& password) {
-	auto isSessionIdLogin = enableSessionId && username.isEmpty();
-
-	StringBuffer query;
-
-	query << "SELECT a.account_id, a.username, a.password, a.salt, a.account_id, a.station_id, "
-		"UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE ";
-
-	if (!isSessionIdLogin) {
-		query << "a.username = '" << username << "'";
-	} else {
-		query << "a.account_id = (SELECT s.account_id FROM sessions s WHERE s.session_id = '" << password << "')";
+	if (client == nullptr) {
+		return nullptr;
 	}
 
-	query << " LIMIT 1";
-
+	bool isSessionIdLogin = false;
 	String passwordStored;
-	Reference<Account*> account = getAccount(query.toString(), passwordStored, true); //force update of mysql rows to update galaxy bans
+	Reference<Account*> account = nullptr;
+
+	if (ConfigManager::instance()->getLoginEnableSessionId()) {
+		StringBuffer sessionIdQuery;
+		sessionIdQuery << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, "
+			     "UNIX_TIMESTAMP(a.created), a.admin_level, IFNULL(s.session_id, '') AS session_id "
+			     "FROM accounts a, sessions s "
+			     "WHERE s.session_id = '" << password << "'";
+
+		if (!username.isEmpty()) {
+			sessionIdQuery << " AND a.username = '" << username << "'";
+		}
+
+		sessionIdQuery << "LIMIT 1;";
+
+		account = getAccount(sessionIdQuery.toString(), passwordStored, true);
+
+		if (account != nullptr) {
+			isSessionIdLogin = true;
+		}
+	}
 
 	if (account == nullptr) {
-		//The user name didn't exist, so we check if auto registration is enabled and create a new account
-		if (isAutoRegistrationEnabled() && client != nullptr && !isSessionIdLogin) {
+		StringBuffer query;
+		query << "SELECT a.account_id, a.username, a.password, a.salt, a.account_id, a.station_id, "
+			"UNIX_TIMESTAMP(a.created), a.admin_level, '' as session_id FROM accounts a WHERE a.username = '" << username << "' LIMIT 1;";
+
+		account = getAccount(query.toString(), passwordStored, true);
+	}
+
+	if (account == nullptr) {
+		// The user name didn't exist, so we check if auto registration is enabled and create a new account
+		if (isAutoRegistrationEnabled()) {
 			if (username.isEmpty()) {
 				client->sendErrorMessage("Login Error", "You must choose a valid username!");
 				return nullptr;
@@ -173,40 +186,34 @@ Reference<Account*> AccountManager::validateAccountCredentials(LoginClient* clie
 
 			account = createAccount(username, password, passwordStored);
 		} else {
-			if (client != nullptr) {
-				client->sendErrorMessage("Login Error",
-					ConfigManager::instance()->getString("Core3.RegistrationMessage",
-						"Automatic registration is currently disabled. "
-						"Please contact the administrators of the server in order to get an authorized account."
-					)
-				);
-			}
+			client->sendErrorMessage("Login Error",
+				ConfigManager::instance()->getString("Core3.RegistrationMessage",
+					"Automatic registration is currently disabled. "
+					"Please contact the administrators of the server in order to get an authorized account."
+				)
+			);
 
 			return nullptr;
 		}
 	}
 
 	if (!account->isActive()) {
-		if (client != nullptr) {
-			const String& inactTitle = ConfigManager::instance()->getInactiveAccountTitle();
-			const String& inactText = ConfigManager::instance()->getInactiveAccountText();
+		const String& inactTitle = ConfigManager::instance()->getInactiveAccountTitle();
+		const String& inactText = ConfigManager::instance()->getInactiveAccountText();
 
-			client->sendErrorMessage(
-				inactTitle.length() == 0 ? "Account Disabled" : inactTitle,
-				inactText.length() == 0 ? "The server administrators have disabled your account." : inactText
-			);
-		}
+		client->sendErrorMessage(
+			inactTitle.length() == 0 ? "Account Disabled" : inactTitle,
+			inactText.length() == 0 ? "The server administrators have disabled your account." : inactText
+		);
 
 		return nullptr;
 	}
 
-	if (isSessionIdLogin) {
-		account->setSessionId(password);
-	} else { // Username / Password login...
-		account->setSessionId("");
-
-		//Check hash version
+	// Handle username / password login
+	if (!isSessionIdLogin) {
+		// Check hash version
 		String passwordHashed;
+
 		if (account->getSalt() == "") {
 			passwordHashed = Crypto::SHA1Hash(password);
 		} else {
@@ -214,19 +221,20 @@ Reference<Account*> AccountManager::validateAccountCredentials(LoginClient* clie
 		}
 
 		if (passwordStored != passwordHashed) {
-			if(client != nullptr)
-				client->sendErrorMessage("Wrong Password", "The password you entered was incorrect.");
+			client->sendErrorMessage("Wrong Password", "The password you entered was incorrect.");
 
 			return nullptr;
 		}
-		//update hash if unsalted
+
+		// update hash if unsalted
 		if (account->getSalt() == "")
 			updateHash(username, password);
 	}
 
-	//Check if they are banned
+	// Check if they are banned
 	if (account->isBanned()) {
 		StringBuffer reason;
+
 		reason << "Your account has been banned from the server by the administrators.\n\n";
 		int totalBan = account->getBanExpires() - time(0);
 
@@ -254,8 +262,7 @@ Reference<Account*> AccountManager::validateAccountCredentials(LoginClient* clie
 
 		reason << "Reason: " << account->getBanReason();
 
-		if (client != nullptr)
-			client->sendErrorMessage("Account Banned", reason.toString());
+		client->sendErrorMessage("Account Banned", reason.toString());
 
 		return nullptr;
 	}
@@ -329,7 +336,7 @@ Reference<Account*> AccountManager::getAccount(uint32 accountID, bool forceSqlUp
 	}
 
 	StringBuffer query;
-	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
+	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level, '' AS session_id FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
 
 	UniqueReference<ResultSet*> result(ServerDatabase::instance()->executeQuery(query.toString()));
 
@@ -363,7 +370,7 @@ Reference<Account*> AccountManager::getAccount(uint32 accountID, bool forceSqlUp
 
 Reference<Account*> AccountManager::getAccount(uint32 accountID, String& passwordStored, bool forceSqlUpdate) {
 	StringBuffer query;
-	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
+	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level, '' AS session_id FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
 
 	return getAccount(query.toString(), passwordStored, forceSqlUpdate);
 }
@@ -424,6 +431,8 @@ Reference<Account*> AccountManager::getAccount(String query, String& passwordSto
 
 		account->setAdminLevel(result->getInt(7));
 
+		account->setSessionId(result->getString(8));
+
 		account->updateFromDatabase();
 
 		return account;
@@ -438,7 +447,7 @@ Reference<Account*> AccountManager::getAccount(const String& accountName, bool f
 	Database::escapeString(name);
 
 	StringBuffer query;
-	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.username = '" << name << "' LIMIT 1;";
+	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level, '' AS session_id FROM accounts a WHERE a.username = '" << name << "' LIMIT 1;";
 
 	String temp;
 
