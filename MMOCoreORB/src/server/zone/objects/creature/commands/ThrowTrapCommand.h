@@ -111,7 +111,10 @@ public:
 				return GENERALERROR;
 			}
 
-			float hitChance = CombatManager::instance()->hitChanceEquation(trappingSkill, System::random(199) + 1, targetDefense, System::random(199) + 1);
+			int attackRoll = System::random(199) + 1;
+			int defendRoll = System::random(199) + 1;
+
+			float hitChance = CombatManager::instance()->hitChanceEquation(trappingSkill + attackRoll, targetDefense + defendRoll);
 
 			if (hitChance > 100)
 				hitChance = 100.0;

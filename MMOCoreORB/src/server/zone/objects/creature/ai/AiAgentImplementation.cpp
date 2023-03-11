@@ -2075,11 +2075,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
 		setCurrentSpeed(0.f);
+		updateLocomotion();
 
 		return false;
 	}
-
-	float currentSpeed = getCurrentSpeed();
 
 	// Handle speed up and slow down
 	if ((((currentSpeed * currentSpeed) * maxSquared) > endDistanceSq) && newSpeed > 0.4f) {
