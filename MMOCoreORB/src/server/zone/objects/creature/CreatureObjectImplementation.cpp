@@ -1750,21 +1750,22 @@ float CreatureObjectImplementation::calculateSpeed() {
 }
 
 void CreatureObjectImplementation::updateLocomotion() {
-	// 0: stationary, 0-walk: slow, walk-run+; fast
-	// the movement table does not seem to want scaling factors...
+	auto creaturePosture = CreaturePosture::instance();
 
-	// This is a "good enough" hysteresis to allow for more fluid transition
-	// between locomotions. It breaks down on posture changes, but it's not
-	// worth accounting for that for something this simple.
-	uint8 oldSpeed = CreaturePosture::instance()->getSpeed(posture, locomotion);
-	float hysteresis = walkSpeed / 10.f * (oldSpeed == CreatureLocomotion::FAST ? -1.f : 1.f);
+	if (creaturePosture == nullptr) {
+		return;
+	}
 
-	if (currentSpeed <= abs(hysteresis))
-		locomotion = CreaturePosture::instance()->getLocomotion(posture, CreatureLocomotion::STATIONARY);
-	else if (currentSpeed <= walkSpeed + hysteresis)
-		locomotion = CreaturePosture::instance()->getLocomotion(posture, CreatureLocomotion::SLOW);
-	else
-		locomotion = CreaturePosture::instance()->getLocomotion(posture, CreatureLocomotion::FAST);
+	float slow = walkSpeed * 0.5f;
+	float fast = ((runSpeed - walkSpeed) * 0.5f) + walkSpeed;
+
+	if (currentSpeed < slow) {
+		locomotion = creaturePosture->getLocomotion(posture, CreatureLocomotion::STATIONARY);
+	} else if (currentSpeed < fast) {
+		locomotion = creaturePosture->getLocomotion(posture, CreatureLocomotion::SLOW);
+	} else {
+		locomotion = creaturePosture->getLocomotion(posture, CreatureLocomotion::FAST);
+	}
 }
 
 UnicodeString CreatureObjectImplementation::getCreatureName() const {
