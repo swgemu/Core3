@@ -130,32 +130,48 @@ end
 function HeroOfTatooineScreenPlay:createCourageEvent(event)
 	if (hasServerEvent("HeroOfTatCourage")) then
 		rescheduleServerEvent("HeroOfTatCourage", self:getEventTimer(event))
+
+		Logger:logEvent("Hero of Tatooine: Rescheduling EXISTING Event for Courage to spawn in " .. self:getEventTimer(event), LT_INFO)
 	else
 		createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doCourageChange", "HeroOfTatCourage")
+
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Courage spawn in " .. self:getEventTimer(event), LT_INFO)
 	end
 end
 
 function HeroOfTatooineScreenPlay:createAltruismEvent(event)
 	if (hasServerEvent("HeroOfTatAltruism")) then
 		rescheduleServerEvent("HeroOfTatAltruism", self:getEventTimer(event))
+
+		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Altruism spawn in " .. self:getEventTimer(event), LT_INFO)
 	else
 		createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doAltruismChange", "HeroOfTatAltruism")
+
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Altruism spawn in " .. self:getEventTimer(event), LT_INFO)
 	end
 end
 
 function HeroOfTatooineScreenPlay:createIntellectEvent(event)
 	if (hasServerEvent("HeroOfTatIntellect")) then
 		rescheduleServerEvent("HeroOfTatIntellect", self:getEventTimer(event))
+
+		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Intellect spawn in " .. self:getEventTimer(event), LT_INFO)
 	else
 		createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doIntellectSpawn", "HeroOfTatIntellect")
+
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Intellect spawn in " .. self:getEventTimer(event), LT_INFO)
 	end
 end
 
 function HeroOfTatooineScreenPlay:createHonorEvent(event)
 	if (hasServerEvent("HeroOfTatHonor")) then
 		rescheduleServerEvent("HeroOfTatHonor", self:getEventTimer(event))
+
+		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Honor spawn in " .. self:getEventTimer(event), LT_INFO)
 	else
 		createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doHonorChange", "HeroOfTatHonor")
+
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Honor spawn in " .. self:getEventTimer(event), LT_INFO)
 	end
 end
 
@@ -210,6 +226,8 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 		AiAgent(pBoar):setNoAiAggro()
 		createObserver(OBJECTDESTRUCTION, "HeroOfTatooineScreenPlay", "notifyDefeatedBoar", pBoar)
 		writeData("hero_of_tat:courage_mob_id", SceneObject(pBoar):getObjectID())
+
+		Logger:logEvent("Hero of Tatooine: doCourageChange complete. Boar Spawned at: " .. self.courageSpawns[newLoc][1] .. ", " .. self.courageSpawns[newLoc][2], LT_INFO)
 	else
 		printLuaError("HeroOfTatooineScreenPlay:doCourageChange, unable to spawn boar.")
 	end
@@ -241,11 +259,12 @@ function HeroOfTatooineScreenPlay:notifyDefeatedBoar(pVictim, pAttacker)
 		end
 		CreatureObject(pAttacker):sendSystemMessage("@quest/hero_of_tatooine/system_messages:courage_notice_object")
 	end
+
+	Logger:logEvent("Hero of Tatooine: notifyDefeatedBoar - Boar has been killled.", LT_INFO)
 	return 1
 end
 
 function HeroOfTatooineScreenPlay:clearInventory(pCreature)
-
 	local pInventory = CreatureObject(pCreature):getSlottedObject("inventory")
 
 	if pInventory == nil then
@@ -855,6 +874,8 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 		return
 	end
 
+	Logger:logEvent("Hero of Tatooine: doHonorChange - Spawned Pirate Leader at " .. self.honorSpawns[newLoc][1] ..  ", " .. self.honorSpawns[newLoc][2] .. " Tatooine.", LT_INFO)
+
 	AiAgent(pLeader):setNoAiAggro()
 	writeData("hero_of_tat:honor_leader_id", SceneObject(pLeader):getObjectID())
 
@@ -876,7 +897,6 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 		writeData("hero_of_tat:honor_pirate_2_id", SceneObject(pPirate2):getObjectID())
 	end
 
-
 	createObserver(DAMAGERECEIVED, "HeroOfTatooineScreenPlay", "pirateLeaderDamage", pLeader)
 
 	self:createHonorEvent("life")
@@ -893,29 +913,33 @@ function HeroOfTatooineScreenPlay:pirateLeaderDamage(pLeader, pPlayer, damage)
 		return 0
 	end
 
-	if ((CreatureObject(pLeader):getHAM(0) <= (CreatureObject(pLeader):getMaxHAM(0) * 0.8)) or (CreatureObject(pLeader):getHAM(3) <= (CreatureObject(pLeader):getMaxHAM(3) * 0.8)) or (CreatureObject(pLeader):getHAM(6) <= (CreatureObject(pLeader):getMaxHAM(6) * 0.8))) then
-		local spawnLoc = { x = CreatureObject(pLeader):getPositionX(), z = CreatureObject(pLeader):getPositionZ(), y = CreatureObject(pLeader):getPositionY(), cell = CreatureObject(pLeader):getParentID(), angle = CreatureObject(pLeader):getDirectionAngle() }
-		local spawnHam = { h = CreatureObject(pLeader):getHAM(0), a = CreatureObject(pLeader):getHAM(3), m = CreatureObject(pLeader):getHAM(6) }
-		local leaderName = SceneObject(pLeader):getCustomObjectName()
-		SceneObject(pLeader):destroyObjectFromWorld()
+	local healthCheck = CreatureObject(pLeader):getMaxHAM(0) * 0.2
+	local actionCheck = CreatureObject(pLeader):getMaxHAM(3) * 0.2
+	local mindCheck = CreatureObject(pLeader):getMaxHAM(6) * 0.2
+	local spawnHam = { h = CreatureObject(pLeader):getHAM(0), a = CreatureObject(pLeader):getHAM(3), m = CreatureObject(pLeader):getHAM(6) }
 
-		local pNewLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader_converse", 0, spawnLoc.x, spawnLoc.z, spawnLoc.y, spawnLoc.angle, spawnLoc.cell)
-
-		if (pNewLeader == nil) then
-			return 1
-		end
-
-		SceneObject(pNewLeader):setCustomObjectName(leaderName)
-		CreatureObject(pNewLeader):setPvpStatusBitmask(0)
-		CreatureObject(pNewLeader):setHAM(0, spawnHam.h)
-		CreatureObject(pNewLeader):setHAM(3, spawnHam.a)
-		CreatureObject(pNewLeader):setHAM(6, spawnHam.m)
-
-		spatialChat(pNewLeader, "@quest/pirates:dont_hurt_us")
-		return 1
-	else
+	if ((spawnHam.h > healthCheck) and (spawnHam.a > actionCheck) and (spawnHam.m > mindCheck)) then
 		return 0
 	end
+
+	local spawnLoc = { x = CreatureObject(pLeader):getPositionX(), z = CreatureObject(pLeader):getPositionZ(), y = CreatureObject(pLeader):getPositionY(), cell = CreatureObject(pLeader):getParentID(), angle = CreatureObject(pLeader):getDirectionAngle() }
+
+	CreatureObject(pPlayer):forcePeace()
+	CreatureObject(pLeader):forcePeace()
+
+	CreatureObject(pLeader):setPvpStatusBitmask(0)
+	CreatureObject(pLeader):setOptionBit(CONVERSABLE)
+	CreatureObject(pLeader):setPosture(UPRIGHT)
+	AiAgent(pLeader):setHomeLocation(spawnLoc.x, spawnLoc.z, spawnLoc.y, 0)
+
+	AiAgent(pLeader):addCreatureFlag(AI_STATIONARY)
+	AiAgent(pLeader):setAITemplate()
+
+	spatialChat(pLeader, "@quest/pirates:dont_hurt_us")
+
+	Logger:logEvent("Hero of Tatooine: pirateLeaderDamage - Pirate Leader was defeated at location: " .. spawnLoc.x .. ", " .. spawnLoc.y .. " Tatooine.", LT_INFO)
+
+	return 1
 end
 
 function HeroOfTatooineScreenPlay:spawnAggroLeader(pOldLeader, pPlayer, screenID)
@@ -997,6 +1021,8 @@ function HeroOfTatooineScreenPlay:initRanchHouse()
 		writeData("hero_of_tat:ranch_house_wife", SceneObject(pObject):getObjectID())
 		CreatureObject(pObject):setPvpStatusBitmask(0)
 	end
+
+	Logger:logEvent("Hero of Tatooine: initRanchHouse - Rancher house initialized.", LT_INFO)
 end
 
 function HeroOfTatooineScreenPlay:doHonorFail(pPlayer)
@@ -1073,7 +1099,6 @@ function HeroOfTatooineScreenPlay:doSuccessHonorPhase(pPlayer)
 	if (pGhost == nil) then
 		return
 	end
-
 
 	CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:success")
 	CreatureObject(pPlayer):setScreenPlayState(2, "hero_of_tatooine_honor")
