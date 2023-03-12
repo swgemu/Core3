@@ -229,8 +229,18 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	prototype->setElectric(creatureTemplate->getElectricity());
 	prototype->setAcid(creatureTemplate->getAcid());
 	prototype->setSaber(creatureTemplate->getLightSaber());
-	prototype->setRanged(creatureTemplate->getPrimaryWeapon() != "none");
 	prototype->setArmorRating(creatureTemplate->getArmor());
+
+	bool hasRanged = false;
+
+	if (creature->isAiAgent()) {
+		auto agent = creature->asAiAgent();
+
+		if (agent != nullptr)
+			hasRanged = agent->hasRangedWeapon();
+	}
+
+	prototype->setRanged(hasRanged);
 
 	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::STUN))
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::STUN);

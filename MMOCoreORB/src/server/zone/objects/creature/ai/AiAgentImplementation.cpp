@@ -3980,11 +3980,27 @@ void AiAgentImplementation::setCombatState() {
 }
 
 bool AiAgentImplementation::hasRangedWeapon() {
-	return (primaryWeapon != nullptr && primaryWeapon->isRangedWeapon()) || (secondaryWeapon != nullptr && secondaryWeapon->isRangedWeapon());
+	if (primaryWeapon != nullptr && primaryWeapon->isRangedWeapon()) {
+		return true;
+	}
+
+	if (secondaryWeapon != nullptr && secondaryWeapon->isRangedWeapon()) {
+		return true;
+	}
+
+	return false;
 }
 
 bool AiAgentImplementation::hasMeleeWeapon() {
-	return (primaryWeapon != nullptr && (primaryWeapon->isMeleeWeapon() || primaryWeapon->isUnarmedWeapon())) || (secondaryWeapon != nullptr && (secondaryWeapon->isMeleeWeapon() || secondaryWeapon->isUnarmedWeapon()));
+	if (primaryWeapon != nullptr && (primaryWeapon->isMeleeWeapon() || primaryWeapon->isUnarmedWeapon())) {
+		return true;
+	}
+
+	if (secondaryWeapon != nullptr && (secondaryWeapon->isMeleeWeapon() || secondaryWeapon->isUnarmedWeapon())) {
+		return true;
+	}
+
+	return false;
 }
 
 bool AiAgentImplementation::getUseRanged() {
