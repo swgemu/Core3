@@ -19,6 +19,7 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/combat/CombatManager.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
@@ -154,6 +155,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setAppearance", &LuaCreatureObject::setAppearance },
 		{ "getMainDefender", &LuaTangibleObject::getMainDefender },
 		{ "getWeaponType", &LuaCreatureObject::getWeaponType },
+		{ "attemptPeace", &LuaCreatureObject::attemptPeace },
+		{ "forcePeace", &LuaCreatureObject::forcePeace },
 		{ 0, 0 }
 };
 
@@ -1279,4 +1282,20 @@ int LuaCreatureObject::getWeaponType(lua_State* L) {
 
 	lua_pushinteger(L, weaponType);
 	return 1;
+}
+
+int LuaCreatureObject::attemptPeace(lua_State* L) {
+	Locker lock(realObject);
+
+	CombatManager::instance()->attemptPeace(realObject);
+
+	return 0;
+}
+
+int LuaCreatureObject::forcePeace(lua_State* L) {
+	Locker lock(realObject);
+
+	CombatManager::instance()->forcePeace(realObject);
+
+	return 0;
 }
