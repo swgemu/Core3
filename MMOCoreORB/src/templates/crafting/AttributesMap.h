@@ -6,12 +6,15 @@
 #define ATTRIBUTESMAP_H_
 
 #include "ValuesClasses.h"
+#include "system/util/Vector.h"
+
+//#define DEBUG_ATTRIBUTES_MAP
 
 class AttributesMap : public Object, public Logger {
 	Mutex mutex;
 
-	SortedVector<String> attributes;
-	SortedVector<String> visibleGroups;
+	Vector<String> attributes;
+	Vector<String> visibleGroups;
 	VectorMap<String, String> attributeGroups;
 	VectorMap<String, Reference<Values*>> attributeValues;
 
@@ -99,10 +102,35 @@ public:
 	}
 
 	inline void addVisibleGroup(const String& group) {
+#ifdef DEBUG_ATTRIBUTES_MAP
+		info(true) << "Attempting to add Visible Experimental Group: " << group;
+#endif // DEBUG_ATTRIBUTES_MAP
+
 		if (visibleGroups.contains(group))
 			return;
 
 		visibleGroups.add(group);
+
+#ifdef DEBUG_ATTRIBUTES_MAP
+		info(true) << "Adding Visible Experimental Group: " << group << " with a new Total Groups of " << visibleGroups.size();
+#endif // DEBUG_ATTRIBUTES_MAP
+	}
+
+	inline void removeVisibleGroup(const String& group) {
+#ifdef DEBUG_ATTRIBUTES_MAP
+		info(true) << "Attempting to remove Visible Experimental Group: " << group;
+#endif // DEBUG_ATTRIBUTES_MAP
+
+		uint32 groupHash = group.hashCode();
+
+		for (int i = 0; i < visibleGroups.size(); ++i) {
+			uint32 visHash = visibleGroups.get(i).hashCode();
+
+			if (groupHash == visHash) {
+				visibleGroups.remove(i);
+				return;
+			}
+		}
 	}
 
 	inline bool hasExperimentalAttribute(const String& attribute) const {

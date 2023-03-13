@@ -11,8 +11,6 @@
 float AttributesMap::VALUENOTFOUND = -999999;
 const String AttributesMap::EMPTY;
 
-// #define DEBUG_ATTRIBUTES_MAP
-
 /*
 	The Attributes Map Constsist of the following:
 
@@ -29,7 +27,7 @@ const String AttributesMap::EMPTY;
 void AttributesMap::addExperimentalAttribute(const String& attribute, const String& group, const float min, const float max, const int precision, const bool filler, const int combine) {
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "AttributesMap::addExperimentalAttribute called for: " << attribute << " Group: " << group;
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	Locker lock(&mutex);
 
@@ -100,12 +98,6 @@ void AttributesMap::setHidden(const String& attribute) {
 		return;
 
 	values->setFiller(true);
-
-	String group;
-
-	if (visibleGroups.contains(attribute)) {
-		visibleGroups.drop(attribute);
-	}
 }
 
 void AttributesMap::unsetHidden(const String& attribute) {
@@ -160,7 +152,7 @@ float AttributesMap::getCurrentValue(const String& attribute) const {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << " AttributesMap::getCurrentValue called for " << attribute << " with a value of " << values->getValue();
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	return values->getValue();
 }
@@ -214,7 +206,7 @@ void AttributesMap::setCurrentPercentage(const String& attribute, float amount) 
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "---------- AttributesMap::setCurrentPercentage 1 for " << attribute << " setting amount: " << amount;
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	if (value == nullptr)
 		return;
@@ -226,13 +218,13 @@ void AttributesMap::setCurrentPercentage(const String& attribute, float amount) 
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "Current Percentage Set: " << amount << " With a max of " << max;
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	value->setPercentage(amount);
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "---------- END AttributesMap::setCurrentPercentage 1";
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 }
 
 void AttributesMap::setCurrentPercentage(const String& attribute, float amount, float max) {
@@ -240,7 +232,7 @@ void AttributesMap::setCurrentPercentage(const String& attribute, float amount, 
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "---------- AttributesMap::setCurrentPercentage 2 for " << attribute << " ----------";
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	Reference<Values*> value = attributeValues.get(attribute);
 
@@ -249,7 +241,7 @@ void AttributesMap::setCurrentPercentage(const String& attribute, float amount, 
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "setCurrentPercentage 2 for " << attribute << " setting Percentage: " << amount << " with a max percentage set: " << max;
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	if (amount > max)
 		amount = max;
@@ -259,7 +251,7 @@ void AttributesMap::setCurrentPercentage(const String& attribute, float amount, 
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "---------- END AttributesMap::setCurrentPercentage 2 ----------";
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 }
 
 float AttributesMap::getCurrentPercentage(const String& attribute) const {
@@ -285,7 +277,7 @@ float AttributesMap::getCurrentVisiblePercentage(const String group) const {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "---------- AttributesMap::getCurrentVisiblePercentage called for group: " << group << " with Attribute Size: " << attributes.size() << " ----------";
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	// shouldnt this show the avg so with 1 item who cares, but more than 1 we wanna should avg of all not the LAST one
 	for (int i = 0; i < attributes.size(); ++i) {
@@ -294,7 +286,7 @@ float AttributesMap::getCurrentVisiblePercentage(const String group) const {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 		info(true) << "getCurrentVisiblePercentage -- Checking attribute: " << attribute << " with group: " << atttributeGroup;
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 		if (group != atttributeGroup)
 			continue;
@@ -314,7 +306,7 @@ float AttributesMap::getCurrentVisiblePercentage(const String group) const {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "---------- END AttributesMap::getCurrentVisiblePercentage returning " << percentage << " ----------";
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	return percentage;
 }
@@ -340,7 +332,7 @@ float AttributesMap::getMaxPercentage(const String& attribute) const {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "----- AttributesMap::getMaxPercentage for " << attribute << " returning max percentage " << maxPercent;
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	return maxPercent;
 }
@@ -351,6 +343,10 @@ float AttributesMap::getMaxPercentage(const int i) const {
 	if (value == nullptr)
 		return VALUENOTFOUND;
 
+#ifdef DEBUG_ATTRIBUTES_MAP
+	info(true) << "----- AttributesMap::getMaxPercentage for " << attributeValues.elementAt(i).getKey() << " returning max percentage " << value->getMaxPercentage();
+#endif // DEBUG_ATTRIBUTES_MAP
+
 	return value->getMaxPercentage();
 }
 
@@ -360,7 +356,7 @@ float AttributesMap::getMaxVisiblePercentage(const int i) const {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "---------- AttributesMap::getMaxVisiblePercentage called for group: " << group << " with attribute value size: " << attributeValues.size() << " ----------";
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	for (int j = 0; j < attributeValues.size(); ++j) {
 		const Values* values = attributeValues.get(j);
@@ -375,7 +371,7 @@ float AttributesMap::getMaxVisiblePercentage(const int i) const {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "---------- END AttributesMap::getMaxVisiblePercentage returning: " << value << " ----------";
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	return value;
 }
@@ -388,7 +384,7 @@ float AttributesMap::getMinValue(const String& attribute) const {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << " AttributesMap::getMinValue called for " << attribute << " with a value of " << value->getMinValue();
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	return value->getMinValue();
 }
@@ -401,7 +397,7 @@ float AttributesMap::getMaxValue(const String& attribute) const {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << " AttributesMap::getMaxValue called for " << attribute << " with a value of " << value->getMaxValue();
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	return value->getMaxValue();
 }
@@ -416,7 +412,7 @@ void AttributesMap::setMinValue(const String& attribute, const float min) {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << " AttributesMap::setMaxValue for " << attribute << " setting a value of " << min;
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	value->setMinValue(min);
 }
@@ -431,7 +427,7 @@ void AttributesMap::setMaxValue(const String& attribute, const float max) {
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << " AttributesMap::setMaxValue for " << attribute << " setting a value of " << max;
-#endif
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	value->setMaxValue(max);
 }
