@@ -175,43 +175,43 @@ void ManufactureSchematicImplementation::sendMsco7(CreatureObject* player) {
 	// ************
 
 	/// Experimenting names
-	int titleCount = craftingValues->getTotalVisibleAttributeGroups();
+	int totalGroups = craftingValues->getTotalVisibleAttributeGroups();
 
-	mcso7->insertInt(titleCount);
-	mcso7->insertInt(titleCount);
+	mcso7->insertInt(totalGroups);
+	mcso7->insertInt(totalGroups);
 
-	for (int i = 0; i < titleCount; i++) {
-		String title = craftingValues->getVisibleAttributeGroup(i);
+	for (int i = 0; i < totalGroups; i++) {
+		String group = craftingValues->getVisibleAttributeGroup(i);
 
 		mcso7->insertAscii("crafting");
 		mcso7->insertInt(0);
-		mcso7->insertAscii(title);
+		mcso7->insertAscii(group);
 	}
 	// ************
 
 	/// Experimenting values
-	mcso7->insertInt(titleCount);
-	mcso7->insertInt(titleCount);
+	mcso7->insertInt(totalGroups);
+	mcso7->insertInt(totalGroups);
 
-	for (int i = 0; i < titleCount; i++) {
+	for (int i = 0; i < totalGroups; i++) {
 		String title = craftingValues->getVisibleAttributeGroup(i);
 		mcso7->insertFloat(craftingValues->getCurrentVisiblePercentage(title));
 	}
 	// ************
 
 	/// Useless values - always 0 Experiment offset
-	mcso7->insertInt(titleCount);
-	mcso7->insertInt(titleCount);
+	mcso7->insertInt(totalGroups);
+	mcso7->insertInt(totalGroups);
 
-	for (int i = 0; i < titleCount; i++)
+	for (int i = 0; i < totalGroups; i++)
 		mcso7->insertInt(0);
 	// ************
 
 	/// always 1 Max experimentation value
-	mcso7->insertInt(titleCount);
-	mcso7->insertInt(titleCount);
+	mcso7->insertInt(totalGroups);
+	mcso7->insertInt(totalGroups);
 
-	for (int i = 0; i < titleCount; i++)
+	for (int i = 0; i < totalGroups; i++)
 		mcso7->insertFloat(1);
 	// ************
 

@@ -109,6 +109,16 @@ public:
 		if (visibleGroups.contains(group))
 			return;
 
+		// Sort these alphabetically
+		for (int i = 0; i < visibleGroups.size(); ++i) {
+			const String currGroup = visibleGroups.get(i);
+
+			if (currGroup < group) {
+				visibleGroups.insertElementAt(group, i);
+				return;
+			}
+		}
+
 		visibleGroups.add(group);
 
 #ifdef DEBUG_ATTRIBUTES_MAP

@@ -35,18 +35,17 @@ public:
 
 	// update 8
 	void initialAssemblyUpdate(ManufactureSchematic* manufactureSchematic) {
-
 		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
-		startUpdate(8);
+		startUpdate(0x08);
 
-		int titleCount = craftingValues->getTotalVisibleAttributeGroups();
+		int totalGroups = craftingValues->getTotalVisibleAttributeGroups();
 		int counter = manufactureSchematic->getExperimentingCounter();
 
-		insertInt(titleCount);
-		insertInt(titleCount);
+		insertInt(totalGroups);
+		insertInt(totalGroups);
 
-		for (int i = 0; i < titleCount; i++) {
+		for (int i = 0; i < totalGroups; i++) {
 			String title = craftingValues->getVisibleAttributeGroup(i);
 
 			insertByte(1);
@@ -59,36 +58,36 @@ public:
 		// Initialize update 9************
 		startUpdate(9);
 
-		startList(titleCount, titleCount);  // titleCount, counter
+		startList(totalGroups, totalGroups);  // totalGroups, counter
 
-		for (int i = 0; i < titleCount; i++) {
+		for (int i = 0; i < totalGroups; i++) {
 			addListFloatElement(i, 0); //0
 		}
 		//!*********************************
 		// Initialize update 0A************
 		startUpdate(0x0A);
 
-		startList(titleCount, titleCount);
+		startList(totalGroups, totalGroups);
 
-		for (int i = 0; i < titleCount; i++) {
+		for (int i = 0; i < totalGroups; i++) {
 			addListFloatElement(i, 0);
 		}
 		//!*********************************
 		// Initialize update 0B************
 		startUpdate(0x0B);
 
-		startList(titleCount, titleCount);
+		startList(totalGroups, totalGroups);
 
-		for (int i = 0; i < titleCount; i++) {
+		for (int i = 0; i < totalGroups; i++) {
 			addListFloatElement(i, 0);
 		}
 		//!*********************************
 		// Initialize update 0C************
 		startUpdate(0x0C);
 
-		startList(titleCount, titleCount);
+		startList(totalGroups, totalGroups);
 
-		for (int i = 0; i < titleCount; i++) {
+		for (int i = 0; i < totalGroups; i++) {
 			addListFloatElement(i, 0);
 		}
 		//!**********************************
@@ -97,37 +96,34 @@ public:
 
 	// This sends the experimental values shown in the Screen after hitting assemble
 	void update9(ManufactureSchematic* manufactureSchematic, bool initial) {
-
 		int count;
 
-		startUpdate(9);
+		startUpdate(0x09);
 
 		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
-		int titleCount = craftingValues->getTotalVisibleAttributeGroups();
+		int totalGroups = craftingValues->getTotalVisibleAttributeGroups();
 
 		if (initial) {
-			manufactureSchematic->setExperimentingCounter(titleCount * 2);
-			manufactureSchematic->setExperimentingCounter(titleCount * 3);
+			manufactureSchematic->setExperimentingCounter(totalGroups * 2);
+			manufactureSchematic->setExperimentingCounter(totalGroups * 3);
 		}
-
-//System::out << "Visible: " << titleCount << "  Count: " << count << endl;
 
 		count = manufactureSchematic->getExperimentingCounterPrevious();
 
-		startList(titleCount, count);
+		//manufactureSchematic->info(true) << "Visible Groups: " << totalGroups << " Current Count: " << count;
 
-		for (int i = 0; i < titleCount; i++) {
+		startList(totalGroups, count);
 
-			String title = craftingValues->getVisibleAttributeGroup(i);
+		for (int i = 0; i < totalGroups; i++) {
+			String group = craftingValues->getVisibleAttributeGroup(i);
 
-			float value = craftingValues->getCurrentVisiblePercentage(title);
+			float value = craftingValues->getCurrentVisiblePercentage(group);
 
 			if(value > 0 && value < .01)
 				value = .01f;
 
 			removeListFloatElement(i, value);
-
 		}
 	}
 
@@ -137,11 +133,11 @@ public:
 
 		startUpdate(0x0A);
 
-		int titleCount = craftingValues->getTotalVisibleAttributeGroups();
+		int totalGroups = craftingValues->getTotalVisibleAttributeGroups();
 
-		startList(titleCount, titleCount * 2);
+		startList(totalGroups, totalGroups * 2);
 
-		for (int i = 0; i < titleCount; i++) {
+		for (int i = 0; i < totalGroups; i++) {
 			removeListFloatElement(i, 1.0f);
 		}
 	}
@@ -152,11 +148,11 @@ public:
 
 		startUpdate(0x0B);
 
-		int titleCount = craftingValues->getTotalVisibleAttributeGroups();
+		int totalGroups = craftingValues->getTotalVisibleAttributeGroups();
 
-		startList(titleCount, titleCount * 2);
+		startList(totalGroups, totalGroups * 2);
 
-		for (int i = 0; i < titleCount; i++) {
+		for (int i = 0; i < totalGroups; i++) {
 			removeListFloatElement(i, 1.0f);
 		}
 	}
@@ -167,18 +163,17 @@ public:
 
 		startUpdate(0x0C);
 
-		int titleCount = craftingValues->getTotalVisibleAttributeGroups();
+		int totalGroups = craftingValues->getTotalVisibleAttributeGroups();
 
-		startList(titleCount, titleCount * 2);
+		startList(totalGroups, totalGroups * 2);
 
 		float value;
 
-		for (int i = 0; i < titleCount; i++) {
+		for (int i = 0; i < totalGroups; i++) {
 
 			value = craftingValues->getMaxVisiblePercentage(i);
 
 			removeListFloatElement(i, value);
-
 		}
 	}
 
