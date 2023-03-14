@@ -153,12 +153,10 @@ String CraftingManagerImplementation::generateSerial() {
 
 	ss << ")";
 
-
 	return ss.toString();
 }
 
-void CraftingManagerImplementation::experimentRow(ManufactureSchematic* schematic, CraftingValues* craftingValues,
-		int rowEffected, int pointsAttempted, float failure, int experimentationResult) {
+void CraftingManagerImplementation::experimentRow(ManufactureSchematic* schematic, CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult) {
 	int labratory = schematic->getLabratory();
 	SharedLabratory* lab = labs.get(labratory);
 	lab->experimentRow(craftingValues,rowEffected,pointsAttempted,failure,experimentationResult);
@@ -167,7 +165,7 @@ void CraftingManagerImplementation::experimentRow(ManufactureSchematic* schemati
 void CraftingManagerImplementation::configureLabratories() {
 	ResourceLabratory* resLab = new ResourceLabratory();
 	resLab->initialize(zoneServer.get());
-	
+
 	labs.put(static_cast<int>(DraftSchematicObjectTemplate::RESOURCE_LAB),resLab); //RESOURCE_LAB
 
 	GeneticLabratory* genLab = new GeneticLabratory();
@@ -177,8 +175,8 @@ void CraftingManagerImplementation::configureLabratories() {
 	DroidLabratory* droidLab = new DroidLabratory();
 	droidLab->initialize(zoneServer.get());
 	labs.put(static_cast<int>(DraftSchematicObjectTemplate::DROID_LAB), droidLab); //DROID_LAB
-
 }
+
 void CraftingManagerImplementation::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
 	if(manufactureSchematic == nullptr || manufactureSchematic->getDraftSchematic() == nullptr)
 		return;

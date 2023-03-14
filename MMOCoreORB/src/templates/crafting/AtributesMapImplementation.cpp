@@ -352,20 +352,33 @@ float AttributesMap::getMaxPercentage(const int i) const {
 
 float AttributesMap::getMaxVisiblePercentage(const int i) const {
 	float value = 0;
-	String group = getVisibleAttributeGroup(i);
+	const String group = visibleGroups.get(i);
 
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---------- AttributesMap::getMaxVisiblePercentage called for group: " << group << " with attribute value size: " << attributeValues.size() << " ----------";
+	info(true) << "---------- AttributesMap::getMaxVisiblePercentage called for group: " << group << " with attribute value size: " << visibleGroups.size() << " ----------";
 #endif // DEBUG_ATTRIBUTES_MAP
 
-	for (int j = 0; j < attributeValues.size(); ++j) {
-		const Values* values = attributeValues.get(j);
+	for (int j = 0; j < attributeGroups.size(); ++j) {
+		const String attribute = attributeGroups.elementAt(j).getKey();
+		const String attGroup = attributeGroups.elementAt(j).getValue();
 
-		if (values == nullptr || values->isFiller())
+		if (group != attGroup)
 			continue;
 
-		if ((values->getMinValue() != values->getMaxValue()) && (values->getMaxPercentage() <= 1.0f) && (values->getMaxPercentage() > value)) {
-			value = values->getMaxPercentage();
+		for (int k = 0; k < attributeValues.size(); ++k) {
+			if (attributeValues.elementAt(k).getKey() != attribute)
+				continue;
+
+			const Values* values = attributeValues.get(j);
+
+			if (values == nullptr || values->isFiller())
+				continue;
+
+			float checkVal = values->getMaxPercentage();
+
+			if ((values->getMinValue() != values->getMaxValue()) && (checkVal <= 1.0f) && (checkVal > value)) {
+				value = checkVal;
+			}
 		}
 	}
 
