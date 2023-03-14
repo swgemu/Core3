@@ -146,7 +146,6 @@ void ManufactureSchematicImplementation::synchronizedUIListen(CreatureObject* pl
 }
 
 void ManufactureSchematicImplementation::sendMsco7(CreatureObject* player) {
-
 	ManufactureSchematicObjectMessage7* mcso7 = new ManufactureSchematicObjectMessage7(_this.getReferenceUnsafeStaticCast());
 
 	/// Slot names
@@ -499,7 +498,6 @@ void ManufactureSchematicImplementation::cleanupIngredientSlots(CreatureObject* 
 }
 
 bool ManufactureSchematicImplementation::isReadyForAssembly() {
-
 	if (ingredientSlots.isEmpty() || !initialized)
 		return false;
 

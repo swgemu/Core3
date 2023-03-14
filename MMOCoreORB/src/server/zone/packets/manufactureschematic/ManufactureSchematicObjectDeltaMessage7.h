@@ -8,10 +8,10 @@
 #include "server/zone/packets/DeltaMessage.h"
 #include "templates/params/RangedIntCustomizationVariable.h"
 
-class ManufactureSchematicObjectDeltaMessage7 : public DeltaMessage {
+class ManufactureSchematicObjectDeltaMessage7 : public DeltaMessage, public Logger {
 public:
-	ManufactureSchematicObjectDeltaMessage7(SceneObject* schematic) :
-		DeltaMessage(schematic->getObjectID(), 0x4D53434F, 7) {
+	ManufactureSchematicObjectDeltaMessage7(SceneObject* schematic) : DeltaMessage(schematic->getObjectID(), 0x4D53434F, 7) {
+		setLoggingName("ManufactureSchematicObjectDeltaMessage7");
 	}
 
 	void updateForAssembly(ManufactureSchematic* manufactureSchematic, float failureRate){
@@ -24,8 +24,7 @@ public:
 		update13(manufactureSchematic);
 	}
 
-	void updateCustomizationOptions(VectorMap<String, Reference<CustomizationVariable*> >* vars,
-			int custpoints){
+	void updateCustomizationOptions(VectorMap<String, Reference<CustomizationVariable*> >* vars, int custpoints){
 		update0D(vars);
 		update0E(vars);
 		update0F(vars);
@@ -36,6 +35,8 @@ public:
 	// update 8
 	void initialAssemblyUpdate(ManufactureSchematic* manufactureSchematic) {
 		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
+
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7 - initialAssemblyUpdate Update 8";
 
 		startUpdate(0x08);
 
@@ -56,13 +57,14 @@ public:
 		}
 
 		// Initialize update 9************
-		startUpdate(9);
+		startUpdate(0x09);
 
 		startList(totalGroups, totalGroups);  // totalGroups, counter
 
 		for (int i = 0; i < totalGroups; i++) {
 			addListFloatElement(i, 0); //0
 		}
+
 		//!*********************************
 		// Initialize update 0A************
 		startUpdate(0x0A);
@@ -72,6 +74,7 @@ public:
 		for (int i = 0; i < totalGroups; i++) {
 			addListFloatElement(i, 0);
 		}
+
 		//!*********************************
 		// Initialize update 0B************
 		startUpdate(0x0B);
@@ -81,6 +84,7 @@ public:
 		for (int i = 0; i < totalGroups; i++) {
 			addListFloatElement(i, 0);
 		}
+
 		//!*********************************
 		// Initialize update 0C************
 		startUpdate(0x0C);
@@ -92,10 +96,14 @@ public:
 		}
 		//!**********************************
 
+
+		// info(true) << "END ManufactureSchematicObjectDeltaMessage7 - initialAssemblyUpdate Update 8";
 	}
 
 	// This sends the experimental values shown in the Screen after hitting assemble
 	void update9(ManufactureSchematic* manufactureSchematic, bool initial) {
+		//info(true) << "ManufactureSchematicObjectDeltaMessage7 - update9";
+
 		int count;
 
 		startUpdate(0x09);
@@ -111,7 +119,7 @@ public:
 
 		count = manufactureSchematic->getExperimentingCounterPrevious();
 
-		//manufactureSchematic->info(true) << "Visible Groups: " << totalGroups << " Current Count: " << count;
+		// info(true) << "Visible Groups: " << totalGroups << " Current Count: " << count;
 
 		startList(totalGroups, count);
 
@@ -128,6 +136,7 @@ public:
 	}
 
 	void update0A(ManufactureSchematic* manufactureSchematic) {
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7 - Update 10 (0A)";
 
 		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
@@ -141,8 +150,10 @@ public:
 			removeListFloatElement(i, 1.0f);
 		}
 	}
+
 	// I think this is usually 1.0
 	void update0B(ManufactureSchematic* manufactureSchematic) {
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7 - Update 11 (0B)";
 
 		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
@@ -158,6 +169,7 @@ public:
 	}
 	// This is the MAX experimental value.  How many bars
 	void update0C(ManufactureSchematic* manufactureSchematic) {
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7 - Update 12 (0C)";
 
 		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
@@ -178,6 +190,7 @@ public:
 	}
 
 	void update0D(VectorMap<String, Reference<CustomizationVariable*> >* vars) {
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7 - Update 13 (0D)";
 
 		startUpdate(0x0D);
 
@@ -197,6 +210,7 @@ public:
 
 	// Starting COlor chooser position
 	void update0E(VectorMap<String, Reference<CustomizationVariable*> >* vars) {
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7 - Update 14 (0E)";
 
 		startUpdate(0x0E);
 
@@ -215,6 +229,7 @@ public:
 	}
 
 	void update0F(VectorMap<String, Reference<CustomizationVariable*> >* vars) {
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7 - Update 15 (0F)";
 
 		startUpdate(0x0F);
 
@@ -229,6 +244,7 @@ public:
 
 	// Number of palette colors
 	void update10(VectorMap<String, Reference<CustomizationVariable*> >* vars, int custpoints) {
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7 - Update 16 (10)";
 
 		startUpdate(0x10);
 
@@ -242,17 +258,21 @@ public:
 	}
 
 	void update11() {
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7::update11";
 
 		startUpdate(0x11);
 		insertByte(1);
 	}
 
 	void update12(float failureRate){
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7::update12";
+
 		startUpdate(0x12);
 		insertFloat(failureRate);
 	}
 
 	void update13(ManufactureSchematic* manufactureSchematic){
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7::update13";
 
 		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
 		if(draftSchematic == nullptr)
@@ -274,6 +294,7 @@ public:
 	}
 
 	void update14() {
+		// info(true) << "ManufactureSchematicObjectDeltaMessage7::update14";
 
 		startUpdate(0x14);
 		insertByte(1);

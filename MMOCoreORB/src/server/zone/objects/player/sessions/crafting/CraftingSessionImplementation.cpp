@@ -649,6 +649,8 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 		return;
 	}
 
+	// info(true) << "CraftingSessionImplementation::nextCraftingStage -- Client Counter: " << clientCounter << " State: " << state;
+
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<ManufactureSchematic*> manufactureSchematic = this->manufactureSchematic.get();
 	ManagedReference<TangibleObject*> prototype = this->prototype.get();
@@ -665,7 +667,6 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 
 	// Make sure all the require resources are there, if not, return them to inventory and close tool
 	if (!manufactureSchematic->isAssembled() && !manufactureSchematic->isReadyForAssembly()) {
-
 		sendSlotMessage(clientCounter, IngredientSlot::PARTIALASSEMBLE);
 		return;
 	}
@@ -683,31 +684,27 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 	manufactureSchematic->setAssembled();
 
 	if (state == 2) {
-
 		initialAssembly(clientCounter);
 
 	} else if (state == 3) {
-
 		finishAssembly(clientCounter);
 
 	} else if (state == 4) {
-
 		finishStage1(clientCounter);
 		finishStage2(clientCounter);
 		state = 6;
 
 	} else if (state == 5) {
-
 		finishStage1(clientCounter);
 
 	} else if (state == 6) {
-
 		finishStage2(clientCounter);
 	}
 }
 
 void CraftingSessionImplementation::initialAssembly(int clientCounter) {
-	// info(true) << "========== CraftingSessionImplementation::initialAssembly ===========";
+	//info(true) << "========== CraftingSessionImplementation::initialAssembly ===========";
+	//info(true) << "Client Counter: " << clientCounter;
 
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
@@ -810,10 +807,11 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	if (craftingStation != nullptr && (craftingValues->getTotalVisibleAttributeGroups() > 0 || manufactureSchematic->allowFactoryRun()))
 		// Assemble with Experimenting
 		state = 3;
-
 	else
 		// Assemble without Experimenting
 		state = 4;
+
+	//info(true) << "State = " << state << " Total Experimentation Points = " << experimentationPointsTotal;
 
 	// Start DPLAY9 ***********************************************************
 	// Updates the stage of crafting, sets the number of experimentation points
@@ -841,8 +839,8 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	addWeaponDots();
 
 	// Set default customization
-	SharedTangibleObjectTemplate* templateData =
-			cast<SharedTangibleObjectTemplate*>(prototype->getObjectTemplate());
+	SharedTangibleObjectTemplate* templateData = cast<SharedTangibleObjectTemplate*>(prototype->getObjectTemplate());
+
 	if (templateData == nullptr) {
 		error("No template for: " + String::valueOf(prototype->getServerObjectCRC()));
 		return;
@@ -861,8 +859,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 	// Start DMSCO3 ***********************************************************
 	// Sends the updated values to the crafting screen
-	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
-			new ManufactureSchematicObjectDeltaMessage3(manufactureSchematic);
+	ManufactureSchematicObjectDeltaMessage3* dMsco3 = new ManufactureSchematicObjectDeltaMessage3(manufactureSchematic);
 	dMsco3->updateCraftingValues(manufactureSchematic);
 	dMsco3->updateComplexity(manufactureSchematic->getComplexity());
 
@@ -873,10 +870,10 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 	// Start DMSCO7 ***********************************************************
 	// Sends the experimental properties and experimental percentages
-	ManufactureSchematicObjectDeltaMessage7* dMsco7 =
-			new ManufactureSchematicObjectDeltaMessage7(manufactureSchematic);
+	ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(manufactureSchematic);
 
 	dMsco7->updateForAssembly(manufactureSchematic, experimentalFailureRate);
+
 	if (custpoints > 0)
 		dMsco7->updateCustomizationOptions(&variables, custpoints);
 
@@ -948,8 +945,7 @@ void CraftingSessionImplementation::finishAssembly(int clientCounter) {
 
 	// Start Dplay9 **************************************
 	// Move crafting to State 4
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
-			crafter->getPlayerObject());
+	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(crafter->getPlayerObject());
 	dplay9->setCraftingState(4);
 	state = 4;
 	dplay9->close();
@@ -958,8 +954,7 @@ void CraftingSessionImplementation::finishAssembly(int clientCounter) {
 	// End DPLAY9
 
 	// Start Object Controller **************************************
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			crafter->getObjectID(), 0x1B, 0x01BE);
+	ObjectControllerMessage* objMsg = new ObjectControllerMessage(crafter->getObjectID(), 0x1B, 0x01BE);
 	objMsg->insertInt(0x109);
 	objMsg->insertInt(4);
 
@@ -973,6 +968,8 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 	if (!validateSession()) {
 		return;
 	}
+
+	//info(true) << "CraftingSessionImplementation::experiment - Rows Attempted: " << rowsAttempted << " Experimental Group: " << expAttempt << " Client Counter: " << clientCounter;
 
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
@@ -1241,16 +1238,14 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 void CraftingSessionImplementation::finishStage1(int clientCounter) {
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
-			crafter->getPlayerObject());
+	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(crafter->getPlayerObject());
 	dplay9->setCraftingState(state);
 	dplay9->close();
 
 	crafter->sendMessage(dplay9);
 
 	//Object Controller
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			crafter->getObjectID(), 0x1B, 0x01BE);
+	ObjectControllerMessage* objMsg = new ObjectControllerMessage(crafter->getObjectID(), 0x1B, 0x01BE);
 	objMsg->insertInt(0x109);
 	objMsg->insertInt(4);
 	objMsg->insertByte(clientCounter);
@@ -1263,8 +1258,7 @@ void CraftingSessionImplementation::finishStage1(int clientCounter) {
 void CraftingSessionImplementation::finishStage2(int clientCounter) {
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
-			crafter->getPlayerObject());
+	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(crafter->getPlayerObject());
 	dplay9->insertShort(5);
 	dplay9->insertInt(0xFFFFFFFF);
 	dplay9->setCraftingState(state);
@@ -1273,8 +1267,7 @@ void CraftingSessionImplementation::finishStage2(int clientCounter) {
 	crafter->sendMessage(dplay9);
 
 	//Object Controller
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			crafter->getObjectID(), 0x1B, 0x010C);
+	ObjectControllerMessage* objMsg = new ObjectControllerMessage(crafter->getObjectID(), 0x1B, 0x010C);
 	objMsg->insertInt(0x10A);
 	objMsg->insertInt(1);
 	objMsg->insertByte(clientCounter);
