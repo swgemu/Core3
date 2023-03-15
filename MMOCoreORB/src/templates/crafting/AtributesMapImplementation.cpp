@@ -53,7 +53,7 @@ void AttributesMap::addExperimentalAttribute(const String& attribute, const Stri
 		attValues->setCombineType(combine);
 	}
 
-	if (!filler) {
+	if (!filler && min != max) {
 		addVisibleGroup(group);
 	}
 }

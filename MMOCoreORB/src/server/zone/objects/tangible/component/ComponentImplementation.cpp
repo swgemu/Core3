@@ -25,20 +25,19 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 	alm->insertAttribute("crafter", craftersName);
 	alm->insertAttribute("serial_number", objectSerial);
 
-	String attribute, listedName;
-
-	float value;
-	double power;
-	int precision;
-	bool hidden;
-
 	for (int i = 0; i < keyList.size(); ++i) {
-		attribute = keyList.get(i);
-		value = attributeMap.get(attribute);
-		precision = precisionMap.get(attribute);
-		hidden = hiddenMap.get(attribute);
+		String attribute = keyList.get(i);
+		String listedName = attribute;
+
+		float value = attributeMap.get(attribute);
+		int precision = precisionMap.get(attribute);
+		bool hidden = hiddenMap.get(attribute);
 
 		// info(true) << "Adding #" << i << " Attribute: " << attribute << " with a value of " << value;
+
+		// Handle of the Geonosian cubes that list attributes for Weapons and Armor
+		if ((getGameObjectType() == SceneObjectType::ARMORCOMPONENT) && (attribute == "attackactioncost" || attribute == "attackhealthcost" || attribute == "attackmindcost" || attribute == "maxdamge" || attribute == "maxdamage"))
+			continue;
 
 		if (precision >= 0 && !hidden) {
 			uint32 attributeHash = attribute.hashCode();

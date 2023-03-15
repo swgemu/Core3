@@ -39,7 +39,7 @@ void ResourceLabratory::initialize(ZoneServer* server) {
 void ResourceLabratory::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
 #ifdef DEBUG_RESOURCE_LAB
 	info(true) << "---------- ResourceLabratory::setInitialCraftingValues --------";
-#endif
+#endif // DEBUG_RESOURCE_LAB
 
 	if (manufactureSchematic == nullptr || manufactureSchematic->getDraftSchematic() == nullptr)
 		return;
@@ -70,7 +70,7 @@ void ResourceLabratory::setInitialCraftingValues(TangibleObject* prototype, Manu
 
 #ifdef DEBUG_RESOURCE_LAB
 		info(true) << "setInitialCraftingValues -- adding attribute " << attribute << " with the group " << group;
-#endif
+#endif // DEBUG_RESOURCE_LAB
 		weightedSum = 0;
 		craftingValues->addExperimentalAttribute(attribute, group, resourceWeight->getMinValue(), resourceWeight->getMaxValue(), resourceWeight->getPrecision(), resourceWeight->isFiller(), resourceWeight->getCombineType());
 
@@ -103,7 +103,7 @@ void ResourceLabratory::setInitialCraftingValues(TangibleObject* prototype, Manu
 	if (applyComponentStats(prototype, manufactureSchematic)) {
 #ifdef DEBUG_RESOURCE_LAB
 		info(true) << "Apply Component Stats is TRUE --  recalculateValues AGAIN";
-#endif
+#endif // DEBUG_RESOURCE_LAB
 		craftingValues->recalculateValues(true);
 	}
 
@@ -114,7 +114,7 @@ void ResourceLabratory::setInitialCraftingValues(TangibleObject* prototype, Manu
 
 #ifdef DEBUG_RESOURCE_LAB
 	info(true) << "---------- END ResourceLabratory::setInitialCraftingValues --------";
-#endif
+#endif // DEBUG_RESOURCE_LAB
 }
 
 void ResourceLabratory::experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult){
@@ -122,7 +122,7 @@ void ResourceLabratory::experimentRow(CraftingValues* craftingValues, int rowEff
 
 #ifdef DEBUG_RESOURCE_LAB
 	info(true) << "---------- ResourceLabratory::experimentRow for Row #" << rowEffected << " with Experimented Group Name " << experimentedGroup << " with a total Experimental attributes " << craftingValues->getTotalExperimentalAttributes() << " using " << pointsAttempted << " points. -----------";
-#endif
+#endif // DEBUG_RESOURCE_LAB
 
 	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
 		String attribute = craftingValues->getAttribute(i);
@@ -130,7 +130,7 @@ void ResourceLabratory::experimentRow(CraftingValues* craftingValues, int rowEff
 
 #ifdef DEBUG_RESOURCE_LAB
 		info(true) << "Checking #" << i << " Attribute: " << attribute << " with Group: " << group;
-#endif
+#endif // DEBUG_RESOURCE_LAB
 
 		if (group != experimentedGroup)
 			continue;
@@ -148,13 +148,13 @@ void ResourceLabratory::experimentRow(CraftingValues* craftingValues, int rowEff
 
 #ifdef DEBUG_RESOURCE_LAB
 		info(true) << "Experimenting on " << attribute << " with a modifier " << modifier << " and new calculated value of " << newValue << " and max percentage of " << maxPercent;
-#endif
+#endif // DEBUG_RESOURCE_LAB
 		craftingValues->setCurrentPercentage(attribute, newValue);
 	}
 
 #ifdef DEBUG_RESOURCE_LAB
 	info(true) << "---------- END ResourceLabratory::experimentRow ----------";
-#endif
+#endif // DEBUG_RESOURCE_LAB
 }
 
 int ResourceLabratory::getCreationCount(ManufactureSchematic* manufactureSchematic) {
@@ -164,7 +164,7 @@ int ResourceLabratory::getCreationCount(ManufactureSchematic* manufactureSchemat
 bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic) {
 #ifdef DEBUG_RESOURCE_LAB
 	info(true) << "----- ResourceLabratory::applyComponentStats called ------";
-#endif
+#endif // DEBUG_RESOURCE_LAB
 
 	if (manufactureSchematic == nullptr || manufactureSchematic->getDraftSchematic() == nullptr)
 		return false;
@@ -184,14 +184,14 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
 		info(true) << "Schematic Attribute #" << i << " - " << craftingValues->getAttribute(i);
 	}
-#endif
+#endif // DEBUG_RESOURCE_LAB
 
 	bool isYellow = false;
 
 	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
 #ifdef DEBUG_RESOURCE_LAB
 		info(true) << "applyComponentStats -- Component #" << i;
-#endif
+#endif // DEBUG_RESOURCE_LAB
 
 		Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getSlot(i);
 		Reference<DraftSlot* > draftSlot = draftSchematic->getDraftSlot(i);
@@ -255,27 +255,12 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 
 #ifdef DEBUG_RESOURCE_LAB
 				info(true) << "Component Attribute: " << attribute;
-#endif
-
-				bool contains = false;
-
-				for (int k = 0; k < craftingValues->getTotalExperimentalAttributes(); ++k) {
-					String compAtt = craftingValues->getAttribute(k);
-
-#ifdef DEBUG_RESOURCE_LAB
-					info(true) << "Checking #" << k << " Name: " << compAtt;
-#endif
-
-					if (compAtt == attribute) {
-						contains = true;
-						break;
-					}
-				}
+#endif // DEBUG_RESOURCE_LAB
 
 				if (craftingValues->hasExperimentalAttribute(attribute)) {
 #ifdef DEBUG_RESOURCE_LAB
 					info(true) << "Crafting values contains attribute: " << attribute << " updating values and percentages.";
-#endif
+#endif // DEBUG_RESOURCE_LAB
 
 					max = craftingValues->getMaxValue(attribute);
 					min = craftingValues->getMinValue(attribute);
@@ -334,12 +319,20 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 				} else {
 #ifdef DEBUG_RESOURCE_LAB
 					info(true) << "Crafting values DOES NOT contain attribute: " << attribute << " addingExperimentalAttribute.";
-#endif
+#endif // DEBUG_RESOURCE_LAB
 					currentvalue = component->getAttributeValue(attribute);
 					precision = component->getAttributePrecision(attribute);
 					group = component->getAttributeGroup(attribute);
+					hidden = component->getAttributeHidden(attribute);
 
-					craftingValues->addExperimentalAttribute(attribute, group, currentvalue, currentvalue, precision, component->getAttributeHidden(attribute), AttributesMap::LINEARCOMBINE);
+#ifdef DEBUG_RESOURCE_LAB
+					if (hidden)
+						info(true) << "Attribute: " << attribute << " is hidden.";
+					else
+						info(true) << "Attribute: " << attribute << " is NOT hidden.";
+#endif // DEBUG_RESOURCE_LAB
+
+					craftingValues->addExperimentalAttribute(attribute, group, currentvalue, currentvalue, precision, hidden, AttributesMap::LINEARCOMBINE);
 					craftingValues->setCurrentPercentage(attribute, 0);
 					craftingValues->setMaxPercentage(attribute, 0);
 					craftingValues->setCurrentValue(attribute, currentvalue);
