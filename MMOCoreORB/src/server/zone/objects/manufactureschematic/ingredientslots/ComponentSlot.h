@@ -9,16 +9,17 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 
-class ComponentSlot: public IngredientSlot {
+#define DEBUG_COMPONENT_SLOT
 
+class ComponentSlot: public IngredientSlot {
 	/// Indexed by <object, parent>
 	Vector<ManagedReference<TangibleObject*> > contents;
-
 
 public:
 	ComponentSlot() : IngredientSlot() {
 
 		clientSlotType = 2;
+		setLoggingName("ComponentSlot");
 	}
 
 	ComponentSlot(const ComponentSlot& slot) : Object(), IngredientSlot(slot) {
@@ -37,9 +38,12 @@ public:
 	}
 
 	bool add(CreatureObject* player, SceneObject* satchel, ManagedReference<TangibleObject*> incomingTano) {
-
 		int currentQuantity = getSlotQuantity();
 		FactoryCrate* crate = nullptr;
+
+#ifdef DEBUG_COMPONENT_SLOT
+		info(true) << "add component with required quantity: " << requiredQuantity << " and current quantity: " << currentQuantity << " Content Type: " << contentType;
+#endif // DEBUG_COMPONENT_SLOT
 
 		/// If Full, don't add
 		if (currentQuantity >= requiredQuantity)
@@ -50,7 +54,6 @@ public:
 
 		/// Get prototype's template for check
 		if (incomingTano->isFactoryCrate()) {
-
 			crate = cast<FactoryCrate*>(incomingTano.get());
 
 			TangibleObject* prototype = crate->getPrototype();
@@ -72,104 +75,142 @@ public:
 		if (requiresIdentical() && !contents.isEmpty()) {
 			TangibleObject* tano = contents.elementAt(0);
 
-			if(tano == nullptr) {
+			if (tano == nullptr) {
 				error("Null items in contents when checking serial number");
 				return false;
 			}
 
-			if (crate != nullptr && crate->getPrototype()->getSerialNumber() != tano->getSerialNumber()) {
+			String tanoSerial = tano->getSerialNumber();
+
+			if (crate != nullptr && crate->getPrototype()->getSerialNumber() != tanoSerial) {
 				return false;
 			} else {
-
-				if (incomingTano->getSerialNumber() != tano->getSerialNumber())
+				if (incomingTano->getSerialNumber() != tanoSerial)
 					return false;
 			}
 		}
 
-		/// How much do we need
-		int slotNeeds = requiredQuantity - currentQuantity;
+		/// Total needed to fill slot
+		int totalNeeded = requiredQuantity - currentQuantity;
+		Vector<ManagedReference<TangibleObject*> > itemsForSlot;
 
 		/// Extract tano from crate and set it to the incoming object
 		if (crate != nullptr) {
+			// calculate total available. This will handle items like grenades that have a use count. Some items have 0 use count, so default to 1.
+			int prototypeUses = crate->getPrototypeUseCount();
 
-			if (crate->getUseCount() >= slotNeeds)
-				incomingTano = crate->extractObject(slotNeeds);
-			else
-				incomingTano = crate->extractObject(crate->getUseCount());
+			if (prototypeUses < 1)
+				prototypeUses = 1;
+
+			int amountAvailable = crate->getUseCount() * prototypeUses;
+			int amount = ceil(totalNeeded / prototypeUses);
+			int crateSize = crate->getUseCount();
+
+			if (amount > crateSize)
+				amount = crateSize;
+
+#ifdef DEBUG_COMPONENT_SLOT
+			info(true) << "Gross Total available = " << amountAvailable << " Amount needed from crate = " << amount << " Crate Size = " << crateSize;
+#endif // DEBUG_COMPONENT_SLOT
+
+			// Extract the max amount needed from the crate to fulfill the component slot.
+			for (int i = 0; i < amount; ++i) {
+				ManagedReference<TangibleObject*> extractedProto = crate->extractObject();
+
+				if (extractedProto == nullptr)
+					continue;
+
+#ifdef DEBUG_COMPONENT_SLOT
+				info(true) << "Prototype added to itemsForSlot vector #" << i;
+#endif // DEBUG_COMPONENT_SLOT
+
+				itemsForSlot.add(extractedProto.get());
+			}
+		// Single item for slot
+		} else if (incomingTano != nullptr) {
+			itemsForSlot.add(incomingTano);
 		}
 
-		if (incomingTano == nullptr) {
-			error("Incoming object is nullptr");
+		if (itemsForSlot.size() <= 0) {
+			error() << "No components added to ingredient slot. itemsToAdd.size() <= 0";
 			return false;
 		}
 
-		incomingTano->sendAttributeListTo(player);
-
 		ObjectManager* objectManager = ObjectManager::instance();
-		ManagedReference<TangibleObject*> itemToUse = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
-		Locker ilocker(itemToUse);
 
-		itemToUse->setParent(nullptr);
+#ifdef DEBUG_COMPONENT_SLOT
+		info(true) << "Items Vector Size = " << itemsForSlot.size();
+#endif // DEBUG_COMPONENT_SLOT
 
-		if (itemToUse->hasAntiDecayKit()) {
-			itemToUse->removeAntiDecayKit();
-		}
+		// Place items in component slot
+		while (itemsForSlot.size() > 0) {
+			ManagedReference<TangibleObject*> component = itemsForSlot.remove(0);
 
-		if (incomingTano->getUseCount() > slotNeeds) {
-			incomingTano->decreaseUseCount(slotNeeds);
-			itemToUse->setUseCount((slotNeeds > 1 ? slotNeeds : 0), false);
-		} else {
-			Locker tLocker(incomingTano);
-			incomingTano->destroyObjectFromWorld(true);
-			incomingTano->destroyObjectFromDatabase(true);
-		}
+			if (component == nullptr)
+				continue;
 
-		itemToUse->sendTo(player, true); // Without this, the new object does not appear in the crafting slot
-		itemToUse->sendAttributeListTo(player);
+			Locker compLock(component);
 
-		ilocker.release();
-
-		Vector<ManagedReference<TangibleObject*> > itemsToAdd;
-
-		itemsToAdd.add(itemToUse);
-		while(itemToUse->getUseCount() > 1) {
-
-			ManagedReference<TangibleObject*> newTano = cast<TangibleObject*>( objectManager->cloneObject(itemToUse));
-
-			Locker tlocker(newTano);
-
-			if (newTano->hasAntiDecayKit()) {
-				newTano->removeAntiDecayKit();
+			// Check for ADK's again, just in case
+			if (component->hasAntiDecayKit()) {
+				component->removeAntiDecayKit();
 			}
 
-			newTano->setParent(nullptr);
-			newTano->setUseCount(0, false);
-			newTano->sendTo(player, true); // Without this, the new object does not appear in the crafting slot
-			itemsToAdd.add(newTano);
+			// Re-check use count here incase a partial is used
+			int compUses = (component->getUseCount() < 1) ? 1 : component->getUseCount();
 
-			tlocker.release();
+#ifdef DEBUG_COMPONENT_SLOT
+			info(true) << "Items for slot item " << component->getDisplayedName() << " Use Count: " << compUses;
+#endif // DEBUG_COMPONENT_SLOT
 
-			Locker itemToUseLocker(itemToUse);
+			// Account for items that have multiple uses -- Example: grenades. Always leave 1 use, for the original component
+			while (compUses > 1 && objectManager != nullptr) {
+				ManagedReference<TangibleObject*> compClone = cast<TangibleObject*>(objectManager->cloneObject(component));
 
-			itemToUse->decreaseUseCount();
-		}
+				if (compClone != nullptr) {
+					Locker cloneLock(compClone);
 
-		while(itemsToAdd.size() > 0) {
-			ManagedReference<TangibleObject*> tano = itemsToAdd.remove(0);
-			if(!satchel->transferObject(tano, -1, true)) {
+					compClone->setParent(nullptr);
+					compClone->setUseCount(1, false);
 
-				error("cant transfer crafting component Has Items: " + String::valueOf(satchel->getContainerObjectsSize()));
-				return false;
+					if (compClone->hasAntiDecayKit()) {
+						compClone->removeAntiDecayKit();
+					}
+
+					if (satchel->transferObject(compClone, -1, true)) {
+						contents.add(compClone);
+						compClone->sendTo(player, false, true);
+
+#ifdef DEBUG_COMPONENT_SLOT
+						info(true) << "New Component Clone created - added to slot";
+#endif // DEBUG_COMPONENT_SLOT
+					}
+				}
+
+				compUses--;
+#ifdef DEBUG_COMPONENT_SLOT
+				info(true) << "Component Uses: " << compUses;
+#endif // DEBUG_COMPONENT_SLOT
 			}
 
-			contents.add(tano);
+			component->setUseCount(compUses, false);
+			//component->setParent(nullptr);
+
+			satchel->transferObject(component, -1, true);
+			contents.add(component);
+
+			component->sendTo(player, true);
+			//component->sendAttributeListTo(player);
+
+#ifdef DEBUG_COMPONENT_SLOT
+			info(true) << "Component added to slot";
+#endif // DEBUG_COMPONENT_SLOT
 		}
 
 		return true;
 	}
 
 	bool returnToParents(CreatureObject* player) {
-
 		for(int i = 0; i < contents.size(); ++i) {
 			TangibleObject* object = contents.get(i);
 
@@ -186,7 +227,8 @@ public:
 			}
 
 			parent->transferObject(object, -1, true, true);
-			parent->broadcastObject(object, true);
+			//parent->broadcastObject(object, true);
+			object->sendTo(player, true);
 		}
 
 		contents.removeAll();
