@@ -119,6 +119,12 @@ int PowerRegulatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	if (!gcwMan->areOpposingFactions(player->getFaction(), building->getFaction())) {
 		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_tamper"); // You are not an enemy of this structure. Why would you want to tamper?
 		return 1;
+	} else if (!gcwMan->isProperFactionStatus(player)) {
+		StringIdChatParameter message("@faction_perk:prose_not_neutral"); // You cannot use %TT if you are neutral or on leave.
+		message.setTT(powerRegulator->getDisplayedName());
+		player->sendSystemMessage(message);
+
+		return 1;
 	} else if (gcwMan->isPowerOverloaded(building)) {
 		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:already_overloading"); // The power regulator has already been set to overload.
 		return 1;

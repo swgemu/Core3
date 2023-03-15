@@ -1430,6 +1430,24 @@ bool GCWManagerImplementation::areOpposingFactions(int faction1, int faction2) {
 	return faction1 != faction2;
 }
 
+bool GCWManagerImplementation::isProperFactionStatus(CreatureObject* player) {
+	if (player == nullptr || !player->isPlayerCreature())
+		return false;
+
+	if (ConfigManager::instance()->useCovertOvertSystem()) {
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost != nullptr) {
+			Locker lock(player);
+			ghost->updateLastGcwPvpCombatActionTimestamp();
+		}
+
+		return true;
+	}
+
+	return player->getFactionStatus() > FactionStatus::ONLEAVE;
+}
+
 void GCWManagerImplementation::awardSlicingXP(CreatureObject* creature, const String& xpType, int val) {
 	if (creature->getZoneServer() == nullptr)
 		return;

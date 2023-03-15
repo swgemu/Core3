@@ -246,6 +246,7 @@ class GCWManager extends ManagedService implements Logger {
 	private native DestructibleBuildingDataComponent getDestructibleBuildingData(BuildingObject building);
 	public native boolean canUseTerminals(CreatureObject creature, BuildingObject building, SceneObject terminal);
 	public native boolean areOpposingFactions(int faction1, int faction2);
+	public native boolean isProperFactionStatus(CreatureObject creature);
 	public native void awardSlicingXP(CreatureObject creature, final string xpType, int value);
 
 	public native void sendJamUplinkMenu(CreatureObject creature, BuildingObject building, TangibleObject uplinkTerminal);
