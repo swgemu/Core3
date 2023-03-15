@@ -37,9 +37,10 @@ public:
 	}
 
 	bool add(CreatureObject* player, SceneObject* satchel, ManagedReference<TangibleObject*> incomingTano) {
-
 		int currentQuantity = getSlotQuantity();
 		FactoryCrate* crate = nullptr;
+
+		info(true) << "add ingredient with required quantity: " << requiredQuantity << " and current quantity: " << currentQuantity << " Content Type: " << contentType;
 
 		/// If Full, don't add
 		if (currentQuantity >= requiredQuantity)
@@ -50,7 +51,6 @@ public:
 
 		/// Get prototype's template for check
 		if (incomingTano->isFactoryCrate()) {
-
 			crate = cast<FactoryCrate*>(incomingTano.get());
 
 			TangibleObject* prototype = crate->getPrototype();
@@ -72,16 +72,17 @@ public:
 		if (requiresIdentical() && !contents.isEmpty()) {
 			TangibleObject* tano = contents.elementAt(0);
 
-			if(tano == nullptr) {
+			if (tano == nullptr) {
 				error("Null items in contents when checking serial number");
 				return false;
 			}
 
-			if (crate != nullptr && crate->getPrototype()->getSerialNumber() != tano->getSerialNumber()) {
+			String tanoSerial = tano->getSerialNumber();
+
+			if (crate != nullptr && crate->getPrototype()->getSerialNumber() != tanoSerial) {
 				return false;
 			} else {
-
-				if (incomingTano->getSerialNumber() != tano->getSerialNumber())
+				if (incomingTano->getSerialNumber() != tanoSerial)
 					return false;
 			}
 		}
@@ -89,13 +90,23 @@ public:
 		/// How much do we need
 		int slotNeeds = requiredQuantity - currentQuantity;
 
+		// Here for grenade extraction
+
 		/// Extract tano from crate and set it to the incoming object
 		if (crate != nullptr) {
+			// calculate total available. This will handle items like grenades that are multiple uses. Some items have no 0 count, so default to 1.
+			int prototypeUses = crate->getPrototypeUseCount();
+			int amountAvailable = crate->getUseCount() * (prototypeUses <= 0 ? 1 : prototypeUses);
 
-			if (crate->getUseCount() >= slotNeeds)
-				incomingTano = crate->extractObject(slotNeeds);
-			else
-				incomingTano = crate->extractObject(crate->getUseCount());
+			info(true) << "amount available = " << amountAvailable;
+
+			// This has changed, the factory crate will handle extracting what it can
+			incomingTano = crate->extractObject(slotNeeds);
+
+			//if (amountAvailable >= slotNeeds)
+				//incomingTano = crate->extractObject(slotNeeds);
+			//else
+				//incomingTano = crate->extractObject(crate->getUseCount());
 		}
 
 		if (incomingTano == nullptr) {

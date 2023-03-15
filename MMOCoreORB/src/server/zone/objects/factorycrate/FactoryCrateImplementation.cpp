@@ -130,6 +130,15 @@ String FactoryCrateImplementation::getSerialNumber() {
 	return prototype->getSerialNumber();
 }
 
+int FactoryCrateImplementation::getPrototypeUseCount() {
+	Reference<TangibleObject*> prototype = getPrototype();
+
+	if (prototype == nullptr)
+		return 0;
+
+	return prototype->getUseCount();
+}
+
 bool FactoryCrateImplementation::extractObjectToInventory(CreatureObject* player) {
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
@@ -208,48 +217,62 @@ bool FactoryCrateImplementation::extractObjectToInventory(CreatureObject* player
 	return false;
 }
 
-Reference<TangibleObject*> FactoryCrateImplementation::extractObject(int count) {
-
+Reference<TangibleObject*> FactoryCrateImplementation::extractObject(int amount) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if (!isValidFactoryCrate()) {
-		error() << "extractObject(count=" << count << "): !isValidFactoryCrate(): " << *asSceneObject();
+		error() << "extractObject(count=" << amount << "): !isValidFactoryCrate(): " << *asSceneObject();
 		return nullptr;
 	}
 
-	if(count > getUseCount())
-		return nullptr;
+	int prototypeUses = getPrototypeUseCount();
+	int amountAvailable = getUseCount() * (prototypeUses <= 0 ? 1 : prototypeUses);
+
+	//if (amount > amountAvailable)
+		//return nullptr;
+
+	info(true) << "FactoryCrateImplementation::extractObject -- total available prototypes: " << amountAvailable << " Amount Needed: " << amount;
 
 	Reference<TangibleObject*> prototype = getPrototype();
 
-	if(prototype == nullptr || !prototype->isTangibleObject()) {
+	if (prototype == nullptr || !prototype->isTangibleObject()) {
 		error("FactoryCrateImplementation::extractObject has a nullptr or non-tangible item");
 		return nullptr;
 	}
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	Reference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype));
+	if (objectManager == nullptr)
+		return nullptr;
 
-	if(protoclone != nullptr) {
-		Locker protoLocker(protoclone);
+	int totalExtracted = 0;
 
-		if(protoclone->hasAntiDecayKit()){
-			protoclone->removeAntiDecayKit();
+	while (totalExtracted < amount) {
+		Reference<TangibleObject*> protoclone = cast<TangibleObject*>(objectManager->cloneObject(prototype));
+
+		if (protoclone != nullptr) {
+			Locker protoLocker(protoclone);
+
+			if (protoclone->hasAntiDecayKit()){
+				protoclone->removeAntiDecayKit();
+			}
+
+			protoclone->setParent(nullptr);
+			protoclone->setUseCount(prototypeUses, false);
+
+			ManagedReference<SceneObject*> strongParent = getParent().get();
+
+			if (strongParent != nullptr) {
+				strongParent->broadcastObject(protoclone, true);
+				strongParent->transferObject(protoclone, -1, true);
+			}
+
+
+
+			setUseCount(getUseCount() - amount, true);
+
+			return protoclone;
 		}
-
-		protoclone->setParent(nullptr);
-		protoclone->setUseCount(count, false);
-
-		ManagedReference<SceneObject*> strongParent = getParent().get();
-		if (strongParent != nullptr) {
-			strongParent->broadcastObject(protoclone, true);
-			strongParent->transferObject(protoclone, -1, true);
-		}
-
-		setUseCount(getUseCount() - count, true);
-
-		return protoclone;
 	}
 
 	return nullptr;
