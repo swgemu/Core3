@@ -330,8 +330,6 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 }
 
 int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* player, SceneObject* satchel, TangibleObject* tano, int slot) {
-	info(true) << "ManufactureSchematicImplementation::addIngredientToSlot called";
-
 	if (slot >= ingredientSlots.size())
 		return IngredientSlot::INVALID;
 
@@ -385,8 +383,6 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 
 	player->sendMessage(dMsco3);
 	// End DMSCO3 *************************************************************
-
-	info(true) << "END addIngredientToSlot called";
 
 	return IngredientSlot::OK;
 }
