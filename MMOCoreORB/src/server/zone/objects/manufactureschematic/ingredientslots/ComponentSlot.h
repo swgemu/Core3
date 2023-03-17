@@ -9,7 +9,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 
-#define DEBUG_COMPONENT_SLOT
+// #define DEBUG_COMPONENT_SLOT
 
 class ComponentSlot: public IngredientSlot {
 	/// Indexed by <object, parent>
@@ -84,9 +84,8 @@ public:
 
 			if (crate != nullptr && crate->getPrototype()->getSerialNumber() != tanoSerial) {
 				return false;
-			} else {
-				if (incomingTano->getSerialNumber() != tanoSerial)
-					return false;
+			} else if (incomingTano->getSerialNumber() != tanoSerial) {
+				return false;
 			}
 		}
 
@@ -102,19 +101,20 @@ public:
 			if (prototypeUses < 1)
 				prototypeUses = 1;
 
-			int amountAvailable = crate->getUseCount() * prototypeUses;
-			int amount = ceil(totalNeeded / prototypeUses);
+			int extractionAmount = ceil(((float)totalNeeded / prototypeUses));
 			int crateSize = crate->getUseCount();
 
-			if (amount > crateSize)
-				amount = crateSize;
+			if (extractionAmount > crateSize)
+				extractionAmount = crateSize;
 
 #ifdef DEBUG_COMPONENT_SLOT
-			info(true) << "Gross Total available = " << amountAvailable << " Amount needed from crate = " << amount << " Crate Size = " << crateSize;
+			int amountAvailable = crate->getUseCount() * prototypeUses;
+
+			info(true) << "Gross Total available = " << amountAvailable << " Amount needed from crate = " << extractionAmount << " Crate Size = " << crateSize;
 #endif // DEBUG_COMPONENT_SLOT
 
 			// Extract the max amount needed from the crate to fulfill the component slot.
-			for (int i = 0; i < amount; ++i) {
+			for (int i = 0; i < extractionAmount; i++) {
 				ManagedReference<TangibleObject*> extractedProto = crate->extractObject();
 
 				if (extractedProto == nullptr)
@@ -156,21 +156,26 @@ public:
 				component->removeAntiDecayKit();
 			}
 
-			// Re-check use count here incase a partial is used
-			int compUses = (component->getUseCount() < 1) ? 1 : component->getUseCount();
-
 #ifdef DEBUG_COMPONENT_SLOT
-			info(true) << "Items for slot item " << component->getDisplayedName() << " Use Count: " << compUses;
+			info(true) << "Items for slot item " << component->getDisplayedName() << " Use Count: " << component->getUseCount();
 #endif // DEBUG_COMPONENT_SLOT
 
 			// Account for items that have multiple uses -- Example: grenades. Always leave 1 use, for the original component
-			while (compUses > 1 && objectManager != nullptr) {
-				ManagedReference<TangibleObject*> compClone = cast<TangibleObject*>(objectManager->cloneObject(component));
+			if (component->getUseCount() > 1 && objectManager != nullptr) {
+				int addUses = ((totalNeeded - component->getUseCount()) > 0 ? component->getUseCount() : totalNeeded);
 
-				if (compClone != nullptr) {
+#ifdef DEBUG_COMPONENT_SLOT
+				info(true) << "Coponent use is greater than 1. Adding uses: " << addUses;
+#endif // DEBUG_COMPONENT_SLOT
+
+				for (int i = 0; i < addUses; i++) {
+					ManagedReference<TangibleObject*> compClone = cast<TangibleObject*>(objectManager->cloneObject(component));
+
+					if (compClone == nullptr)
+						continue;
+
 					Locker cloneLock(compClone);
 
-					compClone->setParent(nullptr);
 					compClone->setUseCount(1, false);
 
 					if (compClone->hasAntiDecayKit()) {
@@ -179,32 +184,33 @@ public:
 
 					if (satchel->transferObject(compClone, -1, true)) {
 						contents.add(compClone);
-						compClone->sendTo(player, false, true);
+						totalNeeded--;
 
 #ifdef DEBUG_COMPONENT_SLOT
 						info(true) << "New Component Clone created - added to slot";
 #endif // DEBUG_COMPONENT_SLOT
 					}
-				}
 
-				compUses--;
+					component->decreaseUseCount();
 #ifdef DEBUG_COMPONENT_SLOT
 				info(true) << "Component Uses: " << compUses;
 #endif // DEBUG_COMPONENT_SLOT
-			}
+				}
 
-			component->setUseCount(compUses, false);
-			//component->setParent(nullptr);
+				if (component->getUseCount() > 0) {
+					component->sendTo(player, true);
+				}
+			} else {
+				satchel->transferObject(component, -1, true);
+				contents.add(component);
 
-			satchel->transferObject(component, -1, true);
-			contents.add(component);
-
-			component->sendTo(player, true);
-			//component->sendAttributeListTo(player);
+				component->destroyObjectFromWorld(true);
+				component->destroyObjectFromDatabase(true);
 
 #ifdef DEBUG_COMPONENT_SLOT
-			info(true) << "Component added to slot";
+				info(true) << "Component added to slot";
 #endif // DEBUG_COMPONENT_SLOT
+			}
 		}
 
 		return true;

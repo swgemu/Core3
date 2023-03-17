@@ -255,9 +255,6 @@ Reference<TangibleObject*> FactoryCrateImplementation::extractObject() {
 	if (prototypeUses < 1)
 		prototypeUses = 1;
 
-	info(true) << "FactoryCrateImplementation::extractObject -- Object Use Count: " << prototypeUses;
-
-	protoclone->setParent(nullptr);
 	protoclone->setUseCount(prototypeUses, false);
 
 	ManagedReference<SceneObject*> strongParent = getParent().get();
@@ -271,7 +268,7 @@ Reference<TangibleObject*> FactoryCrateImplementation::extractObject() {
 	strongParent->broadcastObject(protoclone, true);
 
 	// We extracted a single protoClone. Reduce crate use count
-	setUseCount(getUseCount() - 1, true);
+	decreaseUseCount();
 
 	return protoclone;
 }
