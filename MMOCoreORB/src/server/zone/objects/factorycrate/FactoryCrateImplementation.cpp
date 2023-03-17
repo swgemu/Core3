@@ -130,6 +130,15 @@ String FactoryCrateImplementation::getSerialNumber() {
 	return prototype->getSerialNumber();
 }
 
+int FactoryCrateImplementation::getPrototypeUseCount() {
+	Reference<TangibleObject*> prototype = getPrototype();
+
+	if (prototype == nullptr)
+		return 0;
+
+	return prototype->getUseCount();
+}
+
 bool FactoryCrateImplementation::extractObjectToInventory(CreatureObject* player) {
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
@@ -208,51 +217,60 @@ bool FactoryCrateImplementation::extractObjectToInventory(CreatureObject* player
 	return false;
 }
 
-Reference<TangibleObject*> FactoryCrateImplementation::extractObject(int count) {
-
+Reference<TangibleObject*> FactoryCrateImplementation::extractObject() {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if (!isValidFactoryCrate()) {
-		error() << "extractObject(count=" << count << "): !isValidFactoryCrate(): " << *asSceneObject();
+		error() << "!isValidFactoryCrate " << getObjectNameStringIdName() << " ID: " << getObjectID();
 		return nullptr;
 	}
 
-	if(count > getUseCount())
-		return nullptr;
-
 	Reference<TangibleObject*> prototype = getPrototype();
 
-	if(prototype == nullptr || !prototype->isTangibleObject()) {
+	if (prototype == nullptr || !prototype->isTangibleObject()) {
 		error("FactoryCrateImplementation::extractObject has a nullptr or non-tangible item");
 		return nullptr;
 	}
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	Reference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype));
+	if (objectManager == nullptr)
+		return nullptr;
 
-	if(protoclone != nullptr) {
-		Locker protoLocker(protoclone);
+	Reference<TangibleObject*> protoclone = cast<TangibleObject*>(objectManager->cloneObject(prototype));
 
-		if(protoclone->hasAntiDecayKit()){
-			protoclone->removeAntiDecayKit();
-		}
-
-		protoclone->setParent(nullptr);
-		protoclone->setUseCount(count, false);
-
-		ManagedReference<SceneObject*> strongParent = getParent().get();
-		if (strongParent != nullptr) {
-			strongParent->broadcastObject(protoclone, true);
-			strongParent->transferObject(protoclone, -1, true);
-		}
-
-		setUseCount(getUseCount() - count, true);
-
-		return protoclone;
+	if (protoclone == nullptr) {
+		return nullptr;
 	}
 
-	return nullptr;
+	Locker protoLocker(protoclone, _this.getReferenceUnsafeStaticCast());
+
+	if (protoclone->hasAntiDecayKit()){
+		protoclone->removeAntiDecayKit();
+	}
+
+	// Some objects will have a use count of 0, so default to 1. Others like grenades can be greater than 1
+	int prototypeUses = prototype->getUseCount();
+
+	if (prototypeUses < 1)
+		prototypeUses = 1;
+
+	protoclone->setUseCount(prototypeUses, false);
+
+	ManagedReference<SceneObject*> strongParent = getParent().get();
+
+	if (strongParent == nullptr || !strongParent->transferObject(protoclone, -1, true)) {
+		protoclone->destroyObjectFromDatabase(false);
+		protoclone->destroyObjectFromWorld(false);
+		return nullptr;
+	}
+
+	strongParent->broadcastObject(protoclone, true);
+
+	// We extracted a single protoClone. Reduce crate use count
+	decreaseUseCount();
+
+	return protoclone;
 }
 
 void FactoryCrateImplementation::split(int newStackSize) {
