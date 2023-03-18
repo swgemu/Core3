@@ -267,6 +267,11 @@ CraftingStation* DroidObjectImplementation::getCraftingStation(int type) {
 				CraftingStation* craftingStation = craftingModule->getCraftingStation();
 
 				if (craftingStation != nullptr) {
+					if (craftingStation->getDroidParent().get() == nullptr) {
+						Locker lock(craftingStation);
+						craftingStation->setDroidParent(_this.getReferenceUnsafeStaticCast());
+					}
+
 					// case here to check each type
 					if (craftingModule->validCraftingType(type) || (type == CraftingTool::JEDI && craftingModule->isWeaponDroidGeneric())) {
 						return craftingStation;
