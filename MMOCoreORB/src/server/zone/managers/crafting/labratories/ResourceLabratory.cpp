@@ -275,6 +275,10 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 						min += propertyvalue;
 						max += propertyvalue;
 
+#ifdef DEBUG_RESOURCE_LAB
+						info(true) << "LINEARCOMBINE: Adding propertyvalue = " << propertyvalue << " Set New Atrributes - Value = " << currentvalue << " Min = " << min << " Max = " << max;
+#endif // DEBUG_RESOURCE_LAB
+
 						craftingValues->setMinValue(attribute, min);
 						craftingValues->setMaxValue(attribute, max);
 
@@ -285,6 +289,10 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 						min += propertyvalue;
 						max += propertyvalue;
 
+#ifdef DEBUG_RESOURCE_LAB
+						info(true) << "PERCENTAGECOMBINE: Adding propertyvalue = " << propertyvalue << " Set New Atrributes - Value = " << currentvalue << " Min = " << min << " Max = " << max;
+#endif // DEBUG_RESOURCE_LAB
+
 						craftingValues->setMinValue(attribute, min);
 						craftingValues->setMaxValue(attribute, max);
 
@@ -292,6 +300,10 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 						break;
 					case AttributesMap::BITSETCOMBINE:
 						currentvalue = (int)currentvalue | (int)propertyvalue;
+
+#ifdef DEBUG_RESOURCE_LAB
+						info(true) << "BITSETCOMBINE: Set New Atrributes - Value = " << currentvalue << " Min = " << min << " Max = " << max;
+#endif // DEBUG_RESOURCE_LAB
 
 						craftingValues->setCurrentValue(attribute, currentvalue);
 						break;
@@ -307,6 +319,10 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 
 						if (currentvalue > max)
 							currentvalue = max;
+
+#ifdef DEBUG_RESOURCE_LAB
+						info(true) << "LIMITEDCOMBINE: Adding propertyvalue = " << propertyvalue << " Set New Atrributes - Value = " << currentvalue << " Min = " << min << " Max = " << max;
+#endif // DEBUG_RESOURCE_LAB
 
 						craftingValues->setCurrentValue(attribute, currentvalue);
 
