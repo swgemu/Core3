@@ -109,19 +109,23 @@ public:
 #ifdef DEBUG_COMPONENT_SLOT
 			int amountAvailable = crate->getUseCount() * prototypeUses;
 
-			info(true) << "Gross Total available = " << amountAvailable << " Amount needed from crate = " << extractionAmount << " Crate Size = " << crateSize;
+			info(true) << "Factory Crate Gross Total available = " << amountAvailable << " Amount needed from crate = " << extractionAmount << " Crate Size = " << crateSize;
 #endif // DEBUG_COMPONENT_SLOT
 
 			// Extract the max amount needed from the crate to fulfill the component slot.
 			for (int i = 0; i < extractionAmount; i++) {
 				ManagedReference<TangibleObject*> extractedProto = crate->extractObject();
 
-				if (extractedProto == nullptr)
-					continue;
-
 #ifdef DEBUG_COMPONENT_SLOT
-				info(true) << "Prototype added to itemsForSlot vector #" << i;
+				info(true) << "Extracted prototype for itemsForSlot #" << i;
 #endif // DEBUG_COMPONENT_SLOT
+
+				if (extractedProto == nullptr) {
+#ifdef DEBUG_COMPONENT_SLOT
+					info(true) << "Prototype #" << i << " is a nullptr!";
+#endif // DEBUG_COMPONENT_SLOT
+					continue;
+				}
 
 				itemsForSlot.add(extractedProto.get());
 			}
@@ -142,7 +146,7 @@ public:
 #endif // DEBUG_COMPONENT_SLOT
 
 		// Place items in component slot
-		while (itemsForSlot.size() > 0) {
+		while (itemsForSlot.size() > 0 && objectManager != nullptr) {
 			ManagedReference<TangibleObject*> component = itemsForSlot.remove(0);
 
 			if (component == nullptr)
@@ -160,7 +164,7 @@ public:
 #endif // DEBUG_COMPONENT_SLOT
 
 			// Account for items that have multiple uses -- Example: grenades. Always leave 1 use, for the original component
-			if (component->getUseCount() > 1 && objectManager != nullptr) {
+			if (component->getUseCount() > 1) {
 				int addUses = ((totalNeeded - component->getUseCount()) > 0 ? component->getUseCount() : totalNeeded);
 
 #ifdef DEBUG_COMPONENT_SLOT
@@ -196,7 +200,7 @@ public:
 
 					component->decreaseUseCount();
 #ifdef DEBUG_COMPONENT_SLOT
-				info(true) << "Component Uses: " << compUses;
+					info(true) << "Component Uses: " << component->getUseCount();
 #endif // DEBUG_COMPONENT_SLOT
 				}
 
@@ -204,16 +208,28 @@ public:
 					component->sendTo(player, true);
 				}
 			} else {
-				satchel->transferObject(component, -1, true);
-				contents.add(component);
+				ManagedReference<TangibleObject*> itemToUse = cast<TangibleObject*>(objectManager->cloneObject(component));
 
-				component->destroyObjectFromWorld(true);
-				component->destroyObjectFromDatabase(true);
+				if (itemToUse != nullptr) {
+					Locker lock(itemToUse, component);
 
-				// Required so component shows in slot
-				component->sendTo(player, true);
-				component->sendAttributeListTo(player);
+					if (itemToUse->hasAntiDecayKit()) {
+						itemToUse->removeAntiDecayKit();
+					}
 
+					itemToUse->setParent(nullptr);
+					itemToUse->setUseCount(0, false);
+
+					satchel->transferObject(itemToUse, -1, true);
+					contents.add(itemToUse);
+
+					// Required so component shows in slot
+					itemToUse->sendTo(player, true);
+					itemToUse->sendAttributeListTo(player);
+
+					component->destroyObjectFromWorld(true);
+					component->destroyObjectFromDatabase(true);
+				}
 #ifdef DEBUG_COMPONENT_SLOT
 				info(true) << "Component added to slot";
 #endif // DEBUG_COMPONENT_SLOT

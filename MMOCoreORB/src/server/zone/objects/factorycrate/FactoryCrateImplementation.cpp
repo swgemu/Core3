@@ -259,7 +259,7 @@ Reference<TangibleObject*> FactoryCrateImplementation::extractObject() {
 
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 
-	if (strongParent == nullptr || !strongParent->transferObject(protoclone, -1, true)) {
+	if (strongParent == nullptr || !strongParent->transferObject(protoclone, -1, true, true)) {
 		protoclone->destroyObjectFromDatabase(false);
 		protoclone->destroyObjectFromWorld(false);
 		return nullptr;
