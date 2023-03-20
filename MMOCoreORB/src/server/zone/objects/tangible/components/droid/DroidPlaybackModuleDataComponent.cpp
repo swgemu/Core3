@@ -93,7 +93,7 @@ void DroidPlaybackModuleDataComponent::addListener(uint64 id) {
 }
 
 void DroidPlaybackModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
-	alm->insertAttribute("playback_modules", trackList.size());
+	//alm->insertAttribute("playback_modules", trackList.size());
 }
 
 void DroidPlaybackModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {

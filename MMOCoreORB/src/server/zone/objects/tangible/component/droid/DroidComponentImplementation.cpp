@@ -50,7 +50,7 @@ void DroidComponentImplementation::updateCraftingValues(CraftingValues* values, 
 	}
 }
 void DroidComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	TangibleObjectImplementation::fillAttributeList(alm, object);
+	ComponentImplementation::fillAttributeList(alm, object);
 
 	if (autoRepairDroid) {
 		alm->insertAttribute("auto_repair_power", (int)autoRepairPower);
@@ -67,38 +67,43 @@ void DroidComponentImplementation::fillAttributeList(AttributeListMessage* alm, 
 		alm->insertAttribute("mechanism_quality", (int)quality);
 	} else if (trapDroid) {
 		alm->insertAttribute("trap_bonus", (int)trapBonus);
-	} else {
-		ComponentImplementation::fillAttributeList(alm,object);
-
 		// if a socket cluster, add the cluster items
-		if (isSocketCluster()) {
-			ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");
+	} else if (isSocketCluster()) {
+		int playbackModules = 0;
 
-			if(craftingComponents != nullptr) {
-				SceneObject* satchel = craftingComponents->getContainerObject(0);
+		ManagedReference<SceneObject*> satchel = getCraftedComponentsSatchel(); //getSlottedObject("crafted_components");
 
-				// remove all items from satchel and add new items
-				for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
-					ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
+		if (satchel != nullptr) {
+			// remove all items from satchel and add new items
+			for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
+				ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
 
-					// if droid component and a data module add it
-					ManagedReference<DroidComponent*> sub = cast<DroidComponent*>( sceno.get());
-					if (sub != nullptr) {
-						DataObjectComponentReference* data = sub->getDataObjectComponent();
-						BaseDroidModuleComponent* module = nullptr;
+				// if droid component and a data module add it
+				ManagedReference<DroidComponent*> sub = cast<DroidComponent*>(sceno.get());
 
-						if(data != nullptr && data->get() != nullptr && data->get()->isDroidModuleData() ){
-							module = cast<BaseDroidModuleComponent*>(data->get());
-						}
+				if (sub != nullptr) {
+					DataObjectComponentReference* data = sub->getDataObjectComponent();
 
-						if (module == nullptr) {
-							continue;
-						}
+					if (data == nullptr || data->get() == nullptr || !data->get()->isDroidModuleData())
+						continue;
+
+					BaseDroidModuleComponent* module = cast<BaseDroidModuleComponent*>(data->get());
+
+					if (module == nullptr) {
+						continue;
+					}
+
+					if (module->getModuleName() == "playback_module") {
+						playbackModules++;
+					} else {
 						module->fillAttributeList(alm,object);
 					}
 				}
 			}
 		}
+
+		if (playbackModules > 0)
+			alm->insertAttribute("playback_modules", playbackModules);
 	}
 }
 bool DroidComponentImplementation::isSocketCluster() {
