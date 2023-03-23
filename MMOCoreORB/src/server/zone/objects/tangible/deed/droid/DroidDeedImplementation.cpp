@@ -116,10 +116,10 @@ void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 	ManagedReference<DroidComponent*> comp = nullptr;
 	HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
 
-	for(int i = 0; i < modules.size(); ++i) {
+	for (int i = 0; i < modules.size(); ++i) {
 		iterator.getNextKeyAndValue(key, comp);
 
-		if (comp) {
+		if (comp != nullptr) {
 			DataObjectComponentReference* data = comp->getDataObjectComponent();
 			BaseDroidModuleComponent* module = nullptr;
 
@@ -227,52 +227,71 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 	// walk all components and ensure we have all modules that are stackable there.
 
 	ManagedReference<ManufactureSchematic*> manufact = values->getManufactureSchematic();
+
 	for (int i = 0; i < manufact->getSlotCount(); ++i) {
 		// Droid Component Slots
-		Reference<IngredientSlot* > iSlot = manufact->getSlot(i);
-		if (iSlot->isComponentSlot()) {
-			ComponentSlot* cSlot = cast<ComponentSlot*>(iSlot.get());
-			ManagedReference<TangibleObject*> tano = cSlot->getPrototype();
-			ManagedReference<DroidComponent*> component = cast<DroidComponent*>( tano.get());
-			// only check modules
-			if (component != nullptr) {
-				if (component->isSocketCluster()) {
-					// pull out the objects
-					ManagedReference<SceneObject*> craftingComponents = component->getSlottedObject("crafted_components");
-					if(craftingComponents != nullptr) {
-						SceneObject* satchel = craftingComponents->getContainerObject(0);
-						for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
-							ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
-							if (sceno != nullptr) {
-								// now we have the component used in this socket item
-								ManagedReference<DroidComponent*> sub = cast<DroidComponent*>( sceno.get());
-								if (sub != nullptr) {
-									DataObjectComponentReference* data = sub->getDataObjectComponent();
-									BaseDroidModuleComponent* module = nullptr;
-									if(data != nullptr && data->get() != nullptr && data->get()->isDroidModuleData() ){
-										module = cast<BaseDroidModuleComponent*>(data->get());
-									}
-									if (module == nullptr) {
-										continue;
-									}
-									processModule(module,sceno->getServerObjectCRC());
-								}
+		Reference<IngredientSlot*> iSlot = manufact->getSlot(i);
+
+		if (iSlot == nullptr || !iSlot->isComponentSlot())
+			continue;
+
+		ComponentSlot* componentSlot = cast<ComponentSlot*>(iSlot.get());
+
+		if (componentSlot == nullptr)
+			continue;
+
+		ManagedReference<DroidComponent*> component = cast<DroidComponent*>(componentSlot->getPrototype());
+
+		if (component == nullptr)
+			continue;
+
+		// only check modules
+		if (component->isSocketCluster()) {
+			// pull out the objects
+			ManagedReference<SceneObject*> craftingComponents = component->getSlottedObject("crafted_components");
+
+			if (craftingComponents != nullptr) {
+				SceneObject* satchel = craftingComponents->getContainerObject(0);
+
+				for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
+					ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
+
+					if (sceno != nullptr) {
+						// now we have the component used in this socket item
+						ManagedReference<DroidComponent*> sub = cast<DroidComponent*>( sceno.get());
+
+						if (sub != nullptr) {
+							DataObjectComponentReference* data = sub->getDataObjectComponent();
+							BaseDroidModuleComponent* module = nullptr;
+
+							if (data != nullptr && data->get() != nullptr && data->get()->isDroidModuleData()){
+								module = cast<BaseDroidModuleComponent*>(data->get());
 							}
+
+							if (module == nullptr) {
+								continue;
+							}
+
+							processModule(module, sceno->getServerObjectCRC());
 						}
 					}
-				} else {
-					DataObjectComponentReference* data = component->getDataObjectComponent();
-					BaseDroidModuleComponent* module = nullptr;
-					if(data != nullptr && data->get() != nullptr && data->get()->isDroidModuleData() ){
-						module = cast<BaseDroidModuleComponent*>(data->get());
-					}
-					if (module == nullptr) {
-						continue;
-					}
-					processModule(module,tano->getServerObjectCRC());
 				}
 			}
+		} else {
+			DataObjectComponentReference* data = component->getDataObjectComponent();
+			BaseDroidModuleComponent* module = nullptr;
+
+			if (data != nullptr && data->get() != nullptr && data->get()->isDroidModuleData() ){
+				module = cast<BaseDroidModuleComponent*>(data->get());
+			}
+
+			if (module == nullptr) {
+				continue;
+			}
+
+			processModule(module, component->getServerObjectCRC());
 		}
+
 	}
 	// module stacking is completed!
 }

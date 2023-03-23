@@ -38,9 +38,11 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 		for (int i = 0; i < modules.size(); i++) {
 			auto& module = modules.get(i);
 
-			if (module != nullptr) {
-				module->fillAttributeList(msg, object);
+			if (module == nullptr) {
+				continue;
 			}
+
+			module->fillAttributeList(msg, object);
 		}
 	}
 }
