@@ -1131,6 +1131,7 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 			message.setDI(recoveryTime);
 			playerCreature->sendSystemMessage(message); // Incapacitation recovery time reduced by %DI%.
 
+			Locker buffLock(buff, playerCreature);
 			playerCreature->removeBuff(buff);
 		}
 	}
