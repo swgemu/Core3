@@ -414,13 +414,13 @@ void GCWManagerImplementation::verifyMinefields(BuildingObject* building) {
 
 	Locker blocker(building);
 
-	for (int i = 0; i < baseData->getTotalScannerCount(); ++i) {
+	for (int i = 0; i < baseData->getTotalMinefieldCount(); ++i) {
 		uint64 minefieldID = baseData->getMinefieldID(i);
 
 		ManagedReference<SceneObject*> minefield = zoneServer->getObject(minefieldID);
 
 		if (minefield == nullptr)
-			baseData->setScannerID(i, 0);
+			baseData->setMinefieldID(i, 0);
 	}
 }
 
@@ -501,7 +501,8 @@ int GCWManagerImplementation::getBaseCount(CreatureObject* creature, bool pvpOnl
 		return 0;
 
 	PlayerObject* ghost = creature->getPlayerObject();
-	if (ghost == nullptr)
+
+	if (ghost == nullptr || ghost->isPrivileged())
 		return 0;
 
 	if (zone == nullptr)
