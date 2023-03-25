@@ -1546,8 +1546,13 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate() {
 						ManagedReference<CellObject*> cellObject = getCell(child->getCellId());
 						if (cellObject != nullptr) {
 							creature = creatureManager->spawnCreatureWithAi(child->getMobile().hashCode(), childPosition.getX(), childPosition.getZ(), childPosition.getY(), cellObject->getObjectID(), false);
-						} else
+
+							if (creature == nullptr) {
+								error () << "Failed to spawn Creature in Cell in spawnChildCreaturesFromTemplate: Template = " << child->getMobile() << " X = " << childPosition.getX() << " Z = " << childPosition.getZ() << " Y = " << childPosition.getY() << " Cell ID: " << cellObject->getObjectID();
+							}
+						} else {
 							error("nullptr CELL OBJECT");
+						}
 					}
 
 				} catch (Exception& e) {
