@@ -81,8 +81,9 @@ object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_sha
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -17, z = 0, y = 10, ox = 0, oy = -0, oz = 0, ow = 1, cellid = -1, containmentType = -1 }, -- left turret front
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 17, z = 0, y = 10, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
-		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 25, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 15, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 18, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 3.5, z = 0, y = 10, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = -3.5, z = 0, y = 10, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
 		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = -1.5, z = 0, y = -1.8, ow = .7, ox = 0, oz = 0, oy = .7, cellid = 3, containmentType = -1 },
 		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = -1.5, z = 0, y = -.5, ow = .7, ox = 0, oz = 0, oy = .7, cellid = 3, containmentType = -1 },
@@ -99,6 +100,7 @@ object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_sha
 	},
 
 	childCreatureObjects = {
+		-- Exterior Spawns
 		{ mobile = "fbase_imperial_sharpshooter", x = 4, z = 0, y = 50, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "fbase_imperial_sharpshooter", x = 0, z = 0, y = 50, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "fbase_imperial_sharpshooter", x = -4, z = 0, y = 50, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
@@ -121,9 +123,13 @@ object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_sha
 		{ mobile = "fbase_imperial_warrant_officer_ii", x = 15, z = 0, y = 0, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "fbase_imperial_master_sergeant", x = 0, z = 0, y = 9, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 
-		{ mobile = "fbase_imperial_first_lieutenant", x = 3.6, z = 0, y = 1.8, cellid = 4, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_imperial_medic", x = -3.8, z = 0, y = -2.3, cellid = 6, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "imperial_recruiter", x = -1, z = 0, y = -5.5, cellid = 3, containmentType = -1, respawn = 60, heading = 0},
+		-- Interior Spawns
+		{ mobile = "imperial_recruiter", x = -3.9, z = 0.13, y = -3.47, cellid = 6, containmentType = -1, respawn = 60, heading = -4.71},
+		{ mobile = "fbase_imperial_medic", x = 4.34, z = 0.13, y = 1.88, cellid = 4, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_imperial_first_lieutenant", x = 2.6, z = 0, y = 0.75, cellid = 4, respawn = 300, containmentType = -1, heading = 4.71 },
+		{ mobile = "fbase_stormtrooper_captain", x = 3.4, z = 0.13, y = -3.3, cellid = 5, respawn = 300, containmentType = -1, heading = 4.71 },
+		{ mobile = "fbase_imperial_sharpshooter", x = -0.9, z = 0.13, y = -5.1, cellid = 3, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_imperial_sharpshooter", x = 0.9, z = 0.13, y = -5.1, cellid = 3, respawn = 300, containmentType = -1, heading = 0},
 	},
 
 	securityPatrols = {

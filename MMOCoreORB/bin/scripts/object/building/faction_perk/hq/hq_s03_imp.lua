@@ -93,8 +93,9 @@ object_building_faction_perk_hq_hq_s03_imp = object_building_faction_perk_hq_sha
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -12, z = 0, y = -5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 }, -- back turret left
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 12, z = 0, y = -5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
-		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 46, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 38.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = -10, z = 0, y = 33, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 8, z = 0, y = 3, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 42, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
 		{ templateFile = "object/tangible/terminal/terminal_hq_imperial.iff", x = 0, z = 0.25, y = 1.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 
@@ -122,7 +123,7 @@ object_building_faction_perk_hq_hq_s03_imp = object_building_faction_perk_hq_sha
 	},
 
 	childCreatureObjects = {
-
+		-- Exterior Spawns
 		{ mobile = "at_st", x = 35, z = 0, y = 32, cellid = -1, respawn = 600, containmentType = -1, heading = 3.14},
 		{ mobile = "at_st", x = -35, z = 0, y = 32, cellid = -1, respawn = 600, containmentType = -1, heading = 0},
 		{ mobile = "fbase_imperial_sergeant_hard", x = 25, z = 0, y = -13, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
@@ -157,27 +158,35 @@ object_building_faction_perk_hq_hq_s03_imp = object_building_faction_perk_hq_sha
 		{ mobile = "fbase_imperial_sharpshooter_hard", x = 9, z = 0, y = 22, cellid = -1, respawn = 420, containmentType = -1, heading = 0},
 		{ mobile = "fbase_imperial_sharpshooter_hard", x = -9, z = 0, y = 22, cellid = -1, respawn = 420, containmentType = -1, heading = 0},
 
-		{ mobile = "fbase_imperial_warrant_officer_ii_hard", x = -4.4, z = 0, y = -2.1, cellid = 2, respawn = 300, containmentType = -1, heading = 4.7},
-		{ mobile = "fbase_imperial_corporal_hard", x = -4.4, z = 0, y = 0.9, cellid = 2, respawn = 300, containmentType = -1, heading = 4.7},
-
-		{ mobile = "fbase_imperial_noncom_hard", x = 4, z = -3.25, y = 5, cellid = 4, respawn = 300, containmentType = -1, heading = 3.14},
-
-		{ mobile = "fbase_comm_operator_hard", x = -4, z = -10.25, y = -6, cellid = 5, respawn = 300, containmentType = -1, heading = 1.57},
-
-		{ mobile = "fbase_swamp_trooper_hard", x = -2.7, z = -13.75, y = 7, cellid = 7, respawn = 300, containmentType = -1, heading = 1.57},
-		{ mobile = "fbase_swamp_trooper_hard", x = -5, z = -13.75, y = 7, cellid = 7, respawn = 300, containmentType = -1, heading = 1.57},
-
-		{ mobile = "fbase_imperial_corporal_hard", x = 4, z = -20.75, y = 6, cellid = 9, respawn = 300, containmentType = -1, heading = 4.7},
-		{ mobile = "fbase_imperial_medic_hard", x = -1.5, z = -20.75, y = 6, cellid = 9, respawn = 300, containmentType = -1, heading = 1.57},
-		{ mobile = "fbase_imperial_warrant_officer_ii_hard", x = -1.1, z = -20.75, y = 10.2, cellid = 9, respawn = 300, containmentType = -1, heading = 1.57},
-
-		{ mobile = "fbase_imperial_sergeant_hard", x = 4.5, z = -20.75, y = 15.8, cellid = 10, respawn = 300, containmentType = -1, heading = 4.7},
-		{ mobile = "fbase_imperial_noncom_hard", x = -2, z = -20.75, y = 15.8, cellid = 10, respawn = 300, containmentType = -1, heading = 1.57},
-		{ mobile = "fbase_command_security_guard_hard", x = 1.5, z = -20.75, y = 24.7, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_specialist_noncom_hard", x = 5.5, z = -20.75, y = 35.5, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14},
-		{ mobile = "fbase_imperial_master_sergeant_hard", x = -2.3, z = -20.75, y = 35.5, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14},
-		{ mobile = "fbase_imperial_first_lieutenant_hard", x = 1.7, z = -20.75, y = 32.45, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14},
-		{ mobile = "imperial_recruiter", x = -5, z = -20.75, y = 32, cellid = 10, containmentType = -1, respawn = 60, heading = 1.57},
+		-- Interior Spawns
+		-- 2 hall1
+		{ mobile = "fbase_imperial_medic_hard", x = -4.5, z = 0.3, y = 3, cellid = 2, respawn = 300, containmentType = -1, heading = 1.5708},
+		{ mobile = "fbase_storm_commando", x = -3.1, z = 0.3, y = 4.3, cellid = 2, respawn = 300, containmentType = -1, heading = 1.5708},
+		{ mobile = "fbase_storm_commando", x = -3.5, z = 0.3, y = -4.6, cellid = 2, respawn = 300, containmentType = -1, heading = 0},
+		-- 3 hall2
+		{ mobile = "fbase_imperial_sergeant_hard", x = 4.8, z = 0.3, y = -5.2, cellid = 3, respawn = 300, containmentType = -1, heading = 4.71239},
+		-- 4 ramp1
+		{ mobile = "fbase_imperial_noncom_hard", x = 4.4, z = -3.3, y = 5.8, cellid = 4, respawn = 300, containmentType = -1, heading = 3.92699},
+		-- 5 ramp2
+		{ mobile = "fbase_imperial_warrant_officer_ii_hard", x = -5.4, z = -10.3, y = -6.9, cellid = 5, respawn = 300, containmentType = -1, heading = 0.785398},
+		-- 7 room3
+		{ mobile = "imperial_recruiter", x = -1.7, z = -13.8, y = 6.4, cellid = 7, containmentType = -1, respawn = 60, heading = 0},
+		{ mobile = "fbase_imperial_medic_hard", x = -0.3, z = -13.8, y = 6, cellid = 7, containmentType = -1, respawn = 60, heading = 0},
+		{ mobile = "fbase_imperial_master_sergeant_hard", x = -9.2, z = -13.8, y = 5.7, cellid = 7, containmentType = -1, respawn = 60, heading = 1.5708},
+		{ mobile = "fbase_imperial_sharpshooter_hard", x = -6.1, z = -13.8, y = 8.9, cellid = 7, containmentType = -1, respawn = 60, heading = 3.14159},
+		-- 8 ramp3
+		{ mobile = "fbase_elite_sand_trooper", x = -7.4, z = -17.3, y = -4.2, cellid = 8, respawn = 300, containmentType = -1, heading = 0.785398},
+		-- 9 foyer
+		{ mobile = "fbase_dark_trooper", x = -1.9, z = -20.7, y = 6.7, cellid = 9, respawn = 300, containmentType = -1, heading = 1.5708},
+		{ mobile = "fbase_dark_trooper", x = 5, z = -20.7, y = 7.1, cellid = 9, respawn = 300, containmentType = -1, heading = 4.71239},
+		{ mobile = "fbase_dark_trooper", x = 0.1, z = -20.7, y = 11.5, cellid = 9, respawn = 300, containmentType = -1, heading = 3.14159},
+		{ mobile = "fbase_dark_trooper", x = 2.9, z = -20.7, y = 11.8, cellid = 9, respawn = 300, containmentType = -1, heading = 3.14159},
+		-- 10 bunker
+		{ mobile = "fbase_dark_trooper", x = -0.4, z = -20.7, y = 14.6, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_dark_trooper", x = 3.3, z = -20.7, y = 14.1, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_imperial_first_lieutenant_hard", x = -2.5, z = -20.8, y = 35.2, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14159},
+		{ mobile = "fbase_comm_operator_hard", x = 6, z = -20.8, y = 35.5, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14159},
+		{ mobile = "fbase_imperial_corporal_hard", x = 4.5, z = -20.8, y = 33.9, cellid = 10, respawn = 300, containmentType = -1, heading = 3.14159},
 	},
 
 	securityPatrols = {
