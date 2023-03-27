@@ -1825,14 +1825,57 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 }
 
 int CombatManager::calculatePostureModifier(CreatureObject* creature, WeaponObject* weapon) const {
-	CreaturePosture* postureLookup = CreaturePosture::instance();
+	int accuracyWeapon = 0;
+	int accuracyPosture = 0;
 
+	uint8 posture = creature->getPosture();
 	uint8 locomotion = creature->getLocomotion();
 
-	if (!weapon->isMeleeWeapon())
-		return postureLookup->getRangedAttackMod(locomotion);
-	else
-		return postureLookup->getMeleeAttackMod(locomotion);
+	uint32 attackType = weapon->getAttackType();
+	uint32 weaponMask = weapon->getWeaponBitmask();
+
+	CreaturePosture* postureLookup = CreaturePosture::instance();
+
+	if (postureLookup == nullptr) {
+		return 0;
+	}
+
+	if (!weapon->isMeleeWeapon()) {
+		String weaponName = "";
+
+		if (weaponMask == WeaponType::PISTOLWEAPON) {
+			weaponName = "pistol";
+		} else if (weaponMask == WeaponType::CARBINEWEAPON) {
+			weaponName = "carbine";
+		} else if (weaponMask == WeaponType::RIFLEWEAPON) {
+			weaponName = "rifle";
+		}
+
+		if (weaponName != "") {
+			uint8 speed = postureLookup->getSpeed(posture, locomotion);
+
+			if (speed == CreatureLocomotion::SLOW || speed == CreatureLocomotion::FAST) {
+				accuracyWeapon += creature->getSkillMod(weaponName + "_hit_while_moving");
+			}
+
+			if (posture == CreaturePosture::UPRIGHT) {
+				accuracyWeapon += creature->getSkillMod(weaponName + "_accuracy_while_standing");
+			}
+		}
+
+		accuracyPosture = postureLookup->getRangedAttackMod(locomotion);
+	} else {
+		accuracyPosture = postureLookup->getMeleeAttackMod(locomotion);
+	}
+
+	int accuracyModifier = accuracyPosture * getWeaponPostureModifier(weaponMask);
+	accuracyModifier += accuracyWeapon;
+
+	if (accuracyModifier > 0 && accuracyPosture < 0) {
+		accuracyModifier = 0;
+	}
+
+	return accuracyModifier;
 }
 
 int CombatManager::calculateTargetPostureModifier(WeaponObject* weapon, CreatureObject* targetCreature) const {
@@ -1867,10 +1910,6 @@ int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, Creatur
 		const String& mod = creatureAccMods->get(i);
 		attackerAccuracy += creoAttacker->getSkillMod(mod);
 		attackerAccuracy += creoAttacker->getSkillMod("private_" + mod);
-
-		if (creoAttacker->isStanding()) {
-			attackerAccuracy += creoAttacker->getSkillMod(mod + "_while_standing");
-		}
 	}
 
 	// Add Dead Eye Prototype bonus
@@ -2021,7 +2060,6 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* creoDe
 			accuracyBonus += bonusAccuracy;
 
 			accuracyPosture = calculatePostureModifier(creoAttacker, weapon);
-			accuracyPosture *= getWeaponPostureModifier(weapon->getWeaponBitmask());
 
 			if (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK) {
 				accuracyWeapon += creoAttacker->getSkillMod("private_aim");
@@ -2072,7 +2110,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* creoDe
 				}
 			}
 		} else { // HitStatus::BLOCK, HitStatus::COUNTER, HitStatus::DODGE
-			int attackRoll = System::random(199) + 101;
+			int attackRoll = System::random(499) + 1;
 			int defendRoll = System::random(199) + 1;
 
 			evadeSkill = getDefenderSecondaryDefenseModifier(creoDefender);
@@ -2086,9 +2124,15 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* creoDe
 	}
 
 #ifdef TOHIT_DEBUG
-	float evadeChance = ((evadeTotal + 1) / (accuracyTotal + 101.f)) * 0.5f; // approximation
-	if (hitResult == HitStatus::RICOCHET) {
-		evadeChance = evadeTotal;
+	float evadeChance = evadeTotal;
+
+	if (evadeTotal != 0 && hitResult != HitStatus::RICOCHET) {
+		evadeChance = ((evadeTotal + 100) / (accuracyTotal + 250.f)) * 0.5f;
+
+		if (accuracyTotal > evadeTotal) {
+			float rate = (accuracyTotal - evadeTotal) / 150.f;
+			evadeChance *= 1.f - (rate > 1.f ? 1.f : rate);
+		}
 	}
 
 	String r = "\\#882222\\";
@@ -2117,8 +2161,8 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* creoDe
 		<< b << "    evadeCenter      " << evadeCenter << endl
 		<< b << "  evadeTotal         " << evadeTotal << endl
 		<< a << "--------------------------------" << endl
-		<< h << "  toHitChance        " << toHitChance << endl
-		<< h << "  evadeChance        " << evadeChance << endl
+		<< h << "    toHitChance      " << int(toHitChance) << endl
+		<< h << "    evadeChance      " << int(evadeChance * 100) << endl
 		<< h << "  hitResult          " << (hitResult == HIT ? "HIT" : hitResult == MISS ? "MISS" : "EVADE") << endl
 		<< a << "--------------------------------";
 
