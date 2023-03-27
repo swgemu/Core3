@@ -197,7 +197,7 @@ function QuestSpawner:createSpawn(pSpawner)
 			local spawnPoint
 
 			if (inNavMesh) then
-				spawnPoint = getSpawnPointInArea(zoneName, spawnerX, spawnerY, 10)
+				spawnPoint = getSpawnPointInArea(zoneName, spawnerX, spawnerY, 30)
 			else
 				spawnPoint = getSpawnPoint(zoneName, spawnerX, spawnerY, 5, 10, true)
 			end
