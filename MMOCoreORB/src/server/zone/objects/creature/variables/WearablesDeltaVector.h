@@ -18,6 +18,18 @@
 #include "templates/tangible/ArmorObjectTemplate.h"
 
 class WearablesDeltaVector : public DeltaVector<ManagedReference<TangibleObject*> > {
+private:
+	// note: duplicate of CombatManager::hitlocations.
+	enum HitLocation : int {
+		HIT_BODY = 0,
+		HIT_HEAD = 1,
+		HIT_RARM = 2,
+		HIT_LARM = 3,
+		HIT_RLEG = 4,
+		HIT_LLEG = 5,
+		HIT_NUM = 6,
+	};
+
 protected:
 	VectorMap<uint8, Vector<ManagedReference<ArmorObject*> > > protectionArmorMap;
 
@@ -149,48 +161,63 @@ public:
 	}
 
 
-	Vector<ManagedReference<ArmorObject*> > getArmorAtHitLocation(uint8 hl) const {
-
+	Vector<ManagedReference<ArmorObject*> > getArmorAtHitLocation(uint8 hitLocation) const {
 		// TODO: Migrate and remove this when the object versioning and migration system is in place
+		switch(hitLocation) {
+			case HitLocation::HIT_BODY: {
+				return protectionArmorMap.get((uint8)ArmorObjectTemplate::CHEST);
+			}
 
-		// HIT_LOCATION has a circular dependency nightmare with CombatManager and CreatureObject
-		switch(hl) {
-		case 1: // HIT_BODY
-			return protectionArmorMap.get((uint8)ArmorObjectTemplate::CHEST); // CHEST
-		case 2: // HIT_LARM
-		case 3: // HIT_RARM
-		{
-			Vector<ManagedReference<ArmorObject*> > armArmor = protectionArmorMap.get((uint8)ArmorObjectTemplate::ARMS); // ARMS
-			Vector<ManagedReference<ArmorObject*> > armorAtLocation;
+			case HitLocation::HIT_HEAD: {
+				return protectionArmorMap.get((uint8)ArmorObjectTemplate::HEAD);
+			}
 
-			if(armArmor.isEmpty())
-				return armArmor;
+			case HitLocation::HIT_RARM:
+			case HitLocation::HIT_LARM: {
+				Vector<ManagedReference<ArmorObject*> > armArmor = protectionArmorMap.get((uint8)ArmorObjectTemplate::ARMS);
+				Vector<ManagedReference<ArmorObject*> > armorAtLocation;
 
-			if(hl == 2) {
-				for(int i=armArmor.size()-1; i>=0; i--) {
-					ArmorObject *obj = armArmor.get(i);
-					if(obj->hasArrangementDescriptor("bicep_l") || obj->hasArrangementDescriptor("bracer_upper_l") || obj->hasArrangementDescriptor("gloves"))
-						armorAtLocation.add(obj);
+				if (armArmor.isEmpty()) {
+					return armArmor;
 				}
-			} else {
-				for(int i=armArmor.size()-1; i>=0; i--) {
-					ArmorObject *obj = armArmor.get(i);
 
-					if(obj->hasArrangementDescriptor("bicep_r") || obj->hasArrangementDescriptor("bracer_upper_r") || obj->hasArrangementDescriptor("gloves"))
-						armorAtLocation.add(obj);
+				if (hitLocation == HitLocation::HIT_LARM) {
+					for (int i = armArmor.size() - 1; i >= 0; i--) {
+						ArmorObject* obj = armArmor.get(i);
+
+						if (obj == nullptr) {
+							continue;
+						}
+
+						if(obj->hasArrangementDescriptor("bicep_l") || obj->hasArrangementDescriptor("bracer_upper_l") || obj->hasArrangementDescriptor("gloves")) {
+							armorAtLocation.add(obj);
+						}
+					}
+				} else {
+					for (int i = armArmor.size() - 1; i >= 0; i--) {
+						ArmorObject* obj = armArmor.get(i);
+
+						if (obj == nullptr) {
+							continue;
+						}
+
+						if(obj->hasArrangementDescriptor("bicep_r") || obj->hasArrangementDescriptor("bracer_upper_r") || obj->hasArrangementDescriptor("gloves")) {
+							armorAtLocation.add(obj);
+						}
+					}
+				}
+
+				if (armorAtLocation.isEmpty()) {
+					return armArmor;
+				} else {
+					return armorAtLocation;
 				}
 			}
 
-			if(armorAtLocation.isEmpty())
-				return armArmor;
-			else
-				return armorAtLocation;
-		}
-		case 4: // HIT_LLEG
-		case 5: // HIT_RLEG
-			return protectionArmorMap.get((uint8)ArmorObjectTemplate::LEGS); // LEGS
-		case 6: // HIT_HEAD
-			return protectionArmorMap.get((uint8)ArmorObjectTemplate::HEAD); // HEAD
+			case HitLocation::HIT_LLEG:
+			case HitLocation::HIT_RLEG: {
+				return protectionArmorMap.get((uint8)ArmorObjectTemplate::LEGS);
+			}
 		}
 
 		return protectionArmorMap.get((uint8)ArmorObjectTemplate::NOLOCATION);
