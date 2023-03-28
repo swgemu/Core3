@@ -441,8 +441,8 @@ public:
 					buffer << "_face";
 
 			} else {
-				if (hitLocation == 0)
-					hitLocation = System::random(5) + 1;
+				if (hitLocation == CombatManager::HIT_NUM)
+					hitLocation = System::random(5);
 
 				switch(hitLocation) {
 				case CombatManager::HIT_BODY:
