@@ -16,43 +16,29 @@
 
 class CreateProjectileMessage : public BaseMessage {
 public:
-	CreateProjectileMessage() : BaseMessage() {
-		insertShort(0x12);
-		insertInt(0xB88AF9A5);  // CRC
-
-		insertShort(0); // shipID
-		insertByte(0); // weaponIndex
-		insertByte(0); // projectileIndex
-		insertByte(0); // component
-		insertShort(0); // startPosition
-		insertShort(0);
-		insertShort(0);
-
-		insertShort(0); // direction
-		insertShort(0);
-		insertShort(0);
-
-		insertInt(0); // sequence
-	}
-
 	CreateProjectileMessage(Vector3 position, Vector3 direction, uint8 component, uint8 projectile, uint8 weapon, uint16 shipID, uint32 sequence) {
 		insertShort(0x12);
 		insertInt(0xB88AF9A5);
+
 		insertShort(shipID);
 		insertByte(weapon);
 		insertByte(projectile);
 		insertByte(component);
+
 		PackedPosition packed;
+
 		packed.set(position);
 		packed.write(this);
 
 		packed.set(direction);
 		packed.write(this);
+
 		insertInt(sequence);
 	}
 };
 
 class CreateProjectileMessageCallback : public MessageCallback {
+protected:
 	uint16 shipID;
 	uint8 weaponIndex;
 	uint8 projectileType;
@@ -61,9 +47,15 @@ class CreateProjectileMessageCallback : public MessageCallback {
 	Vector3 direction;
 	uint32 sequence;
 
-	ObjectControllerMessageCallback* objectControllerMain;
 public:
 	CreateProjectileMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) : MessageCallback(client, server) {
+		shipID = 0;
+		weaponIndex = 0;
+		projectileType = 0;
+		componentIndex = 0;
+		position = Vector3(0,0,0);
+		direction = Vector3(0,0,0);
+		sequence = 0;
 	}
 
 	void parse(Message* message) {
@@ -71,9 +63,10 @@ public:
 		weaponIndex = message->parseByte();
 		projectileType = message->parseByte();
 		componentIndex = message->parseByte();
-		PackedPosition packed;
-		packed.parse(message);
 
+		PackedPosition packed;
+
+		packed.parse(message);
 		position = packed.get();
 
 		packed.parse(message);
@@ -83,53 +76,72 @@ public:
 	}
 
 	void run() {
-		StringBuffer buffer;
-		buffer << "CreateProjectileMessage: " << shipID << endl << "weapon: " << weaponIndex << endl << "projectileType:" << projectileType << endl;
-		buffer << "ComponentIndex:" << componentIndex << endl << "position: " << position.toString() << endl << "direction: " << direction.toString() << endl << "sequence: " << sequence << endl;
-		static Logger logger;
-		//logger.info(buffer.toString(), true);
-
-		//
-		ManagedReference<CreatureObject*> object = client->getPlayer();
-
-		if (object == nullptr)
+		ManagedReference<CreatureObject*> pilot = client->getPlayer();
+		if (pilot == nullptr) {
 			return;
+		}
 
-		Locker _locker(object);
-
-		ManagedReference<ShipObject*> ship = dynamic_cast<ShipObject*>(object->getParent().get().get());
-
-		if (ship == nullptr)
+		ManagedReference<SceneObject*> root = pilot->getRootParent();
+		if (root == nullptr) {
 			return;
+		}
 
-		String name = ship->getComponentNameMap()->get(ShipObject::WEAPON_COMPONENT_START+weaponIndex).toString();
-		const ShipProjectileData* data = ShipManager::instance()->getProjectileData(name.hashCode());
+		auto ship = root->asShipObject();
+		if (ship == nullptr) {
+			return;
+		}
 
-		ShipWeaponComponent *weapon = cast<ShipWeaponComponent*>(ship->getComponentObject(ShipObject::WEAPON_COMPONENT_START+weaponIndex));
+		auto component = ship->getComponentObject(ShipObject::WEAPON_COMPONENT_START + weaponIndex);
+		if (component == nullptr) {
+			return;
+		}
 
+		auto weapon = dynamic_cast<ShipWeaponComponent*>(component);
 		if (weapon == nullptr) {
-			ship->error("Attempted to create projectile with missing weapon : " + String::valueOf(weaponIndex));
+			return;
+		}
+
+		auto shipManager = ShipManager::instance();
+		if (shipManager == nullptr) {
+			return;
+		}
+
+		auto data = shipManager->getProjectileData(component->getComponentDataName().hashCode());
+		if (data == nullptr) {
+			return;
+		}
+
+		float range = data->getRange();
+		if (range == 0.f) {
+			return;
+		}
+
+		float speed = data->getSpeed();
+		if (speed == 0.f) {
 			return;
 		}
 
 		float currentEnergy = ship->getCapacitorEnergy();
 		float cost = weapon->getEnergyPerShot();
-		if (cost > currentEnergy) {
-			ship->error("Attempted to create projectile with insufficient energy");
+		if (currentEnergy < cost) {
 			return;
 		}
 
-		Locker cross(ship, object);
+		uint16 uniqueID = ship->getUniqueID();
+		if (shipID != uniqueID) {
+			shipID = uniqueID;
+		}
+
+		Locker lock(pilot);
+		Locker cross(ship, pilot);
+
 		ship->setCapacitorEnergy(currentEnergy - cost, true);
 
-		// TODO: Validate shot
-		ShipManager::ShipProjectile* projectile = new ShipManager::ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), System::getMiliTime());
+		auto projectile = new ShipManager::ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, speed, range, System::getMiliTime());
+		shipManager->addProjectile(projectile);
 
-		// compensate latency for outgoing message
-		ShipManager::instance()->addProjectile(projectile);
-		CreateProjectileMessage *message = new CreateProjectileMessage(position, direction, componentIndex, projectileType, weaponIndex, ship->getUniqueID(), sequence);
-
-		object->broadcastMessage(message, false);
+		auto message = new CreateProjectileMessage(position, direction, componentIndex, projectileType, weaponIndex, shipID, sequence);
+		pilot->broadcastMessage(message, false);
 	}
 
 	const char* getTaskName() {
