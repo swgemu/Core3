@@ -300,6 +300,11 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 						player->sendSystemMessage("Not within combat.");
 					}
 				}
+			} else if (templatePath == "drain_force_bar") {
+				if (ghost->isJedi()) {
+					player->sendSystemMessage("Your Force power has been depleted.");
+					ghost->setForcePower(1, true);
+				}
 			} else if (templatePath == "reset_buffs") {
 				if (!player->isInCombat()) {
 					player->sendSystemMessage("Your buffs have been reset.");
