@@ -25,7 +25,6 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 			} else {
 				menuResponse->addRadialMenuItem(39, 3, "@ui_radial:group_leave"); // Leave Group
 			}
-
 		}
 	}
 
@@ -38,10 +37,11 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 
 	menuResponse->addRadialMenuItem(59, 3, "@pet/pet_menu:menu_store"); // Store
 
-	if (pet->getLinkedCreature().get() != player)
+	if (pet->getLinkedCreature().get() != player || pet->isDead())
 		return;
 
 	ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
+
 	if( controlDevice == nullptr )
 		return;
 
@@ -52,45 +52,49 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 	// DROIDS
 	if( controlDevice->getPetType() == PetManager::DROIDPET ){
 		ManagedReference<DroidObject*> droidObject = dynamic_cast<DroidObject*>(controlDevice->getControlledObject());
-		bool conversingDroid = (pet->getOptionsBitmask() & OptionBitmask::CONVERSE);
-		if(conversingDroid) {
+
+ 		if (pet->isIncapacitated()) {
+			menuResponse->addRadialMenuItem(166, 3, "@pet/pet_menu:awaken" );
+		// convsering droids have less re-programmable commands
+		} else if (pet->getOptionsBitmask() & OptionBitmask::CONVERSE) {
 			menuResponse->addRadialMenuItem(132, 3, "@pet/pet_menu:droid_options"); // SERVER_ITEM_OPTIONS
 			menuResponse->addRadialMenuItemToRadialID(132, 234, 3, "@pet/pet_menu:menu_recharge" ); // PET_FEED
-			// convsering droids have less re-programmable commands
 		} else {
 			menuResponse->addRadialMenuItem(132, 3, "@pet/pet_menu:droid_options"); // SERVER_ITEM_OPTIONS
 			menuResponse->addRadialMenuItemToRadialID(132, 234, 3, "@pet/pet_menu:menu_recharge" ); // PET_FEED
+
 			menuResponse->addRadialMenuItem(141, 3, "@pet/pet_menu:menu_command_droid"); // PET_COMMAND
 			menuResponse->addRadialMenuItemToRadialID(141, 142, 3, "@pet/pet_menu:menu_follow" ); // PET_FOLLOW
 			menuResponse->addRadialMenuItemToRadialID(141, 143, 3, "@pet/pet_menu:menu_stay" ); // PET_STAY
+
 			if (droidObject != nullptr && droidObject->isCombatDroid())
 				menuResponse->addRadialMenuItemToRadialID(141, 144, 3, "@pet/pet_menu:menu_guard" ); // PET_GUARD
+
 			menuResponse->addRadialMenuItemToRadialID(141, 145, 3, "@pet/pet_menu:menu_friend" ); // PET_FRIEND
+
 			if (droidObject != nullptr && droidObject->isCombatDroid())
 				menuResponse->addRadialMenuItemToRadialID(141, 146, 3, "@pet/pet_menu:menu_attack" ); // PET_ATTACK
+
 			menuResponse->addRadialMenuItemToRadialID(141, 147, 3, "@pet/pet_menu:menu_patrol" ); // PET_PATROL
 			menuResponse->addRadialMenuItemToRadialID(141, 148, 3, "@pet/pet_menu:menu_get_patrol_point" ); // PET_GET_PATROL_POINT
 			menuResponse->addRadialMenuItemToRadialID(141, 149, 3, "@pet/pet_menu:menu_clear_patrol_points" ); // PET_CLEAR_PATROL_POINTS
 			menuResponse->addRadialMenuItemToRadialID(141, 150, 3, "@pet/pet_menu:menu_assume_formation_1" ); // PET_ASSUME_FORMATION_1
 			menuResponse->addRadialMenuItemToRadialID(141, 151, 3, "@pet/pet_menu:menu_assume_formation_2" ); // PET_ASSUME_FORMATION_2
 			menuResponse->addRadialMenuItemToRadialID(141, 158, 3, "@pet/pet_menu:menu_group" ); // PET_GROUP
+
 			if (droidObject != nullptr && droidObject->isCombatDroid() && droidObject->hasRangedWeapon())
 				menuResponse->addRadialMenuItemToRadialID(141, 163, 3, "@pet/pet_menu:menu_ranged_attack" );
+
 			menuResponse->addRadialMenuItemToRadialID(141, 164, 3, "@pet/pet_menu:menu_store" );
 			menuResponse->addRadialMenuItemToRadialID(141, 165, 3, "@pet/pet_menu:menu_follow_other" );
 
-			if( droidObject != nullptr && droidObject->isPowerDroid() ){
+			if (droidObject != nullptr && droidObject->isPowerDroid()) {
 				menuResponse->addRadialMenuItemToRadialID(141, 235, 3, "@pet/pet_menu:menu_recharge_other" );
 			}
 		}
-		if( pet->isIncapacitated() ){
-			menuResponse->addRadialMenuItem(166, 3, "@pet/pet_menu:awaken" );
-		}
 
-	}
 	// FACTION
-	else if( controlDevice->getPetType() == PetManager::FACTIONPET ){
-
+	} else if( controlDevice->getPetType() == PetManager::FACTIONPET) {
 		// future, if conversion do as droid objects above and not add this menu at all.
 		//bool conversingPet = (pet->getOptionsBitmask() & OptionBitmask::CONVERSE);
 
@@ -114,10 +118,8 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 			menuResponse->addRadialMenuItem(166, 3, "@pet/pet_menu:awaken" );
 		}
 
-	}
 	// CREATURES
-	else if( controlDevice->getPetType() == PetManager::CREATUREPET ){
-
+	} else if( controlDevice->getPetType() == PetManager::CREATUREPET ){
 		menuResponse->addRadialMenuItem(234, 3, "@pet/pet_menu:menu_feed" ); // PET_FEED
 
 		menuResponse->addRadialMenuItem(141, 3, "@pet/pet_menu:menu_command"); // PET_COMMAND
