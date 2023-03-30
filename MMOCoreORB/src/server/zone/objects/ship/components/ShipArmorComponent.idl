@@ -19,8 +19,15 @@ class ShipArmorComponent extends ShipComponent {
 	}
 
 	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	@local
 	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
 }
