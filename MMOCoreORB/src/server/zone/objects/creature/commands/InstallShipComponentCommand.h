@@ -46,7 +46,7 @@ public:
 
 		Locker locker(ship);
 		//info("Attempting to install component(" + String::valueOf((int64)componentId) + ") at slot: " + String::valueOf(slot), true);
-		ship->install(creature, component, slot);
+		ship->install(creature, component, slot, true);
 
 		return SUCCESS;
 	}
