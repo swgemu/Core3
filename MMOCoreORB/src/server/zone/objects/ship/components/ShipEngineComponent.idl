@@ -13,18 +13,119 @@ import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 
 class ShipEngineComponent extends ShipComponent {
+	protected float engineAccelerationRate;
+	protected float engineDecelerationRate;
 
-	float maxPitch;
-	float maxRoll;
-	float maxYaw;
-	float maxSpeed;
-	float acceleration;
-	float deceleration;
+	protected float enginePitchAccelerationRate;
+	protected float engineYawAccelerationRate;
+	protected float engineRollAccelerationRate;
+
+	protected float enginePitchRateMaximum;
+	protected float engineYawRateMaximum;
+	protected float engineRollRateMaximum;
+
+	protected float engineSpeedMaximum;
+
+	public ShipEngineComponent() {
+		super();
+
+		engineAccelerationRate = 60.f;
+		engineDecelerationRate = 40.f;
+
+		enginePitchAccelerationRate = 1.574f;
+		engineYawAccelerationRate = 1.574f;
+		engineRollAccelerationRate = 1.574f;
+
+		enginePitchRateMaximum = 3.14159f;
+		engineYawRateMaximum = 3.14159f;
+		engineRollRateMaximum = 3.14159f;
+
+		engineSpeedMaximum = 50.f;
+	}
+
+	public float getAccelerationRate() {
+		return engineAccelerationRate;
+	}
+
+	public float getDecelerationRate() {
+		return engineDecelerationRate;
+	}
+
+	public float getPitchAccelerationRate() {
+		return enginePitchAccelerationRate;
+	}
+
+	public float getYawAccelerationRate() {
+		return engineYawAccelerationRate;
+	}
+
+	public float getRollAccelerationRate() {
+		return engineRollAccelerationRate;
+	}
+
+	public float getPitchRateMaximum() {
+		return enginePitchRateMaximum;
+	}
+
+	public float getYawRateMaximum() {
+		return engineYawRateMaximum;
+	}
+
+	public float getRollRateMaximum() {
+		return engineRollRateMaximum;
+	}
+
+	public float getSpeedMaximum() {
+		return engineSpeedMaximum;
+	}
+
+	@local
+	public void setAccelerationRate(float value) {
+		engineAccelerationRate = value;
+	}
+
+	@local
+	public void setDecelerationRate(float value) {
+		engineDecelerationRate = value;
+	}
+
+	@local
+	public void setPitchAccelerationRate(float value) {
+		enginePitchAccelerationRate = value;
+	}
+
+	@local
+	public void setYawAccelerationRate(float value) {
+		engineYawAccelerationRate = value;
+	}
+
+	@local
+	public void setRollAccelerationRate(float value) {
+		engineRollAccelerationRate = value;
+	}
+
+	@local
+	public void setPitchRateMaximum(float value) {
+		enginePitchRateMaximum = value;
+	}
+
+	@local
+	public void setYawRateMaximum(float value) {
+		engineYawRateMaximum = value;
+	}
+
+	@local
+	public void setRollRateMaximum(float value) {
+		engineRollRateMaximum = value;
+	}
+
+	@local
+	public void setSpeedMaximum(float value) {
+		engineSpeedMaximum = value;
+	}
 
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-
-	public native void initializeTransientMembers();
 
 	@local
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
@@ -33,60 +134,9 @@ class ShipEngineComponent extends ShipComponent {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	@local
 	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
 
-	public void setMaxSpeed(float value) {
-		maxSpeed = value;
-	}
-
-	public void setMaxAcceleration(float value) {
-		acceleration = value;
-	}
-
-	public void setMaxDeceleration(float value) {
-		deceleration = value;
-	}
-
-	public void setMaxYaw(float value) {
-		if (value < 1.0f)
-			value = 1.0f;
-			maxYaw = value;
-	}
-
-	public void setMaxRoll(float value) {
-		if (value < 1.0f)
-			value = 1.0f;
-			maxRoll = value;
-	}
-
-	public void setMaxPitch(float value) {
-		if (value < 1.0f)
-			value = 1.0f;
-			maxPitch = value;
-	}
-
-	public float getMaxSpeed() {
-		return maxSpeed;
-	}
-
-	public float getMaxPitch() {
-		return maxPitch;
-	}
-
-	public float getMaxYaw() {
-		return maxYaw;
-	}
-
-	public float getMaxRoll() {
-		return maxRoll;
-	}
-
-	public ShipEngineComponent() {
-		super();
-		maxPitch = 1.0f;
-		maxYaw = 1.0f;
-		maxRoll = 1.0f;
-		acceleration = 40.0f;
-		deceleration = 40.0f;
-	}
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
 }
