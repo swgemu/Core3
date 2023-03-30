@@ -525,21 +525,24 @@ ShipObject* ShipManager::generateShip(String templateName) {
 			case Components::ENGINE: {
 				ShipEngineComponent* engine = shipComponent.castTo<ShipEngineComponent*>();
 				float speed = values.get("speed");
-				float pitch = values.get("pitch");
-				float roll = values.get("roll");
-				float yaw = values.get("yaw");
-				float pitchRate = values.get("pitchRate");
-				float rollRate = values.get("rollRate");
-				float yawRate = values.get("yawRate");
+				float pitch = values.get("pitch") * Math::DEG2RAD;
+				float yaw = values.get("yaw") * Math::DEG2RAD;
+				float roll = values.get("roll") * Math::DEG2RAD;
+				float pitchRate = values.get("pitchRate") * Math::DEG2RAD;
+				float yawRate = values.get("yawRate") * Math::DEG2RAD;
+				float rollRate = values.get("rollRate") * Math::DEG2RAD;
 				float accel = values.get("acceleration");
 				float decel = values.get("deceleration");
-				engine->setMaxSpeed(speed);
-				engine->setMaxPitch(pitch / 57.2958f);
-				engine->setMaxYaw(yaw / 57.2958f);
-				engine->setMaxRoll(roll / 57.2958f);
-				engine->setMaxAcceleration(accel);
-				engine->setMaxDeceleration(decel);
-				// TODO: FIXME
+
+				engine->setSpeedMaximum(speed);
+				engine->setPitchRateMaximum(pitch);
+				engine->setYawRateMaximum(yaw);
+				engine->setRollRateMaximum(roll);
+				engine->setPitchAccelerationRate(pitchRate);
+				engine->setYawAccelerationRate(yawRate);
+				engine->setRollAccelerationRate(rollRate);
+				engine->setAccelerationRate(accel);
+				engine->setDecelerationRate(decel);
 				break;
 			}
 			case Components::SHIELD0:

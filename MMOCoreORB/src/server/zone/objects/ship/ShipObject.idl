@@ -1458,4 +1458,8 @@ class ShipObject extends TangibleObject {
 	public native void removeComponentFlag(unsigned int slot, unsigned int flag, boolean notify = true);
 
 	public native void restartBooster();
+
+	public native float calculateCurrentMass();
+
+	public native float calculateCurrentEnergyCost();
 }
