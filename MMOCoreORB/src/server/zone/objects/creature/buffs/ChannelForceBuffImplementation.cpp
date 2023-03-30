@@ -58,14 +58,6 @@ void ChannelForceBuffImplementation::doHamTick() {
 		if (modifier == 0)
 			continue;
 
-		int currentMods = player->getMaxHAM(attribute) - player->getBaseHAM(attribute) + player->getEncumbrance(attribute / 3);
-
-		// This handles situations that buffs drop during channel tick tasks. We must make sure that channel does not give the value from the buff
-		// back to the player or they will end up with ghost buffs
-		if (currentMods < 0 && (currentMods + (abs(modifier) > 0))) {
-			modifier = currentMods;
-		}
-
 		// modifier should be negative, but even if it isn't negative, we can ensure that we
 		// "undo" the effects of channel by taking the negative to calculate how much to modify
 		// our attribute by this tick.
@@ -78,7 +70,7 @@ void ChannelForceBuffImplementation::doHamTick() {
 
 		int newMod = modifier + healAmount;
 
-		// info(true) << "Updated healAmount = " << healAmount << " new Modifier = " << newMod;
+		// info(true) << "Updated healAmount = " << healAmount << " new Modifier = " << newMod << "\n\n\n";
 
 		// we now add the healAmount to the modifier, which is necessarily the opposite sign of
 		// modifier due to the definition.
