@@ -317,33 +317,46 @@ ShipObject* ShipObject::asShipObject() {
 }
 
 void ShipObjectImplementation::install(CreatureObject* player, SceneObject* sceno, int slot, bool notifyClient) {
+	if (getComponentObject(slot) != nullptr) {
+		return uninstall(player, slot, notifyClient);
+	}
+
 	ManagedReference<ShipComponent*> shipComponent = dynamic_cast<ShipComponent*>(sceno);
-
-	if (shipComponent == nullptr)
+	if (shipComponent == nullptr) {
 		return;
-
-	//info("DataName: " + shipComponent->getComponentDataName() + " hash: " + String::hexvalueOf((int64)shipComponent->getComponentDataName().hashCode()), true);
-	const ShipComponentData *component = ShipManager::instance()->getShipComponent(shipComponent->getComponentDataName());
-
-	if (component == nullptr) {
-		fatal("nullptr ShipComponentData");
 	}
 
-	DeltaMessage *message = notifyClient ? new DeltaMessage(getObjectID(), 'SHIP', 6) : nullptr;
-	UnicodeString string = UnicodeString(component->getName());
-
-	components.put(slot, cast<ShipComponent*>(sceno));
-
-	setComponentCRC(slot, component->getName().hashCode(), message);
-	setComponentName(slot, string, message);
-
-	if (message != nullptr) {
-		message->close();
-		broadcastMessage(message, true, false);
-	}
-
-	shipComponent->install(player, _this.getReferenceUnsafeStaticCast(), slot, notifyClient);
+	Locker lock(shipComponent);
 	shipComponent->destroyObjectFromWorld(true);
+
+	components.put(slot, shipComponent);
+
+	shipComponent->install(player, asShipObject(), slot, notifyClient);
+}
+
+void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool notifyClient) {
+	ManagedReference<ShipComponent*> shipComponent = getComponentObject(slot);
+	if (shipComponent == nullptr) {
+		return;
+	}
+
+	Locker lock(shipComponent);
+	shipComponent->destroyObjectFromWorld(true);
+
+	if (player != nullptr) {
+		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+		if (inventory == nullptr || !inventory->transferObject(shipComponent, -1, notifyClient, true)) {
+			return;
+		}
+
+		if (notifyClient) {
+			shipComponent->sendTo(player, true);
+		}
+	}
+
+	shipComponent->uninstall(player, asShipObject(), slot, notifyClient);
+
+	components.drop(slot);
 }
 
 String ShipObjectImplementation::getParkingLocation() {
@@ -354,16 +367,6 @@ String ShipObjectImplementation::getParkingLocation() {
 		}
 	}
 	return parkingLocation;
-}
-
-void ShipObjectImplementation::uninstall(CreatureObject* owner, int slot, bool notifyClient) {
-	DeltaMessage* message = new DeltaMessage(getObjectID(), 'SHIP', 6);
-
-	setComponentCRC(slot, 0, message);
-	components.remove(0);
-	message->close();
-
-	broadcastMessage(message, true, false);
 }
 
 int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
@@ -703,35 +706,31 @@ int ShipObjectImplementation::getHyperspaceDelay() {
 }
 
 float ShipObjectImplementation::getActualSpeed() {
-	auto componentMap = getShipComponentMap();
+	const auto componentMap = getShipComponentMap();
 
 	float componentActual = 0.f;
 
 	if (componentMap->get(Components::ENGINE) != 0) {
-		//float engineEfficiency = getComponentEfficiencyMap()->get(Components::ENGINE);
-		float engineSpeed = getMaxSpeed();
-		componentActual += engineSpeed;
+		float efficiency = getComponentEfficiencyMap()->get(Components::ENGINE);
+		componentActual += maxSpeed * efficiency;
 	}
 
 	if (componentMap->get(Components::BOOSTER) != 0 && isBoosterActive()) {
-		//float boosterEfficiency = getComponentEfficiencyMap()->get(Components::BOOSTER);
-		float boosterSpeed = getBoosterMaxSpeed();
-		componentActual += boosterSpeed;
+		float efficiency = getComponentEfficiencyMap()->get(Components::BOOSTER);
+		componentActual += boosterMaxSpeed * efficiency;
 	}
 
 	float chassisActual = 1.f;
 
-	if (getChassisSpeed() != 0.f) {
-		float typeSpeed = getChassisSpeed();
-		chassisActual *= typeSpeed;
+	if (chassisSpeed != 0) {
+		chassisActual = chassisSpeed;
 	}
 
 	if (hasShipWings() && (getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
-		const ShipChassisData* chassis = ShipManager::instance()->getChassisData(getShipName());
+		const auto chassisData = ShipManager::instance()->getChassisData(getShipName());
 
-		if (chassis != nullptr) {
-			float openWingSpeed = chassis->getWingOpenSpeed();
-			chassisActual *= openWingSpeed;
+		if (chassisData != nullptr) {
+			chassisActual *= chassisData->getWingOpenSpeed();
 		}
 	}
 
@@ -752,4 +751,32 @@ bool ShipObjectImplementation::checkInConvoRange(SceneObject* targetObject) {
 	}
 
 	return false;
+}
+
+float ShipObjectImplementation::calculateCurrentMass() {
+	float currentMass = 0;
+
+	for (int i = 0; i < componentMass.size(); ++i) {
+		auto value = componentMass.getValueAt(i);
+
+		if (value > 0.f) {
+			currentMass += value;
+		}
+	}
+
+	return currentMass;
+}
+
+float ShipObjectImplementation::calculateCurrentEnergyCost() {
+	float energyCost = 0;
+
+	for (int i = 0; i < componentEnergyCost.size(); ++i) {
+		auto value = componentEnergyCost.getValueAt(i);
+
+		if (value > 0.f) {
+			energyCost += value;
+		}
+	}
+
+	return energyCost;
 }
