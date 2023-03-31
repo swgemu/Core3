@@ -73,8 +73,10 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -25, z = 0, y = -9, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 25, z = 0, y = -9, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
 
-		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 42, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 31.7, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 31.94, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 20.44, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 5.35, z = 0, y = 36, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = -5.35, z = 0, y = 36, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 
 		{ templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0.25, y = 1.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 
@@ -102,6 +104,7 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 	},
 
 	childCreatureObjects = {
+		-- Exterior Spawns
 		{ mobile = "fbase_rebel_master_sergeant_hard", x = 10, z = 0, y = 4, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_command_security_guard_hard", x = 10, z = 0, y = 10, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 
@@ -140,6 +143,27 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 		{ mobile = "fbase_rebel_sergeant_hard", x = 24.5, z = 0, y = 34.5, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_comm_operator_hard", x = 22, z = 0, y = 37, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_medic_hard", x = 27, z = 0, y = 37, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
+
+		-- Interior Spawns
+		-- 1 entry
+		-- 2 hall1
+
+		-- 3 hall2
+
+		-- 4 ramp1
+
+		-- 5 ramp2
+
+		-- 7 room3
+
+		-- 8 ramp3
+		-- 9 foyer
+
+		-- 10 bunker
+
+
+
+
 
 		{ mobile = "fbase_rebel_recruit_hard", x = -4.5, z = 0, y = -2, cellid = 2, respawn = 300, containmentType = -1, heading = 4.71 },
 		{ mobile = "fbase_rebel_recruit_hard", x = -4.5, z = 0, y = 0.9, cellid = 2, respawn = 300, containmentType = -1, heading = 4.71 },
