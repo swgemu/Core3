@@ -147,9 +147,9 @@ object_building_faction_perk_hq_hq_s03_imp_pvp = object_building_faction_perk_hq
 		{ mobile = "fbase_stormtrooper_medic_hard", x = -5.4, z = -10.3, y = -6.9, cellid = 5, respawn = 300, containmentType = -1, heading = 0.785398},
 		-- 7 room3
 		{ mobile = "imperial_recruiter", x = -1.7, z = -13.8, y = 6.4, cellid = 7, containmentType = -1, respawn = 60, heading = 0},
-		{ mobile = "fbase_stormtrooper_hard", x = -0.3, z = -13.8, y = 6, cellid = 7, containmentType = -1, respawn = 60, heading = 0},
-		{ mobile = "fbase_stormtrooper_bombardier_hard", x = -9.2, z = -13.8, y = 5.7, cellid = 7, containmentType = -1, respawn = 60, heading = 1.5708},
-		{ mobile = "fbase_stormtrooper_sniper_hard", x = -6.1, z = -13.8, y = 8.9, cellid = 7, containmentType = -1, respawn = 60, heading = 3.14159},
+		{ mobile = "fbase_stormtrooper_hard", x = -0.3, z = -13.8, y = 6, cellid = 7, containmentType = -1, respawn = 300, heading = 0},
+		{ mobile = "fbase_stormtrooper_bombardier_hard", x = -9.2, z = -13.8, y = 5.7, cellid = 7, containmentType = -1, respawn = 300, heading = 1.5708},
+		{ mobile = "fbase_stormtrooper_sniper_hard", x = -6.1, z = -13.8, y = 8.9, cellid = 7, containmentType = -1, respawn = 300, heading = 3.14159},
 		-- 8 ramp3
 		{ mobile = "fbase_storm_commando_hard", x = -7.4, z = -17.3, y = -4.2, cellid = 8, respawn = 300, containmentType = -1, heading = 0.785398},
 		-- 9 foyer
