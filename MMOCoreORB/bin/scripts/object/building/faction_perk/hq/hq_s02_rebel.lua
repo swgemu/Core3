@@ -71,8 +71,10 @@ object_building_faction_perk_hq_hq_s02_rebel = object_building_faction_perk_hq_s
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 18.17, z = 0, y = -2.43, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -18.17, z = 0, y = -2.43, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
 
-		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 48, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 39.5, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 41.32, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 37.18, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 5.35, z = 0, y = 43, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = -5.35, z = 0, y = 43, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
 
 		{ templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0.25, y = 1.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 
@@ -104,7 +106,7 @@ object_building_faction_perk_hq_hq_s02_rebel = object_building_faction_perk_hq_s
 	},
 
 	childCreatureObjects = {
-
+		-- Exterior Spawn
 		{ mobile = "fbase_rebel_guard_captain", x = 5, z = 0, y = 18, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_grenadier", x = -5, z = 0, y = 18, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_grenadier", x = 0, z = 0, y = 53, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
@@ -135,21 +137,23 @@ object_building_faction_perk_hq_hq_s02_rebel = object_building_faction_perk_hq_s
 		{ mobile = "fbase_rebel_commando", x = 22, z = 0, y = 37, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_rifleman", x = 27, z = 0, y = 37, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 
-		{ mobile = "fbase_rebel_squad_leader", x = -3.5, z = 0, y = -3.9, cellid = 2, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_cadet", x = 2.9, z = 0, y = -4.1, cellid = 3, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_heavy_trooper", x = -1, z = -6.75, y = -6.5, cellid = 5, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_commando", x = -4.5, z = -6.75, y = -3.4, cellid = 5, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_cadet", x = -2.3, z = -6.75, y = -16.5, cellid = 6, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_heavy_trooper", x = 7.2, z = -6.75, y = -14.5, cellid = 6, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_commando", x = 2.5, z = -6.75, y = -16.5, cellid = 6, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_heavy_trooper", x = 8, z = -6.75, y = -6, cellid = 7, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_squad_leader", x = 3, z = -6.75, y = -1.8, cellid = 7, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_guardsman", x = -5.5, z = -13.75, y = -3, cellid = 9, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_medic_hard", x = .5, z = -13.75, y = -3 ,cellid = 9, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_army_captain", x = .5, z = -13.75, y = -7.2, cellid = 9, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_liberator", x = -5.5, z = -13.75, y = -7.2 ,cellid = 9, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_colonel", x = -4.1, z = -13.75, y = -17.3 ,cellid = 9, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "rebel_recruiter", x = 0, z = -13.75, y = -17, cellid = 9, containmentType = -1, respawn = 60, heading = 0},
+		-- Interior Spawns
+		-- 1 entry
+		-- 2 hall1
+		{ mobile = "fbase_rebel_soldier", x = -4.5, z = 0.3, y = -4.7, cellid = 2, respawn = 300, containmentType = -1, heading = 0.750492},
+		-- 3 hall2
+		-- 4 ramp1
+		-- 5 room1
+		{ mobile = "fbase_rebel_guard_captain", x = -6.9, z = -6.8, y = -7.8, cellid = 5, respawn = 300, containmentType = -1, heading = 5.23599},
+		-- 6 room2
+		-- 7 room3
+		{ mobile = "rebel_recruiter", x = 3.21, z = -6.8, y = -1.64, cellid = 7, respawn = 60, containmentType = -1, heading = 2.32129},
+		{ mobile = "fbase_rebel_commando", x = 3.4, z = -6.8, y = -0.3, cellid = 7, respawn = 300, containmentType = -1, heading = 0.750492},
+		-- 8 ramp2
+		{ mobile = "fbase_rebel_command_security_guard_hard", x = 6.1, z = -10.3, y = 8.1, cellid = 8, respawn = 300, containmentType = -1, heading = 6.00393},
+		-- 9 basement
+		{ mobile = "fbase_rebel_liberator", x = -0.7, z = -13.8, y = -16.7, cellid = 9, respawn = 300, containmentType = -1, heading = 3.82227},
+		{ mobile = "fbase_rebel_squad_leader", x = -3.9, z = -13.8, y = -8.1, cellid = 9, respawn = 300, containmentType = -1, heading = 0.907571},
 	},
 
 	securityPatrols = {
