@@ -171,9 +171,9 @@ object_building_faction_perk_hq_hq_s03_imp = object_building_faction_perk_hq_sha
 		{ mobile = "fbase_imperial_warrant_officer_ii_hard", x = -5.4, z = -10.3, y = -6.9, cellid = 5, respawn = 300, containmentType = -1, heading = 0.785398},
 		-- 7 room3
 		{ mobile = "imperial_recruiter", x = -1.7, z = -13.8, y = 6.4, cellid = 7, containmentType = -1, respawn = 60, heading = 0},
-		{ mobile = "fbase_imperial_medic_hard", x = -0.3, z = -13.8, y = 6, cellid = 7, containmentType = -1, respawn = 60, heading = 0},
-		{ mobile = "fbase_imperial_master_sergeant_hard", x = -9.2, z = -13.8, y = 5.7, cellid = 7, containmentType = -1, respawn = 60, heading = 1.5708},
-		{ mobile = "fbase_imperial_sharpshooter_hard", x = -6.1, z = -13.8, y = 8.9, cellid = 7, containmentType = -1, respawn = 60, heading = 3.14159},
+		{ mobile = "fbase_imperial_medic_hard", x = -0.3, z = -13.8, y = 6, cellid = 7, containmentType = -1, respawn = 300, heading = 0},
+		{ mobile = "fbase_imperial_master_sergeant_hard", x = -9.2, z = -13.8, y = 5.7, cellid = 7, containmentType = -1, respawn = 300, heading = 1.5708},
+		{ mobile = "fbase_imperial_sharpshooter_hard", x = -6.1, z = -13.8, y = 8.9, cellid = 7, containmentType = -1, respawn = 300, heading = 3.14159},
 		-- 8 ramp3
 		{ mobile = "fbase_elite_sand_trooper", x = -7.4, z = -17.3, y = -4.2, cellid = 8, respawn = 300, containmentType = -1, heading = 0.785398},
 		-- 9 foyer
