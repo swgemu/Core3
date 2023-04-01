@@ -91,6 +91,9 @@ class LootManager extends ManagedService implements Logger {
 	@dereferenced
 	private transient VectorMap<string, Reference<CrystalData> > crystalData;
 
+	public static final int LEVELMAX = 300;
+	public static final int LEVELMIN = 1;
+
 	public LootManager(CraftingManager craftman, ObjectManager objMan, ZoneServer server) {
 		craftingManager = craftman;
 		objectManager = objMan;

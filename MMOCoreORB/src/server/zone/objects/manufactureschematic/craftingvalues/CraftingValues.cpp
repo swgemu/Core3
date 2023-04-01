@@ -25,7 +25,15 @@ CraftingValues::CraftingValues(const CraftingValues& values) : Object(), Seriali
 
 CraftingValues::CraftingValues(const AttributesMap& values) : Object(), Serializable(), Logger() {
 	doHide = true;
-	attributesMap = values;
+
+	int totalAttributes = values.getSize();
+
+	for (int i = 0; i < totalAttributes; ++i) {
+		String attribute = values.getAttribute(i);
+
+		attributesMap.addExperimentalAttribute(attribute, values.getAttributeGroup(attribute), values.getMinValue(attribute), values.getMaxValue(attribute), values.getPrecision(attribute), values.isHidden(attribute), values.getCombineType(attribute));
+		attributesMap.setMaxPercentage(attribute, 1.f);
+	}
 
 	setLoggingName("CraftingValues");
 	setLogging(false);

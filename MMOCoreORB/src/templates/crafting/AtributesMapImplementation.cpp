@@ -462,5 +462,9 @@ void AttributesMap::setPrecision(const String& attribute, const int amount) {
 	if (value == nullptr)
 		return;
 
+#ifdef DEBUG_ATTRIBUTES_MAP
+	info(true) << " AttributesMap::setPrecision for " << attribute << " setting a value of " << amount;
+#endif // DEBUG_ATTRIBUTES_MAP
+
 	value->setPrecision(amount);
 }

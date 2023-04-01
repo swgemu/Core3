@@ -255,13 +255,14 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 	info(true) << " ---------- LootManagerImplementation::createLootObject -- called ----------";
 #endif
 
-	if(level < 1)
-		level = 1;
-
-	if(level > 300)
-		level = 300;
+	level = (level < LootManager::LEVELMIN) ? LootManager::LEVELMIN : level;
+	level = (level > LootManager::LEVELMAX) ? LootManager::LEVELMAX : level;
 
 	const String& directTemplateObject = templateObject->getDirectObjectTemplate();
+
+#ifdef DEBUG_LOOT_MAN
+	info(true) << "Item Template: " << directTemplateObject << "    Level = " << level << " Uncapped Level = " << uncappedLevel;
+#endif
 
 	ManagedReference<TangibleObject*> prototype = zoneServer->createObject(directTemplateObject.hashCode(), 2).castTo<TangibleObject*>();
 
@@ -285,8 +286,8 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 	float junkMaxValue = templateObject->getJunkMaxValue() * junkValueModifier;
 	float fJunkValue = junkMinValue+System::random(junkMaxValue-junkMinValue);
 
-	if (level > 0 && templateObject->getJunkDealerTypeNeeded()>1){
-		fJunkValue=fJunkValue + (fJunkValue * ((float)level / 100)); // This is the loot value calculation if the item has a level
+	if (templateObject->getJunkDealerTypeNeeded() > 1){
+		fJunkValue = fJunkValue + (fJunkValue * ((float)level / 100)); // This is the loot value calculation if the item has a level
 	}
 
 	AttributesMap attributesMap = templateObject->getAttributesMapCopy();
@@ -331,6 +332,10 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 		exceptionalLooted.increment();
 	}
 
+#ifdef DEBUG_LOOT_MAN
+		info(true) << "Exceptional Modifier (excMod) = " << excMod << "  Adjustment = " << adjustment;
+#endif
+
 	if (prototype->isLightsaberCrystalObject()) {
 		LightsaberCrystalComponent* crystal = cast<LightsaberCrystalComponent*> (prototype.get());
 
@@ -355,10 +360,19 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 		float min = craftingValues->getMinValue(attribute);
 		float max = craftingValues->getMaxValue(attribute);
 
+#ifdef DEBUG_LOOT_MAN
+		info(true) << "Base Min = " << min;
+		info(true) << "Base Max = " << max;
+#endif
+
 		if (min == max)
 			continue;
 
 		float percentage = System::random(10000) / 10000.f;
+
+#ifdef DEBUG_LOOT_MAN
+		info(true) << "Percentage = " << percentage;
+#endif
 
 		// If the attribute is represented by an integer (useCount, maxDamage,
 		// range mods, etc), we need to base the percentage on a random roll
@@ -373,6 +387,10 @@ TangibleObject* LootManagerImplementation::createLootObject(const LootItemTempla
 			int range = abs(max-min);
 			int randomValue = System::random(range);
 			percentage = (float)randomValue / (float)(range);
+
+#ifdef DEBUG_LOOT_MAN
+			info(true) << "Precision is 0. Updating percentage -- Percentage = " << percentage;
+#endif
 		}
 
 		craftingValues->setCurrentPercentage(attribute, percentage);
