@@ -747,6 +747,9 @@ function DeathWatchBunkerScreenPlay:removeFromBunker(pCreature)
 		end
 	end
 
+	-- itterate group members to remove them
+	-- readStringVectorSharedMemory(playerID .. ":dwb:groupIDs:")
+
 	if (CreatureObject(pCreature):isGrouped()) then
 		local groupSize = CreatureObject(pCreature):getGroupSize()
 
@@ -1713,11 +1716,13 @@ function DeathWatchBunkerScreenPlay:stopCraftingProcess(pCreature, pTerm, succes
 	local playerID = SceneObject(pCreature):getObjectID()
 	local number = readData(terminalID .. ":dwb:craftingterminal")
 	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
+	local groupMemberIDs = readStringVectorSharedMemory(playerID .. ":dwb:groupIDs:")
 
 	local target = readData(statusPrefix .. "targetitemindex")
 
 	deleteData(playerID .. ":dwb:currentlycrafting")
 	deleteData(playerID .. ":dwb:terminal")
+	deleteStringVectorSharedMemory(playerID .. ":dwb:groupIDs:")
 	deleteData(statusPrefix .. "currentlycrafting")
 	deleteData(statusPrefix .. "stepStartTime")
 	deleteData(statusPrefix .. "user")
