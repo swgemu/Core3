@@ -412,11 +412,7 @@ void GCWManagerImplementation::verifyMinefields(BuildingObject* building) {
 	if (zoneServer == nullptr)
 		return;
 
-	Locker* blocker = nullptr;
-
-	if (!building->isLockedByCurrentThread()) {
-		blocker = new Locker(building);
-	};
+	Locker blocker(building);
 
 	for (int i = 0; i < baseData->getTotalMinefieldCount(); ++i) {
 		uint64 minefieldID = baseData->getMinefieldID(i);
@@ -439,11 +435,7 @@ void GCWManagerImplementation::verifyScanners(BuildingObject* building) {
 	if (zoneServer == nullptr)
 		return;
 
-	Locker* blocker = nullptr;
-
-	if (!building->isLockedByCurrentThread()) {
-		blocker = new Locker(building);
-	}
+	Locker blocker(building);
 
 	for (int i = 0; i < baseData->getTotalScannerCount(); ++i) {
 		uint64 scannerID = baseData->getScannerID(i);
@@ -468,11 +460,7 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
 
 	int turretCount = 0;
 
-	Locker* blocker = nullptr;
-
-	if (!building->isLockedByCurrentThread()) {
-		blocker = new Locker(building);
-	}
+	Locker blocker(building);
 
 	bool hasDefense = baseData->hasDefense();
 
