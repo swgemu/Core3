@@ -431,7 +431,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 				String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
 
-				if (name.contains("color")) {
+				if (name != "/private/index_color_0" && name.contains("color")) {
 					droid->setCustomizationVariable(name, val, true);
 				}
 			}

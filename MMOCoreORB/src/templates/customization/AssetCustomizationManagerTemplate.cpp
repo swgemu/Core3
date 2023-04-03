@@ -69,7 +69,7 @@ void* AssetCustomizationManagerTemplate::getCustomizationVariablesFromMap(uint16
 
 			String variableName = getCustomizationVariableName(*(byte*) ucmpValue);
 
-			if (!result.contains(variableName) && !variableName.contains("index_color_0") && !(skipSharedOwner && variableName.contains("/shared_owner/"))) {
+			if (!result.contains(variableName) && !(skipSharedOwner && variableName.contains("/shared_owner/"))) {
 				bool isPallette = false;
 				uint16 rtypResult = 0;
 

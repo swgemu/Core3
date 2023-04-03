@@ -838,12 +838,21 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 		return;
 	}
 
-	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(templateData->getAppearanceFilename().hashCode(), variables, true);
+	VectorMap<String, Reference<CustomizationVariable*> > colorVariables;
+	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(templateData->getAppearanceFilename().hashCode(), colorVariables, true);
 
-	for (int i = 0; i < variables.size(); ++i) {
-		Reference<RangedIntCustomizationVariable*> var = cast<RangedIntCustomizationVariable*>(variables.get(i).get());
+	for (int i = 0; i < colorVariables.size(); ++i) {
+		String varKey = colorVariables.elementAt(i).getKey();
+
+		if (prototype->isDroidDeedObject() && varKey == "/private/index_color_0")
+			continue;
+
+		const Reference<RangedIntCustomizationVariable*> var = cast<RangedIntCustomizationVariable*>(colorVariables.get(i).get());
+
 		if (var != nullptr) {
-			prototype->setCustomizationVariable(variables.elementAt(i).getKey(), var->getDefaultValue());
+			prototype->setCustomizationVariable(varKey, var->getDefaultValue());
+
+			variables.put(varKey, var.get());
 		}
 	}
 
