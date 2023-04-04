@@ -1991,7 +1991,7 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 	if (defender->isIntimidated() || defender->isBerserked() || defender->isVehicleObject())
 		return 0;
 
-	int targetDefense = defender->isPlayerCreature() ? 0 : defender->getLevel();
+	int targetDefense = defender->getLevel();
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
 
 	const auto defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
@@ -2110,15 +2110,18 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* creoDe
 				}
 			}
 		} else { // HitStatus::BLOCK, HitStatus::COUNTER, HitStatus::DODGE
-			int attackRoll = System::random(499) + 1;
-			int defendRoll = System::random(199) + 1;
-
 			evadeSkill = getDefenderSecondaryDefenseModifier(creoDefender);
-			evadeCenter = creoDefender->getSkillMod("private_center_of_being");
-			evadeTotal = evadeSkill + evadeCenter + defensePosture;
 
-			if (accuracyTotal + attackRoll <= evadeTotal + defendRoll) {
-				hitResult = defendResult;
+			if (evadeSkill != 0) {
+				int attackRoll = System::random(499) + 1;
+				int defendRoll = System::random(199) + 1;
+
+				evadeCenter = creoDefender->getSkillMod("private_center_of_being");
+				evadeTotal = evadeSkill + evadeCenter + defensePosture;
+
+				if (accuracyTotal + attackRoll <= evadeTotal + defendRoll) {
+					hitResult = defendResult;
+				}
 			}
 		}
 	}
@@ -2126,7 +2129,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* creoDe
 #ifdef TOHIT_DEBUG
 	float evadeChance = evadeTotal;
 
-	if (evadeTotal != 0 && hitResult != HitStatus::RICOCHET) {
+	if (evadeSkill != 0 && hitResult != HitStatus::RICOCHET) {
 		evadeChance = ((evadeTotal + 100) / (accuracyTotal + 250.f)) * 0.5f;
 
 		if (accuracyTotal > evadeTotal) {
