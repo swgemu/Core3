@@ -89,7 +89,11 @@ function BattlefieldSpawner:spawnBattlefield(location, num, planetName)
 
 	local sceneObjectTable = location[num]
 
-	spawnSceneObject(planetName, sceneObjectTable[1], sceneObjectTable[2], sceneObjectTable[3], sceneObjectTable[4], 0, math.rad(0))
+	pObj = spawnSceneObject(planetName, sceneObjectTable[1], sceneObjectTable[2], sceneObjectTable[3], sceneObjectTable[4], 0, math.rad(0))
+
+	if (pObj ~= nil) then
+		SceneObject(pObj):setRadius(sceneObjectTable[5])
+	end
 end
 
 function BattlefieldSpawner:spawnActiveArea(location, num, planetName)

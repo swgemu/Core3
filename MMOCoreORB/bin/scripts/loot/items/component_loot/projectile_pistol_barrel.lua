@@ -8,9 +8,9 @@ projectile_pistol_barrel = {
 	craftingValues = {
 		{"mindamage", 2,10,0},
 		{"maxdamage", 4,20,0},
-		{"attackspeed",-0.1,-0.5,1},
+		{"attackspeed",-0.1,-0.5,2},
 		{"woundchance",1,5,1},
-		{"hitpoints",20,100,0},
+		{"hitpoints",20,100,0, true},
 		{"midrangemod",2,10,0},
 		{"useCount",3,7,0}
 	},

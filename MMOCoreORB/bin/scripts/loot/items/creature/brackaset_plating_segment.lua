@@ -8,9 +8,11 @@ brackaset_plating_segment = {
 	craftingValues = {
 		{"armor_special_type",0,0,0},
 		{"armor_effectiveness",3,5,10},
+		{"armor_integrity",200,600,0},
+		{"armor_health_encumbrance",20,6,0},
+		{"armor_action_encumbrance",20,6,0},
+		{"armor_mind_encumbrance",24,5,0},
 		{"blasteffectiveness",2,4,10},
-		{"armor_action_encumbrance",17,6,0},
-		{"armor_mind_encumbrance",20,5,0},
 		{"useCount",1,7,0},
 	},
 	customizationStringNames = {},

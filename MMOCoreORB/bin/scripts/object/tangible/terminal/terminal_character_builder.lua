@@ -1655,6 +1655,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Unlock FRS Dark Side", "frs_dark_side"
 			},
 			"Fill Force Bar", "fill_force_bar",
+			"Drain Force Bar", "drain_force_bar",
 			"Reset Buffs", "reset_buffs",
 			"Learn Languages", "language",
 			"Credits", "credits",

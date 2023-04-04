@@ -67,7 +67,6 @@ void* AssetCustomizationManagerTemplate::getCustomizationVariablesFromMap(uint16
 			//Logger::console.info("CURERNTINDEX < FINALINDEX ", true);
 			void* ucmpValue = getUCMPValue(*(uint16*)(ulstTable + 2 * currentIndex));
 
-
 			String variableName = getCustomizationVariableName(*(byte*) ucmpValue);
 
 			if (!result.contains(variableName) && !(skipSharedOwner && variableName.contains("/shared_owner/"))) {

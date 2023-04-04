@@ -9,6 +9,8 @@
 #define PLAYERMANAGERCOMMAND_H_
 
 #include "engine/engine.h"
+#include "server/zone/ZoneServer.h"
+#include "server/chat/ChatManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/zone/managers/collision/PathFinderManager.h"
@@ -70,6 +72,9 @@ public:
 			ChatManager* chatManager = player->getZoneServer()->getChatManager();
 			chatManager->sendMail("System", "Dump COV" , resp, player->getFirstName());
 			player->sendSystemMessage(resp);
+#ifdef NDEBUG
+			Logger::console.info(true) << "\033[32;40m" << __FILE__ << ":" << __LINE__ << " dumpcov results:\n" << resp << "\033[0m";
+#endif
 			return 0;
 		} else if (command == "bench") {
 			Reference<CreatureObject*> creo = player;
@@ -181,8 +186,17 @@ public:
 
 		auto ourPosition = targetObject->getWorldPosition();
 
+		VectorMap<float, SceneObject*> sortedObjects;
+		sortedObjects.setAllowDuplicateInsertPlan();
+
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			auto obj = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
+			auto distance = ourPosition.distanceTo(obj->getWorldPosition());
+			sortedObjects.put(distance, obj);
+		}
+
+		for (int i = 0; i < sortedObjects.size(); ++i) {
+			auto obj = sortedObjects.get(i);
 
 			if (obj == nullptr) {
 				resp << i << ": " << "nullptr Object" << endl;

@@ -13,35 +13,39 @@ import server.zone.objects.player.events.ImageDesignTimeoutEvent;
 include server.zone.objects.player.sessions.ImageDesignData;
 import server.zone.objects.player.sessions.ImageDesignPositionObserver;
 import system.thread.ReadWriteLock;
+import system.lang.Time;
 
 class ImageDesignSession extends Facade {
+	@dereferenced
+	protected transient Time sessionStartTime;
+
 	@weakReference
 	protected CreatureObject designerCreature;
 
 	@weakReference
 	protected CreatureObject targetCreature;
-	
+
 	@dereferenced
 	protected ImageDesignData imageDesignData;
-	
+
 	protected TangibleObject hairObject;
-	
+
 	protected ImageDesignPositionObserver positionObserver;
 
 	protected transient ImageDesignTimeoutEvent idTimeoutEvent;
-	
+
 	@dereferenced
-	protected transient ReadWriteLock idTimeoutLock; 
-	
+	protected transient ReadWriteLock idTimeoutLock;
+
 	public ImageDesignSession(CreatureObject parent) {
 		Logger.setLoggingName("ImageDesignSession");
 		Logger.setLogging(true);
-		
+
 		initializeSession();
 	}
 
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Starts an ImageDesign session between the designer and the target player.
 	 * @param designer The image designer.
@@ -52,7 +56,7 @@ class ImageDesignSession extends Facade {
 	 */
 	@local
 	public native void startImageDesign(CreatureObject designer, CreatureObject targetPlayer);
-	
+
 	/**
 	 * When a change is made by the designer, the target's window needs to be notified, and vice versa.
 	 * @param designer The object id of the designer.
@@ -63,9 +67,9 @@ class ImageDesignSession extends Facade {
 	 */
 	@local
 	public native void updateImageDesign(CreatureObject updater, unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type, @dereferenced final ImageDesignData data);
-	
+
 	@local
-	public native void cancelImageDesign(unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type, @dereferenced final ImageDesignData data);	
+	public native void cancelImageDesign(unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type, @dereferenced final ImageDesignData data);
 
 	public int initializeSession() {
 		designerCreature = null;
@@ -75,11 +79,11 @@ class ImageDesignSession extends Facade {
 
 		return 0;
 	}
-	
+
 	public native int doPayment();
-	
+
 	public native int cancelSession();
-	
+
 	public int clearSession() {
 		return 0;
 	}
@@ -89,17 +93,17 @@ class ImageDesignSession extends Facade {
 			idTimeoutEvent = null;
 		}
 	}
-	
+
 	public native void checkDequeueEvent(SceneObject scene);
-	
+
 	public void queueIdTimeoutEvent() {
 		synchronized (idTimeoutLock) {
 			if (!idTimeoutEvent) {
 				ImageDesignTimeoutEvent ev = new ImageDesignTimeoutEvent(this);
-			
+
 				idTimeoutEvent = ev;
 			}
-			
+
 			if (!idTimeoutEvent.isScheduled())
 				idTimeoutEvent.schedule(30000);
 		}
@@ -108,10 +112,10 @@ class ImageDesignSession extends Facade {
 	public void dequeueIdTimeoutEvent() {
 		synchronized (idTimeoutLock) {
 			if (idTimeoutEvent) {
-			
+
 				if (idTimeoutEvent.isScheduled())
 					idTimeoutEvent.cancel();
-				
+
 				idTimeoutEvent = null;
 			}
 		}

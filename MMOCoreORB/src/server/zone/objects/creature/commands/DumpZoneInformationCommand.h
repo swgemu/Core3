@@ -9,6 +9,11 @@
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/ChatManager.h"
+#include "QueueCommand.h"
+#include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "templates/tangible/SharedStructureObjectTemplate.h"
+#include "terrain/manager/TerrainManager.h"
 
 class DumpZoneInformationCommand : public QueueCommand {
 public:
@@ -66,9 +71,12 @@ public:
 		float posX = creature->getPositionX(), posZ = creature->getPositionZ(), posY = creature->getPositionY();
 		const Quaternion* direction = creature->getDirection();
 
+		float collisionZ = CollisionManager::getWorldFloorCollision(posX, posY, zone, false);
+
 		msg << "x = " << posX << ", z = " << posZ << ", y = " << posY << ", ow = " << direction->getW()
 				<< ", ox = " << direction->getX() << ", oz = " << direction->getZ() << ", oy = " << direction->getY()
-				<< ", cellid = " << cellid;
+				<< ", cellid = " << cellid
+				<< ", collisionZ = " << collisionZ;
 
 		if (buildingTemplate != 0)
 			msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);

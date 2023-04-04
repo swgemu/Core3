@@ -1955,7 +1955,14 @@ int DirectorManager::getRegion(lua_State* L) {
 
 	String regionName = lua_tostring(L, -1);
 	String zoneName = lua_tostring(L, -2);
+
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
 	Zone* zone = zoneServer->getZone(zoneName);
 
 	if (zone == nullptr) {
@@ -1963,15 +1970,20 @@ int DirectorManager::getRegion(lua_State* L) {
 		return 1;
 	}
 
-	CreatureManager* creatureManager = zone->getCreatureManager();
+	PlanetManager* planetMan = zone->getPlanetManager();
 
-	SceneObject* spawnArea = creatureManager->getSpawnArea(regionName);
-
-	if (spawnArea == nullptr)
+	if (planetMan == nullptr) {
 		lua_pushnil(L);
-	else {
-		spawnArea->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
-		lua_pushlightuserdata(L, spawnArea);
+		return 1;
+	}
+
+	SceneObject* region = planetMan->getRegion(regionName);
+
+	if (region == nullptr) {
+		lua_pushnil(L);
+	} else {
+		region->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
+		lua_pushlightuserdata(L, region);
 	}
 
 	return 1;

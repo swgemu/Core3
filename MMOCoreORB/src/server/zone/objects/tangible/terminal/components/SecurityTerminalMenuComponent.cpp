@@ -118,8 +118,15 @@ int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 		return 1;
 
 
-	if (!gcwMan->canStartSlice(player, securityTerminal))
+	if (!gcwMan->canStartSlice(player, securityTerminal)) {
 		return 1;
+	} else if (!gcwMan->isProperFactionStatus(player)) {
+		StringIdChatParameter message("@faction_perk:prose_not_neutral"); // You cannot use %TT if you are neutral or on leave.
+		message.setTT(securityTerminal->getDisplayedName());
+		player->sendSystemMessage(message);
+
+		return 1;
+	}
 
 	if (gcwMan->isTerminalDamaged(securityTerminal)) {
 		Reference<CreatureObject*> playerRef = player;

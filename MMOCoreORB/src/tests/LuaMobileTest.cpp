@@ -466,8 +466,11 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		if (convoTemplate != 0) {
 			ConversationTemplate* convoTemp = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
 			EXPECT_TRUE( convoTemp != nullptr ) << "Conversation template from " << templateName << " was not found.";
-			EXPECT_TRUE( optionsBitmask & OptionBitmask::CONVERSE ) << templateName << " has a convo template but not the CONVERSE options bit.";
+
+			// Disabling this test. Certain screenplays set the conversable bit after certain events occur and the template is assigned to the mobile.
+			//EXPECT_TRUE( optionsBitmask & OptionBitmask::CONVERSE ) << templateName << " has a convo template but not the CONVERSE options bit.";
 		}
+
 		// Verify that mobs with converse option bit have a convo template
 		if (optionsBitmask & OptionBitmask::CONVERSE) {
 			EXPECT_TRUE( convoTemplate != 0 ) << templateName << " has the CONVERSE options bit but not a convo template.";

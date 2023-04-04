@@ -13,13 +13,15 @@
 #include "server/zone/objects/player/sui/colorbox/SuiColorBox.h"
 #include "server/zone/objects/player/sui/callbacks/ColorWithKitSuiCallback.h"
 
-class CustomDroidSuiCallback : public SuiCallback {
+class CustomDroidSuiCallback : public SuiCallback, public Logger {
 	int numPalette;
 	TangibleObject* customizationKit;
 
 public:
 	CustomDroidSuiCallback(ZoneServer* serv, int palette, TangibleObject* kitTano) :
 		SuiCallback(serv), numPalette(palette), customizationKit(kitTano) {
+
+		setLoggingName("CustomDroidSuiCallback");
 	}
 
 	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
@@ -64,7 +66,7 @@ public:
 				for (int i = 0; i < variables.size(); ++i) {
 					String varKey = variables.elementAt(i).getKey();
 
-					if (varKey.contains("color")) {
+					if (varKey != "/private/index_color_0" && varKey.contains("color")) {
 						if (count == index) {
 							ManagedReference<SuiColorBox*> cbox = new SuiColorBox(creature, SuiWindowType::CUSTOMIZE_KIT);
 

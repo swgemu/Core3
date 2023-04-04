@@ -230,7 +230,10 @@ String GeneticComponentImplementation::resistValue(float input){
 }
 
 void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	TangibleObjectImplementation::fillAttributeList(alm, object);
+	alm->insertAttribute("volume", 1);
+	alm->insertAttribute("crafter", craftersName);
+	alm->insertAttribute("serial_number", objectSerial);
+
 	switch (quality){
 		case 1:
 			alm->insertAttribute("dna_comp_quality","@obj_attr_n:dna_comp_very_high");
@@ -260,12 +263,12 @@ void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm
 
 	alm->insertAttribute("dna_comp_hardiness",(int)hardiness);
 	alm->insertAttribute("dna_comp_fortitude",(int)fortitude);
+	alm->insertAttribute("dna_comp_dexterity",(int)dexterity);
 	alm->insertAttribute("dna_comp_endurance",(int)endurance);
 	alm->insertAttribute("dna_comp_intellect",(int)intelligence);
 	alm->insertAttribute("dna_comp_cleverness",(int)cleverness);
 	alm->insertAttribute("dna_comp_dependability",(int)dependency);
 	alm->insertAttribute("dna_comp_courage",(int)courage);
-	alm->insertAttribute("dna_comp_dexterity",(int)dexterity);
 	alm->insertAttribute("dna_comp_fierceness",(int)fierceness);
 	alm->insertAttribute("dna_comp_power",(int)power);
 
@@ -290,7 +293,8 @@ void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm
 	alm->insertAttribute("dna_comp_armor_saber",resistValue(saberResist));
 	alm->insertAttribute("spec_atk_1",convertSpecialAttack(special1));
 	alm->insertAttribute("spec_atk_2",convertSpecialAttack(special2));
-	alm->insertAttribute("dna_comp_ranged_attack",ranged ? "Yes" : "No");
+
+	alm->insertAttribute("dna_comp_ranged_attack", ranged ? "Yes" : "No");
 }
 
 bool GeneticComponentImplementation::isSpecialResist(int type) {

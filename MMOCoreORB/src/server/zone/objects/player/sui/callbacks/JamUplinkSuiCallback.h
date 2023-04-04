@@ -14,10 +14,8 @@
 
 class JamUplinkSuiCallback : public SuiCallback {
 public:
-	JamUplinkSuiCallback(ZoneServer* server)
-		: SuiCallback(server) {
+	JamUplinkSuiCallback(ZoneServer* server) : SuiCallback(server) {
 	}
-
 
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);

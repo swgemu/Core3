@@ -31,8 +31,8 @@ void ShipComponentImplementation::loadTemplateData(SharedObjectTemplate* templat
 void ShipComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 
-	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
-		const auto& attribute = values->getExperimentalPropertySubtitle(i);
+	for (int i = 0; i < values->getTotalExperimentalAttributes(); ++i) {
+		const auto& attribute = values->getAttribute(i);
 		auto value = values->getCurrentValue(attribute);
 
 		if (attribute == "energy_maintenance" || attribute == "ship_component_energy_required") {

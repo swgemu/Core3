@@ -828,9 +828,22 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	}
 
 	if (newConditionDamage >= maxCondition) {
-		notifyObjectDestructionObservers(attacker, newConditionDamage, isCombatAction);
 		notifyObservers(ObserverEventType::OBJECTDISABLED, attacker);
 		setDisabled(true);
+
+		Reference<TangibleObject*> refTano = asTangibleObject();
+		Reference<TangibleObject*> attackerRef = attacker;
+
+		Core::getTaskManager()->scheduleTask([refTano, attackerRef, newConditionDamage, isCombatAction] () {
+			if (refTano == nullptr || attackerRef == nullptr)
+				return;
+
+			Locker lock(refTano);
+			Locker clocker(attackerRef, refTano);
+
+			refTano->notifyObjectDestructionObservers(attackerRef, newConditionDamage, isCombatAction);
+
+		}, "notifyDestroyLambda", 200);
 	}
 
 	return 0;
@@ -943,15 +956,15 @@ void TangibleObjectImplementation::updateCraftingValues(CraftingValues* values,
 		bool firstUpdate) {
 	/// I know its kind dirty, but we want generics to have quantities
 	/// Without needing their own classes
-	if (values->hasProperty("quantity")) {
+	if (values->hasExperimentalAttribute("quantity")) {
 		setUseCount(values->getCurrentValue("quantity"));
 	}
 
-	if (values->hasProperty("charges")) {
+	if (values->hasExperimentalAttribute("charges")) {
 		setUseCount(values->getCurrentValue("charges"));
 	}
 
-	if (values->hasProperty("charge")) {
+	if (values->hasExperimentalAttribute("charge")) {
 		setUseCount(values->getCurrentValue("charge"));
 	}
 }

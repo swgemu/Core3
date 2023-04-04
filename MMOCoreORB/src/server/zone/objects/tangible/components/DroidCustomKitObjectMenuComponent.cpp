@@ -96,19 +96,19 @@ int DroidCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* scene
 
 	String appearanceFilename = target->getObjectTemplate()->getAppearanceFilename();
 	VectorMap<String, Reference<CustomizationVariable*> > variables;
-	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
-	int numPalette = 0;
+	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, true);
+	int totalPalettes = 0;
 
 	for (int i = 0; i< variables.size(); ++i) {
 		String varkey = variables.elementAt(i).getKey();
 
 		if (varkey.contains("color")) {
-			++numPalette;
+			++totalPalettes;
 		}
 	}
 
-	if (numPalette == 0) {
-		StringIdChatParameter noCustom("customizer", "prose_no_customization"); // %TT does not have any customization options available.
+	if (totalPalettes == 0) {
+		StringIdChatParameter noCustom("tool/customizer", "prose_no_customization"); // %TT does not have any customization options available.
 		noCustom.setTT(droid->getCustomObjectName());
 
 		player->sendSystemMessage(noCustom.toString());
@@ -118,22 +118,16 @@ int DroidCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* scene
 	ManagedReference<SuiListBox*> frameTrimSelector = new SuiListBox(player, SuiWindowType::CUSTOMIZE_KIT);
 
 	frameTrimSelector->setUsingObject(player);
-	frameTrimSelector->setCallback(new CustomDroidSuiCallback(server, numPalette, kitTano));
+	frameTrimSelector->setCallback(new CustomDroidSuiCallback(server, totalPalettes, kitTano));
 	frameTrimSelector->setUsingObject(target);
 	frameTrimSelector->setPromptTitle("@tool/customizer:mnu_customize");
 	frameTrimSelector->setPromptText("@tool/customizer:var_select_prompt");
 
 	frameTrimSelector->addMenuItem("@tool/customizer:opt_color_frame");
 
-	if (numPalette > 1 ) {
+	if (totalPalettes > 1 ) {
 		frameTrimSelector->addMenuItem("@tool/customizer:opt_color_trim");
 	}
-
-	// No evidence of this available as an option - H
-	/*
-	if (numPalette > 2 ) {
-		frameTrimSelector->addMenuItem("Color Extra Trim");
-	}*/
 
 	frameTrimSelector->setCancelButton(true, "");
 	frameTrimSelector->setOkButton(true, "@ok");

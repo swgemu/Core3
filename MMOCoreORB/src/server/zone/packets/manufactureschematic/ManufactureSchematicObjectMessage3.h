@@ -8,10 +8,9 @@
 
 #include "server/zone/packets/BaseLineMessage.h"
 
-class ManufactureSchematicObjectMessage3 : public BaseLineMessage {
+class ManufactureSchematicObjectMessage3 : public BaseLineMessage, public Logger {
 public:
-	ManufactureSchematicObjectMessage3(uint64 oid, float complexity, String playerName)
-			: BaseLineMessage(oid, 0x4D53434F, 3, 0x09) {
+	ManufactureSchematicObjectMessage3(uint64 oid, float complexity, String playerName)	: BaseLineMessage(oid, 0x4D53434F, 3, 0x09) {
 
 		insertFloat(complexity);
 		insertAscii("String_id_table");
@@ -40,9 +39,7 @@ public:
 		setSize();
 	}
 
-	ManufactureSchematicObjectMessage3(ManufactureSchematic* manufactureSchematic,
-			String playerName) : BaseLineMessage(manufactureSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
-
+	ManufactureSchematicObjectMessage3(ManufactureSchematic* manufactureSchematic, String playerName) : BaseLineMessage(manufactureSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
 		insertFloat(manufactureSchematic->getComplexity());
 		insertAscii(manufactureSchematic->getObjectNameStringIdFile());
 		insertInt(0);
@@ -50,10 +47,11 @@ public:
 
 		insertUnicode(manufactureSchematic->getCustomObjectName());
 
-		insertInt(0);  // Unknown
+		insertInt(manufactureSchematic->getDataSize());  // Data Size
 		insertInt(manufactureSchematic->getManufactureLimit()); // Manufacturing Count
-		insertInt(1);
-		insertInt(1);
+
+		insertInt(0x01);
+		insertInt(0x01);
 		insertByte(0);
 
 		insertAscii("crafting");

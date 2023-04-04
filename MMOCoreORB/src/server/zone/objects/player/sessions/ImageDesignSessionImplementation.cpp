@@ -46,6 +46,8 @@ int ImageDesignSessionImplementation::cancelSession() {
 }
 
 void ImageDesignSessionImplementation::startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer) {
+	sessionStartTime.updateToCurrentTime();
+
 	uint64 designerTentID = 0; // Equals False, that controls if you can stat migrate or not (only in a Salon).
 	uint64 targetTentID = 0;
 
@@ -120,9 +122,46 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 	imageDesignData.insertToMessage(message);
 
+	bool statMig = imageDesignData.isStatMigrationRequested();
+	bool designerAccepted = imageDesignData.isAcceptedByDesigner();
+
+	// Check time since session started to ensure timer is not bypassed client side
+	if (statMig && strongReferenceDesigner != strongReferenceTarget) {
+		uint64 timeElapsed = sessionStartTime.miliDifference() / 1000;
+		int remainingTime = (4 * 60) - timeElapsed;
+
+		// info(true) << "start time elapsed = " << timeElapsed << " with remining time of " << remainingTime;
+
+		// Only Break the session if the ID attempts to accept prior to the enough time being elapsed
+		if (designerAccepted && remainingTime > 0) {
+			int minutes = remainingTime / 60;
+
+			StringBuffer msg;
+			msg << "Warning: You have attempted to bypass the stat migration timer. You must wait a total of 4 minutes before committing a migration to another player. Session Terminated with time remaining: ";
+
+			if (minutes > 0)
+				msg << minutes << " minutes and ";
+
+			int seconds = remainingTime % 60;
+
+			if (seconds == 1) {
+				msg << seconds << " second.";
+			} else {
+				msg << seconds << " seconds.";
+			}
+
+			strongReferenceDesigner->sendSystemMessage(msg.toString());
+			cancelSession();
+
+			strongReferenceDesigner->error() << "Player has attempted to bypass the stat migration timer in the client -- Image Designer: " << strongReferenceDesigner->getFirstName() << " " << strongReferenceDesigner->getObjectID() << " Target Player: " << strongReferenceTarget->getFirstName() << " " << strongReferenceTarget->getObjectID() << " Message to Image Designer: " << msg.toString();
+
+			return;
+		}
+	}
+
 	bool commitChanges = false;
 
-	if (imageDesignData.isAcceptedByDesigner()) {
+	if (designerAccepted) {
 		commitChanges = true;
 
 		if (strongReferenceDesigner != strongReferenceTarget && !imageDesignData.isAcceptedByTarget()) {
@@ -143,10 +182,7 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 		String hairTemplate = imageDesignData.getHairTemplate();
 
-		bool statMig = imageDesignData.isStatMigrationRequested();
-
-		if (statMig && strongReferenceDesigner->getParentRecursively(SceneObjectType::SALONBUILDING) &&
-			strongReferenceDesigner->getParentRecursively(SceneObjectType::SALONBUILDING) && strongReferenceDesigner != strongReferenceTarget) {
+		if (statMig && strongReferenceDesigner != strongReferenceTarget && strongReferenceDesigner->getParentRecursively(SceneObjectType::SALONBUILDING) && strongReferenceDesigner->getParentRecursively(SceneObjectType::SALONBUILDING)) {
 			ManagedReference<Facade*> facade = strongReferenceTarget->getActiveSession(SessionFacadeType::MIGRATESTATS);
 			ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());
 

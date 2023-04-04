@@ -27,6 +27,8 @@ namespace server {
 
 				bool autoRegistration;
 
+				bool enableSessionId;
+
 				uint32 maxOnlineCharacters;
 
 				String dbSecret;
@@ -76,6 +78,8 @@ namespace server {
 				inline bool isAutoRegistrationEnabled() {
 					return autoRegistration;
 				}
+
+				static void expireSession(Reference<Account*> account, const String& sessionID);
 
 				static Reference<Account*> getAccount(uint32 accountID, bool forceSqlUpdate = false);
 

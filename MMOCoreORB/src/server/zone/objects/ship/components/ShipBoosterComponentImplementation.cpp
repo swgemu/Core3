@@ -21,8 +21,8 @@ void ShipBoosterComponentImplementation::loadTemplateData(SharedObjectTemplate* 
 void ShipBoosterComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ShipComponentImplementation::updateCraftingValues(values, firstUpdate);
 
-	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
-		const auto& attribute = values->getExperimentalPropertySubtitle(i);
+	for (int i = 0; i < values->getTotalExperimentalAttributes(); ++i) {
+		const auto& attribute = values->getAttribute(i);
 		auto value = values->getCurrentValue(attribute);
 
 		if (attribute == "ship_component_booster_energy_consumption_rate") {

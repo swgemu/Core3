@@ -471,7 +471,7 @@ void QuadTree::safeInRange(TreeEntry* obj, float range) {
 
 	ReadLocker locker(&mutex);
 
-	copyObjects(root, x, y, range, inRangeObjects);
+	copyObjects(root, x, y, Math::min(range * 2.0f, 768.0f), inRangeObjects);
 
 	locker.release();
 
@@ -483,7 +483,9 @@ void QuadTree::safeInRange(TreeEntry* obj, float range) {
 			float deltaY = y - o->getPositionY();
 
 			try {
-				if (deltaX * deltaX + deltaY * deltaY <= rangesq) {
+				float outOfRangeSqr = Math::sqr(Math::max(range, o->getOutOfRangeDistance()));
+
+				if (deltaX * deltaX + deltaY * deltaY <= outOfRangeSqr) {
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 
 					if (objCloseObjects != nullptr)

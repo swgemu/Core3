@@ -27,12 +27,10 @@ hunter = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	diet = HERBIVORE,
 
-        templates = {
-                        "object/mobile/dressed_commoner_naboo_twilek_female_02.iff",
-                        "object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff",
-                        "object/mobile/dressed_commoner_naboo_twilek_male_01.iff",
-                        "object/mobile/dressed_commoner_naboo_moncal_male_01.iff"
-        },
+	templates = {
+		"object/mobile/dressed_criminal_smuggler_human_male_01.iff",
+		"object/mobile/dressed_criminal_smuggler_human_female_01.iff",
+	},
 	lootGroups = {
 		{
 			groups = {
@@ -48,7 +46,7 @@ hunter = Creature:new {
 	primaryWeapon = "rebel_weapons_light",
 	secondaryWeapon = "unarmed",
 	reactionStf = "@npc_reaction/townperson",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = merge(brawlermaster,marksmanmaster),

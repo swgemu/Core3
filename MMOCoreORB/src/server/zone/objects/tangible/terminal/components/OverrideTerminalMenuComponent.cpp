@@ -117,6 +117,12 @@ int OverrideTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 	if (!gcwMan->areOpposingFactions(player->getFaction(), building->getFaction())) {
 		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_tamper"); // You are not an enemy of this structure. Why would you want to tamper?
 		return 1;
+	} else if (!gcwMan->isProperFactionStatus(player)) {
+		StringIdChatParameter message("@faction_perk:prose_not_neutral"); // You cannot use %TT if you are neutral or on leave.
+		message.setTT(overrideTerminal->getDisplayedName());
+		player->sendSystemMessage(message);
+
+		return 1;
 	} else if (gcwMan->isDNASampled(building)) {
 		player->sendSystemMessage("You stop sequencing as the fail-safe sequence has already been overridden.");
 		return 1;

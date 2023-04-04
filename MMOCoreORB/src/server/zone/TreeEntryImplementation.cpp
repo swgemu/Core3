@@ -243,9 +243,9 @@ uint64 TreeEntryImplementation::getDirtyObjectID() {
 }
 
 float TreeEntryImplementation::getOutOfRangeDistance() const {
-	if (isInQuadTree()) {
-		return ZoneServer::CLOSEOBJECTRANGE;
-	} else {
-		return ZoneServer::SPACEOBJECTRANGE;
+	if (radius > ZoneServer::CLOSEOBJECTRANGE / 2.0f) {
+		return ZoneServer::CLOSEOBJECTRANGE + radius;
 	}
+
+	return ZoneServer::CLOSEOBJECTRANGE;
 }

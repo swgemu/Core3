@@ -39,7 +39,7 @@ void ArmorObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, 
 	String text = "Color Change";
 	menuResponse->addRadialMenuItem(81, 3, text);
 
-	WearableObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player); 
+	WearableObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 }
 
 int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
@@ -83,19 +83,24 @@ int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 			cbox->setColorPalette(variables.elementAt(1).getKey()); // First one seems to be the frame of it? Skip to 2nd.
 			cbox->setUsingObject(sceneObject);
 
-			int skillMod = player->getSkillMod("armor_customization");
+			int skillMod = 255; //player->getSkillMod("armor_customization");
 
-			if (skillMod < 120)
-				skillMod = 120;
+			/*
+			if (skillMod < 64)
+				skillMod = 64;
 			else if (skillMod > 255)
 				skillMod = 255;
+			*/
 
 			cbox->setSkillMod(skillMod);
 
 			// Add to player.
 			ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-			ghost->addSuiBox(cbox);
-			player->sendMessage(cbox->generateMessage());
+
+			if (ghost != nullptr) {
+				ghost->addSuiBox(cbox);
+				player->sendMessage(cbox->generateMessage());
+			}
 		}
 
 	}

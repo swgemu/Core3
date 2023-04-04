@@ -38,9 +38,11 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 		for (int i = 0; i < modules.size(); i++) {
 			auto& module = modules.get(i);
 
-			if (module != nullptr) {
-				module->fillAttributeList(msg, object);
+			if (module == nullptr) {
+				continue;
 			}
+
+			module->fillAttributeList(msg, object);
 		}
 	}
 }
@@ -116,7 +118,8 @@ void DroidObjectImplementation::notifyInsertToZone(Zone* zone) {
 
 			for (int i = 0; i< variables.size(); ++i) {
 				String varkey = variables.elementAt(i).getKey();
-				if (varkey.contains("color")) {
+
+				if (varkey != "/private/index_color_0" && varkey.contains("color")) {
 					setCustomizationVariable(varkey, paintCount - 1, true); // Palette values 3,2,1,0 are grey->white
 				}
 			}
@@ -267,6 +270,11 @@ CraftingStation* DroidObjectImplementation::getCraftingStation(int type) {
 				CraftingStation* craftingStation = craftingModule->getCraftingStation();
 
 				if (craftingStation != nullptr) {
+					if (craftingStation->getDroidParent().get() == nullptr) {
+						Locker lock(craftingStation);
+						craftingStation->setDroidParent(_this.getReferenceUnsafeStaticCast());
+					}
+
 					// case here to check each type
 					if (craftingModule->validCraftingType(type) || (type == CraftingTool::JEDI && craftingModule->isWeaponDroidGeneric())) {
 						return craftingStation;

@@ -59,11 +59,13 @@ int ContrabandScanSessionImplementation::initializeSession() {
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if (gcwMan != nullptr)
-		player->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownPlayerScanCooldown() * 1000);
+	if (gcwMan != nullptr) {
+		// Update the players cooldown
+		player->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownPlayerScanCooldown());
 
-	// Update the scanners cooldown
-	scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
+		// Update the scanners cooldown
+		scanner->updateCooldownTimer("crackdown_scan", gcwMan->getCrackdownScannerCooldown());
+	}
 
 	adjustReinforcementStrength(scanner);
 	calculateSmugglingSuccess(player);
@@ -198,12 +200,15 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 }
 
 String ContrabandScanSessionImplementation::getFactionStringId(CreatureObject* player, const String& imperial, const String& rebel) {
-	const String stringId = "@imperial_presence/contraband_search:";
-	if (scannerFaction == Factions::FACTIONIMPERIAL || (player != nullptr && player->getFactionStatus() > FactionStatus::ONLEAVE && player->getFaction() == Factions::FACTIONREBEL) || rebel == "") {
-		return stringId + imperial;
+	String stringID = "@imperial_presence/contraband_search:";
+
+	if (scannerFaction == Factions::FACTIONIMPERIAL || rebel == "") {
+		stringID = stringID + imperial;
 	} else {
-		return stringId + rebel;
+		stringID = stringID + rebel;
 	}
+
+	return stringID;
 }
 
 void ContrabandScanSessionImplementation::sendScannerChatMessage(Zone* zone, AiAgent* scanner, CreatureObject* player, const String& imperial, const String& rebel = "") {
@@ -212,9 +217,18 @@ void ContrabandScanSessionImplementation::sendScannerChatMessage(Zone* zone, AiA
 		return;
 	}
 
-	StringIdChatParameter chatMessage;
-	chatMessage.setStringId(getFactionStringId(player, imperial, rebel));
-	zone->getZoneServer()->getChatManager()->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, 0);
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	if (zoneServer != nullptr) {
+		ChatManager* chatMan = zoneServer->getChatManager();
+
+		if (chatMan != nullptr) {
+			StringIdChatParameter chatMessage;
+			chatMessage.setStringId(getFactionStringId(player, imperial, rebel));
+
+			chatMan->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, 0);
+		}
+	}
 }
 
 void ContrabandScanSessionImplementation::sendBarkChatMessage(AiAgent* scanner, CreatureObject* player) {
@@ -513,7 +527,7 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 	}
 
 	scanState = SCANDELAY;
-	unsigned int detectionChance = BASEFACTIONDETECTIONCHANCE + RANKDETECTIONCHANCEMODIFIER * player->getFactionRank();
+	uint32 detectionChance = BASEFACTIONDETECTIONCHANCE + (RANKDETECTIONCHANCEMODIFIER * player->getFactionRank()) + player->getSkillMod("force_persuade");
 	int playerStatus = player->getFactionStatus();
 
 	if (scannerFaction == player->getFaction()) {
@@ -587,7 +601,7 @@ void ContrabandScanSessionImplementation::performJediMindTrick(Zone* zone, AiAge
 		return;
 	}
 
-	if (player->hasSkill("force_title_jedi_rank_02") && !smugglerAvoidedScan) { // Jedi Padawan
+	if (!smugglerAvoidedScan && player->hasSkill("force_title_jedi_rank_02")) { // Jedi Padawan or Force Persuasion
 		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
 		String stringId = "@imperial_presence/contraband_search:";
 		String mood = dependingOnJediSkills(player, "firm", "confident", "angry");
@@ -624,8 +638,9 @@ void ContrabandScanSessionImplementation::reactOnJediMindTrick(Zone* zone, AiAge
 	scanState = JEDIMINDTRICKSCANNERCHAT;
 }
 
-unsigned int ContrabandScanSessionImplementation::jediMindTrickSuccessChance(CreatureObject* player) {
-	unsigned int successChance = JEDIMINDTRICKSUCCESSCHANCEBASE;
+uint32 ContrabandScanSessionImplementation::jediMindTrickSuccessChance(CreatureObject* player) {
+	uint32 successChance = JEDIMINDTRICKSUCCESSCHANCEBASE;
+
 	if (player->hasSkill("force_discipline_powers_master")) {
 		successChance = 100;
 	} else if (player->hasSkill("force_title_jedi_master")) {

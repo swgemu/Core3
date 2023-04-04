@@ -42,39 +42,36 @@
 
 
 object_draft_schematic_clothing_clothing_armor_ubese_bandolier = object_draft_schematic_clothing_shared_clothing_armor_ubese_bandolier:new {
+	templateType = DRAFTSCHEMATIC,
 
-   templateType = DRAFTSCHEMATIC,
+	objectName = "@wearables_name:armor_ubese_bandolier",
 
-   customObjectName = "Ubese Armor Bandolier",
+	craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 35,
+	size = 4,
+	factoryCrateType = "object/factory/factory_crate_clothing.iff",
 
-   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 35, 
-   size = 4, 
-   factoryCrateType = "object/factory/factory_crate_clothing.iff",
+	xpType = "crafting_clothing_armor",
+	xp = 40,
 
-   xpType = "crafting_clothing_armor", 
-   xp = 40, 
+	assemblySkill = "armor_assembly",
+	experimentingSkill = "armor_experimentation",
+	customizationSkill = "armor_customization",
 
-   assemblySkill = "armor_assembly", 
-   experimentingSkill = "armor_experimentation", 
-   customizationSkill = "armor_customization", 
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
-
-   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
-   ingredientTitleNames = {"auxilary_coverage", "body", "liner"},
-   ingredientSlotType = {0, 0, 1},
-   resourceTypes = {"iron", "steel", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
-   resourceQuantities = {15, 5, 1},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+	ingredientTitleNames = {"auxilary_coverage", "body", "liner"},
+	ingredientSlotType = {0, 0, 1},
+	resourceTypes = {"iron", "steel", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
+	resourceQuantities = {15, 5, 1},
+	contribution = {100, 100, 100},
 
 
-   targetTemplate = "object/tangible/wearables/armor/ubese/armor_ubese_bandolier.iff",
+	targetTemplate = "object/tangible/wearables/armor/ubese/armor_ubese_bandolier.iff",
 
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_ubese_bandolier, "object/draft_schematic/clothing/clothing_armor_ubese_bandolier.iff")

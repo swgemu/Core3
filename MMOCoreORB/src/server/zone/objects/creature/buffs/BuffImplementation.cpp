@@ -293,12 +293,13 @@ void BuffImplementation::applyAttributeModifiers() {
 
 		try {
 			int currentMaxHAM = creo->getMaxHAM(attribute);
-
 			int newMaxHAM = currentMaxHAM + value;
+
 			if (newMaxHAM < 1)
 					newMaxHAM = 1;
 
 			int buffAmount = newMaxHAM - currentMaxHAM;
+
 			attributeModifiers.drop(attribute);
 			attributeModifiers.put(attribute, buffAmount);
 
@@ -320,7 +321,6 @@ void BuffImplementation::applyAttributeModifiers() {
 			e.printStackTrace();
 		}
 	}
-
 }
 
 void BuffImplementation::applySkillModifiers() {
@@ -380,12 +380,7 @@ void BuffImplementation::removeAttributeModifiers() {
 			continue;
 
 		try {
-
 			int attributeMax = creo->getMaxHAM(attribute) - value;
-
-			if (attributeMax < 1) {
-				attributeMax = 1;
-			}
 
 			int currentVal = creo->getHAM(attribute);
 
@@ -394,14 +389,12 @@ void BuffImplementation::removeAttributeModifiers() {
 			creo->setMaxHAM(attribute, attributeMax);
 
 			if (currentVal >= attributeMax) {
-				//creature.get()->inflictDamage(creature.get(), attribute, currentVal - attributeMax, isSpiceBuff());
-
 				if (attribute % 3 == 0) {
 					int newValue = currentVal - attributeMax;
 
 					// info(true) << "removeAttributeModifiers - inflict damage: " << newValue;
 
-					creo->inflictDamage(creo, attribute, newValue, false);
+					creo->inflictDamage(creo, attribute, newValue, true, true);
 				} // else setMaxHam sets secondaries to max
 			}
 

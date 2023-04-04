@@ -326,7 +326,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		containerComponent = cast<ContainerComponent*>(ComponentManager::instance()->getComponent<SceneObjectComponent*>(conTemp));
 	}
 
-	if (!isPet() && isNpc() && getMoodID() == 0 && System::random(50) < 15) {
+	if (!isPet() && isNpc() && (getFaction() == 0) && getMoodID() == 0 && System::random(50) < 15) {
 		ZoneServer* zoneServer = asAiAgent()->getZoneServer();
 
 		if (zoneServer != nullptr) {
@@ -2075,11 +2075,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
 		setCurrentSpeed(0.f);
+		updateLocomotion();
 
 		return false;
 	}
-
-	float currentSpeed = getCurrentSpeed();
 
 	// Handle speed up and slow down
 	if ((((currentSpeed * currentSpeed) * maxSquared) > endDistanceSq) && newSpeed > 0.4f) {
@@ -2815,6 +2814,15 @@ int AiAgentImplementation::setDestination() {
 		if (followCopy == nullptr) {
 			setMovementState(AiAgent::PATHING_HOME);
 			break;
+		}
+
+		if (!isPet() && !checkLineOfSight(followCopy) && !homeLocation.isInRange(asAiAgent(), AiAgent::MAX_OOS_RANGE)) {
+			if (++outOfSightCounter > AiAgent::MAX_OOS_COUNT && System::random(100) <= AiAgent::MAX_OOS_PERCENT) {
+			    leash();
+			    return setDestination();
+			}
+		} else if (outOfSightCounter > 0) {
+			--outOfSightCounter;
 		}
 
 		if (!isPet() && followCopy->getParent().get() != nullptr) {
@@ -3672,12 +3680,18 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 
 	AiAgent* tarAgent = nullptr;
 
-	if (targetIsAgent)
+	if (targetIsAgent) {
 		tarAgent = target->asAiAgent();
 
-	if (isCarnivore() && targetIsAgent) {
-		if (tarAgent != nullptr && tarAgent->isHerbivore())
-			return true;
+		if (tarAgent != nullptr) {
+			if (isCarnivore() && tarAgent->isHerbivore())
+				return true;
+
+			uint32 socialGroup = getSocialGroup().toLowerCase().hashCode();
+
+			if (socialGroup == STRING_HASHCODE("poacher") && tarAgent->isMonster())
+				return true;
+		}
 	}
 
 	// Get this agents faction string agents faction string (which could include imp/reb)
@@ -3966,11 +3980,27 @@ void AiAgentImplementation::setCombatState() {
 }
 
 bool AiAgentImplementation::hasRangedWeapon() {
-	return (primaryWeapon != nullptr && primaryWeapon->isRangedWeapon()) || (secondaryWeapon != nullptr && secondaryWeapon->isRangedWeapon());
+	if (primaryWeapon != nullptr && primaryWeapon->isRangedWeapon()) {
+		return true;
+	}
+
+	if (secondaryWeapon != nullptr && secondaryWeapon->isRangedWeapon()) {
+		return true;
+	}
+
+	return false;
 }
 
 bool AiAgentImplementation::hasMeleeWeapon() {
-	return (primaryWeapon != nullptr && (primaryWeapon->isMeleeWeapon() || primaryWeapon->isUnarmedWeapon())) || (secondaryWeapon != nullptr && (secondaryWeapon->isMeleeWeapon() || secondaryWeapon->isUnarmedWeapon()));
+	if (primaryWeapon != nullptr && (primaryWeapon->isMeleeWeapon() || primaryWeapon->isUnarmedWeapon())) {
+		return true;
+	}
+
+	if (secondaryWeapon != nullptr && (secondaryWeapon->isMeleeWeapon() || secondaryWeapon->isUnarmedWeapon())) {
+		return true;
+	}
+
+	return false;
 }
 
 bool AiAgentImplementation::getUseRanged() {

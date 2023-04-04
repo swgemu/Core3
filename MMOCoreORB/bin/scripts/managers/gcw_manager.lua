@@ -81,6 +81,7 @@ wildScanInterval = 15 * 60 -- In seconds, 15 minutes + System::random(600000) 10
 wildScanLoginDelay = 4 * 60 -- In Seconds, 4 minutes
 wildScanChance = 5 -- % chance for a valid scan target to be scanned
 crackdownPlayerScanCooldown = 48 * 60 * 60  -- In seconds, 48 hour cooldown
+crackdownScannerCooldown = 3 * 60 * 60 -- In seconds, 3 hour cooldown
 crackdownContrabandFineCredits = 2000
 crackdownContrabandFineFactionPoints = 100
 crackdownPlanetsWithWildScans = { "corellia", "dantooine", "dathomir", "endor", "lok", "naboo", "rori", "talus", "tatooine", "yavin4"}
@@ -204,9 +205,9 @@ terminalSpawns = {
 		{
 			{ -5.15, 0.3, 3.25, 0, 0.707, 0, 0.707, 2 },
 			{ -2.79, -6.8, -10.35, 0, 0, 0, 1, 5 },
-			{ -9.29, -6.8, -4.9, 0, 0, 0, 1, 5 },
-			{ -6.71, -6.8, -12, 0, 0, 0, 1, 6 },
-			{ 7.4, -6.8, -12, 0, 0, 0, 1, 6 },
+			{ -9.29, -6.8, -4.9, 0, 0.707, 0, 0.707, 5 },
+			{ -6.71, -6.8, -12, 0, 1, 0, 0, 6 },
+			{ 7.4, -6.8, -12, 0, 1, 0, 0, 6 },
 			{ 1.67, -6.8, -8.98, 0, 0.707, 0, 0.707, 7 },
 			{ 5.16, -13.8, -13.13, 0, -0.707, 0, 0.707, 9 },
 			{ -10.16, -13.8, -13.13, 0, 0.707, 0, 0.707, 9 },

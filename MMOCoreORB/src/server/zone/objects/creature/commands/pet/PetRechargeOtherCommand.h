@@ -21,12 +21,14 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(creature);
+
 		if (droidPet == nullptr)
 			return GENERALERROR;
 
 		// Target must be a droid
 		Reference<DroidObject*> targetDroid = server->getZoneServer()->getObject(target, true).castTo<DroidObject*>();
-		if (targetDroid == nullptr || !targetDroid->isDroidObject()) {
+
+		if (targetDroid == nullptr || !targetDroid->isDroidObject() || targetDroid->isDead() || targetDroid->isIncapacitated()) {
 			droidPet->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0); // "?!!?!?!"
 			return GENERALERROR;
 		}

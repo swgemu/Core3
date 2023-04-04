@@ -102,7 +102,7 @@ void DroidPlaybackModuleDataComponent::fillObjectMenuResponse(SceneObject* droid
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
 
-	if (droid == nullptr || droid->getLinkedCreature().get() != player)
+	if (droid == nullptr || droid->isDead() || droid->isIncapacitated() || droid->getLinkedCreature().get() != player)
 		return;
 
 	// Novice Musician required to utilize this module

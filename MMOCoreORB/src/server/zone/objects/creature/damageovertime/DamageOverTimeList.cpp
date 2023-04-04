@@ -113,6 +113,10 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attack
 	if (potency > 0 && System::random(100) >= Math::max(5.f, Math::min(potency * (80.f / (100.f + defense)), 95.f)))
 		return 0;
 
+	if (dotType == CreatureState::ONFIRE && victim->hasState(CreatureState::SWIMMING)) {
+		return 0;
+	}
+
 	if (pool == CreatureAttribute::UNKNOWN) {
 		pool = getRandomPool(dotType);
 	}

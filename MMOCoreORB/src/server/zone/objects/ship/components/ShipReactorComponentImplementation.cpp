@@ -15,7 +15,7 @@ void ShipReactorComponentImplementation::loadTemplateData(SharedObjectTemplate* 
 void ShipReactorComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ShipComponentImplementation::updateCraftingValues(values, firstUpdate);
 
-	if(values->hasProperty("ship_component_reactor_generation_rate")) {
+	if (values->hasExperimentalAttribute("ship_component_reactor_generation_rate")) {
 		reactorGenerationRate = values->getCurrentValue("ship_component_reactor_generation_rate");
 	}
 }

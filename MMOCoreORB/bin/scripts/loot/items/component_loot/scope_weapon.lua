@@ -7,7 +7,8 @@ scope_weapon = {
 	directObjectTemplate = "object/tangible/component/weapon/scope_weapon.iff",
 	craftingValues = {
 		{"woundchance", 2,10,1},
-		{"hitpoints", 20,100,0},
+		{"hitpoints", 20,100,0, true},
+		{"zerorangemod",0,0,0, false},
 		{"midrangemod",5,25,0},
 		{"attackhealthcost",12,0,0},
 		{"attackactioncost",12,0,0},

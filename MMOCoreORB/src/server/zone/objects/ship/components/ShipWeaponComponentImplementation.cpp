@@ -22,8 +22,8 @@ void ShipWeaponComponentImplementation::loadTemplateData(SharedObjectTemplate* t
 void ShipWeaponComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ShipComponentImplementation::updateCraftingValues(values, firstUpdate);
 
-	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
-		const auto& attribute = values->getExperimentalPropertySubtitle(i);
+	for (int i = 0; i < values->getTotalExperimentalAttributes(); ++i) {
+		const auto& attribute = values->getAttribute(i);
 		auto value = values->getCurrentValue(attribute);
 
 		if (attribute == "damage_max" || attribute == "ship_component_weapon_damage_maximum") {

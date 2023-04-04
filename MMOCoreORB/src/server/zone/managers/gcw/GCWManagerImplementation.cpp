@@ -133,6 +133,7 @@ void GCWManagerImplementation::loadLuaConfig() {
 	wildScanLoginDelay = lua->getGlobalInt("wildScanLoginDelay") * 1000;
 	wildScanChance = lua->getGlobalInt("wildScanChance");
 	crackdownPlayerScanCooldown = lua->getGlobalInt("crackdownPlayerScanCooldown") * 1000;
+	crackdownScannerCooldown = lua->getGlobalInt("crackdownScannerCooldown") * 1000;
 	crackdownContrabandFineCredits = lua->getGlobalInt("crackdownContrabandFineCredits");
 	crackdownContrabandFineFactionPoints = lua->getGlobalInt("crackdownContrabandFineFactionPoints");
 
@@ -413,13 +414,13 @@ void GCWManagerImplementation::verifyMinefields(BuildingObject* building) {
 
 	Locker blocker(building);
 
-	for (int i = 0; i < baseData->getTotalScannerCount(); ++i) {
+	for (int i = 0; i < baseData->getTotalMinefieldCount(); ++i) {
 		uint64 minefieldID = baseData->getMinefieldID(i);
 
 		ManagedReference<SceneObject*> minefield = zoneServer->getObject(minefieldID);
 
 		if (minefield == nullptr)
-			baseData->setScannerID(i, 0);
+			baseData->setMinefieldID(i, 0);
 	}
 }
 
@@ -500,7 +501,8 @@ int GCWManagerImplementation::getBaseCount(CreatureObject* creature, bool pvpOnl
 		return 0;
 
 	PlayerObject* ghost = creature->getPlayerObject();
-	if (ghost == nullptr)
+
+	if (ghost == nullptr || ghost->isPrivileged())
 		return 0;
 
 	if (zone == nullptr)
@@ -1427,6 +1429,24 @@ bool GCWManagerImplementation::areOpposingFactions(int faction1, int faction2) {
 		return false;
 
 	return faction1 != faction2;
+}
+
+bool GCWManagerImplementation::isProperFactionStatus(CreatureObject* player) {
+	if (player == nullptr || !player->isPlayerCreature())
+		return false;
+
+	if (ConfigManager::instance()->useCovertOvertSystem()) {
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost != nullptr) {
+			Locker lock(player);
+			ghost->updateLastGcwPvpCombatActionTimestamp();
+		}
+
+		return true;
+	}
+
+	return player->getFactionStatus() > FactionStatus::ONLEAVE;
 }
 
 void GCWManagerImplementation::awardSlicingXP(CreatureObject* creature, const String& xpType, int val) {
@@ -2655,6 +2675,8 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	donate->setCancelButton(true, "@cancel");
 	donate->setCallback(new DonateDefenseSuiCallback(zone->getZoneServer()));
 
+	bool useCovertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
 	for (int i = 0; i < inv->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> inventoryObject = inv->getContainerObject(i);
 
@@ -2669,7 +2691,7 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 
 				int objectType = generatedTemplate->getGameObjectType();
 
-				if (!ConfigManager::instance()->useCovertOvertSystem() && objectType == SceneObjectType::COVERTSCANNER)
+				if (!useCovertOvert && objectType == SceneObjectType::COVERTSCANNER)
 					continue;
 
 				if (objectType == SceneObjectType::MINEFIELD || objectType == SceneObjectType::DESTRUCTIBLE || objectType == SceneObjectType::COVERTSCANNER) {
@@ -2705,6 +2727,8 @@ void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, 
 
 	if (ghost == nullptr)
 		return;
+
+	Locker blocker(building, creature);
 
 	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
 		return;
@@ -2773,8 +2797,6 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 
 	int currentMinefieldIndex = 0;
 
-	Locker block(building, creature);
-
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
 	if (baseData == nullptr)
@@ -2839,7 +2861,6 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 
 		building->addCooldown("defense_donation", donationCooldown * 1000);
 
-		block.release();
 		verifyMinefields(building);
 
 		Locker clock(deed, creature);
@@ -2858,8 +2879,6 @@ void GCWManagerImplementation::performDonateScanner(BuildingObject* building, Cr
 	Reference<SharedObjectTemplate*> scannerTemplate = nullptr;
 	const ChildObject* child = nullptr;
 	int currentScannerIndex = 0;
-
-	Locker block(building,creature);
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
@@ -2921,7 +2940,6 @@ void GCWManagerImplementation::performDonateScanner(BuildingObject* building, Cr
 
 		building->addCooldown("defense_donation", donationCooldown * 1000);
 
-		block.release();
 		verifyScanners(building);
 
 		Locker clock(scannerDeed, creature);
@@ -2937,8 +2955,6 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	Reference<SharedObjectTemplate*> turretTemplate = nullptr;
 	const ChildObject* child = nullptr;
 	int currentTurretIndex = 0;
-
-	Locker block(building, creature);
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
@@ -2998,7 +3014,6 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 
 		building->addCooldown("defense_donation", donationCooldown * 1000);
 
-		block.release();
 		verifyTurrets(building);
 
 		Locker clock(turretDeed, creature);

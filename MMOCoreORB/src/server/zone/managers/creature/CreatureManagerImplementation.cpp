@@ -237,7 +237,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templa
 	if (creature != nullptr && creature->isAiAgent())
 		creature->asAiAgent()->setAITemplate();
 	else {
-		error("could not spawn template " + String::valueOf(templateCRC) + " with AI.");
+		error() << "could not spawn template: " << String::valueOf(templateCRC) << " with AI.";
 		creature = nullptr;
 	}
 

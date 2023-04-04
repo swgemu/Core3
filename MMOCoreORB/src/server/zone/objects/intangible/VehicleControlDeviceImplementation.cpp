@@ -206,13 +206,17 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player, boo
 	if (controlledObject->isCreatureObject())
 		(cast<CreatureObject*>(controlledObject.get()))->setCreatureLink(nullptr);
 
+	crossLocker.release();
+
+	Locker deviceLocker(_this.getReferenceUnsafeStaticCast(), player);
+
 	updateStatus(0);
 
 	ManagedReference<VehicleObject*> vehicle = cast<VehicleObject*>(controlledObject.get());
 
 	if (vehicle != nullptr && vehicle->isRentalVehicle() && vehicle->getRentalUses() <= 0) {
 		destroyObjectFromWorld(true);
-		destroyObjectFromDatabase();
+		destroyObjectFromDatabase(true);
 
 		StringIdChatParameter param;
 		param.setStringId("pet/pet_menu", "uses_complete");

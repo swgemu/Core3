@@ -12,12 +12,12 @@ JunkDealer = {
 	}
 }
 
-function JunkDealer:sendSellJunkSelection(pPlayer, pNpc, dealerType)
+function JunkDealer:sendSellJunkSelection(pPlayer, pNpc, dealerType, skipItem)
 	if pPlayer == nil or pNpc == nil then
 		return
 	end
 
-	local junkList = self:getEligibleJunk(pPlayer, dealerType)
+	local junkList = self:getEligibleJunk(pPlayer, dealerType, skipItem)
 
 	if #junkList == 0 then
 		CreatureObject(pPlayer):sendSystemMessage("@loot_dealer:no_items") -- You have no items that the junk dealer wishes to buy.
@@ -41,7 +41,7 @@ function JunkDealer:getDealerNum(dealerType)
 	return dealerNum
 end
 
-function JunkDealer:getEligibleJunk(pPlayer, dealerType)
+function JunkDealer:getEligibleJunk(pPlayer, dealerType, skipItem)
 	local junkList = {}
 
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
@@ -62,11 +62,14 @@ function JunkDealer:getEligibleJunk(pPlayer, dealerType)
 		if pItem ~= nil then
 			local tano = TangibleObject(pItem)
 			local sceno = SceneObject(pItem)
-			if tano:getJunkDealerNeeded() & dealerNum > 0 and tano:getCraftersName() == "" and not tano:isBroken() and not tano:isSliced() and not tano:isNoTrade() and sceno:getContainerObjectsSize() == 0 then
-				local name = sceno:getDisplayedName()
-				local value = tano:getJunkValue()
-				local textTable = {"[" .. value .. "] " .. name, sceno:getObjectID()}
-				table.insert(junkList, textTable)
+
+			if sceno:getObjectID() ~= skipItem then
+				if tano:getJunkDealerNeeded() & dealerNum > 0 and tano:getCraftersName() == "" and not tano:isBroken() and not tano:isSliced() and not tano:isNoTrade() and sceno:getContainerObjectsSize() == 0 then
+					local name = sceno:getDisplayedName()
+					local value = tano:getJunkValue()
+					local textTable = {"[" .. value .. "] " .. name, sceno:getObjectID()}
+					table.insert(junkList, textTable)
+				end
 			end
 		end
 	end
@@ -115,7 +118,7 @@ function JunkDealer:sellAllItems(pPlayer, pSui, pInventory)
 		if pItem ~= nil then
 			local value = TangibleObject(pItem):getJunkValue()
 			createEvent(10, "JunkDealer", "destroyItem", pItem, "")
-			
+
 			amount = amount + value
 		end
 	end
@@ -132,7 +135,7 @@ function JunkDealer:destroyItem(pItem)
 	if (pItem == nil) then
 		return
 	end
-	
+
 	SceneObject(pItem):destroyObjectFromWorld()
 	SceneObject(pItem):destroyObjectFromDatabase()
 end
@@ -149,6 +152,7 @@ function JunkDealer:sellItem(pPlayer, pSui, rowIndex, pInventory)
 	end
 
 	local item = SceneObject(pItem)
+	local skipItem = item:getObjectID()
 	local name = item:getDisplayedName()
 	local value = TangibleObject(pItem):getJunkValue()
 
@@ -162,7 +166,7 @@ function JunkDealer:sellItem(pPlayer, pSui, rowIndex, pInventory)
 	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
 
 	local dealerType = readStringData(SceneObject(pPlayer):getObjectID() .. ":junkDealerType")
-	self:sendSellJunkSelection(pPlayer, pNpc, dealerType)
+	self:sendSellJunkSelection(pPlayer, pNpc, dealerType, skipItem)
 end
 
 return JunkDealer

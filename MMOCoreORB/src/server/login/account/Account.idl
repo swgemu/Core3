@@ -36,6 +36,7 @@ class Account extends ManagedObject implements Logger {
 	protected transient unsigned int banExpires;
 	protected transient string banReason;
 	protected transient unsigned int banAdmin;
+	protected transient string sessionId;
 
 	public native Account();
 
@@ -196,4 +197,12 @@ class Account extends ManagedObject implements Logger {
 
 	@read
 	public native boolean isSqlLoaded();
+
+	public void setSessionId(final string newSessionId) {
+	    sessionId = newSessionId;
+	}
+
+	public string getSessionId() {
+	    return sessionId;
+	}
 }

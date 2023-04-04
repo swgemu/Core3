@@ -41,18 +41,15 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 			menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
 	}
 
-	if(player->getPlayerObject() != nullptr && player->getPlayerObject()->isPrivileged()) {
+	if (player->getPlayerObject() != nullptr && player->getPlayerObject()->isPrivileged()) {
 		/// Viewing components used to craft item, for admins
 		ManagedReference<SceneObject*> container = tano->getSlottedObject("crafted_components");
-		if(container != nullptr) {
 
-			if(container->getContainerObjectsSize() > 0) {
+		if (container != nullptr && container->getContainerObjectsSize() > 0) {
+			SceneObject* satchel = container->getContainerObject(0);
 
-				SceneObject* satchel = container->getContainerObject(0);
-
-				if(satchel != nullptr && satchel->getContainerObjectsSize() > 0) {
-					menuResponse->addRadialMenuItem(79, 3, "@ui_radial:ship_manage_components"); // View Components
-				}
+			if (satchel != nullptr && satchel->getContainerObjectsSize() > 0) {
+				menuResponse->addRadialMenuItem(79, 3, "@ui_radial:ship_manage_components"); // View Components
 			}
 		}
 	}

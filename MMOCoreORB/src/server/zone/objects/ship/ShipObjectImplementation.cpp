@@ -266,13 +266,13 @@ void ShipObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 }
 
 void ShipObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
+	for (int i = 0; i < values->getTotalExperimentalAttributes(); ++i) {
 		String attribute;
 		float min;
 		float max;
 		float current;
 
-		attribute = values->getExperimentalPropertySubtitle(i);
+		attribute = values->getAttribute(i);
 		min = values->getMinValue(attribute);
 		max = values->getMaxValue(attribute);
 		current = values->getCurrentValue(attribute);

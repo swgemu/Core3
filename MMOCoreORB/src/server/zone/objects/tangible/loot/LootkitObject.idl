@@ -41,6 +41,11 @@ class LootkitObject extends TangibleObject {
 	@dirty
 	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 
+	@dirty
+	public boolean isContainerObject() {
+		return true;
+	}
+
 	public native int notifyObjectInserted(SceneObject object);
 
 	public native int notifyObjectRemoved(SceneObject object);

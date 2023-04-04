@@ -44,8 +44,8 @@ public:
 
 		ManagedReference<SceneObject*> inventory = crafter->getSlottedObject("inventory");
 
-		if (inventory != nullptr && craftingTool->isASubChildOf(crafter) && !inventory->isContainerFullRecursive()) {
-
+		// The check for space in the players inventory has to be done here instead of in isContainerFullRecursive due to the object being in the crafting tool already.
+		if (inventory != nullptr && craftingTool->isASubChildOf(crafter) && !(inventory->getContainerVolumeLimit() <= (inventory->getCountableObjectsRecursive() - 1))) {
 			TransactionLog trx(crafter, inventory, prototype, TrxCode::CRAFTINGSESSION);
 
 			if (inventory->transferObject(prototype, -1, true)) {

@@ -18,8 +18,8 @@ void ShipShieldComponentImplementation::loadTemplateData(SharedObjectTemplate* t
 void ShipShieldComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ShipComponentImplementation::updateCraftingValues(values, firstUpdate);
 
-	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
-		const auto& attribute = values->getExperimentalPropertySubtitle(i);
+	for (int i = 0; i < values->getTotalExperimentalAttributes(); ++i) {
+		const auto& attribute = values->getAttribute(i);
 		auto current = values->getCurrentValue(attribute);
 
 		if (attribute == "ship_component_shield_hitpoints_back") {

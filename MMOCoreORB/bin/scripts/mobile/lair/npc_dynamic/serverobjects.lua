@@ -131,7 +131,6 @@ includeFile("lair/npc_dynamic/lok/lok_nym_patrol3_neutral_none.lua")
 includeFile("lair/npc_dynamic/lok/lok_nym_patrol4_neutral_none.lua")
 includeFile("lair/npc_dynamic/lok/lok_nym_patrol_neutral_none.lua")
 
-includeFile("lair/npc_dynamic/naboo/imperial_compforce_base.lua")
 includeFile("lair/npc_dynamic/naboo/naboo_gungan_war_troop_neutral_none.lua")
 includeFile("lair/npc_dynamic/naboo/naboo_mauler_pilgrimage_neutral_none.lua")
 includeFile("lair/npc_dynamic/naboo/naboo_mauler_roamers_neutral_none.lua")

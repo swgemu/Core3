@@ -600,7 +600,7 @@ npcMapJabba =
 permissionMapJabba = {
 	{
 		planetName = "tatooine",
-		regionName = "jabba_palace",
+		regionName = "@tatooine_region_names:jabba_palace",
 		permissions =
 		{
 			{

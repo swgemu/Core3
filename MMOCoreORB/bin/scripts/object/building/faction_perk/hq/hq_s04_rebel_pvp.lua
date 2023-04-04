@@ -84,10 +84,10 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.75, z = 0, y = 0.1, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
 		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.75, z = 0, y = 1.1, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
 
-		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 48, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 32, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 5.5, z = 0, y = 42, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = -5.5, z = 0, y = 42, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/covert_detector/detector_32m.iff", x = 0, z = 0, y = 37.96, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 33.38, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 5.35, z = 0, y = 43, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = -5.35, z = 0, y = 43, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
 
 		{ templateFile = "object/tangible/terminal/terminal_mission.iff", x = 18.61, z = -13.8, y = 14.59, ox = 0, oy = -0.707, oz = 0, ow = 0.707, cellid = 9, containmentType = -1 },
 		{ templateFile = "object/tangible/terminal/terminal_mission_rebel.iff", x = 18.6, z = -13.8, y = -0.76, ox = 0, oy = -0.707, oz = 0, ow = 0.707, cellid = 9, containmentType = -1 },
@@ -119,36 +119,39 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 	},
 
 	childCreatureObjects = {
-
-		{ mobile = "fbase_rebel_heavy_trooper_extreme", x = 4.25, z = 0, y = 1.1, cellid = 2, respawn = 300, containmentType = -1, heading = 1.57},
-		{ mobile = "fbase_rebel_commando_extreme", x = 4.25, z = 0, y = -1.8, cellid = 2, respawn = 300, containmentType = -1, heading = 1.57},
-
-		{ mobile = "fbase_rebel_guard_captain_extreme", x = -3.25, z = 0, y = -3.7, cellid = 3, respawn = 300, containmentType = -1, heading = 1.57},
-		{ mobile = "fbase_rebel_heavy_trooper_extreme", x = 4.75, z = -6.75, y = 5.2, cellid = 4, respawn = 300, containmentType = -1, heading = 4.71 },
-
-		{ mobile = "fbase_rebel_cadet_extreme", x = 3.5, z = -6.75, y = -3, cellid = 5, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_guardsman_extreme", x = 5, z = -6.75, y = -3, cellid = 5, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_grenadier_extreme", x = 7, z = -6.75, y = -1, cellid = 5, respawn = 300, containmentType = -1, heading = 1.57},
-		{ mobile = "fbase_rebel_rifleman_extreme", x = 1.75, z = -6.75, y = -1, cellid = 5, respawn = 300, containmentType = -1, heading = 4.71 },
-		{ mobile = "fbase_rebel_guard_captain_extreme", x = 6.4, z = -6.75, y = -8.25, cellid = 5, respawn = 300, containmentType = -1, heading = 0},
-
-		{ mobile = "fbase_rebel_soldier_extreme", x = -0.1, z = -13.75, y = 5.6, cellid = 7, respawn = 300, containmentType = -1, heading = 3.14},
-		{ mobile = "fbase_rebel_heavy_trooper_extreme", x = -3.5, z = -13.75, y = 4.6, cellid = 7, respawn = 300, containmentType = -1, heading = 3.14},
-		{ mobile = "fbase_rebel_heavy_trooper_extreme", x = -2.3, z = -13.75, y = -3.5, cellid = 7, respawn = 300, containmentType = -1, heading = 1.57},
-		{ mobile = "fbase_rebel_heavy_trooper_extreme", x = -0.35, z = -13.75, y = -13.35, cellid = 7, respawn = 300, containmentType = -1, heading = 4.71 },
-		{ mobile = "fbase_rebel_army_captain_extreme", x = -1, z = -13.75, y = 0.35, cellid = 7, respawn = 300, containmentType = -1, heading = 4.71 },
-
-		{ mobile = "fbase_rebel_squad_leader_extreme", x = 5.25, z = -13.75, y = 9.9, cellid = 8, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_liberator_extreme", x = -5.25, z = -13.75, y = 14.25, cellid = 8, respawn = 300, containmentType = -1, heading = 3.14},
-
-		{ mobile = "fbase_rebel_heavy_trooper_extreme", x = 17.9, z = -13.75, y = -0.8, cellid = 9, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_heavy_trooper_extreme", x = 12.7, z = -13.75, y = -0.8, cellid = 9, respawn = 300, containmentType = -1, heading = 0},
-
-		{ mobile = "fbase_rebel_colonel_extreme", x = 16.1, z = -13.75, y = -16.8, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_commando_extreme", x = 14.2, z = -13.75, y = -10, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_guard_captain_extreme", x = 15, z = -13.75, y = -4, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "rebel_recruiter", x = 11.5, z = -11.5, y = -21, cellid = 10, containmentType = -1, respawn = 60, heading = 1.59},
-
+		-- Interior Spawns
+		-- 1 entry
+		-- 2 hall1
+		{ mobile = "fbase_rebel_elite_heavy_trooper", x = 3.8, z = 0.3, y = 4.3, cellid = 2, respawn = 300, containmentType = -1, heading = 3.1765},
+		{ mobile = "fbase_rebel_elite_heavy_trooper", x = 4.7, z = 0.3, y = 2.9, cellid = 2, respawn = 300, containmentType = -1, heading = 4.71239},
+		{ mobile = "fbase_rebel_rifleman_extreme", x = 4.2, z = 0.3, y = -4.4, cellid = 2, respawn = 300, containmentType = -1, heading = 1.48353},
+		-- 3 hall2
+		{ mobile = "fbase_rebel_liberator_extreme", x = -4.8, z = 0.3, y = -5.2, cellid = 3, respawn = 300, containmentType = -1, heading = 0.750492},
+		-- 4 ramp1
+		-- 5 room 1
+		{ mobile = "fbase_rebel_elite_heavy_trooper", x = 2.2, z = -6.8, y = -1, cellid = 5, respawn = 300, containmentType = -1, heading = 1.53589},
+		{ mobile = "fbase_rebel_elite_heavy_trooper", x = 6.7, z = -6.8, y = -0.9, cellid = 5, respawn = 300, containmentType = -1, heading = 4.71239},
+		-- 6 ramp2
+		-- 7 room2
+		{ mobile = "fbase_rebel_elite_heavy_trooper", x = -2.4, z = -13.7, y = -2.3, cellid = 7, respawn = 300, containmentType = -1, heading = 2.00713},
+		{ mobile = "fbase_rebel_squad_leader_extreme", x = -2.6, z = -13.7, y = -4.6, cellid = 7, respawn = 300, containmentType = -1, heading = 0.401426},
+		{ mobile = "fbase_rebel_grenadier_extreme", x = -6.7, z = -13.7, y = 3.7, cellid = 7, respawn = 300, containmentType = -1, heading = 1.5708},
+		-- 8 hallway
+		{ mobile = "fbase_rebel_elite_heavy_trooper", x = 6.5, z = -13.8, y = 9.7, cellid = 8, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_elite_heavy_trooper", x = -5.9, z = -13.8, y = 14.2, cellid = 8, respawn = 300, containmentType = -1, heading = 3.12414},
+		-- 9 foyer
+		{ mobile = "rebel_recruiter", x = 14.75, z = -13.8, y = 14.59, cellid = 9, containmentType = -1, respawn = 60, heading = 3.59538},
+		{ mobile = "fbase_rebel_commando_extreme", x = 17.1, z = -13.8, y = 14.5, cellid = 9, respawn = 300, containmentType = -1, heading = 4.7822},
+		{ mobile = "fbase_rebel_grenadier_extreme", x = 14, z = -13.8, y = 7.2, cellid = 9, respawn = 300, containmentType = -1, heading = 4.7473},
+		{ mobile = "fbase_rebel_elite_heavy_trooper_extreme", x = 13.4, z = -13.8, y = 0.1, cellid = 9, respawn = 300, containmentType = -1, heading = 1.5708},
+		-- 10 core
+		{ mobile = "fbase_rebel_elite_heavy_trooper", x = 11.1, z = -11.5, y = -20.2, cellid = 10, respawn = 300, containmentType = -1, heading = 2.86234},
+		{ mobile = "fbase_rebel_colonel_extreme", x = 15.6, z = -11.5, y = -21.3, cellid = 10, respawn = 300, containmentType = -1, heading = 4.15388},
+		{ mobile = "fbase_rebel_squad_leader_extreme", x = 12.7, z = -13.8, y = -14, cellid = 10, respawn = 300, containmentType = -1, heading = 6.17847},
+		{ mobile = "fbase_rebel_guardsman_extreme", x = 12.5, z = -13.8, y = -11.6, cellid = 10, respawn = 300, containmentType = -1, heading = 3.1765},
+		{ mobile = "fbase_rebel_elite_sand_rat_extreme", x = 16.4, z = -13.8, y = -17.4, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_elite_heavy_trooper", x = 17.3, z = -13.8, y = -4.6, cellid = 10, respawn = 300, containmentType = -1, heading = 3.12414},
+		{ mobile = "fbase_rebel_elite_heavy_trooper", x = 13.8, z = -13.8, y = -4.4, cellid = 10, respawn = 300, containmentType = -1, heading = 3.12414},
 	},
 
 	securityPatrols = {
