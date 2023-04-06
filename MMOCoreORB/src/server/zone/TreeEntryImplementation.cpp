@@ -243,6 +243,10 @@ uint64 TreeEntryImplementation::getDirtyObjectID() {
 }
 
 float TreeEntryImplementation::getOutOfRangeDistance() const {
+	if (isInOctTree()) {
+		return ZoneServer::SPACEOBJECTRANGE;
+	}
+
 	if (radius > ZoneServer::CLOSEOBJECTRANGE / 2.0f) {
 		return ZoneServer::CLOSEOBJECTRANGE + radius;
 	}
