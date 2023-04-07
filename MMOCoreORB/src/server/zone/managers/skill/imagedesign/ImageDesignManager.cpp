@@ -12,6 +12,8 @@
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "templates/customization/BasicRangedIntCustomizationVariable.h"
 
+//#define DEBUG_ID
+
 ImageDesignManager::ImageDesignManager() {
 	setLoggingName("ImageDesignManager");
 
@@ -28,6 +30,10 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, Cust
 	String type = customData->getType();
 
 	String skillMod = customData->getImageDesignSkillMod();
+
+#ifdef DEBUG_ID
+	info(true) << "updateCustomization - Type: " << type << " Skill Mod = " << skillMod << "  Value: " << imageDesigner->getSkillMod(skillMod);
+#endif
 
 	if (imageDesigner->getSkillMod(skillMod) < customData->getSkillModValue())
 		return;
@@ -103,7 +109,9 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, Cust
 
 				creatureObject->setCustomizationVariable(fullVariableNameLimit, setVal, true);
 
-				//info("setting " + fullVariableNameLimit + " to " + String::valueOf(setVal), true);
+#ifdef DEBUG_ID
+				info(true) << "setting variable limit: " << fullVariableNameLimit << " to " << setVal;
+#endif
 			}
 		}
 	}
@@ -129,7 +137,7 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 	}
 }
 
-void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables, uint32 value, TangibleObject* tano, int skillLevel) {
+void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables, uint32 value, TangibleObject* tano) {
 	String appearanceFilename = tano->getObjectTemplate()->getAppearanceFilename();
 
 	VectorMap<String, Reference<CustomizationVariable*> > variableLimits;
@@ -161,9 +169,8 @@ void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables
 				} else {
 					palette = dynamic_cast<PaletteColorCustomizationVariable*>(variableLimits.elementAt(j).getValue().get());
 
-					if (palette != nullptr) {
-						if (!validatePalette(palette, currentVal, skillLevel))
-							currentVal = palette->getDefaultValue();
+					if (!validatePalette(palette, currentVal)) {
+						currentVal = palette->getDefaultValue();
 					}
 				}
 
@@ -183,6 +190,10 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 	ManagedReference<CreatureObject*> creatureObject = creo;
 
 	String skillMod = customData->getImageDesignSkillMod();
+
+#ifdef DEBUG_ID
+	info(true) << "updateColorCustomization - Color Value: " << value << " Skill Mod = " << skillMod << "  Value: " << imageDesigner->getSkillMod(skillMod);
+#endif
 
 	if (imageDesigner->getSkillMod(skillMod) < customData->getSkillModValue())
 		return;
@@ -210,9 +221,7 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 		fullVariables.add(var);
 	}
 
-	int skillLevel = getSkillLevel(imageDesigner, skillMod);
-
-	updateColorVariable(fullVariables, value, objectToUpdate, skillLevel);
+	updateColorVariable(fullVariables, value, objectToUpdate);
 }
 
 void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, CreatureObject* creo) {
@@ -234,7 +243,10 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 	}
 }
 
+/*
 int ImageDesignManager::getSkillLevel(CreatureObject* imageDesigner, const String& skillMod) {
+	info(true) << "getSkillLevel -- Skill Mod: " << skillMod;
+
 	if (imageDesigner->hasSkill("social_imagedesigner_master")) {
 		return 5;
 	}
@@ -252,12 +264,12 @@ int ImageDesignManager::getSkillLevel(CreatureObject* imageDesigner, const Strin
 		skillName += "_0";
 	}
 
-	//info("testing for " + skillName, true);
+	info("testing for " + skillName, true);
 
 	for (int i = 4; i >= 1; --i) {
 		String testName = skillName + String::valueOf(i);
 
-		//info("testing for " + testName, true);
+		info("testing for " + testName, true);
 
 		if (imageDesigner->hasSkill(testName)) {
 			return i;
@@ -270,6 +282,7 @@ int ImageDesignManager::getSkillLevel(CreatureObject* imageDesigner, const Strin
 
 	return -1;
 }
+*/
 
 void ImageDesignManager::loadCustomizationData() {
 	TemplateManager* templateManager = TemplateManager::instance();
@@ -400,35 +413,22 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 
 	data.parseFromClientString(hairCustomization);
 
-	if (validateCustomizationString(&data, appearanceFilename, getSkillLevel(imageDesigner, "hair")))
-		tanoHair->setCustomizationString(hairCustomization);
+	if (!validateCustomizationString(&data, appearanceFilename))
+		return nullptr;
+
+	tanoHair->setCustomizationString(hairCustomization);
 
 	return tanoHair;
 }
 
 TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, TangibleObject* hairObject) {
-	if (creo == nullptr)
+	if (creo == nullptr || hairObject == nullptr)
 		return nullptr;
 
-	ManagedReference<TangibleObject*> hair = creo->getSlottedObject("hair").castTo<TangibleObject*>();
-
-	if (hair == hairObject) {
-		return hairObject;
-	}
-
-	if (hair != nullptr) {
-		Locker locker(hair);
-		hair->destroyObjectFromWorld(true);
-		hair->destroyObjectFromDatabase(true);
-	}
-
-	if (hairObject == nullptr)
-		return nullptr;
-
-	// Some race condition in the client prevents both the destroy and transfer from happening too close together
-	// Without it placing a hair object in the inventory.
+	// Task out inserting hair into the slot to avoid incidents where the clien places the hair into the players inventory
 	ManagedReference<CreatureObject*> strongCreo = creo;
 	ManagedReference<TangibleObject*> strongHair = hairObject;
+
 	Core::getTaskManager()->scheduleTask([strongCreo, strongHair]{
 		Locker locker(strongCreo);
 		Locker cLocker(strongCreo, strongHair);
@@ -436,67 +436,82 @@ TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, Tangi
 		strongCreo->broadcastObject(strongHair, true);
 	}, "TransferHairTask", 100);
 
-	return hair;
+	return hairObject;
 }
 
-bool ImageDesignManager::validatePalette(PaletteColorCustomizationVariable* palette, int value, int skillLevel) {
+bool ImageDesignManager::validatePalette(PaletteColorCustomizationVariable* palette, int value) {
+	if (palette == nullptr)
+		return false;
+
 	String paletteFileName = palette->getPaletteFileName();
 	int idx = paletteFileName.lastIndexOf("/");
+
+#ifdef DEBUG_ID
+	instance()->info(true) << "validatePalette called with an index of " << idx << " Value: " << value;
+#endif
 
 	if (idx != -1) {
 		String paletteName = paletteFileName.subString(idx + 1);
 		paletteName = paletteName.subString(0, paletteName.indexOf("."));
 
-		//info("palette name = " + paletteName, true);
+#ifdef DEBUG_ID
+		instance()->info(true) << "palette name = " << paletteName;
+#endif
 
 		PaletteData* data = CustomizationIdManager::instance()->getPaletteData(paletteName);
 
 		if (data == nullptr) {
-			//error("could not find palette data for " + paletteName);
-		} else {
-			int maxIndex;
-
-			switch (skillLevel) {
-			case -1:
-				maxIndex = data->getCreationIndexes();
-				break;
-			case 0:
-				maxIndex = data->getIdNoviceIndexes();
-				break;
-			case 1:
-				maxIndex = data->getIdLevel1Indexes();
-				break;
-			case 2:
-				maxIndex = data->getIdLevel2Indexes();
-				break;
-			case 3:
-				maxIndex = data->getIdLevel3Indexes();
-				break;
-			case 4:
-				maxIndex = data->getIdLevel4Indexes();
-				break;
-			case 5:
-				maxIndex = data->getIdMasterIndexes();
-				break;
-			default:
-				maxIndex = -1;
-				break;
-			}
-
-			if (value >= maxIndex || value < 0) {
-				instance()->error("value for " + paletteFileName + " value " + value + " outside bound " + String::valueOf(maxIndex));
-
-				return false;
-			} else {
-				//info(name + " value " + String::valueOf(val) + " inside bound " + String::valueOf(maxIndex) + " for " + name , true);
-			}
+			//instance()->error() << "PaletteData is a nullptr for " << paletteName;
+			return false;
 		}
+
+		// We do not need to check this. The UI for Image design restricts the colors available to the player based on their skill level.
+		// All of this is handles by the client. - Hakry
+
+		/*
+		int maxIndex;
+
+		switch (skillLevel) {
+		case -1:
+			maxIndex = data->getCreationIndexes();
+			break;
+		case 0:
+			maxIndex = data->getIdNoviceIndexes();
+			break;
+		case 1:
+			maxIndex = data->getIdLevel1Indexes();
+			break;
+		case 2:
+			maxIndex = data->getIdLevel2Indexes();
+			break;
+		case 3:
+			maxIndex = data->getIdLevel3Indexes();
+			break;
+		case 4:
+			maxIndex = data->getIdLevel4Indexes();
+			break;
+		case 5:
+			maxIndex = data->getIdMasterIndexes();
+			break;
+		default:
+			maxIndex = -1;
+			break;
+		}
+
+		if (value >= maxIndex || value < 0) {
+			instance()->error() << "Selected value for " << paletteFileName << " of  " << value << " is beyond the Max Index value of: " << maxIndex;
+
+			return false;
+		} else {
+			Logger::console.info(true) << paletteFileName + " value " << value << " Max index: " << maxIndex;
+		}*/
 	}
 
 	return true;
 }
 
-bool ImageDesignManager::validateCustomizationString(CustomizationVariables* data, const String& appearanceFilename, int skillLevel) {
+
+bool ImageDesignManager::validateCustomizationString(CustomizationVariables* data, const String& appearanceFilename) {
 	VectorMap<String, Reference<CustomizationVariable*> > variables;
 	variables.setNullValue(nullptr);
 	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
@@ -518,38 +533,32 @@ bool ImageDesignManager::validateCustomizationString(CustomizationVariables* dat
 
 		if (customizationVariable == nullptr) {
 			instance()->error("customization variable id " + String::valueOf(id) + " not found in the appearance file " + appearanceFilename + " with value " + String::valueOf(val));
-
 			continue;
 		}
 
 		PaletteColorCustomizationVariable* palette = dynamic_cast<PaletteColorCustomizationVariable*>(customizationVariable);
 
-		if (palette != nullptr) {
-			if (!validatePalette(palette, val, skillLevel))
-				return false;
-		} else {
-			BasicRangedIntCustomizationVariable* range = dynamic_cast<BasicRangedIntCustomizationVariable*>(customizationVariable);
+		if (!validatePalette(palette, val))
+			return false;
 
-			if (range == nullptr) {
-				instance()->error("unkown customization variable type " + name);
-				return false;
-			} else {
-				int maxExcl = range->getMaxValueExclusive();
-				int minIncl = range->getMinValueInclusive();
+		BasicRangedIntCustomizationVariable* range = dynamic_cast<BasicRangedIntCustomizationVariable*>(customizationVariable);
 
-				if (val >= maxExcl || val < minIncl) {
-					instance()->error("variable outside bounds " + name + " value " + val + " outside bounds [" + String::valueOf(minIncl) + "," + String::valueOf(maxExcl) + ")");
-
-					return false;
-				} else {
-					//instance()->info("variable " + name + " value " + String::valueOf(val) + " inside bounds [" + String::valueOf(minIncl) + "," + String::valueOf(maxExcl) + ")", true);
-				}
-
-			}
+		if (range == nullptr) {
+			instance()->error("unkown customization variable type " + name);
+			return false;
 		}
 
+		int maxExcl = range->getMaxValueExclusive();
+		int minIncl = range->getMinValueInclusive();
 
-		//info("setting variable:" + name + " to " + String::valueOf(val), true);
+		if (val >= maxExcl || val < minIncl) {
+			instance()->error("variable outside bounds " + name + " value " + val + " outside bounds [" + String::valueOf(minIncl) + "," + String::valueOf(maxExcl) + ")");
+			return false;
+		}
+
+#ifdef DEBUG_ID
+		instance()->info(true) << "Setting variable " << name << " Value: " << val << " inside bounds [" << minIncl << " ," << maxExcl << ")";
+#endif
 	}
 
 	return true;
