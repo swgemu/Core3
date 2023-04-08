@@ -136,9 +136,15 @@ public:
 			pcd->setShipLaunchStatus(true);
 			devLock.release();
 
-			ship->setFaction(creature->getFaction());
+			ship->setShipFaction(creature->getFaction());
 			ship->setFactionStatus(creature->getFactionStatus());
 			ship->scheduleRecovery();
+
+			if (creature->isInvulnerable()) {
+				ship->setOptionBit(OptionBitmask::INVULNERABLE, false);
+			} else {
+				ship->clearOptionBit(OptionBitmask::INVULNERABLE, false);
+			}
 
 			if (creature->isPlayerCreature()) {
 				PlayerObject* ghost = creature->getPlayerObject();

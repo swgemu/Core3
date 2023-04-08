@@ -62,7 +62,7 @@ public:
 		ship->getShipComponentMap()->insertToMessage(this);
 
 		insertAscii("");
-		insertAscii(ship->getShipType());
+		insertAscii(getShipTypeName(ship));
 		insertAscii(ship->getShipDifficulty());
 		insertAscii(ship->getShipFaction());
 
@@ -72,6 +72,16 @@ public:
 		insertInt(0);
 
 		setSize();
+	}
+
+	String getShipTypeName(ShipObject* ship) {
+		auto owner = ship->getOwner().get();
+
+		if (owner == nullptr || !owner->isASubChildOf(ship)) {
+			return ship->getShipType();
+		}
+
+		return "";
 	}
 };
 

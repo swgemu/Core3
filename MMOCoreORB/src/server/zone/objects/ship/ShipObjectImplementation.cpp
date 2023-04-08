@@ -26,6 +26,9 @@
 #include "templates/tangible/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/ShipChassisData.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "templates/faction/Factions.h"
+#include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
@@ -293,19 +296,31 @@ uint16 ShipObjectImplementation::getUniqueID() {
 }
 
 void ShipObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	//TODO: What packets are a must when sending baslines
+	bool sendSelf = player == owner.get() || player->isASubChildOf(asShipObject());
 
-	ShipObjectMessage1* ship1 = new ShipObjectMessage1(_this.getReferenceUnsafeStaticCast());
-	player->sendMessage(ship1);
+	if (sendSelf) {
+		ShipObjectMessage1* ship1 = new ShipObjectMessage1(_this.getReferenceUnsafeStaticCast());
+		player->sendMessage(ship1);
+	}
 
 	ShipObjectMessage3* ship3 = new ShipObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(ship3);
 
-	ShipObjectMessage4* ship4 = new ShipObjectMessage4(_this.getReferenceUnsafeStaticCast());
-	player->sendMessage(ship4);
+	if (sendSelf) {
+		ShipObjectMessage4* ship4 = new ShipObjectMessage4(_this.getReferenceUnsafeStaticCast());
+		player->sendMessage(ship4);
+	}
 
 	ShipObjectMessage6* ship6 = new ShipObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(ship6);
+
+	if (player->isPlayerCreature()) {
+		auto creature = player->asCreatureObject();
+
+		if (creature != nullptr) {
+			sendPvpStatusTo(creature);
+		}
+	}
 }
 
 ShipObject* ShipObjectImplementation::asShipObject() {
@@ -779,4 +794,72 @@ float ShipObjectImplementation::calculateCurrentEnergyCost() {
 	}
 
 	return energyCost;
+}
+
+void ShipObjectImplementation::setShipFaction(uint32 value, bool notifyClient) {
+	TangibleObjectImplementation::setFaction(value);
+	String faction = "";
+
+	if (value == Factions::FACTIONREBEL) {
+		faction = "rebel";
+	} else if (value == Factions::FACTIONIMPERIAL) {
+		faction = "imperial";
+	}
+
+	setShipFaction(faction, notifyClient);
+}
+
+void ShipObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
+	CreatureObject* pilot = owner.get();
+
+	uint32 pvpStatus = 0u;
+	bool attackable = false;
+	bool aggressive = false;
+	int futureStatus = 0;
+	int factionStatus = 0;
+
+	if (pilot != nullptr) {
+		pvpStatus = pilot->getPvpStatusBitmask();
+		attackable = pilot->isAttackableBy(player);
+		aggressive = pilot->isAggressiveTo(player);
+		futureStatus = pilot->getFutureFactionStatus();
+		factionStatus = pilot->getFactionStatus();
+	} else {
+		pvpStatus = getPvpStatusBitmask();
+		attackable = isAttackableBy(player);
+		aggressive = isAggressiveTo(player);
+		futureStatus = getFutureFactionStatus();
+		factionStatus = getFactionStatus();
+	}
+
+	if (attackable && !(pvpStatus & CreatureFlag::ATTACKABLE)) {
+		pvpStatus |= CreatureFlag::ATTACKABLE;
+	} else if (!attackable && (pvpStatus & CreatureFlag::ATTACKABLE)) {
+		pvpStatus &= ~CreatureFlag::ATTACKABLE;
+	}
+
+	if (aggressive && !(pvpStatus & CreatureFlag::AGGRESSIVE)) {
+		pvpStatus |= CreatureFlag::AGGRESSIVE;
+	} else if (!aggressive && (pvpStatus & CreatureFlag::AGGRESSIVE)) {
+		pvpStatus &= ~CreatureFlag::AGGRESSIVE;
+	}
+
+	if (aggressive && !(pvpStatus & CreatureFlag::ENEMY)) {
+		pvpStatus |= CreatureFlag::ENEMY;
+	} else if (!aggressive && (pvpStatus & CreatureFlag::ENEMY)) {
+		pvpStatus &= ~CreatureFlag::ENEMY;
+	}
+
+	if (factionStatus == FactionStatus::COVERT && futureStatus == FactionStatus::OVERT) {
+		pvpStatus |= CreatureFlag::WILLBEDECLARED;
+	} else if (factionStatus == FactionStatus::OVERT && futureStatus == FactionStatus::COVERT) {
+		pvpStatus |= CreatureFlag::WASDECLARED;
+	}
+
+	if (pilot != player && (pvpStatus & CreatureFlag::TEF)) {
+		pvpStatus &= ~CreatureFlag::TEF;
+	}
+
+	BaseMessage* pvp = new UpdatePVPStatusMessage(asShipObject(), player, pvpStatus);
+	player->sendMessage(pvp);
 }

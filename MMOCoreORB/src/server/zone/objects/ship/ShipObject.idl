@@ -705,6 +705,8 @@ class ShipObject extends TangibleObject {
 		shipFaction.update(value, notifyClient, this, delta);
 	}
 
+	public native void setShipFaction(unsigned int value, boolean notifyClient = true);
+
 	// 6:20
 	@local
 	public void setFrontShield(float value, boolean notifyClient = true, DeltaMessage delta = null) {
@@ -1462,4 +1464,8 @@ class ShipObject extends TangibleObject {
 	public native float calculateCurrentMass();
 
 	public native float calculateCurrentEnergyCost();
+
+	@dirty
+	@local
+	public native void sendPvpStatusTo(CreatureObject player);
 }
