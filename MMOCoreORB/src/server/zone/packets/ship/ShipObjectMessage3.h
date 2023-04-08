@@ -77,34 +77,29 @@ public:
 	}
 
 	UnicodeString getCustomObjectName(ShipObject* ship) {
-		UnicodeString name = "";
-
 		auto owner = ship->getOwner().get();
-		if (owner == nullptr) {
-			return name;
+
+		if (owner == nullptr || !owner->isASubChildOf(ship)) {
+			return ship->getDisplayedName();
 		}
 
-		if (owner != nullptr) {
-			name = owner->getDisplayedName();
+		UnicodeString pilotName = owner->getDisplayedName();
+		UnicodeString shipName = ship->getCustomObjectName();
 
-			auto shipName = ship->getCustomObjectName();
-
-			if (shipName != "") {
-				name = name + " (" + shipName + ")";
-			}
-		} else {
-			name = ship->getDisplayedName();
+		if (shipName != "") {
+			pilotName = pilotName + " (" + shipName + ")";
 		}
 
 		PlayerObject* ghost = owner->getPlayerObject();
+
 		if (ghost == nullptr || !ghost->hasGodMode()) {
-			return name;
+			return pilotName;
 		}
 
 		UnicodeString tag = PermissionLevelList::instance()->getPermissionTag(ghost->getAdminLevel());
-		name = name + " \\#ffff00[" + tag + "]\\#.";
+		pilotName = pilotName + " \\#ffff00[" + tag + "]\\#.";
 
-		return name;
+		return pilotName;
 	}
 };
 
