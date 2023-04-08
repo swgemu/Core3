@@ -26,6 +26,7 @@
 #include "templates/tangible/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/ShipChassisData.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "templates/faction/Factions.h"
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
@@ -293,19 +294,31 @@ uint16 ShipObjectImplementation::getUniqueID() {
 }
 
 void ShipObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	//TODO: What packets are a must when sending baslines
+	bool sendSelf = player->isASubChildOf(asShipObject());
 
-	ShipObjectMessage1* ship1 = new ShipObjectMessage1(_this.getReferenceUnsafeStaticCast());
-	player->sendMessage(ship1);
+	if (sendSelf) {
+		ShipObjectMessage1* ship1 = new ShipObjectMessage1(_this.getReferenceUnsafeStaticCast());
+		player->sendMessage(ship1);
+	}
 
 	ShipObjectMessage3* ship3 = new ShipObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(ship3);
 
-	ShipObjectMessage4* ship4 = new ShipObjectMessage4(_this.getReferenceUnsafeStaticCast());
-	player->sendMessage(ship4);
+	if (sendSelf) {
+		ShipObjectMessage4* ship4 = new ShipObjectMessage4(_this.getReferenceUnsafeStaticCast());
+		player->sendMessage(ship4);
+	}
 
 	ShipObjectMessage6* ship6 = new ShipObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(ship6);
+
+	if (player->isPlayerCreature()) {
+		auto creature = player->asCreatureObject();
+
+		if (creature != nullptr) {
+			sendPvpStatusTo(creature);
+		}
+	}
 }
 
 ShipObject* ShipObjectImplementation::asShipObject() {
@@ -779,4 +792,17 @@ float ShipObjectImplementation::calculateCurrentEnergyCost() {
 	}
 
 	return energyCost;
+}
+
+void ShipObjectImplementation::setShipFaction(uint32 value, bool notifyClient) {
+	TangibleObjectImplementation::setFaction(value);
+	String faction = "";
+
+	if (value == Factions::FACTIONREBEL) {
+		faction = "rebel";
+	} else if (value == Factions::FACTIONIMPERIAL) {
+		faction = "imperial";
+	}
+
+	setShipFaction(faction, notifyClient);
 }
