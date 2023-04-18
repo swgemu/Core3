@@ -99,6 +99,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getAccountID", &LuaPlayerObject::getAccountID },
 		{ "hasPvpTef", &LuaPlayerObject::hasPvpTef },
 		{ "hasGcwTef", &LuaPlayerObject::hasGcwTef },
+		{ "getPvpRating", &LuaPlayerObject::getPvpRating },
 		{ 0, 0 }
 };
 
@@ -923,6 +924,12 @@ int LuaPlayerObject::hasPvpTef(lua_State* L) {
 
 int LuaPlayerObject::hasGcwTef(lua_State* L) {
 	lua_pushboolean(L, realObject->hasGcwTef());
+
+	return 1;
+}
+
+int LuaPlayerObject::getPvpRating(lua_State* L) {
+	lua_pushinteger(L, realObject->getPvpRating());
 
 	return 1;
 }

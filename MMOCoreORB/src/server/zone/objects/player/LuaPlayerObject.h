@@ -103,6 +103,7 @@ namespace player {
 		int getAccountID(lua_State* L);
 		int hasPvpTef(lua_State* L);
 		int hasGcwTef(lua_State* L);
+		int getPvpRating(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc
