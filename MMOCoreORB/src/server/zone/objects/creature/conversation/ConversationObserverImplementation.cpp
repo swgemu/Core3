@@ -7,6 +7,7 @@
 #include "server/zone/objects/player/sessions/ConversationSession.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 ConversationObserverImplementation::ConversationObserverImplementation(uint32 convoTemplateCRC) {
 	conversationTemplateCRC = convoTemplateCRC;

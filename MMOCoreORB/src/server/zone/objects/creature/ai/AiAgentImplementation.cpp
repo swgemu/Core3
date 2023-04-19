@@ -2923,6 +2923,9 @@ int AiAgentImplementation::setDestination() {
 	case AiAgent::RESTING: {
 		break;
 	}
+	case AiAgent::CONVERSING: {
+		break;
+	}
 	default:
 		if (creatureBitmask & CreatureFlag::STATIC || homeLocation.getCell() != nullptr) {
 			setMovementState(AiAgent::PATHING_HOME);
@@ -3534,14 +3537,20 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	if (!player->isPlayerCreature() || isDead() || convoTemplateCRC == 0)
 		return false;
 
-	//Face player.
+	setMovementState(AiAgent::CONVERSING);
+	clearPatrolPoints();
+
+	// Face player.
 	faceObject(player);
 
 	PatrolPoint current(coordinates.getPosition(), getParent().get().castTo<CellObject*>());
 
 	broadcastNextPositionUpdate(&current);
 
-	CreatureObject* playerCreature = cast<CreatureObject*>( player);
+	CreatureObject* playerCreature = cast<CreatureObject*>(player);
+
+	if (playerCreature == nullptr)
+		return false;
 
 	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplateCRC);
 
@@ -3582,6 +3591,12 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 		error("Could not create conversation observer.");
 		return false;
 	}
+
+	return true;
+}
+
+bool AiAgentImplementation::stopConversation() {
+	setMovementState(AiAgent::OBLIVIOUS);
 
 	return true;
 }

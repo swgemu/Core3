@@ -1115,6 +1115,17 @@ class CreatureObject extends TangibleObject {
 	}
 
 	/**
+	 * sends conversation end
+	 * @pre {this locked}
+	 * @post {this locked}
+	 */
+	@dirty
+	@preLocked
+	public abstract boolean stopConversation() {
+		return false;
+	}
+
+	/**
 	 * sends the conversation list
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
