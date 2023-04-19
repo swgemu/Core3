@@ -719,6 +719,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("AI_CRACKDOWN_SCANNING", AiAgent::CRACKDOWN_SCANNING);
 	luaEngine->setGlobalInt("AI_HARVESTING", AiAgent::HARVESTING);
 	luaEngine->setGlobalInt("AI_RESTING", AiAgent::RESTING);
+	luaEngine->setGlobalInt("AI_CONVERSING", AiAgent::CONVERSING);
 
 	// Badges
 	const auto badges = BadgeList::instance()->getMap();
