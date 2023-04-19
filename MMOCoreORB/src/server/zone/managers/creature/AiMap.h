@@ -170,6 +170,7 @@ public:
 		lua->setGlobalInt("CRACKDOWN_SCANNING",			AiAgent::CRACKDOWN_SCANNING				);
 		lua->setGlobalInt("HARVESTING",					AiAgent::HARVESTING						);
 		lua->setGlobalInt("RESTING",					AiAgent::RESTING						);
+		lua->setGlobalInt("CONVERSING",					AiAgent::CONVERSING						);
 
 		lua->setGlobalInt("UPRIGHT",					CreaturePosture::UPRIGHT				);
 		lua->setGlobalInt("CROUCHED",					CreaturePosture::CROUCHED				);
