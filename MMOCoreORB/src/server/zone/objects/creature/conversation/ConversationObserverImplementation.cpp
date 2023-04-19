@@ -7,6 +7,7 @@
 #include "server/zone/objects/player/sessions/ConversationSession.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 ConversationObserverImplementation::ConversationObserverImplementation(uint32 convoTemplateCRC) {
 	conversationTemplateCRC = convoTemplateCRC;
@@ -135,6 +136,13 @@ void ConversationObserverImplementation::cancelConversationSession(CreatureObjec
 
 	if (forceClose && npc != nullptr)
 		conversingPlayer->sendMessage(new StopNpcConversation(conversingPlayer, npc->getObjectID()));
+
+	if (npc->isAiAgent()) {
+		AiAgent* agent = npc->asAiAgent();
+
+		if (agent != nullptr)
+			agent->setMovementState(AiAgent::OBLIVIOUS);
+	}
 }
 
 ConversationScreen* ConversationObserverImplementation::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC) {
