@@ -1345,9 +1345,9 @@ int CombatManager::calculatePoolsToDamage(int poolsToDamage) const {
 	if (poolsToDamage & RANDOM) {
 		int rand = System::random(100);
 
-		if (rand < 70) {
+		if (rand <= 60) {
 			poolsToDamage = HEALTH;
-		} else if (rand < 95) {
+		} else if (rand <= 95) {
 			poolsToDamage = ACTION;
 		} else {
 			poolsToDamage = MIND;
