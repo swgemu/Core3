@@ -114,6 +114,8 @@ void ShipObjectImplementation::storeShip(CreatureObject* player) {
 	if (shipControlDevice == nullptr)
 		return;
 
+	repairShip(1.f); // remove once station repair is added
+
 	shipControlDevice->storeShip(player);
 }
 
@@ -377,10 +379,16 @@ void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool 
 String ShipObjectImplementation::getParkingLocation() {
 	if (parkingLocation == "") {
 		ManagedReference<CreatureObject*> creo = owner.get();
+
 		if (creo != nullptr) {
-			parkingLocation = creo->getCityRegion().get()->getRegionDisplayedName();
+			ManagedReference<CityRegion*> region = creo->getCityRegion().get();
+
+			if (region != nullptr) {
+				parkingLocation = region->getRegionDisplayedName();
+			}
 		}
 	}
+
 	return parkingLocation;
 }
 
@@ -522,106 +530,211 @@ void ShipObjectImplementation::damageArmor(float damage, DeltaMessage* delta) {
 }
 
 void ShipObjectImplementation::doRecovery(int mselapsed) {
-	if (getSpaceZone() == nullptr)
-		return;
+	float deltaTime = mselapsed * 0.001f;
 
-	float deltaTime = mselapsed / 1000.0f;
-	bool reschedule = false;
+	auto pilot = owner.get();
+	auto deltaVector = getDeltaVector();
+	auto componentMap = getShipComponentMap();
 
-	ShipObject* ship = _this.getReferenceUnsafeStaticCast();
+	for (int i = 0; i < componentMap->size(); ++i) {
+		uint32 slot = componentMap->getKeyAt(i);
+		uint32 crc = componentMap->getValueAt(i);
 
-	if (ship == nullptr)
-		return;
-
-	//info(true) << "ShipObjectImplementation::doRecovery -- called";
-
-	// Ship is locked
-	Locker lock(ship);
-
-	CreatureObject* strongOwner = owner.get();
-
-	for (const auto& entry : components) {
-		int slot = entry.getKey();
-		ShipComponent* component = entry.getValue();
-
-		if (component == nullptr)
+		if (crc == 0) {
 			continue;
-
-		// Component crosslocked to ship
-		Locker clock(component, ship);
+		}
 
 		switch (slot) {
 			case Components::SHIELD0:
-			case Components::SHIELD1:
-				break;
-			case Components::REACTOR: {
-				break;
-			}
-			case Components::ENGINE:
-				break;
-			case Components::CAPACITOR: {
-				float amount = getCapacitorRechargeRate() * deltaTime;
-				float currentEnergy = getCapacitorEnergy();
-				float capMax = getCapacitorMaxEnergy();
+			case Components::SHIELD1: {
+				float minFront = getFrontShield();
+				float maxFront = getMaxFrontShield();
 
-				setCapacitorEnergy(Math::min(currentEnergy + amount, capMax), true);
+				if (minFront != maxFront) {
+					float value = minFront + (deltaTime * getShieldRechargeRate());
+					value = Math::min(value, maxFront);
+					setFrontShield(value, false, nullptr, deltaVector);
+				}
 
-				if (getCapacitorEnergy() < capMax) {
-					reschedule = true;
+				float minRear = getRearShield();
+				float maxRear = getMaxRearShield();
+
+				if (minRear != maxRear) {
+					float value = minRear + (deltaTime * getShieldRechargeRate());
+					value = Math::min(value, maxRear);
+					setRearShield(value, false, nullptr, deltaVector);
 				}
 
 				break;
 			}
+
+			case Components::CAPACITOR: {
+				float minCap = getCapacitorEnergy();
+				float maxCap = getCapacitorMaxEnergy();
+
+				if (maxCap != minCap) {
+					float value = minCap + (deltaTime * getCapacitorRechargeRate());
+					value = Math::min(value, maxCap);
+					setCapacitorEnergy(value, false, nullptr, deltaVector);
+				}
+
+				break;
+			}
+
 			case Components::BOOSTER: {
 				if (isBoosterActive()) {
-					int time = boostTimer.miliDifference() / 1000.f;
+					float boostEnergy = getBoosterEnergy();
+					float boostLimit = getBoosterConsumptionRate() * deltaTime;
 
-					// TODO: Fix these values when component data loading is functional
-					float compEfficiency = 1.0f; //getComponentEnergyEfficiency(Components::BOOSTER);
-					float rate = 150.0f; //getBoosterConsumptionRate();
-
-					float consumedAmount = (rate * time) * compEfficiency;
-					float currentEnergy = Math::max(0.0f, getBoosterEnergy() - consumedAmount);
-
-					//info(true) << "Time: " << time << " Consumed Amount: " << consumedAmount << " Current Energy: " << currentEnergy << " Consumption Rate: " << rate << " Component Efficiency = " << compEfficiency;
-
-					if (currentEnergy > 0) {
-						setBoosterEnergy(currentEnergy, true);
+					if (boostEnergy >= boostLimit) {
+						float value = boostEnergy - boostLimit;
+						setBoosterEnergy(value, false, nullptr, deltaVector);
 					} else {
-						ship->removeComponentFlag(Components::BOOSTER, ShipComponentFlag::DISABLED, true);
+						removeComponentFlag(Components::BOOSTER, ShipComponentFlag::DISABLED, true);
+						restartBooster();
 
-						if (strongOwner != nullptr) {
-							StringIdChatParameter param;
-							param.setStringId("@space/space_interaction:booster_energy_depleted");
-							strongOwner->sendSystemMessage(param);
+						if (pilot != nullptr) {
+							pilot->sendSystemMessage("@space/space_interaction:booster_energy_depleted");
 						}
-
-						ship->restartBooster();
 					}
-
-					reschedule = true;
 				} else {
-					float amount = getBoosterRechargeRate() * deltaTime;
-					float cur = getBoosterEnergy();
-					float boosterMax = getBoosterMaxEnergy();
+					float maxBoost = getBoosterMaxEnergy();
+					float minBoost = getBoosterEnergy();
 
-					setBoosterEnergy(Math::min(cur + amount, boosterMax), true);
+					if (maxBoost != minBoost) {
+						float value = minBoost + (deltaTime * getBoosterRechargeRate());
+						value = Math::min(value, maxBoost);
+						setBoosterEnergy(value, false, nullptr, deltaVector);
+					}
 				}
+
+				break;
 			}
 		}
 	}
 
-	// Update current max speed
 	float calculateSpeed = getActualSpeed();
 
 	if (getCurrentSpeed() != calculateSpeed) {
-		DeltaMessage* message6 = new DeltaMessage(ship->getObjectID(), 'SHIP', 6);
-		setCurrentSpeed(calculateSpeed, true, message6);
-		message6->close();
-		broadcastMessage(message6, true);
+		setCurrentSpeed(calculateSpeed, false, nullptr, deltaVector);
+	}
+
+	if (deltaVector != nullptr) {
+		deltaVector->sendMessages(asShipObject(), pilot);
 	}
 
 	scheduleRecovery();
+}
+
+void ShipObjectImplementation::repairShip(float value) {
+	float repair = Math::clamp(0.f, value, 1.f);
+	if (repair == 0.f) {
+		return;
+	}
+
+	auto pilot = owner.get();
+	auto deltaVector = getDeltaVector();
+	uint8 command = DeltaMapCommands::SET;
+
+	auto componentMap = getShipComponentMap();
+
+	for (int i = 0; i < componentMap->size(); ++i) {
+		uint32 slot = componentMap->getKeyAt(i);
+		uint32 crc = componentMap->getValueAt(i);
+
+		if (crc == 0) {
+			continue;
+		}
+
+		int flags = getComponentOptionsMap()->get(slot);
+
+		if (flags & ShipComponentFlag::DEMOLISHED) {
+			flags &= ~ShipComponentFlag::DEMOLISHED;
+		}
+
+		if (flags & ShipComponentFlag::DISABLED) {
+			flags &= ~ShipComponentFlag::DISABLED;
+		}
+
+		if (flags != getComponentOptionsMap()->get(slot)) {
+			setComponentOptions(slot, flags, nullptr, command,  deltaVector);
+		}
+
+		float maxArmor = getMaxArmorMap()->get(slot);
+		float oldArmor = getCurrentArmorMap()->get(slot);
+		float newArmor = ((maxArmor - oldArmor) * repair) + oldArmor;
+
+		if (newArmor != oldArmor) {
+			setComponentArmor(slot, newArmor, nullptr, command, deltaVector);
+		}
+
+		float maxHp = getMaxHitpointsMap()->get(slot);
+		float oldHp = getCurrentHitpointsMap()->get(slot);
+		float newHp = ((maxHp - oldHp) * repair) + oldHp;
+
+		if (newHp != oldHp) {
+			setComponentHitpoints(slot, newHp, nullptr, command, deltaVector);
+		}
+
+		float maxChassis = getChassisMaxHealth();
+		float oldChassis = getChassisCurrentHealth();
+		float newChassis = ((maxChassis - oldChassis) * repair) + oldChassis;
+
+		if (oldChassis != newChassis) {
+			setCurrentChassisHealth(newChassis, false, nullptr, deltaVector);
+		}
+
+		switch (slot) {
+			case Components::SHIELD0:
+			case Components::SHIELD1: {
+				float maxShieldFront = getMaxFrontShield();
+				float minShieldFront = getFrontShield();
+				float newShieldFront = ((maxShieldFront - minShieldFront) * repair) + minShieldFront;
+
+				if (newShieldFront != minShieldFront) {
+					setFrontShield(newShieldFront, false, nullptr, deltaVector);
+				}
+
+				float maxShieldRear = getMaxRearShield();
+				float minShieldRear = getRearShield();
+				float newShieldRear = ((maxShieldRear - minShieldRear) * repair) + minShieldRear;
+
+				if (newShieldRear != minShieldRear) {
+					setRearShield(newShieldRear, false, nullptr, deltaVector);
+				}
+
+				break;
+			}
+
+			case Components::CAPACITOR: {
+				float maxCap = getCapacitorMaxEnergy();
+				float minCap = getCapacitorEnergy();
+				float newCap = ((maxCap - minCap) * repair) + minCap;
+
+				if (newCap != minCap) {
+					setCapacitorEnergy(newCap, false, nullptr, deltaVector);
+				}
+
+				break;
+			}
+
+			case Components::BOOSTER: {
+				float maxBoost = getBoosterMaxEnergy();
+				float minBoost = getBoosterEnergy();
+				float newBoost = ((maxBoost - minBoost) * repair) + minBoost;
+
+				if (newBoost != minBoost) {
+					setBoosterEnergy(newBoost, false, nullptr, deltaVector);
+				}
+
+				break;
+			}
+		}
+	}
+
+	if (deltaVector != nullptr) {
+		deltaVector->sendMessages(asShipObject(), pilot);
+	}
 }
 
 void ShipObjectImplementation::scheduleRecovery() {
@@ -862,4 +975,14 @@ void ShipObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 
 	BaseMessage* pvp = new UpdatePVPStatusMessage(asShipObject(), player, pvpStatus);
 	player->sendMessage(pvp);
+}
+
+ShipDeltaVector* ShipObjectImplementation::getDeltaVector() {
+	if (shipDeltaVector == nullptr) {
+		shipDeltaVector = new ShipDeltaVector(asShipObject(), getOwner().get());
+	}
+
+	shipDeltaVector->reset(getOwner().get());
+
+	return shipDeltaVector.get();
 }
