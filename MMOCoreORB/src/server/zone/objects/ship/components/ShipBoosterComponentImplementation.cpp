@@ -56,45 +56,35 @@ void ShipBoosterComponentImplementation::fillAttributeList(AttributeListMessage*
 void ShipBoosterComponentImplementation::install(CreatureObject* pilot, ShipObject* ship, int slot, bool notifyClient) {
 	ShipComponentImplementation::install(pilot, ship, slot, notifyClient);
 
-	DeltaMessage* ship1 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
-	DeltaMessage* ship4 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 4) : nullptr;
+	auto deltaVector = notifyClient ? ship->getDeltaVector() : nullptr;
 
-	ship->setBoosterMaxSpeed(boosterSpeed, false, ship1);
-	ship->setBoosterMaxEnergy(boosterEnergy, false, ship1);
-	ship->setBoosterEnergyConsumptionRate(boosterConsumptionRate, false, ship1);
-	ship->setBoosterAcceleration(boosterAcceleration, false, ship1);
-	ship->setBoosterRechargeRate(boosterRechargeRate, false, ship1);
+	ship->setBoosterMaxSpeed(boosterSpeed, false, nullptr, deltaVector);
+	ship->setBoosterMaxEnergy(boosterEnergy, false, nullptr, deltaVector);
+	ship->setBoosterEnergyConsumptionRate(boosterConsumptionRate, false, nullptr, deltaVector);
+	ship->setBoosterAcceleration(boosterAcceleration, false, nullptr, deltaVector);
+	ship->setBoosterRechargeRate(boosterRechargeRate, false, nullptr, deltaVector);
 
-	ship->setBoosterEnergy(boosterEnergy, false, ship4);
+	ship->setBoosterEnergy(boosterEnergy, false, nullptr, deltaVector);
 
-	if (notifyClient) {
-		ship1->close();
-		ship4->close();
-
-		pilot->sendMessage(ship1);
-		pilot->sendMessage(ship4);
+	if (deltaVector != nullptr) {
+		deltaVector->sendMessages(ship, pilot);
 	}
 }
 
 void ShipBoosterComponentImplementation::uninstall(CreatureObject* pilot, ShipObject* ship, int slot, bool notifyClient) {
 	ShipComponentImplementation::uninstall(pilot, ship, slot, notifyClient);
 
-	DeltaMessage* ship1 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
-	DeltaMessage* ship4 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 4) : nullptr;
+	auto deltaVector = notifyClient ? ship->getDeltaVector() : nullptr;
 
-	ship->setBoosterMaxSpeed(0.f, false, ship1);
-	ship->setBoosterMaxEnergy(0.f, false, ship1);
-	ship->setBoosterEnergyConsumptionRate(0.f, false, ship1);
-	ship->setBoosterAcceleration(0.f, false, ship1);
-	ship->setBoosterRechargeRate(0.f, false, ship1);
+	ship->setBoosterMaxSpeed(0.f, false, nullptr, deltaVector);
+	ship->setBoosterMaxEnergy(0.f, false, nullptr, deltaVector);
+	ship->setBoosterEnergyConsumptionRate(0.f, false, nullptr, deltaVector);
+	ship->setBoosterAcceleration(0.f, false, nullptr, deltaVector);
+	ship->setBoosterRechargeRate(0.f, false, nullptr, deltaVector);
 
-	ship->setBoosterEnergy(0.f, false, ship4);
+	ship->setBoosterEnergy(0.f, false, nullptr, deltaVector);
 
-	if (notifyClient) {
-		ship1->close();
-		ship4->close();
-
-		pilot->sendMessage(ship1);
-		pilot->sendMessage(ship4);
+	if (deltaVector != nullptr) {
+		deltaVector->sendMessages(ship, pilot);
 	}
 }

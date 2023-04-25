@@ -47,51 +47,35 @@ void ShipShieldComponentImplementation::fillAttributeList(AttributeListMessage* 
 void ShipShieldComponentImplementation::install(CreatureObject* pilot, ShipObject* ship, int slot, bool notifyClient) {
 	ShipComponentImplementation::install(pilot, ship, slot, notifyClient);
 
-	DeltaMessage* ship1 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
-	DeltaMessage* ship3 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 3) : nullptr;
-	DeltaMessage* ship6 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 6) : nullptr;
+	auto deltaVector = notifyClient ? ship->getDeltaVector() : nullptr;
 
-	ship->setShieldRechargeRate(rechargeRate, false, ship1);
+	ship->setShieldRechargeRate(rechargeRate, false, nullptr, deltaVector);
 
-	ship->setFrontShieldMax(frontHitpoints, false, ship3);
-	ship->setRearShieldMax(rearHitpoints, false, ship3);
+	ship->setFrontShieldMax(frontHitpoints, false, nullptr, deltaVector);
+	ship->setRearShieldMax(rearHitpoints, false, nullptr, deltaVector);
 
-	ship->setFrontShield(frontHitpoints, false, ship6);
-	ship->setRearShield(rearHitpoints, false, ship6);
+	ship->setFrontShield(frontHitpoints, false, nullptr, deltaVector);
+	ship->setRearShield(rearHitpoints, false, nullptr, deltaVector);
 
-	if (notifyClient) {
-		ship1->close();
-		ship3->close();
-		ship6->close();
-
-		pilot->sendMessage(ship1);
-		ship->broadcastMessage(ship3, true);
-		ship->broadcastMessage(ship6, true);
+	if (deltaVector != nullptr) {
+		deltaVector->sendMessages(ship, pilot);
 	}
 }
 
 void ShipShieldComponentImplementation::uninstall(CreatureObject* pilot, ShipObject* ship, int slot, bool notifyClient) {
 	ShipComponentImplementation::uninstall(pilot, ship, slot, notifyClient);
 
-	DeltaMessage* ship1 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 1) : nullptr;
-	DeltaMessage* ship3 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 3) : nullptr;
-	DeltaMessage* ship6 = notifyClient ? new DeltaMessage(ship->getObjectID(), 'SHIP', 6) : nullptr;
+	auto deltaVector = notifyClient ? ship->getDeltaVector() : nullptr;
 
-	ship->setShieldRechargeRate(0, false, ship1);
+	ship->setShieldRechargeRate(0, false, nullptr, deltaVector);
 
-	ship->setFrontShieldMax(0, false, ship3);
-	ship->setRearShieldMax(0, false, ship3);
+	ship->setFrontShieldMax(0, false, nullptr, deltaVector);
+	ship->setRearShieldMax(0, false, nullptr, deltaVector);
 
-	ship->setFrontShield(0, false, ship6);
-	ship->setRearShield(0, false, ship6);
+	ship->setFrontShield(0, false, nullptr, deltaVector);
+	ship->setRearShield(0, false, nullptr, deltaVector);
 
-	if (notifyClient) {
-		ship1->close();
-		ship3->close();
-		ship6->close();
-
-		pilot->sendMessage(ship1);
-		ship->broadcastMessage(ship3, true);
-		ship->broadcastMessage(ship6, true);
+	if (deltaVector != nullptr) {
+		deltaVector->sendMessages(ship, pilot);
 	}
 }

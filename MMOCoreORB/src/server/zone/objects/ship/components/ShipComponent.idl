@@ -13,6 +13,7 @@ import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 include server.zone.objects.ship.ShipComponentData;
 include server.zone.packets.DeltaMessage;
+include server.zone.objects.ship.ShipDeltaVector;
 
 class ShipComponent extends Component {
 	protected float mass;
