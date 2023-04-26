@@ -591,6 +591,12 @@ void ServerCore::registerConsoleCommmands() {
 		return cmdResult;
 	});
 
+	addCommand("reportSharedMemory", [this](const String& arguments) -> CommandResult {
+		DirectorManager::instance()->reportSharedMemorySize();
+
+		return SUCCESS;
+	});
+
 	debug() << "registered " << consoleCommands.size() << " console commands.";
 }
 

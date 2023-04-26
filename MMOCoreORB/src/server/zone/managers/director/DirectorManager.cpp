@@ -238,6 +238,18 @@ void DirectorManager::removeQuestStatus(const String& key) {
 		ObjectManager::instance()->destroyObjectFromDatabase(status->_getObjectID());
 }
 
+void DirectorManager::reportSharedMemorySize() {
+#ifndef WITH_STM
+	DirectorManager::instance()->rlock();
+#endif
+
+	info(true) << "Director Manager Total Listed Shared Memory Items: " << DirectorManager::instance()->sharedMemory->getSize();
+
+#ifndef WITH_STM
+	DirectorManager::instance()->runlock();
+#endif
+}
+
 String DirectorManager::readStringSharedMemory(const String& key) {
 #ifndef WITH_STM
 	DirectorManager::instance()->rlock();

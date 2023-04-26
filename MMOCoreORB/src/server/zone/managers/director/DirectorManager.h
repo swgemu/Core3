@@ -91,6 +91,7 @@ namespace server {
 		String getQuestStatus(const String& keyString) const;
 		void removeQuestStatus(const String& key);
 
+		void reportSharedMemorySize();
 		String readStringSharedMemory(const String& key);
 		uint64 readSharedMemory(const String& key);
 		Vector3 readVector3SharedMemory(const String& key);
