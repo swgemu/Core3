@@ -42,13 +42,27 @@
 
 
 object_tangible_ship_components_reactor_rct_kessel_imperial_sfs_special_forces = object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_forces:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 51481.0,
-	hitpoints = 1102.0,
-	armor = 552.0,
-	energyUsage = 7.0,
-	maxEnergy = 27208.0,
+	componentDataName = "rct_kessel_imperial_sfs_special_forces",
+
+	attributes = {
+		{"energyGeneration", 27200},
+		{"currentHitpoints", 1100.38},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"currentArmorHitpoints", 550.19},
+		{"efficiency", 1},
+		{"energyMaintenance", 0},
+		{"mass", 51480},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.16},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_kessel_imperial_sfs_special_forces, "object/tangible/ship/components/reactor/rct_kessel_imperial_sfs_special_forces.iff")

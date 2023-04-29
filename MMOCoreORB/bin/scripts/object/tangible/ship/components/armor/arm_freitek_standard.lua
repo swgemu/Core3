@@ -42,11 +42,25 @@
 
 
 object_tangible_ship_components_armor_arm_freitek_standard = object_tangible_ship_components_armor_shared_arm_freitek_standard:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 3866.0,
-	hitpoints = 477.0,
-	armor = 475.0,
+	componentDataName = "arm_freitek_standard",
+
+	attributes = {
+		{"currentHitpoints", 473.8},
+		{"maximumHitpoints", 473.8},
+		{"maximumArmorHitpoints", 473.8},
+		{"currentArmorHitpoints", 473.8},
+		{"efficiency", 1},
+		{"energyMaintenance", 0},
+		{"mass", 3862.69},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumArmorHitpoints", 0.3},
+		{"mass", 0.318},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_freitek_standard, "object/tangible/ship/components/armor/arm_freitek_standard.iff")

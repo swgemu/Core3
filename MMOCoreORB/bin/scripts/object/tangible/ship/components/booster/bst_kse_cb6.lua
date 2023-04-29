@@ -42,17 +42,37 @@
 
 
 object_tangible_ship_components_booster_bst_kse_cb6 = object_tangible_ship_components_booster_shared_bst_kse_cb6:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 810.0,
-	hitpoints = 155.0,
-	armor = 80.0,
-	energyUsage = 502.0,
-	speed = 22.0,
-	maxEnergy = 1005.0,
-	rechargeRate = 33.0,
-	energyConsumptionRate = 109.0,
-	boosterAccel = 26.0,
+	componentDataName = "bst_kse_cb6",
+
+	attributes = {
+		{"currentEnergy", 1000},
+		{"maximumEnergy", 1000},
+		{"rechargeRate", 25},
+		{"consumptionRate", 100},
+		{"acceleration", 20},
+		{"maxSpeed", 15},
+		{"currentHitpoints", 150},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"currentArmorHitpoints", 75},
+		{"efficiency", 1},
+		{"energyMaintenance", 500},
+		{"mass", 800},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.1},
+		{"rechargeRate", 0.1},
+		{"consumptionRate", 0.1},
+		{"acceleration", 0.04},
+		{"maxSpeed", 0.03},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.15},
+		{"mass", 0.15},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_kse_cb6, "object/tangible/ship/components/booster/bst_kse_cb6.iff")

@@ -5,10 +5,19 @@
 void ShipReactorComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipComponentImplementation::loadTemplateData(templateData);
 
-	auto shot = dynamic_cast<SharedTangibleObjectTemplate*>(templateData);
+	auto shot = dynamic_cast<ShipComponentTemplate*>(templateData);
 
 	if (shot != nullptr) {
-		reactorGenerationRate = shot->getShipMaxEnergy();
+		const auto& attributeMap = shot->getAttributeMap();
+
+		for (int i = 0; i < attributeMap.size(); ++i) {
+			const auto& attribute = attributeMap.elementAt(i).getKey();
+			float value = attributeMap.elementAt(i).getValue();
+
+			if (attribute == "energyGeneration") {
+				reactorGenerationRate = value;
+			}
+		}
 	}
 }
 

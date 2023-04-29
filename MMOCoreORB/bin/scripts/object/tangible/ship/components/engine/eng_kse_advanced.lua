@@ -42,16 +42,34 @@
 
 
 object_tangible_ship_components_engine_eng_kse_advanced = object_tangible_ship_components_engine_shared_eng_kse_advanced:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 42125.0,
-	hitpoints = 1103.0,
-	armor = 559.0,
-	energyUsage = 1805.0,
-	speed = 73.0,
-	pitch = 59.0,
-	yaw = 66.0,
-	roll = 64.0,
+	componentDataName = "eng_kse_advanced",
+
+	attributes = {
+		{"maxSpeed", 66.09},
+		{"maxPitch", 56.81},
+		{"maxRoll", 56.81},
+		{"maxYaw", 56.81},
+		{"currentHitpoints", 1100.38},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"currentArmorHitpoints", 550.19},
+		{"efficiency", 1},
+		{"energyMaintenance", 1800},
+		{"mass", 42120},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_kse_advanced, "object/tangible/ship/components/engine/eng_kse_advanced.iff")

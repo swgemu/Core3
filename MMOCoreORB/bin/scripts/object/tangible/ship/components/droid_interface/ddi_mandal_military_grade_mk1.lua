@@ -42,13 +42,28 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_mandal_military_grade_mk1 = object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 504.0,
-	hitpoints = 153.0,
-	armor = 81.0,
-	energyUsage = 505.0,
-	droidSpeed = 40.0,
+	componentDataName = "ddi_mandal_military_grade_mk1",
+
+	attributes = {
+		{"commandSpeed", 34.5},
+		{"currentHitpoints", 150},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpointsMod", 0.05},
+		{"maximumArmorHitpoints", 75},
+		{"currentArmorHitpoints", 75},
+		{"efficiency", 1},
+		{"energyMaintenance", 500},
+		{"mass", 500},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_mandal_military_grade_mk1, "object/tangible/ship/components/droid_interface/ddi_mandal_military_grade_mk1.iff")

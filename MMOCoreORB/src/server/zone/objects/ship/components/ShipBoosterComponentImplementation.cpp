@@ -5,16 +5,27 @@
 void ShipBoosterComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipComponentImplementation::loadTemplateData(templateData);
 
-	auto shot = dynamic_cast<SharedTangibleObjectTemplate*>(templateData);
+	auto shot = dynamic_cast<ShipComponentTemplate*>(templateData);
 
 	if (shot != nullptr) {
-		boosterConsumptionRate = shot->getBoosterEnergyConsumptionRate();
-		boosterAcceleration = shot->getBoosterAcceleration();
+		const auto& attributeMap = shot->getAttributeMap();
 
-		boosterEnergy = shot->getShipMaxEnergy();
-		boosterRechargeRate = shot->getShipRechargeRate();
+		for (int i = 0; i < attributeMap.size(); ++i) {
+			const auto& attribute = attributeMap.elementAt(i).getKey();
+			float value = attributeMap.elementAt(i).getValue();
 
-		boosterSpeed = shot->getShipSpeed();
+			if (attribute == "consumptionRate") {
+				boosterConsumptionRate = value;
+			} else if(attribute == "acceleration") {
+				boosterAcceleration = value;
+			} else if (attribute == "maximumEnergy") {
+				boosterEnergy = value;
+			} else if (attribute == "rechargeRate") {
+				boosterRechargeRate = value;
+			} else if (attribute == "maxSpeed") {
+				boosterSpeed = value;
+			}
+		}
 	}
 }
 

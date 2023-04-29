@@ -42,16 +42,34 @@
 
 
 object_tangible_ship_components_engine_eng_sfs_imperial_4 = object_tangible_ship_components_engine_shared_eng_sfs_imperial_4:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 7,
-	mass = 16151.0,
-	hitpoints = 941.0,
-	armor = 471.0,
-	energyUsage = 1730.0,
-	speed = 66.0,
-	pitch = 57.0,
-	yaw = 52.0,
-	roll = 61.0,
+	componentDataName = "eng_sfs_imperial_4",
+
+	attributes = {
+		{"maxSpeed", 61.9605},
+		{"maxPitch", 50.92},
+		{"maxRoll", 50.92},
+		{"maxYaw", 50.92},
+		{"currentHitpoints", 934.43},
+		{"maximumHitpoints", 934.43},
+		{"maximumArmorHitpoints", 467.215},
+		{"currentArmorHitpoints", 467.215},
+		{"efficiency", 1},
+		{"energyMaintenance", 1725},
+		{"mass", 16146},
+		{"reverseEngineeringLevel", 7},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.09},
+		{"maxRoll", 0.09},
+		{"maxYaw", 0.09},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_sfs_imperial_4, "object/tangible/ship/components/engine/eng_sfs_imperial_4.iff")

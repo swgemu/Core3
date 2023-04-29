@@ -42,11 +42,25 @@
 
 
 object_tangible_ship_components_armor_arm_koensayr_promotional_b9_durasteel = object_tangible_ship_components_armor_shared_arm_koensayr_promotional_b9_durasteel:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 3,
-	mass = 2166.0,
-	hitpoints = 381.0,
-	armor = 380.0,
+	componentDataName = "arm_koensayr_promotional_b9_durasteel",
+
+	attributes = {
+		{"currentHitpoints", 379.04},
+		{"maximumHitpoints", 379.04},
+		{"maximumArmorHitpoints", 379.04},
+		{"currentArmorHitpoints", 379.04},
+		{"efficiency", 1},
+		{"energyMaintenance", 0},
+		{"mass", 2162.25},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.318},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_koensayr_promotional_b9_durasteel, "object/tangible/ship/components/armor/arm_koensayr_promotional_b9_durasteel.iff")

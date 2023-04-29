@@ -42,14 +42,31 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_mandal_provider_p1 = object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 49355.0,
-	hitpoints = 1653.0,
-	armor = 826.0,
-	energyUsage = 1201.0,
-	rechargeRate = 51.0,
-	rechargeRateMod = 10.0,
+	componentDataName = "cap_mandal_provider_p1",
+
+	attributes = {
+		{"currentEnergy", 1043.17},
+		{"maxEnergy", 1043.17},
+		{"rechargeRate", 41.724},
+		{"currentHitpoints", 1650.57},
+		{"maximumHitpoints", 1650.57},
+		{"maximumArmorHitpoints", 825.285},
+		{"currentArmorHitpoints", 825.285},
+		{"efficiency", 1},
+		{"energyMaintenance", 1200},
+		{"mass", 49350},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.2},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_mandal_provider_p1, "object/tangible/ship/components/weapon_capacitor/cap_mandal_provider_p1.iff")
