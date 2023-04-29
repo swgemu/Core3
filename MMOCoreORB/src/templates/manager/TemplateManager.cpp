@@ -128,6 +128,8 @@
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "templates/SharedUniverseObjectTemplate.h"
 
+#include "templates/tangible/ShipComponentTemplate.h"
+
 #include "conf/ConfigManager.h"
 #include "tre3/TreeArchive.h"
 
@@ -556,6 +558,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<DroidPersonalityModuleTemplate>(SharedObjectTemplate::DROIDMODULEPERSONALITY);
 	templateFactory.registerObject<VehicleObjectTemplate>(SharedObjectTemplate::VEHICLE);
 	templateFactory.registerObject<XpPurchaseTemplate>(SharedObjectTemplate::XPPURCHASE);
+	templateFactory.registerObject<ShipComponentTemplate>(SharedObjectTemplate::SHIPCOMPONENT);
 }
 
 void TemplateManager::registerFunctions() {
@@ -772,6 +775,8 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CLONER_DARK_JEDI_ONLY", CloningBuildingObjectTemplate::DARK_JEDI_ONLY);
 	luaTemplatesInstance->setGlobalInt("CLONER_FACTION_REBEL", CloningBuildingObjectTemplate::FACTION_REBEL);
 	luaTemplatesInstance->setGlobalInt("CLONER_FACTION_IMPERIAL", CloningBuildingObjectTemplate::FACTION_IMPERIAL);
+
+	luaTemplatesInstance->setGlobalInt("SHIPCOMPONENT", SharedObjectTemplate::SHIPCOMPONENT);
 }
 
 const String& TemplateManager::getTemplateFile(uint32 key) const {

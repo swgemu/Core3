@@ -5,17 +5,29 @@
 void ShipWeaponComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipComponentImplementation::loadTemplateData(templateData);
 
-	auto shot = dynamic_cast<SharedTangibleObjectTemplate*>(templateData);
+	auto shot = dynamic_cast<ShipComponentTemplate*>(templateData);
 
 	if (shot != nullptr) {
-		maxDamage = shot->getWeaponMaxDamage();
-		minDamage = shot->getWeaponMinDamage();
+		const auto& attributeMap = shot->getAttributeMap();
 
-		shieldEffectiveness = shot->getWeaponShieldEffectiveness() * 0.1f;
-		armorEffectiveness = shot->getWeaponArmorEffectiveness() * 0.1f;
+		for (int i = 0; i < attributeMap.size(); ++i) {
+			const auto& attribute = attributeMap.elementAt(i).getKey();
+			float value = attributeMap.elementAt(i).getValue();
 
-		energyPerShot = shot->getEnergyPerShot();
-		refireRate = shot->getWeaponRefireRate() * 0.1f;
+			if (attribute == "maxDamage") {
+				maxDamage = value;
+			} else if (attribute == "minDamage") {
+				minDamage = value;
+			} else if (attribute == "shieldEffectiveness") {
+				shieldEffectiveness = value;
+			} else if (attribute == "armorEffectiveness") {
+				armorEffectiveness = value;
+			} else if (attribute == "energyPerShot") {
+				energyPerShot = value;
+			} else if (attribute == "refireRate") {
+				refireRate = value;
+			}
+		}
 	}
 }
 
