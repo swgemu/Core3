@@ -5,13 +5,23 @@
 void ShipShieldComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipComponentImplementation::loadTemplateData(templateData);
 
-	auto shot = dynamic_cast<SharedTangibleObjectTemplate*>(templateData);
+	auto shot = dynamic_cast<ShipComponentTemplate*>(templateData);
 
 	if (shot != nullptr) {
-		frontHitpoints = shot->getShieldHitpointsFront();
-		rearHitpoints = shot->getShieldHitpointsRear();
+		const auto& attributeMap = shot->getAttributeMap();
 
-		rechargeRate = shot->getShipRechargeRate();
+		for (int i = 0; i < attributeMap.size(); ++i) {
+			const auto& attribute = attributeMap.elementAt(i).getKey();
+			float value = attributeMap.elementAt(i).getValue();
+
+			if (attribute == "shieldHitpointsMaximumBack") {
+				rearHitpoints = value;
+			} else if(attribute == "shieldHitpointsMaximumFront") {
+				frontHitpoints = value;
+			} else if (attribute == "shieldRechargeRate") {
+				rechargeRate = value;
+			}
+		}
 	}
 }
 

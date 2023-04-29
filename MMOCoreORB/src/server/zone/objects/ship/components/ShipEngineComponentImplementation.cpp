@@ -5,25 +5,36 @@
 void ShipEngineComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipComponentImplementation::loadTemplateData(templateData);
 
-	auto shot = dynamic_cast<SharedTangibleObjectTemplate*>(templateData);
+	auto shot = dynamic_cast<ShipComponentTemplate*>(templateData);
 
 	if (shot != nullptr) {
-		float pitch = shot->getShipPitch() * Math::DEG2RAD;
-		float yaw = shot->getShipYaw() * Math::DEG2RAD;
-		float roll = shot->getShipRoll() * Math::DEG2RAD;
-		float speed = shot->getShipSpeed();
+		const auto& attributeMap = shot->getAttributeMap();
 
-		enginePitchAccelerationRate = pitch;
-		engineYawAccelerationRate = yaw;
-		engineRollAccelerationRate = roll;
+		for (int i = 0; i < attributeMap.size(); ++i) {
+			const auto& attribute = attributeMap.elementAt(i).getKey();
+			float value = attributeMap.elementAt(i).getValue();
 
-		enginePitchRateMaximum = pitch;
-		engineYawRateMaximum = yaw;
-		engineRollRateMaximum = roll;
+			if (attribute == "maxPitch") {
+				float pitch = value * Math::DEG2RAD;
 
-		engineAccelerationRate = speed * 0.8f;
-		engineDecelerationRate = speed * 0.6f;
-		engineSpeedMaximum = speed;
+				enginePitchAccelerationRate = pitch;
+				enginePitchRateMaximum = pitch;
+			} else if (attribute == "maxYaw") {
+				float yaw = value * Math::DEG2RAD;
+
+				engineYawAccelerationRate = yaw;
+				engineYawRateMaximum = yaw;
+			} else if (attribute == "maxRoll") {
+				float roll = value * Math::DEG2RAD;
+
+				engineRollAccelerationRate = roll;
+				engineRollRateMaximum = roll;
+			} else if (attribute == "maxSpeed") {
+				engineAccelerationRate = value * 0.8f;
+				engineDecelerationRate = value * 0.6f;
+				engineSpeedMaximum = value;
+			}
+		}
 	}
 }
 

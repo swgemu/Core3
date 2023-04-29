@@ -14,6 +14,7 @@ include templates.SharedObjectTemplate;
 include server.zone.objects.ship.ShipComponentData;
 include server.zone.packets.DeltaMessage;
 include server.zone.objects.ship.ShipDeltaVector;
+include templates.tangible.ShipComponentTemplate;
 
 class ShipComponent extends Component {
 	protected float mass;
@@ -49,7 +50,7 @@ class ShipComponent extends Component {
 		collisionRange = 0.f;
 		componentBitmask = 0;
 		componentSlot = -1;
-		reverseEngineeringLevel = 1;
+		reverseEngineeringLevel = 0;
 	}
 
 	@read

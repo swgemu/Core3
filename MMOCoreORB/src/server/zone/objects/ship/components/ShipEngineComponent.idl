@@ -32,13 +32,13 @@ class ShipEngineComponent extends ShipComponent {
 		engineAccelerationRate = 60.f;
 		engineDecelerationRate = 40.f;
 
-		enginePitchAccelerationRate = 1.574f;
-		engineYawAccelerationRate = 1.574f;
-		engineRollAccelerationRate = 1.574f;
+		enginePitchAccelerationRate = 0.785f;
+		engineYawAccelerationRate = 0.785f;
+		engineRollAccelerationRate = 0.785f;
 
-		enginePitchRateMaximum = 3.14159f;
-		engineYawRateMaximum = 3.14159f;
-		engineRollRateMaximum = 3.14159f;
+		enginePitchRateMaximum = 0.785f;
+		engineYawRateMaximum = 0.785f;
+		engineRollRateMaximum = 0.785f;
 
 		engineSpeedMaximum = 50.f;
 	}
