@@ -6,19 +6,32 @@
 void ShipComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ComponentImplementation::loadTemplateData(templateData);
 
-	auto shot = dynamic_cast<SharedTangibleObjectTemplate*>(templateData);
+	auto shot = dynamic_cast<ShipComponentTemplate*>(templateData);
 
 	if (shot != nullptr) {
-		hitpoints = shot->getShipHitpoints();
-		hitpointsMax = shot->getShipHitpoints();
+		const auto& attributeMap = shot->getAttributeMap();
 
-		armor = shot->getShipArmor();
-		armorMax = shot->getShipArmor();
+		for (int i = 0; i < attributeMap.size(); ++i) {
+			const auto& attribute = attributeMap.elementAt(i).getKey();
+			float value = attributeMap.elementAt(i).getValue();
 
-		energyCost = shot->getShipEnergyConsumption();
-		mass = shot->getShipMass();
-
-		reverseEngineeringLevel = shot->getShipReverseEngineeringLevel();
+			if (attribute == "maximumHitpoints") {
+				hitpointsMax = value;
+				hitpoints = value;
+			} else if (attribute == "maximumArmorHitpoints") {
+				armorMax = value;
+				armor = value;
+			} else if (attribute == "efficiency") {
+				energyEfficiency = value;
+				efficiency = value;
+			} else if (attribute == "energyMaintenance") {
+				energyCost = value;
+			} else if (attribute == "mass") {
+				mass = value;
+			} else if (attribute == "reverseEngineeringLevel") {
+				reverseEngineeringLevel = value;
+			}
+		}
 	}
 
 	const auto componentData = ShipManager::instance()->getShipComponentFromTemplate(templateData->getFullTemplateString());
