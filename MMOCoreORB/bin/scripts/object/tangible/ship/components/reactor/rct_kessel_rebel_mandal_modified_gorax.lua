@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_kessel_rebel_mandal_modified_gorax = object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_gorax:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 51489.0,
-	hitpoints = 1542.0,
-	armor = 770.0,
-	energyUsage = 7.0,
-	maxEnergy = 27508.0,
+	componentDataName = "rct_kessel_rebel_mandal_modified_gorax",
+
+	attributes = {
+		{"energyGeneration", 27500},
+		{"maximumHitpoints", 1540.53},
+		{"maximumArmorHitpoints", 770.266},
+		{"mass", 51480},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.179},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_kessel_rebel_mandal_modified_gorax, "object/tangible/ship/components/reactor/rct_kessel_rebel_mandal_modified_gorax.iff")

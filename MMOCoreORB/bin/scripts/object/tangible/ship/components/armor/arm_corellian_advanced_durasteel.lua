@@ -42,11 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_corellian_advanced_durasteel = object_tangible_ship_components_armor_shared_arm_corellian_advanced_durasteel:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 7,
-	mass = 13778.0,
-	hitpoints = 904.0,
-	armor = 902.0,
+	componentDataName = "arm_corellian_advanced_durasteel",
+
+	attributes = {
+		{"maximumHitpoints", 902.032},
+		{"maximumArmorHitpoints", 902.032},
+		{"mass", 13773.2},
+		{"reverseEngineeringLevel", 7},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.433},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_corellian_advanced_durasteel, "object/tangible/ship/components/armor/arm_corellian_advanced_durasteel.iff")

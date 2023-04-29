@@ -42,17 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_mandal_limited_jbj_mk5 = object_tangible_ship_components_booster_shared_bst_mandal_limited_jbj_mk5:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 45122.0,
-	hitpoints = 1654.0,
-	armor = 830.0,
-	energyUsage = 607.0,
-	speed = 39.0,
-	maxEnergy = 2204.0,
-	rechargeRate = 56.0,
-	energyConsumptionRate = 224.0,
-	boosterAccel = 54.0,
+	componentDataName = "bst_mandal_limited_jbj_mk5",
+
+	attributes = {
+		{"maximumEnergy", 2196.15},
+		{"rechargeRate", 54.9},
+		{"consumptionRate", 219.615},
+		{"acceleration", 43.92},
+		{"maxSpeed", 34.155},
+		{"maximumHitpoints", 1650.57},
+		{"maximumArmorHitpoints", 825.285},
+		{"energyMaintenance", 600},
+		{"mass", 45120},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.1},
+		{"rechargeRate", 0.1},
+		{"consumptionRate", 0.1},
+		{"acceleration", 0.04},
+		{"maxSpeed", 0.03},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.15},
+		{"mass", 0.15},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_mandal_limited_jbj_mk5, "object/tangible/ship/components/booster/bst_mandal_limited_jbj_mk5.iff")

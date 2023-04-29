@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_tiefighter_basic = object_tangible_ship_components_shield_generator_shared_shd_tiefighter_basic:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 1105.0,
-	hitpoints = 151.0,
-	armor = 84.0,
-	energyUsage = 2561.0,
-	shieldFront = 209.0,
-	shieldRear = 209.0,
-	rechargeRate = 6.0,
+	componentDataName = "shd_tiefighter_basic",
+
+	attributes = {
+		{"shieldRechargeRate", 1.52},
+		{"shieldHitpointsMaximumFront", 200},
+		{"shieldHitpointsMaximumBack", 200},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"energyMaintenance", 2556},
+		{"mass", 1100},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.26},
+		{"shieldHitpointsMaximumFront", 0.341},
+		{"shieldHitpointsMaximumBack", 0.341},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.1},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_tiefighter_basic, "object/tangible/ship/components/shield_generator/shd_tiefighter_basic.iff")

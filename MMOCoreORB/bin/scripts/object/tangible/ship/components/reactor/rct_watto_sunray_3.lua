@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_watto_sunray_3 = object_tangible_ship_components_reactor_shared_rct_watto_sunray_3:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 5780.0,
-	hitpoints = 576.0,
-	armor = 288.0,
-	energyUsage = 5.0,
-	maxEnergy = 13501.0,
+	componentDataName = "rct_watto_sunray_3",
+
+	attributes = {
+		{"energyGeneration", 13500},
+		{"maximumHitpoints", 569.25},
+		{"maximumArmorHitpoints", 284.625},
+		{"mass", 5775},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_watto_sunray_3, "object/tangible/ship/components/reactor/rct_watto_sunray_3.iff")

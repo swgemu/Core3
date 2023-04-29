@@ -42,13 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_koensayr_standard_droid_interface = object_tangible_ship_components_droid_interface_shared_ddi_koensayr_standard_droid_interface:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 882.0,
-	hitpoints = 232.0,
-	armor = 117.0,
-	energyUsage = 506.0,
-	droidSpeed = 41.0,
+	componentDataName = "ddi_koensayr_standard_droid_interface",
+
+	attributes = {
+		{"commandSpeed", 33.75},
+		{"maximumHitpoints", 225},
+		{"maximumArmorHitpoints", 112.5},
+		{"energyMaintenance", 500},
+		{"mass", 875},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_koensayr_standard_droid_interface, "object/tangible/ship/components/droid_interface/ddi_koensayr_standard_droid_interface.iff")

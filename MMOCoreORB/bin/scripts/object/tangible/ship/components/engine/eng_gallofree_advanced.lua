@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_gallofree_advanced = object_tangible_ship_components_engine_shared_eng_gallofree_advanced:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 42121.0,
-	hitpoints = 1104.0,
-	armor = 552.0,
-	energyUsage = 1810.0,
-	speed = 75.0,
-	pitch = 61.0,
-	yaw = 65.0,
-	roll = 61.0,
+	componentDataName = "eng_gallofree_advanced",
+
+	attributes = {
+		{"maxSpeed", 66.09},
+		{"maxPitch", 56.81},
+		{"maxRoll", 56.81},
+		{"maxYaw", 56.81},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 1800},
+		{"mass", 42120},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_gallofree_advanced, "object/tangible/ship/components/engine/eng_gallofree_advanced.iff")

@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_koensayr_improved_deflector_m1 = object_tangible_ship_components_shield_generator_shared_shd_koensayr_improved_deflector_m1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1932.0,
-	hitpoints = 197.0,
-	armor = 94.0,
-	energyUsage = 2562.0,
-	shieldFront = 255.0,
-	shieldRear = 256.0,
-	rechargeRate = 11.0,
+	componentDataName = "shd_koensayr_improved_deflector_m1",
+
+	attributes = {
+		{"shieldRechargeRate", 1.9},
+		{"shieldHitpointsMaximumFront", 250},
+		{"shieldHitpointsMaximumBack", 250},
+		{"maximumHitpoints", 187.5},
+		{"maximumArmorHitpoints", 93.75},
+		{"energyMaintenance", 2556},
+		{"mass", 1925},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.26},
+		{"shieldHitpointsMaximumFront", 0.341},
+		{"shieldHitpointsMaximumBack", 0.341},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.1},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_koensayr_improved_deflector_m1, "object/tangible/ship/components/shield_generator/shd_koensayr_improved_deflector_m1.iff")

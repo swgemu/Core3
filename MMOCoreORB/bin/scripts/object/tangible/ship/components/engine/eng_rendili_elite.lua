@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_rendili_elite = object_tangible_ship_components_engine_shared_eng_rendili_elite:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 48653.0,
-	hitpoints = 1316.0,
-	armor = 654.0,
-	energyUsage = 1733.0,
-	speed = 81.0,
-	pitch = 77.0,
-	yaw = 76.0,
-	roll = 73.0,
+	componentDataName = "eng_rendili_elite",
+
+	attributes = {
+		{"maxSpeed", 78.4819},
+		{"maxPitch", 67.4619},
+		{"maxRoll", 67.4619},
+		{"maxYaw", 71.0125},
+		{"maximumHitpoints", 1306.7},
+		{"maximumArmorHitpoints", 653.351},
+		{"energyMaintenance", 1725},
+		{"mass", 48645},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_rendili_elite, "object/tangible/ship/components/engine/eng_rendili_elite.iff")

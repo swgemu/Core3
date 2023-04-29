@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_incom_custom_mark2 = object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 5777.0,
-	hitpoints = 470.0,
-	armor = 241.0,
-	energyUsage = 0.0,
-	maxEnergy = 13007.0,
+	componentDataName = "rct_incom_custom_mark2",
+
+	attributes = {
+		{"energyGeneration", 13000},
+		{"maximumHitpoints", 465.75},
+		{"maximumArmorHitpoints", 232.875},
+		{"mass", 5775},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.2},
+		{"maximumHitpoints", 0.07},
+		{"maximumArmorHitpoints", 0.07},
+		{"mass", 0.31},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_incom_custom_mark2, "object/tangible/ship/components/reactor/rct_incom_custom_mark2.iff")

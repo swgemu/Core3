@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_seinar_disruptor = object_tangible_ship_components_weapon_shared_wpn_seinar_disruptor:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1754.0,
-	hitpoints = 197.0,
-	armor = 96.0,
-	energyUsage = 2002.0,
-	minDamage = 369.0,
-	maxDamage = 489.0,
-	refireRate = 9.0,
-	energyPerShot = 29.0,
-	shieldEffectiveness = 6.0,
-	armorEffectiveness = 10.0,
+	componentDataName = "wpn_seinar_disruptor",
+
+	attributes = {
+		{"minDamage", 362.5},
+		{"maxDamage", 487.5},
+		{"shieldEffectiveness", 0.375},
+		{"armorEffectiveness", 0.875},
+		{"energyPerShot", 25.5},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 187.5},
+		{"maximumArmorHitpoints", 93.75},
+		{"energyMaintenance", 2000},
+		{"mass", 1750},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_seinar_disruptor, "object/tangible/ship/components/weapon/wpn_seinar_disruptor.iff")

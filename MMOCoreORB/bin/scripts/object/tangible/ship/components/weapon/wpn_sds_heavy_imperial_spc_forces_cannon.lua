@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_sds_heavy_imperial_spc_forces_cannon = object_tangible_ship_components_weapon_shared_wpn_sds_heavy_imperial_spc_forces_cannon:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 8,
-	mass = 35497.0,
-	hitpoints = 1409.0,
-	armor = 702.0,
-	energyUsage = 2300.0,
-	minDamage = 1996.0,
-	maxDamage = 3080.0,
-	refireRate = 2.0,
-	energyPerShot = 42.0,
-	shieldEffectiveness = 3.0,
-	armorEffectiveness = 3.0,
+	componentDataName = "wpn_sds_heavy_imperial_spc_forces_cannon",
+
+	attributes = {
+		{"minDamage", 1989.78},
+		{"maxDamage", 3076.66},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 35.076},
+		{"refireRate", 0.408},
+		{"maximumHitpoints", 1401.65},
+		{"maximumArmorHitpoints", 700.823},
+		{"energyMaintenance", 2300},
+		{"mass", 35490},
+		{"reverseEngineeringLevel", 8},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_sds_heavy_imperial_spc_forces_cannon, "object/tangible/ship/components/weapon/wpn_sds_heavy_imperial_spc_forces_cannon.iff")

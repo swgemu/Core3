@@ -5,11 +5,21 @@
 void ShipCapacitorComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipComponentImplementation::loadTemplateData(templateData);
 
-	auto shot = dynamic_cast<SharedTangibleObjectTemplate*>(templateData);
+	auto shot = dynamic_cast<ShipComponentTemplate*>(templateData);
 
 	if (shot != nullptr) {
-		capacitorEnergy = shot->getShipMaxEnergy();
-		capacitorRechargeRate = shot->getShipRechargeRate();
+		const auto& attributeMap = shot->getAttributeMap();
+
+		for (int i = 0; i < attributeMap.size(); ++i) {
+			const auto& attribute = attributeMap.elementAt(i).getKey();
+			float value = attributeMap.elementAt(i).getValue();
+
+			if (attribute == "maxEnergy") {
+				capacitorEnergy = value;
+			} else if (attribute == "rechargeRate") {
+				capacitorRechargeRate = value;
+			}
+		}
 	}
 }
 

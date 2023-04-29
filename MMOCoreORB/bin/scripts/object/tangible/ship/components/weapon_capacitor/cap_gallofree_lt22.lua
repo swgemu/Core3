@@ -42,14 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_gallofree_lt22 = object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 4602.0,
-	hitpoints = 519.0,
-	armor = 266.0,
-	energyUsage = 1057.0,
-	rechargeRate = 43.0,
-	rechargeRateMod = 9.0,
+	componentDataName = "cap_gallofree_lt22",
+
+	attributes = {
+		{"maxEnergy", 825},
+		{"rechargeRate", 39.6},
+		{"maximumHitpoints", 517.5},
+		{"maximumArmorHitpoints", 258.75},
+		{"energyMaintenance", 1050},
+		{"mass", 4593.75},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.1},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_gallofree_lt22, "object/tangible/ship/components/weapon_capacitor/cap_gallofree_lt22.iff")

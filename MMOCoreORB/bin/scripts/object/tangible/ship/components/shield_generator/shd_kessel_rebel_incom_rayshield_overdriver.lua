@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_kessel_rebel_incom_rayshield_overdriver = object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_incom_rayshield_overdriver:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 51489.0,
-	hitpoints = 1110.0,
-	armor = 551.0,
-	energyUsage = 3064.0,
-	shieldFront = 1471.0,
-	shieldRear = 1469.0,
-	rechargeRate = 18.0,
+	componentDataName = "shd_kessel_rebel_incom_rayshield_overdriver",
+
+	attributes = {
+		{"shieldRechargeRate", 11.149},
+		{"shieldHitpointsMaximumFront", 1467.18},
+		{"shieldHitpointsMaximumBack", 1467.18},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 3056},
+		{"mass", 51480},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.26},
+		{"shieldHitpointsMaximumFront", 0.341},
+		{"shieldHitpointsMaximumBack", 0.341},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.2},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_kessel_rebel_incom_rayshield_overdriver, "object/tangible/ship/components/shield_generator/shd_kessel_rebel_incom_rayshield_overdriver.iff")

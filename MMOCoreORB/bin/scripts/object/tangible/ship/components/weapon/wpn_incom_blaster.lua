@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_incom_blaster = object_tangible_ship_components_weapon_shared_wpn_incom_blaster:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1754.0,
-	hitpoints = 187.0,
-	armor = 100.0,
-	energyUsage = 1806.0,
-	minDamage = 335.0,
-	maxDamage = 445.0,
-	refireRate = 2.0,
-	energyPerShot = 32.0,
-	shieldEffectiveness = 4.0,
-	armorEffectiveness = 9.0,
+	componentDataName = "wpn_incom_blaster",
+
+	attributes = {
+		{"minDamage", 326.25},
+		{"maxDamage", 438.75},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 25.5},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 187.5},
+		{"maximumArmorHitpoints", 93.75},
+		{"energyMaintenance", 1800},
+		{"mass", 1750},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_incom_blaster, "object/tangible/ship/components/weapon/wpn_incom_blaster.iff")

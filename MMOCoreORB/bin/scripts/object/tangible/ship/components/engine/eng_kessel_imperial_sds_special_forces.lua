@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_kessel_imperial_sds_special_forces = object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_forces:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 50762.0,
-	hitpoints = 1376.0,
-	armor = 695.0,
-	energyUsage = 1809.0,
-	speed = 83.0,
-	pitch = 74.0,
-	yaw = 75.0,
-	roll = 71.0,
+	componentDataName = "eng_kessel_imperial_sds_special_forces",
+
+	attributes = {
+		{"maxSpeed", 82.6125},
+		{"maxPitch", 71.0125},
+		{"maxRoll", 71.0125},
+		{"maxYaw", 71.0125},
+		{"maximumHitpoints", 1375.47},
+		{"maximumArmorHitpoints", 687.737},
+		{"energyMaintenance", 1800},
+		{"mass", 50760},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_kessel_imperial_sds_special_forces, "object/tangible/ship/components/engine/eng_kessel_imperial_sds_special_forces.iff")

@@ -42,17 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_sorosuub_liberator_mk1 = object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 807.0,
-	hitpoints = 155.0,
-	armor = 80.0,
-	energyUsage = 501.0,
-	speed = 24.0,
-	maxEnergy = 1008.0,
-	rechargeRate = 32.0,
-	energyConsumptionRate = 107.0,
-	boosterAccel = 20.0,
+	componentDataName = "bst_sorosuub_liberator_mk1",
+
+	attributes = {
+		{"maximumEnergy", 1000},
+		{"rechargeRate", 25},
+		{"consumptionRate", 100},
+		{"acceleration", 20},
+		{"maxSpeed", 15},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"energyMaintenance", 500},
+		{"mass", 800},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.1},
+		{"rechargeRate", 0.1},
+		{"consumptionRate", 0.1},
+		{"acceleration", 0.04},
+		{"maxSpeed", 0.03},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.15},
+		{"mass", 0.15},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_sorosuub_liberator_mk1, "object/tangible/ship/components/booster/bst_sorosuub_liberator_mk1.iff")

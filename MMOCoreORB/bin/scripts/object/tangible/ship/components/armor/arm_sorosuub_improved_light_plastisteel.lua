@@ -42,11 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_sorosuub_improved_light_plastisteel = object_tangible_ship_components_armor_shared_arm_sorosuub_improved_light_plastisteel:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1514.0,
-	hitpoints = 212.0,
-	armor = 214.0,
+	componentDataName = "arm_sorosuub_improved_light_plastisteel",
+
+	attributes = {
+		{"maximumHitpoints", 206},
+		{"maximumArmorHitpoints", 206},
+		{"mass", 1513.57},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.24},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_sorosuub_improved_light_plastisteel, "object/tangible/ship/components/armor/arm_sorosuub_improved_light_plastisteel.iff")

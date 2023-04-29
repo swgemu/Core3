@@ -42,13 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_incom_droid_interface_mk3 = object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk3:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 6,
-	mass = 5469.0,
-	hitpoints = 962.0,
-	armor = 478.0,
-	energyUsage = 503.0,
-	droidSpeed = 20.0,
+	componentDataName = "ddi_incom_droid_interface_mk3",
+
+	attributes = {
+		{"commandSpeed", 19.125},
+		{"maximumHitpoints", 952.2},
+		{"maximumArmorHitpoints", 476.1},
+		{"energyMaintenance", 500},
+		{"mass", 5462.5},
+		{"reverseEngineeringLevel", 6},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_incom_droid_interface_mk3, "object/tangible/ship/components/droid_interface/ddi_incom_droid_interface_mk3.iff")

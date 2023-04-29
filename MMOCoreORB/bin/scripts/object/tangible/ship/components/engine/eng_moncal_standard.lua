@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_moncal_standard = object_tangible_ship_components_engine_shared_eng_moncal_standard:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 3,
-	mass = 2369.0,
-	hitpoints = 349.0,
-	armor = 178.0,
-	energyUsage = 1581.0,
-	speed = 53.0,
-	pitch = 46.0,
-	yaw = 46.0,
-	roll = 48.0,
+	componentDataName = "eng_moncal_standard",
+
+	attributes = {
+		{"maxSpeed", 49.392},
+		{"maxPitch", 45.315},
+		{"maxRoll", 45.315},
+		{"maxYaw", 45.315},
+		{"maximumHitpoints", 345},
+		{"maximumArmorHitpoints", 172.5},
+		{"energyMaintenance", 1575},
+		{"mass", 2362.5},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.09},
+		{"maxRoll", 0.09},
+		{"maxYaw", 0.09},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_moncal_standard, "object/tangible/ship/components/engine/eng_moncal_standard.iff")

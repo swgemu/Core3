@@ -42,11 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_kessel_imperial_rendili_crystalline_durasteel = object_tangible_ship_components_armor_shared_arm_kessel_imperial_rendili_crystalline_durasteel:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 42128.0,
-	hitpoints = 1545.0,
-	armor = 1549.0,
+	componentDataName = "arm_kessel_imperial_rendili_crystalline_durasteel",
+
+	attributes = {
+		{"maximumHitpoints", 1540.53},
+		{"maximumArmorHitpoints", 1540.53},
+		{"mass", 42120},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.483},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_kessel_imperial_rendili_crystalline_durasteel, "object/tangible/ship/components/armor/arm_kessel_imperial_rendili_crystalline_durasteel.iff")

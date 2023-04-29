@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_mandal_dx_advanced = object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 51480.0,
-	hitpoints = 1103.0,
-	armor = 550.0,
-	energyUsage = 4.0,
-	maxEnergy = 27001.0,
+	componentDataName = "rct_mandal_dx_advanced",
+
+	attributes = {
+		{"energyGeneration", 27000},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"mass", 51480},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.177},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_mandal_dx_advanced, "object/tangible/ship/components/reactor/rct_mandal_dx_advanced.iff")

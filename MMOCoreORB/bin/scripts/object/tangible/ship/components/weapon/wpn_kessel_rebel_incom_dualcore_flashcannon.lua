@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_kessel_rebel_incom_dualcore_flashcannon = object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_incom_dualcore_flashcannon:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 46804.0,
-	hitpoints = 1105.0,
-	armor = 556.0,
-	energyUsage = 2404.0,
-	minDamage = 1990.0,
-	maxDamage = 3211.0,
-	refireRate = 6.0,
-	energyPerShot = 33.0,
-	shieldEffectiveness = 2.0,
-	armorEffectiveness = 2.0,
+	componentDataName = "wpn_kessel_rebel_incom_dualcore_flashcannon",
+
+	attributes = {
+		{"minDamage", 1981.3},
+		{"maxDamage", 3209.45},
+		{"shieldEffectiveness", 0.5},
+		{"armorEffectiveness", 0.5},
+		{"energyPerShot", 29.868},
+		{"refireRate", 0.34},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 2400},
+		{"mass", 46800},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_kessel_rebel_incom_dualcore_flashcannon, "object/tangible/ship/components/weapon/wpn_kessel_rebel_incom_dualcore_flashcannon.iff")

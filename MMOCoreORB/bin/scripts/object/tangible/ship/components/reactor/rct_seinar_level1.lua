@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_seinar_level1 = object_tangible_ship_components_reactor_shared_rct_seinar_level1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 1329.0,
-	hitpoints = 159.0,
-	armor = 80.0,
-	energyUsage = 6.0,
-	maxEnergy = 10001.0,
+	componentDataName = "rct_seinar_level1",
+
+	attributes = {
+		{"energyGeneration", 10000},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"mass", 1320},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.32},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_seinar_level1, "object/tangible/ship/components/reactor/rct_seinar_level1.iff")

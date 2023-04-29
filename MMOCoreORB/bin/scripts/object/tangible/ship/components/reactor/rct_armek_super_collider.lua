@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_armek_super_collider = object_tangible_ship_components_reactor_shared_rct_armek_super_collider:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 8,
-	mass = 36040.0,
-	hitpoints = 1406.0,
-	armor = 702.0,
-	energyUsage = 9.0,
-	maxEnergy = 26259.0,
+	componentDataName = "rct_armek_super_collider",
+
+	attributes = {
+		{"energyGeneration", 26250},
+		{"maximumHitpoints", 1401.65},
+		{"maximumArmorHitpoints", 700.823},
+		{"mass", 36036},
+		{"reverseEngineeringLevel", 8},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.176},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_armek_super_collider, "object/tangible/ship/components/reactor/rct_armek_super_collider.iff")

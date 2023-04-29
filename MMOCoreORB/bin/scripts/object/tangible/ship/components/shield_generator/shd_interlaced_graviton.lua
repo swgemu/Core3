@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_interlaced_graviton = object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 64354.0,
-	hitpoints = 1105.0,
-	armor = 553.0,
-	energyUsage = 3063.0,
-	shieldFront = 1474.0,
-	shieldRear = 1474.0,
-	rechargeRate = 12.0,
+	componentDataName = "shd_interlaced_graviton",
+
+	attributes = {
+		{"shieldRechargeRate", 11.149},
+		{"shieldHitpointsMaximumFront", 1467.18},
+		{"shieldHitpointsMaximumBack", 1467.18},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 3056},
+		{"mass", 64350},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.28},
+		{"shieldHitpointsMaximumFront", 0.341},
+		{"shieldHitpointsMaximumBack", 0.341},
+		{"maximumHitpoints", 0.03},
+		{"maximumArmorHitpoints", 0.03},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.2},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_interlaced_graviton, "object/tangible/ship/components/shield_generator/shd_interlaced_graviton.iff")

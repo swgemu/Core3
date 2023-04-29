@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_freitek_level1 = object_tangible_ship_components_reactor_shared_rct_freitek_level1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 1325.0,
-	hitpoints = 160.0,
-	armor = 75.0,
-	energyUsage = 1.0,
-	maxEnergy = 10501.0,
+	componentDataName = "rct_freitek_level1",
+
+	attributes = {
+		{"energyGeneration", 10500},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"mass", 1320},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_freitek_level1, "object/tangible/ship/components/reactor/rct_freitek_level1.iff")

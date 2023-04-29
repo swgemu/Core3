@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_incom_heavy_blaster = object_tangible_ship_components_weapon_shared_wpn_incom_heavy_blaster:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 7,
-	mass = 19501.0,
-	hitpoints = 1037.0,
-	armor = 517.0,
-	energyUsage = 2309.0,
-	minDamage = 1595.0,
-	maxDamage = 2467.0,
-	refireRate = 5.0,
-	energyPerShot = 36.0,
-	shieldEffectiveness = 7.0,
-	armorEffectiveness = 4.0,
+	componentDataName = "wpn_incom_heavy_blaster",
+
+	attributes = {
+		{"minDamage", 1591.82},
+		{"maxDamage", 2461.33},
+		{"shieldEffectiveness", 0.5},
+		{"armorEffectiveness", 0.5},
+		{"energyPerShot", 27.156},
+		{"refireRate", 0.34},
+		{"maximumHitpoints", 1027.87},
+		{"maximumArmorHitpoints", 513.937},
+		{"energyMaintenance", 2300},
+		{"mass", 19500},
+		{"reverseEngineeringLevel", 7},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_incom_heavy_blaster, "object/tangible/ship/components/weapon/wpn_incom_heavy_blaster.iff")

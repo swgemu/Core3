@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_incom_heavy_quad_blaster = object_tangible_ship_components_weapon_shared_wpn_incom_heavy_quad_blaster:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 46806.0,
-	hitpoints = 1109.0,
-	armor = 557.0,
-	energyUsage = 2407.0,
-	minDamage = 1991.0,
-	maxDamage = 3215.0,
-	refireRate = 9.0,
-	energyPerShot = 36.0,
-	shieldEffectiveness = 3.0,
-	armorEffectiveness = 8.0,
+	componentDataName = "wpn_incom_heavy_quad_blaster",
+
+	attributes = {
+		{"minDamage", 1981.3},
+		{"maxDamage", 3209.45},
+		{"shieldEffectiveness", 0.5},
+		{"armorEffectiveness", 0.5},
+		{"energyPerShot", 29.868},
+		{"refireRate", 0.34},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 2400},
+		{"mass", 46800},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_incom_heavy_quad_blaster, "object/tangible/ship/components/weapon/wpn_incom_heavy_quad_blaster.iff")

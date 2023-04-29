@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_kse_rct_z = object_tangible_ship_components_reactor_shared_rct_kse_rct_z:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 8,
-	mass = 36044.0,
-	hitpoints = 1407.0,
-	armor = 702.0,
-	energyUsage = 6.0,
-	maxEnergy = 26454.0,
+	componentDataName = "rct_kse_rct_z",
+
+	attributes = {
+		{"energyGeneration", 26450},
+		{"maximumHitpoints", 1401.65},
+		{"maximumArmorHitpoints", 700.823},
+		{"mass", 36036},
+		{"reverseEngineeringLevel", 8},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.186},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_kse_rct_z, "object/tangible/ship/components/reactor/rct_kse_rct_z.iff")

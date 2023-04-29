@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_xwing_engine_s01_test = object_tangible_ship_components_engine_shared_xwing_engine_s01_test:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 901.0,
-	hitpoints = 159.0,
-	armor = 83.0,
-	energyUsage = 1504.0,
-	speed = 48.0,
-	pitch = 52.0,
-	yaw = 49.0,
-	roll = 54.0,
+	componentDataName = "xwing_engine_s01_test",
+
+	attributes = {
+		{"maxSpeed", 42},
+		{"maxPitch", 45},
+		{"maxRoll", 45},
+		{"maxYaw", 45},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"energyMaintenance", 1500},
+		{"mass", 900},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_xwing_engine_s01_test, "object/tangible/ship/components/engine/xwing_engine_s01_test.iff")

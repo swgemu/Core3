@@ -42,11 +42,22 @@
 
 
 object_tangible_ship_components_armor_armor_tiefighter_basic = object_tangible_ship_components_armor_shared_armor_tiefighter_basic:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 793.0,
-	hitpoints = 150.0,
-	armor = 151.0,
+	componentDataName = "armor_tiefighter_basic",
+
+	attributes = {
+		{"maximumHitpoints", 144.8},
+		{"maximumArmorHitpoints", 144.8},
+		{"mass", 792.9},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.24},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_tiefighter_basic, "object/tangible/ship/components/armor/armor_tiefighter_basic.iff")

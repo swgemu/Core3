@@ -42,13 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_rendili_imperator_1 = object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 5,
-	mass = 3130.0,
-	hitpoints = 637.0,
-	armor = 319.0,
-	energyUsage = 508.0,
-	droidSpeed = 28.0,
+	componentDataName = "ddi_rendili_imperator_1",
+
+	attributes = {
+		{"commandSpeed", 24},
+		{"maximumHitpoints", 634.8},
+		{"maximumArmorHitpoints", 317.4},
+		{"energyMaintenance", 500},
+		{"mass", 3125},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_rendili_imperator_1, "object/tangible/ship/components/droid_interface/ddi_rendili_imperator_1.iff")

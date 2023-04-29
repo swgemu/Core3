@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_corellian_deluxe_cruiser_grade_mk1 = object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade_mk1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1661.0,
-	hitpoints = 189.0,
-	armor = 97.0,
-	energyUsage = 1504.0,
-	speed = 59.0,
-	pitch = 65.0,
-	yaw = 61.0,
-	roll = 65.0,
+	componentDataName = "eng_corellian_deluxe_cruiser_grade_mk1",
+
+	attributes = {
+		{"maxSpeed", 52.5},
+		{"maxPitch", 56.25},
+		{"maxRoll", 56.25},
+		{"maxYaw", 56.25},
+		{"maximumHitpoints", 187.5},
+		{"maximumArmorHitpoints", 93.75},
+		{"energyMaintenance", 1500},
+		{"mass", 1653.75},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_corellian_deluxe_cruiser_grade_mk1, "object/tangible/ship/components/engine/eng_corellian_deluxe_cruiser_grade_mk1.iff")

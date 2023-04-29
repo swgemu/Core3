@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_moncal_deluxe_ionweb_b = object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_b:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 3,
-	mass = 2893.0,
-	hitpoints = 350.0,
-	armor = 181.0,
-	energyUsage = 2689.0,
-	shieldFront = 519.0,
-	shieldRear = 519.0,
-	rechargeRate = 10.0,
+	componentDataName = "shd_moncal_deluxe_ionweb_b",
+
+	attributes = {
+		{"shieldRechargeRate", 3.496},
+		{"shieldHitpointsMaximumFront", 517.5},
+		{"shieldHitpointsMaximumBack", 517.5},
+		{"maximumHitpoints", 345},
+		{"maximumArmorHitpoints", 172.5},
+		{"energyMaintenance", 2681},
+		{"mass", 2887.5},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.26},
+		{"shieldHitpointsMaximumFront", 0.2},
+		{"shieldHitpointsMaximumBack", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.2},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_moncal_deluxe_ionweb_b, "object/tangible/ship/components/shield_generator/shd_moncal_deluxe_ionweb_b.iff")

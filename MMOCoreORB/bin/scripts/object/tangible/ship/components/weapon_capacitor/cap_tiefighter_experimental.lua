@@ -42,14 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_tiefighter_experimental = object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_experimental:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 56403.0,
-	hitpoints = 1651.0,
-	armor = 832.0,
-	energyUsage = 1209.0,
-	rechargeRate = 59.0,
-	rechargeRateMod = 8.0,
+	componentDataName = "cap_tiefighter_experimental",
+
+	attributes = {
+		{"maxEnergy", 1098.07},
+		{"rechargeRate", 52.704},
+		{"maximumHitpoints", 1650.57},
+		{"maximumArmorHitpoints", 825.285},
+		{"energyMaintenance", 1200},
+		{"mass", 56400},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.1},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_tiefighter_experimental, "object/tangible/ship/components/weapon_capacitor/cap_tiefighter_experimental.iff")

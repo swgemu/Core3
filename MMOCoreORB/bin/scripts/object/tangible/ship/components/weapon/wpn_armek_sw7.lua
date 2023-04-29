@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_armek_sw7 = object_tangible_ship_components_weapon_shared_wpn_armek_sw7:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 8,
-	mass = 28670.0,
-	hitpoints = 1053.0,
-	armor = 530.0,
-	energyUsage = 2309.0,
-	minDamage = 1998.0,
-	maxDamage = 3081.0,
-	refireRate = 5.0,
-	energyPerShot = 42.0,
-	shieldEffectiveness = 7.0,
-	armorEffectiveness = 8.0,
+	componentDataName = "wpn_armek_sw7",
+
+	attributes = {
+		{"minDamage", 1989.78},
+		{"maxDamage", 3076.66},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 33.945},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 1051.23},
+		{"maximumArmorHitpoints", 525.617},
+		{"energyMaintenance", 2300},
+		{"mass", 28665},
+		{"reverseEngineeringLevel", 8},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_armek_sw7, "object/tangible/ship/components/weapon/wpn_armek_sw7.iff")

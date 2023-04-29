@@ -42,11 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_mandal_double_plated_composite_j7 = object_tangible_ship_components_armor_shared_arm_mandal_double_plated_composite_j7:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 3830.0,
-	hitpoints = 478.0,
-	armor = 482.0,
+	componentDataName = "arm_mandal_double_plated_composite_j7",
+
+	attributes = {
+		{"maximumHitpoints", 473.8},
+		{"maximumArmorHitpoints", 473.8},
+		{"mass", 3823.31},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.318},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mandal_double_plated_composite_j7, "object/tangible/ship/components/armor/arm_mandal_double_plated_composite_j7.iff")

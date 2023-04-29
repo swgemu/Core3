@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_taim_elite = object_tangible_ship_components_weapon_shared_wpn_taim_elite:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 56409.0,
-	hitpoints = 1382.0,
-	armor = 695.0,
-	energyUsage = 2202.0,
-	minDamage = 2238.0,
-	maxDamage = 3616.0,
-	refireRate = 5.0,
-	energyPerShot = 44.0,
-	shieldEffectiveness = 5.0,
-	armorEffectiveness = 1.0,
+	componentDataName = "wpn_taim_elite",
+
+	attributes = {
+		{"minDamage", 2228.96},
+		{"maxDamage", 3610.63},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 37.335},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 1375.47},
+		{"maximumArmorHitpoints", 687.737},
+		{"energyMaintenance", 2200},
+		{"mass", 56400},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_taim_elite, "object/tangible/ship/components/weapon/wpn_taim_elite.iff")

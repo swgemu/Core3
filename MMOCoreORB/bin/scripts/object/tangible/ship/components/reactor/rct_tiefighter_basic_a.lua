@@ -42,7 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_tiefighter_basic_a = object_tangible_ship_components_reactor_shared_rct_tiefighter_basic:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "",
+
+	attributes = {
+		{"energyGeneration", 10000},
+		{"maximumHitpoints", 135},
+		{"maximumArmorHitpoints", 67.5},
+		{"mass", 1320},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.2},
+		{"maximumHitpoints", 0.07},
+		{"maximumArmorHitpoints", 0.07},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_tiefighter_basic_a, "object/tangible/ship/components/reactor/rct_tiefighter_basic_a.iff")

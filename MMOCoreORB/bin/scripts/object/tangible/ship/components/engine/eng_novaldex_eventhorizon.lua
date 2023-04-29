@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_novaldex_eventhorizon = object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1576.0,
-	hitpoints = 192.0,
-	armor = 100.0,
-	energyUsage = 1503.0,
-	speed = 57.0,
-	pitch = 60.0,
-	yaw = 60.0,
-	roll = 65.0,
+	componentDataName = "eng_novaldex_eventhorizon",
+
+	attributes = {
+		{"maxSpeed", 52.5},
+		{"maxPitch", 56.25},
+		{"maxRoll", 56.25},
+		{"maxYaw", 56.25},
+		{"maximumHitpoints", 187.5},
+		{"maximumArmorHitpoints", 93.75},
+		{"energyMaintenance", 1500},
+		{"mass", 1575},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_novaldex_eventhorizon, "object/tangible/ship/components/engine/eng_novaldex_eventhorizon.iff")

@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_engine_kuat_tc40 = object_tangible_ship_components_engine_shared_engine_kuat_tc40:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 8,
-	mass = 29485.0,
-	hitpoints = 1175.0,
-	armor = 592.0,
-	energyUsage = 1726.0,
-	speed = 81.0,
-	pitch = 74.0,
-	yaw = 75.0,
-	roll = 69.0,
+	componentDataName = "eng_kuat_tc40",
+
+	attributes = {
+		{"maxSpeed", 73.7625},
+		{"maxPitch", 67},
+		{"maxRoll", 67},
+		{"maxYaw", 67},
+		{"maximumHitpoints", 1168.04},
+		{"maximumArmorHitpoints", 584.019},
+		{"energyMaintenance", 1725},
+		{"mass", 29484},
+		{"reverseEngineeringLevel", 8},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_kuat_tc40, "object/tangible/ship/components/engine/engine_kuat_tc40.iff")

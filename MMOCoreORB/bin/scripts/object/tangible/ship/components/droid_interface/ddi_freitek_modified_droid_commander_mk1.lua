@@ -42,13 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_freitek_modified_droid_commander_mk1 = object_tangible_ship_components_droid_interface_shared_ddi_freitek_modified_droid_commander_mk1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 2188.0,
-	hitpoints = 523.0,
-	armor = 266.0,
-	energyUsage = 505.0,
-	droidSpeed = 29.0,
+	componentDataName = "ddi_freitek_modified_droid_commander_mk1",
+
+	attributes = {
+		{"commandSpeed", 29.25},
+		{"maximumHitpoints", 517.5},
+		{"maximumArmorHitpoints", 258.75},
+		{"energyMaintenance", 500},
+		{"mass", 2187.5},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_freitek_modified_droid_commander_mk1, "object/tangible/ship/components/droid_interface/ddi_freitek_modified_droid_commander_mk1.iff")

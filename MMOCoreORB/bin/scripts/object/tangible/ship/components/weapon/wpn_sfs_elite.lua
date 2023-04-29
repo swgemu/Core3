@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_sfs_elite = object_tangible_ship_components_weapon_shared_wpn_sfs_elite:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 46803.0,
-	hitpoints = 1108.0,
-	armor = 554.0,
-	energyUsage = 2207.0,
-	minDamage = 1787.0,
-	maxDamage = 2895.0,
-	refireRate = 3.0,
-	energyPerShot = 35.0,
-	shieldEffectiveness = 7.0,
-	armorEffectiveness = 8.0,
+	componentDataName = "wpn_sfs_elite",
+
+	attributes = {
+		{"minDamage", 1783.17},
+		{"maxDamage", 2888.5},
+		{"shieldEffectiveness", 0.5},
+		{"armorEffectiveness", 0.5},
+		{"energyPerShot", 29.868},
+		{"refireRate", 0.34},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 2200},
+		{"mass", 46800},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_sfs_elite, "object/tangible/ship/components/weapon/wpn_sfs_elite.iff")

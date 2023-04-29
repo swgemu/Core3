@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_sfs_imperial_3 = object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 5,
-	mass = 8252.0,
-	hitpoints = 638.0,
-	armor = 318.0,
-	energyUsage = 4.0,
-	maxEnergy = 15004.0,
+	componentDataName = "rct_sfs_imperial_3",
+
+	attributes = {
+		{"energyGeneration", 15000},
+		{"maximumHitpoints", 634.8},
+		{"maximumArmorHitpoints", 317.4},
+		{"mass", 8250},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.175},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_sfs_imperial_3, "object/tangible/ship/components/reactor/rct_sfs_imperial_3.iff")

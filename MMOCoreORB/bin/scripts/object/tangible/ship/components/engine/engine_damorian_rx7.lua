@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_engine_damorian_rx7 = object_tangible_ship_components_engine_shared_engine_damorian_rx7:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 4332.0,
-	hitpoints = 440.0,
-	armor = 225.0,
-	energyUsage = 1579.0,
-	speed = 61.0,
-	pitch = 62.0,
-	yaw = 64.0,
-	roll = 64.0,
+	componentDataName = "eng_damorian_rx7",
+
+	attributes = {
+		{"maxSpeed", 58.8},
+		{"maxPitch", 59.625},
+		{"maxRoll", 59.625},
+		{"maxYaw", 59.625},
+		{"maximumHitpoints", 431.25},
+		{"maximumArmorHitpoints", 215.625},
+		{"energyMaintenance", 1575},
+		{"mass", 4331.25},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_engine_damorian_rx7, "object/tangible/ship/components/engine/engine_damorian_rx7.iff")

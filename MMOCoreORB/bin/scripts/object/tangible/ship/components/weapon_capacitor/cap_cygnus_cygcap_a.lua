@@ -42,14 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_cygnus_cygcap_a = object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_a:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1757.0,
-	hitpoints = 226.0,
-	armor = 116.0,
-	energyUsage = 1004.0,
-	rechargeRate = 35.0,
-	rechargeRateMod = 9.0,
+	componentDataName = "cap_cygnus_cygcap_a",
+
+	attributes = {
+		{"maxEnergy", 750},
+		{"rechargeRate", 30},
+		{"maximumHitpoints", 225},
+		{"maximumArmorHitpoints", 112.5},
+		{"energyMaintenance", 1000},
+		{"mass", 1750},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_cygnus_cygcap_a, "object/tangible/ship/components/weapon_capacitor/cap_cygnus_cygcap_a.iff")

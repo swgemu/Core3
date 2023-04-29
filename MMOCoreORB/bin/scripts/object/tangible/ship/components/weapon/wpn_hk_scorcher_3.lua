@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_hk_scorcher_3 = object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_3:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 6,
-	mass = 14209.0,
-	hitpoints = 799.0,
-	armor = 398.0,
-	energyUsage = 2209.0,
-	minDamage = 1680.0,
-	maxDamage = 2479.0,
-	refireRate = 5.0,
-	energyPerShot = 44.0,
-	shieldEffectiveness = 9.0,
-	armorEffectiveness = 6.0,
+	componentDataName = "wpn_hk_scorcher_3",
+
+	attributes = {
+		{"minDamage", 1678.56},
+		{"maxDamage", 2477.47},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 37.283},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 793.5},
+		{"maximumArmorHitpoints", 396.75},
+		{"energyMaintenance", 2200},
+		{"mass", 14202.5},
+		{"reverseEngineeringLevel", 6},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_hk_scorcher_3, "object/tangible/ship/components/weapon/wpn_hk_scorcher_3.iff")

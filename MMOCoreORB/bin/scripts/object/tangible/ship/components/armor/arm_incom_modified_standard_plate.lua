@@ -42,11 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_incom_modified_standard_plate = object_tangible_ship_components_armor_shared_arm_incom_modified_standard_plate:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 3866.0,
-	hitpoints = 475.0,
-	armor = 479.0,
+	componentDataName = "arm_incom_modified_standard_plate",
+
+	attributes = {
+		{"maximumHitpoints", 473.8},
+		{"maximumArmorHitpoints", 473.8},
+		{"mass", 3862.69},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.2},
+		{"maximumArmorHitpoints", 0.2},
+		{"mass", 0.318},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_incom_modified_standard_plate, "object/tangible/ship/components/armor/arm_incom_modified_standard_plate.iff")

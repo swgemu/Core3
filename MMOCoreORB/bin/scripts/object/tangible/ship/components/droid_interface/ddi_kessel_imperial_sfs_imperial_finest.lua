@@ -42,13 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_kessel_imperial_sfs_imperial_finest = object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sfs_imperial_finest:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 19505.0,
-	hitpoints = 1107.0,
-	armor = 557.0,
-	energyUsage = 507.0,
-	droidSpeed = 17.0,
+	componentDataName = "ddi_kessel_imperial_sfs_imperial_finest",
+
+	attributes = {
+		{"commandSpeed", 13.5},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 500},
+		{"mass", 19500},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_kessel_imperial_sfs_imperial_finest, "object/tangible/ship/components/droid_interface/ddi_kessel_imperial_sfs_imperial_finest.iff")

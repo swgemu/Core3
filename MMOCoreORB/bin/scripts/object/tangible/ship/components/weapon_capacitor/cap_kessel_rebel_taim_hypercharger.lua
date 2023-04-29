@@ -42,14 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_kessel_rebel_taim_hypercharger = object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_taim_hypercharger:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 46807.0,
-	hitpoints = 1103.0,
-	armor = 556.0,
-	energyUsage = 1203.0,
-	rechargeRate = 35.0,
-	rechargeRateMod = 7.0,
+	componentDataName = "cap_kessel_rebel_taim_hypercharger",
+
+	attributes = {
+		{"maxEnergy", 732.05},
+		{"rechargeRate", 29.28},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 1200},
+		{"mass", 46800},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.25},
+		{"rechargeRate", 0.25},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.25},
+		{"mass", 0.18},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_kessel_rebel_taim_hypercharger, "object/tangible/ship/components/weapon_capacitor/cap_kessel_rebel_taim_hypercharger.iff")

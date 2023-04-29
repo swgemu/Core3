@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_seinar_proton_screen_p1 = object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 2118.0,
-	hitpoints = 178.0,
-	armor = 90.0,
-	energyUsage = 2630.0,
-	shieldFront = 257.0,
-	shieldRear = 250.0,
-	rechargeRate = 9.0,
+	componentDataName = "shd_seinar_proton_screen_p1",
+
+	attributes = {
+		{"shieldRechargeRate", 1.9},
+		{"shieldHitpointsMaximumFront", 250},
+		{"shieldHitpointsMaximumBack", 250},
+		{"maximumHitpoints", 168.75},
+		{"maximumArmorHitpoints", 84.375},
+		{"energyMaintenance", 2625},
+		{"mass", 2117.5},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.27},
+		{"shieldHitpointsMaximumFront", 0.35},
+		{"shieldHitpointsMaximumBack", 0.35},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.2},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_seinar_proton_screen_p1, "object/tangible/ship/components/shield_generator/shd_seinar_proton_screen_p1.iff")

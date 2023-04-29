@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_kessel_rebel_sorosuub_ion_mesh_projection = object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_sorosuub_ion_mesh_projection:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 62043.0,
-	hitpoints = 1796.0,
-	armor = 899.0,
-	energyUsage = 3056.0,
-	shieldFront = 1609.0,
-	shieldRear = 1607.0,
-	rechargeRate = 14.0,
+	componentDataName = "shd_kessel_rebel_sorosuub_ion_mesh_projection",
+
+	attributes = {
+		{"shieldRechargeRate", 12.836},
+		{"shieldHitpointsMaximumFront", 1604.72},
+		{"shieldHitpointsMaximumBack", 1604.72},
+		{"maximumHitpoints", 1788.12},
+		{"maximumArmorHitpoints", 894.059},
+		{"energyMaintenance", 3056},
+		{"mass", 62040},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.26},
+		{"shieldHitpointsMaximumFront", 0.341},
+		{"shieldHitpointsMaximumBack", 0.341},
+		{"maximumHitpoints", 0.07},
+		{"maximumArmorHitpoints", 0.07},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.2},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_kessel_rebel_sorosuub_ion_mesh_projection, "object/tangible/ship/components/shield_generator/shd_kessel_rebel_sorosuub_ion_mesh_projection.iff")

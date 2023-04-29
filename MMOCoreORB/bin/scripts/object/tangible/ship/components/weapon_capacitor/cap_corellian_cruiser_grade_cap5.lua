@@ -42,14 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_corellian_cruiser_grade_cap5 = object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap5:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 7,
-	mass = 18726.0,
-	hitpoints = 985.0,
-	armor = 494.0,
-	energyUsage = 1204.0,
-	rechargeRate = 34.0,
-	rechargeRateMod = 5.0,
+	componentDataName = "cap_corellian_cruiser_grade_cap5",
+
+	attributes = {
+		{"maxEnergy", 698.775},
+		{"rechargeRate", 27.951},
+		{"maximumHitpoints", 981.151},
+		{"maximumArmorHitpoints", 490.576},
+		{"energyMaintenance", 1200},
+		{"mass", 18720},
+		{"reverseEngineeringLevel", 7},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_corellian_cruiser_grade_cap5, "object/tangible/ship/components/weapon_capacitor/cap_corellian_cruiser_grade_cap5.iff")

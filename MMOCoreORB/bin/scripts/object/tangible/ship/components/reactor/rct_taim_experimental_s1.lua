@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_taim_experimental_s1 = object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 6,
-	mass = 14424.0,
-	hitpoints = 952.0,
-	armor = 484.0,
-	energyUsage = 7.0,
-	maxEnergy = 21500.0,
+	componentDataName = "rct_taim_experimental_s1",
+
+	attributes = {
+		{"energyGeneration", 21500},
+		{"maximumHitpoints", 952.2},
+		{"maximumArmorHitpoints", 476.1},
+		{"mass", 14421},
+		{"reverseEngineeringLevel", 6},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.175},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_taim_experimental_s1, "object/tangible/ship/components/reactor/rct_taim_experimental_s1.iff")

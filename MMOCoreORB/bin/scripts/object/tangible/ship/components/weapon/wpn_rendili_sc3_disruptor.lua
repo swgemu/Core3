@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_rendili_sc3_disruptor = object_tangible_ship_components_weapon_shared_wpn_rendili_sc3_disruptor:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 6,
-	mass = 13118.0,
-	hitpoints = 880.0,
-	armor = 442.0,
-	energyUsage = 2209.0,
-	minDamage = 1348.0,
-	maxDamage = 1983.0,
-	refireRate = 4.0,
-	energyPerShot = 35.0,
-	shieldEffectiveness = 9.0,
-	armorEffectiveness = 4.0,
+	componentDataName = "wpn_rendili_sc3_disruptor",
+
+	attributes = {
+		{"minDamage", 1342.85},
+		{"maxDamage", 1981.97},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 30.855},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 872.85},
+		{"maximumArmorHitpoints", 436.425},
+		{"energyMaintenance", 2200},
+		{"mass", 13110},
+		{"reverseEngineeringLevel", 6},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_rendili_sc3_disruptor, "object/tangible/ship/components/weapon/wpn_rendili_sc3_disruptor.iff")

@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_armek_phase_grinder = object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 62044.0,
-	hitpoints = 1492.0,
-	armor = 750.0,
-	energyUsage = 10.0,
-	maxEnergy = 30003.0,
+	componentDataName = "rct_armek_phase_grinder",
+
+	attributes = {
+		{"energyGeneration", 30000},
+		{"maximumHitpoints", 1485.51},
+		{"maximumArmorHitpoints", 742.756},
+		{"mass", 62040},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.225},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_armek_phase_grinder, "object/tangible/ship/components/reactor/rct_armek_phase_grinder.iff")

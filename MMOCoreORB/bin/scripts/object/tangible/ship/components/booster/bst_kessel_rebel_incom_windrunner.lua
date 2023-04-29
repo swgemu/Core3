@@ -42,17 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_kessel_rebel_incom_windrunner = object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_windrunner:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 45121.0,
-	hitpoints = 1660.0,
-	armor = 834.0,
-	energyUsage = 602.0,
-	speed = 36.0,
-	maxEnergy = 2197.0,
-	rechargeRate = 56.0,
-	energyConsumptionRate = 229.0,
-	boosterAccel = 48.0,
+	componentDataName = "bst_kessel_rebel_incom_windrunner",
+
+	attributes = {
+		{"maximumEnergy", 2196.15},
+		{"rechargeRate", 54.9},
+		{"consumptionRate", 219.615},
+		{"acceleration", 43.92},
+		{"maxSpeed", 34.155},
+		{"maximumHitpoints", 1650.57},
+		{"maximumArmorHitpoints", 825.285},
+		{"energyMaintenance", 600},
+		{"mass", 45120},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.0001},
+		{"rechargeRate", 0.0001},
+		{"consumptionRate", 0.0001},
+		{"acceleration", 0.0001},
+		{"maxSpeed", 0.0001},
+		{"maximumHitpoints", 0.0001},
+		{"maximumArmorHitpoints", 0.0001},
+		{"energyMaintenance", 0.0001},
+		{"mass", 0.0001},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_kessel_rebel_incom_windrunner, "object/tangible/ship/components/booster/bst_kessel_rebel_incom_windrunner.iff")

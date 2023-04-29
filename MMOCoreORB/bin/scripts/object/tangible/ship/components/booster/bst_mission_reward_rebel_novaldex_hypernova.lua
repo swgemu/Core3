@@ -42,17 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_mission_reward_rebel_novaldex_hypernova = object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_novaldex_hypernova:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 3158.0,
-	hitpoints = 673.0,
-	armor = 337.0,
-	energyUsage = 455.0,
-	speed = 35.0,
-	maxEnergy = 1987.0,
-	rechargeRate = 53.0,
-	energyConsumptionRate = 206.0,
-	boosterAccel = 37.0,
+	componentDataName = "bst_mission_reward_rebel_novaldex_hypernova",
+
+	attributes = {
+		{"maximumEnergy", 1980},
+		{"rechargeRate", 49.5},
+		{"consumptionRate", 198},
+		{"acceleration", 36.3},
+		{"maxSpeed", 24.975},
+		{"maximumHitpoints", 672.75},
+		{"maximumArmorHitpoints", 336.375},
+		{"energyMaintenance", 450},
+		{"mass", 3150},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.0001},
+		{"rechargeRate", 0.0001},
+		{"consumptionRate", 0.0001},
+		{"acceleration", 0.0001},
+		{"maxSpeed", 0.0001},
+		{"maximumHitpoints", 0.0001},
+		{"maximumArmorHitpoints", 0.0001},
+		{"energyMaintenance", 0.0001},
+		{"mass", 0.0001},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_mission_reward_rebel_novaldex_hypernova, "object/tangible/ship/components/booster/bst_mission_reward_rebel_novaldex_hypernova.iff")

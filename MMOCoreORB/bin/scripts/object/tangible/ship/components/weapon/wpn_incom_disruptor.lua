@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_incom_disruptor = object_tangible_ship_components_weapon_shared_wpn_incom_disruptor:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 3,
-	mass = 2631.0,
-	hitpoints = 347.0,
-	armor = 181.0,
-	energyUsage = 2106.0,
-	minDamage = 618.0,
-	maxDamage = 864.0,
-	refireRate = 2.0,
-	energyPerShot = 31.0,
-	shieldEffectiveness = 2.0,
-	armorEffectiveness = 3.0,
+	componentDataName = "wpn_incom_disruptor",
+
+	attributes = {
+		{"minDamage", 609},
+		{"maxDamage", 858},
+		{"shieldEffectiveness", 0.3},
+		{"armorEffectiveness", 0.7},
+		{"energyPerShot", 22.44},
+		{"refireRate", 0.34},
+		{"maximumHitpoints", 345},
+		{"maximumArmorHitpoints", 172.5},
+		{"energyMaintenance", 2100},
+		{"mass", 2625},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_incom_disruptor, "object/tangible/ship/components/weapon/wpn_incom_disruptor.iff")

@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_weapon_test = object_tangible_ship_components_weapon_shared_weapon_test:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 1002.0,
-	hitpoints = 156.0,
-	armor = 80.0,
-	energyUsage = 2002.0,
-	minDamage = 300.0,
-	maxDamage = 400.0,
-	refireRate = 2.0,
-	energyPerShot = 28.0,
-	shieldEffectiveness = 8.0,
-	armorEffectiveness = 4.0,
+	componentDataName = "weapon_test",
+
+	attributes = {
+		{"minDamage", 290},
+		{"maxDamage", 390},
+		{"shieldEffectiveness", 0.5},
+		{"armorEffectiveness", 0.5},
+		{"energyPerShot", 20.4},
+		{"refireRate", 0.34},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"energyMaintenance", 2000},
+		{"mass", 1000},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_weapon_test, "object/tangible/ship/components/weapon/weapon_test.iff")

@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_mandal_annilhator_mk1 = object_tangible_ship_components_weapon_shared_wpn_mandal_annilhator_mk1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 6,
-	mass = 12023.0,
-	hitpoints = 803.0,
-	armor = 399.0,
-	energyUsage = 2404.0,
-	minDamage = 1388.0,
-	maxDamage = 2044.0,
-	refireRate = 6.0,
-	energyPerShot = 38.0,
-	shieldEffectiveness = 7.0,
-	armorEffectiveness = 3.0,
+	componentDataName = "wpn_mandal_annilhator_mk1",
+
+	attributes = {
+		{"minDamage", 1383.14},
+		{"maxDamage", 2041.43},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 30.855},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 793.5},
+		{"maximumArmorHitpoints", 396.75},
+		{"energyMaintenance", 2400},
+		{"mass", 12017.5},
+		{"reverseEngineeringLevel", 6},
+	},
+
+	modifiers = {
+		{"minDamage", 0.14},
+		{"maxDamage", 0.14},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mandal_annilhator_mk1, "object/tangible/ship/components/weapon/wpn_mandal_annilhator_mk1.iff")

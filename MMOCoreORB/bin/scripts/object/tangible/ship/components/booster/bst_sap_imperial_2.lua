@@ -42,17 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_sap_imperial_2 = object_tangible_ship_components_booster_shared_bst_sap_imperial_2:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 3,
-	mass = 2104.0,
-	hitpoints = 347.0,
-	armor = 181.0,
-	energyUsage = 526.0,
-	speed = 26.0,
-	maxEnergy = 1103.0,
-	rechargeRate = 29.0,
-	energyConsumptionRate = 110.0,
-	boosterAccel = 24.0,
+	componentDataName = "bst_sap_imperial_2",
+
+	attributes = {
+		{"maximumEnergy", 1100},
+		{"rechargeRate", 27.5},
+		{"consumptionRate", 110},
+		{"acceleration", 22},
+		{"maxSpeed", 16.65},
+		{"maximumHitpoints", 345},
+		{"maximumArmorHitpoints", 172.5},
+		{"energyMaintenance", 525},
+		{"mass", 2100},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.1},
+		{"rechargeRate", 0.1},
+		{"consumptionRate", 0.1},
+		{"acceleration", 0.04},
+		{"maxSpeed", 0.03},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.15},
+		{"mass", 0.15},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_sap_imperial_2, "object/tangible/ship/components/booster/bst_sap_imperial_2.iff")

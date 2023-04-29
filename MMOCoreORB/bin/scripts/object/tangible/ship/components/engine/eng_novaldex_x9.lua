@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_novaldex_x9 = object_tangible_ship_components_engine_shared_eng_novaldex_x9:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 8,
-	mass = 27031.0,
-	hitpoints = 1170.0,
-	armor = 592.0,
-	energyUsage = 1726.0,
-	speed = 79.0,
-	pitch = 67.0,
-	yaw = 77.0,
-	roll = 69.0,
+	componentDataName = "eng_novaldex_x9",
+
+	attributes = {
+		{"maxSpeed", 77.4506},
+		{"maxPitch", 67},
+		{"maxRoll", 67},
+		{"maxYaw", 67},
+		{"maximumHitpoints", 1168.04},
+		{"maximumArmorHitpoints", 584.019},
+		{"energyMaintenance", 1725},
+		{"mass", 27027},
+		{"reverseEngineeringLevel", 8},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_novaldex_x9, "object/tangible/ship/components/engine/eng_novaldex_x9.iff")

@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_rendili_type5 = object_tangible_ship_components_reactor_shared_rct_rendili_type5:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 5,
-	mass = 8254.0,
-	hitpoints = 701.0,
-	armor = 355.0,
-	energyUsage = 5.0,
-	maxEnergy = 15005.0,
+	componentDataName = "rct_rendili_type5",
+
+	attributes = {
+		{"energyGeneration", 15000},
+		{"maximumHitpoints", 698.28},
+		{"maximumArmorHitpoints", 349.14},
+		{"mass", 8250},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.195},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_rendili_type5, "object/tangible/ship/components/reactor/rct_rendili_type5.iff")

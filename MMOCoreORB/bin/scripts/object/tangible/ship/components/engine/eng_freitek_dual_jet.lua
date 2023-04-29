@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_freitek_dual_jet = object_tangible_ship_components_engine_shared_eng_freitek_dual_jet:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 7,
-	mass = 16147.0,
-	hitpoints = 940.0,
-	armor = 475.0,
-	energyUsage = 1727.0,
-	speed = 66.0,
-	pitch = 57.0,
-	yaw = 55.0,
-	roll = 54.0,
+	componentDataName = "eng_freitek_dual_jet",
+
+	attributes = {
+		{"maxSpeed", 59.01},
+		{"maxPitch", 53.6},
+		{"maxRoll", 53.6},
+		{"maxYaw", 53.6},
+		{"maximumHitpoints", 934.43},
+		{"maximumArmorHitpoints", 467.215},
+		{"energyMaintenance", 1725},
+		{"mass", 16146},
+		{"reverseEngineeringLevel", 7},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_freitek_dual_jet, "object/tangible/ship/components/engine/eng_freitek_dual_jet.iff")

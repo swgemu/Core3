@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_sds_modified_elite = object_tangible_ship_components_weapon_shared_wpn_sds_modified_elite:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 56402.0,
-	hitpoints = 1378.0,
-	armor = 694.0,
-	energyUsage = 2401.0,
-	minDamage = 2485.0,
-	maxDamage = 4021.0,
-	refireRate = 5.0,
-	energyPerShot = 44.0,
-	shieldEffectiveness = 3.0,
-	armorEffectiveness = 8.0,
+	componentDataName = "wpn_sds_modified_elite",
+
+	attributes = {
+		{"minDamage", 2476.62},
+		{"maxDamage", 4011.81},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 37.335},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 1375.47},
+		{"maximumArmorHitpoints", 687.737},
+		{"energyMaintenance", 2400},
+		{"mass", 56400},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_sds_modified_elite, "object/tangible/ship/components/weapon/wpn_sds_modified_elite.iff")

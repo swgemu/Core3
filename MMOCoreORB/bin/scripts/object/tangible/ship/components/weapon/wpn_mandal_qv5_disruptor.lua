@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_mandal_qv5_disruptor = object_tangible_ship_components_weapon_shared_wpn_mandal_qv5_disruptor:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 5,
-	mass = 6876.0,
-	hitpoints = 642.0,
-	armor = 325.0,
-	energyUsage = 2407.0,
-	minDamage = 1116.0,
-	maxDamage = 1635.0,
-	refireRate = 1.0,
-	energyPerShot = 26.0,
-	shieldEffectiveness = 4.0,
-	armorEffectiveness = 6.0,
+	componentDataName = "wpn_mandal_qv5_disruptor",
+
+	attributes = {
+		{"minDamage", 1106.51},
+		{"maxDamage", 1633.15},
+		{"shieldEffectiveness", 0.35},
+		{"armorEffectiveness", 0.65},
+		{"energyPerShot", 24.684},
+		{"refireRate", 0.34},
+		{"maximumHitpoints", 634.8},
+		{"maximumArmorHitpoints", 317.4},
+		{"energyMaintenance", 2400},
+		{"mass", 6875},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"minDamage", 0.14},
+		{"maxDamage", 0.14},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_mandal_qv5_disruptor, "object/tangible/ship/components/weapon/wpn_mandal_qv5_disruptor.iff")

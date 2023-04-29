@@ -42,17 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_kessel_rebel_incom_quicksilver = object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_quicksilver:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 37446.0,
-	hitpoints = 1105.0,
-	armor = 554.0,
-	energyUsage = 604.0,
-	speed = 29.0,
-	maxEnergy = 1466.0,
-	rechargeRate = 40.0,
-	energyConsumptionRate = 152.0,
-	boosterAccel = 34.0,
+	componentDataName = "bst_kessel_rebel_incom_quicksilver",
+
+	attributes = {
+		{"maximumEnergy", 1464.1},
+		{"rechargeRate", 36.6},
+		{"consumptionRate", 146.41},
+		{"acceleration", 29.28},
+		{"maxSpeed", 22.77},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 600},
+		{"mass", 37440},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.0001},
+		{"rechargeRate", 0.0001},
+		{"consumptionRate", 0.0001},
+		{"acceleration", 0.0001},
+		{"maxSpeed", 0.0001},
+		{"maximumHitpoints", 0.0001},
+		{"maximumArmorHitpoints", 0.0001},
+		{"energyMaintenance", 0.0001},
+		{"mass", 0.0001},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_kessel_rebel_incom_quicksilver, "object/tangible/ship/components/booster/bst_kessel_rebel_incom_quicksilver.iff")

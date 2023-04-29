@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_kessel_imperial_sfs_elite_ops = object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sfs_elite_ops:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 46808.0,
-	hitpoints = 1107.0,
-	armor = 554.0,
-	energyUsage = 2408.0,
-	minDamage = 1985.0,
-	maxDamage = 3215.0,
-	refireRate = 10.0,
-	energyPerShot = 37.0,
-	shieldEffectiveness = 5.0,
-	armorEffectiveness = 2.0,
+	componentDataName = "wpn_kessel_imperial_sfs_elite_ops",
+
+	attributes = {
+		{"minDamage", 1981.3},
+		{"maxDamage", 3209.45},
+		{"shieldEffectiveness", 0.5},
+		{"armorEffectiveness", 0.5},
+		{"energyPerShot", 29.868},
+		{"refireRate", 0.34},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 2400},
+		{"mass", 46800},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_kessel_imperial_sfs_elite_ops, "object/tangible/ship/components/weapon/wpn_kessel_imperial_sfs_elite_ops.iff")

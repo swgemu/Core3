@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_koensayr_tuned_light_disruptor = object_tangible_ship_components_weapon_shared_wpn_koensayr_tuned_light_disruptor:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1756.0,
-	hitpoints = 196.0,
-	armor = 98.0,
-	energyUsage = 2004.0,
-	minDamage = 364.0,
-	maxDamage = 489.0,
-	refireRate = 4.0,
-	energyPerShot = 30.0,
-	shieldEffectiveness = 1.0,
-	armorEffectiveness = 2.0,
+	componentDataName = "wpn_koensayr_tuned_light_disruptor",
+
+	attributes = {
+		{"minDamage", 362.5},
+		{"maxDamage", 487.5},
+		{"shieldEffectiveness", 0.375},
+		{"armorEffectiveness", 0.875},
+		{"energyPerShot", 25.5},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 187.5},
+		{"maximumArmorHitpoints", 93.75},
+		{"energyMaintenance", 2000},
+		{"mass", 1750},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_koensayr_tuned_light_disruptor, "object/tangible/ship/components/weapon/wpn_koensayr_tuned_light_disruptor.iff")

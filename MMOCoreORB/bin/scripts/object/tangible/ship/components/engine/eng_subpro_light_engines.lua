@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_subpro_light_engines = object_tangible_ship_components_engine_shared_eng_subpro_light_engines:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 904.0,
-	hitpoints = 157.0,
-	armor = 85.0,
-	energyUsage = 1507.0,
-	speed = 46.0,
-	pitch = 53.0,
-	yaw = 49.0,
-	roll = 51.0,
+	componentDataName = "eng_subpro_light_engines",
+
+	attributes = {
+		{"maxSpeed", 42},
+		{"maxPitch", 47.25},
+		{"maxRoll", 47.25},
+		{"maxYaw", 47.25},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"energyMaintenance", 1500},
+		{"mass", 900},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.06},
+		{"maxRoll", 0.06},
+		{"maxYaw", 0.06},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_subpro_light_engines, "object/tangible/ship/components/engine/eng_subpro_light_engines.iff")

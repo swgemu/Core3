@@ -42,17 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_koensayr_charged_advanced = object_tangible_ship_components_booster_shared_bst_koensayr_charged_advanced:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 8,
-	mass = 25118.0,
-	hitpoints = 1403.0,
-	armor = 706.0,
-	energyUsage = 582.0,
-	speed = 31.0,
-	maxEnergy = 2000.0,
-	rechargeRate = 54.0,
-	energyConsumptionRate = 206.0,
-	boosterAccel = 41.0,
+	componentDataName = "bst_koensayr_charged_advanced",
+
+	attributes = {
+		{"maximumEnergy", 1996.5},
+		{"rechargeRate", 49.92},
+		{"consumptionRate", 199.65},
+		{"acceleration", 39.93},
+		{"maxSpeed", 30.765},
+		{"maximumHitpoints", 1401.65},
+		{"maximumArmorHitpoints", 700.823},
+		{"energyMaintenance", 575},
+		{"mass", 25116},
+		{"reverseEngineeringLevel", 8},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.1},
+		{"rechargeRate", 0.1},
+		{"consumptionRate", 0.1},
+		{"acceleration", 0.04},
+		{"maxSpeed", 0.03},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.15},
+		{"mass", 0.15},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_koensayr_charged_advanced, "object/tangible/ship/components/booster/bst_koensayr_charged_advanced.iff")

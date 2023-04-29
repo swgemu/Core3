@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_tieadvanced_blaster = object_tangible_ship_components_weapon_shared_wpn_tieadvanced_blaster:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1583.0,
-	hitpoints = 170.0,
-	armor = 91.0,
-	energyUsage = 2006.0,
-	minDamage = 367.0,
-	maxDamage = 497.0,
-	refireRate = 7.0,
-	energyPerShot = 29.0,
-	shieldEffectiveness = 2.0,
-	armorEffectiveness = 3.0,
+	componentDataName = "wpn_tieadvanced_blaster",
+
+	attributes = {
+		{"minDamage", 362.5},
+		{"maxDamage", 487.5},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 25.5},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 168.75},
+		{"maximumArmorHitpoints", 84.375},
+		{"energyMaintenance", 2000},
+		{"mass", 1575},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_tieadvanced_blaster, "object/tangible/ship/components/weapon/wpn_tieadvanced_blaster.iff")

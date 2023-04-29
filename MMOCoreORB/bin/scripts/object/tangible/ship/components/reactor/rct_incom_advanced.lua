@@ -42,13 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_incom_advanced = object_tangible_ship_components_reactor_shared_rct_incom_advanced:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 51481.0,
-	hitpoints = 993.0,
-	armor = 496.0,
-	energyUsage = 9.0,
-	maxEnergy = 27605.0,
+	componentDataName = "rct_incom_advanced",
+
+	attributes = {
+		{"energyGeneration", 27600},
+		{"maximumHitpoints", 990.342},
+		{"maximumArmorHitpoints", 495.171},
+		{"mass", 51480},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.182},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_incom_advanced, "object/tangible/ship/components/reactor/rct_incom_advanced.iff")

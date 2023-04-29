@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_kse_military_mk1 = object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 1108.0,
-	hitpoints = 159.0,
-	armor = 77.0,
-	energyUsage = 2560.0,
-	shieldFront = 230.0,
-	shieldRear = 233.0,
-	rechargeRate = 2.0,
+	componentDataName = "shd_kse_military_mk1",
+
+	attributes = {
+		{"shieldRechargeRate", 1.52},
+		{"shieldHitpointsMaximumFront", 225},
+		{"shieldHitpointsMaximumBack", 225},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"energyMaintenance", 2556},
+		{"mass", 1100},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.26},
+		{"shieldHitpointsMaximumFront", 0.2},
+		{"shieldHitpointsMaximumBack", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.2},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_kse_military_mk1, "object/tangible/ship/components/shield_generator/shd_kse_military_mk1.iff")

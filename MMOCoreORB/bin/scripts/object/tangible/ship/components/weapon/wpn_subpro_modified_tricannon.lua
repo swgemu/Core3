@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_subpro_modified_tricannon = object_tangible_ship_components_weapon_shared_wpn_subpro_modified_tricannon:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 4597.0,
-	hitpoints = 439.0,
-	armor = 223.0,
-	energyUsage = 2104.0,
-	minDamage = 771.0,
-	maxDamage = 1082.0,
-	refireRate = 3.0,
-	energyPerShot = 35.0,
-	shieldEffectiveness = 4.0,
-	armorEffectiveness = 3.0,
+	componentDataName = "wpn_subpro_modified_tricannon",
+
+	attributes = {
+		{"minDamage", 761.25},
+		{"maxDamage", 1072.5},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 28.05},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 431.25},
+		{"maximumArmorHitpoints", 215.625},
+		{"energyMaintenance", 2100},
+		{"mass", 4593.75},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_subpro_modified_tricannon, "object/tangible/ship/components/weapon/wpn_subpro_modified_tricannon.iff")

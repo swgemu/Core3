@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_mission_reward_neutral_koensayr_ds23 = object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_koensayr_ds23:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 6263.0,
-	hitpoints = 524.0,
-	armor = 269.0,
-	energyUsage = 2682.0,
-	shieldFront = 905.0,
-	shieldRear = 902.0,
-	rechargeRate = 9.0,
+	componentDataName = "shd_mission_reward_neutral_koensayr_ds23",
+
+	attributes = {
+		{"shieldRechargeRate", 4.37},
+		{"shieldHitpointsMaximumFront", 898.438},
+		{"shieldHitpointsMaximumBack", 898.438},
+		{"maximumHitpoints", 517.5},
+		{"maximumArmorHitpoints", 258.75},
+		{"energyMaintenance", 2681},
+		{"mass", 6256.25},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.0001},
+		{"shieldHitpointsMaximumFront", 0.0001},
+		{"shieldHitpointsMaximumBack", 0.0001},
+		{"maximumHitpoints", 0.0001},
+		{"maximumArmorHitpoints", 0.0001},
+		{"energyMaintenance", 0.0001},
+		{"mass", 0.0001},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_mission_reward_neutral_koensayr_ds23, "object/tangible/ship/components/shield_generator/shd_mission_reward_neutral_koensayr_ds23.iff")

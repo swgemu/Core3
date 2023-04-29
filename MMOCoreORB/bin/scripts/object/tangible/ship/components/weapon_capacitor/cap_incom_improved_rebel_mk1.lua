@@ -42,14 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_incom_improved_rebel_mk1 = object_tangible_ship_components_weapon_capacitor_shared_cap_incom_improved_rebel_mk1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1753.0,
-	hitpoints = 229.0,
-	armor = 117.0,
-	energyUsage = 1006.0,
-	rechargeRate = 39.0,
-	rechargeRateMod = 4.0,
+	componentDataName = "cap_incom_improved_rebel_mk1",
+
+	attributes = {
+		{"maxEnergy", 750},
+		{"rechargeRate", 30},
+		{"maximumHitpoints", 225},
+		{"maximumArmorHitpoints", 112.5},
+		{"energyMaintenance", 1000},
+		{"mass", 1750},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_incom_improved_rebel_mk1, "object/tangible/ship/components/weapon_capacitor/cap_incom_improved_rebel_mk1.iff")

@@ -42,14 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_koensayr_light = object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_light:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 805.0,
-	hitpoints = 157.0,
-	armor = 82.0,
-	energyUsage = 1001.0,
-	rechargeRate = 23.0,
-	rechargeRateMod = 3.0,
+	componentDataName = "cap_koensayr_light",
+
+	attributes = {
+		{"maxEnergy", 450},
+		{"rechargeRate", 18},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"energyMaintenance", 1000},
+		{"mass", 800},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_koensayr_light, "object/tangible/ship/components/weapon_capacitor/cap_koensayr_light.iff")

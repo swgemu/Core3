@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_rss_imperial_skyrunner = object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 4136.0,
-	hitpoints = 440.0,
-	armor = 224.0,
-	energyUsage = 1578.0,
-	speed = 63.0,
-	pitch = 64.0,
-	yaw = 69.0,
-	roll = 69.0,
+	componentDataName = "eng_rss_imperial_skyrunner",
+
+	attributes = {
+		{"maxSpeed", 58.8},
+		{"maxPitch", 59.625},
+		{"maxRoll", 59.625},
+		{"maxYaw", 59.625},
+		{"maximumHitpoints", 431.25},
+		{"maximumArmorHitpoints", 215.625},
+		{"energyMaintenance", 1575},
+		{"mass", 4134.38},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_rss_imperial_skyrunner, "object/tangible/ship/components/engine/eng_rss_imperial_skyrunner.iff")

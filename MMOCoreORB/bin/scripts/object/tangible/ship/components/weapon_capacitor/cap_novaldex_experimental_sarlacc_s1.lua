@@ -42,14 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_novaldex_experimental_sarlacc_s1 = object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental_sarlacc_s1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 3,
-	mass = 2628.0,
-	hitpoints = 352.0,
-	armor = 180.0,
-	energyUsage = 1055.0,
-	rechargeRate = 28.0,
-	rechargeRateMod = 4.0,
+	componentDataName = "cap_novaldex_experimental_sarlacc_s1",
+
+	attributes = {
+		{"maxEnergy", 550},
+		{"rechargeRate", 22},
+		{"maximumHitpoints", 345},
+		{"maximumArmorHitpoints", 172.5},
+		{"energyMaintenance", 1050},
+		{"mass", 2625},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.25},
+		{"rechargeRate", 0.25},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.25},
+		{"mass", 0.18},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_novaldex_experimental_sarlacc_s1, "object/tangible/ship/components/weapon_capacitor/cap_novaldex_experimental_sarlacc_s1.iff")

@@ -42,17 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_subpro_tuned_accelatron_mk1 = object_tangible_ship_components_booster_shared_bst_subpro_tuned_accelatron_mk1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1404.0,
-	hitpoints = 234.0,
-	armor = 113.0,
-	energyUsage = 505.0,
-	speed = 23.0,
-	maxEnergy = 1503.0,
-	rechargeRate = 47.0,
-	energyConsumptionRate = 155.0,
-	boosterAccel = 33.0,
+	componentDataName = "bst_subpro_tuned_accelatron_mk1",
+
+	attributes = {
+		{"maximumEnergy", 1500},
+		{"rechargeRate", 37.5},
+		{"consumptionRate", 150},
+		{"acceleration", 30},
+		{"maxSpeed", 22.5},
+		{"maximumHitpoints", 225},
+		{"maximumArmorHitpoints", 112.5},
+		{"energyMaintenance", 500},
+		{"mass", 1400},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.1},
+		{"rechargeRate", 0.1},
+		{"consumptionRate", 0.1},
+		{"acceleration", 0.04},
+		{"maxSpeed", 0.03},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.15},
+		{"mass", 0.15},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_subpro_tuned_accelatron_mk1, "object/tangible/ship/components/booster/bst_subpro_tuned_accelatron_mk1.iff")

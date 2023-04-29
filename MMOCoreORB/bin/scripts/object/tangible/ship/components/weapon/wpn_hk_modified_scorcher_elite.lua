@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_hk_modified_scorcher_elite = object_tangible_ship_components_weapon_shared_wpn_hk_modified_scorcher_elite:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 65807.0,
-	hitpoints = 1519.0,
-	armor = 760.0,
-	energyUsage = 2404.0,
-	minDamage = 2479.0,
-	maxDamage = 4013.0,
-	refireRate = 9.0,
-	energyPerShot = 48.0,
-	shieldEffectiveness = 3.0,
-	armorEffectiveness = 7.0,
+	componentDataName = "wpn_hk_modified_scorcher_elite",
+
+	attributes = {
+		{"minDamage", 2476.62},
+		{"maxDamage", 4011.81},
+		{"shieldEffectiveness", 0.75},
+		{"armorEffectiveness", 0.75},
+		{"energyPerShot", 43.557},
+		{"refireRate", 0.44625},
+		{"maximumHitpoints", 1513.02},
+		{"maximumArmorHitpoints", 756.511},
+		{"energyMaintenance", 2400},
+		{"mass", 65800},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_hk_modified_scorcher_elite, "object/tangible/ship/components/weapon/wpn_hk_modified_scorcher_elite.iff")

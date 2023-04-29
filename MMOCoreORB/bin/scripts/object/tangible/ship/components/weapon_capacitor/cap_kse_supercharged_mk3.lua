@@ -42,14 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_kse_supercharged_mk3 = object_tangible_ship_components_weapon_capacitor_shared_cap_kse_supercharged_mk3:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 6,
-	mass = 11479.0,
-	hitpoints = 956.0,
-	armor = 479.0,
-	energyUsage = 1155.0,
-	rechargeRate = 39.0,
-	rechargeRateMod = 6.0,
+	componentDataName = "cap_kse_supercharged_mk3",
+
+	attributes = {
+		{"maxEnergy", 862.125},
+		{"rechargeRate", 38.115},
+		{"maximumHitpoints", 952.2},
+		{"maximumArmorHitpoints", 476.1},
+		{"energyMaintenance", 1150},
+		{"mass", 11471.2},
+		{"reverseEngineeringLevel", 6},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_kse_supercharged_mk3, "object/tangible/ship/components/weapon_capacitor/cap_kse_supercharged_mk3.iff")

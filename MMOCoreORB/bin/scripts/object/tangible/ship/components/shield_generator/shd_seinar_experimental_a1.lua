@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_seinar_experimental_a1 = object_tangible_ship_components_shield_generator_shared_shd_seinar_experimental_a1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 3,
-	mass = 3162.0,
-	hitpoints = 351.0,
-	armor = 179.0,
-	energyUsage = 2681.0,
-	shieldFront = 470.0,
-	shieldRear = 461.0,
-	rechargeRate = 6.0,
+	componentDataName = "shd_seinar_experimental",
+
+	attributes = {
+		{"shieldRechargeRate", 3.496},
+		{"shieldHitpointsMaximumFront", 460},
+		{"shieldHitpointsMaximumBack", 460},
+		{"maximumHitpoints", 345},
+		{"maximumArmorHitpoints", 172.5},
+		{"energyMaintenance", 2681},
+		{"mass", 3162.5},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.26},
+		{"shieldHitpointsMaximumFront", 0.35},
+		{"shieldHitpointsMaximumBack", 0.35},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.2},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_seinar_experimental_a1, "object/tangible/ship/components/shield_generator/shd_seinar_experimental_a1.iff")

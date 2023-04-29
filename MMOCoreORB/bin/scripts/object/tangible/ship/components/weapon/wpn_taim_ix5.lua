@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_taim_ix5 = object_tangible_ship_components_weapon_shared_wpn_taim_ix5:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 5,
-	mass = 6883.0,
-	hitpoints = 644.0,
-	armor = 324.0,
-	energyUsage = 2204.0,
-	minDamage = 1079.0,
-	maxDamage = 1591.0,
-	refireRate = 5.0,
-	energyPerShot = 32.0,
-	shieldEffectiveness = 6.0,
-	armorEffectiveness = 9.0,
+	componentDataName = "wpn_taim_ix5",
+
+	attributes = {
+		{"minDamage", 1074.28},
+		{"maxDamage", 1585.58},
+		{"shieldEffectiveness", 0.5},
+		{"armorEffectiveness", 0.5},
+		{"energyPerShot", 24.684},
+		{"refireRate", 0.34},
+		{"maximumHitpoints", 634.8},
+		{"maximumArmorHitpoints", 317.4},
+		{"energyMaintenance", 2200},
+		{"mass", 6875},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_taim_ix5, "object/tangible/ship/components/weapon/wpn_taim_ix5.iff")

@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_cygnus_hd3 = object_tangible_ship_components_engine_shared_eng_cygnus_hd3:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 908.0,
-	hitpoints = 159.0,
-	armor = 76.0,
-	energyUsage = 1504.0,
-	speed = 53.0,
-	pitch = 47.0,
-	yaw = 45.0,
-	roll = 52.0,
+	componentDataName = "eng_cygnus_hd3",
+
+	attributes = {
+		{"maxSpeed", 44.1},
+		{"maxPitch", 42.75},
+		{"maxRoll", 42.75},
+		{"maxYaw", 42.75},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"energyMaintenance", 1500},
+		{"mass", 900},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.09},
+		{"maxRoll", 0.09},
+		{"maxYaw", 0.09},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_cygnus_hd3, "object/tangible/ship/components/engine/eng_cygnus_hd3.iff")

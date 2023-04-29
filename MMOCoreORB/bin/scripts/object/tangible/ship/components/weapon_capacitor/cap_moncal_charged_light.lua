@@ -42,14 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_moncal_charged_light = object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_charged_light:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 2,
-	mass = 1663.0,
-	hitpoints = 233.0,
-	armor = 114.0,
-	energyUsage = 1060.0,
-	rechargeRate = 35.0,
-	rechargeRateMod = 7.0,
+	componentDataName = "cap_moncal_charged_light",
+
+	attributes = {
+		{"maxEnergy", 712.5},
+		{"rechargeRate", 31.5},
+		{"maximumHitpoints", 225},
+		{"maximumArmorHitpoints", 112.5},
+		{"energyMaintenance", 1050},
+		{"mass", 1662.5},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_moncal_charged_light, "object/tangible/ship/components/weapon_capacitor/cap_moncal_charged_light.iff")

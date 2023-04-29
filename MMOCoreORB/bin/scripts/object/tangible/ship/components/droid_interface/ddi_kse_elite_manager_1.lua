@@ -42,13 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_kse_elite_manager_1 = object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 9,
-	mass = 19505.0,
-	hitpoints = 1100.0,
-	armor = 553.0,
-	energyUsage = 506.0,
-	droidSpeed = 22.0,
+	componentDataName = "ddi_kse_elite_manager_1",
+
+	attributes = {
+		{"commandSpeed", 13.5},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 500},
+		{"mass", 19500},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_kse_elite_manager_1, "object/tangible/ship/components/droid_interface/ddi_kse_elite_manager_1.iff")

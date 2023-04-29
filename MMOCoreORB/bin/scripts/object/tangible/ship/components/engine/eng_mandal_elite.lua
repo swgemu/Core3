@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_mandal_elite = object_tangible_ship_components_engine_shared_eng_mandal_elite:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 54998.0,
-	hitpoints = 1104.0,
-	armor = 555.0,
-	energyUsage = 1506.0,
-	speed = 93.0,
-	pitch = 80.0,
-	yaw = 74.0,
-	roll = 73.0,
+	componentDataName = "eng_mandal_elite",
+
+	attributes = {
+		{"maxSpeed", 82.6125},
+		{"maxPitch", 71.0125},
+		{"maxRoll", 71.0125},
+		{"maxYaw", 71.0125},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 1500},
+		{"mass", 54990},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_mandal_elite, "object/tangible/ship/components/engine/eng_mandal_elite.iff")

@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_gyrhil_r9x = object_tangible_ship_components_weapon_shared_wpn_gyrhil_r9x:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 61103.0,
-	hitpoints = 1513.0,
-	armor = 766.0,
-	energyUsage = 2401.0,
-	minDamage = 2478.0,
-	maxDamage = 4013.0,
-	refireRate = 5.0,
-	energyPerShot = 39.0,
-	shieldEffectiveness = 5.0,
-	armorEffectiveness = 8.0,
+	componentDataName = "wpn_gyrhil_r9x",
+
+	attributes = {
+		{"minDamage", 2476.62},
+		{"maxDamage", 4011.81},
+		{"shieldEffectiveness", 0.625},
+		{"armorEffectiveness", 0.625},
+		{"energyPerShot", 37.335},
+		{"refireRate", 0.425},
+		{"maximumHitpoints", 1513.02},
+		{"maximumArmorHitpoints", 756.511},
+		{"energyMaintenance", 2400},
+		{"mass", 61100},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_gyrhil_r9x, "object/tangible/ship/components/weapon/wpn_gyrhil_r9x.iff")

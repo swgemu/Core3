@@ -42,18 +42,36 @@
 
 
 object_tangible_ship_components_weapon_wpn_slayn_ioncannon = object_tangible_ship_components_weapon_shared_wpn_slayn_ioncannon:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 3,
-	mass = 2629.0,
-	hitpoints = 348.0,
-	armor = 178.0,
-	energyUsage = 2105.0,
-	minDamage = 617.0,
-	maxDamage = 864.0,
-	refireRate = 6.0,
-	energyPerShot = 24.0,
-	shieldEffectiveness = 8.0,
-	armorEffectiveness = 3.0,
+	componentDataName = "wpn_slayn_ioncannon",
+
+	attributes = {
+		{"minDamage", 609},
+		{"maxDamage", 858},
+		{"shieldEffectiveness", 0.7},
+		{"armorEffectiveness", 0.3},
+		{"energyPerShot", 22.44},
+		{"refireRate", 0.34},
+		{"maximumHitpoints", 345},
+		{"maximumArmorHitpoints", 172.5},
+		{"energyMaintenance", 2100},
+		{"mass", 2625},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"minDamage", 0.12},
+		{"maxDamage", 0.12},
+		{"shieldEffectiveness", 0.05},
+		{"armorEffectiveness", 0.05},
+		{"energyPerShot", 0.17},
+		{"refireRate", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.17},
+		{"mass", 0.17},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_wpn_slayn_ioncannon, "object/tangible/ship/components/weapon/wpn_slayn_ioncannon.iff")

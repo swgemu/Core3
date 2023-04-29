@@ -42,11 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_sfs_enhanced_standard_durasteel = object_tangible_ship_components_armor_shared_arm_sfs_enhanced_standard_durasteel:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 4,
-	mass = 3790.0,
-	hitpoints = 477.0,
-	armor = 483.0,
+	componentDataName = "arm_sfs_enhanced_standard_durasteel",
+
+	attributes = {
+		{"maximumHitpoints", 473.8},
+		{"maximumArmorHitpoints", 473.8},
+		{"mass", 3783.94},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.318},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_sfs_enhanced_standard_durasteel, "object/tangible/ship/components/armor/arm_sfs_enhanced_standard_durasteel.iff")

@@ -42,16 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_koensayr_elite = object_tangible_ship_components_engine_shared_eng_koensayr_elite:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 10,
-	mass = 50767.0,
-	hitpoints = 1381.0,
-	armor = 693.0,
-	energyUsage = 1810.0,
-	speed = 84.0,
-	pitch = 77.0,
-	yaw = 71.0,
-	roll = 79.0,
+	componentDataName = "eng_koensayr_elite",
+
+	attributes = {
+		{"maxSpeed", 82.6125},
+		{"maxPitch", 71.0125},
+		{"maxRoll", 71.0125},
+		{"maxYaw", 71.0125},
+		{"maximumHitpoints", 1375.47},
+		{"maximumArmorHitpoints", 687.737},
+		{"energyMaintenance", 1800},
+		{"mass", 50760},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_koensayr_elite, "object/tangible/ship/components/engine/eng_koensayr_elite.iff")

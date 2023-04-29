@@ -42,15 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_cygnus_mk1 = object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk1:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 1,
-	mass = 1106.0,
-	hitpoints = 155.0,
-	armor = 84.0,
-	energyUsage = 2560.0,
-	shieldFront = 204.0,
-	shieldRear = 208.0,
-	rechargeRate = 7.0,
+	componentDataName = "shd_cygnus_mk1",
+
+	attributes = {
+		{"shieldRechargeRate", 1.52},
+		{"shieldHitpointsMaximumFront", 200},
+		{"shieldHitpointsMaximumBack", 200},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"energyMaintenance", 2556},
+		{"mass", 1100},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.26},
+		{"shieldHitpointsMaximumFront", 0.341},
+		{"shieldHitpointsMaximumBack", 0.341},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.2},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_cygnus_mk1, "object/tangible/ship/components/shield_generator/shd_cygnus_mk1.iff")

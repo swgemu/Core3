@@ -42,13 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_hk_mk2 = object_tangible_ship_components_droid_interface_shared_ddi_hk_mk2:new {
+	templateType = SHIPCOMPONENT,
 
-	reverseEngineeringLevel = 6,
-	mass = 5467.0,
-	hitpoints = 962.0,
-	armor = 476.0,
-	energyUsage = 501.0,
-	droidSpeed = 20.0,
+	componentDataName = "ddi_hk_mk2",
+
+	attributes = {
+		{"commandSpeed", 19.125},
+		{"maximumHitpoints", 952.2},
+		{"maximumArmorHitpoints", 476.1},
+		{"energyMaintenance", 500},
+		{"mass", 5462.5},
+		{"reverseEngineeringLevel", 6},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_hk_mk2, "object/tangible/ship/components/droid_interface/ddi_hk_mk2.iff")
