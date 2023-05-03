@@ -61,6 +61,8 @@ namespace area {
 		int setLockedArea(lua_State* L);
 		int isLockedArea(lua_State* L);
 
+		int setCampingArea(lua_State* L);
+
 		int getAreaName(lua_State* L);
 	private:
 		ActiveArea* realObject;

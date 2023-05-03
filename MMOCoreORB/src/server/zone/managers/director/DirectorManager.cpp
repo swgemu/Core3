@@ -574,6 +574,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("OBJECTRADIALOPENED", ObserverEventType::OBJECTRADIALOPENED);
 	luaEngine->setGlobalInt("ENTEREDBUILDING", ObserverEventType::ENTEREDBUILDING);
 	luaEngine->setGlobalInt("EXITEDBUILDING", ObserverEventType::EXITEDBUILDING);
+	luaEngine->setGlobalInt("PLAYERKILLED", ObserverEventType::PLAYERKILLED);
 	luaEngine->setGlobalInt("SPATIALCHATSENT", ObserverEventType::SPATIALCHATSENT);
 	luaEngine->setGlobalInt("ITEMLOOTED", ObserverEventType::ITEMLOOTED);
 	luaEngine->setGlobalInt("MEDPACKUSED", ObserverEventType::MEDPACKUSED);
@@ -746,6 +747,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("AI_CRACKDOWN_SCANNING", AiAgent::CRACKDOWN_SCANNING);
 	luaEngine->setGlobalInt("AI_HARVESTING", AiAgent::HARVESTING);
 	luaEngine->setGlobalInt("AI_RESTING", AiAgent::RESTING);
+	luaEngine->setGlobalInt("AI_CONVERSING", AiAgent::CONVERSING);
 
 	// Ship Types
 	luaEngine->setGlobalInt("SHIP", ShipManager::SHIP);

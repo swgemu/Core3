@@ -42,35 +42,52 @@ public:
 		if (player == nullptr)
 			return;
 
-		//Get the corpse the lottery is for.
-		ManagedReference<AiAgent*> corpse = server->getZoneServer()->getObject(containerID)->getParent().get().castTo<AiAgent*>();
-		if (corpse == nullptr)
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
 			return;
 
-		Locker locker(corpse);
+		SceneObject* container = zoneServer->getObject(containerID);
+
+		if (container == nullptr)
+			return;
+
+		ManagedReference<SceneObject*> parent = container->getParent().get();
+
+		if (parent == nullptr || !parent->isAiAgent())
+			return;
+
+		//Get the corpse the lottery is for.
+		AiAgent* agentCorpse = parent.castTo<AiAgent*>();
+
+		if (agentCorpse == nullptr)
+			return;
+
+		Locker locker(agentCorpse);
 
 		//Make sure there is an active lottery in progress.
-		if (corpse->containsActiveSession(SessionFacadeType::LOOTLOTTERY)) {
-			Reference<LootLotterySession*> session = corpse->getActiveSession(SessionFacadeType::LOOTLOTTERY).castTo<LootLotterySession*>();
-			if (session == nullptr || session->isLotteryFinished())
-				return;
+		if (!agentCorpse->containsActiveSession(SessionFacadeType::LOOTLOTTERY))
+			return;
 
-			if (!session->containsEligiblePlayer(player))
-				return;
+		Reference<LootLotterySession*> session = agentCorpse->getActiveSession(SessionFacadeType::LOOTLOTTERY).castTo<LootLotterySession*>();
 
-			//If player made no selections, remove them from the Lottery.
-			if (listSize < 1) {
-				session->removeEligiblePlayer(player);
-				return;
-			}
+		if (session == nullptr || session->isLotteryFinished())
+			return;
 
-			//Create a new Lottery Ballot with the player's item selections.
-			LootLotteryBallot* ballot = new LootLotteryBallot(player, lootIDs);
-			session->addPlayerSelections(player, ballot);
+		if (!session->containsEligiblePlayer(player))
+			return;
 
-		} else {
+		//If player made no selections, remove them from the Lottery.
+		if (listSize < 1) {
+			session->removeEligiblePlayer(player);
 			return;
 		}
+
+		//Create a new Lottery Ballot with the player's item selections.
+		LootLotteryBallot* ballot = new LootLotteryBallot(player, lootIDs);
+
+		if (ballot != nullptr)
+			session->addPlayerSelections(player, ballot);
 	}
 };
 

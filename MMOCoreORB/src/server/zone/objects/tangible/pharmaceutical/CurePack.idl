@@ -105,7 +105,7 @@ class CurePack extends PharmaceuticalObject {
 		string eff = "@obj_attr_n:dot_type_";
 		msg.insertAttribute("examine_dot_cure", eff + CreatureState.instance().getSpecialName(state));
 
-		msg.insertAttribute("examine_dot_cure_power", effectiveness);
+		msg.insertAttribute("examine_dot_cure_power", Math.getPrecision(effectiveness, 0));
 
 		if (isArea()) {
 			msg.insertAttribute("examine_heal_area", Math.getPrecision(area, 0));

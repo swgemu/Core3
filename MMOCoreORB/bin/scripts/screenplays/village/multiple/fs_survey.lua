@@ -3,19 +3,13 @@ local QuestManager = require("managers.quest.quest_manager")
 
 FsSurvey = {  }
 
-function FsSurvey:sampleEventHandler(pPlayer, pResourceSpawn, density)
+function FsSurvey:surveyEventHandler(pPlayer, pResourceSpawn, density)
 	if (pPlayer == nil or pResourceSpawn == nil) then
 		return 0
 	end
 
-	local chance = getRandomNumber(1,5)
-
-	if (chance ~= 1) then
-		return 0
-	end
-
 	local phase = VillageJediManagerTownship:getCurrentPhase()
-	
+
 	if (phase ~= 2 and phase ~= 3) then
 		return 0
 	end

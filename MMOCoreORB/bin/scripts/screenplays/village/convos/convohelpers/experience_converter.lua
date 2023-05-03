@@ -40,7 +40,7 @@ ExperienceConverter = ScreenPlay:new {
 			{ "trapping", 25 },
 		},
 		reflex = {
-			{ "bountyhunter", 5 },
+			{ "bountyhunter", 1 },
 			{ "combat_general", 3 },
 			{ "combat_meleespecialize_onehand", 30 },
 			{ "combat_meleespecialize_polearm", 30 },

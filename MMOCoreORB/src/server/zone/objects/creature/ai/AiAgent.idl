@@ -215,6 +215,7 @@ class AiAgent extends CreatureObject {
 	public static final int CRACKDOWN_SCANNING = 12;
 	public static final int HARVESTING = 13;
 	public static final int RESTING = 14;
+	public static final int CONVERSING = 15;
 
 	public static final int MOB_HERBIVORE = 1;
 	public static final int MOB_CARNIVORE = 2;
@@ -580,6 +581,15 @@ class AiAgent extends CreatureObject {
 	 */
 	@dirty
 	public native boolean sendConversationStartTo(SceneObject player);
+
+	/**
+	 * sends the conversation notification
+	 * @pre {this locked}
+	 * @post {this locked}
+	 */
+	@dirty
+	@preLocked
+	public native boolean stopConversation();
 
 	/**
 	 * sends the default conversation list

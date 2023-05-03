@@ -30,7 +30,7 @@ public:
 		CreatureObject* player = cast<CreatureObject*>(creature);
 		PlayerObject* ghost = player->getPlayerObject();
 
-		uint64 conversationCreatureOid = ghost->getConversatingCreature();
+		uint64 conversationCreatureOid = ghost->getConversatingObject();
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(conversationCreatureOid).castTo<SceneObject*>();
 
 		if (object != nullptr) {

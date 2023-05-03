@@ -20,6 +20,7 @@ class DroidComponent extends Component {
 	protected float detonationRating;
 	protected float harvestBonus;
 	protected float stimpackSpeed;
+	protected float stimpackCapacity;
 	protected float trapBonus;
 
 	protected boolean surveyDroid;

@@ -192,7 +192,7 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected Vector<string> lastNpcConvoOptions; //Deprecate. Conversation could also be a session.
 
-	protected unsigned long conversatingCreature; //If conversation is a session, then this would be stored on the session.
+	protected unsigned long conversatingObject; //If conversation is a session, then this would be stored on the session.
 
 	// Jedi Trainers.
 	@local
@@ -354,7 +354,7 @@ class PlayerObject extends IntangibleObject {
 
 		skillPoints = 0;
 
-		conversatingCreature = 0;
+		conversatingObject = 0;
 
 		birthDate = 0;
 
@@ -927,14 +927,14 @@ class PlayerObject extends IntangibleObject {
 
 	public void setConversatingObject(SceneObject creature) {
 		if (!creature)
-			conversatingCreature = 0;
+			conversatingObject = 0;
 		else
-			conversatingCreature = creature.getObjectID();
+			conversatingObject = creature.getObjectID();
 	}
 
 	@read
-	public unsigned long getConversatingCreature() {
-		return conversatingCreature;
+	public unsigned long getConversatingObject() {
+		return conversatingObject;
 	}
 
 	@local
