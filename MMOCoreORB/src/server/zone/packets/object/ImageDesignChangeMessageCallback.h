@@ -27,21 +27,18 @@ public:
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
 		designerID(0), targetID(0), tentID(0), type(0), objectControllerMain(objectControllerCallback) {
 
+		setLoggingName("ImageDesignChangeMessageCallback");
 	}
 
 	void parse(Message* message) {
 		message->shiftOffset(4); // ?Not sure this should be here.
 
 		designerID = message->parseLong();
-
-		//System::out << "designerID " << designerID << "\n";
 		targetID = message->parseLong();
-
-		//System::out << "targetID " << targetID << "\n";
 		tentID = message->parseLong();
 		type = message->parseByte();
 
-		//System::out << "unknown byte shit " << type << "\n";
+		//info(true) << "designerID: " << designerID << "targetID: " << targetID << "Type: " << type;
 
 		imageDesignData.parse(message);
 	}
@@ -61,6 +58,5 @@ public:
 		session->updateImageDesign(player, designerID, targetID, tentID, type, imageDesignData);
 	}
 };
-
 
 #endif /* IMAGEDESIGNCHANGEMESSAGECALLBACK_H_ */

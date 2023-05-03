@@ -48,8 +48,8 @@ function villageSurveyorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 
 		local questTarget = LuaQuestInfo(pQuest):getQuestTarget()
 		clonedConversation:setDialogTextStringId("@quest/force_sensitive/fs_survey:sample_for_" .. questTarget)
-		dropObserver(SAMPLE, "FsSurvey", "sampleEventHandler", pPlayer)
-		createObserver(SAMPLE, "FsSurvey", "sampleEventHandler", pPlayer, 1)
+		dropObserver(SURVEY, "FsSurvey", "surveyEventHandler", pPlayer)
+		createObserver(SURVEY, "FsSurvey", "surveyEventHandler", pPlayer, 1)
 	elseif (screenID == "special_answer") then
 		clonedConversation:setDialogTextStringId("@quest/force_sensitive/fs_survey:special_answer_" .. phase)
 		clonedConversation:addOption("@quest/force_sensitive/fs_survey:yes_task", "sample_phase_" .. phase)
@@ -58,14 +58,14 @@ function villageSurveyorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE2_MAIN)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE2_01)
 		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE2_SURVEYOR)
-		dropObserver(SAMPLE, "FsSurvey", "sampleEventHandler", pPlayer)
-		createObserver(SAMPLE, "FsSurvey", "sampleEventHandler", pPlayer, 1)
+		dropObserver(SURVEY, "FsSurvey", "surveyEventHandler", pPlayer)
+		createObserver(SURVEY, "FsSurvey", "surveyEventHandler", pPlayer, 1)
 	elseif (screenID == "sample_phase_3") then
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE3_MAIN)
 		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE3_01)
 		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer, VILLAGE_PHASE3_SURVEYOR)
-		dropObserver(SAMPLE, "FsSurvey", "sampleEventHandler", pPlayer)
-		createObserver(SAMPLE, "FsSurvey", "sampleEventHandler", pPlayer, 1)
+		dropObserver(SURVEY, "FsSurvey", "surveyEventHandler", pPlayer)
+		createObserver(SURVEY, "FsSurvey", "surveyEventHandler", pPlayer, 1)
 	end
 
 	return pConvScreen

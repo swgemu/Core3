@@ -300,8 +300,9 @@ function Warren:notifyEnteredWarren(pBuilding, pPlayer)
 
 	if (pInventory ~= nil) then
 		local pItem = getContainerObjectByTemplate(pInventory, "object/tangible/mission/quest_item/warren_passkey_s01.iff", true)
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-		if (pItem ~= nil) then
+		if (pItem ~= nil or (pGhost ~= nil and PlayerObject(pGhost):isPrivileged())) then
 			CreatureObject(pPlayer):sendSystemMessage("@theme_park/warren/warren_system_messages:access_granted") --ACCESS GRANTED: Passkey code accepted. Welcome to this Imperial Research Facility
 			dropObserver(SPATIALCHATSENT, "Warren", "notifyTerminalChatSent", pPlayer)
 			createObserver(SPATIALCHATSENT, "Warren", "notifyTerminalChatSent", pPlayer, 1)

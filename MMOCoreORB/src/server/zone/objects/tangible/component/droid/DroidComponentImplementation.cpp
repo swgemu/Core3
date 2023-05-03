@@ -21,6 +21,7 @@ void DroidComponentImplementation::updateCraftingValues(CraftingValues* values, 
 	detonationRating = values->getCurrentValue("bomb_level");
 	harvestBonus = values->getCurrentValue("harvest_power");
 	stimpackSpeed = values->getCurrentValue("stimpack_speed");
+	stimpackCapacity = values->getCurrentValue("stimpack_capacity");
 	trapBonus = values->getCurrentValue("trap_bonus");
 
 	if (values->hasExperimentalAttribute("droid_count")) {
@@ -50,7 +51,14 @@ void DroidComponentImplementation::updateCraftingValues(CraftingValues* values, 
 	}
 }
 void DroidComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	ComponentImplementation::fillAttributeList(alm, object);
+	//ComponentImplementation::fillAttributeList(alm, object);
+
+	alm->insertAttribute("volume", 1);
+	alm->insertAttribute("crafter", craftersName);
+	alm->insertAttribute("serial_number", objectSerial);
+
+	//alm->insertAttribute("decayrate", (int)durability);
+	alm->insertAttribute("mechanism_quality", (int)quality);
 
 	if (autoRepairDroid) {
 		alm->insertAttribute("auto_repair_power", (int)autoRepairPower);
@@ -61,10 +69,10 @@ void DroidComponentImplementation::fillAttributeList(AttributeListMessage* alm, 
 	} else if (harvestDroid) {
 		alm->insertAttribute("harvest_power", (int)harvestBonus);
 	} else if (stimpackDroid) {
+		alm->insertAttribute("stimpack_capacity", (int)stimpackCapacity);
 		alm->insertAttribute("stimpack_speed", (int)stimpackSpeed);
 	} else if (surveyDroid) {
-		alm->insertAttribute("decayrate", (int)durability);
-		alm->insertAttribute("mechanism_quality", (int)quality);
+		//alm->insertAttribute("mechanism_quality", (int)quality);
 	} else if (trapDroid) {
 		alm->insertAttribute("trap_bonus", (int)trapBonus);
 		// if a socket cluster, add the cluster items

@@ -11,9 +11,7 @@
 class NpcConversationStartCommand : public QueueCommand {
 public:
 
-	NpcConversationStartCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	NpcConversationStartCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -29,33 +27,36 @@ public:
 			return GENERALERROR;
 		}
 
+		PlayerObject* ghost = creature->getPlayerObject();
+
+		if (ghost == nullptr)
+			return GENERALERROR;
+
 		ZoneServer* zoneServer = creature->getZoneServer();
 
 		if (zoneServer == nullptr)
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
-		PlayerObject* ghost = creature->getPlayerObject();
 
-		if (object == nullptr || ghost == nullptr)
-			return GENERALERROR;
-
-		if (object->isCreatureObject()) {
-			CreatureObject* creatureObject = cast<CreatureObject*>(object.get());
+		if (object != nullptr && object->isCreatureObject()) {
+			CreatureObject* agentCreo = cast<CreatureObject*>(object.get());
 
 			try {
-				Locker clocker(creatureObject, creature);
+				Locker clocker(agentCreo, creature);
+
 				ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
 				uint64 parentid = validPosition->getParent();
 
-				if (parentid != creatureObject->getParentID()) {
+				if (parentid != agentCreo->getParentID()) {
 					return TOOFAR;
 				}
 
-				if (checkDistance(creature, creatureObject, 5)) {
-					ghost->setConversatingObject(creatureObject);
-					if (creatureObject->sendConversationStartTo(creature)) {
-						creatureObject->notifyObservers(ObserverEventType::STARTCONVERSATION, creature);
+				if (checkDistance(creature, agentCreo, 5)) {
+					ghost->setConversatingObject(agentCreo);
+
+					if (agentCreo->sendConversationStartTo(creature)) {
+						agentCreo->notifyObservers(ObserverEventType::STARTCONVERSATION, creature);
 					}
 				} else {
 					return TOOFAR;

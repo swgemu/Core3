@@ -6,6 +6,7 @@ package server.zone.objects.tangible.pharmaceutical;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.packets.scene.AttributeListMessage;
 include templates.SharedObjectTemplate;
 include system.lang.String;
 
@@ -17,6 +18,23 @@ class PharmaceuticalObject extends TangibleObject {
 		setLoggingName("PharmaceuticalObject");
 
 		medicineUseRequired = 0;
+	}
+
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
+		msg.insertAttribute("volume", 1);
+		msg.insertAttribute("counter_uses_remaining", super.getUseCount());
+
+		msg.insertAttribute("crafter", super.getCraftersName());
+		msg.insertAttribute("serial_number", super.getSerialNumber());
 	}
 
 	@dirty
