@@ -47,6 +47,20 @@ object_ship_player_player_decimator = object_ship_player_shared_player_decimator
 	slideFactor = 1.85,
 	chassisHitpoints = 5000,
 	chassisMass = 10000,
+
+	category = "pob",
+	level = 5,
+
+	attributes = {
+		{"slideDamp", 1.2},
+		{"engineAccel", 10},
+		{"engineDecel", 10},
+		{"engineYawAccel", 50},
+		{"enginePitchAccel", 50},
+		{"engineRollAccel", 37.5},
+		{"maxSpeed", 0.8},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 395.0898, armor = 393.2448,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.26176, armor = 96.47783, speed = 63.61601, pitch = 53.90641, roll = 53.77215, yaw = 20.96006, acceleration = 14.29806, rollRate = 80.7669, pitchRate = 73.72273, deceleration = 13.31472, yawRate = 37.25309,},
 	shield_0 = { name = "shd_generic", hitpoints = 383.4029, armor = 490.7114, regen = 2.854131, front = 1576.617, back = 1591.529,},

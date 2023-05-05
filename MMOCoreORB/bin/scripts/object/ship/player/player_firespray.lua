@@ -47,6 +47,20 @@ object_ship_player_player_firespray = object_ship_player_shared_player_firespray
 	slideFactor = 1.68,
 	chassisHitpoints = 1650,
 	chassisMass = 10000,
+
+	category = "heavyfighter",
+	level = 5,
+
+	attributes = {
+		{"slideDamp", 1.6},
+		{"engineAccel", 35},
+		{"engineDecel", 35},
+		{"engineYawAccel", 100},
+		{"enginePitchAccel", 100},
+		{"engineRollAccel", 50},
+		{"maxSpeed", 0.9},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 98.64068, armor = 98.83962,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 97.52977, armor = 97.78248, speed = 54.21301, pitch = 68.48127, roll = 78.06176, yaw = 49.14983, acceleration = 27.58748, rollRate = 91.24681, pitchRate = 87.73351, deceleration = 14.02503, yawRate = 84.78439,},
 	shield_0 = { name = "shd_generic", hitpoints = 398.4799, armor = 488.6996, regen = 4.917778, front = 1397.665, back = 1356.204,},

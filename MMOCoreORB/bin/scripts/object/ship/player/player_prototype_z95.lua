@@ -47,6 +47,20 @@ object_ship_player_player_prototype_z95 = object_ship_player_shared_player_proto
 	slideFactor = 1.95,
 	chassisHitpoints = 800,
 	chassisMass = 11000,
+
+	category = "lightfighter",
+	level = 0,
+
+	attributes = {
+		{"slideDamp", 1.9},
+		{"engineAccel", 50},
+		{"engineDecel", 50},
+		{"engineYawAccel", 600},
+		{"enginePitchAccel", 600},
+		{"engineRollAccel", 300},
+		{"maxSpeed", 0.93},
+	},
+
 	reactor = { name = "rct_prototype", hitpoints = 198.6076, armor = 98.58342,},
 	engine = { name = "eng_prototype", hitpoints = 193.1231, armor = 99.77211, speed = 44.91402, pitch = 46.40807, roll = 49.72561, yaw = 45.87107, acceleration = 14.01144, rollRate = 75.18142, pitchRate = 71.61748, deceleration = 12.15011, yawRate = 69.51454,},
 	shield_0 = { name = "shd_prototype", hitpoints = 195.2813, armor = 96.5105, regen = 1.989931, front = 290.9135, back = 297.9356,},

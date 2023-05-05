@@ -47,6 +47,20 @@ object_ship_player_player_blacksun_medium_s01 = object_ship_player_shared_player
 	slideFactor = 1.81,
 	chassisHitpoints = 519,
 	chassisMass = 10000,
+
+	category = "mediumfighter",
+	level = 3,
+
+	attributes = {
+		{"slideDamp", 1.3},
+		{"engineAccel", 35},
+		{"engineDecel", 35},
+		{"engineYawAccel", 200},
+		{"enginePitchAccel", 200},
+		{"engineRollAccel", 100},
+		{"maxSpeed", 0.95},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 285.9048, armor = 296.7009,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 97.55859, armor = 97.22115, speed = 52.7882, pitch = 33.30356, roll = 32.81654, yaw = 32.62107, acceleration = 16.17783, rollRate = 60.15535, pitchRate = 60.08889, deceleration = 8.137613, yawRate = 58.67763,},
 	shield_0 = { name = "shd_generic", hitpoints = 391.3619, armor = 499.9176, regen = 4.790445, front = 294.0981, back = 477.6539,},

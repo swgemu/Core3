@@ -247,7 +247,7 @@ public:
 
 		int interval = (int)(deltaTime * 0.005f);
 
-		float magnitude = velocity.getSpeed() / ship->getCurrentSpeed();
+		float magnitude = velocity.getSpeed() / ship->getActualMaxSpeed();
 		float vector = (magnitude / interval) * positionMod;
 
 		if (vector > 0.1f && vector <= positionMod) {

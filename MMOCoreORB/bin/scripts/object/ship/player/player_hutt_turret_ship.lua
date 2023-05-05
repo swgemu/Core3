@@ -47,6 +47,20 @@ object_ship_player_player_hutt_turret_ship = object_ship_player_shared_player_hu
 	slideFactor = 1.76,
 	chassisHitpoints = 1512,
 	chassisMass = 10000,
+
+	category = "heavyfighter",
+	level = 5,
+
+	attributes = {
+		{"slideDamp", 1.3},
+		{"engineAccel", 35},
+		{"engineDecel", 35},
+		{"engineYawAccel", 100},
+		{"enginePitchAccel", 100},
+		{"engineRollAccel", 50},
+		{"maxSpeed", 0.92},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 298.5859, armor = 293.59,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 99.05453, armor = 99.5019, speed = 45.28425, pitch = 39.07172, roll = 39.94278, yaw = 20.39184, acceleration = 12.03205, rollRate = 59.10788, pitchRate = 60.85636, deceleration = 15.43395, yawRate = 39.61805,},
 	shield_0 = { name = "shd_generic", hitpoints = 389.1004, armor = 488.346, regen = 4.906437, front = 944.6312, back = 956.4858,},

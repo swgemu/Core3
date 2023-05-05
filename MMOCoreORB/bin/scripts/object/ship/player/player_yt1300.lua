@@ -46,6 +46,20 @@ object_ship_player_player_yt1300 = object_ship_player_shared_player_yt1300:new {
 	slideFactor = 1.85,
 	chassisHitpoints = 5000,
 	chassisMass = 10000,
+
+	category = "pob",
+	level = 5,
+
+	attributes = {
+		{"slideDamp", 1.2},
+		{"engineAccel", 10},
+		{"engineDecel", 10},
+		{"engineYawAccel", 50},
+		{"enginePitchAccel", 50},
+		{"engineRollAccel", 37.5},
+		{"maxSpeed", 0.8},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 391.9558, armor = 381.4522,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.82562, armor = 98.25301, speed = 63.97898, pitch = 52.14573, roll = 52.79561, yaw = 20.14787, acceleration = 14.34252, rollRate = 81.50523, pitchRate = 74.24856, deceleration = 13.13524, yawRate = 36.47185,},
 	shield_0 = { name = "shd_generic", hitpoints = 396.4766, armor = 477.7777, regen = 2.886155, front = 1573.84, back = 1576.103,},

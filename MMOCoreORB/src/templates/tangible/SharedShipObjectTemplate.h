@@ -18,6 +18,11 @@ class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	StringParam chassisDataName;
 	StringParam chassisTypeName;
 
+	StringParam chassisCategory;
+	IntegerParam chassisLevel;
+
+	VectorMap<String, float> attributeMap;
+
 	VectorMap<String, String> componentNames;
 	VectorMap<String, VectorMap<String, float>> componentValues;
 
@@ -44,12 +49,36 @@ public:
 
 	}
 
+	const VectorMap<String, float>& getAttributeMap() const {
+		return attributeMap;
+	}
+
 	const VectorMap<String, String>& getComponentNames() const {
 		return componentNames;
 	}
 
 	const VectorMap<String, VectorMap<String, float>>& getComponentValues() const {
 		return componentValues;
+	}
+
+	void readAttributeMap(LuaObject* templateData) {
+		auto attributes = templateData->getObjectField("attributes");
+
+		if (attributes.isValidTable()) {
+			for (int i = 1; i <= attributes.getTableSize(); ++i) {
+				auto entry = attributes.getObjectAt(i);
+
+				if (entry.isValidTable() && entry.getTableSize() == 2) {
+					String key = entry.getStringAt(1);
+					float value = entry.getFloatAt(2);
+					attributeMap.put(key, value);
+				}
+
+				entry.pop();
+			}
+		}
+
+		attributes.pop();
 	}
 
 	void readObject(LuaObject* templateData) {
@@ -59,6 +88,9 @@ public:
 
 		chassisDataName = templateData->getStringField("name");
 		chassisTypeName = templateData->getStringField("type");
+
+		chassisCategory = templateData->getStringField("category");
+		chassisLevel = templateData->getIntField("level");
 
 		if (chassisTypeName == "") {
 			chassisTypeName = chassisDataName;
@@ -75,6 +107,8 @@ public:
 		conversationTemplate = templateData->getStringField("conversationTemplate");
 		conversationMobile = templateData->getStringField("conversationMobile");
 		conversationMessage = templateData->getStringField("conversationMessage");
+
+		readAttributeMap(templateData);
 
 		try {
 			const static char* components[] = { "reactor", "engine",  "shield_0", "shield_1", "armor_0", "armor_1", "capacitor", "booster", "droid_interface",
@@ -230,6 +264,14 @@ public:
 
 	inline const String& getShipFaction() const {
 		return shipFaction.get();
+	}
+
+	inline const String& getChassisCategory() const {
+		return chassisCategory.get();
+	}
+
+	inline int getChassisLevel() const {
+		return chassisLevel.get();
 	}
 
 	void parseVariableData(const String& varName, Chunk* data) {

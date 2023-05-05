@@ -34,13 +34,13 @@ protected:
 		capacitorRechargeRate = 20,
 		engineAccelerationRate = 21,
 		engineDecelerationRate = 22,
-		enginePitchRate = 23,
-		engineYawRate = 24,
-		engineRollRate = 25,
-		engineMaxPitchRate = 26,
-		engineMaxYawRate = 27,
-		engineMaxRollRate = 28,
-		engineMaxSpeed = 29,
+		enginePitchAccelerationRate = 23,
+		engineYawAccelerationRate = 24,
+		engineRollAccelerationRate = 25,
+		enginePitchRateMaximum = 26,
+		engineYawRateMaximum = 27,
+		engineRollRateMaximum = 28,
+		engineSpeedMaximum = 29,
 		reactorGenerationRate = 30,
 		boosterMaxEnergy = 31,
 		boosterRechargeRate = 32,
@@ -79,13 +79,13 @@ public:
 
 		insertFloat(ship->getEngineAccelerationRate());
 		insertFloat(ship->getEngineDecelerationRate());
+		insertFloat(ship->getEnginePitchAccelerationRate());
+		insertFloat(ship->getEngineYawAccelerationRate());
+		insertFloat(ship->getEngineRollAccelerationRate());
 		insertFloat(ship->getEnginePitchRate());
 		insertFloat(ship->getEngineYawRate());
 		insertFloat(ship->getEngineRollRate());
-		insertFloat(ship->getEngineMaxPitchRate());
-		insertFloat(ship->getEngineMaxYawRate());
-		insertFloat(ship->getEngineMaxRollRate());
-		insertFloat(ship->getMaxSpeed());
+		insertFloat(ship->getEngineMaxSpeed());
 
 		insertFloat(ship->getReactorGenerationRate());
 		insertFloat(ship->getBoosterMaxEnergy());

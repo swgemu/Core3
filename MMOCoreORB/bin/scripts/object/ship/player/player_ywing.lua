@@ -47,6 +47,20 @@ object_ship_player_player_ywing = object_ship_player_shared_player_ywing:new {
 	slideFactor = 1.85,
 	chassisHitpoints = 1942,
 	chassisMass = 10000,
+
+	category = "mediumfighter",
+	level = 1,
+
+	attributes = {
+		{"slideDamp", 1.2},
+		{"engineAccel", 25},
+		{"engineDecel", 30},
+		{"engineYawAccel", 80},
+		{"enginePitchAccel", 80},
+		{"engineRollAccel", 40},
+		{"maxSpeed", 0.9},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 391.301, armor = 395.5459,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 95.1216, armor = 98.82816, speed = 33.94477, pitch = 29.14914, roll = 46.04024, yaw = 36.51349, acceleration = 12.86286, rollRate = 71.91398, pitchRate = 40.69682, deceleration = 10.73087, yawRate = 60.91904,},
 	shield_0 = { name = "shd_generic", hitpoints = 387.716, armor = 478.333, regen = 2.9559, front = 1226.369, back = 1208.254,},

@@ -47,6 +47,20 @@ object_ship_player_player_bwing = object_ship_player_shared_player_bwing:new {
 	slideFactor = 1.72,
 	chassisHitpoints = 1765,
 	chassisMass = 10000,
+
+	category = "bomber",
+	level = 5,
+
+	attributes = {
+		{"slideDamp", 1.3},
+		{"engineAccel", 30},
+		{"engineDecel", 35},
+		{"engineYawAccel", 75},
+		{"enginePitchAccel", 75},
+		{"engineRollAccel", 50},
+		{"maxSpeed", 0.9},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 291.346, armor = 292.5736,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 99.66038, armor = 96.96965, speed = 47.48062, pitch = 31.3734, roll = 41.80257, yaw = 21.08492, acceleration = 16.05369, rollRate = 51.62985, pitchRate = 47.80521, deceleration = 11.80832, yawRate = 37.00739,},
 	shield_0 = { name = "shd_generic", hitpoints = 385.5213, armor = 495.9176, regen = 3.945815, front = 1470.033, back = 1503.827,},

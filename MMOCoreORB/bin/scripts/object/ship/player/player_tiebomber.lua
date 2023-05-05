@@ -47,6 +47,20 @@ object_ship_player_player_tiebomber = object_ship_player_shared_player_tiebomber
 	slideFactor = 1.88,
 	chassisHitpoints = 2131,
 	chassisMass = 10000,
+
+	category = "bomber",
+	level = 3,
+
+	attributes = {
+		{"slideDamp", 1.2},
+		{"engineAccel", 30},
+		{"engineDecel", 30},
+		{"engineYawAccel", 80},
+		{"enginePitchAccel", 80},
+		{"engineRollAccel", 40},
+		{"maxSpeed", 0.95},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 297.1225, armor = 298.5394,},
 	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 291.1327, armor = 291.4838, speed = 49.77505, pitch = 40.96615, roll = 40.48449, yaw = 20.71066, acceleration = 19.92171, rollRate = 59.77399, pitchRate = 59.32515, deceleration = 15.39316, yawRate = 40.19766,},
 	shield_0 = { name = "shd_generic", hitpoints = 286.4963, armor = 293.7139, regen = 0, front = 1233.986, back = 1201.105,},

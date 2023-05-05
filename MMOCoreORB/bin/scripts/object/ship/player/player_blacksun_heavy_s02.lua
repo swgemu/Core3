@@ -47,6 +47,20 @@ object_ship_player_player_blacksun_heavy_s02 = object_ship_player_shared_player_
 	slideFactor = 1.91,
 	chassisHitpoints = 519,
 	chassisMass = 10000,
+
+	category = "heavyfighter",
+	level = 4,
+
+	attributes = {
+		{"slideDamp", 1.3},
+		{"engineAccel", 40},
+		{"engineDecel", 40},
+		{"engineYawAccel", 100},
+		{"enginePitchAccel", 100},
+		{"engineRollAccel", 50},
+		{"maxSpeed", 0.97},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 298.5643, armor = 290.8233,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 99.33198, armor = 97.57671, speed = 40.67111, pitch = 20.59248, roll = 20.88879, yaw = 20.75872, acceleration = 11.85273, rollRate = 42.78871, pitchRate = 42.86503, deceleration = 15.57675, yawRate = 42.67835,},
 	shield_0 = { name = "shd_generic", hitpoints = 773.0718, armor = 486.4986, regen = 4.869394, front = 577.5036, back = 790.7836,},

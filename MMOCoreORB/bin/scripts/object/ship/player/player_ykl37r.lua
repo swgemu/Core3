@@ -47,6 +47,20 @@ object_ship_player_player_ykl37r = object_ship_player_shared_player_ykl37r:new {
 	slideFactor = 1.85,
 	chassisHitpoints = 5000,
 	chassisMass = 10000,
+
+	category = "pob",
+	level = 5,
+
+	attributes = {
+		{"slideDamp", 1.2},
+		{"engineAccel", 10},
+		{"engineDecel", 10},
+		{"engineYawAccel", 50},
+		{"enginePitchAccel", 50},
+		{"engineRollAccel", 37.5},
+		{"maxSpeed", 0.8},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 393.4749, armor = 392.1788,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 97.38634, armor = 97.26779, speed = 64.8352, pitch = 53.1233, roll = 51.811, yaw = 20.72012, acceleration = 14.20368, rollRate = 81.44453, pitchRate = 74.89443, deceleration = 13.23707, yawRate = 36.14846,},
 	shield_0 = { name = "shd_generic", hitpoints = 399.6198, armor = 488.0886, regen = 2.93632, front = 1559.694, back = 1589.634,},

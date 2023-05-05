@@ -47,6 +47,20 @@ object_ship_player_player_hutt_light_s01 = object_ship_player_shared_player_hutt
 	slideFactor = 1.95,
 	chassisHitpoints = 6000,
 	chassisMass = 10000,
+
+	category = "lightfighter",
+	level = 0,
+
+	attributes = {
+		{"slideDamp", 1.8},
+		{"engineAccel", 50},
+		{"engineDecel", 50},
+		{"engineYawAccel", 600},
+		{"enginePitchAccel", 600},
+		{"engineRollAccel", 300},
+		{"maxSpeed", 0.95},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 3088.099, armor = 1527.99,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 3136.135, armor = 1581.261, speed = 58.72906, pitch = 46.54525, roll = 47.6611, yaw = 46.58419, acceleration = 16.82825, rollRate = 70.91674, pitchRate = 70.14632, deceleration = 14.25979, yawRate = 69.08958,},
 	shield_0 = { name = "shd_generic", hitpoints = 3135.652, armor = 1586.758, regen = 29.61802, front = 9606.966, back = 9779.191,},

@@ -14,15 +14,15 @@ protected:
 		flags = 0,
 		defenders = 1,
 		uniqueID = 2,
-		currentAccelerationRate = 3,
-		currentDecelerationRate = 4,
-		currentPitchRate = 5,
-		currentYawRate = 6,
-		currentRollRate = 7,
-		currentMaxPitchRate = 8,
-		currentMaxYawRate = 9,
-		currentMaxRollRate = 10,
-		currentMaxSpeed = 11,
+		actualAccelerationRate = 3,
+		actualDecelerationRate = 4,
+		actualPitchAccelerationRate = 5,
+		actualYawAccelerationRate = 6,
+		actualRollAccelerationRate = 7,
+		actualPitchRate = 8,
+		actualYawRate = 9,
+		actualRollRate = 10,
+		actualMaxSpeed = 11,
 		targetID = 12,
 		targetIDSlot = 13,
 		targetableBitfield = 14,
@@ -43,16 +43,16 @@ public:
 		ship->getDefenderList()->insertToMessage(this);
 
 		insertShort(ship->getUniqueID());
-		insertFloat(ship->getShipAccelerationRate());
-		insertFloat(ship->getShipDecelerationRate());
+		insertFloat(ship->getActualAccelerationRate());
+		insertFloat(ship->getActualDecelerationRate());
 
-		insertFloat(ship->getCurrentPitchRate());
-		insertFloat(ship->getCurrentYawRate());
-		insertFloat(ship->getCurrentRollRate());
+		insertFloat(ship->getActualPitchAccelerationRate());
+		insertFloat(ship->getActualYawAccelerationRate());
+		insertFloat(ship->getActualRollAccelerationRate());
 
-		insertFloat(ship->getMaxPitchRate());
-		insertFloat(ship->getMaxYawRate());
-		insertFloat(ship->getMaxRollRate());
+		insertFloat(ship->getActualPitchRate());
+		insertFloat(ship->getActualYawRate());
+		insertFloat(ship->getActualRollRate());
 		insertFloat(ship->getActualSpeed());
 
 		insertLong(ship->getShipTargetID());

@@ -47,6 +47,20 @@ object_ship_player_player_blacksun_light_s01 = object_ship_player_shared_player_
 	slideFactor = 1.81,
 	chassisHitpoints = 519,
 	chassisMass = 10000,
+
+	category = "lightfighter",
+	level = 2,
+
+	attributes = {
+		{"slideDamp", 1.6},
+		{"engineAccel", 35},
+		{"engineDecel", 35},
+		{"engineYawAccel", 400},
+		{"enginePitchAccel", 400},
+		{"engineRollAccel", 200},
+		{"maxSpeed", 1},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 287.8142, armor = 287.9694,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 95.56121, armor = 97.31476, speed = 54.51305, pitch = 33.4327, roll = 33.04952, yaw = 32.42641, acceleration = 16.76877, rollRate = 58.41513, pitchRate = 59.20968, deceleration = 8.071388, yawRate = 60.17678,},
 	shield_0 = { name = "shd_generic", hitpoints = 381.9661, armor = 479.58, regen = 4.926902, front = 286.0273, back = 475.3774,},

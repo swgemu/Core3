@@ -47,6 +47,20 @@ object_ship_player_player_tie_light_duty = object_ship_player_shared_player_tie_
 	slideFactor = 1.78,
 	chassisHitpoints = 1350,
 	chassisMass = 10000,
+
+	category = "lightfighter",
+	level = 0,
+
+	attributes = {
+		{"slideDamp", 1.7},
+		{"engineAccel", 50},
+		{"engineDecel", 50},
+		{"engineYawAccel", 600},
+		{"enginePitchAccel", 600},
+		{"engineRollAccel", 300},
+		{"maxSpeed", 0.96},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 291.425, armor = 299.7746,},
 	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 292.1978, armor = 299.0364, speed = 46.44812, pitch = 59.78908, roll = 63.48967, yaw = 38.76865, acceleration = 16.25996, rollRate = 81.19094, pitchRate = 79.35983, deceleration = 15.23637, yawRate = 70.77897,},
 	shield_0 = { name = "shd_generic", hitpoints = 291.746, armor = 294.7357, regen = 0, front = 0, back = 0,},

@@ -47,6 +47,20 @@ object_ship_player_player_basic_tiefighter = object_ship_player_shared_player_ba
 	slideFactor = 1.95,
 	chassisHitpoints = 400,
 	chassisMass = 5000,
+
+	category = "lightfighter",
+	level = 0,
+
+	attributes = {
+		{"slideDamp", 1.9},
+		{"engineAccel", 50},
+		{"engineDecel", 50},
+		{"engineYawAccel", 600},
+		{"enginePitchAccel", 600},
+		{"engineRollAccel", 300},
+		{"maxSpeed", 0.97},
+	},
+
 	reactor = { name = "rct_tiefighter_basic", hitpoints = 193.3756, armor = 97.10411,},
 	engine = { name = "eng_tiefighter_basic", hitpoints = 197.5299, armor = 97.35545, speed = 49.00538, pitch = 47.90972, roll = 51.01502, yaw = 47.31527, acceleration = 15.51835, rollRate = 75.38376, pitchRate = 71.14635, deceleration = 13.36026, yawRate = 71.63885,},
 	armor_0 = { name = "armor_tiefighter_basic", hitpoints = 632.2285, armor = 640.0355,},

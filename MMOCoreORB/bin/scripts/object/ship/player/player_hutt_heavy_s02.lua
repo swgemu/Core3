@@ -47,6 +47,20 @@ object_ship_player_player_hutt_heavy_s02 = object_ship_player_shared_player_hutt
 	slideFactor = 1.76,
 	chassisHitpoints = 1512,
 	chassisMass = 10000,
+
+	category = "heavyfighter",
+	level = 2,
+
+	attributes = {
+		{"slideDamp", 1.3},
+		{"engineAccel", 35},
+		{"engineDecel", 35},
+		{"engineYawAccel", 100},
+		{"enginePitchAccel", 100},
+		{"engineRollAccel", 50},
+		{"maxSpeed", 0.92},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 290.6318, armor = 288.9599,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 99.67373, armor = 96.38962, speed = 43.82066, pitch = 39.0956, roll = 39.79986, yaw = 20.25624, acceleration = 12.00114, rollRate = 59.70396, pitchRate = 60.09761, deceleration = 15.62894, yawRate = 40.6769,},
 	shield_0 = { name = "shd_generic", hitpoints = 383.7082, armor = 478.7005, regen = 4.900551, front = 970.2797, back = 976.8123,},

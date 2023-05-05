@@ -47,6 +47,20 @@ object_ship_player_player_basic_hutt_light = object_ship_player_shared_player_ba
 	slideFactor = 1.95,
 	chassisHitpoints = 400,
 	chassisMass = 5000,
+
+	category = "lightfighter",
+	level = 0,
+
+	attributes = {
+		{"slideDamp", 1.9},
+		{"engineAccel", 50},
+		{"engineDecel", 50},
+		{"engineYawAccel", 600},
+		{"enginePitchAccel", 600},
+		{"engineRollAccel", 300},
+		{"maxSpeed", 0.95},
+	},
+
 	reactor = { name = "rct_z95_basic", hitpoints = 195.7923, armor = 95.29742,},
 	engine = { name = "eng_z95_basic", hitpoints = 197.2977, armor = 96.48777, speed = 41.97808, pitch = 46.45346, roll = 50.12757, yaw = 47.75044, acceleration = 13.487, rollRate = 72.95708, pitchRate = 70.98392, deceleration = 12.42272, yawRate = 69.62978,},
 	shield_0 = { name = "shd_z95_basic", hitpoints = 194.8111, armor = 95.15244, regen = 1.983407, front = 291.2292, back = 294.0934,},

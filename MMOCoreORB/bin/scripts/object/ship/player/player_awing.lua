@@ -47,6 +47,20 @@ object_ship_player_player_awing = object_ship_player_shared_player_awing:new {
 	slideFactor = 1.68,
 	chassisHitpoints = 1125,
 	chassisMass = 10000,
+
+	category = "interceptor",
+	level = 4,
+
+	attributes = {
+		{"slideDamp", 1.6},
+		{"engineAccel", 40},
+		{"engineDecel", 60},
+		{"engineYawAccel", 250},
+		{"enginePitchAccel", 250},
+		{"engineRollAccel", 125},
+		{"maxSpeed", 1},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 292.4938, armor = 293.254,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.62638, armor = 99.53873, speed = 58.49604, pitch = 54.38784, roll = 51.79129, yaw = 51.6744, acceleration = 15.62266, rollRate = 71.09726, pitchRate = 66.57938, deceleration = 10.89445, yawRate = 65.4823,},
 	shield_0 = { name = "shd_generic", hitpoints = 389.9558, armor = 483.2215, regen = 3.978801, front = 583.4476, back = 588.3502,},

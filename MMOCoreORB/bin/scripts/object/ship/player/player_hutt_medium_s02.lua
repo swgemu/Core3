@@ -47,6 +47,20 @@ object_ship_player_player_hutt_medium_s02 = object_ship_player_shared_player_hut
 	slideFactor = 1.76,
 	chassisHitpoints = 1512,
 	chassisMass = 10000,
+
+	category = "mediumfighter",
+	level = 1,
+
+	attributes = {
+		{"slideDamp", 1.3},
+		{"engineAccel", 30},
+		{"engineDecel", 35},
+		{"engineYawAccel", 300},
+		{"enginePitchAccel", 300},
+		{"engineRollAccel", 150},
+		{"maxSpeed", 0.95},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 298.1105, armor = 298.715,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.08215, armor = 97.71975, speed = 44.1099, pitch = 43.80634, roll = 52.2076, yaw = 26.66313, acceleration = 11.77163, rollRate = 79.58759, pitchRate = 67.73086, deceleration = 15.22928, yawRate = 76.32036,},
 	shield_0 = { name = "shd_generic", hitpoints = 396.9262, armor = 498.7002, regen = 4.843915, front = 939.5843, back = 950.832,},

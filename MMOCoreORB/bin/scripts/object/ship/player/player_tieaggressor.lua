@@ -47,6 +47,20 @@ object_ship_player_player_tieaggressor = object_ship_player_shared_player_tieagg
 	slideFactor = 1.75,
 	chassisHitpoints = 1643.2,
 	chassisMass = 10000,
+
+	category = "mediumfighter",
+	level = 4,
+
+	attributes = {
+		{"slideDamp", 1.3},
+		{"engineAccel", 20},
+		{"engineDecel", 30},
+		{"engineYawAccel", 150},
+		{"enginePitchAccel", 200},
+		{"engineRollAccel", 100},
+		{"maxSpeed", 0.95},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 298.3295, armor = 288.2449,},
 	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 297.3029, armor = 299.7057, speed = 44.21876, pitch = 30.60036, roll = 30.88204, yaw = 30.50029, acceleration = 18.06754, rollRate = 51.71142, pitchRate = 52.11913, deceleration = 16.10659, yawRate = 51.59421,},
 	shield_0 = { name = "shd_generic", hitpoints = 292.3809, armor = 285.8656, regen = 8.660581, front = 1115.249, back = 1090.203,},

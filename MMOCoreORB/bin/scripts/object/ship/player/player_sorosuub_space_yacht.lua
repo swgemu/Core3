@@ -46,6 +46,20 @@ object_ship_player_player_sorosuub_space_yacht = object_ship_player_shared_playe
 	slideFactor = 1.76,
 	chassisHitpoints = 1512,
 	chassisMass = 10000,
+
+	category = "pob",
+	level = 0,
+
+	attributes = {
+		{"slideDamp", 1.1},
+		{"engineAccel", 10},
+		{"engineDecel", 10},
+		{"engineYawAccel", 50},
+		{"enginePitchAccel", 50},
+		{"engineRollAccel", 37.5},
+		{"maxSpeed", 0.8},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 285.402, armor = 291.3666,},
 	engine = { name = "eng_incom_fusialthrust", hitpoints = 97.83093, armor = 99.44305, speed = 45.67611, pitch = 39.10896, roll = 39.2719, yaw = 20.1447, acceleration = 11.72711, rollRate = 58.29478, pitchRate = 58.64743, deceleration = 15.42485, yawRate = 39.86395,},
 	shield_0 = { name = "shd_generic", hitpoints = 397.8397, armor = 489.1867, regen = 4.848504, front = 953.884, back = 941.7534,},

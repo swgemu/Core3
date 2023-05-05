@@ -47,6 +47,20 @@ object_ship_player_player_tieinterceptor = object_ship_player_shared_player_tiei
 	slideFactor = 1.95,
 	chassisHitpoints = 6000,
 	chassisMass = 10000,
+
+	category = "interceptor",
+	level = 3,
+
+	attributes = {
+		{"slideDamp", 1.6},
+		{"engineAccel", 40},
+		{"engineDecel", 60},
+		{"engineYawAccel", 300},
+		{"enginePitchAccel", 300},
+		{"engineRollAccel", 150},
+		{"maxSpeed", 1},
+	},
+
 	reactor = { name = "rct_generic", hitpoints = 3121.869, armor = 1536.193,},
 	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 3142.305, armor = 1518.367, speed = 59.74054, pitch = 47.48366, roll = 45.87457, yaw = 46.3578, acceleration = 16.51296, rollRate = 71.13919, pitchRate = 68.87661, deceleration = 14.90916, yawRate = 71.39978,},
 	shield_0 = { name = "shd_generic", hitpoints = 3056.586, armor = 1544.068, regen = 29.96742, front = 9790.87, back = 9655.143,},

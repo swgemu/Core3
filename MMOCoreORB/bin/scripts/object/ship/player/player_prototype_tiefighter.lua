@@ -47,6 +47,20 @@ object_ship_player_player_prototype_tiefighter = object_ship_player_shared_playe
 	slideFactor = 1.95,
 	chassisHitpoints = 800,
 	chassisMass = 11000,
+
+	category = "lightfighter",
+	level = 0,
+
+	attributes = {
+		{"slideDamp", 1.9},
+		{"engineAccel", 50},
+		{"engineDecel", 50},
+		{"engineYawAccel", 600},
+		{"enginePitchAccel", 600},
+		{"engineRollAccel", 300},
+		{"maxSpeed", 0.97},
+	},
+
 	reactor = { name = "rct_prototype", hitpoints = 198.7087, armor = 98.2579,},
 	engine = { name = "eng_prototype", hitpoints = 190.9079, armor = 99.93941, speed = 48.28564, pitch = 47.30927, roll = 51.36045, yaw = 46.8244, acceleration = 15.75394, rollRate = 75.24479, pitchRate = 71.66323, deceleration = 13.66962, yawRate = 69.7346,},
 	shield_0 = { name = "shd_prototype", hitpoints = 198.0411, armor = 98.43318, regen = 1.90137, front = 289.3702, back = 295.8642,},

@@ -66,14 +66,44 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 		setConversationTemplate(ssot->getConversationTemplate());
 
 		setHasWings(ssot->shipHasWings());
+
+		setChassisCategory(ssot->getChassisCategory());
+		setChassisLevel(ssot->getChassisLevel());
+
+		auto values = ssot->getAttributeMap();
+
+		for (int i = 0; i < values.size(); ++i) {
+			auto attribute = values.elementAt(i).getKey();
+			auto value = values.elementAt(i).getValue();
+
+			if (attribute == "slideDamp") {
+				setSlipRate(value, false);
+			} else if (attribute == "engineAccel") {
+				setEngineAccelerationRate(value, false);
+				setActualAccelerationRate(value, false);
+			} else if (attribute == "engineDecel") {
+				setEngineDecelerationRate(value, false);
+				setActualDecelerationRate(value, false);
+			} else if (attribute == "engineYawAccel") {
+				setEngineYawAccelerationRate(value * Math::DEG2RAD, false);
+				setActualYawAccelerationRate(value * Math::DEG2RAD, false);
+			} else if (attribute == "enginePitchAccel") {
+				setEnginePitchAccelerationRate(value * Math::DEG2RAD, false);
+				setActualPitchAccelerationRate(value * Math::DEG2RAD, false);
+			} else if (attribute == "engineRollAccel") {
+				setEngineRollAccelerationRate(value * Math::DEG2RAD, false);
+				setActualRollAccelerationRate(value * Math::DEG2RAD, false);
+			} else if (attribute == "maxSpeed") {
+				setChassisSpeed(value, false);
+			}
+		}
+
+		auto portal = ssot->getPortalLayout();
+
+		if (portal != nullptr) {
+			totalCellNumber = portal->getCellTotalNumber();
+		}
 	}
-
-	auto portal = ssot->getPortalLayout();
-
-	if (portal == nullptr)
-		totalCellNumber = 0;
-	else
-		totalCellNumber = portal->getCellTotalNumber();
 }
 
 void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
@@ -613,10 +643,10 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 		}
 	}
 
-	float calculateSpeed = getActualSpeed();
+	float actualSpeed = getActualSpeed();
 
-	if (getCurrentSpeed() != calculateSpeed) {
-		setCurrentSpeed(calculateSpeed, false, nullptr, deltaVector);
+	if (getActualMaxSpeed() != actualSpeed) {
+		setActualMaxSpeed(actualSpeed, false, nullptr, deltaVector);
 	}
 
 	if (deltaVector != nullptr) {
@@ -799,7 +829,7 @@ void ShipObjectImplementation::removeComponentFlag(uint32 slot, uint32 bit, bool
 
 void ShipObjectImplementation::restartBooster() {
 	float boosterMax = getBoosterMaxSpeed();
-	float deceleration = getShipDecelerationRate();
+	float deceleration = getActualDecelerationRate();
 	float boostTime = 0.0f;
 
 	if (deceleration > 0.0f) {
@@ -840,7 +870,7 @@ float ShipObjectImplementation::getActualSpeed() {
 
 	if (componentMap->get(Components::ENGINE) != 0) {
 		float efficiency = getComponentEfficiencyMap()->get(Components::ENGINE);
-		componentActual += maxSpeed * efficiency;
+		componentActual += engineMaxSpeed * efficiency;
 	}
 
 	if (componentMap->get(Components::BOOSTER) != 0 && isBoosterActive()) {
