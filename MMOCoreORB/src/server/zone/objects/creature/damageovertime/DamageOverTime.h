@@ -24,7 +24,7 @@ namespace server {
 
 using namespace server::zone::objects::creature;
 
-class DamageOverTime : public Serializable {
+class DamageOverTime : public Serializable, public Logger {
 protected:
 	uint64 attackerID;
 	uint64 type;
