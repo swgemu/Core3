@@ -1498,6 +1498,26 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		}, "PvpDeathRatingUpdateLambda");
 	}
 
+	if (player->isGrouped()) {
+		ManagedReference<GroupObject*> group = player->getGroup();
+
+		if (group != nullptr) {
+			StringIdChatParameter stringId;
+			stringId.setStringId("group", "notify_death"); // [GROUP] %TU has died.
+
+			stringId.setTU(player->getDisplayedName());
+
+			for (int i = 0; i < group->getGroupSize(); i++) {
+				ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+
+				if (groupMember == nullptr || !groupMember->isPlayerCreature())
+					continue;
+
+				groupMember->sendSystemMessage(stringId);
+			}
+		}
+	}
+
 	threatMap->removeAll(true);
 
 	player->dropFromDefenderLists();
