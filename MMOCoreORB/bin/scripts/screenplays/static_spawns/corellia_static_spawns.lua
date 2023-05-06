@@ -1,11 +1,12 @@
 --This is to be used for static spawns that are NOT part of caves, cities, dungeons, poi's, or other large screenplays.
 local ObjectManager = require("managers.object.object_manager")
 
-CorelliaStaticSpawnsScreenPlay = ScreenPlay:new
-	{
+CorelliaStaticSpawnsScreenPlay = ScreenPlay:new {
 		numberOfActs = 1,
 
 		screenplayName = "CorelliaStaticSpawnsScreenPlay",
+
+		turretRespawn = 300, -- In Seconds
 
 		turret = { template = "object/installation/turret/turret_dish_sm.iff", x = 4111.26, z = 24, y = -1274.28 }
 
@@ -28,9 +29,9 @@ function CorelliaStaticSpawnsScreenPlay:spawnSceneObjects()
 		local turret = TangibleObject(pTurret)
 		turret:setFaction(FACTIONREBEL)
 		turret:setPvpStatusBitmask(1)
-	end
 
-	createObserver(OBJECTDESTRUCTION, "CorelliaStaticSpawnsScreenPlay", "notifyTurretDestroyed", pTurret)
+		createObserver(OBJECTDESTRUCTION, "CorelliaStaticSpawnsScreenPlay", "notifyTurretDestroyed", pTurret)
+	end
 
 	spawnSceneObject("corellia", "object/static/vehicle/static_speeder_bike.iff", 615.7, 26.1, -434.0, 0, math.rad(84) )
 	spawnSceneObject("corellia", "object/static/structure/general/droid_probedroid_powerdown.iff", 640.5, 27.1, -424.0, 0, math.rad(-138) )
@@ -42,26 +43,25 @@ function CorelliaStaticSpawnsScreenPlay:notifyTurretDestroyed(pTurret, pPlayer)
 		return 1
 	end
 
-	SceneObject(pTurret):destroyObjectFromWorld()
-	createEvent(1800, "CorelliaStaticSpawnsScreenPlay", "respawnTurret", pTurret, "")
+	createEvent(self.turretRespawn * 1000, "CorelliaStaticSpawnsScreenPlay", "respawnTurret", "", "")
 
-	CreatureObject(pPlayer):clearCombatState(1)
-	return 0
+	return 1
 end
 
-function CorelliaStaticSpawnsScreenPlay:respawnTurret(pTurret)
-	if pTurret == nil then return end
+function CorelliaStaticSpawnsScreenPlay:respawnTurret()
+	local turretData = self.turret
+	local pTurret = spawnSceneObject("corellia", turretData.template, turretData.x, turretData.z, turretData.y, 0, 0, 0, -1, 0)
 
-	TangibleObject(pTurret):setConditionDamage(0, false)
-	local pZone = getZoneByName("corellia")
+	if pTurret ~= nil then
+		local turret = TangibleObject(pTurret)
+		turret:setFaction(FACTIONREBEL)
+		turret:setPvpStatusBitmask(1)
 
-	if pZone == nil then return end
-
-	SceneObject(pZone):transferObject(pTurret, -1, true)
+		createObserver(OBJECTDESTRUCTION, "CorelliaStaticSpawnsScreenPlay", "notifyTurretDestroyed", pTurret)
+	end
 end
 
 function CorelliaStaticSpawnsScreenPlay:spawnMobiles()
-
 	--random Power Plant (643 -429)
 	local pNpc = spawnMobile("corellia", "twilek_slave", 60,621.013,26.31,-435.848,-50,0)
 	self:setMoodString(pNpc, "sad")
@@ -135,5 +135,4 @@ function CorelliaStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + -7482, 236.8, getRandomNumber(5) + -3955, getRandomNumber(360), 0)
 	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + -7482, 236.8, getRandomNumber(5) + -3955, getRandomNumber(360), 0)
 	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + -7482, 236.8, getRandomNumber(5) + -3955, getRandomNumber(360), 0)
-
 end
