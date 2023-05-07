@@ -10,22 +10,22 @@
 class RequestResourceWeightsBatchCommand : public QueueCommand {
 public:
 
-	RequestResourceWeightsBatchCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	RequestResourceWeightsBatchCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
 		ManagedReference<CraftingManager* > craftingManager = creature->getZoneServer()->getCraftingManager();
 
-		if(craftingManager == nullptr || !creature->isPlayerCreature())
+		if (craftingManager == nullptr)
 			return GENERALERROR;
 
 		StringTokenizer tokenizer(arguments.toString());
@@ -47,7 +47,6 @@ public:
 
 		return SUCCESS;
 	}
-
 };
 
 #endif //REQUESTRESOURCEWEIGHTSBATCHCOMMAND_H_
