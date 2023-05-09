@@ -26,7 +26,7 @@ const String AttributesMap::EMPTY;
 
 void AttributesMap::addExperimentalAttribute(const String& attribute, const String& group, const float min, const float max, const int precision, const bool filler, const int combine) {
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "AttributesMap::addExperimentalAttribute called for: " << attribute << " Group: " << group;
+	info(true) << "AttributesMap::addExperimentalAttribute called for: " << attribute << " Group: " << group << " Min: " << min << " Max:" << max << " Precision: " << precision;
 #endif // DEBUG_ATTRIBUTES_MAP
 
 	Locker lock(&mutex);
@@ -276,7 +276,7 @@ float AttributesMap::getCurrentVisiblePercentage(const String group) const {
 	float percentage = 0.f;
 
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---------- AttributesMap::getCurrentVisiblePercentage called for group: " << group << " with Attribute Size: " << attributes.size() << " ----------";
+	info(true) << "---- getCurrentVisiblePercentage -- group: " << group << " with Attribute Size: " << attributes.size() << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
 	// shouldnt this show the avg so with 1 item who cares, but more than 1 we wanna should avg of all not the LAST one
@@ -305,7 +305,7 @@ float AttributesMap::getCurrentVisiblePercentage(const String group) const {
 	}
 
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---------- END AttributesMap::getCurrentVisiblePercentage returning " << percentage << " ----------";
+	info(true) << "---- END getCurrentVisiblePercentage -- Group: " << group << " Returning " << percentage << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
 	return percentage;
@@ -355,7 +355,7 @@ float AttributesMap::getMaxVisiblePercentage(const int i) const {
 	const String group = visibleGroups.get(i);
 
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---------- AttributesMap::getMaxVisiblePercentage called for group: " << group << " with attribute value size: " << visibleGroups.size() << " ----------";
+	info(true) << "---- getMaxVisiblePercentage -- Group: " << group << " with Visible Group Size: " << visibleGroups.size() << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
 	for (int j = 0; j < attributeGroups.size(); ++j) {
@@ -383,7 +383,7 @@ float AttributesMap::getMaxVisiblePercentage(const int i) const {
 	}
 
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---------- END AttributesMap::getMaxVisiblePercentage returning: " << value << " ----------";
+	info(true) << "---- END getMaxVisiblePercentage -- Group: " << group << " Returning: " << value << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
 	return value;

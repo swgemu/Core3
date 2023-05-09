@@ -225,6 +225,10 @@ public:
 		return slots.get(name);
 	}
 
+	inline void addValueToSend(const String& name) {
+		valuesToSend.add(name);
+	}
+
 	inline int getValuesToSendSize() const {
 		return valuesToSend.size();
 	}
