@@ -11,22 +11,27 @@ import server.zone.packets.scene.AttributeListMessage;
 
 @json
 class DnaComponent extends Component {
-	protected int cleverness;
-	protected int endurance;
-	protected int fierceness;
-	protected int power;
-	protected int intelligence;
-	protected int courage;
-	protected int dependency;
-	protected int dexterity;
-	protected int fortitude;
-	protected int hardiness;
+	protected float cleverness;
+	protected float endurance;
+	protected float fierceness;
+	protected float power;
+	protected float intelligence;
+	protected float courage;
+	protected float dependency;
+	protected float dexterity;
+	protected float fortitude;
+	protected float hardiness;
+
 	protected string source;
+
 	protected string special1;
 	protected string special2;
+
 	protected boolean ranged;
+
 	protected int quality;
 	protected int armorRating;
+
 	protected float kinResist;
 	protected float energyResist;
 	protected float blastResist;
@@ -36,7 +41,9 @@ class DnaComponent extends Component {
 	protected float acidResist;
 	protected float stunResist;
 	protected float saberResist;
+
 	protected int sourceLevel;
+
 	// we need to account for special protections in samples
 	protected int specialResists;
 
@@ -70,19 +77,18 @@ class DnaComponent extends Component {
 		sourceLevel = 1;
 		specialResists = 0;
 	}
-	public void setStats(int cle, int end, int fie, int pow,
-						    int ite, int cou, int dep, int dex,
-						    int frt, int har){
-		cleverness = cle;
-		endurance = end;
-		fierceness = fie;
+
+	public void setStats(float clever, float endur, float fierc, float pow, float intel, float cour, float depend, float dext, float fort, float hardi) {
+		cleverness = clever;
+		endurance = endur;
+		fierceness = fierc;
 		power = pow;
-		intelligence = ite;
-		courage = cou;
-		dependency = dep;
-		fortitude = frt;
-		hardiness = har;
-		dexterity = dex;
+		intelligence = intel;
+		courage = cour;
+		dependency = depend;
+		dexterity = dext;
+		fortitude = fort;
+		hardiness = hardi;
 	}
 
 	@dirty
