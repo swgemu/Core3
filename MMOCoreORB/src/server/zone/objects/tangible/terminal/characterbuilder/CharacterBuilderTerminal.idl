@@ -60,4 +60,6 @@ class CharacterBuilderTerminal extends Terminal {
 	public native void grantGlowyBadges(CreatureObject player);
 
 	public native void grantJediInitiate(CreatureObject player);
+
+	public native void giveDnaTestingSet(CreatureObject player, final string testName);
 }
