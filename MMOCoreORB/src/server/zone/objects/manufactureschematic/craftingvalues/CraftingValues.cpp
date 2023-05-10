@@ -81,6 +81,8 @@ void CraftingValues::recalculateValues(bool initial) {
 
 		oldValue = getCurrentValue(attribute);
 
+		// info(true) << "Attribute: " << attribute <<  " Group: " << group << " Old Value: " << oldValue << " Min: " << min << " Max: " << max;
+
 		if (group == "") {
 			if (max > min)
 				newValue = max;
@@ -95,7 +97,7 @@ void CraftingValues::recalculateValues(bool initial) {
 			newValue = max;
 		}
 
-		// info(true) << " Setting Attribute: " << attribute << " Value: " << newValue <<  " Group: " << group;
+		// info(true) << "Setting Attribute: " << attribute << " New Value: " << newValue;
 
 		if (initial || (newValue != oldValue && !initial && !hidden)) {
 			setCurrentValue(attribute, newValue);
