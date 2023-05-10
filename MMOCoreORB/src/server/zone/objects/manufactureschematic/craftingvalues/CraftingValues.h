@@ -186,12 +186,20 @@ public:
 		return attributesMap.getMaxValue(attribute);
 	}
 
+	float getCapValue(const String& attribute) const {
+		return attributesMap.getCapValue(attribute);
+	}
+
 	void setMinValue(const String& attribute, const float value) {
 		attributesMap.setMinValue(attribute, value);
 	}
 
 	void setMaxValue(const String& attribute, const float value) {
 		attributesMap.setMaxValue(attribute, value);
+	}
+
+	void setCapValue(const String& attribute, const float value) {
+		attributesMap.setCapValue(attribute, value);
 	}
 
 	int getPrecision(const String& attribute) const {

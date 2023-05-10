@@ -23,28 +23,35 @@ public:
 	GeneticLabratory();
 	virtual ~GeneticLabratory();
 
+	void initialize(ZoneServer* server);
 	void setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 	void experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult);
-	void initialize(ZoneServer* server);
+	void recalculateResistances(CraftingValues* craftingValues);
 	int getCreationCount(ManufactureSchematic* manufactureSchematic);
+
 protected:
 	float calcResistMin(float input,float mod) {
 		if (input < 0)
 			input = -1;
 		return (input * ((input/100) + 0.15)) * mod;
 	}
+
 	// 12/22 == 12/22 = 0.5
 	float calcMaxPercentage(uint32 value,uint32 diff) {
 		float percent = ((float)diff/(float)value);
+
 		if (percent > 1)
 			percent = 1;
+
 		return percent;
 	}
+
 	float getPercentagOfValue(int number, float percentage) {
 		float intermediate = ((float)number) * percentage;
 		return (float) ceil(intermediate);
 	}
-	void recalculateResist(CraftingValues* craftingValues);
+
+
 };
 
 }

@@ -36,7 +36,7 @@ void AttributesMap::addExperimentalAttribute(const String& attribute, const Stri
 		addAttribute(attribute);
 		attributeGroups.put(attribute, group);
 
-		Values* value = new Values(attribute, min, max, precision, filler, combine);
+		Values* value = new Values(attribute, min, max, VALUENOTFOUND, precision, filler, combine);
 		attributeValues.put(attribute, value);
 	} else {
 		// The attribute is already on the map, we only want to update its values
@@ -415,6 +415,19 @@ float AttributesMap::getMaxValue(const String& attribute) const {
 	return value->getMaxValue();
 }
 
+float AttributesMap::getCapValue(const String& attribute) const {
+	const Reference<Values*> value = attributeValues.get(attribute);
+
+	if (value == nullptr)
+		return VALUENOTFOUND;
+
+#ifdef DEBUG_ATTRIBUTES_MAP
+	info(true) << " AttributesMap::getCapValue called for " << attribute << " with a cap value of " << value->getMaxValue();
+#endif // DEBUG_ATTRIBUTES_MAP
+
+	return value->getCapValue();
+}
+
 void AttributesMap::setMinValue(const String& attribute, const float min) {
 	Locker lock(&mutex);
 
@@ -433,38 +446,53 @@ void AttributesMap::setMinValue(const String& attribute, const float min) {
 void AttributesMap::setMaxValue(const String& attribute, const float max) {
 	Locker lock(&mutex);
 
-	Reference<Values*> value = attributeValues.get(attribute);
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	if (value == nullptr)
+	if (values == nullptr)
 		return;
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << " AttributesMap::setMaxValue for " << attribute << " setting a value of " << max;
 #endif // DEBUG_ATTRIBUTES_MAP
 
-	value->setMaxValue(max);
+	values->setMaxValue(max);
+}
+
+void AttributesMap::setCapValue(const String& attribute, const float value) {
+	Locker lock(&mutex);
+
+	Reference<Values*> values = attributeValues.get(attribute);
+
+	if (values == nullptr)
+		return;
+
+#ifdef DEBUG_ATTRIBUTES_MAP
+	info(true) << " AttributesMap::setCapValue for " << attribute << " setting a cap value of " << value;
+#endif // DEBUG_ATTRIBUTES_MAP
+
+	values->setCapValue(value);
 }
 
 int AttributesMap::getPrecision(const String& attribute) const {
-	const Reference<Values*> value = attributeValues.get(attribute);
+	const Reference<Values*> values = attributeValues.get(attribute);
 
-	if (value == nullptr)
+	if (values == nullptr)
 		return (int)VALUENOTFOUND;
 
-	return value->getPrecision();
+	return values->getPrecision();
 }
 
 void AttributesMap::setPrecision(const String& attribute, const int amount) {
 	Locker lock(&mutex);
 
-	Reference<Values*> value = attributeValues.get(attribute);
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	if (value == nullptr)
+	if (values == nullptr)
 		return;
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << " AttributesMap::setPrecision for " << attribute << " setting a value of " << amount;
 #endif // DEBUG_ATTRIBUTES_MAP
 
-	value->setPrecision(amount);
+	values->setPrecision(amount);
 }

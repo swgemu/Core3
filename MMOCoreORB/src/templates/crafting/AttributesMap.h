@@ -83,9 +83,11 @@ public:
 
 	float getMinValue(const String& attribute) const;
 	float getMaxValue(const String& attribute) const;
+	float getCapValue(const String& attribute) const;
 
 	void setMinValue(const String& attribute, const float value);
 	void setMaxValue(const String& attribute, const float value);
+	void setCapValue(const String& attribute, const float value);
 
 	int getPrecision(const String& attribute) const;
 	void setPrecision(const String& attribute, const int precision);
