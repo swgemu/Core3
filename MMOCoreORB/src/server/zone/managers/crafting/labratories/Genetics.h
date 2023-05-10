@@ -35,7 +35,6 @@ public:
 	const static constexpr float STUN_MAX = 100.0f;
 	//const static constexpr float LIGHTSABER_MAX = 100.f;
 
-
 	// Hardiness and Fortiture
 	static float physiqueFormula(float physique, float prowess, float mental, float psychology, float aggression) {
 		float result = (physique * 0.4f) + (prowess * 0.25f) + (mental * 0.05f) + (psychology * 0.05f) + (aggression * 0.25f);
@@ -67,9 +66,14 @@ public:
 	}
 
 	// Experimenting
-	static float experimentFormula(float a, float b) {
-		float multiplier = 140.0f;
-		return ((a / (a + b) * multiplier));
+	static float experimentFormula(float value1, float value2, float modifier) {
+		float result = (value2 / (value1 + value2) * modifier);
+
+#ifdef DEBUG_GENETIC_LAB
+		Logger::console.info(true) << "Genetics::experimentFormula -- Value 1: " << value1 << " Value 2: " << value2 << " Result = " << result;
+#endif
+
+		return result;
 	}
 
 	static float determineMaxExperimentation(float min, float max) {
@@ -91,8 +95,8 @@ public:
 		while ((workingA < aMax || workingB < bMax) && count < 11) {
 			float wa = workingA;
 			float wb = workingB;
-			workingA += experimentFormula(wb, wa);
-			workingB += experimentFormula(wa, wb);
+			//workingA += experimentFormula(wb, wa);
+			//workingB += experimentFormula(wa, wb);
 			if (workingB > bMax) {
 				bCount = count;
 				workingB = bMax;

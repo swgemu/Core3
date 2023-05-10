@@ -17,7 +17,7 @@
 class Values : public Object {
 	VectorMap<String, float> values;
 	String name;
-	float minValue, maxValue;
+	float minValue, maxValue, capValue;
 	short precision;
 	short combineType;
 	bool locked;
@@ -26,11 +26,13 @@ class Values : public Object {
 public:
 	Values() = delete;
 
-	Values(const String& n, const float& tempmin, const float& tempmax, const int& prec, const bool& filler, const int& combine) {
+	Values(const String& n, const float& tempmin, const float& tempmax, const float& tempcap, const int& prec, const bool& filler, const int& combine) {
 		name = n;
 
 		minValue = tempmin;
 		maxValue = tempmax;
+		capValue = tempcap;
+
 		precision = prec;
 
 		locked = false;
@@ -48,6 +50,7 @@ public:
 		name = val.name;
 		minValue = val.minValue;
 		maxValue = val.maxValue;
+		capValue = val.capValue;
 		precision = val.precision;
 		locked = val.locked;
 		experimentalProperties = val.experimentalProperties;
@@ -79,6 +82,10 @@ public:
 
 	inline float getMaxValue() const {
 		return maxValue;
+	}
+
+	inline float getCapValue() const {
+		return capValue;
 	}
 
 	inline int getPrecision() const {
@@ -160,6 +167,13 @@ public:
 		if (locked)
 			return;
 		maxValue = value;
+	}
+
+	inline void setCapValue(const float& value) {
+		if (locked)
+			return;
+
+		capValue = value;
 	}
 
 	inline void setPrecision(const int& value) {
