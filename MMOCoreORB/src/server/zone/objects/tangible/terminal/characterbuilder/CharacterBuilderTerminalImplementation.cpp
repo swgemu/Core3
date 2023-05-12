@@ -624,8 +624,12 @@ void CharacterBuilderTerminalImplementation::giveDnaTestingSet(CreatureObject* p
 
 			prototype5->setSpecialResist(SharedWeaponObjectTemplate::KINETIC);
 			prototype5->setSpecialResist(SharedWeaponObjectTemplate::ENERGY);
+			prototype5->setSpecialResist(SharedWeaponObjectTemplate::BLAST);
 			prototype5->setSpecialResist(SharedWeaponObjectTemplate::HEAT);
+			prototype5->setSpecialResist(SharedWeaponObjectTemplate::COLD);
+			prototype5->setSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY);
 			prototype5->setSpecialResist(SharedWeaponObjectTemplate::ACID);
+			prototype5->setSpecialResist(SharedWeaponObjectTemplate::STUN);
 
 			Locker locker(inventory, player);
 
