@@ -147,20 +147,6 @@ public:
 	 * @param container the target container
 	 */
 	void addStartingItemsInto(CreatureObject* creature, SceneObject* container) const;
-
-	/**
-	 * Adds starter ship to players datapad
-	 * @param creature the player creature
-	 */
-	void createImperialStarterShip(CreatureObject* player) const;
-	void createRebelStarterShip(CreatureObject* player) const;
-	void createNeutralStarterShip(CreatureObject* player) const;
-
-	/**
-	* Adds starter POB ship to players datapad
-	* @param creature the player creature
-	*/
-	void createStarterPobShip(CreatureObject* player) const;
 };
 
 }

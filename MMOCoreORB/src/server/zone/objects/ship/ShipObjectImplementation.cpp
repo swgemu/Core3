@@ -103,6 +103,15 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 		if (portal != nullptr) {
 			totalCellNumber = portal->getCellTotalNumber();
 		}
+
+		auto chassisData = ShipManager::instance()->getChassisData(ssot->getShipName());
+
+		if (chassisData != nullptr) {
+			for (uint32 slot = 0; slot < Components::FIGHTERSLOTMAX; slot++) {
+				auto slotData = chassisData->getComponentSlotData(slot);
+				setComponentTargetable(slot, slotData ? slotData->isTargetable() : false);
+			}
+		}
 	}
 }
 
