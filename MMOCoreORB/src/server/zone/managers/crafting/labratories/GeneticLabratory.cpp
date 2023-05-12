@@ -294,7 +294,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	float clevernessMax = Genetics::mentalFormula(physique->getCleverness(), prowess->getCleverness(), mental->getCleverness(), psychological->getCleverness(), aggression->getCleverness()) * modifier;
 
 	// Physiological: Dependability and Coursage
-	float dependabilityMax = Genetics::physchologicalFormula(physique->getDependency(), prowess->getDependency(), mental->getDependency(), psychological->getDependency(), aggression->getDependency()) * modifier;
+	float dependabilityMax = Genetics::physchologicalFormula(physique->getDependability(), prowess->getDependability(), mental->getDependability(), psychological->getDependability(), aggression->getDependability()) * modifier;
 	float courageMax = Genetics::physchologicalFormula(physique->getCourage(), prowess->getCourage(), mental->getCourage(), psychological->getCourage(), aggression->getCourage()) * modifier;
 
 	// Aggression: Ferocity and Power

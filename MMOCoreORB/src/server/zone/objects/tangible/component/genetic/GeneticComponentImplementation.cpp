@@ -67,9 +67,9 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	cleverness = values->getCurrentValue("cleverness");
 	courage = values->getCurrentValue("courage");
 	dexterity = values->getCurrentValue("dexterity");
-	dependency = values->getCurrentValue("dependability");
+	dependability = values->getCurrentValue("dependability");
 	fierceness = values->getCurrentValue("fierceness");
-	intelligence = values->getCurrentValue("intellect");
+	intellect = values->getCurrentValue("intellect");
 	power = values->getCurrentValue("power");
 	hardiness = values->getCurrentValue("hardiness");
 
@@ -133,10 +133,10 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 		courage = 1;
 	}
 
-	if (dependency > 1000) {
-		dependency = 1000;
-	} else if (dependency < 0) {
-		dependency = 1;
+	if (dependability > 1000) {
+		dependability = 1000;
+	} else if (dependability < 0) {
+		dependability = 1;
 	}
 
 	if (dexterity > 1000) {
@@ -157,10 +157,10 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 		hardiness = 1;
 	}
 
-	if (intelligence > 1000){
-		intelligence = 1000;
-	} else if (intelligence < 0) {
-		intelligence = 1;
+	if (intellect > 1000){
+		intellect = 1000;
+	} else if (intellect < 0) {
+		intellect = 1;
 	}
 
 	if (power > 1000) {
@@ -202,14 +202,14 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	// Quickness: dex,dep
 
 	health = (hardiness * 15)    + (dexterity * 3);
-	action = (dexterity * 15)    + (intelligence * 3);
-	mind   = (intelligence * 15) + (hardiness * 3);
+	action = (dexterity * 15)    + (intellect * 3);
+	mind   = (intellect * 15) + (hardiness * 3);
 	stamina = (dexterity*15)     + (endurance * 3);
-	willPower = (intelligence * 15) + (cleverness * 3);
+	willPower = (intellect * 15) + (cleverness * 3);
 	constitution = (hardiness * 15)    + (fortitude * 3);
-	focus = (intelligence * 15) + (dependency * 3);
-	strength = (hardiness * 15)    + (dependency * 3);
-	quickness = (dexterity * 15)    + (dependency * 3);
+	focus = (intellect * 15) + (dependability * 3);
+	strength = (hardiness * 15)    + (dependability * 3);
+	quickness = (dexterity * 15)    + (dependability * 3);
 	hit = 0.19 + (0.55 * ((float)cleverness/1000.0));
 
 	// dps of pet use to determine min and max value.
@@ -283,9 +283,9 @@ void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm
 	alm->insertAttribute("dna_comp_fortitude",(int)fortitude);
 	alm->insertAttribute("dna_comp_dexterity",(int)dexterity);
 	alm->insertAttribute("dna_comp_endurance",(int)endurance);
-	alm->insertAttribute("dna_comp_intellect",(int)intelligence);
+	alm->insertAttribute("dna_comp_intellect",(int)intellect);
 	alm->insertAttribute("dna_comp_cleverness",(int)cleverness);
-	alm->insertAttribute("dna_comp_dependability",(int)dependency);
+	alm->insertAttribute("dna_comp_dependability",(int)dependability);
 	alm->insertAttribute("dna_comp_courage",(int)courage);
 	alm->insertAttribute("dna_comp_fierceness",(int)fierceness);
 	alm->insertAttribute("dna_comp_power",(int)power);

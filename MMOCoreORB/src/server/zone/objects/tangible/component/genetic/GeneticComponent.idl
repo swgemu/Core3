@@ -13,21 +13,24 @@ import server.zone.objects.creature.CreatureObject;
 @json
 class GeneticComponent extends Component {
 
-	protected int cleverness;
-	protected int endurance;
-	protected int fierceness;
-	protected int power;
-	protected int intelligence;
-	protected int courage;
-	protected int dependency;
-	protected int dexterity;
-	protected int fortitude;
-	protected int hardiness;
+	protected float cleverness;
+	protected float endurance;
+	protected float fierceness;
+	protected float power;
+	protected float intellect;
+	protected float courage;
+	protected float dependability;
+	protected float dexterity;
+	protected float fortitude;
+	protected float hardiness;
+
 	protected string special1;
 	protected string special2;
 	protected boolean ranged;
+
 	protected int quality;
 	protected int armorRating;
+
 	protected float kinResist;
 	protected float energyResist;
 	protected float blastResist;
@@ -55,22 +58,25 @@ class GeneticComponent extends Component {
 
 	protected float hit;
 	protected float speed;
+
 	protected int minDam;
 	protected int maxDam;
 	protected int specialResists;
 
 	public GeneticComponent() {
 		Logger.setLoggingName("GeneticComponent");
-		cleverness = 0;
-		endurance = 0;
-		fierceness = 0;
-		power = 0;
-		intelligence = 0;
-		courage = 0;
-		dependency = 0;
-		dexterity = 0;
-		fortitude = 0;
-		hardiness = 0;
+
+		fortitude = 0.f;
+		hardiness = 0.f;
+		dexterity = 0.f;
+		endurance = 0.f;
+		intellect = 0.f;
+		cleverness = 0.f;
+		dependability = 0.f;
+		courage = 0.f;
+		fierceness = 0.f;
+		power = 0.f;
+
 		willPower = 0;
 		constitution = 0;
 		stamina = 0;
@@ -82,21 +88,23 @@ class GeneticComponent extends Component {
 		special2 = "none";
 		ranged = false;
 		quality = 7;
+
 		armorRating = 0;
-		kinResist = 0;
-		energyResist = 0;
-		blastResist = 0;
-		coldResist = 0;
-		heatResist = 0;
-		elecResist = 0;
-		acidResist = 0;
-		stunResist = 0;
-		saberResist = -1;
+		kinResist = 0.f;
+		energyResist = 0.f;
+		blastResist = 0.f;
+		coldResist = 0.f;
+		heatResist = 0.f;
+		elecResist = 0.f;
+		acidResist = 0.f;
+		stunResist = 0.f;
+		saberResist = -1.f;
+
 		level = 1;
 		health = 10;
 		action = 10;
 		mind = 10;
-		hit = 0;
+		hit = 0.f;
 		speed = 0;
 		minDam = 1;
 		maxDam = 1;
@@ -116,9 +124,9 @@ class GeneticComponent extends Component {
 		endurance = end;
 		fierceness = fie;
 		power = pow;
-		intelligence = ite;
+		intellect = ite;
 		courage = cou;
-		dependency = dep;
+		dependability = dep;
 		fortitude = frt;
 		hardiness = har;
 		dexterity = dex;
@@ -145,8 +153,8 @@ class GeneticComponent extends Component {
 	}
 
 	@dirty
-	public int getIntelligence() {
-		return intelligence;
+	public int getIntellect() {
+		return intellect;
 	}
 
 	@dirty
@@ -155,8 +163,8 @@ class GeneticComponent extends Component {
 	}
 
 	@dirty
-	public int getDependency() {
-		return dependency;
+	public int getDependability() {
+		return dependability;
 	}
 
 	@dirty
@@ -332,43 +340,43 @@ class GeneticComponent extends Component {
 		constitution = value;
 	}
 
-	public void setCleverness(int value) {
+	public void setCleverness(float value) {
 		cleverness = value;
 	}
 
-	public void setEndurance(int value) {
+	public void setEndurance(float value) {
 		endurance = value;
 	}
 
-	public void setFierceness(int value) {
+	public void setFierceness(float value) {
 		fierceness = value;
 	}
 
-	public void setPower(int value) {
+	public void setPower(float value) {
 		power = value;
 	}
 
-	public void setIntellect(int value) {
-		intelligence = value;
+	public void setIntellect(float value) {
+		intellect = value;
 	}
 
-	public void setCourage(int value) {
+	public void setCourage(float value) {
 		courage = value;
 	}
 
-	public void setDependency(int value) {
-		dependency = value;
+	public void setDependability(float value) {
+		dependability = value;
 	}
 
-	public void setDexterity(int value) {
+	public void setDexterity(float value) {
 		dexterity = value;
 	}
 
-	public void setFortitude(int value) {
+	public void setFortitude(float value) {
 		fortitude = value;
 	}
 
-	public void setHardiness(int value) {
+	public void setHardiness(float value) {
 		hardiness = value;
 	}
 

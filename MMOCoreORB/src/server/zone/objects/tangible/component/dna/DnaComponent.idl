@@ -15,9 +15,9 @@ class DnaComponent extends Component {
 	protected float endurance;
 	protected float fierceness;
 	protected float power;
-	protected float intelligence;
+	protected float intellect;
 	protected float courage;
-	protected float dependency;
+	protected float dependability;
 	protected float dexterity;
 	protected float fortitude;
 	protected float hardiness;
@@ -49,31 +49,35 @@ class DnaComponent extends Component {
 
 	public DnaComponent() {
 		Logger.setLoggingName("DnaComponent");
-		cleverness = 0;
-		endurance = 0;
-		fierceness = 0;
-		power = 0;
-		intelligence = 0;
-		courage = 0;
-		dependency = 0;
-		dexterity = 0;
-		fortitude = 0;
-		hardiness = 0;
+
+		fortitude = 0.f;
+		hardiness = 0.f;
+		dexterity = 0.f;
+		endurance = 0.f;
+		intellect = 0.f;
+		cleverness = 0.f;
+		dependability = 0.f;
+		courage = 0.f;
+		fierceness = 0.f;
+		power = 0.f;
+
 		source = "unknown";
 		special1 = "none";
 		special2 = "none";
 		ranged = false;
 		quality = 7;
+
 		armorRating = 0;
-		kinResist = 0;
-		energyResist = 0;
-		blastResist = 0;
-		coldResist = 0;
-		heatResist = 0;
-		elecResist = 0;
-		acidResist = 0;
-		stunResist = 0;
+		kinResist = 0.f;
+		energyResist = 0.f;
+		blastResist = 0.f;
+		coldResist = 0.f;
+		heatResist = 0.f;
+		elecResist = 0.f;
+		acidResist = 0.f;
+		stunResist = 0.f;
 		saberResist = -1;
+
 		sourceLevel = 1;
 		specialResists = 0;
 	}
@@ -83,9 +87,9 @@ class DnaComponent extends Component {
 		endurance = endur;
 		fierceness = fierc;
 		power = pow;
-		intelligence = intel;
+		intellect = intel;
 		courage = cour;
-		dependency = depend;
+		dependability = depend;
 		dexterity = dext;
 		fortitude = fort;
 		hardiness = hardi;
@@ -97,12 +101,12 @@ class DnaComponent extends Component {
 	@dirty
 	public native boolean isSpecialResist(int type);
 
-	public void setCleverness(int value) {
+	public void setCleverness(float value) {
 		cleverness = value;
 	}
 
 	@dirty
-	public int getCleverness() {
+	public float getCleverness() {
 		return cleverness;
 	}
 
@@ -111,87 +115,89 @@ class DnaComponent extends Component {
 	}
 
 	@dirty
-	public int getLevel() {
+	public float getLevel() {
 		return sourceLevel;
 	}
 
 
-	public void setEndurance(int value) {
+	public void setEndurance(float value) {
 		endurance = value;
 	}
 
 	@dirty
-	public int getEndurance() {
+	public float getEndurance() {
 		return endurance;
 	}
 
-	public void setFierceness(int value) {
+	public void setFierceness(float value) {
 		fierceness = value;
 	}
 
 	@dirty
-	public int getFierceness() {
+	public float getFierceness() {
 		return fierceness;
 	}
 
-	public void setPower(int value) {
+	public void setPower(float value) {
 		power = value;
 	}
 
 	@dirty
-	public int getPower() {
+	public float getPower() {
 		return power;
 	}
 
-	public void setIntellect(int value) {
-		intelligence = value;
+	public void setIntellect(float value) {
+		intellect = value;
 	}
 
 	@dirty
-	public int getIntellect() {
-		return intelligence;
+	public float getIntellect() {
+		return intellect;
 	}
 
-	public void setCourage(int value) {
+	public void setCourage(float value) {
 		courage = value;
 	}
 
 	@dirty
-	public int getCourage() {
+	public float getCourage() {
 		return courage;
 	}
 
-	public void setDependency(int value) {
-		dependency = value;
-	}
-	public int getDependency() {
-		return dependency;
+	public void setDependability(float value) {
+		dependability = value;
 	}
 
-	public void setDexterity(int value) {
+	@dirty
+	public float getDependability() {
+		return dependability;
+	}
+
+	public void setDexterity(float value) {
 		dexterity = value;
 	}
 
 	@dirty
-	public int getDexterity() {
+	public float getDexterity() {
 		return dexterity;
 	}
 
-	public void setFortitude(int value) {
+	public void setFortitude(float value) {
 		fortitude = value;
 	}
 
 	@dirty
-	public int getForititude() {
+	public float getForititude() {
 		return fortitude;
 	}
 
-	public void setHardiness(int value) {
+	public void setHardiness(float value) {
 		hardiness = value;
 	}
 
 	@dirty
-	public int getHardiness() {
+	public float getHardiness() {
 		return hardiness;
 	}
 
@@ -203,6 +209,7 @@ class DnaComponent extends Component {
 	public float getEnergy() {
 		return energyResist;
 	}
+
 	public void setBlast(float value) {
 		blastResist = value;
 	}
@@ -220,6 +227,7 @@ class DnaComponent extends Component {
 	public float getCold() {
 		return coldResist;
 	}
+
 	public void setHeat(float value) {
 		heatResist = value;
 	}

@@ -103,6 +103,7 @@ void PetDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 
 	StringBuffer attdisplayValue;
 	attdisplayValue << Math::getPrecision(attackSpeed, 2);
+
 	StringBuffer hitdisplayValue;
 	hitdisplayValue << Math::getPrecision(chanceHit, 2);
 	alm->insertAttribute("creature_attack", attdisplayValue);
@@ -206,6 +207,7 @@ int PetDeedImplementation::calculatePetLevel() {
 	int effective = (int)(((fortitude - (armor * 500)) / 50) * 5);
 	int dps = ((damageMax + damageMin) / 2.0f) / attackSpeed;
 	int avgHam = (health + action + mind) / 3;
+
 	if (regen == 0) {
 		regen = avgHam / 10;
 	}
@@ -264,12 +266,13 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 			endurance = component->getEndurance();
 			fierceness = component->getFierceness();
 			power = component->getPower();
-			intelligence = component->getIntelligence();
+			intellect = component->getIntellect();
 			courage = component->getCourage();
-			dependency = component->getDependency();
+			dependability = component->getDependability();
 			dexterity = component->getDexterity();
 			fortitude = component->getFortitude();
 			hardiness = component->getHardiness();
+
 			if (component->isSpecialResist(SharedWeaponObjectTemplate::KINETIC))
 				setSpecialResist(SharedWeaponObjectTemplate::KINETIC);
 			if (component->isSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY))
@@ -288,6 +291,7 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 				setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);
 			if (component->isSpecialResist(SharedWeaponObjectTemplate::STUN))
 				setSpecialResist(SharedWeaponObjectTemplate::STUN);
+
 			level = Genetics::calculatePetLevel(component);
 		}
 	}
