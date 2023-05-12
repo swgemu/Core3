@@ -12,6 +12,7 @@
 #include "conf/ConfigManager.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
+#include "server/zone/managers/ship/ShipManager.h"
 
 void SpaceManagerImplementation::loadLuaConfig() {
 	String planetName = spacezone->getZoneName();
@@ -38,7 +39,19 @@ void SpaceManagerImplementation::loadLuaConfig() {
 			String templateFile = zoneObject.getStringField("templateFile");
 			//  info("Attempting to load: " + templateFile + " in " + spacezone->getZoneName(), true);
 
-			ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(templateFile.hashCode(), 0, "");
+			auto shot = TemplateManager::instance()->getTemplate(templateFile.hashCode());
+			if (shot == nullptr) {
+				zoneObject.pop();
+				continue;
+			}
+
+			ManagedReference<SceneObject*> obj = nullptr;
+
+			if (shot->getGameObjectType() & SceneObjectType::SHIP) {
+				obj = ShipManager::instance()->createShip(templateFile, 0, true);
+			} else {
+				obj = ObjectManager::instance()->createObject(templateFile.hashCode(), 0, "");
+			}
 
 			if (obj != nullptr) {
 				Locker objLocker(obj);

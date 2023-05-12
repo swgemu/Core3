@@ -42,12 +42,16 @@
 
 
 object_ship_spacestation_neutral = object_ship_shared_spacestation_neutral:new {
+	objectName = "@space/ship_names:spacestation_neutral",
 
+	faction = "civilian",
+	type = "spacestation_neutral",
 	name = "spacestation_neutral",
-	customName = "NeutralStation",
+
 	slideFactor = 1.76,
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
+
 	reactor = { name = "rct_generic", hitpoints = 4966.639, armor = 1916.958,},
 	shield_0 = { name = "shd_generic", hitpoints = 9612.102, armor = 2876.292, regen = 49.71952, front = 5983.614, back = 5995.161,},
 	shield_1 = { name = "shd_generic", hitpoints = 4842.518, armor = 2969.425, regen = 39.20972, front = 2873.469, back = 2937.772,},

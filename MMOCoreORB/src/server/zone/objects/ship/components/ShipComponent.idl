@@ -188,4 +188,7 @@ class ShipComponent extends Component {
 
 	@local
 	public abstract native void uninstall(CreatureObject pilot, ShipObject ship, int slot, boolean notifyClient);
+
+	@local
+	public abstract native string getAppearanceName(ShipObject ship);
 }

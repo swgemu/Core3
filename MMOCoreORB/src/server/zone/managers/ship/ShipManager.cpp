@@ -10,13 +10,6 @@
 #include "ShipManager.h"
 #include "templates/manager/DataArchiveStore.h"
 #include "templates/datatables/DataTableIff.h"
-#include "server/zone/objects/ship/components/ShipWeaponComponent.h"
-#include "server/zone/objects/ship/components/ShipShieldComponent.h"
-#include "server/zone/objects/ship/components/ShipEngineComponent.h"
-#include "server/zone/objects/ship/components/ShipCapacitorComponent.h"
-#include "server/zone/objects/ship/components/ShipReactorComponent.h"
-#include "server/zone/objects/ship/components/ShipArmorComponent.h"
-#include "server/zone/objects/ship/components/ShipBoosterComponent.h"
 #include "server/zone/objects/ship/ShipChassisData.h"
 #include "server/ServerCore.h"
 #include "server/zone/ZoneServer.h"
@@ -24,6 +17,9 @@
 #include "server/zone/objects/ship/ComponentSlots.h"
 #include "server/zone/objects/ship/ShipComponentFlag.h"
 #include "server/zone/packets/ship/DestroyShipMessage.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/ship/components/ShipComponent.h"
+#include "templates/params/creature/PlayerArrangement.h"
 
 /*ShipManager::ShipManager() {
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile(
@@ -52,10 +48,13 @@
 }*/
 
 ShipManager::ShipManager() {
+	setLoggingName("ShipManager");
+
 	loadShipChassisData();
 	loadShipComponentData();
 	loadShipWeaponData();
 	loadHyperspaceLocations();
+	loadShipAppearanceData();
 
 	projectileThread = new ProjectileThread();
 	projectileThread->start();
@@ -439,91 +438,97 @@ void ShipManager::loadShipWeaponData() {
 	delete iffStream;
 }
 
-ShipObject* ShipManager::generateShip(String templateName) {
-	const static char* components[] = {"reactor", "engine", "shield_0", "shield_1", "armor_0", "armor_1", "capacitor", "booster", "droid_interface", "bridge", "hangar", "targeting_station", "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5", "weapon_6", "weapon_7"};
-	const int numComponents = 20;
+void ShipManager::loadShipAppearanceData() {
+	IffStream* iffStream = DataArchiveStore::instance()->openIffFile("datatables/space/ship_chassis.iff");
+	if (iffStream == nullptr) {
+		fatal("datatables/space/ship_chassis.iff could not be found.");
+		return;
+	}
 
-	ManagedReference<ShipObject*> ship = ServerCore::getZoneServer()->createObject(String::hashCode(templateName), 1).castTo<ShipObject*>();
-	Locker locker(ship);
-	ship->createChildObjects();
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
 
-	SharedObjectTemplate* shot = ship->getObjectTemplate();
-	shot->getAppearanceTemplate(); // force appearance to load
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+		if (row == nullptr || row->getCellsSize() == 0) {
+			continue;
+		}
 
-	ZoneServer* server = ServerCore::getZoneServer();
+		DataTableCell* cell = row->getCell(0);
+		if (cell == nullptr) {
+			continue;
+		}
 
-	SharedShipObjectTemplate* tmpl = (SharedShipObjectTemplate*)ship->getObjectTemplate();
+		String key = cell->toString();
+		if (key == "") {
+			continue;
+		}
 
-	if (tmpl == nullptr)
-		return nullptr;
+		Reference<ShipAppearanceData*> data = new ShipAppearanceData(key);
+		shipAppearanceData.put(key, data);
+	}
 
-	const VectorMap<String, String>& componentNames = tmpl->getComponentNames();
-	const VectorMap<String, VectorMap<String, float>>& componentValues = tmpl->getComponentValues();
-	const ShipChassisData* data = chassisData.get(ship->getShipName());
+	delete iffStream;
+}
 
-	for (int i = 0; i < 20; i++) {
-		String k = components[i];
+void ShipManager::loadAiShipComponentData(ShipObject* ship) {
+	if (ship == nullptr) {
+		return;
+	}
 
-		if (componentValues.contains(k)) {
-			const VectorMap<String, float> values = componentValues.get(k);
-			float hitpoints = values.get("hitpoints");
-			float armor = values.get("armor");
-			const String& componentName = componentNames.get(k);
-			const ShipComponentData* componentData = getShipComponent(componentName);
-			const ShipChassisData::ComponentSlotData* slotData = data->getComponentSlotData(i);
-			const auto& hardpoints = slotData->getHardpoint(componentName);
+	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(ship->getObjectTemplate());
+	if (shipTemp == nullptr) {
+		return;
+	}
 
-			float range = 0.0f;
+	const auto& componentNames = shipTemp->getComponentNames();
+	if (componentNames.size() == 0) {
+		return;
+	}
 
-			if (hardpoints.size() > 0) {
-				const ShipChassisData::ComponentHardpoint* hardpoint = hardpoints.get(0);
-				range = hardpoint->getRange();
-			}
+	const auto& componentValues = shipTemp->getComponentValues();
+	if (componentValues.size() == 0) {
+		return;
+	}
 
-			if (componentData == nullptr)
-				Logger::console.fatal("nullptr component data for " + componentName);
+	auto appearanceData = getAppearanceData(shipTemp->getShipName());
 
-			String templateName = componentData->getSharedObjectTemplate().replaceFirst("shared_", "");
+	for (uint32 slot = 0; slot < Components::FIGHTERSLOTMAX; ++slot) {
+		String slotName = componentSlotToString(slot);
+		if (slotName == "") {
+			continue;
+		}
 
-			//Logger::console.info("Attempting to load component: " + componentName, true);
+		String compName = componentNames.get(slotName);
+		if (compName == "") {
+			continue;
+		}
 
-			if (componentName == "bdg_generic" || componentName == "hgr_generic") { // These aren't real components
-				ship->setComponentCRC(i, componentName.hashCode());
-				continue;
-			}
+		const auto& values = componentValues.get(slotName);
+		if (values.size() == 0) {
+			continue;
+		}
 
-			ManagedReference<ShipComponent*> shipComponent = server->createObject(templateName.hashCode()).castTo<ShipComponent*>();
+		float hitPoints = Math::max(values.get("hitpoints"), 50.f);
+		float armor = Math::max(values.get("armor"), 100.f);
 
-			if (shipComponent == nullptr) {
-				ship->error("Failed to create component " + componentName);
-				continue;
-			}
+		if (appearanceData != nullptr && !appearanceData->contains(compName)) {
+			compName = appearanceData->getDefaultAppearance(slot);
+		}
 
-			Locker locker(shipComponent);
+		ship->setComponentCRC(slot, compName.hashCode());
+		ship->setComponentName(slot, compName);
+		ship->setComponentHitpoints(slot, hitPoints);
+		ship->setComponentMaxHitpoints(slot, hitPoints);
+		ship->setComponentArmor(slot, armor);
+		ship->setComponentMaxArmor(slot, armor);
 
-			if (hitpoints > 0) {
-				shipComponent->setHitpointsMax(hitpoints);
-				shipComponent->setHitpoints(hitpoints);
-			}
-
-			if (armor > 0) {
-				shipComponent->setArmorMax(armor);
-				shipComponent->setArmor(armor);
-			}
-
-			shipComponent->setComponentDataName(componentData->getName());
-			shipComponent->setCollisionRange(range);
-			// shipComponent->setName(componentName);
-
-			switch (i) {
+		switch (slot) {
 			case Components::REACTOR: {
-				ShipReactorComponent* reactor = shipComponent.castTo<ShipReactorComponent*>();
-				Locker locker(reactor);
-				reactor->setReactorGenerationRate(10000.0f);
+				ship->setReactorGenerationRate(10000.0f);
 				break;
 			}
 			case Components::ENGINE: {
-				ShipEngineComponent* engine = shipComponent.castTo<ShipEngineComponent*>();
 				float speed = values.get("speed");
 				float pitch = values.get("pitch") * Math::DEG2RAD;
 				float yaw = values.get("yaw") * Math::DEG2RAD;
@@ -531,40 +536,37 @@ ShipObject* ShipManager::generateShip(String templateName) {
 				float pitchRate = values.get("pitchRate") * Math::DEG2RAD;
 				float yawRate = values.get("yawRate") * Math::DEG2RAD;
 				float rollRate = values.get("rollRate") * Math::DEG2RAD;
-				float accel = values.get("acceleration");
-				float decel = values.get("deceleration");
-
-				engine->setSpeedMaximum(speed);
-				engine->setPitchRateMaximum(pitch);
-				engine->setYawRateMaximum(yaw);
-				engine->setRollRateMaximum(roll);
-				engine->setPitchAccelerationRate(pitchRate);
-				engine->setYawAccelerationRate(yawRate);
-				engine->setRollAccelerationRate(rollRate);
-				engine->setAccelerationRate(accel);
-				engine->setDecelerationRate(decel);
+				float acceleration = values.get("acceleration");
+				float deceleration = values.get("deceleration");
+				ship->setEngineMaxSpeed(speed, false);
+				ship->setEnginePitchAccelerationRate(pitch, false);
+				ship->setEnginePitchRate(pitchRate, false);
+				ship->setEngineYawAccelerationRate(yaw, false);
+				ship->setEngineYawRate(yawRate, false);
+				ship->setEngineRollAccelerationRate(roll, false);
+				ship->setEngineRollRate(rollRate, false);
+				ship->setEngineAccelerationRate(acceleration, false);
+				ship->setEngineDecelerationRate(deceleration, false);
 				break;
 			}
 			case Components::SHIELD0:
 			case Components::SHIELD1: {
-				ShipShieldComponent* shield = shipComponent.castTo<ShipShieldComponent*>();
 				float front = values.get("front");
 				float back = values.get("back");
 				float regen = values.get("regen");
-				shield->setFrontHitpoints(front);
-				shield->setRearHitpoints(back);
-				shield->setRechargeRate(regen);
+				ship->setFrontShield(front, false);
+				ship->setFrontShieldMax(front, false);
+				ship->setRearShield(back, false);
+				ship->setRearShieldMax(back, false);
+				ship->setShieldRechargeRate(regen, false);
 				break;
 			}
-			case Components::ARMOR0:
-			case Components::ARMOR1:
-				break;
 			case Components::CAPACITOR: {
-				ShipCapacitorComponent* capacitor = shipComponent.castTo<ShipCapacitorComponent*>();
 				float rechargeRate = values.get("rechargeRate");
 				float energy = values.get("energy");
-				capacitor->setRechargeRate(rechargeRate);
-				capacitor->setCapacitorEnergy(energy);
+				ship->setCapacitorEnergy(energy, false);
+				ship->setCapacitorMaxEnergy(energy, false);
+				ship->setCapacitorRechargeRate(rechargeRate, false);
 				break;
 			}
 			case Components::BOOSTER: {
@@ -575,86 +577,185 @@ ShipObject* ShipManager::generateShip(String templateName) {
 				float speed = values.get("speed");
 				float usage = values.get("energyUsage");
 				float consumptionRate = values.get("energyConsumptionRate");
-
-				//info(true) << "ShipManaged::generate ship -- CALLED for component " << k << " \n\n\n - consumption rate = " << consumptionRate << " Energy Usage = " << usage << "\n\n\n";
-
-				ShipBoosterComponent* booster = shipComponent.castTo<ShipBoosterComponent*>();
-
-				if (booster != nullptr) {
-					booster->setBoosterRechargeRate(rechargeRate);
-					booster->setBoosterEnergy(energy);
-					booster->setEnergyEfficiency(usage);
-					booster->setBoosterAcceleration(accel);
-					booster->setBoosterSpeed(speed);
-					booster->setBoosterEnergyConsumptionRate(consumptionRate);
-				}
+				ship->setBoosterRechargeRate(rechargeRate);
+				ship->setBoosterEnergy(energy);
+				ship->setBoosterEnergyConsumptionRate(usage);
+				ship->setBoosterAcceleration(accel);
+				ship->setBoosterMaxSpeed(speed);
+				ship->setBoosterEnergyConsumptionRate(consumptionRate);
 				break;
 			}
 			default: {
-				if (i >= Components::WEAPON_START) {
-					ShipWeaponComponent* weapon = shipComponent.castTo<ShipWeaponComponent*>();
+				if (slot >= Components::WEAPON_START) {
 					float fireRate = values.get("rate");
 					float drain = values.get("drain");
 					float maxDamage = values.get("maxDamage");
 					float minDamage = values.get("minDamage");
-					float sEfficiency = values.get("shieldEfficiency");
-					float aEfficiency = values.get("armorEfficiency");
+					float shieldEff = values.get("shieldEfficiency");
+					float armorEff = values.get("armorEfficiency");
 					float ammo = values.get("ammo");
-					float ammo_type = values.get("ammo_type");
-					weapon->setRefireRate(fireRate);
-					weapon->setEnergyPerShot(drain);
-					weapon->setMinDamage(minDamage);
-					weapon->setMaxDamage(maxDamage);
-					if (sEfficiency > 0.001f)
-						weapon->setShieldEffectiveness(sEfficiency);
-					if (aEfficiency > 0.001f)
-						weapon->setArmorEffectiveness(aEfficiency);
-					// TODO: AMMO
+					float ammoType = values.get("ammo_type");
+
+					float totalEff = shieldEff + armorEff;
+					if (totalEff < 1.f) {
+						shieldEff += (1.f - totalEff) * 0.5f;
+						armorEff += (1.f - totalEff) * 0.5f;
+					}
+
+					ship->setMaxDamage(slot, maxDamage);
+					ship->setMinDamage(slot, maxDamage);
+					ship->setRefireRate(fireRate, false);
+					ship->setRefireEfficiency(drain, false);
+					ship->setShieldEffectiveness(slot, shieldEff);
+					ship->setArmorEffectiveness(slot, armorEff);
+					ship->setCurrentAmmo(slot, ammo);
+					ship->setMaxAmmo(slot, ammo);
+					ship->setAmmoClass(slot, ammoType);
 				}
 				break;
 			}
-			};
-			ship->install(nullptr, shipComponent, i, false);
-			ship->setComponentTargetable(i, slotData->isTargetable());
+		};
+	}
+}
+
+void ShipManager::loadShipComponentObjects(ShipObject* ship) {
+	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(ship->getObjectTemplate());
+	if (shipTemp == nullptr) {
+		return;
+	}
+
+	auto chassisData = getChassisData(shipTemp->getShipName());
+	if (chassisData == nullptr) {
+		return;
+	}
+
+	const auto& componentNames = shipTemp->getComponentNames();
+
+	for (uint32 slot = 0; slot < Components::FIGHTERSLOTMAX; slot++) {
+		String slotName = componentSlotToString(slot);
+		if (slotName == "") {
+			continue;
+		}
+
+		String dataName = componentNames.get(slotName);
+		if (dataName == "") {
+			continue;
+		}
+
+		auto compData = getShipComponent(dataName);
+		if (compData == nullptr) {
+			continue;
+		}
+
+		auto compShot = TemplateManager::instance()->getTemplate(compData->getObjectTemplate().hashCode());
+		if (compShot == nullptr || !(compShot->getGameObjectType() & SceneObjectType::SHIPATTACHMENT)) {
+			continue;
+		}
+
+		ManagedReference<ShipComponent*> component = ServerCore::getZoneServer()->createObject(compData->getObjectTemplate().hashCode(), ship->getPersistenceLevel()).castTo<ShipComponent*>();
+		if (component != nullptr) {
+			ship->install(nullptr, component, slot, false);
 		}
 	}
+}
+
+ShipControlDevice* ShipManager::createShipControlDevice(ShipObject* ship) {
+	String controlName = "object/intangible/ship/" + ship->getShipName().replaceAll("player_", "") + "_pcd.iff";
+
+	auto shot = TemplateManager::instance()->getTemplate(controlName.hashCode());
+	if (shot == nullptr || !(shot->getGameObjectType() & SceneObjectType::SHIPCONTROLDEVICE)) {
+		return nullptr;
+	}
+
+	ManagedReference<ShipControlDevice*> control = ServerCore::getZoneServer()->createObject(controlName.hashCode(), ship->getPersistenceLevel()).castTo<ShipControlDevice*>();
+	if (control == nullptr) {
+		return nullptr;
+	}
+
+	Locker sLock(ship);
+	Locker cLock(control, ship);
+
+	if (control->transferObject(ship, PlayerArrangement::RIDER)) {
+		control->setShipType(ship->getChassisCategory() == "pob" ? POBSHIP : FIGHTERSHIP);
+		control->setControlledObject(ship);
+
+		ship->setControlDeviceID(control->getObjectID());
+		return control;
+	}
+
+	if (control != nullptr) {
+		Locker sLock(control);
+		control->destroyObjectFromDatabase(true);
+	}
+
+	return nullptr;
+}
+
+ShipObject* ShipManager::createShip(const String& shipName, int persistence, bool loadComponents) {
+	String chassisName = shipName.replaceAll("shared_", "");
+
+	if (!chassisName.contains(".iff")) {
+		String path = chassisName.contains("player_") ? "object/ship/player/" : "object/ship/";
+		chassisName = path + chassisName + ".iff";
+	}
+
+	auto shot = TemplateManager::instance()->getTemplate(chassisName.hashCode());
+	if (shot == nullptr || !(shot->getGameObjectType() & SceneObjectType::SHIP)) {
+		return nullptr;
+	}
+
+	ManagedReference<ShipObject*> ship = ServerCore::getZoneServer()->createObject(chassisName.hashCode(), persistence).castTo<ShipObject*>();
+	if (ship == nullptr) {
+		return nullptr;
+	}
+
+	if (loadComponents && !chassisName.contains("player")) {
+		loadAiShipComponentData(ship);
+	}
+
 	return ship;
 }
 
-ShipObject* ShipManager::generateImperialNewbieShip(Reference<CreatureObject*> owner) {
-	ManagedReference<ShipObject*> ship = generateShip("object/ship/player/player_prototype_tiefighter.iff");
-	ZoneServer* server = ServerCore::getZoneServer();
-	Locker locker(ship);
-	ship->setChassisMaxHealth(1000.0f);
-	ship->setCurrentChassisHealth(1000.0f);
-	ship->setOwner(owner);
+void ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents) {
+	ManagedReference<SceneObject*> dataPad = owner->getSlottedObject("datapad");
+	if (dataPad == nullptr) {
+		return;
+	}
 
-	return ship;
-}
+	PlayerObject* ghost = owner->getPlayerObject();
+	if (ghost == nullptr) {
+		return;
+	}
 
-ShipObject* ShipManager::generateRebelNewbieShip(Reference<CreatureObject*> owner) {
-	ManagedReference<ShipObject*> ship = generateShip("object/ship/player/player_xwing.iff");
-	Locker locker(ship);
-	ship->setChassisMaxHealth(1000.0f);
-	ship->setCurrentChassisHealth(1000.0f);
-	ship->setOwner(owner);
-	return ship;
-}
+	auto ship = createShip(shipName, 1, false);
+	auto control = ship == nullptr ? nullptr : createShipControlDevice(ship);
 
-ShipObject* ShipManager::generateNeutralNewbieShip(Reference<CreatureObject*> owner) {
-	ManagedReference<ShipObject*> ship = generateShip("object/ship/player/player_basic_hutt_light.iff");
-	Locker locker(ship);
-	ship->setChassisMaxHealth(1000.0f);
-	ship->setCurrentChassisHealth(1000.0f);
-	ship->setOwner(owner);
-	return ship;
-}
+	if (ship != nullptr && control != nullptr) {
+		Locker sLock(ship);
+		Locker cLock(control, ship);
 
-ShipObject* ShipManager::generatePOBShip(Reference<CreatureObject*> owner) {
-	ManagedReference<ShipObject*> ship = generateShip("object/ship/player/player_sorosuub_space_yacht.iff");
-	Locker locker(ship);
-	ship->setChassisMaxHealth(1000.0f);
-	ship->setCurrentChassisHealth(1000.0f);
-	ship->setOwner(owner);
-	return ship;
+		ship->createChildObjects();
+
+		if (loadComponents) {
+			loadShipComponentObjects(ship);
+		}
+
+		if (dataPad->transferObject(control, -1)) {
+			ship->setOwner(owner);
+			ghost->addShip(ship);
+
+			control->sendTo(owner, true);
+			return;
+		}
+	}
+
+	if (control != nullptr) {
+		Locker cLock(control);
+		control->destroyObjectFromDatabase(true);
+	}
+
+	if (ship != nullptr) {
+		Locker sLock(ship);
+		ship->destroyObjectFromDatabase(true);
+	}
 }
