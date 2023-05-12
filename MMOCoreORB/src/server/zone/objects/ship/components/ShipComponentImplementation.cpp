@@ -136,7 +136,7 @@ void ShipComponentImplementation::install(CreatureObject* pilot, ShipObject* shi
 
 	ship->setChassisMass(ship->calculateCurrentMass(), false, nullptr, deltaVector);
 
-	ship->setComponentCRC(slot, getComponentDataName().hashCode(), nullptr, command, deltaVector);
+	ship->setComponentCRC(slot, getAppearanceName(ship).hashCode(), nullptr, command, deltaVector);
 
 	if (deltaVector != nullptr) {
 		deltaVector->sendMessages(ship, pilot);
@@ -170,4 +170,25 @@ void ShipComponentImplementation::uninstall(CreatureObject* pilot, ShipObject* s
 	if (deltaVector != nullptr) {
 		deltaVector->sendMessages(ship, pilot);
 	}
+}
+
+String ShipComponentImplementation::getAppearanceName(ShipObject* ship) {
+	auto data = ShipManager::instance()->getAppearanceData(ship->getShipName());
+	if (data == nullptr || data->contains(componentDataName)) {
+		return componentDataName;
+	}
+
+	if (reverseEngineeringLevel >= 7) {
+		auto advAppearance = data->getAdvancedAppearance(componentSlot);
+		if (advAppearance != "") {
+			return advAppearance;
+		}
+	}
+
+	auto defAppearance = data->getDefaultAppearance(componentSlot);
+	if (defAppearance != "") {
+		return defAppearance;
+	}
+
+	return componentDataName;
 }

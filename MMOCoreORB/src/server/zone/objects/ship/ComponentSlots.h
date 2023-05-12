@@ -20,5 +20,10 @@ namespace Components {
 		TARGETING_STATION,
 		WEAPON_START // 12
 	};
+
+	enum ShipComponentsMax {
+		FIGHTERSLOTMAX = 19,
+		CAPITALSLOTMAX = 99,
+	};
 }
 #endif //CORE3_COMPONENTSLOTS_H
