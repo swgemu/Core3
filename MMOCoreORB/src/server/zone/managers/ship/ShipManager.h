@@ -12,6 +12,9 @@
 #include "server/zone/objects/ship/ShipProjectileData.h"
 
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/ComponentSlots.h"
+#include "server/zone/objects/intangible/ShipControlDevice.h"
+#include "server/zone/objects/ship/ShipAppearanceData.h"
 
 class ShipChassisData;
 
@@ -27,7 +30,7 @@ class ShipManager : public Singleton<ShipManager>, public Object, public Logger 
 
 	HashTable<uint32, Reference<ShipComponentData*>> shipComponents;
 	HashTable<String, ShipComponentData*> shipComponentTemplateNames;
-
+	HashTable<String, Reference<ShipAppearanceData*>> shipAppearanceData;
 	HashTable<uint32, Reference<ShipProjectileData*>> shipProjectileData;
 	HashTable<String, ShipProjectileData*> shipProjectiletTemplateNames;
 	VectorMap<String, Vector3> hyperspaceLocations;
@@ -42,6 +45,8 @@ class ShipManager : public Singleton<ShipManager>, public Object, public Logger 
 	void loadShipWeaponData();
 	void loadShipChassisData();
 	void loadHyperspaceLocations();
+	void loadShipAppearanceData();
+
 	bool doComponentDamage(ShipObject* ship, const Vector3& collisionPoint, const Vector3& direction, float& damage, int& slot, float& previous, float& current) const;
 
 public:
@@ -69,6 +74,10 @@ public:
 	}
 
 	const ShipComponentData* getShipComponent(const String& name) const {
+		if (name.contains(".iff")) {
+			return shipComponentTemplateNames.get(name);
+		}
+
 		return shipComponents.get(name.hashCode());
 	}
 
@@ -88,11 +97,9 @@ public:
 		return chassisData.get(shipName);
 	}
 
-	ShipObject* generateShip(String templateName);
-	ShipObject* generateImperialNewbieShip(Reference<CreatureObject*> owner);
-	ShipObject* generateRebelNewbieShip(Reference<CreatureObject*> owner);
-	ShipObject* generateNeutralNewbieShip(Reference<CreatureObject*> owner);
-	ShipObject* generatePOBShip(Reference<CreatureObject*> owner);
+	const ShipAppearanceData* getAppearanceData(const String& shipName) const {
+		return shipAppearanceData.get(shipName);
+	}
 
 	class ShipProjectile : public Object {
 	protected:
@@ -151,6 +158,42 @@ private:
 	bool applyDamage(const ShipProjectile* projectile, Reference<ShipObject*>& ship, const Vector3& collisionPoint, const Vector<ManagedReference<SceneObject*>>& collidedObject) const;
 
 	bool damageComponent(ShipObject* ship, float& damage, int closestSlot, const Vector3& direction) const;
+
+	void loadAiShipComponentData(ShipObject* ship);
+
+	void loadShipComponentObjects(ShipObject* ship);
+
+	ShipControlDevice* createShipControlDevice(ShipObject* ship);
+
+public:
+	ShipObject* createShip(const String& shipName, int persistence = 0, bool loadComponents = true);
+
+	void createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents = true);
+
+	String componentSlotToString(int slot) {
+		switch (slot) {
+			case Components::REACTOR: return "reactor";
+			case Components::ENGINE: return "engine";
+			case Components::SHIELD0: return "shield_0";
+			case Components::SHIELD1: return "shield_1";
+			case Components::ARMOR0: return "armor_0";
+			case Components::ARMOR1: return "armor_1";
+			case Components::CAPACITOR: return "capacitor";
+			case Components::BOOSTER: return "booster";
+			case Components::DROID_INTERFACE: return "droid_interface";
+			case Components::BRIDGE: return "bridge";
+			case Components::HANGAR: return "hangar";
+			case Components::TARGETING_STATION: return "targeting_station";
+			default: {
+				if (slot >= Components::WEAPON_START && slot <= 99) {
+					return "weapon_" + String::valueOf(slot - Components::WEAPON_START);
+				} else {
+					return "";
+				}
+			}
+		}
+	}
 };
+
 
 #endif /* SHIPMANAGER_H_ */
