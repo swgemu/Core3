@@ -68,9 +68,9 @@ void DnaComponentImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	alm->insertAttribute("dna_comp_fortitude", fortitude);
 	alm->insertAttribute("dna_comp_dexterity", dexterity);
 	alm->insertAttribute("dna_comp_endurance", endurance);
-	alm->insertAttribute("dna_comp_intellect", intelligence);
+	alm->insertAttribute("dna_comp_intellect", intellect);
 	alm->insertAttribute("dna_comp_cleverness", cleverness);
-	alm->insertAttribute("dna_comp_dependability", dependency);
+	alm->insertAttribute("dna_comp_dependability", dependability);
 	alm->insertAttribute("dna_comp_courage", courage);
 	alm->insertAttribute("dna_comp_fierceness", fierceness);
 	alm->insertAttribute("dna_comp_power", power);

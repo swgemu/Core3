@@ -13,21 +13,23 @@
 class DnaSampleTemplate: public SharedTangibleObjectTemplate {
 protected:
 
-	uint32 cleverness;
-	uint32 endurance;
-	uint32 fierceness;
-	uint32 power;
-	uint32 intelligence;
-	uint32 courage;
-	uint32 dependency;
-	uint32 dexterity;
-	uint32 fortitude;
-	uint32 hardiness;
+	float cleverness;
+	float endurance;
+	float fierceness;
+	float power;
+	float intellect;
+	float courage;
+	float dependability;
+	float dexterity;
+	float fortitude;
+	float hardiness;
+
 	String source;
 	String special1;
 	String special2;
 	bool ranged;
 	String quality;
+
 	int armorRating;
 	float kinResist;
 	float energyResist;
@@ -41,16 +43,17 @@ protected:
 
 public:
 	DnaSampleTemplate() {
-		cleverness = 0;
-		endurance = 0;
-		fierceness = 0;
-		power = 0;
-		intelligence = 0;
-		courage = 0;
-		dependency = 0;
-		dexterity = 0;
-		fortitude = 0;
-		hardiness = 0;
+		cleverness = 0.f;
+		endurance = 0.f;
+		fierceness = 0.f;
+		power = 0.f;
+		intellect = 0.f;
+		courage = 0.f;
+		dependability = 0.f;
+		dexterity = 0.f;
+		fortitude = 0.f;
+		hardiness = 0.f;
+
 		source = "unknown";
 		ranged = false;
 		special1 = "";
@@ -105,8 +108,8 @@ public:
 	    return courage;
 	}
 
-	uint32 getDependency() const {
-	    return dependency;
+	uint32 getDependability() const {
+		return dependability;
 	}
 
 	uint32 getDexterity() const {
@@ -141,8 +144,8 @@ public:
 	    return heatResist;
 	}
 
-	uint32 getIntelligence() const {
-	    return intelligence;
+	uint32 getIntellect() const {
+		return intellect;
 	}
 
 	float getKinResist() const {
@@ -205,8 +208,8 @@ public:
 	    this->courage = courage;
 	}
 
-	void setDependency(uint32 dependency) {
-	    this->dependency = dependency;
+	void setDependability(uint32 dependability) {
+		this->dependability = dependability;
 	}
 
 	void setDexterity(uint32 dexterity) {
@@ -241,8 +244,8 @@ public:
 	    this->heatResist = heatResist;
 	}
 
-	void setIntelligence(uint32 intelligence) {
-	    this->intelligence = intelligence;
+	void setIntellect(uint32 intellect) {
+		this->intellect = intellect;
 	}
 
 	void setKinResist(float kinResist) {

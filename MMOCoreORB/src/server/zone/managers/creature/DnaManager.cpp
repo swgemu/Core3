@@ -96,18 +96,20 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	// We are making a generational sample rules are a little different.
 	// Reduce each stat by lets say 10% as the max to be on par with old docs
 	int cl = deed->getLevel();
+
 	int ferocity = 0; // 1 highest 7 lowest
 	int factor = (int)System::random(quality) - 7;
-	int reductionAmount = (factor + 15 + quality) ;
+	int reductionAmount = (factor + 15 + quality);
+
 	int cle = reduceByPercent(deed->getCleverness(),reductionAmount);
 	int cou = reduceByPercent(deed->getCourage(),reductionAmount);
-	int dep = reduceByPercent(deed->getDependency(),reductionAmount);
+	int dep = reduceByPercent(deed->getDependability(),reductionAmount);
 	int dex = reduceByPercent(deed->getDexterity(),reductionAmount);
 	int end = reduceByPercent(deed->getEndurance(),reductionAmount);
 	int fie = reduceByPercent(deed->getFierceness(),reductionAmount);
 	int frt = reduceByPercent(deed->getFortitude(),reductionAmount);
 	int har = reduceByPercent(deed->getHardiness(),reductionAmount);
-	int ite = reduceByPercent(deed->getIntelligence(),reductionAmount);
+	int ite = reduceByPercent(deed->getIntellect(),reductionAmount);
 	int pow = reduceByPercent(deed->getPower(),reductionAmount);
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
