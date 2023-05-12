@@ -26,7 +26,7 @@ public:
 	void initialize(ZoneServer* server);
 	void setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 	void experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult);
-	void recalculateResistances(CraftingValues* craftingValues);
+	void recalculateResistances(CraftingValues* craftingValues, float fortitudeChange);
 	int getCreationCount(ManufactureSchematic* manufactureSchematic);
 
 protected:
