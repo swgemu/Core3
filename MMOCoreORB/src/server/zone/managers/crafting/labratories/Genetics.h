@@ -65,19 +65,6 @@ public:
 		return result > 1000 ? 1000.0f : result < 0 ? 0.f : result;
 	}
 
-	// Experimenting
-	static float experimentFormula(float value1, float value2, float modifier) {
-		float result = (value2 / (value1 + value2) * modifier);
-
-#ifdef DEBUG_GENETIC_LAB
-		Logger::console.info(true) << "Genetics::experimentFormula -- Value 1: " << value1 << " Value 2: " << value2 << " Result = " << result;
-#endif
-
-		return result;
-	}
-
-
-
 	/**
 	 * Any special in the line
 	 */
@@ -349,6 +336,7 @@ public:
 		int regenerationLevel = (DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL, avgHam / 10) + 1) * 2;
 		int armorLevel = DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, (pet->getArmor() * 500) + ((pet->getEffectiveArmor()) * 10.0));
 		int armorBase = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL, armorLevel);
+
 		int baseLevel = (((statLevel) + (damageLevel) + (regenerationLevel) + (hitLevel)) / 19.0) + 0.5;
 		int armorLevel2 = calculateArmorValue(pet, armorLevel, baseLevel, armorBase) * 2;
 
