@@ -273,7 +273,8 @@ float AttributesMap::getCurrentPercentage(const int i) const {
 }
 
 float AttributesMap::getCurrentVisiblePercentage(const String group) const {
-	float percentage = 0.f;
+	float totalPercentage = 0.f;
+	int totalAttributes = 0;
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "---- getCurrentVisiblePercentage -- group: " << group << " with Attribute Size: " << attributes.size() << " ----";
@@ -296,19 +297,19 @@ float AttributesMap::getCurrentVisiblePercentage(const String group) const {
 		if (values == nullptr || values->isFiller())
 			continue;
 
-		if (values->getMinValue() != values->getMaxValue() && values->getMaxPercentage() <= 1.0f) {
-			float currentPercentage = values->getPercentage();
-
-			if (currentPercentage > percentage)
-				percentage = currentPercentage;
+		if (values->getMaxPercentage() <= 1.0f) {
+			totalPercentage += values->getPercentage();
+			totalAttributes++;
 		}
 	}
 
+	totalPercentage /= totalAttributes;
+
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---- END getCurrentVisiblePercentage -- Group: " << group << " Returning " << percentage << " ----";
+	info(true) << "---- END getCurrentVisiblePercentage -- Group: " << group << " Total Attributes in Group: " << totalAttributes << " Returning " << totalPercentage << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
-	return percentage;
+	return totalPercentage;
 }
 
 void AttributesMap::setMaxPercentage(const String& attribute, float amount) {

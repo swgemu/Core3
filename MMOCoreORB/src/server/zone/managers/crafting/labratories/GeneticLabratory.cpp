@@ -65,15 +65,13 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 	return effectiveSpecial;
 }
 
-void GeneticLabratory::recalculateResistances(CraftingValues* craftingValues, float fortitudeChange) {
+void GeneticLabratory::recalculateResistances(CraftingValues* craftingValues, float fortDiff) {
 	if (craftingValues == nullptr)
 		return;
 
 #ifdef DEBUG_GENETIC_LAB
 	info(true) << "---------- recalculateResistancess ----------";
 #endif
-
-	float fortitude = craftingValues->getCurrentValue("fortitude");
 
 	// Check for special resistances
 	bool kineticSpec = (craftingValues->getMinValue("kineticeffectiveness") == 1);
@@ -86,17 +84,19 @@ void GeneticLabratory::recalculateResistances(CraftingValues* craftingValues, fl
 	bool stunSpec = (craftingValues->getMinValue("stuneffectiveness") == 1);
 
 	bool armorReset = false;
-	float armorValue = 0.f;
-	float effectivenessBonus = (fortitudeChange / 1000.f) * 100.f;
 	float newValue = 0.f;
 
-	// Reset effective resists if fortitude breaks 500
-	if (fortitude < 500 && ((fortitudeChange + fortitude) >= 500)) {
+	float fortitude = craftingValues->getCurrentValue("fortitude");
+
+		// Reset effective resists if fortitude breaks 500
+	if (fortitude < 500 && fortitude + fortDiff >= 500) {
 		armorReset = true;
 	}
 
+	float effectivenessBonus = (fortDiff / 1000.f) * 100.f;
+
 #ifdef DEBUG_GENETIC_LAB
-	info(true) << "Armor Value: " << armorValue << " Added Effectiveness: " << effectivenessBonus;
+	info(true) << "Added Effectiveness: " << effectivenessBonus;
 #endif
 
 	if (!kineticSpec) {
@@ -314,34 +314,34 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 #endif
 
 	// Add Attribute and set the max and min values.
-	craftingValues->addExperimentalAttribute("fortitude", "expPhysiqueProfile", 0.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("fortitude", "expPhysiqueProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setCapValue("fortitude", fortitudeMax);
 
-	craftingValues->addExperimentalAttribute("hardiness", "expPhysiqueProfile", 0.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("hardiness", "expPhysiqueProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setCapValue("hardiness", hardinessMax);
 
-	craftingValues->addExperimentalAttribute("dexterity", "expProwessProfile", 0.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("dexterity", "expProwessProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setCapValue("dexterity", dexterityMax);
 
-	craftingValues->addExperimentalAttribute("endurance", "expProwessProfile",  0.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("endurance", "expProwessProfile",  1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setCapValue("endurance", enduranceMax);
 
-	craftingValues->addExperimentalAttribute("intellect", "expMentalProfile", 0.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("intellect", "expMentalProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setCapValue("intellect", intellectMax);
 
-	craftingValues->addExperimentalAttribute("cleverness", "expMentalProfile", 0.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("cleverness", "expMentalProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setCapValue("cleverness", clevernessMax);
 
-	craftingValues->addExperimentalAttribute("dependability", "expPsychologicalProfile", 0.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("dependability", "expPsychologicalProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setCapValue("dependability", dependabilityMax);
 
-	craftingValues->addExperimentalAttribute("courage", "expPsychologicalProfile", 0.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("courage", "expPsychologicalProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setCapValue("courage", courageMax);
 
-	craftingValues->addExperimentalAttribute("fierceness", "expAggressionProfile", 0.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("fierceness", "expAggressionProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setCapValue("fierceness", fiercenessMax);
 
-	craftingValues->addExperimentalAttribute("power", "expAggressionProfile", 0.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalAttribute("power", "expAggressionProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
 	craftingValues->setCapValue("power", powerMax);
 
 
@@ -550,6 +550,7 @@ int GeneticLabratory::getCreationCount(ManufactureSchematic* manufactureSchemati
 void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult) {
 #ifdef DEBUG_GENETIC_LAB
 	info(true) << "---------- Experiment Row ----------";
+	info(true) << "Row Effected: " << rowEffected << " Points Attempted: " << pointsAttempted << " Experimental Result: " << experimentationResult << " Failure: " << failure;
 #endif
 
 	if (craftingValues == nullptr)
@@ -557,49 +558,15 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 
 	/*
 
-		1. Find Modifier Determined by Experimentation Result
+		1. Get the Two Modified Attributes and values, based on their group.
 
 	*/
 
-	// TODO: Re-Confirm these values vs data - H
-
-	float modifier = 10.f;
-
-	if (experimentationResult == CraftingManager::AMAZINGSUCCESS)
-		modifier = 160.f * pointsAttempted;
-	if (experimentationResult == CraftingManager::GREATSUCCESS)
-		modifier = 140.f * pointsAttempted;
-	if (experimentationResult == CraftingManager::GOODSUCCESS)
-		modifier = 100.f * pointsAttempted;
-	if (experimentationResult == CraftingManager::MODERATESUCCESS)
-		modifier = 50.f * pointsAttempted;
-	if (experimentationResult == CraftingManager::SUCCESS)
-		modifier = 10.f * pointsAttempted;
-	if (experimentationResult == CraftingManager::MARGINALSUCCESS)
-		modifier = -10.f * pointsAttempted;
-	if (experimentationResult == CraftingManager::OK)
-		modifier = -20.f * pointsAttempted;
-	if (experimentationResult == CraftingManager::BARELYSUCCESSFUL)
-		modifier = -40.f * pointsAttempted;
-	if (experimentationResult == CraftingManager::CRITICALFAILURE) {
-		modifier = -150.f * pointsAttempted;
-	}
-
-#ifdef DEBUG_GENETIC_LAB
-	info(true) << "Row Effected: " << rowEffected << " Points Attempted: " << pointsAttempted << " Experimental Result: " << experimentationResult << " Failure: " << failure << " Modifier: " << modifier;
-#endif
-
-	/*
-
-		2. Get the Two Modified Attributes and values, based on their group.
-
-	*/
+	String attribute1, attribute2;
 
 	String experimentedGroup = craftingValues->getVisibleAttributeGroup(rowEffected);
-
-	String attribute1, attribute2, failureAttribute;
-	float attValue1 = 0.f, attValue2 = 0.f;
 	int totalAttributes = craftingValues->getTotalExperimentalAttributes();
+	Vector<String> randomFailed;
 
 #ifdef DEBUG_GENETIC_LAB
 	info(true) << "Experimened Group: " << experimentedGroup;
@@ -610,117 +577,119 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		String group = craftingValues->getAttributeGroup(attribute);
 
 		if (group != experimentedGroup) {
+			// Build a list for pote
+			if (experimentationResult == CraftingManager::CRITICALFAILURE && group.contains("exp")) {
+#ifdef DEBUG_GENETIC_LAB
+				info(true) << "Added Attribute for Failure Roll: " << attribute;
+#endif
+				randomFailed.add(attribute);
+			}
+
 			continue;
 		}
 
-		if (attValue1 <= 0) {
+		if (attribute1 == "") {
 			attribute1 = attribute;
-			attValue1 = craftingValues->getCurrentValue(attribute);
-#ifdef DEBUG_GENETIC_LAB
-			info(true) << "Attribute 1: " << attribute1 << " Value: " << attValue1;
-#endif
-		} else if (attValue2 <= 0) {
-			attribute2 = attribute;
-			attValue2 = craftingValues->getCurrentValue(attribute);
 
 #ifdef DEBUG_GENETIC_LAB
-			info(true) << "Attribute 2: " << attribute2 << " Value: " << attValue2;
+			info(true) << "Attribute 1: " << attribute1;
+#endif
+		} else if (attribute2 == "") {
+			attribute2 = attribute;
+
+#ifdef DEBUG_GENETIC_LAB
+			info(true) << "Attribute 2: " << attribute2;
 #endif
 		}
 	}
 
 	/*
 
-		3. Calculate the modification for the two affected attributes
+		2. Calculate modifier and calculate the modified percentage for the two affected attributes
 
 	*/
 
-	float newValue = 0.f, capValue = 0.f, newPercentage = 0.f, fortitudeChange = 0.f;
+	float newValue = 0.f, capValue = 0.f, fortDiff = 0.f;
+
+	float modifier = calculateExperimentationValueModifier(experimentationResult, pointsAttempted) * 2000.f;
+
+	float attValue1 = craftingValues->getCurrentValue(attribute1);
+	float attValue2 = craftingValues->getCurrentValue(attribute2);
+
+	// In the case of a failure only one attribute should go down from the primary group
+	float signSwap = -1.f;
+	bool swap1 = false, swap2 = false;
+
+	if (experimentationResult == CraftingManager::CRITICALFAILURE) {
+		if (System::random(100) > 50) {
+			// Attribute1 will decrease
+			swap2 = true;
+		} else {
+			// Attribute 2 will decrease
+			swap1 = true;
+		}
+	}
 
 	// Attribute 1
-	newValue = Genetics::experimentFormula(attValue1, attValue2, modifier) + attValue1;
 	capValue = craftingValues->getCapValue(attribute1);
+	float att1Mod = (swap1 ? (modifier * signSwap) : modifier);
 
-	// Update Percentage
+	newValue = attValue1 + (attValue2 / (attValue1 + attValue2) * att1Mod);
+
 	if (newValue > capValue) {
-		newPercentage = capValue / 1000.f;
-	} else {
-		newPercentage = newValue / 1000.f;
+		newValue = capValue;
 	}
 
-	craftingValues->setCurrentPercentage(attribute1, newPercentage);
+	craftingValues->setCurrentPercentage(attribute1, (newValue / 1000.f));
 
-	// Track change in fortitude for modifying the restiss
-	if (attribute1 == "fortitude") {
-		fortitudeChange = (newValue >= capValue) ? (capValue - attValue1) : (newValue - attValue1);
-	}
+	if (attribute1 == "fortitude")
+		fortDiff = newValue - attValue1;
 
 #ifdef DEBUG_GENETIC_LAB
-	info(true) << "Attribute 1 Experimentation --  " << attribute1 << " Base Value: " << attValue1 << " Cap Value: " << capValue << " New Value: " << newValue << " New Percentage: " << newPercentage;
+	info(true) << "Attribute 1 Experimentation --  " << attribute1 << " Starting Value: " << attValue1 << " Cap Value: " << capValue << " New Value: " << newValue << " Att1 Modifier: " << att1Mod;
 #endif
 
 	// Attribute 2
-	newValue = Genetics::experimentFormula(attValue2, attValue1, modifier) + attValue2;
 	capValue = craftingValues->getCapValue(attribute2);
+	float att2Mod = (swap2 ? (modifier * signSwap) : modifier);
 
-	// Update Percentage
+	newValue = attValue2 + (attValue1 / (attValue1 + attValue2) * att2Mod);
+
 	if (newValue > capValue) {
-		newPercentage = capValue / 1000.f;
-	} else {
-		newPercentage = newValue / 1000.f;
+		newValue = capValue;
 	}
 
-	craftingValues->setCurrentPercentage(attribute2, newPercentage);
+	craftingValues->setCurrentPercentage(attribute2, (newValue / 1000.f));
 
 #ifdef DEBUG_GENETIC_LAB
-	info(true) << "Attribute 2 Experimentation --  " << attribute2 << "  Base Value: " << attValue2 << " Cap Value: " << capValue << " New Value: " << newValue << " New Percentage: " << newPercentage;
+	info(true) << "Attribute 2 Experimentation --  " << attribute2 << " Starting Value: " << attValue2 << " Cap Value: " << capValue << " New Value: " << newValue << " Att2 Modifier: " << att2Mod;
 #endif
 
 	/*
 
-		4. Handle Critical Failure Chance for Alternate attribute? -- Research
+		4. Handle Critical Failure Chance for Alternate attribute
 
 	*/
 
-	// Evidence Mention:
- 	// "Please note that when you critically fail experimentation it is common to see one of the related attributes go up, one other related attribute go down and one unrelated attribute also go down.""
-
-	/*
 	// Choose Random Attribute that is not from the current experminted group
-	if (experimentationResult == CraftingManager::CRITICALFAILURE) {
+	if (experimentationResult == CraftingManager::CRITICALFAILURE && randomFailed.size() && System::random(100) > 50) {
 #ifdef DEBUG_GENETIC_LAB
 		info(true) << "Experimental Critical Failure -- ";
 #endif
-		int roll = System::random(totalAttributes);
-		int attempts = 0;
+		int roll = System::random(randomFailed.size());
 
 		String failedAttribute = craftingValues->getAttribute(roll);
-		String group = craftingValues->getAttributeGroup(failedAttribute);
-		bool isHidden = craftingValues->isHidden(failedAttribute);
+		float currentPercent = craftingValues->getCurrentPercentage(failedAttribute);
 
-		// Skick current group and the hidden attributes
-		while (isHidden || group == experimentedGroup) {
-			if (attempts > 40)
-				break;
-
-			roll = System::random(totalAttributes);
-			attempts++;
-
-			failedAttribute = craftingValues->getAttribute(roll);
-			group = craftingValues->getAttributeGroup(failedAttribute);
-			isHidden = craftingValues->isHidden(failedAttribute);
-		}
-
-		float current = craftingValues->getCurrentPercentage(failedAttribute);
+		newValue = Math::max(0.f, (modifier + currentPercent));
 
 		// Reduce attribute
-		craftingValues->setCurrentPercentage(failedAttribute, current * modifier);
+		craftingValues->setCurrentPercentage(failedAttribute, newValue);
 
 #ifdef DEBUG_GENETIC_LAB
-		info(true) << "END Experimental Critical Failure -- Attribute Chosen: " << failedAttribute << " Group: " << group << " New Percent: " << (current * modifier) << " Roll: " << roll << " Attempts: " << attempts;
+		info(true) << "END Experimental Critical Failure -- Attribute Chosen: " << failedAttribute << " Old Percent: " << currentPercent << " New Percent: " << newValue << " Roll: " << roll;
 #endif
 	}
-	*/
 
 	/*
 
@@ -728,8 +697,10 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 
 	*/
 
-	if (fortitudeChange > 0)
-		recalculateResistances(craftingValues, fortitudeChange);
+	if (attribute1 == "fortitude") {
+		// Pass old percentage value to use to fin increase
+		recalculateResistances(craftingValues, fortDiff);
+	}
 
 #ifdef DEBUG_GENETIC_LAB
 	info(true) << "---------- END Experiment Row ----------";
