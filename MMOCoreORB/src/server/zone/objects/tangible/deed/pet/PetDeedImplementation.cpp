@@ -302,9 +302,12 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 	if (petTemplate != nullptr) {
 		// get min CL from the template
 		int skinFactor = petTemplate->getLevel();
-		if (level > 75) {
-			level = 75;
-		}
+
+		// BE Samples cap at 75 however pets can be crafted over that value
+		//if (level > 75) {
+		//	level = 75;
+		//}
+
 		if (level < skinFactor) {
 			level = skinFactor;
 		}

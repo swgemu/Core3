@@ -4,6 +4,7 @@
 
 #include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
 #include "templates/tangible/SharedWeaponObjectTemplate.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 void GeneticComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();
@@ -250,7 +251,16 @@ String GeneticComponentImplementation::resistValue(float input){
 	}
 }
 
-void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
+void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* creature) {
+	bool godMode = false;
+
+	if (creature != nullptr && creature->isPlayerCreature()) {
+		auto ghost = creature->getPlayerObject();
+
+		if (ghost != nullptr && ghost->isPrivileged())
+			godMode = true;
+	}
+
 	alm->insertAttribute("volume", 1);
 	alm->insertAttribute("crafter", craftersName);
 	alm->insertAttribute("serial_number", objectSerial);
@@ -312,6 +322,18 @@ void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm
 	alm->insertAttribute("dna_comp_armor_acid",resistValue(acidResist));
 	alm->insertAttribute("dna_comp_armor_stun",resistValue(stunResist));
 	//alm->insertAttribute("dna_comp_armor_saber",resistValue(saberResist));
+
+	if (godMode) {
+		alm->insertAttribute("dna_comp_armor_kinetic", kinResist);
+		alm->insertAttribute("dna_comp_armor_energy", energyResist);
+		alm->insertAttribute("dna_comp_armor_blast", blastResist);
+		alm->insertAttribute("dna_comp_armor_heat", heatResist);
+		alm->insertAttribute("dna_comp_armor_cold", coldResist);
+		alm->insertAttribute("dna_comp_armor_electric", elecResist);
+		alm->insertAttribute("dna_comp_armor_acid", acidResist);
+		alm->insertAttribute("dna_comp_armor_stun", stunResist);
+		// alm->insertAttribute("dna_comp_armor_saber", saberResist);
+	}
 
 	alm->insertAttribute("spec_atk_1",convertSpecialAttack(special1));
 	alm->insertAttribute("spec_atk_2",convertSpecialAttack(special2));
