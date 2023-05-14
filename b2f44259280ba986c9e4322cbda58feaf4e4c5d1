@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e56a6a3_c3f9ecd7",
+        "filename": "MMOCoreORB/bin/scripts/object/ship/spacestation_dathomir.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-05-14T02:40:13Z",
+      "side": 1,
+      "message": "some of these are missing the copyright blocks",
+      "revId": "b2f44259280ba986c9e4322cbda58feaf4e4c5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f02813a_97661a84",
+        "filename": "MMOCoreORB/bin/scripts/object/ship/spacestation_neutral.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-05-14T02:40:13Z",
+      "side": 1,
+      "message": "Does this need faction and type like the others?",
+      "revId": "b2f44259280ba986c9e4322cbda58feaf4e4c5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc423a3e_ff29a05e",
+        "filename": "MMOCoreORB/src/server/zone/managers/ship/ShipManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-05-14T02:40:13Z",
+      "side": 1,
+      "message": "nullptr check on ship",
+      "revId": "b2f44259280ba986c9e4322cbda58feaf4e4c5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
