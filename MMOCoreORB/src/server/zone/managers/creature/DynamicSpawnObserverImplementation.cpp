@@ -6,6 +6,7 @@
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/objects/creature/ai/Creature.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/managers/gcw/observers/SquadObserver.h"
 
 int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
@@ -57,7 +58,14 @@ int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 }
 
 void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* building) {
-	if (building->getZone() == nullptr)
+	Zone* zone = building->getZone();
+
+	if (zone == nullptr)
+		return;
+
+	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	if (creatureManager == nullptr)
 		return;
 
 	int spawnLimitAdjustment = (difficulty - 2) / 2;
@@ -84,6 +92,9 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 		}
 	}
 
+	ManagedReference<AiAgent*> herdLeader = nullptr;
+	ManagedReference<SquadObserver*> squadObserver = nullptr;
+
 	for (int i = 0; i < objectsToSpawn.size(); ++i) {
 		const String& templateToSpawn = objectsToSpawn.elementAt(i).getKey();
 		int numberToSpawn = objectsToSpawn.elementAt(i).getValue();
@@ -95,17 +106,15 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 
 		float tamingChance = creatureTemplate->getTame();
 
-		CreatureManager* creatureManager = building->getZone()->getCreatureManager();
-
 		for (int j = 0; j < numberToSpawn; j++) {
-
 			float x = building->getPositionX() + (size - System::random(size * 20) / 10.0f);
 			float y = building->getPositionY() + (size - System::random(size * 20) / 10.0f);
 			float z = building->getZone()->getHeight(x, y);
 
 			ManagedReference<CreatureObject*> creo = nullptr;
 
-			if (creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, 500)) {
+			// Ensure baby is not the first to spawn
+			if (j > 0 && creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, BABY_SPAWN_CHANCE)) {
 				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
 				babiesSpawned++;
 			}
@@ -119,18 +128,60 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 			if (!creo->isAiAgent()) {
 				error("spawned non player creature with template " + templateToSpawn);
 			} else {
-				AiAgent* ai = cast<AiAgent*>( creo.get());
+				AiAgent* agent = cast<AiAgent*>(creo.get());
 
-				Locker clocker(ai, building);
+				Locker clocker(agent, building);
 
-				ai->setDespawnOnNoPlayerInRange(false);
-				ai->setHomeLocation(x, z, y);
-				ai->setRespawnTimer(0);
-				ai->resetRespawnCounter();
-				ai->setHomeObject(building);
-				ai->setLairTemplateCRC(lairTemplateCRC);
+				agent->setDespawnOnNoPlayerInRange(false);
+				agent->setHomeLocation(x, z, y);
+				agent->setRespawnTimer(0);
+				agent->resetRespawnCounter();
+				agent->setHomeObject(building);
+				agent->setLairTemplateCRC(lairTemplateCRC);
 
 				spawnedCreatures.add(creo);
+
+				// Here we will setup creatures to move in herds
+				if (j == 0 && herdLeader == nullptr && agent->isMonster()) {
+					herdLeader = agent;
+					squadObserver = new SquadObserver();
+
+					if (squadObserver != nullptr) {
+						squadObserver->addMember(agent);
+						agent->registerObserver(ObserverEventType::SQUAD, squadObserver);
+
+						//info(true) << "Herd Leader " << agent->getDisplayedName() << " " << agent->getObjectID() << " set";
+					}
+				} else if (herdLeader != nullptr && squadObserver != nullptr && agent->isMonster()) {
+					squadObserver->addMember(agent);
+					agent->registerObserver(ObserverEventType::SQUAD, squadObserver);
+
+					Locker adultLock(herdLeader, agent);
+
+					agent->addCreatureFlag(CreatureFlag::FOLLOW);
+					agent->addCreatureFlag(CreatureFlag::SQUAD);
+
+					agent->setFollowObject(herdLeader);
+					agent->setMovementState(AiAgent::FOLLOWING);
+
+					agent->setAITemplate();
+					agent->clearPatrolPoints();
+
+					// Double the template radius to account for both creatures
+					float templateRad = agent->getTemplateRadius() * 2.f;
+					float x = templateRad + System::random((j * 3));
+					float y = (-2.f * templateRad * j);
+
+					// Random chance to shift mobs to left side of leader
+					if (System::random(100) > 50)
+						x *= -1.f;
+
+					Vector3 formationOffset(x, y, 0);
+
+					agent->writeBlackboard("formationOffset", formationOffset);
+
+					//info(true) << "Agent " << agent->getDisplayedName() << " - " << agent->getObjectID() << " following leader: " << herdLeader->getDisplayedName() << " - " << herdLeader->getObjectID() << " Offset: " << formationOffset.toString() << " Template Radius: " << templateRad;
+				}
 			}
 		}
 	}

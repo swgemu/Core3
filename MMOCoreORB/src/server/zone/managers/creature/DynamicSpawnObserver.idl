@@ -12,6 +12,7 @@ import server.zone.managers.creature.SpawnObserver;
 include templates.mobile.LairTemplate;
 
 class DynamicSpawnObserver extends SpawnObserver {
+	public static final int BABY_SPAWN_CHANCE = 500;
 
 	public DynamicSpawnObserver() {
 		super();
