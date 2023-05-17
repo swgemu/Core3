@@ -4162,7 +4162,9 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 			}
 			// check the droid
 			station = droid->getCraftingStation(type);
-			if (station != nullptr && droid->hasPower()) {
+
+			// As per Mantis 8285 the droid does not need to be charged to use the crafting station - H
+			if (station != nullptr/* && droid->hasPower()*/) {
 				return station;
 			}
 		}
