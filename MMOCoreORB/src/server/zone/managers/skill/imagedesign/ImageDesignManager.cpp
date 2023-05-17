@@ -12,12 +12,15 @@
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "templates/customization/BasicRangedIntCustomizationVariable.h"
 
-//#define DEBUG_ID
+// #define DEBUG_ID
 
 ImageDesignManager::ImageDesignManager() {
 	setLoggingName("ImageDesignManager");
 
 	loadCustomizationData();
+}
+
+ImageDesignManager::~ImageDesignManager() {
 }
 
 void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, CustomizationData* customData, float value, CreatureObject* creo) {
@@ -138,6 +141,10 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 }
 
 void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables, uint32 value, TangibleObject* tano) {
+#ifdef DEBUG_ID
+	info(true) << "updateColorVariable called";
+#endif
+
 	if (tano == nullptr)
 		return;
 
@@ -159,7 +166,7 @@ void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables
 			String fullVariableNameLimit = variableLimits.elementAt(j).getKey();
 
 #ifdef DEBUG_ID
-			info("checking customization variable " + fullVariableNameLimit + " for " + var, true);
+			info(true) << "updateColorVariable - checking customization variable " << fullVariableNameLimit << " for " << var;
 #endif
 
 			if (fullVariableNameLimit.contains(var)) {
@@ -179,8 +186,9 @@ void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables
 				} else {
 					palette = dynamic_cast<PaletteColorCustomizationVariable*>(variableLimits.elementAt(j).getValue().get());
 
-					if (palette != nullptr && !validatePalette(palette, currentVal)) {
-						currentVal = palette->getDefaultValue();
+					if (palette != nullptr) {
+						if (!validatePalette(palette, currentVal))
+							currentVal = palette->getDefaultValue();
 					}
 				}
 
@@ -188,11 +196,14 @@ void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables
 				tano->setCustomizationVariable(fullVariableNameLimit, currentVal, true);
 
 #ifdef DEBUG_ID
-				info("setting " + fullVariableNameLimit + " to " + String::valueOf(currentVal), true);
+				info(true) << "updateColorVariable - setting " << fullVariableNameLimit << " to " << currentVal;
 #endif
 			}
 		}
 	}
+#ifdef DEBUG_ID
+	info(true) << "END updateColorVariable called";
+#endif
 }
 
 void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner, CustomizationData* customData, uint32 value, TangibleObject* hairObject, CreatureObject* creo) {
@@ -432,6 +443,9 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 }
 
 TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, TangibleObject* hairObject) {
+#ifdef DEBUG_ID
+	info(true) << "updateHairObject - ";
+#endif
 	if (creo == nullptr || hairObject == nullptr)
 		return nullptr;
 
@@ -457,7 +471,7 @@ bool ImageDesignManager::validatePalette(PaletteColorCustomizationVariable* pale
 	int idx = paletteFileName.lastIndexOf("/");
 
 #ifdef DEBUG_ID
-	instance()->info(true) << "validatePalette called with an index of " << idx << " Value: " << value;
+	instance()->info(true) << "validatePalette called for " << paletteFileName << " with an index of " << idx << " Value: " << value;
 #endif
 
 	if (idx != -1) {
@@ -468,53 +482,57 @@ bool ImageDesignManager::validatePalette(PaletteColorCustomizationVariable* pale
 		instance()->info(true) << "palette name = " << paletteName;
 #endif
 
+		/*
 		PaletteData* data = CustomizationIdManager::instance()->getPaletteData(paletteName);
 
 		if (data == nullptr) {
 			//instance()->error() << "PaletteData is a nullptr for " << paletteName;
-			return false;
-		}
-
-		// We do not need to check this. The UI for Image design restricts the colors available to the player based on their skill level.
-		// All of this is handles by the client. - Hakry
-
-		/*
-		int maxIndex;
-
-		switch (skillLevel) {
-		case -1:
-			maxIndex = data->getCreationIndexes();
-			break;
-		case 0:
-			maxIndex = data->getIdNoviceIndexes();
-			break;
-		case 1:
-			maxIndex = data->getIdLevel1Indexes();
-			break;
-		case 2:
-			maxIndex = data->getIdLevel2Indexes();
-			break;
-		case 3:
-			maxIndex = data->getIdLevel3Indexes();
-			break;
-		case 4:
-			maxIndex = data->getIdLevel4Indexes();
-			break;
-		case 5:
-			maxIndex = data->getIdMasterIndexes();
-			break;
-		default:
-			maxIndex = -1;
-			break;
-		}
-
-		if (value >= maxIndex || value < 0) {
-			instance()->error() << "Selected value for " << paletteFileName << " of  " << value << " is beyond the Max Index value of: " << maxIndex;
-
-			return false;
 		} else {
-			Logger::console.info(true) << paletteFileName + " value " << value << " Max index: " << maxIndex;
+			// We do not need to check this. The UI for Image design restricts the colors available to the player based on their skill level.
+			// All of this is handles by the client. - Hakry
+
+
+			int maxIndex;
+
+			switch (skillLevel) {
+			case -1:
+				maxIndex = data->getCreationIndexes();
+				break;
+			case 0:
+				maxIndex = data->getIdNoviceIndexes();
+				break;
+			case 1:
+				maxIndex = data->getIdLevel1Indexes();
+				break;
+			case 2:
+				maxIndex = data->getIdLevel2Indexes();
+				break;
+			case 3:
+				maxIndex = data->getIdLevel3Indexes();
+				break;
+			case 4:
+				maxIndex = data->getIdLevel4Indexes();
+				break;
+			case 5:
+				maxIndex = data->getIdMasterIndexes();
+				break;
+			default:
+				maxIndex = -1;
+				break;
+			}
+
+			if (value >= maxIndex || value < 0) {
+				instance()->error() << "Selected value for " << paletteFileName << " of  " << value << " is beyond the Max Index value of: " << maxIndex;
+
+				return false;
+			} else {
+				Logger::console.info(true) << paletteFileName + " value " << value << " Max index: " << maxIndex;
+			}
 		}*/
+
+#ifdef DEBUG_ID
+		instance()->info(true) << "Validated Palette: " << paletteName << " returning true.";
+#endif
 	}
 
 	return true;
@@ -531,13 +549,19 @@ bool ImageDesignManager::validateCustomizationString(CustomizationVariables* dat
 		return false;
 	}
 
+#ifdef DEBUG_ID
+	instance()->info(true) << "validateCustomizationString called for: " << appearanceFilename;
+#endif
+
 	for (int i = 0; i < data->size(); ++i) {
 		uint8 id = data->elementAt(i).getKey();
 		int16 val = data->elementAt(i).getValue();
 
 		String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
 
-		//instance()->info("validating " + name + " with value " + String::valueOf(val), true);
+#ifdef DEBUG_ID
+		instance()->info(true) << "Validating " << name << " with value " << val;
+#endif // DEBUG_ID
 
 		CustomizationVariable* customizationVariable = variables.get(name).get();
 
@@ -557,24 +581,21 @@ bool ImageDesignManager::validateCustomizationString(CustomizationVariables* dat
 			if (range == nullptr) {
 				instance()->error("unkown customization variable type " + name);
 				return false;
-			}
+			} else {
+				int maxExcl = range->getMaxValueExclusive();
+				int minIncl = range->getMinValueInclusive();
 
-			int maxExcl = range->getMaxValueExclusive();
-			int minIncl = range->getMinValueInclusive();
-
-			if (val >= maxExcl || val < minIncl) {
-				instance()->error("variable outside bounds " + name + " value " + val + " outside bounds [" + String::valueOf(minIncl) + "," + String::valueOf(maxExcl) + ")");
-				return false;
+				if (val >= maxExcl || val < minIncl) {
+					instance()->error("variable outside bounds " + name + " value " + val + " outside bounds [" + String::valueOf(minIncl) + "," + String::valueOf(maxExcl) + ")");
+					return false;
+				}
 			}
+		}
 
 #ifdef DEBUG_ID
-			instance()->info(true) << "Setting variable " << name << " Value: " << val << " inside bounds [" << minIncl << " ," << maxExcl << ")";
+		instance()->info(true) << "Setting variable " << name << " Value: " << val;
 #endif
-		}
 	}
 
 	return true;
-}
-
-ImageDesignManager::~ImageDesignManager() {
 }

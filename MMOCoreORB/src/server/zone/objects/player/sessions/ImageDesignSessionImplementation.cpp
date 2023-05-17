@@ -223,20 +223,23 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 		// Session is updating hair style. Does not include color changes
 		if (type == 1) {
+			String oldCustomization;
+
 			// First destroy current hair.
 			if (currentHair != nullptr) {
 				hairObject = nullptr;
 
 				Locker hlock(currentHair);
+				currentHair->getCustomizationString(oldCustomization);
+
 				currentHair->destroyObjectFromWorld(true);
 				currentHair->destroyObjectFromDatabase();
 			}
 
 			String hairTempString = imageDesignData.getHairTemplate();
-			String hairCustString = imageDesignData.getHairCustomizationString();
 
 			// Create new hair for the player. Returns nullptr if the creature type can be bald and that is selected.
-			hairObject = imageDesignManager->createHairObject(strongReferenceDesigner, strongReferenceTarget, hairTempString, hairCustString);
+			hairObject = imageDesignManager->createHairObject(strongReferenceDesigner, strongReferenceTarget, hairTempString, oldCustomization);
 
 			strongReferenceDesigner->notifyObservers(ObserverEventType::IMAGEDESIGNHAIR, nullptr, 0);
 
