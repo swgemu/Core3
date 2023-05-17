@@ -130,6 +130,9 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 			} else {
 				AiAgent* agent = cast<AiAgent*>(creo.get());
 
+				if (agent == nullptr)
+					continue;
+
 				Locker clocker(agent, building);
 
 				agent->setDespawnOnNoPlayerInRange(false);
@@ -142,7 +145,7 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 				spawnedCreatures.add(creo);
 
 				// Here we will setup creatures to move in herds
-				if (j == 0 && herdLeader == nullptr && agent->isMonster()) {
+				if (j == 0 && herdLeader == nullptr && creatureTemplate->isHerd()) {
 					herdLeader = agent;
 					squadObserver = new SquadObserver();
 
