@@ -295,8 +295,8 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	if (newParent != nullptr) {
 		if (newParent->isShipObject()) {
-			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT, true);
 			newParent->sendTo(sceneObject, true);
+			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT, true);
 
 			//info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
 		} else if (newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR) {
