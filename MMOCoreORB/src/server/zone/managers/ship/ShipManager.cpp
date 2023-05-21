@@ -742,7 +742,6 @@ void ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName
 
 		if (dataPad->transferObject(control, -1)) {
 			ship->setOwner(owner);
-			ghost->addShip(ship);
 
 			control->sendTo(owner, true);
 			return;
