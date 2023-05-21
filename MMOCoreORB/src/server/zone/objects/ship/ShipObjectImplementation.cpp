@@ -107,7 +107,7 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 		auto chassisData = ShipManager::instance()->getChassisData(ssot->getShipName());
 
 		if (chassisData != nullptr) {
-			for (uint32 slot = 0; slot < Components::FIGHTERSLOTMAX; slot++) {
+			for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; slot++) {
 				auto slotData = chassisData->getComponentSlotData(slot);
 				setComponentTargetable(slot, slotData ? slotData->isTargetable() : false);
 			}
@@ -261,8 +261,7 @@ void ShipObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool 
 
 	for (int i = 0; i < cells.size(); ++i) {
 		auto cell = cells.get(i);
-
-		if (cell == nullptr || !cell->isContainerLoaded()) {
+		if (cell == nullptr) {
 			continue;
 		}
 
@@ -413,22 +412,6 @@ void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool 
 	shipComponent->uninstall(player, asShipObject(), slot, notifyClient);
 
 	components.drop(slot);
-}
-
-String ShipObjectImplementation::getParkingLocation() {
-	if (parkingLocation == "") {
-		ManagedReference<CreatureObject*> creo = owner.get();
-
-		if (creo != nullptr) {
-			ManagedReference<CityRegion*> region = creo->getCityRegion().get();
-
-			if (region != nullptr) {
-				parkingLocation = region->getRegionDisplayedName();
-			}
-		}
-	}
-
-	return parkingLocation;
 }
 
 int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
@@ -1024,4 +1007,27 @@ ShipDeltaVector* ShipObjectImplementation::getDeltaVector() {
 	shipDeltaVector->reset(getOwner().get());
 
 	return shipDeltaVector.get();
+}
+
+void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	auto pilot = owner.get();
+
+	for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; ++slot) {
+		auto component = components.get(slot);
+		if (component == nullptr) {
+			continue;
+		}
+
+		if (pilot != nullptr && !destroyContainedObjects) {
+			uninstall(pilot, slot, true);
+			component = components.get(slot);
+		}
+
+		if (component != nullptr) {
+			Locker cLock(component);
+			component->destroyObjectFromDatabase(true);
+		}
+	}
+
+	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }

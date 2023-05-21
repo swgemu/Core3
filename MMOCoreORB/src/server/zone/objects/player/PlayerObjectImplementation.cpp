@@ -350,6 +350,10 @@ void PlayerObjectImplementation::unload() {
 
 	ManagedReference<SceneObject*> creoParent = creature->getParent().get();
 
+	if (creature->getSpaceZone() != nullptr) {
+		unloadShip();
+	}
+
 	if (creature->getZone() != nullptr) {
 		savedTerrainName = creature->getZone()->getZoneName();
 
@@ -376,8 +380,6 @@ void PlayerObjectImplementation::unload() {
 			creature->incrementMovementCounter();
 
 			savedTerrainName = groundZoneName;
-
-			unloadShip();
 			creature->destroyObjectFromWorld(true);
 		}
 	}

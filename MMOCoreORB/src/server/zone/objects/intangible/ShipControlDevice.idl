@@ -11,37 +11,43 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.managers.radial.RadialOptions;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.ship.ShipObject;
+include engine.util.u3d.Vector3;
 
 @json
 class ShipControlDevice extends ControlDevice {
+	public static final int LANDSHIP = 1;
+	public static final int LAUNCHSHIP = 128;
+
 	protected int shipType;
-	protected boolean launched;
+
+	@dereferenced
+	protected string storedCityName;
+
+	@dereferenced
+	protected string storedZoneName;
+
+	@dereferenced
+	protected Vector3 storedPosition;
 
 	public ShipControlDevice() {
 		Logger.setLoggingName("ShipControlDevice");
 
 		shipType = 0;
-		launched = false;
 	}
 
-	public native void storeShip(CreatureObject player);
+	public boolean isShipControlDevice() {
+		return true;
+	}
 
-	@preLocked
-	@arg1preLocked
-	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	@dereferenced
+	public string getStoredCityName() {
+		return storedCityName;
+	}
 
-	/**
-	 * Fills the radial options, needs to be overriden
-	 * @pre { this object is locked }
-	 * @post { this object is locked, menuResponse is complete}
-	 * @param menuResponse ObjectMenuResponse that will be sent to the client
-	 */
-	@local
-	@dirty
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-
-	@dirty
-	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
+	@dereferenced
+	public string getStoredZoneName() {
+		return storedZoneName;
+	}
 
 	@local
 	@preLocked
@@ -49,23 +55,43 @@ class ShipControlDevice extends ControlDevice {
 		shipType = type;
 	}
 
-	@preLocked
-	public void setShipLaunchStatus(boolean val) {
-		launched = val;
-	}
-
-	@read
 	public int getShipType() {
 		return shipType;
 	}
 
-	@read
-	public boolean isShipLaunched() {
-		return launched;
-	}
+	@local
+	@dereferenced
+	public native Vector3 getStoredPosition(boolean randomPosition = true);
+
+	@arg1preLocked
+	public native void setStoredLocationData(CreatureObject player);
+
+	public native boolean storeShip(CreatureObject player);
+
+	@preLocked
+	public native boolean launchShip(CreatureObject player, @dereferenced final string zoneName, @dereferenced final Vector3 position);
+
+	@preLocked
+	public native boolean removePlayer(CreatureObject player);
+
+	@preLocked
+	public native boolean insertPlayer(CreatureObject player);
+
+	@preLocked
+	@arg1preLocked
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 
 	@dirty
-	public boolean isShipControlDevice() {
-		return true;
-	}
+	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
+
+	public native boolean isShipLaunched();
+
+	@preLocked
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+
+	public native boolean ejectPlayers();
 }
