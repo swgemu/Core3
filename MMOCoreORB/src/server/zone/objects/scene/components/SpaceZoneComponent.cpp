@@ -251,75 +251,83 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 }
 
 void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
-	SpaceZone* spaceZone = sceneObject->getSpaceZone();
-	ManagedReference<SceneObject*> thisLocker = sceneObject;
+	ManagedReference<SceneObject*> sceneRef = sceneObject;
+	if (sceneRef == nullptr) {
+		error() << "switchZone !sceneRef";
+		return;
+	}
 
-	SpaceZone* newZone = sceneObject->getZoneServer()->getSpaceZone(newTerrainName);
-
-	//info(true) << "SpaceZoneComponent::switchZone called for: " << sceneObject->getDisplayedName();
-
+	SpaceZone* newZone = sceneRef->getZoneServer()->getSpaceZone(newTerrainName);
 	if (newZone == nullptr) {
-		sceneObject->error("attempting to switch to unkown/disabled space zone " + newTerrainName);
+		error() << "switchZone !newZone " << newTerrainName;
 		return;
 	}
 
-	ManagedReference<SceneObject*> newParent = sceneObject->getZoneServer()->getObject(parentID);
+	ManagedReference<SceneObject*> newParent = sceneRef->getZoneServer()->getObject(parentID);
+	ManagedReference<ShipObject*> rootParent = nullptr;
 
-	if (newParent == nullptr || (!newParent->isShipObject() && !newParent->isCellObject() && !(newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR))) {
-		error() << "SpaceZoneComponent::switchZone new parent is a nullptr or is not a ship or cell object.";
-		return;
+	if (newParent != nullptr) {
+		if (newParent->isShipObject()) {
+			rootParent = newParent.castTo<ShipObject*>();
+		} else {
+			auto root = newParent->getRootParent();
+
+			if (root != nullptr) {
+				rootParent = root->asShipObject();
+			}
+		}
 	}
 
-	if (newParent->getSpaceZone() == nullptr) {
-		error() << "SpaceZoneComponent::switchZone parent SpaceZone is null, returning";
-
-		return;
+	if (rootParent == nullptr && sceneRef->isPlayerCreature()) {
+		error() << "switchZone !rootParent";
+		return; // point of no returns
 	}
 
-	sceneObject->destroyObjectFromWorld(false);
+	Locker rLock(sceneRef);
+	Locker zLock(newZone, sceneRef);
 
-	if (toggleInvisibility) {
-		TangibleObject* tano = sceneObject->asTangibleObject();
+	sceneRef->destroyObjectFromWorld(false);
+	sceneRef->initializePosition(newPostionX, newPositionZ, newPositionY);
+	newZone->transferObject(sceneRef, -1, true);
+
+	if (rootParent != nullptr) {
+		ManagedReference<SceneObject*> receiver = nullptr;
+		uint32 parentType = newParent->getGameObjectType();
+		uint32 slotType = -1;
+
+		if (parentType & SceneObjectType::SHIP) {
+			receiver = rootParent;
+			slotType = PlayerArrangement::SHIP_PILOT;
+		} else if (parentType & SceneObjectType::PILOTCHAIR) {
+			receiver = newParent;
+			slotType = PlayerArrangement::SHIP_PILOT_POB;
+		} else if (parentType & SceneObjectType::CELLOBJECT) {
+			receiver = newParent->getParent().get();
+			slotType = -1;
+		}
+
+		auto station = rootParent->getPilotChair().get();
+		if (station != nullptr) {
+			sceneRef->setPosition(station->getPositionX(), station->getPositionZ(), station->getPositionY());
+			sceneRef->setDirection(*station->getDirection());
+		}
+
+		if (receiver != nullptr) {
+			sceneRef->setMovementCounter(0);
+			rootParent->sendTo(sceneRef, true);
+			receiver->transferObject(sceneRef, slotType, true);
+		}
+	}
+
+	if (toggleInvisibility && sceneRef->isTangibleObject()) {
+		TangibleObject* tano = sceneRef->asTangibleObject();
 
 		if (tano != nullptr) {
 			tano->setInvisible(!tano->isInvisible());
 		}
 	}
 
-	Locker locker(newZone);
-
-	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
-
-	// Object needs to be in zone before being inserted into parent
-	newZone->transferObject(sceneObject, -1, true);
-
-	if (newParent != nullptr) {
-		if (newParent->isShipObject()) {
-			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT, true);
-			newParent->sendTo(sceneObject, true);
-
-			//info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
-		} else if (newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR) {
-			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT_POB, true);
-			sceneObject->setDirection(*newParent->getDirection());
-
-			SceneObject* rootParent = newParent->getRootParent();
-
-			if (rootParent != nullptr) {
-				rootParent->sendTo(sceneObject, true);;
-			}
-
-			//info(true) << "SpaceZoneComponent::switchZone object transferred into POB ship with new parent: " << newParent->getDisplayedName();
-		} else if (newParent->isCellObject()) {
-			// group members should have their locations set in launch
-			newParent->transferObject(sceneObject, -1, true);
-			sceneObject->sendToOwner(true);
-
-			// info(true) << "SpaceZoneComponent::switchZone object transferred into ship CELL";
-		}
-	}
-
-	sceneObject->setMovementCounter(0);
+	zLock.release();
 }
 
 void SpaceZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {

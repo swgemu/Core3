@@ -2332,4 +2332,7 @@ class CreatureObject extends TangibleObject {
 
 	@local
 	public native Instrument getPlayableInstrument();
+	
+	@preLocked
+	public native void clearSpaceStates();
 }

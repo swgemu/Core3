@@ -66,7 +66,7 @@ public:
 				e.printStackTrace();
 				creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
 			}
-		} else if (object->isSpaceStationObject()) {
+		} else if (object != nullptr && object->isSpaceStationObject()) {
 			try {
 				SpaceStationObject* spaceStationObj = cast<SpaceStationObject*>(object.get());
 

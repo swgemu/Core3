@@ -14,34 +14,33 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		SceneObject* rootParent = creature->getRootParent();
-
-		if (rootParent == nullptr)
+		auto spaceZone = creature->getSpaceZone();
+		if (spaceZone == nullptr) {
 			return GENERALERROR;
+		}
 
-		Locker clock(rootParent, creature);
+		auto station = creature->getParent().get();
+		if (station == nullptr) {
+			return GENERALERROR;
+		}
 
-		rootParent->transferObject(creature, -1, true);
+		auto parent = station->getParent().get();
+		if (parent == nullptr) {
+			return GENERALERROR;
+		}
 
-		//TODO: MODIFY? - H
-		if (creature->hasState(CreatureState::PILOTINGPOBSHIP))
-			creature->clearState(CreatureState::PILOTINGPOBSHIP);
-		if (creature->hasState(CreatureState::PILOTINGSHIP))
-			creature->clearState(CreatureState::PILOTINGSHIP);
-		if (creature->hasState(CreatureState::SHIPOPERATIONS))
-			creature->clearState(CreatureState::SHIPOPERATIONS);
-		if (creature->hasState(CreatureState::SHIPOPERATIONS))
-			creature->clearState(CreatureState::SHIPOPERATIONS);
-		if (creature->hasState(CreatureState::SHIPGUNNER))
-			creature->clearState(CreatureState::SHIPGUNNER);
+		Locker clock(parent, creature);
+		creature->destroyObjectFromWorld(false);
+		creature->setMovementCounter(0);
+		creature->clearSpaceStates();
 
-		return SUCCESS;
+		if (parent->transferObject(creature, -1, true)) {
+			creature->setState(CreatureState::SHIPINTERIOR);
+			creature->sendTo(creature, true);
+			return SUCCESS;
+		}
+
+		return GENERALERROR;
 	}
 };
 

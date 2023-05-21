@@ -6,6 +6,7 @@
 #define PILOTSHIP_H_
 
 #include "CombatQueueCommand.h"
+#include "templates/params/creature/PlayerArrangement.h"
 
 class PilotShipCommand : public CombatQueueCommand {
 public:
@@ -15,14 +16,35 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+		auto ship = dynamic_cast<ShipObject*>(creature->getRootParent());
+		if (ship == nullptr) {
+			return GENERALERROR;
+		}
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		auto station = ship->getPilotChair().get();
+		if (station == nullptr) {
+			return GENERALERROR;
+		}
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+		auto pilot = station->getSlottedObject("ship_pilot_pob");
+		if (pilot != nullptr) {
+			return GENERALERROR;
+		}
 
-		return doCombatAction(creature, target);
+		Locker clock(station, creature);
+		creature->destroyObjectFromWorld(false);
+		creature->setMovementCounter(0);
+		creature->clearSpaceStates();
+
+		creature->initializePosition(station->getPositionX(), station->getPositionZ(), station->getPositionY());
+		creature->setDirection(*station->getDirection());
+
+		if (station->transferObject(creature, PlayerArrangement::SHIP_PILOT_POB, true)) {
+			creature->setState(CreatureState::PILOTINGPOBSHIP);
+			creature->sendToOwner(true);
+		}
+
+		return SUCCESS;
 	}
 
 };
