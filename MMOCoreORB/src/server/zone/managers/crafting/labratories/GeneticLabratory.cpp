@@ -13,10 +13,17 @@
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 
+// #define DEBUG_GENETIC_LAB
+
 GeneticLabratory::GeneticLabratory() {
+	setLoggingName("GeneticLaboratory");
 }
 
 GeneticLabratory::~GeneticLabratory() {
+}
+
+void GeneticLabratory::initialize(ZoneServer* server) {
+	SharedLabratory::initialize(server);
 }
 
 String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e, int odds, String otherSpecial) {
@@ -58,52 +65,144 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 	return effectiveSpecial;
 }
 
-void GeneticLabratory::recalculateResist(CraftingValues* craftingValues) {
-	float percentage = 0.f, min = 0.f, max = 0.f, newValue = 0.f, oldValue = 0.f;
-	bool hidden = false;
-
-	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
-		String attribute = craftingValues->getAttribute(i);
-		String group = craftingValues->getAttributeGroup(attribute);
-
-		min = craftingValues->getMinValue(attribute);
-		max = craftingValues->getMaxValue(attribute);
-
-		hidden = craftingValues->isHidden(attribute);
-
-		percentage = craftingValues->getCurrentPercentage(attribute);
-		oldValue = craftingValues->getCurrentValue(attribute);
-
-		if (max != min) {
-			if (max > min)
-				newValue = (percentage * (max - min)) + min;
-			else
-				newValue = (float(1.0f - percentage) * (min - max)) + max;
-		} else if(max == min) {
-			newValue = max;
-		}
-
-		if (hidden && group == "resists") {
-			craftingValues->setCurrentValue(attribute, newValue);
-		}
-	}
-
-}
-void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
-	if (manufactureSchematic == nullptr)
+void GeneticLabratory::recalculateResistances(CraftingValues* craftingValues, float fortDiff) {
+	if (craftingValues == nullptr)
 		return;
 
-	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "---------- recalculateResistancess ----------";
+#endif
+
+	// Check for special resistances
+	bool kineticSpec = (craftingValues->getMinValue("kineticeffectiveness") == 1);
+	bool blastSpec = (craftingValues->getMinValue("blasteffectiveness") == 1);
+	bool energySpec = (craftingValues->getMinValue("energyeffectiveness") == 1);
+	bool heatSpec = (craftingValues->getMinValue("heateffectiveness") == 1);
+	bool coldSpec = (craftingValues->getMinValue("coldeffectiveness") == 1);
+	bool electricitySpec = (craftingValues->getMinValue("electricityeffectiveness") == 1);
+	bool acidSpec = (craftingValues->getMinValue("acideffectiveness") == 1);
+	bool stunSpec = (craftingValues->getMinValue("stuneffectiveness") == 1);
+
+	bool armorReset = false;
+	float newValue = 0.f;
+
+	float fortitude = craftingValues->getCurrentValue("fortitude");
+
+		// Reset effective resists if fortitude breaks 500
+	if (fortitude < 500 && fortitude + fortDiff >= 500) {
+		armorReset = true;
+	}
+
+	float effectivenessBonus = (fortDiff / 1000.f) * 100.f;
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "Added Effectiveness: " << effectivenessBonus;
+#endif
+
+	if (!kineticSpec) {
+		newValue = (!armorReset ? Math::min((craftingValues->getCurrentValue("dna_comp_armor_kinetic") + effectivenessBonus), 60.f) : 0.f);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Kinetic Current: " << craftingValues->getCurrentValue("dna_comp_armor_kinetic") << " Kinetic New: " << newValue;
+#endif
+
+		craftingValues->setCurrentValue("dna_comp_armor_kinetic", newValue);
+	}
+
+	if (!energySpec) {
+		newValue = (!armorReset ? Math::min((craftingValues->getCurrentValue("dna_comp_armor_energy") + effectivenessBonus), 60.f) : 0.f);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Energy Current: " << craftingValues->getCurrentValue("dna_comp_armor_energy") << " Energy New: " << newValue;
+#endif
+
+		craftingValues->setCurrentValue("dna_comp_armor_energy", newValue);
+	}
+
+	if (!blastSpec) {
+		newValue = (!armorReset ? Math::min((craftingValues->getCurrentValue("dna_comp_armor_blast") + effectivenessBonus), 100.f) : 0.f);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Blast Current: " << craftingValues->getCurrentValue("dna_comp_armor_blast") << " Blast New: " << newValue;
+#endif
+
+		craftingValues->setCurrentValue("dna_comp_armor_blast", newValue);
+	}
+
+	if (!heatSpec) {
+		newValue = (!armorReset ? Math::min((craftingValues->getCurrentValue("dna_comp_armor_heat") + effectivenessBonus), 100.f) : 0.f);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Heat Current: " << craftingValues->getCurrentValue("dna_comp_armor_heat") << " Heat New: " << newValue;
+#endif
+
+		craftingValues->setCurrentValue("dna_comp_armor_heat", newValue);
+	}
+
+	if (!coldSpec) {
+		newValue = (!armorReset ? Math::min((craftingValues->getCurrentValue("dna_comp_armor_cold") + effectivenessBonus), 100.f) : 0.f);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Cold Current: " << craftingValues->getCurrentValue("dna_comp_armor_cold") << " Cold New: " << newValue;
+#endif
+
+		craftingValues->setCurrentValue("dna_comp_armor_cold", newValue);
+	}
+
+	if (!electricitySpec) {
+		newValue = (!armorReset ? Math::min((craftingValues->getCurrentValue("dna_comp_armor_electric") + effectivenessBonus), 100.f) : 0.f);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Electricity Current: " << craftingValues->getCurrentValue("dna_comp_armor_electric") << " Electricity New: " << newValue;
+#endif
+
+		craftingValues->setCurrentValue("dna_comp_armor_electric", newValue);
+	}
+
+	if (!acidSpec) {
+		newValue = (!armorReset ? Math::min((craftingValues->getCurrentValue("dna_comp_armor_acid") + effectivenessBonus), 100.f) : 0.f);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Acid Current: " << craftingValues->getCurrentValue("dna_comp_armor_acid") << " Acid New: " << newValue;
+#endif
+
+		craftingValues->setCurrentValue("dna_comp_armor_acid", newValue);
+	}
+
+	if (!stunSpec) {
+		newValue = (!armorReset ? Math::min((craftingValues->getCurrentValue("dna_comp_armor_stun") + effectivenessBonus), 100.f) : 0.f);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Stun Current: " << craftingValues->getCurrentValue("dna_comp_armor_stun") << " Stun New: " << newValue;
+#endif
+
+		craftingValues->setCurrentValue("dna_comp_armor_stun", newValue);
+	}
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "---------- END recalculateResist ----------";
+#endif
+}
+
+void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
+	if (prototype == nullptr || manufactureSchematic == nullptr)
+		return;
+
+	ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
 
 	if (draftSchematic == nullptr)
 		return;
 
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "---------- setInitialCraftingValues ----------";
+#endif
 	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
-	float value, maxPercentage, currentPercentage, weightedSum;
-	String itemName;
+
+	if (craftingValues == nullptr)
+		return;
 
 	// These 2 values are pretty standard, adding these
-	value = float(draftSchematic->getXpAmount());
+	float value = float(draftSchematic->getXpAmount());
 	craftingValues->addExperimentalAttribute("xp", "", value, value, 0, true, AttributesMap::OVERRIDECOMBINE);
 
 	value = manufactureSchematic->getComplexity();
@@ -111,8 +210,8 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 
 	float modifier = calculateAssemblyValueModifier(assemblySuccess);
 
-	// Cast component to genetic
-	if (!prototype->isComponent())
+	// Cast component to genetic component
+	if (prototype->getGameObjectType() != SceneObjectType::GENETICCOMPONENT)
 		return;
 
 	GeneticComponent* genetic = cast<GeneticComponent*>(prototype);
@@ -120,19 +219,32 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	if (genetic == nullptr)
 		return;
 
-	HashTable<String, ManagedReference<DnaComponent*> > slots;
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "Genetic Manufacturing Schematic Slot Count = " << manufactureSchematic->getSlotCount();
+#endif
+
+	// Get all of the DNA Components by their slot
+	ManagedReference<DnaComponent*> physique = nullptr;
+	ManagedReference<DnaComponent*> prowess = nullptr;
+	ManagedReference<DnaComponent*> mental = nullptr;
+	ManagedReference<DnaComponent*> psychological = nullptr;
+	ManagedReference<DnaComponent*> aggression = nullptr;
 
 	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
 		// Dna Component Slots
-		Reference<IngredientSlot* > iSlot = manufactureSchematic->getSlot(i);
-		ComponentSlot* cSlot = iSlot.castTo<ComponentSlot*>();
+		Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getSlot(i);
 
-		if (cSlot == nullptr)
+		if (ingredientSlot == nullptr || !ingredientSlot->isComponentSlot())
 			continue;
 
-		ManagedReference<TangibleObject*> tano = cSlot->getPrototype();
+		ComponentSlot* componentSlot = ingredientSlot.castTo<ComponentSlot*>();
 
-		if (tano == nullptr)
+		if (componentSlot == nullptr)
+			continue;
+
+		ManagedReference<TangibleObject*> tano = componentSlot->getPrototype();
+
+		if (tano == nullptr || (tano->getGameObjectType() != SceneObjectType::DNACOMPONENT))
 			continue;
 
 		ManagedReference<DnaComponent*> component = tano.castTo<DnaComponent*>();
@@ -140,283 +252,457 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 		if (component == nullptr)
 			continue;
 
-		slots.put(cSlot->getSlotName(), component);
-	}
+		String slotName = componentSlot->getSlotName();
 
-	// At this point we have all the DNA slots. Update the craftingvalue accordingly
-	DnaComponent* phy = slots.get("physique_profile").get();
-	DnaComponent* pro = slots.get("prowess_profile").get();
-	DnaComponent* men = slots.get("mental_profile").get();
-	DnaComponent* psy = slots.get("psychological_profile").get();
-	DnaComponent* agr = slots.get("aggression_profile").get();
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Retrieving Component from slot: " << componentSlot->getSlotName();
+#endif
 
-	if (phy == nullptr || pro == nullptr || men == nullptr || psy == nullptr || agr == nullptr)
-		return;
-
-	// REVAMP FROM HERE DOWN.
-	// STEP 1. Determine Attributes
-	uint32 harMax, fortMax, endMax,intMax, dexMax,cleMax,depMax,couMax,fieMax,powMax;
-
-	// Calculate the max values i.e. the weighter resource avergae.
-	fortMax = Genetics::physiqueFormula(phy->getForititude(),pro->getForititude(),men->getForititude(),psy->getForititude(),agr->getForititude());
-	harMax = Genetics::physiqueFormula(phy->getHardiness(),pro->getHardiness(),men->getHardiness(),psy->getHardiness(),agr->getHardiness());
-	dexMax = Genetics::prowessFormula(phy->getDexterity(),pro->getDexterity(),men->getDexterity(),psy->getDexterity(),agr->getDexterity());
-	endMax = Genetics::prowessFormula(phy->getEndurance(),pro->getEndurance(),men->getEndurance(),psy->getEndurance(),agr->getEndurance());
-	intMax = Genetics::mentalFormula(phy->getIntellect(),pro->getIntellect(),men->getIntellect(),psy->getIntellect(),agr->getIntellect());
-	cleMax = Genetics::mentalFormula(phy->getCleverness(),pro->getCleverness(),men->getCleverness(),psy->getCleverness(),agr->getCleverness());
-	depMax = Genetics::physchologicalFormula(phy->getDependency(),pro->getDependency(),men->getDependency(),psy->getDependency(),agr->getDependency());
-	couMax = Genetics::physchologicalFormula(phy->getCourage(),pro->getCourage(),men->getCourage(),psy->getCourage(),agr->getCourage());
-	fieMax = Genetics::aggressionFormula(phy->getFierceness(),pro->getFierceness(),men->getFierceness(),psy->getFierceness(),agr->getFierceness());
-	powMax = Genetics::aggressionFormula(phy->getPower(),pro->getPower(),men->getPower(),psy->getPower(),agr->getPower());
-
-	// acknowledge any specials found in the experimentation line. this means specials will not modify later by experimentaiton as its an overlay value.
-	bool spBlast = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::BLAST);
-	bool spKinetic = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::KINETIC);
-	bool spEnergy = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ENERGY);
-	bool spHeat = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::HEAT);
-	bool spCold = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::COLD);
-	bool spElectric = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ELECTRICITY);
-	bool spAcid = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ACID);
-	bool spStun = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::STUN);
-	bool spSaber = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::LIGHTSABER);
-
-	// Calculate resists
-	// 1 percent: (1000 - 0) / 100.0f;
-	float blastMax, energyMax, kineticMax,heatMax,coldMax,electricMax,acidMax,stunMax,saberMax;
-	blastMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::BLAST,100.0f);
-	kineticMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::KINETIC,60.0f);
-	energyMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ENERGY,60.0f);
-	heatMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::HEAT,100.0f);
-	coldMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::COLD,100.0f);
-	electricMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ELECTRICITY,100.0f);
-	acidMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ACID,100.0f);
-	stunMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::STUN,100.0f);
-	saberMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::LIGHTSABER,100.0f);
-
-	// lets clear the special bit if it moved to effective range.
-	if (saberMax == 0) {
-		spSaber = false;
-		saberMax = 100;
-	}
-	if (blastMax == 0) {
-		spBlast = false;
-		blastMax = 100;
-	}
-	if (kineticMax == 0) {
-		spKinetic = false;
-		kineticMax = 60;
-	}
-	if (energyMax == 0) {
-		spEnergy = false;
-		energyMax = 60;
-	}
-	if (heatMax == 0) {
-		spHeat = false;
-		heatMax = 100;
-	}
-	if (coldMax == 0) {
-		spCold = false;
-		coldMax = 100;
-	}
-	if (electricMax == 0) {
-		spElectric = false;
-		electricMax = 100;
-	}
-	if (acidMax == 0) {
-		spAcid = false;
-		acidMax = 100;
-	}
-	if (stunMax == 0) {
-		spStun = false;
-		stunMax = 100;
-	}
-
-	// Step 2. At this point we know the max values for all stats and we have calculated any armor specials needed
-	// So now we need to setup the min and initial values of stats and define the experimental attributes. // Ranges are 0 to 100 for any one of these
-	// set current value to be 70% less than max calculated as the experimentation range. i.e.
-	craftingValues->addExperimentalAttribute("fortitude", "expPhysiqueProfile", 0, fortMax, 0, false, AttributesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalAttribute("hardiness", "expPhysiqueProfile", 0, harMax, 0, false, AttributesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalAttribute("dexterity", "expProwessProfile", 0, dexMax, 0, false, AttributesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalAttribute("endurance", "expProwessProfile",  0, endMax, 0, false, AttributesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalAttribute("intellect", "expMentalProfile", 0, intMax, 0, false, AttributesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalAttribute("cleverness", "expMentalProfile", 0, cleMax, 0, false, AttributesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalAttribute("dependability", "expPsychologicalProfile", 0, depMax, 0, false, AttributesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalAttribute("courage", "expPsychologicalProfile", 0, couMax, 0, false, AttributesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalAttribute("fierceness", "expAggressionProfile", 0, fieMax, 0, false, AttributesMap::LINEARCOMBINE);
-	craftingValues->addExperimentalAttribute("power", "expAggressionProfile", 0, powMax, 0, false, AttributesMap::LINEARCOMBINE);
-
-	int armorBase = 0;
-	int effectiveness = 0;
-
-	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); i++) {
-		String attriute = craftingValues->getAttribute(i);
-
-		if (craftingValues->isHidden(attriute))
-			continue;
-
-		// We need to accoutn for assembly percentage. do some swapping around as well.
-		float maxValue = craftingValues->getMaxValue(attriute);
-		float initialValue = Genetics::initialValue(craftingValues->getMaxValue(attriute));
-
-		// determine max percentage
-		craftingValues->setMaxPercentage(attriute, maxValue/1000.0f);
-		craftingValues->setMaxValue(attriute,1000);
-
-		// using assembly to accoutn for a 1 +% increase
-		currentPercentage = getAssemblyPercentage(initialValue) * modifier;
-
-		//craftingValues->setMaxPercentage(attriute, maxPercentage);
-		craftingValues->setCurrentPercentage(attriute, currentPercentage);
-
-		if (attriute == "fortitude") {
-			armorBase = craftingValues->getCurrentValue(attriute);
+		if (slotName == "physique_profile") {
+			physique = component.get();
+		} else if (slotName == "prowess_profile") {
+			prowess = component.get();
+		} else if (slotName == "mental_profile") {
+			mental = component.get();
+		} else if (slotName == "psychological_profile") {
+			psychological = component.get();
+		} else if (slotName == "aggression_profile") {
+			aggression = component.get();
 		}
 	}
 
-	int armorValue = armorBase/500;
-	effectiveness = (int)(((armorBase - (armorValue * 500)) / 50) * 5);
+	// Ensure none of the components don't have a nullptr
+	if (physique == nullptr || prowess == nullptr || mental == nullptr || psychological == nullptr || aggression == nullptr)
+		return;
 
-	// Store off armor data
-	craftingValues->addExperimentalAttribute("dna_comp_armor_kinetic", "resists", spKinetic ? kineticMax : kineticMax < 0 ? -1 : effectiveness, kineticMax, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("dna_comp_armor_blast", "resists", spBlast ? blastMax : blastMax < 0 ? -1 : effectiveness, blastMax, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("dna_comp_armor_energy", "resists", spEnergy ? energyMax : energyMax < 0 ? -1 : effectiveness, energyMax, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("dna_comp_armor_heat", "resists", spHeat ? heatMax : heatMax < 0 ? -1 :  effectiveness, heatMax, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("dna_comp_armor_cold", "resists", spCold ? coldMax : coldMax < 0 ? -1 : effectiveness, coldMax, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("dna_comp_armor_electric", "resists", spElectric ? electricMax : electricMax < 0 ? -1 : effectiveness, electricMax, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("dna_comp_armor_acid", "resists", spAcid ? acidMax : acidMax < 0 ? -1 : effectiveness, acidMax, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("dna_comp_armor_stun", "resists", spStun ? stunMax : stunMax < 0 ? -1 : effectiveness, stunMax, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("dna_comp_armor_saber", "resists", spSaber ? saberMax : saberMax < 0 ? -1 : effectiveness, saberMax, 0, true, AttributesMap::OVERRIDECOMBINE);
+	/*
 
-	// Store off special information
-	craftingValues->addExperimentalAttribute("kineticeffectiveness", "specials", spKinetic ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("blasteffectiveness", "specials", spBlast ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("energyeffectiveness", "specials", spEnergy ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("heateffectiveness", "specials", spHeat ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("coldeffectiveness", "specials", spCold ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("electricityeffectiveness", "specials", spElectric ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("acideffectiveness", "specials", spAcid ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("stuneffectiveness", "specials", spStun ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalAttribute("lightsabereffectiveness", "specials", spSaber ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	 1. Calculate the Attribute Max Values
 
-	int quality = ( ((float)phy->getQuality() * 0.2)+ ((float)pro->getQuality()*0.2) + ((float)men->getQuality()*0.2) + ((float)psy->getQuality()*0.2) + ((float)agr->getQuality()*0.2));
+	*/
+
+	// Physique: Fortitude and Hardiness
+	float fortitudeMax = Genetics::physiqueFormula(physique->getForititude(), prowess->getForititude(), mental->getForititude(), psychological->getForititude(), aggression->getForititude()) * modifier;
+	float hardinessMax = Genetics::physiqueFormula(physique->getHardiness(), prowess->getHardiness(), mental->getHardiness(), psychological->getHardiness(), aggression->getHardiness()) * modifier;
+
+	// Prowess: Endurance and Dexterity
+	float dexterityMax = Genetics::prowessFormula(physique->getDexterity(), prowess->getDexterity(), mental->getDexterity(), psychological->getDexterity(), aggression->getDexterity()) * modifier;
+	float enduranceMax = Genetics::prowessFormula(physique->getEndurance(), prowess->getEndurance(), mental->getEndurance(), psychological->getEndurance(), aggression->getEndurance()) * modifier;
+
+	// Mental: Intellect and Cleverness
+	float intellectMax = Genetics::mentalFormula(physique->getIntellect(), prowess->getIntellect(), mental->getIntellect(), psychological->getIntellect(), aggression->getIntellect()) * modifier;
+	float clevernessMax = Genetics::mentalFormula(physique->getCleverness(), prowess->getCleverness(), mental->getCleverness(), psychological->getCleverness(), aggression->getCleverness()) * modifier;
+
+	// Physiological: Dependability and Coursage
+	float dependabilityMax = Genetics::physchologicalFormula(physique->getDependability(), prowess->getDependability(), mental->getDependability(), psychological->getDependability(), aggression->getDependability()) * modifier;
+	float courageMax = Genetics::physchologicalFormula(physique->getCourage(), prowess->getCourage(), mental->getCourage(), psychological->getCourage(), aggression->getCourage()) * modifier;
+
+	// Aggression: Ferocity and Power
+	float fiercenessMax = Genetics::aggressionFormula(physique->getFierceness(), prowess->getFierceness(), mental->getFierceness(), psychological->getFierceness(), aggression->getFierceness()) * modifier;
+	float powerMax = Genetics::aggressionFormula(physique->getPower(), prowess->getPower(), mental->getPower(), psychological->getPower(), aggression->getPower()) * modifier;
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "===== Calculate Attribute Max Values =====";
+
+	info(true) << "PHYSIQUE -- Fortitude Max: " << fortitudeMax << " Hardiness Max: " << hardinessMax;
+	info(true) << "PROWESS -- Dexterity Max: " << dexterityMax << " Endurance Max: " << enduranceMax;
+	info(true) << "MENTAL -- Intellect Max: " << intellectMax << " Cleverness Max: " << clevernessMax;
+	info(true) << "PHYSIOLOGICAL -- Dependability Max: " << dependabilityMax << " Courage Max: " << courageMax;
+	info(true) << "AGGRESSION -- Fierceness Max: " << fiercenessMax << " Power Max: " << powerMax;
+
+	info(true) << "===== END Calculate Attribute Max Values =====";
+#endif
+
+	// Add Attribute and set the max and min values.
+	craftingValues->addExperimentalAttribute("fortitude", "expPhysiqueProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->setCapValue("fortitude", fortitudeMax);
+
+	craftingValues->addExperimentalAttribute("hardiness", "expPhysiqueProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->setCapValue("hardiness", hardinessMax);
+
+	craftingValues->addExperimentalAttribute("dexterity", "expProwessProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->setCapValue("dexterity", dexterityMax);
+
+	craftingValues->addExperimentalAttribute("endurance", "expProwessProfile",  1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->setCapValue("endurance", enduranceMax);
+
+	craftingValues->addExperimentalAttribute("intellect", "expMentalProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->setCapValue("intellect", intellectMax);
+
+	craftingValues->addExperimentalAttribute("cleverness", "expMentalProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->setCapValue("cleverness", clevernessMax);
+
+	craftingValues->addExperimentalAttribute("dependability", "expPsychologicalProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->setCapValue("dependability", dependabilityMax);
+
+	craftingValues->addExperimentalAttribute("courage", "expPsychologicalProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->setCapValue("courage", courageMax);
+
+	craftingValues->addExperimentalAttribute("fierceness", "expAggressionProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->setCapValue("fierceness", fiercenessMax);
+
+	craftingValues->addExperimentalAttribute("power", "expAggressionProfile", 1.0f, 1000.f, 0, false, AttributesMap::LINEARCOMBINE);
+	craftingValues->setCapValue("power", powerMax);
+
+
+	/*
+
+	 3. Update attribute initial values and percentages
+
+	*/
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "Total Crafting Values: " << craftingValues->getTotalExperimentalAttributes();
+#endif
+
+	float currentPercentage = 0.0f, maxPercentage = 0.0f, capValue = 0.0f, initialValue = 0.0f, rangeValue = 0.0f, fortitude = 0.0f;
+	bool hidden = false;
+
+	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); i++) {
+		String attribute = craftingValues->getAttribute(i);
+		String group = craftingValues->getAttributeGroup(attribute);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << " ==== Updating Attribute: " << attribute << " ====";
+#endif
+		if (craftingValues->isHidden(attribute))
+			continue;
+
+		// Get attribute cap value, update max value for experimentation and get max percentage
+		capValue = craftingValues->getCapValue(attribute);
+		craftingValues->setMaxValue(attribute, 1000.f);
+
+		// Proper
+		craftingValues->setMaxPercentage(attribute, 1.f);
+
+		// Get initial assembled value
+		initialValue = Genetics::initialValue(capValue);
+
+		// Set current percentage based on assembly value
+		currentPercentage = (initialValue / 1000.f);
+		craftingValues->setCurrentPercentage(attribute, currentPercentage);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Current Percentage: " << currentPercentage << " Max Percentage: " << 100.f;
+		info(true) << "Setting Attribute Value: " << initialValue << " with Cap Value: " << capValue <<  " Group: " << group;
+#endif
+
+		if (attribute == "fortitude" && initialValue >= 500.f) {
+			fortitude = initialValue;
+
+#ifdef DEBUG_GENETIC_LAB
+			info(true) << "Fortitude is over 500: " << fortitude;
+#endif
+		}
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << " ==== End Updating Attribute: " << attribute << " ====";
+#endif
+	}
+
+	craftingValues->recalculateValues(true);
+
+	/*
+
+		4. Calculate and Add Resistance Values
+
+	*/
+
+	// Check for Special Protections. They will not be overwritten by fortitude breaking 500.
+	bool kineticSpecial = Genetics::hasSpecialResist(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::KINETIC);
+	bool energySpecial = Genetics::hasSpecialResist(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::ENERGY);
+	bool blastSpecial = Genetics::hasSpecialResist(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::BLAST);
+	bool heatSpecial = Genetics::hasSpecialResist(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::HEAT);
+	bool coldSpecial = Genetics::hasSpecialResist(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::COLD);
+	bool electricSpecial = Genetics::hasSpecialResist(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::ELECTRICITY);
+	bool acidSpecial = Genetics::hasSpecialResist(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::ACID);
+	bool stunSpecial = Genetics::hasSpecialResist(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::STUN);
+	//bool lightsaberSpecial = Genetics::hasSpecialResist(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::LIGHTSABER);
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "===== Special Protections =====";
+
+	info(true) << "Kinetic Special Protection: " << (kineticSpecial ? "True" : "False");
+	info(true) << "Energy Special Protection: " << (energySpecial ? "True" : "False");
+	info(true) << "Blast Special Protection: " << (blastSpecial ? "True" : "False");
+	info(true) << "Heat Special Protection: " << (heatSpecial ? "True" : "False");
+	info(true) << "Cold Special Protection: " << (coldSpecial ? "True" : "False");
+	info(true) << "Electricity Special Protection: " << (electricSpecial ? "True" : "False");
+	info(true) << "Acid Special Protection: " << (acidSpecial ? "True" : "False");
+	info(true) << "Stun Special Protection: " << (stunSpecial ? "True" : "False");
+	//info(true) << "Lightsaber Special Protection: " << (lightsaberSpecial ? "True" : "False");
+
+	info(true) << "===== END Special Protections =====";
+#endif
+
+	bool armorReset = (fortitude > 500.f);
+	float blast = 0.f, kinetic = 0.f, energy = 0.f, heat = 0.f, cold = 0.f, electric = 0.f, acid = 0.f, stun = 0.f;
+
+	// Calculate Resistances
+	kinetic = Genetics::resistanceFormula(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::KINETIC, Genetics::KINETIC_MAX);
+	energy = Genetics::resistanceFormula(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::ENERGY, Genetics::ENERGY_MAX);
+	blast = Genetics::resistanceFormula(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::BLAST, Genetics::BLAST_MAX);
+	heat = Genetics::resistanceFormula(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::HEAT, Genetics::HEAT_MAX);
+	cold = Genetics::resistanceFormula(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::COLD, Genetics::COLD_MAX);
+	electric = Genetics::resistanceFormula(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::ELECTRICITY, Genetics::ELECTRICITY_MAX);
+	acid = Genetics::resistanceFormula(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::ACID, Genetics::ACID_MAX);
+	stun = Genetics::resistanceFormula(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::STUN, Genetics::STUN_MAX);
+	//lightsaber = Genetics::resistanceFormula(physique, prowess, mental, psychological, aggression, SharedWeaponObjectTemplate::LIGHTSABER, Genetics::LIGHTSABER_MAX);
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "===== Calculate Resistances =====";
+
+	info(true) << "Kinetic Resistance: " << kinetic;
+	info(true) << "Energy Resistance: " << energy;
+	info(true) << "Blast Resistance: " << blast;
+	info(true) << "Heat Resistance: " << heat;
+	info(true) << "Cold Resistance: " << cold;
+	info(true) << "Electric Resistance: " << electric;
+	info(true) << "Acid Resistance: " << acid;
+	info(true) << "Stun Resistance: " << stun;
+	//info(true) << "Lightsaber Resistance: " << lightsaber;
+
+	info(true) << "===== END Calculate Resistances =====";
+#endif
+
+	// Add Resistance Values
+	craftingValues->addExperimentalAttribute("dna_comp_armor_kinetic", "resists", -99.f, Genetics::KINETIC_MAX, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->setCurrentValue("dna_comp_armor_kinetic", (kineticSpecial || (kinetic < 0) || !armorReset) ? kinetic : 0.f);
+
+	craftingValues->addExperimentalAttribute("dna_comp_armor_blast", "resists", -99.f, Genetics::BLAST_MAX, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->setCurrentValue("dna_comp_armor_blast", (blastSpecial || (blast < 0) || !armorReset) ? blast : 0.f);
+
+	craftingValues->addExperimentalAttribute("dna_comp_armor_energy", "resists", -99.f, Genetics::ENERGY_MAX, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->setCurrentValue("dna_comp_armor_energy", (energySpecial || (energy < 0) || !armorReset) ? energy : 0.f);
+
+	craftingValues->addExperimentalAttribute("dna_comp_armor_heat", "resists", -99.f, Genetics::HEAT_MAX, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->setCurrentValue("dna_comp_armor_heat", (heatSpecial || (heat < 0) || !armorReset) ? heat : 0.f);
+
+	craftingValues->addExperimentalAttribute("dna_comp_armor_cold", "resists", -99.f, Genetics::COLD_MAX, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->setCurrentValue("dna_comp_armor_cold", (coldSpecial || (cold < 0) || !armorReset) ? cold : 0.f);
+
+	craftingValues->addExperimentalAttribute("dna_comp_armor_electric", "resists", -99.f, Genetics::ELECTRICITY_MAX, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->setCurrentValue("dna_comp_armor_electric", (electricSpecial || (electric < 0) || !armorReset) ? electric : 0.f);
+
+	craftingValues->addExperimentalAttribute("dna_comp_armor_acid", "resists", -99.f, Genetics::ACID_MAX, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->setCurrentValue("dna_comp_armor_acid", (acidSpecial || (acid < 0) || !armorReset) ? acid : 0.f);
+
+	craftingValues->addExperimentalAttribute("dna_comp_armor_stun", "resists", -99.f, Genetics::STUN_MAX, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->setCurrentValue("dna_comp_armor_stun", (stunSpecial || (stun < 0) || !armorReset) ? stun : 0.f);
+
+	//craftingValues->addExperimentalAttribute("dna_comp_armor_saber", "resists", -99.f, Genetics::LIGHTSABER_MAX, 0, true, AttributesMap::OVERRIDECOMBINE);
+	//craftingValues->setCurrentValue("dna_comp_armor_saber", (lightsaberSpecial || (lightsaber < 0) || !armorReset) ? lightsaber : 0.f);
+
+	// Store Special Resistances
+	craftingValues->addExperimentalAttribute("kineticeffectiveness", "specials", kineticSpecial ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("energyeffectiveness", "specials", energySpecial ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("blasteffectiveness", "specials", blastSpecial ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("heateffectiveness", "specials", heatSpecial ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("coldeffectiveness", "specials", coldSpecial ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("electricityeffectiveness", "specials", electricSpecial ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("acideffectiveness", "specials", acidSpecial ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalAttribute("stuneffectiveness", "specials", stunSpecial ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+	//craftingValues->addExperimentalAttribute("lightsabereffectiveness", "specials", lightsaberSpecial ? 1 : 0, 1, 0, true, AttributesMap::OVERRIDECOMBINE);
+
+	/*
+
+		5. Determine Quality, Ranged, Special Attacks and Level
+
+	*/
+
+	// Determine Quality
+	float quality = (physique->getQuality() * 0.2f) + (prowess->getQuality() * 0.2f) + (mental->getQuality() * 0.2f) + (psychological->getQuality() * 0.2f) + (aggression->getQuality() * 0.2f);
+
+	// Ranged Attack
 	bool ranged = false;
-	int odds = 0;
-	float menQual = men->getQuality() - 1;
-	float psyQual = psy->getQuality() - 1;
 
-	if (men->isRanged() || psy->isRanged()) {
-		int chance = System::random(100-(assemblySuccess * 10)); // so amazing success 100, critical falure is 20
+	float menQual = mental->getQuality() - 1;
+	float psyQual = psychological->getQuality() - 1;
+
+	if (mental->isRanged() || psychological->isRanged()) {
+		int chance = System::random(100 - (assemblySuccess * 10)); // so amazing success 100, critical falure is 20
+
 		// did you roll exceed (7 - Quality) * 10 (VHQ is 0) so always works
 		if (chance >= (menQual * 10) || chance >= (psyQual * 10))
 			ranged = true;
 	}
 
-	odds = quality * 100;
-	// check for specials here, then we have base assemble work completed.
+	// Special Attacks
+	int odds = quality * 100;
+
 	// update crafting values, and/or experimentRow should handle resist calc changes. update crafting values should determine armor setup
-	String sp1 = pickSpecialAttack(agr->getSpecialAttackOne(),psy->getSpecialAttackOne(),phy->getSpecialAttackOne(),men->getSpecialAttackOne(),pro->getSpecialAttackOne(),odds,"defaultattack");
-	String sp2 = pickSpecialAttack(psy->getSpecialAttackTwo(),pro->getSpecialAttackTwo(),agr->getSpecialAttackTwo(),men->getSpecialAttackTwo(),phy->getSpecialAttackTwo(),odds,sp1);
-	genetic->setSpecialAttackOne(sp1);
-	genetic->setSpecialAttackTwo(sp2);
+	String special1 = pickSpecialAttack(aggression->getSpecialAttackOne(), psychological->getSpecialAttackOne(), physique->getSpecialAttackOne(), mental->getSpecialAttackOne(), prowess->getSpecialAttackOne(), odds, "defaultattack");
+	String special2 = pickSpecialAttack(psychological->getSpecialAttackTwo(), prowess->getSpecialAttackTwo(), aggression->getSpecialAttackTwo(), mental->getSpecialAttackTwo(), physique->getSpecialAttackTwo(), odds, special1);
+
+	genetic->setSpecialAttackOne(special1);
+	genetic->setSpecialAttackTwo(special2);
 	genetic->setRanged(ranged);
 	genetic->setQuality(quality);
 
 	// determine avg sample levels to choose a level of this template for output generation
-	int level = Genetics::physchologicalFormula(phy->getLevel(),pro->getLevel(),men->getLevel(), psy->getLevel() ,agr->getLevel());
+	int level = Genetics::physchologicalFormula(physique->getLevel(), prowess->getLevel(), mental->getLevel(), psychological->getLevel(), aggression->getLevel());
 	genetic->setLevel(level);
-
-	craftingValues->recalculateValues(true);
 }
 
-void GeneticLabratory::initialize(ZoneServer* server) {
-	SharedLabratory::initialize(server);
-
-}
 int GeneticLabratory::getCreationCount(ManufactureSchematic* manufactureSchematic) {
 	return 1;
 }
 
-void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult){
-	// we can 'run super' then reset our resists accordingly as well as armor base.
-	//
-	// TODO:
-	// Step 1. Perform normal experimentiton run
-	// Step 2. Recalculate armor base, and effective resist based on armor base. (armor base is fort)
-	// Step 3. Profit.
-	// RULES: AMAZING + 15% (+5% if lucky), GREAT: 1% GOOD: 0.5% MODERATE: 0.25% SUCCESS: 0.15% MARGINAL: 0% OK: -0.5% BARELY: -1% CRITICAL FAILURE: -1% + random state reduced by 10%
-	// use normal line mechanics, just add the extra in.
+void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult) {
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "---------- Experiment Row ----------";
+	info(true) << "Row Effected: " << rowEffected << " Points Attempted: " << pointsAttempted << " Experimental Result: " << experimentationResult << " Failure: " << failure;
+#endif
 
-	float modifier = 0, newValue = 0;
+	if (craftingValues == nullptr)
+		return;
+
+	/*
+
+		1. Get the Two Modified Attributes and values, based on their group.
+
+	*/
+
+	String attribute1, attribute2;
+
 	String experimentedGroup = craftingValues->getVisibleAttributeGroup(rowEffected);
+	int totalAttributes = craftingValues->getTotalExperimentalAttributes();
+	Vector<String> randomFailed;
 
-	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "Experimened Group: " << experimentedGroup;
+#endif
+
+	for (int i = 0; i < totalAttributes; ++i) {
 		String attribute = craftingValues->getAttribute(i);
 		String group = craftingValues->getAttributeGroup(attribute);
 
 		if (group != experimentedGroup) {
+			// Build a list for pote
+			if (experimentationResult == CraftingManager::CRITICALFAILURE && group.contains("exp")) {
+#ifdef DEBUG_GENETIC_LAB
+				info(true) << "Added Attribute for Failure Roll: " << attribute;
+#endif
+				randomFailed.add(attribute);
+			}
+
 			continue;
 		}
 
-		if (experimentationResult == CraftingManager::AMAZINGSUCCESS)
-			modifier = 0.15f * (float)pointsAttempted; //
-		if (experimentationResult == CraftingManager::GREATSUCCESS)
-			modifier = 0.10 * (float)pointsAttempted; //
-		if (experimentationResult == CraftingManager::GOODSUCCESS)
-			modifier = 0.05 * (float)pointsAttempted;
-		if (experimentationResult == CraftingManager::MODERATESUCCESS)
-			modifier = 0.025 * (float)pointsAttempted;
-		if (experimentationResult == CraftingManager::SUCCESS)
-			modifier = 0.015 * (float)pointsAttempted;
-		if (experimentationResult == CraftingManager::MARGINALSUCCESS)
-			modifier = 0.0;
-		if (experimentationResult == CraftingManager::OK)
-			modifier = -0.05 * (float)pointsAttempted;
-		if (experimentationResult == CraftingManager::BARELYSUCCESSFUL)
-			modifier = -0.1 * (float)pointsAttempted;
-		if (experimentationResult == CraftingManager::CRITICALFAILURE) {
-			modifier = -0.1 * (float)pointsAttempted;
-			// pick a random attribute
-			int which = System::random(10);
-			while(which != i) {
-				which = System::random(10);
-			}
+		if (attribute1 == "") {
+			attribute1 = attribute;
 
-			String failedGroup = craftingValues->getAttribute(which);
+#ifdef DEBUG_GENETIC_LAB
+			info(true) << "Attribute 1: " << attribute1;
+#endif
+		} else if (attribute2 == "") {
+			attribute2 = attribute;
 
-			float current = craftingValues->getCurrentPercentage(which);
-			craftingValues->setCurrentPercentage(failedGroup, current * (-0.1)); // reduce a random attribute by 10%
-		}
-
-		//modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
-		newValue = craftingValues->getCurrentPercentage(attribute) + modifier;
-
-		if (newValue > craftingValues->getMaxPercentage(attribute))
-			newValue = craftingValues->getMaxPercentage(attribute);
-
-		if (newValue < 0)
-			newValue = 0;
-
-		craftingValues->setCurrentPercentage(attribute, newValue);
-	}
-
-	craftingValues->recalculateValues(false);
-
-	float currentFort = craftingValues->getCurrentValue("fortitude");
-	int armorValue = currentFort/500;
-	float currentEffective = (int)(((currentFort - (armorValue * 500)) / 50) * 5);
-
-	for (int i = 0; i < craftingValues->getTotalExperimentalAttributes(); ++i) {
-		String attribute = craftingValues->getAttribute(i);
-		String group = craftingValues->getAttributeGroup(attribute);
-
-		float minValue = craftingValues->getMinValue(attribute);
-
-		if (group == "resists" && minValue >= 0) {
-			float maxValue = craftingValues->getMaxValue(attribute);
-
-			if (craftingValues->getCurrentValue(i) < maxValue) {
-				craftingValues->setCurrentValue(attribute, Math::min(currentEffective, maxValue));
-			}
+#ifdef DEBUG_GENETIC_LAB
+			info(true) << "Attribute 2: " << attribute2;
+#endif
 		}
 	}
+
+	/*
+
+		2. Calculate modifier and calculate the modified percentage for the two affected attributes
+
+	*/
+
+	float newValue = 0.f, capValue = 0.f, fortDiff = 0.f;
+
+	float modifier = calculateExperimentationValueModifier(experimentationResult, pointsAttempted) * 2000.f;
+
+	float attValue1 = craftingValues->getCurrentValue(attribute1);
+	float attValue2 = craftingValues->getCurrentValue(attribute2);
+
+	// In the case of a failure only one attribute should go down from the primary group
+	float signSwap = -1.f;
+	bool swap1 = false, swap2 = false;
+
+	if (experimentationResult == CraftingManager::CRITICALFAILURE) {
+		if (System::random(100) > 50) {
+			// Attribute1 will decrease
+			swap2 = true;
+		} else {
+			// Attribute 2 will decrease
+			swap1 = true;
+		}
+	}
+
+	// Attribute 1
+	capValue = craftingValues->getCapValue(attribute1);
+	float att1Mod = (swap1 ? (modifier * signSwap) : modifier);
+
+	newValue = attValue1 + (attValue2 / (attValue1 + attValue2) * att1Mod);
+
+	if (newValue > capValue) {
+		newValue = capValue;
+	}
+
+	craftingValues->setCurrentPercentage(attribute1, (newValue / 1000.f));
+
+	if (attribute1 == "fortitude")
+		fortDiff = newValue - attValue1;
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "Attribute 1 Experimentation --  " << attribute1 << " Starting Value: " << attValue1 << " Cap Value: " << capValue << " New Value: " << newValue << " Att1 Modifier: " << att1Mod;
+#endif
+
+	// Attribute 2
+	capValue = craftingValues->getCapValue(attribute2);
+	float att2Mod = (swap2 ? (modifier * signSwap) : modifier);
+
+	newValue = attValue2 + (attValue1 / (attValue1 + attValue2) * att2Mod);
+
+	if (newValue > capValue) {
+		newValue = capValue;
+	}
+
+	craftingValues->setCurrentPercentage(attribute2, (newValue / 1000.f));
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "Attribute 2 Experimentation --  " << attribute2 << " Starting Value: " << attValue2 << " Cap Value: " << capValue << " New Value: " << newValue << " Att2 Modifier: " << att2Mod;
+#endif
+
+	/*
+
+		4. Handle Critical Failure Chance for Alternate attribute
+
+	*/
+
+	// Choose Random Attribute that is not from the current experminted group
+	if (experimentationResult == CraftingManager::CRITICALFAILURE && randomFailed.size() && System::random(100) > 50) {
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "Experimental Critical Failure -- ";
+#endif
+		int roll = System::random(randomFailed.size());
+
+		String failedAttribute = craftingValues->getAttribute(roll);
+		float currentPercent = craftingValues->getCurrentPercentage(failedAttribute);
+
+		newValue = Math::max(0.f, (modifier + currentPercent));
+
+		// Reduce attribute
+		craftingValues->setCurrentPercentage(failedAttribute, newValue);
+
+#ifdef DEBUG_GENETIC_LAB
+		info(true) << "END Experimental Critical Failure -- Attribute Chosen: " << failedAttribute << " Old Percent: " << currentPercent << " New Percent: " << newValue << " Roll: " << roll;
+#endif
+	}
+
+	/*
+
+		5. Update Armor Resistances
+
+	*/
+
+	if (attribute1 == "fortitude") {
+		// Pass old percentage value to use to fin increase
+		recalculateResistances(craftingValues, fortDiff);
+	}
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "---------- END Experiment Row ----------";
+#endif
 }

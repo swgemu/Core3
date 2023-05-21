@@ -3379,6 +3379,8 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 		uint32 thisFaction = getFaction();
 		uint32 creatureFaction = creature->getFaction();
 
+		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
 		if (creature->isAiAgent()) {
 			AiAgent* agentCreo = creature->asAiAgent();
 
@@ -3414,9 +3416,15 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 				if (thisFaction == creatureFaction)
 					return false;
 
-				// Player & Agent both have a GCW Faction & are different. Fail if the faction status of the player is onleave
-				if (creatureFaction != 0 && thisFaction != creatureFaction && getFactionStatus() <= FactionStatus::ONLEAVE) {
-					return false;
+				if (covertOvert) {
+					if (creatureFaction != 0 && thisFaction != creatureFaction && getFactionStatus() != FactionStatus::OVERT && !ghost->hasGcwTef()) {
+						return false;
+					}
+				} else {
+					// Player & Agent both have a GCW Faction & are different. Fail if the faction status of the player is onleave
+					if (creatureFaction != 0 && thisFaction != creatureFaction && getFactionStatus() <= FactionStatus::ONLEAVE) {
+						return false;
+					}
 				}
 			}
 		}
@@ -3462,7 +3470,6 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 
 			// PvP - Different Factions. Both must be overt status or we return false
 			if (thisFaction != creatureFaction) {
-				bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 				if (covertOvert) {
 					int thisFactionStatus = getFactionStatus();

@@ -1163,21 +1163,23 @@ bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* crea
 			continue;
 
 		for (int j = 0; j < cityRegion->getRegionsCount(); ++j) {
-			Region* activeRegion = cityRegion->getRegion(j);
+			Region* region = cityRegion->getRegion(j);
 
-			if (activeRegion == nullptr)
+			if (region == nullptr)
 				continue;
 
-			float radius = activeRegion->getRadius();
+			float radius = region->getRadius();
+
+			// info(true) << "City: " << cityRegion->getCityRegionName() << " Radius: " << radius;
 
 			if (radius < 512)
 				radius = 512;
 
 			float range = radius * 2;
 
-			Vector3 position(activeRegion->getPositionX(), activeRegion->getPositionY(), 0);
+			Vector3 position(region->getAreaCenter());
 
-			if (position.squaredDistanceTo(testPosition) <= range * range) {
+			if (position.squaredDistanceTo(testPosition) <= (range * range)) {
 				StringIdChatParameter msg("player_structure", "city_too_close");
 				msg.setTO(cityRegion->getCityRegionName());
 

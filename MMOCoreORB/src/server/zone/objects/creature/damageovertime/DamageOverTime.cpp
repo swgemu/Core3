@@ -11,6 +11,8 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/combat/CombatManager.h"
 
+//#define DEBUG_DOTS
+
 DamageOverTime::DamageOverTime() {
 	setAttackerID(0);
 	setType(CreatureState::BLEEDING);
@@ -22,13 +24,7 @@ DamageOverTime::DamageOverTime() {
 	addSerializableVariables();
 }
 
-DamageOverTime::DamageOverTime(CreatureObject* attacker,
-		uint64 tp,
-		uint8 attrib,
-		uint32 str,
-		uint32 dur,
-		int secondaryStrength) {
-
+DamageOverTime::DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib, uint32 str, uint32 dur, int secondaryStrength) {
 	if (attacker != nullptr)
 		setAttackerID(attacker->getObjectID());
 
@@ -55,7 +51,6 @@ DamageOverTime::DamageOverTime(const DamageOverTime& dot) : Object(), Serializab
 	expires = dot.expires;
 	nextTick = dot.nextTick;
 	secondaryStrength = dot.secondaryStrength;
-
 }
 
 DamageOverTime& DamageOverTime::operator=(const DamageOverTime& dot) {
@@ -107,8 +102,25 @@ void DamageOverTime::activate() {
 }
 
 uint32 DamageOverTime::applyDot(CreatureObject* victim) {
-	if (expires.isPast() || !nextTick.isPast())
+#ifdef DEBUG_DOTS
+	info(true) << "applyDot called " << victim->getFirstName() << " ID: " << victim->getObjectID() << " Type: " << type;
+#endif
+
+	if (!victim->hasState(type) || !nextTick.isPast()) {
+#ifdef DEBUG_DOTS
+		if (!victim->hasState(type))
+			info(true) << "Victim does not have the state.";
+		else
+			info(true) << "nextTick is not past.";
+#endif
 		return 0;
+	}
+
+	bool reschedule = true;
+
+	if (expires.isPast()) {
+		reschedule = false;
+	}
 
 	nextTick.updateToCurrentTime();
 
@@ -118,33 +130,47 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 	if (attacker == nullptr)
 		attacker = victim;
 
+	int time = 0;
+
 	switch(type) {
 	case CreatureState::BLEEDING:
 		power = doBleedingTick(victim, attacker);
-		nextTick.addMiliTime(20000);
+		time = 20000;
 		break;
 	case CreatureState::POISONED:
 		power = doPoisonTick(victim, attacker);
-		nextTick.addMiliTime(10000);
+		time = 10000;
 		break;
 	case CreatureState::DISEASED:
 		power = doDiseaseTick(victim, attacker);
-		nextTick.addMiliTime(40000);
+		time = 40000;
 		break;
 	case CreatureState::ONFIRE:
 		power = doFireTick(victim, attacker);
-		nextTick.addMiliTime(10000);
+		time = 10000;
 		break;
 	case CommandEffect::FORCECHOKE:
 		power = doForceChokeTick(victim, attacker);
-		nextTick.addMiliTime(5000);
+		time = 5000;
 		break;
 	}
+
+	if (reschedule) {
+		nextTick.addMiliTime(time);
+	}
+
+#ifdef DEBUG_DOTS
+	info(true) << "applyDot complete " << victim->getFirstName() << " Power: " << power;
+#endif
 
 	return power;
 }
 
 uint32 DamageOverTime::initDot(CreatureObject* victim, CreatureObject* attacker) {
+#ifdef DEBUG_DOTS
+	info(true) << "initDot called " << victim->getFirstName() << " ID: " << victim->getObjectID() << " Type: " << type;
+#endif
+
 	uint32 power = 0;
 	int absorptionMod = 0;
 	nextTick.updateToCurrentTime();
@@ -175,6 +201,10 @@ uint32 DamageOverTime::initDot(CreatureObject* victim, CreatureObject* attacker)
 	}
 
 	power = (uint32)(strength * (1.f - absorptionMod / 100.f));
+
+#ifdef DEBUG_DOTS
+	info(true) << "initDot called " << victim->getFirstName() << " Type: " << type << " Power: " << power << " Absorption Mod: " << absorptionMod;
+#endif
 
 	//victim->addDamage(attacker,1);
 
@@ -213,6 +243,10 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* at
 
 		victimRef->playEffect("clienteffect/dot_bleeding.cef","");
 	}, "BleedTickLambda");
+
+#ifdef DEBUG_DOTS
+	info(true) << "doBleedingTick -- Pool: " << attribute << " Damage: " << damage;
+#endif
 
 	return damage;
 }
@@ -265,6 +299,10 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 		victimRef->playEffect("clienteffect/dot_fire.cef","");
 	}, "FireTickLambda");
 
+#ifdef DEBUG_DOTS
+	info(true) << "doFireTick -- Pool: " << attribute << " Damage: " << damage;
+#endif
+
 	return damage;
 }
 
@@ -298,6 +336,10 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* atta
 
 		victimRef->playEffect("clienteffect/dot_poisoned.cef","");
 	}, "PoisonTickLambda");
+
+#ifdef DEBUG_DOTS
+	info(true) << "doPoisonTick -- Pool: " << attribute << " Damage: " << damage;
+#endif
 
 	return damage;
 }
@@ -341,6 +383,10 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim, CreatureObject* att
 
 		victimRef->playEffect("clienteffect/dot_diseased.cef","");
 	}, "DiseaseTickLambda");
+
+#ifdef DEBUG_DOTS
+	info(true) << "doDiseaseTick -- Pool: " << attribute << " Damage: " << damage;
+#endif
 
 	return damage;
 }
@@ -394,25 +440,31 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 		victimRef->showFlyText("combat_effects", "choke", 0xFF, 0, 0);
 	}, "ForceChokeTickLambda");
 
-	return strength;
+#ifdef DEBUG_DOTS
+	info(true) << "doForceChokeTick -- Damage: " << strength;
+#endif
 
+	return strength;
 }
 
 float DamageOverTime::reduceTick(float reduction) {
-	//System::out << "reducing tick with reduction " << reduction << endl;
-	if (reduction < 0.f) // this ensures we can't increase a dot strength
+#ifdef DEBUG_DOTS
+	info(true) << "reduceTick - Reduction: " << reduction << " Strength = " << strength;
+#endif
+
+	// this ensures we can't increase a dot strength
+	if (reduction <= 0.f)
 		return reduction;
 
-	if (reduction >= strength) {
+	int reducReamining = reduction - strength;
+
+	strength -= reduction;
+
+	if (reducReamining > 0.f) {
 		expireTick();
-		return reduction - strength;
-	} else {
-		//System::out << "strength before dotRed " << strength << endl;
-		strength -= reduction;
-		//System::out << "strength after dotRed " << strength << endl;
 	}
 
-	return 0.f;
+	return reducReamining;
 }
 
 void DamageOverTime::multiplyDuration(float multiplier) {

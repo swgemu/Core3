@@ -369,7 +369,6 @@ function TatooineMosEspaScreenPlay:spawnSceneObjects()
 	spawnSceneObject(self.planet, "object/static/structure/general/droid_probedroid_powerdown.iff", 1.0, -4.0, -7.9, 1718407, math.rad(-90) )
 
 	--southwest Tavern
-	spawnSceneObject(self.planet, "object/mobile/jawa_male.iff", -1.1, 1.0, 9.5, 1261583, 0, 0, 0, 0)
 	spawnSceneObject(self.planet, "object/tangible/furniture/all/frn_all_professor_desk.iff", -7.0, -4.0, -6.5, 1261586, math.rad(90) )
 	spawnSceneObject(self.planet, "object/tangible/furniture/all/bestine_quest_statue.iff", 0.2, -4.0, -10.4, 1261586, math.rad(-50) )
 
@@ -406,6 +405,12 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 				CreatureObject(pMobile):clearOptionBit(AIENABLED)
 			end
 		end
+	end
+
+	local pNpc = spawnMobile(self.planet, "jawa", -1, -1.1, 1.0, 9.5, math.rad(-90), 1261583)
+
+	if (pNpc ~= nil) then
+		CreatureObject(pNpc):setPvpStatusBitmask(0)
 	end
 
 	--Creatures

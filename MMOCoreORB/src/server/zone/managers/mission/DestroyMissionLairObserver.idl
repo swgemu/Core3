@@ -9,6 +9,7 @@ import server.zone.objects.tangible.TangibleObject;
 import engine.log.Logger;
 
 class DestroyMissionLairObserver extends LairObserver {
+	public static final int BABY_SPAWN_CHANCE = 1000;
 
 	public DestroyMissionLairObserver() {
 		super();

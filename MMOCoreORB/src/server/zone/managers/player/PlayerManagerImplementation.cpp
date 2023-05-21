@@ -1505,6 +1505,26 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		}, "PvpDeathRatingUpdateLambda");
 	}
 
+	if (player->isGrouped()) {
+		ManagedReference<GroupObject*> group = player->getGroup();
+
+		if (group != nullptr) {
+			StringIdChatParameter stringId;
+			stringId.setStringId("group", "notify_death"); // [GROUP] %TU has died.
+
+			stringId.setTU(player->getDisplayedName());
+
+			for (int i = 0; i < group->getGroupSize(); i++) {
+				ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+
+				if (groupMember == nullptr || !groupMember->isPlayerCreature())
+					continue;
+
+				groupMember->sendSystemMessage(stringId);
+			}
+		}
+	}
+
 	threatMap->removeAll(true);
 
 	player->dropFromDefenderLists();
@@ -3277,9 +3297,14 @@ void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 en
 		return;
 	}
 
-	CreatureObject* entertainer = cast<CreatureObject*>( object.get());
+	if (!CollisionManager::checkLineOfSight(object, creature)) {
+		creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
+		return;
+	}
 
-	if (creature == entertainer)
+	CreatureObject* entertainer = cast<CreatureObject*>(object.get());
+
+	if (entertainer == nullptr || creature == entertainer)
 		return;
 
 	Locker clocker(entertainer, creature);
@@ -3337,10 +3362,10 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 	if (object == nullptr)
 		return;
 
-	/*if (object->isNonPlayerCreature()) {
-		creature->sendSystemMessage("@performance:dance_watch_npc");
+	if (!CollisionManager::checkLineOfSight(object, creature)) {
+		creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
 		return;
-	}*/
+	}
 
 	// Droid playback handling
 	if (object->isDroidObject()) {
@@ -4144,7 +4169,9 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 			}
 			// check the droid
 			station = droid->getCraftingStation(type);
-			if (station != nullptr && droid->hasPower()) {
+
+			// As per Mantis 8285 the droid does not need to be charged to use the crafting station - H
+			if (station != nullptr/* && droid->hasPower()*/) {
 				return station;
 			}
 		}

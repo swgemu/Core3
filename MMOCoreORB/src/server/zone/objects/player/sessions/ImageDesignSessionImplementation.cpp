@@ -195,8 +195,6 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 		int xpGranted = 0; // Minimum Image Design XP granted (base amount).
 
-		String hairTemplate = imageDesignData.getHairTemplate();
-
 		if (statMig && strongReferenceDesigner != strongReferenceTarget && strongReferenceDesigner->getParentRecursively(SceneObjectType::SALONBUILDING) && strongReferenceDesigner->getParentRecursively(SceneObjectType::SALONBUILDING)) {
 			ManagedReference<Facade*> facade = strongReferenceTarget->getActiveSession(SessionFacadeType::MIGRATESTATS);
 			ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());
@@ -216,42 +214,37 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 		ImageDesignManager* imageDesignManager = ImageDesignManager::instance();
 
-		ManagedReference<TangibleObject*> currentHair = strongReferenceTarget->getSlottedObject("hair").castTo<TangibleObject*>();
+		if (imageDesignManager == nullptr) {
+			cancelSession();
+			return;
+		}
 
-		if (currentHair != nullptr) {
-			SharedObjectTemplate* hairTemplate = currentHair->getObjectTemplate();
+		ManagedReference<TangibleObject*> currentHair = hairObject = strongReferenceTarget->getSlottedObject("hair").castTo<TangibleObject*>();
 
-			if (hairTemplate != nullptr) {
-				String currentHairTemplate = hairTemplate->getFullTemplateString();
+		// Session is updating hair style. Does not include color changes
+		if (type == 1) {
+			String oldCustomization;
 
-				String newTemplate = currentHairTemplate;
-				String newCustomization;
+			// First destroy current hair.
+			if (currentHair != nullptr) {
+				hairObject = nullptr;
 
-				if (currentHair != nullptr)
-					currentHair->getCustomizationString(newCustomization);
+				Locker hlock(currentHair);
+				currentHair->getCustomizationString(oldCustomization);
 
-				if (type == 1) {
-					newTemplate = imageDesignData.getHairTemplate();
-					newCustomization = imageDesignData.getHairCustomizationString();
-				}
-
-				hairObject = imageDesignManager->createHairObject(strongReferenceDesigner, strongReferenceTarget, newTemplate, newCustomization);
-
-				if (hairObject != nullptr) {
-					Locker hlocker(hairObject);
-					hairObject->setCustomizationString(newCustomization);
-
-					strongReferenceDesigner->notifyObservers(ObserverEventType::IMAGEDESIGNHAIR, nullptr, 0);
-				}
-
-				Locker chLock(currentHair);
-				currentHair->destroyObjectFromDatabase();
 				currentHair->destroyObjectFromWorld(true);
-				chLock.release();
-
-				if (xpGranted < 100)
-					xpGranted = 100;
+				currentHair->destroyObjectFromDatabase();
 			}
+
+			String hairTempString = imageDesignData.getHairTemplate();
+
+			// Create new hair for the player. Returns nullptr if the creature type can be bald and that is selected.
+			hairObject = imageDesignManager->createHairObject(strongReferenceDesigner, strongReferenceTarget, hairTempString, oldCustomization);
+
+			strongReferenceDesigner->notifyObservers(ObserverEventType::IMAGEDESIGNHAIR, nullptr, 0);
+
+			if (xpGranted < 100)
+					xpGranted = 100;
 		}
 
 		int bodyAttSize= bodyAttributes->size();
@@ -281,7 +274,9 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 			}
 		}
 
-		imageDesignManager->updateHairObject(strongReferenceTarget, hairObject);
+		// apply hair changes
+		if (hairObject != nullptr)
+			imageDesignManager->updateHairObject(strongReferenceTarget, hairObject);
 
 		// Add holo emote
 		String holoemote = imageDesignData.getHoloEmote();

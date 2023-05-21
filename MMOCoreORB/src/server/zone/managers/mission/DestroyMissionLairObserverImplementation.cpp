@@ -6,6 +6,7 @@
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/LairAggroTask.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/tangible/LairObject.h"
 
 void DestroyMissionLairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
@@ -19,6 +20,11 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 	Zone* zone = lair->getZone();
 
 	if (zone == nullptr)
+		return false;
+
+	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	if (creatureManager == nullptr)
 		return false;
 
 	int spawnLimitAdjustment = 0;
@@ -137,8 +143,6 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 
 		float tamingChance = creatureTemplate->getTame();
 
-		CreatureManager* creatureManager = zone->getCreatureManager();
-
 		for (int j = 0; j < numberToSpawn; j++) {
 			if (lair->getZone() == nullptr)
 				break;
@@ -149,7 +153,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 
 			ManagedReference<CreatureObject*> creo = nullptr;
 
-			if (creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, 1000)) {
+			if (j > 0 && creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, DestroyMissionLairObserver::BABY_SPAWN_CHANCE)) {
 				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
 				babiesSpawned++;
 			}
@@ -163,18 +167,42 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 			if (!creo->isAiAgent()) {
 				error("spawned non player creature with template " + templateToSpawn);
 			} else {
-				AiAgent* ai = cast<AiAgent*>( creo.get());
+				AiAgent* agent = cast<AiAgent*>(creo.get());
 
-				Locker clocker(ai, lair);
+				Locker clocker(agent, lair);
 
-				ai->setDespawnOnNoPlayerInRange(false);
-				ai->setHomeLocation(x, z, y);
-				ai->setRespawnTimer(0);
-				ai->setHomeObject(lair);
-				ai->setLairTemplateCRC(lairTemplateCRC);
+				agent->setDespawnOnNoPlayerInRange(false);
+				agent->setHomeLocation(x, z, y);
+				agent->setRespawnTimer(0);
+				agent->setHomeObject(lair);
+				agent->setLairTemplateCRC(lairTemplateCRC);
 
 				spawnedCreatures.add(creo);
 
+				// Must be at least the baby and one other creature on the spawn to set a adult creature to social follow
+				if (spawnedCreatures.size() > 1 && agent->isCreature()) {
+					Creature* creature = cast<Creature*>(agent);
+
+					if (creature != nullptr && creature->isBaby()) {
+						ManagedReference<CreatureObject*> adultCreo = spawnedCreatures.get(0);
+
+						if (adultCreo != nullptr && adultCreo->getObjectID() != creo->getObjectID()) {
+							Locker adultLock(adultCreo, agent);
+
+							agent->addCreatureFlag(CreatureFlag::ESCORT);
+							agent->addCreatureFlag(CreatureFlag::FOLLOW);
+
+							agent->setFollowObject(adultCreo);
+							agent->setMovementState(AiAgent::FOLLOWING);
+
+							agent->setAITemplate();
+
+							Vector3 formationOffset;
+							formationOffset.setX(2.0);
+							agent->writeBlackboard("formationOffset", formationOffset);
+						}
+					}
+				}
 			}
 		}
 	}

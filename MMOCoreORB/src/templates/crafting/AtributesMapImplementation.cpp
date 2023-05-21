@@ -26,7 +26,7 @@ const String AttributesMap::EMPTY;
 
 void AttributesMap::addExperimentalAttribute(const String& attribute, const String& group, const float min, const float max, const int precision, const bool filler, const int combine) {
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "AttributesMap::addExperimentalAttribute called for: " << attribute << " Group: " << group;
+	info(true) << "AttributesMap::addExperimentalAttribute called for: " << attribute << " Group: " << group << " Min: " << min << " Max:" << max << " Precision: " << precision;
 #endif // DEBUG_ATTRIBUTES_MAP
 
 	Locker lock(&mutex);
@@ -36,7 +36,7 @@ void AttributesMap::addExperimentalAttribute(const String& attribute, const Stri
 		addAttribute(attribute);
 		attributeGroups.put(attribute, group);
 
-		Values* value = new Values(attribute, min, max, precision, filler, combine);
+		Values* value = new Values(attribute, min, max, VALUENOTFOUND, precision, filler, combine);
 		attributeValues.put(attribute, value);
 	} else {
 		// The attribute is already on the map, we only want to update its values
@@ -273,10 +273,11 @@ float AttributesMap::getCurrentPercentage(const int i) const {
 }
 
 float AttributesMap::getCurrentVisiblePercentage(const String group) const {
-	float percentage = 0.f;
+	float totalPercentage = 0.f;
+	int totalAttributes = 0;
 
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---------- AttributesMap::getCurrentVisiblePercentage called for group: " << group << " with Attribute Size: " << attributes.size() << " ----------";
+	info(true) << "---- getCurrentVisiblePercentage -- group: " << group << " with Attribute Size: " << attributes.size() << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
 	// shouldnt this show the avg so with 1 item who cares, but more than 1 we wanna should avg of all not the LAST one
@@ -296,19 +297,19 @@ float AttributesMap::getCurrentVisiblePercentage(const String group) const {
 		if (values == nullptr || values->isFiller())
 			continue;
 
-		if (values->getMinValue() != values->getMaxValue() && values->getMaxPercentage() <= 1.0f) {
-			float currentPercentage = values->getPercentage();
-
-			if (currentPercentage > percentage)
-				percentage = currentPercentage;
+		if (values->getMaxPercentage() <= 1.0f) {
+			totalPercentage += values->getPercentage();
+			totalAttributes++;
 		}
 	}
 
+	totalPercentage /= totalAttributes;
+
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---------- END AttributesMap::getCurrentVisiblePercentage returning " << percentage << " ----------";
+	info(true) << "---- END getCurrentVisiblePercentage -- Group: " << group << " Total Attributes in Group: " << totalAttributes << " Returning " << totalPercentage << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
-	return percentage;
+	return totalPercentage;
 }
 
 void AttributesMap::setMaxPercentage(const String& attribute, float amount) {
@@ -355,7 +356,7 @@ float AttributesMap::getMaxVisiblePercentage(const int i) const {
 	const String group = visibleGroups.get(i);
 
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---------- AttributesMap::getMaxVisiblePercentage called for group: " << group << " with attribute value size: " << visibleGroups.size() << " ----------";
+	info(true) << "---- getMaxVisiblePercentage -- Group: " << group << " with Visible Group Size: " << visibleGroups.size() << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
 	for (int j = 0; j < attributeGroups.size(); ++j) {
@@ -383,7 +384,7 @@ float AttributesMap::getMaxVisiblePercentage(const int i) const {
 	}
 
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---------- END AttributesMap::getMaxVisiblePercentage returning: " << value << " ----------";
+	info(true) << "---- END getMaxVisiblePercentage -- Group: " << group << " Returning: " << value << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
 	return value;
@@ -415,6 +416,19 @@ float AttributesMap::getMaxValue(const String& attribute) const {
 	return value->getMaxValue();
 }
 
+float AttributesMap::getCapValue(const String& attribute) const {
+	const Reference<Values*> value = attributeValues.get(attribute);
+
+	if (value == nullptr)
+		return VALUENOTFOUND;
+
+#ifdef DEBUG_ATTRIBUTES_MAP
+	info(true) << " AttributesMap::getCapValue called for " << attribute << " with a cap value of " << value->getMaxValue();
+#endif // DEBUG_ATTRIBUTES_MAP
+
+	return value->getCapValue();
+}
+
 void AttributesMap::setMinValue(const String& attribute, const float min) {
 	Locker lock(&mutex);
 
@@ -433,38 +447,53 @@ void AttributesMap::setMinValue(const String& attribute, const float min) {
 void AttributesMap::setMaxValue(const String& attribute, const float max) {
 	Locker lock(&mutex);
 
-	Reference<Values*> value = attributeValues.get(attribute);
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	if (value == nullptr)
+	if (values == nullptr)
 		return;
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << " AttributesMap::setMaxValue for " << attribute << " setting a value of " << max;
 #endif // DEBUG_ATTRIBUTES_MAP
 
-	value->setMaxValue(max);
+	values->setMaxValue(max);
+}
+
+void AttributesMap::setCapValue(const String& attribute, const float value) {
+	Locker lock(&mutex);
+
+	Reference<Values*> values = attributeValues.get(attribute);
+
+	if (values == nullptr)
+		return;
+
+#ifdef DEBUG_ATTRIBUTES_MAP
+	info(true) << " AttributesMap::setCapValue for " << attribute << " setting a cap value of " << value;
+#endif // DEBUG_ATTRIBUTES_MAP
+
+	values->setCapValue(value);
 }
 
 int AttributesMap::getPrecision(const String& attribute) const {
-	const Reference<Values*> value = attributeValues.get(attribute);
+	const Reference<Values*> values = attributeValues.get(attribute);
 
-	if (value == nullptr)
+	if (values == nullptr)
 		return (int)VALUENOTFOUND;
 
-	return value->getPrecision();
+	return values->getPrecision();
 }
 
 void AttributesMap::setPrecision(const String& attribute, const int amount) {
 	Locker lock(&mutex);
 
-	Reference<Values*> value = attributeValues.get(attribute);
+	Reference<Values*> values = attributeValues.get(attribute);
 
-	if (value == nullptr)
+	if (values == nullptr)
 		return;
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << " AttributesMap::setPrecision for " << attribute << " setting a value of " << amount;
 #endif // DEBUG_ATTRIBUTES_MAP
 
-	value->setPrecision(amount);
+	values->setPrecision(amount);
 }

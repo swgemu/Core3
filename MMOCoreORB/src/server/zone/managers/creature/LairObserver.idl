@@ -13,6 +13,7 @@ import server.zone.managers.creature.HealLairObserverEvent;
 include system.thread.atomic.AtomicInteger;
 
 class LairObserver extends SpawnObserver {
+	public static final int BABY_SPAWN_CHANCE = 500;
 
 	@dereferenced
 	protected AtomicInteger spawnNumber;

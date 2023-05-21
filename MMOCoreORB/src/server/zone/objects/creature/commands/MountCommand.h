@@ -13,8 +13,7 @@ class MountCommand : public QueueCommand {
 	uint32 gallopCRC;
 public:
 
-	MountCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	MountCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 		gallopCRC = STRING_HASHCODE("gallop");
 
 		restrictedBuffCRCs.add(STRING_HASHCODE("burstrun"));
@@ -22,7 +21,6 @@ public:
 		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_1);
 		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_2);
 		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_3);
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -63,7 +61,7 @@ public:
 		if (vehicle->getCreatureLinkID() != creature->getObjectID())
 			return GENERALERROR;
 
-		if (!vehicle->isInRange(creature, 5))
+		if (!vehicle->isInRange(creature, 5) || !CollisionManager::checkLineOfSight(vehicle, creature))
 			return GENERALERROR;
 
 		if (creature->getParent() != nullptr || vehicle->getParent() != nullptr)

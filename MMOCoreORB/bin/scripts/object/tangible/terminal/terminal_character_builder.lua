@@ -1771,7 +1771,12 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--	{
 			--		"Singing Mountain Clan Bicep", "object/tangible/wearables/armor/bone/armor_smc_s01_bicep_l.iff"
 			--	}
-		},
+			},
+			"Bio-Engineer Testing",
+			{
+				"FurryCat Test - ju6d14qq", "ju6d14qq",
+				"FurryCat Test - d5j7caq6", "d5j7caq6",
+			},
 			"Clothes",
 			{
 				"Crafting Aprons",

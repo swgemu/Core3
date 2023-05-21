@@ -15,7 +15,7 @@ end
 function DotEffect(t, dm, pl, h, p, c, s, d, pp, sp)
   return {
 	dotType = t,
-	defenderStateDefenseModifers = dm,
+	defenderStateDefenseModifiers = dm,
 	dotPool = pl,
 	dotDamageofHit = h,
 	dotPotency = p,

@@ -49,16 +49,17 @@ class PetDeed extends Deed {
 	protected string controlDeviceObjectTemplate;
 	protected string mobileTemplate;
 
-	protected int cleverness;
-	protected int endurance;
-	protected int fierceness;
-	protected int power;
-	protected int intelligence;
-	protected int courage;
-	protected int dependency;
-	protected int dexterity;
-	protected int fortitude;
-	protected int hardiness;
+	protected float cleverness;
+	protected float endurance;
+	protected float fierceness;
+	protected float power;
+	protected float intellect;
+	protected float courage;
+	protected float dependability;
+	protected float dexterity;
+	protected float fortitude;
+	protected float hardiness;
+
 	// sampling
 	protected int sampleCount;
 	protected int specialResists;
@@ -88,17 +89,19 @@ class PetDeed extends Deed {
 		chanceHit = 0;
 		attackSpeed = 0;
 		level = 1;
+
 		// Source DNA of a pet deed
-		cleverness = 0;
-		endurance = 0;
-		fierceness = 0;
-		power = 0;
-		intelligence = 0;
-		courage = 0;
-		dependency = 0;
-		dexterity = 0;
-		fortitude = 0;
-		hardiness = 0;
+		fortitude = 0.f;
+		hardiness = 0.f;
+		dexterity = 0.f;
+		endurance = 0.f;
+		intellect = 0.f;
+		cleverness = 0.f;
+		dependability = 0.f;
+		courage = 0.f;
+		fierceness = 0.f;
+		power = 0.f;
+
 		quality = 7;
 		sampleCount = 0;
 		specialResists = 0;
@@ -271,52 +274,52 @@ class PetDeed extends Deed {
 	}
 
 	@read
-	public int getCleverness() {
+	public float getCleverness() {
 		return cleverness;
 	}
 
 	@read
-	public int getEndurance() {
+	public float getEndurance() {
 		return endurance;
 	}
 
 	@read
-	public int getFierceness() {
+	public float getFierceness() {
 		return fierceness;
 	}
 
 	@read
-	public int getPower() {
+	public float getPower() {
 		return power;
 	}
 
 	@read
-	public int getIntelligence() {
-		return intelligence;
+	public float getIntellect() {
+		return intellect;
 	}
 
 	@read
-	public int getCourage() {
+	public float getCourage() {
 		return courage;
 	}
 
 	@read
-	public int getDependency() {
-		return dependency;
+	public float getDependability() {
+		return dependability;
 	}
 
 	@read
-	public int getDexterity() {
+	public float getDexterity() {
 		return dexterity;
 	}
 
 	@read
-	public int getFortitude() {
+	public float getFortitude() {
 		return fortitude;
 	}
 
 	@read
-	public int getHardiness() {
+	public float getHardiness() {
 		return hardiness;
 	}
 

@@ -31,7 +31,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -136,6 +135,7 @@ public:
 		}
 
 		creature->updateCooldownTimer("mount_dismount", 2000);
+		creature->setNextAllowedMoveTime(300);
 
 		creature->removeMountedCombatSlow(false); // these are already removed off the player - Just remove it off the mount
 

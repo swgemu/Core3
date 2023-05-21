@@ -17,20 +17,16 @@
 class DamageOverTimeList : private VectorMap<uint64, Vector<DamageOverTime> > {
 protected:
 	Time nextTick;
-	// TODO: why is this boolean here? what purpose does it serve?
-	bool dot;
 	Mutex guard;
 public:
 	DamageOverTimeList() {
 		setNoDuplicateInsertPlan();
-		dot = false;
 	}
 
 	DamageOverTimeList(const DamageOverTimeList& list) : VectorMap<uint64, Vector<DamageOverTime> >(list), guard() {
 		setNoDuplicateInsertPlan();
 
 		nextTick = list.nextTick;
-		dot = list.dot;
 	}
 
 	DamageOverTimeList& operator=(const DamageOverTimeList& list) {
@@ -39,7 +35,6 @@ public:
 		}
 
 		nextTick = list.nextTick;
-		dot = list.dot;
 
 		return *this;
 	}
@@ -97,7 +92,7 @@ public:
 	}
 
 	bool hasDot() {
-		return (!isEmpty() && dot);
+		return !isEmpty();
 	}
 
 	inline bool isNextTickPast() {

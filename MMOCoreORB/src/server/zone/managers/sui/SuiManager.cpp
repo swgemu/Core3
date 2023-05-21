@@ -482,6 +482,11 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			} else if (templatePath == "unlock_jedi_initiate") {
 				bluefrog->grantJediInitiate(player);
 
+			// Bio-Engineer Testing
+			} else if (templatePath == "ju6d14qq") {
+				bluefrog->giveDnaTestingSet(player, templatePath);
+			} else if (templatePath == "d5j7caq6") {
+				bluefrog->giveDnaTestingSet(player, templatePath);
 			} else {
 				if (templatePath.length() > 0) {
 					SkillManager::instance()->awardSkill(templatePath, player, true, true, true);

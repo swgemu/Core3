@@ -1661,7 +1661,7 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 		if (defender->hasDotImmunity(effect.getDotType()) || effect.getDotDuration() == 0 || System::random(100) > effect.getDotChance())
 			continue;
 
-		const Vector<String>& defenseMods = effect.getDefenderStateDefenseModifers();
+		const Vector<String>& defenseMods = effect.getDefenderStateDefenseModifiers();
 		int resist = 0;
 
 		for (int j = 0; j < defenseMods.size(); j++)
