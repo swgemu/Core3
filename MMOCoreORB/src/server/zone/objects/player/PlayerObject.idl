@@ -62,10 +62,6 @@ class PlayerObject extends IntangibleObject {
 	protected string savedTerrainName;
 	protected unsigned long savedParentID;
 
-	//@rawTemplate(value='ManagedReference<ShipObject*>')
-	@dereferenced
-	protected Vector<ShipObject> ships;
-
 	@dereferenced
 	protected Badges badges;
 
@@ -2077,6 +2073,22 @@ class PlayerObject extends IntangibleObject {
 		launchPoint.setLocation(location);
 	}
 
+	@dereferenced
+	public string getSpaceLaunchZone() {
+		return launchPoint.getGoundZoneName();
+	}
+
+	@dereferenced
+	public string getSpaceLaunchCityName() {
+		return launchPoint.getCityName();
+	}
+
+	@local
+	@dereferenced
+	public Vector3 getSpaceLaunchLocation() {
+		return launchPoint.getLocation();
+	}
+
 	@read
 	public unsigned long getPlayedMiliSecs() {
 		return miliSecsPlayed;
@@ -2102,23 +2114,4 @@ class PlayerObject extends IntangibleObject {
 
 	@read
 	public native string getPlayedTimeString(boolean verbose = false);
-
-	public void addShip(ShipObject obj) {
-		ships.add(obj);
-	}
-
-	public void removeShip(int idx) {
-		ships.remove(idx);
-	}
-
-	@ManagedReference
-	@read
-	public ShipObject getShip(int idx) {
-		return ships.get(idx);
-	}
-
-	@read
-	public int getNumShips() {
-		return ships.size();
-	}
 }

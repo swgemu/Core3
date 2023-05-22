@@ -37,8 +37,6 @@ class ShipObject extends TangibleObject {
 
 	protected transient boolean hyperspacing;
 
-	public string storedLocation;
-
 	public unsigned long controlDeviceID;
 
 	@dereferenced
@@ -63,8 +61,6 @@ class ShipObject extends TangibleObject {
 
 	@dereferenced
 	protected VectorMap<unsigned int, ShipComponent> components;
-
-	protected string parkingLocation;
 
 	@dereferenced
 	protected Time boostTimer;
@@ -393,7 +389,6 @@ class ShipObject extends TangibleObject {
 
 		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
-		storedLocation = "";
 		controlDeviceID = 0;
 		hyperspacing = false;
 		hasWings = false;
@@ -1336,20 +1331,8 @@ class ShipObject extends TangibleObject {
 
 	public native void setShipName(@dereferenced final string name, boolean notifyClient = true);
 
-	public string getStoredLocation() {
-		return storedLocation;
-	}
-
 	public float getComponentEnergyEfficiency(int slot) {
 		return componentEnergyEfficiency.get(slot);
-	}
-
-	public void setStoredLocation(string location) {
-		storedLocation = location;
-	}
-
-	public void setParkingLocation(string location) {
-		parkingLocation = location;
 	}
 
 	public void setOwner(CreatureObject obj) {
@@ -1385,8 +1368,6 @@ class ShipObject extends TangibleObject {
 	public SceneObject getPilotChair() {
 		return pilotChair;
 	}
-
-	public native string getParkingLocation();
 
 	public native void install(CreatureObject owner, SceneObject component, int slot, boolean notifyClient = false);
 	public native void uninstall(CreatureObject owner, int slot, boolean notifyClient);
@@ -1504,4 +1485,7 @@ class ShipObject extends TangibleObject {
 	@preLocked
 	@local
 	public native ShipDeltaVector getDeltaVector();
+
+	@preLocked
+	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 }

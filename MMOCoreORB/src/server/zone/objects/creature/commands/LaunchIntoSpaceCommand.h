@@ -26,169 +26,102 @@ public:
 
 		StringTokenizer tokenizer(arguments.toString());
 
-		ZoneServer* zoneServer = server->getZoneServer();
-
-		if (zoneServer == nullptr)
-			return GENERALERROR;
-
-		Reference<SceneObject*> terminal = server->getZoneServer()->getObject(target);
-
-		if (terminal == nullptr || terminal->getGameObjectType() != SceneObjectType::SPACETERMINAL)
-			return INVALIDSTATE;
-
-		uint64 shipID = tokenizer.getLongToken();
-		ManagedReference<ShipControlDevice*> pcd = zoneServer->getObject(shipID).castTo<ShipControlDevice*>();
-
-		if (pcd == nullptr) {
-			creature->error("Error retrieving ship");
-			return GENERALERROR;
-		}
-
-		ManagedReference<ShipObject*> ship = cast<ShipObject*>(pcd->getControlledObject());
-
-		if (ship == nullptr) {
-			creature->error("Error retrieving ship");
-			return GENERALERROR;
-		}
-
-		if (ship->getOwner() != creature) {
-			creature->error("Attempting to launch another players ship: " + String::valueOf(shipID));
-			return GENERALERROR;
-		}
+		uint64 shipID = tokenizer.hasMoreTokens() ? tokenizer.getLongToken() : 0;
+		uint32 groupSize = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0;
+		String arrivalPlanet = tokenizer.hasMoreTokens() ? tokenizer.getStringToken() : "";
+		String arrivalPointName = tokenizer.hasMoreTokens() ? tokenizer.getStringToken().replaceAll("_", " ") : "";
 
 		Vector<ManagedReference<SceneObject*>> groupMembers;
-		int numGroupMembers = tokenizer.getIntToken();
 
-		for (int i = 0; i < numGroupMembers; i++) {
-			ManagedReference<SceneObject*> member = zoneServer->getObject(tokenizer.getLongToken());
+		for (int i = 0; i < groupSize; i++) {
+			uint64 memberID = tokenizer.hasMoreTokens() ? tokenizer.getLongToken() : 0;
+			ManagedReference<SceneObject*> groupMember = ServerCore::getZoneServer()->getObject(memberID);
 
-			if (member != nullptr)
-				groupMembers.add(member);
+			if (groupMember != nullptr) {
+				groupMembers.add(groupMember);
+			}
+		}
+
+		ManagedReference<SceneObject*> terminal = server->getZoneServer()->getObject(target);
+
+		if (terminal == nullptr || terminal->getGameObjectType() != SceneObjectType::SPACETERMINAL) {
+			return INVALIDSTATE;
+		}
+
+		ManagedReference<ShipControlDevice*> pcd = server->getZoneServer()->getObject(shipID).castTo<ShipControlDevice*>();
+
+		if (pcd == nullptr) {
+			return GENERALERROR;
+		}
+
+		ManagedReference<ShipObject*> ship = pcd->getControlledObject()->asShipObject();
+
+		if (ship == nullptr || ship->getOwner().get() != creature) {
+			return GENERALERROR;
 		}
 
 		// JTL Fast Travel
-		if (tokenizer.hasMoreTokens()) {
-			String arrivalPlanet;
-			String arrivalPointName;
-			tokenizer.getStringToken(arrivalPlanet);
-			tokenizer.getStringToken(arrivalPointName);
-			arrivalPointName = arrivalPointName.replaceAll("_", " ");
-
-			ManagedReference<Zone*> arrivalZone = server->getZoneServer()->getZone(arrivalPlanet);
+		if (arrivalPlanet != "") {
+			Zone* arrivalZone = creature->getZoneServer()->getZone(arrivalPlanet);
 
 			if (arrivalZone == nullptr) {
 				creature->sendSystemMessage("@travel:route_not_available"); // This ticket's route is no longer available.
-				return GENERALERROR;
+				return QueueCommand::GENERALERROR;
 			}
 
-			PlanetManager* planetMan = arrivalZone->getPlanetManager();
+			PlanetManager* planetManager = arrivalZone->getPlanetManager();
 
-			if (planetMan == nullptr)
-				return GENERALERROR;
-
-			if (!planetMan->hasJtlTravelDestination(arrivalPointName)) {
+			if (planetManager == nullptr || !planetManager->hasJtlTravelDestination(arrivalPointName)) {
 				creature->sendSystemMessage("@travel:route_not_available"); // This ticket's route is no longer available.
-				return GENERALERROR;
+				return QueueCommand::GENERALERROR;
 			}
 
-			Vector3 dest = planetMan->getJtlTravelDestination(arrivalPointName);
-			creature->switchZone(arrivalPlanet, dest.getX(), dest.getY(), dest.getZ(), 0);
+			Vector3 arrivalPosition = planetManager->getJtlTravelDestination(arrivalPointName);
 
-			String storedLocation = creature->getCityRegion().get()->getRegionDisplayedName();
+			for (int i = 0; i < groupMembers.size(); ++i) {
+				auto member = groupMembers.get(i);
+				if (member == nullptr) {
+					continue;
+				}
 
-			ship->setStoredLocation(storedLocation);
+				member->switchZone(arrivalPlanet, arrivalPosition.getX(),arrivalPosition.getY(),arrivalPosition.getZ(), 0);
+			}
+
+			creature->switchZone(arrivalPlanet, arrivalPosition.getX(),arrivalPosition.getY(),arrivalPosition.getZ(), 0);
+			pcd->setStoredLocationData(creature);
 
 		} else { // launch into space
-			Zone* zone = creature->getZone();
+			Zone* departureZone = creature->getZone();
 
-			if (zone == nullptr) {
-				error("nullptr Zone in LaunchIntoSpaceCommand");
+			if (departureZone == nullptr) {
 				return GENERALERROR;
 			}
 
-			PlanetManager* planetMan = zone->getPlanetManager();
+			PlanetManager* planetManager = departureZone->getPlanetManager();
 
-			if (planetMan == nullptr)
+			if (planetManager == nullptr) {
 				return GENERALERROR;
+			}
 
-			String jtlZoneName = planetMan->getJtlZoneName();
+			String jtlZoneName = planetManager->getJtlZoneName();
 
 			if (jtlZoneName == "") {
-				error("No JTL Zone Name for Zone: " + zone->getZoneName());
 				return GENERALERROR;
 			}
 
-			SpaceZone* spaceZone = zoneServer->getSpaceZone(jtlZoneName);
+			SpaceZone* spaceZone = server->getZoneServer()->getSpaceZone(jtlZoneName);
 
-			if (spaceZone == nullptr)
+			if (spaceZone == nullptr) {
 				return GENERALERROR;
-
-			Vector3 position = planetMan->getJtlLaunchLocations();
-			Locker creoCross(ship, creature);
-
-			Locker zoneLock(spaceZone, ship);
-
-			ship->initializePosition(position.getX() + System::random(100.f), position.getZ() + System::random(100.f), position.getY() + System::random(100.f));
-			spaceZone->transferObject(ship, -1, true);
-			zoneLock.release();
-
-			Locker devLock(pcd, ship);
-			pcd->setShipLaunchStatus(true);
-			devLock.release();
-
-			ship->setShipFaction(creature->getFaction());
-			ship->setFactionStatus(creature->getFactionStatus());
-			ship->scheduleRecovery();
-
-			if (creature->isInvulnerable()) {
-				ship->setOptionBit(OptionBitmask::INVULNERABLE, false);
-			} else {
-				ship->clearOptionBit(OptionBitmask::INVULNERABLE, false);
 			}
 
-			if (creature->isPlayerCreature()) {
-				PlayerObject* ghost = creature->getPlayerObject();
+			Vector3 randomPosition = Vector3(System::random(100.f), System::random(100.f), System::random(100.f));
+			Vector3 launchPosition = planetManager->getJtlLaunchLocations() + randomPosition;
 
-				if (ghost != nullptr) {
-					String zoneName = zone->getZoneName();
-					String launchCity = ship->getParkingLocation();
+			Locker pLock(pcd);
 
-					ghost->setSpaceLaunchZone(zoneName);
-					ghost->setSpaceLaunchCityName(launchCity);
-
-					PlanetTravelPoint* ptp = planetMan->getNearestPlanetTravelPoint(creature->getWorldPosition(), 64.f);
-
-					if (ptp != nullptr) {
-						Vector3 location = ptp->getArrivalPosition();
-						ghost->setSpaceLaunchLocation(location);
-					}
-				}
-			}
-
-			uint64 parentID = ship->getObjectID();
-
-			// POB Ship
-			if (ship->getContainerObjectsSize() > 0) {
-				auto pilotChair = ship->getPilotChair().get();
-
-				if (pilotChair == nullptr) {
-					error() << "Pilot Chair is a nullptr in LaunchIntoSpace command for POB ship.";
-					ship->destroyObjectFromWorld(true);
-
-					return GENERALERROR;
-				}
-
-				parentID = pilotChair->getObjectID();
-				position = pilotChair->getPosition();
-
-				creature->setState(CreatureState::PILOTINGPOBSHIP);
-			} else {
-				creature->setState(CreatureState::PILOTINGSHIP);
-			}
-
-			creature->switchZone(jtlZoneName, position.getX(), position.getZ(), position.getY(), parentID);
-
-			creature->synchronizeCloseObjects();
+			pcd->launchShip(creature, jtlZoneName, launchPosition);
+			pcd->insertPlayer(creature); // include groupMembers once playerVector is added.
 		}
 
 		return SUCCESS;
