@@ -181,10 +181,12 @@ void ZoneImplementation::insert(TreeEntry* entry) {
 
 	quadTree->insert(entry);
 
+	/*
 	SceneObject* sceneO = cast<SceneObject*>(entry);
 
 	if (sceneO != nullptr && sceneO->isPlayerCreature())
 		info(true) << "Inserting player into Quad Tree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+	*/
 }
 
 void ZoneImplementation::remove(TreeEntry* entry) {
@@ -193,10 +195,12 @@ void ZoneImplementation::remove(TreeEntry* entry) {
 	if (entry->isInQuadTree()) {
 		quadTree->remove(entry);
 
+		/*
 		SceneObject* sceneO = cast<SceneObject*>(entry);
 
 		if (sceneO != nullptr && sceneO->isPlayerCreature())
 			info(true) << "Removing player from Quad Tree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+		*/
 	}
 }
 

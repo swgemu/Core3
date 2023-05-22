@@ -217,7 +217,7 @@ void ShipObjectImplementation::createChildObjects() {
 			if (totalCells >= child->getCellId()) {
 				ManagedReference<CellObject *> cellObject = getCell(child->getCellId());
 
-				info("Inserting into " + String::valueOf(cellObject->getObjectID()), true);
+				//info("Inserting into " + String::valueOf(cellObject->getObjectID()), true);
 
 				if (cellObject != nullptr) {
 					if (!cellObject->transferObject(obj, child->getContainmentType(), true)) {
