@@ -6,6 +6,7 @@
 #define ESCAPEPOD_H_
 
 #include "CombatQueueCommand.h"
+#include "server/zone/objects/ship/events/DestroyShipTask.h"
 
 class EscapePodCommand : public CombatQueueCommand {
 public:
@@ -15,14 +16,33 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+		auto root = creature->getRootParent();
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		if (root == nullptr || !root->isShipObject()) {
+			return GENERALERROR;
+		}
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+		auto ship = root->asShipObject();
 
-		return doCombatAction(creature, target);
+		if (ship == nullptr) {
+			return GENERALERROR;
+		}
+
+		Locker sLock(ship);
+
+		if (ship->getOptionsBitmask() & OptionBitmask::EJECT) {
+			auto destroyTask = new DestroyShipTask(ship);
+
+			if (destroyTask != nullptr) {
+				destroyTask->execute();
+			}
+
+			ship->clearOptionBit(OptionBitmask::EJECT, true);
+		} else {
+			ship->setOptionBit(OptionBitmask::EJECT, true);
+		}
+
+		return SUCCESS;
 	}
 
 };
