@@ -361,7 +361,7 @@ public:
 			<< " ShipId:    " << shipId << endl
 			<< " Position:  " << positionX  << ", " << positionZ  << ", " << positionY << endl
 			<< " Direction: " << directionW  << ", " << directionX  << ", " << directionY << ", " << directionZ << endl
-			<< " Velocity:  " << velocity.getSpeed() << "/" << ship->getCurrentSpeed() << endl
+			<< " Velocity:  " << velocity.getSpeed() << "/" << ship->getActualMaxSpeed() << endl
 			<< " yawRate:   " << yawRate.get() << endl
 			<< " pitchRate: " << pitchRate.get() << endl
 			<< " rollRate:  " << rollRate.get() << endl

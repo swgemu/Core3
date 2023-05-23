@@ -13,6 +13,7 @@ import server.zone.objects.scene.SceneObject;
 include engine.lua.LuaObject;
 import server.zone.CloseObjectsVector;
 include engine.util.u3d.Vector3;
+import server.zone.objects.ship.ShipObject;
 
 @dirty
 class SpaceManager extends ManagedService implements Logger {
@@ -24,6 +25,10 @@ class SpaceManager extends ManagedService implements Logger {
 	@rawTemplate(value="String, Vector3")
 	@dereferenced
 	protected transient VectorMap jtlTravelDestinations;
+
+	@rawTemplate(value="String, VectorMap<uint64, Vector3>")
+	@dereferenced
+	protected transient VectorMap spaceStationMap;
 
 	@dereferenced
 	protected transient string jtlZoneName;
@@ -70,6 +75,14 @@ class SpaceManager extends ManagedService implements Logger {
 	public boolean hasJtlTravelDestination(string key) {
 		return jtlTravelDestinations.contains(key);
 	}
+
+	@local
+	@dereferenced
+	public native unsigned long getClosestSpaceStationObjectID(@dereferenced final Vector3 position, @dereferenced final string faction);
+
+	@local
+	@dereferenced
+	public native Vector3 getClosestSpaceStationPosition(@dereferenced final Vector3 position, @dereferenced final string faction);
 
 	@dirty
 	public string getJtlZoneName() {
