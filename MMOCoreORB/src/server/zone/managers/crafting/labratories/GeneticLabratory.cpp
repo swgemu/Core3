@@ -282,7 +282,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	*/
 
 	// Physique: Fortitude and Hardiness
-	float fortitudeMax = Genetics::physiqueFormula(physique->getForititude(), prowess->getForititude(), mental->getForititude(), psychological->getForititude(), aggression->getForititude()) * modifier;
+	float fortitudeMax = Genetics::physiqueFormula(physique->getFortitude(), prowess->getFortitude(), mental->getFortitude(), psychological->getFortitude(), aggression->getFortitude()) * modifier;
 	float hardinessMax = Genetics::physiqueFormula(physique->getHardiness(), prowess->getHardiness(), mental->getHardiness(), psychological->getHardiness(), aggression->getHardiness()) * modifier;
 
 	// Prowess: Endurance and Dexterity
