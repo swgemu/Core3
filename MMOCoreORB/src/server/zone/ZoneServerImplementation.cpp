@@ -250,15 +250,13 @@ void ZoneServerImplementation::startSpaceZones() {
 
 		info(true) << "Loading Space Zone: " << spaceZoneName << ".";
 
-		SpaceZone* zone = new SpaceZone(processor, spaceZoneName);
-		zone->setZoneName(spaceZoneName);
-			//info("Setting zone name: " + spaceZoneName);
-		zone->createContainerComponent();
+		SpaceZone* spaceZone = new SpaceZone(processor, spaceZoneName);
 
-		zone->initializePrivateData();
-		zone->deploy("Zone " + spaceZoneName);
+		spaceZone->createContainerComponent();
+		spaceZone->initializePrivateData();
+		spaceZone->deploy("SpaceZone " + spaceZoneName);
 
-		spaceZones->put(spaceZoneName, zone);
+		spaceZones->put(spaceZoneName, spaceZone);
 	}
 
 	for (int i = 0; i < spaceZones->size(); ++i) {
@@ -271,10 +269,10 @@ void ZoneServerImplementation::startSpaceZones() {
 	}
 
 	for (int i = 0; i < spaceZones->size(); ++i) {
-		SpaceZone* zone = spaceZones->get(i);
+		SpaceZone* spaceZone = spaceZones->get(i);
 
-		if (zone != nullptr) {
-			while (!zone->hasManagersStarted())
+		if (spaceZone != nullptr) {
+			while (!spaceZone->hasManagersStarted())
 				Thread::sleep(500);
 		}
 	}

@@ -6,7 +6,6 @@ package server.zone;
 
 import server.zone.OctTree;
 import server.zone.TreeEntry;
-include server.chat.room.ChatRoom;
 import server.zone.Zone;
 import system.lang.Time;
 import server.zone.ZoneProcessServer;
@@ -29,36 +28,10 @@ include system.thread.atomic.AtomicBoolean;
 
 @mock
 class SpaceZone extends Zone {
-	private string zoneName;
-
-	private unsigned int zoneCRC;
-
-	private transient ZoneProcessServer processor;
-
-	private transient PlanetManager planetManager;
-
 	private transient SpaceManager spaceManager;
-
-	private transient ChatRoom planetChatRoom;
-
-	private transient ZoneServer server;
-
-	private transient ObjectMap objectMap;
 
 	@dereferenced
 	private OctTreeReference octTree;
-
-	@dereferenced
-	private transient Time galacticTime;
-
-	@dereferenced
-	private transient AtomicBoolean managersStarted;
-
-	protected boolean spaceZone;
-
-	private string name;
-
-	private transient boolean zoneCleared;
 
 	public native SpaceZone(ZoneProcessServer processor, final string zoneName);
 	public native void initializeTransientMembers();
@@ -104,43 +77,15 @@ class SpaceZone extends Zone {
 	public native void dropSceneObject(SceneObject object);
 
 	@dirty
-	public PlanetManager getPlanetManager() {
-		return planetManager;
-	}
-
-	@dirty
 	public SpaceManager getSpaceManager() {
 		return spaceManager;
-	}
-
-	@dirty
-	public native void setZoneName(string n) {
-		zoneName = n;
-	}
-
-	@dirty
-	public ZoneServer getZoneServer() {
-		return server;
-	}
-
-	@read
-	public unsigned long getGalacticTime() {
-		return galacticTime.miliDifference() / 1000;
-	}
-
-	@dirty
-	public boolean hasManagersStarted() {
-		return managersStarted.get();
-	}
-
-	@read
-	public boolean isZoneCleared() {
-		return zoneCleared;
 	}
 
 	/**
 	 * These functions return the size of the terrain file for this zone.
 	 */
+
+	/*
 	@dirty
 	public native float getMinX();
 
@@ -162,29 +107,11 @@ class SpaceZone extends Zone {
 	@dirty
 	@local
 	public native boolean isWithinBoundaries(@dereferenced final Vector3 position);
+	*/
 
 	@dirty
 	public boolean isSpaceZone() {
 		return true;
 	}
-
-	@dirty
-	public string getZoneName() {
-		return zoneName;
-	}
-
-	@dirty
-	public unsigned int getZoneCRC() {
-		return zoneCRC;
-	}
-
-	public void setPlanetChatRoom(ChatRoom room) {
-		planetChatRoom = room;
-	}
-
-	public ChatRoom getPlanetChatRoom() {
-		return planetChatRoom;
-	}
-
 }
 
