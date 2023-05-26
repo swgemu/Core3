@@ -39,8 +39,14 @@ public:
 
 		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
-		if (object != nullptr && object->isCreatureObject()) {
+		if (object == nullptr)
+			return GENERALERROR;
+
+		if (object->isCreatureObject()) {
 			CreatureObject* agentCreo = cast<CreatureObject*>(object.get());
+
+			if (agentCreo == nullptr)
+				return GENERALERROR;
 
 			try {
 				Locker clocker(agentCreo, creature);
