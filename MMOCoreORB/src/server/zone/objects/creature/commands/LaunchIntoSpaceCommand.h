@@ -24,6 +24,11 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
 		StringTokenizer tokenizer(arguments.toString());
 
 		uint64 shipID = tokenizer.hasMoreTokens() ? tokenizer.getLongToken() : 0;
@@ -35,20 +40,20 @@ public:
 
 		for (int i = 0; i < groupSize; i++) {
 			uint64 memberID = tokenizer.hasMoreTokens() ? tokenizer.getLongToken() : 0;
-			ManagedReference<SceneObject*> groupMember = ServerCore::getZoneServer()->getObject(memberID);
+			ManagedReference<SceneObject*> groupMember = zoneServer->getObject(memberID);
 
 			if (groupMember != nullptr) {
 				groupMembers.add(groupMember);
 			}
 		}
 
-		ManagedReference<SceneObject*> terminal = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> terminal = zoneServer->getObject(target);
 
 		if (terminal == nullptr || terminal->getGameObjectType() != SceneObjectType::SPACETERMINAL) {
 			return INVALIDSTATE;
 		}
 
-		ManagedReference<ShipControlDevice*> pcd = server->getZoneServer()->getObject(shipID).castTo<ShipControlDevice*>();
+		ManagedReference<ShipControlDevice*> pcd = zoneServer->getObject(shipID).castTo<ShipControlDevice*>();
 
 		if (pcd == nullptr) {
 			return GENERALERROR;
@@ -62,7 +67,7 @@ public:
 
 		// JTL Fast Travel
 		if (arrivalPlanet != "") {
-			Zone* arrivalZone = creature->getZoneServer()->getZone(arrivalPlanet);
+			Zone* arrivalZone = zoneServer->getZone(arrivalPlanet);
 
 			if (arrivalZone == nullptr) {
 				creature->sendSystemMessage("@travel:route_not_available"); // This ticket's route is no longer available.
@@ -109,7 +114,7 @@ public:
 				return GENERALERROR;
 			}
 
-			SpaceZone* spaceZone = server->getZoneServer()->getSpaceZone(jtlZoneName);
+			SpaceZone* spaceZone = zoneServer->getSpaceZone(jtlZoneName);
 
 			if (spaceZone == nullptr) {
 				return GENERALERROR;

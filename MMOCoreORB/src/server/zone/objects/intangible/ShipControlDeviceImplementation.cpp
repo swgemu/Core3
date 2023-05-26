@@ -108,7 +108,12 @@ bool ShipControlDeviceImplementation::launchShip(CreatureObject* player, const S
 		return false;
 	}
 
-	auto spaceZone = getZoneServer()->getSpaceZone(zoneName);
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer ==  nullptr)
+		return false;
+
+	auto spaceZone = zoneServer->getSpaceZone(zoneName);
 
 	if (spaceZone == nullptr) {
 		return false;

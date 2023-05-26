@@ -67,9 +67,7 @@ public:
 
 	void removeObjectFromZone(SceneObject* sceneObject, SpaceZone* zone, SceneObject* par) const;
 
-	static void removeAllObjectsFromCOV(CloseObjectsVector *closeobjects,
-										SortedVector<ManagedReference<TreeEntry *> > &closeSceneObjects,
-										SceneObject *sceneObject, SceneObject *vectorOwner);
+	static void removeAllObjectsFromCOV(CloseObjectsVector *closeobjects, SortedVector<ManagedReference<TreeEntry *> > &closeSceneObjects, SceneObject *sceneObject, SceneObject *vectorOwner);
 };
 
 
