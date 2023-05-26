@@ -30,6 +30,10 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	zoneName = name;
 	zoneCRC = name.hashCode();
 
+	if (name.contains("space")) {
+		return;
+	}
+
 	areaTree = new server::zone::ActiveAreaQuadTree(-8192, -8192, 8192, 8192);
 	quadTree = new server::zone::QuadTree(-8192, -8192, 8192, 8192);
 
@@ -39,8 +43,6 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 
 	managersStarted = false;
 	zoneCleared = false;
-
-	//galacticTime = new Time();
 
 	planetManager = nullptr;
 

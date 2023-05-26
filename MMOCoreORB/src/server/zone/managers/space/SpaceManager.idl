@@ -17,7 +17,6 @@ import server.zone.objects.ship.ShipObject;
 
 @dirty
 class SpaceManager extends ManagedService implements Logger {
-
 	protected SpaceZone spacezone;
 
 	protected transient ZoneProcessServer server;

@@ -35,16 +35,6 @@ import server.zone.ActiveAreaQuadTree;
 
 @mock
 class Zone extends SceneObject {
-	private string zoneName;
-
-	private unsigned int zoneCRC;
-
-	private transient ZoneProcessServer processor;
-
-	private transient ObjectMap objectMap;
-
-	private transient PlanetManager planetManager;
-
 	private transient CreatureManager creatureManager;
 
 	private transient ChatRoom planetChatRoom;
@@ -52,15 +42,15 @@ class Zone extends SceneObject {
 	@dereferenced
 	private transient SynchronizedSortedVector<CityRegion> cityRegionUpdateVector;
 
-	private transient ZoneServer server;
-
 	private transient ActiveAreaQuadTree areaTree;
 
 	@dereferenced
 	private QuadTreeReference quadTree;
 
+	protected transient PlanetManager planetManager;
+
 	@dereferenced
-	private transient Time galacticTime;
+	protected transient Time galacticTime;
 
 	@transactional
 	private transient MapLocationTable mapLocations;
@@ -69,8 +59,18 @@ class Zone extends SceneObject {
 	protected AtomicInteger spawnedAiAgents;
 
 	@dereferenced
-	private transient AtomicBoolean managersStarted;
-	private transient boolean zoneCleared;
+	protected transient AtomicBoolean managersStarted;
+	protected transient boolean zoneCleared;
+
+	protected transient ObjectMap objectMap;
+
+	protected transient ZoneServer server;
+
+	protected string zoneName;
+
+	protected unsigned int zoneCRC;
+
+	protected transient ZoneProcessServer processor;
 
 	protected boolean zone;
 	protected boolean spaceZone;

@@ -15,12 +15,6 @@
 #include "templates/SharedObjectTemplate.h"
 
 SpaceZoneImplementation::SpaceZoneImplementation(ZoneProcessServer* serv, const String& name) : ZoneImplementation(serv, name) {
-	processor = serv;
-	server = processor->getZoneServer();
-
-	zoneName = name;
-	zoneCRC = name.hashCode();
-
 	octTree = new server::zone::OctTree(-8192, -8192, -8192, 8192, 8192, 8192);
 
 	objectMap = new ObjectMap();
@@ -28,11 +22,20 @@ SpaceZoneImplementation::SpaceZoneImplementation(ZoneProcessServer* serv, const 
 	managersStarted = false;
 	zoneCleared = false;
 
-	//galacticTime = new Time();
-
 	spaceManager = nullptr;
 
-	setLoggingName("Space Zone " + name);
+	String capName = name;
+	capName.replaceFirst("_", "");
+	capName[0] = toupper(name[0]);
+
+	int numThreads = ConfigManager::instance()->getInt("Core3.SpaceZone.ThreadsDefault", 1);
+	numThreads = ConfigManager::instance()->getInt("Core3.SpaceZone.Threads" + capName, numThreads);
+
+	setLoggingName("SpaceZone " + name);
+
+	if (numThreads != 1) {
+		info(true) << "SpaceZone " << capName << " using " << numThreads << " threads.";
+	}
 
 	Core::getTaskManager()->initializeCustomQueue(zoneName, 1, true);
 }
@@ -55,7 +58,11 @@ void SpaceZoneImplementation::initializeTransientMembers() {
 
 void SpaceZoneImplementation::startManagers() {
 	spaceManager->initialize();
+
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
+
 	spaceManager->start();
+
 	managersStarted = true;
 }
 
@@ -222,6 +229,7 @@ int SpaceZoneImplementation::getInRangeObjects(float x, float y, float z, float 
 	return objects->size();
 }
 
+/*
 float SpaceZoneImplementation::getMinX() {
 	return planetManager->getTerrainManager()->getMin();
 }
@@ -268,6 +276,7 @@ bool SpaceZoneImplementation::isWithinBoundaries(const Vector3& position) {
 		return false;
 	}
 }
+*/
 
 void SpaceZoneImplementation::addSceneObject(SceneObject* object) {
 	ManagedReference<SceneObject*> old = objectMap->put(object->getObjectID(), object);
