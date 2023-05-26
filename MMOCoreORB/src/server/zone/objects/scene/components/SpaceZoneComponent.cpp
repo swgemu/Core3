@@ -254,25 +254,21 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 	SpaceZone* spaceZone = sceneObject->getSpaceZone();
 	ManagedReference<SceneObject*> thisLocker = sceneObject;
 
-	SpaceZone* newZone = sceneObject->getZoneServer()->getSpaceZone(newTerrainName);
+	ZoneServer* zoneServer = sceneObject->getZoneServer();
 
-	//info(true) << "SpaceZoneComponent::switchZone called for: " << sceneObject->getDisplayedName();
+	if (zoneServer == nullptr)
+		return;
+
+	SpaceZone* newZone = zoneServer->getSpaceZone(newTerrainName);
 
 	if (newZone == nullptr) {
 		sceneObject->error("attempting to switch to unkown/disabled space zone " + newTerrainName);
 		return;
 	}
 
-	ManagedReference<SceneObject*> newParent = sceneObject->getZoneServer()->getObject(parentID);
+	ManagedReference<SceneObject*> newParent = zoneServer->getObject(parentID);
 
-	if (newParent == nullptr || (!newParent->isShipObject() && !newParent->isCellObject() && !(newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR))) {
-		error() << "SpaceZoneComponent::switchZone new parent is a nullptr or is not a ship or cell object.";
-		return;
-	}
-
-	if (newParent->getSpaceZone() == nullptr) {
-		error() << "SpaceZoneComponent::switchZone parent SpaceZone is null, returning";
-
+	if (newParent != nullptr && (!newParent->isShipObject() && !newParent->isCellObject() && newParent->getGameObjectType() != SceneObjectType::PILOTCHAIR)) {
 		return;
 	}
 
