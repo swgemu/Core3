@@ -17,19 +17,19 @@ class SpaceLaunchPoint : public Object {
 
 public:
 	SpaceLaunchPoint() : Object() {
+		groundZoneName = "";
+		cityName = "";
 	}
 
 	SpaceLaunchPoint(const SpaceLaunchPoint& point) : Object() {
-		groundZoneName = point.groundZoneName;
-		cityName = point.cityName;
+		initialize(point);
 	}
 
 	SpaceLaunchPoint& operator=(const SpaceLaunchPoint& point) {
 		if (this == &point)
 			return *this;
 
-		groundZoneName = point.groundZoneName;
-		cityName = point.cityName;
+		initialize(point);
 
 		return *this;
 	}
@@ -38,6 +38,28 @@ public:
 		j["groundZoneName"] = l.groundZoneName;
 		j["cityName"] = l.cityName;
 		j["location"] = l.location;
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		groundZoneName.toBinaryStream(stream);
+		cityName.toBinaryStream(stream);
+		location.toBinaryStream(stream);
+
+		return true;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		groundZoneName.parseFromBinaryStream(stream);
+		cityName.parseFromBinaryStream(stream);
+		location.parseFromBinaryStream(stream);
+
+		return true;
+	}
+
+	void initialize(const SpaceLaunchPoint& point) {
+		groundZoneName = point.groundZoneName;
+		cityName = point.cityName;
+		location = point.location;
 	}
 
 	inline void setGroundZoneName(String zoneName) {
