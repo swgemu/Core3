@@ -566,12 +566,17 @@ void PlayerManagerImplementation::writePlayerLog(PlayerObject* ghost, const Stri
 	if (ghost == nullptr)
 		return;
 
-	Reference<CreatureObject*> creature = ghost->getParent().get()->asCreatureObject();
+	Reference<SceneObject*> parentSceneO = ghost->getParent().get();
 
-	if (creature == nullptr)
+	if (parentSceneO == nullptr || !parentSceneO->isCreatureObject())
 		return;
 
-	PlayerManagerImplementation::writePlayerLog(creature, ghost, msg, logLevelType);
+	CreatureObject* player = parentSceneO->asCreatureObject();
+
+	if (player == nullptr)
+		return;
+
+	PlayerManagerImplementation::writePlayerLog(player, ghost, msg, logLevelType);
 }
 
 void PlayerManagerImplementation::writePlayerLog(CreatureObject* creature, const String& msg, int logLevelType) {
