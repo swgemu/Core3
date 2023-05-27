@@ -38,7 +38,7 @@ void ShipChassisData::loadComponentHardpoints() {
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile(filename);
 
 	if (iffStream == nullptr) {
-		Logger::console.error(filename + " could not be found.");
+		//Logger::console.error(filename + " could not be found.");
 		return;
 	}
 

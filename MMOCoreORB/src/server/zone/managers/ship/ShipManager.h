@@ -19,14 +19,16 @@
 class ShipChassisData;
 
 class ShipManager : public Singleton<ShipManager>, public Object, public Logger {
-	class ProjectileThread : public Thread {
+	/*class ProjectileThread : public Thread {
 		void run() {
 			while (true) {
+				Logger::console.info(true) << "projectile thread ran";
+
 				ShipManager::instance()->checkProjectiles();
-				Thread::sleep(200);
+				Thread::sleep(1000);
 			}
 		}
-	};
+	};*/
 
 	HashTable<uint32, Reference<ShipComponentData*>> shipComponents;
 	HashTable<String, ShipComponentData*> shipComponentTemplateNames;
@@ -39,7 +41,8 @@ class ShipManager : public Singleton<ShipManager>, public Object, public Logger 
 	VectorMap<String, String> componentFolders;
 	Mutex projectileMutex;
 
-	ProjectileThread* projectileThread;
+	//ProjectileThread* projectileThread;
+
 	void checkProjectiles();
 	void loadShipComponentData();
 	void loadShipWeaponData();
@@ -57,7 +60,13 @@ public:
 		SPACESTATION = 3
 	};
 
-	ShipManager();
+	ShipManager() {
+		setLoggingName("ShipManager");
+		setGlobalLogging(false);
+		setLogging(false);
+	};
+
+	void initialize();
 
 	static void notifyShipHit(ShipObject* target, const Vector3& localDir, int type, float curHealth, float prevHealth);
 
@@ -132,6 +141,7 @@ public:
 		float peekDelta() {
 			return (System::getMiliTime() - lastUpdate) / 1000.0f;
 		}
+
 		float getDelta() {
 			uint64 current = System::getMiliTime();
 			uint64 temp = lastUpdate;

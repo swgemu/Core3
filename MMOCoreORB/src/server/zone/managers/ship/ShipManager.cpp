@@ -45,7 +45,7 @@
 	}
 
 	delete iffStream;
-}*/
+}
 
 ShipManager::ShipManager() {
 	setLoggingName("ShipManager");
@@ -58,6 +58,15 @@ ShipManager::ShipManager() {
 
 	projectileThread = new ProjectileThread();
 	projectileThread->start();
+}
+*/
+
+void ShipManager::initialize() {
+	loadShipChassisData();
+	loadShipComponentData();
+	loadShipWeaponData();
+	loadHyperspaceLocations();
+	loadShipAppearanceData();
 }
 
 void ShipManager::checkProjectiles() {
@@ -392,6 +401,8 @@ void ShipManager::loadShipComponentData() {
 }
 
 void ShipManager::loadShipChassisData() {
+	info(true) << "Loading Ship Chassis Data";
+
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile("datatables/space/ship_chassis.iff");
 
 	if (iffStream == nullptr) {
@@ -403,6 +414,7 @@ void ShipManager::loadShipChassisData() {
 	dtiff.readObject(iffStream);
 
 	Vector<String> columns(dtiff.getTotalColumns(), 3);
+
 	for (int i = 0; i < dtiff.getTotalColumns(); i++) {
 		columns.add(dtiff.getColumnNameByIndex(i));
 		// info("Column: " + columns.get(i), true);
@@ -412,10 +424,15 @@ void ShipManager::loadShipChassisData() {
 		const ShipChassisData* data = new ShipChassisData(dtiff.getRow(i), columns);
 		chassisData.put(data->getName(), data);
 	}
+
+	info(true) << "Ship Chassis Data Loading Complete - Total: " << chassisData.size();
+
 	delete iffStream;
 }
 
 void ShipManager::loadShipWeaponData() {
+	info(true) << "Loading Ship Weapon Data";
+
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile("datatables/space/ship_weapon_components.iff");
 
 	if (iffStream == nullptr) {
@@ -435,11 +452,17 @@ void ShipManager::loadShipWeaponData() {
 		shipProjectileData.put(data->getName().hashCode(), data);
 		shipProjectiletTemplateNames.put(data->getName(), data);
 	}
+
 	delete iffStream;
+
+	info(true) << "Ship Weapon Data Loading Complete - Total: " << shipProjectiletTemplateNames.size();
 }
 
 void ShipManager::loadShipAppearanceData() {
+	info(true) << "Loading Ship Appearance Data";
+
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile("datatables/space/ship_chassis.iff");
+
 	if (iffStream == nullptr) {
 		fatal("datatables/space/ship_chassis.iff could not be found.");
 		return;
@@ -469,6 +492,8 @@ void ShipManager::loadShipAppearanceData() {
 	}
 
 	delete iffStream;
+
+	info(true) << "Ship Appearance Data Loading Complete - Total: " << shipAppearanceData.size();
 }
 
 void ShipManager::loadAiShipComponentData(ShipObject* ship) {

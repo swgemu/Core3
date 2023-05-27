@@ -85,7 +85,4 @@ void ZoneProcessServerImplementation::initialize() {
 
 	forageManager = new ForageManager();
 	forageManager->deploy();
-
-	ShipManager::instance();
-
 }

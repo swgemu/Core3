@@ -34,8 +34,8 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/frs/FrsManager.h"
-
 #include "server/chat/ChatManager.h"
+#include "server/zone/managers/ship/ShipManager.h"
 
 #include "server/zone/ZoneProcessServer.h"
 #include "ZonePacketHandler.h"
@@ -187,6 +187,8 @@ void ZoneServerImplementation::initialize() {
 
 	petManager = new PetManager(_this.getReferenceUnsafeStaticCast());
 	petManager->initialize();
+
+	ShipManager::instance()->initialize();
 
 	startZones();
 	startSpaceZones();
@@ -354,7 +356,7 @@ void ZoneServerImplementation::shutdown() {
 
 	stopManagers();
 
-	info("shutting down zones", true);
+	info("Shutting Down Ground Zones", true);
 
 	for (int i = 0; i < zones->size(); ++i) {
 		ManagedReference<Zone*> zone = zones->get(i);
@@ -368,7 +370,23 @@ void ZoneServerImplementation::shutdown() {
 
 	zones->removeAll();
 
-	info("zones shut down", true);
+	info("Ground Zones Shut Down", true);
+
+	info("Shutting Down Space Zones", true);
+
+	for (int i = 0; i < spaceZones->size(); ++i) {
+		ManagedReference<SpaceZone*> spaceZone = spaceZones->get(i);
+
+		if (spaceZone != nullptr) {
+			spaceZone->stopManagers();
+
+			debug() << "zone references " << spaceZone->getReferenceCount();
+		}
+	}
+
+	spaceZones->removeAll();
+
+	info("Space Zones Shut Down", true);
 
 	printInfo();
 
