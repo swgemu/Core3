@@ -372,15 +372,14 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 		capValue = craftingValues->getCapValue(attribute);
 		craftingValues->setMaxValue(attribute, 1000.f);
 
-		// Proper
-		craftingValues->setMaxPercentage(attribute, 1.f);
+		maxPercentage = (capValue / 1000.f);
 
 		// Get initial assembled value
 		initialValue = Genetics::initialValue(capValue);
 
 		// Set current percentage based on assembly value
 		currentPercentage = (initialValue / 1000.f);
-		craftingValues->setCurrentPercentage(attribute, currentPercentage);
+		craftingValues->setCurrentPercentage(attribute, currentPercentage, maxPercentage);
 
 #ifdef DEBUG_GENETIC_LAB
 		info(true) << "Current Percentage: " << currentPercentage << " Max Percentage: " << 100.f;
