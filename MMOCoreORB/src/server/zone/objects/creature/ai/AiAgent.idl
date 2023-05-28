@@ -59,19 +59,19 @@ class AiAgent extends CreatureObject {
 	protected Vector<string> skillCommands;
 
 	@dereferenced
-	protected PatrolPointsVector patrolPoints;
+	protected transient PatrolPointsVector patrolPoints;
 
 	@dereferenced
-	protected PatrolPointsVector savedPatrolPoints;
+	protected transient PatrolPointsVector savedPatrolPoints;
 
 	@dereferenced
-	protected PatrolPoint homeLocation;
+	protected transient PatrolPoint homeLocation;
 
 	@dereferenced
-	protected PatrolPoint nextStepPosition;
+	protected transient PatrolPoint nextStepPosition;
 
 	@dereferenced
-	protected PatrolPoint endMovementPosition;
+	protected transient PatrolPoint endMovementPosition;
 
 	protected transient CurrentFoundPath currentFoundPath;
 	protected transient CellObject targetCellObject;
@@ -471,8 +471,13 @@ class AiAgent extends CreatureObject {
 
 	public void clearPatrolPoints() {
 		synchronized (targetMutex) {
-			if (movementState == PATROLLING || movementState == WATCHING) {
-				for (int i = 0; i < patrolPoints.size(); i++) {
+			int patrolPointsSize = patrolPoints.size();
+
+			if (patrolPointsSize > 0 && (movementState == PATROLLING || movementState == WATCHING)) {
+				if (savedPatrolPoints.size() > 5)
+					savedPatrolPoints.removeAll();
+
+				for (int i = 0; i < patrolPointsSize; i++) {
 					savedPatrolPoints.add(patrolPoints.get(i));
 				}
 			}
