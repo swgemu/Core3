@@ -10,13 +10,10 @@
 class InstallShipComponentCommand : public QueueCommand {
 public:
 
-	InstallShipComponentCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	InstallShipComponentCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -24,19 +21,46 @@ public:
 			return INVALIDLOCOMOTION;
 
 		StringTokenizer tokenizer(arguments.toString());
-		long shipId = tokenizer.getLongToken();
-		int slot = tokenizer.getIntToken();
-		long componentId = tokenizer.getLongToken();
 
-		ZoneServer* zoneServer = server->getZoneServer();
+		if (!tokenizer.hasMoreTokens())
+			return GENERALERROR;
+
+		uint64 shipID = tokenizer.getLongToken();
+		int slot = tokenizer.getIntToken();
+
+		if (slot == 112) {
+			/* TODO: When adding ship components double clicking the main menu for slot, this number is sent along with the slot name as
+					the next token value. Should this look for a component for the slot automatically? - H
+			*/
+			return GENERALERROR;
+		}
+
+		String componentString;
+		tokenizer.getStringToken(componentString);
+
+		if (shipID == 0 || componentString == "") {
+			return GENERALERROR;
+		}
+
+		if (componentString == "installed") {
+			return GENERALERROR;
+		}
+
+		uint64 componentID = Long::valueOf(componentString);
+
+		if (componentID == 0) {
+			return GENERALERROR;
+		}
+
+		ZoneServer* zoneServer = creature->getZoneServer();
 
 		if (zoneServer == nullptr)
 			return GENERALERROR;
 
-		ManagedReference<SceneObject*> component = zoneServer->getObject(componentId);
-		ManagedReference<SceneObject*> shipSceneO = zoneServer->getObject(shipId);
+		ManagedReference<SceneObject*> component = zoneServer->getObject(componentID);
+		ManagedReference<SceneObject*> shipSceneO = zoneServer->getObject(shipID);
 
-		if (component == nullptr || shipSceneO == nullptr)
+		if (component == nullptr || shipSceneO == nullptr || !shipSceneO->isShipObject())
 			return GENERALERROR;
 
 		ManagedReference<ShipObject*> ship = shipSceneO.castTo<ShipObject*>();
@@ -44,8 +68,7 @@ public:
 		if (ship == nullptr)
 			return GENERALERROR;
 
-		Locker locker(ship);
-		//info("Attempting to install component(" + String::valueOf((int64)componentId) + ") at slot: " + String::valueOf(slot), true);
+		Locker locker(ship, creature);
 		ship->install(creature, component, slot, true);
 
 		return SUCCESS;
