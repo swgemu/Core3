@@ -29,6 +29,7 @@
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
+#include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
@@ -116,10 +117,19 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 }
 
 void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
+	BaseMessage* destroy = new SceneObjectDestroyMessage(asSceneObject());
+	player->sendMessage(destroy);
+
 	BaseMessage* msg = new SceneObjectCreateMessage(asSceneObject());
 	player->sendMessage(msg);
 
 	link(player, containmentType);
+
+	auto pilot = getPilot();
+
+	if (pilot != nullptr) {
+		player->addInRangeObject(pilot, true);
+	}
 
 	try {
 		sendBaselinesTo(player);
@@ -1030,4 +1040,35 @@ void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedOb
 	}
 
 	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+}
+
+void ShipObjectImplementation::setSyncStamp(uint32 value) {
+	syncTime = System::getMiliTime();
+	movementCounter = value;
+}
+
+uint32 ShipObjectImplementation::getSyncStamp() {
+	long deltaTime = System::getMiliTime() - syncTime;
+	return movementCounter + deltaTime;
+}
+
+void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
+	auto pilot = getPilot();
+
+	if (pilot != nullptr) {
+		pilot->setPosition(getPositionX(),getPositionZ(),getPositionY());
+		pilot->setMovementCounter(movementCounter);
+	}
+
+	SceneObjectImplementation::updateZone(lightUpdate, sendPackets);
+}
+
+CreatureObject* ShipObjectImplementation::getPilot() {
+	auto chair = pilotChair.get();
+
+	if (chair != nullptr) {
+		return chair->getSlottedObject("ship_pilot_pob").castTo<CreatureObject*>();
+	}
+
+	return getSlottedObject("ship_pilot").castTo<CreatureObject*>();
 }

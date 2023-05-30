@@ -16,7 +16,7 @@
 
 class ShipUpdateTransformMessage : public BaseMessage {
 public:
-	ShipUpdateTransformMessage(ShipObject* ship) : BaseMessage(50) {
+	ShipUpdateTransformMessage(ShipObject* ship, uint32 syncStamp = 0) : BaseMessage(50) {
 		insertShort(0x08); //Opcode
 		insertInt(0x76026fb9); //Message
 		insertShort(ship->getUniqueID());
@@ -31,10 +31,10 @@ public:
 		insertSignedByte(0);
 		insertSignedByte(0);
 
-		insertInt(ship->getMovementCounter());
+		insertInt(syncStamp ? syncStamp : ship->getSyncStamp());
 	}
 
-	ShipUpdateTransformMessage(ShipObject* ship, PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC) : BaseMessage(50) {
+	ShipUpdateTransformMessage(ShipObject* ship, PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC, uint32 syncStamp = 0) : BaseMessage(50) {
 		insertShort(0x08); //Opcode
 		insertInt(0x76026fb9); //Message
 		insertShort(ship->getUniqueID());
@@ -48,10 +48,10 @@ public:
 		rB.write(this);
 		rC.write(this);
 
-		insertInt(ship->getMovementCounter());
+		insertInt(syncStamp ? syncStamp : ship->getSyncStamp());
 	}
 
-	ShipUpdateTransformMessage(ShipObject* ship, const Vector3& position, PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC) : BaseMessage(50) {
+	ShipUpdateTransformMessage(ShipObject* ship, const Vector3& position, PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC, uint32 syncStamp = 0) : BaseMessage(50) {
 		insertShort(0x08); //Opcode
 		insertInt(0x76026fb9); //Message
 		insertShort(ship->getUniqueID());
@@ -65,13 +65,13 @@ public:
 		rB.write(this);
 		rC.write(this);
 
-		insertInt(ship->getMovementCounter());
+		insertInt(syncStamp ? syncStamp : ship->getSyncStamp());
 	}
 
-	ShipUpdateTransformMessage(ShipObject* scno, const Quaternion* direction, const Vector3& position, PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC) : BaseMessage(50) {
+	ShipUpdateTransformMessage(ShipObject* ship, const Quaternion* direction, const Vector3& position, PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC, uint32 syncStamp = 0) : BaseMessage(50) {
 		insertShort(0x08); //opcode
 		insertInt(0x76026fb9); //Message
-		insertShort(scno->getUniqueID());
+		insertShort(ship->getUniqueID());
 
 		writePackedDirection(direction);
 		writePackedPosition(position);
@@ -82,32 +82,7 @@ public:
 		rB.write(this);
 		rC.write(this);
 
-		insertInt(scno->getMovementCounter());
-	}
-
-	ShipUpdateTransformMessage(ShipObject* scno, int8 dirX, int8 dirY, int8 dirZ, int8 dirW, int16 posX, int16 posZ, int16 posY, int16 velA, int16 velB, int8 rA, int8 rB, int8 rC) : BaseMessage(50) {
-		insertShort(0x08); //Opcode
-		insertInt(0x76026fb9); //Message
-		insertShort(scno->getUniqueID());
-
-		//direction
-		insertSignedByte(dirW);
-		insertSignedByte(dirX);
-		insertSignedByte(dirY);
-		insertSignedByte(dirZ);
-
-		insertSignedShort(posX);
-		insertSignedShort(posY);
-		insertSignedShort(posZ);
-
-		insertSignedShort(velA);
-		insertSignedShort(velB);
-
-		insertSignedByte(rA);
-		insertSignedByte(rB);
-		insertSignedByte(rC);
-
-		insertInt(scno->getMovementCounter());
+		insertInt(syncStamp ? syncStamp : ship->getSyncStamp());
 	}
 
 	void writePackedPosition(const Vector3& position) {

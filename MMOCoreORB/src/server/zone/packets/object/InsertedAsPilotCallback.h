@@ -36,9 +36,8 @@ public:
 		if (ghost != nullptr)
 			ghost->setTeleporting(false);
 
-		player->setPosition(0,0,0);
-		DataTransform* pack = new DataTransform(player->asSceneObject());
-		player->broadcastMessage(pack, true);
+		DataTransform* pack = new DataTransform(player, Vector3::ZERO);
+		player->sendMessage(pack);
 	}
 };
 

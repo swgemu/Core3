@@ -47,7 +47,7 @@ public:
 	}
 
 	Vector3 get() {
-		return direction.get() * inverseVelocityScale;
+		return direction.get() * speed * inverseVelocityScale;
 	}
 
 	float getSpeed() {
