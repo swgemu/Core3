@@ -15,20 +15,23 @@
 
 class JtlShipListResponse: public ObjectControllerMessage {
 public:
-	JtlShipListResponse(CreatureObject* creo, SceneObject* terminal) : ObjectControllerMessage(creo->getObjectID(), 0x1B, 0x41D) {
-		PlayerObject* ghost = creo->getPlayerObject();
+	JtlShipListResponse(CreatureObject* player, SceneObject* terminal) : ObjectControllerMessage(player->getObjectID(), 0x1B, 0x41D) {
+		if (player == nullptr)
+			return;
+
+		PlayerObject* ghost = player->getPlayerObject();
 
 		if (ghost == nullptr) {
 			return;
 		}
 
-		auto datapad = creo->getSlottedObject("datapad");
+		auto datapad = player->getSlottedObject("datapad");
 
 		if (datapad == nullptr) {
 			return;
 		}
 
-		auto zone = creo->getZone();
+		auto zone = player->getZone();
 
 		if (zone == nullptr) {
 			return;
@@ -40,52 +43,51 @@ public:
 			return;
 		}
 
-		auto travelPoint = planetManager->getNearestPlanetTravelPoint(creo->getWorldPosition(), FLT_MAX);
+		auto travelPoint = planetManager->getNearestPlanetTravelPoint(player->getWorldPosition(), 128.f);
 
 		if (travelPoint == nullptr) {
 			return;
 		}
 
+		// If this is a blank string it will just show the ships not at this location
+		auto travelPointName = travelPoint->getPointName();
+
 		VectorMap<uint64, String> shipMap;
+		int datapadSize = datapad->getContainerObjectsSize();
 
-		for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
-			ManagedReference<ShipControlDevice*> control = datapad->getContainerObject(i).castTo<ShipControlDevice*>();
+		for (int i = 0; i < datapadSize; i++) {
+			ManagedReference<SceneObject*> sceneO = datapad->getContainerObject(i);
 
-			if (control == nullptr) {
+			if (sceneO == nullptr || !sceneO->isShipControlDevice()) {
 				continue;
 			}
 
-			auto object = control->getControlledObject();
+			ShipControlDevice* shipDevice = sceneO.castTo<ShipControlDevice*>();
+
+			if (shipDevice == nullptr)
+				continue;
+
+			auto object = shipDevice->getControlledObject();
 
 			if (object == nullptr || !object->isShipObject()) {
 				continue;
 			}
 
-			if (control->getStoredCityName() == "") {
-				Locker cLock(creo);
-				control->setStoredLocationData(creo);
+			if (shipDevice->getStoredCityName() == "") {
+				Locker cLock(shipDevice, player);
+				shipDevice->setStoredCityName(travelPointName);
 			}
 
-			shipMap.put(object->getObjectID(), control->getStoredCityName());
+			shipMap.put(object->getObjectID(), shipDevice->getStoredCityName());
 		}
 
-		auto travelPointName = travelPoint->getPointName();
-
-		if (travelPointName == "") {
-			travelPointName = zone->getZoneName();
-		}
-
-		insertInt(shipMap.size() + 1); // Number of ships
+		insertInt(shipMap.size()); // Number of ships
 		insertLong(terminal->getObjectID()); // Space Terminal ID
 		insertAscii(travelPointName); //Player Location
 
-		for (int i = 0; i < shipMap.size(); ++i) {
+		for (int i = 0; i < shipMap.size(); i++) {
 			auto shipID = shipMap.elementAt(i).getKey();
 			auto cityName = shipMap.elementAt(i).getValue();
-
-			if (cityName == "") {
-				cityName = travelPointName;
-			}
 
 			insertLong(shipID);
 			insertAscii(cityName);

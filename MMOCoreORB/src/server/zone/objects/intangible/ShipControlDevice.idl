@@ -39,6 +39,11 @@ class ShipControlDevice extends ControlDevice {
 		return true;
 	}
 
+	@preLocked
+	public void setStoredCityName(final string cityName) {
+		storedCityName = cityName;
+	}
+
 	@dereferenced
 	public string getStoredCityName() {
 		return storedCityName;
