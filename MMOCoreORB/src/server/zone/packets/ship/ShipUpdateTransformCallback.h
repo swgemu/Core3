@@ -179,9 +179,10 @@ public:
 			updatePosition(ship, pilot);
 		} else if (isStaticUpdate(ship)) {
 			updateStatic(ship, pilot);
-		} else {
-			return;
 		}
+
+		auto data = new ShipUpdateTransformMessage(ship, ship->getPosition(), velocity, yawRate, pitchRate, rollRate, counter);
+		pilot->sendMessage(data);
 
 		ghost->setClientLastMovementStamp(counter);
 	}
