@@ -4206,6 +4206,7 @@ int DirectorManager::getSpawnPointInArea(lua_State* L) {
 
 	String zoneName  = lua_tostring(L, -4);
 	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+
 	if (zone == nullptr) {
 		instance()-> error("Zone == nullptr in DirectorManager::getSpawnPointInArea (" + zoneName + ")");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
@@ -4229,8 +4230,7 @@ int DirectorManager::getSpawnPointInArea(lua_State* L) {
 		lua_rawseti(L, -2, 1);
 		return 1;
 	} else {
-		String err = "Unable to generate spawn point in DirectorManager::getSpawnPointInArea, x: " + String::valueOf(x) + ", y: " + String::valueOf(y) + ", zone: " + zoneName + ", radius: " + String::valueOf(radius);
-		printTraceError(L, err);
+		instance()->debug() << "Unable to generate spawn point in DirectorManager::getSpawnPointInArea, x: " + String::valueOf(x) + ", y: " + String::valueOf(y) + ", zone: " + zoneName + ", radius: " + String::valueOf(radius);
 		return 0;
 	}
 }
