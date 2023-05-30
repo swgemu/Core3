@@ -183,6 +183,9 @@ public:
 			return;
 		}
 
+		auto data = new ShipUpdateTransformMessage(ship, ship->getPosition(), velocity, yawRate, pitchRate, rollRate, counter);
+		pilot->sendMessage(data);
+
 		ghost->setClientLastMovementStamp(counter);
 	}
 
