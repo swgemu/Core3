@@ -4206,6 +4206,7 @@ int DirectorManager::getSpawnPointInArea(lua_State* L) {
 
 	String zoneName  = lua_tostring(L, -4);
 	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+
 	if (zone == nullptr) {
 		instance()-> error("Zone == nullptr in DirectorManager::getSpawnPointInArea (" + zoneName + ")");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
@@ -4219,20 +4220,22 @@ int DirectorManager::getSpawnPointInArea(lua_State* L) {
 	Sphere sphere(Vector3(x, y, zone->getHeightNoCache(x, y)), radius);
 	Vector3 result;
 
-	if (PathFinderManager::instance()->getSpawnPointInArea(sphere, zone, result)) {
-		lua_newtable(L);
-		lua_pushnumber(L, result.getX());
-		lua_pushnumber(L, result.getZ());
-		lua_pushnumber(L, result.getY());
-		lua_rawseti(L, -4, 3);
-		lua_rawseti(L, -3, 2);
-		lua_rawseti(L, -2, 1);
-		return 1;
-	} else {
-		String err = "Unable to generate spawn point in DirectorManager::getSpawnPointInArea, x: " + String::valueOf(x) + ", y: " + String::valueOf(y) + ", zone: " + zoneName + ", radius: " + String::valueOf(radius);
-		printTraceError(L, err);
-		return 0;
+	for (int i = 0; i < SPAWNPOINTSEARCHATTEMPTS; i++) {
+		if (PathFinderManager::instance()->getSpawnPointInArea(sphere, zone, result)) {
+			lua_newtable(L);
+			lua_pushnumber(L, result.getX());
+			lua_pushnumber(L, result.getZ());
+			lua_pushnumber(L, result.getY());
+			lua_rawseti(L, -4, 3);
+			lua_rawseti(L, -3, 2);
+			lua_rawseti(L, -2, 1);
+
+			return 1;
+		}
 	}
+
+	instance()->debug() << "Unable to generate spawn point in DirectorManager::getSpawnPointInArea, x: " + String::valueOf(x) + ", y: " + String::valueOf(y) + ", zone: " + zoneName + ", radius: " + String::valueOf(radius);
+	return 0;
 }
 
 int DirectorManager::getPlayerByName(lua_State* L) {
