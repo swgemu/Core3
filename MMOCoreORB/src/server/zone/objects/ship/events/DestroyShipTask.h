@@ -96,15 +96,35 @@ public:
 
 			default: {
 				if (pilot != nullptr) {
-					Locker pLock(pilot);
-					ship->storeShip(pilot);
+					auto zoneServer = pilot->getZoneServer();
+
+					if (zoneServer == nullptr)
+						return;
+
+					ManagedReference<SceneObject*> device = zoneServer->getObject(ship->getControlDeviceID());
+
+					if (device == nullptr || !device->isShipControlDevice())
+						return;
+
+					ShipControlDevice* shipControlDevice = device.castTo<ShipControlDevice*>();
+
+					if (shipControlDevice == nullptr)
+						return;
+
+					Reference<CreatureObject*> pilotReference = pilot;
+					Reference<ShipControlDevice*> shipControlRef = shipControlDevice;
+
+					Core::getTaskManager()->executeTask([shipControlDevice, pilotReference] () {
+						Locker locker(shipControlDevice);
+
+						shipControlDevice->storeShip(pilotReference);
+					}, "StoreShipLambda");
+
+					return;
 				}
 
-				if (ship->isInOctTree()) {
+				if (ship->getPersistenceLevel() == 0) {
 					ship->destroyObjectFromWorld(true);
-				}
-
-				if (pilot == nullptr && ship->getPersistenceLevel() == 0) {
 					ship->destroyObjectFromDatabase(true);
 				}
 

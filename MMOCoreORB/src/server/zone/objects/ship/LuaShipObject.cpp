@@ -2,6 +2,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/intangible/ShipControlDevice.h"
 
 const char LuaShipObject::className[] = "LuaShipObject";
 
@@ -51,15 +52,34 @@ int LuaShipObject::getControlDeviceID(lua_State* L) {
 }
 
 int LuaShipObject::storeShip(lua_State* L) {
-	if (realObject == nullptr)
+	CreatureObject* player = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+
+	if (player == nullptr)
 		return 0;
 
-	CreatureObject* creo = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+	ZoneServer* zoneServer = player->getZoneServer();
 
-	if (creo == nullptr)
+	if (zoneServer == nullptr)
 		return 0;
 
-	realObject->storeShip(creo);
+	ManagedReference<SceneObject*> device = zoneServer->getObject(realObject->getControlDeviceID());
+
+	if (device == nullptr || !device->isShipControlDevice())
+		return 0;
+
+	ShipControlDevice* shipControlDevice = device.castTo<ShipControlDevice*>();
+
+	if (shipControlDevice == nullptr)
+		return 0;
+
+	Reference<CreatureObject*> playerReference = player;
+	Reference<ShipControlDevice*> shipControlRef = shipControlDevice;
+
+	Core::getTaskManager()->executeTask([shipControlDevice, playerReference] () {
+		Locker locker(shipControlDevice);
+
+		shipControlDevice->storeShip(playerReference);
+	}, "StoreShipLambda");
 
 	return 0;
 }

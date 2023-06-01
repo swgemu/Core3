@@ -149,25 +149,6 @@ void ShipObjectImplementation::setShipName(const String& name, bool notifyClient
 	shipNameCRC.update(name.hashCode(), false);
 }
 
-void ShipObjectImplementation::storeShip(CreatureObject* player) {
-	if (player == nullptr)
-		return;
-
-	ZoneServer* zoneServer = player->getZoneServer();
-
-	if (zoneServer == nullptr)
-		return;
-
-	ShipControlDevice* shipControlDevice = zoneServer->getObject(getControlDeviceID()).castTo<ShipControlDevice*>();
-
-	if (shipControlDevice == nullptr)
-		return;
-
-	repairShip(1.f); // remove once station repair is added
-
-	shipControlDevice->storeShip(player);
-}
-
 void ShipObjectImplementation::createChildObjects() {
 	auto layout = getObjectTemplate()->getPortalLayout();
 

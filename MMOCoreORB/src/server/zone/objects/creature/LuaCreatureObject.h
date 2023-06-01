@@ -132,6 +132,7 @@ namespace creature {
 		int getWeaponType(lua_State* L);
 		int attemptPeace(lua_State* L);
 		int forcePeace(lua_State* L);
+		int isPilotingShip(lua_State* L);
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;

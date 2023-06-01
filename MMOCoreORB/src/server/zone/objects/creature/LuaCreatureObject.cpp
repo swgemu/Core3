@@ -158,6 +158,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getWeaponType", &LuaCreatureObject::getWeaponType },
 		{ "attemptPeace", &LuaCreatureObject::attemptPeace },
 		{ "forcePeace", &LuaCreatureObject::forcePeace },
+		{ "isPilotingShip", &LuaCreatureObject::isPilotingShip },
 		{ 0, 0 }
 };
 
@@ -1309,4 +1310,12 @@ int LuaCreatureObject::forcePeace(lua_State* L) {
 	CombatManager::instance()->forcePeace(realObject);
 
 	return 0;
+}
+
+int LuaCreatureObject::isPilotingShip(lua_State* L) {
+	bool isPiloting = realObject->isPilotingShip();
+
+	lua_pushboolean(L, isPiloting);
+
+	return 1;
 }

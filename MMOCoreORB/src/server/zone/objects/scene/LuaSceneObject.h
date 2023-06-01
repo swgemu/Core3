@@ -32,6 +32,7 @@ namespace scene {
 		int _getObject(lua_State* L);
 		// Methods we will need to use
 		int getParent(lua_State* L);
+		int getRootParent(lua_State* L);
 		int getPositionX(lua_State* L);
 		int getPositionZ(lua_State* L);
 		int getPositionY(lua_State* L);

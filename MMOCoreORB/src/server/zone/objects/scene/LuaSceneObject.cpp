@@ -22,6 +22,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "_setObject", &LuaSceneObject::_setObject },
 		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "getParent", &LuaSceneObject::getParent },
+		{ "getRootParent", &LuaSceneObject::getRootParent },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "getPositionX", &LuaSceneObject::getPositionX },
 		{ "getPositionY", &LuaSceneObject::getPositionY },
@@ -376,6 +377,19 @@ int LuaSceneObject::isInRangeWithObject3d(lua_State* L) {
 
 int LuaSceneObject::getParent(lua_State* L) {
 	SceneObject* obj = realObject->getParent().get().get();
+
+	if (obj == nullptr) {
+		lua_pushnil(L);
+	} else {
+		obj->_setUpdated(true);
+		lua_pushlightuserdata(L, obj);
+	}
+
+	return 1;
+}
+
+int LuaSceneObject::getRootParent(lua_State* L) {
+	SceneObject* obj = realObject->getRootParent();
 
 	if (obj == nullptr) {
 		lua_pushnil(L);

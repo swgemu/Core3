@@ -41,13 +41,15 @@ function SpaceStationScreenPlay:landShip(pPlayer, destination)
 		return
 	end
 
-	local pShip = SceneObject(pPlayer):getParent()
-	if (pShip == nil or not SceneObject(pShip):isShipObject()) then
+	local pShip = SceneObject(pPlayer):getRootParent()
+
+	if (pShip == nil or not SceneObject(pShip):isShipObject() or not CreatureObject(pPlayer):isPilotingShip()) then
 		return
 	end
 
 	local destinationTable = self.travelPoints
 	local destinationInfo = destinationTable[destination]
+
 	SceneObject(pPlayer):switchZone(destinationInfo[1], destinationInfo[2], destinationInfo[3], destinationInfo[4], 0)
 	LuaShipObject(pShip):storeShip(pPlayer)
 end
