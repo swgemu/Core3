@@ -176,7 +176,7 @@ function ZicxBugBomb:spawnNpcs()
 
 		if (pNpc ~= nil) then
 			if npcSpawnData.position == SIT then
-				CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+				CreatureObject(pNpc):setState(SITTINGONCHAIR)
 			end
 
 			if (npcSpawnData.npcTemplate == "goru_rainstealer") then

@@ -94,7 +94,7 @@ function BestineMuseumScreenPlay:spawnMobiles()
 		local npcData = artistMobiles[i]
 		local pNpc = spawnMobile("tatooine", npcData.template, 1, npcData.x, npcData.z, npcData.y, npcData.direction, npcData.cellID)
 		if pNpc ~= nil and npcData.position == SIT then
-			CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+			CreatureObject(pNpc):setState(SITTINGONCHAIR)
 		end
 	end
 end

@@ -221,9 +221,12 @@ public:
 		lua->setGlobalInt("ONFIRE",						CreatureState::ONFIRE					);
 		lua->setGlobalInt("RIDINGMOUNT",				CreatureState::RIDINGMOUNT				);
 		lua->setGlobalInt("MOUNTEDCREATURE",			CreatureState::MOUNTEDCREATURE			);
-		lua->setGlobalInt("PILOTINGSHIP",				CreatureState::PILOTINGSHIP				);
-		lua->setGlobalInt("SHIPOPERATIONS",				CreatureState::SHIPOPERATIONS			);
-		lua->setGlobalInt("SHIPGUNNER",					CreatureState::SHIPGUNNER				);
+
+		lua->setGlobalLong("PILOTINGSHIP",				CreatureState::PILOTINGSHIP				);
+		lua->setGlobalLong("SHIPOPERATIONS",			CreatureState::SHIPOPERATIONS			);
+		lua->setGlobalLong("SHIPGUNNER",				CreatureState::SHIPGUNNER				);
+		lua->setGlobalLong("SHIPINTERIOR",				CreatureState::SHIPINTERIOR				);
+		lua->setGlobalLong("PILOTINGPOBSHIP",			CreatureState::PILOTINGPOBSHIP			);
 
 		lua->setGlobalInt("ATTACKABLE",					CreatureFlag::ATTACKABLE				);
 		lua->setGlobalInt("AGGRESSIVE",					CreatureFlag::AGGRESSIVE				);
