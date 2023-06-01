@@ -608,8 +608,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("CROUCHED", CreaturePosture::CROUCHED);
 	luaEngine->setGlobalInt("LYINGDOWN", CreaturePosture::LYINGDOWN);
 	luaEngine->setGlobalInt("STATESITTINGONCHAIR", CreatureState::SITTINGONCHAIR);
-	luaEngine->setGlobalInt("PILOTINGSHIP", CreatureState::PILOTINGSHIP);
+	luaEngine->setGlobalLong("PILOTINGSHIP", CreatureState::PILOTINGSHIP);
 	luaEngine->setGlobalLong("PILOTINGPOBSHIP", CreatureState::PILOTINGPOBSHIP);
+	luaEngine->setGlobalLong("SHIPINTERIOR", CreatureState::SHIPINTERIOR);
 
 	//Player Arrangements
 	luaEngine->setGlobalLong("RIDER", PlayerArrangement::RIDER);

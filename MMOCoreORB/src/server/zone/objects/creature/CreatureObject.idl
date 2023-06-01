@@ -1048,6 +1048,9 @@ class CreatureObject extends TangibleObject {
 	public native boolean clearState(unsigned long state, boolean notifyClient = true);
 
 	@preLocked
+	public native void clearSpaceStates();
+
+	@preLocked
 	public void setControlDevice(ControlDevice device) {
 		controlDevice = device;
 	}

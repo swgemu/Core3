@@ -84,6 +84,10 @@ class ShipControlDevice extends ControlDevice {
 
 	@preLocked
 	@arg1preLocked
+	public native void launchGroupMember(CreatureObject groupMember);
+
+	@preLocked
+	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
 	@local

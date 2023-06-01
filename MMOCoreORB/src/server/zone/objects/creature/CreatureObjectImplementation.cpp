@@ -1013,6 +1013,21 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 	}
 }
 
+void CreatureObjectImplementation::clearSpaceStates() {
+	if (hasState(CreatureState::PILOTINGSHIP))
+		clearState(CreatureState::PILOTINGSHIP);
+	if (hasState(CreatureState::SHIPOPERATIONS))
+		clearState(CreatureState::SHIPOPERATIONS);
+	if (hasState(CreatureState::SHIPOPERATIONS))
+		clearState(CreatureState::SHIPOPERATIONS);
+	if (hasState(CreatureState::SHIPGUNNER))
+		clearState(CreatureState::SHIPGUNNER);
+	if (hasState(CreatureState::SHIPINTERIOR))
+		clearState(CreatureState::SHIPINTERIOR);
+	if (hasState(CreatureState::PILOTINGPOBSHIP))
+		clearState(CreatureState::PILOTINGPOBSHIP);
+}
+
 void CreatureObjectImplementation::setHAM(int type, int value,
 		bool notifyClient) {
 	if (hamList.get(type) == value)

@@ -42,7 +42,7 @@ void ShipControlDeviceImplementation::setStoredLocationData(CreatureObject* play
 		return;
 	}
 
-	auto travelPoint = planetManager->getNearestPlanetTravelPoint(player->getWorldPosition(), FLT_MAX);
+	auto travelPoint = planetManager->getNearestPlanetTravelPoint(player->getWorldPosition(), 128.f);
 
 	if (travelPoint == nullptr) {
 		return;
@@ -145,15 +145,23 @@ bool ShipControlDeviceImplementation::launchShip(CreatureObject* player, const S
 }
 
 bool ShipControlDeviceImplementation::removePlayer(CreatureObject* player) {
-	auto zone = getZoneServer()->getZone(storedZoneName);
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr)
+		return false;
+
+	auto zone = zoneServer->getZone(storedZoneName);
 
 	if (zone == nullptr) {
 		return false;
 	}
 
 	Locker sLock(player);
+
 	player->destroyObjectFromWorld(false);
 	player->switchZone(storedZoneName, storedPosition.getX(), storedPosition.getZ(), storedPosition.getY(), 0);
+
+	player->clearSpaceStates();
 
 	return player->getRootParent() == nullptr;
 }
@@ -171,28 +179,65 @@ bool ShipControlDeviceImplementation::insertPlayer(CreatureObject* player) {
 		return false;
 	}
 
-	Locker sLock(player);
 	player->destroyObjectFromWorld(false);
 
 	if (ship->getChassisCategory() == "pob") {
-		auto station = ship->getPilotChair().get();
+		auto pilotChair = ship->getPilotChair().get();
 
-		if (station == nullptr) {
+		if (pilotChair == nullptr) {
 			return false;
 		}
 
-		player->setState(CreatureState::PILOTINGPOBSHIP);
-		player->switchZone(spaceZone->getZoneName(), station->getPositionX(),station->getPositionZ(),station->getPositionY(), station->getObjectID());
+		// this crashes client upon initial launch if set directly into pilots chair - H
+		player->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY(), pilotChair->getParentID());
+
+		//player->setState(CreatureState::PILOTINGPOBSHIP);
+		player->setState(CreatureState::SHIPINTERIOR);
 	} else {
 		player->setState(CreatureState::PILOTINGSHIP);
-		player->switchZone(spaceZone->getZoneName(), ship->getPositionX(),ship->getPositionZ(),ship->getPositionY(), ship->getObjectID());
+		player->switchZone(spaceZone->getZoneName(), ship->getPositionX(), ship->getPositionZ(), ship->getPositionY(), ship->getObjectID());
 	}
 
 	return player->getRootParent() == ship;
 }
 
+void ShipControlDeviceImplementation::launchGroupMember(CreatureObject* groupMember) {
+	if (groupMember == nullptr)
+		return;
+
+	auto ship = controlledObject.get().castTo<ShipObject*>();
+
+	if (ship == nullptr || ship->getChassisCategory() != "pob") {
+		return;
+	}
+
+	auto spaceZone = ship->getSpaceZone();
+
+	if (spaceZone == nullptr) {
+		return;
+	}
+
+	ZoneServer* zoneServer = groupMember->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	auto pilotChair = ship->getPilotChair().get();
+
+	if (pilotChair == nullptr) {
+		return;
+	}
+
+	// TODO: get starting positions from ship template - H
+	groupMember->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY() - 2.0f, pilotChair->getParentID());
+	groupMember->setState(CreatureState::SHIPINTERIOR);
+}
+
 void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	auto ghost = player == nullptr ? nullptr : player->getPlayerObject().get();
+	if (player == nullptr)
+		return;
+
+	auto ghost = player->getPlayerObject().get();
 
 	if (ghost == nullptr || !ghost->hasGodMode()) {
 		return;
@@ -235,6 +280,9 @@ void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 }
 
 int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	if (player == nullptr)
+		return 0;
+
 	auto ship = controlledObject.get().castTo<ShipObject*>();
 
 	if (ship == nullptr) {

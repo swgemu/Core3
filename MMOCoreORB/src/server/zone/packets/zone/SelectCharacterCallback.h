@@ -176,7 +176,11 @@ public:
 						spaceZone->transferObject(player, -1, false);
 				} else if (root->getZone() == nullptr) {
 					Locker clocker(root, player);
-					zone->transferObject(root, -1, true);
+
+					if (!inSpaceZone)
+						zone->transferObject(root, -1, true);
+					else
+						spaceZone->transferObject(root, -1, true);
 				}
 
 				player->sendToOwner(true);
