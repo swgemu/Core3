@@ -1,7 +1,7 @@
 spacestation_dantooine_convotemplate = ConvoTemplate:new {
     initialScreen = "spacestation_dantooine_greeting",
     templateType = "Lua",
-    luaClassHandler = "spacestation_dantooine_conv_handler",
+	luaClassHandler = "SpacestationDantooineConvoHandler",
     screens = {}
 }
 

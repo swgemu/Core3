@@ -1,7 +1,7 @@
 spacestation_corellia_convotemplate = ConvoTemplate:new {
     initialScreen = "spacestation_corellia_greeting",
     templateType = "Lua",
-    luaClassHandler = "spacestation_corellia_conv_handler",
+	luaClassHandler = "SpacestationCorelliaConvoHandler",
     screens = {}
 }
 

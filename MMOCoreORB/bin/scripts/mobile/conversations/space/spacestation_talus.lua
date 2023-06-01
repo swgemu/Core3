@@ -1,7 +1,7 @@
 spacestation_talus_convotemplate = ConvoTemplate:new {
     initialScreen = "spacestation_talus_greeting",
     templateType = "Lua",
-    luaClassHandler = "spacestation_talus_conv_handler",
+    luaClassHandler = "SpacestationTalusConvoHandler",
     screens = {}
 }
 --There are two full versions of this same dialogue - one in Selonian for most players, and one in English for smugglers. TODO - implement the smuggler version.

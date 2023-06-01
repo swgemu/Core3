@@ -1,7 +1,7 @@
 spacestation_yavin4_convotemplate = ConvoTemplate:new {
     initialScreen = "spacestation_yavin4_greeting",
     templateType = "Lua",
-    luaClassHandler = "spacestation_yavin4_conv_handler",
+    luaClassHandler = "SpacestationYavin4ConvoHandler",
     screens = {}
 }
 
