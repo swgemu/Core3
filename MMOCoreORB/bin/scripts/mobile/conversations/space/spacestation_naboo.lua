@@ -1,7 +1,7 @@
 spacestation_naboo_convotemplate = ConvoTemplate:new {
     initialScreen = "spacestation_naboo_greeting",
     templateType = "Lua",
-    luaClassHandler = "spacestation_naboo_conv_handler",
+    luaClassHandler = "SpacestationNabooConvoHandler",
     screens = {}
 }
 

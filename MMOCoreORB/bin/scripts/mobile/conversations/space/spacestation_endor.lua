@@ -1,7 +1,7 @@
 spacestation_endor_convotemplate = ConvoTemplate:new {
     initialScreen = "spacestation_endor_greeting",
     templateType = "Lua",
-    luaClassHandler = "spacestation_endor_conv_handler",
+	luaClassHandler = "SpacestationEndorConvoHandler",
     screens = {}
 }
 

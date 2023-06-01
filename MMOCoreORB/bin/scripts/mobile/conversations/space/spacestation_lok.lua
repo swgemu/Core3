@@ -1,7 +1,7 @@
 spacestation_lok_convotemplate = ConvoTemplate:new {
     initialScreen = "spacestation_lok_greeting",
     templateType = "Lua",
-    luaClassHandler = "spacestation_lok_conv_handler",
+    luaClassHandler = "SpacestationLokConvoHandler",
     screens = {}
 }
 
