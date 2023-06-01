@@ -30,6 +30,8 @@ include server.zone.objects.ship.ShipDeltaVector;
 class ShipObject extends TangibleObject {
 	public static final int HYPERSPACE_DELAY = 40;
 	public static final int NAVIGATOR_DELAY = 20;
+
+	public static final int COMM_MAX_DISTANCE = 500;
 	public static final int SPACESTATION_COMM_MAX_DISTANCE = 1000;
 	public static final int CONVO_DELAY = 60;
 

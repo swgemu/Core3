@@ -885,13 +885,10 @@ bool ShipObjectImplementation::checkInConvoRange(SceneObject* targetObject) {
 	int sqDistance = getWorldPosition().squaredDistanceTo(targetObject->getWorldPosition());
 
 	if (targetObject->isSpaceStationObject()) {
-		int maxSqDistance = SPACESTATION_COMM_MAX_DISTANCE * SPACESTATION_COMM_MAX_DISTANCE;
-
-		if (sqDistance < maxSqDistance)
-			return true;
+		return sqDistance <= (SPACESTATION_COMM_MAX_DISTANCE * SPACESTATION_COMM_MAX_DISTANCE);
 	}
 
-	return false;
+	return sqDistance <= (COMM_MAX_DISTANCE * COMM_MAX_DISTANCE);
 }
 
 float ShipObjectImplementation::calculateCurrentMass() {

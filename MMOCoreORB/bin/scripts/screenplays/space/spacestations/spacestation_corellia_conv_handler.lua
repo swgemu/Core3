@@ -3,7 +3,7 @@ require("utils.helpers")
 
 SpacestationCorelliaConvoHandler = Object:new {}
 
-function SpacestationCorelliaConvoHandler:getNextConversationScreen(conversationTemplate, pPlayer, selectedOption)
+function SpacestationCorelliaConvoHandler:getNextConversationScreen(pConvTemplate, pPlayer, selectedOption)
 	if (pPlayer == nil or pConvTemplate == nil) then
 		return
 	end

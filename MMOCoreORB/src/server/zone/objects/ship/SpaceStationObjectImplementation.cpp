@@ -21,24 +21,21 @@ bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* play
 
 	CreatureObject* playerCreature = player->asCreatureObject();
 
-	if (playerCreature == nullptr)
+	if (playerCreature == nullptr || !playerCreature->isPilotingShip()) {
 		return false;
-
-	SceneObject* playerParent = nullptr;
-
-	if (playerCreature->hasState(CreatureState::PILOTINGSHIP)) {
-		playerParent = playerCreature->getParent().get();
-	} else if (playerCreature->hasState(CreatureState::PILOTINGPOBSHIP)) {
-		playerParent = playerCreature->getRootParent();
 	}
 
-	if (playerParent == nullptr || !playerParent->isShipObject())
-		return false;
+	auto rootParent = playerCreature->getRootParent();
 
-	ShipObject* playerShip = playerParent->asShipObject();
-
-	if (playerShip == nullptr)
+	if (rootParent == nullptr || !rootParent->isShipObject()) {
 		return false;
+	}
+
+	ShipObject* playerShip = rootParent->asShipObject();
+
+	if (playerShip == nullptr) {
+		return false;
+	}
 
 	uint64 oid = getObjectID();
 

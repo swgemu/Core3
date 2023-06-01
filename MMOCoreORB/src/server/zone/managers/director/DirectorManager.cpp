@@ -661,6 +661,12 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("BLEEDING", CreatureState::BLEEDING);
 	luaEngine->setGlobalInt("PEACE", CreatureState::PEACE);
 
+	luaEngine->setGlobalLong("PILOTINGSHIP", CreatureState::PILOTINGSHIP);
+	luaEngine->setGlobalLong("SHIPOPERATIONS", CreatureState::SHIPOPERATIONS);
+	luaEngine->setGlobalLong("SHIPGUNNER", CreatureState::SHIPGUNNER);
+	luaEngine->setGlobalLong("SHIPINTERIOR", CreatureState::SHIPINTERIOR);
+	luaEngine->setGlobalLong("PILOTINGPOBSHIP", CreatureState::PILOTINGPOBSHIP);
+
 	luaEngine->setGlobalInt("NONE", CreatureFlag::NONE);
 	luaEngine->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
 	luaEngine->setGlobalInt("AGGRESSIVE", CreatureFlag::AGGRESSIVE);
