@@ -57,6 +57,7 @@ namespace creature {
 		int isFeigningDeath(lua_State* L);
 		int hasState(lua_State* L);
 		int setState(lua_State* L);
+		int clearState(lua_State* L);
 		int setPosture(lua_State* L);
 		int setMoodString(lua_State* L);
 		int getMoodString(lua_State* L);

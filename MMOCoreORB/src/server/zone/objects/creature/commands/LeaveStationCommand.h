@@ -14,32 +14,23 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		SceneObject* rootParent = creature->getRootParent();
-
-		if (rootParent == nullptr)
+		if (!creature->isInShipStation())
 			return GENERALERROR;
 
-		Locker clock(rootParent, creature);
+		ManagedReference<SceneObject*> cellParent = creature->getParentRecursively(SceneObjectType::CELLOBJECT);
 
-		rootParent->transferObject(creature, -1, true);
+		if (cellParent == nullptr)
+			return GENERALERROR;
 
-		//TODO: MODIFY? - H
-		if (creature->hasState(CreatureState::PILOTINGPOBSHIP))
-			creature->clearState(CreatureState::PILOTINGPOBSHIP);
-		if (creature->hasState(CreatureState::PILOTINGSHIP))
-			creature->clearState(CreatureState::PILOTINGSHIP);
-		if (creature->hasState(CreatureState::SHIPOPERATIONS))
-			creature->clearState(CreatureState::SHIPOPERATIONS);
-		if (creature->hasState(CreatureState::SHIPOPERATIONS))
-			creature->clearState(CreatureState::SHIPOPERATIONS);
-		if (creature->hasState(CreatureState::SHIPGUNNER))
-			creature->clearState(CreatureState::SHIPGUNNER);
+		if (!cellParent->transferObject(creature, -1, true)) {
+			return GENERALERROR;
+		}
+
+		// Clear their state from the station they were in
+		creature->clearSpaceStates();
+
+		// Must have proper interior state to be able to move properly in the ship
+		creature->setState(CreatureState::SHIPINTERIOR);
 
 		return SUCCESS;
 	}

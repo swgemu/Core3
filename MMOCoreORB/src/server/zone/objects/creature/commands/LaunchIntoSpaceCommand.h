@@ -31,21 +31,28 @@ public:
 
 		StringTokenizer tokenizer(arguments.toString());
 
+		if (!tokenizer.hasMoreTokens())
+			return GENERALERROR;
+
 		uint64 shipID = tokenizer.hasMoreTokens() ? tokenizer.getLongToken() : 0;
 		uint32 groupSize = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0;
-		String arrivalPlanet = tokenizer.hasMoreTokens() ? tokenizer.getStringToken() : "";
-		String arrivalPointName = tokenizer.hasMoreTokens() ? tokenizer.getStringToken().replaceAll("_", " ") : "";
-
-		Vector<ManagedReference<SceneObject*>> groupMembers;
+		Vector<ManagedReference<CreatureObject*>> groupMembers;
 
 		for (int i = 0; i < groupSize; i++) {
-			uint64 memberID = tokenizer.hasMoreTokens() ? tokenizer.getLongToken() : 0;
-			ManagedReference<SceneObject*> groupMember = zoneServer->getObject(memberID);
+			uint64 memberID = tokenizer.getLongToken();
+			ManagedReference<SceneObject*> memberScno = zoneServer->getObject(memberID).get();
 
-			if (groupMember != nullptr) {
+			if (memberScno == nullptr || !memberScno->isPlayerCreature())
+				continue;
+
+			auto groupMember = memberScno->asCreatureObject();
+
+			if (groupMember != nullptr)
 				groupMembers.add(groupMember);
-			}
 		}
+
+		String arrivalPlanet = tokenizer.hasMoreTokens() ? tokenizer.getStringToken() : "";
+		String arrivalPointName = tokenizer.hasMoreTokens() ? tokenizer.getStringToken().replaceAll("_", " ") : "";
 
 		ManagedReference<SceneObject*> terminal = zoneServer->getObject(target);
 
@@ -83,11 +90,14 @@ public:
 
 			Vector3 arrivalPosition = planetManager->getJtlTravelDestination(arrivalPointName);
 
-			for (int i = 0; i < groupMembers.size(); ++i) {
-				auto member = groupMembers.get(i);
+			for (int j = 0; j < groupMembers.size(); j++) {
+				auto member = groupMembers.get(j);
+
 				if (member == nullptr) {
 					continue;
 				}
+
+				Locker memLock(member, creature);
 
 				member->switchZone(arrivalPlanet, arrivalPosition.getX(),arrivalPosition.getY(),arrivalPosition.getZ(), 0);
 			}
@@ -123,10 +133,19 @@ public:
 			Vector3 randomPosition = Vector3(System::random(100.f), System::random(100.f), System::random(100.f));
 			Vector3 launchPosition = planetManager->getJtlLaunchLocations() + randomPosition;
 
-			Locker pLock(pcd);
+			Locker pLock(pcd, creature);
 
 			pcd->launchShip(creature, jtlZoneName, launchPosition);
-			pcd->insertPlayer(creature); // include groupMembers once playerVector is added.
+			pcd->insertPlayer(creature);
+
+			for (int j = 0; j < groupMembers.size(); j++) {
+				auto groupMember = groupMembers.get(j);
+
+				if (groupMember != nullptr) {
+					Locker memLock(groupMember, creature);
+					pcd->launchGroupMember(groupMember);
+				}
+			}
 		}
 
 		return SUCCESS;

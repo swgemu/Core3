@@ -13,15 +13,25 @@ function PilotSeatMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuRespon
 	menuResponse:addRadialMenuItem(120, 3, "@space/space_interaction:pilot_ship")
 end
 
-function PilotSeatMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, selectedID)
-	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
+function PilotSeatMenuComponent:handleObjectMenuSelect(pPilotChair, pPlayer, selectedID)
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() or pPilotChair == nil) then
 		return
 	end
 
+	-- print("Pilot Seat Menu Selected ID " .. selectedID .. " Container ID: " .. SceneObject(pPilotChair):getObjectID() .. " Objects Size: " .. SceneObject(pPilotChair):getContainerObjectsSize())
+
 	if (selectedID == 120) then
+		-- TODO: Check for proper ship certifications "no_ship_certification", "You are not certified to pilot this ship."
+		-- TODO: Check for player already in pilot seat
+
+
+		SceneObject(pPilotChair):transferObject(pPlayer, SHIP_PILOT_POB, 1)
+
+		-- Add in their piloting state
 		CreatureObject(pPlayer):setState(PILOTINGPOBSHIP)
 
-		SceneObject(pContainer):transferObject(pPlayer, SHIP_PILOT_POB, 1)
+		-- clear the players state from being on the inside of the ship
+		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
 	end
 
 	return 0

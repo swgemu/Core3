@@ -1048,6 +1048,9 @@ class CreatureObject extends TangibleObject {
 	public native boolean clearState(unsigned long state, boolean notifyClient = true);
 
 	@preLocked
+	public native void clearSpaceStates();
+
+	@preLocked
 	public void setControlDevice(ControlDevice device) {
 		controlDevice = device;
 	}
@@ -2159,6 +2162,11 @@ class CreatureObject extends TangibleObject {
 	@read
 	public boolean isOnboardPobShip() {
 		return (stateBitmask & CreatureState.SHIPINTERIOR) || (stateBitmask & CreatureState.SHIPOPERATIONS) || (stateBitmask & CreatureState.SHIPGUNNER);
+	}
+
+	@read
+	public boolean isInShipStation() {
+		return (stateBitmask & CreatureState.PILOTINGPOBSHIP) || (stateBitmask & CreatureState.SHIPOPERATIONS) || (stateBitmask & CreatureState.SHIPGUNNER);
 	}
 
 	@read
