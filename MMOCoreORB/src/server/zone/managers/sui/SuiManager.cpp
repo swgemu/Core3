@@ -28,6 +28,7 @@
 #include "server/zone/objects/player/sui/SuiBoxPage.h"
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/managers/ship/ShipManager.h"
 
 SuiManager::SuiManager() : Logger("SuiManager") {
 	server = nullptr;
@@ -504,6 +505,13 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			player->sendMessage(cbSui->generateMessage());
 
 		} else { // Items
+			if (templatePath.contains("ship/player/")) {
+				player->sendSystemMessage("Creating player ship: " + node->getDisplayName());
+				ShipManager::instance()->createPlayerShip(player, templatePath);
+				ghost->addSuiBox(cbSui);
+				return;
+			}
+
 			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 			if (inventory == nullptr) {

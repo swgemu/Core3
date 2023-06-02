@@ -68,6 +68,48 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 	},
 
 	itemList = {
+		"JTL Options",
+		{
+			"Ship Chassis",
+			{
+				"Rebel",
+				{
+					"A-Wing", "object/ship/player/player_awing.iff",
+					"B-Wing", "object/ship/player/player_bwing.iff",
+					"X-Wing", "object/ship/player/player_xwing.iff",
+					"Y-Wing", "object/ship/player/player_ywing.iff",
+					"Y-Wing Longprobe", "object/ship/player/player_ywing_longprobe.iff",
+					"Z-95 Headhunter", "object/ship/player/player_z95.iff",
+					"YKL-37R Nova Courier", "object/ship/player/player_ykl37r.iff",
+				},
+
+				"Imperial",
+				{
+					"Tie Fighter", "object/ship/player/player_tiefighter.iff",
+					"Tie Interceptor", "object/ship/player/player_tieinterceptor.iff",
+					"Tie Advanced", "object/ship/player/player_tieadvanced.iff",
+					"Tie Aggressor", "object/ship/player/player_tieaggressor.iff",
+					"Tie Bomber", "object/ship/player/player_tiebomber.iff",
+					"Tie Oppressor", "object/ship/player/player_tieoppressor.iff",
+					"Decimator", "object/ship/player/player_decimator.iff",
+				},
+
+				"Neutral",
+				{
+					"Rihkxykr Attack Ship", "object/ship/player/player_blacksun_heavy_s01.iff",
+					"Ixiyen Fast Attack Craft", "object/ship/player/player_blacksun_medium_s01.iff",
+					"Kihraxz Light Fighter", "object/ship/player/player_blacksun_light_s01.iff",
+					"M22-T Krayt Heavy Fighter", "object/ship/player/player_hutt_turret_ship.iff",
+					"Kimogila Heavy Fighter", "object/ship/player/player_hutt_heavy_s01.iff",
+					"Dunelizard Fighter", "object/ship/player/player_hutt_medium_s01.iff",
+					"Scyk Light Fighter", "object/ship/player/player_hutt_light_s01.iff",
+					"KSE Firespray", "object/ship/player/player_firespray.iff",
+					"YT-1300", "object/ship/player/player_yt1300.iff",
+					"Sorosuub Luxury Yacht", "object/ship/player/player_sorosuub_space_yacht.iff"
+				},
+			},
+		},
+
 		"Character Options",
 		{
 			"Learn Skill",
