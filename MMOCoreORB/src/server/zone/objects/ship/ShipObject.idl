@@ -1322,7 +1322,7 @@ class ShipObject extends TangibleObject {
 	}
 
 	public int getTotalCellNumber() {
-		return totalCellNumber;
+		return cells.size();
 	}
 
 	public native float getActualSpeed();

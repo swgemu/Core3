@@ -184,7 +184,7 @@ void ShipObjectImplementation::createChildObjects() {
 		if (newCell == nullptr)
 			continue;
 
-		//info(true) << "Cell #" << i << " with name: " << layout->getCellProperty(i)->getName();
+		//info(true) << "Cell #" << (i - 1) << " with name: " << layout->getCellProperty(i)->getName();
 
 		Locker clocker(newCell, asShipObject());
 
@@ -197,6 +197,15 @@ void ShipObjectImplementation::createChildObjects() {
 
 		cellNameMap.put(layout->getCellProperty(i)->getName(), newCell);
 		cells.put(i, newCell);
+
+		ContainerPermissions* permissions = newCell->getContainerPermissionsForUpdate();
+
+		if (permissions != nullptr) {
+			permissions->setOwner(getObjectID());
+			permissions->setInheritPermissionsFromParent(false);
+			permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+			permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
+		}
 	}
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {

@@ -412,7 +412,7 @@ bool ShipControlDeviceImplementation::ejectPlayers() {
 		ManagedReference<CreatureObject*> pilot = chair->getSlottedObject("ship_pilot_pob").castTo<CreatureObject*>();
 
 		if (pilot != nullptr && !removePlayer(pilot)) {
-			return false;
+			error() << "Unable to remove pilot from POB Ship - Name: " << pilot->getDisplayedName() << " ID: " << pilot->getObjectID();
 		}
 	}
 
@@ -424,26 +424,42 @@ bool ShipControlDeviceImplementation::ejectPlayers() {
 		}
 	}
 
-	for (int i = 0; i < ship->getContainerObjectsSize(); ++i) {
-		ManagedReference<CreatureObject*> object = ship->getContainerObject(i).castTo<CreatureObject*>();
+	for (int j = 0; j < ship->getContainerObjectsSize(); ++j) {
+		ManagedReference<SceneObject*> sceneO = ship->getContainerObject(j);
 
-		if (object != nullptr && !removePlayer(object)) {
-			return false;
+		if (sceneO == nullptr || !sceneO->isPlayerCreature())
+			continue;
+
+		auto player = sceneO->asCreatureObject();
+
+		if (player == nullptr)
+			continue;
+
+		if (!removePlayer(player)) {
+			error() << "Unable to remove player from ship container - Name: " << player->getDisplayedName() << " ID: " << player->getObjectID();
 		}
 	}
 
-	for (int i = 0; i < ship->getTotalCellNumber(); ++i) {
-		auto cell = ship->getCell(i);
+	for (int k = 0; k < ship->getTotalCellNumber(); k++) {
+		auto cell = ship->getCell(k);
 
 		if (cell == nullptr) {
 			continue;
 		}
 
-		for (int ii = 0; ii < cell->getContainerObjectsSize(); ++ii) {
-			ManagedReference<CreatureObject*> object = cell->getContainerObject(ii).castTo<CreatureObject*>();
+		for (int ii = 0; ii < cell->getContainerObjectsSize(); ii++) {
+			ManagedReference<SceneObject*> sceneO = ship->getContainerObject(ii);
 
-			if (object != nullptr && !removePlayer(object)) {
-				return false;
+			if (sceneO == nullptr || !sceneO->isPlayerCreature())
+				continue;
+
+			auto player = sceneO->asCreatureObject();
+
+			if (player == nullptr)
+				continue;
+
+			if (!removePlayer(player)) {
+				error() << "Unable to remove player from ship cell - Name: " << player->getDisplayedName() << " ID: " << player->getObjectID();
 			}
 		}
 	}
