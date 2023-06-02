@@ -99,11 +99,14 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 			}
 		}
 
-		auto portal = ssot->getPortalLayout();
+		totalCellNumber = ssot->getTotalCellNumber();
 
-		if (portal != nullptr) {
-			totalCellNumber = portal->getCellTotalNumber();
-		}
+		auto portalLayout = templateData->getPortalLayout();
+
+		if (portalLayout != nullptr)
+			totalCellNumber = portalLayout->getFloorMeshNumber();
+
+		//info(true) << getDisplayedName() << " loaded a total of " << totalCellNumber << " cells.";
 
 		auto chassisData = ShipManager::instance()->getChassisData(ssot->getShipName());
 
@@ -150,37 +153,51 @@ void ShipObjectImplementation::setShipName(const String& name, bool notifyClient
 }
 
 void ShipObjectImplementation::createChildObjects() {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		error() << "Failed to create child objects for ship: " << getDisplayedName() << " ID: " << getObjectID();
+		return;
+	}
+
 	auto layout = getObjectTemplate()->getPortalLayout();
 
 	if (layout == nullptr)
 		return;
 
+	//info(true) << "creating cells for Ship: " << getDisplayedName();
+
 	for (int i = 0; i < totalCellNumber; ++i) {
+		// Skip cell from r0
+		if (i == 0)
+			continue;
 
-		Reference<CellObject*> newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel()).castTo<CellObject*>();
+		auto newCellObject = zoneServer->createObject(0xAD431713, getPersistenceLevel());
 
-		if (newCell == nullptr) {
-			error("could not create cell");
+		if (newCellObject == nullptr || !newCellObject->isCellObject()) {
+			error() << "could not create cell";
 			continue;
 		}
+
+		auto newCell = static_cast<CellObject*>(newCellObject.get());
+
+		if (newCell == nullptr)
+			continue;
+
+		//info(true) << "Cell #" << i << " with name: " << layout->getCellProperty(i)->getName();
 
 		Locker clocker(newCell, asShipObject());
 
-		if (!transferObject(newCell, -1, true, true)) {
-			error("could not add cell");
+		if (!transferObject(newCell, -1, false, true)) {
+			error() << "could not add cell to ship";
 			continue;
 		}
 
-		newCell->setCellNumber(i + 1);
+		newCell->setCellNumber(i);
 
-		if (i != 0) {
-			cellNameMap.put(layout->getCellProperty(i-1)->getName(), newCell);
-		}
-
+		cellNameMap.put(layout->getCellProperty(i)->getName(), newCell);
 		cells.put(i, newCell);
 	}
-
-	ZoneServer* zoneServer = getZoneServer();
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
 		const ChildObject* child = templateObject->getChildObject(i);
@@ -206,9 +223,9 @@ void ShipObjectImplementation::createChildObjects() {
 
 		try {
 			if (totalCells >= child->getCellId()) {
-				ManagedReference<CellObject *> cellObject = getCell(child->getCellId());
+				//info(true) << getDisplayedName() << " -- childObject Inserting into cell #" << child->getCellId();
 
-				//info("Inserting into " + String::valueOf(cellObject->getObjectID()), true);
+				ManagedReference<CellObject *> cellObject = getCell(child->getCellId());
 
 				if (cellObject != nullptr) {
 					if (!cellObject->transferObject(obj, child->getContainmentType(), true)) {
