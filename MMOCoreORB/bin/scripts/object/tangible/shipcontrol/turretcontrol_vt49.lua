@@ -42,7 +42,7 @@
 
 
 object_tangible_shipcontrol_turretcontrol_vt49 = object_tangible_shipcontrol_shared_turretcontrol_vt49:new {
-
+	objectMenuComponent = "ShipTurretMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_turretcontrol_vt49, "object/tangible/shipcontrol/turretcontrol_vt49.iff")
