@@ -142,7 +142,7 @@ public:
 	const static int PILOTCHAIR = 0x2024;
 	const static int OPERATIONSCHAIR = 0x2025;
 	const static int TURRETACCESSLADDER = 0x2026;
-	const static int CONTAINER2 = 0x2027;
+	const static int SHIPCONTAINER = 0x2027;
 
 	/// Not in client *****************
 	const static int CAMOKIT = 0x2028;
@@ -352,6 +352,7 @@ public:
 	const static int SHIPCAPITAL = 0x20000002;
 	const static int SHIPSTATION = 0x20000003;
 	const static int SHIPTRANSPORT = 0x20000004;
+	const static int SHIPPOB = 0x20000005;
 	//*******************************
 
 	const static int SHIPATTACHMENT = 0x40000000;

@@ -492,9 +492,11 @@ int LuaSceneObject::transferObject(lua_State* L) {
 	int containmentType = lua_tonumber(L, -2);
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -3);
 
-	realObject->transferObject(obj, containmentType, notifyClient);
+	bool transfer = realObject->transferObject(obj, containmentType, notifyClient);
 
-	return 0;
+	lua_pushboolean(L, transfer);
+
+	return 1;
 }
 
 /*int LuaSceneObject::removeObject(lua_State* L) {

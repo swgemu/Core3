@@ -184,7 +184,7 @@ void ShipObjectImplementation::createChildObjects() {
 		if (newCell == nullptr)
 			continue;
 
-		//info(true) << "Cell #" << (i - 1) << " with name: " << layout->getCellProperty(i)->getName();
+		//info(true) << "Cell #" << (i) << " with name: " << layout->getCellProperty(i)->getName();
 
 		Locker clocker(newCell, asShipObject());
 
@@ -234,7 +234,7 @@ void ShipObjectImplementation::createChildObjects() {
 			if (totalCells >= child->getCellId()) {
 				//info(true) << getDisplayedName() << " -- childObject Inserting into cell #" << child->getCellId();
 
-				ManagedReference<CellObject *> cellObject = getCell(child->getCellId());
+				ManagedReference<CellObject *> cellObject = getCell(child->getCellId() - 1);
 
 				if (cellObject != nullptr) {
 					if (!cellObject->transferObject(obj, child->getContainmentType(), true)) {

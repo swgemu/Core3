@@ -104,7 +104,7 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case PILOTCHAIR:				return "@got_n:misc_pob_ship_pilot_chair";
 		case OPERATIONSCHAIR:			return "@got_n:misc_operations_chair";
 		case TURRETACCESSLADDER:		return "@got_n:misc_turret_access_ladder";
-		case CONTAINER2:				return "@got_n:misc_container_ship_loot";
+		case SHIPCONTAINER:				return "@got_n:misc_container_ship_loot";
 		case CAMOKIT:					return "@got_n:misc";
 		case LOOTKIT:					return "@got_n:misc";
 		case FISH:						return "@got_n:misc";
