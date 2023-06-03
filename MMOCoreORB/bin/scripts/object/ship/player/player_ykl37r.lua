@@ -42,11 +42,13 @@
 
 
 object_ship_player_player_ykl37r = object_ship_player_shared_player_ykl37r:new {
-
 	name = "player_ykl37r",
 	slideFactor = 1.85,
 	chassisHitpoints = 5000,
 	chassisMass = 10000,
+
+	-- POBSHIP
+	gameObjectType = 536870917,
 
 	category = "pob",
 	level = 5,
@@ -73,6 +75,101 @@ object_ship_player_player_ykl37r = object_ship_player_shared_player_ykl37r:new {
 	weapon_2 = { name = "wpn_xwing_missile_s01", hitpoints = 19.53581, armor = 19.31941, rate = 5.815926, drain = 23.09743, maxDamage = 22.9824, shieldEfficiency = 0, minDamage = 23.42325, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
 	weapon_3 = { name = "wpn_std_countermeasure", hitpoints = 247.8035, armor = 245.5052, rate = 0.09767031, drain = 23.58665, maxDamage = 98.10107, shieldEfficiency = 0, minDamage = 24.81069, ammo = 25, ammo_type = 6, armorEfficiency = 0,},
 	lots = 4,
+
+	childObjects = {
+		{ templateFile = "object/tangible/shipcontrol/shipcontrol_falcon.iff", x = -17.94, z = -1.87, y = 3.53, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1 },
+		{ templateFile = "object/tangible/shipcontrol/shipoperations_falcon.iff", x = -16.26, z = -1.87, y = 3.62, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1 },
+		-- Escape Pod
+		{ templateFile = "object/tangible/ship/interior_components/escape_pod_hatch.iff", x = -19.39, z = -1.18, y = -3.96, ox = 0, oy = 0.707106, oz = 0, ow = 0.707106, cellid = 2, containmentType = -1 },
+		-- Ship Permissions Terminal
+		{ templateFile = "object/tangible/terminal/terminal_pob_ship.iff", x = 6.22, z = -0.5, y = 16.98, ox = 0, oy = -0.707106, oz = 0, ow = 0.707106, cellid = 9, containmentType = -1 },
+		-- Turret Control
+		{ templateFile = "object/tangible/shipcontrol/turretcontrol_falcon.iff", x = -0.02, z = 0.28, y = 0.22, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 10, containmentType = -1 },
+		-- Cockpit
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -18.48, z  = -0.74, y = 0.6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -15.79, z  = -0.74, y = 0.55, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1 },
+		-- Airlock
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -17.19, z  = 0.45, y = -0.28, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/capacitor_interior.iff", x = -15.42, z  = -1.18, y = -7.27, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -18.88, z  = -1.15, y = -7.24, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
+		-- Hallmid
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 1.18, z  = -0.36, y = -5.29, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -1.92, z  = -0.41, y = -2.64, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1 },
+		-- Hallsb
+		{ templateFile = "object/tangible/ship/interior_components/shield_generator_interior.iff", x = 13.86, z  = -1.98, y = -4.89, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 13.7, z  = -0.91, y = -5.14, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 15.6, z  = 0.18, y = -3.9, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
+		-- Engineering
+		{ templateFile = "object/tangible/ship/interior_components/engine_interior.iff", x = 2.95, z  = -0.44, y = -5.47, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/reactor_interior.iff", x = -3.03, z  = -0.44, y = -5.41, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -0.01, z  = 1.03, y = -9.9, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -0.01, z  = -1.53, y = -9.93, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -5.23, z  = -0.47, y = -8.35, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 5.23, z  = -0.57, y = -8.3, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
+		-- Hallfore
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -2.99, z  = -0.33, y = -2.24, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 7, containmentType = -1 },
+		-- Storage
+		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = 6.5, z  = 0.5, y = 7.9, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 8, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = 6.45, z  = 0.5, y = 3.68, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 8, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 6.5, z  = 0.46, y = 5.9, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 8, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 6.43, z  = -0.13, y = 5.26, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 8, containmentType = -1 },
+		-- Cabin
+		{ templateFile = "object/tangible/container/drum/pob_ship_loot_box.iff", x = 0.1, z  = -0.5, y = 10.6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 9, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -2.58, z  = 2.75, y = 16.36, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 9, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 2.85, z  = 2.71, y = 16.44, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 9, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -1.85, z  = 0.73, y = 10.26, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 9, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 1.98, z  = 0.73, y = 10.31, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 9, containmentType = -1 },
+	},
+
+	sparkLocations = {
+		{cellid = 1,
+			-- Cockpit
+			{x = -17.94, z  = -1.87, y = 3.53},
+			{x = -16.26, z  = -1.87, y = 3.62},
+		},
+		{cellid = 2,
+			-- Airlock
+			{x = -15.79, z  = -0.74, y = 0.55},
+		},
+		{cellid = 3,
+			-- Hallport
+			{x = -15.42, z  = -1.18, y = -7.27},
+			{x = -18.88, z  = -1.15, y = -7.24},
+		},
+		{cellid = 4,
+			-- Hallmid
+			{x = -8.07, z  = -1.91, y = -3.58},
+		},
+		{cellid = 5,
+			-- Hallsb
+			{x = 1.18, z  = -0.36, y = -5.29},
+			{x = -1.92, z  = -0.41, y = -2.64},
+		},
+		{cellid = 6,
+			-- Engineering
+			{x = 13.7, z  = -0.91, y = -5.14},
+			{x = 15.6, z  = 0.18, y = -3.9},
+		},
+		{cellid = 7,
+			-- Hallfore
+			{x = -5.23, z  = -0.47, y = -8.35},
+			{x = 5.23, z  = -0.57, y = -8.3},
+		},
+		{cellid = 8,
+			-- Storage
+			{x = -3.84, z  = -1.02, y = 8.79},
+			{x = -2.99, z  = -0.33, y = -2.24},
+		},
+		{cellid = 9,
+			-- Cabin
+			{x = 6.43, z  = -0.13, y = 5.26},
+			{x = 0.1, z  = -0.5, y = 10.6},
+			{x = -0.5, z  = -0.5, y = 20.49},
+		},
+	},
+
+	launchPoints = {
+	},
 }
 
 ObjectTemplates:addTemplate(object_ship_player_player_ykl37r, "object/ship/player/player_ykl37r.iff")
