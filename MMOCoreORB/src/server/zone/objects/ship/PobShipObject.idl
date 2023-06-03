@@ -1,0 +1,45 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship;
+
+import engine.log.Logger;
+import server.zone.objects.ship.FighterShipObject;
+import server.zone.objects.scene.SceneObject;
+
+include templates.SharedObjectTemplate;
+include engine.util.u3d.Vector3;
+include system.util.VectorMap;
+include system.util.Vector;
+include system.lang.ref.Reference;
+
+class PobShipObject extends FighterShipObject {
+	@dereferenced
+	protected transient VectorMap<int, Vector<Vector3> > sparkLocations;
+
+	@dereferenced
+	protected transient VectorMap<int, Vector<Vector3> > launchPoints;
+
+	public PobShipObject() {
+		Logger.setLoggingName("PobShipObject");
+
+		launchPoints.setNoDuplicateInsertPlan();
+		sparkLocations.setNoDuplicateInsertPlan();
+	}
+
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@dirty
+	@nativeStub
+	@local
+	public native PobShipObject asPobShipObject();
+
+	@dirty
+	@local
+	@nativeStub
+	public native boolean isPobShipObject();
+}

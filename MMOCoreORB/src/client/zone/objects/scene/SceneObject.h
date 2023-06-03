@@ -118,7 +118,7 @@ public:
 	const static int PILOTCHAIR = 0x2024;
 	const static int OPERATIONSCHAIR = 0x2025;
 	const static int TURRETACCESSLADDER = 0x2026;
-	const static int CONTAINER2 = 0x2027;
+	const static int SHIPCONTAINER = 0x2027;
 	const static int CAMOKIT = 0x2028;
 
 	const static int TERMINAL = 0x4000;
