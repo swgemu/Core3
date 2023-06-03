@@ -42,6 +42,7 @@
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/ship/SpaceStationObject.h"
+#include "server/zone/objects/ship/PobShipObject.h"
 //#include "PositionUpdateTask.h"
 
 #include "variables/ContainerPermissions.h"
@@ -1981,6 +1982,14 @@ bool SceneObject::isSpaceStationObject() {
 	return false;
 }
 
+bool SceneObjectImplementation::isPobShipObject() {
+	return false;
+}
+
+bool SceneObject::isPobShipObject() {
+	return false;
+}
+
 AiAgent* SceneObjectImplementation::asAiAgent() {
 	return nullptr;
 }
@@ -2018,6 +2027,14 @@ SpaceStationObject* SceneObject::asSpaceStationObject() {
 }
 
 SpaceStationObject* SceneObjectImplementation::asSpaceStationObject() {
+	return nullptr;
+}
+
+PobShipObject* SceneObject::asPobShipObject() {
+	return nullptr;
+}
+
+PobShipObject* SceneObjectImplementation::asPobShipObject() {
 	return nullptr;
 }
 

@@ -40,6 +40,9 @@ class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	StringParam shipDifficulty;
 	StringParam shipFaction;
 
+	VectorMap<int, Vector<Vector3>> sparkLocations;
+	VectorMap<int, Vector<Vector3>> launchLocations;
+
 public:
 	SharedShipObjectTemplate() {
 
@@ -61,6 +64,14 @@ public:
 		return componentValues;
 	}
 
+	const VectorMap<int, Vector<Vector3>>* getSparkLocations() {
+		return &sparkLocations;
+	}
+
+	const VectorMap<int, Vector<Vector3>>* getLaunchLocations() {
+		return &launchLocations;
+	}
+
 	void readAttributeMap(LuaObject* templateData) {
 		auto attributes = templateData->getObjectField("attributes");
 
@@ -79,6 +90,74 @@ public:
 		}
 
 		attributes.pop();
+	}
+
+	void readPobData(LuaObject* templateData) {
+		// damage spark locations
+		auto sparkLocs = templateData->getObjectField("sparkLocations");
+
+		if (sparkLocs.isValidTable()) {
+			for (int i = 1; i <= sparkLocs.getTableSize(); ++i) {
+				auto cellTable = sparkLocs.getObjectAt(i);
+
+				if (cellTable.isValidTable()) {
+					int cellID = cellTable.getIntField("cellid");
+					Vector<Vector3> locations;
+
+					for (int k = 2; k <= cellTable.getTableSize(); ++k) {
+						auto coordinates = cellTable.getObjectAt(k);
+
+						if (coordinates.isValidTable()) {
+							Vector3 location;
+
+							location.setX(coordinates.getFloatField("x"));
+							location.setZ(coordinates.getFloatField("z"));
+							location.setY(coordinates.getFloatField("y"));
+
+							locations.add(location);
+						}
+						coordinates.pop();
+					}
+
+					sparkLocations.put(cellID, locations);
+				}
+				cellTable.pop();
+			}
+		}
+		sparkLocs.pop();
+
+		// player launch locations
+		auto launchLoc = templateData->getObjectField("launchPoints");
+
+		if (launchLoc.isValidTable()) {
+			for (int i = 1; i <= launchLoc.getTableSize(); ++i) {
+				auto cellTable = launchLoc.getObjectAt(i);
+
+				if (cellTable.isValidTable()) {
+					int cellID = cellTable.getIntField("cellid");
+					Vector<Vector3> locations;
+
+					for (int k = 2; k <= cellTable.getTableSize(); ++k) {
+						auto coordinates = cellTable.getObjectAt(k);
+
+						if (coordinates.isValidTable()) {
+							Vector3 location;
+
+							location.setX(coordinates.getFloatField("x"));
+							location.setZ(coordinates.getFloatField("z"));
+							location.setY(coordinates.getFloatField("y"));
+
+							locations.add(location);
+						}
+						coordinates.pop();
+					}
+
+					launchLocations.put(cellID, locations);
+				}
+				cellTable.pop();
+			}
+		}
+		launchLoc.pop();
 	}
 
 	void readObject(LuaObject* templateData) {
@@ -109,6 +188,11 @@ public:
 		conversationMessage = templateData->getStringField("conversationMessage");
 
 		readAttributeMap(templateData);
+
+		// SceneObjectType::POBSHIP
+		if (gameObjectType == 536870917) {
+			readPobData(templateData);
+		}
 
 		try {
 			const static char* components[] = { "reactor", "engine",  "shield_0", "shield_1", "armor_0", "armor_1", "capacitor", "booster", "droid_interface",

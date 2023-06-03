@@ -348,12 +348,16 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Component>(SceneObjectType::SHIPWEAPONLAUNCHER);
 	objectFactory.registerObject<Component>(SceneObjectType::SHIPCOUNTERMEASURELAUNCHER);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::PILOTCHAIR);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::OPERATIONSCHAIR);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::TURRETACCESSLADDER);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::SHIPCONTAINER);
 	objectFactory.registerObject<FactoryCrate>(SceneObjectType::FACTORYCRATE);
 	objectFactory.registerObject<ShipObject>(SceneObjectType::SHIP);
 	objectFactory.registerObject<FighterShipObject>(SceneObjectType::SHIPFIGHTER);
 	objectFactory.registerObject<ShipObject>(SceneObjectType::SHIPCAPITAL);
 	objectFactory.registerObject<ShipObject>(SceneObjectType::SHIPTRANSPORT);
 	objectFactory.registerObject<SpaceStationObject>(SceneObjectType::SHIPSTATION);
+	objectFactory.registerObject<PobShipObject>(SceneObjectType::SHIPPOB);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::CRYSTAL);
 }
 
