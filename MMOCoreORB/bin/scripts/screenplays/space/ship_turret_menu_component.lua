@@ -40,29 +40,47 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
-PilotSeatMenuComponent = {}
+ShipTurretMenuComponent = {}
 
-function PilotSeatMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+function ShipTurretMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
 	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
-	menuResponse:addRadialMenuItem(120, 3, "@space/space_interaction:pilot_ship")
+
+	menuResponse:addRadialMenuItem(120, 3, "@space/space_interaction:turret_upper")
+	menuResponse:addRadialMenuItem(121, 3, "@space/space_interaction:turret_lower")
 end
 
-function PilotSeatMenuComponent:handleObjectMenuSelect(pPilotChair, pPlayer, selectedID)
-	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() or pPilotChair == nil) then
+function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, selectedID)
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() or pTurret == nil) then
 		return
 	end
 
-	-- print("Pilot Seat Menu Selected ID " .. selectedID .. " Container ID: " .. SceneObject(pPilotChair):getObjectID() .. " Objects Size: " .. SceneObject(pPilotChair):getContainerObjectsSize())
+	--print("Turret Menu Selected ID " .. selectedID .. " Container ID: " .. SceneObject(pTurret):getObjectID() .. " Objects Size: " .. SceneObject(pTurret):getContainerObjectsSize())
+
+	--[[ TODO:
+		faction check "@space/space_interaction:"wrong_faction"
+		"space/space_interaction:no_turret"
+		"space/space_interaction:turret_disabled"
+	]]
 
 	if (selectedID == 120) then
-		-- TODO: Check for proper ship certifications "no_ship_certification", "You are not certified to pilot this ship."
-		-- TODO: Check for player already in pilot seat
+		if (not SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER0_POB, 1)) then
+			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_occupied")
+			return
+		end
 
+		-- Add in their ship operatios state
+		CreatureObject(pPlayer):setState(SHIPGUNNER)
 
-		SceneObject(pPilotChair):transferObject(pPlayer, SHIP_PILOT_POB, 1)
+		-- clear the players state from being on the inside of the ship
+		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
+	elseif (selectedID == 121) then
+		if (not SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER1_POB, 1)) then
+			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_occupied")
+			return
+		end
 
-		-- Add in their piloting state
-		CreatureObject(pPlayer):setState(PILOTINGPOBSHIP)
+		-- Add in their ship operatios state
+		CreatureObject(pPlayer):setState(SHIPGUNNER)
 
 		-- clear the players state from being on the inside of the ship
 		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
