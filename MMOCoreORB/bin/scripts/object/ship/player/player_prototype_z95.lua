@@ -46,7 +46,7 @@ object_ship_player_player_prototype_z95 = object_ship_player_shared_player_proto
 	name = "player_prototype_z95",
 	slideFactor = 1.95,
 	chassisHitpoints = 800,
-	chassisMass = 11000,
+	chassisMass = 11500,
 
 	category = "lightfighter",
 	level = 0,

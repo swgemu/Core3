@@ -46,7 +46,7 @@ object_ship_player_player_tie_light_duty = object_ship_player_shared_player_tie_
 	name = "player_tie_light_duty",
 	slideFactor = 1.78,
 	chassisHitpoints = 1350,
-	chassisMass = 10000,
+	chassisMass = 11500,
 
 	category = "lightfighter",
 	level = 0,

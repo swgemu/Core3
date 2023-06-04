@@ -46,7 +46,7 @@ object_ship_player_player_tieadvanced = object_ship_player_shared_player_tieadva
 	name = "player_tieadvanced",
 	slideFactor = 1.82,
 	chassisHitpoints = 1462.5,
-	chassisMass = 10000,
+	chassisMass = 65000,
 
 	category = "interceptor",
 	level = 4,

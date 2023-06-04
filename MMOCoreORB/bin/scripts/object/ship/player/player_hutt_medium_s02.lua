@@ -44,21 +44,21 @@
 object_ship_player_player_hutt_medium_s02 = object_ship_player_shared_player_hutt_medium_s02:new {
 
 	name = "player_hutt_medium_s02",
-	slideFactor = 1.76,
-	chassisHitpoints = 1512,
-	chassisMass = 10000,
+	slideFactor = 1.95,
+	chassisHitpoints = 6000,
+	chassisMass = 110000,
 
-	category = "mediumfighter",
-	level = 1,
+	category = "heavyfighter",
+	level = 2,
 
 	attributes = {
 		{"slideDamp", 1.3},
-		{"engineAccel", 30},
+		{"engineAccel", 35},
 		{"engineDecel", 35},
-		{"engineYawAccel", 300},
-		{"enginePitchAccel", 300},
-		{"engineRollAccel", 150},
-		{"maxSpeed", 0.95},
+		{"engineYawAccel", 100},
+		{"enginePitchAccel", 100},
+		{"engineRollAccel", 50},
+		{"maxSpeed", 0.92},
 	},
 
 	reactor = { name = "rct_generic", hitpoints = 298.1105, armor = 298.715,},

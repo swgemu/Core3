@@ -46,7 +46,7 @@ object_ship_player_player_tieaggressor = object_ship_player_shared_player_tieagg
 	name = "player_tieaggressor",
 	slideFactor = 1.75,
 	chassisHitpoints = 1643.2,
-	chassisMass = 10000,
+	chassisMass = 120000,
 
 	category = "mediumfighter",
 	level = 4,
@@ -56,8 +56,8 @@ object_ship_player_player_tieaggressor = object_ship_player_shared_player_tieagg
 		{"engineAccel", 20},
 		{"engineDecel", 30},
 		{"engineYawAccel", 150},
-		{"enginePitchAccel", 200},
-		{"engineRollAccel", 100},
+		{"enginePitchAccel", 150},
+		{"engineRollAccel", 75},
 		{"maxSpeed", 0.95},
 	},
 

@@ -46,7 +46,7 @@ object_ship_player_player_awing = object_ship_player_shared_player_awing:new {
 	name = "player_awing",
 	slideFactor = 1.68,
 	chassisHitpoints = 1125,
-	chassisMass = 10000,
+	chassisMass = 65000,
 
 	category = "interceptor",
 	level = 4,

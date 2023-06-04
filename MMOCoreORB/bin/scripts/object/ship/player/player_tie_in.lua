@@ -46,7 +46,7 @@ object_ship_player_player_tie_in = object_ship_player_shared_player_tie_in:new {
 	name = "player_tie_in",
 	slideFactor = 1.78,
 	chassisHitpoints = 1350,
-	chassisMass = 10000,
+	chassisMass = 40000,
 
 	category = "lightfighter",
 	level = 2,
@@ -54,9 +54,9 @@ object_ship_player_player_tie_in = object_ship_player_shared_player_tie_in:new {
 	attributes = {
 		{"slideDamp", 1.6},
 		{"engineAccel", 40},
-		{"engineDecel", 40},
-		{"engineYawAccel", 400},
-		{"enginePitchAccel", 400},
+		{"engineDecel", 60},
+		{"engineYawAccel", 300},
+		{"enginePitchAccel", 300},
 		{"engineRollAccel", 200},
 		{"maxSpeed", 0.97},
 	},

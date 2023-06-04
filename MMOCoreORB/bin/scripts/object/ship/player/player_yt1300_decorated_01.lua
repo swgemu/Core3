@@ -45,7 +45,7 @@ object_ship_player_player_yt1300_decorated_01 = object_ship_player_shared_player
 	name = "player_yt1300",
 	slideFactor = 1.85,
 	chassisHitpoints = 5000,
-	chassisMass = 10000,
+	chassisMass = 5000000,
 
 	-- POBSHIP
 	gameObjectType = 536870917,
@@ -55,8 +55,8 @@ object_ship_player_player_yt1300_decorated_01 = object_ship_player_shared_player
 
 	attributes = {
 		{"slideDamp", 1.2},
-		{"engineAccel", 10},
-		{"engineDecel", 10},
+		{"engineAccel", 5},
+		{"engineDecel", 5},
 		{"engineYawAccel", 50},
 		{"enginePitchAccel", 50},
 		{"engineRollAccel", 37.5},

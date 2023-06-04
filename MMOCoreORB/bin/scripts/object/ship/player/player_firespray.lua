@@ -46,7 +46,7 @@ object_ship_player_player_firespray = object_ship_player_shared_player_firespray
 	name = "player_firespray",
 	slideFactor = 1.68,
 	chassisHitpoints = 1650,
-	chassisMass = 10000,
+	chassisMass = 210000,
 
 	category = "heavyfighter",
 	level = 5,

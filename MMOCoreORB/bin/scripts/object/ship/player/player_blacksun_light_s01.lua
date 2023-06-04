@@ -46,15 +46,15 @@ object_ship_player_player_blacksun_light_s01 = object_ship_player_shared_player_
 	name = "player_blacksun_light_s01",
 	slideFactor = 1.81,
 	chassisHitpoints = 519,
-	chassisMass = 10000,
+	chassisMass = 40000,
 
 	category = "lightfighter",
 	level = 2,
 
 	attributes = {
 		{"slideDamp", 1.6},
-		{"engineAccel", 35},
-		{"engineDecel", 35},
+		{"engineAccel", 40},
+		{"engineDecel", 50},
 		{"engineYawAccel", 400},
 		{"enginePitchAccel", 400},
 		{"engineRollAccel", 200},

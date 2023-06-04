@@ -46,7 +46,7 @@ object_ship_player_player_hutt_heavy_s01 = object_ship_player_shared_player_hutt
 	name = "player_hutt_heavy_s01",
 	slideFactor = 1.95,
 	chassisHitpoints = 6000,
-	chassisMass = 10000,
+	chassisMass = 110000,
 
 	category = "heavyfighter",
 	level = 2,

@@ -46,7 +46,7 @@ object_ship_player_player_basic_hutt_light = object_ship_player_shared_player_ba
 	name = "player_basic_hutt_light",
 	slideFactor = 1.95,
 	chassisHitpoints = 400,
-	chassisMass = 5000,
+	chassisMass = 11500,
 
 	category = "lightfighter",
 	level = 0,

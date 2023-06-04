@@ -46,19 +46,19 @@ object_ship_player_player_blacksun_heavy_s03 = object_ship_player_shared_player_
 	name = "player_blacksun_heavy_s03",
 	slideFactor = 1.91,
 	chassisHitpoints = 519,
-	chassisMass = 10000,
+	chassisMass = 190000,
 
 	category = "heavyfighter",
 	level = 4,
 
 	attributes = {
 		{"slideDamp", 1.3},
-		{"engineAccel", 40},
-		{"engineDecel", 40},
+		{"engineAccel", 35},
+		{"engineDecel", 35},
 		{"engineYawAccel", 100},
 		{"enginePitchAccel", 100},
 		{"engineRollAccel", 50},
-		{"maxSpeed", 0.97},
+		{"maxSpeed", 0.89},
 	},
 
 	reactor = { name = "rct_generic", hitpoints = 291.5533, armor = 296.2093,},

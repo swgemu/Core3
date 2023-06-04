@@ -46,15 +46,15 @@ object_ship_player_player_blacksun_medium_s04 = object_ship_player_shared_player
 	name = "player_blacksun_medium_s04",
 	slideFactor = 1.81,
 	chassisHitpoints = 519,
-	chassisMass = 10000,
+	chassisMass = 95000,
 
 	category = "mediumfighter",
 	level = 3,
 
 	attributes = {
 		{"slideDamp", 1.3},
-		{"engineAccel", 35},
-		{"engineDecel", 35},
+		{"engineAccel", 25},
+		{"engineDecel", 30},
 		{"engineYawAccel", 200},
 		{"enginePitchAccel", 200},
 		{"engineRollAccel", 100},
