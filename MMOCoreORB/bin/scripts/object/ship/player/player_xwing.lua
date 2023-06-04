@@ -46,7 +46,7 @@ object_ship_player_player_xwing = object_ship_player_shared_player_xwing:new {
 	name = "player_xwing",
 	slideFactor = 1.95,
 	chassisHitpoints = 6000,
-	chassisMass = 10000,
+	chassisMass = 100000,
 
 	category = "mediumfighter",
 	level = 3,

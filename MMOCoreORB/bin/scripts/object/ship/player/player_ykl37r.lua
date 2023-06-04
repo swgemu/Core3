@@ -45,7 +45,7 @@ object_ship_player_player_ykl37r = object_ship_player_shared_player_ykl37r:new {
 	name = "player_ykl37r",
 	slideFactor = 1.85,
 	chassisHitpoints = 5000,
-	chassisMass = 10000,
+	chassisMass = 5000000,
 
 	-- POBSHIP
 	gameObjectType = 536870917,
@@ -55,8 +55,8 @@ object_ship_player_player_ykl37r = object_ship_player_shared_player_ykl37r:new {
 
 	attributes = {
 		{"slideDamp", 1.2},
-		{"engineAccel", 10},
-		{"engineDecel", 10},
+		{"engineAccel", 5},
+		{"engineDecel", 5},
 		{"engineYawAccel", 50},
 		{"enginePitchAccel", 50},
 		{"engineRollAccel", 37.5},

@@ -46,7 +46,7 @@ object_ship_player_player_tiefighter = object_ship_player_shared_player_tiefight
 	name = "player_tiefighter",
 	slideFactor = 1.78,
 	chassisHitpoints = 1350,
-	chassisMass = 10000,
+	chassisMass = 20000,
 
 	category = "lightfighter",
 	level = 1,
@@ -54,7 +54,7 @@ object_ship_player_player_tiefighter = object_ship_player_shared_player_tiefight
 	attributes = {
 		{"slideDamp", 1.8},
 		{"engineAccel", 40},
-		{"engineDecel", 40},
+		{"engineDecel", 50},
 		{"engineYawAccel", 500},
 		{"enginePitchAccel", 500},
 		{"engineRollAccel", 250},

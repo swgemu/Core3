@@ -46,19 +46,19 @@ object_ship_player_player_tiebomber = object_ship_player_shared_player_tiebomber
 	name = "player_tiebomber",
 	slideFactor = 1.88,
 	chassisHitpoints = 2131,
-	chassisMass = 10000,
+	chassisMass = 190000,
 
 	category = "bomber",
 	level = 3,
 
 	attributes = {
 		{"slideDamp", 1.2},
-		{"engineAccel", 30},
-		{"engineDecel", 30},
-		{"engineYawAccel", 80},
-		{"enginePitchAccel", 80},
-		{"engineRollAccel", 40},
-		{"maxSpeed", 0.95},
+		{"engineAccel", 10},
+		{"engineDecel", 15},
+		{"engineYawAccel", 50},
+		{"enginePitchAccel", 50},
+		{"engineRollAccel", 25},
+		{"maxSpeed", 0.85},
 	},
 
 	reactor = { name = "rct_generic", hitpoints = 297.1225, armor = 298.5394,},

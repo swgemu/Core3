@@ -46,19 +46,19 @@ object_ship_player_player_ywing = object_ship_player_shared_player_ywing:new {
 	name = "player_ywing",
 	slideFactor = 1.85,
 	chassisHitpoints = 1942,
-	chassisMass = 10000,
+	chassisMass = 150000,
 
 	category = "mediumfighter",
 	level = 1,
 
 	attributes = {
 		{"slideDamp", 1.2},
-		{"engineAccel", 25},
-		{"engineDecel", 30},
+		{"engineAccel", 15},
+		{"engineDecel", 25},
 		{"engineYawAccel", 80},
 		{"enginePitchAccel", 80},
 		{"engineRollAccel", 40},
-		{"maxSpeed", 0.9},
+		{"maxSpeed", 0.85},
 	},
 
 	reactor = { name = "rct_generic", hitpoints = 391.301, armor = 395.5459,},

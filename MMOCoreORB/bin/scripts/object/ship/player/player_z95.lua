@@ -46,7 +46,7 @@ object_ship_player_player_z95 = object_ship_player_shared_player_z95:new {
 	name = "player_z95",
 	slideFactor = 1.91,
 	chassisHitpoints = 1442,
-	chassisMass = 10000,
+	chassisMass = 11500,
 
 	category = "lightfighter",
 	level = 0,

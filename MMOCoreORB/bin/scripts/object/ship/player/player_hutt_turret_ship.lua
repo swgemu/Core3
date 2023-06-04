@@ -46,7 +46,7 @@ object_ship_player_player_hutt_turret_ship = object_ship_player_shared_player_hu
 	name = "player_hutt_turret_ship",
 	slideFactor = 1.76,
 	chassisHitpoints = 1512,
-	chassisMass = 10000,
+	chassisMass = 210000,
 
 	category = "heavyfighter",
 	level = 5,

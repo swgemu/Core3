@@ -46,19 +46,19 @@ object_ship_player_player_ywing_longprobe = object_ship_player_shared_player_ywi
 	name = "player_ywing_longprobe",
 	slideFactor = 1.85,
 	chassisHitpoints = 1942,
-	chassisMass = 10000,
+	chassisMass = 170000,
 
 	category = "bomber",
 	level = 2,
 
 	attributes = {
 		{"slideDamp", 1.4},
-		{"engineAccel", 25},
-		{"engineDecel", 30},
-		{"engineYawAccel", 100},
-		{"enginePitchAccel", 100},
-		{"engineRollAccel", 50},
-		{"maxSpeed", 0.9},
+		{"engineAccel", 10},
+		{"engineDecel", 20},
+		{"engineYawAccel", 70},
+		{"enginePitchAccel", 70},
+		{"engineRollAccel", 35},
+		{"maxSpeed", 0.85},
 	},
 
 	reactor = { name = "rct_generic", hitpoints = 398.2837, armor = 394.4893,},
