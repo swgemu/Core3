@@ -40,8 +40,8 @@ class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	StringParam shipDifficulty;
 	StringParam shipFaction;
 
-	VectorMap<int, Vector<Vector3>> sparkLocations;
-	VectorMap<int, Vector<Vector3>> launchLocations;
+	VectorMap<String, Vector<Vector3>> sparkLocations;
+	VectorMap<String, Vector<Vector3>> launchLocations;
 
 public:
 	SharedShipObjectTemplate() {
@@ -64,12 +64,12 @@ public:
 		return componentValues;
 	}
 
-	const VectorMap<int, Vector<Vector3>>* getSparkLocations() {
-		return &sparkLocations;
+	const VectorMap<String, Vector<Vector3>>& getSparkLocations() {
+		return sparkLocations;
 	}
 
-	const VectorMap<int, Vector<Vector3>>* getLaunchLocations() {
-		return &launchLocations;
+	const VectorMap<String, Vector<Vector3>>& getLaunchLocations() {
+		return launchLocations;
 	}
 
 	void readAttributeMap(LuaObject* templateData) {
@@ -101,7 +101,7 @@ public:
 				auto cellTable = sparkLocs.getObjectAt(i);
 
 				if (cellTable.isValidTable()) {
-					int cellID = cellTable.getIntField("cellid");
+					String cellName = cellTable.getStringField("cellName");
 					Vector<Vector3> locations;
 
 					for (int k = 2; k <= cellTable.getTableSize(); ++k) {
@@ -119,7 +119,7 @@ public:
 						coordinates.pop();
 					}
 
-					sparkLocations.put(cellID, locations);
+					sparkLocations.put(cellName, locations);
 				}
 				cellTable.pop();
 			}
@@ -134,7 +134,7 @@ public:
 				auto cellTable = launchLoc.getObjectAt(i);
 
 				if (cellTable.isValidTable()) {
-					int cellID = cellTable.getIntField("cellid");
+					String cellName = cellTable.getStringField("cellName");
 					Vector<Vector3> locations;
 
 					for (int k = 2; k <= cellTable.getTableSize(); ++k) {
@@ -152,7 +152,7 @@ public:
 						coordinates.pop();
 					}
 
-					launchLocations.put(cellID, locations);
+					launchLocations.put(cellName, locations);
 				}
 				cellTable.pop();
 			}

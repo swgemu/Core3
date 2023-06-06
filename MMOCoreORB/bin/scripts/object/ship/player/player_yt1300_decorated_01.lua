@@ -86,96 +86,103 @@ object_ship_player_player_yt1300_decorated_01 = object_ship_player_shared_player
 		-- Turret Control
 		{ templateFile = "object/tangible/shipcontrol/turretcontrol_falcon.iff", x = -3.28, z = -0.303, y = 0.023, ox = 0, oy = 0.707106, oz = 0, ow = 0.707106, cellid = 6, containmentType = -1 },
 		-- Hall 1
-		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 8.29, z  = 2.06, y = 2.15, ox = 0.707106, oy = 0, oz = 0.707106, ow = 0, cellid = 1, containmentType = -1 }, -- Upside down on ceilding
-		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 9.62, z  = 1.65, y = 6.17, ox = 0.707106, oy = 0, oz = 0.7071061, ow = 0, cellid = 1, containmentType = -1 }, -- Upside down on ceilding
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 8.29, z = 2.06, y = 2.15, ox = 0.707106, oy = 0, oz = 0.707106, ow = 0, cellid = 1, containmentType = -1 }, -- Upside down on ceilding
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 9.62, z = 1.65, y = 6.17, ox = 0.707106, oy = 0, oz = 0.7071061, ow = 0, cellid = 1, containmentType = -1 }, -- Upside down on ceilding
 		-- Cockpit
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 10.94, z  = 0.52, y = 10.51, ox = 0, oy = 0.707106, oz = 0, ow = 0.707106, cellid = 2, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 14.86, z  = 0.52, y = 10.62, ox = 0, oy = -0.707106, oz = 0, ow = 0.707106, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 10.94, z = 0.52, y = 10.51, ox = 0, oy = 0.707106, oz = 0, ow = 0.707106, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 14.86, z = 0.52, y = 10.62, ox = 0, oy = -0.707106, oz = 0, ow = 0.707106, cellid = 2, containmentType = -1 },
 		-- Lounge
-		{ templateFile = "object/tangible/ship/interior_components/shield_generator_interior.iff", x = 2.48, z  = -0.44, y = 11.7, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 3, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 3.33, z  = -0.01, y = 2.84, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -1.25, z  = 0.48, y = 3.52, ox = 0, oy = 0.707106, oz = 0.707106, ow = 0, cellid = 3, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -2.57, z  = -1.03, y = 13.45, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 3, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -0.12, z  = -1.03, y = 13.46, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 3, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/shield_generator_interior.iff", x = 2.48, z = -0.44, y = 11.7, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 3, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 3.33, z = -0.01, y = 2.84, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -1.25, z = 0.48, y = 3.52, ox = 0, oy = 0.707106, oz = 0.707106, ow = 0, cellid = 3, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -2.57, z = -1.03, y = 13.45, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 3, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -0.12, z = -1.03, y = 13.46, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 3, containmentType = -1 },
 		-- Hall 4
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -6.43, z  = 1.63, y = -0.02, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -6.43, z = 1.63, y = -0.02, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1 },
 		-- Storage 5
-		{ templateFile = "object/tangible/ship/interior_components/engine_interior.iff", x = -8.64, z  = -0.05, y = -9.85, ox = 0, oy = 0, oz = 0, ow = -0.707106, cellid = 5, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -2.1, z  = -0.34, y = -7.17, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -4.51, z  = 1.26, y = -1.96,ow = 0.005, ox = 0.707, oy = -0.707, oz = 0.005, cellid = 5, containmentType = -1 }, -- Faces south? on flat wall
-		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = -4.48, z  = 0.04, y = -2.04, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 5, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = -3.23, z  = 0.04, y = -1.99, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/engine_interior.iff", x = -8.64, z = -0.05, y = -9.85, ox = 0, oy = 0, oz = 0, ow = -0.707106, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -2.1, z = -0.34, y = -7.17, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -4.51, z = 1.26, y = -1.96,ow = 0.005, ox = 0.707, oy = -0.707, oz = 0.005, cellid = 5, containmentType = -1 }, -- Faces south? on flat wall
+		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = -4.48, z = 0.04, y = -2.04, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = -3.23, z = 0.04, y = -1.99, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 5, containmentType = -1 },
 		-- Storage6
-		{ templateFile = "object/tangible/ship/interior_components/reactor_interior.iff", x = 8.61, z  = -0.24, y = -9.87, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 2.04, z  = -0.4, y = -7.1, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/capacitor_interior.iff", x = 3.47, z  = -0.15, y = -2.01, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 3.51, z  = 0.61, y = -2, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 10.73, z  = 0.11, y = -7.75, ox = -0.505, oy = -0.707, oz = 0.707, ow = 0.005, cellid = 6, containmentType = -1 }, -- Faces NW on flat wall
+		{ templateFile = "object/tangible/ship/interior_components/reactor_interior.iff", x = 8.61, z = -0.24, y = -9.87, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 2.04, z = -0.4, y = -7.1, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/capacitor_interior.iff", x = 3.47, z = -0.15, y = -2.01, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 3.51, z = 0.61, y = -2, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 10.73, z = 0.11, y = -7.75, ox = -0.505, oy = -0.707, oz = 0.707, ow = 0.005, cellid = 6, containmentType = -1 }, -- Faces NW on flat wall
 	},
 
 	sparkLocations = {
-		{cellid = 1,
-			-- hall1
-			{
-				{x = 5.095, z = -1.6, y = 7.27},
-				{x = 11.53, z = -0.8, y = 6.73},
-				{x = 11.69, z = -1.6, y = 0.25},
-				{x = 8.31, z = -1.6, y = 2.85},
-				{x = 7.0, z = -1.6, y = 5.55},
-				{x = 11.53, z = -1.6, y = 0.36},
-			},
+		{cellName = "hall1",
+			{x = 5.095, z = -1.6, y = 7.27},
+			{x = 11.53, z = -0.8, y = 6.73},
+			{x = 11.69, z = -1.6, y = 0.25},
+			{x = 8.31, z = -1.6, y = 2.85},
+			{x = 7.0, z = -1.6, y = 5.55},
+			{x = 11.53, z = -1.6, y = 0.36},
 		},
-		{cellid = 2,
-			-- Cockpit
-			{
-				{x = 11.72, z = 0.14, y = 11.14},
-				{x = 14.17, z = 0.14, y = 11.61},
-				{x = 12.81, z = 0.14, y = 13.37},
-				{x = 12.9, z = -0.3, y = 9.951},
-			}
+		{cellName = "cockpit",
+			{x = 11.72, z = 0.14, y = 11.14},
+			{x = 14.17, z = 0.14, y = 11.61},
+			{x = 12.81, z = 0.14, y = 13.37},
+			{x = 12.9, z = -0.3, y = 9.951},
 		},
-		{cellid = 3,
-			{
-				-- Lounge
-				{x = -2.88, z = -1.85, y = 7.67},
-				{x = -1.62, z = -1.85, y = 4.25},
-				{x = 2.78, z = -1.84, y = 4.26},
-				{x = -0.070, z = -1.85, y = 11.25},
-				{x = 0.52, z = -1.8, y = 8.48},
-			}
+		{cellName = "lounge",
+			{x = -2.88, z = -1.85, y = 7.67},
+			{x = -1.62, z = -1.85, y = 4.25},
+			{x = 2.78, z = -1.84, y = 4.26},
+			{x = -0.070, z = -1.85, y = 11.25},
+			{x = 0.52, z = -1.8, y = 8.48},
 		},
-		{cellid = 4,
-			{
-				-- Hall4
-				{x = -6.14, z = -1.6, y = 6.84},
-				{x = -8.01, z = -1.6, y = 4.88},
-				{x = -8.96, z = -1.6, y = -0.088},
-				{x = -8.80, z = -1.6, y = 0.975},
-				{x = -6.14, z = -1.6, y = 6.84},
-			}
+		{cellName = "hall4",
+			{x = -6.14, z = -1.6, y = 6.84},
+			{x = -8.01, z = -1.6, y = 4.88},
+			{x = -8.96, z = -1.6, y = -0.088},
+			{x = -8.80, z = -1.6, y = 0.975},
+			{x = -6.14, z = -1.6, y = 6.84},
 		},
-		{cellid = 5,
-			{
-				-- Storage5
-				{x = -7.64, z = -1.7, y = -1.96},
-				{x = -9.09, z = -1.7, y = -4.60},
-				{x = -4.37, z = -1.7, y = -9.76},
-				{x = -2, z = -1.7, y = -3.38},
-				{x = -8.2, z = -1.7, y = -6.53},
-			}
+		{cellName = "storage5",
+			{x = -7.64, z = -1.7, y = -1.96},
+			{x = -9.09, z = -1.7, y = -4.60},
+			{x = -4.37, z = -1.7, y = -9.76},
+			{x = -2, z = -1.7, y = -3.38},
+			{x = -8.2, z = -1.7, y = -6.53},
 		},
-		{cellid = 6,
-			{
-				-- Storage6
-				{x = 4.54, z = -1.7, y = -9.45},
-				{x = 6.20, z = -1.7, y = 6.20},
-				{x = 4.21, z = -1.7, y = -2.93},
-				{x = 8.0, z = -1.7, y = -6.77},
-			}
+		{cellName = "storage6",
+			{x = 4.54, z = -1.7, y = -9.45},
+			{x = 6.20, z = -1.7, y = 6.20},
+			{x = 4.21, z = -1.7, y = -2.93},
+			{x = 8.0, z = -1.7, y = -6.77},
 		},
 	},
 
 	launchPoints = {
+		{cellName = "hall1",
+			{x = 12.25, z  = -1.6, y = 0},
+			{x = 10.39, z  = -1.6, y = 0},
+			{x = 8.3, z  = -1.6, y = 0},
+		},
+		{cellName = "cockpit",
+			{x = 13.43, z  = 0.14, y = 12.88},
+		},
+		{cellName = "lounge",
+			{x = 2.63, z  = -1.85, y = 9.01},
+			{x = 2.15, z  = -1.85, y = 7.77},
+			{x = 0.48, z  = -1.85, y = 7.83},
+			{x = -1.19, z  = -1.85, y = 6.76},
+			{x = -1.48, z  = -1.85, y = 9.67},
+		},
+		{cellName = "storage5",
+			{x = -4.36, z  = -1.7, y = -4.78},
+			{x = -6.96, z  = -1.7, y = -3.28},
+			{x = -9.37, z  = -1.7, y = -4.52},
+		},
+		{cellName = "storage6",
+			{x = 8.48, z  = -1.7, y = -2.17},
+			{x = 3.51, z  = -1.7, y = -4.61},
+			{x = 8.19, z  = -1.7, y = -6.55},
+		},
 	},
 }
 

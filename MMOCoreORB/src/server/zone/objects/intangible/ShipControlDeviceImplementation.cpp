@@ -12,6 +12,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/managers/ship/ShipManager.h"
 #include "templates/params/creature/PlayerArrangement.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -181,7 +182,7 @@ bool ShipControlDeviceImplementation::insertPlayer(CreatureObject* player) {
 
 	player->destroyObjectFromWorld(false);
 
-	if (ship->getChassisCategory() == "pob") {
+	if (ship->isPobShipObject()) {
 		auto pilotChair = ship->getPilotChair().get();
 
 		if (pilotChair == nullptr) {
@@ -189,7 +190,7 @@ bool ShipControlDeviceImplementation::insertPlayer(CreatureObject* player) {
 		}
 
 		// this crashes client upon initial launch if set directly into pilots chair - H
-		player->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY(), pilotChair->getParentID());
+		player->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY() - 2.f, pilotChair->getParentID());
 
 		//player->setState(CreatureState::PILOTINGPOBSHIP);
 		player->setState(CreatureState::SHIPINTERIOR);
@@ -207,9 +208,14 @@ void ShipControlDeviceImplementation::launchGroupMember(CreatureObject* groupMem
 
 	auto ship = controlledObject.get().castTo<ShipObject*>();
 
-	if (ship == nullptr || ship->getChassisCategory() != "pob") {
+	if (ship == nullptr || !ship->isPobShipObject()) {
 		return;
 	}
+
+	auto pobShip = ship->asPobShipObject();
+
+	if (pobShip == nullptr)
+		return;
 
 	auto spaceZone = ship->getSpaceZone();
 
@@ -217,19 +223,14 @@ void ShipControlDeviceImplementation::launchGroupMember(CreatureObject* groupMem
 		return;
 	}
 
-	ZoneServer* zoneServer = groupMember->getZoneServer();
+	String randomCell = pobShip->getRandomLaunchCell();
+	Vector3 launchLoc(pobShip->getLaunchPointInCell(randomCell));
+	auto cell = pobShip->getCell(randomCell);
 
-	if (zoneServer == nullptr)
+	if (cell == nullptr)
 		return;
 
-	auto pilotChair = ship->getPilotChair().get();
-
-	if (pilotChair == nullptr) {
-		return;
-	}
-
-	// TODO: get starting positions from ship template - H
-	groupMember->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY() - 2.0f, pilotChair->getParentID());
+	groupMember->switchZone(spaceZone->getZoneName(), launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), cell->getObjectID());
 	groupMember->setState(CreatureState::SHIPINTERIOR);
 }
 
@@ -440,7 +441,7 @@ bool ShipControlDeviceImplementation::ejectPlayers() {
 		}
 	}
 
-	for (int k = 0; k < ship->getTotalCellNumber(); k++) {
+	for (int k = 1; k < ship->getTotalCellNumber(); k++) {
 		auto cell = ship->getCell(k);
 
 		if (cell == nullptr) {

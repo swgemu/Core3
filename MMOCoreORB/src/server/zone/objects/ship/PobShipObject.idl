@@ -6,29 +6,25 @@
 package server.zone.objects.ship;
 
 import engine.log.Logger;
-import server.zone.objects.ship.FighterShipObject;
 import server.zone.objects.scene.SceneObject;
 
+include server.zone.objects.ship.FighterShipObject;
 include templates.SharedObjectTemplate;
 include engine.util.u3d.Vector3;
-include system.util.VectorMap;
-include system.util.Vector;
-include system.lang.ref.Reference;
+include server.zone.objects.ship.PlayerLaunchPoints;
+include server.zone.objects.ship.DamageSparkLocations;
 
 class PobShipObject extends FighterShipObject {
-	@dereferenced
-	protected transient VectorMap<int, Vector<Vector3> > sparkLocations;
 
 	@dereferenced
-	protected transient VectorMap<int, Vector<Vector3> > launchPoints;
+	protected DamageSparkLocations sparkLocations;
+
+	@dereferenced
+	protected PlayerLaunchPoints launchPoints;
 
 	public PobShipObject() {
 		Logger.setLoggingName("PobShipObject");
-
-		launchPoints.setNoDuplicateInsertPlan();
-		sparkLocations.setNoDuplicateInsertPlan();
 	}
-
 
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
@@ -42,4 +38,14 @@ class PobShipObject extends FighterShipObject {
 	@local
 	@nativeStub
 	public native boolean isPobShipObject();
+
+	@local
+	@dereferenced
+	@dirty
+	public native string getRandomLaunchCell();
+
+	@local
+	@dereferenced
+	@dirty
+	public native Vector3 getLaunchPointInCell(final string cellName);
 }

@@ -73,20 +73,39 @@ object_ship_player_player_sorosuub_space_yacht = object_ship_player_shared_playe
 	lots = 4,
 
 	childObjects = {
-		{ templateFile = "object/tangible/shipcontrol/shipcontrol_falcon.iff", x = -0.76, z  = 0.43, y = 21.14, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1 },
-		{ templateFile = "object/tangible/furniture/space/frn_chair_falcon_passenger_s01.iff", x = 0.75, z  = 0.43, y = 21.15, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1 },
+		{ templateFile = "object/tangible/shipcontrol/shipcontrol_falcon.iff", x = -0.76, z = 0.43, y = 21.14, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1 },
+		{ templateFile = "object/tangible/furniture/space/frn_chair_falcon_passenger_s01.iff", x = 0.75, z = 0.43, y = 21.15, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1 },
 		-- Ship Permissions Terminal
-		{ templateFile = "object/tangible/terminal/terminal_pob_ship.iff", x = 0.88, z  = -0.38, y = 16.37, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 1, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_pob_ship.iff", x = 0.88, z = -0.38, y = 16.37, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 1, containmentType = -1 },
 		-- Escape Pod
-		{ templateFile = "object/tangible/ship/interior_components/escape_pod_hatch.iff", x = 6.89, z  = -3.39, y = 22.03, ox = 0.707, oy = 0, oz = 0.707, ow = 1, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/escape_pod_hatch.iff", x = 6.89, z = -3.39, y = 22.03, ox = 0.707, oy = 0, oz = 0.707, ow = 1, cellid = 2, containmentType = -1 },
 		-- Elevator Terminals
-		{ templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 1.05, z  = -3.67, y = -15.57, ox = 1, oy = 0, oz = 0, ow = 1, cellid = 10, containmentType = -1 },
-		{ templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 1.06, z  = 1.33, y = -15.56, ox = 1, oy = 0, oz = 0, ow = 1, cellid = 10, containmentType = -1 },
-		{ templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 3.28, z  = 1.23, y = -21.87, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 11, containmentType = -1 },
-		{ templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 3.25, z  = 5.33, y = -21.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 11, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 1.05, z = -3.67, y = -15.57, ox = 1, oy = 0, oz = 0, ow = 1, cellid = 10, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 1.06, z = 1.33, y = -15.56, ox = 1, oy = 0, oz = 0, ow = 1, cellid = 10, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 3.28, z = 1.23, y = -21.87, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 11, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 3.25, z = 5.33, y = -21.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 11, containmentType = -1 },
 	},
 
 	launchPoints = {
+		{cellName = "bridge",
+			{x = 0.1, z = 0.4, y = 21.7},
+			{x = 2.6, z = 0, y = 19.1},
+			{x = 1.7, z = 0, y = 16.5},
+			{x = 0, z = 0, y = 18.9},
+			{x = -2.4, z = 0, y = 20.3},
+			{x = 0, z = 0.4, y = 20},
+		},
+		{cellName = "observationdeck",
+			{x = 2.8, z = -3.7, y = 8.7},
+			{x = 2.7, z = -3.7, y = 5.8},
+			{x = 2.4, z = -3.7, y = 2.8},
+			{x = 0, z = -3.7, y = 0},
+			{x = -1.7, z = -3.7, y = 2.5},
+			{x = -3.1, z = -3.7, y = 5.7},
+			{x = -4, z = -3.7, y = 8.8},
+			{x = 0, z = -3.7, y = -5.5},
+			{x = 0, z = -3.7, y = -10.6},
+		},
 	},
 }
 

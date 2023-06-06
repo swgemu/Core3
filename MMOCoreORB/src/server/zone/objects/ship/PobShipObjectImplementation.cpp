@@ -4,8 +4,10 @@
 */
 
 #include "server/zone/objects/ship/PobShipObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
 #include "templates/tangible/SharedShipObjectTemplate.h"
-#include "system/util/VectorMap.h"
+#include "server/zone/objects/ship/PlayerLaunchPoints.h"
+#include "server/zone/objects/ship/DamageSparkLocations.h"
 
 void PobShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipObjectImplementation::loadTemplateData(templateData);
@@ -15,35 +17,25 @@ void PobShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 	if (ssot != nullptr) {
 		const auto sparkLocs = ssot->getSparkLocations();
 
-		if (sparkLocs != nullptr) {
-			for (int i = 0; i < sparkLocs->size(); i++) {
-				int cellNum = sparkLocs->elementAt(i).getKey();
-				Vector<Vector3> locations = sparkLocs->elementAt(i).getValue();
-				Vector<Vector3*> locs;
+		for (int i = 0; i < sparkLocs.size(); i++) {
+			String cellName = sparkLocs.elementAt(i).getKey();
+			Vector<Vector3> locations = sparkLocs.elementAt(i).getValue();
 
-				for (int k = 0; k < locations.size(); k++) {
-					Vector3* coords(&locations.get(k));
-					locs.emplace(coords);
-				}
-
-				sparkLocations.put(cellNum, &locs);
+			for (int k = 0; k < locations.size(); k++) {
+				Vector3 point(locations.get(k));
+				sparkLocations.addSparkLocation(cellName, point);
 			}
 		}
 
 		const auto launchLocs = ssot->getLaunchLocations();
 
-		if (launchLocs != nullptr) {
-			for (int i = 0; i < launchLocs->size(); i++) {
-				int cellNum = launchLocs->elementAt(i).getKey();
-				Vector<Vector3> locations = launchLocs->elementAt(i).getValue();
-				Vector<Vector3*> locs;
+		for (int i = 0; i < launchLocs.size(); i++) {
+			String cellName = launchLocs.elementAt(i).getKey();
+			Vector<Vector3> locations = launchLocs.elementAt(i).getValue();
 
-				for (int k = 0; k < locations.size(); k++) {
-					Vector3* coords(&locations.get(k));
-					locs.emplace(coords);
-				}
-
-				launchPoints.put(cellNum, &locs);
+			for (int k = 0; k < locations.size(); k++) {
+				Vector3 point(locations.get(k));
+				launchPoints.addLaunchPoint(cellName, point);
 			}
 		}
 	}
@@ -63,4 +55,17 @@ bool PobShipObject::isPobShipObject() {
 
 bool PobShipObjectImplementation::isPobShipObject() {
 	return true;
+}
+
+String PobShipObjectImplementation::getRandomLaunchCell() {
+	String cell = launchPoints.getRandomCell();
+	return cell;
+}
+
+Vector3 PobShipObjectImplementation::getLaunchPointInCell(const String& cellName) {
+	auto locations = launchPoints.getSpawnLocations(cellName);
+	int random = System::random(locations.size() - 1);
+	Vector3 location(locations.get(random));
+
+	return location;
 }
