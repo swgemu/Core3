@@ -3,6 +3,7 @@
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
+#include "server/zone/objects/player/events/StoreShipTask.h"
 
 const char LuaShipObject::className[] = "LuaShipObject";
 
@@ -72,14 +73,10 @@ int LuaShipObject::storeShip(lua_State* L) {
 	if (shipControlDevice == nullptr)
 		return 0;
 
-	Reference<CreatureObject*> playerReference = player;
-	Reference<ShipControlDevice*> shipControlRef = shipControlDevice;
+	StoreShipTask* task = new StoreShipTask(player, shipControlDevice);
 
-	Core::getTaskManager()->executeTask([shipControlDevice, playerReference] () {
-		Locker locker(shipControlDevice);
-
-		shipControlDevice->storeShip(playerReference);
-	}, "StoreShipLambda");
+	if (task != nullptr)
+		task->execute();
 
 	return 0;
 }
