@@ -209,12 +209,6 @@ int LuaSceneObject::getZoneName(lua_State* L) {
 		name = zone->getZoneName();
 	}
 
-	SpaceZone* spaceZone = realObject->getSpaceZone();
-
-	if (spaceZone != nullptr) {
-		name = spaceZone->getZoneName();
-	}
-
 	lua_pushstring(L, name.toCharArray());
 
 	return 1;

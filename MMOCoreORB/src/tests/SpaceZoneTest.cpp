@@ -69,13 +69,16 @@ public:
 		ConfigManager::instance()->loadConfigData();
 		ConfigManager::instance()->setProgressMonitors(false);
 		auto configManager = ConfigManager::instance();
+		String spaceZoneName = "test_space_zone";
 
 		database = new ServerDatabase(configManager);
 		zoneServer = new ZoneServer(configManager);
 		processServer = new ZoneProcessServer(zoneServer);
-		spaceZone = new SpaceZone(processServer, "test_space_zone");
+		spaceZone = new SpaceZone(processServer, spaceZoneName);
+		spaceZone->deploy("SpaceZone " + spaceZoneName);
 		spaceZone->createContainerComponent();
 		spaceZone->_setObjectID(1);
+		zoneServer->addSpaceZone(spaceZoneName, spaceZone);
 	}
 
 	void TearDown() {
@@ -103,7 +106,7 @@ TEST_F(SpaceZoneTest, InRangeTest) {
 
 	spaceZone->transferObject(scene, -1);
 
-	ASSERT_TRUE(scene->getSpaceZone() != nullptr);
+	ASSERT_TRUE(scene->getZone() != nullptr); // Breaking here
 
 	SortedVector<ManagedReference<TreeEntry*> > objects;
 
@@ -154,4 +157,6 @@ TEST_F(SpaceZoneTest, InRangeTest) {
 	spaceZone->getInRangeObjects(1000, 1000, 1000, 128, &objects, true);
 
 	ASSERT_EQ(objects.size(), 0);
+
+	zoneServer->removeSpaceZone(spaceZone);
 }

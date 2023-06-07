@@ -59,7 +59,7 @@ class ZoneServer extends ManagedService implements Logger {
 	private transient ZoneProcessServer processor;
 
 	private transient VectorMap<string, Zone> zones;
-	private transient VectorMap<string, SpaceZone> spaceZones;
+	public transient VectorMap<string, SpaceZone> spaceZones;
 
 	private transient ObjectManager objectManager;
 	private PlayerManager playerManager;
@@ -279,12 +279,7 @@ class ZoneServer extends ManagedService implements Logger {
 	}
 
 	@read
-	public Zone getZone(final string terrainName) {
-		if (!zones)
-			return null;
-
-		return zones.get(terrainName);
-	}
+	public native Zone getZone(final string terrainName);
 
 	@read
 	public Zone getGroundZone(final string terrainName) {
@@ -295,6 +290,17 @@ class ZoneServer extends ManagedService implements Logger {
 	public SpaceZone getSpaceZone(final string terrainName) {
 		return spaceZones.get(terrainName);
 	}
+
+	/**
+	 * This is only used for spacezone unit test to add a temporary spaceZone.
+	 * Do not use anywhere else, as space zones are loaded from client/lua.
+	 */
+	public native void addSpaceZone(final string zoneName, SpaceZone spaceZone);
+	/**
+	 * This is only used for spacezone unit test to remove a temporary spaceZone.
+	 * Do not use anywhere else, as space zones are loaded from client/lua.
+	 */
+	public native void removeSpaceZone(SpaceZone spaceZone);
 
 	/**
 	 * Gets a note based on it's position in the zone map.
@@ -327,9 +333,6 @@ class ZoneServer extends ManagedService implements Logger {
 
 	@read
 	public int getSpaceZoneCount() {
-		if (!spaceZones)
-			return 0;
-
 		return spaceZones.size();
 	}
 
