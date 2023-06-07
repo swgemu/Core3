@@ -78,12 +78,12 @@ object_ship_player_player_sorosuub_space_yacht = object_ship_player_shared_playe
 		-- Ship Permissions Terminal
 		{ templateFile = "object/tangible/terminal/terminal_pob_ship.iff", x = 0.88, z = -0.38, y = 16.37, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 1, containmentType = -1 },
 		-- Escape Pod
-		{ templateFile = "object/tangible/ship/interior_components/escape_pod_hatch.iff", x = 6.89, z = -3.39, y = 22.03, ox = 0.707, oy = 0, oz = 0.707, ow = 1, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/escape_pod_hatch.iff", x = 6.89, z = -3.39, y = 22.03, ox = 0.147257, oy = -0.675603, oz = 0.140392, ow = 0.708637, cellid = 2, containmentType = -1 },
 		-- Elevator Terminals
-		{ templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 1.05, z = -3.67, y = -15.57, ox = 1, oy = 0, oz = 0, ow = 1, cellid = 10, containmentType = -1 },
-		{ templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 1.06, z = 1.33, y = -15.56, ox = 1, oy = 0, oz = 0, ow = 1, cellid = 10, containmentType = -1 },
-		{ templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 3.28, z = 1.23, y = -21.87, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 11, containmentType = -1 },
-		{ templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 3.25, z = 5.33, y = -21.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 11, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 1.05, z = -3.67, y = -15.57, ox = 0, oy = -0.707, oz = 0, ow = 0.707, cellid = 10, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 1.06, z = 1.33, y = -15.56, ox = 0, oy = -0.707, oz = 0, ow = 0.707, cellid = 10, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 3.28, z = 1.23, y = -21.87, ox = 0, oy = -0.707, oz = 0, ow = 0.707, cellid = 11, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 3.25, z = 5.33, y = -21.86, ox = 0, oy = -0.707, oz = 0, ow = 0.707, cellid = 11, containmentType = -1 },
 	},
 
 	launchPoints = {

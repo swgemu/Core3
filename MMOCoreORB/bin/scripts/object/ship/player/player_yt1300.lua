@@ -100,17 +100,17 @@ object_ship_player_player_yt1300 = object_ship_player_shared_player_yt1300:new {
 		-- Hall 4
 		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -6.43, z = 1.63, y = -0.02, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1 },
 		-- Storage 5
-		{ templateFile = "object/tangible/ship/interior_components/engine_interior.iff", x = -8.64, z = -0.05, y = -9.85, ox = 0, oy = 0, oz = 0, ow = -0.707106, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/engine_interior.iff", x = -8.64, z = -0.05, y = -9.85, ox = 0.000000, oy = 0.409834, oz = 0.000000, ow = 0.912159, cellid = 5, containmentType = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -2.1, z = -0.34, y = -7.17, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -4.51, z = 1.26, y = -1.96,ow = 0.005, ox = 0.707, oy = -0.707, oz = 0.005, cellid = 5, containmentType = -1 }, -- Faces south? on flat wall
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -4.51, z = 1.26, y = -1.96, ox = -0.707106, oy = 0.036321, oz = 0.032809, ow = 0.707106, cellid = 5, containmentType = -1 }, -- Faces south? on flat wall
 		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = -4.48, z = 0.04, y = -2.04, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 5, containmentType = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = -3.23, z = 0.04, y = -1.99, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 5, containmentType = -1 },
 		-- Storage6
-		{ templateFile = "object/tangible/ship/interior_components/reactor_interior.iff", x = 8.61, z = -0.24, y = -9.87, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
+		{ templateFile = "object/tangible/ship/interior_components/reactor_interior.iff", x = 8.61, z = -0.24, y = -9.87, ox = 0.000000, oy = -0.409834, oz = 0.000000, ow = 0.912159, cellid = 6, containmentType = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 2.04, z = -0.4, y = -7.1, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/capacitor_interior.iff", x = 3.47, z = -0.15, y = -2.01, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 3.51, z = 0.61, y = -2, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 10.73, z = 0.11, y = -7.75, ox = -0.505, oy = -0.707, oz = 0.707, ow = 0.005, cellid = 6, containmentType = -1 }, -- Faces NW on flat wall
+		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 10.73, z = 0.11, y = -7.75, ox = 0.640273, oy = -0.293599, oz = 0.291632, ow = 0.647147, cellid = 6, containmentType = -1 }, -- Faces NW on flat wall
 	},
 
 	sparkLocations = {
