@@ -11,6 +11,7 @@
 #include "server/db/MySqlDatabase.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/SpaceZone.h"
+#include "server/zone/Zone.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "conf/ConfigManager.h"
@@ -74,6 +75,7 @@ public:
 		zoneServer = new ZoneServer(configManager);
 		processServer = new ZoneProcessServer(zoneServer);
 		spaceZone = new SpaceZone(processServer, "test_space_zone");
+		zoneServer->addSpaceZone(spaceZone, spaceZone->getZoneName());
 		spaceZone->createContainerComponent();
 		spaceZone->_setObjectID(1);
 	}
@@ -103,7 +105,7 @@ TEST_F(SpaceZoneTest, InRangeTest) {
 
 	spaceZone->transferObject(scene, -1);
 
-	ASSERT_TRUE(scene->getSpaceZone() != nullptr);
+	ASSERT_TRUE(scene->getZone() != nullptr); // Breaking here
 
 	SortedVector<ManagedReference<TreeEntry*> > objects;
 

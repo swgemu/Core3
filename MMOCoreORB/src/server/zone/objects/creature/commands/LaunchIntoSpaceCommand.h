@@ -124,9 +124,9 @@ public:
 				return GENERALERROR;
 			}
 
-			SpaceZone* spaceZone = zoneServer->getSpaceZone(jtlZoneName);
+			auto spaceZone = zoneServer->getZone(jtlZoneName);
 
-			if (spaceZone == nullptr) {
+			if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
 				return GENERALERROR;
 			}
 

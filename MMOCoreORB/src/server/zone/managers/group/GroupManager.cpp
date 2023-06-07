@@ -6,6 +6,7 @@
 
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
 
 #include "server/chat/room/ChatRoom.h"
 
@@ -144,18 +145,26 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	//Post: player locked
 	uint64 inviterID = player->getGroupInviterID();
 
-	Zone* zone = player->getZone();
+	if (player->getZone() == nullptr) {
+		return;
+	}
 
-	if (zone == nullptr)
+	ManagedReference<ZoneServer*> zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	ManagedReference<SceneObject*> sceneObject = zoneServer->getObject(inviterID);
+
+	if (sceneObject == nullptr || !sceneObject->isPlayerCreature() || sceneObject->getObjectID() == player->getObjectID())
 		return;
 
-	ManagedReference<ZoneServer*> server = zone->getZoneServer();
-	ManagedReference<SceneObject*> object = server->getObject(inviterID);
+	CreatureObject* inviter = cast<CreatureObject*>( sceneObject.get());
 
-	if (object == nullptr || !object->isPlayerCreature() || object == player)
+	if (inviter == nullptr)
 		return;
 
-	CreatureObject* inviter = cast<CreatureObject*>( object.get());
 	GroupObject* group = nullptr;
 
 	Locker clocker(inviter, player);
@@ -181,7 +190,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	}
 
 	// if inviter IS in the group but is not the leader
-	if (group->getLeader() != inviter && !playerIsInvitingOwnPet(inviter, player)) {
+	if (group->getLeader()->getObjectID() != inviter->getObjectID() && !playerIsInvitingOwnPet(inviter, player)) {
 		player->updateGroupInviterID(0);
 		StringIdChatParameter param("group", "prose_leader_changed"); // "%TU has abdicated group leadership to %TT."
 		param.setTU( inviter->getDisplayedName() );
@@ -214,7 +223,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 		ManagedReference<ChatRoom*> groupChat = group->getChatRoom();
 		if (groupChat != nullptr) {
 			groupChat->sendTo(cast<CreatureObject*>(player));
-			server->getChatManager()->handleChatEnterRoomById(player, groupChat->getRoomID(), -1, true);
+			zoneServer->getChatManager()->handleChatEnterRoomById(player, groupChat->getRoomID(), -1, true);
 		}
 
 		if (player->isPlayingMusic()) {
@@ -237,7 +246,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	if (zone == nullptr)
 		return nullptr;
 
-	ManagedReference<ZoneServer*> server = leader->getZone()->getZoneServer();
+	ManagedReference<ZoneServer*> zoneServer = leader->getZone()->getZoneServer();
 
 	ManagedReference<GroupObject*> group = cast<GroupObject*>( ObjectManager::instance()->createObject(0x13dcb432, 0, ""));
 
@@ -502,7 +511,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 	player->wlock();
 }
 
-	void GroupManager::changeLootRule(GroupObject* group, int newRule) {
+void GroupManager::changeLootRule(GroupObject* group, int newRule) {
 		//Pre: group is locked
 		//Post: group is locked
 		if (group == nullptr)
@@ -570,7 +579,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		}
 }
 
-	void GroupManager::changeMasterLooter(GroupObject* group, CreatureObject* newLooter, bool enableRule) {
+void GroupManager::changeMasterLooter(GroupObject* group, CreatureObject* newLooter, bool enableRule) {
 		//Pre: group is locked
 		//Post: group is locked
 
@@ -595,7 +604,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		}
 	}
 
-	void GroupManager::sendMasterLooterList(GroupObject* group, CreatureObject* leader) {
+void GroupManager::sendMasterLooterList(GroupObject* group, CreatureObject* leader) {
 		//Pre: Leader and group are locked
 		//Post: Leader and group are locked
 
@@ -630,7 +639,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		leader->sendMessage(sui->generateMessage());
 	}
 
-	void GroupManager::notifyMasterLooter(GroupObject* group) {
+void GroupManager::notifyMasterLooter(GroupObject* group) {
 		//Pre: group is locked
 		//Post: group is locked
 
@@ -654,7 +663,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		}
 	}
 
-	void GroupManager::createLottery(GroupObject* group, AiAgent* corpse) {
+void GroupManager::createLottery(GroupObject* group, AiAgent* corpse) {
 		//Pre: Corpse is locked.
 		//Post: Corpse is locked.
 
@@ -707,7 +716,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		}
 	}
 
-	void GroupManager::doRandomLoot(GroupObject* group, AiAgent* corpse) {
+void GroupManager::doRandomLoot(GroupObject* group, AiAgent* corpse) {
 		//Pre: Corpse is locked.
 		//Post: Corpse is locked.
 
@@ -772,7 +781,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		}
 	}
 
-	void GroupManager::transferLoot(GroupObject* group, CreatureObject* winner, SceneObject* object, bool stillGrouped) {
+void GroupManager::transferLoot(GroupObject* group, CreatureObject* winner, SceneObject* object, bool stillGrouped) {
 		//Pre: winner and corpse are locked.
 		//Post: winner and corpse are locked.
 

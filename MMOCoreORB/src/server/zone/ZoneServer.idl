@@ -279,12 +279,7 @@ class ZoneServer extends ManagedService implements Logger {
 	}
 
 	@read
-	public Zone getZone(final string terrainName) {
-		if (!zones)
-			return null;
-
-		return zones.get(terrainName);
-	}
+	public native Zone getZone(final string terrainName);
 
 	@read
 	public Zone getGroundZone(final string terrainName) {
@@ -294,6 +289,16 @@ class ZoneServer extends ManagedService implements Logger {
 	@read
 	public SpaceZone getSpaceZone(final string terrainName) {
 		return spaceZones.get(terrainName);
+	}
+
+
+	/**
+	 * This is only used for spacezone unit test to add a temporary spaceZone.
+	 * Do not use anywhere else, as space zones are loaded from client/lua.
+	 */
+	@dirty 
+	public void addSpaceZone(SpaceZone spaceZone, final string zoneName) {
+		spaceZones.put(zoneName, spaceZone);
 	}
 
 	/**
