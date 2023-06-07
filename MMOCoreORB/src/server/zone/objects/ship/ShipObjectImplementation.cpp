@@ -432,11 +432,11 @@ void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool 
 }
 
 int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
-	ManagedReference<SpaceZone*> zone = getSpaceZone();
+	ManagedReference<Zone*> zone = getZone();
 
 	Locker* _locker = nullptr;
 
-	if (zone != nullptr)
+	if (zone != nullptr && zone->isSpaceZone())
 		_locker = new Locker(zone);
 
 	try {
