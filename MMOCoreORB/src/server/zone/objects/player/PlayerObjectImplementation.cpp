@@ -350,7 +350,7 @@ void PlayerObjectImplementation::unload() {
 
 	ManagedReference<SceneObject*> creoParent = creature->getParent().get();
 
-	if (creature->getZone() != nullptr) {
+	if (creature->getZone() != nullptr && creatureZone->isGroundZone()) {
 		savedTerrainName = creature->getZone()->getZoneName();
 
 		if (creoParent != nullptr) {
@@ -360,7 +360,7 @@ void PlayerObjectImplementation::unload() {
 		}
 
 		creature->destroyObjectFromWorld(true);
-	} else if (creature->getSpaceZone() != nullptr) {
+	} else if (creature->getZone() != nullptr && creatureZone->isSpaceZone(){
 		unloadShip();
 
 		String groundZoneName = launchPoint.getGoundZoneName();
@@ -560,7 +560,9 @@ void PlayerObjectImplementation::notifySceneReady() {
 	}
 
 	checkAndShowTOS();
-	createHelperDroid();
+
+	if (zone != nullptr && zone->isGroundZone())
+		createHelperDroid();
 }
 
 void PlayerObjectImplementation::sendFriendLists() {

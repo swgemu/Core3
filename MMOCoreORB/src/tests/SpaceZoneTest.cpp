@@ -103,7 +103,7 @@ TEST_F(SpaceZoneTest, InRangeTest) {
 
 	spaceZone->transferObject(scene, -1);
 
-	ASSERT_TRUE(scene->getSpaceZone() != nullptr);
+	ASSERT_TRUE(scene->getZone() != nullptr);
 
 	SortedVector<ManagedReference<TreeEntry*> > objects;
 

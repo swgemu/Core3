@@ -109,9 +109,8 @@ class SpaceZone extends Zone {
 	public native boolean isWithinBoundaries(@dereferenced final Vector3 position);
 	*/
 
-	@dirty
-	public boolean isSpaceZone() {
-		return true;
-	}
+	@local
+	@nativeStub
+	public boolean isSpaceZone();
 }
 
