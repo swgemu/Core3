@@ -59,7 +59,7 @@
 #include "templates/intangible/SharedPlayerObjectTemplate.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
-#include "server/zone/objects/player/events/StoreShipTask.h"
+#include "server/zone/objects/intangible/tasks/StoreShipTask.h"
 #include "server/zone/objects/player/events/RemoveSpouseTask.h"
 #include "server/zone/objects/player/events/PvpTefRemovalTask.h"
 #include "server/zone/objects/player/events/SpawnHelperDroidTask.h"
@@ -294,7 +294,7 @@ void PlayerObjectImplementation::unloadShip() {
 			ShipControlDevice* shipDevice = cast<ShipControlDevice*>(object.get());
 
 			if (shipDevice != nullptr && shipDevice->isShipLaunched()) {
-				StoreShipTask* task = new StoreShipTask(creature, shipDevice);
+				StoreShipTask* task = new StoreShipTask(creature, shipDevice, launchPoint.getGoundZoneName(), launchPoint.getLocation());
 
 				if (task != nullptr)
 					task->execute();

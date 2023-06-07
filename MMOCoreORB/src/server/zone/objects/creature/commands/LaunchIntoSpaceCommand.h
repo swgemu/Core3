@@ -11,6 +11,7 @@
 #include "server/zone/managers/space/SpaceManager.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
+#include "server/zone/objects/intangible/tasks/LaunchShipTask.h"
 
 class LaunchIntoSpaceCommand : public QueueCommand {
 public:
@@ -34,21 +35,13 @@ public:
 		if (!tokenizer.hasMoreTokens())
 			return GENERALERROR;
 
-		uint64 shipID = tokenizer.hasMoreTokens() ? tokenizer.getLongToken() : 0;
+		uint64 scdID = tokenizer.hasMoreTokens() ? tokenizer.getLongToken() : 0;
 		uint32 groupSize = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0;
-		Vector<ManagedReference<CreatureObject*>> groupMembers;
+		Vector<uint64> groupMembers;
 
 		for (int i = 0; i < groupSize; i++) {
 			uint64 memberID = tokenizer.getLongToken();
-			ManagedReference<SceneObject*> memberScno = zoneServer->getObject(memberID).get();
-
-			if (memberScno == nullptr || !memberScno->isPlayerCreature())
-				continue;
-
-			auto groupMember = memberScno->asCreatureObject();
-
-			if (groupMember != nullptr)
-				groupMembers.add(groupMember);
+			groupMembers.add(memberID);
 		}
 
 		String arrivalPlanet = tokenizer.hasMoreTokens() ? tokenizer.getStringToken() : "";
@@ -60,13 +53,13 @@ public:
 			return INVALIDSTATE;
 		}
 
-		ManagedReference<ShipControlDevice*> pcd = zoneServer->getObject(shipID).castTo<ShipControlDevice*>();
+		ManagedReference<ShipControlDevice*> shipDevice = zoneServer->getObject(scdID).castTo<ShipControlDevice*>();
 
-		if (pcd == nullptr) {
+		if (shipDevice == nullptr) {
 			return GENERALERROR;
 		}
 
-		ManagedReference<ShipObject*> ship = pcd->getControlledObject()->asShipObject();
+		ManagedReference<ShipObject*> ship = shipDevice->getControlledObject()->asShipObject();
 
 		if (ship == nullptr || ship->getOwner().get() != creature) {
 			return GENERALERROR;
@@ -91,60 +84,32 @@ public:
 			Vector3 arrivalPosition = planetManager->getJtlTravelDestination(arrivalPointName);
 
 			for (int j = 0; j < groupMembers.size(); j++) {
-				auto member = groupMembers.get(j);
+				auto memberID = groupMembers.get(j);
+				auto memberScno = zoneServer->getObject(memberID);
 
-				if (member == nullptr) {
+				if (memberScno == nullptr || !memberScno->isPlayerCreature())
 					continue;
-				}
 
-				Locker memLock(member, creature);
+				auto groupMember = memberScno->asCreatureObject();
 
-				member->switchZone(arrivalPlanet, arrivalPosition.getX(),arrivalPosition.getY(),arrivalPosition.getZ(), 0);
+				if (groupMember == nullptr)
+					continue;
+
+				Locker memLock(memberScno, creature);
+
+				groupMember->switchZone(arrivalPlanet, arrivalPosition.getX(),arrivalPosition.getY(),arrivalPosition.getZ(), 0);
 			}
 
 			creature->switchZone(arrivalPlanet, arrivalPosition.getX(),arrivalPosition.getY(),arrivalPosition.getZ(), 0);
-			pcd->setStoredLocationData(creature);
 
-		} else { // launch into space
-			Zone* departureZone = creature->getZone();
+			Locker cLock(shipDevice, creature);
+			shipDevice->setStoredLocationData(creature);
+		 // launch into space
+		} else {
+			LaunchShipTask* launchTask = new LaunchShipTask(creature, shipDevice, groupMembers);
 
-			if (departureZone == nullptr) {
-				return GENERALERROR;
-			}
-
-			PlanetManager* planetManager = departureZone->getPlanetManager();
-
-			if (planetManager == nullptr) {
-				return GENERALERROR;
-			}
-
-			String jtlZoneName = planetManager->getJtlZoneName();
-
-			if (jtlZoneName == "") {
-				return GENERALERROR;
-			}
-
-			auto spaceZone = zoneServer->getZone(jtlZoneName);
-
-			if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
-				return GENERALERROR;
-			}
-
-			Vector3 randomPosition = Vector3(System::random(100.f), System::random(100.f), System::random(100.f));
-			Vector3 launchPosition = planetManager->getJtlLaunchLocations() + randomPosition;
-
-			Locker pLock(pcd, creature);
-
-			pcd->launchShip(creature, jtlZoneName, launchPosition);
-			pcd->insertPlayer(creature);
-
-			for (int j = 0; j < groupMembers.size(); j++) {
-				auto groupMember = groupMembers.get(j);
-
-				if (groupMember != nullptr) {
-					Locker memLock(groupMember, creature);
-					pcd->launchGroupMember(groupMember);
-				}
+			if (launchTask != nullptr) {
+				launchTask->schedule(100);
 			}
 		}
 

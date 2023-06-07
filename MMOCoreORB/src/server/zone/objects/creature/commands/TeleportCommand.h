@@ -7,6 +7,8 @@
 
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
+#include "server/zone/objects/intangible/tasks/LaunchShipTask.h"
+#include "server/zone/objects/intangible/tasks/StoreShipTask.h"
 
 class TeleportCommand : public QueueCommand {
 public:
@@ -78,16 +80,24 @@ public:
 				}
 
 				if (!newZoneIsSpace) {
-					if (shipControlDevice != nullptr && !shipControlDevice->storeShip(nullptr)) {
-						creature->sendSystemMessage("Failed to store ship for teleport.");
-						return GENERALERROR;
+					if (shipControlDevice != nullptr) {
+						StoreShipTask* storeTask = new StoreShipTask(creature, shipControlDevice, zoneName, newPosition);
+
+						if (storeTask == nullptr)
+							return GENERALERROR;
+
+						storeTask->execute();
 					}
 				} else {
 					if (shipControlDevice != nullptr) {
-						Locker clock(shipControlDevice, creature);
+						Vector<uint64> dummyVec;
+						LaunchShipTask* launchTask = new LaunchShipTask(creature, shipControlDevice, dummyVec);
 
-						shipControlDevice->launchShip(creature, zoneName, newPosition);
-						parentID = creature->getParentID();
+						if (launchTask == nullptr)
+							return GENERALERROR;
+
+						launchTask->execute();
+						return SUCCESS;
 					}
 				}
 			}

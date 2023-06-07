@@ -50,6 +50,5 @@ function SpaceStationScreenPlay:landShip(pPlayer, destination)
 	local destinationTable = self.travelPoints
 	local destinationInfo = destinationTable[destination]
 
-	SceneObject(pPlayer):switchZone(destinationInfo[1], destinationInfo[2], destinationInfo[3], destinationInfo[4], 0)
-	LuaShipObject(pShip):storeShip(pPlayer)
+	LuaShipObject(pShip):storeShip(pPlayer, destinationInfo[1], destinationInfo[2], destinationInfo[3], destinationInfo[4])
 end
