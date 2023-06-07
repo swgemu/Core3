@@ -821,3 +821,11 @@ bool ZoneImplementation::isWithinBoundaries(const Vector3& position) {
 float ZoneImplementation::getBoundingRadius() {
 	return planetManager->getTerrainManager()->getMax();
 }
+
+bool Zone::isGroundZone() {
+	return true;
+}
+
+bool ZoneImplementation::isGroundZone() {
+	return true;
+}

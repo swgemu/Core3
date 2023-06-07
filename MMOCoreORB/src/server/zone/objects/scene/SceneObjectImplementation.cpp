@@ -1926,6 +1926,22 @@ void SceneObjectImplementation::playEffect(const String& file,
 	broadcastMessage(effect, true);
 }
 
+bool SceneObjectImplementation::isGroundZone() {
+	return false;
+}
+
+bool SceneObject::isGroundZone() {
+	return false;
+}
+
+bool SceneObjectImplementation::isSpaceZone() {
+	return false;
+}
+
+bool SceneObject::isSpaceZone() {
+	return false;
+}
+
 bool SceneObjectImplementation::isPlayerCreature() {
 	return false;
 }
