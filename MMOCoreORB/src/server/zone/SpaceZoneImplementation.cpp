@@ -285,3 +285,11 @@ void SpaceZoneImplementation::addSceneObject(SceneObject* object) {
 void SpaceZoneImplementation::dropSceneObject(SceneObject* object)  {
 	ManagedReference<SceneObject*> oldObject = objectMap->remove(object->getObjectID());
 }
+
+bool SpaceZone::isSpaceZone() {
+	return true;
+}
+
+bool SpaceZoneImplementation::isSpaceZone() {
+	return true;
+}

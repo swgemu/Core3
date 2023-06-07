@@ -151,7 +151,6 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		}
 	} else {
 		sceneObject->error("unknown containmentType in canAddObject type " + String::valueOf(containmentType));
-
 		errorDescription = "DEBUG: cant move item unknown containmentType type";
 		return TransferErrorCode::UNKNOWNCONTAIMENTTYPE;
 	}
@@ -210,17 +209,8 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		return false;
 
 	ManagedReference<SceneObject*> objParent = object->getParent().get();
-	ManagedReference<Zone*> objZone = nullptr;
-	ManagedReference<SpaceZone*> objSpaceZone = nullptr;
 
-	bool isSpaceZone = false;
-
-	if (object->getSpaceZone() != nullptr) {
-		isSpaceZone = true;
-		objSpaceZone = object->getLocalSpaceZone();
-	} else if (object->getZone() != nullptr) {
-		objZone = object->getLocalZone();
-	}
+	Zone* objZone = object->getZone();
 
 	ManagedReference<Zone*> oldRootZone = object->getZone();
 
@@ -232,7 +222,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		}
 	}
 
-	if (objParent != nullptr || objZone != nullptr || objSpaceZone != nullptr) {
+	if (objParent != nullptr || objZone != nullptr) {
 		if (objParent != nullptr)
 			objParent->removeObject(object, sceneObject, notifyClient);
 
@@ -243,19 +233,23 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		}
 
 		if (objZone != nullptr) {
-			objZone->remove(object);
+			if (objZone->isSpaceZone()) {
+				SpaceZone* spaceZone = cast<SpaceZone*>(objZone);
 
-			object->setGroundZone(nullptr);
+				spaceZone->remove(object);
 
-			if (objParent == nullptr)
+				object->setSpaceZone(nullptr);
+
+				if (objParent == nullptr)
+					objParent = spaceZone;
+			} else {
+				objZone->remove(object);
+
+				object->setGroundZone(nullptr);
+
+				if (objParent == nullptr)
 					objParent = objZone;
-		} else if (objSpaceZone != nullptr) {
-			objSpaceZone->remove(object);
-
-			object->setSpaceZone(nullptr);
-
-			if (objParent == nullptr)
-				objParent = objSpaceZone;
+			}
 		}
 	}
 
@@ -332,7 +326,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	contLocker.release();
 
-	if ((containmentType >= 4) && (objZone == nullptr || objSpaceZone == nullptr)) {
+	if ((containmentType >= 4) && (objZone == nullptr)) {
 		sceneObject->broadcastObject(object, true);
 	} else if (notifyClient) {
 		sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
