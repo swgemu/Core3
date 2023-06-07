@@ -87,18 +87,23 @@ public:
 			return;
 		}
 		case 11: {
-			SpaceZone* newZone = ServerCore::getZoneServer()->getSpaceZone(zone);
+			Zone* newZone = ServerCore::getZoneServer()->getZone(zone);
 
-			if (newZone == nullptr)
+			if (newZone == nullptr || !newZone->isSpaceZone())
+				return;
+
+			SpaceZone* newSpaceZone = cast<SpaceZone*>(newZone);
+
+			if (newSpaceZone == nullptr)
 				return;
 
 			shipObject->setHyperspacing(false);
 
-			Locker zoneCross(newZone, shipObject);
+			Locker zoneCross(newSpaceZone, shipObject);
 
 			shipObject->initializePosition(location.getX() + System::random(100.f), location.getZ() + System::random(100.f), location.getY() + System::random(100.f));
 
-			newZone->transferObject(shipObject, -1, false);
+			newSpaceZone->transferObject(shipObject, -1, false);
 
 			zoneCross.release();
 

@@ -109,7 +109,7 @@ bool SceneObject::transferObject(SceneObject* object, int containmentType) {
 
 		containerObjects.put(object->getObjectID(), object);
 	} else {
-		error("unkown container type");
+		error("unknown container type");
 		return false;
 	}
 

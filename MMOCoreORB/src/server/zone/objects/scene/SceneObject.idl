@@ -344,12 +344,7 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	/**
 	 * Destroys the object from the world
 	 */
-	public abstract void destroyObjectFromWorld(boolean sendSelfDestroy) {
-		if (getSpaceZone() != null)
-			spaceZoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
-		else
-			zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
-	}
+	public native abstract void destroyObjectFromWorld(boolean sendSelfDestroy);
 
 	/**
 	 * Removes object from zone without removing from parent. Should only be used for container unloading.
@@ -990,10 +985,6 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@mock
 	@dirty
 	public abstract native Zone getZone();
-
-	@mock
-	@dirty
-	public abstract native SpaceZone getSpaceZone();
 
 	@mock
 	@read
@@ -2261,15 +2252,15 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@read
 	public native boolean isDataPad();
 
-	@dirty
-	public abstract boolean isGroundZone() {
-		return false;
-	}
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract boolean isGroundZone();
 
-	@dirty
-	public abstract boolean isSpaceZone() {
-		return false;
-	}
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract boolean isSpaceZone();
 
 	@mock
 	@dirty
