@@ -8,6 +8,7 @@
 #include "server/zone/managers/space/SpaceManager.h"
 #include "server/zone/packets/ship/DestroyShipMessage.h"
 #include "server/zone/packets/object/DataTransform.h"
+#include "server/zone/objects/intangible/tasks/StoreShipTask.h"
 
 class DestroyShipTask: public Task {
 private:
@@ -111,14 +112,10 @@ public:
 					if (shipControlDevice == nullptr)
 						return;
 
-					Reference<CreatureObject*> pilotReference = pilot;
-					Reference<ShipControlDevice*> shipControlRef = shipControlDevice;
+					StoreShipTask* storeTask = new StoreShipTask(pilot, shipControlDevice);
 
-					Core::getTaskManager()->executeTask([shipControlDevice, pilotReference] () {
-						Locker locker(shipControlDevice);
-
-						shipControlDevice->storeShip(pilotReference);
-					}, "StoreShipLambda");
+					if (storeTask != nullptr)
+						storeTask->execute();
 
 					return;
 				}

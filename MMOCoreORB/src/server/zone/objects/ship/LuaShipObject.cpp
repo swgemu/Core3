@@ -3,7 +3,7 @@
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
-#include "server/zone/objects/player/events/StoreShipTask.h"
+#include "server/zone/objects/intangible/tasks/StoreShipTask.h"
 
 const char LuaShipObject::className[] = "LuaShipObject";
 
