@@ -161,6 +161,13 @@ float ZoneImplementation::getHeight(float x, float y) {
 	return 0;
 }
 
+bool ZoneImplementation::isGroundZone() {
+	return !zoneName.contains("space");
+}
+
+bool ZoneImplementation::isSpaceZone() {
+	return !isGroundZone();
+}
 float ZoneImplementation::getHeightNoCache(float x, float y) {
 	if (planetManager != nullptr) {
 		TerrainManager* manager = planetManager->getTerrainManager();

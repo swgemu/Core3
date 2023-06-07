@@ -510,6 +510,10 @@ void ZoneServerImplementation::clearZones() {
 	info("Space zones cleared...", true);
 }
 
+Zone* ZoneServerImplementation::getZone(const String& terrainName) const {
+	return terrainName.contains("space") ? spaceZones->get(terrainName) : zones->get(terrainName);
+}
+
 ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
 	/*if (!userManager->checkUser(addr.getIPID()))
 		return nullptr;*/

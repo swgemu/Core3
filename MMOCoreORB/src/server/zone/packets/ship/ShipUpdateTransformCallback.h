@@ -146,8 +146,9 @@ public:
 			return updateError(pilot, "!ship", false);
 		}
 
-		SpaceZone* zone = ship->getSpaceZone();
-		if (zone == nullptr) {
+		Zone* zone = ship->getZone();
+
+		if (zone == nullptr || zone->isGroundZone()) {
 			return updateError(pilot, "!zone", false);
 		}
 

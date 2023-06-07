@@ -103,24 +103,21 @@ public:
 		String zoneName = ghost->getSavedTerrainName();
 		bool inSpaceZone = false;
 
-		Zone* zone = nullptr;
+		Zone* zone = zoneServer->getZone(zoneName);
 		SpaceZone* spaceZone = nullptr;
 
-		if (zoneName.contains("space")) {
-			spaceZone = zoneServer->getSpaceZone(zoneName);
-		} else {
-			zone = zoneServer->getZone(zoneName);
-		}
 
-		if ((zone == nullptr) && (spaceZone == nullptr)) {
+		if (zone == nullptr) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "The planet where your character was stored is disabled!", 0x0);
 			client->sendMessage(errMsg);
 
 			return;
 		}
 
-		if (spaceZone != nullptr)
+		if (!zone->isGroundZone()) {
+			spaceZone = cast<SpaceZone*>(zone);
 			inSpaceZone = true;
+		}
 
 		if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
 			auto maxOnline = zoneServer->getPlayerManager()->getOnlineCharactersPerAccount();
@@ -140,9 +137,8 @@ public:
 		player->setMovementCounter(0);
 		ghost->setClientLastMovementStamp(0);
 
-		if (player->getZone() == nullptr && player->getSpaceZone() == nullptr) {
+		if (player->getZone() == nullptr)
 			ghost->setOnLoadScreen(true);
-		}
 
 		uint64 savedParentID = ghost->getSavedParentID();
 
@@ -199,9 +195,9 @@ public:
 				player->initializePosition(x, z, y);
 			}
 
-			if (zone != nullptr)
+			if (zone->isGroundZone())
 				zone->transferObject(player, -1, true);
-			else if (spaceZone != nullptr)
+			else
 				spaceZone->transferObject(player, -1, true);
 		} else {
 			if (player->getZone() == nullptr) {
@@ -213,12 +209,16 @@ public:
 				Locker clocker(objectToInsert, player);
 
 				Zone* objZone = objectToInsert->getZone();
-				SpaceZone* objSpaceZone = objectToInsert->getSpaceZone();
 
-				if (objZone != nullptr)
+				if (objZone == nullptr)
+					return;
+
+				if (objZone->isGroundZone()) {
 					zone->transferObject(objectToInsert, -1, false);
-				else if (objSpaceZone != nullptr)
+				} else {
+					SpaceZone* objSpaceZone = cast<SpaceZone*>(objZone);
 					objSpaceZone->transferObject(objectToInsert, -1, false);
+				}
 			}
 
 			player->sendToOwner(true);

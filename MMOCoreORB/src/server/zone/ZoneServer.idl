@@ -279,12 +279,7 @@ class ZoneServer extends ManagedService implements Logger {
 	}
 
 	@read
-	public Zone getZone(final string terrainName) {
-		if (!zones)
-			return null;
-
-		return zones.get(terrainName);
-	}
+	public native Zone getZone(final string terrainName);
 
 	@read
 	public Zone getGroundZone(final string terrainName) {
