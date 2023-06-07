@@ -66,15 +66,12 @@ public:
 
 		if (player != nullptr) {
 			Zone* zone = player->getZone();
-			SpaceZone* spaceZone = player->getSpaceZone();
 
-			if (zone != nullptr) {
-				const String& zoneName = zone->getZoneName();
-				setCustomTaskQueue(zoneName);
-			} else if (spaceZone != nullptr) {
-				const String& spaceZoneName = spaceZone->getZoneName();
-				setCustomTaskQueue(spaceZoneName);
-			}
+			if (zone == nullptr)
+				return;
+
+			const String& zoneName = zone->getZoneName();
+			setCustomTaskQueue(zoneName);
 		}
 	}
 
