@@ -114,11 +114,15 @@ bool ShipControlDeviceImplementation::launchShip(CreatureObject* player, const S
 	if (zoneServer ==  nullptr)
 		return false;
 
-	auto spaceZone = zoneServer->getSpaceZone(zoneName);
+	Zone* zone = zoneServer->getZone(zoneName);
 
-	if (spaceZone == nullptr) {
+	if (zone == nullptr || !zone->isSpaceZone())
 		return false;
-	}
+
+	SpaceZone* spaceZone = cast<SpaceZone*>(zone);
+
+	if (spaceZone == nullptr)
+		return false;
 
 	Locker sLock(ship);
 	ship->destroyObjectFromWorld(false);
@@ -141,7 +145,6 @@ bool ShipControlDeviceImplementation::launchShip(CreatureObject* player, const S
 
 	updateStatus(isShipLaunched(), true);
 	setStoredLocationData(player);
-
 	return isShipLaunched() ? true : false;
 }
 
@@ -174,11 +177,15 @@ bool ShipControlDeviceImplementation::insertPlayer(CreatureObject* player) {
 		return false;
 	}
 
-	auto spaceZone = ship->getSpaceZone();
+	Zone* zone = ship->getZone();
 
-	if (spaceZone == nullptr) {
+	if (zone == nullptr || !zone->isSpaceZone())
 		return false;
-	}
+
+	SpaceZone* spaceZone = cast<SpaceZone*>(zone);
+
+	if (spaceZone == nullptr)
+		return false;
 
 	player->destroyObjectFromWorld(false);
 
@@ -217,11 +224,10 @@ void ShipControlDeviceImplementation::launchGroupMember(CreatureObject* groupMem
 	if (pobShip == nullptr)
 		return;
 
-	auto spaceZone = ship->getSpaceZone();
+	Zone* spaceZone = ship->getZone();
 
-	if (spaceZone == nullptr) {
+	if (spaceZone == nullptr || !zone->isSpaceZone())
 		return;
-	}
 
 	String randomCell = pobShip->getRandomLaunchCell();
 	Vector3 launchLoc(pobShip->getLaunchPointInCell(randomCell));
@@ -269,7 +275,7 @@ void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 		menuResponse->addRadialMenuItem(LAUNCHSHIP, 3, "Launch Ship");
 
 		for (int i = 0; i < zoneServer->getSpaceZoneCount(); ++i) {
-			auto zone = zoneServer->getSpaceZone(i);
+			auto zone = zoneServer->getZone(i);
 
 			if (zone == nullptr) {
 				continue;
@@ -311,10 +317,10 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
 		}
 	} else {
 		if (selectedID > LAUNCHSHIP) {
-			int zoneIndex = selectedID - LAUNCHSHIP - 1;
-			int zoneCount = zoneServer->getSpaceZoneCount();
+			int spaceZoneIndex = selectedID - LAUNCHSHIP - 1;
+			int spaceZoneCount = zoneServer->getSpaceZoneCount();
 
-			auto zone = (zoneIndex < zoneCount) ? zoneServer->getSpaceZone(zoneIndex) : nullptr;
+			auto zone = (spaceZoneIndex < spaceZoneCount) ? zoneServer->getSpaceZone(spaceZoneIndex) : nullptr;
 
 			if (zone == nullptr) {
 				return 1;
