@@ -71,20 +71,8 @@ class ShipControlDevice extends ControlDevice {
 	@arg1preLocked
 	public native void setStoredLocationData(CreatureObject player);
 
-	public native boolean storeShip(CreatureObject player);
-
 	@preLocked
 	public native boolean launchShip(CreatureObject player, @dereferenced final string zoneName, @dereferenced final Vector3 position);
-
-	@preLocked
-	public native boolean removePlayer(CreatureObject player);
-
-	@preLocked
-	public native boolean insertPlayer(CreatureObject player);
-
-	@preLocked
-	@arg1preLocked
-	public native void launchGroupMember(CreatureObject groupMember);
 
 	@preLocked
 	@arg1preLocked
@@ -101,6 +89,4 @@ class ShipControlDevice extends ControlDevice {
 
 	@preLocked
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-
-	public native boolean ejectPlayers();
 }
