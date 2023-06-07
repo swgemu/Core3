@@ -669,10 +669,12 @@ Ray CollisionManager::convertToModelSpace(const Vector3& rayOrigin, const Vector
 }
 
 bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targetPosition, Vector3& collisionPoint) {
-	SpaceZone* zone = ship->getSpaceZone();
+	Zone* zone = ship->getZone();
 
-	if (zone == nullptr)
+	if (zone == nullptr || !zone->isSpaceZone())
 		return false;
+
+	SpaceZone* spaceZone = dynamic_cast<SpaceZone*>(zone);
 
 	Vector3 rayOrigin = ship->getWorldPosition();
 
@@ -686,7 +688,7 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 	Triangle* triangle = nullptr;
 
 	SortedVector<ManagedReference<TreeEntry*> > objects(512, 512);
-	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), targetPosition.getZ(), 512, &objects, true);
+	spaceZone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), targetPosition.getZ(), 512, &objects, true);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		const AppearanceTemplate *app = nullptr;
@@ -733,9 +735,15 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 }
 
 bool CollisionManager::checkShipWeaponCollision(ShipObject* obj, const Vector3 startPosition, const Vector3& targetPosition, Vector3& collisionPoint, Vector<ManagedReference<SceneObject*> >& collidedObjects) {
-	SpaceZone* zone = obj->getSpaceZone();
 
-	if (zone == NULL)
+	Zone* zone = obj->getZone();
+
+	if (zone == nullptr || !zone->isSpaceZone())
+		return false;
+
+	SpaceZone* spaceZone = dynamic_cast<SpaceZone*>(zone);
+
+	if (spaceZone == nullptr)
 		return false;
 
 	Vector3 rayOrigin = startPosition;
