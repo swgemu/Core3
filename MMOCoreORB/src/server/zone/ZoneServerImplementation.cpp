@@ -510,6 +510,26 @@ void ZoneServerImplementation::clearZones() {
 	info("Space zones cleared...", true);
 }
 
+Zone* ZoneServerImplementation::getZone(const String& terrainName) const {
+	return terrainName.contains("space") ? spaceZones->get(terrainName) : zones->get(terrainName);
+}
+
+void ZoneServerImplementation::addSpaceZone(const String& zoneName, SpaceZone* spaceZone) {
+	if (spaceZones) {
+		spaceZones->put(zoneName, spaceZone);
+	}
+}
+
+void ZoneServerImplementation::removeSpaceZone(SpaceZone* spaceZone) {
+	if (spaceZones) {
+		for (int i = 0; i < spaceZones->size(); ++i) {
+			if (spaceZones->get(i) == spaceZone) {
+				spaceZones->remove(i);
+			}
+		}
+	}
+}
+
 ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
 	/*if (!userManager->checkUser(addr.getIPID()))
 		return nullptr;*/

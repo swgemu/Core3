@@ -18,9 +18,7 @@ class JtlShipListRequestCallback : public MessageCallback {
 	uint64 terminalObjectID;
 
 public:
-	JtlShipListRequestCallback(ObjectControllerMessageCallback* objectControllerCallback) :
-		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
-		objectControllerMain(objectControllerCallback), terminalObjectID(0) {
+	JtlShipListRequestCallback(ObjectControllerMessageCallback* objectControllerCallback) : MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()), objectControllerMain(objectControllerCallback), terminalObjectID(0) {
 	}
 
 	void parse(Message* message) {
