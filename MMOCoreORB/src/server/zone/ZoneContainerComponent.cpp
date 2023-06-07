@@ -221,10 +221,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 			CreatureObject* player = tanoObject->asCreatureObject();
 
 			if (player != nullptr) {
-				if (player->hasState(CreatureState::PILOTINGSHIP))
-					player->clearState(CreatureState::PILOTINGSHIP);
-				else if (player->hasState(CreatureState::PILOTINGPOBSHIP))
-					player->clearState(CreatureState::PILOTINGPOBSHIP);
+				player->clearSpaceStates();
 			}
 		}
 	} else if (object->isStaticObjectClass()) {

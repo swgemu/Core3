@@ -74,6 +74,7 @@ public:
 		zoneServer = new ZoneServer(configManager);
 		processServer = new ZoneProcessServer(zoneServer);
 		spaceZone = new SpaceZone(processServer, "test_space_zone");
+
 		spaceZone->createContainerComponent();
 		spaceZone->_setObjectID(1);
 	}
@@ -103,7 +104,9 @@ TEST_F(SpaceZoneTest, InRangeTest) {
 
 	spaceZone->transferObject(scene, -1);
 
-	ASSERT_TRUE(scene->getSpaceZone() != nullptr);
+	ASSERT_TRUE(scene->getZone() != nullptr);
+
+	ASSERT_TRUE(scene->getZone()->isSpaceZone());
 
 	SortedVector<ManagedReference<TreeEntry*> > objects;
 

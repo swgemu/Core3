@@ -920,7 +920,12 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	if (getSpaceZone() != nullptr)
+	Zone* zone = getZone();
+
+	if (zone == nullptr)
+		return;
+
+	if (zone->isSpaceZone())
 		spaceZoneComponent->updateZone(asSceneObject(), lightUpdate, sendPackets);
 	else
 		zoneComponent->updateZone(asSceneObject(), lightUpdate, sendPackets);
@@ -945,7 +950,12 @@ void SceneObjectImplementation::notifyPositionUpdate(TreeEntry* entry) {
 	//Core::getTaskManager()->executeTask(new PositionUpdateTask(asSceneObject(), entry));
 	//#endif
 
-	if (getSpaceZone() != nullptr) {
+	Zone* zone = getZone();
+
+	if (zone == nullptr)
+		return;
+
+	if (zone->isSpaceZone()) {
 		spaceZoneComponent->notifyPositionUpdate(asSceneObject(), entry);
 	} else {
 		zoneComponent->notifyPositionUpdate(asSceneObject(), entry);
@@ -953,7 +963,12 @@ void SceneObjectImplementation::notifyPositionUpdate(TreeEntry* entry) {
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	if (getSpaceZone() != nullptr)
+	Zone* zone = getZone();
+
+	if (zone == nullptr)
+		return;
+
+	if (zone->isSpaceZone())
 		spaceZoneComponent->updateZoneWithParent(asSceneObject(), newParent, lightUpdate, sendPackets);
 	else
 		zoneComponent->updateZoneWithParent(asSceneObject(), newParent, lightUpdate, sendPackets);
@@ -968,10 +983,16 @@ void SceneObjectImplementation::notifyInsertToZone(SpaceZone* newZone) {
 }
 
 void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
-	if (getSpaceZone() != nullptr)
+	auto zone = getZone();
+
+	if (zone == nullptr)
+		return;
+
+	if (zone->isSpaceZone()) {
 		spaceZoneComponent->teleport(asSceneObject(), newPositionX, newPositionZ, newPositionY, parentID);
-	else
+	} else {
 		zoneComponent->teleport(asSceneObject(), newPositionX, newPositionZ, newPositionY, parentID);
+	}
 }
 
 void SceneObjectImplementation::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) {
@@ -1022,6 +1043,19 @@ int SceneObjectImplementation::canAddObject(SceneObject* object, int containment
 
 bool SceneObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) {
 	return containerComponent->transferObject(asSceneObject(), object, containmentType, notifyClient, allowOverflow, notifyRoot);
+}
+
+void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
+	Zone* zone = getZone();
+
+	if (zone == nullptr)
+		return;
+
+	if (zone->isSpaceZone()) {
+		spaceZoneComponent->destroyObjectFromWorld(asSceneObject(), sendSelfDestroy);
+	} else {
+		zoneComponent->destroyObjectFromWorld(asSceneObject(), sendSelfDestroy);
+	}
 }
 
 bool SceneObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {
@@ -1174,26 +1208,27 @@ Zone* SceneObjectImplementation::getZone() {
 	if (root != nullptr) {
 		return root->getZone();
 	} else {
-		return zone;
+		return spaceZone != nullptr ? spaceZone : zone;
 	}
-}
-
-SpaceZone* SceneObjectImplementation::getSpaceZone() {
-	auto root = getRootParent();
-
-	if (root != nullptr)
-		return root->getSpaceZone();
-	else
-		return spaceZone;
 }
 
 Zone* SceneObjectImplementation::getZoneUnsafe() const {
 	auto root = const_cast<SceneObjectImplementation*>(this)->getRootParentUnsafe();
 
 	if (root != nullptr) {
-		return root->getZoneUnsafe();
+		return root->getZone();
 	} else {
-		return zone;
+		return spaceZone != nullptr ? spaceZone : zone;
+	}
+}
+
+SpaceZone* SceneObjectImplementation::getSpaceZone() {
+	auto root = getRootParent();
+
+	if (root != nullptr) {
+		return root->getSpaceZone();
+	} else {
+		return spaceZone;
 	}
 }
 
@@ -1212,7 +1247,8 @@ bool SceneObjectImplementation::isInRange(SceneObject* object, float range) {
 
 	return false;
 }
- bool SceneObjectImplementation::isInRangeZoneless(SceneObject* object, float range) {
+
+bool SceneObjectImplementation::isInRangeZoneless(SceneObject* object, float range) {
 	Vector3 worldPos = object->getWorldPosition();
 	worldPos.setZ(0);
 	Vector3 thisPos = getWorldPosition();
@@ -1223,6 +1259,7 @@ bool SceneObjectImplementation::isInRange(SceneObject* object, float range) {
 
 	return false;
 }
+
 bool SceneObjectImplementation::isInRange3d(SceneObject* object, float range) {
 	if (getZoneUnsafe() != object->getZoneUnsafe()) {
 		return false;
@@ -1918,12 +1955,26 @@ float SceneObjectImplementation::getTemplateRadius() {
 	return app->getBoundingSphere()->getRadius();
 }
 
-void SceneObjectImplementation::playEffect(const String& file,
-		const String& aux) {
-	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(
-			asSceneObject(), file, aux);
+void SceneObjectImplementation::playEffect(const String& file, const String& aux) { 
+	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(asSceneObject(), file, aux);
 
 	broadcastMessage(effect, true);
+}
+
+bool SceneObjectImplementation::isGroundZone() {
+	return false;
+}
+
+bool SceneObject::isGroundZone() {
+	return false;
+}
+
+bool SceneObjectImplementation::isSpaceZone() {
+	return false;
+}
+
+bool SceneObject::isSpaceZone() {
+	return false;
 }
 
 bool SceneObjectImplementation::isPlayerCreature() {

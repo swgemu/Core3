@@ -14,20 +14,31 @@
 #include "server/zone/objects/intangible/TheaterObject.h"
 
 bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
-	SpaceZone* newZone = dynamic_cast<SpaceZone*>(sceneObject);
+	if (sceneObject == nullptr) {
+		return false;
+	}
 
-	if (newZone == nullptr)
+	Zone* newZone = cast<Zone*>(sceneObject);
+
+	if (newZone == nullptr || !newZone->isSpaceZone()) {
+		return false;
+	}
+
+	SpaceZone* newSpaceZone = dynamic_cast<SpaceZone*>(sceneObject);
+
+	if (newSpaceZone == nullptr)
 		return false;
 
 	SpaceZone* spaceZone = object->getSpaceZone();
-/*
-	if (object->isActiveArea())
-		return insertActiveArea(newZone, dynamic_cast<ActiveArea*>(object));
-*/
-	Locker zoneLocker(newZone);
 
-	if (object->isInOctTree() && newZone != spaceZone) {
-		object->error("trying to insert to spaceZone an object that is already in a different octtree");
+	/*
+	if (object->isActiveArea())
+		return insertActiveArea(newSpaceZone, dynamic_cast<ActiveArea*>(object));
+	*/
+	Locker zoneLocker(newSpaceZone);
+
+	if (object->isInOctTree() && newSpaceZone != spaceZone) {
+		object->error("trying to insert object to newSpaceZone but is already in another space zone");
 
 		object->destroyObjectFromWorld(true);
 
@@ -51,6 +62,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 
 		if (parent->isCellObject()) {
 			// Ship Object?
+			/*
 			ManagedReference<BuildingObject*> build = cast<BuildingObject*>(parent->getParent().get().get());
 
 			if (build != nullptr) {
@@ -58,14 +70,14 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 
 				if (creature != nullptr)
 					build->onExit(creature, parentID);
-			}
+			}*/
 		}
 	} else {
 		object->setParent(nullptr, false);
 	}
 
-	object->setSpaceZone(newZone);
-	spaceZone = newZone;
+	object->setSpaceZone(newSpaceZone);
+	spaceZone = newSpaceZone;
 
 	spaceZone->addSceneObject(object);
 

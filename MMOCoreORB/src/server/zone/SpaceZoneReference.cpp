@@ -31,14 +31,19 @@ bool SpaceZoneReference::parseFromBinaryStream(ObjectInputStream* stream) {
 	String zoneName;
 	zoneName.parseFromBinaryStream(stream);
 
-	SpaceZone* obj = ServerCore::getZoneServer()->getSpaceZone(zoneName);
+	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
 
-	if (obj == nullptr) {
+	if (zone == nullptr || !zone->isSpaceZone())
+		return false;
+
+	SpaceZone* spaceZone = cast<SpaceZone*>(zone);
+
+	if (spaceZone == nullptr) {
 		updateObject(nullptr);
 		return false;
 	}
 
-	updateObject(obj);
+	updateObject(spaceZone);
 #endif
 
 	return true;

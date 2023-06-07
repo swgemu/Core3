@@ -31,11 +31,12 @@ public:
 			return;
 		}
 
-		auto spaceZone = ship->getSpaceZone();
+		Zone* zone = ship->getZone();
 
-		if (spaceZone == nullptr) {
+		if (zone == nullptr || !zone->isSpaceZone())
 			return;
-		}
+
+		SpaceZone* spaceZone = cast<SpaceZone*>(zone);
 
 		auto pilot = ship->getOwner().get();
 
