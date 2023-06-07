@@ -3323,24 +3323,19 @@ int DirectorManager::getZoneByName(lua_State* L) {
 		return 0;
 	}
 
-	String zoneid = lua_tostring(L, -1);
+	auto zoneServer = ServerCore::getZoneServer();
 
-	if (zoneid.contains("space")) {
-		SpaceZone* zone = ServerCore::getZoneServer()->getSpaceZone(zoneid);
+	if (zoneServer == nullptr)
+		return 0;
 
-		if (zone == nullptr) {
-			lua_pushnil(L);
-		} else {
-			lua_pushlightuserdata(L, zone);
-		}
+	String zoneName = lua_tostring(L, -1);
+
+	Zone* zone = zoneServer->getZone(zoneName);
+
+	if (zone == nullptr) {
+		lua_pushnil(L);
 	} else {
-		Zone* zone = ServerCore::getZoneServer()->getZone(zoneid);
-
-		if (zone == nullptr) {
-			lua_pushnil(L);
-		} else {
-			lua_pushlightuserdata(L, zone);
-		}
+		lua_pushlightuserdata(L, zone);
 	}
 
 	return 1;

@@ -350,36 +350,40 @@ void PlayerObjectImplementation::unload() {
 
 	ManagedReference<SceneObject*> creoParent = creature->getParent().get();
 
-	if (creature->getZone() != nullptr) {
-		savedTerrainName = creature->getZone()->getZoneName();
+	Zone* creatureZone = creature->getZone();
 
-		if (creoParent != nullptr) {
-			savedParentID = creoParent->getObjectID();
+	if (creatureZone != nullptr) {
+		String zoneName = creatureZone->getZoneName();
+
+		if (creatureZone->isSpaceZone()) {
+			unloadShip();
+
+			zoneName = launchPoint.getGoundZoneName();
+
+			Zone* newZone = getZoneServer()->getZone(zoneName);
+
+			if (newZone != nullptr) {
+				newZone->transferObject(creature, -1, false);
+
+				Vector3 launchLoc = launchPoint.getLocation();
+
+				updateLastValidatedPosition();
+				creature->initializePosition(launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
+				creature->incrementMovementCounter();
+
+				savedParentID = 0;
+			}
 		} else {
-			savedParentID = 0;
+			if (creoParent != nullptr) {
+				savedParentID = creoParent->getObjectID();
+			} else {
+				savedParentID = 0;
+			}
 		}
+
+		savedTerrainName = zoneName;
 
 		creature->destroyObjectFromWorld(true);
-	} else if (creature->getSpaceZone() != nullptr) {
-		unloadShip();
-
-		String groundZoneName = launchPoint.getGoundZoneName();
-
-		Zone* newZone = getZoneServer()->getZone(groundZoneName);
-
-		if (newZone != nullptr) {
-			newZone->transferObject(creature, -1, false);
-			setSavedParentID(0);
-
-			Vector3 launchLoc = launchPoint.getLocation();
-
-			updateLastValidatedPosition();
-			creature->initializePosition(launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
-			creature->incrementMovementCounter();
-
-			savedTerrainName = groundZoneName;
-			creature->destroyObjectFromWorld(true);
-		}
 	}
 
 	creature->clearCombatState(true);
@@ -508,7 +512,7 @@ void PlayerObjectImplementation::notifySceneReady() {
 		}
 	}
 
-	//Leave all planet chat rooms
+	//Leave all planet chat rooms (need evidence of planet rooms for space)
 	for (int i = 0; i < zoneServer->getZoneCount(); ++i) {
 		ManagedReference<Zone*> zone = zoneServer->getZone(i);
 
@@ -560,7 +564,9 @@ void PlayerObjectImplementation::notifySceneReady() {
 	}
 
 	checkAndShowTOS();
-	createHelperDroid();
+
+	if (zone != nullptr && !zone->isSpaceZone())
+		createHelperDroid();
 }
 
 void PlayerObjectImplementation::sendFriendLists() {

@@ -101,26 +101,15 @@ public:
 		client->setPlayer(player);
 
 		String zoneName = ghost->getSavedTerrainName();
-		bool inSpaceZone = false;
 
-		Zone* zone = nullptr;
-		SpaceZone* spaceZone = nullptr;
+		Zone* zone = zoneServer->getZone(zoneName);
 
-		if (zoneName.contains("space")) {
-			spaceZone = zoneServer->getSpaceZone(zoneName);
-		} else {
-			zone = zoneServer->getZone(zoneName);
-		}
-
-		if ((zone == nullptr) && (spaceZone == nullptr)) {
+		if (zone == nullptr) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "The planet where your character was stored is disabled!", 0x0);
 			client->sendMessage(errMsg);
 
 			return;
 		}
-
-		if (spaceZone != nullptr)
-			inSpaceZone = true;
 
 		if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
 			auto maxOnline = zoneServer->getPlayerManager()->getOnlineCharactersPerAccount();
@@ -140,9 +129,8 @@ public:
 		player->setMovementCounter(0);
 		ghost->setClientLastMovementStamp(0);
 
-		if (player->getZone() == nullptr && player->getSpaceZone() == nullptr) {
+		if (player->getZone() == nullptr)
 			ghost->setOnLoadScreen(true);
-		}
 
 		uint64 savedParentID = ghost->getSavedParentID();
 
@@ -170,17 +158,10 @@ public:
 				}
 
 				if (player->getParent() == nullptr) {
-					if (!inSpaceZone)
-						zone->transferObject(player, -1, false);
-					else
-						spaceZone->transferObject(player, -1, false);
+					zone->transferObject(player, -1, true);
 				} else if (root->getZone() == nullptr) {
 					Locker clocker(root, player);
-
-					if (!inSpaceZone)
-						zone->transferObject(root, -1, true);
-					else
-						spaceZone->transferObject(root, -1, true);
+					zone->transferObject(root, -1, true);
 				}
 
 				player->sendToOwner(true);
@@ -199,10 +180,7 @@ public:
 				player->initializePosition(x, z, y);
 			}
 
-			if (zone != nullptr)
-				zone->transferObject(player, -1, true);
-			else if (spaceZone != nullptr)
-				spaceZone->transferObject(player, -1, true);
+			zone->transferObject(player, -1, true);
 		} else {
 			if (player->getZone() == nullptr) {
 				ManagedReference<SceneObject*> objectToInsert = currentParent != nullptr ? player->getRootParent() : player;
@@ -211,14 +189,7 @@ public:
 					objectToInsert = player;
 
 				Locker clocker(objectToInsert, player);
-
-				Zone* objZone = objectToInsert->getZone();
-				SpaceZone* objSpaceZone = objectToInsert->getSpaceZone();
-
-				if (objZone != nullptr)
-					zone->transferObject(objectToInsert, -1, false);
-				else if (objSpaceZone != nullptr)
-					objSpaceZone->transferObject(objectToInsert, -1, false);
+				zone->transferObject(objectToInsert, -1, false);
 			}
 
 			player->sendToOwner(true);

@@ -144,7 +144,14 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 
 		if (zone != nullptr && object->isTangibleObject()) {
 			TangibleObject* tano = cast<TangibleObject*>(object);
-			zone->updateActiveAreas(tano);
+
+			if (tano != nullptr) {
+				if (zone->isSpaceZone()) {
+					//TODO: update this when OctreeActiveArea is added
+				} else {
+					zone->updateActiveAreas(tano);
+				}
+			}
 		}
 
 		if (object->isCreatureObject() || object->isVendor() || object->getPlanetMapCategoryCRC() != 0 || object->getPlanetMapSubCategoryCRC() != 0)
@@ -154,11 +161,19 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 	}
 
 	if (oldParent == nullptr) {
-		ManagedReference<BuildingObject*> building = parent.get().castTo<BuildingObject*>();
-		CreatureObject* creo = object->asCreatureObject();
+		ManagedReference<SceneObject*> strongParent = parent.get().castTo<SceneObject*>();
 
-		if (building != nullptr && creo != nullptr)
-			building->onEnter(creo);
+		if (strongParent != nullptr) {
+			if (strongParent->isBuildingObject()) {
+				ManagedReference<BuildingObject*> building = parent.get().castTo<BuildingObject*>();
+				CreatureObject* creo = object->asCreatureObject();
+
+				if (building != nullptr && creo != nullptr)
+					building->onEnter(creo);
+			} else if (strongParent->isPobShipObject()) {
+				// TODO: add notification of player being added to PoBShipCell
+			}
+		}
 	}
 
 	if (locker != nullptr)

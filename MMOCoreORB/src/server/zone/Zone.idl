@@ -228,9 +228,9 @@ class Zone extends SceneObject {
 	public native float getBoundingRadius();
 
 	@dirty
-	public boolean isGroundZone() {
-		return true;
-	}
+	@local
+	@nativeStub
+	public native boolean isGroundZone();
 
 	/**
 	 * Registers the object to the planetary map. This also makes the object visible to the find command.

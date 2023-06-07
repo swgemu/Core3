@@ -110,8 +110,13 @@ class SpaceZone extends Zone {
 	*/
 
 	@dirty
-	public boolean isSpaceZone() {
-		return true;
-	}
+	@local
+	@nativeStub
+	public native boolean isGroundZone();
+
+	@dirty
+	@local
+	@nativeStub
+	public native boolean isSpaceZone();
 }
 

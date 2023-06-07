@@ -1084,12 +1084,17 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 #ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage", true);
 #endif
-		if (sourceCreature->getSpaceZone() != nullptr) {
-			SpaceZone* spaceZone = sourceCreature->getSpaceZone();
-			spaceZone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), sourceCreature->getWorldPositionZ(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
-		} else if (sourceCreature->getZone() != nullptr) {
-			Zone* zone = sourceCreature->getZone();
-			zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
+		Zone* zone = sourceCreature->getZone();
+
+		if (zone != nullptr) {
+			if (zone->isSpaceZone()) {
+				SpaceZone* spaceZone = cast<SpaceZone*>(zone);
+
+				if (spaceZone != nullptr)
+					spaceZone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), sourceCreature->getWorldPositionZ(), ZoneServer::SPACEOBJECTRANGE, &closeEntryObjects, true);
+			} else {
+				zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
+			}
 		}
 	}
 
@@ -1261,15 +1266,20 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 #ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage(StringId)", true);
 #endif
-		if (sourceCreature->getSpaceZone() != nullptr) {
-			SpaceZone* spaceZone = sourceCreature->getSpaceZone();
-			spaceZone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), sourceCreature->getWorldPositionZ(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
-		} else if (sourceCreature->getZone() != nullptr) {
-			Zone* zone = sourceCreature->getZone();
-			zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
-		}
+		Zone* zone = sourceCreature->getZone();
 
+		if (zone != nullptr) {
+			if (zone->isSpaceZone()) {
+				SpaceZone* spaceZone = cast<SpaceZone*>(zone);
+
+				if (spaceZone != nullptr)
+					spaceZone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), sourceCreature->getWorldPositionZ(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
+			} else {
+				zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
+			}
+		}
 	}
+
 	short range = defaultSpatialChatDistance;
 
 	short specialRange = spatialChatDistances.get(spatialChatType);
