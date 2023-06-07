@@ -346,9 +346,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	CreatureObject* thisPointer = asCreatureObject();
 	Zone* zone = getZoneUnsafe();
-	SpaceZone* spaceZone = getSpaceZone();
-
-	if (zone == nullptr && spaceZone == nullptr)
+	if (zone == nullptr)
 		return;
 
 	if (player == thisPointer) {
@@ -2228,7 +2226,7 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 
 	skillManager->updateXpLimits(ghost);
 
-	if (getZone() != nullptr || getSpaceZone() != nullptr)
+	if (getZone() != nullptr)
 		ghost->setLinkDead();
 }
 
@@ -2838,15 +2836,6 @@ void CreatureObjectImplementation::updateGroupMFDPositions() {
 
 void CreatureObjectImplementation::notifySelfPositionUpdate() {
 	auto zone = getZoneUnsafe();
-	auto spaceZone = getSpaceZone();
-
-	bool zoneExist = false;
-	bool spaceZoneExist = false;
-
-	if (zone != nullptr)
-		zoneExist;
-	if (spaceZone != nullptr)
-		spaceZoneExist;
 
 	if (zone != nullptr && hasState(CreatureState::ONFIRE)) {
 		PlanetManager* planetManager =

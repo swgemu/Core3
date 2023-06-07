@@ -1084,11 +1084,13 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 #ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage", true);
 #endif
-		if (sourceCreature->getSpaceZone() != nullptr) {
-			SpaceZone* spaceZone = sourceCreature->getSpaceZone();
+		Zone* zone = sourceCreature->getZone();
+
+		if (!zone->isGroundZone() && zone != nullptr) {
+			SpaceZone* spaceZone = dynamic_cast<SpaceZone*>(zone);
+
 			spaceZone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), sourceCreature->getWorldPositionZ(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
-		} else if (sourceCreature->getZone() != nullptr) {
-			Zone* zone = sourceCreature->getZone();
+		} else if (zone != nullptr) {
 			zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
 		}
 	}
@@ -1261,11 +1263,12 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 #ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage(StringId)", true);
 #endif
-		if (sourceCreature->getSpaceZone() != nullptr) {
-			SpaceZone* spaceZone = sourceCreature->getSpaceZone();
+		Zone* zone = sourceCreature->getZone();
+
+		if (!zone->isGroundZone() && zone != nullptr) {
+			SpaceZone* spaceZone = dynamic_cast<SpaceZone*>(zone);
 			spaceZone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), sourceCreature->getWorldPositionZ(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
-		} else if (sourceCreature->getZone() != nullptr) {
-			Zone* zone = sourceCreature->getZone();
+		} else if (zone != nullptr) {
 			zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
 		}
 

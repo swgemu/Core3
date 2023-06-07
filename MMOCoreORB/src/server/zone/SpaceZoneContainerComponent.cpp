@@ -19,7 +19,12 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	if (newZone == nullptr)
 		return false;
 
-	SpaceZone* spaceZone = object->getSpaceZone();
+	Zone* zone = object->getZone();
+
+	if (zone == nullptr || !zone->isSpaceZone())
+		return false;
+
+	SpaceZone* spaceZone = dynamic_cast<SpaceZone*>(zone);
 /*
 	if (object->isActiveArea())
 		return insertActiveArea(newZone, dynamic_cast<ActiveArea*>(object));
@@ -33,7 +38,6 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 
 		return false;
 	}
-
 	ManagedReference<SceneObject*> parent = object->getParent().get();
 
 	if (parent != nullptr/* && parent->isCellObject()*/) {
