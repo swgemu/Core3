@@ -31,8 +31,12 @@ public:
 
 	const inline String getRandomCell() {
 		int totalCells = getTotalLaunchCells();
+
+		if (totalCells <= 0)
+			return "";
+
 		int random = System::random(totalCells);
-		String cellName = spawnLocations.elementAt(random - 1).getKey();
+		String cellName = spawnLocations.elementAt(random).getKey();
 
 		return cellName;
 	}

@@ -180,6 +180,7 @@ public:
 	const static int SHIPPINGTERMINAL = 0x4009;
 	//const static int TRAVELTERMINAL = 0x400A; -- This is in the client, (See 0x4012)
 	const static int SPACETERMINAL = 0x400B;
+	const static int SHIPPERMISSIONS = 0x400C;
 
 	/// Not in client **************
 	const static int INTERACTIVETERMINAL = 0x400C;

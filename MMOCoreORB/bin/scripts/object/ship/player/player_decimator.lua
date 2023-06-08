@@ -162,7 +162,7 @@ object_ship_player_player_decimator = object_ship_player_shared_player_decimator
 			{x = -2.1, z = 2.9, y = 3.7},
 			{x = 0, z = 0.4, y = -5.3},
 		},
-		{cellName = "storag2",
+		{cellName = "storage2",
 			{x = 3.1, z = -1.9, y = 6.6},
 		},
 		{cellName = "storage3",

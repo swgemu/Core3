@@ -8,6 +8,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/PobShipObject.h"
 #include "templates/params/creature/PlayerArrangement.h"
 
 //#define DEBUG_SHIP_STORE
@@ -43,116 +44,120 @@ public:
 		Locker shipLock(ship);
 
 		if (ship->isPobShipObject()) {
+			PobShipObject* pobShip = ship->asPobShipObject();
+
 #ifdef DEBUG_SHIP_STORE
 			info(true) << "Ship is POB type";
 #endif
 
-			auto chair = ship->getPilotChair().get();
+			if (pobShip != nullptr) {
+				auto chair = pobShip->getPilotChair().get();
 
-			if (chair != nullptr) {
-				ManagedReference<CreatureObject*> pilot = chair->getSlottedObject("ship_pilot_pob").castTo<CreatureObject*>();
+				if (chair != nullptr) {
+					ManagedReference<CreatureObject*> pilot = chair->getSlottedObject("ship_pilot_pob").castTo<CreatureObject*>();
 
-				if (pilot != nullptr) {
+					if (pilot != nullptr) {
 #ifdef DEBUG_SHIP_STORE
-					info(true) << "Pilot is not null";
+						info(true) << "Pilot is not null";
 #endif
 
-					ship->unlock();
+						pobShip->unlock();
+
+						try {
+							Locker pilotLock(pilot);
+							removePlayer(pilot, zoneName, coordinates);
+						} catch (...) {
+							error() << "Failed to remove pilot from POB Ship Chair - ShipID: " << pobShip->getObjectID();
+						}
+
+						pobShip->wlock();
+					}
+				}
+			}
+
+#ifdef DEBUG_SHIP_STORE
+			info(true) << "Checking slotted objects for players - Total: " << ship->getSlottedObjectsSize();
+#endif
+
+			for (int i = 0; i < pobShip->getSlottedObjectsSize(); ++i) {
+				ManagedReference<CreatureObject*> slottedCreo = pobShip->getSlottedObject(i).castTo<CreatureObject*>();
+
+#ifdef DEBUG_SHIP_STORE
+				info(true) << "SlottedObjects - checking: " << slottedCreo->getObjectID();
+#endif
+
+				if (slottedCreo != nullptr) {
+					pobShip->unlock();
 
 					try {
-						Locker pilotLock(pilot);
-						removePlayer(pilot, zoneName, coordinates);
+						Locker slotLock(slottedCreo);
+						removePlayer(slottedCreo, zoneName, coordinates);
 					} catch (...) {
-						error() << "Failed to remove pilot from POB Ship Chair - ShipID: " << ship->getObjectID();
+						error() << "Failed to remove player from ship slotted object - ShipID: " << pobShip->getObjectID();
 					}
 
-					ship->wlock();
+					pobShip->wlock();
 				}
 			}
-		}
 
-#ifdef DEBUG_SHIP_STORE
-		info(true) << "Checking slotted objects for players - Total: " << ship->getSlottedObjectsSize();
-#endif
+	#ifdef DEBUG_SHIP_STORE
+			info(true) << "Check Total Cells: " << ship->getTotalCellNumber();
+	#endif
 
-		for (int i = 0; i < ship->getSlottedObjectsSize(); ++i) {
-			ManagedReference<CreatureObject*> slottedCreo = ship->getSlottedObject(i).castTo<CreatureObject*>();
+			for (int k = 0; k < pobShip->getTotalCellNumber(); ++k) {
+	#ifdef DEBUG_SHIP_STORE
+				info(true) << "Checking Cell #" << k;
+	#endif
 
-#ifdef DEBUG_SHIP_STORE
-			info(true) << "SlottedObjects - checking: " << slottedCreo->getObjectID();
-#endif
+				auto cellObject = pobShip->getCell(k);
 
-			if (slottedCreo != nullptr) {
-				ship->unlock();
-
-				try {
-					Locker slotLock(slottedCreo);
-					removePlayer(slottedCreo, zoneName, coordinates);
-				} catch (...) {
-					error() << "Failed to remove player from ship slotted object - ShipID: " << ship->getObjectID();
+				if (cellObject == nullptr) {
+					continue;
 				}
 
-				ship->wlock();
-			}
-		}
+				int childObjects = cellObject->getContainerObjectsSize();
 
-#ifdef DEBUG_SHIP_STORE
-		info(true) << "Check Total Cells: " << ship->getTotalCellNumber();
-#endif
-
-		for (int k = 0; k < ship->getTotalCellNumber(); ++k) {
-#ifdef DEBUG_SHIP_STORE
-			info(true) << "Checking Cell #" << k;
-#endif
-
-			auto cellObject = ship->getCell(k);
-
-			if (cellObject == nullptr) {
-				continue;
-			}
-
-			int childObjects = cellObject->getContainerObjectsSize();
-
-			if (childObjects <= 0)
-				continue;
-
-#ifdef DEBUG_SHIP_STORE
-			info(true) << "Checking cells objects - total count: " << childObjects;
-#endif
-
-			// Iterate the vector backwards since the size will change as objects are removed.
-			for (int ii = childObjects - 1; ii >= 0; --ii) {
-				ManagedReference<SceneObject*> sceneO = cellObject->getContainerObject(ii);
-
-#ifdef DEBUG_SHIP_STORE
-				info(true) << "Cell-ContainerObjects - checking #" << ii << " ID: " << sceneO->getObjectID() << "   " << sceneO->getObjectNameStringIdName() << ".";
-#endif
-
-				if (sceneO == nullptr || !sceneO->isPlayerCreature())
+				if (childObjects <= 0)
 					continue;
 
-				auto playerCreo = sceneO->asCreatureObject();
+#ifdef DEBUG_SHIP_STORE
+				info(true) << "Checking cells objects - total count: " << childObjects;
+#endif
 
-				if (playerCreo == nullptr)
-					continue;
-
-				ship->unlock();
-
-				try {
-					Locker playLock(playerCreo);
-
-					removePlayer(playerCreo, zoneName, coordinates);
-				} catch (...) {
-					error() << "Failed to remove player from ship cell #" << k << " - ShipID: " << ship->getObjectID();
-				}
-
-				ship->wlock();
-			}
-		}
+				// Iterate the vector backwards since the size will change as objects are removed.
+				for (int ii = childObjects - 1; ii >= 0; --ii) {
+					ManagedReference<SceneObject*> sceneO = cellObject->getContainerObject(ii);
 
 #ifdef DEBUG_SHIP_STORE
-		info(true) << "Ship Players have been removed.";
+					info(true) << "Cell-ContainerObjects - checking #" << ii << " ID: " << sceneO->getObjectID() << "   " << sceneO->getObjectNameStringIdName() << ".";
 #endif
+
+					if (sceneO == nullptr || !sceneO->isPlayerCreature())
+						continue;
+
+					auto playerCreo = sceneO->asCreatureObject();
+
+					if (playerCreo == nullptr)
+						continue;
+
+					pobShip->unlock();
+
+					try {
+						Locker playLock(playerCreo);
+
+						removePlayer(playerCreo, zoneName, coordinates);
+					} catch (...) {
+						error() << "Failed to remove player from ship cell #" << k << " - ShipID: " << pobShip->getObjectID();
+					}
+
+					pobShip->wlock();
+				}
+			}
+
+#ifdef DEBUG_SHIP_STORE
+			info(true) << "Ship Players have been removed.";
+#endif
+		}
 
 		Locker sLock(shipControlDevice, ship);
 

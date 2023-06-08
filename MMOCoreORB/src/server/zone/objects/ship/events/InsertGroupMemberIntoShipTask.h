@@ -49,6 +49,11 @@ public:
 		Locker lock(pobShip);
 
 		String randomCell = pobShip->getRandomLaunchCell();
+
+		if (randomCell == "") {
+			return;
+		}
+
 		Vector3 launchLoc(pobShip->getLaunchPointInCell(randomCell));
 		auto cell = pobShip->getCell(randomCell);
 
