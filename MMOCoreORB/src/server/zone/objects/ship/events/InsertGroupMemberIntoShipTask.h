@@ -49,6 +49,12 @@ public:
 		Locker lock(pobShip);
 
 		String randomCell = pobShip->getRandomLaunchCell();
+
+		if (randomCell == "") {
+			groupMember->error() << "Failed to get call for player launching into POB";
+			return;
+		}
+
 		Vector3 launchLoc(pobShip->getLaunchPointInCell(randomCell));
 		auto cell = pobShip->getCell(randomCell);
 

@@ -7,14 +7,23 @@ package server.zone.objects.ship;
 
 import engine.log.Logger;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
 
 include server.zone.objects.ship.FighterShipObject;
 include templates.SharedObjectTemplate;
 include engine.util.u3d.Vector3;
+include system.util.VectorMap;
 include server.zone.objects.ship.PlayerLaunchPoints;
 include server.zone.objects.ship.DamageSparkLocations;
+include server.zone.objects.cell.CellObject;
+include server.zone.objects.structure.StructurePermissionList;
 
 class PobShipObject extends FighterShipObject {
+	@dereferenced
+	protected VectorMap<string, CellObject> cellNameMap;
+
+	@dereferenced
+	protected VectorMap<unsigned int, CellObject> cells;
 
 	@dereferenced
 	protected DamageSparkLocations sparkLocations;
@@ -22,12 +31,60 @@ class PobShipObject extends FighterShipObject {
 	@dereferenced
 	protected PlayerLaunchPoints launchPoints;
 
+	@dereferenced
+	protected StructurePermissionList shipPermissionList;
+
 	public PobShipObject() {
 		Logger.setLoggingName("PobShipObject");
 	}
 
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@preLocked
+	public native void createChildObjects();
+
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects
+	 */
+	@dirty
+	public native void sendContainerObjectsTo(SceneObject player, boolean forceLoad);
+
+	/**
+	 * Checks if the player is on the admin list.
+	 * @param player The creo of the player to check for admin permission.
+	 * @return Returns true if the player has admin permissions.
+	 */
+	@read
+	public native boolean isOnAdminList(CreatureObject player);
+
+	/**
+	 * Checks if the player/guild is on the admin list.
+	 * For PermissionsListModify command
+	 * @param objectID The oid of the player/guild to check for admin permission.
+	 * @return Returns true if the player/guild has admin permissions.
+	 */
+	@read
+	public boolean isOnAdminList(final unsigned long objectID) {
+		return shipPermissionList.isOnPermissionList("ADMIN", objectID);
+	}
+
+	@dirty
+	public CellObject getCell(int idx) {
+		return cells.get(idx);
+	}
+
+	@dirty
+	public CellObject getCell(final string name) {
+		return cellNameMap.get(name);
+	}
+
+	public int getTotalCellNumber() {
+		return cells.size();
+	}
 
 	@dirty
 	@nativeStub

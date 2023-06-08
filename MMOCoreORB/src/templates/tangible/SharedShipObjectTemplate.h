@@ -137,7 +137,7 @@ public:
 					String cellName = cellTable.getStringField("cellName");
 					Vector<Vector3> locations;
 
-					for (int k = 2; k <= cellTable.getTableSize(); ++k) {
+					for (int k = 1; k <= cellTable.getTableSize(); ++k) {
 						auto coordinates = cellTable.getObjectAt(k);
 
 						if (coordinates.isValidTable()) {
