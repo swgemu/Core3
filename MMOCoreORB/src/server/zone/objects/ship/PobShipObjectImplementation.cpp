@@ -13,6 +13,16 @@
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
+void PobShipObjectImplementation::notifyLoadFromDatabase() {
+	TangibleObjectImplementation::notifyLoadFromDatabase();
+
+	CreatureObject* owner = getOwner().get();
+
+	if (owner != nullptr && shipPermissionList.getOwner() != owner->getObjectID()) {
+		shipPermissionList.setOwner(owner->getObjectID());
+	}
+}
+
 void PobShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipObjectImplementation::loadTemplateData(templateData);
 
@@ -146,7 +156,7 @@ void PobShipObjectImplementation::createChildObjects() {
 							if (terminalChild != nullptr)
 								terminalChild->setControlledObject(asPobShipObject());
 						} else if (childTemplate.contains("alarm_interior")) {
-							// add plasma alarms vectormap
+							plasmaAlarms.add(obj->getObjectID());
 						}
 					}
 				} else {
@@ -165,6 +175,9 @@ void PobShipObjectImplementation::createChildObjects() {
 }
 
 void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool forceLoad) {
+	if (player == nullptr)
+		return;
+
 	auto creo = player->asCreatureObject();
 
 	if (creo == nullptr) {
@@ -183,16 +196,18 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* player, bo
 
 	for (int i = 0; i < cells.size(); ++i) {
 		auto cell = cells.get(i);
+
 		if (cell == nullptr) {
 			continue;
 		}
 
 		auto perms = cell->getContainerPermissions();
+
 		if (perms == nullptr) {
 			continue;
 		}
 
-		cell->sendPermissionsTo(player->asCreatureObject(), true);
+		cell->sendPermissionsTo(creo, true);
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			auto object = cell->getContainerObject(j);
@@ -205,7 +220,21 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* player, bo
 	}
 }
 
+void PobShipObjectImplementation::updateCellPermissionsTo(CreatureObject* creature) {
+	for (int i = 0; i < cells.size(); ++i) {
+		auto& cell = cells.get(i);
+
+		if (cell == nullptr)
+			continue;
+
+		cell->sendPermissionsTo(creature, true);
+	}
+}
+
 bool PobShipObjectImplementation::isOnAdminList(CreatureObject* player) const {
+	if (player == nullptr)
+		return false;
+
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost != nullptr && ghost->isPrivileged())
@@ -220,6 +249,80 @@ bool PobShipObjectImplementation::isOnAdminList(CreatureObject* player) const {
 	}
 
 	return false;
+}
+
+bool PobShipObjectImplementation::isOnPermissionList(const String& listName, CreatureObject* player) const {
+	if (player == nullptr)
+		return false;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost != nullptr && ghost->isPrivileged()) {
+		if (listName == "BAN")
+			return false;
+		else
+			return true;
+	} else if (shipPermissionList.isOnPermissionList(listName, player->getObjectID()))
+		return true;
+	else {
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
+
+		if (guild != nullptr && shipPermissionList.isOnPermissionList(listName, guild->getObjectID()))
+			return true;
+	}
+
+	return false;
+}
+
+void PobShipObjectImplementation::togglePlasmaAlarms() {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	for (int i = 0; i < plasmaAlarms.size(); ++i) {
+		uint64 alarmID = plasmaAlarms.get(i);
+
+		ManagedReference<SceneObject*> alarm = zoneServer->getObject(alarmID).get();
+
+		if (alarm == nullptr || !alarm->isTangibleObject()) {
+			continue;
+		}
+
+		TangibleObject* alarmTano = alarm->asTangibleObject();
+
+		if (alarmTano == nullptr)
+			continue;
+
+		Locker alocker(alarm, _this.getReferenceUnsafeStaticCast());
+
+		if (alarmTano->getOptionsBitmask() & OptionBitmask::ACTIVATED) {
+			alarmTano->setOptionsBitmask(OptionBitmask::DISABLED);
+		} else {
+			alarmTano->setOptionsBitmask(OptionBitmask::ACTIVATED);
+			alarmTano->setMaxCondition(0);
+		}
+	}
+}
+
+int PobShipObjectImplementation::getCurrentNumberOfPlayerItems() {
+	int items = 0;
+
+	for (int i = 0; i < cells.size(); ++i) {
+		auto& cell = cells.get(i);
+
+		items += cell->getCurrentNumberOfPlayerItems();
+	}
+
+	return items;
+}
+
+void PobShipObjectImplementation::destroyAllPlayerItems() {
+	for (int i = 0; i < cells.size(); ++i) {
+		auto& cell = cells.get(i);
+
+		cell->destroyAllPlayerItems();
+	}
 }
 
 PobShipObject* PobShipObject::asPobShipObject() {

@@ -180,6 +180,27 @@ public:
 
 	void createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents = true);
 
+	/**
+	 * Sends a sui list box containing information about the structure.
+	 * @param creature The creature receiving the report.
+	 * @param pobShip The pobShip the report is about.
+	 */
+	void reportPobShipStatus(CreatureObject* creature, PobShipObject* pobShip, SceneObject* terminal);
+
+	/**
+	 * Sends a Sui prompt to the player asking if they wish to delete all the items in their ship.
+	 * @param creature The player receiving the prompt.
+	 * @param pobShip The POB ship that will have all items deleted.
+	 */
+	void promptDeleteAllItems(CreatureObject* creature, PobShipObject* pobShip);
+
+	/**
+	 * Sends a Sui prompt to the player asking if they want to move the first item in the pob ship to their feet.
+	 * @param creature The creature who the item will be moved to.
+	 * @param pobShip The structure which holds the items.
+	 */
+	void promptFindLostItems(CreatureObject* creature, PobShipObject* pobShip);
+
 	String componentSlotToString(int slot) {
 		switch (slot) {
 			case Components::REACTOR: return "reactor";
