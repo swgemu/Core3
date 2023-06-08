@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_pob_ship = object_tangible_terminal_shared_terminal_pob_ship:new {
-
+	objectMenuComponent = "ShipPermissionTerminalMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_pob_ship, "object/tangible/terminal/terminal_pob_ship.iff")
