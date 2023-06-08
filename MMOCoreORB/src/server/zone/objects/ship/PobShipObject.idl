@@ -8,10 +8,11 @@ package server.zone.objects.ship;
 import engine.log.Logger;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
+import system.util.Vector;
+import engine.util.u3d.Vector3;
 
 include server.zone.objects.ship.FighterShipObject;
 include templates.SharedObjectTemplate;
-include engine.util.u3d.Vector3;
 include system.util.VectorMap;
 include server.zone.objects.ship.PlayerLaunchPoints;
 include server.zone.objects.ship.DamageSparkLocations;
@@ -24,6 +25,9 @@ class PobShipObject extends FighterShipObject {
 
 	@dereferenced
 	protected VectorMap<unsigned int, CellObject> cells;
+
+	@dereferenced
+	protected Vector<unsigned long> plasmaAlarms;
 
 	@dereferenced
 	protected DamageSparkLocations sparkLocations;
@@ -72,19 +76,7 @@ class PobShipObject extends FighterShipObject {
 		return shipPermissionList.isOnPermissionList("ADMIN", objectID);
 	}
 
-	@dirty
-	public CellObject getCell(int idx) {
-		return cells.get(idx);
-	}
-
-	@dirty
-	public CellObject getCell(final string name) {
-		return cellNameMap.get(name);
-	}
-
-	public int getTotalCellNumber() {
-		return cells.size();
-	}
+	public native void togglePlasmaAlarms();
 
 	@dirty
 	@nativeStub
@@ -105,4 +97,27 @@ class PobShipObject extends FighterShipObject {
 	@dereferenced
 	@dirty
 	public native Vector3 getLaunchPointInCell(final string cellName);
+
+	@dirty
+	public CellObject getCell(int idx) {
+		return cells.get(idx);
+	}
+
+	@dirty
+	public CellObject getCell(final string name) {
+		return cellNameMap.get(name);
+	}
+
+	public int getTotalCellNumber() {
+		return cells.size();
+	}
+
+	@read
+	public int getTotalPlasmaAlarms() {
+		return plasmaAlarms.size();
+	}
+
+	public unsigned long getPlasmaAlarms(int idx) {
+		return plasmaAlarms.get(idx);
+	}
 }

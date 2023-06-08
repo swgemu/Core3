@@ -145,7 +145,7 @@ void PobShipObjectImplementation::createChildObjects() {
 							if (terminalChild != nullptr)
 								terminalChild->setControlledObject(asPobShipObject());
 						} else if (childTemplate.contains("alarm_interior")) {
-							// add plasma alarms vectormap
+							plasmaAlarms.add(obj->getObjectID());
 						}
 					}
 				} else {
@@ -219,6 +219,37 @@ bool PobShipObjectImplementation::isOnAdminList(CreatureObject* player) const {
 	}
 
 	return false;
+}
+
+void PobShipObjectImplementation::togglePlasmaAlarms() {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	for (int i = 0; i < plasmaAlarms.size(); ++i) {
+		uint64 alarmID = plasmaAlarms.get(i);
+
+		ManagedReference<SceneObject*> alarm = zoneServer->getObject(alarmID).get();
+
+		if (alarm == nullptr || !alarm->isTangibleObject()) {
+			continue;
+		}
+
+		TangibleObject* alarmTano = alarm->asTangibleObject();
+
+		if (alarmTano == nullptr)
+			continue;
+
+		Locker alocker(alarm, _this.getReferenceUnsafeStaticCast());
+
+		if (alarmTano->getOptionsBitmask() & OptionBitmask::ACTIVATED) {
+			alarmTano->setOptionsBitmask(OptionBitmask::DISABLED);
+		} else {
+			alarmTano->setOptionsBitmask(OptionBitmask::NONE);
+			alarmTano->setMaxCondition(0);
+		}
+	}
 }
 
 PobShipObject* PobShipObject::asPobShipObject() {
