@@ -72,7 +72,7 @@ public:
 			if (object == nullptr || !object->isShipObject()) {
 				continue;
 			}
-
+			
 			if (shipDevice->getStoredCityName() == "") {
 				Locker cLock(shipDevice, player);
 				shipDevice->setStoredCityName(travelPointName);
@@ -81,7 +81,7 @@ public:
 			shipMap.put(object->getObjectID(), shipDevice->getStoredCityName());
 		}
 
-		insertInt(shipMap.size()); // Number of ships
+		insertInt(shipMap.size() +1); // Number of ships
 		insertLong(terminal->getObjectID()); // Space Terminal ID
 		insertAscii(travelPointName); //Player Location
 
