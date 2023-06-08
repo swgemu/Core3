@@ -81,7 +81,7 @@ public:
 			shipMap.put(object->getObjectID(), shipDevice->getStoredCityName());
 		}
 
-		insertInt(shipMap.size()); // Number of ships
+		insertInt(shipMap.size() +1); // Number of ships
 		insertLong(terminal->getObjectID()); // Space Terminal ID
 		insertAscii(travelPointName); //Player Location
 
