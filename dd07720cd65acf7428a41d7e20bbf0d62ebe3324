@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "440849c3_3a5cf72f",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "Null check needs to be first. Can actually null check and then nest a !isSpaceZone with an else for ground. Same which check below",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52b89daa_622299ce",
+        "filename": "MMOCoreORB/src/server/zone/SpaceZoneContainerComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "null check || !isSpaceZone",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da849987_ff8dc3c3",
+        "filename": "MMOCoreORB/src/server/zone/SpaceZoneReference.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "|| !isSpaceZone",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c1ed8c2_5a29846b",
+        "filename": "MMOCoreORB/src/server/zone/Zone.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "@dirty\n@local\n@nativeStub\npublic native boolean isGroundZone();\n\nisSpaceZone can be removed from Zone.idl",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc62ab7_bb981ab1",
+        "filename": "MMOCoreORB/src/server/zone/ZoneImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "bool Zone::isGroundZone() {\n\treturn true;\n}\n\nbool ZoneImplementation::isGroundZone() {\n\treturn true;\n}\n\nremove isSpaceZone",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12cef57e_44bd950c",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "nullptr",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da3936e8_b36492b6",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/ShipControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "!isSpaceZone()",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "623bc2ae_d78596c7",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/ShipControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "!isSpaceZone",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8bff93d_a637e250",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "This return will prevent the rest of the unnested portion of this function from being executed and it is not relient on a zone check",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018b10c5_e3f3bf5d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "nullptr",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5731c5_48a99a42",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "left a note",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5bfbc06_a4203e30",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/components/ContainerComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "debug and going to have to nest the zone code below or you prevent the rest of the function",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6097e3_e3445c34",
+        "filename": "MMOCoreORB/src/server/zone/packets/zone/SelectCharacterCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "all of space zone in here should be able to be removed. It should all be able to be handled with zone call",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b14190_e2bbf0ef",
+        "filename": "MMOCoreORB/src/server/zone/packets/zone/SelectCharacterCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-08T01:04:09Z",
+      "side": 1,
+      "message": "Cant return here, just next the transfer",
+      "revId": "dd07720cd65acf7428a41d7e20bbf0d62ebe3324",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
