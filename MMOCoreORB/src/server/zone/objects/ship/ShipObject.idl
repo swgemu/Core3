@@ -22,7 +22,6 @@ include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaBitArray;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
-include server.zone.objects.cell.CellObject;
 include system.util.VectorMap;
 include system.lang.ref.Reference;
 include server.zone.objects.ship.ShipDeltaVector;
@@ -40,12 +39,6 @@ class ShipObject extends TangibleObject {
 	protected transient boolean hyperspacing;
 
 	public unsigned long controlDeviceID;
-
-	@dereferenced
-	protected VectorMap<string, CellObject> cellNameMap;
-
-	@dereferenced
-	protected VectorMap<unsigned int, CellObject> cells;
 
 	@dereferenced
 	protected transient Reference<ShipRecoveryEvent> shipRecoveryEvent;
@@ -71,9 +64,6 @@ class ShipObject extends TangibleObject {
 	protected Time hyperspaceTime;
 
 	protected boolean hasWings;
-
-	@preLocked
-	public native void createChildObjects();
 
 	@dereferenced
 	protected string conversationTemplate;
@@ -400,15 +390,6 @@ class ShipObject extends TangibleObject {
 		chassisLevel = 0;
 		totalCellNumber = 0;
 	}
-
-	/**
-	 * Sends the contained non slotted objects to the specified player
-	 * @pre { this object is locked }
-	 * @post { this object is locked, player received the container objects }
-	 * @param player SceneObject that will receive the objects
-	 */
-	@dirty
-	public native void sendContainerObjectsTo(SceneObject player, boolean forceLoad);
 
 	@dirty
 	public native abstract void sendSlottedObjectsTo(SceneObject player);
@@ -1309,20 +1290,6 @@ class ShipObject extends TangibleObject {
 	@local
 	public DeltaBitArray getTargetableBitfield() {
 		return componentTargetableBitfield;
-	}
-
-	@dirty
-	public CellObject getCell(int idx) {
-		return cells.get(idx);
-	}
-
-	@dirty
-	public CellObject getCell(final string name) {
-		return cellNameMap.get(name);
-	}
-
-	public int getTotalCellNumber() {
-		return cells.size();
 	}
 
 	public native float getActualSpeed();

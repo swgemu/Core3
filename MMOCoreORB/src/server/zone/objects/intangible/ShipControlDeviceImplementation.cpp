@@ -441,26 +441,33 @@ bool ShipControlDeviceImplementation::ejectPlayers() {
 		}
 	}
 
-	for (int k = 1; k < ship->getTotalCellNumber(); k++) {
-		auto cell = ship->getCell(k);
+	if (ship->isPobShipObject()) {
+		auto pobShip = ship->asPobShipObject();
 
-		if (cell == nullptr) {
-			continue;
-		}
+		if (pobShip == nullptr)
+			return false;
 
-		for (int ii = 0; ii < cell->getContainerObjectsSize(); ii++) {
-			ManagedReference<SceneObject*> sceneO = ship->getContainerObject(ii);
+		for (int k = 1; k < pobShip->getTotalCellNumber(); k++) {
+			auto cell = pobShip->getCell(k);
 
-			if (sceneO == nullptr || !sceneO->isPlayerCreature())
+			if (cell == nullptr) {
 				continue;
+			}
 
-			auto player = sceneO->asCreatureObject();
+			for (int ii = 0; ii < cell->getContainerObjectsSize(); ii++) {
+				ManagedReference<SceneObject*> sceneO = pobShip->getContainerObject(ii);
 
-			if (player == nullptr)
-				continue;
+				if (sceneO == nullptr || !sceneO->isPlayerCreature())
+					continue;
 
-			if (!removePlayer(player)) {
-				error() << "Unable to remove player from ship cell - Name: " << player->getDisplayedName() << " ID: " << player->getObjectID();
+				auto player = sceneO->asCreatureObject();
+
+				if (player == nullptr)
+					continue;
+
+				if (!removePlayer(player)) {
+					error() << "Unable to remove player from pobShip cell - Name: " << player->getDisplayedName() << " ID: " << player->getObjectID();
+				}
 			}
 		}
 	}
