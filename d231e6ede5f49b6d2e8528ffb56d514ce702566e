@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "245c1403_e5905dd8",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/JtlShipListResponse.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-06-09T22:59:58Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "d231e6ede5f49b6d2e8528ffb56d514ce702566e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
