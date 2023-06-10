@@ -168,6 +168,8 @@ public:
 
 		shipControlDevice->updateStatus(shipControlDevice->isShipLaunched(), true);
 
+		ship->destroyObjectFromWorld(false);
+
 #ifdef DEBUG_SHIP_STORE
 		info(true) << "Setting stored postion";
 #endif
