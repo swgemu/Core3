@@ -159,6 +159,8 @@ public:
 			}
 		}
 
+		ship->destroyObjectFromWorld(false);
+
 		Locker sLock(shipControlDevice, ship);
 
 		if (shipControlDevice->transferObject(ship, PlayerArrangement::RIDER, true)) {
@@ -167,8 +169,6 @@ public:
 		}
 
 		shipControlDevice->updateStatus(shipControlDevice->isShipLaunched(), true);
-
-		ship->destroyObjectFromWorld(false);
 
 #ifdef DEBUG_SHIP_STORE
 		info(true) << "Setting stored postion";
