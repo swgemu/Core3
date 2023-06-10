@@ -11,6 +11,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/packets/object/ObjectControllerMessageCallback.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
@@ -141,7 +142,15 @@ public:
 		}
 
 		try {
-			if (validPosition.getParent() != transform.getParentID() || transform.get2dSquaredDistance(validPosition.getPosition()) >= 0.015625f) {
+			auto rootParent = creO->getRootParent();
+
+			if (rootParent != nullptr && rootParent->isPobShipObject()) {
+				creO->setPosition(transform.getPositionX(), transform.getPositionZ(), transform.getPositionY());
+				creO->setDirection(transform.getDirection());
+				creO->setCurrentSpeed(transform.getSpeed());
+
+				broadcastTransform(creO, parent, transform.getPosition());
+			} else if (validPosition.getParent() != transform.getParentID() || transform.get2dSquaredDistance(validPosition.getPosition()) >= 0.015625f) {
 				updatePosition(creO, parent);
 			} else {
 				updateStatic(creO, parent);
@@ -197,6 +206,10 @@ public:
 
 			if (deltaTime < Transform::MIDDELTA && !transform.isInertiaUpdate(creO->getPosition(), creO->getDirection(), creO->getCurrentSpeed())) {
 				return updateError(creO, "inertia");
+			}
+
+			if (!creO->isMovementAllowed()) {
+				return updateError(creO, "animationLock", true);
 			}
 		}
 
@@ -314,10 +327,6 @@ public:
 
 		if (worldDistance > 441) { // 21m
 			return updateError(creO, "!worldDistance", true);
-		}
-
-		if (!creO->isMovementAllowed()) {
-			return updateError(creO, "animationLock", true);
 		}
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();

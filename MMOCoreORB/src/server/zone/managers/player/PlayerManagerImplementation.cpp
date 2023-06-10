@@ -3714,8 +3714,10 @@ void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, fl
 int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier) {
 	float allowedSpeedMod = player->getSpeedMultiplierMod();
 	float allowedSpeedBase = player->getRunSpeed();
+
 	ManagedReference<SceneObject*> parent = player->getParent().get();
 	SpeedMultiplierModChanges* changeBuffer = player->getSpeedMultiplierModChanges();
+
 	Vector3 teleportPoint = teleportPosition.getPosition();
 	uint64 teleportParentID = teleportPosition.getParent();
 
@@ -3818,7 +3820,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 
 	Vector3 newWorldPosition(newX, newY, newZ);
 
-	player->debug() << "checkSpeedHackSecondTest newWorldPosition x:" << newWorldPosition.getX() << " z:" << newWorldPosition.getZ() << " y:" << newWorldPosition.getY();
+	player->debug() << "checkSpeedHackSecondTest ---- Checking - newWorldPosition X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY();
 
 	if (newParent != nullptr) {
 		ManagedReference<SceneObject*> root = newParent->getRootParent();
@@ -3830,9 +3832,9 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 		float angle = root->getDirection()->getRadians() + atan2(newX, newY);
 
 		newWorldPosition.set(root->getPositionX() + (sin(angle) * length), root->getPositionZ() + newZ, root->getPositionY() + (cos(angle) * length));
-	}
 
-	player->debug() << "after parent transform newWorldPosition x:" << newWorldPosition.getX() << " z:" << newWorldPosition.getZ() << " y:" << newWorldPosition.getY();
+		player->debug() << "Parent Transform newWorldPosition X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY() << " Distance Length = " << length;
+	}
 
 	ValidatedPosition* lastValidatedPosition = ghost->getLastValidatedPosition();
 
@@ -3848,7 +3850,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	float dist = newWorldPosition.distanceTo(lastValidatedWorldPosition);
 
 	if (dist < 1) {
-		player->debug("speed hack distance too small");
+		player->debug() << "speed hack distance too small";
 		return 0;
 	}
 
@@ -3865,8 +3867,6 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	}*/
 
 	//lastValidatedPosition->set(newWorldPosition.getX(), oldNewPosZ, newWorldPosition.getY());
-
-	player->debug() << "distancia recorreguda " << dist << " a una velocitat " << speed;
 
 	int ret = checkSpeedHackFirstTest(player, speed, *lastValidatedPosition, 1.5f);
 
@@ -3885,6 +3885,8 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 
 		ghost->incrementSessionMovement(dist);
 	}
+
+	player->debug() << "Distance: " << dist << " Speed: " << speed << " Check Returning: " << ret;
 
 	return ret;
 }
