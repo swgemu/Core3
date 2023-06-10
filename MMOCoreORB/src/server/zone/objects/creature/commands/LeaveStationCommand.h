@@ -6,6 +6,7 @@
 #define LEAVESTATION_H_
 
 #include "QueueCommand.h"
+#include "server/zone/objects/cell/CellObject.h"
 
 class LeaveStationCommand : public QueueCommand {
 public:
@@ -17,20 +18,38 @@ public:
 		if (!creature->isInShipStation())
 			return GENERALERROR;
 
-		ManagedReference<SceneObject*> cellParent = creature->getParentRecursively(SceneObjectType::CELLOBJECT);
+		SceneObject* parent = creature->getParent().get();
 
-		if (cellParent == nullptr)
+		if (parent == nullptr)
 			return GENERALERROR;
 
-		if (!cellParent->transferObject(creature, -1, true)) {
+		ManagedReference<SceneObject*> cellParent = parent->getParent().get();
+
+		if (cellParent == nullptr || !cellParent->isCellObject())
+			return GENERALERROR;
+
+		CellObject* cell = cast<CellObject*>(cellParent.get());
+
+		if (cell == nullptr)
+			return GENERALERROR;
+
+		Vector3 position = parent->getPosition();
+
+		creature->setPosition(position.getX(), position.getZ(), position.getY());
+
+		if (!cell->transferObject(creature, -1, true)) {
 			return GENERALERROR;
 		}
 
-		// Clear their state from the station they were in
-		creature->clearSpaceStates();
-
-		// Must have proper interior state to be able to move properly in the ship
-		creature->setState(CreatureState::SHIPINTERIOR);
+		// Clear station state
+		if (creature->hasState(CreatureState::PILOTINGPOBSHIP))
+			creature->clearState(CreatureState::PILOTINGPOBSHIP);
+		else if (creature->hasState(CreatureState::SHIPOPERATIONS))
+			creature->clearState(CreatureState::SHIPOPERATIONS);
+		else if (creature->hasState(CreatureState::SHIPGUNNER))
+			creature->clearState(CreatureState::SHIPGUNNER);
+		else if (creature->hasState(CreatureState::SHIPOPERATIONS))
+			creature->clearState(CreatureState::SHIPOPERATIONS);
 
 		return SUCCESS;
 	}

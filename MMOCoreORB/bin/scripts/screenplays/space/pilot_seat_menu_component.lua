@@ -63,9 +63,6 @@ function PilotSeatMenuComponent:handleObjectMenuSelect(pPilotChair, pPlayer, sel
 
 		-- Add in their piloting state
 		CreatureObject(pPlayer):setState(PILOTINGPOBSHIP)
-
-		-- clear the players state from being on the inside of the ship
-		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
 	end
 
 	return 0

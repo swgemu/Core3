@@ -62,9 +62,6 @@ function ShipOperationsMenuComponent:handleObjectMenuSelect(pOpsChair, pPlayer, 
 
 		-- Add in their ship operatios state
 		CreatureObject(pPlayer):setState(SHIPOPERATIONS)
-
-		-- clear the players state from being on the inside of the ship
-		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
 	end
 
 	return 0

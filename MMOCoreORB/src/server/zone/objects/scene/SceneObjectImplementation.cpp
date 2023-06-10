@@ -1350,7 +1350,7 @@ void SceneObjectImplementation::setObjectName(const StringId& stringID, bool not
 Vector3 SceneObjectImplementation::getWorldPosition() {
 	auto root = getRootParentUnsafe();
 
-	if (root == nullptr || !root->isBuildingObject())
+	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShipObject()))
 		return getPosition();
 
 	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());

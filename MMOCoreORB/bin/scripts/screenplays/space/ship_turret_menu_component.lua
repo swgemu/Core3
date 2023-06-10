@@ -70,9 +70,6 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 
 		-- Add in their ship operatios state
 		CreatureObject(pPlayer):setState(SHIPGUNNER)
-
-		-- clear the players state from being on the inside of the ship
-		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
 	elseif (selectedID == 121) then
 		if (not SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER1_POB, 1)) then
 			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_occupied")
@@ -81,9 +78,6 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 
 		-- Add in their ship operatios state
 		CreatureObject(pPlayer):setState(SHIPGUNNER)
-
-		-- clear the players state from being on the inside of the ship
-		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
 	end
 
 	return 0

@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/SpaceZone.h"
-#include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/ship/PobShipObject.h"
 
 class InsertPilotIntoShipTask : public Task, public Logger {
@@ -47,6 +46,8 @@ public:
 			player->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY() - 2.f, pilotChair->getParentID());
 
 			//player->setState(CreatureState::PILOTINGPOBSHIP);
+
+			// Always apply the interior state
 			player->setState(CreatureState::SHIPINTERIOR);
 		} else {
 			player->setState(CreatureState::PILOTINGSHIP);
