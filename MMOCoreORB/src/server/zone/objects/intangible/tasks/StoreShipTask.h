@@ -75,31 +75,6 @@ public:
 				}
 			}
 
-#ifdef DEBUG_SHIP_STORE
-			info(true) << "Checking slotted objects for players - Total: " << ship->getSlottedObjectsSize();
-#endif
-
-			for (int i = 0; i < pobShip->getSlottedObjectsSize(); ++i) {
-				ManagedReference<CreatureObject*> slottedCreo = pobShip->getSlottedObject(i).castTo<CreatureObject*>();
-
-#ifdef DEBUG_SHIP_STORE
-				info(true) << "SlottedObjects - checking: " << slottedCreo->getObjectID();
-#endif
-
-				if (slottedCreo != nullptr) {
-					pobShip->unlock();
-
-					try {
-						Locker slotLock(slottedCreo);
-						removePlayer(slottedCreo, zoneName, coordinates);
-					} catch (...) {
-						error() << "Failed to remove player from ship slotted object - ShipID: " << pobShip->getObjectID();
-					}
-
-					pobShip->wlock();
-				}
-			}
-
 	#ifdef DEBUG_SHIP_STORE
 			info(true) << "Check Total Cells: " << ship->getTotalCellNumber();
 	#endif
@@ -159,9 +134,34 @@ public:
 #endif
 		}
 
+#ifdef DEBUG_SHIP_STORE
+		info(true) << "Checking slotted objects for players - Total: " << ship->getSlottedObjectsSize();
+#endif
+
+		for (int i = 0; i < ship->getSlottedObjectsSize(); ++i) {
+			ManagedReference<CreatureObject*> slottedCreo = ship->getSlottedObject(i).castTo<CreatureObject*>();
+
+#ifdef DEBUG_SHIP_STORE
+			info(true) << "SlottedObjects - checking: " << slottedCreo->getObjectID();
+#endif
+
+			if (slottedCreo != nullptr) {
+				ship->unlock();
+
+				try {
+					Locker slotLock(slottedCreo);
+					removePlayer(slottedCreo, zoneName, coordinates);
+				} catch (...) {
+					error() << "Failed to remove player from ship slotted object - ShipID: " << ship->getObjectID();
+				}
+
+				ship->wlock();
+			}
+		}
+
 		Locker sLock(shipControlDevice, ship);
 
-		if (shipControlDevice->transferObject(ship, PlayerArrangement::RIDER, true) && !shipControlDevice->isShipLaunched()) {
+		if (shipControlDevice->transferObject(ship, PlayerArrangement::RIDER, true)) {
 			ship->cancelRecovery();
 			ship->clearOptionBit(OptionBitmask::WINGS_OPEN, true);
 		}
