@@ -15,8 +15,11 @@
 
 class WaypointCommand : public QueueCommand {
 private:
-	String groundUsage = "Usage: /waypoint X Y <name> or /waypoint <name> or /waypoint <zone> X Z Y";
-	String spaceUsage = "Usage: /waypoint X Z Y <name> or /waypoint <name> or /waypoint <zone> X Z Y";
+	bool advancedWaypoints = ConfigManager::instance()->getBool("Core3.PlayerManager.AdvancedWaypoints", false);
+	String advancedGroundUsage = "Usage: /waypoint X Y <name> or /waypoint <name> or /waypoint <zone> X Z Y";
+	String advancedSpaceUsage = "Usage: /waypoint X Z Y <name> or /waypoint <name> or /waypoint <zone> X Z Y";
+	String groundUsage = "Usage: /waypoint X Y";
+	String spaceUsage = "Usage: /waypoint X Z Y";
 	mutable bool isSpaceZone;
 
 public:
@@ -34,16 +37,11 @@ public:
 		Zone* zone = creature->getZone();
 
 		if (zone == nullptr) {
-			zone = creature->getSpaceZone();
-
-			if (zone == nullptr) {
-				return GENERALERROR;
-			}
+			return GENERALERROR;
 		}
 
-		bool advancedWaypoints = ConfigManager::instance()->getBool("Core3.PlayerManager.AdvancedWaypoints", false);
-
 		isSpaceZone = zone->isSpaceZone();
+
 		String waypointData = arguments.toString();
 
 		String waypointName = "@ui:datapad_new_waypoint"; // New Waypoint
@@ -73,6 +71,13 @@ public:
 		if (tokenizer.hasMoreTokens()) {
 			String arg;
 			tokenizer.getStringToken(arg);
+
+			// First argument was alpha (zone name)
+			// This is invalid if advanced waypoints are disabled
+			if (!advancedWaypoints && isalpha(arg[0]) > 0) {
+				sendSystemMessage(creature);
+				return GENERALERROR;
+			}
 
 			if (tokenizer.hasMoreTokens()) {
 				// The first argument is passed here as a required argument as it can be a planet name or position
@@ -208,7 +213,7 @@ public:
 #endif
 
 		bool isValid = false;
-
+	
 		if (requiredArg != nullptr) {
 			if (isalpha(requiredArg->toCharArray()[0]) == 0) {
 				*position = atof(requiredArg->toCharArray());
@@ -226,11 +231,12 @@ public:
 			printf("Returned position: %f\n", *position);
 #endif
 		} else {
-			// Required arg has the possibility of being a planet name
-			// so only send system message when it's not null and numerical
-			if (requiredArg != nullptr && isalpha(requiredArg->toCharArray()[0]) == 0) {
-				sendSystemMessage(creature);
-			} else if (requiredArg == nullptr) {
+			if (advancedWaypoints) {
+				// Only necessary if requiredArg is null since it is allowed to be alpha
+				if (requiredArg == nullptr) {
+					sendSystemMessage(creature);
+				}
+			} else {
 				sendSystemMessage(creature);
 			}
 		}
@@ -239,7 +245,11 @@ public:
 	}
 
 	void sendSystemMessage(CreatureObject* creature) const {
-		creature->sendSystemMessage((isSpaceZone) ? spaceUsage : groundUsage);
+		if (advancedWaypoints) {
+			creature->sendSystemMessage((isSpaceZone) ? advancedSpaceUsage : advancedGroundUsage);
+		} else {
+			creature->sendSystemMessage((isSpaceZone) ? spaceUsage : groundUsage);
+		}
 	}
 };
 
