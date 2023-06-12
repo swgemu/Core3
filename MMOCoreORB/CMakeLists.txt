@@ -52,7 +52,7 @@ option(ENABLE_ODB "Enables odb3 compiling" OFF)
 option(ENABLE_ODB_REFERENCES "Sets ODB_REFERENCES define" ON) #needs to match engine3
 option(ENABLE_BUILD_CLIENT "Enables core3client build" ON)
 option(ENABLE_JEMALLOC_LINK "Enables jemalloc linking if found" ON)
-option(ENABLE_MULTITHREADED_LINKER "Enables ld.gold/lld with --threads check and use" ON)
+option(ENABLE_MULTITHREADED_LINKER "Enables ld.gold/lld with --threads check and use" OFF)
 option(ENABLE_LOCKFREE_BCLIENT_BUFFERS "Enables lock free base client buffers, requires boost thread" OFF) #needs to match engine3
 option(DUMP_ALL_CMAKE_VARIABLES "Prints all cmake variables" OFF)
 
