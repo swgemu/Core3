@@ -111,6 +111,7 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/objects/creature/commands/TransferItemMiscCommand.h"
 #include "templates/crcstringtable/CrcStringTable.h"
+#include "server/zone/objects/ship/PobShipObject.h"
 
 #include "server/zone/managers/statistics/StatisticsManager.h"
 
@@ -3502,11 +3503,22 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 			return obj.get();
 	}
 
-
 	ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
-	if (rootParent != nullptr && rootParent->isStructureObject() && (cast<StructureObject*>(rootParent.get()))->isOnAdminList(creature)) {
-		return rootParent;
+	if (rootParent != nullptr) {
+		// Structure Object
+		if (rootParent->isStructureObject()) {
+			StructureObject* structure = cast<StructureObject*>(rootParent.get());
+
+			if (structure!= nullptr && structure->isOnAdminList(creature))
+				return rootParent;
+		// PoBShip
+		} else if (rootParent->isPobShipObject()) {
+			PobShipObject* pobShip = cast<PobShipObject*>(rootParent.get());
+
+			if (pobShip != nullptr && pobShip->isOnAdminList(creature))
+				return rootParent;
+		}
 	}
 
 	StructureObject* structure = nullptr;

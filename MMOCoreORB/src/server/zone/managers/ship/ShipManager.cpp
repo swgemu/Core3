@@ -20,6 +20,12 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/ship/components/ShipComponent.h"
 #include "templates/params/creature/PlayerArrangement.h"
+#include "server/zone/objects/ship/PobShipObject.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/callbacks/FindLostItemsSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/DeleteAllItemsSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/PobShipStatusSuiCallback.h"
 
 /*ShipManager::ShipManager() {
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile(
@@ -701,7 +707,7 @@ ShipControlDevice* ShipManager::createShipControlDevice(ShipObject* ship) {
 	Locker cLock(control, ship);
 
 	if (control->transferObject(ship, PlayerArrangement::RIDER)) {
-		control->setShipType(ship->getChassisCategory() == "pob" ? POBSHIP : FIGHTERSHIP);
+		control->setShipType(ship->isPobShipObject() ? POBSHIP : FIGHTERSHIP);
 		control->setControlledObject(ship);
 
 		ship->setControlDeviceID(control->getObjectID());
@@ -761,6 +767,14 @@ void ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName
 
 		ship->createChildObjects();
 
+		if (ship->isPobShipObject()) {
+			PobShipObject* pobShip = ship->asPobShipObject();
+
+			if (pobShip != nullptr) {
+				pobShip->grantPermission("ADMIN", owner->getObjectID());
+			}
+		}
+
 		if (loadComponents) {
 			loadShipComponentObjects(ship);
 		}
@@ -781,5 +795,106 @@ void ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName
 	if (ship != nullptr) {
 		Locker sLock(ship);
 		ship->destroyObjectFromDatabase(true);
+	}
+}
+
+void ShipManager::reportPobShipStatus(CreatureObject* player, PobShipObject* pobShip, SceneObject* terminal) {
+	if (player == nullptr || pobShip == nullptr) {
+		return;
+	}
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	auto zoneServer = pobShip->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	// Close the window if it is already open.
+	if (ghost->hasSuiBoxWindowType(SuiWindowType::STRUCTURE_STATUS)) {
+		ghost->closeSuiWindowType(SuiWindowType::STRUCTURE_STATUS);
+	}
+
+	ManagedReference<SuiListBox*> status = new SuiListBox(player, SuiWindowType::STRUCTURE_STATUS);
+	status->setPromptTitle("@player_structure:structure_status_t"); // Structure Status
+
+	String displayedName = pobShip->getDisplayedName();
+
+	if (displayedName != "") {
+		status->setPromptText("@player_structure:structure_name_prompt " + displayedName); // Structure Name:
+	}
+
+	if (terminal != nullptr) {
+		status->setUsingObject(terminal);
+	} else {
+		status->setUsingObject(pobShip);
+	}
+
+	status->setPobShipObject(pobShip);
+	status->setOkButton(true, "@refresh");
+	status->setCancelButton(true, "@cancel");
+	status->setCallback(new PobShipStatusSuiCallback(zoneServer));
+
+	ManagedReference<CreatureObject*> ownerObject = pobShip->getOwner().get();
+
+	if (ownerObject != nullptr && ownerObject->isCreatureObject()) {
+		CreatureObject* owner = cast<CreatureObject*>(ownerObject.get());
+		status->addMenuItem("@player_structure:owner_prompt " + owner->getFirstName());
+	}
+
+	status->addMenuItem("@player_structure:items_in_building_prompt " + String::valueOf(pobShip->getCurrentNumberOfPlayerItems())); // Number of Items in Building:
+
+	ghost->addSuiBox(status);
+	player->sendMessage(status->generateMessage());
+}
+
+void ShipManager::promptDeleteAllItems(CreatureObject* player, PobShipObject* pobShip) {
+	if (player == nullptr || pobShip == nullptr)
+		return;
+
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	ManagedReference<SuiMessageBox*> sui = new SuiMessageBox(player, 0x00);
+
+	sui->setUsingObject(pobShip);
+	sui->setPromptTitle("@player_structure:delete_all_items");	// Delete All Items
+	sui->setPromptText("@player_structure:delete_all_items_d"); // This command will delete every object in your house.  Are you ABSOLUTELY sure you want to destroy every object in your house?
+	sui->setCancelButton(true, "@cancel");
+	sui->setCallback(new DeleteAllItemsSuiCallback(zoneServer));
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost != nullptr) {
+		ghost->addSuiBox(sui);
+		player->sendMessage(sui->generateMessage());
+	}
+}
+
+void ShipManager::promptFindLostItems(CreatureObject* player, PobShipObject* pobShip) {
+	if (player == nullptr || pobShip == nullptr)
+		return;
+
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	ManagedReference<SuiMessageBox*> sui = new SuiMessageBox(player, 0x00);
+	sui->setUsingObject(pobShip);
+	sui->setPromptTitle("@player_structure:move_first_item");  // Find Lost Items
+	sui->setPromptText("@player_structure:move_first_item_d"); // This command will move the first item in your pobShip to your location...
+	sui->setCallback(new FindLostItemsSuiCallback(zoneServer));
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost != nullptr) {
+		ghost->addSuiBox(sui);
+		player->sendMessage(sui->generateMessage());
 	}
 }

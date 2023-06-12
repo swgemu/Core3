@@ -8,22 +8,28 @@ package server.zone.objects.ship;
 import engine.log.Logger;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
+import system.util.Vector;
+import engine.util.u3d.Vector3;
 
 include server.zone.objects.ship.FighterShipObject;
 include templates.SharedObjectTemplate;
-include engine.util.u3d.Vector3;
 include system.util.VectorMap;
 include server.zone.objects.ship.PlayerLaunchPoints;
 include server.zone.objects.ship.DamageSparkLocations;
 include server.zone.objects.cell.CellObject;
-include server.zone.objects.structure.StructurePermissionList;
+include server.zone.objects.ship.ShipPermissionList;
 
 class PobShipObject extends FighterShipObject {
+	public native void notifyLoadFromDatabase();
+
 	@dereferenced
 	protected VectorMap<string, CellObject> cellNameMap;
 
 	@dereferenced
 	protected VectorMap<unsigned int, CellObject> cells;
+
+	@dereferenced
+	protected Vector<unsigned long> plasmaAlarms;
 
 	@dereferenced
 	protected DamageSparkLocations sparkLocations;
@@ -32,7 +38,7 @@ class PobShipObject extends FighterShipObject {
 	protected PlayerLaunchPoints launchPoints;
 
 	@dereferenced
-	protected StructurePermissionList shipPermissionList;
+	protected ShipPermissionList shipPermissionList;
 
 	public PobShipObject() {
 		Logger.setLoggingName("PobShipObject");
@@ -54,12 +60,27 @@ class PobShipObject extends FighterShipObject {
 	public native void sendContainerObjectsTo(SceneObject player, boolean forceLoad);
 
 	/**
+	 * Updates the cell permissions to the player based on the players permission in the ShipPermissionList.
+	 * @param creature The player to update cell permissions to.
+	 */
+	public native void updateCellPermissionsTo(CreatureObject creature);
+
+	/**
 	 * Checks if the player is on the admin list.
 	 * @param player The creo of the player to check for admin permission.
 	 * @return Returns true if the player has admin permissions.
 	 */
 	@read
 	public native boolean isOnAdminList(CreatureObject player);
+
+	/**
+	 * Checks if the player is the on the specified permission list.
+	 * @param listName The name of the list to check.
+	 * @param player The creo of the player to check.
+	 * @return Returns true if the player was found on the list.
+	 */
+	@read
+	public native boolean isOnPermissionList(final string listName, CreatureObject player);
 
 	/**
 	 * Checks if the player/guild is on the admin list.
@@ -72,19 +93,7 @@ class PobShipObject extends FighterShipObject {
 		return shipPermissionList.isOnPermissionList("ADMIN", objectID);
 	}
 
-	@dirty
-	public CellObject getCell(int idx) {
-		return cells.get(idx);
-	}
-
-	@dirty
-	public CellObject getCell(final string name) {
-		return cellNameMap.get(name);
-	}
-
-	public int getTotalCellNumber() {
-		return cells.size();
-	}
+	public native void togglePlasmaAlarms();
 
 	@dirty
 	@nativeStub
@@ -105,4 +114,75 @@ class PobShipObject extends FighterShipObject {
 	@dereferenced
 	@dirty
 	public native Vector3 getLaunchPointInCell(final string cellName);
+
+	@dirty
+	public native int getCurrentNumberOfPlayerItems();
+
+	/**
+	 * Loops through all the cells, destroying items from the database that aren't contained in the child objects vector.
+	 */
+	public native void destroyAllPlayerItems();
+
+	@dirty
+	public CellObject getCell(int idx) {
+		return cells.get(idx);
+	}
+
+	@dirty
+	public CellObject getCell(final string name) {
+		return cellNameMap.get(name);
+	}
+
+	public int getTotalCellNumber() {
+		return cells.size();
+	}
+
+	@dirty
+	public void sendPermissionListTo(CreatureObject creature, final string listName) {
+		shipPermissionList.sendTo(creature, listName);
+	}
+
+	public int grantPermission(final string listName, final unsigned long objectID) {
+		return shipPermissionList.grantPermission(listName, objectID);
+	}
+
+	public int revokePermission(final string listName, final unsigned long objectID) {
+		return shipPermissionList.revokePermission(listName, objectID);
+	}
+
+	public int togglePermission(final string listName, final unsigned long objectID) {
+		return shipPermissionList.togglePermission(listName, objectID);
+	}
+
+	@read
+	public boolean hasPermissionList(final string listName) {
+		return shipPermissionList.containsList(listName);
+	}
+
+	@read
+	public boolean isPermissionListFull(final string listName) {
+		return shipPermissionList.isListFull(listName);
+	}
+
+	/**
+	 * Checks if the player/guild is the on the specified permission list.
+	 * For PermissionsListModify command
+	 * @param listName The name of the list to check.
+	 * @param objectID The oid of the player/guild to check.
+	 * @return Returns true if the player/guild was found on the list.
+	 */
+	@read
+	public boolean isOnPermissionList(final string listName, final unsigned long objectID) {
+		return shipPermissionList.isOnPermissionList(listName, objectID);
+	}
+
+
+	@read
+	public int getTotalPlasmaAlarms() {
+		return plasmaAlarms.size();
+	}
+
+	public unsigned long getPlasmaAlarms(int idx) {
+		return plasmaAlarms.get(idx);
+	}
 }
