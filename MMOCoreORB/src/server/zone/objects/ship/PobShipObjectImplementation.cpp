@@ -26,6 +26,9 @@ void PobShipObjectImplementation::notifyLoadFromDatabase() {
 void PobShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipObjectImplementation::loadTemplateData(templateData);
 
+	setContainerVolumeLimit(0xFFFFFFFF);
+	setContainerType(2);
+
 	SharedShipObjectTemplate* ssot = dynamic_cast<SharedShipObjectTemplate*>(templateData);
 
 	if (ssot != nullptr) {
@@ -101,15 +104,6 @@ void PobShipObjectImplementation::createChildObjects() {
 
 		cellNameMap.put(layout->getCellProperty(i)->getName(), newCell);
 		cells.put(i, newCell);
-
-		ContainerPermissions* permissions = newCell->getContainerPermissionsForUpdate();
-
-		if (permissions != nullptr) {
-			permissions->setOwner(getObjectID());
-			permissions->setInheritPermissionsFromParent(false);
-			permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
-			permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
-		}
 	}
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
@@ -157,6 +151,15 @@ void PobShipObjectImplementation::createChildObjects() {
 								terminalChild->setControlledObject(asPobShipObject());
 						} else if (childTemplate.contains("alarm_interior")) {
 							plasmaAlarms.add(obj->getObjectID());
+						}
+
+						ContainerPermissions* permissions = obj->getContainerPermissionsForUpdate();
+
+						if (permissions != nullptr) {
+							permissions->setOwner(getObjectID());
+							permissions->setInheritPermissionsFromParent(false);
+							permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+							permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 						}
 					}
 				} else {

@@ -282,8 +282,53 @@ void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool 
 	components.drop(slot);
 }
 
+void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
+	auto closeObjectsVector = getCloseObjects();
+	Vector<TreeEntry*> closeObjects(closeObjectsVector->size(), 10);
+	closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(i));
+
+		if (obj->isCreatureObject()) {
+			if (obj->getRootParent() != _this.getReferenceUnsafe()) {
+				if (object->getCloseObjects() != nullptr)
+					object->addInRangeObject(obj, false);
+				else
+					object->notifyInsert(obj);
+
+				if (obj->getCloseObjects() != nullptr)
+					obj->addInRangeObject(object, false);
+				else
+					obj->notifyInsert(object);
+			}
+		}
+	}
+
+	notifyInsert(object);
+
+	if (object->getCloseObjects() != nullptr)
+		object->addInRangeObject(asShipObject(), false);
+
+	addInRangeObject(object, false);
+
+	Zone* zone = getZone();
+
+	if (zone != nullptr && zone->isSpaceZone()) {
+		TangibleObject* tano = object->asTangibleObject();
+
+		if (tano != nullptr) {
+			//zone->updateActiveAreas(tano);
+		}
+
+		object->notifyInsertToZone(zone);
+	}
+
+	//this->sendTo(object, true);
+}
+
 int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
-	ManagedReference<Zone*> zone = getZone();
+	Zone* zone = getZone();
 
 	Locker* _locker = nullptr;
 
@@ -300,7 +345,7 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 			if ((oldParent == nullptr || !oldParent->isCellObject()) || oldParent == child) {
 
 				if (oldParent == nullptr || (oldParent != nullptr && dynamic_cast<SpaceZone*>(oldParent) == nullptr && !oldParent->isCellObject())) {
-					//notifyObjectInsertedToZone(object);
+					notifyObjectInsertedToZone(object);
 					runInRange = false;
 				}
 

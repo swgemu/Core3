@@ -49,6 +49,7 @@ object_ship_player_player_decimator = object_ship_player_shared_player_decimator
 
 	-- POBSHIP
 	gameObjectType = 536870917,
+	containerComponent = "PobShipContainerComponent",
 
 	category = "pob",
 	level = 5,

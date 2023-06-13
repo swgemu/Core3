@@ -49,6 +49,7 @@ object_ship_player_player_sorosuub_space_yacht = object_ship_player_shared_playe
 
 	-- POBSHIP
 	gameObjectType = 536870917,
+	containerComponent = "PobShipContainerComponent",
 
 	category = "pob",
 	level = 0,
