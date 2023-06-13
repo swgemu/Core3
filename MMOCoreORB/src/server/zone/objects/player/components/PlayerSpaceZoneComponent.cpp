@@ -18,10 +18,14 @@ void PlayerSpaceZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Spac
 	String zoneName = newSpaceZone->getZoneName();
 
 	if (sceneObject->isPlayerCreature() && newSpaceZone != nullptr) {
-		PlayerObject* ghost = sceneObject->asCreatureObject()->getPlayerObject();
+		CreatureObject* player = sceneObject->asCreatureObject();
 
-		if (ghost != nullptr) {
-			ghost->setSavedTerrainName(zoneName);
+		if (player != nullptr) {
+			PlayerObject* ghost = player->getPlayerObject();
+
+			if (ghost != nullptr) {
+				ghost->setSavedTerrainName(zoneName);
+			}
 		}
 	}
 
