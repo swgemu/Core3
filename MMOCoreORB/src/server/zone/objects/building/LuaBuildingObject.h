@@ -35,6 +35,9 @@ namespace building {
 		int getNamedCell(lua_State* L);
 		int getOwnerID(lua_State* L);
 		int grantPermission(lua_State* L);
+		int revokePermission(lua_State* L);
+		int revokeAllPermissions(lua_State* L);
+		int setOwnerID(lua_State* L);
 		int broadcastSpecificCellPermissions(lua_State* L);
 		int spawnChildCreature(lua_State* L);
 		int spawnChildSceneObject(lua_State* L);

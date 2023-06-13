@@ -8,6 +8,8 @@
 #include "server/zone/managers/structure/tasks/DestroyStructureTask.h"
 
 void DestructibleBuildingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
+	if (sceneObject == nullptr || player == nullptr)
+		return;
 
 	ManagedReference<BuildingObject*> building = sceneObject->getParentRecursively(SceneObjectType::BUILDING).castTo<BuildingObject*>();
 
@@ -21,7 +23,7 @@ void DestructibleBuildingMenuComponent::fillObjectMenuResponse(SceneObject* scen
 
 	Reference<Task*> pendingTask = building->getPendingTask("destruction");
 
-	if (pendingTask == nullptr && building->isOwnerOf(player)) {
+	if (pendingTask == nullptr && building->isOnPermissionList("QUEST", player)) {
 		menuResponse->addRadialMenuItem(227, 3, "@self_destruct:self_destruct"); // Set Self Destruct
 		menuResponse->addRadialMenuItemToRadialID(227, 128, 3, "@self_destruct:fifteen"); // 15 seconds
 		menuResponse->addRadialMenuItemToRadialID(227, 129, 3, "@self_destruct:thirty"); // 30 seconds

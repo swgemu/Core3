@@ -11,16 +11,24 @@ import server.zone.packets.scene.AttributeListMessage;
 
 @json
 class DnaComponent extends Component {
-	protected float cleverness;
-	protected float endurance;
-	protected float fierceness;
-	protected float power;
-	protected float intellect;
-	protected float courage;
-	protected float dependability;
-	protected float dexterity;
-	protected float fortitude;
-	protected float hardiness;
+	protected int cleverness;
+	protected int endurance;
+	protected int fierceness;
+	protected int power;
+
+	// intelligence will be replaced with intellect
+	protected int intelligence;
+	protected int intellect;
+
+	protected int courage;
+
+	// dependency will be replaced with dependability
+	protected int dependency;
+	protected int dependability;
+
+	protected int dexterity;
+	protected int fortitude;
+	protected int hardiness;
 
 	protected string source;
 
@@ -50,16 +58,18 @@ class DnaComponent extends Component {
 	public DnaComponent() {
 		Logger.setLoggingName("DnaComponent");
 
-		fortitude = 0.f;
-		hardiness = 0.f;
-		dexterity = 0.f;
-		endurance = 0.f;
-		intellect = 0.f;
-		cleverness = 0.f;
-		dependability = 0.f;
-		courage = 0.f;
-		fierceness = 0.f;
-		power = 0.f;
+		fortitude = 0;
+		hardiness = 0;
+		dexterity = 0;
+		endurance = 0;
+		intelligence = 0; // Old var
+		intellect = 0;
+		cleverness = 0;
+		dependency = 0; // Old var
+		dependability = 0;
+		courage = 0;
+		fierceness = 0;
+		power = 0;
 
 		source = "unknown";
 		special1 = "none";
@@ -115,7 +125,7 @@ class DnaComponent extends Component {
 	}
 
 	@dirty
-	public float getLevel() {
+	public int getLevel() {
 		return sourceLevel;
 	}
 
@@ -153,7 +163,10 @@ class DnaComponent extends Component {
 
 	@dirty
 	public float getIntellect() {
-		return intellect;
+		if (intellect > 0)
+			return intellect;
+
+		return intelligence;
 	}
 
 	public void setCourage(float value) {
@@ -171,7 +184,10 @@ class DnaComponent extends Component {
 
 	@dirty
 	public float getDependability() {
-		return dependability;
+		if (dependability > 0)
+			return dependability;
+
+		return dependency;
 	}
 
 	public void setDexterity(float value) {
@@ -188,7 +204,7 @@ class DnaComponent extends Component {
 	}
 
 	@dirty
-	public float getForititude() {
+	public float getFortitude() {
 		return fortitude;
 	}
 

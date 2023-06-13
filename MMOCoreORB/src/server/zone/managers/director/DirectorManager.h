@@ -73,6 +73,8 @@ namespace server {
 		enum LUA_ERROR_CODE { NO_ERROR = 0, MAIN_FILE_ERROR, GENERAL_ERROR, INCORRECT_ARGUMENTS };
 		static int ERROR_CODE;
 
+		const static int SPAWNPOINTSEARCHATTEMPTS = 5;
+
 	public:
 		DirectorManager();
 		~DirectorManager();

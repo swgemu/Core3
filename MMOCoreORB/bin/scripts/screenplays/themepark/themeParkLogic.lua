@@ -737,6 +737,11 @@ function ThemeParkLogic:spawnDestroyBuilding(mission, pConversingPlayer, pActive
 		return false
 	end
 
+	-- Clearing the buildings owner so the player cannot drop or pickup objects from it
+	BuildingObject(pBuilding):setOwnerID(0)
+	BuildingObject(pBuilding):revokeAllPermissions()
+	BuildingObject(pBuilding):grantPermission("QUEST", SceneObject(pConversingPlayer):getObjectID())
+
 	createObserver(OBJECTDESTRUCTION, self.className, "notifyDestroyedBuilding", pBuilding)
 
 	local buildingCell = BuildingObject(pBuilding):getCell(buildingData.terminal.vectorCellID)
