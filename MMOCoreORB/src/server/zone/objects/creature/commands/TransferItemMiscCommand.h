@@ -184,7 +184,7 @@ public:
 
 			float maxDistance =  16.5;
 
-			if (rootParent != nullptr && !rootParent->isBuildingObject() && parent != nullptr && !parent->isBuildingObject()) {
+			if (rootParent != nullptr && !rootParent->isBuildingObject() && !rootParent->isPobShipObject() && parent != nullptr && !parent->isBuildingObject() && !parent->isPobShipObject()) {
 				float rootDist = rootParent->getDistanceTo(creature);
 
 				if (rootDist > maxDistance) { // Handles Hoppers in Factories
