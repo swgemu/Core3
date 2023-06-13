@@ -282,7 +282,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	*/
 
 	// Physique: Fortitude and Hardiness
-	float fortitudeMax = Genetics::physiqueFormula(physique->getForititude(), prowess->getForititude(), mental->getForititude(), psychological->getForititude(), aggression->getForititude()) * modifier;
+	float fortitudeMax = Genetics::physiqueFormula(physique->getFortitude(), prowess->getFortitude(), mental->getFortitude(), psychological->getFortitude(), aggression->getFortitude()) * modifier;
 	float hardinessMax = Genetics::physiqueFormula(physique->getHardiness(), prowess->getHardiness(), mental->getHardiness(), psychological->getHardiness(), aggression->getHardiness()) * modifier;
 
 	// Prowess: Endurance and Dexterity
@@ -372,15 +372,14 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 		capValue = craftingValues->getCapValue(attribute);
 		craftingValues->setMaxValue(attribute, 1000.f);
 
-		// Proper
-		craftingValues->setMaxPercentage(attribute, 1.f);
+		maxPercentage = (capValue / 1000.f);
 
 		// Get initial assembled value
 		initialValue = Genetics::initialValue(capValue);
 
 		// Set current percentage based on assembly value
 		currentPercentage = (initialValue / 1000.f);
-		craftingValues->setCurrentPercentage(attribute, currentPercentage);
+		craftingValues->setCurrentPercentage(attribute, currentPercentage, maxPercentage);
 
 #ifdef DEBUG_GENETIC_LAB
 		info(true) << "Current Percentage: " << currentPercentage << " Max Percentage: " << 100.f;

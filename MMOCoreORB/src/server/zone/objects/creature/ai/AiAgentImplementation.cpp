@@ -2924,6 +2924,9 @@ int AiAgentImplementation::setDestination() {
 		break;
 	}
 	case AiAgent::CONVERSING: {
+		if ((creatureBitmask & CreatureFlag::ESCORT) || (creatureBitmask & CreatureFlag::FOLLOW))
+			setMovementState(AiAgent::FOLLOWING);
+
 		break;
 	}
 	default:

@@ -771,9 +771,9 @@ bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) const 
 
 	if (ghost != nullptr && ghost->isPrivileged())
 		return true;
-	else if (structurePermissionList.isOnPermissionList("ADMIN", player->getObjectID()))
+	else if (structurePermissionList.isOnPermissionList("ADMIN", player->getObjectID())) {
 		return true;
-	else {
+	} else {
 		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		if (guild != nullptr && structurePermissionList.isOnPermissionList("ADMIN", guild->getObjectID()))

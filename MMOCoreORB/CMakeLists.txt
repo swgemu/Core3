@@ -52,7 +52,7 @@ option(ENABLE_ODB "Enables odb3 compiling" OFF)
 option(ENABLE_ODB_REFERENCES "Sets ODB_REFERENCES define" ON) #needs to match engine3
 option(ENABLE_BUILD_CLIENT "Enables core3client build" ON)
 option(ENABLE_JEMALLOC_LINK "Enables jemalloc linking if found" ON)
-option(ENABLE_MULTITHREADED_LINKER "Enables ld.gold/lld with --threads check and use" ON)
+option(ENABLE_MULTITHREADED_LINKER "Enables ld.gold/lld with --threads check and use" OFF)
 option(ENABLE_LOCKFREE_BCLIENT_BUFFERS "Enables lock free base client buffers, requires boost thread" OFF) #needs to match engine3
 option(DUMP_ALL_CMAKE_VARIABLES "Prints all cmake variables" OFF)
 
@@ -64,7 +64,7 @@ include(UseGold)
 find_package(Git QUIET)
 
 # Add lua includes and libraries
-find_package(Lua "5.3" REQUIRED)
+find_package(Lua "5.3" EXACT REQUIRED)
 include_directories(${LUA_INCLUDE_DIR})
 
 # Find mysql includes and libraries
@@ -194,10 +194,10 @@ endif(IDL_NOPRELOCKS)
 if(COMPILE_TESTS)
 	set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-    add_subdirectory(utils/googletest-release-1.10.0)
+    add_subdirectory(utils/googletest-release-1.13.0)
 
-    include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.10.0/googletest/include)
-    include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.10.0/googlemock/include)
+    include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.13.0/googletest/include)
+    include_directories(${CMAKE_SOURCE_DIR}/utils/googletest-release-1.13.0/googlemock/include)
 
 	enable_testing()
 
