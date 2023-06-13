@@ -61,7 +61,7 @@ public:
 		ship->getTargetableBitfield()->insertToMessage(this);
 		ship->getShipComponentMap()->insertToMessage(this);
 
-		insertAscii("");
+		insertAscii(""); // wingName
 		insertAscii(getShipTypeName(ship));
 		insertAscii(ship->getShipDifficulty());
 		insertAscii(ship->getShipFaction());
@@ -69,9 +69,14 @@ public:
 		insertFloat(ship->getFrontShield());
 		insertFloat(ship->getRearShield());
 
-		insertInt(0);
+		insertInt(getGuildID(ship));
 
 		setSize();
+	}
+
+	int getGuildID(ShipObject* ship) {
+		auto owner = ship->getOwner().get();
+		return owner != nullptr && owner->isInGuild() ? owner->getGuildID() : 0;
 	}
 
 	String getShipTypeName(ShipObject* ship) {
