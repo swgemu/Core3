@@ -4,11 +4,11 @@
  */
 
 #include "SpaceZoneComponent.h"
-#include "server/zone/objects/ship/ShipObject.h"
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/SpaceZone.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/SpaceZone.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/packets/object/DataTransform.h"
 #include "server/zone/packets/object/DataTransformWithParent.h"
 #include "templates/params/creature/PlayerArrangement.h"
@@ -328,6 +328,20 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 			sceneObject->sendToOwner(true);
 
 			// info(true) << "SpaceZoneComponent::switchZone object transferred into ship CELL";
+		}
+	}
+
+	CreatureObject* creo = sceneObject->asCreatureObject();
+	if (creo != nullptr && creo->isPilotingShip() && creo->getGroup() != nullptr) {
+		GroupObject* group = creo->getGroup();
+		if (group != nullptr) {
+			GroupShipList* gsl = group->getGroupShipList();
+			ShipObject* parent = creo->getParent().get()->asShipObject();
+			if (parent != nullptr && gsl != nullptr) {
+				if (!gsl->contains(parent)) {
+					group->addMemberShip(parent);
+				}
+			}
 		}
 	}
 
