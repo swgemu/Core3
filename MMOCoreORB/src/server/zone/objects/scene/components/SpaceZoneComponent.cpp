@@ -4,11 +4,11 @@
  */
 
 #include "SpaceZoneComponent.h"
-#include "server/zone/objects/ship/ShipObject.h"
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/SpaceZone.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/SpaceZone.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/packets/object/DataTransform.h"
 #include "server/zone/packets/object/DataTransformWithParent.h"
 #include "templates/params/creature/PlayerArrangement.h"
@@ -17,8 +17,7 @@ void SpaceZoneComponent::notifyInsertToZone(SceneObject* sceneObject, SpaceZone*
 	if (newSpaceZone == nullptr)
 		return;
 
-	if (sceneObject->getGameObjectType() != SceneObjectType::PLAYEROBJECT)
-		sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
+	sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
 
 	insertChildObjectsToZone(sceneObject, newSpaceZone);
 }
@@ -307,8 +306,8 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	if (newParent != nullptr) {
 		if (newParent->isShipObject()) {
-			newParent->sendTo(sceneObject, true);
 			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT, true);
+			newParent->sendTo(sceneObject, true);
 
 			//info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
 		} else if (newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR) {
@@ -327,7 +326,7 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 			newParent->transferObject(sceneObject, -1, true);
 			sceneObject->sendToOwner(true);
 
-			// info(true) << "SpaceZoneComponent::switchZone object transferred into ship CELL";
+			//info(true) << "SpaceZoneComponent::switchZone object transferred into ship CELL";
 		}
 	}
 

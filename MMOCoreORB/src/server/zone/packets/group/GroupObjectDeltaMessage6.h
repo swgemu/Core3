@@ -8,50 +8,61 @@
 #include "server/zone/packets/DeltaMessage.h"
 #include "server/zone/objects/group/GroupObject.h"
 
-class GroupObjectDeltaMessage6 : public DeltaMessage {
-	GroupObject* grup;
-	
+class GroupObjectDeltaMessage6 : public DeltaMessage, public Logger {
+	GroupObject* group;
+
 public:
-	GroupObjectDeltaMessage6(GroupObject* gr)
-			: DeltaMessage(gr->getObjectID(), 0x4352454F, 6) {
-		grup = gr;
+	GroupObjectDeltaMessage6(GroupObject* gr) : DeltaMessage(gr->getObjectID(), 'GRUP', 0x06) {
+		//info(true) << "GroupObjectDeltaMessage6 called";
+
+		group = gr;
 	}
 
-	/*void addMember(SceneObject* player, int idx) {
+	void updateMembers() {
+		GroupList* list = group->getGroupList();
+
+		if (list == nullptr)
+			return;
+
+		// Update Member List
 		startUpdate(0x01);
 
-		startList(1, grup->getNewListCount(1));
-		
-		insertByte(1);
-		insertShort(idx);
-		insertLong(player->getObjectID());
-		insertAscii(player->getgetObjectName()->getCustomString().toString());
+		int memberListSize = list->size();
+
+		insertInt(memberListSize);
+		insertInt(memberListSize);
+
+		for (int i = 0; i < memberListSize; ++i) {
+			insertByte(0x01); // Add to list?
+			insertShort((uint8)i); // Location on list
+
+			GroupMember* member = list->get(i);
+
+			insertLong(list->getMemberID(i));
+			insertAscii(list->getMemberName(i));
+		}
+
+		// Update Ship List
+		startUpdate(0x02);
+
+		insertInt(memberListSize);
+		insertInt(memberListSize);
+
+		for (int j = 0; j < memberListSize; j++) {
+			insertByte(0x01); // Add to list?
+			insertShort((uint8)j); // Location on list
+
+			insertLong(list->getMemberShipID(j));
+			insertInt(j);
+		}
+
+		startUpdate(0x04);
+		insertShort((uint16)group->getGroupLevel());
+
+		startUpdate(0x06);
+		insertLong(group->getMasterLooterID());
 	}
-	
-	void removeMember(int idx) {
-		startUpdate(0x01);
-		
-		startList(1, grup->getNewListCount(1));
-		insertByte(0);
-		insertShort(idx);
-	}
-	
-	void updateLeader(SceneObject* newLeader, SceneObject* oldLeader, int oldLeaderIdx) {
-		startUpdate(0x01);
-		
-		startList(2, grup->getNewListCount(2));
-		
-		insertByte(2);
-		insertShort(oldLeaderIdx);
-		insertLong(oldLeader->getObjectID());
-		insertAscii(oldLeader->getObjectName()->getCustomString().toString());
-		
-		insertByte(2);
-		insertShort(0);
-		insertLong(newLeader->getObjectID());
-		insertAscii(newLeader->getObjectName()->getCustomString().toString());
-	}*/
-	
+
 	void updateLevel(uint16 value) {
 		startUpdate(0x04);
 		insertShort(value);
@@ -63,7 +74,6 @@ public:
 		startUpdate(0x07);
 		insertInt(rule);
 	}
-
 };
 
 #endif /*GROUPOBJECTDELTAMESSAGE6_H_*/

@@ -430,8 +430,10 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 		   // zone->updateActiveAreas(tano);
 		}
 	}
-	//info("Added: " + object->getDisplayedName(), true);
-	//TangibleObjectImplementation::notifyObjectInsertedToChild(object, child, oldParent);
+
+	// info(true) << getDisplayedName() << " notifyObjectInsertedToChild: " << object->getDisplayedName();
+
+	TangibleObjectImplementation::notifyObjectInsertedToChild(object, child, oldParent);
 
 	return 0;
 }
