@@ -189,6 +189,44 @@ void GroupObjectImplementation::removeMember(CreatureObject* member) {
 	calcGroupLevel();
 }
 
+void GroupObjectImplementation::addMemberShip(ShipObject* ship) {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
+	grp->startUpdate(0x02);
+	groupMemberShips.add(ship, grp);
+	grp->close();
+
+	for (int i = 0; i < groupMembers.size(); i++) {
+		CreatureObject* member = getGroupMember(i);
+		if (member->getZone()->isSpaceZone() && member->isPilotingShip()) {
+			sendTo(member, true);
+		}
+	}
+}
+
+void GroupObjectImplementation:: removeMemberShip(ShipObject* ship) {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
+
+	for (int i = 0; i < groupMemberShips.size(); i++) {
+		ShipObject* listedShip = groupMemberShips.get(i).get().get();
+		if (ship == listedShip) {
+			grp->startUpdate(0x02);
+			groupMemberShips.remove(i, grp);
+			grp->close();
+		}
+	}
+
+	for (int i = 0; i < groupMembers.size(); i++) {
+		CreatureObject* member = getGroupMember(i);
+		if (member->getZone()->isSpaceZone() && member->isPilotingShip()) {
+			sendTo(member, true);
+		}
+	}
+}
+
 bool GroupObjectImplementation::hasMember(CreatureObject* member) {
 	for (int i = 0; i < groupMembers.size(); i++) {
 		CreatureObject* play = groupMembers.get(i).get().get();

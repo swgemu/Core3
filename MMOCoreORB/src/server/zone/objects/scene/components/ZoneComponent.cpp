@@ -266,6 +266,23 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	Zone* zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> thisLocker = sceneObject;
 
+	if (zone->isSpaceZone()) {
+		CreatureObject* creo = sceneObject->asCreatureObject();
+		if (creo != nullptr && creo->getGroup() != nullptr) {
+			GroupObject* group = creo->getGroup();
+			if (group != nullptr) {
+				GroupShipList* gsl = group->getGroupShipList();
+				ShipObject* parent = creo->getParent().get()->asShipObject();
+				Locker gLocker(group);
+				if (parent != nullptr && gsl != nullptr) {
+					if (gsl->contains(parent)) {
+						group->removeMemberShip(parent);
+					}
+				}
+			}
+		}
+	}
+
 	Zone* newZone = sceneObject->getZoneServer()->getZone(newTerrainName);
 
 	if (newZone == nullptr) {
