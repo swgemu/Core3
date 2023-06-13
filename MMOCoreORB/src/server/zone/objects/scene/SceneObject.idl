@@ -1010,6 +1010,13 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@virtualStub
 	public native abstract boolean isGroundZone();
 
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract SpaceZone asSpaceZone();
+
 	@dirty
 	@local
 	@nativeStub
