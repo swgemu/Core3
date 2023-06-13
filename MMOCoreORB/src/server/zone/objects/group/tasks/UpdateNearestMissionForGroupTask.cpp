@@ -8,8 +8,11 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 
-UpdateNearestMissionForGroupTask::UpdateNearestMissionForGroupTask(GroupObject* group, const unsigned int planetCRC)
-	: Task() {
+// #define DEBUG_GROUPS
+
+UpdateNearestMissionForGroupTask::UpdateNearestMissionForGroupTask(GroupObject* group, const unsigned int planetCRC) : Task() {
+	setLoggingName("UpdateNearestMissionForGroupTask");
+
 	this->groupRef = group;
 	this->planetCRC = planetCRC;
 }
@@ -19,6 +22,10 @@ void UpdateNearestMissionForGroupTask::run() {
 	if (group == nullptr) {
 		return;
 	}
+
+#ifdef DEBUG_GROUPS
+	info(true) << "UpdateNearestMissionForGroupTask called for Group ID: " << group->getObjectID();
+#endif
 
 	Locker locker(group);
 
@@ -92,10 +99,10 @@ void UpdateNearestMissionForGroupTask::run() {
 
 	// Finally find the closest mission.
 	Reference<MissionObject*> nearestMission = nullptr;
+
 	if (missionsOnPlanet.size() == 1) {
 		nearestMission = missionsOnPlanet.get(0);
-	}
-	else {
+	} else {
 		float shortestDistanceSoFar = std::numeric_limits<float>::max();
 
 		for (int i = 0; i < missionsOnPlanet.size(); i++) {
@@ -142,8 +149,7 @@ void UpdateNearestMissionForGroupTask::setPlayersNearestMissionForGroupWaypoint(
 
 	if (nearestMissionForGroup == nullptr) {
 		ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP, true);
-	}
-	else {
+	} else {
 		Zone* zone = nearestMissionForGroup->getZone();
 		uint32 crc = zone ? zone->getZoneCRC() : 0;
 
@@ -158,11 +164,10 @@ void UpdateNearestMissionForGroupTask::setPlayersNearestMissionForGroupWaypoint(
 		waypoint->setCustomObjectName("@group:groupwaypoint", false); // Nearest mission for group
 		waypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
 		waypoint->setPlanetCRC(crc);
-		waypoint->setPosition(nearestMissionForGroup->getWaypointToMission()->getPositionX(),
-			nearestMissionForGroup->getWaypointToMission()->getPositionZ(),
-			nearestMissionForGroup->getWaypointToMission()->getPositionY());
+		waypoint->setPosition(nearestMissionForGroup->getWaypointToMission()->getPositionX(), nearestMissionForGroup->getWaypointToMission()->getPositionZ(), nearestMissionForGroup->getWaypointToMission()->getPositionY());
 		waypoint->setColor(WaypointObject::COLOR_YELLOW);
 		waypoint->setActive(true);
+
 		ghost->addWaypoint(waypoint, false);
 	}
 }
