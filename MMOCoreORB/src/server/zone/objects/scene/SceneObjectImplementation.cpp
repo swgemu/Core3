@@ -1065,6 +1065,9 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, SceneObject* d
 }
 
 void SceneObjectImplementation::removeObjectFromZone(Zone* zone, SceneObject* par) {
+	if (zone == nullptr)
+		return;
+
 	if (zone->isSpaceZone())
 		spaceZoneComponent->removeObjectFromZone(asSceneObject(), zone->asSpaceZone(), par);
 	else

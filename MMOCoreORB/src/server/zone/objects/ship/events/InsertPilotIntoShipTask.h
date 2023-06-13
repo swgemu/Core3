@@ -42,13 +42,11 @@ public:
 				return;
 			}
 
-			// this crashes client upon initial launch if set directly into pilots chair - H
-			player->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY() - 2.f, pilotChair->getParentID());
-
-			//player->setState(CreatureState::PILOTINGPOBSHIP);
-
 			// Always apply the interior state
 			player->setState(CreatureState::SHIPINTERIOR);
+
+			// this crashes client upon initial launch if set directly into pilots chair - H
+			player->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY() - 2.f, pilotChair->getParentID());
 		} else {
 			player->setState(CreatureState::PILOTINGSHIP);
 			player->switchZone(spaceZone->getZoneName(), ship->getPositionX(), ship->getPositionZ(), ship->getPositionY(), ship->getObjectID());

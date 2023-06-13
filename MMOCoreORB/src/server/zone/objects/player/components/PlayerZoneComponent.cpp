@@ -70,17 +70,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 			player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 		}
 
-		if (player->isPilotingShip()) {
-			if (player->hasState(CreatureState::PILOTINGSHIP)) {
-				player->clearState(CreatureState::PILOTINGSHIP);
-			} else if (player->hasState(CreatureState::PILOTINGPOBSHIP)) {
-				player->clearState(CreatureState::PILOTINGPOBSHIP);
-			}
-		} else if (player->isPobShipOperator()) {
-			player->clearState(CreatureState::SHIPOPERATIONS);
-		} else if (player->isShipGunner()) {
-			player->clearState(CreatureState::SHIPGUNNER);
-		}
+		player->clearSpaceStates();
 
 		if (ghost != nullptr) {
 			ghost->setSavedParentID(0);
