@@ -301,3 +301,11 @@ bool SpaceZoneImplementation::isSpaceZone() {
 bool SpaceZone::isSpaceZone() {
 	return true;
 }
+
+SpaceZone* SpaceZoneImplementation::asSpaceZone() {
+	return _this.getReferenceUnsafeStaticCast();
+}
+
+SpaceZone* SpaceZone::asSpaceZone() {
+	return this;
+}

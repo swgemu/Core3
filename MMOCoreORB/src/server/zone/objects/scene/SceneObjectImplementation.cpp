@@ -223,8 +223,7 @@ void SceneObjectImplementation::createComponents() {
 		//zoneComponent->initialize(_this.getReferenceUnsafe());
 
 		if (zoneComponent == nullptr) {
-			info() << "zone component \'" << zoneComponentClassName << "\' null in " <<
-			       	templateObject->getFullTemplateString();
+			info() << "zone component \'" << zoneComponentClassName << "\' null in " << templateObject->getFullTemplateString();
 		}
 
 		createObjectMenuComponent();
@@ -975,7 +974,10 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 }
 
 void SceneObjectImplementation::notifyInsertToZone(Zone* newZone) {
-	zoneComponent->notifyInsertToZone(asSceneObject(), newZone);
+	if (newZone->isSpaceZone())
+		spaceZoneComponent->notifyInsertToZone(asSceneObject(), newZone->asSpaceZone());
+	else
+		zoneComponent->notifyInsertToZone(asSceneObject(), newZone);
 }
 
 void SceneObjectImplementation::notifyInsertToZone(SpaceZone* newZone) {
@@ -1063,7 +1065,10 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, SceneObject* d
 }
 
 void SceneObjectImplementation::removeObjectFromZone(Zone* zone, SceneObject* par) {
-	zoneComponent->removeObjectFromZone(asSceneObject(), zone, par);
+	if (zone->isSpaceZone())
+		spaceZoneComponent->removeObjectFromZone(asSceneObject(), zone->asSpaceZone(), par);
+	else
+		zoneComponent->removeObjectFromZone(asSceneObject(), zone, par);
 }
 
 void SceneObjectImplementation::openContainerTo(CreatureObject* player) {
@@ -2039,6 +2044,14 @@ bool SceneObjectImplementation::isPobShipObject() {
 
 bool SceneObject::isPobShipObject() {
 	return false;
+}
+
+SpaceZone* SceneObjectImplementation::asSpaceZone() {
+	return nullptr;
+}
+
+SpaceZone* SceneObject::asSpaceZone() {
+	return nullptr;
 }
 
 AiAgent* SceneObjectImplementation::asAiAgent() {

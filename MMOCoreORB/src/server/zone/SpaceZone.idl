@@ -118,5 +118,10 @@ class SpaceZone extends Zone {
 	@local
 	@nativeStub
 	public native boolean isSpaceZone();
+
+	@dirty
+	@nativeStub
+	@local
+	public native SpaceZone asSpaceZone();
 }
 
