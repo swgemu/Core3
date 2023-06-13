@@ -18,7 +18,7 @@ include system.util.VectorMap;
 @json
 class GroupObject extends SceneObject {
 	@dereferenced
-	GroupList groupMembers;
+	transient GroupList groupMembers;
 
 	@dereferenced
 	transient VectorMap<unsigned int, Reference<UpdateNearestMissionForGroupTask> > updateNearestMissionForGroupTasks;
@@ -71,9 +71,14 @@ class GroupObject extends SceneObject {
 	@dirty
 	public native void sendSystemMessage(@dereferenced StringIdChatParameter param, CreatureObject excluded);
 
-	public native void addMember(CreatureObject newMember);
+	@preLocked
+	public native void addMember(CreatureObject newMember, boolean notify = true);
+
 	@preLocked
 	public native void removeMember(CreatureObject member);
+
+	@preLocked
+	public native void updateMemberShip(unsigned long memberID, unsigned long shipID);
 
 	@preLocked
 	public native void disband();
@@ -95,7 +100,7 @@ class GroupObject extends SceneObject {
 
 	@dirty
 	@preLocked
-	public native void calcGroupLevel();
+	public native void calculateGroupLevel();
 
 	@read
 	public int getGroupLevel(boolean includeFactionPets = true) {
@@ -125,23 +130,17 @@ class GroupObject extends SceneObject {
 
 	@reference
 	@dirty
-	public CreatureObject getGroupMember(int index) {
-		return groupMembers.getSafe(index);
-	}
+	public native CreatureObject getGroupMember(int index);
 
-	public void initializeLeader(CreatureObject player) {
-		groupMembers.add(player);
-	}
+	public native boolean initializeLeader(CreatureObject leader, CreatureObject member);
 
 	@reference
 	@dirty
-	public CreatureObject getLeader() {
-		if (groupMembers.size() == 0) {
-			return null;
-		} else {
-			return groupMembers.getSafe(0);
-		}
-	}
+	public native CreatureObject getLeader();
+
+	@local
+	@dirty
+	public native unsigned long getLeaderID();
 
 	@local
 	@dirty

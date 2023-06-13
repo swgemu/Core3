@@ -176,6 +176,18 @@ public:
 
 		Locker cLock(player, shipControlDevice);
 		shipControlDevice->setStoredLocationData(player);
+		cLock.release();
+
+		if (player->isGrouped()) {
+			auto group = player->getGroup();
+
+			if (group == nullptr)
+				return;
+
+			Locker glocker(group, ship);
+
+			group->updateMemberShip(player->getObjectID(), 0);
+		}
 	}
 
 	void removePlayer(CreatureObject* player, String newZoneName, Vector3 location) {

@@ -42,16 +42,25 @@ public:
 				return;
 			}
 
-			// this crashes client upon initial launch if set directly into pilots chair - H
-			player->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY() - 2.f, pilotChair->getParentID());
-
-			//player->setState(CreatureState::PILOTINGPOBSHIP);
-
 			// Always apply the interior state
 			player->setState(CreatureState::SHIPINTERIOR);
+			player->setState(CreatureState::PILOTINGPOBSHIP);
+
+			player->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY() - 2.f, pilotChair->getObjectID());
 		} else {
 			player->setState(CreatureState::PILOTINGSHIP);
 			player->switchZone(spaceZone->getZoneName(), ship->getPositionX(), ship->getPositionZ(), ship->getPositionY(), ship->getObjectID());
+		}
+
+		if (player->isGrouped()) {
+			auto group = player->getGroup();
+
+			if (group == nullptr)
+				return;
+
+			Locker glocker(group, ship);
+
+			group->updateMemberShip(player->getObjectID(), ship->getObjectID());
 		}
 	}
 };

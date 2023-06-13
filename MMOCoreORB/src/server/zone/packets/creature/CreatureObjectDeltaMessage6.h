@@ -12,8 +12,7 @@ class CreatureObjectDeltaMessage6 : public TangibleObjectDeltaMessage6 {
 	CreatureObject* creo;
 
 public:
-	CreatureObjectDeltaMessage6(CreatureObject* cr)
-		: TangibleObjectDeltaMessage6(cr, 0x4352454F) {
+	CreatureObjectDeltaMessage6(CreatureObject* cr) : TangibleObjectDeltaMessage6(cr, 0x4352454F) {
 		creo = cr;
 	}
 

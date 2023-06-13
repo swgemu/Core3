@@ -554,9 +554,10 @@ void PlayerObjectImplementation::notifySceneReady() {
 			chatRooms.remove(i);
 	}
 
-	if(creature->getZone() != nullptr && creature->getZone()->getPlanetManager() != nullptr) {
-		ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
-		if(weatherManager != nullptr) {
+	if (zone != nullptr && zone->getPlanetManager() != nullptr) {
+		ManagedReference<WeatherManager*> weatherManager = zone->getPlanetManager()->getWeatherManager();
+
+		if (weatherManager != nullptr) {
 			creature->setCurrentWind((byte)System::random(200));
 			creature->setCurrentWeather(0xFF);
 			weatherManager->sendWeatherTo(creature);
@@ -567,6 +568,9 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	if (zone != nullptr && !zone->isSpaceZone())
 		createHelperDroid();
+
+
+	// info(true) << "notifySceneReady for " << creature->getDisplayedName();
 }
 
 void PlayerObjectImplementation::sendFriendLists() {
