@@ -14,13 +14,13 @@
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 void PobShipObjectImplementation::notifyLoadFromDatabase() {
-	TangibleObjectImplementation::notifyLoadFromDatabase();
-
 	CreatureObject* owner = getOwner().get();
 
 	if (owner != nullptr && shipPermissionList.getOwner() != owner->getObjectID()) {
 		shipPermissionList.setOwner(owner->getObjectID());
 	}
+
+	ShipObjectImplementation::notifyLoadFromDatabase();
 }
 
 void PobShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
