@@ -391,6 +391,8 @@ class ShipObject extends TangibleObject {
 		totalCellNumber = 0;
 	}
 
+	public native void notifyLoadFromDatabase();
+
 	@dirty
 	public native abstract void sendSlottedObjectsTo(SceneObject player);
 

@@ -14,7 +14,7 @@
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 void PobShipObjectImplementation::notifyLoadFromDatabase() {
-	TangibleObjectImplementation::notifyLoadFromDatabase();
+	ShipObjectImplementation::notifyLoadFromDatabase();
 
 	CreatureObject* owner = getOwner().get();
 
