@@ -302,16 +302,19 @@ public:
 
 		for (int i = 0; i < closePlayers.size(); ++i) {
 			auto targetCreo = closePlayers.get(i).castTo<CreatureObject*>();
-			if (targetCreo == nullptr || targetCreo == pilot) {
+
+			if (targetCreo == nullptr || targetCreo->getObjectID() == pilot->getObjectID()) {
 				continue;
 			}
 
 			auto targetRoot = targetCreo->getRootParent();
-			if (targetRoot == nullptr || targetRoot == ship) {
+
+			if (targetRoot == nullptr || !targetRoot->isShipObject()) {
 				continue;
 			}
 
 			auto targetShip = targetRoot->asShipObject();
+
 			if (targetShip == nullptr) {
 				continue;
 			}
