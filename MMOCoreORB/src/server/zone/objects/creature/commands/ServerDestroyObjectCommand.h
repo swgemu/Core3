@@ -16,9 +16,7 @@
 class ServerDestroyObjectCommand : public QueueCommand {
 public:
 
-	ServerDestroyObjectCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	ServerDestroyObjectCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -29,7 +27,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		//creature->info("serverdestroy arguments: " + arguments.toString(), true);
+		// creature->info(true) << "ServerDestroyObjectCommand - arguments: " << arguments.toString();
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 

@@ -85,8 +85,17 @@ class ShipControlDevice extends ControlDevice {
 	@dirty
 	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
 
-	public native boolean isShipLaunched();
+	/**
+	 * Checks if the object can be destroyed
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @returns 0 on success, != 0 on error
+	 */
+	@dirty
+	public native int canBeDestroyed(CreatureObject player);
 
 	@preLocked
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+
+	public native boolean isShipLaunched();
 }

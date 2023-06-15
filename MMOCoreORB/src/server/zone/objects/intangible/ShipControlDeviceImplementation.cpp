@@ -275,24 +275,40 @@ bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Crea
 	return true;
 }
 
+int ShipControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
+	auto ship = controlledObject.get().castTo<ShipObject*>();
+
+	if (ship == nullptr)
+		return 1;
+
+	auto owner = ship->getOwner().get();
+
+	if (owner == nullptr)
+		return 1;
+
+	if (ship->isInOctTree()) {
+		owner->sendSystemMessage("You must land your ship before it can be destroyed.");
+		return 1;
+	}
+
+	if (ship->isPobShipObject()) {
+		auto pobShip = ship->asPobShipObject();
+
+		if (pobShip != nullptr && pobShip->getCurrentNumberOfPlayerItems() > 0) {
+			owner->sendSystemMessage("You must remove all of your items from your ship before it can be destroyed.");
+			return 1;
+		}
+	}
+
+	return IntangibleObjectImplementation::canBeDestroyed(player);
+}
+
+void ShipControlDeviceImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+}
+
 bool ShipControlDeviceImplementation::isShipLaunched() {
 	auto object = getControlledObject();
 
 	return object != nullptr && object->isInOctTree();
-}
-
-void ShipControlDeviceImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	auto ship = controlledObject.get().castTo<ShipObject*>();
-
-	if (ship != nullptr) {
-			StoreShipTask* task = new StoreShipTask(ship->getOwner().get(), _this.getReferenceUnsafeStaticCast(), storedZoneName, storedPosition);
-
-			if (task != nullptr)
-				task->execute();
-
-		Locker sLock(ship);
-		ship->destroyObjectFromDatabase(destroyContainedObjects);
-	}
-
-	ControlDeviceImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
