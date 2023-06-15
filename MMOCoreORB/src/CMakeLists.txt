@@ -204,6 +204,10 @@ if (ENABLE_REST_SERVER OR ENABLE_SESSION_API)
 	if (cpprestsdk_FOUND)
 		target_link_libraries(core3 cpprestsdk::cpprest)
 
+		if(ENABLE_ODB)
+			target_link_libraries(odb3 cpprestsdk::cpprest)
+		endif()
+
 		message(STATUS "Compiling with cpprestsdk package")
 	else ()
 		find_path(CUST_CPPREST_INCLUDE_DIR
