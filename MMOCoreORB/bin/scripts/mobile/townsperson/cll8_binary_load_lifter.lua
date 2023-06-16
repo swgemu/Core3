@@ -1,7 +1,6 @@
 cll8_binary_load_lifter = Creature:new {
 	objectName = "@mob/creature_names:cll8_binary_load_lifter",
 	socialGroup = "townsperson",
-	faction = "townsperson",
 	mobType = MOB_DROID,
 	faction = "",
 	level = 4,

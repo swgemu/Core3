@@ -1,7 +1,6 @@
 eg6_power_droid = Creature:new {
 	objectName = "@mob/creature_names:eg6_power_droid",
 	randomNameType = NAME_EG6,
-	socialGroup = "",
 	mobType = MOB_DROID,
 	socialGroup = "townsperson",
 	faction = "",

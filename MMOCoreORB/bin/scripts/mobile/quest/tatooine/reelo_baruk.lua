@@ -35,12 +35,11 @@ reelo_baruk = Creature:new {
 	secondaryWeapon = "none",
 	conversationTemplate = "theme_park_jabba_mission_giver_convotemplate",
 	outfit = "reelo_baruk_outfit",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = {},
-	secondaryAttacks = { },
-	optionsBitmask = INVULNERABLE + CONVERSABLE
+	secondaryAttacks = {},
 }
 
 CreatureTemplates:addCreatureTemplate(reelo_baruk, "reelo_baruk")
