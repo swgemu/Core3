@@ -852,6 +852,8 @@ class AiAgent extends CreatureObject {
 	@mock
 	public abstract native boolean generatePatrol(int num, float dist);
 
+	public abstract native boolean generatePatrolWithParent(int num, float dist, unsigned int savedState);
+
 	@weakReference
 	public SceneObject getFollowObject() {
 		return followObject;

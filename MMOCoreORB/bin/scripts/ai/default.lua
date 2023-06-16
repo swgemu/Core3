@@ -191,9 +191,9 @@ idleDefault = {
 	{id="2362734698",	name="StopResting",	pid="3620709194"},
 	{id="1864140521",	name="Wait",	pid="3620709194",	args={duration=5.0}},
 	{id="4072235030",	name="Sequence",	pid="3547969451"},
-	{id="401182658",	name="Not",	pid="4072235030"},
-	{id="2752118648",	name="If",	pid="401182658"},
-	{id="1816846537",	name="CheckHomeIsCell",	pid="2752118648"},
+	--{id="401182658",	name="Not",	pid="4072235030"},
+	--{id="2752118648",	name="If",	pid="401182658"},
+	--{id="1816846537",	name="CheckHomeIsCell",	pid="2752118648"},
 	{id="2675315481",	name="Sequence",	pid="4072235030"},
 	{id="2300404191",	name="Not",	pid="2675315481"},
 	{id="910333348",	name="If",	pid="2300404191"},
@@ -207,8 +207,8 @@ idleDefault = {
 	{id="487154563",	name="Not",	pid="2675315481"},
 	{id="3807314026",	name="If",	pid="487154563"},
 	{id="1384587681",	name="CheckMovementState",	pid="3807314026",	args={condition=PATHING_HOME}},
-	{id="3483017378",	name="If",	pid="4072235030"},
-	{id="776089883",	name="CheckOutdoors",	pid="3483017378"},
+	--{id="3483017378",	name="If",	pid="4072235030"},
+	--{id="776089883",	name="CheckOutdoors",	pid="3483017378"},
 	{id="1547268873",	name="GeneratePatrol",	pid="4072235030",	args={distFromHome=30.0, numPoints=5}}}
 addAiTemplate("idleDefault", idleDefault)
 

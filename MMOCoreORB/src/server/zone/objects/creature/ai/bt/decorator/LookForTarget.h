@@ -32,6 +32,8 @@ public:
 		bool alwaysActive = false;
 #endif // DEBUG_AI
 
+		alwaysActive = true;
+
 		if ((agent->getOptionsBitmask() & OptionBitmask::AIENABLED) == 0 || agent->isDead() || agent->isIncapacitated()
 				|| (agent->getPvpStatusBitmask() == CreatureFlag::NONE && !(agent->isDroidObject() && agent->isPet()))
 				|| (!alwaysActive && agent->getNumberOfPlayersInRange() <= 0) || agent->isRetreating() || agent->isFleeing() || agent->isInCombat())

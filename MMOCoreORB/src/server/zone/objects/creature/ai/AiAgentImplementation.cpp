@@ -1272,7 +1272,15 @@ bool AiAgentImplementation::validateStateAttack(CreatureObject* target, unsigned
 }
 
 void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
-	if (despawnOnNoPlayerInRange == val)
+#ifdef DEBUG_AI
+	bool alwaysActive = ConfigManager::instance()->getAiAgentLoadTesting();
+#else // DEBUG_AI
+	bool alwaysActive = false;
+#endif // DEBUG_AI
+
+	alwaysActive = true;
+
+	if (despawnOnNoPlayerInRange == val || alwaysActive)
 		return;
 
 	despawnOnNoPlayerInRange = val;
@@ -2417,6 +2425,8 @@ void AiAgentImplementation::runBehaviorTree() {
 		bool alwaysActive = false;
 #endif // DEBUG_AI
 
+		alwaysActive = true;
+
 		ZoneServer* zoneServer = getZoneServer();
 
 		if ((!alwaysActive && numberOfPlayersInRange.get() <= 0 && getFollowObject().get() == nullptr && !isRetreating()) || zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()) {
@@ -2582,6 +2592,9 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 		clearSavedPatrolPoints();
 	}
 
+	if (getParentID() > 0)
+		return generatePatrolWithParent(num, dist, savedState);
+
 	Vector3 currentPosition = getPosition();
 	dist += getTemplateRadius();
 
@@ -2646,6 +2659,78 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 	}
 
 	// info(true) << "ID: " << getObjectID() << " Finished - generatePatrol with a state of " << getMovementState() << " and point size of = " << getPatrolPointSize();
+
+	if (getPatrolPointSize() > 0)
+		return true;
+
+	setMovementState(savedState);
+	return false;
+}
+
+bool AiAgentImplementation::generatePatrolWithParent(int num, float dist, uint32 savedState) {
+	dist /= 3.f;
+
+	// info(true) << "ID: " << getObjectID() << "  generatePatrolWithParent called with a state of " << getMovementState() << " and point size of = " << getPatrolPointSize();
+
+	ManagedReference<SceneObject*> parent = getParent().get();
+
+	if (parent == nullptr || !parent->isCellObject())
+		return false;
+
+	CellObject* currentCell = parent.castTo<CellObject*>();
+
+	if (currentCell == nullptr) {
+		return false;
+	}
+
+	SceneObject* cellParent = currentCell->getParent().get();
+
+	if (cellParent == nullptr || !cellParent->isBuildingObject()) {
+		return false;
+	}
+
+	BuildingObject* building = cellParent->asBuildingObject();
+
+	if (building == nullptr)
+		return false;
+
+	const PortalLayout* layout = building->getObjectTemplate()->getPortalLayout();
+
+	if (layout == nullptr) {
+		return false;
+	}
+
+	const CellProperty* cellProperty = layout->getCellProperty(currentCell->getCellNumber());
+
+	if (cellProperty == nullptr)
+		return false;
+
+	const FloorMesh* floorMesh = cellProperty->getFloorMesh();
+
+	if (floorMesh == nullptr)
+		return false;
+
+	Vector3 currentPosition = getPosition();
+
+	for (int i = 0; i < num; i++) {
+		PatrolPoint newPoint;
+		newPoint.setPositionX(homeLocation.getPositionX() + (-1 * dist + (float)System::random((unsigned int)dist * 2)));
+		newPoint.setPositionY(homeLocation.getPositionY() + (-1 * dist + (float)System::random((unsigned int)dist * 2)));
+		newPoint.setPositionZ(homeLocation.getPositionZ());
+
+		if (newPoint.getPositionX() == currentPosition.getX() && newPoint.getPositionY() == currentPosition.getY())
+			continue;
+
+		const TriangleNode* nearestTriangle = CollisionManager::getTriangle(newPoint.getWorldPosition(), floorMesh);
+
+		if (nearestTriangle == nullptr)
+			continue;
+
+		newPoint.setCell(currentCell);
+
+		addPatrolPoint(newPoint);
+	}
+
 
 	if (getPatrolPointSize() > 0)
 		return true;
@@ -3122,6 +3207,8 @@ void AiAgentImplementation::activateAiBehavior(bool reschedule) {
 #else // DEBUG_AI
 	bool alwaysActive = false;
 #endif // DEBUG_AI
+
+	alwaysActive = true;
 
 	ZoneServer* zoneServer = getZoneServer();
 

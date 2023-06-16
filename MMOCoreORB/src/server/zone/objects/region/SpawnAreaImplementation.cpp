@@ -20,7 +20,7 @@
 //#define DEBUG_SPAWNING
 
 void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	if (numberOfPlayersInRange <= 0)
+	if (numberOfPlayersInRange <= 0 || ConfigManager::instance()->spawningDisabled())
 		return;
 
 	if (entry == nullptr)

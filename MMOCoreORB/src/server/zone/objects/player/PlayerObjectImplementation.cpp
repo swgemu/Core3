@@ -2164,7 +2164,9 @@ void PlayerObjectImplementation::setLinkDead(bool isSafeLogout) {
 	logoutTimeStamp.updateToCurrentTime();
 	if(!isSafeLogout) {
 		info("went link dead");
-		logoutTimeStamp.addMiliTime(ConfigManager::instance()->getInt("Core3.Tweaks.PlayerObject.LinkDeadDelay", 3 * 60) * 1000); // 3 minutes if unsafe
+		//logoutTimeStamp.addMiliTime(ConfigManager::instance()->getInt("Core3.Tweaks.PlayerObject.LinkDeadDelay", 3 * 60) * 1000); // 3 minutes if unsafe
+
+		logoutTimeStamp.addMiliTime(10 * 1000);
 	}
 
 	setPlayerBit(PlayerBitmasks::LD, true);

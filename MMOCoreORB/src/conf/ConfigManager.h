@@ -717,6 +717,19 @@ namespace conf {
 
 			return cachedEnableSessionId;
 		}
+
+		inline bool spawningDisabled() {
+			static uint32 cachedVersion = 0;
+			static bool cachedSpawningDisabled;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedSpawningDisabled = getBool("Core3.Regions.spawningDisabled", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedSpawningDisabled;
+		}
 	};
 }
 
