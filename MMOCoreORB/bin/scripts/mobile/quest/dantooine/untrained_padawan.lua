@@ -27,11 +27,11 @@ untrained_padawan = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_dark_force_crystal_hunter.iff"}, 
-	lootGroups = {},
+	templates = {"object/mobile/dressed_dark_force_crystal_hunter.iff"},
+
 	lootGroups = {
-	 {
-	        groups = {
+		 {
+			groups = {
 				{group = "task_loot_padawan_braid", chance = 10000000}
 			},
 			lootChance = 10000000
