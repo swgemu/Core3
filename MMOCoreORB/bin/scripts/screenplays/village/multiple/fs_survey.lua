@@ -3,6 +3,17 @@ local QuestManager = require("managers.quest.quest_manager")
 
 FsSurvey = {  }
 
+-- Old Function to redirect on quest observers
+function FsSurvey:sampleEventHandler(pPlayer, pResourceSpawn, density)
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	createObserver(SURVEY, "FsSurvey", "surveyEventHandler", pPlayer, 1)
+
+	return 1
+end
+
 function FsSurvey:surveyEventHandler(pPlayer, pResourceSpawn, density)
 	if (pPlayer == nil or pResourceSpawn == nil) then
 		return 0
