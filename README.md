@@ -90,6 +90,24 @@ run
   * clang 16+
   * java runtime
 
+#### Latest Clang
+
+The easiest way to get the latest clang to build with is to use the script provided by the llvm repo:
+
+```
+sudo -i
+apt-get install -y apt-transport-https ca-certificates git gnupg lsb-release moreutils software-properties-common wget
+wget -O /tmp/llvm.sh https://apt.llvm.org/llvm.sh
+chmod +x /tmp/llvm.sh
+/tmp/llvm.sh all
+(set +x;cd /usr/bin;for i in ../lib/llvm-*/bin/*; do ln -sfv $i .; done)
+clang --version
+ld.lld --version
+exit
+```
+
+This will install the latest and symlink all the files to /usr/bin so CMake finds them etc.
+
 ### Build
 
   * Install dependencies (Debian 11)
