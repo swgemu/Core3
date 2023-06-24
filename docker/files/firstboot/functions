@@ -76,7 +76,7 @@ core3_mysql_fix_dbname() {
 }
 
 core3_mysql_setup() {
-    if [ "${DBHOST}" -ne "127.0.0.1" ]; then
+    if [ "${DBHOST}" != "127.0.0.1" ]; then
         return
     fi
 
