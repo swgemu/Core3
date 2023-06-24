@@ -1,0 +1,160 @@
+#!/bin/bash
+
+core3_init_env() {
+    msg "Setup environment defaults..."
+
+    export GALAXY_NAME=${GALAXY_NAME:-'core3-docker'}
+    export GALAXY_ADDRESS=${GALAXY_ADDRESS:-'127.0.0.1'}
+    export GALAXY_ID=${GALAXY_ID:-2}
+    export ZONEGALAXYID=${GALAXY_ID}
+    export ADMIN_PASS=${ADMIN_PASS:-$(pwgen -1 --ambiguous 12)}
+    export DBHOST=${DBHOST:-'127.0.0.1'}
+    export DBPORT=${DBPORT:-'3306'}
+    export DBNAME=${DBNAME:-'swgemu'}
+    export DBUSER=${DBUSER:-'swgemu'}
+    export DBPASS=${DBPASS:-$(pwgen -1 --ambiguous 32)}
+    export LOGFILELEVEL=${LOGFILELEVEL:-'4'}
+    export LOGINPORT=${LOGINPORT:-'44453'}
+    export LOGSYNC=${LOGSYNC:-'1'}
+    export MAKELOGIN=${MAKELOGIN:-'1'}
+    export MAKEPING=${MAKEPING:-'1'}
+    export MAKESTATUS=${MAKESTATUS:-'1'}
+    export MAKEZONE=${MAKEZONE:-'1'}
+    export MANTISHOST=${MANTISHOST:-""}
+    export PINGPORT=${PINGPORT:-'44462'}
+    export STATUSPORT=${STATUSPORT:-'44455'}
+    export TREPATH=${TREPATH:-"/swgemu/core3/run/tre"}
+    export ZONESERVERPORT=${ZONESERVERPORT:-'44463'}
+}
+
+core3_init_home() {
+    msg "Copying files to ${HOME_DIR}..."
+    rsync -av /firstboot/home-files/ ${HOME_DIR}/
+
+    echo -e "root:${ADMIN_PASS}\n${RUN_USER}:${ADMIN_PASS}" | chpasswd && msg "Set password for root and ${RUN_USER}"
+
+    if [ ! -f ${HOME_DIR}/.my.cnf ]; then
+        msg "Setup ${HOME_DIR}/.my.cnf"
+        echo -e "[client]\nhost='${DBHOST//\'}'\nport=${DBPORT//\'}\nuser='${DBUSER//\'}'\npassword='${DBPASS//\'}'\n" > ${HOME_DIR}/.my.cnf
+    fi
+}
+
+core3_clone() {
+    if [ -z "${REPO_PUBLIC_URL}" ]; then
+        return
+    fi
+
+    msg "Setup Core3 source code.."
+    mkdir -vp ${HOME_DIR}/workspace
+    cd ${HOME_DIR}/workspace
+    git clone --progress ${REPO_PUBLIC_URL}/Core3.git
+    cd Core3
+    echo 'MMOCoreORB/bin/scripts/managers/resource_manager_spawns.lua' >> .git/info/exclude
+    git update-index --assume-unchanged MMOCoreORB/bin/scripts/managers/resource_manager_spawns.lua
+    git checkout ${REPO_PUBLIC_BRANCH}
+}
+
+core3_mysql_fix_dbname() {
+    # Core3 sql uses absolute dbname which is dangerous, we re-write those to our database name
+    sed -e 's/^CREATE DATABASE.*/CREATE DATABASE IF NOT EXISTS `'"${DBNAME//\'}"'`;/' \
+        -e 's/^USE .*/USE `'"${DBNAME//\'}"'`;/' \
+        -e 's/`swgemu`/`'"${DBNAME//\'}"'`/' "$1"
+}
+
+core3_mysql_setup() {
+    if [ "${DBHOST}" -ne "127.0.0.1" ]; then
+        return
+    fi
+
+    msg "Init mysql database"
+    chown -R mysql:mysql /var/lib/mysql /var/lib/mysql/.
+    mysql_install_db
+    /etc/init.d/mariadb start
+    mysql -v <<-EOF
+        SET @@SESSION.SQL_LOG_BIN=0;
+        DELETE FROM mysql.user WHERE user NOT IN ('mysql.sys', 'mariadb.sys', 'mysqlxsys', 'root') OR host NOT IN ('localhost') ;
+        SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${DBPASS}');
+        GRANT ALL ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+        CREATE USER 'root'@'%' IDENTIFIED BY '${DBPASS}';
+        GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION;
+        CREATE USER '${DBUSER}'@'%' IDENTIFIED BY '${DBPASS}';
+        GRANT ALL ON \`${DBNAME}\`.* TO '${DBUSER}'@'%' WITH GRANT OPTION;
+        DROP DATABASE IF EXISTS test;
+        FLUSH PRIVILEGES;
+EOF
+
+    local init_sql="${HOME_DIR}/workspace/Core3/MMOCoreORB/sql/swgemu.sql"
+
+    if [ -f "${init_sql}" ]; then
+        msg "Create database from ${init_sql}"
+        core3_mysql_fix_dbname "${init_sql}" | mysql || error "Failed to run swgemu.sql" 12
+    else
+        warning "Failed to find ${init_sql} file to setup the database"
+    fi
+}
+
+core3_init_config() {
+    local cfg="${HOME_DIR}/workspace/Core3/MMOCoreORB/bin/conf/config-local.lua"
+
+    msg "Initializing ${cfg}..."
+
+    (
+	echo "-- Configured by $0 at $(date)"
+	echo "-- GALAXY_NAME = '${GALAXY_NAME}'"
+	echo "-- GALAXY_ADDRESS = '${GALAXY_ADDRESS}'"
+	echo "ZoneGalaxyID = ${GALAXY_ID}"
+	echo 'MantisHost = "" -- disabled'
+	for setting in AutoReg DBHost DBName DBPass DBPort DBSecret DBUser \
+                       DumpObjFiles LoginAllowedConnections \
+                       LoginPort LogSync LogFileLevel LoginProcessingThreads \
+                       LoginRequiredVersion MakePing MakeStatus MakeWeb \
+                       MakeLogin MakeZone MantisHost MantisName MantisPass \
+                       MantisPort MantisPrfx MantisUser MaxNavMeshJobs \
+                       ORB ORBPort PingAllowedConnections PingPort \
+                       ProgressMonitors PurgeDeletedCharacters \
+                       StatusAllowedConnections StatusInterval \
+                       StatusPort WebAccessLog WebErrorLog \
+                       WebPorts WebSessionTimeout ZoneAllowedConnections \
+                       ZoneGalaxyID ZoneOnlineCharactersPerAccount \
+                       ZoneProcessingThreads ZoneServerPort
+	do
+            local env_var="${setting^^}"
+
+            if [ -n "${!env_var}" ]; then
+                echo "${setting} = '${!env_var}'"
+            fi
+        done
+	echo 'ProgressMonitors = "false"'
+        echo 'TrePath = "/tre"'
+        if [ -n "${TREFILES}" ]; then
+            echo "TreFiles = ${TREFILES}"
+        fi
+        if [ -n "${ZONESENABLED}" ]; then
+            echo "ZonesEnabled = ${ZONESENABLED}"
+        else
+            echo 'ZonesEnabled = { "corellia", "dantooine", "dathomir", "dungeon1", "endor", "lok", "naboo", "rori", "talus", "tatooine", "tutorial", "yavin4" }'
+        fi
+    ) | tee "${cfg}" | sed 's/^/## /'
+
+}
+
+core3_firstboot() {
+    msg "\n$(figlet -f banner ' FIRST BOOT')"
+
+    core3_init_env
+
+    core3_init_home
+
+    core3_clone
+
+    core3_mysql_setup
+
+    core3_init_config
+
+    chown -R ${RUN_USER}:${RUN_USER} ${HOME_DIR}
+    chown -R mysql:mysql /var/lib/mysql/.
+
+    msg "Database password is \033[43m${DBPASS}\033[0m"
+    msg "Password for root and ${RUN_USER} is '\033[43m${ADMIN_PASS}\033[42m'"
+    msg "Check ${HOME_DIR}/.env for other settings."
+}

@@ -1,0 +1,49 @@
+#!/bin/bash -x
+
+source ~/.env
+
+if pgrep core3; then
+    echo "** Already running **"
+    exit 123
+fi
+
+cd $HOME/workspace/Core3/MMOCoreORB/bin
+
+if [ -f "screenlog.0" ]; then
+    for i in 5 4 3 2 1
+    do
+        let "j=$i-1"
+        mv o_screenlog.${j}.gz o_screenlog.${i}.gz 2> /dev/null
+        mv log/o_player.${j}.log.gz log/o_player.${i}.log.gz 2> /dev/null
+    done
+
+    mv screenlog.0 o_screenlog.0 2> /dev/null
+
+    gzip -f o_screenlog.0 2> /dev/null
+fi
+
+(
+    echo "$* $(date)"
+    set -x
+    if [ "X$1" = "Xclean" ]; then
+        rm -f databases/*
+        mysql swgemu -vvvvv -e "truncate characters; delete from accounts where username != 'admin';"
+        mysql swgemu -vvvvv -e "alter table accounts alter admin_level set default 15;"
+        find log -name \*.log | while read f
+    do
+        cp /dev/null $f
+    done
+    rm -fr navmeshes exports databases/navmesh.db
+    mkdir navmeshes exports
+    sleep 5
+    fi
+
+    mysql swgemu -vvvvv -e "update galaxy set address = '${GALAXY_ADDRESS}';select * from galaxy;"
+    mysql swgemu -vvvvv -e "update accounts set salt='', password=sha1('${ADMIN_PASS}') where username = 'admin';"
+) 2>&1 | tee screenlog.0
+
+export ASAN_OPTIONS='atexit=1:stats=1:detect_stack_use_after_return=1'
+
+screen -dmS swgemu-server -L -- gdb --quiet --command=~/bin/gdb_settings ${PWD}/core3
+
+screen -D -RR swgemu-server

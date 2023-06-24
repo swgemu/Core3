@@ -1,55 +1,122 @@
-# SWGEmu Core3
+# SWGEmu Core3: Recreating the Classic Star Wars Galaxies Experience
 
 ## What is SWGEmu?
 
-Star Wars Galaxies was a massively multi-player online role playing game introduced by Sony Online Entertainment in the year 2003 and shut down in 2011.
-It is this game the SWGEmu project focuses to recreate at a specific milestone referred to as Pre-CU, or Pre-Combat Upgrade. The Combat Upgrade was a set of game changes which radically changed the game-play, to the dislike of thousands of players. These changes led to the founding of this project, in an attempt to "recreate" the game as it was during the Pre-CU era.
-At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emulator is meant to imitate Sony Online Entertainment's server-side software, which hosted the galaxies of Star Wars Galaxies during the Pre-CU era.
+Star Wars Galaxies (SWG) was an immensely popular massively multiplayer online role-playing game (MMORPG) introduced by Sony Online Entertainment in 2003. Despite its eventual shutdown in 2011, SWG left a lasting legacy in the hearts of thousands of players.
 
-## How to Build
+The SWGEmu project aims to recapture the magic of the game by focusing on a specific milestone: Pre-CU, or Pre-Combat Upgrade. The Combat Upgrade introduced significant changes to the gameplay, which were met with disapproval by many devoted players. It was in response to these changes that the SWGEmu project was born—a collective effort to "recreate" the game as it existed during the Pre-CU era.
+
+At the core of the SWGEmu project lies the "Emulator," referring to the meticulously crafted server software being developed by the SWGEmu team. This Emulator endeavors to faithfully mimic Sony Online Entertainment's server-side software, which once hosted the immersive galaxies of Star Wars Galaxies during the Pre-CU era. To achieve this ambitious goal, the SWGEmu team has dedicated countless hours to reverse-engineering the code from scratch. They have built their own custom engine and core game logic, ensuring that every detail is crafted with love and precision.
+
+The SWGEmu project is not only a nostalgic journey for passionate players but also a testament to the dedication and perseverance of a talented team. By resurrecting the Pre-CU era, SWGEmu offers an opportunity for both veterans and newcomers to experience the rich and captivating universe of Star Wars Galaxies, as it was once cherished by thousands of fans.
+
+If you have any questions, need support, or want to contribute to the SWGEmu project, please refer to the documentation and resources provided in this repository.
+
+## Docker Build
+
+If you have docker (i.e. Linux docker daemon, Windows/MacOS [Docker Desktop](https://www.docker.com/products/docker-desktop/)) you can run the entire development environment and server in a container.
+
+### Setup
+
+The docker build creates a container that includes everything needed to run the core3 engine except you need the tre files from the client.
+
+The setup assumes you've copied your tre files to the docker volume 'shared-tre' and in the container they're mounted in /tre/
+
+On linux or macos you can easily create this volume by doing:
+
+```
+$ cd ~/SWGEmu
+$ tar cf - *.tre | docker run -i --rm -v shared-tre:/tre debian:bullseye bash -c 'tar xvf - -C /tre'
+bottom.tre
+...
+patch_sku1_14_00.tre
+```
+
+The docker container will use these files for your server in the container.
+
+### Build
+
+To build the container:
+
+```
+cd docker
+./build.sh
+```
+
+### Develop/Run
+
+Run the container with:
+
+```
+cd docker
+./run.sh
+```
+
+This runs the container and starts and interactive shell, in there you can work with the code (workspace/Core3), build and run the server.
+
+The first time you run the container it will setup the environment and defaults for the server, watch for it to tell you the mysql and admin passwords!
+
+When you're in the container you should have a ~/.my.cnf setup which allows you to easily talk to the mysql sever with the mysql command line client.
+
+All the local configuration is in workspace/Core3/MMOCoreORB/bin/conf/config-local.lua
+
+#### Compile the server
+
+Inside the container type:
+
+```
+build
+```
+
+#### Run the server
+
+Inside the container type:
+
+```
+run
+```
+
+## Linux Build
 
 ### Dependencies
-
-  * CMake 3.1.0 or higher
+  * Debian 11
+  * CMake 3.18.0+
   * BerkeleyDB 5.3
-  * MySQL Client and Server
+  * MariaDb Client and Server
   * OpenSSL libraries
   * pthreads
   * Lua 5.3 libraries
   * Zlib libraries
-  * g++ 5.4+ or compatible
-  * engine3
-  * java jre 1.7+
+  * clang 16+
+  * java runtime
 
 ### Build
 
-  * Install dependencies (Debian 9+ or Ubuntu 16.04+)
+  * Install dependencies (Debian 11)
 
         sudo apt install build-essential libmysqlclient-dev liblua5.3-dev libdb5.3-dev libssl-dev cmake git default-jre
 
-  * Install dependencies (RHEL/CentOS 8+ or Fedora 28+)
+  * Clone core3 repository somewhere  (~/workspace)
 
-        sudo dnf install automake cmake git gcc gcc-c++ java-1.8.0-openjdk-headless libatomic libdb-devel lua-devel make mariadb-devel openssl-devel
-
-  * Clone core3 repository somewhere  (~/git)
-
-        mkdir -p ~/git
-        cd ~/git
+        mkdir -p ~/workspace
+        cd ~/workspace
         git clone http://review.swgemu.com/Core3
-  * Build Core3 with 8 threads
+
+  * Build Core3
 
         cd MMOCoreORB
-        make -j8
+        make -j$(nproc)
+
   * Import sql database
 
         mysql -h<MYSQLHOST> -u<MYSQLUSER> -p<MYSQLPASSWORD> < sql/swgemu.sql
 
-## How to Run
+### How to Run
 
-    cd ~/git/Core3/MMOCoreORB/bin
+    cd ~/workspace/Core3/MMOCoreORB/bin
     ./core3
 
-## License
+# License
 
     Copyright (C) 2019 SWGEmu
 
@@ -64,4 +131,8 @@ At SWGEmu, Emulator refers to the software the SWGEmu team is building. This Emu
     You should have received a copy of the GNU Affero General Public License along with this program.
     If not, see <http://www.gnu.org/licenses/>.
 
-For more information, see https://review.swgemu.com.
+For more information, see [https://review.swgemu.com/](https://www.docker.com/products/docker-desktop/) or our official [Development Discussion](https://www.swgemu.com/forums/forumdisplay.php?f=10) forums.
+
+# Donate
+
+The SWGEmu project is a 100% volunteer effort and funded by community donations. Consider [donating](https://www.swgemu.com/donate/?rm) to help keep the project moving forward. We use the donations to pay for our infrastructure and services to support the development process and running test servers.
