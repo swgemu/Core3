@@ -3,11 +3,23 @@
 core3_init_env() {
     msg "Setup environment defaults..."
 
+    if [ -z "${RUN_USER}" ]; then
+        export RUN_USER=$(awk -F: '{ x=$1 } END { print x }' /etc/passwd)
+        warning "Guessing RUN_USER=[${RUN_USER}]"
+    fi
+
+    local pwlen=$(awk -F: '$1=="'"${RUN_USER}"'" { print length($2) }' /etc/shadow)
+
+    if [ "${pwlen}" -lt 10 ]; then
+        export ADMIN_PASS=${ADMIN_PASS:-$(pwgen -1 --ambiguous 12)}
+    else
+        export ADMIN_PASS=''
+    fi
+
     export GALAXY_NAME=${GALAXY_NAME:-'core3-docker'}
     export GALAXY_ADDRESS=${GALAXY_ADDRESS:-'127.0.0.1'}
     export GALAXY_ID=${GALAXY_ID:-2}
     export ZONEGALAXYID=${GALAXY_ID}
-    export ADMIN_PASS=${ADMIN_PASS:-$(pwgen -1 --ambiguous 12)}
     export DBHOST=${DBHOST:-'127.0.0.1'}
     export DBPORT=${DBPORT:-'3306'}
     export DBNAME=${DBNAME:-'swgemu'}
@@ -31,7 +43,9 @@ core3_init_home() {
     msg "Copying files to ${HOME_DIR}..."
     rsync -av /firstboot/home-files/ ${HOME_DIR}/
 
-    echo -e "root:${ADMIN_PASS}\n${RUN_USER}:${ADMIN_PASS}" | chpasswd && msg "Set password for root and ${RUN_USER}"
+        if [ -n "${ADMIN_PASS}" ]; then
+                echo -e "root:${ADMIN_PASS}\n${RUN_USER}:${ADMIN_PASS}" | chpasswd && msg "Set password for root and ${RUN_USER}"
+        fi
 
     if [ ! -f ${HOME_DIR}/.my.cnf ]; then
         msg "Setup ${HOME_DIR}/.my.cnf"
@@ -99,12 +113,12 @@ core3_init_config() {
     msg "Initializing ${cfg}..."
 
     (
-	echo "-- Configured by $0 at $(date)"
-	echo "-- GALAXY_NAME = '${GALAXY_NAME}'"
-	echo "-- GALAXY_ADDRESS = '${GALAXY_ADDRESS}'"
-	echo "ZoneGalaxyID = ${GALAXY_ID}"
-	echo 'MantisHost = "" -- disabled'
-	for setting in AutoReg DBHost DBName DBPass DBPort DBSecret DBUser \
+        echo "-- Configured by $0 at $(date)"
+        echo "-- GALAXY_NAME = '${GALAXY_NAME}'"
+        echo "-- GALAXY_ADDRESS = '${GALAXY_ADDRESS}'"
+        echo "ZoneGalaxyID = ${GALAXY_ID}"
+        echo 'MantisHost = "" -- disabled'
+        for setting in AutoReg DBHost DBName DBPass DBPort DBSecret DBUser \
                        DumpObjFiles LoginAllowedConnections \
                        LoginPort LogSync LogFileLevel LoginProcessingThreads \
                        LoginRequiredVersion MakePing MakeStatus MakeWeb \
@@ -117,14 +131,14 @@ core3_init_config() {
                        WebPorts WebSessionTimeout ZoneAllowedConnections \
                        ZoneGalaxyID ZoneOnlineCharactersPerAccount \
                        ZoneProcessingThreads ZoneServerPort
-	do
+        do
             local env_var="${setting^^}"
 
             if [ -n "${!env_var}" ]; then
                 echo "${setting} = '${!env_var}'"
             fi
         done
-	echo 'ProgressMonitors = "false"'
+        echo 'ProgressMonitors = "false"'
         echo 'TrePath = "/tre"'
         if [ -n "${TREFILES}" ]; then
             echo "TreFiles = ${TREFILES}"
@@ -155,6 +169,9 @@ core3_firstboot() {
     chown -R mysql:mysql /var/lib/mysql/.
 
     msg "Database password is \033[43m${DBPASS}\033[0m"
-    msg "Password for root and ${RUN_USER} is '\033[43m${ADMIN_PASS}\033[42m'"
+
+    if [ -n "${ADMIN_PASS}" ]; then
+        msg "Password for root and ${RUN_USER} is '\033[43m${ADMIN_PASS}\033[42m'"
+    fi
     msg "Check ${HOME_DIR}/.env for other settings."
 }
