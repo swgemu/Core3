@@ -11,19 +11,17 @@ IF ERRORLEVEL 1 (
   ECHO [Y]es to continue, [N]o to cancel.
   CHOICE /C YN /N >nul
 
-  IF ERRORLEVEL 2 (
-    ECHO Reboot canceled. Press any key to exit.
+  wsl.exe --install --distribution Debian --no-launch
+
+  IF NOT %ERRORLEVEL%==1 (
+    ECHO Failed to install WSL, are you running this window as administrator? ERR=%ERRORLEVEL%
     PAUSE >nul
     GOTO :EOF
   )
 
-  dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-  dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-  wsl.exe --set-default-version 2
-
   ECHO WSL 2 has been enabled. Your computer needs to reboot.
 
-  shutdown.exe /r /t 0
+  shutdown.exe /r /t 5 /c "Enabling Windows Subsystem for Linux"
   GOTO :EOF
 )
 
@@ -31,7 +29,6 @@ FIND "Default Distribution: Debian" "%tempFile%" >nul
 
 IF ERRORLEVEL 1 (
   ECHO About to install Debian and make it the default distribution for WSL.
-  ECHO.
   ECHO [Y]es to continue, [N]o to cancel.
   CHOICE /C YN /N >nul
 
@@ -41,9 +38,15 @@ IF ERRORLEVEL 1 (
     GOTO :EOF
   )
 
-  wsl.exe --update
   wsl.exe --set-default-version 2
+
+  ECHO ********************************************************************
+  ECHO * You may be prompted to enter a new username and password.        *
+  ECHO * If after you've entered those you see a green prompt ending in $ *
+  ECHO * then please enter the command: exit followed by ^<ENTER^>          *
+  ECHO ********************************************************************
   wsl.exe --install --distribution Debian
+
   wsl.exe --set-default Debian
 )
 
@@ -74,7 +77,7 @@ ECHO or in a terminal window type: wsl
 ECHO Once in wsl you can use these commands:
 ECHO   build - Builds the core3 server
 ECHO   run - runs the core3 server
-ECHO
+ECHO.
 
 :EOF
 
