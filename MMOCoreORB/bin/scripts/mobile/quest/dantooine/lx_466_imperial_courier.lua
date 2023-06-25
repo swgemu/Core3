@@ -27,14 +27,7 @@ lx_466_imperial_courier = Creature:new {
 	optionsBitmask = AIENABLED + CONVERSABLE,	
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_imperial_officer_f.iff",
-		"object/mobile/dressed_imperial_officer_m.iff",
-		"object/mobile/dressed_imperial_officer_m_2.iff",
-		"object/mobile/dressed_imperial_officer_m_3.iff",
-		"object/mobile/dressed_imperial_officer_m_4.iff",
-		"object/mobile/dressed_imperial_officer_m_5.iff",
-		"object/mobile/dressed_imperial_officer_m_6.iff"},
+	templates = {"imperial_officer"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)

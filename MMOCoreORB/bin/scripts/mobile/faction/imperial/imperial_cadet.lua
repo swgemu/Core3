@@ -28,7 +28,7 @@ imperial_cadet = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
+	templates = { "imperial_officer" },
 	lootGroups = {
 		{
 			groups = {
