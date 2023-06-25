@@ -1,0 +1,59 @@
+set print asm-demangle on
+set pagination off
+# python gdb.events.exited.connect(lambda x : gdb.execute("quit"))
+# catch throw
+set print asm-demangle on
+set pagination off
+set history save on
+set history size 1000
+set history filename ~/.gdb_history
+set history remove-duplicates 20
+set unwindonsignal on
+set print elements 0
+set print frame-arguments all
+set print pretty on
+# set print frame-arguments scalar
+define hook-quit
+    set confirm off
+end
+handle SIGUSR1 print nopass
+catch signal SIGUSR1
+commands
+set trace-commands on
+shell date '+START %c %s%nSIGUSR1 Caught' >> gdb.log
+shell sleep 10;tail -10 ~/../bin/screenlog.0 | tr -d '\r' >> gdb.log
+set logging file gdb.log
+set logging on
+thread apply all bt
+set logging off
+shell date '+END %c %s' >> gdb.log
+set trace-commands off
+continue
+end
+handle SIGSEGV print nopass
+catch signal SIGSEGV
+commands
+set trace-commands on
+shell date '+START %c %s%nSIGSEGV Caught' >> gdb.log
+shell sleep 10;tail -10 ~/../bin/screenlog.0 | tr -d '\r' >> gdb.log
+set logging file gdb.log
+set logging on
+bt
+set logging off
+shell date '+END %c %s' >> gdb.log
+set trace-commands off
+end
+handle SIGABRT print nopass
+catch signal SIGABRT
+commands
+set trace-commands on
+shell date '+START %c %s%nSIGABRT Caught' >> gdb.log
+shell sleep 10;tail -10 ~/../bin/screenlog.0 | tr -d '\r' >> gdb.log
+set logging file gdb.log
+set logging on
+bt
+set logging off
+shell date '+END %c %s' >> gdb.log
+set trace-commands off
+end
+run

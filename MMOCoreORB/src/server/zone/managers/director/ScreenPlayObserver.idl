@@ -9,16 +9,17 @@ import engine.core.ManagedObject;
 import engine.util.Observer;
 import engine.util.Observable;
 import system.util.VectorMap;
+include engine.log.Logger;
 
 @json
 @lua
-class ScreenPlayObserver extends Observer {
+class ScreenPlayObserver extends Observer implements Logger {
 	protected string play;
 	protected string key;
-	
+
 	@dereferenced
 	protected VectorMap<unsigned long, float> floatData;
-	
+
 	public ScreenPlayObserver() {
 		play = "";
 		key = "";
@@ -26,7 +27,7 @@ class ScreenPlayObserver extends Observer {
 	}
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-	
+
 	public native void storeFloatValue(final string dataKey, float dataVal);
 
 	public void setScreenPlay(final string screen) {

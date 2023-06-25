@@ -1,0 +1,70 @@
+#!/bin/bash -xe
+
+source ~/.env
+
+clear
+
+while [ ! -d .git -a ! -f .git -a "$PWD" != $HOME -a "$PWD" != "/" ];
+do
+        cd ..
+done
+
+if [ -d .git ]; then
+        cd MMOCoreORB
+else
+        cd ~/workspace/Core3/MMOCoreORB
+fi
+
+export CMAKE_ARGS="-DCMAKE_BUILD_TYPE=Debug -DENABLE_BUILD_CLIENT=OFF ${CMAKE_ARGS}"
+export CMAKE_ARGS="${CMAKE_ARGS} "'-DCMAKE_CXX_FLAGS="-DNDEBUG=1"'
+
+BUILD_CLEAN=false
+BUILD_NOCACHE=false
+ASAN=false
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+while [ $# -gt 0 ]
+do
+        case $1 in
+                clean ) BUILD_CLEAN=true ;;
+                nocache ) BUILD_NOCACHE=true ;;
+                asan ) ASAN=true ;;
+        esac
+        shift
+done
+
+if $ASAN; then
+        export CMAKE_ARGS="${CMAKE_ARGS} -DENABLE_ASAN=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+fi
+
+(
+        max_ldavg=$(( $(nproc) / 8 * 5 ))
+        set +xe
+        while ! awk '{ if ($1 > '"${max_ldavg}"') { print $0; exit(1) }}' /proc/loadavg
+        do
+                echo "Waiting for loadavg to go down to ${max_ldavg}: $(uptime)"
+                sleep 10
+        done
+)
+
+figlet -f banner $BRANCH
+
+renice 15 -p $$
+
+if $BUILD_NOCACHE; then
+        ccache --clear
+fi
+
+if $BUILD_CLEAN; then
+        make clean-ninja-debug CMAKE_ARGS="${CMAKE_ARGS}"
+fi
+
+ccache -z
+
+if fgrep "build-ninja-debug" Makefile; then
+        time make build-ninja-debug CMAKE_ARGS="${CMAKE_ARGS}"
+else
+        export MAKE=$(type -P make)' -j'$(nproc)
+        time make build-cmake-with-idl -j$(nproc) CMAKE_ARGS="${CMAKE_ARGS}"
+fi

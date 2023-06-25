@@ -1,0 +1,2 @@
+GALAXY_NAME=swgemu-core3
+IMAGE=swgemu/core3-dev:latest
