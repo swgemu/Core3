@@ -458,7 +458,7 @@ public:
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
 
 		// Ensure the player does not break the throw animation
-		creature->setNextAllowedMoveTime(4 * 1000);
+		creature->setNextAllowedMoveTime(3 * 1000);
 
 		return SUCCESS;
 	}
