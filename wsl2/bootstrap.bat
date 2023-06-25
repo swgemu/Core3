@@ -19,7 +19,7 @@ IF ERRORLEVEL 1 (
 
   dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
   dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-  wsl --set-default-version 2
+  wsl.exe --set-default-version 2
 
   ECHO WSL 2 has been enabled. Your computer needs to reboot.
 
@@ -41,7 +41,9 @@ IF ERRORLEVEL 1 (
     GOTO :EOF
   )
 
-  wsl.exe --install Debian
+  wsl.exe --update
+  wsl.exe --set-default-version 2
+  wsl.exe --install --distribution Debian
   wsl.exe --set-default Debian
 )
 
