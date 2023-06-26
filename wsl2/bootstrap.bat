@@ -62,7 +62,7 @@ IF NOT %ERRORLEVEL%==0 (
 )
 
 ECHO Running bootstrap in wsl...
-wsl.exe --user root /bin/bash -xec "wget -O /tmp/bootstrap.sh https://www.swgemu.com/getcore3/?r=wsl2; chmod +x /tmp/bootstrap.sh;exec /tmp/bootstrap.sh"
+wsl.exe --user root /bin/bash -xec "wget -qO /tmp/bootstrap.sh 'https://swgemu.com/getcore3/?p=2&r=wsl2'; chmod +x /tmp/bootstrap.sh;exec /tmp/bootstrap.sh"
 
 IF NOT %ERRORLEVEL%==0 (
   ECHO Failed to bootstrap wsl: ERROR=%ERRORLEVEL%
