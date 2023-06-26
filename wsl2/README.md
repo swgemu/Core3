@@ -6,7 +6,7 @@ Open a powershell as administrator and type:
 
 ```
 cd ~
-curl -o bootstrap.bat  https://raw.githubusercontent.com/swgemu/Core3/unstable/wsl2/bootstrap.bat
+curl -o bootstrap.bat https://swgemu.com/getcore3/?p=1
 ```
 
 Then run the batch file:
