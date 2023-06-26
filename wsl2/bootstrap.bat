@@ -11,6 +11,13 @@ IF ERRORLEVEL 1 (
   ECHO [Y]es to continue, [N]o to cancel.
   CHOICE /C YN /N >nul
 
+  IF ERRORLEVEL 2 (
+    ECHO Installation canceled. Press any key to exit.
+    PAUSE >nul
+    GOTO :EOF
+  )
+
+  ECHO Starting installation of wsl..
   wsl.exe --install --distribution Debian --no-launch
 
   IF NOT %ERRORLEVEL%==1 (
@@ -52,7 +59,7 @@ IF ERRORLEVEL 1 (
 
 ECHO Setting up debian wsl...
 SET WSLENV=%WSLENV%:USERNAME:USERPROFILE/p:REPO_PUBLIC_URL:REPO_PUBLIC_BRANCH:
-wsl.exe --user root /bin/bash -xec "wget --version >/dev/null 2>&1 || (apt-get update -qq;apt-get install -y wget)"
+wsl.exe --user root /bin/bash -xec "wget --version >/dev/null 2>&1 || (apt-get update -qq;apt-get install -qq -y wget)"
 
 IF NOT %ERRORLEVEL%==0 (
   ECHO Failed to setup wsl: ERROR=%ERRORLEVEL%
