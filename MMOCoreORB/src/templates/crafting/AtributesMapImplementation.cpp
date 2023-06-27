@@ -260,6 +260,10 @@ float AttributesMap::getCurrentPercentage(const String& attribute) const {
 	if (value == nullptr)
 		return VALUENOTFOUND;
 
+#ifdef DEBUG_ATTRIBUTES_MAP
+	info(true) << "---------- AttributesMap::getCurrentPercentage -- Attribute: " << attribute << " Perecentage: " << value->getPercentage();
+#endif // DEBUG_ATTRIBUTES_MAP
+
 	return value->getPercentage();
 }
 
@@ -268,6 +272,10 @@ float AttributesMap::getCurrentPercentage(const int i) const {
 
 	if (value == nullptr)
 		return VALUENOTFOUND;
+
+#ifdef DEBUG_ATTRIBUTES_MAP
+	info(true) << "---------- AttributesMap::getCurrentPercentage -- Attribute: " << value->getName() << " Perecentage: " << value->getPercentage();
+#endif // DEBUG_ATTRIBUTES_MAP
 
 	return value->getPercentage();
 }
@@ -280,7 +288,7 @@ float AttributesMap::getCurrentVisiblePercentage(const String group) const {
 	info(true) << "---- getCurrentVisiblePercentage -- group: " << group << " with Attribute Size: " << attributes.size() << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
-	// shouldnt this show the avg so with 1 item who cares, but more than 1 we wanna should avg of all not the LAST one
+	// This will return the average of all the current visible percentages for the attributes in the given group
 	for (int i = 0; i < attributes.size(); ++i) {
 		const String attribute = attributes.get(i);
 		const String atttributeGroup = getAttributeGroup(attribute);
@@ -352,42 +360,58 @@ float AttributesMap::getMaxPercentage(const int i) const {
 }
 
 float AttributesMap::getMaxVisiblePercentage(const int i) const {
-	float value = 0;
+	float totalPercentage = 0.f;
+	int totalAttributes = 0;
+
 	const String group = visibleGroups.get(i);
 
 #ifdef DEBUG_ATTRIBUTES_MAP
 	info(true) << "---- getMaxVisiblePercentage -- Group: " << group << " with Visible Group Size: " << visibleGroups.size() << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
+	// This will return the average of all the max visible percentages for the attributes in the given group
 	for (int j = 0; j < attributeGroups.size(); ++j) {
-		const String attribute = attributeGroups.elementAt(j).getKey();
 		const String attGroup = attributeGroups.elementAt(j).getValue();
 
+		// Iterate all attributes to find the ones that have the proper group
 		if (group != attGroup)
 			continue;
+
+		const String attribute = attributeGroups.elementAt(j).getKey();
 
 		for (int k = 0; k < attributeValues.size(); ++k) {
 			if (attributeValues.elementAt(k).getKey() != attribute)
 				continue;
+
+#ifdef DEBUG_ATTRIBUTES_MAP
+			info(true) << "---- Group: " << group << " Checking Attribute: " << attribute;
+#endif // DEBUG_ATTRIBUTES_MAP
 
 			const Values* values = attributeValues.get(j);
 
 			if (values == nullptr || values->isFiller())
 				continue;
 
-			float checkVal = values->getMaxPercentage();
+			float maxPercentage = values->getMaxPercentage();
 
-			if ((values->getMinValue() != values->getMaxValue()) && (checkVal <= 1.0f) && (checkVal > value)) {
-				value = checkVal;
+#ifdef DEBUG_ATTRIBUTES_MAP
+			info(true) << "---- Group: " << group << " Checking Attribute: " << attribute;
+#endif // DEBUG_ATTRIBUTES_MAP
+
+			if ((values->getMinValue() != values->getMaxValue()) && (maxPercentage <= 1.0f)) {
+				totalPercentage += maxPercentage;
+				totalAttributes++;
 			}
 		}
 	}
 
+	totalPercentage /= totalAttributes;
+
 #ifdef DEBUG_ATTRIBUTES_MAP
-	info(true) << "---- END getMaxVisiblePercentage -- Group: " << group << " Returning: " << value << " ----";
+	info(true) << "---- END getMaxVisiblePercentage -- Group: " << group << " Returning: " << totalPercentage << " ----";
 #endif // DEBUG_ATTRIBUTES_MAP
 
-	return value;
+	return totalPercentage;
 }
 
 float AttributesMap::getMinValue(const String& attribute) const {
