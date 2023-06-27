@@ -144,12 +144,14 @@ COPY files /
 VOLUME ${HOME_DIR}
 
 RUN set -xe; \
-    mkdir -p /var/run/mysql /var/run/mysqld; \
-    chown -R mysql:mysql /var/run/mysqld; \
-    chmod 777 /var/run/mysqld; \
-    rm -fr /var/lib/mysql; \
-    mkdir -p `dirname ${HOME_DIR}`/mysql; \
-    ln -fvs ${HOME_DIR}/mysql /var/lib/mysql; \
+    if [ ! -d /var/run/mysql ]; then \
+        mkdir -vp /var/run/mysql /var/run/mysqld; \
+        chown -vR mysql:mysql /var/run/mysqld; \
+        chmod 777 /var/run/mysqld; \
+        rm -vfr /var/lib/mysql; \
+        mkdir -vp `dirname ${HOME_DIR}`/mysql; \
+        ln -fvs ${HOME_DIR}/mysql /var/lib/mysql; \
+    fi; \
     useradd -U ${RUN_USER} -u 44400 -G adm,sudo -s ${SHELL} -d ${HOME_DIR}; \
     echo "LANG=${LANG}" > /etc/environment; \
     sed -e '/%sudo/s/ ALL/ NOPASSWD: ALL/' -i /etc/sudoers;
