@@ -144,7 +144,7 @@ COPY files /
 VOLUME ${HOME_DIR}
 
 RUN set -xe; \
-    if [ ! -d /var/run/mysql ]; then \
+    if [ ! -d /var/run/mysqld ]; then \
         mkdir -vp /var/run/mysql /var/run/mysqld; \
         chown -vR mysql:mysql /var/run/mysqld; \
         chmod 777 /var/run/mysqld; \
