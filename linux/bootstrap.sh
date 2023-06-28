@@ -4,25 +4,25 @@ TARGET_OS='debian'
 TARGET_VERSION='11'
 
 msg() {
-    echo "${COLOR_BG_GREEN}${COLOR_FG_BLACK}>> $@${COLOR_RESET}" >&2
+    echo "${COLOR_BG_GREEN}${COLOR_FG_BLACK}>> $*${COLOR_RESET}" >&2
 }
 
 info() {
-    echo "${COLOR_BG_CYAN}${COLOR_FG_BLACK}-- $@${COLOR_RESET}" >&2
+    echo "${COLOR_BG_CYAN}${COLOR_FG_BLACK}-- $*${COLOR_RESET}" >&2
 }
 
 warning() {
-    echo "${COLOR_BG_YELLOW}${COLOR_FG_BLACK}?? WARNING: $@${COLOR_RESET}" >&2
+    echo "${COLOR_BG_YELLOW}${COLOR_FG_BLACK}?? WARNING: $*${COLOR_RESET}" >&2
 }
 
 error() {
     echo "${COLOR_BG_RED}${COLOR_FG_BLACK}!! ERROR: $1${COLOR_RESET}" >&2
-    exit ${2:-126}
+    exit "${2:-126}"
 }
 
 yorn() {
     if tty -s; then
-        echo -n -e "$@ Y\b" > /dev/tty
+        echo -n -e "$* Y\b" > /dev/tty
         read yorn < /dev/tty
         case $yorn in
             [Nn]* ) return 1;;
@@ -94,6 +94,21 @@ core3_find_tre_path() {
     return 1
 }
 
+core3_check_tre_files() {
+	local path="$1"
+
+	for filename in "${trefiles[@]}"
+	do
+		local file="${path}/${filename}"
+		if [ ! -f "${file}" ]; then
+			warning "Missing TRE file ${file} in ${path}, not using this path."
+			return 1
+		fi
+	done
+
+	return 0
+}
+
 core3_copy_tre_files() {
     msg "Searching for your Star Wars Galaxies TRE files."
     info "In order to run the server you must copy required '.tre' files from the windows client."
@@ -106,21 +121,8 @@ core3_copy_tre_files() {
     do
         local path=$(core3_find_tre_path ${prompt})
 
-        if [ ! -z "${path}" ]; then
-            local ok=true
-            for filename in "${trefiles[@]}"
-            do
-                local file="${path}/${filename}"
-                if [ ! -f "${file}" ]; then
-                    warning "Missing TRE file ${file} in ${path}, not using this path."
-                    ok=false
-                    break
-                fi
-            done
-
-            if $ok; then
-                break
-            fi
+        if [ -n "${path}" ] && core3_check_tre_files "${path}"; then
+			break
         fi
 
         if [ "${prompt}" ]; then
@@ -134,8 +136,32 @@ core3_copy_tre_files() {
     info "Copying tre files from ${path} to /tre"
     mkdir -p /tre
     cp -v "${path}"/*.tre /tre || error "Failed to copy tre files from ${path}" 30
-    chown -R ${RUN_USER}:${RUN_USER} "/tre"
+    chown -R "${RUN_USER}":"${RUN_USER}" "/tre"
+	chmod 775 /tre
     msg "Copied tre files from ${path} to /tre"
+}
+
+core3_find_run_user() {
+	msg "Looking for RUN_USER.."
+	local match=''
+	for user in $(awk -F':' '$3 > 999 && $3 < 60000 { print $1 }' /etc/passwd)
+	do
+		if [ -z "${match}" ]; then
+			match="${user}"
+		else
+			warning "Found more than one user with uid > 999 and < 60000 (${match} vs ${user})"
+			match=''
+			break
+		fi
+	done
+
+	if [ -n "${match}" ]; then
+		msg "Found user: ${COLOR_BG_YELLOW}${match}"
+		yorn "Do you want to use ${user} as the RUN_USER for the server?" ||
+			error "Please set RUN_USER before running this script: export RUN_USER='someuser'" 130
+
+		export RUN_USER="${match}"
+	fi
 }
 
 core3_init_system() {
@@ -189,18 +215,26 @@ core3_bootstrap() {
         eval "export RUN_USER=${USERNAME}"
         export ADMIN_PASS=''
         core3_copy_tre_files
-	else
-		mkdir -vp /tre
-		chown ${RUN_USER}:${RUN_USER} /tre
-		chmod 775 /tre
-		msg "Created /tre directory, you will need to copy client tre files here before you run the server."
-    fi
+	fi
+
+	if [ -z "${RUN_USER}" ]; then
+		core3_find_run_user
+	fi
 
     [ -n "${RUN_USER}" ] || error "Unable to determine runtime user, please set RUN_USER and try again." 104
 
     eval "export HOME_DIR=~${RUN_USER}"
 
     [ -n "${HOME_DIR}" ] || error "Unable to find home dir for ${RUN_USER}" 105
+
+	if [ ! -d /tre ]; then
+		mkdir -vp /tre
+		chown -R "${RUN_USER}":"${RUN_USER}" /tre
+		chmod 775 /tre
+		msg "Created /tre directory, you will need to copy client tre files here before you run the server."
+    fi
+
+	msg "Using ${RUN_USER} in ${HOME_DIR}"
 
     export REPO_PUBLIC_URL=${REPO_PUBLIC_URL:-'https://github.com/swgemu'}
     export REPO_PUBLIC_BRANCH=${REPO_PUBLIC_BRANCH:-'unstable'}
@@ -210,7 +244,7 @@ core3_bootstrap() {
     if [ ! -d ${HOME_DIR} ]; then
         info "Creating ${HOME_DIR}"
         mkdir -p "${HOME_DIR}"
-        chown -R ${RUN_USER}:${RUN_USER} "${HOME_DIR}"
+        chown -R "${RUN_USER}":"${RUN_USER}" "${HOME_DIR}"
     fi
 
     msg "Pulling firstboot from official repo..."
@@ -225,7 +259,8 @@ core3_bootstrap() {
 
     (
         git config --global --add safe.directory "${HOME_DIR}/workspace/Core3"
-        trap "(set -x;rm -vf $HOME/.gitconfig)" EXIT HUP INT KILL
+        trap "rm -vf $HOME/.gitconfig" EXIT HUP INT QUIT
+		msg "Cloning Core3:${REPO_PUBLIC_BRANCH} from ${REPO_PUBLIC_URL}..."
         core3_clone
     )
 
@@ -238,7 +273,7 @@ core3_bootstrap() {
     mount --bind "${HOME_DIR}/workspace/Core3/docker/files/firstboot" /firstboot ||
         error "Failed to bind mount /firstboot" 104
 
-    trap "(set -x;umount /firstboot;rmdir -v /firstboot)" EXIT HUP INT KILL
+    trap "umount /firstboot;rmdir /firstboot" EXIT HUP INT QUIT
 
     if [ -f "${HOME_DIR}/.my.cnf" ]; then
         ls -l "${HOME_DIR}/.my.cnf"
@@ -246,6 +281,7 @@ core3_bootstrap() {
         do
             info "my.cnf: $ln"
         done
+		local host, port, user, pass
         eval $(set -x;mysql --print-defaults | tail +2l | tr " " "\n" | sed -e '/^$/d' -e 's/--//' -e 's/=/="/' -e 's/$/"/' -e 's/^/local /')
         export DBHOST="${host}"
         export DBPORT="${port}"
@@ -264,16 +300,10 @@ core3_bootstrap() {
 
     core3_save_env
 
-    chown -R ${RUN_USER}:${RUN_USER} "${HOME_DIR}"
+    chown -R "${RUN_USER}":"${RUN_USER}" "${HOME_DIR}"
 
     chown -R mysql:mysql /var/lib/mysql/.
 
-    if [ -n "${ADMIN_PASS}" ]; then
-        msg "Password for root and ${RUN_USER} is '${COLOR_BG_YELLOW}${ADMIN_PASS}${COLOR_RESET}'"
-    fi
-
-    msg "Database password is ${COLOR_BG_YELLOW}${DBPASS}${COLOR_RESET}"
-    msg "Check ${HOME_DIR}/.env for other settings."
     echo "${COLOR_BG_GREEN}${COLOR_FG_BLACK}"
     cat <<"    EOF"
 
@@ -286,6 +316,28 @@ core3_bootstrap() {
     ######  ####### #     # ####### 
     EOF
     echo "${COLOR_RESET}"
+
+    if [ -n "${ADMIN_PASS}" ]; then
+        msg "Password for root and ${RUN_USER} is '${COLOR_BG_YELLOW}${ADMIN_PASS}${COLOR_RESET}'"
+    fi
+
+    msg "Database password is ${COLOR_BG_YELLOW}${DBPASS}${COLOR_RESET}"
+    msg "Check ${HOME_DIR}/.env for other settings."
+
+	if [ -z "${WSL}" ]; then
+		echo
+		msg "Please logout of all your shells to this server and re-login as ${RUN_USER} to make sure your environment is properly setup."
+	fi
+
+	if ! core3_check_tre_files "/tre"; then
+		echo
+		warning "You still need to copy the client *.tre files to /tre to run the server."
+	fi
+
+	echo
+	msg "When you login as ${RUN_USER} there are a couple scripts to make things easy:"
+	msg "    build - Build the server from source in ${HOME_DIR}/workspace/Core3"
+	msg "    run - Run the server in ${HOME_DIR}/workspace/Core3/MMOCoreORB/bin"
 }
 
 ESC=$(printf "\033")

@@ -19,10 +19,6 @@ Set `RUN_USER` environment variable to the username you will use to run the serv
 export RUN_USER=swgemu
 ```
 
-Setup the "tre" file directory:
-```
-```
-
 Then run the script:
 ```
 ./bootstrap.sh
