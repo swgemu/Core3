@@ -76,11 +76,19 @@ class AiAgent extends CreatureObject {
 	protected transient CurrentFoundPath currentFoundPath;
 	protected transient CellObject targetCellObject;
 
+	@weakReference
 	protected WeaponObject defaultWeapon;
+
+	@weakReference
 	protected WeaponObject primaryWeapon;
+
+	@weakReference
 	protected WeaponObject secondaryWeapon;
+
+	@weakReference
 	protected WeaponObject thrownWeapon;
 
+	@weakReference
 	protected WeaponObject currentWeapon;
 
 	protected transient CreatureAttackMap primaryAttackMap;
@@ -1552,42 +1560,51 @@ class AiAgent extends CreatureObject {
 		defaultWeapon = weap;
 	}
 
-	@dirty
-	public abstract WeaponObject getPrimaryWeapon() {
-		return primaryWeapon;
+	@preLocked
+	public void setPrimaryWeapon(WeaponObject weap) {
+		primaryWeapon = weap;
+	}
+
+	@preLocked
+	public void setSecondaryWeapon(WeaponObject weap) {
+		secondaryWeapon = weap;
+	}
+
+	@preLocked
+	public void setThrownWeapon(WeaponObject weap) {
+		thrownWeapon = weap;
 	}
 
 	@dirty
-	public abstract WeaponObject getSecondaryWeapon() {
-		return secondaryWeapon;
-	}
+	public native WeaponObject getPrimaryWeapon();
 
 	@dirty
-	public abstract WeaponObject getDefaultWeapon() {
-		return defaultWeapon;
-	}
+	public native WeaponObject getSecondaryWeapon();
 
 	@dirty
-	public abstract WeaponObject getThrownWeapon() {
-		return thrownWeapon;
-	}
+	public native WeaponObject getDefaultWeapon();
+
+	@dirty
+	public native WeaponObject getThrownWeapon();
+
+	@dirty
+	public native WeaponObject getCurrentWeapon();
 
 	@preLocked
 	public void clearThrownWeapon() {
 		thrownWeapon = null;
 	}
 
-	@dirty
-	public abstract WeaponObject getCurrentWeapon() {
-		return defaultWeapon;
-	}
-
-	public void nullifyWeapons () {
+	public void nullifyWeapons() {
+		currentWeapon = null;
 		primaryWeapon = null;
 		secondaryWeapon = null;
 		thrownWeapon = null;
-		currentWeapon = null;
+		defaultWeapon = null;
 	}
+
+	@preLocked
+	public native void destroyAllWeapons();
 
 	@read
 	public int getMobType() {
