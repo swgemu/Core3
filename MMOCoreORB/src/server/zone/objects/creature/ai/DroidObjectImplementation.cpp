@@ -242,7 +242,7 @@ void DroidObjectImplementation::initDroidModules() {
 
 void DroidObjectImplementation::initDroidWeapons() {
 	//Set weapon stats
-	WeaponObject* weapon = asAiAgent()->getDefaultWeapon();
+	WeaponObject* weapon = getDefaultWeapon();
 
 	if (weapon != nullptr) {
 		Locker locker(weapon);
@@ -251,11 +251,14 @@ void DroidObjectImplementation::initDroidWeapons() {
 		weapon->setAttackSpeed(getAttackSpeed());
 	}
 
-	if (primaryWeapon != nullptr && primaryWeapon != weapon) {
-		Locker locker(primaryWeapon);
-		primaryWeapon->setMinDamage(getDamageMin());
-		primaryWeapon->setMaxDamage(getDamageMax());
-		primaryWeapon->setAttackSpeed(getAttackSpeed());
+	ManagedReference<WeaponObject*> primaryWeap = getPrimaryWeapon();
+
+	if (primaryWeap != nullptr && primaryWeap != weapon) {
+		Locker locker(primaryWeap);
+
+		primaryWeap->setMinDamage(getDamageMin());
+		primaryWeap->setMaxDamage(getDamageMax());
+		primaryWeap->setAttackSpeed(getAttackSpeed());
 	}
 }
 
