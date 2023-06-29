@@ -632,6 +632,15 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			thrownWeap->destroyObjectFromWorld(true);
 		}
 
+		if (!destructedObject->isPet()) {
+			WeaponObject* defaultWeap = destructedObject->getDefaultWeapon();
+
+			if (defaultWeap != nullptr) {
+				Locker locker(defaultWeap, destructedObject);
+				defaultWeap->destroyObjectFromWorld(true);
+			}
+		}
+
 		destructedObject->nullifyWeapons();
 
 		if (creatureInventory != nullptr && player != nullptr && player->isPlayerCreature()) {

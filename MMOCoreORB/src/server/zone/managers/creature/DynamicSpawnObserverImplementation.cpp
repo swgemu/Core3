@@ -22,6 +22,8 @@ int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	if (ai == nullptr || spawn == nullptr)
 		return 0;
 
+	info(true) << "Agent: " << ai->getDisplayedName() << " attempting to respawn on dynamic observer!!!!!!!!";
+
 	// Each creature should spawn 4 times
 	if (ai->getRespawnCounter() > 2) {
 		spawnedCreatures.removeElement(ai.get());

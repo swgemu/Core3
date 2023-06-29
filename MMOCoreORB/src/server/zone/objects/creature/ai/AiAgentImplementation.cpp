@@ -602,6 +602,8 @@ void AiAgentImplementation::setupAttackMaps() {
 }
 
 void AiAgentImplementation::unequipWeapons() {
+	info(true) << "unequipWeapons called for Agent: " << getDisplayedName();
+
 	if (currentWeapon == nullptr) {
 		currentWeapon = defaultWeapon;
 		return;
@@ -628,6 +630,8 @@ void AiAgentImplementation::unequipWeapons() {
 	objectController->transferObject(currentWeapon, inventory, -1, true, true);
 
 	currentWeapon = defaultWeapon;
+
+	info(true) << "END unequipWeapons called for Agent: " << getDisplayedName();
 }
 
 void AiAgentImplementation::equipPrimaryWeapon() {
@@ -1704,6 +1708,8 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	}
 #endif
 
+	info(true) << "Notify Despawn Called for Agent: " << getDisplayedName();
+
 	SceneObject* creatureInventory = asAiAgent()->getSlottedObject("inventory");
 
 	if (creatureInventory != nullptr) {
@@ -1738,12 +1744,16 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	ManagedReference<SceneObject*> inventory = asAiAgent()->getSlottedObject("inventory");
 
 	if (inventory != nullptr) {
+		info(true) << "Agent: " << getDisplayedName() << " STARTING Inventory Size: " << inventory->getContainerObjectsSize();
+
 		while (inventory->getContainerObjectsSize() > 0) {
 			ManagedReference<SceneObject*> obj = inventory->getContainerObject(0);
 			inventory->removeFromContainerObjects(0);
 			obj->destroyObjectFromWorld(false);
 			obj->destroyObjectFromDatabase(true);
 		}
+
+		info(true) << "Agent: " << getDisplayedName() << " ENDING Inventory Size: " << inventory->getContainerObjectsSize();
 	}
 
 	setTargetObject(nullptr);
@@ -1752,6 +1762,8 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	ManagedReference<SceneObject*> home = homeObject.get();
 
 	if (home != nullptr) {
+		info(true) << "Agent: " << getDisplayedName() << " home is not a nullptr, notifying CREATUREDESPAWNED. -------------- ";
+
 		home->notifyObservers(ObserverEventType::CREATUREDESPAWNED, asAiAgent());
 		return;
 	}
@@ -1762,6 +1774,7 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	//info(true) << "ID: " << getObjectID() << " Reference Count: " << getReferenceCount();
 
 	if (respawnTimer <= 0) {
+		info(true) << "Agent: " << getDisplayedName() << " will not be respawned. -------------- ";
 		return;
 	}
 
@@ -1770,6 +1783,8 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	if (randomRespawn) {
 		respawn = System::random(respawn) + (respawn / 2.f);
 	}
+
+	info(true) << "Agent: " << getDisplayedName() << " scheduling to respawn in " << respawn << " ms.";
 
 	Reference<Task*> task = new RespawnCreatureTask(asAiAgent(), zone, level);
 	task->schedule(respawn);
