@@ -48,7 +48,7 @@ public:
 
 		insertLong(inso->getActiveResourceID());
 
-		insertByte(inso->isOperating());
+		insertByte(inso->isActive());
 
 		insertInt((int)inso->getExtractionRate()); // Extraction Rate Displayed
 		insertFloat(inso->getExtractionRate()); // Extract Rate Max

@@ -78,11 +78,10 @@ int HarvesterObjectImplementation::handleObjectMenuSelect(CreatureObject* player
 }
 
 String HarvesterObjectImplementation::getRedeedMessage() {
-
-	if(operating)
+	if (isActive())
 		return "destroy_deactivate_first";
 
-	if(getHopperSize() > 0)
+	if (getHopperSize() > 0)
 		return "destroy_empty_hopper";
 
 	return "";
