@@ -486,6 +486,10 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool
 		VectorMap<uint64, ManagedReference<SceneObject* > > objects;
 		getContainerObjects(objects);
 
+		if (player->isPlayerCreature()) {
+			info(true) << " Sending container objects to player with a size of: " << objects.size();
+		}
+
 		for (int j = 0; j < objects.size(); ++j) {
 			SceneObject* containerObject = objects.get(j);
 
