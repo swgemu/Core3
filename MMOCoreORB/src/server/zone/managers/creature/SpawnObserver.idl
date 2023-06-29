@@ -87,6 +87,6 @@ class SpawnObserver extends Observer implements Logger {
 	public boolean isDynamicSpawnObserver() {
 		return false;
 	}
-	
+
 	public native void despawnSpawns();
 }

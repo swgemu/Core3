@@ -97,8 +97,11 @@ class LairObject extends TangibleObject {
 	}
 
 	public void activateDespawnEvent() {
-		if (despawnEvent)
+		if (despawnEvent) {
+			despawnEvent.cancel();
+			despawnEvent.schedule(300000);
 			return;
+		}
 
 		despawnEvent = new DespawnLairOnPlayerDisappear(this);
 		despawnEvent.schedule(300000);

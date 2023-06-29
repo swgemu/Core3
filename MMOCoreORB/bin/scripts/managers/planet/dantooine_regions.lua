@@ -82,7 +82,6 @@ dantooine_regions = {
 	{"dantooine_kunga_dantari_cave", -139, -396, {CIRCLE, 198}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"dantooine_mokk_dantari_cave", -7056, -3312, {CIRCLE, 198}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"dantooine_rebel commander_base_CoA_act2", 6863, -2251, {CIRCLE, 250}, NOSPAWNAREA + NOBUILDZONEAREA},
-	{"dantooine_the_warren_nobuild_1", -555, -3834, {CIRCLE, 250}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"@dantooine_region_names:darjani_plains", -5904, -5712, {CIRCLE, 1340}, UNDEFINEDAREA},
 	{"debris", -6496, 4892, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"engine_shrine", -2779.51, 5669.11, {CIRCLE, 30}, NOSPAWNAREA + NOBUILDZONEAREA},
