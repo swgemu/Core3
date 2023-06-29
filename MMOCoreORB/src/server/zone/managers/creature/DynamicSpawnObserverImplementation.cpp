@@ -25,8 +25,22 @@ int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	// Each creature should spawn 4 times
 	if (ai->getRespawnCounter() > 2) {
 		spawnedCreatures.removeElement(ai.get());
+
 		ai->setHomeObject(nullptr);
 		ai->resetRespawnCounter();
+
+		// Remove Squad observer from herding creatures
+		if (ai->isMonster()) {
+			SortedVector<ManagedReference<Observer* > > observers = ai->getObservers(ObserverEventType::SQUAD);
+
+			for (int i = observers.size() - 1; i >= 0; --i) {
+				ManagedReference<SquadObserver*> squadObserver = cast<SquadObserver*>(observers.get(i).get());
+
+				if (squadObserver != nullptr) {
+					ai->dropObserver(ObserverEventType::SQUAD, squadObserver);
+				}
+			}
+		}
 
 		// Despawn dynamic lair if all the creatures have spawned 4 times
 		if (spawnedCreatures.isEmpty()) {
