@@ -56,7 +56,7 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	const int objectType = getObjectTemplate()->getGameObjectType();
 
 	if ((objectType == SceneObjectType::MINEFIELD || objectType == SceneObjectType::DESTRUCTIBLE || objectType == SceneObjectType::COVERTSCANNER) && player->isCreatureObject())
-			sendPvpStatusTo(cast<CreatureObject*>(player));
+		sendPvpStatusTo(cast<CreatureObject*>(player));
 
 }
 
@@ -83,20 +83,19 @@ void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* a
 
 }
 
-void InstallationObjectImplementation::setOperating(bool value, bool notifyClient) {
-	//updateInstallationWork();
+void InstallationObjectImplementation::setActive(bool value, bool notifyClient) {
+	// updateInstallationWork();
 
-	if (operating == value)
+	if (active == value)
 		return;
 
-	if (value) {
-
-		if(currentSpawn == nullptr)
+	if (value && !isFactory()) {
+		if (currentSpawn == nullptr)
 			return;
 
 		spawnDensity = currentSpawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
 
-		if(spawnDensity < .10) {
+		if (spawnDensity < .10) {
 			return;
 		}
 
@@ -119,10 +118,10 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 
 	Time timeToWorkTill;
 
-	operating = value;
+	active = value;
 	extractionRemainder = 0;
 
-	if (operating) {
+	if (active) {
 		setOptionBit(OptionBitmask::ACTIVATED, false);
 
 		lastStartTime.updateToCurrentTime();
@@ -151,7 +150,7 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 		resourceHopperTimestamp.updateToCurrentTime();
 	}
 
-	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.getReferenceUnsafeStaticCast());
+	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7(_this.getReferenceUnsafeStaticCast());
 	inso7->updateExtractionRate(getActualRate());
 	inso7->close();
 
@@ -313,7 +312,7 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 	int basePowerRate = getBasePowerRate();
 
-	if (isOperating() && basePowerRate != 0) {
+	if (isActive() && basePowerRate != 0) {
 		float energyAmount = (elapsedTime / 3600.0) * basePowerRate;
 
 		if (energyAmount > surplusPower) {
@@ -347,7 +346,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 
 	Time timeToWorkTill;
 
-	if (!isOperating()) {
+	if (!isActive()) {
 		if(lastStopTime.compareTo(resourceHopperTimestamp) != -1)
 			return;
 	}
@@ -381,13 +380,13 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	}
 
 	if (!errorString.isEmpty()) {
-		if (isOperating()) {
+		if (isActive()) {
 			StringIdChatParameter stringId("shared", errorString);
 			broadcastToOperators(new ChatSystemMessage(stringId));
 
 			resourceHopperTimestamp.updateToCurrentTime();
 			currentSpawn = nullptr;
-			setOperating(false);
+			setActive(false);
 			auto msg = error();
 
 			msg << errorString;
@@ -433,7 +432,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	float currentQuantity = container->getQuantity();
 
 
-	if(harvestAmount > 0 || !isOperating()) {
+	if(harvestAmount > 0 || !isActive()) {
 		Locker spawnLocker(currentSpawn);
 
 		currentSpawn->extractResource(getZone()->getZoneName(), harvestAmount);
@@ -454,7 +453,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	}
 
 	if (shutdownAfterUpdate)
-		setOperating(false);
+		setActive(false);
 
 	/*InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.getReferenceUnsafeStaticCast());
 	inso7->startUpdate(0x0D);
@@ -474,7 +473,7 @@ void InstallationObjectImplementation::clearResourceHopper() {
 	if (resourceHopper.size() == 0)
 		return;
 
-	setOperating(false);
+	setActive(false);
 
 	//lets delete the containers from db
 	for (int i = 0; i < resourceHopper.size(); ++i) {
@@ -526,7 +525,7 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 
 	info("updating active ");
 
-	if (isOperating()) {
+	if (isActive()) {
 		updateInstallationWork();
 	}
 
@@ -567,10 +566,10 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 		StringIdChatParameter stringId("shared", "harvester_resource_depleted"); // Resource has been depleted.  Shutting down.
 		broadcastToOperators(new ChatSystemMessage(stringId));
 
-		if (isOperating()) {
+		if (isActive()) {
 			resourceHopperTimestamp.updateToCurrentTime();
 			currentSpawn = nullptr;
-			setOperating(false);
+			setActive(false);
 
 		}
 
@@ -712,7 +711,7 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 			InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.getReferenceUnsafeStaticCast());
 			inso7->updateHopper();
 			inso7->startUpdate(0x0D);
-			if(container->getQuantity() == 0 && (!isOperating() || (isOperating() && i != 0)))
+			if(container->getQuantity() == 0 && (!isActive() || (isActive() && i != 0)))
 				resourceHopper.remove(i, inso7, 1);
 			else
 				resourceHopper.set(i, container, inso7, 1);
@@ -728,7 +727,7 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 	}
 
 	if(resourceHopper.size() == 0)
-		setOperating(false);
+		setActive(false);
 
 	//broadcastToOperators(new InstallationObjectDeltaMessage7(_this.getReferenceUnsafeStaticCast()));
 }
@@ -746,7 +745,7 @@ uint64 InstallationObjectImplementation::getActiveResourceSpawnID() {
 }
 
 float InstallationObjectImplementation::getActualRate() {
-	if (!isOperating())
+	if (!isActive())
 		return 0.0f;
 
 	if (resourceHopper.size() == 0)
