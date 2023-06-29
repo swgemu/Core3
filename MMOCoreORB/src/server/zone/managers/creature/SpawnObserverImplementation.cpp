@@ -1,28 +1,55 @@
 
 #include "server/zone/managers/creature/SpawnObserver.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/managers/gcw/observers/SquadObserver.h"
 
 void SpawnObserverImplementation::despawnSpawns() {
 	Vector<ManagedReference<AiAgent* > > agents;
 
 	for (int i = 0; i < spawnedCreatures.size(); ++i) {
-		ManagedReference<CreatureObject*> obj = spawnedCreatures.get(i);
+		ManagedReference<CreatureObject*> creature = spawnedCreatures.get(i);
 
-		if (obj != nullptr && obj->isAiAgent()) {
-			AiAgent* aiObj = cast<AiAgent*>(obj.get());
-			agents.add(aiObj);
+		if (creature != nullptr && creature->isAiAgent()) {
+			AiAgent* agent = cast<AiAgent*>(creature.get());
+
+			if (agent == nullptr)
+				continue;
+
+			agents.add(agent);
 		}
 	}
 
 	spawnedCreatures.removeAll();
 
-	Core::getTaskManager()->executeTask([=] () {
-		for (int i = 0; i < agents.size(); ++i) {
-			AiAgent* agent = agents.get(i);
+	for (int i = agents.size() - 1; i >= 0; --i) {
+		Reference<AiAgent*> agent = agents.get(i);
 
-			Locker locker(agent);
+		if (agent != nullptr) {
+			Core::getTaskManager()->executeTask([agent] () {
+				if (agent == nullptr)
+					return;
 
-			agent->setDespawnOnNoPlayerInRange(true);
+				Locker locker(agent);
+
+				SortedVector<ManagedReference<Observer* > > observers = agent->getObservers(ObserverEventType::SQUAD);
+
+				for (int i = observers.size() - 1; i >= 0; --i) {
+					ManagedReference<SquadObserver*> squadObserver = cast<SquadObserver*>(observers.get(i).get());
+
+					if (squadObserver != nullptr) {
+						agent->dropObserver(ObserverEventType::SQUAD, squadObserver);
+					}
+				}
+
+				agent->wipeBlackboard();
+				agent->destroyAllWeapons();
+
+				agent->setDespawnOnNoPlayerInRange(true);
+
+			}, "DespawnSpawnsLambda");
 		}
-	}, "DespawnSpawnsLambda");
+
+		agents.remove(i);
+	}
 }

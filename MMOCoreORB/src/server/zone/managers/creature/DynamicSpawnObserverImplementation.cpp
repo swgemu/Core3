@@ -16,22 +16,42 @@ int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		return 0;
 	}
 
-	Reference<AiAgent*> ai = cast<AiAgent*>(arg1);
 	Reference<SceneObject*> spawn = cast<SceneObject*>(observable);
 
-	if (ai == nullptr || spawn == nullptr)
+	if (spawn == nullptr)
+		return 1;
+
+	Reference<AiAgent*> agent = cast<AiAgent*>(arg1);
+
+	if (agent == nullptr)
 		return 0;
 
 	// Each creature should spawn 4 times
-	if (ai->getRespawnCounter() > 2) {
-		spawnedCreatures.removeElement(ai.get());
-		ai->setHomeObject(nullptr);
-		ai->resetRespawnCounter();
+	if (agent->getRespawnCounter() > 2) {
+		spawnedCreatures.removeElement(agent.get());
+
+		agent->setHomeObject(nullptr);
+		agent->resetRespawnCounter();
+
+		// Remove Squad observer from herding creatures
+		if (agent->isMonster()) {
+			SortedVector<ManagedReference<Observer* > > observers = agent->getObservers(ObserverEventType::SQUAD);
+
+			for (int i = observers.size() - 1; i >= 0; --i) {
+				ManagedReference<SquadObserver*> squadObserver = cast<SquadObserver*>(observers.get(i).get());
+
+				if (squadObserver != nullptr) {
+					agent->dropObserver(ObserverEventType::SQUAD, squadObserver);
+				}
+			}
+		}
 
 		// Despawn dynamic lair if all the creatures have spawned 4 times
 		if (spawnedCreatures.isEmpty()) {
-			Reference<Task*> task = new DespawnDynamicSpawnTask(spawn);
-			task->schedule(60000);
+			Reference<DespawnDynamicSpawnTask*> task = new DespawnDynamicSpawnTask(spawn);
+
+			if (task != nullptr)
+				task->schedule(60000);
 
 			return 1;
 		}
@@ -44,14 +64,14 @@ int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	if (zone == nullptr)
 		return 0;
 
-	int level = ai->getLevel();
+	int level = agent->getLevel();
 
-	if (ai->isCreature()) {
-		Creature* creature = ai.castTo<Creature*>();
+	if (agent->isCreature()) {
+		Creature* creature = agent.castTo<Creature*>();
 		level = creature->getAdultLevel();
 	}
 
-	Reference<Task*> task = new RespawnCreatureTask(ai.get(), zone, level);
+	Reference<Task*> task = new RespawnCreatureTask(agent.get(), zone, level);
 	task->schedule((60 + (level * 2)) * 1000);
 
 	return 0;

@@ -77,8 +77,11 @@ class AiAgent extends CreatureObject {
 	protected transient CellObject targetCellObject;
 
 	protected WeaponObject defaultWeapon;
+
 	protected WeaponObject primaryWeapon;
+
 	protected WeaponObject secondaryWeapon;
+
 	protected WeaponObject thrownWeapon;
 
 	protected WeaponObject currentWeapon;
@@ -1552,6 +1555,21 @@ class AiAgent extends CreatureObject {
 		defaultWeapon = weap;
 	}
 
+	@preLocked
+	public void setPrimaryWeapon(WeaponObject weap) {
+		primaryWeapon = weap;
+	}
+
+	@preLocked
+	public void setSecondaryWeapon(WeaponObject weap) {
+		secondaryWeapon = weap;
+	}
+
+	@preLocked
+	public void setThrownWeapon(WeaponObject weap) {
+		thrownWeapon = weap;
+	}
+
 	@dirty
 	public abstract WeaponObject getPrimaryWeapon() {
 		return primaryWeapon;
@@ -1572,22 +1590,25 @@ class AiAgent extends CreatureObject {
 		return thrownWeapon;
 	}
 
+	@dirty
+	public native WeaponObject getCurrentWeapon() {
+		return currentWeapon;
+	}
+
 	@preLocked
 	public void clearThrownWeapon() {
 		thrownWeapon = null;
 	}
 
-	@dirty
-	public abstract WeaponObject getCurrentWeapon() {
-		return defaultWeapon;
-	}
-
-	public void nullifyWeapons () {
+	public void nullifyWeapons() {
+		currentWeapon = null;
 		primaryWeapon = null;
 		secondaryWeapon = null;
 		thrownWeapon = null;
-		currentWeapon = null;
 	}
+
+	@preLocked
+	public native void destroyAllWeapons();
 
 	@read
 	public int getMobType() {
