@@ -76,6 +76,8 @@ class CreatureManager extends ZoneManager {
 	public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
 	public native CreatureObject spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long parentID = 0, boolean persistent = false, float direction = 0);
 	public native CreatureObject createCreature(unsigned int templateCRC, boolean persistent = false, unsigned int mobileTemplate = 0);
+
+	@preLocked
 	public native void placeCreature(CreatureObject creature, float x, float z, float y, unsigned long parentID, float direction = 0);
 
 	@dereferenced
