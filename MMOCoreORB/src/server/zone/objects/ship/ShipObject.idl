@@ -25,6 +25,9 @@ include templates.SharedObjectTemplate;
 include system.util.VectorMap;
 include system.lang.ref.Reference;
 include server.zone.objects.ship.ShipDeltaVector;
+include engine.util.u3d.Vector3;
+include engine.util.u3d.Quaternion;
+include engine.util.u3d.Matrix4;
 
 class ShipObject extends TangibleObject {
 	public static final int HYPERSPACE_DELAY = 40;
@@ -83,6 +86,11 @@ class ShipObject extends TangibleObject {
 	protected int chassisLevel;
 
 	protected unsigned long syncTime;
+
+	protected float boundingRadius;
+
+	@dereferenced
+	protected Matrix4 rotationMatrix;
 
 	// DeltaAutoVariable template <class K, class V, int BaselineName, uint8 DeltaType, int DeltaIndex>
 
@@ -697,6 +705,14 @@ class ShipObject extends TangibleObject {
 	// 6:19
 	@local
 	public void setShipFaction(@dereferenced final string value, boolean notifyClient = true, DeltaMessage delta = null, ShipDeltaVector vector = null) {
+		if (value == "rebel") {
+			super.setFaction(0x16148850);
+		} else if (value == "imperial") {
+			super.setFaction(0xDB4ACC54);
+		} else {
+			super.setFaction(0);
+		}
+
 		shipFaction.update(value, notifyClient, this, delta, vector);
 	}
 
@@ -1277,19 +1293,6 @@ class ShipObject extends TangibleObject {
 		hasWings = value;
 	}
 
-	@dirty
-	public float getCurrentArmor() {
-		return componentCurrentArmor.get(4) + componentCurrentArmor.get(5);
-	}
-
-	@dirty
-	public float getMaxCurrentArmor() {
-		return componentMaxArmor.get(4) + componentMaxArmor.get(5);
-	}
-
-	@local
-	public native void damageArmor(float damage, DeltaMessage delta);
-
 	@local
 	public DeltaBitArray getTargetableBitfield() {
 		return componentTargetableBitfield;
@@ -1305,6 +1308,10 @@ class ShipObject extends TangibleObject {
 
 	public float getComponentEnergyEfficiency(int slot) {
 		return componentEnergyEfficiency.get(slot);
+	}
+
+	public float getComponentEfficiency(int slot) {
+		return componentEfficiency.get(slot);
 	}
 
 	public void setOwner(CreatureObject obj) {
@@ -1469,4 +1476,26 @@ class ShipObject extends TangibleObject {
 	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
 
 	public native CreatureObject getPilot();
+
+	@dirty
+	public native abstract boolean isAttackableBy(TangibleObject object);
+
+	@dirty
+	public native abstract boolean isAggressiveTo(TangibleObject object);
+
+	@local
+	public native void setRotationMatrix(@dereferenced final Quaternion value);
+
+	@local
+	public final Matrix4 getRotationMatrix() {
+		return rotationMatrix;
+	}
+
+	public void setBoundingRadius(float value) {
+		boundingRadius = value;
+	}
+
+	public float getBoundingRadius() {
+		return boundingRadius;
+	}
 }

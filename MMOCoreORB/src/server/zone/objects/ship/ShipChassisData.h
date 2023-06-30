@@ -9,7 +9,7 @@
 
 class DataTableRow;
 
-class ShipChassisData {
+class ShipChassisData : public Object {
 
 public:
 	class ComponentHardpoint : public Object {
@@ -62,7 +62,11 @@ public:
 			componentHardpoints = rhs.componentHardpoints;
 		}
 
-		const Vector<const ComponentHardpoint*> getHardpoint(const String& name) const {
+		const VectorMap<String, Vector<const ComponentHardpoint*>>& getComponentHardpoints() const {
+			return componentHardpoints;
+		}
+
+		const Vector<const ComponentHardpoint*>& getHardpoint(const String& name) const {
 			return componentHardpoints.get(name);
 		}
 

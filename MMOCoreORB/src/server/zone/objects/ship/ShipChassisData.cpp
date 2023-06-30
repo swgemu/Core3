@@ -7,7 +7,7 @@
 #include "templates/datatables/DataTableRow.h"
 #include "templates/manager/DataArchiveStore.h"
 
-ShipChassisData::ShipChassisData(DataTableRow* row, Vector<String>& columnNames) {
+ShipChassisData::ShipChassisData(DataTableRow* row, Vector<String>& columnNames) : Object() {
 	row->getCell(0)->getValue(name);
 	row->getCell(3)->getValue(wingOpenSpeed);
 

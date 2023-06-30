@@ -141,6 +141,17 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 				setComponentTargetable(slot, slotData ? slotData->isTargetable() : false);
 			}
 		}
+
+		auto appearance = templateData->getAppearanceTemplate();
+
+		if (appearance != nullptr) {
+			auto volume = appearance->getBoundingVolume();
+
+			if (volume != nullptr) {
+				const auto& sphere = volume->getBoundingSphere();
+				boundingRadius = sphere.getCenter().length() + sphere.getRadius();
+			}
+		}
 	}
 }
 
@@ -465,33 +476,6 @@ int ShipObjectImplementation::notifyObjectRemovedFromChild(SceneObject* object, 
 	return 0;
 }
 
-void ShipObjectImplementation::damageArmor(float damage, DeltaMessage* delta) {
-	// Assume damage > total armor
-	float armor0 = getCurrentArmorMap()->get(Components::ARMOR0);
-	float armor1 = getCurrentArmorMap()->get(Components::ARMOR1);
-	float half = damage * 0.5f;
-	armor0 -= damage;
-	bool hasArmor0 = armor0 != 0;
-	bool hasArmor1 = armor1 != 0;
-	float remaining = 0;
-	armor0 -= half;
-
-	if (armor0 < 0) {
-		remaining = -armor0;
-		armor0 = 0;
-	}
-
-	armor1 -= remaining + half;
-
-	if (hasArmor0) {
-		setComponentArmor(Components::ARMOR0, armor0, delta);
-	}
-
-	if (hasArmor1) {
-		setComponentArmor(Components::ARMOR1, armor1, delta);
-	}
-}
-
 void ShipObjectImplementation::doRecovery(int mselapsed) {
 	float deltaTime = mselapsed * 0.001f;
 
@@ -597,8 +581,16 @@ void ShipObjectImplementation::repairShip(float value) {
 
 	auto pilot = owner.get();
 	auto deltaVector = getDeltaVector();
-	uint8 command = DeltaMapCommands::SET;
 
+	float maxChassis = getChassisMaxHealth();
+	float oldChassis = getChassisCurrentHealth();
+	float newChassis = ((maxChassis - oldChassis) * repair) + oldChassis;
+
+	if (oldChassis != newChassis) {
+		setCurrentChassisHealth(newChassis, false, nullptr, deltaVector);
+	}
+
+	uint8 command = DeltaMapCommands::SET;
 	auto componentMap = getShipComponentMap();
 
 	for (int i = 0; i < componentMap->size(); ++i) {
@@ -637,14 +629,6 @@ void ShipObjectImplementation::repairShip(float value) {
 
 		if (newHp != oldHp) {
 			setComponentHitpoints(slot, newHp, nullptr, command, deltaVector);
-		}
-
-		float maxChassis = getChassisMaxHealth();
-		float oldChassis = getChassisCurrentHealth();
-		float newChassis = ((maxChassis - oldChassis) * repair) + oldChassis;
-
-		if (oldChassis != newChassis) {
-			setCurrentChassisHealth(newChassis, false, nullptr, deltaVector);
 		}
 
 		switch (slot) {
@@ -937,6 +921,24 @@ void ShipObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	player->sendMessage(pvp);
 }
 
+bool ShipObjectImplementation::isAttackableBy(TangibleObject* object) {
+	auto flags = getOptionsBitmask();
+
+	if (flags & OptionBitmask::DESTROYING) {
+		return false;
+	}
+
+	if (flags & OptionBitmask::INVULNERABLE) {
+		return false;
+	}
+
+	return faction != object->getFaction();
+}
+
+bool ShipObjectImplementation::isAggressiveTo(TangibleObject* object) {
+	return object->isAttackableBy(asShipObject()) && faction != Factions::FACTIONNEUTRAL;
+}
+
 ShipDeltaVector* ShipObjectImplementation::getDeltaVector() {
 	if (shipDeltaVector == nullptr) {
 		shipDeltaVector = new ShipDeltaVector(asShipObject(), getOwner().get());
@@ -999,4 +1001,8 @@ CreatureObject* ShipObjectImplementation::getPilot() {
 	}
 
 	return getSlottedObject("ship_pilot").castTo<CreatureObject*>();
+}
+
+void ShipObjectImplementation::setRotationMatrix(const Quaternion& value) {
+	rotationMatrix.setRotationMatrix(value.toMatrix3());
 }

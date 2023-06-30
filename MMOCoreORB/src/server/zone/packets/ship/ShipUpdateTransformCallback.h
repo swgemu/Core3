@@ -279,6 +279,10 @@ public:
 			direction.normalize();
 		}
 
+		if (ship->getDirectionW() != direction.getW() || ship->getDirectionX() != direction.getX() || ship->getDirectionY() != direction.getY() || ship->getDirectionZ() != direction.getZ()) {
+			ship->setRotationMatrix(direction);
+		}
+
 		ship->setPosition(position.getX(), position.getZ(), position.getY());
 		ship->setDirection(direction);
 

@@ -137,8 +137,8 @@ public:
 
 		ship->setCapacitorEnergy(currentEnergy - cost, true);
 
-		auto projectile = new ShipManager::ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, speed, range, System::getMiliTime());
-		shipManager->addProjectile(projectile);
+		//auto projectile = new ShipManager::ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, speed, range, System::getMiliTime());
+		//shipManager->addProjectile(projectile);
 
 		auto message = new CreateProjectileMessage(position, direction, componentIndex, projectileType, weaponIndex, shipID, sequence);
 		pilot->broadcastMessage(message, false);
