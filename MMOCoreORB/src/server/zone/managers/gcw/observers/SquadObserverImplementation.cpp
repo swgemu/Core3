@@ -58,6 +58,7 @@ bool SquadObserverImplementation::despawnMembersCloseToLambdaShuttle(const Vecto
 			auto distance = npc->getWorldPosition().squaredDistanceTo(landingPosition);
 
 			if (npc->isDead()) {
+				npc->dropObserver(ObserverEventType::SQUAD, _this.getReferenceUnsafeStaticCast());
 				removeMember(i);
 				continue;
 			} else if (!npc->isInCombat()) {
@@ -70,9 +71,11 @@ bool SquadObserverImplementation::despawnMembersCloseToLambdaShuttle(const Vecto
 				npc->setNextPosition(landingPosition.getX(), landingPosition.getZ(), landingPosition.getY());
 
 				if (distance < 8 * 8) {
+					npc->dropObserver(ObserverEventType::SQUAD, _this.getReferenceUnsafeStaticCast());
 					npc->destroyObjectFromWorld(true);
 					removeMember(i);
 				} else if (forcedCleanup) {
+					npc->dropObserver(ObserverEventType::SQUAD, _this.getReferenceUnsafeStaticCast());
 					npc->destroyObjectFromWorld(true);
 					removeMember(i);
 				}
