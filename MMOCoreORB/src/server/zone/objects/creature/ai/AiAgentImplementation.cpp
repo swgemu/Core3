@@ -1806,7 +1806,7 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 
 		// Drop imperial chat observer
 		if (faction == Factions::FACTIONIMPERIAL) {
-			SortedVector<ManagedReference<Observer*> > observers = home->getObservers(ObserverEventType::FACTIONCHAT);
+			SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::FACTIONCHAT);
 
 			for (int i = 0; i < observers.size(); i++) {
 				ImperialChatObserver* chatObserver = cast<ImperialChatObserver*>(observers.get(i).get());
