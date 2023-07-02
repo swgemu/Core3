@@ -40,10 +40,10 @@ namespace detail {
 class HeightTreeEntry : public TreeEntryInterface {
 	float x, y, z;
 public:
-	HeightTreeEntry(float x, float y, float z) : x(x), y(y), z(z) {
+	HeightTreeEntry(float x, float y) : x(x), y(y) {
 	}
 
-	HeightTreeEntry(float x, float y) : x(x), y(y) {
+	HeightTreeEntry(float x, float y, float z) : x(x), y(y), z(z) {
 	}
 
 	int compareTo(const TreeEntryInterfaceBase<BasicTreeNode>* obj) const override {

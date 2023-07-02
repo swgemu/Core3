@@ -26,7 +26,7 @@ kelvus_miner = Creature:new {
 	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {	"commoner" },
+	templates = { "commoner" },
 				
 	lootGroups = {},
 

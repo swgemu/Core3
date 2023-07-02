@@ -26,18 +26,7 @@ theme_park_rebel_selonian_male = Creature:new {
 	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_selonian_m_01.iff",
-				 "object/mobile/dressed_selonian_m_02.iff",
-				 "object/mobile/dressed_selonian_m_03.iff",
-				 "object/mobile/dressed_selonian_m_04.iff",
-				 "object/mobile/dressed_selonian_m_05.iff",
-				 "object/mobile/dressed_selonian_m_06.iff",
-				 "object/mobile/dressed_selonian_m_07.iff",
-				 "object/mobile/dressed_selonian_m_08.iff",
-				 "object/mobile/dressed_selonian_m_09.iff",
-				 "object/mobile/dressed_selonian_m_10.iff",
-				 "object/mobile/dressed_selonian_m_11.iff",
-				 "object/mobile/dressed_selonian_m_12.iff"},
+	templates = {"selonian_male"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)

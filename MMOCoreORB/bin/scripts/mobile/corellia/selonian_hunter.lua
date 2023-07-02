@@ -28,31 +28,8 @@ selonian_hunter = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_selonian_f_01.iff",
-		"object/mobile/dressed_selonian_f_02.iff",
-		"object/mobile/dressed_selonian_f_03.iff",
-		"object/mobile/dressed_selonian_f_04.iff",
-		"object/mobile/dressed_selonian_f_05.iff",
-		"object/mobile/dressed_selonian_f_06.iff",
-		"object/mobile/dressed_selonian_f_07.iff",
-		"object/mobile/dressed_selonian_f_08.iff",
-		"object/mobile/dressed_selonian_f_09.iff",
-		"object/mobile/dressed_selonian_f_10.iff",
-		"object/mobile/dressed_selonian_f_11.iff",
-		"object/mobile/dressed_selonian_f_12.iff",
-		"object/mobile/dressed_selonian_m_01.iff",
-		"object/mobile/dressed_selonian_m_02.iff",
-		"object/mobile/dressed_selonian_m_03.iff",
-		"object/mobile/dressed_selonian_m_04.iff",
-		"object/mobile/dressed_selonian_m_05.iff",
-		"object/mobile/dressed_selonian_m_06.iff",
-		"object/mobile/dressed_selonian_m_07.iff",
-		"object/mobile/dressed_selonian_m_08.iff",
-		"object/mobile/dressed_selonian_m_09.iff",
-		"object/mobile/dressed_selonian_m_10.iff",
-		"object/mobile/dressed_selonian_m_11.iff",
-		"object/mobile/dressed_selonian_m_12.iff"},
+	templates = {"selonian_male",
+				"selonian_female"},
 	lootGroups = {
 		{
 			groups = {

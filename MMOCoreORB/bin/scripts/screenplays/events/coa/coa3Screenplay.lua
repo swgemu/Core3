@@ -298,7 +298,17 @@ function Coa3Screenplay:enteredMissionArea(pArea, pPlayer)
 			return
 		end
 
-		spawnedObjects[#spawnedObjects + 1] = tostring(SceneObject(pBuilding):getObjectID())
+		local playerID = SceneObject(pPlayer):getObjectID()
+		local buildingID = SceneObject(pBuilding):getObjectID()
+
+		-- Clearing the buildings owner so the player cannot drop or pickup objects from it
+		BuildingObject(pBuilding):setOwnerID(0)
+		BuildingObject(pBuilding):revokeAllPermissions()
+		BuildingObject(pBuilding):grantPermission("QUEST", playerID)
+
+		writeData(buildingID .. ":CoA3WarehouseOwnerID:", playerID)
+
+		spawnedObjects[#spawnedObjects + 1] = tostring(buildingID)
 
 		createObserver(ENTEREDBUILDING, "Coa3Screenplay", "onEnteredWarehouse", pBuilding)
 		createObserver(OBJECTDESTRUCTION, "Coa3Screenplay", "notifyDestroyedWarehouse", pBuilding)
@@ -688,7 +698,9 @@ function Coa3Screenplay:spawnFlora(pBuilding)
 	end
 
 	local planet = SceneObject(pBuilding):getZoneName()
-	local playerID = BuildingObject(pBuilding):getOwnerID()
+	local buildingID = SceneObject(pBuilding):getObjectID()
+
+	local playerID = readData(buildingID .. ":CoA3WarehouseOwnerID:")
 	local pCell = BuildingObject(pBuilding):getNamedCell("room3")
 
 	if (pCell == nil) then
@@ -698,7 +710,10 @@ function Coa3Screenplay:spawnFlora(pBuilding)
 	local pDrum = spawnSceneObject(planet, "object/tangible/container/drum/poi_prize_box_off.iff", -4.5, 0.13, -3.23, SceneObject(pCell):getObjectID(), math.rad(90))
 
 	if (pDrum ~= nil) then
+		SceneObject(pDrum):setContainerOwnerID(playerID)
 		SceneObject(pDrum):setContainerDefaultDenyPermission(MOVEIN + MOVECONTAINER)
+		SceneObject(pDrum):setContainerDefaultAllowPermission(OPEN + MOVEOUT)
+
 		SceneObject(pDrum):setContainerLockedStatus(true)
 
 		local drumID = SceneObject(pDrum):getObjectID()
@@ -719,7 +734,8 @@ function Coa3Screenplay:spawnWarehouseMobiles(pBuilding)
 		return
 	end
 
-	local playerID = BuildingObject(pBuilding):getOwnerID()
+	local buildingID = SceneObject(pBuilding):getObjectID()
+	local playerID = readData(buildingID .. ":CoA3WarehouseOwnerID:")
 	local pPlayer = getSceneObject(playerID)
 
 	if (pPlayer == nil) then
@@ -840,7 +856,8 @@ function Coa3Screenplay:onEnteredWarehouse(pBuilding, pPlayer)
 		return 1
 	end
 
-	local ownerID = BuildingObject(pBuilding):getOwnerID()
+	local buildingID = SceneObject(pBuilding):getObjectID()
+	local ownerID = readData(buildingID .. ":CoA3WarehouseOwnerID:")
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (ownerID ~= playerID) then
@@ -872,7 +889,11 @@ function Coa3Screenplay:notifyDestroyedWarehouse(pBuilding, pBuilding2)
 	end
 
 	local planet = SceneObject(pBuilding):getZoneName()
-	local ownerID = BuildingObject(pBuilding):getOwnerID()
+
+	local buildingID = SceneObject(pBuilding):getObjectID()
+	local ownerID = readData(buildingID .. ":CoA3WarehouseOwnerID:")
+	deleteData(buildingID .. ":CoA3WarehouseOwnerID:")
+
 	local pPlayer = getCreatureObject(ownerID)
 
 	if (pPlayer == nil) then
@@ -1265,6 +1286,8 @@ function Coa3Screenplay:cleanupMission(pPlayer)
 
 		if pObject ~= nil then
 			if (SceneObject(pObject):isBuildingObject()) then
+				deleteData(SceneObject(pObject):getObjectID() .. ":CoA3WarehouseOwnerID:")
+
 				destroyBuilding(spawnedObjects[i])
 			else
 				local objectID = SceneObject(pObject):getObjectID()
@@ -1285,6 +1308,7 @@ function Coa3Screenplay:cleanupMission(pPlayer)
 	deleteData(playerID .. ":CoA3:NpcID:")
 	deleteData(playerID .. ":CoA3:totalWarehouseMobiles:")
 	deleteData(playerID .. ":CoA3:floraDrum:")
+	deleteData(playerID .. ":CoA3:navMesh:")
 
 	deleteData(playerID .. ":CoA3:totalGuards:")
 	deleteData(playerID .. ":CoA3:totalAttackers:")

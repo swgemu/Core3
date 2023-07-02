@@ -29,9 +29,9 @@ agriculturalist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_quest_farmer.iff",
-					"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff",
-					"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff",
-					"object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff"},
+				"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff",
+				"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff",
+				"object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)

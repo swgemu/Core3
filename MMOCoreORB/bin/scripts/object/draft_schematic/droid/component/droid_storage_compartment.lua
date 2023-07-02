@@ -42,39 +42,37 @@
 
 
 object_draft_schematic_droid_component_droid_storage_compartment = object_draft_schematic_droid_component_shared_droid_storage_compartment:new {
+	templateType = DRAFTSCHEMATIC,
 
-   templateType = DRAFTSCHEMATIC,
+	customObjectName = "Droid Storage Compartment",
 
-   customObjectName = "Droid Storage Compartment",
-
-   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 13, 
-   size = 2, 
+	craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 13,
+	size = 2,
 	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
-   xpType = "crafting_droid_general", 
-   xp = 45, 
+	xpType = "crafting_droid_general",
+	xp = 45,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+	assemblySkill = "droid_assembly",
+	experimentingSkill = "droid_experimentation",
+	customizationSkill = "droid_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
-   ingredientTitleNames = {"module_frame", "compartment_enclosure", "content_handling_mechanism"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"metal", "metal", "metal"},
-   resourceQuantities = {12, 6, 5},
-   contribution = {100, 100, 100},
+	ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
+	ingredientTitleNames = {"module_frame", "compartment_enclosure", "content_handling_mechanism"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"metal", "metal", "metal"},
+	resourceQuantities = {12, 6, 5},
+	contribution = {100, 100, 100},
 
+	targetTemplate = "object/tangible/component/droid/droid_storage_compartment.iff",
 
-   targetTemplate = "object/tangible/component/droid/droid_storage_compartment.iff",
-
-   additionalTemplates = {
-             }
+	additionalTemplates = {}
 
 }
+
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_droid_storage_compartment, "object/draft_schematic/droid/component/droid_storage_compartment.iff")

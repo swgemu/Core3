@@ -76,7 +76,19 @@ Inside the container type:
 run
 ```
 
-## Linux Build
+## Windows Subsystem for Linux Setup
+
+There is an automated setup available for Windows 10+ with WSL.
+
+See [wsl2/README.md](wsl2/README.md) for instructions.
+
+## Linux Automated Setup
+
+You can use the automated linux setup if you plan to run the server in a vm or dedicated cloud or metal server.
+
+See [linux/README.md](linux/README.md) for instructions.
+
+## Linux Manual Build
 
 ### Dependencies
   * Debian 11

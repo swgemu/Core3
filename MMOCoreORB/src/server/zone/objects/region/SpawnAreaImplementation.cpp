@@ -36,14 +36,19 @@ void SpawnAreaImplementation::notifyPositionUpdate(TreeEntry* entry) {
 	if (zoneServer != nullptr && (zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()))
 		return;
 
+	if (lastSpawn.miliDifference() < ConfigManager::instance()->getMinLairSpawnInterval())
+		return;
+
 #ifdef DEBUG_SPAWNING
 	info(true) << getAreaName() << " --SpawnAreaImplementation::notifyPositionUpdate called";
 #endif // DEBUG_SPAWNING
 
-	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL)
+	CreatureObject* player = sceneObject->asCreatureObject();
+
+	if (player == nullptr || player->isInvisible())
 		return;
 
-	tryToSpawn(sceneObject->asCreatureObject());
+	tryToSpawn(player);
 }
 
 void SpawnAreaImplementation::notifyEnter(SceneObject* sceneO) {
@@ -58,7 +63,6 @@ void SpawnAreaImplementation::notifyEnter(SceneObject* sceneO) {
 #endif // DEBUG_SPAWNING
 
 	numberOfPlayersInRange.increment();
-
 }
 
 void SpawnAreaImplementation::notifyExit(SceneObject* sceneO) {
@@ -154,7 +158,7 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 
 			Locker locker(area);
 
-			area->setRadius(64.f);
+			area->setRadius(ConfigManager::instance()->getSpawnCheckRange());
 			area->addAreaFlag(ActiveArea::NOSPAWNAREA);
 			area->initializePosition(sceneO->getPositionX(), sceneO->getPositionZ(), sceneO->getPositionY());
 
@@ -222,8 +226,10 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 		return;
 	}
 
+	float checkRange = finalSpawn->getSize() + ConfigManager::instance()->getSpawnCheckRange();
+
 	// Check the spot to see if spawning is allowed
-	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 64.f, isWorldSpawnArea())) {
+	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), checkRange, isWorldSpawnArea())) {
 #ifdef DEBUG_SPAWNING
 		info(true) << "tryToSpawn Spawning is not permitted at " << randomPosition.toString();
 #endif // DEBUG_SPAWNING
