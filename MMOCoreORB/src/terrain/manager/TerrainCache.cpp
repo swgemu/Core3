@@ -37,7 +37,7 @@ namespace detail {
 	}
 }
 
-class HeightTreeEntry : public TreeEntryInterface {
+class HeightTreeEntry : public QuadTreeEntryInterface {
 	float x, y, z;
 public:
 	HeightTreeEntry(float x, float y) : x(x), y(y) {
@@ -46,7 +46,7 @@ public:
 	HeightTreeEntry(float x, float y, float z) : x(x), y(y), z(z) {
 	}
 
-	int compareTo(const TreeEntryInterfaceBase<BasicTreeNode>* obj) const override {
+	int compareTo(const QuadTreeEntryInterfaceBase<BasicQuadTreeNode>* obj) const override {
 		auto oid = getObjectID();
 		auto targetOid = obj->getObjectID();
 
@@ -69,14 +69,10 @@ public:
 	float getPositionY() const override {
 		return y;
 	}
-
-	float getPositionZ() const override {
-		return z;
-	}
 };
 
 class HeightCacheFunction : public LRUFunction2<uint64, float, float,
-	Pair<TreeEntryInterface*, float> > {
+	Pair<QuadTreeEntryInterface*, float> > {
 	TerrainManager* terrainData;
 
 public:
@@ -96,7 +92,7 @@ public:
 };
 
 TerrainCache::TerrainCache(TerrainManager* terrainManager)
-	: SynchronizedLRUCache2<uint64, float, float, Pair<TreeEntryInterface*, float>>(new HeightCacheFunction(terrainManager), CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT),
+	: SynchronizedLRUCache2<uint64, float, float, Pair<QuadTreeEntryInterface*, float>>(new HeightCacheFunction(terrainManager), CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT),
 	  Logger("TerrainCache"),
 	  quadTree(terrainManager->getMin(), terrainManager->getMin(), terrainManager->getMax(), terrainManager->getMax(), QT_MIN_SQUARE),
 	  clearCount(0),
@@ -160,7 +156,7 @@ void TerrainCache::clear(TerrainGenerator* generator) {
 	if (!result)
 		return;
 
-	Vector<TreeEntryInterface*> heightsToDelete;
+	Vector<QuadTreeEntryInterface*> heightsToDelete;
 
 	Locker writeLock(getLock());
 
