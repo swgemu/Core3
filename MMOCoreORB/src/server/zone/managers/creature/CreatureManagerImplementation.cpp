@@ -688,19 +688,11 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			}
 		}
 
-		Reference<AiAgent*> strongDestructed = destructedObject;
-
-		Core::getTaskManager()->scheduleTask([strongDestructed] () {
-			Locker locker(strongDestructed);
-
-			CombatManager::instance()->attemptPeace(strongDestructed);
-		}, "AttemptPeaceLambda", 200);
-
 		// Check to see if we can expedite the despawn of this corpse
 		// We can expedite the despawn when corpse has no loot, no credits, player cannot harvest, and no group members in range can harvest
 		shouldRescheduleCorpseDestruction = playerManager->shouldRescheduleCorpseDestruction(player, destructedObject);
 	} catch (...) {
-		destructedObject->scheduleDespawn();
+		destructedObject->scheduleDespawn(10, true);
 
 		// now we can safely lock destructor again
 		if (destructedObject != destructor)
@@ -709,15 +701,12 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		throw;
 	}
 
-	destructedObject->scheduleDespawn();
-
 	if (shouldRescheduleCorpseDestruction) {
-		Reference<DespawnCreatureTask*> despawn = destructedObject->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
-
-		if (despawn != nullptr) {
-			despawn->cancel();
-			despawn->reschedule(10000);
-		}
+		// Corpse has nothing of value, schedule despawn for 10s
+		destructedObject->scheduleDespawn(10, true);
+	} else {
+		// Corpse has loot or can be harvested, schedule despawn for 300s
+		destructedObject->scheduleDespawn(300);
 	}
 
 	// now we can safely lock destructor again
@@ -727,12 +716,15 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		ThreatMap* destructorThreatMap = destructor->getThreatMap();
 
 		if (destructorThreatMap != nullptr) {
-			for (int i = 0; i < destructorThreatMap->size(); i++) {
-				TangibleObject* destructedTano = destructorThreatMap->elementAt(i).getKey();
+			uint64 destructedID = destructedObject->getObjectID();
 
-				if (destructedTano == destructedObject) {
-					destructorThreatMap->remove(i);
-				}
+			for (int i = 0; i < destructorThreatMap->size(); i++) {
+				TangibleObject* threatTano = destructorThreatMap->elementAt(i).getKey();
+
+				if (threatTano == nullptr || threatTano->getObjectID() != destructedID)
+					continue;
+
+				destructorThreatMap->remove(i);
 			}
 		}
 
@@ -740,12 +732,14 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			destructor->removeDefender(destructedObject);
 		}
 
-		const DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructor->getDefenderList();
-
-		if (defenderList->size() == 0) {
+		// Finally if the destructor has no more defenders, clear their combat state
+		if (!destructor->hasDefenders()) {
 			destructor->clearCombatState(false);
 		}
 	}
+
+	destructedObject->removeDefenders();
+	destructedObject->clearCombatState(false);
 
 	return 1;
 }
