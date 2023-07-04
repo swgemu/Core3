@@ -605,6 +605,11 @@ class TangibleObject extends SceneObject {
 		return defenderList;
 	}
 
+	@read
+	public boolean hasDefenders() {
+		return defenderList.size() > 0;
+	}
+
 	@local
 	@read
 	public final AutoDeltaSet<int> getVisibleComponents() {
