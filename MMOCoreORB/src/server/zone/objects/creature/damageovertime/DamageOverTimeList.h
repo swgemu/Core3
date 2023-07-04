@@ -25,7 +25,7 @@ public:
 		setLoggingName("DamageOverTimeList");
 	}
 
-	DamageOverTimeList(const DamageOverTimeList& list) : VectorMap<uint64, Vector<DamageOverTime>>(list), guard() {
+	DamageOverTimeList(const DamageOverTimeList& list) : VectorMap<uint64, Vector<DamageOverTime>>(list), Logger(), guard() {
 		setNoDuplicateInsertPlan();
 
 		nextTick = list.nextTick;

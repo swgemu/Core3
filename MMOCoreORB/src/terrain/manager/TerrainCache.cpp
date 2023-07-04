@@ -38,12 +38,9 @@ namespace detail {
 }
 
 class HeightTreeEntry : public QuadTreeEntryInterface {
-	float x, y, z;
+	float x, y;
 public:
 	HeightTreeEntry(float x, float y) : x(x), y(y) {
-	}
-
-	HeightTreeEntry(float x, float y, float z) : x(x), y(y), z(z) {
 	}
 
 	int compareTo(const QuadTreeEntryInterfaceBase<BasicQuadTreeNode>* obj) const override {
@@ -165,7 +162,7 @@ void TerrainCache::clear(TerrainGenerator* generator) {
 	clearHeightsCount += quadTree.inRange(centerX, centerY, radius, heightsToDelete);
 
 	for (int i = 0; i < heightsToDelete.size(); ++i) {
-		HeightTreeEntry* entry = static_cast<HeightTreeEntry*>(heightsToDelete.get(i));
+		HeightQuadTreeEntry* entry = static_cast<HeightQuadTreeEntry*>(heightsToDelete.get(i));
 
 		remove(entry->getObjectID());
 

@@ -43,7 +43,7 @@ DamageOverTime::DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib
 	setLoggingName("DamageOverTime");
 }
 
-DamageOverTime::DamageOverTime(const DamageOverTime& dot) : Object(), Serializable() {
+DamageOverTime::DamageOverTime(const DamageOverTime& dot) : Object(), Serializable(), Logger() {
 	addSerializableVariables();
 
 	attackerID = dot.attackerID;
@@ -72,7 +72,6 @@ DamageOverTime& DamageOverTime::operator=(const DamageOverTime& dot) {
 	expires = dot.expires;
 	nextTick = dot.nextTick;
 	secondaryStrength = dot.secondaryStrength;
-
 
 	return *this;
 }

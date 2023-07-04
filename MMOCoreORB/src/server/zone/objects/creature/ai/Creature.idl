@@ -84,8 +84,6 @@ class Creature extends AiAgent {
 	@local
 	public native void loadTemplateDataForBaby(CreatureTemplate templateData);
 
-	public native void scheduleDespawn();
-
 	public native boolean hasOrganics();
 
 	public native boolean hasMilk();
