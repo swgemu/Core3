@@ -1833,12 +1833,25 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	//info(true) << "notifyDespawn for - " << getDisplayedName() << " ID: " << getObjectID() << " scheduled to respawn in " << respawn <<  " ms.";
 }
 
-void AiAgentImplementation::scheduleDespawn(int timeToDespawn) {
-	if (getPendingTask("despawn") != nullptr)
+void AiAgentImplementation::scheduleDespawn(int timeToDespawn, bool force) {
+	Reference<DespawnCreatureTask*> despawn = getPendingTask("despawn").castTo<DespawnCreatureTask*>();
+
+	if (!force && despawn != nullptr)
 		return;
 
-	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(asAiAgent());
-	addPendingTask("despawn", despawn, timeToDespawn * 1000);
+	if (despawn != nullptr) {
+		despawn->cancel();
+		despawn->reschedule(timeToDespawn * 1000);
+	} else {
+		despawn = new DespawnCreatureTask(asAiAgent());
+
+		if (despawn == nullptr) {
+			error() << "AiAgent failed to create a despawn task." << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ": " << *_this.getReferenceUnsafeStaticCast();
+			return;
+		}
+
+		addPendingTask("despawn", despawn, timeToDespawn * 1000);
+	}
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {

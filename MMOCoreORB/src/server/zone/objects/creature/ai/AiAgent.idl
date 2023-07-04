@@ -728,7 +728,7 @@ class AiAgent extends CreatureObject {
 	 * @param timeToDespawn the time to despawn the AiAgent in seconds.
 	 */
 	@preLocked
-	public abstract native void scheduleDespawn(int timeToDespawn);
+	public abstract native void scheduleDespawn(int timeToDespawn, boolean force = false);
 
 	/**
 	 * Respawns creature to specified zone with home location position
