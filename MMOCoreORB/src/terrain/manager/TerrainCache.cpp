@@ -37,16 +37,13 @@ namespace detail {
 	}
 }
 
-class HeightTreeEntry : public TreeEntryInterface {
-	float x, y, z;
+class HeightQuadTreeEntry : public QuadTreeEntryInterface {
+	float x, y;
 public:
-	HeightTreeEntry(float x, float y) : x(x), y(y) {
+	HeightQuadTreeEntry(float x, float y) : x(x), y(y) {
 	}
 
-	HeightTreeEntry(float x, float y, float z) : x(x), y(y), z(z) {
-	}
-
-	int compareTo(const TreeEntryInterfaceBase<BasicTreeNode>* obj) const override {
+	int compareTo(const QuadTreeEntryInterfaceBase<BasicQuadTreeNode>* obj) const override {
 		auto oid = getObjectID();
 		auto targetOid = obj->getObjectID();
 
@@ -69,14 +66,10 @@ public:
 	float getPositionY() const override {
 		return y;
 	}
-
-	float getPositionZ() const override {
-		return z;
-	}
 };
 
 class HeightCacheFunction : public LRUFunction2<uint64, float, float,
-	Pair<TreeEntryInterface*, float> > {
+	Pair<QuadTreeEntryInterface*, float> > {
 	TerrainManager* terrainData;
 
 public:
@@ -87,7 +80,7 @@ public:
 	TerrainCache::lru_value_t run(const float& k, const float& k2) override {
 		float height = terrainData->getUnCachedHeight(k , k2);
 
-		return make_pair(new HeightTreeEntry(k, k2), height);
+		return make_pair(new HeightQuadTreeEntry(k, k2), height);
 	}
 
 	uint64 hash(const float& k, const float& k2) const override {
@@ -96,7 +89,7 @@ public:
 };
 
 TerrainCache::TerrainCache(TerrainManager* terrainManager)
-	: SynchronizedLRUCache2<uint64, float, float, Pair<TreeEntryInterface*, float>>(new HeightCacheFunction(terrainManager), CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT),
+	: SynchronizedLRUCache2<uint64, float, float, Pair<QuadTreeEntryInterface*, float>>(new HeightCacheFunction(terrainManager), CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT),
 	  Logger("TerrainCache"),
 	  quadTree(terrainManager->getMin(), terrainManager->getMin(), terrainManager->getMax(), terrainManager->getMax(), QT_MIN_SQUARE),
 	  clearCount(0),
@@ -160,7 +153,7 @@ void TerrainCache::clear(TerrainGenerator* generator) {
 	if (!result)
 		return;
 
-	Vector<TreeEntryInterface*> heightsToDelete;
+	Vector<QuadTreeEntryInterface*> heightsToDelete;
 
 	Locker writeLock(getLock());
 
@@ -169,7 +162,7 @@ void TerrainCache::clear(TerrainGenerator* generator) {
 	clearHeightsCount += quadTree.inRange(centerX, centerY, radius, heightsToDelete);
 
 	for (int i = 0; i < heightsToDelete.size(); ++i) {
-		HeightTreeEntry* entry = static_cast<HeightTreeEntry*>(heightsToDelete.get(i));
+		HeightQuadTreeEntry* entry = static_cast<HeightQuadTreeEntry*>(heightsToDelete.get(i));
 
 		remove(entry->getObjectID());
 
