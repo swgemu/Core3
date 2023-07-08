@@ -52,6 +52,16 @@ class FactoryObject extends InstallationObject {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
+	@dirty
+	public native abstract void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
+
 	@dirty
 	public boolean isFactory() {
 		return true;

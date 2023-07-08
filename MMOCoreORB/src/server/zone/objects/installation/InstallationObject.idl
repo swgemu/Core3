@@ -24,7 +24,7 @@ import server.zone.objects.tangible.wearables.ArmorObject;
 class InstallationObject extends StructureObject {
 	protected transient SyncrhonizedUiListenInstallationTask syncUiTask;
 
-	protected boolean operating;
+	protected boolean active;
 
 	@dereferenced
 	protected transient SortedVector<CreatureObject> operatorList;
@@ -54,7 +54,7 @@ class InstallationObject extends StructureObject {
 
 		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
-		operating = false;
+		active = false;
 
 		installationType = 0;
 		extractionRemainder = 0;
@@ -106,14 +106,13 @@ class InstallationObject extends StructureObject {
 	public native void updateResourceContainerQuantity(ResourceContainer container, int newQuantity, boolean notifyClient = true);
 
 	@preLocked
-	public abstract native void setOperating(boolean operating, boolean notifyClient = true);
+	public abstract native void setActive(boolean value, boolean notifyClient = true);
 
 	@preLocked
 	public native void activateUiSync();
 
 	@dirty
 	public abstract void updateOperators() {
-
 	}
 
 	@preLocked
@@ -184,8 +183,8 @@ class InstallationObject extends StructureObject {
 	}
 
 	@read
-	public boolean isOperating() {
-		return operating;
+	public boolean isActive() {
+		return active;
 	}
 
 	@read

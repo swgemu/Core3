@@ -18,7 +18,6 @@ include system.util.Vector;
 include engine.util.u3d.Vector3;
 
 class SquadObserver extends Observer implements Logger {
-
 	@local
 	@dereferenced
 	protected Vector<AiAgent> teamMembers;
@@ -33,16 +32,22 @@ class SquadObserver extends Observer implements Logger {
 	}
 
 	@local
+	@read
+	public int size() {
+		return teamMembers.size();
+	}
+
+	@local
+	@preLocked
+	public native void removeMember(int index) {
+		teamMembers.remove(index);
+	}
+
+	@local
 	public native void addMember(AiAgent member);
 
 	@local
-	public native int size();
-
-	@local
-	public native AiAgent getMember(unsigned int teamMemberIndex);
-
-	@local
-	public native void removeMember(unsigned int teamMemberIndex);
+	public native AiAgent getMember(int teamMemberIndex);
 
 	@local
 	public native void despawnSquad();

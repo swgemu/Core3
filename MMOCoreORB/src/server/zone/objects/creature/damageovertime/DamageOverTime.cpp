@@ -86,7 +86,6 @@ void DamageOverTime::addSerializableVariables() {
 	addSerializableVariable("expires", &expires);
 	addSerializableVariable("nextTick", &nextTick);
 	addSerializableVariable("secondaryStrength", &secondaryStrength);
-
 }
 
 void to_json(nlohmann::json& j, const DamageOverTime& t) {
@@ -173,7 +172,7 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 
 uint32 DamageOverTime::initDot(CreatureObject* victim, CreatureObject* attacker) {
 #ifdef DEBUG_DOTS
-	info(true) << "initDot called " << victim->getFirstName() << " ID: " << victim->getObjectID() << " Type: " << type;
+	info(true) << "initDot called -- START: Player " << victim->getFirstName() << " ID: " << victim->getObjectID() << " Type: " << type << " Pool: " << attribute;
 #endif
 
 	uint32 power = 0;
@@ -208,7 +207,7 @@ uint32 DamageOverTime::initDot(CreatureObject* victim, CreatureObject* attacker)
 	power = (uint32)(strength * (1.f - absorptionMod / 100.f));
 
 #ifdef DEBUG_DOTS
-	info(true) << "initDot called " << victim->getFirstName() << " Type: " << type << " Power: " << power << " Absorption Mod: " << absorptionMod;
+	info(true) << "initDot called " << victim->getFirstName() << " Type: " << type << " Power: " << power << " Absorption Mod: " << absorptionMod << " Pool: " << attribute;
 #endif
 
 	//victim->addDamage(attacker,1);
@@ -469,13 +468,13 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 
 float DamageOverTime::reduceTick(float reduction) {
 #ifdef DEBUG_DOTS
-	info(true) << "reduceTick - Reduction: " << reduction << " Strength = " << strength;
+	info(true) << "reduceTick -- Pool: " << attribute << " Strength = " << strength << " Reduction: " << reduction;
 #endif
 
 	// this ensures we can't increase a dot strength
 	if (reduction <= 0.f) {
 #ifdef DEBUG_DOTS
-		info(true) << "reduceTick - Reduction is less than 0 returning: " << reduction;
+		info(true) << "Reduction is less than 0 RETURNING: " << reduction;
 #endif
 		return reduction;
 	}
@@ -483,17 +482,22 @@ float DamageOverTime::reduceTick(float reduction) {
 	int reducRemaining = reduction - strength;
 
 	strength -= reduction;
+	strength = (strength < 0 ? 0 : strength);
 
 #ifdef DEBUG_DOTS
-	info(true) << "reduceTick - Remaining Cure: " << reducRemaining << " New Strength: " << strength;
+	info(true) << "Remaining Cure: " << reducRemaining << " New Strength: " << strength;
 #endif
 
-	if (reducRemaining > 0.f) {
+	if (reducRemaining > 0) {
 #ifdef DEBUG_DOTS
 		info(true) << "DoT has been cured";
 #endif
 		expireTick();
 	}
+
+#ifdef DEBUG_DOTS
+	info(true) << "reduceTick -- END";
+#endif
 
 	return reducRemaining;
 }
