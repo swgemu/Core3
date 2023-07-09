@@ -60,7 +60,7 @@ public:
 
 			Locker glocker(group, ship);
 
-			group->updateMemberShip(player->getObjectID(), ship->getObjectID());
+			group->updateMemberShip(player, ship);
 		}
 	}
 };

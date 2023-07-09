@@ -2794,46 +2794,61 @@ void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
 }
 
 void CreatureObjectImplementation::updateGroupMFDPositions() {
-	Reference<CreatureObject*> creo = asCreatureObject();
+	Reference<CreatureObject*> thisCreo = asCreatureObject();
 	auto group = this->group;
 
-	if (group != nullptr) {
-		auto zone = getZone();
+	if (group == nullptr)
+		return;
 
-		if (zone == nullptr) {
-			return;
-		}
+	auto zone = getZone();
 
-		ClientMfdStatusUpdateMessage* msg = new ClientMfdStatusUpdateMessage(creo, zone->getZoneName());
+	if (zone == nullptr) {
+		return;
+	}
+
+	GroupList* groupList = group->getGroupList();
+
+	if (groupList == nullptr)
+		return;
+
+	ClientMfdStatusUpdateMessage* msg = new ClientMfdStatusUpdateMessage(thisCreo, zone->getZoneName());
+
+	if (msg == nullptr)
+		return;
 
 #ifdef LOCKFREE_BCLIENT_BUFFERS
-		Reference<BasePacket*> pack = msg;
+	Reference<BasePacket*> pack = msg;
 #endif
 
-		uint64 creoID = creo->getObjectID();
+	CloseObjectsVector* creatureCloseObjects = (CloseObjectsVector*) getCloseObjects();
+	SortedVector<TreeEntry*> closeObjectsVector;
 
-		for (int i = 0; i < group->getGroupSize(); i++) {
-			Reference<CreatureObject*> member = group->getGroupMember(i);
+	if (creatureCloseObjects == nullptr)
+		return;
 
-			if (member == nullptr || creoID == member->getObjectID() || !member->isPlayerCreature())
-				continue;
+	creatureCloseObjects->safeCopyReceiversTo(closeObjectsVector, CloseObjectsVector::CREOTYPE);
 
-			CloseObjectsVector* cev = (CloseObjectsVector*)member->getCloseObjects();
+	uint64 creoID = thisCreo->getObjectID();
 
-			if (cev == nullptr || cev->contains(creo.get()))
-				continue;
+	for (int i = 0; i < groupList->size(); i++) {
+		Reference<CreatureObject*> member = groupList->getSafe(i).get();
+
+		if (member == nullptr || creoID == member->getObjectID())
+			continue;
+
+		if (closeObjectsVector.contains(member))
+			continue;
 
 #ifdef LOCKFREE_BCLIENT_BUFFERS
-			member->sendMessage(pack);
+		member->sendMessage(pack);
 #else
-			member->sendMessage(msg->clone());
-#endif
-		}
-
-#ifndef LOCKFREE_BCLIENT_BUFFERS
-		delete msg;
+		member->sendMessage(msg->clone());
 #endif
 	}
+
+#ifndef LOCKFREE_BCLIENT_BUFFERS
+	delete msg;
+#endif
 }
 
 void CreatureObjectImplementation::notifySelfPositionUpdate() {

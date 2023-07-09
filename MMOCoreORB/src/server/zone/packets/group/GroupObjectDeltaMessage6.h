@@ -18,42 +18,95 @@ public:
 		group = gr;
 	}
 
-	void updateMembers() {
+	void initialUpdate() {
+		//info(true) << "GroupObjectDeltaMessage6 -- initialUpdate";
+
+		// Members
+		startUpdate(0x01);
+
 		GroupList* list = group->getGroupList();
 
 		if (list == nullptr)
 			return;
 
-		// Update Member List
-		startUpdate(0x01);
+		int size = list->size();
+		int updCounter = list->getUpdateCounter();
 
-		int memberListSize = list->size();
+		insertInt(size);
+		insertInt(updCounter);
 
-		insertInt(memberListSize);
-		insertInt(memberListSize);
+		for (int i = 0; i < size; ++i) {
+			insertByte(0x1); // Initial
+			insertShort(i); // Location on list
 
-		for (int i = 0; i < memberListSize; ++i) {
-			insertByte(0x01); // Add to list?
-			insertShort((uint8)i); // Location on list
+			CreatureObject* member = list->get(i).get().get();
 
-			GroupMember* member = list->get(i);
-
-			insertLong(list->getMemberID(i));
-			insertAscii(list->getMemberName(i));
+			insertLong(member->getObjectID());
+			insertAscii(member->getDisplayedName());
 		}
 
-		// Update Ship List
+		// Members Ships
 		startUpdate(0x02);
 
-		insertInt(memberListSize);
-		insertInt(memberListSize);
+		// Insert players ships
+		insertInt(size); // Size
+		insertInt(updCounter); // counter
 
-		for (int j = 0; j < memberListSize; j++) {
-			insertByte(0x01); // Add to list?
-			insertShort((uint8)j); // Location on list
+		for (int j = 0; j < size; ++j) {
+			insertByte(0x1); // Initial
+			insertShort(j); // Location on list
 
-			insertLong(list->getMemberShipID(j));
-			insertInt(j);
+			insertLong(0);// Ship ID
+			insertInt(j); // Vector location
+		}
+
+		startUpdate(0x04);
+		insertShort((uint16)group->getGroupLevel());
+
+		startUpdate(0x06);
+		insertLong(group->getMasterLooterID());
+	}
+
+	void updateMembers() {
+		//info(true) << "GroupObjectDeltaMessage6 -- updateMembers";
+
+		// Members
+		startUpdate(0x01);
+
+		GroupList* list = group->getGroupList();
+
+		if (list == nullptr)
+			return;
+
+		int size = list->size();
+		int updCounter = list->getUpdateCounter();
+
+		insertInt(size);
+		insertInt(updCounter);
+
+		for (int i = 0; i < size; ++i) {
+			insertByte(0x2); // Update
+			insertShort((uint8)i); // Location on list
+
+			CreatureObject* member = list->get(i).get().get();
+
+			insertLong(member->getObjectID());
+			insertAscii(member->getDisplayedName());
+		}
+
+		// Members Ships
+		startUpdate(0x02);
+
+		// Insert players ships
+		insertInt(size); // Size
+		insertInt(updCounter); // counter
+
+		for (int j = 0; j < size; ++j) {
+			insertByte(0x2); // Update
+			insertShort(j); // Location on list
+
+			insertLong(0);// Ship ID
+			insertInt(j); // Vector location
 		}
 
 		startUpdate(0x04);

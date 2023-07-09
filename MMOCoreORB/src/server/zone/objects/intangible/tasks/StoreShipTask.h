@@ -186,7 +186,7 @@ public:
 
 			Locker glocker(group, ship);
 
-			group->updateMemberShip(player->getObjectID(), 0);
+			group->updateMemberShip(player, nullptr);
 		}
 	}
 

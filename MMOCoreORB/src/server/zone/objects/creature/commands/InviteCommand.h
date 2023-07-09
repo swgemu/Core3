@@ -63,7 +63,7 @@ public:
 		if (object == nullptr || !object->isPlayerCreature() || groupManager == nullptr)
 			return GENERALERROR;
 
-		auto player = cast<CreatureObject*>(object.get());
+		auto player = object->asCreatureObject();
 
 		if (player == nullptr)
 			return GENERALERROR;

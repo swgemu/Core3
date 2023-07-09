@@ -2,21 +2,32 @@
 * GroupMember.cpp
 */
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "GroupMember.h"
 
-GroupMember::GroupMember(uint64 memberid, String name, uint64 shipid) : Object() {
-	memberID = memberid;
-	memberName = name;
-	shipID = shipid;
+void to_json(nlohmann::json& j, const GroupMember& m) {
+	String name;
+
+	j["creature"] = m.creature;
+
+	if (m.creature != nullptr) {
+		name = m.creature->getCustomObjectName().toString();
+	}
+
+	j["name"] = name;
 }
 
-GroupMember& GroupMember::operator=(const GroupMember& memInf) {
-	if (this == &memInf)
-		return *this;
+bool GroupMember::toBinaryStream(ObjectOutputStream* stream) {
+	String name;
 
-	memberID = memInf.memberID;
-	memberName = memInf.memberName;
-	shipID = memInf.shipID;
+	creature.toBinaryStream(stream);
 
-	return *this;
+	if (creature != nullptr) {
+		name = creature->getCustomObjectName().toString();
+	}
+
+	name.toBinaryStream(stream);
+
+	return true;
 }
