@@ -83,6 +83,7 @@ core3_mysql_setup() {
     msg "Init mysql database"
     chown -R mysql:mysql /var/lib/mysql /var/lib/mysql/.
     mysql_install_db
+    chown -R mysql:mysql /var/lib/mysql /var/lib/mysql/.
     /etc/init.d/mariadb start
     mysql -v <<-EOF
         SET @@SESSION.SQL_LOG_BIN=0;
