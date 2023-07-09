@@ -216,7 +216,8 @@ core3_bootstrap() {
     if [ -n "${WSL}" ] && [ -x "${WSL}" ]; then
         info "** Running in Windows Susbsystem for Linux"
         wsl.exe --status
-        eval "export RUN_USER=${USERNAME}"
+        export RUN_USER="$(wsl.exe id -u -n)"
+        echo "Used WSL to select RUN_USER=[${RUN_USER}]"
         export ADMIN_PASS=''
         core3_copy_tre_files
     fi
