@@ -14,10 +14,7 @@
 
 class MakeLeaderCommand : public QueueCommand {
 public:
-
-	MakeLeaderCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	MakeLeaderCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -27,11 +24,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		GroupManager* groupManager = GroupManager::instance();
-
-		if (groupManager == nullptr)
-			return GENERALERROR;
-
 		ZoneServer* zoneServer = server->getZoneServer();
 
 		if (zoneServer == nullptr)
@@ -39,7 +31,6 @@ public:
 
 		bool galaxyWide = ConfigManager::instance()->getBool("Core3.PlayerManager.GalaxyWideGrouping", false);
 
-		ManagedReference<SceneObject*> object = nullptr;
 		ManagedReference<CreatureObject*> tarCreo = nullptr;
 
 		StringTokenizer args(arguments.toString());
@@ -58,7 +49,7 @@ public:
 				tarCreo = chatManager->getPlayer(firstName);
 			}
 		} else {
-			object = zoneServer->getObject(target);
+			ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
 			if (object == nullptr || !object->isCreatureObject())
 				return GENERALERROR;
@@ -74,7 +65,31 @@ public:
 		if (group == nullptr)
 			return GENERALERROR;
 
-		groupManager->makeLeader(group, creature, tarCreo);
+		uint64 leaderID = group->getLeaderID();
+
+		if (leaderID != creature->getObjectID()) {
+			creature->sendSystemMessage("@group:must_be_leader");
+			return GENERALERROR;
+		} else if (leaderID == tarCreo->getObjectID()) {
+			// target is already the leader
+			return GENERALERROR;
+		}
+
+		Reference<CreatureObject*> leaderRef = creature;
+
+		Core::getTaskManager()->executeTask([group, leaderRef, tarCreo]() {
+			if (group == nullptr || leaderRef == nullptr || tarCreo == nullptr)
+				return;
+
+			GroupManager* groupManager = GroupManager::instance();
+
+			if (groupManager == nullptr)
+				return;
+
+			Locker locker(group);
+
+			groupManager->makeLeader(group, leaderRef, tarCreo);
+		}, "MakeGroupLeaderLambda");
 
 		return SUCCESS;
 	}

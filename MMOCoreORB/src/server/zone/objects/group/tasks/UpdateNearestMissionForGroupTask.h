@@ -23,7 +23,7 @@ namespace group {
 
 namespace tasks {
 
-class UpdateNearestMissionForGroupTask : public Task {
+class UpdateNearestMissionForGroupTask : public Task, public Logger {
 	WeakReference<GroupObject*> groupRef;
 	unsigned int planetCRC;
 
@@ -34,8 +34,7 @@ public:
 private:
 	float calculateManhattanDistanceToMission(const Vector3& position, server::zone::objects::mission::MissionObject* mission);
 
-	void setPlayersNearestMissionForGroupWaypoint(server::zone::objects::player::PlayerObject* ghost, 
-		server::zone::objects::mission::MissionObject* nearestMissionForGroup);
+	void setPlayersNearestMissionForGroupWaypoint(server::zone::objects::player::PlayerObject* ghost, server::zone::objects::mission::MissionObject* nearestMissionForGroup);
 };
 
 } // namespace tasks

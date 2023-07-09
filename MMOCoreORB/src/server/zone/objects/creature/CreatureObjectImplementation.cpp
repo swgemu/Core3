@@ -514,7 +514,7 @@ void CreatureObjectImplementation::setLevel(int level, bool randomHam) {
 	if (currentGroup != nullptr) {
 		Locker clocker(currentGroup, asCreatureObject());
 
-		currentGroup->calcGroupLevel();
+		currentGroup->calculateGroupLevel();
 	}
 }
 
@@ -1774,10 +1774,12 @@ UnicodeString CreatureObjectImplementation::getCreatureName() const {
 	return getCustomObjectName();
 }
 
-void CreatureObjectImplementation::updateGroupInviterID(uint64 id,
-		bool notifyClient) {
+void CreatureObjectImplementation::updateGroupInviterID(uint64 id, bool notifyClient) {
 	groupInviterID = id;
 	++groupInviteCounter;
+
+	if (!notifyClient)
+		return;
 
 	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(asCreatureObject());
 	delta->updateInviterId();
@@ -1786,9 +1788,11 @@ void CreatureObjectImplementation::updateGroupInviterID(uint64 id,
 	broadcastMessage(delta, true);
 }
 
-void CreatureObjectImplementation::updateGroup(GroupObject* grp,
-		bool notifyClient) {
+void CreatureObjectImplementation::updateGroup(GroupObject* grp, bool notifyClient) {
 	group = grp;
+
+	if (!notifyClient)
+		return;
 
 	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(asCreatureObject());
 	delta->updateGroupID();
@@ -2773,48 +2777,61 @@ void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
 }
 
 void CreatureObjectImplementation::updateGroupMFDPositions() {
-	Reference<CreatureObject*> creo = asCreatureObject();
+	Reference<CreatureObject*> thisCreo = asCreatureObject();
 	auto group = this->group;
 
-	if (group != nullptr) {
-		GroupList* list = group->getGroupList();
-		if (list != nullptr) {
-			auto zone = getZone();
+	if (group == nullptr)
+		return;
 
-			if (zone == nullptr) {
-				return;
-			}
+	auto zone = getZone();
 
-			ClientMfdStatusUpdateMessage* msg = new ClientMfdStatusUpdateMessage(creo, zone->getZoneName());
+	if (zone == nullptr) {
+		return;
+	}
+
+	GroupList* groupList = group->getGroupList();
+
+	if (groupList == nullptr)
+		return;
+
+	ClientMfdStatusUpdateMessage* msg = new ClientMfdStatusUpdateMessage(thisCreo, zone->getZoneName());
+
+	if (msg == nullptr)
+		return;
 
 #ifdef LOCKFREE_BCLIENT_BUFFERS
-			Reference<BasePacket*> pack = msg;
+	Reference<BasePacket*> pack = msg;
 #endif
 
-			for (int i = 0; i < list->size(); i++) {
+	CloseObjectsVector* creatureCloseObjects = (CloseObjectsVector*) getCloseObjects();
+	SortedVector<QuadTreeEntry*> closeObjectsVector;
 
-				Reference<CreatureObject*> member = list->getSafe(i).get();
+	if (creatureCloseObjects == nullptr)
+		return;
 
-				if (member == nullptr || creo == member || !member->isPlayerCreature())
-					continue;
+	creatureCloseObjects->safeCopyReceiversTo(closeObjectsVector, CloseObjectsVector::CREOTYPE);
 
-				CloseObjectsVector* cev = (CloseObjectsVector*)member->getCloseObjects();
+	uint64 creoID = thisCreo->getObjectID();
 
-				if (cev == nullptr || cev->contains(creo.get()))
-					continue;
+	for (int i = 0; i < groupList->size(); i++) {
+		Reference<CreatureObject*> member = groupList->getSafe(i).get();
+
+		if (member == nullptr || creoID == member->getObjectID())
+			continue;
+
+		if (closeObjectsVector.contains(member))
+			continue;
 
 #ifdef LOCKFREE_BCLIENT_BUFFERS
-				member->sendMessage(pack);
+		member->sendMessage(pack);
 #else
-				member->sendMessage(msg->clone());
+		member->sendMessage(msg->clone());
 #endif
-			}
+	}
 
 #ifndef LOCKFREE_BCLIENT_BUFFERS
-			delete msg;
+	delete msg;
 #endif
-		}
-	}
 }
 
 void CreatureObjectImplementation::notifySelfPositionUpdate() {

@@ -23,23 +23,29 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
 
+//#define DEBUG_GROUPS
+
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	auto client = player->getClient();
-	if (client == nullptr)
+	if (player == nullptr)
 		return;
 
-	BaseMessage* grup3 = new GroupObjectMessage3(_this.getReferenceUnsafeStaticCast());
-	client->sendMessage(grup3);
+#ifdef DEBUG_GROUPS
+	info(true) << "GroupObjectImplementation::sendBaselinesTo -- Player: " << player->getDisplayedName();
+#endif
 
-	BaseMessage* grup6 = new GroupObjectMessage6(_this.getReferenceUnsafeStaticCast());
-	client->sendMessage(grup6);
+	GroupObjectMessage3* grup3 = new GroupObjectMessage3(_this.getReferenceUnsafeStaticCast());
+	player->sendMessage(grup3);
 
-	if (player->isPlayerCreature() && chatRoom != nullptr)
-		chatRoom->sendTo(cast<CreatureObject*>( player));
+	GroupObjectMessage6* grup6 = new GroupObjectMessage6(_this.getReferenceUnsafeStaticCast());
+	player->sendMessage(grup6);
 }
 
 void GroupObjectImplementation::startChatRoom(CreatureObject* leader) {
 	ChatManager* chatManager = server->getZoneServer()->getChatManager();
+
+	if (chatManager == nullptr) {
+		return;
+	}
 
 	chatRoom = chatManager->createGroupRoom(getObjectID(), leader);
 }
@@ -60,11 +66,16 @@ void GroupObjectImplementation::destroyChatRoom() {
 }
 
 void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
-	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* member = groupMembers.get(i).get().get();
+	if (msg == nullptr)
+		return;
 
-		if (member->isPlayerCreature())
-			member->sendMessage(msg->clone());
+	for (int i = 0; i < groupMembers.size(); i++) {
+		CreatureObject* member = getGroupMember(i);
+
+		if (member == nullptr || !member->isPlayerCreature())
+			continue;
+
+		member->sendMessage(msg->clone());
 	}
 
 	delete msg;
@@ -72,9 +83,12 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 
 void GroupObjectImplementation::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* member = groupMembers.get(i).get().get();
+		CreatureObject* member = getGroupMember(i);
 
-		if(!sendSelf && member == player)
+		if (member == nullptr)
+			continue;
+
+		if (!sendSelf && player != nullptr && member->getObjectID() == player->getObjectID())
 			continue;
 
 		if (member->isPlayerCreature())
@@ -85,37 +99,50 @@ void GroupObjectImplementation::broadcastMessage(CreatureObject* player, BaseMes
 }
 
 void GroupObjectImplementation::updatePvPStatusNearCreature(CreatureObject* creature) {
+	if (creature == nullptr)
+		return;
+
 	CloseObjectsVector* creatureCloseObjects = (CloseObjectsVector*) creature->getCloseObjects();
 	SortedVector<QuadTreeEntry*> closeObjectsVector;
+
+	if (creatureCloseObjects == nullptr)
+		return;
 
 	creatureCloseObjects->safeCopyReceiversTo(closeObjectsVector, CloseObjectsVector::CREOTYPE);
 
 	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* member = groupMembers.get(i).get().get();
+		CreatureObject* member = getGroupMember(i);
 
-		if (closeObjectsVector.contains(member)) {
+		if (member == nullptr || !closeObjectsVector.contains(member))
+			continue;
 
-			if (creature->isPlayerCreature())
-				member->sendPvpStatusTo(creature);
+		if (creature->isPlayerCreature())
+			member->sendPvpStatusTo(creature);
 
-			if (member->isPlayerCreature())
-				creature->sendPvpStatusTo(member);
-		}
+		if (member->isPlayerCreature())
+			creature->sendPvpStatusTo(member);
 	}
 }
 
-void GroupObjectImplementation::addMember(CreatureObject* newMember) {
-	Locker locker(_this.getReferenceUnsafeStaticCast());
+void GroupObjectImplementation::addMember(CreatureObject* newMember, bool notifyClient) {
+	// Pre: Group is locked, newMember is locked
 
-	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
-	grp->startUpdate(1);
-	groupMembers.add(newMember, grp);
-	grp->close();
+	if (newMember == nullptr)
+		return;
 
-	broadcastMessage(grp);
+#ifdef DEBUG_GROUPS
+	info(true) << "Group ID: " << getObjectID() << " Adding Member: " << newMember->getDisplayedName();
+#endif
+
+	// Handle player that is piloting ship
+	uint64 shipID = 0;
+
+	// Add the meber to the list
+	groupMembers.add(newMember);
 
 	if (newMember->isPlayerCreature()) {
-		sendTo(newMember, true);
+		if (notifyClient)
+			sendTo(newMember, true);
 
 		if (hasSquadLeader()) {
 			addGroupModifiers(newMember);
@@ -126,39 +153,67 @@ void GroupObjectImplementation::addMember(CreatureObject* newMember) {
 
 	updatePvPStatusNearCreature(newMember);
 
-	calcGroupLevel();
+	calculateGroupLevel();
+
+	// Send update after group level is recalculated
+	if (notifyClient) {
+		GroupObjectDeltaMessage6* groupDelta6 = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
+
+		if (groupDelta6 != nullptr) {
+			groupDelta6->updateMembers();
+			groupDelta6->close();
+
+			broadcastMessage(groupDelta6);
+		}
+	}
 }
 
-void GroupObjectImplementation::removeMember(CreatureObject* member) {
-	bool wasLeader = getLeader() == member;
+void GroupObjectImplementation::removeMember(CreatureObject* memberRemoved) {
+	// Pre: group is locked, member is locked
+
+	if (memberRemoved == nullptr)
+		return;
+
+#ifdef DEBUG_GROUPS
+	info(true) << "Group ID: " << getObjectID() << " Removing Member: " << memberRemoved->getDisplayedName();
+#endif
+
+	uint64 memberRemovedID = memberRemoved->getObjectID();
+	bool wasLeader = getLeaderID() == memberRemovedID;
 
 	if (hasSquadLeader()) {
 		if (wasLeader)
 			removeGroupModifiers();
 		else
-			removeGroupModifiers(member);
+			removeGroupModifiers(memberRemoved);
 	}
 
+	// remove member from the list
 	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* scno = groupMembers.get(i).get().get();
+		CreatureObject* member = groupMembers.get(i).get().get();
 
-		if (scno == member) {
-			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
-			grp->startUpdate(1);
-			groupMembers.remove(i, grp);
-			grp->close();
+		if (member ==  nullptr || member->getObjectID() != memberRemovedID)
+			continue;
 
-			broadcastMessage(grp);
+		GroupObjectDeltaMessage6* groupDelta6 = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
+
+		if (groupDelta6 != nullptr) {
+			groupDelta6->startUpdate(0x1);
+			groupMembers.remove(i, groupDelta6);
+			groupDelta6->close();
+
+			broadcastMessage(groupDelta6);
 		}
 	}
 
-	if (member->isPlayerCreature()) {
+	if (memberRemoved->isPlayerCreature()) {
 		// Remove member's pets
-		RemovePetsFromGroupTask* task = new RemovePetsFromGroupTask(member, _this.getReferenceUnsafeStaticCast());
+		RemovePetsFromGroupTask* task = new RemovePetsFromGroupTask(memberRemoved, _this.getReferenceUnsafeStaticCast());
 		task->execute();
 
 		//Close any open Group SUIs.
-		ManagedReference<PlayerObject*> ghost = member->getPlayerObject();
+		ManagedReference<PlayerObject*> ghost = memberRemoved->getPlayerObject();
+
 		if (ghost != nullptr) {
 			ghost->closeSuiWindowType(SuiWindowType::GROUP_LOOT_RULE);
 			ghost->closeSuiWindowType(SuiWindowType::GROUP_LOOT_CHANGED);
@@ -167,87 +222,145 @@ void GroupObjectImplementation::removeMember(CreatureObject* member) {
 			ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
 		}
 
-		//Reset Master Looter if needed.
-		if (getMasterLooterID() == member->getObjectID()) {
+		// Reset Master Looter if needed.
+		if (getMasterLooterID() == memberRemoved->getObjectID()) {
 			ManagedReference<CreatureObject*> groupLeader = getLeader();
-			GroupManager::instance()->changeMasterLooter(_this.getReferenceUnsafeStaticCast(), groupLeader, false);
+
+			if (groupLeader != nullptr)
+				setMasterLooterID(groupLeader->getObjectID());
 		}
 
 		if (wasLeader && hasSquadLeader()) {
 			addGroupModifiers();
 		}
 
-		Zone* zone = member->getZone();
+		Zone* zone = memberRemoved->getZone();
 
 		if (zone != nullptr) {
 			scheduleUpdateNearestMissionForGroup(zone->getPlanetCRC());
 		}
 	}
 
-	updatePvPStatusNearCreature(member);
-
-	calcGroupLevel();
+	updatePvPStatusNearCreature(memberRemoved);
+	calculateGroupLevel();
 }
 
-bool GroupObjectImplementation::hasMember(CreatureObject* member) {
-	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* play = groupMembers.get(i).get().get();
+bool GroupObjectImplementation::hasMember(CreatureObject* player) {
+	if (player == nullptr)
+		return false;
 
-		if (play == member)
+	uint64 playerID = player->getObjectID();
+
+	for (int i = 0; i < groupMembers.size(); i++) {
+		CreatureObject* member = groupMembers.get(i).get().get();
+
+		if (member == nullptr)
+			continue;
+
+		if (member->getObjectID() == playerID)
 			return true;
 	}
 
 	return false;
 }
 
-bool GroupObjectImplementation::hasMember(uint64 member) {
+bool GroupObjectImplementation::hasMember(uint64 playerID) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* play = groupMembers.get(i).get().get();
+		CreatureObject* member = groupMembers.get(i).get().get();
 
-		if (play->getObjectID() == member)
+		if (member == nullptr)
+			continue;
+
+		if (member->getObjectID() == playerID)
 			return true;
 	}
 
 	return false;
 }
 
-void GroupObjectImplementation::makeLeader(CreatureObject* player) {
-	if (groupMembers.size() < 2 || !player->isPlayerCreature())
+void GroupObjectImplementation::makeLeader(CreatureObject* newLeader) {
+	if (groupMembers.size() < 2 || newLeader == nullptr)
 		return;
 
-	Reference<CreatureObject*> temp = groupMembers.get(0).get();
+	Reference<CreatureObject*> oldLeader = groupMembers.get(0).get();
+
+	if (oldLeader == nullptr)
+		return;
+
+#ifdef DEBUG_GROUPS
+	info(true) << "makeLeader -- Current Leader: " << oldLeader->getDisplayedName() << " New Leader: " << newLeader->getDisplayedName();
+#endif
+
+	uint64 newLeaderID = newLeader->getObjectID();
+	int groupPosition = -1;
 
 	for (int i = 0; i < groupMembers.size(); ++i) {
-		if (groupMembers.get(i) == player) {
-			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
-			grp->startUpdate(1);
+		CreatureObject* member = groupMembers.get(i).get();
 
-			if (hasSquadLeader())
-				removeGroupModifiers();
+		if (member == nullptr || member->getObjectID() != newLeaderID)
+			continue;
 
-			groupMembers.set(0, player, grp, 2);
-			groupMembers.set(i, temp.get(), grp, 0);
+		groupPosition = i;
+		break;
+	}
 
-			grp->close();
+	if (groupPosition < 0)
+		return;
 
-			broadcastMessage(grp);
+	if (hasSquadLeader())
+		removeGroupModifiers();
 
-			if (hasSquadLeader())
-				addGroupModifiers();
+	GroupObjectDeltaMessage6* groupDelta6 = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
 
-			return;
-		}
+	if (groupDelta6 != nullptr) {
+		groupDelta6->startUpdate(0x1);
+
+		groupMembers.set(0, newLeader, groupDelta6, 2);
+		groupMembers.set(groupPosition, oldLeader.get(), groupDelta6, 0);
+
+		groupDelta6->close();
+		broadcastMessage(groupDelta6);
+	}
+
+	if (hasSquadLeader())
+		addGroupModifiers();
+
+	// Send out leader update message
+	StringIdChatParameter message;
+	message.setStringId("group", "new_leader"); // %TU is now the group leader.
+
+	String firstNameLeader = newLeader->getFirstName();
+	bool galaxyWide = ConfigManager::instance()->getBool("Core3.PlayerManager.GalaxyWideGrouping", false);
+
+	if (galaxyWide) {
+		message.setTU(newLeader->getDisplayedName());
+	} else {
+		message.setTU(newLeader->getObjectID());
+	}
+
+	for (int i = 0; i < groupMembers.size(); ++i) {
+		CreatureObject* member = getGroupMember(i);
+
+		if (member == nullptr || !member->isPlayerCreature())
+			continue;
+
+		member->sendSystemMessage(message);
 	}
 }
 
 void GroupObjectImplementation::disband() {
 	//Group is locked
 
-	for (int i = 0; i < groupMembers.size(); i++) {
-		if (groupMembers.get(i) == nullptr)
-			continue;
+	bool hasSL = hasSquadLeader();
+	int groupSize = groupMembers.size();
 
-		Reference<CreatureObject*> groupMember = getGroupMember(i);
+	for (int i = groupSize - 1; i >= 0; --i) {
+		ManagedReference<CreatureObject*> groupMember = getGroupMember(i);
+
+		groupMembers.remove(i);
+
+		if (groupMember == nullptr)
+			continue;
 
 		try {
 			Locker clocker(groupMember, _this.getReferenceUnsafeStaticCast());
@@ -258,24 +371,18 @@ void GroupObjectImplementation::disband() {
 				if (ghost != nullptr) {
 					ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
 				}
+
+				if (hasSL)
+					removeGroupModifiers(groupMember);
 			}
+
+			updatePvPStatusNearCreature(groupMember);
 
 			groupMember->updateGroup(nullptr);
 
 		} catch (Exception& e) {
 			System::out << "Exception in GroupObject::disband(Player* player)\n";
 		}
-	}
-
-	if (hasSquadLeader())
-		removeGroupModifiers();
-
-	while (groupMembers.size() > 0) {
-		CreatureObject* member = groupMembers.get(0).get().get();
-
-		updatePvPStatusNearCreature(member);
-
-		groupMembers.remove(0);
 	}
 
 	destroyChatRoom();
@@ -408,7 +515,7 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 	return modifier;
 }
 
-void GroupObjectImplementation::calcGroupLevel() {
+void GroupObjectImplementation::calculateGroupLevel() {
 	int highestPlayer = 0;
 	groupLevel = 0;
 	factionPetLevel = 0;
@@ -435,13 +542,6 @@ void GroupObjectImplementation::calcGroupLevel() {
 			}
 		}
 	}
-
-	GroupObjectDeltaMessage6* msg = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
-
-	msg->updateLevel(this->groupLevel);
-	msg->close();
-
-	broadcastMessage(msg);
 }
 
 int GroupObjectImplementation::getNumberOfPlayerMembers() {
@@ -462,9 +562,12 @@ void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param, 
 	Locker lock(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < groupMembers.size(); ++i) {
-		CreatureObject* member = groupMembers.get(i).get().get();
+		CreatureObject* member = getGroupMember(i);
 
-		if (!member->isPlayerCreature() || (!sendLeader && member == getLeader()))
+		if (member == nullptr || !member->isPlayerCreature())
+			continue;
+
+		if (!sendLeader && member->getObjectID() == getLeaderID())
 			continue;
 
 		member->sendSystemMessage(param);
@@ -474,10 +577,15 @@ void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param, 
 void GroupObjectImplementation::sendSystemMessage(const String& fullPath, bool sendLeader) {
 	Locker lock(_this.getReferenceUnsafeStaticCast());
 
-	for (int i = 0; i < groupMembers.size(); ++i) {
-		CreatureObject* member = groupMembers.get(i).get().get();
+	uint64 leaderID = getLeaderID();
 
-		if (!member->isPlayerCreature() || (!sendLeader && member == getLeader()))
+	for (int i = 0; i < groupMembers.size(); ++i) {
+		CreatureObject* member = getGroupMember(i);
+
+		if (member == nullptr)
+			continue;
+
+		if (!member->isPlayerCreature() || (!sendLeader && member->getObjectID() == leaderID))
 			continue;
 
 		member->sendSystemMessage(fullPath);
@@ -488,9 +596,9 @@ void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param, 
 	Locker lock(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < groupMembers.size(); ++i) {
-		CreatureObject* member = groupMembers.get(i).get().get();
+		Reference<CreatureObject*> member = getGroupMember(i);
 
-		if (!member->isPlayerCreature() || member == excluded)
+		if (member == nullptr || !member->isPlayerCreature() || member == excluded)
 			continue;
 
 		member->sendSystemMessage(param);
@@ -498,15 +606,21 @@ void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param, 
 }
 
 bool GroupObjectImplementation::isOtherMemberPlayingMusic(CreatureObject* player) {
-	for (int i = 0; i < getGroupSize(); ++i) {
-		Reference<CreatureObject*> groupMember = getGroupMember(i);
+	if (player == nullptr)
+		return false;
 
-		if (groupMember == player || !groupMember->isPlayerCreature())
+	uint64 playerID = player->getObjectID();
+
+	for (int i = 0; i < getGroupSize(); ++i) {
+		Reference<CreatureObject*> member = getGroupMember(i);
+
+		if (member == nullptr || !member->isPlayerCreature())
 			continue;
 
-		if (groupMember->isPlayingMusic()) {
-			return true;
-		}
+		if (member->getObjectID() == playerID || !member->isPlayingMusic())
+			continue;
+
+		return true;
 	}
 
 	return false;
@@ -539,5 +653,36 @@ void GroupObjectImplementation::updateLootRules() {
 	GroupObjectDeltaMessage6* msg = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
 	msg->updateLootRules(this->masterLooterID, this->lootRule);
 	msg->close();
+
 	broadcastMessage(msg);
+}
+
+bool GroupObjectImplementation::initializeLeader(CreatureObject* leader, CreatureObject* member) {
+	if (leader == nullptr || member == nullptr)
+		return false;
+
+	groupMembers.add(leader, nullptr);
+	groupMembers.add(member, nullptr, 0);
+
+	setMasterLooterID(leader->getObjectID());
+	setLootRule(GroupManager::FREEFORALL);
+	calculateGroupLevel();
+
+#ifdef DEBUG_GROUPS
+	info(true) << "Initialize Leader called for Leader: " << leader->getDisplayedName() << " with Initial Member: " << member->getDisplayedName();
+#endif
+
+	return true;
+}
+
+uint64 GroupObjectImplementation::getLeaderID() {
+	if (groupMembers.size() == 0)
+		return 0;
+
+	CreatureObject* leader = getLeader();
+
+	if (leader == nullptr)
+		return 0;
+
+	return leader->getObjectID();
 }

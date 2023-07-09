@@ -42,7 +42,8 @@
 --true = 1, false = 0
 
 MakeLeaderCommand = {
-        name = "makeleader",
+	name = "makeleader",
+	time = 2.0,
 }
 
 AddCommand(MakeLeaderCommand)

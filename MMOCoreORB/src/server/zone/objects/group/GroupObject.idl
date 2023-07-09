@@ -71,16 +71,21 @@ class GroupObject extends SceneObject {
 	@dirty
 	public native void sendSystemMessage(@dereferenced StringIdChatParameter param, CreatureObject excluded);
 
-	public native void addMember(CreatureObject newMember);
+	@preLocked
+	public native void addMember(CreatureObject newMember, boolean notify = true);
+
 	@preLocked
 	public native void removeMember(CreatureObject member);
 
 	@preLocked
 	public native void disband();
+
+	@preLocked
 	public native void makeLeader(CreatureObject player);
 
 	@dirty
 	public native boolean hasMember(CreatureObject member);
+
 	@dirty
 	public native boolean hasMember(unsigned long member);
 
@@ -95,7 +100,7 @@ class GroupObject extends SceneObject {
 
 	@dirty
 	@preLocked
-	public native void calcGroupLevel();
+	public native void calculateGroupLevel();
 
 	@read
 	public int getGroupLevel(boolean includeFactionPets = true) {
@@ -107,7 +112,7 @@ class GroupObject extends SceneObject {
 
 	@read
 	public int getFactionPetLevel() {
-	    return factionPetLevel;
+		return factionPetLevel;
 	}
 
 	@read
@@ -129,10 +134,6 @@ class GroupObject extends SceneObject {
 		return groupMembers.getSafe(index);
 	}
 
-	public void initializeLeader(CreatureObject player) {
-		groupMembers.add(player);
-	}
-
 	@reference
 	@dirty
 	public CreatureObject getLeader() {
@@ -142,6 +143,13 @@ class GroupObject extends SceneObject {
 			return groupMembers.getSafe(0);
 		}
 	}
+
+	@preLocked
+	public native boolean initializeLeader(CreatureObject leader, CreatureObject member);
+
+	@local
+	@dirty
+	public native unsigned long getLeaderID();
 
 	@local
 	@dirty
