@@ -9,27 +9,35 @@
 
 class JoinCommand : public QueueCommand {
 public:
-
-	JoinCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	JoinCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		GroupManager* groupManager = GroupManager::instance();
-		groupManager->joinGroup(creature);
+		if (creature->isGrouped())
+			return GENERALERROR;
+
+		Reference<CreatureObject*> creatureRef = creature;
+
+		Core::getTaskManager()->executeTask([creatureRef] () {
+			if (creatureRef == nullptr)
+				return;
+
+			GroupManager* groupManager = GroupManager::instance();
+
+			if (groupManager == nullptr)
+				return;
+
+			groupManager->joinGroup(creatureRef);
+		}, "JoinGroupLambda");
 
 		return SUCCESS;
 	}
-
 };
 
-#endif //JOINCOMMAND_H_
-
+#endif // JOINCOMMAND_H_

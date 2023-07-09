@@ -138,9 +138,11 @@ public:
 
 		E object = vector.set(idx, newValue);
 
+		updateCounter += updates;
+
 		if (message != nullptr) {
 			if (updates != 0)
-				message->startList(updates, updateCounter += updates);
+				message->startList(updates, updateCounter);
 
 			message->insertByte(2);
 			message->insertShort(idx);
@@ -157,9 +159,11 @@ public:
 
 		bool val = vector.add(element);
 
+		updateCounter += updates;
+
 		if (message != nullptr) {
 			if (updates != 0)
-				message->startList(updates, updateCounter += updates);
+				message->startList(updates, updateCounter);
 
 			message->insertByte(1);
 			message->insertShort(vector.size() - 1);
@@ -188,9 +192,11 @@ public:
 
 		E object = vector.remove(index);
 
+		updateCounter += updates;
+
 		if (message != nullptr) {
 			if (updates != 0)
-				message->startList(updates, updateCounter += updates);
+				message->startList(updates, updateCounter);
 
 			message->insertByte(0);
 			message->insertShort((uint16)index);

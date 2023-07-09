@@ -8,50 +8,114 @@
 #include "server/zone/packets/DeltaMessage.h"
 #include "server/zone/objects/group/GroupObject.h"
 
-class GroupObjectDeltaMessage6 : public DeltaMessage {
-	GroupObject* grup;
-	
+class GroupObjectDeltaMessage6 : public DeltaMessage, public Logger {
+	GroupObject* group;
+
 public:
-	GroupObjectDeltaMessage6(GroupObject* gr)
-			: DeltaMessage(gr->getObjectID(), 0x4352454F, 6) {
-		grup = gr;
+	GroupObjectDeltaMessage6(GroupObject* gr) : DeltaMessage(gr->getObjectID(), 'GRUP', 0x06) {
+		//info(true) << "GroupObjectDeltaMessage6 called";
+
+		group = gr;
 	}
 
-	/*void addMember(SceneObject* player, int idx) {
+	void initialUpdate() {
+		//info(true) << "GroupObjectDeltaMessage6 -- initialUpdate";
+
+		// Members
 		startUpdate(0x01);
 
-		startList(1, grup->getNewListCount(1));
-		
-		insertByte(1);
-		insertShort(idx);
-		insertLong(player->getObjectID());
-		insertAscii(player->getgetObjectName()->getCustomString().toString());
+		GroupList* list = group->getGroupList();
+
+		if (list == nullptr)
+			return;
+
+		int size = list->size();
+		int updCounter = list->getUpdateCounter();
+
+		insertInt(size);
+		insertInt(updCounter);
+
+		for (int i = 0; i < size; ++i) {
+			insertByte(0x1); // Initial
+			insertShort(i); // Location on list
+
+			CreatureObject* member = list->get(i).get().get();
+
+			insertLong(member->getObjectID());
+			insertAscii(member->getDisplayedName());
+		}
+
+		// Members Ships
+		startUpdate(0x02);
+
+		// Insert players ships
+		insertInt(size); // Size
+		insertInt(updCounter); // counter
+
+		for (int j = 0; j < size; ++j) {
+			insertByte(0x1); // Initial
+			insertShort(j); // Location on list
+
+			insertLong(0);// Ship ID
+			insertInt(j); // Vector location
+		}
+
+		startUpdate(0x04);
+		insertShort((uint16)group->getGroupLevel());
+
+		startUpdate(0x06);
+		insertLong(group->getMasterLooterID());
 	}
-	
-	void removeMember(int idx) {
+
+	void updateMembers() {
+		//info(true) << "GroupObjectDeltaMessage6 -- updateMembers";
+
+		// Members
 		startUpdate(0x01);
-		
-		startList(1, grup->getNewListCount(1));
-		insertByte(0);
-		insertShort(idx);
+
+		GroupList* list = group->getGroupList();
+
+		if (list == nullptr)
+			return;
+
+		int size = list->size();
+		int updCounter = list->getUpdateCounter();
+
+		insertInt(size);
+		insertInt(updCounter);
+
+		for (int i = 0; i < size; ++i) {
+			insertByte(0x2); // Update
+			insertShort((uint8)i); // Location on list
+
+			CreatureObject* member = list->get(i).get().get();
+
+			insertLong(member->getObjectID());
+			insertAscii(member->getDisplayedName());
+		}
+
+		// Members Ships
+		startUpdate(0x02);
+
+		// Insert players ships
+		insertInt(size); // Size
+		insertInt(updCounter); // counter
+
+		for (int j = 0; j < size; ++j) {
+			insertByte(0x2); // Update
+			insertShort(j); // Location on list
+
+			insertLong(0);// Ship ID
+			insertInt(j); // Vector location
+		}
+
+		startUpdate(0x04);
+		insertShort((uint16)group->getGroupLevel());
+
+		startUpdate(0x06);
+		insertLong(group->getMasterLooterID());
 	}
-	
-	void updateLeader(SceneObject* newLeader, SceneObject* oldLeader, int oldLeaderIdx) {
-		startUpdate(0x01);
-		
-		startList(2, grup->getNewListCount(2));
-		
-		insertByte(2);
-		insertShort(oldLeaderIdx);
-		insertLong(oldLeader->getObjectID());
-		insertAscii(oldLeader->getObjectName()->getCustomString().toString());
-		
-		insertByte(2);
-		insertShort(0);
-		insertLong(newLeader->getObjectID());
-		insertAscii(newLeader->getObjectName()->getCustomString().toString());
-	}*/
-	
+
 	void updateLevel(uint16 value) {
 		startUpdate(0x04);
 		insertShort(value);
@@ -63,7 +127,6 @@ public:
 		startUpdate(0x07);
 		insertInt(rule);
 	}
-
 };
 
 #endif /*GROUPOBJECTDELTAMESSAGE6_H_*/
