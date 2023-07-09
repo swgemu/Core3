@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TARGET_OS='debian'
-TARGET_VERSION='11'
+TARGET_VERSIONS='11|12'
 
 msg() {
     echo "${COLOR_BG_GREEN}${COLOR_FG_BLACK}>> $*${COLOR_RESET}" >&2
@@ -188,7 +188,7 @@ core3_init_system() {
     msg "Running /tmp/init_core3.sh created from ${src}"
     SECONDS=0
     # Use source to keep passing all our vars, keep in a sub-shell to avoid pollution
-    (source /tmp/init_core3.sh) || error "/tmp/init_core3.sh failed, RET=$?" 21
+    (exec </dev/null > >(sed 's/^/init_core3: /') 2>&1; source /tmp/init_core3.sh) || error "/tmp/init_core3.sh failed, RET=$?" 21
     msg "/tmp/init_core3.sh completed in ${SECONDS} second(s)."
 }
 
@@ -205,9 +205,9 @@ core3_bootstrap() {
 
     msg "OS: ${PRETTY_NAME}"
 
-    [ "${ID}" == "${TARGET_OS}" ] || error "Sorry this script is designed for ${TARGET_OS} ${TARGET_VERSION} only." 101
+    [ "${ID}" == "${TARGET_OS}" ] || error "Sorry this script is designed for ${TARGET_OS} versions ${TARGET_VERSIONS} only." 101
 
-    [ "${VERSION_ID}" == "${TARGET_VERSION}" ] || error "Current support is for ${TARGET_OS} ${TARGET_VERSION} only." 102
+    [[ "${VERSION_ID}" =~ ${TARGET_VERSIONS} ]] || error "Current support is for ${TARGET_OS} versions ${TARGET_VERSIONS} only." 102
 
     [ "$(id -u)" == 0 ] || error "Must run as root." 103
 
