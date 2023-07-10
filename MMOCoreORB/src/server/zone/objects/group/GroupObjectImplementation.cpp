@@ -135,18 +135,20 @@ void GroupObjectImplementation::addMember(CreatureObject* newMember, bool notify
 	info(true) << "Group ID: " << getObjectID() << " Adding Member: " << newMember->getDisplayedName();
 #endif
 
-	// Handle player that is piloting ship
-	if (newMember->isPilotingShip()) {
-		ManagedReference<SceneObject*> rootParent = newMember->getRootParent();
-
-		//if (rootParent != nullptr && rootParent->isShipObject())
-			//shipID = rootParent->getObjectID();
-	}
-
 	// Add the meber to the list
 	groupMembers.add(newMember);
 
+	uint64 shipID = 0;
+
 	if (newMember->isPlayerCreature()) {
+		// Handle player that is piloting ship
+		if (newMember->isPilotingShip()) {
+			ManagedReference<SceneObject*> rootParent = newMember->getRootParent();
+
+			if (rootParent != nullptr && rootParent->isShipObject())
+				shipID = rootParent->getObjectID();
+		}
+
 		if (notifyClient)
 			sendTo(newMember, true);
 
@@ -156,6 +158,9 @@ void GroupObjectImplementation::addMember(CreatureObject* newMember, bool notify
 
 		scheduleUpdateNearestMissionForGroup(newMember->getPlanetCRC());
 	}
+
+	// Add to Ship List
+	groupMemberShips.add(newMember->getObjectID(), shipID);
 
 	updatePvPStatusNearCreature(newMember);
 
@@ -206,6 +211,9 @@ void GroupObjectImplementation::removeMember(CreatureObject* memberRemoved) {
 		if (groupDelta6 != nullptr) {
 			groupDelta6->startUpdate(0x1);
 			groupMembers.remove(i, groupDelta6);
+
+			groupMemberShips.drop(memberRemoved->getObjectID());
+
 			groupDelta6->close();
 
 			broadcastMessage(groupDelta6);
@@ -254,15 +262,25 @@ void GroupObjectImplementation::removeMember(CreatureObject* memberRemoved) {
 
 void GroupObjectImplementation::updateMemberShip(CreatureObject* member, ShipObject* ship) {
 	// Pre: Group is locked
-//#ifdef DEBUG_GROUPS
-//	info(true) << "GroupObjectImplementation::updateMemberShip -- called for GroupMember: " << member->getDisplayedName() << " Ship: " << ship->getObjectID();
-//#endif
+	if (member == nullptr)
+		return;
 
-	//GroupObjectDeltaMessage6* groupDelta6 = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
+	uint64 shipID = (ship != nullptr) ? ship->getObjectID() : 0;
 
-	//groupDelta6->close();
+#ifdef DEBUG_GROUPS
+	info(true) << "GroupObjectImplementation::updateMemberShip -- called for GroupMember: " << member->getDisplayedName();
+#endif
 
-	//broadcastMessage(groupDelta6);
+	groupMemberShips.add(member->getObjectID(), shipID);
+
+	GroupObjectDeltaMessage6* groupDelta6 = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
+
+	if (groupDelta6 != nullptr) {
+		groupDelta6->updateMembers();
+		groupDelta6->close();
+
+		broadcastMessage(groupDelta6);
+	}
 }
 
 bool GroupObjectImplementation::hasMember(CreatureObject* player) {
@@ -688,19 +706,25 @@ bool GroupObjectImplementation::initializeLeader(CreatureObject* leader, Creatur
 	setLootRule(GroupManager::FREEFORALL);
 	calculateGroupLevel();
 
+	uint64 leaderShipID = 0;
+	uint64 memberShipID = 0;
+
 	if (leader->isPilotingShip()) {
 		ManagedReference<SceneObject*> leaderRootParent = leader->getRootParent();
 
-		//if (leaderRootParent != nullptr && leaderRootParent->isShipObject())
-			//leaderShipID = leaderRootParent->getObjectID();
+		if (leaderRootParent != nullptr && leaderRootParent->isShipObject())
+			leaderShipID = leaderRootParent->getObjectID();
 	}
 
 	if (member->isPilotingShip()) {
 		ManagedReference<SceneObject*> memberRootParent = member->getRootParent();
 
-		//if (memberRootParent != nullptr && memberRootParent->isShipObject())
-			//memberShipID = memberRootParent->getObjectID();
+		if (memberRootParent != nullptr && memberRootParent->isShipObject())
+			memberShipID = memberRootParent->getObjectID();
 	}
+
+	groupMemberShips.add(leader->getObjectID(), leaderShipID, nullptr);
+	groupMemberShips.add(member->getObjectID(), memberShipID, nullptr, 0);
 
 #ifdef DEBUG_GROUPS
 	info(true) << "Initialize Leader called for Leader: " << leader->getDisplayedName() << " with Initial Member: " << member->getDisplayedName();

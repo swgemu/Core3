@@ -143,9 +143,10 @@ void GroupManager::joinGroup(CreatureObject* player) {
 
 	uint64 inviterID = player->getGroupInviterID();
 
-	if (player->getZone() == nullptr) {
+	auto zone = player->getZone();
+
+	if (zone == nullptr)
 		return;
-	}
 
 	auto zoneServer = player->getZoneServer();
 
@@ -277,7 +278,6 @@ void GroupManager::createGroup(CreatureObject* leader, CreatureObject* creature)
 
 	// Send Baselines
 	group->sendTo(leader, true);
-	group->sendTo(creature, true);
 
 	// Remove Leader LFG bit
 	auto leaderGhost = leader->getPlayerObject();
@@ -314,10 +314,10 @@ void GroupManager::createGroup(CreatureObject* leader, CreatureObject* creature)
 
 			chatMan->handleChatEnterRoomById(creature, groupChat->getRoomID(), -1, true);
 		}
-	}
 
-	if (creature->isPlayingMusic()) {
-		joinGroupEntertainingSession(creature);
+		if (creature->isPlayingMusic()) {
+			joinGroupEntertainingSession(creature);
+		}
 	}
 
 	GroupObjectDeltaMessage6* groupDelta6 = new GroupObjectDeltaMessage6(group);

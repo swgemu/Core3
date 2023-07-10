@@ -75,9 +75,11 @@ public:
 	virtual int add(const K& key, const V& value, DeltaMessage* message = nullptr, int updates = 1) {
 		int pos = vectorMap.put(key, value);
 
+		updateCounter += updates;
+
 		if (message != nullptr) {
 			if (updates != 0)
-				message->startList(updates, updateCounter += updates);
+				message->startList(updates, updateCounter);
 
 			message->insertByte(DeltaMapCommands::ADD);
 
@@ -93,9 +95,11 @@ public:
 	virtual int set(const K& key, const V& value, DeltaMessage* message = nullptr, int updates = 1) {
 		int pos = vectorMap.put(key, value);
 
+		updateCounter += updates;
+
 		if (message != nullptr) {
 			if (updates != 0)
-				message->startList(updates, updateCounter += updates);
+				message->startList(updates, updateCounter);
 
 			message->insertByte(DeltaMapCommands::SET);
 
@@ -112,11 +116,13 @@ public:
 		if (!vectorMap.contains(key))
 			return false;
 
+		updateCounter += updates;
+
 		V& value = vectorMap.get(key);
 
 		if (message != nullptr) {
 			if (updates != 0)
-				message->startList(updates, updateCounter += updates);
+				message->startList(updates, updateCounter);
 
 			message->insertByte(DeltaMapCommands::DROP);
 

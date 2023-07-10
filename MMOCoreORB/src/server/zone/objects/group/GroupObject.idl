@@ -15,11 +15,16 @@ include server.zone.objects.group.tasks.UpdateNearestMissionForGroupTask;
 include server.chat.StringIdChatParameter;
 include system.lang.ref.Reference;
 include system.util.VectorMap;
+include server.zone.objects.scene.variables.DeltaVectorMap;
 
 @json
 class GroupObject extends SceneObject {
 	@dereferenced
 	GroupList groupMembers;
+
+	// memberID, shipID
+	@dereferenced
+	protected DeltaVectorMap<unsigned long, unsigned long> groupMemberShips;
 
 	@dereferenced
 	transient VectorMap<unsigned int, Reference<UpdateNearestMissionForGroupTask> > updateNearestMissionForGroupTasks;
@@ -159,6 +164,12 @@ class GroupObject extends SceneObject {
 	@dirty
 	public GroupList getGroupList() {
 		return groupMembers;
+	}
+
+	@local
+	@dirty
+	public final DeltaVectorMap<unsigned long, unsigned long> getGroupShips() {
+		return groupMemberShips;
 	}
 
 	@dirty

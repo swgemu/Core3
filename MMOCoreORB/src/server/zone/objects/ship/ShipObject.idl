@@ -58,6 +58,8 @@ class ShipObject extends TangibleObject {
 	@weakReference
 	protected CreatureObject owner;
 
+	unsigned long ownerID;
+
 	@weakReference
 	protected SceneObject pilotChair;
 
@@ -1318,12 +1320,13 @@ class ShipObject extends TangibleObject {
 		return componentEfficiency.get(slot);
 	}
 
-	public void setOwner(CreatureObject obj) {
-		owner = obj;
+	public void setOwner(CreatureObject object) {
+		owner = object;
+		ownerID = object.getObjectID();
 	}
 
-	public void setPilotChair(SceneObject obj) {
-		pilotChair = obj;
+	public void setPilotChair(SceneObject object) {
+		pilotChair = object;
 	}
 
 	public void setComponentTargetable(int slot, boolean targetable) {
@@ -1345,6 +1348,10 @@ class ShipObject extends TangibleObject {
 	@weakReference
 	public CreatureObject getOwner() {
 		return owner;
+	}
+
+	public unsigned long getOwnerID() {
+		return ownerID;
 	}
 
 	@weakReference

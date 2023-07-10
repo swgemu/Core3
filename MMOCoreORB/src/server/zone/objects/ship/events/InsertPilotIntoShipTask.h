@@ -35,6 +35,17 @@ public:
 
 		Locker clock(player, ship);
 
+		if (player->isGrouped()) {
+			auto group = player->getGroup();
+
+			if (group == nullptr)
+				return;
+
+			Locker glocker(group, ship);
+
+			group->updateMemberShip(player, ship);
+		}
+
 		if (ship->isPobShipObject()) {
 			auto pilotChair = ship->getPilotChair().get();
 
@@ -50,17 +61,6 @@ public:
 		} else {
 			player->setState(CreatureState::PILOTINGSHIP);
 			player->switchZone(spaceZone->getZoneName(), ship->getPositionX(), ship->getPositionZ(), ship->getPositionY(), ship->getObjectID());
-		}
-
-		if (player->isGrouped()) {
-			auto group = player->getGroup();
-
-			if (group == nullptr)
-				return;
-
-			Locker glocker(group, ship);
-
-			group->updateMemberShip(player, ship);
 		}
 	}
 };
