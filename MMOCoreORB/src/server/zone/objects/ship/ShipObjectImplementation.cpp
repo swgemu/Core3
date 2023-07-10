@@ -570,6 +570,12 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 		deltaVector->sendMessages(asShipObject(), pilot);
 	}
 
+	auto targetVector = getTargetVector();
+
+	if (targetVector != nullptr) {
+		targetVector->update();
+	}
+
 	scheduleRecovery();
 }
 
@@ -947,6 +953,14 @@ ShipDeltaVector* ShipObjectImplementation::getDeltaVector() {
 	shipDeltaVector->reset(getOwner().get());
 
 	return shipDeltaVector.get();
+}
+
+ShipTargetVector* ShipObjectImplementation::getTargetVector() {
+	if (shipTargetVector == nullptr) {
+		shipTargetVector = new ShipTargetVector(asShipObject());
+	}
+
+	return shipTargetVector.get();
 }
 
 void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {

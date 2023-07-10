@@ -63,10 +63,13 @@ void SpaceManagerImplementation::loadLuaConfig() {
 				float oy = zoneObject.getFloatField("oy");
 				float oz = zoneObject.getFloatField("oz");
 				float ow = zoneObject.getFloatField("ow");
+
 				uint64 parentID = zoneObject.getLongField("parent");
+				Quaternion direction(ow,ox,oy,oz);
+				direction.normalize();
 
 				obj->initializePosition(x, z, y);
-				obj->setDirection(ow, ox, oy, oz);
+				obj->setDirection(direction);
 
 				ManagedReference<SceneObject*> parent = spacezone->getZoneServer()->getObject(parentID);
 
@@ -77,20 +80,24 @@ void SpaceManagerImplementation::loadLuaConfig() {
 
 				obj->createChildObjects();
 
-				if (obj->isSpaceStationObject()) {
+				if (obj->isShipObject()) {
 					auto ship = obj->asShipObject();
 
 					if (ship != nullptr) {
-						String faction = ship->getShipFaction();
+						ship->setRotationMatrix(direction);
 
-						if (faction == "" || !spaceStationMap.contains(faction)) {
-							faction = "neutral";
+						if (ship->isSpaceStationObject()) {
+							String faction = ship->getShipFaction();
+
+							if (faction == "" || !spaceStationMap.contains(faction)) {
+								faction = "neutral";
+							}
+
+							uint64 stationID = ship->getObjectID();
+							Vector3 stationPosition = ship->getPosition();
+
+							spaceStationMap.get(faction).put(stationID, stationPosition);
 						}
-
-						uint64 stationID = ship->getObjectID();
-						Vector3 stationPosition = ship->getPosition();
-
-						spaceStationMap.get(faction).put(stationID, stationPosition);
 					}
 				}
 

@@ -25,6 +25,7 @@ include templates.SharedObjectTemplate;
 include system.util.VectorMap;
 include system.lang.ref.Reference;
 include server.zone.objects.ship.ShipDeltaVector;
+include server.zone.objects.ship.ShipTargetVector;
 include engine.util.u3d.Vector3;
 include engine.util.u3d.Quaternion;
 include engine.util.u3d.Matrix4;
@@ -48,6 +49,9 @@ class ShipObject extends TangibleObject {
 
 	@dereferenced
 	protected transient Reference<ShipDeltaVector> shipDeltaVector;
+
+	@dereferenced
+	protected transient Reference<ShipTargetVector> shipTargetVector;
 
 	protected int totalCellNumber;
 
@@ -1464,6 +1468,10 @@ class ShipObject extends TangibleObject {
 	@preLocked
 	@local
 	public native ShipDeltaVector getDeltaVector();
+
+	@preLocked
+	@local
+	public native ShipTargetVector getTargetVector();
 
 	@preLocked
 	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
