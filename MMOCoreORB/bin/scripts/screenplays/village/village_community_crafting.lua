@@ -948,25 +948,29 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 
 		local statTable = { }
 
-		for i = 1, totalPlayers, 1 do
-			local playerID = qualityMap:getMapKeyAtIndex(i - 1)
+		for j = 1, totalPlayers, 1 do
+			local playerID = qualityMap:getMapKeyAtIndex(j - 1)
 			local playerQuality = tonumber(qualityMap:getMapRow(playerID))
 			local playerQuantity = tonumber(quantityMap:getMapRow(playerID))
+			local pPlayer = getCreatureObject(playerID)
 
 			-- Only add player data to reward list if they completed the quest
-			if (playerQuantity ~= nil and playerQuantity >= minIngredients) then
-				local dataTable = { playerID, playerQuality, playerQuantity }
-				table.insert(statTable, dataTable)
+			if (playerQuantity ~= nil and playerQuantity > 0 and pPlayer ~= nil) then
+				if ((currentPhase == 2 and QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN)) or 
+						(currentPhase == 3 and QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN))) then
+					local dataTable = { playerID, playerQuality, playerQuantity }
+					table.insert(statTable, dataTable)
 
-				for i = 1, #overallQuality, 1 do
-					if (overallQuality[i][1] == tonumber(playerID)) then
-						overallQuality[i][2] = overallQuality[i][2] + playerQuality
+					for k = 1, #overallQuality, 1 do
+						if (overallQuality[k][1] == tonumber(playerID)) then
+							overallQuality[k][2] = overallQuality[k][2] + playerQuality
+						end
 					end
-				end
 
-				for i = 1, #overallQuantity, 1 do
-					if (overallQuantity[i][1] == tonumber(playerID)) then
-						overallQuantity[i][2] = overallQuantity[i][2] + playerQuantity
+					for k = 1, #overallQuantity, 1 do
+						if (overallQuantity[k][1] == tonumber(playerID)) then
+							overallQuantity[k][2] = overallQuantity[k][2] + playerQuantity
+						end
 					end
 				end
 			end
@@ -983,7 +987,7 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 				local pInventory = CreatureObject(pQualityWinner):getSlottedObject("inventory")
 
 				if pInventory ~= nil then
-					local pItem = giveItem(pInventory, prizeTable.quality, -1)
+					local pItem = giveItem(pInventory, prizeTable.quality, -1, true)
 				end
 			end
 
@@ -998,7 +1002,7 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 				local pInventory = CreatureObject(pQuantityWinner):getSlottedObject("inventory")
 
 				if pInventory ~= nil then
-					local pItem = giveItem(pInventory, prizeTable.quantity, -1)
+					local pItem = giveItem(pInventory, prizeTable.quantity, -1, true)
 				end
 			end
 		end
@@ -1016,7 +1020,7 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 			local pInventory = CreatureObject(pQualityWinner):getSlottedObject("inventory")
 
 			if pInventory ~= nil then
-				local pItem = giveItem(pInventory, self.phaseInfo[currentPhase].overallPrize.quality, -1)
+				local pItem = giveItem(pInventory, self.phaseInfo[currentPhase].overallPrize.quality, -1, true)
 			end
 		end
 	end
@@ -1032,7 +1036,7 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 			local pInventory = CreatureObject(pQuantityWinner):getSlottedObject("inventory")
 
 			if pInventory ~= nil then
-				local pItem = giveItem(pInventory, self.phaseInfo[currentPhase].overallPrize.quantity, -1)
+				local pItem = giveItem(pInventory, self.phaseInfo[currentPhase].overallPrize.quantity, -1, true)
 			end
 		end
 	end
