@@ -51,6 +51,15 @@ core3_init_home() {
         msg "Setup ${HOME_DIR}/.my.cnf"
         echo -e "[client]\nhost='${DBHOST//\'}'\nport=${DBPORT//\'}\nuser='${DBUSER//\'}'\npassword='${DBPASS//\'}'\n" > ${HOME_DIR}/.my.cnf
     fi
+
+    if [ ! -d "${HOME_DIR}/.ssh" ]; then
+        mkdir -p "${HOME_DIR}/.ssh"
+        ssh-keygen -t rsa -q -N "" -C "${RUN_USER}@$(hostname -s)" -f "${HOME_DIR}/.ssh/id_rsa"
+        echo -e "Host review.swgemu.com\n\tPubkeyAcceptedKeyTypes +ssh-rsa" > ~/.ssh/config
+        chmod 700 "${HOME_DIR}/.ssh"
+        chmod 600 "${HOME_DIR}/.ssh"/*
+        msg "Public SSH key created in ${HOME_DIR}/.ssh/id_rsa.pub"
+    fi
 }
 
 core3_clone() {
