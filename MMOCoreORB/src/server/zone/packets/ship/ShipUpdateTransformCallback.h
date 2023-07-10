@@ -21,8 +21,9 @@
 #include "server/zone/packets/ship/PackedRotationRate.h"
 
 #ifdef SHIP_TRANSFORM_DEBUG
+#include "server/zone/managers/ship/ShipManager.h"
+#include "server/zone/objects/ship/ShipCollisionData.h"
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
-#include "server/zone/packets/object/ShowFlyText.h"
 #endif // SHIP_TRANSFORM_DEBUG
 
 class ShipUpdateTransformCallback : public MessageCallback {
@@ -243,12 +244,14 @@ public:
 			return updateCollision(ship, pilot, collisionPoint);
 		}*/
 
+		Vector3 nextPosition = (position - ship->getPosition()) + position;
+
 #ifdef SHIP_TRANSFORM_DEBUG
-		sendDebug(pilot, ship, "updatePosition", position);
+		sendDebug(pilot, ship, "updatePosition", nextPosition);
 #endif // SHIP_TRANSFORM_DEBUG
 
 		updateTransform(ship, pilot, position, false);
-		broadcastTransform(ship, pilot, position);
+		broadcastTransform(ship, pilot, nextPosition);
 	}
 
 	void updateStatic(ShipObject* ship, CreatureObject* pilot) {
@@ -401,19 +404,35 @@ public:
 		Vector3 thisPosition = Vector3(positionX, positionY, positionZ);
 
 		auto path = new CreateClientPathMessage();
-		path->addCoordinate(lastPosition.getX(), lastPosition.getZ(), lastPosition.getY());
-		path->addCoordinate(thisPosition.getX(), thisPosition.getZ(), thisPosition.getY());
+		path->addCoordinate(lastPosition);
+		path->addCoordinate(thisPosition);
 
-		if (drawPathRadius) {
-			path->addCoordinate(thisPosition.getX() + 8, thisPosition.getZ(), thisPosition.getY());
-			path->addCoordinate(thisPosition.getX() - 8, thisPosition.getZ(), thisPosition.getY());
-			path->addCoordinate(thisPosition.getX(), thisPosition.getZ(), thisPosition.getY());
-			path->addCoordinate(thisPosition.getX(), thisPosition.getZ(), thisPosition.getY() + 8);
-			path->addCoordinate(thisPosition.getX(), thisPosition.getZ(), thisPosition.getY() - 8);
-			path->addCoordinate(thisPosition.getX(), thisPosition.getZ(), thisPosition.getY());
+		auto targetData = ShipManager::instance()->getCollisionData(ship);
+		if (targetData == nullptr) {
+			return;
 		}
 
-		path->addCoordinate(nextPosition.getX(), nextPosition.getZ(), nextPosition.getY());
+		Matrix4 targetRotation;
+		targetRotation.setRotationMatrix(ship->getDirection()->getConjugate().toMatrix3());
+
+		float targetRadius = targetData->getBoundingSphere().getRadius();
+
+		if (targetData->getVolumeType() == ShipCollisionData::CollisionVolumeType::MESH) {
+			path->drawBoundingSphere(thisPosition, targetRotation, targetData->getBoundingSphere());
+		}
+
+		if (targetData->getVolumeType() == ShipCollisionData::CollisionVolumeType::BOX) {
+			path->drawBoundingSphere(thisPosition, targetRotation, targetData->getBoundingSphere());
+			path->drawBoundingBox(thisPosition, targetRotation, targetData->getChassisBox());
+		}
+
+		if (targetData->getVolumeType() == ShipCollisionData::CollisionVolumeType::RADIUS) {
+			path->drawBoundingSphere(thisPosition, targetRotation, targetData->getBoundingSphere());
+			path->drawBoundingSphere(thisPosition, targetRotation, targetData->getChassisSphere());
+		}
+
+		path->addCoordinate(thisPosition);
+		path->addCoordinate(nextPosition);
 		ship->broadcastMessage(path, false);
 	}
 #endif // SHIP_TRANSFORM_DEBUG
