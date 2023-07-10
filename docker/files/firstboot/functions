@@ -55,7 +55,7 @@ core3_init_home() {
     if [ ! -d "${HOME_DIR}/.ssh" ]; then
         mkdir -p "${HOME_DIR}/.ssh"
         ssh-keygen -t rsa -q -N "" -C "${RUN_USER}@$(hostname -s)" -f "${HOME_DIR}/.ssh/id_rsa"
-        echo -e "Host review.swgemu.com\n\tPubkeyAcceptedKeyTypes +ssh-rsa" > ~/.ssh/config
+        echo -e "Host review.swgemu.com\n\tPubkeyAcceptedKeyTypes +ssh-rsa" > "${HOME_DIR}/.ssh/config"
         chmod 700 "${HOME_DIR}/.ssh"
         chmod 600 "${HOME_DIR}/.ssh"/*
         msg "Public SSH key created in ${HOME_DIR}/.ssh/id_rsa.pub"
