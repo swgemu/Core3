@@ -9,6 +9,8 @@
 #include "server/zone/packets/ship/DestroyShipMessage.h"
 #include "server/zone/packets/object/DataTransform.h"
 #include "server/zone/objects/intangible/tasks/StoreShipTask.h"
+#include "server/zone/packets/ship/ShipObjectMessage3.h"
+#include "server/zone/packets/ship/ShipObjectMessage6.h"
 
 class DestroyShipTask: public Task {
 private:
@@ -82,16 +84,16 @@ public:
 				Vector3 randomPosition = Vector3(System::random(100) - 50.f, System::random(100) - 50.f, 0.f);
 				Vector3 stationPosition = spaceManager->getClosestSpaceStationPosition(ship->getPosition(), "neutral") + randomPosition;
 
-				long sequence = System::getMiliTime() - sequenceStamp;
-
 				ship->setPosition(stationPosition.getX(), stationPosition.getZ(), stationPosition.getY());
-				ship->setMovementCounter(ship->getMovementCounter() + sequence);
 				ship->setDirection(1,0,0,0);
+				ship->repairShip(1.f);
 
-				if (pilot != nullptr) {
-					auto data = new DataTransform(ship);
-					pilot->sendMessage(data);
-				}
+				Vector<BasePacket*> messages;
+				messages.add(new DataTransform(ship));
+				messages.add(new ShipObjectMessage3(ship));
+				messages.add(new ShipObjectMessage6(ship));
+
+				ship->broadcastMessages(&messages, true);
 
 				return;
 			}
