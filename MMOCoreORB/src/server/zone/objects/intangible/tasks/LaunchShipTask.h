@@ -81,14 +81,18 @@ public:
 		if (pilotTask != nullptr)
 			pilotTask->schedule(100);
 
+		// info(true) << "Launch Ship Task called with group member Size: " << groupMembers.size();
+
 		if (ship->isPobShipObject() && groupMembers.size() > 0) {
 			auto pobShip = ship->asPobShipObject();
 
 			if (pobShip == nullptr)
 				return;
 
-			for (int j = 0; j < groupMembers.size(); j++) {
+			for (int j = 0; j < groupMembers.size(); ++j) {
 				auto memberID = groupMembers.get(j);
+
+				// info(true) << "InsertGroupMembertIntoShipTask for member: " << memberID;
 
 				InsertGroupMembertIntoShipTask* memberTask = new InsertGroupMembertIntoShipTask(pobShip, memberID);
 

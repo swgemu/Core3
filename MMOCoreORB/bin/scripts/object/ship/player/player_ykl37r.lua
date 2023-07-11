@@ -162,7 +162,7 @@ object_ship_player_player_ykl37r = object_ship_player_shared_player_ykl37r:new {
 
 	launchPoints = {
 		{cellName = "cockpit",
-			{x = 13.43, z  = 0.14, y = 12.88},
+			{x = -17.1, z  = -1.9, y = -13.0},
 		},
 	},
 }

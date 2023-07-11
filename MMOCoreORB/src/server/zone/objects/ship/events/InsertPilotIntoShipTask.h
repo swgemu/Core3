@@ -57,9 +57,16 @@ public:
 			player->setState(CreatureState::SHIPINTERIOR);
 			player->setState(CreatureState::PILOTINGPOBSHIP);
 
-			player->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ(), pilotChair->getPositionY() - 2.f, pilotChair->getObjectID());
+			// set pob pilot to the same direction as the chair
+			player->setDirection(*pilotChair->getDirection());
+
+			player->switchZone(spaceZone->getZoneName(), pilotChair->getPositionX(), pilotChair->getPositionZ() + 0.5, pilotChair->getPositionY(), pilotChair->getObjectID());
 		} else {
 			player->setState(CreatureState::PILOTINGSHIP);
+
+			// Set the pilots direction to the same as the ship
+			player->setDirection(*ship->getDirection());
+
 			player->switchZone(spaceZone->getZoneName(), ship->getPositionX(), ship->getPositionZ(), ship->getPositionY(), ship->getObjectID());
 		}
 	}
