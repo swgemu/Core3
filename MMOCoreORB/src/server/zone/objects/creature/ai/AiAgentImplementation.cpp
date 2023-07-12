@@ -618,7 +618,7 @@ void AiAgentImplementation::unequipWeapons() {
 	if (inventory == nullptr)
 		return;
 
-	if (currentWeap->getObjectID() == defaultWeap->getObjectID())
+	if (defaultWeap != nullptr && currentWeap->getObjectID() == defaultWeap->getObjectID())
 		return;
 
 	ZoneServer* zoneServer = getZoneServer();
