@@ -2217,10 +2217,12 @@ float CombatManager::hitChanceEquation(float attackerAccuracy, float targetDefen
 int CombatManager::getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon) const {
 	int speedMods = 0;
 
-	const auto weaponSpeedMods = weapon->getSpeedModifiers();
+	if (weapon != nullptr) {
+		const auto weaponSpeedMods = weapon->getSpeedModifiers();
 
-	for (int i = 0; i < weaponSpeedMods->size(); ++i) {
-		speedMods += attacker->getSkillMod(weaponSpeedMods->get(i));
+		for (int i = 0; i < weaponSpeedMods->size(); ++i) {
+			speedMods += attacker->getSkillMod(weaponSpeedMods->get(i));
+		}
 	}
 
 	speedMods += attacker->getSkillMod("private_speed_bonus");
@@ -2729,6 +2731,10 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 // Calculate Weapon Speed
 
 float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio) const {
+	if (weapon == nullptr) {
+		return 4.0f;
+	}
+
 	int speedMod = getSpeedModifier(attacker, weapon);
 	float jediSpeed = attacker->getSkillMod("combat_haste") / 100.0f;
 
