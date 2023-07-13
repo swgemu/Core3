@@ -246,8 +246,6 @@ class AiAgent extends CreatureObject {
 
 		reactionRank = 0;
 
-		customAiMap = 0;
-
 		convoTemplateCRC = 0;
 
 		showNextMovementPosition = true;

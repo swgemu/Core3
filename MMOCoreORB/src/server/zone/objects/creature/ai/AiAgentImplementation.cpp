@@ -875,9 +875,8 @@ void AiAgentImplementation::notifyLoadFromDatabase() {
 void AiAgentImplementation::notifyPositionUpdate(TreeEntry* entry) {
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
 
-	SceneObject* object = static_cast<SceneObject*>(entry);
-
-	CreatureObject* creo = object->asCreatureObject();
+	//SceneObject* object = static_cast<SceneObject*>(entry);
+	//CreatureObject* creo = object->asCreatureObject();
 }
 
 void AiAgentImplementation::doRecovery(int latency) {
