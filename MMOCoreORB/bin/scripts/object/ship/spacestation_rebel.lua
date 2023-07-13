@@ -42,7 +42,15 @@
 
 
 object_ship_spacestation_rebel = object_ship_shared_spacestation_rebel:new {
+<<<<<<< HEAD
 	objectName = "@space/space_mobile_type:spacestation_rebel",
+=======
+	objectName = "@space/ship_names:spacestation_rebel",
+	gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "spaceStations",
+	optionsBitmask = AIENABLED,
+>>>>>>> b447fafc8b ([wip] ship ai agent)
 
 	name = "spacestation_rebel",
 	type = "spacestation_rebel",
