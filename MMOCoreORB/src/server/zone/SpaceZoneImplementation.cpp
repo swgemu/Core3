@@ -280,10 +280,18 @@ bool SpaceZoneImplementation::isWithinBoundaries(const Vector3& position) {
 
 void SpaceZoneImplementation::addSceneObject(SceneObject* object) {
 	ManagedReference<SceneObject*> old = objectMap->put(object->getObjectID(), object);
+
+	if (old == nullptr && object->isShipAiAgent()) {
+		spawnedAiAgents.increment();
+	}
 }
 
 void SpaceZoneImplementation::dropSceneObject(SceneObject* object)  {
 	ManagedReference<SceneObject*> oldObject = objectMap->remove(object->getObjectID());
+
+	if (oldObject != nullptr && object->isShipAiAgent()) {
+		spawnedAiAgents.decrement();
+	}
 }
 
 bool SpaceZoneImplementation::isGroundZone() {

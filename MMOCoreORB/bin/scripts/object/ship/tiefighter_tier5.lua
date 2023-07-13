@@ -53,7 +53,7 @@ object_ship_tiefighter_tier5 = object_ship_shared_tiefighter_tier5:new {
 	chassisHitpoints = 3686.4,
 	chassisMass = 5000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

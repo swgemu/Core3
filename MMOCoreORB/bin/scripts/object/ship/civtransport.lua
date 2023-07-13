@@ -53,7 +53,7 @@ object_ship_civtransport = object_ship_shared_civtransport:new {
 	chassisHitpoints = 300,
 	chassisMass = 10000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
