@@ -111,8 +111,6 @@ public:
 	}
 
 private:
-	void loadAiShipComponentData(ShipObject* ship);
-
 	void loadShipComponentObjects(ShipObject* ship);
 
 	ShipControlDevice* createShipControlDevice(ShipObject* ship);

@@ -5,7 +5,6 @@
 
 package server.zone.objects.ship;
 
-import engine.log.Logger;
 import system.lang.Time;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.ship.components.ShipComponent;
@@ -13,6 +12,7 @@ import server.zone.objects.ship.events.ShipRecoveryEvent;
 include server.zone.objects.scene.SceneObject;
 include server.zone.objects.creature.CreatureObject;
 include server.zone.CloseObjectsVector;
+include engine.log.Logger;
 include system.lang.UnicodeString;
 include server.zone.packets.DeltaMessage;
 include server.zone.objects.scene.variables.DeltaAutoVariable;
@@ -22,6 +22,7 @@ include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaBitArray;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
+include templates.tangible.SharedShipObjectTemplate;
 include system.util.VectorMap;
 include system.lang.ref.Reference;
 include server.zone.objects.ship.ShipDeltaVector;
@@ -1367,6 +1368,9 @@ class ShipObject extends TangibleObject {
 
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public native void loadTemplateData(SharedShipObjectTemplate shipTemp);
 
 	@dirty
 	@local

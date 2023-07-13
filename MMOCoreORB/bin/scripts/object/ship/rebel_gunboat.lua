@@ -53,7 +53,7 @@ object_ship_rebel_gunboat = object_ship_shared_rebel_gunboat:new {
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
