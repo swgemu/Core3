@@ -246,8 +246,6 @@ class AiAgent extends CreatureObject {
 
 		reactionRank = 0;
 
-		customAiMap = 0;
-
 		convoTemplateCRC = 0;
 
 		showNextMovementPosition = true;
@@ -1706,5 +1704,10 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public void setHamRegenDisabled(boolean val) {
 		hamRegenDisabled = val;
+	}
+
+	@read
+	public boolean isAggroDelayPast() {
+		return aggroDelay.isPast();
 	}
 }

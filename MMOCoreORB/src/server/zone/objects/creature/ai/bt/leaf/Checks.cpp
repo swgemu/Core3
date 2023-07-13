@@ -37,9 +37,7 @@ template<> bool CheckHasFollow::check(AiAgent* agent) const {
 }
 
 template<> bool CheckAggroDelayPast::check(AiAgent* agent) const {
-	Time* delay = agent->getAggroDelay();
-
-	return delay != nullptr && delay->isPast();
+	return agent->isAggroDelayPast();
 }
 
 template<> bool CheckFollowHasState::check(AiAgent* agent) const {

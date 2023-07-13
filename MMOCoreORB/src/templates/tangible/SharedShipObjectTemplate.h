@@ -43,6 +43,9 @@ class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	VectorMap<String, Vector<Vector3>> sparkLocations;
 	VectorMap<String, Vector<Vector3>> launchLocations;
 
+	IntegerParam shipBitmask;
+	uint64 customShipAiMap;
+
 public:
 	SharedShipObjectTemplate() {
 
@@ -186,6 +189,11 @@ public:
 		conversationTemplate = templateData->getStringField("conversationTemplate");
 		conversationMobile = templateData->getStringField("conversationMobile");
 		conversationMessage = templateData->getStringField("conversationMessage");
+
+		shipBitmask = templateData->getIntField("shipBitmask");
+
+		if (!templateData->getStringField("customShipAiMap").isEmpty())
+			customShipAiMap = templateData->getStringField("customShipAiMap").hashCode();
 
 		readAttributeMap(templateData);
 
@@ -356,6 +364,14 @@ public:
 
 	inline int getChassisLevel() const {
 		return chassisLevel.get();
+	}
+
+	inline int getShipBitmask() const {
+		return shipBitmask;
+	}
+
+	inline uint64 getCustomShipAiMap() {
+		return customShipAiMap;
 	}
 
 	void parseVariableData(const String& varName, Chunk* data) {

@@ -53,7 +53,7 @@ object_ship_tiefighter_tier2 = object_ship_shared_tiefighter_tier2:new {
 	chassisHitpoints = 900,
 	chassisMass = 5000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

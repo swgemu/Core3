@@ -53,7 +53,7 @@ object_ship_transport_science = object_ship_shared_transport_science:new {
 	chassisHitpoints = 480,
 	chassisMass = 5000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
