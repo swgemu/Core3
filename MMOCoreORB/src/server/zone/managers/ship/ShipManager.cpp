@@ -26,6 +26,7 @@
 #include "server/zone/objects/player/sui/callbacks/FindLostItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/DeleteAllItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/PobShipStatusSuiCallback.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
 
 void ShipManager::initialize() {
 	loadShipChassisData();
@@ -406,17 +407,26 @@ ShipObject* ShipManager::createShip(const String& shipName, int persistence, boo
 	}
 
 	auto shot = TemplateManager::instance()->getTemplate(chassisName.hashCode());
+
 	if (shot == nullptr || !(shot->getGameObjectType() & SceneObjectType::SHIP)) {
 		return nullptr;
 	}
 
 	ManagedReference<ShipObject*> ship = ServerCore::getZoneServer()->createObject(chassisName.hashCode(), persistence).castTo<ShipObject*>();
+
 	if (ship == nullptr) {
 		return nullptr;
 	}
 
 	if (loadComponents && !chassisName.contains("player")) {
 		loadAiShipComponentData(ship);
+
+		ShipAiAgent* agent = ship->asShipAiAgent();
+
+		if (agent != nullptr) {
+			agent->loadTemplateData(shot);
+			agent->setAITemplate();
+		}
 	}
 
 	return ship;

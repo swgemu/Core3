@@ -9,6 +9,8 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/AiMap.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/managers/space/SpaceAiMap.h"
 
 class CreateCreatureCommand : public QueueCommand {
 public:
@@ -45,12 +47,34 @@ public:
 				tokenizer.getStringToken(tempName);
 
 			if (!tempName.isEmpty() && tempName.toLowerCase() == "checkthreads") {
-				creature->sendSystemMessage("Current number of active AiBehaviorEvents: " + String::valueOf(AiMap::instance()->activeBehaviorEvents.get()));
-				creature->sendSystemMessage("Current number of AiAgent Exceptions: " + String::valueOf(AiMap::instance()->countExceptions.get()));
-				creature->sendSystemMessage("Current number of scheduled AiBehaviorEvents: " + String::valueOf(AiMap::instance()->scheduledBehaviorEvents.get()));
-				creature->sendSystemMessage("Current number of AiBehaviorEvents with followObject: " + String::valueOf(AiMap::instance()->behaviorsWithFollowObject.get()));
-				creature->sendSystemMessage("Current number of AiBehaviorEvents retreating: " + String::valueOf(AiMap::instance()->behaviorsRetreating.get()));
-				creature->sendSystemMessage("Current number of AiRecoveryEvents: " + String::valueOf(AiMap::instance()->activeRecoveryEvents.get()));
+				ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
+
+				if (box != nullptr) {
+					box->setPromptTitle("CreateC - Check Threads");
+
+					StringBuffer msg;
+
+					msg << "Ground Zone AI:\n\n";
+					msg << "Active AiBehaviorEvents: " << AiMap::instance()->activeBehaviorEvents.get() << "\n";
+					msg << "AiAgent Exceptions: " << AiMap::instance()->countExceptions.get() << "\n";
+					msg << "Scheduled AiBehaviorEvents: " << AiMap::instance()->scheduledBehaviorEvents.get() << "\n";
+					msg << "AiBehaviorEvents with followObject: " << AiMap::instance()->behaviorsWithFollowObject.get() << "\n";
+					msg << "AiBehaviorEvents retreating: " << AiMap::instance()->behaviorsRetreating.get() << "\n";
+					msg << "AiRecoveryEvents: " << AiMap::instance()->activeRecoveryEvents.get() << "\n";
+
+					msg << "Space Zone AI:\n\n";
+					msg << "Active AiBehaviorEvents: " << SpaceAiMap::instance()->activeBehaviorEvents.get() << "\n";
+					msg << "AiAgent Exceptions: " << SpaceAiMap::instance()->countExceptions.get() << "\n";
+					msg << "Scheduled AiBehaviorEvents: " << SpaceAiMap::instance()->scheduledBehaviorEvents.get() << "\n";
+					msg << "AiBehaviorEvents with followObject: " << SpaceAiMap::instance()->behaviorsWithFollowObject.get() << "\n";
+					msg << "AiBehaviorEvents retreating: " << SpaceAiMap::instance()->behaviorsRetreating.get() << "\n";
+					msg << "AiRecoveryEvents: " << SpaceAiMap::instance()->activeRecoveryEvents.get() << "\n";
+
+					box->setPromptText(msg.toString());
+
+					creature->sendMessage(box->generateMessage());
+				}
+
 
 				ZoneServer* server = creature->getZoneServer();
 
