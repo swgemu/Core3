@@ -13,6 +13,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/ship/ShipManager.h"
 #include "server/zone/objects/ship/components/ShipWeaponComponent.h"
+#include "server/zone/packets/MessageCallback.h"
+#include "server/zone/managers/spacecombat/SpaceCombatManager.h"
 
 class CreateProjectileMessage : public BaseMessage {
 public:
@@ -34,6 +36,28 @@ public:
 		packed.write(this);
 
 		insertInt(sequence);
+	}
+
+	CreateProjectileMessage(ShipObject* ship, ShipObject* receiver, const ShipProjectile& projectile) {
+		insertShort(0x12);
+		insertInt(0xB88AF9A5);
+
+		insertShort(ship->getUniqueID());
+		insertByte(projectile.getWeaponSlot());
+		insertByte(projectile.getProjectileType());
+		insertByte(projectile.getComponentSlot());
+
+		PackedPosition packed;
+
+		packed.set(projectile.getThisPosition());
+		packed.write(this);
+
+		Vector3 dirScaled = projectile.getDirection() * ShipProjectile::positionScale;
+		writeSignedShort(dirScaled.getX());
+		writeSignedShort(dirScaled.getZ());
+		writeSignedShort(dirScaled.getY());
+
+		insertInt(receiver->getSyncStamp());
 	}
 };
 
@@ -135,13 +159,15 @@ public:
 		Locker lock(pilot);
 		Locker cross(ship, pilot);
 
+		ship->setSyncStamp(sequence);
 		ship->setCapacitorEnergy(currentEnergy - cost, true);
 
-		//auto projectile = new ShipManager::ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, speed, range, System::getMiliTime());
-		//shipManager->addProjectile(projectile);
+		auto spaceCombat = SpaceCombatManager::instance();
 
-		auto message = new CreateProjectileMessage(position, direction, componentIndex, projectileType, weaponIndex, shipID, sequence);
-		pilot->broadcastMessage(message, false);
+		if (spaceCombat != nullptr) {
+			auto projectile = ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, speed, range, 1.f, System::getMiliTime());
+			spaceCombat->addProjectile(ship, projectile);
+		}
 	}
 
 	const char* getTaskName() {

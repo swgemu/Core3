@@ -1513,4 +1513,6 @@ class ShipObject extends TangibleObject {
 	public float getBoundingRadius() {
 		return boundingRadius;
 	}
+
+	public native float getComponentCondition(unsigned int slot);
 }
