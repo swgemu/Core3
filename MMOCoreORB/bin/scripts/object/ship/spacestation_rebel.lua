@@ -43,6 +43,10 @@
 
 object_ship_spacestation_rebel = object_ship_shared_spacestation_rebel:new {
 	objectName = "@space/ship_names:spacestation_rebel",
+	gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "spaceStations",
+	optionsBitmask = AIENABLED,
 
 	faction = "rebel",
 	type = "spacestation_rebel",
