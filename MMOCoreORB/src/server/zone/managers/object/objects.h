@@ -23,6 +23,7 @@
 #include "server/zone/objects/ship/FighterShipObject.h"
 #include "server/zone/objects/ship/SpaceStationObject.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/LairObject.h"

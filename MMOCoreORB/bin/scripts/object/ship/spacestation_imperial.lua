@@ -43,6 +43,10 @@
 
 object_ship_spacestation_imperial = object_ship_shared_spacestation_imperial:new {
 	objectName = "@space/ship_names:spacestation_imperial",
+	gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "spaceStations",
+	optionsBitmask = AIENABLED,
 
 	faction = "imperial",
 	type = "spacestation_imperial",
