@@ -2065,6 +2065,14 @@ AiAgent* SceneObject::asAiAgent() {
 	return nullptr;
 }
 
+ShipAiAgent* SceneObjectImplementation::asShipAiAgent() {
+	return nullptr;
+}
+
+ShipAiAgent* SceneObject::asShipAiAgent() {
+	return nullptr;
+}
+
 SceneObject* SceneObjectImplementation::asSceneObject() {
 	return _this.getReferenceUnsafeStaticCast();
 }
