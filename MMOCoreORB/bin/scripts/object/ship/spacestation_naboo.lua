@@ -43,6 +43,11 @@
 
 object_ship_spacestation_naboo = object_ship_shared_spacestation_neutral:new {
 	objectName = "@space/space_mobile_type:station_naboo",
+	gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "spaceStations",
+	optionsBitmask = AIENABLED,
+
 	conversationTemplate = "spacestation_naboo_convotemplate",
 	conversationMobile = "object/mobile/shared_space_comm_station_naboo.iff",
 	conversationMessage = "@conversation/station_naboo:s_1951f1c1", -- Too Far Message
@@ -56,7 +61,7 @@ object_ship_spacestation_naboo = object_ship_shared_spacestation_neutral:new {
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
