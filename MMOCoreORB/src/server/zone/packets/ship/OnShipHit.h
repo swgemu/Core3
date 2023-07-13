@@ -9,13 +9,13 @@
 
 class OnShipHit : public ObjectControllerMessage {
 public:
-	OnShipHit(ShipObject* ship, const Vector3& hitDirection, int type, float health, float prev) : ObjectControllerMessage(ship->getObjectID(), 0x1B, 0x432) {
-		writeFloat(hitDirection[0]);
-		writeFloat(hitDirection[1]);
-		writeFloat(hitDirection[2]);
-		writeInt(type);
-		writeFloat(health);
-		writeFloat(prev);
+	OnShipHit(ShipObject* ship, const Vector3& hitDirection, int shipHitType, float newPercent, float oldPercent) : ObjectControllerMessage(ship->getObjectID(), 0x1B, 0x432) {
+		writeFloat(hitDirection.getX());
+		writeFloat(hitDirection.getZ());
+		writeFloat(hitDirection.getY());
+		writeInt(shipHitType);
+		writeFloat(newPercent);
+		writeFloat(oldPercent);
 	}
 };
 #endif //ONSHIPHIT_H
