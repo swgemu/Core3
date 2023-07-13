@@ -24,6 +24,7 @@
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/creature/AiMap.h"
+#include "server/zone/managers/space/SpaceAiMap.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/managers/creature/PetManager.h"
@@ -145,6 +146,7 @@ void ZoneServerImplementation::initialize() {
 	creatureTemplateManager->loadTemplates();
 
 	AiMap::instance()->loadTemplates();
+	SpaceAiMap::instance()->loadTemplates();
 
 	dnaManager = DnaManager::instance();
 	dnaManager->loadSampleData();

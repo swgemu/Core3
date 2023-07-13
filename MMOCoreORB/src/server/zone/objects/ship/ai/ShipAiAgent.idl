@@ -1,0 +1,298 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.ship.ai;
+
+import system.util.Vector;
+import system.lang.Time;
+import system.lang.String;
+import system.lang.Exception;
+import server.zone.Zone;
+import server.zone.objects.ship.ShipObject;
+
+import server.zone.objects.ship.ai.events.ShipAiRecoveryEvent;
+import server.zone.objects.ship.ai.events.ShipAiBehaviorEvent;
+import system.lang.ref.Reference;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.TreeEntry;
+import engine.core.ManagedObject;
+import server.zone.objects.tangible.TangibleObject;
+include templates.SharedObjectTemplate;
+import engine.util.Observable;
+include system.thread.Mutex;
+//include server.zone.managers.loot.lootgroup.LootGroupCollection;
+include system.thread.ReadWriteLock;
+include server.zone.objects.ship.ai.bt.Behavior;
+include server.zone.objects.ship.ai.bt.BehaviorTreeSlot;
+import system.thread.atomic.AtomicInteger;
+include server.zone.objects.cell.CellObject;
+import system.util.SortedVector;
+import server.zone.objects.scene.SceneObject;
+include system.util.VectorMap;
+include engine.util.u3d.Vector3;
+import server.zone.objects.ship.ai.bt.ShipBlackboardData;
+include server.zone.objects.ship.ai.bt.ShipBlackboardDataMap;
+include server.zone.objects.area.ActiveArea;
+
+@mock
+@json
+class ShipAiAgent extends ShipObject {
+	protected transient ShipAiRecoveryEvent recoveryEvent;
+
+	protected transient ShipAiBehaviorEvent behaviorEvent;
+
+	//@dereferenced
+	//protected transient PatrolPointsVector patrolPoints;
+
+	//@dereferenced
+	//protected transient PatrolPointsVector savedPatrolPoints;
+
+	//@dereferenced
+	//protected transient PatrolPoint homeLocation;
+
+	//@dereferenced
+	//protected transient PatrolPoint nextStepPosition;
+
+	//@dereferenced
+	//protected transient PatrolPoint endMovementPosition;
+
+	protected boolean despawnOnNoPlayerInRange;
+
+	@weakReference
+	private SceneObject followObject;
+
+	@weakReference
+	private SceneObject followStore;
+
+	private unsigned int movementState;
+
+	@dereferenced
+	private transient Mutex targetMutex;
+
+	@dereferenced
+	private transient Mutex behaviorEventMutex;
+
+	private int nextBehaviorInterval;
+
+	@dereferenced
+	private transient Mutex recoveryEventMutex;
+
+	protected float respawnTimer;
+	protected int respawnCounter;
+	protected boolean randomRespawn;
+
+	protected float coordinateMin;
+	protected float coordinateMax;
+
+	@dereferenced
+	protected transient AtomicInteger numberOfPlayersInRange;
+
+	//protected transient DespawnShipOnPlayerDissappear despawnEvent;
+
+	// btree bit
+	@dereferenced
+	@rawTemplate(value = "BehaviorTreeSlot, Reference<Behavior*>")
+	private transient VectorMap btreeMap;
+
+	@dereferenced
+	private transient Vector<unsigned int> runningChain;
+
+	@dereferenced
+	private string aiTemplate;
+
+	@dereferenced
+	private transient ShipBlackboardDataMap blackboard;
+
+	protected unsigned int creatureBitmask;
+
+	public static final int BEHAVIORINTERVAL = 200; // msec
+
+	public static final int DEFAULTAGGRORADIUS = 200;
+
+	public static final int OBLIVIOUS = 0;
+	public static final int WATCHING = 1;
+	public static final int FOLLOWING = 2;
+	public static final int PATROLLING = 3;
+	public static final int FLEEING = 4;
+	public static final int EVADING = 5;
+
+	protected transient unsigned long customAiMap;
+
+	public ShipAiAgent() {
+		movementState = OBLIVIOUS;
+
+		respawnTimer = 0;
+		respawnCounter = 0;
+		randomRespawn = false;
+
+		nextBehaviorInterval = BEHAVIORINTERVAL;
+
+		customAiMap = 0;
+
+		despawnOnNoPlayerInRange = false;
+
+		aiTemplate = "";
+		customAiMap = 0;
+
+		coordinateMin = -8192;
+		coordinateMax = 8192;
+	}
+
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+
+	public void finalize() {
+	}
+
+	@weakReference
+	public SceneObject getFollowObject() {
+		return followObject;
+	}
+
+	public void storeFollowObject() {
+		synchronized (targetMutex) {
+			followStore = followObject;
+		}
+	}
+
+	@read
+	public unsigned int getMovementState() {
+		return movementState;
+	}
+
+	public void setMovementState(int state) {
+		synchronized (targetMutex) {
+			movementState = state;
+		}
+	}
+
+	/**
+	 * Schedules the next movement event
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
+	@preLocked
+	public abstract native void activateAiBehavior(boolean reschedule = false);
+
+	/**
+	 * Stops the movement event task
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
+	@preLocked
+	public abstract native void cancelBehaviorEvent();
+
+	/**
+	 * Schedules the next recovery event
+	 * @pre { at least this is locked }
+	 * @post { at least this is locked }
+	 */
+	@preLocked
+	public abstract native void activateRecovery();
+
+	/**
+	 * Stops the think event task
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
+	@preLocked
+	public abstract native void cancelRecoveryEvent();
+
+	/**
+	 * Does a recovery tick
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param latency The amount of time since the last recovery event
+	 */
+	@preLocked
+	public native void doRecovery(int latency);
+
+	/**
+	 * Does the main AI update tick
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this AI will have performed one update tick }
+	 */
+	@preLocked
+	public native void runBehaviorTree();
+
+	@local
+	@preLocked
+	public native void handleException(@dereferenced final Exception e, final string context);
+
+	public native boolean isRunningBehavior(unsigned int id);
+	public native void addRunningID(unsigned int id);
+	public native void popRunningChain();
+	public native unsigned int peekRunningChain();
+	public native void clearRunningChain();
+	public native void setAITemplate();
+
+	@local
+	@preLocked
+	public native Behavior getBehaviorTree(@dereferenced final BehaviorTreeSlot slot);
+
+	@local
+	@preLocked
+	public native void setTree(Behavior subRoot, @dereferenced final BehaviorTreeSlot slot);
+
+	@local
+	@preLocked
+	public native void removeTree(@dereferenced final BehaviorTreeSlot slot);
+
+	@local
+	public native void writeBlackboard(final string key, @dereferenced final ShipBlackboardData data);
+
+	@preLocked
+	@dereferenced
+	@local
+	public boolean peekBlackboard(final string key) {
+		return blackboard.contains(key);
+	}
+
+	@preLocked
+	@dereferenced
+	@local
+	public ShipBlackboardData readBlackboard(final string key) {
+		return blackboard.get(key);
+	}
+
+	@preLocked
+	@local
+	public void eraseBlackboard(final string key) {
+		blackboard.drop(key);
+	}
+
+	@preLocked
+	@local
+	public void wipeBlackboard() {
+		blackboard.removeAll();
+	}
+
+	@preLocked
+	public void setCustomAiMap(unsigned long customMap) {
+		customAiMap = customMap;
+	}
+
+	@dirty
+	@nativeStub
+	@local
+	public native ShipAiAgent asShipAiAgent();
+
+	@dirty
+	public boolean isShipAiAgent() {
+		return true;
+	}
+}
