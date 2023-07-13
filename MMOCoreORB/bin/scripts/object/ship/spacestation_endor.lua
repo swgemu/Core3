@@ -42,6 +42,11 @@
 
 
 object_ship_spacestation_endor = object_ship_shared_spacestation_neutral:new {
+	gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "spaceStations",
+	optionsBitmask = AIENABLED,
+
 	objectName = "@space/space_mobile_type:station_endor",
 	conversationTemplate = "spacestation_endor_convotemplate",
 	conversationMobile = "object/mobile/shared_space_comm_station_endor.iff",

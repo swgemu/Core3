@@ -354,6 +354,7 @@ public:
 	const static int SHIPSTATION = 0x20000003;
 	const static int SHIPTRANSPORT = 0x20000004;
 	const static int SHIPPOB = 0x20000005;
+	const static int SHIPAGENT = 0x20000006;
 	//*******************************
 
 	const static int SHIPATTACHMENT = 0x40000000;

@@ -42,6 +42,11 @@
 
 
 object_ship_spacestation_dathomir = object_ship_shared_spacestation_neutral:new {
+	gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "spaceStations",
+	optionsBitmask = AIENABLED,
+
 	objectName = "@space/space_mobile_type:station_dathomir",
 	conversationTemplate = "spacestation_dathomir_convotemplate",
 	conversationMobile = "object/mobile/shared_space_comm_station_dathomir.iff",

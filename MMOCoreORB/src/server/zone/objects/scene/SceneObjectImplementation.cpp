@@ -2001,6 +2001,14 @@ bool SceneObject::isAiAgent() {
 	return false;
 }
 
+bool SceneObjectImplementation::isShipAiAgent() {
+	return false;
+}
+
+bool SceneObject::isShipAiAgent() {
+	return false;
+}
+
 bool SceneObjectImplementation::isVehicleObject() {
 	return false;
 }
@@ -2062,6 +2070,14 @@ AiAgent* SceneObjectImplementation::asAiAgent() {
 }
 
 AiAgent* SceneObject::asAiAgent() {
+	return nullptr;
+}
+
+ShipAiAgent* SceneObjectImplementation::asShipAiAgent() {
+	return nullptr;
+}
+
+ShipAiAgent* SceneObject::asShipAiAgent() {
 	return nullptr;
 }
 
