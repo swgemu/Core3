@@ -53,7 +53,7 @@ object_ship_decimator_tier1 = object_ship_shared_decimator_tier1:new {
 	chassisHitpoints = 480,
 	chassisMass = 5000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

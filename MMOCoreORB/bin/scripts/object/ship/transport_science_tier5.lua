@@ -53,7 +53,7 @@ object_ship_transport_science_tier5 = object_ship_shared_transport_science_tier5
 	chassisHitpoints = 4915.2,
 	chassisMass = 5000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
