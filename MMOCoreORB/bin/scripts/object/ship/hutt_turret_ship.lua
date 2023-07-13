@@ -53,7 +53,7 @@ object_ship_hutt_turret_ship = object_ship_shared_hutt_turret_ship:new {
 	chassisHitpoints = 519,
 	chassisMass = 10000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

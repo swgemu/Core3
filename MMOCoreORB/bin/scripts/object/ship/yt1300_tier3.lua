@@ -53,7 +53,7 @@ object_ship_yt1300_tier3 = object_ship_shared_yt1300_tier3:new {
 	chassisHitpoints = 2400,
 	chassisMass = 5000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

@@ -53,7 +53,7 @@ object_ship_tieoppressor = object_ship_shared_tieoppressor:new {
 	chassisHitpoints = 341,
 	chassisMass = 10000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

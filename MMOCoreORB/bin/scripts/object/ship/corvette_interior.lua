@@ -53,7 +53,7 @@ object_ship_corvette_interior = object_ship_shared_corvette_interior:new {
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
