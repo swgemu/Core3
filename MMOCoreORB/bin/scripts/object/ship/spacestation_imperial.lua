@@ -42,7 +42,11 @@
 
 
 object_ship_spacestation_imperial = object_ship_shared_spacestation_imperial:new {
-	objectName = "@space/space_mobile_type:spacestation_imperial",
+	objectName = "@space/ship_names:spacestation_imperial",
+	gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "spaceStations",
+	optionsBitmask = AIENABLED,
 
 	name = "spacestation_imperial",
 	type = "spacestation_imperial",
@@ -53,7 +57,7 @@ object_ship_spacestation_imperial = object_ship_shared_spacestation_imperial:new
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

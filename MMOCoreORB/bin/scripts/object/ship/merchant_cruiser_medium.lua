@@ -53,7 +53,7 @@ object_ship_merchant_cruiser_medium = object_ship_shared_merchant_cruiser_medium
 	chassisHitpoints = 2400,
 	chassisMass = 5000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

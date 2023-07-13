@@ -53,7 +53,7 @@ object_ship_blacksun_heavy_s02 = object_ship_shared_blacksun_heavy_s02:new {
 	chassisHitpoints = 519,
 	chassisMass = 10000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

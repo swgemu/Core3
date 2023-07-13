@@ -42,7 +42,11 @@
 
 
 object_ship_spacestation_neutral = object_ship_shared_spacestation_neutral:new {
-	objectName = "@space/space_mobile_type:spacestation_neutral",
+	objectName = "@space/ship_names:spacestation_neutral",
+	gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "spaceStations",
+	optionsBitmask = AIENABLED,
 
 	name = "spacestation_neutral",
 	type = "spacestation_neutral",
@@ -53,7 +57,7 @@ object_ship_spacestation_neutral = object_ship_shared_spacestation_neutral:new {
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

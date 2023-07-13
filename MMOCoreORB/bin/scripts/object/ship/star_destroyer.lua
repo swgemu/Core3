@@ -53,7 +53,7 @@ object_ship_star_destroyer = object_ship_shared_star_destroyer:new {
 	chassisHitpoints = 100000,
 	chassisMass = 50000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

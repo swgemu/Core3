@@ -7,6 +7,7 @@
 
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 
 class CreateNPCCommand : public QueueCommand {
@@ -42,28 +43,56 @@ public:
 
 			staffTools->callFunction();
 		} else if (arg == "toggledebug") {
-			ManagedReference<AiAgent*> aiAgent = server->getZoneServer()->getObject(creature->getTargetID()).castTo<AiAgent*>();
+			auto zoneServer = server->getZoneServer();
 
-			if (aiAgent == nullptr)
+			if (zoneServer == nullptr)
 				return GENERALERROR;
 
-			Locker clocker(aiAgent, creature);
+			ManagedReference<SceneObject*> target = zoneServer->getObject(creature->getTargetID());
 
-			bool curDebug = aiAgent->getAIDebug();
-
-			aiAgent->setAIDebug(!curDebug);
+			if (target == nullptr)
+				return GENERALERROR;
 
 			StringBuffer msg;
-			msg << "AiAgent " << aiAgent->getObjectID() << " debug set to " << aiAgent->getAIDebug();
 
-#ifndef DEBUG_AI
-			msg << " not compiled with DEBUG_AI, using LogLevel";
-#endif // DEBUG_AI
+			if (target->isAiAgent()) {
+				AiAgent* aiAgent = target->asAiAgent();
 
-			String logFileName = aiAgent->getLogFileName();
+				if (aiAgent == nullptr)
+					return GENERALERROR;
 
-			if (!logFileName.isEmpty()) {
-				msg << " logging to " << logFileName;
+				Locker clocker(aiAgent, creature);
+
+				bool curDebug = aiAgent->getAIDebug();
+
+				aiAgent->setAIDebug(!curDebug);
+
+				msg << "AiAgent " << aiAgent->getObjectID() << " debug set to " << aiAgent->getAIDebug();
+
+	#ifndef DEBUG_AI
+				msg << " not compiled with DEBUG_AI, using LogLevel";
+	#endif // DEBUG_AI
+
+				String logFileName = aiAgent->getLogFileName();
+
+				if (!logFileName.isEmpty()) {
+					msg << " logging to " << logFileName;
+				}
+			} else if (target->isShipAiAgent()) {
+				ShipAiAgent* agent = target->asShipAiAgent();
+
+				if (agent == nullptr)
+					return GENERALERROR;
+
+				Locker clocker(agent, creature);
+
+				bool curDebug = agent->getShipAiDebug();
+
+				agent->setShipAiDebug(!curDebug);
+
+				msg << "AiAgent: " << agent->getDisplayedName() << " ID: " << agent->getObjectID() << " debug set to " << agent->getShipAiDebug();
+			} else {
+				msg << "Failed to start debug on target.";
 			}
 
 			creature->sendSystemMessage(msg.toString());

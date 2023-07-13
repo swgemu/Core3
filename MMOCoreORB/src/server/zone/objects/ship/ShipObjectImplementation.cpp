@@ -68,89 +68,91 @@ void ShipObjectImplementation::notifyLoadFromDatabase() {
 
 void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
+}
 
-	SharedShipObjectTemplate* ssot = dynamic_cast<SharedShipObjectTemplate*>(templateData);
+void ShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) {
+	if (ssot == nullptr) {
+		return;
+	}
 
-	if (ssot != nullptr) {
-		setShipName(ssot->getShipName());
-		setShipType(ssot->getShipType(), false);
-		setShipNameCRC(chassisDataName.hashCode(), false);
-		setUniqueID(getUniqueID(), false);
+	setShipName(ssot->getShipName());
+	setShipType(ssot->getShipType(), false);
+	setShipNameCRC(chassisDataName.hashCode(), false);
+	setUniqueID(getUniqueID(), false);
 
-		setChassisMaxHealth(ssot->getChassisHitpoints(), false);
-		setCurrentChassisHealth(ssot->getChassisHitpoints(), false);
+	setChassisMaxHealth(ssot->getChassisHitpoints(), false);
+	setCurrentChassisHealth(ssot->getChassisHitpoints(), false);
 
-		setSlipRate(ssot->getChassisSlipRate(), false);
-		setChassisSpeed(ssot->getChassisSpeed(), false);
-		setChassisMaxMass(ssot->getChassisMass(), false);
+	setSlipRate(ssot->getChassisSlipRate(), false);
+	setChassisSpeed(ssot->getChassisSpeed(), false);
+	setChassisMaxMass(ssot->getChassisMass(), false);
 
-		setShipFaction(ssot->getShipFaction(), false);
-		setShipDifficulty(ssot->getShipDifficulty(), false);
+	setShipFaction(ssot->getShipFaction(), false);
+	setShipDifficulty(ssot->getShipDifficulty(), false);
 
-		setConversationMessage(ssot->getConversationMessage());
-		setConversationMobile(ssot->getConversationMobile());
-		setConversationTemplate(ssot->getConversationTemplate());
+	setConversationMessage(ssot->getConversationMessage());
+	setConversationMobile(ssot->getConversationMobile());
+	setConversationTemplate(ssot->getConversationTemplate());
 
-		setHasWings(ssot->shipHasWings());
+	setHasWings(ssot->shipHasWings());
 
-		setChassisCategory(ssot->getChassisCategory());
-		setChassisLevel(ssot->getChassisLevel());
+	setChassisCategory(ssot->getChassisCategory());
+	setChassisLevel(ssot->getChassisLevel());
 
-		auto values = ssot->getAttributeMap();
+	auto values = ssot->getAttributeMap();
 
-		for (int i = 0; i < values.size(); ++i) {
-			auto attribute = values.elementAt(i).getKey();
-			auto value = values.elementAt(i).getValue();
+	for (int i = 0; i < values.size(); ++i) {
+		auto attribute = values.elementAt(i).getKey();
+		auto value = values.elementAt(i).getValue();
 
-			if (attribute == "slideDamp") {
-				setSlipRate(value, false);
-			} else if (attribute == "engineAccel") {
-				setEngineAccelerationRate(value, false);
-				setActualAccelerationRate(value, false);
-			} else if (attribute == "engineDecel") {
-				setEngineDecelerationRate(value, false);
-				setActualDecelerationRate(value, false);
-			} else if (attribute == "engineYawAccel") {
-				setEngineYawAccelerationRate(value * Math::DEG2RAD, false);
-				setActualYawAccelerationRate(value * Math::DEG2RAD, false);
-			} else if (attribute == "enginePitchAccel") {
-				setEnginePitchAccelerationRate(value * Math::DEG2RAD, false);
-				setActualPitchAccelerationRate(value * Math::DEG2RAD, false);
-			} else if (attribute == "engineRollAccel") {
-				setEngineRollAccelerationRate(value * Math::DEG2RAD, false);
-				setActualRollAccelerationRate(value * Math::DEG2RAD, false);
-			} else if (attribute == "maxSpeed") {
-				setChassisSpeed(value, false);
-			}
+		if (attribute == "slideDamp") {
+			setSlipRate(value, false);
+		} else if (attribute == "engineAccel") {
+			setEngineAccelerationRate(value, false);
+			setActualAccelerationRate(value, false);
+		} else if (attribute == "engineDecel") {
+			setEngineDecelerationRate(value, false);
+			setActualDecelerationRate(value, false);
+		} else if (attribute == "engineYawAccel") {
+			setEngineYawAccelerationRate(value * Math::DEG2RAD, false);
+			setActualYawAccelerationRate(value * Math::DEG2RAD, false);
+		} else if (attribute == "enginePitchAccel") {
+			setEnginePitchAccelerationRate(value * Math::DEG2RAD, false);
+			setActualPitchAccelerationRate(value * Math::DEG2RAD, false);
+		} else if (attribute == "engineRollAccel") {
+			setEngineRollAccelerationRate(value * Math::DEG2RAD, false);
+			setActualRollAccelerationRate(value * Math::DEG2RAD, false);
+		} else if (attribute == "maxSpeed") {
+			setChassisSpeed(value, false);
 		}
+	}
 
-		totalCellNumber = ssot->getTotalCellNumber();
+	totalCellNumber = ssot->getTotalCellNumber();
 
-		auto portalLayout = templateData->getPortalLayout();
+	auto portalLayout = ssot->getPortalLayout();
 
-		if (portalLayout != nullptr)
-			totalCellNumber = portalLayout->getFloorMeshNumber();
+	if (portalLayout != nullptr)
+		totalCellNumber = portalLayout->getFloorMeshNumber();
 
-		//info(true) << getDisplayedName() << " loaded a total of " << totalCellNumber << " cells.";
+	//info(true) << getDisplayedName() << " loaded a total of " << totalCellNumber << " cells.";
 
-		auto chassisData = ShipManager::instance()->getChassisData(ssot->getShipName());
+	auto chassisData = ShipManager::instance()->getChassisData(ssot->getShipName());
 
-		if (chassisData != nullptr) {
-			for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; slot++) {
-				auto slotData = chassisData->getComponentSlotData(slot);
-				setComponentTargetable(slot, slotData ? slotData->isTargetable() : false);
-			}
+	if (chassisData != nullptr) {
+		for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; slot++) {
+			auto slotData = chassisData->getComponentSlotData(slot);
+			setComponentTargetable(slot, slotData ? slotData->isTargetable() : false);
 		}
+	}
 
-		auto appearance = templateData->getAppearanceTemplate();
+	auto appearance = ssot->getAppearanceTemplate();
 
-		if (appearance != nullptr) {
-			auto volume = appearance->getBoundingVolume();
+	if (appearance != nullptr) {
+		auto volume = appearance->getBoundingVolume();
 
-			if (volume != nullptr) {
-				const auto& sphere = volume->getBoundingSphere();
-				boundingRadius = sphere.getCenter().length() + sphere.getRadius();
-			}
+		if (volume != nullptr) {
+			const auto& sphere = volume->getBoundingSphere();
+			boundingRadius = sphere.getCenter().length() + sphere.getRadius();
 		}
 	}
 }
