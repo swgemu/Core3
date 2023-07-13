@@ -793,12 +793,16 @@ float ShipObjectImplementation::getActualSpeed() {
 
 	if (componentMap->get(Components::ENGINE) != 0) {
 		float efficiency = getComponentEfficiencyMap()->get(Components::ENGINE);
-		componentActual += engineMaxSpeed * efficiency;
+		float condition = getComponentCondition(Components::ENGINE);
+
+		componentActual += engineMaxSpeed * efficiency * condition;
 	}
 
 	if (componentMap->get(Components::BOOSTER) != 0 && isBoosterActive()) {
 		float efficiency = getComponentEfficiencyMap()->get(Components::BOOSTER);
-		componentActual += boosterMaxSpeed * efficiency;
+		float condition = getComponentCondition(Components::BOOSTER);
+
+		componentActual += boosterMaxSpeed * efficiency * condition;
 	}
 
 	float chassisActual = 1.f;
@@ -1019,4 +1023,15 @@ CreatureObject* ShipObjectImplementation::getPilot() {
 
 void ShipObjectImplementation::setRotationMatrix(const Quaternion& value) {
 	rotationMatrix.setRotationMatrix(value.toMatrix3());
+}
+
+float ShipObjectImplementation::getComponentCondition(uint32 slot) {
+	float healthMin = getCurrentHitpointsMap()->get(slot);
+	float healthMax = getMaxHitpointsMap()->get(slot);
+
+	if (healthMin == 0.f || healthMax == 0.f) {
+		return 0.f;
+	}
+
+	return healthMin / healthMax;
 }

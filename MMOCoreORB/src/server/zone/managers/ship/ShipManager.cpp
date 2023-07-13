@@ -202,8 +202,6 @@ void ShipManager::loadAiShipComponentData(ShipObject* ship) {
 		return;
 	}
 
-	auto appearanceData = getAppearanceData(shipTemp->getShipName());
-
 	for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; ++slot) {
 		String slotName = Components::shipComponentSlotToString(slot);
 		if (slotName == "") {
@@ -223,16 +221,13 @@ void ShipManager::loadAiShipComponentData(ShipObject* ship) {
 		float hitPoints = Math::max(values.get("hitpoints"), 50.f);
 		float armor = Math::max(values.get("armor"), 100.f);
 
-		if (appearanceData != nullptr && !appearanceData->contains(compName)) {
-			compName = appearanceData->getDefaultAppearance(slot);
-		}
-
 		ship->setComponentCRC(slot, compName.hashCode());
 		ship->setComponentName(slot, compName);
 		ship->setComponentHitpoints(slot, hitPoints);
 		ship->setComponentMaxHitpoints(slot, hitPoints);
 		ship->setComponentArmor(slot, armor);
 		ship->setComponentMaxArmor(slot, armor);
+		ship->setEfficiency(slot, 1.f);
 
 		switch (slot) {
 			case Components::REACTOR: {
