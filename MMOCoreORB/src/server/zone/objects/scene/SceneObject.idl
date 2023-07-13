@@ -64,6 +64,7 @@ include server.zone.objects.scene.variables.OrderedTaskExecutioner;
 import server.zone.objects.ship.ShipObject;
 import server.zone.objects.ship.SpaceStationObject;
 import server.zone.objects.ship.PobShipObject;
+import server.zone.objects.ship.ai.ShipAiAgent;
 
 @mock
 @json
@@ -1577,6 +1578,19 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@nativeStub
 	@virtualStub
 	public native abstract AiAgent asAiAgent();
+
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract boolean isShipAiAgent();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract ShipAiAgent asShipAiAgent();
 
 	@dirty
 	@local
