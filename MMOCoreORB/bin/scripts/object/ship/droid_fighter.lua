@@ -42,18 +42,29 @@
 
 
 object_ship_droid_fighter = object_ship_shared_droid_fighter:new {
+	objectName = "@space/space_mobile_type:droid_fighter",
 
 	name = "droid_fighter",
+	type = "droid_fighter",
+	faction = "civilian",
+	difficulty = "",
+
 	slideFactor = 1.81,
 	chassisHitpoints = 519,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 296.3893, armor = 290.6176,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.5463, armor = 98.54914, speed = 42.95467, pitch = 30.48932, roll = 31.86797, yaw = 31.35491, acceleration = 10.12654, rollRate = 57.19476, pitchRate = 57.74682, deceleration = 4.344702, yawRate = 59.24586,},
-	shield_0 = { name = "shd_generic", hitpoints = 382.2277, armor = 475.8343, regen = 4.751729, front = 298.3941, back = 392.1485,},
-	armor_0 = { name = "arm_generic", hitpoints = 191.9277, armor = 198.3179,},
-	armor_1 = { name = "arm_generic", hitpoints = 198.958, armor = 197.0928,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.41519, energy = 552.1365,},
-	weapon_0 = { name = "wpn_z95_blaster", hitpoints = 194.5731, armor = 199.6548, rate = 0.3414823, drain = 23.16827, maxDamage = 244.3353, shieldEfficiency = 0, minDamage = 118.6522, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 45, acceleration = 10.2, deceleration = 4.5, yaw = 32, yawRate = 60, pitch = 32, pitchRate = 60, roll = 32, rollRate = 60},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 300, back = 400, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 571.2, rechargeRate = 35.36},
+	weapon_0 = {name = "wpn_z95_blaster", hitpoints = 200, armor = 200, rate = 0.345, drain = 23.6, maxDamage = 250, minDamage = 120, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_droid_fighter, "object/ship/droid_fighter.iff")

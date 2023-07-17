@@ -42,18 +42,29 @@
 
 
 object_ship_freightermedium = object_ship_shared_freightermedium:new {
+	objectName = "@space/space_mobile_type:freightermedium",
 
 	name = "freightermedium",
+	type = "freightermedium",
+	faction = "civilian",
+	difficulty = "",
+
 	slideFactor = 2,
 	chassisHitpoints = 300,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 96.48953, armor = 99.59495,},
-	engine = { name = "eng_generic", hitpoints = 97.34251, armor = 95.45883, speed = 15.46101, pitch = 15.28065, roll = 15.71315, yaw = 15.80318, acceleration = 25.47562, rollRate = 21.65451, pitchRate = 21.32055, deceleration = 22.05575, yawRate = 21.03679,},
-	shield_0 = { name = "shd_generic", hitpoints = 192.3368, armor = 194.2559, regen = 4.926056, front = 398.8176, back = 677.7628,},
-	armor_0 = { name = "arm_generic", hitpoints = 596.9176, armor = 574.3787,},
-	armor_1 = { name = "arm_generic", hitpoints = 573.0746, armor = 584.9464,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.49744, energy = 831.6958,},
-	weapon_0 = { name = "wpn_generic", hitpoints = 194.0252, armor = 191.2548, rate = 0.3231426, drain = 15.58567, maxDamage = 505.5446, shieldEfficiency = 0, minDamage = 287.7425, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 16, acceleration = 26.1, deceleration = 22.446, yaw = 16, yawRate = 22, pitch = 16, pitchRate = 22, roll = 16, rollRate = 22},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 400, back = 700, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	armor_1 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 870.4, rechargeRate = 34.816},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.34, drain = 16.384, maxDamage = 510, minDamage = 300, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_freightermedium, "object/ship/freightermedium.iff")

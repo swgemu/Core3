@@ -42,19 +42,30 @@
 
 
 object_ship_ywing_longprobe = object_ship_shared_ywing_longprobe:new {
+	objectName = "@space/space_mobile_type:ywing_longprobe",
 
 	name = "ywing_longprobe",
+	type = "ywing_longprobe",
+	faction = "rebel",
+	difficulty = "",
+
 	slideFactor = 1.88,
 	chassisHitpoints = 339,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 98.06461, armor = 96.93682,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 97.19398, armor = 99.32206, speed = 32.6059, pitch = 16.41687, roll = 16.63999, yaw = 16.08926, acceleration = 8.088574, rollRate = 30.56332, pitchRate = 30.59995, deceleration = 9.202122, yawRate = 31.87159,},
-	shield_0 = { name = "shd_generic", hitpoints = 380.4309, armor = 477.075, regen = 4.839793, front = 498.6812, back = 581.5155,},
-	armor_0 = { name = "arm_generic", hitpoints = 587.7935, armor = 585.7261,},
-	armor_1 = { name = "arm_generic", hitpoints = 578.1149, armor = 577.8791,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.63549, energy = 565.3741,},
-	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 196.0749, armor = 191.3092, rate = 0.3344227, drain = 22.84121, maxDamage = 314.7901, shieldEfficiency = 0, minDamage = 212.4149, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
-	weapon_1 = { name = "wpn_incom_disruptor", hitpoints = 195.2542, armor = 196.5682, rate = 0.3308832, drain = 23.32487, maxDamage = 22.67394, shieldEfficiency = 0, minDamage = 22.81719, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 34, acceleration = 8.4, deceleration = 9.3, yaw = 16.7, yawRate = 31.9, pitch = 16.7, pitchRate = 31.9, roll = 16.7, rollRate = 31.9},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 500, back = 600, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	armor_1 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 571.2, rechargeRate = 35.36},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 200, armor = 200, rate = 0.345, drain = 23.6, maxDamage = 320, minDamage = 220, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_disruptor", hitpoints = 200, armor = 200, rate = 0.345, drain = 23.6, maxDamage = 23.6, minDamage = 23.6, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_ywing_longprobe, "object/ship/ywing_longprobe.iff")

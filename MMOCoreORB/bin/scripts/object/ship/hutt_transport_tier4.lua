@@ -42,17 +42,28 @@
 
 
 object_ship_hutt_transport_tier4 = object_ship_shared_hutt_transport_tier4:new {
+	objectName = "@space/space_mobile_type:hutt_transport_tier4",
 
 	name = "hutt_transport_tier4",
+	type = "hutt_transport_tier4",
+	faction = "hutt",
+	difficulty = "tier4",
+
 	slideFactor = 1.83,
 	chassisHitpoints = 3840,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 4134.592, armor = 3952.546,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 4119.98, armor = 4093.868, speed = 44.29548, pitch = 24.52954, roll = 31.07415, yaw = 19.77461, acceleration = 10.74409, rollRate = 55.57661, pitchRate = 48.49061, deceleration = 9.447837, yawRate = 41.55386,},
-	shield_0 = { name = "shd_generic", hitpoints = 4138.725, armor = 3946.082, regen = 14.8452, front = 24739.27, back = 24497.14,},
-	armor_0 = { name = "arm_generic", hitpoints = 13238.28, armor = 12723.59,},
-	armor_1 = { name = "arm_generic", hitpoints = 13049.3, armor = 13069.71,},
-	capacitor = { name = "cap_generic", hitpoints = 4069.884, armor = 4008.161, rechargeRate = 98.96354, energy = 4885.521,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 4147.2, armor = 4147.2},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 4147.2, armor = 4147.2, speed = 45.89, acceleration = 11.15, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
+	shield_0 = {name = "shd_generic", hitpoints = 4147.2, armor = 4147.2, front = 24883.2, back = 24883.2, regen = 15},
+	armor_0 = {name = "arm_generic", hitpoints = 13271, armor = 13271},
+	armor_1 = {name = "arm_generic", hitpoints = 13271, armor = 13271},
+	capacitor = {name = "cap_generic", hitpoints = 4147.2, armor = 4147.2, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_hutt_transport_tier4, "object/ship/hutt_transport_tier4.iff")

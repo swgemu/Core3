@@ -42,18 +42,29 @@
 
 
 object_ship_assaultship = object_ship_shared_assaultship:new {
+	objectName = "@space/space_mobile_type:assaultship",
 
 	name = "assaultship",
+	type = "assaultship",
+	faction = "civilian",
+	difficulty = "",
+
 	slideFactor = 1,
 	chassisHitpoints = 300,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 96.05299, armor = 97.72736,},
-	engine = { name = "eng_generic", hitpoints = 98.83556, armor = 99.14944, speed = 49.88302, pitch = 23.05017, roll = 23.42142, yaw = 23.26724, acceleration = 42.61156, rollRate = 39.9012, pitchRate = 39.71355, deceleration = 36.90677, yawRate = 41.06225,},
-	shield_0 = { name = "shd_generic", hitpoints = 194.4048, armor = 190.9529, regen = 4.923894, front = 194.4937, back = 194.8526,},
-	armor_0 = { name = "arm_generic", hitpoints = 781.739, armor = 766.9294,},
-	armor_1 = { name = "arm_generic", hitpoints = 782.1686, armor = 787.6256,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 137.9457, energy = 3442.146,},
-	weapon_0 = { name = "wpn_generic", hitpoints = 199.3354, armor = 191.032, rate = 1.31652, drain = 64.17976, maxDamage = 247.0937, shieldEfficiency = 0, minDamage = 118.0961, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 50, acceleration = 43.5, deceleration = 37.41, yaw = 24.1, yawRate = 41.2, pitch = 24.1, pitchRate = 41.2, roll = 24.1, rollRate = 41.2},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 200, back = 200, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 800, armor = 800},
+	armor_1 = {name = "arm_generic", hitpoints = 800, armor = 800},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 3481.6, rechargeRate = 139.264},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 1.358, drain = 65.536, maxDamage = 250, minDamage = 120, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_assaultship, "object/ship/assaultship.iff")

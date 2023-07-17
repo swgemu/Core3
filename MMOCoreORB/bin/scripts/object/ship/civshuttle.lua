@@ -42,18 +42,29 @@
 
 
 object_ship_civshuttle = object_ship_shared_civshuttle:new {
+	objectName = "@space/space_mobile_type:civshuttle",
 
 	name = "civshuttle",
+	type = "civshuttle",
+	faction = "civilian",
+	difficulty = "",
+
 	slideFactor = 1,
 	chassisHitpoints = 300,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 98.79517, armor = 95.32833,},
-	engine = { name = "eng_generic", hitpoints = 98.26923, armor = 95.88637, speed = 29.13935, pitch = 15.95895, roll = 15.64491, yaw = 16.1961, acceleration = 25.73766, rollRate = 19.88272, pitchRate = 19.9164, deceleration = 21.83313, yawRate = 19.63519,},
-	shield_0 = { name = "shd_generic", hitpoints = 198.1622, armor = 192.1963, regen = 4.757228, front = 193.7592, back = 190.4718,},
-	armor_0 = { name = "arm_generic", hitpoints = 199.2556, armor = 198.116,},
-	armor_1 = { name = "arm_generic", hitpoints = 196.3457, armor = 191.361,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 17.32041, energy = 430.8173,},
-	weapon_0 = { name = "wpn_generic", hitpoints = 197.1109, armor = 193.2701, rate = 0.1623135, drain = 7.997119, maxDamage = 247.1539, shieldEfficiency = 0, minDamage = 116.933, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 30, acceleration = 26.1, deceleration = 22.446, yaw = 16.2, yawRate = 20.6, pitch = 16.2, pitchRate = 20.6, roll = 16.2, rollRate = 20.6},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 200, back = 200, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 435.2, rechargeRate = 17.408},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.17, drain = 8.192, maxDamage = 250, minDamage = 120, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_civshuttle, "object/ship/civshuttle.iff")

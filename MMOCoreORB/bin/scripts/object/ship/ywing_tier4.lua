@@ -42,20 +42,31 @@
 
 
 object_ship_ywing_tier4 = object_ship_shared_ywing_tier4:new {
+	objectName = "@space/space_mobile_type:ywing_tier4",
 
 	name = "ywing_tier4",
+	type = "ywing_tier4",
+	faction = "rebel",
+	difficulty = "tier4",
+
 	slideFactor = 1.77,
 	chassisHitpoints = 1920,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 1979.902, armor = 1976.115,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 1999.819, armor = 2044.404, speed = 43.95061, pitch = 24.79912, roll = 29.76071, yaw = 19.3964, acceleration = 10.65536, rollRate = 55.51757, pitchRate = 49.11041, deceleration = 9.134749, yawRate = 40.44541,},
-	shield_0 = { name = "shd_generic", hitpoints = 2009.018, armor = 2065.59, regen = 14.78744, front = 8098.977, back = 7981.04,},
-	armor_0 = { name = "arm_generic", hitpoints = 4768.317, armor = 4813.546,},
-	armor_1 = { name = "arm_generic", hitpoints = 4654.232, armor = 4861.082,},
-	capacitor = { name = "cap_generic", hitpoints = 2054.615, armor = 2010.797, rechargeRate = 99.63555, energy = 4849.377,},
-	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 2067.688, armor = 2029.737, rate = 0.7674853, drain = 0.98922, maxDamage = 252.4187, shieldEfficiency = 0.5489095, minDamage = 159.7168, ammo = 0, ammo_type = 0, armorEfficiency = 0.5591003,},
-	weapon_1 = { name = "wpn_slayn_ioncannon", hitpoints = 2067.888, armor = 2072.527, rate = 0.7413402, drain = 0.9790266, maxDamage = 248.1499, shieldEfficiency = 0.5426723, minDamage = 164.6277, ammo = 0, ammo_type = 0, armorEfficiency = 0.5326373,},
-	weapon_2 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 2023.764, armor = 2010.637, rate = 2.900287, drain = 0.9731701, maxDamage = 720.8145, shieldEfficiency = 0.745426, minDamage = 319.3767, ammo = 4, ammo_type = 19, armorEfficiency = 0.749786,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 2073.6, armor = 2073.6},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 2073.6, armor = 2073.6, speed = 45.89, acceleration = 11.15, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
+	shield_0 = {name = "shd_generic", hitpoints = 2073.6, armor = 2073.6, front = 8294.4, back = 8294.4, regen = 15},
+	armor_0 = {name = "arm_generic", hitpoints = 4866.05, armor = 4866.05},
+	armor_1 = {name = "arm_generic", hitpoints = 4866.05, armor = 4866.05},
+	capacitor = {name = "cap_generic", hitpoints = 2073.6, armor = 2073.6, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 2073.6, armor = 2073.6, rate = 0.78, drain = 1, maxDamage = 252.44, minDamage = 164.67, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_slayn_ioncannon", hitpoints = 2073.6, armor = 2073.6, rate = 0.78, drain = 1, maxDamage = 252.44, minDamage = 164.67, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 2073.6, armor = 2073.6, rate = 3, drain = 1, maxDamage = 757.32, minDamage = 329.34, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 19},
 }
 
 ObjectTemplates:addTemplate(object_ship_ywing_tier4, "object/ship/ywing_tier4.iff")

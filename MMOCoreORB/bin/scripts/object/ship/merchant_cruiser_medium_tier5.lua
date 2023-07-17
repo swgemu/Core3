@@ -42,22 +42,33 @@
 
 
 object_ship_merchant_cruiser_medium_tier5 = object_ship_shared_merchant_cruiser_medium_tier5:new {
+	objectName = "@space/space_mobile_type:merchant_cruiser_medium_tier5",
 
 	name = "merchant_cruiser_medium_tier5",
+	type = "merchant_cruiser_medium_tier5",
+	faction = "civilian",
+	difficulty = "tier5",
+
 	slideFactor = 1.76,
 	chassisHitpoints = 24576,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 31374.25, armor = 31473.09,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 31715.44, armor = 31322.01, speed = 46.00034, pitch = 25.52698, roll = 31.7774, yaw = 20.58438, acceleration = 11.12726, rollRate = 57.04425, pitchRate = 50.90641, deceleration = 9.580009, yawRate = 41.4047,},
-	shield_0 = { name = "shd_generic", hitpoints = 31406.62, armor = 31011.88, regen = 33.87177, front = 124402.8, back = 127368.4,},
-	armor_0 = { name = "arm_generic", hitpoints = 66250.25, armor = 66480.52,},
-	armor_1 = { name = "arm_generic", hitpoints = 67037.62, armor = 66882.09,},
-	capacitor = { name = "cap_generic", hitpoints = 30760.99, armor = 31341.01, rechargeRate = 99.1574, energy = 4754.951,},
-	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 31378.05, armor = 31709.45, rate = 0.7577992, drain = 0.9805011, maxDamage = 791.7409, shieldEfficiency = 0.541249, minDamage = 503.3585, ammo = 0, ammo_type = 0, armorEfficiency = 0.5526683,},
-	weapon_1 = { name = "wpn_incom_blaster", hitpoints = 30514.77, armor = 30504.45, rate = 0.7509074, drain = 0.9799721, maxDamage = 797.0836, shieldEfficiency = 0.5496975, minDamage = 508.0051, ammo = 0, ammo_type = 0, armorEfficiency = 0.55691,},
-	weapon_2 = { name = "wpn_incom_blaster", hitpoints = 30654.87, armor = 31358.1, rate = 0.7549043, drain = 0.9532104, maxDamage = 791.2296, shieldEfficiency = 0.5452173, minDamage = 489.9865, ammo = 0, ammo_type = 0, armorEfficiency = 0.5504653,},
-	weapon_3 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 31564.13, armor = 31448.54, rate = 2.984567, drain = 0.9888422, maxDamage = 2464.714, shieldEfficiency = 0.7487413, minDamage = 995.6216, ammo = 4, ammo_type = 20, armorEfficiency = 0.7453952,},
-	weapon_4 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 30567.44, armor = 31831.83, rate = 2.991441, drain = 0.9994885, maxDamage = 2406.495, shieldEfficiency = 0.7189596, minDamage = 976.4769, ammo = 4, ammo_type = 20, armorEfficiency = 0.7176121,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 31850.5, armor = 31850.5},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 31850.5, armor = 31850.5, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 31850.5, armor = 31850.5, front = 127402, back = 127402, regen = 34.73},
+	armor_0 = {name = "arm_generic", hitpoints = 67947.7, armor = 67947.7},
+	armor_1 = {name = "arm_generic", hitpoints = 67947.7, armor = 67947.7},
+	capacitor = {name = "cap_generic", hitpoints = 31850.5, armor = 31850.5, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_blaster", hitpoints = 31850.5, armor = 31850.5, rate = 0.78, drain = 1, maxDamage = 822.94, minDamage = 512.41, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_blaster", hitpoints = 31850.5, armor = 31850.5, rate = 0.78, drain = 1, maxDamage = 822.94, minDamage = 512.41, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_incom_blaster", hitpoints = 31850.5, armor = 31850.5, rate = 0.78, drain = 1, maxDamage = 822.94, minDamage = 512.41, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_3 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 31850.5, armor = 31850.5, rate = 3, drain = 1, maxDamage = 2468.82, minDamage = 1024.82, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 20},
+	weapon_4 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 31850.5, armor = 31850.5, rate = 3, drain = 1, maxDamage = 2468.82, minDamage = 1024.82, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 20},
 }
 
 ObjectTemplates:addTemplate(object_ship_merchant_cruiser_medium_tier5, "object/ship/merchant_cruiser_medium_tier5.iff")

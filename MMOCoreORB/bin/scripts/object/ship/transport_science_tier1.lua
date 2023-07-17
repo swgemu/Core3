@@ -42,17 +42,28 @@
 
 
 object_ship_transport_science_tier1 = object_ship_shared_transport_science_tier1:new {
+	objectName = "@space/space_mobile_type:transport_science_tier1",
 
 	name = "transport_science_tier1",
+	type = "transport_science_tier1",
+	faction = "civilian",
+	difficulty = "tier1",
+
 	slideFactor = 1.83,
 	chassisHitpoints = 480,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 289.9994, armor = 294.7484,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 296.2821, armor = 287.7006, speed = 41.77113, pitch = 22.96324, roll = 27.96115, yaw = 18.12908, acceleration = 9.820935, rollRate = 50.69027, pitchRate = 46.1183, deceleration = 8.692489, yawRate = 37.59164,},
-	shield_0 = { name = "shd_generic", hitpoints = 295.1124, armor = 294.6839, regen = 2.998448, front = 1750.041, back = 1747.865,},
-	armor_0 = { name = "arm_generic", hitpoints = 916.1595, armor = 932.8237,},
-	armor_1 = { name = "arm_generic", hitpoints = 927.0078, armor = 955.1097,},
-	capacitor = { name = "cap_generic", hitpoints = 295.1595, armor = 291.2751, rechargeRate = 97.63782, energy = 4997.405,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 300, armor = 300, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},
+	shield_0 = {name = "shd_generic", hitpoints = 300, armor = 300, front = 1800, back = 1800, regen = 3},
+	armor_0 = {name = "arm_generic", hitpoints = 960, armor = 960},
+	armor_1 = {name = "arm_generic", hitpoints = 960, armor = 960},
+	capacitor = {name = "cap_generic", hitpoints = 300, armor = 300, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_transport_science_tier1, "object/ship/transport_science_tier1.iff")

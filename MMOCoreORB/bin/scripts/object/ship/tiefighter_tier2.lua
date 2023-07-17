@@ -42,18 +42,29 @@
 
 
 object_ship_tiefighter_tier2 = object_ship_shared_tiefighter_tier2:new {
+	objectName = "@space/space_mobile_type:tiefighter_tier2",
 
 	name = "tiefighter_tier2",
+	type = "tiefighter_tier2",
+	faction = "imperial",
+	difficulty = "tier2",
+
 	slideFactor = 1.85,
 	chassisHitpoints = 900,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 429.8788, armor = 448.7209,},
-	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 439.4091, armor = 445.7355, speed = 42.25571, pitch = 23.50561, roll = 28.19992, yaw = 18.65842, acceleration = 10.21904, rollRate = 52.19166, pitchRate = 46.76221, deceleration = 8.653589, yawRate = 38.86872,},
-	shield_0 = { name = "shd_generic", hitpoints = 448.9271, armor = 439.8431, regen = 0, front = 0, back = 0,},
-	armor_0 = { name = "arm_generic", hitpoints = 1421.713, armor = 1391.74,},
-	armor_1 = { name = "arm_generic", hitpoints = 1420.758, armor = 1393.852,},
-	capacitor = { name = "cap_generic", hitpoints = 442.9701, armor = 446.2894, rechargeRate = 97.93583, energy = 4810.564,},
-	weapon_0 = { name = "wpn_generic", hitpoints = 438.7333, armor = 428.4671, rate = 0.7573761, drain = 0.9643904, maxDamage = 83.77296, shieldEfficiency = 0.551166, minDamage = 60.47337, ammo = 0, ammo_type = 0, armorEfficiency = 0.5425867,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 450, armor = 450},
+	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 450, armor = 450, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
+	shield_0 = {name = "shd_generic", hitpoints = 450, armor = 450, front = 0, back = 0, regen = 0},
+	armor_0 = {name = "arm_generic", hitpoints = 1440, armor = 1440},
+	armor_1 = {name = "arm_generic", hitpoints = 1440, armor = 1440},
+	capacitor = {name = "cap_generic", hitpoints = 450, armor = 450, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_generic", hitpoints = 450, armor = 450, rate = 0.78, drain = 1, maxDamage = 88, minDamage = 63, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_tiefighter_tier2, "object/ship/tiefighter_tier2.iff")

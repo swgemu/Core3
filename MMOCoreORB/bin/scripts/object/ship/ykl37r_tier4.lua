@@ -42,20 +42,31 @@
 
 
 object_ship_ykl37r_tier4 = object_ship_shared_ykl37r_tier4:new {
+	objectName = "@space/space_mobile_type:ykl37r_tier4",
 
 	name = "ykl37r_tier4",
+	type = "ykl37r_tier4",
+	faction = "rebel",
+	difficulty = "tier4",
+
 	slideFactor = 1.79,
 	chassisHitpoints = 3840,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 3948.052, armor = 4068.48,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 4059.699, armor = 4109.605, speed = 45.63183, pitch = 24.91853, roll = 30.14256, yaw = 19.46673, acceleration = 11.09466, rollRate = 56.48645, pitchRate = 49.78278, deceleration = 9.375684, yawRate = 40.44704,},
-	shield_0 = { name = "shd_generic", hitpoints = 3957.563, armor = 4046.571, regen = 29.07651, front = 16427.06, back = 16286.59,},
-	armor_0 = { name = "arm_generic", hitpoints = 8672.588, armor = 8773.767,},
-	armor_1 = { name = "arm_generic", hitpoints = 8828.599, armor = 8480.08,},
-	capacitor = { name = "cap_generic", hitpoints = 4112.46, armor = 3991.221, rechargeRate = 97.39368, energy = 4877.171,},
-	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 3959.322, armor = 3944.457, rate = 0.7475221, drain = 0.9842595, maxDamage = 504.07, shieldEfficiency = 0.5334319, minDamage = 329.0294, ammo = 0, ammo_type = 0, armorEfficiency = 0.5455862,},
-	weapon_1 = { name = "wpn_incom_blaster", hitpoints = 3957.831, armor = 3985.238, rate = 0.7657736, drain = 0.9580226, maxDamage = 498.9513, shieldEfficiency = 0.5368012, minDamage = 324.8485, ammo = 0, ammo_type = 0, armorEfficiency = 0.5568369,},
-	weapon_2 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 4011.019, armor = 3975.749, rate = 2.921488, drain = 0.9994758, maxDamage = 1463.035, shieldEfficiency = 0.7495089, minDamage = 651.8242, ammo = 4, ammo_type = 19, armorEfficiency = 0.7455894,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 4147.2, armor = 4147.2},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 4147.2, armor = 4147.2, speed = 45.89, acceleration = 11.15, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
+	shield_0 = {name = "shd_generic", hitpoints = 4147.2, armor = 4147.2, front = 16588.8, back = 16588.8, regen = 30},
+	armor_0 = {name = "arm_generic", hitpoints = 8847.36, armor = 8847.36},
+	armor_1 = {name = "arm_generic", hitpoints = 8847.36, armor = 8847.36},
+	capacitor = {name = "cap_generic", hitpoints = 4147.2, armor = 4147.2, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_blaster", hitpoints = 4147.2, armor = 4147.2, rate = 0.78, drain = 1, maxDamage = 504.89, minDamage = 329.34, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_blaster", hitpoints = 4147.2, armor = 4147.2, rate = 0.78, drain = 1, maxDamage = 504.89, minDamage = 329.34, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 4147.2, armor = 4147.2, rate = 3, drain = 1, maxDamage = 1514.67, minDamage = 658.68, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 19},
 }
 
 ObjectTemplates:addTemplate(object_ship_ykl37r_tier4, "object/ship/ykl37r_tier4.iff")

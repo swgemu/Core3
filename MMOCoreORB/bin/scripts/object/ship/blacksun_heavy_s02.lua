@@ -42,22 +42,34 @@
 
 
 object_ship_blacksun_heavy_s02 = object_ship_shared_blacksun_heavy_s02:new {
+	objectName = "@space/space_mobile_type:blacksun_heavy_s02",
 
 	name = "blacksun_heavy_s02",
+	type = "blacksun_heavy_s02",
+	faction = "blacksun",
+	difficulty = "",
+
 	slideFactor = 1.91,
 	chassisHitpoints = 519,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 289.257, armor = 296.9248,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.91313, armor = 99.06725, speed = 41.25237, pitch = 20.84941, roll = 20.05498, yaw = 20.97178, acceleration = 11.8811, rollRate = 41.48341, pitchRate = 42.08025, deceleration = 15.36708, yawRate = 41.34274,},
-	shield_0 = { name = "shd_generic", hitpoints = 781.8044, armor = 492.0551, regen = 4.904438, front = 593.3419, back = 795.2986,},
-	armor_0 = { name = "arm_generic", hitpoints = 685.8979, armor = 670.9169,},
-	armor_1 = { name = "arm_generic", hitpoints = 675.7996, armor = 698.5225,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.37733, energy = 545.6757,},
-	booster = { name = "bst_xwing_booster_s01", hitpoints = 19.51027, armor = 19.0483, energy = 0, acceleration = 0, speed = 0, energyUsage = 0, rechargeRate = 0,},
-	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 196.5308, armor = 192.6455, rate = 0.3317102, drain = 23.01148, maxDamage = 396.2686, shieldEfficiency = 0, minDamage = 313.6201, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
-	weapon_1 = { name = "wpn_incom_disruptor", hitpoints = 194.3995, armor = 191.7472, rate = 0.3362818, drain = 23.29151, maxDamage = 23.18861, shieldEfficiency = 0, minDamage = 22.59388, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
-	weapon_2 = { name = "wpn_incom_disruptor", hitpoints = 19.57657, armor = 19.44282, rate = 0.3346006, drain = 23.19162, maxDamage = 22.60096, shieldEfficiency = 0, minDamage = 22.83895, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
-	weapon_3 = { name = "wpn_xwing_missile_s01", hitpoints = 195.3844, armor = 195.7436, rate = 5.79167, drain = 43.1535, maxDamage = 1499.29, shieldEfficiency = 0.895201, minDamage = 461.4136, ammo = 12, ammo_type = 5, armorEfficiency = 0.225759,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 42, acceleration = 12.2, deceleration = 15.67, yaw = 21, yawRate = 43, pitch = 21, pitchRate = 43, roll = 21, rollRate = 43},
+	shield_0 = {name = "shd_generic", hitpoints = 800, armor = 500, front = 600, back = 800, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 700, armor = 700},
+	armor_1 = {name = "arm_generic", hitpoints = 700, armor = 700},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 571.2, rechargeRate = 35.36},
+	booster = {name = "bst_xwing_booster_s01", hitpoints = 100, armor = 200, energy = 0, recharge = 0, consumption = 0, acceleration = 0, speed = 0},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 200, armor = 200, rate = 0.345, drain = 23.6, maxDamage = 410, minDamage = 320, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_disruptor", hitpoints = 200, armor = 200, rate = 0.345, drain = 23.6, maxDamage = 23.6, minDamage = 23.6, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_incom_disruptor", hitpoints = 100, armor = 200, rate = 0.345, drain = 23.6, maxDamage = 23.6, minDamage = 23.6, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_3 = {name = "wpn_xwing_missile_s01", hitpoints = 200, armor = 200, rate = 6, drain = 43.92, maxDamage = 1543, minDamage = 471, shieldEfficiency = 0.9, armorEfficiency = 0.23, ammo = 12, ammo_type = 5},
+	weapon_4 = {name = "wpn_std_countermeasure", hitpoints = 250, armor = 250, rate = 0.1, drain = 23.6, maxDamage = 100, minDamage = 25, shieldEfficiency = 0, armorEfficiency = 0, ammo = 25, ammo_type = 6},
 }
 
 ObjectTemplates:addTemplate(object_ship_blacksun_heavy_s02, "object/ship/blacksun_heavy_s02.iff")

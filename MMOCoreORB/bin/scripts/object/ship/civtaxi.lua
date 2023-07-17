@@ -42,18 +42,29 @@
 
 
 object_ship_civtaxi = object_ship_shared_civtaxi:new {
+	objectName = "@space/space_mobile_type:civtaxi",
 
 	name = "civtaxi",
+	type = "civtaxi",
+	faction = "civilian",
+	difficulty = "",
+
 	slideFactor = 1,
 	chassisHitpoints = 300,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 99.60083, armor = 96.09837,},
-	engine = { name = "eng_generic", hitpoints = 95.30785, armor = 99.04864, speed = 47.74995, pitch = 18.47241, roll = 18.502, yaw = 18.34647, acceleration = 42.07823, rollRate = 24.98296, pitchRate = 24.11361, deceleration = 36.44434, yawRate = 24.82035,},
-	shield_0 = { name = "shd_generic", hitpoints = 197.4062, armor = 195.3905, regen = 4.865842, front = 198.8916, back = 191.9114,},
-	armor_0 = { name = "arm_generic", hitpoints = 198.2755, armor = 196.7783,},
-	armor_1 = { name = "arm_generic", hitpoints = 192.4777, armor = 193.1838,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 12.66372, energy = 318.0059,},
-	weapon_0 = { name = "wpn_generic", hitpoints = 194.7361, armor = 190.4425, rate = 0.1250509, drain = 5.922734, maxDamage = 248.1281, shieldEfficiency = 0, minDamage = 116.9566, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 50, acceleration = 43.5, deceleration = 37.41, yaw = 19.1, yawRate = 25.3, pitch = 19.1, pitchRate = 25.3, roll = 19.1, rollRate = 25.3},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 200, back = 200, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 326.4, rechargeRate = 13.056},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.127, drain = 6.144, maxDamage = 250, minDamage = 120, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_civtaxi, "object/ship/civtaxi.iff")

@@ -42,17 +42,29 @@
 
 
 object_ship_sorosuub_space_yacht = object_ship_shared_sorosuub_space_yacht:new {
+	objectName = "@space/space_mobile_type:sorosuub_space_yacht",
 
 	name = "sorosuub_space_yacht",
+	type = "sorosuub_space_yacht",
+	faction = "civilian",
+	difficulty = "",
+
 	slideFactor = 1.76,
 	chassisHitpoints = 1512,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 299.9898, armor = 294.2328,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 95.27848, armor = 95.37285, speed = 44.38988, pitch = 39.74926, roll = 40.97852, yaw = 20.41502, acceleration = 11.74901, rollRate = 60.52201, pitchRate = 60.20116, deceleration = 15.0274, yawRate = 39.64298,},
-	shield_0 = { name = "shd_generic", hitpoints = 380.9524, armor = 483.4073, regen = 4.825073, front = 933.3693, back = 964.2253,},
-	armor_0 = { name = "arm_generic", hitpoints = 199.7969, armor = 197.0853,},
-	armor_1 = { name = "arm_generic", hitpoints = 192.092, armor = 199.5949,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 31.15288, energy = 492.3197,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 46, acceleration = 12.2, deceleration = 15.67, yaw = 21, yawRate = 41, pitch = 41, pitchRate = 61, roll = 41, rollRate = 61},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 980, back = 980, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 512, rechargeRate = 32.1},
+	booster = {name = "bst_generic", hitpoints = 100, armor = 200, energy = 100, recharge = 5, consumption = 10, acceleration = 20, speed = 15},
 }
 
 ObjectTemplates:addTemplate(object_ship_sorosuub_space_yacht, "object/ship/sorosuub_space_yacht.iff")

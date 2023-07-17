@@ -42,18 +42,29 @@
 
 
 object_ship_xwing_tier5 = object_ship_shared_xwing_tier5:new {
+	objectName = "@space/space_mobile_type:xwing_tier5",
 
 	name = "xwing_tier5",
+	type = "xwing_tier5",
+	faction = "rebel",
+	difficulty = "tier5",
+
 	slideFactor = 1.82,
 	chassisHitpoints = 2703.36,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 3333.478, armor = 3473.092,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 3468.217, armor = 3331.086, speed = 45.65501, pitch = 25.43775, roll = 31.08363, yaw = 19.89735, acceleration = 11.30402, rollRate = 58.43615, pitchRate = 51.96029, deceleration = 9.355584, yawRate = 42.37018,},
-	shield_0 = { name = "shd_generic", hitpoints = 3411.882, armor = 3351.479, regen = 25.30956, front = 13976.35, back = 13817.39,},
-	armor_0 = { name = "arm_generic", hitpoints = 6654.104, armor = 6507.323,},
-	armor_1 = { name = "arm_generic", hitpoints = 6745.794, armor = 6501.23,},
-	capacitor = { name = "cap_generic", hitpoints = 3407.205, armor = 3389.327, rechargeRate = 95.08839, energy = 4786.771,},
-	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 3350.732, armor = 3369.467, rate = 0.7691118, drain = 0.9869733, maxDamage = 350.7094, shieldEfficiency = 0.5328934, minDamage = 216.4678, ammo = 0, ammo_type = 0, armorEfficiency = 0.5388327,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 3503.55, armor = 3503.55},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 3503.55, armor = 3503.55, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 3503.55, armor = 3503.55, front = 14014.2, back = 14014.2, regen = 25.47},
+	armor_0 = {name = "arm_generic", hitpoints = 6794.77, armor = 6794.77},
+	armor_1 = {name = "arm_generic", hitpoints = 6794.77, armor = 6794.77},
+	capacitor = {name = "cap_generic", hitpoints = 3503.55, armor = 3503.55, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_blaster", hitpoints = 3503.55, armor = 3503.55, rate = 0.78, drain = 1, maxDamage = 362.09, minDamage = 225.46, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_xwing_tier5, "object/ship/xwing_tier5.iff")

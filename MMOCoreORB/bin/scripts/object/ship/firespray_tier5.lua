@@ -42,18 +42,29 @@
 
 
 object_ship_firespray_tier5 = object_ship_shared_firespray_tier5:new {
+	objectName = "@space/space_mobile_type:firespray_tier5",
 
 	name = "firespray_tier5",
+	type = "firespray_tier5",
+	faction = "civilian",
+	difficulty = "tier5",
+
 	slideFactor = 1.81,
 	chassisHitpoints = 3194.88,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 4015.877, armor = 4133.67,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 4078.136, armor = 3992.828, speed = 46.74838, pitch = 25.3824, roll = 30.77517, yaw = 19.8431, acceleration = 11.32218, rollRate = 58.19091, pitchRate = 50.49698, deceleration = 9.329021, yawRate = 41.80019,},
-	shield_0 = { name = "shd_generic", hitpoints = 4071.783, armor = 4042.843, regen = 29.29023, front = 15814.37, back = 15945.1,},
-	armor_0 = { name = "arm_generic", hitpoints = 8819.48, armor = 8795.444,},
-	armor_1 = { name = "arm_generic", hitpoints = 8490.255, armor = 8620.789,},
-	capacitor = { name = "cap_generic", hitpoints = 4115.206, armor = 4075.563, rechargeRate = 97.09749, energy = 4849.132,},
-	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 4035.822, armor = 3967.321, rate = 0.7433927, drain = 0.9572116, maxDamage = 408.2977, shieldEfficiency = 0.5537603, minDamage = 254.644, ammo = 0, ammo_type = 0, armorEfficiency = 0.549074,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 4140.56, armor = 4140.56},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 4140.56, armor = 4140.56, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 4140.56, armor = 4140.56, front = 16562.3, back = 16562.3, regen = 30.1},
+	armor_0 = {name = "arm_generic", hitpoints = 8833.2, armor = 8833.2},
+	armor_1 = {name = "arm_generic", hitpoints = 8833.2, armor = 8833.2},
+	capacitor = {name = "cap_generic", hitpoints = 4140.56, armor = 4140.56, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 4140.56, armor = 4140.56, rate = 0.78, drain = 1, maxDamage = 427.93, minDamage = 266.45, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_firespray_tier5, "object/ship/firespray_tier5.iff")

@@ -42,18 +42,29 @@
 
 
 object_ship_decimator = object_ship_shared_decimator:new {
+	objectName = "@space/space_mobile_type:decimator",
 
 	name = "decimator",
+	type = "decimator",
+	faction = "imperial",
+	difficulty = "",
+
 	slideFactor = 1.81,
 	chassisHitpoints = 654,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 95.90758, armor = 98.60257,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 98.38642, armor = 95.57016, speed = 44.93588, pitch = 20.53907, roll = 21.25076, yaw = 20.4151, acceleration = 7.727978, rollRate = 42.63755, pitchRate = 41.06813, deceleration = 12.11134, yawRate = 42.63313,},
-	shield_0 = { name = "shd_generic", hitpoints = 390.8747, armor = 488.2868, regen = 4.816055, front = 584.2844, back = 588.1197,},
-	armor_0 = { name = "arm_generic", hitpoints = 690.6407, armor = 689.4864,},
-	armor_1 = { name = "arm_generic", hitpoints = 677.5273, armor = 686.4539,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 31.26661, energy = 816.7931,},
-	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 191.1592, armor = 192.9333, rate = 0.4277923, drain = 15.28074, maxDamage = 329.2509, shieldEfficiency = 0, minDamage = 318.1564, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 46, acceleration = 8.1, deceleration = 12.4, yaw = 21.4, yawRate = 43.2, pitch = 21.4, pitchRate = 43.2, roll = 21.4, rollRate = 43.2},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 600, back = 600, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 700, armor = 700},
+	armor_1 = {name = "arm_generic", hitpoints = 700, armor = 700},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 822.8, rechargeRate = 32.912},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 200, armor = 200, rate = 0.429, drain = 15.488, maxDamage = 340, minDamage = 320, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_decimator, "object/ship/decimator.iff")

@@ -42,19 +42,30 @@
 
 
 object_ship_tieoppressor = object_ship_shared_tieoppressor:new {
+	objectName = "@space/space_mobile_type:tieoppressor",
 
 	name = "tieoppressor",
+	type = "tieoppressor",
+	faction = "imperial",
+	difficulty = "",
+
 	slideFactor = 1.75,
 	chassisHitpoints = 341,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 96.92564, armor = 99.23829,},
-	engine = { name = "eng_novaldex_eventhorizon", hitpoints = 97.92104, armor = 98.94149, speed = 59.76754, pitch = 9.65837, roll = 9.785378, yaw = 9.671412, acceleration = 23.13995, rollRate = 22.2862, pitchRate = 21.21468, deceleration = 11.66852, yawRate = 21.25593,},
-	shield_0 = { name = "shd_generic", hitpoints = 380.4287, armor = 482.3715, regen = 4.952908, front = 492.9891, back = 591.0677,},
-	armor_0 = { name = "arm_generic", hitpoints = 667.3024, armor = 686.1801,},
-	armor_1 = { name = "arm_generic", hitpoints = 689.6667, armor = 698.8655,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 57.03404, energy = 1452.302,},
-	weapon_0 = { name = "wpn_tieadvanced_blaster", hitpoints = 199.6908, armor = 192.334, rate = 0.5640124, drain = 27.06128, maxDamage = 446.0307, shieldEfficiency = 0, minDamage = 306.6484, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
-	weapon_1 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 199.9991, armor = 195.7459, rate = 1.915418, drain = 26.76088, maxDamage = 27.14455, shieldEfficiency = 0, minDamage = 26.97079, ammo = 50, ammo_type = 2, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 100, armor = 200, speed = 60, acceleration = 23.5, deceleration = 11.75, yaw = 10.1, yawRate = 22.3, pitch = 10.1, pitchRate = 22.3, roll = 10.1, rollRate = 22.3},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 500, back = 600, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 700, armor = 700},
+	armor_1 = {name = "arm_generic", hitpoints = 700, armor = 700},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 1468.8, rechargeRate = 58.752},
+	weapon_0 = {name = "wpn_tieadvanced_blaster", hitpoints = 200, armor = 200, rate = 0.573, drain = 27.648, maxDamage = 450, minDamage = 310, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 200, armor = 200, rate = 2, drain = 27.648, maxDamage = 27.648, minDamage = 27.648, shieldEfficiency = 0, armorEfficiency = 0, ammo = 50, ammo_type = 2},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieoppressor, "object/ship/tieoppressor.iff")

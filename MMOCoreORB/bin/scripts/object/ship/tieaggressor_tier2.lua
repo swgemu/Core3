@@ -42,19 +42,30 @@
 
 
 object_ship_tieaggressor_tier2 = object_ship_shared_tieaggressor_tier2:new {
+	objectName = "@space/space_mobile_type:tieaggressor_tier2",
 
 	name = "tieaggressor_tier2",
+	type = "tieaggressor_tier2",
+	faction = "imperial",
+	difficulty = "tier2",
+
 	slideFactor = 1.68,
 	chassisHitpoints = 600,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 440.7177, armor = 434.8118,},
-	engine = { name = "eng_qualdex_kyromaster", hitpoints = 443.6325, armor = 441.8808, speed = 41.36641, pitch = 22.77368, roll = 28.52988, yaw = 18.10229, acceleration = 10.16602, rollRate = 51.90778, pitchRate = 47.57179, deceleration = 8.690198, yawRate = 38.85206,},
-	shield_0 = { name = "shd_generic", hitpoints = 442.1943, armor = 435.0421, regen = 5.209555, front = 1777.746, back = 1719.549,},
-	armor_0 = { name = "arm_generic", hitpoints = 919.3343, armor = 915.1345,},
-	armor_1 = { name = "arm_generic", hitpoints = 936.4276, armor = 923.0693,},
-	capacitor = { name = "cap_generic", hitpoints = 446.9101, armor = 447.7964, rechargeRate = 97.19183, energy = 4998.832,},
-	weapon_0 = { name = "wpn_generic", hitpoints = 441.1465, armor = 441.8784, rate = 0.7538269, drain = 0.9854959, maxDamage = 96.29839, shieldEfficiency = 0.5356515, minDamage = 67.84282, ammo = 0, ammo_type = 0, armorEfficiency = 0.5545893,},
-	weapon_1 = { name = "wpn_tieadvanced_blaster", hitpoints = 432.3766, armor = 442.9016, rate = 0.7650806, drain = 0.9759557, maxDamage = 93.98589, shieldEfficiency = 0.5574797, minDamage = 68.49976, ammo = 0, ammo_type = 0, armorEfficiency = 0.5368531,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 450, armor = 450},
+	engine = {name = "eng_qualdex_kyromaster", hitpoints = 450, armor = 450, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
+	shield_0 = {name = "shd_generic", hitpoints = 450, armor = 450, front = 1800, back = 1800, regen = 5.4},
+	armor_0 = {name = "arm_generic", hitpoints = 960, armor = 960},
+	armor_1 = {name = "arm_generic", hitpoints = 960, armor = 960},
+	capacitor = {name = "cap_generic", hitpoints = 450, armor = 450, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_generic", hitpoints = 450, armor = 450, rate = 0.78, drain = 1, maxDamage = 96.8, minDamage = 69.3, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_tieadvanced_blaster", hitpoints = 450, armor = 450, rate = 0.78, drain = 1, maxDamage = 96.8, minDamage = 69.3, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieaggressor_tier2, "object/ship/tieaggressor_tier2.iff")

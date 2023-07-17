@@ -42,22 +42,33 @@
 
 
 object_ship_bwing_tier5 = object_ship_shared_bwing_tier5:new {
+	objectName = "@space/space_mobile_type:bwing_tier5",
 
 	name = "bwing_tier5",
+	type = "bwing_tier5",
+	faction = "rebel",
+	difficulty = "tier5",
+
 	slideFactor = 1.67,
 	chassisHitpoints = 2949.12,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 3666.989, armor = 3796.521,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 3802.117, armor = 3645.021, speed = 46.90529, pitch = 25.6751, roll = 32.16349, yaw = 20.02636, acceleration = 11.19581, rollRate = 56.43748, pitchRate = 50.76598, deceleration = 9.656651, yawRate = 42.29537,},
-	shield_0 = { name = "shd_generic", hitpoints = 3736.481, armor = 3742.38, regen = 22.50838, front = 14764.85, back = 14777.5,},
-	armor_0 = { name = "arm_generic", hitpoints = 7967.488, armor = 7801.471,},
-	armor_1 = { name = "arm_generic", hitpoints = 7753.859, armor = 7824.613,},
-	capacitor = { name = "cap_generic", hitpoints = 3645.117, armor = 3693.623, rechargeRate = 97.65691, energy = 4822.805,},
-	weapon_0 = { name = "wpn_bwing_blaster", hitpoints = 3805.758, armor = 3676.211, rate = 0.7774719, drain = 0.9763737, maxDamage = 350.7338, shieldEfficiency = 0.55013, minDamage = 216.9212, ammo = 0, ammo_type = 0, armorEfficiency = 0.5465078,},
-	weapon_1 = { name = "wpn_bwing_blaster", hitpoints = 3688.053, armor = 3708.341, rate = 0.769612, drain = 0.9658349, maxDamage = 351.0966, shieldEfficiency = 0.5458498, minDamage = 222.4749, ammo = 0, ammo_type = 0, armorEfficiency = 0.5415144,},
-	weapon_2 = { name = "wpn_bwing_blaster", hitpoints = 3633.208, armor = 3632.452, rate = 0.7598686, drain = 0.9694598, maxDamage = 352.2643, shieldEfficiency = 0.5449794, minDamage = 216.8951, ammo = 0, ammo_type = 0, armorEfficiency = 0.5567271,},
-	weapon_3 = { name = "wpn_bwing_blaster", hitpoints = 3707.016, armor = 3662.767, rate = 0.7638378, drain = 0.9962587, maxDamage = 353.9543, shieldEfficiency = 0.5433153, minDamage = 218.7249, ammo = 0, ammo_type = 0, armorEfficiency = 0.5324981,},
-	weapon_4 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 3817.339, armor = 3785.206, rate = 2.967133, drain = 0.966063, maxDamage = 1057.759, shieldEfficiency = 0.726448, minDamage = 437.9447, ammo = 4, ammo_type = 20, armorEfficiency = 0.7239467,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 3822.06, armor = 3822.06},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 3822.06, armor = 3822.06, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 3822.06, armor = 3822.06, front = 15288.2, back = 15288.2, regen = 23.15},
+	armor_0 = {name = "arm_generic", hitpoints = 8153.73, armor = 8153.73},
+	armor_1 = {name = "arm_generic", hitpoints = 8153.73, armor = 8153.73},
+	capacitor = {name = "cap_generic", hitpoints = 3822.06, armor = 3822.06, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_bwing_blaster", hitpoints = 3822.06, armor = 3822.06, rate = 0.78, drain = 1, maxDamage = 362.09, minDamage = 225.46, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_bwing_blaster", hitpoints = 3822.06, armor = 3822.06, rate = 0.78, drain = 1, maxDamage = 362.09, minDamage = 225.46, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_bwing_blaster", hitpoints = 3822.06, armor = 3822.06, rate = 0.78, drain = 1, maxDamage = 362.09, minDamage = 225.46, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_3 = {name = "wpn_bwing_blaster", hitpoints = 3822.06, armor = 3822.06, rate = 0.78, drain = 1, maxDamage = 362.09, minDamage = 225.46, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_4 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 3822.06, armor = 3822.06, rate = 3, drain = 1, maxDamage = 1086.27, minDamage = 450.92, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 20},
 }
 
 ObjectTemplates:addTemplate(object_ship_bwing_tier5, "object/ship/bwing_tier5.iff")
