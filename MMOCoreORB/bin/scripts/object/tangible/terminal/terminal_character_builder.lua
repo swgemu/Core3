@@ -85,13 +85,13 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 
 				"Imperial",
 				{
-					"Tie Fighter", "object/ship/player/player_tiefighter.iff",
-					"Tie Interceptor", "object/ship/player/player_tieinterceptor.iff",
-					"Tie Advanced", "object/ship/player/player_tieadvanced.iff",
-					"Tie Aggressor", "object/ship/player/player_tieaggressor.iff",
-					"Tie Bomber", "object/ship/player/player_tiebomber.iff",
-					"Tie Oppressor", "object/ship/player/player_tieoppressor.iff",
-					"Decimator", "object/ship/player/player_decimator.iff",
+					"TIE Fighter", "object/ship/player/player_tiefighter.iff",
+					"TIE Interceptor", "object/ship/player/player_tieinterceptor.iff",
+					"TIE Advanced", "object/ship/player/player_tieadvanced.iff",
+					"TIE Aggressor", "object/ship/player/player_tieaggressor.iff",
+					"TIE Bomber", "object/ship/player/player_tiebomber.iff",
+					"TIE Oppressor", "object/ship/player/player_tieoppressor.iff",
+					"VT-49 Decimator", "object/ship/player/player_decimator.iff",
 				},
 
 				"Neutral",
@@ -1193,21 +1193,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				},
 				"Alliance Starfighter Pilot",
 				{
-					"Alliance Recruit", "pilot_rebel_navy_novice",
-					"Droids",
-					{
-						"Droid Interface Basics", "pilot_rebel_navy_droid_01",
-						"Engineering Algorithms", "pilot_rebel_navy_droid_02",
-						"System Balance Programming", "pilot_rebel_navy_droid_03",
-						"Droid Intelligence Theory", "pilot_rebel_navy_droid_04"
-					},
-					"Procedures",
-					{
-						"Special Weapons and Tactics", "pilot_rebel_navy_procedures_01",
-						"Space Combat Techniques", "pilot_rebel_navy_procedures_02",
-						"Advanced Space Combat", "pilot_rebel_navy_procedures_03",
-						"Special Weapons and Tactics", "pilot_rebel_navy_procedures_04"
-					},
+					"Alliance Starfighter Trainee", "pilot_rebel_navy_novice",
 					"Starships",
 					{
 						"Basic Starfighter Continuation Training", "pilot_rebel_navy_starships__01",
@@ -1215,24 +1201,45 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 						"Space Superiority Fighters", "pilot_rebel_navy_starships_03",
 						"Hyper-Maneuverable Starfighters", "pilot_rebel_navy_starships_04"
 					},
-					"Weapons",
+					"Components",
 					{
-						"Basic Alliance Starship Ordnance", "pilot_rebel_navy_weapons_01",
-						"Intermediate Alliance Starship Ordnance", "pilot_rebel_navy_weapons_02",
-						"Advanced Alliance Starship Ordnance", "pilot_rebel_navy_weapons_03",
-						"Heavy Alliance Starship Ordnance", "pilot_rebel_navy_weapons_04"
+						"Basic Alliance Starship Component Use", "pilot_rebel_navy_weapons_01",
+						"Intermediate Alliance Starship Component Use", "pilot_rebel_navy_weapons_02",
+						"Advanced Alliance Starship Component Use", "pilot_rebel_navy_weapons_03",
+						"Heavy Alliance Starship Component Use", "pilot_rebel_navy_weapons_04"
+					},
+					"Procedures",
+					{
+						"Starfighter Survival Tactics", "pilot_rebel_navy_procedures_01",
+						"Space Combat Techniques", "pilot_rebel_navy_procedures_02",
+						"Advanced Space Combat", "pilot_rebel_navy_procedures_03",
+						"Special Weapons and Tactics", "pilot_rebel_navy_procedures_04"
+					},
+					"Droids",
+					{
+						"Droid Interface Basics", "pilot_rebel_navy_droid_01",
+						"Engineering Algorithms", "pilot_rebel_navy_droid_02",
+						"System Balance Programming", "pilot_rebel_navy_droid_03",
+						"Droid Intelligence Theory", "pilot_rebel_navy_droid_04"
 					},
 					"Rebel Alliance Master Pilot", "pilot_rebel_navy_master"
 				},
 				"Imperial Navy Pilot",
 				{
-					"Imperial Cadet", "pilot_imperial_navy_novice",
-					"Droids",
+					"Imperial Pilot Initiate", "pilot_imperial_navy_novice",
+					"Starships",
 					{
-						"Droid Interface Basics", "pilot_imperial_navy_droid_01",
-						"Engineering Algorithms", "pilot_imperial_navy_droid_02",
-						"System Balance Programming", "pilot_imperial_navy_droid_03",
-						"Droid Intelligence Theory", "pilot_imperial_navy_droid_04"
+						"Intermediate TIE Combat Craft Operations", "pilot_imperial_navy_starships__01",
+						"Advanced TIE Combat Craft Operations", "pilot_imperial_navy_starships_02",
+						"Advanced Capability TIE Vessels", "pilot_imperial_navy_starships_03",
+						"TIE Experimental Vessels", "pilot_imperial_navy_starships_04"
+					},
+					"Components",
+					{
+						"Basic Imperial Starship Component Use", "pilot_imperial_navy_weapons_01",
+						"Intermediate Imperial Starship Component Use", "pilot_imperial_navy_weapons_02",
+						"Advanced Imperial Starship Component Use", "pilot_imperial_navy_weapons_03",
+						"Heavy Imperial Starship Component Use", "pilot_imperial_navy_weapons_04"
 					},
 					"Procedures",
 					{
@@ -1241,31 +1248,31 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 						"Special Forces", "pilot_imperial_navy_procedures_03",
 						"Elite TIE Guard", "pilot_imperial_navy_procedures_04"
 					},
-					"Starships",
-					{
-						"Intermediate TIE Combat Craft Operations", "pilot_imperial_navy_starships__01",
-						"Advanced TIE Combat Craft Operations", "pilot_imperial_navy_starships_02",
-						"Advanced Capability TIE Vessels", "pilot_imperial_navy_starships_03",
-						"TIE Experimental Vessels", "pilot_imperial_navy_starships_04"
-					},
-					"Weapons",
-					{
-						"Basic Imperial Starship Ordnance", "pilot_imperial_navy_weapons_01",
-						"Intermediate Imperial Starship Ordnance", "pilot_imperial_navy_weapons_02",
-						"Advanced Imperial Starship Ordnance", "pilot_imperial_navy_weapons_03",
-						"Heavy Imperial Starship Ordnance", "pilot_imperial_navy_weapons_04"
-					},
-					"Imperial Pilot Champion", "pilot_imperial_navy_master"
-				},
-				"Pilot",
-				{
-					"Basic Pilot", "pilot_neutral_novice",
 					"Droids",
 					{
-						"Droid Interface Basics", "pilot_neutral_droid_01",
-						"Engineering Algorithms", "pilot_neutral_droid_02",
-						"System Balance Programming", "pilot_neutral_droid_03",
-						"Droid Intelligence Theory", "pilot_neutral_droid_04"
+						"Droid Interface Basics", "pilot_imperial_navy_droid_01",
+						"Engineering Algorithms", "pilot_imperial_navy_droid_02",
+						"System Balance Programming", "pilot_imperial_navy_droid_03",
+						"Droid Intelligence Theory", "pilot_imperial_navy_droid_04"
+					},
+					"Imperial Pilot Ace", "pilot_imperial_navy_master"
+				},
+				"Freelance Pilot",
+				{
+					"Basic Pilot", "pilot_neutral_novice",
+					"Starships",
+					{
+						"Basic Fighters", "pilot_neutral_starships__01",
+						"Advanced Fighters", "pilot_neutral_starships_02",
+						"Special Warships", "pilot_neutral_starships_03",
+						"Exotic Vessels", "pilot_neutral_starships_04"
+					},
+					"Components",
+					{
+						"Basic Starship Component Use", "pilot_neutral_weapons_01",
+						"Intermediate Starship Component Use", "pilot_neutral_weapons_02",
+						"Advanced Starship Component Use", "pilot_neutral_weapons_03",
+						"Heavy Starship Component Use", "pilot_neutral_weapons_04"
 					},
 					"Procedures",
 					{
@@ -1274,19 +1281,12 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 						"Advanced Technique", "pilot_neutral_procedures_03",
 						"Expert Technique", "pilot_neutral_procedures_04"
 					},
-					"Starships",
+					"Droids",
 					{
-						"Basic Fighters", "pilot_neutral_starships__01",
-						"Advanced Fighters", "pilot_neutral_starships_02",
-						"Special Warships", "pilot_neutral_starships_03",
-						"Exotic Vessels", "pilot_neutral_starships_04"
-					},
-					"Weapons",
-					{
-						"Basic Starship Ordnance", "pilot_neutral_weapons_01",
-						"Intermediate Starship Ordnance", "pilot_neutral_weapons_02",
-						"Advanced Starship Ordnance", "pilot_neutral_weapons_03",
-						"Heavy Starship Ordnance", "pilot_neutral_weapons_04"
+						"Droid Interface Basics", "pilot_neutral_droid_01",
+						"Engineering Algorithms", "pilot_neutral_droid_02",
+						"System Balance Programming", "pilot_neutral_droid_03",
+						"Droid Intelligence Theory", "pilot_neutral_droid_04"
 					},
 					"Flight Artistry", "pilot_neutral_master"
 				},
