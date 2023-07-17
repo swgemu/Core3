@@ -1,6 +1,6 @@
 ARG VERSION
 
-FROM debian:bullseye
+FROM debian:bookworm
 
 USER root
 
@@ -17,10 +17,10 @@ RUN set -xe; \
 
 # Install build packages, using clang latest stable as /usr/bin/clang etc.
 RUN set -xe; \
-    apt-get install -y apt-transport-https ca-certificates git gnupg lsb-release moreutils software-properties-common wget; \
+    apt-get install -y apt-transport-https ca-certificates ca-certificates-java git gnupg lsb-release moreutils software-properties-common wget; \
     wget -O /tmp/llvm.sh https://apt.llvm.org/llvm.sh; \
     chmod +x /tmp/llvm.sh; \
-    /tmp/llvm.sh all; \
+    /tmp/llvm.sh all || /tmp/llvm.sh all; \
     (set +x;cd /usr/bin;for i in ../lib/llvm-*/bin/*; do ln -sfv $i .; done); \
     clang --version; \
     ld.lld --version; \
@@ -79,7 +79,6 @@ RUN set -xe; \
         libreadline6-dev \
         libreadline8 \
         libssl-dev \
-        libssl1.1 \
         libtool \
         make \
         man \
@@ -89,9 +88,8 @@ RUN set -xe; \
         mariadb-client \
         mariadb-server \
         net-tools \
-        netcat \
+        netcat\* \
         ninja-build \
-        openjdk-11-jre-headless \
         openssh-server \
         pv \
         pwgen \
@@ -151,6 +149,7 @@ RUN set -xe; \
         rm -vfr /var/lib/mysql; \
         mkdir -vp `dirname ${HOME_DIR}`/mysql; \
         ln -fvs ${HOME_DIR}/mysql /var/lib/mysql; \
+        sed -e 's/^syslog/skip_syslog/' -i /etc/mysql/mariadb.conf.d/50-mysqld_safe.cnf; \
     fi; \
     useradd -U ${RUN_USER} -u 44400 -G adm,sudo -s ${SHELL} -d ${HOME_DIR}; \
     echo "LANG=${LANG}" > /etc/environment; \

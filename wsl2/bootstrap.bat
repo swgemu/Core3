@@ -32,6 +32,9 @@ IF ERRORLEVEL 1 (
   GOTO :EOF
 )
 
+ECHO Update wsl...
+wsl.exe --update
+
 FIND "Default Distribution: Debian" "%tempFile%" >nul
 
 IF ERRORLEVEL 1 (
@@ -69,7 +72,7 @@ IF NOT %ERRORLEVEL%==0 (
 )
 
 ECHO Running bootstrap in wsl...
-wsl.exe --user root /bin/bash -xec "wget -qO /tmp/bootstrap.sh 'https://swgemu.com/getcore3/?p=2&r=wsl2'; chmod +x /tmp/bootstrap.sh;exec /tmp/bootstrap.sh"
+wsl.exe --user root /bin/bash -xec 'source /etc/os-release;wget -qO /tmp/bootstrap.sh "https://swgemu.com/getcore3/?p=2&r=wsl2&os=${ID}-${VERSION_ID}"; chmod +x /tmp/bootstrap.sh;exec /tmp/bootstrap.sh'
 
 IF NOT %ERRORLEVEL%==0 (
   ECHO Failed to bootstrap wsl: ERROR=%ERRORLEVEL%
