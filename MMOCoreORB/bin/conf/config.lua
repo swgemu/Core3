@@ -55,10 +55,10 @@ Core3 = {
 	DBHost = "127.0.0.1",
 	DBPort = 3306,
 	DBName = "swgemu",
-	DBUser = "swgemu",
-	DBPass = "123456",
+	DBUser = "swgadmin",
+	DBPass = "Elque#333",
 	DBInstances = 2,
-	DBSecret = "swgemus3cr37!", -- Change this! This value should be unique and of reasonable length.
+	DBSecret = "LocasoLocasoLocaso###2013#333", -- Change this! This value should be unique and of reasonable length.
 
 	LoginPort = 44453,
 	LoginProcessingThreads = 1,
@@ -68,13 +68,13 @@ Core3 = {
 	MantisHost = "127.0.0.1",
 	MantisPort = 3306,
 	MantisName = "swgemu",
-	MantisUser = "swgemu",
-	MantisPass = "123456",
+	MantisUser = "swgadmin",
+	MantisPass = "Elque#333",
 	MantisPrfx = "mantis_", -- The prefix for your mantis tables.
 
 	MetricsHost = "localhost",
 	MetricsPort = 8125,
-	MetricsPrefix = "",
+	MetricsPrefix = "metrix_",
 
 	AutoReg = 1,
 
@@ -96,20 +96,20 @@ Core3 = {
 	--"11",
 	--"character_farm",
 	--"cinco_city_test_m5",
-	--"corellia",
+	"corellia",
 	--"creature_test",
-	--"dantooine",
-	--"dathomir",
-	--"dungeon1",
-	--"endor",
+	"dantooine",
+	"dathomir",
+	"dungeon1",
+	"endor",
 	--"endor_asommers",
 	--"floratest",
 	--"godclient_test",
-	--"lok",
-	--"naboo",
+	"lok",
+	"naboo",
 	--"otoh_gunga",
 	--"rivertest",
-	--"rori",
+	"rori",
 	--"runtimerules",
 	--"simple",
 	--"space_09",
@@ -129,13 +129,13 @@ Core3 = {
 	--"space_tatooine_2",
 	--"space_yavin4",
 	--"taanab",
-	--"talus",
+	"talus",
 	"tatooine",
 	--"test_wearables",
 	"tutorial",
 	--"umbra",
 	--"watertabletest",
-	--"yavin4"
+	"yavin4"
 	},
 
 
@@ -233,7 +233,7 @@ Core3 = {
 	InactiveAccountTitle = "Account Disabled",
 	InactiveAccountText = "The server administrators have disabled your account.",
 
-	CharacterBuilderEnabled = "true", -- Enable character builder terminals by default
+	CharacterBuilderEnabled = "false", -- Enable character builder terminals by default
 
 	PlayerLogLevel = 4, -- -1 NONE, 0 FATAL, 1 ERROR, 2 WARNING, 3 LOG, 4 INFO, 5 DEBUG
 	MaxLogLines = 1000000, -- how often to rotate log (currently only log/player.log rotates)
