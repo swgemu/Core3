@@ -15,7 +15,6 @@ float SpaceCollisionManager::getProjectileCollision(ShipObject* ship, const Ship
 	float rayRadius = projectile->getRadius();
 
 	Vector3 direction = rayEnd - rayStart;
-	uint32 syncStamp = ship->getSyncStamp();
 
 	for (int i = 0; i < targetVectorCopy.size(); ++i) {
 		auto target = targetVectorCopy.get(i);
@@ -82,8 +81,7 @@ float SpaceCollisionManager::getChassisRadiusCollision(ShipObject* target, const
 		return MISS;
 	}
 
-    Vector3 intersectionPoint = ((localEnd - localStart) * intersection) + localStart;
-    bool hitFront = intersectionPoint.dotProduct(targetPosition) >= 0.f;
+	bool hitFront = (((localEnd.getZ() - localStart.getZ()) * intersection) + localStart.getZ()) >= 0.f;
 
 	result.setCollision(target, projectile, intersection, Components::CHASSIS, hitFront);
 
@@ -107,8 +105,7 @@ float SpaceCollisionManager::getChassisBoxCollision(ShipObject* target, const Sh
 		return MISS;
 	}
 
-    Vector3 intersectionPoint = ((localEnd - localStart) * intersection) + localStart;
-    bool hitFront = intersectionPoint.dotProduct(targetPosition) >= 0.f;
+	bool hitFront = (((localEnd.getZ() - localStart.getZ()) * intersection) + localStart.getZ()) >= 0.f;
 
 	result.setCollision(target, projectile, intersection, Components::CHASSIS, hitFront);
 
@@ -134,19 +131,19 @@ float SpaceCollisionManager::getChassisAppearanceCollision(ShipObject* target, c
 
 	if (results.size() > 0) {
 		float intersection = results.getUnsafe(0).getIntersectionDistance();
+		bool hitFront = ((distance * intersection * ray.getDirection().getZ()) + ray.getOrigin().getZ()) <= 0.f;
 
-	    Vector3 intersectionPoint = (ray.getDirection() * distance * intersection) + ray.getOrigin();
-	    bool hitFront = intersectionPoint.dotProduct(target->getPosition()) >= 0.f;
-
-		result.setCollision(target, projectile, intersection / distance, Components::CHASSIS);
+		result.setCollision(target, projectile, intersection / distance, Components::CHASSIS, hitFront);
 	}
 
 	return result.getDistance();
 }
 
 float SpaceCollisionManager::getComponentHardpointCollision(ShipObject* target, const ShipCollisionData* data, const ShipProjectile* projectile, SpaceCollisionResult& result) {
+	auto componentMap = target->getShipComponentMap();
 	auto hitpointsMap = target->getCurrentHitpointsMap();
-	if (hitpointsMap == nullptr) {
+
+	if (componentMap == nullptr || hitpointsMap == nullptr) {
 		return MISS;
 	}
 
@@ -164,12 +161,12 @@ float SpaceCollisionManager::getComponentHardpointCollision(ShipObject* target, 
 	for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; ++slot) {
 		String slotName = Components::shipComponentSlotToString(slot);
 
-		auto compCrc = target->getShipComponentMap()->get(slot);
+		auto compCrc = componentMap->get(slot);
 		if (compCrc == 0) {
 			continue;
 		}
 
-		float hitpoints = target->getCurrentHitpointsMap()->get(slot);
+		float hitpoints = hitpointsMap->get(slot);
 		if (hitpoints == 0) {
 			continue;
 		}
@@ -190,10 +187,9 @@ float SpaceCollisionManager::getComponentHardpointCollision(ShipObject* target, 
 				continue;
 			}
 
-		    Vector3 intersectionPoint = ((localEnd - localStart) * intersection) + localStart;
-		    bool hitFront = intersectionPoint.dotProduct(targetPosition) >= 0.f;
+			bool hitFront = (((localEnd.getZ() - localStart.getZ()) * intersection) + localStart.getZ()) >= 0.f;
 
-			result.setCollision(target, projectile, intersection, slot);
+			result.setCollision(target, projectile, intersection, slot, hitFront);
 			break;
 		}
 	}
@@ -207,7 +203,7 @@ float SpaceCollisionManager::getPointIntersection(const Vector3& direction, cons
 	float sqrRadius = radius * radius;
 
 	if (dotProduct < -sqrRadius || dotProduct > (sqrRadius + sqrDistance)) {
-		return FLT_MAX;
+		return MISS;
 	}
 
 	float intersection = dotProduct >= sqrDistance ? 1.f : dotProduct > 0.f ? dotProduct / sqrDistance : 0.f;
@@ -215,7 +211,7 @@ float SpaceCollisionManager::getPointIntersection(const Vector3& direction, cons
 
 	float sqrDifference = difference.squaredDistanceTo(position);
 	if (sqrDifference > sqrRadius) {
-		return FLT_MAX;
+		return MISS;
 	}
 
 	return intersection;
@@ -231,7 +227,7 @@ float SpaceCollisionManager::getSphereIntersection(const Vector3& rayStart, cons
 	float sqrDistance = distance * distance;
 
 	if (dotProduct < -sqrRadius || dotProduct > (sqrRadius + sqrDistance)) {
-		return FLT_MAX;
+		return MISS;
 	}
 
 	float intersection = dotProduct >= sqrDistance ? 1.f : dotProduct > 0.f ? dotProduct / sqrDistance : 0.f;
@@ -239,7 +235,7 @@ float SpaceCollisionManager::getSphereIntersection(const Vector3& rayStart, cons
 
 	float sqrDifference = difference.squaredDistanceTo(position);
 	if (sqrDifference > sqrRadius) {
-		return FLT_MAX;
+		return MISS;
 	}
 
 	float surface = distance > sphereRadius ? sphereRadius / distance : 0.f;
