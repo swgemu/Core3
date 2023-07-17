@@ -43,6 +43,7 @@
 
 object_tangible_ship_crafted_chassis_texture_kit_s01 = object_tangible_ship_crafted_chassis_shared_texture_kit_s01:new {
 
+	objectMenuComponent = "StarshipTextureKitObjectMenuComponent",
 
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
