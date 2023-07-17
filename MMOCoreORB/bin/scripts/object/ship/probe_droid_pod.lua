@@ -42,17 +42,28 @@
 
 
 object_ship_probe_droid_pod = object_ship_shared_probe_droid_pod:new {
+	objectName = "@space/space_mobile_type:probe_droid_pod",
 
 	name = "probe_droid_pod",
+	type = "probe_droid_pod",
+	faction = "civilian",
+	difficulty = "",
+
 	slideFactor = 1.82,
 	chassisHitpoints = 400,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 287.4185, armor = 297.875,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 99.98618, armor = 97.68327, speed = 43.9583, pitch = 13.98659, roll = 13.40921, yaw = 13.9865, acceleration = 10.07095, rollRate = 21.10994, pitchRate = 21.99307, deceleration = 4.300864, yawRate = 21.87938,},
-	shield_0 = { name = "shd_generic", hitpoints = 395.0984, armor = 499.6053, regen = 3.924476, front = 196.9313, back = 193.6596,},
-	armor_0 = { name = "arm_generic", hitpoints = 386.2583, armor = 382.8448,},
-	armor_1 = { name = "arm_generic", hitpoints = 392.9349, armor = 397.0097,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.87373, energy = 121.9278,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 45, acceleration = 10.2, deceleration = 4.5, yaw = 14, yawRate = 22, pitch = 14, pitchRate = 22, roll = 14, rollRate = 22},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 200, back = 200, regen = 4},
+	armor_0 = {name = "arm_generic", hitpoints = 400, armor = 400},
+	armor_1 = {name = "arm_generic", hitpoints = 400, armor = 400},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 128, rechargeRate = 35.36},
 }
 
 ObjectTemplates:addTemplate(object_ship_probe_droid_pod, "object/ship/probe_droid_pod.iff")

@@ -42,18 +42,29 @@
 
 
 object_ship_z95_tier2 = object_ship_shared_z95_tier2:new {
+	objectName = "@space/space_mobile_type:z95_tier2",
 
 	name = "z95_tier2",
+	type = "z95_tier2",
+	faction = "rebel",
+	difficulty = "tier2",
+
 	slideFactor = 1.84,
 	chassisHitpoints = 600,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 440.7987, armor = 445.9872,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 438.3741, armor = 443.3789, speed = 45.74054, pitch = 23.20255, roll = 28.0647, yaw = 18.07193, acceleration = 11.42927, rollRate = 52.44942, pitchRate = 46.82407, deceleration = 8.835044, yawRate = 37.80058,},
-	shield_0 = { name = "shd_generic", hitpoints = 441.599, armor = 442.5183, regen = 5.231143, front = 1913.943, back = 1953.731,},
-	armor_0 = { name = "arm_generic", hitpoints = 729.6221, armor = 755.8477,},
-	armor_1 = { name = "arm_generic", hitpoints = 736.4781, armor = 746.6008,},
-	capacitor = { name = "cap_generic", hitpoints = 449.4066, armor = 444.8651, rechargeRate = 95.57732, energy = 4831.352,},
-	weapon_0 = { name = "wpn_z95_blaster", hitpoints = 440.9713, armor = 443.8295, rate = 0.7714736, drain = 0.9793235, maxDamage = 79.83333, shieldEfficiency = 0.5581539, minDamage = 59.24998, ammo = 0, ammo_type = 0, armorEfficiency = 0.5562814,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 450, armor = 450},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 450, armor = 450, speed = 47.59, acceleration = 11.56, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
+	shield_0 = {name = "shd_generic", hitpoints = 450, armor = 450, front = 1980, back = 1980, regen = 5.4},
+	armor_0 = {name = "arm_generic", hitpoints = 768, armor = 768},
+	armor_1 = {name = "arm_generic", hitpoints = 768, armor = 768},
+	capacitor = {name = "cap_generic", hitpoints = 450, armor = 450, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_z95_blaster", hitpoints = 450, armor = 450, rate = 0.78, drain = 1, maxDamage = 83.6, minDamage = 59.85, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_z95_tier2, "object/ship/z95_tier2.iff")

@@ -42,18 +42,29 @@
 
 
 object_ship_merchant_cruiser_light_tier1 = object_ship_shared_merchant_cruiser_light_tier1:new {
+	objectName = "@space/space_mobile_type:merchant_cruiser_light_tier1",
 
 	name = "merchant_cruiser_light_tier1",
+	type = "merchant_cruiser_light_tier1",
+	faction = "civilian",
+	difficulty = "tier1",
+
 	slideFactor = 1.76,
 	chassisHitpoints = 2400,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 1446.892, armor = 1493.025,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 1496.867, armor = 1486.276, speed = 40.83089, pitch = 22.13525, roll = 27.58622, yaw = 18.00296, acceleration = 9.778885, rollRate = 51.86822, pitchRate = 45.01803, deceleration = 8.352395, yawRate = 38.08244,},
-	shield_0 = { name = "shd_generic", hitpoints = 1471.223, armor = 1444.745, regen = 4.342142, front = 5947.757, back = 5758.784,},
-	armor_0 = { name = "arm_generic", hitpoints = 3090.839, armor = 3083.645,},
-	armor_1 = { name = "arm_generic", hitpoints = 3137.472, armor = 3173.694,},
-	capacitor = { name = "cap_generic", hitpoints = 1476.815, armor = 1456.402, rechargeRate = 98.06148, energy = 4994.55,},
-	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 1488.697, armor = 1428.24, rate = 0.7465913, drain = 0.9787179, maxDamage = 99.83712, shieldEfficiency = 0.5457929, minDamage = 72.11392, ammo = 0, ammo_type = 0, armorEfficiency = 0.5370855,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 1500, armor = 1500},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 1500, armor = 1500, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},
+	shield_0 = {name = "shd_generic", hitpoints = 1500, armor = 1500, front = 6000, back = 6000, regen = 4.5},
+	armor_0 = {name = "arm_generic", hitpoints = 3200, armor = 3200},
+	armor_1 = {name = "arm_generic", hitpoints = 3200, armor = 3200},
+	capacitor = {name = "cap_generic", hitpoints = 1500, armor = 1500, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_blaster", hitpoints = 1500, armor = 1500, rate = 0.78, drain = 1, maxDamage = 100, minDamage = 75, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_merchant_cruiser_light_tier1, "object/ship/merchant_cruiser_light_tier1.iff")

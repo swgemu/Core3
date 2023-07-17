@@ -42,17 +42,28 @@
 
 
 object_ship_rebel_shuttle_tier5 = object_ship_shared_rebel_shuttle_tier5:new {
+	objectName = "@space/space_mobile_type:rebel_shuttle_tier5",
 
 	name = "rebel_shuttle_tier5",
+	type = "rebel_shuttle_tier5",
+	faction = "rebel",
+	difficulty = "tier5",
+
 	slideFactor = 1.74,
 	chassisHitpoints = 7372.8,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 6340.857, armor = 6331.828,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 6184.335, armor = 6210.672, speed = 45.46261, pitch = 24.91576, roll = 31.39679, yaw = 20.04262, acceleration = 11.19291, rollRate = 58.5865, pitchRate = 50.57949, deceleration = 9.74021, yawRate = 41.06018,},
-	shield_0 = { name = "shd_generic", hitpoints = 6160.398, armor = 6158.439, regen = 44.39045, front = 48433, back = 49931.71,},
-	armor_0 = { name = "arm_generic", hitpoints = 19982.21, armor = 19579.73,},
-	armor_1 = { name = "arm_generic", hitpoints = 19645.79, armor = 19904.86,},
-	capacitor = { name = "cap_generic", hitpoints = 6257.294, armor = 6177.662, rechargeRate = 98.34201, energy = 4831.732,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 6370.1, armor = 6370.1},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 6370.1, armor = 6370.1, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 6370.1, armor = 6370.1, front = 50960.8, back = 50960.8, regen = 46.3},
+	armor_0 = {name = "arm_generic", hitpoints = 20384.3, armor = 20384.3},
+	armor_1 = {name = "arm_generic", hitpoints = 20384.3, armor = 20384.3},
+	capacitor = {name = "cap_generic", hitpoints = 6370.1, armor = 6370.1, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_rebel_shuttle_tier5, "object/ship/rebel_shuttle_tier5.iff")

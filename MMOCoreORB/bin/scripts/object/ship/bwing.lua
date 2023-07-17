@@ -42,21 +42,32 @@
 
 
 object_ship_bwing = object_ship_shared_bwing:new {
+	objectName = "@space/space_mobile_type:bwing",
 
 	name = "bwing",
+	type = "bwing",
+	faction = "rebel",
+	difficulty = "",
+
 	slideFactor = 1.76,
 	chassisHitpoints = 300,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 97.01817, armor = 99.47314,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 95.05576, armor = 97.09964, speed = 47.32478, pitch = 21.87753, roll = 21.96897, yaw = 22.1137, acceleration = 15.78258, rollRate = 50.68687, pitchRate = 52.55415, deceleration = 8.0465, yawRate = 52.0341,},
-	shield_0 = { name = "shd_generic", hitpoints = 195.2314, armor = 194.8301, regen = 4.87457, front = 597.3931, back = 684.5637,},
-	armor_0 = { name = "arm_generic", hitpoints = 783.9377, armor = 761.3621,},
-	armor_1 = { name = "arm_generic", hitpoints = 771.8947, armor = 793.6621,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 69.08517, energy = 1705.532,},
-	weapon_0 = { name = "wpn_bwing_blaster", hitpoints = 191.8313, armor = 199.1473, rate = 0.6737685, drain = 31.33705, maxDamage = 303.8985, shieldEfficiency = 0, minDamage = 190.2288, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
-	weapon_1 = { name = "wpn_bwing_blaster", hitpoints = 198.5948, armor = 193.0309, rate = 0.6452643, drain = 31.25683, maxDamage = 31.70825, shieldEfficiency = 0, minDamage = 31.34731, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
-	weapon_2 = { name = "wpn_bwing_blaster", hitpoints = 19.09847, armor = 19.98873, rate = 0.6637544, drain = 32.12992, maxDamage = 31.73752, shieldEfficiency = 0, minDamage = 31.91447, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
-	weapon_3 = { name = "wpn_bwing_blaster", hitpoints = 19.16829, armor = 19.47907, rate = 0.6721096, drain = 32.55756, maxDamage = 32.69202, shieldEfficiency = 0, minDamage = 31.58299, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 48, acceleration = 16.2, deceleration = 8.1, yaw = 22.3, yawRate = 52.7, pitch = 22.3, pitchRate = 52.7, roll = 22.3, rollRate = 52.7},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 600, back = 700, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 800, armor = 800},
+	armor_1 = {name = "arm_generic", hitpoints = 800, armor = 800},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 1740.8, rechargeRate = 69.632},
+	weapon_0 = {name = "wpn_bwing_blaster", hitpoints = 200, armor = 200, rate = 0.679, drain = 32.768, maxDamage = 310, minDamage = 200, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_bwing_blaster", hitpoints = 200, armor = 200, rate = 0.679, drain = 32.768, maxDamage = 32.768, minDamage = 32.768, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_bwing_blaster", hitpoints = 100, armor = 200, rate = 0.679, drain = 32.768, maxDamage = 32.768, minDamage = 32.768, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_3 = {name = "wpn_bwing_blaster", hitpoints = 100, armor = 200, rate = 0.679, drain = 32.768, maxDamage = 32.768, minDamage = 32.768, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_bwing, "object/ship/bwing.iff")

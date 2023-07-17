@@ -42,18 +42,29 @@
 
 
 object_ship_escape_pod = object_ship_shared_escape_pod:new {
+	objectName = "@space/space_mobile_type:escape_pod",
 
 	name = "escape_pod",
+	type = "escape_pod",
+	faction = "civilian",
+	difficulty = "",
+
 	slideFactor = 1.68,
 	chassisHitpoints = 400,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 291.2155, armor = 289.6385,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 96.53973, armor = 98.12772, speed = 43.92602, pitch = 20.52301, roll = 20.56395, yaw = 20.15412, acceleration = 10.00901, rollRate = 49.16325, pitchRate = 48.56995, deceleration = 4.499815, yawRate = 49.2527,},
-	shield_0 = { name = "shd_generic", hitpoints = 380.0533, armor = 495.5604, regen = 3.817568, front = 193.2955, back = 197.5195,},
-	armor_0 = { name = "arm_generic", hitpoints = 193.1092, armor = 195.9394,},
-	armor_1 = { name = "arm_generic", hitpoints = 193.1561, armor = 194.7771,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.55256, energy = 124.896,},
-	weapon_0 = { name = "wpn_incom_disruptor", hitpoints = 192.9565, armor = 190.0335, rate = 0.331838, drain = 26.31627, maxDamage = 482.4412, shieldEfficiency = 0, minDamage = 469.5264, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 45, acceleration = 10.2, deceleration = 4.5, yaw = 21, yawRate = 51, pitch = 21, pitchRate = 51, roll = 21, rollRate = 51},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 200, back = 200, regen = 4},
+	armor_0 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 128, rechargeRate = 35.36},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 200, armor = 200, rate = 0.345, drain = 27.648, maxDamage = 500, minDamage = 470, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_escape_pod, "object/ship/escape_pod.iff")

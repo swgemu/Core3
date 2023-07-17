@@ -47,22 +47,29 @@ object_ship_spacestation_corellia = object_ship_shared_spacestation_neutral:new 
 	conversationMobile = "object/mobile/shared_space_comm_station_corellia.iff",
 	conversationMessage = "@conversation/station_corellia:s_bf5b2480", --Too Far Message
 
-	faction = "civilian",
-	type = "spacestation_neutral",
 	name = "spacestation_neutral",
+	type = "spacestation_neutral",
+	faction = "civilian",
+	difficulty = "",
 
 	slideFactor = 1.76,
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
 
-	reactor = { name = "rct_generic", hitpoints = 4966.639, armor = 1916.958,},
-	shield_0 = { name = "shd_generic", hitpoints = 9612.102, armor = 2876.292, regen = 49.71952, front = 5983.614, back = 5995.161,},
-	shield_1 = { name = "shd_generic", hitpoints = 4842.518, armor = 2969.425, regen = 39.20972, front = 2873.469, back = 2937.772,},
-	armor_0 = { name = "arm_generic", hitpoints = 4961.945, armor = 4917.142,},
-	armor_1 = { name = "arm_generic", hitpoints = 4897.431, armor = 4877.487,},
-	capacitor = { name = "cap_generic", hitpoints = 4922.489, armor = 954.791, rechargeRate = 123.3029, energy = 2292.475,},
-	bridge = { name = "bdg_generic", hitpoints = 1977.12, armor = 1964.19,},
-	hangar = { name = "hgr_generic", hitpoints = 1946.25, armor = 1917.841,},
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 5000, armor = 2000},
+	shield_0 = {name = "shd_generic", hitpoints = 10000, armor = 3000, front = 6000, back = 6000, regen = 50},
+	shield_1 = {name = "shd_generic", hitpoints = 5000, armor = 3000, front = 3000, back = 3000, regen = 40},
+	armor_0 = {name = "arm_generic", hitpoints = 5000, armor = 5000},
+	armor_1 = {name = "arm_generic", hitpoints = 5000, armor = 5000},
+	capacitor = {name = "cap_generic", hitpoints = 5000, armor = 1000, energy = 2356.5, rechargeRate = 128.3},
+	bridge = {name = "bdg_generic", hitpoints = 2000, armor = 2000},
+	hangar = {name = "hgr_generic", hitpoints = 2000, armor = 2000},
+	targeting_station = {name = "tst_generic", hitpoints = 2000, armor = 2000},
 }
 
 ObjectTemplates:addTemplate(object_ship_spacestation_corellia, "object/ship/spacestation_corellia.iff")

@@ -42,18 +42,29 @@
 
 
 object_ship_awing_tier2 = object_ship_shared_awing_tier2:new {
+	objectName = "@space/space_mobile_type:awing_tier2",
 
 	name = "awing_tier2",
+	type = "awing_tier2",
+	faction = "rebel",
+	difficulty = "tier2",
+
 	slideFactor = 1.62,
 	chassisHitpoints = 540,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 386.0601, armor = 391.8838,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 402.0693, armor = 396.6858, speed = 46.27, pitch = 23.18811, roll = 28.0745, yaw = 18.60315, acceleration = 11.27654, rollRate = 52.09315, pitchRate = 46.66763, deceleration = 8.721692, yawRate = 37.62374,},
-	shield_0 = { name = "shd_generic", hitpoints = 401.7253, armor = 385.9196, regen = 5.273414, front = 1595.751, back = 1574.382,},
-	armor_0 = { name = "arm_generic", hitpoints = 831.3472, armor = 838.4591,},
-	armor_1 = { name = "arm_generic", hitpoints = 834.0142, armor = 863.635,},
-	capacitor = { name = "cap_generic", hitpoints = 384.8815, armor = 388.2174, rechargeRate = 95.01259, energy = 4965.907,},
-	weapon_0 = { name = "wpn_awing_blaster", hitpoints = 391.277, armor = 389.6266, rate = 0.7569824, drain = 0.9798223, maxDamage = 84.37731, shieldEfficiency = 0.5361491, minDamage = 61.3644, ammo = 0, ammo_type = 0, armorEfficiency = 0.5470703,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 405, armor = 405},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 405, armor = 405, speed = 47.59, acceleration = 11.56, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
+	shield_0 = {name = "shd_generic", hitpoints = 405, armor = 405, front = 1620, back = 1620, regen = 5.4},
+	armor_0 = {name = "arm_generic", hitpoints = 864, armor = 864},
+	armor_1 = {name = "arm_generic", hitpoints = 864, armor = 864},
+	capacitor = {name = "cap_generic", hitpoints = 405, armor = 405, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_awing_blaster", hitpoints = 405, armor = 405, rate = 0.78, drain = 1, maxDamage = 88, minDamage = 63, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_awing_tier2, "object/ship/awing_tier2.iff")

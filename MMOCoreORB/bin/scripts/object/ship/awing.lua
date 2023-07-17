@@ -42,19 +42,30 @@
 
 
 object_ship_awing = object_ship_shared_awing:new {
+	objectName = "@space/space_mobile_type:awing",
 
 	name = "awing",
+	type = "awing",
+	faction = "rebel",
+	difficulty = "",
+
 	slideFactor = 1.91,
 	chassisHitpoints = 300,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 96.9286, armor = 99.09653,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 95.31961, armor = 96.64877, speed = 57.55035, pitch = 31.86163, roll = 31.91895, yaw = 30.78357, acceleration = 21.43661, rollRate = 61.09378, pitchRate = 63.00252, deceleration = 11.00017, yawRate = 63.16784,},
-	shield_0 = { name = "shd_generic", hitpoints = 194.4761, armor = 199.3203, regen = 4.820557, front = 491.7482, back = 584.5766,},
-	armor_0 = { name = "arm_generic", hitpoints = 484.8529, armor = 498.4129,},
-	armor_1 = { name = "arm_generic", hitpoints = 475.0292, armor = 490.1254,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 50.30707, energy = 1259.069,},
-	weapon_0 = { name = "wpn_awing_blaster", hitpoints = 196.6696, armor = 195.2839, rate = 0.5019104, drain = 23.47025, maxDamage = 247.3325, shieldEfficiency = 0, minDamage = 171.2778, ammo = 0, ammo_type = 0, armorEfficiency = 0,},
-	weapon_1 = { name = "wpn_slayn_imagerec_missile_s01", hitpoints = 199.6401, armor = 191.2848, rate = 2.90037, drain = 24.39336, maxDamage = 23.70117, shieldEfficiency = 0, minDamage = 24.4752, ammo = 50, ammo_type = 6, armorEfficiency = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 60, acceleration = 22.3, deceleration = 11.15, yaw = 32.2, yawRate = 64.1, pitch = 32.2, pitchRate = 64.1, roll = 32.2, rollRate = 64.1},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 500, back = 600, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 500, armor = 500},
+	armor_1 = {name = "arm_generic", hitpoints = 500, armor = 500},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 1305.6, rechargeRate = 52.224},
+	weapon_0 = {name = "wpn_awing_blaster", hitpoints = 200, armor = 200, rate = 0.509, drain = 24.576, maxDamage = 250, minDamage = 180, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_slayn_imagerec_missile_s01", hitpoints = 200, armor = 200, rate = 3, drain = 24.576, maxDamage = 24.576, minDamage = 24.576, shieldEfficiency = 0, armorEfficiency = 0, ammo = 50, ammo_type = 6},
 }
 
 ObjectTemplates:addTemplate(object_ship_awing, "object/ship/awing.iff")

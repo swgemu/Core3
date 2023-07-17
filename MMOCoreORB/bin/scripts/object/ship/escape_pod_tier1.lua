@@ -42,17 +42,28 @@
 
 
 object_ship_escape_pod_tier1 = object_ship_shared_escape_pod_tier1:new {
+	objectName = "@space/space_mobile_type:escape_pod_tier1",
 
 	name = "escape_pod_tier1",
+	type = "escape_pod_tier1",
+	faction = "civilian",
+	difficulty = "tier1",
+
 	slideFactor = 1.99,
 	chassisHitpoints = 120,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 72.72079, armor = 74.6375,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 72.50068, armor = 72.66665, speed = 40.3746, pitch = 22.22906, roll = 27.71842, yaw = 17.88419, acceleration = 9.880699, rollRate = 51.28959, pitchRate = 44.94685, deceleration = 8.481543, yawRate = 37.01615,},
-	shield_0 = { name = "shd_generic", hitpoints = 72.7999, armor = 72.83786, regen = 1.458847, front = 293.7108, back = 287.0549,},
-	armor_0 = { name = "arm_generic", hitpoints = 158.4473, armor = 159.0218,},
-	armor_1 = { name = "arm_generic", hitpoints = 159.2785, armor = 153.0147,},
-	capacitor = { name = "cap_generic", hitpoints = 74.27911, armor = 71.51224, rechargeRate = 97.69896, energy = 4828.993,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},
+	shield_0 = {name = "shd_generic", hitpoints = 100, armor = 200, front = 300, back = 300, regen = 1.5},
+	armor_0 = {name = "arm_generic", hitpoints = 160, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 160, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_escape_pod_tier1, "object/ship/escape_pod_tier1.iff")

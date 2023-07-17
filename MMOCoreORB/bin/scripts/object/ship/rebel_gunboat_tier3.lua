@@ -42,21 +42,32 @@
 
 
 object_ship_rebel_gunboat_tier3 = object_ship_shared_rebel_gunboat_tier3:new {
+	objectName = "@space/space_mobile_type:rebel_gunboat_tier3",
 
 	name = "rebel_gunboat_tier3",
+	type = "rebel_gunboat_tier3",
+	faction = "rebel",
+	difficulty = "tier3",
+
 	slideFactor = 1.76,
 	chassisHitpoints = 12000,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 10274.32, armor = 10665.58,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 10337.58, armor = 10676.53, speed = 42.75221, pitch = 23.84349, roll = 30.02824, yaw = 18.76913, acceleration = 10.74359, rollRate = 55.20356, pitchRate = 47.02589, deceleration = 8.837842, yawRate = 39.92463,},
-	shield_0 = { name = "shd_generic", hitpoints = 10742.18, armor = 10505.14, regen = 13.58685, front = 42798.16, back = 41652.6,},
-	armor_0 = { name = "arm_generic", hitpoints = 22343.97, armor = 22299.9,},
-	armor_1 = { name = "arm_generic", hitpoints = 22320.88, armor = 22498.42,},
-	capacitor = { name = "cap_generic", hitpoints = 10631.83, armor = 10263.94, rechargeRate = 96.24628, energy = 4937.143,},
-	weapon_0 = { name = "wpn_incom_blaster", hitpoints = 10382.89, armor = 10661.86, rate = 0.7604854, drain = 0.9592716, maxDamage = 397.7962, shieldEfficiency = 0.5366882, minDamage = 271.4058, ammo = 0, ammo_type = 0, armorEfficiency = 0.5341818,},
-	weapon_1 = { name = "wpn_incom_blaster", hitpoints = 10590.64, armor = 10732.33, rate = 0.7754498, drain = 0.9541319, maxDamage = 387.453, shieldEfficiency = 0.5457196, minDamage = 276.358, ammo = 0, ammo_type = 0, armorEfficiency = 0.5362667,},
-	weapon_2 = { name = "wpn_incom_disruptor", hitpoints = 10312.72, armor = 10754.29, rate = 0.7475817, drain = 0.9682286, maxDamage = 402.331, shieldEfficiency = 0.5462911, minDamage = 268.8446, ammo = 0, ammo_type = 0, armorEfficiency = 0.5389304,},
-	weapon_3 = { name = "wpn_seinar_concussion_missile_s01", hitpoints = 10776, armor = 10261.51, rate = 2.86453, drain = 0.9526157, maxDamage = 1173.166, shieldEfficiency = 0.7473319, minDamage = 534.4631, ammo = 4, ammo_type = 18, armorEfficiency = 0.7199593,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 10800, armor = 10800},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 10800, armor = 10800, speed = 44.56, acceleration = 10.82, deceleration = 9.23, yaw = 19.41, yawRate = 40.74, pitch = 24.51, pitchRate = 49.01, roll = 30.34, rollRate = 55.27},
+	shield_0 = {name = "shd_generic", hitpoints = 10800, armor = 10800, front = 43200, back = 43200, regen = 13.85},
+	armor_0 = {name = "arm_generic", hitpoints = 23040, armor = 23040},
+	armor_1 = {name = "arm_generic", hitpoints = 23040, armor = 23040},
+	capacitor = {name = "cap_generic", hitpoints = 10800, armor = 10800, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_blaster", hitpoints = 10800, armor = 10800, rate = 0.78, drain = 1, maxDamage = 406.56, minDamage = 277.83, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_blaster", hitpoints = 10800, armor = 10800, rate = 0.78, drain = 1, maxDamage = 406.56, minDamage = 277.83, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_incom_disruptor", hitpoints = 10800, armor = 10800, rate = 0.78, drain = 1, maxDamage = 406.56, minDamage = 277.83, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_3 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 10800, armor = 10800, rate = 3, drain = 1, maxDamage = 1219.68, minDamage = 555.66, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 18},
 }
 
 ObjectTemplates:addTemplate(object_ship_rebel_gunboat_tier3, "object/ship/rebel_gunboat_tier3.iff")

@@ -42,18 +42,30 @@
 
 
 object_ship_blacksun_light_s01 = object_ship_shared_blacksun_light_s01:new {
+	objectName = "@space/space_mobile_type:blacksun_light_s01",
 
 	name = "blacksun_light_s01",
+	type = "blacksun_light_s01",
+	faction = "blacksun",
+	difficulty = "",
+
 	slideFactor = 1.81,
 	chassisHitpoints = 519,
 	chassisMass = 10000,
-	reactor = { name = "rct_generic", hitpoints = 293.0975, armor = 299.4683,},
-	engine = { name = "eng_generic", hitpoints = 96.34592, armor = 95.92737, speed = 52.97753, pitch = 33.03342, roll = 32.61266, yaw = 32.31016, acceleration = 16.27676, rollRate = 58.24209, pitchRate = 60.85304, deceleration = 8.33995, yawRate = 59.25087,},
-	shield_0 = { name = "shd_generic", hitpoints = 391.0511, armor = 494.1241, regen = 4.846959, front = 296.6703, back = 478.2641,},
-	armor_0 = { name = "arm_generic", hitpoints = 289.9044, armor = 289.124,},
-	armor_1 = { name = "arm_generic", hitpoints = 296.4264, armor = 298.3781,},
-	capacitor = { name = "cap_generic", hitpoints = 0, armor = 0, rechargeRate = 34.81828, energy = 544.4305,},
-	booster = { name = "bst_xwing_booster_s01", hitpoints = 19.31518, armor = 19.15918, energy = 0, acceleration = 0, speed = 0, energyUsage = 0, rechargeRate = 0,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 55, acceleration = 16.8, deceleration = 8.4, yaw = 34, yawRate = 61, pitch = 34, pitchRate = 61, roll = 34, rollRate = 61},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 300, back = 500, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 300, armor = 300},
+	armor_1 = {name = "arm_generic", hitpoints = 300, armor = 300},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 571.2, rechargeRate = 35.36},
+	booster = {name = "bst_xwing_booster_s01", hitpoints = 100, armor = 200, energy = 0, recharge = 0, consumption = 0, acceleration = 0, speed = 0},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 200, armor = 200, rate = 0.345, drain = 23.6, maxDamage = 250, minDamage = 120, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_blacksun_light_s01, "object/ship/blacksun_light_s01.iff")

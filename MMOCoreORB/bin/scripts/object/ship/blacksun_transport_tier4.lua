@@ -42,17 +42,28 @@
 
 
 object_ship_blacksun_transport_tier4 = object_ship_shared_blacksun_transport_tier4:new {
+	objectName = "@space/space_mobile_type:blacksun_transport_tier4",
 
 	name = "blacksun_transport_tier4",
+	type = "blacksun_transport_tier4",
+	faction = "blacksun",
+	difficulty = "tier4",
+
 	slideFactor = 1.83,
 	chassisHitpoints = 3840,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 4077.187, armor = 4003.469,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 3997.969, armor = 4049.178, speed = 43.83539, pitch = 24.60927, roll = 30.98376, yaw = 19.28909, acceleration = 10.68451, rollRate = 54.54457, pitchRate = 48.32886, deceleration = 9.4805, yawRate = 41.41905,},
-	shield_0 = { name = "shd_generic", hitpoints = 4010.646, armor = 4137.488, regen = 14.46415, front = 24666.72, back = 24417,},
-	armor_0 = { name = "arm_generic", hitpoints = 13262.93, armor = 12983.71,},
-	armor_1 = { name = "arm_generic", hitpoints = 12755.81, armor = 13179.35,},
-	capacitor = { name = "cap_generic", hitpoints = 4059.065, armor = 4027.166, rechargeRate = 99.8033, energy = 4994.764,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 4147.2, armor = 4147.2},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 4147.2, armor = 4147.2, speed = 45.89, acceleration = 11.15, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
+	shield_0 = {name = "shd_generic", hitpoints = 4147.2, armor = 4147.2, front = 24883.2, back = 24883.2, regen = 15},
+	armor_0 = {name = "arm_generic", hitpoints = 13271, armor = 13271},
+	armor_1 = {name = "arm_generic", hitpoints = 13271, armor = 13271},
+	capacitor = {name = "cap_generic", hitpoints = 4147.2, armor = 4147.2, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_blacksun_transport_tier4, "object/ship/blacksun_transport_tier4.iff")

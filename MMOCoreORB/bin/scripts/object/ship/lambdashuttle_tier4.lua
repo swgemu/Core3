@@ -42,19 +42,30 @@
 
 
 object_ship_lambdashuttle_tier4 = object_ship_shared_lambdashuttle_tier4:new {
+	objectName = "@space/space_mobile_type:lambdashuttle_tier4",
 
 	name = "lambdashuttle_tier4",
+	type = "lambdashuttle_tier4",
+	faction = "imperial",
+	difficulty = "tier4",
+
 	slideFactor = 1.74,
 	chassisHitpoints = 5760,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 4082.507, armor = 4042.401,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 4100.812, armor = 3972.913, speed = 45.13057, pitch = 24.64064, roll = 30.58562, yaw = 19.95985, acceleration = 10.71273, rollRate = 55.88639, pitchRate = 50.13318, deceleration = 9.327092, yawRate = 40.27712,},
-	shield_0 = { name = "shd_generic", hitpoints = 3957.959, armor = 4062.035, regen = 29.19075, front = 31810.71, back = 31949.11,},
-	armor_0 = { name = "arm_generic", hitpoints = 12999.64, armor = 13070.77,},
-	armor_1 = { name = "arm_generic", hitpoints = 12937.19, armor = 12655.89,},
-	capacitor = { name = "cap_generic", hitpoints = 4129.287, armor = 3961.08, rechargeRate = 95.06945, energy = 4891.95,},
-	weapon_0 = { name = "wpn_tieadvanced_blaster", hitpoints = 4031.693, armor = 4119.346, rate = 0.7559092, drain = 0.9548265, maxDamage = 424.3986, shieldEfficiency = 0.5574844, minDamage = 279.0555, ammo = 0, ammo_type = 0, armorEfficiency = 0.5326153,},
-	weapon_1 = { name = "wpn_tieadvanced_blaster", hitpoints = 4008.539, armor = 3986.044, rate = 0.7777123, drain = 0.956685, maxDamage = 423.3593, shieldEfficiency = 0.5354808, minDamage = 275.3408, ammo = 0, ammo_type = 0, armorEfficiency = 0.5418743,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 4147.2, armor = 4147.2},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 4147.2, armor = 4147.2, speed = 45.89, acceleration = 11.15, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
+	shield_0 = {name = "shd_generic", hitpoints = 4147.2, armor = 4147.2, front = 33177.6, back = 33177.6, regen = 30},
+	armor_0 = {name = "arm_generic", hitpoints = 13271, armor = 13271},
+	armor_1 = {name = "arm_generic", hitpoints = 13271, armor = 13271},
+	capacitor = {name = "cap_generic", hitpoints = 4147.2, armor = 4147.2, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_tieadvanced_blaster", hitpoints = 4147.2, armor = 4147.2, rate = 0.78, drain = 1, maxDamage = 441.78, minDamage = 288.17, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_tieadvanced_blaster", hitpoints = 4147.2, armor = 4147.2, rate = 0.78, drain = 1, maxDamage = 441.78, minDamage = 288.17, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_lambdashuttle_tier4, "object/ship/lambdashuttle_tier4.iff")

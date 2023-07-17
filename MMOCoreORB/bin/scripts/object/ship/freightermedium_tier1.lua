@@ -42,17 +42,28 @@
 
 
 object_ship_freightermedium_tier1 = object_ship_shared_freightermedium_tier1:new {
+	objectName = "@space/space_mobile_type:freightermedium_tier1",
 
 	name = "freightermedium_tier1",
+	type = "freightermedium_tier1",
+	faction = "civilian",
+	difficulty = "tier1",
+
 	slideFactor = 1.87,
 	chassisHitpoints = 480,
 	chassisMass = 5000,
-	reactor = { name = "rct_generic", hitpoints = 289.1444, armor = 294.7455,},
-	engine = { name = "eng_incom_fusialthrust", hitpoints = 293.2422, armor = 286.134, speed = 41.19086, pitch = 23.02533, roll = 27.36238, yaw = 17.97859, acceleration = 9.792842, rollRate = 49.59842, pitchRate = 44.73364, deceleration = 8.339143, yawRate = 36.98573,},
-	shield_0 = { name = "shd_generic", hitpoints = 288.3432, armor = 299.8867, regen = 3.610263, front = 2286.391, back = 2300.543,},
-	armor_0 = { name = "arm_generic", hitpoints = 1239.206, armor = 1230.608,},
-	armor_1 = { name = "arm_generic", hitpoints = 1232.675, armor = 1223.599,},
-	capacitor = { name = "cap_generic", hitpoints = 293.5763, armor = 291.1443, rechargeRate = 99.43906, energy = 4875.422,},
+
+	--gameObjectType = 536870918,
+	shipBitmask = NONE,
+	customShipAiMap = "",
+	optionsBitmask = AIENABLED,
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 300, armor = 300, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},
+	shield_0 = {name = "shd_generic", hitpoints = 300, armor = 300, front = 2400, back = 2400, regen = 3.75},
+	armor_0 = {name = "arm_generic", hitpoints = 1280, armor = 1280},
+	armor_1 = {name = "arm_generic", hitpoints = 1280, armor = 1280},
+	capacitor = {name = "cap_generic", hitpoints = 300, armor = 300, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_freightermedium_tier1, "object/ship/freightermedium_tier1.iff")
