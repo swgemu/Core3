@@ -234,23 +234,20 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 		if (objZone != nullptr) {
 			if (objZone->isSpaceZone()) {
-				SpaceZone* spaceZone = cast<SpaceZone*>(objZone.get());
+				SpaceZone* spaceZone = objZone->asSpaceZone();
 
-				spaceZone->remove(object);
-
-				object->setSpaceZone(nullptr);
-
-				if (objParent == nullptr)
-					objParent = spaceZone;
+				if (spaceZone != nullptr)
+					spaceZone->remove(object);
 			} else {
 				objZone->remove(object);
-
-				object->setGroundZone(nullptr);
-
-				if (objParent == nullptr)
-					objParent = objZone;
 			}
 		}
+
+		object->setGroundZone(nullptr);
+		object->setSpaceZone(nullptr);
+
+		if (objParent == nullptr)
+			objParent = objZone;
 	}
 
 	bool update = true;

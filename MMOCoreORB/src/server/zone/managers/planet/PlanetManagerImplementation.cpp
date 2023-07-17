@@ -49,9 +49,9 @@ Mutex PlanetManagerImplementation::poiMutex;
 void PlanetManagerImplementation::initialize() {
 	numberOfCities = 0;
 
-	info("Loading planet.");
+	String zoneName = zone->getZoneName();
 
-	planetTravelPointList->setZoneName(zone->getZoneName());
+	planetTravelPointList->setZoneName(zoneName);
 
 	// Load Planet Regions
 	loadRegions();
@@ -62,7 +62,7 @@ void PlanetManagerImplementation::initialize() {
 	buildRegionNavAreas();
 	buildCityNavMeshes();
 
-	if (zone->getZoneName() == "dathomir") {
+	if (zoneName == "dathomir") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(STRING_HASHCODE("object/fs_village_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker(area);
@@ -98,7 +98,7 @@ void PlanetManagerImplementation::initialize() {
 		zone->transferObject(sarlaccPreArea, -1, true);
 	}
 
-	if (zone->getZoneName() == "tatooine") {
+	if (zoneName == "tatooine") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(
 				STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea *>();
 
@@ -165,18 +165,20 @@ void PlanetManagerImplementation::loadLuaConfig() {
 			travelPoints.pop();
 
 			LuaObject launchLocation = luaObject.getObjectField("jtlLaunchPoint");
-			if (!launchLocation.isValidTable())
-				return;
 
-			jtlZoneName = launchLocation.getStringAt(1);
-			float x = launchLocation.getFloatAt(2);
-			float y = launchLocation.getFloatAt(3);
-			float z = launchLocation.getFloatAt(4);
-			jtlLaunchLocation = Vector3(x, y, z);
+			if (launchLocation.isValidTable()) {
+				jtlZoneName = launchLocation.getStringAt(1);
+				float x = launchLocation.getFloatAt(2);
+				float y = launchLocation.getFloatAt(3);
+				float z = launchLocation.getFloatAt(4);
+				jtlLaunchLocation = Vector3(x, y, z);
+			}
+
 			launchLocation.pop();
 		} catch (Exception &e) {
 			error(e.getMessage());
 		}
+
 		loadSnapshotObjects();
 
 		LuaObject planetObjectsTable = luaObject.getObjectField("planetObjects");
@@ -618,6 +620,8 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 		return;
 	}
 
+	info(true) << "----- Loading World snapshot objects for Zone: " << zone->getZoneName() << " -----";
+
 	Reference<WorldSnapshotIff*> wsiff = new WorldSnapshotIff();
 	wsiff->readObject(iffStream);
 
@@ -893,8 +897,6 @@ void PlanetManagerImplementation::loadRegions() {
 
 	String planetName = zone->getZoneName();
 
-	info(true) << "Loading " << planetName << " regions...";
-
 	lua->runFile("scripts/managers/planet/" + planetName + "_regions.lua");
 	LuaObject regionObjects = lua->getGlobalObject(planetName + "_regions");
 
@@ -915,7 +917,7 @@ void PlanetManagerImplementation::loadRegions() {
 	delete lua;
 	lua = nullptr;
 
-	info(true) << "Loaded " + String::valueOf(regionMap.getTotalRegions()) + " regions.";
+	info(true) << "Loaded " << regionMap.getTotalRegions() << " total regions.";
 }
 
 void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
