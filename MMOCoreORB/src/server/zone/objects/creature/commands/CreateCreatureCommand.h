@@ -11,6 +11,8 @@
 #include "server/zone/managers/creature/AiMap.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/space/SpaceAiMap.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
+#include "server/zone/managers/ship/ShipManager.h"
 
 class CreateCreatureCommand : public QueueCommand {
 public:
@@ -117,6 +119,10 @@ public:
 				return SUCCESS;
 			}
 
+			if (!tempName.isEmpty() && zone->isSpaceZone()) {
+				return createShip(creature, target, arguments);
+			}
+
 			if (tokenizer.hasMoreTokens())
 				tokenizer.getStringToken(objName);
 
@@ -175,7 +181,13 @@ public:
 				parID = tokenizer.getLongToken();
 		} else {
 			StringBuffer usage;
-			usage << "Usage: /createCreature <template> [object template | ai template | baby | event [level] [scale] ] [X] [Z] [Y] [planet] [cellID]" << endl << "/createCreature checkthreads";
+
+			if (zone != nullptr && zone->isSpaceZone()) {
+				usage << "CreateCreatureCommand syntax: /createCreature <template> <faction>";
+			} else {
+				usage << "Usage: /createCreature <template> [object template | ai template | baby | event [level] [scale] ] [X] [Z] [Y] [planet] [cellID]" << endl << "/createCreature checkthreads";
+			}
+
 			creature->sendSystemMessage(usage.toString());
 			return GENERALERROR;
 		}
@@ -222,6 +234,72 @@ public:
 		return SUCCESS;
 	}
 
+	int createShip(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+		if (creature == nullptr || arguments == "") {
+			return QueueCommand::INVALIDPARAMETERS;
+		}
+
+		auto spaceZone = creature->getZone();
+
+		if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
+			return QueueCommand::GENERALERROR;
+		}
+
+		UnicodeTokenizer tokens(arguments);
+
+		String shipName = "";
+		String faction = "";
+
+		if (tokens.hasMoreTokens()) {
+			tokens.getStringToken(shipName);
+
+			if (!shipName.contains(".iff")) {
+				shipName = "object/ship/" + shipName + ".iff";
+			}
+		}
+
+		if (tokens.hasMoreTokens()) {
+			tokens.getStringToken(faction);
+		}
+
+		ManagedReference<ShipObject*> aiShip = ShipManager::instance()->createShip(shipName, 0, true);
+
+		if (aiShip == nullptr) {
+			creature->sendSystemMessage("CreateCreatureCommand error: invalid template " + shipName);
+			return QueueCommand::GENERALERROR;
+		}
+
+		Locker sLock(aiShip, creature);
+
+		auto aiShipAgent = aiShip->asShipAiAgent();
+
+		if (aiShipAgent == nullptr) {
+			creature->sendSystemMessage("CreateCreatureCommand error: invalid ship " + shipName);
+			aiShip->destroyObjectFromDatabase(true);
+			return QueueCommand::GENERALERROR;
+		}
+
+		if (faction != "" && faction != aiShipAgent->getShipFaction()) {
+			aiShipAgent->setShipFaction(faction, false);
+		}
+
+		aiShipAgent->setFactionStatus(FactionStatus::OVERT);
+
+		const Vector3& position = creature->getPosition();
+
+		aiShipAgent->setPosition(position.getX(),position.getZ(),position.getY());
+		aiShipAgent->setHomeLocation(position.getX(),position.getZ(),position.getY(), Quaternion::IDENTITY);
+
+		if (!spaceZone->transferObject(aiShipAgent, -1, true)) {
+			aiShipAgent->destroyObjectFromDatabase(true);
+			return QueueCommand::GENERALERROR;
+		}
+
+		aiShipAgent->updateZone(false, false);
+
+		creature->sendSystemMessage("CreateCreatureCommand created: " + aiShipAgent->getDisplayedName() + " at coordinates " + position.toString());
+		return QueueCommand::SUCCESS;
+	}
 };
 
 #endif //CREATECREATURECOMMAND_H_
