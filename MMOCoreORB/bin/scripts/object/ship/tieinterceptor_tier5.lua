@@ -53,7 +53,7 @@ object_ship_tieinterceptor_tier5 = object_ship_shared_tieinterceptor_tier5:new {
 	chassisHitpoints = 2457.6,
 	chassisMass = 5000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

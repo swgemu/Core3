@@ -67,15 +67,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TangibleObject>(SceneObject::ARMOR);
 	objectFactory.registerObject<TangibleObject>(SceneObject::BODYARMOR); //chest plates
 
-	objectFactory.registerObject<TangibleObject>(SceneObject::CONTAINER); //chest plates
-
-	objectFactory.registerObject<SceneObject>(SceneObject::SHIP);
-	objectFactory.registerObject<SceneObject>(SceneObject::SHIPFIGHTER);
-	objectFactory.registerObject<SceneObject>(SceneObject::SHIPCAPITAL);
-	objectFactory.registerObject<SceneObject>(SceneObject::SHIPSTATION);
-	objectFactory.registerObject<SceneObject>(SceneObject::SHIPTRANSPORT);
-
-
+	objectFactory.registerObject<TangibleObject>(SceneObject::CONTAINER); //chest platess
 
 	/*objectFactory.registerObject<IntangibleObject>(SceneObject::INTANGIBLE);
 

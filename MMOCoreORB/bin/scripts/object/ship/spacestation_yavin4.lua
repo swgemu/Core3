@@ -43,6 +43,7 @@
 
 object_ship_spacestation_yavin4 = object_ship_shared_spacestation_neutral:new {
 	objectName = "@space/space_mobile_type:station_yavin4",
+
 	conversationTemplate = "spacestation_yavin4_convotemplate",
 	conversationMobile = "object/mobile/shared_space_comm_station_yavin4.iff",
 	conversationMessage = "@conversation/station_yavin4:s_c3e92bf9", -- Too Far Message
@@ -56,9 +57,9 @@ object_ship_spacestation_yavin4 = object_ship_shared_spacestation_neutral:new {
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
-	customShipAiMap = "",
+	customShipAiMap = "spaceStations",
 	optionsBitmask = AIENABLED,
 
 	reactor = {name = "rct_generic", hitpoints = 5000, armor = 2000},

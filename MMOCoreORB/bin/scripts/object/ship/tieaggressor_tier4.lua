@@ -53,7 +53,7 @@ object_ship_tieaggressor_tier4 = object_ship_shared_tieaggressor_tier4:new {
 	chassisHitpoints = 1920,
 	chassisMass = 5000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

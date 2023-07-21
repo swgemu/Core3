@@ -53,7 +53,7 @@ object_ship_ywing_longprobe = object_ship_shared_ywing_longprobe:new {
 	chassisHitpoints = 339,
 	chassisMass = 10000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

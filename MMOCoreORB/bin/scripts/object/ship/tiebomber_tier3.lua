@@ -53,7 +53,7 @@ object_ship_tiebomber_tier3 = object_ship_shared_tiebomber_tier3:new {
 	chassisHitpoints = 1800,
 	chassisMass = 5000,
 
-	--gameObjectType = 536870918,
+	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
