@@ -12,6 +12,7 @@
 
 int ProbotObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<CreatureObject*> attacker = cast<CreatureObject*>(arg1);
+
 	if (attacker == nullptr || probot == nullptr) {
 		return 0;
 	}
@@ -30,15 +31,23 @@ int ProbotObserverImplementation::notifyObserverEvent(unsigned int eventType, Ob
 		return 0;
 	}
 
+	auto zone = probot->getZone();
+
+	if (zone == nullptr)
+		return 0;
+
+	auto planetMan = zone->getPlanetManager();
 	auto landingCoordinates = probot->getWorldPosition();
-	if (probot->getZone() != nullptr || probot->getZone()->getPlanetManager() != nullptr) {
-		landingCoordinates = probot->getZone()->getPlanetManager()->getInSightSpawnPoint(attacker, 30, 120, 15);
+
+	if (planetMan != nullptr) {
+		landingCoordinates = planetMan->getInSightSpawnPoint(attacker, 30, 120, 15);
 	}
 
-	Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(
-		attacker, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", landingCoordinates,
+	Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(attacker, Factions::FACTIONIMPERIAL, 1, "@imperial_presence/contraband_search:containment_team_imperial", landingCoordinates,
 		Quaternion(Vector3(0, 1, 0), attacker->getDirection()->getRadians() + 3.14f), LambdaShuttleWithReinforcementsTask::LAMBDASHUTTLEATTACK);
-	lambdaTask->schedule(1);
+
+	if (lambdaTask != nullptr)
+		lambdaTask->schedule(500);
 
 	probot->showFlyText("imperial_presence/contraband_search", "probot_distress_fly", 255, 0, 0);
 
