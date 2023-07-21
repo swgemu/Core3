@@ -11,6 +11,9 @@
 #include "server/zone/managers/creature/AiMap.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/space/SpaceAiMap.h"
+#include "server/zone/packets/object/DataTransform.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
+#include "server/zone/managers/ship/ShipManager.h"
 
 class CreateCreatureCommand : public QueueCommand {
 public:
@@ -115,6 +118,10 @@ public:
 				creature->sendSystemMessage(msg2.toString());
 
 				return SUCCESS;
+			}
+
+			if (!tempName.isEmpty() && zone->isSpaceZone()) {
+				return createShip(creature, target, arguments);
 			}
 
 			if (tokenizer.hasMoreTokens())
@@ -222,6 +229,103 @@ public:
 		return SUCCESS;
 	}
 
+	int createShip(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+		if (creature == nullptr) {
+			return QueueCommand::INVALIDPARAMETERS;
+		}
+
+		if (arguments == "") {
+			creature->sendSystemMessage("CreateCreatureCommand syntax: /createCreature <template> <faction>");
+			return QueueCommand::INVALIDPARAMETERS;
+		}
+
+		UnicodeTokenizer tokens(arguments);
+
+		String shipName = "";
+		String faction = "";
+
+		if (tokens.hasMoreTokens()) {
+			tokens.getStringToken(shipName);
+
+			if (!shipName.contains(".iff")) {
+				shipName = "object/ship/" + shipName + ".iff";
+			}
+		}
+
+		if (tokens.hasMoreTokens()) {
+			tokens.getStringToken(faction);
+		}
+
+		auto playerRoot = creature->getRootParent();
+
+		if (playerRoot == nullptr || !playerRoot->isShipObject()) {
+			return QueueCommand::GENERALERROR;
+		}
+
+		auto playerShip = playerRoot->asShipObject();
+
+		if (playerShip == nullptr || playerShip->getZone() == nullptr) {
+			return QueueCommand::GENERALERROR;
+		}
+
+		auto spaceZone = playerShip->getZone();
+
+		if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
+			return QueueCommand::GENERALERROR;
+		}
+
+		auto shipManager = ShipManager::instance();
+
+		if (shipManager == nullptr) {
+			return QueueCommand::GENERALERROR;
+		}
+
+		ManagedReference<ShipObject*> aiShip = shipManager->createShip(shipName, 0, true);
+
+		if (aiShip == nullptr) {
+			creature->sendSystemMessage("CreateCreatureCommand error: invalid template " + shipName);
+			return QueueCommand::GENERALERROR;
+		}
+
+		Locker sLock(aiShip);
+
+		if (faction != "" && faction != aiShip->getShipFaction()) {
+			aiShip->setShipFaction(faction, false);
+		}
+
+		aiShip->setHyperspacing(false);
+		aiShip->setFactionStatus(FactionStatus::OVERT);
+		aiShip->clearOptionBit(OptionBitmask::INVULNERABLE, false);
+
+		const Quaternion& direction = *playerShip->getDirection();
+		const Vector3& position = playerShip->getPosition();
+
+		aiShip->setMovementCounter(playerShip->getSyncStamp());
+		aiShip->setRotationMatrix(direction);
+		aiShip->setDirection(direction);
+		aiShip->setPosition(position.getX(),position.getZ(),position.getY());
+
+		if (aiShip->isShipAiAgent()) {
+			auto aiShipAgent = dynamic_cast<ShipAiAgent*>(aiShip.get());
+
+			if (aiShipAgent != nullptr) {
+				aiShipAgent->setHomeLocation(position.getX(),position.getZ(),position.getY(), direction);
+			}
+		}
+
+		if (!spaceZone->transferObject(aiShip, -1, true)) {
+			aiShip->destroyObjectFromDatabase(true);
+			return QueueCommand::GENERALERROR;
+		}
+
+		aiShip->updateZone(false, false);
+
+		auto data = new DataTransform(aiShip);
+		aiShip->broadcastMessage(data, true);
+
+		creature->sendSystemMessage("CreateCreatureCommand created: " + aiShip->getDisplayedName() + " at coordinates " + position.toString());
+		return QueueCommand::SUCCESS;
+	}
 };
 
 #endif //CREATECREATURECOMMAND_H_

@@ -270,6 +270,12 @@ ShipObject* ShipManager::createShip(const String& shipName, int persistence, boo
 		return nullptr;
 	}
 
+	auto appearance = shot->getAppearanceTemplate();
+
+	if (appearance == nullptr) {
+		return nullptr;
+	}
+
 	auto zoneServer = ServerCore::getZoneServer();
 
 	if (zoneServer == nullptr)
