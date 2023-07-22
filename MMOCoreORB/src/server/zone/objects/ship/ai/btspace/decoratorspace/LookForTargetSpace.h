@@ -24,33 +24,51 @@ public:
 
 	BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
 #ifdef DEBUG_SHIP_AI
+		if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
+			agent->info(true) << agent->getDisplayedName() << " - LookForTargetSpace - called";
+
 		bool alwaysActive = ConfigManager::instance()->getAiAgentLoadTesting();
 #else  // DEBUG_SHIP_AI
 		bool alwaysActive = false;
 #endif // DEBUG_SHIP_AI
 
-	if (!(agent->getOptionsBitmask() & OptionBitmask::AIENABLED) || (agent->getPvpStatusBitmask() & ShipFlag::NONE))
-		return FAILURE;
+		if (!(agent->getOptionsBitmask() & OptionBitmask::AIENABLED) || (agent->getPvpStatusBitmask() & ShipFlag::NONE)) {
+#ifdef DEBUG_SHIP_AI
+			if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
+				agent->info(true) << agent->getDisplayedName() << " - LookForTargetSpace - FAILURE at 1";
+#endif // DEBUG_SHIP_AI
+			return FAILURE;
+		}
 
-	if ((!alwaysActive && agent->getNumberOfPlayersInRange() <= 0) /*|| agent->isInCombat()*/)
-		return FAILURE;
+		if ((!alwaysActive && agent->getNumberOfPlayersInRange() <= 0)) {
+#ifdef DEBUG_SHIP_AI
+			if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
+				agent->info(true) << agent->getDisplayedName() << " - LookForTargetSpace - FAILURE at 2";
+#endif // DEBUG_SHIP_AI
+			return FAILURE;
+		}
 
 		assert(child != nullptr);
 
 		// If we have a follow object, check if it is still valid then set as prospect
-		ManagedReference<SceneObject*> currObj = agent->getFollowObject().get();
+		ManagedReference<ShipObject*> currShipObj = agent->getFollowShipObject().get();
 
-		if (currObj != nullptr) {
-			if (currObj->isShipObject() && isInvalidTarget(currObj->asShipObject(), agent)) {
+		if (currShipObj != nullptr) {
+			if (isInvalidTarget(currShipObj, agent)) {
 				// Target is invalid, only clear follow if Ship is not following a friendly
 				if (!(agent->getShipBitmask() & ShipFlag::FOLLOW)) {
-					agent->setFollowObject(nullptr);
+					agent->setFollowShipObject(nullptr);
 					agent->setMovementState(ShipAiAgent::PATHING_HOME);
 				}
 
+#ifdef DEBUG_SHIP_AI
+				if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
+					agent->info(true) << agent->getDisplayedName() << " - LookForTargetSpace - FAILURE at 3";
+#endif // DEBUG_SHIP_AI
+
 				return FAILURE;
 			} else {
-				agent->writeBlackboard("targetProspect", currObj);
+				agent->writeBlackboard("targetShipProspect", currShipObj);
 				return child->doAction(agent);
 			}
 		}
@@ -58,6 +76,10 @@ public:
 		auto targetVector = agent->getTargetVector();
 
 		if (targetVector == nullptr) {
+#ifdef DEBUG_SHIP_AI
+			if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
+				agent->info(true) << agent->getDisplayedName() << " - LookForTargetSpace - FAILURE at 4";
+#endif // DEBUG_SHIP_AI
 			return FAILURE;
 		}
 
@@ -67,14 +89,24 @@ public:
 		// Shuffle closeobjects to randomize target checks
 		std::shuffle(targetVectorCopy.begin(), targetVectorCopy.end(), *System::getMTRand());
 
-		for (int i = 0; i < targetVectorCopy.size(); ++i) {
-			auto target = targetVectorCopy.get(i).castTo<ShipObject*>();
+#ifdef DEBUG_SHIP_AI
+		if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
+			agent->info(true) << agent->getDisplayedName() << " - LookForTargetSpace - targetVectorCopy Size: " << targetVectorCopy.size();
+#endif // DEBUG_SHIP_AI
 
-			if (isInvalidTarget(target, agent)) {
+		for (int i = 0; i < targetVectorCopy.size(); ++i) {
+			auto targetShip = targetVectorCopy.get(i).castTo<ShipObject*>();
+
+			if (isInvalidTarget(targetShip, agent)) {
 				continue;
 			}
 
-			agent->writeBlackboard("targetProspect", target);
+			agent->writeBlackboard("targetShipProspect", targetShip);
+
+#ifdef DEBUG_SHIP_AI
+			if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
+				agent->info(true) << agent->getDisplayedName() << " - LookForTargetSpace - found target prospect";
+#endif // DEBUG_SHIP_AI
 
 			BehaviorSpace::Status result = child->doAction(agent);
 
@@ -86,12 +118,20 @@ public:
 		return FAILURE;
 	}
 
-	bool isInvalidTarget(ShipObject* target, ShipAiAgent* agent) const {
-		if (target == nullptr || target->getObjectID() == agent->getObjectID())
+	bool isInvalidTarget(ShipObject* targetShip, ShipAiAgent* agent) const {
+		if (targetShip == nullptr || targetShip->getObjectID() == agent->getObjectID())
 			return true;
 
-		if (!target->isAttackableBy(agent))
+		if (targetShip->isShipAiAgent()) {
+			ShipAiAgent* targetAgent = targetShip->asShipAiAgent();
+
+			if (targetAgent == nullptr)
+				return true;
+
+			return !targetAgent->isAttackableBy(agent);
+		} else if (!targetShip->isAttackableBy(agent)) {
 			return true;
+		}
 
 		return false;
 	}

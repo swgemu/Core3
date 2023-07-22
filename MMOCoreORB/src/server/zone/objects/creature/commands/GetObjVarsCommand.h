@@ -12,19 +12,10 @@
 
 class GetObjVarsCommand : public QueueCommand {
 public:
-
-	GetObjVarsCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	GetObjVarsCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
@@ -41,7 +32,7 @@ public:
 		if (tokenizer.hasMoreTokens()) {
 			try {
 				objectID = tokenizer.getLongToken();
-			} catch ( Exception& err ) {
+			} catch (Exception& err) {
 				creature->sendSystemMessage("INVALID OBJECT.  Please specify a valid object name or objectid");
 				return INVALIDPARAMETERS;
 			}
@@ -49,7 +40,7 @@ public:
 			objectID = target;
 		}
 
-		if ( objectID == 0) {
+		if (objectID == 0) {
 			creature->sendSystemMessage("You need to target an object or specify an object id: /getobjvars <objectID> ");
 		}
 
@@ -68,13 +59,13 @@ public:
 			msg << endl << "OBJECTID: " << String::valueOf(objectID) << endl;
 			msg << "OBJECTTYPE: " << String::valueOf(object->getGameObjectType()) << endl;
 
-			if(object->isCreatureObject()) {
+			if (object->isCreatureObject()) {
 				msg << "Creature First Name: " << object.castTo<CreatureObject*>()->getFirstName() << endl;
 			}
 
 			msg << "CLASS: " << strClassName << endl;
 			msg << "Marked for deletion: " << String::valueOf(bMarkedForDelete) << endl;
-			msg << "IsUpdated: " <<  String::valueOf(bIsUpdated) << endl;
+			msg << "IsUpdated: " << String::valueOf(bIsUpdated) << endl;
 			msg << "REFERENCE COUNT " << String::valueOf(rCount) << endl;
 			msg << "Path: " << object->getObjectTemplate()->getFullTemplateString() << endl;
 			msg << "Children: " << String::valueOf(object->getChildObjects()->size()) << endl;
@@ -94,7 +85,7 @@ public:
 
 						if (objectAgent != nullptr) {
 							msg << "Creature Bitmask: " << objectAgent->getCreatureBitmask() << endl;
-							msg << "Creature Movement Sate: " << objectAgent->getMovementState() << endl;
+							msg << "Creature Movement State: " << objectAgent->getMovementState() << endl;
 
 							ManagedReference<SceneObject*> followCopy = objectAgent->getFollowObject();
 							StringBuffer hasFollow;
@@ -126,7 +117,7 @@ public:
 							msg << "Group Level: " << group->getGroupLevel() << endl;
 					}
 
-					SortedVector<ManagedReference<ActiveArea*> >* areas = creoObject->getActiveAreas();
+					SortedVector<ManagedReference<ActiveArea*>>* areas = creoObject->getActiveAreas();
 
 					if (areas != nullptr) {
 						for (int i = 0; i < areas->size(); i++) {
@@ -137,6 +128,47 @@ public:
 
 							msg << "Area #" << i << " -- " << area->getAreaName() << endl;
 						}
+					}
+				}
+			} else if (object->isShipObject()) {
+				ShipObject* ship = object->asShipObject();
+
+				if (ship != nullptr) {
+					String aiEnabled = (ship->getOptionsBitmask() & OptionBitmask::AIENABLED ? "True" : "False");
+					msg << "AI Enabled: " << aiEnabled << endl;
+					msg << "PvP Status Bitmask: " << ship->getPvpStatusBitmask() << endl;
+					msg << "Options Bitmask: " << ship->getOptionsBitmask() << endl;
+
+					if (ship->isShipAiAgent()) {
+						ShipAiAgent* shipAgent = ship->asShipAiAgent();
+
+						if (shipAgent != nullptr) {
+							msg << "Ship Agent Movement State: " << shipAgent->getMovementState() << endl;
+
+							ManagedReference<ShipObject*> followCopy = shipAgent->getFollowShipObject();
+							StringBuffer hasFollow;
+
+							if (followCopy != nullptr) {
+								hasFollow << "True - " << " OID: " << followCopy->getObjectID();
+							} else {
+								hasFollow << "False";
+							}
+
+							msg << "Has Follow Object: " << hasFollow.toString() << endl;
+
+							ManagedReference<ShipObject*> targetCopy = shipAgent->getTargetShipObject();
+							StringBuffer hasTarget;
+
+							if (targetCopy != nullptr) {
+								hasTarget << "True - " << " OID: " << targetCopy->getObjectID();
+							} else {
+								hasTarget << "False";
+							}
+
+							msg << "Has Target Object: " << hasTarget.toString() << endl;
+							msg << "Current total Patrol Points: " << shipAgent->getPatrolPointSize() << endl;
+						}
+
 					}
 				}
 			}
@@ -155,7 +187,7 @@ public:
 
 			ChatManager* chatManager = server->getZoneServer()->getChatManager();
 			String title = "getObjVars - " + String::valueOf(objectID);
-			chatManager->sendMail("System", title , msg.toString(), creature->getFirstName());
+			chatManager->sendMail("System", title, msg.toString(), creature->getFirstName());
 
 			ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 
@@ -175,4 +207,4 @@ public:
 	}
 };
 
-#endif //GETOBJVARSCOMMAND_H_
+#endif // GETOBJVARSCOMMAND_H_

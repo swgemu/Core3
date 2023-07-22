@@ -13,6 +13,7 @@
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
 #include "server/zone/managers/ship/ShipManager.h"
+#include "templates/faction/Factions.h"
 
 void SpaceManagerImplementation::loadLuaConfig() {
 	String planetName = spacezone->getZoneName();
@@ -91,6 +92,9 @@ void SpaceManagerImplementation::loadLuaConfig() {
 
 							if (faction == "" || !spaceStationMap.contains(faction)) {
 								faction = "neutral";
+
+								ship->setFaction(Factions::FACTIONNEUTRAL);
+								ship->setOptionBit(OptionBitmask::INVULNERABLE, false);
 							}
 
 							uint64 stationID = ship->getObjectID();
