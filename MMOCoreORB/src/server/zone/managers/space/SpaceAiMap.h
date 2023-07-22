@@ -121,6 +121,7 @@ public:
 		lua->setGlobalInt("AGGROSPACE",			BehaviorTreeSlotSpace::AGGROSPACE);
 		lua->setGlobalInt("ATTACKSPACE",		BehaviorTreeSlotSpace::ATTACKSPACE);
 		lua->setGlobalInt("AWARESPACE",			BehaviorTreeSlotSpace::AWARESPACE);
+		lua->setGlobalInt("EVADESPACE",			BehaviorTreeSlotSpace::EVADESPACE);
 		lua->setGlobalInt("IDLESPACE",			BehaviorTreeSlotSpace::IDLESPACE);
 		lua->setGlobalInt("LOOKATSPACE",		BehaviorTreeSlotSpace::LOOKATSPACE);
 		lua->setGlobalInt("MOVESPACE",			BehaviorTreeSlotSpace::MOVESPACE);
@@ -237,7 +238,7 @@ public:
 	}
 
 private:
-	static const bool DEBUG_MODE = true;
+	static const bool DEBUG_MODE = false;
 	SpaceBehaviorFactory factory;
 
 	void registerBehaviors() {
@@ -266,6 +267,13 @@ private:
 		_REGISTERSPACELEAF(CheckProspectInRange);
 		_REGISTERSPACELEAF(CheckAggroDelayPast);
 		_REGISTERSPACELEAF(CheckHasFollow);
+		_REGISTERSPACELEAF(CheckProspectAggression);
+		_REGISTERSPACELEAF(CheckRefireRate);
+		_REGISTERSPACELEAF(CheckEvadeDelayPast);
+		_REGISTERSPACELEAF(CheckTargetIsValid);
+		_REGISTERSPACELEAF(CheckEnginesDisabled);
+		_REGISTERSPACELEAF(CheckEvadeChance);
+		_REGISTERSPACELEAF(CheckRetreat);
 
 		// action behaviors
 		_REGISTERSPACELEAF(DummySpace);
@@ -277,9 +285,14 @@ private:
 		_REGISTERSPACELEAF(EraseBlackboard);
 		_REGISTERSPACELEAF(CalculateAggroMod);
 		_REGISTERSPACELEAF(SetMovementState);
-		//_REGISTERSPACELEAF(Evade); TODO Implement Evade
+		_REGISTERSPACELEAF(Evade);
 		_REGISTERSPACELEAF(SetAlert);
 		_REGISTERSPACELEAF(SetDefenderFromProspect);
+		_REGISTERSPACELEAF(GetProspectFromThreatMap);
+		_REGISTERSPACELEAF(EngageTarget);
+		_REGISTERSPACELEAF(SetDisabledEngineSpeed);
+		_REGISTERSPACELEAF(Leash);
+		_REGISTERSPACELEAF(GetProspectFromDefenders);
 	}
 
 	void putBitmask(Lua* lua, String key) {

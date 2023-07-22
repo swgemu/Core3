@@ -934,17 +934,19 @@ void ShipObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 }
 
 bool ShipObjectImplementation::isAttackableBy(TangibleObject* object) {
-	auto flags = getOptionsBitmask();
+	auto optionsBit = getOptionsBitmask();
 
-	if (flags & OptionBitmask::DESTROYING) {
+	if ((optionsBit & OptionBitmask::DESTROYING) || (optionsBit & OptionBitmask::INVULNERABLE)) {
 		return false;
 	}
 
-	if (flags & OptionBitmask::INVULNERABLE) {
-		return false;
-	}
+	int thisFaction = getFaction();
+	int objectFaction = object->getFaction();
 
-	return faction != object->getFaction();
+	if (thisFaction == 0 && objectFaction > 0)
+		return false;
+
+	return faction != objectFaction;
 }
 
 bool ShipObjectImplementation::isAggressiveTo(TangibleObject* object) {
