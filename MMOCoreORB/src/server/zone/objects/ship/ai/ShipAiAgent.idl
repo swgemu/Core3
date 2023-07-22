@@ -66,12 +66,17 @@ class ShipAiAgent extends ShipObject {
 	protected boolean despawnOnNoPlayerInRange;
 
 	@weakReference
-	private SceneObject followObject;
+	private ShipObject followShip;
 
 	@weakReference
-	private SceneObject followStore;
+	private ShipObject followShipStore;
+
+	@weakReference
+	private ShipObject targetShip;
 
 	private unsigned int movementState;
+
+	protected unsigned int movementCount;
 
 	@dereferenced
 	private transient Mutex targetMutex;
@@ -90,6 +95,9 @@ class ShipAiAgent extends ShipObject {
 
 	private float currentSpeed;
 	private float lastSpeed;
+
+	private float currentTurnRate;
+	private float lastTurnRate;
 
 	@dereferenced
 	protected transient AtomicInteger numberOfPlayersInRange;
@@ -116,6 +124,9 @@ class ShipAiAgent extends ShipObject {
 	@dereferenced
 	protected transient Time aggroDelay;
 
+	@dereferenced
+	protected transient Time evadeDelay;
+
 	@transactional
 	protected transient CooldownTimerMap cooldownTimerMap;
 
@@ -123,7 +134,7 @@ class ShipAiAgent extends ShipObject {
 
 	public static final int BEHAVIORINTERVAL = 200; // msec
 
-	public static final float DEFAULTAGGRORADIUS = 500.f;
+	public static final float DEFAULTAGGRORADIUS = 512.f;
 
 	public static final int OBLIVIOUS = 0;
 	public static final int WATCHING = 1;
@@ -135,6 +146,10 @@ class ShipAiAgent extends ShipObject {
 	public static final int EVADING = 7;
 	public static final int PATHING_HOME = 8;
 	public static final int FOLLOW_FORMATION = 9;
+
+	public static final int NEUTRAL_PROJECTILE = 2;
+	public static final int REBEL_PROJECTILE = 4;
+	public static final int IMPERIAL_PROJECTILE = 6;
 
 	protected transient unsigned long customShipAiMap;
 
@@ -184,16 +199,20 @@ class ShipAiAgent extends ShipObject {
 	@local
 	public native void notifyDissapear(TreeEntry entry);
 
-
 	@weakReference
-	public SceneObject getFollowObject() {
-		return followObject;
+	public ShipObject getFollowShipObject() {
+		return followShip;
 	}
 
 	public void storeFollowObject() {
 		synchronized (targetMutex) {
-			followStore = followObject;
+			followShipStore = followShip;
 		}
+	}
+
+	@weakReference
+	public ShipObject getTargetShipObject() {
+		return targetShip;
 	}
 
 	@read
@@ -201,11 +220,30 @@ class ShipAiAgent extends ShipObject {
 		return movementState;
 	}
 
-	public void setMovementState(int state) {
-		synchronized (targetMutex) {
-			movementState = state;
-		}
-	}
+	@dirty
+	public native void setMovementState(int state);
+
+	public native void setNextPathPosition(ShipObject targetShip);
+
+	@local
+	@dereferenced
+	public native SpacePatrolPoint getNextPosition();
+
+	@local
+	@dereferenced
+	public native SpacePatrolPoint getFinalPosition();
+
+	public native boolean isInRangePosition(@dereferenced final Vector3 value, float radius);
+
+	@local
+	@dirty
+	@dereferenced
+	public native SpacePatrolPoint getNextAttackPosition(ShipObject targetShip);
+
+	@local
+	@dirty
+	@dereferenced
+	public native SpacePatrolPoint getNextEvadePosition();
 
 	@dirty
 	public abstract native float getMaxDistance();
@@ -215,8 +253,6 @@ class ShipAiAgent extends ShipObject {
 
 	@local
 	public native final Quaternion unitVectorToQuaternion();
-
-	public native float getTurnRadian(float currentRadians, float lastRadians);
 
 	public native float getRoll(float currentRadians, float lastRadians);
 
@@ -228,6 +264,8 @@ class ShipAiAgent extends ShipObject {
 
 	public native void qNormalize(@dereferenced Vector3 vec);
 
+	public native boolean setDisabledEngineSpeed();
+
 	public native void setSpeed();
 
 	public native void setShipDirection();
@@ -235,7 +273,7 @@ class ShipAiAgent extends ShipObject {
 	public native void setNextPosition();
 
 	@preLocked
-	public abstract native boolean findNextPosition(float maxDistance);
+	public abstract native boolean findNextPosition(int maxDistance);
 
 	public abstract native boolean generatePatrol(int num, float dist);
 
@@ -251,14 +289,6 @@ class ShipAiAgent extends ShipObject {
 	}
 
 	@local
-	@dereferenced
-	public SpacePatrolPoint getNextPosition() {
-		synchronized (targetMutex) {
-			return patrolPoints.get(0);
-		}
-	}
-
-	@local
 	public int getPatrolPointSize() {
 		synchronized (targetMutex) {
 			return patrolPoints.size();
@@ -267,40 +297,25 @@ class ShipAiAgent extends ShipObject {
 
 	@preLocked
 	public void setHomeLocation(float x, float z, float y, @dereferenced final Quaternion direction) {
-		//Logger.info("settingHomeLocation to" + String.valueOf(x) + ", " + String.valueOf(z) + ", " + String.valueOf(y), true);
-
 		homeLocation.setPosition(x, z, y);
 		homeLocation.setReached(true);
 		homeLocation.setDirection(direction.getW(), direction.getX(), direction.getZ(), direction.getY());
 	}
 
-	public void setWatchObject(SceneObject obj) {
+	public void setFollowShipObject(ShipObject ship) {
 		synchronized (targetMutex) {
-			if (this.isRetreating())
-				return;
-
-			setMovementState(WATCHING);
-
-			setTargetObject(obj);
-		}
-	}
-
-	public void setFollowObject(SceneObject obj) {
-		synchronized (targetMutex) {
-			if (obj != null && followObject != obj) {
+			if (followShip != ship) {
 				setMovementState(FOLLOWING);
 
-				setTargetObject(obj);
+				followShip = ship;
 			}
 		}
 	}
 
-	public void setTargetObject(SceneObject obj) {
+	public void setTargetShipObject(ShipObject ship) {
 		synchronized (targetMutex) {
-			if (followObject != obj) {
-				clearPatrolPoints();
-
-				followObject = obj;
+			if (targetShip != ship) {
+				targetShip = ship;
 			}
 		}
 	}
@@ -309,6 +324,40 @@ class ShipAiAgent extends ShipObject {
 	public abstract boolean isRetreating() {
 		return getMovementState() == LEASHING;
 	}
+
+	@dirty
+	public boolean isFleeing() {
+		return getMovementState() == FLEEING;
+	}
+
+	public native float getPointIntersection(@dereferenced Vector3 direction, @dereferenced Vector3 difference, float radius, float distance);
+
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender ShipObject to set as the active defender
+	 */
+	@preLocked
+	public native void setDefender(ShipObject defender);
+
+	/**
+	 * Evaluates if this can be attacked by object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if object can attack this
+	 */
+	@dirty
+	public native boolean isAttackableBy(ShipObject object);
+
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
+	@dirty
+	public abstract native boolean isAggressiveTo(ShipObject object);
 
 	/**
 	 * Set the wait time in milliseconds
@@ -429,10 +478,21 @@ class ShipAiAgent extends ShipObject {
 		return aggroDelay;
 	}
 
+	@local
+	@dirty
+	public Time getEvadeDelay() {
+		return evadeDelay;
+	}
+
 	@dirty
 	public abstract int getNumberOfPlayersInRange() {
 		return numberOfPlayersInRange.get();
 	}
+
+	@local
+	@dirty
+	@dereferenced
+	public native Vector3 getCurrentDirectionVector();
 
 	@preLocked
 	public native void setDespawnOnNoPlayerInRange(boolean val);
@@ -493,4 +553,27 @@ class ShipAiAgent extends ShipObject {
 	public boolean isAggroDelayPast() {
 		return aggroDelay.isPast();
 	}
+
+	@read
+	public boolean isEvadeDelayPast() {
+		return evadeDelay.isPast();
+	}
+
+	public int getMovementCount() {
+		return movementCount;
+	}
+
+	void setMovementCount(int val) {
+		movementCount = val;
+	}
+
+	public boolean isTargetForward() {
+		return currentTurnRate <= 0.25f;
+	}
+
+	public native void setTurnRate();
+
+	public native void sendDebugMessage();
+
+	public native void sendDebugPath();
 }

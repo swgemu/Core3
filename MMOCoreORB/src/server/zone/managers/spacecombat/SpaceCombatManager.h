@@ -84,7 +84,7 @@ private:
 
 	BasePacket* getOnShipHitMessage(ShipObject* target, const Vector3& localPosition, int type, float newPercent, float oldPercent) const;
 
-	BasePacket* getHitEffectMessage(ShipObject* target, const Vector3& localPosition, int type) const;
+	BasePacket* getHitEffectMessage(const Vector3& localPosition, int type) const;
 
 	void applyDamage(ShipObject* ship, const ShipProjectile* projectile, const SpaceCollisionResult& result) const;
 
