@@ -11,6 +11,7 @@ bitmaskLookup = {
 	{NONE, {
 		{NONESPACE, "rootDefault"},
 		{AWARESPACE, "awareDefault"},
+		{EVADESPACE, "evadeDefault"},
 		{IDLESPACE, "idleDefault"},
 		{ATTACKSPACE, "attackDefault"},
 		{TARGETSPACE, "targetDefault"},

@@ -11,7 +11,7 @@ namespace ship {
 namespace ai {
 namespace btspace {
 
-enum BehaviorTreeSlotSpace : uint32 { NONESPACE = 0, AGGROSPACE, ATTACKSPACE, AWARESPACE, IDLESPACE, LOOKATSPACE, MOVESPACE, TARGETSPACE, LASTTREESLOT };
+enum BehaviorTreeSlotSpace : uint32 { NONESPACE = 0, AGGROSPACE, ATTACKSPACE, AWARESPACE, EVADESPACE, IDLESPACE, LOOKATSPACE, MOVESPACE, TARGETSPACE, LASTTREESLOT };
 
 // These definition allow looping through slots with iterator semantics.
 // The underlying assumptions are that the enum increments each member by one,
@@ -36,6 +36,8 @@ inline const char *getBehaviorTreeSlotName(BehaviorTreeSlotSpace slot) {
 		return "NONESPACE";
 	case AWARESPACE:
 		return "AWARESPACE";
+	case EVADESPACE:
+		return "EVADESPACE";
 	case IDLESPACE:
 		return "IDLESPACE";
 	case ATTACKSPACE:
