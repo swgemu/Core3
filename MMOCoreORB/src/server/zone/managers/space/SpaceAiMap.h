@@ -266,6 +266,8 @@ private:
 		_REGISTERSPACELEAF(CheckProspectInRange);
 		_REGISTERSPACELEAF(CheckAggroDelayPast);
 		_REGISTERSPACELEAF(CheckHasFollow);
+		_REGISTERSPACELEAF(CheckProspectAggression);
+		_REGISTERSPACELEAF(CheckRefireRate);
 
 		// action behaviors
 		_REGISTERSPACELEAF(DummySpace);
@@ -277,9 +279,10 @@ private:
 		_REGISTERSPACELEAF(EraseBlackboard);
 		_REGISTERSPACELEAF(CalculateAggroMod);
 		_REGISTERSPACELEAF(SetMovementState);
-		//_REGISTERSPACELEAF(Evade); TODO Implement Evade
+		_REGISTERSPACELEAF(Evade);
 		_REGISTERSPACELEAF(SetAlert);
 		_REGISTERSPACELEAF(SetDefenderFromProspect);
+		_REGISTERSPACELEAF(EngageTarget);
 	}
 
 	void putBitmask(Lua* lua, String key) {

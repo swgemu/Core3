@@ -35,14 +35,9 @@ public:
 	}
 
 	BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
-		DataValSpace mode = DataValSpace::FLYING;
-
-		//if (agent->peekBlackboard("moveMode"))
-		//	mode = static_cast<DataValSpace>(agent->readBlackboard("moveMode").get<uint32>());
-
 		uint32 movementState = agent->getMovementState();
 
-		if (movementState == ShipAiAgent::FOLLOWING) {
+		if (movementState == ShipAiAgent::FOLLOWING || movementState == ShipAiAgent::ATTACKING) {
 			return agent->findNextPosition(agent->getMaxDistance()) ? SUCCESS : FAILURE;
 		}
 
@@ -164,13 +159,9 @@ public:
 	}
 
 	BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
-		//if (!agent->isInCombat())
-		//	return FAILURE;
+		agent->removeDefenders();
 
-		//agent->clearCombatState(clearDefenders);
-
-		//return !agent->isInCombat() ? SUCCESS : FAILURE;
-		return FAILURE;
+		return SUCCESS;
 	}
 
 	String print() const {
@@ -279,19 +270,21 @@ public:
 
 class SetAlert : public BehaviorSpace {
 public:
-	SetAlert(const String& className, const uint32 id, const LuaObject& args) : BehaviorSpace(className, id, args), duration(0.f), show(true) {
+	SetAlert(const String& className, const uint32 id, const LuaObject& args) : BehaviorSpace(className, id, args), duration(0.f), aggroDelay(0.f) {
 		parseArgs(args);
 	}
 
-	SetAlert(const SetAlert& b) : BehaviorSpace(b), duration(b.duration), show(b.show) {
+	SetAlert(const SetAlert& b) : BehaviorSpace(b), duration(b.duration), aggroDelay(b.aggroDelay) {
 	}
 
 	SetAlert& operator=(const SetAlert& b) {
 		if (this == &b)
 			return *this;
+
 		BehaviorSpace::operator=(b);
+
 		duration = b.duration;
-		show = b.show;
+		aggroDelay = b.aggroDelay;
 		return *this;
 	}
 
@@ -308,17 +301,7 @@ public:
 
 		if (delay != nullptr && delay->isPast()) {
 			delay->updateToCurrentTime();
-			uint32 newDelay = 5000;
-			delay->addMiliTime(newDelay);
-		}
-
-		ManagedReference<SceneObject*> target = nullptr;
-
-		if (agent->peekBlackboard("targetProspect"))
-			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*>>().get();
-
-		if (show && target != nullptr && target->isPlayerCreature()) {
-			//agent->sendReactionChat(target, ReactionManager::ALERT);
+			delay->addMiliTime(aggroDelay);
 		}
 
 		return SUCCESS;
@@ -326,19 +309,19 @@ public:
 
 	void parseArgs(const LuaObject& args) {
 		duration = (int)(getArg<float>()(args, "duration") * 1000);
-		show = getArg<bool>()(args, "show");
+		aggroDelay = (int)(getArg<float>()(args, "aggroDelay") * 1000);
 	}
 
 	String print() const {
 		StringBuffer msg;
-		msg << className << "-" << duration << ":" << show;
+		msg << className << "- Duration: " << duration << ", Aggro Delay: " << aggroDelay;
 
 		return msg.toString();
 	}
 
 private:
 	int duration;
-	bool show;
+	int aggroDelay;
 };
 
 } // namespace leafspace

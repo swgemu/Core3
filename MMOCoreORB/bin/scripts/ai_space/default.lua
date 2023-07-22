@@ -1,41 +1,31 @@
-aggroDefault = {
-	{id="2719762403",	name="SetDefenderFromProspect",	pid="none"}}
-addAiTemplate("aggroDefault", aggroDefault)
-
 attackDefault = {
-	{id="620638771",	name="SequenceSpace",	pid="none"},
-	{id="4063013086",	name="AlwaysFailSpace",	pid="620638771"}}
+	{id="2881823609",	name="SequenceSpace",	pid="none"},
+	{id="2376148965",	name="IfSpace",	pid="2881823609"},
+	{id="1470595374",	name="CheckRefireRate",	pid="2376148965",	args={condition=2000}},
+	{id="533445839",	name="EngageTarget",	pid="2881823609",	args={refireMax=1000.0}}}
 addAiTemplate("attackDefault", attackDefault)
 
 awareDefault = {
-	{id="2528207054",	name="SelectorSpace",	pid="none"},
-	{id="2152617010",	name="LookForTargetSpace",	pid="2528207054"},
+	{id="1214404540",	name="SequenceSpace",	pid="none"},
+	{id="1915611982",	name="NotSpace",	pid="1214404540"},
+	{id="2125777402",	name="IfSpace",	pid="1915611982"},
+	{id="3574561166",	name="CheckMovementState",	pid="2125777402",	args={condition=WATCHING}},
+	{id="2152617010",	name="LookForTargetSpace",	pid="1214404540"},
 	{id="83649144",	name="SequenceSpace",	pid="2152617010"},
-	{id="745742367",	name="CalculateAggroMod",	pid="83649144"},
 	{id="4225492471",	name="IfSpace",	pid="83649144"},
 	{id="2515118288",	name="CheckProspectInRange",	pid="4225492471"},
-	{id="3812255102",	name="AlwaysSucceedSpace",	pid="83649144"},
-	{id="934410611",	name="TreeSocketSpace",	pid="3812255102",	args={slot=LOOKATSPACE}},
-	{id="1564864881",	name="SequenceSpace",	pid="83649144"},
-	{id="1385674649",	name="IfSpace",	pid="1564864881"},
-	{id="1982712854",	name="CheckMovementState",	pid="1385674649",	args={condition=WATCHING}},
-	{id="4198580351",	name="SelectorSpace",	pid="1564864881"},
-	{id="1541649393",	name="IfSpace",	pid="4198580351"},
-	{id="1784206860",	name="CheckAggroDelayPast",	pid="1541649393"},
-	{id="2867430638",	name="TreeSocketSpace",	pid="4198580351",	args={slot=AGGROSPACE}},
-	{id="464125663",	name="SetMovementState",	pid="4198580351",	args={state=FOLLOWING}},
-	{id="3659533500",	name="AlwaysFailSpace",	pid="2528207054"},
-	{id="3683815365",	name="SequenceSpace",	pid="3659533500"},
-	{id="617640316",	name="EraseBlackboard",	pid="3683815365",	args={param="aggroMod"}},
-	{id="1391402118",	name="EraseBlackboard",	pid="3683815365",	args={param="targetProspect"}}}
+	{id="934410611",	name="TreeSocketSpace",	pid="83649144",	args={slot=LOOKATSPACE}}}
 addAiTemplate("awareDefault", awareDefault)
 
 idleDefault = {
 	{id="3154429038",	name="SequenceSpace",	pid="none"},
+	{id="2950938112",	name="NotSpace",	pid="3154429038"},
+	{id="1976821924",	name="IfSpace",	pid="2950938112"},
+	{id="2316913811",	name="CheckMovementState",	pid="1976821924",	args={condition=ATTACKING}},
 	{id="3521391142",	name="NotSpace",	pid="3154429038"},
 	{id="3390840483",	name="IfSpace",	pid="3521391142"},
 	{id="2770349133",	name="CheckHasPatrol",	pid="3390840483"},
-	{id="3954328391",	name="GeneratePatrol",	pid="3154429038",	args={distFromHome=500.0, numPoints=10}}}
+	{id="3954328391",	name="GeneratePatrol",	pid="3154429038",	args={distFromHome=256.0, numPoints=5}}}
 addAiTemplate("idleDefault", idleDefault)
 
 lookDefault = {
@@ -46,8 +36,8 @@ lookDefault = {
 	{id="3742455244",	name="IfSpace",	pid="1015056356"},
 	{id="1948820794",	name="CheckMovementState",	pid="3742455244",	args={condition=PATROLLING}},
 	{id="622023069",	name="SetMovementState",	pid="2349982047",	args={state=WATCHING}},
-	{id="2290190299",	name="AlwaysSucceedSpace",	pid="2349982047"},
-	{id="811185371",	name="SetAlert",	pid="2290190299",	args={duration=5.0}}}
+	{id="1344506751",	name="AlwaysSucceedSpace",	pid="2349982047"},
+	{id="811185371",	name="SetAlert",	pid="1344506751",	args={duration=7.5, aggroDelay=5.0}}}
 addAiTemplate("lookDefault", lookDefault)
 
 moveDefault = {
@@ -60,16 +50,28 @@ addAiTemplate("moveDefault", moveDefault)
 
 rootDefault = {
 	{id="2051740559",	name="SelectorSpace",	pid="none"},
-	{id="195953072",	name="ParallelSelectorSpace",	pid="2051740559"},
-	{id="1752525902",	name="TreeSocketSpace",	pid="195953072",	args={slot=TARGETSPACE}},
-	{id="1729558672",	name="TreeSocketSpace",	pid="195953072",	args={slot=MOVESPACE}},
+	{id="1729558672",	name="TreeSocketSpace",	pid="2051740559",	args={slot=MOVESPACE}},
+	{id="4225713865",	name="SequenceSpace",	pid="2051740559"},
+	{id="2182549780",	name="SelectorSpace",	pid="4225713865"},
+	{id="215111410",	name="IfSpace",	pid="2182549780"},
+	{id="522517531",	name="CheckMovementState",	pid="215111410",	args={condition=ATTACKING}},
+	{id="3422660300",	name="IfSpace",	pid="2182549780"},
+	{id="1375524373",	name="CheckMovementState",	pid="3422660300",	args={condition=WATCHING}},
+	{id="4010272258",	name="TreeSocketSpace",	pid="4225713865",	args={slot=TARGETSPACE}},
+	{id="1764650020",	name="AlwaysSucceedSpace",	pid="4225713865"},
+	{id="1406904607",	name="TreeSocketSpace",	pid="1764650020",	args={slot=ATTACKSPACE}},
 	{id="2499929043",	name="TreeSocketSpace",	pid="2051740559",	args={slot=AWARESPACE}},
 	{id="869798738",	name="TreeSocketSpace",	pid="2051740559",	args={slot=IDLESPACE}}}
 addAiTemplate("rootDefault", rootDefault)
 
 targetDefault = {
-	{id="1083217022",	name="SelectorSpace",	pid="none"},
-	{id="1455589660",	name="AlwaysFailSpace",	pid="1083217022"},
-	{id="3716750796",	name="ExitCombat",	pid="1455589660",	args={clearDefenders=1}}}
+	{id="3784699471",	name="SequenceSpace",	pid="none"},
+	{id="3388907248",	name="IfSpace",	pid="3784699471"},
+	{id="791512445",	name="CheckAggroDelayPast",	pid="3388907248"},
+	{id="1793920952",	name="CalculateAggroMod",	pid="3784699471"},
+	{id="2331460897",	name="IfSpace",	pid="3784699471"},
+	{id="2459130683",	name="CheckProspectAggression",	pid="2331460897"},
+	{id="3308935710",	name="SetDefenderFromProspect",	pid="3784699471"},
+	{id="3792515791",	name="SetMovementState",	pid="3784699471",	args={state=ATTACKING}}}
 addAiTemplate("targetDefault", targetDefault)
 

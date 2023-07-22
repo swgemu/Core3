@@ -19,12 +19,12 @@ template<> bool CheckMovementState::check(ShipAiAgent* agent) const {
 }
 
 template<> bool CheckProspectInRange::check(ShipAiAgent* agent) const {
-	ManagedReference<SceneObject*> target = nullptr;
+	ManagedReference<ShipObject*> targetShip = nullptr;
 
-	if (agent->peekBlackboard("targetProspect"))
-		target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
+	if (agent->peekBlackboard("targetShipProspect"))
+		targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*>>();
 
-	if (target == nullptr)
+	if (targetShip == nullptr)
 		return false;
 
 	float aggroMod = 0.25f;
@@ -34,9 +34,14 @@ template<> bool CheckProspectInRange::check(ShipAiAgent* agent) const {
 
 	float radius = ShipAiAgent::DEFAULTAGGRORADIUS; // TODO: base on template/ship size
 
-	radius = Math::min(512.f, radius * aggroMod);
+	radius = Math::min(ShipAiAgent::DEFAULTAGGRORADIUS, radius * aggroMod);
 
-	return agent->isInRange(target, radius);
+#ifdef DEBUG_SHIP_AI
+	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
+		agent->info(true) << agent->getDisplayedName() << " - CheckProspectInRange -- AggroRadius = " << radius;
+#endif // DEBUG_SHIP_AI
+
+	return agent->isInRange(targetShip, radius);
 }
 
 template<> bool CheckAggroDelayPast::check(ShipAiAgent* agent) const {
@@ -44,7 +49,7 @@ template<> bool CheckAggroDelayPast::check(ShipAiAgent* agent) const {
 }
 
 template<> bool CheckHasFollow::check(ShipAiAgent* agent) const {
-	return agent->getFollowObject() != nullptr;
+	return agent->getFollowShipObject() != nullptr;
 }
 
 template<> bool CheckRetreat::check(ShipAiAgent* agent) const {
@@ -56,10 +61,29 @@ template<> bool CheckRetreat::check(ShipAiAgent* agent) const {
 	if (homeLocation == nullptr)
 		return false;
 
-	SceneObject* target = agent->getFollowObject().get();
+	ShipObject* target = agent->getFollowShipObject().get();
 
 	if (target != nullptr)
 		return !homeLocation->isInRange(target, checkVar);
 
 	return !homeLocation->isInRange(agent, checkVar);
+}
+
+template<> bool CheckProspectAggression::check(ShipAiAgent* agent) const {
+	ManagedReference<ShipObject*> targetShip = nullptr;
+
+	if (agent->peekBlackboard("targetShipProspect"))
+		targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*> >();
+
+	return targetShip != nullptr && agent->isAggressiveTo(targetShip);
+}
+
+template<> bool CheckRefireRate::check(ShipAiAgent* agent) const {
+	if (!agent->peekBlackboard("refireInterval"))
+		return true;
+
+	uint64 timeNow = System::getMiliTime();
+	uint64 lastFire = agent->readBlackboard("refireInterval").get<uint64>() + checkVar;
+
+	return (timeNow - lastFire) < 0;
 }

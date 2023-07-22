@@ -20,6 +20,8 @@ enum CheckTypeSpace {
 	CHECK_AGGRODELAYPAST,
 	CHECK_HASFOLLOW,
 	CHECK_RETREAT,
+	CHECK_PROSPECTAGGRESSION,
+	CHECK_REFIRERATE,
 };
 
 // template class to reduce repeated code. Do this instead of inheritance so we
@@ -87,6 +89,12 @@ template<> bool CheckHasFollow::check(ShipAiAgent* agent) const;
 
 typedef _CheckSpace<int32, CHECK_RETREAT> CheckRetreat;
 template<> bool CheckRetreat::check(ShipAiAgent* agent) const;
+
+typedef _CheckSpace<int32, CHECK_PROSPECTAGGRESSION> CheckProspectAggression;
+template<> bool CheckProspectAggression::check(ShipAiAgent* agent) const;
+
+typedef _CheckSpace<int32, CHECK_REFIRERATE> CheckRefireRate;
+template<> bool CheckRefireRate::check(ShipAiAgent* agent) const;
 
 } // namespace leafspace
 } // namespace btspace
