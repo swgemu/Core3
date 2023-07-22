@@ -422,9 +422,17 @@ TangibleObject* ThreatMap::getHighestThreatAttacker() {
 			continue;
 		}
 
-		ManagedReference<CreatureObject*> selfStrong = cast<CreatureObject*>(self.get().get());
+		ManagedReference<TangibleObject*> selfStrong = cast<TangibleObject*>(self.get().get());
 
-		if (tano->isInRange(selfStrong, 128.f) && tano->isAttackableBy(selfStrong)) {
+		if (selfStrong == nullptr)
+			continue;
+
+		if (selfStrong->isCreatureObject()) {
+			CreatureObject* selfCreo = selfStrong->asCreatureObject();
+
+			if (selfCreo == nullptr || !tano->isInRange(selfCreo, 128.f) || !tano->isAttackableBy(selfCreo))
+				continue;
+
 			if (tano->isCreatureObject()) {
 				CreatureObject* creature = tano->asCreatureObject();
 
@@ -434,6 +442,13 @@ TangibleObject* ThreatMap::getHighestThreatAttacker() {
 			} else {
 				threatMatrix.add(tano, entry);
 			}
+		} else if (selfStrong->isShipObject()) {
+			ShipObject* selfShip = selfStrong->asShipObject();
+
+			if (selfShip == nullptr || !tano->isInRange(selfShip, 512.f) || !tano->isAttackableBy(selfShip))
+				continue;
+
+			threatMatrix.add(selfShip, entry);
 		}
 	}
 
