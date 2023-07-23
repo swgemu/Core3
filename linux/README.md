@@ -21,6 +21,7 @@ export RUN_USER=swgemu
 
 Then run the script:
 ```
+chmod +x ./bootstrap.sh
 ./bootstrap.sh
 ```
 
