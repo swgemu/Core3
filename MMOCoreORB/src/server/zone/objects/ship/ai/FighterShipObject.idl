@@ -1,0 +1,17 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.ai;
+
+import server.zone.objects.ship.ShipObject;
+import server.zone.objects.ship.ai.ShipAiAgent;
+import server.zone.objects.scene.SceneObject;
+import engine.log.Logger;
+
+class FighterShipObject extends ShipAiAgent {
+	public FighterShipObject() {
+		Logger.setLoggingName("FighterShipObject");
+	}
+}

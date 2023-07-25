@@ -6,7 +6,7 @@
 #define NPCCONVERSATIONSTARTCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/ship/SpaceStationObject.h"
+#include "server/zone/objects/ship/ai/SpaceStationObject.h"
 
 class NpcConversationStartCommand : public QueueCommand {
 public:

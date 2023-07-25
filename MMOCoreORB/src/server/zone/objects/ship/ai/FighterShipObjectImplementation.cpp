@@ -3,4 +3,4 @@
 		See file COPYING for copying conditions.
 */
 
-#include "server/zone/objects/ship/FighterShipObject.h"
+#include "server/zone/objects/ship/ai/FighterShipObject.h"
