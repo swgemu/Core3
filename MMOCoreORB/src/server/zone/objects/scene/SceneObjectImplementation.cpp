@@ -41,7 +41,7 @@
 #include "server/zone/objects/scene/components/LuaContainerComponent.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/ship/ShipObject.h"
-#include "server/zone/objects/ship/SpaceStationObject.h"
+#include "server/zone/objects/ship/ai/SpaceStationObject.h"
 #include "server/zone/objects/ship/PobShipObject.h"
 //#include "PositionUpdateTask.h"
 

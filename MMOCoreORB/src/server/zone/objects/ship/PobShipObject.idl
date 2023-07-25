@@ -11,7 +11,7 @@ import server.zone.objects.creature.CreatureObject;
 import system.util.Vector;
 import engine.util.u3d.Vector3;
 
-include server.zone.objects.ship.FighterShipObject;
+include server.zone.objects.ship.ShipObject;
 include templates.SharedObjectTemplate;
 include system.util.VectorMap;
 include server.zone.objects.ship.PlayerLaunchPoints;
@@ -19,7 +19,7 @@ include server.zone.objects.ship.DamageSparkLocations;
 include server.zone.objects.cell.CellObject;
 include server.zone.objects.ship.ShipPermissionList;
 
-class PobShipObject extends FighterShipObject {
+class PobShipObject extends ShipObject {
 	public native void notifyLoadFromDatabase();
 
 	@dereferenced

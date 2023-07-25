@@ -62,9 +62,9 @@ include server.metrics.Metrics;
 include engine.util.JSONSerializationType;
 include server.zone.objects.scene.variables.OrderedTaskExecutioner;
 import server.zone.objects.ship.ShipObject;
-import server.zone.objects.ship.SpaceStationObject;
 import server.zone.objects.ship.PobShipObject;
 import server.zone.objects.ship.ai.ShipAiAgent;
+import server.zone.objects.ship.ai.SpaceStationObject;
 
 @mock
 @json
