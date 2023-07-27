@@ -166,6 +166,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	level = getTemplateLevel();
 
 	planetMapCategory = npcTemplate->getPlanetMapCategory();
+	planetMapSubCategory = npcTemplate->getPlanetMapSubCategory();
 
 	tauntable = npcTemplate->isTauntable();
 

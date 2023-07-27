@@ -4,7 +4,8 @@ chassis_dealer = Creature:new {
 	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
-	mobType = MOB_DROID,
+	mobType = MOB_NPC,
+	planetMapCategory = "space_chassis",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -42,7 +43,7 @@ chassis_dealer = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "chassis_dealer_convotemplate",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = {},

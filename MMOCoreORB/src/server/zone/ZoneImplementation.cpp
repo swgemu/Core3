@@ -610,15 +610,18 @@ bool ZoneImplementation::objectIsValidPlanetaryMapPerformanceLocation(SceneObjec
 	const PlanetMapCategory* planetMapCategory = object->getPlanetMapCategory();
 	if (planetMapCategory != nullptr) {
 		String category = planetMapCategory->getName();
+
 		if (category == "cantina" || category == "hotel") {
 			hasPerformanceLocationCategory = true;
 		}
 	}
 
 	if (!hasPerformanceLocationCategory) {
-		planetMapCategory = object->getPlanetMapSubCategory();
+		const PlanetMapSubCategory* planetMapSubCategory = object->getPlanetMapSubCategory();
+
 		if (planetMapCategory != nullptr) {
-			String subCategory = planetMapCategory->getName();
+			String subCategory = planetMapSubCategory->getName();
+
 			if (subCategory == "guild_theater") {
 				hasPerformanceLocationCategory = true;
 			}

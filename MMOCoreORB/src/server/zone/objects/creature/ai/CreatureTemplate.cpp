@@ -28,6 +28,7 @@ CreatureTemplate::CreatureTemplate() {
 	randomNameTag = false;
 	customName = "";
 	planetMapCategory = 0;
+	planetMapSubCategory = 0;
 	socialGroup = "";
 	faction = "";
 	level = 0;
@@ -95,6 +96,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	randomNameType = templateData->getIntField("randomNameType");
 	randomNameTag = templateData->getBooleanField("randomNameTag");
 	planetMapCategory = String(templateData->getStringField("planetMapCategory").trim()).hashCode();
+	planetMapSubCategory = String(templateData->getStringField("planetMapSubCategory").trim()).hashCode();
 	mobType = templateData->getIntField("mobType");
 
 	customName = templateData->getStringField("customName").trim();

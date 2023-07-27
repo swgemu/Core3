@@ -1,17 +1,16 @@
 /*
- * PlanetMapCategory.h
- *
- *  Created on: Apr 24, 2011
- *      Author: polonel
+ * PlanetMapSubCategory.h
  */
 
-#ifndef PLANETMAPCATEGORY_H_
-#define PLANETMAPCATEGORY_H_
+#ifndef PLANETMAPSUBCATEGORY_H_
+#define PLANETMAPSUBCATEGORY_H_
 
 #include "templates/datatables/DataTableRow.h"
+#include "server/zone/managers/planet/MapLocationType.h"
 
-class PlanetMapCategory : public Object {
+class PlanetMapSubCategory : public Object {
 	String name;
+	String primaryName;
 	int nameCRC;
 	int index;
 
@@ -20,7 +19,7 @@ class PlanetMapCategory : public Object {
 	bool factionVisibleOnly;
 
 public:
-	PlanetMapCategory() {
+	PlanetMapSubCategory() {
 		nameCRC = 0;
 		index = 0;
 
@@ -28,23 +27,23 @@ public:
 		factionVisibleOnly = false;
 	}
 
-	PlanetMapCategory(const PlanetMapCategory& pmc) : Object() {
+	PlanetMapSubCategory(const PlanetMapSubCategory& pmc) : Object() {
 		name = pmc.name;
 		nameCRC = pmc.nameCRC;
-		index =  pmc.index;
+		index = pmc.index;
 
 		activatable = pmc.activatable;
 		faction = pmc.faction;
 		factionVisibleOnly = pmc.factionVisibleOnly;
 	}
 
-	PlanetMapCategory& operator= (const PlanetMapCategory& pmc) {
+	PlanetMapSubCategory& operator=(const PlanetMapSubCategory& pmc) {
 		if (this == &pmc)
 			return *this;
 
 		name = pmc.name;
 		nameCRC = pmc.nameCRC;
-		index =  pmc.index;
+		index = pmc.index;
 
 		activatable = pmc.activatable;
 		faction = pmc.faction;
@@ -53,35 +52,34 @@ public:
 		return *this;
 	}
 
-	inline ~PlanetMapCategory() {
-
+	inline ~PlanetMapSubCategory() {
 	}
 
-	int compareTo(const PlanetMapCategory& pmc) const {
+	int compareTo(const PlanetMapSubCategory& pmc) const {
 		return name.compareTo(pmc.name);
 	}
 
 	void parseFromDataTableRow(const DataTableRow* row) {
 		try {
-			bool primaryCat = false;
-			row->getValue(2, primaryCat);
+			bool subCheck = false;
+			row->getValue(3, subCheck);
 
-			if (!primaryCat)
+			// These should only be sub categories
+			if (!subCheck)
 				return;
 
 			row->getValue(0, name);
 			nameCRC = name.hashCode();
 			row->getValue(1, index);
-			// row->getValue(2, category);
-			// row->getValue(3, subCategory);
+			//row->getValue(2, category);
+			//row->getValue(3, subCategory);
 			row->getValue(4, activatable);
 			row->getValue(5, faction);
 			row->getValue(6, factionVisibleOnly);
 
 		} catch (const Exception& ex) {
-			System::out << "Error parsing PlanetMapCategory: " + ex.getMessage() << endl;
+			System::out << "Error parsing PlanetMapSubCategory: " + ex.getMessage() << endl;
 		}
-
 	}
 
 	inline const String& getName() const {
@@ -107,7 +105,6 @@ public:
 	inline bool isFactionVisibleOnly() const {
 		return factionVisibleOnly;
 	}
-
 };
 
-#endif /* PLANETMAPCATEGORY_H_ */
+#endif /* PLANETMAPSUBCATEGORY_H_ */

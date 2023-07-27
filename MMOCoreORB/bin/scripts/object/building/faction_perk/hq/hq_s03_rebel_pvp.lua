@@ -55,7 +55,8 @@ object_building_faction_perk_hq_hq_s03_rebel_pvp = object_building_faction_perk_
 	constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
 	length = 7,
 	width = 6,
-	planetMapCategory = "rebel_hq",
+	planetMapCategory = "rebel",
+	planetMapSubCategory = "sf_rebel_major_base",
 	alwaysPublic = 1,
 	factionBaseType = 1,
 
