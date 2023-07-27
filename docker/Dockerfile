@@ -63,7 +63,6 @@ RUN set -xe; \
         libboost-all-dev \
         libc6 \
         libc6-dev \
-        libclang-rt-16-dev \
         libcpprest-dev \
         libdb5.3 \
         libdb5.3-dev \
