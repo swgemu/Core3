@@ -78,24 +78,21 @@ public:
 	}
 
 	bool isNoviceEntertainer(CreatureObject* player) const {
-		return (player->hasSkill("social_musician_novice") ||
-				player->hasSkill("social_dancer_novice"));
+		return (player->hasSkill("social_musician_novice") || player->hasSkill("social_dancer_novice"));
 	}
 
 	bool isInMedicalBuilding(CreatureObject* player, BuildingObject* building) const {
-		const PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
-
-		if (pmc == nullptr)
-			pmc = building->getPlanetMapCategory();
+		const PlanetMapCategory* pmc = building->getPlanetMapCategory();
 
 		if (pmc == nullptr)
 			return false;
 
 		String categoryName = pmc->getName();
+
 		if (categoryName == "medicalcenter" || categoryName == "tavern")
 			return true;
 
-		if (categoryName == "imperial_hq" || categoryName == "rebel_hq") {
+		if (categoryName == "imperial" || categoryName == "rebel") {
 			const SharedBuildingObjectTemplate* buildingTemplate = cast<const SharedBuildingObjectTemplate*>(building->getObjectTemplate());
 
 			if (buildingTemplate != nullptr && buildingTemplate->getSkillMod("private_medical_rating") > 0) {
@@ -107,19 +104,17 @@ public:
 	}
 
 	bool isInEntertainingBuilding(CreatureObject* player, BuildingObject* building) const {
-		const PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
-
-		if (pmc == nullptr)
-			pmc = building->getPlanetMapCategory();
+		const PlanetMapCategory* pmc = building->getPlanetMapCategory();
 
 		if (pmc == nullptr)
 			return false;
 
 		String categoryName = pmc->getName();
+
 		if (categoryName == "hotel" || categoryName == "cantina" || categoryName == "theater" || categoryName == "guild_theater" || categoryName == "tavern")
 			return true;
 
-		if (categoryName == "imperial_hq" || categoryName == "rebel_hq") {
+		if (categoryName == "imperial" || categoryName == "rebel") {
 			const SharedBuildingObjectTemplate* buildingTemplate = cast<const SharedBuildingObjectTemplate*>(building->getObjectTemplate());
 
 			if (buildingTemplate != nullptr && buildingTemplate->getSkillMod("private_med_battle_fatigue") > 0) {
