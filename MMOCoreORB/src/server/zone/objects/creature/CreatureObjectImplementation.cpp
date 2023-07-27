@@ -3714,7 +3714,9 @@ float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float ba
 Reference<WeaponObject*> CreatureObjectImplementation::getWeapon() {
 	Reference<WeaponObject*> retWeapon = weapon;
 
-	if (retWeapon == nullptr) {
+	if (isAiAgent()) {
+		retWeapon = asAiAgent()->getCurrentWeapon();
+	} else if (retWeapon == nullptr) {
 		retWeapon = getDefaultWeapon();
 	}
 

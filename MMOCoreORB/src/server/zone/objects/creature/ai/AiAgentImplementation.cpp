@@ -1717,6 +1717,9 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 
 	respawnCounter++;
 
+	if (currentWeapon == nullptr)
+		currentWeapon = defaultWeapon;
+
 	activateAiBehavior();
 }
 
