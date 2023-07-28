@@ -45,14 +45,14 @@ void SpaceCombatManager::broadcastProjectile(ShipObject* ship, const ShipProject
 	}
 }
 
-BasePacket* SpaceCombatManager::getHitEffectMessage(ShipObject* target, const Vector3& collisionPoint, int hitType) const {
+BasePacket* SpaceCombatManager::getHitEffectMessage(const Vector3& collisionPoint, int hitType) const {
 	String cefType	= "clienteffect/combat_ship_hit_" + shipHitTypeToString(hitType) + ".cef";
 	return new PlayClientEffectLoc(cefType, "", collisionPoint.getX(), collisionPoint.getZ(), collisionPoint.getY());
 }
 
 BasePacket* SpaceCombatManager::getOnShipHitMessage(ShipObject* target, const Vector3& collisionPoint, int hitType, float newPercent, float oldPercent) const {
 	if (target->getGameObjectType() != SceneObjectType::SHIPFIGHTER) {
-		return getHitEffectMessage(target, collisionPoint, hitType);
+		return getHitEffectMessage(collisionPoint, hitType);
 	}
 
 	Vector3 localPoint = collisionPoint - target->getPosition();
@@ -63,7 +63,7 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 	auto target = result.getObject().get();
 
 	if (ship == nullptr || target == nullptr || !target->isAttackableBy(ship)) {
-		auto effect = getHitEffectMessage(target, result.getPosition(), ShipHitType::HITARMOR);
+		auto effect = getHitEffectMessage(result.getPosition(), ShipHitType::HITARMOR);
 		ship->broadcastMessage(effect, true);
 		return;
 	}
@@ -72,6 +72,7 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 	Locker tLock(target, ship);
 
 	auto deltaVector = target->getDeltaVector();
+
 	if (deltaVector == nullptr) {
 		return;
 	}
@@ -95,6 +96,14 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 
 	if (damage <= 0.f || damage > 999999.f) {
 		return;
+	}
+
+	if (damage > 1.f && target->isShipAiAgent()) {
+		auto targetThreatMap = target->getThreatMap();
+
+		if (targetThreatMap != nullptr) {
+			targetThreatMap->addDamage(ship, (uint32)damage);
+		}
 	}
 
 	const Vector3& collisionPoint = result.getPosition();
@@ -166,7 +175,7 @@ float SpaceCombatManager::applyShieldDamage(ShipObject* target, const Vector3& c
 		}
 
 		messages.add(getOnShipHitMessage(target, collisionPoint, ShipHitType::HITSHIELD, shieldNew, shieldOld));
-		messages.add(getHitEffectMessage(target, collisionPoint, ShipHitType::HITSHIELD));
+		messages.add(getHitEffectMessage(collisionPoint, ShipHitType::HITSHIELD));
 	}
 
 	return shieldDamage / effect;
@@ -201,7 +210,7 @@ float SpaceCombatManager::applyArmorDamage(ShipObject* target, const Vector3& co
 		target->setComponentArmor(slot, armorMin, nullptr, 2, deltaVector);
 
 		messages.add(getOnShipHitMessage(target, collisionPoint, ShipHitType::HITARMOR, armorNew, armorOld));
-		messages.add(getHitEffectMessage(target, collisionPoint, ShipHitType::HITARMOR));
+		messages.add(getHitEffectMessage(collisionPoint, ShipHitType::HITARMOR));
 	}
 
 	return armorDamage / effect;
@@ -231,7 +240,7 @@ float SpaceCombatManager::applyChassisDamage(ShipObject* target, const Vector3& 
 		target->setCurrentChassisHealth(chassisMin, false, nullptr, deltaVector);
 
 		messages.add(getOnShipHitMessage(target, collisionPoint, ShipHitType::HITCHASSIS, chassisNew, chassisOld));
-		messages.add(getHitEffectMessage(target, collisionPoint, ShipHitType::HITCHASSIS));
+		messages.add(getHitEffectMessage(collisionPoint, ShipHitType::HITCHASSIS));
 	}
 
 	return damage;
@@ -281,14 +290,14 @@ float SpaceCombatManager::applyComponentDamage(ShipObject* target, const Vector3
 		target->setComponentArmor(slot, armorMin, nullptr, 2, deltaVector);
 
 		messages.add(getOnShipHitMessage(target, collisionPoint, ShipHitType::HITARMOR, armorNew, armorOld));
-		messages.add(getHitEffectMessage(target, collisionPoint, ShipHitType::HITARMOR));
+		messages.add(getHitEffectMessage(collisionPoint, ShipHitType::HITARMOR));
 	}
 
 	if (healthNew != healthOld) {
 		target->setComponentHitpoints(slot, healthMin, nullptr, 2, deltaVector);
 
 		messages.add(getOnShipHitMessage(target, collisionPoint, ShipHitType::HITCOMPONENT, healthNew, healthOld));
-		messages.add(getHitEffectMessage(target, collisionPoint, ShipHitType::HITCOMPONENT));
+		messages.add(getHitEffectMessage(collisionPoint, ShipHitType::HITCOMPONENT));
 	}
 
 	if (target->getCurrentHitpointsMap()->get(slot) == 0.f) {

@@ -1,5 +1,6 @@
 #include "ChecksSpace.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
+#include "server/zone/objects/ship/ShipComponentFlag.h"
 
 // full template specializations need to go in cpp so they don't get
 // defined multiple times.
@@ -19,13 +20,15 @@ template<> bool CheckMovementState::check(ShipAiAgent* agent) const {
 }
 
 template<> bool CheckProspectInRange::check(ShipAiAgent* agent) const {
-	ManagedReference<SceneObject*> target = nullptr;
+	ManagedReference<ShipObject*> targetShip = nullptr;
 
-	if (agent->peekBlackboard("targetProspect"))
-		target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
+	if (agent->peekBlackboard("targetShipProspect"))
+		targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*>>();
 
-	if (target == nullptr)
+	if (targetShip == nullptr)
 		return false;
+
+	Locker clock(targetShip, agent);
 
 	float aggroMod = 0.25f;
 
@@ -34,9 +37,14 @@ template<> bool CheckProspectInRange::check(ShipAiAgent* agent) const {
 
 	float radius = ShipAiAgent::DEFAULTAGGRORADIUS; // TODO: base on template/ship size
 
-	radius = Math::min(512.f, radius * aggroMod);
+	radius = Math::min(ShipAiAgent::DEFAULTAGGRORADIUS, radius * aggroMod);
 
-	return agent->isInRange(target, radius);
+#ifdef DEBUG_SHIP_AI
+	if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
+		agent->info(true) << agent->getDisplayedName() << " - CheckProspectInRange -- AggroRadius = " << radius;
+#endif // DEBUG_SHIP_AI
+
+	return agent->isInRange(targetShip, radius);
 }
 
 template<> bool CheckAggroDelayPast::check(ShipAiAgent* agent) const {
@@ -44,7 +52,7 @@ template<> bool CheckAggroDelayPast::check(ShipAiAgent* agent) const {
 }
 
 template<> bool CheckHasFollow::check(ShipAiAgent* agent) const {
-	return agent->getFollowObject() != nullptr;
+	return agent->getFollowShipObject() != nullptr;
 }
 
 template<> bool CheckRetreat::check(ShipAiAgent* agent) const {
@@ -56,10 +64,79 @@ template<> bool CheckRetreat::check(ShipAiAgent* agent) const {
 	if (homeLocation == nullptr)
 		return false;
 
-	SceneObject* target = agent->getFollowObject().get();
-
-	if (target != nullptr)
-		return !homeLocation->isInRange(target, checkVar);
-
 	return !homeLocation->isInRange(agent, checkVar);
+}
+
+template<> bool CheckProspectAggression::check(ShipAiAgent* agent) const {
+	ManagedReference<ShipObject*> targetShip = nullptr;
+
+	if (agent->peekBlackboard("targetShipProspect"))
+		targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*> >();
+
+	if (targetShip == nullptr)
+		return false;
+
+	Locker clock(targetShip, agent);
+
+	return agent->isAggressiveTo(targetShip);
+}
+
+template<> bool CheckRefireRate::check(ShipAiAgent* agent) const {
+	if (!agent->peekBlackboard("refireInterval"))
+		return true;
+
+	uint64 timeNow = System::getMiliTime();
+	uint64 lastFire = agent->readBlackboard("refireInterval").get<uint64>() + (uint64)checkVar;
+	int timeDiff = (int)timeNow - (int)lastFire;
+
+	//agent->info(true) << agent->getDisplayedName() <<  " RefireInterval check time diff: " << timeDiff << " Last Fire: " << lastFire << " Time now: " << timeNow;
+
+	return timeDiff > 0;
+}
+
+template<> bool CheckEvadeDelayPast::check(ShipAiAgent* agent) const {
+	return agent->isEvadeDelayPast();
+}
+
+template<> bool CheckTargetIsValid::check(ShipAiAgent* agent) const {
+	ManagedReference<ShipObject*> targetShip = nullptr;
+
+	if (agent->peekBlackboard("targetShipProspect"))
+		targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*> >();
+
+	if (targetShip == nullptr)
+		return false;
+
+	Locker clock(targetShip, agent);
+
+	// agent->info(true) << agent->getDisplayedName() << " CheckTargetIsValid - Target: " << targetShip->getDisplayedName() << " Chassis Health: " << targetShip->getChassisCurrentHealth();
+
+	return targetShip->getChassisCurrentHealth() > 0.f && targetShip->isAttackableBy(agent);
+}
+
+template<> bool CheckEnginesDisabled::check(ShipAiAgent* agent) const {
+	auto componentOptMap = agent->getComponentOptionsMap();
+
+	if (componentOptMap == nullptr)
+		return false;
+
+	uint32 flags = componentOptMap->get(Components::ENGINE);
+
+	return (flags & ShipComponentFlag::DISABLED) || (flags & ShipComponentFlag::DEMOLISHED);
+}
+
+template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const {
+	ManagedReference<ShipObject*> targetShip = agent->getTargetShipObject();
+
+	if (targetShip == nullptr)
+		return false;
+
+	Locker clocker(targetShip, agent);
+
+	float range = (agent->getEngineMaxSpeed() * 0.5f) + agent->getMaxDistance();
+	float sqrDist = agent->getNextPosition().getWorldPosition().squaredDistanceTo(targetShip->getPosition());
+
+	//agent->info(true) << agent->getDisplayedName() << " Sq Distance to Target = " << sqrDist << " Range Sq: " << (range * range);
+
+	return !agent->isTargetForward() && sqrDist <= (range * range);
 }
