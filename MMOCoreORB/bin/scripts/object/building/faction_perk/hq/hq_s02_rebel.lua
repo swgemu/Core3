@@ -53,6 +53,7 @@ object_building_faction_perk_hq_hq_s02_rebel = object_building_faction_perk_hq_s
 	constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
 	length = 7,
 	width = 6,
+	planetMapCategory = "rebel",
 	containerComponent = "GCWBaseContainerComponent",
 	factionBaseType = 1,
 

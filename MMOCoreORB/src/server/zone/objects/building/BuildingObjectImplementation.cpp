@@ -49,8 +49,7 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	registeredPlayerIdList.removeAll();
 }
 
-void BuildingObjectImplementation::loadTemplateData(
-		SharedObjectTemplate* templateData) {
+void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);
 
 	containerVolumeLimit = 0xFFFFFFFF;
@@ -59,8 +58,7 @@ void BuildingObjectImplementation::loadTemplateData(
 
 	optionsBitmask = 0x00000100;
 
-	SharedBuildingObjectTemplate* buildingData =
-		dynamic_cast<SharedBuildingObjectTemplate*> (templateData);
+	SharedBuildingObjectTemplate* buildingData = dynamic_cast<SharedBuildingObjectTemplate*>(templateData);
 
 	if (buildingData == nullptr)
 		return;
@@ -70,7 +68,7 @@ void BuildingObjectImplementation::loadTemplateData(
 	const PortalLayout* portalLayout = templateData->getPortalLayout();
 
 	if (portalLayout != nullptr)
-		totalCellNumber = portalLayout->getFloorMeshNumber() - 1; //remove the exterior floor
+		totalCellNumber = portalLayout->getFloorMeshNumber() - 1; // remove the exterior floor
 
 	publicStructure = buildingData->isPublicStructure();
 
@@ -1062,19 +1060,17 @@ bool BuildingObjectImplementation::isInPlayerCity() {
 }
 
 bool BuildingObjectImplementation::canPlayerRegisterWithin() {
-	const PlanetMapCategory* pmc = getPlanetMapSubCategory();
-
-	if (pmc == nullptr)
-		pmc = getPlanetMapCategory();
+	const PlanetMapCategory* pmc = getPlanetMapCategory();
 
 	if (pmc == nullptr)
 		return false;
 
 	String categoryName = pmc->getName();
+
 	if (categoryName == "medicalcenter" || categoryName == "hotel" || categoryName == "cantina" || categoryName == "theater" || categoryName == "guild_theater" || categoryName == "tavern")
 		return true;
 
-	if (categoryName == "imperial_hq" || categoryName == "rebel_hq") {
+	if (categoryName == "imperial" || categoryName == "rebel") {
 		SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
 
 		if (buildingTemplate == nullptr) {

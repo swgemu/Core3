@@ -166,6 +166,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	level = getTemplateLevel();
 
 	planetMapCategory = npcTemplate->getPlanetMapCategory();
+	planetMapSubCategory = npcTemplate->getPlanetMapSubCategory();
 
 	tauntable = npcTemplate->isTauntable();
 
@@ -1714,6 +1715,9 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	currentFoundPath = nullptr;
 
 	respawnCounter++;
+
+	if (currentWeapon == nullptr)
+		currentWeapon = defaultWeapon;
 
 	activateAiBehavior();
 }

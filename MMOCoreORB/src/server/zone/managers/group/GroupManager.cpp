@@ -202,6 +202,8 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	group->addMember(player);
 	player->updateGroup(group);
 
+	group->updatePvPStatusNearCreature(player);
+
 	if (player->isPlayerCreature()) {
 		player->sendSystemMessage("@group:joined_self");
 
@@ -331,6 +333,8 @@ void GroupManager::createGroup(CreatureObject* leader, CreatureObject* creature)
 
 	leader->updateGroup(group);
 	creature->updateGroup(group);
+
+	group->updatePvPStatusNearCreature(leader);
 }
 
 void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObject* player) {

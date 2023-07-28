@@ -4,6 +4,8 @@ shamdon_kree = Creature:new {
 	faction = "townsperson",
 	mobType = MOB_NPC,
 	level = 10,
+	planetMapCategory = "trainer",
+	planetMapSubCategory = "trainer_pilot_privateer",
 	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
@@ -34,7 +36,7 @@ shamdon_kree = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = {},

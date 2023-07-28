@@ -21,6 +21,7 @@ export RUN_USER=swgemu
 
 Then run the script:
 ```
+chmod +x ./bootstrap.sh
 ./bootstrap.sh
 ```
 
@@ -35,5 +36,6 @@ To run the server you will need to copy the tre files from a client to the serve
 ### Commands
 
 `buid` - Compile the server
+
 `run` - run the server
 

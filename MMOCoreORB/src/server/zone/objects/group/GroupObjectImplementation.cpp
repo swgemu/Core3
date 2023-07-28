@@ -162,8 +162,6 @@ void GroupObjectImplementation::addMember(CreatureObject* newMember, bool notify
 	// Add to Ship List
 	groupMemberShips.add(newMember->getObjectID(), shipID);
 
-	updatePvPStatusNearCreature(newMember);
-
 	calculateGroupLevel();
 
 	// Send update after group level is recalculated
@@ -414,9 +412,9 @@ void GroupObjectImplementation::disband() {
 					removeGroupModifiers(groupMember);
 			}
 
-			updatePvPStatusNearCreature(groupMember);
-
 			groupMember->updateGroup(nullptr);
+
+			updatePvPStatusNearCreature(groupMember);
 
 		} catch (Exception& e) {
 			System::out << "Exception in GroupObject::disband(Player* player)\n";
