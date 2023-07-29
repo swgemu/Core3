@@ -4367,7 +4367,7 @@ void AiAgentImplementation::destroyAllWeapons() {
 	SceneObject* inventory = getSlottedObject("inventory");
 	ManagedReference<WeaponObject*> currentWeap = getCurrentWeapon();
 
-	if (inventory == nullptr && currentWeap != nullptr) {
+	if (inventory != nullptr && currentWeap != nullptr) {
 		inventory->transferObject(currentWeap, -1, false, true, true);
 
 		ManagedReference<WeaponObject*> defaultWeap = getDefaultWeapon();
@@ -4389,7 +4389,7 @@ void AiAgentImplementation::destroyAllWeapons() {
 
 	ManagedReference<WeaponObject*> secondaryWeap = getSecondaryWeapon();
 
-	if (secondaryWeap) {
+	if (secondaryWeap != nullptr) {
 		Locker slock(secondaryWeap, thisAgent);
 		secondaryWeap->destroyObjectFromWorld(true);
 		setSecondaryWeapon(nullptr);
@@ -4399,7 +4399,7 @@ void AiAgentImplementation::destroyAllWeapons() {
 
 	ManagedReference<WeaponObject*> thrownWeap = getThrownWeapon();
 
-	if (thrownWeap) {
+	if (thrownWeap != nullptr) {
 		Locker tlock(thrownWeap, thisAgent);
 		thrownWeap->destroyObjectFromWorld(true);
 		setThrownWeapon(nullptr);
@@ -4409,7 +4409,7 @@ void AiAgentImplementation::destroyAllWeapons() {
 
 	ManagedReference<WeaponObject*> defaultWeap = getDefaultWeapon();
 
-	if (defaultWeap) {
+	if (defaultWeap != nullptr) {
 		Locker dlock(defaultWeap, thisAgent);
 		defaultWeap->destroyObjectFromWorld(true);
 		setDefaultWeapon(nullptr);
