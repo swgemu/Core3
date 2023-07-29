@@ -234,7 +234,7 @@ bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Crea
 
 	ZoneServer* zoneServer = player->getZoneServer();
 
-	if (zoneServer != nullptr)
+	if (zoneServer == nullptr)
 		return false;
 
 	PlayerManager* playerManager = zoneServer->getPlayerManager();

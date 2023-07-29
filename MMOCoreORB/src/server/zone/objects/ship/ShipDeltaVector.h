@@ -11,6 +11,8 @@ protected:
 	uint64 objectID;
 	uint64 playerID;
 
+	Mutex deltaMutex;
+
 	enum DeltaTypeID : uint32 {
 		None	= 0,
 		Delta1	= 1,
@@ -49,19 +51,20 @@ public:
 	}
 
 	void reset(SceneObject* player = nullptr) {
+		Locker lock(&deltaMutex);
+
 		playerID = player != nullptr ? player->getObjectID() : 0;
 
-		for (int i = 0; i < deltaVector.size(); ++i) {
+		for (int i = deltaVector.size() - 1; i >= 0; --i) {
 			auto message = deltaVector.elementAt(i).getValue();
-			if (message == nullptr) {
-				continue;
+
+			if (message != nullptr) {
+				delete message;
+				message = nullptr;
 			}
 
-			delete message;
-			message = nullptr;
+			deltaVector.remove(i);
 		}
-
-		deltaVector.removeAll();
 	}
 
 	DeltaMessage* getMessage(uint32 deltaID) {

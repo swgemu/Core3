@@ -809,7 +809,7 @@ float ShipAiAgentImplementation::getMinThrottle() {
 
 float ShipAiAgentImplementation::qInvSqrt(float x) {
 	float xHalf = 0.5f * x;
-	int32_t i = *reinterpret_cast<int32_t*>(&x);
+	int i = *reinterpret_cast<int32_t*>(&x);
 
 	i = 1597463007 - (i >> 1);
 	x = *reinterpret_cast<float*>(&i);
