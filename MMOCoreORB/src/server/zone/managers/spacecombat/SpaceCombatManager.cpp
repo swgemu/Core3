@@ -104,6 +104,8 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 		if (targetThreatMap != nullptr) {
 			targetThreatMap->addDamage(ship, (uint32)damage);
 		}
+
+		target->updateLastDamageReceived();
 	}
 
 	const Vector3& collisionPoint = result.getPosition();

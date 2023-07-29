@@ -4,7 +4,7 @@ attackDefault = {
 	{id="445019167",	name="IfSpace",	pid="2870874038"},
 	{id="830690666",	name="CheckEvadeChance",	pid="445019167",	args={chance=10}},
 	{id="2209712730",	name="SetMovementState",	pid="2870874038",	args={state=EVADING}},
-	{id="1083156400",	name="Evade",	pid="2870874038",	args={evadeDelay=7500}},
+	{id="1083156400",	name="Evade",	pid="2870874038",	args={evadeDelay=1500}},
 	{id="2274822948",	name="AlwaysSucceedSpace",	pid="682767326"},
 	{id="420201148",	name="SequenceSpace",	pid="2274822948"},
 	{id="2376148965",	name="IfSpace",	pid="420201148"},
@@ -31,7 +31,7 @@ evadeDefault = {
 	{id="2649809160",	name="CheckMovementState",	pid="4002815204",	args={condition=EVADING}},
 	{id="721046627",	name="SequenceSpace",	pid="2602567462"},
 	{id="959847675",	name="IfSpace",	pid="721046627"},
-	{id="2856197994",	name="CheckEvadeDelayPast",	pid="959847675"},
+	{id="1108311886",	name="CheckStopEvading",	pid="959847675"},
 	{id="2242555820",	name="SetMovementState",	pid="721046627",	args={state=ATTACKING}}}
 addAiTemplate("evadeDefault", evadeDefault)
 

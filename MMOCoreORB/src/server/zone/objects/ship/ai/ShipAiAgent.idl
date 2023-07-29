@@ -330,8 +330,6 @@ class ShipAiAgent extends ShipObject {
 		return getMovementState() == FLEEING;
 	}
 
-	public native float getPointIntersection(@dereferenced Vector3 direction, @dereferenced Vector3 difference, float radius, float distance);
-
 	/**
 	 * Sets the active defender
 	 * @pre { this object is locked }
@@ -576,4 +574,8 @@ class ShipAiAgent extends ShipObject {
 	public native void sendDebugMessage();
 
 	public native void sendDebugPath();
+
+	public float getCurrentSpeed() {
+		return currentSpeed;
+	}
 }

@@ -473,44 +473,59 @@ void ShipAiAgentImplementation::clearRunningChain() {
 */
 
 float ShipAiAgentImplementation::getMaxDistance() {
-	if (isRetreating() || isFleeing())
-		return 10.f;
-
 	ManagedReference<ShipObject*> followShip = nullptr;
 	unsigned int stateCopy = getMovementState();
+	float baseDist = 50.f;
 
 	// info(true) << getDisplayedName() << " - ID: " << getObjectID() << " - getmaxDistance - stateCopy: " << stateCopy;
 
 	switch (stateCopy) {
 	case ShipAiAgent::OBLIVIOUS:
+		break;
 	case ShipAiAgent::WATCHING:
+		break;
 	case ShipAiAgent::FOLLOWING: {
-		float baseDist = 50.f;
 		followShip = getFollowShipObject().get();
 
-		return 50.f;
+		if (followShip != nullptr) {
+			baseDist += followShip->getBoundingRadius();
+		}
+
+		break;
 	}
 	case ShipAiAgent::PATROLLING:
-		return 50.f;
+		break;
 	case ShipAiAgent::ATTACKING: {
-		float baseDist = 50.f;
 		followShip = getTargetShipObject().get();
 
 		if (followShip != nullptr) {
-			baseDist += (getBoundingRadius() + followShip->getBoundingRadius());
+			baseDist += followShip->getBoundingRadius();
 		}
 
-		return baseDist;
+		break;
 	}
 	case ShipAiAgent::FLEEING:
+		baseDist = 20.f;
+		break;
 	case ShipAiAgent::LEASHING:
+		baseDist = 20.f;
+		break;
 	case ShipAiAgent::EVADING:
-		return 20.0f;
+		baseDist = 20.0f;
+		break;
 	case ShipAiAgent::PATHING_HOME:
+		baseDist = 20.f;
+		break;
 	case ShipAiAgent::FOLLOW_FORMATION:
+		baseDist = 20.f;
+		break;
 	default:
-		return 40.0f;
+		break;
 	}
+
+	baseDist += (currentSpeed * 0.5) + getBoundingRadius();
+
+	return baseDist;
 }
 
 void ShipAiAgentImplementation::setMovementState(int state) {
@@ -534,16 +549,7 @@ SpacePatrolPoint ShipAiAgentImplementation::getNextPosition() {
 	Locker tLock(&targetMutex);
 
 	if (patrolPoints.size() == 0) {
-		patrolPoints.add(getPosition());
-	}
-
-	if (patrolPoints.size() > 1) {
-		const auto& position = patrolPoints.get(0).getWorldPosition();
-		float range = getEngineMaxSpeed() * 0.5f;
-
-		if (isInRangePosition(position, range)) {
-			patrolPoints.remove(0);
-		}
+		return getPosition();
 	}
 
 	return patrolPoints.get(0);
@@ -552,7 +558,7 @@ SpacePatrolPoint ShipAiAgentImplementation::getNextPosition() {
 SpacePatrolPoint ShipAiAgentImplementation::getFinalPosition() {
 	Locker tLock(&targetMutex);
 
-	return patrolPoints.size() > 1 ? patrolPoints.get(patrolPoints.size() -1) : getNextPosition();
+	return patrolPoints.size() > 1 ? patrolPoints.get(patrolPoints.size() - 1) : getNextPosition();
 }
 
 bool ShipAiAgentImplementation::isInRangePosition(const Vector3& position, float radius) {
@@ -573,7 +579,7 @@ SpacePatrolPoint ShipAiAgentImplementation::getNextAttackPosition(ShipObject* ta
 	const Vector3& targetPosition = targetShip->getPosition();
 	const Vector3& targetPrevious = targetShip->getPreviousPosition();
 
-	Vector3 deltaT = (targetPosition - targetPrevious) + (isTargetForward() ? 5.f : -5.f);
+	Vector3 deltaT = (targetPosition - targetPrevious) * (isTargetForward() ? 5.f : -5.f);
 	SpacePatrolPoint nextPoint = deltaT + targetPosition;
 
 	return nextPoint;
@@ -643,10 +649,9 @@ int ShipAiAgentImplementation::setDestination() {
 		}
 
 		if (patrolPoints.size() <= 1) {
-			const Vector3& finalPosition = getFinalPosition().getWorldPosition();
-			float range = getEngineMaxSpeed() * 0.5f;
+			const SpacePatrolPoint finalPosition = getFinalPosition();
 
-			if (isInRangePosition(finalPosition, range)) {
+			if (finalPosition.isReached()) {
 				clearPatrolPoints();
 			}
 		}
@@ -673,7 +678,7 @@ int ShipAiAgentImplementation::setDestination() {
 	case ShipAiAgent::LEASHING:{
 		clearPatrolPoints();
 
-		if (!homeLocation.isInRange(asShipAiAgent(), 50.0f)) {
+		if (!homeLocation.isInRange(asShipAiAgent(), getMaxDistance())) {
 			homeLocation.setReached(false);
 
 			patrolPoints.add(homeLocation);
@@ -687,15 +692,25 @@ int ShipAiAgentImplementation::setDestination() {
 		break;
 	}
 	case ShipAiAgent::EVADING: {
-		if (patrolPoints.size() <= 1) {
-			const Vector3& finalPosition = getFinalPosition().getWorldPosition();
-			float range = getEngineMaxSpeed() * 0.5f;
+		// We have no evade point, set one
+		if (getPatrolPointSize() == 0) {
+			SpacePatrolPoint evadePoint = getNextEvadePosition();
+			evadePoint.setEvadePoint(true);
 
-			if (isInRangePosition(finalPosition, range)) {
-				clearPatrolPoints();
+			patrolPoints.add(evadePoint);
+			break;
+		}
 
-				patrolPoints.add(getNextEvadePosition());
-			}
+		// we have at least one patrol point, if it is not and evade point, clear all points and set one
+		const SpacePatrolPoint finalPoint = getFinalPosition();
+
+		if (!finalPoint.isEvadePoint()) {
+			clearPatrolPoints();
+
+			SpacePatrolPoint evadePoint = getNextEvadePosition();
+			evadePoint.setEvadePoint(true);
+
+			patrolPoints.add(evadePoint);
 		}
 
 		break;
@@ -933,8 +948,7 @@ void ShipAiAgentImplementation::setNextPosition() {
 	nextStepPosition = thisMove;
 
 #ifdef DEBUG_FINDNEXTPOSITION
-	if (getFaction() == Factions::FACTIONREBEL)
-		info(true) << getDisplayedName() << " - setNextPosition set to: " << thisMove.toString();
+	info(true) << getDisplayedName() << " - setNextPosition set to: " << thisMove.toString();
 #endif
 }
 
@@ -945,24 +959,14 @@ bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
 #endif // DEBUG_SHIP_AI
 
 #ifdef DEBUG_FINDNEXTPOSITION
-	if (getFaction() == Factions::FACTIONREBEL)
-		info(true) << getDisplayedName() << " ----- findNextPosition -- Start -----";
+	info(true) << getDisplayedName() << " ----- findNextPosition -- Start -----";
 #endif
 
 	Locker locker(&targetMutex);
 
 	if (getPatrolPointSize() <= 0) {
-#ifdef DEBUG_FINDNEXTPOSITION
-		if (getFaction() == Factions::FACTIONREBEL)
-			info(true) << getDisplayedName() << " NO PATROL POINTS!";
-#endif
 		return false;
 	}
-
-	SpacePatrolPoint endMovementPosition = getNextPosition();
-
-	Vector3 currentPosition = getWorldPosition();
-	Vector3 nextPosition = endMovementPosition.getWorldPosition();
 
 	// Set TurnRate
 	setTurnRate();
@@ -997,14 +1001,21 @@ bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
 
 	broadcastTransform(nextMovementPosition);
 
+	// Remove Point
+	SpacePatrolPoint finalPosition = getFinalPosition();
+	float maxDist = getMaxDistance();
+
+	if (isInRangePosition(finalPosition.getWorldPosition(), getMaxDistance())) {
+		patrolPoints.remove(0);
+	}
+
 #ifdef DEBUG_SHIP_AI
 	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
 		info("findNextPosition - complete returning true", true);
 #endif // DEBUG_SHIP_AI
 
 #ifdef DEBUG_FINDNEXTPOSITION
-	if (getFaction() == Factions::FACTIONREBEL)
-		info(true) << getDisplayedName() << " ------ findNextPosition -- End ------ Next Position: " << nextMovementPosition.toString();
+	info(true) << getDisplayedName() << " ------ findNextPosition -- End ------ Next Position: " << nextMovementPosition.toString();
 #endif
 
 	return true;
@@ -1138,26 +1149,6 @@ void ShipAiAgentImplementation::broadcastTransform(const Vector3& position) {
 	Combat
 
 */
-
-float ShipAiAgentImplementation::getPointIntersection(Vector3& direction, Vector3& difference, float radius, float distance) {
-	float dotProduct = difference.dotProduct(direction);
-	float sqrDistance = distance * distance;
-	float sqrRadius = radius * radius;
-
-	if (dotProduct < -sqrRadius || dotProduct > (sqrRadius + sqrDistance)) {
-		return FLT_MAX;
-	}
-
-	float intersection = dotProduct >= sqrDistance ? 1.f : dotProduct > 0.f ? dotProduct / sqrDistance : 0.f;
-	Vector3 position = intersection >= 1.f ? direction : intersection > 0.f ? direction * intersection : Vector3::ZERO;
-
-	float sqrDifference = difference.squaredDistanceTo(position);
-	if (sqrDifference > sqrRadius) {
-		return FLT_MAX;
-	}
-
-	return intersection;
-}
 
 void ShipAiAgentImplementation::setDefender(ShipObject* defender) {
 	if (defender == nullptr)

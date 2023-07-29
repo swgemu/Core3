@@ -100,8 +100,8 @@ template<> bool CheckProspectAggression::check(ShipAiAgent* agent) const;
 typedef _CheckSpace<int32, CHECK_REFIRERATE> CheckRefireRate;
 template<> bool CheckRefireRate::check(ShipAiAgent* agent) const;
 
-typedef _CheckSpace<int32, CHECK_EVADEDELAYPAST> CheckEvadeDelayPast;
-template<> bool CheckEvadeDelayPast::check(ShipAiAgent* agent) const;
+typedef _CheckSpace<int32, CHECK_EVADEDELAYPAST> CheckStopEvading;
+template<> bool CheckStopEvading::check(ShipAiAgent* agent) const;
 
 typedef _CheckSpace<int32, CHECK_CHECKTARGETISVALID> CheckTargetIsValid;
 template<> bool CheckTargetIsValid::check(ShipAiAgent* agent) const;

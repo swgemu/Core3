@@ -7,6 +7,7 @@
 #include "server/zone/SpaceZone.h"
 #include "templates/faction/Factions.h"
 #include "server/zone/managers/spacecombat/SpaceCombatManager.h"
+#include "server/zone/managers/spacecollision/SpaceCollisionManager.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 namespace server {
@@ -273,11 +274,11 @@ public:
 		Vector3 currentDirectionVec = agent->getCurrentDirectionVector();
 
 		Vector3 rayStart = currentPosition;
-		Vector3 rayEnd = (currentDirectionVec * 500.f) + currentPosition;
+		Vector3 rayEnd = (currentDirectionVec * 1500.f) + currentPosition;
 		Vector3 direction = rayEnd - rayStart;
 
 		Vector3 difference = targetPosition - rayStart;
-		float collisionDistance = agent->getPointIntersection(direction, difference, targetShip->getBoundingRadius() * 4.f, 500);
+		float collisionDistance = SpaceCollisionManager::getPointIntersection(direction, difference, targetShip->getBoundingRadius() * 5.f, 1500.f);
 
 		if (collisionDistance == FLT_MAX) {
 			return FAILURE;

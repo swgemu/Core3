@@ -94,8 +94,28 @@ template<> bool CheckRefireRate::check(ShipAiAgent* agent) const {
 	return timeDiff > 0;
 }
 
-template<> bool CheckEvadeDelayPast::check(ShipAiAgent* agent) const {
-	return agent->isEvadeDelayPast();
+template<> bool CheckStopEvading::check(ShipAiAgent* agent) const {
+	int pointSize = agent->getPatrolPointSize();
+
+	// No evade points set or agents engines are disabled
+	if (pointSize <= 0 || (agent->getCurrentSpeed() == 0.f))
+		return true;
+
+	ManagedReference<ShipObject*> targetShip = agent->getTargetShipObject();
+
+	if (targetShip != nullptr && targetShip->isShipAiAgent()) {
+		Locker clocker(targetShip, agent);
+
+		ShipAiAgent* targetAgent = targetShip->asShipAiAgent();
+
+		// Target Agent is already evading, lets not do it at the same time;
+		if (targetAgent != nullptr && targetAgent->getMovementState() == ShipAiAgent::EVADING)
+			return true;
+	}
+
+	SpacePatrolPoint evadePoint = agent->getFinalPosition();
+
+	return evadePoint.isEvadePoint() && agent->isInRangePosition(evadePoint.getWorldPosition(), agent->getMaxDistance());
 }
 
 template<> bool CheckTargetIsValid::check(ShipAiAgent* agent) const {
@@ -126,6 +146,14 @@ template<> bool CheckEnginesDisabled::check(ShipAiAgent* agent) const {
 }
 
 template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const {
+	// Agent engines are disabled, no evading
+	if (agent->getCurrentSpeed() == 0.f)
+		return false;
+
+	// Don't immediately evade again
+	if (!agent->isEvadeDelayPast())
+		return false;
+
 	ManagedReference<ShipObject*> targetShip = agent->getTargetShipObject();
 
 	if (targetShip == nullptr)
@@ -133,10 +161,19 @@ template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const {
 
 	Locker clocker(targetShip, agent);
 
-	float range = (agent->getEngineMaxSpeed() * 0.5f) + agent->getMaxDistance();
+	if (targetShip->isShipAiAgent()) {
+		ShipAiAgent* targetAgent = targetShip->asShipAiAgent();
+
+		// Target Agent is already evading, lets not do it at the same time;
+		if (targetAgent != nullptr && targetAgent->getMovementState() == ShipAiAgent::EVADING)
+			return false;
+	}
+
+	float range = agent->getMaxDistance();
 	float sqrDist = agent->getNextPosition().getWorldPosition().squaredDistanceTo(targetShip->getPosition());
+	uint64 timeNow = System::getMiliTime();
 
-	//agent->info(true) << agent->getDisplayedName() << " Sq Distance to Target = " << sqrDist << " Range Sq: " << (range * range);
+	// agent->info(true) << agent->getDisplayedName() << " Sq Distance to Target = " << sqrDist << " Range Sq: " << (range * range);
 
-	return !agent->isTargetForward() && sqrDist <= (range * range);
+	return sqrDist <= (range * range);
 }

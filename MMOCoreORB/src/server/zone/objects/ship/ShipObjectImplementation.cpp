@@ -1039,3 +1039,11 @@ float ShipObjectImplementation::getComponentCondition(uint32 slot) {
 
 	return healthMin / healthMax;
 }
+
+void ShipObjectImplementation::updateLastDamageReceived() {
+	lastDamageReceived.updateToCurrentTime();
+}
+
+uint64 ShipObjectImplementation::getLastDamageReceivedMili() {
+	return lastDamageReceived.getMiliTime();
+}

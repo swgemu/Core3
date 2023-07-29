@@ -12,6 +12,8 @@ public:
 
 	static float getProjectileCollision(ShipObject* ship, const ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<ShipObject*>>& targetVectorCopy);
 
+	static float getPointIntersection(const Vector3& rayStart, const Vector3& rayEnd, float radius, float distance);
+
 private:
 	static float getShipCollision(ShipObject* target, const ShipCollisionData* data, const ShipProjectile* projectile, SpaceCollisionResult& result);
 
@@ -22,8 +24,6 @@ private:
 	static float getChassisAppearanceCollision(ShipObject* target, const ShipCollisionData* data, const ShipProjectile* projectile, SpaceCollisionResult& result);
 
 	static float getComponentHardpointCollision(ShipObject* target, const ShipCollisionData* data, const ShipProjectile* projectile, SpaceCollisionResult& result);
-
-	static float getPointIntersection(const Vector3& rayStart, const Vector3& rayEnd, float radius, float distance);
 
 	static float getSphereIntersection(const Vector3& rayStart, const Vector3& rayEnd, const Sphere& targetPosition, float radius, float distance);
 

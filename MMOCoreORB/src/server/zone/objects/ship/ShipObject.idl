@@ -73,6 +73,9 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected Time hyperspaceTime;
 
+	@dereferenced
+	protected transient Time lastDamageReceived;
+
 	protected boolean hasWings;
 
 	@dereferenced
@@ -1517,6 +1520,11 @@ class ShipObject extends TangibleObject {
 	public float getBoundingRadius() {
 		return boundingRadius;
 	}
+
+	@preLocked
+	public native void updateLastDamageReceived();
+
+	public native unsigned long getLastDamageReceivedMili();
 
 	public native float getComponentCondition(unsigned int slot);
 }

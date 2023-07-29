@@ -269,7 +269,7 @@ private:
 		_REGISTERSPACELEAF(CheckHasFollow);
 		_REGISTERSPACELEAF(CheckProspectAggression);
 		_REGISTERSPACELEAF(CheckRefireRate);
-		_REGISTERSPACELEAF(CheckEvadeDelayPast);
+		_REGISTERSPACELEAF(CheckStopEvading);
 		_REGISTERSPACELEAF(CheckTargetIsValid);
 		_REGISTERSPACELEAF(CheckEnginesDisabled);
 		_REGISTERSPACELEAF(CheckEvadeChance);

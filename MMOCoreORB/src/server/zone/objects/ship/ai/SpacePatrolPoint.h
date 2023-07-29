@@ -17,6 +17,7 @@ class SpacePatrolPoint : public Serializable {
 	WorldCoordinates position;
 
 	bool reached;
+	bool evadePoint;
 
 	SerializableTime estimatedTimeOfArrival;
 
@@ -25,12 +26,14 @@ class SpacePatrolPoint : public Serializable {
 public:
 	SpacePatrolPoint() {
 		reached = true;
+		evadePoint = false;
 
 		addSerializableVariables();
 	}
 
 	SpacePatrolPoint(const Vector3& pos) : position(pos, nullptr) {
 		reached = false;
+		evadePoint = false;
 
 		addSerializableVariables();
 	}
@@ -39,14 +42,13 @@ public:
 		position = point.position;
 		direction = point.direction;
 		reached = point.reached;
+		evadePoint = point.evadePoint;
 
 		addSerializableVariables();
 	}
 
 #ifdef CXX11_COMPILER
-	SpacePatrolPoint(SpacePatrolPoint&& point) : Object(), Serializable(),
-			position(std::move(point.position)), reached(point.reached), estimatedTimeOfArrival(point.estimatedTimeOfArrival) {
-
+	SpacePatrolPoint(SpacePatrolPoint&& point) : Object(), Serializable(), position(std::move(point.position)), reached(point.reached), evadePoint(point.evadePoint), estimatedTimeOfArrival(point.estimatedTimeOfArrival) {
 		addSerializableVariables();
 	}
 #endif
@@ -57,6 +59,7 @@ public:
 
 		position = p.position;
 		reached = p.reached;
+		evadePoint = p.evadePoint;
 		direction = p.direction;
 		estimatedTimeOfArrival = p.estimatedTimeOfArrival;
 
@@ -70,6 +73,7 @@ public:
 
 		position = std::move(p.position);
 		reached = p.reached;
+		evadePoint = p.evadePoint;
 		direction = p.direction;
 		estimatedTimeOfArrival = p.estimatedTimeOfArrival;
 
@@ -80,6 +84,7 @@ public:
 	inline void addSerializableVariables() {
 		addSerializableVariable("position", &position);
 		addSerializableVariable("reached", &reached);
+		addSerializableVariable("evadePoint", &evadePoint);
 		addSerializableVariable("direction", &direction);
 		addSerializableVariable("estimatedTimeOfArrival", &estimatedTimeOfArrival);
 	}
@@ -87,6 +92,7 @@ public:
 	friend void to_json(nlohmann::json& j, const SpacePatrolPoint& p) {
 		j["position"] = p.position;
 		j["reached"] = p.reached;
+		j["evadePoint"] = p.evadePoint;
 		j["direction"] = p.direction;
 		j["estimatedTimeOfArrival"] = p.estimatedTimeOfArrival;
 	}
@@ -138,6 +144,10 @@ public:
 		return reached;
 	}
 
+	inline bool isEvadePoint() const {
+		return evadePoint;
+	}
+
 	inline bool isPastTimeOfArrival() {
 		return estimatedTimeOfArrival.isPast() || estimatedTimeOfArrival.isPresent();
 	}
@@ -171,6 +181,10 @@ public:
 		reached = value;
 	}
 
+	inline void setEvadePoint(bool value) {
+		evadePoint = value;
+	}
+
 	inline void addEstimatedTimeOfArrival(uint32 mili) {
 		estimatedTimeOfArrival.updateToCurrentTime();
 		estimatedTimeOfArrival.addMiliTime(mili);
@@ -180,7 +194,9 @@ public:
 	 * Returns the string representation of the vector in (x, y, z) format plus the cellID.
 	 */
 	inline String toString() const {
-		return position.toString();
+		StringBuffer msg;
+		msg << position.toString() << " isReached: " << (reached ? "true" : "false") << " isEvadePoint: " << (evadePoint ? "true" : "false");
+		return msg.toString();
 	}
 };
 
