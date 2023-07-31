@@ -149,6 +149,7 @@ void CreatureObjectImplementation::initializeMembers() {
 	moodID = 0;
 	performanceStartTime = 0;
 	performanceType = 0;
+	tradeTargetID = 0;
 
 	optionsBitmask = 0x80;
 

@@ -12,16 +12,11 @@
 #include "server/zone/managers/player/PlayerManager.h"
 
 class AbortTradeMessageCallback : public MessageCallback {
-
-
 public:
-	AbortTradeMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
-
+	AbortTradeMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) : MessageCallback(client, server) {
 	}
 
 	void parse(Message* message) {
-
 	}
 
 	void run() {
@@ -30,11 +25,20 @@ public:
 		if (player == nullptr)
 			return;
 
-		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-		playerManager->handleAbortTradeMessage(player);
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return;
+
+		auto playerMan = zoneServer->getPlayerManager();
+
+		if (playerMan == nullptr)
+			return;
+
+		Locker lock(player);
+
+		playerMan->handleAbortTradeMessage(player);
 	}
-
 };
-
 
 #endif /* ABORTTRADEMESSAGECALLBACK_H_ */
