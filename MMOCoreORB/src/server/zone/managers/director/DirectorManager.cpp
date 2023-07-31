@@ -648,6 +648,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("SCANNING_FOR_CONTRABAND", CreatureFlag::SCANNING_FOR_CONTRABAND);
 	luaEngine->setGlobalInt("IGNORE_FACTION_STANDING", CreatureFlag::IGNORE_FACTION_STANDING);
 
+	luaEngine->setGlobalInt("INSURED", OptionBitmask::INSURED);
 	luaEngine->setGlobalInt("CONVERSABLE", OptionBitmask::CONVERSE);
 	luaEngine->setGlobalInt("AIENABLED", OptionBitmask::AIENABLED);
 	luaEngine->setGlobalInt("INVULNERABLE", OptionBitmask::INVULNERABLE);

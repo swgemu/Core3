@@ -1476,6 +1476,7 @@ function HeroOfTatooineScreenPlay:giveMissingMarks(pPlayer)
 
 		if (pMark ~= nil) then
 			CreatureObject(pPlayer):removeScreenPlayState(16, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+			TangibleObject(pMark):setOptionBit(INSURED)
 		else
 			return false
 		end
