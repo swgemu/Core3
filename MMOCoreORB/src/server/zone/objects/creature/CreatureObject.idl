@@ -53,9 +53,9 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected transient WeakReference owner;
 
-    	protected CreditObject creditObject;
+	protected CreditObject creditObject;
 
-    	// deprectated
+	// deprectated
 	protected int bankCredits;
 	protected int cashCredits;
 
@@ -160,6 +160,7 @@ class CreatureObject extends TangibleObject {
 
 	@dereferenced
 	protected BuffList creatureBuffs;
+
 	@dereferenced
 	protected DamageOverTimeList damageOverTimeList;
 
@@ -219,6 +220,8 @@ class CreatureObject extends TangibleObject {
 	public static transient float DEFAULTRUNSPEED;
 
 	public static final unsigned long DEAD_TOO_LONG = 1800000; //30 minutes - How long can someone be dead and still be resuscitated in Miliseconds
+
+	public transient unsigned long tradeTargetID;
 
 	/**
 	 * CreatureObject constructor, used to initialized the object
@@ -2305,4 +2308,13 @@ class CreatureObject extends TangibleObject {
 
 	@local
 	public native Instrument getPlayableInstrument();
+
+	@preLocked
+	public void setTradeTargetID(unsigned long playerID) {
+		tradeTargetID = playerID;
+	}
+
+	public unsigned long getTradeTargetID() {
+		return tradeTargetID;
+	}
 }
