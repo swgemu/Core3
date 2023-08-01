@@ -1363,6 +1363,10 @@ class ShipObject extends TangibleObject {
 		return pilotChair;
 	}
 
+	public native void installAmmo(CreatureObject owner, SceneObject component, int slot, boolean notifyClient = false);
+
+	public native void uninstallAmmo(CreatureObject owner, int slot, boolean notifyClient = false);
+
 	public native void install(CreatureObject owner, SceneObject component, int slot, boolean notifyClient = false);
 	public native void uninstall(CreatureObject owner, int slot, boolean notifyClient);
 

@@ -34,6 +34,8 @@ void ShipManager::initialize() {
 	loadShipWeaponData();
 	loadHyperspaceLocations();
 	loadShipAppearanceData();
+	loadShipMissileData();
+	loadShipCountermeasureData();
 }
 
 void ShipManager::loadHyperspaceLocations() {
@@ -181,6 +183,78 @@ void ShipManager::loadShipAppearanceData() {
 	delete iffStream;
 
 	info(true) << "Ship Appearance Data Loading Complete - Total: " << shipAppearanceData.size();
+}
+
+void ShipManager::loadShipMissileData() {
+	info(true) << "Loading Ship Missile Data";
+
+	IffStream* iffStream = DataArchiveStore::instance()->openIffFile("datatables/space/missiles.iff");
+
+	if (iffStream == nullptr) {
+		info(true) << "datatables/space/missiles.iff could not be found.";
+		return;
+	}
+
+	try {
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+		if (row == nullptr || row->getCellsSize() == 0) {
+			continue;
+		}
+
+		Reference<ShipMissileData*> data = new ShipMissileData();
+		data->readObject(row);
+
+		missileData.put(data->getMissileType(), data);
+	}
+
+	} catch (Exception& e) {
+		e.printStackTrace();
+	}
+
+	delete iffStream;
+
+	info(true) << "Ship Missile Data Loading Complete - Total: " << missileData.size();
+}
+
+void ShipManager::loadShipCountermeasureData() {
+	info(true) << "Loading Ship Countermeasure Data";
+
+	IffStream* iffStream = DataArchiveStore::instance()->openIffFile("datatables/space/countermeasures.iff");
+
+	if (iffStream == nullptr) {
+		info(true) << "datatables/space/countermeasures.iff could not be found.";
+		return;
+	}
+
+	try {
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+		if (row == nullptr || row->getCellsSize() == 0) {
+			continue;
+		}
+
+		Reference<ShipCountermeasureData*> data = new ShipCountermeasureData();
+		data->readObject(row);
+
+		countermeasureData.put(data->getCountermeasureType(), data);
+	}
+
+	} catch (Exception& e) {
+		e.printStackTrace();
+	}
+
+	delete iffStream;
+
+	info(true) << "Ship Countermeasure Data Loading Complete - Total: " << countermeasureData.size();
 }
 
 void ShipManager::loadShipComponentObjects(ShipObject* ship) {

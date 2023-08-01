@@ -16,6 +16,8 @@
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipAppearanceData.h"
 #include "server/zone/objects/ship/ShipCollisionData.h"
+#include "server/zone/objects/ship/ShipMissileData.h"
+#include "server/zone/objects/ship/ShipCountermeasureData.h"
 
 class ShipManager : public Singleton<ShipManager>, public Object, public Logger {
 protected:
@@ -27,6 +29,9 @@ protected:
 	HashTable<String, Reference<ShipCollisionData*>> shipCollisionData;
 	HashTable<String, Reference<ShipChassisData*>> chassisData;
 
+	HashTable<uint32, Reference<ShipMissileData*>> missileData;
+	HashTable<uint32, Reference<ShipCountermeasureData*>> countermeasureData;
+
 	VectorMap<String, Vector3> hyperspaceLocations;
 	VectorMap<String, String> hyperspaceZones;
 
@@ -36,6 +41,8 @@ protected:
 	void loadShipChassisData();
 	void loadHyperspaceLocations();
 	void loadShipAppearanceData();
+	void loadShipMissileData();
+	void loadShipCountermeasureData();
 
 public:
 	enum {
@@ -108,6 +115,14 @@ public:
 		}
 
 		return collisionData;
+	}
+
+	const ShipMissileData* getMissileData(uint32 ammoType) const {
+		return missileData.get(ammoType);
+	}
+
+	const ShipCountermeasureData* getCountermeasureData(uint32 ammoType) const {
+		return countermeasureData.get(ammoType);
 	}
 
 private:

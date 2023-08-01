@@ -1,6 +1,8 @@
 #include "server/zone/objects/ship/components/ShipWeaponComponent.h"
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/packets/DeltaMessage.h"
+#include "server/zone/objects/ship/ShipMissileData.h"
+#include "server/zone/objects/ship/ShipCountermeasureData.h"
 
 void ShipWeaponComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipComponentImplementation::loadTemplateData(templateData);
@@ -27,6 +29,18 @@ void ShipWeaponComponentImplementation::loadTemplateData(SharedObjectTemplate* t
 			} else if (attribute == "refireRate") {
 				refireRate = value;
 			}
+		}
+	}
+
+	if (getClientGameObjectType() == SceneObjectType::SHIPCOUNTERMEASURELAUNCHER) {
+		int ammoType = ShipMissileData::getLauncherAmmoType(componentDataName);
+		if (ammoType != -1) {
+			ammoClass = ammoType;
+		}
+	} else if (getClientGameObjectType() == SceneObjectType::SHIPWEAPONLAUNCHER) {
+		int ammoType = ShipMissileData::getLauncherAmmoType(componentDataName);
+		if (ammoType != -1) {
+			ammoClass = ammoType;
 		}
 	}
 }
@@ -83,8 +97,10 @@ void ShipWeaponComponentImplementation::install(CreatureObject* pilot, ShipObjec
 	ship->setArmorEffectiveness(slot, armorEffectiveness, nullptr, command, deltaVector);
 	ship->setEnergyPerShot(slot, energyPerShot, nullptr, command, deltaVector);
 	ship->setRefireRate(slot, refireRate, nullptr, command, deltaVector);
-
 	ship->setRefireEfficiency(slot, 1.f, nullptr, command, deltaVector);
+	ship->setCurrentAmmo(slot, 0, nullptr, command, deltaVector);
+	ship->setMaxAmmo(slot, 0, nullptr, command, deltaVector);
+	ship->setAmmoClass(slot, ammoClass, nullptr, command, deltaVector);
 
 	if (deltaVector != nullptr) {
 		deltaVector->sendMessages(ship, pilot);
@@ -103,8 +119,75 @@ void ShipWeaponComponentImplementation::uninstall(CreatureObject* pilot, ShipObj
 	ship->setArmorEffectiveness(slot, 0.f, nullptr, command, deltaVector);
 	ship->setEnergyPerShot(slot, 0.f, nullptr, command, deltaVector);
 	ship->setRefireRate(slot, 0.f, nullptr, command, deltaVector);
-
 	ship->setRefireEfficiency(slot, 0.f, nullptr, command, deltaVector);
+	ship->setCurrentAmmo(slot, 0, nullptr, command, deltaVector);
+	ship->setMaxAmmo(slot, 0, nullptr, command, deltaVector);
+	ship->setAmmoClass(slot, 0, nullptr, command, deltaVector);
+
+	if (deltaVector != nullptr) {
+		deltaVector->sendMessages(ship, pilot);
+	}
+}
+
+void ShipWeaponComponentImplementation::installAmmo(CreatureObject* pilot, ShipObject* ship, Component* ammo, int slot, bool notifyClient) {
+	if (pilot == nullptr || ship == nullptr) {
+		return;
+	}
+
+	auto deltaVector = notifyClient ? ship->getDeltaVector() : nullptr;
+	uint8 command = DeltaMapCommands::SET;
+
+	float ammoMin = 0.f;
+	float ammoMax = 0.f;
+	float ammoShield = 0.f;
+	float ammoArmor = 0.f;
+	float ammoEnergy = 0.f;
+	float ammoRefire = ammo->getAttributeValue("fltrefirerate");
+	float ammoCount = ammo->getAttributeValue("fltmaxammo");
+
+	if (ammo->getClientGameObjectType() == SceneObjectType::SHIPCOUNTERMEASURE) {
+		ammoMin = ammo->getAttributeValue("fltmineffectiveness");
+		ammoMax = ammo->getAttributeValue("fltmaxeffectiveness");
+		ammoEnergy = ammo->getAttributeValue("energy_per_shot");
+	} else if (ammo->getClientGameObjectType() == SceneObjectType::SHIPMISSILE) {
+		ammoMin = ammo->getAttributeValue("fltmindamage");
+		ammoMax = ammo->getAttributeValue("fltmaxdamage");
+		ammoShield = ammo->getAttributeValue("fltshieldeffectiveness");
+		ammoArmor = ammo->getAttributeValue("fltarmoreffectiveness");
+	}
+
+	ship->setMinDamage(slot, ammoMin, nullptr, command, deltaVector);
+	ship->setMaxDamage(slot, ammoMax, nullptr, command, deltaVector);
+	ship->setShieldEffectiveness(slot, ammoShield, nullptr, command, deltaVector);
+	ship->setArmorEffectiveness(slot, ammoArmor, nullptr, command, deltaVector);
+	ship->setEnergyPerShot(slot, ammoEnergy, nullptr, command, deltaVector);
+	ship->setRefireRate(slot, ammoRefire, nullptr, command, deltaVector);
+	ship->setRefireEfficiency(slot, 1.f, nullptr, command, deltaVector);
+	ship->setCurrentAmmo(slot, ammoCount, nullptr, command, deltaVector);
+	ship->setMaxAmmo(slot, ammoCount, nullptr, command, deltaVector);
+
+	if (deltaVector != nullptr) {
+		deltaVector->sendMessages(ship, pilot);
+	}
+}
+
+void ShipWeaponComponentImplementation::uninstallAmmo(CreatureObject* pilot, ShipObject* ship, int slot, bool notifyClient) {
+	if (pilot == nullptr || ship == nullptr) {
+		return;
+	}
+
+	auto deltaVector = notifyClient ? ship->getDeltaVector() : nullptr;
+	int command = DeltaMapCommands::SET;
+
+	ship->setMaxDamage(slot, maxDamage, nullptr, command, deltaVector);
+	ship->setMinDamage(slot, minDamage, nullptr, command, deltaVector);
+	ship->setShieldEffectiveness(slot, shieldEffectiveness, nullptr, command, deltaVector);
+	ship->setArmorEffectiveness(slot, armorEffectiveness, nullptr, command, deltaVector);
+	ship->setEnergyPerShot(slot, energyPerShot, nullptr, command, deltaVector);
+	ship->setRefireRate(slot, refireRate, nullptr, command, deltaVector);
+	ship->setRefireEfficiency(slot, 0.f, nullptr, command, deltaVector);
+	ship->setCurrentAmmo(slot, 0, nullptr, command, deltaVector);
+	ship->setMaxAmmo(slot, 0, nullptr, command, deltaVector);
 
 	if (deltaVector != nullptr) {
 		deltaVector->sendMessages(ship, pilot);

@@ -14,6 +14,7 @@
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/ship/components/ShipComponent.h"
 #include "server/zone/objects/ship/components/ShipEngineComponent.h"
+#include "server/zone/objects/ship/components/ShipWeaponComponent.h"
 #include "server/zone/objects/ship/events/ShipRecoveryEvent.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -276,6 +277,48 @@ ShipObject* ShipObjectImplementation::asShipObject() {
 
 ShipObject* ShipObject::asShipObject() {
 	return this;
+}
+
+void ShipObjectImplementation::installAmmo(CreatureObject* player, SceneObject* sceno, int slot, bool notifyClient) {
+	if (sceno == nullptr) {
+		return;
+	}
+
+	auto component = getComponentObject(slot);
+	if (component == nullptr) {
+		return;
+	}
+
+	auto weapon = dynamic_cast<ShipWeaponComponent*>(component);
+	if (weapon == nullptr) {
+		return;
+	}
+
+	auto ammo = dynamic_cast<Component*>(sceno);
+	if (ammo == nullptr) {
+		return;
+	}
+
+	Locker lock(ammo);
+	ammo->destroyObjectFromWorld(true);
+
+	weapon->installAmmo(player, asShipObject(), ammo, slot, notifyClient);
+
+	ammo->destroyObjectFromDatabase(true);
+}
+
+void ShipObjectImplementation::uninstallAmmo(CreatureObject* player, int slot, bool notifyClient) {
+	auto component = getComponentObject(slot);
+	if (component == nullptr) {
+		return;
+	}
+
+	auto weapon = dynamic_cast<ShipWeaponComponent*>(component);
+	if (weapon == nullptr) {
+		return;
+	}
+
+	weapon->uninstallAmmo(player, asShipObject(), slot, notifyClient);
 }
 
 void ShipObjectImplementation::install(CreatureObject* player, SceneObject* sceno, int slot, bool notifyClient) {
