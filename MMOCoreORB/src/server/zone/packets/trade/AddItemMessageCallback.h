@@ -28,6 +28,9 @@ public:
 		if (player == nullptr)
 			return;
 
+		if (id == 0)
+			return;
+
 		auto zoneServer = server->getZoneServer();
 
 		if (zoneServer == nullptr)
