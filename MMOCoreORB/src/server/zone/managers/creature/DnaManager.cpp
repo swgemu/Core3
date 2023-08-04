@@ -92,7 +92,8 @@ int DnaManager::addQualityTemplate(lua_State * L) {
 	DnaManager::instance()->qualityTemplates.put(qual,crc);
 	return 0;
 }
-void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int quality) {
+
+void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player, int quality) {
 	// We are making a generational sample rules are a little different.
 	// Reduce each stat by lets say 10% as the max to be on par with old docs
 	int cl = deed->getLevel();
@@ -101,16 +102,16 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	int factor = (int)System::random(quality) - 7;
 	int reductionAmount = (factor + 15 + quality);
 
-	int cle = reduceByPercent(deed->getCleverness(),reductionAmount);
-	int cou = reduceByPercent(deed->getCourage(),reductionAmount);
-	int dep = reduceByPercent(deed->getDependability(),reductionAmount);
-	int dex = reduceByPercent(deed->getDexterity(),reductionAmount);
-	int end = reduceByPercent(deed->getEndurance(),reductionAmount);
-	int fie = reduceByPercent(deed->getFierceness(),reductionAmount);
-	int frt = reduceByPercent(deed->getFortitude(),reductionAmount);
-	int har = reduceByPercent(deed->getHardiness(),reductionAmount);
-	int ite = reduceByPercent(deed->getIntellect(),reductionAmount);
-	int pow = reduceByPercent(deed->getPower(),reductionAmount);
+	int cle = reduceByPercent(deed->getCleverness(), reductionAmount);
+	int cou = reduceByPercent(deed->getCourage(), reductionAmount);
+	int dep = reduceByPercent(deed->getDependability(), reductionAmount);
+	int dex = reduceByPercent(deed->getDexterity(), reductionAmount);
+	int end = reduceByPercent(deed->getEndurance(), reductionAmount);
+	int fie = reduceByPercent(deed->getFierceness(), reductionAmount);
+	int frt = reduceByPercent(deed->getFortitude(), reductionAmount);
+	int har = reduceByPercent(deed->getHardiness(), reductionAmount);
+	int ite = reduceByPercent(deed->getIntellect(), reductionAmount);
+	int pow = reduceByPercent(deed->getPower(), reductionAmount);
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
@@ -123,17 +124,22 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 
 	// calculate rest of stats here
 	ManagedReference<DnaComponent*> prototype = player->getZoneServer()->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
+
 	if (prototype == nullptr) {
 		return;
 	}
+
 	Locker clocker(prototype);
+
 	// Check Here for unique npcs
 	prototype->setSource(deed->getTemplateName());
 	prototype->setQuality(quality);
 	prototype->setLevel(cl);
+
 	String serial = player->getZoneServer()->getCraftingManager()->generateSerial();
+
 	prototype->setSerialNumber(serial);
-	prototype->setStats(cle,end,fie,pow,ite,cou,dep,dex,frt,har);
+	prototype->setStats(cle, end, fie, pow, ite, cou, dep, dex, frt, har);
 	prototype->setStun(deed->getStun());
 	prototype->setKinetic(deed->getKinetic());
 	prototype->setEnergy(deed->getEnergy());
@@ -147,6 +153,7 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	prototype->setArmorRating(deed->getArmor());
 	prototype->setSpecialAttackOne(deed->getSpecial1());
 	prototype->setSpecialAttackTwo(deed->getSpecial2());
+
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::STUN))
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::STUN);
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::KINETIC))
@@ -166,14 +173,15 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER))
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);
 
-	Locker locker(inventory);
+	Locker locker(inventory, prototype);
+
 	if (inventory->transferObject(prototype, -1, true, false)) {
 		inventory->broadcastObject(prototype, true);
 	} else {
 		prototype->destroyObjectFromDatabase(true);
 	}
-
 }
+
 void DnaManager::generateSample(Creature* creature, CreatureObject* player,int quality){
 	if (quality < 0 || quality > 7) {
 		return;
