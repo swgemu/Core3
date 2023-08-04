@@ -106,10 +106,10 @@ class DnaComponent extends Component {
 	}
 
 	@dirty
-	public native void setSpecialResist(int type);
+	public native void setSpecialResist(unsigned int type);
 
 	@dirty
-	public native boolean isSpecialResist(int type);
+	public native boolean isSpecialResist(unsigned int type);
 
 	public void setCleverness(float value) {
 		cleverness = value;
