@@ -40,19 +40,12 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
+object_tangible_food_bartender_drinks_ruby_bliel = object_tangible_food_crafted_shared_drink_ruby_bliel:new {
+	objectName = "@food:name:ruby_bliel",
+	templateType = CONSUMABLE,
 
+	filling = 40,
+	effectType = 7,
+}
 
---Children folder includes
-includeFile("tangible/food/bartender_drinks/serverobjects.lua")
-includeFile("tangible/food/base/serverobjects.lua")
-includeFile("tangible/food/crafted/serverobjects.lua")
-includeFile("tangible/food/creature_bio_effects/serverobjects.lua")
-includeFile("tangible/food/foraged/serverobjects.lua")
-includeFile("tangible/food/spice/serverobjects.lua")
-
--- Server Objects
-includeFile("tangible/food/bread_loaf_full_s1.lua")
-includeFile("tangible/food/fruit_melon.lua")
-includeFile("tangible/food/meat_kabob.lua")
-includeFile("tangible/food/meat_object.lua")
-includeFile("tangible/food/nectar.lua")
+ObjectTemplates:addTemplate(object_tangible_food_bartender_drinks_ruby_bliel, "object/tangible/food/bartender_drinks/ruby_bliel.iff")

@@ -111,9 +111,6 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 		{"contractor",60,4.0,1.0,4.3,-165,1741477, "npc_accusing"},
 		{"bartender", 1, 19.5, 1.6, 12.6, 180, 1741478, ""},
 
-		--cantina
-		{"bartender", 1, 2.9, -0.9, 3.4, 2, 64, "neutral"},
-
 		--starport interior
 		{"chassis_dealer",60,6.3,0.6,65.8,-60,1741539, "neutral"},
 

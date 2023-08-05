@@ -41,18 +41,12 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_tangible_food_bartender_drinks_lopez_softdrink = object_tangible_food_crafted_shared_drink_cortyg:new {
+	objectName = "@food:name:lopez_softdrink",
+	templateType = CONSUMABLE,
 
---Children folder includes
-includeFile("tangible/food/bartender_drinks/serverobjects.lua")
-includeFile("tangible/food/base/serverobjects.lua")
-includeFile("tangible/food/crafted/serverobjects.lua")
-includeFile("tangible/food/creature_bio_effects/serverobjects.lua")
-includeFile("tangible/food/foraged/serverobjects.lua")
-includeFile("tangible/food/spice/serverobjects.lua")
+	filling = 40,
+	effectType = 7,
+}
 
--- Server Objects
-includeFile("tangible/food/bread_loaf_full_s1.lua")
-includeFile("tangible/food/fruit_melon.lua")
-includeFile("tangible/food/meat_kabob.lua")
-includeFile("tangible/food/meat_object.lua")
-includeFile("tangible/food/nectar.lua")
+ObjectTemplates:addTemplate(object_tangible_food_bartender_drinks_lopez_softdrink, "object/tangible/food/bartender_drinks/lopez_softdrink.iff")

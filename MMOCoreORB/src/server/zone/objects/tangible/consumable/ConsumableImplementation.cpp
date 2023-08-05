@@ -120,8 +120,6 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		return 0;
 	}
 
-	PlayerObject* ghost = player->getPlayerObject();
-
 	String raceName = player->getSpeciesName();
 
 	if ((speciesRestriction == "2" && raceName != "trandoshan") || (speciesRestriction == "4" && raceName != "wookiee")) {
@@ -134,7 +132,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		return 0;
 	}
 
-	if (player->hasBuff(buffCRC)  && (!isAttributeEffect() || isForagedFood())) {
+	if (player->hasBuff(buffCRC) && (!isAttributeEffect() || isForagedFood())) {
 		player->sendSystemMessage("@combat_effects:already_affected"); //You are already under the influence of that food. Eating more won't enhance the effect.
 		return 0;
 	}
@@ -142,10 +140,12 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	if (player->isDead() || player->isIncapacitated())
 		return 0;
 
-	int availfill = 0;
+	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost == nullptr)
 		return 1;
+
+	int availfill = 0;
 
 	if (isFood())
 		availfill = ghost->getFoodFillingMax() - ghost->getFoodFilling();
@@ -163,7 +163,6 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		return 1;
 	}
 
-
 	ManagedReference<Buff*> buff = nullptr;
 
 	switch (effectType) {
@@ -175,7 +174,6 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		setModifiers(buff, false);
 		break;
 	}
-
 	case EFFECT_SKILL: {
 		buff = new Buff(player, buffName.hashCode(), duration, BuffType::FOOD);
 
@@ -194,7 +192,6 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 		break;
 	}
-
 	case EFFECT_SPICE: {
 		buff = new SpiceBuff(player, buffName, String::hashCode("spice." + buffName + ".up"), duration);
 
@@ -207,7 +204,6 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		decreaseUseCount();
 		return 1;
 	}
-
 	case EFFECT_HEALING: {
 		int healthHealed = 0, actionHealed = 0, mindHealed = 0;
 
@@ -281,7 +277,6 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 		break;
 	}
-
 	case EFFECT_INSTANT: {
 		if (modifiers.isEmpty())
 			return 0;
@@ -317,7 +312,8 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 		break;
 	}
-
+	case EFFECT_BARTENDER_DRINK:
+		break;
 	default:
 		break;
 	}
@@ -391,7 +387,6 @@ void ConsumableImplementation::setModifiers(Buff* buff, bool skillModifiers) {
 }
 
 void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
-
 	if (maxCondition > 0) {
 		StringBuffer cond;
 		cond << (maxCondition-(int)conditionDamage) << "/" << maxCondition;
@@ -400,6 +395,10 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 	}
 
 	alm->insertAttribute("volume", volume);
+
+	// Hide information on batender drinks
+	if (effectType == EFFECT_BARTENDER_DRINK)
+		return;
 
 	if (!isAttributeEffect() && !isSpiceEffect()) {
 		if (useCount > 0)
