@@ -159,7 +159,6 @@ CorelliaBelaVistalScreenPlay = CityScreenPlay:new {
 		{"trainer_scout", 0, 6737.85, 315, -5491.3, 31, 0, ""},
 		{"trainer_scout",  0, 6724, 315, -5682, 0, 0, ""},
 
-		{"bartender",60,8.54,-0.894992,0.14,87.0026,3375355, "neutral"},
 		{"businessman",60,-6.56842,-0.894996,21.9012,135.001,3375361, "conversation"},
 		{"contractor",60,-5.46842,-0.894996,21.9012,180.003,3375361, "conversation"},
 		{"bounty_hunter",60,21.6023,-0.894996,-18.5913,360.011,3375356, "conversation"},
