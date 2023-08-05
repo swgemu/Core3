@@ -153,7 +153,6 @@ TalusDearicScreenPlay = CityScreenPlay:new {
 		{"trainer_shipwright",60,0.1,0.6,73.0,0,3175353, "neutral"},
 
 		--Cantina
-		{"bartender",60,7.8,-0.9,-1.4,119,3175391, ""},
 		{"businessman",60,-5.0724,-0.894996,21.4966,284.21,3175397, ""},
 		{"medic",60,-44.5373,0.105009,-20.8963,0,3175403, "conversation"},
 		{"pilot",60,-44.5373,0.104709,-19.7963,180.005,3175403, "npc_consoling"},
