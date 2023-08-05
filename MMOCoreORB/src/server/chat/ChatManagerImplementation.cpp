@@ -1121,42 +1121,51 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 					continue;
 
 				PetManager* petManager = server->getPetManager();
+
 				Locker clocker(pet, sourceCreature);
 				petManager->handleChat(sourceCreature, pet, message.toString());
 				continue;
-			}
+			} else if (creature->isAiAgent()) {
+				if (noRecentFine && creature->getFaction() == Factions::FACTIONIMPERIAL && (20 * 20) >= distSquared && creature->getObserverCount(ObserverEventType::FACTIONCHAT)) {
+					String msgString = message.toString().toLowerCase();
 
-			if (noRecentFine && creature->isAiAgent() && creature->getFaction() == Factions::FACTIONIMPERIAL && (20 * 20) >= distSquared && creature->getObserverCount(ObserverEventType::FACTIONCHAT)) {
-				String msgString = message.toString().toLowerCase();
+					if (!msgString.contains("jedi"))
+						continue;
 
-				if (!msgString.contains("jedi"))
-					continue;
+					noRecentFine = false;
 
-				noRecentFine = false;
+					Locker slock(sourceCreature);
 
-				Locker slock(sourceCreature);
+					// Check for fine only once every 5s
+					sourceCreature->updateCooldownTimer("imperial_spatial_fine", 5000);
+					slock.release();
 
-				// Check for fine only once every 5s
-				sourceCreature->updateCooldownTimer("imperial_spatial_fine", 5000);
-				slock.release();
+					SortedVector<ManagedReference<Observer*> > observers = creature->getObservers(ObserverEventType::FACTIONCHAT);
 
-				SortedVector<ManagedReference<Observer*> > observers = creature->getObservers(ObserverEventType::FACTIONCHAT);
+					if (observers.size() > 0) {
+						Reference<CreatureObject*> sourceCreo = sourceCreature;
+						Reference<CreatureObject*> observingCreo = creature;
+						Reference<Observer*> observer = observers.get(0);
 
-				if (observers.size() > 0) {
-					Reference<CreatureObject*> sourceCreo = sourceCreature;
-					Reference<CreatureObject*> observingCreo = creature;
-					Reference<Observer*> observer = observers.get(0);
+						Core::getTaskManager()->executeTask([observingCreo, sourceCreo, observer] () {
+							if (sourceCreo == nullptr || observingCreo == nullptr || observer == nullptr)
+								return;
 
-					Core::getTaskManager()->executeTask([observingCreo, sourceCreo, observer] () {
-						if (sourceCreo == nullptr || observingCreo == nullptr || observer == nullptr)
-							return;
+							Locker locker(observingCreo);
+							Locker clocker(sourceCreo, observingCreo);
 
-						Locker locker(observingCreo);
-						Locker clocker(sourceCreo, observingCreo);
+							if (observer->notifyObserverEvent(ObserverEventType::FACTIONCHAT, observingCreo, sourceCreo, 0) == 1)
+								observingCreo->dropObserver(ObserverEventType::FACTIONCHAT, observer);
+						}, "NotifyFactionChatObserverLambda");
+					}
+				} else if (distSquared < (25 * 25) && creature->getObserverCount(ObserverEventType::SPATIALCHAT)) {
+					ManagedReference<ChatMessage*> cm = new ChatMessage();
 
-						if (observer->notifyObserverEvent(ObserverEventType::FACTIONCHAT, observingCreo, sourceCreo, 0) == 1)
-							observingCreo->dropObserver(ObserverEventType::FACTIONCHAT, observer);
-					}, "NotifyFactionChatObserverLambda");
+					if (cm != nullptr) {
+						cm->setString(message.toString());
+
+						creature->notifyObservers(ObserverEventType::SPATIALCHAT, cm, sourceCreature->getObjectID());
+					}
 				}
 			}
 

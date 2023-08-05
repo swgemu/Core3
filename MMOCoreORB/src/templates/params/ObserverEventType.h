@@ -104,6 +104,7 @@ public:
 		COMBATCOMMANDENQUEUED,		// ManagedObject arg1 = player, long arg2 = 0
 		FACTIONCHAT,				// ManagedObject arg1 = AiAgent, long arg2 = playerID
 		NOPLAYERSINRANGE,			// ManagedObject arg1 = null, long arg2 = 0
+		SPATIALCHAT,				// ManagedObject arg1 = ChatMessage containing string text, long arg2 = playerID
 	};
 };
 

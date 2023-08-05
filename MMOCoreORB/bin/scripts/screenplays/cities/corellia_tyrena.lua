@@ -232,7 +232,6 @@ CorelliaTyrenaScreenPlay = CityScreenPlay:new {
 
 		--Cantina
 		{"comm_operator",400,48.13,0.105,2.47,248.001,2625353, "npc_imperial"},
-		{"bartender",60,8.6,-0.9,0.6,90,2625355, "neutral"},
 		{"trainer_dancer", 0,16.7961,-0.894993,-10.1031,3,2625355, ""},
 		{"trainer_musician", 0,21.1399,-0.894993,8.20648,120,2625355, ""},
 
