@@ -163,11 +163,18 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		return 1;
 	}
 
+	float newDuration = duration;
+
+	// Twi'lek race receives a 10% duration bonus
+	if (newDuration > 0 && player->getSpeciesName() == "twilek") {
+		newDuration *= 1.10f;
+	}
+
 	ManagedReference<Buff*> buff = nullptr;
 
 	switch (effectType) {
 	case EFFECT_ATTRIBUTE: {
-		buff = new Buff(player, buffName.hashCode(), duration, BuffType::FOOD);
+		buff = new Buff(player, buffName.hashCode(), newDuration, BuffType::FOOD);
 
 		Locker locker(buff);
 
@@ -175,7 +182,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		break;
 	}
 	case EFFECT_SKILL: {
-		buff = new Buff(player, buffName.hashCode(), duration, BuffType::FOOD);
+		buff = new Buff(player, buffName.hashCode(), newDuration, BuffType::FOOD);
 
 		Locker locker(buff);
 
@@ -256,7 +263,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	}
 
 	case EFFECT_DURATION: {
-		buff = new DurationBuff(player, buffName.hashCode(), duration);
+		buff = new DurationBuff(player, buffName.hashCode(), newDuration);
 
 		Locker locker(buff);
 
@@ -265,7 +272,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	}
 
 	case EFFECT_DELAYED: {
-		buff = new DelayedBuff(player, buffName.hashCode(), duration);
+		buff = new DelayedBuff(player, buffName.hashCode(), newDuration);
 
 		Locker locker(buff);
 

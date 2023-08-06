@@ -3086,6 +3086,11 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 		}
 	}
 
+	// Twi'lek race receives a 10% duration bonus
+	if (patient->getSpeciesName() == "twilek") {
+		duration *= 1.10f;
+	}
+
 	Reference<Buff*> buff = new Buff(patient, buffcrc, duration, BuffType::MEDICAL);
 
 	Locker locker(buff);
