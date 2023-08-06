@@ -133,11 +133,11 @@ function HeroOfTatooineScreenPlay:createCourageEvent(event)
 	if (hasServerEvent("HeroOfTatCourage")) then
 		rescheduleServerEvent("HeroOfTatCourage", timer)
 
-		Logger:logEvent("Hero of Tatooine: Rescheduling EXISTING Event for Courage to spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Rescheduling EXISTING Event for Courage to spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doCourageChange", "HeroOfTatCourage")
 
-		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Courage spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Courage spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	end
 end
 
@@ -147,11 +147,11 @@ function HeroOfTatooineScreenPlay:createAltruismEvent(event)
 	if (hasServerEvent("HeroOfTatAltruism")) then
 		rescheduleServerEvent("HeroOfTatAltruism", timer)
 
-		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Altruism spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Altruism spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doAltruismChange", "HeroOfTatAltruism")
 
-		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Altruism spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Altruism spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	end
 end
 
@@ -161,11 +161,11 @@ function HeroOfTatooineScreenPlay:createIntellectEvent(event)
 	if (hasServerEvent("HeroOfTatIntellect")) then
 		rescheduleServerEvent("HeroOfTatIntellect", timer)
 
-		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Intellect spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Intellect spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doIntellectSpawn", "HeroOfTatIntellect")
 
-		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Intellect spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Intellect spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	end
 end
 
@@ -175,11 +175,11 @@ function HeroOfTatooineScreenPlay:createHonorEvent(event)
 	if (hasServerEvent("HeroOfTatHonor")) then
 		rescheduleServerEvent("HeroOfTatHonor", timer)
 
-		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Honor spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Honor spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doHonorChange", "HeroOfTatHonor")
 
-		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Honor spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Honor spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	end
 end
 
@@ -206,9 +206,13 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 
 	-- Reschedule respawn if boar is in combat or dead
 	if (pCourageMob ~= nil and AiAgent(pCourageMob):isInCombat()) then
+		Logger:logEvent("Hero of Tatooine: doCourageChange - Boar is in Combat, rescheduling.", LT_INFO)
+
 		self:createCourageEvent("life")
 		return 0
 	elseif (pCourageMob ~= nil) then
+		Logger:logEvent("Hero of Tatooine: doCourageChange - Boar is spawned, despawning and rescheduling respawn.", LT_INFO)
+
 		SceneObject(pCourageMob):destroyObjectFromWorld()
 		deleteData("hero_of_tat:courage_mob_id")
 		self:createCourageEvent("respawn")
@@ -328,6 +332,9 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 	if (pFarmer ~= nil) then
 		SceneObject(pFarmer):destroyObjectFromWorld()
 		deleteData("hero_of_tat:altruism_mob_id")
+
+		Logger:logEvent("Hero of Tatooine: doAltruismChange - Moisture Farmer already spawned, despawning and rescheduling.", LT_INFO)
+
 		self:createAltruismEvent("respawn")
 		return 0
 	end
@@ -351,6 +358,8 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 		writeData("hero_of_tat:altruism_mob_id", SceneObject(pFarmer):getObjectID())
 		CreatureObject(pFarmer):setPvpStatusBitmask(0)
 		AiAgent(pFarmer):addCreatureFlag(AI_STATIC)
+
+		Logger:logEvent("Hero of Tatooine: doAltruismChange - Spawned Moisture Farmer at " .. self.altruismSpawns[newLoc][1] ..  ", " .. self.altruismSpawns[newLoc][2] .. " Tatooine.", LT_INFO)
 	else
 		printLuaError("HeroOfTatooineScreenPlay:doAltruismChange, unable to spawn farmer.")
 	end
