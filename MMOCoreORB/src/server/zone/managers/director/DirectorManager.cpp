@@ -3344,7 +3344,7 @@ Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, f
 
 		float newZ = zone->getHeight(newX, newY);
 
-		position = Vector3(newX, newY, newZ);
+		position.set(newX, newZ, newY);
 
 		found = forceSpawn == true || (zone->getPlanetManager()->isSpawningPermittedAt(position.getX(), position.getY(), extraNoBuildRadius) &&
 				!CollisionManager::checkSphereCollision(position, sphereCollision, zone));
@@ -3353,7 +3353,7 @@ Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, f
 	}
 
 	if (!found) {
-		position = Vector3(0, 0, 0);
+		position.set(0, 0, 0);
 	}
 
 	return position;
