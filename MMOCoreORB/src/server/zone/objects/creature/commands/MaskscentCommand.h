@@ -17,33 +17,52 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (!checkMaskScent(creature))
+		if (!toggleMaskScent(creature))
 			return GENERALERROR;
+
+		return SUCCESS;
+	}
+
+	bool toggleMaskScent(CreatureObject* player) const {
+		if (player == nullptr)
+			return false;
 
 		uint32 crc = STRING_HASHCODE("skill_buff_mask_scent_self");
 
-		if (creature->hasBuff(crc)) {
-			creature->sendSystemMessage("@skl_use:sys_scentmask_already"); // You are already masking your scent.
-			return GENERALERROR;
+		// Player has mask scent active
+		if (player->hasBuff(crc)) {
+			ManagedReference<Buff*> buff = player->getBuff(crc);
+
+			if (buff == nullptr)
+				return false;
+
+			Locker clock(buff, player);
+
+			player->removeBuff(buff);
+			player->updateCooldownTimer("skill_buff_mask_scent_self");
+		} else {
+			if (!checkMaskScent(player))
+				return false;
+
+			StringIdChatParameter startStringId("skl_use", "sys_scentmask_start"); // Your natural scent has been masked from creatures.
+			StringIdChatParameter endStringId("skl_use", "sys_scentmask_stop");	// Your masked scent has worn off.
+
+			int maskScentMod = player->getSkillMod("mask_scent") / 2;
+			int duration = 12 * maskScentMod;
+
+			ManagedReference<Buff*> buff = new Buff(player, crc, duration, BuffType::SKILL);
+
+			Locker locker(buff, player);
+
+			buff->addState(CreatureState::MASKSCENT);
+			buff->setStartMessage(startStringId);
+			buff->setEndMessage(endStringId);
+
+			player->addBuff(buff);
+			player->addCooldown("skill_buff_mask_scent_self", duration);
 		}
 
-		StringIdChatParameter startStringId("skl_use", "sys_scentmask_start"); // Your natural scent has been masked from creatures.
-		StringIdChatParameter endStringId("skl_use", "sys_scentmask_stop");	// Your masked scent has worn off.
-
-		int maskScentMod = creature->getSkillMod("mask_scent") / 2;
-		int duration = 12 * maskScentMod;
-
-		ManagedReference<Buff*> buff = new Buff(creature, crc, duration, BuffType::SKILL);
-
-		Locker locker(buff);
-
-		buff->addState(CreatureState::MASKSCENT);
-		buff->setStartMessage(startStringId);
-		buff->setEndMessage(endStringId);
-
-		creature->addBuff(buff);
-
-		return SUCCESS;
+		return true;
 	}
 
 	bool checkMaskScent(CreatureObject* creature) const {
