@@ -12,13 +12,13 @@
 #include "server/zone/Zone.h"
 
 class DespawnCreatureTask : public Task {
-	ManagedReference<AiAgent*> creature;
+	ManagedReference<AiAgent*> agent;
 
 public:
-	DespawnCreatureTask(AiAgent* cr) {
-		creature = cr;
+	DespawnCreatureTask(AiAgent* creature) {
+		agent = creature;
 
-		auto zone = cr->getZone();
+		auto zone = creature->getZone();
 
 		if (zone != nullptr) {
 			setCustomTaskQueue(zone->getZoneName());
@@ -26,25 +26,21 @@ public:
 	}
 
 	void run() {
-		Locker locker(creature);
+		Locker locker(agent);
 
-		Zone* zone = creature->getZone();
+		Zone* zone = agent->getZone();
 
-		creature->removePendingTask("despawn");
+		agent->removePendingTask("despawn");
 
-		if (zone == nullptr)
+		if (zone == nullptr) {
+			agent->destroyAllWeapons();
+
 			return;
+		}
 
-		creature->destroyObjectFromWorld(false);
-		creature->notifyDespawn(zone);
-
-		//creature->printReferenceHolders();
-
-		/*PatrolPoint* homeLocation = creature->getHomeLocation();
-
-		if (homeLocation->getPosit)*/
+		agent->destroyObjectFromWorld(false);
+		agent->notifyDespawn(zone);
 	}
 };
-
 
 #endif /* DESPAWNCREATURETASK_H_ */

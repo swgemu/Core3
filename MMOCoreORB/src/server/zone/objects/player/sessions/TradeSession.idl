@@ -8,10 +8,11 @@ package server.zone.objects.player.sessions;
 import engine.util.Facade;
 import system.util.SortedVector;
 import server.zone.objects.scene.SceneObject;
+include server.zone.objects.creature.CreatureObject;
 
 class TradeSession extends Facade {
 	protected unsigned long tradeTargetPlayer;
-	
+
 	@dereferenced
 	protected SortedVector<SceneObject> itemsToTrade;
 	protected boolean verifiedTrade;
@@ -25,14 +26,14 @@ class TradeSession extends Facade {
 		verifiedTrade = false;
 		moneyToTrade = 0;
 	}
-	
+
 	public boolean getAcceptedTrade() {
 		return acceptedTrade;
 	}
 
 	public void addTradeItem(SceneObject object) {
-    	itemsToTrade.put(object);
-    }
+		itemsToTrade.put(object);
+	}
 
 	@local
 	public SortedVector<SceneObject> getItemsToTrade() {
@@ -40,12 +41,12 @@ class TradeSession extends Facade {
 	}
 
 	public SceneObject getTradeItem(int index) {
-    	return itemsToTrade.get(index);
-    }
+		return itemsToTrade.get(index);
+	}
 
 	public int getTradeSize() {
-    	return itemsToTrade.size();
-    }
+		return itemsToTrade.size();
+	}
 
 	public int getMoneyToTrade() {
 		return moneyToTrade;
@@ -54,10 +55,6 @@ class TradeSession extends Facade {
 	public unsigned long getTradeTargetPlayer() {
 		return tradeTargetPlayer;
 	}
-
-	public boolean isTryingToTrade() {
-    	return tradeTargetPlayer != 0;
-    }
 
 	public boolean hasVerifiedTrade() {
 		return verifiedTrade;
@@ -79,4 +76,12 @@ class TradeSession extends Facade {
 		verifiedTrade = val;
 	}
 
+	public void clearTradeContainer() {
+		tradeTargetPlayer = 0;
+		moneyToTrade = 0;
+
+		itemsToTrade.removeAll();
+		acceptedTrade = false;
+		verifiedTrade = false;
+	}
 }

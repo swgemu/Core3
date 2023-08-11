@@ -112,10 +112,10 @@ class GeneticComponent extends Component {
 	}
 
 	@dirty
-	public native void setSpecialResist(int type);
+	public native void setSpecialResist(unsigned int type);
 
 	@dirty
-	public native boolean isSpecialResist(int type);
+	public native boolean isSpecialResist(unsigned int type);
 
 	public void setStats(int cle, int end, int fie, int pow,
 						    int ite, int cou, int dep, int dex,

@@ -117,9 +117,6 @@ TatooineBestineScreenPlay = CityScreenPlay:new {
 	},
 
 	mobiles = {
-		--Cantina
-		{"bartender",60,-11.1901,-0.894992,1.50145,33.4278,1028647, ""},
-
 		--starport interior
 		{"trainer_shipwright",60,-3.2,0.6,67.9,144,1026828, "neutral"},
 		{"chassis_dealer",60,5.2,0.6,79.0,-70,1026825, "neutral"},

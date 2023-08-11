@@ -81,7 +81,9 @@ void ThreatMap::addDamage(TangibleObject* target, uint32 damage, String xp) {
 
 		if (tarCreo != nullptr) {
 			WeaponObject* weapon = tarCreo->getWeapon();
-			xpToAward = weapon->getXpType();
+
+			if (weapon != nullptr)
+				xpToAward = weapon->getXpType();
 		}
 	} else {
 		xpToAward = xp;

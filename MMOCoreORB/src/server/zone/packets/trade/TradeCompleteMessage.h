@@ -7,8 +7,8 @@
 
 class TradeCompleteMessage : public BaseMessage {
 public:
-	TradeCompleteMessage() : BaseMessage(6) {
-		insertShort(1);
+	TradeCompleteMessage() : BaseMessage(0x06) {
+		insertShort(0x01);
 		insertInt(0xC542038B);
 	}
 };

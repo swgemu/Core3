@@ -52,9 +52,6 @@ NabooKerenScreenPlay = CityScreenPlay:new {
 		{"chassis_dealer",60,5.5,0.6,67.4,-2,2125382, "neutral"},
 		{"trainer_shipwright",60,-0.5,0.6,67.2,180,2125382, "neutral"},
 
-		--cantina
-		{"bartender",60,3.6,-0.9,-2.5,163,5, "conversation"},
-
 		--Guild Hall 1720 2613
 		{"trainer_artisan",0,0.0976721,1.13306,-13.6995,0,1396874, ""},
 

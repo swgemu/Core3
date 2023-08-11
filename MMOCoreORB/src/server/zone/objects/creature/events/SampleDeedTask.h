@@ -8,14 +8,13 @@
 #include "engine/engine.h"
 
 class SampleDeedTask : public Task {
-
 private:
-	enum Phase { BEGIN, SAMPLING, END} currentPhase;
+	enum Phase { BEGIN, SAMPLING, END } currentPhase;
 	int waitCount;
 	ManagedReference<PetDeed*> deed;
 	ManagedReference<CreatureObject*> player;
-public:
 
+public:
 	SampleDeedTask(PetDeed* obj, CreatureObject* playo) : Task() {
 		currentPhase = BEGIN;
 		waitCount = 0;
@@ -28,14 +27,15 @@ public:
 			return;
 
 		Locker locker(player);
-		Locker crosslocker(deed,player);
+		Locker crosslocker(deed, player);
+
 		player->removePendingTask("sampledeed");
 
 		if (deed->isGenerated()) {
 			return;
 		}
 
-		if(!player->hasSkill("outdoors_bio_engineer_novice") || !deed->isASubChildOf(player)) {
+		if (!player->hasSkill("outdoors_bio_engineer_novice") || !deed->isASubChildOf(player)) {
 			return;
 		}
 
@@ -43,57 +43,62 @@ public:
 		int skillMod = player->getSkillMod("dna_harvesting");
 		int cl = deed->getLevel();
 
-		if (skillMod < 1 || cl > skillMod + 15){
+		if (skillMod < 1 || cl > skillMod + 15) {
 			player->sendSystemMessage("@bio_engineer:harvest_dna_skill_too_low");
 			return;
 		}
 
-		switch(currentPhase){
-			case BEGIN:
-				// We should be good to go now and try the sample
-				if (player->getHAM(CreatureAttribute::MIND) < mindCost) {
-					player->sendSystemMessage("@bio_engineer:harvest_dna_attrib_too_low");
-				} else {
-					player->inflictDamage(player, CreatureAttribute::MIND, mindCost, false, true);
-					player->sendSystemMessage("@bio_engineer:harvest_dna_begin_harvest");
-					currentPhase = SAMPLING;
-					player->addPendingTask("sampledeed",this,1000);
-				}
-				break;
-			case SAMPLING:
-				if (waitCount == 9) {
-					currentPhase = END;
-				}else {
-					waitCount++;
-				}
-				player->addPendingTask("sampledeed",this,1000);
-				break;
-			case END:
-				int count = deed->getSampleCount();
-				int level = deed->getLevel();
-				int skillMod = player->getSkillMod("dna_harvesting");
-				float rollMod = (((skillMod-level)/level))  + (skillMod-level);
-				int sampleRoll = System::random(100);
-				sampleRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
-				// max samples 1/2 of real creatures
-				int maxSamples = (int) ceil((float)skillMod/25.f)/2.f;
-				deed->incrementSampleCount();
-				if ((30 + rollMod) < sampleRoll || cl > 75) {
-					// failure but we increment the count
-					player->sendSystemMessage("@bio_engineer:harvest_dna_failed");
-				} else {
-					player->sendSystemMessage("@bio_engineer:harvest_dna_succeed");
-					award(cl,rollMod);
-					if (count >= maxSamples ){
-						// nuke deed you killed it
-						ManagedReference<SceneObject*> deedContainer = deed->getParent().get();
-						if (deedContainer != nullptr) {
-							deed->destroyObjectFromWorld(true);
-						}
-						deed->destroyObjectFromDatabase(true);
+		switch (currentPhase) {
+		case BEGIN:
+			// We should be good to go now and try the sample
+			if (player->getHAM(CreatureAttribute::MIND) < mindCost) {
+				player->sendSystemMessage("@bio_engineer:harvest_dna_attrib_too_low");
+			} else {
+				player->inflictDamage(player, CreatureAttribute::MIND, mindCost, false, true);
+				player->sendSystemMessage("@bio_engineer:harvest_dna_begin_harvest");
+				currentPhase = SAMPLING;
+				player->addPendingTask("sampledeed", this, 1000);
+			}
+			break;
+		case SAMPLING:
+			if (waitCount == 9) {
+				currentPhase = END;
+			} else {
+				waitCount++;
+			}
+			player->addPendingTask("sampledeed", this, 1000);
+			break;
+		case END:
+			int count = deed->getSampleCount();
+			int level = deed->getLevel();
+			int skillMod = player->getSkillMod("dna_harvesting");
+
+			float rollMod = (((skillMod - level) / level)) + (skillMod - level);
+			int sampleRoll = System::random(100);
+
+			sampleRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
+
+			// max samples 1/2 of real creatures
+			int maxSamples = (int)ceil((float)skillMod / 25.f) / 2.f;
+
+			deed->incrementSampleCount();
+
+			if ((30 + rollMod) < sampleRoll || cl > 75) {
+				// failure but we increment the count
+				player->sendSystemMessage("@bio_engineer:harvest_dna_failed");
+			} else {
+				player->sendSystemMessage("@bio_engineer:harvest_dna_succeed");
+				award(cl, rollMod);
+				if (count >= maxSamples) {
+					// nuke deed you killed it
+					ManagedReference<SceneObject*> deedContainer = deed->getParent().get();
+					if (deedContainer != nullptr) {
+						deed->destroyObjectFromWorld(true);
 					}
+					deed->destroyObjectFromDatabase(true);
 				}
-				break;
+			}
+			break;
 		}
 		return;
 	}
@@ -101,14 +106,20 @@ public:
 	void award(int cl, float rollMod) {
 		int xp = DnaManager::instance()->generateXp(cl);
 		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
-		if(playerManager != nullptr)
+
+		if (playerManager != nullptr)
 			playerManager->awardExperience(player, "bio_engineer_dna_harvesting", xp, true);
+
 		int quality = deed->getQuality();
 		int newQuality = quality;
+
 		// generate quality based on skill
 		int luckRoll = System::random(100);
+
 		luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
+
 		int qualityRoll = luckRoll + rollMod;
+
 		if (qualityRoll > 60)
 			newQuality += 0;
 		else if (qualityRoll > 50)
@@ -123,9 +134,10 @@ public:
 			newQuality += 5;
 		else
 			newQuality += 6;
-		if(newQuality > 7)
+		if (newQuality > 7)
 			newQuality = 7;
-		DnaManager::instance()->generationalSample(deed,player,newQuality);
+
+		DnaManager::instance()->generationalSample(deed, player, newQuality);
 	}
 };
-#endif //SAMPLEDEEDTASK_H_
+#endif // SAMPLEDEEDTASK_H_

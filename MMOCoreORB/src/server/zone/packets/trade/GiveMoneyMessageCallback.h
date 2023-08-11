@@ -30,8 +30,19 @@ public:
 		if (player == nullptr)
 			return;
 
-		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-		playerManager->handleGiveMoneyMessage(player, money);
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return;
+
+		auto playerMan = zoneServer->getPlayerManager();
+
+		if (playerMan == nullptr)
+			return;
+
+		Locker lock(player);
+
+		playerMan->handleGiveMoneyMessage(player, money);
 	}
 
 };

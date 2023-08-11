@@ -88,6 +88,8 @@ class TangibleObject extends SceneObject {
 
 	protected SceneObject antiDecayKitObject;
 
+	protected boolean insurable;
+
 	protected boolean jediRobe;
 	protected boolean unionRing;
 
@@ -106,6 +108,7 @@ class TangibleObject extends SceneObject {
 
 		antiDecayKitObject = null;
 
+		insurable = true;
 		jediRobe = false;
 		unionRing = false;
 
@@ -700,6 +703,11 @@ class TangibleObject extends SceneObject {
 
 	public void setSliced(boolean slice) {
 		sliced = slice;
+	}
+
+	@read
+	public boolean isInsurable() {
+		return insurable;
 	}
 
 	@read

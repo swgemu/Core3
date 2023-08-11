@@ -195,7 +195,6 @@ TalusNashalScreenPlay = CityScreenPlay:new {
 		{"ithorian_male",300,21.4737,-0.894997,-13.904,180.01,4265376, "conversation"},
 		{"artisan",60,21.4737,-0.894997,-14.904,360.011,4265376, "conversation"},
 		{"artisan",60,2.49489,-0.894992,-5.58394,0,4265375, "conversation"},
-		{"bartender",60,5.78939,-0.894992,3.21743,198.905,4265375, "conversation"},
 		{"info_broker",60,11.3604,-0.894992,5.58351,180.01,4265375, "conversation"},
 		{"commoner_technician",60,2.49489,-0.894992,-4.58394,179.992,4265375, "conversation"},
 		{"insurgent",60,11.3604,-0.894992,4.58351,360.011,4265375, "nervous"}

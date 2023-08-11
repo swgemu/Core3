@@ -568,6 +568,10 @@ includeFile("caves/tatooine_sennex_cave.lua")
 includeFile("caves/tatooine_squill_cave.lua")
 includeFile("caves/tatooine_tusken_bunker.lua")
 
+-- Cantinas
+includeFile("cities/cantinas/bartenders.lua")
+includeFile("cities/cantinas/bartender_conv_handler.lua")
+
 -- Cities
 includeFile("cities/city.lua")
 includeFile("cities/corellia_bela_vistal.lua")

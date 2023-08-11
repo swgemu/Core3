@@ -133,11 +133,11 @@ function HeroOfTatooineScreenPlay:createCourageEvent(event)
 	if (hasServerEvent("HeroOfTatCourage")) then
 		rescheduleServerEvent("HeroOfTatCourage", timer)
 
-		Logger:logEvent("Hero of Tatooine: Rescheduling EXISTING Event for Courage to spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Rescheduling EXISTING Event for Courage to spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doCourageChange", "HeroOfTatCourage")
 
-		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Courage spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Courage spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	end
 end
 
@@ -147,11 +147,11 @@ function HeroOfTatooineScreenPlay:createAltruismEvent(event)
 	if (hasServerEvent("HeroOfTatAltruism")) then
 		rescheduleServerEvent("HeroOfTatAltruism", timer)
 
-		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Altruism spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Altruism spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doAltruismChange", "HeroOfTatAltruism")
 
-		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Altruism spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Altruism spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	end
 end
 
@@ -161,11 +161,11 @@ function HeroOfTatooineScreenPlay:createIntellectEvent(event)
 	if (hasServerEvent("HeroOfTatIntellect")) then
 		rescheduleServerEvent("HeroOfTatIntellect", timer)
 
-		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Intellect spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Intellect spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doIntellectSpawn", "HeroOfTatIntellect")
 
-		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Intellect spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Intellect spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	end
 end
 
@@ -175,11 +175,11 @@ function HeroOfTatooineScreenPlay:createHonorEvent(event)
 	if (hasServerEvent("HeroOfTatHonor")) then
 		rescheduleServerEvent("HeroOfTatHonor", timer)
 
-		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Honor spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Honor spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doHonorChange", "HeroOfTatHonor")
 
-		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Honor spawn in " .. timer, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Scheduling NEW Event for Honor spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	end
 end
 
@@ -206,9 +206,13 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 
 	-- Reschedule respawn if boar is in combat or dead
 	if (pCourageMob ~= nil and AiAgent(pCourageMob):isInCombat()) then
+		Logger:logEvent("Hero of Tatooine: doCourageChange - Boar is in Combat, rescheduling.", LT_INFO)
+
 		self:createCourageEvent("life")
 		return 0
 	elseif (pCourageMob ~= nil) then
+		Logger:logEvent("Hero of Tatooine: doCourageChange - Boar is spawned, despawning and rescheduling respawn.", LT_INFO)
+
 		SceneObject(pCourageMob):destroyObjectFromWorld()
 		deleteData("hero_of_tat:courage_mob_id")
 		self:createCourageEvent("respawn")
@@ -227,15 +231,22 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 
 	writeData("hero_of_tat:courage_mob_loc", newLoc)
 
-	local z = getTerrainHeight(pHermit, self.courageSpawns[newLoc][1], self.courageSpawns[newLoc][2])
-	local pBoar = spawnMobile("tatooine", "wild_bladeback_boar", 0, self.courageSpawns[newLoc][1], z, self.courageSpawns[newLoc][2], getRandomNumber(360) - 180, 0)
+	local x = self.courageSpawns[newLoc][1]
+	local y = self.courageSpawns[newLoc][2]
+
+	-- 	{zoneName, x, y, minDist, maxDist, force}
+	local spawnPoint = getSpawnPoint("tatooine", x, y, 10, 128)
+
+	local z = getWorldFloor(spawnPoint[1], spawnPoint[3], "tatooine")
+
+	local pBoar = spawnMobile("tatooine", "wild_bladeback_boar", 0, spawnPoint[1], z, spawnPoint[3], getRandomNumber(360) - 180, 0)
 
 	if (pBoar ~= nil) then
 		AiAgent(pBoar):setNoAiAggro()
 		createObserver(OBJECTDESTRUCTION, "HeroOfTatooineScreenPlay", "notifyDefeatedBoar", pBoar)
 		writeData("hero_of_tat:courage_mob_id", SceneObject(pBoar):getObjectID())
 
-		Logger:logEvent("Hero of Tatooine: doCourageChange complete. Boar Spawned at: " .. self.courageSpawns[newLoc][1] .. ", " .. self.courageSpawns[newLoc][2], LT_INFO)
+		Logger:logEvent("Hero of Tatooine: doCourageChange complete. Boar Spawned at: " .. spawnPoint[1] .. ", " .. spawnPoint[3], LT_INFO)
 	else
 		printLuaError("HeroOfTatooineScreenPlay:doCourageChange, unable to spawn boar.")
 	end
@@ -328,6 +339,9 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 	if (pFarmer ~= nil) then
 		SceneObject(pFarmer):destroyObjectFromWorld()
 		deleteData("hero_of_tat:altruism_mob_id")
+
+		Logger:logEvent("Hero of Tatooine: doAltruismChange - Moisture Farmer already spawned, despawning and rescheduling.", LT_INFO)
+
 		self:createAltruismEvent("respawn")
 		return 0
 	end
@@ -344,13 +358,22 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 
 	writeData("hero_of_tat:altruism_mob_loc", newLoc)
 
-	local z = getTerrainHeight(pHermit, self.altruismSpawns[newLoc][1], self.altruismSpawns[newLoc][2])
-	local pFarmer = spawnMobile("tatooine", "hero_of_tat_farmer", 0, self.altruismSpawns[newLoc][1], z, self.altruismSpawns[newLoc][2], getRandomNumber(360) - 180, 0)
+	local x = self.altruismSpawns[newLoc][1]
+	local y = self.altruismSpawns[newLoc][2]
+
+	-- 	{zoneName, x, y, minDist, maxDist, force}
+	local spawnPoint = getSpawnPoint("tatooine", x, y, 10, 128)
+
+	local z = getWorldFloor(spawnPoint[1], spawnPoint[3], "tatooine")
+
+	local pFarmer = spawnMobile("tatooine", "hero_of_tat_farmer", 0, spawnPoint[1], z, spawnPoint[3], getRandomNumber(360) - 180, 0)
 
 	if (pFarmer ~= nil) then
 		writeData("hero_of_tat:altruism_mob_id", SceneObject(pFarmer):getObjectID())
 		CreatureObject(pFarmer):setPvpStatusBitmask(0)
 		AiAgent(pFarmer):addCreatureFlag(AI_STATIC)
+
+		Logger:logEvent("Hero of Tatooine: doAltruismChange - Spawned Moisture Farmer at " .. spawnPoint[1] ..  ", " .. spawnPoint[3] .. " Tatooine using base Spawn Point - X: " .. x .. " Y: " .. y, LT_INFO)
 	else
 		printLuaError("HeroOfTatooineScreenPlay:doAltruismChange, unable to spawn farmer.")
 	end
@@ -875,31 +898,31 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 	local x = self.honorSpawns[newLoc][1]
 	local y = self.honorSpawns[newLoc][2]
 
-	-- 	{zoneName, x, y, minDist, maxDist, force}
-	local spawnPoint = getSpawnPoint("tatooine", x, y, 10, 50, true)
+	-- {zoneName, x, y, minDist, maxDist}
+	local spawnPoint = getSpawnPoint("tatooine", x, y, 10, 128)
 
-	local z = getTerrainHeight(pHermit, spawnPoint[1], spawnPoint[3])
+	local z = getWorldFloor(spawnPoint[1], spawnPoint[3], "tatooine")
 
-	pLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader", 0, spawnPoint[1], z, spawnPoint[2], getRandomNumber(360) - 180, 0)
+	pLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader", 0, spawnPoint[1], z, spawnPoint[3], getRandomNumber(360) - 180, 0)
 
 	if (pLeader == nil) then
 		printLuaError("Failed to create leader in HeroOfTatooineScreenPlay:doHonorChange().")
 		return
 	end
 
-	Logger:logEvent("Hero of Tatooine: doHonorChange - Spawned Pirate Leader at " .. spawnPoint[1] ..  ", " .. spawnPoint[2] .. " Tatooine.", LT_INFO)
+	Logger:logEvent("Hero of Tatooine: doHonorChange - Spawned Pirate Leader at " .. spawnPoint[1] ..  ", " .. spawnPoint[3] .. " Tatooine using base Spawn Point - X: " .. x .. " Y: " .. y, LT_INFO)
 
 	AiAgent(pLeader):setNoAiAggro()
 	writeData("hero_of_tat:honor_leader_id", SceneObject(pLeader):getObjectID())
 
-	pPirate1 = spawnMobile("tatooine", "pirate", 0, spawnPoint[1], z, spawnPoint[2], getRandomNumber(360) - 180, 0)
+	pPirate1 = spawnMobile("tatooine", "pirate", 0, spawnPoint[1], z, spawnPoint[3], getRandomNumber(360) - 180, 0)
 
 	if (pPirate1 ~= nil) then
 		AiAgent(pPirate1):setNoAiAggro()
 		writeData("hero_of_tat:honor_pirate_1_id", SceneObject(pPirate1):getObjectID())
 	end
 
-	pPirate2 = spawnMobile("tatooine", "pirate", 0, spawnPoint[1], z, spawnPoint[2], getRandomNumber(360) - 180, 0)
+	pPirate2 = spawnMobile("tatooine", "pirate", 0, spawnPoint[1], z, spawnPoint[3], getRandomNumber(360) - 180, 0)
 
 	if (pPirate2 ~= nil) then
 		AiAgent(pPirate2):setNoAiAggro()
@@ -1476,6 +1499,7 @@ function HeroOfTatooineScreenPlay:giveMissingMarks(pPlayer)
 
 		if (pMark ~= nil) then
 			CreatureObject(pPlayer):removeScreenPlayState(16, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+			TangibleObject(pMark):setOptionBit(INSURED)
 		else
 			return false
 		end

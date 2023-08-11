@@ -87,24 +87,24 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	// info(true) << "Kinetic = " << kinResist << " Enery = " << energyResist << " Blast = " << blastResist << " Heat = " << heatResist << " Cold = " << coldResist;
 	// info(true) << " Elecitrict = " << elecResist << " Acid = " << acidResist << " Stun = " << stunResist;
 
-	if (values->getCurrentValue("kineticeffectiveness") > 0)
+	if (values->getMinValue("kineticeffectiveness") > 0)
 		setSpecialResist(SharedWeaponObjectTemplate::KINETIC);
-	if (values->getCurrentValue("blasteffectiveness") > 0)
+	if (values->getMinValue("blasteffectiveness") > 0)
 		setSpecialResist(SharedWeaponObjectTemplate::BLAST);
-	if (values->getCurrentValue("energyeffectiveness") > 0)
+	if (values->getMinValue("energyeffectiveness") > 0)
 		setSpecialResist(SharedWeaponObjectTemplate::ENERGY);
-	if (values->getCurrentValue("heateffectiveness") > 0)
+	if (values->getMinValue("heateffectiveness") > 0)
 		setSpecialResist(SharedWeaponObjectTemplate::HEAT);
-	if (values->getCurrentValue("coldeffectiveness") > 0)
+	if (values->getMinValue("coldeffectiveness") > 0)
 		setSpecialResist(SharedWeaponObjectTemplate::COLD);
-	if (values->getCurrentValue("electricityeffectiveness") > 0)
+	if (values->getMinValue("electricityeffectiveness") > 0)
 		setSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY);
-	if (values->getCurrentValue("acideffectiveness") > 0)
+	if (values->getMinValue("acideffectiveness") > 0)
 		setSpecialResist(SharedWeaponObjectTemplate::ACID);
-	if (values->getCurrentValue("stuneffectiveness") > 0)
+	if (values->getMinValue("stuneffectiveness") > 0)
 		setSpecialResist(SharedWeaponObjectTemplate::STUN);
-	//if (values->getCurrentValue("lightsabereffectiveness") > 0)
-		//setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);
+	/*if (values->getMinValue("lightsabereffectiveness") > 0)
+		setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);*/
 
 	if (fortitude > 500) {
 		armorRating = 1;
@@ -341,12 +341,13 @@ void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm
 	alm->insertAttribute("dna_comp_ranged_attack", ranged ? "Yes" : "No");
 }
 
-bool GeneticComponentImplementation::isSpecialResist(int type) {
+bool GeneticComponentImplementation::isSpecialResist(unsigned int type) {
 	return specialResists & type;
 }
 
-void GeneticComponentImplementation::setSpecialResist(int type) {
-	specialResists |= type;
+void GeneticComponentImplementation::setSpecialResist(unsigned int type) {
+	if (!(specialResists & type))
+		specialResists |= type;
 }
 
 int GeneticComponentImplementation::getEffectiveArmor() {

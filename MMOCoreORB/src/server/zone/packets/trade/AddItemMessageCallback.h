@@ -8,7 +8,6 @@
 #ifndef ADDITEMMESSAGECALLBACK_H_
 #define ADDITEMMESSAGECALLBACK_H_
 
-
 #include "server/zone/packets/MessageCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
@@ -16,9 +15,7 @@ class AddItemMessageCallback : public MessageCallback {
 	uint64 id;
 
 public:
-	AddItemMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server), id(0) {
-
+	AddItemMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) : MessageCallback(client, server), id(0) {
 	}
 
 	void parse(Message* message) {
@@ -31,11 +28,23 @@ public:
 		if (player == nullptr)
 			return;
 
-		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-		playerManager->handleAddItemToTradeWindow(player, id);
+		if (id == 0)
+			return;
+
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return;
+
+		auto playerMan = zoneServer->getPlayerManager();
+
+		if (playerMan == nullptr)
+			return;
+
+		Locker lock(player);
+
+		playerMan->handleAddItemToTradeWindow(player, id);
 	}
-
 };
-
 
 #endif /* ADDITEMMESSAGECALLBACK_H_ */

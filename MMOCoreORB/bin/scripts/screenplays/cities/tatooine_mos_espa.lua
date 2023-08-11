@@ -177,7 +177,6 @@ TatooineMosEspaScreenPlay = CityScreenPlay:new {
 		{"trainer_artisan",0,-0.0885271,1.13306,-14.0283,2,1256011, ""},
 
 		--Cantina
-		{"bartender",60,-11.1703,-0.894992,1.53149,33.4278,1256058, ""},
 		{"dorn_gestros",60,-6.00754,-0.894992,-5.35219,231.068,1256058, "calm"},
 		{"medic",60,12.1732,-0.894991,3.93609,180.003,1256058, "conversation"},
 		{"sullustan_male",300,12.1732,-0.894992,2.93609,360.011,1256058, "conversation"},
