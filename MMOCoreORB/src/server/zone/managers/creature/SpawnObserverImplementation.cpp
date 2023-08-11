@@ -13,7 +13,7 @@ void SpawnObserverImplementation::despawnSpawns() {
 		if (creature != nullptr && creature->isAiAgent()) {
 			AiAgent* agent = cast<AiAgent*>(creature.get());
 
-			if (agent == nullptr)
+			if (agent == nullptr || agents.contains(agent))
 				continue;
 
 			agents.add(agent);
@@ -42,11 +42,13 @@ void SpawnObserverImplementation::despawnSpawns() {
 					}
 				}
 
-				agent->wipeBlackboard();
-				agent->destroyAllWeapons();
-
-				agent->setDespawnOnNoPlayerInRange(true);
-
+				if (agent->getZone() == nullptr) {
+					agent->wipeBlackboard();
+					agent->destroyAllWeapons();
+				} else {
+					agent->setDespawnOnNoPlayerInRange(true);
+					agent->scheduleDespawn(300, true);
+				}
 			}, "DespawnSpawnsLambda");
 		}
 

@@ -636,31 +636,42 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		SceneObject* creatureInventory = destructedObject->getSlottedObject("inventory");
 
-		// Make sure mob weapons are destroyed when the ai dies so they can't be looted
-		destructedObject->unequipWeapons();
+		// Make sure weapons are destroyed when the ai dies so they can't be looted
+		if (!destructedObject->isPet()) {
+			Reference<AiAgent*> agentRef = destructedObject;
 
-		WeaponObject* primaryWeap = destructedObject->getPrimaryWeapon();
+			Core::getTaskManager()->scheduleTask([agentRef]() {
+				if (agentRef == nullptr)
+					return;
 
-		if (primaryWeap != nullptr && primaryWeap != destructedObject->getDefaultWeapon()) {
-			Locker locker(primaryWeap, destructedObject);
-			primaryWeap->destroyObjectFromWorld(true);
+				Locker lock(agentRef);
+
+				agentRef->unequipWeapons();
+
+				WeaponObject* primaryWeap = agentRef->getPrimaryWeapon();
+
+				if (primaryWeap != nullptr && primaryWeap != agentRef->getDefaultWeapon()) {
+					Locker locker(primaryWeap, agentRef);
+					primaryWeap->destroyObjectFromWorld(true);
+				}
+
+				WeaponObject* secondaryWeap = agentRef->getSecondaryWeapon();
+
+				if (secondaryWeap != nullptr) {
+					Locker locker(secondaryWeap, agentRef);
+					secondaryWeap->destroyObjectFromWorld(true);
+				}
+
+				WeaponObject* thrownWeap = agentRef->getThrownWeapon();
+
+				if (thrownWeap != nullptr) {
+					Locker locker(thrownWeap, agentRef);
+					thrownWeap->destroyObjectFromWorld(true);
+				}
+
+				agentRef->nullifyWeapons();
+			}, "RemoveAgentWeaponsLambda", 500);
 		}
-
-		WeaponObject* secondaryWeap = destructedObject->getSecondaryWeapon();
-
-		if (secondaryWeap != nullptr) {
-			Locker locker(secondaryWeap, destructedObject);
-			secondaryWeap->destroyObjectFromWorld(true);
-		}
-
-		WeaponObject* thrownWeap = destructedObject->getThrownWeapon();
-
-		if (thrownWeap != nullptr) {
-			Locker locker(thrownWeap, destructedObject);
-			thrownWeap->destroyObjectFromWorld(true);
-		}
-
-		destructedObject->nullifyWeapons();
 
 		// Remove any buffs or debuffs from the agent
 		destructedObject->clearBuffs(false, true);
