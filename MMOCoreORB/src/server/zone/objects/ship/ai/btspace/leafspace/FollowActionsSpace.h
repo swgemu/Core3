@@ -289,7 +289,7 @@ public:
 		uint64 timeNow = System::getMiliTime();
 		agent->writeBlackboard("refireInterval", timeNow);
 
-		auto projectile = ShipProjectile(agent, 0, projectileType, 0, currentPosition, currentDirectionVec * 7800.f, 500, 500, 1.f, timeNow);
+		auto projectile = new ShipProjectile(agent, 0, projectileType, 0, currentPosition, currentDirectionVec * 7800.f, 500, 500, 1.f, timeNow);
 		SpaceCombatManager::instance()->addProjectile(agent, projectile);
 
 		return SUCCESS;

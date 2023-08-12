@@ -15,8 +15,6 @@ public:
 	static float getPointIntersection(const Vector3& rayStart, const Vector3& rayEnd, float radius, float distance);
 
 private:
-	static float getShipCollision(ShipObject* target, const ShipCollisionData* data, const ShipProjectile* projectile, SpaceCollisionResult& result);
-
 	static float getChassisRadiusCollision(ShipObject* target, const ShipCollisionData* data, const ShipProjectile* projectile, SpaceCollisionResult& result);
 
 	static float getChassisBoxCollision(ShipObject* target, const ShipCollisionData* data, const ShipProjectile* projectile, SpaceCollisionResult& result);
