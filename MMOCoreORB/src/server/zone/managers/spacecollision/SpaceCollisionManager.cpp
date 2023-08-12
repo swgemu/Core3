@@ -125,13 +125,14 @@ float SpaceCollisionManager::getChassisAppearanceCollision(ShipObject* target, c
 
 	Ray ray = getAxisAlignedRay(target, projectile);
 	float distance = projectile->getDistance();
+	float radius = projectile->getRadius();
 
 	SortedVector<IntersectionResult> results;
 	appearance->intersects(ray, distance, results);
 
 	if (results.size() > 0) {
-		float intersection = results.getUnsafe(0).getIntersectionDistance();
-		bool hitFront = ((distance * intersection * ray.getDirection().getZ()) + ray.getOrigin().getZ()) <= 0.f;
+		float intersection = Math::max(results.getUnsafe(0).getIntersectionDistance() - radius, 0.f);
+		bool hitFront = ((intersection * ray.getDirection().getZ()) + ray.getOrigin().getZ()) <= 0.f;
 
 		result.setCollision(target, projectile, intersection / distance, Components::CHASSIS, hitFront);
 	}
@@ -190,11 +191,12 @@ float SpaceCollisionManager::getComponentHardpointCollision(ShipObject* target, 
 			bool hitFront = (((localEnd.getZ() - localStart.getZ()) * intersection) + localStart.getZ()) >= 0.f;
 
 			result.setCollision(target, projectile, intersection, slot, hitFront);
-			break;
+
+			return result.getDistance();
 		}
 	}
 
-	return result.getDistance();
+	return MISS;
 }
 
 float SpaceCollisionManager::getPointIntersection(const Vector3& direction, const Vector3& difference, float radius, float distance) {
@@ -252,22 +254,34 @@ float SpaceCollisionManager::getBoxIntersection(const Vector3& rayStart, const V
 	Vector3 minBounds = *box.getMinBound() - radiusV;
 	Vector3 maxBounds = *box.getMaxBound() + radiusV;
 
-	Vector3 vMin = (minBounds - rayStart) * invDirection;
-	Vector3 vMax = (maxBounds - rayStart) * invDirection;
-
-	float tMin = Math::max(Math::max(Math::min(vMin.getX(), vMax.getX()), Math::min(vMin.getY(), vMax.getY())), Math::min(vMin.getZ(), vMax.getZ()));
-	float tMax = Math::min(Math::min(Math::max(vMin.getX(), vMax.getX()), Math::max(vMin.getY(), vMax.getY())), Math::max(vMin.getZ(), vMax.getZ()));
-
-	if (tMin > tMax || tMax > 1.f) {
-		return MISS;
-	}
-
-	Vector3 intersectionPoint = (direction * tMin) + rayStart;
+	float tMin = -FLT_MAX;
+	float tMax = FLT_MAX;
 	float epsilon = 0.1f;
 
-	if (intersectionPoint.getX() < (minBounds.getX() - epsilon) || intersectionPoint.getX() > (maxBounds.getX() + epsilon)
-	 || intersectionPoint.getY() < (minBounds.getY() - epsilon) || intersectionPoint.getY() > (maxBounds.getY() + epsilon)
-	 || intersectionPoint.getZ() < (minBounds.getZ() - epsilon) || intersectionPoint.getZ() > (maxBounds.getZ() + epsilon)) {
+	for (int axis = 0; axis < 3; ++axis) {
+		float tNear = (minBounds[axis] - rayStart[axis]) * invDirection[axis];
+		float tFar = (maxBounds[axis] - rayStart[axis]) * invDirection[axis];
+
+		if (tNear > tFar) {
+			float temp = tNear;
+			tNear = tFar;
+			tFar = temp;
+		}
+
+		if (tNear > tMax + epsilon || tFar < tMin - epsilon) {
+			return MISS;
+		}
+
+		tMin = Math::max(tMin, tNear);
+		tMax = Math::min(tMax, tFar);
+
+		float intersectionPoint = (direction[axis] * tMin) + rayStart[axis];
+		if (intersectionPoint < (minBounds[axis] - epsilon) || intersectionPoint > (maxBounds[axis] + epsilon)) {
+			return MISS;
+		}
+	}
+
+	if (tMin > tMax + epsilon || tMax < (0.f - epsilon) || tMin > (1.f + epsilon)) {
 		return MISS;
 	}
 

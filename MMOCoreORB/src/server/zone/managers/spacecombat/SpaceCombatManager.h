@@ -3,6 +3,8 @@
 
 #include "server/zone/managers/spacecombat/projectile/ShipProjectileMap.h"
 #include "server/zone/managers/spacecombat/projectile/ShipProjectile.h"
+#include "server/zone/managers/spacecombat/projectile/ShipMissile.h"
+#include "server/zone/managers/spacecombat/projectile/ShipCountermeasure.h"
 #include "server/zone/managers/spacecollision/SpaceCollisionResult.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
@@ -80,7 +82,13 @@ private:
 	ShipProjectileMap projectileMap;
 
 private:
-	void broadcastProjectile(ShipObject* ship, const ShipProjectile& projectile) const;
+	void broadcastProjectile(ShipObject* ship, const ShipProjectile* projectile) const;
+
+	void broadcastMissile(ShipObject* ship, const ShipMissile* missile) const;
+
+	void broadcastMissileUpdate(ShipObject* ship, const ShipMissile* missile, int counterType, int missileResult) const;
+
+	void broadcastCountermeasure(ShipObject* ship, const ShipCountermeasure* counter, int updateType) const;
 
 	BasePacket* getOnShipHitMessage(ShipObject* target, const Vector3& localPosition, int type, float newPercent, float oldPercent) const;
 
@@ -98,12 +106,18 @@ private:
 
 	float applyActiveComponentDamage(ShipObject* target, const Vector3& collisionPoint, float damage, int slot, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const;
 
-	int updateProjectile(ShipObject* Ship, ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<ShipObject*>>& targetVectorCopy, const uint64& miliTimeNow) const;
+	int updateProjectile(ShipObject* Ship, ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<ShipObject*>>& targetVectorCopy, const uint64& miliTime);
+
+	int updateMissile(ShipObject* Ship, ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<ShipObject*>>& targetVectorCopy, const uint64& miliTime);
 
 public:
 	int updateProjectiles();
 
-	void addProjectile(ShipObject* ship, const ShipProjectile& projectile);
+	void addProjectile(ShipObject* ship, ShipProjectile* projectile);
+
+	void addMissile(ShipObject* ship, ShipMissile* missile);
+
+	void addCountermeasure(ShipObject* ship, ShipCountermeasure* counter);
 };
 
 #endif // SPACECOMBATMANAGER_H_

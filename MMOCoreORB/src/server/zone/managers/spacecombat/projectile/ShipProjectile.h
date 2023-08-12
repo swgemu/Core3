@@ -4,6 +4,7 @@
 //#define SHIPPROJECTILE_DEBUG
 
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/ShipProjectileData.h"
 
 #ifdef SHIPPROJECTILE_DEBUG
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
@@ -16,6 +17,7 @@ public:
 
 protected:
 	ManagedWeakReference<ShipObject*> shipRef;
+	uint32 uniqueID;
 
 	uint8 weaponSlot;
 	uint8 projectileType;
@@ -30,13 +32,15 @@ protected:
 	float range;
 	float radius;
 
-	uint64 deltaMax;
+	uint32 deltaMax;
 	uint64 firstUpdate;
 	uint64 lastUpdate;
 
 public:
 	ShipProjectile() {
 		setLoggingName("ShipProjectile");
+
+		uniqueID = 0;
 
 		weaponSlot = 0;
 		projectileType = 0;
@@ -48,12 +52,17 @@ public:
 		radius = 0.f;
 
 		deltaMax = 0;
+
 		firstUpdate = 0;
 		lastUpdate = 0;
 	}
 
 	ShipProjectile(ShipObject* ship, uint8 weapon, uint8 projectile, uint8 component, Vector3 start, Vector3 end, float projectileSpeed, float projectileRange, float projectileRadius, uint64 miliTime) {
+		setLoggingName("ShipProjectile");
+
 		this->shipRef = ship;
+
+		uniqueID = 0;
 
 		weaponSlot = weapon;
 		projectileType = projectile;
@@ -73,9 +82,21 @@ public:
 		lastUpdate = firstUpdate;
 	}
 
+	virtual bool isMissile() const {
+		return false;
+	}
+
+	virtual bool isCountermeasure() const {
+		return false;
+	}
+
 // get
 	ManagedWeakReference<ShipObject*> getShip() const {
 		return shipRef;
+	}
+
+	uint32 getUniqueID() const {
+		return uniqueID;
 	}
 
 	uint8 getWeaponSlot() const {
@@ -118,7 +139,7 @@ public:
 		return radius;
 	}
 
-	uint64 getDeltaMax() const {
+	uint32 getDeltaMax() const {
 		return deltaMax;
 	}
 
@@ -130,18 +151,28 @@ public:
 		return lastUpdate;
 	}
 
-	void setLastUpdateTime(uint64 miliTime) {
+// set
+	void setLastUpdateTime(const uint64& miliTime) {
 		lastUpdate = miliTime;
 	}
 
-	void updatePosition(uint64 deltaTime) {
+	void readProjectileData(const ShipProjectileData* data) {
+		projectileType = data->getIndex();
+
+		speed = data->getSpeed();
+		range = data->getRange();
+
+		deltaMax = (range / speed) * 1000.f;
+	}
+
+	virtual void updatePosition(int deltaTime, int totalTime) {
 		distance = deltaTime * speed * 0.001f;
 
 		lastPosition = thisPosition;
 		thisPosition = thisPosition + (distance * direction);
 	}
 
-	bool validatePosition() {
+	bool validatePosition() const {
 		if (thisPosition.getX() > 7999.f || thisPosition.getX() < -7999.f
 		 || thisPosition.getY() > 7999.f || thisPosition.getY() < -7999.f
 		 || thisPosition.getZ() > 7999.f || thisPosition.getZ() < -7999.f) {
@@ -152,7 +183,7 @@ public:
 	}
 
 #ifdef SHIPPROJECTILE_DEBUG
-	void debugProjectile(ShipObject* ship) {
+	virtual void debugProjectile(ShipObject* ship, int hitResult) {
 		auto pilot = ship->getPilot();
 		if (pilot == nullptr) {
 			return;
@@ -160,16 +191,20 @@ public:
 
 		StringBuffer msg;
 
-		msg << " thisPosition " << thisPosition.toString() << endl
-			<< " lastPosition " << lastPosition.toString() << endl
-			<< " direction    " << direction.toString() << endl
-			<< " distance     " << distance << endl
-			<< " speed        " << speed << endl
-			<< " range        " << range << endl
-			<< " radius       " << radius << endl
-			<< " deltaTime    " << (System::getMiliTime() - lastUpdate) << endl
-			<< " totalTime    " << (System::getMiliTime() - firstUpdate) << endl
-			<< " deltaMax     " << deltaMax << endl
+		msg << "Projectile:     " << (hitResult == 1 ? "HIT" : hitResult == 0 ? "MISS" : "EXPIRE") << endl
+			<< " weaponSlot     " << weaponSlot << endl
+			<< " projectileType " << projectileType << endl
+			<< " componentSlot  " << componentSlot << endl
+			<< " thisPosition   " << thisPosition.toString() << endl
+			<< " lastPosition   " << lastPosition.toString() << endl
+			<< " direction      " << direction.toString() << endl
+			<< " distance       " << distance << endl
+			<< " speed          " << speed << endl
+			<< " range          " << range << endl
+			<< " radius         " << radius << endl
+			<< " deltaMax       " << deltaMax << endl
+			<< " totalTime      " << (System::getMiliTime() - firstUpdate) << endl
+			<< " deltaTime      " << (System::getMiliTime() - lastUpdate) << endl
 			<< "--------------------------------";
 
 		pilot->sendSystemMessage(msg.toString());

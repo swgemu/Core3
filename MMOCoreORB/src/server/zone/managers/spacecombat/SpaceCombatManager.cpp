@@ -10,8 +10,9 @@
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/packets/jtl/CreateProjectileMessage.h"
 #include "server/zone/packets/ship/OnShipHit.h"
+#include "server/zone/packets/jtl/CreateMissileMessage.h"
 
-void SpaceCombatManager::broadcastProjectile(ShipObject* ship, const ShipProjectile& projectile) const {
+void SpaceCombatManager::broadcastProjectile(ShipObject* ship, const ShipProjectile* projectile) const {
 	auto cov = ship == nullptr ? nullptr : ship->getCloseObjects();
 	if (cov == nullptr) {
 		return;
@@ -45,6 +46,25 @@ void SpaceCombatManager::broadcastProjectile(ShipObject* ship, const ShipProject
 	}
 }
 
+void SpaceCombatManager::broadcastMissile(ShipObject* ship, const ShipMissile* missile) const {
+	auto target = missile->getTarget().get();
+
+	if (target != nullptr) {
+		auto message = new CreateMissileMessage(ship, target, missile);
+		ship->broadcastMessage(message, true);
+	}
+}
+
+void SpaceCombatManager::broadcastMissileUpdate(ShipObject* ship, const ShipMissile* missile, int counterType, int missileResult) const {
+	auto message = new UpdateMissileMessage(ship, missile, counterType, missileResult);
+	ship->broadcastMessage(message, true);
+}
+
+void SpaceCombatManager::broadcastCountermeasure(ShipObject* ship, const ShipCountermeasure* counter, int missileResult) const {
+	auto message = new UpdateMissileMessage(ship, counter, counter->getProjectileType(), missileResult);
+	ship->broadcastMessage(message, true);
+}
+
 BasePacket* SpaceCombatManager::getHitEffectMessage(const Vector3& collisionPoint, int hitType) const {
 	String cefType	= "clienteffect/combat_ship_hit_" + shipHitTypeToString(hitType) + ".cef";
 	return new PlayClientEffectLoc(cefType, "", collisionPoint.getX(), collisionPoint.getZ(), collisionPoint.getY());
@@ -60,15 +80,18 @@ BasePacket* SpaceCombatManager::getOnShipHitMessage(ShipObject* target, const Ve
 }
 
 void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* projectile, const SpaceCollisionResult& result) const {
+	if (ship == nullptr || projectile == nullptr) {
+		return;
+	}
+
 	auto target = result.getObject().get();
 
-	if (ship == nullptr || target == nullptr || !target->isAttackableBy(ship)) {
+	if (target == nullptr || !target->isAttackableBy(ship)) {
 		auto effect = getHitEffectMessage(result.getPosition(), ShipHitType::HITARMOR);
 		ship->broadcastMessage(effect, true);
 		return;
 	}
 
-	// ship is prelocked by checkProjectiles in this function.
 	Locker tLock(target, ship);
 
 	auto deltaVector = target->getDeltaVector();
@@ -82,16 +105,17 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 
 	uint32 weaponIndex = ShipObject::WEAPON_COMPONENT_START + weaponSlot;
 
-	float weaponEffect = Math::min(ship->getComponentEfficiency(weaponIndex), 1.f);
-	float shieldEffect = Math::min(ship->getShieldEffectivenessMap()->get(weaponIndex), 1.f);
-	float armorEffect  = Math::min(ship->getArmorEffectivenessMap()->get(weaponIndex), 1.f);
+	float weaponEffect = ship->getComponentEfficiency(weaponIndex);
 
-	if (weaponEffect <= 0 || shieldEffect <= 0 || armorEffect <= 0) {
+	if (weaponEffect <= 0) {
 		return;
 	}
 
 	float minDamage = ship->getComponentMinDamageMap()->get(weaponIndex) * weaponEffect;
 	float maxDamage = ship->getComponentMaxDamageMap()->get(weaponIndex) * weaponEffect;
+	float shieldEffect = ship->getShieldEffectivenessMap()->get(weaponIndex);
+	float armorEffect  = ship->getArmorEffectivenessMap()->get(weaponIndex);
+
 	float damage = System::random(maxDamage - minDamage) + minDamage;
 
 	if (damage <= 0.f || damage > 999999.f) {
@@ -149,12 +173,17 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 }
 
 float SpaceCombatManager::applyShieldDamage(ShipObject* target, const Vector3& collisionPoint, float damage, float effect, bool hitFront, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
-	float shieldDamage = damage * effect;
 	float shieldMin = hitFront ? target->getFrontShield() : target->getRearShield();
 	float shieldMax = hitFront ? target->getMaxFrontShield() : target->getMaxRearShield();
 
 	if (shieldMin == 0.f || shieldMax == 0.f) {
 		return damage;
+	}
+
+	float shieldDamage = damage * effect;
+
+	if (shieldDamage == 0.f) {
+		return 0.f;
 	}
 
 	float shieldOld = shieldMin / shieldMax;
@@ -186,17 +215,25 @@ float SpaceCombatManager::applyShieldDamage(ShipObject* target, const Vector3& c
 float SpaceCombatManager::applyArmorDamage(ShipObject* target, const Vector3& collisionPoint, float damage, float effect, bool hitFront, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
 	uint32 slot = hitFront ? Components::ARMOR0 : Components::ARMOR1;
 
-	float armorDamage = damage * effect;
 	float armorMin = target->getCurrentArmorMap()->get(slot);
 	float armorMax = target->getMaxArmorMap()->get(slot);
+	float healthMin = target->getCurrentHitpointsMap()->get(slot);
+	float healthMax = target->getMaxHitpointsMap()->get(slot);
 
 	if (armorMin == 0.f || armorMax == 0.f) {
 		return damage;
 	}
 
-	float armorOld = armorMin / armorMax;
+	float armorDamage = damage * effect;
 
-	if (armorMin > 0.f && armorDamage > 0.f) {
+	if (armorDamage <= 0.f) {
+		return 0.f;
+	}
+
+	float armorOld = armorMin;
+	float healthOld = healthMin;
+
+	if (armorMin > 0.f) {
 		if (armorDamage > armorMin) {
 			armorDamage -= armorMin;
 			armorMin = 0.f;
@@ -206,12 +243,30 @@ float SpaceCombatManager::applyArmorDamage(ShipObject* target, const Vector3& co
 		}
 	}
 
-	float armorNew = armorMin / armorMax;
+	if (healthMin > 0.f && armorDamage > 0.f) {
+		if (armorDamage > healthMin) {
+			armorDamage -= healthMin;
+			healthMin = 0.f;
+		} else {
+			healthMin -= armorDamage;
+			armorDamage = 0.f;
+		}
+	}
 
-	if (armorNew != armorOld) {
-		target->setComponentArmor(slot, armorMin, nullptr, 2, deltaVector);
+	if (armorMin != armorOld || healthMin != healthOld) {
+		if (armorMin != armorOld) {
+			target->setComponentArmor(slot, armorMin, nullptr, 2, deltaVector);
+		}
 
-		messages.add(getOnShipHitMessage(target, collisionPoint, ShipHitType::HITARMOR, armorNew, armorOld));
+		if (healthMin != healthOld) {
+			target->setComponentHitpoints(slot, healthMin, nullptr, 2, deltaVector);
+		}
+
+		float totalMax = armorMax + healthMax;
+		float totalNew = (armorMin + healthMin) / totalMax;
+		float totalOld = (armorOld + healthOld) / totalMax;
+
+		messages.add(getOnShipHitMessage(target, collisionPoint, ShipHitType::HITARMOR, totalNew, totalOld));
 		messages.add(getHitEffectMessage(collisionPoint, ShipHitType::HITARMOR));
 	}
 
@@ -262,10 +317,10 @@ float SpaceCombatManager::applyComponentDamage(ShipObject* target, const Vector3
 		return damage;
 	}
 
-	float armorOld = armorMin / armorMax;
-	float healthOld = healthMin / healthMax;
+	float armorOld = armorMin;
+	float healthOld = healthMin;
 
-	if (armorMin > 0.f && damage > 0.f) {
+	if (armorMin > 0.f) {
 		if (damage > armorMin) {
 			damage -= armorMin;
 			armorMin = 0.f;
@@ -285,20 +340,20 @@ float SpaceCombatManager::applyComponentDamage(ShipObject* target, const Vector3
 		}
 	}
 
-	float armorNew = armorMin / armorMax;
-	float healthNew = healthMin / healthMax;
+	if (armorMin != armorOld || healthMin != healthOld) {
+		if (armorMin != armorOld) {
+			target->setComponentArmor(slot, armorMin, nullptr, 2, deltaVector);
+		}
 
-	if (armorNew != armorOld) {
-		target->setComponentArmor(slot, armorMin, nullptr, 2, deltaVector);
+		if (healthMin != healthOld) {
+			target->setComponentHitpoints(slot, healthMin, nullptr, 2, deltaVector);
+		}
 
-		messages.add(getOnShipHitMessage(target, collisionPoint, ShipHitType::HITARMOR, armorNew, armorOld));
-		messages.add(getHitEffectMessage(collisionPoint, ShipHitType::HITARMOR));
-	}
+		float totalMax = armorMax + healthMax;
+		float totalNew = (armorMin + healthMin) / totalMax;
+		float totalOld = (armorOld + healthOld) / totalMax;
 
-	if (healthNew != healthOld) {
-		target->setComponentHitpoints(slot, healthMin, nullptr, 2, deltaVector);
-
-		messages.add(getOnShipHitMessage(target, collisionPoint, ShipHitType::HITCOMPONENT, healthNew, healthOld));
+		messages.add(getOnShipHitMessage(target, collisionPoint, ShipHitType::HITCOMPONENT, totalNew, totalOld));
 		messages.add(getHitEffectMessage(collisionPoint, ShipHitType::HITCOMPONENT));
 	}
 
@@ -360,6 +415,10 @@ float SpaceCombatManager::applyActiveComponentDamage(ShipObject* target, const V
 			continue;
 		}
 
+		if (slot == Components::ARMOR0 || slot == Components::ARMOR1) {
+			continue;
+		}
+
 		int weight = collisionData->getSlotWeight(slot);
 
 		if (weight > 0 && weight <= System::random(100)) {
@@ -385,47 +444,123 @@ float SpaceCombatManager::applyActiveComponentDamage(ShipObject* target, const V
 	return damage;
 }
 
-int SpaceCombatManager::updateProjectile(ShipObject* ship, ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<ShipObject*>>& targetVectorCopy, const uint64& miliTime) const {
+int SpaceCombatManager::updateProjectile(ShipObject* ship, ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<ShipObject*>>& targetVectorCopy, const uint64& miliTime) {
 	if (ship == nullptr || projectile == nullptr) {
 		return ProjectileResult::EXPIRE;
 	}
 
-	const uint64& firstUpdate = projectile->getFirstUpdateTime();
-	const uint64& lastUpdate = projectile->getLastUpdateTime();
+	if (projectile->isMissile()) {
+		return updateMissile(ship, projectile, result, targetVectorCopy, miliTime);
+	}
 
-	long deltaTime = miliTime - lastUpdate;
+	long deltaTime = miliTime - projectile->getLastUpdateTime();
 
 	if (deltaTime < CheckProjectilesTask::INTERVALMIN) {
 		return ProjectileResult::MISS;
 	}
 
-	long totalTime = miliTime - firstUpdate;
+	long totalTime = miliTime - projectile->getFirstUpdateTime();
 
-	if (totalTime > CheckProjectilesTask::INTERVALMAX) {
-		return ProjectileResult::EXPIRE;
-	}
-
-	const uint64& deltaMax = projectile->getDeltaMax();
-
-	if (totalTime > deltaMax) {
-		deltaTime -= totalTime - deltaMax;
+	if (totalTime > projectile->getDeltaMax()) {
+		deltaTime -= totalTime - projectile->getDeltaMax();
 
 		if (deltaTime < CheckProjectilesTask::INTERVALMIN) {
 			return ProjectileResult::EXPIRE;
 		}
 	}
 
-	projectile->updatePosition(deltaTime);
+	projectile->updatePosition(deltaTime, totalTime);
 
 	if (!projectile->validatePosition()) {
 		return ProjectileResult::EXPIRE;
+	}
+
+	if (projectile->isCountermeasure()) {
+		return ProjectileResult::MISS;
 	}
 
 	if (SpaceCollisionManager::getProjectileCollision(ship, projectile, result, targetVectorCopy) != SpaceCollisionManager::MISS) {
 		return ProjectileResult::HIT;
 	}
 
-	projectile->setLastUpdateTime(miliTime);
+	return ProjectileResult::MISS;
+}
+
+int SpaceCombatManager::updateMissile(ShipObject* ship, ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<ShipObject*>>& targetVectorCopy, const uint64& miliTime) {
+	if (ship == nullptr || projectile == nullptr || !projectile->isMissile()) {
+		return ProjectileResult::EXPIRE;
+	}
+
+	auto missile = dynamic_cast<ShipMissile*>(projectile);
+
+	if (missile == nullptr) {
+		return ProjectileResult::EXPIRE;
+	}
+
+	auto target = missile->getTarget().get();
+
+	if (target == nullptr) {
+		return ProjectileResult::EXPIRE;
+	}
+
+	long deltaTime = miliTime - projectile->getLastUpdateTime();
+
+	if (deltaTime < CheckProjectilesTask::INTERVALMIN) {
+		return ProjectileResult::MISS;
+	}
+
+	long totalTime = miliTime - projectile->getFirstUpdateTime();
+
+	if (totalTime > missile->getDeltaMax()) {
+		broadcastMissileUpdate(ship, missile, -1, UpdateMissileMessage::UpdateType::MISS);
+		return ProjectileResult::EXPIRE;
+	}
+
+	missile->updatePosition(deltaTime, totalTime);
+
+	if (!missile->validatePosition()) {
+		broadcastMissileUpdate(ship, missile, -1, UpdateMissileMessage::UpdateType::MISS);
+		return ProjectileResult::EXPIRE;
+	}
+
+	Locker cLock(target, ship);
+	auto entry = projectileMap.getEntry(target);
+
+	if (entry != nullptr) {
+		for (int i = 0; i < entry->size(); ++i) {
+			auto targetProjectile = entry->getProjectile(i);
+			if (targetProjectile == nullptr || !targetProjectile->isCountermeasure()) {
+				continue;
+			}
+
+			auto counter = dynamic_cast<ShipCountermeasure*>(targetProjectile);
+			if (counter == nullptr) {
+				continue;
+			}
+
+			float sqrDistance = missile->getThisPosition().squaredDistanceTo(counter->getThisPosition());
+			float radius = missile->getRadius() + counter->getRadius();
+
+			if (sqrDistance <= (radius * radius)) {
+				int missileDifficulty = missile->getDifficulty();
+				int counterDifficulty = counter->getDifficulty();
+
+				if (counterDifficulty >= missileDifficulty) {
+					broadcastMissileUpdate(ship, missile, -1, UpdateMissileMessage::UpdateType::COUNTERED);
+					return ProjectileResult::EXPIRE;
+				}
+			}
+		}
+	}
+
+	if (totalTime < missile->getTimeToHit()) {
+		return ProjectileResult::MISS;
+	}
+
+	if (SpaceCollisionManager::getProjectileCollision(ship, projectile, result, targetVectorCopy) != SpaceCollisionManager::MISS) {
+		broadcastMissileUpdate(ship, missile, -1, UpdateMissileMessage::UpdateType::HIT);
+		return ProjectileResult::HIT;
+	}
 
 	return ProjectileResult::MISS;
 }
@@ -481,11 +616,16 @@ int SpaceCombatManager::updateProjectiles() {
 				}
 
 #ifdef SHIPPROJECTILE_DEBUG
-				projectile->debugProjectile(ship);
+				projectile->debugProjectile(ship, hitResult);
 #endif // SHIPPROJECTILE_DEBUG
 
 				if (hitResult == ProjectileResult::EXPIRE) {
 					projectileMap.removeProjectile(i, ii);
+					continue;
+				}
+
+				if (hitResult == ProjectileResult::MISS) {
+					projectile->setLastUpdateTime(miliTime);
 					continue;
 				}
 			}
@@ -499,8 +639,8 @@ int SpaceCombatManager::updateProjectiles() {
 	return System::getMiliTime() - miliTime;
 }
 
-void SpaceCombatManager::addProjectile(ShipObject* ship, const ShipProjectile& projectile) {
-	if (ship == nullptr) {
+void SpaceCombatManager::addProjectile(ShipObject* ship, ShipProjectile* projectile) {
+	if (ship == nullptr || projectile == nullptr) {
 		return;
 	}
 
@@ -508,4 +648,26 @@ void SpaceCombatManager::addProjectile(ShipObject* ship, const ShipProjectile& p
 
 	projectileMap.addProjectile(ship, projectile);
 	broadcastProjectile(ship, projectile);
+}
+
+void SpaceCombatManager::addMissile(ShipObject* ship, ShipMissile* missile) {
+	if (ship == nullptr || missile == nullptr) {
+		return;
+	}
+
+	Locker sLock(ship);
+
+	projectileMap.addProjectile(ship, missile);
+	broadcastMissile(ship, missile);
+}
+
+void SpaceCombatManager::addCountermeasure(ShipObject* ship, ShipCountermeasure* counter) {
+	if (ship == nullptr || counter == nullptr) {
+		return;
+	}
+
+	Locker sLock(ship);
+
+	projectileMap.addProjectile(ship, counter);
+	broadcastCountermeasure(ship, counter, UpdateMissileMessage::UpdateType::COUNTERFAILED);
 }

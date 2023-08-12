@@ -15,8 +15,13 @@
 #include "server/zone/objects/ship/components/ShipWeaponComponent.h"
 #include "server/zone/packets/MessageCallback.h"
 #include "server/zone/managers/spacecombat/SpaceCombatManager.h"
+#include "server/zone/managers/spacecombat/projectile/ShipMissile.h"
+#include "server/zone/managers/spacecombat/projectile/ShipCountermeasure.h"
 
 class CreateProjectileMessage : public BaseMessage {
+private:
+	constexpr static float directionScale = PackedPosition::positionScale * ShipProjectile::positionScale;
+
 public:
 	CreateProjectileMessage(Vector3 position, Vector3 direction, uint8 component, uint8 projectile, uint8 weapon, uint16 shipID, uint32 sequence) {
 		insertShort(0x12);
@@ -38,21 +43,21 @@ public:
 		insertInt(sequence);
 	}
 
-	CreateProjectileMessage(ShipObject* ship, ShipObject* receiver, const ShipProjectile& projectile) {
+	CreateProjectileMessage(ShipObject* ship, ShipObject* receiver, const ShipProjectile* projectile) {
 		insertShort(0x12);
 		insertInt(0xB88AF9A5);
 
 		insertShort(ship->getUniqueID());
-		insertByte(projectile.getWeaponSlot());
-		insertByte(projectile.getProjectileType());
-		insertByte(projectile.getComponentSlot());
+		insertByte(projectile->getWeaponSlot());
+		insertByte(projectile->getProjectileType());
+		insertByte(projectile->getComponentSlot());
 
 		PackedPosition packed;
 
-		packed.set(projectile.getThisPosition());
+		packed.set(projectile->getThisPosition());
 		packed.write(this);
 
-		Vector3 dirScaled = projectile.getDirection() * ShipProjectile::positionScale;
+		Vector3 dirScaled = projectile->getDirection() * directionScale;
 		writeSignedShort(dirScaled.getX());
 		writeSignedShort(dirScaled.getZ());
 		writeSignedShort(dirScaled.getY());
@@ -135,25 +140,19 @@ public:
 			return;
 		}
 
-		float range = data->getRange();
-		if (range == 0.f) {
-			return;
+		if (data->isCountermeasure()) {
+			return launchCountermeasure(ship, pilot, weapon, data);
 		}
 
-		float speed = data->getSpeed();
-		if (speed == 0.f) {
-			return;
+		if (data->isMissile()) {
+			return launchMissile(ship, pilot, weapon, data);
 		}
 
 		float currentEnergy = ship->getCapacitorEnergy();
 		float cost = weapon->getEnergyPerShot();
+
 		if (currentEnergy < cost) {
 			return;
-		}
-
-		uint16 uniqueID = ship->getUniqueID();
-		if (shipID != uniqueID) {
-			shipID = uniqueID;
 		}
 
 		Locker lock(pilot);
@@ -162,12 +161,127 @@ public:
 		ship->setSyncStamp(sequence);
 		ship->setCapacitorEnergy(currentEnergy - cost, true);
 
-		auto spaceCombat = SpaceCombatManager::instance();
+		auto projectile = new ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), 1.f, System::getMiliTime());
+		projectile->readProjectileData(data);
 
-		if (spaceCombat != nullptr) {
-			auto projectile = ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, speed, range, 1.f, System::getMiliTime());
-			spaceCombat->addProjectile(ship, projectile);
+		SpaceCombatManager::instance()->addProjectile(ship, projectile);
+	}
+
+	void launchCountermeasure(ShipObject* ship, CreatureObject* pilot, ShipWeaponComponent* weapon, const ShipProjectileData* data) {
+		auto shipManager = ShipManager::instance();
+		if (shipManager == nullptr) {
+			return;
 		}
+
+		int slot = Components::WEAPON_START + weaponIndex;
+		int ammoType = ship->getAmmoClassMap()->get(slot);
+
+		int currentAmmo = ship->getCurrentAmmoMap()->get(slot);
+		if (currentAmmo < 1) {
+			return;
+		}
+
+		auto counterData = shipManager->getCountermeasureData(ammoType);
+		if (counterData == nullptr) {
+			return;
+		}
+
+		Locker lock(pilot);
+		Locker cross(ship, pilot);
+
+		auto deltaVector = ship->getDeltaVector();
+		if (deltaVector == nullptr) {
+			return;
+		}
+
+		ship->setCurrentAmmo(slot, currentAmmo - 1, nullptr, DeltaMapCommands::SET, deltaVector);
+		deltaVector->sendMessages(ship, ship->getPilot());
+
+		auto counter = new ShipCountermeasure(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), 1.f, System::getMiliTime());
+		counter->readProjectileData(data);
+		counter->readCountermeasureData(counterData);
+
+		SpaceCombatManager::instance()->addCountermeasure(ship, counter);
+	}
+
+	void launchMissile(ShipObject* ship, CreatureObject* pilot, ShipWeaponComponent* weapon, const ShipProjectileData* data) {
+		auto targetID = pilot->getTargetID();
+		if (targetID == 0) {
+			return;
+		}
+
+		auto zoneServer = pilot->getZoneServer();
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		auto target = zoneServer->getObject(targetID, false);
+		if (target == nullptr || !target->isShipObject()) {
+			return;
+		}
+
+		auto targetShip = target->asShipObject();
+		if (targetShip == nullptr) {
+			return;
+		}
+
+		auto shipManager = ShipManager::instance();
+		if (shipManager == nullptr) {
+			return;
+		}
+
+		int weaponSlot = Components::WEAPON_START + weaponIndex;
+		int ammoType = ship->getAmmoClassMap()->get(weaponSlot);
+
+		int currentAmmo = ship->getCurrentAmmoMap()->get(weaponSlot);
+		if (currentAmmo < 1) {
+			return;
+		}
+
+		auto missileData = shipManager->getMissileData(ammoType);
+		if (missileData == nullptr) {
+			return;
+		}
+
+		Locker lock(pilot);
+		Locker cross(ship, pilot);
+
+		auto deltaVector = ship->getDeltaVector();
+		if (deltaVector == nullptr) {
+			return;
+		}
+
+		ship->setCurrentAmmo(weaponSlot, currentAmmo - 1, nullptr, DeltaMapCommands::SET, deltaVector);
+		deltaVector->sendMessages(ship, ship->getPilot());
+
+		auto missile = new ShipMissile(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), 1.f, System::getMiliTime());
+		missile->readProjectileData(data);
+		missile->readMissileData(missileData);
+
+		missile->setTarget(targetShip);
+		missile->calculateTimeToHit();
+
+		String slotName = Components::shipComponentSlotToString(componentIndex);
+
+		if (slotName != "") {
+			uint32 componentCrc = targetShip->getShipComponentMap()->get(componentIndex);
+			if (componentCrc == 0) {
+				return;
+			}
+
+			auto collisionData = shipManager->getCollisionData(targetShip);
+			if (collisionData == nullptr) {
+				return;
+			}
+
+			const auto& hardpoints = collisionData->getHardpoints(slotName);
+			const auto& hardpoint = hardpoints.get(componentCrc);
+			const auto& hardpointPosition = hardpoint.getSphere().getCenter();
+
+			missile->setHardpointTranslation(hardpointPosition);
+		}
+
+		SpaceCombatManager::instance()->addMissile(ship, missile);
 	}
 
 	const char* getTaskName() {
