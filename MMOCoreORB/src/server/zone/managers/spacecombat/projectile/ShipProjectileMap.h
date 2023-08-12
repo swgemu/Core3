@@ -8,11 +8,17 @@
 class ShipProjectileMapEntry : public Object {
 private:
 	ManagedWeakReference<ShipObject*> shipRef;
-	Vector<ShipProjectile> projectileVector;
+	Vector<ShipProjectile*> projectileVector;
 
 public:
 	ShipProjectileMapEntry() : Object() {
 
+	}
+
+	~ShipProjectileMapEntry() {
+		for (int i = projectileVector.size(); -1 > --i;) {
+			remove(i);
+		}
 	}
 
 	ShipProjectileMapEntry(ShipObject* ship) : Object() {
@@ -25,18 +31,25 @@ public:
 
 	ShipProjectile* getProjectile(int index) {
 		if (projectileVector.size() > index) {
-			return &projectileVector.get(index);
+			return projectileVector.get(index);
 		}
 
 		return nullptr;
 	}
 
-	void add(const ShipProjectile& projectile) {
-		projectileVector.add(std::move(projectile));
+	void add(ShipProjectile* projectile) {
+		projectileVector.add(projectile);
 	}
 
 	void remove(int index) {
 		if (projectileVector.size() > index) {
+			auto entry = projectileVector.get(index);
+
+			if (entry != nullptr) {
+				delete entry;
+				entry = nullptr;
+			}
+
 			projectileVector.remove(index);
 		}
 	}
@@ -76,6 +89,19 @@ public:
 		return nullptr;
 	}
 
+	ShipProjectileMapEntry* getEntry(ShipObject* ship) {
+		ReadLocker lock(&sync);
+
+		uint64 objectID = ship->getObjectID();
+		int index = projectileMap.find(objectID);
+
+		if (index != -1) {
+			return getEntry(index);
+		}
+
+		return nullptr;
+	}
+
 	ShipProjectile* getProjectile(int mapIndex, int entryIndex) {
 		ReadLocker lock(&sync);
 
@@ -88,7 +114,7 @@ public:
 		return nullptr;
 	}
 
-	void addProjectile(ShipObject* ship, const ShipProjectile& projectile) {
+	void addProjectile(ShipObject* ship, ShipProjectile* projectile) {
 		Locker lock(&sync);
 
 		uint64 objectID = ship->getObjectID();
@@ -121,6 +147,15 @@ public:
 		Locker lock(&sync);
 
 		if (projectileMap.size() > mapIndex) {
+			auto entry = getEntry(mapIndex);
+			if (entry == nullptr) {
+				return;
+			}
+
+			for (int i = 0; i < entry->size(); ++i) {
+				entry->remove(i);
+			}
+
 			projectileMap.remove(mapIndex);
 		}
 	}
