@@ -33,7 +33,7 @@ void ShipWeaponComponentImplementation::loadTemplateData(SharedObjectTemplate* t
 	}
 
 	if (getClientGameObjectType() == SceneObjectType::SHIPCOUNTERMEASURELAUNCHER) {
-		int ammoType = ShipMissileData::getLauncherAmmoType(componentDataName);
+		int ammoType = ShipCountermeasureData::getLauncherAmmoType(componentDataName);
 		if (ammoType != -1) {
 			ammoClass = ammoType;
 		}
