@@ -344,12 +344,6 @@ ShipObject* ShipManager::createShip(const String& shipName, int persistence, boo
 		return nullptr;
 	}
 
-	auto appearance = shot->getAppearanceTemplate();
-
-	if (appearance == nullptr) {
-		return nullptr;
-	}
-
 	auto zoneServer = ServerCore::getZoneServer();
 
 	if (zoneServer == nullptr)
@@ -366,8 +360,8 @@ ShipObject* ShipManager::createShip(const String& shipName, int persistence, boo
 	if (shipTemp == nullptr)
 		return nullptr;
 
-	if (loadComponents && ship->isShipAiAgent() && ship->getControlDeviceID() == 0) {
-		ShipAiAgent* agent = ship.castTo<ShipAiAgent*>();
+	if (loadComponents && ship->isShipAiAgent()) {
+		ShipAiAgent* agent = ship->asShipAiAgent();
 
 		if (agent != nullptr) {
 			agent->loadTemplateData(shot);
@@ -383,12 +377,17 @@ ShipObject* ShipManager::createShip(const String& shipName, int persistence, boo
 }
 
 void ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents) {
+	if (owner == nullptr)
+		return;
+
 	ManagedReference<SceneObject*> dataPad = owner->getSlottedObject("datapad");
+
 	if (dataPad == nullptr) {
 		return;
 	}
 
 	PlayerObject* ghost = owner->getPlayerObject();
+
 	if (ghost == nullptr) {
 		return;
 	}
