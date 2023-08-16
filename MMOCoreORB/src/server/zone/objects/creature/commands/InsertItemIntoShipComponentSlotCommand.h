@@ -38,7 +38,7 @@ public:
 			return GENERALERROR;
 		}
 
-		auto sceneShip = zoneServer->getObject(shipID);
+		ManagedReference<SceneObject*> sceneShip = zoneServer->getObject(shipID);
 
 		if (sceneShip == nullptr || !sceneShip->isShipObject()) {
 			return GENERALERROR;
@@ -56,9 +56,15 @@ public:
 			return GENERALERROR;
 		}
 
-		auto sceneAmmo = zoneServer->getObject(itemID);
+		ManagedReference<SceneObject*> sceneAmmo = zoneServer->getObject(itemID);
 
-		if (sceneAmmo == nullptr) {
+		if (sceneAmmo == nullptr || !sceneAmmo->isComponent()) {
+			return GENERALERROR;
+		}
+
+		auto ammo = dynamic_cast<Component*>(sceneAmmo.get());
+
+		if (ammo == nullptr || ammo->getAttributeValue("fltmaxammo") == 0) {
 			return GENERALERROR;
 		}
 
@@ -73,7 +79,7 @@ public:
 		bool isCounterLauncher = weapon->getClientGameObjectType() == SceneObjectType::SHIPCOUNTERMEASURELAUNCHER;
 		bool isMissileLauncher = weapon->getClientGameObjectType() == SceneObjectType::SHIPWEAPONLAUNCHER;
 
-		if ((!isCounterLauncher && !isMissileLauncher)) {
+		if (!isCounterLauncher && !isMissileLauncher) {
 			creature->sendSystemMessage("@space/space_interaction:no_ammo_allowed");
 			return GENERALERROR;
 		}
@@ -116,16 +122,17 @@ public:
 
 		Locker locker(ship, creature);
 
-		ship->installAmmo(creature, sceneAmmo, weaponID, true);
-
 		StringIdChatParameter stringId;
 		String type = isMissileLauncher ? "missile" : "countermeasure";
 
 		stringId.setStringId("space/space_interaction", "reloaded_x_" + type + "_ammo");
-		stringId.setDI(ammoMinMap->get(weaponID));
+		stringId.setDI(ammo->getAttributeValue("fltmaxammo"));
 		stringId.setTO(sceneAmmo->getObjectID());
 
 		creature->sendSystemMessage(stringId);
+
+		ship->installAmmo(creature, sceneAmmo, weaponID, true);
+
 		return SUCCESS;
 	}
 };
