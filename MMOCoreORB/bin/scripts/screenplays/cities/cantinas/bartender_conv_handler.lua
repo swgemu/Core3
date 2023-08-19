@@ -11,6 +11,10 @@ function BartenderConversationHandler:runScreenHandlers(pConvTemplate, pPlayer, 
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local npcID = SceneObject(pNpc):getObjectID()
 
+	if (AiAgent(pNpc):getPatrolPointsSize() == 0) then
+		createEvent(20 * 1000, "BartendersScreenPlay", "assignPatrolPoint", pNpc, "")
+	end
+
 	if (screenID == "opt_rumor") then
 		local hasPlayerRumor = readData(npcID .. ":BartenderPlayerRumors:")
 

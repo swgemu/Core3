@@ -252,7 +252,7 @@ function BartendersScreenPlay:reachedBartenderPoint(pNpc)
 end
 
 function BartendersScreenPlay:assignPatrolPoint(pNpc)
-	if (pNpc == nil) then
+	if (pNpc == nil or AiAgent(pNpc):getPatrolPointsSize() > 0) then
 		return
 	end
 
@@ -395,6 +395,9 @@ function BartendersScreenPlay:purchaseDrinkCallback(pPlayer, pSui, eventIndex, a
 		CreatureObject(pPlayer):sendSystemMessage(fullMsg:_getObject())
 		return
 	end
+
+	-- Charge for drink
+	CreatureObject(pPlayer):subtractCashCredits(drinkCost)
 
 	SceneObject(pItem):setCustomObjectName(getStringId(messageString))
 
