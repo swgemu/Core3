@@ -31,11 +31,22 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 				ConcealBuff* concealBuff = cast<ConcealBuff*>(player->getBuff(concealCrc));
 
 				if (concealBuff != nullptr) {
-					if (concealBuff->getPlanetName() != zoneName) {
-						player->clearState(CreatureState::MASKSCENT, true);
-					} else {
-						player->setState(CreatureState::MASKSCENT, true);
-					}
+					Reference<ConcealBuff*> buffRef = concealBuff;
+					Reference<CreatureObject*> playerRef = player;
+					Reference<Zone*> zoneRef = newZone;
+
+					Core::getTaskManager()->executeTask([buffRef, playerRef, zoneRef] () {
+						if (buffRef == nullptr || playerRef == nullptr || zoneRef == nullptr)
+							return;
+
+						Locker lock(playerRef);
+
+						if (buffRef->getPlanetName() != zoneRef->getZoneName()) {
+							playerRef->clearState(CreatureState::MASKSCENT, true);
+						} else {
+							playerRef->setState(CreatureState::MASKSCENT, true);
+						}
+					}, "ClearMaskStateLambda");
 				}
 			}
 		}
