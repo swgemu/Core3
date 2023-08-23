@@ -49,6 +49,11 @@ void APIProxyPlayerManager::lookupCharacter(APIRequest& apiRequest) {
 		return;
 	}
 
+	if (server->isServerLoading()) {
+		apiRequest.fail("zoneServer is loading.");
+		return;
+	}
+
 	auto qName = apiRequest.getQueryFieldString("name", false);
 	auto qNames = apiRequest.getQueryFieldString("names", false);
     auto qSearch = apiRequest.getQueryFieldString("search", false, "").toLowerCase();
