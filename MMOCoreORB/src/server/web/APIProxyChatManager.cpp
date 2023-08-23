@@ -144,6 +144,18 @@ void APIProxyChatManager::handle(APIRequest& apiRequest) {
 		return;
 	}
 
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		apiRequest.fail("zoneServer not found.");
+		return;
+	}
+
+	if (zoneServer->isServerLoading()) {
+		apiRequest.fail("zoneServer is loading.");
+		return;
+	}
+
 	auto msgType = apiRequest.getPathFieldString("msgType", true);
 
 	if (msgType.isEmpty()) {

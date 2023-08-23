@@ -10,6 +10,7 @@
 
 void PrivateSkillMultiplierBuffImplementation::applySkillModifiers() {
 	ManagedReference<CreatureObject*> strongCreo = creature.get();
+
 	if (strongCreo == nullptr)
 		return;
 
@@ -24,16 +25,15 @@ void PrivateSkillMultiplierBuffImplementation::applySkillModifiers() {
 		if (value == 0)
 			continue;
 
-		int prevMod = strongCreo->getSkillMod(key);
-
-		strongCreo->addSkillMod(SkillModManager::BUFF, key, prevMod == 0 ? value : prevMod*(value-1), true);
+		strongCreo->addSkillMod(SkillModManager::BUFF, key, value, true);
 	}
 
-	creature.get()->updateSpeedAndAccelerationMods();
+	strongCreo->updateSpeedAndAccelerationMods();
 }
 
 void PrivateSkillMultiplierBuffImplementation::removeSkillModifiers() {
 	ManagedReference<CreatureObject*> strongCreo = creature.get();
+
 	if (strongCreo == nullptr)
 		return;
 
@@ -48,13 +48,13 @@ void PrivateSkillMultiplierBuffImplementation::removeSkillModifiers() {
 		if (value == 0)
 			continue;
 
-		int prevMod = strongCreo->getSkillMod(key);
+		int currentMod = strongCreo->getSkillMod(key);
+		int newMod = currentMod <= value ? -currentMod : -value;
 
-		strongCreo->addSkillMod(SkillModManager::BUFF, key, prevMod <= value ? -prevMod : (int)(prevMod*((1/(float)(value))-1)), true);
-
+		strongCreo->addSkillMod(SkillModManager::BUFF, key, newMod, true);
 	}
 
-	creature.get()->updateSpeedAndAccelerationMods();
+	strongCreo->updateSpeedAndAccelerationMods();
 }
 
 

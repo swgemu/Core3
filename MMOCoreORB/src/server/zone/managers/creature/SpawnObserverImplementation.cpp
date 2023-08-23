@@ -13,7 +13,7 @@ void SpawnObserverImplementation::despawnSpawns() {
 		if (creature != nullptr && creature->isAiAgent()) {
 			AiAgent* agent = cast<AiAgent*>(creature.get());
 
-			if (agent == nullptr || agents.contains(agent))
+			if (agent == nullptr || agent->isPet() || agents.contains(agent))
 				continue;
 
 			agents.add(agent);
