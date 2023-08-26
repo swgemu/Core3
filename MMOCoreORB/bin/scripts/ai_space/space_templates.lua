@@ -1,4 +1,5 @@
 includeFile("default.lua")
+includeFile("escort.lua")
 includeFile("spaceStations.lua")
 
 customMap = {
@@ -18,6 +19,12 @@ bitmaskLookup = {
 		{MOVESPACE, "moveDefault"},
 		{LOOKATSPACE, "lookDefault"},
 		{AGGROSPACE, "aggroDefault"}
+	}},
+
+	{ESCORT, {
+		{NONESPACE, "rootEscort"},
+		{MOVESPACE, "moveEscort"},
+		{IDLESPACE, "idleEscort"},
 	}},
 
 	{TEST, {

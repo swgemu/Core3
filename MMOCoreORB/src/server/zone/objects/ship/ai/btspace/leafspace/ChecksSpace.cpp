@@ -52,7 +52,7 @@ template<> bool CheckAggroDelayPast::check(ShipAiAgent* agent) const {
 }
 
 template<> bool CheckHasFollow::check(ShipAiAgent* agent) const {
-	return agent->getFollowShipObject() != nullptr;
+	return agent->getFollowShipObject().get() != nullptr;
 }
 
 template<> bool CheckRetreat::check(ShipAiAgent* agent) const {

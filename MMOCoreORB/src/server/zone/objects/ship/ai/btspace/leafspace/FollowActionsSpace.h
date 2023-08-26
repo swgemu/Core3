@@ -95,12 +95,11 @@ public:
 			break;
 		}
 		case ShipAiAgent::FOLLOWING: {
-			if (targetShip != nullptr) {
-				Locker clocker(targetShip, agent);
+			targetShip = agent->getFollowShipObject().get();
 
-				agent->setFollowShipObject(targetShip);
+			if (targetShip != nullptr) {
+				break;
 			}
-			break;
 		}
 		case ShipAiAgent::PATROLLING:
 			break;

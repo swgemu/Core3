@@ -97,6 +97,7 @@
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/gcw/observers/SquadObserver.h"
 #include "server/zone/managers/ship/ShipManager.h"
+#include "templates/params/ship/ShipFlags.h"
 #include "templates/params/creature/PlayerArrangement.h"
 
 int DirectorManager::DEBUG_MODE = 0;
@@ -759,6 +760,10 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("FIGHTERSHIP", ShipManager::FIGHTERSHIP);
 	luaEngine->setGlobalInt("POBSHIP", ShipManager::POBSHIP);
 	luaEngine->setGlobalInt("SPACESTATION", ShipManager::SPACESTATION);
+
+	// Ship Flags
+	luaEngine->setGlobalInt("SHIP_AI_ESCORT", ShipFlag::ESCORT);
+	luaEngine->setGlobalInt("SHIP_AI_FOLLOW", ShipFlag::FOLLOW);
 
 	// Badges
 	const auto badges = BadgeList::instance()->getMap();
