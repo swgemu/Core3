@@ -139,6 +139,10 @@ public:
 		return (creature->getStateBitmask() & stateMask) == 0;
 	}
 
+	bool checkSpaceStates(CreatureObject* creature) const {
+		return creature->getSpaceZone() != nullptr && (creature->isPilotingShip() || creature->isOnboardPobShip() || creature->isInShipStation());
+	}
+
 	/**
 	 * Returns duration of the command
 	 */

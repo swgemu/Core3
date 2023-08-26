@@ -238,6 +238,11 @@ class ShipAiAgent extends ShipObject {
 	@local
 	@dirty
 	@dereferenced
+	public native SpacePatrolPoint getNextFollowPosition(ShipObject followShip);
+
+	@local
+	@dirty
+	@dereferenced
 	public native SpacePatrolPoint getNextAttackPosition(ShipObject targetShip);
 
 	@local
@@ -304,7 +309,10 @@ class ShipAiAgent extends ShipObject {
 
 	public void setFollowShipObject(ShipObject ship) {
 		synchronized (targetMutex) {
-			if (followShip != ship) {
+			if (this.isRetreating())
+				return;
+
+			if (ship != null && followShip != ship) {
 				setMovementState(FOLLOWING);
 
 				followShip = ship;

@@ -571,6 +571,21 @@ bool ShipAiAgentImplementation::isInRangePosition(const Vector3& position, float
 	return thisPosition.squaredDistanceTo(position) <= (radius * radius);
 }
 
+SpacePatrolPoint ShipAiAgentImplementation::getNextFollowPosition(ShipObject* followShip) {
+	if (followShip == nullptr) {
+		return getPosition();
+	}
+
+	setNextPathPosition(followShip);
+
+	const Vector3& targetPosition = followShip->getPosition();
+	const Vector3& targetPrevious = followShip->getPreviousPosition();
+
+	SpacePatrolPoint nextPoint = (((targetPosition - targetPrevious) * 5.f) + targetPosition);
+
+	return nextPoint;
+}
+
 SpacePatrolPoint ShipAiAgentImplementation::getNextAttackPosition(ShipObject* targetShip) {
 	if (targetShip == nullptr) {
 		return getPosition();
@@ -637,9 +652,7 @@ int ShipAiAgentImplementation::setDestination() {
 
 		clearPatrolPoints();
 
-		SpacePatrolPoint nextPoint = followCopy->getWorldPosition();
-
-		patrolPoints.add(nextPoint);
+		patrolPoints.add(getNextFollowPosition(followCopy));
 		break;
 	}
 	case ShipAiAgent::WATCHING:
@@ -1048,21 +1061,6 @@ bool ShipAiAgentImplementation::generatePatrol(int totalPoints, float distance) 
 		float x = homePosition.getX() + (distance - System::frandom(distance * 2.f));
 		float y = homePosition.getY() + (distance - System::frandom(distance * 2.f));
 		float z = homePosition.getZ() + (distance - System::frandom(distance * 2.f));
-
-		/*
-		if (deltaV.getX() > 0.f && deltaV.getY() > 0.f) { // ++
-			x += distance;
-			y -= distance;
-		} else if (deltaV.getX() > 0.f && deltaV.getY() < 0.f) { // +-
-			x -= distance;
-			y -= distance;
-		} else if (deltaV.getX() < 0.f && deltaV.getY() < 0.f) { // --
-			x -= distance;
-			y += distance;
-		} else {
-			x += distance;
-			y += distance;
-		}*/
 
 		Vector3 position = Vector3(x, y, z);
 		SpacePatrolPoint newPoint(position);

@@ -87,11 +87,11 @@ public:
 			if (strongRef != nullptr) {
 				// strongRef->info(true) << strongRef->getDisplayedName() << " - ID: " << strongRef->getObjectID() << " -- ShipAiBehavior scheduled with delay: " << delay;
 
-				if (strongRef->getFollowShipObject() != nullptr && !hasFollowObject) {
+				if (strongRef->getFollowShipObject().get() != nullptr && !hasFollowObject) {
 					SpaceAiMap::instance()->behaviorsWithFollowObject.increment();
 
 					hasFollowObject = true;
-				} else if (strongRef->getFollowShipObject() == nullptr && hasFollowObject) {
+				} else if (strongRef->getFollowShipObject().get() == nullptr && hasFollowObject) {
 					SpaceAiMap::instance()->behaviorsWithFollowObject.decrement();
 
 					hasFollowObject = false;
