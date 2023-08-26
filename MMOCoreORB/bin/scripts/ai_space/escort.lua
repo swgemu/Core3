@@ -1,25 +1,25 @@
 idleEscort = {
-	{id="1518537252",	name="SequenceSpace",	pid="none"},
-	{id="3893125218",	name="NotSpace",	pid="1518537252"},
-	{id="2796352310",	name="IfSpace",	pid="3893125218"},
-	{id="3211654910",	name="CheckMovementState",	pid="2796352310",	args={condition=FOLLOWING}},
-	{id="325001551",	name="NotSpace",	pid="1518537252"},
-	{id="2647026017",	name="IfSpace",	pid="325001551"},
-	{id="3340069447",	name="CheckHasPatrol",	pid="2647026017"},
-	{id="1857803864",	name="GeneratePatrol",	pid="1518537252",	args={distFromHome=0.0, numPoints=0}}}
+	{id="3878147956",	name="SequenceSpace",	pid="none"},
+	{id="4233020465",	name="NotSpace",	pid="3878147956"},
+	{id="3024864836",	name="IfSpace",	pid="4233020465"},
+	{id="1614536018",	name="CheckMovementState",	pid="3024864836",	args={condition=FOLLOWING}},
+	{id="3826170193",	name="NotSpace",	pid="3878147956"},
+	{id="1569932203",	name="IfSpace",	pid="3826170193"},
+	{id="1062834130",	name="CheckHasPatrol",	pid="1569932203"},
+	{id="1111847443",	name="GeneratePatrol",	pid="3878147956",	args={distFromHome=256.0, numPoints=5}}}
 addAiTemplate("idleEscort", idleEscort)
 
 moveEscort = {
-	{id="884857570",	name="SequenceSpace",	pid="none"},
-	{id="3779780954",	name="IfSpace",	pid="884857570"},
-	{id="1318511574",	name="CheckDestination",	pid="3779780954"},
-	{id="3906717712",	name="AlwaysFailSpace",	pid="884857570"},
-	{id="1120284701",	name="FindNextPosition",	pid="3906717712"}}
+	{id="3162096793",	name="SequenceSpace",	pid="none"},
+	{id="3119158273",	name="IfSpace",	pid="3162096793"},
+	{id="311662512",	name="CheckDestination",	pid="3119158273"},
+	{id="4219492080",	name="AlwaysFailSpace",	pid="3162096793"},
+	{id="145123387",	name="FindNextPosition",	pid="4219492080"}}
 addAiTemplate("moveEscort", moveEscort)
 
 rootEscort = {
-	{id="3361030279",	name="SelectorSpace",	pid="none"},
-	{id="2451338969",	name="TreeSocketSpace",	pid="3361030279",	args={slot=MOVESPACE}},
-	{id="2213142081",	name="TreeSocketSpace",	pid="3361030279",	args={slot=IDLESPACE}}}
+	{id="763915188",	name="SelectorSpace",	pid="none"},
+	{id="2765964998",	name="TreeSocketSpace",	pid="763915188",	args={slot=MOVESPACE}},
+	{id="3409670866",	name="TreeSocketSpace",	pid="763915188",	args={slot=IDLESPACE}}}
 addAiTemplate("rootEscort", rootEscort)
 
