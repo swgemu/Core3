@@ -366,13 +366,24 @@ void TemplateManager::loadPlanetMapCategories() {
 	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
 		DataTableRow* row = dtiff.getRow(i);
 
-		Reference<PlanetMapCategory*> planetMapCategory = new PlanetMapCategory();
-		planetMapCategory->parseFromDataTableRow(row);
+		bool isMainCategory = false;
+		row->getValue(2, isMainCategory);
 
-		planetMapCategoryList.put(planetMapCategory->getName(), planetMapCategory);
+		if (isMainCategory) {
+			Reference<PlanetMapCategory*> planetMapCategory = new PlanetMapCategory();
+			planetMapCategory->parseFromDataTableRow(row);
+
+			planetMapCategoryList.put(planetMapCategory->getName(), planetMapCategory);
+		} else {
+			Reference<PlanetMapSubCategory*> planetMapSubCat = new PlanetMapSubCategory();
+			planetMapSubCat->parseFromDataTableRow(row);
+
+			planetMapSubCategoryList.put(planetMapSubCat->getName(), planetMapSubCat);
+		}
 	}
 
-	info() << "Loaded " << planetMapCategoryList.size() << " planet map categories.";
+	info(true) << "Loaded " << planetMapCategoryList.size() << " planet map primary categories.";
+	info(true) << "Loaded " << planetMapSubCategoryList.size() << " planet map sub categories.";
 }
 
 void TemplateManager::loadLuaTemplates() {

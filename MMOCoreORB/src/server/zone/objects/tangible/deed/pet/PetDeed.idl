@@ -108,10 +108,10 @@ class PetDeed extends Deed {
 		regen = 1;
 	}
 	@dirty
-	public native void setSpecialResist(int type);
+	public native void setSpecialResist(unsigned int type);
 
 	@read
-	public native boolean isSpecialResist(int type);
+	public native boolean isSpecialResist(unsigned int type);
 
 	@read
 	public int getSampleCount() {

@@ -143,7 +143,6 @@ CorelliaDoabaGuerfelScreenPlay = CityScreenPlay:new {
 		{"comm_operator",400,-13,0.2,-7.7,60,4345354, "npc_imperial"},
 
 		--Cantina
-		{"bartender",60,-4.00542,-0.894992,-2.41,166.23,3075429, "neutral"},
 		{"noble",60,-42.098,0.105009,-23.0786,180.012,3075441, "conversation"},
 		{"mercenary",300,-42.098,0.105009,-24.1786,0,3075441, "nervous"},
 		{"corellia_times_reporter",300,21.878,-0.894997,-15.7126,0,3075430, "conversation"},

@@ -12,10 +12,7 @@
 
 class GetObjVarsCommand : public QueueCommand {
 public:
-
-	GetObjVarsCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	GetObjVarsCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -108,6 +105,11 @@ public:
 							msg << "Has Follow Object: " << hasFollow.toString() << endl;
 							msg << "Current total Patrol Points: " << objectAgent->getPatrolPointSize() << endl;
 							msg << "Is in navmesh: " << (objectAgent->isInNavMesh() ? "True" : "False") << endl;
+
+							msg << "Current Weapon: " << (objectAgent->getCurrentWeapon() != nullptr ? "True" : "False") << endl;
+							msg << "Default Weapon: " << (objectAgent->getDefaultWeapon() != nullptr ? "True" : "False") << endl;
+							msg << "Primary Weapon: " << (objectAgent->getPrimaryWeapon() != nullptr ? "True" : "False") << endl;
+							msg << "Secondary Weapon: " << (objectAgent->getSecondaryWeapon() != nullptr ? "True" : "False") << endl;
 						}
 					} else if (creoObject->isPlayerCreature()) {
 						auto playerManager = server->getPlayerManager();

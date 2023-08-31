@@ -223,12 +223,21 @@ class PlayerManager extends Observer implements Logger {
 	@local
 	public native void addInsurableItemsRecursive(SceneObject obj, SortedVector<SceneObject> items, boolean onlyInsurable);
 
+	@arg1preLocked
 	public native void handleAbortTradeMessage(CreatureObject player);
+
+	@arg1preLocked
 	public native void handleAddItemToTradeWindow(CreatureObject player, unsigned long itemID);
+
+	@arg1preLocked
 	public native void handleGiveMoneyMessage(CreatureObject player, unsigned int value);
+
 	public native void handleAcceptTransactionMessage(CreatureObject player);
 	public native void handleUnAcceptTransactionMessage(CreatureObject player);
+
+	@arg1preLocked
 	public native void handleVerifyTradeMessage(CreatureObject player);
+
 	public native boolean checkTradeItems(CreatureObject player, CreatureObject receiver);
 
 	/**

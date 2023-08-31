@@ -40,6 +40,7 @@ protected:
 
 	bool sliceable;
 
+	bool insurable;
 	bool jediRobe;
 
 	bool invisible;
@@ -158,12 +159,20 @@ public:
 		return sliceable;
 	}
 
+	inline bool isInsurable() const {
+		return insurable;
+	}
+
+	void setInsurable(bool val) {
+		this->insurable = val;
+	}
+
 	inline bool isJediRobe() const {
 		return jediRobe;
 	}
 
-	void setJediRobe(bool jediRobe) {
-		this->jediRobe = jediRobe;
+	void setJediRobe(bool val) {
+		this->jediRobe = val;
 	}
 
 	const Vector<short >* getNumberExperimentalProperties() const {

@@ -523,6 +523,18 @@ void APIProxyObjectManager::handlePUT(APIRequest& apiRequest) {
 }
 
 void APIProxyObjectManager::handle(APIRequest& apiRequest) {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		apiRequest.fail("zoneServer not found.");
+		return;
+	}
+
+	if (zoneServer->isServerLoading()) {
+		apiRequest.fail("zoneServer is loading.");
+		return;
+	}
+
 	if (apiRequest.isMethodGET()) {
 		handleGET(apiRequest);
 		return;

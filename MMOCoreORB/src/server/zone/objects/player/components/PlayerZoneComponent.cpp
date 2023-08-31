@@ -10,14 +10,46 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/creature/buffs/ConcealBuff.h"
 
 void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
 
 	if (sceneObject->isPlayerCreature() && newZone != nullptr) {
-		PlayerObject* ghost = sceneObject->asCreatureObject()->getPlayerObject();
+		CreatureObject* player = sceneObject->asCreatureObject();
 
-		if (ghost != nullptr)
-			ghost->setSavedTerrainName(newZone->getZoneName());
+		if (player != nullptr) {
+			PlayerObject* ghost = player->getPlayerObject();
+			String zoneName = newZone->getZoneName();
+
+			if (ghost != nullptr)
+				ghost->setSavedTerrainName(zoneName);
+
+			// Remove MaskScent state from concealed players when their buff is for a different zone
+			uint32 concealCrc = STRING_HASHCODE("skill_buff_mask_scent");
+
+			if (player->hasBuff(concealCrc)) {
+				ConcealBuff* concealBuff = cast<ConcealBuff*>(player->getBuff(concealCrc));
+
+				if (concealBuff != nullptr) {
+					Reference<ConcealBuff*> buffRef = concealBuff;
+					Reference<CreatureObject*> playerRef = player;
+					Reference<Zone*> zoneRef = newZone;
+
+					Core::getTaskManager()->executeTask([buffRef, playerRef, zoneRef] () {
+						if (buffRef == nullptr || playerRef == nullptr || zoneRef == nullptr)
+							return;
+
+						Locker lock(playerRef);
+
+						if (buffRef->getPlanetName() != zoneRef->getZoneName()) {
+							playerRef->clearState(CreatureState::MASKSCENT, true);
+						} else {
+							playerRef->setState(CreatureState::MASKSCENT, true);
+						}
+					}, "ClearMaskStateLambda");
+				}
+			}
+		}
 	}
 
 	ZoneComponent::notifyInsertToZone(sceneObject, newZone);

@@ -14,6 +14,7 @@
 #include "templates/IffTemplate.h"
 #include "templates/ChildObject.h"
 #include "templates/manager/PlanetMapCategory.h"
+#include "templates/manager/PlanetMapSubCategory.h"
 #include "templates/slots/SlotDescriptor.h"
 #include "templates/slots/ArrangementDescriptor.h"
 #include "templates/params/primitives/IntegerParam.h"
@@ -66,7 +67,7 @@ protected:
 	String clientTemplateFileName;
 
 	Reference<const PlanetMapCategory*> planetMapCategory;
-	Reference<const PlanetMapCategory*> planetMapSubCategory;
+	Reference<const PlanetMapSubCategory*> planetMapSubCategory;
 	bool autoRegisterWithPlanetMap;
 
 	String fullTemplateString;
@@ -412,7 +413,7 @@ public:
 		return planetMapCategory;
 	}
 
-	inline const PlanetMapCategory* getPlanetMapSubCategory() const {
+	inline const PlanetMapSubCategory* getPlanetMapSubCategory() const {
 		return planetMapSubCategory;
 	}
 

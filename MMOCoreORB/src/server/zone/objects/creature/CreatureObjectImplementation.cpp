@@ -149,6 +149,7 @@ void CreatureObjectImplementation::initializeMembers() {
 	moodID = 0;
 	performanceStartTime = 0;
 	performanceType = 0;
+	tradeTargetID = 0;
 
 	optionsBitmask = 0x80;
 
@@ -3714,7 +3715,9 @@ float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float ba
 Reference<WeaponObject*> CreatureObjectImplementation::getWeapon() {
 	Reference<WeaponObject*> retWeapon = weapon;
 
-	if (retWeapon == nullptr) {
+	if (isAiAgent()) {
+		retWeapon = asAiAgent()->getCurrentWeapon();
+	} else if (retWeapon == nullptr) {
 		retWeapon = getDefaultWeapon();
 	}
 

@@ -71,16 +71,13 @@ public:
 			creature->sendSystemMessage("@healing_response:must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return false;
 		} else {
-			// are we in a cantina? we have a private medical rating so either thats from a droid or camp or hospital
+			// Building private medical rating always takes precedence, If it a client object structure, no medical rating will prevent buffs/wound healing.
 			ManagedReference<SceneObject*> root = creature->getRootParent();
+
 			if (root != nullptr && root->isClientObject()) {
-				uint32 gameObjectType = root->getGameObjectType();
-				switch (gameObjectType) {
-						case SceneObjectType::RECREATIONBUILDING:
-						case SceneObjectType::HOTELBUILDING:
-						case SceneObjectType::THEATERBUILDING:
-							creature->sendSystemMessage("@error_message:droid_repair_not_valid_location"); // You must be in a city, at a camp site, or near your residence in order to use these tools.
-							return false;
+				if (creature->getSkillModOfType("private_medical_rating", SkillModManager::STRUCTURE) == 0) {
+					creature->sendSystemMessage("@healing_response:must_be_in_hospital"); // You must be in a hospital or at a campsite to do that.
+					return false;
 				}
 			}
 		}

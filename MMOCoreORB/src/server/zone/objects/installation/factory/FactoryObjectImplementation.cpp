@@ -337,7 +337,7 @@ void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
 		child->info(true) << "Sending Object To Player: " << player->getDisplayedName() << " Object: " << child->getDisplayedName();
 #endif
 
-		child->sendWithoutContainerObjectsTo(player);
+		child->sendTo(player, true, true);
 	}
 }
 

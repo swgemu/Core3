@@ -71,6 +71,8 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	sliceable = tanoData->getSliceable();
 
+	insurable = tanoData->isInsurable();
+
 	jediRobe = tanoData->isJediRobe();
 
 	faction = tanoData->getFaction();

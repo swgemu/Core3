@@ -139,7 +139,7 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 	} else if (varName == "planetMapCategory") {
 		planetMapCategory = templateManager->getPlanetMapCategoryByName(Lua::getStringParameter(state));
 	} else if (varName == "planetMapSubCategory") {
-		planetMapSubCategory = templateManager->getPlanetMapCategoryByName(Lua::getStringParameter(state));
+		planetMapSubCategory = templateManager->getPlanetMapSubCategoryByName(Lua::getStringParameter(state));
 	} else if (varName == "autoRegisterWithPlanetMap") {
 		autoRegisterWithPlanetMap = (bool) Lua::getByteParameter(state);
 	} else if (varName == "childObjects") {

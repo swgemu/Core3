@@ -43,6 +43,7 @@
 
 
 --Children folder includes
+includeFile("tangible/food/bartender_drinks/serverobjects.lua")
 includeFile("tangible/food/base/serverobjects.lua")
 includeFile("tangible/food/crafted/serverobjects.lua")
 includeFile("tangible/food/creature_bio_effects/serverobjects.lua")

@@ -42,12 +42,12 @@ MapLocationEntry& MapLocationEntry::operator=(const MapLocationEntry& entry) {
 	return *this;
 }
 
-void MapLocationEntry::setObject(SceneObject *obj) {
+void MapLocationEntry::setObject(SceneObject* obj) {
 	displayName = "";
 	object = obj;
 	icon = 0;
 
-	if(object == nullptr)
+	if (object == nullptr)
 		return;
 
 	const PlanetMapCategory* category = object->getPlanetMapCategory();
@@ -57,11 +57,14 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 
 	ManagedReference<Zone*> zone = object->getZone();
 
-	if(zone == nullptr)
+	if (zone == nullptr)
 		return;
+
+	const PlanetMapSubCategory* subPmc = object->getPlanetMapSubCategory();
 
 	if (object->isBuildingObject()) {
 		BuildingObject* building = cast<BuildingObject*>(object.get());
+
 		if (building->canPlayerRegisterWithin())
 			icon = 1;
 	}
@@ -71,47 +74,18 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 
 	if (object->isVendor()) {
 		newName = newName.subString(8); // Removes the "Vendor: " prefix
-	} else if (object->isCreatureObject()) { // Try FirstName + LastName if it's a creature
-		CreatureObject* creature = object->asCreatureObject();
-
-		String fName = creature->getFirstName();
-		String lName = creature->getLastName();
-
-		if(fName.length() > 0) {
-			newName = fName;
-
-			if(lName.length() > 0)
-				newName += " " + lName;
-		}
-	} else if(category->getIndex() == MapLocationType::SHUTTLEPORT) { // Shuttleports take on the name of nearest travel point
+	} else if (category->getIndex() == MapLocationType::SHUTTLEPORT) { // Shuttleports take on the name of nearest travel point
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 		PlanetTravelPoint* ptp = planetManager->getNearestPlanetTravelPoint(object, 64.f);
 
-		if(ptp != nullptr) {
+		if (ptp != nullptr) {
 			newName = ptp->getPointName();
 		}
-	} else if(category->getIndex() == MapLocationType::TERMINAL && (object->getPlanetMapSubCategory() != nullptr)) {
-		newName = object->getPlanetMapSubCategory()->getName();
-
-		if (newName == "terminal_bank") {
-			newName = "@map_loc_cat_n:terminal_bank";
-		} else if (newName == "terminal_bazaar") {
-			newName = "@map_loc_cat_n:terminal_bazaar";
-		} else if (newName == "terminal_mission") {
-			if (object->isMissionTerminal()) {
-				ManagedReference<MissionTerminal*> terminal = dynamic_cast<MissionTerminal*>(object.get());
-
-				if (terminal != nullptr)
-					newName = terminal->getTerminalName();
-			}
-		} else {
-			newName = "@map_loc_cat_n:terminal";
-		}
-
-	} else if (!object->isGCWBase()) { // Everything else except faction bases are just named by the city it's in
+	 // Everything else except faction bases, terminals and trainers are just named by the city it's in
+	} else if (!object->isGCWBase() && (category->getIndex() != MapLocationType::TERMINAL) && !object->isCreatureObject()) {
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
-		ManagedReference<CityRegion *> cityRegion = planetManager->getCityRegionAt(object->getWorldPositionX(), object->getWorldPositionY());
+		ManagedReference<CityRegion*> cityRegion = planetManager->getCityRegionAt(object->getWorldPositionX(), object->getWorldPositionY());
 
 		if (cityRegion != nullptr) {
 			newName = cityRegion->getCityRegionName();

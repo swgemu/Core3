@@ -51,7 +51,10 @@ protected:
 	int meatAmount;
 
 	String objectName;
+
 	uint32 planetMapCategory;
+	uint32 planetMapSubCategory;
+
 	int randomNameType;
 	bool randomNameTag;
 	String socialGroup;
@@ -261,6 +264,10 @@ public:
 
 	inline uint32 getPlanetMapCategory() const {
 		return planetMapCategory;
+	}
+
+	inline uint32 getPlanetMapSubCategory() const {
+		return planetMapSubCategory;
 	}
 
 	inline int getRandomNameType() const {

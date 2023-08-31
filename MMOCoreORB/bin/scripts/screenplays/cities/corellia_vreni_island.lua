@@ -98,7 +98,6 @@ CorelliaVreniIslandScreenPlay = CityScreenPlay:new {
 		{"commoner_technician",300,-32.3,-0.1,-19.0,-177,3005708, "sad"},
 		{"mouse_droid",60,-32.8,-0.1,-21.0,-16,3005708, "sad"},
 		{"patron_devaronian",60,-31.6,0.1,-9.7,10,3005708, "sad"},
-		{"bartender",60,8.5,-0.9,0.1,82,3005697, "neutral"},
 		{"scientist",60,10.5,-0.9,2.0,-119,3005697, "npc_standing_drinking"},
 		{"devaronian_male",60,-31.2,-0.9,20.3,87,3005706, "npc_sitting_chair"},
 		{"bounty_hunter",60,-21.4,-0.9,19.0,-84,3005706, "calm"},

@@ -37,6 +37,7 @@ include server.zone.objects.scene.variables.PendingTasksMap;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.scene.ObserverType;
 include templates.manager.PlanetMapCategory;
+include templates.manager.PlanetMapSubCategory;
 include templates.manager.TemplateManager;
 include templates.SharedObjectTemplate;
 include server.zone.objects.scene.components.ZoneComponent;
@@ -2037,15 +2038,18 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@local
 	public void setPlanetMapCategory(final PlanetMapCategory pmc) {
-		if (!pmc)
+		if (pmc == null)
 			planetMapCategory = 0;
 		else
 			planetMapCategory = pmc.getCrc();
 	}
 
 	@local
-	public void setPlanetMapSubCategory(final PlanetMapCategory pmc)  {
-		planetMapSubCategory = pmc.getCrc();
+	public void setPlanetMapSubCategory(final PlanetMapSubCategory subPmc)  {
+		if (subPmc == null)
+			planetMapSubCategory = 0;
+		else
+			planetMapSubCategory = subPmc.getCrc();
 	}
 
 	@local
@@ -2057,9 +2061,9 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@local
 	@read
-	public final PlanetMapCategory getPlanetMapSubCategory() {
+	public final PlanetMapSubCategory getPlanetMapSubCategory() {
 		TemplateManager templateManager = TemplateManager.instance();
-		return templateManager.getPlanetMapCategoryByCrc(planetMapSubCategory);
+		return templateManager.getPlanetMapSubCategoryByCrc(planetMapSubCategory);
 	}
 
 	@local

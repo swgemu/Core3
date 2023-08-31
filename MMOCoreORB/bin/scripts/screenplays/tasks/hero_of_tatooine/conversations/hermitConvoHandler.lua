@@ -78,6 +78,8 @@ function heroOfTatHermitConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 			if (pMark == nil) then
 				CreatureObject(pPlayer):setScreenPlayState(16, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
 				CreatureObject(pPlayer):sendSystemMessage("Error creating object. Please file a bug report.")
+			else
+				TangibleObject(pMark):setOptionBit(INSURED)
 			end
 		end
 
