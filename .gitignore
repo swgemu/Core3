@@ -2,3 +2,4 @@ MMOEngine
 luacov.report.out
 luacov.stats.out
 .DS_Store
+MMOCoreORB/bin/conf/config.lua
