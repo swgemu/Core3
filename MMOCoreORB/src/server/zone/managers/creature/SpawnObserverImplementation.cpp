@@ -42,13 +42,8 @@ void SpawnObserverImplementation::despawnSpawns() {
 					}
 				}
 
-				if (agent->getZone() == nullptr) {
-					agent->wipeBlackboard();
-					agent->destroyAllWeapons();
-				} else {
-					agent->setDespawnOnNoPlayerInRange(true);
-					agent->scheduleDespawn(300, true);
-				}
+				agent->setDespawnOnNoPlayerInRange(true);
+				agent->scheduleDespawn(300, true);
 			}, "DespawnSpawnsLambda");
 		}
 

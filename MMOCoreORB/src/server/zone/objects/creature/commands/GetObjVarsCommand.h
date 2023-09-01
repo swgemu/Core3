@@ -104,12 +104,24 @@ public:
 
 							msg << "Has Follow Object: " << hasFollow.toString() << endl;
 							msg << "Current total Patrol Points: " << objectAgent->getPatrolPointSize() << endl;
-							msg << "Is in navmesh: " << (objectAgent->isInNavMesh() ? "True" : "False") << endl;
+							msg << "In Navmesh: " << (objectAgent->isInNavMesh() ? "True" : "False") << endl;
 
 							msg << "Current Weapon: " << (objectAgent->getCurrentWeapon() != nullptr ? "True" : "False") << endl;
 							msg << "Default Weapon: " << (objectAgent->getDefaultWeapon() != nullptr ? "True" : "False") << endl;
 							msg << "Primary Weapon: " << (objectAgent->getPrimaryWeapon() != nullptr ? "True" : "False") << endl;
 							msg << "Secondary Weapon: " << (objectAgent->getSecondaryWeapon() != nullptr ? "True" : "False") << endl;
+
+							// Home Object - Lairs
+							uint64 homeID = 0;
+							String homeName = "none";
+							ManagedReference<SceneObject*> homeLair = objectAgent->getHomeObject().get();
+
+							if (homeLair != nullptr) {
+								homeID = homeLair->getObjectID();
+								homeName = homeLair->getObjectNameStringIdName();
+							}
+
+							msg << "Home Object: " << homeName << " ID: " << homeID << endl;
 						}
 					} else if (creoObject->isPlayerCreature()) {
 						auto playerManager = server->getPlayerManager();
