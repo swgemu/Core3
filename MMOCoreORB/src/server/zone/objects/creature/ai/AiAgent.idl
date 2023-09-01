@@ -544,6 +544,9 @@ class AiAgent extends CreatureObject {
 	@local
 	public native void setupAttackMaps();
 
+	@preLocked
+	public native void createDefaultWeapon();
+
 	@local
 	public native WeaponObject createWeapon(unsigned int weaponCRC, boolean primaryWeapon);
 
