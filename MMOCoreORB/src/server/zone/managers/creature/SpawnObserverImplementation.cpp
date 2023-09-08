@@ -43,7 +43,6 @@ void SpawnObserverImplementation::despawnSpawns() {
 				}
 
 				agent->setDespawnOnNoPlayerInRange(true);
-				agent->scheduleDespawn(300, true);
 			}, "DespawnSpawnsLambda");
 		}
 
