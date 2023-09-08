@@ -189,9 +189,9 @@ talus_regions = {
 
 	-- Cities
 	{"@talus_region_names:dearic", 425, -3000, {CIRCLE, 400}, CITY + NOSPAWNAREA},
-	{"dearic_nobuild_1", 425, -3000, {CIRCLE, 1000}, NOBUILDZONEAREA},
+	{"dearic_nobuild_1", 425, -3000, {CIRCLE, 1000}, CAMPINGAREA + NOBUILDZONEAREA},
 	{"@talus_region_names:nashal", 4360, 5251, {CIRCLE, 350}, CITY + NOSPAWNAREA},
-	{"nashal_nobuild_1", 4361, 5251, {CIRCLE, 800}, NOBUILDZONEAREA},
+	{"nashal_nobuild_1", 4361, 5251, {CIRCLE, 800}, CAMPINGAREA + NOBUILDZONEAREA},
 	{"@talus_region_names:talus_imperial_outpost", -2171.24, 2296.33, {CIRCLE, 240}, CITY + NOSPAWNAREA + NOBUILDZONEAREA},
 
 	-- Spawn Areas
