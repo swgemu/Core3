@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 FireLightningSingle1Command = {
-        name = "firelightningsingle1",
+	name = "firelightningsingle1",
 
 	damageMultiplier = 3.0,
 	speedMultiplier = 2.0,
@@ -54,7 +54,7 @@ FireLightningSingle1Command = {
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "firelightningsingle1",
-	
+
 	weaponType = SPECIALHEAVYWEAPON,
 
 	range = 16

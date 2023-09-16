@@ -6,7 +6,7 @@ StaffTools = {
 		{ "GCW Formation", "openGCWFormationConfig" },
 		{ "Event Active Area", "openEventActiveAreaConfig" },
 		{ "Event AI Control", "openEventAiControlConfig" },
-		{ "Sunriders Crystal Test", "openSunridersCrystalTest" },
+		--{ "Sunriders Crystal Test", "openSunridersCrystalTest" },
 	}
 }
 

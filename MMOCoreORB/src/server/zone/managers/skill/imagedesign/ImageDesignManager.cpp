@@ -566,7 +566,9 @@ bool ImageDesignManager::validateCustomizationString(CustomizationVariables* dat
 		CustomizationVariable* customizationVariable = variables.get(name).get();
 
 		if (customizationVariable == nullptr) {
+#ifdef DEBUG_ID
 			instance()->error("customization variable id " + String::valueOf(id) + " not found in the appearance file " + appearanceFilename + " with value " + String::valueOf(val));
+#endif
 			continue;
 		}
 

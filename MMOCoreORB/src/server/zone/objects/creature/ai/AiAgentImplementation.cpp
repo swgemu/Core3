@@ -448,6 +448,56 @@ void AiAgentImplementation::loadWeaponTemplateData() {
 	}
 }
 
+// Used to fix pets that do not have a default weapon
+void AiAgentImplementation::createDefaultWeapon() {
+	if (defaultWeapon != nullptr)
+		return;
+
+	if (!hasSlotDescriptor("default_weapon"))
+		return;
+
+	uint32 defaultWeaponCRC = 0;
+
+	if (npcTemplate != nullptr) {
+		defaultWeaponCRC = npcTemplate->getDefaultWeapon().hashCode();
+	}
+
+	if (defaultWeaponCRC == 0) {
+		if (isNpc()) {
+			defaultWeaponCRC = STRING_HASHCODE("object/weapon/melee/unarmed/unarmed_default.iff");
+		} else {
+			defaultWeaponCRC = STRING_HASHCODE("object/weapon/creature/creature_default_weapon.iff");
+		}
+	}
+
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	ManagedReference<SceneObject*> defaultWeap = zoneServer->createObject(defaultWeaponCRC, isPersistent());
+
+	if (defaultWeap == nullptr || !defaultWeap->isWeaponObject()) {
+		error("could not create Agent default weapon");
+		return;
+	}
+
+	Locker clocker(defaultWeap, asAiAgent());
+
+	transferObject(defaultWeap, 4);
+
+	WeaponObject* weap = defaultWeap.castTo<WeaponObject*>();
+
+	if (weap != nullptr) {
+		StringBuffer weapName;
+		weapName << "AI_DEFAULT-" << getObjectID();
+		weap->setCustomObjectName(weapName.toString(), false);
+
+		setDefaultWeapon(weap);
+		setCurrentWeapon(weap);
+	}
+}
+
 WeaponObject* AiAgentImplementation::createWeapon(uint32 templateCRC, bool primaryWeapon) {
 	ZoneServer* zoneServer = getZoneServer();
 
@@ -614,12 +664,12 @@ void AiAgentImplementation::unequipWeapons() {
 		return;
 	}
 
+	if (defaultWeap != nullptr && currentWeap->getObjectID() == defaultWeap->getObjectID())
+		return;
+
 	SceneObject* inventory = getSlottedObject("inventory");
 
 	if (inventory == nullptr)
-		return;
-
-	if (defaultWeap != nullptr && currentWeap->getObjectID() == defaultWeap->getObjectID())
 		return;
 
 	ZoneServer* zoneServer = getZoneServer();
@@ -1710,9 +1760,6 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 		Locker zoneLocker(zone, asAiAgent());
 		zone->transferObject(asAiAgent(), -1, true);
 	}
-
-	loadWeaponTemplateData();
-	setupAttackMaps();
 
 	setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), cell);
 	currentFoundPath = nullptr;
@@ -4380,10 +4427,16 @@ void AiAgentImplementation::removeCreatureFlag(unsigned int flag) {
 }
 
 void AiAgentImplementation::destroyAllWeapons() {
+	if (isPet()) {
+		error() << "Pet attempted to destroyAllWeapons - " << getDisplayedName() << " ID: " << getObjectID();
+		return;
+	}
+
 	//StringBuffer msg;
 
 	AiAgent* thisAgent = asAiAgent();
 
+	// Set current weapon null, all weapons will be destroyed below
 	SceneObject* inventory = getSlottedObject("inventory");
 	ManagedReference<WeaponObject*> currentWeap = getCurrentWeapon();
 

@@ -77,7 +77,11 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		auto agent = npc->asAiAgent();
 
 		if (agent != nullptr && agent->getMovementState() == AiAgent::CONVERSING) {
-			agent->setMovementState(AiAgent::OBLIVIOUS);
+			if (agent->getFollowObject().get() == nullptr) {
+				agent->setMovementState(AiAgent::OBLIVIOUS);
+			} else {
+				agent->setMovementState(AiAgent::FOLLOWING);
+			}
 		}
 
 		//Keep observer.
