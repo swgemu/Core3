@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
-class ImageDesignData : public Object {
+class ImageDesignData : public Object, public Logger {
 protected:
 	String hairTemplate;
 	CustomizationVariables hairCustomizationVariables;
@@ -131,7 +131,7 @@ public:
 
 		int size = message->parseInt();
 
-		//info(true) << "body parts: " << size;
+		// info(true) << "body parts: " << size;
 
 		for (int i = 0; i < size; ++i) {
 			String attr;
@@ -141,20 +141,19 @@ public:
 
 			bodyAttributes.put(attr, val);
 
-			//info(true) << attr << " " << val;
+			// info(true) << attr << " " << val;
 		}
 
 		size = message->parseInt();
 
-		//info(true) << "color parts: " << size;
+		// info(true) << "color parts: " << size;
 
 		for (int i = 0; i < size; ++i) {
 			String attr;
 			message->parseAscii(attr);
 
 			uint32 val = message->parseInt();
-			//info(true) << attr + String::valueOf(val);
-			//info(true) << attr << " " << val;
+			// info(true) << attr << " " << val;
 
 			colorAttributes.put(attr, val);
 		}

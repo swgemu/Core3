@@ -18,7 +18,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 
-//#define DEBUG_ID
+// #define DEBUG_ID
 
 void ImageDesignSessionImplementation::initializeTransientMembers() {
 	FacadeImplementation::initializeTransientMembers();
@@ -244,33 +244,42 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 			strongReferenceDesigner->notifyObservers(ObserverEventType::IMAGEDESIGNHAIR, nullptr, 0);
 
 			if (xpGranted < 100)
-					xpGranted = 100;
+				xpGranted = 100;
 		}
 
 		int bodyAttSize= bodyAttributes->size();
 		int colorAttSize = colorAttributes->size();
 
-#ifdef DEBUG_ID
-		info(true) << "updateImageDesign - Body Attributes Size = " << bodyAttSize << " Color Attributes = " << colorAttSize;
-#endif
+		// Modification type pulled from iff customization_data
+		int modificationType = ImageDesignManager::NONE;
 
 		if (bodyAttSize > 0) {
-			if (xpGranted < 300)
-				xpGranted = 300;
-
 			for (int i = 0; i < bodyAttSize; ++i) {
 				VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
-				imageDesignManager->updateCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), strongReferenceTarget);
+				imageDesignManager->updateCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), modificationType, strongReferenceTarget);
 			}
 		}
 
 		if (colorAttSize > 0) {
-			if (xpGranted < 100)
-				xpGranted = 100;
-
 			for (int i = 0; i < colorAttSize; ++i) {
 				VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
-				imageDesignManager->updateColorCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), hairObject, strongReferenceTarget);
+				imageDesignManager->updateColorCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), hairObject, modificationType, strongReferenceTarget);
+			}
+		}
+
+#ifdef DEBUG_ID
+		info(true) << "updateImageDesign - Type: " << type << " Body Attributes Size = " << bodyAttSize << " Color Attributes = " << colorAttSize << " Modification Type = " << modificationType;
+#endif
+
+		// Set XP based on modifcation type
+		switch(modificationType) {
+			case ImageDesignManager::PHYSICAL: {
+				if (xpGranted < 300)
+					xpGranted = 300;
+			}
+			case ImageDesignManager::COSMETIC: {
+				if (xpGranted < 100)
+					xpGranted = 100;
 			}
 		}
 
@@ -280,6 +289,7 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 		// Add holo emote
 		String holoemote = imageDesignData.getHoloEmote();
+
 		if (!holoemote.isEmpty()) {
 			PlayerObject* ghost = strongReferenceTarget->getPlayerObject();
 

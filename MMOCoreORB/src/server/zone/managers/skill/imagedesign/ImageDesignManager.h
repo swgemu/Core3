@@ -22,11 +22,17 @@ class ImageDesignManager : public Singleton<ImageDesignManager>, public Object, 
 	void updateColorCustomization(CreatureObject* imageDesigner, CustomizationData* customData, uint32 value, TangibleObject* hairObject, CreatureObject* creo = nullptr);
 
 public:
+	enum {
+		NONE,
+		PHYSICAL,
+		COSMETIC,
+	};
+
 	ImageDesignManager();
 	~ImageDesignManager();
 
-	void updateCustomization(CreatureObject* imageDesigner, const String& customizationName, float value, CreatureObject* creo = nullptr);
-	void updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, CreatureObject* creo = nullptr);
+	void updateCustomization(CreatureObject* imageDesigner, const String& customizationName, float value, int& modificationType, CreatureObject* creo = nullptr);
+	void updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, int& modificationType, CreatureObject* creo = nullptr);
 
 	const Vector<CustomizationData>* getCustomizationData(const String& speciesGender, const String& customizationName);
 
