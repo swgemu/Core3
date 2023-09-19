@@ -3604,7 +3604,7 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 }
 
 int CreatureObjectImplementation::notifyObjectKillObservers(TangibleObject* killer) {
-	notifyObservers(ObserverEventType::PLAYERKILLED, killer, 0);
+	notifyObservers(ObserverEventType::PLAYERKILLED, killer, getObjectID());
 
 	return 0;
 }
