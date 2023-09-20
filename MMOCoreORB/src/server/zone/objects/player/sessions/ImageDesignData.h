@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
-class ImageDesignData : public Object, public Logger {
+class ImageDesignData : public Object {
 protected:
 	String hairTemplate;
 	CustomizationVariables hairCustomizationVariables;
