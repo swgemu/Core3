@@ -9,7 +9,7 @@ high_velocity_blaster_pistol_barrel = {
 		{"mindamage",20,20,0},
 		{"maxdamage",25,25,0},
 		{"attackspeed",-0.7,-0.7,1},
-		{"wound",25,25,0},
+		{"woundchance",25,25,0},
 		{"midrangemod",12,12,0},
 		{"useCount",2,10,0},
 	},
