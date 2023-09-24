@@ -98,7 +98,7 @@ class TreeEntry extends Observable {
 		return isInRange(obj.getPositionX(), obj.getPositionY(), obj.getPositionZ(), range);
 	}
 
-	@read
+	@local
 	public native abstract float getOutOfRangeDistance();
 
 	@dirty

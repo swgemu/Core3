@@ -2413,3 +2413,11 @@ bool SceneObjectImplementation::isNearBank() {
 
 	return false;
 }
+
+float SceneObjectImplementation::getOutOfRangeDistance() {
+	if (getSpaceZone() != nullptr) {
+		return ZoneServer::SPACEOBJECTRANGE;
+	}
+
+	return TreeEntryImplementation::getOutOfRangeDistance();
+}

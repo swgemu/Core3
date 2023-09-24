@@ -2337,4 +2337,7 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	public boolean isDebuggingRegions() {
 		return debuggingRegions;
 	}
+
+	@local
+	public native abstract float getOutOfRangeDistance();
 }

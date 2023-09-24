@@ -11,7 +11,7 @@ protected:
 	uint64 objectID;
 	uint64 playerID;
 
-	Mutex deltaMutex;
+	mutable ReadWriteLock deltaMutex;
 
 	enum DeltaTypeID : uint32 {
 		None	= 0,
@@ -68,6 +68,8 @@ public:
 	}
 
 	DeltaMessage* getMessage(uint32 deltaID) {
+		ReadLocker lock(&deltaMutex);
+
 		int deltaType = getDeltaType(deltaID);
 		if (deltaType == DeltaTypeID::None || (deltaType == DeltaType::Private && playerID == DeltaTypeID::None)) {
 			return nullptr;
@@ -85,6 +87,8 @@ public:
 	}
 
 	void sendMessages(SceneObject* ship, SceneObject* player = nullptr) {
+		Locker lock(&deltaMutex);
+
 		for (int i = 0; i < deltaVector.size(); ++ i) {
 			auto deltaID = deltaVector.elementAt(i).getKey();
 			auto message = deltaVector.elementAt(i).getValue();
@@ -108,6 +112,8 @@ public:
 	}
 
 	int size() {
+		ReadLocker lock(&deltaMutex);
+
 		return deltaVector.size();
 	}
 };
