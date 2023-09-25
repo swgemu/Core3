@@ -106,7 +106,13 @@ void ShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) 
 		auto attribute = values.elementAt(i).getKey();
 		auto value = values.elementAt(i).getValue();
 
-		if (attribute == "slideDamp") {
+		if (attribute == "speedRotationFactorMin") {
+			setSpeedRotationFactorMin(value);
+		} else if (attribute == "speedRotationFactorOptimal") {
+			setSpeedRotationFactorOptimal(value);
+		} else if (attribute == "speedRotationFactorMax") {
+			setSpeedRotationFactorMax(value);
+		} else if (attribute == "slideDamp") {
 			setSlipRate(value, false);
 		} else if (attribute == "engineAccel") {
 			setEngineAccelerationRate(value, false);
@@ -1085,6 +1091,30 @@ float ShipObjectImplementation::getComponentCondition(uint32 slot) {
 
 void ShipObjectImplementation::updateLastDamageReceived() {
 	lastDamageReceived.updateToCurrentTime();
+}
+
+float ShipObjectImplementation::getSpeedRotationFactor(float speed) {
+	const float maxSpeed = getEngineMaxSpeed();
+	const float maxFactor = getSpeedRotationFactorMax();
+	const float minFactor = getSpeedRotationFactorMin();
+	const float optimalFactor = getSpeedRotationFactorOptimal();
+
+	const float speedRatio = maxSpeed > 0.f ? speed / maxSpeed : 0.f;
+
+	auto getFactor = [&]() -> float {
+		if (speedRatio < optimalFactor || optimalFactor >= 1.f) {
+			// linearly interpolate from minFactor to 1 (1 being the optimal factor)
+			// at a ratio in the range expressed as speedRatio / optimalFactor
+			return (1.f - minFactor) * speedRatio / optimalFactor + minFactor;
+		}
+
+		// linearly interpolate from 1 to maxFactor (1 being the optimal factor)
+		// at a ratio in the range expressed as (speedRatio - optimalFactor) / (1 - optimalFactor)
+		return (maxFactor - 1.f) * (speedRatio - optimalFactor) / (1.f - optimalFactor) + 1.f;
+	};
+
+	// discretize factor to prevent overupdating the client
+	return floorf((getFactor() * 10.f) + 0.5f) / 10.f;
 }
 
 uint64 ShipObjectImplementation::getLastDamageReceivedMili() {

@@ -52,6 +52,9 @@ object_ship_player_player_ywing = object_ship_player_shared_player_ywing:new {
 	level = 1,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.1},
+		{"speedRotationFactorOptimal", 0.3},
+		{"speedRotationFactorMax", 0.5},
 		{"slideDamp", 1.2},
 		{"engineAccel", 15},
 		{"engineDecel", 25},

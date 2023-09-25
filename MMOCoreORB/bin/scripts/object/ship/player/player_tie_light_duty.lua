@@ -52,6 +52,9 @@ object_ship_player_player_tie_light_duty = object_ship_player_shared_player_tie_
 	level = 0,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.5},
+		{"speedRotationFactorMax", 0.9},
 		{"slideDamp", 1.7},
 		{"engineAccel", 50},
 		{"engineDecel", 50},

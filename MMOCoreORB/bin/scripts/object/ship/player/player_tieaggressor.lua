@@ -52,6 +52,9 @@ object_ship_player_player_tieaggressor = object_ship_player_shared_player_tieagg
 	level = 4,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.4},
+		{"speedRotationFactorMax", 0.4},
 		{"slideDamp", 1.3},
 		{"engineAccel", 20},
 		{"engineDecel", 30},

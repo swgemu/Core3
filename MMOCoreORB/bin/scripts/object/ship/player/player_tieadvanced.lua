@@ -52,6 +52,9 @@ object_ship_player_player_tieadvanced = object_ship_player_shared_player_tieadva
 	level = 4,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.05},
+		{"speedRotationFactorOptimal", 0.8},
+		{"speedRotationFactorMax", 0.8},
 		{"slideDamp", 1.7},
 		{"engineAccel", 40},
 		{"engineDecel", 60},
