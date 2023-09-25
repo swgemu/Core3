@@ -52,6 +52,9 @@ object_ship_player_player_tie_in = object_ship_player_shared_player_tie_in:new {
 	level = 2,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.5},
+		{"speedRotationFactorMax", 0.75},
 		{"slideDamp", 1.6},
 		{"engineAccel", 40},
 		{"engineDecel", 60},

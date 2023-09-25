@@ -52,6 +52,9 @@ object_ship_player_player_bwing = object_ship_player_shared_player_bwing:new {
 	level = 5,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.1},
+		{"speedRotationFactorOptimal", 0.3},
+		{"speedRotationFactorMax", 0.3},
 		{"slideDamp", 1.3},
 		{"engineAccel", 10},
 		{"engineDecel", 15},

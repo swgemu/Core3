@@ -52,6 +52,9 @@ object_ship_player_player_tiebomber = object_ship_player_shared_player_tiebomber
 	level = 3,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.1},
+		{"speedRotationFactorOptimal", 0.3},
+		{"speedRotationFactorMax", 0.3},
 		{"slideDamp", 1.2},
 		{"engineAccel", 10},
 		{"engineDecel", 15},

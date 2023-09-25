@@ -52,6 +52,9 @@ object_ship_player_player_hutt_light_s01 = object_ship_player_shared_player_hutt
 	level = 0,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.5},
+		{"speedRotationFactorMax", 0.9},
 		{"slideDamp", 1.8},
 		{"engineAccel", 50},
 		{"engineDecel", 50},

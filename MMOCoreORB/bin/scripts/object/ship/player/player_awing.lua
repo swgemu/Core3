@@ -52,6 +52,9 @@ object_ship_player_player_awing = object_ship_player_shared_player_awing:new {
 	level = 4,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.05},
+		{"speedRotationFactorOptimal", 0.8},
+		{"speedRotationFactorMax", 0.8},
 		{"slideDamp", 1.6},
 		{"engineAccel", 40},
 		{"engineDecel", 60},

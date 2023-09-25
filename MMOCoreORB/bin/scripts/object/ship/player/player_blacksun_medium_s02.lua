@@ -52,6 +52,9 @@ object_ship_player_player_blacksun_medium_s02 = object_ship_player_shared_player
 	level = 3,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.4},
+		{"speedRotationFactorMax", 0.5},
 		{"slideDamp", 1.3},
 		{"engineAccel", 25},
 		{"engineDecel", 30},
