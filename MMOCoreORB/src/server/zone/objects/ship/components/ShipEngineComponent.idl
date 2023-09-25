@@ -26,6 +26,10 @@ class ShipEngineComponent extends ShipComponent {
 
 	protected float engineSpeedMaximum;
 
+	protected float engineRotationFactorMax;
+	protected float engineRotationFactorMin;
+	protected float engineRotationFactorOptimal;
+
 	public ShipEngineComponent() {
 		super();
 
@@ -41,6 +45,10 @@ class ShipEngineComponent extends ShipComponent {
 		engineRollRateMaximum = 0.785f;
 
 		engineSpeedMaximum = 50.f;
+
+		engineRotationFactorMax = 1.0;
+		engineRotationFactorMin = 1.0;
+		engineRotationFactorOptimal = 0.5;
 	}
 
 	public float getAccelerationRate() {

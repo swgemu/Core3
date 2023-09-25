@@ -99,6 +99,19 @@ class ShipObject extends TangibleObject {
 
 	protected float boundingRadius;
 
+	// internal velocity values
+	protected float currentSpeed;
+
+	@dereferenced
+	protected Vector3 currentVelocity;
+
+	// internal "sweet spot" variables (set by engine)
+	protected float engineRotationFactorMax;
+
+	protected float engineRotationFactorMin;
+
+	protected float engineRotationFactorOptimal;
+
 	@dereferenced
 	protected Matrix4 rotationMatrix;
 
@@ -1524,6 +1537,48 @@ class ShipObject extends TangibleObject {
 	public float getBoundingRadius() {
 		return boundingRadius;
 	}
+
+	public void setCurrentSpeed(float value) {
+	    currentSpeed = value;
+	}
+
+	public float getCurrentSpeed() {
+	    return currentSpeed;
+	}
+
+	@local
+	public native void setCurrentVelocity(@dereferenced final Vector3 value);
+
+	@dereferenced
+	@local
+	@read
+	public native Vector3 getCurrentVelocity();
+
+	public void setEngineRotationFactorMax(float value) {
+	    engineRotationFactorMax = value;
+	}
+
+	public float getEngineRotationFactorMax() {
+	    return engineRotationFactorMax;
+	}
+
+	public void setEngineRotationFactorMin(float value) {
+	    engineRotationFactorMin = value;
+	}
+
+	public float getEngineRotationFactorMin() {
+	    return engineRotationFactorMin;
+	}
+
+	public void setEngineRotationFactorOptimal(float value) {
+	    engineRotationFactorOptimal = value;
+	}
+
+	public float getEngineRotationFactorOptimal() {
+	    return engineRotationFactorOptimal;
+	}
+
+	public native float getRotationFactor(float speed);
 
 	@preLocked
 	public native void updateLastDamageReceived();

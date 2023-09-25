@@ -96,6 +96,10 @@ void ShipEngineComponentImplementation::install(CreatureObject* pilot, ShipObjec
 	ship->setActualRollRate(engineRollRateMaximum, false, nullptr, deltaVector);
 	ship->setActualMaxSpeed(engineSpeedMaximum, false, nullptr, deltaVector);
 
+	ship->setEngineRotationFactorMax(engineRotationFactorMax);
+	ship->setEngineRotationFactorMin(engineRotationFactorMin);
+	ship->setEngineRotationFactorOptimal(engineRotationFactorOptimal);
+
 	if (deltaVector != nullptr) {
 		deltaVector->sendMessages(ship, pilot);
 	}
@@ -115,6 +119,10 @@ void ShipEngineComponentImplementation::uninstall(CreatureObject* pilot, ShipObj
 	ship->setActualYawRate(0.f, false, nullptr, deltaVector);
 	ship->setActualRollRate(0.f, false, nullptr, deltaVector);
 	ship->setActualMaxSpeed(0.f, false, nullptr, deltaVector);
+
+	ship->setEngineRotationFactorMax(1.0f);
+	ship->setEngineRotationFactorMin(1.0f);
+	ship->setEngineRotationFactorOptimal(0.5f);
 
 	if (deltaVector != nullptr) {
 		deltaVector->sendMessages(ship, pilot);
