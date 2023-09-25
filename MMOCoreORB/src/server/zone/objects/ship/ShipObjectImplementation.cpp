@@ -1087,6 +1087,30 @@ void ShipObjectImplementation::updateLastDamageReceived() {
 	lastDamageReceived.updateToCurrentTime();
 }
 
+float ShipObjectImplementation::getRotationFactor(float speed) {
+	const float maxSpeed = getEngineMaxSpeed();
+	const float maxFactor = getEngineRotationFactorMax();
+	const float minFactor = getEngineRotationFactorMin();
+	const float optimalFactor = getEngineRotationFactorOptimal();
+
+	const float speedRatio = maxSpeed > 0.f ? speed / maxSpeed : 0.f;
+
+	auto getFactor = [&]() -> float {
+		if (speedRatio < optimalFactor || optimalFactor >= 1.f) {
+			// linearly interpolate from minFactor to 1 (1 being the optimal factor)
+			// at a ratio in the range expressed as speedRatio / optimalFactor
+			return (1.f - minFactor) * speedRatio / optimalFactor + minFactor;
+		}
+
+		// linearly interpolate from 1 to maxFactor (1 being the optimal factor)
+		// at a ratio in the range expressed as (speedRatio - optimalFactor) / (1 - optimalFactor)
+		return (maxFactor - 1.f) * (speedRatio - optimalFactor) / (1.f - optimalFactor) + 1.f;
+	};
+
+	// discretize factor to prevent overupdating the client
+	return floorf((getFactor() * 10.f) + 0.5f) / 10.f;
+}
+
 uint64 ShipObjectImplementation::getLastDamageReceivedMili() {
 	return lastDamageReceived.getMiliTime();
 }
