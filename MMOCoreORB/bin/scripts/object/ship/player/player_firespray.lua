@@ -52,6 +52,9 @@ object_ship_player_player_firespray = object_ship_player_shared_player_firespray
 	level = 5,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.4},
+		{"speedRotationFactorMax", 0.4},
 		{"slideDamp", 1.6},
 		{"engineAccel", 35},
 		{"engineDecel", 35},

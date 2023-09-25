@@ -55,6 +55,9 @@ object_ship_player_player_decimator = object_ship_player_shared_player_decimator
 	level = 5,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.3},
+		{"speedRotationFactorMax", 0.3},
 		{"slideDamp", 1.2},
 		{"engineAccel", 5},
 		{"engineDecel", 5},
