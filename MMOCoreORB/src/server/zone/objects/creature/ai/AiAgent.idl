@@ -76,14 +76,17 @@ class AiAgent extends CreatureObject {
 	protected transient CurrentFoundPath currentFoundPath;
 	protected transient CellObject targetCellObject;
 
+	protected float weaponSpeed;
+	protected int minDamage;
+	protected int maxDamage;
+
+	protected unsigned int primaryWeaponCrc;
+	protected unsigned int secondaryWeaponCrc;
+
 	protected WeaponObject defaultWeapon;
-
 	protected WeaponObject primaryWeapon;
-
 	protected WeaponObject secondaryWeapon;
-
 	protected WeaponObject thrownWeapon;
-
 	protected WeaponObject currentWeapon;
 
 	protected transient CreatureAttackMap primaryAttackMap;
@@ -242,6 +245,13 @@ class AiAgent extends CreatureObject {
 		respawnCounter = 0;
 		randomRespawn = false;
 
+		primaryWeaponCrc = 0;
+		secondaryWeaponCrc = 0;
+
+		weaponSpeed = 2.0;
+		minDamage = 0;
+		maxDamage = 0;
+
 		nextBehaviorInterval = BEHAVIORINTERVAL;
 
 		reactionRank = 0;
@@ -279,6 +289,10 @@ class AiAgent extends CreatureObject {
 	 */
 	public native void initializeTransientMembers();
 
+	public void finalize() {
+		//Logger.info("deleting from ram", true);
+	}
+
 	/**
 	 * Gets called when this objects is loaded from database
 	 * @pre { this locked }
@@ -286,18 +300,33 @@ class AiAgent extends CreatureObject {
 	 */
 	public native void notifyLoadFromDatabase();
 
-	public void finalize() {
-		//Logger.info("deleting from ram", true);
-	}
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public native void loadTemplateData(CreatureTemplate templateData);
+
+	/**
+	 * Reset the aiagent back to it's initial creation state.
+	 * this resets the HAM, Damage, Size and Weapons of the AiAgent. Used for Pet adjustments.
+	 */
+	@preLocked
+	public native void reloadTemplate();
 
 	@read
 	public string getLogFileName() {
-	    return Logger.getLogFileName();
+		return Logger.getLogFileName();
 	}
 
 	@read
 	public int getLogLevel() {
-	    return Logger.getLogLevel();
+		return Logger.getLogLevel();
 	}
 
 	/**
@@ -378,6 +407,9 @@ class AiAgent extends CreatureObject {
 	public native void setAIDebug(boolean flag);
 
 	public native boolean getAIDebug();
+
+	@preLocked
+	public native void setWeaponStats();
 
 	@preLocked
 	public native void setLevel(int lvl, boolean randomHam = true);
@@ -526,29 +558,26 @@ class AiAgent extends CreatureObject {
 	@local
 	public native void notifyDissapear(QuadTreeEntry entry);
 
-	/**
-	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
-	 * @pre { templateData is a valid pointer }
-	 * @post { TangibleObject members are initialized }
-	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
-	 */
-	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
+	/*
+
+		Agent Weapon Handling
+
+	*/
 
 	@local
-	public native void loadTemplateData(CreatureTemplate templateData);
+	public native WeaponObject createWeapon(unsigned int weaponCRC, boolean primaryWeapon);
 
 	@local
-	public native void loadWeaponTemplateData();
-
-	@local
-	public native void setupAttackMaps();
+	public native void setupCombatStats();
 
 	@preLocked
 	public native void createDefaultWeapon();
 
 	@local
-	public native WeaponObject createWeapon(unsigned int weaponCRC, boolean primaryWeapon);
+	public native void createWeaponsFromTemplate();
+
+	@local
+	public native void setupAttackMaps();
 
 	@local
 	public native void unequipWeapons();
@@ -558,6 +587,9 @@ class AiAgent extends CreatureObject {
 
 	@local
 	public native void equipSecondaryWeapon();
+
+	@preLocked
+	public native void destroyAllWeapons();
 
 	/**
 	 * Inflicts damage into the object
@@ -1361,11 +1393,6 @@ class AiAgent extends CreatureObject {
 	}
 
 	@preLocked
-	public native void setCreatureBit(unsigned int option);
-	@preLocked
-	public native void clearCreatureBit(unsigned int option);
-
-	@preLocked
 	public native void addCreatureFlag(unsigned int flag);
 
 	@preLocked
@@ -1484,13 +1511,6 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public native void setMaxHAM(int type, int value, boolean notifyClient = true);
 
-	/**
-	 * Reset the aiagent back to it's initial creation state.
-	 * this resets the HAM, Damage, Size and Weapons of the AiAgent. Used for Pet adjustments.
-	 */
-	@preLocked
-	public native void reloadTemplate();
-
 	@read
 	public unsigned int getConvoTemplateCRC() {
 		return convoTemplateCRC;
@@ -1605,8 +1625,20 @@ class AiAgent extends CreatureObject {
 		thrownWeapon = null;
 	}
 
-	@preLocked
-	public native void destroyAllWeapons();
+	@read
+	public float getWeaponSpeed() {
+		return weaponSpeed;
+	}
+
+	@read
+	public int getMinDamage() {
+		return minDamage;
+	}
+
+	@read
+	public int getMaxDaamge() {
+		return maxDamage;
+	}
 
 	@read
 	public int getMobType() {
@@ -1700,12 +1732,12 @@ class AiAgent extends CreatureObject {
 	public boolean isMindTricked() {
 		return mindTricked;
 	}
-	
+
 	@read
 	public boolean isHamRegenDisabled() {
 		return hamRegenDisabled;
 	}
-	
+
 	@preLocked
 	public void setHamRegenDisabled(boolean val) {
 		hamRegenDisabled = val;

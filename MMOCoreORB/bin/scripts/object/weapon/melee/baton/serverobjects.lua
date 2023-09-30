@@ -48,4 +48,5 @@ includeFile("weapon/melee/baton/base/serverobjects.lua")
 -- Server Objects
 includeFile("weapon/melee/baton/baton_gaderiffi.lua")
 includeFile("weapon/melee/baton/baton_stun.lua")
+includeFile("weapon/melee/baton/baton_stun_ranged.lua")
 includeFile("weapon/melee/baton/victor_baton_gaderiffi.lua")
