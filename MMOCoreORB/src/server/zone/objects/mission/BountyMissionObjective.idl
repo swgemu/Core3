@@ -142,7 +142,7 @@ class BountyMissionObjective extends MissionObjective {
 
 	private native void handleNpcTargetKilled(Observable observable);
 	private native int handleNpcTargetReceivesDamage(ManagedObject arg1);
-	private native void handlePlayerKilled(ManagedObject arg1);
+	private native void handlePlayerKilled(ManagedObject arg1, unsigned long destructedID);
 
 	@dereferenced
 	@local

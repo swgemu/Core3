@@ -130,7 +130,7 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 
 	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old", "commoner_tatooine"},
 	stationaryNpcs = {"artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "criminal", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer",
-			"gadget_specialist", "gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scavenger", "scientist", "slicer"},
+			"gambler", "info_broker", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scavenger", "scientist", "slicer"},
 
 	--{respawn, x, z, y, direction, cell, mood}
 	stationaryMobiles = {
@@ -142,7 +142,7 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		{1, 1302.38, 7, 3357.34, 93, 0, ""}, {1, 1449.68, 7, 3159.65, 96, 0, ""}, {1, 1449.89, 7, 3138, 131, 0, ""}, {1, 1516.09, 7, 3164.73, 72, 0, ""},
 		{1, 1619.54, 11, 3228.91, 330, 0, ""}, {1, 1615.17, 7, 3313.63, 227, 0, ""}, {1, 1554.59, 15, 3500.85, 259, 0, ""}, {1, 1326.93, 7, 3163.39, 359, 0, "conversation"},
 		{1, 1326.44, 7, 3120.75, 180, 0, "conversation"}, {1, 1326.44, 7, 3119.75, 0, 0, "conversation"}, {1, 1191.8, 7, 2955.7, 360, 0, "conversation"}, {1, 1455.33, 7, 3335.99, 114, 0, ""},
-		{1, 1455.33, 7, 3335.99, 114, 0, "calm"}, {1, 1209.57, 7, 2923.54, 58, 0, ""},
+		{1, 1455.33, 7, 3335.99, 114, 0, "calm"}
 	},
 
 	mobiles = {
@@ -388,7 +388,10 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		{"jawa_thief",300,1606.7,7,3313.6,6,0, ""},
 		{"jawa_warlord",300,1347.83,7,3060.74,47.0278,0, ""},
 		{"jawa_warlord",300,1608.4,7,3328.1,-21,0, ""},
-		{"jawa_warlord",300,1572.44,7,3337.29,83.3917,0, ""}
+		{"jawa_warlord",300,1572.44,7,3337.29,83.3917,0, ""},
+
+		-- Phase 4 Gadget Specialist
+		{"gadget_specialist", 1, 1209.57, 7, 2923.54, 58, 0, ""}
 	}
 }
 
