@@ -123,8 +123,6 @@ namespace ai {
 		int setNoAiAggro(lua_State* L);
 		int doDespawn(lua_State* L);
 		int getCreatureTemplateName(lua_State* L);
-		int clearCreatureBit(lua_State* L);
-		int setCreatureBit(lua_State* L);
 		int isInRangeOfHome(lua_State* L);
 		int getPatrolPointsSize(lua_State* L);
 		int addCreatureFlag(lua_State* L);
