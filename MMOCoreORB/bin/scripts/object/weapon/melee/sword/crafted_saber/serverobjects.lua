@@ -47,7 +47,9 @@
 -- Server Objects
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen1.lua")
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen2.lua")
+includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen2_ranged.lua")
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen3.lua")
+includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen3_ranged.lua")
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen4.lua")
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen4_ranged.lua")
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen5.lua")
@@ -67,6 +69,7 @@ includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_s12_ge
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_s12_gen2.lua")
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_s12_gen3.lua")
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_s12_gen4.lua")
+includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_s12_gen4_ranged.lua")
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_s13.lua")
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_s13_gen1.lua")
 includeFile("weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_s13_gen2.lua")

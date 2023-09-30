@@ -88,7 +88,7 @@ function CityScreenPlay:spawnMob(num, controllingFaction, difficulty)
 		end
 		if scanner then
 			local aiAgent = AiAgent(pNpc)
-			aiAgent:setCreatureBit(SCANNING_FOR_CONTRABAND)
+			aiAgent:addCreatureFlag(SCANNING_FOR_CONTRABAND)
 		end
 
 		AiAgent(pNpc):addCreatureFlag(AI_STATIC)

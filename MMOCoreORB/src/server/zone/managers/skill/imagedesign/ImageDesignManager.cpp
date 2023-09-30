@@ -120,7 +120,7 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, Cust
 	}
 }
 
-void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, const String& customizationName, float value, CreatureObject* creo) {
+void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, const String& customizationName, float value, int& modificationType, CreatureObject* creo) {
 	if (creo == nullptr || value < 0 || value > 1)
 		return;
 
@@ -136,7 +136,16 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 	for (int i = 0; i < data->size(); ++i) {
 		CustomizationData* customData = &data->get(i);
 
+		if (customData == nullptr)
+			continue;
+
 		updateCustomization(imageDesigner, customData, value, creo);
+
+		if (customData->getModificationType().hashCode() == STRING_HASHCODE("physical")) {
+			modificationType = PHYSICAL;
+		} else if (modificationType == NONE) {
+			modificationType = COSMETIC;
+		}
 	}
 }
 
@@ -247,7 +256,7 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 	updateColorVariable(fullVariables, value, objectToUpdate);
 }
 
-void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, CreatureObject* creo) {
+void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, int& modificationType, CreatureObject* creo) {
 	if (value > 255 || creo == nullptr)
 		return;
 
@@ -262,7 +271,17 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 
 	for (int i = 0; i < data->size(); ++i) {
 		CustomizationData* customData = &data->get(i);
+
+		if (customData == nullptr)
+			continue;
+
 		updateColorCustomization(imageDesigner, customData, value, hairObject, creo);
+
+		if (customData->getModificationType().hashCode() == STRING_HASHCODE("physical")) {
+			modificationType = PHYSICAL;
+		} else if (modificationType == NONE) {
+			modificationType = COSMETIC;
+		}
 	}
 }
 
@@ -354,7 +373,6 @@ void ImageDesignManager::loadCustomizationData() {
 		delete iffStream;
 		iffStream = nullptr;
 	}
-
 }
 
 const Vector<CustomizationData>* ImageDesignManager::getCustomizationData(const String& speciesGender, const String& customizationName) {

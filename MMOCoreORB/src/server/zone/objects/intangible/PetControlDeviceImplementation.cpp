@@ -995,6 +995,12 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 				else
 					alm->insertAttribute("dna_comp_ranged_attack", "No");
 			}
+
+			if (pet->getDefaultWeapon() == nullptr) {
+				StringBuffer msg;
+				msg << "Your pet " << pet->getDisplayedName() << ", needs to be called in order to fix a missing weapon.";
+				object->sendSystemMessage(msg.toString());
+			}
 		}
 	}
 
