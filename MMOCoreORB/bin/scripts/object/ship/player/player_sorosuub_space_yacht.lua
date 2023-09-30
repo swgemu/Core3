@@ -55,6 +55,9 @@ object_ship_player_player_sorosuub_space_yacht = object_ship_player_shared_playe
 	level = 0,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.3},
+		{"speedRotationFactorMax", 0.3},
 		{"slideDamp", 1.1},
 		{"engineAccel", 10},
 		{"engineDecel", 10},

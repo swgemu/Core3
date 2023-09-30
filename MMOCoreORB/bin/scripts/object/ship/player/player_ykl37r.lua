@@ -55,6 +55,9 @@ object_ship_player_player_ykl37r = object_ship_player_shared_player_ykl37r:new {
 	level = 5,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.3},
+		{"speedRotationFactorMax", 0.3},
 		{"slideDamp", 1.2},
 		{"engineAccel", 5},
 		{"engineDecel", 5},

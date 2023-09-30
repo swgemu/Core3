@@ -52,6 +52,9 @@ object_ship_player_player_ywing_longprobe = object_ship_player_shared_player_ywi
 	level = 2,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.1},
+		{"speedRotationFactorOptimal", 0.3},
+		{"speedRotationFactorMax", 0.35},
 		{"slideDamp", 1.4},
 		{"engineAccel", 10},
 		{"engineDecel", 20},

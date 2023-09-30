@@ -52,6 +52,9 @@ object_ship_player_player_hutt_medium_s02 = object_ship_player_shared_player_hut
 	level = 2,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.4},
+		{"speedRotationFactorMax", 0.6},
 		{"slideDamp", 1.3},
 		{"engineAccel", 35},
 		{"engineDecel", 35},

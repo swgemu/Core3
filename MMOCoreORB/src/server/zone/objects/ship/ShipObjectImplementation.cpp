@@ -106,7 +106,13 @@ void ShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) 
 		auto attribute = values.elementAt(i).getKey();
 		auto value = values.elementAt(i).getValue();
 
-		if (attribute == "slideDamp") {
+		if (attribute == "speedRotationFactorMin") {
+			setSpeedRotationFactorMin(value);
+		} else if (attribute == "speedRotationFactorOptimal") {
+			setSpeedRotationFactorOptimal(value);
+		} else if (attribute == "speedRotationFactorMax") {
+			setSpeedRotationFactorMax(value);
+		} else if (attribute == "slideDamp") {
 			setSlipRate(value, false);
 		} else if (attribute == "engineAccel") {
 			setEngineAccelerationRate(value, false);
@@ -1085,6 +1091,60 @@ float ShipObjectImplementation::getComponentCondition(uint32 slot) {
 
 void ShipObjectImplementation::updateLastDamageReceived() {
 	lastDamageReceived.updateToCurrentTime();
+}
+
+float ShipObjectImplementation::getSpeedRotationFactor(float speed) {
+	const float maxSpeed = getActualMaxSpeed();
+	const float maxFactor = getSpeedRotationFactorMax();
+	const float minFactor = getSpeedRotationFactorMin();
+	const float optimalFactor = getSpeedRotationFactorOptimal();
+
+	const float speedRatio = maxSpeed > 0.f ? speed / maxSpeed : 0.f;
+
+	auto getFactor = [&]() -> float {
+		/*
+		 *      rotation factor (in units of max pitch/yaw)
+		 *      |
+         *        +--------------------------------------------------------------------+
+         *        |             +             +            +             +             |
+         *        |                                ****                                ---- 1.0 @ optimal speed
+         *        |                             ****  ****                             |
+         *    0.8 |-+                       ****          ****                       +-|
+         *        |                      ****                ****                      |
+         *        |                   ***                        ***                   |
+         *        |               ****                              ****               |
+         *    0.4 |-+          ***                                      ***          +-|
+         *        |        ****                                            ****        |
+         *        |     ***                                                    ***     |
+         *        | ****        +             +            +             +        **** ---- minFactor/maxFactor
+         *      0 +-|-------------------------------|--------------------------------|-+
+         *        0 |          0.2           0.4    |     0.6           0.8          | 1 -- speed (in units of max speed)
+         *          |                               |                                |
+         *      Min Speed                     Optimal Speed                     Max Speed
+         *
+         * When speed < optimal speed:
+         *     find y-value on upslope, between minFactor and 1.f,
+         *     interpolated from min speed (0.f) to optimal speed
+         *     ergo, t = (speedRatio - 0) / (optimalFactor - 0) = speedRatio / optimalFactor
+         *
+         * When speed > optimal speed:
+         *     find y-value on downslope, between 1.f and maxFactor
+         *     interpolated from optimal speed to max speed (1.f)
+         *     ergo, t = (speedRatio - optimalFactor) / (1 - optimalFactor)
+		 */
+		if (speedRatio < optimalFactor || optimalFactor >= 1.f) {
+			// linearly interpolate between minFactor to 1 (1 being the optimal factor)
+			// at a ratio in the range expressed as speedRatio / optimalFactor
+			return Math::linearInterpolate(minFactor, 1.f, speedRatio / optimalFactor);
+		}
+
+		// linearly interpolate between 1 to maxFactor (1 being the optimal factor)
+		// at a ratio in the range expressed as (speedRatio - optimalFactor) / (1 - optimalFactor)
+		return Math::linearInterpolate(1.f, maxFactor, (speedRatio - optimalFactor) / (1.f - optimalFactor));
+	};
+
+	// discretize factor to prevent overupdating the client
+	return floorf((getFactor() * 10.f) + 0.5f) / 10.f;
 }
 
 uint64 ShipObjectImplementation::getLastDamageReceivedMili() {

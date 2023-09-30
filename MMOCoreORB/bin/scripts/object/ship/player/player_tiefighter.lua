@@ -52,6 +52,9 @@ object_ship_player_player_tiefighter = object_ship_player_shared_player_tiefight
 	level = 1,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.5},
+		{"speedRotationFactorMax", 0.75},
 		{"slideDamp", 1.8},
 		{"engineAccel", 40},
 		{"engineDecel", 50},

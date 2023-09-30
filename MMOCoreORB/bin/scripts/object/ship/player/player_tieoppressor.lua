@@ -52,6 +52,9 @@ object_ship_player_player_tieoppressor = object_ship_player_shared_player_tieopp
 	level = 5,
 
 	attributes = {
+		{"speedRotationFactorMin", 0.2},
+		{"speedRotationFactorOptimal", 0.35},
+		{"speedRotationFactorMax", 0.4},
 		{"slideDamp", 1.3},
 		{"engineAccel", 35},
 		{"engineDecel", 35},
