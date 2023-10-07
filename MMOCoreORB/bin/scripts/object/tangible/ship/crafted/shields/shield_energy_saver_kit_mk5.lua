@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_shields_shield_energy_saver_kit_mk5 = object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk5:new {
 
-
+	gameObjectType = 262144,
 	numberExperimentalProperties = {1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},

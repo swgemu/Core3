@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_droid_interface_droid_brain_upgrade_mk2 = object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2:new {
 
-
+	gameObjectType = 262144,
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1},

@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_engine_engine_limiter_mk1 = object_tangible_ship_crafted_engine_shared_engine_limiter_mk1:new {
 
-
+	gameObjectType = 262144,
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1},

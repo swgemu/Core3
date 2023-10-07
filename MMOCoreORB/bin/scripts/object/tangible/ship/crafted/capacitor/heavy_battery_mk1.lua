@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_capacitor_heavy_battery_mk1 = object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1:new {
 
-
+	gameObjectType = 262144,
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 3, 1, 3, 1},

@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_weapon_shield_effectiveness_intensifier_mk3 = object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk3:new {
 
-
+	gameObjectType = 262144,
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1},

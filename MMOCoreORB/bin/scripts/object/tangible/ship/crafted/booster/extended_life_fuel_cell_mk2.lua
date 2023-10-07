@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_booster_extended_life_fuel_cell_mk2 = object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk2:new {
 
-
+	gameObjectType = 262144,
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 2, 1, 2},

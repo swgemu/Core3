@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_booster_heavy_fuel_cell_mk4 = object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk4:new {
 
-
+	gameObjectType = 262144,
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "DR", "OQ", "DR", "OQ"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1},

@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_reactor_reactor_limiter_mk5 = object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk5:new {
 
-
+	gameObjectType = 262144,
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1},

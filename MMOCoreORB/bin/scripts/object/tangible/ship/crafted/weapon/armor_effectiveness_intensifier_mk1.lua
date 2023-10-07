@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_weapon_armor_effectiveness_intensifier_mk1 = object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk1:new {
 
-
+	gameObjectType = 262144,
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1},
