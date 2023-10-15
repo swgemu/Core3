@@ -11,13 +11,11 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/objects/guild/GuildStructurePermissionsTask.h"
 
 class PermissionListModifyCommand : public QueueCommand {
 public:
-
-	PermissionListModifyCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	PermissionListModifyCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -37,12 +35,20 @@ public:
 			return INVALIDTARGET;
 		}
 
-		StructureObject* structureObject = cast<StructureObject*>( obj.get());
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
+		StructureObject* structureObject = cast<StructureObject*>(obj.get());
+
+		if (structureObject == nullptr)
+			return GENERALERROR;
 
 		String targetName, listName, action;
 		ManagedReference<SceneObject*> targetObject = nullptr;
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = zoneServer->getGuildManager();
 
 		try {
 			UnicodeTokenizer tokenizer(arguments);
@@ -209,16 +215,15 @@ public:
 		} else {
 			ManagedReference<GuildObject*> targetGuild = cast<GuildObject*>(targetObject.get());
 
-			//Update the cell permissions to guild members.
+			// Update the cell permissions to nearby guild members
 			if (targetGuild != nullptr && structureObject->isBuildingObject()) {
-				ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( structureObject);
+				ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>(structureObject);
 
-				for (int i = 0; i < targetGuild->getTotalMembers(); ++i) {
-					uint64 memberID = targetGuild->getMember(i);
-					ManagedReference<CreatureObject*> guildMember = server->getZoneServer()->getObject(memberID).castTo<CreatureObject*>();
+				if (buildingObject != nullptr) {
+					GuildStructurePermissionsTask* guildStructTask = new GuildStructurePermissionsTask(buildingObject, targetGuild);
 
-					if (guildMember != nullptr)
-						buildingObject->updateCellPermissionsTo(guildMember);
+					if (guildStructTask != nullptr)
+						guildStructTask->execute();
 				}
 			}
 		}
