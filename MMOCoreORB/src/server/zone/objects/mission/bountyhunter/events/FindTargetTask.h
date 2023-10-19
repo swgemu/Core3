@@ -30,7 +30,7 @@ class FindTargetTask : public Task, public Logger {
 	int trackingsLeft;
 	String zoneName;
 
-	enum states { Init, DroidSent, Searching, Tracking, Completed};
+	enum states { Init, DroidSent, Searching, Tracking, Completed };
 
 	states state;
 
@@ -117,6 +117,10 @@ class FindTargetTask : public Task, public Logger {
 	}
 
 	bool findAndTrackSuccess(CreatureObject* player, BountyMissionObjective* objective) {
+		if (player == nullptr || objective == nullptr) {
+			return false;
+		}
+
 		Locker locker(player);
 
 		if (objective->getPlayerOwner() == nullptr) {
