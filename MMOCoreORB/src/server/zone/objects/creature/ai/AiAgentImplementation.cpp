@@ -2140,7 +2140,7 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	unmitigatedDamage = 0;
 
 	if (threatMap != nullptr)
-		threatMap->removeAll();
+		threatMap->removeAll(true);
 
 	locker.release();
 
