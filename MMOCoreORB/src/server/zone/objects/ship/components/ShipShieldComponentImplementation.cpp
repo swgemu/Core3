@@ -45,8 +45,16 @@ void ShipShieldComponentImplementation::updateCraftingValues(CraftingValues* val
 void ShipShieldComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	ShipComponentImplementation::fillAttributeList(alm, object);
 
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_shield_hitpoints_front", String::valueOf(Math::getPrecision(frontHitpoints, 1)));
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_shield_hitpoints_back", String::valueOf(Math::getPrecision(rearHitpoints, 1)));
+	StringBuffer msg;
+
+	msg << "0.0/" << Math::getPrecision(frontHitpoints, 1);
+	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_shield_hitpoints_front", msg.toString());
+	msg.deleteAll();
+
+	msg << "0.0/" << Math::getPrecision(rearHitpoints, 1);
+	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_shield_hitpoints_back", msg.toString());
+	msg.deleteAll();
+
 	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_shield_recharge_rate", String::valueOf(Math::getPrecision(rechargeRate, 1)));
 
 	if (reverseEngineeringLevel != 0) {
