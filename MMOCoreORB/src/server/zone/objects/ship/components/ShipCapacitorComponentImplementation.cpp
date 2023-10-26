@@ -41,7 +41,11 @@ void ShipCapacitorComponentImplementation::updateCraftingValues(CraftingValues* 
 void ShipCapacitorComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	ShipComponentImplementation::fillAttributeList(alm, object);
 
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_capacitor_energy", String::valueOf(Math::getPrecision(capacitorEnergy, 1)));
+	StringBuffer msg;
+
+	msg << "0.0/" << Math::getPrecision(capacitorEnergy, 1);
+	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_capacitor_energy", msg.toString());
+
 	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_capacitor_energy_recharge_rate", String::valueOf(Math::getPrecision(capacitorRechargeRate, 1)));
 
 	if (reverseEngineeringLevel != 0) {
