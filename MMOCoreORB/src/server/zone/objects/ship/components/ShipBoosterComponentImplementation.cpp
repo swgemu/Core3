@@ -53,7 +53,11 @@ void ShipBoosterComponentImplementation::updateCraftingValues(CraftingValues* va
 void ShipBoosterComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	ShipComponentImplementation::fillAttributeList(alm, object);
 
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy", String::valueOf(Math::getPrecision(boosterEnergy, 1)));
+	StringBuffer msg;
+
+	msg << "0.0/" << Math::getPrecision(boosterEnergy, 1);
+	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy", msg.toString());
+
 	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy_recharge_rate", String::valueOf(Math::getPrecision(boosterRechargeRate, 1)));
 	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy_consumption_rate", String::valueOf(Math::getPrecision(boosterConsumptionRate, 1)));
 	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_acceleration", String::valueOf(Math::getPrecision(boosterAcceleration, 1)));
