@@ -783,6 +783,8 @@ function Coa3Screenplay:spawnWarehouseMobiles(pBuilding)
 			totalMobiles = totalMobiles + 1
 
 			createObserver(OBJECTDESTRUCTION, "Coa3Screenplay", "notifyGuardKilled", pMobile)
+
+			writeData(mobileID .. ":CoA3:warehouseMobilePlayerID:", playerID)
 		end
 	end
 
@@ -951,11 +953,13 @@ function Coa3Screenplay:exitedCaravanArea(pArea, pPlayer)
 end
 
 function Coa3Screenplay:notifyGuardKilled(pMobile, pKiller)
-	if (pMobile == nil or pKiller == nil) then
+	if (pMobile == nil) then
 		return 1
 	end
 
-	local playerID = SceneObject(pKiller):getObjectID()
+	local mobileID = SceneObject(pMobile):getObjectID()
+
+	local playerID = readData(mobileID .. ":CoA3:warehouseMobilePlayerID:")
 	local totalMobiles = readData(playerID .. ":CoA3:totalWarehouseMobiles:")
 
 	totalMobiles = totalMobiles - 1
