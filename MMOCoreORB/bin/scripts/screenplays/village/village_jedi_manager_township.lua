@@ -281,17 +281,20 @@ function VillageJediManagerTownship:spawnMobiles(currentPhase, spawnStaticMobs)
 		for i = 1, #mobileTable, 1 do
 			local mobile = mobileTable[i]
 			local pMobile = spawnMobile("dathomir", mobile[1], 0, mobile[2], mobile[3], mobile[4], mobile[5], 0)
+
 			if (pMobile ~= nil) then
 				CreatureObject(pMobile):setPvpStatusBitmask(0)
+
 				if (mobile[6] ~= "") then
 					self[mobile[6]](pMobile)
 				end
+
 				if (mobile[7] ~= "") then
 					CreatureObject(pMobile):setOptionsBitmask(136)
-
 					AiAgent(pMobile):setConvoTemplate(mobile[7])
-					AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 				end
+
+				AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 			end
 		end
 	end
