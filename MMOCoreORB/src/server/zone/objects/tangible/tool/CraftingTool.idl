@@ -17,8 +17,8 @@ import server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 @json
 class CraftingTool extends ToolTangibleObject {
+	protected transient int status;
 
-	protected string status;
 	protected int type;
 	protected float effectiveness;
 
@@ -38,9 +38,14 @@ class CraftingTool extends ToolTangibleObject {
 	public static final int STRUCTURE = 6; // Structure and Furniture Crafting Tool
 	public static final int WEAPON = 7; // Weapon Droid and General Item Crafting Tool
 
+	public static final int TOOL_READY = 0; // Tool is empty "@crafting:tool_status_ready"
+	public static final int TOOL_WORKING = 1; // Tool is counting down "@crafting:tool_status_working"
+	public static final int TOOL_FINISHED = 2; // Tool has crafted items inside "@crafting:tool_status_finished"
+
 	public CraftingTool() {
 		Logger.setLoggingName("CraftingTool");
-		status = "@crafting:tool_status_ready";
+
+		status = 0;
 		effectiveness = 0;
 		forceCriticalAssembly = 0;
 		forceCriticalExperiment = 0;
@@ -51,15 +56,7 @@ class CraftingTool extends ToolTangibleObject {
 		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEOUT);
 	}
 
-	public void initializeTransientMembers() {
-		super.initializeTransientMembers();
-		if(getContainerObjectsSize() == 0) {
-			status = "@crafting:tool_status_ready";
-		} else {
-			status = "@crafting:tool_status_finished";
-		}
-		setCountdownTimer(0, false);
-	}
+	public native void initializeTransientMembers();
 
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
@@ -100,11 +97,11 @@ class CraftingTool extends ToolTangibleObject {
 	 */
 	@dirty
 	public boolean isReady() {
-		return status == "@crafting:tool_status_ready";
+		return (status == TOOL_READY);
 	}
 
 	public void setReady() {
-		status = "@crafting:tool_status_ready";
+		status = TOOL_READY;
 	}
 
 	/**
@@ -112,11 +109,11 @@ class CraftingTool extends ToolTangibleObject {
 	 */
 	@dirty
 	public boolean isBusy() {
-		return status == "@crafting:tool_status_working";
+		return (status == TOOL_WORKING);
 	}
 
 	public void setBusy() {
-		status = "@crafting:tool_status_working";
+		status = TOOL_WORKING;
 	}
 
 	/**
@@ -124,11 +121,11 @@ class CraftingTool extends ToolTangibleObject {
 	 */
 	@dirty
 	public boolean isFinished() {
-		return status == "@crafting:tool_status_finished";
+		return (status == TOOL_FINISHED);
 	}
 
 	public void setFinished() {
-		status = "@crafting:tool_status_finished";
+		status = TOOL_FINISHED;
 	}
 
 	/**
