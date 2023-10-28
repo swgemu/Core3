@@ -52,6 +52,7 @@ void StorePetTask::run() {
 	pet->clearCombatState(true);
 	pet->setOblivious();
 	pet->storeFollowObject();
+
 	if (pet->isDroidObject()) {
 		DroidObject* droid = cast<DroidObject*>(pet.get());
 		if (droid != nullptr) {
@@ -60,17 +61,20 @@ void StorePetTask::run() {
 		}
 	}
 
+	pet->clearQueueActions(false);
+
 	pet->destroyObjectFromWorld(true);
 	pet->setCreatureLink(nullptr);
 
 	ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
+
 	if (controlDevice != nullptr) {
-		Locker deviceLocker(controlDevice);
+		Locker deviceLocker(controlDevice, player);
+
 		controlDevice->updateStatus(0);
 		controlDevice->setLastCommandTarget(nullptr);
 		controlDevice->setLastCommand(PetManager::FOLLOW);
 	}
-
 
 	const CreatureTemplate* creoTemp = pet->getCreatureTemplate();
 

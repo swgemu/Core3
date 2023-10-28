@@ -1,6 +1,7 @@
 /*
-				Copyright <SWGEmu>
-		See file COPYING for copying conditions.*/
+	Copyright <SWGEmu>
+	See file COPYING for copying conditions.
+*/
 
 #ifndef CALLARAKYDTASK_H_
 #define CALLARAKYDTASK_H_
@@ -39,7 +40,6 @@ public:
 	}
 
 	~CallArakydTask() {
-
 	}
 
 	void run() {
@@ -105,12 +105,16 @@ public:
 
 	Vector3 getLandingCoordinates(CreatureObject* player) {
 		Vector3 position = player->getPosition();
+		auto zone = player->getZone();
 
-		if (player->getZone() == nullptr || player->getZone()->getPlanetManager() == nullptr) {
+		if (zone == nullptr) {
 			return position;
 		}
 
-		PlanetManager* planetManager = player->getZone()->getPlanetManager();
+		auto planetManager = zone->getPlanetManager();
+
+		if (planetManager == nullptr)
+			return position;
 
 		return planetManager->getInSightSpawnPoint(player, 30, 120, 15);
 	}

@@ -58,12 +58,14 @@ int BountyHunterDroidMenuComponent::handleObjectMenuSelect(SceneObject* droidObj
 			return 0;
 		}
 	} else if (isSeekerDroid(droidObject)) {
-		if ((selectedID == 138 || selectedID == 137) && droidIsInPlayerInventory(droidObject, player)) {
-			performDroidAction(BountyHunterDroid::FINDTARGET, droidObject, player);
-			return 0;
-		} else if (selectedID == 136 && droidIsInPlayerInventory(droidObject, player)) {
-			performDroidAction(BountyHunterDroid::FINDANDTRACKTARGET, droidObject, player);
-			return 0;
+		if (droidIsInPlayerInventory(droidObject, player)) {
+			if (selectedID == 138 || selectedID == 137) {
+				performDroidAction(BountyHunterDroid::FINDTARGET, droidObject, player);
+				return 0;
+			} else if (selectedID == 136) {
+				performDroidAction(BountyHunterDroid::FINDANDTRACKTARGET, droidObject, player);
+				return 0;
+			}
 		}
 	}
 

@@ -950,15 +950,26 @@ Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAr
 		}
 	}
 
-	if (range < 0) {
-		range = weapon->getMaxRange();
+	bool thrownWeapon = false;
+	bool heavyWeapon = false;
+
+	if (weapon != nullptr) {
+		thrownWeapon = weapon->isThrownWeapon();
+		heavyWeapon = weapon->isHeavyWeapon();
+
+		if (range < 0) {
+			range = weapon->getMaxRange();
+		}
+
+		if (data.isSplashDamage())
+			range += data.getRange();
+
+		if (thrownWeapon || heavyWeapon)
+			range = weapon->getMaxRange() + areaRange;
 	}
 
-	if (data.isSplashDamage())
-		range += data.getRange();
-
-	if (weapon->isThrownWeapon() || weapon->isHeavyWeapon())
-		range = weapon->getMaxRange() + areaRange;
+	if (range < 0)
+		return defenders;
 
 	try {
 		// zone->rlock();
@@ -1032,10 +1043,8 @@ Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAr
 				continue;
 			}
 
-			if (data.isSplashDamage() || weapon->isThrownWeapon() || weapon->isHeavyWeapon()) {
-				if (defenderObject->getWorldPosition().squaredDistanceTo(tano->getWorldPosition()) - tanoRadiusSq > (areaRange * areaRange))
-					continue;
-			}
+			if ((data.isSplashDamage() || thrownWeapon || heavyWeapon) && (defenderObject->getWorldPosition().squaredDistanceTo(tano->getWorldPosition()) - tanoRadiusSq > (areaRange * areaRange)))
+				continue;
 
 			CreatureObject* creo = tano->asCreatureObject();
 
@@ -1052,7 +1061,7 @@ Reference<SortedVector<ManagedReference<TangibleObject*>>*> CombatManager::getAr
 			// zone->runlock();
 
 			try {
-				if (!(weapon->isThrownWeapon()) && !(data.isSplashDamage()) && !(weapon->isHeavyWeapon())) {
+				if (!thrownWeapon && !data.isSplashDamage() && !heavyWeapon) {
 					if (CollisionManager::checkLineOfSight(object, attacker)) {
 						defenders->put(tano);
 						attacker->addDefender(tano);

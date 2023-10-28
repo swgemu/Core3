@@ -11,10 +11,17 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 
 Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
-	if (droidObject == nullptr || player == nullptr || mission == nullptr) {
-		if (player != nullptr) {
-			player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
-		}
+	if (player == nullptr)
+		return nullptr;
+
+	if (droidObject == nullptr) {
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
+		return nullptr;
+	}
+
+	if (mission == nullptr) {
+		droidObject->destroyObjectFromWorld(true);
+		droidObject->destroyObjectFromDatabase(true);
 
 		return nullptr;
 	}
@@ -45,8 +52,7 @@ Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droid
 }
 
 Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObject, CreatureObject* player, MissionObject* mission, bool track) {
-	if (mission->getMissionLevel() < 2 ||
-			(mission->getMissionLevel() < 3 && track)) {
+	if (mission->getMissionLevel() < 2 || (mission->getMissionLevel() < 3 && track)) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
 		return nullptr;
 	}
@@ -54,7 +60,7 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 	ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
 	if (objective == nullptr || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature");// You must go speak with your informant before you can track your target.
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature"); // You must go speak with your informant before you can track your target.
 		return nullptr;
 	}
 
@@ -79,7 +85,8 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 	Locker locker(droidObject);
 
 	TangibleObject* tano = cast<TangibleObject*>(droidObject);
-	if(tano != nullptr){
+
+	if (tano != nullptr) {
 		tano->decreaseUseCount();
 	} else {
 		droidObject->destroyObjectFromWorld(true);
@@ -103,7 +110,7 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 	ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
 	if (objective == nullptr || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature");// You must go speak with your informant before you can track your target.
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature"); // You must go speak with your informant before you can track your target.
 		return nullptr;
 	}
 
@@ -112,7 +119,7 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 		return nullptr;
 	}
 
-	SortedVector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
+	SortedVector<ManagedReference<ActiveArea*>>* areas = player->getActiveAreas();
 	for (int i = 0; i < areas->size(); i++) {
 		if (areas->get(i)->isCityRegion()) {
 			player->sendSystemMessage("@mission/mission_generic:probe_droid_bad_location"); // You must move to a different area to call down a probe droid from orbit.
@@ -129,8 +136,8 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 
 	Core::getTaskManager()->executeTask(task);
 
-	//Temporary set the arakyd droid to the player object. The call task will overwrite it with correct value.
-	//This is needed to prevent the player from launching more than one droid at a time.
+	// Temporary set the arakyd droid to the player object. The call task will overwrite it with correct value.
+	// This is needed to prevent the player from launching more than one droid at a time.
 	Locker olocker(objective);
 
 	objective->setArakydDroid(player);
@@ -141,7 +148,7 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 
 	TangibleObject* tano = cast<TangibleObject*>(droidObject);
 
-	if(tano != nullptr){
+	if (tano != nullptr) {
 		tano->decreaseUseCount();
 	} else {
 		droidObject->destroyObjectFromWorld(true);

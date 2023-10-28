@@ -11,14 +11,10 @@
 
 class ForceIntimidate2Command : public ForcePowersQueueCommand {
 public:
-
-	ForceIntimidate2Command(const String& name, ZoneProcessServer* server)
-		: ForcePowersQueueCommand(name, server) {
-
+	ForceIntimidate2Command(const String& name, ZoneProcessServer* server) : ForcePowersQueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -44,16 +40,17 @@ public:
 
 		if (res == SUCCESS) {
 			CreatureAttackData data = CreatureAttackData("", this, target);
-			Reference<SortedVector<ManagedReference<TangibleObject*> >* > targets = CombatManager::instance()->getAreaTargets(creature, creature->getWeapon(), tarCreo, data);
+
+			Reference<SortedVector<ManagedReference<TangibleObject*>>*> targets = CombatManager::instance()->getAreaTargets(creature, creature->getWeapon(), tarCreo, data);
+
 			if (targets->size() != 0) {
-				ForceIntimidateTask *task = new ForceIntimidateTask(tarCreo, targets, this);
+				ForceIntimidateTask* task = new ForceIntimidateTask(tarCreo, targets, this);
 				task->schedule(1500);
 			}
 		}
 
 		return res;
 	}
-
 };
 
-#endif //FORCEINTIMIDATE2COMMAND_H_
+#endif // FORCEINTIMIDATE2COMMAND_H_

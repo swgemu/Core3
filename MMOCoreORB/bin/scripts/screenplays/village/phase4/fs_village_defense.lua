@@ -52,14 +52,8 @@ function FsVillageDefense:acceptHealingQuest(pPlayer)
 	self:setVillageHealingCount(pPlayer, 0)
 end
 
-function FsVillageDefense:checkHealerList(pCreature)
-	if (pCreature == nil) then
-		return
-	end
-
-	local healerList = CreatureObject(pCreature):getHealingThreatList()
-
-	if (healerList == nil or #healerList == 0) then
+function FsVillageDefense:checkHealerList(healerList)
+	if (#healerList == 0) then
 		return
 	end
 
@@ -220,7 +214,7 @@ function FsVillageDefense:notifyKilledRaider(pVictim, pKiller)
 		return 1
 	end
 
-	self:checkHealerList(pVictim)
+	self:checkHealerList(CreatureObject(pVictim):getHealingThreatList())
 
 	for i = 1, #attackerList, 1 do
 		local pAttacker = attackerList[i]

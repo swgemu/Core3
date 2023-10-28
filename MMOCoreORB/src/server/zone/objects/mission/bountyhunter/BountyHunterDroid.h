@@ -26,7 +26,6 @@ namespace bountyhunter {
  */
 class BountyHunterDroid : public Logger, public Object {
 public:
-
 	enum {
 		CALLDROID,
 		TRANSMITBIOLOGICALSIGNATURE,
@@ -34,8 +33,7 @@ public:
 		FINDANDTRACKTARGET
 	};
 
-	BountyHunterDroid() :
-		Logger("BountyHunterDroid") {
+	BountyHunterDroid() : Logger("BountyHunterDroid") {
 	}
 
 	Reference<Task*> performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission);

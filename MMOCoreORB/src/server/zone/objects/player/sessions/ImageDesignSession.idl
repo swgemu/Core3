@@ -80,7 +80,7 @@ class ImageDesignSession extends Facade {
 		return 0;
 	}
 
-	public native int doPayment();
+	public native boolean doPayment();
 
 	public native int cancelSession();
 

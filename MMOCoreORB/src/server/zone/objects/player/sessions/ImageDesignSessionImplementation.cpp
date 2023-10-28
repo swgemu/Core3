@@ -324,30 +324,35 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 	targetObject->sendMessage(message);
 }
 
-int ImageDesignSessionImplementation::doPayment() {
+bool ImageDesignSessionImplementation::doPayment() {
 	ManagedReference<CreatureObject*> designerCreature = this->designerCreature.get();
 	ManagedReference<CreatureObject*> targetCreature = this->targetCreature.get();
 
 	int targetCredits = targetCreature->getCashCredits() + targetCreature->getBankCredits();
 
 	uint32 requiredPayment = imageDesignData.getRequiredPayment();
+	uint32 offeredPayment = imageDesignData.getOfferedPayment();
+	uint32 paymentAmount = requiredPayment;
+
+	if (paymentAmount < offeredPayment)
+		paymentAmount = offeredPayment;
 
 	// The client should prevent this, but in case it doesn't
-	if (targetCredits < requiredPayment) {
+	if (targetCredits < paymentAmount) {
 		targetCreature->sendSystemMessage("You do not have enough credits to pay the required payment.");
 		designerCreature->sendSystemMessage("Target does not have enough credits for the required payment.");
 
 		cancelSession();
 
-		return 0;
+		return false;
 	}
 
-	if (requiredPayment <= targetCreature->getCashCredits()) {
-		TransactionLog trx(targetCreature, designerCreature, TrxCode::IMAGEDESIGN, requiredPayment, true);
-		targetCreature->subtractCashCredits(requiredPayment);
-		designerCreature->addCashCredits(requiredPayment);
+	if (paymentAmount <= targetCreature->getCashCredits()) {
+		TransactionLog trx(targetCreature, designerCreature, TrxCode::IMAGEDESIGN, paymentAmount, true);
+		targetCreature->subtractCashCredits(paymentAmount);
+		designerCreature->addCashCredits(paymentAmount);
 	} else {
-		int requiredBankCredits = requiredPayment - targetCreature->getCashCredits();
+		int requiredBankCredits = paymentAmount - targetCreature->getCashCredits();
 
 		TransactionLog trxCash(targetCreature, designerCreature, TrxCode::IMAGEDESIGN, targetCreature->getCashCredits(), true);
 		targetCreature->subtractCashCredits(targetCreature->getCashCredits());
@@ -356,9 +361,10 @@ int ImageDesignSessionImplementation::doPayment() {
 		trxBank.groupWith(trxCash);
 
 		targetCreature->subtractBankCredits(requiredBankCredits);
-		designerCreature->addCashCredits(requiredPayment);
+		designerCreature->addCashCredits(paymentAmount);
 	}
-	return 1;
+
+	return true;
 }
 
 void ImageDesignSessionImplementation::checkDequeueEvent(SceneObject* scene) {

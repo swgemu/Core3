@@ -80,6 +80,16 @@ void BountyMissionObjectiveImplementation::abort() {
 
 	cancelAllTasks();
 
+	if (activeDroid != nullptr) {
+		if (!activeDroid->isPlayerCreature()) {
+			Locker locker(activeDroid);
+			activeDroid->destroyObjectFromDatabase();
+			activeDroid->destroyObjectFromWorld(true);
+		}
+
+		activeDroid = nullptr;
+	}
+
 	if (strongRef == nullptr)
 		return;
 
@@ -344,13 +354,13 @@ void BountyMissionObjectiveImplementation::cancelAllTasks() {
 		targetTask = nullptr;
 	}
 
-	for (int i = 0; i < droidTasks.size(); i++) {
+	/*for (int i = 0; i < droidTasks.size(); i++) {
 		Reference<Task*> droidTask = droidTasks.get(i);
 
 		if (droidTask != nullptr && droidTask->isScheduled()) {
 			droidTask->cancel();
 		}
-	}
+	}*/
 
 	droidTasks.removeAll();
 }
