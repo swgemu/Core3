@@ -1124,22 +1124,24 @@ int LuaCreatureObject::getHealingThreatList(lua_State* L) {
 	lua_newtable(L);
 
 	int count = 0;
+
 	for (int i = 0; i < copyThreatMap.size(); ++i) {
 		ThreatMapEntry* entry = &copyThreatMap.elementAt(i).getValue();
 
-		if (entry->getHeal() > 0) {
-			TangibleObject* healer = copyThreatMap.elementAt(i).getKey();
+		if (entry == nullptr || entry->getHeal() <= 0)
+			continue;
 
-			if (healer == nullptr || !healer->isCreatureObject()) {
-				continue;
-			}
+		TangibleObject* entryTano = copyThreatMap.elementAt(i).getKey();
 
-			CreatureObject* creoHealer = healer->asCreatureObject();
-
-			count++;
-			lua_pushlightuserdata(L, creoHealer);
-			lua_rawseti(L, -2, count);
+		if (entryTano == nullptr || !entryTano->isCreatureObject()) {
+			continue;
 		}
+
+		CreatureObject* creoHealer = entryTano->asCreatureObject();
+
+		count++;
+		lua_pushlightuserdata(L, creoHealer);
+		lua_rawseti(L, -2, count);
 	}
 
 	return 1;

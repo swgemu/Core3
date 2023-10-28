@@ -2072,9 +2072,6 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 	CreatureObjectImplementation::clearCombatState(clearDefenders);
 
-	if (threatMap != nullptr)
-		threatMap->removeAll();
-
 	notifyObservers(ObserverEventType::PEACE);
 	sendReactionChat(nullptr, ReactionManager::CALM);
 }
