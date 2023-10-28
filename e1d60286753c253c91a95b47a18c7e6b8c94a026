@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bf33166_33cfd0da",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipBoosterComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2023-10-28T00:19:07Z",
+      "side": 1,
+      "message": "This is only needed if you are re-using the StringBuffer. Fix this and Capacitor component then it should be good to go.",
+      "revId": "e1d60286753c253c91a95b47a18c7e6b8c94a026",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
