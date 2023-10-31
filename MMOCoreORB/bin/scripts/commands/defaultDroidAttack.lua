@@ -42,13 +42,18 @@
 --true = 1, false = 0
 
 DefaultDroidAttackCommand = {
-    name = "defaultdroidattack",
-    animation = "droid_attack", 
+	name = "defaultdroidattack",
+	animation = "droid_attack",
+
 	animType = GENERATE_INTENSITY,
-    damageMultiplier = 1,
+
+	damageMultiplier = 1,
 	speedMultiplier = 1,
+
 	combatSpam = "attack",
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
+
 	trails = 255,
 }
 
