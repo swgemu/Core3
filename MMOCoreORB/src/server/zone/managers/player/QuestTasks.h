@@ -302,7 +302,7 @@ public:
 	}
 
 	int getBankCredits() const {
-		return factionAmount;
+		return bankCredits;
 	}
 
 	const String getItem() const {
