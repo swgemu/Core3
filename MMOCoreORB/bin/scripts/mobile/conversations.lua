@@ -129,6 +129,11 @@ includeFile("conversations/themepark/epic_quests/goru_conv.lua")
 includeFile("conversations/themepark/logic/mission_giver_conv.lua")
 includeFile("conversations/themepark/logic/mission_target_conv.lua")
 
+-- Enough Quest
+includeFile("conversations/tasks/enough/acun_solari_conv.lua")
+includeFile("conversations/tasks/enough/ceth_laike_conv.lua")
+
+
 -- ** DUNGEONS **
 
 -- Corellian Corvette
