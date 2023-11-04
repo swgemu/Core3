@@ -66,9 +66,10 @@ function AcunSolariConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 		end
 
 		local questTask = LuaQuestTask(pQuestTask)
+		local faction = string.lower(questTask:getFactionName())
 
 		-- Give reward
-		ghost:increaseFactionStanding("rebel", questTask:getFactionAmount())
+		ghost:increaseFactionStanding(faction, questTask:getFactionAmount())
 
 		local creditsAmount = questTask:getBankCredits()
 		CreatureObject(pPlayer):addBankCredits(creditsAmount, true)
@@ -77,7 +78,7 @@ function AcunSolariConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 	elseif (screenID == "help_accept") then
 		-- Waypoint to Flail Camp
 		local waypointID = ghost:addWaypoint("corellia", "Flail Camp", "Flail Camp", -4737, -1519, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
-		writeScreenPlayData(pPlayer, "EnoughQuest", "FlailWaypointID", waypointID)
+		writeScreenPlayData(pPlayer, "EnoughQuest", "KilllWaypointID", waypointID)
 
 		-- Waypoint to Binayre Camp
 		waypointID = ghost:addWaypoint("talus", "Binayre Camp", "Binayre Camp", -1622, 618, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
@@ -89,8 +90,8 @@ function AcunSolariConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 		-- Add observer to player to track the Flail kills
 		createObserver(KILLEDCREATURE, "EnoughQuest", "notifyKilledCreature", pPlayer, 1)
 	elseif (screenID == "ground_kill") then
-		local flailCount = getQuestStatus(playerID .. ":EnoughQuest:FlailKills:")
-		local gangSymbols = getQuestStatus(playerID .. ":EnoughQuest:BinayreGangSymbols:")
+		local flailCount = getQuestStatus(playerID .. ":EnoughQuest:DestroyMultiCount:")
+		local gangSymbols = getQuestStatus(playerID .. ":EnoughQuest:DestroyMultiLootCount:")
 
 		if (flailCount == nil) then
 			flailCount = 0
@@ -129,8 +130,8 @@ function AcunSolariConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 		ghost:activateJournalQuestTask(EnoughQuest.REBEL_CRC, EnoughQuest.WAIT_FOR_SIGNAL3, true)
 
 		-- Remove quest statuses
-		removeQuestStatus(playerID .. ":EnoughQuest:FlailKills:")
-		removeQuestStatus(playerID .. ":EnoughQuest:BinayreGangSymbols:")
+		removeQuestStatus(playerID .. ":EnoughQuest:DestroyMultiCount:")
+		removeQuestStatus(playerID .. ":EnoughQuest:DestroyMultiLootCount:")
 
 		-- Here the ground quest portion is finished. Players will not be able to finish until JTL is further in development.
 		if (EnoughQuest.ENABLE_SPACE) then

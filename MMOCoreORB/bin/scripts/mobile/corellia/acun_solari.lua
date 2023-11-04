@@ -24,7 +24,7 @@ acun_solari = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + JTLINTERESTING + CONVERSABLE,
+	optionsBitmask = AIENABLED + JTLINTERESTING + CONVERSABLE + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_army_captain_bothan_male.iff"},

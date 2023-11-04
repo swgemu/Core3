@@ -23,7 +23,7 @@ ceth_laike = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + JTLINTERESTING + CONVERSABLE,
+	optionsBitmask = AIENABLED + JTLINTERESTING + CONVERSABLE + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_officer_m_2.iff"},

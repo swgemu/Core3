@@ -22,23 +22,25 @@ EnoughQuest = ScreenPlay:new {
 	questMobiles = {
 		-- Quest Givers
 		{"acun_solari", "corellia", 19.8, -0.9, -19.6, 0, 2625356},
-		{"ceth_laike", "talus", -2178, 0.0, 2273, 0, 0},
+		{"ceth_laike", "talus", -2178, 20.0, 2273, 0, 0},
 
-		-- Flail camp
+		-- Flail Camp
 		{"flail_cutthroat", "corellia", -4751, 28, -1508, 0, 0},
 		{"flail_cutthroat", "corellia", -4751, 28, -1510, 0, 0},
 		{"flail_executioner", "corellia", -4748, 27, -1524, 0, 0},
 		{"flail_slayer", "corellia", -4751, 27, -1521, 0, 0},
 		{"flail_enforcer", "corellia", -4736, 28, -1509, 0, 0},
 
-		-- Binayre Campe
+		-- Binayre Pirate Camp
 		{"binayre_pirate", "talus", -1631, 22, 617, 0, 0},
 		{"binayre_pirate", "talus", -1629, 23, 615, 0, 0},
 		{"binayre_pirate", "talus", -1615, 24, 619, 0, 0},
 		{"binayre_pirate", "talus", -1623, 23, 620, 0, 0},
+		{"binayre_pirate", "talus", -1620, 23, 620, 0, 0},
 	},
 
 	flailCrashMobiles = {"flail_cutthroat", "flail_enforcer", "flail_executioner", "flail_killer"},
+	binayreCrashMobiles = {"binayre_pirate", "binayre_pirate", "binayre_smuggler", "binayre_ruffian"},
 }
 
 registerScreenPlay("EnoughQuest", true)
@@ -116,7 +118,7 @@ function EnoughQuest:activeTask(ghost, questCrc, taskIndex)
 			not ghost:isJournalQuestComplete(questCrc) and not ghost:isJournalQuestTaskComplete(questCrc, taskIndex)
 end
 
-function EnoughQuest:spawnFlailAttack(pPlayer)
+function EnoughQuest:spawnAttack(pPlayer)
 	if pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() then
 		return
 	end
@@ -125,9 +127,11 @@ function EnoughQuest:spawnFlailAttack(pPlayer)
 	local ghost = LuaPlayerObject(pGhost)
 
 	local questCrc = self.REBEL_CRC
+	local mobilesTable = self.flailCrashMobiles
 
 	if CreatureObject(pPlayer):getFaction() == FACTIONIMPERIAL then
 		questCrc = self.IMPERIAL_CRC
+		mobilesTable = self.binayreCrashMobiles
 	end
 
 	-- Complete Timer and start encounter
@@ -141,18 +145,18 @@ function EnoughQuest:spawnFlailAttack(pPlayer)
 	local totalMobiles = 0
 	local playerID = SceneObject(pPlayer):getObjectID()
 
-	for i = 1, #self.flailCrashMobiles, 1 do
+	for i = 1, #mobilesTable, 1 do
 		local x = playerX + getRandomNumber(-25, 25)
 		local y = playerY + getRandomNumber(-25, 25)
 
-		local pMobile = spawnMobile(zoneName, self.flailCrashMobiles[i], -1, x, getWorldFloor(x, y, zoneName), y, 0, 0)
+		local pMobile = spawnMobile(zoneName, mobilesTable[i], -1, x, getWorldFloor(x, y, zoneName), y, 0, 0)
 
 		if (pMobile ~= nil) then
 			-- add death observer
-			createObserver(OBJECTDESTRUCTION, "EnoughQuest", "notifyFlailKilled", pMobile)
+			createObserver(OBJECTDESTRUCTION, "EnoughQuest", "notifyCrashMobileKilled", pMobile)
 
 			-- Store owning players ID on the mobile
-			writeData(SceneObject(pMobile):getObjectID() .. ":EnoughQuest:flailMobilePlayerID:", playerID)
+			writeData(SceneObject(pMobile):getObjectID() .. ":EnoughQuest:crashMobilePlayerID:", playerID)
 
 			totalMobiles = totalMobiles + 1
 
@@ -161,7 +165,7 @@ function EnoughQuest:spawnFlailAttack(pPlayer)
 		end
 	end
 
-	writeData(playerID .. ":EnoughQuest:totalFlailMobiles:", totalMobiles)
+	writeData(playerID .. ":EnoughQuest:totalCrashMobiles:", totalMobiles)
 end
 
 --[[
@@ -205,23 +209,23 @@ function EnoughQuest:notifyEnteredQuestArea(pActiveArea, pPlayer)
 		ghost:completeJournalQuestTask(questCrc, self.GO_TO_LOCATION, true)
 		ghost:activateJournalQuestTask(questCrc, self.TIMER, false)
 
-		createEvent(5000, "EnoughQuest", "spawnFlailAttack", pPlayer, "")
+		createEvent(5000, "EnoughQuest", "spawnAttack", pPlayer, "")
 	end
 
 	return 0
 end
 
-function EnoughQuest:notifyFlailKilled(pMobile, pKiller)
+function EnoughQuest:notifyCrashMobileKilled(pMobile, pKiller)
 	if (pMobile == nil) then
 		return 1
 	end
 
 	local mobileID = SceneObject(pMobile):getObjectID()
 
-	local playerID = readData(mobileID .. ":EnoughQuest:flailMobilePlayerID:")
-	local totalMobiles = readData(playerID .. ":EnoughQuest:totalFlailMobiles:")
+	local playerID = readData(mobileID .. ":EnoughQuest:crashMobilePlayerID:")
+	local totalMobiles = readData(playerID .. ":EnoughQuest:totalCrashMobiles:")
 
-	deleteData(mobileID .. ":EnoughQuest:flailMobilePlayerID:")
+	deleteData(mobileID .. ":EnoughQuest:crashMobilePlayerID:")
 
 	totalMobiles = totalMobiles - 1
 
@@ -238,6 +242,7 @@ function EnoughQuest:notifyFlailKilled(pMobile, pKiller)
 			return 0
 		end
 
+		local ghost = LuaPlayerObject(pGhost)
 		local questCrc = self.REBEL_CRC
 
 		if CreatureObject(pPlayer):getFaction() == FACTIONIMPERIAL then
@@ -245,24 +250,24 @@ function EnoughQuest:notifyFlailKilled(pMobile, pKiller)
 		end
 
 		-- Complete Go to location and Encounter then start wait for signal 1
-		PlayerObject(pGhost):completeJournalQuestTask(questCrc, self.GO_TO_LOCATION, true)
-		PlayerObject(pGhost):completeJournalQuestTask(questCrc, self.ENCOUNTER, true)
+		ghost:completeJournalQuestTask(questCrc, self.GO_TO_LOCATION, true)
+		ghost:completeJournalQuestTask(questCrc, self.ENCOUNTER, true)
 
-		PlayerObject(pGhost):activateJournalQuestTask(questCrc, self.WAIT_FOR_SIGNAL1, true)
+		ghost:activateJournalQuestTask(questCrc, self.WAIT_FOR_SIGNAL1, true)
 
 		-- Delete the flail mobiles count
-		deleteData(playerID .. ":EnoughQuest:totalFlailMobiles:")
+		deleteData(playerID .. ":EnoughQuest:totalCrashMobiles:")
 
 		-- Remove the waypoint from the player of the pilot
 		local waypointID = tonumber(readScreenPlayData(pPlayer, "EnoughQuest", "PilotWaypointID"))
-		PlayerObject(pGhost):removeWaypoint(waypointID, true)
+		ghost:removeWaypoint(waypointID, true)
 
 		deleteScreenPlayData(pPlayer, "EnoughQuest", "PilotWaypointID")
 
 		return 1
 	end
 
-	writeData(playerID .. ":EnoughQuest:totalFlailMobiles:", totalMobiles)
+	writeData(playerID .. ":EnoughQuest:totalCrashMobiles:", totalMobiles)
 
 	return 0
 end
@@ -274,8 +279,6 @@ function EnoughQuest:notifyKilledCreature(pPlayer, pVictim)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local victimName = SceneObject(pVictim):getObjectName()
-
-	--print("EnoughQuest:notifyKilledCreature - " .. SceneObject(pPlayer):getDisplayedName() .. " killed:  " .. SceneObject(pVictim):getDisplayedName())
 
 	local questCrc = self.REBEL_CRC
 
@@ -323,26 +326,33 @@ function EnoughQuest:notifyKilledCreature(pPlayer, pVictim)
 	end
 
 	if (taskIndex == self.DESTROY_MULTI) then
-		local flailCount = getQuestStatus(playerID .. ":EnoughQuest:FlailKills:")
+		local killCount = getQuestStatus(playerID .. ":EnoughQuest:DestroyMultiCount:")
 
-		if (flailCount == nil) then
-			flailCount = 1
+		if (killCount == nil) then
+			killCount = 1
 		else
-			flailCount = tonumber(flailCount) + 1
+			killCount = tonumber(killCount) + 1
 		end
 
-		CreatureObject(pPlayer):sendSystemMessage("Killed: " .. flailCount) -- ("destroy_counter", "Killed");
-		setQuestStatus(playerID .. ":EnoughQuest:FlailKills:", flailCount)
+		CreatureObject(pPlayer):sendSystemMessage("Killed: " .. killCount) -- ("destroy_counter", "Killed");
+		setQuestStatus(playerID .. ":EnoughQuest:DestroyMultiCount:", killCount)
 
 		-- Kill 15 Flails
-		if flailCount >= questTask:getCount() then
+		if killCount >= questTask:getCount() then
 			PlayerObject(pGhost):completeJournalQuestTask(questCrc, self.DESTROY_MULTI, true)
 			PlayerObject(pGhost):activateJournalQuestTask(questCrc, self.DESTROY_MULTI_AND_LOOT, true)
 
-			local waypointID = tonumber(readScreenPlayData(pPlayer, "EnoughQuest", "FlailWaypointID"))
+			local waypointID = 0
+
+			if (questCrc == self.REBEL_CRC) then
+				waypointID = tonumber(readScreenPlayData(pPlayer, "EnoughQuest", "KilllWaypointID"))
+			else
+				waypointID = tonumber(readScreenPlayData(pPlayer, "EnoughQuest", "KilllWaypointID"))
+			end
+
 			PlayerObject(pGhost):removeWaypoint(waypointID, true)
 
-			deleteScreenPlayData(pPlayer, "EnoughQuest", "FlailWaypointID")
+			deleteScreenPlayData(pPlayer, "EnoughQuest", "KilllWaypointID")
 
 			-- Do not remove observer, needed for next task
 		end
@@ -353,7 +363,7 @@ function EnoughQuest:notifyKilledCreature(pPlayer, pVictim)
 			return 0
 		end
 
-		local gangSymbols = getQuestStatus(playerID .. ":EnoughQuest:BinayreGangSymbols:")
+		local gangSymbols = getQuestStatus(playerID .. ":EnoughQuest:DestroyMultiLootCount:")
 		local symbolsNeeded = questTask:getLootItemsRequired()
 
 		if (gangSymbols == nil) then
@@ -363,7 +373,7 @@ function EnoughQuest:notifyKilledCreature(pPlayer, pVictim)
 		end
 
 		-- Update Quest status for amount looted
-		setQuestStatus(playerID .. ":EnoughQuest:BinayreGangSymbols:", gangSymbols)
+		setQuestStatus(playerID .. ":EnoughQuest:DestroyMultiLootCount:", gangSymbols)
 
 		local fullMsg = LuaStringIdChatParameter("@quest/groundquests:retrieve_item_success") -- "Item found. %DI remaining."
 		fullMsg:setDI(symbolsNeeded - gangSymbols)
@@ -377,10 +387,10 @@ function EnoughQuest:notifyKilledCreature(pPlayer, pVictim)
 			PlayerObject(pGhost):activateJournalQuestTask(questCrc, self.WAIT_FOR_SIGNAL2, true)
 
 			-- Remove Binayre camp waypoint
-			local waypointID = tonumber(readScreenPlayData(pPlayer, "EnoughQuest", "BinayreWaypointID"))
+			local waypointID = tonumber(readScreenPlayData(pPlayer, "EnoughQuest", "LootWaypointID"))
 			PlayerObject(pGhost):removeWaypoint(waypointID, true)
 
-			deleteScreenPlayData(pPlayer, "EnoughQuest", "BinayreWaypointID")
+			deleteScreenPlayData(pPlayer, "EnoughQuest", "LootWaypointID")
 
 			return 1
 		end
