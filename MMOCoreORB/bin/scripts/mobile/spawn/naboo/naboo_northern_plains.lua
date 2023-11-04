@@ -648,6 +648,15 @@ naboo_northern_plains = {
 			weighting = 1,
 			size = 25,
 		},
+		{
+			lairTemplateName = "naboo_veermok_holdfast_neutral_large",
+			spawnLimit = -1,
+			minDifficulty = 50,
+			maxDifficulty = 500,
+			numberToSpawn = 15,
+			weighting = 20,
+			size = 20,
+		},
 	}
 }
 
