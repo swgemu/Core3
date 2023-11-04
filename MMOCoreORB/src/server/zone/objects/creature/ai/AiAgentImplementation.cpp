@@ -616,52 +616,47 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 
 	blackboard.removeAll();
 
-	// Setup Agent Combat Stats and Create Weapons
-	setupCombatStats();
-	createWeaponsFromTemplate();
+	// Reload all of the agents info
+	reloadTemplate();
 
-	CreatureManager* creatureManager = zone->getCreatureManager();
+	// Check to see if the agent is a creature and rolls to spawn as a baby (lairs and dynamic spawns only)
+	ManagedReference<SceneObject*> home = homeObject.get();
+	bool spawnAsBaby = false;
 
-	if (npcTemplate != nullptr && creatureManager != nullptr && isCreature()) {
+	if (npcTemplate != nullptr && home != nullptr && isCreature()) {
 		int chance = 2000;
 		int babiesSpawned = 0;
 
-		ManagedReference<SceneObject*> home = homeObject.get();
+		SortedVector<ManagedReference<Observer*> > observers = home->getObservers(ObserverEventType::CREATUREDESPAWNED);
+		DynamicSpawnObserver* observer = nullptr;
 
-		if (home != nullptr) {
-			SortedVector<ManagedReference<Observer*> > observers = home->getObservers(ObserverEventType::CREATUREDESPAWNED);
-			DynamicSpawnObserver* observer = nullptr;
-
-			for (int i = 0; i < observers.size(); i++) {
-				observer = observers.get(i).castTo<DynamicSpawnObserver*>();
-
-				if (observer != nullptr) {
-					break;
-				}
-			}
+		for (int i = 0; i < observers.size(); i++) {
+			observer = observers.get(i).castTo<DynamicSpawnObserver*>();
 
 			if (observer != nullptr) {
-				chance = 500;
-				babiesSpawned = observer->getBabiesSpawned();
+				break;
 			}
 		}
 
-		if (creatureManager->checkSpawnAsBaby(npcTemplate->getTame(), babiesSpawned, chance)) {
-			Creature* creature = cast<Creature*>(asAiAgent());
-
-			if (creature) {
-				creature->loadTemplateDataForBaby(npcTemplate);
-			} else {
-				error("object is not a Creature but returned true to spawn as a baby");
-			}
+		if (observer != nullptr) {
+			chance = 500;
+			babiesSpawned = observer->getBabiesSpawned();
 		}
-	} else {
-		setLevel(level);
+
+		CreatureManager* creatureManager = zone->getCreatureManager();
+
+		spawnAsBaby = creatureManager != nullptr && creatureManager->checkSpawnAsBaby(npcTemplate->getTame(), babiesSpawned, chance);
 	}
 
-	// Set Weapon Stats and Setup Attack Maps
-	setWeaponStats();
-	setupAttackMaps();
+	if (spawnAsBaby) {
+		Creature* creature = cast<Creature*>(asAiAgent());
+
+		if (creature != nullptr) {
+			creature->loadTemplateDataForBaby(npcTemplate);
+
+			// info(true) << getDisplayedName() << " ID: " << getObjectID() << " Loc: " << getWorldPosition().toString() << " SPAWNED AS BABY";
+		}
+	}
 
 	clearRunningChain();
 	clearCombatState(true);
@@ -782,7 +777,7 @@ WeaponObject* AiAgentImplementation::createWeapon(uint32 templateCRC, bool prima
 // These stats are stored on the agent when spawned and should be used to generate new weapons upon respawn
 void AiAgentImplementation::setupCombatStats() {
 #ifdef DEBUG_AI_WEAPONS
-	//info(true) << "setupCombatStats - " << getDisplayedName() << " " << getObjectID();
+	info(true) << "setupCombatStats - " << getDisplayedName() << " " << getObjectID();
 #endif
 
 	if (npcTemplate == nullptr) {
