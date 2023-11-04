@@ -620,39 +620,38 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	setupCombatStats();
 	createWeaponsFromTemplate();
 
-	CreatureManager* creatureManager = zone->getCreatureManager();
 
-	if (npcTemplate != nullptr && creatureManager != nullptr && isCreature()) {
+	ManagedReference<SceneObject*> home = homeObject.get();
+
+	if (npcTemplate != nullptr && home != nullptr && isCreature()) {
 		int chance = 2000;
 		int babiesSpawned = 0;
 
-		ManagedReference<SceneObject*> home = homeObject.get();
+		SortedVector<ManagedReference<Observer*> > observers = home->getObservers(ObserverEventType::CREATUREDESPAWNED);
+		DynamicSpawnObserver* observer = nullptr;
 
-		if (home != nullptr) {
-			SortedVector<ManagedReference<Observer*> > observers = home->getObservers(ObserverEventType::CREATUREDESPAWNED);
-			DynamicSpawnObserver* observer = nullptr;
-
-			for (int i = 0; i < observers.size(); i++) {
-				observer = observers.get(i).castTo<DynamicSpawnObserver*>();
-
-				if (observer != nullptr) {
-					break;
-				}
-			}
+		for (int i = 0; i < observers.size(); i++) {
+			observer = observers.get(i).castTo<DynamicSpawnObserver*>();
 
 			if (observer != nullptr) {
-				chance = 500;
-				babiesSpawned = observer->getBabiesSpawned();
+				break;
 			}
 		}
 
-		if (creatureManager->checkSpawnAsBaby(npcTemplate->getTame(), babiesSpawned, chance)) {
-			Creature* creature = cast<Creature*>(asAiAgent());
+		CreatureManager* creatureManager = zone->getCreatureManager();
 
-			if (creature) {
-				creature->loadTemplateDataForBaby(npcTemplate);
-			} else {
-				error("object is not a Creature but returned true to spawn as a baby");
+		if (observer != nullptr && creatureManager != nullptr) {
+			chance = 500;
+			babiesSpawned = observer->getBabiesSpawned();
+
+			if (creatureManager->checkSpawnAsBaby(npcTemplate->getTame(), babiesSpawned, chance)) {
+				Creature* creature = cast<Creature*>(asAiAgent());
+
+				if (creature != nullptr) {
+					creature->loadTemplateDataForBaby(npcTemplate);
+
+					// info(true) << getDisplayedName() << " ID: " << getObjectID() << " Loc: " << getWorldPosition().toString() << " SPAWNED AS BABY";
+				}
 			}
 		}
 	} else {
