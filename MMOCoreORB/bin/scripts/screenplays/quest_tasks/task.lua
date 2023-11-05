@@ -88,7 +88,7 @@ function Task:finish(pPlayer)
 			self:setTaskFinished(pPlayer)
 
 			dropObserver(LOGGEDIN, self.taskName, "onLoggedIn", pPlayer)
-			dropObserver(LOGGEDIN, self.taskName, "onLoggedOut", pPlayer)
+			dropObserver(LOGGEDOUT, self.taskName, "onLoggedOut", pPlayer)
 		end
 	else
 		Logger:log("Task " .. self.taskName .. " is not started.", LT_INFO)
