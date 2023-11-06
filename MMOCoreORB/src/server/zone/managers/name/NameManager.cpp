@@ -418,13 +418,29 @@ const String NameManager::makeCreatureName(int type, int species) const {
 	String name;
 	auto data = getSpeciesData(species);
 
-	// Covers all Imperial Trooper types
+	// Generated imperial trooper names do not need to be checked. Covers all Imperial Trooper types
 	if (type >= NameManagerType::STORMTROOPER && type <= NameManagerType::SWAMPTROOPER) {
 		name = makeImperialTrooperName(type);
+	// R-Droid names do not need to be checked
 	} else if (type >= NameManagerType::R2 && type <= NameManagerType::DROID_RA7) {
 		name = makeDroidName(type);
 	} else {
-		name = generateRandomName(data);
+		uint32 count = 0;
+		int result = NameManagerResult::DECLINED_EMPTY;
+
+		// Fail loop when result is accepted
+		while (result != NameManagerResult::ACCEPTED) {
+			name = generateRandomName(data);
+
+			result = validateName(name, species);
+
+			count++;
+
+			if (count >= 10) {
+				error() << " Failed to create suitable creature name -- Count: " << count << " Species: " <<  species << " Ending Name: " << name;
+				break;
+			}
+		}
 	}
 
 	return name;
@@ -526,7 +542,22 @@ String NameManager::generateResourceName(const String& randomNameClass) const {
 	else
 		data = plainResourceData;
 
-	return generateRandomName(data);
+	String name;
+	uint32 count = 0;
+	int result = NameManagerResult::DECLINED_EMPTY;
+
+	while (name.isEmpty() || isProfane(name)) {
+		name = generateRandomName(data);
+
+		count++;
+
+		if (count >= 10) {
+			error() << " Failed to create suitable resource name -- Count: " << count << " Final Name: " << name;
+			break;
+		}
+	}
+
+	return name;
 }
 
 String NameManager::generateRandomName(const NameData* nameData) const {
