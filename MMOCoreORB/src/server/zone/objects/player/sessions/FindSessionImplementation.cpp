@@ -106,7 +106,7 @@ void FindSessionImplementation::clearWaypoint() {
 	po->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_FIND, true);
 }
 
-void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
+void FindSessionImplementation::findPlanetaryObject(const String& mapCategory, const String& mapSubCategory) {
 	ManagedReference<CreatureObject* > player = this->player.get();
 
 	if (player == nullptr)
@@ -119,7 +119,8 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 		return;
 	}
 
-	ManagedReference<SceneObject*> object = zone->getNearestPlanetaryObject(player, maplocationtype);
+	ManagedReference<SceneObject*> object = zone->getNearestPlanetaryObject(player, mapCategory, mapSubCategory);
+
 	Zone* objectZone = nullptr;
 
 	if (object == nullptr || ((objectZone = object->getZone()) == nullptr)) {
@@ -135,7 +136,7 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 		regFullName = cityRegion->getCityRegionName();
 	}
 
-	String objFullName = "@map_loc_cat_n:" + maplocationtype;
+	String objFullName = "@map_loc_cat_n:" + mapCategory;
 
 	StringIdManager* stringManager = StringIdManager::instance();
 
@@ -149,24 +150,20 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 
 	String wptName = regClientString + " (" + objClientString + ")"; // Region (BuildingType)
 
-	float objX, objY;
-	objX = object->getWorldPositionX();
-	objY = object->getWorldPositionY();
+	Vector3 playerPos = player->getWorldPosition();
+	Vector3 objectPos = object->getWorldPosition();
 
-	Reference<WaypointObject*> wpt = addWaypoint(objX, objY, wptName);
-
-	WorldCoordinates start(player);
-	WorldCoordinates end(object);
+	Reference<WaypointObject*> wpt = addWaypoint(objectPos.getX(), objectPos.getY(), wptName);
 
 	SortedVector<ManagedReference<NavArea*> > areas;
 	//fetch nav meshes near the target position
-	zone->getInRangeNavMeshes(end.getX(), end.getY(), &areas, false);
+	zone->getInRangeNavMeshes(objectPos.getX(), objectPos.getY(), &areas, false);
 
 	bool withinNavMesh = false;
 
 	for (const auto& mesh : areas) {
 		// test to see if our player is within the same nav mesh
-		if (mesh->containsPoint(start.getX(), start.getY())) {
+		if (mesh->containsPoint(playerPos.getX(), playerPos.getY())) {
 			withinNavMesh = true;
 			break;
 		}
@@ -175,6 +172,9 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 	if (withinNavMesh) {
 		Vector <WorldCoordinates> endCoords;
 		Reference < Vector < WorldCoordinates > * > path = nullptr;
+
+		WorldCoordinates start(playerPos, nullptr);
+		WorldCoordinates end(objectPos, nullptr);
 
 		if (object->isBuildingObject()) {
 			BuildingObject* building = object->asBuildingObject();
@@ -212,7 +212,7 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 			path = PathFinderManager::instance()->findPath(start, end, zone);
 		}
 
-		if (path != nullptr && path->size()) {
+		if (path != nullptr && path->size() > 0) {
 			CreateClientPathMessage* msg = new CreateClientPathMessage();
 
 			if (msg != nullptr) {
