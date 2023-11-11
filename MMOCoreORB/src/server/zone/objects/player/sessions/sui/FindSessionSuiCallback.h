@@ -13,8 +13,7 @@
 
 class FindSessionSuiCallback : public SuiCallback {
 public:
-	FindSessionSuiCallback(ZoneServer* server)
-		: SuiCallback(server) {
+	FindSessionSuiCallback(ZoneServer* server) : SuiCallback(server) {
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
@@ -27,7 +26,8 @@ public:
 		ManagedReference<FindSession*> session = dynamic_cast<FindSession*>(facade.get());
 
 		if (session == nullptr) {
-			ManagedReference<CreatureObject*> pl = cast<CreatureObject*>( suiBox->getUsingObject().get().get());
+			ManagedReference<CreatureObject*> pl = cast<CreatureObject*>(suiBox->getUsingObject().get().get());
+
 			if (pl != nullptr)
 				pl->dropActiveSession(SessionFacadeType::FIND);
 
@@ -52,11 +52,22 @@ public:
 			return;
 		}
 
-		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
+		SuiListBox* listBox = cast<SuiListBox*>(suiBox);
 
-		String maploctype = listBox->getMenuItemName(index).subString(14);
+		String mapCategory = listBox->getMenuItemName(index).subString(14);
+		String mapSubCategory;
 
-		session->findPlanetaryObject(maploctype);
+		if (mapCategory.contains("_")) {
+			StringTokenizer tokenizer(mapCategory);
+			tokenizer.setDelimeter("_");
+
+			mapSubCategory = mapCategory;
+			mapCategory = tokenizer.getStringToken();
+		}
+
+		// player->info(true) << "Map Category = " << mapCategory << " Map Sub Category = " << mapSubCategory;
+
+		session->findPlanetaryObject(mapCategory, mapSubCategory);
 	}
 };
 
