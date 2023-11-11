@@ -666,25 +666,49 @@ void ZoneImplementation::sendMapLocationsTo(CreatureObject* player) {
 	player->sendMessage(gmlr);
 }
 
-Reference<SceneObject*> ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
+Reference<SceneObject*> ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, const String& mapCategory, const String& mapSubCategory) {
 	Reference<SceneObject*> planetaryObject = nullptr;
 
 #ifndef WITH_STM
 	ReadLocker rlocker(mapLocations);
 #endif
 
-	const SortedVector<MapLocationEntry>& sortedVector = mapLocations->getLocation(mapObjectLocationType);
+	// info(true) << "getNearestPlanetaryObject - To: " << object->getDisplayedName() << " MapCategory: " << mapCategory << " SubCategory: " << mapSubCategory;
 
-	float distance = 16000.f;
+	const SortedVector<MapLocationEntry>& sortedVector = mapLocations->getLocation(mapCategory);
+	uint32 subCatCRC = 0;
+
+	if (!mapSubCategory.isEmpty())
+		subCatCRC = mapSubCategory.hashCode();
+
+	Vector3 objectPos = object->getWorldPosition();
+	int distanceCheck = 16000 * 16000;
+
+	// info(true) << "Sub Category: " << mapSubCategory << " -- CRC = " << subCatCRC;
 
 	for (int i = 0; i < sortedVector.size(); ++i) {
-		SceneObject* obj = sortedVector.getUnsafe(i).getObject();
+		SceneObject* sceneO = sortedVector.getUnsafe(i).getObject();
 
-		float objDistance = object->getDistanceTo(obj);
+		if (sceneO == nullptr)
+			continue;
 
-		if (objDistance < distance) {
-			planetaryObject = obj;
-			distance = objDistance;
+		uint32 sceneSubCRC = sceneO->getPlanetMapSubCategoryCRC();
+
+		// info(true) << " Checking against Object Sub Category CRC: " << sceneSubCRC;
+
+		if (subCatCRC > 0 && sceneSubCRC > 0 && subCatCRC != sceneSubCRC)
+			continue;
+
+		float objDistanceSq = objectPos.squaredDistanceTo(sceneO->getWorldPosition());
+
+		// info(true) << "Map Object Distance = " << objDistanceSq << " Checking against: " << distanceCheck;
+
+		if (objDistanceSq < distanceCheck) {
+			// Set object as our current closest planetary object of that type
+			planetaryObject = sceneO;
+
+			// Update the distance to check against
+			distanceCheck = objDistanceSq;
 		}
 	}
 

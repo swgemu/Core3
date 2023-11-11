@@ -16,11 +16,11 @@ class FindSession extends Facade {
 	protected CreatureObject player;
 
 	protected SuiListBox findSuiBox;
-		
+
 	public FindSession(CreatureObject pl) {
 		Logger.setLoggingName("FindSession");
 		Logger.setLogging(true);
-		
+
 		initializeSession();
 
 		player = pl;
@@ -29,7 +29,7 @@ class FindSession extends Facade {
 	public int initializeSession() {
 		return 0;
 	}
-	
+
 	public int cancelSession() {
 		CreatureObject play = player;
 
@@ -39,7 +39,7 @@ class FindSession extends Facade {
 		clearSession();
 		return 0;
 	}
-	
+
 	public int clearSession() {
 		player = null;
 
@@ -52,7 +52,7 @@ class FindSession extends Facade {
 	public native WaypointObject addWaypoint(float x, float y, final string name);
 
 	@local
-	public native void findPlanetaryObject(string maplocationtype);
+	public native void findPlanetaryObject(final string mapCategory, final string mapSubCategory);
 
 	public native void clearWaypoint();
 

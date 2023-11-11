@@ -1,5 +1,5 @@
 /*
- 				Copyright <SWGEmu>
+				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
 #ifndef FINDCOMMAND_H_
@@ -7,17 +7,12 @@
 
 #include "server/zone/objects/player/sessions/FindSession.h"
 
-class FindCommand: public QueueCommand {
-
+class FindCommand : public QueueCommand {
 public:
-
-	FindCommand(const String& name, ZoneProcessServer* server) :
-		QueueCommand(name, server) {
-
+	FindCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -28,10 +23,11 @@ public:
 			return GENERALERROR;
 
 		try {
-
 			CreatureObject* player = cast<CreatureObject*>(creature);
 			StringTokenizer args(arguments.toString());
-			String location;
+
+			String mapCategory = "";
+			String mapSubCategory = "";
 
 			ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::FIND);
 			ManagedReference<FindSession*> session = dynamic_cast<FindSession*>(facade.get());
@@ -41,21 +37,24 @@ public:
 			}
 
 			if (args.hasMoreTokens()) {
-				args.getStringToken(location);
-				location = location.toLowerCase();
+				args.getStringToken(mapCategory);
 
-				if (location == "clear") {
-					PlayerObject* po = player->getPlayerObject();
+				mapCategory = mapCategory.toLowerCase();
 
-					po->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_FIND, true);
-
-					return SUCCESS;
+				if (mapCategory == "clear") {
+					return clearFind(player);
 				}
 
-				String mapLocType = location;
+				String mapLocType = mapCategory;
+
+				if (args.hasMoreTokens()) {
+					args.getStringToken(mapSubCategory);
+
+					mapSubCategory = mapSubCategory.toLowerCase();
+				}
 
 				if (!mapLocType.isEmpty())
-					session->findPlanetaryObject(mapLocType);
+					session->findPlanetaryObject(mapLocType, mapSubCategory);
 
 			} else {
 				session->initalizeFindMenu();
@@ -64,12 +63,24 @@ public:
 
 		} catch (Exception& e) {
 			creature->sendSystemMessage("@base_player:find_general_error"); // /Find was unable to complete your request. Please try again.
-
 		}
 
 		return SUCCESS;
 	}
 
+	int clearFind(CreatureObject* player) const {
+		if (player == nullptr || !player->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost == nullptr)
+			return GENERALERROR;
+
+		ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_FIND, true);
+
+		return SUCCESS;
+	}
 };
 
-#endif //FINDCOMMAND_H_
+#endif // FINDCOMMAND_H_
