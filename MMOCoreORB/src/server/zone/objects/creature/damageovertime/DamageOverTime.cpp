@@ -110,7 +110,7 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 	info(true) << "applyDot called " << victim->getFirstName() << " ID: " << victim->getObjectID() << " Type: " << type;
 #endif
 
-	if (!victim->hasState(type) || !nextTick.isPast()) {
+	if ((!victim->hasState(type) && type != CommandEffect::FORCECHOKE) || !nextTick.isPast()) {
 #ifdef DEBUG_DOTS
 		if (!victim->hasState(type))
 			info(true) << "Victim does not have the state.";
