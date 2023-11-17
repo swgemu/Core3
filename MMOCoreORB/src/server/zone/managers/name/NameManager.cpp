@@ -10,6 +10,8 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
+//#define DEBUG_NAMING
+
 NameManager::NameManager() {
 	setLoggingName("NameManager");
 
@@ -179,12 +181,20 @@ void NameManager::loadConfigData(bool reload) {
 
 	luaObject = lua->getGlobalObject("reservedNames");
 
+#ifdef DEBUG_NAMING
+	info(true) << "Starting Reserved name list loading:";
+#endif
+
 	if (luaObject.isValidTable()) {
 		for(int i = 1; i <= luaObject.getTableSize(); ++i) {
 			LuaObject entry = luaObject.getObjectAt(i);
 
 			String regexEntry = entry.getStringAt(1);
 			int reason = entry.getIntAt(2);
+
+#ifdef DEBUG_NAMING
+			info(true) << "Loading Entry #" << i << " Regex Entry: " << regexEntry;
+#endif
 
 			reservedNames.put(regexEntry, reason);
 
@@ -217,21 +227,52 @@ bool NameManager::isReserved(const String& name) const {
 }
 
 int NameManager::validateReservedNames(const String& name, int resultType) const {
+#ifdef DEBUG_NAMING
+	StringBuffer debugMsg;
+	debugMsg << "validateReservedNames -- Checking: " << name << " for Type: " << resultType << "\n";
+#endif
+
+	int result = NameManagerResult::ACCEPTED;
+
 	for (int i = 0; i < reservedNames.size(); i++) {
 		VectorMapEntry<String, int> entry = reservedNames.elementAt(i);
 
-		std::regex regexCheck(entry.getKey().toCharArray());
+		const String keyString = entry.getKey();
 		int reservedReason = entry.getValue();
 
-		if (resultType > 0 && resultType != reservedReason)
+#ifdef DEBUG_NAMING_VEBOSE
+		debugMsg << "Using Regex Entry: " << keyString << " with Reserved Reason: " << reservedReason << "\n";
+#endif
+
+		std::regex regexCheck(keyString.toCharArray(), std::regex_constants::icase);
+
+		if (resultType > 0 && resultType != reservedReason) {
+#ifdef DEBUG_NAMING
+			debugMsg << "Skipping Entry: " << keyString << "\n";
+
+			info(true) << debugMsg.toString();
+#endif
 			continue;
+		}
 
 		if (std::regex_search(name.toCharArray(), regexCheck)) {
-			//error("Name " + name + " failed check against regex " + entry.getKey() + " , reason: " + reservedReason);
-			return reservedReason;
+#ifdef DEBUG_NAMING
+			debugMsg << "Name: " << name << " failed check against regex " << entry.getKey() << " , reason: " << reservedReason << "\n";
+#endif
+
+			result = reservedReason;
+			break;
 		}
 	}
-	return NameManagerResult::ACCEPTED;
+
+#ifdef DEBUG_NAMING
+	if (result == NameManagerResult::ACCEPTED)
+		debugMsg << "Name: " << name << " passed regex checks and NameManagerResult::ACCEPTED";
+
+	info(true) << debugMsg.toString();
+#endif
+
+	return result;
 }
 
 int NameManager::validateName(const CreatureObject* obj) const {
