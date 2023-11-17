@@ -337,7 +337,7 @@ String DirectorManager::getStringSharedMemory(const String& key) const {
 void DirectorManager::startGlobalScreenPlays() {
 	info(true) << "Starting " << screenPlays.size() << " global screenplays.";
 
-	auto slowLoadMs = ConfigManager::instance()->getInt("Core3.DirectorManager.SlowLoadMs", 1000);
+	auto slowLoadMs = ConfigManager::instance()->getInt("Core3.DirectorManager.SlowLoadMs", 2000);
 
 	Time nextReport;
 	nextReport.addMiliTime(5000);
