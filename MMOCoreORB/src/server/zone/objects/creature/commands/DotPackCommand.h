@@ -258,7 +258,9 @@ public:
 				bool shouldGcwCrackdownTef = false, shouldGcwTef = false, shouldBhTef = false, shouldGroupTef = false, shouldBhGroupTef = false;
 
 				CombatManager::instance()->checkForTefs(creature, targetCreature, &shouldGcwCrackdownTef, &shouldGcwTef, &shouldBhTef);
-				ghost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
+				if (shouldGcwCrackdownTef || shouldGcwTef || shouldBhTef) {
+					ghost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
+				}
 			}
 		}
 	}
@@ -443,7 +445,9 @@ public:
 				bool shouldGcwCrackdownTef = false, shouldGcwTef = false, shouldBhTef = false;
 
 				CombatManager::instance()->checkForTefs(creature, targetCreature, &shouldGcwCrackdownTef, &shouldGcwTef, &shouldBhTef);
-				ghost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
+				if (shouldGcwCrackdownTef || shouldGcwTef || shouldBhTef) {
+					ghost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
+				}
 			}
 		}
 
