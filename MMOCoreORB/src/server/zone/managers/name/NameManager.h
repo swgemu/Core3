@@ -7,27 +7,28 @@
 
 #include "engine/core/ManagedReference.h"
 #include "server/zone/managers/name/NameData.h"
+#include "server/zone/managers/name/RegexData.h"
 
 namespace server {
-	namespace zone {
+namespace zone {
 
-	class ZoneProcessServer;
+class ZoneProcessServer;
 
-	}
 }
+} // namespace server
 
 using namespace server::zone;
 
 namespace server {
-	namespace zone {
-		namespace objects {
-			namespace creature {
+namespace zone {
+namespace objects {
+namespace creature {
 
-				class CreatureObject;
-			}
-		}
-	}
+class CreatureObject;
 }
+} // namespace objects
+} // namespace zone
+} // namespace server
 
 using namespace server::zone::objects::creature;
 
@@ -40,15 +41,14 @@ public:
 	static const uint8 DECLINED_RACE_INAPP = 4;
 	static const uint8 DECLINED_SYNTAX = 5;
 	static const uint8 DECLINED_RESERVED = 6;
-	static const uint8 ACCEPTED	= 7;
+	static const uint8 ACCEPTED = 7;
 
 	static const uint8 DECLINED_GUILD_LENGTH = 11;
 };
 
 class NameManagerType {
 public:
-
-	static const int TAG = 0; // a mobile
+	static const int TAG = 0;	  // a mobile
 	static const int GENERIC = 1; // Name Generator
 
 	static const int R2 = 2; // R2-A1
@@ -56,15 +56,15 @@ public:
 	static const int R4 = 4; // R4-A1
 	static const int R5 = 5; // R5-A1
 
-	static const int DROID_3P0 = 6; // XX-P0
-	static const int DROID_EG6 = 7; // EX-X
-	static const int DROID_WED = 8; // WED-XX
-	static const int DROID_LE = 9; // LE-XXX
+	static const int DROID_3P0 = 6;	 // XX-P0
+	static const int DROID_EG6 = 7;	 // EX-X
+	static const int DROID_WED = 8;	 // WED-XX
+	static const int DROID_LE = 9;	 // LE-XXX
 	static const int DROID_RA7 = 10; // RA7-XX
 
 	static const int STORMTROOPER = 11; // XX-123
 	static const int SCOUTTROOPER = 12; // XX-123
-	static const int DARKTROOPER = 13; // XX-123
+	static const int DARKTROOPER = 13;	// XX-123
 	static const int SWAMPTROOPER = 14; // XX-123
 
 	static const int GUILD_NAME = 31;
@@ -78,9 +78,9 @@ public:
 };
 
 namespace server {
-	namespace zone {
-		namespace managers {
-			namespace name {
+namespace zone {
+namespace managers {
+namespace name {
 
 class NameManager : public Singleton<NameManager>, public Logger, public Object {
 	ManagedReference<ZoneProcessServer*> server;
@@ -101,13 +101,12 @@ class NameManager : public Singleton<NameManager>, public Logger, public Object 
 	NameData* plainResourceData;
 	NameData* reactiveGasResourceData;
 
-	VectorMap<String, int> reservedNames;
+	Vector<Reference<RegexData*>> regexFilters;
 
 	Vector<String> stormtrooperPrefixes;
 	Vector<String> scouttrooperPrefixes;
 	Vector<String> darktrooperPrefixes;
 	Vector<String> swamptrooperPrefixes;
-
 
 private:
 	void initialize();
@@ -130,8 +129,6 @@ public:
 
 	~NameManager();
 
-	void test() const;
-
 	bool isProfane(const String& name) const;
 	void loadConfigData(bool reload = false);
 
@@ -141,7 +138,7 @@ public:
 	int validateCityName(const String& name) const;
 	int validateVendorName(const String& name) const;
 	int validateChatRoomName(const String& name) const;
-	int validateReservedNames(const String& name, int resultType = -1) const;
+	int checkNamingFilter(const String& name, int resultType = -1) const;
 
 	const String makeCreatureName(int type = 1, int species = 0) const;
 
@@ -156,13 +153,12 @@ public:
 	String capitalizeName(const String& name) const;
 
 	const NameData* getSpeciesData(int species) const;
-
 };
 
-			}
-		}
-	}
-}
+} // namespace name
+} // namespace managers
+} // namespace zone
+} // namespace server
 
 using namespace server::zone::managers::name;
 
