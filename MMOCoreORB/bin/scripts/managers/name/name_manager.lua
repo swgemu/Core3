@@ -28,6 +28,8 @@ darktrooperPrefixes = { "JLB", "RAR", "KNP", "BCP", "RTZ" };
 swamptrooperPrefixes = { "GL", "TL", "RL", "NL", "CL" };
 
 reservedNames = {
+	{ "dev", DECLINED_DEVELOPER },
+	{ "developer", DECLINED_DEVELOPER },
 	{ "anal", DECLINED_PROFANE },
 	{ "ass", DECLINED_PROFANE },
 	{ "biatch", DECLINED_PROFANE },

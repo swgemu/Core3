@@ -130,8 +130,6 @@ public:
 
 	~NameManager();
 
-	void test() const;
-
 	bool isProfane(const String& name) const;
 	void loadConfigData(bool reload = false);
 

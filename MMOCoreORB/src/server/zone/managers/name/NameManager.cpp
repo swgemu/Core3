@@ -538,39 +538,6 @@ String NameManager::makeDroidName(int type) const {
 	return name;
 }
 
-void NameManager::test() const {
-	uint64 start = Time::currentNanoTime();
-
-	int iterations = 1000000;
-
-	for(int i = 0;i < iterations; ++i)
-		//System::out << makeCreatureName(true) << endl;
-		makeCreatureName(1);
-
-	uint64 end = Time::currentNanoTime();
-
-	float nano = (end - start);
-	float milli = nano * .000001;
-	float seconds = milli / 1000;
-	System::out << "Old name generator:" << endl;
-	System::out << "Average: " << nano / iterations  << " nanoseconds / " << milli / iterations << " milliseconds" << seconds / iterations  << " seconds" << endl;
-	System::out << "Total: " << nano << " nanoseconds / " << milli << " milliseconds" << seconds << " seconds" << endl;
-
-	start = Time::currentNanoTime();
-
-	for(int i = 0;i < iterations; ++i)
-		generateResourceName("plain_resource");
-
-	end = Time::currentNanoTime();
-
-	nano = (end - start);
-	milli = nano * .000001;
-	seconds = milli / 1000;
-	System::out << "New name generator:" << endl;
-	System::out << "Average: " << nano / iterations  << " nanoseconds / " << milli / iterations << " milliseconds" << seconds / iterations  << " seconds" << endl;
-	System::out << "Total: " << nano << " nanoseconds / " << milli << " milliseconds" << seconds << " seconds" << endl;
-}
-
 String NameManager::generateResourceName(const String& randomNameClass) const {
 	const NameData* data;
 
