@@ -2462,13 +2462,12 @@ void PlayerObjectImplementation::updateLastCombatActionTimestamp(bool updateGcwC
 
 	if (updateGcwAction) {
 		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
-
 		lastGcwPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
 	}
 
 	schedulePvpTefRemovalTask();
 
-	if (!alreadyHasTef) {
+	if (!alreadyHasTef && (updateGcwCrackdownAction || updateGcwAction || updateBhAction)) {
 		updateInRangeBuildingPermissions();
 		parent->setPvpStatusBit(CreatureFlag::TEF);
 	}
