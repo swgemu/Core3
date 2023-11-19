@@ -59,6 +59,7 @@ enum class TrxCode {
 	ADMINCOMMAND,               // From an admin command
 	ADKAPPLY,                   // Apply and ADK to item
 	ADKREMOVE,                  // Remove ADK from item
+	APPLYATTACHMENT,            // Apply Attachment to item
 	AUCTIONADDSALE,             // addSaleItem()
 	AUCTIONBID,                 // Auction Bid Escrow
 	AUCTIONEXPIRED,             // Never retrieved and expired
