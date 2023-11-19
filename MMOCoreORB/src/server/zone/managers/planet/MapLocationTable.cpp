@@ -114,7 +114,19 @@ void MapLocationTable::updateObjectsIcon(SceneObject* object, byte icon) {
 }
 
 const SortedVector<MapLocationEntry>& MapLocationTable::getLocation(const String& name) const {
-	return locations.get(name);
+	int index = -1;
+
+	for (int i = 0; i < locations.size(); ++i) {
+		String locName = locations.elementAt(i).getKey();
+
+		if (!locName.contains(name))
+			continue;
+
+		index = i;
+		break;
+	}
+
+	return locations.elementAt(index).getValue();
 }
 
 int MapLocationTable::findLocation(const String& name) const {

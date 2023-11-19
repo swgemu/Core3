@@ -113,7 +113,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	protected unsigned int containmentType;
 
 	protected int planetMapCategory;
+	protected string mapCategoryName;
+
 	protected int planetMapSubCategory;
+	protected string mapSubCategoryName;
 
 	protected unicode customName;
 
@@ -2032,24 +2035,38 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@read
+	public string getPlanetMapCategoryName() {
+		return mapCategoryName;
+	}
+
+	@read
 	public int getPlanetMapSubCategoryCRC() {
 		return planetMapSubCategory;
 	}
 
+	@read
+	public string getPlanetMapSubCategoryName() {
+		return mapSubCategoryName;
+	}
+
 	@local
 	public void setPlanetMapCategory(final PlanetMapCategory pmc) {
-		if (pmc == null)
+		if (pmc == null) {
 			planetMapCategory = 0;
-		else
+		} else {
 			planetMapCategory = pmc.getCrc();
+			mapCategoryName = pmc.getName();
+		}
 	}
 
 	@local
 	public void setPlanetMapSubCategory(final PlanetMapSubCategory subPmc)  {
-		if (subPmc == null)
+		if (subPmc == null) {
 			planetMapSubCategory = 0;
-		else
+		} else {
 			planetMapSubCategory = subPmc.getCrc();
+			mapSubCategoryName = subPmc.getName();
+		}
 	}
 
 	@local

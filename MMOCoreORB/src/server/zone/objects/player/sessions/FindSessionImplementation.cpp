@@ -136,7 +136,7 @@ void FindSessionImplementation::findPlanetaryObject(const String& mapCategory, c
 		regFullName = cityRegion->getCityRegionName();
 	}
 
-	String objFullName = "@map_loc_cat_n:" + mapCategory;
+	String objFullName = "@map_loc_cat_n:" + object->getPlanetMapCategoryName();
 
 	StringIdManager* stringManager = StringIdManager::instance();
 

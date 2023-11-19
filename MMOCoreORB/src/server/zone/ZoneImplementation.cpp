@@ -676,15 +676,11 @@ Reference<SceneObject*> ZoneImplementation::getNearestPlanetaryObject(SceneObjec
 	// info(true) << "getNearestPlanetaryObject - To: " << object->getDisplayedName() << " MapCategory: " << mapCategory << " SubCategory: " << mapSubCategory;
 
 	const SortedVector<MapLocationEntry>& sortedVector = mapLocations->getLocation(mapCategory);
-	uint32 subCatCRC = 0;
-
-	if (!mapSubCategory.isEmpty())
-		subCatCRC = mapSubCategory.hashCode();
 
 	Vector3 objectPos = object->getWorldPosition();
 	int distanceCheck = 16000 * 16000;
 
-	// info(true) << "Sub Category: " << mapSubCategory << " -- CRC = " << subCatCRC;
+	// info(true) << "Sub Category: " << mapSubCategory;
 
 	for (int i = 0; i < sortedVector.size(); ++i) {
 		SceneObject* sceneO = sortedVector.getUnsafe(i).getObject();
@@ -692,11 +688,11 @@ Reference<SceneObject*> ZoneImplementation::getNearestPlanetaryObject(SceneObjec
 		if (sceneO == nullptr)
 			continue;
 
-		uint32 sceneSubCRC = sceneO->getPlanetMapSubCategoryCRC();
+		const String subCategory = sceneO->getPlanetMapSubCategoryName();
 
-		// info(true) << " Checking against Object Sub Category CRC: " << sceneSubCRC;
+		// info(true) << " Checking against Object Sub Category: " << subCategory;
 
-		if (subCatCRC > 0 && sceneSubCRC > 0 && subCatCRC != sceneSubCRC)
+		if (!mapSubCategory.isEmpty() && !subCategory.isEmpty() && !subCategory.contains(mapSubCategory))
 			continue;
 
 		float objDistanceSq = objectPos.squaredDistanceTo(sceneO->getWorldPosition());
