@@ -10,7 +10,6 @@
 
 class PlanetMapSubCategory : public Object {
 	String name;
-	String primaryName;
 	int nameCRC;
 	int index;
 
@@ -20,6 +19,7 @@ class PlanetMapSubCategory : public Object {
 
 public:
 	PlanetMapSubCategory() {
+		name = "";
 		nameCRC = 0;
 		index = 0;
 

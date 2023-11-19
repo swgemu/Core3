@@ -109,6 +109,9 @@ void SceneObjectImplementation::initializePrivateData() {
 	planetMapCategory = 0;
 	planetMapSubCategory = 0;
 
+	mapCategoryName = "";
+	mapSubCategoryName = "";
+
 	gameObjectType = 0;
 
 	containmentType = 4;
@@ -158,11 +161,15 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 		templateData->getAppearanceTemplate();
 	}
 
-	if (templateData->getPlanetMapCategory() != nullptr)
+	if (templateData->getPlanetMapCategory() != nullptr) {
+		mapCategoryName = templateData->getPlanetMapCategory()->getName();
 		planetMapCategory = templateData->getPlanetMapCategory()->getCrc();
+	}
 
-	if (templateData->getPlanetMapSubCategory() != nullptr)
+	if (templateData->getPlanetMapSubCategory() != nullptr) {
+		mapSubCategoryName = templateData->getPlanetMapSubCategory()->getName();
 		planetMapSubCategory = templateData->getPlanetMapSubCategory()->getCrc();
+	}
 
 	templateObject = templateData;
 

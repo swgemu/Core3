@@ -53,7 +53,10 @@ protected:
 	String objectName;
 
 	uint32 planetMapCategory;
+	String mapCategoryName;
+
 	uint32 planetMapSubCategory;
+	String mapSubCategoryName;
 
 	int randomNameType;
 	bool randomNameTag;
@@ -266,8 +269,16 @@ public:
 		return planetMapCategory;
 	}
 
+	inline String getPlanetMapCategoryName() const {
+		return mapCategoryName;
+	}
+
 	inline uint32 getPlanetMapSubCategory() const {
 		return planetMapSubCategory;
+	}
+
+	inline String getPlanetMapSubCategoryName() const {
+		return mapSubCategoryName;
 	}
 
 	inline int getRandomNameType() const {

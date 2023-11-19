@@ -23,38 +23,45 @@ public:
 			return GENERALERROR;
 
 		try {
-			CreatureObject* player = cast<CreatureObject*>(creature);
 			StringTokenizer args(arguments.toString());
 
-			String mapCategory = "";
-			String mapSubCategory = "";
-
-			ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::FIND);
+			ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::FIND);
 			ManagedReference<FindSession*> session = dynamic_cast<FindSession*>(facade.get());
 
 			if (session == nullptr) {
-				session = new FindSession(player);
+				session = new FindSession(creature);
 			}
 
 			if (args.hasMoreTokens()) {
+				String mapCategory = "";
+
 				args.getStringToken(mapCategory);
 
 				mapCategory = mapCategory.toLowerCase();
 
 				if (mapCategory == "clear") {
-					return clearFind(player);
+					return clearFind(creature);
 				}
 
-				String mapLocType = mapCategory;
+				if (mapCategory.contains(":"))
+					mapCategory = mapCategory.replaceFirst(":", "_");
 
-				if (args.hasMoreTokens()) {
-					args.getStringToken(mapSubCategory);
+				String mapSubCategory = "";
 
-					mapSubCategory = mapSubCategory.toLowerCase();
+				if (mapCategory.contains("_")) {
+					mapSubCategory = mapCategory;
+
+					StringTokenizer mapTokens(mapCategory);
+					String mapCat;
+
+					mapTokens.setDelimeter("_");
+					mapTokens.getStringToken(mapCat);
+
+					mapCategory = mapCat;
 				}
 
-				if (!mapLocType.isEmpty())
-					session->findPlanetaryObject(mapLocType, mapSubCategory);
+				if (!mapCategory.isEmpty())
+					session->findPlanetaryObject(mapCategory, mapSubCategory);
 
 			} else {
 				session->initalizeFindMenu();
