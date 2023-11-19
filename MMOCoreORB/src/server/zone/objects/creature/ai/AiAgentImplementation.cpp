@@ -247,7 +247,11 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		setCustomObjectName(templateData->getCustomName(), false);
 	}
 
-	setHeight(templateData->getScale(), false);
+	float templateHeight = templateData->getScale();
+	float heightVar = templateHeight * 0.10;
+	float newHeight = System::frandom(heightVar) + templateHeight - System::frandom(heightVar);
+
+	setHeight(newHeight, false);
 
 	String currentLogName = getLoggingName();
 
