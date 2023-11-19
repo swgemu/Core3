@@ -1150,7 +1150,7 @@ void GuildManagerImplementation::sendGuildSetTitleTo(CreatureObject* player, Cre
 	text = text.replaceFirst("%TU", target->getDisplayedName());
 
 	suiBox->setPromptText(text.toString());
-	suiBox->setUsingObject(target);
+	suiBox->setUsingObject(player);
 	suiBox->setForceCloseDistance(32);
 	suiBox->setMaxInputSize(24);
 	suiBox->setCancelButton(true, "@cancel");
