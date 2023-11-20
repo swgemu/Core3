@@ -289,6 +289,8 @@ addAiTemplate("notifyHelpDefault", notifyHelpDefault)
 
 rootDefault = {
 	{id="714360210",	name="Selector",	pid="none"},
+	{id="934957231",	name="AlwaysFail",	pid="714360210"},
+	{id="4224133747",	name="TreeSocket",	pid="934957231",	args={slot=MOVE}},
 	{id="3684005064",	name="Sequence",	pid="714360210"},
 	{id="2242560418",	name="If",	pid="3684005064"},
 	{id="891055589",	name="CheckIsInCombat",	pid="2242560418"},
@@ -311,10 +313,7 @@ rootDefault = {
 	{id="3085594992",	name="Sequence",	pid="1711463331"},
 	{id="2197461733",	name="TreeSocket",	pid="3085594992",	args={slot=EQUIP}},
 	{id="1754584012",	name="TreeSocket",	pid="3085594992",	args={slot=ATTACK}},
-	{id="3434357109",	name="Sequence",	pid="1711463331"},
-	{id="2676240638",	name="WriteBlackboard",	pid="3434357109",	args={key="moveMode", val=RUN}},
-	{id="4148461600",	name="AlwaysSucceed",	pid="3434357109"},
-	{id="4224133747",	name="TreeSocket",	pid="4148461600",	args={slot=MOVE}},
+	{id="2676240638",	name="WriteBlackboard",	pid="1711463331",	args={key="moveMode", val=RUN}},
 	{id="3497802169",	name="TreeSocket",	pid="714360210",	args={slot=AWARE}},
 	{id="772402747",	name="TreeSocket",	pid="714360210",	args={slot=CRACKDOWNSCAN}},
 	{id="1709087547",	name="TreeSocket",	pid="714360210",	args={slot=CHATREACTION}},
@@ -409,4 +408,3 @@ targetDefault = {
 	{id="3340870082",	name="CheckMovementState",	pid="1425466029",	args={condition=FLEEING}},
 	{id="3752919331",	name="ExitCombat",	pid="214464091",	args={clearDefenders=1}}}
 addAiTemplate("targetDefault", targetDefault)
-

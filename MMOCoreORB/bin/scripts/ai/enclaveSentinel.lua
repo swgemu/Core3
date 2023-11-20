@@ -24,4 +24,3 @@ awareEnclavesentinel = {
 	{id="1530216695",	name="CalculateAggroMod",	pid="2654446403"},
 	{id="2630611784",	name="TreeSocket",	pid="2654446403",	args={slot=AGGRO}}}
 addAiTemplate("awareEnclavesentinel", awareEnclavesentinel)
-

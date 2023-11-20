@@ -675,3 +675,20 @@ dungeon1 = {
 	weatherEnabled = 0,
 	gcwEnabled = 0,
 }
+
+creature_test = {
+	weatherEnabled = 1,
+	gcwEnabled = 1,
+
+	planetTravelPoints = {
+	},
+
+	badgeAreas = {
+	},
+
+	navAreas = {
+	},
+
+	planetObjects = {
+	}
+}

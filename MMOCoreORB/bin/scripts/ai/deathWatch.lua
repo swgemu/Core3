@@ -12,4 +12,3 @@ awareDeathwatch = {
 	{id="3030419901",	name="EraseBlackboard",	pid="3623506489",	args={param="aggroMod"}},
 	{id="4221251452",	name="EraseBlackboard",	pid="3623506489",	args={param="targetProspect"}}}
 addAiTemplate("awareDeathwatch", awareDeathwatch)
-
