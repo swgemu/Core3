@@ -38,39 +38,64 @@ public:
 
 		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
-		if (object != nullptr && object->isCreatureObject()) {
-			CreatureObject* agentCreo = cast<CreatureObject*>(object.get());
-
-			try {
-				Locker clocker(agentCreo, creature);
-
-				ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
-				uint64 parentid = validPosition->getParent();
-
-				if (parentid != agentCreo->getParentID()) {
-					return TOOFAR;
-				}
-
-				if (checkDistance(creature, agentCreo, 5)) {
-					ghost->setConversatingCreature(agentCreo);
-
-					if (agentCreo->sendConversationStartTo(creature)) {
-						agentCreo->notifyObservers(ObserverEventType::STARTCONVERSATION, creature);
-					}
-				} else {
-					return TOOFAR;
-				}
-
-			} catch (Exception& e) {
-				e.printStackTrace();
-				creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
-			}
-		} else {
+		if (object == nullptr || !object->isAiAgent())
 			return INVALIDTARGET;
+
+		AiAgent* agent = object->asAiAgent();
+
+		if (agent == nullptr)
+			return INVALIDTARGET;
+
+		try {
+			Locker clocker(agent, creature);
+
+			ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
+
+			if (validPosition == nullptr)
+				return GENERALERROR;
+
+			Vector3 creaturePos = validPosition->getPosition();
+			uint64 playerPaentID = validPosition->getParent();
+
+			Vector3 agentPos = agent->getPosition();
+			uint64 agentParentID = agent->getParentID();
+
+			// No conversing from different cells
+			if (playerPaentID != agentParentID) {
+				return TOOFAR;
+			}
+
+			// If the conversing NPC is outdoors, we will acount for distance based on x, y only. LoS also checked below
+			if (agentParentID == 0) {
+				agentPos -= creaturePos;
+
+				// Calculate the distance squared without use of the z coordinate. We also check LoS below
+				float distanceSq = (agentPos.getX() * agentPos.getX() + agentPos.getY() * agentPos.getY());
+
+				if (distanceSq > 25) {
+					return TOOFAR;
+				}
+			} else if (creaturePos.squaredDistanceTo(agentPos) > 25) {
+				return TOOFAR;
+			}
+
+			// No conversing without LoS
+			if (!CollisionManager::checkLineOfSight(agent, creature)) {
+				return GENERALERROR;
+			}
+
+			ghost->setConversatingCreature(agent);
+
+			if (agent->sendConversationStartTo(creature)) {
+				agent->notifyObservers(ObserverEventType::STARTCONVERSATION, creature);
+			}
+		} catch (Exception& e) {
+			e.printStackTrace();
+			creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
 		}
+
 		return SUCCESS;
 	}
-
 };
 
 #endif //NPCCONVERSATIONSTARTCOMMAND_H_
