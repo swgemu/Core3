@@ -1678,8 +1678,9 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			},
 			"Bio-Engineer Testing",
 			{
-				"FurryCat Test - ju6d14qq", "ju6d14qq",
-				"FurryCat Test - d5j7caq6", "d5j7caq6",
+				"FurryCat Test - ju6d14qq", "dna_set:ju6d14qq",
+				"FurryCat Test - d5j7caq6", "dna_set:d5j7caq6",
+				"FurryCat Test - ke5nbvgo", "dna_set:ke5nbvgo",
 			},
 			"Clothes",
 			{
