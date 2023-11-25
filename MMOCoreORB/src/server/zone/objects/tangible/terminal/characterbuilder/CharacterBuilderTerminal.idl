@@ -8,6 +8,7 @@ import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 include templates.tangible.CharacterBuilderMenuNode;
+include engine.lua.LuaObject;
 
 @json
 class CharacterBuilderTerminal extends Terminal {
@@ -62,4 +63,6 @@ class CharacterBuilderTerminal extends Terminal {
 	public native void grantJediInitiate(CreatureObject player);
 
 	public native void giveDnaTestingSet(CreatureObject player, final string testName);
+
+	private native void readDnaTable(LuaObject dnaSetTable, CreatureObject player, final string testName);
 }
