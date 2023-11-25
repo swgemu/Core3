@@ -297,11 +297,18 @@ void CharacterBuilderTerminalImplementation::readDnaTable(LuaObject* dnaSetTable
 
 		if (specialResists.isValidTable()) {
 			for (int j = 1; j <= specialResists.getTableSize(); j++) {
-				prototype->setSpecialResist(specialResists.getIntAt(j));
+				int resist = specialResists.getIntAt(j);
+
+				// info(true) << "Adding special resists: " << resist;
+
+				prototype->setSpecialResist(resist);
 			}
 		}
 
 		specialResists.pop();
+
+		prototype->setSpecialAttackOne(dnaTable.getStringField("special1"));
+		prototype->setSpecialAttackTwo(dnaTable.getStringField("special2"));
 
 		plock.release();
 

@@ -13,6 +13,17 @@
 	6,"object/tangible/component/dna/dna_sample_low.iff")
 	7,"object/tangible/component/dna/dna_sample_very_low.iff")
 
+	enum DamageType {
+		KINETIC = 1,
+		ENERGY = 2,
+		BLAST = 4,
+		STUN = 8,
+		LIGHTSABER = 16,
+		HEAT = 32,
+		COLD = 64,
+		ACID = 128,
+		ELECTRICITY = 256
+	};
 
 	Example DNA Template:
 
@@ -35,6 +46,11 @@
 		-- Armor Rating
 		armorRating = 0,
 
+		-- Special Attacks
+		special1 = "",
+		special2 = "",
+
+
 		ranged = false,
 
 		-- Special Resists, read as Int
@@ -49,8 +65,8 @@ dnaTests = {
 		-- DNA 1
 		{quality = 2, source = "greater sludge panther", level = 20,
 			-- Stats
-			cleverness = 244, endurance = 509, fierocity = 418, power = 308, intellect = 445,
-			courage = 508, dependability = 956, dexterity = 440, fortitude = 112, hardiness = 484,
+			hardiness = 484, fortitude = 112, dexterity = 440, endurance = 509, intellect = 445,
+			cleverness = 244, dependability = 956, courage = 508, fierocity = 418, power = 308,
 
 			-- Armor
 			stun = -30,
@@ -66,17 +82,21 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 0,
 
+			-- Special Attacks
+			special1 = "posturedownattack",
+			special2 = "",
+
 			ranged = false,
 
 			-- Special Resists
-			specialResists = {KINETIC_DAMAGE, ACID_DAMAGE},
+			specialResists = {1, 128},
 		},
 
 		-- DNA 2
 		{quality = 3, source = "greater sludge panther", level = 20,
 			-- Stats
-			cleverness = 235, endurance = 500, fierocity = 418, power = 304, intellect = 448,
-			courage = 505, dependability = 960, dexterity = 443, fortitude = 109, hardiness = 478,
+			hardiness = 478, fortitude = 109, dexterity = 443, endurance = 500, intellect = 448,
+			cleverness = 235, dependability = 960, courage = 505, fierocity = 418, power = 304,
 
 			-- Armor
 			stun = -55,
@@ -92,17 +112,21 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 0,
 
+			-- Special Attacks
+			special1 = "posturedownattack",
+			special2 = "",
+
 			ranged = false,
 
 			-- Special Resists
-			specialResists = {KINETIC_DAMAGE, ACID_DAMAGE},
+			specialResists = {1, 128},
 		},
 
 		-- DNA 3
 		{quality = 1, source = "shaupaut hunter", level = 20,
 			-- Stats
-			cleverness = 225, endurance = 518, fierocity = 514, power = 265, intellect = 342,
-			courage = 519, dependability = 1000, dexterity = 320, fortitude = 114, hardiness = 354,
+			hardiness = 354, fortitude = 114, dexterity = 320, endurance = 518, intellect = 342,
+			cleverness = 225, dependability = 1000, courage = 519, fierocity = 514, power = 265,
 
 			-- Armor
 			stun = -99,
@@ -118,17 +142,21 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 0,
 
+			-- Special Attacks
+			special1 = "blindattack",
+			special2 = "stunattack",
+
 			ranged = false,
 
 			-- Special Resists
-			specialResists = {KINETIC_DAMAGE, ENRGY_DAMAGE},
+			specialResists = {1, 2},
 		},
 
 		-- DNA 4
 		{quality = 2, source = "corellian butterfly defender", level = 20,
 			-- Stats
-			cleverness = 190, endurance = 506, fierocity = 96, power = 270, intellect = 130,
-			courage = 509, dependability = 755, dexterity = 124, fortitude = 60, hardiness = 125,
+			hardiness = 125, fortitude = 60, dexterity = 124, endurance = 506, intellect = 130,
+			cleverness = 190, dependability = 755, courage = 509, fierocity = 96, power = 270,
 
 			-- Armor
 			stun = -99,
@@ -144,17 +172,21 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 0,
 
+			-- Special Attacks
+			special1 = "",
+			special2 = "intimidationattack",
+
 			ranged = false,
 
 			-- Special Resists
-			specialResists = {ENRGY_DAMAGE},
+			specialResists = {2},
 		},
 
 		-- DNA 5
 		{quality = 2, source = "savage guf drolg", level = 20,
 			-- Stats
-			cleverness = 183, endurance = 514, fierocity = 104, power = 220, intellect = 139,
-			courage = 510, dependability = 960, dexterity = 763, fortitude = 62, hardiness = 148,
+			hardiness = 148, fortitude = 62, dexterity = 163, endurance = 514, intellect = 139,
+			cleverness = 183, dependability = 763, courage = 510, fierocity = 104, power = 220,
 
 			-- Armor
 			stun = -99,
@@ -170,10 +202,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 0,
 
+			-- Special Attacks
+			special1 = "",
+			special2 = "intimidationattack",
+
 			ranged = false,
 
 			-- Special Resists
-			specialResists = {KINETIC_DAMAGE},
+			specialResists = {1},
 		}
 	},
 
@@ -199,10 +235,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 1,
 
+			-- Special Attacks
+			special1 = "creatureareapoison",
+			special2 = "strongpoison",
+
 			ranged = false,
 
 			-- Special Resists, read as Int
-			specialResists = {KINETIC_DAMAGE, ENERGY_DAMAGE, BLAST_DAMAGE, HEAT_DAMAGE},
+			specialResists = {1, 2, 4, 32},
 		},
 		-- DNA 2
 		{quality = 1, source = "reclusive cavern spider queen", level = 20,
@@ -224,10 +264,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 1,
 
+			-- Special Attacks
+			special1 = "creatureareapoison",
+			special2 = "strongpoison",
+
 			ranged = false,
 
 			-- Special Resists, read as Int
-			specialResists = {KINETIC_DAMAGE, ENERGY_DAMAGE, BLAST_DAMAGE, HEAT_DAMAGE},
+			specialResists = {1, 2, 4, 32},
 		},
 		-- DNA 3
 		{quality = 1, source = "reclusive cavern spider queen", level = 20,
@@ -249,10 +293,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 1,
 
+			-- Special Attacks
+			special1 = "creatureareapoison",
+			special2 = "strongpoison",
+
 			ranged = false,
 
 			-- Special Resists, read as Int
-			specialResists = {KINETIC_DAMAGE, ENERGY_DAMAGE, BLAST_DAMAGE, HEAT_DAMAGE},
+			specialResists = {1, 2, 4, 32},
 		},
 		-- DNA 4
 		{quality = 3, source = "reclusive cavern spider queen", level = 20,
@@ -274,10 +322,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 1,
 
+			-- Special Attacks
+			special1 = "creatureareapoison",
+			special2 = "strongpoison",
+
 			ranged = false,
 
 			-- Special Resists, read as Int
-			specialResists = {KINETIC_DAMAGE, ENERGY_DAMAGE, BLAST_DAMAGE, HEAT_DAMAGE},
+			specialResists = {1, 2, 4, 32},
 		},
 		-- DNA 5
 		{quality = 2, source = "kimogila", level = 20,
@@ -299,10 +351,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 1,
 
-			ranged = false,
+			-- Special Attacks
+			special1 = "blindattack",
+			special2 = "stunattack",
+
+			ranged = true,
 
 			-- Special Resists, read as Int
-			specialResists = {KINETIC_DAMAGE, ENERGY_DAMAGE, BLAST_DAMAGE, HEAT_DAMAGE, COLD_DAMAGE, ELECTRICITY_DAMAGE, ACID_DAMAGE, STUN_DAMAGE},
+			specialResists = {1, 2, 4, 32, 64, 256, 128, 8},
 		}
 	},
 
@@ -328,10 +384,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 0,
 
+			-- Special Attacks
+			special1 = "posturedownattack",
+			special2 = "",
+
 			ranged = false,
 
 			-- Special Resists
-			specialResists = {KINETIC_DAMAGE, ACID_DAMAGE},
+			specialResists = {1, 128},
 		},
 		-- DNA 2
 		{quality = 3, source = "greater sludge panther", level = 20,
@@ -353,10 +413,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 0,
 
+			-- Special Attacks
+			special1 = "posturedownattack",
+			special2 = "",
+
 			ranged = false,
 
 			-- Special Resists
-			specialResists = {KINETIC_DAMAGE, ACID_DAMAGE},
+			specialResists = {1, 128},
 		},
 		-- DNA 3
 		{quality = 3, source = "kima", level = 10,
@@ -378,10 +442,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 0,
 
+			-- Special Attacks
+			special1 = "",
+			special2 = "intimidationattack",
+
 			ranged = false,
 
 			-- Special Resists
-			specialResists = {KINETIC_DAMAGE, ENERGY_DAMAGE},
+			specialResists = {1, 2},
 		},
 		-- DNA 4
 		{quality = 2, source = "savage guf drolg", level = 15,
@@ -403,10 +471,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 0,
 
+			-- Special Attacks
+			special1 = "",
+			special2 = "intimidationattack",
+
 			ranged = false,
 
 			-- Special Resists, read as Int
-			specialResists = {KINETIC_DAMAGE},
+			specialResists = {1},
 		},
 		-- DNA 5
 		{quality = 2, source = "savage guf drolg", level = 10,
@@ -428,10 +500,14 @@ dnaTests = {
 			-- Armor Rating
 			armorRating = 0,
 
+			-- Special Attacks
+			special1 = "",
+			special2 = "intimidationattack",
+
 			ranged = false,
 
 			-- Special Resists, read as Int
-			specialResists = {KINETIC_DAMAGE, ENERGY_DAMAGE},
+			specialResists = {1, 2},
 		}
 	}
 }
