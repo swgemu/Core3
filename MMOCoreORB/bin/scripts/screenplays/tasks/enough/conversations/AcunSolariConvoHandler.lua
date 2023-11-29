@@ -152,6 +152,7 @@ function AcunSolariConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 		return
 	end
 
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local faction = CreatureObject(pPlayer):getFaction()
 
 	if (faction == FACTIONIMPERIAL) then
@@ -160,7 +161,6 @@ function AcunSolariConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 		return convoTemplate:getScreen("neutral_greeting")
 	end
 
-	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
