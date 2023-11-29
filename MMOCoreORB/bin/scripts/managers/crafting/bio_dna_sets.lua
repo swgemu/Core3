@@ -1,9 +1,10 @@
 --[[ Added Tests
 	http://pets.furrycat.net/
 
-	"FurryCat Test - ju6d14qq", "ju6d14qq",
-	"FurryCat Test - d5j7caq6", "d5j7caq6",
-	"FurryCat Test - ke5nbvgo", "ke5nbvgo",
+	"FurryCat Test - ju6d14qq", "dna_set:ju6d14qq",
+	"FurryCat Test - d5j7caq6", "dna_set:d5j7caq6",
+	"FurryCat Test - ke5nbvgo", "dna_set:ke5nbvgo",
+	"FurryCat Test - dcfolokr", "dna_set:dcfolokr",
 
 	1,"object/tangible/component/dna/dna_sample_very_high.iff")
 	2,"object/tangible/component/dna/dna_sample_high.iff")
@@ -49,7 +50,6 @@
 		-- Special Attacks
 		special1 = "",
 		special2 = "",
-
 
 		ranged = false,
 
@@ -509,5 +509,154 @@ dnaTests = {
 			-- Special Resists, read as Int
 			specialResists = {1, 2},
 		}
+	},
+
+	-- http://pets.furrycat.net/creature.html?dcfolokr
+	{"dcfolokr",
+		-- DNA 1
+		{quality = 1, source = "merek harvester", level = 50,
+			-- Stats
+			hardiness = 738, fortitude = 610, dexterity = 643, endurance = 513, intellect = 747,
+			cleverness = 546, dependability = 765, courage = 509, fierocity = 97, power = 656,
+
+			-- Armor
+			kinetic = 75,
+			energy = -99,
+			blast = 10,
+			heat = 10,
+			cold = 10,
+			electric = -99,
+			acid = 10,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "creatureareacombo",
+			special2 = "dizzyattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1},
+		},
+		-- DNA 2
+		{quality = 3, source = "merek harvester", level = 50,
+			-- Stats
+			hardiness = 735, fortitude = 607, dexterity = 632, endurance = 502, intellect = 747,
+			cleverness = 539, dependability = 751, courage = 508, fierocity = 99, power = 656,
+
+			-- Armor
+			kinetic = 75,
+			energy = -99,
+			blast = 10,
+			heat = 10,
+			cold = 10,
+			electric = -99,
+			acid = 10,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 0,
+
+			-- Special Attacks
+			special1 = "creatureareacombo",
+			special2 = "dizzyattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1},
+		},
+		-- DNA 3
+		{quality = 3, source = "festering squill", level = 31,
+			-- Stats
+			hardiness = 367, fortitude = 159, dexterity = 403, endurance = 509, intellect = 406,
+			cleverness = 285, dependability = 757, courage = 502, fierocity = 90, power = 388,
+
+			-- Armor
+			kinetic = 40,
+			energy = 40,
+			blast = 15,
+			heat = -99,
+			cold = 15,
+			electric = 15,
+			acid = 50,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 0,
+
+			-- Special Attacks
+			special1 = "blindattack",
+			special2 = "mediumdisease",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 128},
+		},
+		-- DNA 4
+		{quality = 2, source = "corellian butterfly defender", level = 18,
+			-- Stats
+			hardiness = 126, fortitude = 57, dexterity = 134, endurance = 508, intellect = 129,
+			cleverness = 191, dependability = 757, courage = 509, fierocity = 103, power = 266,
+
+			-- Armor
+			kinetic = 5,
+			energy = 15,
+			blast = -99,
+			heat = -99,
+			cold = -99,
+			electric = -99,
+			acid = -99,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 0,
+
+			-- Special Attacks
+			special1 = "",
+			special2 = "intimidationattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {2},
+		},
+		-- DNA 5
+		{quality = 2, source = "rancor", level = 50,
+			-- Stats
+			hardiness = 624, fortitude = 512, dexterity = 660, endurance = 514, intellect = 651,
+			cleverness = 469, dependability = 514, courage = 509, fierocity = 556, power = 606,
+
+			-- Armor
+			kinetic = 30,
+			energy = 30,
+			blast = -99,
+			heat = 60,
+			cold = 60,
+			electric = 60,
+			acid = -99,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "stunattack",
+			special2 = "intimidationattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 32, 64, 256},
+		},
 	}
 }

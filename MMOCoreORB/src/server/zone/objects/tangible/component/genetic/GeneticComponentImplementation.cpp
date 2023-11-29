@@ -6,6 +6,8 @@
 #include "templates/tangible/SharedWeaponObjectTemplate.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
+// #define DEBUG_GENETIC_LAB
+
 void GeneticComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();
 }
@@ -61,7 +63,9 @@ void GeneticComponentImplementation::resetResists(CraftingValues* values) {
 void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 
-	// info(true) << "---------- GeneticComponentImplementation::updateCraftingValues ----------";
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "---------- GeneticComponentImplementation::updateCraftingValues ----------";
+#endif
 
 	fortitude = values->getCurrentValue("fortitude");
 	endurance = values->getCurrentValue("endurance");
@@ -84,8 +88,10 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	stunResist = values->getCurrentValue("dna_comp_armor_stun");
 	//saberResist = values->getCurrentValue("dna_comp_armor_saber");
 
-	// info(true) << "Kinetic = " << kinResist << " Enery = " << energyResist << " Blast = " << blastResist << " Heat = " << heatResist << " Cold = " << coldResist;
-	// info(true) << " Elecitrict = " << elecResist << " Acid = " << acidResist << " Stun = " << stunResist;
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "Kinetic = " << kinResist << " Enery = " << energyResist << " Blast = " << blastResist << " Heat = " << heatResist << " Cold = " << coldResist;
+	info(true) << " Electricity = " << elecResist << " Acid = " << acidResist << " Stun = " << stunResist;
+#endif
 
 	if (values->getMinValue("kineticeffectiveness") > 0)
 		setSpecialResist(SharedWeaponObjectTemplate::KINETIC);
@@ -213,23 +219,48 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	strength = (hardiness * 15) + (dependability * 3);
 	quickness = (dexterity * 15) + (dependability * 3);
 
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "Health: " << health << " Action: " << action << " Mind: " << mind;
+	info(true) << "Stamina: " << stamina << " Willpower: " << willPower << " Constitution: " << constitution << " Focus: " << focus << " Strength: " << strength << " Quickness: " << quickness;
+#endif
+
 	// toHit Calculation
-	hit = 0.19 + (cleverness / 1500.f);
+	hit = 0.19 + (cleverness / 1500.0f);
 
-	// dps of pet use to determine min and max value.
-	int dps = ceil((ceil(15.0 + (775.0 * ( ((float)power)/1000.0))))/3.5);
-	speed = 2.5-((ceil(((float)courage)/10)*10)/1000);
-	maxDam = round(((float)dps * speed) * 1.5);
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "ToHit: " << hit;
+#endif
 
-	//minDam = round(((float)dps * speed) * 0.5);
-  	// round maxDam down to the closest multiple of 5
+	speed = 2.5f - (ceil(courage / 10.0f) * 10.0f) / 1000;
 
-	maxDam = maxDam - (maxDam % 5);
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "Speed: " << speed;
+#endif
 
-  	// subtract either 5 or 10 from maxDam to get the minDam
-	minDam = maxDam - ((System::random(1) + 1) * 5);
+	// Calculate damage
+	float damage = (power * 0.8f);
 
-	//info(true) << "---------- END GeneticComponentImplementation::updateCraftingValues ----------";
+	// Calculate damage variable
+	float damageVar = ((power / 10000.0f) * 2.0f);
+
+	maxDam = damage * (1.0f + damageVar);
+	minDam = damage * (1.0f - damageVar);
+
+	maxDam = maxDam - (maxDam % 10);
+	minDam = minDam - (minDam % 5);
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "Damage: " << damage << " Damage Variable: " << damageVar;
+	info(true) << "Min Damage: " << minDam;
+	info(true) << "Max Damage: " << maxDam;
+
+		// DPS calculation
+	int dps = ((maxDam + minDam) / 2.0f) / speed;
+
+	info(true) << "DPS: " << dps;
+
+	info(true) << "---------- END GeneticComponentImplementation::updateCraftingValues ----------";
+#endif
 }
 
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {
