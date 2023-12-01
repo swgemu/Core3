@@ -13,8 +13,7 @@
 
 class GuildTitleResponseSuiCallback : public SuiCallback {
 public:
-	GuildTitleResponseSuiCallback(ZoneServer* server)
-		: SuiCallback(server) {
+	GuildTitleResponseSuiCallback(ZoneServer* server) : SuiCallback(server) {
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
@@ -38,7 +37,7 @@ public:
 		if (obj == nullptr || !obj->isPlayerCreature())
 			return;
 
-		CreatureObject* target = cast<CreatureObject*>( obj.get());
+		CreatureObject* target = cast<CreatureObject*>(obj.get());
 
 		guildManager->setMemberTitle(player, target, title);
 	}

@@ -129,4 +129,5 @@ class ContrabandScanSession extends Facade {
 	private native void calculateSmugglingSuccess(CreatureObject player);
 	private native int getSmugglerAvoidanceChance(CreatureObject creature);
 	private native void callInLambdaShuttle(AiAgent scanner, CreatureObject player, int difficulty, final string landingMessage);
+	private native void moveAlongMessage(AiAgent scanner);
 }

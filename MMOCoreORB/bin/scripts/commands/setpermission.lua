@@ -43,7 +43,7 @@
 
 SetpermissionCommand = {
 	name = "setpermission",
-	defaultTime = 2.0,
+	defaultTime = 0.5,
 }
 
 AddCommand(SetpermissionCommand)

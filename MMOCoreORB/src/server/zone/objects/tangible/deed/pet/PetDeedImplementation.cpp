@@ -270,6 +270,7 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 		quality = component->getQuality();
 		chanceHit = component->getHit();
 		attackSpeed = component->getSpeed();
+
 		damageMin = component->getMinDamage();
 		damageMax = component->getMaxDamage();
 
@@ -313,30 +314,37 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 			setSpecialResist(SharedWeaponObjectTemplate::STUN);
 			// info(true) << "setting special resist STUN";
 		}
+
 		if (component->isSpecialResist(SharedWeaponObjectTemplate::KINETIC)) {
 			setSpecialResist(SharedWeaponObjectTemplate::KINETIC);
 			// info(true) << "setting special resist KINETIC";
 		}
+
 		if (component->isSpecialResist(SharedWeaponObjectTemplate::ENERGY)) {
 			setSpecialResist(SharedWeaponObjectTemplate::ENERGY);
-			// info(true) << "setting special resist ENERGY";
+			//info(true) << "setting special resist ENERGY";
 		}
+
 		if (component->isSpecialResist(SharedWeaponObjectTemplate::BLAST)) {
 			setSpecialResist(SharedWeaponObjectTemplate::BLAST);
 			// info(true) << "setting special resist BLAST";
 		}
+
 		if (component->isSpecialResist(SharedWeaponObjectTemplate::HEAT)) {
 			setSpecialResist(SharedWeaponObjectTemplate::HEAT);
 			// info(true) << "setting special resist HEAT";
 		}
+
 		if (component->isSpecialResist(SharedWeaponObjectTemplate::COLD)) {
 			setSpecialResist(SharedWeaponObjectTemplate::COLD);
 			// info(true) << "setting special resist COLD";
 		}
+
 		if (component->isSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY)) {
 			setSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY);
 			// info(true) << "setting special resist ELECTRICITY";
 		}
+
 		if (component->isSpecialResist(SharedWeaponObjectTemplate::ACID)) {
 			setSpecialResist(SharedWeaponObjectTemplate::ACID);
 			// info(true) << "setting special resist ACID";
@@ -352,11 +360,6 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 	if (petTemplate != nullptr) {
 		// get min CL from the template
 		int skinFactor = petTemplate->getLevel();
-
-		// BE Samples cap at 75 however pets can be crafted over that value
-		//if (level > 75) {
-		//	level = 75;
-		//}
 
 		if (level < skinFactor) {
 			level = skinFactor;

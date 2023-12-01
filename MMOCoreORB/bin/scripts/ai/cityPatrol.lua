@@ -12,4 +12,3 @@ rootCitypatrol = {
 	{id="4144146773",	name="Selector",	pid="none"},
 	{id="4217744519",	name="TreeSocket",	pid="4144146773",	args={slot=IDLE}}}
 addAiTemplate("rootCitypatrol", rootCitypatrol)
-

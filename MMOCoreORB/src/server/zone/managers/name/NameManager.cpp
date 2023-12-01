@@ -10,6 +10,9 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
+//#define DEBUG_NAMING
+//#define DEBUG_NAMING_VERBOSE
+
 NameManager::NameManager() {
 	setLoggingName("NameManager");
 
@@ -75,7 +78,7 @@ void NameManager::loadConfigData(bool reload) {
 		delete plainResourceData;
 		delete reactiveGasResourceData;
 
-		reservedNames.removeAll();
+		regexFilters.removeAll();
 		stormtrooperPrefixes.removeAll();
 		scouttrooperPrefixes.removeAll();
 		darktrooperPrefixes.removeAll();
@@ -177,22 +180,32 @@ void NameManager::loadConfigData(bool reload) {
 
 	luaObject.pop();
 
-	luaObject = lua->getGlobalObject("reservedNames");
+	luaObject = lua->getGlobalObject("filterWords");
+
+#ifdef DEBUG_NAMING
+	info(true) << "Loading filter words for Name Manager:";
+#endif
 
 	if (luaObject.isValidTable()) {
 		for(int i = 1; i <= luaObject.getTableSize(); ++i) {
 			LuaObject entry = luaObject.getObjectAt(i);
 
-			String regexEntry = entry.getStringAt(1);
+			const String regexString = entry.getStringAt(1);
 			int reason = entry.getIntAt(2);
 
-			reservedNames.put(regexEntry, reason);
+#ifdef DEBUG_NAMING
+			info(true) << "Loading Entry #" << i << " Regex Entry: " << regexString;
+#endif
+
+			Reference<RegexData*> regexCheck = new RegexData(regexString, reason);
+
+			regexFilters.add(regexCheck);
 
 			entry.pop();
 		}
 	}
 
-	info("Loaded " + String::valueOf(reservedNames.size()) + " reserved name patterns.", true);
+	info(true) << "Loaded " << regexFilters.size() << " regex filter patterns.";
 
 	luaObject.pop();
 
@@ -201,37 +214,73 @@ void NameManager::loadConfigData(bool reload) {
 }
 
 bool NameManager::isProfane(const String& name) const {
-	return validateReservedNames(name, NameManagerResult::DECLINED_PROFANE) != NameManagerResult::ACCEPTED;
+	return checkNamingFilter(name, NameManagerResult::DECLINED_PROFANE) != NameManagerResult::ACCEPTED;
 }
 
 bool NameManager::isDeveloper(const String& name) const {
-	return validateReservedNames(name, NameManagerResult::DECLINED_DEVELOPER) != NameManagerResult::ACCEPTED;
+	return checkNamingFilter(name, NameManagerResult::DECLINED_DEVELOPER) != NameManagerResult::ACCEPTED;
 }
 
 bool NameManager::isFiction(const String& name) const {
-	return validateReservedNames(name, NameManagerResult::DECLINED_FICT_RESERVED) != NameManagerResult::ACCEPTED;
+	return checkNamingFilter(name, NameManagerResult::DECLINED_FICT_RESERVED) != NameManagerResult::ACCEPTED;
 }
 
 bool NameManager::isReserved(const String& name) const {
-	return validateReservedNames(name, NameManagerResult::DECLINED_RESERVED) != NameManagerResult::ACCEPTED;
+	return checkNamingFilter(name, NameManagerResult::DECLINED_RESERVED) != NameManagerResult::ACCEPTED;
 }
 
-int NameManager::validateReservedNames(const String& name, int resultType) const {
-	for (int i = 0; i < reservedNames.size(); i++) {
-		VectorMapEntry<String, int> entry = reservedNames.elementAt(i);
+int NameManager::checkNamingFilter(const String& name, int resultType) const {
+#ifdef DEBUG_NAMING
+	StringBuffer debugMsg;
+	debugMsg << "checkNamingFilter -- Checking: " << name << " for Type: " << resultType << "\n";
+#endif
 
-		std::regex regexCheck(entry.getKey().toCharArray());
-		int reservedReason = entry.getValue();
+	int result = NameManagerResult::ACCEPTED;
 
-		if (resultType > 0 && resultType != reservedReason)
+	for (int i = 0; i < regexFilters.size(); i++) {
+		RegexData* regexData = regexFilters.get(i);
+
+		if (regexData == nullptr)
 			continue;
 
-		if (std::regex_search(name.toCharArray(), regexCheck)) {
-			//error("Name " + name + " failed check against regex " + entry.getKey() + " , reason: " + reservedReason);
-			return reservedReason;
+#ifdef DEBUG_NAMING
+		const String regexPhrase = regexData->getRegexPhrase();
+#endif
+
+		const std::regex* regexCheck = regexData->getRegexEntry();
+		const int reservedReason = regexData->getFilterType();
+
+#ifdef DEBUG_NAMING_VEBOSE
+		debugMsg << "Using Regex Entry: " << regexData->getRegexPhrase() << " with Reserved Reason: " << reservedReason << "\n";
+#endif
+
+		if (resultType > 0 && resultType != reservedReason) {
+#ifdef DEBUG_NAMING_VEBOSE
+			debugMsg << "Skipping Entry: " << regexData->getRegexPhrase() << "\n";
+
+			info(true) << debugMsg.toString();
+#endif
+			continue;
+		}
+
+		if (std::regex_search(name.toCharArray(), *regexCheck)) {
+#ifdef DEBUG_NAMING
+			debugMsg << "Name: " << name << " failed check against regex " << regexPhrase << " , reason: " << reservedReason << "\n";
+#endif
+
+			result = reservedReason;
+			break;
 		}
 	}
-	return NameManagerResult::ACCEPTED;
+
+#ifdef DEBUG_NAMING
+	if (result == NameManagerResult::ACCEPTED)
+		debugMsg << "Name: " << name << " passed regex checks and NameManagerResult::ACCEPTED";
+
+	info(true) << debugMsg.toString();
+#endif
+
+	return result;
 }
 
 int NameManager::validateName(const CreatureObject* obj) const {
@@ -322,7 +371,7 @@ int NameManager::validateName(const String& name, int species) const {
 			return NameManagerResult::DECLINED_RACE_INAPP;
 	}
 
-	return validateReservedNames(name);
+	return checkNamingFilter(name);
 }
 
 int NameManager::validateGuildName(const String& name, int type) const {
@@ -346,7 +395,7 @@ int NameManager::validateGuildName(const String& name, int type) const {
 	if (name.contains("\\") || name.contains("\n") || name.contains("\r") || name.contains("#"))
 		return NameManagerResult::DECLINED_SYNTAX;
 
-	return validateReservedNames(name);
+	return checkNamingFilter(name);
 }
 
 int NameManager::validateCityName(const String& name) const {
@@ -364,7 +413,7 @@ int NameManager::validateCityName(const String& name) const {
 	if (name.indexOf("  ") != -1)
 		return NameManagerResult::DECLINED_SYNTAX;
 
-	return validateReservedNames(name);
+	return checkNamingFilter(name);
 }
 
 int NameManager::validateVendorName(const String& name) const {
@@ -382,7 +431,7 @@ int NameManager::validateVendorName(const String& name) const {
 	if (name.indexOf("  ") != -1)
 		return NameManagerResult::DECLINED_SYNTAX;
 
-	return validateReservedNames(name);
+	return checkNamingFilter(name);
 }
 
 int NameManager::validateChatRoomName(const String& name) const {
@@ -418,13 +467,29 @@ const String NameManager::makeCreatureName(int type, int species) const {
 	String name;
 	auto data = getSpeciesData(species);
 
-	// Covers all Imperial Trooper types
+	// Generated imperial trooper names do not need to be checked. Covers all Imperial Trooper types
 	if (type >= NameManagerType::STORMTROOPER && type <= NameManagerType::SWAMPTROOPER) {
 		name = makeImperialTrooperName(type);
+	// R-Droid names do not need to be checked
 	} else if (type >= NameManagerType::R2 && type <= NameManagerType::DROID_RA7) {
 		name = makeDroidName(type);
 	} else {
-		name = generateRandomName(data);
+		uint32 count = 0;
+		int result = NameManagerResult::DECLINED_EMPTY;
+
+		// Fail loop when result is accepted
+		while (result != NameManagerResult::ACCEPTED) {
+			name = generateRandomName(data);
+
+			result = validateName(name, species);
+
+			count++;
+
+			if (count >= 10) {
+				error() << " Failed to create suitable creature name -- Count: " << count << " Species: " <<  species << " Ending Name: " << name;
+				break;
+			}
+		}
 	}
 
 	return name;
@@ -481,39 +546,6 @@ String NameManager::makeDroidName(int type) const {
 	return name;
 }
 
-void NameManager::test() const {
-	uint64 start = Time::currentNanoTime();
-
-	int iterations = 1000000;
-
-	for(int i = 0;i < iterations; ++i)
-		//System::out << makeCreatureName(true) << endl;
-		makeCreatureName(1);
-
-	uint64 end = Time::currentNanoTime();
-
-	float nano = (end - start);
-	float milli = nano * .000001;
-	float seconds = milli / 1000;
-	System::out << "Old name generator:" << endl;
-	System::out << "Average: " << nano / iterations  << " nanoseconds / " << milli / iterations << " milliseconds" << seconds / iterations  << " seconds" << endl;
-	System::out << "Total: " << nano << " nanoseconds / " << milli << " milliseconds" << seconds << " seconds" << endl;
-
-	start = Time::currentNanoTime();
-
-	for(int i = 0;i < iterations; ++i)
-		generateResourceName("plain_resource");
-
-	end = Time::currentNanoTime();
-
-	nano = (end - start);
-	milli = nano * .000001;
-	seconds = milli / 1000;
-	System::out << "New name generator:" << endl;
-	System::out << "Average: " << nano / iterations  << " nanoseconds / " << milli / iterations << " milliseconds" << seconds / iterations  << " seconds" << endl;
-	System::out << "Total: " << nano << " nanoseconds / " << milli << " milliseconds" << seconds << " seconds" << endl;
-}
-
 String NameManager::generateResourceName(const String& randomNameClass) const {
 	const NameData* data;
 
@@ -526,7 +558,22 @@ String NameManager::generateResourceName(const String& randomNameClass) const {
 	else
 		data = plainResourceData;
 
-	return generateRandomName(data);
+	String name;
+	uint32 count = 0;
+	int result = NameManagerResult::DECLINED_EMPTY;
+
+	while (name.isEmpty() || isProfane(name)) {
+		name = generateRandomName(data);
+
+		count++;
+
+		if (count >= 10) {
+			error() << " Failed to create suitable resource name -- Count: " << count << " Final Name: " << name;
+			break;
+		}
+	}
+
+	return name;
 }
 
 String NameManager::generateRandomName(const NameData* nameData) const {

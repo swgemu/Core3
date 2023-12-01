@@ -232,7 +232,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 
 	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
 		// Dna Component Slots
-		Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getSlot(i);
+		Reference<IngredientSlot*> ingredientSlot = manufactureSchematic->getSlot(i);
 
 		if (ingredientSlot == nullptr || !ingredientSlot->isComponentSlot())
 			continue;
@@ -271,7 +271,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 		}
 	}
 
-	// Ensure none of the components don't have a nullptr
+	// Ensure none of the components have a nullptr
 	if (physique == nullptr || prowess == nullptr || mental == nullptr || psychological == nullptr || aggression == nullptr)
 		return;
 

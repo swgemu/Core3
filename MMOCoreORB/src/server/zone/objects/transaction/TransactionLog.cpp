@@ -904,6 +904,7 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::ADMINCOMMAND:             return "admincommand";              // From an admin command
 	case TrxCode::ADKAPPLY:                 return "adkapply";                  // Apply ADK to an item
 	case TrxCode::ADKREMOVE:                return "adkremove";                 // Remove ADK from item
+	case TrxCode::APPLYATTACHMENT:          return "applyattachment";           // Apply Attachment to an item
 	case TrxCode::AUCTIONADDSALE:           return "auctionaddsale";            // addSaleItem()
 	case TrxCode::AUCTIONBID:               return "auctionbid";                // Auction Bid Escrow
 	case TrxCode::AUCTIONEXPIRED:           return "auctionexpired";            // Never retrieved and expired

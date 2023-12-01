@@ -104,7 +104,9 @@ public:
 			bool shouldGcwCrackdownTef = false, shouldGcwTef = false, shouldBhTef = false;
 
 			manager->checkForTefs(creature, targetCreature, &shouldGcwCrackdownTef, &shouldGcwTef, &shouldBhTef);
-			playerGhost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
+			if (shouldGcwCrackdownTef || shouldGcwTef || shouldBhTef) {
+				playerGhost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
+			}
 
 			return SUCCESS;
 		}

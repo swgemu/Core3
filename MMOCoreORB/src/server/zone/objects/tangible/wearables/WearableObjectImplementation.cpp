@@ -13,6 +13,7 @@
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/objects/tangible/wearables/ModSortingHelper.h"
+#include "server/zone/objects/transaction/TransactionLog.h"
 
 void WearableObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -151,6 +152,18 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player, Attac
 		usedSocketCount++;
 		addMagicBit(true);
 		Locker clocker(attachment, player);
+		TransactionLog trx(player, asSceneObject(), attachment, TrxCode::APPLYATTACHMENT);
+
+		if (trx.isVerbose()) {
+			// Force a synchronous export because the object will be deleted before we can export it!
+			trx.addRelatedObject(attachment, true);
+			trx.setExportRelatedObjects(true);
+			trx.exportRelated();
+		}
+
+		trx.addState("subjectSkillModMap", sortedMods);
+		trx.addState("dstSkillModMap", wearableSkillMods);
+
 		attachment->destroyObjectFromWorld(true);
 		attachment->destroyObjectFromDatabase(true);
 

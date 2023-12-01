@@ -12,10 +12,9 @@ function TalusImperialVsRebelBattleScreenPlay:start()
 end
 
 function TalusImperialVsRebelBattleScreenPlay:spawnMobiles()
-
-	local pNpc = spawnMobile("talus", "imperial_pilot", 870, -2455.5, 41.1, 3867.2, 155, 0)
-	self:setMoodString(pNpc, "worried")
-	pNpc = spawnMobile("talus", "imperial_army_captain", 870, -2417.4, 38.0, 3678.8, 130, 0)
+	--local pNpc = spawnMobile("talus", "imperial_pilot", 870, -2455.5, 41.1, 3867.2, 155, 0)
+	--self:setMoodString(pNpc, "worried")
+	local pNpc = spawnMobile("talus", "imperial_army_captain", 870, -2417.4, 38.0, 3678.8, 130, 0)
 	self:setMoodString(pNpc, "angry")
 	spawnMobile("talus", "imperial_probe_drone", 870, -2423, 38.0, 3677.7, 125, 0)
 	pNpc = spawnMobile("talus", "imperial_pilot", 870, -2571.5, 28.9, 3824.2, -55, 0)
@@ -28,6 +27,4 @@ function TalusImperialVsRebelBattleScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "nervous")
 	pNpc = spawnMobile("talus", "rebel_major_general", 870, -2538.3, 38.0, 3708.5, 100, 0)
 	self:setMoodString(pNpc, "calm")
-
 end
-

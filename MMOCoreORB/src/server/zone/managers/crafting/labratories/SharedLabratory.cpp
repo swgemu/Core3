@@ -57,10 +57,11 @@ float SharedLabratory::calculateExperimentationValueModifier(int experimentation
 	return results;
 }
 float SharedLabratory::calculateAssemblyValueModifier(int assemblyResult) {
-
-	if(assemblyResult == CraftingManager::AMAZINGSUCCESS)
+	if (assemblyResult == CraftingManager::AMAZINGSUCCESS)
 		return 1.05f;
+
 	float result = 1.1f - (assemblyResult * .1f);
+
 	return result;
 }
 

@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 PermissionListModifyCommand = {
-        name = "permissionlistmodify",
+	name = "permissionlistmodify",
 }
 
 AddCommand(PermissionListModifyCommand)

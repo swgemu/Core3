@@ -402,7 +402,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	--{"r2",60,-13.4312,1.6,-15.4443,7.68027,1935827, "calm", "R2-P9"},
 	--{"r3",60,-16.1386,2.25,18.5614,173.343,1935472, "calm", "R3-X8"},
 	--{"r5",60,-4954.81,21,-2379.55,166.051,0, "calm", "R5-C7"},
-	--{"acun_solari",60,19.8219,-0.894996,-19.5533,0,2625356, "calm", "Acun Solari"},
 
 	local pNpc = spawnMobile(self.planet, "junk_dealer", 0, -5639.2, 21, -2799.2, -40, 0)
 	if pNpc ~= nil then

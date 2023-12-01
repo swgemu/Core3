@@ -1,5 +1,5 @@
 naboo_veermok_holdfast_neutral_large = Lair:new {
-	mobiles = {{"giant_veermok",1},{"alpha_veermok",1}},
+	mobiles = {{"giant_veermok", 1},{"alpha_veermok", 1}, {"veermok_hunter", 1}, {"veermok_sentry", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/cave_small_dark.iff"},
 	buildingsEasy = {"object/tangible/lair/base/cave_small_dark.iff"},

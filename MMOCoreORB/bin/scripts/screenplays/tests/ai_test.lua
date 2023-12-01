@@ -3,7 +3,8 @@ AITest = ScreenPlay:new {
 	planet = "creature_test",
 
 	location = {0, 0, 0},
-	numberOfSpawns = 5,
+	numberOfSpawns = 1,
+	mobile = "stormtrooper",
 }
 
 registerScreenPlay("AITest", false)
@@ -24,10 +25,12 @@ function AITest:spawnMobiles()
 	local spawnNum = self.numberOfSpawns
 
 	for i = 1, spawnNum, 1 do
-		local pMobile = spawnMobile(self.planet, "relentless_purbole", -1, x, z, y, 0, 0)
+		local pMobile = spawnMobile(self.planet, self.mobile, -1, x, z, y, 0, 0)
 
 		if (pMobile ~= nil) then
 			--AiAgent(pMobile):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pMobile):addCreatureFlag(SCANNING_FOR_CONTRABAND)
+			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 
 			createObserver(OBJECTDESTRUCTION, "AITest", "notifyKilled", pMobile)
 		end
@@ -44,6 +47,8 @@ function AITest:spawnMobile()
 
 	if (pMobile ~= nil) then
 		--AiAgent(pMobile):addCreatureFlag(AI_STATIONARY)
+		AiAgent(pMobile):addCreatureFlag(SCANNING_FOR_CONTRABAND)
+		AiAgent(pMobile):addCreatureFlag(AI_STATIC)
 
 		createObserver(OBJECTDESTRUCTION, "AITest", "notifyKilled", pMobile)
 	end

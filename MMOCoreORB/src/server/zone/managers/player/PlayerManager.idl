@@ -49,6 +49,7 @@ include engine.util.JSONSerializationType;
 import server.zone.objects.player.events.OnlinePlayerLogTask;
 import system.lang.Time;
 include server.zone.managers.player.PlayerNameIterator;
+include server.zone.objects.region.CityRegion;
 
 @dirty
 class PlayerManager extends Observer implements Logger {
@@ -388,7 +389,7 @@ class PlayerManager extends Observer implements Logger {
 	public native void resendLoginMessageToAll();
 
 	public native void sendActivateCloneRequest(CreatureObject player, int typeofdeath = 0);
-	public native boolean isValidClosestCloner(CreatureObject player, SceneObject cloner);
+	public native boolean isValidClosestCloner(CreatureObject player, SceneObject cloner, CityRegion cityRegion);
 	public native void sendPlayerToCloner(CreatureObject player, unsigned long clonerID, int typeofdeath = 0);
 
 	public native void ejectPlayerFromBuilding(CreatureObject player);

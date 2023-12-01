@@ -22,6 +22,7 @@
 #include "server/zone/managers/gcw/sessions/sui/ContrabandFineSuiCallback.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 
 int ContrabandScanSessionImplementation::initializeSession() {
 	ManagedReference<AiAgent*> scanner = weakScanner.get();
@@ -449,9 +450,11 @@ void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scann
 	if (timeLeft < 0) {
 		int numberOfContrabandItems = 0;
 		GCWManager* gcwManager = zone->getGCWManager();
+
 		if (gcwManager != nullptr) {
 			numberOfContrabandItems = gcwManager->countContrabandItems(player);
 		}
+
 		if (numberOfContrabandItems > 0 && !smugglerAvoidedScan) {
 			sendScannerChatMessage(zone, scanner, player, "fined_imperial", "fined_rebel");
 			sendSystemMessage(scanner, player, "probe_scan_positive");
@@ -462,7 +465,10 @@ void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scann
 			player->info("Contraband scan found " + String::valueOf(numberOfContrabandItems));
 		} else {
 			sendScannerChatMessage(zone, scanner, player, "clean_target_imperial", "clean_target_rebel");
+
 			scanner->doAnimation("wave_on_directing");
+			moveAlongMessage(scanner);
+
 			if (smugglerAvoidedScan) {
 				player->sendSystemMessage("@base_player:smuggler_scan_success");
 			} else {
@@ -470,6 +476,7 @@ void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scann
 			}
 
 			scanner->setFollowObject(nullptr);
+
 			if (smugglerAvoidedScan) {
 				player->info("Contraband scan avoided due to smuggler chance.");
 			} else {
@@ -542,9 +549,13 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			recognized = true;
 			sendPersonalizedScannerChatMessage(zone, scanner, player, "sorry_sir", "sorry_sir");
 		}
+
 		if (recognized) {
 			sendSystemMessage(scanner, player, "probe_scan_done");
+
 			scanner->doAnimation("wave_on_directing");
+			moveAlongMessage(scanner);
+
 			player->info("Contraband scan avoided due to faction rank.");
 			scanState = FINISHED;
 		}
@@ -691,9 +702,14 @@ void ContrabandScanSessionImplementation::jediMindTrickResult(Zone* zone, AiAgen
 	} else {
 		stringId += dependingOnJediSkills(player, "dont_search_novice", "dont_search", "dont_search_dark");
 		mood = dependingOnJediSkills(player, "confused", "confident", "scared");
+
 		sendSystemMessage(scanner, player, "probe_scan_done");
+
 		scanner->doAnimation("wave_on_directing");
+		moveAlongMessage(scanner);
+
 		player->info("Contraband scan avoided due to Jedi mind trick.");
+
 		scanState = FINISHED;
 	}
 
@@ -744,7 +760,10 @@ void ContrabandScanSessionImplementation::waitForPayFineAnswer(Zone* zone, AiAge
 		if (acceptedFine) {
 			if (player->getCashCredits() + player->getBankCredits() >= fineToPay) {
 				sendScannerChatMessage(zone, scanner, player, "warning_imperial", "warning_rebel");
+
 				scanner->doAnimation("wave_on_directing");
+				moveAlongMessage(scanner);
+
 				if (fineToPay <= player->getCashCredits()) {
 					TransactionLog trx(player, TrxCode::FINES, fineToPay, true);
 					player->subtractCashCredits(fineToPay);
@@ -865,4 +884,21 @@ void ContrabandScanSessionImplementation::callInLambdaShuttle(AiAgent* scanner, 
 		errorMessage << "Could not find any Lambda shuttle landing point on " << scanner->getZone()->getZoneName() << " close to (" << scanner->getWorldPositionX() << ", " << scanner->getWorldPositionY() << ").";
 		error(errorMessage.toString());
 	}
+}
+
+void ContrabandScanSessionImplementation::moveAlongMessage(AiAgent* scanner) {
+	if (scanner == nullptr || scannerFaction != Factions::FACTIONIMPERIAL)
+		return;
+
+	auto zone = scanner->getZone();
+
+	if (zone == nullptr)
+		return;
+
+	PlayClientEffectLoc* moveAlong = new PlayClientEffectLoc("clienteffect/stormtrp_movealng.cef", zone->getZoneName(), scanner->getPositionX(), scanner->getPositionZ(), scanner->getPositionY());
+
+	if (moveAlong == nullptr)
+		return;
+
+	scanner->broadcastMessage(moveAlong, false);
 }
