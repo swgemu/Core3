@@ -10,14 +10,10 @@
 
 class ActivateCloneCommand : public QueueCommand {
 public:
-
-	ActivateCloneCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	ActivateCloneCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -32,12 +28,20 @@ public:
 		if (!player->isDead())
 			return GENERALERROR;
 
-		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
+		auto playerManager = zoneServer->getPlayerManager();
+
+		if (playerManager == nullptr)
+			return GENERALERROR;
+
 		playerManager->sendActivateCloneRequest(player);
 
 		return SUCCESS;
 	}
-
 };
 
-#endif //ACTIVATECLONECOMMAND_H_
+#endif // ACTIVATECLONECOMMAND_H_
