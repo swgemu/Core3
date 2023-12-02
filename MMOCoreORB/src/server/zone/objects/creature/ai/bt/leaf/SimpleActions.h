@@ -396,9 +396,9 @@ public:
 		// we don't need to check a value. Just checking to see if this value
 		// exists on the blackboard is fine since it can never be false
 		if (agent->peekBlackboard("isWaiting")) {
-			if (agent->isWaiting() || duration < 0) // < 0 means indefinite wait
+			if (agent->isWaiting() || duration < 0) { // < 0 means indefinite wait
 				return RUNNING;
-			else {
+			} else {
 				agent->eraseBlackboard("isWaiting");
 				return SUCCESS;
 			}
