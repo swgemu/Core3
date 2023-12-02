@@ -14,6 +14,8 @@
 #include "server/zone/managers/crafting/labratories/Genetics.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 
+// #define DEBUG_GENETIC_LAB
+
 AtomicInteger DnaManager::loadedDnaData;
 
 DnaManager::DnaManager() : Logger("DnaManager") {
@@ -58,6 +60,7 @@ void DnaManager::loadSampleData() {
 						int ham = statRow.getIntAt(4);
 						int armorBase = statRow.getIntAt(5);
 						int regen = statRow.getIntAt(6);
+
 						dnaDPS.add(dps);
 						dnaArmor.add(armorBase);
 						dnaHam.add(ham);
@@ -339,11 +342,13 @@ float DnaManager::valueForLevel(int type, int level) {
 	}
 	return rc;
 }
-int DnaManager::levelForScore(int type, float value) {
-	int rc = 0;
-	switch(type) {
+
+float DnaManager::levelForScore(int type, float value) {
+	float rc = 0.0f;
+
+	switch (type) {
 		case HIT_LEVEL:
-			for (int i=0;i<dnaHit.size();i++) {
+			for (int i = 0; i < dnaHit.size(); i++) {
 				float lvminus = 0, lvplus = 3;
 
 				if (i > 0)
@@ -354,14 +359,18 @@ int DnaManager::levelForScore(int type, float value) {
 
 				float lv = dnaHit.get(i);
 
-				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
+				if (value >= (lvminus + lv) / 2.0f && value <= (lvplus + lv) / 2.0f) {
 					rc = i;
 					break;
 				}
 			}
+
+#ifdef DEBUG_GENETIC_LAB
+			info(true) << "HIT_LEVEL - Checking: " << value << " Returning: " << rc;
+#endif
 			break;
 		case DPS_LEVEL:
-			for (int i=0;i<dnaDPS.size();i++) {
+			for (int i = 0; i < dnaDPS.size(); i++) {
 				float lvminus = 0, lvplus = 1000;
 
 				if (i > 0)
@@ -372,14 +381,17 @@ int DnaManager::levelForScore(int type, float value) {
 
 				float lv = dnaDPS.get(i);
 
-				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
+				if (value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
 					rc = i;
 					break;
 				}
 			}
+#ifdef DEBUG_GENETIC_LAB
+			info(true) << "DPS_LEVEL - Checking: " << value << " Returning: " << rc;
+#endif
 			break;
 		case HAM_LEVEL:
-			for (int i=0;i<dnaHam.size();i++) {
+			for (int i = 0; i < dnaHam.size(); i++) {
 				float lvminus = 0, lvplus = 500000;
 
 				if (i > 0)
@@ -390,14 +402,18 @@ int DnaManager::levelForScore(int type, float value) {
 
 				float lv = dnaHam.get(i);
 
-				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
+				if (value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
 					rc = i;
 					break;
 				}
 			}
+
+#ifdef DEBUG_GENETIC_LAB
+			info(true) << "HAM_LEVEL - Checking: " << value << " Returning: " << rc;
+#endif
 			break;
 		case ARM_LEVEL:
-			for (int i=0;i<dnaArmor.size();i++) {
+			for (int i = 0; i < dnaArmor.size(); i++) {
 				float lvminus = 0, lvplus = 2000;
 
 				if (i > 0)
@@ -408,14 +424,17 @@ int DnaManager::levelForScore(int type, float value) {
 
 				float lv = dnaArmor.get(i);
 
-				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
+				if (value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
 					rc = i;
 					break;
 				}
 			}
+#ifdef DEBUG_GENETIC_LAB
+			info(true) << "ARM_LEVEL - Checking: " << value << " Returning: " << rc;
+#endif
 			break;
 		case REG_LEVEL:
-			for (int i=0;i<dnaRegen.size();i++) {
+			for (int i = 0; i < dnaRegen.size(); i++) {
 				float lvminus = 0, lvplus = 50000;
 
 				if (i > 0)
@@ -426,14 +445,18 @@ int DnaManager::levelForScore(int type, float value) {
 
 				float lv = dnaRegen.get(i);
 
-				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
+				if (value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
 					rc = i;
 					break;
 				}
 			}
+#ifdef DEBUG_GENETIC_LAB
+			info(true) << "REG_LEVEL - Checking: " << value << " Returning: " << rc;
+#endif
 			break;
 		default:
 			rc = 0;
 	}
+
 	return rc;
 }
