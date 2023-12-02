@@ -12,13 +12,16 @@ protected:
 	int type;
 
 public:
-	RegexData(String filter, int filterType) : Object() {
+	RegexData(String filter, int filterType) {
 		regexEntry = new std::regex(filter.toCharArray(), std::regex_constants::icase);
+
 		type = filterType;
 		phrase = filter;
 	}
 
 	~RegexData() {
+		delete regexEntry;
+		regexEntry = nullptr;
 	}
 
 	std::regex* getRegexEntry() const {
