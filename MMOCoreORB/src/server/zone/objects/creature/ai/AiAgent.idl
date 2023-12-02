@@ -767,11 +767,7 @@ class AiAgent extends CreatureObject {
 	public native void respawn(Zone zone, int level);
 
 	@local
-	public void addPatrolPoint(@dereferenced PatrolPoint point) {
-		synchronized (targetMutex) {
-			patrolPoints.add(point);
-		}
-	}
+	public native void addPatrolPoint(@dereferenced PatrolPoint point);
 
 	@preLocked
 	public void setHomeLocation(float x, float z, float y, CellObject cell = null, float direction = 0) {
