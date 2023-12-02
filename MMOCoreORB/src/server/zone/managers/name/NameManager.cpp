@@ -45,6 +45,8 @@ NameManager::~NameManager() {
 	delete mineralResourceData;
 	delete plainResourceData;
 	delete reactiveGasResourceData;
+
+	regexFilters.removeAll();
 }
 
 void NameManager::initialize() {
@@ -78,15 +80,15 @@ void NameManager::loadConfigData(bool reload) {
 		delete plainResourceData;
 		delete reactiveGasResourceData;
 
-		regexFilters.removeAll();
 		stormtrooperPrefixes.removeAll();
 		scouttrooperPrefixes.removeAll();
 		darktrooperPrefixes.removeAll();
 		swamptrooperPrefixes.removeAll();
+		regexFilters.removeAll();
 	}
 
-
 	LuaObject luaObject = lua->getGlobalObject("nameManagerBothan");
+
 	bothanData = new NameData();
 	bothanData->readObject(&luaObject);
 	luaObject.pop();
@@ -238,7 +240,7 @@ int NameManager::checkNamingFilter(const String& name, int resultType) const {
 	int result = NameManagerResult::ACCEPTED;
 
 	for (int i = 0; i < regexFilters.size(); i++) {
-		RegexData* regexData = regexFilters.get(i);
+		Reference<RegexData*> regexData = regexFilters.get(i);
 
 		if (regexData == nullptr)
 			continue;
