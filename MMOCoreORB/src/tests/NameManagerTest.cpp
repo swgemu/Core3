@@ -21,31 +21,20 @@ using ::testing::An;
 
 class NameManagerTest : public ::testing::Test {
 protected:
-	Reference<ZoneServer*> zoneServer;
-	Reference<ZoneProcessServer*> processServer;
 	NameManager* nameManager;
-
 	int iterations;
 
 public:
 	NameManagerTest() {
+		nameManager = new NameManager();
 	}
 
 	~NameManagerTest() {
+		delete nameManager;
+		nameManager = nullptr;
 	}
 
 	void SetUp() {
-		// Perform setup of common constructs here.
-		auto configManager = ConfigManager::instance();
-
-		configManager->loadConfigData();
-		configManager->setProgressMonitors(false);
-
-		zoneServer = new ZoneServer(configManager);
-		processServer = new ZoneProcessServer(zoneServer);
-
-		nameManager = new NameManager(processServer);
-
 		// Iteration count for NPC and resource names
 		iterations = 1000;
 
@@ -53,10 +42,7 @@ public:
 	}
 
 	void TearDown() {
-		// Perform clean up of common constructs here.
-		processServer = nullptr;
-		zoneServer = nullptr;
-		nameManager = nullptr;
+		std::remove("scripts/managers/name/test_list.lua");
 	}
 
 	void convertList() {
@@ -108,7 +94,7 @@ TEST_F(NameManagerTest, CreatureNamesTest) {
 	for (int i = 0; i < iterations; ++i) {
 		name = nameManager->makeCreatureName();
 
-		if (name == "") {
+		if (name.isEmpty()) {
 			passed = false;
 			break;
 		}
@@ -132,7 +118,7 @@ TEST_F(NameManagerTest, ResourceNamesTest) {
 	for (int i = 0; i < iterations; ++i) {
 		name = nameManager->generateResourceName("plain_resource");
 
-		if (name == "") {
+		if (name.isEmpty()) {
 			passed = false;
 			break;
 		}
