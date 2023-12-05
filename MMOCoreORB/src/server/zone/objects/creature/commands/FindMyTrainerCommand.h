@@ -28,49 +28,51 @@ public:
 		if (ghost->getJediState() < 2 || !creature->hasSkill("force_title_jedi_rank_02"))
 			return GENERALERROR;
 
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
 		String planet = ghost->getTrainerZoneName();
 
-		if (planet == "") {
-			setJediTrainer(ghost);
+		if (planet.isEmpty()) {
+			// Pick a trainer for the Jedi
+			setJediTrainer(zoneServer, ghost);
+
+			// Retrieve trainer zone from the player object
 			planet = ghost->getTrainerZoneName();
 		} else {
-			ZoneServer* zoneServer = ServerCore::getZoneServer();
-			Zone* trainerZone = zoneServer->getZone(planet);
+			auto trainerZone = zoneServer->getZone(planet);
 
 			if (trainerZone == nullptr) {
-				setJediTrainer(ghost);
+				setJediTrainer(zoneServer, ghost);
 				planet = ghost->getTrainerZoneName();
 			}
 		}
 
 		uint32 planetCRC = planet.hashCode();
 
-		Vector3 coords = ghost->getTrainerCoordinates();
+		Vector3 coords = ghost->getJediTrainerCoordinates();
 
 		String name = "@jedi_spam:trainer_waypoint_name";
 
-		ManagedReference<WaypointObject*> obj = (server->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
+		ManagedReference<WaypointObject*> waypointObj = (zoneServer->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
 
-		Locker locker(obj);
+		Locker locker(waypointObj);
 
-		obj->setPlanetCRC(planetCRC);
-		obj->setPosition(coords.getX(), 0, coords.getY());
-		obj->setCustomObjectName(name, false);
+		waypointObj->setPlanetCRC(planetCRC);
+		waypointObj->setPosition(coords.getX(), 0, coords.getY());
+		waypointObj->setCustomObjectName(name, false);
 
-		ghost->addWaypoint(obj, true, true);
+		ghost->addWaypoint(waypointObj, true, true);
 
 		creature->sendSystemMessage("@jedi_spam:waypoint_created_to_trainer");
 
 		return SUCCESS;
 	}
 
-	void setJediTrainer(PlayerObject* ghost) const {
-		if (ghost == nullptr)
-			return;
-
-		auto zoneServer = ghost->getZoneServer();
-
-		if (zoneServer == nullptr)
+	void setJediTrainer(ZoneServer* zoneServer, PlayerObject* ghost) const {
+		if (ghost == nullptr || zoneServer == nullptr)
 			return;
 
 		Vector<ManagedReference<SceneObject*>> trainers;
@@ -91,13 +93,16 @@ public:
 				if (trainer == nullptr)
 					continue;
 
+				uint32 subCatCrc = trainer->getPlanetMapSubCategoryCRC();
+
 				for (int k = 0; k < trainerTypes.size(); ++k) {
 					uint32 typeHash = trainerTypes.get(k);
 
-					if (trainer->getPlanetMapSubCategoryCRC() == 0 || typeHash != trainer->getPlanetMapSubCategoryCRC())
+					if (subCatCrc == 0 || typeHash != subCatCrc)
 						continue;
 
 					trainers.add(trainer);
+
 					break;
 				}
 			}
