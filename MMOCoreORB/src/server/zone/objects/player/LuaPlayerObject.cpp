@@ -764,7 +764,7 @@ int LuaPlayerObject::isJediTrainer(lua_State* L) {
 	CreatureObject* trainer = (CreatureObject*)lua_touserdata(L, -1);
 
 	Vector3 npc(trainer->getWorldPositionX(), trainer->getWorldPositionY(), 0);
-	Vector3 playerCoord = realObject->getTrainerCoordinates();
+	Vector3 playerCoord = realObject->getJediTrainerCoordinates();
 	Vector3 player(playerCoord.getX(), playerCoord.getY(), 0);
 
 	bool result = (npc == player) && (realObject->getTrainerZoneName() == trainer->getZone()->getZoneName());

@@ -53,7 +53,7 @@ public:
 
 	void updateObjectsIcon(SceneObject* object, byte icon);
 
-	const SortedVector<MapLocationEntry>& getLocation(const String& name) const;
+	const SortedVector<MapLocationEntry> getLocation(const String& name) const;
 
 	const SortedVector<MapLocationEntry>& get(int index) const {
 		return locations.elementAt(index).getValue();
