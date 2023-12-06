@@ -339,7 +339,7 @@ public:
 #endif
 
 		// HAM Average
-		float avgHam = (pet->getHealth() + pet->getStrength() + pet->getConstitution() + pet->getAction() + pet->getQuickness() + pet->getStamina() + pet->getMind() + pet->getFocus() + pet->getWillPower()) / 9.0f;
+		float avgHam = (pet->getHealth() + pet->getAction() + pet->getMind()) / 3.0f;
 		float statLevel = (DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, avgHam) + 1.0f) * 6.0f;
 
 		// DPS
@@ -352,7 +352,7 @@ public:
 		float regenerationLevel = (DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL, avgHam / 10) + 1.0f);
 
 		// Armor
-		float armorLevel = DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, ((pet->getArmor() * 500.0f) + (pet->getEffectiveArmor() * 10.0f)));
+		float armorLevel = DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, ((pet->getArmor() * 500.0f) + pet->getEffectiveArmor()));
 		float armorBase = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL, armorLevel);
 
 		// Pet Base Level
