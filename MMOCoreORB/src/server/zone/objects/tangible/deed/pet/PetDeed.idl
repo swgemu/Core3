@@ -11,21 +11,27 @@ include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.ai.variables.CreatureAttackMap;
 include templates.SharedObjectTemplate;
+import server.zone.objects.creature.ai.CreatureTemplate;
 
 @json
 class PetDeed extends Deed {
 	// dna qulity
 	protected int quality;
+
 	// Pet Level
 	protected int level;
+
 	// Crafted pets have their own attack speed and chance to hit
 	protected float chanceHit;
 	protected float attackSpeed;
+
 	// Damage min/mac for the pet
 	protected int damageMin;
 	protected int damageMax;
+
 	// Armor value of the pet
 	protected int armor;
+
 	// resists of the pet
 	protected float kinResist;
 	protected float energyResist;
@@ -36,11 +42,13 @@ class PetDeed extends Deed {
 	protected float acidResist;
 	protected float stunResist;
 	protected float saberResist;
+
 	// ham of the pet
 	protected int health;
 	protected int action;
 	protected int mind;
 	protected int regen;
+
 	// specials
 	protected string special1;
 	protected string special2;
@@ -324,8 +332,17 @@ class PetDeed extends Deed {
 	}
 
 	@read
+	public string getControlledDeviceTemplate() {
+		return controlDeviceObjectTemplate;
+	}
+
+	@read
 	@local
 	public native string getTemplateName();
+
+	@local
+	@read
+	public native CreatureTemplate getCreatureTemplate();
 
 	/**
 	 * Setup attack map during initialize
@@ -338,6 +355,7 @@ class PetDeed extends Deed {
 
 	@local
 	public native void adjustPetLevel(CreatureObject player, CreatureObject pet);
+
 	@local
 	public native boolean adjustPetStats(CreatureObject player, CreatureObject pet);
 }
