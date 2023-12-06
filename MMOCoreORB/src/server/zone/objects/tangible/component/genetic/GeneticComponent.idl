@@ -462,5 +462,5 @@ class GeneticComponent extends Component {
 	public native void resetResists(CraftingValues values);
 
 	@local
-	public native int getEffectiveArmor();
+	public native float getEffectiveArmor();
 }
