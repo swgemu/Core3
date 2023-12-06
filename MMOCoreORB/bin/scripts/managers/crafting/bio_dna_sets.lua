@@ -5,6 +5,8 @@
 	"FurryCat Test - d5j7caq6", "dna_set:d5j7caq6",
 	"FurryCat Test - ke5nbvgo", "dna_set:ke5nbvgo",
 	"FurryCat Test - dcfolokr", "dna_set:dcfolokr",
+	"FurryCat Test - jgbq7aiq", "dna_set:jgbq7aiq",
+	"FurryCat Test - o97m0aan", "dna_set:o97m0aan",
 
 	1,"object/tangible/component/dna/dna_sample_very_high.iff")
 	2,"object/tangible/component/dna/dna_sample_high.iff")
@@ -657,6 +659,304 @@ dnaTests = {
 
 			-- Special Resists, read as Int
 			specialResists = {1, 2, 32, 64, 256},
+		},
+	},
+
+	-- http://pets.furrycat.net/creature.html?jgbq7aiq
+	{"jgbq7aiq",
+		-- DNA 1
+		{quality = 2, source = "mutant rancor", level = 75,
+			-- Stats
+			hardiness = 729, fortitude = 760, dexterity = 683, endurance = 507, intellect = 761,
+			cleverness = 780, dependability = 510, courage = 507, fierocity = 649, power = 750,
+
+			-- Armor
+			kinetic = 45,
+			energy = 60,
+			blast = 25,
+			heat = 100,
+			cold = 100,
+			electric = 100,
+			acid = 25,
+			stun = 25,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "creatureareableeding",
+			special2 = "dizzyattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 32, 64, 256},
+		},
+		-- DNA 2
+		{quality = 2, source = "mantigrue reaper", level = 50,
+			-- Stats
+			hardiness = 648, fortitude = 506, dexterity = 615, endurance = 509, intellect = 586,
+			cleverness = 430, dependability = 757, courage = 505, fierocity = 99, power = 511,
+
+			-- Armor
+			kinetic = 40,
+			energy = 40,
+			blast = 70,
+			heat = 0,
+			cold = 70,
+			electric = 70,
+			acid = 70,
+			stun = 70,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "",
+			special2 = "",
+
+			ranged = true,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 4, 64, 256, 128, 8},
+		},
+		-- DNA 3
+		{quality = 2, source = "mantigrue reaper", level = 50,
+			-- Stats
+			hardiness = 568, fortitude = 505, dexterity = 571, endurance = 504, intellect = 597,
+			cleverness = 429, dependability = 756, courage = 511, fierocity = 102, power = 513,
+
+			-- Armor
+			kinetic = 40,
+			energy = 40,
+			blast = 70,
+			heat = 0,
+			cold = 70,
+			electric = 70,
+			acid = 70,
+			stun = 70,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "",
+			special2 = "",
+
+			ranged = true,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 4, 64, 256, 128, 8},
+		},
+		-- DNA 4
+		{quality = 3, source = "insane mantigrue berserker", level = 50,
+			-- Stats
+			hardiness = 566, fortitude = 558, dexterity = 563, endurance = 508, intellect = 569,
+			cleverness = 357, dependability = 1000, courage = 505, fierocity = 545, power = 567,
+
+			-- Armor
+			kinetic = 50,
+			energy = 50,
+			blast = 100,
+			heat = 50,
+			cold = -99,
+			electric = 20,
+			acid = 20,
+			stun = 100,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "blindattack",
+			special2 = "stunattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 4, 8, 32, 128, 256},
+		},
+		-- DNA 5
+		{quality = 1, source = "insane mantigrue berserker", level = 50,
+			-- Stats
+			hardiness = 572, fortitude = 563, dexterity = 574, endurance = 509, intellect = 576,
+			cleverness = 364, dependability = 1000, courage = 510, fierocity = 556, power = 576,
+
+			-- Armor
+			kinetic = 50,
+			energy = 50,
+			blast = 100,
+			heat = 50,
+			cold = -99,
+			electric = 20,
+			acid = 20,
+			stun = 100,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "blindattack",
+			special2 = "stunattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 4, 8, 32, 128, 256},
+		},
+	},
+
+	-- http://pets.furrycat.net/creature.html?o97m0aan
+	{"o97m0aan",
+		-- DNA 1
+		{quality = 3, source = "gaping spider queen", level = 47,
+			-- Stats
+			hardiness = 641, fortitude = 310, dexterity = 587, endurance = 499, intellect = 572,
+			cleverness = 369, dependability = 501, courage = 508, fierocity = 510, power = 463,
+
+			-- Armor
+			kinetic = 65,
+			energy = 65,
+			blast = 40,
+			heat = 25,
+			cold = 30,
+			electric = -99,
+			acid = 30,
+			stun = 30,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 0,
+
+			-- Special Attacks
+			special1 = "knockdownattack",
+			special2 = "mediumpoison",
+
+			ranged = true,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 4, 32},
+		},
+		-- DNA 2
+		{quality = 3, source = "gaping spider queen", level = 47,
+			-- Stats
+			hardiness = 645, fortitude = 304, dexterity = 583, endurance = 504, intellect = 570,
+			cleverness = 373, dependability = 503, courage = 503, fierocity = 504, power = 462,
+
+			-- Armor
+			kinetic = 65,
+			energy = 65,
+			blast = 40,
+			heat = 25,
+			cold = 30,
+			electric = -99,
+			acid = 30,
+			stun = 30,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 0,
+
+			-- Special Attacks
+			special1 = "knockdownattack",
+			special2 = "mediumpoison",
+
+			ranged = true,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 4, 32},
+		},
+		-- DNA 3
+		{quality = 3, source = "gaping spider hunter", level = 44,
+			-- Stats
+			hardiness = 556, fortitude = 506, dexterity = 636, endurance = 505, intellect = 635,
+			cleverness = 408, dependability = 500, courage = 510, fierocity = 328, power = 546,
+
+			-- Armor
+			kinetic = 30,
+			energy = 30,
+			blast = 60,
+			heat = 15,
+			cold = -99,
+			electric = -99,
+			acid = 0,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "stunattack",
+			special2 = "mediumpoison",
+
+			ranged = true,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 4, 32},
+		},
+		-- DNA 4
+		{quality = 1, source = "rhoa kwi guardian", level = 45,
+			-- Stats
+			hardiness = 589, fortitude = 316, dexterity = 590, endurance = 518, intellect = 656,
+			cleverness = 387, dependability = 514, courage = 515, fierocity = 374, power = 430,
+
+			-- Armor
+			kinetic = 40,
+			energy = 65,
+			blast = 30,
+			heat = 80,
+			cold = 30,
+			electric = 30,
+			acid = 15,
+			stun = 30,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 0,
+
+			-- Special Attacks
+			special1 = "posturedownattack",
+			special2 = "dizzyattack",
+
+			ranged = true,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 32, 128},
+		},
+		-- DNA 5
+		{quality = 2, source = "grassland voritor tracker", level = 45,
+			-- Stats
+			hardiness = 527, fortitude = 308, dexterity = 546, endurance = 509, intellect = 566,
+			cleverness = 381, dependability = 757, courage = 506, fierocity = 101, power = 530,
+
+			-- Armor
+			kinetic = 65,
+			energy = 65,
+			blast = 30,
+			heat = 30,
+			cold = 30,
+			electric = 30,
+			acid = -99,
+			stun = 30,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 0,
+
+			-- Special Attacks
+			special1 = "posturedownattack",
+			special2 = "dizzyattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2},
 		},
 	}
 }
