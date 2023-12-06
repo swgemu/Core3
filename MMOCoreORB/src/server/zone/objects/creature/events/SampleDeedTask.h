@@ -88,13 +88,17 @@ public:
 				player->sendSystemMessage("@bio_engineer:harvest_dna_failed");
 			} else {
 				player->sendSystemMessage("@bio_engineer:harvest_dna_succeed");
+
 				award(cl, rollMod);
+
 				if (count >= maxSamples) {
 					// nuke deed you killed it
 					ManagedReference<SceneObject*> deedContainer = deed->getParent().get();
+
 					if (deedContainer != nullptr) {
 						deed->destroyObjectFromWorld(true);
 					}
+
 					deed->destroyObjectFromDatabase(true);
 				}
 			}

@@ -203,12 +203,24 @@ const CreatureAttackMap* PetDeedImplementation::getAttacks() const {
 String PetDeedImplementation::getTemplateName() const {
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
 	Reference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate(mobileTemplate.hashCode());
+
 	if (petTemplate == nullptr) {
 		return "";
 	}
 
 	String name = petTemplate->getObjectName();
 	return name;
+}
+
+CreatureTemplate* PetDeedImplementation::getCreatureTemplate() const {
+	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
+
+	if (creatureTemplateManager == nullptr)
+		return nullptr;
+
+	Reference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate(mobileTemplate.hashCode());
+
+	return petTemplate;
 }
 
 int PetDeedImplementation::calculatePetLevel() {
@@ -515,6 +527,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 		String templateToSpawn = creatureManager->getTemplateToSpawn(mobileTemplate.hashCode());
 		ManagedReference<CreatureObject*> creatureObject = creatureManager->createCreature(templateToSpawn.hashCode(), true, 0);
+
 		if (creatureObject == nullptr) {
 			controlDevice->destroyObjectFromDatabase(true);
 			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]");
@@ -611,6 +624,7 @@ void PetDeedImplementation::adjustPetLevel(CreatureObject* player, CreatureObjec
 	pet->reloadTemplate();
 	player->sendSystemMessage("@bio_engineer:pet_sui_level_fixed");
 }
+
 bool PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObject* pet) {
 	int oldLevel = level;
 	if (oldLevel < 1) {
@@ -663,4 +677,27 @@ bool PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObjec
 
 	player->sendSystemMessage("@bio_engineer:pet_sui_stats_fixed");
 	return true;
+}
+
+float PetDeedImplementation::getEffectiveResist() {
+	if (!isSpecialResist(SharedWeaponObjectTemplate::ACID) && acidResist > 0)
+		return acidResist;
+	if (!isSpecialResist(SharedWeaponObjectTemplate::BLAST) && blastResist > 0)
+		return blastResist;
+	if (!isSpecialResist(SharedWeaponObjectTemplate::COLD) && coldResist > 0)
+		return coldResist;
+	if (!isSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY) && elecResist > 0)
+		return elecResist;
+	if (!isSpecialResist(SharedWeaponObjectTemplate::ENERGY) && energyResist > 0)
+		return energyResist;
+	if (!isSpecialResist(SharedWeaponObjectTemplate::HEAT) && heatResist > 0)
+		return heatResist;
+	if (!isSpecialResist(SharedWeaponObjectTemplate::KINETIC) && kinResist > 0)
+		return kinResist;
+	//if (!isSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER) && getLightSaber() > 0)
+		//return getLightSaber();
+	if (!isSpecialResist(SharedWeaponObjectTemplate::STUN) && stunResist > 0)
+		return stunResist;
+
+	return 0;
 }

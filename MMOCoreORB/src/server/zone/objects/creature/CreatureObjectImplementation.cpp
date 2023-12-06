@@ -182,12 +182,10 @@ void CreatureObjectImplementation::initializeMembers() {
 	setContainerDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 }
 
-void CreatureObjectImplementation::loadTemplateData(
-		SharedObjectTemplate* templateData) {
+void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	const SharedCreatureObjectTemplate* creoData =
-			dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
+	const SharedCreatureObjectTemplate* creoData = dynamic_cast<SharedCreatureObjectTemplate*>(templateData);
 
 	if (creoData == nullptr)
 		return;
