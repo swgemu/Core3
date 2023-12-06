@@ -315,6 +315,13 @@ public:
 		if (armor > 0)
 			rand += 500;
 
+#ifdef DEBUG_GENETIC_LAB
+		Logger::console.info(true) << "=============== resistanceToValue ===============";
+		Logger::console.info(true) << "resistanceToValue -- Effective: " << effective << " Armor: " << armor << " Quality: " << quality;
+		Logger::console.info(true) << "Base: " << base << " Rand: " << rand;
+		Logger::console.info(true) << "=============== END resistanceToValue END ===============";
+#endif
+
 		return rand;
 	}
 

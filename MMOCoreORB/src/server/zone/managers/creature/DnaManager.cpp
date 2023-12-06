@@ -15,6 +15,7 @@
 #include "server/zone/managers/crafting/CraftingManager.h"
 
 // #define DEBUG_GENETIC_LAB
+// #define DEBUG_GENERATION_SAMPLE
 
 AtomicInteger DnaManager::loadedDnaData;
 
@@ -100,35 +101,9 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player, int q
 	if (deed == nullptr || player == nullptr)
 		return;
 
-	// We are making a generational sample rules are a little different.
-	// Reduce each stat by lets say 10% as the max to be on par with old docs
-	int cl = deed->getLevel();
-
-	// info(true) << "DnaManager::generationalSample - called";
-
-	int ferocity = 0; // 1 highest 7 lowest
-	int factor = (int)System::random(quality) - 7;
-	int reductionAmount = (factor + 15 + quality);
-
-	int hardiness = reduceByPercent(deed->getHardiness(), reductionAmount);
-	int fortitude = reduceByPercent(deed->getFortitude(), reductionAmount);
-	int dexterity = reduceByPercent(deed->getDexterity(), reductionAmount);
-	int endurance = reduceByPercent(deed->getEndurance(), reductionAmount);
-	int intellect = reduceByPercent(deed->getIntellect(), reductionAmount);
-	int cleverness = reduceByPercent(deed->getCleverness(), reductionAmount);
-	int dependability = reduceByPercent(deed->getDependability(), reductionAmount);
-	int courage = reduceByPercent(deed->getCourage(), reductionAmount);
-	int fierceness = reduceByPercent(deed->getFierceness(), reductionAmount);
-	int power = reduceByPercent(deed->getPower(), reductionAmount);
-
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-	if (inventory->isContainerFullRecursive()) {
-		StringIdChatParameter err("survey", "no_inv_space");
-		player->sendSystemMessage(err);
-		player->setPosture(CreaturePosture::UPRIGHT, true);
-		return;
-	}
+#ifdef DEBUG_GENERATION_SAMPLE
+	info(true) << "DnaManager::generationalSample - called";
+#endif
 
 	auto zoneServer = player->getZoneServer();
 
@@ -139,6 +114,55 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player, int q
 
 	if (craftingManager == nullptr)
 		return;
+
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (inventory == nullptr)
+		return;
+
+	if (inventory->isContainerFullRecursive()) {
+		StringIdChatParameter err("survey", "no_inv_space");
+		player->sendSystemMessage(err);
+		player->setPosture(CreaturePosture::UPRIGHT, true);
+
+		return;
+	}
+
+	const CreatureTemplate* creatureTemplate = deed->getCreatureTemplate();
+
+	if (creatureTemplate == nullptr) {
+#ifdef DEBUG_GENERATION_SAMPLE
+		info(true) << "generationalSample - Creature Template is null";
+#endif
+		return;
+	}
+
+	int ferocity = creatureTemplate->getFerocity();
+	int creatureLevel = deed->getLevel();
+
+	int hardiness = Genetics::hamToValue(deed->getHealth(), quality);
+	int fortitude = Genetics::randomizeValue(deed->getFortitude(), quality);
+	int dexterity = Genetics::hamToValue(deed->getAction(), quality);
+	int endurance = Genetics::randomizeValue(500, quality);
+	int intellect = Genetics::hamToValue(deed->getMind(), quality);
+	int cleverness = Genetics::hitChanceToValue(deed->getHitChance(), quality);
+	int dependability = Genetics::dietToValue(creatureTemplate->getDiet(), quality);
+	int courage = Genetics::meatTypeToValue(creatureTemplate->getMeatType(), quality);
+	int fierceness = Genetics::ferocityToValue(ferocity, quality);
+	int power = Genetics::damageToValue((deed->getMinDamage() + deed->getMaxDamage()) / 2, quality);
+
+#ifdef DEBUG_GENERATION_SAMPLE
+	info(true) << "Hardiness: " << hardiness;
+	info(true) << "Fortitude: " << fortitude;
+	info(true) << "Dexterity: " << dexterity;
+	info(true) << "Endurance: " << endurance;
+	info(true) << "Intellect: " << intellect;
+	info(true) << "Cleverness: " << cleverness;
+	info(true) << "Dependability: " << dependability;
+	info(true) << "Courage: " << courage;
+	info(true) << "Fierceness: " << fierceness;
+	info(true) << "Power: " << power;
+#endif
 
 	// calculate rest of stats here
 	ManagedReference<DnaComponent*> prototype = zoneServer->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
@@ -152,7 +176,7 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player, int q
 	// Check Here for unique npcs
 	prototype->setSource(deed->getTemplateName());
 	prototype->setQuality(quality);
-	prototype->setLevel(cl);
+	prototype->setLevel(creatureLevel);
 
 	String serial = craftingManager->generateSerial();
 
@@ -180,38 +204,59 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player, int q
 
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::STUN)) {
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::STUN);
-		// info(true) << "setting special resist STUN";
+#ifdef DEBUG_GENERATION_SAMPLE
+		info(true) << "setting special resist STUN";
+#endif
 	}
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::KINETIC)) {
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::KINETIC);
-		// info(true) << "setting special resist KINETIC";
+#ifdef DEBUG_GENERATION_SAMPLE
+		info(true) << "setting special resist KINETIC";
+#endif
 	}
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::ENERGY)) {
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::ENERGY);
-		// info(true) << "setting special resist ENERGY";
+#ifdef DEBUG_GENERATION_SAMPLE
+		info(true) << "setting special resist ENERGY";
+#endif
 	}
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::BLAST)) {
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::BLAST);
-		// info(true) << "setting special resist BLAST";
+#ifdef DEBUG_GENERATION_SAMPLE
+		info(true) << "setting special resist BLAST";
+#endif
 	}
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::HEAT)) {
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::HEAT);
-		// info(true) << "setting special resist HEAT";
+#ifdef DEBUG_GENERATION_SAMPLE
+		info(true) << "setting special resist HEAT";
+#endif
 	}
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::COLD)) {
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::COLD);
-		// info(true) << "setting special resist COLD";
+#ifdef DEBUG_GENERATION_SAMPLE
+		info(true) << "setting special resist COLD";
+#endif
 	}
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY)) {
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY);
-		// info(true) << "setting special resist ELECTRICITY";
+#ifdef DEBUG_GENERATION_SAMPLE
+		info(true) << "setting special resist ELECTRICITY";
+#endif
 	}
 	if (deed->isSpecialResist(SharedWeaponObjectTemplate::ACID)) {
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::ACID);
-		// info(true) << "setting special resist ACID";
+#ifdef DEBUG_GENERATION_SAMPLE
+		info(true) << "setting special resist ACID";
+#endif
 	}
+
 	/*if (deed->isSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER))
-		prototype->setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);*/
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);
+#ifdef DEBUG_GENERATION_SAMPLE
+		info(true) << "setting special resist LIGHTSABER";
+#endif
+	*/
 
 	Locker locker(inventory, prototype);
 
@@ -222,54 +267,84 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player, int q
 	}
 }
 
-void DnaManager::generateSample(Creature* creature, CreatureObject* player,int quality){
+void DnaManager::generateSample(Creature* creature, CreatureObject* player, int quality){
 	if (quality < 0 || quality > 7) {
 		return;
 	}
 
-	Locker lock(creature, player);
-	auto creatureTemplate = dynamic_cast<const CreatureTemplate*>(creature->getCreatureTemplate());
+	if (creature == nullptr || player == nullptr)
+		return;
 
-	int ferocity = creatureTemplate->getFerocity();
-	int cl = creature->getLevel();
-	int cle = Genetics::hitChanceToValue(creature->getChanceHit(),quality);
-	int cou = Genetics::meatTypeToValue(creature->getMeatType(),quality);
-	int dep = Genetics::dietToValue(creature->getDiet(),quality);
-	int dex = Genetics::hamToValue(creature->getMaxHAM(3),quality);
-	int end = Genetics::accelerationToValue(creature->getWalkAcceleration(),quality);
-	int fie = Genetics::ferocityToValue(ferocity,quality);
-	int frt = Genetics::resistanceToValue(creature->getEffectiveResist(),creature->getArmor(),quality);
-	int har = Genetics::hamToValue(creature->getMaxHAM(0),quality);
-	int ite = Genetics::hamToValue(creature->getMaxHAM(6),quality);
-	int pow = Genetics::damageToValue((creature->getDamageMax() + creature->getDamageMin())/2,quality);
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	auto craftingManager = zoneServer->getCraftingManager();
+
+	if (craftingManager == nullptr)
+		return;
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
+	if (inventory == nullptr)
+		return;
+
 	if (inventory->isContainerFullRecursive()) {
 		StringIdChatParameter err("survey", "no_inv_space");
+
 		player->sendSystemMessage(err);
 		player->setPosture(CreaturePosture::UPRIGHT, true);
+
 		return;
 	}
 
+	Locker lock(creature, player);
+
+	auto creatureTemplate = dynamic_cast<const CreatureTemplate*>(creature->getCreatureTemplate());
+
+	if (creatureTemplate == nullptr)
+		return;
+
+	int ferocity = creatureTemplate->getFerocity();
+	int creatureLevel = creature->getLevel();
+
+	int hardiness = Genetics::hamToValue(creature->getMaxHAM(0), quality);
+	int fortitude = Genetics::resistanceToValue(creature->getEffectiveResist(), creature->getArmor(), quality);
+	int dexterity = Genetics::hamToValue(creature->getMaxHAM(3), quality);
+	int endurance = Genetics::randomizeValue(500, quality);
+	int intellect = Genetics::hamToValue(creature->getMaxHAM(6), quality);
+	int cleverness = Genetics::hitChanceToValue(creature->getChanceHit(), quality);
+	int dependability = Genetics::dietToValue(creatureTemplate->getDiet(), quality);
+	int courage = Genetics::meatTypeToValue(creatureTemplate->getMeatType(), quality);
+	int fierceness = Genetics::ferocityToValue(ferocity, quality);
+	int power = Genetics::damageToValue((creature->getDamageMin() + creature->getDamageMax()) / 2, quality);
+
 	// We should now have enough to generate a sample
-	ManagedReference<DnaComponent*> prototype = player->getZoneServer()->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
+	ManagedReference<DnaComponent*> prototype = zoneServer->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
+
 	if (prototype == nullptr) {
 		return;
 	}
+
 	Locker clocker(prototype);
+
 	// Check Here for unique npcs
 	const StringId* nameId = creature->getObjectName();
+
 	if (nameId->getFile().isEmpty() || nameId->getStringID().isEmpty()) {
 		prototype->setSource(creature->getCreatureName().toString());
 	} else {
 		prototype->setSource(nameId->getFullPath());
 	}
+
 	prototype->setQuality(quality);
-	prototype->setLevel(cl);
-	String serial = player->getZoneServer()->getCraftingManager()->generateSerial();
+	prototype->setLevel(creatureLevel);
+
+	String serial = craftingManager->generateSerial();
+
 	prototype->setSerialNumber(serial);
-	prototype->setStats(cle,end,fie,pow,ite,cou,dep,dex,frt,har);
+	prototype->setStats(cleverness, endurance, fierceness, power, intellect, courage, dependability, dexterity, fortitude, hardiness);
 	prototype->setStun(creatureTemplate->getStun());
 	prototype->setKinetic(creatureTemplate->getKinetic());
 	prototype->setEnergy(creatureTemplate->getEnergy());
@@ -312,6 +387,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 		prototype->setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);
 
 	auto attackMap = creatureTemplate->getPrimaryAttacks();
+
 	if (attackMap->size() > 0) {
 		prototype->setSpecialAttackOne(String(attackMap->getCommand(0)));
 		if(attackMap->size() > 1) {
@@ -320,12 +396,14 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	}
 
 	Locker locker(inventory);
+
 	if (inventory->transferObject(prototype, -1, true, false)) {
 		inventory->broadcastObject(prototype, true);
 	} else {
 		prototype->destroyObjectFromDatabase(true);
 	}
 }
+
 float DnaManager::valueForLevel(int type, int level) {
 	float rc = 0;
 	switch(type) {
