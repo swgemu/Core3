@@ -7,6 +7,7 @@
 	"FurryCat Test - dcfolokr", "dna_set:dcfolokr",
 	"FurryCat Test - jgbq7aiq", "dna_set:jgbq7aiq",
 	"FurryCat Test - o97m0aan", "dna_set:o97m0aan",
+	"FurryCat Test - mmhkbp03", "dna_set:mmhkbp03",
 
 	1,"object/tangible/component/dna/dna_sample_very_high.iff")
 	2,"object/tangible/component/dna/dna_sample_high.iff")
@@ -957,6 +958,155 @@ dnaTests = {
 
 			-- Special Resists, read as Int
 			specialResists = {1, 2},
+		},
+	},
+
+	-- http://pets.furrycat.net/creature.html?mmhkbp03
+	{"mmhkbp03",
+		-- DNA 1
+		{quality = 2, source = "merek harvester", level = 50,
+			-- Stats
+			hardiness = 662, fortitude = 612, dexterity = 695, endurance = 513, intellect = 639,
+			cleverness = 547, dependability = 761, courage = 514, fierocity = 102, power = 658,
+
+			-- Armor
+			kinetic = 75,
+			energy = -99,
+			blast = 10,
+			heat = 10,
+			cold = 10,
+			electric = -99,
+			acid = 10,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "creatureareacombo",
+			special2 = "dizzyattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1},
+		},
+		-- DNA 2
+		{quality = 2, source = "merek harvester", level = 50,
+			-- Stats
+			hardiness = 647, fortitude = 606, dexterity = 633, endurance = 504, intellect = 647,
+			cleverness = 544, dependability = 759, courage = 507, fierocity = 103, power = 656,
+
+			-- Armor
+			kinetic = 75,
+			energy = -99,
+			blast = 10,
+			heat = 10,
+			cold = 10,
+			electric = -99,
+			acid = 10,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "creatureareacombo",
+			special2 = "dizzyattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1},
+		},
+		-- DNA 3
+		{quality = 1, source = "gronda", level = 19,
+			-- Stats
+			hardiness = 346, fortitude = 61, dexterity = 286, endurance = 515, intellect = 303,
+			cleverness = 196, dependability = 762, courage = 519, fierocity = 150, power = 222,
+
+			-- Armor
+			kinetic = 20,
+			energy = 15,
+			blast = 5,
+			heat = -99,
+			cold = -99,
+			electric = -99,
+			acid = -99,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 0,
+
+			-- Special Attacks
+			special1 = "",
+			special2 = "knockdownattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2},
+		},
+		-- DNA 4
+		{quality = 3, source = "rancor", level = 50,
+			-- Stats
+			hardiness = 686, fortitude = 504, dexterity = 668, endurance = 507, intellect = 614,
+			cleverness = 471, dependability = 500, courage = 505, fierocity = 545, power = 609,
+
+			-- Armor
+			kinetic = 30,
+			energy = 30,
+			blast = -99,
+			heat = 60,
+			cold = 60,
+			electric = 60,
+			acid = -99,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "stunattack",
+			special2 = "intimidationattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1, 2, 32, 64, 256},
+		},
+		-- DNA 5
+		{quality = 2, source = "merek harvester", level = 55,
+			-- Stats
+			hardiness = 645, fortitude = 614, dexterity = 634, endurance = 507, intellect = 651,
+			cleverness = 550, dependability = 760, courage = 512, fierocity = 103, power = 657,
+
+			-- Armor
+			kinetic = 75,
+			energy = -99,
+			blast = 10,
+			heat = 10,
+			cold = 10,
+			electric = -99,
+			acid = 10,
+			stun = -99,
+			lightsaber = -99,
+
+			-- Armor Rating
+			armorRating = 1,
+
+			-- Special Attacks
+			special1 = "creatureareacombo",
+			special2 = "dizzyattack",
+
+			ranged = false,
+
+			-- Special Resists, read as Int
+			specialResists = {1},
 		},
 	}
 }
