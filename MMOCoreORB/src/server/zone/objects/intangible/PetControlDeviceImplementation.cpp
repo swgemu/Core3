@@ -92,6 +92,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
+	// This should never trigger, pet vitality should never drop below 1
 	if (vitality <= 0) {
 		player->sendSystemMessage("@pet/pet_menu:dead_pet"); // This pet is dead. Select DESTROY from the radial menu to delete this pet control device.
 		return;
@@ -271,11 +272,11 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 
 	} else { // Player is in a city or camp, spawn pet immediately
 
-		if( player->getCooldownTimerMap() == nullptr )
+		if (player->getCooldownTimerMap() == nullptr)
 			return;
 
 		// Check cooldown
-		if( !player->getCooldownTimerMap()->isPast("petCallOrStoreCooldown") ){
+		if (!player->getCooldownTimerMap()->isPast("petCallOrStoreCooldown")) {
 			player->sendSystemMessage("@pet/pet_menu:cant_call_1sec"); //"You cannot CALL for 1 second."
 			return;
 		}
@@ -1279,55 +1280,61 @@ bool PetControlDeviceImplementation::isValidPet(AiAgent* pet) {
 }
 
 void PetControlDeviceImplementation::setVitality(int vit) {
+	// Pets should not drop below 1 for their vitality
+	if (vit < 1)
+		vit = 1;
+
 	vitality = vit;
 
-	if (petType == PetManager::CREATUREPET || petType == PetManager::DROIDPET) {
-		ManagedReference<CreatureObject*> pet = this->controlledObject.get().castTo<CreatureObject*>();
-		if (controlledObject == nullptr)
-			return;
+	if (petType != PetManager::CREATUREPET && petType != PetManager::DROIDPET)
+		return;
 
-		float hamPenaltyModifier = 0;
-		if (vitality <= 75 && vitality > 50) {
-			hamPenaltyModifier = 0.25f;
-		}
-		else if (vitality <= 50 && vitality > 25) {
-			hamPenaltyModifier = 0.5f;
-		}
-		else if (vitality <= 25) {
-			hamPenaltyModifier = 0.75f;
-		}
+	ManagedReference<CreatureObject*> pet = this->controlledObject.get().castTo<CreatureObject*>();
 
-		Reference<PetControlDevice*> petControlDevice = _this.getReferenceUnsafeStaticCast();
+	if (controlledObject == nullptr)
+		return;
 
-		float vitalityMindPenalty = this->vitalityMindPenalty;
-		float vitalityActionPenalty = this->vitalityActionPenalty;
-		float vitalityHealthPenalty	= this->vitalityHealthPenalty;
+	float hamPenaltyModifier = 0;
 
-		Core::getTaskManager()->executeTask([pet, petControlDevice, hamPenaltyModifier, vitalityMindPenalty, vitalityActionPenalty, vitalityHealthPenalty] () {
-			Locker locker(pet);
-
-			Locker clocker(petControlDevice, pet);
-
-			int newVitalityHealthPenalty = pet->getBaseHAM(0) * hamPenaltyModifier;
-			int newVitalityActionPenalty = pet->getBaseHAM(3) * hamPenaltyModifier;
-			int newVitalityMindPenalty = pet->getBaseHAM(6) * hamPenaltyModifier;
-
-			if (newVitalityHealthPenalty != vitalityHealthPenalty) {
-				int change = vitalityHealthPenalty - newVitalityHealthPenalty;
-				petControlDevice->setVitalityHealthPenalty(newVitalityHealthPenalty);
-			}
-
-			if (newVitalityActionPenalty != vitalityActionPenalty) {
-				int change = vitalityActionPenalty - newVitalityActionPenalty;
-				pet->setMaxHAM(3, pet->getMaxHAM(3) + change, true);
-				petControlDevice->setVitalityActionPenalty(newVitalityActionPenalty);
-			}
-
-			if (newVitalityMindPenalty != vitalityMindPenalty) {
-				int change = vitalityMindPenalty - newVitalityMindPenalty;
-				pet->setMaxHAM(6, pet->getMaxHAM(6) + change, true);
-				petControlDevice->setVitalityMindPenalty(newVitalityMindPenalty);
-			}
-		}, "PetSetVitalityLambda");
+	if (vitality <= 75 && vitality > 50) {
+		hamPenaltyModifier = 0.25f;
+	} else if (vitality <= 50 && vitality > 25) {
+		hamPenaltyModifier = 0.5f;
+	} else if (vitality <= 25) {
+		hamPenaltyModifier = 0.75f;
 	}
+
+	Reference<PetControlDevice*> petControlDevice = _this.getReferenceUnsafeStaticCast();
+
+	float vitalityMindPenalty = this->vitalityMindPenalty;
+	float vitalityActionPenalty = this->vitalityActionPenalty;
+	float vitalityHealthPenalty	= this->vitalityHealthPenalty;
+
+	Core::getTaskManager()->executeTask([pet, petControlDevice, hamPenaltyModifier, vitalityMindPenalty, vitalityActionPenalty, vitalityHealthPenalty] () {
+		Locker locker(pet);
+
+		Locker clocker(petControlDevice, pet);
+
+		int newVitalityHealthPenalty = pet->getBaseHAM(0) * hamPenaltyModifier;
+		int newVitalityActionPenalty = pet->getBaseHAM(3) * hamPenaltyModifier;
+		int newVitalityMindPenalty = pet->getBaseHAM(6) * hamPenaltyModifier;
+
+		if (newVitalityHealthPenalty != vitalityHealthPenalty) {
+			int change = vitalityHealthPenalty - newVitalityHealthPenalty;
+			pet->setMaxHAM(0, pet->getMaxHAM(0) + change, true);
+			petControlDevice->setVitalityHealthPenalty(newVitalityHealthPenalty);
+		}
+
+		if (newVitalityActionPenalty != vitalityActionPenalty) {
+			int change = vitalityActionPenalty - newVitalityActionPenalty;
+			pet->setMaxHAM(3, pet->getMaxHAM(3) + change, true);
+			petControlDevice->setVitalityActionPenalty(newVitalityActionPenalty);
+		}
+
+		if (newVitalityMindPenalty != vitalityMindPenalty) {
+			int change = vitalityMindPenalty - newVitalityMindPenalty;
+			pet->setMaxHAM(6, pet->getMaxHAM(6) + change, true);
+			petControlDevice->setVitalityMindPenalty(newVitalityMindPenalty);
+		}
+	}, "PetSetVitalityLambda");
 }
