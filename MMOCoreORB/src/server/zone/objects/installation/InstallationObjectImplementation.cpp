@@ -374,37 +374,40 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 
 		if (!currentSpawn->inShift() || container->getSpawnID() != currentSpawn->getObjectID()) {
 			errorString = "harvester_resource_depleted"; // Resource has been depleted.  Shutting down.
+			shutdownAfterUpdate = true;
 		}
 	} else {
 		errorString = "harvester_no_resource"; // No resource selected.  Shutting down.
 	}
 
-	if (!errorString.isEmpty()) {
-		if (isActive()) {
-			StringIdChatParameter stringId("shared", errorString);
-			broadcastToOperators(new ChatSystemMessage(stringId));
+	if (!errorString.isEmpty() && isActive()) {
+		StringIdChatParameter stringId("shared", errorString);
+		broadcastToOperators(new ChatSystemMessage(stringId));
 
-			resourceHopperTimestamp.updateToCurrentTime();
-			currentSpawn = nullptr;
-			setActive(false);
-			auto msg = error();
+		resourceHopperTimestamp.updateToCurrentTime();
+		currentSpawn = nullptr;
+		setActive(false);
+		auto msg = error();
 
-			msg << errorString;
+		msg << errorString;
 
-			for (int i = 0; i < operatorList.size(); ++i) {
-				if (i == 0) {
-					msg << "; Operators:";
-				}
-
-				auto player = operatorList.get(i);
-
-				msg << " " << player->getObjectID();
+		for (int i = 0; i < operatorList.size(); ++i) {
+			if (i == 0) {
+				msg << "; Operators:";
 			}
 
-			msg << ".";
-			msg.flush();
+			auto player = operatorList.get(i);
+
+			msg << " " << player->getObjectID();
 		}
 
+		msg << ".";
+		msg.flush();
+	}
+
+	// Invalid state just stop and return
+	if (currentSpawn == nullptr || container == nullptr || container->getSpawnID() != currentSpawn->getObjectID()) {
+		setActive(false);
 		return;
 	}
 
