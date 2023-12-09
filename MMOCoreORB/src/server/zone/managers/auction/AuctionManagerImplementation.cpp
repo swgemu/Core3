@@ -65,6 +65,7 @@ void AuctionManagerImplementation::initialize() {
 	int countDatabaseItems = 0;
 	int countDuplicates = 0;
 	uint64 objectID = 0;
+	int expireSecondsOffset = 300;
 
 	Vector<Reference<AuctionItem*> > itemsToDelete;
 	Vector<ManagedReference<AuctionItem*> > orphanedBazaarItems;
@@ -182,7 +183,14 @@ void AuctionManagerImplementation::initialize() {
 
 		if(auctionItem->isAuction()) {
 			Reference<Task*> newTask = new ExpireAuctionTask(_this.getReferenceUnsafeStaticCast(), auctionItem);
-			newTask->schedule((auctionItem->getExpireTime() - time(0)) * 1000);
+			int expireSeconds = auctionItem->getExpireTime() - time(0);
+
+			if (expireSeconds < 0) {
+				expireSeconds = (expireSecondsOffset += 5);
+				error() << "Item past expireTime, scheduling expire in " << expireSeconds << " seconds, auctionItem: " << *auctionItem;
+			}
+
+			newTask->schedule(expireSeconds * 1000);
 
 			Locker locker(&auctionEvents);
 			auctionEvents.put(auctionItem->getAuctionedItemObjectID(), newTask);
@@ -450,6 +458,7 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 			}
 
 			if (startupTask && !item->isUpdated()) {
+				bool updatedItemCrate = false;
 				uint64 sellingId = item->getAuctionedItemObjectID();
 				ManagedReference<SceneObject*> sellingItem = zoneServer->getObject(sellingId);
 
@@ -464,21 +473,27 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items, con
 							if (prototype != nullptr) {
 								item->setFactoryCrate(true);
 								item->setCratedItemType(prototype->getClientGameObjectType());
+								updatedItemCrate = true;
 							}
 						}
 					} else {
 						if (item->isFactoryCrate()) {
 							item->setFactoryCrate(false);
+							updatedItemCrate = true;
 						}
 
 						if (item->getCratedItemType() != 0) {
 							item->setCratedItemType(0);
+							updatedItemCrate = true;
 						}
 					}
 				}
 
 				item->setUpdated(true);
-				countUpdated++;
+
+				if (updatedItemCrate) {
+					countUpdated++;
+				}
 			}
 		}
 	}
