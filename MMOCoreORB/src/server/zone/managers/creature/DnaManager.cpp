@@ -49,8 +49,15 @@ void DnaManager::loadSampleData() {
 		lua->runFile("scripts/managers/dna_manager.lua");
 		// pull stat balcne out and set it up.
 		LuaObject luaObject = lua->getGlobalObject("DNACharacteristics");
+		FileWriter* writer = new FileWriter(new File("scripts/managers/dna_manager_new.lua"));
 
 			if (luaObject.isValidTable()) {
+				int lastDam = 0;
+				int lastHAM = 2000;
+				float lastHit = 0.100f;
+				int lastArmor = 0;
+				int lastRegen = 0;
+
 				for (int i = 1; i <= luaObject.getTableSize(); ++i) {
 					LuaObject statRow = luaObject.getObjectAt(i);
 
@@ -61,6 +68,64 @@ void DnaManager::loadSampleData() {
 						int ham = statRow.getIntAt(4);
 						int armorBase = statRow.getIntAt(5);
 						int regen = statRow.getIntAt(6);
+
+						// TABLE_WRITER
+
+						StringBuffer table;
+
+						if (i <= 20) {
+							lastDam = (i * 2);
+							lastHAM = ((i - 1) * 100.f) + 3000;
+							lastHit = ((i - 1) * 1.00f) + 10.0f;
+							lastArmor = 0;
+							lastRegen = ((i - 1) * 4.00f) + 4.0f;
+
+							table << "	{ " << level << ", " << lastDam << ", " << lastHit << ", " << lastHAM << ", " << lastArmor << ", " << lastRegen << "},";
+						} else if (i <= 30) {
+							lastDam += 10;
+							lastHAM += 250;
+							lastHit += 0.30f;
+							lastArmor += 25;
+							lastRegen += 3.0f;
+
+							table << "	{ " << level << ", " << lastDam << ", " << lastHit << ", " << lastHAM << ", " << lastArmor << ", " << lastRegen << "},";
+						} else if (i <= 40) {
+							lastDam += 10;
+							lastHAM += 200;
+							lastHit += 0.30f;
+							lastArmor += 25;
+							lastRegen += 3.0f;
+
+							table << "	{ " << level << ", " << lastDam << ", " << lastHit << ", " << lastHAM << ", " << lastArmor << ", " << lastRegen << "},";
+						} else if (i <= 50) {
+							lastDam += 3;
+							lastHAM += 75;
+							lastHit += 0.20f;
+							lastArmor += 50;
+							lastRegen += 2.0f;
+
+							table << "	{ " << level << ", " << lastDam << ", " << lastHit << ", " << lastHAM << ", " << lastArmor << ", " << lastRegen << "},";
+						} else if (i <= 60) {
+							lastDam += 2;
+							lastHAM += 75;
+							lastHit += 0.20f;
+							lastArmor += 50;
+							lastRegen += 2.0f;
+
+							table << "	{ " << level << ", " << lastDam << ", " << lastHit << ", " << lastHAM << ", " << lastArmor << ", " << lastRegen << "},";
+						} else {
+							lastDam += 2;
+							lastHAM += 75;
+							lastHit += 0.20f;
+							lastArmor += 50;
+							lastRegen += 2.0f;
+
+							table << "	{ " << level << ", " << lastDam << ", " << lastHit << ", " << lastHAM << ", " << lastArmor << ", " << lastRegen << "},";
+						}
+
+						writer->writeLine(table.toString());
+
+						info(true) << "Getting toHit: " << hit;
 
 						dnaDPS.add(dps);
 						dnaArmor.add(armorBase);
@@ -421,13 +486,15 @@ float DnaManager::valueForLevel(int type, int level) {
 	return rc;
 }
 
-float DnaManager::levelForScore(int type, float value) {
-	float rc = 0.0f;
+int DnaManager::levelForScore(int type, float value) {
+	int rc = 0;
 
 	switch (type) {
 		case HIT_LEVEL:
+			value *= 100.00f;
+
 			for (int i = 0; i < dnaHit.size(); i++) {
-				float lvminus = 0, lvplus = 3;
+				float lvminus = 1.00f, lvplus = 3.00f;
 
 				if (i > 0)
 					lvminus = dnaHit.get(i - 1);
@@ -437,7 +504,9 @@ float DnaManager::levelForScore(int type, float value) {
 
 				float lv = dnaHit.get(i);
 
-				if (value >= (lvminus + lv) / 2.0f && value <= (lvplus + lv) / 2.0f) {
+				//info(true) << "Level Minus: " << lvminus << "  Level Plus: " << lvplus << " Level: " << lv << " i: " << i;
+
+				if (value >= (lvminus + lv) / 2.000f && value <= (lvplus + lv) / 2.000f) {
 					rc = i;
 					break;
 				}
