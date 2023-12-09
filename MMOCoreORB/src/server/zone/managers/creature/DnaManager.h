@@ -61,7 +61,7 @@ public:
 
 	void generateSample(Creature* creature, CreatureObject* player, int quality);
 	void generationalSample(PetDeed* deed, CreatureObject* player, int quality);
-	float levelForScore(int type, float value);
+	int levelForScore(int type, float value);
 	float valueForLevel(int type, int level);
 
 protected:
