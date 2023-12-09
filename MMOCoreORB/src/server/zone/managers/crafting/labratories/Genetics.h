@@ -340,34 +340,33 @@ public:
 
 		// HAM Average
 		float avgHam = (pet->getHealth() + pet->getAction() + pet->getMind()) / 3.0f;
-		float statLevel = (DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, avgHam) + 1.0f) * 6.0f;
+		float statLevel = generateStatLevel(avgHam);
 
 		// DPS
-		float damageLevel = DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL, ((pet->getMaxDamage() + pet->getMinDamage()) / 2.0f) / pet->getSpeed()) * 10.0f;
+		float damageLevel = generateDamageLevel(((pet->getMaxDamage() + pet->getMinDamage()) / 2.0f) / pet->getSpeed());
 
 		// Hit Chance
-		float hitLevel = (DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL, pet->getHit()) + 1.0f) * 1.5f;
+		float hitLevel = generateHitLevel(pet->getHit());
 
 		// Regen
-		float regenerationLevel = (DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL, avgHam / 10) + 1.0f);
+		float regenerationLevel = generateRegenLevel(avgHam / 10.0f);
 
 		// Armor
-		float armorLevel = DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, ((pet->getArmor() * 500.0f) + pet->getEffectiveArmor()));
+		float armorLevel = generteArmorLevel(pet->getArmor(), pet->getEffectiveArmor());
 		float armorBase = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL, armorLevel);
 
 		// Pet Base Level
-		float baseLevel = ((statLevel + regenerationLevel + hitLevel) / 20.0f);
+		float baseLevel = ((statLevel + damageLevel + regenerationLevel + hitLevel) / 19.0) + 0.5;
 
-		// Secondary Armor Level
-		float armorLevel2 = calculateArmorValue(pet, armorLevel, baseLevel, armorBase);
+		// Secondary Armor Level -- unused
+		//float armorLevel2 = calcArmorLevelByStats(pet->getArmor(), armorLevel, baseLevel, armorBase, pet->getKinetic(), pet->getEnergy(), pet->getBlast(), pet->getHeat(), pet->getCold(), pet->getElectrical(), pet->getAcid(), pet->getStun()) * 2.0f;
 
 		float defenseLevel = hitLevel;
 
 		if (defenseLevel < baseLevel)
 			defenseLevel = baseLevel;
 
-		float levelFloat = (((statLevel + defenseLevel + hitLevel + armorLevel + regenerationLevel) * 0.75f) + (damageLevel * 1.25f)) / 20.00f;
-		int level = (levelFloat + 0.5);
+		float levelFloat = (((statLevel + regenerationLevel + damageLevel + hitLevel + defenseLevel + armorLevel) / 22.0f) + 0.5f);
 
 #ifdef DEBUG_GENETIC_LAB
 		Logger::console.info(true) << "Level Float: " << levelFloat;
@@ -380,12 +379,12 @@ public:
 		Logger::console.info(true) << "Armor Level: " << armorLevel;
 		Logger::console.info(true) << "Armor Base: " << armorBase;
 		Logger::console.info(true) << "Base Level: " << baseLevel;
-		Logger::console.info(true) << "Armor Level2: " << armorLevel2;
+		//Logger::console.info(true) << "Armor Level2: " << armorLevel2;
 
-		Logger::console.info(true) << "========== END Genetics -- Calculate Pet level - Final Level: " << level << " ==========";
+		Logger::console.info(true) << "========== END Genetics -- Calculate Pet level - Final Level: " << levelFloat << " ==========";
 #endif
 
-		return level;
+		return levelFloat;
 	}
 
 	static int calculateAgentLevel(int health, float dps, float hit, int regen, int armor, float effective, float kin, float eng, float bla, float heat, float cold, float elec, float acid, float stun) {
@@ -502,32 +501,32 @@ public:
 		return level;
 	}
 
-	static int generateStatLevel(int health) {
-		return (DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, health) + 1) * 6;
+	static float generateStatLevel(int health) {
+		return (DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, health) + 1) * 6.0f;
 	}
 
-	static int generateDamageLevel(float dps) {
-		return DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL, dps) * 10;
+	static float generateDamageLevel(float dps) {
+		return DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL, dps) * 10.f;
 	}
 
-	static int generateHitLevel(float hitChance) {
-		return (DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL, hitChance) + 1) * 1;
+	static float generateHitLevel(float hitChance) {
+		return (DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL, hitChance) + 1.0f) * 1.0f;
 	}
 
-	static int generateRegenLevel(int hamRegen) {
-		return (DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL, hamRegen / 10) + 1) * 2;
+	static float generateRegenLevel(int hamRegen) {
+		return (DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL, hamRegen / 10) + 10.f) * 2.0f;
 	}
 
-	static int generteArmorLevel(int armor, float effectResist) {
-		return DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, (armor * 500) + ((effectResist)*10.0));
+	static float generteArmorLevel(int armor, float effectResist) {
+		return DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, (armor * 500.0f) + (effectResist * 10.0f));
 	}
 
-	static int generateArmorBaseLevel(int generatedArmorLevel) {
+	static float generateArmorBaseLevel(int generatedArmorLevel) {
 		return DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL, generatedArmorLevel);
 	}
 
-	static int generateBaseLevel(int statLevel, int damageLevel, int armorLevel, int regenLevel, int hitLevel) {
-		return (((statLevel) + (damageLevel) + (regenLevel) + (hitLevel)) / 19.0) + 0.5;
+	static float generateBaseLevel(int statLevel, int damageLevel, int armorLevel, int regenLevel, int hitLevel) {
+		return (((statLevel) + (damageLevel) + (regenLevel) + (hitLevel)) / 19.0f) + 0.5f;
 	}
 
 	// Calculate the input creature levels
