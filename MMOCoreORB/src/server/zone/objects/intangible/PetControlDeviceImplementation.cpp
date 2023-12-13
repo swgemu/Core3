@@ -28,6 +28,7 @@
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/frs/FrsManager.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreTask.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != nullptr) {
@@ -98,7 +99,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
-	if (!pet->getCooldownTimerMap()->isPast("call_cooldown")) {
+	if (!pet->checkCooldownRecovery("call_cooldown")) {
 		if (petType == PetManager::DROIDPET)
 			player->sendSystemMessage("@pet/droid_modules:droid_maint_on_maint_run"); //You cannot call that droid. It is currently on a maintenance run.
 		else
@@ -271,12 +272,8 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		player->registerObserver(ObserverEventType::STARTCOMBAT, petControlObserver);
 
 	} else { // Player is in a city or camp, spawn pet immediately
-
-		if (player->getCooldownTimerMap() == nullptr)
-			return;
-
 		// Check cooldown
-		if (!player->getCooldownTimerMap()->isPast("petCallOrStoreCooldown")) {
+		if (!player->checkCooldownRecovery("petCallOrStoreCooldown")) {
 			player->sendSystemMessage("@pet/pet_menu:cant_call_1sec"); //"You cannot CALL for 1 second."
 			return;
 		}
@@ -284,7 +281,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		spawnObject(player);
 
 		// Set cooldown
-		player->getCooldownTimerMap()->updateToCurrentAndAddMili("petCallOrStoreCooldown", 1000); // 1 sec
+		player->updateCooldownTimer("petCallOrStoreCooldown", 1000); // 1 sec
 	}
 
 	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, String("petFollow").toLowerCase().hashCode(), String::valueOf(player->getObjectID()), player->getObjectID(), QueueCommand::NORMAL);
@@ -342,19 +339,10 @@ int PetControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* playe
 					thisReference->callObject(playerReference);
 				}, "ControlDeviceCallLambda2");
 			} else {
-				Reference<AiAgent*> petReference = pet;
-				Reference<CreatureObject*> playerReference = player;
-				Reference<PetControlDevice*> thisReference = _this.getReferenceUnsafeStaticCast();
+				PetControlDeviceStoreTask* storeTask = new PetControlDeviceStoreTask(_this.getReferenceUnsafeStaticCast(), player, false);
 
-				Core::getTaskManager()->executeTask([thisReference, petReference, playerReference] () {
-					Locker locker(playerReference);
-
-					Locker crossLocker(petReference, playerReference);
-
-					Locker controlLocker(thisReference);
-
-					thisReference->storeObject(playerReference);
-				}, "ControlDeviceStoreLambda");
+				if (storeTask != nullptr)
+					storeTask->execute();
 			}
 		}
 	}
@@ -386,6 +374,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	if (controlledObject->isCreatureObject()) {
 		creature = cast<CreatureObject*>(controlledObject.get());
+
 		creature->setCreatureLink(player);
 		creature->setControlDevice(_this.getReferenceUnsafeStaticCast());
 		creature->setFaction(player->getFaction());
@@ -519,13 +508,27 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 
 	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
 
-	assert(pet->isLockedByCurrentThread());
-
-	if (!force && (pet->isInCombat() || player->isInCombat() || player->isDead()))
+	if (pet == nullptr)
 		return;
 
-	if (player->isRidingMount() && player->getParent() == pet) {
+	if (!force) {
+		// Fail if pet or player are in combat or if the pet is dead, unless forced
+		if (pet->isInCombat() || player->isInCombat() || player->isDead())
+			return;
 
+		// Check cooldown for call or store
+		if (!player->checkCooldownRecovery("petCallOrStoreCooldown")) {
+			player->sendSystemMessage("@pet/pet_menu:cant_store_1sec"); //"You cannot STORE for 1 second."
+			return;
+		}
+	}
+
+	// Cross lock the player to the pet for discmount
+	Locker playerLock(player, _this.getReferenceUnsafeStaticCast());
+
+	// Handle dismounting the player
+	if (player->isRidingMount() && player->getParentID() == pet->getObjectID()) {
+		// Fail the store is the player is mounted and they still have a mount_dismount cooldown
 		if (!force && !player->checkCooldownRecovery("mount_dismount"))
 			return;
 
@@ -535,44 +538,45 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 			return;
 	}
 
-	if (player->getCooldownTimerMap() == nullptr)
-		return;
+	// Set 1 second cooldown on the player
+	player->updateCooldownTimer("petCallOrStoreCooldown", 1000);
 
-	// Check cooldown
-	if (!player->getCooldownTimerMap()->isPast("petCallOrStoreCooldown") && !force) {
-		player->sendSystemMessage("@pet/pet_menu:cant_store_1sec"); //"You cannot STORE for 1 second."
-		return;
-	}
+	// Release the lock on the player
+	playerLock.release();
 
-	// Not training any commands
-	trainingCommand = 0;
+	// Clear training commands
+	setTrainingCommand(0);
 
-	//clear friend list
+	// clear friends list
 	friends.removeAll();
+
+	// Call for admin check to force quick store
+	auto ghost = player->getPlayerObject();
 
 	Reference<StorePetTask*> task = new StorePetTask(player, pet);
 
+	if (task == nullptr)
+		return;
+
 	// Store non-faction pets immediately.  Store faction pets after 60sec delay.
-	if (petType != PetManager::FACTIONPET || force || player->getPlayerObject()->isPrivileged()) {
+	if (getPetType() != PetManager::FACTIONPET || force || (ghost != nullptr && ghost->isPrivileged())) {
 		task->execute();
-	}
-	else {
-		if (pet->getPendingTask("store_pet") == nullptr) {
-			player->sendSystemMessage( "Storing pet in 60 seconds");
-			pet->addPendingTask("store_pet", task, 60 * 1000);
-		}
-		else {
-			AtomicTime nextExecution;
-			Core::getTaskManager()->getNextExecutionTime(pet->getPendingTask("store_pet"), nextExecution);
-			int timeLeft = (nextExecution.getMiliTime() / 1000) - System::getTime();
-			player->sendSystemMessage( "Pet will store in " + String::valueOf(timeLeft) + " seconds." );
-			return;
-		}
+	} else if (pet->getPendingTask("store_pet") == nullptr) {
+		// Cross lock the pet to add the task
+		Locker playerLock(pet, _this.getReferenceUnsafeStaticCast());
 
-	}
+		player->sendSystemMessage( "Storing pet in 60 seconds");
 
-	// Set cooldown
-	player->getCooldownTimerMap()->updateToCurrentAndAddMili("petCallOrStoreCooldown", 1000); // 1 sec
+		pet->addPendingTask("store_pet", task, 60 * 1000);
+	} else {
+		AtomicTime nextExecution;
+
+		Core::getTaskManager()->getNextExecutionTime(pet->getPendingTask("store_pet"), nextExecution);
+
+		int timeLeft = (nextExecution.getMiliTime() / 1000) - System::getTime();
+
+		player->sendSystemMessage( "Pet will store in " + String::valueOf(timeLeft) + " seconds." );
+	}
 }
 
 bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force, bool adult) {

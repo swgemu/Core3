@@ -97,8 +97,8 @@ class PetControlDevice extends ControlDevice {
 		trainedCommands.setNullValue("");
 	}
 
+	// Control device is locked by the PetControlDeviceStoreTask
 	@preLocked
-	@arg1preLocked
 	public native void storeObject(CreatureObject player, boolean force = false);
 
 	@preLocked

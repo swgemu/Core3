@@ -61,7 +61,7 @@ which carries forward this exception.
 		31 to 40 - 32.3 to 35, increments of 0.3
 		41 to 50 - 35.2 to 37, increments of 0.2
 		51 to 60 - 37.2 to 39, increments of 0.2
-		61+ - increments of 38.225
+		61+ - increments of 0.225
 
 	HAM:
 		1 to 20 - 3000 to 4900, incrememnts of 100

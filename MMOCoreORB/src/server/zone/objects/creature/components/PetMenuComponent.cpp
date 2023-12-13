@@ -7,7 +7,7 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/creature/PetManager.h"
-#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreTask.h"
 
 void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isPet())
@@ -232,12 +232,11 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 
 	// Store
 	if (selectedID == 59) {
-		if (owner != player && owner != nullptr) {
-			Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(petControlDevice, owner, true);
-			task->execute();
-		} else {
-			petControlDevice->storeObject(player);
-		}
+		Reference<PetControlDeviceStoreTask*> storeTask = new PetControlDeviceStoreTask(petControlDevice, player, true);
+
+		if (storeTask != nullptr)
+			storeTask->execute();
+
 		return 0;
 	}
 

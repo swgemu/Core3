@@ -20,7 +20,7 @@
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreTask.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/managers/creature/PetManager.h"
 
@@ -1053,7 +1053,7 @@ int LuaAiAgent::storePet(lua_State* L) {
 	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().get().castTo<PetControlDevice*>();
 
 	if (owner != nullptr && controlDevice != nullptr) {
-		Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(controlDevice, owner, true);
+		Reference<PetControlDeviceStoreTask*> task = new PetControlDeviceStoreTask(controlDevice, owner, true);
 		task->execute();
 	}
 

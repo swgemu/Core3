@@ -86,6 +86,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreTask.h"
 
 //#define DEBUG
 //#define DEBUG_AI_WEAPONS
@@ -128,16 +129,20 @@ void AiAgentImplementation::initializeTransientMembers() {
 void AiAgentImplementation::notifyLoadFromDatabase() {
 	CreatureObjectImplementation::notifyLoadFromDatabase();
 
-	auto strongControlDevice = controlDevice.get();
+	if (isPet()) {
+		auto strongControlDevice = controlDevice.get().castTo<PetControlDevice*>();
 
-	if (strongControlDevice != nullptr) {
-		auto strongLinkedCreature = linkedCreature.get();
+		if (strongControlDevice != nullptr) {
+			auto strongLinkedCreature = linkedCreature.get();
 
-		if (strongLinkedCreature != nullptr && strongLinkedCreature->isPlayerCreature() && !strongLinkedCreature->isOnline()) {
-			info() << "Storing because linked creature " << strongLinkedCreature->getObjectID() << " is offline.";
-			Locker clock(strongLinkedCreature, _this.getReferenceUnsafeStaticCast());
-			Locker lock(strongControlDevice);
-			strongControlDevice->storeObject(strongLinkedCreature, true);
+			if (strongLinkedCreature != nullptr && strongLinkedCreature->isPlayerCreature() && !strongLinkedCreature->isOnline()) {
+				info() << "Storing because linked creature " << strongLinkedCreature->getObjectID() << " is offline.";
+
+				PetControlDeviceStoreTask* storeTask = new PetControlDeviceStoreTask(strongControlDevice, strongLinkedCreature, true);
+
+				if (storeTask != nullptr)
+					storeTask->execute();
+			}
 		}
 	}
 
