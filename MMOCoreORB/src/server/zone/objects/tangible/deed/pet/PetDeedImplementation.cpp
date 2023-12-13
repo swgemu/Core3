@@ -203,12 +203,24 @@ const CreatureAttackMap* PetDeedImplementation::getAttacks() const {
 String PetDeedImplementation::getTemplateName() const {
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
 	Reference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate(mobileTemplate.hashCode());
+
 	if (petTemplate == nullptr) {
 		return "";
 	}
 
 	String name = petTemplate->getObjectName();
 	return name;
+}
+
+CreatureTemplate* PetDeedImplementation::getCreatureTemplate() const {
+	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
+
+	if (creatureTemplateManager == nullptr)
+		return nullptr;
+
+	Reference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate(mobileTemplate.hashCode());
+
+	return petTemplate;
 }
 
 int PetDeedImplementation::calculatePetLevel() {
@@ -406,10 +418,13 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 		player->addPendingTask("sampledeed", task, 0);
 		return 0;
-	}
-
-	if (selectedID == 20) {
+	} else if (selectedID == 20) {
 		if (generated || !isASubChildOf(player))
+			return 1;
+
+		auto zone = player->getZone();
+
+		if (zone == nullptr)
 			return 1;
 
 		if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING) != nullptr) {
@@ -475,7 +490,8 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 			}
 		}
 
-		Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();
+		Reference<CreatureManager*> creatureManager = zone->getCreatureManager();
+
 		if (creatureManager == nullptr) {
 			player->sendSystemMessage("Internal Pet Deed Error #307");
 			return 1;
@@ -515,6 +531,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 		String templateToSpawn = creatureManager->getTemplateToSpawn(mobileTemplate.hashCode());
 		ManagedReference<CreatureObject*> creatureObject = creatureManager->createCreature(templateToSpawn.hashCode(), true, 0);
+
 		if (creatureObject == nullptr) {
 			controlDevice->destroyObjectFromDatabase(true);
 			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]");
@@ -524,6 +541,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		Locker clocker(creatureObject, player);
 
 		ManagedReference<Creature*> pet = creatureObject.castTo<Creature*>();
+
 		if (pet == nullptr) {
 			controlDevice->destroyObjectFromDatabase(true);
 			creatureObject->destroyObjectFromDatabase(true);
@@ -542,18 +560,6 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 		// update base stats on the pet now
 		// We will store the deed pointer to the aiagent before serialization
-
-		// Copy color customization from deed to pet
-		CustomizationVariables* customVars = getCustomizationVariables();
-		if (customVars != nullptr) {
-			for (int i = 0; i < customVars->size(); ++i) {
-				uint8 id = customVars->elementAt(i).getKey();
-				int16 val = customVars->elementAt(i).getValue();
-
-				String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
-				pet->setCustomizationVariable(name, val, true);
-			}
-		}
 
 		// then this is complete
 		StringId s;
@@ -580,6 +586,30 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 		if (deedContainer != nullptr) {
 			destroyObjectFromWorld(true);
+		}
+
+		// Copy color customization from deed to pet for pet hue
+		CustomizationVariables* customVars = getCustomizationVariables();
+
+		if (customVars != nullptr) {
+			int hueVal = 0;
+
+			for (int i = 0; i < customVars->size(); ++i) {
+				uint8 id = customVars->elementAt(i).getKey();
+				String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
+
+				if (!name.contains("index_color"))
+					continue;
+
+				int16 val = customVars->elementAt(i).getValue();
+
+				if (val <= hueVal)
+					continue;
+
+				hueVal = val;
+			}
+
+			pet->setHue(hueVal);
 		}
 
 		generated = true;
@@ -611,6 +641,7 @@ void PetDeedImplementation::adjustPetLevel(CreatureObject* player, CreatureObjec
 	pet->reloadTemplate();
 	player->sendSystemMessage("@bio_engineer:pet_sui_level_fixed");
 }
+
 bool PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObject* pet) {
 	int oldLevel = level;
 	if (oldLevel < 1) {

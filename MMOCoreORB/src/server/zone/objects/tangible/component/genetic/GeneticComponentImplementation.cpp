@@ -380,12 +380,12 @@ void GeneticComponentImplementation::setSpecialResist(unsigned int type) {
 		specialResists |= type;
 }
 
-int GeneticComponentImplementation::getEffectiveArmor() {
-	if (fortitude < 500)
-		return fortitude/50;
-	if (fortitude > 500)
-		return (fortitude-500)/50;
-	if (fortitude == 500)
-		return 0;
-	return fortitude/50;
+float GeneticComponentImplementation::getEffectiveArmor() {
+	float effectiveCalc = (kinResist + energyResist + blastResist + heatResist + coldResist + elecResist + acidResist + stunResist) * 2.0f;
+
+#ifdef DEBUG_GENETIC_LAB
+	info(true) << "--- GeneticComponentImplementation::getEffectiveArmor -- Returning: " << effectiveCalc;
+#endif
+
+	return effectiveCalc;
 }

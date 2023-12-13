@@ -113,8 +113,8 @@ void MapLocationTable::updateObjectsIcon(SceneObject* object, byte icon) {
 	}
 }
 
-const SortedVector<MapLocationEntry>& MapLocationTable::getLocation(const String& name) const {
-	int index = -1;
+const SortedVector<MapLocationEntry> MapLocationTable::getLocation(const String& name) const {
+	SortedVector<MapLocationEntry> mapTable;
 
 	for (int i = 0; i < locations.size(); ++i) {
 		String locName = locations.elementAt(i).getKey();
@@ -122,11 +122,12 @@ const SortedVector<MapLocationEntry>& MapLocationTable::getLocation(const String
 		if (!locName.contains(name))
 			continue;
 
-		index = i;
+		mapTable = locations.elementAt(i).getValue();
+
 		break;
 	}
 
-	return locations.elementAt(index).getValue();
+	return mapTable;
 }
 
 int MapLocationTable::findLocation(const String& name) const {

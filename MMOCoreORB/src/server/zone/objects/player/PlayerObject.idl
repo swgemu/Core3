@@ -939,7 +939,7 @@ class PlayerObject extends IntangibleObject {
 	@local
 	@dereferenced
 	@read
-	public native Vector3 getTrainerCoordinates();
+	public native Vector3 getJediTrainerCoordinates();
 
 	public void setTrainerZoneName(string zoneName) {
 		trainerZoneName = zoneName;

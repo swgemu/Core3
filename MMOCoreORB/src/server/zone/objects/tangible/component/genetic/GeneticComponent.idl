@@ -117,9 +117,7 @@ class GeneticComponent extends Component {
 	@dirty
 	public native boolean isSpecialResist(unsigned int type);
 
-	public void setStats(int cle, int end, int fie, int pow,
-						    int ite, int cou, int dep, int dex,
-						    int frt, int har){
+	public void setStats(int cle, int end, int fie, int pow, int ite, int cou, int dep, int dex, int frt, int har){
 		cleverness = cle;
 		endurance = end;
 		fierceness = fie;
@@ -464,5 +462,5 @@ class GeneticComponent extends Component {
 	public native void resetResists(CraftingValues values);
 
 	@local
-	public native int getEffectiveArmor();
+	public native float getEffectiveArmor();
 }

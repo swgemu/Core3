@@ -2650,7 +2650,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeNow) {
 	schedulePvpTefRemovalTask(removeNow, removeNow, removeNow);
 }
 
-Vector3 PlayerObjectImplementation::getTrainerCoordinates() const {
+Vector3 PlayerObjectImplementation::getJediTrainerCoordinates() const {
 	return trainerCoordinates;
 }
 

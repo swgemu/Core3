@@ -116,13 +116,15 @@ void* AssetCustomizationManagerTemplate::getCustomizationVariablesFromMap(uint16
 			returnValue = getCustomizationVariablesFromMap(*(uint16*)(llstTable + 2 * v23), a2, skipSharedOwner, result);
 		}
 	}/* else
-			Logger::console.info("RETURN VALUE nullptr", true);*/
+		Logger::console.info("RETURN VALUE nullptr", true);*/
 
 
 	return returnValue;
 }
 
 void AssetCustomizationManagerTemplate::getCustomizationVariables(uint32 appearanceFileCRC, VectorMap<String, Reference<CustomizationVariable*> >& variables, bool skipShared) {
+	// Logger::console.info(true) << "getCustomizationVariables -- CRC: " << appearanceFileCRC;
+
 	uint16 key = searchCidx(appearanceFileCRC);
 
 	if (!key)
@@ -169,8 +171,7 @@ String AssetCustomizationManagerTemplate::getPaletteFileName(uint16 pnofIndex) {
 
 uint16 AssetCustomizationManagerTemplate::searchCidx(uint32 appearenceFileCRC) {
 	uint16 returnValue;
-
-	//Logger::console.info("CIDX TABLE COUNT " + String::hexvalueOf(cidxTableCount), true);
+	// Logger::console.info(true) << "searchCidx -- CIDX TABLE COUNT: " << cidxTableCount;
 
 	void* result = bsearch(&appearenceFileCRC, cidxTable, cidxTableCount, 6, cidxCompareFunction);
 
@@ -178,7 +179,7 @@ uint16 AssetCustomizationManagerTemplate::searchCidx(uint32 appearenceFileCRC) {
 		//Logger::console.info("RESULT NOT nullptr", true);
 		returnValue = *((uint16*)result + 2);
 	} else {
-		//Logger::console.info("RESULT nullptr", true);
+		//Logger::console.info("RESULT nullptr, returning 0", true);
 		returnValue = 0;
 	}
 

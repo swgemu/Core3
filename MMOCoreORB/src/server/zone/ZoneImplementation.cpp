@@ -727,7 +727,7 @@ Reference<SceneObject*> ZoneImplementation::getNearestPlanetaryObject(SceneObjec
 	return planetaryObject;
 }
 
-SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryObjectList(const String& mapObjectLocationType) {
+SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryObjectList(const String& mapCategory) {
 	SortedVector<ManagedReference<SceneObject*> > retVector;
 	retVector.setNoDuplicateInsertPlan();
 
@@ -735,7 +735,7 @@ SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryOb
 	ReadLocker rlocker(mapLocations);
 #endif
 
-	const SortedVector<MapLocationEntry>& entryVector = mapLocations->getLocation(mapObjectLocationType);
+	const SortedVector<MapLocationEntry>& entryVector = mapLocations->getLocation(mapCategory);
 
 	for (int i = 0; i < entryVector.size(); ++i) {
 		const MapLocationEntry& entry = entryVector.getUnsafe(i);

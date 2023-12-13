@@ -86,6 +86,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreTask.h"
 
 //#define DEBUG
 //#define DEBUG_AI_WEAPONS
@@ -128,16 +129,20 @@ void AiAgentImplementation::initializeTransientMembers() {
 void AiAgentImplementation::notifyLoadFromDatabase() {
 	CreatureObjectImplementation::notifyLoadFromDatabase();
 
-	auto strongControlDevice = controlDevice.get();
+	if (isPet()) {
+		auto strongControlDevice = controlDevice.get().castTo<PetControlDevice*>();
 
-	if (strongControlDevice != nullptr) {
-		auto strongLinkedCreature = linkedCreature.get();
+		if (strongControlDevice != nullptr) {
+			auto strongLinkedCreature = linkedCreature.get();
 
-		if (strongLinkedCreature != nullptr && strongLinkedCreature->isPlayerCreature() && !strongLinkedCreature->isOnline()) {
-			info() << "Storing because linked creature " << strongLinkedCreature->getObjectID() << " is offline.";
-			Locker clock(strongLinkedCreature, _this.getReferenceUnsafeStaticCast());
-			Locker lock(strongControlDevice);
-			strongControlDevice->storeObject(strongLinkedCreature, true);
+			if (strongLinkedCreature != nullptr && strongLinkedCreature->isPlayerCreature() && !strongLinkedCreature->isOnline()) {
+				info() << "Storing because linked creature " << strongLinkedCreature->getObjectID() << " is offline.";
+
+				PetControlDeviceStoreTask* storeTask = new PetControlDeviceStoreTask(strongControlDevice, strongLinkedCreature, true);
+
+				if (storeTask != nullptr)
+					storeTask->execute();
+			}
 		}
 	}
 
@@ -1922,9 +1927,6 @@ bool AiAgentImplementation::stalkProspect(SceneObject* prospect) {
 
 	setStalkObject(prospect);
 
-	PatrolPoint point = prospect->getPosition();
-	setNextPosition(point.getPositionX(), point.getPositionZ(), point.getPositionY(), prospect->getParent().get().castTo<CellObject*>());
-
 	return true;
 }
 
@@ -2107,6 +2109,9 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	wipeBlackboard();
 
 	clearQueueActions(false);
+
+	clearPatrolPoints();
+	clearSavedPatrolPoints();
 
 #ifdef SHOW_NEXT_POSITION
 	for (int i = 0; i < movementMarkers.size(); ++i) {
@@ -3018,6 +3023,12 @@ void AiAgentImplementation::removeTree(const BehaviorTreeSlot& slot) {
 	setTree(NULL, slot);
 }
 
+void AiAgentImplementation::addPatrolPoint(PatrolPoint& point) {
+	Locker locker(&targetMutex);
+
+	patrolPoints.add(point);
+}
+
 bool AiAgentImplementation::generatePatrol(int num, float dist) {
 	// info(true) << "ID: " << getObjectID() << "  generatePatrol called with a state of " << getMovementState() << " and point size of = " << getPatrolPointSize();
 
@@ -3208,7 +3219,8 @@ int AiAgentImplementation::setDestination() {
 	// info("homeLocation: " + homeLocation.toString(), true);
 
 	if (patrolPoints.size() > 20) {
-		info() << "Patrol points have overflowed. Total points: " << patrolPoints.size();
+		info() << getObjectID() << " Patrol points have overflowed - Total points: " << patrolPoints.size() << " Movement State: " << stateCopy << " Saved Patrol point size: " << savedPatrolPoints.size();
+
 		clearPatrolPoints();
 	}
 
@@ -3263,7 +3275,13 @@ int AiAgentImplementation::setDestination() {
 			break;
 		}
 
+		// info(true) << getObjectID() << " STALKING TARGET -- Total Patrol Points: " << patrolPoints.size() << " Movement State: " << stateCopy << " ZoneName: " << getZone()->getZoneName() << " Loc: " << getPosition().toString() << " ParentID: " << getParentID();
+
+		if (patrolPoints.size() > 0)
+			break;
+
 		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
+
 		break;
 	case AiAgent::FOLLOWING: {
 		clearPatrolPoints();
