@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 SetHueCommand = {
-        name = "sethue",
+	name = "sethue",
 }
 
 AddCommand(SetHueCommand)
