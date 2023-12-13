@@ -4255,9 +4255,22 @@ void CreatureObjectImplementation::schedulePersonalEnemyFlagTasks() {
 }
 
 void CreatureObjectImplementation::setHue(int hueIndex) {
-	String appearanceFilename = getObjectTemplate()->getAppearanceFilename();
+	SharedObjectTemplate* templateData = getObjectTemplate();
+
+	if (templateData == nullptr)
+		return;
+
+	SharedCreatureObjectTemplate* creatureTemplate = dynamic_cast<SharedCreatureObjectTemplate*>(templateData);
+
+	if (creatureTemplate == nullptr)
+		return;
+
+	String appearanceFilename = creatureTemplate->getAppearanceFilename();
+
 	VectorMap<String, Reference<CustomizationVariable*> > variables;
 	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+
+	//info(true) << "Appearance Filename: " << appearanceFilename << " Setting Hue #" << hueIndex << " Total Variables: " << variables.size();
 
 	for (int i = 0; i < variables.size(); ++i) {
 		const auto& varName = variables.elementAt(i).getKey();
@@ -4272,12 +4285,18 @@ void CreatureObjectImplementation::setHue(int hueIndex) {
 			continue;
 
 		const auto& paletteFileName = palette->getPaletteFileName();
+
+		if (paletteFileName.contains("white"))
+			continue;
+
 		UniqueReference<PaletteTemplate*> paletteTemplate(TemplateManager::instance()->getPaletteTemplate(paletteFileName));
 
 		if (paletteTemplate == nullptr)
 			continue;
 
 		int maxIndex = paletteTemplate->getColorCount();
+
+		//info(true) << "Color Count: " << maxIndex;
 
 		int tempHue = hueIndex;
 
@@ -4287,6 +4306,8 @@ void CreatureObjectImplementation::setHue(int hueIndex) {
 			tempHue = maxIndex - 1;
 
 		setCustomizationVariable(varName, tempHue, true);
+
+		break;
 	}
 
 	hueValue = hueIndex;

@@ -592,6 +592,8 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		CustomizationVariables* customVars = getCustomizationVariables();
 
 		if (customVars != nullptr) {
+			int hueVal = 0;
+
 			for (int i = 0; i < customVars->size(); ++i) {
 				uint8 id = customVars->elementAt(i).getKey();
 				String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
@@ -600,10 +602,14 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 					continue;
 
 				int16 val = customVars->elementAt(i).getValue();
-				pet->setHue(val);
 
-				break;
+				if (val <= hueVal)
+					continue;
+
+				hueVal = val;
 			}
+
+			pet->setHue(hueVal);
 		}
 
 		generated = true;
