@@ -4,7 +4,7 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/player/variables/FrsData.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
-#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreTask.h"
 #include "server/zone/managers/frs/FrsManager.h"
 
 bool EnclaveContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
@@ -36,7 +36,7 @@ bool EnclaveContainerComponent::checkBuildingPermission(SceneObject* sceneObject
 			if (pcd == nullptr)
 				continue;
 
-			Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(pcd, creature, true);
+			Reference<PetControlDeviceStoreTask*> task = new PetControlDeviceStoreTask(pcd, creature, true);
 			task->execute();
 
 			storedPet = true;

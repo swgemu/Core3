@@ -16,6 +16,7 @@
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreTask.h"
 
 namespace server {
 namespace zone {
@@ -195,17 +196,6 @@ public:
 
 				Locker clocker(player, droid);
 
-				// nuke the droid from the world
-				ManagedReference<PetControlDevice*> petControlDevice = droid->getControlDevice().get().castTo<PetControlDevice*>();
-				if (petControlDevice != nullptr) {
-					Locker deviceLocker(petControlDevice);
-
-					petControlDevice->storeObject(player, true);
-
-					petControlDevice->destroyObjectFromWorld(true);
-					petControlDevice->destroyObjectFromDatabase(true);
-				}
-
 				// Update PvP TEF Duration
 				if (shouldGcwCrackdownTef || shouldGcwTef || shouldBhTef) {
 					PlayerObject* ghost = player->getPlayerObject();
@@ -213,6 +203,16 @@ public:
 					if (ghost != nullptr) {
 						ghost->updateLastCombatActionTimestamp(shouldGcwCrackdownTef, shouldGcwTef, shouldBhTef);
 					}
+				}
+
+				// nuke the droid from the world
+				ManagedReference<PetControlDevice*> petControlDevice = droid->getControlDevice().get().castTo<PetControlDevice*>();
+
+				if (petControlDevice != nullptr) {
+					PetControlDeviceStoreTask* storeTask = new PetControlDeviceStoreTask(petControlDevice, player, true);
+
+					if (storeTask != nullptr)
+						storeTask->execute();
 				}
 
 				break;

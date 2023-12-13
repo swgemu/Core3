@@ -5,6 +5,7 @@
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreTask.h"
 
 namespace server {
 namespace zone {
@@ -23,7 +24,6 @@ public:
 	}
 
 	~PetIncapacitationRecoverTask() {
-
 	}
 
 	void run() {
@@ -78,24 +78,25 @@ public:
 
 			if (autostore) {
 				CreatureObject* owner = pet->getLinkedCreature().get();
+
 				if (owner != nullptr) {
-					Locker olocker(owner, pet);
-					device->storeObject(owner, true);
+					PetControlDeviceStoreTask* storeTask = new PetControlDeviceStoreTask(device, owner, true);
+
+					if (storeTask != nullptr)
+						storeTask->execute();
 				}
 			}
 
 		} catch (Exception& e) {
-
 		}
 	}
-
 };
 
-}
-}
-}
-}
-}
+} // namespace events
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
 
 using namespace server::zone::objects::creature::events;
 
