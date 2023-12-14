@@ -17,13 +17,12 @@ include server.zone.TreeNode;
 
 @dirty
 class TreeEntry extends Observable {
-
 	public native TreeEntry(TreeNode n = null);
 
 	@dereferenced
 	protected Coordinate coordinates;
 
-	public TreeNode node;
+	transient protected TreeNode node;
 
 	protected boolean bounding;
 

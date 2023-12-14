@@ -14,15 +14,9 @@ Distribution of this file for usage outside of Core3 is prohibited.
 TreeEntryImplementation::TreeEntryImplementation(TreeNode *n) {
 	node = n;
 	bounding = false;
-
-	//visibilityRange = 128;
-
 	closeobjects = nullptr;
 
-	//closeobjects.setInsertPlan(SortedVector<TreeEntry*>::NO_DUPLICATE);
-
 	radius = 0.5f;
-
 	receiverFlags = 0;
 }
 
