@@ -15,7 +15,7 @@ import engine.util.u3d.Vector3;
 include engine.util.u3d.Coordinate;
 include server.zone.TreeNode;
 
-@dirty
+@json
 class TreeEntry extends Observable {
 	public native TreeEntry(TreeNode n = null);
 
