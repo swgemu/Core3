@@ -560,7 +560,8 @@ TangibleObject* LootManagerImplementation::createLootObject(TransactionLog& trx,
 
 	delete craftingValues;
 
-	trx.addState("lootCondition", prototype->getMaxCondition());
+	trx.addState("lootConditionDmg", prototype->getConditionDamage());
+	trx.addState("lootConditionMax", prototype->getMaxCondition());
 
 #ifdef DEBUG_LOOT_MAN
 	info(true) << " ---------- LootManagerImplementation::createLootObject -- COMPLETE ----------";
