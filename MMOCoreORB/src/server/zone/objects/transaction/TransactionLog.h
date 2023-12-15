@@ -83,6 +83,7 @@ enum class TrxCode {
 	INSTANTBUY,                 // Instant Buy
 	LOTTERYDROID,               // Lottery Droid
 	LUASCRIPT,                  // LUA Script
+	LUALOOT,                    // Loot from LUA Scripts
 	MINED,                      // Resouces mined by installations
 	MISSIONCOMPLETE,            // Mission Completed Summary
 	NPCLOOTCLAIM,               // NPC Loot Claimed
@@ -186,6 +187,27 @@ public:
 
 	TransactionLog(const TransactionLog& rhs) {
 		*this = rhs;
+	}
+
+	TransactionLog newChild() {
+		TransactionLog child;
+
+		// Copy limited properties from parent
+		child.mEnabled = mEnabled;
+		child.mDebug = mDebug;
+		child.mExportRelated = mExportRelated;
+		child.mWorldPosition = mWorldPosition;
+		child.mWorldPositionContext = mWorldPositionContext;
+		child.mZoneName = mZoneName;
+		child.mContext = mContext;
+		child.mTransaction["trxId"] = getNewTrxID();
+		child.mTransaction["trxGroup"] = getTrxGroup();
+		child.mTransaction["code"] = mTransaction["code"];
+		child.mTransaction["src"] = mTransaction["src"];
+		child.mTransaction["dst"] = mTransaction["dst"];
+		child.mTransaction["subject"] = mTransaction["subject"];
+
+		return child;
 	}
 
 	TransactionLog& operator=(const TransactionLog& rhs) {
@@ -299,6 +321,10 @@ public:
 		return mDebug;
 	}
 
+	bool isAborted() const {
+		return mAborted;
+	}
+
 	bool isVerbose() const {
 		return getVerbose();
 	}
@@ -342,6 +368,9 @@ public:
 	void exportRelated();
 
 private:
+	TransactionLog() {
+	};
+
 	static AtomicInteger exportBacklog;
 
 	void catchAndLog(const char* functioName, Function<void()> function);

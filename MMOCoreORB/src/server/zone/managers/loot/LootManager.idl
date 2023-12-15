@@ -162,7 +162,7 @@ class LootManager extends ManagedService implements Logger {
 	private native void loadLootableMods( LuaObject modTable, SortedVector<string> mods );
 
 	@local
-	public native TangibleObject createLootObject(final LootItemTemplate templateObject, int level, boolean maxCondition = false);
+	public native TangibleObject createLootObject(@dereferenced TransactionLog trx, final LootItemTemplate templateObject, int level, boolean maxCondition = false);
 
 	@local
 	public native string getRandomLootableMod( unsigned int sceneObjectType );

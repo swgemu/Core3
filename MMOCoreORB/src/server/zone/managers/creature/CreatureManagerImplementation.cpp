@@ -665,8 +665,8 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 			if (lootManager->createLoot(trx, creatureInventory, destructedObject)) {
 				trx.commit(true);
-			} else {
-				trx.abort() << "createLoot failed for ai object.";
+			} else if (trx.isEnabled() && !trx.isAborted()) {
+				trx.abort() << "createLoot failed for ai object for unknown reason.";
 			}
 		}
 

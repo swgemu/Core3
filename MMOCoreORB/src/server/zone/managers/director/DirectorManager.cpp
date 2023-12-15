@@ -864,8 +864,19 @@ int DirectorManager::createLoot(lua_State* L) {
 
 	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
 
-	TransactionLog trx(TrxCode::LUASCRIPT, container);
+	auto dst = container;
+
+	if (!container->isCreatureObject()) {
+		auto parent = container->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+
+		if (parent != nullptr) {
+			dst = parent;
+		}
+	}
+
+	TransactionLog trx(TrxCode::LUALOOT, dst);
 	trx.addContextFromLua(L);
+	trx.addState("dstContainer", container->getObjectID());
 
 	uint64 lootObjectID = lootManager->createLoot(trx,container, lootGroup, level, maxCondition);
 
@@ -898,8 +909,20 @@ int DirectorManager::createLootSet(lua_State* L) {
 		return 0;
 
 	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
-	TransactionLog trx(TrxCode::LUASCRIPT, container);
+
+	auto dst = container;
+
+	if (!container->isCreatureObject()) {
+		auto parent = container->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+
+		if (parent != nullptr) {
+			dst = parent;
+		}
+	}
+
+	TransactionLog trx(TrxCode::LUALOOT, dst);
 	trx.addContextFromLua(L);
+	trx.addState("dstContainer", container->getObjectID());
 	if (lootManager->createLootSet(trx, container, lootGroup, level, maxCondition, setSize)) {
 		trx.commit(true);
 	} else {
@@ -933,8 +956,20 @@ int DirectorManager::createLootFromCollection(lua_State* L) {
 	luaObject.pop();
 
 	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
-	TransactionLog trx(TrxCode::LUASCRIPT, container);
+
+	auto dst = container;
+
+	if (!container->isCreatureObject()) {
+		auto parent = container->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+
+		if (parent != nullptr) {
+			dst = parent;
+		}
+	}
+
+	TransactionLog trx(TrxCode::LUALOOT, dst);
 	trx.addContextFromLua(L);
+	trx.addState("dstContainer", container->getObjectID());
 	if (lootManager->createLootFromCollection(trx, container, &lootCollection, level)) {
 		trx.commit(true);
 	} else {
