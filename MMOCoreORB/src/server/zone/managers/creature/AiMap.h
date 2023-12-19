@@ -118,7 +118,7 @@ public:
 		lua->init();
 		lua->setLoggingName("AiMapLuaInstance");
 		lua->setGlobalLogging(true);
-		lua->setLogging(true);
+		lua->setLogging(false);
 
 		lua->setGlobalInt("NONE",						BehaviorTreeSlot::NONE					);
 		lua->setGlobalInt("AWARE",						BehaviorTreeSlot::AWARE					);
