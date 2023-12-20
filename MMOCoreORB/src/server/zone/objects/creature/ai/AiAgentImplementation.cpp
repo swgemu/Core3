@@ -1145,16 +1145,18 @@ void AiAgentImplementation::destroyAllWeapons() {
 	AiAgent* thisAgent = asAiAgent();
 
 	// Set current weapon null, all weapons will be destroyed below
-	SceneObject* inventory = getSlottedObject("inventory");
-	ManagedReference<WeaponObject*> currentWeap = getCurrentWeapon();
+	currentWeapon = nullptr;
 
-	if (inventory != nullptr && currentWeap != nullptr) {
-		inventory->transferObject(currentWeap, -1, false, true, true);
+	ManagedReference<WeaponObject*> defaultWeap = getDefaultWeapon();
 
-		ManagedReference<WeaponObject*> defaultWeap = getDefaultWeapon();
+	if (defaultWeap != nullptr) {
+		Locker dlock(defaultWeap, thisAgent);
+		defaultWeap->destroyObjectFromWorld(true);
+		setDefaultWeapon(nullptr);
 
-		if (defaultWeap != nullptr && currentWeap->getObjectID() != defaultWeap->getObjectID())
-			inventory->transferObject(defaultWeap, -1, false, true, true);
+#ifdef DEBUG_AI_WEAPONS
+		msg << "Default Weapon - Ref Count: " << defaultWeap->getReferenceCount() << endl;
+#endif
 	}
 
 	ManagedReference<WeaponObject*> primaryWeap = getPrimaryWeapon();
@@ -1163,7 +1165,8 @@ void AiAgentImplementation::destroyAllWeapons() {
 		Locker plocker(primaryWeap, thisAgent);
 
 		primaryWeap->destroyObjectFromWorld(true);
-		setPrimaryWeapon(nullptr);
+
+		primaryWeapon = nullptr;
 
 #ifdef DEBUG_AI_WEAPONS
 		msg << "Primary Weapon - Ref Count: " << primaryWeap->getReferenceCount() << endl;
@@ -1175,7 +1178,8 @@ void AiAgentImplementation::destroyAllWeapons() {
 	if (secondaryWeap != nullptr) {
 		Locker slock(secondaryWeap, thisAgent);
 		secondaryWeap->destroyObjectFromWorld(true);
-		setSecondaryWeapon(nullptr);
+
+		secondaryWeapon = nullptr;
 
 #ifdef DEBUG_AI_WEAPONS
 		msg << "Secondary Weapon - Ref Count: " << secondaryWeap->getReferenceCount() << endl;
@@ -1187,22 +1191,11 @@ void AiAgentImplementation::destroyAllWeapons() {
 	if (thrownWeap != nullptr) {
 		Locker tlock(thrownWeap, thisAgent);
 		thrownWeap->destroyObjectFromWorld(true);
-		setThrownWeapon(nullptr);
+
+		thrownWeapon = nullptr;
 
 #ifdef DEBUG_AI_WEAPONS
 		msg << "Thrown Weapon - Ref Count: " << thrownWeap->getReferenceCount() << endl;
-#endif
-	}
-
-	ManagedReference<WeaponObject*> defaultWeap = getDefaultWeapon();
-
-	if (defaultWeap != nullptr) {
-		Locker dlock(defaultWeap, thisAgent);
-		defaultWeap->destroyObjectFromWorld(true);
-		setDefaultWeapon(nullptr);
-
-#ifdef DEBUG_AI_WEAPONS
-		msg << "Default Weapon - Ref Count: " << defaultWeap->getReferenceCount() << endl;
 #endif
 	}
 

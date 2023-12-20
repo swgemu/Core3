@@ -3721,9 +3721,9 @@ Reference<WeaponObject*> CreatureObjectImplementation::getWeapon() {
 		retWeapon = getDefaultWeapon();
 	}
 
-	if (retWeapon == nullptr) {
-		info(true) << getDisplayedName() << " ID: " << getObjectID() << "  returning a null weapon - " << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ": " << *_this.getReferenceUnsafeStaticCast();
-	}
+	// if (retWeapon == nullptr) {
+	//	info(true) << getDisplayedName() << " ID: " << getObjectID() << "  returning a null weapon - " << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ": " << *_this.getReferenceUnsafeStaticCast();
+	// }
 
 	return retWeapon;
 }
