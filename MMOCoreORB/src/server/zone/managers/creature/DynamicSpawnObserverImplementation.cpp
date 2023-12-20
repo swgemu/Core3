@@ -113,7 +113,7 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 	}
 
 	ManagedReference<AiAgent*> herdLeader = nullptr;
-	ManagedReference<SquadObserver*> squadObserver = nullptr;
+	ManagedReference<SquadObserver*> squadObserverRef = nullptr;
 
 	for (int i = 0; i < objectsToSpawn.size(); ++i) {
 		const String& templateToSpawn = objectsToSpawn.elementAt(i).getKey();
@@ -168,17 +168,20 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 				if (agent->isMonster()) {
 					if (j == 0 && herdLeader == nullptr && creatureTemplate->isHerd()) {
 						herdLeader = agent;
-						squadObserver = new SquadObserver();
 
-						if (squadObserver != nullptr) {
-							squadObserver->addMember(agent);
-							agent->registerObserver(ObserverEventType::SQUAD, squadObserver);
+						squadObserverRef = new SquadObserver();
+
+						if (squadObserverRef != nullptr) {
+							squadObserver = squadObserverRef;
+
+							squadObserverRef->addMember(agent);
+							agent->registerObserver(ObserverEventType::SQUAD, squadObserverRef);
 
 							//info(true) << "Herd Leader " << agent->getDisplayedName() << " " << agent->getObjectID() << " set";
 						}
-					} else if (herdLeader != nullptr && squadObserver != nullptr) {
-						squadObserver->addMember(agent);
-						agent->registerObserver(ObserverEventType::SQUAD, squadObserver);
+					} else if (herdLeader != nullptr && squadObserverRef != nullptr) {
+						squadObserverRef->addMember(agent);
+						agent->registerObserver(ObserverEventType::SQUAD, squadObserverRef);
 
 						Locker adultLock(herdLeader, agent);
 
@@ -194,7 +197,7 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 						// Double the template radius to account for both creatures
 						float templateRad = agent->getTemplateRadius() * 2.f;
 						float x = templateRad + System::random((j * 3));
-						float y = (-2.f * templateRad * j);
+						float y = (-1.5f * templateRad * j);
 
 						// Random chance to shift mobs to left side of leader
 						if (System::random(100) > 50)
@@ -210,4 +213,8 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 			}
 		}
 	}
+}
+
+SquadObserver* DynamicSpawnObserverImplementation::getSquadObserver() {
+	return squadObserver.get();
 }

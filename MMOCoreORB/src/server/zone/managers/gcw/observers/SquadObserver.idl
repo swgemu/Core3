@@ -50,6 +50,9 @@ class SquadObserver extends Observer implements Logger {
 	public native AiAgent getMember(int teamMemberIndex);
 
 	@local
+	public native int getMemberPosition(unsigned long memberID);
+
+	@local
 	public native void despawnSquad();
 
 	@local
