@@ -790,12 +790,17 @@ public:
 
 		AiAgent* squadLeader = squadObserver->getMember(0);
 
-		if (squadLeader == nullptr || squadLeader == agent)
+		if (squadLeader == nullptr)
+			return FAILURE;
+
+		uint64 squadLeaderID = squadLeader->getObjectID();
+
+		if (squadLeaderID == agent->getObjectID())
 			return FAILURE;
 
 		ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
 
-		if (followCopy != nullptr && followCopy == squadLeader) {
+		if (followCopy != nullptr && followCopy->getObjectID() == squadLeaderID) {
 			return FAILURE;
 		}
 

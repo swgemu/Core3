@@ -232,7 +232,7 @@ class AiAgent extends CreatureObject {
 
 	public static final int MAX_OOS_COUNT = 30;
 	public static final int MAX_OOS_PERCENT = 40;
-	public static final float MAX_OOS_RANGE = 20.0f;
+	public static final float MAX_OOS_RANGE = 75.0f;
 
 	protected transient unsigned long customAiMap;
 

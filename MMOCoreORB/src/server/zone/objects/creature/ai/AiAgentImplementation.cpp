@@ -629,40 +629,60 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 
 	// Check to see if the agent is a creature and rolls to spawn as a baby (lairs and dynamic spawns only)
 	ManagedReference<SceneObject*> home = homeObject.get();
-	bool spawnAsBaby = false;
 
 	if (npcTemplate != nullptr && home != nullptr && isCreature()) {
 		int chance = 2000;
 		int babiesSpawned = 0;
 
 		SortedVector<ManagedReference<Observer*> > observers = home->getObservers(ObserverEventType::CREATUREDESPAWNED);
-		DynamicSpawnObserver* observer = nullptr;
+		DynamicSpawnObserver* dynamicObserver = nullptr;
 
 		for (int i = 0; i < observers.size(); i++) {
-			observer = observers.get(i).castTo<DynamicSpawnObserver*>();
+			dynamicObserver = observers.get(i).castTo<DynamicSpawnObserver*>();
 
-			if (observer != nullptr) {
+			if (dynamicObserver != nullptr) {
 				break;
 			}
 		}
 
-		if (observer != nullptr) {
+		if (dynamicObserver != nullptr) {
+			// Get lair baby spawn information
 			chance = 500;
-			babiesSpawned = observer->getBabiesSpawned();
+			babiesSpawned = dynamicObserver->getBabiesSpawned();
+
+			// Add herd movement position
+			SquadObserver* squadObserver = dynamicObserver->getSquadObserver();
+
+			if (squadObserver != nullptr) {
+				int squadPosition = squadObserver->getMemberPosition(getObjectID());
+
+				if (squadPosition > 0) {
+					// Double the template radius to account for both creatures
+					float templateRad = getTemplateRadius() * 2.f;
+					float x = templateRad + System::random((squadPosition * 3));
+					float y = (-1.5f * templateRad * squadPosition);
+
+					// Random chance to shift mobs to left side of leader
+					if (System::random(100) > 50)
+						x *= -1.f;
+
+					Vector3 formationOffset(x, y, 0);
+
+					writeBlackboard("formationOffset", formationOffset);
+				}
+			}
 		}
 
 		CreatureManager* creatureManager = zone->getCreatureManager();
 
-		spawnAsBaby = creatureManager != nullptr && creatureManager->checkSpawnAsBaby(npcTemplate->getTame(), babiesSpawned, chance);
-	}
+		if (creatureManager != nullptr && creatureManager->checkSpawnAsBaby(npcTemplate->getTame(), babiesSpawned, chance)) {
+			Creature* creature = cast<Creature*>(asAiAgent());
 
-	if (spawnAsBaby) {
-		Creature* creature = cast<Creature*>(asAiAgent());
+			if (creature != nullptr) {
+				creature->loadTemplateDataForBaby(npcTemplate);
 
-		if (creature != nullptr) {
-			creature->loadTemplateDataForBaby(npcTemplate);
-
-			// info(true) << getDisplayedName() << " ID: " << getObjectID() << " Loc: " << getWorldPosition().toString() << " SPAWNED AS BABY";
+				// info(true) << getDisplayedName() << " ID: " << getObjectID() << " Loc: " << getWorldPosition().toString() << " SPAWNED AS BABY";
+			}
 		}
 	}
 
@@ -3144,7 +3164,7 @@ float AiAgentImplementation::getMaxDistance() {
 			if (followCopy == nullptr)
 				return 0.1f;
 
-			if (!CollisionManager::checkLineOfSight(asAiAgent(), followCopy)) {
+			if (!checkLineOfSight(followCopy)) {
 				return 1.0f;
 			} else if (!isInCombat()) {
 				if (peekBlackboard("formationOffset")) {
@@ -3285,10 +3305,10 @@ int AiAgentImplementation::setDestination() {
 			break;
 		}
 
-		if (!isPet() && !checkLineOfSight(followCopy) && !homeLocation.isInRange(asAiAgent(), AiAgent::MAX_OOS_RANGE)) {
+		if (!isPet() && !homeLocation.isInRange(asAiAgent(), AiAgent::MAX_OOS_RANGE) && !checkLineOfSight(followCopy)) {
 			if (++outOfSightCounter > AiAgent::MAX_OOS_COUNT && System::random(100) <= AiAgent::MAX_OOS_PERCENT) {
-			    leash();
-			    return setDestination();
+				leash();
+				return setDestination();
 			}
 		} else if (outOfSightCounter > 0) {
 			--outOfSightCounter;
@@ -3311,6 +3331,7 @@ int AiAgentImplementation::setDestination() {
 
 		if (peekBlackboard("formationOffset") && !isInCombat()) {
 			Vector3 formationOffset = readBlackboard("formationOffset").get<Vector3>();
+
 			float directionAngle = followCopy->getDirection()->getRadians();
 			float xRotated = (formationOffset.getX() * Math::cos(directionAngle) + formationOffset.getY() * Math::sin(directionAngle));
 			float yRotated = (-formationOffset.getX() * Math::sin(directionAngle) + formationOffset.getY() * Math::cos(directionAngle));
@@ -3785,7 +3806,7 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 		if (!agent->isInRange(asAiAgent(), packRange))
 			continue;
 
-		if (!CollisionManager::checkLineOfSight(asAiAgent(), creo))
+		if (!checkLineOfSight(creo))
 			continue;
 
 		Reference<AiAgent*> agentRef = agent;

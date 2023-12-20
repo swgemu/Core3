@@ -26,6 +26,25 @@ AiAgent* SquadObserverImplementation::getMember(int index) {
 	return teamMembers.get(index);
 }
 
+int SquadObserverImplementation::getMemberPosition(uint64 memberID) {
+	Locker locker(&squadLock);
+
+	int memberPosition = 0;
+
+	for (int i = 0; i < teamMembers.size(); ++i) {
+		auto member = teamMembers.get(i);
+
+		if (member == nullptr || member->getObjectID() != memberID)
+			continue;
+
+		memberPosition = i;
+		break;
+	}
+
+
+	return memberPosition;
+}
+
 void SquadObserverImplementation::despawnSquad() {
 	Locker lock(&squadLock);
 
