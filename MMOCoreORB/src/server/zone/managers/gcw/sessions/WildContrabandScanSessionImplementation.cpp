@@ -186,9 +186,11 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 		if (timeLeft <= 0) {
 			int numberOfContrabandItems = 0;
 			GCWManager* gcwManager = zone->getGCWManager();
+
 			if (gcwManager != nullptr) {
 				numberOfContrabandItems = gcwManager->countContrabandItems(player);
 			}
+
 			if (numberOfContrabandItems > 0) {
 				sendSystemMessage(player, "probe_scan_positive");
 				scanState = TAKEOFF;
@@ -220,6 +222,8 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 					droid->clearPatrolPoints();
 
 					droid->setMovementState(AiAgent::PATROLLING);
+					droid->setAITemplate();
+
 					droid->setNextPosition(homeLocation->getPositionX(), homeLocation->getPositionZ(), homeLocation->getPositionY());
 
 					droid->showFlyText("imperial_presence/contraband_search", "probot_support_fly", 255, 0, 0);
@@ -234,6 +238,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 	}
 	case INCOMBAT: {
 		AiAgent* droid = getDroid();
+
 		if (droid != nullptr) {
 			if (!droid->isInCombat() && !droid->isDead()) {
 				scanState = TAKEOFF;
@@ -249,12 +254,24 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 	case TAKEOFF:
 		if (timeLeft <= 0) {
 			scanState = TAKINGOFF;
-			timeLeft = 7;
+			timeLeft = 12;
 			AiAgent* droid = getDroid();
 
 			if (droid != nullptr) {
-				Locker dlocker(droid);
-				droid->setPosture(CreaturePosture::SITTING, true); // Takeoff
+				Locker dlocker(droid, player);
+
+				Vector3 playerPos = player->getWorldPosition();
+				float diffX = playerPos.getX();
+				float diffY = playerPos.getY();
+
+				float angle = atan2(diffY, diffX);
+				float newX = droid->getWorldPositionX() + (cos(angle) * 60.f);
+				float newY = droid->getWorldPositionY() + (sin(angle) * 60.f);
+
+				droid->setMovementState(AiAgent::PATROLLING);
+				droid->setAITemplate();
+
+				droid->setNextPosition(newX, droid->getPositionZ(), newY, nullptr);
 			} else {
 				scanState = FINISHED; // Probot is destroyed.
 			}
@@ -263,6 +280,13 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 	case TAKINGOFF:
 		if (timeLeft <= 0) {
 			scanState = FINISHED;
+		} else if (timeLeft < 7 && droid->getPosture() == CreaturePosture::UPRIGHT) {
+			AiAgent* droid = getDroid();
+
+			if (droid != nullptr) {
+				Locker dlocker(droid);
+				droid->setPosture(CreaturePosture::SITTING, true); // Takeoff
+			}
 		}
 		break;
 	default:
