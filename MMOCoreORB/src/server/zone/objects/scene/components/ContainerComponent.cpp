@@ -221,8 +221,10 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	}
 
 	if (objParent != nullptr || objZone != nullptr) {
-		if (objParent != nullptr)
-			objParent->removeObject(object, sceneObject, notifyClient);
+		if (objParent != nullptr) {
+			// Don't notify client yet, if you do here it confuses the client and drops from toolbar etc.
+			objParent->removeObject(object, sceneObject, false);
+		}
 
 		if (object->getParent() != nullptr) {
 			object->error("error removing from parent");
