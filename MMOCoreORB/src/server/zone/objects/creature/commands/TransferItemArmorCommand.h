@@ -5,6 +5,7 @@
 #ifndef TRANSFERITEMARMORCOMMAND_H_
 #define TRANSFERITEMARMORCOMMAND_H_
 
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -131,7 +132,7 @@ public:
 
 						ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
 
-						if (objectToRemove == nullptr)
+						if (objectToRemove == nullptr || objectToRemove == objectToTransfer)
 							return GENERALERROR;
 
 						if (!objectController->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
@@ -148,27 +149,9 @@ public:
 			if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
 				return GENERALERROR;
 
-		} /*else if (transferType == 4) {
-
-						}*/ else {
-							creature->error("unknown transferType in transferitemarmor command");
-						}
-
-		/*
-
-				uint64 target = packet->parseLong();
-
-				TangibleObject* targetTanoObject;
-				targetTanoObject = cast<TangibleObject*>( player->getInventoryItem(target));
-
-				if (targetTanoObject != nullptr) {
-					Inventory* inventory = player->getInventory();
-
-					if (inventory != nullptr)
-						inventory->moveObjectToTopLevel(player, targetTanoObject);
-
-					player->changeArmor(target, false);
-				}*/
+		} else {
+			creature->error("unknown transferType in transferitemarmor command");
+		}
 
 		return SUCCESS;
 	}
