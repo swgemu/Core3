@@ -10,9 +10,13 @@ import engine.util.Observable;
 import server.zone.objects.scene.SceneObject;
 import server.zone.managers.creature.SpawnObserver;
 include templates.mobile.LairTemplate;
+include server.zone.managers.gcw.observers.SquadObserver;
 
 class DynamicSpawnObserver extends SpawnObserver {
 	public static final int BABY_SPAWN_CHANCE = 500;
+
+	@weakReference
+	protected SquadObserver squadObserver;
 
 	public DynamicSpawnObserver() {
 		super();
@@ -32,4 +36,6 @@ class DynamicSpawnObserver extends SpawnObserver {
 	public boolean isDynamicSpawnObserver() {
 		return super.lairTemplate.getBuildingType() == LairTemplate.NONE;
 	}
+
+	public native SquadObserver getSquadObserver();
 }

@@ -111,7 +111,7 @@ public:
 		Vector3 thisWorldPos = getWorldPosition();
 		Vector3 objWorldPos = obj->getWorldPosition();
 
-		return thisWorldPos.squaredDistanceTo(objWorldPos) <= (range * range);
+		return thisWorldPos.squaredDistanceTo(objWorldPos) < (range * range);
 	}
 
 	bool isInRange(PatrolPoint* obj, float range) {

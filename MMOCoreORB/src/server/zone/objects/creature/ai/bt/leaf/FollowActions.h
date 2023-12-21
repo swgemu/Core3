@@ -373,19 +373,18 @@ public:
 
 class RunAway : public Behavior {
 public:
-	RunAway(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args), dist(0.f) {
+	RunAway(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args), delay(15), dist(0.f) {
 		parseArgs(args);
 	}
 
-	RunAway(const RunAway& b)
-			: Behavior(b), dist(b.dist) {
+	RunAway(const RunAway& b) : Behavior(b), delay(b.delay), dist(b.dist) {
 	}
 
 	RunAway& operator=(const RunAway& b) {
 		if (this == &b)
 			return *this;
 		Behavior::operator=(b);
+		delay = b.delay;
 		dist = b.dist;
 		return *this;
 	}
@@ -416,6 +415,13 @@ public:
 
 		float distance = Math::max(dist, dist - radius * aggroMod);
 
+		Time* fleeDelay = agent->getFleeDelay();
+
+		if (fleeDelay != nullptr) {
+			fleeDelay->updateToCurrentTime();
+			fleeDelay->addMiliTime(delay * 1000);
+		}
+
 		agent->writeBlackboard("fleeRange", distance);
 		agent->runAway(tar->asCreatureObject(), distance, false);
 		agent->showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
@@ -424,6 +430,7 @@ public:
 	}
 
 	void parseArgs(const LuaObject& args) {
+		delay = getArg<float>()(args, "delay");
 		dist = getArg<float>()(args, "dist");
 	}
 
@@ -435,6 +442,7 @@ public:
 	}
 
 private:
+	int delay;
 	float dist;
 };
 
@@ -790,12 +798,17 @@ public:
 
 		AiAgent* squadLeader = squadObserver->getMember(0);
 
-		if (squadLeader == nullptr || squadLeader == agent)
+		if (squadLeader == nullptr)
+			return FAILURE;
+
+		uint64 squadLeaderID = squadLeader->getObjectID();
+
+		if (squadLeaderID == agent->getObjectID())
 			return FAILURE;
 
 		ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
 
-		if (followCopy != nullptr && followCopy == squadLeader) {
+		if (followCopy != nullptr && followCopy->getObjectID() == squadLeaderID) {
 			return FAILURE;
 		}
 

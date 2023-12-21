@@ -539,6 +539,11 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	if (destructedObject->isDead())
 		return 1;
 
+	// Agent weapons must be destroyed and nullified. This prevents them being looted and ensures agent is cleaned up by GC
+	if (!destructedObject->isPet()) {
+		destructedObject->destroyAllWeapons();
+	}
+
 	destructedObject->cancelBehaviorEvent();
 	destructedObject->cancelRecoveryEvent();
 	destructedObject->wipeBlackboard();
@@ -551,11 +556,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	destructedObject->updateTimeOfDeath();
 	destructedObject->setPosture(CreaturePosture::DEAD, !isCombatAction, !isCombatAction);
-
-	// Agent weapons must be destroyed an nullified. This prevents them being looted and ensures agent is cleaned up by GC
-	if (!destructedObject->isPet()) {
-		destructedObject->destroyAllWeapons();
-	}
 
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 

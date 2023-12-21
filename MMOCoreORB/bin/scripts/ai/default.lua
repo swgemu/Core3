@@ -18,9 +18,9 @@ attackDefault = {
 	{id="2988398068",	name="If",	pid="2284645252"},
 	{id="1262112190",	name="CheckQueueSize",	pid="2988398068"},
 	{id="2812006626",	name="RandomSelector",	pid="4024177786"},
-	{id="169743063",	name="WriteBlackboard",	pid="2812006626",	args={val=DEFAULT, key="attackType"}},
-	{id="1932903383",	name="WriteBlackboard",	pid="2812006626",	args={val=DEFAULT, key="attackType"}},
-	{id="2322819263",	name="WriteBlackboard",	pid="2812006626",	args={val=DEFAULT, key="attackType"}},
+	{id="169743063",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
+	{id="1932903383",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
+	{id="2322819263",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
 	{id="1163120514",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
 	{id="3280863871",	name="Sequence",	pid="4024177786"},
 	{id="3604417668",	name="Sequence",	pid="3280863871"},
@@ -122,13 +122,13 @@ equipDefault = {
 	{id="2143400703",	name="CheckFollowInWeaponRange",	pid="848281294",	args={condition=PRIMARYWEAPON}},
 	{id="3507834914",	name="If",	pid="284029936"},
 	{id="1423335520",	name="CheckFollowClosestIdealRange",	pid="3507834914",	args={condition=PRIMARYWEAPON}},
-	{id="485346421",	name="WriteBlackboard",	pid="284029936",	args={val=PRIMARYWEAPON, key="stagedWeapon"}},
+	{id="485346421",	name="WriteBlackboard",	pid="284029936",	args={key="stagedWeapon", val=PRIMARYWEAPON}},
 	{id="3286553516",	name="Sequence",	pid="3588683982"},
 	{id="4256376058",	name="If",	pid="3286553516"},
 	{id="1599543891",	name="CheckFollowInWeaponRange",	pid="4256376058",	args={condition=SECONDARYWEAPON}},
 	{id="3111019196",	name="If",	pid="3286553516"},
 	{id="3429738785",	name="CheckFollowClosestIdealRange",	pid="3111019196",	args={condition=SECONDARYWEAPON}},
-	{id="2825297726",	name="WriteBlackboard",	pid="3286553516",	args={val=SECONDARYWEAPON, key="stagedWeapon"}},
+	{id="2825297726",	name="WriteBlackboard",	pid="3286553516",	args={key="stagedWeapon", val=SECONDARYWEAPON}},
 	{id="1510007529",	name="EquipStagedWeapon",	pid="1893489794"},
 	{id="2512472344",	name="EraseBlackboard",	pid="2941044245",	args={param="stagedWeapon"}},
 	{id="4004759019",	name="EraseBlackboard",	pid="2941044245",	args={param="followRange"}}}
@@ -161,19 +161,19 @@ idleDefault = {
 	{id="3270011669",	name="CheckMovementState",	pid="2757532336",	args={condition=LEASHING}},
 	{id="2186343870",	name="If",	pid="1398319073"},
 	{id="935976306",	name="CheckDestination",	pid="2186343870",	args={condition=0.0}},
-	{id="1349815697",	name="WriteBlackboard",	pid="1398319073",	args={val=RUN, key="moveMode"}},
+	{id="1349815697",	name="WriteBlackboard",	pid="1398319073",	args={key="moveMode", val=RUN}},
 	{id="681545628",	name="TreeSocket",	pid="1398319073",	args={slot=MOVE}},
 	{id="4129527278",	name="Sequence",	pid="2434234854"},
 	{id="3690571869",	name="If",	pid="4129527278"},
 	{id="4009188085",	name="CheckMovementState",	pid="3690571869",	args={condition=PATHING_HOME}},
 	{id="663900148",	name="If",	pid="4129527278"},
 	{id="3881405125",	name="CheckDestination",	pid="663900148",	args={condition=0.0}},
-	{id="1596358304",	name="WriteBlackboard",	pid="4129527278",	args={val=WALK, key="moveMode"}},
+	{id="1596358304",	name="WriteBlackboard",	pid="4129527278",	args={key="moveMode", val=WALK}},
 	{id="1979932461",	name="TreeSocket",	pid="4129527278",	args={slot=MOVE}},
 	{id="3408558848",	name="Sequence",	pid="2434234854"},
 	{id="480022165",	name="If",	pid="3408558848"},
 	{id="1939596405",	name="CheckHasPatrol",	pid="480022165"},
-	{id="2896409758",	name="WriteBlackboard",	pid="3408558848",	args={val=WALK, key="moveMode"}},
+	{id="2896409758",	name="WriteBlackboard",	pid="3408558848",	args={key="moveMode", val=WALK}},
 	{id="2040876794",	name="TreeSocket",	pid="3408558848",	args={slot=MOVE}},
 	{id="852586211",	name="Wait",	pid="3408558848",	args={duration=5.0}},
 	{id="3547969451",	name="Selector",	pid="2434234854"},
@@ -209,7 +209,7 @@ idleDefault = {
 	{id="1384587681",	name="CheckMovementState",	pid="3807314026",	args={condition=PATHING_HOME}},
 	{id="3483017378",	name="If",	pid="4072235030"},
 	{id="776089883",	name="CheckOutdoors",	pid="3483017378"},
-	{id="1547268873",	name="GeneratePatrol",	pid="4072235030",	args={distFromHome=30.0, numPoints=5}}}
+	{id="1547268873",	name="GeneratePatrol",	pid="4072235030",	args={distFromHome=25.0, numPoints=5}}}
 addAiTemplate("idleDefault", idleDefault)
 
 killDefault = {
@@ -282,7 +282,7 @@ notifyHelpDefault = {
 	{id="1419427323",	name="CallForHelp",	pid="4049270502"},
 	{id="407552319",	name="If",	pid="801960668"},
 	{id="784166790",	name="CheckMovementState",	pid="407552319",	args={condition=NOTIFY_ALLY}},
-	{id="3173027259",	name="WriteBlackboard",	pid="801960668",	args={val=RUN, key="moveMode"}},
+	{id="3173027259",	name="WriteBlackboard",	pid="801960668",	args={key="moveMode", val=RUN}},
 	{id="3649208780",	name="AlwaysSucceed",	pid="801960668"},
 	{id="837811894",	name="TreeSocket",	pid="3649208780",	args={slot=MOVE}}}
 addAiTemplate("notifyHelpDefault", notifyHelpDefault)
@@ -317,7 +317,7 @@ rootDefault = {
 	{id="3085594992",	name="Sequence",	pid="1711463331"},
 	{id="2197461733",	name="TreeSocket",	pid="3085594992",	args={slot=EQUIP}},
 	{id="1754584012",	name="TreeSocket",	pid="3085594992",	args={slot=ATTACK}},
-	{id="2676240638",	name="WriteBlackboard",	pid="1711463331",	args={val=RUN, key="moveMode"}},
+	{id="2676240638",	name="WriteBlackboard",	pid="1711463331",	args={key="moveMode", val=RUN}},
 	{id="3497802169",	name="TreeSocket",	pid="714360210",	args={slot=AWARE}},
 	{id="772402747",	name="TreeSocket",	pid="714360210",	args={slot=CRACKDOWNSCAN}},
 	{id="1709087547",	name="TreeSocket",	pid="714360210",	args={slot=CHATREACTION}},
@@ -338,7 +338,7 @@ scareDefault = {
 	{id="4154513359",	name="CheckProspectFacing",	pid="4278456295"},
 	{id="3009279984",	name="If",	pid="9692099"},
 	{id="1391512006",	name="CheckProspectLOS",	pid="3009279984"},
-	{id="2633134651",	name="RunAway",	pid="9692099",	args={dist=32.0}}}
+	{id="2633134651",	name="RunAway",	pid="9692099",	args={delay=30, dist=32.0}}}
 addAiTemplate("scareDefault", scareDefault)
 
 stalkDefault = {

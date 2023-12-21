@@ -39,9 +39,6 @@ idleCrackdown = {
 	{id="3420905314",	name="Sequence",	pid="341662921"},
 	{id="2778093536",	name="If",	pid="3420905314"},
 	{id="861335548",	name="CheckOutdoors",	pid="2778093536"},
-	{id="4284793712",	name="Not",	pid="3420905314"},
-	{id="2689461598",	name="If",	pid="4284793712"},
-	{id="973784086",	name="CheckDestination",	pid="2689461598",	args={condition=0.0}},
 	{id="1532669256",	name="Not",	pid="3420905314"},
 	{id="2821616316",	name="If",	pid="1532669256"},
 	{id="300585033",	name="CheckMovementState",	pid="2821616316",	args={condition=WATCHING}},
@@ -60,6 +57,8 @@ idleCrackdown = {
 	{id="4120748463",	name="CheckIsStationary",	pid="1983393494"},
 	{id="2865816838",	name="GeneratePatrol",	pid="3251981835",	args={distFromHome=30.0, numPoints=5}},
 	{id="1025565676",	name="Sequence",	pid="341662921"},
+	{id="1931706343",	name="If",	pid="1025565676"},
+	{id="3855939006",	name="CheckMovementState",	pid="1931706343",	args={condition=PATROLLING}},
 	{id="3326622834",	name="Selector",	pid="1025565676"},
 	{id="3071138585",	name="Sequence",	pid="3326622834"},
 	{id="1908035156",	name="If",	pid="3071138585"},
@@ -69,10 +68,7 @@ idleCrackdown = {
 	{id="1742603408",	name="If",	pid="1025565676"},
 	{id="2307864494",	name="CheckDestination",	pid="1742603408",	args={condition=0.0}},
 	{id="3869875258",	name="TreeSocket",	pid="1025565676",	args={slot=MOVE}},
-	{id="2586149198",	name="Sequence",	pid="1025565676"},
-	{id="1931706343",	name="If",	pid="2586149198"},
-	{id="3855939006",	name="CheckMovementState",	pid="1931706343",	args={condition=PATROLLING}},
-	{id="3694126116",	name="Wait",	pid="2586149198",	args={duration=5.0}}}
+	{id="3694126116",	name="Wait",	pid="1025565676",	args={duration=5.0}}}
 addAiTemplate("idleCrackdown", idleCrackdown)
 
 lookCrackdown = {
