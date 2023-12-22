@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_tieaggressor_chassis_token = object_tangible_ship_components_chassis_shared_tieaggressor_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tieaggressor_deed.iff",
 	dealerFee = 8000,
-	certRequired = "",
+	certificationRequired = "cert_starships_tieaggressor",
+	skillRequired = {"pilot_imperial_navy_starships_04"},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

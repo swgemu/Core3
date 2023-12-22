@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_tiefighter_chassis_token = object_tangible_ship_components_chassis_shared_tiefighter_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tiefighter_deed.iff",
 	dealerFee = 2000,
-	certRequired = "",
+	certificationRequired = "cert_starships_tiefighter",
+	skillRequired = {"pilot_imperial_navy_starships__01"},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

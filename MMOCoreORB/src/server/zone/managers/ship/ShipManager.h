@@ -18,6 +18,7 @@
 #include "server/zone/objects/ship/ShipCollisionData.h"
 #include "server/zone/objects/ship/ShipMissileData.h"
 #include "server/zone/objects/ship/ShipCountermeasureData.h"
+#include "server/zone/objects/ship/components/ShipChassisComponent.h"
 
 class ShipManager : public Singleton<ShipManager>, public Object, public Logger {
 protected:
@@ -51,6 +52,8 @@ public:
 		POBSHIP = 2,
 		SPACESTATION = 3
 	};
+
+	const static int NO_CERT_COST_MULTI = 5;
 
 	ShipManager() {
 		setLoggingName("ShipManager");
@@ -134,6 +137,8 @@ public:
 	ShipObject* createShip(const String& shipName, int persistence = 0, bool loadComponents = true);
 
 	void createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents = true);
+
+	bool createDeedFromChassis(CreatureObject* owner, ShipChassisComponent* chassisBlueprint, CreatureObject* chassisDealer);
 
 	/**
 	 * Sends a sui list box containing information about the structure.

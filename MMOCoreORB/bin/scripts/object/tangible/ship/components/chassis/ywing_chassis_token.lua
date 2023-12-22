@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_ywing_chassis_token = object_tangible_ship_components_chassis_shared_ywing_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/ywing_deed.iff",
 	dealerFee = 2000,
-	certRequired = "pilot_rebel_navy_starships_01",
+	certificationRequired = "cert_starships_ywing",
+	skillRequired = {"pilot_rebel_navy_starships__01"},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
