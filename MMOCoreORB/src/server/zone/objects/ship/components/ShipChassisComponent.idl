@@ -1,0 +1,71 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipComponent;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+import system.util.Vector;
+
+class ShipChassisComponent extends ShipComponent {
+	private string chassisDeed;
+	private string certification;
+
+	@dereferenced
+	private transient Vector<string> skillsRequired;
+
+	private int dealerFee;
+	private boolean pob;
+
+	public ShipChassisComponent() {
+		super();
+
+		chassisDeed = "";
+		certification = "";
+		dealerFee = 0;
+
+		pob = false;
+	}
+
+	// Accessors
+	public string getCertificationRequired() {
+		return certification;
+	}
+
+	@dirty
+	public int getTotalSkillsRequired() {
+		return skillsRequired.size();
+	}
+
+	public string getSkillRequired(int index) {
+		return skillsRequired.get(index);
+	}
+
+	public string getChassisDeed() {
+		return chassisDeed;
+	}
+
+	public int getDealerFee() {
+		return dealerFee;
+	}
+
+	// Mutators
+	public void setCertificationRequired(string cert) {
+		certification = cert;
+	}
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+}

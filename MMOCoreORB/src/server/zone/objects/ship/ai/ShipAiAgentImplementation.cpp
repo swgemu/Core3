@@ -32,7 +32,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/ship/ShipUpdateTransformMessage.h"
 #include "templates/SharedObjectTemplate.h"
-#include "templates/tangible/SharedShipObjectTemplate.h"
+#include "templates/tangible/ship/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/ai/events/ShipAiBehaviorEvent.h"
 #include "server/zone/objects/ship/ai/events/DespawnAiShipOnNoPlayersInRange.h"
 #include "templates/params/ship/ShipFlags.h"
