@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_blacksun_light_s02_chassis_token = objec
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/blacksun_light_s02_deed.iff",
 	dealerFee = 2000,
-	certRequired = "pilot_neutral_starships_02",
+	certificationRequired = "pilot_neutral_starships_02",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_xwing_chassis_token = object_tangible_sh
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/xwing_deed.iff",
 	dealerFee = 8000,
-	certRequired = "pilot_rebel_navy_starships_03",
+	certificationRequired = "pilot_rebel_navy_starships_03",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

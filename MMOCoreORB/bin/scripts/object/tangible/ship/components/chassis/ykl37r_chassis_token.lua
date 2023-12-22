@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_ykl37r_chassis_token = object_tangible_s
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/ykl37r_deed.iff",
 	dealerFee = 20000,
-	certRequired = "pilot_rebel_navy_master",
+	certificationRequired = "pilot_rebel_navy_master",
 	POB = true,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

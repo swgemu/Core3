@@ -5,7 +5,7 @@
 #include "server/zone/managers/ship/ShipManager.h"
 #include "server/zone/objects/ship/ComponentSlots.h"
 #include "server/zone/objects/ship/ShipChassisData.h"
-#include "templates/tangible/SharedShipObjectTemplate.h"
+#include "templates/tangible/ship/SharedShipObjectTemplate.h"
 
 class ShipCollisionHardpoint {
 protected:

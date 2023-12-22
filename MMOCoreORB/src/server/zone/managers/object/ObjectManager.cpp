@@ -19,15 +19,7 @@
 #include "conf/ConfigManager.h"
 #include "engine/orb/db/UpdateModifiedObjectsThread.h"
 #include "engine/orb/db/CommitMasterTransactionThread.h"
-#include "server/zone/objects/ship/components/ShipComponent.h"
-#include "server/zone/objects/ship/components/ShipCapacitorComponent.h"
-#include "server/zone/objects/ship/components/ShipEngineComponent.h"
-#include "server/zone/objects/ship/components/ShipArmorComponent.h"
-#include "server/zone/objects/ship/components/ShipWeaponComponent.h"
-#include "server/zone/objects/ship/components/ShipBoosterComponent.h"
-#include "server/zone/objects/ship/components/ShipEngineComponent.h"
-#include "server/zone/objects/ship/components/ShipReactorComponent.h"
-#include "server/zone/objects/ship/components/ShipShieldComponent.h"
+
 
 using namespace engine::db;
 
@@ -343,7 +335,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ShipCapacitorComponent>(SceneObjectType::SHIPWEAPONCAPACITOR);
 	objectFactory.registerObject<ShipBoosterComponent>(SceneObjectType::SHIPBOOSTER);
 	objectFactory.registerObject<Component>(SceneObjectType::SHIPDRIODINTERFACE);
-	objectFactory.registerObject<Component>(SceneObjectType::SHIPCHASSIS);
+	objectFactory.registerObject<ShipChassisComponent>(SceneObjectType::SHIPCHASSIS);
 	objectFactory.registerObject<Component>(SceneObjectType::SHIPMISSILE);
 	objectFactory.registerObject<Component>(SceneObjectType::SHIPCOUNTERMEASURE);
 	objectFactory.registerObject<ShipWeaponComponent>(SceneObjectType::SHIPWEAPONLAUNCHER);

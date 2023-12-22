@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_tiebomber_chassis_token = object_tangibl
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tiebomber_deed.iff",
 	dealerFee = 4000,
-	certRequired = "",
+	certificationRequired = "",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

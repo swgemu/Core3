@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_yt1300_chassis_token = object_tangible_s
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/yt1300_deed.iff",
 	dealerFee = 20000,
-	certRequired = "pilot_neutral_master",
+	certificationRequired = "pilot_neutral_master",
 	POB = true,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

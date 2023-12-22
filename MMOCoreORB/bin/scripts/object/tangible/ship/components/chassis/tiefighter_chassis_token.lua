@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_tiefighter_chassis_token = object_tangib
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tiefighter_deed.iff",
 	dealerFee = 2000,
-	certRequired = "",
+	certificationRequired = "",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

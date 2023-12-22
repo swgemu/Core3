@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_decimator_chassis_token = object_tangibl
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/decimator_deed.iff",
 	dealerFee = 20000,
-	certRequired = "",
+	certificationRequired = "",
 	POB = true,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

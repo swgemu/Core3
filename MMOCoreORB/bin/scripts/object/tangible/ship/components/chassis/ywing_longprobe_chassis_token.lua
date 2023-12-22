@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_ywing_longprobe_chassis_token = object_t
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/ywing_longprobe_deed.iff",
 	dealerFee = 4000,
-	certRequired = "pilot_rebel_navy_starships_02",
+	certificationRequired = "pilot_rebel_navy_starships_02",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

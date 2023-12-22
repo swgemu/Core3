@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_tieaggressor_chassis_token = object_tang
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tieaggressor_deed.iff",
 	dealerFee = 8000,
-	certRequired = "",
+	certificationRequired = "",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

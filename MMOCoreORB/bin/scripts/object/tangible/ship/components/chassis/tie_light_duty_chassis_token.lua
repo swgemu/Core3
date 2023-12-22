@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_tie_light_duty_chassis_token = object_ta
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tie_light_duty_deed.iff",
 	dealerFee = 1000,
-	certRequired = "",
+	certificationRequired = "",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

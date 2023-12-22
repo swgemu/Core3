@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_blacksun_heavy_s04_chassis_token = objec
     templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/blacksun_heavy_s04_deed.iff",
 	dealerFee = 8000,
-	certRequired = "",
+	certificationRequired = "",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
