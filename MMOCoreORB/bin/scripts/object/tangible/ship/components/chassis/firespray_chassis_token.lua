@@ -43,11 +43,10 @@
 
 object_tangible_ship_components_chassis_firespray_chassis_token = object_tangible_ship_components_chassis_shared_firespray_chassis_token:new {
 
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/firespray_deed.iff",
 	dealerFee = 15000,
-	certRequired = "",
+	certificationRequired = "cert_starships_firespray",
 	POB = 0,
 }
 
