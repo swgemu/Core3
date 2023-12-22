@@ -14,7 +14,7 @@ include templates.SharedObjectTemplate;
 include server.zone.objects.ship.ShipComponentData;
 include server.zone.packets.DeltaMessage;
 include server.zone.objects.ship.ShipDeltaVector;
-include templates.tangible.ShipComponentTemplate;
+include templates.tangible.ship.ShipComponentTemplate;
 
 class ShipComponent extends Component {
 	protected float mass;

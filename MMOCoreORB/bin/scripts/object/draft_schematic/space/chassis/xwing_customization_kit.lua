@@ -42,39 +42,36 @@
 
 
 object_draft_schematic_space_chassis_xwing_customization_kit = object_draft_schematic_space_chassis_shared_xwing_customization_kit:new {
+	templateType = DRAFTSCHEMATIC,
 
-   templateType = DRAFTSCHEMATIC,
+	customObjectName = "Starship Paint Kit",
 
-   customObjectName = "Starship Paint Kit",
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 1,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 1, 
-   factoryCrateType = "object/factory/factory_crate_electronics.iff",
-   
-   xpType = "shipwright", 
-   xp = 50, 
+	xpType = "shipwright",
+	xp = 50,
 
-   assemblySkill = "grenade_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "grenade_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"casing", "paint"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"steel", "petrochem_inert"},
-   resourceQuantities = {250, 300},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"casing", "paint"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"steel", "petrochem_inert"},
+	resourceQuantities = {250, 300},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/ship/crafted/chassis/xwing_customization_kit.iff",
 
-   targetTemplate = "object/tangible/ship/crafted/chassis/xwing_customization_kit.iff",
-
-   additionalTemplates = {
-             }
+	additionalTemplates = {}
 
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_xwing_customization_kit, "object/draft_schematic/space/chassis/xwing_customization_kit.iff")

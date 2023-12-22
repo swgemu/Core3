@@ -10,6 +10,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+import system.util.Vector;
 
 @lua
 @json
@@ -23,6 +24,9 @@ class ShipDeed extends Deed {
 
 	protected string certRequired;
 	protected string parkingLocation;
+
+	@dereferenced
+	private Vector<string> skillsRequired;
 
 	protected int shipType;
 
@@ -106,6 +110,10 @@ class ShipDeed extends Deed {
 		shipType = type;
 	}
 
+	public void addSkillRequired(string skill) {
+		skillsRequired.add(skill);
+	}
+
 	// Getters
 	@read
 	public string getControlDeviceTemplate() {
@@ -135,6 +143,14 @@ class ShipDeed extends Deed {
 	@read
 	public string getCertificationRequired() {
 		return certRequired;
+	}
+
+	public int getTotalSkillsRequired() {
+		return skillsRequired.size();
+	}
+
+	public string getSkillRequired(int index) {
+		return skillsRequired.get(index);
 	}
 
 	@read

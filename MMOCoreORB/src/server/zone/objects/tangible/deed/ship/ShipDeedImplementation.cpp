@@ -9,7 +9,7 @@
 #include "server/zone/objects/tangible/deed/ship/ShipDeed.h"
 #include"server/zone/ZoneServer.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "templates/tangible/ShipDeedTemplate.h"
+#include "templates/tangible/ship/ShipDeedTemplate.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -39,16 +39,23 @@ void ShipDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData
 void ShipDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	alm->insertAttribute("volume", 1);
 
-	StringBuffer certName;
-	certName << "@skl_n:" << getCertificationRequired();
-	alm->insertAttribute("pilotskillrequired", certName.toString());
+	StringBuffer msg;
+
+	if (getTotalSkillsRequired() == 1) {
+		msg << "@skl_n:" << getSkillRequired(0);
+		alm->insertAttribute("pilotskillrequired", msg);
+
+		msg.deleteAll();
+	}
 
 	float maxCond = getMaxHitPoints();
 	float currentHp = maxCond - getHitPointsDamage();
-	StringBuffer hp;
-	hp << Math::getPrecision(currentHp, 5) << "/" << Math::getPrecision(maxCond, 5);
 
-	alm->insertAttribute("chassishitpoints", hp.toString());
+	msg << Math::getPrecision(currentHp, 5) << "/" << Math::getPrecision(maxCond, 5);
+
+	alm->insertAttribute("chassishitpoints", msg);
+	msg.deleteAll();
+
 	alm->insertAttribute("chassismass", Math::getPrecision(getMass(), 3));
 	alm->insertAttribute("parking_spot", getParkingLocaiton());
 }

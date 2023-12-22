@@ -42,17 +42,14 @@
 
 
 object_draft_schematic_space_chassis_hutt_medium_s01 = object_draft_schematic_space_chassis_shared_hutt_medium_s01:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "Dunelizard Chassis Blueprints, Style 1",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 27,
 	size = 1,
 	factoryCrateSize = 0,
 	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
-   
+
 	xpType = "shipwright",
 	xp = 3750,
 

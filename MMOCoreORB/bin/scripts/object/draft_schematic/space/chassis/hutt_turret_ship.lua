@@ -42,17 +42,14 @@
 
 
 object_draft_schematic_space_chassis_hutt_turret_ship = object_draft_schematic_space_chassis_shared_hutt_turret_ship:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "M22-T \"Krayt\" Chassis Blueprints",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 43,
 	size = 1,
 	factoryCrateSize = 0,
 	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
-   
+
 	xpType = "shipwright",
 	xp = 37500,
 

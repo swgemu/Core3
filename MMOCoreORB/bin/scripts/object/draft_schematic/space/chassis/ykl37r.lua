@@ -42,17 +42,14 @@
 
 
 object_draft_schematic_space_chassis_ykl37r = object_draft_schematic_space_chassis_shared_ykl37r:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "YKL-37R Nova Courier Chassis Blueprints",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 43,
 	size = 1,
 	factoryCrateSize = 0,
 	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
-   
+
 	xpType = "shipwright",
 	xp = 37500,
 
