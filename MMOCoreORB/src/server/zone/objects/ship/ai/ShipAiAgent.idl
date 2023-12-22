@@ -20,7 +20,7 @@ include server.zone.objects.ship.ai.SpacePatrolPoint;
 import engine.core.ManagedObject;
 import server.zone.objects.tangible.TangibleObject;
 include templates.SharedObjectTemplate;
-include templates.tangible.SharedShipObjectTemplate;
+include templates.tangible.ship.SharedShipObjectTemplate;
 import engine.util.Observable;
 include system.thread.Mutex;
 include system.thread.ReadWriteLock;

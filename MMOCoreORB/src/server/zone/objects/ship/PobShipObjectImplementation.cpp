@@ -5,7 +5,7 @@
 
 #include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/objects/ship/ShipObject.h"
-#include "templates/tangible/SharedShipObjectTemplate.h"
+#include "templates/tangible/ship/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/PlayerLaunchPoints.h"
 #include "server/zone/objects/ship/DamageSparkLocations.h"
 #include "server/zone/ZoneServer.h"
