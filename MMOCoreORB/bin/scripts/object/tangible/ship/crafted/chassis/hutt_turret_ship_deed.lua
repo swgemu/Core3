@@ -42,7 +42,12 @@
 
 
 object_tangible_ship_crafted_chassis_hutt_turret_ship_deed = object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed:new {
+	templateType = SHIPDEED,
+	gameObjectType = 8388617,
 
+	shipType = 2, --POBSHIP,
+	shipControlDevice = "object/intangible/ship/hutt_turret_ship_pcd.iff",
+	generatedObjectTemplate = "object/ship/player/player_hutt_turret_ship.iff",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_hutt_turret_ship_deed, "object/tangible/ship/crafted/chassis/hutt_turret_ship_deed.iff")

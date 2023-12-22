@@ -13,7 +13,7 @@
 #include "server/zone/objects/ship/ShipChassisData.h"
 #include "server/ServerCore.h"
 #include "server/zone/ZoneServer.h"
-#include "templates/tangible/SharedShipObjectTemplate.h"
+#include "templates/tangible/ship/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/ComponentSlots.h"
 #include "server/zone/objects/ship/ShipComponentFlag.h"
 #include "server/zone/packets/ship/DestroyShipMessage.h"
@@ -27,6 +27,9 @@
 #include "server/zone/objects/player/sui/callbacks/DeleteAllItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/PobShipStatusSuiCallback.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
+#include "server/zone/objects/tangible/deed/ship/ShipDeed.h"
+#include "server/chat/ChatManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 void ShipManager::initialize() {
 	loadShipChassisData();
@@ -430,6 +433,133 @@ void ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName
 		Locker sLock(ship);
 		ship->destroyObjectFromDatabase(true);
 	}
+}
+
+bool ShipManager::createDeedFromChassis(CreatureObject* player, ShipChassisComponent* chassisBlueprint, CreatureObject* chassisDealer) {
+	if (player == nullptr || chassisBlueprint == nullptr || chassisDealer == nullptr)
+		return false;
+
+	String deedPath = chassisBlueprint->getChassisDeed();
+	String certification = chassisBlueprint->getCertificationRequired();
+	int shipCost = chassisBlueprint->getDealerFee();
+
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return false;
+	}
+
+	auto chatManager = zoneServer->getChatManager();
+
+	if (chatManager == nullptr) {
+		return false;
+	}
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return false;
+
+	// Increase ship cost if player is not certified
+	if (!certification.isEmpty() && !ghost->hasAbility(certification))
+		shipCost *= NO_CERT_COST_MULTI;
+
+	// Check player has the cash
+	int playerCash = player->getCashCredits();
+
+	if (shipCost > playerCash) {
+		chatManager->broadcastChatMessage(chassisDealer, "@chassis_npc:no_money", player->getObjectID(), 0, chassisDealer->getMoodID());
+
+		return false;
+	}
+
+	auto inventory = player->getSlottedObject("inventory");
+
+	if (inventory == nullptr) {
+		return false;
+	}
+
+	if (inventory->isContainerFull()) {
+		chatManager->broadcastChatMessage(chassisDealer, "@chassis_npc:inv_full", player->getObjectID(), 0, chassisDealer->getMoodID());
+
+		return false;
+	}
+
+	auto object = (zoneServer->createObject(deedPath.hashCode(), 2)).castTo<TangibleObject*>();
+
+	if (object == nullptr || !object->isShipDeedObject()) {
+		return false;
+	}
+
+	ShipDeed* shipDeed = object.castTo<ShipDeed*>();
+
+	if (shipDeed == nullptr) {
+		return false;
+	}
+
+	Locker lock(shipDeed);
+	Locker inventoryLock(inventory, shipDeed);
+
+	if (!inventory->transferObject(shipDeed, -1)) {
+		shipDeed->destroyObjectFromWorld(true);
+		shipDeed->destroyObjectFromDatabase();
+
+		error("Failed to transfer ShipDeed: " + String::valueOf(shipDeed->getObjectID()) + " Template: " + deedPath);
+
+		return false;
+	}
+
+	// release lock on inventory
+	inventoryLock.release();
+
+	// set hitpoints, mass, location
+	shipDeed->setMass(chassisBlueprint->getMass());
+	shipDeed->setMaxHitPoints(chassisBlueprint->getMaxHitpoints());
+
+	shipDeed->setCertificationRequired(certification);
+
+	int totalSkillReq = chassisBlueprint->getTotalSkillsRequired();
+
+	for (int i = 0; i < totalSkillReq; ++i) {
+		String skillName = chassisBlueprint->getSkillRequired(i);
+
+		shipDeed->addSkillRequired(skillName);
+	}
+
+	// Set the parking location to the nearest travel point
+	auto zone = player->getZone();
+
+	if (zone != nullptr) {
+		auto planetManager = zone->getPlanetManager();
+
+		if (planetManager != nullptr) {
+			auto travelPoint = planetManager->getNearestPlanetTravelPoint(player->getWorldPosition(), 128.f);
+
+			if (travelPoint != nullptr) {
+				auto travelPointName = travelPoint->getPointName();
+
+				shipDeed->setParkingLocation(travelPointName);
+			}
+		}
+	}
+
+	// Broadcast ship deed to the player
+	shipDeed->sendTo(player, true);
+
+	// Deduct cost from player
+	Locker plock(player, shipDeed);
+
+	player->subtractCashCredits(shipCost);
+
+	plock.release();
+
+	// Handle Destruction of the Chassis Blueprint
+	Locker chassisLock(chassisBlueprint, shipDeed);
+
+	chassisBlueprint->destroyObjectFromWorld(true);
+	chassisBlueprint->destroyObjectFromDatabase();
+
+	return true;
 }
 
 void ShipManager::reportPobShipStatus(CreatureObject* player, PobShipObject* pobShip, SceneObject* terminal) {

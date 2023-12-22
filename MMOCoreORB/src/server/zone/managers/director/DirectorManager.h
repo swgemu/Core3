@@ -223,6 +223,9 @@ namespace server {
 		static int getWorldFloor(lua_State* L);
 		static int useCovertOvert(lua_State* L);
 
+		// JTL
+		static int generateShipDeed(lua_State* L);
+
 	private:
 		static void setupLuaPackagePath(Lua* luaEngine);
 		static Logger& getEventLogger();
