@@ -22,7 +22,7 @@ include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaBitArray;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
-include templates.tangible.SharedShipObjectTemplate;
+include templates.tangible.ship.SharedShipObjectTemplate;
 include system.util.VectorMap;
 include system.lang.ref.Reference;
 include server.zone.objects.ship.ShipDeltaVector;

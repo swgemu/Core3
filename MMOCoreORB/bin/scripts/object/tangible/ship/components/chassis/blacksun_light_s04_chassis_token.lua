@@ -42,11 +42,10 @@
 
 
 object_tangible_ship_components_chassis_blacksun_light_s04_chassis_token = object_tangible_ship_components_chassis_shared_blacksun_light_s04_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/blacksun_light_s04_deed.iff",
 	dealerFee = 2000,
-	certRequired = "pilot_neutral_starships_02",
+	certificationRequired = "cert_starships_lightblacksunfighter",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

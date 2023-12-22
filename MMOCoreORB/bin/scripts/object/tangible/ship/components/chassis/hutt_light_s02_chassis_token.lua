@@ -42,11 +42,10 @@
 
 
 object_tangible_ship_components_chassis_hutt_light_s02_chassis_token = object_tangible_ship_components_chassis_shared_hutt_light_s02_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/hutt_light_s02_deed.iff",
 	dealerFee = 2000,
-	certRequired = "pilot_neutral_starships_01",
+	certificationRequired = "cert_starships_lighthuttfighter",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

@@ -99,6 +99,7 @@
 #include "server/zone/managers/ship/ShipManager.h"
 #include "templates/params/ship/ShipFlags.h"
 #include "templates/params/creature/PlayerArrangement.h"
+#include "server/zone/objects/ship/components/ShipChassisComponent.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -530,6 +531,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("broadcastToGalaxy", broadcastToGalaxy);
 	luaEngine->registerFunction("getWorldFloor", getWorldFloor);
 	luaEngine->registerFunction("useCovertOvert", useCovertOvert);
+
+	// JTL
+	luaEngine->registerFunction("generateShipDeed", generateShipDeed);
 
 	//Navigation Mesh Management
 	luaEngine->registerFunction("createNavMesh", createNavMesh);
@@ -4611,6 +4615,35 @@ int DirectorManager::useCovertOvert(lua_State* L) {
 	bool result = ConfigManager::instance()->useCovertOvertSystem();
 
 	lua_pushboolean(L, result);
+
+	return 1;
+}
+
+int DirectorManager::generateShipDeed(lua_State* L) {
+	if (checkArgumentCount(L, 3) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::generateShipDeed";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	CreatureObject* player = (CreatureObject*)lua_touserdata(L, -3);
+	ShipChassisComponent* chassisBlueprint = (ShipChassisComponent*)lua_touserdata(L, -2);
+	CreatureObject* chassisDealer = (CreatureObject*)lua_touserdata(L, -1);
+
+	if (player == nullptr || chassisBlueprint == nullptr || chassisDealer == nullptr) {
+		lua_pushboolean(L, false);
+		return 1;
+	}
+
+	auto shipManager = ShipManager::instance();
+
+	if (shipManager != nullptr && shipManager->createDeedFromChassis(player, chassisBlueprint, chassisDealer)) {
+		lua_pushboolean(L, true);
+		return 1;
+	}
+
+	lua_pushboolean(L, false);
 
 	return 1;
 }

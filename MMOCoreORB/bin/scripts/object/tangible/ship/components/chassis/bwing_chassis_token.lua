@@ -42,11 +42,10 @@
 
 
 object_tangible_ship_components_chassis_bwing_chassis_token = object_tangible_ship_components_chassis_shared_bwing_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/bwing_deed.iff",
 	dealerFee = 15000,
-	certRequired = "pilot_rebel_navy_master",
+	certificationRequired = "cert_starships_bwing",
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},

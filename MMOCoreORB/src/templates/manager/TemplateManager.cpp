@@ -104,9 +104,7 @@
 #include "templates/tangible/SharedCountingObjectTemplate.h"
 #include "templates/tangible/SharedFactoryObjectTemplate.h"
 #include "templates/tangible/SharedResourceContainerObjectTemplate.h"
-#include "templates/tangible/SharedShipObjectTemplate.h"
 #include "templates/tangible/SharedWeaponObjectTemplate.h"
-#include "templates/tangible/ShipDeedTemplate.h"
 #include "templates/tangible/SkillBuffTemplate.h"
 #include "templates/tangible/StatePackTemplate.h"
 #include "templates/tangible/StimPackTemplate.h"
@@ -116,6 +114,11 @@
 #include "templates/tangible/VehicleDeedTemplate.h"
 #include "templates/tangible/WoundPackTemplate.h"
 #include "templates/tangible/XpPurchaseTemplate.h"
+
+#include "templates/tangible/ship/SharedShipObjectTemplate.h"
+#include "templates/tangible/ship/ShipChassisTemplate.h"
+#include "templates/tangible/ship/ShipComponentTemplate.h"
+#include "templates/tangible/ship/ShipDeedTemplate.h"
 
 #include "templates/universe/SharedGroupObjectTemplate.h"
 #include "templates/universe/SharedGuildObjectTemplate.h"
@@ -128,7 +131,7 @@
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "templates/SharedUniverseObjectTemplate.h"
 
-#include "templates/tangible/ShipComponentTemplate.h"
+
 
 #include "conf/ConfigManager.h"
 #include "tre3/TreeArchive.h"
@@ -570,6 +573,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<VehicleObjectTemplate>(SharedObjectTemplate::VEHICLE);
 	templateFactory.registerObject<XpPurchaseTemplate>(SharedObjectTemplate::XPPURCHASE);
 	templateFactory.registerObject<ShipComponentTemplate>(SharedObjectTemplate::SHIPCOMPONENT);
+	templateFactory.registerObject<ShipChassisTemplate>(SharedObjectTemplate::SHIPCHASSIS);
 }
 
 void TemplateManager::registerFunctions() {
@@ -788,6 +792,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CLONER_FACTION_IMPERIAL", CloningBuildingObjectTemplate::FACTION_IMPERIAL);
 
 	luaTemplatesInstance->setGlobalInt("SHIPCOMPONENT", SharedObjectTemplate::SHIPCOMPONENT);
+	luaTemplatesInstance->setGlobalInt("SHIPCHASSIS", SharedObjectTemplate::SHIPCHASSIS);
 }
 
 const String& TemplateManager::getTemplateFile(uint32 key) const {
