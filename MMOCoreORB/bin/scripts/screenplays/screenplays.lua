@@ -704,6 +704,7 @@ includeFile("racetracks/racetracks.lua")
 
 --Space
 includeFile("space/space_chassis_dealer_conv_handler.lua")
+includeFile("space/chassis_dealer.lua")
 includeFile("space/pilot_seat_menu_component.lua")
 includeFile("space/ship_operations_menu_component.lua")
 includeFile("space/ship_turret_menu_component.lua")

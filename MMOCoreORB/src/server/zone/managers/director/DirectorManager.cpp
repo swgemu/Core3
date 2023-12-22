@@ -99,6 +99,8 @@
 #include "server/zone/managers/ship/ShipManager.h"
 #include "templates/params/ship/ShipFlags.h"
 #include "templates/params/creature/PlayerArrangement.h"
+#include "server/zone/objects/tangible/deed/ship/ShipDeed.h"
+#include "server/zone/objects/ship/components/ShipChassisComponent.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -530,6 +532,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("broadcastToGalaxy", broadcastToGalaxy);
 	luaEngine->registerFunction("getWorldFloor", getWorldFloor);
 	luaEngine->registerFunction("useCovertOvert", useCovertOvert);
+
+	// JTL
+	luaEngine->registerFunction("generateShipDeed", generateShipDeed);
 
 	//Navigation Mesh Management
 	luaEngine->registerFunction("createNavMesh", createNavMesh);
@@ -4611,6 +4616,94 @@ int DirectorManager::useCovertOvert(lua_State* L) {
 	bool result = ConfigManager::instance()->useCovertOvertSystem();
 
 	lua_pushboolean(L, result);
+
+	return 1;
+}
+
+int DirectorManager::generateShipDeed(lua_State* L) {
+	if (checkArgumentCount(L, 3) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::generateShipDeed";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+
+		return 0;
+	}
+
+	CreatureObject* player = (CreatureObject*)lua_touserdata(L, -3);
+	ShipChassisComponent* chassisBlueprint = (ShipChassisComponent*)lua_touserdata(L, -2);
+	String deedPath = Lua::getStringParameter(L, -1);
+
+	if (player == nullptr || chassisBlueprint == nullptr)
+		return 0;
+
+	auto inventory = player->getSlottedObject("inventory");
+
+	if (inventory == nullptr) {
+		return 0;
+	}
+
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 0;
+	}
+
+	auto object = (zoneServer->createObject(deedPath.hashCode(), 2)).castTo<TangibleObject*>();
+
+	if (object == nullptr || !object->isShipDeedObject()) {
+		return 0;
+	}
+
+	ShipDeed* shipDeed = object.castTo<ShipDeed*>();
+
+	if (shipDeed == nullptr) {
+		return 0;
+	}
+
+	Locker lock(shipDeed);
+	Locker inventoryLock(inventory, shipDeed);
+
+	if (!inventory->transferObject(shipDeed, -1)) {
+		shipDeed->destroyObjectFromWorld(true);
+		shipDeed->destroyObjectFromDatabase();
+
+		lua_pushboolean(L, false);
+
+		Logger::console.error("Failed to transfer ShipDeed: " + String::valueOf(shipDeed->getObjectID()) + " Template: " + deedPath);
+
+		return 1;
+	}
+
+	// release lock on inventory
+	inventoryLock.release();
+
+	// set hitpoints, mass, location
+	shipDeed->setMass(chassisBlueprint->getMass());
+	shipDeed->setMaxHitPoints(chassisBlueprint->getMaxHitpoints());
+
+	String certRequired = chassisBlueprint->getCertificationRequired();
+
+	shipDeed->setCertificationRequired(certRequired);
+
+	// Set the parking location
+	auto cityRegion = player->getCityRegion().get();
+
+	if (cityRegion != nullptr) {
+		String cityName = cityRegion->getCityRegionName();
+
+		shipDeed->setParkingLocation(cityName);
+	}
+
+	// Broadcast ship deed to the player
+	shipDeed->sendTo(player, true);
+
+	// Handle Destruction of the Chassis Blueprint
+	Locker chassisLock(chassisBlueprint, shipDeed);
+
+	chassisBlueprint->destroyObjectFromWorld(true);
+	chassisBlueprint->destroyObjectFromDatabase();
+
+	lua_pushboolean(L, true);
 
 	return 1;
 }

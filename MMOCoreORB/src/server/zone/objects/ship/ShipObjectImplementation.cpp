@@ -24,7 +24,6 @@
 #include "server/zone/packets/ship/ShipObjectMessage6.h"
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "templates/tangible/SharedShipObjectTemplate.h"
-#include "server/zone/objects/ship/ShipChassisData.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/FactionStatus.h"

@@ -45,10 +45,11 @@ void ShipDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 
 	float maxCond = getMaxHitPoints();
 	float currentHp = maxCond - getHitPointsDamage();
+
 	StringBuffer hp;
 	hp << Math::getPrecision(currentHp, 5) << "/" << Math::getPrecision(maxCond, 5);
 
-	alm->insertAttribute("chassishitpoints", hp.toString());
+	alm->insertAttribute("chassishitpoints", hp);
 	alm->insertAttribute("chassismass", Math::getPrecision(getMass(), 3));
 	alm->insertAttribute("parking_spot", getParkingLocaiton());
 }
