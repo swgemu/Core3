@@ -130,7 +130,7 @@ TEST_F(NameManagerTest, ResourceNamesTest) {
 
 	ASSERT_TRUE(passed);
 }
-/*
+
 TEST_F(NameManagerTest, NameFilterTest) {
 	Lua* lua = new Lua();
 	lua->init();
@@ -175,4 +175,3 @@ TEST_F(NameManagerTest, NameFilterTest) {
 
 	nameManager->info(true) << "NameManager NameFilterTest - Total Words: " << count << " Total Time: " << stopTime << "ms Avg Per Word: " << (stopTime / (count * 1.00f)) << "ms";
 }
-*/
