@@ -512,6 +512,8 @@ bool ShipManager::createDeedFromChassis(CreatureObject* player, ShipChassisCompo
 	// release lock on inventory
 	inventoryLock.release();
 
+	TransactionLog trx(chassisDealer, player, shipDeed, TrxCode::SHIPDEEDPURCHASE, false);
+
 	// set hitpoints, mass, location
 	shipDeed->setMass(chassisBlueprint->getMass());
 	shipDeed->setMaxHitPoints(chassisBlueprint->getMaxHitpoints());
@@ -549,7 +551,12 @@ bool ShipManager::createDeedFromChassis(CreatureObject* player, ShipChassisCompo
 	// Deduct cost from player
 	Locker plock(player, shipDeed);
 
+	trx.addState("deedCost", shipCost);
+
+	TransactionLog trxCash(player, chassisDealer, TrxCode::SHIPDEEDPURCHASE, player->getCashCredits(), true);
 	player->subtractCashCredits(shipCost);
+
+	trxCash.groupWith(trx);
 
 	plock.release();
 
@@ -558,6 +565,8 @@ bool ShipManager::createDeedFromChassis(CreatureObject* player, ShipChassisCompo
 
 	chassisBlueprint->destroyObjectFromWorld(true);
 	chassisBlueprint->destroyObjectFromDatabase();
+
+	trx.commit();
 
 	return true;
 }

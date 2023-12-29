@@ -98,6 +98,7 @@ enum class TrxCode {
 	PLAYERONLINE,               // Player Online
 	RECYCLED,                   // Recycled Items
 	SERVERDESTROYOBJECT,        // /serverDestroyObject command
+	SHIPDEEDPURCHASE,           // Purchase of a ship deed from chassis dealer
 	SLICECONTAINER,             // Slicing session on a container
 	STRUCTUREDEED,              // Structure deed trxs
 	TRANSFERITEMMISC,           // /transferitemmisc command
