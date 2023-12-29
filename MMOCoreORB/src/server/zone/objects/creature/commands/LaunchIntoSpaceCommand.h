@@ -67,6 +67,14 @@ public:
 
 		// JTL Fast Travel
 		if (arrivalPlanet != "") {
+			if (ship->getComponentObject(Components::REACTOR) == nullptr) {
+				creature->sendSystemMessage("There is no reactor in this ship, it cannot be use to travel.");
+				return GENERALERROR;
+			} else if (ship->getComponentObject(Components::ENGINE) == nullptr) {
+				creature->sendSystemMessage("There is no engine in this ship, it cannot be use to travel.");
+				return GENERALERROR;
+			}
+
 			Zone* arrivalZone = zoneServer->getZone(arrivalPlanet);
 
 			if (arrivalZone == nullptr) {
