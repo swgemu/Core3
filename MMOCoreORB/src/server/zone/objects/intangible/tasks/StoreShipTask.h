@@ -10,6 +10,7 @@
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/ship/PobShipObject.h"
 #include "templates/params/creature/PlayerArrangement.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 //#define DEBUG_SHIP_STORE
 
@@ -42,6 +43,12 @@ public:
 #endif
 
 		Locker shipLock(ship);
+
+		// Remove the ship owner
+		Locker ownerLock(player, ship);
+		removePlayer(player, zoneName, coordinates);
+
+		ownerLock.release();
 
 		if (ship->isPobShipObject()) {
 			PobShipObject* pobShip = ship->asPobShipObject();
@@ -76,7 +83,7 @@ public:
 			}
 
 	#ifdef DEBUG_SHIP_STORE
-			info(true) << "Check Total Cells: " << ship->getTotalCellNumber();
+			info(true) << "Check Total Cells: " << pobShip->getTotalCellNumber();
 	#endif
 
 			for (int k = 0; k < pobShip->getTotalCellNumber(); ++k) {
@@ -214,7 +221,21 @@ public:
 #endif
 
 		player->clearSpaceStates();
-		player->switchZone(newZoneName, location.getX(), location.getZ(), location.getY(), 0);
+
+		if (player->isOnline()) {
+			player->switchZone(newZoneName, location.getX(), location.getZ(), location.getY(), 0);
+		} else {
+			player->setPosition(location.getX(), location.getZ(), location.getY());
+
+			player->setParent(nullptr);
+
+			auto ghost = player->getPlayerObject();
+
+			if (ghost != nullptr) {
+				ghost->setSavedParentID(0);
+				ghost->setSavedTerrainName(newZoneName);
+			}
+		}
 	}
 };
 

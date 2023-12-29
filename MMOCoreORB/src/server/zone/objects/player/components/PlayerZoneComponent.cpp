@@ -22,6 +22,9 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 		CreatureObject* player = sceneObject->asCreatureObject();
 
 		if (player != nullptr) {
+			// Ensure no space states are on players in ground zones
+			player->clearSpaceStates();
+
 			PlayerObject* ghost = player->getPlayerObject();
 			String zoneName = newZone->getZoneName();
 
