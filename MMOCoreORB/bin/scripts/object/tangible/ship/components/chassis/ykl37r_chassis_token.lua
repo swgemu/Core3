@@ -44,7 +44,7 @@
 object_tangible_ship_components_chassis_ykl37r_chassis_token = object_tangible_ship_components_chassis_shared_ykl37r_chassis_token:new {
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/ykl37r_deed.iff",
-	dealerFee = 20000,
+	dealerFee = 100000,
 	certificationRequired = "cert_starships_ykl37r",
 	skillRequired = {"pilot_rebel_navy_master"},
 	POB = 1,

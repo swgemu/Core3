@@ -44,7 +44,7 @@
 object_tangible_ship_components_chassis_hutt_heavy_s02_chassis_token = object_tangible_ship_components_chassis_shared_hutt_heavy_s02_chassis_token:new {
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/hutt_heavy_s02_deed.iff",
-	dealerFee = 8000,
+	dealerFee = 25000,
 	certificationRequired = "cert_starships_heavyhuttfighter",
 	skillRequired = {"pilot_neutral_starships_02"},
 	POB = 0,

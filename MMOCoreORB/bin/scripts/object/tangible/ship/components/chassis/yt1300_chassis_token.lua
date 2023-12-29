@@ -44,7 +44,7 @@
 object_tangible_ship_components_chassis_yt1300_chassis_token = object_tangible_ship_components_chassis_shared_yt1300_chassis_token:new {
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/yt1300_deed.iff",
-	dealerFee = 20000,
+	dealerFee = 100000,
 	certificationRequired = "cert_starships_yt1300",
 	skillRequired = {"pilot_neutral_master"},
 	POB = 1,

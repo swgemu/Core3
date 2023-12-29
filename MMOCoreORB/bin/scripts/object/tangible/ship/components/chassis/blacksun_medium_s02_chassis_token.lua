@@ -45,7 +45,7 @@ object_tangible_ship_components_chassis_blacksun_medium_s02_chassis_token = obje
 
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/blacksun_medium_s02_deed.iff",
-	dealerFee = 4000,
+	dealerFee = 50000,
 	certificationRequired = "cert_starships_mediumblacksunfighter",
 	skillRequired = {"pilot_neutral_starships_03"},
 	POB = 0,

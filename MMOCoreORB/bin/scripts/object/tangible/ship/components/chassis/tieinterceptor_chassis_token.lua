@@ -44,7 +44,7 @@
 object_tangible_ship_components_chassis_tieinterceptor_chassis_token = object_tangible_ship_components_chassis_shared_tieinterceptor_chassis_token:new {
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tieinterceptor_deed.iff",
-	dealerFee = 4000,
+	dealerFee = 50000,
 	certificationRequired = "cert_starships_tieinterceptor",
 	skillRequired = {"pilot_imperial_navy_starships_03"},
 	POB = 0,

@@ -44,7 +44,7 @@
 object_tangible_ship_components_chassis_tie_light_duty_chassis_token = object_tangible_ship_components_chassis_shared_tie_light_duty_chassis_token:new {
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tie_light_duty_deed.iff",
-	dealerFee = 1000,
+	dealerFee = 10000,
 	certificationRequired = "cert_starships_tiefighterlight",
 	skillRequired = {"pilot_imperial_navy_novice"},
 	POB = 0,

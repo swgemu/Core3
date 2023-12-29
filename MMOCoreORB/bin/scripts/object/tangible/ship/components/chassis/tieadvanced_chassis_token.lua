@@ -44,7 +44,7 @@
 object_tangible_ship_components_chassis_tieadvanced_chassis_token = object_tangible_ship_components_chassis_shared_tieadvanced_chassis_token:new {
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tieadvanced_deed.iff",
-	dealerFee = 8000,
+	dealerFee = 75000,
 	certificationRequired = "cert_starships_tieadvanced",
 	skillRequired = {"pilot_imperial_navy_starships_04"},
 	POB = 0,

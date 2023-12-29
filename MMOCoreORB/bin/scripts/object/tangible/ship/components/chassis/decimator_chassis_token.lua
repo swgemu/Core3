@@ -44,7 +44,7 @@
 object_tangible_ship_components_chassis_decimator_chassis_token = object_tangible_ship_components_chassis_shared_decimator_chassis_token:new {
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/decimator_deed.iff",
-	dealerFee = 20000,
+	dealerFee = 100000,
 	certificationRequired = "cert_starships_decimator",
 	skillRequired = {"pilot_imperial_navy_master"},
 	POB = 1,

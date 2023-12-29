@@ -44,7 +44,7 @@
 object_tangible_ship_components_chassis_tiebomber_chassis_token = object_tangible_ship_components_chassis_shared_tiebomber_chassis_token:new {
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tiebomber_deed.iff",
-	dealerFee = 4000,
+	dealerFee = 50000,
 	certificationRequired = "cert_starships_tiebomber",
 	skillRequired = {"pilot_imperial_navy_starships_03"},
 	POB = 0,

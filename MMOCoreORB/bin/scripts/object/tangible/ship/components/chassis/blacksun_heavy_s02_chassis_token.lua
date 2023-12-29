@@ -44,7 +44,7 @@
 object_tangible_ship_components_chassis_blacksun_heavy_s02_chassis_token = object_tangible_ship_components_chassis_shared_blacksun_heavy_s02_chassis_token:new {
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/blacksun_heavy_s02_deed.iff",
-	dealerFee = 8000,
+	dealerFee = 75000,
 	certificationRequired = "cert_starships_heavyblacksunfighter",
 	skillRequired = {"pilot_neutral_starships_04"},
 	POB = 0,
