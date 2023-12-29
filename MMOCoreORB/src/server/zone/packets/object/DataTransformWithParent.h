@@ -129,7 +129,13 @@ public:
 			return updateError(creO, "deltaTime");
 		}
 
-		ManagedReference<SceneObject*> parent = server->getZoneServer()->getObject(transform.getParentID(), true);
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return updateError(creO, "!zoneServer");
+		}
+
+		ManagedReference<SceneObject*> parent = zoneServer->getObject(transform.getParentID(), true);
 
 		if (parent == nullptr || parent->getZone() == nullptr || !parent->isCellObject()) {
 			return updateError(creO, "!parent");

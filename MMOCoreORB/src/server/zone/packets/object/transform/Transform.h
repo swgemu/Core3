@@ -275,7 +275,7 @@ public:
 		}
 
 		auto flyText = new ShowFlyText(creature, type, String::valueOf(deltaTime) + "/ms", r, g, b, 0.5f);
-		creature->sendMessage(flyText);
+		creature->broadcastMessage(flyText, true);
 	}
 
 	void sendPathMessage(CreatureObject* creature, const Vector3& newPosition) const {

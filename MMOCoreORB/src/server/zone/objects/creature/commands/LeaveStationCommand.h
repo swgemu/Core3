@@ -33,9 +33,8 @@ public:
 		if (cell == nullptr)
 			return GENERALERROR;
 
-		Vector3 position = parent->getPosition();
-
-		creature->setPosition(position.getX(), position.getZ(), position.getY());
+		// Reset player movement counter
+		creature->setMovementCounter(0);
 
 		if (!cell->transferObject(creature, -1, true)) {
 			return GENERALERROR;
