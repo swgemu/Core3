@@ -153,6 +153,9 @@ public:
 			return updateError(pilot, "!zone", false);
 		}
 
+		Locker pLock(pilot);
+		Locker cLock(ship, pilot);
+
 		if (ghost->getClientLastMovementStamp() == 0 && counter != 0) {
 			ghost->setClientLastMovementStamp(counter);
 			return synchronize(ship, pilot);
@@ -171,9 +174,6 @@ public:
 		if (!isPositionValid()) {
 			return updateError(pilot, "!isPositionValid", true);
 		}
-
-		Locker pLock(pilot);
-		Locker cLock(ship, pilot);
 
 		ship->setSyncStamp(counter);
 
