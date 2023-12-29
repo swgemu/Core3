@@ -68,7 +68,7 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 			return
 		end
 
-		-- Add in their ship operatios state
+		-- Add players ship operatios state
 		CreatureObject(pPlayer):setState(SHIPGUNNER)
 	elseif (selectedID == 121) then
 		if (not SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER1_POB, 1)) then
@@ -76,7 +76,7 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 			return
 		end
 
-		-- Add in their ship operatios state
+		-- Add players ship operatios state
 		CreatureObject(pPlayer):setState(SHIPGUNNER)
 	end
 

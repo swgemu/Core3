@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "templates/params/creature/PlayerArrangement.h"
 
 class MountCommand : public QueueCommand {
 	Vector<uint32> restrictedBuffCRCs;
@@ -72,10 +73,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (vehicle->isIncapacitated())
-			return GENERALERROR;
-
-		if (vehicle->isDead())
+		if (vehicle->isIncapacitated() || vehicle->isDead())
 			return GENERALERROR;
 
 		if (vehicle->getPosture() == CreaturePosture::LYINGDOWN || vehicle->getPosture() == CreaturePosture::SITTING) {
@@ -84,7 +82,7 @@ public:
 
 		vehicle->setState(CreatureState::MOUNTEDCREATURE);
 
-		if (!vehicle->transferObject(creature, 4, true)) {
+		if (!vehicle->transferObject(creature, PlayerArrangement::RIDER, true)) {
 			vehicle->error("could not add creature");
 			vehicle->clearState(CreatureState::MOUNTEDCREATURE);
 

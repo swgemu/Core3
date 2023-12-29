@@ -88,7 +88,7 @@ object_ship_player_player_ykl37r = object_ship_player_shared_player_ykl37r:new {
 		-- Ship Permissions Terminal
 		{ templateFile = "object/tangible/terminal/terminal_pob_ship.iff", x = 6.22, z = -0.5, y = 16.98, ox = 0, oy = -0.707106, oz = 0, ow = 0.707106, cellid = 9, containmentType = -1 },
 		-- Turret Control
-		{ templateFile = "object/tangible/shipcontrol/turretcontrol_falcon.iff", x = -0.02, z = 0.28, y = 0.22, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 10, containmentType = -1 },
+		{ templateFile = "object/tangible/shipcontrol/turretcontrol_falcon.iff", x = -0.02, z = 0.28, y = -0.22, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 10, containmentType = -1 },
 		-- Cockpit
 		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -18.48, z = -0.74, y = 0.6, ox = 0.000000, oy = 0.000000, oz = -0.707107, ow = 0.707107, cellid = 1, containmentType = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -15.79, z = -0.74, y = 0.55, ox = 0.000000, oy = 0.000000, oz = -0.707107, ow = 0.707107, cellid = 1, containmentType = -1 },
