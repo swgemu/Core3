@@ -216,6 +216,11 @@ void ZoneServerImplementation::startZones() {
 	for (int i = 0; i < totalZones; ++i) {
 		String zoneName = enabledZones.get(i);
 
+		if (zoneName.toLowerCase().contains("space")) {
+			error() << "Attempting to load Space Zone as a Ground Zone -- Zone: " << zoneName;
+			continue;
+		}
+
 		Zone* zone = new Zone(processor, zoneName);
 		zone->createContainerComponent();
 		zone->initializePrivateData();
