@@ -131,60 +131,35 @@ int ShipDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 			return 1;
 		}
 
-		ManagedReference<ShipControlDevice*> shipControlDevice = (zoneServer->createObject(controlDeviceTemplate.hashCode(), 1)).castTo<ShipControlDevice*>();
-
-		if (shipControlDevice == nullptr) {
-			error() << "Problem generating ship control device template: " << controlDeviceTemplate;
-			return 1;
-		}
-
-		// Locker control device to the player
-		Locker clocker(shipControlDevice, player);
-
-		shipControlDevice->setShipType(getShipType());
-
-		ManagedReference<ShipObject*> ship = (zoneServer->createObject(generatedObjectTemplate.hashCode(), 1)).castTo<ShipObject*>();
+		ManagedReference<ShipObject*> ship = ShipManager::instance()->createPlayerShip(player, generatedObjectTemplate, false);
 
 		if (ship == nullptr) {
-			shipControlDevice->destroyObjectFromDatabase(true);
 			error() << "Failed to generate ship object from template: " << generatedObjectTemplate;
 			return 1;
 		}
 
-		// Lock the ship to the Control Device
-		Locker slocker(ship, shipControlDevice);
+		// Player is locked, cross lock the ship to the player
+		Locker slocker(ship, player);
 
-		ship->setMaxCondition(getMaxHitPoints());
-		ship->setConditionDamage(getHitPointsDamage());
+		uint64 controlDeviceID = ship->getControlDeviceID();
 
-		ship->setControlDeviceID(shipControlDevice->getObjectID());
-		ship->createChildObjects();
+		ManagedReference<ShipControlDevice*> shipControlDevice = cast<ShipControlDevice*>(zoneServer->getObject(controlDeviceID).get());
 
-		if (!shipControlDevice->transferObject(ship, 4, true)) {
-			ship->destroyObjectFromWorld(true);
+		if (shipControlDevice == nullptr) {
 			ship->destroyObjectFromDatabase(true);
+			ship->destroyObjectFromWorld(true);
 
-			shipControlDevice->destroyObjectFromWorld(true);
-			shipControlDevice->destroyObjectFromDatabase(true);
+			error() << "Problem generating ship template, null control device: " << generatedObjectTemplate;
 			return 1;
 		}
 
-		shipControlDevice->setControlledObject(ship);
-		shipControlDevice->updateStatus(0);
+		ship->setMaxCondition(maxHitPoints);
+		ship->setConditionDamage(0);
 
-		// Release the ship cross lock
+		ship->setChassisMaxMass(mass);
+
+		// release ship cross lock
 		slocker.release();
-
-		if (!datapad->transferObject(shipControlDevice, -1)) {
-			ship->destroyObjectFromWorld(true);
-			ship->destroyObjectFromDatabase(true);
-
-			shipControlDevice->destroyObjectFromWorld(true);
-			shipControlDevice->destroyObjectFromDatabase(true);
-			return 1;
-		}
-
-		datapad->broadcastObject(shipControlDevice, true);
 
 		destroyObjectFromWorld(true);
 		destroyObjectFromDatabase(true);

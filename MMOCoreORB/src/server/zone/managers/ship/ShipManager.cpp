@@ -301,36 +301,34 @@ void ShipManager::loadShipComponentObjects(ShipObject* ship) {
 	}
 }
 
+// Ship is locked coming in
 ShipControlDevice* ShipManager::createShipControlDevice(ShipObject* ship) {
 	String controlName = "object/intangible/ship/" + ship->getShipName().replaceAll("player_", "") + "_pcd.iff";
 
 	auto shot = TemplateManager::instance()->getTemplate(controlName.hashCode());
+
 	if (shot == nullptr || !(shot->getGameObjectType() & SceneObjectType::SHIPCONTROLDEVICE)) {
 		return nullptr;
 	}
 
-	ManagedReference<ShipControlDevice*> control = ServerCore::getZoneServer()->createObject(controlName.hashCode(), ship->getPersistenceLevel()).castTo<ShipControlDevice*>();
-	if (control == nullptr) {
+	ManagedReference<ShipControlDevice*> shipControlDevice = ServerCore::getZoneServer()->createObject(controlName.hashCode(), ship->getPersistenceLevel()).castTo<ShipControlDevice*>();
+
+	if (shipControlDevice == nullptr) {
 		return nullptr;
 	}
 
-	Locker sLock(ship);
-	Locker cLock(control, ship);
+	Locker cLock(shipControlDevice, ship);
 
-	if (control->transferObject(ship, PlayerArrangement::RIDER)) {
-		control->setShipType(ship->isPobShipObject() ? POBSHIP : FIGHTERSHIP);
-		control->setControlledObject(ship);
-
-		ship->setControlDeviceID(control->getObjectID());
-		return control;
+	if (!shipControlDevice->transferObject(ship, PlayerArrangement::RIDER)) {
+		return nullptr;
 	}
 
-	if (control != nullptr) {
-		Locker sLock(control);
-		control->destroyObjectFromDatabase(true);
-	}
+	shipControlDevice->setShipType(ship->isPobShipObject() ? POBSHIP : FIGHTERSHIP);
+	shipControlDevice->setControlledObject(ship);
 
-	return nullptr;
+	ship->setControlDeviceID(shipControlDevice->getObjectID());
+
+	return shipControlDevice;
 }
 
 ShipObject* ShipManager::createShip(const String& shipName, int persistence, bool loadComponents) {
@@ -379,60 +377,66 @@ ShipObject* ShipManager::createShip(const String& shipName, int persistence, boo
 	return ship;
 }
 
-void ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents) {
+ShipObject* ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents) {
 	if (owner == nullptr)
-		return;
+		return nullptr;
+
+	E3_ASSERT(owner->isLockedByCurrentThread());
 
 	ManagedReference<SceneObject*> dataPad = owner->getSlottedObject("datapad");
 
 	if (dataPad == nullptr) {
-		return;
+		return nullptr;
 	}
 
 	PlayerObject* ghost = owner->getPlayerObject();
 
 	if (ghost == nullptr) {
-		return;
+		return nullptr;
 	}
 
 	auto ship = createShip(shipName, 1, false);
-	auto control = ship == nullptr ? nullptr : createShipControlDevice(ship);
 
-	if (ship != nullptr && control != nullptr) {
-		Locker sLock(ship);
-		Locker cLock(control, ship);
-
-		ship->createChildObjects();
-
-		if (ship->isPobShipObject()) {
-			PobShipObject* pobShip = ship->asPobShipObject();
-
-			if (pobShip != nullptr) {
-				pobShip->grantPermission("ADMIN", owner->getObjectID());
-			}
-		}
-
-		if (loadComponents) {
-			loadShipComponentObjects(ship);
-		}
-
-		if (dataPad->transferObject(control, -1)) {
-			ship->setOwner(owner);
-
-			control->sendTo(owner, true);
-			return;
-		}
+	if (ship == nullptr) {
+		return nullptr;
 	}
 
-	if (control != nullptr) {
-		Locker cLock(control);
-		control->destroyObjectFromDatabase(true);
-	}
+	Locker shipLock(ship, owner);
 
-	if (ship != nullptr) {
-		Locker sLock(ship);
+	auto shipControlDevice = createShipControlDevice(ship);
+
+	if (shipControlDevice == nullptr) {
 		ship->destroyObjectFromDatabase(true);
+		ship->destroyObjectFromWorld(true);
+
+		return nullptr;
 	}
+
+	Locker cLock(shipControlDevice, ship);
+
+	ship->createChildObjects();
+
+	if (ship->isPobShipObject()) {
+		PobShipObject* pobShip = ship->asPobShipObject();
+
+		if (pobShip != nullptr) {
+			pobShip->grantPermission("ADMIN", owner->getObjectID());
+		}
+	}
+
+	if (loadComponents) {
+		loadShipComponentObjects(ship);
+	}
+
+	if (!dataPad->transferObject(shipControlDevice, -1)) {
+		return nullptr;
+	}
+
+	ship->setOwner(owner);
+
+	shipControlDevice->sendTo(owner, true);
+
+	return ship;
 }
 
 bool ShipManager::createDeedFromChassis(CreatureObject* player, ShipChassisComponent* chassisBlueprint, CreatureObject* chassisDealer) {

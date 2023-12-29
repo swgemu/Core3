@@ -136,7 +136,7 @@ private:
 public:
 	ShipObject* createShip(const String& shipName, int persistence = 0, bool loadComponents = true);
 
-	void createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents = true);
+	ShipObject* createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents = true);
 
 	bool createDeedFromChassis(CreatureObject* owner, ShipChassisComponent* chassisBlueprint, CreatureObject* chassisDealer);
 

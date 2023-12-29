@@ -35,45 +35,6 @@ class ShipControlDevice extends ControlDevice {
 		shipType = 0;
 	}
 
-	public boolean isShipControlDevice() {
-		return true;
-	}
-
-	@preLocked
-	public void setStoredCityName(final string cityName) {
-		storedCityName = cityName;
-	}
-
-	@dereferenced
-	public string getStoredCityName() {
-		return storedCityName;
-	}
-
-	@dereferenced
-	public string getStoredZoneName() {
-		return storedZoneName;
-	}
-
-	@local
-	@preLocked
-	public void setShipType(int type) {
-		shipType = type;
-	}
-
-	public int getShipType() {
-		return shipType;
-	}
-
-	@local
-	@dereferenced
-	public native Vector3 getStoredPosition(boolean randomPosition = true);
-
-	@arg1preLocked
-	public native void setStoredLocationData(CreatureObject player);
-
-	@preLocked
-	public native boolean launchShip(CreatureObject player, @dereferenced final string zoneName, @dereferenced final Vector3 position);
-
 	@preLocked
 	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
@@ -82,8 +43,18 @@ class ShipControlDevice extends ControlDevice {
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 
+	@preLocked
+	public native boolean launchShip(CreatureObject player, @dereferenced final string zoneName, @dereferenced final Vector3 position);
+
 	@dirty
 	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
+
+	@local
+	@dereferenced
+	public native Vector3 getStoredPosition(boolean randomPosition = true);
+
+	@arg1preLocked
+	public native void setStoredLocationData(CreatureObject player);
 
 	/**
 	 * Checks if the object can be destroyed
@@ -97,5 +68,37 @@ class ShipControlDevice extends ControlDevice {
 	@preLocked
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 
+	// Accessors
 	public native boolean isShipLaunched();
+
+	public boolean isShipControlDevice() {
+		return true;
+	}
+
+	@preLocked
+	public void setStoredCityName(final string cityName) {
+		storedCityName = cityName;
+	}
+
+	// Mutators
+	@local
+	@preLocked
+	public void setShipType(int type) {
+		shipType = type;
+	}
+
+	@dereferenced
+	public string getStoredCityName() {
+		return storedCityName;
+	}
+
+	@dereferenced
+	public string getStoredZoneName() {
+		return storedZoneName;
+	}
+
+	public int getShipType() {
+		return shipType;
+	}
+
 }

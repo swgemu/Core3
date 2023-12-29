@@ -20,62 +20,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
-void ShipControlDeviceImplementation::setStoredLocationData(CreatureObject* player) {
-	// The control device needs to be locked as well as the player coming into this function
 
-	if (player == nullptr)
-		return;
-
-	auto ghost = player->getPlayerObject();
-
-	if (ghost == nullptr) {
-		return;
-	}
-
-	auto ship = controlledObject.get().castTo<ShipObject*>();
-
-	if (ship == nullptr) {
-		return;
-	}
-
-	auto zone = player->getZone();
-
-	if (zone == nullptr) {
-		return;
-	}
-
-	auto planetManager = zone->getPlanetManager();
-
-	if (planetManager == nullptr) {
-		return;
-	}
-
-	auto travelPoint = planetManager->getNearestPlanetTravelPoint(player->getWorldPosition(), 128.f);
-
-	if (travelPoint == nullptr) {
-		return;
-	}
-
-	Vector3 position = travelPoint->getArrivalPosition();
-	String pointName = travelPoint->getPointName();
-	String zoneName = zone->getZoneName();
-
-	float z = CollisionManager::getWorldFloorCollision(position.getX(), position.getY(), position.getZ(), zone, true);
-	position.setZ(z);
-
-	storedPosition = position;
-	storedCityName = pointName;
-	storedZoneName = zoneName;
-
-	ghost->setSpaceLaunchLocation(position);
-	ghost->setSpaceLaunchCityName(pointName);
-	ghost->setSpaceLaunchZone(zoneName);
-}
-
-Vector3 ShipControlDeviceImplementation::getStoredPosition(bool randomPosition) {
-	Vector3 random = randomPosition ? Vector3(System::random(10) - 5, System::random(10) - 5, 0) : Vector3::ZERO;
-	return storedPosition + random;
-}
 
 bool ShipControlDeviceImplementation::launchShip(CreatureObject* player, const String& zoneName, const Vector3& position) {
 	auto ship = controlledObject.get().castTo<ShipObject*>();
@@ -276,15 +221,20 @@ bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Crea
 }
 
 int ShipControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
+	if (player == nullptr)
+		return 1;
+
 	auto ship = controlledObject.get().castTo<ShipObject*>();
 
-	if (ship == nullptr)
+	if (ship == nullptr) {
 		return 1;
+	}
 
 	auto owner = ship->getOwner().get();
 
-	if (owner == nullptr)
+	if (owner == nullptr) {
 		return 1;
+	}
 
 	if (ship->isInOctTree()) {
 		owner->sendSystemMessage("You must land your ship before it can be destroyed.");
@@ -305,6 +255,62 @@ int ShipControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 
 void ShipControlDeviceImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+}
+
+// The control device needs to be locked as well as the player coming into this function
+void ShipControlDeviceImplementation::setStoredLocationData(CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr) {
+		return;
+	}
+
+	auto ship = controlledObject.get().castTo<ShipObject*>();
+
+	if (ship == nullptr) {
+		return;
+	}
+
+	auto zone = player->getZone();
+
+	if (zone == nullptr) {
+		return;
+	}
+
+	auto planetManager = zone->getPlanetManager();
+
+	if (planetManager == nullptr) {
+		return;
+	}
+
+	auto travelPoint = planetManager->getNearestPlanetTravelPoint(player->getWorldPosition(), 128.f);
+
+	if (travelPoint == nullptr) {
+		return;
+	}
+
+	Vector3 position = travelPoint->getArrivalPosition();
+	String pointName = travelPoint->getPointName();
+	String zoneName = zone->getZoneName();
+
+	float z = CollisionManager::getWorldFloorCollision(position.getX(), position.getY(), position.getZ(), zone, true);
+	position.setZ(z);
+
+	storedPosition = position;
+	storedCityName = pointName;
+	storedZoneName = zoneName;
+
+	ghost->setSpaceLaunchLocation(position);
+	ghost->setSpaceLaunchCityName(pointName);
+	ghost->setSpaceLaunchZone(zoneName);
+}
+
+Vector3 ShipControlDeviceImplementation::getStoredPosition(bool randomPosition) {
+	Vector3 random = randomPosition ? Vector3(System::random(10) - 5, System::random(10) - 5, 0) : Vector3::ZERO;
+	return storedPosition + random;
 }
 
 bool ShipControlDeviceImplementation::isShipLaunched() {
