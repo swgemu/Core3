@@ -132,12 +132,12 @@ public:
 			return GENERALERROR;
 		}
 
-		if(objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR)){
+		if (objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR)) {
 			trx.abort() << "Not allowed to move vendor from parent";
 			return GENERALERROR;
 		}
 
-		if (!objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT)){
+		if (!objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT)) {
 			trx.abort() << "Not allowed to move object out of parent";
 			return GENERALERROR;
 		}
