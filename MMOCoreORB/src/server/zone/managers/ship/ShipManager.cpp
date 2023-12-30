@@ -521,6 +521,7 @@ bool ShipManager::createDeedFromChassis(CreatureObject* player, ShipChassisCompo
 	// set hitpoints, mass, location
 	shipDeed->setMass(chassisBlueprint->getMass());
 	shipDeed->setMaxHitPoints(chassisBlueprint->getMaxHitpoints());
+	shipDeed->setCreateComponents(false);
 
 	shipDeed->setCertificationRequired(certification);
 
