@@ -155,7 +155,6 @@ void SpaceZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, 
 		e.printStackTrace();
 	}
 
-	/*
 	bool isInvis = false;
 
 	TangibleObject* tano = sceneObject->asTangibleObject();
@@ -165,7 +164,7 @@ void SpaceZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, 
 
 		if (tano->isInvisible())
 			isInvis = true;
-	}*/
+	}
 
 	if (zoneUnlocked)
 		spaceZone->wlock();
@@ -195,7 +194,7 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 		newParent->transferObject(sceneObject, -1, true);
 	}
 
-	/*try {
+	try {
 		TangibleObject* tano = sceneObject->asTangibleObject();
 
 		if (tano != nullptr) {
@@ -204,7 +203,7 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 	} catch (Exception& e) {
 		sceneObject->error(e.getMessage());
 		e.printStackTrace();
-	}*/
+	}
 
 	spaceZone->unlock();
 

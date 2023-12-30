@@ -135,6 +135,7 @@
 #include "server/zone/objects/tangible/misc/FsCsObject.h"
 #include "server/zone/objects/pathfinding/NavArea.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/area/space/SpaceActiveArea.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/objects/area/SarlaccArea.h"
 #include "server/zone/objects/area/FsVillageArea.h"

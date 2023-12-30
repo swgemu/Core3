@@ -1,0 +1,159 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.area.areashapes;
+
+import server.zone.objects.area.areashapes.AreaShape;
+import server.zone.objects.area.areashapes.SphereAreaShape;
+include engine.util.u3d.Vector3;
+
+class CuboidAreaShape extends AreaShape  {
+	protected float length;
+	protected float width;
+	protected float height;
+
+	protected float minX;
+	protected float maxX;
+	protected float minY;
+	protected float maxY;
+	protected float minZ;
+	protected float maxZ;
+
+	public CuboidAreaShape() {
+		super();
+
+		length = 0.f;
+		width = 0.f;
+		height = 0.f;
+
+		Logger.setLoggingName("CuboidAreaShape");
+	}
+
+	// Mutators
+
+	@preLocked
+	public native void setDimensions(float len, float wid, float hght);
+
+	// Accessors
+
+	@dereferenced
+	@local
+	@read
+	public native Vector3 getCuboidDimensions();
+
+	public float getVolume() {
+		return 2 * (length * width + length * height + width * height);
+	}
+
+	public float getHeight() {
+		return height;
+	}
+
+	public float getWidth() {
+		return width;
+	}
+
+	public float getLength() {
+		return length;
+	}
+
+	// Min Coords
+	public float getMinX() {
+		return minX;
+	}
+
+	public float getMinY() {
+		return minX;
+	}
+
+	public float getMinZ() {
+		return minX;
+	}
+
+	// Max Coords
+	public float getMaxX() {
+		return minX;
+	}
+
+	public float getMaxY() {
+		return minX;
+	}
+
+	public float getMaxZ() {
+		return minX;
+	}
+
+	/**
+	 * Check if the coordinate is within the area shape.
+	 * @param x the x coordinate.
+	 * @param y the y coordinate.
+	 * @param z the z coordinate.
+	 * @return true if the coordinate is within the area shape.
+	 */
+	@read
+	public native boolean containsPoint(float x, float z, float y);
+
+	/**
+	 * Check if the coordinate is within the area shape.
+	 * @param point the point to check if it is within the area shape.
+	 * @return true if the coordinate is within the area shape.
+	 */
+	@local
+	@read
+	public native boolean containsPoint(@dereferenced final Vector3 point);
+
+	/**
+	 * Get the minimum radius of a circle bounding the area shape.
+	 * @return the minimum bonding radius.
+	 */
+	@read
+	public native float getRadius();
+
+	/**
+	 * Generate a random position within the area.
+	 * @return a random position within the area.
+	 */
+	@dereferenced
+	@local
+	@read
+	public native Vector3 getRandomPosition();
+
+	/**
+	 * Generate a random position within the area with the supplied origin and radius as limits.
+	 * @param origin the origin coordinate to generate the random position from.
+	 * @param minDistance the minimum distance from the origin.
+	 * @param maxDistance the maximum distance from the origin.
+	 * @return a random position within the area.
+	 */
+	@dereferenced
+	@local
+	@read
+	public native Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
+
+	/**
+	 * Check if this area shape intersects with the supplied area shape.
+	 * @param areaShape the area shape to check for intersections with.s
+	 * @return true if the area shapes intersects each other.
+	 */
+	@read
+	public native boolean intersectsWith(AreaShape areaShape);
+
+	@read
+	private native boolean intersectsWithCuboid(CuboidAreaShape cuboid);
+
+	@read
+	private native boolean intersectsWithSphere(SphereAreaShape sphere);
+
+	/**
+	 * Check if this is a cuboid area shape.
+	 * @return true if it is a cuboid area shape.
+	 */
+	@read
+	public boolean isCuboidAreaShape() {
+		return true;
+	}
+
+	public native string getDimensionLog();
+}
