@@ -392,7 +392,11 @@ void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 		}
 	}
 
-	notifyInsert(object);
+	if (isPobShipObject()) {
+		asPobShipObject()->notifyInsert(object);
+	} else {
+		notifyInsert(object);
+	}
 
 	if (object->getCloseObjects() != nullptr)
 		object->addInRangeObject(asShipObject(), false);
@@ -412,6 +416,22 @@ void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 	}
 
 	//this->sendTo(object, true);
+}
+
+void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
+	auto sceneO = static_cast<SceneObject*>(object);
+	uint64 scnoID = sceneO->getObjectID();
+
+#ifdef DEBUG_COV
+	if (sceneO->isPlayerCreature()) {
+		info(true) << "notifyInsert -- Ship ID: " << getObjectID()  << " Player: " << sceneO->getDisplayedName() << " ID: " << scnoID;
+	}
+#endif // DEBUG_COV
+
+
+	// TODO: should be broadcast slotted players here?
+
+
 }
 
 int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {

@@ -9,6 +9,7 @@ import system.lang.Time;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.ship.components.ShipComponent;
 import server.zone.objects.ship.events.ShipRecoveryEvent;
+include server.zone.TreeEntry;
 include server.zone.objects.scene.SceneObject;
 include server.zone.objects.creature.CreatureObject;
 include server.zone.CloseObjectsVector;
@@ -447,6 +448,10 @@ class ShipObject extends TangibleObject {
 	public native void sendBaselinesTo(SceneObject player);
 
 	public native void notifyObjectInsertedToZone(SceneObject object);
+
+	@local
+	public native void notifyInsert(TreeEntry obj);
+
 	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
 	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
 

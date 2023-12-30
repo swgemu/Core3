@@ -177,6 +177,65 @@ void PobShipObjectImplementation::createChildObjects() {
 	updateToDatabase();
 }
 
+void PobShipObjectImplementation::notifyInsert(TreeEntry* object) {
+	auto sceneO = static_cast<SceneObject*>(object);
+	uint64 scnoID = sceneO->getObjectID();
+
+#ifdef DEBUG_COV
+	if (sceneO->isPlayerCreature()) {
+		info(true) << "notifyInsert -- Ship ID: " << getObjectID()  << " Player: " << sceneO->getDisplayedName() << " ID: " << scnoID;
+	}
+#endif // DEBUG_COV
+
+	uint64 sceneObjRootID = 0;
+	auto sceneObjRootPar = sceneO->getRootParent();
+
+	if (sceneObjRootPar != nullptr) {
+		sceneObjRootID = sceneObjRootPar->getObjectID();
+	}
+
+	bool objectInThisShip = sceneObjRootID == getObjectID();
+
+	for (int i = 0; i < cells.size(); ++i) {
+		auto& cell = cells.get(i);
+
+		if (!cell->isContainerLoaded())
+			continue;
+
+		try {
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				auto child = cell->getContainerObject(j);
+
+				if (child == nullptr || child->getObjectID() == scnoID)
+					continue;
+
+				if (objectInThisShip) {
+					if (child->getCloseObjects() != nullptr)
+						child->addInRangeObject(object, false);
+					else
+						child->notifyInsert(object);
+
+					child->sendTo(sceneO, true, false);
+
+					if (sceneO->getCloseObjects() != nullptr)
+						sceneO->addInRangeObject(child, false);
+					else
+						sceneO->notifyInsert(child);
+
+					if (sceneO->getParent() != nullptr)
+						sceneO->sendTo(child, true, false);
+				} else if (!sceneO->isCreatureObject() && !child->isCreatureObject()) {
+					child->notifyInsert(object);
+					object->notifyInsert(child);
+				}
+			}
+		} catch (Exception& e) {
+			warning(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+}
+
 void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool forceLoad) {
 	if (player == nullptr)
 		return;

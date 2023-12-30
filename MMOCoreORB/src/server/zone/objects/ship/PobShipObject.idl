@@ -12,6 +12,7 @@ import system.util.Vector;
 import engine.util.u3d.Vector3;
 
 include server.zone.objects.ship.ShipObject;
+include server.zone.TreeEntry;
 include templates.SharedObjectTemplate;
 include system.util.VectorMap;
 include server.zone.objects.ship.PlayerLaunchPoints;
@@ -20,8 +21,6 @@ include server.zone.objects.cell.CellObject;
 include server.zone.objects.ship.ShipPermissionList;
 
 class PobShipObject extends ShipObject {
-	public native void notifyLoadFromDatabase();
-
 	@dereferenced
 	protected VectorMap<string, CellObject> cellNameMap;
 
@@ -44,11 +43,16 @@ class PobShipObject extends ShipObject {
 		Logger.setLoggingName("PobShipObject");
 	}
 
+	public native void notifyLoadFromDatabase();
+
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 
 	@preLocked
 	public native void createChildObjects();
+
+	@local
+	public native void notifyInsert(TreeEntry obj);
 
 	/**
 	 * Sends the contained non slotted objects to the specified player
