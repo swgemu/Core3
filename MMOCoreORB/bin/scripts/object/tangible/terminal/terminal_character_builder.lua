@@ -3651,6 +3651,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"@veteran_new:falconchair","object/tangible/veteran_reward/frn_couch_falcon_section_s01.iff",
 				"@veteran_new:mini_tiefighter","object/tangible/veteran_reward/frn_vet_tie_fighter_toy.iff",
 				"@veteran_new:mini_xwing","object/tangible/veteran_reward/frn_vet_x_wing_toy.iff",
+				"@veteran_new:sorosuub","object/tangible/space/veteran_reward/sorosuub_space_yacht_deed.iff",
 				--270 Day Rewards
 				"Deed for Flash Speeder","object/tangible/deed/vehicle_deed/speederbike_flash_deed.iff",
 				"Special Edition Goggles Style 1","object/tangible/wearables/goggles/goggles_s01.iff",

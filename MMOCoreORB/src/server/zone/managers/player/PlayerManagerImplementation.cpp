@@ -112,6 +112,7 @@
 #include "server/zone/objects/creature/commands/TransferItemMiscCommand.h"
 #include "templates/crcstringtable/CrcStringTable.h"
 #include "server/zone/objects/ship/PobShipObject.h"
+#include "server/zone/objects/tangible/deed/ship/ShipDeed.h"
 
 #include "server/zone/managers/statistics/StatisticsManager.h"
 
@@ -5480,14 +5481,14 @@ void PlayerManagerImplementation::grantDivorce(CreatureObject* player) {
 }
 
 void PlayerManagerImplementation::claimVeteranRewards(CreatureObject* player) {
-
 	if (player == nullptr || !player->isPlayerCreature() )
 		return;
 
-	PlayerObject* playerGhost = player->getPlayerObject();
+	PlayerObject* ghost = player->getPlayerObject();
 
 	// Get account
-	ManagedReference<Account*> account = playerGhost->getAccount();
+	ManagedReference<Account*> account = ghost->getAccount();
+
 	if (account == nullptr )
 		return;
 
@@ -5498,7 +5499,8 @@ void PlayerManagerImplementation::claimVeteranRewards(CreatureObject* player) {
 	player->sendSystemMessage(timeActiveMsg );
 
 	// Verify player is eligible for a reward
-	int milestone = getEligibleMilestone( playerGhost, account );
+	int milestone = getEligibleMilestone(ghost, account);
+
 	if (milestone < 0) {
 		player->sendSystemMessage("@veteran:not_eligible"); // You are not currently eligible for a veteran reward.
 		return;
@@ -5516,39 +5518,41 @@ void PlayerManagerImplementation::claimVeteranRewards(CreatureObject* player) {
 
 	// Build and SUI list box of rewards
 	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::SELECT_VETERAN_REWARD, SuiListBox::HANDLETWOBUTTON);
+
 	box->setCallback(new SelectVeteranRewardSuiCallback(server));
 	box->setPromptText("@veteran_new:choice_description" ); // You may choose one of the items listed below. This item will be placed in your inventory.
 	box->setPromptTitle("@veteran_new:item_grant_box_title"); // Reward
 	box->setOkButton(true, "@ok");
 	box->setCancelButton(true, "@cancel");
 
-	for ( int i = 0; i < veteranRewards.size(); i++) {
-
+	for (int i = 0; i < veteranRewards.size(); i++) {
 		// Any rewards at or below current milestone are eligible
 		VeteranReward reward = veteranRewards.get(i);
-		if (reward.getMilestone() <= milestone) {
 
-			// Filter out one-time rewards already claimed
-			if (reward.isOneTime() && playerGhost->hasChosenVeteranReward(reward.getTemplateFile())) {
-				continue;
-			}
+		//info(true) << "Reward: " << reward.getTemplateFile() << " Player Milestone: " << milestone << " Reward Milestone: " << reward.getMilestone();
 
-			SharedObjectTemplate* rewardTemplate = TemplateManager::instance()->getTemplate(reward.getTemplateFile().hashCode());
-			if (rewardTemplate != nullptr) {
-				if (reward.getDescription().isEmpty()) {
-					box->addMenuItem(rewardTemplate->getDetailedDescription(), i);
-				}
-				else{
-					box->addMenuItem(reward.getDescription(), i);
-				}
+		if (reward.getMilestone() > milestone)
+			continue;
+
+		// Filter out one-time rewards already claimed
+		if (reward.isOneTime() && ghost->hasChosenVeteranReward(reward.getTemplateFile())) {
+			continue;
+		}
+
+		SharedObjectTemplate* rewardTemplate = TemplateManager::instance()->getTemplate(reward.getTemplateFile().hashCode());
+
+		if (rewardTemplate != nullptr) {
+			if (reward.getDescription().isEmpty()) {
+				box->addMenuItem(rewardTemplate->getDetailedDescription(), i);
+			} else {
+				box->addMenuItem(reward.getDescription(), i);
 			}
 		}
 	}
 
 	box->setUsingObject(nullptr);
-	playerGhost->addSuiBox(box);
+	ghost->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
-
 }
 
 void PlayerManagerImplementation::cancelVeteranRewardSession(CreatureObject* player) {
@@ -5556,7 +5560,6 @@ void PlayerManagerImplementation::cancelVeteranRewardSession(CreatureObject* pla
 }
 
 void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, int itemIndex) {
-
 	if (player == nullptr || !player->isPlayerCreature()) {
 		return;
 	}
@@ -5568,8 +5571,8 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 	}
 
 	// Get account
-	PlayerObject* playerGhost = player->getPlayerObject();
-	ManagedReference<Account*> account = playerGhost->getAccount();
+	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<Account*> account = ghost->getAccount();
 	if (account == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession(player);
@@ -5578,6 +5581,7 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 
 	// Check session
 	ManagedReference<VeteranRewardSession*> rewardSession = player->getActiveSession(SessionFacadeType::VETERANREWARD).castTo<VeteranRewardSession*>();
+
 	if (rewardSession == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		return;
@@ -5585,7 +5589,7 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 
 	VeteranReward reward = veteranRewards.get(itemIndex);
 
-	if (reward.isOneTime() && playerGhost->hasChosenVeteranReward(reward.getTemplateFile())) {
+	if (reward.isOneTime() && ghost->hasChosenVeteranReward(reward.getTemplateFile())) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession(player);
 		return;
@@ -5602,7 +5606,7 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 		suibox->setOkButton(true, "@yes");
 		suibox->setCancelButton(true, "@no");
 
-		playerGhost->addSuiBox(suibox);
+		ghost->addSuiBox(suibox);
 		player->sendMessage(suibox->generateMessage());
 	} else {
 		generateVeteranReward(player);
@@ -5616,8 +5620,10 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	}
 
 	// Get account
-	PlayerObject* playerGhost = player->getPlayerObject();
-	ManagedReference<Account*> account = playerGhost->getAccount();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ManagedReference<Account*> account = ghost->getAccount();
+
 	if (account == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession(player);
@@ -5626,6 +5632,7 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 
 	// Check session
 	ManagedReference<VeteranRewardSession*> rewardSession = player->getActiveSession(SessionFacadeType::VETERANREWARD).castTo<VeteranRewardSession*>();
+
 	if (rewardSession == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		return;
@@ -5635,7 +5642,8 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	// (prevent claiming while multi-logged)
 
 	bool milestoneClaimed = false;
-	if (!playerGhost->getChosenVeteranReward(rewardSession->getMilestone() ).isEmpty() )
+
+	if (!ghost->getChosenVeteranReward(rewardSession->getMilestone() ).isEmpty() )
 		milestoneClaimed = true;
 
 	if (milestoneClaimed) {
@@ -5654,6 +5662,7 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 
 	VeteranReward reward = veteranRewards.get(rewardSession->getSelectedRewardIndex());
 	Reference<SceneObject*> rewardSceno = server->createObject(reward.getTemplateFile().hashCode(), 1);
+
 	if (rewardSceno == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession(player);
@@ -5684,14 +5693,13 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	cancelVeteranRewardSession(player);
 
 	// If player is eligible for another reward, kick off selection
-	if (getEligibleMilestone(playerGhost, account ) >= 0) {
+	if (getEligibleMilestone(ghost, account ) >= 0) {
 		player->enqueueCommand(STRING_HASHCODE("claimveteranreward"), 0, 0, "");
 	}
 }
 
-int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *playerGhost, Account* account) {
-
-	if (account == nullptr || playerGhost == nullptr )
+int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *ghost, Account* account) {
+	if (account == nullptr || ghost == nullptr )
 		return -1;
 
 	int accountAge = account->getAgeInDays();
@@ -5705,7 +5713,7 @@ int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *playerGhost,
 	// Return the first milestone for which the player is eligible and has not already claimed
 	for (int i = 0; i < veteranRewardMilestones.size(); i++) {
 		milestone = veteranRewardMilestones.get(i);
-		if (accountAge >= milestone && playerGhost->getChosenVeteranReward(milestone).isEmpty()) {
+		if (accountAge >= milestone && ghost->getChosenVeteranReward(milestone).isEmpty()) {
 			return milestone;
 		}
 	}
@@ -5714,7 +5722,7 @@ int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *playerGhost,
 	milestone += veteranRewardAdditionalMilestones;
 
 	while (accountAge >= milestone) {
-		if (playerGhost->getChosenVeteranReward(milestone).isEmpty()) {
+		if (ghost->getChosenVeteranReward(milestone).isEmpty()) {
 			return milestone;
 		}
 
@@ -5726,7 +5734,6 @@ int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *playerGhost,
 }
 
 int PlayerManagerImplementation::getFirstIneligibleMilestone(PlayerObject *playerGhost, Account* account) {
-
 	if (account == nullptr || playerGhost == nullptr )
 		return -1;
 
