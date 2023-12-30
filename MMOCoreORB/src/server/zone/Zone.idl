@@ -30,7 +30,9 @@ import server.zone.objects.pathfinding.NavArea;
 import system.thread.atomic.AtomicInteger;
 include system.thread.atomic.AtomicBoolean;
 include server.zone.objects.region.CityRegion;
+
 import server.zone.ActiveAreaQuadTree;
+import server.zone.ActiveAreaOctree;
 
 @mock
 class Zone extends SceneObject {
@@ -216,7 +218,10 @@ class Zone extends SceneObject {
 
 	*/
 
-
+	@local
+	public abstract ActiveAreaOctree getActiveAreaOctree() {
+		return null;
+	}
 
 	/*
 

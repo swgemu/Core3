@@ -10,8 +10,10 @@
 #include "server/zone/InRangeObjectsVector.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "templates/SharedObjectTemplate.h"
+#include "server/zone/ActiveAreaOctree.h"
 
 SpaceZoneImplementation::SpaceZoneImplementation(ZoneProcessServer* serv, const String& name) : ZoneImplementation(serv, name) {
+	areaOctree = new server::zone::ActiveAreaOctree(-8192, -8192, -8192, 8192, 8192, 8192);
 	octTree = new server::zone::OctTree(-8192, -8192, -8192, 8192, 8192, 8192);
 
 	spaceManager = nullptr;
@@ -76,6 +78,7 @@ void SpaceZoneImplementation::stopManagers() {
 	server = nullptr;
 	objectMap = nullptr;
 	octTree = nullptr;
+	areaOctree = nullptr;
 }
 
 void SpaceZoneImplementation::clearZone() {
