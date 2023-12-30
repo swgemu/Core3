@@ -250,6 +250,16 @@ class ActiveArea extends SceneObject {
 		return areaShape && areaShape.isRectangularAreaShape();
 	}
 
+	@read
+	public boolean isCuboidAreaShape() {
+		return areaShape && areaShape.isCuboidAreaShape();
+	}
+
+	@read
+	public boolean isSphereAreaShape() {
+		return areaShape && areaShape.isSphereAreaShape();
+	}
+
 	@preLocked
 	public native void addAreaFlag(unsigned int flag);
 

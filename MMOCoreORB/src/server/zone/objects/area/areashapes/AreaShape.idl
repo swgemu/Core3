@@ -123,6 +123,24 @@ class AreaShape extends ManagedObject implements Logger {
 	}
 
 	/**
+	 * Check if this is a cuboid area shape.
+	 * @return true if it is a cuboid area shape.
+	 */
+	@read
+	public abstract boolean isCuboidAreaShape() {
+		return false;
+	}
+
+	/**
+	 * Check if this is a sphere area shape.
+	 * @return true if it is a sphere area shape.
+	 */
+	@read
+	public abstract boolean isSphereAreaShape() {
+		return false;
+	}
+
+	/**
 	 * Check if this area shape intersects with the supplied area shape.
 	 * @param areaShape the area shape to check for intersections with.
 	 * @return true if the area shapes intersects each other.

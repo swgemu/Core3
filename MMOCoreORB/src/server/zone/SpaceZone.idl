@@ -22,11 +22,13 @@ include engine.util.u3d.Vector3;
 include server.zone.OctTreeReference;
 
 import server.zone.objects.tangible.TangibleObject;
-//import server.zone.ActiveAreaOctree;
+import server.zone.ActiveAreaOctree;
 
 @mock
 class SpaceZone extends Zone {
 	private transient SpaceManager spaceManager;
+
+	private transient ActiveAreaOctree areaOctree;
 
 	@dereferenced
 	private OctTreeReference octTree;
@@ -115,6 +117,11 @@ class SpaceZone extends Zone {
 	@dirty
 	public SpaceManager getSpaceManager() {
 		return spaceManager;
+	}
+
+	@local
+	public abstract ActiveAreaOctree getActiveAreaOctree() {
+		return areaOctree;
 	}
 
 	/*
