@@ -9,6 +9,7 @@
 #define SPACEZONECONTAINERCOMPONENT_H_
 
 #include "server/zone/objects/scene/components/ContainerComponent.h"
+#include "server/zone/SpaceZone.h"
 
 namespace server {
 	namespace zone {
@@ -25,11 +26,15 @@ namespace server {
 using namespace server::zone;
 using namespace server::zone::objects::area;
 
-class SpaceZoneContainerComponent : public ContainerComponent {
+class SpaceZoneContainerComponent : public ContainerComponent, public Logger {
 protected:
-	bool insertActiveArea(SpaceZone* zone, ActiveArea* activeArea) const;
-	bool removeActiveArea(SpaceZone* zone, ActiveArea* activeArea) const;
+	bool insertActiveArea(Zone* zone, ActiveArea* activeArea) const;
+	bool removeActiveArea(Zone* zone, ActiveArea* activeArea) const;
 public:
+	SpaceZoneContainerComponent() {
+		setLoggingName("SpaceZoneContainerComponent");
+	}
+
 	virtual bool transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false, bool notifyRoot = true) const;
 
 	virtual bool removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const;

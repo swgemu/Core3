@@ -1,0 +1,23 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.area;
+
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.area.ActiveArea;
+
+@mock
+@json
+class SpaceActiveArea extends ActiveArea {
+	public SpaceActiveArea() {
+		Logger.setLoggingName("SpaceActiveArea");
+	}
+
+	@dirty
+	public native abstract void notifyEnter(SceneObject object);
+
+	@dirty
+	public native abstract void notifyExit(SceneObject object);
+}

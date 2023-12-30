@@ -237,6 +237,10 @@ void PobShipObjectImplementation::notifyInsert(TreeEntry* object) {
 }
 
 void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool forceLoad) {
+	// Dont send container objects if the ship is not in the zone.
+	if (getLocalZone() == nullptr)
+		return;
+
 	if (player == nullptr)
 		return;
 

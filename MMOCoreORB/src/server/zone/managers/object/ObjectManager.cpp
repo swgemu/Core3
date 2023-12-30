@@ -96,6 +96,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<SarlaccArea>(SceneObjectType::SARLACCAREA);
 	objectFactory.registerObject<FsVillageArea>(SceneObjectType::FSVILLAGEAREA);
 	objectFactory.registerObject<ActiveArea>(SceneObjectType::ACTIVEAREA);
+	objectFactory.registerObject<SpaceActiveArea>(SceneObjectType::SPACEACTIVEAREA);
 	objectFactory.registerObject<BadgeActiveArea>(SceneObjectType::BADGEAREA);
 	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObjectType::MISSIONSPAWNAREA);
 	objectFactory.registerObject<MissionReconActiveArea>(SceneObjectType::MISSIONRECONAREA);
