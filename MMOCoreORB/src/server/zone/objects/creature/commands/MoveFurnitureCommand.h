@@ -41,7 +41,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<SceneObject*> rootParent = obj->getRootParent();
+		ManagedReference<SceneObject*> targetRoot = obj->getRootParent();
 		ManagedReference<SceneObject*> creatureParent = creature->getRootParent();
 
 		if (creatureParent == nullptr || (!creatureParent->isBuildingObject() && !creatureParent->isPobShipObject())) {
@@ -52,7 +52,7 @@ public:
 		if (creatureParent->isPobShipObject()) {
 			PobShipObject* pobShip = creatureParent->asPobShipObject();
 
-			if (pobShip == nullptr || (rootParent->getObjectID() != pobShip->getObjectID()) || pobShip->containsChildObject(obj)) {
+			if (pobShip == nullptr || targetRoot == nullptr || (targetRoot->getObjectID() != pobShip->getObjectID()) || pobShip->containsChildObject(obj)) {
 				creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
 				return GENERALERROR;
 			}
@@ -69,7 +69,7 @@ public:
 
 			BuildingObject* buildingObject = cast<BuildingObject*>(creatureParent.get());
 
-			if (buildingObject == nullptr || rootParent != buildingObject || buildingObject->containsChildObject(obj)) {
+			if (buildingObject == nullptr || targetRoot != buildingObject || buildingObject->containsChildObject(obj)) {
 				creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
 				return GENERALERROR;
 			}
