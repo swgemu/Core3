@@ -22,9 +22,6 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 		CreatureObject* player = sceneObject->asCreatureObject();
 
 		if (player != nullptr) {
-			// Ensure no space states are on players in ground zones
-			player->clearSpaceStates();
-
 			PlayerObject* ghost = player->getPlayerObject();
 			String zoneName = newZone->getZoneName();
 
@@ -33,13 +30,13 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 
 			// Remove MaskScent state from concealed players when their buff is for a different zone
 			uint32 concealCrc = STRING_HASHCODE("skill_buff_mask_scent");
+			Reference<CreatureObject*> playerRef = player;
 
 			if (player->hasBuff(concealCrc)) {
 				ConcealBuff* concealBuff = cast<ConcealBuff*>(player->getBuff(concealCrc));
 
 				if (concealBuff != nullptr) {
 					Reference<ConcealBuff*> buffRef = concealBuff;
-					Reference<CreatureObject*> playerRef = player;
 					Reference<Zone*> zoneRef = newZone;
 
 					Core::getTaskManager()->executeTask([buffRef, playerRef, zoneRef] () {
@@ -56,6 +53,16 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 					}, "ClearMaskStateLambda");
 				}
 			}
+
+			// Ensure no space states are on players in ground zones
+			Core::getTaskManager()->executeTask([playerRef] () {
+				if (playerRef == nullptr)
+					return;
+
+				Locker lock(playerRef);
+
+				playerRef->clearSpaceStates();
+			}, "ClearSpaceStatesLambda");
 		}
 	}
 
