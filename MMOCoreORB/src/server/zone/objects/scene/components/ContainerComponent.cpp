@@ -298,7 +298,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 		ManagedReference<Zone*> newRootZone = object->getZone();
 
-		if (newRootZone != nullptr && newRootZone != oldRootZone) {
+		if (newRootZone != nullptr && newRootZone != oldRootZone && newRootZone->isGroundZone()) {
 			bool shouldRegister = true;
 
 			// Prevent GCW PvE Base Terminals Registering when inserted in cell container
