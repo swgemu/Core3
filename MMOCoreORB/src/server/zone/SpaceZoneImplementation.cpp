@@ -10,8 +10,12 @@
 #include "server/zone/InRangeObjectsVector.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "templates/SharedObjectTemplate.h"
+#include "server/zone/ActiveAreaOctree.h"
+
+// #define DEBUG_SPACE_AA
 
 SpaceZoneImplementation::SpaceZoneImplementation(ZoneProcessServer* serv, const String& name) : ZoneImplementation(serv, name) {
+	areaOctree = new server::zone::ActiveAreaOctree(-8192, -8192, -8192, 8192, 8192, 8192);
 	octTree = new server::zone::OctTree(-8192, -8192, -8192, 8192, 8192, 8192);
 
 	spaceManager = nullptr;
@@ -76,6 +80,7 @@ void SpaceZoneImplementation::stopManagers() {
 	server = nullptr;
 	objectMap = nullptr;
 	octTree = nullptr;
+	areaOctree = nullptr;
 }
 
 void SpaceZoneImplementation::clearZone() {
@@ -161,7 +166,97 @@ void SpaceZoneImplementation::inRange(TreeEntry* entry, float range) {
 }
 
 void SpaceZoneImplementation::updateActiveAreas(TangibleObject* tano) {
+	if (tano == nullptr || !tano->isShipObject())
+		return;
 
+#ifdef DEBUG_SPACE_AA
+	info(true) << "\n---------- SpaceZoneImplementation::updateActiveAreas called ----------";
+#endif
+
+	Locker _alocker(tano->getContainerLock());
+
+	SortedVector<ManagedReference<ActiveArea* > > areas = *tano->getActiveAreas();
+
+	_alocker.release();
+
+	Vector3 worldPos = tano->getWorldPosition();
+
+	SortedVector<ActiveArea*> entryObjects;
+
+	Zone* managedRef = _this.getReferenceUnsafeStaticCast();
+
+	bool readlock = !managedRef->isLockedByCurrentThread();
+
+	managedRef->rlock(readlock);
+
+	try {
+		areaOctree->getActiveAreas(worldPos.getX(), worldPos.getZ(), worldPos.getY(), entryObjects);
+
+	} catch (...) {
+		error("unexpeted error caught in void SpaceZoneImplementation::updateActiveAreas(SceneObject* object) {");
+	}
+
+	managedRef->runlock(readlock);
+
+	managedRef->unlock(!readlock);
+
+#ifdef DEBUG_SPACE_AA
+	info(true) << "updateActiveAreas -- areasSize: " << areas.size() << " TanO Pos: X = " << worldPos.getX() << " Z = " << worldPos.getZ() << " Y = " << worldPos.getY();
+#endif
+
+	try {
+		// update old ones
+		for (int i = 0; i < areas.size(); ++i) {
+			ManagedReference<ActiveArea*>& area = areas.getUnsafe(i);
+
+			if (area == nullptr)
+				continue;
+
+			if (!area->containsPoint(worldPos.getX(), worldPos.getZ(), worldPos.getY(), tano->getParentID())) {
+				tano->dropActiveArea(area);
+				area->enqueueExitEvent(tano);
+
+#ifdef DEBUG_SPACE_AA
+				info(true) << "updateActiveAreas -- Dropping area: " << area->getAreaName();
+#endif
+			} else {
+#ifdef DEBUG_SPACE_AA
+				info(true) << "updateActiveAreas -- Area position updated called for: " << area->getAreaName();
+#endif
+
+				area->notifyPositionUpdate(tano);
+			}
+		}
+
+#ifdef DEBUG_SPACE_AA
+		info(true) << "updateActiveAreas -- entryObjects size: " << entryObjects.size();
+#endif
+
+		// we update the ones in octtree.
+		for (int i = 0; i < entryObjects.size(); ++i) {
+			//update in new ones
+			ActiveArea* activeArea = static_cast<ActiveArea*>(entryObjects.getUnsafe(i));
+
+			if (!tano->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getZ(), worldPos.getY(), tano->getParentID())) {
+#ifdef DEBUG_SPACE_AA
+				info(true) << "updateActiveAreas -- ADDING area: " << activeArea->getAreaName();
+#endif
+
+				tano->addActiveArea(activeArea);
+				activeArea->enqueueEnterEvent(tano);
+			}
+		}
+	} catch (...) {
+		error("unexpected exception caught in void SpaceZoneImplementation::updateActiveAreas(SceneObject* object) {");
+		managedRef->wlock(!readlock);
+		throw;
+	}
+
+	managedRef->wlock(!readlock);
+
+#ifdef DEBUG_SPACE_AA
+	info(true) << "---------- END SpaceZoneImplementation::updateActiveAreas called ----------\n";
+#endif
 }
 
 void SpaceZoneImplementation::addSceneObject(SceneObject* object) {
@@ -270,8 +365,7 @@ int SpaceZoneImplementation::getInRangeObjects(float x, float z, float y, float 
 int SpaceZoneImplementation::getInRangePlayers(float x, float z, float y, float range, SortedVector<ManagedReference<TreeEntry*> >* players) {
 	Reference<SortedVector<ManagedReference<TreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<TreeEntry*> >();
 
-	/*
-	getInRangeObjects(x, 0, y, range, closeObjects, true);
+	getInRangeObjects(x, z, y, range, closeObjects, true);
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
@@ -286,17 +380,52 @@ int SpaceZoneImplementation::getInRangePlayers(float x, float z, float y, float 
 
 		players->emplace(object);
 	}
-	*/
 
 	return players->size();
 }
 
 int SpaceZoneImplementation::getInRangeActiveAreas(float x, float z, float y, SortedVector<ManagedReference<ActiveArea*> >* objects, bool readLockZone) {
-	return 0;
+	objects->setNoDuplicateInsertPlan();
+
+	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
+
+	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
+
+	try {
+		thisZone->rlock(readlock);
+
+		areaOctree->getActiveAreas(x, z, y, *objects);
+
+		thisZone->runlock(readlock);
+	} catch (...) {
+		thisZone->runlock(readlock);
+
+		throw;
+	}
+
+	return objects->size();
 }
 
 int SpaceZoneImplementation::getInRangeActiveAreas(float x, float z, float y, ActiveAreasVector* objects, bool readLockZone) {
-	return 0;
+	objects->setNoDuplicateInsertPlan();
+
+	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
+
+	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
+
+	try {
+		thisZone->rlock(readlock);
+
+		areaOctree->getActiveAreas(x, z, y, *objects);
+
+		thisZone->runlock(readlock);
+	} catch (...) {
+		thisZone->runlock(readlock);
+
+		throw;
+	}
+
+	return objects->size();
 }
 
 /*
@@ -306,11 +435,15 @@ int SpaceZoneImplementation::getInRangeActiveAreas(float x, float z, float y, Ac
 */
 
 bool SpaceZoneImplementation::isWithinBoundaries(const Vector3& position) {
-	return false;
+	bool runTestX = (position.getX() >= -8192 && position.getX() < 8192);
+	bool runTestY = (position.getY() >= -8192 && position.getY() < 8192);
+	bool runTestZ = (position.getZ() >= -8192 && position.getZ() < 8192);
+
+	return runTestX && runTestY && runTestZ;
 }
 
 float SpaceZoneImplementation::getBoundingRadius() {
-	return 0.0;
+	return 0.5;
 }
 
 float SpaceZoneImplementation::getZoneObjectRange() {

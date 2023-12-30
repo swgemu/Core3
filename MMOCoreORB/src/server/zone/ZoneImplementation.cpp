@@ -22,7 +22,6 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "terrain/ProceduralTerrainAppearance.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
-#include "server/zone/ActiveAreaQuadTree.h"
 
 ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) {
 	setZoneProcessServer(serv);

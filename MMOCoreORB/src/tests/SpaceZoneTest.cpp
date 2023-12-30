@@ -13,6 +13,7 @@
 #include "server/zone/SpaceZone.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/area/space/SpaceActiveArea.h"
 #include "conf/ConfigManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/login/objects/GalaxyList.h"
@@ -64,6 +65,31 @@ public:
 		return object;
 	}
 
+	Reference<ShipObject*> createShipObject() {
+		Reference<ShipObject*> object = new ShipObject();
+		setDefaultComponents(object);
+		object->_setObjectID(nextObjectId.increment());
+		object->initializeContainerObjectsMap();
+
+		return object;
+	}
+
+	Reference<SpaceActiveArea*> createActiveArea(bool mock = false) {
+		Reference<SpaceActiveArea*> spaceActiveArea;
+
+		if (mock) {
+			spaceActiveArea = new MockSpaceActiveArea();
+		} else {
+			spaceActiveArea = new SpaceActiveArea();
+		}
+
+		setDefaultComponents(spaceActiveArea);
+		spaceActiveArea->_setObjectID(nextObjectId.increment());
+		spaceActiveArea->initializeContainerObjectsMap();
+
+		return spaceActiveArea;
+	}
+
 	void SetUp() {
 		// Perform setup of common constructs here.
 		ConfigManager::instance()->loadConfigData();
@@ -96,6 +122,62 @@ public:
 		zoneServer = nullptr;
 	}
 };
+
+TEST_F(SpaceZoneTest, SpaceActiveAreaTest) {
+	Reference<MockSpaceActiveArea*> spaceActiveArea = createActiveArea(true).castTo<MockSpaceActiveArea*>();
+
+	ON_CALL(*spaceActiveArea, getZone()).WillByDefault(Return(spaceZone));
+	ON_CALL(*spaceActiveArea, getZoneUnsafe()).WillByDefault(Return(spaceZone));
+	ON_CALL(*spaceActiveArea, getParent()).WillByDefault(Return(ManagedWeakReference<SceneObject*>(NULL)));
+	EXPECT_CALL(*spaceActiveArea, getZone()).Times(AnyNumber());
+	EXPECT_CALL(*spaceActiveArea, getZoneUnsafe()).Times(AnyNumber());
+	EXPECT_CALL(*spaceActiveArea, getParent()).Times(AnyNumber());
+	EXPECT_CALL(*spaceActiveArea, enqueueEnterEvent(_)).Times(AnyNumber());
+	EXPECT_CALL(*spaceActiveArea, enqueueExitEvent(_)).Times(AnyNumber());
+
+	Locker alocker(spaceActiveArea);
+
+	spaceActiveArea->setRadius(512);
+	spaceActiveArea->initializePosition(0, 0, 0);
+
+	spaceZone->transferObject(spaceActiveArea, -1);
+
+	alocker.release();
+
+	Reference<ShipObject*> ship = createShipObject();
+
+	Locker slocker(ship);
+
+	ship->initializePosition(0, 0, 0);
+
+	ASSERT_EQ(ship->getActiveAreasSize(), 0);
+
+	spaceZone->transferObject(ship, -1);
+
+	ASSERT_EQ(ship->getActiveAreasSize(), 1);
+
+	ship->teleport(0, -600, 0);
+
+	ASSERT_EQ(ship->getActiveAreasSize(), 0);
+
+	ship->teleport(120, 120, 120);
+
+	ASSERT_EQ(ship->getActiveAreasSize(), 1);
+
+	slocker.release();
+
+	Locker blocker(spaceActiveArea);
+
+	spaceActiveArea->destroyObjectFromWorld(false);
+
+	blocker.release();
+
+	Locker s2locker(ship);
+
+	ASSERT_EQ(ship->getActiveAreasSize(), 0);
+
+	ship->destroyObjectFromWorld(false);
+}
 
 TEST_F(SpaceZoneTest, InRangeTest) {
 	Reference<SceneObject*> scene = createSceneObject();
