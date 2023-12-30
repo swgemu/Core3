@@ -388,7 +388,7 @@ void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 		TangibleObject* tano = object->asTangibleObject();
 
 		if (tano != nullptr) {
-			//zone->updateActiveAreas(tano);
+			zone->updateActiveAreas(tano);
 		}
 
 		object->notifyInsertToZone(zone);
@@ -487,7 +487,7 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 
 		if (object->isTangibleObject()) {
 			TangibleObject* tano = object->asTangibleObject();
-		   // zone->updateActiveAreas(tano);
+			zone->updateActiveAreas(tano);
 		}
 	}
 
