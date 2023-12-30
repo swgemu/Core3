@@ -639,7 +639,9 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 		}
 	}
 
-	if (zone == nullptr)
+	auto currentZone = getZone();
+
+	if (currentZone == nullptr)
 		return;
 
 	SortedVector<TreeEntry*> closeSceneObjects;
@@ -649,7 +651,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 #ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::broadcastDestroyPrivate", true);
 #endif
-		zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance() + 64, &closeSceneObjects, true);
+		currentZone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance() + 64, &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 	} else {
@@ -870,9 +872,9 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 }
 
 int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float range) {
-	auto zone = getZoneUnsafe();
+	auto currentZone = getZoneUnsafe();
 
-	if (zone == nullptr)
+	if (currentZone == nullptr)
 		return 0;
 
 	int numberOfObjects = 0;
@@ -883,7 +885,7 @@ int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float
 #ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::inRangeObjects", true);
 #endif
-		zone->getInRangeObjects(getPositionX(), getPositionY(), range, &closeSceneObjects, true);
+		currentZone->getInRangeObjects(getPositionX(), getPositionY(), range, &closeSceneObjects, true);
 	} else {
 		closeobjects->safeCopyTo(closeSceneObjects);
 	}
