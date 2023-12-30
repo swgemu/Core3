@@ -131,7 +131,7 @@ int ShipDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 			return 1;
 		}
 
-		ManagedReference<ShipObject*> ship = ShipManager::instance()->createPlayerShip(player, generatedObjectTemplate, false);
+		ManagedReference<ShipObject*> ship = ShipManager::instance()->createPlayerShip(player, generatedObjectTemplate, shouldCreateComponents());
 
 		if (ship == nullptr) {
 			error() << "Failed to generate ship object from template: " << generatedObjectTemplate;
