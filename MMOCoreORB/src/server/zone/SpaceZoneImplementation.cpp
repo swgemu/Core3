@@ -25,8 +25,9 @@ SpaceZoneImplementation::SpaceZoneImplementation(ZoneProcessServer* serv, const 
 	spaceManager = nullptr;
 
 	String capName = name;
-	capName.replaceFirst("_", "");
-	capName[0] = toupper(name[0]);
+	capName = capName.replaceFirst("_", "");
+	capName[0] = toupper(capName[0]);
+	capName[5] = toupper(capName[5]);
 
 	int numThreads = ConfigManager::instance()->getInt("Core3.SpaceZone.ThreadsDefault", 1);
 	numThreads = ConfigManager::instance()->getInt("Core3.SpaceZone.Threads" + capName, numThreads);
