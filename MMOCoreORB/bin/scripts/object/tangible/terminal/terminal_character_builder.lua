@@ -2499,7 +2499,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Imperial Pilot Initiate", "pilot_imperial_navy_novice",
 					"Starships",
 					{
-						"Intermediate TIE Combat Craft Operations", "pilot_imperial_navy_starships__01",
+						"Intermediate TIE Combat Craft Operations", "pilot_imperial_navy_starships_01",
 						"Advanced TIE Combat Craft Operations", "pilot_imperial_navy_starships_02",
 						"Advanced Capability TIE Vessels", "pilot_imperial_navy_starships_03",
 						"TIE Experimental Vessels", "pilot_imperial_navy_starships_04"

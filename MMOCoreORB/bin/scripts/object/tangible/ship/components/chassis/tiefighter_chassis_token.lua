@@ -46,7 +46,7 @@ object_tangible_ship_components_chassis_tiefighter_chassis_token = object_tangib
 	chassisDeed = "object/tangible/ship/crafted/chassis/tiefighter_deed.iff",
 	dealerFee = 15000,
 	certificationRequired = "cert_starships_tiefighter",
-	skillRequired = {"pilot_imperial_navy_starships__01"},
+	skillRequired = {"pilot_imperial_navy_starships_01"},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
