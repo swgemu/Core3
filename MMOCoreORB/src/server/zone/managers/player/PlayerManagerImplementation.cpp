@@ -1539,15 +1539,29 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 		return;
 	}
 
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
 	Zone* zone = player->getZone();
 
 	if (zone == nullptr)
 		return;
 
-	PlayerObject* ghost = player->getPlayerObject();
+	Vector3 playerPos = player->getWorldPosition();
 
-	if (ghost == nullptr)
-		return;
+	// Handle players death in space
+	if (zone->isSpaceZone()) {
+		auto launchZoneName = ghost->getSpaceLaunchZone();
+
+		zone = server->getZone(launchZoneName);
+
+		if (zone == nullptr || zone->isSpaceZone())
+			return;
+
+		playerPos = ghost->getSpaceLaunchLocation();
+	}
 
 	ghost->removeSuiBoxType(SuiWindowType::CLONE_REQUEST);
 
@@ -1556,7 +1570,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	if (cloneMenu == nullptr)
 		return;
 
-	cloneMenu->setCallback(new CloningRequestSuiCallback(player->getZoneServer(), typeofdeath));
+	cloneMenu->setCallback(new CloningRequestSuiCallback(server, typeofdeath));
 	cloneMenu->setPromptTitle("@base_player:revive_title");
 
 	uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
@@ -1583,7 +1597,6 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	SortedVector<ManagedReference<SceneObject*> > locations = zone->getPlanetaryObjectList("cloningfacility");
 
 	int checkDistanceSq = 16000 * 16000;
-	Vector3 playerPos = player->getWorldPosition();
 
 	for (int j = 0; j < locations.size(); j++) {
 		ManagedReference<SceneObject*> location = locations.get(j);
@@ -1699,7 +1712,6 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		return;
 	}
 
-
 	CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(cloner->getObjectTemplate());
 
 	if (cbot == nullptr) {
@@ -1739,6 +1751,23 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	}
 
 	Zone* zone = player->getZone();
+
+	if (zone == nullptr) {
+		error() << player->getDisplayedName() << " ID: " << player->getObjectID() << " - Failed to activate clone due to null zone. Chosen Cloning Facility ID: " << cloner->getObjectID();
+		return;
+	}
+
+	// Handle players death in space
+	if (zone->isSpaceZone()) {
+		auto launchZoneName = ghost->getSpaceLaunchZone();
+
+		zone = server->getZone(launchZoneName);
+
+		if (zone == nullptr || zone->isSpaceZone()) {
+			error() << player->getDisplayedName() << " ID: " << player->getObjectID() << " - Failed to activate clone on Ground Zone. Chosen Cloning Facility ID: " << cloner->getObjectID();
+			return;
+		}
+	}
 
 	ghost->setCloning(true);
 
