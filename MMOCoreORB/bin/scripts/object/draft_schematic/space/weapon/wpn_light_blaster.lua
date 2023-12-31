@@ -42,21 +42,18 @@
 
 
 object_draft_schematic_space_weapon_wpn_light_blaster = object_draft_schematic_space_weapon_shared_wpn_light_blaster:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "Light Blaster (Red)",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 21,
 	size = 1,
 	factoryCrateSize = 0,
 	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
-   
+
 	xpType = "shipwright",
 	xp = 50,
 
-	assemblySkill = "weapon_systems_assembly",
+	assemblySkill = "weapon_systems",
 	experimentingSkill = "weapon_systems_experimentation",
 	customizationSkill = "weapon_systems_customization",
 
