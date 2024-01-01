@@ -287,6 +287,8 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 		return;
 	}
 
+	//info(true) << "switchZone for " << sceneObject->getDisplayedName() << " with new ParentID: " << parentID;
+
 	sceneObject->destroyObjectFromWorld(false);
 
 	if (toggleInvisibility) {
@@ -300,6 +302,7 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 	Locker locker(newZone);
 
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
+	sceneObject->incrementMovementCounter();
 
 	// Object needs to be in zone before being inserted into parent
 	newZone->transferObject(sceneObject, -1, true);
@@ -312,12 +315,11 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 			//info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
 		} else if (newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR) {
 			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT_POB, true);
-			sceneObject->setDirection(*newParent->getDirection());
 
 			SceneObject* rootParent = newParent->getRootParent();
 
 			if (rootParent != nullptr) {
-				rootParent->sendTo(sceneObject, true);;
+				rootParent->sendTo(sceneObject, true);
 			}
 
 			//info(true) << "SpaceZoneComponent::switchZone object transferred into POB ship with new parent: " << newParent->getDisplayedName();
