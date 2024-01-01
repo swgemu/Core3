@@ -30,9 +30,7 @@ public:
 	static int MAXIMUM_PLAYER_COUNT;
 	const int MAXIMUM_POSITION_TRIES = 5;
 
-	BoardShuttleCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	BoardShuttleCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -48,6 +46,9 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+		if (planetManager == nullptr)
+			return GENERALERROR;
 
 		Reference<PlanetTravelPoint*> closestPoint = planetManager->getNearestPlanetTravelPoint(creature, 128.f);
 
