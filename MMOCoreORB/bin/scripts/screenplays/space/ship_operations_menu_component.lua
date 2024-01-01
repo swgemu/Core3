@@ -51,14 +51,47 @@ function ShipOperationsMenuComponent:handleObjectMenuSelect(pOpsChair, pPlayer, 
 	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() or pOpsChair == nil) then
 		return
 	end
-	-- TODO
-	-- faction check "@space/space_interaction:"wrong_faction"
-	-- operations requirement check
 
 	--print("Operations Seat Menu Selected ID " .. selectedID .. " Container ID: " .. SceneObject(pOpsChair):getObjectID() .. " Objects Size: " .. SceneObject(pOpsChair):getContainerObjectsSize())
 
+	-- Enter Ship Operations
 	if (selectedID == 120) then
+		-- Check to see if player is in the same cell
+		if (SceneObject(pOpsChair):getParentID() ~= SceneObject(pPlayer):getParentID()) then
+			return 0
+		end
+
+		-- Make sure player is within 5m
+		if (not CreatureObject(pPlayer):isInRangeWithObject(pOpsChair, 5)) then
+			CreatureObject(pPlayer):sendSystemMessage("@system_msg:out_of_range")
+			return 0
+		end
+
+		local pShip = SceneObject(pPlayer):getRootParent()
+
+		if (pShip == nil or not SceneObject(pShip):isShipObject()) then
+			return 0
+		end
+
+		-- TODO
+		-- operations certification check
+
+		-- Faction Check
+		local shipFaction = TangibleObject(pShip):getFaction()
+
+		if (shipFaction ~= FACTIONNEUTRAL and shipFaction ~= CreatureObject(pPlayer):getFaction()) then
+			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:wrong_faction")
+			return 0
+		end
+
+		if (SceneObject(pOpsChair):getSlottedObject("ship_operations_pob") ~= nil) then
+			CreatureObject(pPlayer):sendSystemMessage("The Ship Operations Chair is already occupied.")
+			return 0
+		end
+
 		SceneObject(pOpsChair):transferObject(pPlayer, SHIP_OPERATIONS_POB, 1)
+
+		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
 
 		-- Add in their ship operatios state
 		CreatureObject(pPlayer):setState(SHIPOPERATIONS)
