@@ -62,6 +62,42 @@ public:
 			return GENERALERROR;
 		}
 
+		ManagedReference<SceneObject*> ammoRoot = sceneAmmo->getRootParent();
+
+		if (ammoRoot == nullptr || ammoRoot != creature) {
+			return GENERALERROR;
+		}
+
+		auto ammoParent = sceneAmmo->getParent().get();
+
+		if (ammoParent != nullptr && ammoParent->isFactoryCrate()) {
+			auto factoryCrate = dynamic_cast<FactoryCrate*>(ammoParent.get());
+
+			if (factoryCrate == nullptr || !factoryCrate->isValidFactoryCrate() || factoryCrate->getUseCount() < 1) {
+				return GENERALERROR;
+			}
+
+			auto crateParent = factoryCrate->getParent().get();
+
+			if (crateParent == nullptr || crateParent->getCountableObjectsRecursive() > crateParent->getContainerVolumeLimit() + 1) {
+				return GENERALERROR;
+			}
+
+			Locker xLock(factoryCrate, creature);
+
+			ManagedReference<TangibleObject*> crateAmmo = factoryCrate->extractObject();
+
+			if (crateAmmo == nullptr || !crateAmmo->isComponent()) {
+				return GENERALERROR;
+			}
+
+			Locker cLock(crateAmmo, creature);
+
+			crateAmmo->setUseCount(0, true);
+
+			sceneAmmo = crateAmmo;
+		}
+
 		auto ammo = dynamic_cast<Component*>(sceneAmmo.get());
 
 		if (ammo == nullptr || ammo->getAttributeValue("fltmaxammo") == 0) {
