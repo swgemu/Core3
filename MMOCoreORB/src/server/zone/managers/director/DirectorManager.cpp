@@ -1862,10 +1862,20 @@ int DirectorManager::spatialChat(lua_State* L) {
 		return 0;
 	}
 
+	ManagedReference<CreatureObject*> creature = (CreatureObject*)lua_touserdata(L, -2);
+
+	if (creature == nullptr)
+		return 0;
+
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr)
+		return 0;
+
 	ChatManager* chatManager = zoneServer->getChatManager();
 
-	ManagedReference<CreatureObject*> creature = (CreatureObject*)lua_touserdata(L, -2);
+	if (chatManager == nullptr)
+		return 0;
 
 	if (lua_islightuserdata(L, -1)) {
 		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -1);
