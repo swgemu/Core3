@@ -52,14 +52,49 @@ function PilotSeatMenuComponent:handleObjectMenuSelect(pPilotChair, pPlayer, sel
 		return
 	end
 
-	-- print("Pilot Seat Menu Selected ID " .. selectedID .. " Container ID: " .. SceneObject(pPilotChair):getObjectID() .. " Objects Size: " .. SceneObject(pPilotChair):getContainerObjectsSize())
+	--print("Pilot Seat Menu Selected ID " .. selectedID .. " Container ID: " .. SceneObject(pPilotChair):getObjectID() .. " Objects Size: " .. SceneObject(pPilotChair):getContainerObjectsSize())
 
+	-- Pilot Ship
 	if (selectedID == 120) then
-		-- TODO: Check for proper ship certifications "no_ship_certification", "You are not certified to pilot this ship."
-		-- TODO: Check for player already in pilot seat
+		-- Check to see if player is in the same cell
+		if (SceneObject(pPilotChair):getParentID() ~= SceneObject(pPlayer):getParentID()) then
+			return 0
+		end
 
+		-- Make sure player is within 5m
+		if (not CreatureObject(pPlayer):isInRangeWithObject(pPilotChair, 5)) then
+			CreatureObject(pPlayer):sendSystemMessage("@system_msg:out_of_range")
+			return 0
+		end
+
+		-- TODO?: Unsure if we need to use this check
+		-- 'no_moving', 'You must be standing still to pilot a ship.');
+
+		local pShip = SceneObject(pPlayer):getRootParent()
+
+		if (pShip == nil or not SceneObject(pShip):isShipObject()) then
+			return 0
+		end
+
+		-- TODO
+		-- pilot certification check -- 'no_ship_certification', 'You are not certified to pilot this ship.');
+
+		-- Faction Check
+		local shipFaction = TangibleObject(pShip):getFaction()
+
+		if (shipFaction ~= FACTIONNEUTRAL and shipFaction ~= CreatureObject(pPlayer):getFaction()) then
+			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:wrong_faction")
+			return 0
+		end
+
+		if (SceneObject(pPilotChair):getSlottedObject("ship_pilot_pob") ~= nil) then
+			CreatureObject(pPlayer):sendSystemMessage("Someone is already piloting this ship.")
+			return 0
+		end
 
 		SceneObject(pPilotChair):transferObject(pPlayer, SHIP_PILOT_POB, 1)
+
+		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
 
 		-- Add in their piloting state
 		CreatureObject(pPlayer):setState(PILOTINGPOBSHIP)

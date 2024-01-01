@@ -62,23 +62,49 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 		"space/space_interaction:turret_disabled"
 	]]
 
-	if (selectedID == 120) then
-		if (not SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER0_POB, 1)) then
-			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_occupied")
-			return
-		end
-
-		-- Add players ship operatios state
-		CreatureObject(pPlayer):setState(SHIPGUNNER)
-	elseif (selectedID == 121) then
-		if (not SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER1_POB, 1)) then
-			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_occupied")
-			return
-		end
-
-		-- Add players ship operatios state
-		CreatureObject(pPlayer):setState(SHIPGUNNER)
+	-- Make sure player is within 5m
+	if (not CreatureObject(pPlayer):isInRangeWithObject(pTurret, 5)) then
+		CreatureObject(pPlayer):sendSystemMessage("@system_msg:out_of_range")
+		return 0
 	end
+
+	local pShip = SceneObject(pPlayer):getRootParent()
+
+	if (pShip == nil or not SceneObject(pShip):isShipObject()) then
+		return 0
+	end
+
+	-- Faction Check
+	local shipFaction = TangibleObject(pShip):getFaction()
+
+	if (shipFaction ~= FACTIONNEUTRAL and shipFaction ~= CreatureObject(pPlayer):getFaction()) then
+		CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:wrong_faction")
+		return 0
+	end
+
+	-- Ship Turret
+	if (selectedID == 120) then
+		-- Check if occupied
+		if (SceneObject(pTurret):getSlottedObject("ship_gunner0_pob") ~= nil) then
+			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_occupied")
+			return 0
+		end
+
+		SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER0_POB, 1)
+	elseif (selectedID == 121) then
+		-- Check if occupied
+		if (SceneObject(pTurret):getSlottedObject("ship_gunner1_pob") ~= nil) then
+			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_occupied")
+			return 0
+		end
+
+		SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER1_POB, 1)
+	end
+
+	CreatureObject(pPlayer):clearState(SHIPINTERIOR)
+
+	-- Add players ship operatios state
+	CreatureObject(pPlayer):setState(SHIPGUNNER)
 
 	return 0
 end
