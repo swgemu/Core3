@@ -127,7 +127,9 @@ function chassis_dealer_conv_handler:purchaseChassisConfirmation(pPlayer, pSui, 
 	if (ChassisDealer:checkCertification(pPlayer, SceneObject(pBlueprint):getObjectName())) then
 		suiManager:sendMessageBox(pNpc, pPlayer, "@chassis_npc:confirm_transaction", "@chassis_npc:can_use", "@chassis_npc:btn_buy", "chassis_dealer_conv_handler", "purchaseChassis")
 	else
-		AiAgent(pNpc):spatialChat("@chassis_npc:not_certified")
+		local noCertMsg = LuaStringIdChatParameter("@chassis_npc:not_certified")
+		spatialChat(pNpc, noCertMsg:_getObject())
+
 		suiManager:sendMessageBox(pNpc, pPlayer, "@chassis_npc:confirm_transaction", "@chassis_npc:cannot_use", "@chassis_npc:btn_buy", "chassis_dealer_conv_handler", "purchaseChassis")
 	end
 end
@@ -168,6 +170,7 @@ function chassis_dealer_conv_handler:purchaseChassis(pPlayer, pSui, eventIndex, 
 
 	-- Generates the Deed, sets values, deducts credits and transfers to player
 	if (generateShipDeed(pPlayer, pBlueprint, pNpc)) then
-		AiAgent(pNpc):spatialChat("@chassis_npc:bought_chassis")
+		local boughtMsg = LuaStringIdChatParameter("@chassis_npc:bought_chassis")
+		spatialChat(pNpc, boughtMsg:_getObject())
 	end
 end

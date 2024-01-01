@@ -1046,9 +1046,8 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 	message = nullptr;
 }
 
-void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, const UnicodeString& message,
-		uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) const {
-
+// arg1 is preLocked
+void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, const UnicodeString& message, uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) const {
 	if (spatialChatType == 0) {
 		spatialChatType = defaultSpatialChatType;
 	}
@@ -1163,6 +1162,9 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 					continue;
 
 				if (creature->isPet()){
+					if (!sourceCreature->isPlayerCreature())
+						continue;
+
 					AiAgent* pet = cast<AiAgent*>(creature);
 
 					if (pet == nullptr || pet->isDead() || pet->isIncapacitated())
@@ -1170,7 +1172,11 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 					PetManager* petManager = server->getPetManager();
 
+					if (petManager == nullptr)
+						continue;
+
 					Locker clocker(pet, sourceCreature);
+
 					petManager->handleChat(sourceCreature, pet, message.toString());
 					continue;
 				} else if (creature->isAiAgent()) {
@@ -1215,6 +1221,8 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 							creature->notifyObservers(ObserverEventType::SPATIALCHAT, cm, sourceCreature->getObjectID());
 						}
 					}
+
+					continue;
 				}
 
 				if (!creature->isPlayerCreature())
@@ -1279,7 +1287,6 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	}
 
 	//zone->runlock();
-
 }
 
 void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, StringIdChatParameter& message, uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) {

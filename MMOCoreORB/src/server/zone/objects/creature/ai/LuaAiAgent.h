@@ -103,7 +103,6 @@ namespace ai {
 		int activateRecovery(lua_State* L);
 		int executeBehavior(lua_State* L);
 		int info(lua_State* L);
-		int spatialChat(lua_State* L);
 		int setDefender(lua_State* L);
 		int addDefender(lua_State* L);
 		int assist(lua_State* L);

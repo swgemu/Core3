@@ -151,7 +151,7 @@ class ChatManager extends ManagedService implements Logger {
 
 	public native void deleteRoom(ChatRoom room);
 
-	@arg1PreLocked
+	@arg1preLocked
 	public native void disableRoom(ChatRoom room);
 
 	@preLocked
@@ -358,6 +358,7 @@ class ChatManager extends ManagedService implements Logger {
 	@local
 	public native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);
 
+	@arg1preLocked
 	public native void broadcastChatMessage(CreatureObject player, @dereferenced StringIdChatParameter message, unsigned long target = 0, unsigned int spatialChatType = 0, unsigned int moodType = 0, unsigned int chatFlags = 0, int languageID = 1);
 
 	public native void handleSpatialChatInternalMessage(CreatureObject player, final unicode args);

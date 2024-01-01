@@ -106,7 +106,6 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "activateRecovery", &LuaAiAgent::activateRecovery },
 		{ "executeBehavior", &LuaAiAgent::executeBehavior },
 		{ "info", &LuaAiAgent::info },
-		{ "spatialChat", &LuaAiAgent::spatialChat },
 		{ "setDefender", &LuaAiAgent::setDefender },
 		{ "addDefender", &LuaAiAgent::addDefender },
 		{ "assist", &LuaAiAgent::assist },
@@ -757,30 +756,6 @@ int LuaAiAgent::info(lua_State* L) {
 	String msg = lua_tostring(L, -1);
 
 	realObject->info(msg, true);
-
-	return 0;
-}
-
-int LuaAiAgent::spatialChat(lua_State* L) {
-	ZoneServer* zoneServer = ServerCore::getZoneServer();
-	if (zoneServer == nullptr)
-		return 0;
-
-	ChatManager* chatManager = zoneServer->getChatManager();
-
-	if (lua_islightuserdata(L, -1)) {
-		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -1);
-
-		if (realObject != nullptr && message != nullptr) {
-			chatManager->broadcastChatMessage(realObject, *message, 0, 0, realObject->getMoodID());
-		}
-	} else {
-		String message = lua_tostring(L, -1);
-
-		if (realObject != nullptr) {
-			chatManager->broadcastChatMessage(realObject, message, 0, 0, realObject->getMoodID());
-		}
-	}
 
 	return 0;
 }
