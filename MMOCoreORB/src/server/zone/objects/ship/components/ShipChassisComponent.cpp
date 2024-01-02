@@ -33,13 +33,12 @@ void ShipChassisComponentImplementation::fillAttributeList(AttributeListMessage*
 	alm->insertAttribute("serial_number", objectSerial);
 
 	StringBuffer msg;
-	msg << Math::getPrecision(getMass(), 2);
 
+	msg.append(getMass(), 2);
 	alm->insertAttribute("@obj_attr_n:chassismassmax", msg);
 	msg.deleteAll();
 
 	msg << Math::getPrecision(getMaxHitpoints(), 4);
-
 	alm->insertAttribute("@crafting:hp", msg);
 	msg.deleteAll();
 
