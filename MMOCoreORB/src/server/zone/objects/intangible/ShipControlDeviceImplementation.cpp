@@ -314,7 +314,12 @@ Vector3 ShipControlDeviceImplementation::getStoredPosition(bool randomPosition) 
 }
 
 bool ShipControlDeviceImplementation::isShipLaunched() {
-	auto object = getControlledObject();
+	auto ship = controlledObject.get().castTo<ShipObject*>();
 
-	return object != nullptr && object->isInOctTree();
+	if (ship == nullptr)
+		return false;
+
+	auto zone = ship->getZone();
+
+	return zone != nullptr && zone->isSpaceZone();
 }

@@ -245,6 +245,8 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 		else
 			broadcastPvpStatusBitmask(); // Invuln players still need faction changes broadcasted even without the bitmask changing
 
+		/* This is already called in CreatureObjectImplementation -- H
+
 		Vector<ManagedReference<CreatureObject*> > petsToStore;
 
 		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
@@ -268,6 +270,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 
 		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creature, std::move(petsToStore));
 		task->execute();
+		*/
 
 		ghost->updateInRangeBuildingPermissions();
 	}

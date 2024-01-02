@@ -3817,7 +3817,7 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 		if (ghost == nullptr)
 			return;
 
-		Vector<ManagedReference<CreatureObject*> > petsToStore;
+		Vector<ManagedReference<ControlDevice*> > petsToStore;
 
 		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
 			ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
@@ -3831,9 +3831,14 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 				String templateFaction = creatureTemplate->getFaction();
 
 				if (!templateFaction.isEmpty() && (templateFaction.hashCode() != crc)) {
-					petsToStore.add(pet.castTo<CreatureObject*>());
-					player->sendSystemMessage("You're no longer the right faction for one of your pets, storing...");
-					continue;
+					ControlDevice* controlDevice = pet->getControlDevice().get();
+
+					if (controlDevice != nullptr) {
+						petsToStore.add(controlDevice);
+						player->sendSystemMessage("You're no longer the right faction for one of your pets, storing...");
+
+						continue;
+					}
 				}
 			}
 
