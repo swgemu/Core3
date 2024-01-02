@@ -42,27 +42,6 @@ void ShipObjectImplementation::initializeTransientMembers() {
 }
 
 void ShipObjectImplementation::notifyLoadFromDatabase() {
-	auto owner = getOwner().get();
-
-	if (owner != nullptr && getSpaceZone() != nullptr) {
-		auto zoneServer = getZoneServer();
-
-		if (zoneServer != nullptr) {
-			ManagedReference<SceneObject*> deviceSceneO = zoneServer->getObject(getControlDeviceID()).get();
-
-			if (deviceSceneO != nullptr && deviceSceneO->isShipControlDevice()) {
-				ShipControlDevice* shipDevice = cast<ShipControlDevice*>(deviceSceneO.get());
-
-				if (shipDevice != nullptr) {
-					StoreShipTask* task = new StoreShipTask(owner, shipDevice, shipDevice->getStoredZoneName(), shipDevice->getStoredPosition(true));
-
-					if (task != nullptr)
-						task->schedule(1500);
-				}
-			}
-		}
-	}
-
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 }
 
