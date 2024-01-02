@@ -56,7 +56,10 @@ void ShipDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 	alm->insertAttribute("chassishitpoints", msg);
 	msg.deleteAll();
 
-	alm->insertAttribute("chassismass", Math::getPrecision(getMass(), 3));
+	msg.append(getMass(), 2);
+	alm->insertAttribute("chassismass", msg);
+	msg.deleteAll();
+
 	alm->insertAttribute("parking_spot", getParkingLocaiton());
 }
 
