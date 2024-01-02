@@ -965,14 +965,9 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	/**
-	 * Unloads all the spawned creatures from the datapad control devices
+	 * Unloads all the spawned objects from the datapad control devices
 	 */
 	public native void unloadSpawnedChildren();
-
-	/**
-	 * Unloads the currently called ship
-	 */
-	public native void unloadShip();
 
 	public void addToConsentList(final string name) {
 		consentList.put(name);

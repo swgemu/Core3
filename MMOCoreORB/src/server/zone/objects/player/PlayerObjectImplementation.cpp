@@ -247,60 +247,44 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 }
 
 void PlayerObjectImplementation::unloadSpawnedChildren() {
-	ManagedReference<SceneObject*> datapad = getParent().get()->getSlottedObject("datapad");
-	ManagedReference<CreatureObject*> creo = dynamic_cast<CreatureObject*>(parent.get().get());
+	ManagedReference<CreatureObject*> player = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (player == nullptr)
+		return;
+
+	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
 	if (datapad == nullptr)
 		return;
 
-	Vector<ManagedReference<CreatureObject*> > childrenToStore;
+	Vector<ManagedReference<ControlDevice*> > devicesToStore;
 
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
-		if (object->isControlDevice()) {
-			ControlDevice* device = cast<ControlDevice*>(object.get());
-
-			ManagedReference<CreatureObject*> child = cast<CreatureObject*>(device->getControlledObject());
-			if (child != nullptr)
-				childrenToStore.add(child);
-		}
-	}
-
-	StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creo, std::move(childrenToStore));
-	task->execute();
-}
-
-void PlayerObjectImplementation::unloadShip() {
-	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(parent.get().get());
-
-	if (creature == nullptr) {
-		return;
-	}
-
-	ManagedReference<SceneObject*> datapad = creature->getSlottedObject("datapad");
-
-	if (datapad == nullptr) {
-		return;
-	}
-
-	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
-		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
-
-		if (object == nullptr)
+		if (object == nullptr || !object->isControlDevice())
 			continue;
 
-		if (object->isShipControlDevice()) {
-			ShipControlDevice* shipDevice = cast<ShipControlDevice*>(object.get());
+		ControlDevice* device = cast<ControlDevice*>(object.get());
 
-			if (shipDevice != nullptr && shipDevice->isShipLaunched()) {
-				StoreShipTask* task = new StoreShipTask(creature, shipDevice, launchPoint.getGoundZoneName(), launchPoint.getLocation());
+		if (device == nullptr)
+			continue;
 
-				if (task != nullptr)
-					task->execute();
-			}
+		// Do not force store ships when player is not in the space zone
+		if (device->isShipControlDevice()) {
+			auto zone = player->getZone();
+
+			if (zone != nullptr && !zone->isSpaceZone())
+				continue;
 		}
+
+		devicesToStore.add(device);
 	}
+
+	StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(player, std::move(devicesToStore));
+
+	if (task != nullptr)
+		task->execute();
 }
 
 void PlayerObjectImplementation::setLastLogoutWorldPosition(const Vector3& position) {
@@ -350,29 +334,22 @@ void PlayerObjectImplementation::unload() {
 
 	ManagedReference<SceneObject*> creoParent = creature->getParent().get();
 
-	Zone* creatureZone = creature->getZone();
+	Zone* zone = creature->getZone();
 
-	if (creatureZone != nullptr) {
-		String zoneName = creatureZone->getZoneName();
+	if (zone != nullptr) {
+		String zoneName = zone->getZoneName();
 
-		if (creatureZone->isSpaceZone()) {
-			unloadShip();
-
+		// Player is in space and being unloaded
+		if (zone->isSpaceZone()) {
 			zoneName = launchPoint.getGoundZoneName();
 
-			Zone* newZone = getZoneServer()->getZone(zoneName);
+			Vector3 launchLoc = launchPoint.getLocation();
 
-			if (newZone != nullptr) {
-				newZone->transferObject(creature, -1, false);
+			creature->setPosition(launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
+			creature->incrementMovementCounter();
+			updateLastValidatedPosition();
 
-				Vector3 launchLoc = launchPoint.getLocation();
-
-				updateLastValidatedPosition();
-				creature->initializePosition(launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
-				creature->incrementMovementCounter();
-
-				savedParentID = 0;
-			}
+			savedParentID = 0;
 		} else {
 			if (creoParent != nullptr) {
 				savedParentID = creoParent->getObjectID();
@@ -381,8 +358,10 @@ void PlayerObjectImplementation::unload() {
 			}
 		}
 
+		// Set the saved zone
 		savedTerrainName = zoneName;
 
+		// Remove player from world
 		creature->destroyObjectFromWorld(true);
 	}
 
