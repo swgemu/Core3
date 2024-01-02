@@ -58,7 +58,7 @@ public:
 
 		ManagedReference<SceneObject*> sceneAmmo = zoneServer->getObject(itemID);
 
-		if (sceneAmmo == nullptr || !sceneAmmo->isComponent()) {
+		if (sceneAmmo == nullptr || !sceneAmmo->isASubChildOf(creature) || !sceneAmmo->isComponent() || !(sceneAmmo->getGameObjectType() & SceneObjectType::SHIPATTACHMENT)) {
 			return GENERALERROR;
 		}
 
@@ -120,8 +120,6 @@ public:
 			return GENERALERROR;
 		}
 
-		Locker locker(ship, creature);
-
 		StringIdChatParameter stringId;
 		String type = isMissileLauncher ? "missile" : "countermeasure";
 
@@ -131,6 +129,39 @@ public:
 
 		creature->sendSystemMessage(stringId);
 
+		auto ammoParent = sceneAmmo->getParent().get();
+
+		if (ammoParent != nullptr && ammoParent->isFactoryCrate()) {
+			auto factoryCrate = dynamic_cast<FactoryCrate*>(ammoParent.get());
+
+			if (factoryCrate == nullptr || !factoryCrate->isValidFactoryCrate() || factoryCrate->getUseCount() < 1) {
+				return GENERALERROR;
+			}
+
+			auto crateParent = factoryCrate->getParent().get();
+
+			if (crateParent == nullptr || crateParent->getCountableObjectsRecursive() > crateParent->getContainerVolumeLimit() + 1) {
+				return GENERALERROR;
+			}
+
+			Locker xLock(factoryCrate, creature);
+
+			ManagedReference<TangibleObject*> crateAmmo = factoryCrate->extractObject();
+
+			if (crateAmmo == nullptr || !crateAmmo->isComponent()) {
+				return GENERALERROR;
+			}
+
+			if (crateAmmo->getUseCount() == 1) {
+				Locker cLock(crateAmmo, creature);
+
+				crateAmmo->setUseCount(0, true);
+			}
+
+			sceneAmmo = crateAmmo;
+		}
+
+		Locker locker(ship, creature);
 		ship->installAmmo(creature, sceneAmmo, weaponID, true);
 
 		return SUCCESS;

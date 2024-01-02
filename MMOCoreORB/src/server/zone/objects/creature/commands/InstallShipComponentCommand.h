@@ -58,15 +58,52 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> component = zoneServer->getObject(componentID);
+
+		if (component == nullptr || !component->isASubChildOf(creature) || !component->isComponent() || !(component->getGameObjectType() & SceneObjectType::SHIPATTACHMENT)) {
+			return GENERALERROR;
+		}
+
 		ManagedReference<SceneObject*> shipSceneO = zoneServer->getObject(shipID);
 
-		if (component == nullptr || shipSceneO == nullptr || !shipSceneO->isShipObject())
+		if (shipSceneO == nullptr || !shipSceneO->isShipObject())
 			return GENERALERROR;
 
 		ManagedReference<ShipObject*> ship = shipSceneO.castTo<ShipObject*>();
 
 		if (ship == nullptr)
 			return GENERALERROR;
+
+		auto componentParent = component->getParent().get();
+
+		if (componentParent != nullptr && componentParent->isFactoryCrate()) {
+			auto factoryCrate = dynamic_cast<FactoryCrate*>(componentParent.get());
+
+			if (factoryCrate == nullptr || !factoryCrate->isValidFactoryCrate() || factoryCrate->getUseCount() < 1) {
+				return GENERALERROR;
+			}
+
+			auto crateParent = factoryCrate->getParent().get();
+
+			if (crateParent == nullptr || crateParent->getCountableObjectsRecursive() > crateParent->getContainerVolumeLimit() + 1) {
+				return GENERALERROR;
+			}
+
+			Locker xLock(factoryCrate, creature);
+
+			ManagedReference<TangibleObject*> crateComponent = factoryCrate->extractObject();
+
+			if (crateComponent == nullptr || !crateComponent->isComponent()) {
+				return GENERALERROR;
+			}
+
+			if (crateComponent->getUseCount() == 1) {
+				Locker cLock(crateComponent, creature);
+
+				crateComponent->setUseCount(0, true);
+			}
+
+			component = crateComponent;
+		}
 
 		Locker locker(ship, creature);
 		ship->install(creature, component, slot, true);
