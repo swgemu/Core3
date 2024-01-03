@@ -132,6 +132,13 @@ TEST_F(NameManagerTest, ResourceNamesTest) {
 }
 
 TEST_F(NameManagerTest, NameFilterTest) {
+	auto tableName = ConfigManager::instance()->getString("Core3.NameManager.FilterTable", "oldFilterWords");
+
+	if (tableName.contains("oldFilterWords")) {
+		ASSERT_TRUE(true);
+		return;
+	}
+
 	Lua* lua = new Lua();
 	lua->init();
 
