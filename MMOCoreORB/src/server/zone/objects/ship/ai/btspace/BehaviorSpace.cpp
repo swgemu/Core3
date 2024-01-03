@@ -6,6 +6,7 @@
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 
 #include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
 
 using namespace server::zone::objects::ship::ai::btspace;
 
@@ -20,9 +21,9 @@ bool BehaviorSpace::checkConditions(ShipAiAgent* agent) const {
 	if (zoneServer == nullptr || zoneServer->isServerLoading())
 		return false;
 
-	SpaceZone* spaceZone = agent->getSpaceZone();
+	auto spaceZone = agent->getZone();
 
-	if (spaceZone == nullptr)
+	if (spaceZone == nullptr || !spaceZone->isSpaceZone())
 		return false;
 
 	if (zoneServer->isServerShuttingDown()) {

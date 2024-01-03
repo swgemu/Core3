@@ -35,7 +35,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 		//StackTrace::printStackTrace();
 	}
 
-	activeArea->setGroundZone(newZone);
+	activeArea->setZone(newZone);
 
 	auto areaTree = newZone->getActiveAreaTree();
 
@@ -47,7 +47,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	SortedVector<TreeEntry*> objects;
 	float range = activeArea->getRadius() + 64;
 
-	newZone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionY(), range, &objects, false);
+	newZone->getInRangeObjects(activeArea->getPositionX(), 0, activeArea->getPositionY(), range, &objects, false);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = static_cast<SceneObject*>(objects.get(i));
@@ -108,7 +108,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	SortedVector<TreeEntry*> objects;
 	float range = activeArea->getRadius() + 64;
 
-	zone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionY(), range, &objects, false);
+	zone->getInRangeObjects(activeArea->getPositionX(), 0, activeArea->getPositionY(), range, &objects, false);
 
 	zone->dropSceneObject(activeArea);
 
@@ -141,7 +141,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	activeArea->notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, nullptr, 0);
 
-	activeArea->setGroundZone(nullptr);
+	activeArea->setZone(nullptr);
 
 	return true;
 }
@@ -197,7 +197,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 		object->setParent(nullptr, false);
 	}
 
-	object->setGroundZone(newZone);
+	object->setZone(newZone);
 	zone = newZone;
 
 	zone->addSceneObject(object);
@@ -294,7 +294,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 #endif
 			SortedVector<ManagedReference<TreeEntry*> > closeSceneObjects;
 
-			zone->getInRangeObjects(object->getPositionX(), object->getPositionY(), 512, &closeSceneObjects, false);
+			zone->getInRangeObjects(object->getPositionX(), 0, object->getPositionY(), 512, &closeSceneObjects, false);
 
 			for (int i = 0; i < closeSceneObjects.size(); ++i) {
 				TreeEntry* obj = closeSceneObjects.get(i);
@@ -382,7 +382,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 	object->notifyRemoveFromZone();
 
-	object->setGroundZone(nullptr);
+	object->setZone(nullptr);
 
 	return true;
 }

@@ -177,7 +177,7 @@ public:
 				SortedVector<TreeEntry*> closeObjects;
 				CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
 				if (closeObjectsVector == nullptr) {
-					zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+					zone->getInRangeObjects(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), range, &closeObjects, true);
 				} else {
 					closeObjectsVector->safeCopyTo(closeObjects);
 				}

@@ -1265,7 +1265,7 @@ Reference<SceneObject* > PlanetManagerImplementation::findObjectInNoBuildZone(fl
 
 	Vector3 targetPos(x, y, zone->getHeight(x, y));
 
-	zone->getInRangeObjects(x, y, 512, &closeObjects, true, false);
+	zone->getInRangeObjects(x, 0, y, 512, &closeObjects, true, false);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		Reference<SceneObject*> obj = static_cast<SceneObject*>(closeObjects.get(i));
@@ -1307,7 +1307,7 @@ bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float 
 	if (!zone->isWithinBoundaries(targetPos))
 		return false;
 
-	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
+	zone->getInRangeActiveAreas(x, 0, y, &activeAreas, true);
 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
@@ -1354,7 +1354,7 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 
 	//targetPos.setZ(zone->getHeight(x, y)); not needed
 
-	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
+	zone->getInRangeActiveAreas(x, 0, y, &activeAreas, true);
 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
@@ -1383,7 +1383,7 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 
 	Vector3 targetPos(x, y, zone->getHeight(x, y));
 
-	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
+	zone->getInRangeActiveAreas(x, 0, y, &activeAreas, true);
 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
@@ -1417,7 +1417,7 @@ Reference<SceneObject*> PlanetManagerImplementation::findObjectTooCloseToDecorat
 
 	Vector3 targetPos(x, y,0);
 
-	zone->getInRangeObjects(x, y, 256, &closeObjects, true, false);
+	zone->getInRangeObjects(x, 0, y, 256, &closeObjects, true, false);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 

@@ -20,11 +20,11 @@ include engine.log.LoggerHelperStream;
 include engine.util.Facade;
 include templates.params.ObserverEventType;
 include server.zone.ZoneReference;
-include server.zone.SpaceZoneReference;
 include server.zone.objects.scene.SceneObjectType;
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneClientSession;
 import server.zone.Zone;
+import server.zone.GroundZone;
 import server.zone.SpaceZone;
 import server.zone.ZoneServer;
 import server.zone.objects.building.BuildingObject;
@@ -86,9 +86,6 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 
 	@dereferenced
 	protected ZoneReference zone;
-
-	@dereferenced
-	protected SpaceZoneReference spaceZone;
 
 	@dereferenced
 	protected DataObjectComponentReference dataObjectComponent;
@@ -646,18 +643,12 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 
 	@local
 	public void notifyInsert(TreeEntry entry) {
-		if (spaceZone.get() != null)
-			spaceZoneComponent.notifyInsert(this, entry);
-		else
-			zoneComponent.notifyInsert(this, entry);
+		zoneComponent.notifyDissapear(this, entry);
 	}
 
 	@local
 	public void notifyDissapear(TreeEntry entry) {
-		if (spaceZone.get() != null)
-			spaceZoneComponent.notifyDissapear(this, entry);
-		else
-			zoneComponent.notifyDissapear(this, entry);
+		zoneComponent.notifyDissapear(this, entry);
 	}
 
 	public native abstract void notifyRemoveFromZone();
@@ -995,38 +986,16 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@read
 	public abstract native Zone getZoneUnsafe();
 
-	@mock
-	@dirty
-	public abstract native SpaceZone getSpaceZone();
-
 	@read
 	public Zone getLocalZone() {
 		return zone.get();
 	}
 
-	@read
-	public SpaceZone getLocalSpaceZone() {
-		return spaceZone.get();
-	}
-
-	@dirty
-	@local
-	@nativeStub
-	@virtualStub
-	public native abstract boolean isGroundZone();
-
-	@mock
 	@dirty
 	@local
 	@nativeStub
 	@virtualStub
 	public native abstract SpaceZone asSpaceZone();
-
-	@dirty
-	@local
-	@nativeStub
-	@virtualStub
-	public native abstract boolean isSpaceZone();
 
 	@local
 	@dereferenced
@@ -2023,9 +1992,7 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 		return server;
 	}
 
-	public abstract native void setSpaceZone(SpaceZone sZone);
-
-	public abstract native void setGroundZone(Zone gZone);
+	public abstract native void setZone(Zone newZone);
 
 	@local
 	public abstract native void setObjectName(@dereferenced final StringId stringID, boolean notifyClient);

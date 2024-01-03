@@ -23,6 +23,7 @@
 
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/Zone.h"
+#include "server/zone/GroundZone.h"
 #include "server/zone/SpaceZone.h"
 #include "server/zone/ZoneServer.h"
 
@@ -135,7 +136,6 @@ void SceneObjectImplementation::initializePrivateData() {
 	staticObject = false;
 
 	zone = nullptr;
-	spaceZone = nullptr;
 
 	containerType = 0;
 	containerVolumeLimit = 0;
@@ -584,7 +584,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 		}
 	}
 
-	if (zone == nullptr && spaceZone == nullptr)
+	if (zone == nullptr)
 		return;
 
 	SortedVector<TreeEntry*> closeSceneObjects;
@@ -595,10 +595,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 #ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::broadcastObjectPrivate", true);
 #endif
-		if (zone != nullptr)
-			zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeSceneObjects, true);
-		else if (spaceZone != nullptr)
-			spaceZone->getInRangeObjects(getPositionX(), getPositionY(), getPositionZ(), getOutOfRangeDistance(), &closeSceneObjects, true);
+		zone->getInRangeObjects(getPositionX(), getPositionZ(), getPositionY(), getOutOfRangeDistance(), &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 	} else {
@@ -651,7 +648,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 #ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::broadcastDestroyPrivate", true);
 #endif
-		currentZone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance() + 64, &closeSceneObjects, true);
+		currentZone->getInRangeObjects(getPositionX(), getPositionZ(), getPositionY(), getOutOfRangeDistance() + 64, &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 	} else {
@@ -700,7 +697,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 		}
 	}
 
-	if (zone == nullptr && spaceZone == nullptr) {
+	if (zone == nullptr) {
 		delete message;
 
 		return;
@@ -725,11 +722,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 #ifdef COV_DEBUG
 			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagePrivate", true);
 #endif
-			if (zone != nullptr) {
-				zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeNoneReference, true);
-			} else if (spaceZone != nullptr) {
-				spaceZone->getInRangeObjects(getPositionX(), getPositionY(), getPositionZ(), getOutOfRangeDistance(), &closeNoneReference, true);
-			}
+			zone->getInRangeObjects(getPositionX(), getPositionZ(), getPositionY(), getOutOfRangeDistance(), &closeNoneReference, true);
 		} else {
 			closeobjects->safeCopyReceiversTo(closeNoneReference, CloseObjectsVector::PLAYERTYPE);
 		}
@@ -803,7 +796,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 		}
 	}
 
-	if (zone == nullptr && spaceZone == nullptr) {
+	if (zone == nullptr) {
 		clearMessages(messages);
 
 		return;
@@ -817,10 +810,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 #ifdef COV_DEBUG
 			info(true) << getObjectID() << " Null closeobjects vector in SceneObjectImplementation::broadcastMessagesPrivate";
 #endif
-			if (spaceZone != nullptr)
-				spaceZone->getInRangeObjects(getPositionX(), getPositionY(), getPositionZ(),getOutOfRangeDistance(), &closeSceneObjects, true);
-			else if (zone != nullptr)
-				zone->getInRangeObjects(getPositionX(), getPositionY(), getOutOfRangeDistance(), &closeSceneObjects, true);
+			zone->getInRangeObjects(getPositionX(), getPositionZ(), getPositionY(), getOutOfRangeDistance(), &closeSceneObjects, true);
 		} else {
 			closeobjects->safeCopyReceiversTo(closeSceneObjects, CloseObjectsVector::PLAYERTYPE);
 		}
@@ -885,7 +875,7 @@ int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float
 #ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::inRangeObjects", true);
 #endif
-		currentZone->getInRangeObjects(getPositionX(), getPositionY(), range, &closeSceneObjects, true);
+		currentZone->getInRangeObjects(getPositionX(), getPositionZ(), getPositionY(), range, &closeSceneObjects, true);
 	} else {
 		closeobjects->safeCopyTo(closeSceneObjects);
 	}
@@ -1042,10 +1032,14 @@ void SceneObjectImplementation::updateDirection(float angleHeadingRadians) {
 }
 
 void SceneObjectImplementation::notifyRemoveFromZone() {
+	zoneComponent->notifyRemoveFromZone(asSceneObject());
+
+	/*
 	if (spaceZone.get() != nullptr)
 		spaceZoneComponent->notifyRemoveFromZone(asSceneObject());
 	else
 		zoneComponent->notifyRemoveFromZone(asSceneObject());
+	*/
 }
 
 int SceneObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
@@ -1225,7 +1219,7 @@ Zone* SceneObjectImplementation::getZone() {
 	if (root != nullptr) {
 		return root->getZone();
 	} else {
-		return spaceZone != nullptr ? spaceZone : zone;
+		return zone;
 	}
 }
 
@@ -1235,17 +1229,7 @@ Zone* SceneObjectImplementation::getZoneUnsafe() const {
 	if (root != nullptr) {
 		return root->getZone();
 	} else {
-		return spaceZone != nullptr ? spaceZone : zone;
-	}
-}
-
-SpaceZone* SceneObjectImplementation::getSpaceZone() {
-	auto root = getRootParent();
-
-	if (root != nullptr) {
-		return root->getSpaceZone();
-	} else {
-		return spaceZone;
+		return zone;
 	}
 }
 
@@ -1679,19 +1663,10 @@ void SceneObjectImplementation::removeSlottedObject(int index) {
 	slottedObjects.remove(index);
 }
 
-void SceneObjectImplementation::setSpaceZone(SpaceZone* spaceZ) {
-	this->spaceZone = spaceZ;
+void SceneObjectImplementation::setZone(Zone* newZone) {
+	zone = newZone;
 
-	if (spaceZ == nullptr)
-		updateSavedRootParentRecursive(nullptr);
-	else
-		updateSavedRootParentRecursive(asSceneObject());
-}
-
-void SceneObjectImplementation::setGroundZone(Zone* groundZone) {
-	this->zone = groundZone;
-
-	if (groundZone == nullptr)
+	if (zone == nullptr)
 		updateSavedRootParentRecursive(nullptr);
 	else
 		updateSavedRootParentRecursive(asSceneObject());
@@ -1972,26 +1947,10 @@ float SceneObjectImplementation::getTemplateRadius() {
 	return app->getBoundingSphere()->getRadius();
 }
 
-void SceneObjectImplementation::playEffect(const String& file, const String& aux) { 
+void SceneObjectImplementation::playEffect(const String& file, const String& aux) {
 	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(asSceneObject(), file, aux);
 
 	broadcastMessage(effect, true);
-}
-
-bool SceneObjectImplementation::isGroundZone() {
-	return false;
-}
-
-bool SceneObject::isGroundZone() {
-	return false;
-}
-
-bool SceneObjectImplementation::isSpaceZone() {
-	return false;
-}
-
-bool SceneObject::isSpaceZone() {
-	return false;
 }
 
 bool SceneObjectImplementation::isPlayerCreature() {
@@ -2399,7 +2358,7 @@ bool SceneObjectImplementation::isNearBank() {
 
 	if (zone != nullptr) {
 		SortedVector<TreeEntry* > closeObjects;
-		zone->getInRangeObjects(getPositionX(), getPositionY(), 15.f, &closeObjects, true, false);
+		zone->getInRangeObjects(getPositionX(), getPositionZ(), getPositionY(), 15.f, &closeObjects, true, false);
 
 		bool nearBank = false;
 
@@ -2424,7 +2383,7 @@ bool SceneObjectImplementation::isNearBank() {
 }
 
 float SceneObjectImplementation::getOutOfRangeDistance() {
-	if (getSpaceZone() != nullptr) {
+	if (zone != nullptr && zone->isSpaceZone()) {
 		return ZoneServer::SPACEOBJECTRANGE;
 	}
 
