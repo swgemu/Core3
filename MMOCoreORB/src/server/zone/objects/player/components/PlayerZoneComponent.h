@@ -12,6 +12,10 @@
 
 class PlayerZoneComponent : public ZoneComponent {
 public:
+	PlayerZoneComponent() {
+		setLoggingName("PlayerZoneComponent");
+	}
+
 	void notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const;
 
 	void notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const;

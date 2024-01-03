@@ -164,7 +164,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
 	    << area->getPosition().toString();
 
     SortedVector <ManagedReference<TreeEntry *>> closeObjects;
-    zone->getInRangeSolidObjects(center.getX(), center.getZ(), range, &closeObjects, true);
+	zone->getInRangeSolidObjects(center.getX(), 0, center.getZ(), range, &closeObjects, true);
 
     Vector <Reference<MeshData *>> meshData;
 

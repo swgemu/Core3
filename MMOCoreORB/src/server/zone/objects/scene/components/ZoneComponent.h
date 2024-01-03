@@ -39,6 +39,10 @@ protected:
 	void insertChildObjectsToZone(SceneObject* sceneObject, Zone* zone) const;
 
 public:
+	ZoneComponent() {
+		setLoggingName("ZoneComponent");
+	}
+
 	/**
 	 * Inserts this object into zone
 	 * @pre { this object is locked }

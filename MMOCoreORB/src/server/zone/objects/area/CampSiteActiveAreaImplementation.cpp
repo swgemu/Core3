@@ -339,8 +339,10 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 	currentXp = 0;
 	visitors.removeAll();
 
+	Vector3 campPosition = camp->getWorldPosition();
+
 	Reference<SortedVector<ManagedReference<TreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<TreeEntry*> >();
-	zone->getInRangeObjects(camp->getWorldPositionX(), camp->getWorldPositionY(), campStructureData->getRadius(), closeObjects, true);
+	zone->getInRangeObjects(campPosition.getX(), campPosition.getZ(), campPosition.getY(), campStructureData->getRadius(), closeObjects, true);
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* scno = static_cast<SceneObject*>(closeObjects->get(i).get());
