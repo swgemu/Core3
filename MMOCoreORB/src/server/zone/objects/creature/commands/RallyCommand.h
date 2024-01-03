@@ -148,7 +148,7 @@ public:
 #ifdef COV_DEBUG
 			info("Null closeobjects vector in RallyCommand::sendRallyCombatSpam", true);
 #endif
-			zone->getInRangeObjects(leader->getWorldPositionX(), leader->getWorldPositionY(), 70, &closeObjects, true);
+			zone->getInRangeObjects(leader->getWorldPositionX(), leader->getWorldPositionZ(), leader->getWorldPositionY(), 70, &closeObjects, true);
 		}
 
 		for (int i = 0; i < closeObjects.size(); ++i) {

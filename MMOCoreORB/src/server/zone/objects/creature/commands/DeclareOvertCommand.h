@@ -45,7 +45,7 @@ public:
 	#ifdef COV_DEBUG
 			sourceCreature->info("Null closeobjects vector in DeclareOvertCommand", true);
 	#endif
-			zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), 50, &closeObjects, true);
+			zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionZ(), creature->getWorldPositionY(), 50, &closeObjects, true);
 		}
 
 		int result = false;

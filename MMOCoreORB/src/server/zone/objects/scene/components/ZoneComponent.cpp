@@ -423,7 +423,7 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 		sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
 #endif
 
-		zone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, false);
+		zone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, false);
 
 		for (int i = 0; i < closeSceneObjects.size(); ++i) {
 			TreeEntry* obj = closeSceneObjects.getUnsafe(i);
@@ -450,8 +450,9 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 	} else if (sceneObject->isStaticObjectClass()) {
 		// hack to get around notifyEnter/Exit only working with tangible objects
 		Vector3 worldPos = sceneObject->getWorldPosition();
+
 		SortedVector<ActiveArea* > objects;
-		zone->getInRangeActiveAreas(worldPos.getX(), worldPos.getY(), &objects, false);
+		zone->getInRangeActiveAreas(worldPos.getX(), worldPos.getZ(), worldPos.getY(), &objects, false);
 
 		for(auto& area : objects) {
 			NavArea *mesh = area->asNavArea();

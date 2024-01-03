@@ -41,9 +41,9 @@ void SpaceZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Spac
 
 void SpaceZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {
 	ZoneServer* zoneServer = sceneObject->getZoneServer();
-	SpaceZone* spaceZone = sceneObject->getSpaceZone();
+	Zone* zone = sceneObject->getZone();
 
-	if (spaceZone == nullptr)
+	if (zone == nullptr || !zone->isSpaceZone())
 		return;
 
 	if (parentID != 0) {
@@ -355,7 +355,7 @@ void SpaceZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool s
 	if (rootSpaceZone == nullptr)
 		return;
 
-	SpaceZone* spaceZone = sceneObject->getLocalSpaceZone();
+	Zone* spaceZone = sceneObject->getLocalZone();
 
 	if (par != nullptr) {
 		uint64 parentID = sceneObject->getParentID();
@@ -426,7 +426,7 @@ void SpaceZoneComponent::removeObjectFromZone(SceneObject* sceneObject, SpaceZon
 		sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
 #endif
 
-		spaceZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), sceneObject->getPositionZ(), ZoneServer::SPACEOBJECTRANGE, &closeSceneObjects, false);
+		spaceZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), ZoneServer::SPACEOBJECTRANGE, &closeSceneObjects, false);
 
 		for (int i = 0; i < closeSceneObjects.size(); ++i) {
 			TreeEntry* obj = closeSceneObjects.getUnsafe(i);

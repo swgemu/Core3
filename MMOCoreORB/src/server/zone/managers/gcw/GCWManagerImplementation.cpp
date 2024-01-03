@@ -575,7 +575,7 @@ bool GCWManagerImplementation::hasTooManyBasesNearby(float x, float y) {
 		return true;
 
 	SortedVector<TreeEntry* > closeEntryObjects;
-	zone->getInRangeObjects(x, y, nearbyBaseDistance, &closeEntryObjects, true, false);
+	zone->getInRangeObjects(x, 0, y, nearbyBaseDistance, &closeEntryObjects, true, false);
 
 	int count = 0;
 	uint32 tempStrucHash = STRING_HASHCODE("temporary_structure");
@@ -2256,7 +2256,7 @@ void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, Strin
 #ifdef COV_DEBUG
 		building->info("Null closeobjects vector in GCWManagerImplementation::broadcastBuilding", true);
 #endif
-		zone->getInRangeObjects(building->getPositionX(), building->getPositionY(), range, &closeObjects, true);
+		zone->getInRangeObjects(building->getPositionX(), building->getPositionZ(), building->getPositionY(), range, &closeObjects, true);
 	} else {
 		CloseObjectsVector* closeVector = (CloseObjectsVector*)building->getCloseObjects();
 		closeVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
