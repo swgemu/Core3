@@ -43,7 +43,7 @@
 
 object_creature_npc_theme_park_player_shuttle = object_creature_npc_theme_park_shared_player_shuttle:new {
 	optionsBitmask = 256,
-	zoneComponent = "ShuttleZoneComponent",
+	groundZoneComponent = "ShuttleZoneComponent",
 	species = 216
 }
 

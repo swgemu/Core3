@@ -66,7 +66,7 @@ void PlayerSpaceZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEnt
 }
 
 void PlayerSpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
-	//info(true) << "PlayerSpaceZoneComponent::switchZone called for: " << sceneObject->getDisplayedName();
+	// info(true) << "PlayerSpaceZoneComponent::switchZone called for: " << sceneObject->getDisplayedName();
 
 	if (sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();

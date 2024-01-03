@@ -43,7 +43,7 @@
 
 object_installation_faction_perk_covert_detector_detector_32m = object_installation_faction_perk_covert_detector_shared_detector_base:new {
 	dataObjectComponent = "ScannerDataComponent",
-	zoneComponent = "ScannerZoneComponent",
+	groundZoneComponent = "ScannerZoneComponent",
 	gameObjectType = 4104,
 
 	pvpStatusBitmask = ATTACKABLE,

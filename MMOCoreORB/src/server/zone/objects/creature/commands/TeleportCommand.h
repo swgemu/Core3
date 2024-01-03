@@ -104,7 +104,7 @@ public:
 
 			// Get the world floor and set players direction in the ground zone
 			if (!newZoneIsSpace) {
-				auto newZone = zoneServer->getGroundZone(zoneName);
+				auto newZone = zoneServer->getZone(zoneName);
 
 				if (newZone != nullptr) {
 					newPosition.setZ(CollisionManager::getWorldFloorCollision(newPosition.getX(), newPosition.getY(), newZone, false));

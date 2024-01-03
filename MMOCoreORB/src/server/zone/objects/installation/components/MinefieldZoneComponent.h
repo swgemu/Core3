@@ -12,7 +12,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/TreeEntry.h"
 
-class MinefieldZoneComponent : public ZoneComponent {
+class MinefieldZoneComponent : public GroundZoneComponent {
 
 public:
 	void notifyPositionUpdate(SceneObject* sceneObject, TreeEntry* entry) const;

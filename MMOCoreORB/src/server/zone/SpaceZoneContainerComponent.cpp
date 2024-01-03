@@ -29,7 +29,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	if (newSpaceZone == nullptr)
 		return false;
 
-	SpaceZone* spaceZone = object->getSpaceZone();
+	Zone* zone = object->getZone();
 
 	/*
 	if (object->isActiveArea())
@@ -37,7 +37,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	*/
 	Locker zoneLocker(newSpaceZone);
 
-	if (object->isInOctTree() && newSpaceZone != spaceZone) {
+	if (object->isInOctTree() && zone != nullptr && zone->isSpaceZone()&& newSpaceZone != zone) {
 		object->error("trying to insert object to newSpaceZone but is already in another space zone");
 
 		object->destroyObjectFromWorld(true);
@@ -76,10 +76,10 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 		object->setParent(nullptr, false);
 	}
 
-	object->setSpaceZone(newSpaceZone);
-	spaceZone = newSpaceZone;
+	object->setZone(newSpaceZone);
+	zone = newSpaceZone;
 
-	spaceZone->addSceneObject(object);
+	zone->addSceneObject(object);
 
 	if (notifyClient)
 		object->sendToOwner(true);
@@ -87,13 +87,13 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	if (parent == nullptr)
 		object->initializePosition(object->getPositionX(), object->getPositionZ(), object->getPositionY());
 
-	spaceZone->insert(object);
+	zone->insert(object);
 
-	spaceZone->inRange(object, ZoneServer::SPACEOBJECTRANGE);
+	zone->inRange(object, ZoneServer::SPACEOBJECTRANGE);
 
 	zoneLocker.release();
 
-	object->notifyInsertToZone(spaceZone);
+	object->notifyInsertToZone(zone);
 
 	object->notifyObservers(ObserverEventType::PARENTCHANGED, nullptr);
 
@@ -134,7 +134,7 @@ bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneOb
 #endif
 			SortedVector<ManagedReference<TreeEntry*> > closeSceneObjects;
 
-			spaceZone->getInRangeObjects(object->getPositionX(), object->getPositionY(), object->getPositionZ(), ZoneServer::SPACEOBJECTRANGE, &closeSceneObjects, false);
+			spaceZone->getInRangeObjects(object->getPositionX(), object->getPositionZ(), object->getPositionY(), ZoneServer::SPACEOBJECTRANGE, &closeSceneObjects, false);
 
 			for (int i = 0; i < closeSceneObjects.size(); ++i) {
 				TreeEntry* obj = closeSceneObjects.get(i);
@@ -187,7 +187,7 @@ bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneOb
 
 	object->notifyRemoveFromZone();
 
-	object->setSpaceZone(nullptr);
+	object->setZone(nullptr);
 
 	return true;
 }

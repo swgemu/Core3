@@ -7,7 +7,7 @@
 #include "server/zone/ZoneClientSession.h"
 
 #include "server/zone/Zone.h"
-
+#include "server/zone/GroundZone.h"
 #include "server/zone/SpaceZone.h"
 
 #include "server/db/ServerDatabase.h"
@@ -130,7 +130,7 @@ void ZoneServerImplementation::initialize() {
 	processor->deploy("ZoneProcessServer");
 	processor->initialize();
 
-	zones = new VectorMap<String, ManagedReference<Zone*> >();
+	zones = new VectorMap<String, ManagedReference<GroundZone*> >();
 	spaceZones = new VectorMap<String, ManagedReference<SpaceZone*> >();
 
 	objectManager = ObjectManager::instance();
@@ -190,7 +190,7 @@ void ZoneServerImplementation::initialize() {
 	petManager = new PetManager(_this.getReferenceUnsafeStaticCast());
 	petManager->initialize();
 
-	startZones();
+	startGroundZones();
 	startSpaceZones();
 
 	startManagers();
@@ -201,7 +201,7 @@ void ZoneServerImplementation::initialize() {
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 }
 
-void ZoneServerImplementation::startZones() {
+void ZoneServerImplementation::startGroundZones() {
 	info(true) << "Loading Ground Zones...";
 
 	auto enabledZones = configManager->getEnabledZones();
@@ -221,10 +221,10 @@ void ZoneServerImplementation::startZones() {
 			continue;
 		}
 
-		Zone* zone = new Zone(processor, zoneName);
+		GroundZone* zone = new GroundZone(processor, zoneName);
 		zone->createContainerComponent();
 		zone->initializePrivateData();
-		zone->deploy("Zone " + zoneName);
+		zone->deploy("GroundZone " + zoneName);
 
 		String displayName = zoneName.subString(0,1).toUpperCase() + zoneName.subString(1);
 
@@ -236,7 +236,7 @@ void ZoneServerImplementation::startZones() {
 	resourceManager->initialize();
 
 	for (int i = 0; i < zones->size(); ++i) {
-		Zone* zone = zones->get(i);
+		GroundZone* zone = zones->get(i);
 
 		if (zone != nullptr) {
 			ZoneLoadManagersTask* task = new ZoneLoadManagersTask(_this.getReferenceUnsafeStaticCast(), zone);
@@ -245,7 +245,7 @@ void ZoneServerImplementation::startZones() {
 	}
 
 	for (int i = 0; i < zones->size(); ++i) {
-		Zone* zone = zones->get(i);
+		GroundZone* zone = zones->get(i);
 
 		if (zone != nullptr) {
 			while (!zone->hasManagersStarted())
@@ -379,7 +379,7 @@ void ZoneServerImplementation::shutdown() {
 	info("Shutting Down Ground Zones", true);
 
 	for (int i = 0; i < zones->size(); ++i) {
-		ManagedReference<Zone*> zone = zones->get(i);
+		ManagedReference<GroundZone*> zone = zones->get(i);
 
 		if (zone != nullptr) {
 			zone->stopManagers();
@@ -487,7 +487,7 @@ void ZoneServerImplementation::clearZones() {
 	info("clearing all zones..", true);
 	// Clear Ground Zones
 	for (int i = 0; i < zones->size(); ++i) {
-		ManagedReference<Zone*> zone = zones->get(i);
+		ManagedReference<GroundZone*> zone = zones->get(i);
 
 		if (zone != nullptr) {
 			Core::getTaskManager()->executeTask([=] () {
@@ -497,7 +497,7 @@ void ZoneServerImplementation::clearZones() {
 	}
 
 	for (int i = 0; i < zones->size(); ++i) {
-		Zone* zone = zones->get(i);
+		GroundZone* zone = zones->get(i);
 
 		if (zone != nullptr) {
 			while (!zone->isZoneCleared())
@@ -530,8 +530,11 @@ void ZoneServerImplementation::clearZones() {
 	info("Space zones cleared...", true);
 }
 
-Zone* ZoneServerImplementation::getZone(const String& terrainName) const {
-	return terrainName.contains("space") ? spaceZones->get(terrainName) : zones->get(terrainName);
+Zone* ZoneServerImplementation::getZone(const String& zoneName) const {
+	if (zoneName.contains("space"))
+		return spaceZones->get(zoneName);
+
+	return zones->get(zoneName);
 }
 
 ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
