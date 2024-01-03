@@ -182,7 +182,9 @@ void NameManager::loadConfigData(bool reload) {
 
 	luaObject.pop();
 
-	luaObject = lua->getGlobalObject("filterWords");
+	auto filterTable = ConfigManager::instance()->getString("Core3.NameManager.FilterTable", "oldFilterWords");
+
+	luaObject = lua->getGlobalObject(filterTable);
 
 #ifdef DEBUG_NAMING
 	info(true) << "Loading filter words for Name Manager:";

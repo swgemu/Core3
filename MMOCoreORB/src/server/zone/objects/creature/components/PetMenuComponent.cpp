@@ -232,7 +232,7 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 
 	// Store
 	if (selectedID == 59) {
-		Reference<PetControlDeviceStoreTask*> storeTask = new PetControlDeviceStoreTask(petControlDevice, player, true);
+		Reference<PetControlDeviceStoreTask*> storeTask = new PetControlDeviceStoreTask(petControlDevice, player, false);
 
 		if (storeTask != nullptr)
 			storeTask->execute();
