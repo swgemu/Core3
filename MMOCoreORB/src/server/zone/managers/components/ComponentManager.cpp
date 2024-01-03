@@ -10,7 +10,7 @@
 #include "server/zone/objects/player/components/PlayerContainerComponent.h"
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "server/zone/objects/tangible/components/LootContainerComponent.h"
-#include "server/zone/objects/scene/components/ZoneComponent.h"
+#include "server/zone/objects/scene/components/GroundZoneComponent.h"
 #include "server/zone/objects/scene/components/SpaceZoneComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
@@ -90,7 +90,7 @@
 #include "server/zone/objects/installation/components/InstallationObjectMenuComponent.h"
 #include "server/zone/objects/installation/components/FactoryObjectMenuComponent.h"
 #include "server/zone/objects/installation/components/MinefieldMenuComponent.h"
-#include "server/zone/ZoneContainerComponent.h"
+#include "server/zone/GroundZoneContainerComponent.h"
 #include "server/zone/SpaceZoneContainerComponent.h"
 #include "server/zone/objects/ship/components/PobShipContainerComponent.h"
 #include "server/zone/objects/structure/components/StructureContainerComponent.h"
@@ -164,7 +164,7 @@ ComponentManager::ComponentManager() {
 	components.put("LootContainerComponent", new LootContainerComponent());
 	components.put("RecycleToolContainerComponent", new RecycleToolContainerComponent());
 
-	components.put("ZoneComponent", new ZoneComponent());
+	components.put("GroundZoneComponent", new GroundZoneComponent());
 	components.put("SpaceZoneComponent", new SpaceZoneComponent());
 	components.put("PlayerZoneComponent", new PlayerZoneComponent());
 	components.put("PlayerSpaceZoneComponent", new PlayerSpaceZoneComponent());
@@ -196,7 +196,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("ArtCrateMenuComponent", new ArtCrateMenuComponent());
 
-	components.put("ZoneContainerComponent", new ZoneContainerComponent());
+	components.put("GroundZoneContainerComponent", new GroundZoneContainerComponent());
 	components.put("SpaceZoneContainerComponent", new SpaceZoneContainerComponent());
 
 	components.put("HolocronMenuComponent", new HolocronMenuComponent());

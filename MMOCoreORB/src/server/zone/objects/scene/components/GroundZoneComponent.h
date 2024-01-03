@@ -1,5 +1,5 @@
 /*
- * ZoneComponent.h
+ * GroundZoneComponent.h
  *
  *  Created on: 26/05/2011
  *      Author: victor
@@ -34,11 +34,15 @@ using namespace server::zone;
 
 #include "server/zone/TreeEntry.h"
 
-class ZoneComponent : public SceneObjectComponent, public Logger {
+class GroundZoneComponent : public SceneObjectComponent, public Logger {
 protected:
 	void insertChildObjectsToZone(SceneObject* sceneObject, Zone* zone) const;
 
 public:
+	GroundZoneComponent() {
+		setLoggingName("GroundZoneComponent");
+	}
+
 	/**
 	 * Inserts this object into zone
 	 * @pre { this object is locked }
