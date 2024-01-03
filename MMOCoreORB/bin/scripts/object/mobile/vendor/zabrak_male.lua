@@ -51,7 +51,7 @@ object_mobile_vendor_zabrak_male = object_mobile_vendor_shared_zabrak_male:new {
 	objectMenuComponent = "VendorMenuComponent",
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = "VendorContainerComponent",
-	zoneComponent = "VendorZoneComponent",
+	groundZoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 

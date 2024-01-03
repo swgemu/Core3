@@ -106,7 +106,7 @@ public:
 #ifdef COV_DEBUG
 					droid->info("Null closeobjects vector in DroudDetonationTask::run", true);
 #endif
-					droid->getZone()->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionY(), 40, &closeObjects, true);
+					droid->getZone()->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionZ(), droid->getWorldPositionY(), 40, &closeObjects, true);
 				}
 
 				PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/combat_explosion_lair_large.cef", droid->getZone()->getZoneName(), droid->getPositionX(), droid->getPositionZ(), droid->getPositionY());

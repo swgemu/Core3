@@ -56,7 +56,7 @@ object_building_player_city_cloning_naboo = object_building_player_city_shared_c
 	templateType = CLONINGBUILDING,
 	abilityRequired = "place_cloning",
 	alwaysPublic = 1,
-	zoneComponent = "StructureZoneComponent",
+	groundZoneComponent = "StructureZoneComponent",
 	skillMods = {
 		{"private_safe_logout", 1}
 	},

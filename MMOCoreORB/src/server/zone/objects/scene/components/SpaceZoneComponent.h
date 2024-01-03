@@ -38,6 +38,10 @@ protected:
 	void insertChildObjectsToZone(SceneObject* sceneObject, SpaceZone* zone) const;
 
 public:
+	SpaceZoneComponent() {
+		setLoggingName("SpaceZoneComponent");
+	}
+
 	virtual void notifyInsertToZone(SceneObject* sceneObject, SpaceZone* zone) const;
 
 	virtual void switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID = 0, bool toggleInvisibility = false) const;

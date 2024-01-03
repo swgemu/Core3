@@ -46,7 +46,7 @@ object_installation_turret_turret_fs_cs = object_installation_turret_shared_turr
 	optionsBitmask = 0,
 	maxCondition = 75000,
 	maxRange = 60,
-	zoneComponent = "TurretZoneComponent",
+	groundZoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
 	factionString = "sith_shadow_nonaggro",
 	-- Damagetypes in WeaponObject

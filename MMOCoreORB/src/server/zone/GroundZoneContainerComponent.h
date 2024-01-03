@@ -1,12 +1,12 @@
 /*
- * ZoneContainerComponent.h
+ * GroundZoneContainerComponent.h
  *
  *  Created on: 03/09/2011
  *      Author: TheAnswer
  */
 
-#ifndef ZONECONTAINERCOMPONENT_H_
-#define ZONECONTAINERCOMPONENT_H_
+#ifndef GROUNDZONECONTAINERCOMPONENT_H_
+#define GROUNDZONECONTAINERCOMPONENT_H_
 
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 
@@ -25,7 +25,7 @@ namespace server {
 using namespace server::zone;
 using namespace server::zone::objects::area;
 
-class ZoneContainerComponent : public ContainerComponent, public Logger {
+class GroundZoneContainerComponent : public ContainerComponent, public Logger {
 protected:
 	bool insertActiveArea(Zone* zone, ActiveArea* activeArea) const;
 	bool removeActiveArea(Zone* zone, ActiveArea* activeArea) const;
@@ -75,4 +75,4 @@ public:
 
 };
 
-#endif /* ZONECONTAINERCOMPONENT_H_ */
+#endif /* GROUNDZONECONTAINERCOMPONENT_H_ */

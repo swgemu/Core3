@@ -4,27 +4,25 @@
 
 package server.zone;
 
+import server.zone.Zone;
 import server.zone.OctTree;
 import server.zone.TreeEntry;
-import server.zone.Zone;
-import system.lang.Time;
-import server.zone.ZoneProcessServer;
-include server.zone.ZoneServer;
+
+include server.zone.ZoneProcessServer;
 include server.zone.InRangeObjectsVector;
+include server.zone.ActiveAreasVector;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.area.ActiveArea;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.space.SpaceManager;
+import server.zone.managers.gcw.GCWManager;
 import system.util.SortedVector;
 import system.util.SynchronizedSortedVector;
 include engine.util.u3d.Vector3;
 include server.zone.OctTreeReference;
 
-include server.zone.managers.object.ObjectMap;
-
 import server.zone.objects.tangible.TangibleObject;
-import system.thread.atomic.AtomicInteger;
-include system.thread.atomic.AtomicBoolean;
+//import server.zone.ActiveAreaOctree;
 
 @mock
 class SpaceZone extends Zone {
@@ -33,25 +31,37 @@ class SpaceZone extends Zone {
 	@dereferenced
 	private OctTreeReference octTree;
 
+	// Space Zone Constructor
 	public native SpaceZone(ZoneProcessServer processor, final string zoneName);
-	public native void initializeTransientMembers();
-	public native void finalize();
+
+	/*
+
+		Zone Management
+
+	*/
+
+	public native void createContainerComponent();
 
 	public native void initializePrivateData();
 
-	@local
-	public native int getInRangeSolidObjects(float x, float y, float z, float range, SortedVector<TreeEntry> objects, boolean readLockZone);
+	public native void initializeTransientMembers();
 
-	@local
-	public native int getInRangeObjects(float x, float y, float z, float range, SortedVector<TreeEntry> objects, boolean readLockZone);
+	public native void finalize();
 
-	@local
-	public native int getInRangeObjects(float x, float y, float z, float range, InRangeObjectsVector objects, boolean readLockZone);
+	public native void startManagers();
+
+	public native void stopManagers();
+
+	public native void clearZone();
+
+	/*
+
+		Object Management in Zone
+
+	*/
 
 	@local
 	public native void insert(TreeEntry entry);
-
-	public native void createContainerComponent();
 
 	@local
 	public native void remove(TreeEntry entry);
@@ -62,11 +72,7 @@ class SpaceZone extends Zone {
 	@local
 	public native void inRange(TreeEntry entry, float range);
 
-	public native void startManagers();
-
-	public native void stopManagers();
-
-	public native void clearZone();
+	public native void updateActiveAreas(TangibleObject tano);
 
 	@arg1preLocked
 	@preLocked
@@ -76,52 +82,66 @@ class SpaceZone extends Zone {
 	@preLocked
 	public native void dropSceneObject(SceneObject object);
 
+	/*
+
+		Object Tracking
+
+	*/
+
+	@local
+	public native int getInRangeSolidObjects(float x, float z, float y, float range, SortedVector<TreeEntry> objects, boolean readLockZone);
+
+	@local
+	public native int getInRangeObjects(float x, float z, float y, float range, SortedVector<TreeEntry> objects, boolean readLockZone, boolean includeBuildingObjects = false);
+
+	@local
+	public native int getInRangeObjects(float x, float z, float y, float range, InRangeObjectsVector objects, boolean readLockZone, boolean includeBuildingObjects = false);
+
+	@local
+	public native int getInRangePlayers(float x, float z, float y, float range, SortedVector<TreeEntry> objects);
+
+	@local
+	public native int getInRangeActiveAreas(float x, float z, float y, SortedVector<ActiveArea> objects, boolean readLockZone);
+
+	@local
+	public native int getInRangeActiveAreas(float x, float z, float y, ActiveAreasVector objects, boolean readLockZone);
+
+	/*
+
+		Octree
+
+	*/
+
 	@dirty
 	public SpaceManager getSpaceManager() {
 		return spaceManager;
 	}
 
-	/**
-	 * These functions return the size of the terrain file for this zone.
-	 */
-
 	/*
-	@dirty
-	public native float getMinX();
 
-	@dirty
-	public native float getMaxX();
+		Shared Functions
 
-	@dirty
-	public native float getMinY();
-
-	@dirty
-	public native float getMaxY();
-
-	@dirty
-	public native float getMinZ();
-
-	@dirty
-	public native float getMaxZ();
-
-	@dirty
-	@local
-	public native boolean isWithinBoundaries(@dereferenced final Vector3 position);
 	*/
 
 	@dirty
 	@local
-	@nativeStub
-	public native boolean isGroundZone();
+	public native boolean isWithinBoundaries(@dereferenced final Vector3 position);
 
-	@dirty
-	@local
-	@nativeStub
-	public native boolean isSpaceZone();
+	public native float getBoundingRadius();
+
+	public native abstract float getZoneObjectRange();
+
+	// Mutators
+
+	// Accessors
 
 	@dirty
 	@nativeStub
 	@local
 	public native SpaceZone asSpaceZone();
+
+	public boolean isSpaceZone() {
+		return true;
+	}
 }
 

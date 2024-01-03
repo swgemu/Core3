@@ -50,7 +50,7 @@ object_mobile_vendor_ithorian_female = object_mobile_vendor_shared_ithorian_fema
 	objectMenuComponent = "VendorMenuComponent",
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = "VendorContainerComponent",
-	zoneComponent = "VendorZoneComponent",
+	groundZoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 

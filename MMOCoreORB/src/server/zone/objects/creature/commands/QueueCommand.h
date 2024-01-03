@@ -140,7 +140,7 @@ public:
 	}
 
 	bool checkSpaceStates(CreatureObject* creature) const {
-		return creature->getSpaceZone() != nullptr && (creature->isPilotingShip() || creature->isOnboardPobShip() || creature->isInShipStation());
+		return (creature->isPilotingShip() || creature->isInShipStation());
 	}
 
 	/**

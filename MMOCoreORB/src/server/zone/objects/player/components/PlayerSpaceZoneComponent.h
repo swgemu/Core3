@@ -13,6 +13,10 @@
 
 class PlayerSpaceZoneComponent : public SpaceZoneComponent{
 public:
+	PlayerSpaceZoneComponent() {
+		setLoggingName("PlayerSpaceZoneComponent");
+	}
+
 	void notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const;
 
 	void notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const;

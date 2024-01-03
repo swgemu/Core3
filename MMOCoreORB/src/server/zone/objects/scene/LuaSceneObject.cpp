@@ -906,8 +906,10 @@ int LuaSceneObject::getPlayersInRange(lua_State *L) {
 
 	lua_newtable(L);
 
+	Vector3 worldPos = realObject->getWorldPosition();
+
 	Reference<SortedVector<ManagedReference<TreeEntry*> >*> playerObjects = new SortedVector<ManagedReference<TreeEntry*> >();
-	thisZone->getInRangePlayers(realObject->getWorldPositionX(), realObject->getWorldPositionY(), range, playerObjects);
+	thisZone->getInRangePlayers(worldPos.getX(), worldPos.getZ(), worldPos.getY(), range, playerObjects);
 	int numPlayers = 0;
 
 	for (int i = 0; i < playerObjects->size(); ++i) {

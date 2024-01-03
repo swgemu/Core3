@@ -50,7 +50,7 @@ object_mobile_vendor_aqualish_male = object_mobile_vendor_shared_aqualish_male:n
 	objectMenuComponent = "VendorMenuComponent",
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = "VendorContainerComponent",
-	zoneComponent = "VendorZoneComponent",
+	groundZoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 

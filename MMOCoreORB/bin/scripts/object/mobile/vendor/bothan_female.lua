@@ -50,7 +50,7 @@ object_mobile_vendor_bothan_female = object_mobile_vendor_shared_bothan_female:n
 	objectMenuComponent = "VendorMenuComponent",
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = "VendorContainerComponent",
-	zoneComponent = "VendorZoneComponent",
+	groundZoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 
