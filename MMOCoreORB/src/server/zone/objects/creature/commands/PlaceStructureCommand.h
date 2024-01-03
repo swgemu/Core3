@@ -89,7 +89,7 @@ public:
 
 			SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 
-			zone->getInRangeActiveAreas(placementLoc.getX(), placementLoc.getY(), &activeAreas, true);
+			zone->getInRangeActiveAreas(placementLoc.getX(), placementLoc.getZ(), placementLoc.getY(), &activeAreas, true);
 
 			for (int i = 0; i < activeAreas.size(); ++i) {
 				ActiveArea* area = activeAreas.get(i);

@@ -30,7 +30,7 @@ public:
 		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*)player->getCloseObjects();
 
 		if (closeObjectsVector == nullptr) {
-			zone->getInRangeObjects(player->getPositionX(), player->getPositionY(), 32, &objects, true);
+			zone->getInRangeObjects(player->getPositionX(), player->getPositionZ(), player->getPositionY(), 32, &objects, true);
 		} else {
 			closeObjectsVector->safeCopyReceiversTo(objects, CloseObjectsVector::CREOTYPE);
 		}

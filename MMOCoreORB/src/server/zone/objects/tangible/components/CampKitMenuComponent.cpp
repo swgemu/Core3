@@ -149,7 +149,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		/// Check camps/lairs nearby
 		SortedVector<ManagedReference<TreeEntry* > > nearbyObjects;
-		zone->getInRangeObjects(player->getPositionX(), player->getPositionY(),
+		zone->getInRangeObjects(player->getPositionX(), player->getPositionZ(), player->getPositionY(),
 				512, &nearbyObjects, true, false);
 
 		for(int i = 0; i < nearbyObjects.size(); ++i) {

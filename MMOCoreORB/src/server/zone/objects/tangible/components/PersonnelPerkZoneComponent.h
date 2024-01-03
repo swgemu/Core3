@@ -1,9 +1,9 @@
 #ifndef PERSONNELPERKZONECOMPONENT_H_
 #define PERSONNELPERKZONECOMPONENT_H_
 
-#include "server/zone/objects/scene/components/ZoneComponent.h"
+#include "server/zone/objects/scene/components/GroundZoneComponent.h"
 
-class PersonnelPerkZoneComponent : public ZoneComponent {
+class PersonnelPerkZoneComponent : public GroundZoneComponent {
 
 public:
 	void notifyInsertToZone(SceneObject* sceneObject, Zone* zne) const;

@@ -3,7 +3,7 @@
 		See file COPYING for copying conditions.
  */
 
-#include "ZoneComponent.h"
+#include "GroundZoneComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -17,7 +17,7 @@
 #include "templates/building/SharedBuildingObjectTemplate.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
 
-void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
+void GroundZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
 	debug("inserting to zone");
 
 	if (newZone == nullptr)
@@ -30,7 +30,7 @@ void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) 
 	insertChildObjectsToZone(sceneObject, newZone);
 }
 
-void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zone) const {
+void GroundZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zone) const {
 	SortedVector<ManagedReference<SceneObject*> >* childObjects = sceneObject->getChildObjects();
 
 	//Insert all outdoor child objects to zone
@@ -48,7 +48,7 @@ void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zon
 	}
 }
 
-void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {
+void GroundZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {
 	ZoneServer* zoneServer = sceneObject->getZoneServer();
 	Zone* zone = sceneObject->getZone();
 
@@ -89,7 +89,7 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 	}
 }
 
-void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) const {
+void GroundZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) const {
 	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 	Zone* zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> sceneObjectRootParent = sceneObject->getRootParent();
@@ -161,7 +161,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		try {
 			notifySelfPositionUpdate(sceneObject);
 		} catch (Exception& e) {
-			sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in ZoneComponent::updateZone");
+			sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in GroundZoneComponent::updateZone");
 			sceneObject->error(e.getMessage());
 		}
 	} catch (Exception& e) {
@@ -173,7 +173,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		zone->wlock();
 }
 
-void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) const {
+void GroundZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) const {
 	ManagedReference<Zone*> zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> oldParent = sceneObject->getParent().get();
 
@@ -251,7 +251,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		try {
 			notifySelfPositionUpdate(sceneObject);
 		} catch (Exception& e) {
-			sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in ZoneComponent::updateZoneWithParent");
+			sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in GroundZoneComponent::updateZoneWithParent");
 			sceneObject->error(e.getMessage());
 		}
 	} catch (Exception& e) {
@@ -262,7 +262,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 	zone->wlock();
 }
 
-void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
+void GroundZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
 	Zone* zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> thisLocker = sceneObject;
 
@@ -324,10 +324,10 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	sceneObject->setMovementCounter(0);
 }
 
-void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
+void GroundZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
 }
 
-void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const {
+void GroundZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const {
 	ManagedReference<SceneObject*> par = sceneObject->getParent().get();
 
 	if (!sceneObject->isActiveArea()) {
@@ -360,7 +360,7 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 	removeObjectFromZone(sceneObject, rootZone, par);
 }
 
-void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, SceneObject* par) const {
+void GroundZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, SceneObject* par) const {
 	if (zone == nullptr)
 		return;
 
@@ -420,10 +420,10 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 		if (sceneObject->getObjectTemplate() != nullptr)
 			templateName = sceneObject->getObjectTemplate()->getTemplateFileName();
 
-		sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
+		sceneObject->info("Null closeobjects vector in GroundZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
 #endif
 
-		zone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, false);
+		zone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, false);
 
 		for (int i = 0; i < closeSceneObjects.size(); ++i) {
 			TreeEntry* obj = closeSceneObjects.getUnsafe(i);
@@ -450,8 +450,9 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 	} else if (sceneObject->isStaticObjectClass()) {
 		// hack to get around notifyEnter/Exit only working with tangible objects
 		Vector3 worldPos = sceneObject->getWorldPosition();
+
 		SortedVector<ActiveArea* > objects;
-		zone->getInRangeActiveAreas(worldPos.getX(), worldPos.getY(), &objects, false);
+		zone->getInRangeActiveAreas(worldPos.getX(), worldPos.getZ(), worldPos.getY(), &objects, false);
 
 		for(auto& area : objects) {
 			NavArea *mesh = area->asNavArea();
@@ -465,11 +466,11 @@ void ZoneComponent::removeObjectFromZone(SceneObject* sceneObject, Zone* zone, S
 	}
 }
 
-void ZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) const {
+void GroundZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) const {
 	sceneObject->notifySelfPositionUpdate();
 }
 
-void ZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector *closeobjects,
+void GroundZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector *closeobjects,
 					SortedVector<ManagedReference<TreeEntry *> > &closeSceneObjects,
 					SceneObject *sceneObject, SceneObject *vectorOwner) {
 	for (int i = 0; closeobjects->size() != 0 && i < 100; i++) {

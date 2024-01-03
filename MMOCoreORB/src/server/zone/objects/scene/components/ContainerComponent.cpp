@@ -210,7 +210,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	ManagedReference<SceneObject*> objParent = object->getParent().get();
 
-	ManagedReference<Zone*> objZone = object->getLocalSpaceZone() != nullptr ? object->getLocalSpaceZone() : object->getLocalZone();
+	ManagedReference<Zone*> objZone = object->getLocalZone();
 	ManagedReference<Zone*> oldRootZone = object->getZone();
 
 	if (object->containsActiveSession(SessionFacadeType::SLICING)) {
@@ -245,8 +245,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 			}
 		}
 
-		object->setGroundZone(nullptr);
-		object->setSpaceZone(nullptr);
+		object->setZone(nullptr);
 
 		if (objParent == nullptr)
 			objParent = objZone;

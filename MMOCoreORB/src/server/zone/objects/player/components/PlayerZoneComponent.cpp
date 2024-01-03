@@ -66,7 +66,7 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 		}
 	}
 
-	ZoneComponent::notifyInsertToZone(sceneObject, newZone);
+	GroundZoneComponent::notifyInsertToZone(sceneObject, newZone);
 }
 
 void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
@@ -127,7 +127,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 		player->notifyObservers(ObserverEventType::ZONESWITCHED, nullptr, newTerrainName.hashCode());
 	}
 
-	ZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
+	GroundZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
 }
 
 void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {
@@ -146,7 +146,7 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 		}
 	}
 
-	ZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
+	GroundZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
 
 	if (player != nullptr) {
 		PlayerObject* ghost = player->getPlayerObject();
@@ -166,7 +166,7 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
  * @param lightUpdate if true a standalone message is sent to the in range objects
  */
 void PlayerZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) const {
-	ZoneComponent::updateZone(sceneObject, lightUpdate, sendPackets);
+	GroundZoneComponent::updateZone(sceneObject, lightUpdate, sendPackets);
 
 	if (sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
@@ -178,7 +178,7 @@ void PlayerZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate,
 }
 
 void PlayerZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) const {
-	ZoneComponent::updateZoneWithParent(sceneObject, newParent, lightUpdate, sendPackets);
+	GroundZoneComponent::updateZoneWithParent(sceneObject, newParent, lightUpdate, sendPackets);
 
 	if (sceneObject->getParent() != nullptr && sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
