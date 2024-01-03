@@ -6,21 +6,13 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/space/SpaceManager.h"
 #include "server/zone/InRangeObjectsVector.h"
 #include "server/zone/managers/components/ComponentManager.h"
-
-#include "server/zone/objects/cell/CellObject.h"
 #include "templates/SharedObjectTemplate.h"
 
 SpaceZoneImplementation::SpaceZoneImplementation(ZoneProcessServer* serv, const String& name) : ZoneImplementation(serv, name) {
 	octTree = new server::zone::OctTree(-8192, -8192, -8192, 8192, 8192, 8192);
-
-	objectMap = new ObjectMap();
-
-	managersStarted = false;
-	zoneCleared = false;
 
 	spaceManager = nullptr;
 
@@ -38,8 +30,14 @@ SpaceZoneImplementation::SpaceZoneImplementation(ZoneProcessServer* serv, const 
 		info(true) << "SpaceZone " << capName << " using " << numThreads << " threads.";
 	}
 
-	Core::getTaskManager()->initializeCustomQueue(zoneName, 1, true);
+	Core::getTaskManager()->initializeCustomQueue(zoneName, numThreads, true);
 }
+
+/*
+
+	Zone Management
+
+*/
 
 void SpaceZoneImplementation::createContainerComponent() {
 	containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>("SpaceZoneContainerComponent");
@@ -50,7 +48,6 @@ void SpaceZoneImplementation::initializePrivateData() {
 }
 
 void SpaceZoneImplementation::finalize() {
-	//System::out << "deleting height map\n";
 }
 
 void SpaceZoneImplementation::initializeTransientMembers() {
@@ -109,6 +106,12 @@ void SpaceZoneImplementation::clearZone() {
 	info("space zone clear", true);
 }
 
+/*
+
+	Object Management in Zone
+
+*/
+
 void SpaceZoneImplementation::insert(TreeEntry* entry) {
 	if (entry == nullptr)
 		return;
@@ -121,7 +124,7 @@ void SpaceZoneImplementation::insert(TreeEntry* entry) {
 	SceneObject* sceneO = cast<SceneObject*>(entry);
 
 	if (sceneO != nullptr)
-		info(true) << "Inserting object into Oct Tree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+		info(true) << "Inserting object into Octree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
 	*/
 }
 
@@ -131,10 +134,11 @@ void SpaceZoneImplementation::remove(TreeEntry* entry) {
 	if (entry->isInOctTree()) {
 		octTree->remove(entry);
 
-		/*SceneObject* sceneO = cast<SceneObject*>(entry);
+		/*
+		SceneObject* sceneO = cast<SceneObject*>(entry);
 
 		if (sceneO != nullptr)
-			info(true) << "Removing object from Oct Tree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+			info(true) << "Removing object from Octree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
 		*/
 	}
 }
@@ -143,13 +147,46 @@ void SpaceZoneImplementation::update(TreeEntry* entry) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	octTree->update(entry);
+
+	/*
+	SceneObject* sceneO = cast<SceneObject*>(entry);
+
+	if (sceneO != nullptr)
+		info(true) << "Updating object in Octree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+	*/
 }
 
 void SpaceZoneImplementation::inRange(TreeEntry* entry, float range) {
 	octTree->safeInRange(entry, range);
 }
 
-int SpaceZoneImplementation::getInRangeSolidObjects(float x, float y, float z, float range, SortedVector<ManagedReference<TreeEntry*> >* objects, bool readLockZone) {
+void SpaceZoneImplementation::updateActiveAreas(TangibleObject* tano) {
+
+}
+
+void SpaceZoneImplementation::addSceneObject(SceneObject* object) {
+	ManagedReference<SceneObject*> old = objectMap->put(object->getObjectID(), object);
+
+	if (old == nullptr && object->isShipAiAgent()) {
+		spawnedAiAgents.increment();
+	}
+}
+
+void SpaceZoneImplementation::dropSceneObject(SceneObject* object)  {
+	ManagedReference<SceneObject*> oldObject = objectMap->remove(object->getObjectID());
+
+	if (oldObject != nullptr && object->isShipAiAgent()) {
+		spawnedAiAgents.decrement();
+	}
+}
+
+/*
+
+	Object Tracking
+
+*/
+
+int SpaceZoneImplementation::getInRangeSolidObjects(float x, float z, float y, float range, SortedVector<ManagedReference<TreeEntry*> >* objects, bool readLockZone) {
 	objects->setNoDuplicateInsertPlan();
 
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
@@ -194,7 +231,7 @@ int SpaceZoneImplementation::getInRangeSolidObjects(float x, float y, float z, f
 	return objects->size();
 }
 
-int SpaceZoneImplementation::getInRangeObjects(float x, float y, float z, float range, SortedVector<ManagedReference<TreeEntry*> >* objects, bool readLockZone) {
+int SpaceZoneImplementation::getInRangeObjects(float x, float z, float y, float range, SortedVector<ManagedReference<TreeEntry*> >* objects, bool readLockZone, bool includeBuildingObjects) {
 	objects->setNoDuplicateInsertPlan();
 
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
@@ -212,7 +249,7 @@ int SpaceZoneImplementation::getInRangeObjects(float x, float y, float z, float 
 	return objects->size();
 }
 
-int SpaceZoneImplementation::getInRangeObjects(float x, float y, float z, float range, InRangeObjectsVector* objects, bool readLockZone) {
+int SpaceZoneImplementation::getInRangeObjects(float x, float z, float y, float range, InRangeObjectsVector* objects, bool readLockZone, bool includeBuildingObjects) {
 	objects->setNoDuplicateInsertPlan();
 
 	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
@@ -228,87 +265,56 @@ int SpaceZoneImplementation::getInRangeObjects(float x, float y, float z, float 
 	}
 
 	return objects->size();
+}
+
+int SpaceZoneImplementation::getInRangePlayers(float x, float z, float y, float range, SortedVector<ManagedReference<TreeEntry*> >* players) {
+	Reference<SortedVector<ManagedReference<TreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<TreeEntry*> >();
+
+	/*
+	getInRangeObjects(x, 0, y, range, closeObjects, true);
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
+
+		if (object == nullptr || !object->isPlayerCreature())
+			continue;
+
+		CreatureObject* player = object->asCreatureObject();
+
+		if (player == nullptr || player->isInvisible())
+			continue;
+
+		players->emplace(object);
+	}
+	*/
+
+	return players->size();
+}
+
+int SpaceZoneImplementation::getInRangeActiveAreas(float x, float z, float y, SortedVector<ManagedReference<ActiveArea*> >* objects, bool readLockZone) {
+	return 0;
+}
+
+int SpaceZoneImplementation::getInRangeActiveAreas(float x, float z, float y, ActiveAreasVector* objects, bool readLockZone) {
+	return 0;
 }
 
 /*
-float SpaceZoneImplementation::getMinX() {
-	return planetManager->getTerrainManager()->getMin();
-}
 
-float SpaceZoneImplementation::getMaxX() {
-	return planetManager->getTerrainManager()->getMax();
-}
+	Shared Functions
 
-float SpaceZoneImplementation::getMinY() {
-	return planetManager->getTerrainManager()->getMin();
-}
-
-float SpaceZoneImplementation::getMaxY() {
-	return planetManager->getTerrainManager()->getMax();
-}
-
-float SpaceZoneImplementation::getMinZ() {
-	return planetManager->getTerrainManager()->getMin();
-}
-
-float SpaceZoneImplementation::getMaxZ() {
-	return planetManager->getTerrainManager()->getMax();
-}
-
-bool SpaceZoneImplementation::isWithinBoundaries(const Vector3& position) {
-	//Remove 1/16th of the size to match client limits. NOTE: it has not been verified to work like this in the client.
-	//Normal zone size is 8192, 1/16th of that is 512 resulting in 7680 as the boundary value.
-	float maxX = getMaxX() * 15 / 16;
-	float minX = getMinX() * 15 / 16;
-	float maxY = getMaxY() * 15 / 16;
-	float minY = getMinY() * 15 / 16;
-	float maxZ = getMaxZ() * 15 / 16;
-	float minZ = getMinZ() * 15 / 16;
-
-	float posX = position.getX();
-	float posY = position.getY();
-	float posZ = position.getZ();
-
-	//info(true) << "Min X = " << minX << " Max X = " << maxX << " Min Y = " << minY << " Max Y = " << maxY << " Min Z = " << minZ << " Max Z = " << maxZ;
-
-	if (maxX >= position.getX() && minX <= position.getX() && maxY >= position.getY() && minY <= position.getY() && maxZ >= position.getZ() && minZ <= position.getZ()) {
-		return true;
-	} else {
-		return false;
-	}
-}
 */
 
-void SpaceZoneImplementation::addSceneObject(SceneObject* object) {
-	ManagedReference<SceneObject*> old = objectMap->put(object->getObjectID(), object);
-
-	if (old == nullptr && object->isShipAiAgent()) {
-		spawnedAiAgents.increment();
-	}
-}
-
-void SpaceZoneImplementation::dropSceneObject(SceneObject* object)  {
-	ManagedReference<SceneObject*> oldObject = objectMap->remove(object->getObjectID());
-
-	if (oldObject != nullptr && object->isShipAiAgent()) {
-		spawnedAiAgents.decrement();
-	}
-}
-
-bool SpaceZoneImplementation::isGroundZone() {
+bool SpaceZoneImplementation::isWithinBoundaries(const Vector3& position) {
 	return false;
 }
 
-bool SpaceZone::isGroundZone() {
-	return false;
+float SpaceZoneImplementation::getBoundingRadius() {
+	return 0.0;
 }
 
-bool SpaceZoneImplementation::isSpaceZone() {
-	return true;
-}
-
-bool SpaceZone::isSpaceZone() {
-	return true;
+float SpaceZoneImplementation::getZoneObjectRange() {
+	return ZoneServer::SPACEOBJECTRANGE;
 }
 
 SpaceZone* SpaceZoneImplementation::asSpaceZone() {

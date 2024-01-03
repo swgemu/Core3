@@ -860,14 +860,9 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 #ifdef COV_DEBUG
 		sender->info("Null closeobjects vector in ChatManager::handleSocialInternalMessage", true);
 #endif
-		if (zone->isSpaceZone()) {
-			SpaceZone* spaceZone = cast<SpaceZone*>(zone);
+		Vector3 worldPosition = sender->getWorldPosition();
 
-			if (spaceZone != nullptr)
-				spaceZone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionY(), sender->getWorldPositionZ(), ZoneServer::SPACEOBJECTRANGE, &closeEntryObjects, true);
-		} else {
-			zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
-		}
+		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), zone->getZoneObjectRange(), &closeEntryObjects, true);
 	}
 
 	float range = defaultSpatialChatDistance;
@@ -1048,6 +1043,14 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 
 // arg1 is preLocked
 void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, const UnicodeString& message, uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) const {
+	if (sourceCreature == nullptr)
+		return;
+
+	Zone* zone = sourceCreature->getZone();
+
+	if (zone == nullptr)
+		return;
+
 	if (spatialChatType == 0) {
 		spatialChatType = defaultSpatialChatType;
 	}
@@ -1107,18 +1110,10 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 #ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage", true);
 #endif
-		Zone* zone = sourceCreature->getZone();
 
-		if (zone != nullptr) {
-			if (zone->isSpaceZone()) {
-				SpaceZone* spaceZone = cast<SpaceZone*>(zone);
+		Vector3 worldPosition = sourceCreature->getWorldPosition();
 
-				if (spaceZone != nullptr)
-					spaceZone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), sourceCreature->getWorldPositionZ(), ZoneServer::SPACEOBJECTRANGE, &closeEntryObjects, true);
-			} else {
-				zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
-			}
-		}
+		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), zone->getZoneObjectRange(), &closeEntryObjects, true);
 	}
 
 	short range = defaultSpatialChatDistance;
@@ -1290,6 +1285,14 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 }
 
 void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, StringIdChatParameter& message, uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) {
+	if (sourceCreature == nullptr)
+		return;
+
+	Zone* zone = sourceCreature->getZone();
+
+	if (zone == nullptr)
+		return;
+
 	PlayerObject* myGhost = nullptr;
 	bool godMode = false;
 
@@ -1324,18 +1327,10 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 #ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage(StringId)", true);
 #endif
-		Zone* zone = sourceCreature->getZone();
 
-		if (zone != nullptr) {
-			if (zone->isSpaceZone()) {
-				SpaceZone* spaceZone = cast<SpaceZone*>(zone);
+		Vector3 worldPosition = sourceCreature->getWorldPosition();
 
-				if (spaceZone != nullptr)
-					spaceZone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), sourceCreature->getWorldPositionZ(), ZoneServer::SPACEOBJECTRANGE, &closeEntryObjects, true);
-			} else {
-				zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
-			}
-		}
+		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), zone->getZoneObjectRange(), &closeEntryObjects, true);
 	}
 
 	short range = defaultSpatialChatDistance;

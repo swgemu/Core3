@@ -41,9 +41,9 @@ void SpaceZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Spac
 
 void SpaceZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {
 	ZoneServer* zoneServer = sceneObject->getZoneServer();
-	SpaceZone* spaceZone = sceneObject->getSpaceZone();
+	Zone* zone = sceneObject->getZone();
 
-	if (spaceZone == nullptr)
+	if (zone == nullptr || !zone->isSpaceZone())
 		return;
 
 	if (parentID != 0) {
@@ -249,7 +249,7 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 		try {
 			notifySelfPositionUpdate(sceneObject);
 		} catch (Exception& e) {
-			sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in ZoneComponent::updateZoneWithParent");
+			sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in SpaceZoneComponent::updateZoneWithParent");
 			sceneObject->error(e.getMessage());
 		}
 	} catch (Exception& e) {
@@ -287,7 +287,7 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 		return;
 	}
 
-	//info(true) << "switchZone for " << sceneObject->getDisplayedName() << " with new ParentID: " << parentID;
+	// info(true) << "switchZone for " << sceneObject->getDisplayedName() << " with new ParentID: " << parentID;
 
 	sceneObject->destroyObjectFromWorld(false);
 
@@ -312,7 +312,7 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT, true);
 			newParent->sendTo(sceneObject, true);
 
-			//info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
+			// info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
 		} else if (newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR) {
 			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT_POB, true);
 
@@ -322,13 +322,13 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 				rootParent->sendTo(sceneObject, true);
 			}
 
-			//info(true) << "SpaceZoneComponent::switchZone object transferred into POB ship with new parent: " << newParent->getDisplayedName();
+			// info(true) << "SpaceZoneComponent::switchZone object transferred into POB ship with new parent: " << newParent->getDisplayedName();
 		} else if (newParent->isCellObject()) {
 			// group members should have their locations set in launch
 			newParent->transferObject(sceneObject, -1, true);
 			sceneObject->sendToOwner(true);
 
-			//info(true) << "SpaceZoneComponent::switchZone object transferred into ship CELL";
+			// info(true) << "SpaceZoneComponent::switchZone object transferred into ship CELL";
 		}
 	}
 
@@ -355,7 +355,7 @@ void SpaceZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool s
 	if (rootSpaceZone == nullptr)
 		return;
 
-	SpaceZone* spaceZone = sceneObject->getLocalSpaceZone();
+	Zone* spaceZone = sceneObject->getLocalZone();
 
 	if (par != nullptr) {
 		uint64 parentID = sceneObject->getParentID();
@@ -423,10 +423,10 @@ void SpaceZoneComponent::removeObjectFromZone(SceneObject* sceneObject, SpaceZon
 		if (sceneObject->getObjectTemplate() != nullptr)
 			templateName = sceneObject->getObjectTemplate()->getTemplateFileName();
 
-		sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
+		sceneObject->info("Null closeobjects vector in SpaceZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
 #endif
 
-		spaceZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), sceneObject->getPositionZ(), ZoneServer::SPACEOBJECTRANGE, &closeSceneObjects, false);
+		spaceZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), ZoneServer::SPACEOBJECTRANGE, &closeSceneObjects, false);
 
 		for (int i = 0; i < closeSceneObjects.size(); ++i) {
 			TreeEntry* obj = closeSceneObjects.getUnsafe(i);

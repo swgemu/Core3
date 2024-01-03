@@ -45,7 +45,7 @@ object_building_military_event_outpost_cloning_facility = object_building_milita
 	planetMapCategory = "cloningfacility",
 	templateType = CLONINGBUILDING,
 	facilityType = CLONER_STANDARD,
-	zoneComponent = "StructureZoneComponent",
+	groundZoneComponent = "StructureZoneComponent",
 	alwaysPublic = 1,
 
 	skillMods = {

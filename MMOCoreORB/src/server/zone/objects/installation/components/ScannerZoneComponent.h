@@ -13,7 +13,7 @@
 #include "server/zone/TreeEntry.h"
 
 
-class ScannerZoneComponent : public ZoneComponent {
+class ScannerZoneComponent : public GroundZoneComponent {
 
 public:
 	void notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const;

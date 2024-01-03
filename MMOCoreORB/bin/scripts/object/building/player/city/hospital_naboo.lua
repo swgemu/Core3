@@ -50,7 +50,7 @@ object_building_player_city_hospital_naboo = object_building_player_city_shared_
 	planetMapCategory = "medicalcenter",
 	cityRankRequired = 3,
 	abilityRequired = "place_hospital",
-	zoneComponent = "StructureZoneComponent",
+	groundZoneComponent = "StructureZoneComponent",
 	skillMods = {
 		{"private_medical_rating", 100},
 		{"private_med_wound_health", 100},

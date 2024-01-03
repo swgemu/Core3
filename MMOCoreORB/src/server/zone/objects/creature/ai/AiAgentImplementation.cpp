@@ -2868,7 +2868,7 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 #endif
 
 		Vector3 worldPosition = getWorldPosition();
-		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, &closeObjects, true);
+		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), 128, &closeObjects, true);
 
 		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
 
@@ -3096,7 +3096,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 #endif
 
 			Vector3 worldPosition = getWorldPosition();
-			zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, &closeObjects, true);
+			zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), 128, &closeObjects, true);
 		}
 
 		for (int i = 0; i < num; i++) {

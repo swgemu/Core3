@@ -25,9 +25,9 @@ public:
 		if (pobShip == nullptr)
 			return;
 
-		auto spaceZone = pobShip->getSpaceZone();
+		auto spaceZone = pobShip->getZone();
 
-		if (spaceZone == nullptr) {
+		if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
 			return;
 		}
 

@@ -26,9 +26,9 @@ public:
 		if (player == nullptr || ship == nullptr)
 			return;
 
-		auto spaceZone = ship->getSpaceZone();
+		auto spaceZone = ship->getZone();
 
-		if (spaceZone == nullptr) {
+		if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
 			return;
 		}
 

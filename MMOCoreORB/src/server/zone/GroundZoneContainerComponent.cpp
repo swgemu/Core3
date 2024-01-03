@@ -1,20 +1,20 @@
 /*
- * ZoneContainerComponent.cpp
+ * GroundZoneContainerComponent.cpp
  *
  *  Created on: 03/09/2011
- *      Author: TheAnswer
+ * Author: TheAnswer
  */
 
-#include "ZoneContainerComponent.h"
+#include "GroundZoneContainerComponent.h"
 
-#include "server/zone/Zone.h"
+#include "server/zone/GroundZone.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
 #include "server/zone/ActiveAreaQuadTree.h"
 
-bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
+bool GroundZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
 	if (newZone == nullptr)
 		return false;
 
@@ -35,7 +35,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 		//StackTrace::printStackTrace();
 	}
 
-	activeArea->setGroundZone(newZone);
+	activeArea->setZone(newZone);
 
 	auto areaTree = newZone->getActiveAreaTree();
 
@@ -47,7 +47,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	SortedVector<TreeEntry*> objects;
 	float range = activeArea->getRadius() + 64;
 
-	newZone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionY(), range, &objects, false);
+	newZone->getInRangeObjects(activeArea->getPositionX(), 0, activeArea->getPositionY(), range, &objects, false);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = static_cast<SceneObject*>(objects.get(i));
@@ -87,7 +87,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	return true;
 }
 
-bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea) const {
+bool GroundZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea) const {
 	if (zone == nullptr) {
 		activeArea->error("trying to remove activeArea from a null zone");
 		return false;
@@ -108,7 +108,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	SortedVector<TreeEntry*> objects;
 	float range = activeArea->getRadius() + 64;
 
-	zone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionY(), range, &objects, false);
+	zone->getInRangeObjects(activeArea->getPositionX(), 0, activeArea->getPositionY(), range, &objects, false);
 
 	zone->dropSceneObject(activeArea);
 
@@ -141,12 +141,12 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	activeArea->notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, nullptr, 0);
 
-	activeArea->setGroundZone(nullptr);
+	activeArea->setZone(nullptr);
 
 	return true;
 }
 
-bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
+bool GroundZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
 	Zone* newZone = dynamic_cast<Zone*>(sceneObject);
 
 	if (newZone == nullptr)
@@ -197,7 +197,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 		object->setParent(nullptr, false);
 	}
 
-	object->setGroundZone(newZone);
+	object->setZone(newZone);
 	zone = newZone;
 
 	zone->addSceneObject(object);
@@ -257,7 +257,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 	return true;
 }
 
-bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
+bool GroundZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
 	Zone* zone = dynamic_cast<Zone*>(sceneObject);
 
 	if (object->isActiveArea())
@@ -287,14 +287,14 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		if (closeObjects != nullptr) {
 			SortedVector<ManagedReference<TreeEntry*> > closeSceneObjects;
 
-			ZoneComponent::removeAllObjectsFromCOV(closeObjects, closeSceneObjects, sceneObject, object);
+			GroundZoneComponent::removeAllObjectsFromCOV(closeObjects, closeSceneObjects, sceneObject, object);
 		} else {
 #ifdef COV_DEBUG
-			object->info("Null closeobjects vector in ZoneContainerComponent::removeObject", true);
+			object->info("Null closeobjects vector in GroundZoneContainerComponent::removeObject", true);
 #endif
 			SortedVector<ManagedReference<TreeEntry*> > closeSceneObjects;
 
-			zone->getInRangeObjects(object->getPositionX(), object->getPositionY(), 512, &closeSceneObjects, false);
+			zone->getInRangeObjects(object->getPositionX(), 0, object->getPositionY(), 512, &closeSceneObjects, false);
 
 			for (int i = 0; i < closeSceneObjects.size(); ++i) {
 				TreeEntry* obj = closeSceneObjects.get(i);
@@ -362,7 +362,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		}
 
 	} catch (Exception& e) {
-		object->error("exception in ZoneContainerComponent::removeObject: " + e.getMessage());
+		object->error("exception in GroundZoneContainerComponent::removeObject: " + e.getMessage());
 	}
 
 	object->notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, nullptr, 0);
@@ -382,7 +382,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 	object->notifyRemoveFromZone();
 
-	object->setGroundZone(nullptr);
+	object->setZone(nullptr);
 
 	return true;
 }

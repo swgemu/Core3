@@ -80,7 +80,7 @@ protected:
 	AtomicReference<PortalLayout*> portalLayout;
 	AtomicReference<AppearanceTemplate*> appearanceTemplate;
 	AtomicBoolean loadedPortalLayout, loadedAppearanceTemplate;
-	String zoneComponent, attributeListComponent;
+	String groundZoneComponent, attributeListComponent;
 	String spaceZoneComponent;
 	String containerComponent;
 	String objectMenuComponent;
@@ -399,8 +399,8 @@ public:
 		return containerComponent;
 	}
 
-	inline const String& getZoneComponent() const {
-		return zoneComponent;
+	inline const String& getGroundZoneComponent() const {
+		return groundZoneComponent;
 	}
 
 	inline const String& getSpaceZoneComponent() const {
