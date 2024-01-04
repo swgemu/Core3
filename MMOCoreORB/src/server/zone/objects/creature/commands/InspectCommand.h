@@ -6,8 +6,6 @@
 #define INSPECT_H_
 
 #include "QueueCommand.h"
-#include "server/zone/objects/ship/ai/ShipAiAgent.h"
-#include "templates/params/ship/ShipFlags.h"
 
 class InspectCommand : public QueueCommand {
 public:
@@ -36,47 +34,7 @@ public:
 		if (object == nullptr)
 			return INVALIDTARGET;
 
-		String command;
-		args.getStringToken(command);
-
-		// for testing
-		if (command.toLowerCase() == "shipfollow") {
-			if (!object->isShipAiAgent())
-				return INVALIDTARGET;
-
-			auto ghost = creature->getPlayerObject();
-
-			if (ghost == nullptr || !ghost->isPrivileged())
-				return GENERALERROR;
-
-			ShipAiAgent* shipAgent = object->asShipAiAgent();
-
-			if (shipAgent == nullptr)
-				return GENERALERROR;
-
-			ManagedReference<SceneObject*> rootParent = creature->getRootParent();
-
-			if (rootParent == nullptr || !rootParent->isShipObject()) {
-				return GENERALERROR;
-			}
-
-			ShipObject* shipParent = rootParent->asShipObject();
-
-			if (shipParent == nullptr)
-				return GENERALERROR;
-
-			Locker clocker(shipAgent, creature);
-
-			shipAgent->addShipFlag(ShipFlag::ESCORT);
-			shipAgent->setShipAiTemplate();
-
-			shipAgent->setFollowShipObject(shipParent);
-
-			return SUCCESS;
-		}
-
-		// Inspect ship here
-
+		creature->sendSystemMessage("Inspect has not been implemented yet.");
 
 		return SUCCESS;
 	}

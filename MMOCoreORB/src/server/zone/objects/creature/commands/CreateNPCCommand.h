@@ -8,6 +8,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
+#include "templates/params/ship/ShipFlags.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 
 class CreateNPCCommand : public QueueCommand {
@@ -31,9 +32,18 @@ public:
 		if (!args.hasMoreTokens())
 			return INVALIDPARAMETERS;
 
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
 		String arg = "";
 
 		args.getStringToken(arg);
+
+		arg = arg.toLowerCase();
+
+		ManagedReference<SceneObject*> targetObject = zoneServer->getObject(creature->getTargetID());
 
 		if (arg == "tools") {
 			Lua* lua = DirectorManager::instance()->getLuaInstance();
@@ -43,20 +53,13 @@ public:
 
 			staffTools->callFunction();
 		} else if (arg == "toggledebug") {
-			auto zoneServer = server->getZoneServer();
-
-			if (zoneServer == nullptr)
-				return GENERALERROR;
-
-			ManagedReference<SceneObject*> target = zoneServer->getObject(creature->getTargetID());
-
-			if (target == nullptr)
+			if (targetObject == nullptr)
 				return GENERALERROR;
 
 			StringBuffer msg;
 
-			if (target->isAiAgent()) {
-				AiAgent* aiAgent = target->asAiAgent();
+			if (targetObject->isAiAgent()) {
+				AiAgent* aiAgent = targetObject->asAiAgent();
 
 				if (aiAgent == nullptr)
 					return GENERALERROR;
@@ -78,8 +81,8 @@ public:
 				if (!logFileName.isEmpty()) {
 					msg << " logging to " << logFileName;
 				}
-			} else if (target->isShipAiAgent()) {
-				ShipAiAgent* agent = target->asShipAiAgent();
+			} else if (targetObject->isShipAiAgent()) {
+				ShipAiAgent* agent = targetObject->asShipAiAgent();
 
 				if (agent == nullptr)
 					return GENERALERROR;
@@ -104,8 +107,36 @@ public:
 				creature->setDebuggingRegions(true);
 				creature->sendSystemMessage("Region System Message Debug Enabled");
 			}
+		} else if (arg == "shipfollow") {
+			if (targetObject == nullptr || !targetObject->isShipAiAgent())
+				return GENERALERROR;
 
+			ShipAiAgent* shipAgent = targetObject->asShipAiAgent();
+
+			if (shipAgent == nullptr)
+				return GENERALERROR;
+
+			ManagedReference<SceneObject*> rootParent = creature->getRootParent();
+
+			if (rootParent == nullptr || !rootParent->isShipObject()) {
+				return GENERALERROR;
+			}
+
+			ShipObject* shipParent = rootParent->asShipObject();
+
+			if (shipParent == nullptr)
+				return GENERALERROR;
+
+			Locker clocker(shipAgent, creature);
+
+			shipAgent->addShipFlag(ShipFlag::ESCORT);
+			shipAgent->setShipAiTemplate();
+
+			shipAgent->setFollowShipObject(shipParent);
+
+			return SUCCESS;
 		}
+
 
 		return SUCCESS;
 	}
