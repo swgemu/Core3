@@ -1,0 +1,83 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.area.space;
+
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.area.space.SpaceActiveArea;
+
+@json
+class NebulaArea extends SpaceActiveArea {
+	protected string ambientSound;
+	protected string lightningAppearance;
+	protected string lightningSound;
+	protected string lightningSoundLoop;
+	protected string lightningHitEffectClient;
+	protected string lightningHitEffectServer;
+
+	protected float lightningDamageMin;
+	protected float lightningDamageMax;
+
+	protected int lightningFrequency;
+	protected int lightningDurationMax;
+
+
+	public NebulaArea() {
+		Logger.setLoggingName("NebulaArea");
+	}
+
+	// Mutators
+	public void setAmbientSound(final string sound) {
+		ambientSound = sound;
+	}
+
+	public void setLightningAppearance(final string appearance) {
+		lightningAppearance = appearance;
+	}
+
+	public void setLightningSound(final string sound) {
+		lightningSound = sound;
+	}
+
+	public void setLightningSoundLoop(final string sound) {
+		lightningSoundLoop = sound;
+	}
+
+	public void setLightningHitEffectClient(final string effect) {
+		lightningHitEffectClient = effect;
+	}
+
+	public void setLightningHitEffectServer(final string effect) {
+		lightningHitEffectServer = effect;
+	}
+
+	public void setLightningDamageMin(float damage) {
+		lightningDamageMin = damage;
+	}
+
+	public void setLightningDamageMax(float damage) {
+		lightningDamageMax = damage;
+	}
+
+	public void setLightningFrequency(int frequency) {
+		lightningFrequency = frequency;
+	}
+
+	public void setLightningDurationMax(int maxDuration) {
+		lightningDurationMax = maxDuration;
+	}
+
+	// Accessors
+
+
+
+	// Functions
+
+	@dirty
+	public native abstract void notifyEnter(SceneObject object);
+
+	@dirty
+	public native abstract void notifyExit(SceneObject object);
+}

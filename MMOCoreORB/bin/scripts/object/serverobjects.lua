@@ -81,6 +81,7 @@ includeFile("sarlacc_area.lua")
 includeFile("spawn_area.lua")
 includeFile("fs_village_area.lua")
 includeFile("space_active_area.lua")
+includeFile("nebula_area.lua")
 
 -- Custom content - Loads last to allow for overrides
 includeFile("../custom_scripts/object/serverobjects.lua")
