@@ -19,10 +19,10 @@ void CuboidAreaShapeImplementation::setDimensions(float len, float wid, float hg
 	// Set the cuboid contraints
 	auto centerPos = getAreaCenter();
 
-	minX = centerPos.getX() - (width / 2);
-	maxX = centerPos.getX() + (width / 2);
-	minY = centerPos.getY() - (length / 2);
-	maxY = centerPos.getY() + (length / 2);
+	minX = centerPos.getX() - (length / 2);
+	maxX = centerPos.getX() + (length / 2);
+	minY = centerPos.getY() - (width / 2);
+	maxY = centerPos.getY() + (width / 2);
 	minZ = centerPos.getZ() - (height / 2);
 	maxZ = centerPos.getZ() + (height / 2);
 }
@@ -65,23 +65,25 @@ Vector3 CuboidAreaShapeImplementation::getRandomPosition(const Vector3& origin, 
 #endif // DEBUG_POSITION
 
 	Vector3 position;
-
-	/*
 	bool found = false;
 	int retries = 10;
 
 	while (!found && retries-- > 0) {
-		float spawnDistanceDelta = System::random(maxDistance - minDistance);
-		int randDirection = System::random(360);
+		// Generate random radial distance and angle
+		float radius = System::frandom(maxDistance - minDistance);
+		float angle = System::frandom(2.0 * Math::PI);
 
-		if (spawnDistanceDelta < minDistance)
-			spawnDistanceDelta = minDistance;
+		// Calculate Cartesian coordinates based on polar coordinates
+		float x = areaCenter.getX() + radius * cos(angle);
+		float y = areaCenter.getY() + radius * sin(angle);
 
-		float xCalc = Math::cos(randDirection) - spawnDistanceDelta * Math::sin(randDirection);
-		float yCalc = Math::sin(randDirection) - spawnDistanceDelta * Math::cos(randDirection);
+		// Z-coordinate is within the cuboid's height
+		float z = areaCenter.getZ() + System::frandom(maxDistance - minDistance);
 
-		position.setX(origin.getX() + xCalc);
-		position.setY(origin.getY() + yCalc);
+		// Ensure generated coordinates are within the cuboid
+		x = Math::max(Math::min(x, areaCenter.getX() + 0.5f * length), (float) (areaCenter.getX() - 0.5 * length));
+		y = Math::max(Math::min(y, areaCenter.getY() + 0.5f * width), (float) (areaCenter.getY() - 0.5 * width));
+		z = Math::max(Math::min(z, areaCenter.getZ() + height), areaCenter.getZ());
 
 #ifdef DEBUG_POSITION
 		info(true) << " X Calc = " << xCalc << " Y Calc = " << yCalc << " Spawn Distance Delta = " << spawnDistanceDelta;
@@ -96,11 +98,10 @@ Vector3 CuboidAreaShapeImplementation::getRandomPosition(const Vector3& origin, 
 		info(true) << "Cuboid - Position not found !!!";
 #endif // DEBUG_POSITION
 
-		position.set(0, 0, 0);
-		return position;
+		return areaCenter;
 	}
-	*/
-	return areaCenter;
+
+	return position;
 }
 
 bool CuboidAreaShapeImplementation::intersectsWith(AreaShape* areaShape) const {

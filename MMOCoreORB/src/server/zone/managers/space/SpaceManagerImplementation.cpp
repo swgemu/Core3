@@ -14,9 +14,12 @@
 #include "templates/datatables/DataTableRow.h"
 #include "server/zone/managers/ship/ShipManager.h"
 #include "templates/faction/Factions.h"
+#include "server/zone/objects/area/space/SpaceActiveArea.h"
+#include "server/zone/objects/area/areashapes/SphereAreaShape.h"
+#include "server/zone/objects/area/areashapes/CuboidAreaShape.h"
 
 void SpaceManagerImplementation::loadLuaConfig() {
-	String planetName = spacezone->getZoneName();
+	String planetName = spaceZone->getZoneName();
 
 	Lua* lua = new Lua();
 	lua->init();
@@ -38,7 +41,7 @@ void SpaceManagerImplementation::loadLuaConfig() {
 			LuaObject zoneObject(L);
 
 			String templateFile = zoneObject.getStringField("templateFile");
-			//  info("Attempting to load: " + templateFile + " in " + spacezone->getZoneName(), true);
+			//  info("Attempting to load: " + templateFile + " in " + spaceZone->getZoneName(), true);
 
 			auto shot = TemplateManager::instance()->getTemplate(templateFile.hashCode());
 			if (shot == nullptr) {
@@ -72,12 +75,12 @@ void SpaceManagerImplementation::loadLuaConfig() {
 				obj->initializePosition(x, z, y);
 				obj->setDirection(direction);
 
-				ManagedReference<SceneObject*> parent = spacezone->getZoneServer()->getObject(parentID);
+				ManagedReference<SceneObject*> parent = spaceZone->getZoneServer()->getObject(parentID);
 
 				if (parent != nullptr)
 					parent->transferObject(obj, -1, true);
 				else
-					spacezone->transferObject(obj, -1, true);
+					spaceZone->transferObject(obj, -1, true);
 
 				obj->createChildObjects();
 
@@ -142,8 +145,10 @@ void SpaceManagerImplementation::initialize() {
 	spaceStationMap.put("neutral", stationMap);
 	spaceStationMap.put("imperial", stationMap);
 
-	info("loading space manager " + spacezone->getZoneName(), true);
+	info(true) << "loading space manager " << spaceZone->getZoneName();
+
 	loadLuaConfig();
+	loadNebulaAreas();
 }
 
 void SpaceManagerImplementation::loadJTLData(LuaObject* luaObject) {
@@ -170,11 +175,89 @@ void SpaceManagerImplementation::initializeTransientMembers() {
 }
 
 void SpaceManagerImplementation::finalize() {
-	spacezone = nullptr;
+	spaceZone = nullptr;
 	server = nullptr;
 }
 
 void SpaceManagerImplementation::start() {
+}
+
+void SpaceManagerImplementation::loadNebulaAreas() {
+	auto zoneServer = spaceZone->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	if (templateManager == nullptr)
+		return;
+
+	String zoneName = spaceZone->getZoneName();
+
+	IffStream* iffStream = templateManager->openIffFile("datatables/space/nebula/" + zoneName + ".iff");
+
+	if (iffStream == nullptr) {
+		info(true) << "Nebula table for " << zoneName << " could not be found.";
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	// Declare variables
+	String name;
+	float x, y, z, radius;
+	StringBuffer nebulaName;
+
+	// TODO: Load the other variables?
+
+	// These should be spheres, fix this
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+
+		row->getCell(0)->getValue(name);
+		row->getCell(1)->getValue(x);
+		row->getCell(2)->getValue(y);
+		row->getCell(3)->getValue(z);
+		row->getCell(4)->getValue(radius);
+
+		// This will need to eventually be its own active area class to handle special functions for entry
+		ManagedReference<SpaceActiveArea*> nebulaArea = (zoneServer->createObject(STRING_HASHCODE("object/space_active_area.iff"), 0)).castTo<SpaceActiveArea*>();
+
+		if (nebulaArea == nullptr)
+			continue;
+
+		Locker areaLock(nebulaArea);
+
+		ManagedReference<SphereAreaShape*> sphereArea = new SphereAreaShape();
+
+		if (sphereArea == nullptr)
+			continue;
+
+		Locker shapeLocker(sphereArea, nebulaArea);
+
+		sphereArea->setAreaCenter(x, z, y);
+		sphereArea->setRadius(radius);
+
+		shapeLocker.release();
+
+		nebulaName << zoneName << "_nebula_" << name;
+		nebulaArea->setAreaName(nebulaName.toString());
+
+		//winfo(true) << nebulaName.toString() << " - X = " << x << " Z = " << z << " Y = " << y << " Radius = " << radius;
+
+		nebulaName.deleteAll();
+
+		nebulaArea->setAreaShape(sphereArea);
+
+		nebulaArea->initializePosition(x, z, y);
+
+		spaceZone->transferObject(nebulaArea, -1, true);
+	}
+
+	delete iffStream;
 }
 
 Vector3 SpaceManagerImplementation::getJtlLaunchLocationss() {

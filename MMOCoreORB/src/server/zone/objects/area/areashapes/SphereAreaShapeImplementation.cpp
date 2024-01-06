@@ -8,7 +8,6 @@
 #include "server/zone/objects/area/areashapes/SphereAreaShape.h"
 #include "server/zone/objects/area/areashapes/CuboidAreaShape.h"
 
-
 //#define DEBUG_POSITION
 //#define DEBUG_SPHERE
 
@@ -59,23 +58,24 @@ Vector3 SphereAreaShapeImplementation::getRandomPosition(const Vector3& origin, 
 	info(true) << "Cuboid - getRandomPosition called";
 #endif // DEBUG_POSITION
 
-	/*
 	Vector3 position;
 	bool found = false;
 	int retries = 10;
 
 	while (!found && retries-- > 0) {
-		float spawnDistanceDelta = System::random(maxDistance - minDistance);
-		int randDirection = System::random(360);
+		// Generate random spherical coordinates
+		float theta = 2.0 * Math::PI * System::frandom(1.0);
+		float phi = acos(1.0 - 2.0 * System::frandom(1.0));
 
-		if (spawnDistanceDelta < minDistance)
-			spawnDistanceDelta = minDistance;
+		// Generate a random distance within the specified range
+		float distance = minDistance + (maxDistance - minDistance) * System::frandom(1.0);
 
-		float xCalc = Math::cos(randDirection) - spawnDistanceDelta * Math::sin(randDirection);
-		float yCalc = Math::sin(randDirection) - spawnDistanceDelta * Math::cos(randDirection);
+		// Convert spherical coordinates to Cartesian coordinates
+		float x = areaCenter.getX() + distance * sin(phi) * cos(theta);
+		float y = areaCenter.getY() + distance * sin(phi) * sin(theta);
+		float z = areaCenter.getZ() + distance * cos(phi);
 
-		position.setX(origin.getX() + xCalc);
-		position.setY(origin.getY() + yCalc);
+		position.set(x, y, z);
 
 #ifdef DEBUG_POSITION
 		info(true) << " X Calc = " << xCalc << " Y Calc = " << yCalc << " Spawn Distance Delta = " << spawnDistanceDelta;
@@ -90,13 +90,10 @@ Vector3 SphereAreaShapeImplementation::getRandomPosition(const Vector3& origin, 
 		info(true) << "Cuboid - Position not found !!!";
 #endif // DEBUG_POSITION
 
-		position.set(0, 0, 0);
-		return position;
+		return areaCenter;
 	}
 
-	return position;*/
-
-	return areaCenter;
+	return position;
 }
 
 bool SphereAreaShapeImplementation::intersectsWith(AreaShape* areaShape) const {

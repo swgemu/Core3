@@ -17,7 +17,7 @@ import server.zone.objects.ship.ShipObject;
 
 @dirty
 class SpaceManager extends ManagedService implements Logger {
-	protected SpaceZone spacezone;
+	protected SpaceZone spaceZone;
 
 	protected transient ZoneProcessServer server;
 
@@ -41,16 +41,19 @@ class SpaceManager extends ManagedService implements Logger {
 	public native Vector3 getJtlLaunchLocationss();
 
 	public SpaceManager(SpaceZone sz, ZoneProcessServer srv) {
-		spacezone = sz;
+		spaceZone = sz;
 		server = srv;
 
-		Logger.setLoggingName("SpaceManager-" + spacezone.getZoneName());
+		Logger.setLoggingName("SpaceManager-" + spaceZone.getZoneName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 	}
 
 	@local
 	public native void loadLuaConfig();
+
+	@local
+	public native void loadNebulaAreas();
 
 	@local
 	private native void loadJTLData(LuaObject lua);

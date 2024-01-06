@@ -40,7 +40,7 @@ class AreaShape extends ManagedObject implements Logger {
 	 */
 	@preLocked
 	public void setAreaCenter(float x, float z, float y) {
-		areaCenter.set(x, y, z);
+		areaCenter.set(x, z, y);
 	}
 
 	/**
