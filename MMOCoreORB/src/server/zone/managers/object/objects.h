@@ -135,7 +135,6 @@
 #include "server/zone/objects/tangible/misc/FsCsObject.h"
 #include "server/zone/objects/pathfinding/NavArea.h"
 #include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/objects/area/space/SpaceActiveArea.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/objects/area/SarlaccArea.h"
 #include "server/zone/objects/area/FsVillageArea.h"
@@ -144,6 +143,8 @@
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
 #include "server/zone/objects/region/SpawnArea.h"
+#include "server/zone/objects/area/space/SpaceActiveArea.h"
+#include "server/zone/objects/area/space/NebulaArea.h"
 #include "server/zone/objects/tangible/misc/ContractCrate.h"
 #include "server/zone/objects/tangible/misc/DeadEyePrototype.h"
 

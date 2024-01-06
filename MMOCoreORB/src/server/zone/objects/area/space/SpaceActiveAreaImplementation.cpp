@@ -20,13 +20,9 @@ void SpaceActiveAreaImplementation::notifyEnter(SceneObject* sceneO) {
 		return;
 
 #ifdef DEBUG_SPACE_AREAS
-	auto pilot = shipObject->getPilot();
-
-	if (pilot != nullptr) {
-		StringBuffer msg;
-		msg << "notifyEnter - SpaceActiveArea: " << getAreaName() << " Location: " << getAreaCenter().toString();
-		pilot->sendSystemMessage(msg.toString());
-	}
+	StringBuffer msg;
+	msg << "notifyEnter - SpaceActiveArea: " << getAreaName() << " Location: " << getAreaCenter().toString();
+	shipObject->sendShipMembersMessage(msg.toString());
 #endif
 
 	ActiveAreaImplementation::notifyEnter(sceneO);
@@ -42,13 +38,9 @@ void SpaceActiveAreaImplementation::notifyExit(SceneObject* sceneO) {
 		return;
 
 #ifdef DEBUG_SPACE_AREAS
-	auto pilot = shipObject->getPilot();
-
-	if (pilot != nullptr) {
-		StringBuffer msg;
-		msg << "notifyExit - SpaceActiveArea: " << getAreaName() << " Location: " << getAreaCenter().toString();
-		pilot->sendSystemMessage(msg.toString());
-	}
+	StringBuffer msg;
+	msg << "notifyExit - SpaceActiveArea: " << getAreaName() << " Location: " << getAreaCenter().toString();
+	shipObject->sendShipMembersMessage(msg.toString());
 #endif
 
 	ActiveAreaImplementation::notifyExit(sceneO);

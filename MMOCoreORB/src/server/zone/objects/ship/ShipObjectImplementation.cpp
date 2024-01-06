@@ -439,6 +439,8 @@ void ShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 
 	setLoggingName(newName.toString());
 
+	scheduleRecovery();
+
 	TangibleObjectImplementation::notifyInsertToZone(zone);
 }
 
