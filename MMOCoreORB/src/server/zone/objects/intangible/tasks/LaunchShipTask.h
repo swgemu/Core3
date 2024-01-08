@@ -51,13 +51,7 @@ public:
 		Vector3 launchPosition = planetManager->getJtlLaunchLocations() + randomPosition;
 
 		// Lock the control device
-		Locker lock(shipControlDevice);
-
-		Locker pilotLock(player, shipControlDevice);
-
-		shipControlDevice->setStoredLocationData(player);
-
-		pilotLock.release();
+		Locker deviceLock(shipControlDevice);
 
 		// Ship is cross locked to device in the launchShip function
 		if (!shipControlDevice->launchShip(player, jtlZoneName, launchPosition)) {
@@ -65,23 +59,23 @@ public:
 			return;
 		}
 
-		auto shipTano = shipControlDevice->getControlledObject();
+		auto ship = cast<ShipObject*>(shipControlDevice->getControlledObject());
 
-		if (shipTano == nullptr) {
+		if (ship == nullptr || ship->getLocalZone() == nullptr) {
 			return;
 		}
 
-		auto ship = shipTano->asShipObject();
+		// Lock player to store launch point
+		Locker pilotLock(player, shipControlDevice);
 
-		if (ship == nullptr)
-			return;
+		shipControlDevice->setStoredLocationData(player);
+
+		pilotLock.release();
 
 		InsertPilotIntoShipTask* pilotTask = new InsertPilotIntoShipTask(player, ship);
 
 		if (pilotTask != nullptr)
 			pilotTask->schedule(100);
-
-		// info(true) << "Launch Ship Task called with group member Size: " << groupMembers.size();
 
 		if (ship->isPobShipObject() && groupMembers.size() > 0) {
 			auto pobShip = ship->asPobShipObject();

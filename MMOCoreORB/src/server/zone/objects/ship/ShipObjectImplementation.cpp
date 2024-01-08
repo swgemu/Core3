@@ -143,31 +143,7 @@ void ShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) 
 }
 
 void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
-	BaseMessage* destroy = new SceneObjectDestroyMessage(asSceneObject());
-	player->sendMessage(destroy);
-
-	BaseMessage* msg = new SceneObjectCreateMessage(asSceneObject());
-	player->sendMessage(msg);
-
-	link(player, containmentType);
-
-	auto pilot = getPilot();
-
-	if (pilot != nullptr) {
-		player->addInRangeObject(pilot, true);
-	}
-
-	try {
-		sendBaselinesTo(player);
-		sendSlottedObjectsTo(player);
-		sendContainerObjectsTo(player, false);
-	} catch (Exception& e) {
-		error(e.getMessage());
-		e.printStackTrace();
-	}
-
-	if (doClose)
-		SceneObjectImplementation::close(player);
+	TangibleObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 }
 
 void ShipObjectImplementation::setShipName(const String& name, bool notifyClient) {
@@ -179,24 +155,42 @@ void ShipObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	VectorMap<String, ManagedReference<SceneObject* > > slotted;
 	getSlottedObjects(slotted);
 
-	SortedVector<uint64> objects(slotted.size(), slotted.size());
+	SortedVector<SceneObject*> objects(getSlottedObjectsSize(), getSlottedObjectsSize());
 	objects.setNoDuplicateInsertPlan();
 
-	for (int i = 0; i < slotted.size(); ++i) {
-		SceneObject* object = slotted.get(i);
-		if (object == nullptr || objects.put(object->getObjectID()) == -1) {
-			continue;
-		}
+	try {
+		for (int i = 0; i < slotted.size(); ++i) {
+			Reference<SceneObject*> object = getSlottedObject(i);
 
-		if (object == player && player->getMovementCounter() != 0) {
-			continue;
-		}
+			int arrangementSize = object->getArrangementDescriptorSize();
 
-		if (object->isInOctTree()) {
-			notifyInsert(object);
-		} else {
-			object->sendTo(player, true, false);
+			bool sendWithoutContents = false;
+
+			if (arrangementSize > 0) {
+				const Vector<String>* descriptors = object->getArrangementDescriptor(0);
+
+				if (descriptors->size() > 0) {
+					const String& childArrangement = descriptors->get(0);
+
+					if (((childArrangement == "bank") || (childArrangement == "inventory") || (childArrangement == "datapad") || (childArrangement == "mission_bag"))) {
+						sendWithoutContents = true;
+					}
+				}
+			}
+
+			if (objects.put(object) != -1) {
+				if (object->isInOctree()) {
+					notifyInsert(object);
+				} else if (sendWithoutContents) {
+					object->sendWithoutContainerObjectsTo(player);
+				} else {
+					object->sendTo(player, true, false);
+				}
+			}
 		}
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
 	}
 }
 
@@ -349,33 +343,40 @@ void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool 
 }
 
 void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
+	info(true) << "\n\n" << getDisplayedName() << " ShipObjectImplementation::notifyObjectInsertedToZone - for " << object->getDisplayedName();
+
 	auto closeObjectsVector = getCloseObjects();
-	Vector<TreeEntry*> closeObjects(closeObjectsVector->size(), 10);
-	closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
+	SortedVector<TreeEntry*> closeObjects(closeObjectsVector->size(), 10);
+
+	if (closeObjectsVector != nullptr) {
+		closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
+	} else {
+		auto zone = getZone();
+
+		if (zone != nullptr)
+			zone->getInRangeObjects(getWorldPositionX(), getWorldPositionZ(), getWorldPositionY(), zone->getZoneObjectRange(), &closeObjects, false);
+	}
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(i));
 
-		if (obj->isCreatureObject()) {
-			if (obj->getRootParent() != _this.getReferenceUnsafe()) {
-				if (object->getCloseObjects() != nullptr)
-					object->addInRangeObject(obj, false);
-				else
-					object->notifyInsert(obj);
+		if (obj == nullptr || !obj->isCreatureObject())
+			continue;
 
-				if (obj->getCloseObjects() != nullptr)
-					obj->addInRangeObject(object, false);
-				else
-					obj->notifyInsert(object);
-			}
+		if (obj->getRootParent() != _this.getReferenceUnsafe()) {
+			if (object->getCloseObjects() != nullptr)
+				object->addInRangeObject(obj, false);
+			else
+				object->notifyInsert(obj);
+
+			if (obj->getCloseObjects() != nullptr)
+				obj->addInRangeObject(object, false);
+			else
+				obj->notifyInsert(object);
 		}
 	}
 
-	if (isPobShipObject()) {
-		asPobShipObject()->notifyInsert(object);
-	} else {
-		notifyInsert(object);
-	}
+	notifyInsert(object);
 
 	if (object->getCloseObjects() != nullptr)
 		object->addInRangeObject(asShipObject(), false);
@@ -384,20 +385,9 @@ void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 
 	Zone* zone = getZone();
 
-	if (zone != nullptr && zone->isSpaceZone()) {
-
-		/*
-		// There is a chance that we do not need to update the object inserted with the active areasa, and just the ship
-		TangibleObject* tano = object->asTangibleObject();
-
-		if (tano != nullptr) {
-			zone->updateActiveAreas(tano);
-		}
-		*/
+	if (zone != nullptr) {
 		object->notifyInsertToZone(zone);
 	}
-
-	//this->sendTo(object, true);
 }
 
 void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
@@ -487,17 +477,7 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 
 	if (zone != nullptr) {
 		delete _locker;
-
-		/*
-		There is a chance that we do not need to update the object inserted with the active areasa, and just the ship
-		if (object->isTangibleObject()) {
-			TangibleObject* tano = object->asTangibleObject();
-			zone->updateActiveAreas(tano);
-		}
-		*/
 	}
-
-	// info(true) << getDisplayedName() << " notifyObjectInsertedToChild: " << object->getDisplayedName();
 
 	TangibleObjectImplementation::notifyObjectInsertedToChild(object, child, oldParent);
 
@@ -506,27 +486,6 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 
 int ShipObjectImplementation::notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child) {
 	TangibleObjectImplementation::notifyObjectRemovedFromChild(object, child);
-	//info("Removed: " + object->getDisplayedName(), true);
-	/*SceneObject* parent = sceneObject->getParent();
-	Zone* zone = sceneObject->getZone();
-
-	if (!parent->isCellObject())
-		return;
-
-	if (building != parent->getParent()) {
-		error("removing from wrong building object");
-		return;
-	}
-
-	sceneObject->broadcastMessage(sceneObject->link((uint64)0, (uint32)0xFFFFFFFF), true, false);*/
-
-	//parent->removeObject(sceneObject, false);
-
-
-	//remove(object);
-
-	//		building->removeNotifiedSentObject(sceneObject);
-
 
 	return 0;
 }

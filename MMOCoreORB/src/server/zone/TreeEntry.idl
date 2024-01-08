@@ -286,7 +286,7 @@ class TreeEntry extends Observable {
 	}
 
 	@read
-	public boolean isInOctTree() {
+	public boolean isInOctree() {
 		return node;
 	}
 

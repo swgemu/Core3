@@ -550,9 +550,6 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	if (zone != nullptr && !zone->isSpaceZone())
 		createHelperDroid();
-
-
-	// info(true) << "notifySceneReady for " << creature->getDisplayedName();
 }
 
 void PlayerObjectImplementation::sendFriendLists() {

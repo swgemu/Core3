@@ -236,7 +236,7 @@ int ShipControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 		return 1;
 	}
 
-	if (ship->isInOctTree()) {
+	if (ship->isInOctree()) {
 		owner->sendSystemMessage("You must land your ship before it can be destroyed.");
 		return 1;
 	}
@@ -319,7 +319,5 @@ bool ShipControlDeviceImplementation::isShipLaunched() {
 	if (ship == nullptr)
 		return false;
 
-	auto zone = ship->getZone();
-
-	return zone != nullptr && zone->isSpaceZone();
+	return ship->getLocalZone() != nullptr;
 }

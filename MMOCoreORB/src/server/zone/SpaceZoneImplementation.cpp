@@ -136,7 +136,7 @@ void SpaceZoneImplementation::insert(TreeEntry* entry) {
 void SpaceZoneImplementation::remove(TreeEntry* entry) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (entry->isInOctTree()) {
+	if (entry->isInOctree()) {
 		octTree->remove(entry);
 
 		/*
