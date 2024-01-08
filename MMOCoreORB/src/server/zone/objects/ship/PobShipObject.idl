@@ -57,6 +57,8 @@ class PobShipObject extends ShipObject {
 	@local
 	public native void notifyInsert(TreeEntry obj);
 
+	public native abstract void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
+
 	/**
 	 * Sends the contained non slotted objects to the specified player
 	 * @pre { this object is locked }

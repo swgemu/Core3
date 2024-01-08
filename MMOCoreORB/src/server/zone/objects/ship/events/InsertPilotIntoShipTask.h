@@ -26,16 +26,19 @@ public:
 		if (player == nullptr || ship == nullptr)
 			return;
 
-		auto spaceZone = ship->getZone();
+		auto spaceZone = ship->getLocalZone();
 
-		if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
+		if (spaceZone == nullptr) {
 			return;
 		}
 
+		// Lock the ship
 		Locker lock(ship);
 
+		// Cross lock the player to be inserted as the pilot
 		Locker clock(player, ship);
 
+		// Update the players group
 		if (player->isGrouped()) {
 			auto group = player->getGroup();
 

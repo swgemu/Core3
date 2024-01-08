@@ -501,7 +501,7 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 		SceneObject* object = slotted.get(i);
 
 		if (objects.put(object->getObjectID()) != -1) {
-			if (object->isInQuadTree() || object->isInOctTree()) {
+			if (object->isInQuadTree() || object->isInOctree()) {
 				notifyInsert(object);
 			} else {
 				object->sendTo(player, true, false);
@@ -522,7 +522,7 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool
 			if (containerObject == nullptr)
 				continue;
 
-			if (containerObject->isInQuadTree() || containerObject->isInOctTree()) {
+			if (containerObject->isInQuadTree() || containerObject->isInOctree()) {
 				notifyInsert(containerObject);
 			} else {
 				containerObject->sendTo(player, true, false);

@@ -327,7 +327,5 @@ bool ShipControlDeviceImplementation::isShipLaunched() {
 	if (ship == nullptr)
 		return false;
 
-	auto zone = ship->getZone();
-
-	return zone != nullptr && zone->isSpaceZone();
+	return ship->getLocalZone() != nullptr;
 }

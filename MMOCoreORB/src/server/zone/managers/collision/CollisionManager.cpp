@@ -671,10 +671,8 @@ Ray CollisionManager::convertToModelSpace(const Vector3& rayOrigin, const Vector
 bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targetPosition, Vector3& collisionPoint) {
 	Zone* zone = ship->getZone();
 
-	if (zone == nullptr || !zone->isSpaceZone())
+	if (zone == nullptr)
 		return false;
-
-	SpaceZone* spaceZone = dynamic_cast<SpaceZone*>(zone);
 
 	Vector3 rayOrigin = ship->getWorldPosition();
 
@@ -688,7 +686,7 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 	Triangle* triangle = nullptr;
 
 	SortedVector<ManagedReference<TreeEntry*> > objects(512, 512);
-	spaceZone->getInRangeObjects(targetPosition.getX(), targetPosition.getZ(), targetPosition.getY(), 512, &objects, true);
+	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getZ(), targetPosition.getY(), 512, &objects, true);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		const AppearanceTemplate *app = nullptr;
@@ -738,12 +736,7 @@ bool CollisionManager::checkShipWeaponCollision(ShipObject* obj, const Vector3 s
 
 	Zone* zone = obj->getZone();
 
-	if (zone == nullptr || !zone->isSpaceZone())
-		return false;
-
-	SpaceZone* spaceZone = dynamic_cast<SpaceZone*>(zone);
-
-	if (spaceZone == nullptr)
+	if (zone == nullptr)
 		return false;
 
 	Vector3 rayOrigin = startPosition;
@@ -752,8 +745,7 @@ bool CollisionManager::checkShipWeaponCollision(ShipObject* obj, const Vector3 s
 	float dist = rayEnd.distanceTo(rayOrigin);
 	float intersectionDistance;
 
-	Triangle* triangle = NULL;
-
+	Triangle* triangle = nullptr;
 
 	Vector3 center = startPosition - ((targetPosition - startPosition) * 0.5f);
 	SortedVector<ManagedReference<TreeEntry*> > objects;
@@ -761,15 +753,16 @@ bool CollisionManager::checkShipWeaponCollision(ShipObject* obj, const Vector3 s
 	obj->getCloseObjects()->safeCopyTo(objects);
 
 	for (int i = 0; i < objects.size(); ++i) {
-		const AppearanceTemplate *app = NULL;
+		const AppearanceTemplate *app = nullptr;
 
 		SceneObject* scno = cast<SceneObject*>(objects.get(i).get());
 
 		if (scno == obj)
 			continue;
 
-		ShipObject *ship = dynamic_cast<ShipObject*>(scno);
-		if (ship == NULL) {
+		ShipObject* ship = dynamic_cast<ShipObject*>(scno);
+
+		if (ship == nullptr) {
 			continue;
 		}
 
@@ -777,12 +770,12 @@ bool CollisionManager::checkShipWeaponCollision(ShipObject* obj, const Vector3 s
 			app = ship->getObjectTemplate()->getAppearanceTemplate();
 
 		} catch (Exception& e) {
-			app = NULL;
+			app = nullptr;
 		} catch (...) {
 			throw;
 		}
 
-		if (app != NULL) {
+		if (app != nullptr) {
 			//moving ray to model space
 
 			try {
