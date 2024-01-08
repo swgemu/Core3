@@ -299,8 +299,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	BaseMessage* parameters = new ParametersMessage();
 	owner->sendMessage(parameters);
 
-	ManagedReference<GuildManager*> guildManager =
-			server->getZoneServer()->getGuildManager();
+	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 	guildManager->sendBaselinesTo(asCreatureObject());
 
 	ManagedReference<SceneObject*> grandParent = getRootParent();
@@ -378,8 +377,7 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
-	SortedVector<SceneObject*> objects(getSlottedObjectsSize(),
-			getSlottedObjectsSize());
+	SortedVector<SceneObject*> objects(getSlottedObjectsSize(), getSlottedObjectsSize());
 	objects.setNoDuplicateInsertPlan();
 
 	try {
@@ -396,10 +394,7 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 				if (descriptors->size() > 0) {
 					const String& childArrangement = descriptors->get(0);
 
-					if (player != asCreatureObject() && ((childArrangement == "bank")
-							|| (childArrangement == "inventory") || (childArrangement
-									== "datapad") || (childArrangement == "mission_bag"))) {
-
+					if (player != asCreatureObject() && ((childArrangement == "bank") || (childArrangement == "inventory") || (childArrangement == "datapad") || (childArrangement == "mission_bag"))) {
 						sendWithoutContents = true;
 					}
 				}

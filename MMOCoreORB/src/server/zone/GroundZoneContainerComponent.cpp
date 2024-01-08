@@ -210,7 +210,7 @@ bool GroundZoneContainerComponent::transferObject(SceneObject* sceneObject, Scen
 
 	zone->insert(object);
 
-	zone->inRange(object, ZoneServer::CLOSEOBJECTRANGE);
+	zone->inRange(object, zone->getZoneObjectRange());
 
 	TangibleObject* tanoObject = object->asTangibleObject();
 

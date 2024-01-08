@@ -9,6 +9,7 @@
 
 #include "server/zone/SpaceZone.h"
 #include "server/zone/ActiveAreaOctree.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 
 bool SpaceZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
@@ -134,35 +135,33 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 		return false;
 	}
 
-	Zone* newZone = cast<Zone*>(sceneObject);
+	Zone* newSpaceZone = cast<Zone*>(sceneObject);
 
-	if (newZone == nullptr || !newZone->isSpaceZone()) {
+	if (newSpaceZone == nullptr) {
 		return false;
 	}
 
-	SpaceZone* newSpaceZone = dynamic_cast<SpaceZone*>(sceneObject);
+	// newSpaceZone->info(true) << "SpaceZoneContainerComponent::transferObject -- Object: " << object->getDisplayedName() << "  Containment Type: " << containmentType;
 
-	if (newSpaceZone == nullptr)
-		return false;
+	Zone* zone = object->getZone();
 
 	if (object->isActiveArea())
 		return insertActiveArea(newSpaceZone, dynamic_cast<ActiveArea*>(object));
 
-	Zone* zone = object->getZone();
-
 	Locker zoneLocker(newSpaceZone);
 
-	if (object->isInOctTree() && zone != nullptr && zone->isSpaceZone()&& newSpaceZone != zone) {
+	if (object->isInOctree() && newSpaceZone != zone) {
 		object->error("trying to insert object to newSpaceZone but is already in another space zone");
 
 		object->destroyObjectFromWorld(true);
+		//StackTrace::printStackTrace();
 
 		return false;
 	}
 
 	ManagedReference<SceneObject*> parent = object->getParent().get();
 
-	if (parent != nullptr/* && parent->isCellObject()*/) {
+	if (parent != nullptr) {
 		uint64 parentID = object->getParentID();
 
 		if (containmentType == -2)
@@ -176,8 +175,6 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 			object->setParent(nullptr, false);
 
 		if (parent->isCellObject()) {
-			// Ship Object?
-			/*
 			ManagedReference<BuildingObject*> build = cast<BuildingObject*>(parent->getParent().get().get());
 
 			if (build != nullptr) {
@@ -185,7 +182,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 
 				if (creature != nullptr)
 					build->onExit(creature, parentID);
-			}*/
+			}
 		}
 	} else {
 		object->setParent(nullptr, false);
@@ -204,7 +201,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 
 	zone->insert(object);
 
-	zone->inRange(object, ZoneServer::SPACEOBJECTRANGE);
+	zone->inRange(object, zone->getZoneObjectRange());
 
 	TangibleObject* tanoObject = object->asTangibleObject();
 
@@ -214,7 +211,9 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 
 	zoneLocker.release();
 
-	object->notifyInsertToZone(zone);
+	if (notifyClient) {
+		object->notifyInsertToZone(zone);
+	}
 
 	object->notifyObservers(ObserverEventType::PARENTCHANGED, nullptr);
 
@@ -283,7 +282,7 @@ bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneOb
 			if (outdoorChild == nullptr)
 				continue;
 
-			if (outdoorChild->isInOctTree()) {
+			if (outdoorChild->isInOctree()) {
 				Locker locker(outdoorChild);
 
 				outdoorChild->destroyObjectFromWorld(true);

@@ -501,7 +501,7 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 		SceneObject* object = slotted.get(i);
 
 		if (objects.put(object->getObjectID()) != -1) {
-			if (object->isInQuadTree() || object->isInOctTree()) {
+			if (object->isInQuadTree() || object->isInOctree()) {
 				notifyInsert(object);
 			} else {
 				object->sendTo(player, true, false);
@@ -522,7 +522,7 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool
 			if (containerObject == nullptr)
 				continue;
 
-			if (containerObject->isInQuadTree() || containerObject->isInOctTree()) {
+			if (containerObject->isInQuadTree() || containerObject->isInOctree()) {
 				notifyInsert(containerObject);
 			} else {
 				containerObject->sendTo(player, true, false);
@@ -1372,24 +1372,6 @@ void SceneObjectImplementation::setObjectName(const StringId& stringID, bool not
 	objectName = stringID;
 }
 
-Vector3 SceneObjectImplementation::getWorldPosition() {
-	auto root = getRootParentUnsafe();
-
-	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShipObject()))
-		return getPosition();
-
-	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
-	float angle = root->getDirection()->getRadians() + atan2(getPositionX(), getPositionY());
-
-	float posX = root->getPositionX() + (sin(angle) * length);
-	float posY = root->getPositionY() + (cos(angle) * length);
-	float posZ = root->getPositionZ() + getPositionZ();
-
-	Vector3 position(posX, posY, posZ);
-
-	return position;
-}
-
 Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegrees, bool includeZ) const {
 	float angleRads = angleDegrees * (M_PI / 180.0f);
 	float newAngle = angleRads + (M_PI / 2) - direction.getRadians();
@@ -1418,11 +1400,35 @@ Vector3 SceneObjectImplementation::getWorldCoordinate(float distance, float angl
 	return Vector3(newX, newY, newZ);
 }
 
+Vector3 SceneObjectImplementation::getWorldPosition() {
+	auto root = getRootParentUnsafe();
+
+	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShipObject())) {
+		return getPosition();
+	} else if (root->isPobShipObject()) {
+		return root->getPosition();
+	}
+
+	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
+	float angle = root->getDirection()->getRadians() + atan2(getPositionX(), getPositionY());
+
+	float posX = root->getPositionX() + (sin(angle) * length);
+	float posY = root->getPositionY() + (cos(angle) * length);
+	float posZ = root->getPositionZ() + getPositionZ();
+
+	Vector3 position(posX, posY, posZ);
+
+	return position;
+}
+
 float SceneObjectImplementation::getWorldPositionX() {
 	auto root = getRootParentUnsafe();
 
-	if (root == nullptr || !root->isBuildingObject())
+	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShipObject())) {
 		return getPositionX();
+	} else if (root->isPobShipObject()) {
+		return root->getPositionX();
+	}
 
 	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
 	float angle = root->getDirection()->getRadians() + atan2(getPositionX(), getPositionY());
@@ -1433,8 +1439,11 @@ float SceneObjectImplementation::getWorldPositionX() {
 float SceneObjectImplementation::getWorldPositionY() {
 	auto root = getRootParentUnsafe();
 
-	if (root == nullptr || !root->isBuildingObject())
+	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShipObject())) {
 		return getPositionY();
+	} else if (root->isPobShipObject()) {
+		return root->getPositionY();
+	}
 
 	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
 	float angle = root->getDirection()->getRadians() + atan2(getPositionX(), getPositionY());
@@ -1445,8 +1454,11 @@ float SceneObjectImplementation::getWorldPositionY() {
 float SceneObjectImplementation::getWorldPositionZ() {
 	auto root = getRootParentUnsafe();
 
-	if (root == nullptr || !root->isBuildingObject())
+	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShipObject())) {
 		return getPositionZ();
+	} else if (root->isPobShipObject()) {
+		return root->getPositionZ();
+	}
 
 	return root->getPositionZ() + getPositionZ();
 }
