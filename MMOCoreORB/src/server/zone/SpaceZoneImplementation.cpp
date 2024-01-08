@@ -170,7 +170,7 @@ void SpaceZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 		return;
 
 #ifdef DEBUG_SPACE_AA
-	info(true) << "\n---------- SpaceZoneImplementation::updateActiveAreas called ----------";
+	info(true) << "\n---------- SpaceZoneImplementation::updateActiveAreas called: " << tano->getDisplayedName() << " ----------";
 #endif
 
 	Locker _alocker(tano->getContainerLock());

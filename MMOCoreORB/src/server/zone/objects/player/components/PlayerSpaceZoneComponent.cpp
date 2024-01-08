@@ -86,7 +86,7 @@ void PlayerSpaceZoneComponent::switchZone(SceneObject* sceneObject, const String
 			ghost->updateLastValidatedPosition();
 			ghost->setClientLastMovementStamp(0);
 
-			ghost->unloadSpawnedChildren();
+			ghost->unloadSpawnedChildren(true);
 		}
 
 		player->notifyObservers(ObserverEventType::ZONESWITCHED, nullptr, newTerrainName.hashCode());

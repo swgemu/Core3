@@ -235,14 +235,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		}
 
 		if (objZone != nullptr) {
-			if (objZone->isSpaceZone()) {
-				SpaceZone* spaceZone = objZone->asSpaceZone();
-
-				if (spaceZone != nullptr)
-					spaceZone->remove(object);
-			} else {
-				objZone->remove(object);
-			}
+			objZone->remove(object);
 		}
 
 		object->setZone(nullptr);
@@ -258,7 +251,6 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
-	//if (containerType == 1 || containerType == 5) {
 	if (containmentType >= 4) {
 		int arrangementGroup = containmentType - 4;
 
@@ -281,7 +273,10 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
-	} else if (containmentType == -1) { /* else if (containerType == 2 || containerType == 3) {*/
+
+		// We need to update the stored parent for objects moved
+		object->updateZoneWithParent(sceneObject, false, false);
+	} else if (containmentType == -1) {
 		if (!allowOverflow && containerObjects->size() >= sceneObject->getContainerVolumeLimit()){
 			return false;
 		}

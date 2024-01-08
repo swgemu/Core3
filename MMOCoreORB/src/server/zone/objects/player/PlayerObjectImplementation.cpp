@@ -246,7 +246,7 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 	clientLastMovementStamp = 0;
 }
 
-void PlayerObjectImplementation::unloadSpawnedChildren() {
+void PlayerObjectImplementation::unloadSpawnedChildren(bool petsOnly) {
 	ManagedReference<CreatureObject*> player = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	if (player == nullptr)
@@ -272,6 +272,9 @@ void PlayerObjectImplementation::unloadSpawnedChildren() {
 
 		// Do not force store ships when player is not in the space zone
 		if (device->isShipControlDevice()) {
+			if (petsOnly)
+				continue;
+
 			auto zone = player->getZone();
 
 			if (zone != nullptr && !zone->isSpaceZone())

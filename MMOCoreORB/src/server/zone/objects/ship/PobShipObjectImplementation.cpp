@@ -140,11 +140,9 @@ void PobShipObjectImplementation::createChildObjects() {
 						obj->destroyObjectFromDatabase(true);
 						continue;
 					} else {
-						uint32 gameObjectType = obj->getGameObjectType();
-
-						if (gameObjectType == SceneObjectType::PILOTCHAIR) {
+						if (obj->isPilotChair()) {
 							setPilotChair(obj);
-						} else if (gameObjectType == SceneObjectType::SHIPPERMISSIONS) {
+						} else if (obj->getGameObjectType() == SceneObjectType::SHIPPERMISSIONS) {
 							Terminal* terminalChild = obj.castTo<Terminal*>();
 
 							if (terminalChild != nullptr)
@@ -237,10 +235,6 @@ void PobShipObjectImplementation::notifyInsert(TreeEntry* object) {
 }
 
 void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* player, bool forceLoad) {
-	// Dont send container objects if the ship is not in the zone.
-	if (getLocalZone() == nullptr)
-		return;
-
 	if (player == nullptr)
 		return;
 

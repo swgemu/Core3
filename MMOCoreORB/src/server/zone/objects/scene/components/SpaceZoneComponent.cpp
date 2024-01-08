@@ -282,7 +282,7 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	ManagedReference<SceneObject*> newParent = zoneServer->getObject(parentID);
 
-	if (newParent != nullptr && (!newParent->isShipObject() && !newParent->isCellObject() && newParent->getGameObjectType() != SceneObjectType::PILOTCHAIR)) {
+	if (newParent != nullptr && (!newParent->isShipObject() && !newParent->isCellObject() && !newParent->isPilotChair())) {
 		return;
 	}
 
@@ -312,7 +312,7 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 			newParent->sendTo(sceneObject, true);
 
 			// info(true) << "SpaceZoneComponent::switchZone object transferred into ship";
-		} else if (newParent->getGameObjectType() == SceneObjectType::PILOTCHAIR) {
+		} else if (newParent->isPilotChair()) {
 			newParent->transferObject(sceneObject, PlayerArrangement::SHIP_PILOT_POB, true);
 
 			SceneObject* rootParent = newParent->getRootParent();

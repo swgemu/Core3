@@ -385,12 +385,15 @@ void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 	Zone* zone = getZone();
 
 	if (zone != nullptr && zone->isSpaceZone()) {
+
+		/*
+		// There is a chance that we do not need to update the object inserted with the active areasa, and just the ship
 		TangibleObject* tano = object->asTangibleObject();
 
 		if (tano != nullptr) {
 			zone->updateActiveAreas(tano);
 		}
-
+		*/
 		object->notifyInsertToZone(zone);
 	}
 
@@ -485,10 +488,13 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 	if (zone != nullptr) {
 		delete _locker;
 
+		/*
+		There is a chance that we do not need to update the object inserted with the active areasa, and just the ship
 		if (object->isTangibleObject()) {
 			TangibleObject* tano = object->asTangibleObject();
 			zone->updateActiveAreas(tano);
 		}
+		*/
 	}
 
 	// info(true) << getDisplayedName() << " notifyObjectInsertedToChild: " << object->getDisplayedName();
