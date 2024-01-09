@@ -175,6 +175,61 @@ void PobShipObjectImplementation::createChildObjects() {
 	updateToDatabase();
 }
 
+void PobShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	auto thisPob = asShipObject();
+
+	SortedVector<ManagedReference<SceneObject*>> players;
+	players.setNoDuplicateInsertPlan();
+
+	// Check cells for players
+	for (int i = cells.size() - 1; i >= 0 ; --i) {
+		auto& cell = cells.get(i);
+
+		if (cell == nullptr)
+			continue;
+
+		for (int j = cell->getContainerObjectsSize() - 1; j >= 0 ; --j) {
+			auto object = cell->getContainerObject(j);
+
+			if (object == nullptr || !object->isPlayerCreature())
+				continue;
+
+			players.put(object);
+		}
+	}
+
+	// Kick all the players to the ground zone
+	for (int i = players.size() - 1; i >= 0 ; --i) {
+		auto& object = players.get(i);
+
+		if (object == nullptr || !object->isPlayerCreature())
+			continue;
+
+		auto player = object->asCreatureObject();
+
+		if (player == nullptr)
+			continue;
+
+		Locker clock(player, thisPob);
+
+		auto ghost = player->getPlayerObject();
+
+		if (ghost == nullptr)
+			continue;
+
+		auto launchZone = ghost->getSpaceLaunchZone();
+
+		if (launchZone.isEmpty())
+			launchZone = "tatooine";
+
+		auto launchLoc = ghost->getSpaceLaunchLocation();
+
+		player->switchZone(launchZone, launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
+	}
+
+	ShipObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+}
+
 void PobShipObjectImplementation::notifyInsert(TreeEntry* object) {
 	auto sceneO = static_cast<SceneObject*>(object);
 	uint64 scnoID = sceneO->getObjectID();

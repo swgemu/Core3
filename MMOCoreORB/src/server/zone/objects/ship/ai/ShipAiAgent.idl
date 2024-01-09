@@ -552,7 +552,7 @@ class ShipAiAgent extends ShipObject {
 
 	@dirty
 	public boolean isShipAiAgent() {
-		return super.getControlDeviceID() == 0;
+		return true;
 	}
 
 	@read

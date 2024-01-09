@@ -51,6 +51,9 @@ class PobShipObject extends ShipObject {
 	@preLocked
 	public native void createChildObjects();
 
+	@preLocked
+	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+
 	@local
 	public native void notifyInsert(TreeEntry obj);
 
