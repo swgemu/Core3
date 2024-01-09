@@ -1025,6 +1025,64 @@ ShipTargetVector* ShipObjectImplementation::getTargetVector() {
 }
 
 void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	auto thisShip = asShipObject();
+
+	VectorMap<String, ManagedReference<SceneObject* > > slotted;
+	getSlottedObjects(slotted);
+
+	SortedVector<ManagedReference<SceneObject*>> players;
+	players.setNoDuplicateInsertPlan();
+
+	// Check slotted objects for players
+	for (int i = slotted.size() - 1; i >= 0 ; --i) {
+		auto object = slotted.get(i);
+
+		if (object == nullptr || !object->isPlayerCreature())
+			continue;
+
+		players.put(object);
+	}
+
+	// Check container for players
+	for (int i = getContainerObjectsSize() - 1; i >= 0 ; --i) {
+		auto object = getContainerObject(i);
+
+		if (object == nullptr || !object->isPlayerCreature())
+			continue;
+
+		players.put(object);
+	}
+
+	// Kick all the players to the ground zone
+	for (int i = players.size() - 1; i >= 0 ; --i) {
+		auto& object = players.get(i);
+
+		if (object == nullptr || !object->isPlayerCreature())
+			continue;
+
+		auto player = object->asCreatureObject();
+
+		if (player == nullptr)
+			continue;
+
+		Locker clock(player, thisShip);
+
+		auto ghost = player->getPlayerObject();
+
+		if (ghost == nullptr)
+			continue;
+
+		auto launchZone = ghost->getSpaceLaunchZone();
+
+		if (launchZone.isEmpty())
+			launchZone = "tatooine";
+
+		auto launchLoc = ghost->getSpaceLaunchLocation();
+
+		player->switchZone(launchZone, launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
+	}
+
+	// Remove and destroy all the components
 	auto pilot = owner.get();
 
 	for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; ++slot) {
@@ -1043,6 +1101,9 @@ void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedOb
 			component->destroyObjectFromDatabase(true);
 		}
 	}
+
+	if (getLocalZone() != nullptr)
+		destroyObjectFromWorld(true);
 
 	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
