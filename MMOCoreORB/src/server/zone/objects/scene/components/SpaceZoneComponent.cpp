@@ -75,8 +75,6 @@ void SpaceZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, 
 }
 
 void SpaceZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) const {
-	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
-
 	Zone* spaceZone = sceneObject->getZone();
 	ManagedReference<SceneObject*> sceneObjectRootParent = sceneObject->getRootParent();
 
@@ -98,29 +96,9 @@ void SpaceZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, 
 			spaceZone->update(sceneObject);
 			spaceZone->inRange(sceneObject, spaceZone->getZoneObjectRange());
 
-			ShipObject* ship = sceneObject->asShipObject();
-
-			if (ship != nullptr) {
-				SceneObject* pilot = nullptr;
-
-				if (ship->getPilotChair().get() != nullptr) {
-					SceneObject* pilotChair = ship->getPilotChair().get();
-
-					if (pilotChair != nullptr)
-						pilot = pilotChair->getSlottedObject("ship_pilot_pob");
-				} else {
-					pilot = sceneObject->getSlottedObject("ship_pilot");
-				}
-
-				if (pilot != nullptr) {
-					spaceZone->update(pilot);
-					spaceZone->inRange(pilot, spaceZone->getZoneObjectRange());
-				}
-			}
+			spaceZone->unlock();
+			zoneUnlocked = true;
 		}
-
-		spaceZone->unlock();
-		zoneUnlocked = true;
 
 		notifySelfPositionUpdate(sceneObject);
 	} catch (Exception& e) {
@@ -129,15 +107,10 @@ void SpaceZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, 
 		e.printStackTrace();
 	}
 
-	bool isInvis = false;
-
 	TangibleObject* tano = sceneObject->asTangibleObject();
 
 	if (tano != nullptr) {
 		spaceZone->updateActiveAreas(tano);
-
-		if (tano->isInvisible())
-			isInvis = true;
 	}
 
 	if (zoneUnlocked)
@@ -145,43 +118,41 @@ void SpaceZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, 
 }
 
 void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) const {
+	ManagedReference<Zone*> spaceZone = sceneObject->getZone();
 	ManagedReference<SceneObject*> oldParent = sceneObject->getParent().get();
-	Zone* zone = sceneObject->getZone();
 
-	if (zone == nullptr || !zone->isSpaceZone())
+	ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
+
+	if (spaceZone == nullptr) {
+		spaceZone = rootParent->getZone();
+	}
+
+	if (spaceZone == nullptr || !spaceZone->isSpaceZone())
 		return;
 
-	SpaceZone* spaceZone = cast<SpaceZone*>(zone);
-
-	if (oldParent != nullptr && !oldParent->isCellObject())
-		return;
-
-	if (spaceZone == nullptr)
-		spaceZone = cast<SpaceZone*>(newParent->getRootParent()->getZone());
+	//sceneObject->info(true) << "\n";
+	//sceneObject->info(true) << "SpaceZoneComponent::updateZoneWithParent - For SceneObject: " << sceneObject->getDisplayedName() << sceneObject->getContainmentType() << "\n";
 
 	Locker _locker(spaceZone);
 
-	if (oldParent == nullptr) { // we are in zone, enter cell
-		newParent->transferObject(sceneObject, -1, true);
-	// we are in cell already
-	} else if (newParent->isCellObject() && oldParent != newParent) {
-		newParent->transferObject(sceneObject, -1, true);
-	}
-
-	try {
-		TangibleObject* tano = sceneObject->asTangibleObject();
-
-		if (tano != nullptr) {
-			spaceZone->updateActiveAreas(tano);
+	if (oldParent != newParent) {
+		if (newParent->isShipObject()) {
+			rootParent->transferObject(sceneObject, sceneObject->getContainmentType(), true);
+		// Player is in POB Ship cell
+		} else if (newParent->isCellObject()) {
+			newParent->transferObject(sceneObject, -1, true);
+		// Player is in slotted position
+		} else if (sceneObject->isInShipStation()) {
+			newParent->transferObject(sceneObject, sceneObject->getContainmentType(), true);
 		}
-	} catch (Exception& e) {
-		sceneObject->error(e.getMessage());
-		e.printStackTrace();
 	}
+
+	spaceZone->update(sceneObject);
+	spaceZone->inRange(sceneObject, spaceZone->getZoneObjectRange());
 
 	spaceZone->unlock();
 
-	//notify in range objects that i moved
+	// Notify in range objects of the players movement update inside a container in space
 	try {
 		CloseObjectsVector* closeObjects = sceneObject->getCloseObjects();
 
@@ -231,7 +202,6 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 	}
 
 	spaceZone->wlock();
-
 }
 
 void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
@@ -300,7 +270,7 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 				}
 			} else if (newParent->isCellObject()) {
 				// group members have their locations set in launch task
-				newParent->transferObject(sceneObject, -1, true);
+				newParent->transferObject(sceneObject, -1, false, false, false);
 				sceneObject->sendToOwner(true);
 
 				auto rootParent = sceneObject->getRootParent();

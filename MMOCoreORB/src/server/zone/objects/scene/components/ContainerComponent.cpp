@@ -273,9 +273,6 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
-
-		// We need to update the stored parent for objects moved
-		object->updateZoneWithParent(sceneObject, false, false);
 	} else if (containmentType == -1) {
 		if (!allowOverflow && containerObjects->size() >= sceneObject->getContainerVolumeLimit()){
 			return false;

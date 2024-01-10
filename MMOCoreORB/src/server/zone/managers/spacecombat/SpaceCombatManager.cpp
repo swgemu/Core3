@@ -21,20 +21,21 @@ void SpaceCombatManager::broadcastProjectile(ShipObject* ship, const ShipProject
 	SortedVector<ManagedReference<TreeEntry*> > closeObjects;
 	cov->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
 
-	auto pilot = ship->getPilot();
-
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		auto player = closeObjects.get(i).castTo<CreatureObject*>();
-		if (player == nullptr || player == pilot) {
+
+		if (player == nullptr) {
 			continue;
 		}
 
-		auto parent = player->getRootParent();
-		if (parent == nullptr || !parent->isShipObject()) {
+		auto rootParent = player->getRootParent();
+
+		if (rootParent == nullptr || !rootParent->isShipObject()) {
 			continue;
 		}
 
-		auto recieverShip = parent->asShipObject();
+		auto recieverShip = rootParent->asShipObject();
+
 		if (recieverShip == nullptr) {
 			continue;
 		}

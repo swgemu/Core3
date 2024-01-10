@@ -128,7 +128,7 @@ void GroundZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate,
 			zoneUnlocked = true;
 
 			try {
-				zone->inRange(sceneObject, ZoneServer::CLOSEOBJECTRANGE);
+				zone->inRange(sceneObject, zone->getZoneObjectRange());
 			} catch (Exception& e) {
 				sceneObject->error(e.getMessage());
 				e.printStackTrace();

@@ -13,6 +13,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
+#include "server/zone/objects/ship/PobShipObject.h"
 
 void CellObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -74,6 +75,14 @@ void CellObjectImplementation::onBuildingInsertedToZone(BuildingObject* building
 		SceneObject* child = getContainerObject(j);
 
 		building->notifyObjectInsertedToZone(child);
+	}
+}
+
+void CellObjectImplementation::onShipInsertedToZone(PobShipObject* pobShip) {
+	for (int j = 0; j < getContainerObjectsSize(); ++j) {
+		SceneObject* child = getContainerObject(j);
+
+		pobShip->notifyObjectInsertedToZone(child);
 	}
 }
 
