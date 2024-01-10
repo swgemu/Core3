@@ -5,6 +5,7 @@
 
 #include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/Zone.h"
 #include "templates/tangible/ship/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/PlayerLaunchPoints.h"
 #include "server/zone/objects/ship/DamageSparkLocations.h"
@@ -143,6 +144,10 @@ void PobShipObjectImplementation::createChildObjects() {
 					} else {
 						if (obj->isPilotChair()) {
 							setPilotChair(obj);
+						} else if (obj->isOperationsChair()) {
+							setOperationsChair(obj);
+						} else if (obj->isShipTurret()) {
+							setTurretLadder(obj);
 						} else if (obj->getGameObjectType() == SceneObjectType::SHIPPERMISSIONS) {
 							Terminal* terminalChild = obj.castTo<Terminal*>();
 
@@ -237,7 +242,7 @@ void PobShipObjectImplementation::notifyInsert(TreeEntry* object) {
 
 #ifdef DEBUG_COV
 	if (sceneO->isPlayerCreature()) {
-		info(true) << "\n\nPobShipObjectImplementation::notifyInsert -- Ship ID: " << getObjectID()  << " Player: " << sceneO->getDisplayedName() << " ID: " << scnoID;
+		info(true) << "\nPobShipObjectImplementation::notifyInsert -- Ship ID: " << getObjectID()  << " Player: " << sceneO->getDisplayedName() << " ID: " << scnoID;
 	}
 #endif // DEBUG_COV
 
@@ -248,13 +253,57 @@ void PobShipObjectImplementation::notifyInsert(TreeEntry* object) {
 		sceneObjRootID = sceneObjRootPar->getObjectID();
 	}
 
-	bool objectInThisShip = sceneObjRootID == getObjectID();
+	// Operations Chair
+	auto shipOperator = getShipOperator();
+
+	if (shipOperator != nullptr) {
+		if (shipOperator->getCloseObjects() != nullptr)
+			shipOperator->addInRangeObject(object, false);
+		else
+			shipOperator->notifyInsert(object);
+
+		shipOperator->sendTo(sceneO, true, false);
+
+		if (sceneO->getCloseObjects() != nullptr)
+			sceneO->addInRangeObject(shipOperator, false);
+		else
+			sceneO->notifyInsert(shipOperator);
+
+		if (sceneO->getParent() != nullptr)
+			sceneO->sendTo(shipOperator, true, false);
+	}
+
+	// Turret Access Ladder
+	auto turretAccess = getTurretLadder().get();
+
+	if (turretAccess != nullptr) {
+		Vector<String> turretSlots = {"ship_gunner0_pob", "ship_gunner1_pob"};
+
+		for (String slotName : turretSlots) {
+			auto slottedObj = turretAccess->getSlottedObject(slotName);
+
+			if (slottedObj == nullptr)
+				continue;
+
+			if (slottedObj->getCloseObjects() != nullptr)
+				slottedObj->addInRangeObject(object, false);
+			else
+				slottedObj->notifyInsert(object);
+
+			slottedObj->sendTo(sceneO, true, false);
+
+			if (sceneO->getCloseObjects() != nullptr)
+				sceneO->addInRangeObject(slottedObj, false);
+			else
+				sceneO->notifyInsert(slottedObj);
+
+			if (sceneO->getParent() != nullptr)
+				sceneO->sendTo(slottedObj, true, false);
+		}
+	}
 
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
-
-		if (!cell->isContainerLoaded())
-			continue;
 
 		try {
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
@@ -263,34 +312,108 @@ void PobShipObjectImplementation::notifyInsert(TreeEntry* object) {
 				if (child == nullptr || child->getObjectID() == scnoID)
 					continue;
 
-				if (objectInThisShip) {
-					if (child->getCloseObjects() != nullptr)
-						child->addInRangeObject(object, false);
-					else
-						child->notifyInsert(object);
-
-					child->sendTo(sceneO, true, false);
-
-					if (sceneO->getCloseObjects() != nullptr)
-						sceneO->addInRangeObject(child, false);
-					else
-						sceneO->notifyInsert(child);
-
-					if (sceneO->getParent() != nullptr)
-						sceneO->sendTo(child, true, false);
-				} else if (!sceneO->isCreatureObject() && !child->isCreatureObject()) {
+				if (child->getCloseObjects() != nullptr)
+					child->addInRangeObject(object, false);
+				else
 					child->notifyInsert(object);
-					object->notifyInsert(child);
-				}
+
+				child->sendTo(sceneO, true, false);
+
+				if (sceneO->getCloseObjects() != nullptr)
+					sceneO->addInRangeObject(child, false);
+				else
+					sceneO->notifyInsert(child);
+
+				if (sceneO->getParent() != nullptr)
+					sceneO->sendTo(child, true, false);
 			}
 		} catch (Exception& e) {
 			warning(e.getMessage());
 			e.printStackTrace();
 		}
 	}
+
+	ShipObjectImplementation::notifyInsert(object);
+}
+
+void PobShipObjectImplementation::notifyInsertToZone(Zone* zone) {
+	Locker locker(zone);
+
+	for (int i = 0; i < cells.size(); ++i) {
+		auto& cell = cells.get(i);
+
+		cell->onShipInsertedToZone(asPobShipObject());
+	}
+
+	locker.release();
+
+	ShipObjectImplementation::notifyInsertToZone(zone);
+}
+
+void PobShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
+	if (!isShipAiAgent())
+		updatePlayersInShip(lightUpdate, sendPackets);
+
+	SceneObjectImplementation::updateZone(lightUpdate, sendPackets);
+}
+
+void PobShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {
+	//info(true) << "PobShipObjectImplementation::updatePlayersInShip - " << getDisplayedName();
+
+	// Operations Chairs
+	auto shipOperator = getShipOperator();
+
+	if (shipOperator != nullptr) {
+		shipOperator->setPosition(getPositionX(),getPositionZ(),getPositionY());
+		shipOperator->setMovementCounter(movementCounter);
+
+		shipOperator->updateZoneWithParent(getOperationsChair().get(), lightUpdate, sendPackets);
+	}
+
+	// Turret Access Ladder
+	auto turretAccess = getTurretLadder().get();
+
+	if (turretAccess != nullptr) {
+		Vector<String> turretSlots = {"ship_gunner0_pob", "ship_gunner1_pob"};
+
+		for (String slotName : turretSlots) {
+			auto slottedObj = turretAccess->getSlottedObject("ship_gunner0_pob");
+
+			if (slottedObj != nullptr) {
+				slottedObj->setPosition(getPositionX(),getPositionZ(),getPositionY());
+				slottedObj->setMovementCounter(movementCounter);
+
+				slottedObj->updateZoneWithParent(turretAccess, lightUpdate, sendPackets);
+			}
+		}
+	}
+
+	for (int i = 0; i < cells.size(); ++i) {
+		auto cell = cells.get(i);
+
+		if (cell == nullptr)
+			continue;
+
+		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			auto containerObject = cell->getContainerObject(j);
+
+			if (containerObject == nullptr || !containerObject->isPlayerCreature()) {
+				continue;
+			}
+
+			containerObject->setPosition(getPositionX(), getPositionZ(), getPositionY());
+			containerObject->setMovementCounter(movementCounter);
+
+			containerObject->updateZoneWithParent(cell, lightUpdate, sendPackets);
+		}
+	}
+
+	ShipObjectImplementation::updatePlayersInShip(lightUpdate, sendPackets);
 }
 
 void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool forceLoadContainer) {
+	//info(true) << "PobShipObjectImplementation::sendTo - " << getDisplayedName() << " sending to: " << sceneO->getDisplayedName();
+
 	CreatureObject* player = sceneO->asCreatureObject();
 
 	if (player == nullptr)
@@ -356,6 +479,44 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bo
 			}
 
 			object->sendTo(player, true);
+		}
+	}
+}
+
+void PobShipObjectImplementation::notifyPositionUpdate(TreeEntry* entry) {
+	auto scno = static_cast<SceneObject*>(entry);
+
+#if DEBUG_COV_VERBOSE
+	info(true) << getDisplayedName() << " -- PobShipObjectImplementation::notifyPositionUpdate being notified for " << scno->getDisplayedName();
+#endif // DEBUG_COV_VERBOSE
+
+	for (int i = 0; i < cells.size(); ++i) {
+		auto& cell = cells.get(i);
+
+		try {
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				auto child = cell->getContainerObject(j);
+
+				if (child != nullptr && child != entry) {
+					if (child->isCreatureObject()) {
+						if (child->getCloseObjects() != nullptr)
+							child->addInRangeObject(entry);
+						else
+							child->notifyPositionUpdate(entry);
+
+						if (entry->getCloseObjects() != nullptr)
+							entry->addInRangeObject(child);
+						else
+							entry->notifyPositionUpdate(child);
+					} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
+						child->notifyPositionUpdate(entry);
+						entry->notifyPositionUpdate(child);
+					}
+				}
+			}
+		} catch (Exception& e) {
+			warning(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }
