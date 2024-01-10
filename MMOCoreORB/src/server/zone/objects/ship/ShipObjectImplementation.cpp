@@ -143,6 +143,9 @@ void ShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) 
 }
 
 void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
+	//info(true) << "ShipObjectImplementation::sendTo - " << getDisplayedName() << " Location: " << getWorldPosition().toString() << " sending to: " << player->getDisplayedName() << " Player Loc: " << player->getWorldPosition().toString()
+	//	<< " && Non-World: " << player->getPosition().toString();
+
 	TangibleObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 }
 
@@ -152,6 +155,8 @@ void ShipObjectImplementation::setShipName(const String& name, bool notifyClient
 }
 
 void ShipObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
+	// info(true) << "ShipObjectImplementation::sendSlottedObjectsTo - " << getDisplayedName() << " sending to: " << player->getDisplayedName();
+
 	VectorMap<String, ManagedReference<SceneObject* > > slotted;
 	getSlottedObjects(slotted);
 
@@ -222,6 +227,8 @@ uint16 ShipObjectImplementation::getUniqueID() {
 }
 
 void ShipObjectImplementation::sendBaselinesTo(SceneObject* player) {
+	// info(true) << "ShipObjectImplementation::sendBaselinesTo - " << getDisplayedName() << " sending to: " << player->getDisplayedName();
+
 	bool sendSelf = player == owner.get() || player->isASubChildOf(asShipObject());
 
 	if (sendSelf) {
@@ -343,13 +350,13 @@ void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool 
 }
 
 void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
-	info(true) << "\n\n" << getDisplayedName() << " ShipObjectImplementation::notifyObjectInsertedToZone - for " << object->getDisplayedName();
+	//info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - for " << object->getDisplayedName();
 
 	auto closeObjectsVector = getCloseObjects();
 	SortedVector<TreeEntry*> closeObjects(closeObjectsVector->size(), 10);
 
 	if (closeObjectsVector != nullptr) {
-		closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
+		closeObjectsVector->safeCopyTo(closeObjects);
 	} else {
 		auto zone = getZone();
 
@@ -396,14 +403,103 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 
 #ifdef DEBUG_COV
 	if (sceneO->isPlayerCreature()) {
-		info(true) << "notifyInsert -- Ship ID: " << getObjectID()  << " Player: " << sceneO->getDisplayedName() << " ID: " << scnoID;
+		info(true) << getDisplayedName() << "ShipObjectImplementationnotifyInsert -- Ship: " << getDisplayedName()  << " Player: " << sceneO->getDisplayedName() << " ID: " << scnoID;
 	}
 #endif // DEBUG_COV
 
+	// Update the pilot
+	auto pilot = getPilot();
 
-	// TODO: should be broadcast slotted players here?
+	if (pilot != nullptr) {
+		if (pilot->getCloseObjects() != nullptr)
+			pilot->addInRangeObject(sceneO, false);
+		else
+			pilot->notifyInsert(sceneO);
 
+		pilot->sendTo(sceneO, true, false);
 
+		if (sceneO->getCloseObjects() != nullptr)
+			sceneO->addInRangeObject(pilot, false);
+		else
+			sceneO->notifyInsert(pilot);
+
+		if (sceneO->getParent() != nullptr)
+			sceneO->sendTo(pilot, true, false);
+	}
+
+	// Send notification of object insert to the players in the slotted locations
+	VectorMap<String, ManagedReference<SceneObject* > > slotted;
+	getSlottedObjects(slotted);
+
+	for (int i = 0; i < slotted.size(); ++i) {
+		auto slottedObj = slotted.get(i);
+
+		if (slottedObj == nullptr || !slottedObj->isPlayerCreature())
+			continue;
+
+		if (slottedObj->getCloseObjects() != nullptr)
+			slottedObj->addInRangeObject(sceneO, false);
+		else
+			slottedObj->notifyInsert(sceneO);
+
+		slottedObj->sendTo(sceneO, true, false);
+
+		if (sceneO->getCloseObjects() != nullptr)
+			sceneO->addInRangeObject(slottedObj, false);
+		else
+			sceneO->notifyInsert(slottedObj);
+
+		if (sceneO->getParent() != nullptr)
+			sceneO->sendTo(slottedObj, true, false);
+	}
+}
+
+void ShipObjectImplementation::notifyInsertToZone(Zone* zone) {
+	StringBuffer newName;
+
+	newName << " - " << getDisplayedName()
+		<< " - " << zone->getZoneName();
+
+	setLoggingName(newName.toString());
+
+	TangibleObjectImplementation::notifyInsertToZone(zone);
+}
+
+void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
+	if (!isShipAiAgent())
+		updatePlayersInShip(lightUpdate, sendPackets);
+
+	SceneObjectImplementation::updateZone(lightUpdate, sendPackets);
+}
+
+void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {
+	// info(true) << "ShipObjectImplementation::updatePlayersInShip - " << getDisplayedName();
+
+	// Update the pilot in the zone
+	auto pilot = getPilot();
+
+	if (pilot != nullptr) {
+		pilot->setPosition(getPositionX(),getPositionZ(),getPositionY());
+		pilot->setMovementCounter(movementCounter);
+
+		pilot->updateZoneWithParent((isPobShipObject() ? getPilotChair().get() : asShipObject()), lightUpdate, sendPackets);
+	}
+
+	VectorMap<String, ManagedReference<SceneObject* > > slotted;
+	getSlottedObjects(slotted);
+
+	// Check slotted objects for players and send their updates
+	for (int i = slotted.size() - 1; i >= 0 ; --i) {
+		auto object = slotted.get(i);
+
+		if (object == nullptr || !object->isPlayerCreature())
+			continue;
+
+		object->setPosition(getPositionX(), getPositionZ(), getPositionY());
+		object->setMovementCounter(movementCounter);
+
+		object->updateZoneWithParent(asShipObject(), lightUpdate, sendPackets);
+	}
 }
 
 int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
@@ -1077,25 +1173,24 @@ uint32 ShipObjectImplementation::getSyncStamp() {
 	return movementCounter + deltaTime;
 }
 
-void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	auto pilot = getPilot();
-
-	if (pilot != nullptr) {
-		pilot->setPosition(getPositionX(),getPositionZ(),getPositionY());
-		pilot->setMovementCounter(movementCounter);
-	}
-
-	SceneObjectImplementation::updateZone(lightUpdate, sendPackets);
-}
-
 CreatureObject* ShipObjectImplementation::getPilot() {
-	auto chair = pilotChair.get();
+	auto chair = getPilotChair().get();
 
 	if (chair != nullptr) {
 		return chair->getSlottedObject("ship_pilot_pob").castTo<CreatureObject*>();
 	}
 
 	return getSlottedObject("ship_pilot").castTo<CreatureObject*>();
+}
+
+CreatureObject* ShipObjectImplementation::getShipOperator() {
+	auto chair = getOperationsChair().get();
+
+	if (chair != nullptr) {
+		return chair->getSlottedObject("ship_operations_station").castTo<CreatureObject*>();
+	}
+
+	return getSlottedObject("ship_operations_station").castTo<CreatureObject*>();
 }
 
 void ShipObjectImplementation::setRotationMatrix(const Quaternion& value) {

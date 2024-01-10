@@ -1925,6 +1925,11 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 		return gameObjectType == SceneObjectType.TURRETACCESSLADDER;
 	}
 
+	@read
+	public abstract boolean isInShipStation() {
+		return false;
+	}
+
 	@local
 	@read
 	public final ContainerPermissions getContainerPermissions() {

@@ -9,6 +9,8 @@ import system.lang.Time;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.ship.components.ShipComponent;
 import server.zone.objects.ship.events.ShipRecoveryEvent;
+import server.zone.Zone;
+
 include server.zone.TreeEntry;
 include server.zone.objects.scene.SceneObject;
 include server.zone.objects.creature.CreatureObject;
@@ -64,6 +66,12 @@ class ShipObject extends TangibleObject {
 
 	@weakReference
 	protected SceneObject pilotChair;
+
+	@weakReference
+	protected SceneObject operationsChair;
+
+	@weakReference
+	protected SceneObject turretLadder;
 
 	@dereferenced
 	protected VectorMap<unsigned int, ShipComponent> components;
@@ -451,6 +459,13 @@ class ShipObject extends TangibleObject {
 
 	@local
 	public native abstract void notifyInsert(TreeEntry obj);
+
+	public native void notifyInsertToZone(Zone zone);
+
+	@local
+	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
+
+	public abstract native void updatePlayersInShip(boolean lightUpdate, boolean sendPackets = true);
 
 	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
 	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
@@ -1348,6 +1363,14 @@ class ShipObject extends TangibleObject {
 		pilotChair = object;
 	}
 
+	public void setOperationsChair(SceneObject object) {
+		operationsChair = object;
+	}
+
+	public void setTurretLadder(SceneObject object) {
+		turretLadder = object;
+	}
+
 	public void setComponentTargetable(int slot, boolean targetable) {
 		componentTargetableBitfield.setBit(slot, targetable);
 	}
@@ -1376,6 +1399,16 @@ class ShipObject extends TangibleObject {
 	@weakReference
 	public SceneObject getPilotChair() {
 		return pilotChair;
+	}
+
+	@weakReference
+	public SceneObject getOperationsChair() {
+		return operationsChair;
+	}
+
+	@weakReference
+	public SceneObject getTurretLadder() {
+		return turretLadder;
 	}
 
 	public native void installAmmo(CreatureObject owner, SceneObject component, int slot, boolean notifyClient = false);
@@ -1513,10 +1546,9 @@ class ShipObject extends TangibleObject {
 
 	public native unsigned int getSyncStamp();
 
-	@local 
-	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
-
 	public native CreatureObject getPilot();
+
+	public native CreatureObject getShipOperator();
 
 	@dirty
 	public native abstract boolean isAttackableBy(TangibleObject object);
