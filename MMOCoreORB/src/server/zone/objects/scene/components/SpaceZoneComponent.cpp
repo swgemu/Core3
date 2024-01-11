@@ -205,6 +205,8 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 }
 
 void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
+	// info(true) << "switchZone for " << sceneObject->getDisplayedName() << " with new ParentID: " << parentID;
+
 	ZoneServer* zoneServer = sceneObject->getZoneServer();
 
 	if (zoneServer == nullptr)
@@ -224,8 +226,6 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	if (newParent != nullptr && newParent->getZone() == nullptr)
 		return;
-
-	// info(true) << "switchZone for " << sceneObject->getDisplayedName() << " with new ParentID: " << parentID;
 
 	sceneObject->destroyObjectFromWorld(false);
 

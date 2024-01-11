@@ -27,6 +27,11 @@ public:
 		if (arguments.isEmpty())
 			return GENERALERROR;
 
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
 		String destName = arguments.toString();
 		ShipManager* shipMan = ShipManager::instance();
 
@@ -39,8 +44,16 @@ public:
 			return GENERALERROR;
 		}
 
-		const String& zone = shipMan->getHyperspaceZone(destName);
-		const Vector3& loc = shipMan->getHyperspaceLocation(destName);
+		const String& zoneName = shipMan->getHyperspaceZone(destName);
+
+		auto newZone = zoneServer->getZone(zoneName);
+
+		if (newZone == nullptr || !newZone->isSpaceZone()) {
+			creature->sendSystemMessage("You are unable to hyperspace to that location at this time.");
+			return GENERALERROR;
+		}
+
+		const Vector3& arrivalLocation = shipMan->getHyperspaceLocation(destName);
 
 		ManagedReference<ShipObject*> ship = cast<ShipObject*>(creature->getRootParent());
 
@@ -87,7 +100,7 @@ public:
 		Locker lock(ship);
 		ship->setHyperspacing(true);
 
-		HyperspaceToLocationTask* task = new HyperspaceToLocationTask(creature, ship, zone, loc);
+		HyperspaceToLocationTask* task = new HyperspaceToLocationTask(creature, ship, zoneName, arrivalLocation);
 		task->schedule(500);
 
 		return SUCCESS;

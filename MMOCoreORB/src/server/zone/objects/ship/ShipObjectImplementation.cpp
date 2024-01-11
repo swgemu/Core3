@@ -34,6 +34,8 @@
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
 
+	playersOnBoard.setNoDuplicateInsertPlan();
+
 	if (shipRecoveryEvent == nullptr) {
 		shipRecoveryEvent = new ShipRecoveryEvent(asShipObject());
 	}
@@ -1268,4 +1270,37 @@ float ShipObjectImplementation::getSpeedRotationFactor(float speed) {
 
 uint64 ShipObjectImplementation::getLastDamageReceivedMili() {
 	return lastDamageReceived.getMiliTime();
+}
+
+void ShipObjectImplementation::addPlayerOnBoard(CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
+	playersOnBoard.put(player);
+}
+
+void ShipObjectImplementation::clearPlayersOnBoard() {
+	playersOnBoard.removeAll();
+}
+
+void ShipObjectImplementation::sendShipMembersMessage(const String& message) {
+	for (int i = 0; i < playersOnBoard.size(); ++i) {
+		auto member = playersOnBoard.get(i);
+
+		if (member == nullptr)
+			continue;
+
+		member->sendSystemMessage(message);
+	}
+}
+
+void ShipObjectImplementation::sendShipMembersMusicMessage(const String& message) {
+	for (int i = 0; i < playersOnBoard.size(); ++i) {
+		auto member = playersOnBoard.get(i);
+
+		if (member == nullptr)
+			continue;
+
+		member->playMusicMessage(message);
+	}
 }

@@ -74,6 +74,8 @@ public:
 
 			player->switchZone(spaceZone->getZoneName(), ship->getPositionX(), ship->getPositionZ(), ship->getPositionY(), ship->getObjectID());
 		}
+
+		ship->addPlayerOnBoard(player);
 	}
 };
 

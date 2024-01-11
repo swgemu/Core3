@@ -10,6 +10,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.ship.components.ShipComponent;
 import server.zone.objects.ship.events.ShipRecoveryEvent;
 import server.zone.Zone;
+import system.util.SortedVector;
 
 include server.zone.TreeEntry;
 include server.zone.objects.scene.SceneObject;
@@ -413,6 +414,9 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected DeltaAutoMap componentCRCs;
 
+	@dereferenced
+	protected transient SortedVector<CreatureObject> playersOnBoard;
+
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
 
@@ -470,7 +474,13 @@ class ShipObject extends TangibleObject {
 	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
 	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
 
-	// delta variable set
+	/*
+
+		Mutators
+
+	*/
+
+	// DeltaVariable Mutators
 
 	// 1:17
 	@local
@@ -776,7 +786,7 @@ class ShipObject extends TangibleObject {
 		shipGuildID.update(value, notifyClient, this, delta, vector);
 	}
 
-	// delta vector set
+	// DeltaVector mutator
 
 	// 1:2
 	@local
@@ -910,7 +920,123 @@ class ShipObject extends TangibleObject {
 		componentCRCs.update(slot, value, message, command, vector);
 	}
 
-	// delta vector get
+	// End DeltaVector Mutators
+
+	public void setOwner(CreatureObject object) {
+		owner = object;
+		ownerID = object.getObjectID();
+	}
+
+	public void setPilotChair(SceneObject object) {
+		pilotChair = object;
+	}
+
+	public void setOperationsChair(SceneObject object) {
+		operationsChair = object;
+	}
+
+	public void setTurretLadder(SceneObject object) {
+		turretLadder = object;
+	}
+
+	public void setComponentTargetable(int slot, boolean targetable) {
+		componentTargetableBitfield.setBit(slot, targetable);
+	}
+
+	@preLocked
+	public void setHyperspacing(boolean value) {
+		hyperspacing = value;
+
+		if (hyperspacing) {
+			setHyperspaceDelay();
+		}
+	}
+
+	@preLocked
+	public native void setHyperspaceDelay();
+
+	@local
+	public void setHasWings(boolean value) {
+		hasWings = value;
+	}
+
+	public native void setShipName(@dereferenced final string name, boolean notifyClient = true);
+
+	@dirty
+	public void setConversationTemplate(final string convoTemplate) {
+		conversationTemplate = convoTemplate;
+	}
+
+	@dirty
+	public void setConversationMobile(final string mobile) {
+		conversationMobile = mobile;
+	}
+
+	@dirty
+	public void setConversationMessage(final string message) {
+		conversationMessage = message;
+	}
+
+	@local
+	public void setChassisCategory(@dereferenced final string value) {
+		chassisCategory = value;
+	}
+
+	@local
+	public void setChassisLevel(int value) {
+		chassisLevel = value;
+	}
+
+	@preLocked
+	public void setControlDeviceID(unsigned long oid) {
+		controlDeviceID = oid;
+	}
+
+	public native void setSyncStamp(unsigned int value);
+
+	@local
+	public native void setRotationMatrix(@dereferenced final Quaternion value);
+
+	public void setBoundingRadius(float value) {
+		boundingRadius = value;
+	}
+
+	public void setCurrentSpeed(float value) {
+		currentSpeed = value;
+	}
+
+	public void setSpeedRotationFactorMax(float value) {
+		speedRotationFactorMax = value;
+	}
+
+	public void setSpeedRotationFactorMin(float value) {
+		speedRotationFactorMin = value;
+	}
+
+	public void setSpeedRotationFactorOptimal(float value) {
+		speedRotationFactorOptimal = value;
+	}
+
+	@preLocked
+	public native void updateLastDamageReceived();
+
+	@preLocked
+	public native void addPlayerOnBoard(CreatureObject player);
+
+	public void removePlayerOnBoard(int index) {
+		playersOnBoard.remove(index);
+	}
+
+	@preLocked
+	public native void clearPlayersOnBoard();
+
+	/*
+
+		Accesors
+
+	*/
+
+	// DeltaVector get
 
 	// 1:2
 	@local
@@ -1329,11 +1455,6 @@ class ShipObject extends TangibleObject {
 	// deltas end
 
 	@local
-	public void setHasWings(boolean value) {
-		hasWings = value;
-	}
-
-	@local
 	public DeltaBitArray getTargetableBitfield() {
 		return componentTargetableBitfield;
 	}
@@ -1344,8 +1465,6 @@ class ShipObject extends TangibleObject {
 		return chassisDataName;
 	}
 
-	public native void setShipName(@dereferenced final string name, boolean notifyClient = true);
-
 	public float getComponentEnergyEfficiency(int slot) {
 		return componentEnergyEfficiency.get(slot);
 	}
@@ -1353,39 +1472,6 @@ class ShipObject extends TangibleObject {
 	public float getComponentEfficiency(int slot) {
 		return componentEfficiency.get(slot);
 	}
-
-	public void setOwner(CreatureObject object) {
-		owner = object;
-		ownerID = object.getObjectID();
-	}
-
-	public void setPilotChair(SceneObject object) {
-		pilotChair = object;
-	}
-
-	public void setOperationsChair(SceneObject object) {
-		operationsChair = object;
-	}
-
-	public void setTurretLadder(SceneObject object) {
-		turretLadder = object;
-	}
-
-	public void setComponentTargetable(int slot, boolean targetable) {
-		componentTargetableBitfield.setBit(slot, targetable);
-	}
-
-	@preLocked
-	public void setHyperspacing(boolean value) {
-		hyperspacing = value;
-
-		if (hyperspacing) {
-			setHyperspaceDelay();
-		}
-	}
-
-	@preLocked
-	public native void setHyperspaceDelay();
 
 	@weakReference
 	public CreatureObject getOwner() {
@@ -1447,21 +1533,6 @@ class ShipObject extends TangibleObject {
 		return componentOptions.get(7);
 	}
 
-	@dirty
-	public void setConversationTemplate(final string convoTemplate) {
-		conversationTemplate = convoTemplate;
-	}
-
-	@dirty
-	public void setConversationMobile(final string mobile) {
-		conversationMobile = mobile;
-	}
-
-	@dirty
-	public void setConversationMessage(final string message) {
-		conversationMessage = message;
-	}
-
 	public string getConversationTemplate() {
 		return conversationTemplate;
 	}
@@ -1474,18 +1545,8 @@ class ShipObject extends TangibleObject {
 		return conversationMessage;
 	}
 
-	@local
-	public void setChassisCategory(@dereferenced final string value) {
-		chassisCategory = value;
-	}
-
 	public final string getChassisCategory() {
 		return chassisCategory;
-	}
-
-	@local
-	public void setChassisLevel(int value) {
-		chassisLevel = value;
 	}
 
 	public int getChassisLevel() {
@@ -1497,11 +1558,6 @@ class ShipObject extends TangibleObject {
 	public native boolean checkInConvoRange(SceneObject object);
 
 	public native int getHyperspaceDelay();
-
-	@preLocked
-	public void setControlDeviceID(unsigned long oid) {
-		controlDeviceID = oid;
-	}
 
 	public unsigned long getControlDeviceID() {
 		return controlDeviceID;
@@ -1542,8 +1598,6 @@ class ShipObject extends TangibleObject {
 	@preLocked
 	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 
-	public native void setSyncStamp(unsigned int value);
-
 	public native unsigned int getSyncStamp();
 
 	public native CreatureObject getPilot();
@@ -1557,59 +1611,45 @@ class ShipObject extends TangibleObject {
 	public native abstract boolean isAggressiveTo(TangibleObject object);
 
 	@local
-	public native void setRotationMatrix(@dereferenced final Quaternion value);
-
-	@local
 	public final Matrix4 getRotationMatrix() {
 		return rotationMatrix;
-	}
-
-	public void setBoundingRadius(float value) {
-		boundingRadius = value;
 	}
 
 	public float getBoundingRadius() {
 		return boundingRadius;
 	}
 
-	public void setCurrentSpeed(float value) {
-	    currentSpeed = value;
-	}
-
 	public float getCurrentSpeed() {
-	    return currentSpeed;
-	}
-
-	public void setSpeedRotationFactorMax(float value) {
-	    speedRotationFactorMax = value;
+		return currentSpeed;
 	}
 
 	public float getSpeedRotationFactorMax() {
-	    return speedRotationFactorMax;
-	}
-
-	public void setSpeedRotationFactorMin(float value) {
-	    speedRotationFactorMin = value;
+		return speedRotationFactorMax;
 	}
 
 	public float getSpeedRotationFactorMin() {
-	    return speedRotationFactorMin;
-	}
-
-	public void setSpeedRotationFactorOptimal(float value) {
-	    speedRotationFactorOptimal = value;
+		return speedRotationFactorMin;
 	}
 
 	public float getSpeedRotationFactorOptimal() {
-	    return speedRotationFactorOptimal;
+		return speedRotationFactorOptimal;
 	}
 
 	public native float getSpeedRotationFactor(float speed);
 
-	@preLocked
-	public native void updateLastDamageReceived();
-
 	public native unsigned long getLastDamageReceivedMili();
 
 	public native float getComponentCondition(unsigned int slot);
+
+	public int getTotalPlayersOnBoard() {
+		return playersOnBoard.size();
+	}
+
+	public CreatureObject getPlayerOnBoard(int index) {
+		return playersOnBoard.get(index);
+	}
+
+	public native void sendShipMembersMessage(final string message);
+
+	public native void sendShipMembersMusicMessage(final string message);
 }

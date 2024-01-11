@@ -50,6 +50,8 @@ bool ShipControlDeviceImplementation::launchShip(CreatureObject* player, const S
 	ship->setDirection(1,0,0,0);
 	ship->setMovementCounter(0);
 
+	ship->clearPlayersOnBoard();
+
 	if (spaceZone->transferObject(ship, -1, true)) {
 		ship->setFactionStatus(player->getFactionStatus());
 		ship->setShipFaction(player->getFaction());

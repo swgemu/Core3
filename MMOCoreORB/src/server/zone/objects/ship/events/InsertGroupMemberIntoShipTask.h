@@ -67,6 +67,8 @@ public:
 		// info(true) << "Inserting Group Member - " << groupMember->getDisplayedName() << " Into Cell: " << randomCell << " Launch Location: " << launchLoc;
 
 		groupMember->switchZone(spaceZone->getZoneName(), launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), cell->getObjectID());
+
+		pobShip->addPlayerOnBoard(groupMember);
 	}
 };
 

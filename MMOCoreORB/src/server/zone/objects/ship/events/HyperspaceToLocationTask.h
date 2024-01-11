@@ -15,14 +15,14 @@
 class HyperspaceToLocationTask : public Task {
 	ManagedWeakReference<CreatureObject*> play;
 	ManagedWeakReference<ShipObject*> ship;
-	String zone;
+	String zoneName;
 	Vector3 location;
 	int iteration;
 
 public:
-	HyperspaceToLocationTask(CreatureObject* pl, ShipObject* ship, const String& zone, const Vector3& location) : Task() {
+	HyperspaceToLocationTask(CreatureObject* pl, ShipObject* ship, const String& zoneName, const Vector3& location) : Task() {
 		play = pl;
-		this->zone = zone;
+		this->zoneName = zoneName;
 		this->location = location;
 		this->ship = ship;
 		iteration = 0;
@@ -45,7 +45,8 @@ public:
 
 		switch (currentIter) {
 		case 0:
-			player->sendSystemMessage("@space/space_interaction:hyperspace_route_begin");
+			shipObject->sendShipMembersMessage("@space/space_interaction:hyperspace_route_begin");
+
 			reschedule(5000);
 			return;
 		case 1: // 25%
@@ -55,13 +56,16 @@ public:
 
 			strid += String::valueOf(currentIter);
 
-			player->sendSystemMessage(strid);
+			shipObject->sendShipMembersMessage(strid);
 
 			reschedule(5000);
 			return;
 		}
 		case 4: // 100%
-			orientShip();
+			orientShip(shipObject, player);
+
+			reschedule(2000);
+			return;
 		case 5: // t-4
 		case 6: // t-3
 		case 7: // t-2
@@ -69,8 +73,8 @@ public:
 			String strid = "@space/space_interaction:hyperspace_route_calculation_";
 			strid += String::valueOf(currentIter);
 
-			player->sendSystemMessage(strid);
-			player->playMusicMessage("sound/ship_hyperspace_countdown.snd");
+			shipObject->sendShipMembersMessage(strid);
+			shipObject->sendShipMembersMusicMessage("sound/ship_hyperspace_countdown.snd");
 
 			reschedule(1000);
 			return;
@@ -78,73 +82,49 @@ public:
 		case 9:
 			beginHyperspace();
 
-			reschedule(6000);
+			reschedule(7000);
 			return;
 		case 10: {
-			shipObject->destroyObjectFromWorld(true);
-
 			reschedule(1000);
 			return;
 		}
 		case 11: {
-			Zone* newZone = ServerCore::getZoneServer()->getZone(zone);
-
-			if (newZone == nullptr || !newZone->isSpaceZone())
-				return;
-
-			SpaceZone* newSpaceZone = cast<SpaceZone*>(newZone);
-
-			if (newSpaceZone == nullptr)
-				return;
+			shipObject->switchZone(zoneName, location.getX() + System::random(100.f), location.getZ() + System::random(100.f), location.getY() + System::random(100.f), 0, false);
 
 			shipObject->setHyperspacing(false);
 
-			Locker zoneCross(newSpaceZone, shipObject);
+			// Transport players onboard the ship
+			int totalPlayers = shipObject->getTotalPlayersOnBoard();
 
-			shipObject->initializePosition(location.getX() + System::random(100.f), location.getZ() + System::random(100.f), location.getY() + System::random(100.f));
+			for (int i = totalPlayers - 1; i >= 0; --i) {
+				auto shipMember = shipObject->getPlayerOnBoard(i);
 
-			newSpaceZone->transferObject(shipObject, -1, false);
+				if (shipMember != nullptr) {
+					try {
+						Locker memberLock(shipMember, shipObject);
 
-			zoneCross.release();
-
-			uint64 parentID = shipObject->getObjectID();
-
-			// POB Ship
-			if (shipObject->getContainerObjectsSize() > 0) {
-				auto pilotChair = shipObject->getPilotChair().get();
-
-				if (pilotChair == nullptr) {
-					player->sendSystemMessage("Pilot Chair is a nullptr in HyperspaceToLocationTask for POB ship.");
-					return;
+						shipMember->switchZone(zoneName, location.getX(), location.getZ(), location.getY(), shipMember->getParentID(), false);
+					} catch (...) {
+						shipMember->error() << "Failed to transport player in hyperspace - ShipID: " << shipObject->getObjectID() << " Player ID: " << player->getObjectID();
+					}
 				}
-
-				parentID = pilotChair->getObjectID();
-				location = pilotChair->getPosition();
 			}
-
-			Locker playerCross(player, shipObject);
-
-			player->switchZone(zone, location.getX(), location.getZ(), location.getY(), parentID);
-
-			player->sendToOwner(true);
-			return;
 		}
 		}
 	}
 
-	void orientShip() {
-		Reference<CreatureObject*> player = play.get();
-		ShipObject* shipObject = ship.get();
+	void orientShip(ShipObject* shipObject, CreatureObject* player) {
 		if (player == nullptr || shipObject == nullptr)
 			return;
 
-		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(player->getObjectID(), zone, location.getX(), location.getY(), location.getZ());
-		player->sendMessage(msg);
-
 		//close s-foils as the ship is orienting if they're still open
 		uint32 optionsBitmask = shipObject->getOptionsBitmask();
+
 		if (optionsBitmask & OptionBitmask::WINGS_OPEN)
 			shipObject->clearOptionBit(OptionBitmask::WINGS_OPEN);
+
+		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(player->getObjectID(), zoneName, location.getX(), location.getY(), location.getZ());
+		player->sendMessage(msg);
 	}
 
 	void beginHyperspace() {
@@ -153,7 +133,7 @@ public:
 		if (player == nullptr)
 			return;
 
-		BeginHyperspaceMessage *msg = new BeginHyperspaceMessage(player->getObjectID(), zone, location.getX(), location.getY(), location.getZ());
+		BeginHyperspaceMessage *msg = new BeginHyperspaceMessage(player->getObjectID(), zoneName, location.getX(), location.getY(), location.getZ());
 		player->sendMessage(msg);
 	}
 };
