@@ -42,7 +42,6 @@
 
 
 object_ship_player_player_hutt_turret_ship = object_ship_player_shared_player_hutt_turret_ship:new {
-
 	name = "player_hutt_turret_ship",
 	slideFactor = 1.76,
 	chassisHitpoints = 1512,
@@ -50,6 +49,9 @@ object_ship_player_player_hutt_turret_ship = object_ship_player_shared_player_hu
 
 	category = "heavyfighter",
 	level = 5,
+
+	-- SHIPMULTIPASSENGER
+	gameObjectType = 536870919,
 
 	attributes = {
 		{"speedRotationFactorMin", 0.2},

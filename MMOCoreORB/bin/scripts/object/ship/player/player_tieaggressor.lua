@@ -42,7 +42,6 @@
 
 
 object_ship_player_player_tieaggressor = object_ship_player_shared_player_tieaggressor:new {
-
 	name = "player_tieaggressor",
 	slideFactor = 1.75,
 	chassisHitpoints = 1643.2,
@@ -50,6 +49,9 @@ object_ship_player_player_tieaggressor = object_ship_player_shared_player_tieagg
 
 	category = "mediumfighter",
 	level = 4,
+
+	-- SHIPMULTIPASSENGER
+	gameObjectType = 536870919,
 
 	attributes = {
 		{"speedRotationFactorMin", 0.2},

@@ -59,7 +59,7 @@ public:
 			return;
 		}
 
-		auto ship = cast<ShipObject*>(shipControlDevice->getControlledObject());
+		auto ship = shipControlDevice->getControlledObject()->asShipObject();
 
 		if (ship == nullptr || ship->getLocalZone() == nullptr) {
 			return;
@@ -77,21 +77,20 @@ public:
 		if (pilotTask != nullptr)
 			pilotTask->schedule(100);
 
-		if (ship->isPobShip() && groupMembers.size() > 0) {
-			auto pobShip = ship->asPobShip();
-
-			if (pobShip == nullptr)
-				return;
-
+		if (groupMembers.size() > 0 && (ship->isPobShip() || ship->isMultiPassengerShip())) {
 			for (int j = 0; j < groupMembers.size(); ++j) {
 				auto memberID = groupMembers.get(j);
 
-				// info(true) << "InsertGroupMembertIntoShipTask for member: " << memberID;
+				// info(true) << "LaunchShipTask - Scheduling Group Member for Insertion - ID: " << memberID;
 
-				InsertGroupMembertIntoShipTask* memberTask = new InsertGroupMembertIntoShipTask(pobShip, memberID);
+				InsertGroupMembertIntoShipTask* memberTask = new InsertGroupMembertIntoShipTask(ship, memberID);
 
 				if (memberTask != nullptr)
 					memberTask->schedule(200 + (j * 50));
+
+				// Pre-CU Multipassenger ships only have one gunner slot
+				if (ship->isMultiPassengerShip())
+					break;
 			}
 		}
 	}
