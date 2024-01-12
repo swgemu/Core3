@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 LaunchIntoSpaceCommand = {
-        name = "launchintospace",
+	name = "launchintospace",
 }
 
 AddCommand(LaunchIntoSpaceCommand)
