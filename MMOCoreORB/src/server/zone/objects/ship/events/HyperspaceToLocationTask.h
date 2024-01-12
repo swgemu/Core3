@@ -6,11 +6,8 @@
 #define CORE3_HYPERSPACETOLOCATIONTASK_H
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/object/OrientForHyperspace.h"
-#include "server/zone/packets/object/BeginHyperspace.h"
-#include "server/zone/packets/object/Hyperspace.h"
-#include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/packets/object/OrientForHyperspace.h"
 
 class HyperspaceToLocationTask : public Task {
 	ManagedWeakReference<CreatureObject*> play;
@@ -80,7 +77,12 @@ public:
 			return;
 		}
 		case 9:
-			beginHyperspace();
+			// Randomize and set the location.
+			location.setX(location.getX() + System::random(100.f));
+			location.setZ(location.getZ() + System::random(100.f));
+			location.setY(location.getY() + System::random(100.f));
+
+			shipObject->sendShipMembersHyperspaceMessage(zoneName, location);
 
 			reschedule(7000);
 			return;
@@ -89,7 +91,7 @@ public:
 			return;
 		}
 		case 11: {
-			shipObject->switchZone(zoneName, location.getX() + System::random(100.f), location.getZ() + System::random(100.f), location.getY() + System::random(100.f), 0, false);
+			shipObject->switchZone(zoneName, location.getX(), location.getZ(), location.getY(), 0, false);
 
 			shipObject->setHyperspacing(false);
 
@@ -124,16 +126,6 @@ public:
 			shipObject->clearOptionBit(OptionBitmask::WINGS_OPEN);
 
 		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(player->getObjectID(), zoneName, location.getX(), location.getY(), location.getZ());
-		player->sendMessage(msg);
-	}
-
-	void beginHyperspace() {
-		Reference<CreatureObject*> player = play.get();
-
-		if (player == nullptr)
-			return;
-
-		BeginHyperspaceMessage *msg = new BeginHyperspaceMessage(player->getObjectID(), zoneName, location.getX(), location.getY(), location.getZ());
 		player->sendMessage(msg);
 	}
 };

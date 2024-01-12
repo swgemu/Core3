@@ -237,102 +237,6 @@ void PobShipObjectImplementation::destroyObjectFromDatabase(bool destroyContaine
 }
 
 void PobShipObjectImplementation::notifyInsert(TreeEntry* object) {
-	auto sceneO = static_cast<SceneObject*>(object);
-	uint64 scnoID = sceneO->getObjectID();
-
-#ifdef DEBUG_COV
-	if (sceneO->isPlayerCreature()) {
-		info(true) << "\nPobShipObjectImplementation::notifyInsert -- Ship ID: " << getObjectID()  << " Player: " << sceneO->getDisplayedName() << " ID: " << scnoID;
-	}
-#endif // DEBUG_COV
-
-	uint64 sceneObjRootID = 0;
-	auto sceneObjRootPar = sceneO->getRootParent();
-
-	if (sceneObjRootPar != nullptr) {
-		sceneObjRootID = sceneObjRootPar->getObjectID();
-	}
-
-	// Operations Chair
-	auto shipOperator = getShipOperator();
-
-	if (shipOperator != nullptr) {
-		if (shipOperator->getCloseObjects() != nullptr)
-			shipOperator->addInRangeObject(object, false);
-		else
-			shipOperator->notifyInsert(object);
-
-		shipOperator->sendTo(sceneO, true, false);
-
-		if (sceneO->getCloseObjects() != nullptr)
-			sceneO->addInRangeObject(shipOperator, false);
-		else
-			sceneO->notifyInsert(shipOperator);
-
-		if (sceneO->getParent() != nullptr)
-			sceneO->sendTo(shipOperator, true, false);
-	}
-
-	// Turret Access Ladder
-	auto turretAccess = getTurretLadder().get();
-
-	if (turretAccess != nullptr) {
-		Vector<String> turretSlots = {"ship_gunner0_pob", "ship_gunner1_pob"};
-
-		for (String slotName : turretSlots) {
-			auto slottedObj = turretAccess->getSlottedObject(slotName);
-
-			if (slottedObj == nullptr)
-				continue;
-
-			if (slottedObj->getCloseObjects() != nullptr)
-				slottedObj->addInRangeObject(object, false);
-			else
-				slottedObj->notifyInsert(object);
-
-			slottedObj->sendTo(sceneO, true, false);
-
-			if (sceneO->getCloseObjects() != nullptr)
-				sceneO->addInRangeObject(slottedObj, false);
-			else
-				sceneO->notifyInsert(slottedObj);
-
-			if (sceneO->getParent() != nullptr)
-				sceneO->sendTo(slottedObj, true, false);
-		}
-	}
-
-	for (int i = 0; i < cells.size(); ++i) {
-		auto& cell = cells.get(i);
-
-		try {
-			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-				auto child = cell->getContainerObject(j);
-
-				if (child == nullptr || child->getObjectID() == scnoID)
-					continue;
-
-				if (child->getCloseObjects() != nullptr)
-					child->addInRangeObject(object, false);
-				else
-					child->notifyInsert(object);
-
-				child->sendTo(sceneO, true, false);
-
-				if (sceneO->getCloseObjects() != nullptr)
-					sceneO->addInRangeObject(child, false);
-				else
-					sceneO->notifyInsert(child);
-
-				if (sceneO->getParent() != nullptr)
-					sceneO->sendTo(child, true, false);
-			}
-		} catch (Exception& e) {
-			warning(e.getMessage());
-			e.printStackTrace();
-		}
-	}
-
 	ShipObjectImplementation::notifyInsert(object);
 }
 
@@ -351,62 +255,11 @@ void PobShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 }
 
 void PobShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	if (!isShipAiAgent())
-		updatePlayersInShip(lightUpdate, sendPackets);
-
-	SceneObjectImplementation::updateZone(lightUpdate, sendPackets);
+	ShipObjectImplementation::updateZone(lightUpdate, sendPackets);
 }
 
 void PobShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {
 	//info(true) << "PobShipObjectImplementation::updatePlayersInShip - " << getDisplayedName();
-
-	// Operations Chairs
-	auto shipOperator = getShipOperator();
-
-	if (shipOperator != nullptr) {
-		shipOperator->setPosition(getPositionX(),getPositionZ(),getPositionY());
-		shipOperator->setMovementCounter(movementCounter);
-
-		shipOperator->updateZoneWithParent(getOperationsChair().get(), lightUpdate, sendPackets);
-	}
-
-	// Turret Access Ladder
-	auto turretAccess = getTurretLadder().get();
-
-	if (turretAccess != nullptr) {
-		Vector<String> turretSlots = {"ship_gunner0_pob", "ship_gunner1_pob"};
-
-		for (String slotName : turretSlots) {
-			auto slottedObj = turretAccess->getSlottedObject("ship_gunner0_pob");
-
-			if (slottedObj != nullptr) {
-				slottedObj->setPosition(getPositionX(),getPositionZ(),getPositionY());
-				slottedObj->setMovementCounter(movementCounter);
-
-				slottedObj->updateZoneWithParent(turretAccess, lightUpdate, sendPackets);
-			}
-		}
-	}
-
-	for (int i = 0; i < cells.size(); ++i) {
-		auto cell = cells.get(i);
-
-		if (cell == nullptr)
-			continue;
-
-		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			auto containerObject = cell->getContainerObject(j);
-
-			if (containerObject == nullptr || !containerObject->isPlayerCreature()) {
-				continue;
-			}
-
-			containerObject->setPosition(getPositionX(), getPositionZ(), getPositionY());
-			containerObject->setMovementCounter(movementCounter);
-
-			containerObject->updateZoneWithParent(cell, lightUpdate, sendPackets);
-		}
-	}
 
 	ShipObjectImplementation::updatePlayersInShip(lightUpdate, sendPackets);
 }
