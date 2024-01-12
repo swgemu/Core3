@@ -38,16 +38,18 @@ public:
 			return;
 		}
 
+#ifdef DEBUG_SHIP_STORE
+		info(true) << "StoreShipTask called for Player: " << player->getDisplayedName() << " Ship: " << ship->getDisplayedName() << " Zone: " << zoneName << " Loc: " << coordinates.toString();
+#endif
+
+		// Lock the ship
 		Locker shipLock(ship);
 
 		// Copy list of the players onboard for removal
-		const SortedVector<ManagedReference<CreatureObject*>>* playersCopy = new SortedVector<ManagedReference<CreatureObject*>>(*ship->getPlayersOnBoard());
-		ship->clearPlayersOnBoard();
-
-		ship->unlock();
+		SortedVector<ManagedReference<CreatureObject*>>* playersCopy = new SortedVector<ManagedReference<CreatureObject*>>(*ship->getPlayersOnBoard());
 
 #ifdef DEBUG_SHIP_STORE
-		info(true) << "StoreShipTask called for Player: " << player->getDisplayedName() << " Ship: " << ship->getDisplayedName() << " Zone: " << zoneName << " Loc: " << coordinates.toString();
+		info(true) << "StoreShipTask seeing " << playersCopy->size() << " player(s) on board.";
 #endif
 
 		// This function should remove all players in the ship.
@@ -58,17 +60,24 @@ public:
 				continue;
 
 			try {
-				Locker playerLock(shipMember);
+				// Cross lock the player for removal
+				Locker playerLock(shipMember, ship);
 
-				removePlayer(shipMember, zoneName, coordinates);
+				if (!removePlayer(shipMember, zoneName, coordinates)) {
+					error() << "Failed to remove player from Ship - ShipID: " << ship->getObjectID() << " Player ID: " << shipMember->getObjectID();
+					return;
+				}
 			} catch (...) {
 				error() << "Failed to remove player from Ship - ShipID: " << ship->getObjectID() << " Player ID: " << shipMember->getObjectID();
 			}
+
+			playersCopy->remove(i);
 		}
 
+		playersCopy->removeAll();
 		delete playersCopy;
 
-		ship->wlock();
+		ship->clearPlayersOnBoard();
 
 		// Destroy the ship from the zone.
 		ship->destroyObjectFromWorld(false);
@@ -76,7 +85,7 @@ public:
 		// Lock the device and transfer the ship inside.
 		Locker sLock(shipControlDevice, ship);
 
-		if (shipControlDevice->transferObject(ship, PlayerArrangement::RIDER, true)) {
+		if (shipControlDevice->transferObject(ship, PlayerArrangement::RIDER, false, false, false)) {
 			ship->cancelRecovery();
 			ship->clearOptionBit(OptionBitmask::WINGS_OPEN, true);
 			ship->clearPlayersOnBoard();
@@ -104,24 +113,21 @@ public:
 		}
 	}
 
-	void removePlayer(CreatureObject* player, String newZoneName, Vector3 location) {
+	// Player is locked coming into this function
+	bool removePlayer(CreatureObject* player, String newZoneName, Vector3 location) {
 #ifdef DEBUG_SHIP_STORE
 		info(true) << "removePlayer called";
 #endif
 
 		if (player == nullptr)
-			return;
+			return false;
 
 		auto zoneServer = player->getZoneServer();
 
 		if (zoneServer == nullptr)
-			return;
+			return false;
 
 		auto zone = zoneServer->getZone(newZoneName);
-
-		if (zone == nullptr) {
-			return;
-		}
 
 #ifdef DEBUG_SHIP_STORE
 		info(true) << "removing player: " << player->getDisplayedName() << " to zone: " << newZoneName;
@@ -129,8 +135,8 @@ public:
 
 		player->clearSpaceStates();
 
-		if (player->isOnline()) {
-			player->switchZone(newZoneName, location.getX(), location.getZ(), location.getY(), 0);
+		if (player->isOnline() && zone != nullptr) {
+			player->switchZone(newZoneName, location.getX(), location.getZ(), location.getY(), 0, false);
 		} else {
 			player->setPosition(location.getX(), location.getZ(), location.getY());
 
@@ -143,6 +149,8 @@ public:
 				ghost->setSavedTerrainName(newZoneName);
 			}
 		}
+
+		return true;
 	}
 };
 

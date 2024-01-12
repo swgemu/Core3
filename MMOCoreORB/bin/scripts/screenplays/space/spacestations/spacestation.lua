@@ -50,5 +50,11 @@ function SpaceStationScreenPlay:landShip(pPlayer, destination)
 	local destinationTable = self.travelPoints
 	local destinationInfo = destinationTable[destination]
 
+	-- Check if zone is disabled
+	if (not isZoneEnabled(destinationInfo[1])) then
+		CreatureObject(pPlayer):sendSystemMessage("You cannot land on this planet at this time.")
+		return
+	end
+
 	LuaShipObject(pShip):storeShip(pPlayer, destinationInfo[1], destinationInfo[2], destinationInfo[3], destinationInfo[4])
 end

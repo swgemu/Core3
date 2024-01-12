@@ -1158,13 +1158,11 @@ SceneObject* SceneObjectImplementation::getRootParentUnsafe() {
 
 void SceneObjectImplementation::updateSavedRootParentRecursive(SceneObject* newRoot, int maxDepth) {
 	if (maxDepth <= 0) {
-		StringBuffer msg;
+		error() << "maxDepth reached -- Max Depth: " << maxDepth << " " << __FILE__ << ":" << __LINE__ << ":" <<  __FUNCTION__ <<
+			"() Object: "<< getDisplayedName() << " ID: " << getObjectID() <<
+			" New Root: " << (newRoot == nullptr ? "NO ROOT" : newRoot->getDisplayedName()) << " Root ID: " << (newRoot == nullptr ? 0 : newRoot->getObjectID());
 
-		msg << "maxDepth reached in updateSavedRootParentRecursive("
-			<< getObjectID() << ") newRoot = "
-		    << (newRoot == nullptr ? 0 : newRoot->getObjectID())
-		;
-		throw Exception(msg.toString());
+		throw Exception();
 	}
 
 	Locker locker(&parentLock);
