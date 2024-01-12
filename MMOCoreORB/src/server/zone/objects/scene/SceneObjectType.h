@@ -356,6 +356,7 @@ public:
 	// Not in client ************
 	const static int SHIPPOB = 0x20000005;
 	const static int SHIPAGENT = 0x20000006;
+	const static int SHIPMULTIPASSENGER = 0x20000007;
 	//*******************************
 
 	const static int SHIPATTACHMENT = 0x40000000;

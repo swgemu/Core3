@@ -1,0 +1,25 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship;
+
+import server.zone.Zone;
+include server.zone.objects.ship.FighterShipObject;
+
+class MultiPassengerShipObject extends FighterShipObject {
+	public MultiPassengerShipObject() {
+		Logger.setLoggingName("MultiPassengerShipObject");
+	}
+
+	@dirty
+	@local
+	@nativeStub
+	public native boolean isMultiPassengerShip();
+
+	@dirty
+	@nativeStub
+	@local
+	public native MultiPassengerShipObject asMultiPassengerShip();
+}

@@ -35,7 +35,7 @@ void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 		//Is this player on the permission list?
 		if (building != nullptr && building->isOnAdminList(player))
 			checkPermissions = true;
-	} else if (rootParent->isPobShipObject()) {
+	} else if (rootParent->isPobShip()) {
 		ManagedReference<PobShipObject*> pobShip = rootParent.castTo<PobShipObject*>();
 
 		if (pobShip != nullptr && pobShip->isOnAdminList(player))

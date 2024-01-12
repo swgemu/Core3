@@ -44,13 +44,13 @@ public:
 		ManagedReference<SceneObject*> targetRoot = obj->getRootParent();
 		ManagedReference<SceneObject*> creatureParent = creature->getRootParent();
 
-		if (creatureParent == nullptr || (!creatureParent->isBuildingObject() && !creatureParent->isPobShipObject())) {
+		if (creatureParent == nullptr || (!creatureParent->isBuildingObject() && !creatureParent->isPobShip())) {
 			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
 			return GENERALERROR;
 		}
 
-		if (creatureParent->isPobShipObject()) {
-			PobShipObject* pobShip = creatureParent->asPobShipObject();
+		if (creatureParent->isPobShip()) {
+			PobShipObject* pobShip = creatureParent->asPobShip();
 
 			if (pobShip == nullptr || targetRoot == nullptr || (targetRoot->getObjectID() != pobShip->getObjectID()) || pobShip->containsChildObject(obj)) {
 				creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?

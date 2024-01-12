@@ -10,7 +10,7 @@ bool PobShipContainerComponent::checkContainerPermission(SceneObject* sceneObjec
 	if (sceneObject == nullptr || creature == nullptr)
 		return false;
 
-	if (sceneObject->isPobShipObject()) {
+	if (sceneObject->isPobShip()) {
 		if (permission == ContainerPermissions::MOVEVENDOR)
 			return false;
 

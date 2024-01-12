@@ -1,0 +1,25 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship;
+
+import server.zone.objects.ship.ShipObject;
+import engine.log.Logger;
+
+class FighterShipObject extends ShipObject {
+	public FighterShipObject() {
+		Logger.setLoggingName("FighterShipObject");
+	}
+
+	@dirty
+	@local
+	@nativeStub
+	public native boolean isFighterShipObject();
+
+	@dirty
+	@nativeStub
+	@local
+	public native FighterShipObject asFighterShipObject();
+}

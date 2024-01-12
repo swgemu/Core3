@@ -353,6 +353,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ShipObject>(SceneObjectType::SHIPTRANSPORT);
 	objectFactory.registerObject<SpaceStationObject>(SceneObjectType::SHIPSTATION);
 	objectFactory.registerObject<PobShipObject>(SceneObjectType::SHIPPOB);
+	objectFactory.registerObject<MultiPassengerShipObject>(SceneObjectType::SHIPMULTIPASSENGER);
 	objectFactory.registerObject<ShipAiAgent>(SceneObjectType::SHIPAGENT);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::CRYSTAL);
 }

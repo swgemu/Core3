@@ -9,6 +9,7 @@ import system.lang.Time;
 import system.lang.String;
 import system.lang.Exception;
 import server.zone.Zone;
+import server.zone.objects.ship.FighterShipObject;
 import server.zone.objects.ship.ShipObject;
 
 import server.zone.objects.ship.ai.events.ShipAiBehaviorEvent;
@@ -36,7 +37,7 @@ include server.zone.objects.creature.variables.CooldownTimerMap;
 include engine.util.u3d.Quaternion;
 
 @json
-class ShipAiAgent extends ShipObject {
+class ShipAiAgent extends FighterShipObject {
 	protected transient ShipAiBehaviorEvent behaviorEvent;
 
 	@dereferenced

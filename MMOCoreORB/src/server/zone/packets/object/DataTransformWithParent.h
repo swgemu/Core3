@@ -150,7 +150,7 @@ public:
 		try {
 			auto rootParent = creO->getRootParent();
 
-			if (rootParent != nullptr && rootParent->isPobShipObject()) {
+			if (rootParent != nullptr && rootParent->isPobShip()) {
 				creO->setPosition(transform.getPositionX(), transform.getPositionZ(), transform.getPositionY());
 				creO->setDirection(transform.getDirection());
 				creO->setCurrentSpeed(transform.getSpeed());

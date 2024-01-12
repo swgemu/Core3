@@ -179,7 +179,7 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 
 				if (building != nullptr && creo != nullptr)
 					building->onEnter(creo);
-			} else if (strongParent->isPobShipObject()) {
+			} else if (strongParent->isPobShip()) {
 				// TODO: add notification of player being added to PoBShipCell
 			}
 		}

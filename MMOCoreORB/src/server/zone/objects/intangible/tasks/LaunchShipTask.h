@@ -77,8 +77,8 @@ public:
 		if (pilotTask != nullptr)
 			pilotTask->schedule(100);
 
-		if (ship->isPobShipObject() && groupMembers.size() > 0) {
-			auto pobShip = ship->asPobShipObject();
+		if (ship->isPobShip() && groupMembers.size() > 0) {
+			auto pobShip = ship->asPobShip();
 
 			if (pobShip == nullptr)
 				return;

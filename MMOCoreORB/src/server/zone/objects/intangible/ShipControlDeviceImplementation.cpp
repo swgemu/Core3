@@ -241,8 +241,8 @@ int ShipControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 	if (isShipLaunched()) {
 		owner->sendSystemMessage("You must land your ship before it can be destroyed.");
 		return 1;
-	} else if (ship->isPobShipObject()) {
-		auto pobShip = ship->asPobShipObject();
+	} else if (ship->isPobShip()) {
+		auto pobShip = ship->asPobShip();
 
 		if (pobShip != nullptr && pobShip->getCurrentNumberOfPlayerItems() > 0) {
 			owner->sendSystemMessage("You must remove all of your items from your ship before it can be destroyed.");

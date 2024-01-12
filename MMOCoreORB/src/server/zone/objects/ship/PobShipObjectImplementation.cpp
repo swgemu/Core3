@@ -152,7 +152,7 @@ void PobShipObjectImplementation::createChildObjects() {
 							Terminal* terminalChild = obj.castTo<Terminal*>();
 
 							if (terminalChild != nullptr)
-								terminalChild->setControlledObject(asPobShipObject());
+								terminalChild->setControlledObject(asPobShip());
 						} else if (childTemplate.contains("alarm_interior")) {
 							plasmaAlarms.add(obj->getObjectID());
 						}
@@ -246,7 +246,7 @@ void PobShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
-		cell->onShipInsertedToZone(asPobShipObject());
+		cell->onShipInsertedToZone(asPobShip());
 	}
 
 	locker.release();
@@ -479,19 +479,19 @@ void PobShipObjectImplementation::destroyAllPlayerItems() {
 	}
 }
 
-PobShipObject* PobShipObject::asPobShipObject() {
+PobShipObject* PobShipObject::asPobShip() {
 	return this;
 }
 
-PobShipObject* PobShipObjectImplementation::asPobShipObject() {
+PobShipObject* PobShipObjectImplementation::asPobShip() {
 	return _this.getReferenceUnsafeStaticCast();
 }
 
-bool PobShipObject::isPobShipObject() {
+bool PobShipObject::isPobShip() {
 	return true;
 }
 
-bool PobShipObjectImplementation::isPobShipObject() {
+bool PobShipObjectImplementation::isPobShip() {
 	return true;
 }
 

@@ -50,7 +50,7 @@ public:
 			group->updateMemberShip(player, ship);
 		}
 
-		if (ship->isPobShipObject()) {
+		if (ship->isPobShip()) {
 			auto pilotChair = ship->getPilotChair().get();
 
 			if (pilotChair == nullptr) {

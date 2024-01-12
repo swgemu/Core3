@@ -33,10 +33,10 @@ void ShipPermissionTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sc
 
 	ManagedReference<SceneObject*> controlledObj = terminal->getControlledObject();
 
-	if (controlledObj == nullptr || !controlledObj->isPobShipObject())
+	if (controlledObj == nullptr || !controlledObj->isPobShip())
 		return;
 
-	auto pobShip = controlledObj->asPobShipObject();
+	auto pobShip = controlledObj->asPobShip();
 
 	if (pobShip == nullptr)
 		return;
@@ -66,7 +66,7 @@ int ShipPermissionTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sce
 
 	ManagedReference<SceneObject*> rootSceneO = terminal->getRootParent();
 
-	if (rootSceneO == nullptr || !rootSceneO->isPobShipObject()) {
+	if (rootSceneO == nullptr || !rootSceneO->isPobShip()) {
 		return 1;
 	}
 

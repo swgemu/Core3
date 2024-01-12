@@ -323,7 +323,7 @@ ShipControlDevice* ShipManager::createShipControlDevice(ShipObject* ship) {
 		return nullptr;
 	}
 
-	shipControlDevice->setShipType(ship->isPobShipObject() ? POBSHIP : FIGHTERSHIP);
+	shipControlDevice->setShipType(ship->isPobShip() ? POBSHIP : FIGHTERSHIP);
 	shipControlDevice->setControlledObject(ship);
 
 	ship->setControlDeviceID(shipControlDevice->getObjectID());
@@ -416,8 +416,8 @@ ShipObject* ShipManager::createPlayerShip(CreatureObject* owner, const String& s
 
 	ship->createChildObjects();
 
-	if (ship->isPobShipObject()) {
-		PobShipObject* pobShip = ship->asPobShipObject();
+	if (ship->isPobShip()) {
+		PobShipObject* pobShip = ship->asPobShip();
 
 		if (pobShip != nullptr) {
 			pobShip->grantPermission("ADMIN", owner->getObjectID());

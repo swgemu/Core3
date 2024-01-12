@@ -147,7 +147,7 @@ public:
 
 		ManagedReference<SceneObject*> rootParent = player->getRootParent();
 
-		if (rootParent == nullptr || (!rootParent->isBuildingObject() && !rootParent->isPobShipObject())) {
+		if (rootParent == nullptr || (!rootParent->isBuildingObject() && !rootParent->isPobShip())) {
 			player->sendSystemMessage("@player_structure:must_be_in_building"); // You must be in a building to do that.
 			return false;
 		}
@@ -155,8 +155,8 @@ public:
 		bool onAdmin = false;
 		bool onVendor = false;
 
-		if (rootParent->isPobShipObject()) {
-			PobShipObject* pobShip = rootParent->asPobShipObject();
+		if (rootParent->isPobShip()) {
+			PobShipObject* pobShip = rootParent->asPobShip();
 
 			if (pobShip == nullptr) {
 				player->sendSystemMessage("@player_structure:must_be_in_building"); // You must be in a building to do that.

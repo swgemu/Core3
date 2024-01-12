@@ -64,6 +64,8 @@ include engine.util.JSONSerializationType;
 include server.zone.objects.scene.variables.OrderedTaskExecutioner;
 import server.zone.objects.ship.ShipObject;
 import server.zone.objects.ship.PobShipObject;
+import server.zone.objects.ship.MultiPassengerShipObject;
+import server.zone.objects.ship.FighterShipObject;
 import server.zone.objects.ship.ai.ShipAiAgent;
 import server.zone.objects.ship.ai.SpaceStationObject;
 
@@ -1591,14 +1593,40 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@local
 	@nativeStub
 	@virtualStub
-	public abstract native boolean isPobShipObject();
+	public abstract native boolean isPobShip();
 
 	@mock
 	@dirty
 	@local
 	@nativeStub
 	@virtualStub
-	public native abstract PobShipObject asPobShipObject();
+	public native abstract PobShipObject asPobShip();
+
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isMultiPassengerShip();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract MultiPassengerShipObject asMultiPassengerShip();
+
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isFighterShip();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract FighterShipObject asFighterShip();
 
 	@dirty
 	public abstract boolean isCreature() {

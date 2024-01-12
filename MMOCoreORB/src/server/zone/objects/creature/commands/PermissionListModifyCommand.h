@@ -36,7 +36,7 @@ public:
 		uint64 targetid = creature->getTargetID();
 		ManagedReference<SceneObject*> sceneO = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
 
-		if (sceneO == nullptr || (!sceneO->isStructureObject() && !sceneO->isPobShipObject())) {
+		if (sceneO == nullptr || (!sceneO->isStructureObject() && !sceneO->isPobShip())) {
 			creature->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
 			return INVALIDTARGET;
 		}
@@ -81,7 +81,7 @@ public:
 
 		int ret = 1;
 
-		if (sceneO->isPobShipObject()) {
+		if (sceneO->isPobShip()) {
 			ret = handlePobShipPermissions(creature, sceneO, targetName, listName, action, arguments.toString());
 
 		} else if (sceneO->isStructureObject()) {

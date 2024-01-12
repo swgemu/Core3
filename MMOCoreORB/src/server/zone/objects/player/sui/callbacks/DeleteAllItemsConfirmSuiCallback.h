@@ -26,7 +26,7 @@ public:
 
 		ManagedReference<SceneObject*> sceneO = sui->getUsingObject().get();
 
-		if (sceneO == nullptr || (!sceneO->isBuildingObject() && !sceneO->isPobShipObject()))
+		if (sceneO == nullptr || (!sceneO->isBuildingObject() && !sceneO->isPobShip()))
 			return;
 
 		Locker _lock(sceneO, creature);
@@ -40,7 +40,7 @@ public:
 			trx.exportRelated();
 		}
 
-		if (sceneO->isPobShipObject()) {
+		if (sceneO->isPobShip()) {
 			PobShipObject* pobShip = cast<PobShipObject*>(sceneO.get());
 
 			if (pobShip != nullptr)

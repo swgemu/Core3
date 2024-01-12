@@ -1401,9 +1401,9 @@ Vector3 SceneObjectImplementation::getWorldCoordinate(float distance, float angl
 Vector3 SceneObjectImplementation::getWorldPosition() {
 	auto root = getRootParentUnsafe();
 
-	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShipObject())) {
+	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShip())) {
 		return getPosition();
-	} else if (root->isPobShipObject()) {
+	} else if (root->isPobShip()) {
 		return root->getPosition();
 	}
 
@@ -1422,9 +1422,9 @@ Vector3 SceneObjectImplementation::getWorldPosition() {
 float SceneObjectImplementation::getWorldPositionX() {
 	auto root = getRootParentUnsafe();
 
-	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShipObject())) {
+	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShip())) {
 		return getPositionX();
-	} else if (root->isPobShipObject()) {
+	} else if (root->isPobShip()) {
 		return root->getPositionX();
 	}
 
@@ -1437,9 +1437,9 @@ float SceneObjectImplementation::getWorldPositionX() {
 float SceneObjectImplementation::getWorldPositionY() {
 	auto root = getRootParentUnsafe();
 
-	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShipObject())) {
+	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShip())) {
 		return getPositionY();
-	} else if (root->isPobShipObject()) {
+	} else if (root->isPobShip()) {
 		return root->getPositionY();
 	}
 
@@ -1452,9 +1452,9 @@ float SceneObjectImplementation::getWorldPositionY() {
 float SceneObjectImplementation::getWorldPositionZ() {
 	auto root = getRootParentUnsafe();
 
-	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShipObject())) {
+	if (root == nullptr || (!root->isBuildingObject() && !root->isPobShip())) {
 		return getPositionZ();
-	} else if (root->isPobShipObject()) {
+	} else if (root->isPobShip()) {
 		return root->getPositionZ();
 	}
 
@@ -2051,11 +2051,27 @@ bool SceneObject::isSpaceStationObject() {
 	return false;
 }
 
-bool SceneObjectImplementation::isPobShipObject() {
+bool SceneObjectImplementation::isPobShip() {
 	return false;
 }
 
-bool SceneObject::isPobShipObject() {
+bool SceneObject::isPobShip() {
+	return false;
+}
+
+bool SceneObjectImplementation::isMultiPassengerShip() {
+	return false;
+}
+
+bool SceneObject::isMultiPassengerShip() {
+	return false;
+}
+
+bool SceneObjectImplementation::isFighterShip() {
+	return false;
+}
+
+bool SceneObject::isFighterShip() {
 	return false;
 }
 
@@ -2115,11 +2131,27 @@ SpaceStationObject* SceneObjectImplementation::asSpaceStationObject() {
 	return nullptr;
 }
 
-PobShipObject* SceneObject::asPobShipObject() {
+PobShipObject* SceneObject::asPobShip() {
 	return nullptr;
 }
 
-PobShipObject* SceneObjectImplementation::asPobShipObject() {
+PobShipObject* SceneObjectImplementation::asPobShip() {
+	return nullptr;
+}
+
+MultiPassengerShipObject* SceneObject::asMultiPassengerShip() {
+	return nullptr;
+}
+
+MultiPassengerShipObject* SceneObjectImplementation::asMultiPassengerShip() {
+	return nullptr;
+}
+
+FighterShipObject* SceneObject::asFighterShip() {
+	return nullptr;
+}
+
+FighterShipObject* SceneObjectImplementation::asFighterShip() {
 	return nullptr;
 }
 

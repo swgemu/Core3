@@ -119,12 +119,12 @@ class PobShipObject extends ShipObject {
 	@dirty
 	@nativeStub
 	@local
-	public native PobShipObject asPobShipObject();
+	public native PobShipObject asPobShip();
 
 	@dirty
 	@local
 	@nativeStub
-	public native boolean isPobShipObject();
+	public native boolean isPobShip();
 
 	@local
 	@dereferenced

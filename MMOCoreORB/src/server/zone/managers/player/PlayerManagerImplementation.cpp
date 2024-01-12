@@ -3587,7 +3587,7 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 			if (structure!= nullptr && structure->isOnAdminList(creature))
 				return rootParent;
 		// PoBShip
-		} else if (rootParent->isPobShipObject()) {
+		} else if (rootParent->isPobShip()) {
 			PobShipObject* pobShip = cast<PobShipObject*>(rootParent.get());
 
 			if (pobShip != nullptr && pobShip->isOnAdminList(creature))
