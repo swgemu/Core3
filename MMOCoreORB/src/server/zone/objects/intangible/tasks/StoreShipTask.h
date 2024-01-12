@@ -44,135 +44,44 @@ public:
 
 		Locker shipLock(ship);
 
-		// Remove the ship owner
+		// Remove the ship owner. This may be the pilot, but we cannot know for sure.
 		Locker ownerLock(player, ship);
+
 		removePlayer(player, zoneName, coordinates);
+
+		ship->removePlayerOnBoard(player);
 
 		ownerLock.release();
 
-		if (ship->isPobShipObject()) {
-			PobShipObject* pobShip = ship->asPobShipObject();
+		// This function should remove all remaining players in the ship.
+		int totalPlayers = ship->getTotalPlayersOnBoard();
 
-#ifdef DEBUG_SHIP_STORE
-			info(true) << "Ship is POB type";
-#endif
+		for (int i = totalPlayers - 1; i >= 0; --i) {
+			auto shipMember = ship->getPlayerOnBoard(i);
 
-			if (pobShip != nullptr) {
-				auto chair = pobShip->getPilotChair().get();
-
-				if (chair != nullptr) {
-					ManagedReference<CreatureObject*> pilot = chair->getSlottedObject("ship_pilot_pob").castTo<CreatureObject*>();
-
-					if (pilot != nullptr) {
-#ifdef DEBUG_SHIP_STORE
-						info(true) << "Pilot is not null";
-#endif
-
-						pobShip->unlock();
-
-						try {
-							Locker pilotLock(pilot);
-							removePlayer(pilot, zoneName, coordinates);
-						} catch (...) {
-							error() << "Failed to remove pilot from POB Ship Chair - ShipID: " << pobShip->getObjectID();
-						}
-
-						pobShip->wlock();
-					}
-				}
-			}
-
-	#ifdef DEBUG_SHIP_STORE
-			info(true) << "Check Total Cells: " << pobShip->getTotalCellNumber();
-	#endif
-
-			for (int k = 0; k < pobShip->getTotalCellNumber(); ++k) {
-	#ifdef DEBUG_SHIP_STORE
-				info(true) << "Checking Cell #" << k;
-	#endif
-
-				auto cellObject = pobShip->getCell(k);
-
-				if (cellObject == nullptr) {
-					continue;
-				}
-
-				int childObjects = cellObject->getContainerObjectsSize();
-
-				if (childObjects <= 0)
-					continue;
-
-#ifdef DEBUG_SHIP_STORE
-				info(true) << "Checking cells objects - total count: " << childObjects;
-#endif
-
-				// Iterate the vector backwards since the size will change as objects are removed.
-				for (int ii = childObjects - 1; ii >= 0; --ii) {
-					ManagedReference<SceneObject*> sceneO = cellObject->getContainerObject(ii);
-
-#ifdef DEBUG_SHIP_STORE
-					info(true) << "Cell-ContainerObjects - checking #" << ii << " ID: " << sceneO->getObjectID() << "   " << sceneO->getObjectNameStringIdName() << ".";
-#endif
-
-					if (sceneO == nullptr || !sceneO->isPlayerCreature())
-						continue;
-
-					auto playerCreo = sceneO->asCreatureObject();
-
-					if (playerCreo == nullptr)
-						continue;
-
-					pobShip->unlock();
-
-					try {
-						Locker playLock(playerCreo);
-
-						removePlayer(playerCreo, zoneName, coordinates);
-					} catch (...) {
-						error() << "Failed to remove player from ship cell #" << k << " - ShipID: " << pobShip->getObjectID();
-					}
-
-					pobShip->wlock();
-				}
-			}
-
-#ifdef DEBUG_SHIP_STORE
-			info(true) << "Ship Players have been removed.";
-#endif
-		}
-
-#ifdef DEBUG_SHIP_STORE
-		info(true) << "Checking slotted objects for players - Total: " << ship->getSlottedObjectsSize();
-#endif
-
-		for (int i = 0; i < ship->getSlottedObjectsSize(); ++i) {
-			ManagedReference<CreatureObject*> slottedCreo = ship->getSlottedObject(i).castTo<CreatureObject*>();
-
-#ifdef DEBUG_SHIP_STORE
-			info(true) << "SlottedObjects - checking: " << slottedCreo->getObjectID();
-#endif
-
-			if (slottedCreo != nullptr) {
-				ship->unlock();
-
+			if (shipMember != nullptr && shipMember->getRootParent() == ship) {
 				try {
-					Locker slotLock(slottedCreo);
-					removePlayer(slottedCreo, zoneName, coordinates);
-				} catch (...) {
-					error() << "Failed to remove player from ship slotted object - ShipID: " << ship->getObjectID();
-				}
+					Locker playerLock(shipMember, ship);
 
-				ship->wlock();
+					removePlayer(shipMember, zoneName, coordinates);
+				} catch (...) {
+					error() << "Failed to remove player from Ship - ShipID: " << ship->getObjectID() << " Player ID: " << shipMember->getObjectID();
+				}
 			}
+
+			 ship->removePlayerOnBoard(i);
 		}
 
+		// Destroy the ship from the zone.
 		ship->destroyObjectFromWorld(false);
 
+		// Lock the device and transfer the ship inside.
 		Locker sLock(shipControlDevice, ship);
 
 		if (shipControlDevice->transferObject(ship, PlayerArrangement::RIDER, true)) {
 			ship->cancelRecovery();
 			ship->clearOptionBit(OptionBitmask::WINGS_OPEN, true);
+			ship->clearPlayersOnBoard();
 		}
 
 		shipControlDevice->updateStatus(shipControlDevice->isShipLaunched(), true);

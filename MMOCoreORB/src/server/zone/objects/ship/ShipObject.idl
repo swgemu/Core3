@@ -415,7 +415,7 @@ class ShipObject extends TangibleObject {
 	protected DeltaAutoMap componentCRCs;
 
 	@dereferenced
-	protected transient SortedVector<CreatureObject> playersOnBoard;
+	protected SortedVector<CreatureObject> playersOnBoard;
 
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
@@ -430,6 +430,8 @@ class ShipObject extends TangibleObject {
 
 		chassisLevel = 0;
 		totalCellNumber = 0;
+
+		playersOnBoard.setNoDuplicateInsertPlan();
 	}
 
 	public native void notifyLoadFromDatabase();
@@ -1023,8 +1025,14 @@ class ShipObject extends TangibleObject {
 	@preLocked
 	public native void addPlayerOnBoard(CreatureObject player);
 
+	@preLocked
 	public void removePlayerOnBoard(int index) {
 		playersOnBoard.remove(index);
+	}
+
+	@preLocked
+	public void removePlayerOnBoard(CreatureObject player) {
+		playersOnBoard.drop(player);
 	}
 
 	@preLocked
