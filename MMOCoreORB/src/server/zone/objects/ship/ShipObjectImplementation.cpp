@@ -22,6 +22,7 @@
 #include "server/zone/packets/ship/ShipObjectMessage3.h"
 #include "server/zone/packets/ship/ShipObjectMessage4.h"
 #include "server/zone/packets/ship/ShipObjectMessage6.h"
+#include "server/zone/packets/object/BeginHyperspace.h"
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "templates/tangible/ship/SharedShipObjectTemplate.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
@@ -33,8 +34,6 @@
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
-
-	playersOnBoard.setNoDuplicateInsertPlan();
 
 	if (shipRecoveryEvent == nullptr) {
 		shipRecoveryEvent = new ShipRecoveryEvent(asShipObject());
@@ -409,50 +408,26 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 	}
 #endif // DEBUG_COV
 
-	// Update the pilot
-	auto pilot = getPilot();
+	for (int i = 0; i < playersOnBoard.size(); ++i) {
+		auto shipMember = playersOnBoard.get(i);
 
-	if (pilot != nullptr) {
-		if (pilot->getCloseObjects() != nullptr)
-			pilot->addInRangeObject(sceneO, false);
-		else
-			pilot->notifyInsert(sceneO);
-
-		pilot->sendTo(sceneO, true, false);
-
-		if (sceneO->getCloseObjects() != nullptr)
-			sceneO->addInRangeObject(pilot, false);
-		else
-			sceneO->notifyInsert(pilot);
-
-		if (sceneO->getParent() != nullptr)
-			sceneO->sendTo(pilot, true, false);
-	}
-
-	// Send notification of object insert to the players in the slotted locations
-	VectorMap<String, ManagedReference<SceneObject* > > slotted;
-	getSlottedObjects(slotted);
-
-	for (int i = 0; i < slotted.size(); ++i) {
-		auto slottedObj = slotted.get(i);
-
-		if (slottedObj == nullptr || !slottedObj->isPlayerCreature())
+		if (shipMember == nullptr)
 			continue;
 
-		if (slottedObj->getCloseObjects() != nullptr)
-			slottedObj->addInRangeObject(sceneO, false);
+		if (shipMember->getCloseObjects() != nullptr)
+			shipMember->addInRangeObject(sceneO, false);
 		else
-			slottedObj->notifyInsert(sceneO);
+			shipMember->notifyInsert(sceneO);
 
-		slottedObj->sendTo(sceneO, true, false);
+		shipMember->sendTo(sceneO, true, false);
 
 		if (sceneO->getCloseObjects() != nullptr)
-			sceneO->addInRangeObject(slottedObj, false);
+			sceneO->addInRangeObject(shipMember, false);
 		else
-			sceneO->notifyInsert(slottedObj);
+			sceneO->notifyInsert(shipMember);
 
 		if (sceneO->getParent() != nullptr)
-			sceneO->sendTo(slottedObj, true, false);
+			sceneO->sendTo(shipMember, true, false);
 	}
 }
 
@@ -477,30 +452,17 @@ void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {
 	// info(true) << "ShipObjectImplementation::updatePlayersInShip - " << getDisplayedName();
 
-	// Update the pilot in the zone
-	auto pilot = getPilot();
+	for (int i = 0; i < playersOnBoard.size(); ++i) {
+		auto shipMember = playersOnBoard.get(i);
 
-	if (pilot != nullptr) {
-		pilot->setPosition(getPositionX(),getPositionZ(),getPositionY());
-		pilot->setMovementCounter(movementCounter);
-
-		pilot->updateZoneWithParent((isPobShipObject() ? getPilotChair().get() : asShipObject()), lightUpdate, sendPackets);
-	}
-
-	VectorMap<String, ManagedReference<SceneObject* > > slotted;
-	getSlottedObjects(slotted);
-
-	// Check slotted objects for players and send their updates
-	for (int i = slotted.size() - 1; i >= 0 ; --i) {
-		auto object = slotted.get(i);
-
-		if (object == nullptr || !object->isPlayerCreature())
+		if (shipMember == nullptr)
 			continue;
 
-		object->setPosition(getPositionX(), getPositionZ(), getPositionY());
-		object->setMovementCounter(movementCounter);
+		Locker clock(shipMember, asShipObject());
 
-		object->updateZoneWithParent(asShipObject(), lightUpdate, sendPackets);
+		shipMember->setPosition(getPositionX(),getPositionZ(),getPositionY());
+
+		shipMember->updateZoneWithParent(shipMember->getParent().get(), lightUpdate, sendPackets);
 	}
 }
 
@@ -1279,10 +1241,6 @@ void ShipObjectImplementation::addPlayerOnBoard(CreatureObject* player) {
 	playersOnBoard.put(player);
 }
 
-void ShipObjectImplementation::clearPlayersOnBoard() {
-	playersOnBoard.removeAll();
-}
-
 void ShipObjectImplementation::sendShipMembersMessage(const String& message) {
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
 		auto member = playersOnBoard.get(i);
@@ -1302,5 +1260,17 @@ void ShipObjectImplementation::sendShipMembersMusicMessage(const String& message
 			continue;
 
 		member->playMusicMessage(message);
+	}
+}
+
+void ShipObjectImplementation::sendShipMembersHyperspaceMessage(const String& zoneName, const Vector3& location) {
+	for (int i = 0; i < playersOnBoard.size(); ++i) {
+		auto member = playersOnBoard.get(i);
+
+		if (member == nullptr)
+			continue;
+
+		BeginHyperspaceMessage* msg = new BeginHyperspaceMessage(member->getObjectID(), zoneName, location.getX(), location.getZ(), location.getY());
+		member->sendMessage(msg);
 	}
 }

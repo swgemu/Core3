@@ -415,7 +415,7 @@ class ShipObject extends TangibleObject {
 	protected DeltaAutoMap componentCRCs;
 
 	@dereferenced
-	protected transient SortedVector<CreatureObject> playersOnBoard;
+	protected SortedVector<CreatureObject> playersOnBoard;
 
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
@@ -430,6 +430,8 @@ class ShipObject extends TangibleObject {
 
 		chassisLevel = 0;
 		totalCellNumber = 0;
+
+		playersOnBoard.setNoDuplicateInsertPlan();
 	}
 
 	public native void notifyLoadFromDatabase();
@@ -1023,12 +1025,20 @@ class ShipObject extends TangibleObject {
 	@preLocked
 	public native void addPlayerOnBoard(CreatureObject player);
 
+	@preLocked
 	public void removePlayerOnBoard(int index) {
 		playersOnBoard.remove(index);
 	}
 
 	@preLocked
-	public native void clearPlayersOnBoard();
+	public void removePlayerOnBoard(CreatureObject player) {
+		playersOnBoard.drop(player);
+	}
+
+	@preLocked
+	public void clearPlayersOnBoard() {
+		playersOnBoard.removeAll();
+	}
 
 	/*
 
@@ -1649,7 +1659,15 @@ class ShipObject extends TangibleObject {
 		return playersOnBoard.get(index);
 	}
 
+	@local
+	@dirty
+	public SortedVector<CreatureObject> getPlayersOnBoard() {
+		return playersOnBoard;
+	}
+
 	public native void sendShipMembersMessage(final string message);
 
 	public native void sendShipMembersMusicMessage(final string message);
+
+	public native void sendShipMembersHyperspaceMessage(final string zoneName, @dereferenced final Vector3 location);
 }
