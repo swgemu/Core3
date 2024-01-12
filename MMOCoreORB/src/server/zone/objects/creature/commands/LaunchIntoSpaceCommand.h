@@ -79,36 +79,36 @@ public:
 
 			if (arrivalZone == nullptr) {
 				creature->sendSystemMessage("@travel:route_not_available"); // This ticket's route is no longer available.
-				return QueueCommand::GENERALERROR;
+				return GENERALERROR;
 			}
 
 			PlanetManager* planetManager = arrivalZone->getPlanetManager();
 
 			if (planetManager == nullptr || !planetManager->hasJtlTravelDestination(arrivalPointName)) {
 				creature->sendSystemMessage("@travel:route_not_available"); // This ticket's route is no longer available.
-				return QueueCommand::GENERALERROR;
+				return GENERALERROR;
 			}
 
 			Vector3 arrivalPosition = planetManager->getJtlTravelDestination(arrivalPointName);
+			uint64 pilotID = creature->getObjectID();
 
 			for (int j = 0; j < groupMembers.size(); j++) {
 				auto memberID = groupMembers.get(j);
+
+				if (memberID == pilotID)
+					continue;
+
 				auto memberScno = zoneServer->getObject(memberID);
 
 				if (memberScno == nullptr || !memberScno->isPlayerCreature())
 					continue;
 
-				auto groupMember = memberScno->asCreatureObject();
-
-				if (groupMember == nullptr)
-					continue;
-
 				Locker memLock(memberScno, creature);
 
-				groupMember->switchZone(arrivalPlanet, arrivalPosition.getX(),arrivalPosition.getY(),arrivalPosition.getZ(), 0);
+				memberScno->switchZone(arrivalPlanet, arrivalPosition.getX(), arrivalPosition.getZ(), arrivalPosition.getY(), 0);
 			}
 
-			creature->switchZone(arrivalPlanet, arrivalPosition.getX(),arrivalPosition.getY(),arrivalPosition.getZ(), 0);
+			creature->switchZone(arrivalPlanet, arrivalPosition.getX(), arrivalPosition.getZ(), arrivalPosition.getY(), 0);
 
 			Locker cLock(shipDevice, creature);
 			shipDevice->setStoredLocationData(creature);

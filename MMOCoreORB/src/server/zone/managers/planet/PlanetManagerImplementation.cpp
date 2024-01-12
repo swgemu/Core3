@@ -169,8 +169,9 @@ void PlanetManagerImplementation::loadLuaConfig() {
 			if (launchLocation.isValidTable()) {
 				jtlZoneName = launchLocation.getStringAt(1);
 				float x = launchLocation.getFloatAt(2);
-				float y = launchLocation.getFloatAt(3);
-				float z = launchLocation.getFloatAt(4);
+				float z = launchLocation.getFloatAt(3);
+				float y = launchLocation.getFloatAt(4);
+
 				jtlLaunchLocation = Vector3(x, y, z);
 			}
 
@@ -239,7 +240,7 @@ void PlanetManagerImplementation::loadLuaConfig() {
 void PlanetManagerImplementation::loadJTLData(LuaObject* luaObject) {
 	if (!luaObject->isValidTable())
 		return;
-//
+
 	for (int i = 1; i <= luaObject->getTableSize(); ++i) {
 		lua_State *L = luaObject->getLuaState();
 		lua_rawgeti(L, -1, i);
@@ -248,8 +249,9 @@ void PlanetManagerImplementation::loadJTLData(LuaObject* luaObject) {
 
 		String locationName = location.getStringAt(1);
 		float x = location.getFloatAt(2);
-		float y = location.getFloatAt(3);
-		float z = location.getFloatAt(4);
+		float z = location.getFloatAt(3);
+		float y = location.getFloatAt(4);
+
 		jtlTravelDestinations.put(locationName, Vector3(x, y, z));
 		location.pop();
 	}
