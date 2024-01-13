@@ -48,6 +48,8 @@ object_ship_player_player_hutt_light_s02 = object_ship_player_shared_player_hutt
 	chassisHitpoints = 1340,
 	chassisMass = 10000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "lightfighter",
 	level = 0,
 

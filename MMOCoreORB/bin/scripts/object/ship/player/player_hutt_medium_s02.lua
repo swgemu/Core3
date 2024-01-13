@@ -48,6 +48,8 @@ object_ship_player_player_hutt_medium_s02 = object_ship_player_shared_player_hut
 	chassisHitpoints = 6000,
 	chassisMass = 110000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "heavyfighter",
 	level = 2,
 

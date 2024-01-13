@@ -135,7 +135,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 		return false;
 	}
 
-	Zone* newSpaceZone = cast<Zone*>(sceneObject);
+	auto newSpaceZone = sceneObject->asSpaceZone();
 
 	if (newSpaceZone == nullptr) {
 		return false;
@@ -143,7 +143,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 
 	// newSpaceZone->info(true) << "SpaceZoneContainerComponent::transferObject -- Object: " << object->getDisplayedName() << "  Containment Type: " << containmentType;
 
-	Zone* zone = object->getZone();
+	auto zone = object->getZone();
 
 	if (object->isActiveArea())
 		return insertActiveArea(newSpaceZone, dynamic_cast<ActiveArea*>(object));
@@ -151,7 +151,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	Locker zoneLocker(newSpaceZone);
 
 	if (object->isInOctree() && newSpaceZone != zone) {
-		object->error("trying to insert object to newSpaceZone but is already in another space zone");
+		object->error() << "trying to insert object to newSpaceZone but is already in another space zone";
 
 		object->destroyObjectFromWorld(true);
 		//StackTrace::printStackTrace();
@@ -189,9 +189,8 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	}
 
 	object->setZone(newSpaceZone);
-	zone = newSpaceZone;
 
-	zone->addSceneObject(object);
+	newSpaceZone->addSceneObject(object);
 
 	if (notifyClient)
 		object->sendToOwner(true);
@@ -199,20 +198,20 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	if (parent == nullptr)
 		object->initializePosition(object->getPositionX(), object->getPositionZ(), object->getPositionY());
 
-	zone->insert(object);
+	newSpaceZone->insert(object);
 
-	zone->inRange(object, zone->getZoneObjectRange());
+	newSpaceZone->inRange(object, newSpaceZone->getZoneObjectRange());
 
 	TangibleObject* tanoObject = object->asTangibleObject();
 
-	if (tanoObject != nullptr) {
-		zone->updateActiveAreas(tanoObject);
+	if (tanoObject != nullptr && tanoObject->isShipObject()) {
+		newSpaceZone->updateActiveAreas(tanoObject);
 	}
 
 	zoneLocker.release();
 
 	if (notifyClient) {
-		object->notifyInsertToZone(zone);
+		object->notifyInsertToZone(newSpaceZone);
 	}
 
 	object->notifyObservers(ObserverEventType::PARENTCHANGED, nullptr);

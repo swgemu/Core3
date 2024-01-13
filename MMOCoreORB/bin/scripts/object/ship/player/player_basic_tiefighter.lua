@@ -49,7 +49,8 @@ object_ship_player_player_basic_tiefighter = object_ship_player_shared_player_ba
 	chassisMass = 11500,
 
 	category = "lightfighter",
-	level = 0,
+
+	containerComponent = "ShipContainerComponent",
 
 	attributes = {
 		{"speedRotationFactorMin", 0.2},

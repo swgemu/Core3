@@ -21,7 +21,7 @@ public:
 
 	void notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const;
 
-	void switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID = 0, bool toggleInvisibility = false) const;
+	void switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID = 0, bool toggleInvisibility = false, int playerArrangement = -1) const;
 
 	void notifyInsertToZone(SceneObject* sceneObject, SpaceZone* newZone) const;
 

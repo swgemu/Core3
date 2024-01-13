@@ -48,6 +48,8 @@ object_ship_player_player_z95 = object_ship_player_shared_player_z95:new {
 	chassisHitpoints = 1442,
 	chassisMass = 11500,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "lightfighter",
 	level = 0,
 

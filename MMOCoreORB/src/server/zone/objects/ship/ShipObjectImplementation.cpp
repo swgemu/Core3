@@ -144,8 +144,8 @@ void ShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) 
 }
 
 void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
-	//info(true) << "ShipObjectImplementation::sendTo - " << getDisplayedName() << " Location: " << getWorldPosition().toString() << " sending to: " << player->getDisplayedName() << " Player Loc: " << player->getWorldPosition().toString()
-	//	<< " && Non-World: " << player->getPosition().toString();
+	//info(true) << "ShipObjectImplementation::sendTo - Ship Location: " << getWorldPosition().toString() << " sending to: " << player->getDisplayedName() << " Player Loc: " << player->getWorldPosition().toString()
+	//	<< " Containment Type: " << player->getContainmentType();
 
 	TangibleObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 }
@@ -156,7 +156,7 @@ void ShipObjectImplementation::setShipName(const String& name, bool notifyClient
 }
 
 void ShipObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
-	// info(true) << "ShipObjectImplementation::sendSlottedObjectsTo - " << getDisplayedName() << " sending to: " << player->getDisplayedName();
+	// info(true) << "ShipObjectImplementation::sendSlottedObjectsTo - sending to: " << player->getDisplayedName();
 
 	VectorMap<String, ManagedReference<SceneObject* > > slotted;
 	getSlottedObjects(slotted);
@@ -228,7 +228,7 @@ uint16 ShipObjectImplementation::getUniqueID() {
 }
 
 void ShipObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	// info(true) << "ShipObjectImplementation::sendBaselinesTo - " << getDisplayedName() << " sending to: " << player->getDisplayedName();
+	// info(true) << "ShipObjectImplementation::sendBaselinesTo - sending to: " << player->getDisplayedName();
 
 	bool sendSelf = player == owner.get() || player->isASubChildOf(asShipObject());
 
@@ -351,7 +351,7 @@ void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool 
 }
 
 void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
-	//info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - for " << object->getDisplayedName();
+	// info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - for " << object->getDisplayedName();
 
 	auto closeObjectsVector = getCloseObjects();
 	SortedVector<TreeEntry*> closeObjects(closeObjectsVector->size(), 10);
@@ -404,14 +404,14 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 
 #ifdef DEBUG_COV
 	if (sceneO->isPlayerCreature()) {
-		info(true) << getDisplayedName() << "ShipObjectImplementationnotifyInsert -- Ship: " << getDisplayedName()  << " Player: " << sceneO->getDisplayedName() << " ID: " << scnoID;
+		info(true) << "ShipObjectImplementation::notifyInsert -- Object inserted: " << sceneO->getDisplayedName() << " ID: " << scnoID;
 	}
 #endif // DEBUG_COV
 
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
 		auto shipMember = playersOnBoard.get(i);
 
-		if (shipMember == nullptr)
+		if (shipMember == nullptr || sceneO == shipMember)
 			continue;
 
 		if (shipMember->getCloseObjects() != nullptr)
@@ -445,14 +445,16 @@ void ShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 }
 
 void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	if (!isShipAiAgent())
-		updatePlayersInShip(lightUpdate, sendPackets);
+	updatePlayersInShip(lightUpdate, sendPackets);
 
 	SceneObjectImplementation::updateZone(lightUpdate, sendPackets);
 }
 
 void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {
-	// info(true) << "ShipObjectImplementation::updatePlayersInShip - " << getDisplayedName();
+	if (getLocalZone() == nullptr || isHyperspacing())
+		return;
+
+	// info(true) << "ShipObjectImplementation::updatePlayersInShip";
 
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
 		auto shipMember = playersOnBoard.get(i);
@@ -463,7 +465,6 @@ void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPa
 		Locker clock(shipMember, asShipObject());
 
 		shipMember->setPosition(getPositionX(),getPositionZ(),getPositionY());
-
 		shipMember->updateZoneWithParent(shipMember->getParent().get(), lightUpdate, sendPackets);
 	}
 }
@@ -476,6 +477,8 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 	if (zone != nullptr)
 		_locker = new Locker(zone);
 
+	// info(true) << getDisplayedName() << " ShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
+
 	try {
 		if (object->getCloseObjects() != nullptr)
 			object->addInRangeObject(object, false);
@@ -483,7 +486,7 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 		if (child->isCellObject()) {
 			bool runInRange = true;
 
-			if ((oldParent == nullptr || !oldParent->isCellObject()) || oldParent == child) {
+			if (oldParent == nullptr || !oldParent->isCellObject() || oldParent == child) {
 
 				if (oldParent == nullptr || (oldParent != nullptr && dynamic_cast<SpaceZone*>(oldParent) == nullptr && !oldParent->isCellObject())) {
 					notifyObjectInsertedToZone(object);

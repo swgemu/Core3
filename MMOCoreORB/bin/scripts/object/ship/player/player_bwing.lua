@@ -48,6 +48,8 @@ object_ship_player_player_bwing = object_ship_player_shared_player_bwing:new {
 	chassisHitpoints = 1765,
 	chassisMass = 240000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "bomber",
 	level = 5,
 

@@ -47,6 +47,8 @@ object_ship_player_player_hutt_turret_ship = object_ship_player_shared_player_hu
 	chassisHitpoints = 1512,
 	chassisMass = 210000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "heavyfighter",
 	level = 5,
 

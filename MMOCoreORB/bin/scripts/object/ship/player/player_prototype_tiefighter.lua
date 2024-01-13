@@ -48,6 +48,8 @@ object_ship_player_player_prototype_tiefighter = object_ship_player_shared_playe
 	chassisHitpoints = 800,
 	chassisMass = 11500,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "lightfighter",
 	level = 0,
 

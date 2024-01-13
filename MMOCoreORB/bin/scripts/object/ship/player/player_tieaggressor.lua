@@ -47,6 +47,8 @@ object_ship_player_player_tieaggressor = object_ship_player_shared_player_tieagg
 	chassisHitpoints = 1643.2,
 	chassisMass = 120000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "mediumfighter",
 	level = 4,
 

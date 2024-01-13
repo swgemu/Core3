@@ -48,6 +48,8 @@ object_ship_player_player_xwing = object_ship_player_shared_player_xwing:new {
 	chassisHitpoints = 6000,
 	chassisMass = 100000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "mediumfighter",
 	level = 3,
 

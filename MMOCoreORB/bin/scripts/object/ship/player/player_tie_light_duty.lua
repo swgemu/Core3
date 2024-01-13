@@ -48,6 +48,8 @@ object_ship_player_player_tie_light_duty = object_ship_player_shared_player_tie_
 	chassisHitpoints = 1350,
 	chassisMass = 11500,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "lightfighter",
 	level = 0,
 

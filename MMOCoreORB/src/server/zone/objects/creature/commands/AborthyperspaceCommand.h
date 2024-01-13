@@ -36,7 +36,7 @@ public:
 			return GENERALERROR;
 		}
 
-		Locker lock(ship);
+		Locker lock(ship, creature);
 		ship->setHyperspacing(false);
 
 		param.setStringId("@space/space_interaction:hyperspace_aborted");

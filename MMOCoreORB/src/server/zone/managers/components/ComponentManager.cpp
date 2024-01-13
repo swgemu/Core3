@@ -92,6 +92,7 @@
 #include "server/zone/objects/installation/components/MinefieldMenuComponent.h"
 #include "server/zone/GroundZoneContainerComponent.h"
 #include "server/zone/SpaceZoneContainerComponent.h"
+#include "server/zone/objects/ship/components/ShipContainerComponent.h"
 #include "server/zone/objects/ship/components/PobShipContainerComponent.h"
 #include "server/zone/objects/structure/components/StructureContainerComponent.h"
 #include "server/zone/objects/tangible/components/ElevatorMenuComponent.h"
@@ -230,8 +231,10 @@ ComponentManager::ComponentManager() {
 
 	components.put("HQMenuComponent", new HQMenuComponent());
 	components.put("ContainerObjectComponent", new ContainerObjectComponent());
-	components.put("PobShipContainerComponent", new PobShipContainerComponent());
 	components.put("StructureContainerComponent", new StructureContainerComponent());
+
+	components.put("ShipContainerComponent", new ShipContainerComponent());
+	components.put("PobShipContainerComponent", new PobShipContainerComponent());
 
 	components.put("VendorContainerComponent", new VendorContainerComponent());
 	components.put("DroidContainerComponent", new DroidContainerComponent());

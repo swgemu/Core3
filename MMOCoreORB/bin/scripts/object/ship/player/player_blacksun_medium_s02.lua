@@ -48,6 +48,8 @@ object_ship_player_player_blacksun_medium_s02 = object_ship_player_shared_player
 	chassisHitpoints = 519,
 	chassisMass = 95000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "mediumfighter",
 	level = 3,
 

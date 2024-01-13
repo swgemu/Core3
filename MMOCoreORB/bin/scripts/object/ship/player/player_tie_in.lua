@@ -48,6 +48,8 @@ object_ship_player_player_tie_in = object_ship_player_shared_player_tie_in:new {
 	chassisHitpoints = 1350,
 	chassisMass = 40000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "lightfighter",
 	level = 2,
 

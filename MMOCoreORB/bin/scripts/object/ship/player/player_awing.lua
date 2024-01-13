@@ -48,6 +48,8 @@ object_ship_player_player_awing = object_ship_player_shared_player_awing:new {
 	chassisHitpoints = 1125,
 	chassisMass = 65000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "interceptor",
 	level = 4,
 

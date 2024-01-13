@@ -48,6 +48,8 @@ object_ship_player_player_blacksun_light_s01 = object_ship_player_shared_player_
 	chassisHitpoints = 519,
 	chassisMass = 40000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "lightfighter",
 	level = 2,
 

@@ -14,7 +14,7 @@ bool PobShipContainerComponent::checkContainerPermission(SceneObject* sceneObjec
 		if (permission == ContainerPermissions::MOVEVENDOR)
 			return false;
 
-		PobShipObject* pobShip = cast<PobShipObject*>(sceneObject);
+		PobShipObject* pobShip = sceneObject->asPobShip();
 
 		if (pobShip == nullptr)
 			return false;
@@ -23,5 +23,5 @@ bool PobShipContainerComponent::checkContainerPermission(SceneObject* sceneObjec
 			return true;
 	}
 
-	return ContainerComponent::checkContainerPermission(sceneObject, creature, permission);
+	return ShipContainerComponent::checkContainerPermission(sceneObject, creature, permission);
 }

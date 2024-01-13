@@ -302,10 +302,10 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 	guildManager->sendBaselinesTo(asCreatureObject());
 
-	ManagedReference<SceneObject*> grandParent = getRootParent();
+	ManagedReference<SceneObject*> rootParent = getRootParent();
 
-	if (grandParent != nullptr) {
-		grandParent->sendTo(asCreatureObject(), true);
+	if (rootParent != nullptr) {
+		rootParent->sendTo(asCreatureObject(), true);
 	} else
 		sendTo(asCreatureObject(), doClose);
 
@@ -320,7 +320,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 		SceneObject* obj = static_cast<SceneObject*> (closeObjects.get(i));
 
 		if (obj != asCreatureObject()) {
-			if (obj != grandParent) {
+			if (obj != rootParent) {
 				notifyInsert(obj);
 				//obj->sendTo(asCreatureObject(), true);
 			}

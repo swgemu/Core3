@@ -48,6 +48,8 @@ object_ship_player_player_tiebomber = object_ship_player_shared_player_tiebomber
 	chassisHitpoints = 2131,
 	chassisMass = 190000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "bomber",
 	level = 3,
 

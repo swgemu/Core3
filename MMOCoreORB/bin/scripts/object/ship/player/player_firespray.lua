@@ -48,6 +48,8 @@ object_ship_player_player_firespray = object_ship_player_shared_player_firespray
 	chassisHitpoints = 1650,
 	chassisMass = 210000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "heavyfighter",
 	level = 5,
 

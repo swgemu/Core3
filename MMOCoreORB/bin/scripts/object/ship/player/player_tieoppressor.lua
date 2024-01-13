@@ -48,6 +48,8 @@ object_ship_player_player_tieoppressor = object_ship_player_shared_player_tieopp
 	chassisHitpoints = 1765,
 	chassisMass = 10000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "heavyfighter",
 	level = 5,
 

@@ -48,6 +48,8 @@ object_ship_player_player_blacksun_heavy_s04 = object_ship_player_shared_player_
 	chassisHitpoints = 519,
 	chassisMass = 190000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "heavyfighter",
 	level = 4,
 

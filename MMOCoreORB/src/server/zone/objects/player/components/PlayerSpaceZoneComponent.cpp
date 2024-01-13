@@ -65,7 +65,7 @@ void PlayerSpaceZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEnt
 	scno->sendDestroyTo(sceneObject);
 }
 
-void PlayerSpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
+void PlayerSpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility, int playerArrangement) const {
 	// info(true) << "PlayerSpaceZoneComponent::switchZone called for: " << sceneObject->getDisplayedName();
 
 	if (sceneObject->isPlayerCreature()) {
@@ -92,7 +92,7 @@ void PlayerSpaceZoneComponent::switchZone(SceneObject* sceneObject, const String
 		player->notifyObservers(ObserverEventType::ZONESWITCHED, nullptr, newTerrainName.hashCode());
 	}
 
-	SpaceZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
+	SpaceZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility, playerArrangement);
 }
 
 void PlayerSpaceZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {

@@ -14,9 +14,10 @@
 class InsertGroupMembertIntoShipTask : public Task, public Logger {
 	ManagedWeakReference<ShipObject*> shipObj;
 	uint64 memberID;
+	int playerArrangement;
 
 public:
-	InsertGroupMembertIntoShipTask(ShipObject* shipObj, uint64 memID) : shipObj(shipObj), memberID(memID) {
+	InsertGroupMembertIntoShipTask(ShipObject* shipObj, uint64 memID, int arrangement) : shipObj(shipObj), memberID(memID), playerArrangement(arrangement) {
 		setLoggingName("InsertPlayerToShipTask");
 	}
 
@@ -73,7 +74,7 @@ public:
 
 			// info(true) << "Inserting Group Member into POB ship - " << groupMember->getDisplayedName() << " Into Cell: " << randomCell << " Launch Location: " << launchLoc;
 
-			groupMember->switchZone(spaceZone->getZoneName(), launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), cell->getObjectID());
+			groupMember->switchZone(spaceZone->getZoneName(), launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), cell->getObjectID(), false, playerArrangement);
 		} else {
 			Locker clock(groupMember, ship);
 
@@ -81,7 +82,7 @@ public:
 
 			// info(true) << "Inserting Group Member into MultiPassenger ship - " << groupMember->getDisplayedName();
 
-			groupMember->switchZone(spaceZone->getZoneName(), ship->getWorldPositionX(), ship->getWorldPositionZ(), ship->getWorldPositionY(), ship->getObjectID());
+			groupMember->switchZone(spaceZone->getZoneName(), ship->getWorldPositionX(), ship->getWorldPositionZ(), ship->getWorldPositionY(), ship->getObjectID(), false, playerArrangement);
 		}
 
 		ship->addPlayerOnBoard(groupMember);

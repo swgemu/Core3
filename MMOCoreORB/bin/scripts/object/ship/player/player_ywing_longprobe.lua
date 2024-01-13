@@ -47,6 +47,8 @@ object_ship_player_player_ywing_longprobe = object_ship_player_shared_player_ywi
 	chassisHitpoints = 1942,
 	chassisMass = 170000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "bomber",
 	level = 2,
 

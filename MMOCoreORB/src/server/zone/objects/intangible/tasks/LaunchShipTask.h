@@ -8,9 +8,10 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/ship/events/InsertPilotIntoShipTask.h"
 #include "server/zone/objects/ship/events/InsertGroupMemberIntoShipTask.h"
-#include "server/zone/managers/planet/PlanetManager.h"
+#include "templates/params/creature/PlayerArrangement.h"
 
 class LaunchShipTask : public Task, public Logger {
 	ManagedWeakReference<CreatureObject*> play;
@@ -83,7 +84,8 @@ public:
 
 				// info(true) << "LaunchShipTask - Scheduling Group Member for Insertion - ID: " << memberID;
 
-				InsertGroupMembertIntoShipTask* memberTask = new InsertGroupMembertIntoShipTask(ship, memberID);
+				// POB Ships will send group members into cells directly with a -1 arrangement. MultiPassenger ships will send one group member into the gunner positon.
+				InsertGroupMembertIntoShipTask* memberTask = new InsertGroupMembertIntoShipTask(ship, memberID, (ship->isMultiPassengerShip() ? PlayerArrangement::SHIP_GUNNER1 : -1));
 
 				if (memberTask != nullptr)
 					memberTask->schedule(200 + (j * 50));

@@ -9,6 +9,7 @@
 #include "server/zone/SpaceZone.h"
 #include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "templates/params/creature/PlayerArrangement.h"
 
 class InsertPilotIntoShipTask : public Task, public Logger {
 	ManagedWeakReference<CreatureObject*> play;
@@ -65,14 +66,14 @@ public:
 
 			Vector3 chairLocation = pilotChair->getPosition();
 
-			player->switchZone(spaceZone->getZoneName(), chairLocation.getX(), chairLocation.getZ() + 0.5, chairLocation.getY(), pilotChair->getObjectID());
+			player->switchZone(spaceZone->getZoneName(), chairLocation.getX(), chairLocation.getZ() + 0.5, chairLocation.getY(), pilotChair->getObjectID(), false, PlayerArrangement::SHIP_PILOT_POB);
 		} else {
 			player->setState(CreatureState::PILOTINGSHIP);
 
 			// Set the pilots direction to the same as the ship
 			player->setDirection(*ship->getDirection());
 
-			player->switchZone(spaceZone->getZoneName(), ship->getPositionX(), ship->getPositionZ(), ship->getPositionY(), ship->getObjectID());
+			player->switchZone(spaceZone->getZoneName(), ship->getPositionX(), ship->getPositionZ(), ship->getPositionY(), ship->getObjectID(), false, PlayerArrangement::SHIP_PILOT);
 		}
 
 		ship->addPlayerOnBoard(player);

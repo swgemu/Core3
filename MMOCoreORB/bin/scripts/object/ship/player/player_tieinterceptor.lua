@@ -48,6 +48,8 @@ object_ship_player_player_tieinterceptor = object_ship_player_shared_player_tiei
 	chassisHitpoints = 6000,
 	chassisMass = 50000,
 
+	containerComponent = "ShipContainerComponent",
+
 	category = "interceptor",
 	level = 3,
 
