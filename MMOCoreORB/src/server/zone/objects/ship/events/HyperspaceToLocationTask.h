@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/ship/ShipObject.h"
-#include "server/zone/packets/object/OrientForHyperspace.h"
 
 class HyperspaceToLocationTask : public Task {
 	ManagedWeakReference<CreatureObject*> play;
@@ -38,6 +37,8 @@ public:
 
 		int currentIter = iteration++;
 
+		// shipObject->info(true) << shipObject->getDisplayedName() << " HyperspaceToLocationTask - Iteration: " << currentIter << " Pilot: " << player->getDisplayedName();
+
 		Locker locker(shipObject);
 
 		switch (currentIter) {
@@ -48,21 +49,30 @@ public:
 			return;
 		case 1: // 25%
 		case 2: // 50%
-		case 3: { // 75%
+		case 3: // 75%
+		case 4: { // 100%
 			String strid = "@space/space_interaction:hyperspace_route_calculation_";
 
 			strid += String::valueOf(currentIter);
 
 			shipObject->sendShipMembersMessage(strid);
 
-			reschedule(5000);
+			if (currentIter >= 4) {
+				//close s-foils as the ship is orienting if they're still open
+				uint32 optionsBitmask = shipObject->getOptionsBitmask();
+
+				if (optionsBitmask & OptionBitmask::WINGS_OPEN)
+					shipObject->clearOptionBit(OptionBitmask::WINGS_OPEN);
+
+				shipObject->sendMembersHyperspaceOrientMessage(zoneName, location);
+
+				reschedule(1000);
+			} else {
+				reschedule(5000);
+			}
+
 			return;
 		}
-		case 4: // 100%
-			orientShip(shipObject, player);
-
-			reschedule(2000);
-			return;
 		case 5: // t-4
 		case 6: // t-3
 		case 7: // t-2
@@ -76,57 +86,52 @@ public:
 			reschedule(1000);
 			return;
 		}
-		case 9:
+		case 9: {
 			// Randomize and set the location.
 			location.setX(location.getX() + System::random(100.f));
 			location.setZ(location.getZ() + System::random(100.f));
 			location.setY(location.getY() + System::random(100.f));
 
-			shipObject->sendShipMembersHyperspaceMessage(zoneName, location);
+			shipObject->sendMembersHyperspaceBeginMessage(zoneName, location);
 
-			reschedule(7000);
-			return;
-		case 10: {
-			reschedule(1000);
+			reschedule(6000);
 			return;
 		}
-		case 11: {
-			shipObject->switchZone(zoneName, location.getX(), location.getZ(), location.getY(), 0, false);
+		case 10: {
+			// Switch the ships zone
+			shipObject->switchZone(zoneName, location.getX(), location.getZ(), location.getY());
 
-			shipObject->setHyperspacing(false);
+			// Switch the pilot before the remaining players on the ship
+			try {
+				Locker pilotLock(player, shipObject);
 
-			// Transport players onboard the ship
+				player->switchZone(zoneName, shipObject->getPositionX(), shipObject->getPositionZ(), shipObject->getPositionY(), player->getParentID(), false, player->getContainmentType());
+			} catch (...) {
+				player->error() << "Failed to transport Pilot in hyperspace - ShipID: " << shipObject->getObjectID() << " Player ID: " << player->getObjectID();
+			}
+
+			// Switch all remaining players onboard the ship
 			int totalPlayers = shipObject->getTotalPlayersOnBoard();
 
 			for (int i = totalPlayers - 1; i >= 0; --i) {
 				auto shipMember = shipObject->getPlayerOnBoard(i);
 
-				if (shipMember != nullptr) {
+				if (shipMember != nullptr && shipMember != player) {
 					try {
 						Locker memberLock(shipMember, shipObject);
 
-						shipMember->switchZone(zoneName, location.getX(), location.getZ(), location.getY(), shipMember->getParentID(), false);
+						shipMember->switchZone(zoneName, shipObject->getPositionX(), shipObject->getPositionZ(), shipObject->getPositionY(), shipMember->getParentID(), false, shipMember->getContainmentType());
 					} catch (...) {
-						shipMember->error() << "Failed to transport player in hyperspace - ShipID: " << shipObject->getObjectID() << " Player ID: " << player->getObjectID();
+						shipMember->error() << "Failed to transport player onboard ship in hyperspace - ShipID: " << shipObject->getObjectID() << " Ship Member ID: " << shipMember->getObjectID();
 					}
 				}
 			}
-		}
-		}
-	}
 
-	void orientShip(ShipObject* shipObject, CreatureObject* player) {
-		if (player == nullptr || shipObject == nullptr)
+			shipObject->setHyperspacing(false);
+
 			return;
-
-		//close s-foils as the ship is orienting if they're still open
-		uint32 optionsBitmask = shipObject->getOptionsBitmask();
-
-		if (optionsBitmask & OptionBitmask::WINGS_OPEN)
-			shipObject->clearOptionBit(OptionBitmask::WINGS_OPEN);
-
-		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(player->getObjectID(), zoneName, location.getX(), location.getY(), location.getZ());
-		player->sendMessage(msg);
+		}
+		}
 	}
 };
 

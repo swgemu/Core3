@@ -1669,5 +1669,7 @@ class ShipObject extends TangibleObject {
 
 	public native void sendShipMembersMusicMessage(final string message);
 
-	public native void sendShipMembersHyperspaceMessage(final string zoneName, @dereferenced final Vector3 location);
+	public native void sendMembersHyperspaceBeginMessage(final string zoneName, @dereferenced final Vector3 location);
+
+	public native void sendMembersHyperspaceOrientMessage(final string zoneName, @dereferenced final Vector3 location);
 }
