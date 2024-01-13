@@ -23,6 +23,7 @@
 #include "server/zone/packets/ship/ShipObjectMessage4.h"
 #include "server/zone/packets/ship/ShipObjectMessage6.h"
 #include "server/zone/packets/object/BeginHyperspace.h"
+#include "server/zone/packets/object/OrientForHyperspace.h"
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "templates/tangible/ship/SharedShipObjectTemplate.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
@@ -1268,7 +1269,7 @@ void ShipObjectImplementation::sendShipMembersMusicMessage(const String& message
 	}
 }
 
-void ShipObjectImplementation::sendShipMembersHyperspaceMessage(const String& zoneName, const Vector3& location) {
+void ShipObjectImplementation::sendMembersHyperspaceBeginMessage(const String& zoneName, const Vector3& location) {
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
 		auto member = playersOnBoard.get(i);
 
@@ -1276,6 +1277,18 @@ void ShipObjectImplementation::sendShipMembersHyperspaceMessage(const String& zo
 			continue;
 
 		BeginHyperspaceMessage* msg = new BeginHyperspaceMessage(member->getObjectID(), zoneName, location.getX(), location.getZ(), location.getY());
+		member->sendMessage(msg);
+	}
+}
+
+void ShipObjectImplementation::sendMembersHyperspaceOrientMessage(const String& zoneName, const Vector3& location) {
+	for (int i = 0; i < playersOnBoard.size(); ++i) {
+		auto member = playersOnBoard.get(i);
+
+		if (member == nullptr)
+			continue;
+
+		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(member->getObjectID(), zoneName, location.getX(), location.getZ(), location.getY());
 		member->sendMessage(msg);
 	}
 }

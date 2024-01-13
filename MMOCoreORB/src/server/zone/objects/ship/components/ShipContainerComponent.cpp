@@ -107,7 +107,7 @@ bool ShipContainerComponent::transferObject(SceneObject* shipContainer, SceneObj
 			return false;
 		}
 	// This will handle players transferred into a Cell on a ship
-	} else if (containmentType == -1 && shipContainer->isCellObject()) {
+	} else if (containmentType == -1) {
 		if (!allowOverflow && containerObjects->size() >= shipContainer->getContainerVolumeLimit()){
 			return false;
 		}
