@@ -53,6 +53,9 @@ object_ship_player_player_ywing = object_ship_player_shared_player_ywing:new {
 	category = "mediumfighter",
 	level = 1,
 
+	-- SHIPMULTIPASSENGER
+	gameObjectType = 536870919,
+
 	attributes = {
 		{"speedRotationFactorMin", 0.1},
 		{"speedRotationFactorOptimal", 0.3},
