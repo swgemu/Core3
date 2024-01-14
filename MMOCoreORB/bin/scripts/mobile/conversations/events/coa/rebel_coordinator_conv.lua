@@ -289,7 +289,7 @@ coa3_incredibly_suspicious_l = ConvoScreen:new {
 	leftDialog = "@conversation/coa3lcoordinator:s_1f81bc3c", -- These people are incredibly suspicious so you'll need to be very convincing. If they suspect you they won't hesitate to attack. If that happens, then I'm afraid we'll have to start over and try it again. Are you prepared to take on this task?
 	stopConversation = "false",
 	options = {
-		{"@conversation/coa3lcoordinator:s_d55f2579", "coa3_uploaded_lookout_location"}, -- I'm ready to go.
+		{"@conversation/coa3lcoordinator:s_d55f2579", "coa3_uploaded_lookout_location_l"}, -- I'm ready to go.
 		{"@conversation/coa3lcoordinator:s_36142d2b", "coa3_come_back_when_ready"}, -- I can't do this right now.
 	}
 }
