@@ -177,13 +177,13 @@ void ActiveAreaOctree::removeActiveArea(ActiveAreaOctreeNode& node, ActiveArea* 
 	} else if (nodeNE != nullptr && nodeNE->testAreaInside(positionX, positionZ, positionY, radius)) {
 		removeActiveArea(*nodeNE, area);
 	} else if (nodeSW2 != nullptr && nodeSW2->testAreaInside(positionX, positionZ, positionY, radius)) {
-		removeActiveArea(*nodeNW, area);
+		removeActiveArea(*nodeSW2, area);
 	} else if (nodeSE2 != nullptr && nodeSE2->testAreaInside(positionX, positionZ, positionY, radius)) {
-		removeActiveArea(*nodeNW, area);
+		removeActiveArea(*nodeSE2, area);
 	} else if (nodeNW2 != nullptr && nodeNW2->testAreaInside(positionX, positionZ, positionY, radius)) {
-		removeActiveArea(*nodeNW, area);
+		removeActiveArea(*nodeNW2, area);
 	} else if (nodeNE2 != nullptr && nodeNE2->testAreaInside(positionX, positionZ, positionY, radius)) {
-		removeActiveArea(*nodeNW, area);
+		removeActiveArea(*nodeNE2, area);
 	}
 }
 #endif

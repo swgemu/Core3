@@ -42,8 +42,6 @@ class GroundZone extends Zone {
 
 	protected transient PlanetManager planetManager;
 
-	protected transient boolean zoneCleared;
-
 	// Ground Zone Constructor
 	public native GroundZone(ZoneProcessServer processor, final string zoneName);
 
