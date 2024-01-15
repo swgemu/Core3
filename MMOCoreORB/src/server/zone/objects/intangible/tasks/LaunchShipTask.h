@@ -48,7 +48,9 @@ public:
 			return;
 		}
 
-		Vector3 randomPosition = Vector3(System::random(200.f), System::random(200.f), System::random(200.f));
+		float randomizeLaunch = 750.f + System::random(1500 - 750);
+
+		Vector3 randomPosition = Vector3(randomizeLaunch, randomizeLaunch, randomizeLaunch);
 		Vector3 launchPosition = planetManager->getJtlLaunchLocations() + randomPosition;
 
 		// Lock the control device
