@@ -66,6 +66,8 @@ class SpaceManager extends ManagedService implements Logger {
 
 	public native void start();
 
+	public native void broadcastNebulaLightning(ShipObject ship, @dereferenced final Vector3 nebulaCenter, unsigned short lightningCount, int nebulaID, int startMili, int endMili, @dereferenced final Vector3 startPoint, @dereferenced final Vector3 endPoint);
+
 	@dirty
 	@local
 	@dereferenced

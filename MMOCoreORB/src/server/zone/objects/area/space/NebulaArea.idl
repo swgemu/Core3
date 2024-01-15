@@ -5,11 +5,20 @@
 
 package server.zone.objects.area.space;
 
+import server.zone.TreeEntry;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.space.SpaceActiveArea;
+import system.lang.Time;
+
+include system.thread.atomic.AtomicInteger;
+include server.zone.objects.ship.ShipObject;
 
 @json
 class NebulaArea extends SpaceActiveArea {
+	private static final int LIGHTNINGDELAY = 20; // Random amount in seconds
+
+	protected float nebulaDensity;
+
 	protected string ambientSound;
 	protected string lightningAppearance;
 	protected string lightningSound;
@@ -19,16 +28,31 @@ class NebulaArea extends SpaceActiveArea {
 
 	protected float lightningDamageMin;
 	protected float lightningDamageMax;
+	protected float lightningFrequency;
+	protected float lightningDurationMax;
 
-	protected int lightningFrequency;
-	protected int lightningDurationMax;
+	@dereferenced
+	protected AtomicInteger numberOfShipsInRange;
 
+	@dereferenced
+	protected AtomicInteger lightningCount;
+
+	@dereferenced
+	protected Time lastLightning;
+
+	protected int nebulaID;
 
 	public NebulaArea() {
 		Logger.setLoggingName("NebulaArea");
+
+		lastLightning.updateToCurrentTime();
 	}
 
 	// Mutators
+	public void setNebulaDensity(float density) {
+		nebulaDensity = density;
+	}
+
 	public void setAmbientSound(final string sound) {
 		ambientSound = sound;
 	}
@@ -69,15 +93,33 @@ class NebulaArea extends SpaceActiveArea {
 		lightningDurationMax = maxDuration;
 	}
 
+	public void setNebulaID(int nebulaId) {
+		nebulaID = nebulaId;
+	}
+
 	// Accessors
+	public float getNebulaDensity() {
+		return nebulaDensity;
+	}
 
+	public float getMaxLightningDuration() {
+		return lightningDurationMax;
+	}
 
+	public int getNebulaID() {
+		return nebulaID;
+	}
 
 	// Functions
+
+	@dirty
+	public native void notifyPositionUpdate(TreeEntry entry);
 
 	@dirty
 	public native abstract void notifyEnter(SceneObject object);
 
 	@dirty
 	public native abstract void notifyExit(SceneObject object);
+
+	private native void createNewLightning(ShipObject ship);
 }

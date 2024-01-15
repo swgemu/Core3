@@ -9,9 +9,9 @@ import system.lang.Time;
 import system.lang.String;
 import system.lang.Exception;
 import server.zone.Zone;
-import server.zone.objects.ship.FighterShipObject;
-import server.zone.objects.ship.ShipObject;
 
+include server.zone.objects.ship.FighterShipObject;
+include server.zone.objects.ship.ShipObject;
 import server.zone.objects.ship.ai.events.ShipAiBehaviorEvent;
 import server.zone.objects.ship.ai.events.DespawnAiShipOnNoPlayersInRange;
 import system.lang.ref.Reference;

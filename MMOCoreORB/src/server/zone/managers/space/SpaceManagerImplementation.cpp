@@ -18,6 +18,7 @@
 #include "server/zone/objects/area/areashapes/SphereAreaShape.h"
 #include "server/zone/objects/area/areashapes/CuboidAreaShape.h"
 #include "server/zone/objects/area/space/NebulaArea.h"
+#include "server/zone/packets/jtl/CreateNebulaLightningMessage.h"
 
 void SpaceManagerImplementation::loadLuaConfig() {
 	String planetName = spaceZone->getZoneName();
@@ -214,7 +215,7 @@ void SpaceManagerImplementation::loadNebulaAreas() {
 
 	// Declare variables
 	String name, ambientSound, lightningAppearance, lightningSound, lightningSoundLoop, lightningHitEffectClient, lightningHitEffectServer;
-	float x, z, y, radius, lightningDamageMin, lightningDamageMax, lightningFrequency, lightningDurationMax;
+	float x, z, y, radius, density, lightningDamageMin, lightningDamageMax, lightningFrequency, lightningDurationMax;
 	StringBuffer nebulaName;
 
 	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
@@ -225,6 +226,7 @@ void SpaceManagerImplementation::loadNebulaAreas() {
 		row->getCell(2)->getValue(z);
 		row->getCell(3)->getValue(y);
 		row->getCell(4)->getValue(radius);
+		row->getCell(5)->getValue(density);
 
 		row->getCell(23)->getValue(ambientSound);
 		row->getCell(29)->getValue(lightningFrequency);
@@ -264,6 +266,7 @@ void SpaceManagerImplementation::loadNebulaAreas() {
 
 		nebulaArea->setAreaShape(sphereArea);
 
+		nebulaArea->setNebulaDensity(density);
 		nebulaArea->setAmbientSound(ambientSound);
 		nebulaArea->setLightningFrequency(lightningFrequency);
 		nebulaArea->setLightningDurationMax(lightningDurationMax);
@@ -274,6 +277,9 @@ void SpaceManagerImplementation::loadNebulaAreas() {
 		nebulaArea->setLightningSoundLoop(lightningSoundLoop);
 		nebulaArea->setLightningHitEffectClient(lightningHitEffectClient);
 		nebulaArea->setLightningHitEffectServer(lightningHitEffectServer);
+
+		nebulaArea->setNebulaID(i + 1);
+		nebulaArea->setRadius(radius);
 
 		/*
 		StringBuffer debugMsg;
@@ -331,4 +337,44 @@ uint64 SpaceManagerImplementation::getClosestSpaceStationObjectID(const Vector3&
 	}
 
 	return stationObjectID;
+}
+
+void SpaceManagerImplementation::broadcastNebulaLightning(ShipObject* ship, const Vector3& nebulaCenter, uint16 lightningCount, int nebulaID, int startMili, int endMili, const Vector3& startPoint, const Vector3& endPoint) {
+	if (ship == nullptr)
+		return;
+
+	auto closeObjectsVector = ship->getCloseObjects();
+	SortedVector<TreeEntry*> closeObjects(200, 50);
+
+	if (closeObjectsVector != nullptr) {
+		closeObjectsVector->safeCopyTo(closeObjects);
+	} else {
+		spaceZone->getInRangeObjects(nebulaCenter.getX(), nebulaCenter.getZ(), nebulaCenter.getY(), spaceZone->getZoneObjectRange(), &closeObjects, true);
+	}
+
+	try {
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			auto object = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
+
+			if (object == nullptr || !object->isShipObject())
+				continue;
+
+			auto ship = object->asShipObject();
+
+			if (ship == nullptr)
+				continue;
+
+			// Get client sync stampt
+			int shipSyncStamp = ship->getSyncStamp();
+
+			CreateNebulaLightningMessage* lightningMessage = new CreateNebulaLightningMessage(lightningCount, nebulaID, startMili + shipSyncStamp, endMili + shipSyncStamp, startPoint, endPoint);
+
+			if (lightningMessage != nullptr)
+				ship->sendMembersBaseMessage(lightningMessage->clone());
+
+			delete lightningMessage;
+		}
+	} catch (...) {
+		throw;
+	}
 }

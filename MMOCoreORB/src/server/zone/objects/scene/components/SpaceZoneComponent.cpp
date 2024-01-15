@@ -376,7 +376,7 @@ void SpaceZoneComponent::removeObjectFromZone(SceneObject* sceneObject, SpaceZon
 		sceneObject->info("Null closeobjects vector in SpaceZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
 #endif
 
-		spaceZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), ZoneServer::SPACEOBJECTRANGE, &closeSceneObjects, false);
+		spaceZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), spaceZone->getZoneObjectRange(), &closeSceneObjects, false);
 
 		for (int i = 0; i < closeSceneObjects.size(); ++i) {
 			TreeEntry* obj = closeSceneObjects.getUnsafe(i);

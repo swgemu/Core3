@@ -29,20 +29,26 @@ bool TreeEntryImplementation::containsPoint(float px, float py) {
 	Logger::console.info(true) << "TreeEntryImplementation::containsPoint";
 #endif
 
-	return (((px - getPositionX()) * (px - getPositionX())) + ((py - getPositionY()) * (py - getPositionY())) <= radius * radius );
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::containsPoint - checking against RadiusSq: " << (radius * radius);
+#endif
+
+	return (((px - getPositionX()) * (px - getPositionX())) + ((py - getPositionY()) * (py - getPositionY())) < radius * radius );
 }
 
 bool TreeEntryImplementation::containsPoint(float px, float py, float pz) {
-#ifdef DEBUG_TREE_ENTRY
-	Logger::console.info(true) << "TreeEntryImplementation::containsPoint";
-#endif
 
 	float deltaX = px - getPositionX();
 	float deltaY = py - getPositionY();
 	float deltaZ = pz - getPositionZ();
-	int radiusSq = radius * radius;
+	float radiusSq = radius * radius;
 
-	return ((deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ)) <= radiusSq;
+#ifdef DEBUG_TREE_ENTRY
+	Logger::console.info(true) << "TreeEntryImplementation::containsPoint - checking against RadiusSq: " << radiusSq << " Entry: " << getObjectID() << " ClassName: " << _className;
+#endif
+
+
+	return ((deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ)) < radiusSq;
 }
 
 bool TreeEntryImplementation::isInSWArea(TreeNode *node) const {

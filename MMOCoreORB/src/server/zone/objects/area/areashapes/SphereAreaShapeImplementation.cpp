@@ -47,15 +47,18 @@ Vector3 SphereAreaShapeImplementation::getRandomPosition() const {
 	float distance = System::random((int)radius);
 	float angle = System::random(360) * Math::DEG2RAD;
 
-	Vector3 position;
-	position.set(areaCenter.getX() + distance * Math::cos(angle), 0, areaCenter.getY() + distance * Math::sin(angle));
+	float randX = areaCenter.getX() + distance * Math::cos(angle);
+	float randZ = areaCenter.getZ() + System::random((int)distance) - System::random((int)distance);
+	float randY = areaCenter.getY() + distance * Math::sin(angle);
+
+	Vector3 position(randX, randY, randZ);
 
 	return position;
 }
 
 Vector3 SphereAreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) const {
 #ifdef DEBUG_POSITION
-	info(true) << "Cuboid - getRandomPosition called";
+	info(true) << "Sphere - getRandomPosition called";
 #endif // DEBUG_POSITION
 
 	Vector3 position;
@@ -78,7 +81,7 @@ Vector3 SphereAreaShapeImplementation::getRandomPosition(const Vector3& origin, 
 		position.set(x, y, z);
 
 #ifdef DEBUG_POSITION
-		info(true) << " X Calc = " << xCalc << " Y Calc = " << yCalc << " Spawn Distance Delta = " << spawnDistanceDelta;
+		info(true) << " X Calc = " << x << " Y Calc = " << y << " Distance Delta = " << distance;
 		info(true) << "Checking Position: " << position.toString() << "   Squared Distance: " << areaCenter.squaredDistanceTo(position) << "  Squared Radius = " << radius2;
 #endif // DEBUG_POSITION
 
@@ -87,7 +90,7 @@ Vector3 SphereAreaShapeImplementation::getRandomPosition(const Vector3& origin, 
 
 	if (!found) {
 #ifdef DEBUG_POSITION
-		info(true) << "Cuboid - Position not found !!!";
+		info(true) << "Sphere - Position not found !!!";
 #endif // DEBUG_POSITION
 
 		return areaCenter;

@@ -109,7 +109,7 @@ class TreeEntry extends Observable {
 		float deltaZ = z - coordinates.getPositionZ();
 		float deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
-		return deltaCalc <= rangesq;
+		return deltaCalc < rangesq;
 	}
 
 	@dirty

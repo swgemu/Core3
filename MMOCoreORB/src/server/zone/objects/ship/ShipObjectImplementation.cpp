@@ -355,7 +355,7 @@ void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 	// info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - for " << object->getDisplayedName();
 
 	auto closeObjectsVector = getCloseObjects();
-	SortedVector<TreeEntry*> closeObjects(closeObjectsVector->size(), 10);
+	SortedVector<TreeEntry*> closeObjects(200, 50);
 
 	if (closeObjectsVector != nullptr) {
 		closeObjectsVector->safeCopyTo(closeObjects);
@@ -1291,4 +1291,17 @@ void ShipObjectImplementation::sendMembersHyperspaceOrientMessage(const String& 
 		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(member->getObjectID(), zoneName, location.getX(), location.getZ(), location.getY());
 		member->sendMessage(msg);
 	}
+}
+
+void ShipObjectImplementation::sendMembersBaseMessage(BaseMessage* message) {
+	for (int i = 0; i < playersOnBoard.size(); ++i) {
+		auto member = playersOnBoard.get(i);
+
+		if (member == nullptr)
+			continue;
+
+		member->sendMessage(message->clone());
+	}
+
+	delete message;
 }

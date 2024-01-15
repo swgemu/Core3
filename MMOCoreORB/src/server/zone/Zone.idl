@@ -16,6 +16,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.planet.PlanetManager;
+import server.zone.managers.space.SpaceManager;
 import server.zone.managers.creature.CreatureManager;
 import server.zone.managers.gcw.GCWManager;
 import system.util.SortedVector;
@@ -201,6 +202,11 @@ class Zone extends SceneObject {
 
 	@dirty
 	public abstract PlanetManager getPlanetManager() {
+		return null;
+	}
+
+	@dirty
+	public abstract SpaceManager getSpaceManager() {
 		return null;
 	}
 

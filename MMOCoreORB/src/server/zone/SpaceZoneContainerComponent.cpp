@@ -256,7 +256,7 @@ bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneOb
 #endif
 			SortedVector<ManagedReference<TreeEntry*> > closeSceneObjects;
 
-			spaceZone->getInRangeObjects(object->getPositionX(), object->getPositionZ(), object->getPositionY(), ZoneServer::SPACEOBJECTRANGE, &closeSceneObjects, false);
+			spaceZone->getInRangeObjects(object->getPositionX(), object->getPositionZ(), object->getPositionY(), spaceZone->getZoneObjectRange(), &closeSceneObjects, false);
 
 			for (int i = 0; i < closeSceneObjects.size(); ++i) {
 				TreeEntry* obj = closeSceneObjects.get(i);
