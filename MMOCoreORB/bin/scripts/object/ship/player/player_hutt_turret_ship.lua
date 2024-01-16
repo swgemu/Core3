@@ -49,11 +49,10 @@ object_ship_player_player_hutt_turret_ship = object_ship_player_shared_player_hu
 
 	containerComponent = "ShipContainerComponent",
 
+	-- SHIPMULTIPASSENGER
+	gameObjectType = 536870918,
 	category = "heavyfighter",
 	level = 5,
-
-	-- SHIPMULTIPASSENGER
-	gameObjectType = 536870919,
 
 	attributes = {
 		{"speedRotationFactorMin", 0.2},

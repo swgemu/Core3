@@ -53,7 +53,7 @@ object_ship_freighterlight_tier2 = object_ship_shared_freighterlight_tier2:new {
 	chassisHitpoints = 1200,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

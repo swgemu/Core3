@@ -50,6 +50,8 @@ object_ship_player_player_bwing = object_ship_player_shared_player_bwing:new {
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "bomber",
 	level = 5,
 

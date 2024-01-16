@@ -9,6 +9,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/space/SpaceManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "conf/ConfigManager.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
@@ -32,7 +33,8 @@ void SpaceManagerImplementation::loadLuaConfig() {
 	LuaObject base = lua->getGlobalObject(planetName);
 
 	if (base.isValidTable()) {
-		LuaObject luaObject = base.getObjectField("zoneObjects");
+		LuaObject luaObject = base.getObjectField("spaceStations");
+
 		if (!luaObject.isValidTable())
 			return;
 
@@ -40,81 +42,65 @@ void SpaceManagerImplementation::loadLuaConfig() {
 			lua_State* L = luaObject.getLuaState();
 			lua_rawgeti(L, -1, i);
 
-			LuaObject zoneObject(L);
+			LuaObject stationObject(L);
 
-			String templateFile = zoneObject.getStringField("templateFile");
-			//  info("Attempting to load: " + templateFile + " in " + spaceZone->getZoneName(), true);
+			String templateFile = stationObject.getStringField("templateFile");
 
-			auto shot = TemplateManager::instance()->getTemplate(templateFile.hashCode());
-			if (shot == nullptr) {
-				zoneObject.pop();
+			auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(TemplateManager::instance()->getTemplate(templateFile.hashCode()));
+
+			if (shipTemp == nullptr)
 				continue;
+
+			ManagedReference<ShipAiAgent*> shipAgent = ShipManager::instance()->createAiShip(templateFile);
+
+			if (shipAgent == nullptr)
+				continue;
+
+			Locker shipLocker(shipAgent);
+
+			float x = stationObject.getFloatField("x");
+			float y = stationObject.getFloatField("y");
+			float z = stationObject.getFloatField("z");
+			float ox = stationObject.getFloatField("ox");
+			float oy = stationObject.getFloatField("oy");
+			float oz = stationObject.getFloatField("oz");
+			float ow = stationObject.getFloatField("ow");
+
+			uint64 parentID = stationObject.getLongField("parent");
+
+			Quaternion direction(ow, ox, oy, oz);
+			direction.normalize();
+
+			shipAgent->initializePosition(x, z, y);
+			shipAgent->setDirection(direction);
+
+			// Transfer into the zone
+			spaceZone->transferObject(shipAgent, -1, true);
+
+			shipAgent->createChildObjects();
+
+			shipAgent->setRotationMatrix(direction);
+
+			String faction = shipAgent->getShipFaction();
+
+			if (faction.isEmpty() || !spaceStationMap.contains(faction)) {
+				faction = "neutral";
+
+				shipAgent->setFaction(Factions::FACTIONNEUTRAL);
+				shipAgent->setOptionBit(OptionBitmask::INVULNERABLE, false);
 			}
 
-			ManagedReference<SceneObject*> obj = nullptr;
+			uint64 stationID = shipAgent->getObjectID();
+			Vector3 stationPosition = shipAgent->getPosition();
 
-			if (shot->getGameObjectType() & SceneObjectType::SHIP) {
-				obj = ShipManager::instance()->createShip(templateFile, 0, true);
-			} else {
-				obj = ObjectManager::instance()->createObject(templateFile.hashCode(), 0, "");
-			}
+			spaceStationMap.get(faction).put(stationID, stationPosition);
 
-			if (obj != nullptr) {
-				Locker objLocker(obj);
 
-				float x = zoneObject.getFloatField("x");
-				float y = zoneObject.getFloatField("y");
-				float z = zoneObject.getFloatField("z");
-				float ox = zoneObject.getFloatField("ox");
-				float oy = zoneObject.getFloatField("oy");
-				float oz = zoneObject.getFloatField("oz");
-				float ow = zoneObject.getFloatField("ow");
+			// info(true) << "SpaceStation Added: " << shipAgent->getDisplayedName() << " Location: " + shipAgent->getPosition().toString();
 
-				uint64 parentID = zoneObject.getLongField("parent");
-				Quaternion direction(ow,ox,oy,oz);
-				direction.normalize();
-
-				obj->initializePosition(x, z, y);
-				obj->setDirection(direction);
-
-				ManagedReference<SceneObject*> parent = spaceZone->getZoneServer()->getObject(parentID);
-
-				if (parent != nullptr)
-					parent->transferObject(obj, -1, true);
-				else
-					spaceZone->transferObject(obj, -1, true);
-
-				obj->createChildObjects();
-
-				if (obj->isShipObject()) {
-					auto ship = obj->asShipObject();
-
-					if (ship != nullptr) {
-						ship->setRotationMatrix(direction);
-
-						if (ship->isSpaceStationObject()) {
-							String faction = ship->getShipFaction();
-
-							if (faction == "" || !spaceStationMap.contains(faction)) {
-								faction = "neutral";
-
-								ship->setFaction(Factions::FACTIONNEUTRAL);
-								ship->setOptionBit(OptionBitmask::INVULNERABLE, false);
-							}
-
-							uint64 stationID = ship->getObjectID();
-							Vector3 stationPosition = ship->getPosition();
-
-							spaceStationMap.get(faction).put(stationID, stationPosition);
-						}
-					}
-				}
-
-				//   info("Object Added: " + obj->getObjectName() + ": " + String::valueOf(obj->getPositionX()) + " " + String::valueOf(obj->getPositionY()) + " " + String::valueOf(obj->getPositionZ()), true);
-			}
-
-			zoneObject.pop();
+			stationObject.pop();
 		}
+
 		try {
 			LuaObject travelPoints = luaObject.getObjectField("jtlTravelPoints");
 			loadJTLData(&travelPoints);

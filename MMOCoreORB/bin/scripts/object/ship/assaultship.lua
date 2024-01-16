@@ -53,7 +53,7 @@ object_ship_assaultship = object_ship_shared_assaultship:new {
 	chassisHitpoints = 300,
 	chassisMass = 10000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

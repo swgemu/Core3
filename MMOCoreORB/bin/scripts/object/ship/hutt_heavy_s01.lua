@@ -53,7 +53,7 @@ object_ship_hutt_heavy_s01 = object_ship_shared_hutt_heavy_s01:new {
 	chassisHitpoints = 519,
 	chassisMass = 10000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

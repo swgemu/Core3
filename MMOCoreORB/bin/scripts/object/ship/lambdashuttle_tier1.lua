@@ -53,7 +53,7 @@ object_ship_lambdashuttle_tier1 = object_ship_shared_lambdashuttle_tier1:new {
 	chassisHitpoints = 720,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

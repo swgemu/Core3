@@ -50,6 +50,8 @@ object_ship_player_player_prototype_tiefighter = object_ship_player_shared_playe
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "lightfighter",
 	level = 0,
 

@@ -50,6 +50,8 @@ object_ship_player_player_tie_in = object_ship_player_shared_player_tie_in:new {
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "lightfighter",
 	level = 2,
 

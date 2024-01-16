@@ -50,6 +50,8 @@ object_ship_player_player_blacksun_medium_s03 = object_ship_player_shared_player
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "mediumfighter",
 	level = 3,
 

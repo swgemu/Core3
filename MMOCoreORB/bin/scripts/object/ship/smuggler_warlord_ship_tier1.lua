@@ -53,7 +53,7 @@ object_ship_smuggler_warlord_ship_tier1 = object_ship_shared_smuggler_warlord_sh
 	chassisHitpoints = 2400,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

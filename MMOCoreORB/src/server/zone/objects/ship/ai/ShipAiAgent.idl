@@ -179,10 +179,10 @@ class ShipAiAgent extends FighterShipObject {
 	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
 	 */
 	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
+	public native abstract void loadTemplateData(SharedObjectTemplate templateData);
 
 	@local
-	public native void loadTemplateData(SharedShipObjectTemplate shipTemp);
+	public native abstract void loadTemplateData(SharedShipObjectTemplate shipTemp);
 
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.

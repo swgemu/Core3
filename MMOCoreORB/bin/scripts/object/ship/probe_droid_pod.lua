@@ -53,7 +53,7 @@ object_ship_probe_droid_pod = object_ship_shared_probe_droid_pod:new {
 	chassisHitpoints = 400,
 	chassisMass = 10000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

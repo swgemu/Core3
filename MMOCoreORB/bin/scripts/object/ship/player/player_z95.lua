@@ -50,6 +50,8 @@ object_ship_player_player_z95 = object_ship_player_shared_player_z95:new {
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "lightfighter",
 	level = 0,
 

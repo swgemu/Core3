@@ -53,7 +53,7 @@ object_ship_yt1300_interior = object_ship_shared_yt1300_interior:new {
 	chassisHitpoints = 654,
 	chassisMass = 10000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

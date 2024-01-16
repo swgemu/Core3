@@ -52,10 +52,10 @@ object_ship_spacestation_corellia = object_ship_shared_spacestation_neutral:new 
 	faction = "civilian",
 	difficulty = "",
 
+	gameObjectType = 536870920,
 	slideFactor = 1.76,
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
-
 	shipBitmask = NONE,
 	customShipAiMap = "spaceStations",
 	optionsBitmask = AIENABLED,

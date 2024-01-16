@@ -50,6 +50,8 @@ object_ship_player_player_firespray = object_ship_player_shared_player_firespray
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "heavyfighter",
 	level = 5,
 

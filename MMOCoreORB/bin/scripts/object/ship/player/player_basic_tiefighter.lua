@@ -42,12 +42,13 @@
 
 
 object_ship_player_player_basic_tiefighter = object_ship_player_shared_player_basic_tiefighter:new {
-
 	name = "player_basic_tiefighter",
+
 	slideFactor = 1.95,
 	chassisHitpoints = 400,
 	chassisMass = 11500,
 
+	gameObjectType = 536870913,
 	category = "lightfighter",
 
 	containerComponent = "ShipContainerComponent",

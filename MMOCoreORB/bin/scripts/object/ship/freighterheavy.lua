@@ -53,7 +53,7 @@ object_ship_freighterheavy = object_ship_shared_freighterheavy:new {
 	chassisHitpoints = 300,
 	chassisMass = 10000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

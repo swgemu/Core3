@@ -53,7 +53,7 @@ object_ship_tie_light_duty = object_ship_shared_tie_light_duty:new {
 	chassisHitpoints = 412,
 	chassisMass = 10000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

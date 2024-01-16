@@ -53,7 +53,7 @@ object_ship_ywing = object_ship_shared_ywing:new {
 	chassisHitpoints = 339,
 	chassisMass = 10000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

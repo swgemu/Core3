@@ -1580,7 +1580,7 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@local
 	@nativeStub
 	@virtualStub
-	public abstract native boolean isSpaceStationObject();
+	public abstract native boolean isSpaceStation();
 
 	@mock
 	@dirty

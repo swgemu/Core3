@@ -53,7 +53,7 @@ object_ship_blacksun_light_s04_tier5 = object_ship_shared_blacksun_light_s04_tie
 	chassisHitpoints = 2457.6,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

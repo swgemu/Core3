@@ -24,7 +24,7 @@ class SpaceStationObject extends ShipAiAgent {
 	public native boolean sendConversationStartTo(SceneObject player);
 
 	@dirty
-	@local
-	@nativeStub
-	public native boolean isSpaceStationObject();
+	public boolean isSpaceStation() {
+		return true;
+	}
 }

@@ -505,7 +505,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 		} else { // Items
 			if (templatePath.contains("ship/player/")) {
 				player->sendSystemMessage("Creating player ship: " + node->getDisplayName());
-				ShipManager::instance()->createPlayerShip(player, templatePath);
+				ShipManager::instance()->createPlayerShip(player, templatePath, true);
 				ghost->addSuiBox(cbSui);
 				return;
 			}

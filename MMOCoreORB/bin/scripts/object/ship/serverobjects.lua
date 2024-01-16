@@ -42,7 +42,7 @@
 
 
 
---Children folder includes
+-- Children folder includes
 includeFile("ship/base/serverobjects.lua")
 includeFile("ship/player/serverobjects.lua")
 
