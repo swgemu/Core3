@@ -331,17 +331,12 @@ ShipControlDevice* ShipManager::createShipControlDevice(ShipObject* ship) {
 	return shipControlDevice;
 }
 
-ShipObject* ShipManager::createShip(const String& shipName, int persistence, bool loadComponents) {
-	String chassisName = shipName.replaceAll("shared_", "");
+ShipAiAgent* ShipManager::createAiShip(const String& shipName) {
+	//info(true) << "ShipManager::createAiShip -- Create Chassis Name: " << shipName;
 
-	if (!chassisName.contains(".iff")) {
-		String path = chassisName.contains("player_") ? "object/ship/player/" : "object/ship/";
-		chassisName = path + chassisName + ".iff";
-	}
+	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(TemplateManager::instance()->getTemplate(shipName.hashCode()));
 
-	auto shot = TemplateManager::instance()->getTemplate(chassisName.hashCode());
-
-	if (shot == nullptr || !(shot->getGameObjectType() & SceneObjectType::SHIP)) {
+	if (shipTemp == nullptr) {
 		return nullptr;
 	}
 
@@ -350,38 +345,24 @@ ShipObject* ShipManager::createShip(const String& shipName, int persistence, boo
 	if (zoneServer == nullptr)
 		return nullptr;
 
-	ManagedReference<ShipObject*> ship = zoneServer->createObject(chassisName.hashCode(), persistence).castTo<ShipObject*>();
+	ManagedReference<ShipAiAgent*> shipAgent = zoneServer->createObject(shipTemp->getServerObjectCRC(), 0).castTo<ShipAiAgent*>();
 
-	if (ship == nullptr) {
+	if (shipAgent == nullptr) {
 		return nullptr;
 	}
 
-	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(ship->getObjectTemplate());
+	// info(true) << "ShipManager::createAiShip -- ShipName: " << shipName << " Game Object Type: " << shipTemp->getGameObjectType() << " Ship Hash: " << shipTemp->getServerObjectCRC() << " Full Template: " << shipTemp->getFullTemplateString();
 
-	if (shipTemp == nullptr)
-		return nullptr;
+	shipAgent->loadTemplateData(shipTemp);
 
-	if (loadComponents && ship->isShipAiAgent()) {
-		ShipAiAgent* agent = ship->asShipAiAgent();
+	shipAgent->setShipAiTemplate();
 
-		if (agent != nullptr) {
-			agent->loadTemplateData(shot);
-			agent->loadTemplateData(shipTemp);
-
-			agent->setShipAiTemplate();
-		}
-	} else {
-		ship->loadTemplateData(shipTemp);
-	}
-
-	return ship;
+	return shipAgent;
 }
 
 ShipObject* ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents) {
 	if (owner == nullptr)
 		return nullptr;
-
-	E3_ASSERT(owner->isLockedByCurrentThread());
 
 	ManagedReference<SceneObject*> dataPad = owner->getSlottedObject("datapad");
 
@@ -395,14 +376,32 @@ ShipObject* ShipManager::createPlayerShip(CreatureObject* owner, const String& s
 		return nullptr;
 	}
 
-	auto ship = createShip(shipName, 1, false);
+	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(TemplateManager::instance()->getTemplate(shipName.hashCode()));
+
+	if (shipTemp == nullptr) {
+		return nullptr;
+	}
+
+	auto zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr)
+		return nullptr;
+
+	// Create ship and set persistent
+	ManagedReference<ShipObject*> ship = zoneServer->createObject(shipTemp->getServerObjectCRC(), 1).castTo<ShipObject*>();
 
 	if (ship == nullptr) {
 		return nullptr;
 	}
 
+	// info(true) << "ShipManager::createPlayerShip -- ShipName: " << shipName << " Game Object Type: " << shipTemp->getGameObjectType() << " Ship Hash: " << shipTemp->getServerObjectCRC() << " Full Template: " << shipTemp->getFullTemplateString();
+
 	Locker shipLock(ship, owner);
 
+	// Load ship template data
+	ship->loadTemplateData(shipTemp);
+
+	// Create Control device
 	auto shipControlDevice = createShipControlDevice(ship);
 
 	if (shipControlDevice == nullptr) {
@@ -429,6 +428,9 @@ ShipObject* ShipManager::createPlayerShip(CreatureObject* owner, const String& s
 	}
 
 	if (!dataPad->transferObject(shipControlDevice, -1)) {
+		shipControlDevice->destroyObjectFromWorld(true);
+		shipControlDevice->destroyObjectFromDatabase(true);
+
 		return nullptr;
 	}
 

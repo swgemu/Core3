@@ -53,6 +53,7 @@ object_ship_spacestation_neutral = object_ship_shared_spacestation_neutral:new {
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
 
+	gameObjectType = 536870920,
 	shipBitmask = NONE,
 	customShipAiMap = "spaceStations",
 	optionsBitmask = AIENABLED,

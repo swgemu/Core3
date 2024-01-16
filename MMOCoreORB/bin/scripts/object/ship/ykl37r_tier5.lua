@@ -53,7 +53,6 @@ object_ship_ykl37r_tier5 = object_ship_shared_ykl37r_tier5:new {
 	chassisHitpoints = 4915.2,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

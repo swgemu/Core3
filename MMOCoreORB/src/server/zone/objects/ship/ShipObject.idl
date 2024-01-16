@@ -1519,10 +1519,10 @@ class ShipObject extends TangibleObject {
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
 	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
+	public native abstract void loadTemplateData(SharedObjectTemplate templateData);
 
 	@local
-	public native void loadTemplateData(SharedShipObjectTemplate shipTemp);
+	public native abstract void loadTemplateData(SharedShipObjectTemplate shipTemp);
 
 	@dirty
 	@local

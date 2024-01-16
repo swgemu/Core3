@@ -83,7 +83,7 @@ bool ShipTargetVector::isTargetValid(ShipObject* ship, ShipObject* target) const
 
 	auto targetType = target->getGameObjectType();
 
-	if (targetType == SceneObjectType::SHIPCAPITAL || targetType == SceneObjectType::SHIPSTATION) {
+	if (targetType == SceneObjectType::SHIPCAPITAL || targetType == SceneObjectType::SPACESTATION) {
 		return true;
 	}
 

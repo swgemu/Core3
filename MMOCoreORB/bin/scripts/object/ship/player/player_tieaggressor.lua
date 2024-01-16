@@ -53,7 +53,7 @@ object_ship_player_player_tieaggressor = object_ship_player_shared_player_tieagg
 	level = 4,
 
 	-- SHIPMULTIPASSENGER
-	gameObjectType = 536870919,
+	gameObjectType = 536870918,
 
 	attributes = {
 		{"speedRotationFactorMin", 0.2},

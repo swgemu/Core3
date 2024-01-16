@@ -54,7 +54,7 @@ object_ship_player_player_ywing = object_ship_player_shared_player_ywing:new {
 	level = 1,
 
 	-- SHIPMULTIPASSENGER
-	gameObjectType = 536870919,
+	gameObjectType = 536870918,
 
 	attributes = {
 		{"speedRotationFactorMin", 0.1},
