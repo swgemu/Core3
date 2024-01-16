@@ -2043,11 +2043,11 @@ bool SceneObject::isShipObject() {
 	return false;
 }
 
-bool SceneObjectImplementation::isSpaceStationObject() {
+bool SceneObjectImplementation::isSpaceStation() {
 	return false;
 }
 
-bool SceneObject::isSpaceStationObject() {
+bool SceneObject::isSpaceStation() {
 	return false;
 }
 

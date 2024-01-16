@@ -15,6 +15,7 @@ import server.zone.Zone;
 include server.zone.objects.ship.ShipObject;
 include server.zone.TreeEntry;
 include templates.SharedObjectTemplate;
+include templates.tangible.ship.SharedShipObjectTemplate;
 include system.util.VectorMap;
 include server.zone.objects.ship.PlayerLaunchPoints;
 include server.zone.objects.ship.DamageSparkLocations;
@@ -47,7 +48,10 @@ class PobShipObject extends ShipObject {
 	public native void notifyLoadFromDatabase();
 
 	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
+	public native abstract void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public native abstract void loadTemplateData(SharedShipObjectTemplate shipTemp);
 
 	@preLocked
 	public native void createChildObjects();

@@ -350,13 +350,14 @@ public:
 	const static int SHIP = 0x20000000;
 	const static int SHIPFIGHTER = 0x20000001;
 	const static int SHIPCAPITAL = 0x20000002;
-	const static int SHIPSTATION = 0x20000003;
+	const static int SPACEOBJECT = 0x20000003;
 	const static int SHIPTRANSPORT = 0x20000004;
 
 	// Not in client ************
 	const static int SHIPPOB = 0x20000005;
-	const static int SHIPAGENT = 0x20000006;
-	const static int SHIPMULTIPASSENGER = 0x20000007;
+	const static int SHIPMULTIPASSENGER = 0x20000006;
+	const static int SHIPAGENT = 0x20000007;
+	const static int SPACESTATION = 0x20000008;
 	//*******************************
 
 	const static int SHIPATTACHMENT = 0x40000000;

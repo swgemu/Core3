@@ -134,9 +134,8 @@ private:
 	ShipControlDevice* createShipControlDevice(ShipObject* ship);
 
 public:
-	ShipObject* createShip(const String& shipName, int persistence = 0, bool loadComponents = true);
-
-	ShipObject* createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents = true);
+	ShipAiAgent* createAiShip(const String& shipName);
+	ShipObject* createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents = false);
 
 	bool createDeedFromChassis(CreatureObject* owner, ShipChassisComponent* chassisBlueprint, CreatureObject* chassisDealer);
 

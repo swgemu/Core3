@@ -5,6 +5,18 @@
 
 #include "server/zone/objects/ship/FighterShipObject.h"
 
+void FighterShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	ShipObjectImplementation::loadTemplateData(templateData);
+}
+
+void FighterShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) {
+	if (ssot == nullptr) {
+		return;
+	}
+
+	ShipObjectImplementation::loadTemplateData(ssot);
+}
+
 FighterShipObject* FighterShipObject::asFighterShipObject() {
 	return this;
 }

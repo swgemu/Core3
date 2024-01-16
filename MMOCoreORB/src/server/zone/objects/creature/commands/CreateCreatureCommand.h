@@ -236,13 +236,13 @@ public:
 
 	int createShip(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		if (creature == nullptr || arguments == "") {
-			return QueueCommand::INVALIDPARAMETERS;
+			return INVALIDPARAMETERS;
 		}
 
 		auto spaceZone = creature->getZone();
 
 		if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
-			return QueueCommand::GENERALERROR;
+			return GENERALERROR;
 		}
 
 		UnicodeTokenizer tokens(arguments);
@@ -262,43 +262,36 @@ public:
 			tokens.getStringToken(faction);
 		}
 
-		ManagedReference<ShipObject*> aiShip = ShipManager::instance()->createShip(shipName, 0, true);
+		ManagedReference<ShipAiAgent*> shipAgent = ShipManager::instance()->createAiShip(shipName);
 
-		if (aiShip == nullptr) {
-			creature->sendSystemMessage("CreateCreatureCommand error: invalid template " + shipName);
-			return QueueCommand::GENERALERROR;
+		if (shipAgent == nullptr) {
+			creature->sendSystemMessage("CreateCreatureCommand error: invalid ship agent template " + shipName);
+			return GENERALERROR;
 		}
 
-		Locker sLock(aiShip, creature);
+		Locker sLock(shipAgent, creature);
 
-		auto aiShipAgent = aiShip->asShipAiAgent();
-
-		if (aiShipAgent == nullptr) {
-			creature->sendSystemMessage("CreateCreatureCommand error: invalid ship " + shipName);
-			aiShip->destroyObjectFromDatabase(true);
-			return QueueCommand::GENERALERROR;
+		if (!faction.isEmpty() && faction != shipAgent->getShipFaction()) {
+			shipAgent->setShipFaction(faction, false);
 		}
 
-		if (faction != "" && faction != aiShipAgent->getShipFaction()) {
-			aiShipAgent->setShipFaction(faction, false);
-		}
-
-		aiShipAgent->setFactionStatus(FactionStatus::OVERT);
+		shipAgent->setFactionStatus(FactionStatus::OVERT);
 
 		const Vector3& position = creature->getPosition();
 
-		aiShipAgent->setPosition(position.getX(),position.getZ(),position.getY());
-		aiShipAgent->setHomeLocation(position.getX(),position.getZ(),position.getY(), Quaternion::IDENTITY);
+		shipAgent->setHomeLocation(position.getX(), position.getZ() - 40.f, position.getY(), Quaternion::IDENTITY);
+		shipAgent->initializePosition(position.getX(), position.getZ() - 40.f, position.getY());
 
-		if (!spaceZone->transferObject(aiShipAgent, -1, true)) {
-			aiShipAgent->destroyObjectFromDatabase(true);
-			return QueueCommand::GENERALERROR;
+		if (!spaceZone->transferObject(shipAgent, -1, true)) {
+			shipAgent->destroyObjectFromWorld(true);
+			shipAgent->destroyObjectFromDatabase(true);
+
+			return GENERALERROR;
 		}
 
-		aiShipAgent->updateZone(false, false);
+		info(true) << "CreateCreatureCommand " << creature->getDisplayedName() << " Created Ship: " << shipAgent->getObjectID() << " [" << shipAgent->getDisplayedName() << "] at " << shipAgent->getWorldPosition() << " in Space Zone: " << spaceZone->getZoneName();
 
-		creature->sendSystemMessage("CreateCreatureCommand created: " + aiShipAgent->getDisplayedName() + " at coordinates " + position.toString());
-		return QueueCommand::SUCCESS;
+		return SUCCESS;
 	}
 };
 

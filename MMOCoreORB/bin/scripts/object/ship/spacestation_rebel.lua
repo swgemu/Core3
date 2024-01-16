@@ -53,6 +53,7 @@ object_ship_spacestation_rebel = object_ship_shared_spacestation_rebel:new {
 	chassisHitpoints = 30000,
 	chassisMass = 50000,
 
+	gameObjectType = 536870920,
 	shipBitmask = NONE,
 	customShipAiMap = "spaceStations",
 	optionsBitmask = AIENABLED,

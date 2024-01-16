@@ -80,13 +80,4 @@ bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* play
 	}
 
 	return true;
-
-}
-
-bool SpaceStationObject::isSpaceStationObject() {
-	return true;
-}
-
-bool SpaceStationObjectImplementation::isSpaceStationObject() {
-	return true;
 }

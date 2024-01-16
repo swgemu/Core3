@@ -96,7 +96,7 @@ yavin4 = {
 }
 
 space_corellia = {
-	zoneObjects = {
+	spaceStations = {
 		{templateFile = "object/ship/spacestation_rebel.iff", x = -7132.79, z = 2340.4, y = 2013.98, ow = 0.641545, ox = -0.0633626, oy = 0.76035, oz = 0.079203, parentid = 0},
 		{templateFile = "object/ship/spacestation_talus.iff", x = -6345.5, z = -5274.5, y = -3957.25, ow = 0.640802, ox = 0.015822, oy = 0.76738, oz = -0.0158223, parentid = 0},
 		{templateFile = "object/ship/spacestation_rebel.iff", x = -1463.42, z = 318.86, y = -1012.24, ow = 0.759136, ox = -0.0474463, oy = 0.648429, oz = 0.0316307, parentid = 0},
@@ -106,7 +106,7 @@ space_corellia = {
 }
 
 space_dantooine = {
-	zoneObjects = {
+	spaceStations = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -2629.72, z = 3585.8, y = 3269.39, ow = 0.103184, ox = 0.031749, oy = 0.936596, oz = -0.333365, parentid = 0},
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 178.72, z = -4785.06, y = -6403.03, ow = 0.977105, ox = 0, oy = 0.212757, oz = 0, parentid = 0},
 		{templateFile = "object/ship/spacestation_dantooine.iff", x = 1358.93, z = -741.97, y = -5901.79, ow = 0.907314, ox = 0.110455, oy = 0.394484, oz = -0.0946762, parentid = 0},
@@ -117,7 +117,7 @@ space_dantooine = {
 }
 
 space_dathomir = {
-	zoneObjects = {
+	spaceStations = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 4842.19, z = -5316.32, y = -4222.79, ow = 0.849126, ox = -0.277752, oy = -0.428531, oz = -0.134908, parentid = 0},
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 6092.23, z = 6223.58, y = -6731.9, ow = 0.967128, ox = 0.182327, oy = -0.1744, oz = 0.0317089, parentid = 0},
 		{templateFile = "object/ship/spacestation_neutral.iff", x = 4000, z = 200, y = -4700, ow = 1, ox = 0, oy = 0, oz = 0, parentid = 0},
@@ -126,7 +126,7 @@ space_dathomir = {
 }
 
 space_endor = {
-	zoneObjects = {
+	spaceStations = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 5773.37, z = -6359.57, y = 6976.04, ow = 0.197218, ox = -0.0157777, oy = 0.978199, oz = 0.0631097, parentid = 0},
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 6200, z = 5000, y = 6000, ow = 1, ox = 0, oy = 0, oz = 0, parentid = 0},
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -5716.48, z = 7198.22, y = 2009.09, ow = 0.781614, ox = 0.307908, oy = 0.505286, oz = -0.197377, parentid = 0},
@@ -135,7 +135,7 @@ space_endor = {
 }
 
 space_lok = {
-	zoneObjects = {
+	spaceStations = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -1798.64, z = 2649.25, y = 400.89, ow = -0.031722, ox = 0.0158608, oy = 0.999245, oz = 0.0158608, parentid = 0},
 		{templateFile = "object/ship/spacestation_lok.iff", x = -6235.21, z = -5341.59, y = 113.86, ow = 0.611794, ox = 0.347264, oy = 0.577203, oz = -0.414672, parentid = 0},
 		{templateFile = "object/ship/spacestation_rebel.iff", x = 1799.13, z = -2458.57, y = -3680.29, ow = 0.989635, ox = -0.13459, oy = 0.0475025, oz = 0.0158343, parentid = 0}
@@ -143,7 +143,7 @@ space_lok = {
 }
 
 space_naboo = {
-	zoneObjects = {
+	spaceStations = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 3511.83, z = 1774.71, y = 944.36, ow = -0.670707, ox = 0, oy = 0.741723, oz = 0, parentid = 0},
 		{templateFile = "object/ship/spacestation_naboo.iff", x = -2491.26, z = 905.49, y = -6460.67, ow = 0.201287, ox = -0.00687047, oy = 0.968212, oz = 0.148333, parentid = 0},
 		{templateFile = "object/ship/spacestation_rori.iff", x = 6226.22, z = -4450.57, y = 484.75, ow = 0.36384, ox = -0.0206368, oy = 0.924935, oz = 0.108118, parentid = 0}
@@ -151,13 +151,13 @@ space_naboo = {
 }
 
 space_tatooine = {
-	zoneObjects = {
+	spaceStations = {
 		{templateFile = "object/ship/spacestation_tatooine.iff", x = 2311.89, z = -5872.72, y = 1865.29, ow = 0.324318, ox = 0.0734025, oy = 0.94172, oz = -0.0509326, parentid = 0}
 	}
 }
 
 space_yavin4 = {
-	zoneObjects = {
+	spaceStations = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -6798.55, z = 4998.69, y = 4760.4, ow = 0.577296, ox = 0.0316324, oy = 0.814541, oz = -0.0474491, parentid = 0},
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -4190.56, z = 1539.35, y = 4596.82, ow = 0.434352, ox = 0.023692, oy = 0.900293, oz = -0.0157947, parentid = 0},
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 85.21, z = -342.3, y = -57.62, ow = 0.627024, ox = 0.0158741, oy = 0.777827, oz = -0.039685, parentid = 0},
