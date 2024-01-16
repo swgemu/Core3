@@ -57,7 +57,7 @@ public:
 
 				object->notifyObservers(ObserverEventType::SELECTCONVERSATION, creature, option);
 
-			} else if (object->isSpaceStationObject()) {
+			} else if (object->isSpaceStation()) {
 				object->selectConversationOption(option, creature);
 
 				object->notifyObservers(ObserverEventType::SELECTCONVERSATION, creature, option);

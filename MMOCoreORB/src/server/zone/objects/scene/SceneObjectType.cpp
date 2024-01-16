@@ -271,8 +271,12 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case SHIP:						return "@got_n:ship";
 		case SHIPFIGHTER:				return "@got_n:ship_fighter";
 		case SHIPCAPITAL:				return "@got_n:ship_capital";
-		case SHIPSTATION:				return "@got_n:ship_station";
+		case SPACEOBJECT:				return "@got_n:ship";
 		case SHIPTRANSPORT:				return "@got_n:ship_transport";
+		case SHIPPOB:					return "@got_n:ship";
+		case SHIPMULTIPASSENGER:		return "@got_n:ship";
+		case SHIPAGENT:					return "@got_n:ship";
+		case SPACESTATION:				return "@got_n:ship_station";
 		case SHIPATTACHMENT:			return "@got_n:ship_component";
 		case SHIPREACTOR:				return "@got_n:ship_component_reactor";
 		case SHIPENGINE:				return "@got_n:ship_component_engine";

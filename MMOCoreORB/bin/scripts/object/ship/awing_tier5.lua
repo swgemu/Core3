@@ -53,7 +53,7 @@ object_ship_awing_tier5 = object_ship_shared_awing_tier5:new {
 	chassisHitpoints = 2211.84,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

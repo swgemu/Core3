@@ -53,7 +53,7 @@ object_ship_hutt_medium_s02_tier1 = object_ship_shared_hutt_medium_s02_tier1:new
 	chassisHitpoints = 240,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

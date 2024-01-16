@@ -50,6 +50,8 @@ object_ship_player_player_tieinterceptor = object_ship_player_shared_player_tiei
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "interceptor",
 	level = 3,
 

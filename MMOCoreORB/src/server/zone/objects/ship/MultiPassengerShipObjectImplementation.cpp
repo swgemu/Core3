@@ -6,6 +6,18 @@
 #include "server/zone/objects/ship/MultiPassengerShipObject.h"
 #include "server/zone/Zone.h"
 
+void MultiPassengerShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	FighterShipObjectImplementation::loadTemplateData(templateData);
+}
+
+void MultiPassengerShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) {
+	if (ssot == nullptr) {
+		return;
+	}
+
+	FighterShipObjectImplementation::loadTemplateData(ssot);
+}
+
 MultiPassengerShipObject* MultiPassengerShipObject::asMultiPassengerShip() {
 	return this;
 }

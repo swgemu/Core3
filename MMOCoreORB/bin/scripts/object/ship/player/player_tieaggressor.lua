@@ -49,11 +49,10 @@ object_ship_player_player_tieaggressor = object_ship_player_shared_player_tieagg
 
 	containerComponent = "ShipContainerComponent",
 
+	-- SHIPMULTIPASSENGER
+	gameObjectType = 536870918,
 	category = "mediumfighter",
 	level = 4,
-
-	-- SHIPMULTIPASSENGER
-	gameObjectType = 536870919,
 
 	attributes = {
 		{"speedRotationFactorMin", 0.2},

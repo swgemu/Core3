@@ -49,6 +49,8 @@ object_ship_player_player_ywing_longprobe = object_ship_player_shared_player_ywi
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "bomber",
 	level = 2,
 

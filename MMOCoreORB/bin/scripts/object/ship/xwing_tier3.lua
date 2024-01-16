@@ -53,7 +53,7 @@ object_ship_xwing_tier3 = object_ship_shared_xwing_tier3:new {
 	chassisHitpoints = 1320,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

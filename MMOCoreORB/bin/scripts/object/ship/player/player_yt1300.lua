@@ -47,10 +47,10 @@ object_ship_player_player_yt1300 = object_ship_player_shared_player_yt1300:new {
 	chassisHitpoints = 5000,
 	chassisMass = 5000000,
 
-	-- POBSHIP
-	gameObjectType = 536870917,
 	containerComponent = "PobShipContainerComponent",
 
+	-- POBSHIP
+	gameObjectType = 536870917,
 	category = "pob",
 	level = 5,
 

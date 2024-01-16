@@ -50,6 +50,8 @@ object_ship_player_player_xwing = object_ship_player_shared_player_xwing:new {
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "mediumfighter",
 	level = 3,
 

@@ -53,7 +53,7 @@ object_ship_imperial_gunboat_tier2 = object_ship_shared_imperial_gunboat_tier2:n
 	chassisHitpoints = 6000,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

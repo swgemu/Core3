@@ -53,7 +53,7 @@
 */
 
 void ShipAiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	ShipObjectImplementation::loadTemplateData(templateData);
+	FighterShipObjectImplementation::loadTemplateData(templateData);
 }
 
 void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipTemp) {
@@ -61,7 +61,7 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 		return;
 	}
 
-	ShipObjectImplementation::loadTemplateData(shipTemp);
+	FighterShipObjectImplementation::loadTemplateData(shipTemp);
 
 	shipBitmask = shipTemp->getShipBitmask();
 	customShipAiMap = shipTemp->getCustomShipAiMap();
@@ -204,7 +204,7 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 }
 
 void ShipAiAgentImplementation::initializeTransientMembers() {
-	ShipObjectImplementation::initializeTransientMembers();
+	FighterShipObjectImplementation::initializeTransientMembers();
 
 	auto aiLogLevel = ConfigManager::instance()->getInt("Core3.ShipAiAgent.LogLevel", LogLevel::WARNING);
 

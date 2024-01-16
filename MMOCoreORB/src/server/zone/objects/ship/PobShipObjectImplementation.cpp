@@ -27,36 +27,40 @@ void PobShipObjectImplementation::notifyLoadFromDatabase() {
 
 void PobShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipObjectImplementation::loadTemplateData(templateData);
+}
+
+void PobShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) {
+	if (ssot == nullptr) {
+		return;
+	}
+
+	ShipObjectImplementation::loadTemplateData(ssot);
 
 	setContainerVolumeLimit(0xFFFFFFFF);
 	setContainerType(2);
 
-	SharedShipObjectTemplate* ssot = dynamic_cast<SharedShipObjectTemplate*>(templateData);
+	const auto sparkLocs = ssot->getSparkLocations();
 
-	if (ssot != nullptr) {
-		const auto sparkLocs = ssot->getSparkLocations();
+	for (int i = 0; i < sparkLocs.size(); i++) {
+		String cellName = sparkLocs.elementAt(i).getKey();
+		Vector<Vector3> locations = sparkLocs.elementAt(i).getValue();
 
-		for (int i = 0; i < sparkLocs.size(); i++) {
-			String cellName = sparkLocs.elementAt(i).getKey();
-			Vector<Vector3> locations = sparkLocs.elementAt(i).getValue();
-
-			for (int k = 0; k < locations.size(); k++) {
-				Vector3 point(locations.get(k));
-				sparkLocations.addSparkLocation(cellName, point);
-			}
+		for (int k = 0; k < locations.size(); k++) {
+			Vector3 point(locations.get(k));
+			sparkLocations.addSparkLocation(cellName, point);
 		}
+	}
 
-		const auto launchLocs = ssot->getLaunchLocations();
+	const auto launchLocs = ssot->getLaunchLocations();
 
-		for (int i = 0; i < launchLocs.size(); i++) {
-			String cellName = launchLocs.elementAt(i).getKey();
-			Vector<Vector3> locations = launchLocs.elementAt(i).getValue();
+	for (int i = 0; i < launchLocs.size(); i++) {
+		String cellName = launchLocs.elementAt(i).getKey();
+		Vector<Vector3> locations = launchLocs.elementAt(i).getValue();
 
-			for (int k = 0; k < locations.size(); k++) {
-				Vector3 point(locations.get(k));
+		for (int k = 0; k < locations.size(); k++) {
+			Vector3 point(locations.get(k));
 
-				launchPoints.addLaunchPoint(cellName, point);
-			}
+			launchPoints.addLaunchPoint(cellName, point);
 		}
 	}
 }

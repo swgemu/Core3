@@ -50,6 +50,8 @@ object_ship_player_player_hutt_heavy_s02 = object_ship_player_shared_player_hutt
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "heavyfighter",
 	level = 2,
 

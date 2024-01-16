@@ -53,7 +53,7 @@ object_ship_tie_in = object_ship_shared_tie_in:new {
 	chassisHitpoints = 412,
 	chassisMass = 10000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

@@ -53,7 +53,7 @@ object_ship_escape_pod_tier3 = object_ship_shared_escape_pod_tier3:new {
 	chassisHitpoints = 600,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

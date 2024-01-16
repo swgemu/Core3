@@ -47,10 +47,10 @@ object_ship_player_player_yt1300_decorated_01 = object_ship_player_shared_player
 	chassisHitpoints = 5000,
 	chassisMass = 5000000,
 
-	-- POBSHIP
-	gameObjectType = 536870917,
 	containerComponent = "PobShipContainerComponent",
 
+	-- POBSHIP
+	gameObjectType = 536870917,
 	category = "pob",
 	level = 5,
 

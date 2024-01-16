@@ -53,7 +53,7 @@ object_ship_firespray_tier5 = object_ship_shared_firespray_tier5:new {
 	chassisHitpoints = 3194.88,
 	chassisMass = 5000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,

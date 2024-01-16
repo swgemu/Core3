@@ -50,6 +50,8 @@ object_ship_player_player_tiebomber = object_ship_player_shared_player_tiebomber
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "bomber",
 	level = 3,
 

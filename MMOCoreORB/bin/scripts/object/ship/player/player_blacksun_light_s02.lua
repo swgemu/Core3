@@ -50,6 +50,8 @@ object_ship_player_player_blacksun_light_s02 = object_ship_player_shared_player_
 
 	containerComponent = "ShipContainerComponent",
 
+	-- FIGHTERSHIP
+	gameObjectType = 536870913,
 	category = "lightfighter",
 	level = 2,
 

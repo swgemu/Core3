@@ -49,9 +49,10 @@ public:
 		if (object == nullptr) {
 			creature->sendSystemMessage("ERROR GETTIGN OBJECT - nullptr " + String::valueOf(objectID));
 		} else {
-			String strClassName = object->getObjectNameStringIdName();
+			String nameString = object->getObjectNameStringIdName();
 			String strDescription = object->getDetailedDescription();
 			bool bMarkedForDelete = object->_isMarkedForDeletion();
+
 			bool bIsUpdated = object->_isUpdated();
 			int rCount = object.get()->getReferenceCount();
 			uint64 parentID = object->getParentID();
@@ -63,7 +64,8 @@ public:
 				msg << "Creature First Name: " << object.castTo<CreatureObject*>()->getFirstName() << endl;
 			}
 
-			msg << "CLASS: " << strClassName << endl;
+			msg << "Object Name String: " << nameString << endl;
+			msg << "_className: " << object->_getClassName() << endl;
 			msg << "Marked for deletion: " << String::valueOf(bMarkedForDelete) << endl;
 			msg << "IsUpdated: " << String::valueOf(bIsUpdated) << endl;
 			msg << "REFERENCE COUNT " << String::valueOf(rCount) << endl;

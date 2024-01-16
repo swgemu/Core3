@@ -53,7 +53,7 @@ object_ship_sorosuub_space_yacht = object_ship_shared_sorosuub_space_yacht:new {
 	chassisHitpoints = 1512,
 	chassisMass = 10000,
 
-	gameObjectType = 536870918,
+	gameObjectType = 536870919,
 	shipBitmask = NONE,
 	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
