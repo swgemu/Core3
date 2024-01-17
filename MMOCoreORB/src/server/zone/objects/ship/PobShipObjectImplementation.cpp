@@ -145,33 +145,36 @@ void PobShipObjectImplementation::createChildObjects() {
 					if (!cellObject->transferObject(obj, child->getContainmentType(), true)) {
 						obj->destroyObjectFromDatabase(true);
 						continue;
-					} else {
-						if (obj->isPilotChair()) {
-							setPilotChair(obj);
-						} else if (obj->isOperationsChair()) {
-							setOperationsChair(obj);
-						} else if (obj->isShipTurret()) {
-							setTurretLadder(obj);
-						} else if (obj->getGameObjectType() == SceneObjectType::SHIPPERMISSIONS) {
-							Terminal* terminalChild = obj.castTo<Terminal*>();
-
-							if (terminalChild != nullptr)
-								terminalChild->setControlledObject(asPobShip());
-						} else if (childTemplate.contains("alarm_interior")) {
-							plasmaAlarms.add(obj->getObjectID());
-						}
-
-						ContainerPermissions* permissions = obj->getContainerPermissionsForUpdate();
-
-						if (permissions != nullptr) {
-							permissions->setOwner(getObjectID());
-							permissions->setInheritPermissionsFromParent(false);
-							permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
-							permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
-						}
 					}
+
+					if (obj->isPilotChair()) {
+						setPilotChair(obj);
+					} else if (obj->isOperationsChair()) {
+						setOperationsChair(obj);
+					} else if (obj->isShipTurret()) {
+						setTurretLadder(obj);
+					} else if (obj->getGameObjectType() == SceneObjectType::SHIPPERMISSIONS) {
+						Terminal* terminalChild = obj.castTo<Terminal*>();
+
+						if (terminalChild != nullptr)
+							terminalChild->setControlledObject(asPobShip());
+					} else if (childTemplate.contains("alarm_interior")) {
+						plasmaAlarms.add(obj->getObjectID());
+					}
+
+					ContainerPermissions* permissions = obj->getContainerPermissionsForUpdate();
+
+					if (permissions != nullptr) {
+						permissions->setOwner(getObjectID());
+						permissions->setInheritPermissionsFromParent(false);
+						permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+						permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
+					}
+
+					// Set the menu component
+					obj->setObjectMenuComponent("PobShipObjectMenuComponent");
 				} else {
-					error("nullptr CELL OBJECT");
+					error("Cell null for create child objects on PobShip");
 					obj->destroyObjectFromDatabase(true);
 					continue;
 				}
@@ -489,14 +492,6 @@ PobShipObject* PobShipObject::asPobShip() {
 
 PobShipObject* PobShipObjectImplementation::asPobShip() {
 	return _this.getReferenceUnsafeStaticCast();
-}
-
-bool PobShipObject::isPobShip() {
-	return true;
-}
-
-bool PobShipObjectImplementation::isPobShip() {
-	return true;
 }
 
 String PobShipObjectImplementation::getRandomLaunchCell() {

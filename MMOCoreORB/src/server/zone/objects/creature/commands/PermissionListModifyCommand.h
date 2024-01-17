@@ -46,15 +46,7 @@ public:
 		if (zoneServer == nullptr)
 			return GENERALERROR;
 
-		StructureObject* structureObject = cast<StructureObject*>(sceneO.get());
-
-		if (structureObject == nullptr)
-			return GENERALERROR;
-
 		String targetName, listName, action;
-		ManagedReference<SceneObject*> targetObject = nullptr;
-
-		ManagedReference<GuildManager*> guildManager = zoneServer->getGuildManager();
 
 		try {
 			UnicodeTokenizer tokenizer(arguments);
@@ -83,7 +75,6 @@ public:
 
 		if (sceneO->isPobShip()) {
 			ret = handlePobShipPermissions(creature, sceneO, targetName, listName, action, arguments.toString());
-
 		} else if (sceneO->isStructureObject()) {
 			ret = handleStructurePermissions(creature, sceneO, targetName, listName, action, arguments.toString());
 		}
@@ -281,7 +272,7 @@ public:
 		if (creature == nullptr || sceneO == nullptr)
 			return GENERALERROR;
 
-		PobShipObject* pobShip = cast<PobShipObject*>(sceneO);
+		PobShipObject* pobShip = sceneO->asPobShip();
 
 		if (pobShip == nullptr)
 			return GENERALERROR;
@@ -342,15 +333,16 @@ public:
 		}
 
 		uint64 targetID = targetObject->getObjectID();
+		bool isOnPermsList = pobShip->isOnPermissionList(listName, targetID);
 
 		if (pobShip->isPermissionListFull(listName)) {
-			if (action == "add" || (action == "toggle" && !pobShip->isOnPermissionList(listName, targetID))) {
+			if (action == "add" || (action == "toggle" && !isOnPermsList)) {
 				creature->sendSystemMessage("@player_structure:too_many_entries"); //You have too many entries on that list. You must remove some before adding more.
 				return INVALIDPARAMETERS;
 			}
 		}
 
-		if (action == "add" && pobShip->isOnPermissionList(listName, targetID)) {
+		if (action == "add" && isOnPermsList) {
 			creature->sendSystemMessage("That name is already on that list.");
 			return INVALIDPARAMETERS;
 		}
@@ -361,7 +353,7 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		if (listName == "ADMIN" && owner->getObjectID()) {
+		if (listName == "ADMIN" && owner->getObjectID() == targetObject->getObjectID() && (action.contains("toggle") || action.contains("remove"))) {
 			creature->sendSystemMessage("@player_structure:cannot_remove_owner"); //You cannot remove the owner from the admin list.
 			return INVALIDPARAMETERS;
 		}
