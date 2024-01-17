@@ -364,7 +364,10 @@ class ShipAiAgent extends FighterShipObject {
 	 * @return returns true if its aggressive
 	 */
 	@dirty
-	public abstract native boolean isAggressiveTo(ShipObject object);
+	public abstract native boolean isAggressiveTo(TangibleObject object);
+
+	@dirty
+	public abstract native boolean isAggressive(TangibleObject object);
 
 	/**
 	 * Set the wait time in milliseconds
