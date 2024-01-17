@@ -173,7 +173,7 @@ void ShipComponentImplementation::uninstall(CreatureObject* pilot, ShipObject* s
 }
 
 String ShipComponentImplementation::getAppearanceName(ShipObject* ship) {
-	auto data = ShipManager::instance()->getAppearanceData(ship->getShipName());
+	auto data = ShipManager::instance()->getAppearanceData(ship->getShipChassisName());
 	if (data == nullptr || data->contains(componentDataName)) {
 		return componentDataName;
 	}

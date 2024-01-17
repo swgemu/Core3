@@ -467,6 +467,35 @@ int NameManager::validateChatRoomName(const String& name) const {
 	return NameManagerResult::ACCEPTED;
 }
 
+int NameManager::validateShipName(const String& name) const {
+	if (name.isEmpty())
+		return NameManagerResult::DECLINED_EMPTY;
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+	if (isDeveloper(name))
+		return NameManagerResult::DECLINED_DEVELOPER;
+	if (isFiction(name))
+		return NameManagerResult::DECLINED_FICT_RESERVED;
+
+	int digitCount = 0;
+
+	// Char digits here
+	for (char c : name) {
+		if (isdigit(c)) {
+			digitCount++;
+		} else {
+			digitCount = 0;
+		}
+
+		 if (digitCount > 3) {
+			return NameManagerResult::DECLINED_FICT_RESERVED;
+		 }
+	}
+
+	return NameManagerResult::ACCEPTED;
+}
+
 const String NameManager::makeCreatureName(int type, int species) const {
 	String name;
 	auto data = getSpeciesData(species);

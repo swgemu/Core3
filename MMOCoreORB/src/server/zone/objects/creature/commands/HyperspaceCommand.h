@@ -71,7 +71,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (ship->getShipName().toLowerCase().contains("basic")) {
+		if (ship->getShipChassisName().toLowerCase().contains("basic")) {
 			param.setStringId("@space/space_interaction:no_hyperdrive");
 			creature->sendSystemMessage(param);
 

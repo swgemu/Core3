@@ -40,7 +40,7 @@ public:
 		insertFloat(ship->getComplexity());
 		insertStringId(ship->getObjectName());
 
-		UnicodeString name = getCustomObjectName(ship);
+		UnicodeString name = ship->getShipLaunchedName();
 		insertUnicode(name);
 
 		insertInt(ship->getVolume());
@@ -74,32 +74,6 @@ public:
 		insertFloat(ship->getMaxRearShield());
 
 		setSize();
-	}
-
-	UnicodeString getCustomObjectName(ShipObject* ship) {
-		auto owner = ship->getOwner().get();
-
-		if (owner == nullptr || !owner->isASubChildOf(ship)) {
-			return ship->getDisplayedName();
-		}
-
-		UnicodeString pilotName = owner->getDisplayedName();
-		UnicodeString shipName = ship->getCustomObjectName();
-
-		if (shipName != "") {
-			pilotName = pilotName + " (" + shipName + ")";
-		}
-
-		PlayerObject* ghost = owner->getPlayerObject();
-
-		if (ghost == nullptr || !ghost->hasGodMode()) {
-			return pilotName;
-		}
-
-		UnicodeString tag = PermissionLevelList::instance()->getPermissionTag(ghost->getAdminLevel());
-		pilotName = pilotName + " \\#ffff00[" + tag + "]\\#.";
-
-		return pilotName;
 	}
 };
 

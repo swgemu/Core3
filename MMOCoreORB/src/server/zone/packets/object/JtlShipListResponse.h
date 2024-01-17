@@ -73,7 +73,7 @@ public:
 				continue;
 			}
 
-			if (shipDevice->getStoredCityName() == "") {
+			if (shipDevice->getStoredCityName().isEmpty()) {
 				Locker cLock(shipDevice, player);
 				shipDevice->setStoredCityName(travelPointName);
 			}

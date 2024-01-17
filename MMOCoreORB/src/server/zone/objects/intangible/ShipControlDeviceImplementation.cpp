@@ -75,6 +75,10 @@ void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	if (player == nullptr)
 		return;
 
+	// Name Ship
+	menuResponse->addRadialMenuItem(50, 3, "@sui:rename_ship"); // Rename Ship
+
+	// Launch and Land from datapad for testing
 	auto ghost = player->getPlayerObject();
 
 	if (ghost == nullptr || !ghost->hasGodMode()) {
@@ -133,7 +137,15 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
 		return 1;
 	}
 
-	if (isShipLaunched()) {
+	// Name Ship
+	if (selectedID == 50) {
+		auto shipManager = ShipManager::instance();
+
+		if (shipManager == nullptr)
+			return 1;
+
+		shipManager->promptNameShip(player, _this.getReferenceUnsafeStaticCast());
+	} else if (isShipLaunched()) {
 		if (selectedID == LANDSHIP) {
 			auto zone = zoneServer->getZone(storedZoneName);
 

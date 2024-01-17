@@ -102,6 +102,9 @@ class ShipObject extends TangibleObject {
 	protected string chassisDataName;
 
 	@dereferenced
+	protected string shipName;
+
+	@dereferenced
 	protected string chassisCategory;
 
 	protected int chassisLevel;
@@ -1472,9 +1475,13 @@ class ShipObject extends TangibleObject {
 
 	public native float getActualSpeed();
 
-	public string getShipName() {
+	public string getShipChassisName() {
 		return chassisDataName;
 	}
+
+	public native string getShipName();
+
+	public native string getShipLaunchedName();
 
 	public float getComponentEnergyEfficiency(int slot) {
 		return componentEnergyEfficiency.get(slot);

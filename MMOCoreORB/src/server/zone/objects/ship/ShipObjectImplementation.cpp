@@ -56,9 +56,12 @@ void ShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) 
 		return;
 	}
 
-	setShipName(ssot->getShipName());
-	setShipType(ssot->getShipType(), false);
+	chassisDataName = ssot->getShipName();
 	setShipNameCRC(chassisDataName.hashCode(), false);
+
+	setShipName("", false);
+
+	setShipType(ssot->getShipType(), false);
 	setUniqueID(getUniqueID(), false);
 
 	setChassisMaxHealth(ssot->getChassisHitpoints(), false);
@@ -152,8 +155,42 @@ void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool fo
 }
 
 void ShipObjectImplementation::setShipName(const String& name, bool notifyClient) {
-	chassisDataName = name;
-	shipNameCRC.update(name.hashCode(), false);
+	shipName = name;
+
+	if (notifyClient) {
+		ShipObjectMessage3* ship3 = new ShipObjectMessage3(_this.getReferenceUnsafeStaticCast());
+		broadcastMessage(ship3, true, false);
+	}
+}
+
+String ShipObjectImplementation::getShipName() {
+	if (shipName.isEmpty()) {
+		return getDisplayedName();
+	}
+
+	return shipName;
+}
+
+String ShipObjectImplementation::getShipLaunchedName() {
+	UnicodeString returnName = "";
+
+	auto owner = getOwner().get();
+
+	if (owner != nullptr) {
+		returnName = owner->getDisplayedName();
+
+		if (!shipName.isEmpty())
+			returnName = returnName + " (" + shipName + ")";
+
+		auto ghost = owner->getPlayerObject();
+
+		if (ghost != nullptr && ghost->isPrivileged()) {
+			UnicodeString tag = PermissionLevelList::instance()->getPermissionTag(ghost->getAdminLevel());
+			returnName = returnName + " \\#ffff00[" + tag + "]\\#.";
+		}
+	}
+
+	return returnName.toString();
 }
 
 void ShipObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
