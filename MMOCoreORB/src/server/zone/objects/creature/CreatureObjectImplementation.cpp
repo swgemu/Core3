@@ -3170,13 +3170,13 @@ Reference<PlayerObject*> CreatureObjectImplementation::getPlayerObject() {
 * This function should return true if this creature is aggressive to the creature passed
 * in the function
 */
-bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* tarCreo) {
-	if (tarCreo == nullptr || asCreatureObject() == tarCreo)
+bool CreatureObjectImplementation::isAggressiveTo(TangibleObject* target) {
+	if (target == nullptr || getObjectID() == target->getObjectID())
 		return false;
 
 	// info(true) << "CreatureObjectImp isAggressiveTo called for ID: " << getObjectID() << " towards creature: " << tarCreo->getObjectID();
 
-	if (tarCreo->isInvisible())
+	if (target->isInvisible())
 		return false;
 
 	if (isPlayerCreature()) {
@@ -3188,68 +3188,76 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* tarCreo) {
 		if (ghost->isOnLoadScreen())
 			return false;
 
-		if (hasPersonalEnemyFlag(tarCreo) && tarCreo->hasPersonalEnemyFlag(asCreatureObject()))
-			return true;
+		if (target->isCreatureObject()) {
+			auto tarCreo = target->asCreatureObject();
 
-		// Get factions
-		uint32 thisFaction = getFaction();
-		uint32 targetFaction = tarCreo->getFaction();
+			if (tarCreo == nullptr)
+				return false;
 
-		if (ghost->hasCrackdownTefTowards(thisFaction)) {
-			return true;
-		}
 
-		if (tarCreo->isPlayerCreature()) {
-			if (ConfigManager::instance()->getPvpMode())
+			if (hasPersonalEnemyFlag(tarCreo) && tarCreo->hasPersonalEnemyFlag(asCreatureObject()))
 				return true;
 
-			if (CombatManager::instance()->areInDuel(tarCreo, asCreatureObject()))
+			// Get factions
+			uint32 thisFaction = getFaction();
+			uint32 targetFaction = target->getFaction();
+
+			if (ghost->hasCrackdownTefTowards(thisFaction)) {
 				return true;
+			}
 
-			PlayerObject* tarGhost = tarCreo->getPlayerObject();
+			if (tarCreo->isPlayerCreature()) {
+				if (ConfigManager::instance()->getPvpMode())
+					return true;
 
-			if (thisFaction != targetFaction && thisFaction > 0 && targetFaction > 0) {
-				bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+				if (CombatManager::instance()->areInDuel(tarCreo, asCreatureObject()))
+					return true;
 
-				if (covertOvert) {
-					if (tarGhost != nullptr) {
-						int thisFactionStatus = getFactionStatus();
-						int targetFactionStatus = tarCreo->getFactionStatus();
+				PlayerObject* tarGhost = tarCreo->getPlayerObject();
 
-						bool thisGcwTef = ghost->hasGcwTef();
-						bool targetGcwTef = tarGhost->hasGcwTef();
+				if (thisFaction != targetFaction && thisFaction > 0 && targetFaction > 0) {
+					bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
-						// Overt vs Overt
-						if ((thisFactionStatus == FactionStatus::OVERT) && (targetFactionStatus == FactionStatus::OVERT)) {
-							return true;
-						// Covert with GCW TEF and attacker is GCW TEF and Overt or Covert
-						} else if ((thisGcwTef && thisFactionStatus == FactionStatus::COVERT) && targetGcwTef && (targetFactionStatus == FactionStatus::OVERT || targetFactionStatus == FactionStatus::COVERT)) {
-							return true;
-						// Overt with GCW TEF and attacker is Covert with GCW TEF
-						} else if ((thisGcwTef && thisFactionStatus == FactionStatus::OVERT) && (targetGcwTef && targetFactionStatus == FactionStatus::COVERT)) {
-							return true;
+					if (covertOvert) {
+						if (tarGhost != nullptr) {
+							int thisFactionStatus = getFactionStatus();
+							int targetFactionStatus = tarCreo->getFactionStatus();
+
+							bool thisGcwTef = ghost->hasGcwTef();
+							bool targetGcwTef = tarGhost->hasGcwTef();
+
+							// Overt vs Overt
+							if ((thisFactionStatus == FactionStatus::OVERT) && (targetFactionStatus == FactionStatus::OVERT)) {
+								return true;
+							// Covert with GCW TEF and attacker is GCW TEF and Overt or Covert
+							} else if ((thisGcwTef && thisFactionStatus == FactionStatus::COVERT) && targetGcwTef && (targetFactionStatus == FactionStatus::OVERT || targetFactionStatus == FactionStatus::COVERT)) {
+								return true;
+							// Overt with GCW TEF and attacker is Covert with GCW TEF
+							} else if ((thisGcwTef && thisFactionStatus == FactionStatus::OVERT) && (targetGcwTef && targetFactionStatus == FactionStatus::COVERT)) {
+								return true;
+							}
 						}
+					} else {
+						if ((pvpStatusBitmask & CreatureFlag::OVERT) && (tarCreo->getPvpStatusBitmask() & CreatureFlag::OVERT))
+							return true;
 					}
-				} else {
-					if ((pvpStatusBitmask & CreatureFlag::OVERT) && (tarCreo->getPvpStatusBitmask() & CreatureFlag::OVERT))
-						return true;
 				}
+
+				if (hasBountyMissionFor(tarCreo)  && ghost->hasBhTef()) {
+					return true;
+				}
+
+				if (tarGhost != nullptr && tarCreo->hasBountyMissionFor(asCreatureObject()) && tarGhost->hasBhTef())
+					return true;
+
+				ManagedReference<GuildObject*> guildObject = guild.get();
+
+				if (guildObject != nullptr && guildObject->isInWaringGuild(tarCreo))
+					return true;
+
+				if (ghost->isInPvpArea(true))
+					return true;
 			}
-
-			if (hasBountyMissionFor(tarCreo)  && ghost->hasBhTef()) {
-				return true;
-			}
-
-			if (tarGhost != nullptr && tarCreo->hasBountyMissionFor(asCreatureObject()) && tarGhost->hasBhTef())
-				return true;
-
-			ManagedReference<GuildObject*> guildObject = guild.get();
-
-			if (guildObject != nullptr && guildObject->isInWaringGuild(tarCreo))
-				return true;
-
-			if (ghost->isInPvpArea(true))
-				return true;
 		}
 	}
 

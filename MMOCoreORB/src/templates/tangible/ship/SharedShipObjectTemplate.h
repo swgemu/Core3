@@ -45,6 +45,7 @@ class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 
 	IntegerParam shipBitmask;
 	uint64 customShipAiMap;
+	unsigned int pvpBitmask;
 
 public:
 	SharedShipObjectTemplate() {
@@ -191,6 +192,7 @@ public:
 		conversationMessage = templateData->getStringField("conversationMessage");
 
 		shipBitmask = templateData->getIntField("shipBitmask");
+		pvpBitmask = templateData->getIntField("pvpBitmask");
 
 		if (!templateData->getStringField("customShipAiMap").isEmpty())
 			customShipAiMap = templateData->getStringField("customShipAiMap").hashCode();
@@ -368,6 +370,10 @@ public:
 
 	inline int getShipBitmask() const {
 		return shipBitmask;
+	}
+
+	inline unsigned int getGetPvpBitmask() const {
+		return pvpBitmask;
 	}
 
 	inline uint64 getCustomShipAiMap() {
