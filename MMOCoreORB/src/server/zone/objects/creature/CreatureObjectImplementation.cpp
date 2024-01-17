@@ -3170,13 +3170,18 @@ Reference<PlayerObject*> CreatureObjectImplementation::getPlayerObject() {
 * This function should return true if this creature is aggressive to the creature passed
 * in the function
 */
-bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* tarCreo) {
-	if (tarCreo == nullptr || asCreatureObject() == tarCreo)
+bool CreatureObjectImplementation::isAggressiveTo(TangibleObject* target) {
+	if (target == nullptr || !target->isCreatureObject() || getObjectID() == target->getObjectID())
 		return false;
 
 	// info(true) << "CreatureObjectImp isAggressiveTo called for ID: " << getObjectID() << " towards creature: " << tarCreo->getObjectID();
 
-	if (tarCreo->isInvisible())
+	if (target->isInvisible())
+		return false;
+
+	auto tarCreo = target->asCreatureObject();
+
+	if (tarCreo == nullptr)
 		return false;
 
 	if (isPlayerCreature()) {
@@ -3193,7 +3198,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* tarCreo) {
 
 		// Get factions
 		uint32 thisFaction = getFaction();
-		uint32 targetFaction = tarCreo->getFaction();
+		uint32 targetFaction = target->getFaction();
 
 		if (ghost->hasCrackdownTefTowards(thisFaction)) {
 			return true;

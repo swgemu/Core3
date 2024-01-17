@@ -38,10 +38,11 @@
 #include "templates/params/ship/ShipFlags.h"
 #include "server/zone/objects/ship/ai/events/RotationLookupTable.h"
 #include "templates/faction/Factions.h"
-
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/managers/ship/ShipManager.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 //#define DEBUG_SHIP_AI
 //#define DEBUG_FINDNEXTPOSITION
@@ -63,7 +64,16 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 
 	FighterShipObjectImplementation::loadTemplateData(shipTemp);
 
+	// Handles attackable flags (ShipFlag::ATTACKABLE, ShipFlag::AGGRESSIVE etc)
+	setPvpStatusBitmask(shipTemp->getPvpBitmask());
+
+	if (getPvpStatusBitmask() == 0)
+		closeobjects = nullptr;
+
+	// Handles special flags for differnt AI Template bitmasks (ESCORT, FOLLOW etc)
 	shipBitmask = shipTemp->getShipBitmask();
+
+	// Special AI Template behavior tree
 	customShipAiMap = shipTemp->getCustomShipAiMap();
 
 	const auto& componentNames = shipTemp->getComponentNames();
@@ -233,7 +243,6 @@ void ShipAiAgentImplementation::initializeTransientMembers() {
 
 	cooldownTimerMap = new CooldownTimerMap();
 
-	clearOptionBit(OptionBitmask::INVULNERABLE, true);
 	setHyperspacing(false);
 }
 
@@ -1161,18 +1170,87 @@ void ShipAiAgentImplementation::setDefender(ShipObject* defender) {
 	defender->addDefender(asShipAiAgent());
 }
 
-bool ShipAiAgentImplementation::isAggressiveTo(ShipObject* targetShip) {
-	if (targetShip == nullptr)
+bool ShipAiAgentImplementation::isAggressiveTo(TangibleObject* target) {
+	if (target == nullptr || getObjectID() == target->getObjectID())
 		return false;
 
-	if (targetShip->getFaction() == Factions::FACTIONNEUTRAL)
-		return false;
+	// info(true) << "ShipAiAgentImplementation isAggressiveTo called for Agent: " << getDisplayedName() << " towards Target: " << target->getDisplayedName();
 
-	return true; //pvpStatusBitmask & ShipFlag::AGGRESSIVE;
+	if (isAggressive(target)) {
+		// info(true) << "ShipAgent isAggressiveTo check returned true";
+		return true;
+	}
+
+	// info(true) << "ShipAgent isAggressiveTo check returned FALSE";
+
+	return false;
 }
 
-bool ShipAiAgentImplementation::isAttackableBy(ShipObject* ship) {
-	if (ship == nullptr)
+bool ShipAiAgentImplementation::isAggressive(TangibleObject* target) {
+	if (target == nullptr)
+		return false;
+
+	if (target->isInvisible())
+		return false;
+
+	bool targetIsShipAgent = target->isShipAiAgent();
+	bool targetIsPlayer = !targetIsShipAgent;
+
+	// Get factions
+	uint32 thisFaction = getFaction();
+	uint32 targetFaction = target->getFaction();
+
+	// GCW Faction Checks -- Both the agent and attcking CreO have GCW Factions and they are different
+	if (thisFaction != 0 && targetFaction != 0 && thisFaction != targetFaction) {
+		// Target is an AiAgent
+		if (targetIsShipAgent) {
+			return true;
+		// Target is a player ship
+		} else {
+			auto targetShip = target->asShipObject();
+
+			if (targetShip == nullptr)
+				return false;
+
+			// Faction checks against the ships owner
+			auto shipOwner = targetShip->getOwner().get();
+
+			if (shipOwner == nullptr)
+				return false;
+
+			bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
+
+			if (covertOvert) {
+				PlayerObject* ghost = shipOwner->getPlayerObject();
+
+				if (ghost == nullptr)
+					return false;
+
+				uint32 targetStatus = shipOwner->getFactionStatus();
+				bool gcwTef = ghost->hasGcwTef();
+
+				if (!gcwTef && targetStatus == FactionStatus::COVERT)
+					return false;
+
+				if (targetStatus == FactionStatus::OVERT || gcwTef) {
+					return true;
+				}
+			} else {
+				// this is the same thing, but ensures that if the target is a player, that they aren't on leave
+				if (shipOwner->getFactionStatus() != FactionStatus::ONLEAVE) {
+					return true;
+				}
+			}
+		}
+	}
+
+	// ShipAgent is not aggressive due to faction or standing, remaining aggressive check based on pvpStatusBitmask
+	return pvpStatusBitmask & ShipFlag::AGGRESSIVE;
+}
+
+// This will handle checks for other ShipAgents or tangible objects
+bool ShipAiAgentImplementation::isAttackableBy(TangibleObject* attackerTano) {
+	if (attackerTano == nullptr)
 		return false;
 
 	if (movementState == ShipAiAgent::LEASHING)
@@ -1184,9 +1262,24 @@ bool ShipAiAgentImplementation::isAttackableBy(ShipObject* ship) {
 		return false;
 	}
 
+	if (attackerTano->isCreatureObject()) {
+		return isAttackableBy(attackerTano->asCreatureObject());
+	} else if (attackerTano->isShipObject() && !attackerTano->isShipAiAgent()) {
+		auto attackerShip = attackerTano->asShipObject();
+
+		if (attackerShip != nullptr) {
+			auto owner = attackerShip->getOwner().get();
+
+			if (owner != nullptr)
+				return isAttackableBy(owner);
+		}
+	}
+
+	// info(true) << "ShipAiAgentImplementation::isAttackableBy TangibleObject Check -- Ship Agent: " << getDisplayedName() << " by attackerTano = " << attackerTano->getDisplayedName();
+
 	// Get factions
 	uint32 thisFaction = getFaction();
-	uint32 shipFaction = ship->getFaction();
+	uint32 shipFaction = attackerTano->getFaction();
 
 	if (thisFaction != 0 || shipFaction != 0) {
 		if (thisFaction == shipFaction) {
@@ -1196,13 +1289,25 @@ bool ShipAiAgentImplementation::isAttackableBy(ShipObject* ship) {
 		if (thisFaction == 0 && shipFaction != 0) {
 			return false;
 		}
-
-		// this should be removed when shipflags are properly set
-		if (thisFaction != shipFaction)
-			return true;
 	}
 
-	return shipBitmask & ShipFlag::ATTACKABLE;
+	// info(true) << "ShipAiAgentImplementation::isAttackableBy TangibleObject Check returned true";
+
+	return true;
+}
+
+bool ShipAiAgentImplementation::isAttackableBy(CreatureObject* attacker) {
+	if (attacker == nullptr)
+		return false;
+
+	// info(true) << "ShipAiAgentImplementation::isAttackableBy Creature Check -- ShipAgent: " << getDisplayedName() << " by attacker = " << attacker->getDisplayedName();
+
+	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & ShipFlag::ATTACKABLE))
+		return false;
+
+	//info(true) << "ShipAiAgentImplementation::isAttackableBy Creature Check returned true";
+
+	return true;
 }
 
 

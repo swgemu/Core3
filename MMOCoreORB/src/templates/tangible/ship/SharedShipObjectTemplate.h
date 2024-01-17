@@ -43,8 +43,9 @@ class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	VectorMap<String, Vector<Vector3>> sparkLocations;
 	VectorMap<String, Vector<Vector3>> launchLocations;
 
-	IntegerParam shipBitmask;
+	unsigned int shipBitmask;
 	uint64 customShipAiMap;
+	unsigned int pvpStatusBitmask;
 
 public:
 	SharedShipObjectTemplate() {
@@ -191,6 +192,7 @@ public:
 		conversationMessage = templateData->getStringField("conversationMessage");
 
 		shipBitmask = templateData->getIntField("shipBitmask");
+		pvpStatusBitmask = templateData->getIntField("pvpStatusBitmask");
 
 		if (!templateData->getStringField("customShipAiMap").isEmpty())
 			customShipAiMap = templateData->getStringField("customShipAiMap").hashCode();
@@ -366,8 +368,12 @@ public:
 		return chassisLevel.get();
 	}
 
-	inline int getShipBitmask() const {
+	inline uint32 getShipBitmask() const {
 		return shipBitmask;
+	}
+
+	inline uint32 getPvpBitmask() const {
+		return pvpStatusBitmask;
 	}
 
 	inline uint64 getCustomShipAiMap() {

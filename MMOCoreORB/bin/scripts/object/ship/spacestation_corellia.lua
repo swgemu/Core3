@@ -58,7 +58,8 @@ object_ship_spacestation_corellia = object_ship_shared_spacestation_neutral:new 
 	chassisMass = 50000,
 	shipBitmask = NONE,
 	customShipAiMap = "spaceStations",
-	optionsBitmask = AIENABLED,
+	pvpBitmask = NONE,
+	optionsBitmask = AIENABLED + INVULNERABLE,
 
 	reactor = {name = "rct_generic", hitpoints = 5000, armor = 2000},
 	shield_0 = {name = "shd_generic", hitpoints = 10000, armor = 3000, front = 6000, back = 6000, regen = 50},

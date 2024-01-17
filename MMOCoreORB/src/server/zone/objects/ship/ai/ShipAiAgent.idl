@@ -10,7 +10,7 @@ import system.lang.String;
 import system.lang.Exception;
 import server.zone.Zone;
 
-include server.zone.objects.ship.FighterShipObject;
+import server.zone.objects.ship.FighterShipObject;
 include server.zone.objects.ship.ShipObject;
 import server.zone.objects.ship.ai.events.ShipAiBehaviorEvent;
 import server.zone.objects.ship.ai.events.DespawnAiShipOnNoPlayersInRange;
@@ -35,6 +35,7 @@ include system.util.VectorMap;
 include engine.util.u3d.Vector3;
 include server.zone.objects.creature.variables.CooldownTimerMap;
 include engine.util.u3d.Quaternion;
+include server.zone.objects.creature.CreatureObject;
 
 @json
 class ShipAiAgent extends FighterShipObject {
@@ -355,7 +356,10 @@ class ShipAiAgent extends FighterShipObject {
 	 * @return returns true if object can attack this
 	 */
 	@dirty
-	public native boolean isAttackableBy(ShipObject object);
+	public native abstract boolean isAttackableBy(TangibleObject object);
+
+	@dirty
+	public native boolean isAttackableBy(CreatureObject object);
 
 	/**
 	 * Evaluates if this creature is aggresive to the object
@@ -364,7 +368,10 @@ class ShipAiAgent extends FighterShipObject {
 	 * @return returns true if its aggressive
 	 */
 	@dirty
-	public abstract native boolean isAggressiveTo(ShipObject object);
+	public abstract native boolean isAggressiveTo(TangibleObject object);
+
+	@dirty
+	public abstract native boolean isAggressive(TangibleObject object);
 
 	/**
 	 * Set the wait time in milliseconds
