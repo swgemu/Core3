@@ -3898,8 +3898,8 @@ bool AiAgentImplementation::stopConversation() {
 	return true;
 }
 
-bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
-	if (target == nullptr || asAiAgent() == target)
+bool AiAgentImplementation::isAggressiveTo(TangibleObject* target) {
+	if (target == nullptr || getObjectID() == target->getObjectID())
 		return false;
 
 	// info(true) << "AiAgent isAggressiveTo called for ID: " << getObjectID() << " towards creature: " << target->getObjectID();
@@ -3913,23 +3913,28 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 	return false;
 }
 
-bool AiAgentImplementation::isAggressive(CreatureObject* target) {
+bool AiAgentImplementation::isAggressive(TangibleObject* target) {
 	if (target == nullptr)
 		return false;
 
 	if (target->isInvisible())
 		return false;
 
-	bool targetIsPlayer = target->isPlayerCreature();
-	bool targetIsAgent = target->isAiAgent();
+	auto targetCreo = target->asCreatureObject();
 
-	if (targetIsAgent && target->isPet() && !target->asAiAgent()->isMindTricked()) {
-		ManagedReference<PetControlDevice*> pcd = target->getControlDevice().get().castTo<PetControlDevice*>();
+	if (targetCreo == nullptr)
+		return false;
+
+	bool targetIsPlayer = targetCreo->isPlayerCreature();
+	bool targetIsAgent = targetCreo->isAiAgent();
+
+	if (targetIsAgent && targetCreo->isPet() && !targetCreo->asAiAgent()->isMindTricked()) {
+		ManagedReference<PetControlDevice*> pcd = targetCreo->getControlDevice().get().castTo<PetControlDevice*>();
 
 		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral())
 			return false;
 
-		ManagedReference<CreatureObject*> owner = target->getLinkedCreature().get();
+		ManagedReference<CreatureObject*> owner = targetCreo->getLinkedCreature().get();
 
 		if (owner == nullptr)
 			return false;
@@ -3940,21 +3945,21 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 	if (isPet() && !isMindTricked()) {
 		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
 
-		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && target->isNeutral()) {
+		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && targetCreo->isNeutral()) {
 			return false;
 		}
 
 		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
 
-		if (owner == nullptr || target == owner)
+		if (owner == nullptr || targetCreo == owner)
 			return false;
 
-		return owner->isAggressiveTo(target);
+		return owner->isAggressiveTo(targetCreo);
 	}
 
 	// Get factions
 	uint32 thisFaction = getFaction();
-	uint32 targetFaction = target->getFaction();
+	uint32 targetFaction = targetCreo->getFaction();
 
 	//GCW Faction Checks -- Both the agent and attcking CreO have GCW Factions and they are different
 	if (thisFaction != 0 && targetFaction != 0 && thisFaction != targetFaction) {
@@ -3967,12 +3972,12 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 			bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 			if (covertOvert) {
-				PlayerObject* ghost = target->getPlayerObject();
+				PlayerObject* ghost = targetCreo->getPlayerObject();
 
 				if (ghost == nullptr)
 					return false;
 
-				uint32 targetStatus = target->getFactionStatus();
+				uint32 targetStatus = targetCreo->getFactionStatus();
 				bool gcwTef = ghost->hasGcwTef();
 
 				if (!gcwTef && targetStatus == FactionStatus::COVERT)
@@ -3983,7 +3988,7 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 				}
 			} else {
 				// this is the same thing, but ensures that if the target is a player, that they aren't on leave
-				if (target->getFactionStatus() != FactionStatus::ONLEAVE) {
+				if (targetCreo->getFactionStatus() != FactionStatus::ONLEAVE) {
 					return true;
 				}
 			}
@@ -3993,7 +3998,7 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 	AiAgent* tarAgent = nullptr;
 
 	if (targetIsAgent) {
-		tarAgent = target->asAiAgent();
+		tarAgent = targetCreo->asAiAgent();
 
 		if (tarAgent != nullptr) {
 			if (isCarnivore() && tarAgent->isHerbivore())
@@ -4024,7 +4029,7 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 		}
 
 		if (targetIsPlayer) {
-			PlayerObject* tarGhost = target->getPlayerObject();
+			PlayerObject* tarGhost = targetCreo->getPlayerObject();
 
 			if (tarGhost == nullptr) {
 				return false;

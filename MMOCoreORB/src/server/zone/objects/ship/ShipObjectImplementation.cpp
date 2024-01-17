@@ -994,6 +994,9 @@ void ShipObjectImplementation::setShipFaction(uint32 value, bool notifyClient) {
 }
 
 void ShipObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
 	CreatureObject* pilot = owner.get();
 
 	uint32 pvpStatus = 0u;
@@ -1003,11 +1006,14 @@ void ShipObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	int factionStatus = 0;
 
 	if (pilot != nullptr) {
-		pvpStatus = pilot->getPvpStatusBitmask();
-		attackable = pilot->isAttackableBy(player);
-		aggressive = pilot->isAggressiveTo(player);
-		futureStatus = pilot->getFutureFactionStatus();
-		factionStatus = pilot->getFactionStatus();
+			futureStatus = pilot->getFutureFactionStatus();
+			factionStatus = pilot->getFactionStatus();
+
+		if (pilot->getObjectID() != player->getObjectID()) {
+			pvpStatus = pilot->getPvpStatusBitmask();
+			attackable = pilot->isAttackableBy(player);
+			aggressive = pilot->isAggressiveTo(player);
+		}
 	} else {
 		pvpStatus = getPvpStatusBitmask();
 		attackable = isAttackableBy(player);
@@ -1044,7 +1050,11 @@ void ShipObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 		pvpStatus &= ~CreatureFlag::TEF;
 	}
 
-	BaseMessage* pvp = new UpdatePVPStatusMessage(asShipObject(), player, pvpStatus);
+	// info(true) << "ShipObjectImplementation::sendPvpStatusTo - " << player->getDisplayedName() << " New Pvp Status: " << pvpStatus << " Old Pvp Status: " << pvpStatusBitmask;
+
+	pvpStatusBitmask = pvpStatus;
+
+	BaseMessage* pvp = new UpdatePVPStatusMessage(asShipObject(), player, pvpStatusBitmask);
 	player->sendMessage(pvp);
 }
 

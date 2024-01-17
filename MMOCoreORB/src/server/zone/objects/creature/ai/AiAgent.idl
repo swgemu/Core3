@@ -811,11 +811,11 @@ class AiAgent extends CreatureObject {
 	 */
 	@mock
 	@dirty
-	public abstract native boolean isAggressiveTo(CreatureObject object);
+	public abstract native boolean isAggressiveTo(TangibleObject object);
 
 	@mock
 	@dirty
-	public abstract native boolean isAggressive(CreatureObject object);
+	public abstract native boolean isAggressive(TangibleObject object);
 
 	public void setOblivious() {
 		synchronized (targetMutex) {

@@ -64,6 +64,7 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 	FighterShipObjectImplementation::loadTemplateData(shipTemp);
 
 	shipBitmask = shipTemp->getShipBitmask();
+	pvpStatusBitmask = shipTemp->getGetPvpBitmask();
 	customShipAiMap = shipTemp->getCustomShipAiMap();
 
 	const auto& componentNames = shipTemp->getComponentNames();
@@ -1161,15 +1162,38 @@ void ShipAiAgentImplementation::setDefender(ShipObject* defender) {
 	defender->addDefender(asShipAiAgent());
 }
 
-bool ShipAiAgentImplementation::isAggressiveTo(ShipObject* targetShip) {
-	if (targetShip == nullptr)
+bool ShipAiAgentImplementation::isAggressiveTo(TangibleObject* target) {
+	if (target == nullptr || getObjectID() == target->getObjectID())
 		return false;
 
-	if (targetShip->getFaction() == Factions::FACTIONNEUTRAL)
-		return false;
+	//info(true) << "ShipAiAgentImplementation isAggressiveTo called for Agent: " << getDisplayedName() << " towards Target: " << target->getDisplayedName();
 
-	return true; //pvpStatusBitmask & ShipFlag::AGGRESSIVE;
+	if (isAggressive(target)) {
+		//info(true) << "ShipAgent isAggressiveTo check returned true";
+		return true;
+	}
+
+	//info(true) << "ShipAgent isAggressiveTo check returned FALSE";
+
+	return false;
 }
+
+bool ShipAiAgentImplementation::isAggressive(TangibleObject* target) {
+	if (target == nullptr)
+		return false;
+
+	if (target->isInvisible())
+		return false;
+
+
+	// Add checks here
+
+
+
+	// ShipAgent is not aggressive due to faction or standing, remaining aggressive check based on pvpStatusBitmask
+	return pvpStatusBitmask & ShipFlag::AGGRESSIVE;
+}
+
 
 bool ShipAiAgentImplementation::isAttackableBy(ShipObject* ship) {
 	if (ship == nullptr)

@@ -1192,7 +1192,7 @@ class CreatureObject extends TangibleObject {
 	 * @return returns true if its aggressive
 	 */
 	@dirty
-	public native boolean isAggressiveTo(CreatureObject object);
+	public native boolean isAggressiveTo(TangibleObject object);
 
 	/**
 	 * Is called when this object is destroyed
