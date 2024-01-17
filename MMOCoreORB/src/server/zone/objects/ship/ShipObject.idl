@@ -1622,8 +1622,17 @@ class ShipObject extends TangibleObject {
 
 	public native CreatureObject getShipOperator();
 
+	/**
+	 * Evaluates if this can be attacked by object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if object can attack this
+	 */
 	@dirty
 	public native abstract boolean isAttackableBy(TangibleObject object);
+
+	@dirty
+	public native boolean isAttackableBy(CreatureObject object);
 
 	@dirty
 	public native abstract boolean isAggressiveTo(TangibleObject object);
@@ -1684,4 +1693,6 @@ class ShipObject extends TangibleObject {
 	@dirty
 	@local
 	public native void sendMembersBaseMessage(BaseMessage message);
+
+	public native boolean isShipLaunched();
 }

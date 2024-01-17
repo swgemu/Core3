@@ -341,5 +341,5 @@ bool ShipControlDeviceImplementation::isShipLaunched() {
 	if (ship == nullptr)
 		return false;
 
-	return ship->getLocalZone() != nullptr;
+	return ship->isShipLaunched();
 }
