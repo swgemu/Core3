@@ -389,7 +389,12 @@ class TangibleObject extends SceneObject {
 	 * @return returns true if its aggressive
 	 */
 	@dirty
-	public abstract boolean isAggressiveTo(CreatureObject object) {
+	public abstract boolean isAggressiveTo(TangibleObject object) {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isAggressive(TangibleObject object) {
 		return false;
 	}
 

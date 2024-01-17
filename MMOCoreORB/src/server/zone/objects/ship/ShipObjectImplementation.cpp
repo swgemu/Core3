@@ -994,66 +994,35 @@ void ShipObjectImplementation::setShipFaction(uint32 value, bool notifyClient) {
 }
 
 void ShipObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
-	CreatureObject* pilot = owner.get();
+	if (player == nullptr)
+		return;
 
-	uint32 pvpStatus = 0u;
-	bool attackable = false;
-	bool aggressive = false;
-	int futureStatus = 0;
-	int factionStatus = 0;
+	// uint32 pvpStatus = pvpStatusBitmask;
 
-	if (pilot != nullptr) {
-		pvpStatus = pilot->getPvpStatusBitmask();
-		attackable = pilot->isAttackableBy(player);
-		aggressive = pilot->isAggressiveTo(player);
-		futureStatus = pilot->getFutureFactionStatus();
-		factionStatus = pilot->getFactionStatus();
-	} else {
-		pvpStatus = getPvpStatusBitmask();
-		attackable = isAttackableBy(player);
-		aggressive = isAggressiveTo(player);
-		futureStatus = getFutureFactionStatus();
-		factionStatus = getFactionStatus();
-	}
+	TangibleObjectImplementation::sendPvpStatusTo(player);
 
-	if (attackable && !(pvpStatus & CreatureFlag::ATTACKABLE)) {
-		pvpStatus |= CreatureFlag::ATTACKABLE;
-	} else if (!attackable && (pvpStatus & CreatureFlag::ATTACKABLE)) {
-		pvpStatus &= ~CreatureFlag::ATTACKABLE;
-	}
+	// info(true) << "ShipObjectImplementation::sendPvpStatusTo - " << player->getDisplayedName() << " New Pvp Status: " << pvpStatus << " Old Pvp Status: " << pvpStatusBitmask;
+}
 
-	if (aggressive && !(pvpStatus & CreatureFlag::AGGRESSIVE)) {
-		pvpStatus |= CreatureFlag::AGGRESSIVE;
-	} else if (!aggressive && (pvpStatus & CreatureFlag::AGGRESSIVE)) {
-		pvpStatus &= ~CreatureFlag::AGGRESSIVE;
-	}
+bool ShipObjectImplementation::isAggressiveTo(TangibleObject* object) {
+	if (!isShipLaunched())
+		return false;
 
-	if (aggressive && !(pvpStatus & CreatureFlag::ENEMY)) {
-		pvpStatus |= CreatureFlag::ENEMY;
-	} else if (!aggressive && (pvpStatus & CreatureFlag::ENEMY)) {
-		pvpStatus &= ~CreatureFlag::ENEMY;
-	}
-
-	if (factionStatus == FactionStatus::COVERT && futureStatus == FactionStatus::OVERT) {
-		pvpStatus |= CreatureFlag::WILLBEDECLARED;
-	} else if (factionStatus == FactionStatus::OVERT && futureStatus == FactionStatus::COVERT) {
-		pvpStatus |= CreatureFlag::WASDECLARED;
-	}
-
-	if (pilot != player && (pvpStatus & CreatureFlag::TEF)) {
-		pvpStatus &= ~CreatureFlag::TEF;
-	}
-
-	BaseMessage* pvp = new UpdatePVPStatusMessage(asShipObject(), player, pvpStatus);
-	player->sendMessage(pvp);
+	return object->isAttackableBy(asShipObject()) && faction != Factions::FACTIONNEUTRAL;
 }
 
 bool ShipObjectImplementation::isAttackableBy(TangibleObject* object) {
+	if (!isShipLaunched())
+		return false;
+
 	auto optionsBit = getOptionsBitmask();
 
 	if ((optionsBit & OptionBitmask::DESTROYING) || (optionsBit & OptionBitmask::INVULNERABLE)) {
 		return false;
 	}
+
+	if (object->isCreatureObject())
+		return isAttackableBy(object->asCreatureObject());
 
 	int thisFaction = getFaction();
 	int objectFaction = object->getFaction();
@@ -1064,8 +1033,22 @@ bool ShipObjectImplementation::isAttackableBy(TangibleObject* object) {
 	return faction != objectFaction;
 }
 
-bool ShipObjectImplementation::isAggressiveTo(TangibleObject* object) {
-	return object->isAttackableBy(asShipObject()) && faction != Factions::FACTIONNEUTRAL;
+bool ShipObjectImplementation::isAttackableBy(CreatureObject* creature) {
+	//info(true) << "ShipObjectImplementation::isAttackableBy -- attacking creature: " << creature->getDisplayedName();
+
+	if (!isShipLaunched())
+		return false;
+
+	// Ship is a player ship, use the owners to check if creature can attack
+	if (!isShipAiAgent()) {
+		auto owner = getOwner().get();
+
+		if (owner != nullptr)
+			return owner->isAttackableBy(creature);
+	}
+
+
+	return false;
 }
 
 ShipDeltaVector* ShipObjectImplementation::getDeltaVector() {
@@ -1341,4 +1324,8 @@ void ShipObjectImplementation::sendMembersBaseMessage(BaseMessage* message) {
 	}
 
 	delete message;
+}
+
+bool ShipObjectImplementation::isShipLaunched() {
+	return getLocalZone() != nullptr;
 }
