@@ -153,7 +153,14 @@ void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool fo
 
 void ShipObjectImplementation::setShipName(const String& name, bool notifyClient) {
 	chassisDataName = name;
-	shipNameCRC.update(name.hashCode(), false);
+	shipNameCRC.update(name.hashCode(), notifyClient);
+
+	setCustomObjectName(name, notifyClient);
+
+	if (notifyClient) {
+		ShipObjectMessage3* ship3 = new ShipObjectMessage3(_this.getReferenceUnsafeStaticCast());
+		broadcastMessage(ship3, true, false);
+	}
 }
 
 void ShipObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {

@@ -635,7 +635,6 @@
 #include "SetMoodCommand.h"
 #include "SetMoodInternalCommand.h"
 #include "SetNameCommand.h"
-#include "SetNameCommand.h"
 #include "SetOwnerCommand.h"
 #include "SetPerformanceBuffTargetCommand.h"
 #include "SetpermissionCommand.h"

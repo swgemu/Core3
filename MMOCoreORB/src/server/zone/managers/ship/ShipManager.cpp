@@ -26,6 +26,8 @@
 #include "server/zone/objects/player/sui/callbacks/FindLostItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/DeleteAllItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/PobShipStatusSuiCallback.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/callbacks/NameShipSuiCallback.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/tangible/deed/ship/ShipDeed.h"
 #include "server/chat/ChatManager.h"
@@ -677,4 +679,37 @@ void ShipManager::promptFindLostItems(CreatureObject* player, PobShipObject* pob
 		ghost->addSuiBox(sui);
 		player->sendMessage(sui->generateMessage());
 	}
+}
+
+void ShipManager::promptNameShip(CreatureObject* creature, ShipControlDevice* shipDevice) {
+	if (creature == nullptr || shipDevice == nullptr)
+		return;
+
+	auto ghost = creature->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	auto ship = shipDevice->getControlledObject()->asShipObject();
+
+	if (ship == nullptr) {
+		return;
+	}
+
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(creature, SuiWindowType::OBJECT_NAME);
+
+	inputBox->setUsingObject(shipDevice);
+
+	inputBox->setPromptTitle("@base_player:set_name"); // Set Name
+	inputBox->setPromptText("Ship Name:");
+
+	inputBox->setDefaultInput(ship->getDisplayedName());
+	inputBox->setMaxInputSize(20);
+
+	inputBox->setCallback(new NameShipSuiCallback(creature->getZoneServer()));
+	inputBox->setForceCloseDistance(-1);
+
+	ghost->addSuiBox(inputBox);
+
+	creature->sendMessage(inputBox->generateMessage());
 }

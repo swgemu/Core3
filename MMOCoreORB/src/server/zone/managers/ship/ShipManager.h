@@ -159,6 +159,13 @@ public:
 	 * @param pobShip The structure which holds the items.
 	 */
 	void promptFindLostItems(CreatureObject* creature, PobShipObject* pobShip);
+
+	/**
+	 * Sends a Sui prompt to the player asking if they want rename their ship
+	 * @param creature The creature who owns the ship
+	 * @param the ship control device
+	 */
+	void promptNameShip(CreatureObject* creature, ShipControlDevice* shipDevice);
 };
 
 

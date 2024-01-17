@@ -115,6 +115,9 @@ void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 			menuResponse->addRadialMenuItemToRadialID(LAUNCHSHIP, 1 + LAUNCHSHIP + i, 3, "@planet_n:" + zone->getZoneName());
 		}
 	}
+
+	// Name Ship
+	menuResponse->addRadialMenuItem(50, 3, "@base_player:set_name"); //Set Name
 }
 
 int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -133,7 +136,15 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
 		return 1;
 	}
 
-	if (isShipLaunched()) {
+	// Name Ship
+	if (selectedID == 50) {
+		auto shipManager = ShipManager::instance();
+
+		if (shipManager == nullptr)
+			return 1;
+
+		shipManager->promptNameShip(player, _this.getReferenceUnsafeStaticCast());
+	} else if (isShipLaunched()) {
 		if (selectedID == LANDSHIP) {
 			auto zone = zoneServer->getZone(storedZoneName);
 

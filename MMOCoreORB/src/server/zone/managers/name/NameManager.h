@@ -138,6 +138,7 @@ public:
 	int validateCityName(const String& name) const;
 	int validateVendorName(const String& name) const;
 	int validateChatRoomName(const String& name) const;
+	int validateShipName(const String& name) const;
 	int checkNamingFilter(const String& name, int resultType = -1) const;
 
 	const String makeCreatureName(int type = 1, int species = 0) const;
