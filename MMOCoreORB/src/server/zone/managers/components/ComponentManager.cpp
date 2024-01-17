@@ -158,6 +158,7 @@
 #include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/StarshipTextureKitObjectMenuComponent.h"
+#include "server/zone/objects/tangible/components/PobShipObjectMenuComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -362,4 +363,5 @@ ComponentManager::ComponentManager() {
 
 	//JtL component
 	components.put("StarshipTextureKitObjectMenuComponent", new StarshipTextureKitObjectMenuComponent());
+	components.put("PobShipObjectMenuComponent", new PobShipObjectMenuComponent());
 }
