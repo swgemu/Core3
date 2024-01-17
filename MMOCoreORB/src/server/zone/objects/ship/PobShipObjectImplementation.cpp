@@ -170,9 +170,6 @@ void PobShipObjectImplementation::createChildObjects() {
 						permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 						permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 					}
-
-					// Set the menu component
-					obj->setObjectMenuComponent("PobShipObjectMenuComponent");
 				} else {
 					error("Cell null for create child objects on PobShip");
 					obj->destroyObjectFromDatabase(true);

@@ -109,6 +109,7 @@ object_ship_player_player_yt1300_decorated_01 = object_ship_player_shared_player
 		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -4.51, z = 1.26, y = -1.96, ox = -0.707106, oy = 0.036321, oz = 0.032809, ow = 0.707106, cellid = 5, containmentType = -1 }, -- Faces south? on flat wall
 		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = -4.48, z = 0.04, y = -2.04, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 5, containmentType = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = -3.23, z = 0.04, y = -1.99, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 5, containmentType = -1 },
+		{ templateFile = "object/tangible/container/drum/pob_ship_loot_box.iff", x = -10.2, z = -1.7, y = -2.7, ox = 0, oy = 0.65, oz = 0, ow = 0.85, cellid = 5, containmentType = -1 },
 		-- Storage6
 		{ templateFile = "object/tangible/ship/interior_components/reactor_interior.iff", x = 8.61, z = -0.24, y = -9.87, ox = 0.000000, oy = -0.409834, oz = 0.000000, ow = 0.912159, cellid = 6, containmentType = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 2.04, z = -0.4, y = -7.1, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },

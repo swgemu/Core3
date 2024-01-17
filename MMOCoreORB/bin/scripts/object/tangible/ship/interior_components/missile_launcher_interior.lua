@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_interior_components_missile_launcher_interior = object_tangible_ship_interior_components_shared_missile_launcher_interior:new {
-
+	objectMenuComponent = "PobShipObjectMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_missile_launcher_interior, "object/tangible/ship/interior_components/missile_launcher_interior.iff")

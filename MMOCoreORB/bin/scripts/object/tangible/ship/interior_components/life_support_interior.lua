@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_interior_components_life_support_interior = object_tangible_ship_interior_components_shared_life_support_interior:new {
-
+	objectMenuComponent = "PobShipObjectMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_life_support_interior, "object/tangible/ship/interior_components/life_support_interior.iff")
