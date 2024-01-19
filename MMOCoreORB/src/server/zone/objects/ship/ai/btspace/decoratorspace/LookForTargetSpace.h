@@ -105,7 +105,7 @@ public:
 
 #ifdef DEBUG_SHIP_AI
 			if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
-				agent->info(true) << agent->getDisplayedName() << " - LookForTargetSpace - found target prospect";
+				agent->info(true) << agent->getDisplayedName() << " - LookForTargetSpace - found target prospect: " << targetShip->getDisplayedName();
 #endif // DEBUG_SHIP_AI
 
 			BehaviorSpace::Status result = child->doAction(agent);

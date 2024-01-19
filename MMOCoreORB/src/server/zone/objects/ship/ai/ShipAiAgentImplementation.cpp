@@ -320,7 +320,7 @@ void ShipAiAgentImplementation::notifyDissapear(TreeEntry* entry) {
 void ShipAiAgentImplementation::activateAiBehavior(bool reschedule) {
 #ifdef DEBUG_SHIP_AI
 	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true) {
-		info(true) << getDisplayedName() << " - ID: " << getObjectID() << " ---------- activateAiBehavior called -----------";
+		info(true) << getDisplayedName() << " - ID: " << getObjectID() << " ---------- activateShipAiBehavior called -----------";
 	}
 #endif // DEBUG_SHIP_AI
 
@@ -484,7 +484,7 @@ void ShipAiAgentImplementation::clearRunningChain() {
 float ShipAiAgentImplementation::getMaxDistance() {
 	ManagedReference<ShipObject*> followShip = nullptr;
 	unsigned int stateCopy = getMovementState();
-	float baseDist = 50.f;
+	float baseDist = 100.f;
 
 	// info(true) << getDisplayedName() << " - ID: " << getObjectID() << " - getmaxDistance - stateCopy: " << stateCopy;
 
@@ -508,7 +508,7 @@ float ShipAiAgentImplementation::getMaxDistance() {
 		followShip = getTargetShipObject().get();
 
 		if (followShip != nullptr) {
-			baseDist += followShip->getBoundingRadius();
+			baseDist += followShip->getBoundingRadius() + getBoundingRadius();
 		}
 
 		break;
@@ -1305,11 +1305,10 @@ bool ShipAiAgentImplementation::isAttackableBy(CreatureObject* attacker) {
 	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & ShipFlag::ATTACKABLE))
 		return false;
 
-	//info(true) << "ShipAiAgentImplementation::isAttackableBy Creature Check returned true";
+	// info(true) << "ShipAiAgentImplementation::isAttackableBy Creature Check returned true";
 
 	return true;
 }
-
 
 /*
 
