@@ -1201,7 +1201,11 @@ bool ShipAiAgentImplementation::isAggressive(TangibleObject* target) {
 	uint32 targetFaction = target->getFaction();
 
 	// GCW Faction Checks -- Both the agent and attcking CreO have GCW Factions and they are different
-	if (thisFaction != 0 && targetFaction != 0 && thisFaction != targetFaction) {
+	if (thisFaction != 0 && targetFaction != 0) {
+		// Same factions, non-aggressive
+		if (thisFaction == targetFaction)
+			return false;
+
 		// Target is an AiAgent
 		if (targetIsShipAgent) {
 			return true;
@@ -1253,6 +1257,9 @@ bool ShipAiAgentImplementation::isAttackableBy(TangibleObject* attackerTano) {
 	if (attackerTano == nullptr)
 		return false;
 
+	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & ShipFlag::ATTACKABLE))
+		return false;
+
 	if (movementState == ShipAiAgent::LEASHING)
 		return false;
 
@@ -1261,6 +1268,9 @@ bool ShipAiAgentImplementation::isAttackableBy(TangibleObject* attackerTano) {
 	if ((optionsBit & OptionBitmask::DESTROYING) || (optionsBit & OptionBitmask::INVULNERABLE)) {
 		return false;
 	}
+
+	if (isInNoCombatArea())
+		return false;
 
 	if (attackerTano->isCreatureObject()) {
 		return isAttackableBy(attackerTano->asCreatureObject());
@@ -1302,8 +1312,30 @@ bool ShipAiAgentImplementation::isAttackableBy(CreatureObject* attacker) {
 
 	// info(true) << "ShipAiAgentImplementation::isAttackableBy Creature Check -- ShipAgent: " << getDisplayedName() << " by attacker = " << attacker->getDisplayedName();
 
-	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & ShipFlag::ATTACKABLE))
-		return false;
+	// Get factions
+	uint32 thisFaction = getFaction();
+	uint32 attackerFaction = attacker->getFaction();
+
+	// Faction Checks
+	if (thisFaction != 0) {
+		auto ghost = attacker->getPlayerObject();
+
+		if (ghost != nullptr && ghost->hasCrackdownTefTowards(thisFaction)) {
+			return true;
+		}
+
+		// Attacker has no faction
+		if (attackerFaction == 0)
+			return false;
+
+		// This faction and attacking creature are same faction
+		if (thisFaction == attackerFaction)
+			return false;
+
+		// Attack creature is not an AiAgent && their faction status is OnLeave
+		if (attacker->getFactionStatus() < FactionStatus::COVERT)
+			return false;
+	}
 
 	// info(true) << "ShipAiAgentImplementation::isAttackableBy Creature Check returned true";
 
