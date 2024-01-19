@@ -54,9 +54,12 @@ object_ship_droid_fighter = object_ship_shared_droid_fighter:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 45, acceleration = 10.2, deceleration = 4.5, yaw = 32, yawRate = 60, pitch = 32, pitchRate = 60, roll = 32, rollRate = 60},

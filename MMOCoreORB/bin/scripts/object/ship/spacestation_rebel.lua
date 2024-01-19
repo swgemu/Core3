@@ -54,10 +54,12 @@ object_ship_spacestation_rebel = object_ship_shared_spacestation_rebel:new {
 	chassisMass = 50000,
 
 	gameObjectType = 536870920,
-	shipBitmask = NONE,
-	customShipAiMap = "spaceStations",
+
 	pvpBitmask = NONE,
+	shipBitmask = NONE,
 	optionsBitmask = AIENABLED + INVULNERABLE,
+
+	customShipAiMap = "spaceStations",
 
 	reactor = {name = "rct_generic", hitpoints = 5000, armor = 2000},
 	shield_0 = {name = "shd_generic", hitpoints = 50000, armor = 50000, front = 50000, back = 50000, regen = 50},

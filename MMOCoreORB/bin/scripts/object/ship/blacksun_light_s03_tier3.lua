@@ -54,9 +54,12 @@ object_ship_blacksun_light_s03_tier3 = object_ship_shared_blacksun_light_s03_tie
 	chassisMass = 5000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 972, armor = 972},
 	engine = {name = "eng_generic", hitpoints = 972, armor = 972, speed = 44.56, acceleration = 10.82, deceleration = 9.23, yaw = 19.41, yawRate = 40.74, pitch = 24.51, pitchRate = 49.01, roll = 30.34, rollRate = 55.27},

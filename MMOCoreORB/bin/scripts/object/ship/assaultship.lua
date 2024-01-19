@@ -54,9 +54,12 @@ object_ship_assaultship = object_ship_shared_assaultship:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 50, acceleration = 43.5, deceleration = 37.41, yaw = 24.1, yawRate = 41.2, pitch = 24.1, pitchRate = 41.2, roll = 24.1, rollRate = 41.2},

@@ -54,9 +54,12 @@ object_ship_basic_z95 = object_ship_shared_basic_z95:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 45, acceleration = 10.2, deceleration = 4.5, yaw = 21.4, yawRate = 47.9, pitch = 21.4, pitchRate = 47.9, roll = 21.4, rollRate = 47.9},
