@@ -35,7 +35,7 @@ template<> bool CheckProspectInRange::check(ShipAiAgent* agent) const {
 	if (agent->peekBlackboard("aggroMod"))
 		aggroMod = agent->readBlackboard("aggroMod").get<float>();
 
-	float radius = ShipAiAgent::DEFAULTAGGRORADIUS; // TODO: base on template/ship size
+	float radius = ShipAiAgent::DEFAULTAGGRORADIUS + agent->getBoundingRadius() + targetShip->getBoundingRadius();
 
 	radius = Math::min(ShipAiAgent::DEFAULTAGGRORADIUS, radius * aggroMod);
 
@@ -169,11 +169,22 @@ template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const {
 			return false;
 	}
 
-	float range = agent->getMaxDistance();
-	float sqrDist = agent->getNextPosition().getWorldPosition().squaredDistanceTo(targetShip->getPosition());
-	uint64 timeNow = System::getMiliTime();
+	// Random chance we do not evade
+	if (System::random(100) < 50)
+		return false;
 
-	// agent->info(true) << agent->getDisplayedName() << " Sq Distance to Target = " << sqrDist << " Range Sq: " << (range * range);
+	float maxDistance = agent->getMaxDistance();
+	float maxSquared = maxDistance * maxDistance;
 
-	return sqrDist <= (range * range);
+	float minDistance = targetShip->getBoundingRadius() + agent->getBoundingRadius();
+	float minSquared = minDistance * minDistance;
+
+	SpacePatrolPoint nextPoint = agent->getNextPosition();
+	float sqrDist = nextPoint.getWorldPosition().squaredDistanceTo(targetShip->getPosition());
+
+	// agent->info(true) << agent->getDisplayedName() << " next patrol point: " << nextPoint.getWorldPosition().toString() << " Sq Distance to Target = " << sqrDist;
+	// agent->info(true) << " Min Distance: " << minDistance << " Min Distance Sq: " << minSquared << " Max Distance: " << maxDistance << " Max Distance Sq: " << maxSquared;
+
+	// Evade if the too far or too close to the target ship
+	return sqrDist > maxSquared || sqrDist < minSquared;
 }
