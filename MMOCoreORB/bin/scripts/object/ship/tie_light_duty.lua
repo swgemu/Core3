@@ -54,9 +54,12 @@ object_ship_tie_light_duty = object_ship_shared_tie_light_duty:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 100, armor = 200, speed = 48, acceleration = 14.2, deceleration = 6.3, yaw = 26.5, yawRate = 51.8, pitch = 26.5, pitchRate = 51.8, roll = 26.5, rollRate = 51.8},

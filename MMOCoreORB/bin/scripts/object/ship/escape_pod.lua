@@ -54,9 +54,12 @@ object_ship_escape_pod = object_ship_shared_escape_pod:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 45, acceleration = 10.2, deceleration = 4.5, yaw = 21, yawRate = 51, pitch = 21, pitchRate = 51, roll = 21, rollRate = 51},

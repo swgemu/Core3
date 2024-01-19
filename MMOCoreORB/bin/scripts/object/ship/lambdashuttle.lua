@@ -54,9 +54,12 @@ object_ship_lambdashuttle = object_ship_shared_lambdashuttle:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 36, acceleration = 26.1, deceleration = 22.446, yaw = 21, yawRate = 43, pitch = 21, pitchRate = 43, roll = 21, rollRate = 43},

@@ -54,9 +54,12 @@ object_ship_decimator = object_ship_shared_decimator:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 46, acceleration = 8.1, deceleration = 12.4, yaw = 21.4, yawRate = 43.2, pitch = 21.4, pitchRate = 43.2, roll = 21.4, rollRate = 43.2},

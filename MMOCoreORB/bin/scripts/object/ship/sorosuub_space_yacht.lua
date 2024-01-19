@@ -54,9 +54,12 @@ object_ship_sorosuub_space_yacht = object_ship_shared_sorosuub_space_yacht:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 46, acceleration = 12.2, deceleration = 15.67, yaw = 21, yawRate = 41, pitch = 41, pitchRate = 61, roll = 41, rollRate = 61},

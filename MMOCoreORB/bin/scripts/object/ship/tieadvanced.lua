@@ -54,9 +54,12 @@ object_ship_tieadvanced = object_ship_shared_tieadvanced:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 100, armor = 200, speed = 52, acceleration = 21.4, deceleration = 10.7, yaw = 28.1, yawRate = 54.3, pitch = 28.1, pitchRate = 54.3, roll = 28.1, rollRate = 54.3},
