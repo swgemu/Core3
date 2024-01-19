@@ -54,9 +54,12 @@ object_ship_yt1300_tier3 = object_ship_shared_yt1300_tier3:new {
 	chassisMass = 5000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 2160, armor = 2160},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 2160, armor = 2160, speed = 44.56, acceleration = 10.82, deceleration = 9.23, yaw = 19.41, yawRate = 40.74, pitch = 24.51, pitchRate = 49.01, roll = 30.34, rollRate = 55.27},

@@ -54,9 +54,12 @@ object_ship_smuggler_warlord_ship_tier1 = object_ship_shared_smuggler_warlord_sh
 	chassisMass = 5000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 1500, armor = 1500},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 1500, armor = 1500, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},

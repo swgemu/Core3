@@ -54,9 +54,12 @@ object_ship_freighterheavy = object_ship_shared_freighterheavy:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 12, acceleration = 17.4, deceleration = 14.964, yaw = 12, yawRate = 20, pitch = 12, pitchRate = 20, roll = 12, rollRate = 20},

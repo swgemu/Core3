@@ -54,9 +54,12 @@ object_ship_tieaggressor = object_ship_shared_tieaggressor:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_qualdex_kyromaster", hitpoints = 100, armor = 200, speed = 46, acceleration = 12.5, deceleration = 6.25, yaw = 18.3, yawRate = 42.1, pitch = 18.3, pitchRate = 42.1, roll = 18.3, rollRate = 42.1},

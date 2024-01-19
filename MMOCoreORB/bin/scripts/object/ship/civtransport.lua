@@ -54,9 +54,12 @@ object_ship_civtransport = object_ship_shared_civtransport:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 30, acceleration = 26.1, deceleration = 22.446, yaw = 14.2, yawRate = 21.3, pitch = 14.2, pitchRate = 21.3, roll = 14.2, rollRate = 21.3},

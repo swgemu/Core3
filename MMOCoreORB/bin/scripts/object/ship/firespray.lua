@@ -54,9 +54,12 @@ object_ship_firespray = object_ship_shared_firespray:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 57, acceleration = 28.2, deceleration = 14.1, yaw = 28, yawRate = 47, pitch = 56.1, pitchRate = 106.165, roll = 56.1, rollRate = 106.165},

@@ -54,9 +54,12 @@ object_ship_xwing = object_ship_shared_xwing:new {
 	chassisMass = 10000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 49, acceleration = 12.1, deceleration = 3.2, yaw = 28.6, yawRate = 55.9, pitch = 28.6, pitchRate = 55.9, roll = 28.6, rollRate = 55.9},

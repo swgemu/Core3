@@ -54,9 +54,12 @@ object_ship_bwing_tier2 = object_ship_shared_bwing_tier2:new {
 	chassisMass = 5000,
 
 	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
 	shipBitmask = NONE,
-	customShipAiMap = "",
 	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
 
 	reactor = {name = "rct_generic", hitpoints = 540, armor = 540},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 540, armor = 540, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
