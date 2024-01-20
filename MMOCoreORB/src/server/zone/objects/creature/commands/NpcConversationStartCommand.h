@@ -10,7 +10,6 @@
 
 class NpcConversationStartCommand : public QueueCommand {
 public:
-
 	NpcConversationStartCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
@@ -117,4 +116,4 @@ public:
 	}
 };
 
-#endif //NPCCONVERSATIONSTARTCOMMAND_H_
+#endif // NPCCONVERSATIONSTARTCOMMAND_H_
