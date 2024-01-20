@@ -696,8 +696,74 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 	scheduleRecovery();
 }
 
+float ShipObjectImplementation::getTotalShipDamage() {
+	float damage = 0.f;
+
+	float maxChassis = getChassisMaxHealth();
+	float currentChassis = getChassisCurrentHealth();
+
+	damage += maxChassis - currentChassis;
+
+	auto componentMap = getShipComponentMap();
+
+	for (int i = 0; i < componentMap->size(); ++i) {
+		uint32 slot = componentMap->getKeyAt(i);
+		uint32 crc = componentMap->getValueAt(i);
+
+		if (crc == 0) {
+			continue;
+		}
+
+		float maxArmor = getMaxArmorMap()->get(slot);
+		float currentArmor = getCurrentArmorMap()->get(slot);
+
+		damage += maxArmor - currentArmor;
+
+		float maxHitpoints = getMaxHitpointsMap()->get(slot);
+		float currentHitpoints = getCurrentHitpointsMap()->get(slot);
+
+		damage += maxHitpoints - currentHitpoints;
+
+		switch (slot) {
+			case Components::SHIELD0:
+			case Components::SHIELD1: {
+				float maxShieldFront = getMaxFrontShield();
+				float currentShieldFront = getFrontShield();
+
+				damage += maxShieldFront - currentShieldFront;
+
+				float maxShieldRear = getMaxRearShield();
+				float currentShieldRear = getRearShield();
+
+				damage += maxShieldRear - currentShieldRear;
+
+				break;
+			}
+			case Components::CAPACITOR: {
+				float maxCapacitor = getCapacitorMaxEnergy();
+				float currentCapacitor = getCapacitorEnergy();
+
+				damage += maxCapacitor - currentCapacitor;
+
+				break;
+			}
+			case Components::BOOSTER: {
+				float maxBoost = getBoosterMaxEnergy();
+				float currentBoost = getBoosterEnergy();
+
+				damage += maxBoost - currentBoost;
+
+				break;
+			}
+		}
+	}
+
+	return damage;
+}
+
 void ShipObjectImplementation::repairShip(float value) {
 	float repair = Math::clamp(0.f, value, 1.f);
+
 	if (repair == 0.f) {
 		return;
 	}

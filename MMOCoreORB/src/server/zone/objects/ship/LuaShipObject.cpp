@@ -12,6 +12,8 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "_getObject", &LuaSceneObject::_getObject },
 	{ "getControlDeviceID", &LuaShipObject::getControlDeviceID },
 	{ "storeShip", &LuaShipObject::storeShip },
+	{ "getTotalShipDamage", &LuaShipObject::getTotalShipDamage },
+	{ "repairShip", &LuaShipObject::repairShip },
 	{ 0, 0}
 };
 
@@ -90,6 +92,45 @@ int LuaShipObject::storeShip(lua_State* L) {
 
 	if (task != nullptr)
 		task->schedule(500);
+
+	return 0;
+}
+
+int LuaShipObject::getTotalShipDamage(lua_State* L) {
+	Locker lock(realObject);
+
+	float totalDamage = realObject->getTotalShipDamage();
+
+	lua_pushnumber(L, totalDamage);
+	return 1;
+}
+
+int LuaShipObject::repairShip(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 3) {
+		realObject->error() << "Improper number of arguments in LuaShipObject::repairShip.";
+		return 0;
+	}
+
+	int totalCost = lua_tointeger(L, -1);
+	float repairPercent = lua_tonumber(L, -2);
+	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -3);
+
+	if (player == nullptr)
+		return 0;
+
+	// Lock the ship
+	Locker lock(realObject);
+
+	realObject->repairShip(repairPercent);
+
+	Locker clock(player, realObject);
+
+	TransactionLog logCash(player, realObject, TrxCode::SHIPPINGSYSTEM, totalCost, true);
+
+	// Deduct cost from player
+	player->subtractCashCredits(totalCost);
 
 	return 0;
 }
