@@ -86,7 +86,6 @@ public:
 
 				ship->setPosition(stationPosition.getX(), stationPosition.getZ(), stationPosition.getY());
 				ship->setDirection(1,0,0,0);
-				ship->repairShip(1.f);
 
 				Vector<BasePacket*> messages;
 				messages.add(new DataTransform(ship));
