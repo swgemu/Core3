@@ -3,6 +3,11 @@ SpaceStationScreenPlay = ScreenPlay:new {
 
 	screenplayName = "SpaceStationScreenPlay",
 
+	DEBUG_STATION_REPAIR = false,
+
+	REPAIR_COST = 1,
+	REPAIR_DELAY = 360 * 1000, -- 6 Minutes in miliseconds
+
 	travelPoints = {
 		coronet = {"corellia", -66, 28, -4705},
 		kor_vella = {"corellia", -3155, 31, 2880},
@@ -43,7 +48,7 @@ function SpaceStationScreenPlay:landShip(pPlayer, destination)
 
 	local pShip = SceneObject(pPlayer):getRootParent()
 
-	if (pShip == nil or not SceneObject(pShip):isShipObject() or not CreatureObject(pPlayer):isPilotingShip()) then
+	if (pShip == nil or not SceneObject(pShip):isShipObject()) then
 		return
 	end
 
@@ -56,5 +61,106 @@ function SpaceStationScreenPlay:landShip(pPlayer, destination)
 		return
 	end
 
-	LuaShipObject(pShip):storeShip(pPlayer, destinationInfo[1], destinationInfo[2], destinationInfo[3], destinationInfo[4])
+	local ownerID = ShipObject(pShip):getOwnerID()
+
+	-- Player is the pilot of the ship or the owner
+	if (CreatureObject(pPlayer):isPilotingShip() or SceneObject(pPlayer):getObjectID() == ownerID) then
+		ShipObject(pShip):storeShip(pPlayer, destinationInfo[1], destinationInfo[2], destinationInfo[3], destinationInfo[4])
+	else
+		-- Players onboard a pob can /comm a nearby station and be transported to the ground
+		SceneObject(pPlayer):switchZone(destinationInfo[1], destinationInfo[2], destinationInfo[3], destinationInfo[4], 0)
+	end
+end
+
+function SpaceStationScreenPlay:hasCreditsForRepair(pPlayer, pShip, repairPercent)
+	if (pPlayer == nil or pShip == nil) then
+		return false
+	end
+
+	-- Calculate cost
+	local totalCost = self:getRepairCost(pShip, repairPercent)
+
+	if (totalCost <= 0) then
+		return false
+	end
+
+	local playerCash = CreatureObject(pPlayer):getCashCredits()
+
+	if (self.DEBUG_STATION_REPAIR) then
+		print("hasCreditsForRepair -- Repair Percentage: " .. repairPercent .. " Total repair cost estimate = " .. totalCost .. " Player Cash Balance: " .. playerCash)
+	end
+
+	if (playerCash < totalCost) then
+		return false
+	end
+
+	return true;
+end
+
+function SpaceStationScreenPlay:getRepairCost(pShip, repairPercent)
+	if (pShip == nil) then
+		return 0
+	end
+
+	local shipName = SceneObject(pShip):getObjectName()
+
+	-- Get overall total damage to the ship
+	local totalDamage = ShipObject(pShip):getTotalShipDamage()
+
+	-- Adjust based on the percent chosen from conversation
+	totalDamage = totalDamage * repairPercent
+
+	local totalCost = math.floor(totalDamage * self.REPAIR_COST)
+
+	if (string.find("basic", shipName) or string.find("prototype", shipName)) then
+		totalCost = math.floor((repairPercent * 100) * self.REPAIR_COST)
+	end
+
+	if (self.DEBUG_STATION_REPAIR) then
+		print("getRepairCost -- Total repair cost estimate = " .. totalCost)
+	end
+
+	return totalCost
+end
+
+function SpaceStationScreenPlay:repairShip(pPlayer, pShip, repairPercent, pSpaceStation)
+	if (pPlayer == nil or pShip == nil) then
+		return
+	end
+
+	-- Calculate cost
+	local totalCost = self:getRepairCost(pShip, repairPercent)
+
+	if (totalCost <= 0) then
+		return
+	end
+
+	local playerCash = CreatureObject(pPlayer):getCashCredits()
+
+	if (self.DEBUG_STATION_REPAIR) then
+		print("Repairing Ship -- Total Cost: " .. totalCost .. " Repair Percent: " .. repairPercent .. " Player Cash: " .. playerCash)
+	end
+
+	if (playerCash < totalCost) then
+		return
+	end
+
+	-- Pass all of the information to cpp for ease of lock and trx
+	ShipObject(pShip):repairShip(pPlayer, repairPercent, totalCost)
+
+	if (pSpaceStation ~= nil) then
+		self:addRepairDelay(pSpaceStation)
+	end
+end
+
+function SpaceStationScreenPlay:addRepairDelay(pSpaceStation)
+	if (pSpaceStation == nil) then
+		return
+	end
+
+	local stationID = SceneObject(pSpaceStation):getObjectID()
+	local timeDelay = getTimestampMilli() + self.REPAIR_DELAY
+
+	deleteData(stationID .. ":SpaceStation:repairDelay:")
+	writeData(stationID .. ":SpaceStation:repairDelay:", timeDelay)
 end
