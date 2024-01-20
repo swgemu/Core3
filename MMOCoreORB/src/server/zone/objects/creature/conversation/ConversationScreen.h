@@ -12,6 +12,7 @@
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/packets/object/StringList.h"
 #include "server/zone/objects/player/sessions/ConversationSession.h"
+#include "server/zone/managers/ship/tasks/SpaceCommTimerTask.h"
 
 namespace server {
 namespace zone {
@@ -199,12 +200,22 @@ public:
 
 		//Check if the conversation should be stopped.
 		if (stopConversation) {
-			player->sendMessage(new StopNpcConversation(player, npc->getObjectID()));
-			npc->notifyObservers(ObserverEventType::STOPCONVERSATION, player);
-			screenToSave = nullptr;
+			if (npc->isShipObject()) {
+				auto task = new SpaceCommTimerTask(player, npc->getObjectID());
+
+				if (task != nullptr) {
+					player->addPendingTask("SpaceCommTimer", task, 4000);
+					screenToSave = nullptr;
+				}
+			} else {
+				player->sendMessage(new StopNpcConversation(player, npc->getObjectID()));
+				npc->notifyObservers(ObserverEventType::STOPCONVERSATION, player);
+				screenToSave = nullptr;
+			}
 		}
 
 		Reference<ConversationSession*> session = player->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession* >();
+
 		if (session != nullptr) {
 			session->setLastConversationScreen(screenToSave);
 		}

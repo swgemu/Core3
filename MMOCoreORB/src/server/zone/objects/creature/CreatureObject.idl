@@ -1142,12 +1142,6 @@ class CreatureObject extends TangibleObject {
 	}
 
 	/**
-	* send creature conversation message for space
-	*/
-	@dirty
-	public native void sendSpaceConversation(ShipObject sendingShip, final string messageString, boolean customString = false);
-
-	/**
 	 * Sends a message to client
 	 * @pre { }
 	 * @post { message is sent to client }

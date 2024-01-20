@@ -449,6 +449,10 @@ class ShipObject extends TangibleObject {
 
 	public native void doRecovery(int latency);
 
+	@preLocked
+	public native float getTotalShipDamage();
+
+	@preLocked
 	public native void repairShip(float repairAmount);
 
 	@preLocked
@@ -1515,11 +1519,16 @@ class ShipObject extends TangibleObject {
 		return turretLadder;
 	}
 
+	@preLocked
 	public native void installAmmo(CreatureObject owner, SceneObject component, int slot, boolean notifyClient = false);
 
+	@preLocked
 	public native void uninstallAmmo(CreatureObject owner, int slot, boolean notifyClient = false);
 
+	@preLocked
 	public native void install(CreatureObject owner, SceneObject component, int slot, boolean notifyClient = false);
+
+	@preLocked
 	public native void uninstall(CreatureObject owner, int slot, boolean notifyClient);
 
 	@local

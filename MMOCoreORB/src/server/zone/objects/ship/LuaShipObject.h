@@ -24,6 +24,13 @@ namespace ship {
 		int _setObject(lua_State* L);
 		int getControlDeviceID(lua_State* L);
 		int storeShip(lua_State* L);
+		int getTotalShipDamage(lua_State* L);
+		int repairShip(lua_State* L);
+		int getPilot(lua_State* L);
+		int getPilotID(lua_State* L);
+		int getOwner(lua_State* L);
+		int getOwnerID(lua_State* L);
+		int checkInConvoRange(lua_State* L);
 
 	private:
 		ShipObject* realObject;

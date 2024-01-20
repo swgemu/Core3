@@ -184,9 +184,11 @@ class ShipComponent extends Component {
 	public abstract native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	@local
+	@preLocked
 	public abstract native void install(CreatureObject pilot, ShipObject ship, int slot, boolean notifyClient);
 
 	@local
+	@preLocked
 	public abstract native void uninstall(CreatureObject pilot, ShipObject ship, int slot, boolean notifyClient);
 
 	@local

@@ -162,6 +162,7 @@ public:
 		}
 
 		Locker locker(ship, creature);
+
 		ship->installAmmo(creature, sceneAmmo, weaponID, true);
 
 		return SUCCESS;

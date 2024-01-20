@@ -22,7 +22,7 @@ bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* play
 
 	CreatureObject* playerCreature = player->asCreatureObject();
 
-	if (playerCreature == nullptr || !playerCreature->isPilotingShip()) {
+	if (playerCreature == nullptr) {
 		return false;
 	}
 
@@ -39,15 +39,6 @@ bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* play
 	}
 
 	uint64 oid = getObjectID();
-
-	if (!playerShip->checkInConvoRange(asShipObject())) {
-		String messageString = getConversationMessage();
-
-		playerCreature->sendSpaceConversation(asShipObject(), messageString, false);
-
-		return false;
-	}
-
 	String mobile = getConversationMobile();
 	uint32 mobileCRC = mobile.hashCode();
 

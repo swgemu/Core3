@@ -309,21 +309,25 @@ void ShipObjectImplementation::installAmmo(CreatureObject* player, SceneObject* 
 	}
 
 	auto component = getComponentObject(slot);
+
 	if (component == nullptr) {
 		return;
 	}
 
 	auto weapon = dynamic_cast<ShipWeaponComponent*>(component);
+
 	if (weapon == nullptr) {
 		return;
 	}
 
 	auto ammo = dynamic_cast<Component*>(sceno);
+
 	if (ammo == nullptr) {
 		return;
 	}
 
-	Locker lock(ammo);
+	Locker lock(ammo, asShipObject());
+
 	ammo->destroyObjectFromWorld(true);
 
 	weapon->installAmmo(player, asShipObject(), ammo, slot, notifyClient);
@@ -333,14 +337,18 @@ void ShipObjectImplementation::installAmmo(CreatureObject* player, SceneObject* 
 
 void ShipObjectImplementation::uninstallAmmo(CreatureObject* player, int slot, bool notifyClient) {
 	auto component = getComponentObject(slot);
+
 	if (component == nullptr) {
 		return;
 	}
 
 	auto weapon = dynamic_cast<ShipWeaponComponent*>(component);
+
 	if (weapon == nullptr) {
 		return;
 	}
+
+	Locker lock(weapon, asShipObject());
 
 	weapon->uninstallAmmo(player, asShipObject(), slot, notifyClient);
 }
@@ -351,11 +359,13 @@ void ShipObjectImplementation::install(CreatureObject* player, SceneObject* scen
 	}
 
 	ManagedReference<ShipComponent*> shipComponent = dynamic_cast<ShipComponent*>(sceno);
+
 	if (shipComponent == nullptr) {
 		return;
 	}
 
-	Locker lock(shipComponent);
+	Locker lock(shipComponent, asShipObject());
+
 	shipComponent->destroyObjectFromWorld(true);
 
 	components.put(slot, shipComponent);
@@ -364,28 +374,34 @@ void ShipObjectImplementation::install(CreatureObject* player, SceneObject* scen
 }
 
 void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool notifyClient) {
+	// We do not want to continue with uninstallation if the player giving the command is null
+	if (player == nullptr)
+		return;
+
 	ManagedReference<ShipComponent*> shipComponent = getComponentObject(slot);
+
 	if (shipComponent == nullptr) {
 		return;
 	}
 
-	Locker lock(shipComponent);
+	Locker lock(shipComponent, asShipObject());
+
 	shipComponent->destroyObjectFromWorld(true);
 
-	if (player != nullptr) {
-		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-		if (inventory == nullptr || !inventory->transferObject(shipComponent, -1, notifyClient, true)) {
-			return;
-		}
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-		if (notifyClient) {
-			shipComponent->sendTo(player, true);
-		}
+	if (inventory == nullptr || !inventory->transferObject(shipComponent, -1, notifyClient, true)) {
+		return;
 	}
 
 	shipComponent->uninstall(player, asShipObject(), slot, notifyClient);
 
 	components.drop(slot);
+
+	if (notifyClient) {
+		shipComponent->sendTo(player, true);
+	}
+
 }
 
 void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
@@ -696,8 +712,78 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 	scheduleRecovery();
 }
 
+float ShipObjectImplementation::getTotalShipDamage() {
+	float damage = 0.f;
+
+	float maxChassis = getChassisMaxHealth();
+	float currentChassis = getChassisCurrentHealth();
+
+	damage += maxChassis - currentChassis;
+
+	auto componentMap = getShipComponentMap();
+
+	for (int i = 0; i < componentMap->size(); ++i) {
+		uint32 slot = componentMap->getKeyAt(i);
+		uint32 crc = componentMap->getValueAt(i);
+
+		if (crc == 0) {
+			continue;
+		}
+
+		float maxArmor = getMaxArmorMap()->get(slot);
+		float currentArmor = getCurrentArmorMap()->get(slot);
+
+		damage += maxArmor - currentArmor;
+
+		float maxHitpoints = getMaxHitpointsMap()->get(slot);
+		float currentHitpoints = getCurrentHitpointsMap()->get(slot);
+
+		damage += maxHitpoints - currentHitpoints;
+
+		switch (slot) {
+			case Components::SHIELD0:
+			case Components::SHIELD1: {
+				float maxShieldFront = getMaxFrontShield();
+				float currentShieldFront = getFrontShield();
+
+				damage += maxShieldFront - currentShieldFront;
+
+				float maxShieldRear = getMaxRearShield();
+				float currentShieldRear = getRearShield();
+
+				damage += maxShieldRear - currentShieldRear;
+
+				break;
+			}
+			case Components::CAPACITOR: {
+				float maxCapacitor = getCapacitorMaxEnergy();
+				float currentCapacitor = getCapacitorEnergy();
+
+				damage += maxCapacitor - currentCapacitor;
+
+				break;
+			}
+			case Components::BOOSTER: {
+				float maxBoost = getBoosterMaxEnergy();
+				float currentBoost = getBoosterEnergy();
+
+				damage += maxBoost - currentBoost;
+
+				break;
+			}
+		}
+	}
+
+	return damage;
+}
+
 void ShipObjectImplementation::repairShip(float value) {
+#ifdef DEBUG_SHIP_REPAIR
+	info(true) << "---------- Repair Ship START - Value: " << value << " ------";
+#endif
+
 	float repair = Math::clamp(0.f, value, 1.f);
+
 	if (repair == 0.f) {
 		return;
 	}
@@ -705,20 +791,35 @@ void ShipObjectImplementation::repairShip(float value) {
 	auto pilot = owner.get();
 	auto deltaVector = getDeltaVector();
 
-	float maxChassis = getChassisMaxHealth();
-	float oldChassis = getChassisCurrentHealth();
-	float newChassis = ((maxChassis - oldChassis) * repair) + oldChassis;
+	// Handle Chassis Repair
+	float chassisMax = getChassisMaxHealth();
+	float currentChassis = getChassisCurrentHealth();
+	float chassisDamage = chassisMax - currentChassis;
 
-	if (oldChassis != newChassis) {
-		setCurrentChassisHealth(newChassis, false, nullptr, deltaVector);
-	}
+	float chassisRepair = chassisDamage * repair;
+	float newChassis = currentChassis + chassisRepair;
+
+#ifdef DEBUG_SHIP_REPAIR
+	info(true) << "Current Chassis: " << currentChassis << " New Chassis: " << newChassis << " Repair Amount: " << chassisRepair;
+#endif
+
+	setCurrentChassisHealth(newChassis, false, nullptr, deltaVector);
 
 	uint8 command = DeltaMapCommands::SET;
 	auto componentMap = getShipComponentMap();
 
+#ifdef DEBUG_SHIP_REPAIR
+	info(true) << "------ Starting Component Map Update ------\n";
+#endif
+
 	for (int i = 0; i < componentMap->size(); ++i) {
 		uint32 slot = componentMap->getKeyAt(i);
 		uint32 crc = componentMap->getValueAt(i);
+
+#ifdef DEBUG_SHIP_REPAIR
+		info(true) << "\n";
+		info(true) << "Component Map #" << i << " - Component Slot: " << slot << " CRC: " << crc;
+#endif
 
 		if (crc == 0) {
 			continue;
@@ -734,68 +835,118 @@ void ShipObjectImplementation::repairShip(float value) {
 			flags &= ~ShipComponentFlag::DISABLED;
 		}
 
-		if (flags != getComponentOptionsMap()->get(slot)) {
-			setComponentOptions(slot, flags, nullptr, command,  deltaVector);
+		setComponentOptions(slot, flags, nullptr, command,  deltaVector);
+
+		// Handle Armor Repair and Decay
+		float armorMax = getMaxArmorMap()->get(slot);
+		float currentArmor = getCurrentArmorMap()->get(slot);
+		float armorDamage = armorMax - currentArmor;
+
+		float armorRepair = armorDamage * repair;
+		int armorDecay = armorRepair / 10;
+		float newArmor = currentArmor + armorRepair;
+
+		if (armorDecay > 0) {
+			armorMax = Math::max(1.f, (armorMax - armorDecay));
+
+			setComponentMaxArmor(slot, armorMax, nullptr, command, deltaVector);
+
+			newArmor = (newArmor > armorMax ? armorMax : newArmor);
 		}
 
-		float maxArmor = getMaxArmorMap()->get(slot);
-		float oldArmor = getCurrentArmorMap()->get(slot);
-		float newArmor = ((maxArmor - oldArmor) * repair) + oldArmor;
+#ifdef DEBUG_SHIP_REPAIR
+		info(true) << "Old Armor Max: " << (armorMax + armorDecay) << " Armor Decay: " << armorDecay << " New Armor Max: " << armorMax;
+		info(true) << "Current Armor: " << currentArmor << " New Armor: " << newArmor << " Repair Amount: " << armorRepair;
+#endif
 
-		if (newArmor != oldArmor) {
-			setComponentArmor(slot, newArmor, nullptr, command, deltaVector);
+		setComponentArmor(slot, newArmor, nullptr, command, deltaVector);
+
+		// Handle Hitpoints Repair and Decay
+		float hitpointsMax = getMaxHitpointsMap()->get(slot);
+		float currentHitpoints = getCurrentHitpointsMap()->get(slot);
+		float hitpointsDamage = hitpointsMax - currentHitpoints;
+
+		float hitpointsRepair = hitpointsDamage * repair;
+		int hitpointsDecay = hitpointsRepair / 10;
+		float newHitpoints = currentHitpoints + hitpointsRepair;
+
+		if (hitpointsDecay > 0) {
+			hitpointsMax = Math::max(1.f, (hitpointsMax - hitpointsDecay));
+
+			setComponentMaxHitpoints(slot, hitpointsMax, nullptr, command, deltaVector);
+
+			newHitpoints = (newHitpoints > hitpointsMax ? hitpointsMax : newArmor);
 		}
 
-		float maxHp = getMaxHitpointsMap()->get(slot);
-		float oldHp = getCurrentHitpointsMap()->get(slot);
-		float newHp = ((maxHp - oldHp) * repair) + oldHp;
+#ifdef DEBUG_SHIP_REPAIR
+		info(true) << "Old Hitpoints Max: " << (hitpointsMax + hitpointsDecay) << " Hitpoints Decay: " << hitpointsDecay << " New Hitpoints Max: " << hitpointsMax;
+		info(true) << "Current Hitpoints: " << currentHitpoints << " New Hitpoints: " << newHitpoints << " Repair Amount: " << hitpointsRepair;
+#endif
 
-		if (newHp != oldHp) {
-			setComponentHitpoints(slot, newHp, nullptr, command, deltaVector);
-		}
+		setComponentHitpoints(slot, newHitpoints, nullptr, command, deltaVector);
 
 		switch (slot) {
 			case Components::SHIELD0:
 			case Components::SHIELD1: {
-				float maxShieldFront = getMaxFrontShield();
-				float minShieldFront = getFrontShield();
-				float newShieldFront = ((maxShieldFront - minShieldFront) * repair) + minShieldFront;
+				float frontShieldMax = getMaxFrontShield();
+				float frontShieldCurrent = getFrontShield();
+				float frontShieldDamage = frontShieldMax - frontShieldCurrent;
 
-				if (newShieldFront != minShieldFront) {
+				float frontRepair = frontShieldDamage * repair;
+				float newShieldFront = frontShieldCurrent + frontRepair;
+
+#ifdef DEBUG_SHIP_REPAIR
+				info(true) << "Current Front Shield: " << frontShieldCurrent << " New Front Shield: " << newShieldFront << " Repair Amount: " << frontRepair;
+#endif
+				if (frontRepair > 0)
 					setFrontShield(newShieldFront, false, nullptr, deltaVector);
-				}
 
-				float maxShieldRear = getMaxRearShield();
-				float minShieldRear = getRearShield();
-				float newShieldRear = ((maxShieldRear - minShieldRear) * repair) + minShieldRear;
+				float rearShieldMax = getMaxRearShield();
+				float rearShieldCurrent = getRearShield();
+				float rearShieldDamage = rearShieldMax - rearShieldCurrent;
 
-				if (newShieldRear != minShieldRear) {
+				float rearRepair = rearShieldDamage * repair;
+				float newShieldRear = rearShieldCurrent + rearRepair;
+
+#ifdef DEBUG_SHIP_REPAIR
+				info(true) << "Current Rear Shield: " << frontShieldCurrent << " New Rear Shield: " << newShieldFront << " Repair Amount: " << rearRepair;
+#endif
+				if (rearRepair > 0)
 					setRearShield(newShieldRear, false, nullptr, deltaVector);
-				}
 
 				break;
 			}
 
 			case Components::CAPACITOR: {
-				float maxCap = getCapacitorMaxEnergy();
-				float minCap = getCapacitorEnergy();
-				float newCap = ((maxCap - minCap) * repair) + minCap;
+				float maxCapacitor = getCapacitorMaxEnergy();
+				float currentCapacitor = getCapacitorEnergy();
+				float capacitorDamage = maxCapacitor - currentCapacitor;
 
-				if (newCap != minCap) {
-					setCapacitorEnergy(newCap, false, nullptr, deltaVector);
-				}
+				float capacitorRepair = capacitorDamage * repair;
+				float newCapacitor = currentCapacitor + capacitorRepair;
+
+#ifdef DEBUG_SHIP_REPAIR
+				info(true) << "Current Capacitor: " << currentCapacitor << " New Capacitor: " << newCapacitor << " Repair Amount: " << capacitorRepair;
+#endif
+				if (capacitorRepair > 0)
+					setCapacitorEnergy(newCapacitor, false, nullptr, deltaVector);
 
 				break;
 			}
 
 			case Components::BOOSTER: {
-				float maxBoost = getBoosterMaxEnergy();
-				float minBoost = getBoosterEnergy();
-				float newBoost = ((maxBoost - minBoost) * repair) + minBoost;
+				float maxBooster = getBoosterMaxEnergy();
+				float currentBooster = getBoosterEnergy();
+				float boosterDamage = maxBooster - currentBooster;
 
-				if (newBoost != minBoost) {
-					setBoosterEnergy(newBoost, false, nullptr, deltaVector);
-				}
+				float boosterRepair = boosterDamage * repair;
+				float newBooster = currentBooster + boosterRepair;
+
+#ifdef DEBUG_SHIP_REPAIR
+				info(true) << "Current Booster: " << currentBooster << " New Booster: " << newBooster << " Repair Amount: " << boosterRepair;
+#endif
+				if (boosterRepair > 0)
+					setBoosterEnergy(newBooster, false, nullptr, deltaVector);
 
 				break;
 			}
@@ -805,6 +956,10 @@ void ShipObjectImplementation::repairShip(float value) {
 	if (deltaVector != nullptr) {
 		deltaVector->sendMessages(asShipObject(), pilot);
 	}
+
+#ifdef DEBUG_SHIP_REPAIR
+	info(true) << "---------- Repair Ship END - Value: " << value << " ------";
+#endif
 }
 
 void ShipObjectImplementation::scheduleRecovery() {

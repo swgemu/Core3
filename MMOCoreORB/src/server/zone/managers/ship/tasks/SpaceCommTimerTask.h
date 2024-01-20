@@ -15,52 +15,37 @@
 
 
 class SpaceCommTimerTask : public Task, public Logger {
-	ManagedWeakReference<CreatureObject*> creo;
+	ManagedWeakReference<CreatureObject*> play;
 	uint64 shipID;
 
 protected:
 	int convoLength;
 
 public:
-	SpaceCommTimerTask(CreatureObject* player, uint64 oid, int length) : Task() {
-		creo = player;
+	SpaceCommTimerTask(CreatureObject* playerCreo, uint64 oid) : Task() {
+		play = playerCreo;
 		shipID = oid;
-		convoLength = length;
 
 		Logger::setLoggingName("SpaceCommTimerTask");
 	}
 
 	void run() {
-		CreatureObject* creature = creo.get();
+		auto player = play.get();
 
-		if (creature == nullptr) {
-			error() << " run() - creature strongReference has a nullptr.";
+		if (player == nullptr) {
 			return;
 		}
 
-		ZoneServer* zoneServer = creature->getZoneServer();
+		ZoneServer* zoneServer = player->getZoneServer();
 
 		if (zoneServer != nullptr && zoneServer->isServerShuttingDown()) {
 			cancel();
 			return;
 		}
 
-		ManagedReference<ConversationSession*> session = creature->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession*>();
+		Locker lock(player);
 
-		Locker _lock(creature);
-
-		if (convoLength != 0 && session != nullptr) {
-			reschedule(convoLength);
-			convoLength -= convoLength;
-		} else {
-			if (session == nullptr) {
-				return;
-			} else {
-				creature->dropActiveSession(SessionFacadeType::CONVERSATION);
-				creature->sendMessage(new StopNpcConversation(creature, shipID));
-			}
-		}
-
+		player->executeObjectControllerAction(STRING_HASHCODE("npcconversationstop"), shipID, "");
 	}
 };
 

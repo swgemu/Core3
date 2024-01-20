@@ -72,7 +72,7 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	}
 	case ObserverEventType::STOPCONVERSATION: {
 		if (player != nullptr)
-			cancelConversationSession(player, npc);
+			cancelConversationSession(player, npc, npc->isShipObject());
 
 		auto agent = npc->asAiAgent();
 
@@ -148,6 +148,16 @@ void ConversationObserverImplementation::cancelConversationSession(CreatureObjec
 
 	if (forceClose && conversingNPC != nullptr)
 		conversingPlayer->sendMessage(new StopNpcConversation(conversingPlayer, conversingNPC->getObjectID()));
+
+	// If the player manually ends the conversation, cancel their pending SpaceCommTimer task
+	auto spaceCommTask = conversingPlayer->getPendingTask("SpaceCommTimer");
+
+	if (spaceCommTask != nullptr) {
+		if (spaceCommTask->isScheduled())
+			spaceCommTask->cancel();
+
+		conversingPlayer->removePendingTask("SpaceCommTimer");
+	}
 }
 
 ConversationScreen* ConversationObserverImplementation::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, SceneObject* conversingNPC) {

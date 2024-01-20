@@ -157,6 +157,19 @@ void ShipComponentImplementation::uninstall(CreatureObject* pilot, ShipObject* s
 	ship->setEfficiency(slot, 0.f, nullptr, command, deltaVector);
 	ship->setEnergyCost(slot, 0.f, nullptr, command, deltaVector);
 
+	// Handle setting decay onto components from ships DeltaVectors
+	float maxArmor = ship->getMaxArmorMap()->get(slot);
+	float currentArmor = ship->getCurrentArmorMap()->get(slot);
+
+	setArmorMax(maxArmor);
+	setArmor(currentArmor);
+
+	float maxHitpoints = ship->getMaxHitpointsMap()->get(slot);
+	float currentHitpoint = ship->getCurrentHitpointsMap()->get(slot);
+
+	setHitpointsMax(maxHitpoints);
+	setHitpoints(currentHitpoint);
+
 	ship->setComponentMaxHitpoints(slot, 0.f, nullptr, command, deltaVector);
 	ship->setComponentHitpoints(slot, 0.f, nullptr, command, deltaVector);
 	ship->setComponentArmor(slot, 0.f, nullptr, command, deltaVector);

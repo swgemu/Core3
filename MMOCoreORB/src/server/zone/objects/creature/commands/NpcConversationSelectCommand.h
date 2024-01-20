@@ -52,16 +52,10 @@ public:
 
 			Vector3 validCoords = validPosition->getWorldPosition(zoneServer);
 
-			if (validCoords.distanceTo(object->getWorldPosition()) <= 5.f) {
+			if (object->isShipObject() || validCoords.squaredDistanceTo(object->getWorldPosition()) < 25.f) {
 				object->selectConversationOption(option, creature);
 
 				object->notifyObservers(ObserverEventType::SELECTCONVERSATION, creature, option);
-
-			} else if (object->isSpaceStation()) {
-				object->selectConversationOption(option, creature);
-
-				object->notifyObservers(ObserverEventType::SELECTCONVERSATION, creature, option);
-
 			} else {
 				return TOOFAR;
 			}

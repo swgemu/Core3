@@ -12,6 +12,13 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "_getObject", &LuaSceneObject::_getObject },
 	{ "getControlDeviceID", &LuaShipObject::getControlDeviceID },
 	{ "storeShip", &LuaShipObject::storeShip },
+	{ "getTotalShipDamage", &LuaShipObject::getTotalShipDamage },
+	{ "repairShip", &LuaShipObject::repairShip },
+	{ "getPilot", &LuaShipObject::getPilot },
+	{ "getPilotID", &LuaShipObject::getPilotID },
+	{ "getOwner", &LuaShipObject::getOwner },
+	{ "getOwnerID", &LuaShipObject::getOwnerID },
+	{ "checkInConvoRange", &LuaShipObject::checkInConvoRange },
 	{ 0, 0}
 };
 
@@ -92,4 +99,106 @@ int LuaShipObject::storeShip(lua_State* L) {
 		task->schedule(500);
 
 	return 0;
+}
+
+int LuaShipObject::getTotalShipDamage(lua_State* L) {
+	Locker lock(realObject);
+
+	float totalDamage = realObject->getTotalShipDamage();
+
+	lua_pushnumber(L, totalDamage);
+	return 1;
+}
+
+int LuaShipObject::repairShip(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 3) {
+		realObject->error() << "Improper number of arguments in LuaShipObject::repairShip.";
+		return 0;
+	}
+
+	int totalCost = lua_tointeger(L, -1);
+	float repairPercent = lua_tonumber(L, -2);
+	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -3);
+
+	if (player == nullptr)
+		return 0;
+
+	// Lock the ship
+	Locker lock(realObject);
+
+	realObject->repairShip(repairPercent);
+
+	Locker clock(player, realObject);
+
+	TransactionLog logCash(player, realObject, TrxCode::SHIPPINGSYSTEM, totalCost, true);
+
+	// Deduct cost from player
+	player->subtractCashCredits(totalCost);
+
+	return 0;
+}
+
+int LuaShipObject::getPilot(lua_State* L) {
+	auto pilot = realObject->getPilot();
+
+	if (pilot == nullptr) {
+		lua_pushnil(L);
+	} else {
+		lua_pushlightuserdata(L, pilot);
+	}
+
+	return 1;
+}
+
+int LuaShipObject::getPilotID(lua_State* L) {
+	auto pilot = realObject->getPilot();
+	uint64 pilotID = 0;
+
+	if (pilot != nullptr)
+		pilotID = pilot->getObjectID();
+
+	lua_pushinteger(L, pilotID);
+
+	return 1;
+}
+
+int LuaShipObject::getOwner(lua_State* L) {
+	auto owner = realObject->getOwner().get();
+
+	if (owner == nullptr) {
+		lua_pushnil(L);
+	} else {
+		lua_pushlightuserdata(L, owner);
+	}
+
+	return 1;
+}
+
+int LuaShipObject::getOwnerID(lua_State* L) {
+	uint64 ownerID = realObject->getOwnerID();
+
+	lua_pushinteger(L, ownerID);
+
+	return 1;
+}
+
+int LuaShipObject::checkInConvoRange(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipObject::repairShip.";
+		return 0;
+	}
+
+	SceneObject* targetObject = (SceneObject*) lua_touserdata(L, -1);
+
+	if (targetObject == nullptr)
+		return 0;
+
+	bool val = realObject->checkInConvoRange(targetObject);
+
+	lua_pushboolean(L, val);
+	return 1;
 }

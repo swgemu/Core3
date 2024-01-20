@@ -94,7 +94,6 @@
 #include "server/zone/managers/director/ScreenPlayObserver.h"
 #include "server/zone/objects/player/events/SpawnHelperDroidTask.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
-#include "server/zone/managers/ship/tasks/SpaceCommTimerTask.h"
 
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376f;
 
@@ -3015,46 +3014,6 @@ void CreatureObjectImplementation::stopEntertaining() {
 		return;
 
 	session->cancelSession();
-}
-
-void CreatureObjectImplementation::sendSpaceConversation(ShipObject* senderShip, const String& messageString, bool customString) {
-	if (senderShip == nullptr)
-		return;
-
-	String mobile = senderShip->getConversationMobile();
-	uint32 mobileCRC = mobile.hashCode();
-	uint64 oid = senderShip->getObjectID();
-
-	StartNpcConversation* conv = new StartNpcConversation(asCreatureObject(), oid, 1, "", mobileCRC);
-
-	if (conv != nullptr)
-		sendMessage(conv);
-
-	if (customString) {
-		UnicodeString convoMessage(messageString);
-
-		NpcConversationMessage* message = new NpcConversationMessage(asCreatureObject(), convoMessage);
-
-		if (message != nullptr)
-			sendMessage(message);
-	} else {
-		StringIdChatParameter msg(messageString);
-
-		msg.setTU(getDisplayedName());
-		msg.setNU(getFirstName());
-
-		NpcConversationMessage* message = new NpcConversationMessage(asCreatureObject(), msg);
-
-		if (message != nullptr)
-			sendMessage(message);
-	}
-
-	addActiveSession(SessionFacadeType::CONVERSATION, new ConversationSession(senderShip));
-
-	SpaceCommTimerTask* task = new SpaceCommTimerTask(asCreatureObject(), oid, 10000);
-
-	if (task != nullptr)
-		task->schedule();
 }
 
 void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
