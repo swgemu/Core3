@@ -696,8 +696,80 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 	scheduleRecovery();
 }
 
+float ShipObjectImplementation::getTotalShipDamage() {
+	float damage = 0.f;
+
+	float maxChassis = getChassisMaxHealth();
+	float currentChassis = getChassisCurrentHealth();
+
+	damage += maxChassis - currentChassis;
+
+	auto componentMap = getShipComponentMap();
+
+	for (int i = 0; i < componentMap->size(); ++i) {
+		uint32 slot = componentMap->getKeyAt(i);
+		uint32 crc = componentMap->getValueAt(i);
+
+		if (crc == 0) {
+			continue;
+		}
+
+		float maxArmor = getMaxArmorMap()->get(slot);
+		float currentArmor = getCurrentArmorMap()->get(slot);
+
+		damage += maxArmor - currentArmor;
+
+		float maxHitpoints = getMaxHitpointsMap()->get(slot);
+		float currentHitpoints = getCurrentHitpointsMap()->get(slot);
+
+		damage += maxHitpoints - currentHitpoints;
+
+		switch (slot) {
+			case Components::SHIELD0:
+			case Components::SHIELD1: {
+				float maxShieldFront = getMaxFrontShield();
+				float currentShieldFront = getFrontShield();
+
+				damage += maxShieldFront - currentShieldFront;
+
+				float maxShieldRear = getMaxRearShield();
+				float currentShieldRear = getRearShield();
+
+				damage += maxShieldRear - currentShieldRear;
+
+				break;
+			}
+			case Components::CAPACITOR: {
+				float maxCapacitor = getCapacitorMaxEnergy();
+				float currentCapacitor = getCapacitorEnergy();
+
+				damage += maxCapacitor - currentCapacitor;
+
+				break;
+			}
+			case Components::BOOSTER: {
+				float maxBoost = getBoosterMaxEnergy();
+				float currentBoost = getBoosterEnergy();
+
+				damage += maxBoost - currentBoost;
+
+				break;
+			}
+		}
+	}
+
+	return damage;
+}
+
+#define DEBUG_SHIP_REPAIR
+
 void ShipObjectImplementation::repairShip(float value) {
+#ifdef DEBUG_SHIP_REPAIR
+	info(true) << "---------- Repair Ship START - Value: " << value << " ------";
+#endif
+
 	float repair = Math::clamp(0.f, value, 1.f);
+
 	if (repair == 0.f) {
 		return;
 	}
@@ -705,20 +777,44 @@ void ShipObjectImplementation::repairShip(float value) {
 	auto pilot = owner.get();
 	auto deltaVector = getDeltaVector();
 
-	float maxChassis = getChassisMaxHealth();
-	float oldChassis = getChassisCurrentHealth();
-	float newChassis = ((maxChassis - oldChassis) * repair) + oldChassis;
+	// Handle Chassis Repair and Decay
+	float chassisMax = getChassisMaxHealth();
+	float currentChassis = getChassisCurrentHealth();
+	float chassisDamage = chassisMax - currentChassis;
+	int chassisDecay = (chassisDamage / 10);
 
-	if (oldChassis != newChassis) {
-		setCurrentChassisHealth(newChassis, false, nullptr, deltaVector);
+	float chassisRepair = chassisDamage * repair;
+	float newChassis = currentChassis + chassisRepair;
+
+	if (chassisDecay > 0) {
+		chassisMax -= chassisDecay;
+
+		setChassisMaxHealth(chassisMax, false, nullptr, deltaVector);
+
+		newChassis = (newChassis > chassisMax ? chassisMax : newChassis);
 	}
+
+#ifdef DEBUG_SHIP_REPAIR
+	info(true) << "Old Chassis Max: " << (chassisMax + chassisDecay) << " Chassis Decay: " << chassisDecay << " New Chassis Max: " << chassisMax;
+#endif
+
+	setCurrentChassisHealth(newChassis, false, nullptr, deltaVector);
 
 	uint8 command = DeltaMapCommands::SET;
 	auto componentMap = getShipComponentMap();
 
+#ifdef DEBUG_SHIP_REPAIR
+	info(true) << "------ Starting Component Map Update ------\n";
+#endif
+
 	for (int i = 0; i < componentMap->size(); ++i) {
 		uint32 slot = componentMap->getKeyAt(i);
 		uint32 crc = componentMap->getValueAt(i);
+
+#ifdef DEBUG_SHIP_REPAIR
+		info(true) << "\n";
+		info(true) << "Component Map #" << i << " - Component Slot: " << slot << " CRC: " << crc;
+#endif
 
 		if (crc == 0) {
 			continue;
@@ -734,68 +830,158 @@ void ShipObjectImplementation::repairShip(float value) {
 			flags &= ~ShipComponentFlag::DISABLED;
 		}
 
-		if (flags != getComponentOptionsMap()->get(slot)) {
-			setComponentOptions(slot, flags, nullptr, command,  deltaVector);
+		setComponentOptions(slot, flags, nullptr, command,  deltaVector);
+
+		// Handle Armor Repair and Decay
+		float armorMax = getMaxArmorMap()->get(slot);
+		float currentArmor = getCurrentArmorMap()->get(slot);
+		float armorDamage = armorMax - currentArmor;
+
+		float armorRepair = armorDamage * repair;
+		int armorDecay = armorRepair / 10;
+		float newArmor = currentArmor + armorRepair;
+
+		if (armorDecay > 0) {
+			armorMax -= armorDecay;
+
+			setComponentMaxArmor(slot, armorMax, nullptr, command, deltaVector);
+
+			newArmor = (newArmor > armorMax ? armorMax : newArmor);
 		}
 
-		float maxArmor = getMaxArmorMap()->get(slot);
-		float oldArmor = getCurrentArmorMap()->get(slot);
-		float newArmor = ((maxArmor - oldArmor) * repair) + oldArmor;
+#ifdef DEBUG_SHIP_REPAIR
+		info(true) << "Old Armor Max: " << (armorMax + armorDecay) << " Armor Decay: " << armorDecay << " New Armor Max: " << armorMax;
+		info(true) << "Current Armor: " << currentArmor << " New Armor: " << newArmor;
+#endif
 
-		if (newArmor != oldArmor) {
-			setComponentArmor(slot, newArmor, nullptr, command, deltaVector);
+		setComponentArmor(slot, newArmor, nullptr, command, deltaVector);
+
+		// Handle Hitpoints Repair and Decay
+		float hitpointsMax = getMaxHitpointsMap()->get(slot);
+		float currentHitpoints = getCurrentHitpointsMap()->get(slot);
+		float hitpointsDamage = hitpointsMax - currentHitpoints;
+
+		float hitpointsRepair = hitpointsDamage * repair;
+		int hitpointsDecay = hitpointsRepair / 10;
+		float newHitpoints = currentHitpoints + hitpointsRepair;
+
+		if (hitpointsDecay > 0) {
+			hitpointsMax -= hitpointsDecay;
+
+			setComponentMaxHitpoints(slot, hitpointsMax, nullptr, command, deltaVector);
+
+			newHitpoints = (newHitpoints > hitpointsMax ? hitpointsMax : newArmor);
 		}
 
-		float maxHp = getMaxHitpointsMap()->get(slot);
-		float oldHp = getCurrentHitpointsMap()->get(slot);
-		float newHp = ((maxHp - oldHp) * repair) + oldHp;
+#ifdef DEBUG_SHIP_REPAIR
+		info(true) << "Old Hitpoints Max: " << (hitpointsMax + hitpointsDecay) << " Hitpoints Decay: " << hitpointsDecay << " New Hitpoints Max: " << hitpointsMax;
+		info(true) << "Current Hitpoints: " << currentHitpoints << " New Hitpoints: " << newHitpoints;
+#endif
 
-		if (newHp != oldHp) {
-			setComponentHitpoints(slot, newHp, nullptr, command, deltaVector);
-		}
+		setComponentHitpoints(slot, newHitpoints, nullptr, command, deltaVector);
 
 		switch (slot) {
 			case Components::SHIELD0:
 			case Components::SHIELD1: {
-				float maxShieldFront = getMaxFrontShield();
-				float minShieldFront = getFrontShield();
-				float newShieldFront = ((maxShieldFront - minShieldFront) * repair) + minShieldFront;
+				float frontShieldMax = getMaxFrontShield();
+				float frontShieldCurrent = getFrontShield();
+				float frontShieldDamage = frontShieldMax - frontShieldCurrent;
 
-				if (newShieldFront != minShieldFront) {
-					setFrontShield(newShieldFront, false, nullptr, deltaVector);
+				float frontRepair = frontShieldDamage * repair;
+				int frontDecay = frontRepair / 10;
+				float newShieldFront = frontShieldCurrent + frontRepair;
+
+				if (frontDecay > 0) {
+					frontShieldMax -= frontDecay;
+
+					setFrontShieldMax(frontShieldMax, false, nullptr, deltaVector);
+
+					newShieldFront = (newShieldFront < frontShieldMax ? frontShieldMax : newShieldFront);
 				}
 
-				float maxShieldRear = getMaxRearShield();
-				float minShieldRear = getRearShield();
-				float newShieldRear = ((maxShieldRear - minShieldRear) * repair) + minShieldRear;
+#ifdef DEBUG_SHIP_REPAIR
+				info(true) << "Old Front Shield Max: " << (frontShieldMax + frontDecay) << " Front Shield Decay: " << frontDecay << " New Front Shield Max: " << frontShieldMax;
+				info(true) << "Current Front Shield: " << frontShieldCurrent << " New Front Shield: " << newShieldFront;
+#endif
 
-				if (newShieldRear != minShieldRear) {
-					setRearShield(newShieldRear, false, nullptr, deltaVector);
+				setFrontShield(newShieldFront, false, nullptr, deltaVector);
+
+				float rearShieldMax = getMaxRearShield();
+				float rearShieldCurrent = getRearShield();
+				float rearShieldDamage = rearShieldMax - rearShieldCurrent;
+
+				float rearRepair = rearShieldDamage * repair;
+				int rearDecay = rearRepair / 10;
+				float newShieldRear = rearShieldCurrent + rearRepair;
+
+				if (rearDecay > 0) {
+					rearShieldMax -= rearDecay;
+
+					setRearShieldMax(rearShieldMax, false, nullptr, deltaVector);
+
+					newShieldRear = (newShieldRear > rearShieldMax ? rearShieldMax : newShieldRear);
 				}
+
+#ifdef DEBUG_SHIP_REPAIR
+				info(true) << "Old Rear Shield Max: " << (frontShieldMax + frontDecay) << " Rear Shield Decay: " << frontDecay << " New Rear Shield Max: " << frontShieldMax;
+				info(true) << "Current Front Shield: " << frontShieldCurrent << " New Front Shield: " << newShieldFront;
+#endif
+
+				setRearShield(newShieldRear, false, nullptr, deltaVector);
 
 				break;
 			}
 
 			case Components::CAPACITOR: {
-				float maxCap = getCapacitorMaxEnergy();
-				float minCap = getCapacitorEnergy();
-				float newCap = ((maxCap - minCap) * repair) + minCap;
+				float maxCapacitor = getCapacitorMaxEnergy();
+				float currentCapacitor = getCapacitorEnergy();
+				float capacitorDamage = maxCapacitor - currentCapacitor;
 
-				if (newCap != minCap) {
-					setCapacitorEnergy(newCap, false, nullptr, deltaVector);
+				float capacitorRepair = capacitorDamage * repair;
+				int capacitorDecay = capacitorRepair * repair;
+				float newCapacitor = currentCapacitor + capacitorRepair;
+
+				if (capacitorDecay > 0) {
+					maxCapacitor -= capacitorDecay;
+
+					setCapacitorMaxEnergy(maxCapacitor, false, nullptr, deltaVector);
+
+					newCapacitor = (newCapacitor > maxCapacitor ? maxCapacitor : newCapacitor);
 				}
+
+#ifdef DEBUG_SHIP_REPAIR
+				info(true) << "Old Capacitor Max: " << (maxCapacitor + capacitorDecay) << " Capacitor Decay: " << capacitorDecay << " New Capacitor Max: " << maxCapacitor;
+				info(true) << "Current Capacitor: " << currentCapacitor << " New Capacitor: " << newCapacitor;
+#endif
+
+				setCapacitorEnergy(newCapacitor, false, nullptr, deltaVector);
 
 				break;
 			}
 
 			case Components::BOOSTER: {
-				float maxBoost = getBoosterMaxEnergy();
-				float minBoost = getBoosterEnergy();
-				float newBoost = ((maxBoost - minBoost) * repair) + minBoost;
+				float maxBooster = getBoosterMaxEnergy();
+				float currentBooster = getBoosterEnergy();
+				float boosterDamage = maxBooster - currentBooster;
 
-				if (newBoost != minBoost) {
-					setBoosterEnergy(newBoost, false, nullptr, deltaVector);
+				float boosterRepair = boosterDamage * repair;
+				int boosterDecay = boosterRepair / 10;
+				float newBooster = currentBooster + boosterRepair;
+
+				if (boosterDecay > 0) {
+					maxBooster -= boosterDecay;
+
+					setBoosterMaxEnergy(maxBooster, false, nullptr, deltaVector);
+
+					newBooster = (newBooster > maxBooster ? maxBooster : newBooster);
 				}
+
+#ifdef DEBUG_SHIP_REPAIR
+				info(true) << "Old Booster Max: " << (maxBooster + boosterDecay) << " Booster Decay: " << boosterDecay << " New Booster Max: " << maxBooster;
+				info(true) << "Current Booster: " << currentBooster << " New Booster: " << newBooster;
+#endif
+
+				setBoosterEnergy(newBooster, false, nullptr, deltaVector);
 
 				break;
 			}
@@ -805,6 +991,10 @@ void ShipObjectImplementation::repairShip(float value) {
 	if (deltaVector != nullptr) {
 		deltaVector->sendMessages(asShipObject(), pilot);
 	}
+
+#ifdef DEBUG_SHIP_REPAIR
+	info(true) << "---------- Repair Ship END - Value: " << value << " ------";
+#endif
 }
 
 void ShipObjectImplementation::scheduleRecovery() {
