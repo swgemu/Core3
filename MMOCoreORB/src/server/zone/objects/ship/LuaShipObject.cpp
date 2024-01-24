@@ -18,13 +18,11 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "getPilotID", &LuaShipObject::getPilotID },
 	{ "getOwner", &LuaShipObject::getOwner },
 	{ "getOwnerID", &LuaShipObject::getOwnerID },
-	{ "checkInConvoRange", &LuaShipObject::checkInConvoRange },
 	{ 0, 0}
 };
 
 LuaShipObject::LuaShipObject(lua_State *L) : LuaTangibleObject(L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
-	realObject = dynamic_cast<ShipObject*>(_getRealSceneObject());
 	assert(!_getRealSceneObject() || realObject != nullptr);
 #else
 	realObject = static_cast<ShipObject*>(lua_touserdata(L, 1));
@@ -184,21 +182,3 @@ int LuaShipObject::getOwnerID(lua_State* L) {
 	return 1;
 }
 
-int LuaShipObject::checkInConvoRange(lua_State* L) {
-	int numberOfArguments = lua_gettop(L) - 1;
-
-	if (numberOfArguments != 1) {
-		realObject->error() << "Improper number of arguments in LuaShipObject::repairShip.";
-		return 0;
-	}
-
-	SceneObject* targetObject = (SceneObject*) lua_touserdata(L, -1);
-
-	if (targetObject == nullptr)
-		return 0;
-
-	bool val = realObject->checkInConvoRange(targetObject);
-
-	lua_pushboolean(L, val);
-	return 1;
-}

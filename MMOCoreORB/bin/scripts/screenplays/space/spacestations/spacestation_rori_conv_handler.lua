@@ -16,7 +16,7 @@ function SpacestationRoriConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTempl
 		return
 	end
 
-	if (not ShipObject(pShip):checkInConvoRange(pNpc)) then
+	if (not SceneObject(pShip):checkInConversationRange(pNpc)) then
 		return convoTemplate:getScreen("out_of_range")
 	end
 

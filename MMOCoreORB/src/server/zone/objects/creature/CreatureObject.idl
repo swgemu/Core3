@@ -224,6 +224,8 @@ class CreatureObject extends TangibleObject {
 
 	public transient unsigned long tradeTargetID;
 
+	public static final int CONVERSATION_MAX_DISTANCE = 7; // Max range for conversations
+
 	/**
 	 * CreatureObject constructor, used to initialized the object
 	 * @pre { templateData is a valid SharedCreatureObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
@@ -2346,4 +2348,8 @@ class CreatureObject extends TangibleObject {
 	public unsigned long getTradeTargetID() {
 		return tradeTargetID;
 	}
+
+	@dirty
+	@local
+	public native boolean checkInConversationRange(SceneObject object);
 }

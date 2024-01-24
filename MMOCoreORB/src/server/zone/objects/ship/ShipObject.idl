@@ -1582,7 +1582,7 @@ class ShipObject extends TangibleObject {
 
 	@dirty
 	@local
-	public native boolean checkInConvoRange(SceneObject object);
+	public native boolean checkInConversationRange(SceneObject object);
 
 	public native int getHyperspaceDelay();
 

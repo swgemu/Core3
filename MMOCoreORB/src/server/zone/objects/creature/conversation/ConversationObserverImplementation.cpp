@@ -8,6 +8,7 @@
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
 
 ConversationObserverImplementation::ConversationObserverImplementation(uint32 convoTemplateCRC) {
 	conversationTemplateCRC = convoTemplateCRC;
@@ -29,12 +30,12 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		return 0;
 
 	//Try to convert parameters to correct types.
-	SceneObject* npc = nullptr;
+	SceneObject* conversingObject = nullptr;
 	CreatureObject* player = nullptr;
 	int selectedOption = 0;
 
 	try {
-		npc = cast<SceneObject* >(observable);
+		conversingObject = cast<SceneObject* >(observable);
 
 		if (arg1 != nullptr)
 			player = cast<CreatureObject* >(arg1);
@@ -51,20 +52,31 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		return 0;
 	}
 
-	if (npc == nullptr)
+	if (conversingObject == nullptr)
 		return 0;
 
 	switch (eventType) {
 	case ObserverEventType::POSITIONCHANGED: {
-		//the observable in this case is the player
-		ManagedReference<ConversationSession*> session = npc->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession*>();
+		// the observable (conversingObject) in this case is the player
+		ManagedReference<ConversationSession*> session = conversingObject->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession*>();
 
-		if (session != nullptr) {
-			ManagedReference<CreatureObject*> sessionNpc = session->getNPC().get().castTo<CreatureObject*>();
+		if (session == nullptr)
+			return 1;
 
-			if (sessionNpc == nullptr || npc->getDistanceTo(sessionNpc) > 7.f) {
-				cancelConversationSession(npc->asCreatureObject(), session->getNPC().get(), true);
-				return 0;
+		ManagedReference<SceneObject*> sessionNpc = session->getNPC().get();
+
+		if (sessionNpc == nullptr || (sessionNpc->isAiAgent() && !sessionNpc->checkInConversationRange(conversingObject))) {
+			cancelConversationSession(conversingObject->asCreatureObject(), sessionNpc, true);
+		} else if (sessionNpc->isShipAiAgent()) {
+			auto spaceCommTask = conversingObject->getPendingTask("SpaceCommTimer");
+
+			// Player already has a pending cancellation task
+			if (spaceCommTask != nullptr && spaceCommTask->isScheduled()) {
+				return 1;
+			}
+
+			if (!sessionNpc->checkInConversationRange(conversingObject)) {
+				cancelConversationSession(conversingObject->asCreatureObject(), sessionNpc, true);
 			}
 		}
 
@@ -72,9 +84,9 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	}
 	case ObserverEventType::STOPCONVERSATION: {
 		if (player != nullptr)
-			cancelConversationSession(player, npc, npc->isShipObject());
+			cancelConversationSession(player, conversingObject, conversingObject->isShipObject());
 
-		auto agent = npc->asAiAgent();
+		auto agent = conversingObject->asAiAgent();
 
 		if (agent != nullptr && agent->getMovementState() == AiAgent::CONVERSING) {
 			if (agent->getFollowObject().get() == nullptr) {
@@ -90,13 +102,12 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	case ObserverEventType::STARTCONVERSATION: {
 		if (player != nullptr) {
 			//Cancel any existing sessions.
-			cancelConversationSession(player, npc);
+			cancelConversationSession(player, conversingObject);
 
 			//Create a new session.
-			createConversationSession(player, npc);
+			createConversationSession(player, conversingObject);
 
-			if (npc->isCreatureObject())
-				createPositionObserver(player);
+			createPositionObserver(player);
 		}
 
 		break;
@@ -109,18 +120,18 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		return 0;
 
 	//Select next conversation screen.
-	Reference<ConversationScreen*> conversationScreen = getNextConversationScreen(player, selectedOption, npc);
+	Reference<ConversationScreen*> conversationScreen = getNextConversationScreen(player, selectedOption, conversingObject);
 
 	if (conversationScreen != nullptr) {
 		//Modify the conversation screen.
-		conversationScreen = runScreenHandlers(player, npc, selectedOption, conversationScreen);
+		conversationScreen = runScreenHandlers(player, conversingObject, selectedOption, conversationScreen);
 	}
 
 	//Send the conversation screen to the player.
-	sendConversationScreenToPlayer(player, npc, conversationScreen);
+	sendConversationScreenToPlayer(player, conversingObject, conversationScreen);
 
 	if (conversationScreen == nullptr) {
-		cancelConversationSession(player, npc);
+		cancelConversationSession(player, conversingObject);
 	}
 
 	//Keep the observer.
