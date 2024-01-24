@@ -96,6 +96,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "info", &LuaSceneObject::info },
 		{ "getPlayersInRange", &LuaSceneObject::getPlayersInRange },
 		{ "isInNavMesh", &LuaSceneObject::isInNavMesh },
+		{ "checkInConversationRange", &LuaSceneObject::checkInConversationRange },
 		{ 0, 0 }
 
 };
@@ -928,5 +929,24 @@ int LuaSceneObject::isInNavMesh(lua_State* L) {
 
 	lua_pushboolean(L, val);
 
+	return 1;
+}
+
+int LuaSceneObject::checkInConversationRange(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaSceneObject::checkInConversationRange.";
+		return 0;
+	}
+
+	SceneObject* targetObject = (SceneObject*) lua_touserdata(L, -1);
+
+	if (targetObject == nullptr)
+		return 0;
+
+	bool val = realObject->checkInConversationRange(targetObject);
+
+	lua_pushboolean(L, val);
 	return 1;
 }

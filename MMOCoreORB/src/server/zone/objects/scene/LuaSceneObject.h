@@ -108,6 +108,7 @@ namespace scene {
 		int info(lua_State* L);
 		int getPlayersInRange(lua_State* L);
 		int isInNavMesh(lua_State* L);
+		int checkInConversationRange(lua_State* L);
 
 	protected:
 		SceneObject* _getRealSceneObject() {

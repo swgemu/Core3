@@ -30,7 +30,6 @@ namespace ship {
 		int getPilotID(lua_State* L);
 		int getOwner(lua_State* L);
 		int getOwnerID(lua_State* L);
-		int checkInConvoRange(lua_State* L);
 
 	private:
 		ShipObject* realObject;

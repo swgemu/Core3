@@ -1094,17 +1094,19 @@ float ShipObjectImplementation::getActualSpeed() {
 	return componentActual * chassisActual;
 }
 
-bool ShipObjectImplementation::checkInConvoRange(SceneObject* targetObject) {
+bool ShipObjectImplementation::checkInConversationRange(SceneObject* targetObject) {
 	if (targetObject == nullptr)
 		return false;
 
-	int sqDistance = getWorldPosition().squaredDistanceTo(targetObject->getWorldPosition());
+	float sqDistance = getWorldPosition().squaredDistanceTo(targetObject->getWorldPosition());
 
-	if (targetObject->isSpaceStation()) {
-		return sqDistance <= (SPACESTATION_COMM_MAX_DISTANCE * SPACESTATION_COMM_MAX_DISTANCE);
-	}
+	int distanceToCheck = COMM_MAX_DISTANCE * COMM_MAX_DISTANCE;
 
-	return sqDistance <= (COMM_MAX_DISTANCE * COMM_MAX_DISTANCE);
+	// This ensures the check can be passed either direction and the proper distance is used
+	if (isSpaceStation() || targetObject->isSpaceStation())
+		distanceToCheck = SPACESTATION_COMM_MAX_DISTANCE * SPACESTATION_COMM_MAX_DISTANCE;
+
+	return sqDistance < distanceToCheck;
 }
 
 float ShipObjectImplementation::calculateCurrentMass() {

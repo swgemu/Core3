@@ -4366,3 +4366,14 @@ Instrument* CreatureObjectImplementation::getPlayableInstrument() {
 void CreatureObjectImplementation::setClient(ZoneClientSession* cli) {
 	owner = cli;
 }
+
+bool CreatureObjectImplementation::checkInConversationRange(SceneObject* targetObject) {
+	if (targetObject == nullptr)
+		return false;
+
+	float sqDistance = getWorldPosition().squaredDistanceTo(targetObject->getWorldPosition());
+
+	int distanceToCheck = CONVERSATION_MAX_DISTANCE * CONVERSATION_MAX_DISTANCE;
+
+	return sqDistance < distanceToCheck;
+}
