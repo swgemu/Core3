@@ -3242,7 +3242,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 	if (object == nullptr || asCreatureObject() == object)
 		return false;
 
-	info(true) << "CreatureObjectImplementation::isAttackableBy TangibleObject Check -- Object ID = " << getObjectID() << " by attacking TanO ID = " << object->getObjectID();
+	// info(true) << "CreatureObjectImplementation::isAttackableBy TangibleObject Check -- Object ID = " << getObjectID() << " by attacking TanO ID = " << object->getObjectID();
 
 	// Vehicle object, check against owner
 	if (isVehicleObject()) {
@@ -3302,7 +3302,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 		}
 	}
 
-	info(true) << "CreatureObjectImplementation::isAttackableBy TangibleObject Check -- returning true";
+	// info(true) << "CreatureObjectImplementation::isAttackableBy TangibleObject Check -- returning true";
 
 	return true;
 }
