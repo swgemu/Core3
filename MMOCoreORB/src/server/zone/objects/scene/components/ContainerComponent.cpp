@@ -299,7 +299,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 				if (containerParent != nullptr && containerParent->isBuildingObject()) {
 					BuildingObject* building = containerParent->asBuildingObject();
 
-					if (building != nullptr && building->isGCWBase() && !(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+					if (building != nullptr && building->isGCWBase() && !(building->getPvpStatusBitmask() & ObjectFlag::OVERT)) {
 						shouldRegister = false;
 					}
 				}

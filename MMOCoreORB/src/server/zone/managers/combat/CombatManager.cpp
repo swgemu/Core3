@@ -1586,7 +1586,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 		return 0;
 	}
 
-	if (defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
+	if (defender->getPvpStatusBitmask() == ObjectFlag::NONE) {
 		return 0;
 	}
 
@@ -1669,7 +1669,7 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 	if (defender->isAiAgent()) {
 		AiAgent* defAgent = defender->asAiAgent();
 
-		if (defAgent != nullptr && (defAgent->getCreatureBitmask() & CreatureFlag::NODOT))
+		if (defAgent != nullptr && (defAgent->getCreatureBitmask() & ObjectFlag::NODOT))
 			return;
 	}
 
@@ -1724,7 +1724,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 	if (defender->isAiAgent()) {
 		AiAgent* defAgent = defender->asAiAgent();
 
-		if (defAgent != nullptr && (defAgent->getCreatureBitmask() & CreatureFlag::NODOT))
+		if (defAgent != nullptr && (defAgent->getCreatureBitmask() & ObjectFlag::NODOT))
 			return;
 	}
 
@@ -3144,14 +3144,14 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 	ghost->addToDuelList(targetPlayer);
 
 	if (targetGhost->requestedDuelTo(player)) {
-		BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, player, targetPlayer->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE | CreatureFlag::AGGRESSIVE);
+		BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, player, targetPlayer->getPvpStatusBitmask() | ObjectFlag::ATTACKABLE | ObjectFlag::AGGRESSIVE);
 		player->sendMessage(pvpstat);
 
 		for (int i = 0; i < targetGhost->getActivePetsSize(); i++) {
 			ManagedReference<AiAgent*> pet = targetGhost->getActivePet(i);
 
 			if (pet != nullptr) {
-				BaseMessage* petpvpstat = new UpdatePVPStatusMessage(pet, player, pet->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE | CreatureFlag::AGGRESSIVE);
+				BaseMessage* petpvpstat = new UpdatePVPStatusMessage(pet, player, pet->getPvpStatusBitmask() | ObjectFlag::ATTACKABLE | ObjectFlag::AGGRESSIVE);
 				player->sendMessage(petpvpstat);
 			}
 		}
@@ -3160,14 +3160,14 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 		stringId.setTT(targetPlayer->getObjectID());
 		player->sendSystemMessage(stringId);
 
-		BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, targetPlayer, player->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE | CreatureFlag::AGGRESSIVE);
+		BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, targetPlayer, player->getPvpStatusBitmask() | ObjectFlag::ATTACKABLE | ObjectFlag::AGGRESSIVE);
 		targetPlayer->sendMessage(pvpstat2);
 
 		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
 			ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
 
 			if (pet != nullptr) {
-				BaseMessage* petpvpstat = new UpdatePVPStatusMessage(pet, targetPlayer, pet->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE | CreatureFlag::AGGRESSIVE);
+				BaseMessage* petpvpstat = new UpdatePVPStatusMessage(pet, targetPlayer, pet->getPvpStatusBitmask() | ObjectFlag::ATTACKABLE | ObjectFlag::AGGRESSIVE);
 				targetPlayer->sendMessage(petpvpstat);
 			}
 		}

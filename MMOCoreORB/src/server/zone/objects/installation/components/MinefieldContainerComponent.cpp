@@ -8,7 +8,7 @@
 #include "MinefieldContainerComponent.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 
 bool MinefieldContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	if (sceneObject == nullptr || !sceneObject->isTangibleObject())
@@ -64,8 +64,8 @@ int MinefieldContainerComponent::notifyObjectInserted(SceneObject* sceneObject, 
 		return 1;
 
 	// mine isn't attackable if it has mines
-	if (installation->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE) {
-		int newbitmask = installation->getPvpStatusBitmask() - CreatureFlag::ATTACKABLE;
+	if (installation->getPvpStatusBitmask() & ObjectFlag::ATTACKABLE) {
+		int newbitmask = installation->getPvpStatusBitmask() - ObjectFlag::ATTACKABLE;
 		installation->setPvpStatusBitmask(newbitmask);
 	}
 
@@ -84,8 +84,8 @@ int MinefieldContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, S
 	if (installation == nullptr)
 		return 1;
 
-	if (installation->getContainerObjectsSize() == 0 && !(installation->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
-		int newbitmask = installation->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE;
+	if (installation->getContainerObjectsSize() == 0 && !(installation->getPvpStatusBitmask() & ObjectFlag::ATTACKABLE)) {
+		int newbitmask = installation->getPvpStatusBitmask() + ObjectFlag::ATTACKABLE;
 		installation->setPvpStatusBitmask(newbitmask);
 	}
 

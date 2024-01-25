@@ -185,8 +185,8 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 
 						Locker adultLock(herdLeader, agent);
 
-						agent->addCreatureFlag(CreatureFlag::FOLLOW);
-						agent->addCreatureFlag(CreatureFlag::SQUAD);
+						agent->addObjectFlag(ObjectFlag::FOLLOW);
+						agent->addObjectFlag(ObjectFlag::SQUAD);
 
 						agent->setFollowObject(herdLeader);
 						agent->setMovementState(AiAgent::FOLLOWING);

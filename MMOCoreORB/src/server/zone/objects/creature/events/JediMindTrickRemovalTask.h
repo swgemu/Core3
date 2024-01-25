@@ -43,9 +43,9 @@ public:
 		ManagedReference<PetControlDevice*> controlDevice = petAgent->getControlDevice().get().castTo<PetControlDevice*>();
 
 		if (controlDevice != nullptr && controlDevice->getPetType() == PetManager::FACTIONPET) {
-			petAgent->addCreatureFlag(CreatureFlag::FACTION_PET);
+			petAgent->addObjectFlag(ObjectFlag::FACTION_PET);
 		} else {
-			petAgent->addCreatureFlag(CreatureFlag::PET);
+			petAgent->addObjectFlag(ObjectFlag::PET);
 		}
 
 		petAgent->setMindTricked(false);
@@ -53,8 +53,8 @@ public:
 
 		uint32 ownerPvpStatusBitmask = petOwner->getPvpStatusBitmask();
 
-		if (ownerPvpStatusBitmask & CreatureFlag::PLAYER)
-			ownerPvpStatusBitmask &= ~CreatureFlag::PLAYER;
+		if (ownerPvpStatusBitmask & ObjectFlag::PLAYER)
+			ownerPvpStatusBitmask &= ~ObjectFlag::PLAYER;
 
 		petAgent->setPvpStatusBitmask(ownerPvpStatusBitmask);
 

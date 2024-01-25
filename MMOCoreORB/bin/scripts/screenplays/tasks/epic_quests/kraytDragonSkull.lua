@@ -315,7 +315,7 @@ function KraytDragonSkull:spawnNpcs()
 				SceneObject(pNpc):setContainerComponent("KraytSkullContainerComponent")
 			end
 
-			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pNpc):addObjectFlag(AI_STATIONARY)
 		end
 	end
 

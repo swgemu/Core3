@@ -75,7 +75,7 @@ public:
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
-		if (target == nullptr || target->isDead() || target == agent || !target->isAiAgent() || !(target->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE) ||
+		if (target == nullptr || target->isDead() || target == agent || !target->isAiAgent() || !(target->getPvpStatusBitmask() & ObjectFlag::ATTACKABLE) ||
 			!(target->getOptionsBitmask() & OptionBitmask::AIENABLED) || target->isInCombat())
 			return true;
 

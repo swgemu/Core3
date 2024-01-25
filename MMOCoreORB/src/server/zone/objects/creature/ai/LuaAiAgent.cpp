@@ -128,8 +128,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getCreatureTemplateName", &LuaAiAgent::getCreatureTemplateName },
 		{ "isInRangeOfHome", &LuaAiAgent::isInRangeOfHome },
 		{ "getPatrolPointsSize", &LuaAiAgent::getPatrolPointsSize },
-		{ "addCreatureFlag", &LuaAiAgent::addCreatureFlag },
-		{ "removeCreatureFlag", &LuaAiAgent::removeCreatureFlag },
+		{ "addObjectFlag", &LuaAiAgent::addObjectFlag },
+		{ "removeObjectFlag", &LuaAiAgent::removeObjectFlag },
 		{ "setAIDebug", &LuaAiAgent::setAIDebug },
 		{ "storePet", &LuaAiAgent::storePet },
 		{ "setEventArea", &LuaAiAgent::setEventArea },
@@ -941,9 +941,9 @@ int LuaAiAgent::setHomeLocation(lua_State* L) {
 int LuaAiAgent::setNoAiAggro(lua_State* L) {
 	Locker locker(realObject);
 
-	if (!(realObject->getCreatureBitmask() & CreatureFlag::NOAIAGGRO)) {
+	if (!(realObject->getCreatureBitmask() & ObjectFlag::NOAIAGGRO)) {
 		uint32 creatureBitmask = realObject->getCreatureBitmask();
-		creatureBitmask |= CreatureFlag::NOAIAGGRO;
+		creatureBitmask |= ObjectFlag::NOAIAGGRO;
 
 		realObject->setCreatureBitmask(creatureBitmask);
 	}
@@ -991,21 +991,21 @@ int LuaAiAgent::getPatrolPointsSize(lua_State* L) {
 
 	return 1;
 }
-int LuaAiAgent::addCreatureFlag(lua_State* L) {
+int LuaAiAgent::addObjectFlag(lua_State* L) {
 	uint32 flag = lua_tointeger(L, -1);
 
 	Locker locker(realObject);
-	realObject->addCreatureFlag(flag);
+	realObject->addObjectFlag(flag);
 	realObject->setAITemplate();
 
 	return 0;
 }
 
-int LuaAiAgent::removeCreatureFlag(lua_State* L) {
+int LuaAiAgent::removeObjectFlag(lua_State* L) {
 	uint32 flag = lua_tointeger(L, -1);
 
 	Locker locker(realObject);
-	realObject->removeCreatureFlag(flag);
+	realObject->removeObjectFlag(flag);
 	realObject->setAITemplate();
 
 	return 0;

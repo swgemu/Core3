@@ -65,7 +65,7 @@
 #include "server/zone/objects/scene/WorldCoordinates.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "templates/params/creature/CreatureAttribute.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "templates/params/creature/CreaturePosture.h"
 #include "templates/params/creature/CreatureState.h"
 #include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
@@ -3239,7 +3239,7 @@ int AiAgentImplementation::setDestination() {
 
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
-		if (!(creatureBitmask & CreatureFlag::EVENTCONTROL) && !(creatureBitmask & CreatureFlag::STATIONARY) && !homeLocation.isInRange(asAiAgent(), 1.0f)) {
+		if (!(creatureBitmask & ObjectFlag::EVENTCONTROL) && !(creatureBitmask & ObjectFlag::STATIONARY) && !homeLocation.isInRange(asAiAgent(), 1.0f)) {
 			homeLocation.setReached(false);
 			setMovementState(AiAgent::PATHING_HOME);
 		}
@@ -3278,7 +3278,7 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::WATCHING:
-		if ((getCreatureBitmask() & CreatureFlag::ESCORT) && followCopy != nullptr)
+		if ((getCreatureBitmask() & ObjectFlag::ESCORT) && followCopy != nullptr)
 			setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
 
 		break;
@@ -3413,13 +3413,13 @@ int AiAgentImplementation::setDestination() {
 		break;
 	}
 	case AiAgent::CONVERSING: {
-		if ((creatureBitmask & CreatureFlag::ESCORT) || (creatureBitmask & CreatureFlag::FOLLOW))
+		if ((creatureBitmask & ObjectFlag::ESCORT) || (creatureBitmask & ObjectFlag::FOLLOW))
 			setMovementState(AiAgent::FOLLOWING);
 
 		break;
 	}
 	default:
-		if (creatureBitmask & CreatureFlag::STATIC || homeLocation.getCell() != nullptr) {
+		if (creatureBitmask & ObjectFlag::STATIC || homeLocation.getCell() != nullptr) {
 			setMovementState(AiAgent::PATHING_HOME);
 		} else if (followCopy == nullptr) {
 			setMovementState(AiAgent::PATROLLING);
@@ -3784,12 +3784,12 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 		if (creo->getParentID() != getParentID())
 			continue;
 
-		if (!(creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE))
+		if (!(creo->getPvpStatusBitmask() & ObjectFlag::ATTACKABLE))
 			continue;
 
 		AiAgent* agent = creo->asAiAgent();
 
-		if (agent == nullptr || !(agent->getCreatureBitmask() & CreatureFlag::PACK) || agent->getMovementState() == AiAgent::LEASHING)
+		if (agent == nullptr || !(agent->getCreatureBitmask() & ObjectFlag::PACK) || agent->getMovementState() == AiAgent::LEASHING)
 			continue;
 
 		String targetSocialGroup = agent->getSocialGroup().toLowerCase();
@@ -3799,7 +3799,7 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 
 		float packRange = 20.f + (getLevel() / 100.f);
 
-		if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
+		if (getPvpStatusBitmask() & ObjectFlag::AGGRESSIVE)
 			packRange += 5.f;
 
 		if (!agent->isInRange(asAiAgent(), packRange))
@@ -4038,7 +4038,7 @@ bool AiAgentImplementation::isAggressive(TangibleObject* target) {
 			/* for players, we are only an enemy if the standing is less than -3000, but we are forced to non-aggressive
 			*  status if the standing is over 3000, otherwise use the pvpStatusBitmask to determine aggressiveness
 			*/
-			if (!(getOptionsBitmask() & CreatureFlag::IGNORE_FACTION_STANDING)) {
+			if (!(getOptionsBitmask() & ObjectFlag::IGNORE_FACTION_STANDING)) {
 				int minFactionStanding = -3000;
 				float targetsStanding = tarGhost->getFactionStanding(factionString);
 
@@ -4053,7 +4053,7 @@ bool AiAgentImplementation::isAggressive(TangibleObject* target) {
 	}
 
 	// Agent is not aggressive due to faction or standing, remaining aggressive check based on pvpStatusBitmask
-	return pvpStatusBitmask & CreatureFlag::AGGRESSIVE;
+	return pvpStatusBitmask & ObjectFlag::AGGRESSIVE;
 }
 
 bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
@@ -4087,7 +4087,7 @@ bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
 	}
 
 	// Initial this creature has an attackable pvpStatusBitmask
-	if (!(pvpStatusBitmask & CreatureFlag::ATTACKABLE) || optionsBitmask & OptionBitmask::INVULNERABLE)
+	if (!(pvpStatusBitmask & ObjectFlag::ATTACKABLE) || optionsBitmask & OptionBitmask::INVULNERABLE)
 		return false;
 
 	if (eventArea.get() != nullptr) {
@@ -4143,7 +4143,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 		return owner->isAttackableBy(creature, true);
 	}
 
-	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & CreatureFlag::ATTACKABLE))
+	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & ObjectFlag::ATTACKABLE))
 		return false;
 
 	if (creature->isPet()) {
@@ -4211,7 +4211,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 
 	// Ai vs Ai Checks
 	if (creatureIsAgent) {
-		if ((getCreatureBitmask() & CreatureFlag::NOAIAGGRO) && !creature->isPet())
+		if ((getCreatureBitmask() & ObjectFlag::NOAIAGGRO) && !creature->isPet())
 			return false;
 
 		// Faction check stricly for AI vs AI. Faction AI attamepting to attack non-faction AI
@@ -4538,12 +4538,12 @@ void AiAgentImplementation::handleException(const Exception& ex, const String& c
 	error() << msg << endl << trace.toStringData() << endl << *this;
 }
 
-void AiAgentImplementation::addCreatureFlag(unsigned int flag) {
+void AiAgentImplementation::addObjectFlag(unsigned int flag) {
 	if (!(creatureBitmask & flag))
 		creatureBitmask |= flag;
 }
 
-void AiAgentImplementation::removeCreatureFlag(unsigned int flag) {
+void AiAgentImplementation::removeObjectFlag(unsigned int flag) {
 	if (creatureBitmask & flag)
 		creatureBitmask &= ~flag;
 }

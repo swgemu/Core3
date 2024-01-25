@@ -9,17 +9,6 @@
 class ShipFlag {
 public:
 	enum {
-		NONE 				= 0x00,
-		ATTACKABLE			= 0x01,
-		AGGRESSIVE			= 0x02,
-		OVERT				= 0x04,
-		TEF					= 0x08,
-		PLAYER				= 0x10,
-		ENEMY				= 0x20,
-		WILLBEDECLARED		= 0x40,
-		WASDECLARED			= 0x80,
-
-
 		ESCORT				= 0x000001,
 		FOLLOW				= 0x000002,
 		TEST 				= 0x000004,

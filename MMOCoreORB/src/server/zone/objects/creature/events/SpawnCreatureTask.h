@@ -51,7 +51,7 @@ public:
 			if (randomRespawn)
 				ai->setRandomRespawn(true);
 
-			ai->addCreatureFlag(CreatureFlag::STATIC);
+			ai->addObjectFlag(ObjectFlag::STATIC);
 			ai->setAITemplate();
 		}
 	}

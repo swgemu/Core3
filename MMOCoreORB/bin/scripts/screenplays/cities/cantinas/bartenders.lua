@@ -135,7 +135,7 @@ function BartendersScreenPlay:spawnBartenders()
 		if (pNpc ~= nil) then
 			local npcID = SceneObject(pNpc):getObjectID()
 
-			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pNpc):addObjectFlag(AI_STATIONARY)
 			AiAgent(pNpc):setMovementState(AI_PATROLLING)
 
 			createEvent(300 * 1000, "BartendersScreenPlay", "assignPatrolPoint", pNpc, "")

@@ -1388,10 +1388,10 @@ class AiAgent extends CreatureObject {
 	}
 
 	@preLocked
-	public native void addCreatureFlag(unsigned int flag);
+	public native void addObjectFlag(unsigned int flag);
 
 	@preLocked
-	public native void removeCreatureFlag(unsigned int flag);
+	public native void removeObjectFlag(unsigned int flag);
 
 	@local
 	@dirty

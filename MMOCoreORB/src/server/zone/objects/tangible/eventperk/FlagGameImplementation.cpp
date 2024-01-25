@@ -1,7 +1,7 @@
 #include "server/zone/objects/tangible/eventperk/FlagGame.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/components/FlagGameDataComponent.h"
@@ -101,7 +101,7 @@ void FlagGameImplementation::tryFlagChange(CreatureObject* player) {
 }
 
 bool FlagGameImplementation::canUseFlag(CreatureObject* player) {
-	if ((player->getPvpStatusBitmask() & CreatureFlag::OVERT) && player->getFaction() != factionControl)
+	if ((player->getPvpStatusBitmask() & ObjectFlag::OVERT) && player->getFaction() != factionControl)
 		return true;
 
 	return false;
@@ -184,7 +184,7 @@ void FlagGameImplementation::doVictoryEffects(uint32 faction) {
 		if (targetObject != nullptr && targetObject->isPlayerCreature()) {
 			ManagedReference<CreatureObject*> player = cast<CreatureObject*>(targetObject);
 
-			if (player != nullptr && player->getFaction() == faction && (player->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+			if (player != nullptr && player->getFaction() == faction && (player->getPvpStatusBitmask() & ObjectFlag::OVERT)) {
 				if (player->getFaction() == Factions::FACTIONREBEL) {
 					player->playEffect("clienteffect/holoemote_rebel.cef", "head");
 				} else if (player->getFaction() == Factions::FACTIONIMPERIAL) {

@@ -52,7 +52,7 @@
 #include "templates/manager/PortalLayoutMap.h"
 
 #include "templates/params/creature/CreatureState.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "templates/params/creature/CreatureAttribute.h"
 #include "templates/params/OptionBitmask.h"
 #include "templates/params/ObserverEventType.h"
@@ -614,14 +614,14 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("MEDIUM", SharedWeaponObjectTemplate::MEDIUM);
 	luaTemplatesInstance->setGlobalInt("HEAVY", SharedWeaponObjectTemplate::HEAVY);
 
-	luaTemplatesInstance->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
-	luaTemplatesInstance->setGlobalInt("AGGRESSIVE", CreatureFlag::AGGRESSIVE);
-	luaTemplatesInstance->setGlobalInt("OVERT", CreatureFlag::OVERT);
-	luaTemplatesInstance->setGlobalInt("TEF", CreatureFlag::TEF);
-	luaTemplatesInstance->setGlobalInt("PLAYER", CreatureFlag::PLAYER);
-	luaTemplatesInstance->setGlobalInt("ENEMY", CreatureFlag::ENEMY);
-	luaTemplatesInstance->setGlobalInt("WILLBEDECLARED", CreatureFlag::WILLBEDECLARED);
-	luaTemplatesInstance->setGlobalInt("WASDECLARED", CreatureFlag::WASDECLARED);
+	luaTemplatesInstance->setGlobalInt("ATTACKABLE", ObjectFlag::ATTACKABLE);
+	luaTemplatesInstance->setGlobalInt("AGGRESSIVE", ObjectFlag::AGGRESSIVE);
+	luaTemplatesInstance->setGlobalInt("OVERT", ObjectFlag::OVERT);
+	luaTemplatesInstance->setGlobalInt("TEF", ObjectFlag::TEF);
+	luaTemplatesInstance->setGlobalInt("PLAYER", ObjectFlag::PLAYER);
+	luaTemplatesInstance->setGlobalInt("ENEMY", ObjectFlag::ENEMY);
+	luaTemplatesInstance->setGlobalInt("WILLBEDECLARED", ObjectFlag::WILLBEDECLARED);
+	luaTemplatesInstance->setGlobalInt("WASDECLARED", ObjectFlag::WASDECLARED);
 
 	luaTemplatesInstance->setGlobalInt("CONVERSABLE", OptionBitmask::CONVERSE);
 	luaTemplatesInstance->setGlobalInt("AIENABLED", OptionBitmask::AIENABLED);

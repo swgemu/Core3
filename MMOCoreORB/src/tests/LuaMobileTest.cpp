@@ -413,7 +413,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		// Verify PACK mobs have a social group
 		uint32 creatureBitmask = creature->getCreatureBitmask();
 		String socialGroup = creature->getSocialGroup();
-		if (creatureBitmask & CreatureFlag::PACK) {
+		if (creatureBitmask & ObjectFlag::PACK) {
 			EXPECT_FALSE( socialGroup.isEmpty() ) << "Social group is empty on pack mobile: " << templateName;
 		}
 
@@ -495,7 +495,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 
 		// Very attackable npcs
 		uint32 pvpBitmask = creature->getPvpBitmask();
-		if ((pvpBitmask & CreatureFlag::ATTACKABLE) && objectType == 1025) {
+		if ((pvpBitmask & ObjectFlag::ATTACKABLE) && objectType == 1025) {
 			// Verify attackable npcs have attacks
 			EXPECT_TRUE( cam->size() > 0 ) << "Attackable npc " << templateName << " does not have attacks.";
 		}

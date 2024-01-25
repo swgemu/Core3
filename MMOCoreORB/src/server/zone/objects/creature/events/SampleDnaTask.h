@@ -33,7 +33,7 @@ public:
 	}
 	void prepareCreatureForSampling() {
 		creature->setFaction(player->getFaction());
-		creature->setPvpStatusBitmask(CreatureFlag::NONE,true);
+		creature->setPvpStatusBitmask(ObjectFlag::NONE,true);
 	}
 	void run() {
 		Locker locker(creature);

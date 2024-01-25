@@ -113,7 +113,7 @@ SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate,
  	Locker blocker(building);
 
  	building->setFaction(lairTmpl->getFaction());
- 	building->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
+ 	building->setPvpStatusBitmask(ObjectFlag::ATTACKABLE);
  	building->setOptionsBitmask(0, false);
  	building->setMaxCondition(difficultyLevel * (900 + System::random(200)));
  	building->setConditionDamage(0, false);
@@ -1147,7 +1147,7 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 	creature->setPvpStatusBitmask(0, true);
 
 	creature->clearPatrolPoints();
-	creature->addCreatureFlag(CreatureFlag::STATIONARY);
+	creature->addObjectFlag(ObjectFlag::STATIONARY);
 	creature->setAITemplate();
 
 	Reference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force, adult);
@@ -1176,7 +1176,7 @@ void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* pla
 	creature->setMilkState(BEINGMILKED);
 
 	creature->clearPatrolPoints();
-	creature->addCreatureFlag(CreatureFlag::STATIONARY);
+	creature->addObjectFlag(ObjectFlag::STATIONARY);
 	creature->setAITemplate();
 
 	Reference<MilkCreatureTask*> task = new MilkCreatureTask(creature, player);

@@ -1655,7 +1655,7 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate() {
 				ai->setRespawnTimer(child->getRespawnTimer());
 
 				if (isGCWBase()) {
-					if (getPvpStatusBitmask() & CreatureFlag::OVERT) {
+					if (getPvpStatusBitmask() & ObjectFlag::OVERT) {
 						creature->setFactionStatus(FactionStatus::OVERT);
 					} else {
 						creature->setFactionStatus(FactionStatus::COVERT);

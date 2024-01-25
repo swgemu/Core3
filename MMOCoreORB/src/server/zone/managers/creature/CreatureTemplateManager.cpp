@@ -45,15 +45,15 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->registerFunction("addOutfitGroup", addOutfitGroup);
 	lua->registerFunction("addDressGroup", addDressGroup);
 
-	lua->setGlobalInt("NONE", CreatureFlag::NONE);
-	lua->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
-	lua->setGlobalInt("AGGRESSIVE", CreatureFlag::AGGRESSIVE);
-	lua->setGlobalInt("OVERT", CreatureFlag::OVERT);
-	lua->setGlobalInt("TEF", CreatureFlag::TEF);
-	lua->setGlobalInt("PLAYER", CreatureFlag::PLAYER);
-	lua->setGlobalInt("ENEMY", CreatureFlag::ENEMY);
-	lua->setGlobalInt("WILLBEDECLARED", CreatureFlag::WILLBEDECLARED);
-	lua->setGlobalInt("WASDECLARED", CreatureFlag::WASDECLARED);
+	lua->setGlobalInt("NONE", ObjectFlag::NONE);
+	lua->setGlobalInt("ATTACKABLE", ObjectFlag::ATTACKABLE);
+	lua->setGlobalInt("AGGRESSIVE", ObjectFlag::AGGRESSIVE);
+	lua->setGlobalInt("OVERT", ObjectFlag::OVERT);
+	lua->setGlobalInt("TEF", ObjectFlag::TEF);
+	lua->setGlobalInt("PLAYER", ObjectFlag::PLAYER);
+	lua->setGlobalInt("ENEMY", ObjectFlag::ENEMY);
+	lua->setGlobalInt("WILLBEDECLARED", ObjectFlag::WILLBEDECLARED);
+	lua->setGlobalInt("WASDECLARED", ObjectFlag::WASDECLARED);
 
 	lua->setGlobalInt("CONVERSABLE", OptionBitmask::CONVERSE);
 	lua->setGlobalInt("AIENABLED", OptionBitmask::AIENABLED);
@@ -62,18 +62,18 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("INTERESTING", OptionBitmask::INTERESTING);
 	lua->setGlobalInt("JTLINTERESTING", OptionBitmask::JTLINTERESTING);
 
-	lua->setGlobalInt("PACK", CreatureFlag::PACK);
-	lua->setGlobalInt("HERD", CreatureFlag::HERD);
-	lua->setGlobalInt("KILLER", CreatureFlag::KILLER);
-	lua->setGlobalInt("STALKER", CreatureFlag::STALKER);
-	lua->setGlobalInt("BABY", CreatureFlag::BABY);
-	lua->setGlobalInt("LAIR", CreatureFlag::LAIR);
-	lua->setGlobalInt("HEALER", CreatureFlag::HEALER);
-	lua->setGlobalInt("NOINTIMIDATE", CreatureFlag::NOINTIMIDATE);
-	lua->setGlobalInt("NODOT", CreatureFlag::NODOT);
+	lua->setGlobalInt("PACK", ObjectFlag::PACK);
+	lua->setGlobalInt("HERD", ObjectFlag::HERD);
+	lua->setGlobalInt("KILLER", ObjectFlag::KILLER);
+	lua->setGlobalInt("STALKER", ObjectFlag::STALKER);
+	lua->setGlobalInt("BABY", ObjectFlag::BABY);
+	lua->setGlobalInt("LAIR", ObjectFlag::LAIR);
+	lua->setGlobalInt("HEALER", ObjectFlag::HEALER);
+	lua->setGlobalInt("NOINTIMIDATE", ObjectFlag::NOINTIMIDATE);
+	lua->setGlobalInt("NODOT", ObjectFlag::NODOT);
 
-	lua->setGlobalInt("CARNIVORE", CreatureFlag::CARNIVORE);
-	lua->setGlobalInt("HERBIVORE", CreatureFlag::HERBIVORE);
+	lua->setGlobalInt("CARNIVORE", ObjectFlag::CARNIVORE);
+	lua->setGlobalInt("HERBIVORE", ObjectFlag::HERBIVORE);
 
 	// NameManager Types
 	lua->setGlobalInt("NAME_TAG", NameManagerType::TAG);

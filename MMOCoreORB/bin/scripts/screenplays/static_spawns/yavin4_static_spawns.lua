@@ -48,7 +48,7 @@ function Yavin4StaticSpawnsScreenPlay:spawnMobiles()
 		local pMobile = spawnMobile(self.planet, mobile[1], mobile[2], mobile[3], mobile[4], mobile[5], mobile[6], mobile[7])
 
 		if pMobile ~= nil then
-			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+			AiAgent(pMobile):addObjectFlag(AI_STATIC)
 		end
 	end
 end

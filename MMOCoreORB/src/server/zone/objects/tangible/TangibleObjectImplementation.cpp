@@ -14,7 +14,7 @@
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage6.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "templates/SharedTangibleObjectTemplate.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -188,10 +188,10 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 				creature->sendSystemMessage("@faction_recruiter:covert_complete");
 			}
 
-			if (pvpStatusBitmask & CreatureFlag::OVERT)
-				pvpStatusBitmask &= ~CreatureFlag::OVERT;
+			if (pvpStatusBitmask & ObjectFlag::OVERT)
+				pvpStatusBitmask &= ~ObjectFlag::OVERT;
 		} else if (factionStatus == FactionStatus::OVERT) {
-			if(!(pvpStatusBitmask & CreatureFlag::OVERT)) {
+			if(!(pvpStatusBitmask & ObjectFlag::OVERT)) {
 				int cooldown = 300;
 
 				Zone* creoZone = creature->getZone();
@@ -204,7 +204,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 				}
 
 				creature->addCooldown("declare_overt_cooldown", cooldown * 1000);
-				pvpStatusBitmask |= CreatureFlag::OVERT;
+				pvpStatusBitmask |= ObjectFlag::OVERT;
 
 				if (covertOvert) {
 					creature->sendSystemMessage("You successfully declare overt faction status. You may now be attacked by opposing faction members.");
@@ -225,8 +225,8 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 				}
 			}
 		} else if (factionStatus == FactionStatus::ONLEAVE) {
-			if (pvpStatusBitmask & CreatureFlag::OVERT)
-				pvpStatusBitmask &= ~CreatureFlag::OVERT;
+			if (pvpStatusBitmask & ObjectFlag::OVERT)
+				pvpStatusBitmask &= ~ObjectFlag::OVERT;
 
 			if (creature->getFaction() != 0) {
 				if (covertOvert) {
@@ -240,7 +240,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 			}
 		}
 
-		if (oldStatusBitmask != CreatureFlag::NONE)
+		if (oldStatusBitmask != ObjectFlag::NONE)
 			creature->setPvpStatusBitmask(pvpStatusBitmask);
 		else
 			broadcastPvpStatusBitmask(); // Invuln players still need faction changes broadcasted even without the bitmask changing
@@ -284,46 +284,46 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	bool attackable = isAttackableBy(player);
 	bool aggressive = isAggressiveTo(player);
 
-	if (attackable && !(newPvpStatusBitmask & CreatureFlag::ATTACKABLE)) {
-		newPvpStatusBitmask |= CreatureFlag::ATTACKABLE;
-	} else if (!attackable && newPvpStatusBitmask & CreatureFlag::ATTACKABLE) {
-		newPvpStatusBitmask &= ~CreatureFlag::ATTACKABLE;
+	if (attackable && !(newPvpStatusBitmask & ObjectFlag::ATTACKABLE)) {
+		newPvpStatusBitmask |= ObjectFlag::ATTACKABLE;
+	} else if (!attackable && newPvpStatusBitmask & ObjectFlag::ATTACKABLE) {
+		newPvpStatusBitmask &= ~ObjectFlag::ATTACKABLE;
 	}
 
-	if (aggressive && !(newPvpStatusBitmask & CreatureFlag::AGGRESSIVE)) {
-		newPvpStatusBitmask |= CreatureFlag::AGGRESSIVE;
-	} else if (!aggressive && newPvpStatusBitmask & CreatureFlag::AGGRESSIVE) {
-		newPvpStatusBitmask &= ~CreatureFlag::AGGRESSIVE;
+	if (aggressive && !(newPvpStatusBitmask & ObjectFlag::AGGRESSIVE)) {
+		newPvpStatusBitmask |= ObjectFlag::AGGRESSIVE;
+	} else if (!aggressive && newPvpStatusBitmask & ObjectFlag::AGGRESSIVE) {
+		newPvpStatusBitmask &= ~ObjectFlag::AGGRESSIVE;
 	}
 
-	if (newPvpStatusBitmask & CreatureFlag::TEF) {
+	if (newPvpStatusBitmask & ObjectFlag::TEF) {
 		if (player != asTangibleObject())
-			newPvpStatusBitmask &= ~CreatureFlag::TEF;
+			newPvpStatusBitmask &= ~ObjectFlag::TEF;
 	}
 
 	int thisFactionStatus = getFactionStatus();
 	int thisFutureStatus = getFutureFactionStatus();
 
 	if (thisFutureStatus == FactionStatus::OVERT)
-		newPvpStatusBitmask |= CreatureFlag::WILLBEDECLARED;
+		newPvpStatusBitmask |= ObjectFlag::WILLBEDECLARED;
 
 	if (thisFactionStatus == FactionStatus::OVERT && thisFutureStatus == FactionStatus::COVERT)
-		newPvpStatusBitmask |= CreatureFlag::WASDECLARED;
+		newPvpStatusBitmask |= ObjectFlag::WASDECLARED;
 
 	if (((isAiAgent() && !isPet()) || isShipAiAgent())  && getFaction() > 0 && player->isPlayerCreature() && player->getFaction() > 0 && getFaction() != player->getFaction() && thisFactionStatus >= FactionStatus::COVERT) {
 		if (ConfigManager::instance()->useCovertOvertSystem()) {
 			PlayerObject* ghost = player->getPlayerObject();
 
 			if (player->getFactionStatus() == FactionStatus::OVERT || (ghost != nullptr && ghost->hasGcwTef())) {
-				newPvpStatusBitmask |= CreatureFlag::ENEMY;
-			} else if (newPvpStatusBitmask & CreatureFlag::ENEMY) {
-				newPvpStatusBitmask &= ~CreatureFlag::ENEMY;
+				newPvpStatusBitmask |= ObjectFlag::ENEMY;
+			} else if (newPvpStatusBitmask & ObjectFlag::ENEMY) {
+				newPvpStatusBitmask &= ~ObjectFlag::ENEMY;
 			}
 		} else {
 			if (player->getFactionStatus() >= FactionStatus::COVERT) {
-				newPvpStatusBitmask |= CreatureFlag::ENEMY;
-			} else if (newPvpStatusBitmask & CreatureFlag::ENEMY) {
-				newPvpStatusBitmask &= ~CreatureFlag::ENEMY;
+				newPvpStatusBitmask |= ObjectFlag::ENEMY;
+			} else if (newPvpStatusBitmask & ObjectFlag::ENEMY) {
+				newPvpStatusBitmask &= ~ObjectFlag::ENEMY;
 			}
 		}
 	}
@@ -392,8 +392,8 @@ void TangibleObjectImplementation::setPvpStatusBitmask(uint32 bitmask, bool noti
 		if (ghost == nullptr)
 			return;
 
-		if (bitmask & CreatureFlag::PLAYER)
-			bitmask &= ~CreatureFlag::PLAYER;
+		if (bitmask & ObjectFlag::PLAYER)
+			bitmask &= ~ObjectFlag::PLAYER;
 
 		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
 			Reference<AiAgent*> pet = ghost->getActivePet(i);
@@ -1254,7 +1254,7 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* creature) {
 
 	// info(true) << "TangibleObjectImplementation::isAttackableBy Creature Check -- Object ID = " << getObjectID() << " by attacking Creature ID = " << creature->getObjectID();
 
-	if (!(pvpStatusBitmask & CreatureFlag::ATTACKABLE))
+	if (!(pvpStatusBitmask & ObjectFlag::ATTACKABLE))
 		return false;
 
 	if (isInNoCombatArea())
@@ -1312,7 +1312,7 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* creature) {
 
 	// info(true) << "TanO isAttackable check return true";
 
-	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
+	return pvpStatusBitmask & ObjectFlag::ATTACKABLE;
 }
 
 void TangibleObjectImplementation::addActiveArea(ActiveArea* area) {

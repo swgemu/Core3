@@ -117,8 +117,8 @@ function SithShadowEncounter:onEncounterInRange(pPlayer, spawnedObjects)
 
 	foreach(spawnedObjects, function(pMobile)
 		if (pMobile ~= nil) then
-			AiAgent(pMobile):removeCreatureFlag(AI_ESCORT)
-			AiAgent(pMobile):removeCreatureFlag(AI_FOLLOW)
+			AiAgent(pMobile):removeObjectFlag(AI_ESCORT)
+			AiAgent(pMobile):removeObjectFlag(AI_FOLLOW)
 			AiAgent(pMobile):setDefender(pPlayer)
 		end
 	end)

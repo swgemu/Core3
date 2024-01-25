@@ -131,7 +131,7 @@ public:
 		if (targetCreature->isAiAgent()) {
 			AiAgent* targetAgent = targetCreature->asAiAgent();
 
-			if (targetAgent != nullptr && (targetAgent->getCreatureBitmask() & CreatureFlag::NODOT))
+			if (targetAgent != nullptr && (targetAgent->getCreatureBitmask() & ObjectFlag::NODOT))
 				return false;
 		}
 

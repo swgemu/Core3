@@ -102,10 +102,10 @@ public:
 
 			}  else {
 				if (status == "overt")
-					pvpStatus |= CreatureFlag::OVERT;
+					pvpStatus |= ObjectFlag::OVERT;
 
 				if (status == "covert")
-					pvpStatus &= ~CreatureFlag::OVERT;
+					pvpStatus &= ~ObjectFlag::OVERT;
 
 				tano->setPvpStatusBitmask(pvpStatus);
 			}

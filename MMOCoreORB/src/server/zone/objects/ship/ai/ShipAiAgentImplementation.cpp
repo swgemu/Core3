@@ -36,6 +36,7 @@
 #include "server/zone/objects/ship/ai/events/ShipAiBehaviorEvent.h"
 #include "server/zone/objects/ship/ai/events/DespawnAiShipOnNoPlayersInRange.h"
 #include "templates/params/ship/ShipFlags.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/ship/ai/events/RotationLookupTable.h"
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -64,7 +65,7 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 
 	FighterShipObjectImplementation::loadTemplateData(shipTemp);
 
-	// Handles attackable flags (ShipFlag::ATTACKABLE, ShipFlag::AGGRESSIVE etc)
+	// Handles attackable flags (ObjectFlag::ATTACKABLE, ObjectFlag::AGGRESSIVE etc)
 	setPvpStatusBitmask(shipTemp->getPvpBitmask());
 
 	if (getPvpStatusBitmask() == 0)
@@ -1249,7 +1250,7 @@ bool ShipAiAgentImplementation::isAggressive(TangibleObject* target) {
 	}
 
 	// ShipAgent is not aggressive due to faction or standing, remaining aggressive check based on pvpStatusBitmask
-	return pvpStatusBitmask & ShipFlag::AGGRESSIVE;
+	return pvpStatusBitmask & ObjectFlag::AGGRESSIVE;
 }
 
 // This will handle checks for other ShipAgents or tangible objects
@@ -1257,7 +1258,7 @@ bool ShipAiAgentImplementation::isAttackableBy(TangibleObject* attackerTano) {
 	if (attackerTano == nullptr)
 		return false;
 
-	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & ShipFlag::ATTACKABLE))
+	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & ObjectFlag::ATTACKABLE))
 		return false;
 
 	if (movementState == ShipAiAgent::LEASHING)

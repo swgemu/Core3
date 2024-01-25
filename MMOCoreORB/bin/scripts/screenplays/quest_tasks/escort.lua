@@ -105,10 +105,10 @@ function Escort:setEscortFollow(pPlayer, pEscort)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local escortID = SceneObject(pEscort):getObjectID()
 
-	AiAgent(pEscort):removeCreatureFlag(AI_STATIONARY)
-	AiAgent(pEscort):addCreatureFlag(AI_NOAIAGGRO)
-	AiAgent(pEscort):addCreatureFlag(AI_ESCORT)
-	AiAgent(pEscort):addCreatureFlag(AI_FOLLOW)
+	AiAgent(pEscort):removeObjectFlag(AI_STATIONARY)
+	AiAgent(pEscort):addObjectFlag(AI_NOAIAGGRO)
+	AiAgent(pEscort):addObjectFlag(AI_ESCORT)
+	AiAgent(pEscort):addObjectFlag(AI_FOLLOW)
 
 	AiAgent(pEscort):setFollowObject(pPlayer)
 	AiAgent(pEscort):setMovementState(AI_FOLLOWING)
@@ -142,7 +142,7 @@ function Escort:taskFinish(pPlayer)
 
 	if (pEscort ~= nil) then
 		AiAgent(pEscort):setFollowObject(nil)
-		AiAgent(pEscort):removeCreatureFlag(AI_FOLLOW)
+		AiAgent(pEscort):removeObjectFlag(AI_FOLLOW)
 		createEvent(self.escortDespawnTime, self.taskName, "handleEscortDespawn", pEscort, "")
 	end
 

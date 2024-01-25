@@ -9,7 +9,7 @@
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/creature/LuaCreatureObject.h"
 #include "server/zone/objects/ship/LuaShipObject.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/scene/LuaSceneObject.h"
 #include "server/zone/objects/building/LuaBuildingObject.h"
 #include "server/zone/objects/intangible/LuaIntangibleObject.h"
@@ -673,17 +673,17 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalLong("SHIPINTERIOR", CreatureState::SHIPINTERIOR);
 	luaEngine->setGlobalLong("PILOTINGPOBSHIP", CreatureState::PILOTINGPOBSHIP);
 
-	luaEngine->setGlobalInt("NONE", CreatureFlag::NONE);
-	luaEngine->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
-	luaEngine->setGlobalInt("AGGRESSIVE", CreatureFlag::AGGRESSIVE);
-	luaEngine->setGlobalInt("OVERT", CreatureFlag::OVERT);
-	luaEngine->setGlobalInt("TEF", CreatureFlag::TEF);
-	luaEngine->setGlobalInt("PLAYER", CreatureFlag::PLAYER);
-	luaEngine->setGlobalInt("ENEMY", CreatureFlag::ENEMY);
-	luaEngine->setGlobalInt("WILLBEDECLARED", CreatureFlag::WILLBEDECLARED);
-	luaEngine->setGlobalInt("WASDECLARED", CreatureFlag::WASDECLARED);
-	luaEngine->setGlobalInt("SCANNING_FOR_CONTRABAND", CreatureFlag::SCANNING_FOR_CONTRABAND);
-	luaEngine->setGlobalInt("IGNORE_FACTION_STANDING", CreatureFlag::IGNORE_FACTION_STANDING);
+	luaEngine->setGlobalInt("NONE", ObjectFlag::NONE);
+	luaEngine->setGlobalInt("ATTACKABLE", ObjectFlag::ATTACKABLE);
+	luaEngine->setGlobalInt("AGGRESSIVE", ObjectFlag::AGGRESSIVE);
+	luaEngine->setGlobalInt("OVERT", ObjectFlag::OVERT);
+	luaEngine->setGlobalInt("TEF", ObjectFlag::TEF);
+	luaEngine->setGlobalInt("PLAYER", ObjectFlag::PLAYER);
+	luaEngine->setGlobalInt("ENEMY", ObjectFlag::ENEMY);
+	luaEngine->setGlobalInt("WILLBEDECLARED", ObjectFlag::WILLBEDECLARED);
+	luaEngine->setGlobalInt("WASDECLARED", ObjectFlag::WASDECLARED);
+	luaEngine->setGlobalInt("SCANNING_FOR_CONTRABAND", ObjectFlag::SCANNING_FOR_CONTRABAND);
+	luaEngine->setGlobalInt("IGNORE_FACTION_STANDING", ObjectFlag::IGNORE_FACTION_STANDING);
 
 	luaEngine->setGlobalInt("INSURED", OptionBitmask::INSURED);
 	luaEngine->setGlobalInt("CONVERSABLE", OptionBitmask::CONVERSE);
@@ -722,24 +722,24 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("OVERT", FactionStatus::OVERT);
 
 	// AI/creature bitmasks
-	luaEngine->setGlobalInt("AI_NPC", CreatureFlag::NPC);
-	luaEngine->setGlobalInt("AI_PACK", CreatureFlag::PACK);
-	luaEngine->setGlobalInt("AI_HERD", CreatureFlag::HERD);
-	luaEngine->setGlobalInt("AI_KILLER", CreatureFlag::KILLER);
-	luaEngine->setGlobalInt("AI_STALKER", CreatureFlag::STALKER);
-	luaEngine->setGlobalInt("AI_BABY", CreatureFlag::BABY);
-	luaEngine->setGlobalInt("AI_LAIR", CreatureFlag::LAIR);
-	luaEngine->setGlobalInt("AI_HEALER", CreatureFlag::HEALER);
-	luaEngine->setGlobalInt("AI_SCOUT", CreatureFlag::SCOUT);
-	luaEngine->setGlobalInt("AI_PET", CreatureFlag::PET);
-	luaEngine->setGlobalInt("AI_DROID_PET", CreatureFlag::DROID_PET);
-	luaEngine->setGlobalInt("AI_FACTION_PET", CreatureFlag::FACTION_PET);
-	luaEngine->setGlobalInt("AI_ESCORT", CreatureFlag::ESCORT);
-	luaEngine->setGlobalInt("AI_FOLLOW", CreatureFlag::FOLLOW);
-	luaEngine->setGlobalInt("AI_STATIC", CreatureFlag::STATIC);
-	luaEngine->setGlobalInt("AI_STATIONARY", CreatureFlag::STATIONARY);
-	luaEngine->setGlobalInt("AI_NOAIAGGRO", CreatureFlag::NOAIAGGRO);
-	luaEngine->setGlobalInt("AI_EVENTCONTROL", CreatureFlag::EVENTCONTROL);
+	luaEngine->setGlobalInt("AI_NPC", ObjectFlag::NPC);
+	luaEngine->setGlobalInt("AI_PACK", ObjectFlag::PACK);
+	luaEngine->setGlobalInt("AI_HERD", ObjectFlag::HERD);
+	luaEngine->setGlobalInt("AI_KILLER", ObjectFlag::KILLER);
+	luaEngine->setGlobalInt("AI_STALKER", ObjectFlag::STALKER);
+	luaEngine->setGlobalInt("AI_BABY", ObjectFlag::BABY);
+	luaEngine->setGlobalInt("AI_LAIR", ObjectFlag::LAIR);
+	luaEngine->setGlobalInt("AI_HEALER", ObjectFlag::HEALER);
+	luaEngine->setGlobalInt("AI_SCOUT", ObjectFlag::SCOUT);
+	luaEngine->setGlobalInt("AI_PET", ObjectFlag::PET);
+	luaEngine->setGlobalInt("AI_DROID_PET", ObjectFlag::DROID_PET);
+	luaEngine->setGlobalInt("AI_FACTION_PET", ObjectFlag::FACTION_PET);
+	luaEngine->setGlobalInt("AI_ESCORT", ObjectFlag::ESCORT);
+	luaEngine->setGlobalInt("AI_FOLLOW", ObjectFlag::FOLLOW);
+	luaEngine->setGlobalInt("AI_STATIC", ObjectFlag::STATIC);
+	luaEngine->setGlobalInt("AI_STATIONARY", ObjectFlag::STATIONARY);
+	luaEngine->setGlobalInt("AI_NOAIAGGRO", ObjectFlag::NOAIAGGRO);
+	luaEngine->setGlobalInt("AI_EVENTCONTROL", ObjectFlag::EVENTCONTROL);
 
 	// AI Movement States
 	luaEngine->setGlobalInt("AI_OBLIVIOUS", AiAgent::OBLIVIOUS);

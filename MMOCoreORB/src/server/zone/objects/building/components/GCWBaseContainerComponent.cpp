@@ -6,7 +6,7 @@
  */
 
 #include "GCWBaseContainerComponent.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
@@ -30,7 +30,7 @@ bool GCWBaseContainerComponent::checkContainerPermission(BuildingObject* buildin
 		if (creature->isPlayerCreature() && creature->getPlayerObject()->hasGodMode())
 			return true;
 
-		if (building->getPvpStatusBitmask() & CreatureFlag::OVERT) {
+		if (building->getPvpStatusBitmask() & ObjectFlag::OVERT) {
 			return checkPVPPermission( building,  creature,  permission, sendMessage);
 		} else {
 			return checkPVEPermission(building, creature, permission, sendMessage);

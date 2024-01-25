@@ -6,7 +6,7 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/HelperDroidObject.h"
 #include "templates/params/creature/CreatureState.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -3195,7 +3195,7 @@ bool CreatureObjectImplementation::isAggressiveTo(TangibleObject* target) {
 						}
 					}
 				} else {
-					if ((pvpStatusBitmask & CreatureFlag::OVERT) && (tarCreo->getPvpStatusBitmask() & CreatureFlag::OVERT))
+					if ((pvpStatusBitmask & ObjectFlag::OVERT) && (tarCreo->getPvpStatusBitmask() & ObjectFlag::OVERT))
 						return true;
 				}
 			}
@@ -3242,7 +3242,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 	if (object == nullptr || asCreatureObject() == object)
 		return false;
 
-	// info(true) << "CreatureObjectImplementation::isAttackableBy TangibleObject Check -- Object ID = " << getObjectID() << " by attacking TanO ID = " << object->getObjectID();
+	info(true) << "CreatureObjectImplementation::isAttackableBy TangibleObject Check -- Object ID = " << getObjectID() << " by attacking TanO ID = " << object->getObjectID();
 
 	// Vehicle object, check against owner
 	if (isVehicleObject()) {
@@ -3292,17 +3292,17 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 
 			if (!covertOvert) {
 				// if tano is overt, creature must be overt
-				if ((object->getPvpStatusBitmask() & CreatureFlag::OVERT) && !(getPvpStatusBitmask() & CreatureFlag::OVERT))
+				if ((object->getPvpStatusBitmask() & ObjectFlag::OVERT) && !(getPvpStatusBitmask() & ObjectFlag::OVERT))
 					return false;
 
 				// Remaining Options: Overt Creature / Overt tano, covert/covert, covert tano, overt creature. All should return attackable
-			} else if (!(getPvpStatusBitmask() & CreatureFlag::OVERT) && !ghost->hasGcwTef()) {
+			} else if (!(getPvpStatusBitmask() & ObjectFlag::OVERT) && !ghost->hasGcwTef()) {
 				return false;
 			}
 		}
 	}
 
-	// info(true) << "CreatureObjectImplementation::isAttackableBy TangibleObject Check -- returning true";
+	info(true) << "CreatureObjectImplementation::isAttackableBy TangibleObject Check -- returning true";
 
 	return true;
 }
@@ -3574,7 +3574,7 @@ bool CreatureObjectImplementation::healFactionChecks(CreatureObject* healerCreo,
 }
 
 bool CreatureObjectImplementation::isInvulnerable()  {
-	return isPlayerCreature() && (getPvpStatusBitmask() & CreatureFlag::PLAYER) == 0;
+	return isPlayerCreature() && (getPvpStatusBitmask() & ObjectFlag::PLAYER) == 0;
 }
 
 bool CreatureObjectImplementation::hasBountyMissionFor(CreatureObject* target) {

@@ -3,6 +3,7 @@
 
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/ship/ai/btspace/decoratorspace/DecoratorSpace.h"
+#include "templates/params/creature/ObjectFlag.h"
 
 #include <cassert>
 
@@ -32,7 +33,7 @@ public:
 		bool alwaysActive = false;
 #endif // DEBUG_SHIP_AI
 
-		if (!(agent->getOptionsBitmask() & OptionBitmask::AIENABLED) || (agent->getPvpStatusBitmask() & ShipFlag::NONE)) {
+		if (!(agent->getOptionsBitmask() & OptionBitmask::AIENABLED) || (agent->getPvpStatusBitmask() & ObjectFlag::NONE)) {
 #ifdef DEBUG_SHIP_AI
 			if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
 				agent->info(true) << agent->getDisplayedName() << " - LookForTargetSpace - FAILURE at 1";

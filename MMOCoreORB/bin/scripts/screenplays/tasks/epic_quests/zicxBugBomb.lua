@@ -183,7 +183,7 @@ function ZicxBugBomb:spawnNpcs()
 				SceneObject(pNpc):setContainerComponent("ZicxContainerComponent")
 			end
 
-			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pNpc):addObjectFlag(AI_STATIONARY)
 		end
 	end
 end

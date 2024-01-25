@@ -18,7 +18,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "templates/params/creature/CreatureAttribute.h"
 #include "templates/params/creature/CreatureState.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/creature/commands/effect/StateEffect.h"
 #include "server/zone/objects/creature/commands/effect/DotEffect.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
@@ -207,9 +207,9 @@ public:
 								}
 							}
 						} else  if (targetTano->isCreatureObject() || targetTano->isTurret()) {
-							if (creature->getFactionStatus() == FactionStatus::ONLEAVE && !(targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
+							if (creature->getFactionStatus() == FactionStatus::ONLEAVE && !(targetTano->getPvpStatusBitmask() & ObjectFlag::OVERT))
 								ghost->doFieldFactionChange(FactionStatus::COVERT);
-							else if ((targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
+							else if ((targetTano->getPvpStatusBitmask() & ObjectFlag::OVERT))
 								ghost->doFieldFactionChange(FactionStatus::OVERT);
 						}
 					}
@@ -640,7 +640,7 @@ public:
 			if (defender->isAiAgent()) {
 				AiAgent* defenderAgent = defender->asAiAgent();
 
-				if (defenderAgent != nullptr && (defenderAgent->getCreatureBitmask() & CreatureFlag::NOINTIMIDATE))
+				if (defenderAgent != nullptr && (defenderAgent->getCreatureBitmask() & ObjectFlag::NOINTIMIDATE))
 					break;
 			}
 

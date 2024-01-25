@@ -61,7 +61,7 @@ public:
 			int targetLevel = tarCreo->getLevel();
 			int failCalc = (targetLevel - playerLevel + System::random(250));
 
-			if (agent->getCreatureBitmask() & CreatureFlag::AGGRESSIVE)
+			if (agent->getCreatureBitmask() & ObjectFlag::AGGRESSIVE)
 				failCalc += 75;
 
 			if (failCalc < 300) {

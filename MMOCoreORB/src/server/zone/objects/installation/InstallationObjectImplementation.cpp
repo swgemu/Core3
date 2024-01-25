@@ -27,7 +27,7 @@
 #include "components/TurretDataComponent.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "templates/params/OptionBitmask.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
@@ -863,7 +863,7 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* creature) 
 
 	// info(true) << "InstallationObjectImp isAttackableBy called for " << getObjectID() << "  with attacker creature of " << creature->getObjectID();
 
-	if (!(getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
+	if (!(getPvpStatusBitmask() & ObjectFlag::ATTACKABLE)) {
 		return false;
 	}
 
@@ -908,7 +908,7 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* creature) 
 		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 		if (!covertOvert) {
-			if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && creatureStatus != FactionStatus::OVERT) {
+			if ((getPvpStatusBitmask() & ObjectFlag::OVERT) && creatureStatus != FactionStatus::OVERT) {
 				return false;
 			}
 		}

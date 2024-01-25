@@ -104,8 +104,8 @@ public:
 		pet->setFollowObject(targetPlayer);
 		pet->storeFollowObject();
 
-		if (targetPlayer->getPvpStatusBitmask() & CreatureFlag::PLAYER)
-			pet->setPvpStatusBitmask(targetPlayer->getPvpStatusBitmask() - CreatureFlag::PLAYER, true);
+		if (targetPlayer->getPvpStatusBitmask() & ObjectFlag::PLAYER)
+			pet->setPvpStatusBitmask(targetPlayer->getPvpStatusBitmask() - ObjectFlag::PLAYER, true);
 		else
 			pet->setPvpStatusBitmask(targetPlayer->getPvpStatusBitmask(), true);
 

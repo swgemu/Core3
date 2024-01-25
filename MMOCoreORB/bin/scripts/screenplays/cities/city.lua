@@ -88,10 +88,10 @@ function CityScreenPlay:spawnMob(num, controllingFaction, difficulty)
 		end
 		if scanner then
 			local aiAgent = AiAgent(pNpc)
-			aiAgent:addCreatureFlag(SCANNING_FOR_CONTRABAND)
+			aiAgent:addObjectFlag(SCANNING_FOR_CONTRABAND)
 		end
 
-		AiAgent(pNpc):addCreatureFlag(AI_STATIC)
+		AiAgent(pNpc):addObjectFlag(AI_STATIC)
 		createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawn", pNpc)
 		writeData(SceneObject(pNpc):getObjectID(), num)
 	end
@@ -193,7 +193,7 @@ function CityScreenPlay:setupMobilePatrol(pMobile, num)
 
 	if combatNpc == false then
 		CreatureObject(pMobile):setPvpStatusBitmask(0)
-		AiAgent(pMobile):addCreatureFlag(AI_STATIONARY)
+		AiAgent(pMobile):addObjectFlag(AI_STATIONARY)
 
 		createEvent(getRandomNumber(40, 60) * 1000, self.screenplayName, "mobilePatrol", pMobile, '')
 		createObserver(DESTINATIONREACHED, self.screenplayName, "mobileDestinationReached", pMobile)

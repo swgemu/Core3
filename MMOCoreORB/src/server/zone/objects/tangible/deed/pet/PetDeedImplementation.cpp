@@ -505,7 +505,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 			return 1;
 		}
 
-		bool isVicious = petTemplate->getPvpBitmask() & CreatureFlag::AGGRESSIVE;
+		bool isVicious = petTemplate->getPvpBitmask() & ObjectFlag::AGGRESSIVE;
 
 		if (level > 10 || isVicious) {
 			if (!player->hasSkill("outdoors_creaturehandler_novice") || (level > maxLevelofPets)) {

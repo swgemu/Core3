@@ -2515,7 +2515,7 @@ void PlayerObjectImplementation::updateLastCombatActionTimestamp(bool updateGcwC
 
 	if (!alreadyHasTef && (updateGcwCrackdownAction || updateGcwAction || updateBhAction)) {
 		updateInRangeBuildingPermissions();
-		parent->setPvpStatusBit(CreatureFlag::TEF);
+		parent->setPvpStatusBit(ObjectFlag::TEF);
 	}
 }
 
@@ -2536,9 +2536,9 @@ void PlayerObjectImplementation::updateLastPvpAreaCombatActionTimestamp() {
 	lastPvpAreaCombatActionTimestamp.updateToCurrentTime();
 	lastPvpAreaCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
 
-	if (!(parent->getPvpStatusBitmask() & CreatureFlag::TEF)) {
+	if (!(parent->getPvpStatusBitmask() & ObjectFlag::TEF)) {
 		updateInRangeBuildingPermissions();
-		parent->setPvpStatusBit(CreatureFlag::TEF);
+		parent->setPvpStatusBit(ObjectFlag::TEF);
 	}
 
 	schedulePvpTefRemovalTask();

@@ -361,8 +361,8 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 						if (adultCreo != nullptr && adultCreo->getObjectID() != creo->getObjectID()) {
 							Locker adultLock(adultCreo, agent);
 
-							agent->addCreatureFlag(CreatureFlag::ESCORT);
-							agent->addCreatureFlag(CreatureFlag::FOLLOW);
+							agent->addObjectFlag(ObjectFlag::ESCORT);
+							agent->addObjectFlag(ObjectFlag::FOLLOW);
 
 							agent->setFollowObject(adultCreo);
 							agent->setMovementState(AiAgent::FOLLOWING);

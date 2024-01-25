@@ -2,21 +2,21 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#ifndef CREATUREFLAG_H_
-#define CREATUREFLAG_H_
+#ifndef OBJECTFLAG_H_
+#define OBJECTFLAG_H_
 
-class CreatureFlag {
+class ObjectFlag {
 public:
 	enum {
-		NONE                    = 0x00,
-		ATTACKABLE              = 0x01,
-		AGGRESSIVE              = 0x02,
-		OVERT                   = 0x04,
-		TEF                     = 0x08,
-		PLAYER                  = 0x10,
-		ENEMY                   = 0x20,
-		WILLBEDECLARED          = 0x40,
-		WASDECLARED             = 0x80,
+		NONE					= 0x00,
+		ATTACKABLE				= 0x01,
+		AGGRESSIVE				= 0x02,
+		OVERT					= 0x04,
+		TEF						= 0x08,
+		PLAYER					= 0x10,
+		ENEMY					= 0x20,
+		WILLBEDECLARED			= 0x40,
+		WASDECLARED				= 0x80,
 
 		NPC						= 0x000001,
 		PACK					= 0x000002,
@@ -49,4 +49,4 @@ public:
 	};
 };
 
-#endif /* CREATUREFLAG_H_ */
+#endif /* OBJECTFLAG_H_ */
