@@ -12,10 +12,13 @@ import system.lang.Time;
 
 include system.thread.atomic.AtomicInteger;
 include server.zone.objects.ship.ShipObject;
+include engine.util.u3d.Vector3;
 
 @json
 class NebulaArea extends SpaceActiveArea {
 	private static final int LIGHTNINGDELAY = 20; // Random amount in seconds
+	public static final float LIGHTNING_DIST_MIN = 50;
+	public static final float LIGHTNING_DAMAGE_RAD = 200;
 
 	protected float nebulaDensity;
 
@@ -110,6 +113,14 @@ class NebulaArea extends SpaceActiveArea {
 		return nebulaID;
 	}
 
+	public float getLightningDamageMin() {
+		return lightningDamageMin;
+	}
+
+	public float getLightningDamageMax() {
+		return lightningDamageMax;
+	}
+
 	// Functions
 
 	@dirty
@@ -122,4 +133,6 @@ class NebulaArea extends SpaceActiveArea {
 	public native abstract void notifyExit(SceneObject object);
 
 	private native void createNewLightning(ShipObject ship);
+
+	private native void shipLightningDamage(ShipObject ship, @dereferenced final Vector3 startPoint, @dereferenced final Vector3 endPoint, float range);
 }

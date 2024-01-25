@@ -37,7 +37,7 @@ bool SphereAreaShapeImplementation::containsPoint(const Vector3& point) const {
 	float distSq = areaCenter.squaredDistanceTo(point);
 
 #ifdef DEBUG_SPHERE
-	info(true) << "Distance Squared: " << distSq << " Radius2 = " << radius2;
+	info(true) << "SphereAreaShapeImplementation::containsPoint - Distance Squared: " << distSq << " Radius2 = " << radius2;
 #endif
 
 	return distSq < radius2;
@@ -65,24 +65,23 @@ Vector3 SphereAreaShapeImplementation::getRandomPosition(const Vector3& origin, 
 	bool found = false;
 	int retries = 10;
 
-	while (!found && retries-- > 0) {
+	while (!found && retries-- >= 0) {
 		// Generate random spherical coordinates
 		float theta = 2.0 * Math::PI * System::frandom(1.0);
 		float phi = acos(1.0 - 2.0 * System::frandom(1.0));
 
 		// Generate a random distance within the specified range
-		float distance = minDistance + (maxDistance - minDistance) * System::frandom(1.0);
+		float distance = minDistance + System::random(maxDistance - minDistance);
 
 		// Convert spherical coordinates to Cartesian coordinates
-		float x = areaCenter.getX() + distance * sin(phi) * cos(theta);
-		float y = areaCenter.getY() + distance * sin(phi) * sin(theta);
-		float z = areaCenter.getZ() + distance * cos(phi);
+		float x = origin.getX() + distance * sin(phi) * cos(theta);
+		float z = origin.getY() + distance * sin(phi) * sin(theta);
+		float y = origin.getZ() + distance * cos(phi);
 
 		position.set(x, y, z);
 
 #ifdef DEBUG_POSITION
-		info(true) << " X Calc = " << x << " Y Calc = " << y << " Distance Delta = " << distance;
-		info(true) << "Checking Position: " << position.toString() << "   Squared Distance: " << areaCenter.squaredDistanceTo(position) << "  Squared Radius = " << radius2;
+		info(true) << "Checking Position - Distance: " << distance << " Location: " << position.toString() << " Squared Distance: " << origin.squaredDistanceTo(position) << "  Squared Radius = " << radius2;
 #endif // DEBUG_POSITION
 
 		found = containsPoint(position);
