@@ -112,14 +112,26 @@ int LuaShipObject::getTotalShipDamage(lua_State* L) {
 int LuaShipObject::repairShip(lua_State* L) {
 	int numberOfArguments = lua_gettop(L) - 1;
 
-	if (numberOfArguments != 3) {
+	if (numberOfArguments != 3 && numberOfArguments != 4) {
 		realObject->error() << "Improper number of arguments in LuaShipObject::repairShip.";
 		return 0;
 	}
 
-	int totalCost = lua_tointeger(L, -1);
-	float repairPercent = lua_tonumber(L, -2);
-	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -3);
+	bool decay = true;
+	int totalCost = 0;
+	float repairPercent = 0.f;
+	CreatureObject* player = nullptr;
+
+	if (numberOfArguments == 4) {
+		decay = lua_toboolean(L, -1);
+		totalCost = lua_tointeger(L, -2);
+		repairPercent = lua_tonumber(L, -3);
+		player = (CreatureObject*) lua_touserdata(L, -4);
+	} else {
+		totalCost = lua_tointeger(L, -1);
+		repairPercent = lua_tonumber(L, -2);
+		player = (CreatureObject*) lua_touserdata(L, -3);
+	}
 
 	if (player == nullptr)
 		return 0;
@@ -127,7 +139,7 @@ int LuaShipObject::repairShip(lua_State* L) {
 	// Lock the ship
 	Locker lock(realObject);
 
-	realObject->repairShip(repairPercent);
+	realObject->repairShip(repairPercent, decay);
 
 	Locker clock(player, realObject);
 

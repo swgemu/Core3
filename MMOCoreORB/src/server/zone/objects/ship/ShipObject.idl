@@ -453,7 +453,7 @@ class ShipObject extends TangibleObject {
 	public native float getTotalShipDamage();
 
 	@preLocked
-	public native void repairShip(float repairAmount);
+	public native void repairShip(float repairAmount, boolean decay = true);
 
 	@preLocked
 	public native void scheduleRecovery();

@@ -89,13 +89,13 @@ function SpacestationNabooConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 
 	-- Handle Repairing Ship
 	if (screenID == "accept_repair_25") then
-		SpaceStationScreenPlay:repairShip(pPlayer, pShip, 0.25, pNpc)
+		SpaceStationScreenPlay:repairShip(pPlayer, pShip, 0.25, pNpc, true)
 	elseif (screenID == "accept_repair_50") then
-		SpaceStationScreenPlay:repairShip(pPlayer, pShip, 0.50, pNpc)
+		SpaceStationScreenPlay:repairShip(pPlayer, pShip, 0.50, pNpc, true)
 	elseif (screenID == "accept_repair_75") then
-		SpaceStationScreenPlay:repairShip(pPlayer, pShip, 0.75, pNpc)
+		SpaceStationScreenPlay:repairShip(pPlayer, pShip, 0.75, pNpc, true)
 	elseif (screenID == "accept_repair_full") then
-		SpaceStationScreenPlay:repairShip(pPlayer, pShip, 1.0, pNpc)
+		SpaceStationScreenPlay:repairShip(pPlayer, pShip, 1.0, pNpc, true)
 	end
 
 	return pScreenClone

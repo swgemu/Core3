@@ -777,7 +777,7 @@ float ShipObjectImplementation::getTotalShipDamage() {
 	return damage;
 }
 
-void ShipObjectImplementation::repairShip(float value) {
+void ShipObjectImplementation::repairShip(float value, bool decay) {
 #ifdef DEBUG_SHIP_REPAIR
 	info(true) << "---------- Repair Ship START - Value: " << value << " ------";
 #endif
@@ -846,7 +846,7 @@ void ShipObjectImplementation::repairShip(float value) {
 		int armorDecay = armorRepair / 10;
 		float newArmor = currentArmor + armorRepair;
 
-		if (armorDecay > 0) {
+		if (decay && armorDecay > 0) {
 			armorMax = Math::max(1.f, (armorMax - armorDecay));
 
 			setComponentMaxArmor(slot, armorMax, nullptr, command, deltaVector);
@@ -870,7 +870,7 @@ void ShipObjectImplementation::repairShip(float value) {
 		int hitpointsDecay = hitpointsRepair / 10;
 		float newHitpoints = currentHitpoints + hitpointsRepair;
 
-		if (hitpointsDecay > 0) {
+		if (decay && hitpointsDecay > 0) {
 			hitpointsMax = Math::max(1.f, (hitpointsMax - hitpointsDecay));
 
 			setComponentMaxHitpoints(slot, hitpointsMax, nullptr, command, deltaVector);

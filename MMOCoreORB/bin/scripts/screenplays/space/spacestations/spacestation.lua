@@ -123,7 +123,7 @@ function SpaceStationScreenPlay:getRepairCost(pShip, repairPercent)
 	return totalCost
 end
 
-function SpaceStationScreenPlay:repairShip(pPlayer, pShip, repairPercent, pSpaceStation)
+function SpaceStationScreenPlay:repairShip(pPlayer, pShip, repairPercent, pSpaceStation, decay)
 	if (pPlayer == nil or pShip == nil) then
 		return
 	end
@@ -146,7 +146,7 @@ function SpaceStationScreenPlay:repairShip(pPlayer, pShip, repairPercent, pSpace
 	end
 
 	-- Pass all of the information to cpp for ease of lock and trx
-	ShipObject(pShip):repairShip(pPlayer, repairPercent, totalCost)
+	ShipObject(pShip):repairShip(pPlayer, repairPercent, totalCost, decay)
 
 	if (pSpaceStation ~= nil) then
 		self:addRepairDelay(pSpaceStation)
