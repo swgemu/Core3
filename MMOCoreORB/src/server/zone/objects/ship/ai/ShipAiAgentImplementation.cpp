@@ -483,11 +483,9 @@ void ShipAiAgentImplementation::clearRunningChain() {
 */
 
 float ShipAiAgentImplementation::getMaxDistance() {
-	ManagedReference<ShipObject*> followShip = nullptr;
 	unsigned int stateCopy = getMovementState();
-	float baseDist = 100.f;
 
-	// info(true) << getDisplayedName() << " - ID: " << getObjectID() << " - getmaxDistance - stateCopy: " << stateCopy;
+	float maxDistance = getEngineMaxSpeed() + getBoundingRadius();
 
 	switch (stateCopy) {
 	case ShipAiAgent::OBLIVIOUS:
@@ -495,10 +493,10 @@ float ShipAiAgentImplementation::getMaxDistance() {
 	case ShipAiAgent::WATCHING:
 		break;
 	case ShipAiAgent::FOLLOWING: {
-		followShip = getFollowShipObject().get();
+		ManagedReference<ShipObject*> followShip = getFollowShipObject().get();
 
 		if (followShip != nullptr) {
-			baseDist += followShip->getBoundingRadius();
+			maxDistance += followShip->getBoundingRadius();
 		}
 
 		break;
@@ -506,36 +504,29 @@ float ShipAiAgentImplementation::getMaxDistance() {
 	case ShipAiAgent::PATROLLING:
 		break;
 	case ShipAiAgent::ATTACKING: {
-		followShip = getTargetShipObject().get();
+		ManagedReference<ShipObject*> targetShip = getTargetShipObject().get();
 
-		if (followShip != nullptr) {
-			baseDist += followShip->getBoundingRadius() + getBoundingRadius();
+		if (targetShip != nullptr) {
+			maxDistance += targetShip->getBoundingRadius();
 		}
 
 		break;
 	}
 	case ShipAiAgent::FLEEING:
-		baseDist = 20.f;
 		break;
 	case ShipAiAgent::LEASHING:
-		baseDist = 20.f;
 		break;
 	case ShipAiAgent::EVADING:
-		baseDist = 20.0f;
 		break;
 	case ShipAiAgent::PATHING_HOME:
-		baseDist = 20.f;
 		break;
 	case ShipAiAgent::FOLLOW_FORMATION:
-		baseDist = 20.f;
 		break;
 	default:
 		break;
 	}
 
-	baseDist += (currentSpeed * 0.5) + getBoundingRadius();
-
-	return baseDist;
+	return Math::max(50.f, maxDistance);
 }
 
 void ShipAiAgentImplementation::setMovementState(int state) {
@@ -601,13 +592,25 @@ SpacePatrolPoint ShipAiAgentImplementation::getNextAttackPosition(ShipObject* ta
 		return getPosition();
 	}
 
-	const Vector3& targetPosition = targetShip->getPosition();
-	const Vector3& targetPrevious = targetShip->getPreviousPosition();
+	const Vector3& tPosition = targetShip->getPosition();
+	const Vector3& tPrevious = targetShip->getPreviousPosition();
+	const Vector3& sPosition = getPosition();
 
-	Vector3 deltaT = (targetPosition - targetPrevious) * (isTargetForward() ? 5.f : -5.f);
-	SpacePatrolPoint nextPoint = deltaT + targetPosition;
+	Vector3 deltaT = tPosition - tPrevious;
+	Vector3 deltaV = tPosition - sPosition;
 
-	return nextPoint;
+	float tDistance = qNormalize(deltaT);
+	float vDistance = qNormalize(deltaV);
+
+	float tSpeed = targetShip->getCurrentSpeed();
+	float vSpeed = Math::clamp(0.f, vDistance / currentSpeed, 1.f);
+
+	Vector3 tTarget = (deltaT * tSpeed * vSpeed) + tPosition;
+
+	float tRange = getMaxDistance();
+	float vRange = Math::clamp(-1.f, 1.f - (tRange / vDistance), 1.f);
+
+	return ((tTarget - sPosition) * vRange) + sPosition;
 }
 
 SpacePatrolPoint ShipAiAgentImplementation::getNextEvadePosition() {
@@ -631,6 +634,43 @@ SpacePatrolPoint ShipAiAgentImplementation::getNextEvadePosition() {
 	SpacePatrolPoint evadePoint = evadePosition;
 
 	return evadePoint;
+}
+
+Vector3 ShipAiAgentImplementation::getInterceptPosition(ShipObject* target, float speed, int slot) {
+	Vector3 tPosition = target->getPosition();
+	Vector3 tPrevious = target->getPreviousPosition();
+
+	if (slot != Components::CHASSIS) {
+		auto data = ShipManager::instance()->getCollisionData(target);
+
+		if (data != nullptr) {
+			const auto& slotName = Components::shipComponentSlotToString(slot);
+			const auto& hardpoints = data->getHardpoints(slotName);
+
+			if (hardpoints.size() > 0) {
+				const auto& hardpoint = hardpoints.get(0);
+				const auto& hPosition = hardpoint.getSphere().getCenter();
+				const auto& hRotation = *target->getRotationMatrix();
+
+				Vector3 localPoint = hPosition * hRotation;
+				tPosition = localPoint + tPosition;
+				tPrevious = localPoint + tPrevious;
+			}
+		}
+	}
+
+	const Vector3& sPosition = getPosition();
+
+	Vector3 deltaT = tPosition - tPrevious;
+	Vector3 deltaV = tPosition - sPosition;
+
+	float vRange = qNormalize(deltaV);
+	float tRange = qNormalize(deltaT);
+
+	float tSpeed = target->getCurrentSpeed();
+	float vSpeed = Math::clamp(0.f, vRange / speed, 5.f);
+
+	return (deltaT * tSpeed * vSpeed) + tPosition;
 }
 
 int ShipAiAgentImplementation::setDestination() {
@@ -767,12 +807,12 @@ const Quaternion* ShipAiAgentImplementation::unitVectorToQuaternion() {
 	float yaw = atan2(currentDirection.getX(), currentDirection.getY());
 	float pitch = asin(currentDirection.getZ());
 	float lastYaw = atan2(lastDirection.getX(), lastDirection.getY());
-	float roll = getRoll(yaw, lastYaw);
+	float roll = Math::clamp((float)-M_PI_2, getRotationRate(yaw, lastYaw) * 2.f, (float)M_PI_2);
 
 	return &RotationLookupTable::instance()->getDirection(yaw, pitch, roll);
 }
 
-float ShipAiAgentImplementation::getRoll(float thisRadians, float lastRadians) {
+float ShipAiAgentImplementation::getRotationRate(float thisRadians, float lastRadians) {
 	float deltaR = (thisRadians - lastRadians) * M_1_PI;
 
 	if (deltaR > 1.f) {
@@ -842,7 +882,7 @@ float ShipAiAgentImplementation::qInvSqrt(float x) {
 	return x;
 }
 
-void ShipAiAgentImplementation::qNormalize(Vector3& vector) {
+float ShipAiAgentImplementation::qNormalize(Vector3& vector) {
 	float sqrLength = vector.squaredLength();
 	float invLength = qInvSqrt(sqrLength);
 
@@ -851,6 +891,8 @@ void ShipAiAgentImplementation::qNormalize(Vector3& vector) {
 	} else {
 		vector = vector * invLength;
 	}
+
+	return invLength <= FLT_EPSILON ? 0.f : 1.f / invLength;
 }
 
 bool ShipAiAgentImplementation::setDisabledEngineSpeed() {
@@ -867,23 +909,16 @@ bool ShipAiAgentImplementation::setDisabledEngineSpeed() {
 	return true;
 }
 
-void ShipAiAgentImplementation::setTurnRate() {
-	const static float stepRate = (BEHAVIORINTERVAL * 0.001f);
-
-	const Vector3& currentPosition = getWorldPosition();
-	const Vector3& nextPosition = getFinalPosition().getWorldPosition();
-
-	if (currentPosition == nextPosition) {
-		currentTurnRate = 1.f;
-		return;
+bool ShipAiAgentImplementation::isTargetForward() {
+	auto targetShip = getTargetShipObject().get();
+	if (targetShip == nullptr) {
+		return false;
 	}
 
-	float sqrTurnLength = (nextDirection - currentDirection).squaredLength() * 0.25f;
-	float nextTurnStep = sqrTurnLength - lastTurnRate;
-	float nextTurnRate = Math::clamp(-stepRate, nextTurnStep, stepRate) + lastTurnRate;
+	const Vector3& sPosition = getPosition();
+	const Vector3& tPosition = targetShip->getPosition();
 
-	lastTurnRate = currentTurnRate;
-	currentTurnRate = Math::clamp(0.01f, nextTurnRate, 1.f);
+	return sPosition.dotProduct(tPosition) >= 0.75f;
 }
 
 void ShipAiAgentImplementation::setSpeed() {
@@ -903,57 +938,68 @@ void ShipAiAgentImplementation::setSpeed() {
 		return;
 	}
 
-	float sqrDist = currentPosition.squaredDistanceTo(nextPosition);
-	float speedMax = shipSpeed * getMaxThrottle();
-	float speedMin = speedMax * getMinThrottle();
+	float throMax = getMaxThrottle();
+	float throMin = getMinThrottle();
 
-	float distCap = 1.f;
-	if (sqrDist <= (speedMax * speedMax)) {
-		distCap = sqrt(sqrDist) * speedMax;
-	}
+	float speedMax = shipSpeed * throMax;
+	float speedMin = shipSpeed * throMin;
 
-	float turnCap = (2.f - currentTurnRate) * 0.5f;
+	float distMax = getMaxDistance();
+	float distSqr = currentPosition.squaredDistanceTo(nextPosition);
+	float distCap = (distSqr < distMax * distMax) ? sqrt(distSqr) / distMax : 1.f;
 
-	float distSpeed = ((speedMax - speedMin) * distCap * turnCap) + speedMin;
-	float stepSpeed = speedMax * stepRate;
-	float stepDelta = distSpeed - lastSpeed;
-	float nextSpeed = Math::clamp(-stepSpeed, stepDelta, stepSpeed) + lastSpeed;
+	float turnCap = Math::max(0.f, currentDirection.dotProduct(nextDirection));
+	float throNew = ((throMax - throMin) * (distCap * turnCap)) + throMin;
 
-	lastSpeed = currentSpeed;
-	currentSpeed = Math::clamp(speedMin, nextSpeed, speedMax);
+    float targetSpeed = Math::clamp(speedMin, speedMax * throNew, speedMax);
+    float speedChange = targetSpeed - currentSpeed;
+
+    float speedAccel = getEngineAccelerationRate() * stepRate;
+    float speedDecel = getEngineDecelerationRate() * stepRate;
+
+    speedChange = Math::clamp(-speedDecel, speedChange, speedAccel);
+
+    lastSpeed = currentSpeed;
+    currentSpeed = currentSpeed + speedChange;
 }
 
 void ShipAiAgentImplementation::setShipDirection() {
-	if (currentSpeed == 0.f) {
+	const static float stepRate = (BEHAVIORINTERVAL * 0.001f);
+
+	float shipSpeed = getActualSpeed();
+	if (shipSpeed == 0.f) {
 		return;
 	}
 
-	const static float stepRate = (BEHAVIORINTERVAL * 0.001f);
+	const Vector3& thisPosition = getPosition();
+	const Vector3& lastPosition = getPreviousPosition();
+	const Vector3& nextPosition = getNextPosition().getWorldPosition();
 
-	const Vector3& currentPosition = getWorldPosition();
-	SpacePatrolPoint endMovementPosition = getNextPosition();
-	const Vector3& nextPosition = endMovementPosition.getWorldPosition();
+	Vector3 deltaT = nextPosition - thisPosition;
+	qNormalize(deltaT);
 
-	nextDirection = nextPosition - currentPosition;
+	Vector3 deltaV = (deltaT - currentDirection);
 
-	if (nextDirection == Vector3::ZERO) {
-		nextDirection = Vector3::UNIT_Y;
-	} else {
-		qNormalize(nextDirection);
-	}
+	float dotProduct = currentDirection.dotProduct(deltaV);
 
-	float turnCap = (2.f - currentTurnRate) * 0.5f;
-	Vector3 pyRate = Vector3(getEngineYawRate(), getEngineYawRate(), getEnginePitchRate()) * turnCap * M_1_PI;
-	Vector3 thrustV = ((nextDirection - lastDirection) * pyRate) + currentDirection;
+	float accelRate = getEngineYawAccelerationRate() * M_1_PI;
+	float pitchRate = getEnginePitchRate() * M_1_PI;
+	float yawRate = getEngineYawRate() * M_1_PI;
 
-	if (thrustV == Vector3::ZERO) {
-		thrustV = Vector3::UNIT_Y;
-	} else {
-		qNormalize(thrustV);
-	}
+	Vector3 pyRate = Vector3(yawRate, yawRate, pitchRate);
+	float turnRate = Math::clamp(0.2f, 1.f - dotProduct, 1.f) * accelRate * stepRate;
+
+    if (turnRate < yawRate) {
+    	turnRate = 1.f;
+    }
+
+	Vector3 thrustD = currentDirection - lastDirection;
+	Vector3 thrustV = (((deltaV * pyRate) * turnRate) + (thrustD * (1.f - turnRate))) + currentDirection;
+	qNormalize(thrustV);
 
 	lastDirection = currentDirection;
 	currentDirection = thrustV;
+	nextDirection = deltaT;
 }
 
 void ShipAiAgentImplementation::setNextPosition() {
@@ -992,9 +1038,6 @@ bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
 		return false;
 	}
 
-	// Set TurnRate
-	setTurnRate();
-
 	// Set Speed
 	setSpeed();
 
@@ -1026,11 +1069,15 @@ bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
 	broadcastTransform(nextMovementPosition);
 
 	// Remove Point
-	SpacePatrolPoint finalPosition = getFinalPosition();
-	float maxDist = getMaxDistance();
+	float sqrMaxDist = Math::sqr(Math::max(32.f, getMaxDistance()));
 
-	if (isInRangePosition(finalPosition.getWorldPosition(), getMaxDistance())) {
-		patrolPoints.remove(0);
+	for (int i = patrolPoints.size(); -1 < --i;) {
+		const auto& nextPosition = patrolPoints.get(i).getWorldPosition();
+		const auto& thisPosition = getPosition();
+
+		if (thisPosition.squaredDistanceTo(nextPosition) <= sqrMaxDist) {
+			patrolPoints.remove(i);
+		}
 	}
 
 #ifdef DEBUG_SHIP_AI
@@ -1103,27 +1150,53 @@ void ShipAiAgentImplementation::leash() {
 }
 
 void ShipAiAgentImplementation::broadcastTransform(const Vector3& position) {
+	const static float tickRate = BEHAVIORINTERVAL / 1000.f;
+	const static float invTickRate = 1000.f / BEHAVIORINTERVAL;
+	const static float turnEpsilon = 1.f - (M_PI / 180.f);
+
 	auto shipCov = getCloseObjects();
 
 	if (shipCov == nullptr) {
 		return;
 	}
 
-	float tickRate = BEHAVIORINTERVAL * 0.001f;
+	float turnRate = currentDirection.dotProduct(lastDirection);
 
-	Vector3 deltaV;
-	Vector3 packetPosition = position;
+	if (turnRate > turnEpsilon && currentSpeed == lastSpeed && movementCount % 5) {
+		return;
+	}
+
+	Vector3 thisPosition = getPosition();
+	Vector3 lastPosition = getPreviousPosition();
+	Vector3 nextPosition = getNextPosition().getWorldPosition();
+
+	Vector3 deltaV = Vector3::ZERO;
+	PackedRotationRate yaw;
+	PackedRotationRate pitch;
+	PackedRotationRate roll;
 
 	if (currentSpeed > 0.f) {
-		deltaV = (position - lastPosition) * (1.f / tickRate);
-		packetPosition = (position - lastPosition) + position;
+		deltaV = (thisPosition - lastPosition) * invTickRate;
+
+		if (turnRate < turnEpsilon) {
+			float lastYaw = atan2(lastDirection.getX(), lastDirection.getY());
+			float thisYaw = atan2(currentDirection.getX(), currentDirection.getY());
+			float yawRate = getRotationRate(thisYaw, lastYaw) * invTickRate;
+
+			float thisPitch = asin(currentDirection.getZ());
+			float lastPitch = asin(lastDirection.getZ());
+			float pitchRate = getRotationRate(thisPitch, lastPitch) * invTickRate;
+
+			yaw.set(yawRate);
+			pitch.set(-pitchRate);
+		}
 	}
 
 	PackedVelocity velocity;
 	velocity.set(Vector3(deltaV.getX(), deltaV.getZ(), deltaV.getY()));
 
 	SortedVector<ManagedReference<TreeEntry*>> closeObjects;
-	getCloseObjects()->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
+	shipCov->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		auto scno = closeObjects.get(i).castTo<SceneObject*>();
@@ -1146,10 +1219,8 @@ void ShipAiAgentImplementation::broadcastTransform(const Vector3& position) {
 
 		uint32 sequence = targetShip->getSyncStamp();
 
-		auto data = new ShipUpdateTransformMessage(asShipAiAgent(), packetPosition, velocity, sequence);
-
-		if (data != nullptr)
-			scno->sendMessage(data);
+		auto data = new ShipUpdateTransformMessage(asShipObject(), thisPosition, velocity, yaw, pitch, roll, sequence);
+		scno->sendMessage(data);
 	}
 }
 
@@ -1524,8 +1595,6 @@ void ShipAiAgentImplementation::sendDebugMessage() {
 		<< " thisDirection:   " << thisDirection.getX() << " " << thisDirection.getY() << " " << thisDirection.getZ() << endl
 		<< " currentSpeed:    " << currentSpeed << endl
 		<< " lastSpeed:       " << lastSpeed << endl
-		<< " currentTurnRate: " << currentTurnRate << endl
-		<< " lastTurnRate:    " << lastTurnRate << endl
 		<< " timeStamp:       " << movementCounter << endl
 		<< "--------------------------------";
 

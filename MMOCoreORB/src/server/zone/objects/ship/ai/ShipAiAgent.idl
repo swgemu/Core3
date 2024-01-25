@@ -98,9 +98,6 @@ class ShipAiAgent extends FighterShipObject {
 	private float currentSpeed;
 	private float lastSpeed;
 
-	private float currentTurnRate;
-	private float lastTurnRate;
-
 	@dereferenced
 	protected transient AtomicInteger numberOfPlayersInRange;
 
@@ -252,6 +249,10 @@ class ShipAiAgent extends FighterShipObject {
 	@dereferenced
 	public native SpacePatrolPoint getNextEvadePosition();
 
+	@local
+	@dereferenced
+	public native Vector3 getInterceptPosition(ShipObject targetShip, float speed, int slot);
+
 	@dirty
 	public abstract native float getMaxDistance();
 
@@ -261,7 +262,7 @@ class ShipAiAgent extends FighterShipObject {
 	@local
 	public native final Quaternion unitVectorToQuaternion();
 
-	public native float getRoll(float currentRadians, float lastRadians);
+	public native float getRotationRate(float currentRadians, float lastRadians);
 
 	public native float getMaxThrottle();
 
@@ -269,7 +270,7 @@ class ShipAiAgent extends FighterShipObject {
 
 	public native float qInvSqrt(float x);
 
-	public native void qNormalize(@dereferenced Vector3 vec);
+	public native float qNormalize(@dereferenced Vector3 vec);
 
 	public native boolean setDisabledEngineSpeed();
 
@@ -581,11 +582,7 @@ class ShipAiAgent extends FighterShipObject {
 		movementCount = val;
 	}
 
-	public boolean isTargetForward() {
-		return currentTurnRate <= 0.25f;
-	}
-
-	public native void setTurnRate();
+	public native boolean isTargetForward();
 
 	public native void sendDebugMessage();
 
