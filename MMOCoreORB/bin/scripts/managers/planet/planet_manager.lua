@@ -77,7 +77,7 @@ corellia = {
 		{"Coronet Starport", -66, 28, -4705},
 		{"Doaba Guerfel Starport", 3349, 308, 5598},
 		{"Kor Vella Starport", -3155, 31, 2880},
-		{"Tyrenia Starport", -5001, 21, -2228}
+		{"Tyrena Starport", -5001, 21, -2228}
 	},
 
 	jtlLaunchPoint = {"space_corellia", 6520, -5400, -2600},
@@ -159,7 +159,7 @@ dathomir = {
 	},
 
 	jtlTravelPoints = {
-		{"Dathomir Outpost", 620, 7, 3090},
+		{"Trade Outpost", 620, 7, 3090},
 		{"Science Outpost", -50, 18, -1580}
 	},
 
@@ -383,8 +383,9 @@ rori = {
 	},
 
 	jtlTravelPoints = {
-		{"Narmle Starport", 5282, -192, 6690},
-		{"Restuss Starport", 5290, 80, 6780}
+		{"Narmle Starport", -5374, 80, -2189},
+		{"Restuss Starport", 5340, 80, 5734},
+		{"Rebel Outpost", 3692, 96, -6403}
 	},
 
 	jtlLaunchPoint = {"space_naboo", 6300, -4400, 500},
@@ -564,7 +565,7 @@ tatooine = {
 		{"Mos Eisley Starport",3600,5,-4785},
 		{"Bestine Starport",-1360,12,-3600},
 		{"Mos Espa Starport",-2835,5,2105},
-		{"Mos Entha Starport",1265,7,3065},
+		{"Mos Entha Spaceport",1265,7,3065},
 	},
 
 	jtlLaunchPoint = {"space_tatooine",2300,-5900,1900},
