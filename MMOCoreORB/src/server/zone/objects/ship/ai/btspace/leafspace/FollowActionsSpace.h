@@ -86,7 +86,7 @@ public:
 		if (agent->peekBlackboard("targetShipProspect"))
 			targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*>>();
 
-		//agent->info(true) << agent->getDisplayedName() << " set movement state: " << state;
+		// agent->info(true) << agent->getDisplayedName() << " set movement state: " << state;
 
 		switch (state) {
 		case ShipAiAgent::OBLIVIOUS:
@@ -164,6 +164,8 @@ public:
 
 		agent->setDefender(targetShip);
 
+		// agent->info(true) << " DEFENDER SET FROM targetShipProspect ---  " << targetShip->getDisplayedName();
+
 #ifdef DEBUG_SHIP_AI
 		if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true)
 			agent->info(true) << agent->getDisplayedName() << " - SetDefenderFromProspect";
@@ -206,6 +208,8 @@ public:
 			// agent->info(true) << agent->getDisplayedName() << " Evade delay set for " << evadeDelay;
 		}
 
+		// agent->info(true) << agent->getDisplayedName() << " Evade Success -- Evade Delay: " << evadeDelay;
+
 		return SUCCESS;
 	}
 
@@ -237,14 +241,17 @@ public:
 	}
 
 	BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
-		if (!agent->peekBlackboard("targetShipProspect"))
+		if (!agent->peekBlackboard("targetShipProspect")) {
 			return FAILURE;
+		}
 
 		ManagedReference<ShipObject*> targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*>>();
 
 		if (targetShip == nullptr) {
 			return FAILURE;
 		}
+
+		Locker clock(targetShip, agent);
 
 		auto componentMap = agent->getShipComponentMap();
 		auto hitpointsMap = agent->getCurrentHitpointsMap();
@@ -253,8 +260,9 @@ public:
 			return FAILURE;
 		}
 
-		if (componentMap->get(Components::WEAPON_START) == 0 || hitpointsMap->get(Components::WEAPON_START) == 0)
+		if (componentMap->get(Components::WEAPON_START) == 0 || hitpointsMap->get(Components::WEAPON_START) == 0) {
 			return FAILURE;
+		}
 
 		int projectileType = ShipAiAgent::NEUTRAL_PROJECTILE;
 		uint32 faction = agent->getFaction();
@@ -264,8 +272,6 @@ public:
 		} else if (faction == Factions::FACTIONREBEL) {
 			projectileType = ShipAiAgent::REBEL_PROJECTILE;
 		}
-
-		Locker clock(targetShip, agent);
 
 		Vector3 currentPosition = agent->getPosition();
 		Vector3 targetPosition = targetShip->getPosition();
@@ -279,8 +285,10 @@ public:
 		Vector3 difference = targetPosition - rayStart;
 		float collisionDistance = SpaceCollisionManager::getPointIntersection(direction, difference, targetShip->getBoundingRadius() * 5.f, 1500.f);
 
+		//agent->info(true) << "Engage Target -- Collision Distance: " << collisionDistance;
+
 		if (collisionDistance == FLT_MAX) {
-			return FAILURE;
+			return SUCCESS;
 		}
 
 		agent->eraseBlackboard("refireInterval");
@@ -311,50 +319,24 @@ public:
 	}
 
 	BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
-		ManagedReference<ShipObject*> targetShip = nullptr;
+		agent->eraseBlackboard("targetShipProspect");
 
-		if (agent->peekBlackboard("targetShipProspect")) {
-			targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*>>();
-		}
-
-		auto agentMap = agent->getThreatMap();
-
-		if (agentMap == nullptr) {
-			return FAILURE;
-		}
-
-		ManagedReference<TangibleObject*> topThreat = agentMap->getHighestThreatAttacker();
+		ManagedReference<TangibleObject*> topThreat = agent->getThreatMap()->getHighestThreatAttacker();
 
 		// Make sure top threat is not null and is a ship
 		if (topThreat == nullptr || !topThreat->isShipObject()) {
 			return FAILURE;
 		}
 
-		uint64 topThreatID = topThreat->getObjectID();
+		ManagedReference<ShipObject*> targetShip = topThreat->asShipObject();
 
-		// Do not agent as their own target
-		if (topThreatID == agent->getObjectID()) {
+		if (targetShip == nullptr)
 			return FAILURE;
-		}
 
-		// Return success if the top threat is already their current target
-		if (targetShip != nullptr && topThreatID == targetShip->getObjectID()) {
-			auto aggroDelay = agent->getAggroDelay();
+		Locker lock(targetShip, agent);
 
-			if (aggroDelay != nullptr)
-				aggroDelay->updateToCurrentTime();
+		// agent->info(true) << " NEW THREAT SET ---  Top Threat setting targetShipProspect: " << targetShip->getDisplayedName();
 
-			return SUCCESS;
-
-		}
-
-		targetShip = topThreat->asShipObject();
-
-		if (targetShip == nullptr) {
-			return FAILURE;
-		}
-
-		agent->eraseBlackboard("targetShipProspect");
 		agent->writeBlackboard("targetShipProspect", targetShip);
 
 		return SUCCESS;
