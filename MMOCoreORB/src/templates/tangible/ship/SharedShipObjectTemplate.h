@@ -205,11 +205,9 @@ public:
 		}
 
 		try {
-			const static char* components[] = { "reactor", "engine",  "shield_0", "shield_1", "armor_0", "armor_1", "capacitor", "booster", "droid_interface",
-					"bridge", "hangar", "targeting_station", "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5", "weapon_6", "weapon_7" };
 
-			for (int i = 0; i < 20; i++) {
-				String key = components[i];
+			for (int slot = 0; slot <= Components::CAPITALSLOTMAX; ++slot) {
+				String key = Components::shipComponentSlotToString(slot);
 				LuaObject component = templateData->getObjectField(key);
 
 				if (!component.isValidTable()) {
@@ -221,7 +219,7 @@ public:
 				VectorMap<String, float> map;
 				map.setNullValue(0.f);
 
-				switch (i) {
+				switch (slot) {
 					case Components::REACTOR: {
 						const char *fields[] = {"hitpoints", "armor"};
 						loadMap(fields, 2, map, component);
@@ -294,10 +292,12 @@ public:
 						break;
 					}
 
-					case Components::WEAPON_START:
 					default: {
-						const char *fields[] = {"hitpoints", "armor", "rate", "drain", "maxDamage", "minDamage", "shieldEfficiency", "armorEfficiency", "ammo", "ammo_type"};
-						loadMap(fields, 10, map, component);
+						if (slot >= Components::WEAPON_START) {
+							const char *fields[] = {"hitpoints", "armor", "rate", "drain", "maxDamage", "minDamage", "shieldEfficiency", "armorEfficiency", "ammo", "ammo_type"};
+							loadMap(fields, 10, map, component);
+						}
+
 						break;
 					}
 				};

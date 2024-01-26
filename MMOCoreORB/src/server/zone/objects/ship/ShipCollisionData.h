@@ -14,16 +14,18 @@ protected:
 	Sphere sphere;
 	AABB box;
 
+	const Matrix4* rotation;
 public:
 	ShipCollisionHardpoint() {
-
+		rotation = nullptr;
 	}
 
-	ShipCollisionHardpoint(const String& hardpointAppearance, const String& hardpointSlotName, const Vector3& hardpointPosition, float hardpointRange) {
+	ShipCollisionHardpoint(const String& hardpointAppearance, const String& hardpointSlotName, const Vector3& hardpointPosition, const Matrix4* hardpointRotation, float hardpointRange) {
 		appearanceName = hardpointAppearance;
 		hardpointName = hardpointSlotName;
 
 		sphere = Sphere(hardpointPosition, hardpointRange);
+		rotation = hardpointRotation;
 	}
 
 	const String& getAppearanceName() const {
@@ -40,6 +42,10 @@ public:
 
 	const AABB& getBox() const {
 		return box;
+	}
+
+	const Matrix4* getRotation() const {
+		return rotation;
 	}
 };
 
@@ -65,20 +71,31 @@ protected:
 	int volumeType;
 
 public:
-	ShipCollisionData(SharedObjectTemplate* templateData, const ShipChassisData* chassisData) : Object() {
+	ShipCollisionData(const String& shipName, const ShipChassisData* chassisData) : Object() {
 		setLoggingName("ShipCollisionData");
 
-		hardPointMap.setNoDuplicateInsertPlan();
-		slotWeights.setNoDuplicateInsertPlan();
-		slotWeights.setNullValue(0);
+		const String& templatePath = getShipFileName(shipName);
 
-		volumeType = CollisionVolumeType::RADIUS;
+		if (templatePath == "") {
+			return;
+		}
+
+		auto templateData = TemplateManager::instance()->getTemplate(templatePath.hashCode());
+
+		if (templateData == nullptr) {
+			return;
+		}
 
 		auto shipTemplate = dynamic_cast<SharedShipObjectTemplate*>(templateData);
 
 		if (shipTemplate == nullptr) {
 			return;
 		}
+
+		hardPointMap.setNoDuplicateInsertPlan();
+		slotWeights.setNoDuplicateInsertPlan();
+		slotWeights.setNullValue(0);
+		volumeType = CollisionVolumeType::RADIUS;
 
 		setVolumeType(shipTemplate);
 		setBoundingData(shipTemplate);
@@ -171,14 +188,8 @@ public:
 			return;
 		}
 
-		for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; ++slot) {
-			auto slotName = Components::shipComponentSlotToString(slot);
-
-			if (slotName == "") {
-				continue;
-			}
-
-			auto slotData = chassisData->getComponentData(slotName);
+		for (uint32 slot = 0; slot <= Components::CAPITALSLOTMAX; ++slot) {
+			auto slotData = chassisData->getComponentSlotData(slot);
 
 			if (slotData == nullptr) {
 				continue;
@@ -201,29 +212,66 @@ public:
 					}
 
 					float hardpointRadius = componentHardpoint->getRange();
-
-					if (hardpointRadius == 0.f) {
+					if (hardpointRadius <= 0.f && slot <= Components::FIGHTERSLOTMAX) {
 						continue;
 					}
 
-					const auto& templateName = componentHardpoint->getTemplateName();
+					const auto& attachmentName = componentHardpoint->getTemplateName();
 					const auto& hardpointName = componentHardpoint->getHardpointName();
 
-					const auto& transform = hardpointTransforms.get(hardpointName);
-					auto hardpointPosition = Vector3(transform[3][0], transform[3][1], transform[3][2]);
+					auto transformRotation = hardpointTransforms.get(hardpointName);
+					auto transformPosition = Vector3(transformRotation[3][0], transformRotation[3][1], transformRotation[3][2]);
 
-					if (templateName != "") {
-						String templatePath = getAppearanceFileName(templateName, slot);
+					auto hardpointPosition = transformPosition;
+					transformRotation.setTranslation(0,0,0);
+
+					if (attachmentName != "") {
+						String templatePath = getAppearanceFileName(attachmentName, slot);
 
 						if (templatePath != "") {
 							auto attachmentTemplate = TemplateManager::instance()->getTemplate(templatePath.hashCode());
 
 							if (attachmentTemplate != nullptr) {
-								auto volume = getBoundingVolume(attachmentTemplate);
+								auto shot = dynamic_cast<SharedTangibleObjectTemplate*>(attachmentTemplate);
 
-								if (volume != nullptr && volume->getBoundingSphere().getRadius() != 0) {
-									hardpointPosition = volume->getBoundingSphere().getCenter() + hardpointPosition;
-									hardpointRadius = volume->getBoundingSphere().getRadius();
+								if (shot != nullptr) {
+									auto shotAppearance = shot->getAppearanceTemplate();
+
+									if (shotAppearance != nullptr) {
+										auto hardpointBounding = shotAppearance->getBoundingVolume();
+
+										if (hardpointBounding != nullptr) {
+											const auto& attachmentSphere = hardpointBounding->getBoundingSphere();
+
+											float phiY = atan2(-transformRotation[1][1], sqrt(transformRotation[1][0] * transformRotation[1][0] + transformRotation[1][2] * transformRotation[1][2]));
+
+											if (phiY > 0.f) {
+												hardpointPosition = transformPosition + ((attachmentSphere.getCenter() * 2.f) * transformRotation);
+											} else {
+												hardpointPosition = transformPosition + (attachmentSphere.getCenter() * transformRotation);
+											}
+
+											hardpointRadius = attachmentSphere.getRadius();
+
+											const auto& attachmentTransforms = shotAppearance->getHardpoints();
+
+											if (attachmentTransforms.contains("turretpitch1")) {
+												auto attachmentRotation = attachmentTransforms.get("turretpitch1");
+												auto attachmentPosition = Vector3(attachmentRotation[3][0], attachmentRotation[3][1], attachmentRotation[3][2]);
+
+												transformRotation = transformRotation * attachmentRotation;
+												transformRotation.setTranslation(0,0,0);
+
+												float phiP = atan2(-transformRotation[1][1], sqrt(transformRotation[1][0] * transformRotation[1][0] + transformRotation[1][2] * transformRotation[1][2]));
+
+												if (phiP > 0.f) {
+													hardpointPosition = transformPosition + ((attachmentSphere.getCenter() * 2.f) * transformRotation);
+												} else {
+													hardpointPosition = transformPosition + (attachmentSphere.getCenter() * transformRotation);
+												}
+											}
+										}
+									}
 								}
 							}
 						}
@@ -233,12 +281,14 @@ public:
 						continue;
 					}
 
-					hardPoints.put(componentName.hashCode(), ShipCollisionHardpoint(templateName, hardpointName, hardpointPosition, hardpointRadius));
+					auto hardpointRotation = new Matrix4(transformRotation);
+
+					hardPoints.put(componentName.hashCode(), ShipCollisionHardpoint(attachmentName, hardpointName, hardpointPosition, hardpointRotation, hardpointRadius));
 				}
 			}
 
 			if (hardPoints.size() > 0) {
-				hardPointMap.put(slotName, hardPoints);
+				hardPointMap.put(Components::shipComponentSlotToString(slot), hardPoints);
 			}
 
 			int slotWeight = slotData->getHitWeight();
@@ -265,6 +315,17 @@ public:
 		}
 
 		return "";
+	}
+
+	String getShipFileName(const String& shipName) const {
+		String chassisName = shipName.replaceAll("shared_", "");
+
+		if (!chassisName.contains(".iff")) {
+			String path = chassisName.contains("player_") ? "object/ship/player/" : "object/ship/";
+			chassisName = path + chassisName + ".iff";
+		}
+
+		return chassisName;
 	}
 
 	const VectorMap<uint32, ShipCollisionHardpoint>& getHardpoints(const String& slotName) const {
