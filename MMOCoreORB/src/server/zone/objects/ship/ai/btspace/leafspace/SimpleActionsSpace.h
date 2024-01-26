@@ -262,11 +262,11 @@ public:
 
 class SetAlert : public BehaviorSpace {
 public:
-	SetAlert(const String& className, const uint32 id, const LuaObject& args) : BehaviorSpace(className, id, args), duration(0.f), aggroDelay(0.f) {
+	SetAlert(const String& className, const uint32 id, const LuaObject& args) : BehaviorSpace(className, id, args), aggroDelay(0.f) {
 		parseArgs(args);
 	}
 
-	SetAlert(const SetAlert& b) : BehaviorSpace(b), duration(b.duration), aggroDelay(b.aggroDelay) {
+	SetAlert(const SetAlert& b) : BehaviorSpace(b), aggroDelay(b.aggroDelay) {
 	}
 
 	SetAlert& operator=(const SetAlert& b) {
@@ -275,7 +275,6 @@ public:
 
 		BehaviorSpace::operator=(b);
 
-		duration = b.duration;
 		aggroDelay = b.aggroDelay;
 		return *this;
 	}
@@ -294,19 +293,19 @@ public:
 		if (delay != nullptr && delay->isPast()) {
 			delay->updateToCurrentTime();
 			delay->addMiliTime(aggroDelay);
+			// agent->info(true) << " SetAlert Complete! Delay: " << aggroDelay;
 		}
 
 		return SUCCESS;
 	}
 
 	void parseArgs(const LuaObject& args) {
-		duration = (int)(getArg<float>()(args, "duration") * 1000);
 		aggroDelay = (int)(getArg<float>()(args, "aggroDelay") * 1000);
 	}
 
 	String print() const {
 		StringBuffer msg;
-		msg << className << "- Duration: " << duration << ", Aggro Delay: " << aggroDelay;
+		msg << className << "- Aggro Delay: " << aggroDelay;
 
 		return msg.toString();
 	}
