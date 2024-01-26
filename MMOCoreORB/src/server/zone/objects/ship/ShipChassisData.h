@@ -6,6 +6,7 @@
 #define CORE3_SHIPCHASSISDATA_H
 
 #include "engine/engine.h"
+#include "ComponentSlots.h"
 
 class DataTableRow;
 
@@ -78,6 +79,10 @@ public:
 			return name;
 		}
 
+		const String& getCompatability() const {
+			return compatability;
+		}
+
 		float getHitWeight() const {
 			return hitWeight;
 		}
@@ -105,18 +110,7 @@ public:
 	}
 
 	const ComponentSlotData* getComponentSlotData(int slotIndex) const {
-		const static char* components[] = {"reactor", "engine", "shield_0", "shield_1", "armor_0", "armor_1", "capacitor", "booster", "droid_interface", "bridge", "hangar",
-										   "targeting_station","weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5","weapon_6", "weapon_7"};
-		if (slotIndex < 20) {
-			return componentMap.get(components[slotIndex]);
-		} else {
-			return componentMap.get("weapon_" + String::valueOf(slotIndex-12));
-		}
-
-	}
-
-	const ComponentSlotData* getComponentData(const String& slot) const {
-		return componentMap.get(slot);
+		return componentMap.get(Components::shipComponentSlotToString(slotIndex));
 	}
 };
 

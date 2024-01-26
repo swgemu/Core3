@@ -84,7 +84,7 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 		return;
 	}
 
-	for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; ++slot) {
+	for (uint32 slot = 0; slot <= Components::CAPITALSLOTMAX; ++slot) {
 		String slotName = Components::shipComponentSlotToString(slot);
 
 		if (slotName == "") {
@@ -207,6 +207,10 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 				setCurrentAmmo(slot, ammo);
 				setMaxAmmo(slot, ammo);
 				setAmmoClass(slot, ammoType);
+
+				if (slot > Components::FIGHTERSLOTMAX) {
+					setComponentTargetable(slot, true);
+				}
 			}
 			break;
 		}

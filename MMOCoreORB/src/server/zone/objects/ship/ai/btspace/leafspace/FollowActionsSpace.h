@@ -9,6 +9,8 @@
 #include "server/zone/managers/spacecombat/SpaceCombatManager.h"
 #include "server/zone/managers/spacecollision/SpaceCollisionManager.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
+#include "server/zone/objects/ship/ShipComponentFlag.h"
+
 
 namespace server {
 namespace zone {
@@ -236,60 +238,215 @@ public:
 		return *this;
 	}
 
-	BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
-		if (!agent->peekBlackboard("targetShipProspect"))
+	BehaviorSpace::Status execute(ShipAiAgent* ship, unsigned int startIdx = 0) const {
+		if (!ship->peekBlackboard("targetShipProspect"))
 			return FAILURE;
 
-		ManagedReference<ShipObject*> targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*>>();
+		ManagedReference<ShipObject*> targetShip = ship->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*>>();
 
 		if (targetShip == nullptr) {
 			return FAILURE;
 		}
 
-		auto componentMap = agent->getShipComponentMap();
-		auto hitpointsMap = agent->getCurrentHitpointsMap();
+		auto shipManager = ShipManager::instance();
 
-		if (componentMap == nullptr || hitpointsMap == nullptr) {
+		if (shipManager == nullptr) {
 			return FAILURE;
 		}
 
-		if (componentMap->get(Components::WEAPON_START) == 0 || hitpointsMap->get(Components::WEAPON_START) == 0)
-			return FAILURE;
+		auto combatManager = SpaceCombatManager::instance();
 
-		int projectileType = ShipAiAgent::NEUTRAL_PROJECTILE;
-		uint32 faction = agent->getFaction();
-
-		if (faction == Factions::FACTIONIMPERIAL) {
-			projectileType = ShipAiAgent::IMPERIAL_PROJECTILE;
-		} else if (faction == Factions::FACTIONREBEL) {
-			projectileType = ShipAiAgent::REBEL_PROJECTILE;
-		}
-
-		Locker clock(targetShip, agent);
-
-		Vector3 currentPosition = agent->getPosition();
-		Vector3 targetPosition = targetShip->getPosition();
-
-		Vector3 currentDirectionVec = agent->getCurrentDirectionVector();
-
-		Vector3 rayStart = currentPosition;
-		Vector3 rayEnd = (currentDirectionVec * 1500.f) + currentPosition;
-		Vector3 direction = rayEnd - rayStart;
-
-		Vector3 difference = targetPosition - rayStart;
-		float collisionDistance = SpaceCollisionManager::getPointIntersection(direction, difference, targetShip->getBoundingRadius() * 5.f, 1500.f);
-
-		if (collisionDistance == FLT_MAX) {
+		if (combatManager == nullptr) {
 			return FAILURE;
 		}
 
-		agent->eraseBlackboard("refireInterval");
+		auto collisionData = shipManager->getCollisionData(ship);
+
+		if (collisionData == nullptr) {
+			return FAILURE;
+		}
+
+		auto appearanceData = shipManager->getAppearanceData(ship->getShipChassisName());
+
+		if (appearanceData == nullptr) {
+			return FAILURE;
+		}
+
+		auto targetVector = ship->getTargetVector();
+
+		if (targetVector == nullptr || targetVector->size() == 0) {
+			return FAILURE;
+		}
+
+		Vector<ManagedReference<ShipObject*>> targetVectorCopy;
+		targetVector->safeCopyTo(targetVectorCopy);
+
+		Vector<uint32> weaponsIndex;
+
+		int weaponsFiredMax = 10;
+		int weaponsFired = 0;
+
+		for (uint32 slot = Components::WEAPON_START; slot <= Components::CAPITALSLOTMAX; ++slot) {
+			uint32 crc = ship->getShipComponentMap()->get(slot);
+
+			if (crc == 0) {
+				continue;
+			}
+
+			int hitpoints = ship->getCurrentHitpointsMap()->get(slot);
+
+			if (hitpoints <= 0.f) {
+				continue;
+			}
+
+			int flags = ship->getComponentOptionsMap()->get(slot);
+
+			if (flags & ShipComponentFlag::DISABLED) {
+				continue;
+			}
+
+			weaponsIndex.add(slot);
+		}
+
+		for (int i = 0; i < targetVectorCopy.size(); ++i) {
+			auto target = targetVectorCopy.get(i);
+
+			if (target == nullptr || !target->isAttackableBy(ship)) {
+				continue;
+			}
+
+			Locker cLock(target, ship);
+
+			Vector<uint32> weaponsCopy = weaponsIndex;
+
+			for (int ii = weaponsCopy.size(); -1 < --ii;) {
+				int key = System::random(ii);
+				int index = weaponsCopy.get(key);
+
+				weaponsCopy.remove(key);
+
+				auto crc = ship->getShipComponentMap()->get(index);
+
+				if (crc == 0) {
+					continue;
+				}
+
+				auto projectileData = shipManager->getProjectileData(crc);
+
+				if (projectileData == nullptr) {
+					continue;
+				}
+
+				auto turretData = shipManager->getShipTurretData(ship->getShipChassisName(), index - Components::WEAPON_START);
+
+				if (turretData != nullptr) {
+					const auto& slotName = Components::shipComponentSlotToString(index);
+					const auto& hardpoints = collisionData->getHardpoints(slotName);
+					const auto& hardpoint = hardpoints.get(crc);
+
+					if (hardpoint.getAppearanceName() == "") {
+						continue;
+					}
+
+					const Matrix4& shipRotation = *ship->getRotationMatrix();
+					const Vector3& shipPosition = ship->getPosition();
+					const Vector3& targetPosition = ship->getInterceptPosition(target, projectileData->getSpeed(), System::random(Components::FIGHTERSLOTMAX));
+					const Vector3& hardpointPosition = hardpoint.getSphere().getCenter();
+
+					Vector3 turretGlobal = (hardpointPosition * shipRotation);
+					turretGlobal = Vector3(turretGlobal.getX(), turretGlobal.getZ(), turretGlobal.getY()) + shipPosition;
+
+					Vector3 targetGlobal = targetPosition - turretGlobal;
+
+					if (targetGlobal.squaredLength() > projectileData->getRange() * projectileData->getRange()) {
+						continue;
+					}
+
+					Vector3 targetLocal = targetGlobal;
+					targetLocal = Vector3(targetLocal.getX(), targetLocal.getZ(), targetLocal.getY()) * shipRotation;
+
+					const Matrix4* hardpointRotation = hardpoint.getRotation();
+
+					if (hardpointRotation != nullptr) {
+						targetLocal = targetLocal * *hardpointRotation;
+					}
+
+					float yaw = atan2(targetLocal.getX(), targetLocal.getZ());
+					float pitch = atan2(-targetLocal.getY(), Math::sqrt(Math::sqr(targetLocal.getX()) + Math::sqr(targetLocal.getZ())));
+
+					float maxPitch = turretData->getMaxPitch() * Math::DEG2RAD;
+					float minPitch = turretData->getMinPitch() * Math::DEG2RAD;
+					float maxYaw = turretData->getMaxYaw() * Math::DEG2RAD;
+					float minYaw = turretData->getMinYaw() * Math::DEG2RAD;
+
+					if (yaw < minYaw || yaw > maxYaw) {
+						continue;
+					}
+
+					if (pitch < minPitch || pitch > maxPitch) {
+						continue;
+					}
+
+					float accuracy = 0.05f;
+
+					float randomX = 1.f + ((System::frandom(2.f) - 1.f) * accuracy);
+					float randomY = 1.f + ((System::frandom(2.f) - 1.f) * accuracy);
+					float randomZ = 1.f + ((System::frandom(2.f) - 1.f) * accuracy);
+
+					targetGlobal *= Vector3(randomX, randomY, randomZ);
+
+					if (targetGlobal != Vector3::ZERO) {
+						targetGlobal.normalize();
+					}
+
+					auto projectile = new ShipProjectile(ship, index - Components::WEAPON_START, projectileData->getIndex(), 0, turretGlobal, targetGlobal * 7800.f, 500, 500, 1.f, System::getMiliTime());
+					projectile->readProjectileData(projectileData);
+					combatManager->addProjectile(ship, projectile);
+
+					weaponsIndex.remove(key);
+					weaponsFired += 1;
+				} else {
+					Vector3 difference = target->getPosition() - ship->getPosition();
+					Vector3 direction = ship->getCurrentDirectionVector();
+
+					float radius = Math::max(32.f, targetShip->getBoundingRadius());
+					float range = Math::max(512.f, projectileData->getRange());
+					float collisionDistance = SpaceCollisionManager::getPointIntersection(direction * range, difference, radius, range);
+
+					if (collisionDistance == SpaceCollisionManager::MISS) {
+						break;
+					}
+
+					if (projectileData->isMissile()) {
+						weaponsIndex.remove(key);
+						continue;
+					} else if (projectileData->isCountermeasure()) {
+						weaponsIndex.remove(key);
+						continue;
+					} else {
+						auto projectile = new ShipProjectile(ship, index - Components::WEAPON_START, projectileData->getIndex(), 0, ship->getPosition(), direction * 7800.f, 500, 500, 1.f, System::getMiliTime());
+						projectile->readProjectileData(projectileData);
+						combatManager->addProjectile(ship, projectile);
+					}
+
+					weaponsIndex.remove(key);
+					weaponsFired += 1;
+				}
+
+				if (weaponsIndex.size() == 0 || weaponsFired >= weaponsFiredMax) {
+					break;
+				}
+			}
+
+			if (weaponsIndex.size() == 0 || weaponsFired >= weaponsFiredMax) {
+				break;
+			}
+		}
+
+		ship->eraseBlackboard("refireInterval");
 
 		uint64 timeNow = System::getMiliTime();
-		agent->writeBlackboard("refireInterval", timeNow);
-
-		auto projectile = new ShipProjectile(agent, 0, projectileType, 0, currentPosition, currentDirectionVec * 7800.f, 500, 500, 1.f, timeNow);
-		SpaceCombatManager::instance()->addProjectile(agent, projectile);
+		ship->writeBlackboard("refireInterval", timeNow);
 
 		return SUCCESS;
 	}
