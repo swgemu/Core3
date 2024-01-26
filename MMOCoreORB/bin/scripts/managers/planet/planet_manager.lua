@@ -77,7 +77,7 @@ corellia = {
 		{"Coronet Starport", -66, 28, -4705},
 		{"Doaba Guerfel Starport", 3349, 308, 5598},
 		{"Kor Vella Starport", -3155, 31, 2880},
-		{"Tyrenia Starport", -5001, 21, -2228}
+		{"Tyrena Starport", -5001, 21, -2228}
 	},
 
 	jtlLaunchPoint = {"space_corellia", 6520, -5400, -2600},
@@ -159,7 +159,7 @@ dathomir = {
 	},
 
 	jtlTravelPoints = {
-		{"Dathomir Outpost", 620, 7, 3090},
+		{"Trade Outpost", 620, 7, 3090},
 		{"Science Outpost", -50, 18, -1580}
 	},
 
@@ -383,8 +383,9 @@ rori = {
 	},
 
 	jtlTravelPoints = {
-		{"Narmle Starport", 5282, -192, 6690},
-		{"Restuss Starport", 5290, 80, 6780}
+		{"Narmle Starport", -5374, 80, -2189},
+		{"Restuss Starport", 5340, 80, 5734},
+		{"Rebel Outpost", 3692, 96, -6403}
 	},
 
 	jtlLaunchPoint = {"space_naboo", 6300, -4400, 500},
@@ -555,7 +556,7 @@ tatooine = {
 		{name = "Mos Espa Starport", x = -2833.1609, z = 5, y = 2107.3787, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
 		{name = "Mos Espa Shuttleport East", x = -2803.511, z = 5, y = 2182.9648, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
 		{name = "Anchorhead Shuttleport", x = 47.565128, z = 52, y = -5338.9072, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
-		{name = "Mos Entha Spaceport", x = 1266.0996, z = 7, y = 3065.1392, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
+		{name = "Mos Entha Starport", x = 1266.0996, z = 7, y = 3065.1392, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
 		{name = "Mos Entha Shuttle B", x = 1395.447, z = 7, y = 3467.0117, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
 		{name = "Mos Entha Shuttle A", x = 1730.8828, z = 7, y = 3184.6135, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1}
 	},
