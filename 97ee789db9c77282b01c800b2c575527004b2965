@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55e51ca2_37428dca",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-01-26T16:52:16Z",
+      "side": 1,
+      "message": "The proper string for this is \"s_361\", \"The (Rebel) Outpost.\" from the client. Only accessible after the space missions are added. Also looks like the Restuss location is not matching the one above from the PlanetTravelPoints",
+      "revId": "97ee789db9c77282b01c800b2c575527004b2965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e1dec2d_a56b3c9a",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-01-26T16:52:16Z",
+      "side": 1,
+      "message": "This was correct as per client string \"s_69ffeefe\", \"Mos Entha Starport.\"",
+      "revId": "97ee789db9c77282b01c800b2c575527004b2965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
