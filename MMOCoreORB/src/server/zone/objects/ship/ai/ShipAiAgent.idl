@@ -591,4 +591,8 @@ class ShipAiAgent extends FighterShipObject {
 	public float getCurrentSpeed() {
 		return currentSpeed;
 	}
+
+	public native boolean fireWeaponAtTarget(ShipObject targetShip, unsigned int slot, unsigned int targetSlot);
+
+	public native boolean fireTurretAtTarget(ShipObject targetShip, unsigned int slot, unsigned int targetSlot);
 }

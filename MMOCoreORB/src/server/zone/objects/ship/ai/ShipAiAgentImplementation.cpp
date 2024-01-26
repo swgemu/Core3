@@ -84,7 +84,7 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 		return;
 	}
 
-	for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; ++slot) {
+	for (uint32 slot = 0; slot <= Components::CAPITALSLOTMAX; ++slot) {
 		String slotName = Components::shipComponentSlotToString(slot);
 
 		if (slotName == "") {
@@ -207,6 +207,10 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 				setCurrentAmmo(slot, ammo);
 				setMaxAmmo(slot, ammo);
 				setAmmoClass(slot, ammoType);
+
+				if (slot > Components::FIGHTERSLOTMAX) {
+					setComponentTargetable(slot, true);
+				}
 			}
 			break;
 		}
@@ -1229,6 +1233,158 @@ void ShipAiAgentImplementation::broadcastTransform(const Vector3& position) {
 	Combat
 
 */
+
+bool ShipAiAgentImplementation::fireWeaponAtTarget(ShipObject* targetShip, uint32 slot, uint32 targetSlot) {
+	auto crc = getShipComponentMap()->get(slot);
+
+	if (crc == 0) {
+		return false;
+	}
+
+	auto shipManager = ShipManager::instance();
+
+	if (shipManager == nullptr) {
+		return false;
+	}
+
+	auto projectileData = shipManager->getProjectileData(crc);
+
+	if (projectileData == nullptr) {
+		return false;
+	}
+
+	auto combatManager = SpaceCombatManager::instance();
+
+	if (combatManager == nullptr) {
+		return false;
+	}
+
+	const Vector3& targetPosition = getInterceptPosition(targetShip, projectileData->getSpeed(), targetSlot);
+
+	Vector3 difference = targetPosition - getPosition();
+	Vector3 direction = getCurrentDirectionVector();
+
+	float radius = Math::max(32.f, targetShip->getBoundingRadius());
+	float range = Math::max(512.f, projectileData->getRange());
+	float collisionDistance = SpaceCollisionManager::getPointIntersection(direction * range, difference, radius, range);
+
+	if (collisionDistance == SpaceCollisionManager::MISS) {
+		return false;
+	}
+
+	if (projectileData->isMissile()) {
+		return false;
+	} else if (projectileData->isCountermeasure()) {
+		return false;
+	} else {
+		auto projectile = new ShipProjectile(asShipAiAgent(), slot - Components::WEAPON_START, projectileData->getIndex(), 0, getPosition(), direction * 7800.f, 500, 500, 1.f, System::getMiliTime());
+		projectile->readProjectileData(projectileData);
+		combatManager->addProjectile(asShipAiAgent(), projectile);
+	}
+
+	return true;
+}
+
+bool ShipAiAgentImplementation::fireTurretAtTarget(ShipObject* targetShip, uint32 slot, uint32 targetSlot) {
+	auto crc = getShipComponentMap()->get(slot);
+
+	if (crc == 0) {
+		return false;
+	}
+
+	auto shipManager = ShipManager::instance();
+
+	if (shipManager == nullptr) {
+		return false;
+	}
+
+	auto combatManager = SpaceCombatManager::instance();
+
+	if (combatManager == nullptr) {
+		return false;
+	}
+
+	auto projectileData = shipManager->getProjectileData(crc);
+
+	if (projectileData == nullptr) {
+		return false;
+	}
+
+	auto collisionData = shipManager->getCollisionData(asShipAiAgent());
+
+	if (collisionData == nullptr) {
+		return false;
+	}
+
+	auto turretData = shipManager->getShipTurretData(getShipChassisName(), slot - Components::WEAPON_START);
+
+	if (turretData == nullptr) {
+		return false;
+	}
+
+	const auto& slotName = Components::shipComponentSlotToString(slot);
+	const auto& hardpoints = collisionData->getHardpoints(slotName);
+	const auto& hardpoint = hardpoints.get(crc);
+
+	if (hardpoint.getAppearanceName() == "") {
+		return false;
+	}
+
+	const Matrix4& shipRotation = *getRotationMatrix();
+	const Vector3& shipPosition = getPosition();
+	const Vector3& targetPosition = getInterceptPosition(targetShip, projectileData->getSpeed(), targetSlot);
+	const Vector3& hardpointPosition = hardpoint.getSphere().getCenter();
+
+	Vector3 turretGlobal = (hardpointPosition * shipRotation);
+	turretGlobal = Vector3(turretGlobal.getX(), turretGlobal.getZ(), turretGlobal.getY()) + shipPosition;
+
+	Vector3 targetGlobal = targetPosition - turretGlobal;
+
+	if (targetGlobal.squaredLength() > projectileData->getRange() * projectileData->getRange()) {
+		return false;
+	}
+
+	Vector3 targetLocal = targetGlobal;
+	targetLocal = Vector3(targetLocal.getX(), targetLocal.getZ(), targetLocal.getY()) * shipRotation;
+
+	const Matrix4* hardpointRotation = hardpoint.getRotation();
+
+	if (hardpointRotation != nullptr) {
+		targetLocal = targetLocal * *hardpointRotation;
+	}
+
+	float yaw = atan2(targetLocal.getX(), targetLocal.getZ());
+	float pitch = atan2(-targetLocal.getY(), Math::sqrt(Math::sqr(targetLocal.getX()) + Math::sqr(targetLocal.getZ())));
+
+	float maxPitch = turretData->getMaxPitch() * Math::DEG2RAD;
+	float minPitch = turretData->getMinPitch() * Math::DEG2RAD;
+	float maxYaw = turretData->getMaxYaw() * Math::DEG2RAD;
+	float minYaw = turretData->getMinYaw() * Math::DEG2RAD;
+
+	if (yaw < minYaw || yaw > maxYaw) {
+		return false;
+	}
+
+	if (pitch < minPitch || pitch > maxPitch) {
+		return false;
+	}
+
+	float accuracy = 0.05f;
+
+	float randomX = 1.f + ((System::frandom(2.f) - 1.f) * accuracy);
+	float randomY = 1.f + ((System::frandom(2.f) - 1.f) * accuracy);
+	float randomZ = 1.f + ((System::frandom(2.f) - 1.f) * accuracy);
+
+	targetGlobal *= Vector3(randomX, randomY, randomZ);
+	qNormalize(targetGlobal);
+
+	auto projectile = new ShipProjectile(asShipAiAgent(), slot - Components::WEAPON_START, projectileData->getIndex(), 0, turretGlobal, targetGlobal * 7800.f, 500, 500, 1.f, System::getMiliTime());
+	projectile->readProjectileData(projectileData);
+
+	combatManager->addProjectile(asShipAiAgent(), projectile);
+
+	return true;
+}
 
 void ShipAiAgentImplementation::setDefender(ShipObject* defender) {
 	if (defender == nullptr)
