@@ -71,27 +71,10 @@ void ShipChassisData::loadComponentHardpoints() {
 
 			const String& slotName = columns.get(j);
 			ComponentSlotData *slotData = componentMap.get(slotName);
-			if (slotData == nullptr) {
-				// Check to see if this is an implicit weapon
-				if (slotName.beginsWith("weapon_")) {
-					String weaponNumber = slotName.subString(7, slotName.length());
-					int number = Integer::valueOf(weaponNumber);
-					if (number <= 7) {
-						Logger::console.error("Invalid implicit slot definition");
-					}
-					ComponentSlotData *originalSlot = componentMap.get("weapon_"+String::valueOf(number % 7));
-					if (originalSlot == nullptr) {
-						Logger::console.error("Could not find associated weapon slot for weapon_" + String::valueOf(number % 7));
-						continue;
-					}
 
-					slotData = new ComponentSlotData(*originalSlot);
-				} else {
-					for (int k = 0; k < componentMap.size(); k++) {
-						//Logger::console.info("\t" + componentMap.elementAt(k).getKey(), true);
-					}
-					continue;
-				}
+			if (slotData == nullptr) {
+				slotData = new ComponentSlotData(slotName, "", 0, true);
+				componentMap.put(slotName, slotData);
 			}
 
 			StringTokenizer hardpointTokenizer(value);
