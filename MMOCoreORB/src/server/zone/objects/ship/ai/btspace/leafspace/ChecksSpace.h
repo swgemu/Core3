@@ -26,6 +26,7 @@ enum CheckTypeSpace {
 	CHECK_CHECKTARGETISVALID,
 	CHECK_ENGINESDISABLED,
 	CHECK_EVADECHANCE,
+	CHECK_PROSPECTLOS,
 };
 
 // template class to reduce repeated code. Do this instead of inheritance so we
@@ -111,6 +112,9 @@ template<> bool CheckEnginesDisabled::check(ShipAiAgent* agent) const;
 
 typedef _CheckSpace<int32, CHECK_EVADECHANCE> CheckEvadeChance;
 template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const;
+
+typedef _CheckSpace<uint32, CHECK_PROSPECTLOS> CheckProspectLOS;
+template<> bool CheckProspectLOS::check(ShipAiAgent* agent) const;
 
 } // namespace leafspace
 } // namespace btspace

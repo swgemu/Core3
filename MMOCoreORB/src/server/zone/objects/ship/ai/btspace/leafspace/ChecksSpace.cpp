@@ -30,7 +30,7 @@ template<> bool CheckProspectInRange::check(ShipAiAgent* agent) const {
 
 	Locker clock(targetShip, agent);
 
-	float aggroMod = 0.25f;
+	float aggroMod = 0.5f;
 
 	if (agent->peekBlackboard("aggroMod"))
 		aggroMod = agent->readBlackboard("aggroMod").get<float>();
@@ -44,7 +44,7 @@ template<> bool CheckProspectInRange::check(ShipAiAgent* agent) const {
 		agent->info(true) << agent->getDisplayedName() << " - CheckProspectInRange -- AggroRadius = " << radius;
 #endif // DEBUG_SHIP_AI
 
-	return agent->isInRange(targetShip, radius);
+	return agent->isInRange3d(targetShip, radius);
 }
 
 template<> bool CheckAggroDelayPast::check(ShipAiAgent* agent) const {
@@ -78,20 +78,22 @@ template<> bool CheckProspectAggression::check(ShipAiAgent* agent) const {
 
 	Locker clock(targetShip, agent);
 
+	// agent->info(true) << "CheckProspectAggression";
+
 	return agent->isAggressiveTo(targetShip);
 }
 
 template<> bool CheckRefireRate::check(ShipAiAgent* agent) const {
-	if (!agent->peekBlackboard("refireInterval"))
-		return true;
+	uint64 lastFire = (uint64)checkVar;
+
+	if (agent->peekBlackboard("refireInterval"))
+		lastFire += agent->readBlackboard("refireInterval").get<uint64>();
 
 	uint64 timeNow = System::getMiliTime();
-	uint64 lastFire = agent->readBlackboard("refireInterval").get<uint64>() + (uint64)checkVar;
-	int timeDiff = (int)timeNow - (int)lastFire;
 
-	//agent->info(true) << agent->getDisplayedName() <<  " RefireInterval check time diff: " << timeDiff << " Last Fire: " << lastFire << " Time now: " << timeNow;
+	// agent->info(true) << agent->getDisplayedName() <<  " RefireInterval -  Last Fire: " << lastFire << " Time now: " << timeNow;
 
-	return timeDiff > 0;
+	return timeNow > lastFire;
 }
 
 template<> bool CheckStopEvading::check(ShipAiAgent* agent) const {
@@ -115,7 +117,12 @@ template<> bool CheckStopEvading::check(ShipAiAgent* agent) const {
 
 	SpacePatrolPoint evadePoint = agent->getFinalPosition();
 
-	return evadePoint.isEvadePoint() && agent->isInRangePosition(evadePoint.getWorldPosition(), agent->getMaxDistance());
+	if (!evadePoint.isEvadePoint())
+		return true;
+
+	float endEvadeDist = agent->getBoundingRadius() + agent->getEngineMaxSpeed();
+
+	return evadePoint.isReached() || agent->isInRangePosition(evadePoint.getWorldPosition(), endEvadeDist);
 }
 
 template<> bool CheckTargetIsValid::check(ShipAiAgent* agent) const {
@@ -129,9 +136,9 @@ template<> bool CheckTargetIsValid::check(ShipAiAgent* agent) const {
 
 	Locker clock(targetShip, agent);
 
-	// agent->info(true) << agent->getDisplayedName() << " CheckTargetIsValid - Target: " << targetShip->getDisplayedName() << " Chassis Health: " << targetShip->getChassisCurrentHealth();
+	// agent->info(true) << agent->getDisplayedName() << " CheckTargetIsValid - Target: " << targetShip->getDisplayedName();
 
-	return targetShip->getChassisCurrentHealth() > 0.f && targetShip->isAttackableBy(agent);
+	return agent->validateTarget(targetShip);
 }
 
 template<> bool CheckEnginesDisabled::check(ShipAiAgent* agent) const {
@@ -173,18 +180,32 @@ template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const {
 	if (System::random(100) < 50)
 		return false;
 
-	float maxDistance = agent->getMaxDistance();
+	float maxDistance = agent->getMaxDistance() + (ShipAiAgent::DEFAULTAGGRORADIUS / 2.f);
 	float maxSquared = maxDistance * maxDistance;
 
-	float minDistance = targetShip->getBoundingRadius() + agent->getBoundingRadius();
+	float minDistance = targetShip->getBoundingRadius() + agent->getBoundingRadius() + agent->getCurrentSpeed();
 	float minSquared = minDistance * minDistance;
 
 	SpacePatrolPoint nextPoint = agent->getNextPosition();
 	float sqrDist = nextPoint.getWorldPosition().squaredDistanceTo(targetShip->getPosition());
 
-	// agent->info(true) << agent->getDisplayedName() << " next patrol point: " << nextPoint.getWorldPosition().toString() << " Sq Distance to Target = " << sqrDist;
-	// agent->info(true) << " Min Distance: " << minDistance << " Min Distance Sq: " << minSquared << " Max Distance: " << maxDistance << " Max Distance Sq: " << maxSquared;
+	//agent->info(true) << agent->getDisplayedName() << " next patrol point: " << nextPoint.getWorldPosition().toString() << " Sq Distance to Target = " << sqrDist
+	//	<< " Min Distance: " << minDistance << " Min Distance Sq: " << minSquared << " Max Distance: " << maxDistance << " Max Distance Sq: " << maxSquared;
 
-	// Evade if the too far or too close to the target ship
-	return sqrDist > maxSquared || sqrDist < minSquared;
+	//return sqrDist > maxSquared || sqrDist < minSquared;
+	return sqrDist < minSquared;
+}
+
+template<> bool CheckProspectLOS::check(ShipAiAgent* agent) const {
+	ManagedReference<ShipObject*> targetShip = nullptr;
+
+	if (agent->peekBlackboard("targetShipProspect"))
+		targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*> >();
+
+	if (targetShip == nullptr)
+		return false;
+
+	Locker locker(targetShip, agent);
+
+	return agent->checkLineOfSight(targetShip);
 }

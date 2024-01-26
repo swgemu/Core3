@@ -568,12 +568,7 @@ SpacePatrolPoint ShipAiAgentImplementation::getFinalPosition() {
 
 bool ShipAiAgentImplementation::isInRangePosition(const Vector3& position, float radius) {
 	const Vector3 thisPosition = getPosition();
-
-	if (position == thisPosition) {
-		return true;
-	}
-
-	return thisPosition.squaredDistanceTo(position) <= (radius * radius);
+	return thisPosition.squaredDistanceTo(position) < (radius * radius);
 }
 
 SpacePatrolPoint ShipAiAgentImplementation::getNextFollowPosition(ShipObject* followShip) {
@@ -687,6 +682,8 @@ int ShipAiAgentImplementation::setDestination() {
 		info(true) << getDisplayedName() << " - ID: " << getObjectID() << "  setDestination - stateCopy: " << stateCopy << "  Patrol Point Size:" << getPatrolPointSize();
 	}
 #endif // DEBUG_SHIP_AI
+
+	// info(true) << getDisplayedName() << " - ID: " << getObjectID() << "  setDestination - stateCopy: " << stateCopy << "  Patrol Point Size:" << getPatrolPointSize();
 
 	if (patrolPoints.size() > 20) {
 		info() << "Patrol points have overflowed. Total points: " << patrolPoints.size();
@@ -1570,6 +1567,28 @@ bool ShipAiAgentImplementation::isAttackableBy(CreatureObject* attacker) {
 	return true;
 }
 
+bool ShipAiAgentImplementation::validateTarget() {
+	ManagedReference<ShipObject*> targetShip = getTargetShipObject().get();
+
+	return validateTarget(targetShip);
+}
+
+bool ShipAiAgentImplementation::validateTarget(ShipObject* targetShip) {
+	if (targetShip == nullptr) {
+		// info("validateTarget target == nullptr", true);
+		return false;
+	}
+
+	if (!targetShip->isAttackableBy(asShipAiAgent()) || !targetShip->isInRange3d(asShipAiAgent(), ShipAiAgent::MAX_ATTACK_DISTANCE)) {
+		//info("validateTarget FALSE attackable checks", true);
+		return false;
+	}
+
+	// info(true) << "validateTarget returning true";
+
+	return true;
+}
+
 /*
 
 	Various Management Functions
@@ -1661,6 +1680,10 @@ void ShipAiAgentImplementation::removeShipFlag(unsigned int flag) {
 
 Vector3 ShipAiAgentImplementation::getCurrentDirectionVector() {
 	return currentDirection;
+}
+
+bool ShipAiAgentImplementation::checkLineOfSight(SceneObject* obj) {
+	return CollisionManager::checkLineOfSight(asShipAiAgent(), obj);
 }
 
 void ShipAiAgentImplementation::handleException(const Exception& ex, const String& context) {
