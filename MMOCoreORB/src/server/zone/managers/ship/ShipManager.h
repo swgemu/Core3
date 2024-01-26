@@ -19,6 +19,7 @@
 #include "server/zone/objects/ship/ShipMissileData.h"
 #include "server/zone/objects/ship/ShipCountermeasureData.h"
 #include "server/zone/objects/ship/components/ShipChassisComponent.h"
+#include "server/zone/objects/ship/ShipTurretData.h"
 
 class ShipManager : public Singleton<ShipManager>, public Object, public Logger {
 protected:
@@ -32,6 +33,7 @@ protected:
 
 	HashTable<uint32, Reference<ShipMissileData*>> missileData;
 	HashTable<uint32, Reference<ShipCountermeasureData*>> countermeasureData;
+	VectorMap<String, VectorMap<uint32, Reference<ShipTurretData*>>> turretData;
 
 	VectorMap<String, Vector3> hyperspaceLocations;
 	VectorMap<String, String> hyperspaceZones;
@@ -44,6 +46,9 @@ protected:
 	void loadShipAppearanceData();
 	void loadShipMissileData();
 	void loadShipCountermeasureData();
+	void loadShipCollisionData();
+	void loadShipTurretIffData();
+	void loadShipTurretLuaData();
 
 public:
 	enum {
@@ -103,21 +108,16 @@ public:
 		return shipAppearanceData.get(shipName);
 	}
 
+	const ShipTurretData* getShipTurretData(const String& shipName, uint32 slot) const {
+		return turretData.get(shipName).get(slot);
+	}
+
 	const ShipCollisionData* getCollisionData(ShipObject* ship) {
-		auto name = ship->getShipChassisName();
-		auto collisionData = shipCollisionData.get(name);
-
-		if (collisionData == nullptr) {
-			auto chassisData = getChassisData(name);
-			auto shipTemplate = ship->getObjectTemplate();
-
-			if (shipTemplate != nullptr && chassisData != nullptr) {
-				collisionData = new ShipCollisionData(shipTemplate, chassisData);
-				shipCollisionData.put(name, collisionData);
-			}
+		if (ship == nullptr) {
+			return nullptr;
 		}
 
-		return collisionData;
+		return shipCollisionData.get(ship->getShipChassisName());
 	}
 
 	const ShipMissileData* getMissileData(uint32 ammoType) const {

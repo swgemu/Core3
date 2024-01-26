@@ -76,18 +76,21 @@ public:
 					iffStream->openChunk('HPNT');
 					Matrix4 transform;
 					transform[0][0] = iffStream->getFloat();
-					transform[1][0] = iffStream->getFloat();
-					transform[2][0] = iffStream->getFloat();
+					transform[0][1] = iffStream->getFloat();
+					transform[0][2] = iffStream->getFloat();
+
 					transform[3][0] = iffStream->getFloat();
 
-					transform[0][1] = iffStream->getFloat();
+					transform[1][0] = iffStream->getFloat();
 					transform[1][1] = iffStream->getFloat();
-					transform[2][1] = iffStream->getFloat();
+					transform[1][2] = iffStream->getFloat();
+
 					transform[3][1] = iffStream->getFloat();
 
-					transform[0][2] = iffStream->getFloat();
-					transform[1][2] = iffStream->getFloat();
+					transform[2][0] = iffStream->getFloat();
+					transform[2][1] = iffStream->getFloat();
 					transform[2][2] = iffStream->getFloat();
+
 					transform[3][2] = iffStream->getFloat();
 
 					String name;

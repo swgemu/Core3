@@ -41,6 +41,9 @@ void ShipManager::initialize() {
 	loadShipAppearanceData();
 	loadShipMissileData();
 	loadShipCountermeasureData();
+	loadShipCollisionData();
+	loadShipTurretIffData();
+	loadShipTurretLuaData();
 }
 
 void ShipManager::loadHyperspaceLocations() {
@@ -260,6 +263,131 @@ void ShipManager::loadShipCountermeasureData() {
 	delete iffStream;
 
 	info(true) << "Ship Countermeasure Data Loading Complete - Total: " << countermeasureData.size();
+}
+
+void ShipManager::loadShipTurretIffData() {
+	info(true) << "Loading Ship Turret Iff Data";
+
+	IffStream* iffStream = DataArchiveStore::instance()->openIffFile("datatables/space/ship_turret.iff");
+
+	if (iffStream == nullptr) {
+		info(true) << "datatables/space/ship_turret.iff could not be found.";
+		return;
+	}
+
+	try {
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+		if (row == nullptr || row->getCellsSize() == 0) {
+			continue;
+		}
+
+		Reference<ShipTurretData*> data = new ShipTurretData();
+		data->readObject(row);
+
+		String chassisName = data->getChassisName();
+
+		if (!turretData.contains(chassisName)) {
+			turretData.put(chassisName, VectorMap<uint32, Reference<ShipTurretData*>>());
+		}
+
+		auto& entry = turretData.get(chassisName);
+		entry.put(data->getWeaponIndex(), data);
+	}
+
+	} catch (Exception& e) {
+		e.printStackTrace();
+	}
+
+	delete iffStream;
+
+	info(true) << "Ship Turret Iff Data Loading Complete - Total: " << turretData.size();
+}
+
+void ShipManager::loadShipTurretLuaData() {
+	info(true) << "Loading Ship Turret Lua Data";
+
+	Lua* lua = new Lua();
+	lua->init();
+
+	if (lua->runFile("scripts/managers/space/ship_turret.lua")) {
+		LuaObject luaData = lua->getGlobalObject("turretData");
+
+		if (luaData.isValidTable() && luaData.getTableSize() > 0) {
+			for (int i = 1; i <= luaData.getTableSize(); ++i) {
+				auto row = luaData.getObjectAt(i);
+
+				if (row.isValidTable() && row.getTableSize() > 0) {
+					String chassisName = row.getStringAt(1);
+
+					if (chassisName != "") {
+						Reference<ShipTurretData*> data = new ShipTurretData();
+						data->readObject(&row);
+
+						if (!turretData.contains(chassisName)) {
+							turretData.put(chassisName, VectorMap<uint32, Reference<ShipTurretData*>>());
+						}
+
+						auto& entry = turretData.get(chassisName);
+						entry.put(data->getWeaponIndex(), data);
+					}
+				}
+
+				row.pop();
+			}
+		}
+	}
+
+	delete lua;
+
+	info(true) << "Ship Turret Lua Data Loading Complete - Total: " << turretData.size();
+}
+
+void ShipManager::loadShipCollisionData() {
+	info(true) << "Loading Ship Collision Data";
+
+	IffStream* iffStream = DataArchiveStore::instance()->openIffFile("datatables/space/ship_chassis.iff");
+
+	if (iffStream == nullptr) {
+		fatal("datatables/space/ship_chassis.iff could not be found.");
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+		if (row == nullptr || row->getCellsSize() == 0) {
+			continue;
+		}
+
+		DataTableCell* cell = row->getCell(0);
+		if (cell == nullptr) {
+			continue;
+		}
+
+		String key = cell->toString();
+		if (key == "") {
+			continue;
+		}
+
+		auto shipData = getChassisData(key);
+		if (shipData == nullptr) {
+			continue;
+		}
+
+		Reference<ShipCollisionData*> data = new ShipCollisionData(key, shipData);
+		shipCollisionData.put(key, data);
+	}
+
+	delete iffStream;
+
+	info(true) << "Ship Collision Data Loading Complete - Total: " << shipCollisionData.size();
 }
 
 void ShipManager::loadShipComponentObjects(ShipObject* ship) {
