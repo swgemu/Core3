@@ -133,7 +133,8 @@ class ShipAiAgent extends FighterShipObject {
 
 	public static final int BEHAVIORINTERVAL = 200; // msec
 
-	public static final float DEFAULTAGGRORADIUS = 512.f;
+	public static final float DEFAULTAGGRORADIUS = 768.f;
+	public static final float MAX_ATTACK_DISTANCE = 1280.f;
 
 	public static final int OBLIVIOUS = 0;
 	public static final int WATCHING = 1;
@@ -584,6 +585,8 @@ class ShipAiAgent extends FighterShipObject {
 
 	public native boolean isTargetForward();
 
+	public native boolean checkLineOfSight(SceneObject obj);
+
 	public native void sendDebugMessage();
 
 	public native void sendDebugPath();
@@ -591,6 +594,12 @@ class ShipAiAgent extends FighterShipObject {
 	public float getCurrentSpeed() {
 		return currentSpeed;
 	}
+
+	@preLocked
+	public native boolean validateTarget();
+
+	@preLocked
+	public native boolean validateTarget(ShipObject targetShip);
 
 	public native boolean fireWeaponAtTarget(ShipObject targetShip, unsigned int slot, unsigned int targetSlot);
 

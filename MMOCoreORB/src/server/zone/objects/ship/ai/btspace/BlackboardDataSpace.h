@@ -14,7 +14,7 @@ namespace ship {
 namespace ai {
 namespace btspace {
 
-enum DataValSpace : uint32 { DEFAULT, FLYING, RANDOM, PLAYER, SHIPAGENT, BADVAL };
+enum DataValSpace : uint32 { DEFAULT, FLYING, RANDOM, PLAYER, CREATURE, SHIP, SHIPAGENT, BADVAL };
 
 template <typename T>
 using BlackboardType = typename std::decay<T>::type;

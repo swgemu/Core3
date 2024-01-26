@@ -274,6 +274,7 @@ private:
 		_REGISTERSPACELEAF(CheckEnginesDisabled);
 		_REGISTERSPACELEAF(CheckEvadeChance);
 		_REGISTERSPACELEAF(CheckRetreat);
+		_REGISTERSPACELEAF(CheckProspectLOS);
 
 		// action behaviors
 		_REGISTERSPACELEAF(DummySpace);
