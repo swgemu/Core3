@@ -39,7 +39,9 @@ public:
 		COLLIDABLETYPE = 1 << 2,
 		INSTALLATIONTYPE = 1 << 3,
 		STRUCTURETYPE = 1 << 4,
-		MAXTYPES = STRUCTURETYPE
+		SHIPTYPE = 1 << 5,
+		PLAYERSHIPTYPE = 1 << 6,
+		MAXTYPES = PLAYERSHIPTYPE
 	};
 
 	CloseObjectsVector();
@@ -102,6 +104,18 @@ public:
 		if (flags & STRUCTURETYPE) {
 			flags = flags & ~STRUCTURETYPE;
 			buf << sep << "STRUCTURE";
+			sep = ", ";
+		}
+
+		if (flags & SHIPTYPE) {
+			flags = flags & ~SHIPTYPE;
+			buf << sep << "SHIP";
+			sep = ", ";
+		}
+
+		if (flags & PLAYERSHIPTYPE) {
+			flags = flags & ~PLAYERSHIPTYPE;
+			buf << sep << "PLAYERSHIP";
 			sep = ", ";
 		}
 

@@ -352,25 +352,46 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
-		if (obj == nullptr || !obj->isCreatureObject())
+		if (obj == nullptr || (!obj->isCreatureObject() && !obj->isShipObject()))
 			continue;
 
-		CreatureObject* creo = obj->asCreatureObject();
+		auto tanO = obj->asTangibleObject();
 
-		if (creo->isPlayerCreature())
-			sendPvpStatusTo(creo);
+		if (tanO == nullptr)
+			continue;
+
+		if (tanO->isPlayerCreature())
+			sendPvpStatusTo(tanO->asCreatureObject());
 
 		if (thisCreo != nullptr && thisCreo->isPlayerCreature())
-			creo->sendPvpStatusTo(thisCreo);
+			tanO->sendPvpStatusTo(thisCreo);
 	}
+
+	if (thisCreo == nullptr)
+		return;
 
 	closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::INSTALLATIONTYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
-		if (obj != nullptr && obj->isInstallationObject() && thisCreo != nullptr) {
+		if (obj != nullptr && obj->isInstallationObject()) {
 			obj->asTangibleObject()->sendPvpStatusTo(thisCreo);
+		}
+	}
+
+	closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::SHIPTYPE);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
+
+		if (obj == nullptr || !obj->isShipObject())
+			continue;
+
+		auto ship = obj->asShipObject();
+
+		if (ship != nullptr) {
+			ship->sendPvpStatusTo(thisCreo);
 		}
 	}
 }

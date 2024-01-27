@@ -1162,10 +1162,31 @@ void ShipObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 }
 
 bool ShipObjectImplementation::isAggressiveTo(TangibleObject* object) {
+	if (object == nullptr)
+		return false;
+
 	if (!isShipLaunched())
 		return false;
 
-	return object->isAttackableBy(asShipObject()) && faction != Factions::FACTIONNEUTRAL;
+	auto thisOwner = getOwner().get();
+
+ 	if (thisOwner != nullptr) {
+		if (!object->isShipAiAgent() && object->isShipObject()) {
+			auto objectShip = object->asShipObject();
+
+			if (objectShip != nullptr) {
+				auto attackerOwner = objectShip->getOwner().get();
+
+				// Owner of the other player ship for pvp checks
+				if (attackerOwner != nullptr)
+					return thisOwner->isAttackableBy(attackerOwner);
+			}
+		} else {
+			thisOwner->isAggressiveTo(object);
+		}
+	}
+
+	return false;
 }
 
 // This will be called for non AI Ships. ShipAgents use their abstracted function in ShipAiAgent
@@ -1179,22 +1200,30 @@ bool ShipObjectImplementation::isAttackableBy(TangibleObject* attackerTano) {
 		return false;
 	}
 
-	if (attackerTano->isCreatureObject())
-		return isAttackableBy(attackerTano->asCreatureObject());
-	else if (!attackerTano->isShipAiAgent() && attackerTano->isShipObject()) {
-		auto attackerShip = attackerTano->asShipObject();
+	auto thisOwner = getOwner().get();
 
-		if (attackerShip != nullptr) {
-			auto attackerOwner = attackerShip->getOwner().get();
+	if (thisOwner != nullptr) {
+		// Player ship attacking another player ship. Pass the owners to the CreO isAttackable Check
+		if (!attackerTano->isShipAiAgent() && attackerTano->isShipObject()) {
+			auto attackerShip = attackerTano->asShipObject();
 
-			// Owner of the other player ship for pvp checks
-			if (attackerOwner != nullptr)
-				return isAttackableBy(attackerOwner);
+			if (attackerShip != nullptr) {
+				auto attackerOwner = attackerShip->getOwner().get();
+
+				// Owner of the other player ship for pvp checks
+				if (attackerOwner != nullptr)
+					return thisOwner->isAttackableBy(attackerOwner);
+			}
+		} else {
+			// Attacking object is a TanO, likely another ship. Pass to CreO isAttackableBy TanO check
+			thisOwner->isAttackableBy(attackerTano);
 		}
+	} else if (attackerTano->isCreatureObject()) {
+		return isAttackableBy(attackerTano->asCreatureObject());
 	}
 
 	/*
-		Remaining Checks should be ShipAgent attacking Player (this)
+		Remaining Checks should not be hit but just in case we will run faction checks
 	*/
 
 	// info(true) << "ShipObjectImplementation::isAttackableBy TANGIBLE -- attacking object: " << attackerTano->getDisplayedName();
@@ -1203,30 +1232,36 @@ bool ShipObjectImplementation::isAttackableBy(TangibleObject* attackerTano) {
 	int tanoFaction = attackerTano->getFaction();
 
 	// GCW Faction Checks
-	if (thisFaction > 0 && tanoFaction > 0) {
+	if (thisFaction > 0 && tanoFaction > 0 && thisFaction == tanoFaction) {
 		// Same faction, unable to attack
-		if (thisFaction == tanoFaction)
-			return false;
-
-		// TODO: Add more checks for pvp etc
-
+		return false;
 	}
 
-	// info(true) << "ShipObjectImplementation::isAttackableBy TANGIBLE == TRUE";
+	// Attacker is factionally aligned, we are not
+	if (thisFaction == 0 && tanoFaction > 0)
+		return false;
 
-	return tanoFaction == 0;
+	// info(true) << "ShipObjectImplementation::isAttackableBy TANGIBLE == TRUE -- attacking object: " << attackerTano->getDisplayedName();
+
+	return true;
 }
 
 bool ShipObjectImplementation::isAttackableBy(CreatureObject* creature) {
+	if (creature == nullptr)
+		return false;
+
 	// info(true) << "ShipObjectImplementation::isAttackableBy CREATURE -- attacking creature: " << creature->getDisplayedName();
 
 	if (!isShipLaunched())
 		return false;
 
-	// This should be our pvp checks
+	auto owner = getOwner().get();
 
+	// This should handle most of our pvp checks, using the CreO isAttackable checks
+	if (owner != nullptr)
+		return owner->isAttackableBy(creature);
 
-	// info(true) << "ShipObjectImplementation::isAttackableBy CREATURE == TRUE";
+	// info(true) << "ShipObjectImplementation::isAttackableBy CREATURE == TRUE -- attacking creature: " << creature->getDisplayedName();
 
 	return true;
 }
@@ -1508,4 +1543,13 @@ void ShipObjectImplementation::sendMembersBaseMessage(BaseMessage* message) {
 
 bool ShipObjectImplementation::isShipLaunched() {
 	return getLocalZone() != nullptr;
+}
+
+int ShipObjectImplementation::getReceiverFlags() const {
+	int type = CloseObjectsVector::SHIPTYPE;
+
+	if (ownerID > 0)
+		type = type | CloseObjectsVector::PLAYERSHIPTYPE;
+
+	return type | TangibleObjectImplementation::getReceiverFlags();
 }
