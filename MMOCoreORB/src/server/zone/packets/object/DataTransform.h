@@ -336,6 +336,8 @@ public:
 		bool sendPackets = deltaTime > Transform::SYNCDELTA || creature->getParentID() == 0;
 
 		creO->setMovementCounter(transform.getMoveCount());
+		creO->setSyncStamp(transform.getTimeStamp());
+
 		creO->updateZone(lightUpdate, false);
 		creO->updateLocomotion();
 

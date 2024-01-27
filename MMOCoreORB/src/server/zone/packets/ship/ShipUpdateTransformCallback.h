@@ -183,16 +183,13 @@ public:
 			return updateError(pilot, "!isPositionValid", true);
 		}
 
-		ship->setSyncStamp(counter);
+		pilot->setSyncStamp(counter);
 
 		if (isPositionUpdate(ship)) {
 			updatePosition(ship, pilot);
 		} else if (isStaticUpdate(ship)) {
 			updateStatic(ship, pilot);
 		}
-
-		auto data = new ShipUpdateTransformMessage(ship, ship->getPosition(), velocity, yawRate, pitchRate, rollRate, counter);
-		pilot->sendMessage(data);
 
 		ghost->setClientLastMovementStamp(counter);
 	}
@@ -343,32 +340,20 @@ public:
 		shipCov->safeCopyReceiversTo(closePlayers, CloseObjectsVector::PLAYERTYPE);
 
 		for (int i = 0; i < closePlayers.size(); ++i) {
-			auto targetCreo = closePlayers.get(i).castTo<CreatureObject*>();
+			auto playerEntry = closePlayers.get(i).castTo<CreatureObject*>();
 
-			if (targetCreo == nullptr || targetCreo->getObjectID() == pilot->getObjectID()) {
+			if (playerEntry == nullptr) {
 				continue;
 			}
 
-			auto targetRoot = targetCreo->getRootParent();
-
-			if (targetRoot == nullptr || !targetRoot->isShipObject()) {
-				continue;
-			}
-
-			auto targetShip = targetRoot->asShipObject();
-
-			if (targetShip == nullptr) {
-				continue;
-			}
-
-			uint32 syncStamp = targetShip->getSyncStamp();
+			uint32 syncStamp = playerEntry->getSyncStamp();
 
 			if (velocity.getSpeed() > 0.f) {
 				auto data = new ShipUpdateTransformMessage(ship, position, velocity, yawRate, pitchRate, rollRate, syncStamp);
-				targetCreo->sendMessage(data);
+				playerEntry->sendMessage(data);
 			} else {
 				auto data = new ShipUpdateTransformMessage(ship, syncStamp);
-				targetCreo->sendMessage(data);
+				playerEntry->sendMessage(data);
 			}
 		}
 	}
