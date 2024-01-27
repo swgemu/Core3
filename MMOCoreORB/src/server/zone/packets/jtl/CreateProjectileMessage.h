@@ -43,7 +43,7 @@ public:
 		insertInt(sequence);
 	}
 
-	CreateProjectileMessage(ShipObject* ship, ShipObject* receiver, const ShipProjectile* projectile) {
+	CreateProjectileMessage(ShipObject* ship, const ShipProjectile* projectile, uint32 syncStamp = 0) {
 		insertShort(0x12);
 		insertInt(0xB88AF9A5);
 
@@ -62,7 +62,7 @@ public:
 		writeSignedShort(dirScaled.getZ());
 		writeSignedShort(dirScaled.getY());
 
-		insertInt(receiver->getSyncStamp());
+		insertInt(syncStamp ? syncStamp : ship->getSyncStamp());
 	}
 };
 
@@ -140,31 +140,28 @@ public:
 			return;
 		}
 
+		pilot->setSyncStamp(sequence);
+
 		if (data->isCountermeasure()) {
-			return launchCountermeasure(ship, pilot, weapon, data);
+			launchCountermeasure(ship, pilot, weapon, data);
+		} else if (data->isMissile()) {
+			launchMissile(ship, pilot, weapon, data);
+		} else {
+			float currentEnergy = ship->getCapacitorEnergy();
+			float cost = weapon->getEnergyPerShot();
+
+			if (currentEnergy >= cost) {
+				Locker lock(pilot);
+				Locker cross(ship, pilot);
+
+				ship->setCapacitorEnergy(currentEnergy - cost, true);
+
+				auto projectile = new ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), 1.f, System::getMiliTime());
+				projectile->readProjectileData(data);
+
+				SpaceCombatManager::instance()->addProjectile(ship, projectile);
+			}
 		}
-
-		if (data->isMissile()) {
-			return launchMissile(ship, pilot, weapon, data);
-		}
-
-		float currentEnergy = ship->getCapacitorEnergy();
-		float cost = weapon->getEnergyPerShot();
-
-		if (currentEnergy < cost) {
-			return;
-		}
-
-		Locker lock(pilot);
-		Locker cross(ship, pilot);
-
-		ship->setSyncStamp(sequence);
-		ship->setCapacitorEnergy(currentEnergy - cost, true);
-
-		auto projectile = new ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), 1.f, System::getMiliTime());
-		projectile->readProjectileData(data);
-
-		SpaceCombatManager::instance()->addProjectile(ship, projectile);
 	}
 
 	void launchCountermeasure(ShipObject* ship, CreatureObject* pilot, ShipWeaponComponent* weapon, const ShipProjectileData* data) {
