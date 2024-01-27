@@ -1250,12 +1250,6 @@ bool ShipAiAgentImplementation::fireWeaponAtTarget(ShipObject* targetShip, uint3
 		return false;
 	}
 
-	auto combatManager = SpaceCombatManager::instance();
-
-	if (combatManager == nullptr) {
-		return false;
-	}
-
 	const Vector3& targetPosition = getInterceptPosition(targetShip, projectileData->getSpeed(), targetSlot);
 
 	Vector3 difference = targetPosition - getPosition();
@@ -1276,7 +1270,7 @@ bool ShipAiAgentImplementation::fireWeaponAtTarget(ShipObject* targetShip, uint3
 	} else {
 		auto projectile = new ShipProjectile(asShipAiAgent(), slot - Components::WEAPON_START, projectileData->getIndex(), 0, getPosition(), direction * 7800.f, 500, 500, 1.f, System::getMiliTime());
 		projectile->readProjectileData(projectileData);
-		combatManager->addProjectile(asShipAiAgent(), projectile);
+		SpaceCombatManager::instance()->addProjectile(asShipAiAgent(), projectile);
 	}
 
 	return true;
@@ -1292,12 +1286,6 @@ bool ShipAiAgentImplementation::fireTurretAtTarget(ShipObject* targetShip, uint3
 	auto shipManager = ShipManager::instance();
 
 	if (shipManager == nullptr) {
-		return false;
-	}
-
-	auto combatManager = SpaceCombatManager::instance();
-
-	if (combatManager == nullptr) {
 		return false;
 	}
 
@@ -1378,7 +1366,7 @@ bool ShipAiAgentImplementation::fireTurretAtTarget(ShipObject* targetShip, uint3
 	auto projectile = new ShipProjectile(asShipAiAgent(), slot - Components::WEAPON_START, projectileData->getIndex(), 0, turretGlobal, targetGlobal * 7800.f, 500, 500, 1.f, System::getMiliTime());
 	projectile->readProjectileData(projectileData);
 
-	combatManager->addProjectile(asShipAiAgent(), projectile);
+	SpaceCombatManager::instance()->addProjectile(asShipAiAgent(), projectile);
 
 	return true;
 }
