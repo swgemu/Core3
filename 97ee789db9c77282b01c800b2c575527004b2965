@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c8b436cb_1e5a9bef",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-01-27T03:53:33Z",
+      "side": 1,
+      "message": "The Rori Station will not list the Rebel landing location until it is added and enabled for each player based on their faction and quest status. The stations missions are not implemented at yet, so neither are the checks for the special landing locations. The rebel point naming can stay as it is.\n\nThe Restuss point is incorrect, but your fix should match the PTP from above - name \u003d \"Restuss Starport\", x \u003d 5340, z \u003d 80, y \u003d 5734",
+      "parentUuid": "d9184b62_3728d557",
+      "revId": "97ee789db9c77282b01c800b2c575527004b2965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e1dec2d_a56b3c9a",
         "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Similar to the comment on line 388. Even with this change, the Tatooine space station lists the landing option as \"Mos Entha Starport\" rather than \"Spaceport\". Without this change, players are unable to use the \"Travel\" button to travel to visit Mos Entha, as LaunchIntoSpaceCommand.h requires the keys from the jtlTravelPoints to match the planetTravelPoints.",
       "parentUuid": "7e1dec2d_a56b3c9a",
+      "revId": "97ee789db9c77282b01c800b2c575527004b2965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "238d1fda_1ce8c378",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-01-27T03:53:33Z",
+      "side": 1,
+      "message": "Then proper fix would be to change the PTP name key on line 559 so they match. This would also make it match the one in space_manager, which is correct. See space_manager.lua line 83. I\u0027m not seeing that name referenced anywhere in the client so likely was a copy paste issue or just set improperly when committed initially years ago.",
+      "parentUuid": "b4367cf0_7d9ef335",
       "revId": "97ee789db9c77282b01c800b2c575527004b2965",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
