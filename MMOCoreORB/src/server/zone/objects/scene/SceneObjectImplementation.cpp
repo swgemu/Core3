@@ -2455,3 +2455,14 @@ float SceneObjectImplementation::getOutOfRangeDistance() {
 
 	return TreeEntryImplementation::getOutOfRangeDistance();
 }
+
+void SceneObjectImplementation::setSyncStamp(uint32 value) {
+	syncTime = System::getMiliTime();
+	syncStamp = value;
+	movementCounter += 1;
+}
+
+uint32 SceneObjectImplementation::getSyncStamp() {
+	long deltaTime = System::getMiliTime() - syncTime;
+	return syncStamp + deltaTime;
+}
