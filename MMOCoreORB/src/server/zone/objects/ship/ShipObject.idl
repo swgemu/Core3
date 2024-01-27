@@ -109,8 +109,6 @@ class ShipObject extends TangibleObject {
 
 	protected int chassisLevel;
 
-	protected unsigned long syncTime;
-
 	protected float boundingRadius;
 
 	// internal velocity values
@@ -1008,8 +1006,6 @@ class ShipObject extends TangibleObject {
 		controlDeviceID = oid;
 	}
 
-	public native void setSyncStamp(unsigned int value);
-
 	@local
 	public native void setRotationMatrix(@dereferenced final Quaternion value);
 
@@ -1630,8 +1626,6 @@ class ShipObject extends TangibleObject {
 
 	@preLocked
 	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-
-	public native unsigned int getSyncStamp();
 
 	public native CreatureObject getPilot();
 

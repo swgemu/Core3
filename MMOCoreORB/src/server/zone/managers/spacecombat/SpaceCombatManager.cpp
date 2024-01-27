@@ -22,28 +22,16 @@ void SpaceCombatManager::broadcastProjectile(ShipObject* ship, const ShipProject
 	cov->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		auto player = closeObjects.get(i).castTo<CreatureObject*>();
+		auto playerEntry = closeObjects.get(i).castTo<CreatureObject*>();
 
-		if (player == nullptr) {
+		if (playerEntry == nullptr) {
 			continue;
 		}
 
-		auto rootParent = player->getRootParent();
+		uint32 syncStamp = playerEntry->getSyncStamp();
 
-		if (rootParent == nullptr || !rootParent->isShipObject()) {
-			continue;
-		}
-
-		auto recieverShip = rootParent->asShipObject();
-
-		if (recieverShip == nullptr) {
-			continue;
-		}
-
-		uint32 sequence = recieverShip->getSyncStamp();
-
-		auto message = new CreateProjectileMessage(ship, recieverShip, projectile);
-		player->sendMessage(message);
+		auto message = new CreateProjectileMessage(ship, projectile, syncStamp);
+		playerEntry->sendMessage(message);
 	}
 }
 

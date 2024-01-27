@@ -403,6 +403,8 @@ public:
 		bool sendPackets = deltaTime > Transform::SYNCDELTA || creO->getParentID() != 0;
 
 		creO->setMovementCounter(transform.getMoveCount());
+		creO->setSyncStamp(transform.getTimeStamp());
+
 		creO->updateZoneWithParent(parent, lightUpdate, false);
 		creO->updateLocomotion();
 

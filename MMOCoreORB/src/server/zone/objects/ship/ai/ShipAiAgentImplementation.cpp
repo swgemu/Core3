@@ -1056,11 +1056,11 @@ bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
 	// Set the ships next position
 	setNextPosition();
 
-	uint32 syncStamp = getMovementCounter() + BEHAVIORINTERVAL;
+	uint32 moveCount = getMovementCounter() + BEHAVIORINTERVAL;
 	Quaternion direction = *unitVectorToQuaternion();
 
 	// Update Zone with position
-	setMovementCounter(syncStamp);
+	setMovementCounter(moveCount);
 
 	setDirection(direction);
 	setRotationMatrix(direction);
@@ -1209,28 +1209,16 @@ void ShipAiAgentImplementation::broadcastTransform(const Vector3& position) {
 	shipCov->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		auto scno = closeObjects.get(i).castTo<SceneObject*>();
+		auto playerEntry = closeObjects.get(i).castTo<SceneObject*>();
 
-		if (scno == nullptr || !scno->isPlayerCreature()) {
+		if (playerEntry == nullptr) {
 			continue;
 		}
 
-		auto targetRoot = scno->getRootParent();
+		uint32 syncStamp = playerEntry->getSyncStamp();
 
-		if (targetRoot == nullptr || !targetRoot->isShipObject()) {
-			continue;
-		}
-
-		auto targetShip = targetRoot->asShipObject();
-
-		if (targetShip == nullptr) {
-			continue;
-		}
-
-		uint32 sequence = targetShip->getSyncStamp();
-
-		auto data = new ShipUpdateTransformMessage(asShipObject(), thisPosition, velocity, yaw, pitch, roll, sequence);
-		scno->sendMessage(data);
+		auto data = new ShipUpdateTransformMessage(asShipObject(), thisPosition, velocity, yaw, pitch, roll, syncStamp);
+		playerEntry->sendMessage(data);
 	}
 }
 

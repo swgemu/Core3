@@ -1404,16 +1404,6 @@ void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedOb
 	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-void ShipObjectImplementation::setSyncStamp(uint32 value) {
-	syncTime = System::getMiliTime();
-	movementCounter = value;
-}
-
-uint32 ShipObjectImplementation::getSyncStamp() {
-	long deltaTime = System::getMiliTime() - syncTime;
-	return movementCounter + deltaTime;
-}
-
 CreatureObject* ShipObjectImplementation::getPilot() {
 	auto chair = getPilotChair().get();
 

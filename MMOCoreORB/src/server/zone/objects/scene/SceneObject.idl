@@ -157,6 +157,10 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 
 	protected transient boolean debuggingRegions;
 
+	protected transient unsigned long syncTime;
+
+	protected transient unsigned long syncStamp;
+
 	/**
 	 * SceneObject constructor, used to initialize the object.
 	 * @pre { templateData is a valid SharedObjectTemplate LuaObject that contains the necessary values to initialize SceneObject }
@@ -2373,4 +2377,9 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	public abstract boolean checkInConversationRange(SceneObject target) {
 		return false;
 	}
+
+	@local
+	public native abstract void setSyncStamp(unsigned int value);
+
+	public native abstract unsigned int getSyncStamp();
 }
