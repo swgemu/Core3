@@ -1704,4 +1704,7 @@ class ShipObject extends TangibleObject {
 	public native void sendMembersBaseMessage(BaseMessage message);
 
 	public native boolean isShipLaunched();
+
+	@read
+	public native int getReceiverFlags();
 }

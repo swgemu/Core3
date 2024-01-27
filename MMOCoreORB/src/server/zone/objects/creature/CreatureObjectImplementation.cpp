@@ -3322,7 +3322,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 	if (isInvisible() || isEventPerk())
 		return false;
 
-	// info(true) << "CreatureObjectImplementation::isAttackableBy Creature Check -- Object ID = " << getObjectID() << " by attacking Creature ID = " << creature->getObjectID();
+	// info(true) << "CreatureObjectImplementation::isAttackableBy Creature Check -- " << getDisplayedName() << " ID: " << getObjectID() << " by attacking Creature: " << creature->getDisplayedName() << " ID: " << creature->getObjectID();
 
 	if (!bypassDeadCheck && isDead())
 		return false;
@@ -3479,7 +3479,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 		}
 	}
 
-	// info(true) << "Creo isAttackable check return true -- Object ID = " << getObjectID();
+	// info(true) << "Creo isAttackable check return TRUE -- " << getDisplayedName() << " ID: " << getObjectID() << " by attacking Creature: " << creature->getDisplayedName() << " ID: " << creature->getObjectID();
 
 	return true;
 }
