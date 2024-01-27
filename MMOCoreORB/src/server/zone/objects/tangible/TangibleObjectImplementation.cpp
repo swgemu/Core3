@@ -352,16 +352,19 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
-		if (obj == nullptr || !obj->isCreatureObject())
+		if (obj == nullptr || (!obj->isCreatureObject() && !obj->isShipObject()))
 			continue;
 
-		CreatureObject* creo = obj->asCreatureObject();
+		auto tanO = obj->asTangibleObject();
 
-		if (creo->isPlayerCreature())
-			sendPvpStatusTo(creo);
+		if (tanO == nullptr)
+			continue;
+
+		if (tanO->isPlayerCreature())
+			sendPvpStatusTo(tanO->asCreatureObject());
 
 		if (thisCreo != nullptr && thisCreo->isPlayerCreature())
-			creo->sendPvpStatusTo(thisCreo);
+			tanO->sendPvpStatusTo(thisCreo);
 	}
 
 	closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::INSTALLATIONTYPE);
