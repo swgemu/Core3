@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "93291cd1_d84ed776",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 6076
+      },
+      "writtenOn": "2024-01-27T05:28:20Z",
+      "side": 1,
+      "message": "Patchset 2 has the correct coordinates for Restuss Starport.",
+      "parentUuid": "c8b436cb_1e5a9bef",
+      "revId": "97ee789db9c77282b01c800b2c575527004b2965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e1dec2d_a56b3c9a",
         "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
         "patchSetId": 1
@@ -105,6 +123,24 @@
       "revId": "97ee789db9c77282b01c800b2c575527004b2965",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d1ef88_df401c3f",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 6076
+      },
+      "writtenOn": "2024-01-27T05:28:20Z",
+      "side": 1,
+      "message": "Updated both travel points to \"Starport\" in Patchset 3.",
+      "parentUuid": "238d1fda_1ce8c378",
+      "revId": "97ee789db9c77282b01c800b2c575527004b2965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
