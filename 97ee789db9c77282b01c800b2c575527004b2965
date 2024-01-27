@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9184b62_3728d557",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 6076
+      },
+      "writtenOn": "2024-01-27T03:09:44Z",
+      "side": 1,
+      "message": "The first argument of jtlTravelPoints is a key, and is only used when a player uses the \"Travel\" button on a starship terminal. It is not involved in the landing process. Even with this change, the Rori space station does not list \"Rebel Outpost\" as a landing option.\n\nI\u0027ve submitted a patchset to fix the Restuss location.",
+      "parentUuid": "55e51ca2_37428dca",
+      "revId": "97ee789db9c77282b01c800b2c575527004b2965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e1dec2d_a56b3c9a",
         "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2024-01-26T16:52:16Z",
       "side": 1,
       "message": "This was correct as per client string \"s_69ffeefe\", \"Mos Entha Starport.\"",
+      "revId": "97ee789db9c77282b01c800b2c575527004b2965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4367cf0_7d9ef335",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 6076
+      },
+      "writtenOn": "2024-01-27T03:09:44Z",
+      "side": 1,
+      "message": "Similar to the comment on line 388. Even with this change, the Tatooine space station lists the landing option as \"Mos Entha Starport\" rather than \"Spaceport\". Without this change, players are unable to use the \"Travel\" button to travel to visit Mos Entha, as LaunchIntoSpaceCommand.h requires the keys from the jtlTravelPoints to match the planetTravelPoints.",
+      "parentUuid": "7e1dec2d_a56b3c9a",
       "revId": "97ee789db9c77282b01c800b2c575527004b2965",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
