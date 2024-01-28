@@ -220,7 +220,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 }
 
 bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
-	SpaceZone* spaceZone = dynamic_cast<SpaceZone*>(sceneObject);
+	SpaceZone* spaceZone = sceneObject->asSpaceZone();
 
 	if (object->isActiveArea())
 		return removeActiveArea(spaceZone, dynamic_cast<ActiveArea*>(object));

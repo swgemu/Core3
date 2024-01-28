@@ -89,32 +89,30 @@ bool OctTree::update(TreeEntry *obj) {
 		TreeNode* node = obj->getNode();
 
 		// Print COV
-		/*SceneObject* scno = cast<SceneObject*>(obj);
+		/*
+		SceneObject* scno = cast<SceneObject*>(obj);
 
 		Locker locker(obj);
 
-		if (scno->isShipObject()) {
-			SceneObject* pilot = scno->getSlottedObject("ship_pilot");
+		CloseObjectsVector* closeObjectsVector = scno->getCloseObjects();
+		Logger::console.info(true) << "\n\nClose objects for: " + scno->getDisplayedName();
 
-			CloseObjectsVector* vec = pilot->getCloseObjects();
-			Logger::console.info("Close objects for: " + pilot->getDisplayedName(), true);
+		if (closeObjectsVector != nullptr) {
+			for (int i = 0; i < closeObjectsVector->size(); ++i) {
+				TreeEntry* obj = closeObjectsVector->get(i);
 
-			if (vec != nullptr) {
-				for (int i = 0; i < vec->size(); ++i) {
-					TreeEntry* obj = vec->get(i);
+				if (obj == nullptr)
+					continue;
 
-					if (obj == nullptr)
-						continue;
+				SceneObject* sceneO = cast<SceneObject*>(obj);
 
-					SceneObject* sceneO = cast<SceneObject*>(obj);
-
-					if (sceneO != nullptr)
-						Logger::console.info(true) << "Object #" << i << ": " + sceneO->getDisplayedName();
-				}
+				if (sceneO != nullptr)
+					Logger::console.info(true) << "Object #" << i << ": " + sceneO->getDisplayedName();
 			}
+		}
 
-			Logger::console.info("End Close Objects", true);
-		}*/
+		Logger::console.info(true) << "End Close Objects \n\n";
+		*/
 
 		if (node == nullptr) {
 #ifdef OUTPUT_OT_ERRORS
@@ -436,7 +434,7 @@ bool OctTree::_update(const Reference<TreeNode*>& node, TreeEntry* obj) {
 }
 
 void OctTree::safeInRange(TreeEntry* obj, float range) {
-	CloseObjectsVector* cov = obj->getCloseObjects();
+	CloseObjectsVector* closeObjectsVector = obj->getCloseObjects();
 
 #ifdef NO_ENTRY_REF_COUNTING
 	SortedVector<TreeEntry*> closeObjectsCopy;
@@ -446,15 +444,12 @@ void OctTree::safeInRange(TreeEntry* obj, float range) {
 
 	Locker objLocker(obj);
 
-	if (cov != nullptr) {
-		closeObjectsCopy.removeAll(cov->size(), 50);
-		cov->safeCopyTo(closeObjectsCopy);
+	if (closeObjectsVector != nullptr) {
+		closeObjectsCopy.removeAll(closeObjectsVector->size(), 50);
+		closeObjectsVector->safeCopyTo(closeObjectsCopy);
 	}
 
-	int rangesq = range * range;
-
-	SceneObject* sceneO = cast<SceneObject*>(obj);
-	SceneObject* parent = sceneO->getParent().get();
+	int rangeSq = range * range;
 
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
@@ -472,44 +467,49 @@ void OctTree::safeInRange(TreeEntry* obj, float range) {
 
 	locker.release();
 
-	if (OctTree::doLog())
-		Logger::console.info(true) << "OctTree::safeInRange -- called - For: " << sceneO->getDisplayedName() << " Checking Range: " << range << " Total Objects: " << inRangeObjects.size();
+	if (OctTree::doLog()) {
+		SceneObject* sceneO = cast<SceneObject*>(obj);
+		Logger::console.info(true) << "OctTree::safeInRange -- " << sceneO->getDisplayedName() << " Range: " << range << " Objects: " << inRangeObjects.size();
+	}
 
 	for (int i = 0; i < inRangeObjects.size(); ++i) {
 		TreeEntry* nearEntry = inRangeObjects.getUnsafe(i);
 
-		if (nearEntry == nullptr)
-			continue;
-
-		SceneObject* nearSceneO = cast<SceneObject*>(nearEntry);
-
-		if (nearSceneO != nullptr && nearSceneO != sceneO) {
-			Vector3 nearObjPos = nearSceneO->getPosition();
+		if (nearEntry != obj) {
+			Vector3 nearObjPos = nearEntry->getPosition();
 
 			float deltaX = x - nearObjPos.getX();
 			float deltaY = y - nearObjPos.getY();
 			float deltaZ = z - nearObjPos.getZ();
 			int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
-			if (OctTree::doLog())
-				Logger::console.info(true) << "OctTree::safeInRange -- called - For: " << sceneO->getDisplayedName() << " Checking For: " << nearSceneO->getDisplayedName() << " Range Sq: " << rangesq << " Delta Calc: " << deltaCalc << " Obj Position: " << nearObjPos.getX() << " " << nearObjPos.getZ() << " " << nearObjPos.getY();
-
 			try {
-				if (deltaCalc <= rangesq) {
+				float outOfRangeSqr = Math::sqr(Math::max(range, nearEntry->getOutOfRangeDistance()));
+
+				if (OctTree::doLog()) {
+					SceneObject* nearSceneO = cast<SceneObject*>(nearEntry);
+					Logger::console.info(true) << "OctTree::safeInRange -- Close Object #" << i << " " << nearSceneO->getDisplayedName() << " Out of Range Sq: " << outOfRangeSqr << " Delta Calc: " << deltaCalc << " Obj Position: " << nearObjPos.getX() << " " << nearObjPos.getZ() << " " << nearObjPos.getY();
+				}
+
+				if (deltaCalc < outOfRangeSqr) {
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 
 					if (objCloseObjects != nullptr) {
-						obj->addInRangeObject(nearEntry, false);
+						if (OctTree::doLog()) {
+							SceneObject* nearSceneO = cast<SceneObject*>(nearEntry);
+							Logger::console.info(true) << "Added Object to COV: " << nearSceneO->getDisplayedName();
+						}
 
+						obj->addInRangeObject(nearEntry, false);
 					}
 
-					CloseObjectsVector* oCloseObjects = nearSceneO->getCloseObjects();
+					CloseObjectsVector* oCloseObjects = nearEntry->getCloseObjects();
 
 					if (oCloseObjects != nullptr)
 						nearEntry->addInRangeObject(obj);
 				}
 			} catch (...) {
-				Logger::console.info(true) << "unreported exception caught in safeInRange()\n";
+				Logger::console.info(true) << "unreported exception caught in Octree::safeInRange()\n";
 			}
 		} else {
 			if (obj->getCloseObjects() != nullptr)
@@ -548,9 +548,9 @@ void OctTree::copyObjects(const Reference<TreeNode*>& node, float x, float y, fl
 }
 
 void OctTree::copyObjects(const Reference<TreeNode*>& node, float x, float y, float z, float range, SortedVector<server::zone::TreeEntry*>& objects) {
-	//	ReadLocker locker(&mutex);
 
-	//objects.addAll(node->objects);
+	if (OctTree::doLog())
+		Logger::console.info(true) << "OctTree::copyObjects -- called";
 
 	for (int i = 0; i < node->objects.size(); ++i) {
 		objects.add(node->objects.getUnsafe(i).get());

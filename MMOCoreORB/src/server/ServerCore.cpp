@@ -117,13 +117,13 @@ void ServerCore::registerConsoleCommmands() {
 		return SHUTDOWN;
 	});
 
-	addCommand("logQuadTree", [this](const String& arguments) -> CommandResult {
+	addCommand("logQuadtree", [this](const String& arguments) -> CommandResult {
 		QuadTree::setLogging(!QuadTree::doLog());
 
 		return SUCCESS;
 	});
 
-	addCommand("logOctTree", [this](const String& arguments) -> CommandResult {
+	addCommand("logOctree", [this](const String& arguments) -> CommandResult {
 		OctTree::setLogging(!OctTree::doLog());
 
 		return SUCCESS;

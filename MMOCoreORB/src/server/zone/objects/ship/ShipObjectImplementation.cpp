@@ -405,7 +405,7 @@ void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool 
 }
 
 void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
-	// info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - for " << object->getDisplayedName();
+	// info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - Object " << object->getDisplayedName();
 
 	auto closeObjectsVector = getCloseObjects();
 	SortedVector<TreeEntry*> closeObjects(200, 50);
@@ -457,9 +457,7 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 	uint64 scnoID = sceneO->getObjectID();
 
 #ifdef DEBUG_COV
-	if (sceneO->isPlayerCreature()) {
-		info(true) << "ShipObjectImplementation::notifyInsert -- Object inserted: " << sceneO->getDisplayedName() << " ID: " << scnoID;
-	}
+	info(true) << "ShipObjectImplementation::notifyInsert -- Object inserted: " << sceneO->getDisplayedName() << " ID: " << scnoID;
 #endif // DEBUG_COV
 
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
@@ -485,10 +483,48 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 	}
 }
 
+void ShipObjectImplementation::notifyDissapear(TreeEntry* object) {
+	TangibleObjectImplementation::notifyDissapear(object);
+
+	auto sceneO = static_cast<SceneObject*>(object);
+	uint64 scnoID = sceneO->getObjectID();
+
+#ifdef DEBUG_COV
+	info(true) << "ShipObjectImplementation::notifyDissapear -- Object removed: " << sceneO->getDisplayedName() << " ID: " << scnoID;
+#endif // DEBUG_COV
+
+	try {
+		for (int i = 0; i < playersOnBoard.size(); ++i) {
+			auto shipMember = playersOnBoard.get(i);
+
+			if (shipMember == nullptr)
+				continue;
+
+			if (shipMember->getCloseObjects() != nullptr)
+				shipMember->removeInRangeObject(object);
+			else
+				shipMember->notifyDissapear(object);
+
+			if (object->getCloseObjects() != nullptr)
+				object->removeInRangeObject(shipMember);
+			else
+				object->notifyDissapear(shipMember);
+		}
+	} catch (const Exception& exception) {
+		warning("could not remove all container objects in ShipObjectImplementation::notifyDissapear");
+
+		exception.printStackTrace();
+	}
+}
+
+void ShipObjectImplementation::sendDestroyTo(SceneObject* player) {
+	SceneObjectImplementation::sendDestroyTo(player);
+}
+
 void ShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 	StringBuffer newName;
 
-	newName << " - " << getDisplayedName()
+	newName << getDisplayedName()
 		<< " - " << zone->getZoneName();
 
 	setLoggingName(newName.toString());

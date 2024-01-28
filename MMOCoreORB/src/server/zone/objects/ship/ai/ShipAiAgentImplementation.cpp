@@ -252,9 +252,13 @@ void ShipAiAgentImplementation::initializeTransientMembers() {
 }
 
 void ShipAiAgentImplementation::notifyInsert(TreeEntry* entry) {
-	TangibleObjectImplementation::notifyInsert(entry);
+	ShipObjectImplementation::notifyInsert(entry);
 
 	SceneObject* scno = static_cast<SceneObject*>(entry);
+
+#ifdef DEBUG_COV
+	info(true) << "ShipObjectImplementation::notifyInsert -- Object inserted: " << scno->getDisplayedName();
+#endif // DEBUG_COV
 
 	if (scno == nullptr)
 		return;
@@ -277,9 +281,13 @@ void ShipAiAgentImplementation::notifyInsert(TreeEntry* entry) {
 }
 
 void ShipAiAgentImplementation::notifyDissapear(TreeEntry* entry) {
-	TangibleObjectImplementation::notifyDissapear(entry);
+	ShipObjectImplementation::notifyDissapear(entry);
 
 	SceneObject* scno = static_cast<SceneObject*>(entry);
+
+#ifdef DEBUG_COV
+	info(true) << "ShipAiAgentImplementation::notifyDissapear - for Object: " << scno->getDisplayedName();
+#endif // DEBUG_COV
 
 	if (scno == nullptr || (scno->getObjectID() == getObjectID()) || !scno->isShipObject())
 		return;
@@ -1068,6 +1076,7 @@ bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
 	updateZone(false, false);
 
 	broadcastTransform(nextMovementPosition);
+	removeOutOfRangeObjects();
 
 	// Remove Point
 	float sqrMaxDist = Math::sqr(Math::max(32.f, getMaxDistance()));

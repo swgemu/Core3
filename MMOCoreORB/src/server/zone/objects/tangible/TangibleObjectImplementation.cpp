@@ -449,7 +449,116 @@ void TangibleObjectImplementation::synchronizedUIListen(CreatureObject* player, 
 }
 
 void TangibleObjectImplementation::synchronizedUIStopListen(CreatureObject* player, int value) {
+}
 
+void TangibleObjectImplementation::removeOutOfRangeObjects() {
+	TangibleObject* object = asTangibleObject();
+
+	if (object == nullptr)
+		return;
+
+	auto rootParent = object->getRootParent();
+	auto parent = getParent().get();
+
+	if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
+		object = parent->asTangibleObject();
+	} else if (rootParent != nullptr && rootParent->isShipObject()) {
+		object = rootParent->asTangibleObject();
+	}
+
+	if (object == nullptr)
+		return;
+
+#ifdef DEBUG_COV
+	info(true) << "TangibleObjectImplementation::removeOutOfRangeObjects() called - " << object->getDisplayedName();
+#endif // DEBUG_COV
+
+	SortedVector<TreeEntry*> closeObjects;
+	auto closeObjectsVector = object->getCloseObjects();
+
+	if (closeObjectsVector == nullptr)
+		return;
+
+	closeObjectsVector->safeCopyTo(closeObjects);
+
+	auto worldPos = getWorldPosition();
+
+	float ourX = worldPos.getX();
+	float ourY = worldPos.getY();
+	float ourZ = worldPos.getZ();
+
+	float ourRange = object->getOutOfRangeDistance();
+
+	int countChecked = 0;
+	int countCov = closeObjects.size();
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* o = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
+
+		// Don't remove ourselves
+		if (o == nullptr || o == object)
+			continue;
+
+		// Don't remove things in the same parent as us (e.g. Geo Caves are massive)
+		if (rootParent != nullptr && o == rootParent)
+			continue;
+
+		// Check for objects inside another object
+		auto oRoot = o->getRootParent();
+
+		// They should be managed by the parent
+		if (oRoot != nullptr)
+			continue;
+
+		countChecked++;
+
+		auto objectWorldPos = o->getWorldPosition();
+
+		float deltaX = ourX - objectWorldPos.getX();
+		float deltaY = ourY - objectWorldPos.getY();
+		float deltaZ = ourZ - objectWorldPos.getZ();
+
+		float outOfRangeSqr = Math::sqr(Math::max(ourRange, o->getOutOfRangeDistance()));
+
+		// Check for out of range, if using root parent ship, use 3d range calc
+		if (object->isShipObject()) {
+			float delta3d = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
+
+			if (delta3d > outOfRangeSqr) {
+				countCov--;
+
+				if (getCloseObjects() != nullptr)
+					object->removeInRangeObject(o);
+
+				if (o->getCloseObjects() != nullptr)
+					o->removeInRangeObject(object);
+			}
+		} else {
+			if (deltaX * deltaX + deltaY * deltaY > outOfRangeSqr) {
+				countCov--;
+
+				if (getCloseObjects() != nullptr)
+					object->removeInRangeObject(o);
+
+				if (o->getCloseObjects() != nullptr)
+					o->removeInRangeObject(object);
+			}
+		}
+	}
+
+	if (object->isPlayerCreature()) {
+		auto creature = object->asCreatureObject();
+
+		if (creature != nullptr) {
+			auto ghost = creature->getPlayerObject();
+
+			// Cov count reporting
+			if (ghost != nullptr && countCov > ghost->getCountMaxCov()) {
+				object->error("MaxCountCov = " + String::valueOf(countCov) + " checked = " + String::valueOf(countChecked));
+				ghost->setCountMaxCov(countCov);
+			}
+		}
+	}
 }
 
 void TangibleObjectImplementation::setSerialNumber(const String& serial) {

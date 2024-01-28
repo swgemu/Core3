@@ -497,7 +497,7 @@ void QuadTree::safeInRange(TreeEntry* obj, float range) {
 						o->addInRangeObject(obj);
 				}
 			} catch (...) {
-				Logger::console.info(true) << "unreported exception caught in safeInRange()\n";
+				Logger::console.info(true) << "unreported exception caught in Quadtree::safeInRange()\n";
 			}
 		} else {
 			if (obj->getCloseObjects() != nullptr)
@@ -549,7 +549,7 @@ void QuadTree::copyObjects(const Reference<TreeNode*>& node, float x, float y, f
 	}
 }
 
-void QuadTree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float range) {
+void QuadTree::_inRange(const Reference<TreeNode*>& node, TreeEntry* obj, float range) {
 	Reference<TreeNode*> refNode = node;
 
 	float rangesq = range * range;
@@ -559,6 +559,9 @@ void QuadTree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float 
 
 	float oldx = obj->getPreviousPositionX();
 	float oldy = obj->getPreviousPositionY();
+
+	if (QuadTree::doLog())
+		Logger::console.info(true) << " QuadTree::_inRange1 - object " << obj->getObjectID();
 
 	for (int i = 0; i < refNode->objects.size(); i++) {
 		TreeEntry *o = refNode->objects.get(i);
@@ -649,6 +652,9 @@ int QuadTree::_inRange(const Reference<TreeNode*>& node, float x, float y,
 		SortedVector<ManagedReference<TreeEntry*> >& objects) const {
 	int count = 0;
 
+	if (QuadTree::doLog())
+		Logger::console.info(true) << " QuadTree::_inRange2";
+
 	for (int i = 0; i < node->objects.size(); i++) {
 		TreeEntry *o = node->objects.get(i);
 
@@ -675,6 +681,9 @@ int QuadTree::_inRange(const Reference<TreeNode*>& node, float x, float y,
 int QuadTree::_inRange(const Reference<TreeNode*>& node, float x, float y,
 		SortedVector<TreeEntry* >& objects) const {
 	int count = 0;
+
+	if (QuadTree::doLog())
+		Logger::console.info(true) << " QuadTree::_inRange3";
 
 	for (int i = 0; i < node->objects.size(); i++) {
 		TreeEntry *o = node->objects.get(i);
@@ -712,6 +721,9 @@ int QuadTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float
 		}
 	}
 
+	if (QuadTree::doLog())
+		Logger::console.info(true) << " QuadTree::_inRange4";
+
 	if (node->hasSubNodes()) {
 		if (node->nwNode != nullptr && node->nwNode->testInRange(x, y, range))
 			count += _inRange(node->nwNode, x, y, range, objects);
@@ -737,6 +749,9 @@ int QuadTree::_inRange(const Reference<TreeNode*>& node, float x, float y, float
 			objects.put(o);
 		}
 	}
+
+	if (QuadTree::doLog())
+		Logger::console.info(true) << " QuadTree::_inRange5";
 
 	if (node->hasSubNodes()) {
 		if (node->nwNode != nullptr && node->nwNode->testInRange(x, y, range))
