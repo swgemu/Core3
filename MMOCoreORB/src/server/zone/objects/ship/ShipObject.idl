@@ -474,6 +474,12 @@ class ShipObject extends TangibleObject {
 	@local
 	public native abstract void notifyInsert(TreeEntry obj);
 
+	@local
+	public native void notifyDissapear(TreeEntry obj);
+
+	@dirty
+	public native void sendDestroyTo(SceneObject player);
+
 	public native void notifyInsertToZone(Zone zone);
 
 	@local

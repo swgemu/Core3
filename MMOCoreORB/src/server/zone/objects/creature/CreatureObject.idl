@@ -2290,9 +2290,6 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@preLocked
-	public native void removeOutOfRangeObjects();
-
-	@preLocked
 	public native void synchronizeCloseObjects();
 
 	@preLocked

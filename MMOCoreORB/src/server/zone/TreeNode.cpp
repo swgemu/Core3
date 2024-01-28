@@ -132,17 +132,19 @@ bool TreeNode::testInRange(float x, float y, float z, float range) const {
 	bool insideY = (minY <= y) && (y < maxY);
 	bool insideZ = (minZ <= z) && (z < maxZ);
 
-	if (insideX && insideY && insideZ)
+	if (insideX && insideY && insideZ) {
 		return true;
+	}
 
-	bool closeenoughX = (fabs(minX - x) <= range || fabs(maxX - x) <= range);
-	bool closeenoughY = (fabs(minY - y) <= range || fabs(maxY - y) <= range);
-	bool closeenoughZ = (fabs(minZ - z) <= range || fabs(maxZ - z) <= range);
+	bool closeenoughX = (fabs(minX - x) < range || fabs(maxX - x) < range);
+	bool closeenoughY = (fabs(minY - y) < range || fabs(maxY - y) < range);
+	bool closeenoughZ = (fabs(minZ - z) < range || fabs(maxZ - z) < range);
 
-	if ((insideX || closeenoughX) && (insideY || closeenoughY) && (insideZ || closeenoughZ))
+	if ((insideX || closeenoughX) && (insideY || closeenoughY) && (insideZ || closeenoughZ)) {
 		return true;
-	else
-		return false;
+	}
+
+	return false;
 }
 
 bool TreeNode::testInRange(float x, float y, float range) const {

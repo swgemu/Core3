@@ -391,7 +391,7 @@ void SpaceZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) cons
 	sceneObject->notifySelfPositionUpdate();
 }
 
-void SpaceZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector *closeobjects, SortedVector<ManagedReference<TreeEntry *> > &closeSceneObjects, SceneObject *sceneObject, SceneObject *vectorOwner) {
+void SpaceZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector* closeobjects, SortedVector<ManagedReference<TreeEntry*>>& closeSceneObjects, SceneObject* sceneObject, SceneObject* vectorOwner) {
 	for (int i = 0; closeobjects->size() != 0 && i < 100; i++) {
 		closeobjects->safeCopyTo(closeSceneObjects);
 
@@ -403,7 +403,7 @@ void SpaceZoneComponent::removeAllObjectsFromCOV(CloseObjectsVector *closeobject
 			if (vectorOwner == sceneObject) {
 				try {
 					vectorOwner->removeInRangeObject(obj, false);
-				} catch (ArrayIndexOutOfBoundsException &e) {
+				} catch (ArrayIndexOutOfBoundsException& e) {
 					Logger::console.error("exception removing in range object: " + e.getMessage());
 				}
 			}

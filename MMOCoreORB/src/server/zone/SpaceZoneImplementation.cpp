@@ -149,19 +149,26 @@ void SpaceZoneImplementation::remove(TreeEntry* entry) {
 }
 
 void SpaceZoneImplementation::update(TreeEntry* entry) {
-	Locker locker(_this.getReferenceUnsafeStaticCast());
-
-	octTree->update(entry);
-
 	/*
 	SceneObject* sceneO = cast<SceneObject*>(entry);
 
 	if (sceneO != nullptr)
 		info(true) << "Updating object in Octree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
 	*/
+
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	octTree->update(entry);
 }
 
 void SpaceZoneImplementation::inRange(TreeEntry* entry, float range) {
+	/*
+	SceneObject* sceneO = cast<SceneObject*>(entry);
+
+	if (sceneO != nullptr)
+		info(true) << "SpaceZoneImplementation::inRange - zone check: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+	*/
+
 	octTree->safeInRange(entry, range);
 }
 
