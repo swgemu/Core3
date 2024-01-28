@@ -1940,6 +1940,8 @@ int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, Creatur
 	if (attackerAccuracy == 0)
 		attackerAccuracy = -15; // unskilled penalty, TODO: this might be -50 or -125, do research
 
+	attackerAccuracy += creoAttacker->getSkillMod("attack_accuracy");
+
 	// FS skill mods
 	if (weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK)
 		attackerAccuracy += creoAttacker->getSkillMod("melee_accuracy");
