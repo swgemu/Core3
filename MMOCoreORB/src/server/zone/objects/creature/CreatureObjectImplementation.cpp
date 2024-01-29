@@ -3961,7 +3961,7 @@ int CreatureObjectImplementation::getGender() const {
 void CreatureObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	ManagedReference<SceneObject*> parent = getParent().get();
 
-	if (parent == nullptr || (!parent->isVehicleObject() && !parent->isMount() && !parent->isShipObject()))
+	if (parent == nullptr || (!parent->isVehicleObject() && !parent->isMount()))
 		return;
 
 	CreatureObject* creo = cast<CreatureObject*>(parent.get());
