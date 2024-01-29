@@ -482,10 +482,10 @@ void BuildingObjectImplementation::notifyInsert(TreeEntry* object) {
 	uint64 scnoID = sceneO->getObjectID();
 
 #ifdef DEBUG_COV
-	if (sceneO->isPlayerCreature()) {
-		info(true) << "notifyInsert -- Building ID: " << getObjectID()  << " Player: " << sceneO->getDisplayedName() << " ID: " << scnoID;
-	}
+	if (getObjectID() == 88) // Theed Cantina
+		info(true) << getObjectName() << " - BuildingObjectImplementation::notifyInsert for Object: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
 
+	/*
 	if (getObjectID() == 88) { // Theed Cantina
 		info("BuildingObjectImplementation::notifyInsert(" + String::valueOf(scnoID) + ")", true);
 
@@ -493,8 +493,17 @@ void BuildingObjectImplementation::notifyInsert(TreeEntry* object) {
 
 		if (c != nullptr)
 			c->info("BuildingObjectImplementation::notifyInsert into " + String::valueOf(getObjectID()), true);
-	}
+	}*/
 #endif // DEBUG_COV
+
+	// Prevent players that are mounted from being loaded on their own. When their mount loads it will send the player on its own
+	if (sceneO->isPlayerCreature()) {
+		auto player = sceneO->asCreatureObject();
+
+		if (player->isRidingMount()) {
+			return;
+		}
+	}
 
 	uint64 sceneObjRootID = 0;
 	auto sceneObjRootPar = sceneO->getRootParent();
@@ -550,10 +559,10 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 	uint64 scnoID = sceneO->getObjectID();
 
 #ifdef DEBUG_COV
-	if (sceneO->isPlayerCreature()) {
-		info(true) << "notifyInsert -- Building ID: " << getObjectID()  << " Player: " << sceneO->getDisplayedName() << " ID: " << scnoID;
-	}
+	if (getObjectID() == 88) // Theed Cantina
+		info(true) << getObjectName() << " - BuildingObjectImplementation::notifyDissapear for Object: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
 
+	/*
 	if (getObjectID() == 88) { // Theed Cantina
 		info("BuildingObjectImplementation::notifyDissapear(" + String::valueOf(scnoID) + ")", true);
 
@@ -561,7 +570,7 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 
 		if (c != nullptr)
 			c->info("BuildingObjectImplementation::notifyDissapear from " + String::valueOf(getObjectID()), true);
-	}
+	}*/
 #endif // DEBUG_COV
 
 	for (int i = 0; i < cells.size(); ++i) {
