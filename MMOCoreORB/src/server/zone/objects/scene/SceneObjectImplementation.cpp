@@ -904,7 +904,7 @@ void SceneObjectImplementation::sendMessage(BasePacket* msg) {
 void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	ManagedReference<SceneObject*> parent = getParent().get();
 
-	if (parent == nullptr || (!parent->isVehicleObject() && !parent->isMount() && !parent->isShipObject()))
+	if (parent == nullptr || (!parent->isVehicleObject() && !parent->isMount()))
 		return;
 
 	Locker locker(parent);
