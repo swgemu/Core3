@@ -1506,6 +1506,11 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@dirty
+	public abstract boolean isRidingMount() {
+		return false;
+	}
+
+	@dirty
 	@local
 	@nativeStub
 	@virtualStub
