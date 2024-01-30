@@ -4,14 +4,16 @@
 
 package server.zone.managers.minigames;
 
-include engine.log.Logger;
-include server.zone.objects.creature.CreatureObject;
+import engine.log.Logger;
+import server.zone.objects.creature.CreatureObject;
+import engine.util.Observer;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.terminal.gambling.GamblingTerminal;
+import server.zone.managers.minigames.events.GamblingEvent;
+
 include system.util.VectorMap;
 include system.util.Vector;
-include server.zone.objects.scene.SceneObject;
-include server.zone.objects.tangible.terminal.gambling.GamblingTerminal;
 
-include engine.util.Observer;
 
 class GamblingManager extends Observer implements Logger {
 
@@ -280,6 +282,17 @@ class GamblingManager extends Observer implements Logger {
 	public native void bet(GamblingTerminal terminal, CreatureObject player, int amount, int target);
 
 	/**
+	 * Creates Gambling Event
+	 * This method receives a Terminal and a time,
+	 * creates a GamblingEvent, stores it in the Terminal and schedules it to time
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param terminal GamblingTerminal for which to create event
+	 * @param time Time in ms to schedule the Task
+	 */
+	public native void createGamblingEvent(GamblingTerminal terminal, unsigned int time);
+
+	/**
 	 * StartGame called by SuiManager
 	 * This method receives a CreatureObject, looks it up in the machineType's corresponding VectorMap
 	 * and then calls startGame(Terminal)
@@ -348,6 +361,7 @@ class GamblingManager extends Observer implements Logger {
 	 * @post { this object is not locked }
 	 * @param player CreatureObject for which to refresh menu
 	 */
+	 @arg1preLocked
 	public native void stopGame(GamblingTerminal terminal, boolean cancel);
 
 	/**
@@ -400,17 +414,6 @@ class GamblingManager extends Observer implements Logger {
 	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native unsigned int createRouletteWindow(CreatureObject player);
-
-	/**
-	 * Creates Events
-	 * This method receives a Terminal and a time,
-	 * creates a GamblingEvent, stores it in the Terminal and schedules it to time
-	 * @pre { this object is not locked }
-	 * @post { this object is not locked }
-	 * @param terminal GamblingTerminal for which to create event
-	 * @param time Time in ms to schedule the Task
-	 */
-	public native void createEvent(GamblingTerminal terminal, int time);
 
 	public boolean isPlaying(CreatureObject player) {
 		return (slotGames.contains(player) || rouletteGames.contains(player));

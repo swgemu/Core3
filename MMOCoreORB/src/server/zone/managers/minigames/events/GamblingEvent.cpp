@@ -3,15 +3,32 @@
 #include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
 
-GamblingEvent::GamblingEvent(GamblingTerminal* gamblingTerm, int counter) : Task() {
-	gamblingTerminal = gamblingTerm;
-	gameCount = counter;
+GamblingEvent::GamblingEvent(GamblingTerminal* terminal, int count) : Task() {
+	gamblingTerm = terminal;
+	gameCount = count;
 }
 
 void GamblingEvent::run() {
-	Reference<GamblingManager*> manager = gamblingTerminal->getZoneProcessServer()->getGamblingManager();
+	ManagedReference<GamblingTerminal*> gamblingTerminal = gamblingTerm.get();
 
-	if ((gamblingTerminal->getState() != GamblingTerminal::NOGAMERUNNING) && (gamblingTerminal->getGameCount() == gameCount)) {
-		manager->continueGame(gamblingTerminal);
-	}
+	if (gamblingTerminal == nullptr)
+		return;
+
+	if (gamblingTerminal->getState() == GamblingTerminal::NOGAMERUNNING)
+		return;
+
+	if (gamblingTerminal->getGameCount() != gameCount)
+		return;
+
+	auto zoneProcess = gamblingTerminal->getZoneProcessServer();
+
+	if (zoneProcess == nullptr)
+		return;
+
+	auto gamblingManager = zoneProcess->getGamblingManager();
+
+	if (gamblingManager == nullptr)
+		return;
+
+	gamblingManager->continueGame(gamblingTerminal);
 }
