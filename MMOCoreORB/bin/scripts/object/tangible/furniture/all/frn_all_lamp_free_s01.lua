@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_all_frn_all_lamp_free_s01 = object_tangible_furniture_all_shared_frn_all_lamp_free_s01:new {
-
+	gameObjectType = 8253,
 
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
