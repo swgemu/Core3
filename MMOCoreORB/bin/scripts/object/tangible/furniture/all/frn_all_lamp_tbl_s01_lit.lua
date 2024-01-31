@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_all_frn_all_lamp_tbl_s01_lit = object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01_lit:new {
-
+	gameObjectType = 8253,
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_frn_all_lamp_tbl_s01_lit, "object/tangible/furniture/all/frn_all_lamp_tbl_s01_lit.iff")
