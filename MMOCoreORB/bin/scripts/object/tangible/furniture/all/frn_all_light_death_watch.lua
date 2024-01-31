@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_all_frn_all_light_death_watch = object_tangible_furniture_all_shared_frn_all_light_death_watch:new {
-
+	gameObjectType = 8253,
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_frn_all_light_death_watch, "object/tangible/furniture/all/frn_all_light_death_watch.iff")
