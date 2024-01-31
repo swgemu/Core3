@@ -148,5 +148,6 @@
 #include "server/zone/objects/area/space/NebulaArea.h"
 #include "server/zone/objects/tangible/misc/ContractCrate.h"
 #include "server/zone/objects/tangible/misc/DeadEyePrototype.h"
+#include "server/zone/objects/tangible/misc/LightObject.h"
 
 #endif /* OBJECTS_H_ */
