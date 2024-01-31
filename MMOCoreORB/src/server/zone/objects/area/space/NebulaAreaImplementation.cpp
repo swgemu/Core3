@@ -13,6 +13,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/spacecollision/SpaceCollisionManager.h"
 #include "server/zone/managers/spacecombat/SpaceCombatManager.h"
+#include "server/zone/packets/ship/OnShipHit.h"
 
 // #define DEBUG_NEBULA_AREAS
 
@@ -107,10 +108,11 @@ void NebulaAreaImplementation::createNewLightning(ShipObject* ship) {
 
 	int maxTimeMs = getMaxLightningDuration() * 1000;
 	int randomMaxDuration = startTime + ((maxTimeMs / 2) + System::random(maxTimeMs - (maxTimeMs / 2)));
+	int lightningInterval = (System::random(LIGHTNINGDELAY - 1) + 1) * 1000;
 
 	// Update the nebula to delay for next lightning
 	lastLightning.updateToCurrentTime();
-	lastLightning.addMiliTime((1 + System::random(LIGHTNINGDELAY + 1)) * 1000);
+	lastLightning.addMiliTime(lightningInterval);
 
 	// Incrememnt the lightning count
 	lightningCount.increment();
@@ -120,8 +122,13 @@ void NebulaAreaImplementation::createNewLightning(ShipObject* ship) {
 	float radiusFactor = sphereRadius * 0.3;
 	Vector3 areaCenter = getAreaCenter();
 
+	// Precalculate the lightning distance
+	float minDistance = radiusFactor * 0.75;
+	float maxDistance = radiusFactor;
+	float randomDistance = System::frandom(maxDistance - minDistance) + minDistance;
+
 	Vector3 startPoint = areaShape->getRandomPosition();
-	Vector3 endPoint = areaShape->getRandomPosition(startPoint, radiusFactor * 0.75, radiusFactor);
+	Vector3 endPoint = areaShape->getRandomPosition(startPoint, randomDistance, randomDistance);
 
 #ifdef DEBUG_NEBULA_AREAS
 	info(true) << "\n";
@@ -131,65 +138,108 @@ void NebulaAreaImplementation::createNewLightning(ShipObject* ship) {
 	// Broadcast message in space manager to nearby ships and their players
 	spaceManager->broadcastNebulaLightning(ship, areaCenter, lightningCount, getNebulaID(), startTime, randomMaxDuration, startPoint, endPoint);
 
-	shipLightningDamage(ship, startPoint, endPoint, radiusFactor);
+	shipLightningDamage(ship, startPoint, endPoint, randomDistance, startTime, randomMaxDuration);
 }
 
-void NebulaAreaImplementation::shipLightningDamage(ShipObject* ship, const Vector3& startPoint, const Vector3& endPoint, float range) {
+void NebulaAreaImplementation::shipLightningDamage(ShipObject* ship, const Vector3& startPoint, const Vector3& endPoint, float distance, int startTime, int endTime) {
 	if (ship == nullptr)
 		return;
 
-	auto pilot = ship->getPilot();
+	auto spaceManager = zone->getSpaceManager();
 
-	if (pilot == nullptr)
+	if (spaceManager == nullptr)
 		return;
 
-	CloseObjectsVector* closeVector = (CloseObjectsVector*)pilot->getCloseObjects();
+	CloseObjectsVector* closeObjects = (CloseObjectsVector*)ship->getCloseObjects();
 
-	if (closeVector == nullptr)
+	if (closeObjects == nullptr)
 		return;
 
-	SortedVector<TreeEntry*> closeObjects;
-	closeVector->safeCopyTo(closeObjects);
+	SortedVector<ManagedReference<TreeEntry*> > closeCopy;
+	closeObjects->safeCopyReceiversTo(closeCopy, CloseObjectsVector::SHIPTYPE);
 
 #ifdef DEBUG_NEBULA_AREAS
-	info(true) << "shipLightningDamage -- Total Nearby Objects: " << closeObjects.size() << " Start Point: " << startPoint.toString() << " Range: " << range;
+	info(true) << "shipLightningDamage -- Total Nearby Objects: " << closeObjects.size() << " Start Point: " << startPoint.toString() << " Distance: " << distance;
 #endif
 
 	Vector3 direction = endPoint - startPoint;
 	float lightningMin = getLightningDamageMin();
 	float lightningMax = getLightningDamageMax();
 
-	for (int i = 0; i < closeObjects.size(); i++) {
-		SceneObject* object = static_cast<SceneObject*>(closeObjects.get(i));
+	for (int i = 0; i < closeCopy.size(); i++) {
+		SceneObject* object = static_cast<SceneObject*>(closeCopy.get(i).get());
 
 		if (object == nullptr || !object->isShipObject())
 			continue;
 
 		Reference<ShipObject*> targetShip = object->asShipObject();
 
-		if (targetShip == nullptr)
+		if (targetShip == nullptr || (targetShip->getOptionsBitmask() & OptionBitmask::INVULNERABLE))
 			continue;
 
 #ifdef DEBUG_NEBULA_AREAS
 		info(true) << "Valid Ship: " << targetShip->getDisplayedName();
 #endif
 
+		const Vector3& targetPosition = targetShip->getPosition();
+		Vector3 difference = targetPosition - startPoint;
 		float targetRadius = targetShip->getBoundingRadius() + LIGHTNING_DAMAGE_RAD;
-		Vector3 difference = targetShip->getPosition() - startPoint;
 
-		float intersection = SpaceCollisionManager::getPointIntersection(direction, difference, targetRadius, range);
+		float intersection = SpaceCollisionManager::getPointIntersection(direction, difference, targetRadius, distance);
 
 		if (intersection == SpaceCollisionManager::MISS) {
 			continue;
 		}
 
+		// Calculate the global and local collision points and orientation
+		Vector3 collisionPoint = ((endPoint - startPoint) * intersection) + startPoint;
+
+		const Matrix4& targetRotation = *targetShip->getRotationMatrix();
+		Vector3 localPosition = (collisionPoint - targetPosition);
+		localPosition = Vector3(localPosition.getX(), localPosition.getZ(), localPosition.getY()) * targetRotation;
+
+		bool hitFront = localPosition.getZ() >= 0.f;
+
+		spaceManager->broadcastNebulaLightning(targetShip, getAreaCenter(), lightningCount, getNebulaID(), startTime, endTime, collisionPoint, targetPosition);
+
 		float damage = lightningMin + System::frandom(lightningMax - lightningMin);
 
-		Core::getTaskManager()->scheduleTask([targetShip]{
+#ifdef DEBUG_NEBULA_AREAS
+		info(true) << "shipLightningDamage -- Collision with targetShip: " << targetShip->getDisplayedName() << " at position: " << collisionPoint.toString() << " hitFront: " << hitFront;
+#endif
+
+		Core::getTaskManager()->scheduleTask([targetShip, collisionPoint, hitFront, damage]{
 			Locker locker(targetShip);
+			auto deltaVector = targetShip->getDeltaVector();
 
-			//shield damage
+			float shieldCurrent = hitFront ? targetShip->getFrontShield() : targetShip->getRearShield();
+			float shieldMaximum = hitFront ? targetShip->getMaxFrontShield() : targetShip->getMaxRearShield();
 
-		}, "LightningDamageTask", 100);
+			if (shieldCurrent == 0.f || shieldMaximum == 0.f) {
+				return;
+			}
+
+			float percentageOld = shieldCurrent / shieldMaximum;
+
+			shieldCurrent = Math::max(0.f, shieldCurrent - damage);
+
+			float percentageNew = shieldCurrent / shieldMaximum;
+
+			if (percentageNew != percentageOld) {
+				if (hitFront) {
+					targetShip->setFrontShield(shieldCurrent, false, nullptr, deltaVector);
+				} else {
+					targetShip->setRearShield(shieldCurrent, false, nullptr, deltaVector);
+				}
+
+				auto shipHit = new OnShipHit(targetShip, collisionPoint, SpaceCombatManager::ShipHitType::HITSHIELD, percentageNew, percentageOld);
+				targetShip->broadcastMessage(shipHit, true);
+			}
+
+			if (deltaVector != nullptr) {
+				deltaVector->sendMessages(targetShip, targetShip->getPilot());
+			}
+
+		}, "LightningDamageTask", 1000);
 	}
 }

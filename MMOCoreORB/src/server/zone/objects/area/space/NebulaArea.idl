@@ -134,5 +134,5 @@ class NebulaArea extends SpaceActiveArea {
 
 	private native void createNewLightning(ShipObject ship);
 
-	private native void shipLightningDamage(ShipObject ship, @dereferenced final Vector3 startPoint, @dereferenced final Vector3 endPoint, float range);
+	private native void shipLightningDamage(ShipObject ship, @dereferenced final Vector3 startPoint, @dereferenced final Vector3 endPoint, float distance, int startTime, int endTime);
 }

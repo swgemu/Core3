@@ -329,36 +329,27 @@ void SpaceManagerImplementation::broadcastNebulaLightning(ShipObject* ship, cons
 	if (ship == nullptr)
 		return;
 
-	auto closeObjectsVector = ship->getCloseObjects();
-	SortedVector<TreeEntry*> closeObjects(200, 50);
+	CloseObjectsVector* closeObjects = ship->getCloseObjects();
+	SortedVector<ManagedReference<TreeEntry*>>closeObjectsCopy(200, 50);
 
-	if (closeObjectsVector != nullptr) {
-		closeObjectsVector->safeCopyTo(closeObjects);
+	if (closeObjects != nullptr) {
+		closeObjects->safeCopyReceiversTo(closeObjectsCopy, CloseObjectsVector::PLAYERTYPE);
 	} else {
-		spaceZone->getInRangeObjects(nebulaCenter.getX(), nebulaCenter.getZ(), nebulaCenter.getY(), spaceZone->getZoneObjectRange(), &closeObjects, true);
+		spaceZone->getInRangeObjects(nebulaCenter.getX(), nebulaCenter.getZ(), nebulaCenter.getY(), spaceZone->getZoneObjectRange(), &closeObjectsCopy, true);
 	}
 
 	try {
-		for (int i = 0; i < closeObjects.size(); ++i) {
-			auto object = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
+		for (int i = 0; i < closeObjectsCopy.size(); ++i) {
+			auto playerEntry = static_cast<SceneObject*>(closeObjectsCopy.getUnsafe(i).get());
 
-			if (object == nullptr || !object->isShipObject())
+			if (playerEntry == nullptr || !playerEntry->isPlayerCreature()) {
 				continue;
+			}
 
-			auto ship = object->asShipObject();
+			uint32 syncStamp = playerEntry->getSyncStamp();
 
-			if (ship == nullptr)
-				continue;
-
-			// Get client sync stampt
-			int shipSyncStamp = ship->getSyncStamp();
-
-			CreateNebulaLightningMessage* lightningMessage = new CreateNebulaLightningMessage(lightningCount, nebulaID, startMili + shipSyncStamp, endMili + shipSyncStamp, startPoint, endPoint);
-
-			if (lightningMessage != nullptr)
-				ship->sendMembersBaseMessage(lightningMessage->clone());
-
-			delete lightningMessage;
+			auto lightningMessage = new CreateNebulaLightningMessage(lightningCount, nebulaID, startMili + syncStamp, endMili + syncStamp, startPoint, endPoint);
+			playerEntry->sendMessage(lightningMessage);
 		}
 	} catch (...) {
 		throw;
