@@ -166,6 +166,7 @@ public:
 	const static int FSBUFFITEM = 0x203A;
 	const static int CONTRACTCRATE = 0x203B;
 	const static int DEADEYEPROTOTYPE = 0x203C;
+	const static int LIGHTOBJECT = 0x203D;
 	/// End Not in client **************
 
 	const static int TERMINAL = 0x4000;
