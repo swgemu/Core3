@@ -229,7 +229,7 @@ int ZoneImplementation::getInRangeSolidObjects(float x, float y, float range, So
 				continue;
 			}
 
-			if (sceno->getGameObjectType() == SceneObjectType::FURNITURE) {
+			if (sceno->getGameObjectType() == SceneObjectType::FURNITURE || sceno->getGameObjectType() == SceneObjectType::LIGHTOBJECT) {
 				objects->remove(i);
 				continue;
 			}
