@@ -58,7 +58,9 @@ void DroidComponentImplementation::fillAttributeList(AttributeListMessage* alm, 
 	alm->insertAttribute("serial_number", objectSerial);
 
 	//alm->insertAttribute("decayrate", (int)durability);
-	alm->insertAttribute("mechanism_quality", (int)quality);
+
+	if (quality > AttributesMap::VALUENOTFOUND)
+		alm->insertAttribute("mechanism_quality", (int)quality);
 
 	if (autoRepairDroid) {
 		alm->insertAttribute("auto_repair_power", (int)autoRepairPower);
