@@ -18,19 +18,6 @@ import server.zone.objects.region.Region;
 @json
 class ActiveArea extends SceneObject {
 	protected unsigned long cellObjectID;
-
-	protected boolean pvpArea;
-
-	protected boolean overtOnlyArea;
-
-	protected boolean rebelOnlyArea;
-
-	protected boolean imperialOnlyArea;
-
-	protected boolean noCombatArea;
-
-	protected boolean noPetArea;
-
 	protected AreaShape areaShape;
 
 	@dereferenced
@@ -52,24 +39,20 @@ class ActiveArea extends SceneObject {
 	public static final int NAMEDREGION = 0x000100;
 	public static final int LOCKEDAREA = 0x000200;
 
+	public static final int NOCOMBATAREA = 0x000400;
+	public static final int NODUELAREA = 0x000800;
+	public static final int PVPAREA = 0x001000;
+	public static final int OVERTAREA = 0x002000;
+	public static final int REBELAREA = 0x004000;
+	public static final int IMPERIALAREA = 0x008000;
+	public static final int NOPETAREA = 0x010000;
+
 	public static final int CIRCLE = 1;
 	public static final int RECTANGLE = 2;
 	public static final int RING = 3;
 
 	public ActiveArea() {
 		cellObjectID = 0;
-
-		pvpArea = false;
-
-		overtOnlyArea = false;
-
-		rebelOnlyArea = false;
-
-		imperialOnlyArea = false;
-
-		noCombatArea = false;
-
-		noPetArea = false;
 
 		areaShape = null;
 
@@ -223,32 +206,37 @@ class ActiveArea extends SceneObject {
 
 	@read
 	public boolean isPvpArea() {
-		return pvpArea;
+		return areaFlags & PVPAREA;
 	}
 
 	@read
-	public boolean isOvertOnlyArea() {
-		return overtOnlyArea;
+	public boolean isOvertArea() {
+		return areaFlags & OVERTAREA;
 	}
 
 	@read
-	public boolean isRebelOnlyArea() {
-		return rebelOnlyArea;
+	public boolean isRebelArea() {
+		return areaFlags & REBELAREA;
 	}
 
 	@read
-	public boolean isImperialOnlyArea() {
-		return imperialOnlyArea;
+	public boolean isImperialArea() {
+		return areaFlags & IMPERIALAREA;
 	}
 
 	@read
 	public boolean isNoCombatArea() {
-		return noCombatArea;
+		return areaFlags & NOCOMBATAREA;
+	}
+
+	@read
+	public boolean isNoDuelArea() {
+		return areaFlags & NODUELAREA;
 	}
 
 	@read
 	public boolean isNoPetArea() {
-		return noPetArea;
+		return areaFlags & NOPETAREA;
 	}
 
 	@read
@@ -279,47 +267,6 @@ class ActiveArea extends SceneObject {
 		}
 
 		super.setRadius(r);
-	}
-
-	@preLocked
-	public void setPvpArea(boolean val) {
-		pvpArea = val;
-	}
-
-
-	@preLocked
-	public void setOvertOnlyArea(boolean val) {
-		overtOnlyArea = val;
-	}
-
-	@preLocked
-	public void setRebelOnlyArea(boolean val) {
-		rebelOnlyArea = val;
-	}
-
-
-	@preLocked
-	public void setImperialOnlyArea(boolean val) {
-		imperialOnlyArea = val;
-	}
-
-	@preLocked
-	public void setNoCombatArea(boolean val) {
-		noCombatArea = val;
-	}
-
-	@preLocked
-	public void setNoPetArea(boolean val) {
-		noPetArea = val;
-	}
-
-	@preLocked
-	public void setLockedArea(boolean val) {
-		if (val) {
-			addAreaFlag(LOCKEDAREA);
-		} else {
-			removeAreaFlag(LOCKEDAREA);
-		}
 	}
 
 	@preLocked
