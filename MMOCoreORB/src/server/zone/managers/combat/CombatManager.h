@@ -188,6 +188,15 @@ public:
 
 	bool areInDuel(CreatureObject* player1, CreatureObject* player2) const;
 
+	/**
+	 * Checks if there is an active challenge
+	 * @param challenger player that is being checked if they have an open challenge for target
+	 * @param targetPlayer target
+	 * @pre { challenger != targetPlayer, challenger is locked }
+	 * @post { challenger is locked }
+	 */
+	bool hasActiveDuelChallenge(CreatureObject* challenger, CreatureObject* targetPlayer) const;
+
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio) const;
 
 	void broadcastCombatAction(CreatureObject * attacker, WeaponObject* weapon, SortedVector<DefenderHitList*> targetDefenders, const CreatureAttackData & data) const;

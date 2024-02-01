@@ -10,14 +10,10 @@
 
 class DuelCommand : public QueueCommand {
 public:
-
-	DuelCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	DuelCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -27,23 +23,50 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
 		auto targetObject = server->getZoneServer()->getObject(target);
 
 		if (targetObject == nullptr || !targetObject->isPlayerCreature() || targetObject == creature)
 			return INVALIDTARGET;
 
-		if(!checkDistance(creature, targetObject, 25.0f))
+		if (!checkDistance(creature, targetObject, 25.0f))
 			return TOOFAR;
 
 		auto combatManager = CombatManager::instance();
-		auto player = cast<CreatureObject*>(targetObject.get());
 
-		if (!player->getPlayerObject()->isIgnoring(creature->getFirstName()))
-			combatManager->requestDuel(creature, player);
+		if (combatManager == nullptr)
+			return GENERALERROR;
+
+		auto targetPlayer = targetObject->asCreatureObject();
+
+		if (targetPlayer == nullptr)
+			return GENERALERROR;
+
+		if (combatManager->areInDuel(creature, targetPlayer)) {
+			StringIdChatParameter stringId("duel", "already_dueling");
+			stringId.setTT(targetPlayer->getObjectID());
+			creature->sendSystemMessage(stringId);
+
+			return GENERALERROR;
+		}
+
+		auto ghost = targetPlayer->getPlayerObject();
+
+		if (ghost == nullptr)
+			return GENERALERROR;
+
+		if (ghost->isIgnoring(creature->getFirstName()))
+			return GENERALERROR;
+
+
+		combatManager->requestDuel(creature, targetPlayer);
 
 		return SUCCESS;
 	}
-
 };
 
-#endif //DUELCOMMAND_H_
+#endif // DUELCOMMAND_H_
