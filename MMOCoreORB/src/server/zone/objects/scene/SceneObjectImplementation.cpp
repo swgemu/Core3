@@ -1939,7 +1939,8 @@ Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(
 
 	Vector<Reference<MeshData*>> data = appearance->getTransformedMeshData(fullTransform);
 
-	FloorMesh *floor = TemplateManager::instance()->getFloorMesh(appearance->getFloorMesh());
+	FloorMesh* floor = TemplateManager::instance()->getFloorMesh(appearance->getFloorMesh());
+
 	if (floor != nullptr)
 		data.addAll(floor->getTransformedMeshData(fullTransform));
 

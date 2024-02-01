@@ -28,8 +28,7 @@ class LightObject extends TangibleObject {
 	protected int lifespanSeconds;
 
 	public LightObject() {
-		burntOut = false;
-		firstUpdate = true;
+		initializeMembers();
 	}
 
 	public native void initializeMembers();
