@@ -177,6 +177,20 @@ void ActiveAreaImplementation::sendDebugMessage(SceneObject* object, bool entry)
 	if (isLockedArea())
 		regionTypes << "LOCKEDAREA";
 
+	if (isNoCombatArea())
+		regionTypes << "NOCOMBATAREA";
+	if (isNoDuelArea())
+		regionTypes << "NODUELAREA";
+	if (isPvpArea())
+		regionTypes << "PVPAREA";
+	if (isOvertArea())
+		regionTypes << "OVERTAREA";
+	if (isRebelArea())
+		regionTypes << "REBELAREA";
+	if (isImperialArea())
+		regionTypes << "IMPERIALAREA";
+	if (isNoPetArea())
+		regionTypes << "NOPETAREA";
 
 	debugMsg << " Region Types: (" << regionTypes.toString() << ")";
 
