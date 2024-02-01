@@ -178,7 +178,6 @@ SceneObject* CraftingStationImplementation::findCraftingTool(CreatureObject* pla
 }
 
 void CraftingStationImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	/// useModifer is the effectiveness
-
+	// usemodifier is the effectiveness
 	effectiveness = values->getCurrentValue("usemodifier");
 }
