@@ -14,7 +14,7 @@ import engine.log.Logger;
 include system.lang.ref.Reference;
 include system.lang.Time;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
-include server.zone.TreeEntry;
+include server.zone.QuadTreeEntry;
 
 @json
 class LightObject extends TangibleObject {
@@ -34,7 +34,7 @@ class LightObject extends TangibleObject {
 	public native void initializeMembers();
 
 	@local
-	public native void notifyInsert(TreeEntry obj);
+	public native void notifyInsert(QuadTreeEntry obj);
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature

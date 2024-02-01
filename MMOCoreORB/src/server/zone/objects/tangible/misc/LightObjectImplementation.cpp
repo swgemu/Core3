@@ -27,7 +27,7 @@ void LightObjectImplementation::initializeMembers() {
 	setLoggingName("LightObject");
 }
 
-void LightObjectImplementation::notifyInsert(TreeEntry* object) {
+void LightObjectImplementation::notifyInsert(QuadTreeEntry* object) {
 	// Not a crafted candle or lamp
 	if (getCraftersID() == 0 || isClientObject())
 		return;
