@@ -37,6 +37,9 @@ Luna<LuaActiveArea>::RegType LuaActiveArea::Register[] = {
 		{ "isLockedArea", &LuaActiveArea::isLockedArea },
 		{ "setLockedArea", &LuaActiveArea::setLockedArea },
 		{ "setCampingArea", &LuaActiveArea::setCampingArea },
+		{ "isCampingArea", &LuaActiveArea::isCampingArea },
+		{ "setNoDuelArea", &LuaActiveArea::setNoDuelArea },
+		{ "isNoDuelArea", &LuaActiveArea::isNoDuelArea },
 		{ "getAreaName", &LuaActiveArea::getAreaName },
 		{ 0, 0 }
 };
@@ -145,7 +148,12 @@ int LuaActiveArea::isNoSpawnArea(lua_State* L) {
 int LuaActiveArea::setPvpArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 	Locker realObjectLocker(realObject);
-	realObject->setPvpArea(val);
+
+	if (val) {
+		realObject->addAreaFlag(ActiveArea::PVPAREA);
+	} else {
+		realObject->removeAreaFlag(ActiveArea::PVPAREA);
+	}
 
 	return 0;
 }
@@ -161,13 +169,18 @@ int LuaActiveArea::isPvpArea(lua_State* L) {
 int LuaActiveArea::setOvertOnlyArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 	Locker realObjectLocker(realObject);
-	realObject->setOvertOnlyArea(val);
+
+	if (val) {
+		realObject->addAreaFlag(ActiveArea::OVERTAREA);
+	} else {
+		realObject->removeAreaFlag(ActiveArea::OVERTAREA);
+	}
 
 	return 0;
 }
 
 int LuaActiveArea::isOvertOnlyArea(lua_State* L) {
-	bool val = realObject->isOvertOnlyArea();
+	bool val = realObject->isOvertArea();
 
 	lua_pushboolean(L, val);
 
@@ -177,13 +190,18 @@ int LuaActiveArea::isOvertOnlyArea(lua_State* L) {
 int LuaActiveArea::setRebelOnlyArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 	Locker realObjectLocker(realObject);
-	realObject->setRebelOnlyArea(val);
+
+	if (val) {
+		realObject->addAreaFlag(ActiveArea::REBELAREA);
+	} else {
+		realObject->removeAreaFlag(ActiveArea::REBELAREA);
+	}
 
 	return 0;
 }
 
 int LuaActiveArea::isRebelOnlyArea(lua_State* L) {
-	bool val = realObject->isRebelOnlyArea();
+	bool val = realObject->isRebelArea();
 
 	lua_pushboolean(L, val);
 
@@ -193,13 +211,18 @@ int LuaActiveArea::isRebelOnlyArea(lua_State* L) {
 int LuaActiveArea::setImperialOnlyArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 	Locker realObjectLocker(realObject);
-	realObject->setImperialOnlyArea(val);
+
+	if (val) {
+		realObject->addAreaFlag(ActiveArea::IMPERIALAREA);
+	} else {
+		realObject->removeAreaFlag(ActiveArea::IMPERIALAREA);
+	}
 
 	return 0;
 }
 
 int LuaActiveArea::isImperialOnlyArea(lua_State* L) {
-	bool val = realObject->isImperialOnlyArea();
+	bool val = realObject->isImperialArea();
 
 	lua_pushboolean(L, val);
 
@@ -209,7 +232,12 @@ int LuaActiveArea::isImperialOnlyArea(lua_State* L) {
 int LuaActiveArea::setNoCombatArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 	Locker realObjectLocker(realObject);
-	realObject->setNoCombatArea(val);
+
+	if (val) {
+		realObject->addAreaFlag(ActiveArea::NOCOMBATAREA);
+	} else {
+		realObject->removeAreaFlag(ActiveArea::NOCOMBATAREA);
+	}
 
 	return 0;
 }
@@ -225,7 +253,12 @@ int LuaActiveArea::isNoCombatArea(lua_State* L) {
 int LuaActiveArea::setNoPetArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 	Locker realObjectLocker(realObject);
-	realObject->setNoPetArea(val);
+
+	if (val) {
+		realObject->addAreaFlag(ActiveArea::NOPETAREA);
+	} else {
+		realObject->removeAreaFlag(ActiveArea::NOPETAREA);
+	}
 
 	return 0;
 }
@@ -241,7 +274,12 @@ int LuaActiveArea::isNoPetArea(lua_State* L) {
 int LuaActiveArea::setLockedArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 	Locker realObjectLocker(realObject);
-	realObject->setLockedArea(val);
+
+	if (val) {
+		realObject->addAreaFlag(ActiveArea::LOCKEDAREA);
+	} else {
+		realObject->removeAreaFlag(ActiveArea::LOCKEDAREA);
+	}
 
 	return 0;
 }
@@ -265,6 +303,35 @@ int LuaActiveArea::setCampingArea(lua_State* L) {
 	}
 
 	return 0;
+}
+
+int LuaActiveArea::isCampingArea(lua_State* L) {
+	bool val = realObject->isCampingArea();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaActiveArea::setNoDuelArea(lua_State* L) {
+	bool val = lua_toboolean(L, -1);
+	Locker realObjectLocker(realObject);
+
+	if (val) {
+		realObject->addAreaFlag(ActiveArea::NODUELAREA);
+	} else {
+		realObject->removeAreaFlag(ActiveArea::NODUELAREA);
+	}
+
+	return 0;
+}
+
+int LuaActiveArea::isNoDuelArea(lua_State* L) {
+	bool val = realObject->isNoDuelArea();
+
+	lua_pushboolean(L, val);
+
+	return 1;
 }
 
 int LuaActiveArea::getAreaName(lua_State* L) {
