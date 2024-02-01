@@ -2155,10 +2155,11 @@ FighterShipObject* SceneObjectImplementation::asFighterShip() {
 	return nullptr;
 }
 
-Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) const {
-	const AppearanceTemplate *appearance = getObjectTemplate()->getAppearanceTemplate();
-	if(appearance == nullptr) {
-		Vector<Reference<MeshData*> > emptyData;
+Vector<Reference<MeshData*>> SceneObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) const {
+	const AppearanceTemplate* appearance = getObjectTemplate()->getAppearanceTemplate();
+
+	if (appearance == nullptr) {
+		Vector<Reference<MeshData*>> emptyData;
 		return emptyData;
 	}
 
@@ -2172,7 +2173,8 @@ Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(
 
 	Vector<Reference<MeshData*>> data = appearance->getTransformedMeshData(fullTransform);
 
-	FloorMesh *floor = TemplateManager::instance()->getFloorMesh(appearance->getFloorMesh());
+	FloorMesh* floor = TemplateManager::instance()->getFloorMesh(appearance->getFloorMesh());
+
 	if (floor != nullptr)
 		data.addAll(floor->getTransformedMeshData(fullTransform));
 

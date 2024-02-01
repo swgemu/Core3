@@ -10,18 +10,26 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
-//#define DEBUG_LIGHTS
+// #define DEBUG_LIGHTS
 
 void LightObjectImplementation::initializeMembers() {
+	if (getCraftersID() == 0 || isClientObject()) {
+		burntOut = true;
+		return;
+	}
+
 	lifespan.updateToCurrentTime();
 	creationMili = System::getMiliTime();
+
+	burntOut = false;
+	firstUpdate = true;
 
 	setLoggingName("LightObject");
 }
 
 void LightObjectImplementation::notifyInsert(TreeEntry* object) {
 	// Not a crafted candle or lamp
-	if (getCraftersID() == 0)
+	if (getCraftersID() == 0 || isClientObject())
 		return;
 
 	auto zoneServer = getZoneServer();
@@ -46,6 +54,9 @@ void LightObjectImplementation::notifyInsert(TreeEntry* object) {
 }
 
 void LightObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
+	if (isClientObject())
+		return;
+
 	TangibleObjectImplementation::fillAttributeList(alm, player);
 
 	// Candle/Lamp is burnt out, no need to calculate any times
@@ -118,9 +129,9 @@ void LightObjectImplementation::updateLifespan() {
 #ifdef DEBUG_LIGHTS
 	info(true) << "updateLifespan -- called";
 #endif
-	if (burntOut) {
+
+	if (burntOut || getCraftersID() == 0 || isClientObject())
 		return;
-	}
 
 	Locker lock(asTangibleObject());
 
