@@ -75,6 +75,8 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 			auto filter = parseFilter(iffStream);
 
 			if (filter == nullptr) {
+
+				Logger::console.info(true) << " ========== PARSE AFFECTOR ==========";
 				auto rule = parseAffector(iffStream);
 
 				if (rule == nullptr) {
@@ -92,14 +94,20 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 					AffectorProceduralRule* affector = dynamic_cast<AffectorProceduralRule*>(rule);
 
 					if (affector != nullptr) {
+						Logger::console.info(true) << "Affector added - Type: " << affector->getAffectorType();
+
+						if (!affector->isEnabled())
+							Logger::console.info(true) << "Affector with Type: " << affector->getAffectorType() << " is NOT enabled";
+						else
+							Logger::console.info(true) << "Affector with Type: " << affector->getAffectorType() << " is enabled";
+
 						affectors.add(affector);
 
-						/*if (affector->isEnabled()) {
-
-						  if (affector->isHeightTypeAffector())
-						  heightAffectors.add(affector);
-						  else if (affector->is)
-						  }*/
+						if (affector->isEnabled() && affector->isHeightTypeAffector()) {
+							Logger::console.info(true) << "Current affector is heightTypeAffector";
+							//heightAffectors.add(affector);
+							//else if (affector->is)
+						}
 					}
 				}
 
@@ -197,6 +205,10 @@ IffTemplateVariable* Layer::parseAffector(IffStream* iffStream) {
 		break;
 	}
 	case ('AROA'): {
+		Logger::console.info(true) << "Loading AffectorRoad...";
+
+		//E3_ASSERT(1 == 0);
+
 		res = new AffectorRoad();
 		break;
 	}

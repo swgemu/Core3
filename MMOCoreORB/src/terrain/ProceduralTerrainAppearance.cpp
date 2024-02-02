@@ -296,6 +296,8 @@ float ProceduralTerrainAppearance::processTerrain(const Layer* layer, float x, f
 	FilterRectangle rect;
 	rect.minX = FLT_MAX, rect.maxX = -FLT_MAX, rect.minY = FLT_MAX, rect.maxY = -FLT_MAX;
 
+	Logger::console.info(true) << "ProceduralTerrainAppearance::processTerrain -- called";
+
 	for (int i = 0; i < boundaries->size(); ++i) {
 		const Boundary* boundary = boundaries->get(i);
 
@@ -368,11 +370,24 @@ float ProceduralTerrainAppearance::processTerrain(const Layer* layer, float x, f
 			for (int i = 0; i < affectors->size(); ++i) {
 				AffectorProceduralRule* affector = affectors->get(i);
 
-				/*if (!affector->isEnabled()) filtered in height affectors vector
-					continue;*/
+				if (!affector->isEnabled()) // filtered in height affectors vector
+					continue;
 
-				if (affector->isEnabled() && (affector->getAffectorType() & affectorType))
+				if (affector->getAffectorType() & affectorType) {
+					Logger::console.info(true) << "Processing affectorType: " << affector->getAffectorType();
+
+					/*
+						baseValue needs to be updated for the correct height by the affector. It is passed by reference
+					*/
+
 					affector->process(x, y, transformValue * affectorTransformValue, baseValue, terrainGenerator);
+
+
+
+
+				} else {
+					Logger::console.info(true) << "SKIPPED affectorType: " << affector->getAffectorType();
+				}
 			}
 
 			const Vector<Layer*>* children = layer->getChildren();
@@ -384,9 +399,7 @@ float ProceduralTerrainAppearance::processTerrain(const Layer* layer, float x, f
 					processTerrain(layer, x, y, baseValue, affectorTransformValue * transformValue, affectorType);
 				}
 			}
-
 		}
-
 	}
 
 	return transformValue;
@@ -439,6 +452,8 @@ float ProceduralTerrainAppearance::getHeight(float x, float y) const {
 
 		for (int i = 0; i < layers->size(); ++i) {
 			const Layer* layer = layers->get(i);
+
+			// Uses layer to get height here
 
 			if (layer->isEnabled())
 				transformValue = processTerrain(layer, x, y, fullTraverse, affectorTransform, AffectorProceduralRule::HEIGHTTYPE);
