@@ -11,7 +11,7 @@
 #include "../ProceduralRule.h"
 #include "terrain/layer/affectors/AffectorProceduralRule.h"
 #include "../Road.h"
-#include "../Hdta.h"
+#include "../HeightData.h"
 
 class Point2D  {
 public:
@@ -29,7 +29,7 @@ public:
 
 class AffectorRiver : public ProceduralRule<'ARIV'>, public AffectorProceduralRule {
 	Road road;
-	Hdta hdta;
+	HeightData hdta;
 
 	int var1;
 
