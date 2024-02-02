@@ -8,7 +8,6 @@
 #ifndef ROAD_H_
 #define ROAD_H_
 
-
 #include "../TemplateVariable.h"
 #include "Segment.h"
 
@@ -17,7 +16,6 @@ class Road : public TemplateVariable<'ROAD'> {
 
 public:
 	Road() : IffTemplateVariable() {
-
 	}
 
 	~Road() {
@@ -31,12 +29,12 @@ public:
 		iffStream->openForm(version);
 
 		switch (version) {
-		case '0001':
-			parseFromIffStream(iffStream, Version<'0001'>());
-			break;
-		default:
-			System::out << "unknown Road version " << version << endl;
-			break;
+			case '0001':
+				parseFromIffStream(iffStream, Version<'0001'>());
+				break;
+			default:
+				System::out << "unknown Road version " << version << endl;
+				break;
 		}
 
 		iffStream->closeForm(version);
@@ -51,8 +49,9 @@ public:
 
 			sgmts.add(sgmt);
 		}
+
+		// Logger::console.info(true) << "Road finished loading segments - Total Segments: " << sgmts.size();
 	}
 };
-
 
 #endif /* ROAD_H_ */
