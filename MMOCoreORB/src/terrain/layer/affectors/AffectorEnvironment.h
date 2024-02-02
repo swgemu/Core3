@@ -49,9 +49,9 @@ public:
 		iffStream->closeChunk('DATA');
 	}
 
-	void process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
+	void process(float x, float y, float& transformValue, float baseValue, TerrainGenerator* terrainGenerator) {
 		//System::out << "processing AffectorEnvironment value:" << environmentId << endl;
-		baseValue = (float)environmentId;
+		transformValue = (float)environmentId;
 	}
 
 	bool isEnabled() {

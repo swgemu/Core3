@@ -18,6 +18,8 @@ class BoundaryRectangle : public Boundary {
 	float y0;
 	float x1;
 	float y1;
+	float upperMidX, upperMidY;
+
 	int var7;
 	int localWaterTableEnabled;
 	float localWaterTableHeight;
@@ -48,8 +50,16 @@ public:
 		this->y1 = y1;
 	}
 
-	~BoundaryRectangle() {
+	BoundaryRectangle(float x0, float y0, float x1, float y1, float upperMidX, float upperMidY) : Boundary('BREC') {
+		this->x0 = x0;
+		this->x1 = x1;
+		this->y0 = y0;
+		this->y1 = y1;
+		this->upperMidX = upperMidX;
+		this->upperMidY = upperMidY;
+	}
 
+	~BoundaryRectangle() {
 	}
 
 	void executeRule(ProceduralTerrainAppearance* generator) final {
@@ -260,6 +270,13 @@ public:
 		return y1;
 	}
 
+	float getUpperMiddleX(){
+		return upperMidX;
+	}
+
+	float getUpperMiddleY() {
+		return upperMidY;
+	}
 };
 
 
