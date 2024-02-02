@@ -92,14 +92,19 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 					AffectorProceduralRule* affector = dynamic_cast<AffectorProceduralRule*>(rule);
 
 					if (affector != nullptr) {
+						/*if (!affector->isEnabled())
+							Logger::console.info(true) << "Affector with Type: " << affector->getAffectorType() << " is NOT enabled";
+						else
+							Logger::console.info(true) << "Affector with Type: " << affector->getAffectorType() << " is enabled";
+						*/
+
 						affectors.add(affector);
 
-						/*if (affector->isEnabled()) {
-
-						  if (affector->isHeightTypeAffector())
-						  heightAffectors.add(affector);
-						  else if (affector->is)
-						  }*/
+						/*if (affector->isEnabled() && affector->isHeightTypeAffector()) {
+							Logger::console.info(true) << "Current affector is heightTypeAffector";
+							//heightAffectors.add(affector);
+							//else if (affector->is)
+						}*/
 					}
 				}
 
