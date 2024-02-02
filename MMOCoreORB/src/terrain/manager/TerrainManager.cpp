@@ -29,6 +29,8 @@ bool TerrainManager::initialize(const String& terrainFile) {
 	if (iffStream == nullptr)
 		return false;
 
+	info(true) << "TerrainManager::initialize - Terrain: " << terrainFile;
+
 	if (iffStream->getNextFormType() == 'PTAT') {
 		terrainData = new ProceduralTerrainAppearance();
 	} else if (iffStream->getNextFormType() == 'STAT') {

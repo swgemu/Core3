@@ -11,90 +11,61 @@
 #include "../ProceduralRule.h"
 #include "../Road.h"
 #include "../Hdta.h"
+#include "../boundaries/BoundaryRectangle.h"
+#include "../../TerrainGenerator.h"
+#include "AffectorRiver.h"
+
+class TerrainGenerator;
+
+#define DEBUG_AFFECTOR_ROAD
 
 class AffectorRoad : public ProceduralRule<'AROA'>, public AffectorProceduralRule {
 	Road road;
 	Hdta hdta;
 
-	int var1;
+	uint32 type;
+	int coordinateCount;
 
-	Vector<Point2D*> positions;
+	Point2D startPoint;
+	Point2D endPoint;
+	Vector<Point2D*> midPositions;
 
-	float var2;
-	int var3;
+	Vector<BoundaryRectangle*> rectangles;
+
+	float width;
+	int familyID;
+
 	int featheringType;
 	float featheringAmount;
-	int var6;
-	float var7;
+	int featheringShader;
+	float featheringShaderDistance;
 
 public:
-	AffectorRoad() : var1(0), var2(0), var3(0), featheringType(0), featheringAmount(0), var6(0), var7(0) {
-
+	AffectorRoad() : coordinateCount(0), width(0.f), familyID(0), featheringType(0), featheringAmount(0), featheringShader(0), featheringShaderDistance(0.5f) {
+		affectorType = HEIGHTROAD;
 	}
 
 	~AffectorRoad() {
-		for (int i = 0; i < positions.size(); ++i)
-			delete positions.get(i);
+		for (int i = 0; i < midPositions.size(); ++i)
+			delete midPositions.get(i);
+
+		midPositions.removeAll();
 	}
 
-	void parseFromIffStream(engine::util::IffStream* iffStream) {
-		uint32 version = iffStream->getNextFormType();
+	void process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator);
 
-		iffStream->openForm(version);
+	void parseFromIffStream(engine::util::IffStream* iffStream);
+	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0005'>);
+	void addNewRectangle(float x1, float y1, float x2, float y2);
+	void generateRectangles();
+	void sendDebugMessage(String message);
 
-		switch (version) {
-		case '0005':
-			parseFromIffStream(iffStream, Version<'0005'>());
-			break;
-		default:
-			System::out << "unknown AffectorRoad version 0x" << hex << version << endl;
-			break;
-		}
-
-		iffStream->closeForm(version);
+	inline int getFamilyID() {
+		return familyID;
 	}
 
-	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0005'>) {
-		informationHeader.readObject(iffStream);
-
-		iffStream->openForm('DATA');
-
-		uint32 type = iffStream->getNextFormType();
-
-		switch (type) {
-		case ('ROAD'):
-			road.readObject(iffStream);
-			break;
-		case ('HDTA'):
-			hdta.readObject(iffStream);
-			break;
-		default:
-			System::out << "Unknown type in AffectorRoad, expecting ROAD or HDTA!\n";
-			break;
-		}
-
-		iffStream->openChunk('DATA');
-
-		var1 = iffStream->getInt();
-
-		for (int i = 0; i < var1; i++) {
-			Point2D* pos = new Point2D();
-			pos->x = iffStream->getFloat();
-			pos->y = iffStream->getFloat();
-
-			positions.add(pos);
-		}
-
-		var2 = iffStream->getFloat();
-		var3 = iffStream->getInt();
-		featheringType = iffStream->getInt();
-		featheringAmount = iffStream->getFloat();
-		var6 = iffStream->getInt();
-		var7 = iffStream->getFloat();
-
-		iffStream->closeChunk('DATA');
-
-		iffStream->closeForm('DATA');
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 
