@@ -22,6 +22,7 @@ public:
 	const static int HEIGHTFRACTAL = 0x101;
 	const static int HEIGHTTERRACE = 0x102;
 	const static int HEIGHTCONSTANT = 0x103;
+	const static int HEIGHTROAD = 0x104;
 	const static int ENVIRONMENT = 0x200;
 
 	virtual ~AffectorProceduralRule() {
