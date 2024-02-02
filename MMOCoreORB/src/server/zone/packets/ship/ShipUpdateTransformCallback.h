@@ -38,7 +38,7 @@ private:
 
 protected:
 	const static constexpr float positionMod = 1.5f;
-	const static constexpr float positionScale = 8000.f / 32768.f;
+	const static constexpr float positionScale = 8000.f / 32767.f;
 	const static constexpr float directionScale = 1.f / 127.f;
 
 	uint16 shipId;
