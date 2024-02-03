@@ -2191,7 +2191,7 @@ bool SceneObjectImplementation::isNearBank() {
 
 	if (zone != nullptr) {
 		SortedVector<QuadTreeEntry* > closeObjects;
-		zone->getInRangeObjects(getPositionX(), getPositionY(), 15.f, &closeObjects, true, false);
+		zone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), 15.f, &closeObjects, true, true);
 
 		bool nearBank = false;
 
