@@ -48,10 +48,13 @@ public:
 			return;
 		}
 
-		float randomizeLaunch = 750.f + System::random(1500 - 750);
+		Vector3 launchPosition = planetManager->getJtlLaunchLocations();
 
-		Vector3 randomPosition = Vector3(randomizeLaunch, randomizeLaunch, randomizeLaunch);
-		Vector3 launchPosition = planetManager->getJtlLaunchLocations() + randomPosition;
+		float randomX = Math::clamp(-7680.f, ((System::random(1500.f) - 750.f) + launchPosition.getX()), 7680.f);
+		float randomY = Math::clamp(-7680.f, ((System::random(1500.f) - 750.f) + launchPosition.getY()), 7680.f);
+		float randomZ = Math::clamp(-7680.f, ((System::random(1500.f) - 750.f) + launchPosition.getZ()), 7680.f);
+
+		launchPosition = Vector3(randomX, randomY, randomZ);
 
 		// Lock the control device
 		Locker deviceLock(shipControlDevice);
