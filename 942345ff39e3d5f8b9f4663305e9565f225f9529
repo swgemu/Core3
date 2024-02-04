@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9396974_3b3ea420",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2194,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-02-04T22:25:45Z",
+      "side": 1,
+      "message": "If we are going to be using the world position, maybe we switch to a cov copy instead of the getInRangeObjects like I originally added. Also it might be a good idea to add in a parentID check. It will require them to be in the same cell but prevent abuse like this function does.",
+      "revId": "942345ff39e3d5f8b9f4663305e9565f225f9529",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
