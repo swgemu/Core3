@@ -62,6 +62,10 @@ namespace area {
 		int isLockedArea(lua_State* L);
 
 		int setCampingArea(lua_State* L);
+		int isCampingArea(lua_State* L);
+
+		int setNoDuelArea(lua_State* L);
+		int isNoDuelArea(lua_State* L);
 
 		int getAreaName(lua_State* L);
 	private:

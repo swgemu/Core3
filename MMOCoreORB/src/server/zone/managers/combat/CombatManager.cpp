@@ -3382,6 +3382,15 @@ bool CombatManager::areInDuel(CreatureObject* player1, CreatureObject* player2) 
 	return false;
 }
 
+bool CombatManager::hasActiveDuelChallenge(CreatureObject* challenger, CreatureObject* targetPlayer) const {
+	auto challengerGhost = challenger->getPlayerObject().get();
+
+	if (challengerGhost != nullptr && challengerGhost->requestedDuelTo(targetPlayer))
+		return true;
+
+	return false;
+}
+
 // Check for Temporary Enemy Flags
 
 void CombatManager::checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwCrackdownTef, bool* shouldGcwTef, bool* shouldBhTef) const {
