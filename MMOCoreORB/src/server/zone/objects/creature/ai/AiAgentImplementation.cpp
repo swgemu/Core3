@@ -360,20 +360,21 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	uint32 unarmedHash = STRING_HASHCODE("unarmed");
 	uint32 noneHash = STRING_HASHCODE("none");
 
-	String primWeapString = npcTemplate->getPrimaryWeapon();
-	uint32 primaryWeapHash = primWeapString.hashCode();
+	String primaryWeaponString = npcTemplate->getPrimaryWeapon();
+	uint32 primaryWeaponHash = primaryWeaponString.hashCode();
 
 	// Primary Weapon
 	if (primaryWeaponCrc == 0) {
-		if (primaryWeapHash != unarmedHash && primaryWeapHash != noneHash) {
-			if (primWeapString.indexOf(".iff") != -1) {
-				primaryWeaponCrc = primaryWeapHash;
-			} else {
-				const Vector<String>& primaryTemplates = CreatureTemplateManager::instance()->getWeapons(primaryWeapHash);
+		if (primaryWeaponString != "" && primaryWeaponHash != noneHash) {
+			if (primaryWeaponHash == unarmedHash || primaryWeaponString.indexOf(".iff") != -1) {
+				primaryWeaponCrc = primaryWeaponHash;
+			}
+			else {
+				const Vector<String>& primaryTemplates = CreatureTemplateManager::instance()->getWeapons(primaryWeaponHash);
 
 				if (primaryTemplates.size() > 0) {
-					primWeapString = primaryTemplates.get(System::random(primaryTemplates.size() - 1));
-					primaryWeaponCrc = primWeapString.hashCode();
+					primaryWeaponString = primaryTemplates.get(System::random(primaryTemplates.size() - 1));
+					primaryWeaponCrc = primaryWeaponString.hashCode();
 				}
 			}
 		}
@@ -381,17 +382,20 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	// Secondary Weapon
 	if (secondaryWeaponCrc == 0) {
-		String secondaryWeapString = npcTemplate->getSecondaryWeapon();
-		uint32 secondaryWeapHash = secondaryWeapString.hashCode();
 
-		if (secondaryWeapHash != unarmedHash && secondaryWeapHash != noneHash) {
-			if (secondaryWeapString.indexOf(".iff") != -1) {
-				secondaryWeaponCrc = secondaryWeapHash;
-			} else if (secondaryWeapHash == STRING_HASHCODE("dark_jedi_weapons_ranged") || secondaryWeapHash == STRING_HASHCODE("light_jedi_weapons_ranged") || secondaryWeapHash == STRING_HASHCODE("force_sword_ranged") || secondaryWeapHash == STRING_HASHCODE("force_polearm_ranged")) {
-				secondaryWeapString = primWeapString.replaceFirst(".iff", "_ranged.iff");
-				secondaryWeaponCrc = secondaryWeapString.hashCode();
-			} else {
-				const Vector<String>& secondaryTemplates = CreatureTemplateManager::instance()->getWeapons(secondaryWeapHash);
+		String secondaryWeaponString = npcTemplate->getSecondaryWeapon();
+		uint32 secondaryWeaponHash = secondaryWeaponString.hashCode();
+
+		if (secondaryWeaponString != "" && secondaryWeaponHash != noneHash) {
+			if (secondaryWeaponHash == unarmedHash || secondaryWeaponString.indexOf(".iff") != -1) {
+				secondaryWeaponCrc = secondaryWeaponHash;
+			}
+			else if (secondaryWeaponHash == STRING_HASHCODE("dark_jedi_weapons_ranged") || secondaryWeaponHash == STRING_HASHCODE("light_jedi_weapons_ranged") || secondaryWeaponHash == STRING_HASHCODE("force_sword_ranged") || secondaryWeaponHash == STRING_HASHCODE("force_polearm_ranged")) {
+				secondaryWeaponString = primaryWeaponString.replaceFirst(".iff", "_ranged.iff");
+				secondaryWeaponCrc = secondaryWeaponString.hashCode();
+			}
+			else {
+				const Vector<String>& secondaryTemplates = CreatureTemplateManager::instance()->getWeapons(secondaryWeaponHash);
 
 				if (secondaryTemplates.size() > 0) {
 					String& weaponTemplate = secondaryTemplates.get(System::random(secondaryTemplates.size() - 1));
