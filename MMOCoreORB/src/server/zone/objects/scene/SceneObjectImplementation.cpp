@@ -2188,29 +2188,41 @@ String SceneObjectImplementation::getGameObjectTypeStringID() {
 }
 
 bool SceneObjectImplementation::isNearBank() {
-	Zone* zone = getZone();
 
-	if (zone != nullptr) {
-		SortedVector<QuadTreeEntry* > closeObjects;
-		zone->getInRangeObjects(getPositionX(), getPositionY(), 15.f, &closeObjects, true, false);
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) getCloseObjects();
 
-		bool nearBank = false;
-
-		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* sceneO = cast<SceneObject*>(closeObjects.get(i));
-
-			if (sceneO == nullptr)
-				continue;
-
-			if (sceneO->getGameObjectType() == SceneObjectType::BANK) {
-				nearBank = true;
-				break;
-			}
+	if (closeObjectsVector != nullptr) {
+		closeObjectsVector->safeCopyTo(closeObjects);
+	} else {
+		auto zone = getZone();
+		if (zone != nullptr) {
+			zone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), 15.f, &closeObjects, true, true);
+		} else {
+			return false;
 		}
+	}
 
-		if (nearBank) {
-			return true;
-		}
+	uint64 parentID = getParentID();
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+
+		ManagedReference<SceneObject*> sceneO = cast<SceneObject*>(closeObjects.get(i).get());
+
+		if (sceneO == nullptr)
+			continue;
+
+		if (sceneO->getParentID() != parentID)
+			continue;
+
+		if (sceneO->getGameObjectType() != SceneObjectType::BANK)
+			continue;
+
+		if (closeObjectsVector != nullptr && getDistanceTo(sceneO) > 15.f) 
+			continue;
+
+		return true;
+
 	}
 
 	return false;
