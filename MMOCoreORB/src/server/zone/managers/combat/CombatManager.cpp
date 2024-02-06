@@ -694,7 +694,7 @@ void CombatManager::broadcastCombatAction(CreatureObject* attacker, WeaponObject
 
 	DefenderHitList* hitList = targetDefenders.get(0);
 
-	if (hitList != nullptr) {
+	if (hitList != nullptr && weapon != nullptr) {
 		TangibleObject* defenderObject = hitList->getDefender();
 
 		if (defenderObject != nullptr) {
