@@ -554,8 +554,12 @@ void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPa
 
 		Locker clock(shipMember, asShipObject());
 
-		shipMember->setPosition(getPositionX(),getPositionZ(),getPositionY());
-		shipMember->updateZoneWithParent(shipMember->getParent().get(), lightUpdate, sendPackets);
+		shipMember->setPosition(getPositionX(), getPositionZ(), getPositionY());
+
+		auto parent = shipMember->getParent().get();
+
+		if (parent != nullptr)
+			shipMember->updateZoneWithParent(parent, lightUpdate, sendPackets);
 	}
 }
 
