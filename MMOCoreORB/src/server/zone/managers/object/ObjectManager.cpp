@@ -131,7 +131,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<RecycleTool>(SceneObjectType::RECYCLETOOL);
 	objectFactory.registerObject<AntiDecayKit>(SceneObjectType::ANTIDECAYKIT);
 	objectFactory.registerObject<CraftingStation>(SceneObjectType::CRAFTINGSTATION);
-	objectFactory.registerObject<TangibleObject>(SceneObjectType::FURNITURE);
 	objectFactory.registerObject<SignObject>(SceneObjectType::SIGN);
 	objectFactory.registerObject<Instrument>(SceneObjectType::INSTRUMENT);
 	objectFactory.registerObject<Food>(SceneObjectType::FOOD);
@@ -149,6 +148,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<FsCsObject>(SceneObjectType::FSCSOBJECT);
 	objectFactory.registerObject<FsBuffItem>(SceneObjectType::FSBUFFITEM);
 	objectFactory.registerObject<DeadEyePrototype>(SceneObjectType::DEADEYEPROTOTYPE);
+	objectFactory.registerObject<FurnitureObject>(SceneObjectType::FURNITURE);
 	objectFactory.registerObject<LightObject>(SceneObjectType::LIGHTOBJECT);
 	objectFactory.registerObject<ContractCrate>(SceneObjectType::CONTRACTCRATE);
 	objectFactory.registerObject<SlicingTool>(SceneObjectType::SLICINGTOOL);

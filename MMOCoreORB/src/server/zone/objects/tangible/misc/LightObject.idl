@@ -5,7 +5,7 @@
 
 package server.zone.objects.tangible.misc;
 
-import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.misc.FurnitureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
@@ -15,9 +15,11 @@ include system.lang.ref.Reference;
 include system.lang.Time;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.TreeEntry;
+include server.zone.Zone;
+include server.zone.objects.tangible.components.LightObserver;
 
 @json
-class LightObject extends TangibleObject {
+class LightObject extends FurnitureObject {
 	@dereferenced
 	protected Time lifespan;
 
@@ -32,6 +34,8 @@ class LightObject extends TangibleObject {
 	}
 
 	public native void initializeMembers();
+
+	public native void notifyInsertToZone(Zone zone);
 
 	@local
 	public native void notifyInsert(TreeEntry obj);

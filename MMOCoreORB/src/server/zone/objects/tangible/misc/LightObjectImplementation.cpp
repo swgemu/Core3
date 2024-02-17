@@ -10,7 +10,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
-// #define DEBUG_LIGHTS
+#define DEBUG_LIGHTS
 
 void LightObjectImplementation::initializeMembers() {
 	if (getCraftersID() == 0 || isClientObject()) {
@@ -25,6 +25,21 @@ void LightObjectImplementation::initializeMembers() {
 	firstUpdate = true;
 
 	setLoggingName("LightObject");
+}
+
+void LightObjectImplementation::notifyInsertToZone(Zone* zone) {
+
+	if (!burntOut) {
+		ManagedReference<LightObserver*> observer = new LightObserver();
+
+		if (observer != nullptr) {
+			info(true) << " observer registered";
+
+			registerObserver(ObserverEventType::PARENTCHANGED, observer);
+		}
+	}
+
+	TangibleObjectImplementation::notifyInsertToZone(zone);
 }
 
 void LightObjectImplementation::notifyInsert(TreeEntry* object) {
@@ -113,14 +128,11 @@ void LightObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 }
 
 void LightObjectImplementation::calculateLifespan(int lifespanVar) {
-	lifespanVar *= 86400; // Converting from number of days to seconds
+	lifespanSeconds = lifespanVar * 86400; // Converting from number of days to seconds
 
 #ifdef DEBUG_LIGHTS
-	info(true) << "final lifespan in seconds = " << lifespanVar;
+	info(true) << "final lifespan in seconds = " << lifespanSeconds;
 #endif
-	lifespanSeconds = lifespanVar;
-
-	lifespanSeconds = 30;
 
 	burntOut = false;
 }

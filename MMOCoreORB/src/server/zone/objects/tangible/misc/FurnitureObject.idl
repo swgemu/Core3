@@ -1,0 +1,16 @@
+/*
+			Copyright <SWGEmu>
+	See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.tangible.misc;
+
+import server.zone.objects.tangible.TangibleObject;
+
+@json
+class FurnitureObject extends TangibleObject {
+	public FurnitureObject() {
+		initializeMembers();
+	}
+
+}
