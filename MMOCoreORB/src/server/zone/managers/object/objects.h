@@ -133,6 +133,7 @@
 #include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/objects/tangible/misc/ContractCrate.h"
 #include "server/zone/objects/tangible/misc/DeadEyePrototype.h"
+#include "server/zone/objects/tangible/misc/FurnitureObject.h"
 #include "server/zone/objects/tangible/misc/LightObject.h"
 
 #endif /* OBJECTS_H_ */

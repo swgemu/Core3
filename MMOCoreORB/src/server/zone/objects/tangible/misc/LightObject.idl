@@ -5,7 +5,7 @@
 
 package server.zone.objects.tangible.misc;
 
-import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.misc.FurnitureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
@@ -15,9 +15,11 @@ include system.lang.ref.Reference;
 include system.lang.Time;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.QuadTreeEntry;
+include server.zone.Zone;
+include server.zone.objects.tangible.components.LightObserver;
 
 @json
-class LightObject extends TangibleObject {
+class LightObject extends FurnitureObject {
 	@dereferenced
 	protected Time lifespan;
 
@@ -28,13 +30,14 @@ class LightObject extends TangibleObject {
 	protected int lifespanSeconds;
 
 	public LightObject() {
+		Logger.setLoggingName("LightObject");
+
 		initializeMembers();
 	}
 
 	public native void initializeMembers();
 
-	@local
-	public native void notifyInsert(QuadTreeEntry obj);
+	public native void notifyInsertToZone(Zone zone);
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -51,11 +54,14 @@ class LightObject extends TangibleObject {
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
 	@local
+	@preLocked
 	public native void updateLifespan();
 
 	@local
 	@preLocked
 	public native void updateTemplate();
+
+	public native boolean lifespanIsPast();
 
 	public void setBurntOut(boolean val) {
 		burntOut = val;

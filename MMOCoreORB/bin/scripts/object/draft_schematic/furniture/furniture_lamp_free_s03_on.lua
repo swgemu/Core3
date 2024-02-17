@@ -42,10 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_lamp_free_s03_on = object_draft_schematic_furniture_shared_furniture_lamp_free_s03_on:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "Free-standing Lamp \'Tallbirch\'",
 
 	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 18,
