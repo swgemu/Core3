@@ -1,0 +1,22 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+import engine.core.ManagedObject;
+import engine.util.Observer;
+import engine.util.Observable;
+
+include engine.log.Logger;
+
+class LightObserver extends Observer implements Logger {
+
+	public LightObserver() {
+		super();
+
+		Logger.setLoggingName("LightObserver");
+	}
+
+	@local
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+}

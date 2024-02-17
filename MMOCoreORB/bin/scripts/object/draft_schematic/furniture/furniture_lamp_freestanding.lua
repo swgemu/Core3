@@ -42,10 +42,7 @@
 
 
 object_draft_schematic_furniture_furniture_lamp_freestanding = object_draft_schematic_furniture_shared_furniture_lamp_freestanding:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "Free-standing Lamp",
 
 	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 18,

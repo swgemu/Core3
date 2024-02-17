@@ -13,44 +13,23 @@
 // #define DEBUG_LIGHTS
 
 void LightObjectImplementation::initializeMembers() {
-	if (getCraftersID() == 0 || isClientObject()) {
-		burntOut = true;
-		return;
-	}
-
 	lifespan.updateToCurrentTime();
 	creationMili = System::getMiliTime();
 
 	burntOut = false;
 	firstUpdate = true;
-
-	setLoggingName("LightObject");
 }
 
-void LightObjectImplementation::notifyInsert(TreeEntry* object) {
-	// Not a crafted candle or lamp
-	if (getCraftersID() == 0 || isClientObject())
-		return;
+void LightObjectImplementation::notifyInsertToZone(Zone* zone) {
+	if (!burntOut && getObservers(ObserverEventType::PARENTCHANGED).size() == 0) {
+		ManagedReference<LightObserver*> observer = new LightObserver();
 
-	auto zoneServer = getZoneServer();
+		if (observer != nullptr) {
+			registerObserver(ObserverEventType::PARENTCHANGED, observer);
+		}
+	}
 
-	if (zoneServer == nullptr || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown())
-		return;
-
-	auto sceneO = static_cast<SceneObject*>(object);
-
-	if (sceneO == nullptr || !sceneO->isPlayerCreature())
-		return;
-
-	Reference<LightObject*> lightRef = _this.getReferenceUnsafeStaticCast();
-
-	Core::getTaskManager()->scheduleTask([lightRef]{
-		if (lightRef == nullptr)
-			return;
-
-		// Upate the light lifespan
-		lightRef->updateLifespan();
-	}, "LightUpdateTask", 100);
+	TangibleObjectImplementation::notifyInsertToZone(zone);
 }
 
 void LightObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
@@ -59,17 +38,14 @@ void LightObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 
 	TangibleObjectImplementation::fillAttributeList(alm, player);
 
+	Time now;
+	int remainingSeconds = lifespan.getTime() - now.getTime();
+
 	// Candle/Lamp is burnt out, no need to calculate any times
-	if (burntOut) {
+	if (burntOut || (!firstUpdate && remainingSeconds < 1)) {
 		alm->insertAttribute("@obj_attr_n:lifespan", "0 days.");
 		return;
 	}
-
-	// Upate the light lifespan
-	updateLifespan();
-
-	Time now;
-	int remainingSeconds = lifespan.getTime() - now.getTime();
 
 	// Light is not in a cell
 	if (firstUpdate) {
@@ -113,14 +89,11 @@ void LightObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 }
 
 void LightObjectImplementation::calculateLifespan(int lifespanVar) {
-	lifespanVar *= 86400; // Converting from number of days to seconds
+	lifespanSeconds = lifespanVar * 86400; // Converting from number of days to seconds
 
 #ifdef DEBUG_LIGHTS
-	info(true) << "final lifespan in seconds = " << lifespanVar;
+	info(true) << "final lifespan in seconds = " << lifespanSeconds;
 #endif
-	lifespanSeconds = lifespanVar;
-
-	lifespanSeconds = 30;
 
 	burntOut = false;
 }
@@ -130,10 +103,8 @@ void LightObjectImplementation::updateLifespan() {
 	info(true) << "updateLifespan -- called";
 #endif
 
-	if (burntOut || getCraftersID() == 0 || isClientObject())
+	if (burntOut || isClientObject())
 		return;
-
-	Locker lock(asTangibleObject());
 
 	auto parent = getParent().get();
 
@@ -153,29 +124,25 @@ void LightObjectImplementation::updateLifespan() {
 			info(true) << " LIGHT HAS BEEN PICKED UP AND MODIFIED FOR STORAGE -- lifespanSeconds =  " << lifespanSeconds;
 #endif
 		}
+
 		return;
 	}
 
-	// Item has been dropped into a cell
-	if (firstUpdate) {
-		firstUpdate = false;
+	if (!firstUpdate) {
+		return;
+	}
 
-		uint64 lifespanMili = ((uint64)lifespanSeconds) * 1000;
+	firstUpdate = false;
+
+	uint64 lifespanMili = ((uint64)lifespanSeconds) * 1000;
 
 #ifdef DEBUG_LIGHTS
-		info(true) << "Light firstUpdate -- lifespanMili: " << lifespanMili << " using lifespanSeconds: " << lifespanSeconds;
+	info(true) << "Light firstUpdate -- lifespanMili: " << lifespanMili << " using lifespanSeconds: " << lifespanSeconds;
 #endif
 
-		// Update lifespan time
-		lifespan.updateToCurrentTime();
-		lifespan.addMiliTime(lifespanMili);
-
-		return;
-	}
-
-	// Candle or lamp has decayed, change template to non lit version
-	if (lifespan.isPast())
-		updateTemplate();
+	// Update lifespan time
+	lifespan.updateToCurrentTime();
+	lifespan.addMiliTime(lifespanMili);
 }
 
 void LightObjectImplementation::updateTemplate() {
@@ -227,10 +194,11 @@ void LightObjectImplementation::updateTemplate() {
 
 	Locker clock(newLight, asTangibleObject());
 
-	// info(true) << " New Light created: " << newLight->getDisplayedName();
+#ifdef DEBUG_LIGHTS
+	info(true) << " New Light created: " << newLight->getDisplayedName();
+#endif
 
-	newLight->initializePosition(getPositionX(), getPositionZ(), getPositionY());
-	newLight->setDirection(*getDirection());
+	newLight->setBurntOut(true);
 
 	// Update Crafters information
 	newLight->setCraftersName(craftersName);
@@ -238,9 +206,8 @@ void LightObjectImplementation::updateTemplate() {
 	newLight->setSerialNumber(objectSerial);
 
 	newLight->setCustomObjectName(getCustomObjectName(), false);
-	newLight->setBurntOut(true);
 
-	if (!parent->transferObject(newLight, -1, true, true, true)) {
+	if (!parent->transferObject(newLight, -1, false, true)) {
 		newLight->destroyObjectFromWorld(true);
 		newLight->destroyObjectFromDatabase(true);
 
@@ -250,4 +217,10 @@ void LightObjectImplementation::updateTemplate() {
 	// Destroy this object
 	destroyObjectFromWorld(true);
 	destroyObjectFromDatabase(true);
+
+	parent->broadcastObject(newLight, true);
+}
+
+bool LightObjectImplementation::lifespanIsPast() {
+	return lifespan.isPast();
 }

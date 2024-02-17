@@ -343,7 +343,7 @@ int GroundZoneImplementation::getInRangeSolidObjects(float x, float z, float y, 
 				continue;
 			}
 
-			if (sceno->getGameObjectType() == SceneObjectType::FURNITURE || sceno->getGameObjectType() == SceneObjectType::LIGHTOBJECT) {
+			if (sceno->getGameObjectType() == SceneObjectType::LIGHTOBJECT) {
 				objects->remove(i);
 				continue;
 			}
