@@ -13,6 +13,7 @@
 #include "templates/manager/TemplateManager.h"
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
+#include "server/zone/managers/loot/LootAttributeType.h"
 
 class LootItemTemplate: public LuaTemplate, public Logger {
 protected:
@@ -33,6 +34,12 @@ protected:
 	float randomDotChance;
 	float staticDotChance;
 	int staticDotType;
+
+	int levelMax;
+	int levelMin;
+
+	uint32 objectType;
+
 	VectorMap<String, SortedVector<int> > staticDotValues;
 
 	VectorMap<String, int> skillMods;
@@ -49,6 +56,11 @@ public:
 		junkMaxValue = 0;
 		suppressSerialNumber = false;
 
+		levelMax = 0;
+		levelMin = 0;
+
+		objectType = 0;
+
 		setLoggingName("LootItemTemplate");
 	}
 
@@ -61,13 +73,14 @@ public:
 		junkMinValue = templateData->getIntField("junkMinValue");
 		junkMaxValue = templateData->getIntField("junkMaxValue");
 
-		// info(true) << "---------- Loading data for " << directObjectTemplate << " ----------";
+		levelMin = templateData->getFloatField("minimumLevel", 0);
+		levelMax = templateData->getFloatField("maximumLevel", -1);
 
-		// set lootItemTemplate values
-		// shared tangible object template draft schematic data set as base valueMap
 		auto tanoTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(TemplateManager::instance()->getTemplate(directObjectTemplate.hashCode()));
 
 		if (tanoTemplate != nullptr) {
+			objectType = tanoTemplate->getGameObjectType();
+		
 			const auto groups = tanoTemplate->getExperimentalGroups();
 			const auto attributes = tanoTemplate->getExperimentalAttributes();
 			const auto minValues = tanoTemplate->getExperimentalMin();
@@ -75,7 +88,7 @@ public:
 			const auto precisionValues = tanoTemplate->getExperimentalPrecision();
 			const auto combines = tanoTemplate->getExperimentalWeights();
 
-			//info(true) << "Template: " << directObjectTemplate << " Total attributes: " << attributes->size();
+			bool isComponent = (tanoTemplate->getGameObjectType() & SceneObjectType::COMPONENT);
 
 			for (int i = 0; i < attributes->size(); ++i) {
 				const String& attribute = attributes->get(i);
@@ -84,17 +97,22 @@ public:
 				float min = minValues->get(i);
 				float max = maxValues->get(i);
 
-				if (tanoTemplate->getGameObjectType() & SceneObjectType::COMPONENT) {
+				int precision = precisionValues->get(i);
+				bool hidden = group == "" || group == "null";
+				int combine = LootAttributeType::getAttributeType(objectType, attribute);
+
+				if (isComponent) {
 					min = 0.f;
 					max = 0.f;
 				}
 
-				short int precision = precisionValues->get(i);
-				short int combine = combines->get(i);
-				bool hidden = min == max && max == 0;
+				if (min == max && max == 0.f) {
+					combine = LootAttributeType::STATIC;
+					hidden = true;
+				}
 
 				attributesMap.addExperimentalAttribute(attribute, group, min, max, precision, hidden, combine);
-				attributesMap.setMaxPercentage(attribute, 1.f);
+				attributesMap.setCurrentPercentage(attribute, 0.f, 1.f);
 			}
 		}
 
@@ -104,30 +122,46 @@ public:
 			for (int i = 1; i <= craftvals.getTableSize(); ++i) {
 				LuaObject row = craftvals.getObjectAt(i);
 
-				if (row.isValidTable()) {
+				if (row.isValidTable() && row.getTableSize() >= 3) {
 					String attribute = row.getStringAt(1);
+					String group = attribute;
 
 					float min = row.getFloatAt(2);
 					float max = row.getFloatAt(3);
-					int prec = 0;
+
+					int precision = 0;
 					bool hidden = false;
-					int combineType = AttributesMap::LINEARCOMBINE;
+					int combine = LootAttributeType::getAttributeType(objectType, attribute);
 
-					if (row.getTableSize() > 3)
-						prec = row.getFloatAt(4);
+					bool hasAttribute = attributesMap.hasExperimentalAttribute(attribute);
 
-					if (row.getTableSize() > 4)
+					if (hasAttribute) {
+						group = attributesMap.getAttributeGroup(attribute);
+						precision = attributesMap.getPrecision(attribute);
+					}
+
+					if (row.getTableSize() >= 4) {
+						precision = row.getIntAt(4);
+					}
+
+					if (row.getTableSize() >= 5) {
 						hidden = row.getBooleanAt(5);
+					}
 
-					if (row.getTableSize() > 5)
-						combineType = row.getIntAt(6);
+					if (row.getTableSize() >= 6) {
+						combine = row.getIntAt(6);
+					}
 
-					// The AttributesMap will automatically handle if the attribute already exists and only updates the values.
-					attributesMap.addExperimentalAttribute(attribute, attribute, min, max, prec, hidden, combineType);
-					attributesMap.setMaxPercentage(attribute, 1.0f);
+					if (min == max && max == 0.f) {
+						combine = LootAttributeType::STATIC;
+						hidden = true;
+					}
+
+					attributesMap.addExperimentalAttribute(attribute, group, min, max, precision, hidden, combine);
+					attributesMap.setCurrentPercentage(attribute, 0.f, 1.f);
+
+					row.pop();
 				}
-
-				row.pop();
 			}
 
 			craftvals.pop();
@@ -176,27 +210,9 @@ public:
 		skillModsLuaObject.pop();
 
 		// Initializations.
-		float randomDot = -1;
-
-		randomDot = templateData->getFloatField("randomDotChance");
-
-		if (randomDot >= 0) {
-			randomDotChance = randomDot;
-		}
-
-		float staticDot = -1;
-
-		staticDot = templateData->getFloatField("staticDotChance");
-
-		if (staticDot >= 0) {
-			staticDotChance = staticDot;
-		}
-
-		int type = -1;
-		type = templateData->getIntField("staticDotType");
-
-		if (type >= 0)
-			staticDotType = type;
+		randomDotChance = templateData->getFloatField("randomDotChance", -1);
+		staticDotChance = templateData->getFloatField("staticDotChance", -1);
+		staticDotType = templateData->getFloatField("staticDotType", -1);
 
 		LuaObject dotValuesTable = templateData->getObjectField("staticDotValues");
 
@@ -278,6 +294,18 @@ public:
 
 	int getJunkMaxValue() const {
 		return junkMaxValue;
+	}
+
+	int getLevelMax() const {
+		return levelMax;
+	}
+
+	int getLevelMin() const {
+		return levelMin;
+	}
+
+	uint32 getObjectType() const {
+		return objectType;
 	}
 
 	const VectorMap<String, SortedVector<int> >* getStaticDotValues() const {
