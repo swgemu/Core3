@@ -17,7 +17,6 @@ import server.zone.objects.tangible.TangibleObject;
 include server.zone.managers.loot.LootGroupMap;
 include server.zone.managers.loot.lootgroup.LootGroupCollection;
 include templates.LootItemTemplate;
-include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.managers.loot.CrystalData;
 include system.lang.ref.Reference;
 include engine.log.Logger;
@@ -31,6 +30,11 @@ class LootManager extends ManagedService implements Logger {
 	private transient ObjectManager objectManager;
 
 	private transient LootGroupMap lootGroupMap;
+
+	private transient float levelChance;
+
+	private transient float baseChance;
+	private transient float baseModifier;
 
 	private transient float yellowChance;
 	private transient float yellowModifier;
@@ -114,6 +118,14 @@ class LootManager extends ManagedService implements Logger {
 		lootablePolearmMods.setNoDuplicateInsertPlan();
 		lootableHeavyWeaponMods.setNoDuplicateInsertPlan();
 
+		levelChance = 0.0;
+
+		baseChance = 0.0;
+		baseModifier = 0.0;
+
+		yellowChance = 0.0;
+		yellowModifier = 0.0;
+
 		exceptionalChance = 0.0;
 		exceptionalModifier = 0.0;
 
@@ -144,9 +156,6 @@ class LootManager extends ManagedService implements Logger {
 	private native void setCustomObjectName(TangibleObject object, final LootItemTemplate templateObject);
 
 	@local
-	private native void setSockets(TangibleObject object, CraftingValues craftingValues);
-
-	@local
 	private native void addRandomDots(TangibleObject object, final LootItemTemplate templateObject, int level, float excMod);
 
 	@local
@@ -156,10 +165,13 @@ class LootManager extends ManagedService implements Logger {
 	private native float calculateDotValue(float min, float max, float level);
 
 	@local
-	private native void addConditionDamage(TangibleObject loot, CraftingValues craftingValues);
+	private native void addConditionDamage(TangibleObject loot);
 
 	@local
 	private native void loadLootableMods( LuaObject modTable, SortedVector<string> mods );
+
+	@local
+	public native void setRandomLootValues(@dereferenced TransactionLog trx, TangibleObject prototype, final LootItemTemplate templateObject, int level, float excMod);
 
 	@local
 	public native TangibleObject createLootObject(@dereferenced TransactionLog trx, final LootItemTemplate templateObject, int level, boolean maxCondition = false);
@@ -180,8 +192,6 @@ class LootManager extends ManagedService implements Logger {
 
 	@local
 	public native boolean createLootSet(@dereferenced TransactionLog trx, SceneObject container, final string lootGroup, int level, boolean maxCondition,int setSize);
-
-	//public native void generateStats(final string lootTemplate, CraftingValues)
 
 	@read
 	public unsigned int getYellowLooted() {
