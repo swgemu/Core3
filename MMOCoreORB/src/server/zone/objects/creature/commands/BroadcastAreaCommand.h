@@ -68,13 +68,12 @@ public:
 		SortedVector<ManagedReference<TreeEntry*> > closeObjects;
 		Zone* zone = creature->getZone();
 
-		if (creature->getCloseObjects() == nullptr || range > ZoneServer::CLOSEOBJECTRANGE) {
+		if (creature->getCloseObjects() == nullptr || range > zone->getZoneObjectRange()) {
 #ifdef COV_DEBUG
 			creature->info("Null closeobjects vector in BroadcastAreaCommand::doQueueCommand", true);
 #endif
 			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), range, &closeObjects, true);
-		}
-		else {
+		} else {
 			CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
 			closeVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
 		}

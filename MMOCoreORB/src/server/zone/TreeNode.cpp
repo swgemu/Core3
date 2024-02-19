@@ -16,7 +16,7 @@ TreeNode::TreeNode() {
 
 	minX = 0, minY = 0, minZ = 0, maxX = 0, maxY = 0, maxZ = 0;
 
-	dividerX = 0, dividerY = 0,	dividerZ = 0;
+	dividerX = 0, dividerY = 0,	dividerZ = -1;
 }
 
 TreeNode::TreeNode(float minx, float miny, float minz, float maxx, float maxy, float maxz, TreeNode *parent) {

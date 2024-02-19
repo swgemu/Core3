@@ -2464,14 +2464,6 @@ bool SceneObjectImplementation::isNearBank() {
 	return false;
 }
 
-float SceneObjectImplementation::getOutOfRangeDistance() {
-	if (zone != nullptr && zone->isSpaceZone()) {
-		return ZoneServer::SPACEOBJECTRANGE;
-	}
-
-	return TreeEntryImplementation::getOutOfRangeDistance();
-}
-
 void SceneObjectImplementation::setSyncStamp(uint32 value) {
 	syncTime = System::getMiliTime();
 	syncStamp = value;

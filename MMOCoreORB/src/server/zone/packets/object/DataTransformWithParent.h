@@ -285,7 +285,14 @@ public:
 					return updateError(creO, "!hasConnectedCell", true);
 				}
 			} else {
-				float sqrCovDist = ZoneServer::CLOSEOBJECTRANGE * ZoneServer::CLOSEOBJECTRANGE;
+				float covDist = ZoneServer::CLOSEOBJECTRANGE;
+				auto zone = creO->getZone();
+
+				// We need to account for players in cells in space, where the object range is much greater than the ground and range can be pulled from the zone type
+				if (zone != nullptr)
+					covDist = zone->getZoneObjectRange();
+
+				float sqrCovDist = covDist * covDist;
 
 				if (transform.get2dSquaredDistance(building->getPosition()) > sqrCovDist) {
 					CloseObjectsVector* closeObjects = creO->getCloseObjects();

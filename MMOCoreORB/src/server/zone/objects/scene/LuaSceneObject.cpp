@@ -793,7 +793,13 @@ int LuaSceneObject::setObjectName(lua_State* L) {
 int LuaSceneObject::setRadius(lua_State* L) {
 	float radius = lua_tonumber(L, -1);
 
-	if (radius < 0.5f || radius > ZoneServer::CLOSEOBJECTRANGE * 4.0f) {
+	float radiusCheck = ZoneServer::CLOSEOBJECTRANGE;
+	auto zone = realObject->getZone();
+
+	if (zone != nullptr)
+		radiusCheck = zone->getZoneObjectRange();
+
+	if (radius < 0.5f || radius > (radiusCheck * 4.0f)) {
 		realObject->error() << __FUNCTION__ << "() invalid radius of " << radius;
 		lua_pushnil(L);
 		return 0;
