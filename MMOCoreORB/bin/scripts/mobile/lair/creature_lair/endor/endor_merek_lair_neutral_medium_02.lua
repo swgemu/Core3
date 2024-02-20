@@ -1,11 +1,12 @@
 endor_merek_lair_neutral_medium_02 = Lair:new {
-	mobiles = {{"merek_cavern_creeper",1},{"delirious_merek_avenger",1}},
+	mobiles = {{"merek_assassin", 1}, {"delirious_merek_avenger", 1}, {"merek_cavern_creeper", 1}, {"merek_deaths_head", 1}, {"merek_harvester", 1}, {"blood_stained_merek", 1}},
+	bossMobiles = {{"toxic_merek_battlelord", 4}, {"blood_drenched_merek_king", 1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_thicket_large_evil_fire_gray.iff"},
-	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_thicket_large_evil_fire_gray.iff"},
-	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_thicket_large_evil_fire_gray.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_thicket_large_evil_fire_gray.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_thicket_large_evil_fire_gray.iff"},
+	buildingsVeryEasy = {"object/tangible/lair/base/earthmound_light.iff"},
+	buildingsEasy = {"object/tangible/lair/base/earthmound_light.iff"},
+	buildingsMedium = {"object/tangible/lair/base/earthmound_light.iff"},
+	buildingsHard = {"object/tangible/lair/base/earthmound_light.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/earthmound_light.iff"},
 }
 
 addLairTemplate("endor_merek_lair_neutral_medium_02", endor_merek_lair_neutral_medium_02)

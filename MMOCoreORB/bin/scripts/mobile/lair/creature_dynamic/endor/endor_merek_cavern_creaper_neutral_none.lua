@@ -1,5 +1,5 @@
 endor_merek_cavern_creaper_neutral_none = Lair:new {
-	mobiles = {{"merek_cavern_creeper",1}},
+	mobiles = {{"merek_cavern_creeper", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
