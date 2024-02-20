@@ -1376,7 +1376,7 @@ int CombatManager::calculatePoolsToDamage(int poolsToDamage) const {
 }
 
 int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, DefenderHitList* defenderHitList, int damage, float damageMultiplier, int poolsToDamage, uint8& hitLocation, const CreatureAttackData& data) const {
-	if (poolsToDamage == 0 || damageMultiplier == 0 || defenderHitList == nullptr) {
+	if (poolsToDamage == 0 || damageMultiplier == 0 || defenderHitList == nullptr || weapon == nullptr) {
 		return 0;
 	}
 
