@@ -64,6 +64,7 @@ enum class TrxCode {
 	AUCTIONBID,                 // Auction Bid Escrow
 	AUCTIONEXPIRED,             // Never retrieved and expired
 	AUCTIONRETRIEVE,            // retrieveItem()
+	CAMPPLACED,                 // Camp Placed
 	CHARACTERBUILDER,           // Character Builder
 	CHARACTERDELETE,            // Delete Character
 	CITYINCOMETAX,              // City income taxes

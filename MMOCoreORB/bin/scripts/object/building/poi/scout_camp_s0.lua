@@ -66,7 +66,6 @@ object_building_poi_scout_camp_s0 = object_building_poi_shared_scout_camp_s0:new
 	childObjects = {
 		{templateFile = "object/tangible/camp/camp_control_panel.iff", x = 2.62, z = 0, y = 1.11, ox = 0, oy = -0.895, oz = 0, ow =  0.446, cellid = -1, containmentType = -1},
 		{templateFile = "object/tangible/camp/camp_chair_s1.iff", x = 1.35, z = 0, y = -1.24, ox = 0, oy = -0.416836, oz = 0, ow = 0.9089816, cellid = -1, containmentType = -1},
-
 	}
 }
 
