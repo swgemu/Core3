@@ -909,6 +909,7 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::AUCTIONBID:               return "auctionbid";                // Auction Bid Escrow
 	case TrxCode::AUCTIONEXPIRED:           return "auctionexpired";            // Never retrieved and expired
 	case TrxCode::AUCTIONRETRIEVE:          return "auctionretrieve";           // retrieveItem()
+	case TrxCode::CAMPPLACED:               return "campplaced";                // Camp placed
 	case TrxCode::CHARACTERBUILDER:         return "characterbuilder";          // Character Builder
 	case TrxCode::CHARACTERDELETE:          return "characterdelete";           // Delete Character
 	case TrxCode::CITYINCOMETAX:            return "cityincometax";             // City income taxes
