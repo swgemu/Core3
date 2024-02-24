@@ -357,6 +357,7 @@ function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
 	local smugglerDiscount = self:getSmugglerDiscount(pPlayer)
 
 	writeStringData(CreatureObject(pPlayer):getObjectID() .. ":faction_purchase", screenID)
+
 	local suiManager = LuaSuiManager()
 	local options = { }
 	if screenID == "fp_furniture" then
