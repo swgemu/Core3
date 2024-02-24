@@ -14,9 +14,18 @@
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/managers/radial/RadialOptions.h"
+#include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 
 void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isTerminal())
+		return;
+
+	auto zoneServer = sceneObject->getZoneServer();
+
+	if (zoneServer == nullptr)
 		return;
 
 	Terminal* terminal = cast<Terminal*>(sceneObject);
@@ -27,6 +36,7 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	}
 
 	StructureObject* camp = cast<StructureObject*>(terminal->getControlledObject());
+
 	if (camp == nullptr) {
 		error("Camp is null in fillObjectMenuResponse");
 		return;
@@ -34,8 +44,9 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
-	/// Get Ghost
-	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
+	// Get player object
+	auto ghost = player->getPlayerObject();
+
 	if (ghost == nullptr) {
 		error("PlayerCreature has no ghost: " + String::valueOf(player->getObjectID()));
 		return;
@@ -45,32 +56,59 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		return;
 	}
 
-	menuResponse->addRadialMenuItem(68, 3, "@camp:mnu_status");
+	menuResponse->addRadialMenuItem(RadialOptions::SERVER_MENU1, 3, "@camp:mnu_status");
 
-	/// Make sure player doesn't already have a camp setup somewhere else
-	for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
-		uint64 oid = ghost->getOwnedStructure(i);
-
-		ManagedReference<StructureObject*> structure = ghost->getZoneServer()->getObject(oid).castTo<StructureObject*>();
-
-		if (structure == camp) {
-			menuResponse->addRadialMenuItem(182, 3, "@camp:mnu_disband");
-			return;
-		}
-	}
+	uint64 campOwnerID = camp->getOwnerObjectID();
 
 	SortedVector<ManagedReference<ActiveArea*>>* areas = camp->getActiveAreas();
-	ManagedReference<ActiveArea*> area = nullptr;
+	ManagedReference<CampSiteActiveArea*> campArea = nullptr;
+
 	for (int i = 0; i < areas->size(); ++i) {
-		area = areas->get(i);
-		if (area->isCampArea()) {
-			break;
-		}
-		area = nullptr;
+		auto checkArea = areas->get(i);
+
+		if (checkArea == nullptr || !checkArea->isCampArea())
+			continue;
+
+		campArea = checkArea.castTo<CampSiteActiveArea*>();
 	}
 
-	if (area != nullptr && area->isCampArea() && (area.castTo<CampSiteActiveArea*>())->isAbandoned()) {
-		menuResponse->addRadialMenuItem(183, 3, "@camp:mnu_assume_ownership");
+	if (campArea == nullptr) {
+		error() << "Camp: " << camp->getObjectID() << " has null camp active area.";
+		return;
+	}
+
+	// Camp area is abandoned, add menu item to assume ownership if player is able
+	if (!campArea->isAbandoned()) {
+		// Add option for the owner to disband the camp
+		if (campOwnerID == player->getObjectID())
+			menuResponse->addRadialMenuItem(RadialOptions::SERVER_CAMP_DISBAND, 3, "@camp:mnu_disband");
+	} else {
+		bool hasCamp = false;
+
+		// Camp is abandoned, add option for player to
+		for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
+			uint64 oid = ghost->getOwnedStructure(i);
+
+			auto structure = zoneServer->getObject(oid).castTo<StructureObject*>();
+
+			// Ignore structures that are not camps and ignore this camp itself, allowing the owner to reclaim their camp
+			if (structure == nullptr || !structure->isCampStructure() || structure->getObjectID() == camp->getObjectID())
+				continue;
+
+			// Player already has a camp
+			hasCamp = true;
+			break;
+		}
+
+		if (!hasCamp)
+			menuResponse->addRadialMenuItem(RadialOptions::SERVER_CAMP_ASSUME_OWNERSHIP, 3, "@camp:mnu_assume_ownership");
+	}
+
+	// Faction Menu Items available to purchase by factionally aligned member using the camp terminal
+	if (player->getFaction() == terminal->getFaction() && player->getFactionStatus() == FactionStatus::OVERT) {
+		menuResponse->addRadialMenuItem(RadialOptions::SERVER_MENU3, 3, "@camp:mnu_requisition"); // requisition goods
+		menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU3, RadialOptions::SERVER_MENU4, 3, "@camp:mnu_requisition_wpn"); // requisition weapons
+		menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU3, RadialOptions::SERVER_MENU5, 3, "@camp:mnu_requisition_installation"); // requisition installations
 	}
 }
 
@@ -81,17 +119,60 @@ int CampTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 	if (!player->isPlayerCreature())
 		return 0;
 
+	auto zone = player->getZone();
+
+	if (zone == nullptr)
+		return 0;
+
+	auto gcwMan = zone->getGCWManager();
+
+	if (gcwMan == nullptr)
+		return 0;
+
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+	if (lua == nullptr)
+		return 0;
+
 	/// Disband
 	switch (selectedID) {
-		case 182:
+		case RadialOptions::SERVER_CAMP_DISBAND:
 			disbandCamp(sceneObject, player);
 			return 0;
-		case 183:
+		case RadialOptions::SERVER_CAMP_ASSUME_OWNERSHIP:
 			assumeCampOwnership(sceneObject, player);
 			return 0;
-		case 68:
+		case RadialOptions::SERVER_MENU1:
 			showCampStatus(sceneObject, player);
 			return 0;
+		// requisition weapons
+		case RadialOptions::SERVER_MENU4: {
+			Reference<LuaFunction*> luaPurchaseSui = lua->createFunction("recruiterScreenplay", "sendPurchaseSui", 0);
+
+			if (luaPurchaseSui != nullptr) {
+				*luaPurchaseSui << player;
+				*luaPurchaseSui << player;
+				*luaPurchaseSui << "fp_weapons_armor";
+				*luaPurchaseSui << (0.15 + gcwMan->getGCWDiscount(player));
+				luaPurchaseSui->callFunction();
+			}
+
+			break;
+		}
+		// requisition installations
+		case RadialOptions::SERVER_MENU5: {
+			Reference<LuaFunction*> luaPurchaseSui = lua->createFunction("recruiterScreenplay", "sendPurchaseSui", 0);
+
+			if (luaPurchaseSui != nullptr) {
+				*luaPurchaseSui << player;
+				*luaPurchaseSui << player;
+				*luaPurchaseSui << "fp_installations";
+				*luaPurchaseSui << (0.15 + gcwMan->getGCWDiscount(player));
+				luaPurchaseSui->callFunction();
+			}
+
+			break;
+		}
 		default:
 			return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 	}

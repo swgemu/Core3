@@ -269,7 +269,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 			}
 		}
 
-		/// Create active area
+		// Create active area
 		String areaPath = "object/camp_area.iff";
 		ManagedReference<CampSiteActiveArea*> campArea = (zoneServer->createObject(areaPath.hashCode(), 1)).castTo<CampSiteActiveArea*>();
 
