@@ -588,8 +588,8 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 	Vector<String> lootGroupNames;
 
 	for (int i = 0; i < lootCollection->count(); ++i) {
-		const LootGroupCollectionEntry* entry = lootCollection->get(i);
-		int lootChance = entry->getLootChance();
+		const LootGroupCollectionEntry* collectionEntry = lootCollection->get(i);
+		int lootChance = collectionEntry->getLootChance();
 
 		if (lootChance <= 0)
 			continue;
@@ -601,9 +601,10 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 		if (roll > lootChance)
 			continue;
 
-		int tempChance = 0; //Start at 0.
+ 		// Start at 0
+		int tempChance = 0;
 
-		const LootGroups* lootGroups = entry->getLootGroups();
+		const LootGroups* lootGroups = collectionEntry->getLootGroups();
 
 		//Now we do the second roll to determine loot group.
 		roll = System::random(10000000);
@@ -611,18 +612,18 @@ bool LootManagerImplementation::createLootFromCollection(TransactionLog& trx, Sc
 		rolls.add(roll);
 
 		//Select the loot group to use.
-		for (int i = 0; i < lootGroups->count(); ++i) {
-			const LootGroupEntry* entry = lootGroups->get(i);
+		for (int k = 0; k < lootGroups->count(); ++k) {
+			const LootGroupEntry* groupEntry = lootGroups->get(k);
 
-			lootGroupNames.add(entry->getLootGroupName());
+			lootGroupNames.add(groupEntry->getLootGroupName());
 
-			tempChance += entry->getLootChance();
+			tempChance += groupEntry->getLootChance();
 
-			//Is this entry lower than the roll? If yes, then we want to try the next entry.
+			// Is this entry lower than the roll? If yes, then we want to try the next groupEntry.
 			if (tempChance < roll)
 				continue;
 
-			objectID = createLoot(trx, container, entry->getLootGroupName(), level);
+			objectID = createLoot(trx, container, groupEntry->getLootGroupName(), level);
 
 			break;
 		}

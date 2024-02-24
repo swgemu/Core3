@@ -14,15 +14,16 @@
 #include "server/zone/managers/loot/LootGroupMap.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
 
 class ServerLootCommand {
 	const static int GENERALERROR = 0;
 	const static int SUCCESS = 1;
 
 public:
-
 	static int executeCommand(CreatureObject* creature, uint64 target, const UnicodeString& arguments) {
 		PlayerObject* ghost = creature->getPlayerObject().get();
+
 		if (ghost == nullptr || ghost->getAdminLevel() < 15) {
 			return GENERALERROR;
 		}
@@ -35,20 +36,27 @@ public:
 
 		systemMessage
 		<< "ServerLootCommand:" << endl
-		<< "--------------------------------" << endl
-		<< "  Command:   " << command << endl
-		<< "  Arguments: " << args << endl
-		<< "--------------------------------" << endl;
+		<< endl;
+
+		if (!command.isEmpty()) {
+			systemMessage
+			<< "--------------------------------" << endl
+			<< "  Command:   " << command << endl
+			<< "  Arguments: " << args << endl
+			<< "--------------------------------" << endl;
+		}
 
 		TransactionLog trx(TrxCode::ADMINCOMMAND, creature);
 		trx.addState("commandType", "ServerLootCommand::" + arguments.toString());
 
 		if (command == "item") {
-			systemMessage << item(trx, creature, args);
+			systemMessage << testItem(trx, creature, args);
 		} else if (command == "group") {
-			systemMessage << group(trx, creature, args);
+			systemMessage << testGroup(trx, creature, args);
 		} else if (command == "search") {
-			systemMessage << search(trx, creature, args);
+			systemMessage << searchLoot(trx, creature, args);
+		} else if (command == "agent") {
+			systemMessage << agentLoot(trx, creature, args);
 		} else {
 			systemMessage << getSyntax();
 		}
@@ -61,7 +69,12 @@ public:
 	static String createLoot(TransactionLog& trx, CreatureObject* creature, SceneObject* container, const String& lootName, int level = 0, float modifier = 0.f) {
 		StringBuffer msg;
 
-		auto lootManager = container->getZoneServer()->getLootManager();
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return "!zoneServer";
+
+		auto lootManager = zoneServer->getLootManager();
 
 		if (lootManager == nullptr) {
 			return "!lootManager";
@@ -108,18 +121,19 @@ public:
 #endif // LOOTVALUES_DEBUG
 		}
 
-		if (container->transferObject(prototype, -1, true, true)) {
+		if (container != nullptr && container->transferObject(prototype, -1, true, true)) {
 			prototype->sendTo(creature, true);
+
+			msg << "createLoot: name: " << lootName << " path: " << itemTemplate->getDirectObjectTemplate() << endl;
 		} else {
+			prototype->destroyObjectFromWorld(true);
 			prototype->destroyObjectFromDatabase(true);
 		}
-
-		msg << "createLoot: name: " << lootName << " path: " << itemTemplate->getDirectObjectTemplate() << endl;
 
 		return msg.toString();
 	}
 
-	static String item(TransactionLog& trx, CreatureObject* creature, const String& args) {
+	static String testItem(TransactionLog& trx, CreatureObject* creature, const String& args, bool createItems = true) {
 		StringBuffer msg;
 		StringTokenizer tokenizer(args.toLowerCase());
 
@@ -128,13 +142,18 @@ public:
 		float modifier = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0.f;
 		int count = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 1;
 
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return "!zoneServer";
+
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 		if (inventory == nullptr) {
 			return "!itemTemplate";
 		}
 
-		ManagedReference<SceneObject*> container = creature->getZoneServer()->createObject(String::hashCode("object/tangible/container/drum/large_plain_crate_s01.iff"), 2);
+		ManagedReference<SceneObject*> container = zoneServer->createObject(String::hashCode("object/tangible/container/drum/large_plain_crate_s01.iff"), 2);
 
 		if (container == nullptr) {
 			return "!container";
@@ -157,7 +176,7 @@ public:
 		return msg.toString();
 	}
 
-	static String group(TransactionLog& trx, CreatureObject* creature, const String& args) {
+	static String testGroup(TransactionLog& trx, CreatureObject* creature, const String& args) {
 		StringBuffer msg;
 		StringTokenizer tokenizer(args.toLowerCase());
 
@@ -165,16 +184,15 @@ public:
 		int level = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0;
 		float modifier = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0.f;
 
-		const auto lootManager = creature->getZoneServer()->getLootManager();
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return "!zoneServer";
+
+		const auto lootManager = zoneServer->getLootManager();
 
 		if (lootManager == nullptr) {
 			return "!lootManager";
-		}
-
-		auto lootMap = lootManager->getLootMap();
-
-		if (lootMap == nullptr) {
-			return "!lootMap";
 		}
 
 		auto lootGroupMap = lootManager->getLootMap();
@@ -183,7 +201,7 @@ public:
 			return "!lootGroupMap";
 		}
 
-		auto lootGroup = lootManager->getLootMap()->getLootGroupTemplate(lootTemplate);
+		auto lootGroup = lootGroupMap->getLootGroupTemplate(lootTemplate);
 
 		if (lootGroup == nullptr) {
 			return "!group";
@@ -195,7 +213,7 @@ public:
 			return "!inventory";
 		}
 
-		ManagedReference<SceneObject*> container = creature->getZoneServer()->createObject(String::hashCode("object/tangible/container/drum/large_plain_crate_s01.iff"), 2);
+		ManagedReference<SceneObject*> container = zoneServer->createObject(String::hashCode("object/tangible/container/drum/large_plain_crate_s01.iff"), 2);
 
 		if (container == nullptr) {
 			return "!container";
@@ -219,7 +237,7 @@ public:
 					last = current;
 
 					if (lootGroupMap->lootGroupExists(current)) {
-						group(trx, creature, current + " " + String::valueOf(level) + " " + String::valueOf(modifier));
+						testGroup(trx, creature, current + " " + String::valueOf(level) + " " + String::valueOf(modifier));
 					} else {
 						msg << createLoot(trx, creature, container, current, level, modifier);
 					}
@@ -232,7 +250,7 @@ public:
 		return msg.toString();
 	}
 
-	static String search(TransactionLog& trx, CreatureObject* creature, const String& args) {
+	static String searchLoot(TransactionLog& trx, CreatureObject* creature, const String& args) {
 		StringBuffer msg;
 		StringTokenizer tokenizer(args.toLowerCase());
 
@@ -240,7 +258,12 @@ public:
 		int level = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0;
 		float modifier = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0.f;
 
-		auto lootManager = creature->getZoneServer()->getLootManager();
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return "!zoneServer";
+
+		auto lootManager = zoneServer->getLootManager();
 
 		if (lootManager == nullptr) {
 			return "!lootManager";
@@ -275,7 +298,7 @@ public:
 			return "!fileIndex.size()";
 		}
 
-		ManagedReference<SceneObject*> container = creature->getZoneServer()->createObject(String::hashCode("object/tangible/container/drum/large_plain_crate_s01.iff"), 2);
+		ManagedReference<SceneObject*> container = zoneServer->createObject(String::hashCode("object/tangible/container/drum/large_plain_crate_s01.iff"), 2);
 
 		if (container == nullptr) {
 			return "!container";
@@ -312,15 +335,16 @@ public:
 			}
 
 			String path = index.subString(0, index.lastIndexOf("/"));
-			String entry = index.subString(index.lastIndexOf("/") + 1, index.lastIndexOf("."));
+			String entryName = index.subString(index.lastIndexOf("/") + 1, index.lastIndexOf("."));
 
-			auto itemTemplate = lootMap->getLootItemTemplate(entry);
+			auto itemTemplate = lootMap->getLootItemTemplate(entryName);
 
 			if (itemTemplate == nullptr) {
 				continue;
 			}
 
 			const auto& templatePath = itemTemplate->getDirectObjectTemplate();
+
 			if (!index.contains(searchString) && !templatePath.contains(searchString)) {
 				continue;
 			}
@@ -328,7 +352,8 @@ public:
 			if (currentPath != path) {
 				currentPath = path;
 
-				subContainer = creature->getZoneServer()->createObject(String::hashCode("object/tangible/container/drum/large_plain_crate_s01.iff"), 2);
+				subContainer = zoneServer->createObject(String::hashCode("object/tangible/container/drum/large_plain_crate_s01.iff"), 2);
+
 				if (subContainer == nullptr) {
 					break;
 				}
@@ -343,8 +368,139 @@ public:
 				}
 			}
 
-			msg << createLoot(trx, creature, subContainer, entry, level, modifier);
+			msg << createLoot(trx, creature, subContainer, entryName, level, modifier);
 		}
+
+		return msg.toString();
+	}
+
+	static String agentLoot(TransactionLog& trx, CreatureObject* creature, const String& args) {
+		StringBuffer msg;
+		StringTokenizer tokenizer(args.toLowerCase());
+
+		String agentTemplateString = tokenizer.hasMoreTokens() ? tokenizer.getStringToken() : 0;
+		int count = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 1;
+
+		CreatureTemplate* agentTemplate = CreatureTemplateManager::instance()->getTemplate(agentTemplateString.hashCode());
+
+		if (agentTemplate == nullptr)
+			return "!agentTemplate";
+
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return "!zoneServer";
+
+		const auto lootManager = zoneServer->getLootManager();
+
+		if (lootManager == nullptr) {
+			return "!lootManager";
+		}
+
+		auto lootMap = lootManager->getLootMap();
+
+		if (lootMap == nullptr)
+			return "!lootMap";
+
+		auto lootCollection = agentTemplate->getLootGroups();
+
+		if (lootCollection == nullptr)
+			return "!lootCollection";
+
+		if (lootCollection->count() == 0)
+			return "!emptyLootCollection";
+
+		int legendaryCount = lootManager->getLegendaryLooted();
+		int exceptionalCount = lootManager->getExceptionalLooted();
+		int yellowCount = lootManager->getYellowLooted();
+
+		int totalCollectionAttempts = 0;
+		int totalFailedCollection = 0;
+
+		int totalLootGroups = 0;
+		int totalLootItems = 0;
+		int totalFailedRolls = 0;
+
+		for (int i = 0; i < count; ++i) {
+			for (int j = 0; j < lootCollection->count(); ++j) {
+				const LootGroupCollectionEntry* collectionEntry = lootCollection->get(j);
+				int lootChance = collectionEntry->getLootChance();
+
+				if (lootChance <= 0)
+					continue;
+
+				int roll = System::random(10000000);
+
+				// If we roll above the collection chance, skip that collection
+				if (roll > lootChance) {
+					totalFailedCollection++;
+					continue;
+				}
+
+				totalCollectionAttempts++;
+
+				// Start at 0.
+				int tempChance = 0;
+
+				const LootGroups* lootGroups = collectionEntry->getLootGroups();
+
+				totalLootGroups += lootGroups->count();
+
+				//Now we do the second roll to determine loot group.
+				roll = System::random(10000000);
+
+				//Select the loot group to use.
+				for (int k = 0; k < lootGroups->count(); ++k) {
+					const LootGroupEntry* groupEntry = lootGroups->get(k);
+
+					tempChance += groupEntry->getLootChance();
+
+					//Is this groupEntry lower than the roll? If yes, then we want to try the next groupEntry.
+					if (tempChance < roll) {
+						totalFailedRolls++;
+						continue;
+					}
+
+					String lootEntry = groupEntry->getLootGroupName();
+					String lootGroup = "";
+
+					int depthMax = 32;
+					int depth = 0;
+
+					while (lootMap->lootGroupExists(lootEntry) && depthMax > depth++) {
+						auto group = lootMap->getLootGroupTemplate(lootEntry);
+
+						if (group != nullptr) {
+							lootGroup = lootEntry;
+							lootEntry = group->getLootGroupEntryForRoll(System::random(10000000));
+						}
+					}
+
+					createLoot(trx, creature, nullptr, lootEntry, agentTemplate->getLevel());
+
+					totalLootItems++;
+
+					break;
+				}
+			}
+		}
+
+		msg
+		<< "agentLoot - For AI Loot Collection: " << agentTemplateString << endl
+		<< endl
+		<< "Total Iterations: " << count << endl
+		<< endl
+		<< "Total Loot Collections: " << lootCollection->count() << endl
+		<< "Total Failed Collection Rolls: " << totalFailedCollection << endl
+		<< "Total Loot Collection Attempts: " << totalCollectionAttempts << endl
+		<< "Total Groups: " << totalLootGroups << endl
+		<< "Total Failed Rolls: " << totalFailedRolls << endl
+		<< "Total Loot Items: " << totalLootItems << endl
+		<< endl
+		<< "Total Legendaries Dropped: " << lootManager->getLegendaryLooted() - legendaryCount << endl
+		<< "Total Expectionals Dropped: " << lootManager->getExceptionalLooted() - exceptionalCount << endl
+		<< "Total Yellow Named Dropped: " << lootManager->getYellowLooted() - yellowCount << endl
+		<< endl;
 
 		return msg.toString();
 	}
@@ -353,29 +509,54 @@ public:
 		StringBuffer syntax;
 
 		syntax
-		<< "Command:	Type 		Arguments" << endl
+		<< endl
+		<< "Note: Inputting a modifier of 0 will use the values determined by the LootManager." << endl
+		<< endl
+		<< "Command		Type 		Arguments" << endl
 		<< "--------------------------------" << endl
-		<< "item" << endl
+		<< "item    -    Syntax:    /server loot item lootTemplate level modifier count" << endl
+		<< endl
+		<< "Spawn specific loot items." << endl
+		<< endl
 		<< "			String		lootTemplate" << endl
 		<< "			int			level" << endl
 		<< "			float		modifier" << endl
 		<< "			int			count" << endl
 		<< endl
 		<< "example:	/server loot item rifle_t21 300 100 10" << endl
+		<< endl
 		<< "--------------------------------" << endl
-		<< "group" << endl
-		<< "			String		lootTemplate" << endl
+		<< "group    -    Syntax:    /server loot group groupTemplate level modifier" << endl
+		<< endl
+		<< "Spawn specific loot group." << endl
+		<< endl
+		<< "			String		groupTemplate" << endl
 		<< "			int			level" << endl
 		<< "			float		modifier" << endl
 		<< endl
 		<< "example:	/server loot group weapons_all 300 10" << endl
+		<< endl
 		<< "--------------------------------" << endl
-		<< "search" << endl
-		<< "			String		lootTemplate" << endl
+		<< "search    -    Syntax:    /server loot search itemName level modifier" << endl
+		<< endl
+		<< "Search for loot templates." << endl
+		<< endl
+		<< "			String		itemName" << endl
 		<< "			int			level" << endl
 		<< "			float		modifier" << endl
 		<< endl
 		<< "example:	/server loot search items 300 10" << endl
+		<< endl
+		<< "--------------------------------" << endl
+		<< "agent    -    Syntax:    /server loot agentTemplate count" << endl
+		<< endl
+		<< "This will spawn the given agent's loot groups for the given amount of times, using that agents groups and level." << endl
+		<< endl
+		<< "			String		agentTemplate" << endl
+		<< "			int			count" << endl
+		<< endl
+		<< "example:	/server loot agent nightsister_elder" << endl
+		<< endl
 		<< "--------------------------------" << endl
 		<< endl;
 
