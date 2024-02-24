@@ -39,8 +39,6 @@ public:
 		try {
 			Locker playerLocker(player);
 
-
-
 			PlayerObject* ghost = player->getPlayerObject();
 
 			if (ghost == nullptr) {
@@ -74,7 +72,7 @@ public:
 
 			player->removeFeignedDeath();
 
-			player->setPosture(CreaturePosture::UPRIGHT);
+			player->setPosture(CreaturePosture::UPRIGHT, true, true);
 
 			player->notifyObservers(ObserverEventType::CREATUREREVIVED, nullptr, 0);
 
