@@ -257,6 +257,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 
 		if ((skillRequired >= MAP_REGISTER_MOD) && campFaction != Factions::FACTIONNEUTRAL) {
 			campTerminal->setFaction(campFaction);
+			campTerminal->setFactionStatus(player->getFactionStatus());
+			campTerminal->broadcastPvpStatusBitmask();
 
 			String categoryName = (campFaction == Factions::FACTIONIMPERIAL ? "imperial" : "rebel");
 
@@ -269,7 +271,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 			}
 		}
 
-		/// Create active area
+		// Create active area
 		String areaPath = "object/camp_area.iff";
 		ManagedReference<CampSiteActiveArea*> campArea = (zoneServer->createObject(areaPath.hashCode(), 1)).castTo<CampSiteActiveArea*>();
 

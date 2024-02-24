@@ -347,16 +347,16 @@ function recruiterScreenplay:getBonusItemCount(faction, itemString)
 	return 0
 end
 
-function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
+function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID, gcwDiscount)
 	if (pNpc == nil or pPlayer == nil) then
 		return
 	end
 
 	local faction = self:getRecruiterFaction(pNpc)
-	local gcwDiscount = getGCWDiscount(pPlayer)
 	local smugglerDiscount = self:getSmugglerDiscount(pPlayer)
 
 	writeStringData(CreatureObject(pPlayer):getObjectID() .. ":faction_purchase", screenID)
+
 	local suiManager = LuaSuiManager()
 	local options = { }
 	if screenID == "fp_furniture" then
@@ -390,6 +390,7 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0
 
 	local playerID = SceneObject(pCreature):getObjectID()
 	local purchaseCategory = readStringData(playerID .. ":faction_purchase")
+	deleteStringData(playerID .. ":faction_purchase")
 
 	if purchaseCategory == "" then
 		return
@@ -400,7 +401,6 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0
 	local dataTable = self:getFactionDataTable(faction)
 	local itemListTable = self:getItemListTable(faction, purchaseCategory)
 	local itemString = itemListTable[purchaseIndex]
-	deleteStringData(playerID .. ":faction_purchase")
 
 	local awardResult = nil
 
