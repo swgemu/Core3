@@ -46,6 +46,10 @@ object_building_poi_scout_camp_s5 = object_building_poi_shared_scout_camp_s5:new
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	basePowerRate = 0,
+
+	planetMapCategory = "",
+	planetMapSubCategory = "camp",
+
 	skillMods = {
 		{"private_safe_logout", 1},
 		{"private_medical_rating", 100},
@@ -54,6 +58,7 @@ object_building_poi_scout_camp_s5 = object_building_poi_shared_scout_camp_s5:new
 		{"private_aggro_mod", 100},
 		{"private_buff_mind", 100}
 	},
+
 	aggroMod = 100,
 	duration = 3600,
 	radius = 20,

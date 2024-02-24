@@ -627,7 +627,9 @@ StructureObject* StructureManager::placeCamp(CreatureObject* player, Customizati
 
 	ghost->addOwnedStructure(campObject);
 
-	campObject->setFaction(player->getFaction());
+	if (player->getFactionStatus() == FactionStatus::OVERT) {
+		campObject->setFaction(player->getFaction());
+	}
 
 	campObject->initializePosition(x, zone->getHeight(x, y), y);
 	campObject->rotate(angle);

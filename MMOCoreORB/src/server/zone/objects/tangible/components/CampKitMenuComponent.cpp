@@ -17,6 +17,7 @@
 #include "templates/building/CampStructureTemplate.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "templates/faction/Factions.h"
 
 // #define DEBUG_CAMPS
 
@@ -92,8 +93,9 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 		}
 
 		int playerSkill = player->getSkillMod("camp");
+		int skillRequired = campStructureData->getSkillRequired();
 
-		if (playerSkill < campStructureData->getSkillRequired()) {
+		if (playerSkill < skillRequired) {
 			player->sendSystemMessage("@camp:sys_nsf_skill");
 			return 0;
 		}
@@ -250,6 +252,22 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 
 		campName += "'s Camp";
 		campTerminal->setCustomObjectName(campName, true);
+
+		int campFaction = campObject->getFaction();
+
+		if ((skillRequired >= MAP_REGISTER_MOD) && campFaction != Factions::FACTIONNEUTRAL) {
+			campTerminal->setFaction(campFaction);
+
+			String categoryName = (campFaction == Factions::FACTIONIMPERIAL ? "imperial" : "rebel");
+
+			Reference<const PlanetMapCategory*> campCat = TemplateManager::instance()->getPlanetMapCategoryByName(categoryName);
+
+			if (campCat != nullptr) {
+				campObject->setPlanetMapCategory(campCat);
+
+				zone->registerObjectWithPlanetaryMap(campObject);
+			}
+		}
 
 		/// Create active area
 		String areaPath = "object/camp_area.iff";
