@@ -42,7 +42,32 @@
 
 
 object_ship_tiefighter_tier1 = object_ship_shared_tiefighter_tier1:new {
+	objectName = "@space/space_mobile_type:tiefighter_tier1",
 
+	name = "tiefighter_tier1",
+	type = "tiefighter_tier1",
+	faction = "imperial",
+	difficulty = "tier1",
+
+	slideFactor = 1.85,
+	chassisHitpoints = 360,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 150, armor = 200},
+	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 150, armor = 200, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},
+	shield_0 = {name = "shd_generic", hitpoints = 150, armor = 200, front = 0, back = 0, regen = 0},
+	armor_0 = {name = "arm_generic", hitpoints = 480, armor = 480},
+	armor_1 = {name = "arm_generic", hitpoints = 480, armor = 480},
+	capacitor = {name = "cap_generic", hitpoints = 150, armor = 200, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_generic", hitpoints = 150, armor = 200, rate = 0.78, drain = 1, maxDamage = 40, minDamage = 30, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_tiefighter_tier1, "object/ship/tiefighter_tier1.iff")

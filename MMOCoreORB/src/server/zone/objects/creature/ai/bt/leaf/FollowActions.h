@@ -291,7 +291,7 @@ public:
 		if (agent->peekBlackboard("targetProspect"))
 			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
-		if (tar == nullptr && !(agent->getCreatureBitmask() & CreatureFlag::FOLLOW) && (state == AiAgent::WATCHING || state == AiAgent::STALKING || state == AiAgent::FOLLOWING)) {
+		if (tar == nullptr && !(agent->getCreatureBitmask() & ObjectFlag::FOLLOW) && (state == AiAgent::WATCHING || state == AiAgent::STALKING || state == AiAgent::FOLLOWING)) {
 			agent->setFollowObject(nullptr);
 			return FAILURE;
 		}
@@ -390,7 +390,7 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		if (agent == nullptr || !agent->isMonster() || agent->getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
+		if (agent == nullptr || !agent->isMonster() || agent->getPvpStatusBitmask() & ObjectFlag::AGGRESSIVE)
 			return FAILURE;
 
 		ManagedReference<SceneObject*> tar = nullptr;
@@ -814,7 +814,7 @@ public:
 
 		Locker clocker(squadLeader, agent);
 
-		agent->addCreatureFlag(CreatureFlag::FOLLOW);
+		agent->addObjectFlag(ObjectFlag::FOLLOW);
 		agent->setFollowObject(squadLeader);
 
 		return SUCCESS;

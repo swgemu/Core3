@@ -42,7 +42,8 @@
 
 
 object_tangible_shipcontrol_pilot_chair = object_tangible_shipcontrol_shared_pilot_chair:new {
-
+	objectName = "@got_n:misc_pob_ship_pilot_chair",
+	objectMenuComponent = "PobShipObjectMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_pilot_chair, "object/tangible/shipcontrol/pilot_chair.iff")

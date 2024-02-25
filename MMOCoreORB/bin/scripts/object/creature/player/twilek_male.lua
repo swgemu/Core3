@@ -44,7 +44,8 @@
 object_creature_player_twilek_male = object_creature_player_shared_twilek_male:new {
 	baseHAM = { 0, 0, 250, 250, 300, 0, 100, 0, 0 },
 	gameObjectType = 1033,
-	zoneComponent = "PlayerZoneComponent",
+	groundZoneComponent = "PlayerZoneComponent",
+	spaceZoneComponent = "PlayerSpaceZoneComponent",
 	objectMenuComponent = "PlayerObjectMenuComponent",
 	containerComponent = "PlayerContainerComponent",
 	pvpStatusBitmask = PLAYER,

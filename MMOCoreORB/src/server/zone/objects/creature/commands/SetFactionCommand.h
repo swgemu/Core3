@@ -12,14 +12,10 @@
 
 class SetFactionCommand : public QueueCommand {
 public:
-
-	SetFactionCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	SetFactionCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -29,24 +25,46 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		CreatureObject* player = cast<CreatureObject*>(creature);
+		auto zoneServer = server->getZoneServer();
 
-		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
 		if (obj == nullptr || !obj->isTangibleObject())
 			return INVALIDTARGET;
 
-		TangibleObject* tano = cast<TangibleObject*>( obj.get());
+		TangibleObject* targetObject = obj->asTangibleObject();
 
-		uint32 pvpStatus = tano->getPvpStatusBitmask();
-		uint32 optionsBitmask = tano->getOptionsBitmask();
-		uint32 intFaction = tano->getFaction();
+		if (targetObject == nullptr) {
+			creature->sendSystemMessage("Invalid target for setFaction command.");
+			return GENERALERROR;
+		}
 
-		ManagedReference<CreatureObject*> pobj = cast<CreatureObject*>( obj.get());
-		ManagedReference<PlayerObject*> targetPlayerObject = nullptr;
+		StringBuffer commandMsg;
+		commandMsg << "SetFaction Command on Target: " << targetObject->getDisplayedName() << " ID: " << targetObject->getObjectID();
+		creature->sendSystemMessage(commandMsg.toString());
 
-		if (pobj != nullptr)
-			targetPlayerObject = pobj->getPlayerObject();
+		uint32 pvpStatus = targetObject->getPvpStatusBitmask();
+		uint32 optionsBitmask = targetObject->getOptionsBitmask();
+
+		uint32 targetFaction = targetObject->getFaction();
+		int targetFactionStatus = targetObject->getFactionStatus();
+		int targetRank = 0;
+
+		CreatureObject* targetPlayer = nullptr;
+		PlayerObject* targetGhost = nullptr;
+
+		if (targetObject->isPlayerCreature()) {
+			targetPlayer = targetObject->asCreatureObject();
+
+			if (targetPlayer != nullptr) {
+				targetRank = targetPlayer->getFactionRank();
+
+				targetGhost = targetPlayer->getPlayerObject();
+			}
+		}
 
 		//First, check if they passed a name with the command.
 		UnicodeTokenizer tokenizer(arguments);
@@ -55,35 +73,32 @@ public:
 		// if no parameters are given, just send the flags
 		if (!tokenizer.hasMoreTokens()) {
 			StringBuffer msg;
-			msg << "PvPStatusbitmask = " << String::valueOf(pvpStatus) << endl;
-			msg << "Optionsbitmask = " << String::valueOf(optionsBitmask) << endl;
-			msg <<  "Faction = " << String::valueOf(intFaction) << endl;
-			msg << "Faction Status: " << String::valueOf(tano->getFactionStatus());
+			msg << "PvP Status Bitmask = " << String::valueOf(pvpStatus) << endl;
+			msg << "Options Bitmask = " << String::valueOf(optionsBitmask) << endl;
+			msg <<  "Faction = " << String::valueOf(targetFaction) << endl;
+			msg << "Faction Status: " << String::valueOf(targetFactionStatus) << endl;
+			msg << "Faction Rank: " << String::valueOf(targetRank) << endl;
 
 			creature->sendSystemMessage(msg.toString());
 			return SUCCESS;
 		}
 
-		String faction;
-		tokenizer.getStringToken(faction);
+		String factionArgs;
+		tokenizer.getStringToken(factionArgs);
 
 		if (!tokenizer.hasMoreTokens()) {
 			creature->sendSystemMessage("SYNTAX: /setfaction <name> [imperial | rebel | neutral] [onleave | covert | overt ] [rank]");
 			return INVALIDPARAMETERS;
 		}
 
-		Locker _lock(tano,creature);
+		Locker clocker(targetObject, creature);
 
-		if (faction == "neutral") {
-			tano->setFaction(0);
-
-			if (pobj != nullptr) {
-				pobj->setFactionRank(0);
-			}
-		}
-
-		if (faction == "imperial" || faction == "rebel" || faction == "hutt") {
-			tano->setFaction(faction.hashCode());
+		if (factionArgs == "neutral") {
+			targetFactionStatus = FactionStatus::ONLEAVE;
+			targetFaction = Factions::FACTIONNEUTRAL;
+			targetRank = 0;
+		}else if (factionArgs == "imperial" || factionArgs == "rebel" || factionArgs == "hutt") {
+			targetFaction = factionArgs.hashCode();
 		}
 
 		if (tokenizer.hasMoreTokens()) {
@@ -91,26 +106,13 @@ public:
 			String status;
 			tokenizer.getStringToken(status);
 
-			if (targetPlayerObject != nullptr) {
-				if ( status == "overt") {
-					tano->setFactionStatus(FactionStatus::OVERT);
-				} else  if (status == "covert"){
-					tano->setFactionStatus(FactionStatus::COVERT);
-				} else if (status == "onleave") {
-					tano->setFactionStatus(FactionStatus::ONLEAVE);
-				}
-
-			}  else {
-				if (status == "overt")
-					pvpStatus |= CreatureFlag::OVERT;
-
-				if (status == "covert")
-					pvpStatus &= ~CreatureFlag::OVERT;
-
-				tano->setPvpStatusBitmask(pvpStatus);
+			if (status == "overt") {
+				targetFactionStatus = FactionStatus::OVERT;
+			} else if (status == "covert") {
+				targetFactionStatus = FactionStatus::COVERT;
+			} else if (status == "onleave") {
+				targetFactionStatus = FactionStatus::ONLEAVE;
 			}
-		} else {
-			tano->broadcastPvpStatusBitmask();
 		}
 
 		if (tokenizer.hasMoreTokens()) {
@@ -121,19 +123,63 @@ public:
 			else if (rank > 15)
 				rank = 15;
 
-			if (pobj != nullptr)
-				pobj->setFactionRank(rank);
+			targetRank = rank;
+		}
 
+		if (targetObject->isShipObject()) {
+			auto targetShip = targetObject->asShipObject();
+
+			if (targetShip != nullptr) {
+				auto pilot = targetShip->getPilot();
+
+				if (pilot != nullptr) {
+					Locker pilotLock(pilot, creature);
+
+					pilot->setFaction(targetFaction);
+					pilot->setFactionStatus(targetFactionStatus);
+
+					pilot->setFactionRank(targetRank, true);
+					pilot->broadcastPvpStatusBitmask();
+
+					StringBuffer newFaction;
+					newFaction << "Your faction has been modified by " << creature->getDisplayedName();
+					pilot->sendSystemMessage(newFaction.toString());
+				}
+
+				targetShip->setFactionStatus(targetFactionStatus);
+				targetShip->setShipFaction(targetFaction, true);
+			}
 		} else {
-			if (pobj != nullptr && faction.hashCode() != intFaction) {
-				pobj->setFactionRank(0);
+			targetObject->setFaction(targetFaction);
+			targetObject->setFactionStatus(targetFactionStatus);
+
+			if (targetPlayer != nullptr) {
+				targetPlayer->setFactionRank(targetRank, false);
+
+				StringBuffer newFaction;
+				newFaction << "Your faction has been modified by " << creature->getDisplayedName();
+				targetPlayer->sendSystemMessage(newFaction.toString());
+
+				if (targetPlayer->isPilotingShip()) {
+					auto targetRoot = targetPlayer->getRootParent();
+
+					if (targetRoot != nullptr && targetRoot->isShipObject()) {
+						auto targetShipParent = targetRoot->asShipObject();
+
+						if (targetShipParent != nullptr) {
+							Locker slocker(targetShipParent, creature);
+
+							targetShipParent->setFactionStatus(targetFactionStatus);
+							targetShipParent->setShipFaction(targetFaction, true);
+
+							targetShipParent->broadcastPvpStatusBitmask();
+						}
+					}
+				}
 			}
 		}
 
-		if (targetPlayerObject != nullptr) { // Cap off points to new caps
-			targetPlayerObject->increaseFactionStanding("imperial", 0);
-			targetPlayerObject->increaseFactionStanding("rebel", 0);
-		}
+		targetObject->broadcastPvpStatusBitmask();
 
 		return SUCCESS;
 	}

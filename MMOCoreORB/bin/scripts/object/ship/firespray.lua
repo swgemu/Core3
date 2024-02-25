@@ -42,7 +42,34 @@
 
 
 object_ship_firespray = object_ship_shared_firespray:new {
+	objectName = "@space/space_mobile_type:firespray",
 
+	name = "firespray",
+	type = "firespray",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 1.76,
+	chassisHitpoints = 519,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 57, acceleration = 28.2, deceleration = 14.1, yaw = 28, yawRate = 47, pitch = 56.1, pitchRate = 106.165, roll = 56.1, rollRate = 106.165},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 600, back = 800, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	armor_1 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 571.2, rechargeRate = 35.36},
+	droid_interface = {name = "ddi_generic", hitpoints = 100, armor = 200},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 200, armor = 200, rate = 0.345, drain = 23.6, maxDamage = 320, minDamage = 210, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_disruptor", hitpoints = 200, armor = 200, rate = 0.345, drain = 23.6, maxDamage = 23.6, minDamage = 23.6, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_firespray, "object/ship/firespray.iff")

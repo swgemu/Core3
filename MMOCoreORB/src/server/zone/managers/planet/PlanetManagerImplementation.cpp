@@ -49,9 +49,9 @@ Mutex PlanetManagerImplementation::poiMutex;
 void PlanetManagerImplementation::initialize() {
 	numberOfCities = 0;
 
-	info("Loading planet.");
+	String zoneName = zone->getZoneName();
 
-	planetTravelPointList->setZoneName(zone->getZoneName());
+	planetTravelPointList->setZoneName(zoneName);
 
 	// Load Planet Regions
 	loadRegions();
@@ -62,7 +62,7 @@ void PlanetManagerImplementation::initialize() {
 	buildRegionNavAreas();
 	buildCityNavMeshes();
 
-	if (zone->getZoneName() == "dathomir") {
+	if (zoneName == "dathomir") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(STRING_HASHCODE("object/fs_village_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker(area);
@@ -98,7 +98,7 @@ void PlanetManagerImplementation::initialize() {
 		zone->transferObject(sarlaccPreArea, -1, true);
 	}
 
-	if (zone->getZoneName() == "tatooine") {
+	if (zoneName == "tatooine") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(
 				STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea *>();
 
@@ -159,6 +159,27 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		planetTravelPointList->readLuaObject(&planetTravelPointsTable);
 		planetTravelPointsTable.pop();
 
+		try {
+			LuaObject travelPoints = luaObject.getObjectField("jtlTravelPoints");
+			loadJTLData(&travelPoints);
+			travelPoints.pop();
+
+			LuaObject launchLocation = luaObject.getObjectField("jtlLaunchPoint");
+
+			if (launchLocation.isValidTable()) {
+				jtlZoneName = launchLocation.getStringAt(1);
+				float x = launchLocation.getFloatAt(2);
+				float z = launchLocation.getFloatAt(3);
+				float y = launchLocation.getFloatAt(4);
+
+				jtlLaunchLocation = Vector3(x, y, z);
+			}
+
+			launchLocation.pop();
+		} catch (Exception &e) {
+			error(e.getMessage());
+		}
+
 		loadSnapshotObjects();
 
 		LuaObject planetObjectsTable = luaObject.getObjectField("planetObjects");
@@ -214,6 +235,26 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	delete lua;
 	lua = nullptr;
+}
+
+void PlanetManagerImplementation::loadJTLData(LuaObject* luaObject) {
+	if (!luaObject->isValidTable())
+		return;
+
+	for (int i = 1; i <= luaObject->getTableSize(); ++i) {
+		lua_State *L = luaObject->getLuaState();
+		lua_rawgeti(L, -1, i);
+
+		LuaObject location(L);
+
+		String locationName = location.getStringAt(1);
+		float x = location.getFloatAt(2);
+		float z = location.getFloatAt(3);
+		float y = location.getFloatAt(4);
+
+		jtlTravelDestinations.put(locationName, Vector3(x, y, z));
+		location.pop();
+	}
 }
 
 void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
@@ -581,6 +622,8 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 		return;
 	}
 
+	info(true) << "----- Loading World snapshot objects for Zone: " << zone->getZoneName() << " -----";
+
 	Reference<WorldSnapshotIff*> wsiff = new WorldSnapshotIff();
 	wsiff->readObject(iffStream);
 
@@ -777,7 +820,7 @@ bool PlanetManagerImplementation::noInterferingObjects(CreatureObject* creature,
 	if (vec == nullptr)
 		return true;
 
-	SortedVector<QuadTreeEntry*> closeObjects;
+	SortedVector<TreeEntry*> closeObjects;
 	vec->safeCopyTo(closeObjects);
 
 	for (int j = 0; j < closeObjects.size(); j++) {
@@ -856,8 +899,6 @@ void PlanetManagerImplementation::loadRegions() {
 
 	String planetName = zone->getZoneName();
 
-	info(true) << "Loading " << planetName << " regions...";
-
 	lua->runFile("scripts/managers/planet/" + planetName + "_regions.lua");
 	LuaObject regionObjects = lua->getGlobalObject(planetName + "_regions");
 
@@ -878,7 +919,7 @@ void PlanetManagerImplementation::loadRegions() {
 	delete lua;
 	lua = nullptr;
 
-	info(true) << "Loaded " + String::valueOf(regionMap.getTotalRegions()) + " regions.";
+	info(true) << "Loaded " << regionMap.getTotalRegions() << " total regions.";
 }
 
 void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
@@ -1222,11 +1263,11 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 }
 
 Reference<SceneObject* > PlanetManagerImplementation::findObjectInNoBuildZone(float x, float y, float extraMargin, bool checkFootprint) {
-	SortedVector<QuadTreeEntry*> closeObjects;
+	SortedVector<TreeEntry*> closeObjects;
 
 	Vector3 targetPos(x, y, zone->getHeight(x, y));
 
-	zone->getInRangeObjects(x, y, 512, &closeObjects, true, false);
+	zone->getInRangeObjects(x, 0, y, 512, &closeObjects, true, false);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		Reference<SceneObject*> obj = static_cast<SceneObject*>(closeObjects.get(i));
@@ -1268,7 +1309,7 @@ bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float 
 	if (!zone->isWithinBoundaries(targetPos))
 		return false;
 
-	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
+	zone->getInRangeActiveAreas(x, 0, y, &activeAreas, true);
 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
@@ -1315,7 +1356,7 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 
 	//targetPos.setZ(zone->getHeight(x, y)); not needed
 
-	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
+	zone->getInRangeActiveAreas(x, 0, y, &activeAreas, true);
 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
@@ -1344,7 +1385,7 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 
 	Vector3 targetPos(x, y, zone->getHeight(x, y));
 
-	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
+	zone->getInRangeActiveAreas(x, 0, y, &activeAreas, true);
 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
@@ -1374,11 +1415,11 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 }
 
 Reference<SceneObject*> PlanetManagerImplementation::findObjectTooCloseToDecoration(float x, float y, float margin) {
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	SortedVector<ManagedReference<TreeEntry* > > closeObjects;
 
 	Vector3 targetPos(x, y,0);
 
-	zone->getInRangeObjects(x, y, 256, &closeObjects, true, false);
+	zone->getInRangeObjects(x, 0, y, 256, &closeObjects, true, false);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 
@@ -1489,10 +1530,10 @@ float PlanetManagerImplementation::findClosestWorldFloor(float x, float y, float
 
 	Reference<IntersectionResults*> ref;
 
-    if (intersections == nullptr) {
-    	ref = intersections = new IntersectionResults();
-    	CollisionManager::getWorldFloorCollisions(x, y, zone, intersections, closeObjects);
-    }
+	if (intersections == nullptr) {
+		ref = intersections = new IntersectionResults();
+		CollisionManager::getWorldFloorCollisions(x, y, zone, intersections, closeObjects);
+	}
 
 	float terrainHeight = zone->getHeight(x, y);
 	float diff = fabs(z - terrainHeight);
@@ -1619,4 +1660,8 @@ int PlanetManagerImplementation::destroyAllEventObjects() {
 	}
 
 	return counter;
+}
+
+Vector3 PlanetManagerImplementation::getJtlLaunchLocations() {
+	return jtlLaunchLocation;
 }

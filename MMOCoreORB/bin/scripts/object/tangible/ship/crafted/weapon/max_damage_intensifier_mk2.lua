@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_max_damage_intensifier_mk2 = object_tangible
 	experimentalSubGroupTitles = {"null", "null", "damage_min", "damage_max"},
 	experimentalMin = {0, 0, -70, 73},
 	experimentalMax = {0, 0, -52, 99},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

@@ -42,7 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_kessel_imperial_kdy_powermaster = object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermaster:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "rct_kessel_imperial_kdy_powermaster",
+
+	attributes = {
+		{"energyGeneration", 27250},
+		{"maximumHitpoints", 1320.46},
+		{"maximumArmorHitpoints", 660.228},
+		{"mass", 51480},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.177},
+		{"maximumHitpoints", 0.15},
+		{"maximumArmorHitpoints", 0.15},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_kessel_imperial_kdy_powermaster, "object/tangible/ship/components/reactor/rct_kessel_imperial_kdy_powermaster.iff")

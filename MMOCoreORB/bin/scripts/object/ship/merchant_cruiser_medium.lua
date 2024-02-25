@@ -42,7 +42,36 @@
 
 
 object_ship_merchant_cruiser_medium = object_ship_shared_merchant_cruiser_medium:new {
+	objectName = "@space/space_mobile_type:merchant_cruiser_medium",
 
+	name = "merchant_cruiser_medium",
+	type = "merchant_cruiser_medium",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 1.76,
+	chassisHitpoints = 2400,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 1500, armor = 1500},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 1500, armor = 1500, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},
+	shield_0 = {name = "shd_generic", hitpoints = 1500, armor = 1500, front = 6000, back = 6000, regen = 4.5},
+	armor_0 = {name = "arm_generic", hitpoints = 3200, armor = 3200},
+	armor_1 = {name = "arm_generic", hitpoints = 3200, armor = 3200},
+	capacitor = {name = "cap_generic", hitpoints = 1500, armor = 1500, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_blaster", hitpoints = 1500, armor = 1500, rate = 0.78, drain = 1, maxDamage = 100, minDamage = 75, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_blaster", hitpoints = 1500, armor = 1500, rate = 0.78, drain = 1, maxDamage = 100, minDamage = 75, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_incom_blaster", hitpoints = 1500, armor = 1500, rate = 0.78, drain = 1, maxDamage = 100, minDamage = 75, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_3 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 1500, armor = 1500, rate = 3, drain = 1, maxDamage = 300, minDamage = 150, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 5, ammo_type = 16},
+	weapon_4 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 1500, armor = 1500, rate = 3, drain = 1, maxDamage = 300, minDamage = 150, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 5, ammo_type = 16},
 }
 
 ObjectTemplates:addTemplate(object_ship_merchant_cruiser_medium, "object/ship/merchant_cruiser_medium.iff")

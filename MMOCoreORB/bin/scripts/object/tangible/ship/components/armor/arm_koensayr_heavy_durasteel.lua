@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_koensayr_heavy_durasteel = object_tangible_ship_components_armor_shared_arm_koensayr_heavy_durasteel:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_koensayr_heavy_durasteel",
+
+	attributes = {
+		{"maximumHitpoints", 358.8},
+		{"maximumArmorHitpoints", 358.8},
+		{"mass", 3075.19},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.318},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_koensayr_heavy_durasteel, "object/tangible/ship/components/armor/arm_koensayr_heavy_durasteel.iff")

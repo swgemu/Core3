@@ -44,14 +44,14 @@
 object_tangible_ship_crafted_weapon_missile_wpn_seismic_missile_mk2 = object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2:new {
 
 
-	numberExperimentalProperties = {1, 1, 2, 2, 1, 1, 2, 2},
-	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE", "XX", "XX", "OQ", "PE", "OQ", "PE"},
-	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE", "OQ", "PE", "OQ", "PE", "OQ", "PE", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_damage_max", "exp_damage_min", "misc", "misc", "exp_ammo", "exp_fltrefirerate"},
 	experimentalSubGroupTitles = {"null", "null", "fltmaxdamage", "fltmindamage", "fltshieldeffectiveness", "fltarmoreffectiveness", "fltmaxammo", "fltrefirerate"},
-	experimentalMin = {0, 0, 2775, 1410, 88, 788, 9, 5058},
-	experimentalMax = {0, 0, 5153, 2619, 163, 1463, 16, 9393},
-	experimentalPrecision = {0, 0, 10, 10, 0, 0, 10, 10},
+	experimentalMin = {0, 0, 2775, 1410, 0.088, 0.788, 9, 9.393},
+	experimentalMax = {0, 0, 5153, 2619, 0.163, 1.463, 16, 5.058},
+	experimentalPrecision = {0, 0, 6, 6, 6, 6, 0, 6},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 

@@ -6,6 +6,7 @@
 
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
 
 #include "server/chat/room/ChatRoom.h"
 
@@ -315,10 +316,10 @@ void GroupManager::createGroup(CreatureObject* leader, CreatureObject* creature)
 
 			chatMan->handleChatEnterRoomById(creature, groupChat->getRoomID(), -1, true);
 		}
-	}
 
-	if (creature->isPlayingMusic()) {
-		joinGroupEntertainingSession(creature);
+		if (creature->isPlayingMusic()) {
+			joinGroupEntertainingSession(creature);
+		}
 	}
 
 	GroupObjectDeltaMessage6* groupDelta6 = new GroupObjectDeltaMessage6(group);
@@ -618,7 +619,7 @@ void GroupManager::changeLootRule(GroupObject* group, int newRule) {
 		}
 }
 
-	void GroupManager::changeMasterLooter(GroupObject* group, CreatureObject* newLooter, bool enableRule) {
+void GroupManager::changeMasterLooter(GroupObject* group, CreatureObject* newLooter, bool enableRule) {
 		//Pre: group is locked
 		//Post: group is locked
 
@@ -643,7 +644,7 @@ void GroupManager::changeLootRule(GroupObject* group, int newRule) {
 		}
 	}
 
-	void GroupManager::sendMasterLooterList(GroupObject* group, CreatureObject* leader) {
+void GroupManager::sendMasterLooterList(GroupObject* group, CreatureObject* leader) {
 		//Pre: Leader and group are locked
 		//Post: Leader and group are locked
 
@@ -678,7 +679,7 @@ void GroupManager::changeLootRule(GroupObject* group, int newRule) {
 		leader->sendMessage(sui->generateMessage());
 	}
 
-	void GroupManager::notifyMasterLooter(GroupObject* group) {
+void GroupManager::notifyMasterLooter(GroupObject* group) {
 		//Pre: group is locked
 		//Post: group is locked
 
@@ -702,7 +703,7 @@ void GroupManager::changeLootRule(GroupObject* group, int newRule) {
 		}
 	}
 
-	void GroupManager::createLottery(GroupObject* group, AiAgent* corpse) {
+void GroupManager::createLottery(GroupObject* group, AiAgent* corpse) {
 		//Pre: Corpse is locked.
 		//Post: Corpse is locked.
 
@@ -755,7 +756,7 @@ void GroupManager::changeLootRule(GroupObject* group, int newRule) {
 		}
 	}
 
-	void GroupManager::doRandomLoot(GroupObject* group, AiAgent* corpse) {
+void GroupManager::doRandomLoot(GroupObject* group, AiAgent* corpse) {
 		//Pre: Corpse is locked.
 		//Post: Corpse is locked.
 
@@ -820,7 +821,7 @@ void GroupManager::changeLootRule(GroupObject* group, int newRule) {
 		}
 	}
 
-	void GroupManager::transferLoot(GroupObject* group, CreatureObject* winner, SceneObject* object, bool stillGrouped) {
+void GroupManager::transferLoot(GroupObject* group, CreatureObject* winner, SceneObject* object, bool stillGrouped) {
 		//Pre: winner and corpse are locked.
 		//Post: winner and corpse are locked.
 

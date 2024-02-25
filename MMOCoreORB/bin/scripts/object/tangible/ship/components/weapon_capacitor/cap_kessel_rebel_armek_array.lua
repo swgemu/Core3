@@ -42,7 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_kessel_rebel_armek_array = object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_armek_array:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "cap_kessel_rebel_armek_array",
+
+	attributes = {
+		{"maxEnergy", 732.05},
+		{"rechargeRate", 29.28},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 1200},
+		{"mass", 46800},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_kessel_rebel_armek_array, "object/tangible/ship/components/weapon_capacitor/cap_kessel_rebel_armek_array.iff")

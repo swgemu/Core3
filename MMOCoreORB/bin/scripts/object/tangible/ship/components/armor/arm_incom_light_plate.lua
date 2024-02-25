@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_incom_light_plate = object_tangible_ship_components_armor_shared_arm_incom_light_plate:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_incom_light_plate",
+
+	attributes = {
+		{"maximumHitpoints", 164.8},
+		{"maximumArmorHitpoints", 164.8},
+		{"mass", 864.9},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.2},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_incom_light_plate, "object/tangible/ship/components/armor/arm_incom_light_plate.iff")

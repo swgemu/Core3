@@ -42,7 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_mission_reward_neutral_mandal_m_series = object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal_m_series:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "bst_mission_reward_neutral_mandal_m_series",
+
+	attributes = {
+		{"maximumEnergy", 1980},
+		{"rechargeRate", 49.5},
+		{"consumptionRate", 198},
+		{"acceleration", 36.3},
+		{"maxSpeed", 24.975},
+		{"maximumHitpoints", 672.75},
+		{"maximumArmorHitpoints", 336.375},
+		{"energyMaintenance", 450},
+		{"mass", 3150},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.0001},
+		{"rechargeRate", 0.0001},
+		{"consumptionRate", 0.0001},
+		{"acceleration", 0.0001},
+		{"maxSpeed", 0.0001},
+		{"maximumHitpoints", 0.0001},
+		{"maximumArmorHitpoints", 0.0001},
+		{"energyMaintenance", 0.0001},
+		{"mass", 0.0001},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_mission_reward_neutral_mandal_m_series, "object/tangible/ship/components/booster/bst_mission_reward_neutral_mandal_m_series.iff")

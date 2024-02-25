@@ -6,6 +6,7 @@
 #define KILLCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/ship/events/DestroyShipTask.h"
 
 class KillCommand : public QueueCommand {
 public:
@@ -22,6 +23,16 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		auto zone = creature->getZone();
+
+		if (zone == nullptr) {
+			return GENERALERROR;
+		}
+
+		if (zone->isSpaceZone()) {
+			return killAiShip(creature, target, arguments);
+		}
 
 		//Explain syntax
 		if (arguments.isEmpty() && creature->getTargetID() == 0) {
@@ -139,14 +150,14 @@ public:
 		//Deal area damage if specified
 		if (area) {
 			//Retrieve nearby objects
-			SortedVector<QuadTreeEntry*> closeObjects;
+			SortedVector<TreeEntry*> closeObjects;
 			Zone* zone = creature->getZone();
 
 			if (creature->getCloseObjects() == nullptr) {
 #ifdef COV_DEBUG
 				creature->info("Null closeobjects vector in KillCommand::doQueueCommand", true);
 #endif
-				zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+				zone->getInRangeObjects(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), range, &closeObjects, true);
 			}
 			else {
 				CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
@@ -195,6 +206,98 @@ public:
 		return SUCCESS;
 	}
 
+	int killAiShip(CreatureObject* creature, const uint64& targetID, const UnicodeString& arguments) const {
+		if (creature == nullptr || (targetID == 0 && arguments == "")) {
+			creature->sendSystemMessage("KillCommand syntax: /kill or /kill <range>");
+			return QueueCommand::INVALIDPARAMETERS;
+		}
+
+		UnicodeTokenizer tokens(arguments);
+		int range = tokens.hasMoreTokens() ? tokens.getIntToken() : 0;
+
+		if (targetID != 0) {
+			auto zoneServer = creature->getZoneServer();
+
+			if (zoneServer == nullptr) {
+				return GENERALERROR;
+			}
+
+			auto target = zoneServer->getObject(targetID).get();
+
+			if (target == nullptr || !target->isShipAiAgent()) {
+				creature->sendSystemMessage("KillCommand error: target invalid " + target->getDisplayedName());
+				return GENERALERROR;
+			}
+
+			auto targetShip = target->asShipObject();
+
+			if (targetShip == nullptr) {
+				return GENERALERROR;
+			}
+
+			Locker tLock(targetShip, creature);
+
+			if (targetShip->getChassisCurrentHealth() > 0.f) {
+				targetShip->setCurrentChassisHealth(0.f, true);
+			}
+
+			auto destroyTask = new DestroyShipTask(targetShip);
+
+			if (destroyTask != nullptr) {
+				destroyTask->execute();
+			}
+
+			creature->sendSystemMessage("KillCommand result: target destroyed " + targetShip->getDisplayedName());
+			return SUCCESS;
+		}
+
+		if (range > 0) {
+			auto closeObjects = creature->getCloseObjects();
+			if (closeObjects == nullptr) {
+				return GENERALERROR;
+			}
+
+			SortedVector<ManagedReference<TreeEntry*> > closeCopy;
+			closeObjects->safeCopyTo(closeCopy);
+
+			int count = 0;
+
+			for (int i = 0; i < closeCopy.size(); ++i) {
+				auto target = static_cast<SceneObject*>(closeCopy.get(i).get());
+
+				if (target == nullptr || !target->isShipAiAgent()) {
+					continue;
+				}
+
+				auto targetShip = target->asShipObject();
+
+				if (targetShip == nullptr) {
+					continue;
+				}
+
+				if (targetShip->getPosition().squaredDistanceTo(creature->getPosition()) <= range * range) {
+					Locker tLock(targetShip, creature);
+
+					if (targetShip->getChassisCurrentHealth() > 0.f) {
+						targetShip->setCurrentChassisHealth(0.f, true);
+					}
+
+					auto destroyTask = new DestroyShipTask(targetShip);
+
+					if (destroyTask != nullptr) {
+						destroyTask->execute();
+					}
+
+					count += 1;
+				}
+			}
+
+			creature->sendSystemMessage("KillCommand result: area targets destroyed " + String::valueOf(count));
+			return SUCCESS;
+		}
+
+		return GENERALERROR;
+	}
 };
 
 #endif //KILLCOMMAND_H_

@@ -44,7 +44,7 @@
 object_building_corellia_garage_corellia = object_building_corellia_shared_garage_corellia:new {
 	gameObjectType = 528,
 	planetMapCategory = "garage",
-	zoneComponent = "GarageZoneComponent",
+	groundZoneComponent = "GarageZoneComponent",
 	dataObjectComponent = "GarageDataComponent",
 }
 

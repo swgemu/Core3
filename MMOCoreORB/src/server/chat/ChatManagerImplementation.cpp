@@ -8,6 +8,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
 
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/name/NameManager.h"
@@ -331,6 +332,7 @@ void ChatManagerImplementation::initiateRooms() {
 }
 
 void ChatManagerImplementation::initiatePlanetRooms() {
+	// Create chats for ground zones
 	for (int i = 0; i < server->getZoneCount(); ++i) {
 		ManagedReference<Zone*> zone = server->getZone(i);
 
@@ -696,6 +698,7 @@ void ChatManagerImplementation::destroyRooms() {
 	gameRooms.removeAll();
 }
 
+// Not spatial
 void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
 	String name = sender->getFirstName();
 	String fullName = "";
@@ -729,9 +732,8 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 		return;
 
 	Zone* zone = sender->getZone();
-	if( zone == nullptr ){
+	if( zone == nullptr )
 		return;
-	}
 
 	//Check for moderated (muted) room.
 	if (channel->isModerated() && !channel->hasModerator(sender)) {
@@ -850,7 +852,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) sender->getCloseObjects();
 
-	SortedVector<QuadTreeEntry* > closeEntryObjects(200, 50);
+	SortedVector<TreeEntry* > closeEntryObjects(200, 50);
 
 	if (vec != nullptr) {
 		vec->safeCopyReceiversTo(closeEntryObjects, CloseObjectsVector::PLAYERTYPE);
@@ -858,27 +860,47 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 #ifdef COV_DEBUG
 		sender->info("Null closeobjects vector in ChatManager::handleSocialInternalMessage", true);
 #endif
-		zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionX(), 128, &closeEntryObjects, true);
+		Vector3 worldPosition = sender->getWorldPosition();
+
+		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), zone->getZoneObjectRange(), &closeEntryObjects, true);
 	}
 
 	float range = defaultSpatialChatDistance;
+	Vector3 sourcePosition = sender->getWorldPosition();
+	uint64 sourceID = sender->getObjectID();
 
 	for (int i = 0; i < closeEntryObjects.size(); ++i) {
 		SceneObject* object = static_cast<SceneObject*>(closeEntryObjects.getUnsafe(i));
 
-		if (object->isPlayerCreature()) {
-			CreatureObject* creature = object->asCreatureObject();
+		if (object == nullptr || !object->isPlayerCreature())
+			continue;
 
-			Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
+		CreatureObject* creature = object->asCreatureObject();
+
+		if (creature == nullptr)
+			continue;
+
+		// Run checks if the send is not the object
+		if (sourceID != creature->getObjectID()) {
+			int distSquared = sourcePosition.squaredDistanceTo(object->getWorldPosition());
+
+			// info(true) << "attempting to send emote to " << object->getDisplayedName() << "  Object Dist Squared: " << distSquared << " Range Squared: " << (range * range);
+
+			if ((range * range) < distSquared)
+					continue;
+
+			Reference<PlayerObject*> ghost = creature->getPlayerObject();
 
 			if (ghost == nullptr)
 				continue;
 
-			if (creature->isInRange(sender, range) && ((firstName != "" && !ghost->isIgnoring(firstName)) || godMode || !sender->isPlayerCreature())) {
-				Emote* emsg = new Emote(sender->getObjectID(), creature->getObjectID(), targetID, emoteID, doAnim, doText);
-				creature->sendMessage(emsg);
+			if (firstName != "" && ghost->isIgnoring(firstName) && !godMode) {
+				continue;
 			}
 		}
+
+		Emote* emsg = new Emote(sender->getObjectID(), creature->getObjectID(), targetID, emoteID, doAnim, doText);
+		creature->sendMessage(emsg);
 	}
 }
 
@@ -1019,8 +1041,11 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 	message = nullptr;
 }
 
-void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, const UnicodeString& message,
-		uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) const {
+// arg1 is preLocked
+void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, const UnicodeString& message, uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) const {
+	if (sourceCreature == nullptr)
+		return;
+
 	Zone* zone = sourceCreature->getZone();
 
 	if (zone == nullptr)
@@ -1077,7 +1102,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) sourceCreature->getCloseObjects();
 
-	SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
+	SortedVector<TreeEntry*> closeEntryObjects(200, 50);
 
 	if (closeObjects != nullptr) {
 		closeObjects->safeCopyReceiversTo(closeEntryObjects, CloseObjectsVector::CREOTYPE);
@@ -1085,7 +1110,10 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 #ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage", true);
 #endif
-		zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), 128, &closeEntryObjects, true);
+
+		Vector3 worldPosition = sourceCreature->getWorldPosition();
+
+		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), zone->getZoneObjectRange(), &closeEntryObjects, true);
 	}
 
 	short range = defaultSpatialChatDistance;
@@ -1097,16 +1125,16 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 	bool noRecentFine = sourceCreature->checkCooldownRecovery("imperial_spatial_fine");
 
+	Vector3 sourcePosition = sourceCreature->getWorldPosition();
+	uint64 sourceID = sourceCreature->getObjectID();
+
+	// info(true) << "broadcastChatMessage for spatial - total objects size: " << closeEntryObjects.size() << " From Source location: " << sourcePosition;
+
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
 			SceneObject* object = static_cast<SceneObject*>(closeEntryObjects.get(i));
 
-			if (object == nullptr)
-				continue;
-
-			int distSquared = sourceCreature->getWorldPosition().squaredDistanceTo(object->getWorldPosition());
-
-			if ((range * range) < distSquared)
+			if (object == nullptr || !object->isCreatureObject())
 				continue;
 
 			CreatureObject* creature = cast<CreatureObject*>(object);
@@ -1114,72 +1142,99 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 			if (creature == nullptr)
 				continue;
 
-			if (creature->isPet()){
-				AiAgent* pet = cast<AiAgent*>(creature);
+			// Run through checks only if object is not the sending source
+			if (sourceID != object->getObjectID()) {
+				int distSquared = sourcePosition.squaredDistanceTo(object->getWorldPosition());
 
-				if (pet == nullptr || pet->isDead() || pet->isIncapacitated())
+				// info(true) << "attempting to send spatial message 1 to " << object->getDisplayedName() << " Position: " << object->getWorldPosition() << "  Object Dist Squared: " << distSquared << " Range Squared: " << (range * range);
+
+				if ((range * range) < distSquared)
 					continue;
 
-				PetManager* petManager = server->getPetManager();
+				CreatureObject* creature = cast<CreatureObject*>(object);
 
-				Locker clocker(pet, sourceCreature);
-				petManager->handleChat(sourceCreature, pet, message.toString());
-				continue;
-			} else if (creature->isAiAgent()) {
-				if (noRecentFine && creature->getFaction() == Factions::FACTIONIMPERIAL && (20 * 20) >= distSquared && creature->getObserverCount(ObserverEventType::FACTIONCHAT)) {
-					String msgString = message.toString().toLowerCase();
+				if (creature == nullptr)
+					continue;
 
-					if (!msgString.contains("jedi"))
+				if (creature->isPet()){
+					if (!sourceCreature->isPlayerCreature())
 						continue;
 
-					noRecentFine = false;
+					AiAgent* pet = cast<AiAgent*>(creature);
 
-					Locker slock(sourceCreature);
+					if (pet == nullptr || pet->isDead() || pet->isIncapacitated())
+						continue;
 
-					// Check for fine only once every 5s
-					sourceCreature->updateCooldownTimer("imperial_spatial_fine", 5000);
-					slock.release();
+					PetManager* petManager = server->getPetManager();
 
-					SortedVector<ManagedReference<Observer*> > observers = creature->getObservers(ObserverEventType::FACTIONCHAT);
+					if (petManager == nullptr)
+						continue;
 
-					if (observers.size() > 0) {
-						Reference<CreatureObject*> sourceCreo = sourceCreature;
-						Reference<CreatureObject*> observingCreo = creature;
-						Reference<Observer*> observer = observers.get(0);
+					Locker clocker(pet, sourceCreature);
 
-						Core::getTaskManager()->executeTask([observingCreo, sourceCreo, observer] () {
-							if (sourceCreo == nullptr || observingCreo == nullptr || observer == nullptr)
-								return;
+					petManager->handleChat(sourceCreature, pet, message.toString());
+					continue;
+				} else if (creature->isAiAgent()) {
+					if (noRecentFine && creature->getFaction() == Factions::FACTIONIMPERIAL && (20 * 20) >= distSquared && creature->getObserverCount(ObserverEventType::FACTIONCHAT)) {
+						String msgString = message.toString().toLowerCase();
 
-							Locker locker(observingCreo);
-							Locker clocker(sourceCreo, observingCreo);
+						if (!msgString.contains("jedi"))
+							continue;
 
-							if (observer->notifyObserverEvent(ObserverEventType::FACTIONCHAT, observingCreo, sourceCreo, 0) == 1)
-								observingCreo->dropObserver(ObserverEventType::FACTIONCHAT, observer);
-						}, "NotifyFactionChatObserverLambda");
+						noRecentFine = false;
+
+						Locker slock(sourceCreature);
+
+						// Check for fine only once every 5s
+						sourceCreature->updateCooldownTimer("imperial_spatial_fine", 5000);
+						slock.release();
+
+						SortedVector<ManagedReference<Observer*> > observers = creature->getObservers(ObserverEventType::FACTIONCHAT);
+
+						if (observers.size() > 0) {
+							Reference<CreatureObject*> sourceCreo = sourceCreature;
+							Reference<CreatureObject*> observingCreo = creature;
+							Reference<Observer*> observer = observers.get(0);
+
+							Core::getTaskManager()->executeTask([observingCreo, sourceCreo, observer] () {
+								if (sourceCreo == nullptr || observingCreo == nullptr || observer == nullptr)
+									return;
+
+								Locker locker(observingCreo);
+								Locker clocker(sourceCreo, observingCreo);
+
+								if (observer->notifyObserverEvent(ObserverEventType::FACTIONCHAT, observingCreo, sourceCreo, 0) == 1)
+									observingCreo->dropObserver(ObserverEventType::FACTIONCHAT, observer);
+							}, "NotifyFactionChatObserverLambda");
+						}
+					} else if (distSquared < (25 * 25) && creature->getObserverCount(ObserverEventType::SPATIALCHAT)) {
+						ManagedReference<ChatMessage*> cm = new ChatMessage();
+
+						if (cm != nullptr) {
+							cm->setString(message.toString());
+
+							creature->notifyObservers(ObserverEventType::SPATIALCHAT, cm, sourceCreature->getObjectID());
+						}
 					}
-				} else if (distSquared < (25 * 25) && creature->getObserverCount(ObserverEventType::SPATIALCHAT)) {
-					ManagedReference<ChatMessage*> cm = new ChatMessage();
 
-					if (cm != nullptr) {
-						cm->setString(message.toString());
-
-						creature->notifyObservers(ObserverEventType::SPATIALCHAT, cm, sourceCreature->getObjectID());
-					}
+					continue;
 				}
+
+				if (!creature->isPlayerCreature())
+					continue;
+
+				PlayerObject* ghost = creature->getPlayerObject();
+
+				if (ghost == nullptr)
+					continue;
+
+				if ((firstName != "" && ghost->isIgnoring(firstName)) && !godMode)
+					continue;
 			}
-
-			PlayerObject* ghost = creature->getPlayerObject();
-
-			if (ghost == nullptr)
-				continue;
-
-			if ((firstName != "" && ghost->isIgnoring(firstName)) && !godMode)
-				continue;
 
 			SpatialChat* cmsg = nullptr;
 			uint64 targetID = creature->getObjectID();
-			uint64 sourceID = sourceCreature->getObjectID();
+
 
 			if ((chatFlags & CF_TARGET_ONLY) && targetID != chatTargetID && targetID != sourceID)
 				continue;
@@ -1227,16 +1282,19 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	}
 
 	//zone->runlock();
-
 }
 
 void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreature, StringIdChatParameter& message, uint64 chatTargetID, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, int languageID) {
+	if (sourceCreature == nullptr)
+		return;
+
 	Zone* zone = sourceCreature->getZone();
-	PlayerObject* myGhost = nullptr;
-	bool godMode = false;
 
 	if (zone == nullptr)
 		return;
+
+	PlayerObject* myGhost = nullptr;
+	bool godMode = false;
 
 	if (spatialChatType == 0) {
 		spatialChatType = defaultSpatialChatType;
@@ -1261,7 +1319,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) sourceCreature->getCloseObjects();
 
-	SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
+	SortedVector<TreeEntry*> closeEntryObjects(200, 50);
 
 	if (closeObjects != nullptr) {
 		closeObjects->safeCopyReceiversTo(closeEntryObjects, CloseObjectsVector::PLAYERTYPE);
@@ -1269,7 +1327,10 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 #ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage(StringId)", true);
 #endif
-		zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
+
+		Vector3 worldPosition = sourceCreature->getWorldPosition();
+
+		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), zone->getZoneObjectRange(), &closeEntryObjects, true);
 	}
 
 	short range = defaultSpatialChatDistance;
@@ -1288,13 +1349,12 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 
 			CreatureObject* creature = object->asCreatureObject();
 
-			if (creature == nullptr)
+			if (creature == nullptr || !creature->isPlayerCreature())
 				continue;
+
+			// info(true) << "Checking to send chat message to player: " << creature->getDisplayedName();
 
 			if (!sourceCreature->isInRange(creature, range))
-				continue;
-
-			if (!creature->isPlayerCreature())
 				continue;
 
 			PlayerObject* ghost = creature->getPlayerObject();
@@ -1332,7 +1392,6 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 			}
 
 			cmsg = new SpatialChat(sourceID, targetID, chatTargetID, message, range, spatialChatType, moodType, chatFlags, languageID);
-
 			creature->sendMessage(cmsg);
 		}
 	} catch (...) {
@@ -1380,6 +1439,7 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 		}
 
 		UnicodeString formattedMessage(formatMessage(msg));
+
 		broadcastChatMessage(player, formattedMessage, targetID, spatialChatType, moodType, chatFlags, languageID);
 
 		ManagedReference<ChatMessage*> cm = new ChatMessage();
@@ -1451,7 +1511,7 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 
 		return;
 	}
-	
+
 	Reference<CreatureObject*> receiver = getPlayer(fname);
 
 	if (receiver == nullptr) {

@@ -176,14 +176,14 @@ function ZicxBugBomb:spawnNpcs()
 
 		if (pNpc ~= nil) then
 			if npcSpawnData.position == SIT then
-				CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+				CreatureObject(pNpc):setState(SITTINGONCHAIR)
 			end
 
 			if (npcSpawnData.npcTemplate == "goru_rainstealer") then
 				SceneObject(pNpc):setContainerComponent("ZicxContainerComponent")
 			end
 
-			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pNpc):addObjectFlag(AI_STATIONARY)
 		end
 	end
 end

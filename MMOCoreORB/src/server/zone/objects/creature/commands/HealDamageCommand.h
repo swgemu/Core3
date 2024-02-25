@@ -321,7 +321,7 @@ public:
 
 			CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) areaCenter->getCloseObjects();
 
-			SortedVector<QuadTreeEntry*> closeObjects;
+			SortedVector<TreeEntry*> closeObjects;
 			closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 			for (int i = 0; i < closeObjects.size(); i++) {

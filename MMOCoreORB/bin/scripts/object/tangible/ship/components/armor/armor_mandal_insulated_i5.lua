@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_armor_mandal_insulated_i5 = object_tangible_ship_components_armor_shared_armor_mandal_insulated_i5:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "armor_mandal_insulated_i5.iff",
+
+	attributes = {
+		{"maximumHitpoints", 473.8},
+		{"maximumArmorHitpoints", 473.8},
+		{"mass", 3862.69},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.317},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_mandal_insulated_i5, "object/tangible/ship/components/armor/armor_mandal_insulated_i5.iff")

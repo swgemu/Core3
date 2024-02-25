@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_xwing_chassis_token = object_tangible_ship_components_chassis_shared_xwing_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/xwing_deed.iff",
-	dealerFee = 8000,
-	certRequired = "pilot_rebel_navy_starships_03",
+	dealerFee = 50000,
+	certificationRequired = "cert_starships_xwing",
+	skillRequired = {"pilot_rebel_navy_starships_03"},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_xwing_chassis_token = object_tangible_sh
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 1500, 97500},
 	experimentalMax = {0, 0, 2200, 102500},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

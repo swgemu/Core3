@@ -1,0 +1,33 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship;
+
+import server.zone.Zone;
+include server.zone.objects.ship.FighterShipObject;
+include templates.SharedObjectTemplate;
+include templates.tangible.ship.SharedShipObjectTemplate;
+
+class MultiPassengerShipObject extends FighterShipObject {
+	public MultiPassengerShipObject() {
+		Logger.setLoggingName("MultiPassengerShipObject");
+	}
+
+	@local
+	public native abstract void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public native abstract void loadTemplateData(SharedShipObjectTemplate shipTemp);
+
+	@dirty
+	@local
+	@nativeStub
+	public native boolean isMultiPassengerShip();
+
+	@dirty
+	@nativeStub
+	@local
+	public native MultiPassengerShipObject asMultiPassengerShip();
+}

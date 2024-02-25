@@ -42,7 +42,32 @@
 
 
 object_tangible_ship_components_engine_eng_sds_imperial_2 = object_tangible_ship_components_engine_shared_eng_sds_imperial_2:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "eng_sds_imperial_2",
+
+	attributes = {
+		{"maxSpeed", 44.778},
+		{"maxPitch", 50.56},
+		{"maxRoll", 50.56},
+		{"maxYaw", 50.56},
+		{"maximumHitpoints", 634.8},
+		{"maximumArmorHitpoints", 317.4},
+		{"energyMaintenance", 1650},
+		{"mass", 5343.75},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"maxSpeed", 0.1},
+		{"maxPitch", 0.07},
+		{"maxRoll", 0.07},
+		{"maxYaw", 0.07},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.14},
+		{"mass", 0.14},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_eng_sds_imperial_2, "object/tangible/ship/components/engine/eng_sds_imperial_2.iff")

@@ -56,7 +56,7 @@ object_draft_schematic_space_weapon_max_damage_intensifier_mk1 = object_draft_sc
    xp = 25, 
 
    assemblySkill = "weapon_systems", 
-   experimentingSkill = "weapons_systems_experimentation", 
+   experimentingSkill = "weapon_systems_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},

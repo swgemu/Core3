@@ -48,6 +48,9 @@ object_building_poi_scout_camp_s4 = object_building_poi_shared_scout_camp_s4:new
 	baseMaintenanceRate = 0,
 	basePowerRate = 0,
 
+	planetMapCategory = "",
+	planetMapSubCategory = "camp",
+
 	skillMods = {
 		{"private_safe_logout", 1},
 		{"private_medical_rating", 90},

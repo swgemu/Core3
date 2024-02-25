@@ -42,7 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_novaldex_experimental = object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "cap_novaldex_experimental",
+
+	attributes = {
+		{"maxEnergy", 1152.98},
+		{"rechargeRate", 46.116},
+		{"maximumHitpoints", 1733.1},
+		{"maximumArmorHitpoints", 866.549},
+		{"energyMaintenance", 1250},
+		{"mass", 58750},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_novaldex_experimental, "object/tangible/ship/components/weapon_capacitor/cap_novaldex_experimental.iff")

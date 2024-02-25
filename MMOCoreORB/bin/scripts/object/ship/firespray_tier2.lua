@@ -42,7 +42,32 @@
 
 
 object_ship_firespray_tier2 = object_ship_shared_firespray_tier2:new {
+	objectName = "@space/space_mobile_type:firespray_tier2",
 
+	name = "firespray_tier2",
+	type = "firespray_tier2",
+	faction = "civilian",
+	difficulty = "tier2",
+
+	slideFactor = 1.81,
+	chassisHitpoints = 780,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 585, armor = 585},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 585, armor = 585, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
+	shield_0 = {name = "shd_generic", hitpoints = 585, armor = 585, front = 2340, back = 2340, regen = 7.02},
+	armor_0 = {name = "arm_generic", hitpoints = 1248, armor = 1248},
+	armor_1 = {name = "arm_generic", hitpoints = 1248, armor = 1248},
+	capacitor = {name = "cap_generic", hitpoints = 585, armor = 585, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 585, armor = 585, rate = 0.78, drain = 1, maxDamage = 114.4, minDamage = 81.9, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_firespray_tier2, "object/ship/firespray_tier2.iff")

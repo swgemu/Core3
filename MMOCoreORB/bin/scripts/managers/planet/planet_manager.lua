@@ -73,6 +73,15 @@ corellia = {
 		{name = "Bela Vistal Shuttleport B", x = 6930.8042, z = 330, y = -5534.8936, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
 	},
 
+	jtlTravelPoints = {
+		{"Coronet Starport", -66, 28, -4705},
+		{"Doaba Guerfel Starport", 3349, 308, 5598},
+		{"Kor Vella Starport", -3155, 31, 2880},
+		{"Tyrena Starport", -5001, 21, -2228}
+	},
+
+	jtlLaunchPoint = {"space_corellia", 6520, -5400, -2600},
+
 	badgeAreas = {
 		{"badge_agrilat_swap",1387,3749,0,30,20},
 		{"badge_bela_vistal_fountain",6767,-5617,0,30,81},
@@ -108,6 +117,14 @@ dantooine = {
 		{name = "Dantooine Agro Outpost", x = 1569.66, z = 4, y = -6415.7598, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1}
 	},
 
+	jtlTravelPoints = {
+		{"Dantooine Mining Outpost", -640, 3, 2505},
+		{"Dantooine Imperial Outpost", -4205, 3, -2350},
+		{"Dantooine Agro Outpost", 1575, 4, -6420}
+	},
+
+	jtlLaunchPoint = {"space_dantooine", 1380, -750, -5900},
+
 	badgeAreas = {
 		{"badge_dantari_village1",-3929,-5632,0,30,84},
 		{"badge_dantari_village2",-7185,-883,0,30,85},
@@ -140,6 +157,14 @@ dathomir = {
 		{name = "Trade Outpost", x = 618.89258, z = 6.039608, y = 3092.0142, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0},
 		{name = "Science Outpost", x = -49.021923, z = 18, y = -1584.7278, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, cityControlLandingPoint = 0}
 	},
+
+	jtlTravelPoints = {
+		{"Trade Outpost", 620, 7, 3090},
+		{"Science Outpost", -50, 18, -1580}
+	},
+
+	jtlLaunchPoint = {"space_dathomir", -6900, 2750, -4000},
+
 
 	badgeAreas = {
 		{"badge_crashed_ship",5676,1901,0,30,82},
@@ -200,6 +225,14 @@ endor = {
 		{name = "Research Outpost", x = 3201.6599, z = 24, y = -3499.76, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1}
 	},
 
+	jtlTravelPoints = {
+		{"Research Outpost", 3200, 24, -3470},
+		{"Smuggler Outpost", -950, 73, 1550}
+	},
+
+	jtlLaunchPoint = {"space_endor", -5300, -1500, 5250},
+
+
 	badgeAreas = {
 		{"badge_dulok_villlage",5921,-2514,0,30,88},
 		{"badge_ewok_tree_villlage",4661,-2425,0,30,86},
@@ -235,6 +268,13 @@ lok = {
 	planetTravelPoints = {
 		{name = "Nym's Stronghold", x = 478.92676, z = 9, y = 5511.9565, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1}
 	},
+
+	jtlTravelPoints = {
+		{"Nym's Stronghold", 480, 9, 5510}
+	},
+
+	jtlLaunchPoint = {"space_lok", -6200, -5350, 113},
+
 
 	badgeAreas = {
 		{"badge_imp_outpost",-1814,-3086,0,10,98},
@@ -281,6 +321,16 @@ naboo = {
 		{name = "Kaadara Starport", x = 5280.2002, z = -192, y = 6688.0498, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
 		{name = "Kaadara Shuttleport", x = 5123.3857, z = -192, y = 6616.0264, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1}
 	},
+
+	jtlTravelPoints = {
+		{"Theed Spaceport", -4860, 6, 4165},
+		{"Keren Starport", 1370, 13, 2750},
+		{"Kaadara Starport", 5280, -192, 6688},
+		{"Moenia", 4730, 5, -4678}
+	},
+
+	jtlLaunchPoint = {"space_naboo", -2500, 900, -6500},
+
 
 	badgeAreas = {
 		{"badge_amidalas_sandy_beach",-5828,-93,0,10,77},
@@ -331,6 +381,15 @@ rori = {
 		{name = "Narmle Shuttleport", x = -5255.4116, z = 80.664185, y = -2161.6274, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
 		{name = "Rebel Outpost", x = 3691.9023, z = 96, y = -6403.4404, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1}
 	},
+
+	jtlTravelPoints = {
+		{"Narmle Starport", -5374, 80, -2189},
+		{"Restuss Starport", 5340, 80, 5734},
+		{"Rebel Outpost", 3692, 96, -6403}
+	},
+
+	jtlLaunchPoint = {"space_naboo", 6300, -4400, 500},
+
 
 	badgeAreas = {
 		{"badge_imp_camp",-5633,-5661,0,10,96},
@@ -406,6 +465,14 @@ talus = {
 		{name = "Nashal Shuttleport", x = 4334.5786, z = 9.8999996, y = 5431.0415, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
 		{name = "Nashal Starport", x = 4453.7212, z = 2, y = 5354.3345, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1}
 	},
+
+	jtlTravelPoints = {
+		{"Dearic Starport", 265, 6, -2950},
+		{"Nashal Starport", 4450, 2, 5455},
+		{"Talus Imperial Outpost", -2215, 20, 2305}
+	},
+
+	jtlLaunchPoint = {"space_corellia", -6400, -5300, -4000},
 
 	badgeAreas = {
 		{"badge_aqualish_cave",-4425,-1414,0,30,93},
@@ -489,10 +556,19 @@ tatooine = {
 		{name = "Mos Espa Starport", x = -2833.1609, z = 5, y = 2107.3787, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
 		{name = "Mos Espa Shuttleport East", x = -2803.511, z = 5, y = 2182.9648, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
 		{name = "Anchorhead Shuttleport", x = 47.565128, z = 52, y = -5338.9072, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
-		{name = "Mos Entha Spaceport", x = 1266.0996, z = 7, y = 3065.1392, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
+		{name = "Mos Entha Starport", x = 1266.0996, z = 7, y = 3065.1392, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
 		{name = "Mos Entha Shuttle B", x = 1395.447, z = 7, y = 3467.0117, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
 		{name = "Mos Entha Shuttle A", x = 1730.8828, z = 7, y = 3184.6135, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1}
 	},
+
+	jtlTravelPoints = {
+		{"Mos Eisley Starport",3600,5,-4785},
+		{"Bestine Starport",-1360,12,-3600},
+		{"Mos Espa Starport",-2835,5,2105},
+		{"Mos Entha Starport",1265,7,3065},
+	},
+
+	jtlLaunchPoint = {"space_tatooine",2300,-5900,1900},
 
 	badgeAreas = {
 		{"badge_bens_hut",-4512,-2270,0,10,12},
@@ -549,6 +625,13 @@ yavin4 = {
 		{name = "Yavin IV Imperial Outpost", x = 4054.1, z = 37, y = -6216.9, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 0, cityControlLandingPoint = 0},
 	},
 
+	jtlTravelPoints = {
+		{"Yavin IV Labor Outpost", -6920, 73, -5730},
+		{"Yavin IV Mining Outpost", -265, 35, 4900}
+	},
+
+	jtlLaunchPoint = {"space_yavin4", -5600, -5200, -5200},
+
 	badgeAreas = {
 		{"badge_temple_exar_kun",5097,5537,0,30,23},
 		{"badge_temple_woolamander",519,-646,0,30,21},
@@ -573,102 +656,11 @@ yavin4 = {
 	}
 }
 
-space_corellia = {
-	weatherEnabled = 0,
-	gcwEnabled = 0,
-
-	planetObjects = {
-		{templateFile = "object/ship/spacestation_rebel.iff", x = -7132.79, z = 2340.4, y = 2013.98, ow = 0.641545, ox = -0.0633626, oy = 0.76035, oz = 0.079203, parentid = 0},
-		{templateFile = "object/ship/spacestation_neutral.iff", x = -6345.5, z = -5274.5, y = -3957.25, ow = 0.640802, ox = 0.015822, oy = 0.76738, oz = -0.0158223, parentid = 0},
-		{templateFile = "object/ship/spacestation_rebel.iff", x = -1463.42, z = 318.86, y = -1012.24, ow = 0.759136, ox = -0.0474463, oy = 0.648429, oz = 0.0316307, parentid = 0},
-		{templateFile = "object/ship/spacestation_neutral.iff", x = 6519.75, z = -5373.75, y = -2600.25, ow = -0.428073, ox = -1.39125e-08, oy = 0.90371, oz = -0.00792732, parentid = 0}
-	}
-}
-
-space_dantooine = {
-	weatherEnabled = 0,
-	gcwEnabled = 0,
-
-	planetObjects = {
-		{templateFile = "object/ship/spacestation_imperial.iff", x = -2629.72, z = 3585.8, y = 3269.39, ow = 0.103184, ox = 0.031749, oy = 0.936596, oz = -0.333365, parentid = 0},
-		{templateFile = "object/ship/spacestation_imperial.iff", x = 178.72, z = -4785.06, y = -6403.03, ow = 0.977105, ox = 0, oy = 0.212757, oz = 0, parentid = 0},
-		{templateFile = "object/ship/spacestation_neutral.iff", x = 1358.93, z = -741.97, y = -5901.79, ow = 0.907314, ox = 0.110455, oy = 0.394484, oz = -0.0946762, parentid = 0},
-		{templateFile = "object/ship/spacestation_rebel.iff", x = -4200, z = -3000, y = -6000, ow = 1, ox = 0, oy = 0, oz = 0, parentid = 0},
-		{templateFile = "object/ship/spacestation_rebel.iff", x = 5522.87, z = 3202, y = 5997.74, ow = -0.236536, ox = -0.031538, oy = 0.954028, oz = -0.181344, parentid = 0},
-		{templateFile = "object/ship/spacestation_rebel.iff", x = -3979.37, z = 5423.26, y = -4565.81, ow = 0.917577, ox = 0.0791015, oy = 0.387597, oz = -0.0395508, parentid = 0}
-	}
-}
-
-space_dathomir = {
-	weatherEnabled = 0,
-	gcwEnabled = 0,
-
-	planetObjects = {
-		{templateFile = "object/ship/spacestation_imperial.iff", x = 4842.19, z = -5316.32, y = -4222.79, ow = 0.849126, ox = -0.277752, oy = -0.428531, oz = -0.134908, parentid = 0},
-		{templateFile = "object/ship/spacestation_imperial.iff", x = 6092.23, z = 6223.58, y = -6731.9, ow = 0.967128, ox = 0.182327, oy = -0.1744, oz = 0.0317089, parentid = 0},
-		{templateFile = "object/ship/spacestation_neutral.iff", x = 4000, z = 200, y = -4700, ow = 1, ox = 0, oy = 0, oz = 0, parentid = 0},
-		{templateFile = "object/ship/spacestation_neutral.iff", x = -7078.75, z = 2879, y = -4293.75, ow = 0.946438, ox = 0.173514, oy = 0.268158, oz = -0.0473218, parentid = 0}
-	}
-}
-
-space_endor = {
-	weatherEnabled = 0,
-	gcwEnabled = 0,
-
-	planetObjects = {
-		{templateFile = "object/ship/spacestation_imperial.iff", x = 5773.37, z = -6359.57, y = 6976.04, ow = 0.197218, ox = -0.0157777, oy = 0.978199, oz = 0.0631097, parentid = 0},
-		{templateFile = "object/ship/spacestation_imperial.iff", x = 6200, z = 5000, y = 6000, ow = 1, ox = 0, oy = 0, oz = 0, parentid = 0},
-		{templateFile = "object/ship/spacestation_imperial.iff", x = -5716.48, z = 7198.22, y = 2009.09, ow = 0.781614, ox = 0.307908, oy = 0.505286, oz = -0.197377, parentid = 0},
-		{templateFile = "object/ship/spacestation_neutral.iff", x = -5268.23, z = -1500.23, y = 5209.39, ow = 0.919533, ox = 0.151784, oy = -0.359617, oz = 0.0457911, parentid = 0}
-	}
-}
-
-space_lok = {
-	weatherEnabled = 0,
-	gcwEnabled = 0,
-
-	planetObjects = {
-		{templateFile = "object/ship/spacestation_imperial.iff", x = -1798.64, z = 2649.25, y = 400.89, ow = -0.031722, ox = 0.0158608, oy = 0.999245, oz = 0.0158608, parentid = 0},
-		{templateFile = "object/ship/spacestation_neutral.iff", x = -6235.21, z = -5341.59, y = 113.86, ow = 0.611794, ox = 0.347264, oy = 0.577203, oz = -0.414672, parentid = 0},
-		{templateFile = "object/ship/spacestation_rebel.iff", x = 1799.13, z = -2458.57, y = -3680.29, ow = 0.989635, ox = -0.13459, oy = 0.0475025, oz = 0.0158343, parentid = 0}
-	}
-}
-
-space_naboo = {
-	weatherEnabled = 0,
-	gcwEnabled = 0,
-
-	planetObjects = {
-		{templateFile = "object/ship/spacestation_imperial.iff", x = 3511.83, z = 1774.71, y = 944.36, ow = -0.670707, ox = 0, oy = 0.741723, oz = 0, parentid = 0},
-		{templateFile = "object/ship/spacestation_neutral.iff", x = -2491.26, z = 905.49, y = -6460.67, ow = 0.201287, ox = -0.00687047, oy = 0.968212, oz = 0.148333, parentid = 0},
-		{templateFile = "object/ship/spacestation_neutral.iff", x = 6226.22, z = -4450.57, y = 484.75, ow = 0.36384, ox = -0.0206368, oy = 0.924935, oz = 0.108118, parentid = 0}
-	}
-}
-
-space_tatooine = {
-	weatherEnabled = 0,
-	gcwEnabled = 0,
-
-	planetObjects = {
-		{templateFile = "object/ship/spacestation_neutral.iff", x = 2311.89, z = -5872.72, y = 1865.29, ow = 0.324318, ox = 0.0734025, oy = 0.94172, oz = -0.0509326, parentid = 0}
-	}
-}
-
-space_yavin4 = {
-	weatherEnabled = 0,
-	gcwEnabled = 0,
-
-	planetObjects = {
-		{templateFile = "object/ship/spacestation_imperial.iff", x = -6798.55, z = 4998.69, y = 4760.4, ow = 0.577296, ox = 0.0316324, oy = 0.814541, oz = -0.0474491, parentid = 0},
-		{templateFile = "object/ship/spacestation_imperial.iff", x = -4190.56, z = 1539.35, y = 4596.82, ow = 0.434352, ox = 0.023692, oy = 0.900293, oz = -0.0157947, parentid = 0},
-		{templateFile = "object/ship/spacestation_imperial.iff", x = 85.21, z = -342.3, y = -57.62, ow = 0.627024, ox = 0.0158741, oy = 0.777827, oz = -0.039685, parentid = 0},
-		{templateFile = "object/ship/spacestation_neutral.iff", x = -5570.46, z = -5168, y = -5234.88, ow = 0.994108, ox = 0.105996, oy = -0.0145207, oz = -0.0173906, parentid = 0}
-	}
-}
-
 tutorial = {
 	weatherEnabled = 0,
 	gcwEnabled = 0,
+
+	jtlLaunchPoint = {"space_dathomir", -6900, 2750, -4000},
 }
 
 dungeon1 = {

@@ -16,7 +16,7 @@ void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, boo
 	ZoneServer* zoneServer = sceneObject->getZoneServer();
 
 	if (zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
-		ZoneComponent::destroyObjectFromWorld(sceneObject, sendSelfDestroy);
+		GroundZoneComponent::destroyObjectFromWorld(sceneObject, sendSelfDestroy);
 		return;
 	}
 
@@ -36,5 +36,5 @@ void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, boo
 		cityManager->destroyCity(cityRegion);
 	}
 
-	ZoneComponent::destroyObjectFromWorld(sceneObject, sendSelfDestroy);
+	GroundZoneComponent::destroyObjectFromWorld(sceneObject, sendSelfDestroy);
 }

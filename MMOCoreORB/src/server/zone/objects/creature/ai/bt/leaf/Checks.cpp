@@ -37,9 +37,7 @@ template<> bool CheckHasFollow::check(AiAgent* agent) const {
 }
 
 template<> bool CheckAggroDelayPast::check(AiAgent* agent) const {
-	Time* delay = agent->getAggroDelay();
-
-	return delay != nullptr && delay->isPast();
+	return agent->isAggroDelayPast();
 }
 
 template<> bool CheckFollowHasState::check(AiAgent* agent) const {
@@ -255,7 +253,7 @@ template<> bool CheckFlee::check(AiAgent* agent) const {
 	Time* fleeDelay = agent->getFleeDelay();
 	int fleeChance = 30;
 
-	if (agent->getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
+	if (agent->getPvpStatusBitmask() & ObjectFlag::AGGRESSIVE)
 		fleeChance = 15;
 
 	if (fleeDelay == nullptr || !fleeDelay->isPast() || System::random(100) > fleeChance)
@@ -546,11 +544,11 @@ template<> bool CheckIsDroid::check(AiAgent* agent) const {
 }
 
 template<> bool CheckCrackdownScanner::check(AiAgent* agent) const {
-	return agent->getCreatureBitmask() & CreatureFlag::SCANNING_FOR_CONTRABAND;
+	return agent->getCreatureBitmask() & ObjectFlag::SCANNING_FOR_CONTRABAND;
 }
 
 template<> bool CheckCrackdownFollowTarget::check(AiAgent* agent) const {
-	if (!(agent->getCreatureBitmask() & CreatureFlag::FOLLOW))
+	if (!(agent->getCreatureBitmask() & ObjectFlag::FOLLOW))
 		return false;
 
 	ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
@@ -567,7 +565,7 @@ template<> bool CheckCrackdownFollowTarget::check(AiAgent* agent) const {
 }
 
 template<> bool CheckIsStationary::check(AiAgent* agent) const {
-	return agent->getCreatureBitmask() & CreatureFlag::STATIONARY;
+	return agent->getCreatureBitmask() & ObjectFlag::STATIONARY;
 }
 
 template<> bool CheckIsHealer::check(AiAgent* agent) const {
@@ -740,7 +738,7 @@ template<> bool CheckQueueSize::check(AiAgent* agent) const {
 template<> bool CheckIsEscort::check(AiAgent* agent) const {
 	Locker lock(agent);
 
-	return agent->getCreatureBitmask() & CreatureFlag::ESCORT;
+	return agent->getCreatureBitmask() & ObjectFlag::ESCORT;
 }
 
 template<> bool CheckHasRangedWeapon::check(AiAgent* agent) const {

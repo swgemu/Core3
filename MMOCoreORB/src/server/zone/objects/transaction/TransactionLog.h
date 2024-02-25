@@ -64,6 +64,7 @@ enum class TrxCode {
 	AUCTIONBID,                 // Auction Bid Escrow
 	AUCTIONEXPIRED,             // Never retrieved and expired
 	AUCTIONRETRIEVE,            // retrieveItem()
+	CAMPPLACED,                 // Camp Placed
 	CHARACTERBUILDER,           // Character Builder
 	CHARACTERDELETE,            // Delete Character
 	CITYINCOMETAX,              // City income taxes
@@ -98,6 +99,7 @@ enum class TrxCode {
 	PLAYERONLINE,               // Player Online
 	RECYCLED,                   // Recycled Items
 	SERVERDESTROYOBJECT,        // /serverDestroyObject command
+	SHIPDEEDPURCHASE,           // Purchase of a ship deed from chassis dealer
 	SLICECONTAINER,             // Slicing session on a container
 	STRUCTUREDEED,              // Structure deed trxs
 	TRANSFERITEMMISC,           // /transferitemmisc command

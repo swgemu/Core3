@@ -42,7 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_sfs_imperial_2 = object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_2:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "ddi_sfs_imperial_2",
+
+	attributes = {
+		{"commandSpeed", 24},
+		{"maximumHitpoints", 634.8},
+		{"maximumArmorHitpoints", 317.4},
+		{"energyMaintenance", 500},
+		{"mass", 3125},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_sfs_imperial_2, "object/tangible/ship/components/droid_interface/ddi_sfs_imperial_2.iff")

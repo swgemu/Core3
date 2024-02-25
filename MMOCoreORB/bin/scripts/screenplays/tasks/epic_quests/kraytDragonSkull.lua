@@ -308,14 +308,14 @@ function KraytDragonSkull:spawnNpcs()
 		local pNpc = spawnMobile(npcSpawnData.planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
 		if pNpc ~= nil then
 			if npcSpawnData.position == SIT then
-				CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+				CreatureObject(pNpc):setState(SITTINGONCHAIR)
 			end
 
 			if npcSpawnData.npcTemplate == "borvo_the_hutt" or npcSpawnData.npcTemplate == "huff_darklighter" then
 				SceneObject(pNpc):setContainerComponent("KraytSkullContainerComponent")
 			end
 
-			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pNpc):addObjectFlag(AI_STATIONARY)
 		end
 	end
 

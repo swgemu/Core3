@@ -35,7 +35,7 @@ public:
 
 		// 	This command allows a covert faction member to declare overt faction status. Usage of this command is restricted to a 50m radius around friendly player-placed faction headquarters.
 		CloseObjectsVector* vec = (CloseObjectsVector*) creature->getCloseObjects();
-		SortedVector<QuadTreeEntry*> closeObjects;
+		SortedVector<TreeEntry*> closeObjects;
 
 		if (vec != nullptr) {
 			closeObjects.removeAll(vec->size(), 20);
@@ -45,7 +45,7 @@ public:
 	#ifdef COV_DEBUG
 			sourceCreature->info("Null closeobjects vector in DeclareOvertCommand", true);
 	#endif
-			zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), 50, &closeObjects, true);
+			zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionZ(), creature->getWorldPositionY(), 50, &closeObjects, true);
 		}
 
 		int result = false;

@@ -49,9 +49,9 @@ object_tangible_ship_crafted_weapon_missile_wpn_proton_missile_mk3 = object_tang
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_damage_max", "exp_damage_min", "misc", "misc", "exp_ammo", "exp_fltrefirerate"},
 	experimentalSubGroupTitles = {"null", "null", "fltmaxdamage", "fltmindamage", "fltshieldeffectiveness", "fltarmoreffectiveness", "fltmaxammo", "fltrefirerate"},
-	experimentalMin = {0, 0, 4162, 2350, 438, 438, 9, 5058},
-	experimentalMax = {0, 0, 7730, 4364, 813, 813, 16, 9393},
-	experimentalPrecision = {0, 0, 10, 10, 0, 0, 10, 10},
+	experimentalMin = {0, 0, 4162, 2350, 0.438, 0.438, 9, 9.393},
+	experimentalMax = {0, 0, 7730, 4364, 0.813, 0.813, 16, 5.058},
+	experimentalPrecision = {0, 0, 6, 6, 6, 6, 0, 6},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 

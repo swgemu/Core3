@@ -19,11 +19,11 @@ namespace screenhandlers {
 
 class DeliverMissionScreenHandler : public ScreenHandler, Logger {
 protected:
-	MissionObject* getRelevantMissionObject(CreatureObject* player, CreatureObject* npc);
+	MissionObject* getRelevantMissionObject(CreatureObject* player, SceneObject* npc);
 
-	bool isTargetNpc(DeliverMissionObjective* objective, CreatureObject* npc);
+	bool isTargetNpc(DeliverMissionObjective* objective, SceneObject* npc);
 
-	bool isDestinationNpc(DeliverMissionObjective* objective, CreatureObject* npc);
+	bool isDestinationNpc(DeliverMissionObjective* objective, SceneObject* npc);
 
 	void performPickupConversation(ConversationScreen* conversationScreen, MissionObject* mission);
 
@@ -34,7 +34,7 @@ public:
 
 	DeliverMissionScreenHandler() : ScreenHandler(), Logger("DeliverMissionScreenHandler") {}
 
-	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, SceneObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		return true;

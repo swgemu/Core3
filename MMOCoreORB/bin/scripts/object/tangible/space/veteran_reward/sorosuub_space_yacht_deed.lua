@@ -42,7 +42,13 @@
 
 
 object_tangible_space_veteran_reward_sorosuub_space_yacht_deed = object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed:new {
+	templateType = SHIPDEED,
+	gameObjectType = 8388617,
+	noTrade = 1,
 
+	shipType = 2, --POBSHIP,
+	shipControlDevice = "object/intangible/ship/sorosuub_space_yacht_pcd.iff",
+	generatedObjectTemplate = "object/ship/player/player_sorosuub_space_yacht.iff",
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_veteran_reward_sorosuub_space_yacht_deed, "object/tangible/space/veteran_reward/sorosuub_space_yacht_deed.iff")

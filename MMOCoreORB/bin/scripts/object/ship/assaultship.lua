@@ -42,7 +42,32 @@
 
 
 object_ship_assaultship = object_ship_shared_assaultship:new {
+	objectName = "@space/space_mobile_type:assaultship",
 
+	name = "assaultship",
+	type = "assaultship",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 1,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 50, acceleration = 43.5, deceleration = 37.41, yaw = 24.1, yawRate = 41.2, pitch = 24.1, pitchRate = 41.2, roll = 24.1, rollRate = 41.2},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 200, back = 200, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 800, armor = 800},
+	armor_1 = {name = "arm_generic", hitpoints = 800, armor = 800},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 3481.6, rechargeRate = 139.264},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 1.358, drain = 65.536, maxDamage = 250, minDamage = 120, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_assaultship, "object/ship/assaultship.iff")

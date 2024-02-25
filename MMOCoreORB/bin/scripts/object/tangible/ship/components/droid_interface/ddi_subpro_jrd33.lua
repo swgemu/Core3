@@ -42,7 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_subpro_jrd33 = object_tangible_ship_components_droid_interface_shared_ddi_subpro_jrd33:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "ddi_subpro_jrd33",
+
+	attributes = {
+		{"commandSpeed", 30},
+		{"maximumHitpoints", 345},
+		{"maximumArmorHitpoints", 172.5},
+		{"energyMaintenance", 500},
+		{"mass", 1250},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_subpro_jrd33, "object/tangible/ship/components/droid_interface/ddi_subpro_jrd33.iff")

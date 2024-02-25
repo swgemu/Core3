@@ -67,9 +67,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TangibleObject>(SceneObject::ARMOR);
 	objectFactory.registerObject<TangibleObject>(SceneObject::BODYARMOR); //chest plates
 
-	objectFactory.registerObject<TangibleObject>(SceneObject::CONTAINER); //chest plates
-
-
+	objectFactory.registerObject<TangibleObject>(SceneObject::CONTAINER); //chest platess
 
 	/*objectFactory.registerObject<IntangibleObject>(SceneObject::INTANGIBLE);
 

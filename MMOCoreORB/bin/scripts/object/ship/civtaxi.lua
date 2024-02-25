@@ -42,7 +42,32 @@
 
 
 object_ship_civtaxi = object_ship_shared_civtaxi:new {
+	objectName = "@space/space_mobile_type:civtaxi",
 
+	name = "civtaxi",
+	type = "civtaxi",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 1,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 50, acceleration = 43.5, deceleration = 37.41, yaw = 19.1, yawRate = 25.3, pitch = 19.1, pitchRate = 25.3, roll = 19.1, rollRate = 25.3},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 200, back = 200, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 326.4, rechargeRate = 13.056},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.127, drain = 6.144, maxDamage = 250, minDamage = 120, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_civtaxi, "object/ship/civtaxi.iff")

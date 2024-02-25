@@ -11,6 +11,7 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
 #include "engine/lua/LuaPanicException.h"
 #include "server/zone/objects/tangible/Container.h"
@@ -21,6 +22,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "_setObject", &LuaSceneObject::_setObject },
 		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "getParent", &LuaSceneObject::getParent },
+		{ "getRootParent", &LuaSceneObject::getRootParent },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "getPositionX", &LuaSceneObject::getPositionX },
 		{ "getPositionY", &LuaSceneObject::getPositionY },
@@ -60,6 +62,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isCreature", &LuaSceneObject::isCreature },
 		{ "isBuildingObject", &LuaSceneObject::isBuildingObject },
 		{ "isActiveArea", &LuaSceneObject::isActiveArea },
+		{ "isShipObject", &LuaSceneObject::isShipObject },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
 		{ "getDisplayedName", &LuaSceneObject::getDisplayedName },
@@ -93,6 +96,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "info", &LuaSceneObject::info },
 		{ "getPlayersInRange", &LuaSceneObject::getPlayersInRange },
 		{ "isInNavMesh", &LuaSceneObject::isInNavMesh },
+		{ "checkInConversationRange", &LuaSceneObject::checkInConversationRange },
 		{ 0, 0 }
 
 };
@@ -271,7 +275,7 @@ int LuaSceneObject::isInRange(lua_State* L) {
 	float y = lua_tonumber(L, -2);
 	float x = lua_tonumber(L, -3);
 
-	bool res = (static_cast<QuadTreeEntry*>(realObject))->isInRange(x, y, range);
+	bool res = (static_cast<TreeEntry*>(realObject))->isInRange(x, y, range);
 
 	lua_pushnumber(L, res);
 
@@ -379,6 +383,19 @@ int LuaSceneObject::getParent(lua_State* L) {
 	return 1;
 }
 
+int LuaSceneObject::getRootParent(lua_State* L) {
+	SceneObject* obj = realObject->getRootParent();
+
+	if (obj == nullptr) {
+		lua_pushnil(L);
+	} else {
+		obj->_setUpdated(true);
+		lua_pushlightuserdata(L, obj);
+	}
+
+	return 1;
+}
+
 int LuaSceneObject::getContainerObject(lua_State* L) {
 	int idx = lua_tonumber(L, -1);
 
@@ -470,9 +487,11 @@ int LuaSceneObject::transferObject(lua_State* L) {
 	int containmentType = lua_tonumber(L, -2);
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -3);
 
-	realObject->transferObject(obj, containmentType, notifyClient);
+	bool transfer = realObject->transferObject(obj, containmentType, notifyClient);
 
-	return 0;
+	lua_pushboolean(L, transfer);
+
+	return 1;
 }
 
 /*int LuaSceneObject::removeObject(lua_State* L) {
@@ -588,6 +607,14 @@ int LuaSceneObject::isBuildingObject(lua_State* L) {
 
 int LuaSceneObject::isActiveArea(lua_State* L) {
 	bool val = realObject->isActiveArea();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaSceneObject::isShipObject(lua_State* L) {
+	bool val = realObject->isShipObject();
 
 	lua_pushboolean(L, val);
 
@@ -766,7 +793,13 @@ int LuaSceneObject::setObjectName(lua_State* L) {
 int LuaSceneObject::setRadius(lua_State* L) {
 	float radius = lua_tonumber(L, -1);
 
-	if (radius < 0.5f || radius > ZoneServer::CLOSEOBJECTRANGE * 4.0f) {
+	float radiusCheck = ZoneServer::CLOSEOBJECTRANGE;
+	auto zone = realObject->getZone();
+
+	if (zone != nullptr)
+		radiusCheck = zone->getZoneObjectRange();
+
+	if (radius < 0.5f || radius > (radiusCheck * 4.0f)) {
 		realObject->error() << __FUNCTION__ << "() invalid radius of " << radius;
 		lua_pushnil(L);
 		return 0;
@@ -880,8 +913,10 @@ int LuaSceneObject::getPlayersInRange(lua_State *L) {
 
 	lua_newtable(L);
 
-	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> playerObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-	thisZone->getInRangePlayers(realObject->getWorldPositionX(), realObject->getWorldPositionY(), range, playerObjects);
+	Vector3 worldPos = realObject->getWorldPosition();
+
+	Reference<SortedVector<ManagedReference<TreeEntry*> >*> playerObjects = new SortedVector<ManagedReference<TreeEntry*> >();
+	thisZone->getInRangePlayers(worldPos.getX(), worldPos.getZ(), worldPos.getY(), range, playerObjects);
 	int numPlayers = 0;
 
 	for (int i = 0; i < playerObjects->size(); ++i) {
@@ -900,5 +935,24 @@ int LuaSceneObject::isInNavMesh(lua_State* L) {
 
 	lua_pushboolean(L, val);
 
+	return 1;
+}
+
+int LuaSceneObject::checkInConversationRange(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaSceneObject::checkInConversationRange.";
+		return 0;
+	}
+
+	SceneObject* targetObject = (SceneObject*) lua_touserdata(L, -1);
+
+	if (targetObject == nullptr)
+		return 0;
+
+	bool val = realObject->checkInConversationRange(targetObject);
+
+	lua_pushboolean(L, val);
 	return 1;
 }

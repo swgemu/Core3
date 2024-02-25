@@ -86,8 +86,8 @@ namespace server {
 		void startScreenPlay(CreatureObject* creatureObject, const String& screenPlayName);
 		void reloadScreenPlays();
 		void activateEvent(ScreenPlayTask* task);
-		ConversationScreen* getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC);
-		ConversationScreen* runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
+		ConversationScreen* getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption, SceneObject* conversingNPC);
+		ConversationScreen* runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, SceneObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 		void setQuestStatus(const String& keyString, const String& valString);
 		String getQuestStatus(const String& keyString) const;
@@ -222,6 +222,9 @@ namespace server {
 		static int broadcastToGalaxy(lua_State* L);
 		static int getWorldFloor(lua_State* L);
 		static int useCovertOvert(lua_State* L);
+
+		// JTL
+		static int generateShipDeed(lua_State* L);
 
 	private:
 		static void setupLuaPackagePath(Lua* luaEngine);

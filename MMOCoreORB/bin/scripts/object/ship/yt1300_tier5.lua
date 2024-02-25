@@ -42,7 +42,33 @@
 
 
 object_ship_yt1300_tier5 = object_ship_shared_yt1300_tier5:new {
+	objectName = "@space/space_mobile_type:yt1300_tier5",
 
+	name = "yt1300_tier5",
+	type = "yt1300_tier5",
+	faction = "civilian",
+	difficulty = "tier5",
+
+	slideFactor = 1.85,
+	chassisHitpoints = 4915.2,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 6370.1, armor = 6370.1},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 6370.1, armor = 6370.1, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 6370.1, armor = 6370.1, front = 25480.4, back = 25480.4, regen = 46.3},
+	armor_0 = {name = "arm_generic", hitpoints = 13589.5, armor = 13589.5},
+	armor_1 = {name = "arm_generic", hitpoints = 13589.5, armor = 13589.5},
+	capacitor = {name = "cap_generic", hitpoints = 6370.1, armor = 6370.1, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_blaster", hitpoints = 6370.1, armor = 6370.1, rate = 0.78, drain = 1, maxDamage = 658.35, minDamage = 409.92, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_blaster", hitpoints = 6370.1, armor = 6370.1, rate = 0.78, drain = 1, maxDamage = 658.35, minDamage = 409.92, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_yt1300_tier5, "object/ship/yt1300_tier5.iff")

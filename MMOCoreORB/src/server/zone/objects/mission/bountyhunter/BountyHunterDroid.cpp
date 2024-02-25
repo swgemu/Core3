@@ -73,7 +73,7 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 
 	Locker lock(droid);
 
-	droid->addCreatureFlag(CreatureFlag::STATIC);
+	droid->addObjectFlag(ObjectFlag::STATIC);
 	droid->setAITemplate();
 
 	lock.release();

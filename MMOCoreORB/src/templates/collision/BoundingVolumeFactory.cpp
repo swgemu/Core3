@@ -14,7 +14,8 @@ BaseBoundingVolume* BoundingVolumeFactory::getVolume(IffStream *iff) {
 			return nullptr;
 		case 'EXBX':
 			volume = new BoxVolume();
-			break;
+			volume->read(iff);
+			return volume;
 		case 'CPST':
 			volume = new CompositeVolume();
 			break;

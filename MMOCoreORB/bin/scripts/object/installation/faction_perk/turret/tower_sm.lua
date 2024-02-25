@@ -46,7 +46,7 @@ object_installation_faction_perk_turret_tower_sm = object_installation_faction_p
 	pvpStatusBitmask = ATTACKABLE,
 	optionsBitmask = 0,
 	maxCondition = 75000,
-	zoneComponent = "TurretZoneComponent",
+	groundZoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
 	-- Damagetypes in WeaponObject
 	vulnerability = BLAST + LIGHTSABER,

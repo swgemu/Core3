@@ -38,8 +38,8 @@ function kidnappedNobleConvoHandler:doRunAway(pCreature)
 	local zPos = getTerrainHeight(pCreature, xPos, yPos)
 
 
-	AiAgent(pCreature):addCreatureFlag(AI_NOAIAGGRO)
-	AiAgent(pCreature):addCreatureFlag(AI_FOLLOW)
+	AiAgent(pCreature):addObjectFlag(AI_NOAIAGGRO)
+	AiAgent(pCreature):addObjectFlag(AI_FOLLOW)
 
 	AiAgent(pCreature):setMovementState(AI_PATROLLING)
 	AiAgent(pCreature):setAITemplate()

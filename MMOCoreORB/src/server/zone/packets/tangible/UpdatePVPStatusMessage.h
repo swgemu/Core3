@@ -24,7 +24,7 @@ public:
 		insertInt(pvpStatusBitmask);
 
 		unsigned int faction = 0;
-		if (!tano->isPlayerCreature() || tano->getFaction() == receiver->getFaction() || pvpStatusBitmask & CreatureFlag::OVERT) {
+		if (!tano->isPlayerCreature() || tano->getFaction() == receiver->getFaction() || pvpStatusBitmask & ObjectFlag::OVERT) {
 			faction = tano->getFaction();
 		}
 

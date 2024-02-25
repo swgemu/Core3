@@ -82,14 +82,14 @@ public:
 
 		// Get nearby people and bark
 		CloseObjectsVector* vec = (CloseObjectsVector*) droid->getCloseObjects();
-		SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
+		SortedVector<TreeEntry*> closeEntryObjects(200, 50);
 		if (vec != nullptr) {
 			vec->safeCopyReceiversTo(closeEntryObjects, CloseObjectsVector::PLAYERTYPE);
 		} else {
 #ifdef COV_DEBUG
 			droid->info("Null closeobjects vector in DroidMerchantBarkerTask::run()", true);
 #endif
-			zone->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
+			zone->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionZ(), droid->getWorldPositionY(), zone->getZoneObjectRange(), &closeEntryObjects, true);
 		}
 
 		bool speak = false;

@@ -4,22 +4,92 @@
 
 package server.zone.managers.space;
 
-import server.zone.managers.planet.PlanetManager;
+import engine.core.ManagedService;
+import server.zone.SpaceZone;
 import server.zone.ZoneProcessServer;
-import server.zone.Zone;
-include engine.log.Logger;
+import engine.log.Logger;
+import system.util.VectorMap;
+import server.zone.objects.scene.SceneObject;
+include engine.lua.LuaObject;
+import server.zone.CloseObjectsVector;
+include engine.util.u3d.Vector3;
+import server.zone.objects.ship.ShipObject;
 
 @dirty
-class SpaceManager extends PlanetManager {
-	public SpaceManager(Zone planet, ZoneProcessServer srv) {
-		super(planet, srv);
+class SpaceManager extends ManagedService implements Logger {
+	protected SpaceZone spaceZone;
 
-		Logger.setLoggingName("SpaceManager " + planet.getZoneName());
+	protected transient ZoneProcessServer server;
+
+	@rawTemplate(value="String, Vector3")
+	@dereferenced
+	protected transient VectorMap jtlTravelDestinations;
+
+	@rawTemplate(value="String, VectorMap<uint64, Vector3>")
+	@dereferenced
+	protected transient VectorMap spaceStationMap;
+
+	@dereferenced
+	protected transient string jtlZoneName;
+
+	@dereferenced
+	protected transient Vector3 jtlLaunchLocation;
+
+	@dirty
+	@local
+	@dereferenced
+	public native Vector3 getJtlLaunchLocationss();
+
+	public SpaceManager(SpaceZone sz, ZoneProcessServer srv) {
+		spaceZone = sz;
+		server = srv;
+
+		Logger.setLoggingName("SpaceManager-" + spaceZone.getZoneName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 	}
 
-	public void initialize() {
-		Logger.info("loading space manager " + super.zone.getZoneName());
+	@local
+	public native void loadLuaConfig();
+
+	@local
+	public native void loadNebulaAreas();
+
+	@local
+	private native void loadJTLData(LuaObject lua);
+
+	public native void initializeTransientMembers();
+
+	public native void finalize();
+
+	public native abstract void initialize();
+
+	public native void start();
+
+	public native void broadcastNebulaLightning(ShipObject ship, @dereferenced final Vector3 nebulaCenter, unsigned short lightningCount, int nebulaID, int startMili, int endMili, @dereferenced final Vector3 startPoint, @dereferenced final Vector3 endPoint);
+
+	@dirty
+	@local
+	@dereferenced
+	public final Vector3 getJtlTravelDestination(string key) {
+		return jtlTravelDestinations.get(key);
+	}
+
+	@dirty
+	public boolean hasJtlTravelDestination(string key) {
+		return jtlTravelDestinations.contains(key);
+	}
+
+	@local
+	@dereferenced
+	public native unsigned long getClosestSpaceStationObjectID(@dereferenced final Vector3 position, @dereferenced final string faction);
+
+	@local
+	@dereferenced
+	public native Vector3 getClosestSpaceStationPosition(@dereferenced final Vector3 position, @dereferenced final string faction);
+
+	@dirty
+	public string getJtlZoneName() {
+		return jtlZoneName;
 	}
 }

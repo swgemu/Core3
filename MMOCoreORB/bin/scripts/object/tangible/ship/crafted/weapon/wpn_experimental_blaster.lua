@@ -49,9 +49,9 @@ object_tangible_ship_crafted_weapon_wpn_experimental_blaster = object_tangible_s
 	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp_max", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_damage_max", "exp_damage_min", "exp_shield_effectiveness", "exp_armor_effectiveness", "exp_energy_per_shot", "exp_refire"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "damage_max", "damage_min", "effective_shields", "effective_armor", "energy_per_shot", "refire_rate"},
-	experimentalMin = {0, 0, 1018, 1, 37733, 509, 1, 2580, 2969, 1833, 463, 463, 23, 315},
-	experimentalMax = {0, 0, 1183, 1, 32468, 591, 1, 2220, 3450, 2130, 538, 538, 27, 366},
-	experimentalPrecision = {0, 0, 10, 0, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10},
+	experimentalMin = {0, 0, 1018, 1, 37733, 509, 1, 2580, 2969, 1833, 463, 463, 27, 366},
+	experimentalMax = {0, 0, 1183, 1, 32468, 591, 1, 2220, 3450, 2130, 538, 538, 23, 315},
+	experimentalPrecision = {0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 

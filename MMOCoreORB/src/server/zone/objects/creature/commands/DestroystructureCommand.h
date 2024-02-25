@@ -68,7 +68,7 @@ public:
 			if (buildingObject == nullptr)
 				return GENERALERROR;
 
-			if (((structure->getPvpStatusBitmask() & CreatureFlag::OVERT) && gcwMan->isBaseVulnerable(buildingObject)) || (structure->getOwnerCreatureObject() != creature))
+			if (((structure->getPvpStatusBitmask() & ObjectFlag::OVERT) && gcwMan->isBaseVulnerable(buildingObject)) || (structure->getOwnerCreatureObject() != creature))
 				return INVALIDTARGET;
 		}
 

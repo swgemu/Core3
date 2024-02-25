@@ -824,7 +824,9 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 			if (!result || waterHeight <= height) {
 				//Check that the position is outside cities.
 				SortedVector<ManagedReference<ActiveArea* > > activeAreas;
-				zone->getInRangeActiveAreas(startPos.getX(), startPos.getY(), &activeAreas, true);
+
+				zone->getInRangeActiveAreas(startPos.getX(), startPos.getZ(), startPos.getY(), &activeAreas, true);
+
 				for (int i = 0; i < activeAreas.size(); ++i) {
 					ActiveArea* area = activeAreas.get(i);
 

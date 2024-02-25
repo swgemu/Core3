@@ -8,78 +8,85 @@
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
-class ShipObjectMessage6 : public TangibleObjectMessage6 {
+class ShipObjectMessage6 : public BaseLineMessage {
+protected:
+	enum index : int {
+		flags = 0,
+		defenders = 1,
+		uniqueID = 2,
+		actualAccelerationRate = 3,
+		actualDecelerationRate = 4,
+		actualPitchAccelerationRate = 5,
+		actualYawAccelerationRate = 6,
+		actualRollAccelerationRate = 7,
+		actualPitchRate = 8,
+		actualYawRate = 9,
+		actualRollRate = 10,
+		actualMaxSpeed = 11,
+		targetID = 12,
+		targetIDSlot = 13,
+		targetableBitfield = 14,
+		shipComponentMap = 15,
+		wingName = 16,
+		typeName = 17,
+		difficulty = 18,
+		faction = 19,
+		frontShield = 20,
+		rearShield = 21,
+		guildId = 22,
+	};
+
 public:
-	ShipObjectMessage6(ShipObject* ship)
-			: TangibleObjectMessage6(ship, 0x53484950, 0x18) {
+	ShipObjectMessage6(ShipObject* ship) : BaseLineMessage(ship, 0x53484950, 6, 23) {
+		insertInt(0x76); // 0x3D in creos
 
-		insertShort(ship->getUniqueID()); //3 const Archive::AutoDeltaVariableCallback<ushort,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::ShipIdChanged,ushort>,ShipObject>::`vftable
+		ship->getDefenderList()->insertToMessage(this);
 
+		insertShort(ship->getUniqueID());
+		insertFloat(ship->getActualAccelerationRate());
+		insertFloat(ship->getActualDecelerationRate());
 
-		insertFloat(50.f); // 4 const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(50.f); // 5 min speed // Archive::AutoDeltaVariable<float>
+		insertFloat(ship->getActualPitchAccelerationRate());
+		insertFloat(ship->getActualYawAccelerationRate());
+		insertFloat(ship->getActualRollAccelerationRate());
 
-		insertFloat(10.472f); //6 Yaw Acceleration Max
-		insertFloat(10.472f); // 7 Pitch Acceleration Max
-		insertFloat(5.23599f); //8 Roll Acceleration Max
+		insertFloat(ship->getActualPitchRate());
+		insertFloat(ship->getActualYawRate());
+		insertFloat(ship->getActualRollRate());
+		insertFloat(ship->getActualSpeed());
 
-		insertFloat(0.1675516f); //9 Yaw Acceleration
-		insertFloat(0.1675516f); //10 Pitch Acceleration
-		insertFloat(0.907571f); //11 Roll Acceleration
+		insertLong(ship->getShipTargetID());
+		insertInt(ship->getShipTargetSlot());
 
+		ship->getTargetableBitfield()->insertToMessage(this);
+		ship->getShipComponentMap()->insertToMessage(this);
 
-		insertFloat(50.f); //12 max speed
+		insertAscii(""); // wingName
+		insertAscii(getShipTypeName(ship));
+		insertAscii(ship->getShipDifficulty());
+		insertAscii(ship->getShipFaction());
 
-		insertLong(0); //13 const Archive::AutoDeltaVariableCallback<CachedNetworkId,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::LookAtTargetChanged,CachedNetworkId>,ShipObject>::`vftable'
+		insertFloat(ship->getFrontShield());
+		insertFloat(ship->getRearShield());
 
-		insertInt(0); //14 const Archive::AutoDeltaVariableCallback<int,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::LookAtTargetSlotChanged,int>,ShipObject>::`vftable'
-
-		insertInt(0); //15  const Archive::AutoDeltaVariableCallback<BitArray,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::TargetableSlotBitfieldChanged,BitArray>,ShipObject>::`vftable'
-		insertInt(0);
-
-		//components 16
-		insertInt(7); // const Archive::AutoDeltaMap<int,ulong,ShipObject>::`vftable'
-		insertInt(7);
-
-		insertByte(0);
-		insertInt(0);
-		insertInt(0x9abdbfdc); // 0xDC, 0xBF, 0xBD, 0x9A, //rct_prototype
-
-		insertByte(0);
-		insertInt(1);
-		insertInt(0x35a0c705); // 0x05, 0xC7, 0xA0, 0x35, //eng_prototype
-
-		insertByte(0);
-		insertInt(2);
-		insertInt(0xe73217be); // 0xBE, 0x17, 0x32, 0xE7 //shd_prototype
-
-		insertByte(0);
-		insertInt(4);
-		insertInt(0xe1cb609e); // 0x9E, 0x60, 0xCB, 0xE1, //arm_prototype
-
-		insertByte(0);
-		insertInt(5);
-		insertInt(0xe1cb609e); // 0x9E, 0x60, 0xCB, 0xE1, //arm_prototype
-
-		insertByte(0);
-		insertInt(6);
-		insertInt(0x20ced6ee); // 0xEE, 0xD6, 0xCE, 0x20, //cap_prototype
-
-		insertByte(0);
-		insertInt(0x0f);
-		insertInt(0x2c823c3d); //0x3D, 0x3C, 0x82, 0x2C, //wpn_prototype
-
-		insertAscii(""); //17 const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
-		insertAscii(""); //18 const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
-		insertAscii(""); //19 const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
-		insertAscii(""); //20 const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
-
-		insertFloat(301.f); //21 front shield current
-		insertFloat(302.f); //22 back shield current
-
-		insertInt(0); //23 const Archive::AutoDeltaVariable<int>::`vftable'
+		insertInt(getGuildID(ship));
 
 		setSize();
+	}
+
+	int getGuildID(ShipObject* ship) {
+		auto owner = ship->getOwner().get();
+		return owner != nullptr && owner->isInGuild() ? owner->getGuildID() : 0;
+	}
+
+	String getShipTypeName(ShipObject* ship) {
+		auto owner = ship->getOwner().get();
+
+		if (owner == nullptr || !owner->isASubChildOf(ship)) {
+			return ship->getShipType();
+		}
+
+		return "";
 	}
 };
 

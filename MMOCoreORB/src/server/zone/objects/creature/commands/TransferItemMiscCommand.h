@@ -132,12 +132,12 @@ public:
 			return GENERALERROR;
 		}
 
-		if(objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR)){
+		if (objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR)) {
 			trx.abort() << "Not allowed to move vendor from parent";
 			return GENERALERROR;
 		}
 
-		if (!objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT)){
+		if (!objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT)) {
 			trx.abort() << "Not allowed to move object out of parent";
 			return GENERALERROR;
 		}
@@ -184,7 +184,7 @@ public:
 
 			float maxDistance =  16.5;
 
-			if (rootParent != nullptr && !rootParent->isBuildingObject() && parent != nullptr && !parent->isBuildingObject()) {
+			if (rootParent != nullptr && !rootParent->isBuildingObject() && !rootParent->isPobShip() && parent != nullptr && !parent->isBuildingObject() && !parent->isPobShip()) {
 				float rootDist = rootParent->getDistanceTo(creature);
 
 				if (rootDist > maxDistance) { // Handles Hoppers in Factories

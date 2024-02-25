@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/guild/GuildManager.h"
@@ -25,12 +26,17 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		// info(true) << "PermissionListPermissionListModifyCommand called -- by " << creature->getDisplayedName() << " Target ID :" << target << " Arguments: " << arguments.toString();
+
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		uint64 targetid = creature->getTargetID();
-		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
+		if (playerManager == nullptr)
+			return GENERALERROR;
 
-		if (obj == nullptr || !obj->isStructureObject()) {
+		uint64 targetid = creature->getTargetID();
+		ManagedReference<SceneObject*> sceneO = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
+
+		if (sceneO == nullptr || (!sceneO->isStructureObject() && !sceneO->isPobShip())) {
 			creature->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
 			return INVALIDTARGET;
 		}
@@ -40,15 +46,7 @@ public:
 		if (zoneServer == nullptr)
 			return GENERALERROR;
 
-		StructureObject* structureObject = cast<StructureObject*>(obj.get());
-
-		if (structureObject == nullptr)
-			return GENERALERROR;
-
 		String targetName, listName, action;
-		ManagedReference<SceneObject*> targetObject = nullptr;
-
-		ManagedReference<GuildManager*> guildManager = zoneServer->getGuildManager();
 
 		try {
 			UnicodeTokenizer tokenizer(arguments);
@@ -66,6 +64,48 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
+		// info(true) << " Target Name: " << targetName << " List Name: " << listName << " Action: " << action;
+
+		if (targetName.length() > 40) {
+			creature->sendSystemMessage("@player_structure:permission_40_char"); //Permission list entries cannot be longer than 40 characters.
+			return INVALIDPARAMETERS;
+		}
+
+		int ret = 1;
+
+		if (sceneO->isPobShip()) {
+			ret = handlePobShipPermissions(creature, sceneO, targetName, listName, action, arguments.toString());
+		} else if (sceneO->isStructureObject()) {
+			ret = handleStructurePermissions(creature, sceneO, targetName, listName, action, arguments.toString());
+		}
+
+		return ret;
+	}
+
+	int handleStructurePermissions(CreatureObject* creature, SceneObject* sceneO, String targetName, String listName, String action, String arguments) const {
+		if (creature == nullptr || sceneO == nullptr)
+			return GENERALERROR;
+
+		StructureObject* structureObject = cast<StructureObject*>(sceneO);
+
+		if (structureObject == nullptr)
+			return GENERALERROR;
+
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
+		ManagedReference<GuildManager*> guildManager = zoneServer->getGuildManager();
+
+		if (guildManager == nullptr)
+			return GENERALERROR;
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		if (playerManager == nullptr)
+			return GENERALERROR;
+
 		Locker _lock(structureObject, creature);
 
 		if (!structureObject->hasPermissionList(listName)) {
@@ -73,10 +113,7 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		if (targetName.length() > 40) {
-			creature->sendSystemMessage("@player_structure:permission_40_char"); //Permission list entries cannot be longer than 40 characters.
-			return INVALIDPARAMETERS;
-		}
+		ManagedReference<SceneObject*> targetObject = nullptr;
 
 		if (targetName.beginsWith("guild:")) {
 			String abbrev = targetName.replaceAll("guild:","");
@@ -170,7 +207,7 @@ public:
 		if (trx.isVerbose()) {
 			// Include extra details
 			trx.addState("commandCreature", creature->getObjectID());
-			trx.addState("commandArguments", arguments.toString());
+			trx.addState("commandArguments", arguments);
 			trx.addRelatedObject(targetObject->getObjectID());
 		}
 
@@ -231,6 +268,163 @@ public:
 		return SUCCESS;
 	}
 
+	int handlePobShipPermissions(CreatureObject* creature, SceneObject* sceneO, String targetName, String listName, String action, String arguments) const {
+		if (creature == nullptr || sceneO == nullptr)
+			return GENERALERROR;
+
+		PobShipObject* pobShip = sceneO->asPobShip();
+
+		if (pobShip == nullptr)
+			return GENERALERROR;
+
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
+		ManagedReference<GuildManager*> guildManager = zoneServer->getGuildManager();
+
+		if (guildManager == nullptr)
+			return GENERALERROR;
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		if (playerManager == nullptr)
+			return GENERALERROR;
+
+		Locker _lock(pobShip, creature);
+
+		if (!pobShip->hasPermissionList(listName)) {
+			creature->sendSystemMessage("@player_structure:must_specify_list"); //You must specify a valid permission list (Entry, Ban, Admin, Hopper)
+			return INVALIDPARAMETERS;
+		}
+
+		CreatureObject* owner = pobShip->getOwner().get();
+
+		if (owner == nullptr)
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> targetObject = nullptr;
+
+		if (targetName.beginsWith("guild:")) {
+			String abbrev = targetName.replaceAll("guild:","");
+
+			if (abbrev == "" || !guildManager->guildAbbrevExists(abbrev)) {
+				creature->sendSystemMessage("That guild does not exist.");
+				return INVALIDPARAMETERS;
+			}
+
+			targetObject = guildManager->getGuildFromAbbrev(abbrev);
+
+		} else {
+			if (!playerManager->existsName(targetName)) {
+				StringIdChatParameter params("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
+				params.setTO(targetName);
+
+				creature->sendSystemMessage(params);
+				return INVALIDPARAMETERS;
+			}
+
+			targetObject = playerManager->getPlayer(targetName);
+		}
+
+		if (targetObject == nullptr || (!targetObject->isPlayerCreature() && !targetObject->isGuildObject())) {
+			return INVALIDPARAMETERS;
+		}
+
+		uint64 targetID = targetObject->getObjectID();
+		bool isOnPermsList = pobShip->isOnPermissionList(listName, targetID);
+
+		if (pobShip->isPermissionListFull(listName)) {
+			if (action == "add" || (action == "toggle" && !isOnPermsList)) {
+				creature->sendSystemMessage("@player_structure:too_many_entries"); //You have too many entries on that list. You must remove some before adding more.
+				return INVALIDPARAMETERS;
+			}
+		}
+
+		if (action == "add" && isOnPermsList) {
+			creature->sendSystemMessage("That name is already on that list.");
+			return INVALIDPARAMETERS;
+		}
+
+
+		if (creature->getObjectID() == targetID) {
+			creature->sendSystemMessage("@player_structure:cannot_remove_self"); //You cannot remove yourself from the admin list.
+			return INVALIDPARAMETERS;
+		}
+
+		if (listName == "ADMIN" && owner->getObjectID() == targetObject->getObjectID() && (action.contains("toggle") || action.contains("remove"))) {
+			creature->sendSystemMessage("@player_structure:cannot_remove_owner"); //You cannot remove the owner from the admin list.
+			return INVALIDPARAMETERS;
+		}
+
+		StringIdChatParameter params;
+		params.setTO(targetName);
+
+		TransactionLog trx(creature, targetObject, pobShip, TrxCode::PERMISSIONLIST);
+
+		if (trx.isVerbose()) {
+			// Include extra details
+			trx.addState("commandCreature", creature->getObjectID());
+			trx.addState("commandArguments", arguments);
+			trx.addRelatedObject(targetObject->getObjectID());
+		}
+
+		int returnCode = StructurePermissionList::LISTNOTFOUND;
+
+		if (action == "add")
+			returnCode = pobShip->grantPermission(listName, targetID);
+		else if (action == "remove")
+			returnCode = pobShip->revokePermission(listName, targetID);
+		else
+			returnCode = pobShip->togglePermission(listName, targetID);
+
+		trx.addState("permissionAction", action);
+		trx.addState("permissionList", listName.toLowerCase());
+		trx.addState("permissionTarget", targetName);
+
+		switch (returnCode) {
+		case StructurePermissionList::GRANTED:
+			trx.addState("permissionResult", "granted");
+			params.setStringId("@player_structure:player_added"); //%NO added to the list.
+			break;
+		case StructurePermissionList::REVOKED:
+			trx.addState("permissionResult", "revoked");
+			params.setStringId("@player_structure:player_removed"); //%NO removed from the list.
+			break;
+		default:
+			trx.addState("permissionResult", "failed");
+			trx.abort() << "Permission change failed with code: " << returnCode;
+			return GENERALERROR;
+		}
+
+		creature->sendSystemMessage(params);
+
+		if (targetObject->isPlayerCreature()) {
+			ManagedReference<CreatureObject*> targetPlayer = cast<CreatureObject*>(targetObject.get());
+
+			//Update the cell permissions in case the player is in the building currently.
+			if (targetPlayer != nullptr) {
+				pobShip->updateCellPermissionsTo(targetPlayer);
+			}
+		} else {
+			ManagedReference<GuildObject*> targetGuild = cast<GuildObject*>(targetObject.get());
+
+			//Update the cell permissions to guild members.
+			if (targetGuild != nullptr) {
+
+				for (int i = 0; i < targetGuild->getTotalMembers(); ++i) {
+					uint64 memberID = targetGuild->getMember(i);
+					ManagedReference<CreatureObject*> guildMember = zoneServer->getObject(memberID).castTo<CreatureObject*>();
+
+					if (guildMember != nullptr)
+						pobShip->updateCellPermissionsTo(guildMember);
+				}
+			}
+		}
+
+		return SUCCESS;
+	}
 };
 
 #endif //PERMISSIONLISTMODIFYCOMMAND_H_

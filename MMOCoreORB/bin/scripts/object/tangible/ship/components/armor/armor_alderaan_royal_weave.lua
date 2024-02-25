@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_armor_alderaan_royal_weave = object_tangible_ship_components_armor_shared_armor_alderaan_royal_weave:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "armor_alderaan_royal_weave.iff",
+
+	attributes = {
+		{"maximumHitpoints", 416.3},
+		{"maximumArmorHitpoints", 416.3},
+		{"mass", 3468.94},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.315},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_alderaan_royal_weave, "object/tangible/ship/components/armor/armor_alderaan_royal_weave.iff")

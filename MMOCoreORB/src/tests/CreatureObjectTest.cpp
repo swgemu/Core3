@@ -2,7 +2,7 @@
 
 #include "server/db/MySqlDatabase.h"
 #include "server/db/ServerDatabase.h"
-#include "server/zone/Zone.h"
+#include "server/zone/GroundZone.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
@@ -19,7 +19,7 @@ protected:
 	const String skillWithSneakAbility = "combat_rifleman_speed_03";
 	ServerDatabase* database = nullptr;
 	Reference<ZoneServer*> zoneServer;
-	Reference<Zone*> zone;
+	Reference<GroundZone*> groundZone;
 	Reference<ZoneProcessServer*> processServer;
 	AtomicLong nextObjectId;
 public:
@@ -34,9 +34,9 @@ public:
 		database = new ServerDatabase(configManager);
 		zoneServer = new ZoneServer(configManager);
 		processServer = new ZoneProcessServer(zoneServer);
-		zone = new Zone(processServer, "test_zone");
-		zone->createContainerComponent();
-		zone->_setObjectID(1);
+		groundZone = new GroundZone(processServer, "test_zone");
+		groundZone->createContainerComponent();
+		groundZone->_setObjectID(1);
 
 		CreaturePosture::instance()->loadMovementData();
 	}
@@ -48,7 +48,7 @@ public:
 			database = nullptr;
 		}
 
-		zone = nullptr;
+		groundZone = nullptr;
 		processServer = nullptr;
 		zoneServer = nullptr;
 	}
@@ -65,7 +65,7 @@ public:
 		Reference<CreatureObject*> creature = new CreatureObject();
 
 		creature->setContainerComponent("ContainerComponent");
-		creature->setZoneComponent("ZoneComponent");
+		creature->setZoneComponent("GroundZoneComponent");
 		creature->_setObjectID(nextObjectId.increment());
 		creature->initializeContainerObjectsMap();
 

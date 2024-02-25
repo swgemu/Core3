@@ -42,7 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_kessel_rebel_qualdex_integrated_array = object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_qualdex_integrated_array:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "ddi_kessel_rebel_qualdex_integrated_array",
+
+	attributes = {
+		{"commandSpeed", 13.5},
+		{"maximumHitpoints", 1100.38},
+		{"maximumArmorHitpoints", 550.19},
+		{"energyMaintenance", 500},
+		{"mass", 19500},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_kessel_rebel_qualdex_integrated_array, "object/tangible/ship/components/droid_interface/ddi_kessel_rebel_qualdex_integrated_array.iff")

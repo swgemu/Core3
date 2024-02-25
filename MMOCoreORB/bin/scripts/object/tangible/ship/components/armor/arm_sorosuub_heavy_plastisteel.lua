@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_sorosuub_heavy_plastisteel = object_tangible_ship_components_armor_shared_arm_sorosuub_heavy_plastisteel:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_sorosuub_heavy_plastisteel",
+
+	attributes = {
+		{"maximumHitpoints", 697.434},
+		{"maximumArmorHitpoints", 697.434},
+		{"mass", 5518.12},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.378},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_sorosuub_heavy_plastisteel, "object/tangible/ship/components/armor/arm_sorosuub_heavy_plastisteel.iff")

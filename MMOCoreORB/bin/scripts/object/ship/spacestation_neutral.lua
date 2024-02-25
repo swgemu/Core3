@@ -42,7 +42,34 @@
 
 
 object_ship_spacestation_neutral = object_ship_shared_spacestation_neutral:new {
+	objectName = "@space/ship_names:spacestation_neutral",
 
+	name = "spacestation_neutral",
+	type = "spacestation_neutral",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 1.76,
+	chassisHitpoints = 30000,
+	chassisMass = 50000,
+
+	gameObjectType = 536870920,
+
+	pvpBitmask = NONE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED + INVULNERABLE,
+
+	customShipAiMap = "spaceStations",
+
+	reactor = {name = "rct_generic", hitpoints = 5000, armor = 2000},
+	shield_0 = {name = "shd_generic", hitpoints = 10000, armor = 3000, front = 6000, back = 6000, regen = 50},
+	shield_1 = {name = "shd_generic", hitpoints = 5000, armor = 3000, front = 3000, back = 3000, regen = 40},
+	armor_0 = {name = "arm_generic", hitpoints = 5000, armor = 5000},
+	armor_1 = {name = "arm_generic", hitpoints = 5000, armor = 5000},
+	capacitor = {name = "cap_generic", hitpoints = 5000, armor = 1000, energy = 2356.5, rechargeRate = 128.3},
+	bridge = {name = "bdg_generic", hitpoints = 2000, armor = 2000},
+	hangar = {name = "hgr_generic", hitpoints = 2000, armor = 2000},
+	targeting_station = {name = "tst_generic", hitpoints = 2000, armor = 2000},
 }
 
 ObjectTemplates:addTemplate(object_ship_spacestation_neutral, "object/ship/spacestation_neutral.iff")

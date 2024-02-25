@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_tieinterceptor_chassis_token = object_tangible_ship_components_chassis_shared_tieinterceptor_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tieinterceptor_deed.iff",
-	dealerFee = 4000,
-	certRequired = "",
+	dealerFee = 50000,
+	certificationRequired = "cert_starships_tieinterceptor",
+	skillRequired = {"pilot_imperial_navy_starships_03"},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_tieinterceptor_chassis_token = object_ta
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 1750, 48750},
 	experimentalMax = {0, 0, 2250, 51250},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

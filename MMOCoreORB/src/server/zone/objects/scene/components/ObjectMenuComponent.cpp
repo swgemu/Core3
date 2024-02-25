@@ -8,6 +8,7 @@
 #include "ObjectMenuComponent.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -22,14 +23,26 @@ void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 
 	ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
 
-	if (rootParent == nullptr || !rootParent->isBuildingObject()) {
+	if (rootParent == nullptr) {
 		return;
 	}
 
-	ManagedReference<BuildingObject*> building = rootParent.castTo<BuildingObject*>();
+	bool checkPermissions = false;
 
-	//Is this player on the permission list?
-	if (!building->isOnAdminList(player))
+	if (rootParent->isBuildingObject()) {
+		ManagedReference<BuildingObject*> building = rootParent.castTo<BuildingObject*>();
+
+		//Is this player on the permission list?
+		if (building != nullptr && building->isOnAdminList(player))
+			checkPermissions = true;
+	} else if (rootParent->isPobShip()) {
+		ManagedReference<PobShipObject*> pobShip = rootParent->asPobShip();
+
+		if (pobShip != nullptr && pobShip->isOnAdminList(player))
+			checkPermissions = true;
+	}
+
+	if (!checkPermissions)
 		return;
 
 	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();

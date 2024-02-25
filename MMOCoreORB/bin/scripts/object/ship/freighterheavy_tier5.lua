@@ -42,7 +42,31 @@
 
 
 object_ship_freighterheavy_tier5 = object_ship_shared_freighterheavy_tier5:new {
+	objectName = "@space/space_mobile_type:freighterheavy_tier5",
 
+	name = "freighterheavy_tier5",
+	type = "freighterheavy_tier5",
+	faction = "civilian",
+	difficulty = "tier5",
+
+	slideFactor = 1.91,
+	chassisHitpoints = 4915.2,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 6370.1, armor = 6370.1},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 6370.1, armor = 6370.1, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 6370.1, armor = 6370.1, front = 63701, back = 63701, regen = 34.73},
+	armor_0 = {name = "arm_generic", hitpoints = 33973.9, armor = 33973.9},
+	armor_1 = {name = "arm_generic", hitpoints = 33973.9, armor = 33973.9},
+	capacitor = {name = "cap_generic", hitpoints = 6370.1, armor = 6370.1, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_freighterheavy_tier5, "object/ship/freighterheavy_tier5.iff")

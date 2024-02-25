@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_armor_subpro_reinforced_plasteel = object_tangible_ship_components_armor_shared_armor_subpro_reinforced_plasteel:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "armor_subpro_reinforced_plasteel.iff",
+
+	attributes = {
+		{"maximumHitpoints", 871.792},
+		{"maximumArmorHitpoints", 871.792},
+		{"mass", 9645.68},
+		{"reverseEngineeringLevel", 6},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.3},
+		{"maximumArmorHitpoints", 0.3},
+		{"mass", 0.375},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_subpro_reinforced_plasteel, "object/tangible/ship/components/armor/armor_subpro_reinforced_plasteel.iff")

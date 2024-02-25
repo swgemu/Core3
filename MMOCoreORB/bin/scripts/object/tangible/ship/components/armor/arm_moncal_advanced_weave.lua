@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_moncal_advanced_weave = object_tangible_ship_components_armor_shared_arm_moncal_advanced_weave:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_moncal_advanced_weave",
+
+	attributes = {
+		{"maximumHitpoints", 1547.86},
+		{"maximumArmorHitpoints", 1547.86},
+		{"mass", 33036.3},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.39},
+		{"maximumArmorHitpoints", 0.39},
+		{"mass", 0.483},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_moncal_advanced_weave, "object/tangible/ship/components/armor/arm_moncal_advanced_weave.iff")

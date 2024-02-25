@@ -11,6 +11,7 @@
 #include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/managers/creature/SpawnAreaMap.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
+#include "server/zone/objects/area/areashapes/CuboidAreaShape.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 bool ActiveAreaImplementation::containsPoint(float px, float py, uint64 cellid) const {
@@ -30,6 +31,24 @@ bool ActiveAreaImplementation::containsPoint(float px, float py) const {
 	}
 
 	return areaShape->containsPoint(px, py);
+}
+
+bool ActiveAreaImplementation::containsPoint(float px, float pz, float py, uint64 cellid) const {
+	if (cellObjectID != 0 && cellObjectID != cellid)
+		return false;
+
+	return containsPoint(px, pz, py);
+}
+
+bool ActiveAreaImplementation::containsPoint(float px, float pz, float py) const {
+	if (areaShape == nullptr) {
+		Vector3 position(px, pz, py);
+
+		bool testRange = (getPosition().squaredDistanceTo(position) < (radius * radius));
+		return testRange;
+	}
+
+	return areaShape->containsPoint(px, pz, py);
 }
 
 void ActiveAreaImplementation::enqueueEnterEvent(SceneObject* obj) {
@@ -217,28 +236,6 @@ Vector3 ActiveAreaImplementation::getAreaCenter() const {
 		return getPosition();
 }
 
-float ActiveAreaImplementation::getHeight() const {
-	if (isRectangularAreaShape()) {
-		RectangularAreaShape* rect = cast<RectangularAreaShape*>(areaShape.get());
-
-		if (rect != nullptr)
-			return rect->getHeight();
-	}
-
-	return 0.0f;
-}
-
-float ActiveAreaImplementation::getWidth() const {
-	if (isRectangularAreaShape()) {
-		RectangularAreaShape* rect = dynamic_cast<RectangularAreaShape*>(areaShape.get());
-
-		if (rect != nullptr)
-			return rect->getHeight();
-	}
-
-	return 0.0f;
-}
-
 Vector4 ActiveAreaImplementation::getRectangularDimensions() const {
 	Vector4 dimsensions;
 
@@ -247,6 +244,19 @@ Vector4 ActiveAreaImplementation::getRectangularDimensions() const {
 
 		if (rect != nullptr)
 			dimsensions = rect->getRectangularDimensions();
+	}
+
+	return dimsensions;
+}
+
+Vector3 ActiveAreaImplementation::getCuboidDimensions() const {
+	Vector3 dimsensions;
+
+	if (isCuboidAreaShape()) {
+		CuboidAreaShape* cuboid = dynamic_cast<CuboidAreaShape*>(areaShape.get());
+
+		if (cuboid != nullptr)
+			dimsensions = cuboid->getCuboidDimensions();
 	}
 
 	return dimsensions;

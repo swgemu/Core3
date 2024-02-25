@@ -42,7 +42,32 @@
 
 
 object_ship_civtransport = object_ship_shared_civtransport:new {
+	objectName = "@space/space_mobile_type:civtransport",
 
+	name = "civtransport",
+	type = "civtransport",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 1.65,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 30, acceleration = 26.1, deceleration = 22.446, yaw = 14.2, yawRate = 21.3, pitch = 14.2, pitchRate = 21.3, roll = 14.2, rollRate = 21.3},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 200, back = 200, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 163.2, rechargeRate = 6.528},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.064, drain = 3.072, maxDamage = 250, minDamage = 120, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_civtransport, "object/ship/civtransport.iff")

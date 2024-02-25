@@ -50,7 +50,7 @@ object_mobile_vendor_trandoshan_male = object_mobile_vendor_shared_trandoshan_ma
 	objectMenuComponent = "VendorMenuComponent",
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = "VendorContainerComponent",
-	zoneComponent = "VendorZoneComponent",
+	groundZoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 

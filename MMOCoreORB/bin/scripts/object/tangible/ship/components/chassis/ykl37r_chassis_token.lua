@@ -42,12 +42,12 @@
 
 
 object_tangible_ship_components_chassis_ykl37r_chassis_token = object_tangible_ship_components_chassis_shared_ykl37r_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/ykl37r_deed.iff",
-	dealerFee = 20000,
-	certRequired = "pilot_rebel_navy_master",
-	POB = true,
+	dealerFee = 100000,
+	certificationRequired = "cert_starships_ykl37r",
+	skillRequired = {"pilot_rebel_navy_master"},
+	POB = 1,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
 	experimentalProperties = {"XX", "XX", "HR", "OQ", "SR", "UT", "MA", "OQ", "SR", "UT"},
@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_ykl37r_chassis_token = object_tangible_s
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 3200, 4995000},
 	experimentalMax = {0, 0, 4200, 5005000},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

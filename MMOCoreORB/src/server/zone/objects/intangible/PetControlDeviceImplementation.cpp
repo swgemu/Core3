@@ -385,8 +385,8 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 		uint32 playerPvpStatusBitmask = player->getPvpStatusBitmask();
 
-		if (playerPvpStatusBitmask & CreatureFlag::PLAYER) {
-			playerPvpStatusBitmask &= ~CreatureFlag::PLAYER;
+		if (playerPvpStatusBitmask & ObjectFlag::PLAYER) {
+			playerPvpStatusBitmask &= ~ObjectFlag::PLAYER;
 
 			creature->setPvpStatusBitmask(playerPvpStatusBitmask);
 		} else {
@@ -463,15 +463,15 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	pet->setFollowObject(player);
 
 	if (petType == PetManager::CREATUREPET) {
-		pet->setCreatureBitmask(CreatureFlag::PET);
+		pet->setCreatureBitmask(ObjectFlag::PET);
 	}
 	if (petType == PetManager::DROIDPET || petType == PetManager::HELPERDROIDPET) {
-		pet->setCreatureBitmask(CreatureFlag::DROID_PET);
+		pet->setCreatureBitmask(ObjectFlag::DROID_PET);
 	}
 	if (petType == PetManager::FACTIONPET) {
-		pet->setCreatureBitmask(CreatureFlag::FACTION_PET);
+		pet->setCreatureBitmask(ObjectFlag::FACTION_PET);
 		/** dont know if npc faction pets trained via converse instead of radial
-		if (pet->isNonPlayerCreatureObject() && pet->getDiet() != CreatureFlag::NONE) // show converse to npcs that eat food i.e. not atst
+		if (pet->isNonPlayerCreatureObject() && pet->getDiet() != ObjectFlag::NONE) // show converse to npcs that eat food i.e. not atst
 			pet->setOptionBit(OptionBitmask::CONVERSE,true);
 		**/
 	}

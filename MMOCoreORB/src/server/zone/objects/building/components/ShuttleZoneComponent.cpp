@@ -12,7 +12,7 @@
 //#define SHUTTLE_TIMER_DEBUG
 
 void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
-	ZoneComponent::notifyInsertToZone(sceneObject, zone);
+	GroundZoneComponent::notifyInsertToZone(sceneObject, zone);
 
 	if (sceneObject == nullptr) {
 		error() << "ShuttleZoneComponent::notifyInsertToZone -- inserted object is null";
@@ -61,5 +61,5 @@ void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zo
 }
 
 void ShuttleZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
-	ZoneComponent::notifyRemoveFromZone(sceneObject);
+	GroundZoneComponent::notifyRemoveFromZone(sceneObject);
 }

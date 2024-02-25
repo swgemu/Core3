@@ -42,7 +42,28 @@
 
 
 object_tangible_ship_components_weapon_capacitor_cap_sorosuub_dynamo_mk1 = object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk1:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "cap_sorosuub_dynamo_mk1",
+
+	attributes = {
+		{"maxEnergy", 525},
+		{"rechargeRate", 21},
+		{"maximumHitpoints", 157.5},
+		{"maximumArmorHitpoints", 78.75},
+		{"energyMaintenance", 1050},
+		{"mass", 1050},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maxEnergy", 0.23},
+		{"rechargeRate", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.22},
+		{"mass", 0.13},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_cap_sorosuub_dynamo_mk1, "object/tangible/ship/components/weapon_capacitor/cap_sorosuub_dynamo_mk1.iff")

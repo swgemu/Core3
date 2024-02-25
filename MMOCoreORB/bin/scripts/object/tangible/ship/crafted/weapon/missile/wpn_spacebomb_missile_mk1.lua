@@ -49,9 +49,9 @@ object_tangible_ship_crafted_weapon_missile_wpn_spacebomb_missile_mk1 = object_t
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_damage_max", "exp_damage_min", "misc", "misc", "exp_ammo", "exp_fltrefirerate"},
 	experimentalSubGroupTitles = {"null", "null", "fltmaxdamage", "fltmindamage", "fltshieldeffectiveness", "fltarmoreffectiveness", "fltmaxammo", "fltrefirerate"},
-	experimentalMin = {0, 0, 6104, 3760, 700, 700, 2, 4760},
-	experimentalMax = {0, 0, 11337, 6983, 1300, 1300, 4, 8840},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalMin = {0, 0, 6104, 3760, 0.700, 0.700, 2, 8.840},
+	experimentalMax = {0, 0, 11337, 6983, 1.300, 1.300, 4, 4.760},
+	experimentalPrecision = {0, 0, 6, 6, 6, 6, 0, 6},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 

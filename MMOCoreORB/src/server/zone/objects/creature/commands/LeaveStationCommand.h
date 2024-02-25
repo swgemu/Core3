@@ -5,26 +5,49 @@
 #ifndef LEAVESTATION_H_
 #define LEAVESTATION_H_
 
-#include "CombatQueueCommand.h"
+#include "QueueCommand.h"
+#include "server/zone/objects/cell/CellObject.h"
 
-class LeaveStationCommand : public CombatQueueCommand {
+class LeaveStationCommand : public QueueCommand {
 public:
 
-	LeaveStationCommand(const String& name, ZoneProcessServer* server)
-		: CombatQueueCommand(name, server) {
+	LeaveStationCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+		if (!creature->isInShipStation())
+			return GENERALERROR;
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		SceneObject* parent = creature->getParent().get();
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+		if (parent == nullptr)
+			return GENERALERROR;
 
-		return doCombatAction(creature, target);
+		ManagedReference<SceneObject*> cellParent = parent->getParent().get();
+
+		if (cellParent == nullptr || !cellParent->isCellObject())
+			return GENERALERROR;
+
+		CellObject* cell = cast<CellObject*>(cellParent.get());
+
+		if (cell == nullptr)
+			return GENERALERROR;
+
+		// Reset player movement counter
+		creature->setMovementCounter(0);
+
+		// Clear Station State
+		creature->clearSpaceStates();
+
+		// Set Ship Interior State
+		creature->setState(CreatureState::SHIPINTERIOR);
+
+		if (!cell->transferObject(creature, -1, true)) {
+			return GENERALERROR;
+		}
+
+		return SUCCESS;
 	}
-
 };
 
 #endif //LEAVESTATION_H_

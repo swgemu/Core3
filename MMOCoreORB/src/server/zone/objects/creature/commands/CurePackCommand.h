@@ -208,7 +208,7 @@ public:
 
 		// TODO: Convert this to a CombatManager::getAreaTargets() call
 		try {
-			SortedVector<QuadTreeEntry*> closeObjects;
+			SortedVector<TreeEntry*> closeObjects;
 			CloseObjectsVector* vec = (CloseObjectsVector*) areaCenter->getCloseObjects();
 			vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 

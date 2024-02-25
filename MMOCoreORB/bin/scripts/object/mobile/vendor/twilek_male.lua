@@ -50,7 +50,7 @@ object_mobile_vendor_twilek_male = object_mobile_vendor_shared_twilek_male:new {
 	objectMenuComponent = "VendorMenuComponent",
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = "VendorContainerComponent",
-	zoneComponent = "VendorZoneComponent",
+	groundZoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 

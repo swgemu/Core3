@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_kessel_rebel_mandal_corrugated_plastisteel = object_tangible_ship_components_armor_shared_arm_kessel_rebel_mandal_corrugated_plastisteel:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_kessel_rebel_mandal_corrugated_plastisteel",
+
+	attributes = {
+		{"maximumHitpoints", 1540.53},
+		{"maximumArmorHitpoints", 1540.53},
+		{"mass", 42120},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.25},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_kessel_rebel_mandal_corrugated_plastisteel, "object/tangible/ship/components/armor/arm_kessel_rebel_mandal_corrugated_plastisteel.iff")

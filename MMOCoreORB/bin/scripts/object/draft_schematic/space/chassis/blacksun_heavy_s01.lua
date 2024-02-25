@@ -42,10 +42,7 @@
 
 
 object_draft_schematic_space_chassis_blacksun_heavy_s01 = object_draft_schematic_space_chassis_shared_blacksun_heavy_s01:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "Rihkxyrk Attack Ship Chassis Blueprints, Style 1",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 39,

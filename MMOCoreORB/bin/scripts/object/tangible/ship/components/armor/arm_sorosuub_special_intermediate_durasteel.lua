@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_sorosuub_special_intermediate_durasteel = object_tangible_ship_components_armor_shared_arm_sorosuub_special_intermediate_durasteel:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_sorosuub_special_intermediate_durasteel",
+
+	attributes = {
+		{"maximumHitpoints", 485.3},
+		{"maximumArmorHitpoints", 485.3},
+		{"mass", 3862.69},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.39},
+		{"maximumArmorHitpoints", 0.39},
+		{"mass", 0.318},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_sorosuub_special_intermediate_durasteel, "object/tangible/ship/components/armor/arm_sorosuub_special_intermediate_durasteel.iff")

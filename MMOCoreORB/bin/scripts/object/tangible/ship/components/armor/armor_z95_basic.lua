@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_armor_z95_basic = object_tangible_ship_components_armor_shared_armor_z95_basic:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "armor_z95_basic",
+
+	attributes = {
+		{"maximumHitpoints", 164.8},
+		{"maximumArmorHitpoints", 164.8},
+		{"mass", 882.9},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.24},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_z95_basic, "object/tangible/ship/components/armor/armor_z95_basic.iff")

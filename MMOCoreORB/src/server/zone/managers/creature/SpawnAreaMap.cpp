@@ -8,7 +8,7 @@
 #include "SpawnAreaMap.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/object/ObjectManager.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"

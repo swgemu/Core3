@@ -42,39 +42,36 @@
 
 
 object_draft_schematic_space_chassis_texture_kit_s03 = object_draft_schematic_space_chassis_shared_texture_kit_s03:new {
+	templateType = DRAFTSCHEMATIC,
 
-   templateType = DRAFTSCHEMATIC,
+	customObjectName = "Starship Texture Kit, Style 3",
 
-   customObjectName = "Starship Texture Kit, Style 3",
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 15,
+	size = 1,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
-   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 15, 
-   size = 1, 
-   factoryCrateType = "object/factory/factory_crate_electronics.iff",
-   
-   xpType = "shipwright", 
-   xp = 44, 
+	xpType = "shipwright",
+	xp = 44,
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "medicine_customization", 
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "medicine_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"casing", "paint"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"steel", "petrochem_inert"},
-   resourceQuantities = {50, 125},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"casing", "paint"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"steel", "petrochem_inert"},
+	resourceQuantities = {50, 125},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/ship/crafted/chassis/texture_kit_s03.iff",
 
-   targetTemplate = "object/tangible/ship/crafted/chassis/texture_kit_s03.iff",
-
-   additionalTemplates = {
-             }
+	additionalTemplates = {}
 
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_texture_kit_s03, "object/draft_schematic/space/chassis/texture_kit_s03.iff")

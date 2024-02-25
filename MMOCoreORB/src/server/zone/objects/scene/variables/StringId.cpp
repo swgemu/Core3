@@ -51,8 +51,8 @@ void StringId::setStringId(const String& fullPath) {
 		StringTokenizer tokenizer(fullPath.subString(1));
 		tokenizer.setDelimeter(":");
 
-		tokenizer.getStringToken(file);
-		tokenizer.getStringToken(stringID);
+		file = tokenizer.hasMoreTokens() ? tokenizer.getStringToken() : "";
+		stringID = tokenizer.hasMoreTokens() ? tokenizer.getStringToken() : "";
 	}
 }
 

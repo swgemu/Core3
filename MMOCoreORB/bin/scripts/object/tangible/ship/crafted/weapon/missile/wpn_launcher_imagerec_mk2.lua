@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_missile_wpn_launcher_imagerec_mk2 = object_t
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance"},
 	experimentalMin = {0, 0, 794, 7188, 397, 1, 1323},
 	experimentalMax = {0, 0, 1075, 5313, 537, 1, 978},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1, 1, 0, 1},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 

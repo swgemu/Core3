@@ -37,7 +37,7 @@ MissionObject* InformantMissionScreenHandler::getBountyMissionObject(CreatureObj
 	return nullptr;
 }
 
-ConversationScreen* InformantMissionScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
+ConversationScreen* InformantMissionScreenHandler::handleScreen(CreatureObject* conversingPlayer, SceneObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	//Get informant level.
 	int informantLevel;
 	if (conversationScreen->getOptionLink(0) == "1") {

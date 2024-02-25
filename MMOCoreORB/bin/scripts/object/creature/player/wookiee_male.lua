@@ -44,7 +44,8 @@
 object_creature_player_wookiee_male = object_creature_player_shared_wookiee_male:new {
 	baseHAM = { 350, 350, 150, 200, 100, 100, 100, 150, 100 },
 	gameObjectType = 1033,
-	zoneComponent = "PlayerZoneComponent",
+	groundZoneComponent = "PlayerZoneComponent",
+	spaceZoneComponent = "PlayerSpaceZoneComponent",
 	objectMenuComponent = "PlayerObjectMenuComponent",
 	containerComponent = "PlayerContainerComponent",
 	pvpStatusBitmask = PLAYER,

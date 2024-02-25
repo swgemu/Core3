@@ -1,0 +1,213 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship;
+
+import engine.log.Logger;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import system.util.Vector;
+import engine.util.u3d.Vector3;
+import server.zone.Zone;
+
+include server.zone.objects.ship.ShipObject;
+include server.zone.TreeEntry;
+include templates.SharedObjectTemplate;
+include templates.tangible.ship.SharedShipObjectTemplate;
+include system.util.VectorMap;
+include server.zone.objects.ship.PlayerLaunchPoints;
+include server.zone.objects.ship.DamageSparkLocations;
+include server.zone.objects.cell.CellObject;
+include server.zone.objects.ship.ShipPermissionList;
+
+class PobShipObject extends ShipObject {
+	@dereferenced
+	protected VectorMap<string, CellObject> cellNameMap;
+
+	@dereferenced
+	protected VectorMap<unsigned int, CellObject> cells;
+
+	@dereferenced
+	protected Vector<unsigned long> plasmaAlarms;
+
+	@dereferenced
+	protected DamageSparkLocations sparkLocations;
+
+	@dereferenced
+	protected PlayerLaunchPoints launchPoints;
+
+	@dereferenced
+	protected ShipPermissionList shipPermissionList;
+
+	public PobShipObject() {
+		Logger.setLoggingName("PobShipObject");
+	}
+
+	public native void notifyLoadFromDatabase();
+
+	@local
+	public native abstract void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public native abstract void loadTemplateData(SharedShipObjectTemplate shipTemp);
+
+	@preLocked
+	public native void createChildObjects();
+
+	@preLocked
+	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+
+	@local
+	public native void notifyInsert(TreeEntry obj);
+
+	public native void notifyInsertToZone(Zone zone);
+
+	public native void updatePlayersInShip(boolean lightUpdate, boolean sendPackets = true);
+
+	@local
+	public native void updateZone(boolean lightUpdate, boolean sendPackets = true);
+
+	public native abstract void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
+
+	@dirty
+	@local
+	public native void notifyPositionUpdate(TreeEntry entry);
+
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects
+	 */
+	@dirty
+	public native void sendContainerObjectsTo(SceneObject player, boolean forceLoad);
+
+	/**
+	 * Updates the cell permissions to the player based on the players permission in the ShipPermissionList.
+	 * @param creature The player to update cell permissions to.
+	 */
+	public native void updateCellPermissionsTo(CreatureObject creature);
+
+	/**
+	 * Checks if the player is on the admin list.
+	 * @param player The creo of the player to check for admin permission.
+	 * @return Returns true if the player has admin permissions.
+	 */
+	@read
+	public native boolean isOnAdminList(CreatureObject player);
+
+	/**
+	 * Checks if the player is the on the specified permission list.
+	 * @param listName The name of the list to check.
+	 * @param player The creo of the player to check.
+	 * @return Returns true if the player was found on the list.
+	 */
+	@read
+	public native boolean isOnPermissionList(final string listName, CreatureObject player);
+
+	/**
+	 * Checks if the player/guild is on the admin list.
+	 * For PermissionsListModify command
+	 * @param objectID The oid of the player/guild to check for admin permission.
+	 * @return Returns true if the player/guild has admin permissions.
+	 */
+	@read
+	public boolean isOnAdminList(final unsigned long objectID) {
+		return shipPermissionList.isOnPermissionList("ADMIN", objectID);
+	}
+
+	public native void togglePlasmaAlarms();
+
+	@dirty
+	@nativeStub
+	@local
+	public native PobShipObject asPobShip();
+
+	@dirty
+	public boolean isPobShip() {
+		return true;
+	}
+
+	@local
+	@dereferenced
+	@dirty
+	public native string getRandomLaunchCell();
+
+	@local
+	@dereferenced
+	@dirty
+	public native Vector3 getLaunchPointInCell(final string cellName);
+
+	@dirty
+	public native int getCurrentNumberOfPlayerItems();
+
+	/**
+	 * Loops through all the cells, destroying items from the database that aren't contained in the child objects vector.
+	 */
+	public native void destroyAllPlayerItems();
+
+	@dirty
+	public CellObject getCell(int idx) {
+		return cells.get(idx);
+	}
+
+	@dirty
+	public CellObject getCell(final string name) {
+		return cellNameMap.get(name);
+	}
+
+	public int getTotalCellNumber() {
+		return cells.size();
+	}
+
+	@dirty
+	public void sendPermissionListTo(CreatureObject creature, final string listName) {
+		shipPermissionList.sendTo(creature, listName);
+	}
+
+	public int grantPermission(final string listName, final unsigned long objectID) {
+		return shipPermissionList.grantPermission(listName, objectID);
+	}
+
+	public int revokePermission(final string listName, final unsigned long objectID) {
+		return shipPermissionList.revokePermission(listName, objectID);
+	}
+
+	public int togglePermission(final string listName, final unsigned long objectID) {
+		return shipPermissionList.togglePermission(listName, objectID);
+	}
+
+	@read
+	public boolean hasPermissionList(final string listName) {
+		return shipPermissionList.containsList(listName);
+	}
+
+	@read
+	public boolean isPermissionListFull(final string listName) {
+		return shipPermissionList.isListFull(listName);
+	}
+
+	/**
+	 * Checks if the player/guild is the on the specified permission list.
+	 * For PermissionsListModify command
+	 * @param listName The name of the list to check.
+	 * @param objectID The oid of the player/guild to check.
+	 * @return Returns true if the player/guild was found on the list.
+	 */
+	@read
+	public boolean isOnPermissionList(final string listName, final unsigned long objectID) {
+		return shipPermissionList.isOnPermissionList(listName, objectID);
+	}
+
+
+	@read
+	public int getTotalPlasmaAlarms() {
+		return plasmaAlarms.size();
+	}
+
+	public unsigned long getPlasmaAlarms(int idx) {
+		return plasmaAlarms.get(idx);
+	}
+}

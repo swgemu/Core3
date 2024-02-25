@@ -42,7 +42,34 @@
 
 
 object_ship_tie_in = object_ship_shared_tie_in:new {
+	objectName = "@space/space_mobile_type:tie_in",
 
+	name = "tie_in",
+	type = "tie_in",
+	faction = "imperial",
+	difficulty = "",
+
+	slideFactor = 1.75,
+	chassisHitpoints = 412,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 100, armor = 200, speed = 48, acceleration = 14.2, deceleration = 6.3, yaw = 26.5, yawRate = 51.8, pitch = 26.5, pitchRate = 51.8, roll = 26.5, rollRate = 51.8},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 0, back = 0, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 500, armor = 500},
+	armor_1 = {name = "arm_generic", hitpoints = 500, armor = 500},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 1305.6, rechargeRate = 52.224},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.509, drain = 24.576, maxDamage = 220, minDamage = 180, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 200, armor = 200, rate = 3, drain = 24.576, maxDamage = 24.576, minDamage = 24.576, shieldEfficiency = 0, armorEfficiency = 0, ammo = 50, ammo_type = 2},
+	weapon_2 = {name = "wpn_std_countermeasure", hitpoints = 100, armor = 200, rate = 1, drain = 24.576, maxDamage = 24.576, minDamage = 24.576, shieldEfficiency = 0, armorEfficiency = 0, ammo = 50, ammo_type = 7},
 }
 
 ObjectTemplates:addTemplate(object_ship_tie_in, "object/ship/tie_in.iff")

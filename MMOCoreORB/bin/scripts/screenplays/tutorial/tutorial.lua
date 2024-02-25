@@ -1443,9 +1443,9 @@ function TutorialScreenPlay:doStartPanic(pPanicNpc)
 
 	self:doPanicYelling(pPanicNpc)
 
-	AiAgent(pPanicNpc):addCreatureFlag(AI_NOAIAGGRO)
-	AiAgent(pPanicNpc):addCreatureFlag(AI_ESCORT)
-	AiAgent(pPanicNpc):addCreatureFlag(AI_STATIONARY) -- Don't move unless patrol point is added to list, walking speed
+	AiAgent(pPanicNpc):addObjectFlag(AI_NOAIAGGRO)
+	AiAgent(pPanicNpc):addObjectFlag(AI_ESCORT)
+	AiAgent(pPanicNpc):addObjectFlag(AI_STATIONARY) -- Don't move unless patrol point is added to list, walking speed
 	AiAgent(pPanicNpc):setMovementState(AI_PATROLLING)
 	AiAgent(pPanicNpc):stopWaiting()
 	AiAgent(pPanicNpc):setNextPosition(47.1, -7, -51.5, cellID)

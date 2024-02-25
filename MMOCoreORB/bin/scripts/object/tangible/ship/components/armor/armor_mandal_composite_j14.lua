@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_armor_mandal_composite_j14 = object_tangible_ship_components_armor_shared_armor_mandal_composite_j14:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "armor_mandal_composite_j14.iff",
+
+	attributes = {
+		{"maximumHitpoints", 333.04},
+		{"maximumArmorHitpoints", 333.04},
+		{"mass", 1982.25},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.315},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_mandal_composite_j14, "object/tangible/ship/components/armor/armor_mandal_composite_j14.iff")

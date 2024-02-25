@@ -42,7 +42,32 @@
 
 
 object_ship_sorosuub_space_yacht = object_ship_shared_sorosuub_space_yacht:new {
+	objectName = "@space/space_mobile_type:sorosuub_space_yacht",
 
+	name = "sorosuub_space_yacht",
+	type = "sorosuub_space_yacht",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 1.76,
+	chassisHitpoints = 1512,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 46, acceleration = 12.2, deceleration = 15.67, yaw = 21, yawRate = 41, pitch = 41, pitchRate = 61, roll = 41, rollRate = 61},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 980, back = 980, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 512, rechargeRate = 32.1},
+	booster = {name = "bst_generic", hitpoints = 100, armor = 200, energy = 100, recharge = 5, consumption = 10, acceleration = 20, speed = 15},
 }
 
 ObjectTemplates:addTemplate(object_ship_sorosuub_space_yacht, "object/ship/sorosuub_space_yacht.iff")

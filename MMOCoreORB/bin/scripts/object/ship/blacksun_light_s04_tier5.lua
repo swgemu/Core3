@@ -42,7 +42,32 @@
 
 
 object_ship_blacksun_light_s04_tier5 = object_ship_shared_blacksun_light_s04_tier5:new {
+	objectName = "@space/space_mobile_type:blacksun_light_s04_tier5",
 
+	name = "blacksun_light_tier5",
+	type = "blacksun_light_s04_tier5",
+	faction = "blacksun",
+	difficulty = "tier5",
+
+	slideFactor = 1.87,
+	chassisHitpoints = 2457.6,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 2866.54, armor = 2866.54},
+	engine = {name = "eng_generic", hitpoints = 2866.54, armor = 2866.54, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 2866.54, armor = 2866.54, front = 14014.2, back = 14014.2, regen = 25.47},
+	armor_0 = {name = "arm_generic", hitpoints = 5435.82, armor = 5435.82},
+	armor_1 = {name = "arm_generic", hitpoints = 5435.82, armor = 5435.82},
+	capacitor = {name = "cap_generic", hitpoints = 2866.54, armor = 2866.54, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 2866.54, armor = 2866.54, rate = 0.78, drain = 1, maxDamage = 296.26, minDamage = 184.47, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_blacksun_light_s04_tier5, "object/ship/blacksun_light_s04_tier5.iff")

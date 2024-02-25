@@ -15,7 +15,7 @@
 #include "MinefieldAttackTask.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
 
-void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, TreeEntry* entry) const {
 
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
@@ -91,7 +91,7 @@ void MinefieldZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* 
 		installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
 }
 
-void MinefieldZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void MinefieldZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const {
 
 	ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
 

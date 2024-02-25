@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_missile_countermeasure_confuser_launcher = o
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "energy_per_shot"},
 	experimentalMin = {0, 0, 794, 17940, 397, 1, 1323, 0},
 	experimentalMax = {0, 0, 1075, 13260, 537, 1, 978, 0},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1, 1, 1, 1, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 

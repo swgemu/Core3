@@ -17,14 +17,10 @@
 
 class CreateSpawningElementCommand : public QueueCommand {
 public:
-
-	CreateSpawningElementCommand(const String& name, ZoneProcessServer* server)
-	: QueueCommand(name, server) {
-
+	CreateSpawningElementCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -34,16 +30,14 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ZoneServer* zserv = server->getZoneServer();
+		ZoneServer* zoneServer = server->getZoneServer();
 
-		ManagedReference<SceneObject* > object = zserv->getObject(target);
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
 		StringTokenizer args(arguments.toString());
-
-		CreatureObject* player = cast<CreatureObject*>(creature);
-
-		if (player == nullptr)
-			return GENERALERROR;
 
 		if (!args.hasMoreTokens()) {
 			creature->sendSystemMessage("Spawn Object/Building: /createSpawningElement spawn IffObjectPath [x z y heading]");
@@ -143,7 +137,7 @@ public:
 					return SUCCESS;
 				}
 
-				ManagedReference<SceneObject*> object =  zserv->createObject(objectTemplate.hashCode(), 0);
+				ManagedReference<SceneObject*> object = zoneServer->createObject(objectTemplate.hashCode(), 0);
 
 				if (object == nullptr)
 					return GENERALERROR;

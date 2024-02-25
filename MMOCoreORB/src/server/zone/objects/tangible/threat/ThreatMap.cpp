@@ -400,33 +400,36 @@ TangibleObject* ThreatMap::getHighestThreatAttacker() {
 
 	ManagedReference<TangibleObject*> currentThreat = this->currentThreat.get();
 
-	if (currentThreat != nullptr) {
-		if (!currentThreat->isDestroyed() && !cooldownTimerMap.isPast("doEvaluation")) {
-			if (currentThreat->isCreatureObject()) {
-				ManagedReference<CreatureObject*> currentCreo = currentThreat->asCreatureObject();
+	if (currentThreat != nullptr && !currentThreat->isDestroyed() && !cooldownTimerMap.isPast("doEvaluation")) {
+		if (currentThreat->isCreatureObject()) {
+			ManagedReference<CreatureObject*> currentCreo = currentThreat->asCreatureObject();
 
-				if (currentCreo != nullptr && !currentCreo->isDead() && !currentCreo->isIncapacitated()) {
-					return currentCreo;
-				}
-			} else {
-				return currentThreat;
+			if (currentCreo != nullptr && !currentCreo->isDead() && !currentCreo->isIncapacitated()) {
+				return currentCreo;
 			}
+		} else {
+			return currentThreat;
 		}
 	}
 
 	threatMatrix.clear();
 
+	ManagedReference<TangibleObject*> selfStrong = cast<TangibleObject*>(self.get().get());
+
 	for (int i = 0; i < size(); ++i) {
 		ThreatMapEntry* entry = &elementAt(i).getValue();
 		TangibleObject* tano = elementAt(i).getKey();
 
-		if (tano == nullptr) {
+		if (tano == nullptr || selfStrong == nullptr) {
 			continue;
 		}
 
-		ManagedReference<CreatureObject*> selfStrong = cast<CreatureObject*>(self.get().get());
+		if (selfStrong->isCreatureObject()) {
+			CreatureObject* selfCreo = selfStrong->asCreatureObject();
 
-		if (tano->isInRange(selfStrong, 128.f) && tano->isAttackableBy(selfStrong)) {
+			if (selfCreo == nullptr || !tano->isInRange(selfCreo, 128.f) || !tano->isAttackableBy(selfCreo))
+				continue;
+
 			if (tano->isCreatureObject()) {
 				CreatureObject* creature = tano->asCreatureObject();
 
@@ -436,6 +439,13 @@ TangibleObject* ThreatMap::getHighestThreatAttacker() {
 			} else {
 				threatMatrix.add(tano, entry);
 			}
+		} else if (selfStrong->isShipObject()) {
+			ShipObject* selfShip = selfStrong->asShipObject();
+
+			if (selfShip == nullptr || !tano->isInRange(selfShip, 512.f) || !tano->isAttackableBy(selfShip))
+				continue;
+
+			threatMatrix.add(tano, entry);
 		}
 	}
 

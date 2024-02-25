@@ -15,16 +15,22 @@ public:
 		insertShort(0x03);
 		insertInt(0x4D45D504);  // CRC
 		insertLong(scno->getObjectID());  // ObjectID
-		insertByte(0);
+		insertByte(scno->isHyperspacing() ? 0x01 : 0x00);
 	}
-	
+
 	SceneObjectDestroyMessage(uint64 oid) : BaseMessage(18) {
 		insertShort(0x03);
 		insertInt(0x4D45D504);  // CRC
 		insertLong(oid);  // ObjectID
 		insertByte(0);
 	}
-	
+
+	SceneObjectDestroyMessage(uint64 oid, bool hyperspace) : BaseMessage(18) {
+		insertShort(0x03);
+		insertInt(0x4D45D504);  // CRC
+		insertLong(oid);  // ObjectID
+		insertByte(hyperspace);
+	}
 };
 
 #endif /*SCENEOBJECTDESTROYMESSAGE_H_*/

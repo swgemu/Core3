@@ -42,7 +42,32 @@
 
 
 object_ship_freightermedium = object_ship_shared_freightermedium:new {
+	objectName = "@space/space_mobile_type:freightermedium",
 
+	name = "freightermedium",
+	type = "freightermedium",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 2,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 16, acceleration = 26.1, deceleration = 22.446, yaw = 16, yawRate = 22, pitch = 16, pitchRate = 22, roll = 16, rollRate = 22},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 400, back = 700, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	armor_1 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 870.4, rechargeRate = 34.816},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.34, drain = 16.384, maxDamage = 510, minDamage = 300, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_freightermedium, "object/ship/freightermedium.iff")

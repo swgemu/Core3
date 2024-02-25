@@ -32,6 +32,7 @@ namespace scene {
 		int _getObject(lua_State* L);
 		// Methods we will need to use
 		int getParent(lua_State* L);
+		int getRootParent(lua_State* L);
 		int getPositionX(lua_State* L);
 		int getPositionZ(lua_State* L);
 		int getPositionY(lua_State* L);
@@ -72,6 +73,7 @@ namespace scene {
 		int isCreature(lua_State* L);
 		int isBuildingObject(lua_State* L);
 		int isActiveArea(lua_State* L);
+		int isShipObject(lua_State* L);
 		int getZoneName(lua_State* L);
 		int sendTo(lua_State* L);
 		int getCustomObjectName(lua_State* L);
@@ -106,6 +108,7 @@ namespace scene {
 		int info(lua_State* L);
 		int getPlayersInRange(lua_State* L);
 		int isInNavMesh(lua_State* L);
+		int checkInConversationRange(lua_State* L);
 
 	protected:
 		SceneObject* _getRealSceneObject() {

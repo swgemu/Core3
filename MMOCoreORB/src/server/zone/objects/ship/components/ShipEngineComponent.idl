@@ -1,0 +1,142 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipComponent;
+import server.zone.objects.ship.ShipObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+
+class ShipEngineComponent extends ShipComponent {
+	protected float engineAccelerationRate;
+	protected float engineDecelerationRate;
+
+	protected float enginePitchAccelerationRate;
+	protected float engineYawAccelerationRate;
+	protected float engineRollAccelerationRate;
+
+	protected float enginePitchRateMaximum;
+	protected float engineYawRateMaximum;
+	protected float engineRollRateMaximum;
+
+	protected float engineSpeedMaximum;
+
+	public ShipEngineComponent() {
+		super();
+
+		engineAccelerationRate = 60.f;
+		engineDecelerationRate = 40.f;
+
+		enginePitchAccelerationRate = 0.785f;
+		engineYawAccelerationRate = 0.785f;
+		engineRollAccelerationRate = 0.785f;
+
+		enginePitchRateMaximum = 0.785f;
+		engineYawRateMaximum = 0.785f;
+		engineRollRateMaximum = 0.785f;
+
+		engineSpeedMaximum = 50.f;
+	}
+
+	public float getAccelerationRate() {
+		return engineAccelerationRate;
+	}
+
+	public float getDecelerationRate() {
+		return engineDecelerationRate;
+	}
+
+	public float getPitchAccelerationRate() {
+		return enginePitchAccelerationRate;
+	}
+
+	public float getYawAccelerationRate() {
+		return engineYawAccelerationRate;
+	}
+
+	public float getRollAccelerationRate() {
+		return engineRollAccelerationRate;
+	}
+
+	public float getPitchRateMaximum() {
+		return enginePitchRateMaximum;
+	}
+
+	public float getYawRateMaximum() {
+		return engineYawRateMaximum;
+	}
+
+	public float getRollRateMaximum() {
+		return engineRollRateMaximum;
+	}
+
+	public float getSpeedMaximum() {
+		return engineSpeedMaximum;
+	}
+
+	@local
+	public void setAccelerationRate(float value) {
+		engineAccelerationRate = value;
+	}
+
+	@local
+	public void setDecelerationRate(float value) {
+		engineDecelerationRate = value;
+	}
+
+	@local
+	public void setPitchAccelerationRate(float value) {
+		enginePitchAccelerationRate = value;
+	}
+
+	@local
+	public void setYawAccelerationRate(float value) {
+		engineYawAccelerationRate = value;
+	}
+
+	@local
+	public void setRollAccelerationRate(float value) {
+		engineRollAccelerationRate = value;
+	}
+
+	@local
+	public void setPitchRateMaximum(float value) {
+		enginePitchRateMaximum = value;
+	}
+
+	@local
+	public void setYawRateMaximum(float value) {
+		engineYawRateMaximum = value;
+	}
+
+	@local
+	public void setRollRateMaximum(float value) {
+		engineRollRateMaximum = value;
+	}
+
+	@local
+	public void setSpeedMaximum(float value) {
+		engineSpeedMaximum = value;
+	}
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+}

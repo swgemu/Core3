@@ -42,7 +42,33 @@
 
 
 object_ship_blacksun_medium_s03_tier5 = object_ship_shared_blacksun_medium_s03_tier5:new {
+	objectName = "@space/space_mobile_type:blacksun_medium_s03_tier5",
 
+	name = "blacksun_medium_tier5",
+	type = "blacksun_medium_s03_tier5",
+	faction = "blacksun",
+	difficulty = "tier5",
+
+	slideFactor = 1.8,
+	chassisHitpoints = 2703.36,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 3503.55, armor = 3503.55},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 3503.55, armor = 3503.55, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 3503.55, armor = 3503.55, front = 15288.2, back = 15288.2, regen = 25.47},
+	armor_0 = {name = "arm_generic", hitpoints = 6794.77, armor = 6794.77},
+	armor_1 = {name = "arm_generic", hitpoints = 6794.77, armor = 6794.77},
+	capacitor = {name = "cap_generic", hitpoints = 3503.55, armor = 3503.55, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 3503.55, armor = 3503.55, rate = 0.78, drain = 1, maxDamage = 362.09, minDamage = 225.46, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 3503.55, armor = 3503.55, rate = 3, drain = 1, maxDamage = 1086.27, minDamage = 450.92, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 5, ammo_type = 16},
 }
 
 ObjectTemplates:addTemplate(object_ship_blacksun_medium_s03_tier5, "object/ship/blacksun_medium_s03_tier5.iff")

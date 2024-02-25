@@ -196,7 +196,7 @@ bool CreatureImplementation::hasDNA() {
 		return false;
 	}
 	// skip droids and anything that doesnt have organic bits or it doesnt eat
-	if (isDroidObject() || !hasOrganics() || getDiet() == CreatureFlag::NONE) {
+	if (isDroidObject() || !hasOrganics() || getDiet() == ObjectFlag::NONE) {
 		return false;
 	}
 	return (dnaState == CreatureManager::HASDNA);
@@ -337,7 +337,7 @@ float CreatureImplementation::getChanceToTame(CreatureObject* player) {
 bool CreatureImplementation::isVicious() {
 	CreatureTemplate* creatureTemplate = npcTemplate.get();
 
-	return creatureTemplate->getPvpBitmask() & CreatureFlag::AGGRESSIVE;
+	return creatureTemplate->getPvpBitmask() & ObjectFlag::AGGRESSIVE;
 }
 
 bool CreatureImplementation::canMilkMe(CreatureObject* player) {
@@ -409,9 +409,9 @@ void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateD
 
 	setBaby(true);
 
-	clearPvpStatusBit(CreatureFlag::AGGRESSIVE, false);
-	clearPvpStatusBit(CreatureFlag::ENEMY, false);
-	setCreatureBitmask(getCreatureBitmask() + CreatureFlag::BABY);
+	clearPvpStatusBit(ObjectFlag::AGGRESSIVE, false);
+	clearPvpStatusBit(ObjectFlag::ENEMY, false);
+	setCreatureBitmask(getCreatureBitmask() + ObjectFlag::BABY);
 }
 
 void CreatureImplementation::setPetLevel(int newLevel) {

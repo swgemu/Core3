@@ -42,7 +42,33 @@
 
 
 object_ship_tiebomber_tier1 = object_ship_shared_tiebomber_tier1:new {
+	objectName = "@space/space_mobile_type:tiebomber_tier1",
 
+	name = "tiebomber_tier1",
+	type = "tiebomber_tier1",
+	faction = "imperial",
+	difficulty = "tier1",
+
+	slideFactor = 1.66,
+	chassisHitpoints = 360,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 150, armor = 200},
+	engine = {name = "eng_qualdex_kyromaster", hitpoints = 150, armor = 200, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},
+	shield_0 = {name = "shd_generic", hitpoints = 150, armor = 200, front = 450, back = 450, regen = 2.25},
+	armor_0 = {name = "arm_generic", hitpoints = 480, armor = 480},
+	armor_1 = {name = "arm_generic", hitpoints = 480, armor = 480},
+	capacitor = {name = "cap_generic", hitpoints = 150, armor = 200, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_generic", hitpoints = 150, armor = 200, rate = 0.78, drain = 1, maxDamage = 40, minDamage = 30, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 150, armor = 200, rate = 3, drain = 1, maxDamage = 120, minDamage = 60, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 16},
 }
 
 ObjectTemplates:addTemplate(object_ship_tiebomber_tier1, "object/ship/tiebomber_tier1.iff")

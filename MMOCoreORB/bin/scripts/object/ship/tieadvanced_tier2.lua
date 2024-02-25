@@ -42,7 +42,32 @@
 
 
 object_ship_tieadvanced_tier2 = object_ship_shared_tieadvanced_tier2:new {
+	objectName = "@space/space_mobile_type:tieadvanced_tier2",
 
+	name = "tieadvanced_tier2",
+	type = "tieadvanced_tier2",
+	faction = "imperial",
+	difficulty = "tier2",
+
+	slideFactor = 1.76,
+	chassisHitpoints = 720,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 540, armor = 540},
+	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 540, armor = 540, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
+	shield_0 = {name = "shd_generic", hitpoints = 540, armor = 540, front = 2160, back = 2160, regen = 6.48},
+	armor_0 = {name = "arm_generic", hitpoints = 1152, armor = 1152},
+	armor_1 = {name = "arm_generic", hitpoints = 1152, armor = 1152},
+	capacitor = {name = "cap_generic", hitpoints = 540, armor = 540, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_tieadvanced_blaster", hitpoints = 540, armor = 540, rate = 0.78, drain = 1, maxDamage = 105.6, minDamage = 75.6, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieadvanced_tier2, "object/ship/tieadvanced_tier2.iff")

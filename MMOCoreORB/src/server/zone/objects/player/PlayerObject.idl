@@ -19,6 +19,7 @@ import server.zone.objects.player.events.PvpTefRemovalTask;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
 import server.zone.objects.waypoint.WaypointObject;
+import server.zone.objects.ship.ShipObject;
 include templates.SharedObjectTemplate;
 import server.zone.ZoneClientSession;
 import server.login.account.Account;
@@ -42,6 +43,7 @@ include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
 include server.zone.objects.player.variables.WaypointList;
 include server.zone.objects.player.variables.PlayerQuestData;
+include server.zone.objects.player.variables.SpaceLaunchPoint;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaBitArray;
@@ -186,7 +188,7 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected Vector<string> lastNpcConvoOptions; //Deprecate. Conversation could also be a session.
 
-	protected unsigned long conversatingCreature; //If conversation is a session, then this would be stored on the session.
+	protected unsigned long conversatingObject; //If conversation is a session, then this would be stored on the session.
 
 	// Jedi Trainers.
 	@local
@@ -292,6 +294,9 @@ class PlayerObject extends IntangibleObject {
 	@weakReference
 	protected transient SceneObject currentClientPathWaypoint;
 
+	@dereferenced
+	protected SpaceLaunchPoint launchPoint;
+
 	/**
 	 * the key is the quest.hashCode()
 	 */
@@ -345,7 +350,7 @@ class PlayerObject extends IntangibleObject {
 
 		skillPoints = 0;
 
-		conversatingCreature = 0;
+		conversatingObject = 0;
 
 		birthDate = 0;
 
@@ -916,16 +921,16 @@ class PlayerObject extends IntangibleObject {
 		lastNpcConvoOptions.removeAll();
 	}
 
-	public void setConversatingCreature(CreatureObject creature) {
+	public void setConversatingObject(SceneObject creature) {
 		if (!creature)
-			conversatingCreature = 0;
+			conversatingObject = 0;
 		else
-			conversatingCreature = creature.getObjectID();
+			conversatingObject = creature.getObjectID();
 	}
 
 	@read
-	public unsigned long getConversatingCreature() {
-		return conversatingCreature;
+	public unsigned long getConversatingObject() {
+		return conversatingObject;
 	}
 
 	@local
@@ -960,9 +965,9 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	/**
-	 * Unloads all the spawned creatures from the datapad control devices
+	 * Unloads all the spawned objects from the datapad control devices
 	 */
-	public native void unloadSpawnedChildren();
+	public native void unloadSpawnedChildren(boolean petsOnly = false);
 
 	public void addToConsentList(final string name) {
 		consentList.put(name);
@@ -1394,12 +1399,12 @@ class PlayerObject extends IntangibleObject {
 	@local
 	@read
 	public final VectorMap<string, int> getXpTypeCapList() {
-	    return xpTypeCapList;
+		return xpTypeCapList;
 	}
 
 	@local
 	public VectorMap<string, int> getXpTypeCapList() {
-	    return xpTypeCapList;
+		return xpTypeCapList;
 	}
 
 	@local
@@ -2051,6 +2056,34 @@ class PlayerObject extends IntangibleObject {
 		isPlayerCloning = val;
 	}
 
+	public void setSpaceLaunchZone(string zoneName) {
+		launchPoint.setGroundZoneName(zoneName);
+	}
+
+	public void setSpaceLaunchCityName(string cityName) {
+		launchPoint.setCityName(cityName);
+	}
+
+	public void setSpaceLaunchLocation(@dereferenced Vector3 location) {
+		launchPoint.setLocation(location);
+	}
+
+	@dereferenced
+	public string getSpaceLaunchZone() {
+		return launchPoint.getGoundZoneName();
+	}
+
+	@dereferenced
+	public string getSpaceLaunchCityName() {
+		return launchPoint.getCityName();
+	}
+
+	@local
+	@dereferenced
+	public Vector3 getSpaceLaunchLocation() {
+		return launchPoint.getLocation();
+	}
+
 	@read
 	public unsigned long getPlayedMiliSecs() {
 		return miliSecsPlayed;
@@ -2068,7 +2101,7 @@ class PlayerObject extends IntangibleObject {
 
 	@read
 	public long getSessionTotalCredits() {
-	    return sessionStatsTotalCredits;
+		return sessionStatsTotalCredits;
 	}
 
 	@read

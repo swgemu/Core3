@@ -66,7 +66,7 @@ function EndorDulokVillageNorthScreenPlay:spawnMobiles()
 		local pMobile = spawnMobile(self.planet, mob[1], mob[2], mob[3], mob[4], mob[5], mob[6], mob[7])
 
 		if pMobile ~= nil then
-			AiAgent(pMobile):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pMobile):addObjectFlag(AI_STATIONARY)
 		end
 	end
 end

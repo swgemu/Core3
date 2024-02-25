@@ -50,7 +50,7 @@ object_building_player_city_hospital_corellia = object_building_player_city_shar
 	width = 5,
 	cityRankRequired = 3,
 	abilityRequired = "place_hospital",
-	zoneComponent = "StructureZoneComponent",
+	groundZoneComponent = "StructureZoneComponent",
 	skillMods = {
 		{"private_medical_rating", 100},
 		{"private_med_wound_health", 100},

@@ -140,7 +140,7 @@ public:
 
 		//Send to players near the leader and not in group.
 		CloseObjectsVector* vec = (CloseObjectsVector*) leader->getCloseObjects();
-		SortedVector<QuadTreeEntry*> closeObjects;
+		SortedVector<TreeEntry*> closeObjects;
 		if (vec != nullptr) {
 			closeObjects.removeAll(vec->size(), 10);
 			vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
@@ -148,7 +148,7 @@ public:
 #ifdef COV_DEBUG
 			info("Null closeobjects vector in RallyCommand::sendRallyCombatSpam", true);
 #endif
-			zone->getInRangeObjects(leader->getWorldPositionX(), leader->getWorldPositionY(), 70, &closeObjects, true);
+			zone->getInRangeObjects(leader->getWorldPositionX(), leader->getWorldPositionZ(), leader->getWorldPositionY(), 70, &closeObjects, true);
 		}
 
 		for (int i = 0; i < closeObjects.size(); ++i) {

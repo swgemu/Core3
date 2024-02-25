@@ -42,7 +42,31 @@
 
 
 object_ship_escape_pod_tier3 = object_ship_shared_escape_pod_tier3:new {
+	objectName = "@space/space_mobile_type:escape_pod_tier3",
 
+	name = "escape_pod_tier3",
+	type = "escape_pod_tier3",
+	faction = "civilian",
+	difficulty = "tier3",
+
+	slideFactor = 1.99,
+	chassisHitpoints = 600,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 540, armor = 540},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 540, armor = 540, speed = 44.56, acceleration = 10.82, deceleration = 9.23, yaw = 19.41, yawRate = 40.74, pitch = 24.51, pitchRate = 49.01, roll = 30.34, rollRate = 55.27},
+	shield_0 = {name = "shd_generic", hitpoints = 540, armor = 540, front = 2160, back = 2160, regen = 4.62},
+	armor_0 = {name = "arm_generic", hitpoints = 1152, armor = 1152},
+	armor_1 = {name = "arm_generic", hitpoints = 1152, armor = 1152},
+	capacitor = {name = "cap_generic", hitpoints = 540, armor = 540, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_escape_pod_tier3, "object/ship/escape_pod_tier3.iff")

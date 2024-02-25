@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_kse_intermediate_durasteel = object_tangible_ship_components_armor_shared_arm_kse_intermediate_durasteel:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_kse_intermediate_durasteel",
+
+	attributes = {
+		{"maximumHitpoints", 206},
+		{"maximumArmorHitpoints", 206},
+		{"mass", 1545.07},
+		{"reverseEngineeringLevel", 2},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.2},
+		{"maximumArmorHitpoints", 0.2},
+		{"mass", 0.24},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_kse_intermediate_durasteel, "object/tangible/ship/components/armor/arm_kse_intermediate_durasteel.iff")

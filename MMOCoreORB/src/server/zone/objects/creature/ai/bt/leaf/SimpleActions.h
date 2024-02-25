@@ -722,7 +722,7 @@ public:
 		if (sqrDist > 35 * 35 || sqrDist < 25 * 25) // Between 35m and 25m
 			return FAILURE;
 
-		if (!(agent->getCreatureBitmask() & CreatureFlag::STATIC))
+		if (!(agent->getCreatureBitmask() & ObjectFlag::STATIC))
 			agent->faceObject(target, true);
 
 		if (target->isFacingObject(agent))

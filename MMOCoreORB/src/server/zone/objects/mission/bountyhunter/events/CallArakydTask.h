@@ -80,7 +80,7 @@ public:
 				olocker.release();
 
 				Locker lock(droid);
-				droid->addCreatureFlag(CreatureFlag::STATIC);
+				droid->addObjectFlag(ObjectFlag::STATIC);
 				droid->setAITemplate();
 				time -= 1;
 				reschedule(300 * 1000);

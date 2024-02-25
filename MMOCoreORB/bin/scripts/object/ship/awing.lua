@@ -42,7 +42,33 @@
 
 
 object_ship_awing = object_ship_shared_awing:new {
+	objectName = "@space/space_mobile_type:awing",
 
+	name = "awing",
+	type = "awing",
+	faction = "rebel",
+	difficulty = "",
+
+	slideFactor = 1.91,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 60, acceleration = 22.3, deceleration = 11.15, yaw = 32.2, yawRate = 64.1, pitch = 32.2, pitchRate = 64.1, roll = 32.2, rollRate = 64.1},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 500, back = 600, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 500, armor = 500},
+	armor_1 = {name = "arm_generic", hitpoints = 500, armor = 500},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 1305.6, rechargeRate = 52.224},
+	weapon_0 = {name = "wpn_awing_blaster", hitpoints = 200, armor = 200, rate = 0.509, drain = 24.576, maxDamage = 250, minDamage = 180, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_slayn_imagerec_missile_s01", hitpoints = 200, armor = 200, rate = 3, drain = 24.576, maxDamage = 24.576, minDamage = 24.576, shieldEfficiency = 0, armorEfficiency = 0, ammo = 50, ammo_type = 6},
 }
 
 ObjectTemplates:addTemplate(object_ship_awing, "object/ship/awing.iff")

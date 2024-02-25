@@ -126,7 +126,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 				droid->registerObserver(ObserverEventType::DEFENDERADDED, probotObserver);
 				droid->setAITemplate();
 
-				droid->addCreatureFlag(CreatureFlag::FOLLOW);
+				droid->addObjectFlag(ObjectFlag::FOLLOW);
 				droid->setFollowObject(player);
 
 				scanState = CLOSINGIN;
@@ -218,7 +218,7 @@ void WildContrabandScanSessionImplementation::runWildContrabandScan() {
 					Locker dlocker(droid);
 					PatrolPoint* homeLocation = droid->getHomeLocation();
 
-					droid->removeCreatureFlag(CreatureFlag::FOLLOW);
+					droid->removeObjectFlag(ObjectFlag::FOLLOW);
 					droid->clearPatrolPoints();
 
 					droid->setMovementState(AiAgent::PATROLLING);

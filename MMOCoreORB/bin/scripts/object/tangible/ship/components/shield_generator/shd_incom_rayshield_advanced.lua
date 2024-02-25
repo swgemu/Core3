@@ -42,7 +42,30 @@
 
 
 object_tangible_ship_components_shield_generator_shd_incom_rayshield_advanced = object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_advanced:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "shd_incom_rayshield_advanced",
+
+	attributes = {
+		{"shieldRechargeRate", 9.47},
+		{"shieldHitpointsMaximumFront", 1245.9},
+		{"shieldHitpointsMaximumBack", 1245.9},
+		{"maximumHitpoints", 934.43},
+		{"maximumArmorHitpoints", 467.215},
+		{"energyMaintenance", 2931},
+		{"mass", 19734},
+		{"reverseEngineeringLevel", 7},
+	},
+
+	modifiers = {
+		{"shieldRechargeRate", 0.26},
+		{"shieldHitpointsMaximumFront", 0.341},
+		{"shieldHitpointsMaximumBack", 0.341},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.3},
+		{"mass", 0.1},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shd_incom_rayshield_advanced, "object/tangible/ship/components/shield_generator/shd_incom_rayshield_advanced.iff")

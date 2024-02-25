@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_interior_components_plasma_conduit_interior = object_tangible_ship_interior_components_shared_plasma_conduit_interior:new {
-
+	objectMenuComponent = "PobShipObjectMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_plasma_conduit_interior, "object/tangible/ship/interior_components/plasma_conduit_interior.iff")

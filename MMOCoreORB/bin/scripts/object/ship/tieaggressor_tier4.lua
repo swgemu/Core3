@@ -42,7 +42,33 @@
 
 
 object_ship_tieaggressor_tier4 = object_ship_shared_tieaggressor_tier4:new {
+	objectName = "@space/space_mobile_type:tieaggressor_tier4",
 
+	name = "tieaggressor_tier4",
+	type = "tieaggressor_tier4",
+	faction = "imperial",
+	difficulty = "tier4",
+
+	slideFactor = 1.68,
+	chassisHitpoints = 1920,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 2073.6, armor = 2073.6},
+	engine = {name = "eng_qualdex_kyromaster", hitpoints = 2073.6, armor = 2073.6, speed = 45.89, acceleration = 11.15, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
+	shield_0 = {name = "shd_generic", hitpoints = 2073.6, armor = 2073.6, front = 8294.4, back = 8294.4, regen = 15},
+	armor_0 = {name = "arm_generic", hitpoints = 4423.68, armor = 4423.68},
+	armor_1 = {name = "arm_generic", hitpoints = 4423.68, armor = 4423.68},
+	capacitor = {name = "cap_generic", hitpoints = 2073.6, armor = 2073.6, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_generic", hitpoints = 2073.6, armor = 2073.6, rate = 0.78, drain = 1, maxDamage = 277.69, minDamage = 181.14, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_tieadvanced_blaster", hitpoints = 2073.6, armor = 2073.6, rate = 0.78, drain = 1, maxDamage = 277.69, minDamage = 181.14, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieaggressor_tier4, "object/ship/tieaggressor_tier4.iff")

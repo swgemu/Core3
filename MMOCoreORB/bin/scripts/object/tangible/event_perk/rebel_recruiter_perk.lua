@@ -46,7 +46,7 @@ object_tangible_event_perk_rebel_recruiter_perk = object_tangible_poi_base_share
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	zoneComponent = "PersonnelPerkZoneComponent",
+	groundZoneComponent = "PersonnelPerkZoneComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_rebel_recruiter_perk, "object/tangible/event_perk/rebel_recruiter_perk.iff")

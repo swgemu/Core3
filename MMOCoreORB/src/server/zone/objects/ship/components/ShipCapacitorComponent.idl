@@ -1,0 +1,59 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipComponent;
+import server.zone.objects.ship.ShipObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+
+class ShipCapacitorComponent extends ShipComponent {
+	protected float capacitorEnergy;
+	protected float capacitorRechargeRate;
+
+	public ShipCapacitorComponent() {
+		super();
+
+		capacitorEnergy = 0.f;
+		capacitorRechargeRate = 0.f;
+	}
+
+	public float getCapacitorEnergy() {
+		return capacitorEnergy;
+	}
+
+	public float getRechargeRate() {
+		return capacitorRechargeRate;
+	}
+
+	@local
+	public void setCapacitorEnergy(float value) {
+		capacitorEnergy = value;
+	}
+
+	@local
+	public void setRechargeRate(float value) {
+		capacitorRechargeRate = value;
+	}
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	public abstract native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+}

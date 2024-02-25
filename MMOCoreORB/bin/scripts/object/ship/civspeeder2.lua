@@ -42,7 +42,32 @@
 
 
 object_ship_civspeeder2 = object_ship_shared_civspeeder2:new {
+	objectName = "@space/space_mobile_type:civspeeder",
 
+	name = "civspeeder",
+	type = "civspeeder",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 1,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 40, acceleration = 34.8, deceleration = 29.928, yaw = 21.3, yawRate = 43.8, pitch = 21.3, pitchRate = 43.8, roll = 21.3, rollRate = 43.8},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 200, back = 200, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 217.6, rechargeRate = 8.704},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.085, drain = 4.096, maxDamage = 250, minDamage = 120, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_civspeeder2, "object/ship/civspeeder2.iff")

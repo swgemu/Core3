@@ -3,7 +3,7 @@
 #define PVPTEFREMOVALTASK_H_
 
 #include "server/zone/objects/player/PlayerObject.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 
 namespace server {
 namespace zone {
@@ -47,7 +47,7 @@ public:
 		} else {
 			ghost->updateInRangeBuildingPermissions();
 			ghost->setCrackdownTefTowards(0, false);
-			player->clearPvpStatusBit(CreatureFlag::TEF, true);
+			player->clearPvpStatusBit(ObjectFlag::TEF, true);
 
 			if (ConfigManager::instance()->useCovertOvertSystem())
 				player->broadcastPvpStatusBitmask();

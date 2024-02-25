@@ -9,10 +9,14 @@
 
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
+#include "server/zone/TreeEntry.h"
 #include "server/zone/objects/creature/buffs/ConcealBuff.h"
 
 void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
+	String zoneName = newZone->getZoneName();
 
 	if (sceneObject->isPlayerCreature() && newZone != nullptr) {
 		CreatureObject* player = sceneObject->asCreatureObject();
@@ -26,13 +30,13 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 
 			// Remove MaskScent state from concealed players when their buff is for a different zone
 			uint32 concealCrc = STRING_HASHCODE("skill_buff_mask_scent");
+			Reference<CreatureObject*> playerRef = player;
 
 			if (player->hasBuff(concealCrc)) {
 				ConcealBuff* concealBuff = cast<ConcealBuff*>(player->getBuff(concealCrc));
 
 				if (concealBuff != nullptr) {
 					Reference<ConcealBuff*> buffRef = concealBuff;
-					Reference<CreatureObject*> playerRef = player;
 					Reference<Zone*> zoneRef = newZone;
 
 					Core::getTaskManager()->executeTask([buffRef, playerRef, zoneRef] () {
@@ -49,13 +53,23 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 					}, "ClearMaskStateLambda");
 				}
 			}
+
+			// Ensure no space states are on players in ground zones
+			Core::getTaskManager()->executeTask([playerRef] () {
+				if (playerRef == nullptr)
+					return;
+
+				Locker lock(playerRef);
+
+				playerRef->clearSpaceStates();
+			}, "ClearSpaceStatesLambda");
 		}
 	}
 
-	ZoneComponent::notifyInsertToZone(sceneObject, newZone);
+	GroundZoneComponent::notifyInsertToZone(sceneObject, newZone);
 }
 
-void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
 	SceneObject* scno = static_cast<SceneObject*>( entry);
 
 	if (scno == sceneObject)
@@ -77,7 +91,7 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 	scno->sendTo(sceneObject, true, false);
 }
 
-void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const {
 	SceneObject* scno = static_cast<SceneObject*>( entry);
 
 	if (scno == sceneObject)
@@ -86,7 +100,7 @@ void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntr
 	scno->sendDestroyTo(sceneObject);
 }
 
-void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
+void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility, int playerArrangement) const {
 	if (sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
 		PlayerObject* ghost = player->getPlayerObject();
@@ -96,6 +110,8 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 		if (par != nullptr && (par->isVehicleObject() || par->isMount())) {
 			player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 		}
+
+		player->clearSpaceStates();
 
 		if (ghost != nullptr) {
 			ghost->setSavedParentID(0);
@@ -111,7 +127,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 		player->notifyObservers(ObserverEventType::ZONESWITCHED, nullptr, newTerrainName.hashCode());
 	}
 
-	ZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
+	GroundZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility, playerArrangement);
 }
 
 void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {
@@ -130,7 +146,7 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 		}
 	}
 
-	ZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
+	GroundZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
 
 	if (player != nullptr) {
 		PlayerObject* ghost = player->getPlayerObject();
@@ -150,7 +166,7 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
  * @param lightUpdate if true a standalone message is sent to the in range objects
  */
 void PlayerZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) const {
-	ZoneComponent::updateZone(sceneObject, lightUpdate, sendPackets);
+	GroundZoneComponent::updateZone(sceneObject, lightUpdate, sendPackets);
 
 	if (sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();
@@ -162,7 +178,7 @@ void PlayerZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate,
 }
 
 void PlayerZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) const {
-	ZoneComponent::updateZoneWithParent(sceneObject, newParent, lightUpdate, sendPackets);
+	GroundZoneComponent::updateZoneWithParent(sceneObject, newParent, lightUpdate, sendPackets);
 
 	if (sceneObject->getParent() != nullptr && sceneObject->isPlayerCreature()) {
 		CreatureObject* player = sceneObject->asCreatureObject();

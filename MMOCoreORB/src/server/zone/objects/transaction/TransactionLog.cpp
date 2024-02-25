@@ -909,6 +909,7 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::AUCTIONBID:               return "auctionbid";                // Auction Bid Escrow
 	case TrxCode::AUCTIONEXPIRED:           return "auctionexpired";            // Never retrieved and expired
 	case TrxCode::AUCTIONRETRIEVE:          return "auctionretrieve";           // retrieveItem()
+	case TrxCode::CAMPPLACED:               return "campplaced";                // Camp placed
 	case TrxCode::CHARACTERBUILDER:         return "characterbuilder";          // Character Builder
 	case TrxCode::CHARACTERDELETE:          return "characterdelete";           // Delete Character
 	case TrxCode::CITYINCOMETAX:            return "cityincometax";             // City income taxes
@@ -943,6 +944,7 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::PLAYERDIED:               return "playerdied";                // Player Died
 	case TrxCode::RECYCLED:                 return "recycled";                  // Recycled Items
 	case TrxCode::SERVERDESTROYOBJECT:      return "serverdestroyobject";       // /serverDestroyObject command
+	case TrxCode::SHIPDEEDPURCHASE:         return "shipdeedpurchase";          // Purchase of a ship deed from chassis dealer
 	case TrxCode::SLICECONTAINER:           return "slicecontainer";            // Slicing session on a container
 	case TrxCode::STRUCTUREDEED:            return "structuredeed";             // Structure deed trxs
 	case TrxCode::TRANSFERITEMMISC:         return "transferitemmisc";          // /transferitemmisc command

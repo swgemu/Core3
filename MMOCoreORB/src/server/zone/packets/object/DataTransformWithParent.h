@@ -6,16 +6,18 @@
 #define DATATRANSFORMWITHPARENT_H_
 
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
-
+#include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/packets/object/ObjectControllerMessageCallback.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
 #include "server/zone/packets/object/transform/Transform.h"
-
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/collision/IntersectionResults.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -66,11 +68,11 @@ public:
 		if (player != nullptr) {
 			Zone* zone = player->getZone();
 
-			if (zone != nullptr) {
-				const String& zoneName = zone->getZoneName();
+			if (zone == nullptr)
+				return;
 
-				setCustomTaskQueue(zoneName);
-			}
+			const String& zoneName = zone->getZoneName();
+			setCustomTaskQueue(zoneName);
 		}
 	}
 
@@ -127,7 +129,13 @@ public:
 			return updateError(creO, "deltaTime");
 		}
 
-		ManagedReference<SceneObject*> parent = server->getZoneServer()->getObject(transform.getParentID(), true);
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return updateError(creO, "!zoneServer");
+		}
+
+		ManagedReference<SceneObject*> parent = zoneServer->getObject(transform.getParentID(), true);
 
 		if (parent == nullptr || parent->getZone() == nullptr || !parent->isCellObject()) {
 			return updateError(creO, "!parent");
@@ -140,7 +148,15 @@ public:
 		}
 
 		try {
-			if (validPosition.getParent() != transform.getParentID() || transform.get2dSquaredDistance(validPosition.getPosition()) >= 0.015625f) {
+			auto rootParent = creO->getRootParent();
+
+			if (rootParent != nullptr && rootParent->isPobShip()) {
+				creO->setPosition(transform.getPositionX(), transform.getPositionZ(), transform.getPositionY());
+				creO->setDirection(transform.getDirection());
+				creO->setCurrentSpeed(transform.getSpeed());
+
+				broadcastTransform(creO, parent, transform.getPosition());
+			} else if (validPosition.getParent() != transform.getParentID() || transform.get2dSquaredDistance(validPosition.getPosition()) >= 0.015625f) {
 				updatePosition(creO, parent);
 			} else {
 				updateStatic(creO, parent);
@@ -196,6 +212,10 @@ public:
 
 			if (deltaTime < Transform::MIDDELTA && !transform.isInertiaUpdate(creO->getPosition(), creO->getDirection(), creO->getCurrentSpeed())) {
 				return updateError(creO, "inertia");
+			}
+
+			if (!creO->isMovementAllowed()) {
+				return updateError(creO, "animationLock", true);
 			}
 		}
 
@@ -265,7 +285,14 @@ public:
 					return updateError(creO, "!hasConnectedCell", true);
 				}
 			} else {
-				float sqrCovDist = ZoneServer::CLOSEOBJECTRANGE * ZoneServer::CLOSEOBJECTRANGE;
+				float covDist = ZoneServer::CLOSEOBJECTRANGE;
+				auto zone = creO->getZone();
+
+				// We need to account for players in cells in space, where the object range is much greater than the ground and range can be pulled from the zone type
+				if (zone != nullptr)
+					covDist = zone->getZoneObjectRange();
+
+				float sqrCovDist = covDist * covDist;
 
 				if (transform.get2dSquaredDistance(building->getPosition()) > sqrCovDist) {
 					CloseObjectsVector* closeObjects = creO->getCloseObjects();
@@ -313,10 +340,6 @@ public:
 
 		if (worldDistance > 441) { // 21m
 			return updateError(creO, "!worldDistance", true);
-		}
-
-		if (!creO->isMovementAllowed()) {
-			return updateError(creO, "animationLock", true);
 		}
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
@@ -387,6 +410,8 @@ public:
 		bool sendPackets = deltaTime > Transform::SYNCDELTA || creO->getParentID() != 0;
 
 		creO->setMovementCounter(transform.getMoveCount());
+		creO->setSyncStamp(transform.getTimeStamp());
+
 		creO->updateZoneWithParent(parent, lightUpdate, false);
 		creO->updateLocomotion();
 

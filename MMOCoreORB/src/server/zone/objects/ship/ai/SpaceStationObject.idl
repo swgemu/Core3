@@ -1,0 +1,30 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.ai;
+
+import server.zone.objects.ship.ShipObject;
+import server.zone.objects.ship.ai.ShipAiAgent;
+import server.zone.objects.scene.SceneObject;
+import engine.log.Logger;
+
+@json
+class SpaceStationObject extends ShipAiAgent {
+
+	public SpaceStationObject() {
+		Logger.setLoggingName("SpaceStationObject");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
+	}
+
+	@dirty
+	@preLocked
+	public native boolean sendConversationStartTo(SceneObject player);
+
+	@dirty
+	public boolean isSpaceStation() {
+		return true;
+	}
+}

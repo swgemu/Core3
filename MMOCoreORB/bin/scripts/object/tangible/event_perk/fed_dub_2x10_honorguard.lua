@@ -45,7 +45,7 @@ object_tangible_event_perk_fed_dub_2x10_honorguard = object_tangible_poi_base_sh
 	invisible = 1,
 	gameObjectType = 16410, -- Event Perk
 	dataObjectComponent = "EventPerkDataComponent",
-	zoneComponent = "PersonnelPerkZoneComponent",
+	groundZoneComponent = "PersonnelPerkZoneComponent",
 
 	childObjects = {
 		{ templateFile = "object/mobile/dressed_fed_dub_patrolman_human_male_01.iff", x = 0, z = 0, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

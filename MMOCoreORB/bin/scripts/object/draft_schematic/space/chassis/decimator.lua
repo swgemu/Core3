@@ -42,17 +42,14 @@
 
 
 object_draft_schematic_space_chassis_decimator = object_draft_schematic_space_chassis_shared_decimator:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "VT-49 Decimator Chassis Blueprints",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 43,
 	size = 1,
 	factoryCrateSize = 0,
 	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
-   
+
 	xpType = "shipwright",
 	xp = 37500,
 

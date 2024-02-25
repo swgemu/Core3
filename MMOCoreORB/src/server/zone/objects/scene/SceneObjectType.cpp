@@ -58,7 +58,7 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case DATA2:						return "@got_n:data_fictional";
 		case PETCONTROLDEVICE:			return "@got_n:data_pet_control_device";
 		case VEHICLECONTROLDEVICE:		return "@got_n:data_vehicle_control_device";
-		case SHIPCONTROLDEVICE:			return "@got_n:data_ship_control_deice";
+		case SHIPCONTROLDEVICE:			return "@got_n:data_ship_control_device";
 		case DROIDCONTROLDEVICE:		return "@got_n:data_droid_control_device";
 		case THEATEROBJECT:				return "@got_n:misc";
 		case INSTALLATION:				return "@got_n:installation";
@@ -104,7 +104,7 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case PILOTCHAIR:				return "@got_n:misc_pob_ship_pilot_chair";
 		case OPERATIONSCHAIR:			return "@got_n:misc_operations_chair";
 		case TURRETACCESSLADDER:		return "@got_n:misc_turret_access_ladder";
-		case CONTAINER2:				return "@got_n:misc_container_ship_loot";
+		case SHIPCONTAINER:				return "@got_n:misc_container_ship_loot";
 		case CAMOKIT:					return "@got_n:misc";
 		case LOOTKIT:					return "@got_n:misc";
 		case FISH:						return "@got_n:misc";
@@ -271,8 +271,12 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case SHIP:						return "@got_n:ship";
 		case SHIPFIGHTER:				return "@got_n:ship_fighter";
 		case SHIPCAPITAL:				return "@got_n:ship_capital";
-		case SHIPSTATION:				return "@got_n:ship_station";
+		case SPACEOBJECT:				return "@got_n:ship";
 		case SHIPTRANSPORT:				return "@got_n:ship_transport";
+		case SHIPPOB:					return "@got_n:ship";
+		case SHIPMULTIPASSENGER:		return "@got_n:ship";
+		case SHIPAGENT:					return "@got_n:ship";
+		case SPACESTATION:				return "@got_n:ship_station";
 		case SHIPATTACHMENT:			return "@got_n:ship_component";
 		case SHIPREACTOR:				return "@got_n:ship_component_reactor";
 		case SHIPENGINE:				return "@got_n:ship_component_engine";

@@ -16,7 +16,7 @@ import server.zone.objects.creature.ai.events.AiBehaviorEvent;
 import system.lang.ref.Reference;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.tangible.weapon.WeaponObject;
-import server.zone.QuadTreeEntry;
+import server.zone.TreeEntry;
 include server.zone.objects.creature.ai.PatrolPointsVector;
 include server.zone.objects.creature.ai.PatrolPoint;
 import engine.core.ManagedObject;
@@ -256,8 +256,6 @@ class AiAgent extends CreatureObject {
 
 		reactionRank = 0;
 
-		customAiMap = 0;
-
 		convoTemplateCRC = 0;
 
 		showNextMovementPosition = true;
@@ -490,7 +488,7 @@ class AiAgent extends CreatureObject {
 	public native void setNextStepPosition(float x, float z, float y, CellObject cell = null);
 
 	@dirty
-	public native void notifyPositionUpdate(QuadTreeEntry entry);
+	public native void notifyPositionUpdate(TreeEntry entry);
 
 	@local
 	@preLocked
@@ -553,10 +551,10 @@ class AiAgent extends CreatureObject {
 	}
 
 	@local
-	public native void notifyInsert(QuadTreeEntry entry);
+	public native void notifyInsert(TreeEntry entry);
 
 	@local
-	public native void notifyDissapear(QuadTreeEntry entry);
+	public native void notifyDissapear(TreeEntry entry);
 
 	/*
 
@@ -802,8 +800,9 @@ class AiAgent extends CreatureObject {
 	 */
 	@dirty
 	public native boolean isAttackableBy(CreatureObject object);
+
 	@dirty
-	public native boolean isAttackableBy(TangibleObject object);
+	public native abstract boolean isAttackableBy(TangibleObject object);
 
 	/**
 	 * Evaluates if this creature is aggresive to the object
@@ -813,11 +812,11 @@ class AiAgent extends CreatureObject {
 	 */
 	@mock
 	@dirty
-	public abstract native boolean isAggressiveTo(CreatureObject object);
+	public abstract native boolean isAggressiveTo(TangibleObject object);
 
 	@mock
 	@dirty
-	public abstract native boolean isAggressive(CreatureObject object);
+	public abstract native boolean isAggressive(TangibleObject object);
 
 	public void setOblivious() {
 		synchronized (targetMutex) {
@@ -1389,10 +1388,10 @@ class AiAgent extends CreatureObject {
 	}
 
 	@preLocked
-	public native void addCreatureFlag(unsigned int flag);
+	public native void addObjectFlag(unsigned int flag);
 
 	@preLocked
-	public native void removeCreatureFlag(unsigned int flag);
+	public native void removeObjectFlag(unsigned int flag);
 
 	@local
 	@dirty
@@ -1737,5 +1736,10 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public void setHamRegenDisabled(boolean val) {
 		hamRegenDisabled = val;
+	}
+
+	@read
+	public boolean isAggroDelayPast() {
+		return aggroDelay.isPast();
 	}
 }

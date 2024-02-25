@@ -42,7 +42,35 @@
 
 
 object_draft_schematic_space_chassis_firespray = object_draft_schematic_space_chassis_shared_firespray:new {
-    factoryCrateType = "object/factory/factory_crate_generic_items.iff"
+	templateType = DRAFTSCHEMATIC,
+
+	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 43,
+	size = 1,
+	factoryCrateSize = 0,
+	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
+
+	xpType = "shipwright",
+	xp = 37500,
+
+	assemblySkill = "chassis_assembly",
+	experimentingSkill = "chassis_experimentation",
+	customizationSkill = "medicine_customization",
+
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
+
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"frame", "advanced_frame_infrastructure", "structural_support", "base_chassis_plating", "basic_heat_shielding", "ship_skin", "shock_absorption_layer", "cockpit_insulation", "advanced_structural_support", "chassis_pulse_shielding"},
+	ingredientSlotType = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum", "iron", "fiberplast", "ore_siliclastic", "copper"},
+	resourceQuantities = {60000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+
+	targetTemplate = "object/tangible/ship/components/chassis/firespray_chassis_token.iff",
+
+	additionalTemplates = {}
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_firespray, "object/draft_schematic/space/chassis/firespray.iff")

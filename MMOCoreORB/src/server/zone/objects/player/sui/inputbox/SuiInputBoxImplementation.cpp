@@ -44,12 +44,8 @@ BaseMessage* SuiInputBoxImplementation::generateMessage() {
 
 	if (isFilterBox()) {
 		addSetting("3", "cmbInput", "MaxLength", String::valueOf(maxInputSize));
-	} else {
-		if (defaultInput != "") {
-			addSetting("3", "txtInput", "Text", defaultInput);
-		} else {
-			addSetting("3", "txtInput", "Text", "");
-		}
+	} else if (!defaultInput.isEmpty()) {
+		addSetting("3", "txtInput", "Text", defaultInput);
 	}
 
 	//Generate Packet:

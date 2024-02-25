@@ -137,7 +137,7 @@ public:
 	}
 
 	void clearStationary() {
-		creature->removeCreatureFlag(CreatureFlag::STATIONARY);
+		creature->removeObjectFlag(ObjectFlag::STATIONARY);
 		creature->setAITemplate();
 	}
 

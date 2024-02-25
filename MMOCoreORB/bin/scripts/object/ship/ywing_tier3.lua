@@ -42,7 +42,34 @@
 
 
 object_ship_ywing_tier3 = object_ship_shared_ywing_tier3:new {
+	objectName = "@space/space_mobile_type:ywing_tier3",
 
+	name = "ywing_tier3",
+	type = "ywing_tier3",
+	faction = "rebel",
+	difficulty = "tier3",
+
+	slideFactor = 1.77,
+	chassisHitpoints = 1200,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 1080, armor = 1080},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 1080, armor = 1080, speed = 44.56, acceleration = 10.82, deceleration = 9.23, yaw = 19.41, yawRate = 40.74, pitch = 24.51, pitchRate = 49.01, roll = 30.34, rollRate = 55.27},
+	shield_0 = {name = "shd_generic", hitpoints = 1080, armor = 1080, front = 4320, back = 4320, regen = 9.23},
+	armor_0 = {name = "arm_generic", hitpoints = 2534.4, armor = 2534.4},
+	armor_1 = {name = "arm_generic", hitpoints = 2534.4, armor = 2534.4},
+	capacitor = {name = "cap_generic", hitpoints = 1080, armor = 1080, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 1080, armor = 1080, rate = 0.78, drain = 1, maxDamage = 162.62, minDamage = 111.13, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_slayn_ioncannon", hitpoints = 1080, armor = 1080, rate = 0.78, drain = 1, maxDamage = 162.62, minDamage = 111.13, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 1080, armor = 1080, rate = 3, drain = 1, maxDamage = 487.86, minDamage = 222.26, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 18},
 }
 
 ObjectTemplates:addTemplate(object_ship_ywing_tier3, "object/ship/ywing_tier3.iff")

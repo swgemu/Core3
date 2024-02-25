@@ -6,7 +6,7 @@ package server.zone.objects.scene;
 
 import engine.log.Logger;
 import engine.util.u3d.Coordinate;
-include server.zone.QuadTreeEntry;
+include server.zone.TreeEntry;
 import system.util.Vector;
 import system.util.VectorMap;
 import engine.util.u3d.Quaternion;
@@ -24,6 +24,8 @@ include server.zone.objects.scene.SceneObjectType;
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneClientSession;
 import server.zone.Zone;
+import server.zone.GroundZone;
+import server.zone.SpaceZone;
 import server.zone.ZoneServer;
 import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
@@ -40,7 +42,8 @@ include templates.manager.PlanetMapCategory;
 include templates.manager.PlanetMapSubCategory;
 include templates.manager.TemplateManager;
 include templates.SharedObjectTemplate;
-include server.zone.objects.scene.components.ZoneComponent;
+include server.zone.objects.scene.components.GroundZoneComponent;
+include server.zone.objects.scene.components.SpaceZoneComponent;
 include server.zone.objects.scene.components.ObjectMenuComponent;
 include server.zone.objects.scene.components.ContainerComponent;
 include server.zone.objects.scene.components.AttributeListComponent;
@@ -59,13 +62,21 @@ include server.zone.objects.scene.variables.StdFunction;
 include server.metrics.Metrics;
 include engine.util.JSONSerializationType;
 include server.zone.objects.scene.variables.OrderedTaskExecutioner;
+import server.zone.objects.ship.ShipObject;
+import server.zone.objects.ship.PobShipObject;
+import server.zone.objects.ship.MultiPassengerShipObject;
+import server.zone.objects.ship.FighterShipObject;
+import server.zone.objects.ship.ai.ShipAiAgent;
+import server.zone.objects.ship.ai.SpaceStationObject;
 
 @mock
 @json
-class SceneObject extends QuadTreeEntry implements Logger, Metrics {
+class SceneObject extends TreeEntry implements Logger, Metrics {
 	protected transient ZoneProcessServer server;
 
-	protected transient ZoneComponent zoneComponent;
+	protected transient GroundZoneComponent groundZoneComponent;
+	protected transient SpaceZoneComponent spaceZoneComponent;
+
 	protected transient ObjectMenuComponent objectMenuComponent;
 	protected transient AttributeListComponent attributeListComponent;
 	protected transient ContainerComponent containerComponent;
@@ -145,6 +156,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	protected boolean forceNoTrade;
 
 	protected transient boolean debuggingRegions;
+
+	protected transient unsigned long syncTime;
+
+	protected transient unsigned long syncStamp;
 
 	/**
 	 * SceneObject constructor, used to initialize the object.
@@ -338,9 +353,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	/**
 	 * Destroys the object from the world
 	 */
-	public abstract void destroyObjectFromWorld(boolean sendSelfDestroy) {
-		zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
-	}
+	public native abstract void destroyObjectFromWorld(boolean sendSelfDestroy);
 
 	/**
 	 * Removes object from zone without removing from parent. Should only be used for container unloading.
@@ -463,7 +476,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param containmentType arrangement type?
 	 */
 	@dirty
-	protected native void link(SceneObject client, unsigned int containmentType = 4);
+	protected native void link(SceneObject client, unsigned int containmentType);
 
 	/**
 	 * Creates a new UpdateContainmentMessage that adds/links this object to the specified objectID
@@ -475,7 +488,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 */
 	@dirty
 	@local
-	public native BaseMessage link(unsigned long objectID, unsigned int containmentType = 4);
+	public native BaseMessage link(unsigned long objectID, unsigned int containmentType);
 
 	/**
 	 * Sends the necessary messages to player in order to create this object
@@ -622,7 +635,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	 * @param newPositionZ new position Z
 	 * @param newPositionY new position Y
 	 */
-	public native abstract void switchZone(final string newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long parentID = 0, boolean  toggleInvisibility = false);
+	public native abstract void switchZone(final string newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long parentID = 0, boolean  toggleInvisibility = false, int playerArrangement = -1);
 
 	public native abstract void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
 
@@ -634,14 +647,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public native void updateDirection(float angleHeadingRadians);
 
 	@local
-	public void notifyInsert(QuadTreeEntry entry) {
-		zoneComponent.notifyInsert(this, entry);
-	}
+	public native void notifyInsert(TreeEntry entry);
 
 	@local
-	public void notifyDissapear(QuadTreeEntry entry) {
-		zoneComponent.notifyDissapear(this, entry);
-	}
+	public native void notifyDissapear(TreeEntry entry);
 
 	public native abstract void notifyRemoveFromZone();
 
@@ -983,6 +992,12 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return zone.get();
 	}
 
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract SpaceZone asSpaceZone();
+
 	@local
 	@dereferenced
 	@read
@@ -1295,7 +1310,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public native abstract void notifySelfPositionUpdate();
 
 	@dirty
-	public native void notifyPositionUpdate(QuadTreeEntry entry);
+	public native void notifyPositionUpdate(TreeEntry entry);
 
 	/**
 	 * @param player player that closed the container
@@ -1313,10 +1328,10 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public native SceneObject getParent();
 
 	@dirty
-	public native void setParent(QuadTreeEntry entry);
+	public native void setParent(TreeEntry entry);
 
 	@dirty
-	public native void setParent(QuadTreeEntry entry, boolean updateRecursively);
+	public native void setParent(TreeEntry entry, boolean updateRecursively);
 
 	@read
 	public ZoneServer getZoneServer() {
@@ -1439,8 +1454,14 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@local
 	@read
-	public ZoneComponent getZoneComponent() {
-		return zoneComponent;
+	public GroundZoneComponent getGroundZoneComponent() {
+		return groundZoneComponent;
+	}
+
+	@local
+	@read
+	public SpaceZoneComponent getSpaceZoneComponent() {
+		return spaceZoneComponent;
 	}
 
 	@local
@@ -1469,7 +1490,9 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@local
 	public native void setContainerComponent(final string name);
+
 	public native void setZoneComponent(final string name);
+	public native void setSpaceZoneComponent(final string name);
 
 	public void setForceNoTrade(boolean newForceNoTrade) {
 		forceNoTrade = newForceNoTrade;
@@ -1537,12 +1560,85 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public native abstract AiAgent asAiAgent();
 
 	@dirty
-	public abstract boolean isCreature() {
-		return false;
-	}
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract boolean isShipAiAgent();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract ShipAiAgent asShipAiAgent();
 
 	@dirty
-	public abstract boolean isShipObject() {
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isShipObject();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract ShipObject asShipObject();
+
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isSpaceStation();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract SpaceStationObject asSpaceStationObject();
+
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isPobShip();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract PobShipObject asPobShip();
+
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isMultiPassengerShip();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract MultiPassengerShipObject asMultiPassengerShip();
+
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isFighterShip();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract FighterShipObject asFighterShip();
+
+	@dirty
+	public abstract boolean isCreature() {
 		return false;
 	}
 
@@ -1559,6 +1655,11 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 
 	@dirty
 	public abstract boolean isHelperDroidObject() {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isHyperspacing() {
 		return false;
 	}
 
@@ -1752,6 +1853,11 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	}
 
 	@dirty
+	public abstract boolean isShipDeedObject() {
+		return false;
+	}
+
+	@dirty
 	public abstract boolean isSignObject() {
 		return false;
 	}
@@ -1841,6 +1947,26 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return gameObjectType == SceneObjectType.ANTIDECAYKIT;
 	}
 
+	@read
+	public abstract boolean isPilotChair() {
+		return gameObjectType == SceneObjectType.PILOTCHAIR;
+	}
+
+	@read
+	public abstract boolean isOperationsChair() {
+		return gameObjectType == SceneObjectType.OPERATIONSCHAIR;
+	}
+
+	@read
+	public abstract boolean isShipTurret() {
+		return gameObjectType == SceneObjectType.TURRETACCESSLADDER;
+	}
+
+	@read
+	public abstract boolean isInShipStation() {
+		return false;
+	}
+
 	@local
 	@read
 	public final ContainerPermissions getContainerPermissions() {
@@ -1919,7 +2045,7 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		return server;
 	}
 
-	public abstract native void setZone(Zone zone);
+	public abstract native void setZone(Zone newZone);
 
 	@local
 	public abstract native void setObjectName(@dereferenced final StringId stringID, boolean notifyClient);
@@ -2127,8 +2253,11 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 		childObjects.drop(obj);
 	}
 
-	@local
 	@dirty
+	public abstract void selectConversationOption(int option, SceneObject obj) {
+	}
+
+	@local
 	public Matrix4 getTransformForCollisionMatrix() {
 		return transformForCollisionMatrix;
 	}
@@ -2245,4 +2374,14 @@ class SceneObject extends QuadTreeEntry implements Logger, Metrics {
 	public boolean isDebuggingRegions() {
 		return debuggingRegions;
 	}
+
+	@dirty
+	public abstract boolean checkInConversationRange(SceneObject target) {
+		return false;
+	}
+
+	@local
+	public native abstract void setSyncStamp(unsigned int value);
+
+	public native abstract unsigned int getSyncStamp();
 }

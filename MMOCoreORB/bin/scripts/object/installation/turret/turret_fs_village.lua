@@ -45,7 +45,7 @@ object_installation_turret_turret_fs_village = object_installation_turret_shared
 	pvpStatusBitmask = ATTACKABLE,
 	optionsBitmask = 0,
 	maxCondition = 75000,
-	zoneComponent = "TurretZoneComponent",
+	groundZoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
 	factionString = "fs_villager",
 	-- Damagetypes in WeaponObject

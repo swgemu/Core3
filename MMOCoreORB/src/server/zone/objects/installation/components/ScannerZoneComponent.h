@@ -10,14 +10,14 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/TreeEntry.h"
 
 
-class ScannerZoneComponent : public ZoneComponent {
+class ScannerZoneComponent : public GroundZoneComponent {
 
 public:
 	void notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const;
-	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const;
+	void notifyPositionUpdate(SceneObject* sceneObject, TreeEntry* entry) const;
 
 };
 

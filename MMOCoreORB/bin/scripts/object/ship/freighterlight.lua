@@ -42,7 +42,32 @@
 
 
 object_ship_freighterlight = object_ship_shared_freighterlight:new {
+	objectName = "@space/space_mobile_type:freighterlight",
 
+	name = "freighterlight",
+	type = "freighterlight",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 2,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 20, acceleration = 34.8, deceleration = 29.928, yaw = 19, yawRate = 24, pitch = 19, pitchRate = 24, roll = 19, rollRate = 24},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 300, back = 600, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 500, armor = 500},
+	armor_1 = {name = "arm_generic", hitpoints = 500, armor = 500},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 435.2, rechargeRate = 17.408},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.17, drain = 8.192, maxDamage = 480, minDamage = 240, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_freighterlight, "object/ship/freighterlight.iff")

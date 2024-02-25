@@ -42,7 +42,33 @@
 
 
 object_ship_tieaggressor = object_ship_shared_tieaggressor:new {
+	objectName = "@space/space_mobile_type:tieaggressor",
 
+	name = "tieaggressor",
+	type = "tieaggressor",
+	faction = "imperial",
+	difficulty = "",
+
+	slideFactor = 1.78,
+	chassisHitpoints = 322,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_qualdex_kyromaster", hitpoints = 100, armor = 200, speed = 46, acceleration = 12.5, deceleration = 6.25, yaw = 18.3, yawRate = 42.1, pitch = 18.3, pitchRate = 42.1, roll = 18.3, rollRate = 42.1},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 500, back = 800, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	armor_1 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 1468.8, rechargeRate = 58.752},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.573, drain = 27.648, maxDamage = 360, minDamage = 240, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_sienar_heatseeker_missile_s01", hitpoints = 200, armor = 200, rate = 4, drain = 27.648, maxDamage = 27.648, minDamage = 27.648, shieldEfficiency = 0, armorEfficiency = 0, ammo = 50, ammo_type = 3},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieaggressor, "object/ship/tieaggressor.iff")

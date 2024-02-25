@@ -42,7 +42,33 @@
 
 
 object_ship_tieoppressor = object_ship_shared_tieoppressor:new {
+	objectName = "@space/space_mobile_type:tieoppressor",
 
+	name = "tieoppressor",
+	type = "tieoppressor",
+	faction = "imperial",
+	difficulty = "",
+
+	slideFactor = 1.75,
+	chassisHitpoints = 341,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 100, armor = 200, speed = 60, acceleration = 23.5, deceleration = 11.75, yaw = 10.1, yawRate = 22.3, pitch = 10.1, pitchRate = 22.3, roll = 10.1, rollRate = 22.3},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 500, back = 600, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 700, armor = 700},
+	armor_1 = {name = "arm_generic", hitpoints = 700, armor = 700},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 1468.8, rechargeRate = 58.752},
+	weapon_0 = {name = "wpn_tieadvanced_blaster", hitpoints = 200, armor = 200, rate = 0.573, drain = 27.648, maxDamage = 450, minDamage = 310, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 200, armor = 200, rate = 2, drain = 27.648, maxDamage = 27.648, minDamage = 27.648, shieldEfficiency = 0, armorEfficiency = 0, ammo = 50, ammo_type = 2},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieoppressor, "object/ship/tieoppressor.iff")

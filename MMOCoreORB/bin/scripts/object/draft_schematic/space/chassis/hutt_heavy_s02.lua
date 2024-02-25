@@ -42,17 +42,14 @@
 
 
 object_draft_schematic_space_chassis_hutt_heavy_s02 = object_draft_schematic_space_chassis_shared_hutt_heavy_s02:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "Kimogila Chassis Blueprints, Style 2",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 31,
 	size = 1,
 	factoryCrateSize = 0,
 	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
-   
+
 	xpType = "shipwright",
 	xp = 7500,
 

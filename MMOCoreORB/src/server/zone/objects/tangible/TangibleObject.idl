@@ -263,6 +263,9 @@ class TangibleObject extends SceneObject {
 	 */
 	public native abstract void synchronizedUIStopListen(CreatureObject player, int value);
 
+	@preLocked
+	public native void removeOutOfRangeObjects();
+
 	/**
 	 * Sets the active defender
 	 * @pre { this object is locked }
@@ -389,7 +392,12 @@ class TangibleObject extends SceneObject {
 	 * @return returns true if its aggressive
 	 */
 	@dirty
-	public abstract boolean isAggressiveTo(CreatureObject object) {
+	public abstract boolean isAggressiveTo(TangibleObject object) {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isAggressive(TangibleObject object) {
 		return false;
 	}
 

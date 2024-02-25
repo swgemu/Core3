@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_awing_chassis_token = object_tangible_ship_components_chassis_shared_awing_chassis_token:new {
-
 	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/awing_deed.iff",
-	dealerFee = 8000,
-	certRequired = "pilor_rebel_navy_starships_04",
+	dealerFee = 75000,
+	certificationRequired = "cert_starships_awing",
+	skillRequired = {"pilot_rebel_navy_starships_04"},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_awing_chassis_token = object_tangible_sh
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 1500, 63375},
 	experimentalMax = {0, 0, 2200, 66625},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

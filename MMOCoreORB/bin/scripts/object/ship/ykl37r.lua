@@ -42,7 +42,32 @@
 
 
 object_ship_ykl37r = object_ship_shared_ykl37r:new {
+	objectName = "@space/space_mobile_type:ykl37r",
 
+	name = "ykl37r",
+	type = "ykl37r",
+	faction = "rebel",
+	difficulty = "",
+
+	slideFactor = 1.81,
+	chassisHitpoints = 654,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 46, acceleration = 8.1, deceleration = 12.4, yaw = 21.4, yawRate = 43.2, pitch = 21.4, pitchRate = 43.2, roll = 21.4, rollRate = 43.2},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 600, back = 600, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 700, armor = 700},
+	armor_1 = {name = "arm_generic", hitpoints = 700, armor = 700},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 822.8, rechargeRate = 32.912},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 200, armor = 200, rate = 0.429, drain = 15.488, maxDamage = 340, minDamage = 320, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_ykl37r, "object/ship/ykl37r.iff")

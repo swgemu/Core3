@@ -42,7 +42,32 @@
 
 
 object_ship_freighterheavy = object_ship_shared_freighterheavy:new {
+	objectName = "@space/space_mobile_type:freighterheavy",
 
+	name = "freighterheavy",
+	type = "freighterheavy",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 2,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 12, acceleration = 17.4, deceleration = 14.964, yaw = 12, yawRate = 20, pitch = 12, pitchRate = 20, roll = 12, rollRate = 20},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 600, back = 800, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 800, armor = 800},
+	armor_1 = {name = "arm_generic", hitpoints = 800, armor = 800},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 1740.8, rechargeRate = 69.632},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.679, drain = 32.768, maxDamage = 600, minDamage = 320, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_freighterheavy, "object/ship/freighterheavy.iff")

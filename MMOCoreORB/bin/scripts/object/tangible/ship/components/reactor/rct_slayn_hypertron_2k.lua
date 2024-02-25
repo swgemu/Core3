@@ -42,7 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_slayn_hypertron_2k = object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "rct_slayn_hypertron_2k",
+
+	attributes = {
+		{"energyGeneration", 16100},
+		{"maximumHitpoints", 634.8},
+		{"maximumArmorHitpoints", 317.4},
+		{"mass", 8250},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.175},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_slayn_hypertron_2k, "object/tangible/ship/components/reactor/rct_slayn_hypertron_2k.iff")

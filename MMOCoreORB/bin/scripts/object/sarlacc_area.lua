@@ -4,7 +4,7 @@ sarlacc_area = SharedObjectTemplate:new {
 	planetMapSubCategory = "",
 	autoRegisterWithPlanetMap = 1,
 
-	zoneComponent = "ZoneComponent",
+	groundZoneComponent = "GroundZoneComponent",
 	objectMenuComponent = "ObjectMenuComponent",
 	containerComponent = "ContainerComponent",
 	gameObjectType = 33554443

@@ -42,7 +42,32 @@
 
 
 object_ship_tieinterceptor_tier4 = object_ship_shared_tieinterceptor_tier4:new {
+	objectName = "@space/space_mobile_type:tieinterceptor_tier4",
 
+	name = "tieinterceptor_tier4",
+	type = "tieinterceptor_tier4",
+	faction = "imperial",
+	difficulty = "tier4",
+
+	slideFactor = 1.64,
+	chassisHitpoints = 1920,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 2073.6, armor = 2073.6},
+	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 2073.6, armor = 2073.6, speed = 55.07, acceleration = 12.26, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
+	shield_0 = {name = "shd_generic", hitpoints = 2073.6, armor = 2073.6, front = 7050.24, back = 7050.24, regen = 12.75},
+	armor_0 = {name = "arm_generic", hitpoints = 4423.68, armor = 4423.68},
+	armor_1 = {name = "arm_generic", hitpoints = 4423.68, armor = 4423.68},
+	capacitor = {name = "cap_generic", hitpoints = 2073.6, armor = 2073.6, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_tieadvanced_blaster", hitpoints = 2073.6, armor = 2073.6, rate = 0.78, drain = 1, maxDamage = 252.44, minDamage = 164.67, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieinterceptor_tier4, "object/ship/tieinterceptor_tier4.iff")

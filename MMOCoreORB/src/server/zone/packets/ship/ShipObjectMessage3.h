@@ -8,88 +8,72 @@
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
-class ShipObjectMessage3 : public TangibleObjectMessage3 {
+class ShipObjectMessage3 : public BaseLineMessage {
+protected:
+	enum index : int {
+		complexity = 0,
+		objectName = 1,
+		customObjectName = 2,
+		volume = 3,
+		customizationString = 4,
+		visibleComponents = 5,
+		optionsBitmask = 6,
+		useCount = 7,
+		condition = 8,
+		conditionMax = 9,
+		visible = 10,
+		chassisSlideFactor = 11,
+		chassisCurrentHealth = 12,
+		chassisMaxHealth = 13,
+		chassisTypeCRC = 14,
+		componentMaxArmorMap = 15,
+		componentCurrentArmorMap = 16,
+		componentCurrentHitpointsMap = 17,
+		componentMaxHitpointsMap = 18,
+		componentOptionsMap = 19,
+		maxFrontShield = 20,
+		maxRearShield = 21
+	};
+
 public:
-	ShipObjectMessage3(ShipObject* ship)
-			: TangibleObjectMessage3(ship, 0x53484950, 0x16) {
+	ShipObjectMessage3(ShipObject* ship) : BaseLineMessage(ship, 0x53484950, 3, 22) {
+		insertFloat(ship->getComplexity());
+		insertStringId(ship->getObjectName());
 
-		insertFloat(10.9f); //?Speed or Acceleration?
+		UnicodeString name = ship->getShipLaunchedName();
+		insertUnicode(name);
 
-		insertFloat(800.f); //chassis cur
-		insertFloat(800.f); //chassis max
+		insertInt(ship->getVolume());
 
-		insertInt(0x16B73FE9); //unk
+		String app;
+		ship->getCustomizationString(app);
+		insertAscii(app);
 
-		//armor
-		/*insertInt(0);
-			insertInt(0);*/
+		auto visibleComponents = ship->getVisibleComponents();
+		visibleComponents->insertToMessage(this);
 
-		//Float 100
-		insertDummyList(0x42c80000);//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable
+		insertInt(ship->getOptionsBitmask());
+		insertInt(ship->getUseCount());
+		insertInt(ship->getConditionDamage());
+		insertInt(ship->getMaxCondition());
+		insertByte(ship->getObjectVisible());
 
-		//max armor
-		/*insertInt(0);
-		insertInt(0);*/
+		insertFloat(ship->getSlip());
+		insertFloat(ship->getChassisCurrentHealth());
+		insertFloat(ship->getChassisMaxHealth());
 
-		//Float 100
-		insertDummyList(0x42c80000);
+		insertInt(ship->getShipNameCRC());
 
-		//cur hit
-		/*insertInt(0);
-			insertInt(0);*/
+		ship->getMaxArmorMap()->insertToMessage(this);
+		ship->getCurrentArmorMap()->insertToMessage(this);
+		ship->getCurrentHitpointsMap()->insertToMessage(this);
+		ship->getMaxHitpointsMap()->insertToMessage(this);
+		ship->getComponentOptionsMap()->insertToMessage(this);
 
-		//float 200
-		insertDummyList(0x43480000);
-
-		//max hit
-		/*insertInt(0);
-		insertInt(0);*/
-		//float 200
-		insertDummyList(0x43480000);
-
-		//unk
-		/*insertInt(0);
-		insertInt(0);*/
-
-		insertDummyList(0x2);
-
-		insertFloat(301.f); //front shield max
-		insertFloat(302.f); // back shield max
+		insertFloat(ship->getMaxFrontShield());
+		insertFloat(ship->getMaxRearShield());
 
 		setSize();
-	}
-
-	void insertDummyList(int val) {
-		insertInt(7);
-		insertInt(7);
-
-		insertByte(0);
-		insertInt(0);
-		insertInt(val); // 0xDC, 0xBF, 0xBD, 0x9A,
-
-		insertByte(0);
-		insertInt(1);
-		insertInt(val); // 0x05, 0xC7, 0xA0, 0x35,
-
-		insertByte(0);
-		insertInt(2);
-		insertInt(val); // 0xBE, 0x17, 0x32, 0xE7
-
-		insertByte(0);
-		insertInt(4);
-		insertInt(val); // 0x9E, 0x60, 0xCB, 0xE1,
-
-		insertByte(0);
-		insertInt(5);
-		insertInt(val); // 0x9E, 0x60, 0xCB, 0xE1,
-
-		insertByte(0);
-		insertInt(6);
-		insertInt(val); // 0xEE, 0xD6, 0xCE, 0x20,
-
-		insertByte(0);
-		insertInt(0x0f);
-		insertInt(val); //0x3D, 0x3C, 0x82, 0x2C,
 	}
 };
 

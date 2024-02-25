@@ -14,7 +14,7 @@
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage6.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "templates/SharedTangibleObjectTemplate.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -188,10 +188,10 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 				creature->sendSystemMessage("@faction_recruiter:covert_complete");
 			}
 
-			if (pvpStatusBitmask & CreatureFlag::OVERT)
-				pvpStatusBitmask &= ~CreatureFlag::OVERT;
+			if (pvpStatusBitmask & ObjectFlag::OVERT)
+				pvpStatusBitmask &= ~ObjectFlag::OVERT;
 		} else if (factionStatus == FactionStatus::OVERT) {
-			if(!(pvpStatusBitmask & CreatureFlag::OVERT)) {
+			if(!(pvpStatusBitmask & ObjectFlag::OVERT)) {
 				int cooldown = 300;
 
 				Zone* creoZone = creature->getZone();
@@ -204,7 +204,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 				}
 
 				creature->addCooldown("declare_overt_cooldown", cooldown * 1000);
-				pvpStatusBitmask |= CreatureFlag::OVERT;
+				pvpStatusBitmask |= ObjectFlag::OVERT;
 
 				if (covertOvert) {
 					creature->sendSystemMessage("You successfully declare overt faction status. You may now be attacked by opposing faction members.");
@@ -225,8 +225,8 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 				}
 			}
 		} else if (factionStatus == FactionStatus::ONLEAVE) {
-			if (pvpStatusBitmask & CreatureFlag::OVERT)
-				pvpStatusBitmask &= ~CreatureFlag::OVERT;
+			if (pvpStatusBitmask & ObjectFlag::OVERT)
+				pvpStatusBitmask &= ~ObjectFlag::OVERT;
 
 			if (creature->getFaction() != 0) {
 				if (covertOvert) {
@@ -240,10 +240,12 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 			}
 		}
 
-		if (oldStatusBitmask != CreatureFlag::NONE)
+		if (oldStatusBitmask != ObjectFlag::NONE)
 			creature->setPvpStatusBitmask(pvpStatusBitmask);
 		else
 			broadcastPvpStatusBitmask(); // Invuln players still need faction changes broadcasted even without the bitmask changing
+
+		/* This is already called in CreatureObjectImplementation -- H
 
 		Vector<ManagedReference<CreatureObject*> > petsToStore;
 
@@ -268,6 +270,7 @@ void TangibleObjectImplementation::setFactionStatus(int status) {
 
 		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creature, std::move(petsToStore));
 		task->execute();
+		*/
 
 		ghost->updateInRangeBuildingPermissions();
 	}
@@ -281,46 +284,46 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	bool attackable = isAttackableBy(player);
 	bool aggressive = isAggressiveTo(player);
 
-	if (attackable && !(newPvpStatusBitmask & CreatureFlag::ATTACKABLE)) {
-		newPvpStatusBitmask |= CreatureFlag::ATTACKABLE;
-	} else if (!attackable && newPvpStatusBitmask & CreatureFlag::ATTACKABLE) {
-		newPvpStatusBitmask &= ~CreatureFlag::ATTACKABLE;
+	if (attackable && !(newPvpStatusBitmask & ObjectFlag::ATTACKABLE)) {
+		newPvpStatusBitmask |= ObjectFlag::ATTACKABLE;
+	} else if (!attackable && newPvpStatusBitmask & ObjectFlag::ATTACKABLE) {
+		newPvpStatusBitmask &= ~ObjectFlag::ATTACKABLE;
 	}
 
-	if (aggressive && !(newPvpStatusBitmask & CreatureFlag::AGGRESSIVE)) {
-		newPvpStatusBitmask |= CreatureFlag::AGGRESSIVE;
-	} else if (!aggressive && newPvpStatusBitmask & CreatureFlag::AGGRESSIVE) {
-		newPvpStatusBitmask &= ~CreatureFlag::AGGRESSIVE;
+	if (aggressive && !(newPvpStatusBitmask & ObjectFlag::AGGRESSIVE)) {
+		newPvpStatusBitmask |= ObjectFlag::AGGRESSIVE;
+	} else if (!aggressive && newPvpStatusBitmask & ObjectFlag::AGGRESSIVE) {
+		newPvpStatusBitmask &= ~ObjectFlag::AGGRESSIVE;
 	}
 
-	if (newPvpStatusBitmask & CreatureFlag::TEF) {
+	if (newPvpStatusBitmask & ObjectFlag::TEF) {
 		if (player != asTangibleObject())
-			newPvpStatusBitmask &= ~CreatureFlag::TEF;
+			newPvpStatusBitmask &= ~ObjectFlag::TEF;
 	}
 
 	int thisFactionStatus = getFactionStatus();
 	int thisFutureStatus = getFutureFactionStatus();
 
 	if (thisFutureStatus == FactionStatus::OVERT)
-		newPvpStatusBitmask |= CreatureFlag::WILLBEDECLARED;
+		newPvpStatusBitmask |= ObjectFlag::WILLBEDECLARED;
 
 	if (thisFactionStatus == FactionStatus::OVERT && thisFutureStatus == FactionStatus::COVERT)
-		newPvpStatusBitmask |= CreatureFlag::WASDECLARED;
+		newPvpStatusBitmask |= ObjectFlag::WASDECLARED;
 
-	if (isAiAgent() && !isPet() && getFaction() > 0 && player->isPlayerCreature() && player->getFaction() > 0 && getFaction() != player->getFaction() && thisFactionStatus >= FactionStatus::COVERT) {
+	if (((isAiAgent() && !isPet()) || isShipAiAgent())  && getFaction() > 0 && player->isPlayerCreature() && player->getFaction() > 0 && getFaction() != player->getFaction() && thisFactionStatus >= FactionStatus::COVERT) {
 		if (ConfigManager::instance()->useCovertOvertSystem()) {
 			PlayerObject* ghost = player->getPlayerObject();
 
 			if (player->getFactionStatus() == FactionStatus::OVERT || (ghost != nullptr && ghost->hasGcwTef())) {
-				newPvpStatusBitmask |= CreatureFlag::ENEMY;
-			} else if (newPvpStatusBitmask & CreatureFlag::ENEMY) {
-				newPvpStatusBitmask &= ~CreatureFlag::ENEMY;
+				newPvpStatusBitmask |= ObjectFlag::ENEMY;
+			} else if (newPvpStatusBitmask & ObjectFlag::ENEMY) {
+				newPvpStatusBitmask &= ~ObjectFlag::ENEMY;
 			}
 		} else {
 			if (player->getFactionStatus() >= FactionStatus::COVERT) {
-				newPvpStatusBitmask |= CreatureFlag::ENEMY;
-			} else if (newPvpStatusBitmask & CreatureFlag::ENEMY) {
-				newPvpStatusBitmask &= ~CreatureFlag::ENEMY;
+				newPvpStatusBitmask |= ObjectFlag::ENEMY;
+			} else if (newPvpStatusBitmask & ObjectFlag::ENEMY) {
+				newPvpStatusBitmask &= ~ObjectFlag::ENEMY;
 			}
 		}
 	}
@@ -342,7 +345,7 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 
 	CreatureObject* thisCreo = asCreatureObject();
 
-	SortedVector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
+	SortedVector<TreeEntry*> closeObjects(closeobjects->size(), 10);
 
 	closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
@@ -361,13 +364,31 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 			creo->sendPvpStatusTo(thisCreo);
 	}
 
+	if (thisCreo == nullptr)
+		return;
+
 	closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::INSTALLATIONTYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
-		if (obj != nullptr && obj->isInstallationObject() && thisCreo != nullptr) {
+		if (obj != nullptr && obj->isInstallationObject()) {
 			obj->asTangibleObject()->sendPvpStatusTo(thisCreo);
+		}
+	}
+
+	closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::SHIPTYPE);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
+
+		if (obj == nullptr || !obj->isShipObject())
+			continue;
+
+		auto ship = obj->asShipObject();
+
+		if (ship != nullptr) {
+			ship->sendPvpStatusTo(thisCreo);
 		}
 	}
 }
@@ -389,8 +410,8 @@ void TangibleObjectImplementation::setPvpStatusBitmask(uint32 bitmask, bool noti
 		if (ghost == nullptr)
 			return;
 
-		if (bitmask & CreatureFlag::PLAYER)
-			bitmask &= ~CreatureFlag::PLAYER;
+		if (bitmask & ObjectFlag::PLAYER)
+			bitmask &= ~ObjectFlag::PLAYER;
 
 		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
 			Reference<AiAgent*> pet = ghost->getActivePet(i);
@@ -428,7 +449,116 @@ void TangibleObjectImplementation::synchronizedUIListen(CreatureObject* player, 
 }
 
 void TangibleObjectImplementation::synchronizedUIStopListen(CreatureObject* player, int value) {
+}
 
+void TangibleObjectImplementation::removeOutOfRangeObjects() {
+	TangibleObject* object = asTangibleObject();
+
+	if (object == nullptr)
+		return;
+
+	auto rootParent = object->getRootParent();
+	auto parent = getParent().get();
+
+	if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
+		object = parent->asTangibleObject();
+	} else if (rootParent != nullptr && rootParent->isShipObject()) {
+		object = rootParent->asTangibleObject();
+	}
+
+	if (object == nullptr)
+		return;
+
+#ifdef DEBUG_COV
+	info(true) << "TangibleObjectImplementation::removeOutOfRangeObjects() called - " << object->getDisplayedName();
+#endif // DEBUG_COV
+
+	SortedVector<TreeEntry*> closeObjects;
+	auto closeObjectsVector = object->getCloseObjects();
+
+	if (closeObjectsVector == nullptr)
+		return;
+
+	closeObjectsVector->safeCopyTo(closeObjects);
+
+	auto worldPos = getWorldPosition();
+
+	float ourX = worldPos.getX();
+	float ourY = worldPos.getY();
+	float ourZ = worldPos.getZ();
+
+	float ourRange = object->getOutOfRangeDistance();
+
+	int countChecked = 0;
+	int countCov = closeObjects.size();
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* o = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
+
+		// Don't remove ourselves
+		if (o == nullptr || o == object)
+			continue;
+
+		// Don't remove things in the same parent as us (e.g. Geo Caves are massive)
+		if (rootParent != nullptr && o == rootParent)
+			continue;
+
+		// Check for objects inside another object
+		auto oRoot = o->getRootParent();
+
+		// They should be managed by the parent
+		if (oRoot != nullptr)
+			continue;
+
+		countChecked++;
+
+		auto objectWorldPos = o->getWorldPosition();
+
+		float deltaX = ourX - objectWorldPos.getX();
+		float deltaY = ourY - objectWorldPos.getY();
+		float deltaZ = ourZ - objectWorldPos.getZ();
+
+		float outOfRangeSqr = Math::sqr(Math::max(ourRange, o->getOutOfRangeDistance()));
+
+		// Check for out of range, if using root parent ship, use 3d range calc
+		if (object->isShipObject()) {
+			float delta3d = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
+
+			if (delta3d > outOfRangeSqr) {
+				countCov--;
+
+				if (getCloseObjects() != nullptr)
+					object->removeInRangeObject(o);
+
+				if (o->getCloseObjects() != nullptr)
+					o->removeInRangeObject(object);
+			}
+		} else {
+			if (deltaX * deltaX + deltaY * deltaY > outOfRangeSqr) {
+				countCov--;
+
+				if (getCloseObjects() != nullptr)
+					object->removeInRangeObject(o);
+
+				if (o->getCloseObjects() != nullptr)
+					o->removeInRangeObject(object);
+			}
+		}
+	}
+
+	if (object->isPlayerCreature()) {
+		auto creature = object->asCreatureObject();
+
+		if (creature != nullptr) {
+			auto ghost = creature->getPlayerObject();
+
+			// Cov count reporting
+			if (ghost != nullptr && countCov > ghost->getCountMaxCov()) {
+				object->error("MaxCountCov = " + String::valueOf(countCov) + " checked = " + String::valueOf(countChecked));
+				ghost->setCountMaxCov(countCov);
+			}
+		}
+	}
 }
 
 void TangibleObjectImplementation::setSerialNumber(const String& serial) {
@@ -1251,7 +1381,7 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* creature) {
 
 	// info(true) << "TangibleObjectImplementation::isAttackableBy Creature Check -- Object ID = " << getObjectID() << " by attacking Creature ID = " << creature->getObjectID();
 
-	if (!(pvpStatusBitmask & CreatureFlag::ATTACKABLE))
+	if (!(pvpStatusBitmask & ObjectFlag::ATTACKABLE))
 		return false;
 
 	if (isInNoCombatArea())
@@ -1309,7 +1439,7 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* creature) {
 
 	// info(true) << "TanO isAttackable check return true";
 
-	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
+	return pvpStatusBitmask & ObjectFlag::ATTACKABLE;
 }
 
 void TangibleObjectImplementation::addActiveArea(ActiveArea* area) {

@@ -99,6 +99,12 @@ class ActiveArea extends SceneObject {
 	public abstract native boolean containsPoint(float x, float y);
 
 	@read
+	public native boolean containsPoint(float x, float z, float y, unsigned long cellid);
+
+	@read
+	public abstract native boolean containsPoint(float x, float z, float y);
+
+	@read
 	public native boolean intersectsWith(ActiveArea area);
 
 	@dirty
@@ -238,6 +244,16 @@ class ActiveArea extends SceneObject {
 		return areaShape && areaShape.isRectangularAreaShape();
 	}
 
+	@read
+	public boolean isCuboidAreaShape() {
+		return areaShape && areaShape.isCuboidAreaShape();
+	}
+
+	@read
+	public boolean isSphereAreaShape() {
+		return areaShape && areaShape.isSphereAreaShape();
+	}
+
 	@preLocked
 	public native void addAreaFlag(unsigned int flag);
 
@@ -294,15 +310,41 @@ class ActiveArea extends SceneObject {
 	}
 
 	@read
-	public native float getHeight();
+	public float getHeight() {
+		if (areaShape) {
+			return areaShape.getHeight();
+		}
+
+		return 0.f;
+	}
 
 	@read
-	public native float getWidth();
+	public float getWidth() {
+		if (areaShape) {
+			return areaShape.getWidth();
+		}
+
+		return 0.f;
+	}
+
+	@read
+	public float getLength() {
+		if (areaShape) {
+			return areaShape.getLength();
+		}
+
+		return 0.f;
+	}
 
 	@dereferenced
 	@local
 	@read
 	public native Vector4 getRectangularDimensions();
+
+	@dereferenced
+	@local
+	@read
+	public native Vector3 getCuboidDimensions();
 
 	@read
 	public unsigned long getCellObjectID() {

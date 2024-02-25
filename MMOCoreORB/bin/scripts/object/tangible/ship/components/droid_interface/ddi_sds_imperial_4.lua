@@ -42,7 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_sds_imperial_4 = object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_4:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "ddi_sds_imperial_4",
+
+	attributes = {
+		{"commandSpeed", 13.5},
+		{"maximumHitpoints", 1401.65},
+		{"maximumArmorHitpoints", 700.823},
+		{"energyMaintenance", 500},
+		{"mass", 13650},
+		{"reverseEngineeringLevel", 8},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_sds_imperial_4, "object/tangible/ship/components/droid_interface/ddi_sds_imperial_4.iff")

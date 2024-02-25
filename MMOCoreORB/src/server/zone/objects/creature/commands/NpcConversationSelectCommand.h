@@ -5,16 +5,15 @@
 #ifndef NPCCONVERSATIONSELECTCOMMAND_H_
 #define NPCCONVERSATIONSELECTCOMMAND_H_
 
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/ship/ai/SpaceStationObject.h"
+
 class NpcConversationSelectCommand : public QueueCommand {
 public:
-
-	NpcConversationSelectCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	NpcConversationSelectCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -24,36 +23,44 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = cast<CreatureObject*>(creature);
-		PlayerObject* ghost = player->getPlayerObject();
+		PlayerObject* ghost = creature->getPlayerObject();
 
-		uint64 conversationCreatureOid = ghost->getConversatingCreature();
-		ManagedReference<CreatureObject*> object = server->getZoneServer()->getObject(conversationCreatureOid).castTo<CreatureObject*>();
+		if (ghost == nullptr)
+			return GENERALERROR;
 
-		if (object != nullptr) {
-			int option = Integer::valueOf(arguments.toString());
+		auto zoneServer = server->getZoneServer();
 
-			try {
-				Locker clocker(object, creature);
+		if (zoneServer == nullptr)
+			return GENERALERROR;
 
-				ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
-				uint64 parentid = validPosition->getParent();
+		uint64 conversationCreatureOid = ghost->getConversatingObject();
+		ManagedReference<SceneObject*> object = zoneServer->getObject(conversationCreatureOid).castTo<SceneObject*>();
 
-				if (parentid != object->getParentID())
-					return TOOFAR;
+		if (object == nullptr)
+			return GENERALERROR;
 
-				Vector3 vec = validPosition->getWorldPosition(server->getZoneServer());
+		int option = Integer::valueOf(arguments.toString());
 
-				if (vec.distanceTo(object->getWorldPosition()) <= 5.f) {
-					object->selectConversationOption(option, player);
+		try {
+			Locker clocker(object, creature);
 
-					object->notifyObservers(ObserverEventType::SELECTCONVERSATION, creature, option);
-				} else {
-					return TOOFAR;
-				}
-			} catch (Exception& e) {
+			ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
+			uint64 parentid = validPosition->getParent();
 
+			if (object->isCreatureObject() && (parentid != object->getParentID()))
+				return TOOFAR;
+
+			Vector3 validCoords = validPosition->getWorldPosition(zoneServer);
+
+			if (object->isShipObject() || validCoords.squaredDistanceTo(object->getWorldPosition()) < 25.f) {
+				object->selectConversationOption(option, creature);
+
+				object->notifyObservers(ObserverEventType::SELECTCONVERSATION, creature, option);
+			} else {
+				return TOOFAR;
 			}
+		} catch (Exception& e) {
+
 		}
 
 		return SUCCESS;

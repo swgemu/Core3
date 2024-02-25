@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_cygnus_standard_weave = object_tangible_ship_components_armor_shared_arm_cygnus_standard_weave:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_cygnus_standard_weave",
+
+	attributes = {
+		{"maximumHitpoints", 379.04},
+		{"maximumArmorHitpoints", 379.04},
+		{"mass", 2207.25},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.318},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_cygnus_standard_weave, "object/tangible/ship/components/armor/arm_cygnus_standard_weave.iff")

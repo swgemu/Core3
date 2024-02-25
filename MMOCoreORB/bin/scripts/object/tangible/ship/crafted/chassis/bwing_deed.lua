@@ -42,9 +42,11 @@
 
 
 object_tangible_ship_crafted_chassis_bwing_deed = object_tangible_ship_crafted_chassis_shared_bwing_deed:new {
+	templateType = SHIPDEED,
+	gameObjectType = 8388617,
 
-    templateType = SHIPDEED,
-	shipControlObject = "object/intangible/ship/bwing_pcd.iff",
+	shipType = 1, --FIGHTERSHIP,
+	shipControlDevice = "object/intangible/ship/bwing_pcd.iff",
 	generatedObjectTemplate = "object/ship/player/player_bwing.iff",
 }
 

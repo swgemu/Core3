@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_missile_wpn_launcher_seismic_mk1 = object_ta
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance"},
 	experimentalMin = {0, 0, 293, 2875, 147, 1, 1208},
 	experimentalMax = {0, 0, 397, 2125, 198, 1, 893},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1, 1, 0, 1},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 

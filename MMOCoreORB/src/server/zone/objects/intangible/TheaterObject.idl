@@ -9,7 +9,7 @@ import server.zone.objects.tangible.DespawnLairOnPlayerDisappear;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 include server.zone.CloseObjectsVector;
-import server.zone.QuadTreeEntry;
+import server.zone.TreeEntry;
 include system.thread.atomic.AtomicInteger;
 include engine.log.Logger;
 
@@ -57,7 +57,7 @@ class TheaterObject extends IntangibleObject {
 		shouldFlatten = b;
 	}
 
-	public void notifyInsert(QuadTreeEntry entry) {
+	public void notifyInsert(TreeEntry entry) {
 		SceneObject obj = (SceneObject) entry;
 
 		if (obj == this)
@@ -72,7 +72,7 @@ class TheaterObject extends IntangibleObject {
 		}
 	}
 
-	public void notifyDissapear(QuadTreeEntry entry) {
+	public void notifyDissapear(TreeEntry entry) {
 		SceneObject obj = (SceneObject) entry;
 
 		if (obj == this)

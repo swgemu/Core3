@@ -18,6 +18,11 @@ public:
 	const AABB& getBoundingBox() const {
 		return bbox;
 	}
+
+	bool isBoundingSphere() const {
+		return true;
+	}
+
 #ifdef OSG_RENDERER
 	virtual osg::ref_ptr<osg::Node> draw() const;
 #endif

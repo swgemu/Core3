@@ -42,7 +42,34 @@
 
 
 object_ship_hutt_heavy_s02_tier5 = object_ship_shared_hutt_heavy_s02_tier5:new {
+	objectName = "@space/space_mobile_type:hutt_heavy_s02_tier5",
 
+	name = "hutt_heavy_tier5",
+	type = "hutt_heavy_s02_tier5",
+	faction = "hutt",
+	difficulty = "tier5",
+
+	slideFactor = 1.65,
+	chassisHitpoints = 2949.12,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 3822.06, armor = 3822.06},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 3822.06, armor = 3822.06, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 3822.06, armor = 3822.06, front = 15288.2, back = 15288.2, regen = 23.15},
+	armor_0 = {name = "arm_generic", hitpoints = 8833.2, armor = 8833.2},
+	armor_1 = {name = "arm_generic", hitpoints = 8833.2, armor = 8833.2},
+	capacitor = {name = "cap_generic", hitpoints = 3822.06, armor = 3822.06, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 3822.06, armor = 3822.06, rate = 0.78, drain = 1, maxDamage = 395.01, minDamage = 245.95, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_disruptor", hitpoints = 3822.06, armor = 3822.06, rate = 0.78, drain = 1, maxDamage = 395.01, minDamage = 245.95, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_3 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 3822.06, armor = 3822.06, rate = 3, drain = 1, maxDamage = 1185.03, minDamage = 491.9, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 20},
 }
 
 ObjectTemplates:addTemplate(object_ship_hutt_heavy_s02_tier5, "object/ship/hutt_heavy_s02_tier5.iff")

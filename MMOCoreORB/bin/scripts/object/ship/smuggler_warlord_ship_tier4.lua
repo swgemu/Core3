@@ -42,7 +42,36 @@
 
 
 object_ship_smuggler_warlord_ship_tier4 = object_ship_shared_smuggler_warlord_ship_tier4:new {
+	objectName = "@space/space_mobile_type:smuggler_warlord_ship_tier4",
 
+	name = "smuggler_warlord_ship_tier4",
+	type = "smuggler_warlord_ship_tier4",
+	faction = "civilian",
+	difficulty = "tier4",
+
+	slideFactor = 1.76,
+	chassisHitpoints = 19200,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 20736, armor = 20736},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 20736, armor = 20736, speed = 45.89, acceleration = 11.15, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
+	shield_0 = {name = "shd_generic", hitpoints = 20736, armor = 20736, front = 82944, back = 82944, regen = 22.5},
+	armor_0 = {name = "arm_generic", hitpoints = 44236.8, armor = 44236.8},
+	armor_1 = {name = "arm_generic", hitpoints = 44236.8, armor = 44236.8},
+	capacitor = {name = "cap_generic", hitpoints = 20736, armor = 20736, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_blaster", hitpoints = 20736, armor = 20736, rate = 0.78, drain = 1, maxDamage = 631.11, minDamage = 411.68, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_disruptor", hitpoints = 20736, armor = 20736, rate = 0.78, drain = 1, maxDamage = 631.11, minDamage = 411.68, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_incom_blaster", hitpoints = 20736, armor = 20736, rate = 0.78, drain = 1, maxDamage = 631.11, minDamage = 411.68, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_3 = {name = "wpn_incom_disruptor", hitpoints = 20736, armor = 20736, rate = 0.78, drain = 1, maxDamage = 631.11, minDamage = 411.68, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_4 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 20736, armor = 20736, rate = 3, drain = 1, maxDamage = 1893.33, minDamage = 823.36, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 19},
 }
 
 ObjectTemplates:addTemplate(object_ship_smuggler_warlord_ship_tier4, "object/ship/smuggler_warlord_ship_tier4.iff")

@@ -67,14 +67,16 @@ public:
 	static float getWorldFloorCollision(float x, float y, float z, Zone* zone, bool testWater);
 	static void getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector = nullptr);
 
-	static void getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, const SortedVector<ManagedReference<QuadTreeEntry*> >& inRangeObjects);
-	static void getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, const Vector<QuadTreeEntry* >& inRangeObjects);
+	static void getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, const SortedVector<ManagedReference<TreeEntry*> >& inRangeObjects);
+	static void getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, const Vector<TreeEntry* >& inRangeObjects);
 
 	static Vector<float>* getCellFloorCollision(float x, float y, CellObject* cellObject);
 
 	//static bool
 
 	static bool checkShipCollision(ShipObject* ship, const Vector3& targetPosition, Vector3& collisionPoint);
+
+	static bool checkShipWeaponCollision(ShipObject* ship, const Vector3 startPosition, const Vector3& targetPosition, Vector3& collisionPoint, Vector<ManagedReference<SceneObject*> >& collidedObjects);
 
 	static bool checkSphereCollision(const Vector3& sphereOrigin, float radius, Zone* zone);
 

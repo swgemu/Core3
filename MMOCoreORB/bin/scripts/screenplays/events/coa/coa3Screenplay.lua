@@ -273,7 +273,7 @@ function Coa3Screenplay:enteredMissionArea(pArea, pPlayer)
 		local pMobile = spawnMobile(zoneName, spawnName, 0, x, z, y, 0, 0)
 
 		if (pMobile ~= nil) then
-			AiAgent(pMobile):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pMobile):addObjectFlag(AI_STATIONARY)
 
 			local mobileID = SceneObject(pMobile):getObjectID()
 			writeData(ownerID .. ":CoA3:NpcID:", mobileID)
@@ -621,7 +621,7 @@ function Coa3Screenplay:setupCaravan(pPlayer)
 
 		if (pMobile ~= nil) then
 			if (i == 1) then
-				AiAgent(pMobile):addCreatureFlag(AI_STATIONARY)
+				AiAgent(pMobile):addObjectFlag(AI_STATIONARY)
 
 				createObserver(LOOTCREATURE, "Coa3Screenplay", "onLootCaravanLeader", pMobile)
 			end

@@ -49,9 +49,9 @@ object_tangible_ship_crafted_weapon_missile_wpn_seismic_missile_mk1 = object_tan
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_damage_max", "exp_damage_min", "misc", "misc", "exp_ammo", "exp_fltrefirerate"},
 	experimentalSubGroupTitles = {"null", "null", "fltmaxdamage", "fltmindamage", "fltshieldeffectiveness", "fltarmoreffectiveness", "fltmaxammo", "fltrefirerate"},
-	experimentalMin = {0, 0, 1201, 639, 70, 560, 7, 4046},
-	experimentalMax = {0, 0, 2231, 1188, 130, 1040, 13, 7514},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalMin = {0, 0, 1201, 639, 0.070, 0.560, 7, 7.514},
+	experimentalMax = {0, 0, 2231, 1188, 0.130, 1.040, 13, 4.046},
+	experimentalPrecision = {0, 0, 6, 6, 6, 6, 0, 6},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 

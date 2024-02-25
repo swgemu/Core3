@@ -616,7 +616,7 @@ void ObjectVersionUpdateManager::setResidence(uint64 buildingID, bool isResidenc
 
 void ObjectVersionUpdateManager::updateCityTreasury(){
 
-	info("---------------MOdifying City Treasury---------------------",true);
+	info("---------------Modifying City Treasury---------------------",true);
 	info("Converting treasury to float for all cities ", true);
 	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
 	ObjectInputStream objectData(2000);
@@ -676,7 +676,7 @@ void ObjectVersionUpdateManager::updateCityTreasury(){
 
 void ObjectVersionUpdateManager::updateCityTreasuryToDouble(){
 
-	info("---------------MOdifying City Treasury---------------------",true);
+	info("---------------Modifying City Treasury---------------------",true);
 	info("Converting treasury to double for all cities ", true);
 	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
 	ObjectInputStream objectData(2000);

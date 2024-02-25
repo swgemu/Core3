@@ -1,0 +1,121 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipComponent;
+import server.zone.objects.ship.ShipObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+include server.zone.objects.tangible.component.Component;
+
+class ShipWeaponComponent extends ShipComponent {
+	protected float maxDamage;
+	protected float minDamage;
+	protected float armorEffectiveness;
+	protected float shieldEffectiveness;
+	protected float refireRate;
+	protected float energyPerShot;
+	protected int ammoClass;
+
+	public ShipWeaponComponent() {
+		super();
+
+		maxDamage = 0.f;
+		minDamage = 0.f;
+		armorEffectiveness = 0.f;
+		shieldEffectiveness = 0.f;
+		refireRate = 0.f;
+		energyPerShot = 0.f;
+		ammoClass = 0;
+	}
+
+	public float getMaxDamage() {
+		return maxDamage;
+	}
+
+	public float getMinDamage() {
+		return minDamage;
+	}
+
+	public float getShieldEffectiveness() {
+		return shieldEffectiveness;
+	}
+
+	public float getArmorEffectiveness() {
+		return armorEffectiveness;
+	}
+
+	public float getRefireRate() {
+		return refireRate;
+	}
+
+	public float getEnergyPerShot() {
+		return energyPerShot;
+	}
+
+	public int getAmmoClass() {
+		return ammoClass;
+	}
+
+	@local
+	public void setMaxDamage(float value) {
+		maxDamage = value;
+	}
+
+	@local
+	public void setMinDamage(float value) {
+		minDamage = value;
+	}
+
+	@local
+	public void setShieldEffectiveness(float value) {
+		shieldEffectiveness = value;
+	}
+
+	@local
+	public void setArmorEffectiveness(float value) {
+		armorEffectiveness = value;
+	}
+
+	@local
+	public void setRefireRate(float value) {
+		refireRate = value;
+	}
+
+	@local
+	public void setEnergyPerShot(float value) {
+		energyPerShot = value;
+	}
+
+	@local
+	public void setAmmoClass(int value) {
+		ammoClass = value;
+	}
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	public abstract native void install(CreatureObject owner, ShipObject ship, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstall(CreatureObject owner, ShipObject ship, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void installAmmo(CreatureObject owner, ShipObject ship, Component ammo, int slot, boolean notifyClient);
+
+	@local
+	public abstract native void uninstallAmmo(CreatureObject owner, ShipObject ship, int slot, boolean notifyClient);
+}

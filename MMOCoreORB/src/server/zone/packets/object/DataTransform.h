@@ -19,6 +19,8 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/collision/IntersectionResults.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
 
 class DataTransform : public ObjectControllerMessage {
 public:
@@ -87,11 +89,11 @@ public:
 		if (player != nullptr) {
 			Zone* zone = player->getZone();
 
-			if (zone != nullptr) {
-				const String& zoneName = zone->getZoneName();
+			if (zone == nullptr)
+				return;
 
-				setCustomTaskQueue(zoneName);
-			}
+			const String& zoneName = zone->getZoneName();
+			setCustomTaskQueue(zoneName);
 		}
 	}
 
@@ -334,6 +336,8 @@ public:
 		bool sendPackets = deltaTime > Transform::SYNCDELTA || creature->getParentID() == 0;
 
 		creO->setMovementCounter(transform.getMoveCount());
+		creO->setSyncStamp(transform.getTimeStamp());
+
 		creO->updateZone(lightUpdate, false);
 		creO->updateLocomotion();
 

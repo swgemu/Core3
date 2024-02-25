@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_corellian_cheap_durasteel = object_tangible_ship_components_armor_shared_arm_corellian_cheap_durasteel:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_corellian_cheap_durasteel",
+
+	attributes = {
+		{"maximumHitpoints", 144.8},
+		{"maximumArmorHitpoints", 144.8},
+		{"mass", 900.9},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.24},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_corellian_cheap_durasteel, "object/tangible/ship/components/armor/arm_corellian_cheap_durasteel.iff")

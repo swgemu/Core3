@@ -56,7 +56,7 @@ object_draft_schematic_space_weapon_armor_effectiveness_intensifier_mk3 = object
    xp = 125, 
 
    assemblySkill = "weapon_systems", 
-   experimentingSkill = "weapons_systems_experimentation", 
+   experimentingSkill = "weapon_systems_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},

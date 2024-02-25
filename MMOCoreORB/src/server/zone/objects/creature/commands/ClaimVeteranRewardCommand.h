@@ -7,32 +7,28 @@
 
 class ClaimVeteranRewardCommand : public QueueCommand {
 public:
-
-	ClaimVeteranRewardCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	ClaimVeteranRewardCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if( !creature->isPlayerCreature() )
+		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
 		PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
-		if( playerManager == nullptr )
+
+		if (playerManager == nullptr)
 			return GENERALERROR;
 
-		playerManager->claimVeteranRewards( creature );
+		playerManager->claimVeteranRewards(creature);
 
 		return SUCCESS;
 	}
-
 };
 
-#endif //CLAIMVETERANREWARDCOMMAND_H_
+#endif // CLAIMVETERANREWARDCOMMAND_H_

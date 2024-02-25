@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_missile_wpn_launcher_concussion_mk3 = object
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance"},
 	experimentalMin = {0, 0, 993, 7188, 496, 1, 1323},
 	experimentalMax = {0, 0, 1343, 5313, 672, 1, 978},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1, 1, 0, 1},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 

@@ -42,7 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_moncal_heavy = object_tangible_ship_components_booster_shared_bst_moncal_heavy:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "bst_moncal_heavy",
+
+	attributes = {
+		{"maximumEnergy", 1210},
+		{"rechargeRate", 30.25},
+		{"consumptionRate", 121},
+		{"acceleration", 24.2},
+		{"maxSpeed", 18.48},
+		{"maximumHitpoints", 634.8},
+		{"maximumArmorHitpoints", 317.4},
+		{"energyMaintenance", 550},
+		{"mass", 5500},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.1},
+		{"rechargeRate", 0.1},
+		{"consumptionRate", 0.1},
+		{"acceleration", 0.04},
+		{"maxSpeed", 0.03},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.15},
+		{"mass", 0.15},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_moncal_heavy, "object/tangible/ship/components/booster/bst_moncal_heavy.iff")

@@ -13,7 +13,7 @@
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/gcw/tasks/ShutdownSequenceTask.h"
@@ -79,7 +79,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 			return;
 	}
 
-	if (building->getFaction() == player->getFaction() && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+	if (building->getFaction() == player->getFaction() && (building->getPvpStatusBitmask() & ObjectFlag::OVERT)) {
 		if (gcwMan->isShutdownSequenceStarted(building))
 			menuResponse->addRadialMenuItem(231, 3, "@hq:mnu_shutdown");  // Shutdown facility
 
@@ -98,12 +98,12 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 	if (building->getOwnerCreatureObject() == player || privileged) {
 		menuResponse->addRadialMenuItemToRadialID(210, 228, 3, "@hq:mnu_defense_status");
 
-		if ((building->getPvpStatusBitmask() & CreatureFlag::OVERT) && !gcwMan->isBaseVulnerable(building)) {
+		if ((building->getPvpStatusBitmask() & ObjectFlag::OVERT) && !gcwMan->isBaseVulnerable(building)) {
 			if (gcwMan->hasResetTimerPast(building))
 				menuResponse->addRadialMenuItemToRadialID(210, 235, 3, "@hq:mnu_reset_vulnerability"); // Reset Vulnerability
 
 			menuResponse->addRadialMenuItemToRadialID(210, 236, 3, "@player_structure:permission_destroy");
-		} else if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+		} else if (!(building->getPvpStatusBitmask() & ObjectFlag::OVERT)) {
 			menuResponse->addRadialMenuItemToRadialID(210, 236, 3, "@player_structure:permission_destroy");
 		}
 
@@ -191,7 +191,7 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 			return 0;
 	}
 
-	if (building->getFaction() == creature->getFaction() && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+	if (building->getFaction() == creature->getFaction() && (building->getPvpStatusBitmask() & ObjectFlag::OVERT)) {
 		 if (selectedID == 37) {
 			 creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:terminal_response04"); // You must first select a sub-menu of 'Donate' to proceed.
 			 return 0;

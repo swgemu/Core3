@@ -72,9 +72,9 @@ public:
 				ManagedReference<PetControlDevice*> controlDevice = agent->getControlDevice().get().castTo<PetControlDevice*>();
 
 				if (controlDevice != nullptr && controlDevice->getPetType() == PetManager::FACTIONPET) {
-					agent->removeCreatureFlag(CreatureFlag::FACTION_PET);
+					agent->removeObjectFlag(ObjectFlag::FACTION_PET);
 				} else {
-					agent->removeCreatureFlag(CreatureFlag::PET);
+					agent->removeObjectFlag(ObjectFlag::PET);
 				}
 
 				agent->setMindTricked(true);

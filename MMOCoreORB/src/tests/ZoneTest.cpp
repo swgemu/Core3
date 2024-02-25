@@ -10,7 +10,7 @@
 
 #include "server/db/MySqlDatabase.h"
 #include "server/db/ServerDatabase.h"
-#include "server/zone/Zone.h"
+#include "server/zone/GroundZone.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
@@ -28,7 +28,7 @@ class ZoneTest : public ::testing::Test {
 protected:
 	ServerDatabase* database = nullptr;
 	Reference<ZoneServer*> zoneServer;
-	Reference<Zone*> zone;
+	Reference<GroundZone*> groundZone;
 	Reference<ZoneProcessServer*> processServer;
 	AtomicLong nextObjectId;
 	Reference<PlayerManager*> playerManager;
@@ -44,7 +44,7 @@ public:
 
 	void setDefaultComponents(SceneObject* object) {
 		object->setContainerComponent("ContainerComponent");
-		object->setZoneComponent("ZoneComponent");
+		object->setZoneComponent("GroundZoneComponent");
 	}
 
 	Reference<SceneObject*> createSceneObject() {
@@ -89,9 +89,9 @@ public:
 		database = new ServerDatabase(configManager);
 		zoneServer = new ZoneServer(configManager);
 		processServer = new ZoneProcessServer(zoneServer);
-		zone = new Zone(processServer, "test_zone");
-		zone->createContainerComponent();
-		zone->_setObjectID(1);
+		groundZone = new GroundZone(processServer, "test_zone");
+		groundZone->createContainerComponent();
+		groundZone->_setObjectID(1);
 	}
 
 	void TearDown() {
@@ -106,7 +106,7 @@ public:
 			playerManager = nullptr;
 		}
 
-		zone = nullptr;
+		groundZone = nullptr;
 		processServer = nullptr;
 		zoneServer = nullptr;
 	}
@@ -146,8 +146,8 @@ TEST_F(ZoneTest, TreLoad) {
 
 TEST_F(ZoneTest, ActiveAreaTest) {
 	Reference<MockActiveArea*> activeArea = createActiveArea(true).castTo<MockActiveArea*>();
-	ON_CALL(*activeArea, getZone()).WillByDefault(Return(zone));
-	ON_CALL(*activeArea, getZoneUnsafe()).WillByDefault(Return(zone));
+	ON_CALL(*activeArea, getZone()).WillByDefault(Return(groundZone));
+	ON_CALL(*activeArea, getZoneUnsafe()).WillByDefault(Return(groundZone));
 	ON_CALL(*activeArea, getParent()).WillByDefault(Return(ManagedWeakReference<SceneObject*>(NULL)));
 	EXPECT_CALL(*activeArea, getZone()).Times(AnyNumber());
 	EXPECT_CALL(*activeArea, getZoneUnsafe()).Times(AnyNumber());
@@ -160,7 +160,7 @@ TEST_F(ZoneTest, ActiveAreaTest) {
 	activeArea->setRadius(128);
 	activeArea->initializePosition(0, 0, 0);
 
-	zone->transferObject(activeArea, -1);
+	groundZone->transferObject(activeArea, -1);
 
 	alocker.release();
 
@@ -172,7 +172,7 @@ TEST_F(ZoneTest, ActiveAreaTest) {
 
 	ASSERT_EQ(tano->getActiveAreasSize(), 0);
 
-	zone->transferObject(tano, -1);
+	groundZone->transferObject(tano, -1);
 
 	ASSERT_EQ(tano->getActiveAreasSize(), 1);
 
@@ -204,13 +204,13 @@ TEST_F(ZoneTest, InRangeTest) {
 
 	Locker slocker(scene);
 
-	zone->transferObject(scene, -1);
+	groundZone->transferObject(scene, -1);
 
 	ASSERT_TRUE(scene->getZone() != nullptr);
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > objects;
+	SortedVector<ManagedReference<TreeEntry*> > objects;
 
-	zone->getInRangeObjects(0, 0, 128, &objects, true);
+	groundZone->getInRangeObjects(0, 0, 0, 128, &objects, true);
 
 	ASSERT_EQ(objects.size(), 1);
 
@@ -218,13 +218,13 @@ TEST_F(ZoneTest, InRangeTest) {
 
 	objects.removeAll();
 
-	zone->getInRangeObjects(0, 0, 128, &objects, true);
+	groundZone->getInRangeObjects(0, 0, 0, 128, &objects, true);
 
 	ASSERT_EQ(objects.size(), 0);
 
 	objects.removeAll();
 
-	zone->getInRangeObjects(1000, 1000, 128, &objects, true);
+	groundZone->getInRangeObjects(1000, 0, 1000, 128, &objects, true);
 
 	ASSERT_EQ(objects.size(), 1);
 
@@ -236,11 +236,11 @@ TEST_F(ZoneTest, InRangeTest) {
 
 	scene2->initializePosition(1000, 1000, 1000);
 
-	zone->transferObject(scene2, -1);
+	groundZone->transferObject(scene2, -1);
 
 	objects.removeAll();
 
-	zone->getInRangeObjects(1000, 1000, 128, &objects, true);
+	groundZone->getInRangeObjects(1000, 0, 1000, 128, &objects, true);
 
 	ASSERT_EQ(objects.size(), 2);
 
@@ -254,7 +254,7 @@ TEST_F(ZoneTest, InRangeTest) {
 
 	objects.removeAll();
 
-	zone->getInRangeObjects(1000, 1000, 128, &objects, true);
+	groundZone->getInRangeObjects(1000, 0, 1000, 128, &objects, true);
 
 	ASSERT_EQ(objects.size(), 0);
 }

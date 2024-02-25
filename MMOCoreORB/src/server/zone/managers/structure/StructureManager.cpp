@@ -48,6 +48,8 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "templates/building/CampStructureTemplate.h"
+#include "templates/customization/CustomizationIdManager.h"
 
 namespace StorageManagerNamespace {
 int indexCallback(DB* secondary, const DBT* key, const DBT* data, DBT* result) {
@@ -318,7 +320,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 	}
 
 	SortedVector<ManagedReference<ActiveArea*>> objects;
-	zone->getInRangeActiveAreas(x, y, &objects, true);
+	zone->getInRangeActiveAreas(x, 0, y, &objects, true);
 
 	ManagedReference<CityRegion*> city;
 
@@ -339,8 +341,8 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 		return 1;
 	}
 
-	SortedVector<ManagedReference<QuadTreeEntry*>> inRangeObjects;
-	zone->getInRangeObjects(x, y, 128, &inRangeObjects, true, false);
+	SortedVector<ManagedReference<TreeEntry*> > inRangeObjects;
+	zone->getInRangeObjects(x, 0, y, 128, &inRangeObjects, true, false);
 
 	float placingFootprintLength0 = 0, placingFootprintWidth0 = 0, placingFootprintLength1 = 0, placingFootprintWidth1 = 0;
 
@@ -570,6 +572,79 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature, cons
 	return structureObject;
 }
 
+StructureObject* StructureManager::placeCamp(CreatureObject* player, CustomizationVariables* customVars, const String& campTemplatePath, float x, float y, int angle, int persistenceLevel) {
+	if (player == nullptr)
+		return nullptr;
+
+	auto zone = player->getZone();
+
+	if (zone == nullptr)
+		return nullptr;
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return nullptr;
+
+	CampStructureTemplate* campTemplate = dynamic_cast<CampStructureTemplate*>(templateManager->getTemplate(campTemplatePath.hashCode()));
+
+	if (campTemplate == nullptr) {
+		error() << "StructureManager::placeCamp -  campTemplate is null: " << campTemplatePath;
+		return nullptr;
+	}
+
+	ManagedReference<StructureObject*> campObject = dynamic_cast<StructureObject*>(ObjectManager::instance()->createObject(campTemplatePath.hashCode(), persistenceLevel, "playerstructures"));
+
+	if (campObject == nullptr) {
+		error() << "Failed to create camp with template: " << campTemplatePath;
+		return nullptr;
+	}
+
+	Locker sLocker(campObject);
+
+	// Add on customization options
+	// These variables will not apply properly until we modify the object placed to not include the tent itself as part of its CDF and add it as a child
+	/*
+	if (customVars != nullptr) {
+		for (int i = 0; i < customVars->size(); ++i) {
+			uint8 id = customVars->elementAt(i).getKey();
+			String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
+
+			if (!name.contains("index_color"))
+				continue;
+
+			int16 val = customVars->elementAt(i).getValue();
+
+			// info(true) << "Setting camp custom varible: " << name << " Value: " << val;
+
+			campObject->setCustomizationVariable(name, val, false);
+		}
+	}
+	*/
+
+	campObject->grantPermission("ADMIN", player->getObjectID());
+	campObject->setOwner(player->getObjectID());
+
+	ghost->addOwnedStructure(campObject);
+
+	if (player->getFactionStatus() == FactionStatus::OVERT) {
+		campObject->setFaction(player->getFaction());
+	}
+
+	campObject->initializePosition(x, zone->getHeight(x, y), y);
+	campObject->rotate(angle);
+
+	TransactionLog trx(TrxCode::CAMPPLACED, player, campObject);
+
+	zone->transferObject(campObject, -1, true);
+
+	campObject->createChildObjects();
+
+	campObject->notifyStructurePlaced(player);
+
+	return campObject;
+}
+
 int StructureManager::destroyStructure(StructureObject* structureObject, bool playEffect) {
 	Reference<DestroyStructureTask*> task = new DestroyStructureTask(structureObject, playEffect);
 	task->execute();
@@ -695,11 +770,11 @@ Reference<SceneObject*> StructureManager::getInRangeParkingGarage(SceneObject* o
 	if (zone == nullptr)
 		return nullptr;
 
-	SortedVector<QuadTreeEntry*> closeSceneObjects;
-	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*)obj->getCloseObjects();
+	SortedVector<TreeEntry*> closeSceneObjects;
+	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) obj->getCloseObjects();
 
 	if (closeObjectsVector == nullptr) {
-		zone->getInRangeObjects(obj->getPositionX(), obj->getPositionY(), 128, &closeSceneObjects, true, false);
+		zone->getInRangeObjects(obj->getPositionX(), obj->getPositionZ(), obj->getPositionY(), 128, &closeSceneObjects, true, false);
 	} else {
 		closeObjectsVector->safeCopyTo(closeSceneObjects);
 	}

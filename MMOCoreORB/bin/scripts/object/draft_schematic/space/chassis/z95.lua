@@ -42,17 +42,14 @@
 
 
 object_draft_schematic_space_chassis_z95 = object_draft_schematic_space_chassis_shared_z95:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "Z-95 Chassis Blueprints",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 23,
 	size = 1,
 	factoryCrateSize = 0,
 	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
-   
+
 	xpType = "shipwright",
 	xp = 1250,
 

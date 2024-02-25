@@ -42,7 +42,34 @@
 
 
 object_ship_blacksun_heavy_s03_tier2 = object_ship_shared_blacksun_heavy_s03_tier2:new {
+	objectName = "@space/space_mobile_type:blacksun_heavy_s03_tier2",
 
+	name = "blacksun_heavy_tier2",
+	type = "blacksun_heavy_s03_tier2",
+	faction = "blacksun",
+	difficulty = "tier2",
+
+	slideFactor = 1.77,
+	chassisHitpoints = 720,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 540, armor = 540},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 540, armor = 540, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
+	shield_0 = {name = "shd_generic", hitpoints = 540, armor = 540, front = 2340, back = 2340, regen = 5.94},
+	armor_0 = {name = "arm_generic", hitpoints = 1152, armor = 1152},
+	armor_1 = {name = "arm_generic", hitpoints = 1152, armor = 1152},
+	capacitor = {name = "cap_generic", hitpoints = 540, armor = 540, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_disruptor", hitpoints = 540, armor = 540, rate = 0.78, drain = 1, maxDamage = 105.6, minDamage = 75.6, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_incom_disruptor", hitpoints = 540, armor = 540, rate = 0.78, drain = 1, maxDamage = 105.6, minDamage = 75.6, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_3 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 540, armor = 540, rate = 3, drain = 1, maxDamage = 316.8, minDamage = 151.2, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 5, ammo_type = 17},
 }
 
 ObjectTemplates:addTemplate(object_ship_blacksun_heavy_s03_tier2, "object/ship/blacksun_heavy_s03_tier2.iff")

@@ -42,7 +42,31 @@
 
 
 object_ship_rebel_shuttle_tier1 = object_ship_shared_rebel_shuttle_tier1:new {
+	objectName = "@space/space_mobile_type:rebel_shuttle_tier1",
 
+	name = "rebel_shuttle_tier1",
+	type = "rebel_shuttle_tier1",
+	faction = "rebel",
+	difficulty = "tier1",
+
+	slideFactor = 1.74,
+	chassisHitpoints = 720,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 300, armor = 300, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},
+	shield_0 = {name = "shd_generic", hitpoints = 300, armor = 300, front = 2400, back = 2400, regen = 6},
+	armor_0 = {name = "arm_generic", hitpoints = 960, armor = 960},
+	armor_1 = {name = "arm_generic", hitpoints = 960, armor = 960},
+	capacitor = {name = "cap_generic", hitpoints = 300, armor = 300, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_rebel_shuttle_tier1, "object/ship/rebel_shuttle_tier1.iff")

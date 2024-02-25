@@ -105,6 +105,7 @@ include_directories(${ZLIB_INCLUDE_DIRS})
 if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
 	message(STATUS "Compiling with AI debug enabled")
 	add_definitions(-DDEBUG_AI)
+	add_definitions(-DDEBUG_SHIP_AI)
 endif()
 
 if (ENABLE_SESSION_API)

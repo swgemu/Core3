@@ -42,7 +42,34 @@
 
 
 object_tangible_ship_components_booster_bst_slayn_ion_booster_mk1 = object_tangible_ship_components_booster_shared_bst_slayn_ion_booster_mk1:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "bst_slayn_ion_booster_mk1",
+
+	attributes = {
+		{"maximumEnergy", 1000},
+		{"rechargeRate", 25},
+		{"consumptionRate", 100},
+		{"acceleration", 20},
+		{"maxSpeed", 15},
+		{"maximumHitpoints", 150},
+		{"maximumArmorHitpoints", 75},
+		{"energyMaintenance", 500},
+		{"mass", 800},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"maximumEnergy", 0.1},
+		{"rechargeRate", 0.1},
+		{"consumptionRate", 0.1},
+		{"acceleration", 0.04},
+		{"maxSpeed", 0.03},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.15},
+		{"mass", 0.15},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_booster_bst_slayn_ion_booster_mk1, "object/tangible/ship/components/booster/bst_slayn_ion_booster_mk1.iff")

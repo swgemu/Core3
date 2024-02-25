@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/creature/ai/variables/CreatureAttackMap.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "templates/tangible/SharedWeaponObjectTemplate.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
 
@@ -190,27 +190,27 @@ public:
 	}
 
 	inline bool isStalker() const {
-		return creatureBitmask & CreatureFlag::STALKER;
+		return creatureBitmask & ObjectFlag::STALKER;
 	}
 
 	inline bool isBaby() const {
-		return creatureBitmask & CreatureFlag::BABY;
+		return creatureBitmask & ObjectFlag::BABY;
 	}
 
 	inline bool isKiller() const {
-		return creatureBitmask & CreatureFlag::KILLER;
+		return creatureBitmask & ObjectFlag::KILLER;
 	}
 
 	inline bool isHealer() const {
-		return creatureBitmask & CreatureFlag::HEALER;
+		return creatureBitmask & ObjectFlag::HEALER;
 	}
 
 	inline bool isPack() const {
-		return creatureBitmask & CreatureFlag::PACK;
+		return creatureBitmask & ObjectFlag::PACK;
 	}
 
 	inline bool isHerd() const {
-		return creatureBitmask & CreatureFlag::HERD;
+		return creatureBitmask & ObjectFlag::HERD;
 	}
 
 	inline float getTame() const {

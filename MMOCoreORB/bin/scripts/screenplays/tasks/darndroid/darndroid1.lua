@@ -45,7 +45,7 @@ function DarnDroid1:spawnMobiles()
 		local pNpc = spawnMobile("naboo", "c3tc", 0, 4723, 3, -4935, -180, 0)
 
 		if (pNpc ~= nil) then
-			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pNpc):addObjectFlag(AI_STATIONARY)
 		end
 
 		spawnMobile("naboo", "selan_ellison", 0, 16, 1, 56, -79, 4215410)
@@ -58,7 +58,7 @@ function DarnDroid1:spawnMobiles()
 	if (isZoneEnabled("talus")) then
 		local pNpc = spawnMobile("talus", "valance_serth", 0, -2389, 23, 2043, 0, 0)
 		if (pNpc ~= nil) then
-			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pNpc):addObjectFlag(AI_STATIONARY)
 		end
 
 		spawnMobile("talus", "black_sun_minion", 300, -2389, 23, 2043, 0, 0)

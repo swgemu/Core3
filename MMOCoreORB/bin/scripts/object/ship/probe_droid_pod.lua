@@ -42,7 +42,31 @@
 
 
 object_ship_probe_droid_pod = object_ship_shared_probe_droid_pod:new {
+	objectName = "@space/space_mobile_type:probe_droid_pod",
 
+	name = "probe_droid_pod",
+	type = "probe_droid_pod",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 1.82,
+	chassisHitpoints = 400,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 45, acceleration = 10.2, deceleration = 4.5, yaw = 14, yawRate = 22, pitch = 14, pitchRate = 22, roll = 14, rollRate = 22},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 200, back = 200, regen = 4},
+	armor_0 = {name = "arm_generic", hitpoints = 400, armor = 400},
+	armor_1 = {name = "arm_generic", hitpoints = 400, armor = 400},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 128, rechargeRate = 35.36},
 }
 
 ObjectTemplates:addTemplate(object_ship_probe_droid_pod, "object/ship/probe_droid_pod.iff")

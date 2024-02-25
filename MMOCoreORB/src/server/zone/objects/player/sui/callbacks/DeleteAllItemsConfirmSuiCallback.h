@@ -11,6 +11,7 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/objects/ship/PobShipObject.h"
 
 class DeleteAllItemsConfirmSuiCallback : public SuiCallback {
 public:
@@ -23,25 +24,33 @@ public:
 		if (!sui->isMessageBox() || cancelPressed)
 			return;
 
-		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
+		ManagedReference<SceneObject*> sceneO = sui->getUsingObject().get();
 
-		if (obj == nullptr || !obj->isBuildingObject())
+		if (sceneO == nullptr || (!sceneO->isBuildingObject() && !sceneO->isPobShip()))
 			return;
 
-		BuildingObject* building = cast<BuildingObject*>( obj.get());
+		Locker _lock(sceneO, creature);
 
-		Locker _lock(building, creature);
-
-		TransactionLog trx(TrxCode::PLAYERMISCACTION, creature, building);
+		TransactionLog trx(TrxCode::PLAYERMISCACTION, creature, sceneO);
 
 		if (trx.isVerbose()) {
 			// Force a synchronous export because the objects will be deleted before we can export them!
-			trx.addRelatedObject(building, true);
+			trx.addRelatedObject(sceneO, true);
 			trx.setExportRelatedObjects(true);
 			trx.exportRelated();
 		}
 
-		building->destroyAllPlayerItems();
+		if (sceneO->isPobShip()) {
+			PobShipObject* pobShip = cast<PobShipObject*>(sceneO.get());
+
+			if (pobShip != nullptr)
+				pobShip->destroyAllPlayerItems();
+		} else {
+			BuildingObject* building = cast<BuildingObject*>(sceneO.get());
+
+			if (building != nullptr)
+				building->destroyAllPlayerItems();
+		}
 
 		creature->sendSystemMessage("@player_structure:items_deleted"); //All of the objects in your house have been deleted.
 	}

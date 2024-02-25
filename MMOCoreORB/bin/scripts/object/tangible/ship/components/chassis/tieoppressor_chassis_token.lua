@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_tieoppressor_chassis_token = object_tangible_ship_components_chassis_shared_tieoppressor_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tieoppressor_deed.iff",
-	dealerFee = 15000,
-	certRequired = "",
+	dealerFee = 100000,
+	certificationRequired = "cert_starships_tieoppressor",
+	skillRequired = {"pilot_imperial_navy_master"},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_tieoppressor_chassis_token = object_tang
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 2500, 166250},
 	experimentalMax = {0, 0, 3500, 173750},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

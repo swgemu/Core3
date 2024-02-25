@@ -13,7 +13,7 @@
 
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "server/zone/objects/creature/ai/bt/BehaviorTreeSlot.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "templates/params/creature/CreaturePosture.h"
 #include "templates/params/creature/CreatureState.h"
 #include "server/zone/managers/creature/PetManager.h"
@@ -221,42 +221,45 @@ public:
 		lua->setGlobalInt("ONFIRE",						CreatureState::ONFIRE					);
 		lua->setGlobalInt("RIDINGMOUNT",				CreatureState::RIDINGMOUNT				);
 		lua->setGlobalInt("MOUNTEDCREATURE",			CreatureState::MOUNTEDCREATURE			);
-		lua->setGlobalInt("PILOTINGSHIP",				CreatureState::PILOTINGSHIP				);
-		lua->setGlobalInt("SHIPOPERATIONS",				CreatureState::SHIPOPERATIONS			);
-		lua->setGlobalInt("SHIPGUNNER",					CreatureState::SHIPGUNNER				);
 
-		lua->setGlobalInt("ATTACKABLE",					CreatureFlag::ATTACKABLE				);
-		lua->setGlobalInt("AGGRESSIVE",					CreatureFlag::AGGRESSIVE				);
-		lua->setGlobalInt("OVERT",						CreatureFlag::OVERT						);
-		lua->setGlobalInt("TEF",						CreatureFlag::TEF						);
-		lua->setGlobalInt("PLAYER",						CreatureFlag::PLAYER					);
-		lua->setGlobalInt("ENEMY",						CreatureFlag::ENEMY						);
-		lua->setGlobalInt("WILLBEDECLARED",				CreatureFlag::WILLBEDECLARED			);
-		lua->setGlobalInt("WASDECLARED",				CreatureFlag::WASDECLARED				);
+		lua->setGlobalLong("PILOTINGSHIP",				CreatureState::PILOTINGSHIP				);
+		lua->setGlobalLong("SHIPOPERATIONS",			CreatureState::SHIPOPERATIONS			);
+		lua->setGlobalLong("SHIPGUNNER",				CreatureState::SHIPGUNNER				);
+		lua->setGlobalLong("SHIPINTERIOR",				CreatureState::SHIPINTERIOR				);
+		lua->setGlobalLong("PILOTINGPOBSHIP",			CreatureState::PILOTINGPOBSHIP			);
 
-		lua->setGlobalInt("NPC",						CreatureFlag::NPC						);
-		lua->setGlobalInt("PACK",						CreatureFlag::PACK						);
-		lua->setGlobalInt("HERD",						CreatureFlag::HERD						);
-		lua->setGlobalInt("KILLER",						CreatureFlag::KILLER					);
-		lua->setGlobalInt("STALKER",					CreatureFlag::STALKER					);
-		lua->setGlobalInt("BABY",						CreatureFlag::BABY						);
-		lua->setGlobalInt("LAIR",						CreatureFlag::LAIR						);
-		lua->setGlobalInt("HEALER",						CreatureFlag::HEALER					);
-		lua->setGlobalInt("SCOUT",						CreatureFlag::SCOUT						);
-		lua->setGlobalInt("PET",						CreatureFlag::PET						);
-		lua->setGlobalInt("DROID_PET",					CreatureFlag::DROID_PET					);
-		lua->setGlobalInt("FACTION_PET",				CreatureFlag::FACTION_PET				);
-		lua->setGlobalInt("ESCORT",						CreatureFlag::ESCORT					);
-		lua->setGlobalInt("FOLLOW",						CreatureFlag::FOLLOW					);
-		lua->setGlobalInt("STATIC",						CreatureFlag::STATIC					);
-		lua->setGlobalInt("STATIONARY",					CreatureFlag::STATIONARY				);
-		lua->setGlobalInt("NOAIAGGRO",					CreatureFlag::NOAIAGGRO					);
-		lua->setGlobalInt("SQUAD",						CreatureFlag::SQUAD						);
-		lua->setGlobalInt("EVENTCONTROL",				CreatureFlag::EVENTCONTROL				);
-		lua->setGlobalInt("TEST",						CreatureFlag::TEST						);
+		lua->setGlobalInt("ATTACKABLE",					ObjectFlag::ATTACKABLE				);
+		lua->setGlobalInt("AGGRESSIVE",					ObjectFlag::AGGRESSIVE				);
+		lua->setGlobalInt("OVERT",						ObjectFlag::OVERT						);
+		lua->setGlobalInt("TEF",						ObjectFlag::TEF						);
+		lua->setGlobalInt("PLAYER",						ObjectFlag::PLAYER					);
+		lua->setGlobalInt("ENEMY",						ObjectFlag::ENEMY						);
+		lua->setGlobalInt("WILLBEDECLARED",				ObjectFlag::WILLBEDECLARED			);
+		lua->setGlobalInt("WASDECLARED",				ObjectFlag::WASDECLARED				);
 
-		lua->setGlobalInt("CARNIVORE",					CreatureFlag::CARNIVORE					);
-		lua->setGlobalInt("HERBIVORE",					CreatureFlag::HERBIVORE					);
+		lua->setGlobalInt("NPC",						ObjectFlag::NPC						);
+		lua->setGlobalInt("PACK",						ObjectFlag::PACK						);
+		lua->setGlobalInt("HERD",						ObjectFlag::HERD						);
+		lua->setGlobalInt("KILLER",						ObjectFlag::KILLER					);
+		lua->setGlobalInt("STALKER",					ObjectFlag::STALKER					);
+		lua->setGlobalInt("BABY",						ObjectFlag::BABY						);
+		lua->setGlobalInt("LAIR",						ObjectFlag::LAIR						);
+		lua->setGlobalInt("HEALER",						ObjectFlag::HEALER					);
+		lua->setGlobalInt("SCOUT",						ObjectFlag::SCOUT						);
+		lua->setGlobalInt("PET",						ObjectFlag::PET						);
+		lua->setGlobalInt("DROID_PET",					ObjectFlag::DROID_PET					);
+		lua->setGlobalInt("FACTION_PET",				ObjectFlag::FACTION_PET				);
+		lua->setGlobalInt("ESCORT",						ObjectFlag::ESCORT					);
+		lua->setGlobalInt("FOLLOW",						ObjectFlag::FOLLOW					);
+		lua->setGlobalInt("STATIC",						ObjectFlag::STATIC					);
+		lua->setGlobalInt("STATIONARY",					ObjectFlag::STATIONARY				);
+		lua->setGlobalInt("NOAIAGGRO",					ObjectFlag::NOAIAGGRO					);
+		lua->setGlobalInt("SQUAD",						ObjectFlag::SQUAD						);
+		lua->setGlobalInt("EVENTCONTROL",				ObjectFlag::EVENTCONTROL				);
+		lua->setGlobalInt("TEST",						ObjectFlag::TEST						);
+
+		lua->setGlobalInt("CARNIVORE",					ObjectFlag::CARNIVORE					);
+		lua->setGlobalInt("HERBIVORE",					ObjectFlag::HERBIVORE					);
 
 		lua->setGlobalInt("PET_FOLLOW",					PetManager::FOLLOW						);
 		lua->setGlobalInt("PET_STORE",					PetManager::STORE						);
@@ -312,7 +315,7 @@ public:
 			if (treeMap.contains(treeID)) return treeMap.get(treeID);
 		}
 
-		for (int mask = CreatureFlag::LASTAIMASK; (mask = mask >> 1) >= 0;) {
+		for (int mask = ObjectFlag::LASTAIMASK; (mask = mask >> 1) >= 0;) {
 			if ((bitMask & mask) == mask && bitmaskMap.contains(mask)) {
 				auto treeMap = bitmaskMap.get((uint32)(mask));
 				if (treeMap.contains(treeID)) return treeMap.get(treeID);

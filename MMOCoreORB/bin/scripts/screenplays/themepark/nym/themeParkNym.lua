@@ -383,7 +383,7 @@ function ThemeParkNym:spawnNpcs()
 		local npcSpawnData = self.npcMap[i].spawnData
 		local pNpc = spawnMobile(planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
 		if npcSpawnData.position == SIT then
-			CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+			CreatureObject(pNpc):setState(SITTINGONCHAIR)
 		end
 		if (npcSpawnData.npcTemplate == "nym") then
 			SceneObject(pNpc):setContainerComponent("NymContainerComponent")

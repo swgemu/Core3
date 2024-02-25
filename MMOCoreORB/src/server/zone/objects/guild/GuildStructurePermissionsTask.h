@@ -33,7 +33,7 @@ public:
 		if (zone == nullptr)
 			return;
 
-		SortedVector<QuadTreeEntry*> closeObjects;
+		SortedVector<TreeEntry*> closeObjects;
 
 		CloseObjectsVector* closeVector = (CloseObjectsVector*)building->getCloseObjects();
 		closeVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);

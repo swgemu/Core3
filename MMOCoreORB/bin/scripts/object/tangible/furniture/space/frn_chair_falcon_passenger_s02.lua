@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_space_frn_chair_falcon_passenger_s02 = object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02:new {
-
+	objectMenuComponent = "PobShipObjectMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_space_frn_chair_falcon_passenger_s02, "object/tangible/furniture/space/frn_chair_falcon_passenger_s02.iff")

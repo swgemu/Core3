@@ -176,8 +176,8 @@ function FsCsCommander:createCommander(pTheater)
 		writeData(areaID .. ":theaterID", theaterID)
 	end
 
-	AiAgent(pCommander):addCreatureFlag(AI_ESCORT)
-	AiAgent(pCommander):addCreatureFlag(AI_FOLLOW)
+	AiAgent(pCommander):addObjectFlag(AI_ESCORT)
+	AiAgent(pCommander):addObjectFlag(AI_FOLLOW)
 	createEvent(self.commanderDespawnTime, "FsCsCommander", "killCommander", pCommander, "")
 end
 

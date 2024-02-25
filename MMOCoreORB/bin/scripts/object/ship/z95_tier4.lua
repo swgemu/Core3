@@ -42,7 +42,33 @@
 
 
 object_ship_z95_tier4 = object_ship_shared_z95_tier4:new {
+	objectName = "@space/space_mobile_type:z95_tier4",
 
+	name = "z95_tier4",
+	type = "z95_tier4",
+	faction = "rebel",
+	difficulty = "tier4",
+
+	slideFactor = 1.84,
+	chassisHitpoints = 1920,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 2073.6, armor = 2073.6},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 2073.6, armor = 2073.6, speed = 50.48, acceleration = 12.26, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
+	shield_0 = {name = "shd_generic", hitpoints = 2073.6, armor = 2073.6, front = 9123.84, back = 9123.84, regen = 15},
+	armor_0 = {name = "arm_generic", hitpoints = 3538.94, armor = 3538.94},
+	armor_1 = {name = "arm_generic", hitpoints = 3538.94, armor = 3538.94},
+	capacitor = {name = "cap_generic", hitpoints = 2073.6, armor = 2073.6, energy = 5000, rechargeRate = 100},
+	booster = {name = "bst_generic", hitpoints = 2073.6, armor = 2073.6, energy = 100, recharge = 3, consumption = 10, acceleration = 20, speed = 15},
+	weapon_0 = {name = "wpn_z95_blaster", hitpoints = 2073.6, armor = 2073.6, rate = 0.78, drain = 1, maxDamage = 239.82, minDamage = 156.44, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_z95_tier4, "object/ship/z95_tier4.iff")

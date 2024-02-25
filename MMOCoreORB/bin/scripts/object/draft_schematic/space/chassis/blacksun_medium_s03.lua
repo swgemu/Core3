@@ -42,17 +42,14 @@
 
 
 object_draft_schematic_space_chassis_blacksun_medium_s03 = object_draft_schematic_space_chassis_shared_blacksun_medium_s03:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "Ixiyen Fast Attack Craft Chassis Blueprints, Style 3",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 35,
 	size = 1,
 	factoryCrateSize = 0,
 	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
-   
+
 	xpType = "shipwright",
 	xp = 15000,
 

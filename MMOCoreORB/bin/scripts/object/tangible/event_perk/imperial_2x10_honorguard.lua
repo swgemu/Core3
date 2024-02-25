@@ -45,7 +45,7 @@ object_tangible_event_perk_imperial_2x10_honorguard = object_tangible_poi_base_s
 	invisible = 1,
 	gameObjectType = 16410, -- Event Perk
 	dataObjectComponent = "EventPerkDataComponent",
-	zoneComponent = "PersonnelPerkZoneComponent",
+	groundZoneComponent = "PersonnelPerkZoneComponent",
 
 	childObjects = {
 		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 0, z = 0, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

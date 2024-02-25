@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_mandal_enhanced_elite_composite = object_tangible_ship_components_armor_shared_arm_mandal_enhanced_elite_composite:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_mandal_enhanced_elite_composite",
+
+	attributes = {
+		{"maximumHitpoints", 1511.19},
+		{"maximumArmorHitpoints", 1511.19},
+		{"mass", 41073.3},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.2},
+		{"maximumArmorHitpoints", 0.2},
+		{"mass", 0.4},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mandal_enhanced_elite_composite, "object/tangible/ship/components/armor/arm_mandal_enhanced_elite_composite.iff")

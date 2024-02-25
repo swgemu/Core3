@@ -14,7 +14,7 @@ import engine.log.Logger;
 include system.lang.ref.Reference;
 include system.lang.Time;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
-include server.zone.QuadTreeEntry;
+include server.zone.TreeEntry;
 include server.zone.Zone;
 include server.zone.objects.tangible.components.LightObserver;
 

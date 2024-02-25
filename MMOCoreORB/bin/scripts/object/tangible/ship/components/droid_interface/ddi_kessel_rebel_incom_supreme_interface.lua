@@ -42,7 +42,26 @@
 
 
 object_tangible_ship_components_droid_interface_ddi_kessel_rebel_incom_supreme_interface = object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_supreme_interface:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "ddi_kessel_rebel_incom_supreme_interface",
+
+	attributes = {
+		{"commandSpeed", 10.125},
+		{"maximumHitpoints", 1650.57},
+		{"maximumArmorHitpoints", 825.285},
+		{"energyMaintenance", 500},
+		{"mass", 23500},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"commandSpeed", 0.05},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"energyMaintenance", 0.05},
+		{"mass", 0.05},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_ddi_kessel_rebel_incom_supreme_interface, "object/tangible/ship/components/droid_interface/ddi_kessel_rebel_incom_supreme_interface.iff")

@@ -42,7 +42,24 @@
 
 
 object_tangible_ship_components_reactor_reactor_test = object_tangible_ship_components_reactor_shared_reactor_test:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "",
+
+	attributes = {
+		{"energyGeneration", 10000},
+		{"maximumHitpoints", 135},
+		{"maximumArmorHitpoints", 67.5},
+		{"mass", 1320},
+		{"reverseEngineeringLevel", 1},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.2},
+		{"maximumHitpoints", 0.07},
+		{"maximumArmorHitpoints", 0.07},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_reactor_test, "object/tangible/ship/components/reactor/reactor_test.iff")

@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_gallofree_mk2 = object_tangible_ship_components_armor_shared_arm_gallofree_mk2:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_gallofree_mk2",
+
+	attributes = {
+		{"maximumHitpoints", 379.04},
+		{"maximumArmorHitpoints", 379.04},
+		{"mass", 2207.25},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.3},
+		{"maximumArmorHitpoints", 0.3},
+		{"mass", 0.318},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_gallofree_mk2, "object/tangible/ship/components/armor/arm_gallofree_mk2.iff")

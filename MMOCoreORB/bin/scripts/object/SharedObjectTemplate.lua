@@ -87,7 +87,8 @@ SharedObjectTemplate = Object:new {
 	planetMapSubCategory = "",
 	autoRegisterWithPlanetMap = 1,
 
-	zoneComponent = "ZoneComponent",
+	spaceZoneComponent = "SpaceZoneComponent",
+	groundZoneComponent = "GroundZoneComponent",
 	objectMenuComponent = "ObjectMenuComponent",
 	containerComponent = "ContainerComponent",
 	attributeListComponent = "AttributeListComponent",

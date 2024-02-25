@@ -146,20 +146,50 @@ public:
 		}
 
 		ManagedReference<SceneObject*> rootParent = player->getRootParent();
-		BuildingObject* buildingObject = rootParent != nullptr ? (rootParent->isBuildingObject() ? cast<BuildingObject*>( rootParent.get()) : nullptr) : nullptr;
 
-		if (buildingObject == nullptr) {
+		if (rootParent == nullptr || (!rootParent->isBuildingObject() && !rootParent->isPobShip())) {
 			player->sendSystemMessage("@player_structure:must_be_in_building"); // You must be in a building to do that.
 			return false;
 		}
 
-		if (buildingObject->isGCWBase()) {
-			player->sendSystemMessage("@player_structure:no_move_hq"); // You may not move or rotate objects inside a factional headquarters.
-			return false;
-		}
+		bool onAdmin = false;
+		bool onVendor = false;
 
-		bool onAdmin = buildingObject->isOnAdminList(player);
-		bool onVendor = buildingObject->isOnPermissionList("VENDOR", player);
+		if (rootParent->isPobShip()) {
+			PobShipObject* pobShip = rootParent->asPobShip();
+
+			if (pobShip == nullptr) {
+				player->sendSystemMessage("@player_structure:must_be_in_building"); // You must be in a building to do that.
+				return false;
+			}
+
+			if (pobShip->containsChildObject(object)) {
+				player->sendSystemMessage("@player_structure:cant_move_item"); // You cannot move that object.
+				return false;
+			}
+
+			onAdmin = pobShip->isOnAdminList(player);
+		} else {
+			BuildingObject* buildingObject = cast<BuildingObject*>(rootParent.get());
+
+			if (buildingObject == nullptr) {
+				player->sendSystemMessage("@player_structure:must_be_in_building"); // You must be in a building to do that.
+				return false;
+			}
+
+			if (buildingObject->isGCWBase()) {
+				player->sendSystemMessage("@player_structure:no_move_hq"); // You may not move or rotate objects inside a factional headquarters.
+				return false;
+			}
+
+			if (buildingObject->containsChildObject(object)) {
+				player->sendSystemMessage("@player_structure:cant_move_item"); // You cannot move that object.
+				return false;
+			}
+
+			onAdmin = buildingObject->isOnAdminList(player);
+			onVendor = buildingObject->isOnPermissionList("VENDOR", player);
+		}
 
 		if (object->isVendor()) {
 			if (!onAdmin && !onVendor) {
@@ -175,11 +205,6 @@ public:
 
 		if (objectRootParent == nullptr || objectRootParent != rootParent) {
 			player->sendSystemMessage("@player_structure:item_not_in_building"); // That object is not within the building.
-			return false;
-		}
-
-		if (buildingObject->containsChildObject(object)) {
-			player->sendSystemMessage("@player_structure:cant_move_item"); // You cannot move that object.
 			return false;
 		}
 

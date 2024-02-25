@@ -42,9 +42,11 @@
 
 
 object_tangible_ship_crafted_chassis_yt1300_deed = object_tangible_ship_crafted_chassis_shared_yt1300_deed:new {
+	templateType = SHIPDEED,
+	gameObjectType = 8388617,
 
-    templateType = SHIPDEED,
-	shipControlObject = "object/intangible/ship/yt1300_pcd.iff",
+	shipType = 2, --POBSHIP,
+	shipControlDevice = "object/intangible/ship/yt1300_pcd.iff",
 	generatedObjectTemplate = "object/ship/player/player_yt1300.iff",
 }
 

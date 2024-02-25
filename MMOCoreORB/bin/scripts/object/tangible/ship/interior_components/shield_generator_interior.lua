@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_interior_components_shield_generator_interior = object_tangible_ship_interior_components_shared_shield_generator_interior:new {
-
+	objectMenuComponent = "PobShipObjectMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shield_generator_interior, "object/tangible/ship/interior_components/shield_generator_interior.iff")

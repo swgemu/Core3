@@ -3,7 +3,7 @@
 
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "templates/params/OptionBitmask.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/creature/ai/bt/decorator/Decorator.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 
@@ -33,7 +33,7 @@ public:
 #endif // DEBUG_AI
 
 
-		if ((agent->getOptionsBitmask() & OptionBitmask::AIENABLED) == 0 || agent->isDead() || agent->isIncapacitated() || (agent->getPvpStatusBitmask() == CreatureFlag::NONE && !(agent->isDroidObject() && agent->isPet())))
+		if ((agent->getOptionsBitmask() & OptionBitmask::AIENABLED) == 0 || agent->isDead() || agent->isIncapacitated() || (agent->getPvpStatusBitmask() == ObjectFlag::NONE && !(agent->isDroidObject() && agent->isPet())))
 			return FAILURE;
 
 		if ((!alwaysActive && agent->getNumberOfPlayersInRange() <= 0) || agent->isRetreating() || agent->isFleeing() || agent->isInCombat())
@@ -45,7 +45,7 @@ public:
 		ManagedReference<SceneObject*> currObj = agent->getFollowObject().get();
 		if (currObj != nullptr) {
 			if (currObj->isCreatureObject() && isInvalidTarget(currObj->asCreatureObject(), agent)) {
-				if (!(agent->getCreatureBitmask() & CreatureFlag::FOLLOW)) {
+				if (!(agent->getCreatureBitmask() & ObjectFlag::FOLLOW)) {
 					agent->setFollowObject(nullptr);
 					agent->setMovementState(AiAgent::PATHING_HOME);
 				}
@@ -63,7 +63,7 @@ public:
 		if (vec == nullptr)
 			return FAILURE;
 
-		SortedVector<QuadTreeEntry* > closeObjects;
+		SortedVector<TreeEntry* > closeObjects;
 		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 		// Shuffle closeobjects to randomize target checks
@@ -86,7 +86,7 @@ public:
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
-		if (target == nullptr || target == agent || target->getPvpStatusBitmask() == CreatureFlag::NONE)
+		if (target == nullptr || target == agent || target->getPvpStatusBitmask() == ObjectFlag::NONE)
 			return true;
 
 		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvisible() || !target->isAttackableBy(agent))

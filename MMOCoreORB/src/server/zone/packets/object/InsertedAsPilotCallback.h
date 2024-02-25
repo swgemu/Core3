@@ -9,6 +9,7 @@
 #define INSERTEDASPILOTCALLBACK_H_
 
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/packets/object/DataTransform.h"
 
 class InsertedAsPilotCallback : public MessageCallback {
 	uint32 movementCounter;
@@ -34,6 +35,9 @@ public:
 
 		if (ghost != nullptr)
 			ghost->setTeleporting(false);
+
+		DataTransform* pack = new DataTransform(player, Vector3::ZERO);
+		player->sendMessage(pack);
 	}
 };
 

@@ -42,15 +42,15 @@
 
 
 object_object_base_base_object = object_object_base_shared_base_object:new {
-	clientTemplateFileName = "", 
-	 planetMapCategory = "",
-	 planetMapSubCategory = "",
-	 autoRegisterWithPlanetMap = 1,
-	 
-	 zoneComponent = "ZoneComponent",
-	 objectMenuComponent = "ObjectMenuComponent",
-	 attributeListComponent = "AttributeListComponent",
-	 containerComponent = "ContainerComponent"
+	clientTemplateFileName = "",
+	planetMapCategory = "",
+	planetMapSubCategory = "",
+	autoRegisterWithPlanetMap = 1,
+
+	groundZoneComponent = "GroundZoneComponent",
+	objectMenuComponent = "ObjectMenuComponent",
+	attributeListComponent = "AttributeListComponent",
+	containerComponent = "ContainerComponent"
 }
 
 ObjectTemplates:addTemplate(object_object_base_base_object, "object/object/base/base_object.iff")

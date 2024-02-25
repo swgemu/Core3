@@ -1,9 +1,13 @@
 #include "BoxVolume.h"
 
 void BoxVolume::read(IffStream *iff) {
+	iff->openForm('EXBX');
 	iff->openForm('0001');
+
 	BaseBoundingVolume::read(iff);
+
 	iff->openChunk('BOX ');
+
 	float maxx = iff->getFloat();
 	float maxy = iff->getFloat();
 	float maxz = iff->getFloat();
@@ -13,8 +17,10 @@ void BoxVolume::read(IffStream *iff) {
 	float minz = iff->getFloat();
 
 	bbox = AABB(Vector3(minx, miny, minz), Vector3(maxx, maxy, maxz));
+
 	iff->closeChunk('BOX ');
 	iff->closeForm('0001');
+	iff->closeForm('EXBX');
 }
 #ifdef OSG_RENDERER
 osg::ref_ptr<osg::Node> BoxVolume::draw() const {

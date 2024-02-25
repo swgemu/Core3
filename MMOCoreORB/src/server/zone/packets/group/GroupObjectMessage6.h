@@ -15,7 +15,7 @@ class GroupObjectMessage6 : public BaseLineMessage, public Logger {
 	GroupObject* group;
 
 public:
-	GroupObjectMessage6(GroupObject* gr) : BaseLineMessage(gr->getObjectID(), 'GRUP', 0x06, 0x06) {//0x08) {
+	GroupObjectMessage6(GroupObject* gr) : BaseLineMessage(gr->getObjectID(), 'GRUP', 0x06, 0x08) {
 		//info(true) << "GroupObjectMessage6 called";
 
 		group = gr;
@@ -28,8 +28,7 @@ public:
 		//insertShort(0x0); // Unkncown Short
 		// End test
 
-		insertMembers(); // Group Members
-		insertShips(); // Insert Members Ships
+		insertMembers(); // Group Members and Ships
 
 		insertAscii(""); // Group Name
 		insertShort(group->getGroupLevel()); // Group Level
@@ -43,18 +42,32 @@ public:
 
 	void insertMembers() {
 		GroupList* list = group->getGroupList();
+		const DeltaVectorMap<uint64, uint64>* shipList = group->getGroupShips();
+
+		if (list == nullptr || shipList == nullptr)
+			return;
+
+		// Insert List of members
 		list->insertToMessage(this);
-	}
 
-	void insertShips() {
-		// Insert players ships
-		insertInt(0);
-		insertInt(0);
+		int listSize = list->size();
 
-		//for (int i = 0; i < size; ++i) {
-		//	insertLong(0);
-		//	insertInt(i);
-		//}
+		// Insert members ships
+		insertInt(listSize);
+		insertInt(list->getUpdateCounter());
+
+		for (int i = 0; i < listSize; ++i) {
+			CreatureObject* member = group->getGroupMember(i);
+
+			uint64 memberShipID = 0;
+
+			if (member != nullptr && member->isPlayerCreature()) {
+				memberShipID = shipList->get(member->getObjectID());
+			}
+
+			insertLong(memberShipID);
+			insertInt(i);
+		}
 	}
 };
 

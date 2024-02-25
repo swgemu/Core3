@@ -1,0 +1,226 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone;
+
+
+import server.zone.Zone;
+import server.zone.QuadTree;
+import server.zone.TreeEntry;
+
+include server.zone.ZoneProcessServer;
+include server.zone.InRangeObjectsVector;
+include server.zone.ActiveAreasVector;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.area.ActiveArea;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.managers.planet.PlanetManager;
+import server.zone.managers.creature.CreatureManager;
+import server.zone.managers.gcw.GCWManager;
+import system.util.SortedVector;
+import system.util.SynchronizedSortedVector;
+include engine.util.u3d.Vector3;
+include server.zone.QuadTreeReference;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.pathfinding.NavArea;
+include server.zone.objects.region.CityRegion;
+import server.zone.ActiveAreaQuadTree;
+
+@mock
+class GroundZone extends Zone {
+	private transient CreatureManager creatureManager;
+
+	@dereferenced
+	private transient SynchronizedSortedVector<CityRegion> cityRegionUpdateVector;
+
+	private transient ActiveAreaQuadTree areaTree;
+
+	@dereferenced
+	private QuadTreeReference quadTree;
+
+	protected transient PlanetManager planetManager;
+
+	// Ground Zone Constructor
+	public native GroundZone(ZoneProcessServer processor, final string zoneName);
+
+	/*
+
+		Zone Management
+
+	*/
+
+	public native void createContainerComponent();
+
+	public native void initializePrivateData();
+
+	public native void initializeTransientMembers();
+
+	public native void finalize();
+
+	public native void startManagers();
+
+	public native void stopManagers();
+
+	public native void clearZone();
+
+	/*
+
+		Object Management in Zone
+
+	*/
+
+	@local
+	public native void insert(TreeEntry entry);
+
+	@local
+	public native void remove(TreeEntry entry);
+
+	@local
+	public native void update(TreeEntry entry);
+
+	@local
+	public native void inRange(TreeEntry entry, float range);
+
+	public native void updateActiveAreas(TangibleObject tano);
+
+	@arg1preLocked
+	@preLocked
+	public native void addSceneObject(SceneObject object);
+
+	@arg1preLocked
+	@preLocked
+	public native void dropSceneObject(SceneObject object);
+
+	/*
+
+		Object Tracking
+
+	*/
+	@local
+	public native int getInRangeSolidObjects(float x, float z, float y, float range, SortedVector<TreeEntry> objects, boolean readLockZone);
+
+	@local
+	public native int getInRangeObjects(float x, float z, float y, float range, SortedVector<TreeEntry> objects, boolean readLockZone, boolean includeBuildingObjects = true);
+
+	@local
+	public native int getInRangeObjects(float x, float z, float y, float range, InRangeObjectsVector objects, boolean readLockZone, boolean includeBuildingObjects = true);
+
+	@local
+	public native int getInRangePlayers(float x, float z, float y, float range, SortedVector<TreeEntry> objects);
+
+	@local
+	public native int getInRangeActiveAreas(float x, float z, float y, SortedVector<ActiveArea> objects, boolean readLockZone);
+
+	@local
+	public native int getInRangeActiveAreas(float x, float z, float y, ActiveAreasVector objects, boolean readLockZone);
+
+	/*
+
+		Quadtree
+
+	*/
+
+	@dirty
+	@mock
+	public native float getHeight(float x, float y);
+
+	@dirty
+	@mock
+	public native float getHeightNoCache(float x, float y);
+
+	@reference
+	public native SceneObject getNearestPlanetaryObject(SceneObject object, final string mapCategory, final string mapSubCategory);
+
+	@local
+	public native int getInRangeNavMeshes(float x, float y, SortedVector<NavArea> objects, boolean readLockZone);
+
+	@local
+	@dereferenced
+	public native SortedVector<SceneObject> getPlanetaryObjectList(final string mapObjectLocationType);
+
+	/**
+	 * Registers the object to the planetary map. This also makes the object visible to the find command.
+	 * @param object The object to register to the planetary map.
+	 */
+	public native void registerObjectWithPlanetaryMap(SceneObject object);
+	/**
+	 * Unregisters the object from the planetary map.
+	 * @param object The object to unregister from the planetary map.
+	 */
+	public native void unregisterObjectWithPlanetaryMap(SceneObject object);
+
+	public native boolean objectIsValidPlanetaryMapPerformanceLocation(SceneObject object);
+	public native boolean isObjectRegisteredWithPlanetaryMap(SceneObject object);
+	public native void updatePlanetaryMapIcon(SceneObject object, byte icon);
+
+	@dirty
+	public native void sendMapLocationsTo(CreatureObject player);
+
+	/**
+	 * These functions return the size of the terrain file for this zone.
+	 */
+	@dirty
+	public native float getMinX();
+
+	@dirty
+	public native float getMaxX();
+
+	@dirty
+	public native float getMinY();
+
+	@dirty
+	public native float getMaxY();
+
+	public native void updateCityRegions();
+
+	@dirty
+	public CreatureManager getCreatureManager() {
+		return creatureManager;
+	}
+
+	@dirty
+	public PlanetManager getPlanetManager() {
+		return planetManager;
+	}
+
+	@local
+	public ActiveAreaQuadTree getActiveAreaTree() {
+		return areaTree;
+	}
+
+	public void addCityRegionToUpdate(CityRegion city) {
+		cityRegionUpdateVector.put(city);
+	}
+
+	/*
+
+		Shared Functions
+
+	*/
+
+	@dirty
+	@local
+	public native boolean isWithinBoundaries(@dereferenced final Vector3 position);
+
+	public native float getBoundingRadius();
+
+	// Mutators
+
+	// Accessors
+
+	@dirty
+	public GCWManager getGCWManager() {
+		return planetManager.getGCWManager();
+	}
+
+	@dirty
+	@nativeStub
+	@local
+	public native GroundZone asGroundZone();
+
+	public boolean isGroundZone() {
+		return true;
+	}
+}

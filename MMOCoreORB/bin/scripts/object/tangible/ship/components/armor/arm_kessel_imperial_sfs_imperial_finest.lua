@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_kessel_imperial_sfs_imperial_finest = object_tangible_ship_components_armor_shared_arm_kessel_imperial_sfs_imperial_finest:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_kessel_imperial_sfs_imperial_finest",
+
+	attributes = {
+		{"maximumHitpoints", 1467.17},
+		{"maximumArmorHitpoints", 1467.17},
+		{"mass", 38610},
+		{"reverseEngineeringLevel", 9},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.1},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_kessel_imperial_sfs_imperial_finest, "object/tangible/ship/components/armor/arm_kessel_imperial_sfs_imperial_finest.iff")

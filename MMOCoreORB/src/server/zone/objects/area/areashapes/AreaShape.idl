@@ -33,6 +33,17 @@ class AreaShape extends ManagedObject implements Logger {
 	}
 
 	/**
+	 * Set the area center.
+	 * @param x the x coordinate.
+	 * @param y the y coordinate.
+	 * @paran z the z coordinate.
+	 */
+	@preLocked
+	public void setAreaCenter(float x, float z, float y) {
+		areaCenter.set(x, z, y);
+	}
+
+	/**
 	 * Get the area center.
 	 * @return the area center.
 	 */
@@ -49,6 +60,18 @@ class AreaShape extends ManagedObject implements Logger {
 	 */
 	@read
 	public abstract boolean containsPoint(float x, float y) {
+		return false;
+	}
+
+	/**
+	 * Check if the coordinate is within the area shape.
+	 * @param x the x coordinate.
+	 * @param y the y coordinate.
+	 * @param z the z coordinate.
+	 * @return true if the coordinate is within the area shape.
+	 */
+	@read
+	public abstract boolean containsPoint(float x, float z, float y) {
 		return false;
 	}
 
@@ -95,6 +118,21 @@ class AreaShape extends ManagedObject implements Logger {
 	@read
 	public native abstract Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
 
+	@read
+	public abstract float getWidth() {
+		return 0;
+	}
+
+	@read
+	public abstract float getHeight() {
+		return 0;
+	}
+
+	@read
+	public abstract float getLength() {
+		return 0;
+	}
+
 	/**
 	 * Check if this is a circular area shape.
 	 * @return true if it is a circular area shape.
@@ -119,6 +157,24 @@ class AreaShape extends ManagedObject implements Logger {
 	 */
 	@read
 	public abstract boolean isRingAreaShape() {
+		return false;
+	}
+
+	/**
+	 * Check if this is a cuboid area shape.
+	 * @return true if it is a cuboid area shape.
+	 */
+	@read
+	public abstract boolean isCuboidAreaShape() {
+		return false;
+	}
+
+	/**
+	 * Check if this is a sphere area shape.
+	 * @return true if it is a sphere area shape.
+	 */
+	@read
+	public abstract boolean isSphereAreaShape() {
 		return false;
 	}
 

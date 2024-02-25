@@ -8,24 +8,29 @@
 #include "server/zone/packets/BaseLineMessage.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
-
 class ShipObjectMessage4 : public BaseLineMessage {
+protected:
+	enum index : int {
+		currentMass = 0,
+		chassisSpeed = 1,
+		capacitorEnergy = 2,
+		boosterEnergy = 3,
+		componentRefireEfficiency = 4
+	};
+
 public:
-	ShipObjectMessage4(ShipObject* ship)
-			: BaseLineMessage(ship->getObjectID(), 0x53484950, 4, 0x06) {
+	ShipObjectMessage4(ShipObject* ship) : BaseLineMessage(ship->getObjectID(), 0x53484950, 4, 5) {
 
-		insertFloat(0.80000001f); //mass
-		insertFloat(512.f); //mass max
+		insertFloat(ship->getChassisMass());
+		insertFloat(ship->getChassisSpeed());
 
-		insertFloat(100.f); // capacitor ?
-		insertFloat(0); //float
+		insertFloat(ship->getCapacitorEnergy());
+		insertFloat(ship->getBoosterEnergy());
 
-		insertInt(0); //const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
+		ship->getComponentRefireEfficiency()->insertToMessage(this);
 
 		setSize();
 	}
-		
 };
 
 #endif /*SHIPOBJECTMESSAGE4_H_*/

@@ -350,7 +350,7 @@ void GCWManagerImplementation::performGCWTasks() {
 
 		if (building->getFactionBaseType() == PLAYERFACTIONBASE) {
 			// If PvE Bases are disallowed, schedule for destruct and do not add to count
-			if (!allowPveBases && !(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+			if (!allowPveBases && !(building->getPvpStatusBitmask() & ObjectFlag::OVERT)) {
 				building->info(true) << " GCW PvE Base scheduled for destruction -- Base ID: " << building->getObjectID();
 
 				scheduleBaseDestruction(building, nullptr, true);
@@ -521,7 +521,7 @@ int GCWManagerImplementation::getBaseCount(CreatureObject* creature, bool pvpOnl
 			if (pvpOnly) {
 				Reference<BuildingObject*> building = structure->asBuildingObject();
 
-				if (building != nullptr && (building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+				if (building != nullptr && (building->getPvpStatusBitmask() & ObjectFlag::OVERT))
 					baseCount++;
 			} else {
 				baseCount++;
@@ -574,8 +574,8 @@ bool GCWManagerImplementation::hasTooManyBasesNearby(float x, float y) {
 	if (zone == nullptr)
 		return true;
 
-	SortedVector<QuadTreeEntry* > closeEntryObjects;
-	zone->getInRangeObjects(x, y, nearbyBaseDistance, &closeEntryObjects, true, false);
+	SortedVector<TreeEntry* > closeEntryObjects;
+	zone->getInRangeObjects(x, 0, y, nearbyBaseDistance, &closeEntryObjects, true, false);
 
 	int count = 0;
 	uint32 tempStrucHash = STRING_HASHCODE("temporary_structure");
@@ -722,7 +722,7 @@ void GCWManagerImplementation::initializeBaseTimers(BuildingObject* building) {
 	baseData->setNextVulnerableTime(Time());
 	baseData->setVulnerabilityEndTime(Time());
 
-	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT) {
+	if (building->getPvpStatusBitmask() & ObjectFlag::OVERT) {
 		Time endTime(baseData->getPlacementTime());
 		endTime.addMiliTime((vulnerabilityDuration * 1000) + (getInitialVulnerabilityDelay() * 1000));
 		baseData->setVulnerabilityEndTime(endTime);
@@ -898,9 +898,9 @@ uint64 GCWManagerImplementation::spawnSecurityPatrol(BuildingObject* building, S
 			squadLeader = agent;
 
 			if (stationary) {
-				squadLeader->addCreatureFlag(CreatureFlag::STATIC);
+				squadLeader->addObjectFlag(ObjectFlag::STATIC);
 			} else {
-				squadLeader->addCreatureFlag(CreatureFlag::SQUAD);
+				squadLeader->addObjectFlag(ObjectFlag::SQUAD);
 				squadLeader->setMovementState(AiAgent::PATROLLING);
 			}
 
@@ -909,10 +909,10 @@ uint64 GCWManagerImplementation::spawnSecurityPatrol(BuildingObject* building, S
 			agent->clearPatrolPoints();
 		} else {
 			if (stationary) {
-				agent->addCreatureFlag(CreatureFlag::STATIC);
+				agent->addObjectFlag(ObjectFlag::STATIC);
 			} else {
-				agent->addCreatureFlag(CreatureFlag::FOLLOW);
-				agent->addCreatureFlag(CreatureFlag::SQUAD);
+				agent->addObjectFlag(ObjectFlag::FOLLOW);
+				agent->addObjectFlag(ObjectFlag::SQUAD);
 			}
 
 			agent->setAITemplate();
@@ -993,7 +993,7 @@ void GCWManagerImplementation::startVulnerability(BuildingObject* building) {
 
 	spawnBaseTerminals(building);
 
-	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT)
+	if (building->getPvpStatusBitmask() & ObjectFlag::OVERT)
 		scheduleVulnerabilityEnd(building);
 
 	building->broadcastCellPermissions();
@@ -1001,7 +1001,7 @@ void GCWManagerImplementation::startVulnerability(BuildingObject* building) {
 
 // changes timers and schedules nextVulnerabilityStart task
 void GCWManagerImplementation::endVulnerability(BuildingObject* building) {
-	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+	if (!(building->getPvpStatusBitmask() & ObjectFlag::OVERT))
 		return;
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
@@ -1091,7 +1091,7 @@ void GCWManagerImplementation::scheduleVulnerabilityStart(BuildingObject* buildi
 
 // PRE:  nothing needs to be locked... building NOT locked
 void GCWManagerImplementation::scheduleVulnerabilityEnd(BuildingObject* building) {
-	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+	if (!(building->getPvpStatusBitmask() & ObjectFlag::OVERT))
 		return;
 
 	if (!hasBase(building))
@@ -1116,7 +1116,7 @@ void GCWManagerImplementation::scheduleVulnerabilityEnd(BuildingObject* building
 // only call if the last expired time has already past and we need the timers
 // back up to date.  usually after a long server down or something
 void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* building) {
-	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+	if (!(building->getPvpStatusBitmask() & ObjectFlag::OVERT))
 		return;
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
@@ -1185,7 +1185,7 @@ void GCWManagerImplementation::checkVulnerabilityData(BuildingObject* building) 
 		return;
 	}
 
-	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT) {
+	if (building->getPvpStatusBitmask() & ObjectFlag::OVERT) {
 		Time currentTime;
 		Time vulnTime = baseData->getNextVulnerableTime();
 		Time nextEnd = baseData->getVulnerabilityEndTime();
@@ -1240,7 +1240,7 @@ bool GCWManagerImplementation::isBaseVulnerable(BuildingObject* building) {
 		return false;
 	}
 
-	return (baseData->getState() > DestructibleBuildingDataComponent::INVULNERABLE || !(building->getPvpStatusBitmask() & CreatureFlag::OVERT));
+	return (baseData->getState() > DestructibleBuildingDataComponent::INVULNERABLE || !(building->getPvpStatusBitmask() & ObjectFlag::OVERT));
 }
 
 bool GCWManagerImplementation::isBandIdentified(BuildingObject* building) {
@@ -1409,7 +1409,7 @@ bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, Buildin
 		return true;
 
 	// check for PvP base
-	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT) {
+	if (building->getPvpStatusBitmask() & ObjectFlag::OVERT) {
 		if (creature->getFactionStatus() != FactionStatus::OVERT) {
 			creature->sendSystemMessage("@hq:declared_only"); // Only Special Forces personnel may access this terminal!
 			return false;
@@ -1517,7 +1517,7 @@ void GCWManagerImplementation::verifyUplinkBand(CreatureObject* creature, Buildi
 			awardSlicingXP(creature, "bountyhunter", 1000);
 
 			//Schedule PVE base uplink reset
-			if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+			if (!(building->getPvpStatusBitmask() & ObjectFlag::OVERT)) {
 				GCWManager* gcwManager = zone->getGCWManager();
 
 				UplinkTerminalResetTask* task = new UplinkTerminalResetTask(building, gcwManager, baseData);
@@ -2251,12 +2251,12 @@ void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, Strin
 	if (zone == nullptr)
 		return;
 
-	SortedVector<QuadTreeEntry*> closeObjects;
+	SortedVector<TreeEntry*> closeObjects;
 	if (building->getCloseObjects() == nullptr) {
 #ifdef COV_DEBUG
 		building->info("Null closeobjects vector in GCWManagerImplementation::broadcastBuilding", true);
 #endif
-		zone->getInRangeObjects(building->getPositionX(), building->getPositionY(), range, &closeObjects, true);
+		zone->getInRangeObjects(building->getPositionX(), building->getPositionZ(), building->getPositionY(), range, &closeObjects, true);
 	} else {
 		CloseObjectsVector* closeVector = (CloseObjectsVector*)building->getCloseObjects();
 		closeVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::PLAYERTYPE);
@@ -2403,13 +2403,13 @@ void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, B
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 	status->setPromptTitle("@faction/faction_hq/faction_hq_response:terminal_response22"); // HQ Defense status
 
-	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT)
+	if (building->getPvpStatusBitmask() & ObjectFlag::OVERT)
 		status->setPromptText("@faction/faction_hq/faction_hq_response:terminal_response21"); // If you want to remove a defense select it and press remove
 
 	status->setUsingObject(building);
 	status->setCancelButton(true, "@cancel");
 
-	if (creature == building->getOwnerCreatureObject() && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+	if (creature == building->getOwnerCreatureObject() && (building->getPvpStatusBitmask() & ObjectFlag::OVERT)) {
 		status->setOtherButton(true, "@ui:permission_remove");
 	}
 	status->setOkButton(true, "@ok");
@@ -2438,7 +2438,7 @@ void GCWManagerImplementation::sendRemoveDefenseConfirmation(BuildingObject* bui
 	if (ghost == nullptr || baseData == nullptr)
 		return;
 
-	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+	if (!(building->getPvpStatusBitmask() & ObjectFlag::OVERT))
 		return;
 
 	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
@@ -2480,7 +2480,7 @@ void GCWManagerImplementation::removeDefense(BuildingObject* building, CreatureO
 	if (building->getOwnerCreatureObject() != creature)
 		return;
 
-	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+	if (!(building->getPvpStatusBitmask() & ObjectFlag::OVERT))
 		return;
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
@@ -2655,7 +2655,7 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	if (ghost == nullptr)
 		return;
 
-	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+	if (!(building->getPvpStatusBitmask() & ObjectFlag::OVERT))
 		return;
 
 	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
@@ -2730,7 +2730,7 @@ void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, 
 
 	Locker blocker(building, creature);
 
-	if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+	if (!(building->getPvpStatusBitmask() & ObjectFlag::OVERT))
 		return;
 
 	ManagedReference<SceneObject*> defenseObj = zoneServer->getObject(deedOID);

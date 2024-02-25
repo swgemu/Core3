@@ -11,6 +11,7 @@
 #include "server/zone/packets/MessageCallback.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
@@ -19,6 +20,8 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "templates/params/creature/PlayerArrangement.h"
+
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
 #endif // WITH_SESSION_API
@@ -43,7 +46,7 @@ public:
 			return;
 		}
 
-		ghost->unloadSpawnedChildren();
+		ghost->unloadSpawnedChildren(true);
 
 		if (ghost->getAdminLevel() == 0 && (zoneServer->getConnectionCount() >= zoneServer->getServerCap())) {
 			client->sendMessage(new ErrorMessage("Login Error", "Server cap reached, please try again later", 0));
@@ -100,6 +103,7 @@ public:
 		client->setPlayer(player);
 
 		String zoneName = ghost->getSavedTerrainName();
+
 		Zone* zone = zoneServer->getZone(zoneName);
 
 		if (zone == nullptr) {
@@ -127,45 +131,81 @@ public:
 		player->setMovementCounter(0);
 		ghost->setClientLastMovementStamp(0);
 
-		if (player->getZone() == nullptr) {
+		if (player->getZone() == nullptr)
 			ghost->setOnLoadScreen(true);
-		}
 
 		uint64 savedParentID = ghost->getSavedParentID();
 
 		ManagedReference<SceneObject*> playerParent = zoneServer->getObject(savedParentID, true);
 		ManagedReference<SceneObject*> currentParent = player->getParent().get();
 
-		if ((playerParent != nullptr && currentParent == nullptr) || (currentParent != nullptr && currentParent->isCellObject())) {
+		// player->info(true) << "playerParent - " << (playerParent == nullptr ? "nullptr" : String::valueOf(currentParent->getObjectID()));
+		// player->info(true) << "currentParent - " << (currentParent == nullptr ? "nullptr" : String::valueOf(currentParent->getObjectID()));
+
+		if ((playerParent != nullptr && currentParent == nullptr) || (currentParent != nullptr && (currentParent->isCellObject() || player->isInShipStation() || currentParent->isShipObject()))) {
 			playerParent = playerParent == nullptr ? currentParent : playerParent;
 
-			ManagedReference<SceneObject*> root = playerParent->getRootParent();
+			ManagedReference<SceneObject*> rootParent = playerParent->getRootParent();
 
-			root = root == nullptr ? playerParent : root;
+			rootParent = rootParent == nullptr ? playerParent : rootParent;
 
-			//ghost->updateLastValidatedPosition();
+			//player->info(true) << "Root Parent: " << rootParent->getDisplayedName() << " playerParent: " << playerParent->getDisplayedName() << " Player Parent Game Type: " << playerParent->getGameObjectType() << " --  " << playerParent->getGameObjectTypeStringID();
 
-			if (root->getZone() == nullptr && root->isStructureObject()) {
-				player->initializePosition(root->getPositionX(), root->getPositionZ(), root->getPositionY());
+			if (rootParent->getZone() == nullptr && rootParent->isStructureObject()) {
+				player->initializePosition(rootParent->getPositionX(), rootParent->getPositionZ(), rootParent->getPositionY());
 
 				zone->transferObject(player, -1, true);
 
 				playerParent = nullptr;
+			// Handle Ships here
+			} else if (rootParent->isShipObject()) {
+				if (rootParent->getLocalZone() == nullptr) {
+					// Safety net, players root is a ship that is not launched
+					auto launchCoords = ghost->getSpaceLaunchLocation();
+					auto launchZone = ghost->getSpaceLaunchZone();
+
+					ghost->setSavedTerrainName(launchZone);
+
+					player->initializePosition(launchCoords.getX(), launchCoords.getZ(), launchCoords.getY());
+
+					zone = zoneServer->getZone(launchZone);
+
+					if (zone != nullptr)
+						zone->transferObject(player, -1, true);
+
+					playerParent = nullptr;
+				// Player is pilotting a fightership or in a gunboat position
+				} else if (playerParent == rootParent) {
+					rootParent->transferObject(player, player->getContainmentType(), false, false, false);
+					player->sendToOwner(true);
+				// Player is in POB Ship cell
+				} else if (playerParent->isCellObject()) {
+					player->clearSpaceStates();
+					player->setState(CreatureState::SHIPINTERIOR);
+
+					playerParent->transferObject(player, -1, false, false, false);
+					player->sendToOwner(true);
+				// Player is in slotted position
+				} else if (player->isInShipStation()) {
+					playerParent->transferObject(player, player->getContainmentType(), false, false, false);
+					player->sendToOwner(true);
+
+					rootParent->notifyObjectInsertedToChild(player, playerParent, nullptr);
+				}
 			} else {
-				if (!(playerParent->isCellObject() && playerParent == root)) {
+				if (!(playerParent->isCellObject() && playerParent == rootParent)) {
 					playerParent->transferObject(player, -1, true);
 				}
 
 				if (player->getParent() == nullptr) {
 					zone->transferObject(player, -1, true);
-				} else if (root->getZone() == nullptr) {
-					Locker clocker(root, player);
-					zone->transferObject(root, -1, true);
+				} else if (rootParent->getZone() == nullptr) {
+					Locker clocker(rootParent, player);
+					zone->transferObject(rootParent, -1, true);
 				}
 
 				player->sendToOwner(true);
 			}
-
 		} else if (currentParent == nullptr) {
 			player->removeAllSkillModsOfType(SkillModManager::STRUCTURE);
 
@@ -188,7 +228,7 @@ public:
 					objectToInsert = player;
 
 				Locker clocker(objectToInsert, player);
-				zone->transferObject(objectToInsert, -1, true);
+				zone->transferObject(objectToInsert, -1, false);
 			}
 
 			player->sendToOwner(true);

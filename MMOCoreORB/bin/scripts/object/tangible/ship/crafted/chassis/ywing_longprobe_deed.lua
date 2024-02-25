@@ -42,9 +42,11 @@
 
 
 object_tangible_ship_crafted_chassis_ywing_longprobe_deed = object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed:new {
+	templateType = SHIPDEED,
+	gameObjectType = 8388617,
 
-    templateType = SHIPDEED,
-	shipControlObject = "object/intangible/ship/ywing_longprobe_pcd.iff",
+	shipType = 1, --FIGHTERSHIP,
+	shipControlDevice = "object/intangible/ship/ywing_longprobe_pcd.iff",
 	generatedObjectTemplate = "object/ship/player/player_ywing_longprobe.iff",
 }
 

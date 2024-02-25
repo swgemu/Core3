@@ -42,7 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_mandalor_gorax_elite = object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "rct_mandalor_gorax_elite",
+
+	attributes = {
+		{"energyGeneration", 30000},
+		{"maximumHitpoints", 2310.8},
+		{"maximumArmorHitpoints", 1155.4},
+		{"mass", 62040},
+		{"reverseEngineeringLevel", 10},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.2},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_mandalor_gorax_elite, "object/tangible/ship/components/reactor/rct_mandalor_gorax_elite.iff")

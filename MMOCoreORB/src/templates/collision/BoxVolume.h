@@ -14,11 +14,15 @@ class BoxVolume : public BaseBoundingVolume {
 protected:
 	AABB bbox;
 public:
-	bool isBoundingBox() { return true; }
 	BoxVolume() : bbox(Vector3(), Vector3()) { }
-	virtual void read(IffStream *iff);
 	const AABB& getBoundingBox() const {
 		return bbox;
+	}
+
+	void read(IffStream *iff);
+
+	bool isBoundingBox() const {
+		return true;
 	}
 
 #ifdef OSG_RENDERER

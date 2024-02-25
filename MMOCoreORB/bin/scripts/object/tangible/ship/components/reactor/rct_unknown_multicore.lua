@@ -42,7 +42,24 @@
 
 
 object_tangible_ship_components_reactor_rct_unknown_multicore = object_tangible_ship_components_reactor_shared_rct_unknown_multicore:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "rct_unknown_multicore",
+
+	attributes = {
+		{"energyGeneration", 20700},
+		{"maximumHitpoints", 952.2},
+		{"maximumArmorHitpoints", 476.1},
+		{"mass", 14421},
+		{"reverseEngineeringLevel", 6},
+	},
+
+	modifiers = {
+		{"energyGeneration", 0.175},
+		{"maximumHitpoints", 0.05},
+		{"maximumArmorHitpoints", 0.05},
+		{"mass", 0.3},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_unknown_multicore, "object/tangible/ship/components/reactor/rct_unknown_multicore.iff")

@@ -34,7 +34,7 @@ public:
 
 		Zone* zone = server->getZoneServer()->getZone(zoneName);
 
-		if (zone != nullptr)
+		if (zone != nullptr && !zone->isSpaceZone())
 			zone->sendMapLocationsTo(object);
 	}
 };

@@ -50,7 +50,7 @@ object_mobile_vendor_ishi_tib_male = object_mobile_vendor_shared_ishi_tib_male:n
 	objectMenuComponent = "VendorMenuComponent",
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = "VendorContainerComponent",
-	zoneComponent = "VendorZoneComponent",
+	groundZoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 

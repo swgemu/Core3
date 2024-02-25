@@ -42,7 +42,60 @@
 
 
 object_ship_spacestation_rebel = object_ship_shared_spacestation_rebel:new {
+	objectName = "@space/space_mobile_type:spacestation_rebel",
 
+	name = "spacestation_rebel",
+	type = "spacestation_rebel",
+	faction = "rebel",
+	difficulty = "",
+
+	slideFactor = 1.76,
+	chassisHitpoints = 30000,
+	chassisMass = 50000,
+
+	gameObjectType = 536870920,
+
+	pvpBitmask = NONE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED + INVULNERABLE,
+
+	customShipAiMap = "spaceStations",
+
+	reactor = {name = "rct_generic", hitpoints = 5000, armor = 2000},
+	shield_0 = {name = "shd_generic", hitpoints = 50000, armor = 50000, front = 50000, back = 50000, regen = 50},
+	shield_1 = {name = "shd_generic", hitpoints = 50000, armor = 50000, front = 50000, back = 50000, regen = 40},
+	armor_0 = {name = "arm_generic", hitpoints = 50000, armor = 50000},
+	armor_1 = {name = "arm_generic", hitpoints = 50000, armor = 50000},
+	capacitor = {name = "cap_generic", hitpoints = 50000, armor = 50000, energy = 2356.5, rechargeRate = 128.3},
+	bridge = {name = "bdg_generic", hitpoints = 200000, armor = 200000},
+	hangar = {name = "hgr_generic", hitpoints = 200000, armor = 200000},
+	targeting_station = {name = "tst_generic", hitpoints = 200000, armor = 200000},
+
+	weapon_0 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_3 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_4 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_5 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_6 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_7 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_8 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_9 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+
+	weapon_10 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_11 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_12 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_13 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_14 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_15 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_16 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_17 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_18 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_19 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_20 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+
+	weapon_21 = {name = "wpn_spacestation_rebel_turret_s02", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
+	weapon_22 = {name = "wpn_spacestation_rebel_turret_s01", hitpoints = 50000, armor = 50000, rate = 0.531, drain = 0, maxDamage = 400, minDamage = 150, shieldEfficiency = 1, armorEfficiency = 1, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_spacestation_rebel, "object/ship/spacestation_rebel.iff")

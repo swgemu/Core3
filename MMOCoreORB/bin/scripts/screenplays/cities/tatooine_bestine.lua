@@ -271,7 +271,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 				CreatureObject(pMobile):setMoodString(mob[8])
 			end
 
-			AiAgent(pMobile):addCreatureFlag(AI_STATIC)
+			AiAgent(pMobile):addObjectFlag(AI_STATIC)
 
 			if CreatureObject(pMobile):getPvpStatusBitmask() == 0 then
 				CreatureObject(pMobile):clearOptionBit(AIENABLED)

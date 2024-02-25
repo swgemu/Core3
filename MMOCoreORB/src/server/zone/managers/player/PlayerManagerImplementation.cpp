@@ -111,6 +111,8 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/objects/creature/commands/TransferItemMiscCommand.h"
 #include "templates/crcstringtable/CrcStringTable.h"
+#include "server/zone/objects/ship/PobShipObject.h"
+#include "server/zone/objects/tangible/deed/ship/ShipDeed.h"
 
 #include "server/zone/managers/statistics/StatisticsManager.h"
 
@@ -214,7 +216,7 @@ bool PlayerManagerImplementation::rescheduleOnlinePlayerLogTask(int logSecs) {
 
 	onlinePlayerLogTask->schedulePeriodic(0, logSecs * 1000);
 
-	info(true) << "Loging online players every " << logSecs << " seconds.";
+	info(true) << "Logging online players every " << logSecs << " seconds.";
 
 	return true;
 }
@@ -566,7 +568,7 @@ void PlayerManagerImplementation::writePlayerLog(PlayerObject* ghost, const Stri
 	if (ghost == nullptr)
 		return;
 
-	Reference<SceneObject*> parentSceneO = ghost->getParent().get();
+	auto parentSceneO = ghost->getParent().get();
 
 	if (parentSceneO == nullptr || !parentSceneO->isCreatureObject())
 		return;
@@ -1537,15 +1539,29 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 		return;
 	}
 
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
 	Zone* zone = player->getZone();
 
 	if (zone == nullptr)
 		return;
 
-	PlayerObject* ghost = player->getPlayerObject();
+	Vector3 playerPos = player->getWorldPosition();
 
-	if (ghost == nullptr)
-		return;
+	// Handle players death in space
+	if (zone->isSpaceZone()) {
+		auto launchZoneName = ghost->getSpaceLaunchZone();
+
+		zone = server->getZone(launchZoneName);
+
+		if (zone == nullptr || zone->isSpaceZone())
+			return;
+
+		playerPos = ghost->getSpaceLaunchLocation();
+	}
 
 	ghost->removeSuiBoxType(SuiWindowType::CLONE_REQUEST);
 
@@ -1554,7 +1570,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	if (cloneMenu == nullptr)
 		return;
 
-	cloneMenu->setCallback(new CloningRequestSuiCallback(player->getZoneServer(), typeofdeath));
+	cloneMenu->setCallback(new CloningRequestSuiCallback(server, typeofdeath));
 	cloneMenu->setPromptTitle("@base_player:revive_title");
 
 	uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
@@ -1581,7 +1597,6 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	SortedVector<ManagedReference<SceneObject*> > locations = zone->getPlanetaryObjectList("cloningfacility");
 
 	int checkDistanceSq = 16000 * 16000;
-	Vector3 playerPos = player->getWorldPosition();
 
 	for (int j = 0; j < locations.size(); j++) {
 		ManagedReference<SceneObject*> location = locations.get(j);
@@ -1697,7 +1712,6 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		return;
 	}
 
-
 	CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(cloner->getObjectTemplate());
 
 	if (cbot == nullptr) {
@@ -1737,6 +1751,23 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	}
 
 	Zone* zone = player->getZone();
+
+	if (zone == nullptr) {
+		error() << player->getDisplayedName() << " ID: " << player->getObjectID() << " - Failed to activate clone due to null zone. Chosen Cloning Facility ID: " << cloner->getObjectID();
+		return;
+	}
+
+	// Handle players death in space
+	if (zone->isSpaceZone()) {
+		auto launchZoneName = ghost->getSpaceLaunchZone();
+
+		zone = server->getZone(launchZoneName);
+
+		if (zone == nullptr || zone->isSpaceZone()) {
+			error() << player->getDisplayedName() << " ID: " << player->getObjectID() << " - Failed to activate clone on Ground Zone. Chosen Cloning Facility ID: " << cloner->getObjectID();
+			return;
+		}
+	}
 
 	ghost->setCloning(true);
 
@@ -3546,11 +3577,22 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 			return obj.get();
 	}
 
-
 	ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
-	if (rootParent != nullptr && rootParent->isStructureObject() && (cast<StructureObject*>(rootParent.get()))->isOnAdminList(creature)) {
-		return rootParent;
+	if (rootParent != nullptr) {
+		// Structure Object
+		if (rootParent->isStructureObject()) {
+			StructureObject* structure = cast<StructureObject*>(rootParent.get());
+
+			if (structure!= nullptr && structure->isOnAdminList(creature))
+				return rootParent;
+		// PoBShip
+		} else if (rootParent->isPobShip()) {
+			PobShipObject* pobShip = cast<PobShipObject*>(rootParent.get());
+
+			if (pobShip != nullptr && pobShip->isOnAdminList(creature))
+				return rootParent;
+		}
 	}
 
 	StructureObject* structure = nullptr;
@@ -3566,7 +3608,7 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 	Locker _locker(zone);
 
 	CloseObjectsVector* closeObjs = (CloseObjectsVector*)creature->getCloseObjects();
-	SortedVector<QuadTreeEntry*> closeObjects;
+	SortedVector<TreeEntry*> closeObjects;
 	closeObjs->safeCopyReceiversTo(closeObjects, CloseObjectsVector::STRUCTURETYPE);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
@@ -3758,8 +3800,10 @@ void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, fl
 int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier) {
 	float allowedSpeedMod = player->getSpeedMultiplierMod();
 	float allowedSpeedBase = player->getRunSpeed();
+
 	ManagedReference<SceneObject*> parent = player->getParent().get();
 	SpeedMultiplierModChanges* changeBuffer = player->getSpeedMultiplierModChanges();
+
 	Vector3 teleportPoint = teleportPosition.getPosition();
 	uint64 teleportParentID = teleportPosition.getParent();
 
@@ -3862,21 +3906,21 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 
 	Vector3 newWorldPosition(newX, newY, newZ);
 
-	player->debug() << "checkSpeedHackSecondTest newWorldPosition x:" << newWorldPosition.getX() << " z:" << newWorldPosition.getZ() << " y:" << newWorldPosition.getY();
+	player->debug() << "checkSpeedHackSecondTest ---- Checking - newWorldPosition X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY();
 
 	if (newParent != nullptr) {
 		ManagedReference<SceneObject*> root = newParent->getRootParent();
 
-		if (!root->isBuildingObject())
+		if (!root->isBuildingObject() && !root->isShipObject())
 			return 1;
 
 		float length = Math::sqrt(newX * newX + newY * newY);
 		float angle = root->getDirection()->getRadians() + atan2(newX, newY);
 
 		newWorldPosition.set(root->getPositionX() + (sin(angle) * length), root->getPositionZ() + newZ, root->getPositionY() + (cos(angle) * length));
-	}
 
-	player->debug() << "after parent transform newWorldPosition x:" << newWorldPosition.getX() << " z:" << newWorldPosition.getZ() << " y:" << newWorldPosition.getY();
+		player->debug() << "Parent Transform newWorldPosition X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY() << " Distance Length = " << length;
+	}
 
 	ValidatedPosition* lastValidatedPosition = ghost->getLastValidatedPosition();
 
@@ -3892,7 +3936,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	float dist = newWorldPosition.distanceTo(lastValidatedWorldPosition);
 
 	if (dist < 1) {
-		player->debug("speed hack distance too small");
+		player->debug() << "speed hack distance too small";
 		return 0;
 	}
 
@@ -3909,8 +3953,6 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	}*/
 
 	//lastValidatedPosition->set(newWorldPosition.getX(), oldNewPosZ, newWorldPosition.getY());
-
-	player->debug() << "distancia recorreguda " << dist << " a una velocitat " << speed;
 
 	int ret = checkSpeedHackFirstTest(player, speed, *lastValidatedPosition, 1.5f);
 
@@ -3929,6 +3971,8 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 
 		ghost->incrementSessionMovement(dist);
 	}
+
+	player->debug() << "Distance: " << dist << " Speed: " << speed << " Check Returning: " << ret;
 
 	return ret;
 }
@@ -4175,7 +4219,7 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 	//Locker locker(zone);
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
-	SortedVector<QuadTreeEntry*> closeObjects(vec->size(), 10);
+	SortedVector<TreeEntry*> closeObjects(vec->size(), 10);
 	vec->safeCopyTo(closeObjects);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
@@ -5466,14 +5510,14 @@ void PlayerManagerImplementation::grantDivorce(CreatureObject* player) {
 }
 
 void PlayerManagerImplementation::claimVeteranRewards(CreatureObject* player) {
-
 	if (player == nullptr || !player->isPlayerCreature() )
 		return;
 
-	PlayerObject* playerGhost = player->getPlayerObject();
+	PlayerObject* ghost = player->getPlayerObject();
 
 	// Get account
-	ManagedReference<Account*> account = playerGhost->getAccount();
+	ManagedReference<Account*> account = ghost->getAccount();
+
 	if (account == nullptr )
 		return;
 
@@ -5484,7 +5528,8 @@ void PlayerManagerImplementation::claimVeteranRewards(CreatureObject* player) {
 	player->sendSystemMessage(timeActiveMsg );
 
 	// Verify player is eligible for a reward
-	int milestone = getEligibleMilestone( playerGhost, account );
+	int milestone = getEligibleMilestone(ghost, account);
+
 	if (milestone < 0) {
 		player->sendSystemMessage("@veteran:not_eligible"); // You are not currently eligible for a veteran reward.
 		return;
@@ -5502,39 +5547,41 @@ void PlayerManagerImplementation::claimVeteranRewards(CreatureObject* player) {
 
 	// Build and SUI list box of rewards
 	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::SELECT_VETERAN_REWARD, SuiListBox::HANDLETWOBUTTON);
+
 	box->setCallback(new SelectVeteranRewardSuiCallback(server));
 	box->setPromptText("@veteran_new:choice_description" ); // You may choose one of the items listed below. This item will be placed in your inventory.
 	box->setPromptTitle("@veteran_new:item_grant_box_title"); // Reward
 	box->setOkButton(true, "@ok");
 	box->setCancelButton(true, "@cancel");
 
-	for ( int i = 0; i < veteranRewards.size(); i++) {
-
+	for (int i = 0; i < veteranRewards.size(); i++) {
 		// Any rewards at or below current milestone are eligible
 		VeteranReward reward = veteranRewards.get(i);
-		if (reward.getMilestone() <= milestone) {
 
-			// Filter out one-time rewards already claimed
-			if (reward.isOneTime() && playerGhost->hasChosenVeteranReward(reward.getTemplateFile())) {
-				continue;
-			}
+		//info(true) << "Reward: " << reward.getTemplateFile() << " Player Milestone: " << milestone << " Reward Milestone: " << reward.getMilestone();
 
-			SharedObjectTemplate* rewardTemplate = TemplateManager::instance()->getTemplate(reward.getTemplateFile().hashCode());
-			if (rewardTemplate != nullptr) {
-				if (reward.getDescription().isEmpty()) {
-					box->addMenuItem(rewardTemplate->getDetailedDescription(), i);
-				}
-				else{
-					box->addMenuItem(reward.getDescription(), i);
-				}
+		if (reward.getMilestone() > milestone)
+			continue;
+
+		// Filter out one-time rewards already claimed
+		if (reward.isOneTime() && ghost->hasChosenVeteranReward(reward.getTemplateFile())) {
+			continue;
+		}
+
+		SharedObjectTemplate* rewardTemplate = TemplateManager::instance()->getTemplate(reward.getTemplateFile().hashCode());
+
+		if (rewardTemplate != nullptr) {
+			if (reward.getDescription().isEmpty()) {
+				box->addMenuItem(rewardTemplate->getDetailedDescription(), i);
+			} else {
+				box->addMenuItem(reward.getDescription(), i);
 			}
 		}
 	}
 
 	box->setUsingObject(nullptr);
-	playerGhost->addSuiBox(box);
+	ghost->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
-
 }
 
 void PlayerManagerImplementation::cancelVeteranRewardSession(CreatureObject* player) {
@@ -5542,7 +5589,6 @@ void PlayerManagerImplementation::cancelVeteranRewardSession(CreatureObject* pla
 }
 
 void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, int itemIndex) {
-
 	if (player == nullptr || !player->isPlayerCreature()) {
 		return;
 	}
@@ -5554,8 +5600,8 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 	}
 
 	// Get account
-	PlayerObject* playerGhost = player->getPlayerObject();
-	ManagedReference<Account*> account = playerGhost->getAccount();
+	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<Account*> account = ghost->getAccount();
 	if (account == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession(player);
@@ -5564,6 +5610,7 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 
 	// Check session
 	ManagedReference<VeteranRewardSession*> rewardSession = player->getActiveSession(SessionFacadeType::VETERANREWARD).castTo<VeteranRewardSession*>();
+
 	if (rewardSession == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		return;
@@ -5571,7 +5618,7 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 
 	VeteranReward reward = veteranRewards.get(itemIndex);
 
-	if (reward.isOneTime() && playerGhost->hasChosenVeteranReward(reward.getTemplateFile())) {
+	if (reward.isOneTime() && ghost->hasChosenVeteranReward(reward.getTemplateFile())) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession(player);
 		return;
@@ -5588,7 +5635,7 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 		suibox->setOkButton(true, "@yes");
 		suibox->setCancelButton(true, "@no");
 
-		playerGhost->addSuiBox(suibox);
+		ghost->addSuiBox(suibox);
 		player->sendMessage(suibox->generateMessage());
 	} else {
 		generateVeteranReward(player);
@@ -5602,8 +5649,10 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	}
 
 	// Get account
-	PlayerObject* playerGhost = player->getPlayerObject();
-	ManagedReference<Account*> account = playerGhost->getAccount();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ManagedReference<Account*> account = ghost->getAccount();
+
 	if (account == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession(player);
@@ -5612,6 +5661,7 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 
 	// Check session
 	ManagedReference<VeteranRewardSession*> rewardSession = player->getActiveSession(SessionFacadeType::VETERANREWARD).castTo<VeteranRewardSession*>();
+
 	if (rewardSession == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		return;
@@ -5621,7 +5671,8 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	// (prevent claiming while multi-logged)
 
 	bool milestoneClaimed = false;
-	if (!playerGhost->getChosenVeteranReward(rewardSession->getMilestone() ).isEmpty() )
+
+	if (!ghost->getChosenVeteranReward(rewardSession->getMilestone() ).isEmpty() )
 		milestoneClaimed = true;
 
 	if (milestoneClaimed) {
@@ -5640,6 +5691,7 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 
 	VeteranReward reward = veteranRewards.get(rewardSession->getSelectedRewardIndex());
 	Reference<SceneObject*> rewardSceno = server->createObject(reward.getTemplateFile().hashCode(), 1);
+
 	if (rewardSceno == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession(player);
@@ -5670,14 +5722,13 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	cancelVeteranRewardSession(player);
 
 	// If player is eligible for another reward, kick off selection
-	if (getEligibleMilestone(playerGhost, account ) >= 0) {
+	if (getEligibleMilestone(ghost, account ) >= 0) {
 		player->enqueueCommand(STRING_HASHCODE("claimveteranreward"), 0, 0, "");
 	}
 }
 
-int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *playerGhost, Account* account) {
-
-	if (account == nullptr || playerGhost == nullptr )
+int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *ghost, Account* account) {
+	if (account == nullptr || ghost == nullptr )
 		return -1;
 
 	int accountAge = account->getAgeInDays();
@@ -5691,7 +5742,7 @@ int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *playerGhost,
 	// Return the first milestone for which the player is eligible and has not already claimed
 	for (int i = 0; i < veteranRewardMilestones.size(); i++) {
 		milestone = veteranRewardMilestones.get(i);
-		if (accountAge >= milestone && playerGhost->getChosenVeteranReward(milestone).isEmpty()) {
+		if (accountAge >= milestone && ghost->getChosenVeteranReward(milestone).isEmpty()) {
 			return milestone;
 		}
 	}
@@ -5700,7 +5751,7 @@ int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *playerGhost,
 	milestone += veteranRewardAdditionalMilestones;
 
 	while (accountAge >= milestone) {
-		if (playerGhost->getChosenVeteranReward(milestone).isEmpty()) {
+		if (ghost->getChosenVeteranReward(milestone).isEmpty()) {
 			return milestone;
 		}
 
@@ -5712,7 +5763,6 @@ int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *playerGhost,
 }
 
 int PlayerManagerImplementation::getFirstIneligibleMilestone(PlayerObject *playerGhost, Account* account) {
-
 	if (account == nullptr || playerGhost == nullptr )
 		return -1;
 

@@ -43,15 +43,18 @@
 -- 0 = false, 1 = true
 
 Core3 = {
+	------Server Make Options------
 	MakeLogin = 1,
 	MakeZone = 1,
 	MakePing = 1,
 	MakeStatus = 1,
 	MakeWeb = 0,
 
+	------ORB Server Config------
 	ORB = "",
 	ORBPort = 44419,
 
+	------Main Database Config------
 	DBHost = "127.0.0.1",
 	DBPort = 3306,
 	DBName = "swgemu",
@@ -60,11 +63,13 @@ Core3 = {
 	DBInstances = 2,
 	DBSecret = "swgemus3cr37!", -- Change this! This value should be unique and of reasonable length.
 
+	------Login Server Config------
 	LoginPort = 44453,
 	LoginProcessingThreads = 1,
 	LoginAllowedConnections = 3000,
 	LoginRequiredVersion = "20050408-18:00",
 
+	------Mantis Database Config------
 	MantisHost = "127.0.0.1",
 	MantisPort = 3306,
 	MantisName = "swgemu",
@@ -72,77 +77,77 @@ Core3 = {
 	MantisPass = "123456",
 	MantisPrfx = "mantis_", -- The prefix for your mantis tables.
 
+	------Metrics Server Config------
 	MetricsHost = "localhost",
 	MetricsPort = 8125,
 	MetricsPrefix = "",
 
-	AutoReg = 1,
-
-	ProgressMonitors = "true",
-
+	------Ping Server Config------
 	PingPort = 44462,
 	PingAllowedConnections = 3000,
 
+	------Zone Server config------
 	ZoneProcessingThreads = 10,
 	ZoneAllowedConnections = 30000,
 	ZoneGalaxyID = 2, --The actual zone server's galaxyID. Should coordinate with your login server.
 
-	--The following zones are enabled, and will be loaded with server start.
-	--To save on RAM and CPU usage, you should only enable the zones you need.
-	--In order to disable a zone, all you have to do is comment it out.
+	-------- GROUND ZONES -------
 	ZonesEnabled = {
+
+	"corellia",
+	"dantooine",
+	"dathomir",
+	"dungeon1",
+	"endor",
+	"lok",
+	"naboo",
+	"rori",
+	"talus",
+	"tatooine",
+	"tutorial",
+	"yavin4"
+	-------- TEST ZONES -------
 	--"09",
 	--"10",
 	--"11",
 	--"character_farm",
 	--"cinco_city_test_m5",
-	--"corellia",
 	--"creature_test",
-	--"dantooine",
-	--"dathomir",
-	--"dungeon1",
-	--"endor",
 	--"endor_asommers",
 	--"floratest",
 	--"godclient_test",
-	--"lok",
-	--"naboo",
 	--"otoh_gunga",
 	--"rivertest",
-	--"rori",
 	--"runtimerules",
 	--"simple",
-	--"space_09",
-	--"space_corellia",
-	--"space_corellia_2",
-	--"space_dantooine",
-	--"space_dathomir",
-	--"space_endor",
-	--"space_env",
-	--"space_halos",
-	--"space_heavy1",
-	--"space_light1",
-	--"space_lok",
-	--"space_naboo",
-	--"space_naboo_2",
-	--"space_tatooine",
-	--"space_tatooine_2",
-	--"space_yavin4",
 	--"taanab",
-	--"talus",
-	"tatooine",
 	--"test_wearables",
-	"tutorial",
 	--"umbra",
 	--"watertabletest",
-	--"yavin4"
+	},
+	-------- SPACE ZONES -------
+	SpaceZonesEnabled = {
+		"space_corellia",
+		"space_dantooine",
+		"space_dathomir",
+		"space_endor",
+		"space_heavy1",
+		"space_light1",
+		"space_lok",
+		"space_naboo",
+		"space_tatooine",
+		"space_yavin4"
+		---- TEST ZONES ----
+		--"space_09",
+		--"space_corellia_2",
+		--"space_env",
+		--"space_halos",
+		--"space_naboo_2",
+		--"space_tatooine_2",
 	},
 
-
-	-- Where tre files are stored
+	------TRE config------
 	TrePath = "/home/swgemu/Desktop/SWGEmu",
-
-	-- Each tre file (order is important!)
 	TreFiles = {
 		"default_patch.tre",
 		"patch_sku1_14_00.tre",
@@ -197,46 +202,52 @@ Core3 = {
 		"bottom.tre"
 	},
 
-	-- Status Server Config
+	------Status Server Config------
 	StatusPort = 44455,
 	StatusAllowedConnections = 500,
 	StatusInterval = 30, -- interval to check if zone is locked up (in seconds)
 
-	-- Web Server Config
+	------Web Server Config------
 	WebPorts = 44460, -- Can be multiple ports 44460,44461
 	WebAccessLog = "../log/webaccess.log",
 	WebErrorLog = "../log/weberror.log",
 	WebSessionTimeout = 600, -- Length that inactive web sessions expire
 
-	DeleteCharacters = 10, -- How often in minutes to purge deleted characters
-	MaxNavMeshJobs = 6,
-	MaxAuctionSearchJobs = 1,
-	DumpObjFiles = 1,
-
-	UnloadContainers = 1, -- Whether to unload container contents from RAM after the container hasn't been accessed for a time
-
+	------Logging Config------
 	LogFile = "log/core3.log",
 	LogFileLevel = 4, -- -1 NONE, 0 FATAL, 1 ERROR, 2 WARNING, 3 LOG, 4 INFO, 5 DEBUG
 	LogJSON = 0, -- global log output in JSON format
 	LogSync = 0, -- flush global log file after each write
-
 	LuaLogJSON = 0,
 	PathfinderLogJSON = 0,
+	PlayerLogLevel = 4, -- -1 NONE, 0 FATAL, 1 ERROR, 2 WARNING, 3 LOG, 4 INFO, 5 DEBUG
+	MaxLogLines = 1000000, -- how often to rotate log (currently only log/player.log rotates)
 
-	TermsOfServiceVersion = 0,
-	TermsOfService = "",
-
-	CleanupMailCount = 25000,
-
+	------REST Server Config------
 	RESTServerPort = 0,
 
+	------Account Config------
 	InactiveAccountTitle = "Account Disabled",
 	InactiveAccountText = "The server administrators have disabled your account.",
 
-	CharacterBuilderEnabled = "true", -- Enable character builder terminals by default
+	------Character Config------
+	CleanupMailCount = 25000,
+	DeleteCharacters = 10, -- How often in minutes to purge deleted characters
 
-	PlayerLogLevel = 4, -- -1 NONE, 0 FATAL, 1 ERROR, 2 WARNING, 3 LOG, 4 INFO, 5 DEBUG
-	MaxLogLines = 1000000, -- how often to rotate log (currently only log/player.log rotates)
+	------Extra Config ------
+	MaxNavMeshJobs = 6,
+	MaxAuctionSearchJobs = 1,
+	DumpObjFiles = 1,
+	ProgressMonitors = "true",
+	UnloadContainers = 1, -- Whether to unload container contents from RAM after the container hasn't been accessed for a time
+
+	------Server Config------
+	CharacterBuilderEnabled = "true",
+	AutoReg = 1,
+
+	------TOS Config------
+	TermsOfServiceVersion = 0,
+	TermsOfService = "",
 }
 
 -- NOTE: conf/config-local.lua is parsed after this file if it exists

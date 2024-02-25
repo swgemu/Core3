@@ -8,14 +8,14 @@
 #ifndef VENDORZONECOMPONENT_H_
 #define VENDORZONECOMPONENT_H_
 
-#include "server/zone/objects/scene/components/ZoneComponent.h"
+#include "server/zone/objects/scene/components/GroundZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
-#include "server/zone/QuadTreeEntry.h"
+#include "server/zone/TreeEntry.h"
 
-class VendorZoneComponent : public ZoneComponent {
+class VendorZoneComponent : public GroundZoneComponent {
 
 public:
-	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+	void notifyPositionUpdate(SceneObject* sceneObject, TreeEntry* entry) const {
 		ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
 		if (target == nullptr || !target->isPlayerCreature())

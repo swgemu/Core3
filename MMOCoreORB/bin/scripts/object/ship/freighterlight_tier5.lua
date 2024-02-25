@@ -42,7 +42,31 @@
 
 
 object_ship_freighterlight_tier5 = object_ship_shared_freighterlight_tier5:new {
+	objectName = "@space/space_mobile_type:freighterlight_tier5",
 
+	name = "freighterlight_tier5",
+	type = "freighterlight_tier5",
+	faction = "civilian",
+	difficulty = "tier5",
+
+	slideFactor = 1.83,
+	chassisHitpoints = 4915.2,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 6370.1, armor = 6370.1},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 6370.1, armor = 6370.1, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 6370.1, armor = 6370.1, front = 38220.6, back = 38220.6, regen = 23.15},
+	armor_0 = {name = "arm_generic", hitpoints = 20384.3, armor = 20384.3},
+	armor_1 = {name = "arm_generic", hitpoints = 20384.3, armor = 20384.3},
+	capacitor = {name = "cap_generic", hitpoints = 6370.1, armor = 6370.1, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_freighterlight_tier5, "object/ship/freighterlight_tier5.iff")

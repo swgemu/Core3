@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_armor_subpro_corrugated_durasteel = object_tangible_ship_components_armor_shared_armor_subpro_corrugated_durasteel:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "armor_subpro_corrugated_durasteel.iff",
+
+	attributes = {
+		{"maximumHitpoints", 871.792},
+		{"maximumArmorHitpoints", 871.792},
+		{"mass", 9547.36},
+		{"reverseEngineeringLevel", 6},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.375},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_armor_subpro_corrugated_durasteel, "object/tangible/ship/components/armor/armor_subpro_corrugated_durasteel.iff")

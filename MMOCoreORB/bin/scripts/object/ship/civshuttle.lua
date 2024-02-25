@@ -42,7 +42,32 @@
 
 
 object_ship_civshuttle = object_ship_shared_civshuttle:new {
+	objectName = "@space/space_mobile_type:civshuttle",
 
+	name = "civshuttle",
+	type = "civshuttle",
+	faction = "civilian",
+	difficulty = "",
+
+	slideFactor = 1,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 30, acceleration = 26.1, deceleration = 22.446, yaw = 16.2, yawRate = 20.6, pitch = 16.2, pitchRate = 20.6, roll = 16.2, rollRate = 20.6},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 200, back = 200, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	armor_1 = {name = "arm_generic", hitpoints = 200, armor = 200},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 435.2, rechargeRate = 17.408},
+	weapon_0 = {name = "wpn_generic", hitpoints = 200, armor = 200, rate = 0.17, drain = 8.192, maxDamage = 250, minDamage = 120, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_civshuttle, "object/ship/civshuttle.iff")

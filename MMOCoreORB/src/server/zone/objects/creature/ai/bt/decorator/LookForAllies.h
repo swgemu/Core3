@@ -54,7 +54,7 @@ public:
 		if (vec == nullptr)
 			return FAILURE;
 
-		SortedVector<QuadTreeEntry* > closeObjects;
+		SortedVector<TreeEntry* > closeObjects;
 		vec->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
@@ -75,7 +75,7 @@ public:
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
-		if (target == nullptr || target->isDead() || target == agent || !target->isAiAgent() || !(target->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE) ||
+		if (target == nullptr || target->isDead() || target == agent || !target->isAiAgent() || !(target->getPvpStatusBitmask() & ObjectFlag::ATTACKABLE) ||
 			!(target->getOptionsBitmask() & OptionBitmask::AIENABLED) || target->isInCombat())
 			return true;
 

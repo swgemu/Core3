@@ -42,7 +42,34 @@
 
 
 object_ship_decimator_tier5 = object_ship_shared_decimator_tier5:new {
+	objectName = "@space/space_mobile_type:decimator_tier5",
 
+	name = "decimator_tier5",
+	type = "decimator_tier5",
+	faction = "imperial",
+	difficulty = "tier5",
+
+	slideFactor = 1.69,
+	chassisHitpoints = 4915.2,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 6370.1, armor = 6370.1},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 6370.1, armor = 6370.1, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 6370.1, armor = 6370.1, front = 25480.4, back = 25480.4, regen = 46.3},
+	armor_0 = {name = "arm_generic", hitpoints = 13589.5, armor = 13589.5},
+	armor_1 = {name = "arm_generic", hitpoints = 13589.5, armor = 13589.5},
+	capacitor = {name = "cap_generic", hitpoints = 6370.1, armor = 6370.1, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_tieadvanced_blaster", hitpoints = 6370.1, armor = 6370.1, rate = 0.78, drain = 1, maxDamage = 658.35, minDamage = 409.92, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_tieadvanced_blaster", hitpoints = 6370.1, armor = 6370.1, rate = 0.78, drain = 1, maxDamage = 658.35, minDamage = 409.92, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 6370.1, armor = 6370.1, rate = 3, drain = 1, maxDamage = 1975.05, minDamage = 819.84, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 4, ammo_type = 20},
 }
 
 ObjectTemplates:addTemplate(object_ship_decimator_tier5, "object/ship/decimator_tier5.iff")

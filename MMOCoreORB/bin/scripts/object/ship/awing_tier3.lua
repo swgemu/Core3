@@ -42,7 +42,32 @@
 
 
 object_ship_awing_tier3 = object_ship_shared_awing_tier3:new {
+	objectName = "@space/space_mobile_type:awing_tier3",
 
+	name = "awing_tier3",
+	type = "awing_tier3",
+	faction = "rebel",
+	difficulty = "tier3",
+
+	slideFactor = 1.62,
+	chassisHitpoints = 1080,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 972, armor = 972},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 972, armor = 972, speed = 49.01, acceleration = 11.9, deceleration = 9.23, yaw = 19.41, yawRate = 40.74, pitch = 24.51, pitchRate = 49.01, roll = 30.34, rollRate = 55.27},
+	shield_0 = {name = "shd_generic", hitpoints = 972, armor = 972, front = 3888, back = 3888, regen = 9.23},
+	armor_0 = {name = "arm_generic", hitpoints = 2073.6, armor = 2073.6},
+	armor_1 = {name = "arm_generic", hitpoints = 2073.6, armor = 2073.6},
+	capacitor = {name = "cap_generic", hitpoints = 972, armor = 972, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_awing_blaster", hitpoints = 972, armor = 972, rate = 0.78, drain = 1, maxDamage = 162.62, minDamage = 111.13, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_awing_tier3, "object/ship/awing_tier3.iff")

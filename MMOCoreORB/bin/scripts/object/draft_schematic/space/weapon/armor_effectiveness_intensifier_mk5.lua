@@ -56,7 +56,7 @@ object_draft_schematic_space_weapon_armor_effectiveness_intensifier_mk5 = object
    xp = 625, 
 
    assemblySkill = "weapon_systems", 
-   experimentingSkill = "weapons_systems_experimentation", 
+   experimentingSkill = "weapon_systems_experimentation", 
    customizationSkill = "chassis_customization", 
 
    customizationOptions = {},

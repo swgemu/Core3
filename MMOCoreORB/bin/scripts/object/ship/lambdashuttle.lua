@@ -42,7 +42,33 @@
 
 
 object_ship_lambdashuttle = object_ship_shared_lambdashuttle:new {
+	objectName = "@space/space_mobile_type:lambdashuttle",
 
+	name = "lambdashuttle",
+	type = "lambdashuttle",
+	faction = "imperial",
+	difficulty = "",
+
+	slideFactor = 2,
+	chassisHitpoints = 300,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 36, acceleration = 26.1, deceleration = 22.446, yaw = 21, yawRate = 43, pitch = 21, pitchRate = 43, roll = 21, rollRate = 43},
+	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 700, back = 900, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 800, armor = 800},
+	armor_1 = {name = "arm_generic", hitpoints = 800, armor = 800},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 2883.2, rechargeRate = 115.328},
+	weapon_0 = {name = "wpn_tieadvanced_blaster", hitpoints = 200, armor = 200, rate = 1.125, drain = 54.272, maxDamage = 360, minDamage = 220, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_tieadvanced_blaster", hitpoints = 200, armor = 200, rate = 1.125, drain = 54.272, maxDamage = 54.272, minDamage = 54.272, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_lambdashuttle, "object/ship/lambdashuttle.iff")

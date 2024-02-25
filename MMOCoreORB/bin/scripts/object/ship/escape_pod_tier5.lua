@@ -42,7 +42,31 @@
 
 
 object_ship_escape_pod_tier5 = object_ship_shared_escape_pod_tier5:new {
+	objectName = "@space/space_mobile_type:escape_pod_tier5",
 
+	name = "escape_pod_tier5",
+	type = "escape_pod_tier5",
+	faction = "civilian",
+	difficulty = "tier5",
+
+	slideFactor = 1.99,
+	chassisHitpoints = 1228.8,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 1592.52, armor = 1592.52},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 1592.52, armor = 1592.52, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
+	shield_0 = {name = "shd_generic", hitpoints = 1592.52, armor = 1592.52, front = 6370.1, back = 6370.1, regen = 11.58},
+	armor_0 = {name = "arm_generic", hitpoints = 3397.39, armor = 3397.39},
+	armor_1 = {name = "arm_generic", hitpoints = 3397.39, armor = 3397.39},
+	capacitor = {name = "cap_generic", hitpoints = 1592.52, armor = 1592.52, energy = 5000, rechargeRate = 100},
 }
 
 ObjectTemplates:addTemplate(object_ship_escape_pod_tier5, "object/ship/escape_pod_tier5.iff")

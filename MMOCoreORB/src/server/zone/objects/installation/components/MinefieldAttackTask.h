@@ -77,7 +77,7 @@ public:
 			if(tano == nullptr)
 				return;
 
-			tano->setPvpStatusBitmask(tano->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE);
+			tano->setPvpStatusBitmask(tano->getPvpStatusBitmask() | ObjectFlag::ATTACKABLE);
 		}
 
 		//clocker.release();

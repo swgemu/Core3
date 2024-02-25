@@ -131,7 +131,7 @@ public:
 		if (targetCreature->isAiAgent()) {
 			AiAgent* targetAgent = targetCreature->asAiAgent();
 
-			if (targetAgent != nullptr && (targetAgent->getCreatureBitmask() & CreatureFlag::NODOT))
+			if (targetAgent != nullptr && (targetAgent->getCreatureBitmask() & ObjectFlag::NODOT))
 				return false;
 		}
 
@@ -169,7 +169,7 @@ public:
 		try {
 			CloseObjectsVector* vec = (CloseObjectsVector*)attackerCreo->getCloseObjects();
 
-			SortedVector<QuadTreeEntry*> closeObjects;
+			SortedVector<TreeEntry*> closeObjects;
 
 			if (vec != nullptr) {
 				closeObjects.removeAll(vec->size(), 10);
@@ -178,7 +178,7 @@ public:
 	#ifdef COV_DEBUG
 				attacker->info("Null closeobjects vector in DotPackCommand::handleArea", true);
 	#endif
-				zone->getInRangeObjects(attackerCreo->getPositionX(), attackerCreo->getPositionY(), 128, &closeObjects, true);
+				zone->getInRangeObjects(attackerCreo->getPositionX(), attackerCreo->getPositionZ(), attackerCreo->getPositionY(), 128, &closeObjects, true);
 			}
 
 

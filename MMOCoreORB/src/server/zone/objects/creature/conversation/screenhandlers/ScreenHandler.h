@@ -26,7 +26,7 @@ public:
 		return nextScreenId;
 	}
 
-	virtual ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) = 0;
+	virtual ConversationScreen* handleScreen(CreatureObject* conversingPlayer, SceneObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) = 0;
 };
 
 } // namespace screenhandlers

@@ -42,17 +42,14 @@
 
 
 object_draft_schematic_space_chassis_tieadvanced = object_draft_schematic_space_chassis_shared_tieadvanced:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "TIE Advanced Chassis Blueprints",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 39,
 	size = 1,
 	factoryCrateSize = 0,
 	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
-   
+
 	xpType = "shipwright",
 	xp = 20000,
 

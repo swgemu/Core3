@@ -10,7 +10,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 
 void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
@@ -42,7 +42,7 @@ void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 		return;
 
 	// if minefield is overt and player is not
-	if((installation->getPvpStatusBitmask() & CreatureFlag::OVERT) && (player->getPvpStatusBitmask() & !(player->getPvpStatusBitmask() & CreatureFlag::OVERT)))
+	if((installation->getPvpStatusBitmask() & ObjectFlag::OVERT) && (player->getPvpStatusBitmask() & !(player->getPvpStatusBitmask() & ObjectFlag::OVERT)))
 		return;
 
 	//menuResponse->addRadialMenuItem(37, 3, "@player_structure:mnu_donate_mines"); // Donate MInes

@@ -89,7 +89,7 @@ int LuaConversationScreen::sendTo(lua_State* L) {
 	//void sendTo(CreatureObject* player, CreatureObject* npc) {
 
 	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -2);
-	CreatureObject* npc = (CreatureObject*) lua_touserdata(L, -1);
+	SceneObject* npc = (SceneObject*) lua_touserdata(L, -1);
 
 	realObject->sendTo(player, npc);
 

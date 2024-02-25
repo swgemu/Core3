@@ -43,7 +43,7 @@
 object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_shared_hq_s01_imp:new {
 	lotSize = 0,
 	containerComponent = "GCWBaseContainerComponent",
-	zoneComponent = "StructureZoneComponent",
+	groundZoneComponent = "StructureZoneComponent",
 	maintenanceCost = 0,
 	baseMaintenanceRate = 0,
 	faction = "imperial",

@@ -42,7 +42,34 @@
 
 
 object_ship_decimator_tier2 = object_ship_shared_decimator_tier2:new {
+	objectName = "@space/space_mobile_type:decimator_tier2",
 
+	name = "decimator_tier2",
+	type = "decimator_tier2",
+	faction = "imperial",
+	difficulty = "tier2",
+
+	slideFactor = 1.69,
+	chassisHitpoints = 1200,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 900, armor = 900},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 900, armor = 900, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
+	shield_0 = {name = "shd_generic", hitpoints = 900, armor = 900, front = 3600, back = 3600, regen = 10.8},
+	armor_0 = {name = "arm_generic", hitpoints = 1920, armor = 1920},
+	armor_1 = {name = "arm_generic", hitpoints = 1920, armor = 1920},
+	capacitor = {name = "cap_generic", hitpoints = 900, armor = 900, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_tieadvanced_blaster", hitpoints = 900, armor = 900, rate = 0.78, drain = 1, maxDamage = 176, minDamage = 126, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_tieadvanced_blaster", hitpoints = 900, armor = 900, rate = 0.78, drain = 1, maxDamage = 176, minDamage = 126, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
+	weapon_2 = {name = "wpn_seinar_concussion_missile_s01", hitpoints = 900, armor = 900, rate = 3, drain = 1, maxDamage = 528, minDamage = 252, shieldEfficiency = 0.75, armorEfficiency = 0.75, ammo = 5, ammo_type = 17},
 }
 
 ObjectTemplates:addTemplate(object_ship_decimator_tier2, "object/ship/decimator_tier2.iff")

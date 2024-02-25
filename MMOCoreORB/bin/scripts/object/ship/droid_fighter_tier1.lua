@@ -42,7 +42,32 @@
 
 
 object_ship_droid_fighter_tier1 = object_ship_shared_droid_fighter_tier1:new {
+	objectName = "@space/space_mobile_type:droid_fighter_tier1",
 
+	name = "droid_fighter_tier1",
+	type = "droid_fighter_tier1",
+	faction = "civilian",
+	difficulty = "tier1",
+
+	slideFactor = 1.92,
+	chassisHitpoints = 240,
+	chassisMass = 5000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 150, armor = 200},
+	engine = {name = "eng_incom_fusialthrust", hitpoints = 150, armor = 200, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},
+	shield_0 = {name = "shd_generic", hitpoints = 150, armor = 200, front = 600, back = 600, regen = 3},
+	armor_0 = {name = "arm_generic", hitpoints = 320, armor = 320},
+	armor_1 = {name = "arm_generic", hitpoints = 320, armor = 320},
+	capacitor = {name = "cap_generic", hitpoints = 150, armor = 200, energy = 5000, rechargeRate = 100},
+	weapon_0 = {name = "wpn_incom_blaster", hitpoints = 150, armor = 200, rate = 0.78, drain = 1, maxDamage = 40, minDamage = 30, shieldEfficiency = 0.56, armorEfficiency = 0.56, ammo = 0, ammo_type = 0},
 }
 
 ObjectTemplates:addTemplate(object_ship_droid_fighter_tier1, "object/ship/droid_fighter_tier1.iff")

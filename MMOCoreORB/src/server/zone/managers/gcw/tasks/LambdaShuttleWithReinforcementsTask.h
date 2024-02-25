@@ -165,7 +165,7 @@ private:
 
 				npc->writeBlackboard("formationOffset", formationOffset);
 			} else {
-				npc->addCreatureFlag(CreatureFlag::STATIONARY);
+				npc->addObjectFlag(ObjectFlag::STATIONARY);
 			}
 
 			squadObserver->addMember(npc);
@@ -205,12 +205,12 @@ private:
 					continue;
 
 				Locker alock(agent, squadLeader);
-				agent->addCreatureFlag(CreatureFlag::FOLLOW);
+				agent->addObjectFlag(ObjectFlag::FOLLOW);
 				agent->setFollowObject(squadLeader);
 			}
 
-			squadLeader->removeCreatureFlag(CreatureFlag::STATIONARY);
-			squadLeader->addCreatureFlag(CreatureFlag::FOLLOW);
+			squadLeader->removeObjectFlag(ObjectFlag::STATIONARY);
+			squadLeader->addObjectFlag(ObjectFlag::FOLLOW);
 			squadLeader->setFollowObject(player);
 		}
 

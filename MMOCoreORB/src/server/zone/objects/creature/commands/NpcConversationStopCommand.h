@@ -5,9 +5,10 @@
 #ifndef NPCCONVERSATIONSTOPCOMMAND_H_
 #define NPCCONVERSATIONSTOPCOMMAND_H_
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 class NpcConversationStopCommand : public QueueCommand {
 public:
-
 	NpcConversationStopCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
@@ -31,27 +32,29 @@ public:
 		if (zoneServer == nullptr)
 			return GENERALERROR;
 
-		uint64 conversationCreatureOid = ghost->getConversatingCreature();
+		uint64 conversationCreatureOid = ghost->getConversatingObject();
 		ManagedReference<SceneObject*> object = zoneServer->getObject(conversationCreatureOid);
 
-		if (object == nullptr || !object->isCreatureObject())
+		if (object == nullptr)
 			return GENERALERROR;
 
-		ManagedReference<CreatureObject*> agentCreo = (object).castTo<CreatureObject*>();
+		Locker clocker(object, creature);
 
-		if (agentCreo != nullptr) {
-			try {
-				Locker clocker(agentCreo, creature);
+		object->notifyObservers(ObserverEventType::STOPCONVERSATION, creature);
 
-				agentCreo->notifyObservers(ObserverEventType::STOPCONVERSATION, creature);
-				agentCreo->stopConversation();
-			} catch (Exception& e) {
+		if (object->isCreatureObject()) {
+			auto targetCreature = object->asCreatureObject();
+
+			if (targetCreature != nullptr) {
+				try {
+					targetCreature->stopConversation();
+				} catch (Exception& e) {
+				}
 			}
 		}
 
 		return SUCCESS;
 	}
-
 };
 
-#endif //NPCCONVERSATIONSTOPCOMMAND_H_
+#endif // NPCCONVERSATIONSTOPCOMMAND_H_

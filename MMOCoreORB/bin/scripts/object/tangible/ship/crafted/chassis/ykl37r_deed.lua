@@ -42,9 +42,11 @@
 
 
 object_tangible_ship_crafted_chassis_ykl37r_deed = object_tangible_ship_crafted_chassis_shared_ykl37r_deed:new {
+	templateType = SHIPDEED,
+	gameObjectType = 8388617,
 
-    templateType = SHIPDEED,
-	shipControlObject = "object/intangible/ship/ykl37r_pcd.iff",
+	shipType = 1, --FIGHTERSHIP,
+	shipControlDevice = "object/intangible/ship/ykl37r_pcd.iff",
 	generatedObjectTemplate = "object/ship/player/player_ykl37r.iff",
 }
 

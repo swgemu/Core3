@@ -27,7 +27,7 @@
 #include "components/TurretDataComponent.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "templates/params/OptionBitmask.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
@@ -779,20 +779,25 @@ void InstallationObjectImplementation::updateStructureStatus() {
 	}
 }
 
-bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
+bool InstallationObjectImplementation::isAggressiveTo(TangibleObject* target) {
 	// info(true) << "InstallationObjectImp isAggressiveTo check called";
 
 	if (target == nullptr || target->isVehicleObject() || target->isInvisible())
 		return false;
 
-	bool targetIsPlayer = target->isPlayerCreature();
-	bool targetIsAgent = target->isAiAgent();
+	auto targetCreo = target->asCreatureObject();
+
+	if (targetCreo == nullptr)
+		return false;
+
+	bool targetIsPlayer = targetCreo->isPlayerCreature();
+	bool targetIsAgent = targetCreo->isAiAgent();
 
 	// Get factions
 	uint32 thisFaction = getFaction();
-	uint32 targetFaction = target->getFaction();
+	uint32 targetFaction = targetCreo->getFaction();
 
-	PlayerObject* ghost = target->getPlayerObject();
+	PlayerObject* ghost = targetCreo->getPlayerObject();
 
 	if (targetIsPlayer && ghost != nullptr) {
 		if (ghost->hasCrackdownTefTowards(thisFaction)) {
@@ -802,7 +807,7 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 		if (covertOvert) {
-			if (!ghost->hasGcwTef() && target->getFactionStatus() == FactionStatus::COVERT) {
+			if (!ghost->hasGcwTef() && targetCreo->getFactionStatus() == FactionStatus::COVERT) {
 				return false;
 			}
 		}
@@ -818,13 +823,11 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 
 		if (!factionString.isEmpty()) {
 			if (targetIsAgent) {
-				AiAgent* targetAi = target->asAiAgent();
+				AiAgent* targetAi = targetCreo->asAiAgent();
 
 				if (FactionManager::instance()->isEnemy(factionString, targetAi->getFactionString()))
 					return true;
 			} else if (targetIsPlayer) {
-				PlayerObject* ghost = target->getPlayerObject();
-
 				if (ghost == nullptr)
 					return false;
 
@@ -843,7 +846,7 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 						return true;
 				}
 
-				if (thisFaction == 0 && isAttackableBy(target))
+				if (thisFaction == 0 && isAttackableBy(targetCreo))
 					return true;
 			}
 		}
@@ -860,7 +863,7 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* creature) 
 
 	// info(true) << "InstallationObjectImp isAttackableBy called for " << getObjectID() << "  with attacker creature of " << creature->getObjectID();
 
-	if (!(getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
+	if (!(getPvpStatusBitmask() & ObjectFlag::ATTACKABLE)) {
 		return false;
 	}
 
@@ -905,7 +908,7 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* creature) 
 		bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 		if (!covertOvert) {
-			if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && creatureStatus != FactionStatus::OVERT) {
+			if ((getPvpStatusBitmask() & ObjectFlag::OVERT) && creatureStatus != FactionStatus::OVERT) {
 				return false;
 			}
 		}

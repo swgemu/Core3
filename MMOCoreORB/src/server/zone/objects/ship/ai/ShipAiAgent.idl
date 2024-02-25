@@ -1,0 +1,607 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.ship.ai;
+
+import system.util.Vector;
+import system.lang.Time;
+import system.lang.String;
+import system.lang.Exception;
+import server.zone.Zone;
+
+import server.zone.objects.ship.FighterShipObject;
+include server.zone.objects.ship.ShipObject;
+import server.zone.objects.ship.ai.events.ShipAiBehaviorEvent;
+import server.zone.objects.ship.ai.events.DespawnAiShipOnNoPlayersInRange;
+import system.lang.ref.Reference;
+import server.zone.TreeEntry;
+include server.zone.objects.ship.ai.SpacePatrolPointsVector;
+include server.zone.objects.ship.ai.SpacePatrolPoint;
+import engine.core.ManagedObject;
+import server.zone.objects.tangible.TangibleObject;
+include templates.SharedObjectTemplate;
+include templates.tangible.ship.SharedShipObjectTemplate;
+import engine.util.Observable;
+include system.thread.Mutex;
+include system.thread.ReadWriteLock;
+include server.zone.objects.ship.ai.btspace.BehaviorSpace;
+include server.zone.objects.ship.ai.btspace.BehaviorTreeSlotSpace;
+import server.zone.objects.ship.ai.btspace.BlackboardDataSpace;
+include server.zone.objects.ship.ai.btspace.BlackboardDataMapSpace;
+import system.thread.atomic.AtomicInteger;
+import server.zone.objects.scene.SceneObject;
+include system.util.VectorMap;
+include engine.util.u3d.Vector3;
+include server.zone.objects.creature.variables.CooldownTimerMap;
+include engine.util.u3d.Quaternion;
+include server.zone.objects.creature.CreatureObject;
+
+@json
+class ShipAiAgent extends FighterShipObject {
+	protected transient ShipAiBehaviorEvent behaviorEvent;
+
+	@dereferenced
+	protected transient SpacePatrolPointsVector patrolPoints;
+
+	@dereferenced
+	protected transient SpacePatrolPoint homeLocation;
+
+	@dereferenced
+	protected transient SpacePatrolPoint nextStepPosition;
+
+	@dereferenced
+	protected transient SpacePatrolPoint endMovementPosition;
+
+	@dereferenced
+	protected transient Vector3 lastPosition;
+
+	@dereferenced
+	protected transient Vector3 lastDirection;
+
+	@dereferenced
+	protected transient Vector3 currentDirection;
+
+	@dereferenced
+	protected transient Vector3 nextDirection;
+
+	protected boolean despawnOnNoPlayerInRange;
+
+	@weakReference
+	private ShipObject followShip;
+
+	@weakReference
+	private ShipObject followShipStore;
+
+	@weakReference
+	private ShipObject targetShip;
+
+	private unsigned int movementState;
+
+	protected unsigned int movementCount;
+
+	@dereferenced
+	private transient Mutex targetMutex;
+
+	@dereferenced
+	private transient Mutex behaviorEventMutex;
+
+	private int nextBehaviorInterval;
+
+	protected float respawnTimer;
+	protected int respawnCounter;
+	protected boolean randomRespawn;
+
+	protected float coordinateMin;
+	protected float coordinateMax;
+
+	private float currentSpeed;
+	private float lastSpeed;
+
+	@dereferenced
+	protected transient AtomicInteger numberOfPlayersInRange;
+
+	protected transient DespawnAiShipOnNoPlayersInRange despawnEvent;
+
+	// btree bit
+	@dereferenced
+	@rawTemplate(value = "BehaviorTreeSlotSpace, Reference<BehaviorSpace*>")
+	private transient VectorMap btreeMap;
+
+	@dereferenced
+	private transient Vector<unsigned int> runningChain;
+
+	@dereferenced
+	private string aiTemplate;
+
+	@dereferenced
+	private transient BlackboardDataMapSpace blackboard;
+
+	@dereferenced
+	protected transient Time alertedTime;
+
+	@dereferenced
+	protected transient Time aggroDelay;
+
+	@dereferenced
+	protected transient Time evadeDelay;
+
+	@transactional
+	protected transient CooldownTimerMap cooldownTimerMap;
+
+	protected unsigned int shipBitmask;
+
+	public static final int BEHAVIORINTERVAL = 200; // msec
+
+	public static final float DEFAULTAGGRORADIUS = 768.f;
+	public static final float MAX_ATTACK_DISTANCE = 1280.f;
+
+	public static final int OBLIVIOUS = 0;
+	public static final int WATCHING = 1;
+	public static final int FOLLOWING = 2;
+	public static final int PATROLLING = 3;
+	public static final int ATTACKING = 4;
+	public static final int FLEEING = 5;
+	public static final int LEASHING = 6;
+	public static final int EVADING = 7;
+	public static final int PATHING_HOME = 8;
+	public static final int FOLLOW_FORMATION = 9;
+
+	public static final int NEUTRAL_PROJECTILE = 2;
+	public static final int REBEL_PROJECTILE = 4;
+	public static final int IMPERIAL_PROJECTILE = 6;
+
+	protected transient unsigned long customShipAiMap;
+
+	public ShipAiAgent() {
+		movementState = OBLIVIOUS;
+
+		respawnTimer = 0;
+		respawnCounter = 0;
+		randomRespawn = false;
+
+		nextBehaviorInterval = BEHAVIORINTERVAL;
+
+		despawnOnNoPlayerInRange = false;
+
+		aiTemplate = "";
+		customShipAiMap = 0;
+
+		coordinateMin = -8192;
+		coordinateMax = 8192;
+	}
+
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native abstract void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public native abstract void loadTemplateData(SharedShipObjectTemplate shipTemp);
+
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+
+	public void finalize() {
+	}
+
+	@local
+	public native void notifyInsert(TreeEntry entry);
+
+	@local
+	public native void notifyDissapear(TreeEntry entry);
+
+	@weakReference
+	public ShipObject getFollowShipObject() {
+		return followShip;
+	}
+
+	public void storeFollowObject() {
+		synchronized (targetMutex) {
+			followShipStore = followShip;
+		}
+	}
+
+	@weakReference
+	public ShipObject getTargetShipObject() {
+		return targetShip;
+	}
+
+	@read
+	public unsigned int getMovementState() {
+		return movementState;
+	}
+
+	@dirty
+	public native void setMovementState(int state);
+
+	public native void setNextPathPosition(ShipObject targetShip);
+
+	@local
+	@dereferenced
+	public native SpacePatrolPoint getNextPosition();
+
+	@local
+	@dereferenced
+	public native SpacePatrolPoint getFinalPosition();
+
+	public native boolean isInRangePosition(@dereferenced final Vector3 value, float radius);
+
+	@local
+	@dirty
+	@dereferenced
+	public native SpacePatrolPoint getNextFollowPosition(ShipObject followShip);
+
+	@local
+	@dirty
+	@dereferenced
+	public native SpacePatrolPoint getNextAttackPosition(ShipObject targetShip);
+
+	@local
+	@dirty
+	@dereferenced
+	public native SpacePatrolPoint getNextEvadePosition();
+
+	@local
+	@dereferenced
+	public native Vector3 getInterceptPosition(ShipObject targetShip, float speed, int slot);
+
+	@dirty
+	public abstract native float getMaxDistance();
+
+	@preLocked
+	public abstract native int setDestination();
+
+	@local
+	public native final Quaternion unitVectorToQuaternion();
+
+	public native float getRotationRate(float currentRadians, float lastRadians);
+
+	public native float getMaxThrottle();
+
+	public native float getMinThrottle();
+
+	public native float qInvSqrt(float x);
+
+	public native float qNormalize(@dereferenced Vector3 vec);
+
+	public native boolean setDisabledEngineSpeed();
+
+	public native void setSpeed();
+
+	public native void setShipDirection();
+
+	public native void setNextPosition();
+
+	@preLocked
+	public abstract native boolean findNextPosition(int maxDistance);
+
+	public abstract native boolean generatePatrol(int num, float dist);
+
+	@preLocked
+	public abstract native void leash();
+
+	public abstract native void broadcastTransform(@dereferenced final Vector3 position);
+
+	public void clearPatrolPoints() {
+		synchronized (targetMutex) {
+			patrolPoints.removeAll();
+		}
+	}
+
+	@local
+	public int getPatrolPointSize() {
+		synchronized (targetMutex) {
+			return patrolPoints.size();
+		}
+	}
+
+	@preLocked
+	public void setHomeLocation(float x, float z, float y, @dereferenced final Quaternion direction) {
+		homeLocation.setPosition(x, z, y);
+		homeLocation.setReached(true);
+		homeLocation.setDirection(direction.getW(), direction.getX(), direction.getZ(), direction.getY());
+	}
+
+	public void setFollowShipObject(ShipObject ship) {
+		synchronized (targetMutex) {
+			if (this.isRetreating())
+				return;
+
+			if (ship != null && followShip != ship) {
+				setMovementState(FOLLOWING);
+
+				followShip = ship;
+			}
+		}
+	}
+
+	public void setTargetShipObject(ShipObject ship) {
+		synchronized (targetMutex) {
+			if (targetShip != ship) {
+				targetShip = ship;
+			}
+		}
+	}
+
+	@dirty
+	public abstract boolean isRetreating() {
+		return getMovementState() == LEASHING;
+	}
+
+	@dirty
+	public boolean isFleeing() {
+		return getMovementState() == FLEEING;
+	}
+
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender ShipObject to set as the active defender
+	 */
+	@preLocked
+	public native void setDefender(ShipObject defender);
+
+	/**
+	 * Evaluates if this can be attacked by object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if object can attack this
+	 */
+	@dirty
+	public native abstract boolean isAttackableBy(TangibleObject object);
+
+	@dirty
+	public native boolean isAttackableBy(CreatureObject object);
+
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
+	@dirty
+	public abstract native boolean isAggressiveTo(TangibleObject object);
+
+	@dirty
+	public abstract native boolean isAggressive(TangibleObject object);
+
+	/**
+	 * Set the wait time in milliseconds
+	 * will overwrite the current wait timer
+	 **/
+	@preLocked
+	public native void setWait(int wait);
+
+	/**
+	 * Sets the wait timer to current time and removes
+	 * the possible blackboard value
+	 **/
+	@preLocked
+	public native void stopWaiting();
+
+	/**
+	 * Sees if our wait time is up (won't work for indefinite waits?)
+	 **/
+	@read
+	public native boolean isWaiting();
+
+	/**
+	 * Schedules the next movement event
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
+	@preLocked
+	public abstract native void activateAiBehavior(boolean reschedule = false);
+
+	/**
+	 * Stops the movement event task
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
+	@preLocked
+	public abstract native void cancelBehaviorEvent();
+
+	/**
+	 * Does the main AI update tick
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this AI will have performed one update tick }
+	 */
+	@preLocked
+	public native void runBehaviorTree();
+
+	@local
+	@preLocked
+	public native void handleException(@dereferenced final Exception e, final string context);
+
+	public native boolean isRunningBehavior(unsigned int id);
+	public native void addRunningID(unsigned int id);
+	public native void popRunningChain();
+	public native unsigned int peekRunningChain();
+	public native void clearRunningChain();
+	public native void setShipAiTemplate();
+
+	@local
+	@preLocked
+	public native BehaviorSpace getBehaviorTreeSpace(@dereferenced final BehaviorTreeSlotSpace slot);
+
+	@local
+	@preLocked
+	public native void setTree(BehaviorSpace subRoot, @dereferenced final BehaviorTreeSlotSpace slot);
+
+	@local
+	@preLocked
+	public native void removeTree(@dereferenced final BehaviorTreeSlotSpace slot);
+
+	@local
+	public native void writeBlackboard(final string key, @dereferenced final BlackboardDataSpace data);
+
+	@preLocked
+	public native void setShipAiDebug(boolean flag);
+
+	public native boolean getShipAiDebug();
+
+	@read
+	public unsigned int getShipBitmask() {
+		return shipBitmask;
+	}
+
+	@preLocked
+	public void setShipBitmask(unsigned int mask) {
+		shipBitmask = mask;
+	}
+
+	@preLocked
+	public native void addShipFlag(unsigned int option);
+
+	@preLocked
+	public native void removeShipFlag(unsigned int option);
+
+	@preLocked
+	public void destroyObjectFromWorld(boolean sendSelfDestroy) {
+		super.destroyObjectFromWorld(sendSelfDestroy);
+
+		numberOfPlayersInRange.set(0);
+
+		if (behaviorEvent) {
+			cancelBehaviorEvent();
+		}
+	}
+
+	@read
+	public boolean getDespawnOnNoPlayerInRange() {
+		return despawnOnNoPlayerInRange;
+	}
+
+	@local
+	@dirty
+	public Time getAlertedTime() {
+		return alertedTime;
+	}
+
+	@local
+	@dirty
+	public Time getAggroDelay() {
+		return aggroDelay;
+	}
+
+	@local
+	@dirty
+	public Time getEvadeDelay() {
+		return evadeDelay;
+	}
+
+	@dirty
+	public abstract int getNumberOfPlayersInRange() {
+		return numberOfPlayersInRange.get();
+	}
+
+	@local
+	@dirty
+	@dereferenced
+	public native Vector3 getCurrentDirectionVector();
+
+	@preLocked
+	public native void setDespawnOnNoPlayerInRange(boolean val);
+
+	@preLocked
+	public abstract void clearDespawnEvent() {
+		despawnEvent = null;
+	}
+
+	@preLocked
+	@dereferenced
+	@local
+	public boolean peekBlackboard(final string key) {
+		return blackboard.contains(key);
+	}
+
+	@preLocked
+	@dereferenced
+	@local
+	public BlackboardDataSpace readBlackboard(final string key) {
+		return blackboard.get(key);
+	}
+
+	@preLocked
+	@local
+	public void eraseBlackboard(final string key) {
+		blackboard.drop(key);
+	}
+
+	@preLocked
+	@local
+	public void wipeBlackboard() {
+		blackboard.removeAll();
+	}
+
+	@preLocked
+	public void setCustomShipAiMap(unsigned long customMap) {
+		customShipAiMap = customMap;
+	}
+
+	@local
+	@dirty
+	public abstract SpacePatrolPoint getHomeLocation() {
+		return homeLocation;
+	}
+
+	@dirty
+	@nativeStub
+	@local
+	public native ShipAiAgent asShipAiAgent();
+
+	@dirty
+	public boolean isShipAiAgent() {
+		return true;
+	}
+
+	@read
+	public boolean isAggroDelayPast() {
+		return aggroDelay.isPast();
+	}
+
+	@read
+	public boolean isEvadeDelayPast() {
+		return evadeDelay.isPast();
+	}
+
+	public int getMovementCount() {
+		return movementCount;
+	}
+
+	void setMovementCount(int val) {
+		movementCount = val;
+	}
+
+	public native boolean isTargetForward();
+
+	public native boolean checkLineOfSight(SceneObject obj);
+
+	public native void sendDebugMessage();
+
+	public native void sendDebugPath();
+
+	public float getCurrentSpeed() {
+		return currentSpeed;
+	}
+
+	@preLocked
+	public native boolean validateTarget();
+
+	@preLocked
+	public native boolean validateTarget(ShipObject targetShip);
+
+	public native boolean fireWeaponAtTarget(ShipObject targetShip, unsigned int slot, unsigned int targetSlot);
+
+	public native boolean fireTurretAtTarget(ShipObject targetShip, unsigned int slot, unsigned int targetSlot);
+}

@@ -40,11 +40,12 @@ include system.util.SortedVector;
 include system.lang.ref.WeakReference;
 include engine.log.Logger;
 include server.zone.CloseObjectsVector;
-include server.zone.QuadTreeEntry;
+include server.zone.TreeEntry;
 import system.util.SynchronizedVectorMap;
 import server.zone.managers.auction.AuctionSearchTask;
 import server.zone.objects.tangible.Instrument;
 include server.zone.objects.creature.CommandQueue;
+include server.zone.objects.ship.ShipObject;
 
 @mock
 @json
@@ -222,6 +223,8 @@ class CreatureObject extends TangibleObject {
 	public static final unsigned long DEAD_TOO_LONG = 1800000; //30 minutes - How long can someone be dead and still be resuscitated in Miliseconds
 
 	public transient unsigned long tradeTargetID;
+
+	public static final int CONVERSATION_MAX_DISTANCE = 7; // Max range for conversations
 
 	/**
 	 * CreatureObject constructor, used to initialized the object
@@ -1050,6 +1053,9 @@ class CreatureObject extends TangibleObject {
 	public native boolean clearState(unsigned long state, boolean notifyClient = true);
 
 	@preLocked
+	public native void clearSpaceStates();
+
+	@preLocked
 	public void setControlDevice(ControlDevice device) {
 		controlDevice = device;
 	}
@@ -1182,7 +1188,7 @@ class CreatureObject extends TangibleObject {
 	 * @return returns true if its aggressive
 	 */
 	@dirty
-	public native boolean isAggressiveTo(CreatureObject object);
+	public native boolean isAggressiveTo(TangibleObject object);
 
 	/**
 	 * Is called when this object is destroyed
@@ -1212,14 +1218,14 @@ class CreatureObject extends TangibleObject {
 	public native void notifyLoadFromDatabase();
 
 	@local
-	public native void notifyInsert(QuadTreeEntry obj);
+	public native void notifyInsert(TreeEntry obj);
 
 	@local
-	public native void notifyDissapear(QuadTreeEntry obj);
+	public native void notifyDissapear(TreeEntry obj);
 
 	@dirty
 	@local
-	public native void notifyPositionUpdate(QuadTreeEntry entry);
+	public native void notifyPositionUpdate(TreeEntry entry);
 
 	/**
 	 * Destroys this object from database
@@ -2148,6 +2154,31 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@read
+	public boolean isPilotingShip() {
+		return (stateBitmask & CreatureState.PILOTINGSHIP) || (stateBitmask & CreatureState.PILOTINGPOBSHIP);
+	}
+
+	@read
+	public boolean isOnboardPobShip() {
+		return (stateBitmask & CreatureState.SHIPINTERIOR) || (stateBitmask & CreatureState.SHIPOPERATIONS) || (stateBitmask & CreatureState.SHIPGUNNER);
+	}
+
+	@read
+	public boolean isInShipStation() {
+		return (stateBitmask & CreatureState.PILOTINGPOBSHIP) || (stateBitmask & CreatureState.SHIPOPERATIONS) || (stateBitmask & CreatureState.SHIPGUNNER);
+	}
+
+	@read
+	public boolean isPobShipOperator() {
+		return stateBitmask & CreatureState.SHIPOPERATIONS;
+	}
+
+	@read
+	public boolean isShipGunner() {
+		return stateBitmask & CreatureState.SHIPGUNNER;
+	}
+
+	@read
 	public boolean isWalking() {
 		return currentSpeed <= walkSpeed;
 	}
@@ -2259,9 +2290,6 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@preLocked
-	public native void removeOutOfRangeObjects();
-
-	@preLocked
 	public native void synchronizeCloseObjects();
 
 	@preLocked
@@ -2317,4 +2345,8 @@ class CreatureObject extends TangibleObject {
 	public unsigned long getTradeTargetID() {
 		return tradeTargetID;
 	}
+
+	@dirty
+	@local
+	public native boolean checkInConversationRange(SceneObject object);
 }

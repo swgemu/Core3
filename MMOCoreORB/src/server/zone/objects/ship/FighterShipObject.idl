@@ -6,9 +6,29 @@
 package server.zone.objects.ship;
 
 import server.zone.objects.ship.ShipObject;
+import engine.log.Logger;
+
+include templates.SharedObjectTemplate;
+include templates.tangible.ship.SharedShipObjectTemplate;
 
 class FighterShipObject extends ShipObject {
 	public FighterShipObject() {
 		Logger.setLoggingName("FighterShipObject");
 	}
+
+	@local
+	public native abstract void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public native abstract void loadTemplateData(SharedShipObjectTemplate shipTemp);
+
+	@dirty
+	@local
+	@nativeStub
+	public native boolean isFighterShipObject();
+
+	@dirty
+	@nativeStub
+	@local
+	public native FighterShipObject asFighterShipObject();
 }

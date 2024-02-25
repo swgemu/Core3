@@ -65,6 +65,19 @@ TEST_F(ConfigManagerTest, EnabledZones) {
 	std::cerr << "' }" << std::endl;
 }
 
+TEST_F(ConfigManagerTest, EnabledSpaceZones) {
+	auto enabledSpaceZones = configManager->getEnabledSpaceZones();
+	ASSERT_TRUE(enabledSpaceZones.size() != 0);
+
+	std::cerr << "[>>>>>>>>>>] SpaceZonesEnabled = { '";
+
+	for (int i = 0;i < enabledSpaceZones.size(); i++) {
+		std::cerr << (i == 0 ? "" : "', '") <<  enabledSpaceZones.get(i).toCharArray();
+	}
+
+	std::cerr << "' }" << std::endl;
+}
+
 TEST_F(ConfigManagerTest, TreFiles) {
 	auto treFilesToLoad = configManager->getTreFiles();
 	ASSERT_TRUE(treFilesToLoad.size() != 0);

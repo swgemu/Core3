@@ -98,7 +98,7 @@ int ContrabandScanSessionImplementation::cancelSession() {
 		if (scanner != nullptr && !scanner->isInCombat()) {
 			Locker crossLocker(scanner, player);
 
-			scanner->removeCreatureFlag(CreatureFlag::FOLLOW);
+			scanner->removeObjectFlag(ObjectFlag::FOLLOW);
 
 			scanner->setMovementState(AiAgent::LEASHING);
 			scanner->leash();
@@ -152,8 +152,8 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 		if (scannerFaction == Factions::FACTIONIMPERIAL)
 			sendStormtrooperMessage(scanner, "follow_start");
 
-		if (!(scanner->getCreatureBitmask() & CreatureFlag::FOLLOW))
-			scanner->addCreatureFlag(CreatureFlag::FOLLOW);
+		if (!(scanner->getCreatureBitmask() & ObjectFlag::FOLLOW))
+			scanner->addObjectFlag(ObjectFlag::FOLLOW);
 
 		scanner->setFollowObject(player);
 		scanner->setMovementState(AiAgent::CRACKDOWN_SCANNING);
@@ -570,7 +570,7 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			sendSystemMessage(scanner, player, "discovered_imperial", "discovered_rebel");
 			scanner->doAnimation("point_accusingly");
 
-			scanner->removeCreatureFlag(CreatureFlag::FOLLOW);
+			scanner->removeObjectFlag(ObjectFlag::FOLLOW);
 			scanner->setMovementState(AiAgent::FOLLOWING);
 
 			if (ConfigManager::instance()->useCovertOvertSystem()) {
@@ -731,7 +731,7 @@ void ContrabandScanSessionImplementation::jediDetect(Zone* zone, AiAgent* scanne
 			String landingMessage = getFactionStringId(player, "containment_team_jedi_imperial", "containment_team_jedi_rebel");
 			callInLambdaShuttle(scanner, player, JEDIREINFORCEMENTDIFFICULTY, landingMessage);
 
-			scanner->removeCreatureFlag(CreatureFlag::FOLLOW);
+			scanner->removeObjectFlag(ObjectFlag::FOLLOW);
 			scanner->setMovementState(AiAgent::FOLLOWING);
 
 			addCrackdownTef(player);

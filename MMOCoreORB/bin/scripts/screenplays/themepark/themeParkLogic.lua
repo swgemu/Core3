@@ -79,7 +79,7 @@ function ThemeParkLogic:spawnNpcs()
 		end
 
 		if npcSpawnData.position == SIT then
-			CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+			CreatureObject(pNpc):setState(SITTINGONCHAIR)
 		end
 		if (npcSpawnData.mood ~= nil and npcSpawnData.mood ~= "") then
 			CreatureObject(pNpc):setMoodString(npcSpawnData.mood)
@@ -897,7 +897,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea
 		elseif mission.missionType == "escort" then
 			CreatureObject(pNpc):setOptionBit(INTERESTING)
 			CreatureObject(pNpc):setOptionBit(AIENABLED)
-			AiAgent(pNpc):addCreatureFlag(AI_STATIONARY)
+			AiAgent(pNpc):addObjectFlag(AI_STATIONARY)
 
 			createObserver(OBJECTDESTRUCTION, self.className, "notifyEscortKilled", pNpc)
 
@@ -2143,9 +2143,9 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 		end
 	end
 
-	AiAgent(pConversingNpc):removeCreatureFlag(AI_STATIONARY)
-	AiAgent(pConversingNpc):addCreatureFlag(AI_FOLLOW)
-	AiAgent(pConversingNpc):addCreatureFlag(AI_ESCORT)
+	AiAgent(pConversingNpc):removeObjectFlag(AI_STATIONARY)
+	AiAgent(pConversingNpc):addObjectFlag(AI_FOLLOW)
+	AiAgent(pConversingNpc):addObjectFlag(AI_ESCORT)
 	AiAgent(pConversingNpc):setFollowObject(pConversingPlayer)
 
 	AiAgent(pConversingNpc):setAITemplate()

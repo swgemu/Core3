@@ -42,7 +42,33 @@
 
 
 object_ship_tieinterceptor = object_ship_shared_tieinterceptor:new {
+	objectName = "@space/space_mobile_type:tieinterceptor",
 
+	name = "tieinterceptor",
+	type = "tieinterceptor",
+	faction = "imperial",
+	difficulty = "",
+
+	slideFactor = 1.75,
+	chassisHitpoints = 341,
+	chassisMass = 10000,
+
+	gameObjectType = 536870919,
+
+	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
+	shipBitmask = NONE,
+	optionsBitmask = AIENABLED,
+
+	customShipAiMap = "",
+
+	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
+	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 100, armor = 200, speed = 60, acceleration = 23.5, deceleration = 11.75, yaw = 32.2, yawRate = 64.1, pitch = 32.2, pitchRate = 64.1, roll = 32.2, rollRate = 64.1},
+	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 300, back = 300, regen = 5},
+	armor_0 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	armor_1 = {name = "arm_generic", hitpoints = 600, armor = 600},
+	capacitor = {name = "cap_generic", hitpoints = 100, armor = 200, energy = 1468.8, rechargeRate = 58.752},
+	weapon_0 = {name = "wpn_tieadvanced_blaster", hitpoints = 200, armor = 200, rate = 0.573, drain = 27.648, maxDamage = 340, minDamage = 220, shieldEfficiency = 0, armorEfficiency = 0, ammo = 0, ammo_type = 0},
+	weapon_1 = {name = "wpn_sienar_heatseeker_missile_s01", hitpoints = 200, armor = 200, rate = 4, drain = 27.648, maxDamage = 27.648, minDamage = 27.648, shieldEfficiency = 0, armorEfficiency = 0, ammo = 50, ammo_type = 3},
 }
 
 ObjectTemplates:addTemplate(object_ship_tieinterceptor, "object/ship/tieinterceptor.iff")

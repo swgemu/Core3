@@ -9,151 +9,95 @@
 #include "server/zone/objects/ship/ShipObject.h"
 
 class ShipObjectMessage1 : public BaseLineMessage {
+protected:
+	enum index : int {
+		serverObjectsStart = 0,
+		serverObjectsEnd = 1,
+		componentEfficiencyMap = 2,
+		componentEnergyEfficiencyMap = 3,
+		componentEnergyCostMap = 4,
+		componentMassMap = 5,
+		componentNameMap = 6,
+		componentCreatorMap = 7,
+		componentMaxDamageMap = 8,
+		componentMinDamageMap = 9,
+		componentshieldEffectivenessMap = 10,
+		componentarmorEffectivenessMap = 11,
+		componentenergyPerShotMap = 12,
+		componentRefireRate = 13,
+		componentcurrentAmmoMap = 14,
+		componentmaxAmmoMap = 15,
+		componentammoClassMap = 16,
+		chassisMaxMass = 17,
+		shieldRechargeRate = 18,
+		capacitorMaxEnergy = 19,
+		capacitorRechargeRate = 20,
+		engineAccelerationRate = 21,
+		engineDecelerationRate = 22,
+		enginePitchAccelerationRate = 23,
+		engineYawAccelerationRate = 24,
+		engineRollAccelerationRate = 25,
+		enginePitchRateMaximum = 26,
+		engineYawRateMaximum = 27,
+		engineRollRateMaximum = 28,
+		engineSpeedMaximum = 29,
+		reactorGenerationRate = 30,
+		boosterMaxEnergy = 31,
+		boosterRechargeRate = 32,
+		boosterConsumptionRate = 33,
+		boosterAcceleration = 34,
+		boosterMaxSpeed = 35,
+		droidCommandSpeed = 36,
+		droidObjectID = 37,
+	};
+
 public:
-	ShipObjectMessage1(ShipObject* ship)
-	: BaseLineMessage(ship->getObjectID(), 0x53484950, 1, 0x29) {
+	ShipObjectMessage1(ShipObject* ship) : BaseLineMessage(ship->getObjectID(), 0x53484950, 1, 38) {
+		insertInt(0); //start ServerObject
+		insertInt(0); // EndServerObject
 
-		// const Archive::AutoDeltaVariableCallback<int,ClientObject::Callbacks::DefaultCallback<ClientObject::Messages::BankBalance,int>,ClientObject>::`vftable'
-		insertInt(0);
+		ship->getComponentEfficiencyMap()->insertToMessage(this);
+		ship->getComponentEnergyEfficiencyMap()->insertToMessage(this);
+		ship->getComponentEnergyCostMap()->insertToMessage(this);
+		ship->getComponentMassMap()->insertToMessage(this);
+		ship->getComponentNameMap()->insertToMessage(this);
+		ship->getComponentCreatorMap()->insertToMessage(this);
+		ship->getComponentMaxDamageMap()->insertToMessage(this);
+		ship->getComponentMinDamageMap()->insertToMessage(this);
+		ship->getShieldEffectivenessMap()->insertToMessage(this);
+		ship->getArmorEffectivenessMap()->insertToMessage(this);
+		ship->getEnergyPerShotMap()->insertToMessage(this);
+		ship->getComponentRefireRate()->insertToMessage(this);
+		ship->getCurrentAmmoMap()->insertToMessage(this);
+		ship->getMaxAmmoMap()->insertToMessage(this);
+		ship->getAmmoClassMap()->insertToMessage(this);
 
-		//const Archive::AutoDeltaVariableCallback<int,ClientObject::Callbacks::DefaultCallback<ClientObject::Messages::CashBalance,int>,ClientObject>::`vftable
-		insertInt(0);
+		insertFloat(ship->getChassisMaxMass());
+		insertFloat(ship->getShieldRechargeRate());
+		insertFloat(ship->getCapacitorMaxEnergy());
+		insertFloat(ship->getCapacitorRechargeRate());
 
-		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable
-		insertInt(0);
-		insertInt(0);
-		//insertDummyList(0x3f800000);
+		insertFloat(ship->getEngineAccelerationRate());
+		insertFloat(ship->getEngineDecelerationRate());
+		insertFloat(ship->getEnginePitchAccelerationRate());
+		insertFloat(ship->getEngineYawAccelerationRate());
+		insertFloat(ship->getEngineRollAccelerationRate());
+		insertFloat(ship->getEnginePitchRate());
+		insertFloat(ship->getEngineYawRate());
+		insertFloat(ship->getEngineRollRate());
+		insertFloat(ship->getEngineMaxSpeed());
 
-		// const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable
-		insertInt(0);
-		insertInt(0);
-		//insertDummyList(0x44fa0000);
+		insertFloat(ship->getReactorGenerationRate());
+		insertFloat(ship->getBoosterMaxEnergy());
+		insertFloat(ship->getBoosterRechargeRate());
+		insertFloat(ship->getBoosterConsumptionRate());
+		insertFloat(ship->getBoosterAcceleration());
+		insertFloat(ship->getBoosterMaxSpeed());
 
-		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-		//insertDummyList(0x44bb0000);
-
-		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-		//insertDummyList(0);
-
-		// const Archive::AutoDeltaPackedMap<int,_STL::basic_string<ushort,_STL::char_traits<ushort>,_STL::allocator<ushort>>,Archive::DefaultObjectType>::`vftable
-		//map<int, unicode>
-		insertInt(0);
-		insertInt(0);
-		//insertDummyList(0x44fa0000);
-
-		//const Archive::AutoDeltaPackedMap<int,NetworkId,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-
-		// const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-
-		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-
-		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-
-		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-
-		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-
-		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-
-		//const Archive::AutoDeltaPackedMap<int,int,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-
-		//const Archive::AutoDeltaPackedMap<int,int,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-
-		//const Archive::AutoDeltaPackedMap<int,ulong,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
-
-		insertFloat(ship->getTotalMass()); //const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(2.f); //shield recharge rate
-
-		insertFloat(500.f); //const Archive::AutoDeltaVariable<float>::`vftable'
-
-
-		insertFloat(20.f); // const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(50.f); //const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(50.f);// const Archive::AutoDeltaVariable<float>::`vftable'
-
-		insertFloat(10.472f); //Max Yaw Acceleration
-		insertFloat(10.472f); //Max Pitch Acceleration
-		insertFloat(5.23599f); //Max Roll Acceleration
-
-		insertFloat(0.837759f); //Current Yaw Acceleration
-		insertFloat(0.837759f); //Current Pitch Acceleration
-		insertFloat(0.907571f); //Current Roll Acceleration
-
-		insertFloat(50.f); //Max Speed?
-		insertFloat(8000.f); // Reactor generation rate
-
-		// hmm
-
-		insertFloat(0); //const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(0); //const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(0); //const Archive::AutoDeltaVariable<float>::`vftable'
-
-		insertFloat(0); //const Archive::AutoDeltaVariable<float>::`vftable
-		insertFloat(0); //const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(0); // const Archive::AutoDeltaVariable<float>::`vftable'
-
-
-
-		insertLong(0); // const Archive::AutoDeltaVariableCallback<NetworkId,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::DroidPcdChanged,NetworkId>,ShipObject>::`vftable'
+		insertFloat(ship->getDroidCommandSpeed());
+		insertLong(ship->getShipDroidID());
 
 		setSize();
-	}
-
-	void insertDummyList(int val) {
-		insertInt(7);
-		insertInt(7);
-
-		insertByte(0);
-		insertInt(0);
-		insertInt(val); // 0xDC, 0xBF, 0xBD, 0x9A,
-
-		insertByte(0);
-		insertInt(1);
-		insertInt(val); // 0x05, 0xC7, 0xA0, 0x35,
-
-		insertByte(0);
-		insertInt(2);
-		insertInt(val); // 0xBE, 0x17, 0x32, 0xE7
-
-		insertByte(0);
-		insertInt(4);
-		insertInt(val); // 0x9E, 0x60, 0xCB, 0xE1,
-
-		insertByte(0);
-		insertInt(5);
-		insertInt(val); // 0x9E, 0x60, 0xCB, 0xE1,
-
-		insertByte(0);
-		insertInt(6);
-		insertInt(val); // 0xEE, 0xD6, 0xCE, 0x20,
-
-		insertByte(0);
-		insertInt(0x0f);
-		insertInt(val); //0x3D, 0x3C, 0x82, 0x2C,
 	}
 };
 

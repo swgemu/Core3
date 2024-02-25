@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_tiebomber_chassis_token = object_tangible_ship_components_chassis_shared_tiebomber_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tiebomber_deed.iff",
-	dealerFee = 4000,
-	certRequired = "",
+	dealerFee = 50000,
+	certificationRequired = "cert_starships_tiebomber",
+	skillRequired = {"pilot_imperial_navy_starships_03"},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_tiebomber_chassis_token = object_tangibl
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 2500, 185250},
 	experimentalMax = {0, 0, 3500, 194750},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

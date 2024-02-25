@@ -11,6 +11,7 @@ include server.zone.objects.creature.conversation.ConversationTemplate;
 include server.zone.objects.creature.conversation.ConversationScreen;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.conversation.screenhandlers.ScreenHandler;
+import server.zone.objects.scene.SceneObject;
 include engine.log.Logger;
 import engine.core.ManagedObject;
 include system.util.VectorMap;
@@ -34,7 +35,7 @@ class ConversationObserver extends Observer implements Logger {
 		return getConversationTemplate().getScreen(screenName);
 	}
 
-	protected abstract native void createConversationSession(CreatureObject conversingPlayer, CreatureObject npc);
+	protected abstract native void createConversationSession(CreatureObject conversingPlayer, SceneObject conversingNPC);
 
 	protected void registerScreenHandler(final string screenId, ScreenHandler screenHandler) {
 		if (!screenHandlers.contains(screenId)) {
@@ -47,18 +48,18 @@ class ConversationObserver extends Observer implements Logger {
 			screenHandlers.drop(screenId);
 		}
 	}
-	
+
 	protected native void createPositionObserver(CreatureObject player);
 
-	private native void cancelConversationSession(CreatureObject conversingPlayer, CreatureObject npc, boolean forceClose = false);
+	private native void cancelConversationSession(CreatureObject conversingPlayer, SceneObject conversingNPC, boolean forceClose = false);
 
 	@local
-	public abstract native ConversationScreen getNextConversationScreen(CreatureObject conversingPlayer, int selectedOption, CreatureObject conversingNPC);
+	public abstract native ConversationScreen getNextConversationScreen(CreatureObject conversingPlayer, int selectedOption, SceneObject conversingNPC);
 
 	@local
-	public abstract native ConversationScreen runScreenHandlers(CreatureObject conversingPlayer, CreatureObject conversingNPC, int selectedOption, ConversationScreen conversationScreen);
+	public abstract native ConversationScreen runScreenHandlers(CreatureObject conversingPlayer, SceneObject conversingNPC, int selectedOption, ConversationScreen conversationScreen);
 
-	private native void sendConversationScreenToPlayer(CreatureObject conversingPlayer, CreatureObject conversingNPC, ConversationScreen conversationScreen);
+	private native void sendConversationScreenToPlayer(CreatureObject conversingPlayer, SceneObject conversingNPC, ConversationScreen conversationScreen);
 
 	@local
 	public native ConversationTemplate getConversationTemplate();

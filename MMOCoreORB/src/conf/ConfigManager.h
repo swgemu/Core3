@@ -490,6 +490,10 @@ namespace conf {
 			return getSortedStringVector("Core3.ZonesEnabled");
 		}
 
+		const SortedVector<String>& getEnabledSpaceZones() {
+			return getSortedStringVector("Core3.SpaceZonesEnabled");
+		}
+
 		inline int getPurgeDeletedCharacters() {
 			return getInt("Core3.PurgeDeletedCharacters", 10); // In minutes
 		}

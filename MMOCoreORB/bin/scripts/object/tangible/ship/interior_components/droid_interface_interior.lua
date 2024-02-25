@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_interior_components_droid_interface_interior = object_tangible_ship_interior_components_shared_droid_interface_interior:new {
-
+	objectMenuComponent = "PobShipObjectMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_droid_interface_interior, "object/tangible/ship/interior_components/droid_interface_interior.iff")

@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_mandal_heavy_composite = object_tangible_ship_components_armor_shared_arm_mandal_heavy_composite:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_mandal_heavy_composite",
+
+	attributes = {
+		{"maximumHitpoints", 714.362},
+		{"maximumArmorHitpoints", 714.362},
+		{"mass", 5518.12},
+		{"reverseEngineeringLevel", 5},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.39},
+		{"maximumArmorHitpoints", 0.39},
+		{"mass", 0.375},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mandal_heavy_composite, "object/tangible/ship/components/armor/arm_mandal_heavy_composite.iff")

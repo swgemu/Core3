@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_interior_components_reactor_interior = object_tangible_ship_interior_components_shared_reactor_interior:new {
-
+	objectMenuComponent = "PobShipObjectMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_reactor_interior, "object/tangible/ship/interior_components/reactor_interior.iff")

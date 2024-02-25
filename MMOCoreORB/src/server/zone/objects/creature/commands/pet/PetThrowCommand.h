@@ -66,7 +66,7 @@ public:
 		}
 
 		// target must be attackable
-		if (!(target->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
+		if (!(target->getPvpStatusBitmask() & ObjectFlag::ATTACKABLE)) {
 			droid->showFlyText("npc_reaction/flytext", "confused", 204, 0, 0);  // "?!!?!?!"
 			owner->sendSystemMessage("@pet/droid_modules:invalid_trap_target"); // "That is not a valid target."
 			return INVALIDTARGET;

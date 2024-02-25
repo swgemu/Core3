@@ -24,7 +24,7 @@
 --Thus, the terms and conditions of the GNU Lesser General Public License 
 --cover the whole combination.
 
---In addition, as a special exception, the copyright holders of Engine3 
+--In addition, as a special exception, the copyright holders of Engine3
 --give you permission to combine Engine3 program with free software 
 --programs or libraries that are released under the GNU LGPL and with 
 --code included in the standard release of Core3 under the GNU LGPL 
@@ -38,11 +38,11 @@
 --to grant this special exception for their modified versions; 
 --it is their choice whether to do so. The GNU Lesser General Public License 
 --gives permission to release a modified version without this exception; 
---this exception also makes it possible to release a modified version 
+--this exception alsoF makes it possible to release a modified version
 
 
 object_tangible_shipcontrol_shipcontrol_falcon = object_tangible_shipcontrol_shared_shipcontrol_falcon:new {
-
+	objectMenuComponent = "PilotSeatMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_shipcontrol_falcon, "object/tangible/shipcontrol/shipcontrol_falcon.iff")

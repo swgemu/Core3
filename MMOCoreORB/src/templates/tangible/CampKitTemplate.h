@@ -20,15 +20,13 @@ public:
 		spawnObjectTemplate = templateData->getStringField("spawnObjectTemplate");
 	}
 
-    inline const String& getSpawnObjectTemplate() {
-    	return spawnObjectTemplate;
-    }
+	inline const String& getSpawnObjectTemplate() {
+		return spawnObjectTemplate;
+	}
 
-    bool isCampKitTemplate() {
-    	return true;
-    }
+	bool isCampKitTemplate() {
+		return true;
+	}
 };
-
-
 
 #endif /* CAMPKITTEMPLATE_H_ */

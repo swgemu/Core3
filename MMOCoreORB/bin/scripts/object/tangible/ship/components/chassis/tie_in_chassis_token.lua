@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_tie_in_chassis_token = object_tangible_ship_components_chassis_shared_tie_in_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/tie_in_deed.iff",
-	dealerFee = 4000,
-	certRequired = "",
+	dealerFee = 25000,
+	certificationRequired = "cert_starships_tiefighterin",
+	skillRequired = {"pilot_imperial_navy_starships_02",},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_tie_in_chassis_token = object_tangible_s
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 1500, 39000},
 	experimentalMax = {0, 0, 2200, 41000},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

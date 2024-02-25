@@ -7,6 +7,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
@@ -150,7 +151,6 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		}
 	} else {
 		sceneObject->error("unknown containmentType in canAddObject type " + String::valueOf(containmentType));
-
 		errorDescription = "DEBUG: cant move item unknown containmentType type";
 		return TransferErrorCode::UNKNOWNCONTAIMENTTYPE;
 	}
@@ -209,12 +209,14 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		return false;
 
 	ManagedReference<SceneObject*> objParent = object->getParent().get();
+
 	ManagedReference<Zone*> objZone = object->getLocalZone();
 	ManagedReference<Zone*> oldRootZone = object->getZone();
 
 	if (object->containsActiveSession(SessionFacadeType::SLICING)) {
 		ManagedReference<Facade*> facade = object->getActiveSession(SessionFacadeType::SLICING);
 		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
+
 		if (session != nullptr) {
 			session->cancelSession();
 		}
@@ -232,8 +234,9 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 			return false;
 		}
 
-		if (objZone != nullptr)
+		if (objZone != nullptr) {
 			objZone->remove(object);
+		}
 
 		object->setZone(nullptr);
 
@@ -248,7 +251,6 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
-	//if (containerType == 1 || containerType == 5) {
 	if (containmentType >= 4) {
 		int arrangementGroup = containmentType - 4;
 
@@ -271,7 +273,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
-	} else if (containmentType == -1) { /* else if (containerType == 2 || containerType == 3) {*/
+	} else if (containmentType == -1) {
 		if (!allowOverflow && containerObjects->size() >= sceneObject->getContainerVolumeLimit()){
 			return false;
 		}
@@ -287,7 +289,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 		ManagedReference<Zone*> newRootZone = object->getZone();
 
-		if (newRootZone != nullptr && newRootZone != oldRootZone) {
+		if (newRootZone != nullptr && newRootZone != oldRootZone && newRootZone->isGroundZone()) {
 			bool shouldRegister = true;
 
 			// Prevent GCW PvE Base Terminals Registering when inserted in cell container
@@ -297,7 +299,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 				if (containerParent != nullptr && containerParent->isBuildingObject()) {
 					BuildingObject* building = containerParent->asBuildingObject();
 
-					if (building != nullptr && building->isGCWBase() && !(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+					if (building != nullptr && building->isGCWBase() && !(building->getPvpStatusBitmask() & ObjectFlag::OVERT)) {
 						shouldRegister = false;
 					}
 				}
@@ -314,10 +316,11 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	contLocker.release();
 
-	if ((containmentType >= 4) && objZone == nullptr)
+	if ((containmentType >= 4) && (objZone == nullptr)) {
 		sceneObject->broadcastObject(object, true);
-	else if (notifyClient)
+	} else if (notifyClient) {
 		sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
+	}
 
 	notifyObjectInserted(sceneObject, object);
 

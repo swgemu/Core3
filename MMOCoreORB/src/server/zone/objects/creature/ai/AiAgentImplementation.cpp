@@ -65,7 +65,7 @@
 #include "server/zone/objects/scene/WorldCoordinates.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "templates/params/creature/CreatureAttribute.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 #include "templates/params/creature/CreaturePosture.h"
 #include "templates/params/creature/CreatureState.h"
 #include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
@@ -368,8 +368,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		if (primaryWeaponString != "" && primaryWeaponHash != noneHash) {
 			if (primaryWeaponHash == unarmedHash || primaryWeaponString.indexOf(".iff") != -1) {
 				primaryWeaponCrc = primaryWeaponHash;
-			}
-			else {
+			} else {
 				const Vector<String>& primaryTemplates = CreatureTemplateManager::instance()->getWeapons(primaryWeaponHash);
 
 				if (primaryTemplates.size() > 0) {
@@ -382,19 +381,16 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	// Secondary Weapon
 	if (secondaryWeaponCrc == 0) {
-
 		String secondaryWeaponString = npcTemplate->getSecondaryWeapon();
 		uint32 secondaryWeaponHash = secondaryWeaponString.hashCode();
 
 		if (secondaryWeaponString != "" && secondaryWeaponHash != noneHash) {
 			if (secondaryWeaponHash == unarmedHash || secondaryWeaponString.indexOf(".iff") != -1) {
 				secondaryWeaponCrc = secondaryWeaponHash;
-			}
-			else if (secondaryWeaponHash == STRING_HASHCODE("dark_jedi_weapons_ranged") || secondaryWeaponHash == STRING_HASHCODE("light_jedi_weapons_ranged") || secondaryWeaponHash == STRING_HASHCODE("force_sword_ranged") || secondaryWeaponHash == STRING_HASHCODE("force_polearm_ranged")) {
+			} else if (secondaryWeaponHash == STRING_HASHCODE("dark_jedi_weapons_ranged") || secondaryWeaponHash == STRING_HASHCODE("light_jedi_weapons_ranged") || secondaryWeaponHash == STRING_HASHCODE("force_sword_ranged") || secondaryWeaponHash == STRING_HASHCODE("force_polearm_ranged")) {
 				secondaryWeaponString = primaryWeaponString.replaceFirst(".iff", "_ranged.iff");
 				secondaryWeaponCrc = secondaryWeaponString.hashCode();
-			}
-			else {
+			} else {
 				const Vector<String>& secondaryTemplates = CreatureTemplateManager::instance()->getWeapons(secondaryWeaponHash);
 
 				if (secondaryTemplates.size() > 0) {
@@ -1339,12 +1335,11 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 	}
 }
 
-void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+void AiAgentImplementation::notifyPositionUpdate(TreeEntry* entry) {
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
 
-	SceneObject* object = static_cast<SceneObject*>(entry);
-
-	CreatureObject* creo = object->asCreatureObject();
+	//SceneObject* object = static_cast<SceneObject*>(entry);
+	//CreatureObject* creo = object->asCreatureObject();
 }
 
 void AiAgentImplementation::doRecovery(int latency) {
@@ -2093,7 +2088,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 	sendReactionChat(nullptr, ReactionManager::CALM);
 }
 
-void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
+void AiAgentImplementation::notifyInsert(TreeEntry* entry) {
 	CreatureObjectImplementation::notifyInsert(entry);
 
 	SceneObject* scno = static_cast<SceneObject*>(entry);
@@ -2263,7 +2258,7 @@ void AiAgentImplementation::scheduleDespawn(int timeToDespawn, bool force) {
 	//info(true) << getDisplayedName() << " ID: " << getObjectID() << " despawn task scheduled";
 }
 
-void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
+void AiAgentImplementation::notifyDissapear(TreeEntry* entry) {
 	CreatureObjectImplementation::notifyDissapear(entry);
 
 	SceneObject* scno = static_cast<SceneObject*>( entry);
@@ -2856,7 +2851,7 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 	IntersectionResults intersections;
 
 	if (closeobjects != nullptr) {
-		Vector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
+		Vector<TreeEntry*> closeObjects(closeobjects->size(), 10);
 
 		closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::COLLIDABLETYPE);
 		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
@@ -2866,14 +2861,14 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 		if (planetMan != nullptr)
 			zCoord = planetMan->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), swimHeight, &intersections, nullptr);
 	} else {
-		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+		SortedVector<ManagedReference<TreeEntry*> > closeObjects;
 
 #ifdef COV_DEBUG
 		zone->info("Null closeobjects vector in AiAgentImplementation::getWorldZ", true);
 #endif
 
 		Vector3 worldPosition = getWorldPosition();
-		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, &closeObjects, true);
+		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), 128, &closeObjects, true);
 
 		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
 
@@ -3091,7 +3086,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 			}
 		}
 	} else {
-		SortedVector<QuadTreeEntry*> closeObjects;
+		SortedVector<TreeEntry*> closeObjects;
 
 		if (closeobjects != nullptr) {
 			closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::COLLIDABLETYPE);
@@ -3101,7 +3096,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 #endif
 
 			Vector3 worldPosition = getWorldPosition();
-			zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, &closeObjects, true);
+			zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), 128, &closeObjects, true);
 		}
 
 		for (int i = 0; i < num; i++) {
@@ -3244,7 +3239,7 @@ int AiAgentImplementation::setDestination() {
 
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
-		if (!(creatureBitmask & CreatureFlag::EVENTCONTROL) && !(creatureBitmask & CreatureFlag::STATIONARY) && !homeLocation.isInRange(asAiAgent(), 1.0f)) {
+		if (!(creatureBitmask & ObjectFlag::EVENTCONTROL) && !(creatureBitmask & ObjectFlag::STATIONARY) && !homeLocation.isInRange(asAiAgent(), 1.0f)) {
 			homeLocation.setReached(false);
 			setMovementState(AiAgent::PATHING_HOME);
 		}
@@ -3283,7 +3278,7 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::WATCHING:
-		if ((getCreatureBitmask() & CreatureFlag::ESCORT) && followCopy != nullptr)
+		if ((getCreatureBitmask() & ObjectFlag::ESCORT) && followCopy != nullptr)
 			setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
 
 		break;
@@ -3418,13 +3413,13 @@ int AiAgentImplementation::setDestination() {
 		break;
 	}
 	case AiAgent::CONVERSING: {
-		if ((creatureBitmask & CreatureFlag::ESCORT) || (creatureBitmask & CreatureFlag::FOLLOW))
+		if ((creatureBitmask & ObjectFlag::ESCORT) || (creatureBitmask & ObjectFlag::FOLLOW))
 			setMovementState(AiAgent::FOLLOWING);
 
 		break;
 	}
 	default:
-		if (creatureBitmask & CreatureFlag::STATIC || homeLocation.getCell() != nullptr) {
+		if (creatureBitmask & ObjectFlag::STATIC || homeLocation.getCell() != nullptr) {
 			setMovementState(AiAgent::PATHING_HOME);
 		} else if (followCopy == nullptr) {
 			setMovementState(AiAgent::PATROLLING);
@@ -3771,7 +3766,7 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 	lastPackNotify.updateToCurrentTime();
 	lastPackNotify.addMiliTime(30000);
 
-	Vector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
+	Vector<TreeEntry*> closeObjects(closeObjectsVector->size(), 10);
 	closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 	uint32 socialGroup = getSocialGroup().toLowerCase().hashCode();
 
@@ -3789,12 +3784,12 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 		if (creo->getParentID() != getParentID())
 			continue;
 
-		if (!(creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE))
+		if (!(creo->getPvpStatusBitmask() & ObjectFlag::ATTACKABLE))
 			continue;
 
 		AiAgent* agent = creo->asAiAgent();
 
-		if (agent == nullptr || !(agent->getCreatureBitmask() & CreatureFlag::PACK) || agent->getMovementState() == AiAgent::LEASHING)
+		if (agent == nullptr || !(agent->getCreatureBitmask() & ObjectFlag::PACK) || agent->getMovementState() == AiAgent::LEASHING)
 			continue;
 
 		String targetSocialGroup = agent->getSocialGroup().toLowerCase();
@@ -3804,7 +3799,7 @@ void AiAgentImplementation::notifyPackMobs(SceneObject* attacker) {
 
 		float packRange = 20.f + (getLevel() / 100.f);
 
-		if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
+		if (getPvpStatusBitmask() & ObjectFlag::AGGRESSIVE)
 			packRange += 5.f;
 
 		if (!agent->isInRange(asAiAgent(), packRange))
@@ -3870,7 +3865,7 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 		}
 	}
 
-	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
+	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), 0, "");
 	player->sendMessage(conv);
 
 	SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::STARTCONVERSATION);
@@ -3903,8 +3898,8 @@ bool AiAgentImplementation::stopConversation() {
 	return true;
 }
 
-bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
-	if (target == nullptr || asAiAgent() == target)
+bool AiAgentImplementation::isAggressiveTo(TangibleObject* target) {
+	if (target == nullptr || getObjectID() == target->getObjectID())
 		return false;
 
 	// info(true) << "AiAgent isAggressiveTo called for ID: " << getObjectID() << " towards creature: " << target->getObjectID();
@@ -3918,23 +3913,28 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 	return false;
 }
 
-bool AiAgentImplementation::isAggressive(CreatureObject* target) {
+bool AiAgentImplementation::isAggressive(TangibleObject* target) {
 	if (target == nullptr)
 		return false;
 
 	if (target->isInvisible())
 		return false;
 
-	bool targetIsPlayer = target->isPlayerCreature();
-	bool targetIsAgent = target->isAiAgent();
+	auto targetCreo = target->asCreatureObject();
 
-	if (targetIsAgent && target->isPet() && !target->asAiAgent()->isMindTricked()) {
-		ManagedReference<PetControlDevice*> pcd = target->getControlDevice().get().castTo<PetControlDevice*>();
+	if (targetCreo == nullptr)
+		return false;
+
+	bool targetIsPlayer = targetCreo->isPlayerCreature();
+	bool targetIsAgent = targetCreo->isAiAgent();
+
+	if (targetIsAgent && targetCreo->isPet() && !targetCreo->asAiAgent()->isMindTricked()) {
+		ManagedReference<PetControlDevice*> pcd = targetCreo->getControlDevice().get().castTo<PetControlDevice*>();
 
 		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && isNeutral())
 			return false;
 
-		ManagedReference<CreatureObject*> owner = target->getLinkedCreature().get();
+		ManagedReference<CreatureObject*> owner = targetCreo->getLinkedCreature().get();
 
 		if (owner == nullptr)
 			return false;
@@ -3945,21 +3945,21 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 	if (isPet() && !isMindTricked()) {
 		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
 
-		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && target->isNeutral()) {
+		if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET && targetCreo->isNeutral()) {
 			return false;
 		}
 
 		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
 
-		if (owner == nullptr || target == owner)
+		if (owner == nullptr || targetCreo == owner)
 			return false;
 
-		return owner->isAggressiveTo(target);
+		return owner->isAggressiveTo(targetCreo);
 	}
 
 	// Get factions
 	uint32 thisFaction = getFaction();
-	uint32 targetFaction = target->getFaction();
+	uint32 targetFaction = targetCreo->getFaction();
 
 	//GCW Faction Checks -- Both the agent and attcking CreO have GCW Factions and they are different
 	if (thisFaction != 0 && targetFaction != 0 && thisFaction != targetFaction) {
@@ -3972,12 +3972,12 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 			bool covertOvert = ConfigManager::instance()->useCovertOvertSystem();
 
 			if (covertOvert) {
-				PlayerObject* ghost = target->getPlayerObject();
+				PlayerObject* ghost = targetCreo->getPlayerObject();
 
 				if (ghost == nullptr)
 					return false;
 
-				uint32 targetStatus = target->getFactionStatus();
+				uint32 targetStatus = targetCreo->getFactionStatus();
 				bool gcwTef = ghost->hasGcwTef();
 
 				if (!gcwTef && targetStatus == FactionStatus::COVERT)
@@ -3988,7 +3988,7 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 				}
 			} else {
 				// this is the same thing, but ensures that if the target is a player, that they aren't on leave
-				if (target->getFactionStatus() != FactionStatus::ONLEAVE) {
+				if (targetCreo->getFactionStatus() != FactionStatus::ONLEAVE) {
 					return true;
 				}
 			}
@@ -3998,7 +3998,7 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 	AiAgent* tarAgent = nullptr;
 
 	if (targetIsAgent) {
-		tarAgent = target->asAiAgent();
+		tarAgent = targetCreo->asAiAgent();
 
 		if (tarAgent != nullptr) {
 			if (isCarnivore() && tarAgent->isHerbivore())
@@ -4029,7 +4029,7 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 		}
 
 		if (targetIsPlayer) {
-			PlayerObject* tarGhost = target->getPlayerObject();
+			PlayerObject* tarGhost = targetCreo->getPlayerObject();
 
 			if (tarGhost == nullptr) {
 				return false;
@@ -4038,7 +4038,7 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 			/* for players, we are only an enemy if the standing is less than -3000, but we are forced to non-aggressive
 			*  status if the standing is over 3000, otherwise use the pvpStatusBitmask to determine aggressiveness
 			*/
-			if (!(getOptionsBitmask() & CreatureFlag::IGNORE_FACTION_STANDING)) {
+			if (!(getOptionsBitmask() & ObjectFlag::IGNORE_FACTION_STANDING)) {
 				int minFactionStanding = -3000;
 				float targetsStanding = tarGhost->getFactionStanding(factionString);
 
@@ -4053,7 +4053,7 @@ bool AiAgentImplementation::isAggressive(CreatureObject* target) {
 	}
 
 	// Agent is not aggressive due to faction or standing, remaining aggressive check based on pvpStatusBitmask
-	return pvpStatusBitmask & CreatureFlag::AGGRESSIVE;
+	return pvpStatusBitmask & ObjectFlag::AGGRESSIVE;
 }
 
 bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
@@ -4087,7 +4087,7 @@ bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
 	}
 
 	// Initial this creature has an attackable pvpStatusBitmask
-	if (!(pvpStatusBitmask & CreatureFlag::ATTACKABLE) || optionsBitmask & OptionBitmask::INVULNERABLE)
+	if (!(pvpStatusBitmask & ObjectFlag::ATTACKABLE) || optionsBitmask & OptionBitmask::INVULNERABLE)
 		return false;
 
 	if (eventArea.get() != nullptr) {
@@ -4143,7 +4143,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 		return owner->isAttackableBy(creature, true);
 	}
 
-	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & CreatureFlag::ATTACKABLE))
+	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & ObjectFlag::ATTACKABLE))
 		return false;
 
 	if (creature->isPet()) {
@@ -4211,7 +4211,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 
 	// Ai vs Ai Checks
 	if (creatureIsAgent) {
-		if ((getCreatureBitmask() & CreatureFlag::NOAIAGGRO) && !creature->isPet())
+		if ((getCreatureBitmask() & ObjectFlag::NOAIAGGRO) && !creature->isPet())
 			return false;
 
 		// Faction check stricly for AI vs AI. Faction AI attamepting to attack non-faction AI
@@ -4538,12 +4538,12 @@ void AiAgentImplementation::handleException(const Exception& ex, const String& c
 	error() << msg << endl << trace.toStringData() << endl << *this;
 }
 
-void AiAgentImplementation::addCreatureFlag(unsigned int flag) {
+void AiAgentImplementation::addObjectFlag(unsigned int flag) {
 	if (!(creatureBitmask & flag))
 		creatureBitmask |= flag;
 }
 
-void AiAgentImplementation::removeCreatureFlag(unsigned int flag) {
+void AiAgentImplementation::removeObjectFlag(unsigned int flag) {
 	if (creatureBitmask & flag)
 		creatureBitmask &= ~flag;
 }

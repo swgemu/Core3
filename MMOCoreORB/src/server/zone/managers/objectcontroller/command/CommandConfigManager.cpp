@@ -61,6 +61,8 @@
 #include "server/zone/objects/creature/commands/pet/PetClearPatrolPointsCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetGetPatrolPointCommand.h"
 
+#include "server/zone/objects/creature/commands/CommCommand.h"
+
 #include "server/zone/objects/creature/commands/JediQueueCommand.h"
 
 #include "templates/datatables/DataTableIff.h"
@@ -371,6 +373,9 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("petPatrol").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petClearPatrolPoints").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petGetPatrolPoint").toLowerCase())->setCommandGroup(0xe1c9a54a);
+
+	// Space Commands
+	createCommand(String("comm").toLowerCase())->setCommandGroup(0xD8D3D9F2);
 }
 
 void CommandConfigManager::registerFunctions() {
@@ -863,4 +868,7 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<PetPatrolCommand>(String("petPatrol").toLowerCase());
 	commandFactory.registerCommand<PetClearPatrolPointsCommand>(String("petClearPatrolPoints").toLowerCase());
 	commandFactory.registerCommand<PetGetPatrolPointCommand>(String("petGetPatrolPoint").toLowerCase());
+
+	//Space Commands
+	commandFactory.registerCommand<CommCommand>(String("comm").toLowerCase());
 }

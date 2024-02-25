@@ -111,7 +111,7 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		recruiterScreenplay:grantBribe(pNpc, pPlayer, 100000, 1250)
 
 	elseif (screenID == "fp_furniture" or screenID == "fp_weapons_armor" or screenID == "fp_installations" or screenID == "fp_uniforms" or screenID == "fp_hirelings" or screenID == "fp_schematics") then
-		recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
+		recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID, getGCWDiscount(pPlayer))
 
 	elseif (screenID == "greet_neutral_start") then
 		self:addJoinMilitaryOption(recruiterScreenplay:getRecruiterFaction(pNpc), clonedConversation, PlayerObject(pGhost), pNpc)

@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_mission_reward_imperial_sfs_light_military = object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_sfs_light_military:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_mission_reward_imperial_sfs_light_military",
+
+	attributes = {
+		{"maximumHitpoints", 460},
+		{"maximumArmorHitpoints", 460},
+		{"mass", 2047.5},
+		{"reverseEngineeringLevel", 4},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.0001},
+		{"maximumArmorHitpoints", 0.0001},
+		{"mass", 0.0001},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_mission_reward_imperial_sfs_light_military, "object/tangible/ship/components/armor/arm_mission_reward_imperial_sfs_light_military.iff")

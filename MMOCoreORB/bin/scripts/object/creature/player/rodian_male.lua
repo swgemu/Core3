@@ -44,7 +44,8 @@
 object_creature_player_rodian_male = object_creature_player_shared_rodian_male:new {
 	baseHAM = { 0, 0, 0, 200, 200, 450, 0, 0, 50 }, 
 	gameObjectType = 1033,
-	zoneComponent = "PlayerZoneComponent",
+	groundZoneComponent = "PlayerZoneComponent",
+	spaceZoneComponent = "PlayerSpaceZoneComponent",
 	objectMenuComponent = "PlayerObjectMenuComponent",
 	containerComponent = "PlayerContainerComponent",
 	pvpStatusBitmask = PLAYER,

@@ -371,7 +371,7 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 	if (pFarmer ~= nil) then
 		writeData("hero_of_tat:altruism_mob_id", SceneObject(pFarmer):getObjectID())
 		CreatureObject(pFarmer):setPvpStatusBitmask(0)
-		AiAgent(pFarmer):addCreatureFlag(AI_STATIC)
+		AiAgent(pFarmer):addObjectFlag(AI_STATIC)
 
 		Logger:logEvent("Hero of Tatooine: doAltruismChange - Spawned Moisture Farmer at " .. spawnPoint[1] ..  ", " .. spawnPoint[3] .. " Tatooine using base Spawn Point - X: " .. x .. " Y: " .. y, LT_INFO)
 	else
@@ -420,7 +420,7 @@ function HeroOfTatooineScreenPlay:doIntellectSpawn()
 
 	writeData("hero_of_tat:intellect_mob_id", SceneObject(pBountyHunter):getObjectID())
 	CreatureObject(pBountyHunter):setPvpStatusBitmask(0)
-	AiAgent(pBountyHunter):addCreatureFlag(AI_STATIC)
+	AiAgent(pBountyHunter):addObjectFlag(AI_STATIC)
 
 	self:spawnIntellectLiars(pBountyHunter)
 end
@@ -576,7 +576,7 @@ function HeroOfTatooineScreenPlay:spawnIntellectLiars(pBountyHunter)
 			return
 		end
 		CreatureObject(pLiar):setPvpStatusBitmask(0)
-		AiAgent(pLiar):addCreatureFlag(AI_STATIC)
+		AiAgent(pLiar):addObjectFlag(AI_STATIC)
 
 		writeData("hero_of_tat:liar_" .. i, SceneObject(pLiar):getObjectID())
 		writeData(SceneObject(pLiar):getObjectID() .. ":liarId", i)
@@ -721,8 +721,8 @@ function HeroOfTatooineScreenPlay:doGiverDespawn(pGiver)
 	end
 
 	if (CreatureObject(pGiver):isAiAgent()) then
-		AiAgent(pGiver):addCreatureFlag(AI_NOAIAGGRO)
-		AiAgent(pGiver):addCreatureFlag(AI_FOLLOW)
+		AiAgent(pGiver):addObjectFlag(AI_NOAIAGGRO)
+		AiAgent(pGiver):addObjectFlag(AI_FOLLOW)
 		AiAgent(pGiver):setMovementState(AI_PATROLLING)
 		AiAgent(pGiver):generatePatrol(1, 30)
 		createObserver(DESTINATIONREACHED, "HeroOfTatooineScreenPlay", "giverDespawnDestinationReached", pGiver)
@@ -797,8 +797,8 @@ function HeroOfTatooineScreenPlay:completeEscort(pPlayer)
 
 	if (pWife ~= nil and CreatureObject(pWife):isAiAgent()) then
 		spatialChat(pWife, "@quest/hero_of_tatooine/system_messages:altruism_npc_farewell")
-		AiAgent(pWife):addCreatureFlag(AI_NOAIAGGRO)
-		AiAgent(pWife):addCreatureFlag(AI_FOLLOW)
+		AiAgent(pWife):addObjectFlag(AI_NOAIAGGRO)
+		AiAgent(pWife):addObjectFlag(AI_FOLLOW)
 	end
 
 	deleteData("hero_of_tat:altruismEscortStatus")
@@ -964,7 +964,7 @@ function HeroOfTatooineScreenPlay:pirateLeaderDamage(pLeader, pPlayer, damage)
 	CreatureObject(pLeader):setPosture(UPRIGHT)
 	AiAgent(pLeader):setHomeLocation(spawnLoc.x, spawnLoc.z, spawnLoc.y, 0)
 
-	AiAgent(pLeader):addCreatureFlag(AI_STATIONARY)
+	AiAgent(pLeader):addObjectFlag(AI_STATIONARY)
 	AiAgent(pLeader):setAITemplate()
 
 	spatialChat(pLeader, "@quest/pirates:dont_hurt_us")
@@ -1106,8 +1106,8 @@ function HeroOfTatooineScreenPlay:setNotConversable(pNpc)
 end
 
 function HeroOfTatooineScreenPlay:doStartPatrol(pNpc)
-	AiAgent(pNpc):addCreatureFlag(AI_NOAIAGGRO)
-	AiAgent(pNpc):addCreatureFlag(AI_ESCORT)
+	AiAgent(pNpc):addObjectFlag(AI_NOAIAGGRO)
+	AiAgent(pNpc):addObjectFlag(AI_ESCORT)
 	AiAgent(pNpc):setMovementState(AI_PATROLLING)
 	HeroOfTatooineScreenPlay:doHonorStep(pNpc)
 end

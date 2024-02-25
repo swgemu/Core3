@@ -26,6 +26,10 @@
 #include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
+#include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/managers/ship/ShipManager.h"
+
+#define JTL_DEBUG
 
 PlayerCreationManager::PlayerCreationManager() :
 		Logger("PlayerCreationManager") {
@@ -434,9 +438,9 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 		ghost->setStarterProfession(profession);
 	}
 
-	addCustomization(playerCreature, customization,
-			playerTemplate->getAppearanceFilename());
+	addCustomization(playerCreature, customization, playerTemplate->getAppearanceFilename());
 	addHair(playerCreature, hairTemplate, hairCustomization);
+
 	if (!doTutorial) {
 		addProfessionStartingItems(playerCreature, profession, clientTemplate,
 				false);
@@ -448,9 +452,17 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 		addProfessionStartingItems(playerCreature, profession, clientTemplate,
 				true);
 		addStartingItems(playerCreature, clientTemplate, true);
-		addRacialMods(playerCreature, fileName,
-				&playerTemplate->getStartingSkills(),
-				&playerTemplate->getStartingItems(), true);
+		addRacialMods(playerCreature, fileName, &playerTemplate->getStartingSkills(), &playerTemplate->getStartingItems(), true);
+	}
+
+	auto shipManager = ShipManager::instance();
+
+	// Handle JTL Ship creation
+	if (shipManager != nullptr) {
+		shipManager->createPlayerShip(playerCreature, "player_xwing", true);
+		shipManager->createPlayerShip(playerCreature, "player_tiefighter", true);
+		shipManager->createPlayerShip(playerCreature, "player_hutt_medium_s01", true);
+		shipManager->createPlayerShip(playerCreature, "player_sorosuub_space_yacht", true);
 	}
 
 	if (ghost != nullptr) {

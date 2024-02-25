@@ -57,7 +57,7 @@ object_building_player_city_cantina_corellia = object_building_player_city_share
 		{"private_med_battle_fatigue", 5},
 		{"private_safe_logout", 1}
 	},
-	zoneComponent = "StructureZoneComponent",
+	groundZoneComponent = "StructureZoneComponent",
 	childObjects = {
 		{templateFile = "object/tangible/sign/municipal/municipal_sign_hanging_cantina.iff", x = 5, z = 3, y = 11.95, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -4.1, z = 0.750001, y = 6.1, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1}

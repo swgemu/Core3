@@ -42,9 +42,11 @@
 
 
 object_tangible_ship_crafted_chassis_blacksun_heavy_s04_deed = object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed:new {
- 
-    templateType = SHIPDEED,
-	shipControlObject = "object/intangible/ship/blacksun_heavy_s04_pcd.iff",
+	templateType = SHIPDEED,
+	gameObjectType = 8388617,
+
+	shipType = 1, --FIGHTERSHIP,
+	shipControlDevice = "object/intangible/ship/blacksun_heavy_s04_pcd.iff",
 	generatedObjectTemplate = "object/ship/player/player_blacksun_heavy_s04.iff",
 
 }

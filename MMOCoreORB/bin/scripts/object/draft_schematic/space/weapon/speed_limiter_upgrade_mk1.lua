@@ -56,7 +56,7 @@ object_draft_schematic_space_weapon_speed_limiter_upgrade_mk1 = object_draft_sch
    xp = 25, 
 
    assemblySkill = "weapon_systems", 
-   experimentingSkill = "weapons_systems_experimentation", 
+   experimentingSkill = "weapon_systems_experimentation", 
    customizationSkill = "medicine_customization", 
 
    customizationOptions = {},

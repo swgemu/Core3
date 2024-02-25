@@ -42,17 +42,14 @@
 
 
 object_draft_schematic_space_chassis_tie_light_duty = object_draft_schematic_space_chassis_shared_tie_light_duty:new {
-
 	templateType = DRAFTSCHEMATIC,
-
-	customObjectName = "TIE Light Duty Fighter Chassis Blueprints",
 
 	craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 23,
 	size = 1,
 	factoryCrateSize = 0,
 	factoryCrateType = "object/factory/factory_crate_generic_items.iff",
-   
+
 	xpType = "shipwright",
 	xp = 1250,
 

@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_z95_chassis_token = object_tangible_ship_components_chassis_shared_z95_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/z95_deed.iff",
-	dealerFee = 1000,
-	certRequired = "pilot_rebel_navy_novice",
+	dealerFee = 10000,
+	certificationRequired = "cert_starships_z95headhunter",
+	skillRequired = {"pilot_rebel_navy_novice"},
 	POB = 0,
 
 
@@ -57,7 +57,7 @@ object_tangible_ship_components_chassis_z95_chassis_token = object_tangible_ship
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 1200, 11700},
 	experimentalMax = {0, 0, 1750, 12300},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

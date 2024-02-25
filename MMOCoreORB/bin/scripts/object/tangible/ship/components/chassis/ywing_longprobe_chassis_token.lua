@@ -42,11 +42,11 @@
 
 
 object_tangible_ship_components_chassis_ywing_longprobe_chassis_token = object_tangible_ship_components_chassis_shared_ywing_longprobe_chassis_token:new {
-
-    templateType = SHIPCHASSIS,
+	templateType = SHIPCHASSIS,
 	chassisDeed = "object/tangible/ship/crafted/chassis/ywing_longprobe_deed.iff",
-	dealerFee = 4000,
-	certRequired = "pilot_rebel_navy_starships_02",
+	dealerFee = 25000,
+	certificationRequired = "cert_starships_ywinglongprobe",
+	skillRequired = {"pilot_rebel_navy_starships_02"},
 	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
@@ -56,7 +56,7 @@ object_tangible_ship_components_chassis_ywing_longprobe_chassis_token = object_t
 	experimentalSubGroupTitles = {"null", "null", "hp", "massmax"},
 	experimentalMin = {0, 0, 2000, 165750},
 	experimentalMax = {0, 0, 3000, 174250},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

@@ -42,7 +42,22 @@
 
 
 object_tangible_ship_components_armor_arm_corellian_reinforced_light_durasteel = object_tangible_ship_components_armor_shared_arm_corellian_reinforced_light_durasteel:new {
+	templateType = SHIPCOMPONENT,
 
+	componentDataName = "arm_corellian_reinforced_light_durasteel",
+
+	attributes = {
+		{"maximumHitpoints", 287.04},
+		{"maximumArmorHitpoints", 287.04},
+		{"mass", 1757.25},
+		{"reverseEngineeringLevel", 3},
+	},
+
+	modifiers = {
+		{"maximumHitpoints", 0.38},
+		{"maximumArmorHitpoints", 0.38},
+		{"mass", 0.318},
+	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_armor_arm_corellian_reinforced_light_durasteel, "object/tangible/ship/components/armor/arm_corellian_reinforced_light_durasteel.iff")

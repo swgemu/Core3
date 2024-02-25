@@ -4,7 +4,7 @@
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
 #include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
-#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/ObjectFlag.h"
 
 namespace server {
 namespace zone {
@@ -288,7 +288,7 @@ public:
 		int base = 0;
 		double level = 0;
 
-		if (diet != CreatureFlag::HERBIVORE) {
+		if (diet != ObjectFlag::HERBIVORE) {
 			level = 8 / 1.701;
 		} else {
 			level = 7.0;

@@ -34,7 +34,7 @@ void ScannerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zo
 		installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
 }
 
-void ScannerZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
+void ScannerZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, TreeEntry* entry) const {
 	if (sceneObject == nullptr || entry == nullptr)
 		return;
 
