@@ -424,7 +424,12 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 
 	// Remove all items, incase there are any
 	while (craftingTool->getContainerObjectsSize() > 0) {
-		craftingTool->getContainerObject(0)->destroyObjectFromWorld(true);
+		auto object = craftingTool->getContainerObject(0);
+
+		if (object != nullptr) {
+			Locker clock(object, craftingTool);
+			object->destroyObjectFromWorld(true);
+		}
 	}
 
 	prototype = (crafter->getZoneServer()->createObject(draftschematic->getTanoCRC(), 0)).castTo<TangibleObject*>();
