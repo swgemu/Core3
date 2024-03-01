@@ -206,7 +206,7 @@ public:
 										ghost->doFieldFactionChange(FactionStatus::COVERT);
 								}
 							}
-						} else  if (targetTano->isCreatureObject() || targetTano->isTurret()) {
+						} else if (targetTano->isTurret()) {
 							if (creature->getFactionStatus() == FactionStatus::ONLEAVE && !(targetTano->getPvpStatusBitmask() & ObjectFlag::OVERT))
 								ghost->doFieldFactionChange(FactionStatus::COVERT);
 							else if ((targetTano->getPvpStatusBitmask() & ObjectFlag::OVERT))

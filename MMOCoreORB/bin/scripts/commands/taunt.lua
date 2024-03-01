@@ -43,7 +43,10 @@
 
 TauntCommand = {
 	name = "taunt",
+
 	combatSpam = "taunt",
+	animation = "taunt",
+
 	effectString = "clienteffect/combat_special_attacker_taunt.cef",
 	poolsToDamage = NO_ATTRIBUTE,
 

@@ -15,11 +15,11 @@
 #include "engine/engine.h"
 #include "server/zone/objects/creature/variables/CommandQueueActionVector.h"
 
-//#define DEBUG_QUEUE
+#define DEBUG_QUEUE
 
 class CommandQueueTask;
 
-class CommandQueue : public Object {
+class CommandQueue : public Object, public Logger {
 	mutable Mutex queueMutex;
 
 	enum State {
@@ -67,33 +67,34 @@ public:
 	}
 };
 
-class CommandQueueTask : public Task {
+class CommandQueueTask : public Task, public Logger {
 	private:
 		WeakReference<CommandQueue*> weakQueue;
 
 	public:
 		CommandQueueTask(CommandQueue* queue) {
 			weakQueue = queue;
+
+			setLoggingName("CommandQueueTask");
 		}
 
 	void run() {
-
 		auto commandQueue = weakQueue.get();
 
 		if (commandQueue == nullptr) {
 #ifdef DEBUG_QUEUE
-			Logger::console.info(true) << __PRETTY_FUNCTION__ << ":" << __LINE__ << " weakQueue.get() == nullptr!";
+			info(true) << __PRETTY_FUNCTION__ << ":" << __LINE__ << " weakQueue.get() == nullptr!";
 #endif // DEBUG_QUEUE
 			return;
 		}
 
 		try {
 #ifdef DEBUG_QUEUE
-			Logger::console.info(true) << "######################################## Task Start";
+			info(true) << "######################################## Task Start";
 #endif // DEBUG_QUEUE
 			commandQueue->run();
 #ifdef DEBUG_QUEUE
-			Logger::console.info(true) << "######################################## Task Complete\n";
+			info(true) << "######################################## Task Complete\n";
 #endif // DEBUG_QUEUE
 
 		} catch (Exception& e) {

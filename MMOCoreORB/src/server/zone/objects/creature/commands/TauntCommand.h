@@ -20,20 +20,17 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);
+		auto zoneServer = creature->getZoneServer();
 
-		if (targetObject == nullptr || !targetObject->isCreatureObject() || targetObject->isPlayerCreature())
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> targetObject = zoneServer->getObject(target);
+
+		if (targetObject == nullptr || !targetObject->isAiAgent())
 			return INVALIDTARGET;
 
-		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
-
-		if (targetCreature == nullptr)
-			return INVALIDTARGET;
-
-		if (!targetCreature->isAttackableBy(creature))
-			return INVALIDTARGET;
-
-		AiAgent* agent = targetCreature->asAiAgent();
+		AiAgent* agent = targetObject->asAiAgent();
 
 		if (agent == nullptr)
 			return INVALIDTARGET;
@@ -41,18 +38,18 @@ public:
 		int res = doCombatAction(creature, target);
 
 		if (res == SUCCESS) {
-			Locker clocker(targetCreature, creature);
+			Locker clocker(agent, creature);
 
 			if (!agent->isTauntable()) {
 				creature->sendSystemMessage("@cbt_spam:taunt_fail_single");
 				return res;
 			}
 
-			ThreatMap* threatMap = targetCreature->getThreatMap();
+			ThreatMap* threatMap = agent->getThreatMap();
 
 			if (threatMap != nullptr) {
 				int tauntMod = creature->getSkillMod("taunt");
-				int levelCombine = targetCreature->getLevel() + creature->getLevel();
+				int levelCombine = agent->getLevel() + creature->getLevel();
 
 				if (System::random(levelCombine + tauntMod) >= System::random(levelCombine - tauntMod)) {
 					threatMap->setThreatState(creature, ThreatStates::TAUNTED, (uint64)tauntMod * 1000, (uint64)tauntMod * 1000);
@@ -61,14 +58,14 @@ public:
 					creature->doCombatAnimation(creature, STRING_HASHCODE("taunt"), 0, 0xFF);
 					creature->doAnimation("taunt");
 
-					if (creature->isPlayerCreature())
-						creature->sendSystemMessage("@cbt_spam:taunt_success_single");
+					creature->sendSystemMessage("@cbt_spam:taunt_success_single");
 				} else {
-					if (creature->isPlayerCreature())
-						creature->sendSystemMessage("@cbt_spam:taunt_fail_single");
+					creature->sendSystemMessage("@cbt_spam:taunt_fail_single");
 				}
 			}
 		}
+
+		info(true) << "Taunt Result = " << res;
 
 		return res;
 	}
