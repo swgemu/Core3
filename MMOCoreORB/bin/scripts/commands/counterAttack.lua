@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 CounterAttackCommand = {
-        name = "counterattack",
+	name = "counterattack",
 	damageMultiplier = 1,
 	speedMultiplier = 1,
 
@@ -55,11 +55,10 @@ CounterAttackCommand = {
 	forceCostMultiplier = 0,
 
 	range = -1,
-	
+
 	trails = NOTRAIL,
 
 	poolsToDamage = RANDOM_ATTRIBUTE
 }
 
 AddCommand(CounterAttackCommand)
-

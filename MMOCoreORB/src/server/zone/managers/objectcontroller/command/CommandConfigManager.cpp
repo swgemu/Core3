@@ -103,6 +103,8 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 		return;
 	}
 
+	info(true) << "Loading Command File: " << filename;
+
 	DataTableIff tablesToLoad;
 	tablesToLoad.readObject(metatable);
 
@@ -123,6 +125,8 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 			return;
 		} else
 			info("opened " + tableName);
+
+		info(true) << "Loading Table: " << tableName;
 
 		DataTableIff dtiff;
 		dtiff.readObject(iffStream);
@@ -147,7 +151,14 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 			bool position; // need to add positions one by one
 
 			row->getValue(CommandConfigManager::COMMANDNAME, name);
-			slashCommand = createCommand(name.trim().toLowerCase());
+
+			String nameLower = name.trim().toLowerCase();
+
+			// Space taunt command is overwriting values for ground, causing it to not be set as a combat queue command
+			if (tableName.contains("space") && nameLower == "taunt")
+				continue;
+
+			slashCommand = createCommand(nameLower);
 
 			if (slashCommand == nullptr) {
 				error("Could not create command " + name);
@@ -305,11 +316,13 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 		}
 	}
 
-	info("Loaded " + String::valueOf(num) + " commands from " + filename + ".");
+	info(true) << "Loaded " << num << " commands from " << filename + ".";
 }
 
 QueueCommand* CommandConfigManager::createCommand(const String& name) {
 	QueueCommand* command = nullptr;
+
+	// info(true) << "CommandConfigManager::createCommand -- Command: " << name;
 
 	command = commandFactory.createCommand(name, name, server);
 
@@ -324,9 +337,13 @@ QueueCommand* CommandConfigManager::createCommand(const String& name) {
 }
 
 void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
+	info(true) << "Loading Special Commands...";
+
 	slashCommands = sCommands;
+
 	QueueCommand* admin = new AdminCommand("admin", server);
 	slashCommands->put(admin);
+
 	// Fri Oct  7 17:09:26 PDT 2011 - Karl Bunch <karlbunch@karlbunch.com>
 	// Turns out this isn't in the base datatables/command/command_tables_shared.iff file
 	// Meanwhile the client sends this to the server as part of the /logout command sequence
@@ -348,6 +365,9 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("minefieldAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("creatureRangedAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("defaultDroidAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
+
+	// Space Special Commands
+	createCommand(String("comm").toLowerCase())->setCommandGroup(0xD8D3D9F2);
 
 	//Pet commands
 	createCommand(String("petAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
@@ -373,9 +393,6 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("petPatrol").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petClearPatrolPoints").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petGetPatrolPoint").toLowerCase())->setCommandGroup(0xe1c9a54a);
-
-	// Space Commands
-	createCommand(String("comm").toLowerCase())->setCommandGroup(0xD8D3D9F2);
 }
 
 void CommandConfigManager::registerFunctions() {
@@ -825,6 +842,7 @@ int CommandConfigManager::hashCode(lua_State* L) {
 
 int CommandConfigManager::addCommand(lua_State* L) {
 	LuaObject slashcommand(L);
+
 	if (!slashcommand.isValidTable())
 		return 0;
 
@@ -843,6 +861,9 @@ void CommandConfigManager::registerCommands() {
 	registerCommands2();
 	registerCommands3();
 	registerCommands4();
+
+	//Space Commands
+	commandFactory.registerCommand<CommCommand>(String("comm").toLowerCase());
 
 	//pet commands
 	commandFactory.registerCommand<PetAttackCommand>(String("petAttack").toLowerCase());
@@ -868,7 +889,4 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<PetPatrolCommand>(String("petPatrol").toLowerCase());
 	commandFactory.registerCommand<PetClearPatrolPointsCommand>(String("petClearPatrolPoints").toLowerCase());
 	commandFactory.registerCommand<PetGetPatrolPointCommand>(String("petGetPatrolPoint").toLowerCase());
-
-	//Space Commands
-	commandFactory.registerCommand<CommCommand>(String("comm").toLowerCase());
 }
