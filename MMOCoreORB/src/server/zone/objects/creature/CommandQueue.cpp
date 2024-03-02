@@ -66,7 +66,7 @@ void CommandQueue::removeAction(CommandQueueAction* actionToDelete) {
 			queueVector.remove(i);
 
 #ifdef DEBUG_QUEUE
-			info(true) << " Queue action" << action->getCommand() << " - REMOVED from " << toString();
+			info(true) << " Queue action - " << action->getCommand() << " - REMOVED from " << toString();
 #endif
 			break;
 		}
@@ -232,7 +232,7 @@ int CommandQueue::handleRunningState() {
 	}
 
 #ifdef DEBUG_QUEUE
-	info(true) << "Command Queue activateCommand called -- time = " << time;
+	info(true) << "Command Queue activateCommand called -- time = " << time << " ---- Removing Action";
 #endif
 
 	removeAction(action);
