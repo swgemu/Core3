@@ -55,17 +55,22 @@ public:
 					threatMap->setThreatState(creature, ThreatStates::TAUNTED, (uint64)tauntMod * 1000, (uint64)tauntMod * 1000);
 					threatMap->addAggro(creature, tauntMod * 10, (uint64)tauntMod * 1000);
 
-					creature->doCombatAnimation(creature, STRING_HASHCODE("taunt"), 0, 0xFF);
-					creature->doAnimation("taunt");
+					/* Returns no grammar data
+					CombatManager::instance()->broadcastCombatSpam(creature, agent, nullptr, 0, "cbt_spam", "taunt_success", 0);
+					stringFiles[29].addEntry("taunt_success", "~~~~~You taunt your enemy, enraging them!~~%TU taunts his enemy!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+					*/
 
 					creature->sendSystemMessage("@cbt_spam:taunt_success_single");
 				} else {
 					creature->sendSystemMessage("@cbt_spam:taunt_fail_single");
+
+					/* Returns no grammar data
+					stringFiles[29].addEntry("taunt_fail", "~~~~~You try to go taunt your enemy, but they don't fall for it.~~%TU taunts his enemy to no avail.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+					CombatManager::instance()->broadcastCombatSpam(creature, agent, nullptr, 0, "cbt_spam", "taunt_fail", 0);
+					*/;
 				}
 			}
 		}
-
-		info(true) << "Taunt Result = " << res;
 
 		return res;
 	}
