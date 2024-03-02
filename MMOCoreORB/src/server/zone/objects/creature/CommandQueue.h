@@ -15,7 +15,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/creature/variables/CommandQueueActionVector.h"
 
-#define DEBUG_QUEUE
+// #define DEBUG_QUEUE
 
 class CommandQueueTask;
 

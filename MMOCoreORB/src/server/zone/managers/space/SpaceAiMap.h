@@ -114,7 +114,7 @@ public:
 		lua->init();
 		lua->setLoggingName("SpaceAiMapLuaInstance");
 		lua->setGlobalLogging(true);
-		lua->setLogging(true);
+		lua->setLogging(false);
 
 		// SpaceAI
 		lua->setGlobalInt("NONESPACE",			BehaviorTreeSlotSpace::NONESPACE);

@@ -65,8 +65,6 @@ public:
 			}
 		}
 
-		info(true) << "Taunt Result = " << res;
-
 		return res;
 	}
 };
