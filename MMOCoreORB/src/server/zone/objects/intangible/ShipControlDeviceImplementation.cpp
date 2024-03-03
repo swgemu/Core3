@@ -75,24 +75,18 @@ void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	if (player == nullptr)
 		return;
 
-	// Name Ship
-	menuResponse->addRadialMenuItem(50, 3, "@sui:rename_ship"); // Rename Ship
-
-	// Launch and Land from datapad for testing
-	auto ghost = player->getPlayerObject();
-
-	if (ghost == nullptr || !ghost->hasGodMode()) {
-		return;
-	}
-
 	auto ship = controlledObject.get().castTo<ShipObject*>();
 
 	if (ship == nullptr) {
 		return;
 	}
 
+	// Name Ship
+	menuResponse->addRadialMenuItem(RadialOptions::SET_NAME, 3, "@sui:rename_ship"); // Rename Ship
+
 	auto root = player->getRootParent();
 
+	// Player is in another ship, no additional menu options given
 	if (root != nullptr && root->isShipObject() && root != ship) {
 		return;
 	}
@@ -100,6 +94,13 @@ void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	auto zoneServer = ServerCore::getZoneServer();
 
 	if (zoneServer == nullptr) {
+		return;
+	}
+
+	// Launch and Land from datapad
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr || !ghost->isPrivileged()) {
 		return;
 	}
 
@@ -138,7 +139,7 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
 	}
 
 	// Name Ship
-	if (selectedID == 50) {
+	if (selectedID == RadialOptions::SET_NAME) {
 		auto shipManager = ShipManager::instance();
 
 		if (shipManager == nullptr)
