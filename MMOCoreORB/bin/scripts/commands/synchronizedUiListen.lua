@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 SynchronizedUiListenCommand = {
-        name = "synchronizeduilisten",
+	name = "synchronizeduilisten",
 }
 
 AddCommand(SynchronizedUiListenCommand)
