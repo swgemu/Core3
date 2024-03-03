@@ -269,13 +269,11 @@ public:
 
 class SetMovementState : public Behavior {
 public:
-	SetMovementState(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args), state(0) {
+	SetMovementState(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args), state(0) {
 		parseArgs(args);
 	}
 
-	SetMovementState(const SetMovementState& a)
-			: Behavior(a), state(a.state) {
+	SetMovementState(const SetMovementState& a) : Behavior(a), state(a.state) {
 	}
 
 	SetMovementState& operator=(const SetMovementState& a) {
@@ -288,6 +286,7 @@ public:
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		ManagedReference<SceneObject*> tar = nullptr;
+
 		if (agent->peekBlackboard("targetProspect"))
 			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 
