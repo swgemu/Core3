@@ -355,7 +355,10 @@ function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID, gcwDiscoun
 	local faction = self:getRecruiterFaction(pNpc)
 	local smugglerDiscount = self:getSmugglerDiscount(pPlayer)
 
-	writeStringData(CreatureObject(pPlayer):getObjectID() .. ":faction_purchase", screenID)
+	local playerID = CreatureObject(pPlayer):getObjectID()
+
+	writeStringData(playerID .. ":faction_purchase", screenID)
+	writeStringData(playerID .. ":faction_purchase:gcwDiscount:", gcwDiscount)
 
 	local suiManager = LuaSuiManager()
 	local options = { }
@@ -383,14 +386,19 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0
 		return
 	end
 
+	local playerID = SceneObject(pCreature):getObjectID()
+
 	if cancelPressed then
-		deleteStringData(CreatureObject(pCreature):getObjectID() .. ":faction_purchase")
+		deleteStringData(playerID .. ":faction_purchase")
+		deleteStringData(playerID .. ":faction_purchase:gcwDiscount:")
 		return
 	end
 
-	local playerID = SceneObject(pCreature):getObjectID()
 	local purchaseCategory = readStringData(playerID .. ":faction_purchase")
+	local gcwDiscount = tonumber(readStringData(playerID .. ":faction_purchase:gcwDiscount:"))
+
 	deleteStringData(playerID .. ":faction_purchase")
+	deleteStringData(playerID .. ":faction_purchase:gcwDiscount:")
 
 	if purchaseCategory == "" then
 		return
@@ -405,11 +413,11 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0
 	local awardResult = nil
 
 	if (self:isHireling(faction, itemString)) then
-		awardResult = self:awardData(pCreature, faction, itemString)
+		awardResult = self:awardData(pCreature, faction, itemString, gcwDiscount)
 	elseif (self:isSchematic(faction, itemString)) then
-		awardResult = self:awardSchematic(pCreature, faction, itemString)
+		awardResult = self:awardSchematic(pCreature, faction, itemString, gcwDiscount)
 	else
-		awardResult = self:awardItem(pCreature, faction, itemString)
+		awardResult = self:awardItem(pCreature, faction, itemString, gcwDiscount)
 	end
 
 	if (awardResult == self.errorCodes.SUCCESS) then
@@ -436,7 +444,7 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0
 	end
 end
 
-function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
+function recruiterScreenplay:awardItem(pPlayer, faction, itemString, gcwDiscount)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -462,7 +470,9 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 		bothanDiscount = 0.9;
 	end
 
-	itemCost = math.ceil(itemCost * getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer) * bothanDiscount)
+	local smugglerDiscount = self:getSmugglerDiscount(pPlayer)
+
+	itemCost = math.ceil(itemCost * gcwDiscount * smugglerDiscount * bothanDiscount)
 
 	if (factionStanding < (itemCost + self.minimumFactionStanding)) then
 		return self.errorCodes.NOTENOUGHFACTION
@@ -533,7 +543,7 @@ function recruiterScreenplay:getUseCount(faction, itemString)
 	return nil
 end
 
-function recruiterScreenplay:awardSchematic(pPlayer, faction, itemString)
+function recruiterScreenplay:awardSchematic(pPlayer, faction, itemString, gcwDiscount)
 	if (pPlayer == nil) then
 		return self.errorCodes.GENERALERROR
 	end
@@ -551,7 +561,7 @@ function recruiterScreenplay:awardSchematic(pPlayer, faction, itemString)
 		return self.errorCodes.ITEMCOST
 	end
 
-	itemCost = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
+	itemCost = math.ceil(itemCost * gcwDiscount * self:getSmugglerDiscount(pPlayer))
 
 	if factionStanding < (itemCost + self.minimumFactionStanding) then
 		return self.errorCodes.NOTENOUGHFACTION
@@ -583,7 +593,7 @@ function recruiterScreenplay:awardSchematic(pPlayer, faction, itemString)
 	return self.errorCodes.SUCCESS
 end
 
-function recruiterScreenplay:awardData(pPlayer, faction, itemString)
+function recruiterScreenplay:awardData(pPlayer, faction, itemString, gcwDiscount)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -603,7 +613,7 @@ function recruiterScreenplay:awardData(pPlayer, faction, itemString)
 		return self.errorCodes.ITEMCOST
 	end
 
-	itemCost = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
+	itemCost = math.ceil(itemCost * gcwDiscount * self:getSmugglerDiscount(pPlayer))
 
 	if factionStanding < (itemCost + self.minimumFactionStanding) then
 		return self.errorCodes.NOTENOUGHFACTION

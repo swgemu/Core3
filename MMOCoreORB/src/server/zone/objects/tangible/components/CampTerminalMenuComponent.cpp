@@ -153,7 +153,7 @@ int CampTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 				*luaPurchaseSui << player;
 				*luaPurchaseSui << player;
 				*luaPurchaseSui << "fp_weapons_armor";
-				*luaPurchaseSui << (0.15 + gcwMan->getGCWDiscount(player));
+				*luaPurchaseSui << (1.15 * gcwMan->getGCWDiscount(player));
 				luaPurchaseSui->callFunction();
 			}
 
@@ -167,7 +167,7 @@ int CampTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 				*luaPurchaseSui << player;
 				*luaPurchaseSui << player;
 				*luaPurchaseSui << "fp_installations";
-				*luaPurchaseSui << (0.15 + gcwMan->getGCWDiscount(player));
+				*luaPurchaseSui << (1.15 * gcwMan->getGCWDiscount(player));
 				luaPurchaseSui->callFunction();
 			}
 
