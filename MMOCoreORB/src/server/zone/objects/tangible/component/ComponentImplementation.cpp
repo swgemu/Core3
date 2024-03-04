@@ -25,6 +25,8 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 	alm->insertAttribute("crafter", craftersName);
 	alm->insertAttribute("serial_number", objectSerial);
 
+	StringBuffer displayvalue;
+
 	for (int i = 0; i < keyList.size(); ++i) {
 		String attribute = keyList.get(i);
 		String listedName = attribute;
@@ -83,15 +85,17 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 				listedName = attribute;
 			}
 
-			StringBuffer displayvalue;
-
 			if (precision >= 10) {
-				displayvalue << Math::getPrecision(value, (precision - 10)) << "%";
+				StringBuffer msg;
+				msg.append(value, (precision - 10));
+
+				displayvalue << msg.toString() << "%";
 			} else {
-				displayvalue << Math::getPrecision(value, precision);
+				displayvalue.append(value, precision);
 			}
 
 			alm->insertAttribute(listedName, displayvalue.toString());
+			displayvalue.deleteAll();
 		}
 	}
 }

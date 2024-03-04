@@ -51,7 +51,7 @@ object_tangible_component_munition_warhead_fusing_mechanism = object_tangible_co
 	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
 	experimentalMin = {0, 0, 0, 0, 1, 0, 1000, -5, -5, -5, 5, 5, 5},
 	experimentalMax = {0, 0, 20, 30, 0, 1, 1000, 0, 0, 0, 0, 0, 0},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1},
 }
 
