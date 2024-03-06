@@ -8,6 +8,7 @@
 #include "ObjectControllerMessage.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "RadialMenuItem.h"
+#include "server/zone/managers/radial/RadialOptions.h"
 
 namespace server {
 namespace zone {
