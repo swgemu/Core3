@@ -14,21 +14,17 @@
 
 class RequestCraftingSessionCommand : public QueueCommand {
 public:
-
-	RequestCraftingSessionCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	RequestCraftingSessionCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<ZoneServer*> zoneServer = creature->getZoneServer();
-		if(zoneServer == nullptr)
+		if (zoneServer == nullptr)
 			return GENERALERROR;
 
-		ManagedReference<SceneObject* > object = zoneServer->getObject(target);
+		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
-		if(object == nullptr || !creature->isPlayerCreature())
+		if (object == nullptr || !creature->isPlayerCreature())
 			return INVALIDTARGET;
 
 		ManagedReference<TradeSession*> tradeContainer = creature->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
@@ -41,36 +37,32 @@ public:
 		ManagedReference<CraftingStation*> craftingStation = nullptr;
 
 		/// Logic for if target oid is crafting tool
-		if(object->isCraftingTool()) {
-			craftingTool = cast<CraftingTool*>( object.get());
+		if (object->isCraftingTool()) {
+			craftingTool = cast<CraftingTool*>(object.get());
 		}
 
-		if(object->isCraftingStation()) {
-			craftingStation = cast<CraftingStation*>( object.get());
+		if (object->isCraftingStation()) {
+			craftingStation = cast<CraftingStation*>(object.get());
 		}
 
 		if (!checkStateMask(creature)) {
-			if(craftingTool != nullptr && creature->isPlayerCreature()) {
-
+			if (craftingTool != nullptr && creature->isPlayerCreature()) {
 				String message = "@ui_craft:err_start";
 				craftingTool->sendToolStartFailure(creature, message);
-
 			}
 			return INVALIDSTATE;
 		}
 
 		if (!checkInvalidLocomotions(creature)) {
-			if(craftingTool != nullptr && creature->isPlayerCreature()) {
-
+			if (craftingTool != nullptr && creature->isPlayerCreature()) {
 				String message = "@ui_craft:err_start";
 				craftingTool->sendToolStartFailure(creature, message);
-
 			}
 			return INVALIDLOCOMOTION;
 		}
 
 		/// If they are both null, we can't craft
-		if(craftingTool == nullptr && craftingStation == nullptr) {
+		if (craftingTool == nullptr && craftingStation == nullptr) {
 			creature->sendSystemMessage("Error starting crafting session, no tool or station found.  Please report this error");
 			return GENERALERROR;
 		}
@@ -82,12 +74,12 @@ public:
 		 */
 
 		/// Check if tool is in initiating creatures inventory
-		if(craftingTool != nullptr && !craftingTool->isASubChildOf(creature)) {
+		if (craftingTool != nullptr && !craftingTool->isASubChildOf(creature)) {
 			return GENERALERROR;
 		}
 
 		// Make sure station is in a building or outdoors and within range
-		if(craftingStation != nullptr) {
+		if (craftingStation != nullptr) {
 			ManagedReference<SceneObject*> parent = craftingStation->getParent().get();
 
 			if ((parent != nullptr && !parent->isCellObject()) || !creature->isInRange(craftingStation, 7.0)) {
@@ -96,13 +88,12 @@ public:
 		}
 
 		/// Its a station, find the tool
-		if(craftingStation != nullptr) {
+		if (craftingStation != nullptr) {
 			craftingTool = cast<CraftingTool*>(craftingStation->findCraftingTool(creature));
 		}
 
 		/// If tool isn't null we have a valid tool and can start the session
-		if(craftingTool != nullptr) {
-
+		if (craftingTool != nullptr) {
 			if (craftingTool->isFinished()) {
 				String message = "@system_msg:crafting_tool_full";
 				craftingTool->sendToolStartFailure(creature, message);
@@ -115,17 +106,17 @@ public:
 				return GENERALERROR;
 			}
 
-			if(craftingStation == nullptr) {
+			if (craftingStation == nullptr) {
 				ManagedReference<PlayerManager*> playerMan = zoneServer->getPlayerManager();
 
-				if(playerMan == nullptr)
+				if (playerMan == nullptr)
 					return GENERALERROR;
 
 				craftingStation = playerMan->getNearbyCraftingStation(creature, craftingTool->getToolType());
 			}
 
 			Reference<CraftingSession*> session = creature->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
-			if(session != nullptr) {
+			if (session != nullptr) {
 				Locker locker(session);
 				session->cancelSession();
 			}
@@ -134,7 +125,7 @@ public:
 
 			Locker locker(craftingTool);
 
-			if(!craftingSession->initializeSession(craftingTool, craftingStation)) {
+			if (!craftingSession->initializeSession(craftingTool, craftingStation)) {
 				String message = "@ui_craft@err_no_crafting_tool";
 				craftingTool->sendToolStartFailure(creature, message);
 				return GENERALERROR;
@@ -149,4 +140,4 @@ public:
 	}
 };
 
-#endif //REQUESTCRAFTINGSESSIONCOMMAND_H_
+#endif // REQUESTCRAFTINGSESSIONCOMMAND_H_

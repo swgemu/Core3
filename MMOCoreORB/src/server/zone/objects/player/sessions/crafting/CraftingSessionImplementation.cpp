@@ -42,8 +42,6 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 
 	craftingTool->setCountdownTimer(0, true);
 
-	craftingTool->disperseItems();
-
 	crafterGhost = crafter->getPlayerObject();
 
 	craftingManager = crafter->getZoneServer()->getCraftingManager();

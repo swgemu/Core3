@@ -159,7 +159,7 @@ class CraftingTool extends ToolTangibleObject {
 	@local
 	public native Vector<unsigned int> getToolTabs();
 
-	public native void disperseItems();
+	// public native void disperseItems();
 
 	@dirty
 	public int getForceCriticalAssembly() {

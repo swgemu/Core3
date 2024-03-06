@@ -1,5 +1,5 @@
 /*
- 				Copyright <SWGEmu>
+				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
 #include "engine/engine.h"
@@ -17,7 +17,7 @@
 void CraftingToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	CraftingToolTemplate* craftingToolData = dynamic_cast<CraftingToolTemplate*> (templateData);
+	CraftingToolTemplate* craftingToolData = dynamic_cast<CraftingToolTemplate*>(templateData);
 
 	if (craftingToolData == nullptr) {
 		throw Exception("invalid template for CraftingTool");
@@ -48,60 +48,60 @@ void CraftingToolImplementation::initializeTransientMembers() {
 void CraftingToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if (status == TOOL_FINISHED) {
-		menuResponse->addRadialMenuItem(132, 3, "@ui_radial:craft_hopper_output");
+	if (isFinished()) {
+		menuResponse->addRadialMenuItem(RadialOptions::SERVER_ITEM_OPTIONS, 3, "@ui_radial:craft_hopper_output");
 	}
 }
 
 Reference<TangibleObject*> CraftingToolImplementation::getPrototype() {
 	if (getContainerObjectsSize() > 0)
-		return getContainerObject(0).castTo<TangibleObject*> ();
+		return getContainerObject(0).castTo<TangibleObject*>();
 	else
 		return nullptr;
 }
 
-int CraftingToolImplementation::handleObjectMenuSelect(
-		CreatureObject* playerCreature, byte selectedID) {
+int CraftingToolImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	if (!isASubChildOf(player))
+		return 0;
 
-	if(isASubChildOf(playerCreature)) {
+	int toolSize = getContainerObjectsSize();
 
-		PlayerObject* playerObject = playerCreature->getPlayerObject();
+	// Get Finished Prototype
+	if (selectedID == RadialOptions::SERVER_ITEM_OPTIONS) {
+		// Tool is not finished
+		if (!isFinished())
+			return 0;
 
-		if (selectedID == 20) { // use object
+		ManagedReference<TangibleObject*> prototype = getPrototype();
 
+		// Prototype is null, unable to stranfer
+		if (prototype == nullptr) {
+			status = TOOL_READY;
+
+			return 1;
 		}
 
-		if (selectedID == 132) { // use object
-			if (!isFinished())
-				return 0;
+		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-			ManagedReference<TangibleObject *> prototype = getPrototype();
-			ManagedReference<SceneObject*> inventory = playerCreature->getSlottedObject("inventory");
+		if (inventory == nullptr)
+			return 0;
 
-			if (prototype == nullptr) {
-				while (getContainerObjectsSize() > 0) {
-					getContainerObject(0)->destroyObjectFromWorld(true);
-				}
+		int totalLimit = inventory->getContainerVolumeLimit();
+		int totalObjects = inventory->getCountableObjectsRecursive() - 1;
 
-				playerCreature->sendSystemMessage("Your crafting tool does not contain a prototype.");
+		// Check if the player has made space and attempt to transfer the prototype
+		if (totalLimit > totalObjects && inventory->transferObject(prototype, -1, true)) {
+			player->sendSystemMessage("@system_msg:prototype_transferred");
 
-				status = TOOL_READY;
-
-				return 1;
-			}
-
-			if (inventory != nullptr && !(inventory->getContainerVolumeLimit() <= (inventory->getCountableObjectsRecursive() - 1))) {
-				playerCreature->sendSystemMessage("@system_msg:prototype_transferred");
-				inventory->transferObject(prototype, -1, true);
-
-				status = TOOL_READY;
-			} else {
-				playerCreature->sendSystemMessage("@system_msg:prototype_not_transferred");
-			}
+			status = TOOL_READY;
+		} else {
+			player->sendSystemMessage("@system_msg:prototype_not_transferred");
 		}
+
+		return 1;
 	}
 
-	return TangibleObjectImplementation::handleObjectMenuSelect(playerCreature, selectedID);
+	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
 void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
@@ -124,25 +124,11 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 	if (forceCriticalExperiment > 0)
 		alm->insertAttribute("@crafting:crit_experiment", forceCriticalExperiment);
-
-	/* This should not be called with the ALM. If this breaks something, it will have to be added somewhere else - Hakry
-	if (player == nullptr) {
-		return;
-	}
-
-	Reference<CraftingSession*> session = player->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
-
-	if (session == nullptr && getParent() != nullptr) {
-		disperseItems();
-	}*/
 }
 
 void CraftingToolImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	/// useModifer is the effectiveness
-
+	// useModifer is the effectiveness
 	effectiveness = values->getCurrentValue("usemodifier");
-
-	//craftingValues->toString();
 }
 
 Vector<uint32>* CraftingToolImplementation::getToolTabs() {
@@ -150,10 +136,8 @@ Vector<uint32>* CraftingToolImplementation::getToolTabs() {
 }
 
 void CraftingToolImplementation::sendToolStartFailure(CreatureObject* player, const String& message) {
-
 	// Start Object Controller **(Failed to start crafting Session************
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-			player->getObjectID(), 0x1B, 0x010C);
+	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x010C);
 	objMsg->insertInt(0x10F);
 	objMsg->insertInt(0);
 	objMsg->insertByte(0);
@@ -163,6 +147,7 @@ void CraftingToolImplementation::sendToolStartFailure(CreatureObject* player, co
 	player->sendSystemMessage(message);
 }
 
+/*
 void CraftingToolImplementation::disperseItems() {
 	if (!isReady())
 		return;
@@ -205,7 +190,7 @@ void CraftingToolImplementation::disperseItems() {
 		Locker clocker(prototype, _this.getReferenceUnsafeStaticCast());
 		prototype->destroyObjectFromWorld(true);
 	}
-}
+}*/
 
 Reference<ManufactureSchematic*> CraftingToolImplementation::getManufactureSchematic() {
 	return getSlottedObject("test_manf_schematic").castTo<ManufactureSchematic*>();
