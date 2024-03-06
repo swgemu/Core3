@@ -49,8 +49,6 @@ public:
 		if (targetShip == nullptr)
 			return FAILURE;
 
-		Locker clocker(targetShip, agent);
-
 		float minMod = 1.5f; // Math::min(1.f - (tarCreo->getLevel() - agent->getLevel()) / 8.f, 1.5f);
 		float mod = Math::max(0.75f, minMod);
 

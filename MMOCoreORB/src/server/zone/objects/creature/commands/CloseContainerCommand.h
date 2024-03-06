@@ -10,14 +10,10 @@
 
 class CloseContainerCommand : public QueueCommand {
 public:
-
-	CloseContainerCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	CloseContainerCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -31,29 +27,33 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return GENERALERROR;
+
 		ManagedReference<SceneObject*> container = nullptr;
 
 		StringTokenizer args(arguments.toString());
 
-		if(args.hasMoreTokens()) {
-
+		if (args.hasMoreTokens()) {
 			uint64 oid = args.getLongToken();
-			container = server->getZoneServer()->getObject(oid);
 
+			container = zoneServer->getObject(oid);
 		} else {
-			container = server->getZoneServer()->getObject(target);
+			container = zoneServer->getObject(target);
 		}
+
 		if (container == nullptr)
 			return GENERALERROR;
 
 		Locker clocker(container, creature);
 
-		container->closeContainerTo(cast<CreatureObject*>(creature), false);
-		container->notifyCloseContainer(cast<CreatureObject*>(creature));
+		container->closeContainerTo(creature, false);
+		container->notifyCloseContainer(creature);
 
 		return SUCCESS;
 	}
-
 };
 
-#endif //CLOSECONTAINERCOMMAND_H_
+#endif // CLOSECONTAINERCOMMAND_H_

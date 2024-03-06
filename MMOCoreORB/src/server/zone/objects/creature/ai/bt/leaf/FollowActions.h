@@ -343,14 +343,13 @@ private:
 
 class CalculateAggroMod : public Behavior {
 public:
-	CalculateAggroMod(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args) {
+	CalculateAggroMod(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		ManagedReference<SceneObject*> tar = nullptr;
 		if (agent->peekBlackboard("targetProspect"))
-			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
+			tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*>>();
 
 		if (tar == nullptr || !tar->isCreatureObject())
 			return FAILURE;
@@ -360,10 +359,9 @@ public:
 		if (tarCreo == nullptr)
 			return FAILURE;
 
-		Locker clocker(tarCreo, agent);
-
 		float minMod = Math::min(1.f - (tarCreo->getLevel() - agent->getLevel()) / 8.f, 1.5f);
 		float mod = Math::max(0.75f, minMod);
+
 		agent->writeBlackboard("aggroMod", mod);
 
 		return agent->peekBlackboard("aggroMod") ? SUCCESS : FAILURE;
