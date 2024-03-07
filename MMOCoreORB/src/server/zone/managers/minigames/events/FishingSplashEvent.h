@@ -16,33 +16,37 @@ namespace minigames {
 namespace events {
 
 class FishingSplashEvent : public Task {
-	ManagedReference<CreatureObject*> player;
-	ManagedReference<SceneObject*> splash;
+	ManagedWeakReference<SceneObject*> splashWeak;
 
 public:
-	FishingSplashEvent(CreatureObject* player, SceneObject* splash) : Task(1000) {
-		this->player = player;
-		this->splash = splash;
+	FishingSplashEvent(SceneObject* splashObj) : Task(1000) {
+		splashWeak = splashObj;
 	}
 
 	void run() {
-		try {
-			Locker _locker(player);
+		auto splash = splashWeak.get();
 
-			ManagedReference<FishingManager*> manager = player->getZoneProcessServer()->getFishingManager();
+		if (splash == nullptr)
+			return;
+
+		auto zoneProcServer = splash->getZoneProcessServer();
+
+		if (zoneProcServer == nullptr)
+			return;
+
+		ManagedReference<FishingManager*> fishingManager = zoneProcServer->getFishingManager();
+
+		if (fishingManager == nullptr)
+			return;
+
+		try {
 			Locker splashLocker(splash);
-			manager->removeSplash(splash);
+
+			fishingManager->removeSplash(splash);
 		} catch (...) {
-			// player = nullptr;
 
 			throw;
 		}
-
-		// player = nullptr;
-	}
-
-	SceneObject* getSplash() {
-		return splash;
 	}
 };
 } // namespace events
