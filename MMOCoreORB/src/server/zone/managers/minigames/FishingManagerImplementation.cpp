@@ -270,7 +270,7 @@ void FishingManagerImplementation::createFishingSession(CreatureObject* player, 
 }
 
 void FishingManagerImplementation::stopFishing(CreatureObject* player, uint32 boxID, bool destroyMarker) {
-	if (player == nullptr) // should never occur
+	if (player == nullptr)
 		return;
 
 	String moodString;
@@ -298,8 +298,10 @@ void FishingManagerImplementation::stopFishing(CreatureObject* player, uint32 bo
 
 	// stop events
 	if (destroyMarker) {
-		Locker locker(marker);
+		Locker locker(marker, player);
+
 		removeMarker(player, marker);
+
 		stopFishingEvent(player);
 
 		player->dropActiveSession(SessionFacadeType::FISHING);
@@ -942,13 +944,15 @@ SceneObject* FishingManagerImplementation::getFishMarker(CreatureObject* player)
 }
 
 void FishingManagerImplementation::setFishMarker(CreatureObject* player, SceneObject* marker) {
-	if (player != nullptr) {
-		ManagedReference<FishingSession*> fishingSession = player->getActiveSession(SessionFacadeType::FISHING).castTo<FishingSession*>();
-		if (fishingSession == nullptr)
-			return;
+	if (player == nullptr)
+		return;
 
-		fishingSession->setMarker(marker);
-	}
+	ManagedReference<FishingSession*> fishingSession = player->getActiveSession(SessionFacadeType::FISHING).castTo<FishingSession*>();
+
+	if (fishingSession == nullptr)
+		return;
+
+	fishingSession->setMarker(marker);
 }
 
 void FishingManagerImplementation::freeBait(CreatureObject* player) {
@@ -1168,19 +1172,26 @@ SceneObject* FishingManagerImplementation::createMarker(Vector3& location, Zone*
 }
 
 void FishingManagerImplementation::createSplash(float x, float y, float z, Zone* zone, CreatureObject* player) {
-	if ((player != nullptr) && (zone != nullptr)) {
-		String splash = "object/tangible/fishing/splash.iff";
-		ManagedReference<SceneObject*> splashObject = player->getZoneServer()->createObject(splash.hashCode(), 0);
+	if (player == nullptr || zone == nullptr)
+		return;
 
-		if (splashObject != nullptr) {
-			Locker locker(splashObject);
+	auto zoneServer = player->getZoneServer();
 
-			splashObject->initializePosition(x, z + 0.5, y);
-			zone->transferObject(splashObject, -1, true);
+	if (zoneServer == nullptr)
+		return;
 
-			createFishingSplashEvent(player, splashObject);
-		}
-	}
+	String splash = "object/tangible/fishing/splash.iff";
+	ManagedReference<SceneObject*> splashObject = zoneServer->createObject(splash.hashCode(), 0);
+
+	if (splashObject == nullptr)
+		return;
+
+	Locker locker(splashObject);
+
+	splashObject->initializePosition(x, z + 0.5, y);
+	zone->transferObject(splashObject, -1, true);
+
+	createFishingSplashEvent(splashObject);
 }
 
 bool FishingManagerImplementation::checkUpdateMarker(CreatureObject* player, Vector3& location) {
@@ -1207,19 +1218,20 @@ SceneObject* FishingManagerImplementation::updateMarker(CreatureObject* player, 
 		return nullptr;
 	}
 
-	Locker markerLocker(marker);
-
-	Zone* zone = player->getZone();
+	auto zone = player->getZone();
 
 	if (zone == nullptr) {
 		return nullptr;
 	}
+
+	Locker markerLocker(marker);
 
 	// Calculate new bobber position
 	Vector3 newMarkerLoc;
 	Vector3 markerLoc;
 	float playerX = player->getPositionX();
 	float playerY = player->getPositionY();
+
 	markerLoc.setX(marker->getPositionX());
 	markerLoc.setY(marker->getPositionY());
 
@@ -1296,63 +1308,63 @@ SceneObject* FishingManagerImplementation::updateMarker(CreatureObject* player, 
 	if (newMarker == nullptr)
 		return nullptr;
 
+	Locker lock(player, marker);
+
 	setFishMarker(player, newMarker);
 
 	return newMarker;
 }
 
-void FishingManagerImplementation::removeMarker(CreatureObject* player, SceneObject* container) {
-	if (player != nullptr) {
-		ManagedReference<SceneObject*> marker;
+// Marker and player are prelocked
+void FishingManagerImplementation::removeMarker(CreatureObject* player, SceneObject* marker) {
+	if (player == nullptr || marker == nullptr || marker->isPlayerCreature())
+		return;
 
-		if (container == nullptr) {
-			marker = getFishMarker(player);
-		} else {
-			marker = container;
+	// Clear fish marker for player fishing session
+	setFishMarker(player, nullptr);
+
+	for (int i = marker->getContainerObjectsSize() - 1; i >= 0; --i) {
+		ManagedReference<SceneObject*> object = marker->getContainerObject(i);
+
+		if (object == nullptr)
+			continue;
+
+		Locker clock(object, marker);
+
+		if (object->isPersistent()) {
+			object->destroyObjectFromDatabase(true);
 		}
 
-		if (marker != nullptr) {
-			if (!marker->isPlayerCreature()) {
-				setFishMarker(player, nullptr);
+		object->destroyObjectFromWorld(true);
+	}
 
-				marker->destroyObjectFromWorld(true);
+	// Destroy the marker
+	marker->destroyObjectFromWorld(true);
 
-				if (marker->isPersistent()) {
-					marker->destroyObjectFromDatabase(true);
-				}
-
-				while (marker->getContainerObjectsSize() > 0) {
-					ManagedReference<SceneObject*> object = marker->getContainerObject(0);
-
-					if (object->isPersistent()) {
-						object->destroyObjectFromDatabase(true);
-					}
-
-					object->destroyObjectFromWorld(true);
-				}
-			}
-		}
+	if (marker->isPersistent()) {
+		marker->destroyObjectFromDatabase(true);
 	}
 }
 
 void FishingManagerImplementation::removeSplash(SceneObject* splash) {
-	if (splash != nullptr) {
-		if (!splash->isPlayerCreature()) {
-			splash->destroyObjectFromWorld(true);
+	if (splash == nullptr)
+		return;
 
-			if (splash->isPersistent()) {
-				splash->destroyObjectFromDatabase(true);
-			}
-		}
+	splash->destroyObjectFromWorld(true);
+
+	if (splash->isPersistent()) {
+		splash->destroyObjectFromDatabase(true);
 	}
 }
 
-void FishingManagerImplementation::createFishingSplashEvent(CreatureObject* player, SceneObject* splash) {
-	if ((player != nullptr) && (splash != nullptr)) {
-		Reference<FishingSplashEvent*> fishingSplashEvent = new FishingSplashEvent(player, splash);
+void FishingManagerImplementation::createFishingSplashEvent(SceneObject* splash) {
+	if (splash == nullptr)
+		return;
 
-		fishingSplashEvent->schedule(1000);
-	}
+	Reference<FishingSplashEvent*> splashEvent = new FishingSplashEvent(splash);
+
+	if (splashEvent != nullptr)
+		splashEvent->schedule(1000);
 }
 
 FishingEvent* FishingManagerImplementation::createFishingEvent(CreatureObject* player, int state) {
@@ -1406,10 +1418,25 @@ bool FishingManagerImplementation::isPlaying(CreatureObject* player) {
 }
 
 int FishingManagerImplementation::notifyCloseContainer(CreatureObject* player, SceneObject* container) {
-	removeMarker(player, container);
+	if (player == nullptr || container == nullptr)
+		return 1;
 
-	if (player != nullptr)
-		player->dropActiveSession(SessionFacadeType::FISHING);
+	player->dropActiveSession(SessionFacadeType::FISHING);
+
+	Reference<FishingManager*> managerRef = _this.getReferenceUnsafeStaticCast();
+	Reference<SceneObject*> markerRef = container;
+	Reference<CreatureObject*> playerRef = player;
+
+	Core::getTaskManager()->scheduleTask([managerRef, markerRef, playerRef] () {
+		if (managerRef == nullptr || markerRef == nullptr || playerRef == nullptr)
+			return;
+
+		Locker lock(playerRef);
+
+		Locker clock(markerRef, playerRef);
+
+		managerRef->removeMarker(playerRef, markerRef);
+	}, "RemoveMarkerLambda", 100);
 
 	return 1;
 }

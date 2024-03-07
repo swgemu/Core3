@@ -169,6 +169,7 @@ class FishingManager extends Observer implements Logger {
 	 * @post { this object is locked }
 	 * @param player CreatureObject which is currently fishing
 	 */
+	 @arg1preLocked
 	public native void fishingStep(CreatureObject player);
 
 	/**
@@ -497,6 +498,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param player CreatureObject to get Event to remove marker from
 	 * @param container Container to remove
 	 */
+	@arg1preLocked
 	public native void removeMarker(CreatureObject player, SceneObject container);
 
 	/**
@@ -506,6 +508,7 @@ class FishingManager extends Observer implements Logger {
 	 * @post { object is locked }
 	 * @param splash SceneObject to remove from Zone
 	 */
+	@arg1preLocked
 	public native void removeSplash(SceneObject splash);
 
 	/**
@@ -518,7 +521,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param zoneServer ZoneServer used
 	 * @param splash SceneObject to remove later
 	 */
-	public native void createFishingSplashEvent(CreatureObject player, SceneObject splash);
+	public native void createFishingSplashEvent(SceneObject splash);
 
 	/**
 	 * Creates a FishingSession
