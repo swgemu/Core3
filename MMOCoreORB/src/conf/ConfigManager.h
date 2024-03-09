@@ -747,6 +747,19 @@ namespace conf {
 
 			return cachedSpawnRange;
 		}
+
+		inline bool getLootDebugAttributes() {
+			static uint32 cachedVersion = 0;
+			static bool cachedValue;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedValue = getBool("Core3.LootManager.DebugAttributes", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedValue;
+		}
 	};
 }
 
