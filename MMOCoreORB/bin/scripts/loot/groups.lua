@@ -169,6 +169,15 @@ includeFile("groups/npc/tutorial_pirate.lua")
 includeFile("groups/npc/valarian_common.lua")
 includeFile("groups/npc/weequay_common.lua")
 
+-- resource loot sub-folder
+includeFile("groups/resource/resource_chemical.lua")
+includeFile("groups/resource/resource_creature.lua")
+includeFile("groups/resource/resource_flora.lua")
+includeFile("groups/resource/resource_gemstone.lua")
+includeFile("groups/resource/resource_metal.lua")
+includeFile("groups/resource/resource_ore.lua")
+includeFile("groups/resource/resource_water.lua")
+
 -- task_loot sub-folder
 includeFile("groups/task_loot/hedon_istee_treasure.lua")
 includeFile("groups/task_loot/task_loot_ancient_lightsaber.lua")

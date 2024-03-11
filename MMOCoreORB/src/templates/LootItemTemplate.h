@@ -40,6 +40,8 @@ protected:
 
 	uint32 objectType;
 
+	bool isRandomResource;
+
 	VectorMap<String, SortedVector<int> > staticDotValues;
 
 	VectorMap<String, int> skillMods;
@@ -61,6 +63,8 @@ public:
 
 		objectType = 0;
 
+		isRandomResource = false;
+
 		setLoggingName("LootItemTemplate");
 	}
 
@@ -75,6 +79,8 @@ public:
 
 		levelMin = templateData->getFloatField("minimumLevel", 0);
 		levelMax = templateData->getFloatField("maximumLevel", -1);
+
+		isRandomResource = directObjectTemplate == "object/resource_container/simple.iff";
 
 		auto tanoTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(TemplateManager::instance()->getTemplate(directObjectTemplate.hashCode()));
 
@@ -300,6 +306,10 @@ public:
 
 	int getLevelMin() const {
 		return levelMin;
+	}
+
+	bool isRandomResourceContainer() const {
+		return isRandomResource;
 	}
 
 	uint32 getObjectType() const {

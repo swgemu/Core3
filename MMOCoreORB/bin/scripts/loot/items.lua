@@ -565,6 +565,20 @@ includeFile("items/recycler/small_motor.lua")
 includeFile("items/recycler/spinner_blade.lua")
 includeFile("items/recycler/tumble_blender_schematic.lua")
 
+-- resource sub-folder
+includeFile("items/resource/resource_container_bone.lua")
+includeFile("items/resource/resource_container_cereal.lua")
+includeFile("items/resource/resource_container_chemical.lua")
+includeFile("items/resource/resource_container_gemstone.lua")
+includeFile("items/resource/resource_container_hide.lua")
+includeFile("items/resource/resource_container_meat.lua")
+includeFile("items/resource/resource_container_metal.lua")
+includeFile("items/resource/resource_container_milk.lua")
+includeFile("items/resource/resource_container_ore.lua")
+includeFile("items/resource/resource_container_seeds.lua")
+includeFile("items/resource/resource_container_water.lua")
+includeFile("items/resource/resource_container_wood.lua")
+
 --skill_buff sub-folder
 includeFile("items/skill_buff/skill_buff_carbine_accuracy.lua")
 includeFile("items/skill_buff/skill_buff_carbine_speed.lua")
