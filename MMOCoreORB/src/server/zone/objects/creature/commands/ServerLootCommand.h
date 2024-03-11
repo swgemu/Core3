@@ -69,6 +69,12 @@ public:
 	static String createLoot(TransactionLog& trx, CreatureObject* creature, SceneObject* container, const String& lootName, int level = 0, float modifier = 0.f) {
 		StringBuffer msg;
 
+		auto zone = creature->getZone();
+
+		if (zone == nullptr) {
+			return "!zone";
+		}
+
 		auto zoneServer = creature->getZoneServer();
 
 		if (zoneServer == nullptr)
@@ -92,7 +98,13 @@ public:
 			return "!lootItem";
 		}
 
-		ManagedReference<TangibleObject*> prototype = lootManager->createLootObject(trx, itemTemplate, level, false);
+		ManagedReference<TangibleObject*> prototype = nullptr;
+
+		if (itemTemplate->isRandomResourceContainer()) {
+			prototype = lootManager->createLootResource(lootName, zone->getZoneName());
+		} else {
+			prototype = lootManager->createLootObject(trx, itemTemplate, level, false);
+		}
 
 		if (prototype == nullptr) {
 			return "!prototype";
@@ -105,7 +117,7 @@ public:
 		prototype->setCraftersName(craftersName);
 		prototype->setCraftersID(craftersOID);
 
-		if (modifier >= 1.f) {
+		if (modifier >= LootValues::EXPERIMENTAL) {
 			auto lootValues = LootValues(itemTemplate, 0, 0);
 			lootValues.setLevel(level);
 			lootValues.setModifier(modifier);
