@@ -16,6 +16,8 @@
 #include "LootGroupMap.h"
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 #include "server/zone/managers/loot/LootValues.h"
+#include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/Zone.h"
 
 // #define DEBUG_LOOT_MAN
 
@@ -322,6 +324,10 @@ TangibleObject* LootManagerImplementation::createLootObject(TransactionLog& trx,
 	info(true) << "Item Template: " << directTemplateObject << "    Level = " << level << " Uncapped Level = " << uncappedLevel;
 #endif
 
+	if (templateObject->isRandomResourceContainer()) {
+		return createLootResource(templateObject->getTemplateName(), "tatooine");
+	}
+
 	ManagedReference<TangibleObject*> prototype = zoneServer->createObject(directTemplateObject.hashCode(), 2).castTo<TangibleObject*>();
 
 	if (prototype == nullptr) {
@@ -427,6 +433,77 @@ TangibleObject* LootManagerImplementation::createLootObject(TransactionLog& trx,
 #endif
 
 	return prototype;
+}
+
+TangibleObject* LootManagerImplementation::createLootResource(const String& resourceDataName, const String& resourceZoneName) {
+	auto lootItemTemplate = lootGroupMap->getLootItemTemplate(resourceDataName);
+
+	if (lootItemTemplate == nullptr || lootItemTemplate->getObjectType() != SceneObjectType::RESOURCECONTAINER) {
+		return nullptr;
+	}
+
+	auto resourceManager = zoneServer->getResourceManager();
+
+	if (resourceManager == nullptr) {
+		return nullptr;
+	}
+
+	auto resourceSpawner = resourceManager->getResourceSpawner();
+
+	if (resourceSpawner == nullptr) {
+		return nullptr;
+	}
+
+	auto resourceMap = resourceSpawner->getResourceMap();
+
+	if (resourceMap == nullptr) {
+		return nullptr;
+	}
+
+	auto resourceList = resourceMap->getZoneResourceList(resourceZoneName);
+
+	if (resourceList == nullptr) {
+		return nullptr;
+	}
+
+	String resourceTypeName = resourceDataName.replaceAll("resource_container_", "");
+
+	if (resourceTypeName == "") {
+		return nullptr;
+	}
+
+	Vector<ManagedReference<ResourceSpawn*>> resourceIndex;
+
+	for (int i = 0; i < resourceList->size(); ++i) {
+		ManagedReference<ResourceSpawn*> resourceEntry = resourceList->elementAt(i).getValue();
+
+		if (resourceEntry != nullptr && resourceEntry->isType(resourceTypeName)) {
+			resourceIndex.add(resourceEntry);
+		}
+	}
+
+	if (resourceIndex.size() > 0) {
+		ManagedReference<ResourceSpawn*> resourceEntry = resourceIndex.get(System::random(resourceIndex.size()-1));
+
+		if (resourceEntry != nullptr) {
+			Locker rLock(resourceEntry);
+
+			const auto& valueMap = lootItemTemplate->getAttributesMapCopy();
+
+			if (!valueMap.hasExperimentalAttribute("quantity")) {
+				return nullptr;
+			}
+
+			float min = Math::max(1.f, valueMap.getMinValue("quantity"));
+			float max = Math::max(min, valueMap.getMaxValue("quantity"));
+
+			ManagedReference<ResourceContainer*> resourceContainer = resourceEntry->createResource(System::random(max - min) + min);
+
+			return resourceContainer;
+		}
+	}
+
+	return nullptr;
 }
 
 void LootManagerImplementation::addConditionDamage(TangibleObject* prototype) {
@@ -667,7 +744,19 @@ uint64 LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* c
 
 	trx.addState("lootMapEntry", lootMapEntry);
 
-	TangibleObject* obj = createLootObject(trx, itemTemplate, level, maxCondition);
+	TangibleObject* obj = nullptr;
+
+	if (itemTemplate->isRandomResourceContainer()) {
+		auto zone = container->getZone();
+
+		if (zone == nullptr) {
+			return 0;
+		}
+
+		obj = createLootResource(lootEntry, zone->getZoneName());
+	} else {
+		obj = createLootObject(trx, itemTemplate, level, maxCondition);
+	}
 
 	if (obj == nullptr) {
 		return 0;

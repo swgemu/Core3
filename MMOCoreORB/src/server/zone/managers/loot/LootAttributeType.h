@@ -202,6 +202,13 @@ public:
 			}
 		}
 
+		if (objectType == SceneObjectType::RESOURCECONTAINER) {
+			switch (attributeCRC) {
+				case String::hashCode("quantity"):						return RandomType::UNIFORM;
+				default:												return RandomType::STATIC;
+			}
+		}
+
 		return RandomType::STATIC;
 	}
 };
