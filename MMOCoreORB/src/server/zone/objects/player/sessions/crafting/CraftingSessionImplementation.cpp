@@ -210,7 +210,9 @@ int CraftingSessionImplementation::cancelSessionCommand() {
 }
 
 int CraftingSessionImplementation::clearSession() {
-	Locker slocker(_this.getReferenceUnsafeStaticCast());
+	auto session = _this.getReferenceUnsafeStaticCast();
+
+	Locker slocker(session);
 
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
@@ -234,8 +236,15 @@ int CraftingSessionImplementation::clearSession() {
 		Locker locker2(craftingTool);
 
 		// Remove all items that aren't the prototype
-		while (craftingTool->getContainerObjectsSize() > 1) {
-			craftingTool->getContainerObject(1)->destroyObjectFromWorld(true);
+		for (int i = craftingTool->getContainerObjectsSize() - 1; i > 0; --i) {
+			auto object = craftingTool->getContainerObject(i);
+
+			if (object == nullptr)
+				continue;
+
+			Locker objLock(object, session);
+
+			object->destroyObjectFromWorld(true);
 		}
 
 		Reference<SceneObject*> craftingComponents = craftingTool->getSlottedObject("crafted_components");
@@ -247,7 +256,7 @@ int CraftingSessionImplementation::clearSession() {
 		}
 
 		if (prototype != nullptr) {
-			Locker locker3(prototype);
+			Locker locker3(prototype, session);
 
 			if (craftingTool->isReady()) {
 				if (prototype->getParent() == craftingTool) {
@@ -432,7 +441,17 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 		}
 	}
 
-	prototype = (crafter->getZoneServer()->createObject(draftschematic->getTanoCRC(), 0)).castTo<TangibleObject*>();
+	if (crafter == nullptr) {
+		return false;
+	}
+
+	auto zoneServer = crafter->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return false;
+	}
+
+	prototype = (zoneServer->createObject(draftschematic->getTanoCRC(), 0)).castTo<TangibleObject*>();
 
 	ManagedReference<TangibleObject*> strongPrototype = prototype.get();
 

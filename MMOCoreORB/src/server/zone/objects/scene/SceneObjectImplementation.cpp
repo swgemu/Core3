@@ -1675,6 +1675,14 @@ Reference<SceneObject*> SceneObjectImplementation::getSlottedObject(const String
 	return obj;
 }
 
+Reference<SceneObject*> SceneObjectImplementation::getInventory() {
+	ReadLocker locker(&containerLock);
+
+	Reference<SceneObject*> obj = slottedObjects.get("inventory");
+
+	return obj;
+}
+
 Reference<SceneObject*> SceneObjectImplementation::getSlottedObject(int idx) {
 	Reference<SceneObject*> obj;
 
@@ -1807,15 +1815,24 @@ bool SceneObjectImplementation::setTransformForCollisionMatrixIfNull(Matrix4* ma
 int SceneObjectImplementation::getCountableObjectsRecursive() {
 	int count = 0;
 
+	// info(true) << getDisplayedName() << "---------- START check ----------";
+
+	// info(true) << getDisplayedName() << " -- Container Size: " << containerObjects.size();
+
 	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> obj = containerObjects.get(i);
 
 		if (obj != nullptr) {
 			++count;
 
-			count += obj->getCountableObjectsRecursive();
+			if (!obj->isCraftingTool())
+				count += obj->getCountableObjectsRecursive();
+
+			// info(true) << "After Object: " << obj->getDisplayedName() << " -- New Total Count: " << count;
 		}
 	}
+
+	// info(true) << getDisplayedName() << "---------- END check ----------";
 
 	return count;
 }

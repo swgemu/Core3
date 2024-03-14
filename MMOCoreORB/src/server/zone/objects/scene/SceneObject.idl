@@ -1133,6 +1133,11 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@mock
 	public abstract native SceneObject getSlottedObject(final string slot);
 
+	@dirty
+	@reference
+	@mock
+	public abstract native SceneObject getInventory();
+
 	@read
 	public int getSlotDescriptorSize() {
 		if (templateObject.getSlotDescriptors())

@@ -81,16 +81,16 @@ int CraftingToolImplementation::handleObjectMenuSelect(CreatureObject* player, b
 			return 1;
 		}
 
-		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+		ManagedReference<SceneObject*> inventory = player->getInventory();
 
 		if (inventory == nullptr)
 			return 0;
 
 		int totalLimit = inventory->getContainerVolumeLimit();
-		int totalObjects = inventory->getCountableObjectsRecursive() - 1;
+		int totalObjects = inventory->getCountableObjectsRecursive();
 
 		// Check if the player has made space and attempt to transfer the prototype
-		if (totalLimit > totalObjects && inventory->transferObject(prototype, -1, true)) {
+		if (totalLimit > totalObjects && inventory->transferObject(prototype, -1, true, true)) {
 			player->sendSystemMessage("@system_msg:prototype_transferred");
 
 			status = TOOL_READY;
