@@ -63,7 +63,7 @@ public:
 			}
 		}
 
-		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+		ManagedReference<SceneObject*> inventory = creature->getInventory();
 
 		if (inventory == nullptr)
 			return GENERALERROR;
@@ -129,7 +129,6 @@ public:
 		if (arrivalShuttle == nullptr)
 			return GENERALERROR;
 
-
 		ManagedReference<CityRegion*> destCity = arrivalShuttle->getCityRegion().get();
 
 		if (destCity != nullptr){
@@ -156,10 +155,10 @@ public:
 		//Make sure they have space in the inventory for the tickets before purchasing them.
 		Locker _lock(inventory, creature);
 
-		int inventorySize = inventory->getContainerObjectsSize();
-		int spaceNeeded = roundTrip ? 2 : 1;
+		int inventorySize = inventory->getCountableObjectsRecursive();
+		int spaceNeeded = (roundTrip ? 2 : 1) + inventorySize;
 
-		if ((inventorySize + spaceNeeded) > (inventory->getContainerVolumeLimit() - 1)) {
+		if (spaceNeeded > inventory->getContainerVolumeLimit()) {
 			creature->sendSystemMessage("@error_message:inv_full"); //Your inventory is full.
 			return GENERALERROR;
 		}
@@ -173,7 +172,7 @@ public:
 
 			uint32 couponCRC = STRING_HASHCODE("object/tangible/item/new_player/new_player_travel_coupon.iff");
 
-			for (int i = 0; i < inventorySize; i++) {
+			for (int i = 0; i < inventorySize - 1; i++) {
 				SceneObject* sceneO = inventory->getContainerObject(i);
 
 				if (sceneO == nullptr)
