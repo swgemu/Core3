@@ -374,7 +374,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObje
 	if (player == nullptr || terminal == nullptr)
 		return;
 
-	Locker lock(terminal);
+	Locker lock(terminal, player);
 
 	int machineType = terminal->getMachineType();
 
@@ -399,6 +399,12 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObje
 
 				player->sendSystemMessage(body);
 			} else {
+				Vector<Reference<GamblingBet*>>* terminalBets = terminal->getBets();
+
+				if (terminalBets == nullptr) {
+					return;
+				}
+
 				{
 					TransactionLog trx(player, TrxCode::GAMBLINGSLOTSTANDARD, amount, true);
 					player->subtractCashCredits(amount);
@@ -413,21 +419,27 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObje
 
 				player->sendSystemMessage(textPlayer);
 
-				if (!terminal->getBets()->isEmpty()) {
-					amount += terminal->getBets()->get(0)->getAmount();
-					terminal->getBets()->removeAll();
+				if (!terminalBets->isEmpty()) {
+					auto oldBet = terminalBets->get(0);
+
+					if (oldBet != nullptr) {
+						amount += oldBet->getAmount();
+					}
+
+					terminalBets->removeAll();
 				}
 
-				terminal->getBets()->add(new GamblingBet(player, amount));
+				terminalBets->add(new GamblingBet(player, amount));
 
 #ifdef DEBUG_GAMBLING
 				info(true) << "bet2 - hit else maxBet: " << terminal->getMaxBet() << " Amount: " << amount;
 #endif
 
-				if (amount >= terminal->getMinBet() && amount <= terminal->getMaxBet())
+				if (amount >= terminal->getMaxBet()) {
 					startGame(player, GamblingTerminal::SLOTMACHINE);
-
-				refreshSlotMenu(player, terminal);
+				} else {
+					refreshSlotMenu(player, terminal);
+				}
 			}
 			break;
 		}
