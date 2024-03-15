@@ -781,7 +781,7 @@ jan_missions =
 			{
 				{ rewardType = "faction", faction = "rebel", amount = 250 },
 				{ rewardType = "loot",  lootGroup = "theme_park_reward_rebel_jan_dodonna" },
-				{ rewardType = "permission", permissionGroup = "temple_of_exar_kun2" }
+				{ rewardType = "permission", permissionGroup = "@yavin4_region_names:temple_of_exar_kun2" }
 			}
 		},
 	}

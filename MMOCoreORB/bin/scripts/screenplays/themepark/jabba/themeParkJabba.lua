@@ -127,7 +127,7 @@ ree_yees_missions =
 			rewards =
 			{
 				{ rewardType = "loot", lootGroup = "jabba_theme_park_ree_yees" },
-				{ rewardType = "permission", permissionGroup = "jabba_palace1" },
+				{ rewardType = "permission", permissionGroup = "@tatooine_region_names:jabba_palace1" },
 				{ rewardType = "faction", faction = "jabba", amount = 50 }
 			}
 		}
@@ -190,7 +190,7 @@ ephant_mon_missions =
 			rewards =
 			{
 				{ rewardType = "loot", lootGroup = "jabba_theme_park_ephant_mon"},
-				{ rewardType = "permission", permissionGroup = "jabba_palace2" },
+				{ rewardType = "permission", permissionGroup = "@tatooine_region_names:jabba_palace2" },
 				{ rewardType = "faction", faction = "jabba", amount = 75 }
 			}
 		}
@@ -250,7 +250,7 @@ porcellus_missions =
 			rewards =
 			{
 				{ rewardType = "loot", lootGroup = "jabba_theme_park_porcellus"},
-				{ rewardType = "permission", permissionGroup = "jabba_palace3" },
+				{ rewardType = "permission", permissionGroup = "@tatooine_region_names:jabba_palace3" },
 				{ rewardType = "faction", faction = "jabba", amount = 100 }
 			}
 		}
@@ -311,7 +311,7 @@ barada_missions =
 			rewards =
 			{
 				{ rewardType = "loot", lootGroup = "jabba_theme_park_barada"},
-				{ rewardType = "permission", permissionGroup = "jabba_palace4" },
+				{ rewardType = "permission", permissionGroup = "@tatooine_region_names:jabba_palace4" },
 				{ rewardType = "faction", faction = "jabba", amount = 125 }
 			}
 		}
@@ -531,7 +531,7 @@ g5po_missions =
 				{ rewardType = "loot", lootGroup = "jabba_theme_park_g5p0"},
 				{ rewardType = "badge", badge = THEME_PARK_JABBA_BADGE },
 				{ rewardType = "faction", faction = "jabba", amount = 200 },
-				{ rewardType = "permission", permissionGroup = "jabba_palace5" },
+				{ rewardType = "permission", permissionGroup = "@tatooine_region_names:jabba_palace5" },
 				{ rewardType = "credits", amount = 2000 }
 			}
 		},
