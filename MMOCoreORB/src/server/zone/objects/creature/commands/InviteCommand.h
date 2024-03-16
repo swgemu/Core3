@@ -40,7 +40,7 @@ public:
 
 		bool galaxyWide = ConfigManager::instance()->getBool("Core3.PlayerManager.GalaxyWideGrouping", false);
 
-		if (galaxyWide && (object == nullptr || !object->isPlayerCreature())) {
+		if (galaxyWide && (object == nullptr || (!object->isPlayerCreature() && !object->isShipObject()))) {
 			StringTokenizer args(arguments.toString());
 			String firstName;
 
@@ -60,10 +60,24 @@ public:
 
 		auto groupManager = GroupManager::instance();
 
-		if (object == nullptr || !object->isPlayerCreature() || groupManager == nullptr)
+		if (object == nullptr || groupManager == nullptr)
 			return GENERALERROR;
 
-		auto player = object->asCreatureObject();
+		if (!object->isPlayerCreature() && !object->isShipObject()) {
+			return GENERALERROR;
+		}
+
+		CreatureObject* player = nullptr;
+
+		if (object->isShipObject()) {
+			auto ship = object->asShipObject();
+
+			if (ship != nullptr) {
+				player = ship->getOwner().get();
+			}
+		} else {
+			player = object->asCreatureObject();
+		}
 
 		if (player == nullptr)
 			return GENERALERROR;
