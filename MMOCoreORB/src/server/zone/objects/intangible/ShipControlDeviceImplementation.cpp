@@ -252,7 +252,7 @@ int ShipControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 	}
 
 	if (isShipLaunched()) {
-		owner->sendSystemMessage("You must land your ship before it can be destroyed.");
+		player->sendSystemMessage("You must land your ship before it can be destroyed.");
 		return 1;
 	} else if (ship->isPobShip()) {
 		auto pobShip = ship->asPobShip();
@@ -267,14 +267,12 @@ int ShipControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 }
 
 void ShipControlDeviceImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	// This should never be called except possibly on character deletion with a ship launched. The ship will handle removing all the players
-	if (isShipLaunched()) {
-		auto ship = getControlledObject();
+	auto ship = getControlledObject();
 
+	if (ship != nullptr) {
 		Locker clock(ship, _this.getReferenceUnsafeStaticCast());
 
 		ship->destroyObjectFromDatabase(true);
-		ship->destroyObjectFromWorld(true);
 	}
 
 	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);

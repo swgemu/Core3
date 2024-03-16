@@ -1325,13 +1325,15 @@ ShipTargetVector* ShipObjectImplementation::getTargetVector() {
 }
 
 void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	// Clear the players on board list
+	playersOnBoard.removeAll();
+
 	auto thisShip = asShipObject();
 
 	VectorMap<String, ManagedReference<SceneObject* > > slotted;
 	getSlottedObjects(slotted);
 
 	SortedVector<ManagedReference<SceneObject*>> players;
-	players.setNoDuplicateInsertPlan();
 
 	// Check slotted objects for players
 	for (int i = slotted.size() - 1; i >= 0 ; --i) {
@@ -1355,9 +1357,9 @@ void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedOb
 
 	// Kick all the players to the ground zone
 	for (int i = players.size() - 1; i >= 0 ; --i) {
-		auto& object = players.get(i);
+		auto object = players.get(i);
 
-		if (object == nullptr || !object->isPlayerCreature())
+		if (object == nullptr)
 			continue;
 
 		auto player = object->asCreatureObject();
@@ -1379,7 +1381,7 @@ void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedOb
 
 		auto launchLoc = ghost->getSpaceLaunchLocation();
 
-		player->switchZone(launchZone, launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
+		player->switchZone(launchZone, launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), 0, false, -1);
 	}
 
 	// Remove and destroy all the components
@@ -1397,7 +1399,7 @@ void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedOb
 		}
 
 		if (component != nullptr) {
-			Locker cLock(component);
+			Locker cLock(component, thisShip);
 			component->destroyObjectFromDatabase(true);
 		}
 	}

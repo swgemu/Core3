@@ -189,11 +189,10 @@ void PobShipObjectImplementation::destroyObjectFromDatabase(bool destroyContaine
 	auto thisPob = asShipObject();
 
 	SortedVector<ManagedReference<SceneObject*>> players;
-	players.setNoDuplicateInsertPlan();
 
 	// Check cells for players
 	for (int i = cells.size() - 1; i >= 0 ; --i) {
-		auto& cell = cells.get(i);
+		auto cell = cells.get(i);
 
 		if (cell == nullptr)
 			continue;
@@ -210,9 +209,9 @@ void PobShipObjectImplementation::destroyObjectFromDatabase(bool destroyContaine
 
 	// Kick all the players to the ground zone
 	for (int i = players.size() - 1; i >= 0 ; --i) {
-		auto& object = players.get(i);
+		auto object = players.get(i);
 
-		if (object == nullptr || !object->isPlayerCreature())
+		if (object == nullptr)
 			continue;
 
 		auto player = object->asCreatureObject();
@@ -234,7 +233,7 @@ void PobShipObjectImplementation::destroyObjectFromDatabase(bool destroyContaine
 
 		auto launchLoc = ghost->getSpaceLaunchLocation();
 
-		player->switchZone(launchZone, launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
+		player->switchZone(launchZone, launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), 0, false, -1);
 	}
 
 	ShipObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);

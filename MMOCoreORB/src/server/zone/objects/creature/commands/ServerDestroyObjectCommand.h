@@ -12,15 +12,12 @@
 #include "server/zone/managers/auction/AuctionsMap.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 
-
 class ServerDestroyObjectCommand : public QueueCommand {
 public:
-
 	ServerDestroyObjectCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -45,10 +42,11 @@ public:
 		// need to add checks.. inventory, datapad, bank, waypoint
 
 		if (object->isWaypointObject()) {
-			Reference<PlayerObject*> playerObject = creature->getSlottedObject("ghost").castTo<PlayerObject*>( );
+			auto ghost = creature->getPlayerObject();
 
-			if (playerObject != nullptr)
-				playerObject->removeWaypoint(target);
+			if (ghost != nullptr) {
+				ghost->removeWaypoint(target);
+			}
 
 			return SUCCESS;
 		}
@@ -66,42 +64,40 @@ public:
 			for (int j = 0; j < descriptors->size(); ++j) {
 				const String& descriptor = descriptors->get(j);
 
-				if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
-						|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
+				if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon" || descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
 					return GENERALERROR;
 			}
 		}
 
 		TransactionLog trx(creature, TrxCode::SERVERDESTROYOBJECT, object);
 
-		if (object->isASubChildOf(creature)){
-
-			if(object->isTangibleObject()){
+		if (object->isASubChildOf(creature)) {
+			if (object->isTangibleObject()) {
 				ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object.get());
 
-				if(tano->hasAntiDecayKit()){
+				if (tano->hasAntiDecayKit()) {
 					ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-					if(inventory == nullptr){
+					if (inventory == nullptr) {
 						creature->sendSystemMessage("@veteran_new:failed_kit_create"); // "This item has Anti Decay applied to it but there was a failure to recreate the Anti Decay Kit."
 						return GENERALERROR;
 					}
 
-					if(inventory->isContainerFullRecursive()){
+					if (inventory->isContainerFullRecursive()) {
 						creature->sendSystemMessage("@veteran_new:inventory_full"); // The item can not be deleted because it has Anti Decay applied to it but you do not have room in your inventory to retrieve the Anti Decay Kit that will be created after destroying this item.
 						return GENERALERROR;
 					}
 
 					ManagedReference<SceneObject*> adkSceno = tano->removeAntiDecayKit();
 
-					if(adkSceno == nullptr){
+					if (adkSceno == nullptr) {
 						creature->sendSystemMessage("@veteran_new:failed_kit_create"); // "This item has Anti Decay applied to it but there was a failure to recreate the Anti Decay Kit."
 						return GENERALERROR;
 					}
 
 					AntiDecayKit* adk = adkSceno.castTo<AntiDecayKit*>();
 
-					if(adk == nullptr){
+					if (adk == nullptr) {
 						creature->sendSystemMessage("@veteran_new:failed_kit_create"); // "This item has Anti Decay applied to it but there was a failure to recreate the Anti Decay Kit."
 						return GENERALERROR;
 					}
@@ -143,7 +139,7 @@ public:
 
 	void destroyObject(SceneObject* object, CreatureObject* creature) const {
 		if (creature != nullptr) {
-			StringIdChatParameter message("shared", "rsp_object_deleted_prose"); //You have destroyed %TT (%TO).
+			StringIdChatParameter message("shared", "rsp_object_deleted_prose"); // You have destroyed %TT (%TO).
 
 			message.setTT(object->getDisplayedName());
 			message.setTO(object->getGameObjectTypeStringID());
@@ -155,4 +151,4 @@ public:
 	}
 };
 
-#endif //SERVERDESTROYOBJECTCOMMAND_H_
+#endif // SERVERDESTROYOBJECTCOMMAND_H_
