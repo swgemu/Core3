@@ -205,14 +205,14 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 }
 
 void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility, int playerArrangement) const {
-	// info(true) << "switchZone for " << sceneObject->getDisplayedName() << " with new ParentID: " << parentID;
+	// info(true) << "SpaceZoneComponent::switchZone for " << sceneObject->getDisplayedName() << " with new ParentID: " << parentID;
 
-	ZoneServer* zoneServer = sceneObject->getZoneServer();
+	auto zoneServer = sceneObject->getZoneServer();
 
 	if (zoneServer == nullptr)
 		return;
 
-	Zone* zone = sceneObject->getZone();
+	auto zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> thisLocker = sceneObject;
 
 	Zone* newZone = zoneServer->getZone(newTerrainName);
@@ -244,36 +244,19 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 	sceneObject->incrementMovementCounter();
 
 	if (newParent != nullptr) {
-		if (newParent->isShipObject()) {
-			if (newParent->transferObject(sceneObject, playerArrangement, false, false, false)) {
-				sceneObject->sendToOwner(true);
+		if (newParent->transferObject(sceneObject, playerArrangement, false, false, false)) {
+			sceneObject->sendToOwner(true);
 
-				//info(true) << "SpaceZoneComponent::switchZone transferred into Ship: " << newParent->getDisplayedName() << " Player: " << sceneObject->getDisplayedName() << " Containment Type: " << playerArrangement;
-			}
-		} else {
-			if (newParent->isPilotChair()) {
-				if (newParent->transferObject(sceneObject, playerArrangement, false, false, false)) {
-					sceneObject->sendToOwner(true);
+			// info(true) << "SpaceZoneComponent::switchZone transferred into Parent: " << newParent->getDisplayedName() << " Player: " << sceneObject->getDisplayedName() << " Containment Type: " << playerArrangement;
 
-					SceneObject* rootParent = newParent->getRootParent();
+			if (newParent->isPilotChair() || newParent->isCellObject()) {
+				SceneObject* rootParent = newParent->getRootParent();
 
-					if (rootParent != nullptr)
-						rootParent->notifyObjectInsertedToChild(sceneObject, newParent, nullptr);
+				if (rootParent != nullptr) {
+					// info(true) << "SpaceZoneComponent::switchZone notified root parent: " << rootParent->getDisplayedName();
 
-					//info(true) << "SpaceZoneComponent::switchZone object transferred into POB ship with new parent: " << newParent->getDisplayedName()
-					//<< "\nPlayer Position: " << sceneObject->getWorldPosition().toString() << "  Chair Object: " << newParent->getWorldPosition().toString();
-				}
-			} else if (newParent->isCellObject()) {
-				// group members have their locations set in launch task
-				newParent->transferObject(sceneObject, -1, false, false, false);
-				sceneObject->sendToOwner(true);
-
-				auto rootParent = sceneObject->getRootParent();
-
-				if (rootParent != nullptr)
 					rootParent->notifyObjectInsertedToChild(sceneObject, newParent, nullptr);
-
-				//info(true) << "SpaceZoneComponent::switchZone object transferred into ship CELL";
+				}
 			}
 		}
 	} else {

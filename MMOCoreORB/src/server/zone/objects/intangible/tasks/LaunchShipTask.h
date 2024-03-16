@@ -65,7 +65,13 @@ public:
 			return;
 		}
 
-		auto ship = shipControlDevice->getControlledObject()->asShipObject();
+		auto controlledDevice = shipControlDevice->getControlledObject();
+
+		if (controlledDevice == nullptr || !controlledDevice->isShipObject()) {
+			return;
+		}
+
+		auto ship = controlledDevice->asShipObject();
 
 		if (ship == nullptr || ship->getLocalZone() == nullptr) {
 			return;
@@ -92,8 +98,9 @@ public:
 				// POB Ships will send group members into cells directly with a -1 arrangement. MultiPassenger ships will send one group member into the gunner positon.
 				InsertGroupMembertIntoShipTask* memberTask = new InsertGroupMembertIntoShipTask(ship, memberID, (ship->isMultiPassengerShip() ? PlayerArrangement::SHIP_GUNNER1 : -1));
 
-				if (memberTask != nullptr)
+				if (memberTask != nullptr) {
 					memberTask->schedule(200 + (j * 50));
+				}
 
 				// Pre-CU Multipassenger ships only have one gunner slot
 				if (ship->isMultiPassengerShip())

@@ -1117,30 +1117,30 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	}
 
 	short range = defaultSpatialChatDistance;
-
 	short specialRange = spatialChatDistances.get(spatialChatType);
 
-	if (specialRange != -1)
+	if (specialRange != -1) {
 		range = specialRange;
+	}
 
-	bool noRecentFine = sourceCreature->checkCooldownRecovery("imperial_spatial_fine");
+	// Increase chat range in space zones
+	if (zone->isSpaceZone()) {
+		range *= SPACE_RANGE_MULTIPLIER;
+	}
 
 	Vector3 sourcePosition = sourceCreature->getWorldPosition();
 	uint64 sourceID = sourceCreature->getObjectID();
 
-	// info(true) << "broadcastChatMessage for spatial - total objects size: " << closeEntryObjects.size() << " From Source location: " << sourcePosition;
+	// info(true) << "broadcastChatMessage1 for spatial - total objects size: " << closeEntryObjects.size() << " From Source location: " << sourcePosition << " Chat Type: " << spatialChatType;
 
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
 			SceneObject* object = static_cast<SceneObject*>(closeEntryObjects.get(i));
 
-			if (object == nullptr || !object->isCreatureObject())
+			if (object == nullptr)
 				continue;
 
-			CreatureObject* creature = cast<CreatureObject*>(object);
-
-			if (creature == nullptr)
-				continue;
+			uint64 objectGroupID = 0;
 
 			// Run through checks only if object is not the sending source
 			if (sourceID != object->getObjectID()) {
@@ -1151,16 +1151,19 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 				if ((range * range) < distSquared)
 					continue;
 
-				CreatureObject* creature = cast<CreatureObject*>(object);
+				auto creature = object->asCreatureObject();
 
 				if (creature == nullptr)
 					continue;
+
+				// Get group ID for group chat function
+				objectGroupID = creature->getGroupID();
 
 				if (creature->isPet()){
 					if (!sourceCreature->isPlayerCreature())
 						continue;
 
-					AiAgent* pet = cast<AiAgent*>(creature);
+					AiAgent* pet = creature->asAiAgent();
 
 					if (pet == nullptr || pet->isDead() || pet->isIncapacitated())
 						continue;
@@ -1175,6 +1178,8 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 					petManager->handleChat(sourceCreature, pet, message.toString());
 					continue;
 				} else if (creature->isAiAgent()) {
+					bool noRecentFine = sourceCreature->checkCooldownRecovery("imperial_spatial_fine");
+
 					if (noRecentFine && creature->getFaction() == Factions::FACTIONIMPERIAL && (20 * 20) >= distSquared && creature->getObserverCount(ObserverEventType::FACTIONCHAT)) {
 						String msgString = message.toString().toLowerCase();
 
@@ -1233,8 +1238,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 			}
 
 			SpatialChat* cmsg = nullptr;
-			uint64 targetID = creature->getObjectID();
-
+			uint64 targetID = object->getObjectID();
 
 			if ((chatFlags & CF_TARGET_ONLY) && targetID != chatTargetID && targetID != sourceID)
 				continue;
@@ -1248,10 +1252,10 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 				if (targetID == chatTargetID)
 					validRecipient = true;
 
-				if (chatTarget != nullptr && chatTarget->isGrouped() && chatTarget->getGroupID() == creature->getGroupID())
+				if (chatTarget != nullptr && chatTarget->isGrouped() && chatTarget->getGroupID() == objectGroupID)
 					validRecipient = true;
 
-				if ((chatFlags & CF_TARGET_SOURCE_GROUP_ONLY) && sourceCreature->isGrouped() && sourceCreature->getGroupID() == creature->getGroupID())
+				if ((chatFlags & CF_TARGET_SOURCE_GROUP_ONLY) && sourceCreature->isGrouped() && sourceCreature->getGroupID() == objectGroupID)
 					validRecipient = true;
 
 				if (!validRecipient)
@@ -1264,7 +1268,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 				cmsg = new SpatialChat(sourceID, targetID, chatTargetID, *param, range, spatialChatType, moodType, chatFlags, languageID);
 			}
 
-			creature->sendMessage(cmsg);
+			object->sendMessage(cmsg);
 		}
 
 		if (param != nullptr) {

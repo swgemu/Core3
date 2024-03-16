@@ -29,7 +29,7 @@ public:
 
 		auto spaceZone = ship->getZone();
 
-		if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
+		if (spaceZone == nullptr) {
 			return;
 		}
 
@@ -43,7 +43,7 @@ public:
 		if (memberObject == nullptr || !memberObject->isPlayerCreature())
 			return;
 
-		CreatureObject* groupMember = memberObject->asCreatureObject();
+		auto groupMember = memberObject->asCreatureObject();
 
 		if (groupMember == nullptr)
 			return;
@@ -53,26 +53,28 @@ public:
 		if (ship->isPobShip()) {
 			auto pobShip = ship->asPobShip();
 
-			if (pobShip == nullptr)
+			if (pobShip == nullptr) {
 				return;
+			}
 
 			String randomCell = pobShip->getRandomLaunchCell();
 
-			if (randomCell == "") {
+			if (randomCell.isEmpty()) {
 				return;
 			}
 
 			Vector3 launchLoc(pobShip->getLaunchPointInCell(randomCell));
 			auto cell = pobShip->getCell(randomCell);
 
-			if (cell == nullptr)
+			if (cell == nullptr) {
 				return;
+			}
 
 			Locker clock(groupMember, ship);
 
 			groupMember->setState(CreatureState::SHIPINTERIOR);
 
-			// info(true) << "Inserting Group Member into POB ship - " << groupMember->getDisplayedName() << " Into Cell: " << randomCell << " Launch Location: " << launchLoc;
+			// info(true) << "Inserting Group Member into POB ship - " << groupMember->getDisplayedName() << " Into Cell: " << randomCell << " Launch Location: " << launchLoc << " Player Arrangement: " << playerArrangement;
 
 			groupMember->switchZone(spaceZone->getZoneName(), launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), cell->getObjectID(), false, playerArrangement);
 		} else {
