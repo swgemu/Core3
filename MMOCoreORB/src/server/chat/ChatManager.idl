@@ -108,6 +108,9 @@ class ChatManager extends ManagedService implements Logger {
 	public static final int CF_TARGET_GROUP_ONLY = 0x10; // Sends only to target and its group members
 	public static final int CF_TARGET_SOURCE_GROUP_ONLY = 0x100; // Sends to the target and its group members, as well as the source and its group members
 
+	// The multiplier for additional range for chat in space zones
+	public static final int SPACE_RANGE_MULTIPLIER = 20;
+
 	public native ChatManager(ZoneServer serv, int initsize);
 
 	public native void stop();

@@ -268,7 +268,7 @@ void PobShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sen
 }
 
 void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool forceLoadContainer) {
-	//info(true) << "PobShipObjectImplementation::sendTo - " << getDisplayedName() << " sending to: " << sceneO->getDisplayedName();
+	// info(true) << "PobShipObjectImplementation::sendTo - " << getDisplayedName() << " sending to: " << sceneO->getDisplayedName();
 
 	CreatureObject* player = sceneO->asCreatureObject();
 
@@ -293,15 +293,7 @@ void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			auto containerObject = cell->getContainerObject(j);
 
-			if (containerObject == nullptr) {
-				continue;
-			}
-
-			if (containerObject == player) {
-				if (containerObject->getMovementCounter() == 0) {
-					containerObject->sendTo(player, true, false);
-				}
-
+			if (containerObject == nullptr || containerObject == player) {
 				continue;
 			}
 

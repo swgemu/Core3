@@ -84,7 +84,7 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entr
 
 	ManagedReference<SceneObject*> parent = scno->getParent().get();
 
-	if (parent != nullptr /*&& parent->isCellObject()*/) {
+	if (parent != nullptr) {
 		return;
 	}
 
