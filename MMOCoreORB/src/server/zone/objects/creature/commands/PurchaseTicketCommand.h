@@ -172,7 +172,7 @@ public:
 
 			uint32 couponCRC = STRING_HASHCODE("object/tangible/item/new_player/new_player_travel_coupon.iff");
 
-			for (int i = 0; i < inventorySize - 1; i++) {
+			for (int i = 0; i < inventory->getContainerObjectsSize() - 1; i++) {
 				SceneObject* sceneO = inventory->getContainerObject(i);
 
 				if (sceneO == nullptr)
