@@ -12,23 +12,34 @@ protected:
 
 public:
 	DamageSparkLocations() : Object() {
-		setLoggingName("PlayerLaunchPoints");
+		setLoggingName("DamageSparkLocations");
 	}
 
 	~DamageSparkLocations() {
 	}
 
+	DamageSparkLocations& operator=(const DamageSparkLocations& points) {
+		if (this == &points)
+			return *this;
+
+		sparkLocations = points.sparkLocations;
+
+		return *this;
+	}
+
 	void addSparkLocation(String cellName, Vector3 location) {
 		Vector<Vector3> cellLocs = sparkLocations.get(cellName);
 		cellLocs.add(location);
+
+		sparkLocations.put(cellName, cellLocs);
 	}
 
-	inline int getTotalLaunchCells() {
+	inline int getTotalSparkCells() {
 		return sparkLocations.size();
 	}
 
 	const inline String getRandomCell() {
-		int totalCells = getTotalLaunchCells();
+		int totalCells = getTotalSparkCells();
 		int random = System::random(totalCells - 1);
 		String cellName = sparkLocations.elementAt(random).getKey();
 
@@ -37,6 +48,18 @@ public:
 
 	const inline Vector<Vector3> &getSparkLocations(String cellName) {
 		return sparkLocations.get(cellName);
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		sparkLocations.toBinaryStream(stream);
+
+		return true;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		sparkLocations.parseFromBinaryStream(stream);
+
+		return true;
 	}
 };
 

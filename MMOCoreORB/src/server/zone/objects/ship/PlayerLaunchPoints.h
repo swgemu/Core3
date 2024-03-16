@@ -18,11 +18,20 @@ public:
 	~PlayerLaunchPoints() {
 	}
 
+	PlayerLaunchPoints& operator=(const PlayerLaunchPoints& points) {
+		if (this == &points)
+			return *this;
+
+		spawnLocations = points.spawnLocations;
+
+		return *this;
+	}
+
 	void addLaunchPoint(String cellName, Vector3 location) {
 		Vector<Vector3> cellLocs = spawnLocations.get(cellName);
 
 		cellLocs.add(location);
-		spawnLocations.put(cellName, cellLocs) ;
+		spawnLocations.put(cellName, cellLocs);
 	}
 
 	inline int getTotalLaunchCells() {
@@ -46,6 +55,18 @@ public:
 
 	const inline Vector<Vector3> &getSpawnLocations(String cellName) {
 		return spawnLocations.get(cellName);
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		spawnLocations.toBinaryStream(stream);
+
+		return true;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		spawnLocations.parseFromBinaryStream(stream);
+
+		return true;
 	}
 };
 
