@@ -2590,7 +2590,7 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 
 	tradeContainer->addTradeItem(objectToTrade);
 
-	SceneObject* inventory = player->getSlottedObject("inventory");
+	SceneObject* inventory = player->getInventory();
 
 	if (inventory != nullptr)
 		inventory->sendWithoutContainerObjectsTo(receiver);
@@ -2699,8 +2699,8 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 	if (receiverContainer->getTradeTargetPlayer() != player->getObjectID())
 		return false;
 
-	SceneObject* playerInventory = player->getSlottedObject("inventory");
-	SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
+	SceneObject* playerInventory = player->getInventory();
+	SceneObject* receiverInventory = receiver->getInventory();
 
 	SceneObject* playerDatapad = player->getSlottedObject("datapad");
 	SceneObject* receiverDatapad = receiver->getSlottedObject("datapad");
@@ -2957,7 +2957,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 	}
 
 	if (receiverTradeContainer->hasVerifiedTrade()) {
-		SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
+		SceneObject* receiverInventory = receiver->getInventory();
 		SceneObject* receiverDatapad = receiver->getSlottedObject("datapad");
 
 		for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
@@ -2975,7 +2975,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 			}
 		}
 
-		SceneObject* playerInventory = player->getSlottedObject("inventory");
+		SceneObject* playerInventory = player->getInventory();
 		SceneObject* playerDatapad = player->getSlottedObject("datapad");
 
 		for (int i = 0; i < receiverTradeContainer->getTradeSize(); ++i) {
@@ -3983,7 +3983,7 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 	if (!ai->isDead() || player->isDead())
 		return;
 
-	SceneObject* creatureInventory = ai->getSlottedObject("inventory");
+	SceneObject* creatureInventory = ai->getInventory();
 
 	if (creatureInventory == nullptr)
 		return;
@@ -4015,7 +4015,7 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 
 	ai->notifyObservers(ObserverEventType::LOOTCREATURE, player, 0);
 
-	SceneObject* playerInventory = player->getSlottedObject("inventory");
+	SceneObject* playerInventory = player->getInventory();
 
 	if (playerInventory == nullptr)
 		return;
@@ -4130,7 +4130,7 @@ SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getIn
 	if (player == nullptr)
 		return matchedItems;
 
-	SceneObject* inventory = player->getSlottedObject("inventory");
+	SceneObject* inventory = player->getInventory();
 
 	if ( inventory == nullptr )
 		return matchedItems;
@@ -5122,7 +5122,7 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer)
 	}
 
 	// Check for a ring in player's inventory
-	ManagedReference<SceneObject*> inventory = respondingPlayer->getSlottedObject("inventory");
+	ManagedReference<SceneObject*> inventory = respondingPlayer->getInventory();
 	if (inventory == nullptr) {
 		respondingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
 		askingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
@@ -5219,8 +5219,8 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 	}
 
 	// Check if Asking and Responding players Inventories are null
-	ManagedReference<SceneObject*> respondingPlayerInventory = respondingPlayer->getSlottedObject("inventory");
-	ManagedReference<SceneObject*> askingPlayerInventory = askingPlayer->getSlottedObject("inventory");
+	ManagedReference<SceneObject*> respondingPlayerInventory = respondingPlayer->getInventory();
+	ManagedReference<SceneObject*> askingPlayerInventory = askingPlayer->getInventory();
 
 	if (respondingPlayerInventory == nullptr || askingPlayerInventory == nullptr) {
 		respondingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
@@ -5393,7 +5393,7 @@ void PlayerManagerImplementation::grantDivorce(CreatureObject* player) {
 		return;
 
 	// Get & check players inventory
-	ManagedReference<SceneObject*> playerInventory = player->getSlottedObject("inventory");
+	ManagedReference<SceneObject*> playerInventory = player->getInventory();
 
 	if (playerInventory == nullptr) {
 		return;
@@ -5460,7 +5460,7 @@ void PlayerManagerImplementation::grantDivorce(CreatureObject* player) {
 		player->sendSystemMessage(msg);
 
 		// Get spouses inventory
-		ManagedReference<SceneObject*> spouseInventory = spouse->getSlottedObject("inventory");
+		ManagedReference<SceneObject*> spouseInventory = spouse->getInventory();
 
 		if (spouseInventory != nullptr) {
 			ring = nullptr;
@@ -5649,7 +5649,7 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	}
 
 	// Get account
-	PlayerObject* ghost = player->getPlayerObject();
+	auto ghost = player->getPlayerObject();
 
 	ManagedReference<Account*> account = ghost->getAccount();
 
@@ -5672,8 +5672,9 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 
 	bool milestoneClaimed = false;
 
-	if (!ghost->getChosenVeteranReward(rewardSession->getMilestone() ).isEmpty() )
+	if (!ghost->getChosenVeteranReward(rewardSession->getMilestone()).isEmpty()) {
 		milestoneClaimed = true;
+	}
 
 	if (milestoneClaimed) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
@@ -5682,7 +5683,8 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	}
 
 	// Generate item
-	SceneObject* inventory = player->getSlottedObject("inventory");
+	SceneObject* inventory = player->getInventory();
+
 	if (inventory == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession(player);
