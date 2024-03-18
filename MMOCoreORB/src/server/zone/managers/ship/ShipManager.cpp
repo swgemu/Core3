@@ -564,6 +564,8 @@ ShipObject* ShipManager::createPlayerShip(CreatureObject* owner, const String& s
 		return nullptr;
 	}
 
+	owner->sendSystemMessage("@chassis_npc:succeed"); // You successfully add a ship control device to your datapad.
+
 	ship->setOwner(owner);
 
 	shipControlDevice->sendTo(owner, true);
@@ -609,7 +611,7 @@ bool ShipManager::createDeedFromChassis(CreatureObject* player, ShipChassisCompo
 		return false;
 	}
 
-	auto inventory = player->getSlottedObject("inventory");
+	auto inventory = player->getInventory();
 
 	if (inventory == nullptr) {
 		return false;

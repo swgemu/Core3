@@ -39,6 +39,11 @@ void ShipDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData
 void ShipDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	alm->insertAttribute("volume", 1);
 
+	// Sorosuub Luxury Yacht veteran reward do not show complete ALM
+	if (generatedObjectTemplate.hashCode() == 388127163) { // object/ship/player/player_sorosuub_space_yacht.iff
+		return;
+	}
+
 	StringBuffer msg;
 
 	if (getTotalSkillsRequired() == 1) {
@@ -103,6 +108,9 @@ int ShipDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 		if (playerManager == nullptr)
 			return 1;
 
+		// Sorosuub Luxury Yacht veteran reward deed check
+		bool isYachtDeed = generatedObjectTemplate.hashCode() == 388127163; // object/ship/player/player_sorosuub_space_yacht.iff
+
 		int totalShips = 0;
 		int pobShips = 0;
 		int maxStoredShips = playerManager->getBaseStoredShips();
@@ -118,7 +126,8 @@ int ShipDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 
 				ShipControlDevice* shipDevice = obj.castTo<ShipControlDevice*>();
 
-				if (shipDevice != nullptr && (shipDevice->getShipType() == ShipManager::POBSHIP)) {
+				// Sorosuub Luxury Yacht veteran reward only counts towards max ships, not max POB ships
+				if (shipDevice != nullptr && (shipDevice->getShipType() == ShipManager::POBSHIP) && !isYachtDeed) {
 					pobShips++;
 				}
 			}
@@ -134,7 +143,10 @@ int ShipDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 			return 1;
 		}
 
-		ManagedReference<ShipObject*> ship = ShipManager::instance()->createPlayerShip(player, generatedObjectTemplate, shouldCreateComponents());
+		// Sorosuub Luxury Yacht veteran reward should come with components
+		bool componentCreation = (isYachtDeed ? true : shouldCreateComponents());
+
+		ManagedReference<ShipObject*> ship = ShipManager::instance()->createPlayerShip(player, generatedObjectTemplate, componentCreation);
 
 		if (ship == nullptr) {
 			error() << "Failed to generate ship object from template: " << generatedObjectTemplate;
@@ -163,6 +175,11 @@ int ShipDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 
 		// release ship cross lock
 		slocker.release();
+
+		// Sorosuub Luxury Yacht veteran reward deeds do not get destroyed
+		if (isYachtDeed) {
+			return 0;
+		}
 
 		destroyObjectFromWorld(true);
 		destroyObjectFromDatabase(true);
