@@ -5,17 +5,16 @@
 #include "engine/util/u3d/Vector3.h"
 #include "system/util/VectorMap.h"
 
-class PlayerLaunchPoints : public Object, public Logger {
-
+class PlayerLaunchPoints : public Object {
 protected:
 	VectorMap<String, Vector<Vector3>> spawnLocations;
 
 public:
-	PlayerLaunchPoints() : Object() {
-		setLoggingName("PlayerLaunchPoints");
+	PlayerLaunchPoints() {
 	}
 
-	~PlayerLaunchPoints() {
+	PlayerLaunchPoints(const PlayerLaunchPoints& points) : Object() {
+		spawnLocations = points.spawnLocations;
 	}
 
 	PlayerLaunchPoints& operator=(const PlayerLaunchPoints& points) {
@@ -53,7 +52,7 @@ public:
 		return cellName;
 	}
 
-	const inline Vector<Vector3> &getSpawnLocations(String cellName) {
+	const inline Vector<Vector3>& getSpawnLocations(String cellName) {
 		return spawnLocations.get(cellName);
 	}
 

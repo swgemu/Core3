@@ -5,24 +5,23 @@
 #include "engine/util/u3d/Vector3.h"
 #include "system/util/VectorMap.h"
 
-class DamageSparkLocations : public Object, public Logger {
-
+class DamageSparkLocations : public Object {
 protected:
 	VectorMap<String, Vector<Vector3>> sparkLocations;
 
 public:
-	DamageSparkLocations() : Object() {
-		setLoggingName("DamageSparkLocations");
+	DamageSparkLocations() {
 	}
 
-	~DamageSparkLocations() {
+	DamageSparkLocations(const DamageSparkLocations& locations) : Object() {
+		sparkLocations = locations.sparkLocations;
 	}
 
-	DamageSparkLocations& operator=(const DamageSparkLocations& points) {
-		if (this == &points)
+	DamageSparkLocations& operator=(const DamageSparkLocations& locations) {
+		if (this == &locations)
 			return *this;
 
-		sparkLocations = points.sparkLocations;
+		sparkLocations = locations.sparkLocations;
 
 		return *this;
 	}
@@ -46,7 +45,7 @@ public:
 		return cellName;
 	}
 
-	const inline Vector<Vector3> &getSparkLocations(String cellName) {
+	const inline Vector<Vector3>& getSparkLocations(String cellName) {
 		return sparkLocations.get(cellName);
 	}
 
