@@ -8,6 +8,9 @@
 #ifndef SERVERLOOTCOMMAND_H_
 #define SERVERLOOTCOMMAND_H_
 
+#include <sstream>
+#include <iomanip>
+
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/managers/loot/LootValues.h"
 #include "server/zone/managers/loot/LootManager.h"
@@ -138,6 +141,8 @@ public:
 
 			msg << "createLoot: name: " << lootName << " path: " << itemTemplate->getDirectObjectTemplate() << endl;
 		} else {
+			msg << prototype->getDisplayedName();
+
 			prototype->destroyObjectFromWorld(true);
 			prototype->destroyObjectFromDatabase(true);
 		}
@@ -433,6 +438,9 @@ public:
 		int totalLootItems = 0;
 		int totalFailedGroups = 0;
 
+		VectorMap<String, int> objectCount;
+		StringBuffer itemMsg;
+
 		for (int i = 0; i < count; ++i) {
 			for (int j = 0; j < lootCollection->count(); ++j) {
 				const LootGroupCollectionEntry* collectionEntry = lootCollection->get(j);
@@ -489,7 +497,20 @@ public:
 						}
 					}
 
-					createLoot(trx, creature, nullptr, lootEntry, agentTemplate->getLevel());
+					itemMsg << createLoot(trx, creature, nullptr, lootEntry, agentTemplate->getLevel());
+
+					String itemName = itemMsg.toString();
+
+					if (objectCount.contains(itemName)) {
+						int dropCount = objectCount.get(itemName) + 1;
+
+						objectCount.drop(itemName);
+						objectCount.put(itemName, dropCount);
+					} else {
+						objectCount.put(itemName, 1);
+					}
+
+					itemMsg.deleteAll();
 
 					totalLootItems++;
 
@@ -513,7 +534,26 @@ public:
 		<< "Total Legendaries Dropped: " << lootManager->getLegendaryLooted() - legendaryCount << endl
 		<< "Total Expectionals Dropped: " << lootManager->getExceptionalLooted() - exceptionalCount << endl
 		<< "Total Yellow Named Dropped: " << lootManager->getYellowLooted() - yellowCount << endl
-		<< endl;
+		<< endl << endl
+		<< "Items Dropped List:\n\n";
+
+		std::stringstream title;
+		title << "\t" << std::left << std::setw(20) << "Count" << "|" << std::setw(20) << "Percentage" << "|" << "\t" << "Item Name";
+		msg << title.str() << "\n\n";
+
+		for (int i = objectCount.size() - 1; i >= 0; i--) {
+			Logger::console.info(true) << "#" << i;
+
+			std::stringstream newStream;
+
+			int numDropped = objectCount.elementAt(i).getValue();
+			String name = objectCount.elementAt(i).getKey();
+
+			newStream << "\t" << std::left << std::setw(20) << numDropped << "|" << "\t" << std::setw(20) << (((float)numDropped / totalLootItems) * 100.00f) << "|" << "\t" << name.toCharArray();
+			msg << newStream.str() << endl;
+
+			objectCount.remove(i);
+		}
 
 		return msg.toString();
 	}
