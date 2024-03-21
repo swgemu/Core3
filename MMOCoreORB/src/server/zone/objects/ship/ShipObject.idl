@@ -417,7 +417,8 @@ class ShipObject extends TangibleObject {
 	protected DeltaAutoMap componentCRCs;
 
 	@dereferenced
-	protected SortedVector<CreatureObject> playersOnBoard;
+	@rawTemplate(value = "WeakReference<CreatureObject*>")
+	protected SortedVector playersOnBoard;
 
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
@@ -1034,16 +1035,6 @@ class ShipObject extends TangibleObject {
 
 	@preLocked
 	public native void addPlayerOnBoard(CreatureObject player);
-
-	@preLocked
-	public void removePlayerOnBoard(int index) {
-		playersOnBoard.remove(index);
-	}
-
-	@preLocked
-	public void removePlayerOnBoard(CreatureObject player) {
-		playersOnBoard.drop(player);
-	}
 
 	@preLocked
 	public void clearPlayersOnBoard() {
@@ -1681,13 +1672,12 @@ class ShipObject extends TangibleObject {
 		return playersOnBoard.size();
 	}
 
-	public CreatureObject getPlayerOnBoard(int index) {
-		return playersOnBoard.get(index);
-	}
+	public native CreatureObject getPlayerOnBoard(int index);
 
 	@local
 	@dirty
-	public SortedVector<CreatureObject> getPlayersOnBoard() {
+	@rawTemplate(value = "WeakReference<CreatureObject*>")
+	public SortedVector getPlayersOnBoard() {
 		return playersOnBoard;
 	}
 

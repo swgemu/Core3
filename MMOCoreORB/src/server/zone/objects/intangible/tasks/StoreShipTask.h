@@ -46,7 +46,7 @@ public:
 		Locker shipLock(ship);
 
 		// Copy list of the players onboard for removal
-		SortedVector<ManagedReference<CreatureObject*>>* playersCopy = new SortedVector<ManagedReference<CreatureObject*>>(*ship->getPlayersOnBoard());
+		SortedVector<WeakReference<CreatureObject*>>* playersCopy = new SortedVector<WeakReference<CreatureObject*>>(*ship->getPlayersOnBoard());
 
 #ifdef DEBUG_SHIP_STORE
 		info(true) << "StoreShipTask seeing " << playersCopy->size() << " player(s) on board.";
@@ -54,7 +54,7 @@ public:
 
 		// This function should remove all players in the ship.
 		for (int i = playersCopy->size() - 1; i >= 0; --i) {
-			auto shipMember = playersCopy->get(i);
+			auto shipMember = playersCopy->get(i).get();
 
 			if (shipMember == nullptr)
 				continue;

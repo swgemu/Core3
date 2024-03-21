@@ -46,6 +46,10 @@ void ShipObjectImplementation::initializeTransientMembers() {
 }
 
 void ShipObjectImplementation::notifyLoadFromDatabase() {
+	if (!isShipLaunched()) {
+		playersOnBoard.removeAll();
+	}
+
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 }
 
@@ -464,7 +468,7 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 
 	try {
 		for (int i = 0; i < playersOnBoard.size(); ++i) {
-			auto shipMember = playersOnBoard.get(i);
+			auto shipMember = playersOnBoard.get(i).get();
 
 			if (shipMember == nullptr)
 				continue;
@@ -509,7 +513,7 @@ void ShipObjectImplementation::notifyDissapear(TreeEntry* object) {
 
 	try {
 		for (int i = 0; i < playersOnBoard.size(); ++i) {
-			auto shipMember = playersOnBoard.get(i);
+			auto shipMember = playersOnBoard.get(i).get();
 
 			if (shipMember == nullptr)
 				continue;
@@ -559,7 +563,7 @@ void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPa
 	// info(true) << "ShipObjectImplementation::updatePlayersInShip";
 
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto shipMember = playersOnBoard.get(i);
+		auto shipMember = playersOnBoard.get(i).get();
 
 		if (shipMember == nullptr)
 			continue;
@@ -1515,6 +1519,12 @@ float ShipObjectImplementation::getSpeedRotationFactor(float speed) {
 	return floorf((getFactor() * 10.f) + 0.5f) / 10.f;
 }
 
+CreatureObject* ShipObjectImplementation::getPlayerOnBoard(int index) {
+	auto player = playersOnBoard.get(index).get();
+
+	return player;
+}
+
 uint64 ShipObjectImplementation::getLastDamageReceivedMili() {
 	return lastDamageReceived.getMiliTime();
 }
@@ -1528,7 +1538,7 @@ void ShipObjectImplementation::addPlayerOnBoard(CreatureObject* player) {
 
 void ShipObjectImplementation::sendShipMembersMessage(const String& message) {
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto member = playersOnBoard.get(i);
+		auto member = playersOnBoard.get(i).get();
 
 		if (member == nullptr)
 			continue;
@@ -1539,7 +1549,7 @@ void ShipObjectImplementation::sendShipMembersMessage(const String& message) {
 
 void ShipObjectImplementation::sendShipMembersMusicMessage(const String& message) {
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto member = playersOnBoard.get(i);
+		auto member = playersOnBoard.get(i).get();
 
 		if (member == nullptr)
 			continue;
@@ -1550,7 +1560,7 @@ void ShipObjectImplementation::sendShipMembersMusicMessage(const String& message
 
 void ShipObjectImplementation::sendMembersHyperspaceBeginMessage(const String& zoneName, const Vector3& location) {
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto member = playersOnBoard.get(i);
+		auto member = playersOnBoard.get(i).get();
 
 		if (member == nullptr)
 			continue;
@@ -1562,7 +1572,7 @@ void ShipObjectImplementation::sendMembersHyperspaceBeginMessage(const String& z
 
 void ShipObjectImplementation::sendMembersHyperspaceOrientMessage(const String& zoneName, const Vector3& location) {
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto member = playersOnBoard.get(i);
+		auto member = playersOnBoard.get(i).get();
 
 		if (member == nullptr)
 			continue;
@@ -1574,7 +1584,7 @@ void ShipObjectImplementation::sendMembersHyperspaceOrientMessage(const String& 
 
 void ShipObjectImplementation::sendMembersBaseMessage(BaseMessage* message) {
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto member = playersOnBoard.get(i);
+		auto member = playersOnBoard.get(i).get();
 
 		if (member == nullptr)
 			continue;
