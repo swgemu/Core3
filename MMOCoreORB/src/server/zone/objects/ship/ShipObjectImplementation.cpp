@@ -46,10 +46,6 @@ void ShipObjectImplementation::initializeTransientMembers() {
 }
 
 void ShipObjectImplementation::notifyLoadFromDatabase() {
-	if (!isShipLaunched()) {
-		playersOnBoard.removeAll();
-	}
-
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 }
 
