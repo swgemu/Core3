@@ -259,6 +259,8 @@ void PlayerObjectImplementation::unloadSpawnedChildren(bool petsOnly) {
 
 	Vector<ManagedReference<ControlDevice*> > devicesToStore;
 
+	info(true) << "\t\tunloadSpawnedChildren called";
+
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
@@ -302,6 +304,11 @@ void PlayerObjectImplementation::unload() {
 	debug("unloading player");
 
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+
+	info(true) << "\n\n\n\tunloading player -- " << creature->getDisplayedName() << "\n\n\n\n";
+
+
 
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 	missionManager->deactivateMissions(creature);
@@ -350,9 +357,12 @@ void PlayerObjectImplementation::unload() {
 
 			creature->setPosition(launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
 			creature->incrementMovementCounter();
+
 			updateLastValidatedPosition();
 
 			savedParentID = 0;
+
+			info(true) << "\tplayer unloaded from space\n\n\n";
 		} else {
 			if (creoParent != nullptr) {
 				savedParentID = creoParent->getObjectID();

@@ -139,17 +139,45 @@ public:
 		ManagedReference<SceneObject*> playerParent = zoneServer->getObject(savedParentID, true);
 		ManagedReference<SceneObject*> currentParent = player->getParent().get();
 
-		// player->info(true) << "playerParent - " << (playerParent == nullptr ? "nullptr" : String::valueOf(currentParent->getObjectID()));
-		// player->info(true) << "currentParent - " << (currentParent == nullptr ? "nullptr" : String::valueOf(currentParent->getObjectID()));
+		player->info(true) << "SelectCharacterCallback -- playerParent - " << (playerParent == nullptr ? "nullptr" : String::valueOf(savedParentID));
+		player->info(true) << "SelectCharacterCallback -- currentParent - " << (currentParent == nullptr ? "nullptr" : String::valueOf(currentParent->getObjectID()));
+
+		/* Select Character Callback Notes:
+
+			Player is in a container (cell, vehicle, ship, pilot chair, operations chair, ship turret):
+				- If a player is LD and not in the zone both playerParent and currentParent should not be true.
+				- If a player has unloaded playerParent is no null and currentParent is null.
+
+			Player is in the zone:
+				- Bother playerParent and currentParent are nullptr's
+
+			Players can be transferred into one of the following:
+
+			1. No parent, transferred into the zone
+			2. Parent is a cell in a building
+			3. Root Parent is a ship.
+				3a. Parent is a ship itself
+				3b. Parent is a cell in a Ship (PoB)
+				3c. Parent is a pilot chair
+		*/
+
+
+
+
+		ManagedReference<SceneObject*> rootParent = player->getRootParent();
+
 
 		if ((playerParent != nullptr && currentParent == nullptr) || (currentParent != nullptr && (currentParent->isCellObject() || player->isInShipStation() || currentParent->isShipObject()))) {
-			playerParent = playerParent == nullptr ? currentParent : playerParent;
+			player->info(true) << "SelectCharacterCallback -- if 1";
+
+			playerParent = (playerParent == nullptr ? currentParent : playerParent);
 
 			ManagedReference<SceneObject*> rootParent = playerParent->getRootParent();
 
-			rootParent = rootParent == nullptr ? playerParent : rootParent;
+			// This is probably making players root the ship
+			rootParent = (rootParent == nullptr ? playerParent : rootParent);
 
-			//player->info(true) << "Root Parent: " << rootParent->getDisplayedName() << " playerParent: " << playerParent->getDisplayedName() << " Player Parent Game Type: " << playerParent->getGameObjectType() << " --  " << playerParent->getGameObjectTypeStringID();
+			player->info(true) << "SelectCharacterCallback -- Root Parent: " << rootParent->getDisplayedName() << " playerParent: " << playerParent->getDisplayedName() << " Player Parent Game Type: " << playerParent->getGameObjectType() << " --  " << playerParent->getGameObjectTypeStringID();
 
 			if (rootParent->getZone() == nullptr && rootParent->isStructureObject()) {
 				player->initializePosition(rootParent->getPositionX(), rootParent->getPositionZ(), rootParent->getPositionY());
@@ -159,6 +187,8 @@ public:
 				playerParent = nullptr;
 			// Handle Ships here
 			} else if (rootParent->isShipObject()) {
+				player->info(true) << "SelectCharacterCallback -- rootParent is a ship, handleing in else if";
+
 				if (rootParent->getLocalZone() == nullptr) {
 					// Safety net, players root is a ship that is not launched
 					auto launchCoords = ghost->getSpaceLaunchLocation();
@@ -193,7 +223,11 @@ public:
 					rootParent->notifyObjectInsertedToChild(player, playerParent, nullptr);
 				}
 			} else {
-				if (!(playerParent->isCellObject() && playerParent == rootParent)) {
+				player->info(true) << "SelectCharacterCallback -- into the else";
+
+				if (!((playerParent->isShipObject() || playerParent->isCellObject()) && playerParent == rootParent)) {
+					player->info(true) << "transferring player into ship that might not be launched!";
+
 					playerParent->transferObject(player, -1, true);
 				}
 
@@ -207,6 +241,8 @@ public:
 				player->sendToOwner(true);
 			}
 		} else if (currentParent == nullptr) {
+			player->info(true) << "SelectCharacterCallback -- else if 2";
+
 			player->removeAllSkillModsOfType(SkillModManager::STRUCTURE);
 
 			Vector3 worldPos = ghost->getLastLogoutWorldPosition();
@@ -221,6 +257,8 @@ public:
 
 			zone->transferObject(player, -1, true);
 		} else {
+			player->info(true) << "SelectCharacterCallback -- else 3";
+
 			if (player->getZone() == nullptr) {
 				ManagedReference<SceneObject*> objectToInsert = currentParent != nullptr ? player->getRootParent() : player;
 
