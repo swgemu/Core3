@@ -85,9 +85,9 @@ public:
 			// info(true) << "Inserting Group Member into MultiPassenger ship - " << groupMember->getDisplayedName();
 
 			groupMember->switchZone(spaceZone->getZoneName(), ship->getWorldPositionX(), ship->getWorldPositionZ(), ship->getWorldPositionY(), ship->getObjectID(), false, playerArrangement);
-		}
 
-		ship->addPlayerOnBoard(groupMember);
+			ship->addPlayerOnBoard(groupMember);
+		}
 	}
 };
 

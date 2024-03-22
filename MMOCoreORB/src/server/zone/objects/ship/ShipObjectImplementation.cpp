@@ -641,6 +641,11 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 			}
 		}
 
+
+		if (object->isPlayerCreature()) {
+			// Add player to the onboard list
+			addPlayerOnBoard(object->asCreatureObject());
+		}
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();

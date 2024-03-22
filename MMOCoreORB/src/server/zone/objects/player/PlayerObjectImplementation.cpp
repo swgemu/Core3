@@ -259,6 +259,12 @@ void PlayerObjectImplementation::unloadSpawnedChildren(bool petsOnly) {
 
 	Vector<ManagedReference<ControlDevice*> > devicesToStore;
 
+
+	// TODO: REMOVE THIS
+	info(true) << "\t\tunloadSpawnedChildren called";
+
+
+
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
@@ -290,8 +296,16 @@ void PlayerObjectImplementation::unloadSpawnedChildren(bool petsOnly) {
 		task->execute();
 }
 
-void PlayerObjectImplementation::setLastLogoutWorldPosition(const Vector3& position) {
-	lastLogoutWorldPosition = position;
+void PlayerObjectImplementation::setLastLogoutWorldPosition() {
+	// TODO: REMOVE THIS
+	info(true) << "!!!!!!! setting player lastLogoutWorldPosition !!!!!!!!!!!!!!!! -- ";
+
+	auto player = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (player == nullptr)
+		return;
+
+	lastLogoutWorldPosition = player->getWorldPosition();
 }
 
 Vector3 PlayerObjectImplementation::getLastLogoutWorldPosition() const {
@@ -302,6 +316,12 @@ void PlayerObjectImplementation::unload() {
 	debug("unloading player");
 
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+
+	// TODO: REMOVE THIS
+	info(true) << "\n\n\n\tunloading player -- " << creature->getDisplayedName() << "\n\n\n\n";
+
+
 
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 	missionManager->deactivateMissions(creature);
@@ -350,9 +370,13 @@ void PlayerObjectImplementation::unload() {
 
 			creature->setPosition(launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
 			creature->incrementMovementCounter();
+
 			updateLastValidatedPosition();
 
 			savedParentID = 0;
+
+			// TODO: REMOVE THIS
+			info(true) << "\tplayer unloaded from space\n\n\n";
 		} else {
 			if (creoParent != nullptr) {
 				savedParentID = creoParent->getObjectID();
@@ -2283,8 +2307,7 @@ void PlayerObjectImplementation::disconnect(bool closeClient, bool doLock) {
 	if (creature == nullptr)
 		return;
 
-	Vector3 position = getWorldPosition();
-	setLastLogoutWorldPosition(position);
+	setLastLogoutWorldPosition();
 
 	if (!isOnline()) {
 		auto owner = creature->getClient();
