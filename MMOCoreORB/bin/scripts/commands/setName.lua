@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 SetNameCommand = {
-        name = "setname",
+	name = "setname",
 }
 
 AddCommand(SetNameCommand)
