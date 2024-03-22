@@ -290,8 +290,13 @@ void PlayerObjectImplementation::unloadSpawnedChildren(bool petsOnly) {
 		task->execute();
 }
 
-void PlayerObjectImplementation::setLastLogoutWorldPosition(const Vector3& position) {
-	lastLogoutWorldPosition = position;
+void PlayerObjectImplementation::setLastLogoutWorldPosition() {
+	auto player = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (player == nullptr)
+		return;
+
+	lastLogoutWorldPosition = player->getWorldPosition();
 }
 
 Vector3 PlayerObjectImplementation::getLastLogoutWorldPosition() const {
@@ -350,6 +355,7 @@ void PlayerObjectImplementation::unload() {
 
 			creature->setPosition(launchLoc.getX(), launchLoc.getZ(), launchLoc.getY());
 			creature->incrementMovementCounter();
+
 			updateLastValidatedPosition();
 
 			savedParentID = 0;
@@ -2283,8 +2289,7 @@ void PlayerObjectImplementation::disconnect(bool closeClient, bool doLock) {
 	if (creature == nullptr)
 		return;
 
-	Vector3 position = getWorldPosition();
-	setLastLogoutWorldPosition(position);
+	setLastLogoutWorldPosition();
 
 	if (!isOnline()) {
 		auto owner = creature->getClient();

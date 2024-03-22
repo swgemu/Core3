@@ -9,7 +9,7 @@
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/intangible/tasks/StoreShipTask.h"
 
-class StoreSpawnedChildrenTask : public Task {
+class StoreSpawnedChildrenTask : public Task, public Logger {
 	ManagedWeakReference<CreatureObject*> play;
 	Vector<ManagedReference<ControlDevice*>> devices;
 
@@ -24,6 +24,8 @@ public:
 			return;
 
 		Locker locker(player);
+
+		// info(true) << "StoreSpawnedChildrenTask -- for " << player->getDisplayedName();
 
 		for (int i = 0; i < devices.size(); ++i) {
 			ManagedReference<ControlDevice*> controlDevice = devices.get(i).get();
@@ -55,6 +57,8 @@ public:
 					continue;
 
 				StoreShipTask* storeTask = new StoreShipTask(player, shipDevice, ghost->getSpaceLaunchZone(), ghost->getSpaceLaunchLocation());
+
+				// info(true) << "executing StoreShipTask - for Ship Device: " << shipDevice->getDisplayedName();
 
 				if (storeTask != nullptr)
 					storeTask->execute();

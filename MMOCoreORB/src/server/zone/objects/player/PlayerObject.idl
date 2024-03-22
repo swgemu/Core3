@@ -1645,7 +1645,7 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@local
-	public native void setLastLogoutWorldPosition(@dereferenced final Vector3 position);
+	public native void setLastLogoutWorldPosition();
 
 	@local
 	@dereferenced
