@@ -6,10 +6,11 @@ krayt_composite_segment = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_composite_krayt.iff",
 	craftingValues = {
-		{"armor_special_type",0,0,0},
-		{"armor_effectiveness",4,18,10},
+		{"hit_points",1000,1000,0, true},
+		{"armor_effectiveness",10,25,10},
 		{"armor_integrity",5000,10000,0},
-		{"useCount",1,10,0},
+		{"armor_rating",1,1,0, true},
+		{"useCount",1,11,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

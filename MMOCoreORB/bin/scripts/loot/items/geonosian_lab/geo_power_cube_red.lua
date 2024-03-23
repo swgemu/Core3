@@ -6,14 +6,13 @@ geo_power_cube_red = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/geonosian_power_cube_red.iff",
 	craftingValues = {
-		{"armor_health_encumbrance",-4,-10,0},
-		{"armor_action_encumbrance",-4,-10,0},
-		{"armor_mind_encumbrance",-4,-10,0},
-		{"attackhealthcost",-4,-10,0},
-		{"attackactioncost",-4,-10,0},
-		{"attackmindcost",-4,-10,0},
-		{"useCount",1,10,0},
-
+		{"armor_health_encumbrance",-4,-8,0},
+		{"armor_action_encumbrance",-4,-8,0},
+		{"armor_mind_encumbrance",-4,-8,0},
+		{"attackhealthcost",-4,-8,0},
+		{"attackactioncost",-4,-8,0},
+		{"attackmindcost",-4,-8,0},
+		{"useCount",1,11,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

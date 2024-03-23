@@ -6,9 +6,9 @@ donkuwah_poison = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/infection_amplifier_donkuwah.iff",
 	craftingValues = {
-		{"power",10,20,0},
-		{"potency",10,30,0},
-		{"useCount",1,4,0},
+		{"power",10,25,0},
+		{"potency",10,20,0},
+		{"useCount",1,11,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}
