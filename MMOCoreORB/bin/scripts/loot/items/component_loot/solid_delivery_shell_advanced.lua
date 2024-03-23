@@ -6,10 +6,10 @@ solid_delivery_shell_advanced = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/solid_delivery_shell_advanced.iff",
 	craftingValues = {
-		{"power", 15,75,0},
-		{"charges", 15,45,0},
-		{"hitpoints", 30,75,0, true},
-		{"useCount",3,7,0}
+		{"power",30,75,0},
+		{"charges",20,45,0},
+		{"hitpoints",30,75,0, true},
+		{"useCount",1,11,0}
 	},
 	customizationStringName = {},
 	customizationValues = {}

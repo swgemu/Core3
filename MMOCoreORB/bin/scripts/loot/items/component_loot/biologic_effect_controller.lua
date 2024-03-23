@@ -6,9 +6,9 @@ biologic_effect_controller = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/biologic_effect_controller.iff",
 	craftingValues = {
-		{"power", 2,10,0},
-		{"charges", 2,10,0},
-		{"useCount",3,7,0}
+		{"power",5,10,0},
+		{"charges",5,10,0},
+		{"useCount",1,11,0}
 	},
 	customizationStringName = {},
 	customizationValues = {}

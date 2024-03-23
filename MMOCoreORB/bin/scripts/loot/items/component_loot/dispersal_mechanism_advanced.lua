@@ -6,13 +6,10 @@ dispersal_mechanism_advanced = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/dispersal_mechanism_advanced.iff",
 	craftingValues = {
-		{"power", 0, 0, 0, false},
-		{"charges", 6,30,0},
-		{"area", 4,20,0},
-		{"range", 5,25,0},
-		{"potency", 0, 0, 0, false},
-		{"duration", 0, 0, 0, false},
-		{"useCount",3,7,0}
+		{"charges",15,30,0},
+		{"area",10,20,0},
+		{"range",10,25,0},
+		{"useCount",1,11,0}
 	},
 	customizationStringName = {},
 	customizationValues = {}
