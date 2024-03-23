@@ -6,14 +6,13 @@ scope_weapon_advanced = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/scope_weapon_advanced.iff",
 	craftingValues = {
-		{"woundchance", 4,20,1},
-		{"hitpoints", 20,100,0, true},
-		{"zerorangemod",0,0,0, false},
-		{"midrangemod",9,45,0},
-		{"attackhealthcost",24,0,0},
-		{"attackactioncost",24,0,0},
-		{"attackmindcost",24,0,0},
-		{"useCount",3,7,0}
+		{"woundchance",10,20,0},
+		{"hitpoints", 50,100,0, true},
+		{"midrangemod",20,45,0},
+		{"attackhealthcost",20,0,0},
+		{"attackactioncost",20,0,0},
+		{"attackmindcost",20,0,0},
+		{"useCount",1,11,0}
 	},
 	customizationStringName = {},
 	customizationValues = {}

@@ -6,9 +6,8 @@ liquid_delivery_suspension = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/liquid_delivery_suspension.iff",
 	craftingValues = {
-		{"power", 12,60,0},
-		{"charges", 0,0,0, false},
-		{"useCount",3,7,0}
+		{"power",30,60,0},
+		{"useCount",1,11,0}
 	},
 	customizationStringName = {},
 	customizationValues = {}

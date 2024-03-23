@@ -6,10 +6,11 @@ nightsister_layer = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/armor_layer_nightsister.iff",
 	craftingValues = {
-		{"armor_special_type",0,0,0},
-		{"armor_effectiveness",3,7,10},
+		{"hit_points",1000,1000,0, true},
+		{"armor_effectiveness",3,6,10},
 		{"armor_action_encumbrance",-4,-8,0},
-		{"useCount",1,10,0},
+		{"armor_rating",1,1,0, true},
+		{"useCount",1,11,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}
