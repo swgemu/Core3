@@ -6,15 +6,13 @@ blaster_rifle_barrel = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/blaster_rifle_barrel.iff",
 	craftingValues = {
-		{"mindamage", 2,10,0},
-		{"maxdamage", 2,10,0},
-		{"attackspeed",-0.1,-0.5,2},
+		{"mindamage",5,10,0},
+		{"maxdamage",5,10,0},
+		{"attackspeed",-0.2,-0.5,2},
 		{"woundchance",2,5,0},
-		{"hitpoints",20,100,0, true},
-		{"zerorangemod",0,0,0, false},
-		{"maxrangemod",0,0,0, false},
-		{"midrangemod",4,20,0},
-		{"useCount",3,7,0}
+		{"hitpoints",50,100,0, true},
+		{"midrangemod",10,20,0},
+		{"useCount",1,11,0}
 	},
 	customizationStringName = {},
 	customizationValues = {}

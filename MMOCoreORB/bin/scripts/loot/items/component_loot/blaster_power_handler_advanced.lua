@@ -6,11 +6,11 @@ blaster_power_handler_advanced = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/blaster_power_handler_advanced.iff",
 	craftingValues = {
-		{"mindamage", 5,25,0},
-		{"maxdamage", 10,50,0},
-		{"attackspeed",-0.1,-0.5,2},
-		{"hitpoints",20,100,0, true},
-		{"useCount",3,11,0}
+		{"mindamage",10,25,0},
+		{"maxdamage",20,50,0},
+		{"attackspeed",-0.2,-0.5,2},
+		{"hitpoints",50,100,0, true},
+		{"useCount",1,11,0}
 	},
 	customizationStringName = {},
 	customizationValues = {}
