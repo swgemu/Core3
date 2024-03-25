@@ -415,7 +415,7 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 	info(true) << "CommandQueue - enqueueCommand Called -- " << toString();
 #endif // DEBUG_QUEUE
 
-	ZoneServer* zoneServer = creature->getZoneServer();
+	auto zoneServer = creature->getZoneServer();
 
 	if (zoneServer == nullptr) {
 		return;

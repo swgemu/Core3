@@ -41,12 +41,16 @@ void CommandQueueEnqueueCallback::run() {
 		player->debug() << "command spam detected";
 	} else {
 		ObjectController* objectController = server->getObjectController();
+		int priority = QueueCommand::NOCOMBATQUEUE;
 
-		if (objectController) {
+		if (objectController != nullptr) {
 			const QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
 
-			if (queueCommand) {
+			if (queueCommand != nullptr) {
 				actionName = queueCommand->getQueueCommandName().toCharArray();
+				priority = queueCommand->getDefaultPriority();
+
+				player->info(true) << queueCommand->toStringData();
 			}
 		}
 
@@ -57,7 +61,7 @@ void CommandQueueEnqueueCallback::run() {
 			commandCooldown->updateToCurrentTime();
 		}
 
-		player->enqueueCommand(actionCRC, actionCount, targetID, arguments, -1, actionCount&0x3FFFFFFF);
+		player->enqueueCommand(actionCRC, actionCount, targetID, arguments, priority, actionCount&0x3FFFFFFF);
 	}
 }
 
