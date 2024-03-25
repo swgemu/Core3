@@ -415,7 +415,7 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 	info(true) << "CommandQueue - enqueueCommand Called -- " << toString();
 #endif // DEBUG_QUEUE
 
-	ZoneServer* zoneServer = creature->getZoneServer();
+	auto zoneServer = creature->getZoneServer();
 
 	if (zoneServer == nullptr) {
 		return;
@@ -472,6 +472,16 @@ void CommandQueue::enqueueCommand(unsigned int actionCRC, unsigned int actionCou
 	int oldSize = queueVector.size();
 
 	creature->info() << "Queue Vector size changed from " << oldSize << " to " << queueVector.size();
+
+	if (creature->isPet()) {
+		for (unsigned int i = 0; i < queueVector.size(); i++) {
+			CommandQueueAction* command = queueVector.get(i);
+
+			const QueueCommand* queueCommand = objectController->getQueueCommand(command->getCommand());
+
+			info(true) << creature->getDisplayedName() << " -- Command #" << i << " : " << queueCommand->getQueueCommandName();
+		}
+	}
 #endif
 
 	if (state == WAITING && !queueTask->isScheduled()) {

@@ -311,7 +311,8 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		int res = agent->enqueueAttack(-1);
+		// Using Normal (2) Priority
+		int res = agent->enqueueAttack(2);
 		Behavior::Status returnRes = FAILURE;
 
 		if (!res)
