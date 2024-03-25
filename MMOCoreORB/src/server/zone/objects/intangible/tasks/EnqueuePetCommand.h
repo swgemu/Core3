@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 
 class EnqueuePetCommand : public Task {
 	ManagedReference<CreatureObject*> pet;
@@ -18,7 +19,7 @@ class EnqueuePetCommand : public Task {
 	uint64 target;
 	int priority;
 public:
-	EnqueuePetCommand(CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1) {
+	EnqueuePetCommand(CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = QueueCommand::NOCOMBATQUEUE) {
 		this->pet = pet;
 		commandCRC = command;
 		arguments = args;
