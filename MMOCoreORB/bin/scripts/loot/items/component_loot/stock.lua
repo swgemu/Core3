@@ -6,16 +6,16 @@ stock = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/stock.iff",
 	craftingValues = {
-		{"mindamage", 4,20,0},
-		{"maxdamage", 4,20,0},
-		{"attackspeed",0.8,0.0,1},
-		{"woundchance",1,5,1},
-		{"hitpoints",20,100,0, true},
-		{"midrangemod",4,20,0},
-		{"attackhealthcost",20,0,0},
-		{"attackactioncost",20,0,0},
-		{"attackmindcost",20,0,0},
-		{"useCount",3,7,0}
+		{"mindamage",10,20,0},
+		{"maxdamage",10,20,0},
+		{"attackspeed",1.0,0.0,2},
+		{"woundchance",5,10,0},
+		{"hitpoints",50,100,0, true},
+		{"midrangemod",10,20,0},
+		{"attackhealthcost",10,0,0},
+		{"attackactioncost",10,0,0},
+		{"attackmindcost",10,0,0},
+		{"useCount",1,11,0}
 	},
 	customizationStringName = {},
 	customizationValues = {}

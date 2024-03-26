@@ -6,13 +6,13 @@ projectile_rifle_barrel_advanced = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/projectile_rifle_barrel_advanced.iff",
 	craftingValues = {
-		{"mindamage", 5,25,0},
-		{"maxdamage", 5,25,0},
-		{"attackspeed",-0.2,-0.7,2},
-		{"woundchance",3,15,1},
-		{"hitpoints",20,100,0, true},
-		{"midrangemod",8,40,0},
-		{"useCount",3,7,0}
+		{"mindamage",10,25,0},
+		{"maxdamage",10,25,0},
+		{"attackspeed",-0.3,-0.7,2},
+		{"woundchance",10,20,0},
+		{"hitpoints",50,100,0, true},
+		{"midrangemod",20,40,0},
+		{"useCount",1,11,0}
 	},
 	customizationStringName = {},
 	customizationValues = {}

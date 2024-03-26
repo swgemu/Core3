@@ -6,8 +6,8 @@ fine_tuned_vibro_motor = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/vibro_unit_enhancement_min_damage.iff",
 	craftingValues = {
-		{"attackspeed",-0.2,-0.4,1},
-		{"useCount",1,5,0},
+		{"attackspeed",-0.2,-0.4,2},
+		{"useCount",1,11,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}
