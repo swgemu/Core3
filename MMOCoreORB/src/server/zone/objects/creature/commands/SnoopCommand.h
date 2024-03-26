@@ -112,8 +112,8 @@ public:
 				return GENERALERROR;
 			}
 
-			String planet = ghost->getTrainerZoneName();
-			Vector3 coords = ghost->getJediTrainerCoordinates();
+			String planet = targetGhost->getTrainerZoneName();
+			Vector3 coords = targetGhost->getJediTrainerCoordinates();
 
 			creature->sendSystemMessage(targetObj->getFirstName() + "'s jedi trainer is located at " + coords.toString() + " on " + planet);
 		} else if (container == "ham") {
