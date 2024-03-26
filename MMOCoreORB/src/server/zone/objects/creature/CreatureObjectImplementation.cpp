@@ -2184,17 +2184,17 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 		setPosture(CreaturePosture::UPRIGHT);
 	}
 
-	if (ghost == nullptr)
-		return;
-
-	getZoneServer()->getPlayerManager()->fixHAM(asCreatureObject());
-	getZoneServer()->getPlayerManager()->fixBuffSkillMods(asCreatureObject());
-
 	for (int i = 0; i < creatureBuffs.getBuffListSize(); ++i) {
 		ManagedReference<Buff*> buff = creatureBuffs.getBuffByIndex(i);
 
 		buff->loadBuffDurationEvent(asCreatureObject());
 	}
+
+	if (ghost == nullptr)
+		return;
+
+	getZoneServer()->getPlayerManager()->fixHAM(asCreatureObject());
+	getZoneServer()->getPlayerManager()->fixBuffSkillMods(asCreatureObject());
 
 	ZoneServer* zoneServer = server->getZoneServer();
 	SkillManager* skillManager = SkillManager::instance();
