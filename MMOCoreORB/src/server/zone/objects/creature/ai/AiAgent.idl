@@ -960,7 +960,7 @@ class AiAgent extends CreatureObject {
 	public abstract native boolean validateStateAttack();
 
 	@preLocked
-	public native int enqueueAttack(int priority = -1);
+	public native int enqueueAttack(int priority = 2);
 
 	@mock
 	@dirty
