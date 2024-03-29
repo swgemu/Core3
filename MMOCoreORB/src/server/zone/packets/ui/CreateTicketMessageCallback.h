@@ -17,12 +17,16 @@ class CreateTicketMessageCallback : public MessageCallback {
 	uint32 subCategoryId;
 
 	UnicodeString ticketBody;
+
 public:
-	CreateTicketMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server), categoryId(0), subCategoryId(0) {
+	CreateTicketMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) : MessageCallback(client, server), categoryId(0), subCategoryId(0) {
 	}
 
 	void parse(Message* message) {
+		if (!ConfigManager::instance()->getBool("Core3.AccountManager.HolocronTicketsEnabled", false)) {
+			return;
+		}
+
 		message->parseAscii(playerName);
 		categoryId = message->parseInt();
 		subCategoryId = message->parseInt();
@@ -31,6 +35,10 @@ public:
 	}
 
 	void run() {
+		if (!ConfigManager::instance()->getBool("Core3.AccountManager.HolocronTicketsEnabled", false)) {
+			return;
+		}
+
 		HolocronManager* holocronManager = server->getHolocronManager();
 		holocronManager->submitTicket(client, ticketBody);
 	}
