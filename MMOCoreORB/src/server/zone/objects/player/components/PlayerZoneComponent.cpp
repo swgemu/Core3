@@ -70,25 +70,25 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 }
 
 void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
-	SceneObject* scno = static_cast<SceneObject*>( entry);
+	auto entryObject = static_cast<SceneObject*>(entry);
 
-	if (scno == sceneObject)
+	if (entryObject == nullptr || entryObject == sceneObject)
 		return;
 
-	if (scno->isTangibleObject()) {
-		TangibleObject* tano = scno->asTangibleObject();
+	if (entryObject->isTangibleObject()) {
+		auto entryTano = entryObject->asTangibleObject();
 
-		if (tano->isInvisible())
+		if (entryTano->isInvisible())
 			return;
 	}
 
-	ManagedReference<SceneObject*> parent = scno->getParent().get();
+	auto parent = entryObject->getParent().get();
 
 	if (parent != nullptr) {
 		return;
 	}
 
-	scno->sendTo(sceneObject, true, false);
+	entryObject->sendTo(sceneObject, true, false);
 }
 
 void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const {
