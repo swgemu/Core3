@@ -264,7 +264,7 @@ class TangibleObject extends SceneObject {
 	public native abstract void synchronizedUIStopListen(CreatureObject player, int value);
 
 	@preLocked
-	public native void removeOutOfRangeObjects();
+	public native abstract void removeOutOfRangeObjects();
 
 	/**
 	 * Sets the active defender
