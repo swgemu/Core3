@@ -155,10 +155,18 @@ ProceduralTerrainAppearance* TerrainManager::getProceduralTerrainAppearance() {
 }
 
 float TerrainManager::getUnCachedHeight(float x, float y) const {
+	if (terrainData == nullptr) {
+		return 0.f;
+	}
+
 	return terrainData->getHeight(x, y);
 }
 
 float TerrainManager::getCachedHeight(float x, float y) {
+	if (heightCache == nullptr) {
+		return 0.f;
+	}
+
 	return heightCache->getHeight(x, y);
 }
 
