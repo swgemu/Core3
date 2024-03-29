@@ -500,6 +500,14 @@ void BuildingObjectImplementation::notifyInsert(TreeEntry* object) {
 		return;
 	}
 
+#ifdef DEBUG_COV
+	// Theed Medical Center
+	if (isClientObject() && (getObjectID() == 1697358) && (sceneO->isPlayerCreature() || sceneO->isVehicleObject()))
+		info(true) << getObjectName() << " - BuildingObjectImplementation::notifyInsert for Object: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+#endif
+
+
+
 	uint64 sceneObjRootID = 0;
 	auto sceneObjRootPar = sceneO->getRootParent();
 
@@ -507,7 +515,8 @@ void BuildingObjectImplementation::notifyInsert(TreeEntry* object) {
 		sceneObjRootID = sceneObjRootPar->getObjectID();
 	}
 
-	bool objectInThisBuilding = sceneObjRootID == getObjectID();
+	// Always add objects that are in the same building or for static buildings
+	bool shouldLoad = (sceneObjRootID == getObjectID()) || isStaticBuilding();
 
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
@@ -519,24 +528,28 @@ void BuildingObjectImplementation::notifyInsert(TreeEntry* object) {
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 				auto child = cell->getContainerObject(j);
 
+				// Don't send child to itself every time a new object is inserted in range
 				if (child == nullptr || child->getObjectID() == scnoID)
 					continue;
 
-				if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
-					if (child->getCloseObjects() != nullptr)
+				if (shouldLoad || (child->isCreatureObject() && isPublicStructure())) {
+					if (child->getCloseObjects() != nullptr) {
 						child->addInRangeObject(object, false);
-					else
+					} else {
 						child->notifyInsert(object);
+					}
 
 					child->sendTo(sceneO, true, false);
 
-					if (sceneO->getCloseObjects() != nullptr)
+					if (sceneO->getCloseObjects() != nullptr) {
 						sceneO->addInRangeObject(child, false);
-					else
+					} else {
 						sceneO->notifyInsert(child);
+					}
 
-					if (sceneO->getParent() != nullptr)
+					if (sceneO->getParent() != nullptr) {
 						sceneO->sendTo(child, true, false);
+					}
 				} else if (!sceneO->isCreatureObject() && !child->isCreatureObject()) {
 					child->notifyInsert(object);
 					object->notifyInsert(child);

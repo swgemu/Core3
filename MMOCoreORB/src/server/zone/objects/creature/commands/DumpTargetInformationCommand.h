@@ -41,11 +41,14 @@ public:
 
 		int cellid = 0;
 		uint32 buildingTemplate = 0;
+		uint64 rootParentID = 0;
 
 		if (cell != nullptr) {
 			cellid = cell->getCellNumber();
+
 			ManagedReference<SceneObject*> building = cell->getParent().get();
 			buildingTemplate = building->getServerObjectCRC();
+			rootParentID = building->getObjectID();
 		}
 
 		StringBuffer msg;
@@ -55,10 +58,12 @@ public:
 
 		msg << "x = " << posX << ", z = " << posZ << ", y = " << posY << ", ow = " << direction->getW()
 				<< ", ox = " << direction->getX() << ", oz = " << direction->getZ() << ", oy = " << direction->getY()
-				<< ", cellid = " << cellid;
+				<< ", cellid = " << cellid << endl;
+
+		msg << "Root Parent:" << endl << "ID: " << rootParentID << endl;
 
 		if (buildingTemplate != 0)
-			msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
+			msg << "Template: " << TemplateManager::instance()->getTemplateFile(buildingTemplate);
 
 		if (obj->isAiAgent()) {
 			AiAgent* objCreo = obj.castTo<AiAgent*>();
