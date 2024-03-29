@@ -11,6 +11,9 @@
 
 class GetAttributesBatchCommand : public QueueCommand {
 public:
+
+	const int MAXIMUM_BATCH = 999;
+
 	GetAttributesBatchCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
@@ -68,8 +71,8 @@ public:
 				sendEmptyAttributes(creature, objid);
 			}
 
-			if (++incr > 999) {
-				creature->error("GetAttributesBatchCommand: Objects attribute limit exceeded: arguments: " + arguments.toString());
+			if (++incr > MAXIMUM_BATCH) {
+				creature->error() << creature->getDisplayedName() << " ID: " << creature->getObjectID() << "  GetAttributesBatchCommand -- Objects attribute limit exceeded with more than " << incr << " total objects.";
 
 				return GENERALERROR;
 			}
