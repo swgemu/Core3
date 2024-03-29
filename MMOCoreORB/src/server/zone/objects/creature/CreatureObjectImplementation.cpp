@@ -2232,17 +2232,32 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 
 void CreatureObjectImplementation::notifyInsert(TreeEntry* obj) {
 	auto linkedCreature = getLinkedCreature().get();
+	auto entryObject = static_cast<SceneObject*>(obj);
 
-	if (linkedCreature != nullptr && linkedCreature->getParent() == asCreatureObject()) {
+	if (entryObject == nullptr) {
+		return;
+	}
+
 #if DEBUG_COV
-		linkedCreature->info("proxy notifyInsert(" + String::valueOf(obj->getObjectID()) + ")");
+	if ((isPlayerCreature() || isVehicleObject()) && (entryObject->isPlayerCreature() || entryObject->isVehicleObject())) {
+		info(true) << "notifyInsert for new Object: " << entryObject->getDisplayedName();
+	}
 #endif // DEBUG_COV
 
-		if (linkedCreature->getCloseObjects() != nullptr)
-			linkedCreature->addInRangeObject(obj);
+	if (linkedCreature != nullptr && linkedCreature->getParent() == asCreatureObject() && linkedCreature->getObjectID() != obj->getObjectID()) {
+#if DEBUG_COV
+		if (entryObject->isPlayerCreature())
+			linkedCreature->info(true) << "linkedCreature proxy notifyInsert for - " << entryObject->getDisplayedName() << " ID: " << obj->getObjectID();
+#endif // DEBUG_COV
 
-		if (obj->getCloseObjects() != nullptr)
-			obj->addInRangeObject(linkedCreature);
+		if (linkedCreature->getCloseObjects() != nullptr) {
+			linkedCreature->addInRangeObject(entryObject);
+		}
+
+		/* Force adding this object to the linked creatures COV causes it to be seen. Let the parent send its container objects on its own with sendTo
+		if (entryObject->getCloseObjects() != nullptr) {
+			//entryObject->addInRangeObject(linkedCreature);
+		}*/
 	}
 
 	TangibleObjectImplementation::notifyInsert(obj);
@@ -2251,15 +2266,27 @@ void CreatureObjectImplementation::notifyInsert(TreeEntry* obj) {
 void CreatureObjectImplementation::notifyDissapear(TreeEntry* obj) {
 	auto linkedCreature = getLinkedCreature().get();
 
+#if DEBUG_COV
+	auto entryObject = static_cast<SceneObject*>(obj);
+
+	if ((isPlayerCreature() || isVehicleObject()) && (entryObject->isPlayerCreature() || entryObject->isVehicleObject())) {
+		info(true) << "notifyDissapear for object: " << entryObject->getDisplayedName();
+	}
+#endif // DEBUG_COV
+
 	if (linkedCreature != nullptr && linkedCreature->getParent() == asCreatureObject()) {
 #if DEBUG_COV
-		linkedCreature->info("proxy notifyDissapear(" + String::valueOf(obj->getObjectID()) + ")");
-#endif // DEBUG_COV
-		if (linkedCreature->getCloseObjects() != nullptr)
-			linkedCreature->removeInRangeObject(obj);
 
-		if (obj->getCloseObjects() != nullptr)
+		if (entryObject->isPlayerCreature())
+			linkedCreature->info(true) << "linkedCreature: " << linkedCreature->getDisplayedName() << " -- proxy notifyDissapear for object: " << entryObject->getDisplayedName() << " ID: " << obj->getObjectID();
+#endif // DEBUG_COV
+		if (linkedCreature->getCloseObjects() != nullptr) {
+			linkedCreature->removeInRangeObject(obj);
+		}
+
+		if (obj->getCloseObjects() != nullptr) {
 			obj->removeInRangeObject(linkedCreature);
+		}
 	}
 
 	TangibleObjectImplementation::notifyDissapear(obj);
@@ -4030,6 +4057,36 @@ CreditObject* CreatureObjectImplementation::getCreditObject() {
 	}
 
 	return creditObject;
+}
+
+void CreatureObjectImplementation::removeOutOfRangeObjects() {
+	TangibleObjectImplementation::removeOutOfRangeObjects();
+
+	if (!isPlayerCreature()) {
+		return;
+	}
+
+	auto closeObjectsVector = getCloseObjects();
+
+	if (closeObjectsVector == nullptr)
+		return;
+
+	auto ghost = getPlayerObject();
+
+	if (ghost == nullptr) {
+		return;
+	}
+
+	int covSize = closeObjectsVector->size();
+
+	// Cov count reporting
+	if (covSize < ghost->getCountMaxCov()) {
+		return;
+	}
+
+	error() << "Player: " << getDisplayedName() << " ID: " << getObjectID() << " Reached Max COV Count: " << covSize;
+
+	ghost->setCountMaxCov(covSize);
 }
 
 // The player may still have buildings and other far away objects in COV

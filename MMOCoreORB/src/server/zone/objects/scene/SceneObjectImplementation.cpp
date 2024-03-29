@@ -346,11 +346,15 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose, bool f
 	if ((isClientObject() && !forceSend) || !sendToClient || player == nullptr || player->getClient() == nullptr)
 		return;
 
-	/*StringBuffer msgInfo;
-	if (parent != nullptr)
-		msgInfo << "with parent " << getParent()->getLoggingName() << " ";
-	msgInfo << "sending 0x" << hex << getClientObjectCRC() << " to " << player->getLoggingName();
-	info(msgInfo.toString(), true);*/
+
+	/*
+	if (isVehicleObject() || isPlayerCreature()) {
+		StringBuffer msgInfo;
+		msgInfo << getDisplayedName() << " sendTo --- Parent: ";
+		msgInfo << (getParent().get() != nullptr ? getParent().get()->getDisplayedName() : "nullptr") << " ";
+		msgInfo << " ID: " << getObjectID() << " to " << player->getDisplayedName();
+		info(true)  << msgInfo.toString();
+	}*/
 
 	BaseMessage* msg = new SceneObjectCreateMessage(asSceneObject());
 	player->sendMessage(msg);
@@ -1036,10 +1040,11 @@ void SceneObjectImplementation::notifyInsert(TreeEntry* object) {
 
 	auto zone = getZone();
 
-	if (zone != nullptr && zone->isSpaceZone())
+	if (zone != nullptr && zone->isSpaceZone()) {
 		spaceZoneComponent->notifyInsert(asSceneObject(), object);
-	else
+	} else {
 		groundZoneComponent->notifyInsert(asSceneObject(), object);
+	}
 }
 
 void SceneObjectImplementation::notifyDissapear(TreeEntry* object) {
