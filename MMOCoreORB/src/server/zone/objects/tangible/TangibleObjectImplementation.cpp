@@ -452,29 +452,30 @@ void TangibleObjectImplementation::synchronizedUIStopListen(CreatureObject* play
 }
 
 void TangibleObjectImplementation::removeOutOfRangeObjects() {
-	TangibleObject* object = asTangibleObject();
+	TangibleObject* thisObject = asTangibleObject();
 
-	if (object == nullptr)
+	if (thisObject == nullptr)
 		return;
 
-	auto rootParent = object->getRootParent();
+	auto rootParent = thisObject->getRootParent();
 	auto parent = getParent().get();
 
 	if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
-		object = parent->asTangibleObject();
+		thisObject = parent->asTangibleObject();
 	} else if (rootParent != nullptr && rootParent->isShipObject()) {
-		object = rootParent->asTangibleObject();
+		thisObject = rootParent->asTangibleObject();
 	}
 
-	if (object == nullptr)
+	if (thisObject == nullptr)
 		return;
 
-#ifdef DEBUG_COV
-	info(true) << "TangibleObjectImplementation::removeOutOfRangeObjects() called - " << object->getDisplayedName();
-#endif // DEBUG_COV
+//#ifdef DEBUG_COV
+	if (getObjectID() == 281474993555335)
+		info(true) << "TangibleObjectImplementation::removeOutOfRangeObjects() called - For Object: " << thisObject->getDisplayedName();
+//#endif // DEBUG_COV
 
 	SortedVector<TreeEntry*> closeObjects;
-	auto closeObjectsVector = object->getCloseObjects();
+	auto closeObjectsVector = thisObject->getCloseObjects();
 
 	if (closeObjectsVector == nullptr)
 		return;
@@ -487,74 +488,85 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 	float ourY = worldPos.getY();
 	float ourZ = worldPos.getZ();
 
-	float ourRange = object->getOutOfRangeDistance();
+	float ourRange = thisObject->getOutOfRangeDistance();
+	bool objectIsShip = thisObject->isShipObject();
 
 	int countChecked = 0;
 	int countCov = closeObjects.size();
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* o = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
+		auto covObject = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
 
 		// Don't remove ourselves
-		if (o == nullptr || o == object)
+		if (covObject == nullptr || covObject == thisObject) {
 			continue;
+		}
 
 		// Don't remove things in the same parent as us (e.g. Geo Caves are massive)
-		if (rootParent != nullptr && o == rootParent)
+		if (rootParent != nullptr && covObject == rootParent) {
 			continue;
+		}
 
 		// Check for objects inside another object
-		auto oRoot = o->getRootParent();
+		auto covObjectRoot = covObject->getRootParent();
 
 		// They should be managed by the parent
-		if (oRoot != nullptr)
+		if (covObjectRoot != nullptr) {
 			continue;
+		}
 
 		countChecked++;
 
-		auto objectWorldPos = o->getWorldPosition();
+		auto objectWorldPos = covObject->getWorldPosition();
 
 		float deltaX = ourX - objectWorldPos.getX();
 		float deltaY = ourY - objectWorldPos.getY();
-		float deltaZ = ourZ - objectWorldPos.getZ();
 
-		float outOfRangeSqr = Math::sqr(Math::max(ourRange, o->getOutOfRangeDistance()));
-
-		// Check for out of range, if using root parent ship, use 3d range calc
-		if (object->isShipObject()) {
-			float delta3d = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
-
-			if (delta3d > outOfRangeSqr) {
-				countCov--;
-
-				if (getCloseObjects() != nullptr)
-					object->removeInRangeObject(o);
-
-				if (o->getCloseObjects() != nullptr)
-					o->removeInRangeObject(object);
-			}
+		float outOfRangeSqr = Math::sqr(Math::max(ourRange, covObject->getOutOfRangeDistance()));
+		float deltaDistance = 0.f;
+		
+		if (!objectIsShip) {
+			deltaDistance = deltaX * deltaX + deltaY * deltaY;
 		} else {
-			if (deltaX * deltaX + deltaY * deltaY > outOfRangeSqr) {
-				countCov--;
+			float deltaZ = ourZ - objectWorldPos.getZ();
 
-				if (getCloseObjects() != nullptr)
-					object->removeInRangeObject(o);
-
-				if (o->getCloseObjects() != nullptr)
-					o->removeInRangeObject(object);
-			}
+			deltaDistance = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 		}
+
+		if (getObjectID() == 281474993555335)
+			info(true) << "Checking COV Object #" << i << " Name: " << covObject->getDisplayedName() << " Using Range Sq: " << outOfRangeSqr << " Current Distance: " << deltaDistance;
+
+		// Check for out of range, if using root parent ship, 3d range calc is used
+		if (deltaDistance < outOfRangeSqr) {
+			continue;
+		}
+
+		countCov--;
+
+		// Remove Cov Object from thisObjects (or using thisObject's parent) COV
+		if (thisObject->getCloseObjects() != nullptr) {
+			thisObject->removeInRangeObject(covObject);
+		}
+
+		// Remove thisObject from covObjects COV
+		if (covObject->getCloseObjects() != nullptr) {
+			covObject->removeInRangeObject(thisObject);
+		}
+
+		if (getObjectID() == 281474993555335)
+			info(true) << "REMOVED COV Object #" << i << " Name: " << covObject->getDisplayedName();
 	}
 
-	if (object->isPlayerCreature()) {
-		auto creature = object->asCreatureObject();
+	if (isPlayerCreature()) {
+		auto thisCreature = asCreatureObject();
 
-		if (creature != nullptr) {
-			auto ghost = creature->getPlayerObject();
+		if (thisCreature != nullptr) {
+			auto ghost = thisCreature->getPlayerObject();
 
 			// Cov count reporting
 			if (ghost != nullptr && countCov > ghost->getCountMaxCov()) {
-				object->error("MaxCountCov = " + String::valueOf(countCov) + " checked = " + String::valueOf(countChecked));
+				error("MaxCountCov = " + String::valueOf(countCov) + " checked = " + String::valueOf(countChecked));
+
 				ghost->setCountMaxCov(countCov);
 			}
 		}

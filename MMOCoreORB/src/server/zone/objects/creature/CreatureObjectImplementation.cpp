@@ -2233,6 +2233,11 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 void CreatureObjectImplementation::notifyInsert(TreeEntry* obj) {
 	auto linkedCreature = getLinkedCreature().get();
 
+	if (isVehicleObject()) {
+		info(true) << "notifyInsert for new Object: " << static_cast<SceneObject*> (obj)->getDisplayedName();
+
+	}
+
 	if (linkedCreature != nullptr && linkedCreature->getParent() == asCreatureObject()) {
 #if DEBUG_COV
 		linkedCreature->info("proxy notifyInsert(" + String::valueOf(obj->getObjectID()) + ")");
