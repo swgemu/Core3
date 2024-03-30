@@ -7,14 +7,10 @@
 
 class SetBiographyCommand : public QueueCommand {
 public:
-
-	SetBiographyCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	SetBiographyCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -24,15 +20,16 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = cast<CreatureObject*>(creature);
+		auto ghost = creature->getPlayerObject();
 
-		PlayerObject* ghost = player->getPlayerObject();
+		if (ghost == nullptr) {
+			return GENERALERROR;
+		}
 
 		ghost->setBiography(arguments);
 
 		return SUCCESS;
 	}
-
 };
 
-#endif //SETBIOGRAPHYCOMMAND_H_
+#endif // SETBIOGRAPHYCOMMAND_H_
