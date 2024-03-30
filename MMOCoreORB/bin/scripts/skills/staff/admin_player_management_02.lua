@@ -26,6 +26,7 @@ admin_player_management_02 = {
 		"grantBadge",
 		"kick",
 		"revokeBadge",
+		"setBiographyAdmin",
 		"setFirstName",
 		"setLastName",
 		"setPlayerAppearance",
