@@ -57,6 +57,11 @@ public:
 	}
 
 	static bool isValidGroupAbilityTarget(CreatureObject* leader, CreatureObject* target, bool allowPet) {
+
+		if (target == nullptr || target->isDead() || target->isIncapacitated()) {
+			return false;
+		}
+
 		if (allowPet) {
 			if (!target->isPlayerCreature() && !target->isPet()) {
 				return false;
