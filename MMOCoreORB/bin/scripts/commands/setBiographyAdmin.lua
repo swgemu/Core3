@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 SetBiographyAdminCommand = {
-        name = "setbiographyadmin",
+	name = "setbiographyadmin",
 }
 
 AddCommand(SetBiographyAdminCommand)
