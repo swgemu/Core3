@@ -91,7 +91,7 @@ See [linux/README.md](linux/README.md) for instructions.
 ## Linux Manual Build
 
 ### Dependencies
-  * Debian 11
+  * Debian 12
   * CMake 3.18.0+
   * BerkeleyDB 5.3
   * MariaDb Client and Server
@@ -99,19 +99,20 @@ See [linux/README.md](linux/README.md) for instructions.
   * pthreads
   * Lua 5.3 libraries
   * Zlib libraries
-  * clang 16+
+  * clang 17
   * java runtime
+  * boost
 
-#### Latest Clang
+#### Clang-17
 
-The easiest way to get the latest clang to build with is to use the script provided by the llvm repo:
+The easiest way to get the clang17 to build with is to use the script provided by the llvm repo:
 
 ```
 sudo -i
 apt-get install -y apt-transport-https ca-certificates git gnupg lsb-release moreutils software-properties-common wget
 wget -O /tmp/llvm.sh https://apt.llvm.org/llvm.sh
 chmod +x /tmp/llvm.sh
-/tmp/llvm.sh all
+/tmp/llvm.sh 17 all
 (set +x;cd /usr/bin;for i in ../lib/llvm-*/bin/*; do ln -sfv $i .; done)
 clang --version
 ld.lld --version
@@ -122,24 +123,25 @@ This will install the latest and symlink all the files to /usr/bin so CMake find
 
 ### Build
 
-  * Install dependencies (Debian 11)
+  * Install dependencies (Debian 12)
 
-        sudo apt install build-essential libmysqlclient-dev liblua5.3-dev libdb5.3-dev libssl-dev cmake git default-jre
+        sudo apt install build-essential libmariadb-dev libmariadb-dev-compat liblua5.3-dev libdb5.3-dev libssl-dev cmake git default-jre libboost-all-dev gdb
 
   * Clone core3 repository somewhere  (~/workspace)
 
         mkdir -p ~/workspace
         cd ~/workspace
-        git clone http://review.swgemu.com/Core3
+        git clone https://review.swgemu.com/Core3
 
   * Build Core3
 
-        cd MMOCoreORB
+        cd Core3/MMOCoreORB
         make -j$(nproc)
 
-  * Import sql database
+  * Import sql database into mariadb
 
-        mysql -h<MYSQLHOST> -u<MYSQLUSER> -p<MYSQLPASSWORD> < sql/swgemu.sql
+        sudo apt-get install mariadb-server
+        Setup MariaDB User, database and import sql/swgemu.sql
 
 ### How to Run
 
