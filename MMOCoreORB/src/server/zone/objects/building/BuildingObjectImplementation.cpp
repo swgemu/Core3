@@ -80,18 +80,6 @@ void BuildingObjectImplementation::createContainerComponent() {
 }
 
 void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
-	StringBuffer newName;
-
-	newName << "BuildingObject"
-		<< " 0x" << String::hexvalueOf((int64)getObjectID())
-		<< " owner: " << String::valueOf(getOwnerObjectID())
-		<< " " << String::valueOf((int)getPositionX()) << " " << String::valueOf((int)getPositionY())
-		<< " " << zone->getZoneName()
-		<< " " << String::valueOf((int)getPositionZ())
-		<< " " << getObjectName()->getFullPath();
-
-	setLoggingName(newName.toString());
-
 	StructureObjectImplementation::notifyInsertToZone(zone);
 
 	Locker locker(zone);
@@ -395,6 +383,10 @@ bool BuildingObjectImplementation::isCityBanned(CreatureObject* player) {
 }
 
 bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
+	if (player == nullptr) {
+		return false;
+	}
+
 	GCWBaseContainerComponent* conComp = containerComponent.castTo<GCWBaseContainerComponent*>();
 
 	if (conComp != nullptr) {
@@ -496,17 +488,24 @@ void BuildingObjectImplementation::notifyInsert(TreeEntry* object) {
 #endif // DEBUG_COV
 
 	// Prevent players that are mounted from being loaded on their own. When their mount loads it will send the player on its own
-	if (sceneO->isPlayerCreature() && sceneO->isRidingMount()) {
-		return;
+	if (sceneO->isPlayerCreature()) {
+		auto player = sceneO->asCreatureObject();
+
+		if (player != nullptr && player->isRidingMount()) {
+#ifdef DEBUG_COV
+			// Theed Medical Center & Theed Cloning Facility
+			if (((getObjectID() == 1697358) || (getObjectID() == 1697350) || !isClientObject()) && ((sceneO->isPlayerCreature() || sceneO->isVehicleObject())))
+				info(true) << "Blocked the adding of player that is riding mount: " << sceneO->getDisplayedName();
+#endif // DEBUG_COV
+			return;
+		}
 	}
 
 #ifdef DEBUG_COV
-	// Theed Medical Center
-	if (isClientObject() && (getObjectID() == 1697358) && (sceneO->isPlayerCreature() || sceneO->isVehicleObject()))
-		info(true) << getObjectName() << " - BuildingObjectImplementation::notifyInsert for Object: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
-#endif
-
-
+	// Theed Medical Center & Theed Cloning Facility
+	if (((getObjectID() == 1697358) || (getObjectID() == 1697350) || !isClientObject()) && ((sceneO->isPlayerCreature() || sceneO->isVehicleObject())))
+		info(true) << "notifyInsert for Object: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+#endif // DEBUG_COV
 
 	uint64 sceneObjRootID = 0;
 	auto sceneObjRootPar = sceneO->getRootParent();
@@ -515,8 +514,11 @@ void BuildingObjectImplementation::notifyInsert(TreeEntry* object) {
 		sceneObjRootID = sceneObjRootPar->getObjectID();
 	}
 
-	// Always add objects that are in the same building or for static buildings
-	bool shouldLoad = (sceneObjRootID == getObjectID()) || isStaticBuilding();
+	/* Always notify insertion of objects if the building is:
+	*	- Static stucture (NPC Cities) always load their contents
+	*	- Objects that are already in the same building, scene Object Root ID is the same as this building
+	*/
+	bool shouldLoad = isStaticBuilding() || (sceneObjRootID == getObjectID());
 
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
@@ -533,6 +535,12 @@ void BuildingObjectImplementation::notifyInsert(TreeEntry* object) {
 					continue;
 
 				if (shouldLoad || (child->isCreatureObject() && isPublicStructure())) {
+#ifdef DEBUG_COV
+					// Theed Medical Center & Theed Cloning Facility
+					if (((getObjectID() == 1697358) || (getObjectID() == 1697350) || !isClientObject()) && child->isPlayerCreature() && (sceneO->isPlayerCreature() || sceneO->isVehicleObject()))
+						info(true) << child->getDisplayedName() << " - adding to inRangeObjects for Entry Object: " << sceneO->getDisplayedName();
+#endif // DEBUG_COV
+
 					if (child->getCloseObjects() != nullptr) {
 						child->addInRangeObject(object, false);
 					} else {
@@ -580,29 +588,54 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 	}*/
 #endif // DEBUG_COV
 
+	// Prevent players that are mounted from being loaded on their own. When their mount loads it will send the player on its own
+	if (sceneO->isPlayerCreature()) {
+		//if (getObjectID() == 1697358)
+		//	info(true) << "Blocked the adding of player that is riding mount: " << sceneO->getDisplayedName();
+
+		auto player = sceneO->asCreatureObject();
+
+		if (player != nullptr && player->isRidingMount()) {
+#ifdef DEBUG_COV
+			// Theed Medical Center & Theed Cloning Facility
+			if (((getObjectID() == 1697358) || (getObjectID() == 1697350) || !isClientObject()) && ((sceneO->isPlayerCreature() || sceneO->isVehicleObject())))
+				info(true) << "Blocked the removing of player that is riding mount: " << sceneO->getDisplayedName();
+#endif // DEBUG_COV
+			return;
+		}
+	}
+
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
 		if (!cell->isContainerLoaded())
 			continue;
 
-		try
-		{
+		try {
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 				auto child = cell->getContainerObject(j);
 
-				if (child == nullptr)
+				// Child should not remove itself
+				if (child == nullptr || child->getObjectID() == scnoID)
 					continue;
 
-				if (child->getCloseObjects() != nullptr)
-					child->removeInRangeObject(object);
-				else
-					child->notifyDissapear(object);
+#ifdef DEBUG_COV
+				// Theed Medical Center & Theed Cloning Facility
+				if (((getObjectID() == 1697358) || (getObjectID() == 1697350) || !isClientObject()) && child->isPlayerCreature() && (sceneO->isPlayerCreature() || sceneO->isVehicleObject()))
+					info(true) << child->getDisplayedName() << " - removing inRangeObject Entry Object: " << sceneO->getDisplayedName();
+#endif // DEBUG_COV
 
-				if (object->getCloseObjects() != nullptr)
+				if (child->getCloseObjects() != nullptr) {
+					child->removeInRangeObject(object);
+				} else {
+					child->notifyDissapear(object);
+				}
+
+				if (object->getCloseObjects() != nullptr) {
 					object->removeInRangeObject(child);
-				else
+				} else {
 					object->notifyDissapear(child);
+				}
 			}
 		} catch (const Exception& exception) {
 			warning("could not remove all container objects in BuildingObject::notifyDissapear");
