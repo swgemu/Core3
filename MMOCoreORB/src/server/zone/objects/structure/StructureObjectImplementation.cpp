@@ -155,15 +155,18 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 	if (!staticObject && isBuildingObject())
 		info("notifyInsertToZone", true);
 #endif // DEBUG_STRUCTURE_MAINT
+
 	StringBuffer logName;
 
-	logName << getLoggingName()
-		// << " 0x" << String::hexvalueOf((int64)getObjectID())
-		<< " owner: " << String::valueOf(getOwnerObjectID())
-		<< " " << String::valueOf((int)getPositionX()) << " " << String::valueOf((int)getPositionY())
-		<< " " << zone->getZoneName()
-		<< " " << String::valueOf((int)getPositionZ())
-		<< " " << getObjectName()->getFullPath();
+	logName << "BuildingObject ID: " << getObjectID();
+
+	if (isClientObject()) {
+		logName << " Client Object Building";
+	} else {
+		logName << " Owner ID: " << getOwnerObjectID();
+	}
+
+	logName << " Zone: " << zone->getZoneName() << " WorldPosition: " << getPosition().toString() << " ObjectName: " << getObjectName()->getFullPath();
 
 	setLoggingName(logName.toString());
 

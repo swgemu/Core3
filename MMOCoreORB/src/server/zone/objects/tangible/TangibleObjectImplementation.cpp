@@ -462,7 +462,7 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 
 	if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
 		thisObject = parent->asTangibleObject();
-	} else if (rootParent != nullptr && rootParent->isShipObject()) {
+	} else if (rootParent != nullptr && (rootParent->isShipObject() || rootParent->isStructureObject())) {
 		thisObject = rootParent->asTangibleObject();
 	}
 
@@ -481,7 +481,7 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 
 	closeObjectsVector->safeCopyTo(closeObjects);
 
-	auto worldPos = getWorldPosition();
+	auto worldPos = thisObject->getWorldPosition();
 
 	float ourX = worldPos.getX();
 	float ourY = worldPos.getY();
@@ -497,12 +497,12 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 		auto covObject = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
 
 		// Don't remove ourselves
-		if (covObject == nullptr || covObject == thisObject) {
+		if (covObject == nullptr || covObject->getObjectID() == getObjectID()) {
 			continue;
 		}
 
 		// Don't remove our own root parent, this applies to large things like Geo Caves due to their size.
-		if (rootParent != nullptr && rootParent == covObject) {
+		if (rootParent != nullptr && rootParent->getObjectID() == covObject->getObjectID()) {
 			continue;
 		}
 
@@ -539,6 +539,15 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 		}
 
 		countCov--;
+
+		/*
+		if (getObjectID() == PLAYERIDHERE && (covObject->isVehicleObject() || covObject->isPlayerCreature())) {
+			StringBuffer msg;
+
+			msg << getDisplayedName() << " removeOutOfRangeObjects task removed object from COV: " << covObject->getDisplayedName() << endl;
+			msg << "Our World Pos: " << worldPos.toString() << " Distance Sq: " << deltaDistance << " RangeSq Checked Against: " << outOfRangeSqr;
+			info(true) << msg.toString();
+		}*/
 
 		// Remove covObject from thisObjects (or using thisObject's parent)
 		if (thisObject->getCloseObjects() != nullptr) {

@@ -2244,41 +2244,44 @@ void CreatureObjectImplementation::notifyInsert(TreeEntry* obj) {
 	}
 #endif // DEBUG_COV
 
+	TangibleObjectImplementation::notifyInsert(obj);
+
 	if (linkedCreature != nullptr && linkedCreature->getParent() == asCreatureObject() && linkedCreature->getObjectID() != obj->getObjectID()) {
 #if DEBUG_COV
 		if (entryObject->isPlayerCreature())
-			linkedCreature->info(true) << "linkedCreature proxy notifyInsert for - " << entryObject->getDisplayedName() << " ID: " << obj->getObjectID();
+			info(true) << "linkedCreature: " << linkedCreature->getDisplayedName() << " -- proxy notifyInsert for - " << entryObject->getDisplayedName() << " ID: " << obj->getObjectID();
 #endif // DEBUG_COV
 
 		if (linkedCreature->getCloseObjects() != nullptr) {
 			linkedCreature->addInRangeObject(entryObject);
 		}
 
-		/* Force adding this object to the linked creatures COV causes it to be seen. Let the parent send its container objects on its own with sendTo
 		if (entryObject->getCloseObjects() != nullptr) {
-			//entryObject->addInRangeObject(linkedCreature);
-		}*/
+			entryObject->addInRangeObject(linkedCreature);
+		}
 	}
-
-	TangibleObjectImplementation::notifyInsert(obj);
 }
 
 void CreatureObjectImplementation::notifyDissapear(TreeEntry* obj) {
 	auto linkedCreature = getLinkedCreature().get();
-
-#if DEBUG_COV
 	auto entryObject = static_cast<SceneObject*>(obj);
 
+	if (entryObject == nullptr) {
+		return;
+	}
+
+#if DEBUG_COV
 	if ((isPlayerCreature() || isVehicleObject()) && (entryObject->isPlayerCreature() || entryObject->isVehicleObject())) {
 		info(true) << "notifyDissapear for object: " << entryObject->getDisplayedName();
 	}
 #endif // DEBUG_COV
 
-	if (linkedCreature != nullptr && linkedCreature->getParent() == asCreatureObject()) {
-#if DEBUG_COV
+	TangibleObjectImplementation::notifyDissapear(obj);
 
+	if (linkedCreature != nullptr && linkedCreature->getParent() == asCreatureObject() && linkedCreature->getObjectID() != obj->getObjectID()) {
+#if DEBUG_COV
 		if (entryObject->isPlayerCreature())
-			linkedCreature->info(true) << "linkedCreature: " << linkedCreature->getDisplayedName() << " -- proxy notifyDissapear for object: " << entryObject->getDisplayedName() << " ID: " << obj->getObjectID();
+			info(true) << "linkedCreature: " << linkedCreature->getDisplayedName() << " -- proxy notifyDissapear for - " << entryObject->getDisplayedName() << " ID: " << obj->getObjectID();
 #endif // DEBUG_COV
 		if (linkedCreature->getCloseObjects() != nullptr) {
 			linkedCreature->removeInRangeObject(obj);
@@ -2288,25 +2291,31 @@ void CreatureObjectImplementation::notifyDissapear(TreeEntry* obj) {
 			obj->removeInRangeObject(linkedCreature);
 		}
 	}
-
-	TangibleObjectImplementation::notifyDissapear(obj);
 }
 
 void CreatureObjectImplementation::notifyPositionUpdate(TreeEntry* entry) {
 	auto linkedCreature = getLinkedCreature().get();
+	auto entryObject = static_cast<SceneObject*>(entry);
 
-	if (linkedCreature != nullptr && linkedCreature->getParent() == asCreatureObject()) {
-#if DEBUG_COV
-		linkedCreature->info("proxy notifyPositionUpdate(" + String::valueOf(entry->getObjectID()) + ")");
-#endif // DEBUG_COV
-		if (linkedCreature->getCloseObjects() != nullptr)
-			linkedCreature->addInRangeObject(entry);
-
-		if (entry->getCloseObjects() != nullptr)
-			entry->addInRangeObject(linkedCreature);
+	if (entryObject == nullptr) {
+		return;
 	}
 
 	TangibleObjectImplementation::notifyPositionUpdate(entry);
+
+	if (linkedCreature != nullptr && linkedCreature->getParent() == asCreatureObject() && linkedCreature->getObjectID() != entryObject->getObjectID()) {
+#if DEBUG_COV
+		linkedCreature->info("proxy notifyPositionUpdate(" + String::valueOf(entry->getObjectID()) + ")");
+#endif // DEBUG_COV
+
+		if (linkedCreature->getCloseObjects() != nullptr) {
+			linkedCreature->addInRangeObject(entryObject);
+		}
+
+		if (entryObject->getCloseObjects() != nullptr) {
+			entryObject->addInRangeObject(linkedCreature);
+		}
+	}
 }
 
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
