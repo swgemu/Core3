@@ -2254,6 +2254,8 @@ void CreatureObjectImplementation::notifyInsert(TreeEntry* obj) {
 
 		if (linkedCreature->getCloseObjects() != nullptr) {
 			linkedCreature->addInRangeObject(entryObject);
+
+			entryObject->sendTo(linkedCreature, true, false);
 		}
 
 		if (entryObject->getCloseObjects() != nullptr) {
