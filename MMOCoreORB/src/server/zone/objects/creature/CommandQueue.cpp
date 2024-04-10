@@ -137,6 +137,8 @@ int CommandQueue::handleRunningState() {
 
 	Locker guard(&queueMutex);
 
+	bool isPet = creature->isPet();
+
 #ifdef DEBUG_QUEUE
 	info(true) << "CommandQueue - handleRunningState called on " << toString();
 #endif
@@ -189,6 +191,7 @@ int CommandQueue::handleRunningState() {
 
 	// Auto attack timer only applies to players
 	if (creature->isPlayerCreature()) {
+
 #ifdef DEBUG_QUEUE
 		info(true) << "Remaining action time = " << remainingActionTime;
 #endif
