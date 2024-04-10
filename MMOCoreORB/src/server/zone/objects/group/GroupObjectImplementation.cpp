@@ -149,8 +149,9 @@ void GroupObjectImplementation::addMember(CreatureObject* newMember, bool notify
 				shipID = rootParent->getObjectID();
 		}
 
-		if (notifyClient)
+		if (notifyClient) {
 			sendTo(newMember, true);
+		}
 
 		if (hasSquadLeader()) {
 			addGroupModifiers(newMember);

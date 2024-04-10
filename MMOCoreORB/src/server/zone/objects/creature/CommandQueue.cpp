@@ -137,9 +137,12 @@ int CommandQueue::handleRunningState() {
 
 	Locker guard(&queueMutex);
 
+	bool isPet = creature->isPet();
+
 #ifdef DEBUG_QUEUE
 	info(true) << "CommandQueue - handleRunningState called on " << toString();
 #endif
+
 
 	if (queueVector.size() <= 0)
 		return 0;
@@ -173,9 +176,11 @@ int CommandQueue::handleRunningState() {
 
 	int priority = queueCommand->getDefaultPriority();
 
+
 #ifdef DEBUG_QUEUE
 	info(true) << "Command Name: " << queueCommand->getName() << " with a priority of " << priority;
 #endif
+
 
 	Locker lock(creature);
 
@@ -189,6 +194,7 @@ int CommandQueue::handleRunningState() {
 
 	// Auto attack timer only applies to players
 	if (creature->isPlayerCreature()) {
+
 #ifdef DEBUG_QUEUE
 		info(true) << "Remaining action time = " << remainingActionTime;
 #endif

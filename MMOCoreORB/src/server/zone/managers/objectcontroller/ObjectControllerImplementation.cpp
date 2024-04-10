@@ -83,9 +83,6 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 	}
 
 	float commandTime = queueCommand->getCommandDuration(object, arguments);
-
-	// object->info(true) << "activating queue command -- Name: " << queueCommand->getQueueCommandName() << " arguments = " << arguments.toString() << " Duration: " << commandTime;
-
 	const String& characterAbility = queueCommand->getCharacterAbility();
 
 	if (characterAbility.length() > 1) {
@@ -162,12 +159,10 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 			durationTime = commandTime;
 		}
 
-		// info(true) << "calling onComplete from activateCommand with actionCount: " << actionCount << " Duration Time: " << durationTime;
 
 		queueCommand->onComplete(actionCount, object, durationTime);
 	}
 
-	// info(true) << "activateCommand -- Final Time = " << durationTime;
 
 	return durationTime;
 }
