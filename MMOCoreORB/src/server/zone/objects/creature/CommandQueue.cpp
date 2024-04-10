@@ -137,9 +137,12 @@ int CommandQueue::handleRunningState() {
 
 	Locker guard(&queueMutex);
 
-#ifdef DEBUG_QUEUE
-	info(true) << "CommandQueue - handleRunningState called on " << toString();
-#endif
+	bool isPet = creature->isPet();
+
+//#ifdef DEBUG_QUEUE
+	if (isPet)
+		info(true) << "CommandQueue - handleRunningState called on " << toString();
+//#endif
 
 	if (queueVector.size() <= 0)
 		return 0;
@@ -173,9 +176,10 @@ int CommandQueue::handleRunningState() {
 
 	int priority = queueCommand->getDefaultPriority();
 
-#ifdef DEBUG_QUEUE
-	info(true) << "Command Name: " << queueCommand->getName() << " with a priority of " << priority;
-#endif
+//#ifdef DEBUG_QUEUE
+	if (isPet)
+		info(true) << "Command Name: " << queueCommand->getName() << " with a priority of " << priority;
+//#endif
 
 	Locker lock(creature);
 
@@ -189,9 +193,10 @@ int CommandQueue::handleRunningState() {
 
 	// Auto attack timer only applies to players
 	if (creature->isPlayerCreature()) {
-#ifdef DEBUG_QUEUE
-		info(true) << "Remaining action time = " << remainingActionTime;
-#endif
+//#ifdef DEBUG_QUEUE
+		if (isPet)
+			info(true) << "Remaining action time = " << remainingActionTime;
+//#endif
 
 		CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
 
@@ -202,9 +207,10 @@ int CommandQueue::handleRunningState() {
 				auto autoTime = fabs(autoAttackTime->miliDifference());
 
 				if (autoTime > remainingActionTime) {
-#ifdef DEBUG_QUEUE
-					info(true) << "Auto attack delay is > than remainingActionTime adding to delay = " << autoTime;
-#endif
+//#ifdef DEBUG_QUEUE
+					if (isPet)
+						info(true) << "Auto attack delay is > than remainingActionTime adding to delay = " << autoTime;
+//#endif
 					nextActionTime->addMiliTime(autoTime);
 
 					if (priority == QueueCommand::NORMAL)
@@ -230,6 +236,8 @@ int CommandQueue::handleRunningState() {
 	} catch (const Exception &e) {
 		Logger::console.error() << "CommandQueue ERROR -- Creature: " << creature->getDisplayedName() << " ID: " << creature->getObjectID() << " Command Name: " << queueCommand->getName() << " Issue: " << e.getMessage();
 		e.printStackTrace();
+
+		//E3_ASSERT(queueCommand->getName() != "petgroup");
 	}
 
 #ifdef DEBUG_QUEUE

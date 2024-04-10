@@ -131,12 +131,15 @@ void GroupObjectImplementation::addMember(CreatureObject* newMember, bool notify
 	if (newMember == nullptr)
 		return;
 
-#ifdef DEBUG_GROUPS
+//#ifdef DEBUG_GROUPS
 	info(true) << "Group ID: " << getObjectID() << " Adding Member: " << newMember->getDisplayedName();
-#endif
+//#endif
 
 	// Add the meber to the list
 	groupMembers.add(newMember);
+
+	info(true) << "Member: " << newMember->getDisplayedName() << " added to group list";
+
 
 	uint64 shipID = 0;
 
@@ -149,8 +152,9 @@ void GroupObjectImplementation::addMember(CreatureObject* newMember, bool notify
 				shipID = rootParent->getObjectID();
 		}
 
-		if (notifyClient)
+		if (notifyClient) {
 			sendTo(newMember, true);
+		}
 
 		if (hasSquadLeader()) {
 			addGroupModifiers(newMember);
@@ -159,8 +163,13 @@ void GroupObjectImplementation::addMember(CreatureObject* newMember, bool notify
 		scheduleUpdateNearestMissionForGroup(newMember->getPlanetCRC());
 	}
 
+	info(true) << "Member: " << newMember->getDisplayedName() << " added to ship list";
+
 	// Add to Ship List
 	groupMemberShips.add(newMember->getObjectID(), shipID);
+
+
+	info(true) << "Member: " << newMember->getDisplayedName() << " calculate group level called";
 
 	calculateGroupLevel();
 
@@ -556,7 +565,13 @@ void GroupObjectImplementation::calculateGroupLevel() {
 	groupLevel = 0;
 	factionPetLevel = 0;
 
-	for (int i = 0; i < getGroupSize(); i++) {
+	int groupSize = getGroupSize();
+
+	info(true) << "Calculate Group Level with size: " << groupSize;
+
+	for (int i = 0; i < groupSize; ++i) {
+		info(true) << "Getting Group Member #" << i;
+
 		Reference<CreatureObject*> member = getGroupMember(i);
 
 		if (member->isPet()) {
