@@ -149,8 +149,9 @@ void GroupObjectImplementation::addMember(CreatureObject* newMember, bool notify
 				shipID = rootParent->getObjectID();
 		}
 
-		if (notifyClient)
+		if (notifyClient) {
 			sendTo(newMember, true);
+		}
 
 		if (hasSquadLeader()) {
 			addGroupModifiers(newMember);
@@ -158,6 +159,7 @@ void GroupObjectImplementation::addMember(CreatureObject* newMember, bool notify
 
 		scheduleUpdateNearestMissionForGroup(newMember->getPlanetCRC());
 	}
+
 
 	// Add to Ship List
 	groupMemberShips.add(newMember->getObjectID(), shipID);
@@ -556,7 +558,7 @@ void GroupObjectImplementation::calculateGroupLevel() {
 	groupLevel = 0;
 	factionPetLevel = 0;
 
-	for (int i = 0; i < getGroupSize(); i++) {
+	for (int i = 0; i < getGroupSize(); ++i) {
 		Reference<CreatureObject*> member = getGroupMember(i);
 
 		if (member->isPet()) {
