@@ -41,7 +41,9 @@ public:
 
 		float distance = 16000.f;
 		Coordinate coord(origin->getPositionX(), origin->getPositionZ(), origin->getPositionY());
-		coord.randomizePosition(1000 * pow((float)4, diff - 1));
+
+		float randomForCord = 1000 * pow(4.f, diff - 1);
+		coord.randomizePosition((2.f * randomForCord), randomForCord);
 
 		if (coord.getPositionX() > zone->getMaxX())
 			coord.setPositionX(zone->getMaxX());

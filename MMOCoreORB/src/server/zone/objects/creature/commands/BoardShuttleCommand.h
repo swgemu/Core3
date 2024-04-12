@@ -165,22 +165,22 @@ public:
 		}
 
 		float arrivalPointZ = arrivalPoint->getArrivalPositionZ();
-		Coordinate p;
+		Coordinate pospition;
 
 		// Try and find a spot that is at same Z as arrival point.
 		int tries = MAXIMUM_POSITION_TRIES;
 
 		for (;tries > 0; --tries) {
-			p = findRandomizedArrivalPoint(targetShuttleObject, arrivalZone, arrivalPoint, tries);
+			pospition = findRandomizedArrivalPoint(targetShuttleObject, planetManager, arrivalZone, arrivalPoint, tries);
 
-			if (fabs(p.getPositionZ() - arrivalPointZ) <= 1.5) {
+			if (fabs(pospition.getPositionZ() - arrivalPointZ) < 1.6f) {
 				break;
 			}
 
 #if DEBUG_TRAVEL
-			Logger::console.info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__
+			info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__
 				<< "Destination Z mismatch: "
-				<< arrivalZone->getZoneName() << " (x:" << p.getPositionX() << ", y:" << p.getPositionY() << ", z:" << p.getPositionZ() << ")"
+				<< arrivalZone->getZoneName() << " (x:" << pospition.getPositionX() << ", y:" << pospition.getPositionY() << ", z:" << pospition.getPositionZ() << ")"
 				<< " arrivalPointZ=" << arrivalPointZ
 				<< ", trying " << (tries - 1) << " more times.\033[0m";
 #endif // DEBUG_TRAVEL
@@ -188,32 +188,31 @@ public:
 
 		if (tries <= 0) {
 			creature->error() << "BoardShuttleCommand: Failed to find suitable arrival point at "
-				<< arrivalZone->getZoneName() << " (x:" << p.getPositionX() << ", y:" << p.getPositionY() << ", z:" << p.getPositionZ() << ")"
-				<< " arrivalPointZ=" << arrivalPointZ
+				<< arrivalZone->getZoneName() << " (x: " << pospition.getPositionX() << ", y: " << pospition.getPositionY() << ", z: " << pospition.getPositionZ() << ")"
+				<< " arrivalPointZ = " << arrivalPointZ
 				<< ", using raw arrival point: "
 				<< arrivalZone->getZoneName()
-				<< " (x:" << arrivalPoint->getArrivalPositionX()
-				<< ", y:" << arrivalPoint->getArrivalPositionY()
-				<< ", z:" << arrivalPoint->getArrivalPositionZ() << ")"
-			;
+				<< " (x: " << arrivalPoint->getArrivalPositionX()
+				<< ", y: " << arrivalPoint->getArrivalPositionY()
+				<< ", z: " << arrivalPoint->getArrivalPositionZ() << ")";
 
 			// Default to the raw arrival point
-			p.initializePosition(arrivalPoint->getArrivalPosition());
+			pospition.initializePosition(arrivalPoint->getArrivalPosition());
 		}
 
 #if DEBUG_TRAVEL
 		{
-			float collisionZ = CollisionManager::getWorldFloorCollision(p.getPositionX(), p.getPositionY(), arrivalZone, false);
+			float collisionZ = CollisionManager::getWorldFloorCollision(pospition.getPositionX(), pospition.getPositionY(), arrivalZone, false);
 
-			Logger::console.info(true) << "\033[44;30m" << __FUNCTION__ << "():" << __LINE__
+			info(true) << "\033[44;30m" << __FUNCTION__ << "():" << __LINE__
 				<< " finalArrivalPoint = "
-				<< arrivalZone->getZoneName() << " (x:" << p.getPositionX() << ", y:" << p.getPositionY() << ", z:" << p.getPositionZ() << ")"
+				<< arrivalZone->getZoneName() << " (x:" << pospition.getPositionX() << ", y:" << pospition.getPositionY() << ", z:" << pospition.getPositionZ() << ")"
 				<< " collisionZ=" << collisionZ
 				<< " arrivalPointZ = " << arrivalPointZ << "\033[0m";
 		}
 #endif // DEBUG_TRAVEL
 
-		creature->switchZone(arrivalZone->getZoneName(), p.getPositionX(), p.getPositionZ(), p.getPositionY(), 0);
+		creature->switchZone(arrivalZone->getZoneName(), pospition.getPositionX(), pospition.getPositionZ(), pospition.getPositionY(), 0);
 
 		// Update the nearest mission for group waypoint for both the arrival and departure planet.
 		if (creature->isGrouped()) {
@@ -228,7 +227,7 @@ public:
 			}
 		}
 
-		Locker ticketLocker(ticketObject);
+		Locker ticketLocker(ticketObject, creature);
 
 		//remove the ticket from inventory and destroy it.
 		ticketObject->destroyObjectFromWorld(true);
@@ -269,25 +268,22 @@ private:
 		return tickets;
 	}
 
-	void sendTicketSelectionBoxTo(CreatureObject* creature, SortedVector<ManagedReference<TicketObject*> > tickets) const {
-		//Make sure it's a player before sending it a sui box...
-		if (!creature->isPlayerCreature())
+	void sendTicketSelectionBoxTo(CreatureObject* player, SortedVector<ManagedReference<TicketObject*> > tickets) const {
+		// Make sure it's a player before sending it a sui box...
+		if (player == nullptr || !player->isPlayerCreature())
 			return;
 
-		CreatureObject* player = cast<CreatureObject*>(creature);
-
-		ManagedReference<PlayerObject* > ghost = player->getPlayerObject();
+		auto ghost = player->getPlayerObject();
 
 		if (ghost == nullptr)
 			return;
 
-		if (ghost->hasSuiBoxWindowType(SuiWindowType::TRAVEL_TICKET_SELECTION))
-		{
+		if (ghost->hasSuiBoxWindowType(SuiWindowType::TRAVEL_TICKET_SELECTION)) {
 			ghost->closeSuiWindowType(SuiWindowType::TRAVEL_TICKET_SELECTION);
 		}
 
 		ManagedReference<SuiListBox*> suiListBox = new SuiListBox(player, SuiWindowType::TRAVEL_TICKET_SELECTION);
-		creature->sendSystemMessage("@travel:boarding_ticket_selection"); //You must select a ticket to use before boarding.
+		player->sendSystemMessage("@travel:boarding_ticket_selection"); //You must select a ticket to use before boarding.
 		suiListBox->setPromptTitle("Select Destination");
 		suiListBox->setPromptText("Select Destination");
 
@@ -302,18 +298,18 @@ private:
 		player->sendMessage(suiListBox->generateMessage());
 	}
 
-	Coordinate findRandomizedArrivalPoint(CreatureObject* targetShuttleObject, Zone* arrivalZone, PlanetTravelPoint* arrivalPoint, int tries) const {
-		Coordinate pos;
+	Coordinate findRandomizedArrivalPoint(CreatureObject* targetShuttleObject, PlanetManager* planetManager, Zone* arrivalZone, PlanetTravelPoint* arrivalPoint, int tries) const {
+		Coordinate position;
 
-		pos.initializePosition(arrivalPoint->getArrivalPosition());
+		position.initializePosition(arrivalPoint->getArrivalPosition());
 
-#if DEBUG_TRAVEL
+#ifdef DEBUG_TRAVEL
 		{
-			float collisionZ = CollisionManager::getWorldFloorCollision(pos.getPositionX(), pos.getPositionY(), arrivalZone, false);
+			float collisionZ = CollisionManager::getWorldFloorCollision(position.getPositionX(), position.getPositionY(), arrivalZone, false);
 
-			Logger::console.info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__ << " try#" << tries
+			info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__ << " try#" << tries
 				<< " arrivalPoint = "
-				<< arrivalZone->getZoneName() << " (x:" << pos.getPositionX() << ", y:" << pos.getPositionY() << ", z:" << pos.getPositionZ() << ")"
+				<< arrivalZone->getZoneName() << " (x:" << position.getPositionX() << ", y:" << position.getPositionY() << ", z:" << position.getPositionZ() << ")"
 				" collisionZ = " << collisionZ << "\033[0m";
 		}
 #endif // DEBUG_TRAVEL
@@ -323,38 +319,61 @@ private:
 		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other
 		// For NPC cities, use the generic method
 		if (region == nullptr || region->isClientRegion()) {
-			pos.randomizePosition(3);
-#if DEBUG_TRAVEL
-			Logger::console.info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__ << " try#" << tries
+			// Get a random landing position
+			position.randomizePosition(6.f);
+
+			// Set the Z using world floor check for NPC cities
+			position.setPositionZ(CollisionManager::getWorldFloorCollision(position.getPositionX(), position.getPositionY(), arrivalZone, false));
+
+#ifdef DEBUG_TRAVEL
+			info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__ << " try#" << tries
 				<< " randomized Position = "
-				<< arrivalZone->getZoneName() << " (x:" << pos.getPositionX() << ", y:" << pos.getPositionY() << ", z:" << pos.getPositionZ() << ")"
+				<< arrivalZone->getZoneName() << " (x:" << position.getPositionX() << ", y:" << position.getPositionY() << ", z:" << position.getPositionZ() << ")"
 				"\033[0m";
 #endif // DEBUG_TRAVEL
 		} else {
-
 			// relative orientation of the shuttle
 			float oy = targetShuttleObject->getDirection()->getY();
 			float dirDegrees = (acos(oy) * 180 / M_PI) * 2;
 
-			// the proper location for arrival is along a 36 degree arc centered on the shuttle's facing axis, between 13 and 16 meters out
+			// the proper location for arrival is along a 36 degree arc centered on the shuttle's facing axis 10 to 15 meters from shuttle
 			dirDegrees = dirDegrees - 18 + System::random(36);
+
 			float dirRadians = dirDegrees * M_PI / 180;
-			float distance = 13 + System::random(3);
+			float distance = System::random(15.f - 12.f) + 12.f;
 
 			// update the X & Y positions accordingly
-			pos.setPositionX(pos.getPositionX() + sin(dirRadians) * distance);
-			pos.setPositionY(pos.getPositionY() + cos(dirRadians) * distance);
-#if DEBUG_TRAVEL
-			Logger::console.info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__ << " try#" << tries
-				<< " shuttle offset Position = "
-				<< arrivalZone->getZoneName() << " (x:" << pos.getPositionX() << ", y:" << pos.getPositionY() << ", z:" << pos.getPositionZ() << ")"
-				"\033[0m";
-#endif // DEBUG_TRAVEL
+			position.setPositionX(position.getPositionX() + sin(dirRadians) * distance);
+			position.setPositionY(position.getPositionY() + cos(dirRadians) * distance);
+
+			// For player shuttles we are going to use the shuttles z coordinate for the player
+			position.setPositionZ(targetShuttleObject->getWorldPositionZ());
 		}
 
-		pos.setPositionZ(CollisionManager::getWorldFloorCollision(pos.getPositionX(), pos.getPositionY(), arrivalZone, false));
+#if DEBUG_TRAVEL
+		StringBuffer msg;
 
-		return pos;
+		msg	<< " Zone: " << arrivalZone->getZoneName() << " Region: " << (region != nullptr ? region->getRegionDisplayedName() : "Null Region")
+			<< " Landing Position: (x:" << position.getPositionX() << ", y:" << position.getPositionY() << ", z:" << position.getPositionZ() << ")";
+
+		info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__ << " -- Try #" << tries
+			<< msg.toString() << "\033[0m";
+
+		/*
+		Reference<SceneObject*> movementMarker = targetShuttleObject->getZoneServer()->createObject(STRING_HASHCODE("object/path_waypoint/path_waypoint.iff"), 0);
+
+		if (movementMarker != nullptr) {
+			Locker lock(movementMarker, creature);
+
+			movementMarker->setCustomObjectName(msg.toString(), true);
+
+			movementMarker->initializePosition(position.getPositionX(), position.getPositionZ(), position.getPositionY());
+
+			arrivalZone->transferObject(movementMarker, -1, true);
+		}*/
+#endif // DEBUG_TRAVEL
+
+		return position;
 	}
 };
 
