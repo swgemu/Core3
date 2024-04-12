@@ -132,7 +132,7 @@ RoriRestussScreenPlay = CityScreenPlay:new {
 		{"trainer_imagedesigner", 0, -21.5126, 2.12878, 74.0536, 181, 4635404, ""},
 		{"trainer_imagedesigner", 0, -22.3, 2.1, 73.1, 90, 4635755, ""},
 		{"trainer_imagedesigner", 0, 5255, 80, 5850, 180, 0, ""},
-		{"trainer_marksman", 0, 0, 0, -13, 0, 4635690, ""},
+		{"trainer_marksman", 0, 0,  1.133, -13, 0, 4635690, ""},
 		{"trainer_marksman", 0, 0, 1.13306, -13, 0, 4615374, ""},
 		{"trainer_marksman", 0, 5528, 80.7357, 5641, 91, 0, ""},
 		{"trainer_medic", 0, 13.2069, 0.26, 4.92654, 165, 4635728, ""},
@@ -144,7 +144,7 @@ RoriRestussScreenPlay = CityScreenPlay:new {
 		{"trainer_polearm", 0, 5090, 80, 5759, 180, 0, ""},
 		{"trainer_scout", 0, -12.5744, 1.13306, 4.79458, 180, 4635688, ""},
 		{"trainer_scout", 0, 5371, 80, 5539, 180, 0, ""},
-		{"trainer_tailor", 0, 11, 0, -13, 0, 4635663, ""},
+		{"trainer_tailor", 0, 11, 1.133, -13, 0, 4635663, ""},
 		{"trainer_tailor", 0, 5209, 80, 5729, 180, 0, ""},
 		{"trainer_weaponsmith", 0, 0, 1, -13, 0, 4635775, ""}
 	}

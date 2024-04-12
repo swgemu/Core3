@@ -241,7 +241,7 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 
 		--Guild Hall 1377 3011
 		{"trainer_brawler",0,-11,1.1,-14,0,1153566, ""},
-		{"trainer_marksman",0,0,0,-13,0,1153565, ""},
+		{"trainer_marksman", 0, 0, 1.133, -13, 0, 1153565, ""},
 		{"trainer_scout",0,-13,1.1,4.8,180,1153563, ""},
 		{"brawler",300,-14.01,1.13306,-8.53,120.004,1153566, ""},
 		{"businessman",60,3.32,1.13306,-8.49,228.007,1153565, ""},
