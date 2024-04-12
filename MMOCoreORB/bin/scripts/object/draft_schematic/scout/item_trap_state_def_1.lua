@@ -42,39 +42,35 @@
 
 
 object_draft_schematic_scout_item_trap_state_def_1 = object_draft_schematic_scout_shared_item_trap_state_def_1:new {
+	templateType = DRAFTSCHEMATIC,
 
-   templateType = DRAFTSCHEMATIC,
+	customObjectName = "Stink Bomb",
 
-   customObjectName = "Stink Bomb",
+	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 7,
+	size = 1,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
-   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 7, 
-   size = 1, 
-   factoryCrateType = "object/factory/factory_crate_electronics.iff",
-   
-   xpType = "camp", 
-   xp = 30, 
+	xpType = "camp",
+	xp = 30,
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "clothing_customization", 
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "clothing_customization",
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"trap_housing", "musk"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"bone", "hide"},
-   resourceQuantities = {10, 5},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"trap_housing", "musk"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"bone", "hide"},
+	resourceQuantities = {10, 5},
+	contribution = {100, 100},
 
+	targetTemplate = "object/tangible/scout/trap/trap_state_def_1.iff",
 
-   targetTemplate = "object/tangible/scout/trap/trap_state_def_1.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_scout_item_trap_state_def_1, "object/draft_schematic/scout/item_trap_state_def_1.iff")

@@ -14,72 +14,77 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 void TrapMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-
-	if (!sceneObject->isTangibleObject())
+	if (player == nullptr || !player->isPlayerCreature() || sceneObject == nullptr || !sceneObject->isTangibleObject()) {
 		return;
+	}
 
-	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-	if(tano == nullptr)
+	auto tano = sceneObject->asTangibleObject();
+
+	if (tano == nullptr) {
 		return;
+	}
 
-	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
-	// load trap menu needs add
-	if (player != nullptr){
-		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-		for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
-			ManagedReference<AiAgent*> object = ghost->getActivePet(i);
-			if (object != nullptr) {
-				if(object->isDroidObject()) {
-					DroidObject* droid = cast<DroidObject*>(object.get());
-					if (droid != nullptr) {
-						if (droid->isTrapDroid()) {
-							menuResponse->addRadialMenuItem(25, 3, "@pet/droid_modules:add_trap_to_droid" );
-							return;
-						}
-					}
-				}
-			}
+	TangibleObjectMenuComponent::fillObjectMenuResponse(tano, menuResponse, player);
+
+	// Add droid trap menu load option if active pet is a trap droid
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
+		ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
+
+		if (pet == nullptr || !pet->isDroidObject()) {
+			continue;
 		}
+
+		auto droid = cast<DroidObject*>(pet.get());
+
+		if (droid == nullptr || !droid->isTrapDroid()) {
+			continue;
+		}
+
+		menuResponse->addRadialMenuItem(25, 3, "@pet/droid_modules:add_trap_to_droid");
+		return;
 	}
 }
 
 int TrapMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
-
-	if(!sceneObject->isASubChildOf(player))
+	if (!sceneObject->isASubChildOf(player) || !sceneObject->isTangibleObject()) {
 		return 0;
+	}
 
-	if (!sceneObject->isTangibleObject())
-		return 0;
-
-	if(selectedID == 20) {
+	if (selectedID == 20) {
 		player->sendCommand(STRING_HASHCODE("throwtrap"), String::valueOf(sceneObject->getObjectID()), player->getTargetID());
 
 		return 1;
-	}
-	if (selectedID == 25) {
+	} else if (selectedID == 25) {
 		// call droid loading.
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-		for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
-			ManagedReference<AiAgent*> object = ghost->getActivePet(i);
-			if (object != nullptr) {
-				if(object->isDroidObject()) {
-					DroidObject* droid = cast<DroidObject*>(object.get());
-					if (droid != nullptr) {
-						if (droid->isTrapDroid()) {
-							Locker lock(droid);
-							auto module = droid->getModule("trap_module").castTo<DroidTrapModuleDataComponent*>();
-							if (module != nullptr) {
-								module->handleInsertTrap(player,cast<TangibleObject*>(sceneObject));
-								return 0;
-							}
-						}
-					}
-				}
-			}
-		}
 
+		for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
+			ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
+
+			if (pet == nullptr || !pet->isDroidObject()) {
+				continue;
+			}
+
+			auto droid = cast<DroidObject*>(pet.get());
+
+			if (droid == nullptr || !droid->isTrapDroid()) {
+				continue;
+			}
+
+			Locker lock(droid);
+
+			auto module = droid->getModule("trap_module").castTo<DroidTrapModuleDataComponent*>();
+
+			if (module == nullptr) {
+				continue;
+			}
+
+			module->handleInsertTrap(player, cast<TangibleObject*>(sceneObject));
+			return 0;
+		}
 	}
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }
-
