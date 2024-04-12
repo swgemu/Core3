@@ -290,7 +290,7 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 	}
 
 	richSampleLocation = Coordinate(surveyer->getPositionX(), surveyer->getPositionZ(), surveyer->getPositionY());
-	richSampleLocation.randomizePosition(50);
+	richSampleLocation.randomizePosition(100.f, 50.f);
 
 	// Get previous survey waypoint
 	ManagedReference<WaypointObject*> waypoint = ghost->getSurveyWaypoint();

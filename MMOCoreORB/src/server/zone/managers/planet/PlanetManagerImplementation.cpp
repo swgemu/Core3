@@ -742,14 +742,16 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 
 PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(const Vector3& position, float range) {
 	Reference<PlanetTravelPoint*> planetTravelPoint = nullptr;
+	float rangeSq = range * range;
 
 	for (int i = 0; i < planetTravelPointList->size(); ++i) {
 		const auto& ptp = planetTravelPointList->get(i);
 
-		float dist = position.distanceTo(ptp->getDeparturePosition());
+		float distanceSq = position.squaredDistanceTo2d(ptp->getDeparturePosition());
 
-		if (dist < range) {
-			range = dist;
+		if (distanceSq < rangeSq) {
+			rangeSq = distanceSq;
+
 			planetTravelPoint = ptp;
 		}
 	}
