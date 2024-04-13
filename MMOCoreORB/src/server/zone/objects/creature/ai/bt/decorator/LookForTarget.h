@@ -70,13 +70,16 @@ public:
 		std::shuffle(closeObjects.begin(), closeObjects.end(), *System::getMTRand());
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			ManagedReference<SceneObject*> scene = static_cast<SceneObject*>(closeObjects.get(i));
-			if (isInvalidTarget(scene->asCreatureObject(), agent))
-				continue;
+			ManagedReference<SceneObject*> sceneO = static_cast<SceneObject*>(closeObjects.get(i));
 
-			agent->writeBlackboard("targetProspect", scene);
+			if (isInvalidTarget(sceneO->asCreatureObject(), agent)) {
+				continue;
+			}
+
+			agent->writeBlackboard("targetProspect", sceneO);
 
 			Behavior::Status result = child->doAction(agent);
+
 			if (result != FAILURE) {
 				return result;
 			}
@@ -86,14 +89,17 @@ public:
 	}
 
 	bool isInvalidTarget(CreatureObject* target, AiAgent* agent) const {
-		if (target == nullptr || target == agent || target->getPvpStatusBitmask() == ObjectFlag::NONE)
+		if (target == nullptr || target == agent || (!target->isPet() && target->getPvpStatusBitmask() == ObjectFlag::NONE)) {
 			return true;
+		}
 
-		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvisible() || !target->isAttackableBy(agent))
+		if (target->isDead() || target->isFeigningDeath() || (!agent->isKiller() && target->isIncapacitated()) || target->isInvisible() || !target->isAttackableBy(agent)) {
 			return true;
+		}
 
-		if (target->isVehicleObject() && !target->hasRidingCreature())
+		if (target->isVehicleObject() && !target->hasRidingCreature()) {
 			return true;
+		}
 
 		SceneObject* agentParent = agent->getParent().get();
 		SceneObject* targetParent = target->getParent().get();
@@ -101,8 +107,9 @@ public:
 		uint64 agentParentID = agentParent != nullptr ? agentParent->getObjectID() : 0;
 		uint64 targetParentID = targetParent != nullptr ? targetParent->getObjectID() : 0;
 
-		if (agentParentID != targetParentID && !CollisionManager::checkLineOfSight(agent, target))
+		if (agentParentID != targetParentID && !CollisionManager::checkLineOfSight(agent, target)) {
 			return true;
+		}
 
 		return false;
 	}
