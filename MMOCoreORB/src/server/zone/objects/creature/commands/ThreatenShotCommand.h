@@ -1,16 +1,14 @@
 /*
 				Copyright <SWGEmu>
-		See file COPYING for copying conditions.*/
+		See file COPYING for copying conditions.
+*/
 
 #ifndef THREATENSHOTCOMMAND_H_
 #define THREATENSHOTCOMMAND_H_
 
 class ThreatenShotCommand : public CombatQueueCommand {
 public:
-
-	ThreatenShotCommand(const String& name, ZoneProcessServer* server)
-		: CombatQueueCommand(name, server) {
-
+	ThreatenShotCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -61,8 +59,22 @@ public:
 			if (failCalc < 300) {
 				Locker alock(agent, creature);
 
-				agent->writeBlackboard("fleeRange", 15.f);
-				agent->runAway(creature, 15.f, true);
+				float range = System::random(50 - 25) + 25.f;
+				agent->writeBlackboard("fleeRange", range);
+
+				Time* fleeDelay = agent->getFleeDelay();
+
+				if (fleeDelay != nullptr) {
+					int fleeTime = (range / 2);
+
+					fleeDelay->updateToCurrentTime();
+					fleeDelay->addMiliTime(fleeTime * 1000);
+				}
+
+				agent->clearQueueActions(true);
+				agent->runAway(creature, range, true);
+
+				agent->showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 			}
 		}
 
@@ -70,4 +82,4 @@ public:
 	}
 };
 
-#endif //THREATENSHOTCOMMAND_H_
+#endif // THREATENSHOTCOMMAND_H_

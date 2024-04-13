@@ -67,20 +67,24 @@ public:
 
 				int radius = agent->getAggroRadius();
 
-				if (radius == 0)
+				if (radius == 0) {
 					radius = AiAgent::DEFAULTAGGRORADIUS;
+				}
+
+				float range = 100.f - radius * aggroMod;
+				agent->writeBlackboard("fleeRange", range);
 
 				Time* fleeDelay = agent->getFleeDelay();
 
 				if (fleeDelay != nullptr) {
+					int fleeTime = (range / 2);
+
 					fleeDelay->updateToCurrentTime();
-					fleeDelay->addMiliTime(10 * 1000);
+					fleeDelay->addMiliTime(fleeTime * 1000);
 				}
 
-				float distance = 100.f - radius * aggroMod;
-
-				agent->writeBlackboard("fleeRange", distance);
-				agent->runAway(creature, distance, false);
+				agent->clearQueueActions(true);
+				agent->runAway(creature, range, false);
 
 				agent->showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 			}
