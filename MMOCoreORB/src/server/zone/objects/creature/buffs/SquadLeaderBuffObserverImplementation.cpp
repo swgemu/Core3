@@ -21,12 +21,15 @@ int SquadLeaderBuffObserverImplementation::notifyObserverEvent(unsigned int even
 
 	ManagedReference<SquadLeaderBuff* > strongBuff = buff.get();
 
-	if (strongBuff == nullptr)
+	if (strongBuff == nullptr) {
 		return 1;
+	}
 
 	ManagedReference<CreatureObject*> player = strongBuff->getPlayer();
-	if (player == nullptr)
+
+	if (player == nullptr) {
 		return 1;
+	}
 
 	ManagedReference<CreatureObject*> leader = strongBuff->getLeader();
 
