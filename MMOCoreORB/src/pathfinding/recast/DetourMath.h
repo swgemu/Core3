@@ -12,6 +12,11 @@ Members in this module are wrappers around the standard math library
 // if cmath is included before math.h.
 #include <cmath>
 
+#if defined (__clang__) && (__clang_major__ >= 18)
+	#pragma clang diagnostic push
+	#pragma clang diagnostic ignored "-Wnan-infinity-disabled"
+#endif
+
 inline float dtMathFabsf(float x) { return fabsf(x); }
 inline float dtMathSqrtf(float x) { return sqrtf(x); }
 inline float dtMathFloorf(float x) { return floorf(x); }
@@ -20,5 +25,9 @@ inline float dtMathCosf(float x) { return cosf(x); }
 inline float dtMathSinf(float x) { return sinf(x); }
 inline float dtMathAtan2f(float y, float x) { return atan2f(y, x); }
 inline bool dtMathIsfinite(float x) { return std::isfinite(x); }
+
+#if defined (__clang__) && (__clang_major__ >= 18)
+	#pragma clang diagnostic pop
+#endif
 
 #endif
