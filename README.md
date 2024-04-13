@@ -99,11 +99,11 @@ See [linux/README.md](linux/README.md) for instructions.
   * pthreads
   * Lua 5.3 libraries
   * Zlib libraries
-  * clang 17
+  * clang 18
   * java runtime
   * boost
 
-#### Clang-17
+#### Clang-18
 
 The easiest way to get the clang17 to build with is to use the script provided by the llvm repo:
 
@@ -112,7 +112,7 @@ sudo -i
 apt-get install -y apt-transport-https ca-certificates git gnupg lsb-release moreutils software-properties-common wget
 wget -O /tmp/llvm.sh https://apt.llvm.org/llvm.sh
 chmod +x /tmp/llvm.sh
-/tmp/llvm.sh 17 all
+/tmp/llvm.sh 18 all
 (set +x;cd /usr/bin;for i in ../lib/llvm-*/bin/*; do ln -sfv $i .; done)
 clang --version
 ld.lld --version
