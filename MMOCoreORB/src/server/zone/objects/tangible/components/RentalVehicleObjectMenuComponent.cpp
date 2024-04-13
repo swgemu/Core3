@@ -14,11 +14,15 @@
 #include "server/zone/ZoneServer.h"
 
 void RentalVehicleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
-	if (sceneObject == nullptr || player == nullptr)
+	if (sceneObject == nullptr || player == nullptr) {
 		return;
+	}
 
-	if (sceneObject->isASubChildOf(player))
+	if (sceneObject->isASubChildOf(player)) {
 		menuResponse->addRadialMenuItem(186, 3, "@new_player:vehicle_coupon_menu_call");
+	}
+
+	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 }
 
 int RentalVehicleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
