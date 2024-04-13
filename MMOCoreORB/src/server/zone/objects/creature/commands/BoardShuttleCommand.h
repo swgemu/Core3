@@ -170,21 +170,32 @@ public:
 		// Try and find a spot that is at same Z as arrival point.
 		int tries = MAXIMUM_POSITION_TRIES;
 
+
+#if DEBUG_TRAVEL
+		for (int i = 0; i < 400; i++) {
+			for (;tries > 0; --tries) {
+				position = findRandomizedArrivalPoint(targetShuttleObject, planetManager, arrivalZone, arrivalPoint, tries);
+
+				if (fabs(position.getPositionZ() - arrivalPointZ) < 1.6f) {
+					break;
+				}
+
+				info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__
+					<< "Destination Z mismatch: "
+					<< arrivalZone->getZoneName() << " (x:" << position.getPositionX() << ", y:" << position.getPositionY() << ", z:" << position.getPositionZ() << ")"
+					<< " arrivalPointZ=" << arrivalPointZ
+					<< ", trying " << (tries - 1) << " more times.\033[0m";
+			}
+		}
+#else
 		for (;tries > 0; --tries) {
 			position = findRandomizedArrivalPoint(targetShuttleObject, planetManager, arrivalZone, arrivalPoint, tries);
 
 			if (fabs(position.getPositionZ() - arrivalPointZ) < 1.6f) {
 				break;
 			}
-
-#if DEBUG_TRAVEL
-			info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__
-				<< "Destination Z mismatch: "
-				<< arrivalZone->getZoneName() << " (x:" << position.getPositionX() << ", y:" << position.getPositionY() << ", z:" << position.getPositionZ() << ")"
-				<< " arrivalPointZ=" << arrivalPointZ
-				<< ", trying " << (tries - 1) << " more times.\033[0m";
-#endif // DEBUG_TRAVEL
 		}
+#endif
 
 		if (tries <= 0) {
 			creature->error() << "BoardShuttleCommand: Failed to find suitable arrival point at "
@@ -303,7 +314,7 @@ private:
 
 		position.initializePosition(arrivalPoint->getArrivalPosition());
 
-#ifdef DEBUG_TRAVEL
+#if DEBUG_TRAVEL
 		{
 			float collisionZ = CollisionManager::getWorldFloorCollision(position.getPositionX(), position.getPositionY(), arrivalZone, false);
 
@@ -319,13 +330,15 @@ private:
 		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other
 		// For NPC cities, use the generic method
 		if (region == nullptr || region->isClientRegion()) {
+			float range = arrivalPoint->getLandingRange();
+
 			// Get a random landing position
-			position.randomizePosition(6.f);
+			position.randomizePosition(range);
 
-			// Set the Z using world floor check for NPC cities
-			position.setPositionZ(CollisionManager::getWorldFloorCollision(position.getPositionX(), position.getPositionY(), arrivalZone, false));
+			// Set the Z using travel point for NPC cities
+			position.setPositionZ(arrivalPoint->getArrivalPositionZ());
 
-#ifdef DEBUG_TRAVEL
+#if DEBUG_TRAVEL
 			info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__ << " try#" << tries
 				<< " randomized Position = "
 				<< arrivalZone->getZoneName() << " (x:" << position.getPositionX() << ", y:" << position.getPositionY() << ", z:" << position.getPositionZ() << ")"
@@ -359,18 +372,17 @@ private:
 		info(true) << "\033[45;30m" << __FUNCTION__ << "():" << __LINE__ << " -- Try #" << tries
 			<< msg.toString() << "\033[0m";
 
-		/*
 		Reference<SceneObject*> movementMarker = targetShuttleObject->getZoneServer()->createObject(STRING_HASHCODE("object/path_waypoint/path_waypoint.iff"), 0);
 
 		if (movementMarker != nullptr) {
-			Locker lock(movementMarker, creature);
+			Locker lock(movementMarker);
 
 			movementMarker->setCustomObjectName(msg.toString(), true);
 
 			movementMarker->initializePosition(position.getPositionX(), position.getPositionZ(), position.getPositionY());
 
 			arrivalZone->transferObject(movementMarker, -1, true);
-		}*/
+		}
 #endif // DEBUG_TRAVEL
 
 		return position;

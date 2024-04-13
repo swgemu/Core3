@@ -24,6 +24,7 @@ class PlanetTravelPoint : public Object {
 	std::atomic<Vector3> departureVector{};
 	bool interplanetaryTravelAllowed;
 	bool incomingTravelAllowed;
+	float landingRange;
 
 public:
 	PlanetTravelPoint(const String& zoneName) {
@@ -32,9 +33,10 @@ public:
 		interplanetaryTravelAllowed = false;
 		incomingTravelAllowed = true;
 		shuttleObject = nullptr;
+		landingRange = 6.f;
 	}
 
-	PlanetTravelPoint(const String& zoneName, const String& cityName, Vector3 arrVector, Vector3 departVector, CreatureObject* shuttle) {
+	PlanetTravelPoint(const String& zoneName, const String& cityName, Vector3 arrVector, Vector3 departVector, CreatureObject* shuttle, float range) {
 		pointZone = zoneName;
 		pointName = cityName;
 		arrivalVector = arrVector;
@@ -42,6 +44,7 @@ public:
 		interplanetaryTravelAllowed = false;
 		incomingTravelAllowed = true;
 		shuttleObject = shuttle;
+		landingRange = range;
 	}
 
 	PlanetTravelPoint(const PlanetTravelPoint& ptp) : Object() {
@@ -52,6 +55,7 @@ public:
 		interplanetaryTravelAllowed = ptp.interplanetaryTravelAllowed;
 		incomingTravelAllowed = ptp.incomingTravelAllowed;
 		shuttleObject = ptp.shuttleObject;
+		landingRange = ptp.landingRange;
 	}
 
 	PlanetTravelPoint& operator= (const PlanetTravelPoint& ptp) {
@@ -65,6 +69,7 @@ public:
 		interplanetaryTravelAllowed = ptp.interplanetaryTravelAllowed;
 		incomingTravelAllowed = ptp.incomingTravelAllowed;
 		shuttleObject = ptp.shuttleObject;
+		landingRange = ptp.landingRange;
 
 		return *this;
 	}
@@ -76,10 +81,12 @@ public:
 				luaObject->getFloatField("z"),
 				luaObject->getFloatField("y")
 		);
+
 		departureVector = arrivalVector;
 
 		interplanetaryTravelAllowed = (bool) luaObject->getByteField("interplanetaryTravelAllowed");
 		incomingTravelAllowed = (bool) luaObject->getByteField("incomingTravelAllowed");
+		landingRange = luaObject->getFloatField("landingRange");
 	}
 
 	// Called by the shuttles and transports to set the shuttle object for the nearest travel point
@@ -134,6 +141,10 @@ public:
 		return departureVector.load(std::memory_order_relaxed);
 	}
 
+	inline float getLandingRange() const {
+		return landingRange;
+	}
+
 	/**
 	 * Returns true if this point is has the same zone and name that is passed in.
 	 */
@@ -179,6 +190,7 @@ public:
 			<< "' StarPort = " << interplanetaryTravelAllowed
 			<< " Departure: " << departureVector.load().toString()
 			<< " Arrival: " << arrivalVector.toString()
+			<< " Landing Range: " << landingRange
 			<< " shuttle = ";
 
 			buf << "[oid:" << shuttleObject.getSavedObjectID() << "]";
