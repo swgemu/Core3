@@ -369,6 +369,11 @@ void GroupManager::createGroup(CreatureObject* leader, CreatureObject* creature)
 	creature->updateGroup(group);
 
 	group->updatePvPStatusNearCreature(leader);
+
+	// Check if the leader is a squadleader, add SL buffs
+	if (group->hasSquadLeader()) {
+		group->addGroupModifiers();
+	}
 }
 
 void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObject* creature) {

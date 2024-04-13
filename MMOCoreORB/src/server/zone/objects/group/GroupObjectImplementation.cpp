@@ -195,7 +195,7 @@ void GroupObjectImplementation::removeMember(CreatureObject* memberRemoved) {
 		if (wasLeader)
 			removeGroupModifiers();
 		else
-			removeGroupModifiers(memberRemoved);
+			removeGroupModifiers(memberRemoved, false);
 	}
 
 	// remove member from the list
@@ -390,14 +390,16 @@ void GroupObjectImplementation::disband() {
 
 	bool hasSL = hasSquadLeader();
 	int groupSize = groupMembers.size();
+	uint64 leaderID = getLeaderID();
 
 	for (int i = groupSize - 1; i >= 0; --i) {
 		ManagedReference<CreatureObject*> groupMember = getGroupMember(i);
 
 		groupMembers.remove(i);
 
-		if (groupMember == nullptr)
+		if (groupMember == nullptr) {
 			continue;
+		}
 
 		try {
 			Locker clocker(groupMember, _this.getReferenceUnsafeStaticCast());
@@ -409,8 +411,10 @@ void GroupObjectImplementation::disband() {
 					ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
 				}
 
-				if (hasSL)
-					removeGroupModifiers(groupMember);
+				// Remove SL buffs
+				if (hasSL) {
+					removeGroupModifiers(groupMember, (leaderID == groupMember->getObjectID()));
+				}
 			}
 
 			groupMember->updateGroup(nullptr);
@@ -462,7 +466,7 @@ void GroupObjectImplementation::removeGroupModifiers() {
 		if (!player->isPlayerCreature())
 			continue;
 
-		removeGroupModifiers(player);
+		removeGroupModifiers(player, true);
 	}
 }
 
@@ -498,23 +502,25 @@ void GroupObjectImplementation::addGroupModifiers(CreatureObject* player) {
 	buff->addObservers();
 }
 
-void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player) {
-	if (player == nullptr)
+void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player, bool isLeader) {
+	if (player == nullptr) {
 		return;
+	}
 
-	Reference<CreatureObject*> leader = getLeader();
+	if (!isLeader) {
+		Reference<CreatureObject*> leader = getLeader();
 
-	if (leader == nullptr)
-		return;
-
-	if (!leader->isPlayerCreature())
-		return;
+		if (leader == nullptr || !leader->isPlayerCreature()) {
+			return;
+		}
+	}
 
 	Locker clocker(player, _this.getReferenceUnsafeStaticCast());
 	String action = "squadleader";
 
-	if (player->hasBuff(action.hashCode()))
+	if (player->hasBuff(action.hashCode())) {
 		player->removeBuff(action.hashCode());
+	}
 
 	player->updateSpeedAndAccelerationMods();
 }

@@ -190,7 +190,7 @@ class GroupObject extends SceneObject {
 	private native void addGroupModifiers(CreatureObject player);
 
 	@preLocked
-	private native void removeGroupModifiers(CreatureObject player);
+	private native void removeGroupModifiers(CreatureObject player, boolean isLeader);
 
 	@dirty
 	public native boolean isOtherMemberPlayingMusic(CreatureObject player);
