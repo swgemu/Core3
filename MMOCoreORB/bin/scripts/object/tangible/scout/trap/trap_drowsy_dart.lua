@@ -42,7 +42,6 @@
 
 
 object_tangible_scout_trap_trap_drowsy_dart = object_tangible_scout_trap_shared_trap_drowsy_dart:new {
-
 	templateType = TRAP,
 	objectMenuComponent = "TrapMenuComponent",
 
@@ -52,10 +51,11 @@ object_tangible_scout_trap_trap_drowsy_dart = object_tangible_scout_trap_shared_
 	skillMods = {},
 
 	healthCost = 17,
-	actionCost = 30, 
+	actionCost = 30,
 	mindCost = 17,
 
 	maxRange = 32,
+	areaOfEffect = false,
 
 	poolToDamage = ACTION,
 	minDamage = 20,
