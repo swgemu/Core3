@@ -56,6 +56,7 @@ object_tangible_scout_trap_trap_state_def_1 = object_tangible_scout_trap_shared_
 	mindCost = 17,
 
 	maxRange = 32,
+	areaOfEffect = false,
 
 	poolToDamage = HEALTH,
 	minDamage = 110,

@@ -2,7 +2,7 @@
  * TrapTemplate.h
  *
  *  Created on: Jan 16, 2012
- *      Author: kyle
+ *  Author: kyle
  */
 
 #ifndef TRAPTEMPLATE_H_
@@ -28,6 +28,7 @@ protected:
 	String failMessage;
 	String startSpam;
 	String stopSpam;
+	bool areaOfEffect;
 
 public:
 	TrapTemplate() {
@@ -47,14 +48,15 @@ public:
 		startSpam = "";
 		stopSpam = "";
 		defenseMod = "";
+		areaOfEffect = false;
 	}
 
 	~TrapTemplate() {
-
 	}
 
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
+
 		skillRequired = templateData->getIntField("skillRequired");
 		healthCost = templateData->getIntField("healthCost");
 		actionCost = templateData->getIntField("actionCost");
@@ -71,10 +73,11 @@ public:
 		startSpam = templateData->getStringField("startSpam");
 		stopSpam = templateData->getStringField("stopSpam");
 		defenseMod = templateData->getStringField("defenseMod");
+		areaOfEffect = templateData->getBooleanField("areaOfEffect");
 	}
 
 	int getActionCost() {
-	    return actionCost;
+		return actionCost;
 	}
 
 	int getDuration() {
@@ -82,23 +85,23 @@ public:
 	}
 
 	const String& getAnimation() {
-	    return animation;
+		return animation;
 	}
 
 	const String& getSuccessMessage() {
-	    return successMessage;
+		return successMessage;
 	}
 
 	const String& getFailMessage() {
-	    return failMessage;
+		return failMessage;
 	}
 
 	const String& getStartSpam() {
-	    return startSpam;
+		return startSpam;
 	}
 
 	const String& getStopSpam() {
-	    return stopSpam;
+		return stopSpam;
 	}
 
 	const String& getDefenseMod() {
@@ -106,23 +109,23 @@ public:
 	}
 
 	int getHealthCost() {
-	    return healthCost;
+		return healthCost;
 	}
 
 	float getMaxDamage() {
-	    return maxDamage;
+		return maxDamage;
 	}
 
 	float getMaxRange() {
-	    return maxRange;
+		return maxRange;
 	}
 
 	float getMinDamage() {
-	    return minDamage;
+		return minDamage;
 	}
 
 	int getMindCost() {
-	    return mindCost;
+		return mindCost;
 	}
 
 	int getSkillRequired() {
@@ -134,7 +137,11 @@ public:
 	}
 
 	uint64 getState() {
-	    return state;
+		return state;
+	}
+
+	bool isAoeTrap() {
+		return areaOfEffect;
 	}
 };
 
