@@ -117,11 +117,7 @@ public:
 				return GENERALERROR;
 			}
 
-			creature->addPendingTask("throwtrap", trapTask, 2500);
-
-			Locker clocker(trap, creature);
-
-			trap->decreaseUseCount();
+			creature->addPendingTask("throwtrap", trapTask, 2000);
 
 			return SUCCESS;
 		} catch (Exception& e) {
