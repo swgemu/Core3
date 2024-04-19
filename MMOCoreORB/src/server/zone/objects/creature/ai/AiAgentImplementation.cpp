@@ -615,17 +615,19 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 }
 
 void AiAgentImplementation::respawn(Zone* zone, int level) {
-	if (getZoneUnsafe() != nullptr)
+	// Fail to respawn if they are in the zone already
+	if (getZoneUnsafe() != nullptr) {
 		return;
+	}
 
 #ifdef DEBUG_AI_WEAPONS
-	info(true) << "respawn called for - " << getDisplayedName() << " ID: " << getObjectID();
+	auto inventory = getInventory();
+
+	info(true) << "respawn called for - " << getDisplayedName() << " ID: " << getObjectID() << " Inventory Size: " << inventory->getContainerObjectsSize();
 #endif
 
+	// Clear the agents blackboard
 	blackboard.removeAll();
-
-	// Reload all of the agents info
-	reloadTemplate();
 
 	// Check to see if the agent is a creature and rolls to spawn as a baby (lairs and dynamic spawns only)
 	ManagedReference<SceneObject*> home = homeObject.get();
@@ -679,11 +681,20 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 			Creature* creature = cast<Creature*>(asAiAgent());
 
 			if (creature != nullptr) {
+				// Destroy the weapons that were re-created when the template was reloaded at the top of this function
+				destroyAllWeapons();
+
+				// Now reload the template for baby stats
 				creature->loadTemplateDataForBaby(npcTemplate);
 
-				// info(true) << getDisplayedName() << " ID: " << getObjectID() << " Loc: " << getWorldPosition().toString() << " SPAWNED AS BABY";
+				// info(true) << getDisplayedName() << " ID: " << getObjectID() << " Loc: " << getWorldPosition().toString() << " SPAWNED AS BABY" << " Inventory Size: " << inventory->getContainerObjectsSize();
 			}
 		}
+	}
+
+	// Reload all of the agents info babies are handled separately, also creates weapons for the agent
+	if (!(getCreatureBitmask() & ObjectFlag::BABY)) {
+		reloadTemplate();
 	}
 
 	clearRunningChain();
@@ -721,6 +732,8 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	currentFoundPath = nullptr;
 
 	respawnCounter++;
+
+	// info(true) << "END respawn called for - " << getDisplayedName() << " ID: " << getObjectID() << " Inventory Size: " << inventory->getContainerObjectsSize();
 
 	activateAiBehavior();
 }
@@ -1165,58 +1178,66 @@ void AiAgentImplementation::destroyAllWeapons() {
 	AiAgent* thisAgent = asAiAgent();
 
 	// Set current weapon null, all weapons will be destroyed below
-	currentWeapon = nullptr;
+	setCurrentWeapon(nullptr);
 
-	ManagedReference<WeaponObject*> defaultWeap = getDefaultWeapon();
+	auto defaultWeap = getDefaultWeapon();
 
 	if (defaultWeap != nullptr) {
 		Locker dlock(defaultWeap, thisAgent);
+
 		defaultWeap->destroyObjectFromWorld(true);
 		setDefaultWeapon(nullptr);
 
 #ifdef DEBUG_AI_WEAPONS
 		msg << "Default Weapon - Ref Count: " << defaultWeap->getReferenceCount() << endl;
 #endif
+
+		defaultWeap = nullptr;
 	}
 
-	ManagedReference<WeaponObject*> primaryWeap = getPrimaryWeapon();
+	auto primaryWeap = getPrimaryWeapon();
 
 	if (primaryWeap != nullptr) {
 		Locker plocker(primaryWeap, thisAgent);
 
 		primaryWeap->destroyObjectFromWorld(true);
-
-		primaryWeapon = nullptr;
+		setPrimaryWeapon(nullptr);
 
 #ifdef DEBUG_AI_WEAPONS
 		msg << "Primary Weapon - Ref Count: " << primaryWeap->getReferenceCount() << endl;
 #endif
+
+		primaryWeap = nullptr;
 	}
 
-	ManagedReference<WeaponObject*> secondaryWeap = getSecondaryWeapon();
+	auto secondaryWeap = getSecondaryWeapon();
 
 	if (secondaryWeap != nullptr) {
 		Locker slock(secondaryWeap, thisAgent);
-		secondaryWeap->destroyObjectFromWorld(true);
 
-		secondaryWeapon = nullptr;
+		secondaryWeap->destroyObjectFromWorld(true);
+		setSecondaryWeapon(nullptr);
 
 #ifdef DEBUG_AI_WEAPONS
 		msg << "Secondary Weapon - Ref Count: " << secondaryWeap->getReferenceCount() << endl;
 #endif
+
+		secondaryWeap = nullptr;
 	}
 
-	ManagedReference<WeaponObject*> thrownWeap = getThrownWeapon();
+	auto thrownWeap = getThrownWeapon();
 
 	if (thrownWeap != nullptr) {
 		Locker tlock(thrownWeap, thisAgent);
-		thrownWeap->destroyObjectFromWorld(true);
 
-		thrownWeapon = nullptr;
+		thrownWeap->destroyObjectFromWorld(true);
+		setThrownWeapon(nullptr);
 
 #ifdef DEBUG_AI_WEAPONS
 		msg << "Thrown Weapon - Ref Count: " << thrownWeap->getReferenceCount() << endl;
 #endif
+
+		thrownWeap = nullptr;
 	}
 
 #ifdef DEBUG_AI_WEAPONS
@@ -4550,13 +4571,15 @@ void AiAgentImplementation::handleException(const Exception& ex, const String& c
 }
 
 void AiAgentImplementation::addObjectFlag(unsigned int flag) {
-	if (!(creatureBitmask & flag))
+	if (!(creatureBitmask & flag)) {
 		creatureBitmask |= flag;
+	}
 }
 
 void AiAgentImplementation::removeObjectFlag(unsigned int flag) {
-	if (creatureBitmask & flag)
+	if (creatureBitmask & flag) {
 		creatureBitmask &= ~flag;
+	}
 }
 
 void AiAgentImplementation::loadCreatureBitmask() {

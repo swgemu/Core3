@@ -102,10 +102,60 @@ public:
 							msg << "Current total Patrol Points: " << objectAgent->getPatrolPointSize() << endl;
 							msg << "In Navmesh: " << (objectAgent->isInNavMesh() ? "True" : "False") << endl;
 
-							msg << "Current Weapon: " << (objectAgent->getCurrentWeapon() != nullptr ? "True" : "False") << endl;
-							msg << "Default Weapon: " << (objectAgent->getDefaultWeapon() != nullptr ? "True" : "False") << endl;
-							msg << "Primary Weapon: " << (objectAgent->getPrimaryWeapon() != nullptr ? "True" : "False") << endl;
-							msg << "Secondary Weapon: " << (objectAgent->getSecondaryWeapon() != nullptr ? "True" : "False") << endl;
+							msg << "\n\n";
+
+							msg << "Current Weapon: ";
+
+							if (objectAgent->getCurrentWeapon() != nullptr) {
+								msg << objectAgent->getCurrentWeapon()->getObjectTemplate()->getTemplateFileName() << " ID: " << objectAgent->getCurrentWeapon()->getObjectID() << endl;
+							} else {
+								msg << "nullptr" << endl;
+							}
+
+							msg << "Default Weapon: ";
+
+							if (objectAgent->getDefaultWeapon() != nullptr) {
+								msg << objectAgent->getDefaultWeapon()->getObjectTemplate()->getTemplateFileName() << " ID: " << objectAgent->getDefaultWeapon()->getObjectID() << endl;
+							} else {
+								msg << "nullptr" << endl;
+							}
+
+							msg << "Primary Weapon: ";
+
+							if (objectAgent->getPrimaryWeapon() != nullptr) {
+								msg << objectAgent->getPrimaryWeapon()->getObjectTemplate()->getTemplateFileName() << " ID: " << objectAgent->getPrimaryWeapon()->getObjectID() << endl;
+							} else {
+								msg << "nullptr" << endl;
+							}
+
+							msg << "Secondary Weapon: ";
+
+							if (objectAgent->getSecondaryWeapon() != nullptr) {
+								msg << objectAgent->getSecondaryWeapon()->getObjectTemplate()->getTemplateFileName() << " ID: " << objectAgent->getSecondaryWeapon()->getObjectID() << endl;
+							} else {
+								msg << "nullptr" << endl;
+							}
+
+							// Space output
+							msg << "\n";
+
+							// Inventory Contents
+							auto inventory = objectAgent->getInventory();
+
+							if (inventory != nullptr) {
+								msg << "Agent Inventory size: " << inventory->getContainerObjectsSize() << endl;
+
+								for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+									auto invObject = inventory->getContainerObject(i);
+
+									if (invObject != nullptr) {
+										msg << "Inventory - #" << i << " Item: " << invObject->getObjectNameStringIdName() << " -- " << invObject->getObjectTemplate()->getTemplateFileName() << " ID: " << invObject->getObjectID() << endl;
+									}
+								}
+							}
+
+							// Space output
+							msg << "\n";
 
 							// Home Object - Lairs
 							uint64 homeID = 0;
@@ -118,6 +168,9 @@ public:
 							}
 
 							msg << "Home Object: " << homeName << " ID: " << homeID << endl;
+
+							// Space output
+							msg << "\n";
 						}
 					} else if (creoObject->isPlayerCreature()) {
 						auto playerManager = server->getPlayerManager();

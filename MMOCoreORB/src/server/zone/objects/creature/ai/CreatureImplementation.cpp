@@ -411,7 +411,26 @@ void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateD
 
 	clearPvpStatusBit(ObjectFlag::AGGRESSIVE, false);
 	clearPvpStatusBit(ObjectFlag::ENEMY, false);
-	setCreatureBitmask(getCreatureBitmask() + ObjectFlag::BABY);
+	addObjectFlag(ObjectFlag::BABY);
+
+	/*
+	auto inventory = getInventory();
+	int invSize  = inventory->getContainerObjectsSize();
+
+	if (invSize > 1) {
+		StringBuffer msg;
+		msg << "\033[32m" << getDisplayedName() << " ID: " << getObjectID() << " Inventory size: " << inventory->getContainerObjectsSize() << endl;
+
+
+		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+			auto object = inventory->getContainerObject(i);
+
+			msg << getDisplayedName() << " ID: " << getObjectID() << "Inventory - #" << i << " Item: " << object->getObjectNameStringIdName() << " -- " << object->getObjectTemplate()->getTemplateFileName() << " ID: " << object->getObjectID() << endl;
+		}
+
+		info(true) << msg.toString() << "\033[0m";
+	}
+	*/
 }
 
 void CreatureImplementation::setPetLevel(int newLevel) {
