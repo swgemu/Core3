@@ -20,7 +20,6 @@ attackDefault = {
 	{id="2812006626",	name="RandomSelector",	pid="4024177786"},
 	{id="169743063",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
 	{id="1932903383",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
-	{id="2322819263",	name="WriteBlackboard",	pid="2812006626",	args={key="attackType", val=DEFAULT}},
 	{id="1163120514",	name="EraseBlackboard",	pid="2812006626",	args={param="attackType"}},
 	{id="3280863871",	name="Sequence",	pid="4024177786"},
 	{id="3604417668",	name="Sequence",	pid="3280863871"},
