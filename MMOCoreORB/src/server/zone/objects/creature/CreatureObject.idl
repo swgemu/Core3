@@ -757,6 +757,21 @@ class CreatureObject extends TangibleObject {
 		return creatureBuffs.getModifierByName(skillMod);
 	}
 
+	@read
+	public boolean hasBuff(unsigned int buffcrc) {
+		return creatureBuffs.hasBuff(buffcrc);
+	}
+
+	@read
+	public boolean hasSpice() {
+		return creatureBuffs.hasSpice();
+	}
+
+	@read
+	public boolean hasTrapBuff() {
+		return creatureBuffs.hasTrapBuff();
+	}
+
 	@preLocked
 	public abstract int addDotState(CreatureObject attacker,
 				unsigned long dotType,
@@ -793,11 +808,6 @@ class CreatureObject extends TangibleObject {
 	@local
 	public DamageOverTimeList getDamageOverTimeList() {
 		return damageOverTimeList;
-	}
-
-	@read
-	public boolean hasBuff(unsigned int buffcrc) {
-		return creatureBuffs.hasBuff(buffcrc);
 	}
 
 	@preLocked
@@ -1386,11 +1396,6 @@ class CreatureObject extends TangibleObject {
 	@local
 	public CooldownTimerMap getCooldownTimerMap() {
 		return cooldownTimerMap;
-	}
-
-	@read
-	public boolean hasSpice() {
-		return creatureBuffs.hasSpice();
 	}
 
 	public void updateLastSuccessfulCombatAction() {
