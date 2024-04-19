@@ -344,4 +344,9 @@ class Buff extends ManagedObject implements Logger {
 	public abstract boolean removeOnClearBuffs() {
 		return true;
 	}
+
+	@read
+	public abstract boolean isTrapBuff() {
+		return false;
+	}
 }

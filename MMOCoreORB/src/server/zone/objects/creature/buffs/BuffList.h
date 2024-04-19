@@ -83,6 +83,20 @@ public:
 	inline bool hasSpice() const {
 		return spiceActive;
 	}
+
+	bool hasTrapBuff() const {
+		Locker guard(&mutex);
+
+		for (int i = 0; i < buffList.size(); i++) {
+			Buff* temp = buffList.get(i);
+
+			if (temp->isTrapBuff()) {
+				return true;
+			}
+		}
+
+		return false;
+	}
 };
 
 

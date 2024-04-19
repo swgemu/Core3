@@ -1,0 +1,23 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying condition.
+*/
+
+package server.zone.objects.creature.buffs;
+
+import server.zone.objects.creature.buffs.StateBuff;
+import system.lang.Long;
+include server.zone.objects.creature.buffs.BuffType;
+import server.zone.objects.creature.CreatureObject;
+
+@json
+class TrapBuff extends StateBuff {
+	public TrapBuff(CreatureObject creo, unsigned long buffState, int duration) {
+		super(creo, Long.hashCode(buffState), duration, BuffType.TRAP);
+	}
+
+	@read
+	public boolean isTrapBuff() {
+		return true;
+	}
+}

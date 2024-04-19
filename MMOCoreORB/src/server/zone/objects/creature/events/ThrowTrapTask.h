@@ -15,6 +15,7 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "templates/tangible/TrapTemplate.h"
+#include "server/zone/objects/creature/buffs/TrapBuff.h"
 
 namespace server {
 namespace zone {
@@ -140,7 +141,9 @@ public:
 					continue;
 				}
 
-				if (!isAoeTrap && objectCreature->getObjectID() != targetID) {
+				bool isPrimaryTarget = objectCreature->getObjectID() == targetID;
+
+				if (!isAoeTrap && !isPrimaryTarget) {
 					continue;
 				}
 
@@ -175,20 +178,32 @@ public:
 				int roll = System::random(100);
 				bool hit = roll < hitChance;
 
-				auto action = new CombatAction(attacker, targetAgent, crc, hit, 0L);
+				// Broadcast combat action for main target
+				if (isPrimaryTarget) {
+					auto action = new CombatAction(attacker, targetAgent, crc, hit, 0L);
 
-				if (action != nullptr) {
-					attacker->broadcastMessage(action, true, false);
+					if (action != nullptr) {
+						attacker->broadcastMessage(action, true, false);
+					}
 				}
 
 				if (hit) {
-					if (!hasHit) {
-						hasHit = true;
+					// Calculate and apply damage
+					float damage = System::random(maxDamage - minDamage) + minDamage;
+					targetAgent->inflictDamage(attacker, hamPool, damage, true, true);
+
+					// Check the creature does not have the state
+					if ((state != 0 && targetAgent->hasState(state)) || targetAgent->hasBuff(crc)) {
+						continue;
 					}
 
-					ManagedReference<Buff*> buff = new Buff(targetAgent, crc, debuffDuration, BuffType::STATE);
+					ManagedReference<TrapBuff*> buff = new TrapBuff(targetAgent, crc, debuffDuration);
 
 					if (buff != nullptr) {
+						if (isPrimaryTarget) {
+							hasHit = true;
+						}
+
 						Locker locker(buff, attacker);
 
 						if (state != 0) {
@@ -210,15 +225,10 @@ public:
 
 						// Add buff to the target
 						targetAgent->addBuff(buff);
-					}
 
-					// Calculate and apply damage
-					float damage = System::random(maxDamage - minDamage) + minDamage;
-
-					targetAgent->inflictDamage(attacker, hamPool, damage, true, true);
-
-					if (!targetAgent->isEventMob()) {
-						totalXP += targetAgent->getLevel() * 15;
+						if (!targetAgent->isEventMob()) {
+							totalXP += targetAgent->getLevel() * 15;
+						}
 					}
 				}
 			}
@@ -232,11 +242,11 @@ public:
 
 		if (hasHit) {
 			message.setStringId("trap/trap", successMsg);
-
-			message.setTT(target->getDisplayedName());
 		} else if (!trapData->getFailMessage().isEmpty()) {
 			message.setStringId("trap/trap", trapData->getFailMessage());
 		}
+
+		message.setTT(target->getDisplayedName());
 
 		// Send trap message to the attacking player
 		attacker->sendSystemMessage(message);
