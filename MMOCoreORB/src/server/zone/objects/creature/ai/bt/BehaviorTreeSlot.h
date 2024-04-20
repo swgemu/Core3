@@ -99,8 +99,7 @@ using namespace sys::io;
 using namespace server::zone::objects::creature::ai::bt;
 
 template<>
-class TypeInfo<BehaviorTreeSlot> : public TypeInfoAtomicUnsignedInteger<BehaviorTreeSlot>
-{
+class TypeInfo<BehaviorTreeSlot> : public TypeInfoAtomicUnsignedInteger<BehaviorTreeSlot> {
 public:
 	static bool toBinaryStream(BehaviorTreeSlot *address, ObjectOutputStream *stream) {
 		stream->writeInt(static_cast<uint32>(*address));

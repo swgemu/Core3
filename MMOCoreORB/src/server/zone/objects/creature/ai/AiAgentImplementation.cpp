@@ -3464,13 +3464,16 @@ int AiAgentImplementation::setDestination() {
 	return getPatrolPointSize();
 }
 
-void AiAgentImplementation::setWait(int wait) {
-	cooldownTimerMap->updateToCurrentAndAddMili("waitTimer", wait);
+void AiAgentImplementation::setWait(uint64 wait) {
+	cooldownTimerMap->updateToCurrentTime("waitTimer");
+	cooldownTimerMap->addMiliTime("waitTimer", wait);
 }
 
 void AiAgentImplementation::stopWaiting() {
-	if (peekBlackboard("isWaiting"))
+	if (peekBlackboard("isWaiting")) {
 		eraseBlackboard("isWaiting");
+	}
+
 	cooldownTimerMap->updateToCurrentTime("waitTimer");
 }
 

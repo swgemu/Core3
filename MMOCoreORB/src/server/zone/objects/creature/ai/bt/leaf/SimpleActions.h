@@ -372,13 +372,11 @@ public:
 
 class Wait : public Behavior {
 public:
-	Wait(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args), duration(-1) {
+	Wait(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args), duration(-1) {
 		parseArgs(args);
 	}
 
-	Wait(const Wait& a)
-			: Behavior(a), duration(a.duration) {
+	Wait(const Wait& a) : Behavior(a), duration(a.duration) {
 	}
 
 	Wait& operator=(const Wait& a) {
@@ -390,7 +388,7 @@ public:
 	}
 
 	void parseArgs(const LuaObject& args) {
-		duration = (int) (getArg<float>()(args, "duration") * 1000);
+		duration = (int)(getArg<float>()(args, "duration") * 1000);
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
@@ -401,11 +399,12 @@ public:
 				return RUNNING;
 			} else {
 				agent->eraseBlackboard("isWaiting");
+
 				return SUCCESS;
 			}
 		}
 
-		agent->setWait(duration);
+		agent->setWait((uint64) abs(duration));
 		agent->writeBlackboard("isWaiting", true);
 
 		return RUNNING;

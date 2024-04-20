@@ -353,7 +353,7 @@ int LuaAiAgent::setWait(lua_State* L) {
 
 	Locker locker(realObject);
 
-	realObject->setWait(wait);
+	realObject->setWait((uint64) abs(wait));
 
 	return 0;
 }

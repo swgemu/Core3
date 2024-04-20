@@ -17,13 +17,11 @@ protected:
 	BehaviorTreeSlot slotID;
 
 public:
-	TreeSocket(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args), slotID(BehaviorTreeSlot::NONE) {
+	TreeSocket(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args), slotID(BehaviorTreeSlot::NONE) {
 		parseArgs(args);
 	}
 
-	TreeSocket(const TreeSocket& b)
-			: Behavior(b), slotID(b.slotID) {
+	TreeSocket(const TreeSocket& b) : Behavior(b), slotID(b.slotID) {
 	}
 
 	TreeSocket& operator=(const TreeSocket& b) {
@@ -64,11 +62,11 @@ public:
 	}
 };
 
-}
-}
-}
-}
-}
-}
+} // namespace bt
+} // namespace ai
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
 
 #endif // TREE_SOCKET_H_
