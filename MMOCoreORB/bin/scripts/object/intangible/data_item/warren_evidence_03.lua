@@ -42,7 +42,7 @@
 
 
 object_intangible_data_item_warren_evidence_03 = object_intangible_data_item_shared_warren_evidence_03:new {
-
+	containerComponent = "WarrenDiskContainerComponent",
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_warren_evidence_03, "object/intangible/data_item/warren_evidence_03.iff")

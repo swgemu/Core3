@@ -132,11 +132,8 @@ function WarrenEvidenceMenuComponent:handleObjectMenuSelect(pSceneObject, pPlaye
 	local pItem = giveItem(pDatapad, evidenceTemplate, -1)
 
 	if (pItem ~= nil) then
-		SceneObject(pItem):setContainerInheritPermissionsFromParent(false)
-		SceneObject(pItem):clearContainerDefaultDenyPermission(MOVECONTAINER)
-		SceneObject(pItem):setContainerDefaultAllowPermission(MOVECONTAINER)
-
 		local sui = SuiMessageBox.new("Warren", "noCallback")
+
 		sui.setTitle("@sui:swg")
 		sui.setPrompt("@theme_park/warren/warren_system_messages:download_complete")
 		sui.setTargetNetworkId(SceneObject(pSceneObject):getObjectID())

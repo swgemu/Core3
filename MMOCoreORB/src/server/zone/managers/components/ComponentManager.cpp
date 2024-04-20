@@ -30,6 +30,7 @@
 #include "server/zone/objects/installation/components/MinefieldZoneComponent.h"
 #include "server/zone/objects/installation/components/MinefieldContainerComponent.h"
 #include "server/zone/objects/installation/components/ScannerZoneComponent.h"
+#include "server/zone/objects/intangible/components/WarrenDiskContainerComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/objects/player/components/PlayerSpaceZoneComponent.h"
@@ -360,6 +361,9 @@ ComponentManager::ComponentManager() {
 	dataObjectFactory.registerObject<DroidTrapModuleDataComponent>("DroidTrapModuleDataComponent");
 	dataObjectFactory.registerObject<DroidHarvestModuleDataComponent>("DroidHarvestModuleDataComponent");
 	dataObjectFactory.registerObject<DroidPersonalityModuleDataComponent>("DroidPersonalityModuleDataComponent");
+
+	// Warren Disks
+	components.put("WarrenDiskContainerComponent", new WarrenDiskContainerComponent());
 
 	//JtL component
 	components.put("StarshipTextureKitObjectMenuComponent", new StarshipTextureKitObjectMenuComponent());

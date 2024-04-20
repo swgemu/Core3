@@ -18,26 +18,31 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		if (!checkStateMask(creature))
+		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
+		}
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(creature)) {
 			return INVALIDLOCOMOTION;
+		}
 
-		// creature->info(true) << "ServerDestroyObjectCommand - arguments: " << arguments.toString();
+		if (!creature->isPlayerCreature()) {
+			return GENERALERROR;
+		}
+
+		// creature->info(true) << "ServerDestroyObjectCommand - Target: " << target << " Args: " << arguments.toString();
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == nullptr)
+		if (object == nullptr) {
 			return GENERALERROR;
-
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
+		}
 
 		Locker crossLocker(object, creature);
 
-		if (object->canBeDestroyed(creature) != 0)
+		if (object->canBeDestroyed(creature) != 0) {
 			return GENERALERROR;
+		}
 
 		// need to add checks.. inventory, datapad, bank, waypoint
 
@@ -53,11 +58,13 @@ public:
 
 		ManagedReference<SceneObject*> objectParent = object->getParent().get();
 
-		if (!object->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
+		if (!object->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER)) {
 			return GENERALERROR;
+		}
 
-		if (objectParent != nullptr && !objectParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
+		if (objectParent != nullptr && !objectParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT)) {
 			return GENERALERROR;
+		}
 
 		for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
 			const Vector<String>* descriptors = object->getArrangementDescriptor(i);

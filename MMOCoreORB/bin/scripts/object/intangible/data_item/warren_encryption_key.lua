@@ -42,7 +42,7 @@
 
 
 object_intangible_data_item_warren_encryption_key = object_intangible_data_item_shared_warren_encryption_key:new {
-
+	containerComponent = "WarrenDiskContainerComponent",
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_warren_encryption_key, "object/intangible/data_item/warren_encryption_key.iff")
