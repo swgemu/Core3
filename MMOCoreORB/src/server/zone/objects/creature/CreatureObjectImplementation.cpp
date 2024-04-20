@@ -2249,17 +2249,17 @@ void CreatureObjectImplementation::notifyInsert(TreeEntry* obj) {
 	if (linkedCreature != nullptr && linkedCreature->getParent() == asCreatureObject() && linkedCreature->getObjectID() != obj->getObjectID()) {
 #if DEBUG_COV
 		if (entryObject->isPlayerCreature())
-			info(true) << "linkedCreature: " << linkedCreature->getDisplayedName() << " -- proxy notifyInsert for - " << entryObject->getDisplayedName() << " ID: " << obj->getObjectID();
+			info(true) << "linkedCreature: " << linkedCreature->getDisplayedName() << " -- proxy notifyInsert for - " << entryObject->getDisplayedName() << " ID: " << entryObject->getObjectID() << " Template: " << entryObject->getObjectTemplate()->getAppearanceFilename();
 #endif // DEBUG_COV
 
 		if (linkedCreature->getCloseObjects() != nullptr) {
 			linkedCreature->addInRangeObject(entryObject);
-
-			entryObject->sendTo(linkedCreature, true, false);
 		}
 
 		if (entryObject->getCloseObjects() != nullptr) {
 			entryObject->addInRangeObject(linkedCreature);
+		} else {
+			entryObject->notifyInsert(linkedCreature);
 		}
 	}
 }
