@@ -14,37 +14,40 @@
 
 #ifdef DEBUG_AI
 namespace {
-	static Logger logger("AiAgent::Behavior", Logger::INFO);
-	bool getAiAgentDebugVerbose() {
-		static Mutex mutext;
-		Locker guard(&mutext);
-		static bool cachedValue = false;
-		static int cachedConfigVersion = 0;
-		int currentConfigVersion = ConfigManager::instance()->getConfigVersion();
+static Logger logger("AiAgent::Behavior", Logger::INFO);
+bool getAiAgentDebugVerbose() {
+	static Mutex mutext;
+	Locker guard(&mutext);
+	static bool cachedValue = false;
+	static int cachedConfigVersion = 0;
+	int currentConfigVersion = ConfigManager::instance()->getConfigVersion();
 
-		if (currentConfigVersion > cachedConfigVersion) {
-			cachedConfigVersion = currentConfigVersion;
-			cachedValue = ConfigManager::instance()->getBool("Core3.AiAgent.Verbose", false);
-			logger.info(true) << "Core3.AiAgent.Verbose=" << cachedValue;
-		}
-
-		return cachedValue;
+	if (currentConfigVersion > cachedConfigVersion) {
+		cachedConfigVersion = currentConfigVersion;
+		cachedValue = ConfigManager::instance()->getBool("Core3.AiAgent.Verbose", false);
+		logger.info(true) << "Core3.AiAgent.Verbose=" << cachedValue;
 	}
+
+	return cachedValue;
 }
+} // namespace
 #endif // DEBUG_AI
 
 using namespace server::zone::objects::creature::ai::bt;
 
-Behavior::Behavior(const String& className, const uint32 id, const LuaObject& args) : Object(), className(className), id(id), parent() {}
+Behavior::Behavior(const String& className, const uint32 id, const LuaObject& args) : Object(), className(className), id(id), parent() {
+}
 
 bool Behavior::checkConditions(AiAgent* agent) const {
-	if (agent == nullptr || (!agent->isPet() && (agent->isDead() || agent->isIncapacitated())))
+	if (agent == nullptr || (!agent->isPet() && (agent->isDead() || agent->isIncapacitated()))) {
 		return false;
+	}
 
-	Zone* zone = agent->getZone();
+	auto zone = agent->getZone();
 
-	if (zone == nullptr)
+	if (zone == nullptr) {
 		return false;
+	}
 
 	ZoneServer* zoneServer = agent->getZoneServer();
 

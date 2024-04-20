@@ -349,7 +349,7 @@ int LuaAiAgent::stopWaiting(lua_State* L) {
 }
 
 int LuaAiAgent::setWait(lua_State* L) {
-	int wait = (int) lua_tonumber(L, -1);
+	uint64 wait = (uint64) lua_tonumber(L, -1);
 
 	Locker locker(realObject);
 
