@@ -1325,6 +1325,38 @@ float CombatManager::applyDamageModifiers(CreatureObject* attacker, WeaponObject
 	if (damageDivisor != 0)
 		damage /= damageDivisor;
 
+	// States Damage Reduction
+	float intimidateMod = attacker->getSkillMod("private_damage_divisor_intimidate");
+	float stunMod = attacker->getSkillMod("private_damage_divisor_stun");
+	float preDamage = damage;
+
+#ifdef DEBUG_STATE_REDUCTION
+
+	info(true) << "\n\nTotal Before Damage: " <<  damage << " Intimidate Mod: " << intimidateMod << " Stun Mod: " << stunMod;
+#endif // DEBUG_STATE_REDUCTION
+
+	if (intimidateMod > 0) {
+		damage -= (preDamage * (intimidateMod / 100.f));
+	}
+
+#ifdef DEBUG_STATE_REDUCTION
+	StringBuffer intimMsg;
+	intimMsg << (((preDamage * (intimidateMod / 100.f)) / preDamage) * 100.f);
+
+	info(true) << "Damage After Intimidate: " << damage << " Intimidate Reduction: " << ((intimidateMod > 0) ? intimMsg.toString() : "0") << "%";
+#endif // DEBUG_STATE_REDUCTION
+
+	if (stunMod > 0) {
+		damage -= (preDamage * (stunMod / 100.f));
+	}
+
+#ifdef DEBUG_STATE_REDUCTION
+	StringBuffer stunMsg;
+	stunMsg << (((preDamage * (stunMod / 100.f)) / preDamage) * 100.f);
+
+	info(true) << "Damage After Stun: " << damage << " Stun Reduction: " << ((stunMod > 0) ? stunMsg.toString() : "0") << "%\n\n";
+#endif // DEBUG_STATE_REDUCTION
+
 	return damage;
 }
 
