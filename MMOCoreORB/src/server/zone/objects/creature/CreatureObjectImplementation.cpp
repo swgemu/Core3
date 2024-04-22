@@ -2456,8 +2456,10 @@ void CreatureObjectImplementation::feignDeath() {
 	observerTypes.add(ObserverEventType::COMBATCOMMANDENQUEUED);
 
 	buff->init(&observerTypes);
+
 	buff->setSkillModifier("private_damage_divisor", 4);
 	buff->setSkillModifier("private_damage_multiplier", 5);
+
 	creo->addBuff(buff);
 
 	// forcePeace is a scheduledLambda in the CombatManager so should delay until combat action is complete
@@ -2574,8 +2576,7 @@ void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 
 		Locker blocker(multBuff);
 
-		multBuff->setSkillModifier("private_damage_divisor", 5);
-		multBuff->setSkillModifier("private_damage_multiplier", 4);
+		multBuff->setSkillModifier("private_damage_divisor_stun", 20);
 
 		addBuff(multBuff);
 	}
@@ -2630,7 +2631,7 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 
 		Locker blocker(multBuff);
 
-		multBuff->setSkillModifier("private_damage_divisor", 2);
+		multBuff->setSkillModifier("private_damage_divisor_intimidate", 50);
 
 		addBuff(multBuff);
 	}
