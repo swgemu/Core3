@@ -8,25 +8,30 @@
 class EventPerkDataComponent : public DataObjectComponent {
 protected:
 	ManagedReference<EventPerkDeed*> deed;
+	ManagedReference<CreatureObject*> actor;
 
 public:
 	EventPerkDataComponent() {
-
+		deed = nullptr;
+		actor = nullptr;
 	}
 
 	virtual ~EventPerkDataComponent() {
-
+		deed = nullptr;
+		actor = nullptr;
 	}
 
 	void writeJSON(nlohmann::json& j) const {
 		DataObjectComponent::writeJSON(j);
 
 		SERIALIZE_JSON_MEMBER(deed);
+		SERIALIZE_JSON_MEMBER(actor);
 	}
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		int _currentOffset = stream->getOffset();
 		stream->writeShort(0);
+
 		int _varCount = writeObjectMembers(stream);
 		stream->writeShort(_currentOffset, _varCount);
 
@@ -46,6 +51,14 @@ public:
 		_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 		stream->writeInt(_offset, _totalSize);
 
+		_name = "actor";
+		_name.toBinaryStream(stream);
+		_offset = stream->getOffset();
+		stream->writeInt(0);
+		TypeInfo< ManagedReference<CreatureObject* > >::toBinaryStream(&actor, stream);
+		_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+		stream->writeInt(_offset, _totalSize);
+
 		return 1;
 	}
 
@@ -54,7 +67,12 @@ public:
 			TypeInfo<ManagedReference<EventPerkDeed*> >::parseFromBinaryStream(&deed, stream);
 
 			return true;
+		} else if (name == "actor") {
+			TypeInfo<ManagedReference<CreatureObject*> >::parseFromBinaryStream(&actor, stream);
+
+			return true;
 		}
+
 		return false;
 	}
 
@@ -64,12 +82,15 @@ public:
 		for (int i = 0; i < _varCount; ++i) {
 			String _name;
 			_name.parseFromBinaryStream(stream);
+
 			uint32 _varSize = stream->readInt();
 			int _currentOffset = stream->getOffset();
-			if(readObjectMember(stream, _name)) {
-			}
+
+			readObjectMember(stream, _name);
+
 			stream->setOffset(_currentOffset + _varSize);
 		}
+
 		return true;
 	}
 
@@ -77,8 +98,16 @@ public:
 		deed = de;
 	}
 
+	void setActor(CreatureObject* npcActor) {
+		actor = npcActor;
+	}
+
 	EventPerkDeed* getDeed() {
 		return deed;
+	}
+
+	CreatureObject* getActor() {
+		return actor;
 	}
 
 	bool isEventPerkData() {
