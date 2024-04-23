@@ -1496,7 +1496,7 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@local
 	public native void setContainerComponent(final string name);
 
-	public native void setZoneComponent(final string name);
+	public native void setGroundZoneComponent(final string name);
 	public native void setSpaceZoneComponent(final string name);
 
 	public void setForceNoTrade(boolean newForceNoTrade) {

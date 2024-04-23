@@ -15,7 +15,6 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/player/FactionStatus.h"
-#include "server/zone/managers/radial/RadialOptions.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 

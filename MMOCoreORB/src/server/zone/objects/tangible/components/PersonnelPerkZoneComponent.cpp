@@ -31,9 +31,13 @@ void PersonnelPerkZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zo
 
 	EventPerkDeed* deed = data->getDeed();
 
-	if (deed == nullptr)
+	if (deed == nullptr) {
 		return;
+	}
 
-	if (deed->getPerkType() == EventPerkDeedTemplate::HONORGUARD || deed->getPerkType() == EventPerkDeedTemplate::RECRUITER)
+	const int perkType = deed->getPerkType();
+
+	if (perkType == EventPerkDeedTemplate::HONORGUARD || perkType == EventPerkDeedTemplate::RECRUITER) {
 		deed->parseChildObjects(sceneObject);
+	}
 }
