@@ -15,6 +15,8 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/vendor/VendorManager.h"
+#include "server/zone/objects/player/sessions/sui/NpcActorSuiCallback.h"
 
 void EventPerkDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
@@ -200,6 +202,19 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
+		auto thisEventDeed = _this.getReferenceUnsafeStaticCast();
+
+		// Handle UI for NPC Actor, where player will select their chosen NPC type
+		if (perkType == EventPerkDeedTemplate::NPCACTOR) {
+			info(true) << "NPC Actor Type Placement Initiated";
+
+			// Call placement UI
+			createNpcActorPerk(player);
+
+			return DeedImplementation::handleObjectMenuSelect(player, selectedID);
+		}
+
+		// All other event perk deeds spawn their objects
 		ManagedReference<TangibleObject*> object = generatedObject.get();
 
 		if (object == nullptr) {
@@ -213,7 +228,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			generatedObject = object;
 		}
 
-		Locker locker(object);
+		Locker locker(object, thisEventDeed);
 
 		EventPerkDataComponent* data = cast<EventPerkDataComponent*>(object->getDataObjectComponent()->get());
 
@@ -223,10 +238,9 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		data->setDeed(_this.getReferenceUnsafeStaticCast());
+		data->setDeed(thisEventDeed);
 
 		object->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
-
 		object->setDirection(Math::deg2rad(player->getDirectionAngle()));
 
 		zone->transferObject(object, -1, true);
@@ -339,6 +353,92 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 			}
 		}
 	}
+}
+
+void EventPerkDeedImplementation::createNpcActorPerk(CreatureObject* player) {
+	if (player == nullptr) {
+		return;
+	}
+
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	auto vendorNode = VendorManager::instance()->getRootNode();
+
+	if (vendorNode == nullptr) {
+		return;
+	}
+
+	// NPC Node
+	vendorNode = vendorNode->getNode(2);
+
+	if (vendorNode == nullptr) {
+		return;
+	}
+
+	ManagedReference<SuiListBox*> actorSelection = new SuiListBox(player, SuiWindowType::STRUCTURE_CREATE_VENDOR);
+
+	if (actorSelection == nullptr) {
+		return;
+	}
+
+	actorSelection->setCallback(new NpcActorSuiCallback(zoneServer));
+
+	actorSelection->setPromptTitle("@event_perk_npc_actor:race_type_t"); // "Select Race"
+	actorSelection->setPromptText("@event_perk_npc_actor:race_type_d"); // "Select the race you would like for the actor."
+
+	actorSelection->setCancelButton(true, "@cancel");
+	actorSelection->setUsingObject(_this.getReferenceUnsafeStaticCast());
+
+	// Add the selectable actor types
+	int totalNodes = vendorNode->getChildNodeSize();
+	StringBuffer templateMsg;
+
+	for (int i = 0; i < totalNodes; i++) {
+		auto nextNode = vendorNode->getNode(i);
+
+		if (nextNode == nullptr) {
+			continue;
+		}
+
+		StringBuffer templateMsg;
+		int totalSubNodes = nextNode->getChildNodeSize();
+
+		if (totalSubNodes > 0) {
+			for (int j = 0; j < totalSubNodes; j++) {
+				auto childNode = nextNode->getNode(j);
+
+				if (childNode == nullptr) {
+					continue;
+				}
+
+				String npcName = nextNode->getTemplatePath();
+				templateMsg << "object/mobile/vendor/" << npcName << childNode->getTemplatePath();
+
+				String templateName = templateMsg.toString();
+
+				actorSelection->addMenuItem("@player_structure:race_" + npcName.replaceAll("_", ""), templateName.hashCode());
+
+				info(true) << templateName;
+
+				templateMsg.deleteAll();
+			}
+		} else {
+			templateMsg << "object/mobile/vendor/" << nextNode->getTemplatePath();
+			String templateName = templateMsg.toString();
+
+			actorSelection->addMenuItem(templateName, templateName.hashCode());
+
+			info(true) << templateName;
+
+			templateMsg.deleteAll();
+		}
+	}
+
+	player->sendMessage(actorSelection->generateMessage());
 }
 
 void EventPerkDeedImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
