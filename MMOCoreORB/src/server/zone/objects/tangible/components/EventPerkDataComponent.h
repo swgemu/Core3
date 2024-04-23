@@ -11,11 +11,9 @@ protected:
 
 public:
 	EventPerkDataComponent() {
-
 	}
 
 	virtual ~EventPerkDataComponent() {
-
 	}
 
 	void writeJSON(nlohmann::json& j) const {
@@ -43,6 +41,8 @@ public:
 		_offset = stream->getOffset();
 		stream->writeInt(0);
 		TypeInfo<ManagedReference<EventPerkDeed*> >::toBinaryStream(&deed, stream);
+
+
 		_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 		stream->writeInt(_offset, _totalSize);
 
@@ -64,12 +64,16 @@ public:
 		for (int i = 0; i < _varCount; ++i) {
 			String _name;
 			_name.parseFromBinaryStream(stream);
+
 			uint32 _varSize = stream->readInt();
 			int _currentOffset = stream->getOffset();
-			if(readObjectMember(stream, _name)) {
+
+			if (readObjectMember(stream, _name)) {
 			}
+
 			stream->setOffset(_currentOffset + _varSize);
 		}
+
 		return true;
 	}
 

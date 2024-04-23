@@ -65,7 +65,7 @@ public:
 		Reference<CreatureObject*> creature = new CreatureObject();
 
 		creature->setContainerComponent("ContainerComponent");
-		creature->setZoneComponent("GroundZoneComponent");
+		creature->setGroundZoneComponent("GroundZoneComponent");
 		creature->_setObjectID(nextObjectId.increment());
 		creature->initializeContainerObjectsMap();
 

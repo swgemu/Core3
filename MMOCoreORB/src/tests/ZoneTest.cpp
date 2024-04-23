@@ -44,7 +44,7 @@ public:
 
 	void setDefaultComponents(SceneObject* object) {
 		object->setContainerComponent("ContainerComponent");
-		object->setZoneComponent("GroundZoneComponent");
+		object->setGroundZoneComponent("GroundZoneComponent");
 	}
 
 	Reference<SceneObject*> createSceneObject() {

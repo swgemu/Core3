@@ -9,6 +9,8 @@ void PersonnelPerkZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zo
 	if (zne == nullptr)
 		return;
 
+	info(true) << "PersonnelPerk Inserted to zone - " << sceneObject->getDisplayedName();
+
 	if (sceneObject->getServerObjectCRC() == 0x740E97C5 || sceneObject->getServerObjectCRC() == 0xCA8B8505) {
 		CreatureManager* creatureManager = zne->getCreatureManager();
 		CreatureObject* recruiter = nullptr;
