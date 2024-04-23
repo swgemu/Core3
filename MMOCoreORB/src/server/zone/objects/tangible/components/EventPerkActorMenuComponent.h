@@ -1,12 +1,18 @@
+/*
+* EventPerkActorMenuComponent.h
+*
+* 2024-04-23
+* By: Hakry
+*
+*/
 
-#ifndef EVENTPERKMENUCOMPONENT_H_
-#define EVENTPERKMENUCOMPONENT_H_
+#ifndef EVENTPERKACTORMENUCOMPONENT_H_
+#define EVENTPERKACTORMENUCOMPONENT_H_
 
-#include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
+#include "server/zone/objects/tangible/components/EventPerkMenuComponent.h"
 
-class EventPerkMenuComponent : public TangibleObjectMenuComponent {
+class EventPerkActorMenuComponent : public EventPerkMenuComponent {
 public:
-
 	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
@@ -25,7 +31,6 @@ public:
 	 */
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const;
 
-	virtual void destroyEventPerk(SceneObject* sceneObject) const;
 };
 
-#endif /* EVENTPERKMENUCOMPONENT_H_ */
+#endif /* EVENTPERKACTORMENUCOMPONENT_H_ */

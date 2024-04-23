@@ -20,21 +20,28 @@ void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 		Reference<SceneObject*> owner = Core::getObjectBroker()->lookUp(objectID).castTo<SceneObject*>();
 
 		if (owner == nullptr) {
-			player->sendSystemMessage("Error: perk parent object is nullptr.");
+			error() << "Event Perk Owner is nullptr, destroying EventPerk ID: " << sceneObject->getObjectID();
+			destroyEventPerk(sceneObject);
+
 			return;
 		}
+
 		data = cast<EventPerkDataComponent*>(owner->getDataObjectComponent()->get());
 	}
 
 	if (data == nullptr) {
-		player->sendSystemMessage("Error: no dataObjectComponent.");
+		error() << "Event Perk EventPerkDataComponent is nullptr, destroying EventPerk ID: " << sceneObject->getObjectID();
+		destroyEventPerk(sceneObject);
+
 		return;
 	}
 
 	EventPerkDeed* deed = data->getDeed();
 
 	if (deed == nullptr) {
-		player->sendSystemMessage("Error: deed is nullptr.");
+		error() << "Event Perk Deed is nullptr, destroying EventPerk ID: " << sceneObject->getObjectID();
+		destroyEventPerk(sceneObject);
+
 		return;
 	}
 
@@ -67,14 +74,18 @@ int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 	}
 
 	if (data == nullptr) {
-		player->sendSystemMessage("Error: no dataObjectComponent.");
+		error() << "Event Perk EventPerkDataComponent is nullptr, destroying EventPerk ID: " << sceneObject->getObjectID();
+		destroyEventPerk(sceneObject);
+
 		return 1;
 	}
 
 	EventPerkDeed* deed = data->getDeed();
 
 	if (deed == nullptr) {
-		player->sendSystemMessage("Error: deed is nullptr.");
+		error() << "Event Perk Deed is nullptr, destroying EventPerk ID: " << sceneObject->getObjectID();
+		destroyEventPerk(sceneObject);
+
 		return 1;
 	}
 
@@ -140,4 +151,9 @@ int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 	}
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
+}
+
+void EventPerkMenuComponent::destroyEventPerk(SceneObject* sceneObject) const {
+	sceneObject->destroyObjectFromWorld(true);
+	sceneObject->destroyObjectFromDatabase(true);
 }

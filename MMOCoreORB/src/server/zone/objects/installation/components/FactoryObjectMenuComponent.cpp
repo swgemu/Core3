@@ -10,7 +10,6 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
-#include "server/zone/managers/radial/RadialOptions.h"
 
 void FactoryObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isFactory())

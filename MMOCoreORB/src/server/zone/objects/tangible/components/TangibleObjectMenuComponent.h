@@ -9,6 +9,7 @@
 #define TANGIBLEOBJECTMENUCOMPONENT_H_
 
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
+#include "server/zone/managers/radial/RadialOptions.h"
 
 class TangibleObjectMenuComponent : public ObjectMenuComponent {
 public:
