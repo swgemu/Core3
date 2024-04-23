@@ -15,6 +15,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/objects/player/sessions/NpcActorCreationSession.h"
 
 void EventPerkDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
@@ -57,23 +58,25 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		Zone* zone = player->getZone();
+		auto zone = player->getZone();
 
 		if (zone == nullptr) {
 			return 1;
 		}
 
 		PlanetManager* planetManager = zone->getPlanetManager();
+
 		if (planetManager == nullptr) {
 			return 1;
 		}
 
 		EventPerkDeedTemplate* deedTemplate = cast<EventPerkDeedTemplate*>(getObjectTemplate());
+
 		if (deedTemplate == nullptr) {
 			return 1;
 		}
 
-		if (zone->getZoneName().contains("space_")) {
+		if (zone->isSpaceZone()) {
 			player->sendSystemMessage("@event_perk:not_in_space"); // You may not deploy a Rental in space. Return to the ground first.
 			return 1;
 		}
@@ -105,101 +108,118 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		ManagedReference<CityRegion*> city = player->getCityRegion().get();
+		auto ghost = player->getPlayerObject();
+		bool bypassChecks = (ghost != nullptr && ghost->isPrivileged());
 
-		if (city != nullptr) {
-			if (city->isClientRegion()) {
-				player->sendSystemMessage("@event_perk:not_in_municipal_zone"); // You may not place a Rental in a municipal zone.
-				return 1;
-			}
+		// Skip checks if prop is being placed by a privileged player
+		if (!bypassChecks) {
+			ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
-			if (city->isZoningEnabled() && !city->hasZoningRights(player->getObjectID())) {
-				player->sendSystemMessage("@event_perk:no_zoning_rights"); // You must have zoning rights to place a Rental in this city.
-				return 1;
-			}
-		}
+			if (city != nullptr) {
+				if (city->isClientRegion()) {
+					player->sendSystemMessage("@event_perk:not_in_municipal_zone"); // You may not place a Rental in a municipal zone.
+					return 1;
+				}
 
-		int x = player->getWorldPositionX();
-		int y = player->getWorldPositionY();
-		int nearbyPerks = 0;
-
-		TerrainManager* terrainManager = planetManager->getTerrainManager();
-		if ( terrainManager == nullptr || terrainManager->getHighestHeightDifference(x - 10, y - 10, x + 10, y + 10) > 15.0) {
-			player->sendSystemMessage("@event_perk:bad_area"); // This rental could not be deployed due to the surrounding terrain. Please move to another area and try again.
-			return 1;
-		}
-
-		CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
-
-		if (vec == nullptr) {
-#ifdef COV_DEBUG
-			error("Player has nullptr closeObjectsVector in EventPerkDeedImplementation::handleObjectMenuSelect");
-#endif
-			return 1;
-		}
-
-		SortedVector<TreeEntry*> closeObjects;
-		vec->safeCopyTo(closeObjects);
-
-		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
-
-			if (obj == nullptr) {
-				continue;
-			}
-
-			SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
-			if (objectTemplate == nullptr) {
-				continue;
-			}
-
-			float radius = objectTemplate->getNoBuildRadius();
-
-			if (obj->isLairObject() && player->isInRange(obj, radius)) {
-				player->sendSystemMessage("@event_perk:too_close_lair"); // You cannot place a Rental this close to a lair.
-				return 1;
-			}
-
-			if (obj->isCampStructure() && player->isInRange(obj, radius)) {
-				player->sendSystemMessage("@event_perk:too_close_camp"); // You cannot place a Rental this close to a camp.
-				return 1;
-			}
-
-			if (radius > 0 && player->isInRange(obj, radius)) {
-				player->sendSystemMessage("@event_perk:too_close_something"); // You are too close to an object to deploy your Rental here. Move away from it.
-				return 1;
-			}
-
-			if (objectTemplate->isSharedStructureObjectTemplate()) {
-				if (StructureManager::instance()->isInStructureFootprint(cast<StructureObject*>(obj), x, y, 0)) {
-					player->sendSystemMessage("@event_perk:too_close_building"); // You may not place a Rental this close to a building.
+				if (city->isZoningEnabled() && !city->hasZoningRights(player->getObjectID())) {
+					player->sendSystemMessage("@event_perk:no_zoning_rights"); // You must have zoning rights to place a Rental in this city.
 					return 1;
 				}
 			}
 
-			if (obj->isEventPerk() && player->isInRange(obj, 32) && ++nearbyPerks > 2) {
-				player->sendSystemMessage("@event_perk:too_many_perks"); // There are too many Rentals already deployed in this area. Please move to another location.
+			int x = player->getWorldPositionX();
+			int y = player->getWorldPositionY();
+			int nearbyPerks = 0;
+
+			TerrainManager* terrainManager = planetManager->getTerrainManager();
+			if ( terrainManager == nullptr || terrainManager->getHighestHeightDifference(x - 10, y - 10, x + 10, y + 10) > 15.0) {
+				player->sendSystemMessage("@event_perk:bad_area"); // This rental could not be deployed due to the surrounding terrain. Please move to another area and try again.
 				return 1;
 			}
-		}
 
-		SortedVector<ManagedReference<ActiveArea* > > activeAreas;
-		zone->getInRangeActiveAreas(x, 0, y, &activeAreas, true);
+			CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
 
-		for (int i = 0; i < activeAreas.size(); ++i) {
-			ActiveArea* area = activeAreas.get(i);
+			if (vec == nullptr) {
+#ifdef COV_DEBUG
+				error("Player has nullptr closeObjectsVector in EventPerkDeedImplementation::handleObjectMenuSelect");
+#endif
+				return 1;
+			}
 
-			if (area->isNoBuildZone()) {
+			SortedVector<TreeEntry*> closeObjects;
+			vec->safeCopyTo(closeObjects);
+
+			for (int i = 0; i < closeObjects.size(); ++i) {
+				SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
+
+				if (obj == nullptr) {
+					continue;
+				}
+
+				SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
+				if (objectTemplate == nullptr) {
+					continue;
+				}
+
+				float radius = objectTemplate->getNoBuildRadius();
+
+				if (obj->isLairObject() && player->isInRange(obj, radius)) {
+					player->sendSystemMessage("@event_perk:too_close_lair"); // You cannot place a Rental this close to a lair.
+					return 1;
+				}
+
+				if (obj->isCampStructure() && player->isInRange(obj, radius)) {
+					player->sendSystemMessage("@event_perk:too_close_camp"); // You cannot place a Rental this close to a camp.
+					return 1;
+				}
+
+				if (radius > 0 && player->isInRange(obj, radius)) {
+					player->sendSystemMessage("@event_perk:too_close_something"); // You are too close to an object to deploy your Rental here. Move away from it.
+					return 1;
+				}
+
+				if (objectTemplate->isSharedStructureObjectTemplate()) {
+					if (StructureManager::instance()->isInStructureFootprint(cast<StructureObject*>(obj), x, y, 0)) {
+						player->sendSystemMessage("@event_perk:too_close_building"); // You may not place a Rental this close to a building.
+						return 1;
+					}
+				}
+
+				if (obj->isEventPerk() && player->isInRange(obj, 32) && ++nearbyPerks > 2) {
+					player->sendSystemMessage("@event_perk:too_many_perks"); // There are too many Rentals already deployed in this area. Please move to another location.
+					return 1;
+				}
+			}
+
+			SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+			zone->getInRangeActiveAreas(x, 0, y, &activeAreas, true);
+
+			for (int i = 0; i < activeAreas.size(); ++i) {
+				ActiveArea* area = activeAreas.get(i);
+
+				if (area->isNoBuildZone()) {
+					player->sendSystemMessage("@event_perk:too_close_something"); // You are too close to an object to deploy your Rental here. Move away from it.
+					return 1;
+				}
+			}
+
+			if (planetManager->isInRangeWithPoi(x, y, 150)) {
 				player->sendSystemMessage("@event_perk:too_close_something"); // You are too close to an object to deploy your Rental here. Move away from it.
 				return 1;
 			}
 		}
 
-		if (planetManager->isInRangeWithPoi(x, y, 150)) {
-			player->sendSystemMessage("@event_perk:too_close_something"); // You are too close to an object to deploy your Rental here. Move away from it.
-			return 1;
+		// Handle UI for NPC Actor, where player will select their chosen NPC type
+		if (perkType == EventPerkDeedTemplate::NPCACTOR) {
+			info(true) << "NPC Actor Type Placement Initiated";
+
+			// Call placement UI
+			createNpcActorPerk(player);
+
+			return DeedImplementation::handleObjectMenuSelect(player, selectedID);
 		}
 
+		// All other event perk deeds spawn their objects
 		ManagedReference<TangibleObject*> object = generatedObject.get();
 
 		if (object == nullptr) {
@@ -213,7 +233,9 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			generatedObject = object;
 		}
 
-		Locker locker(object);
+		auto thisEventDeed = _this.getReferenceUnsafeStaticCast();
+
+		Locker locker(object, thisEventDeed);
 
 		EventPerkDataComponent* data = cast<EventPerkDataComponent*>(object->getDataObjectComponent()->get());
 
@@ -223,10 +245,9 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		data->setDeed(_this.getReferenceUnsafeStaticCast());
+		data->setDeed(thisEventDeed);
 
 		object->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
-
 		object->setDirection(Math::deg2rad(player->getDirectionAngle()));
 
 		zone->transferObject(object, -1, true);
@@ -306,6 +327,7 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 				ZoneProcessServer* zps = parent->getZoneProcessServer();
 				NameManager* nameManager = zps->getNameManager();
 				String name = "";
+
 				if (child->getServerObjectCRC() == 0xA87E2035) { // object/mobile/cll8_binary_load_lifter.iff
 					name = "a CLL-8 binary load lifter";
 				} else if (child->getServerObjectCRC() == 0xF1DED7AD) { // object/mobile/eg6_power_droid.iff
@@ -320,6 +342,17 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 					name = nameManager->makeDroidName(NameManagerType::R5);
 				} else if (child->getServerObjectCRC() == 0x905BB76C) { // object/mobile/ra7_bug_droid.iff
 					name = nameManager->makeDroidName(NameManagerType::DROID_RA7);
+				} else if (perkType == EventPerkDeedTemplate::NPCACTOR) {
+					String currentName = child->getCustomObjectName().toString();
+
+					if (currentName.isEmpty() || !currentName.contains("(an NPC actor)")) {
+						name = currentName + " (an NPC actor)"; // ("title_append", " (an NPC actor)");
+					} else {
+						name = currentName;
+					}
+
+					// Reset the menu component
+					child->setObjectMenuComponent("EventPerkActorMenuComponent");
 				} else {
 					name = nameManager->makeCreatureName();
 
@@ -341,6 +374,29 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 	}
 }
 
+void EventPerkDeedImplementation::createNpcActorPerk(CreatureObject* player) {
+	if (player == nullptr) {
+		return;
+	}
+
+	auto zone = player->getZone();
+
+	if (zone == nullptr) {
+		return;
+	}
+
+	String zoneName = zone->getZoneName();
+
+	//Create Session
+	ManagedReference<NpcActorCreationSession*> session = new NpcActorCreationSession(player, _this.getReferenceUnsafeStaticCast(), zoneName);
+
+	if (session == nullptr) {
+		return;
+	}
+
+	session->initializeSession();
+}
+
 void EventPerkDeedImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	ManagedReference<CreatureObject*> strongOwner = owner.get();
 
@@ -360,51 +416,73 @@ void EventPerkDeedImplementation::destroyObjectFromDatabase(bool destroyContaine
 void EventPerkDeedImplementation::activateRemoveEvent(bool immediate) {
 	uint64 timeToLive = EventPerkDeedTemplate::TIME_TO_LIVE;
 
-	if (generated && generatedTimeToLive > 0)
+	if (generated && generatedTimeToLive > 0) {
 		timeToLive = generatedTimeToLive;
+	}
 
 	if (removeEventPerkDeedTask == nullptr) {
 		removeEventPerkDeedTask = new RemoveEventPerkDeedTask(_this.getReferenceUnsafeStaticCast());
 
-		Time currentTime;
-		uint64 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
+		if (removeEventPerkDeedTask == nullptr) {
+			error() << "RemoveEventPerkDeedTask is null for Event Perk Deed -- " << getDisplayedName() << " ID: " << getObjectID();
+			return;
+		}
 
-		if (timeDelta >= timeToLive || immediate) {
+		// Get our current time in miliseconds
+		Time currentTime;
+		uint64 currentMili = currentTime.getMiliTime();
+
+		// Expiration mili is the sum of the purchase time and the time to live
+		uint64 expirationMili = purchaseTime.getMiliTime() + timeToLive;
+
+		// Expiration time is in the past
+		if (currentMili >= expirationMili || immediate) {
 			removeEventPerkDeedTask->execute();
 		} else {
-			removeEventPerkDeedTask->schedule(timeToLive - timeDelta);
+			// Expiration time is in the future, schedule the task
+			uint64 timeDelta = expirationMili - currentMili;
+
+			removeEventPerkDeedTask->schedule(timeDelta);
 		}
 	} else if (immediate) {
 		if (removeEventPerkDeedTask->isScheduled()) {
-			removeEventPerkDeedTask->reschedule(1);
-		} else {
-			removeEventPerkDeedTask->execute();
+			removeEventPerkDeedTask->cancel();
 		}
+
+		removeEventPerkDeedTask->schedule(1000);
 	}
 }
 
 String EventPerkDeedImplementation::getDurationString() {
-	Time currentTime;
-	uint32 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
-	uint32 timestamp = (EventPerkDeedTemplate::TIME_TO_LIVE - timeDelta) / 1000;
+	uint64 timeToLive = EventPerkDeedTemplate::TIME_TO_LIVE;
 
-	if( timestamp == 0 ) {
+	// Get our current time in miliseconds
+	Time currentTime;
+	uint64 currentMili = currentTime.getMiliTime();
+
+	// Expiration mili is the sum of the purchase time and the time to live
+	uint64 expirationMili = purchaseTime.getMiliTime() + timeToLive;
+
+	if (currentMili >= expirationMili) {
 		return "";
 	}
 
-	String abbrvs[3] = { "seconds", "minutes", "hours" };
+	uint32 timeDelta = expirationMili - currentMili;
+	uint32 timestamp = timeDelta / 1000;
 
-	int intervals[3] = { 1, 60, 3600 };
-	int values[3] = { 0, 0, 0 };
+	String abbrvs[3] = {"seconds", "minutes", "hours"};
+
+	int intervals[3] = {1, 60, 3600};
+	int values[3] = {0, 0, 0};
 
 	StringBuffer str;
 
 	for (int i = 2; i > -1; --i) {
-		values[i] = floor((float) timestamp / intervals[i]);
+		values[i] = floor((float)timestamp / intervals[i]);
 		timestamp -= values[i] * intervals[i];
 
 		if (values[i] > 0) {
-			if (str.length() > 0){
+			if (str.length() > 0) {
 				str << ", ";
 			}
 

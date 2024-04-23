@@ -199,7 +199,7 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	}
 }
 
-void SceneObjectImplementation::setZoneComponent(const String& name) {
+void SceneObjectImplementation::setGroundZoneComponent(const String& name) {
 	if (name.isEmpty())
 		return;
 
