@@ -87,6 +87,8 @@ class EventPerkDeed extends Deed {
 
 	public native void parseChildObjects(SceneObject parent);
 
+	private native void createNpcActorPerk(CreatureObject player);
+
 	public void setOwner(CreatureObject player) {
 		owner = player;
 	}
