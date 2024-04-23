@@ -46,6 +46,7 @@ object_tangible_deed_event_perk_npc_actor_deed = object_tangible_deed_event_perk
 	gameObjectType = 8388615,
 	noTrade = 1,
 
+	perkType = NPCACTOR,
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_event_perk_npc_actor_deed, "object/tangible/deed/event_perk/npc_actor_deed.iff")

@@ -31,10 +31,10 @@ class CreateVendorSession extends Facade {
 		player = play;
 		suiNameVendor = null;
 	}
-	
+
 	// Session
 	public native int initializeSession();
-	
+
 	public int cancelSession() {
 		CreatureObject play = player;
 
@@ -44,7 +44,7 @@ class CreateVendorSession extends Facade {
 		clearSession();
 		return 0;
 	}
-	
+
 	public int clearSession() {
 		player = null;
 		currentNode = null;
@@ -57,15 +57,4 @@ class CreateVendorSession extends Facade {
 	public native void handleVendorSelection(byte menuID);
 
 	public native void createVendor(string name);
-
-	public native void randomizeVendorLooks(CreatureObject vendor);
-	
-	private native void randomizeVendorClothing(CreatureObject vendor, VendorCreatureTemplate vendorTempl);
-	
-	private native void randomizeVendorHair(CreatureObject vendor, VendorCreatureTemplate vendorTempl);
-	
-	private native void randomizeVendorFeatures(CreatureObject vendor, VendorCreatureTemplate vendorTempl);
-	
-	private native void randomizeVendorHeight(CreatureObject vendor, VendorCreatureTemplate vendorTempl);
-
 }

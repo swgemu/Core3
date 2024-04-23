@@ -9,6 +9,8 @@ void PersonnelPerkZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zo
 	if (zne == nullptr)
 		return;
 
+	info(true) << "PersonnelPerk Inserted to zone - " << sceneObject->getDisplayedName();
+
 	if (sceneObject->getServerObjectCRC() == 0x740E97C5 || sceneObject->getServerObjectCRC() == 0xCA8B8505) {
 		CreatureManager* creatureManager = zne->getCreatureManager();
 		CreatureObject* recruiter = nullptr;
@@ -31,9 +33,13 @@ void PersonnelPerkZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zo
 
 	EventPerkDeed* deed = data->getDeed();
 
-	if (deed == nullptr)
+	if (deed == nullptr) {
 		return;
+	}
 
-	if (deed->getPerkType() == EventPerkDeedTemplate::HONORGUARD || deed->getPerkType() == EventPerkDeedTemplate::RECRUITER)
+	const int perkType = deed->getPerkType();
+
+	if (perkType == EventPerkDeedTemplate::HONORGUARD || perkType == EventPerkDeedTemplate::RECRUITER || perkType == EventPerkDeedTemplate::NPCACTOR) {
 		deed->parseChildObjects(sceneObject);
+	}
 }

@@ -1,0 +1,82 @@
+/*
+*			Copyright <SWGEmu>
+*	See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.player.sessions.vendor;
+
+import engine.log.Logger;
+import engine.util.Facade;
+import server.zone.objects.creature.CreatureObject;
+include server.zone.objects.scene.SessionFacadeType;
+include server.zone.objects.player.sui.listbox.SuiListBox;
+include server.zone.objects.player.sui.inputbox.SuiInputBox;
+include server.zone.managers.vendor.VendorSelectionNode;
+include server.zone.objects.tangible.deed.eventperk.EventPerkDeed;
+include engine.util.u3d.Vector3;
+
+class NpcActorCreationSession extends Facade {
+	@weakReference
+	protected CreatureObject weakPlayer;
+
+	@weakReference
+	protected EventPerkDeed weakPerkDeed;
+
+	VendorSelectionNode currentNode;
+
+	protected SuiListBox actorSelection;
+	protected SuiInputBox suiNameActor;
+
+	@dereferenced
+	private Vector3 actorPosition;
+	private string zoneName;
+
+	private string templatePath;
+
+	public NpcActorCreationSession(CreatureObject player, EventPerkDeed eventDeed, final string nameOfZone) {
+		Logger.setLoggingName("NpcActorCreationSession");
+		Logger.setLogging(true);
+
+		weakPlayer = player;
+		weakPerkDeed = eventDeed;
+
+		zoneName = nameOfZone;
+
+		actorSelection = null;
+		suiNameActor = null;
+
+		templatePath = "";
+	}
+
+	// Session
+	public native int initializeSession();
+
+	public int cancelSession() {
+		CreatureObject player = weakPlayer;
+
+		if (player) {
+			player.dropActiveSession(SessionFacadeType.NPCACTORCREATION);
+		}
+
+		clearSession();
+		return 0;
+	}
+
+	public int clearSession() {
+		weakPlayer = null;
+		weakPerkDeed = null;
+		currentNode = null;
+
+		actorSelection = null;
+		suiNameActor = null;
+
+		return 0;
+	}
+
+	// Set the template for the chosen actor and prompt a name selection
+	public native void setNpcActorSelection(int menuID);
+
+	public native void promptNameSelection();
+
+	public native void createNpcActor(final string name);
+}

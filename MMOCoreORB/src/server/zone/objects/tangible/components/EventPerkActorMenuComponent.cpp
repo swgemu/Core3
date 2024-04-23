@@ -1,0 +1,227 @@
+/*
+* EventPerkActorMenuComponent.cpp
+*
+* 2024-04-23
+* By: Hakry
+*
+*/
+
+
+#include "server/zone/objects/tangible/components/EventPerkActorMenuComponent.h"
+#include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
+#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "templates/tangible/EventPerkDeedTemplate.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/chat/ChatManager.h"
+
+void EventPerkActorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
+	if (sceneObject == nullptr || player == nullptr) {
+		return;
+	}
+
+	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
+
+	auto zoneServer = sceneObject->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	const ContainerPermissions* permissions = sceneObject->getContainerPermissions();
+	if (permissions == nullptr) {
+		return;
+	}
+
+	uint64 parentID = permissions->getOwnerID();
+	auto parentPerk = zoneServer->getObject(parentID);
+
+	if (parentPerk == nullptr) {
+		return;
+	}
+
+	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(parentPerk->getDataObjectComponent()->get());
+
+	if (data == nullptr) {
+		return;
+	}
+
+	EventPerkDeed* deed = data->getDeed();
+
+	if (deed == nullptr) {
+		return;
+	}
+
+	ManagedReference<CreatureObject*> owner = deed->getOwner().get();
+
+	if (owner == nullptr) {
+		return;
+	}
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr) {
+		return;
+	}
+
+	bool privilegedAccess = ghost->isPrivileged();
+
+	if (!privilegedAccess && owner->getObjectID() != player->getObjectID()) {
+		return;
+	}
+
+	// Main Menu
+	menuResponse->addRadialMenuItem(RadialOptions::SERVER_MENU1, 3, "@event_perk_npc_actor:actor_control"); // "Control Actor"
+
+	bool actorIsPerforming = false;
+
+	if (!actorIsPerforming) {
+		// Enable Actor Performance
+		menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU2, 3, "@event_perk_npc_actor:actor_areabarks_on");
+	} else {
+		// Disable Actor Performance
+		menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU2, 3, "@event_perk_npc_actor:actor_areabarks_off");
+	}
+
+	// Customize Clothing
+	menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU3, 3, "@event_perk_npc_actor:customize_actor");
+
+	// Show Expiration Time
+	menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU8, 3, "@event_perk:mnu_show_exp_time");
+
+	if (privilegedAccess) {
+		menuResponse->addRadialMenuItem(RadialOptions::SERVER_OBSERVE, 3, "Display Perk Component");
+	}
+}
+
+int EventPerkActorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
+	if (sceneObject == nullptr || player == nullptr || !sceneObject->isAiAgent()) {
+		return 1;
+	}
+
+	auto actorAgent = sceneObject->asAiAgent();
+
+	if (actorAgent == nullptr) {
+		return 1;
+	}
+
+	auto zoneServer = actorAgent->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 1;
+	}
+
+	const ContainerPermissions* permissions = sceneObject->getContainerPermissions();
+
+	if (permissions == nullptr) {
+		return 1;
+	}
+
+	uint64 parentID = permissions->getOwnerID();
+
+	auto parentPerk = zoneServer->getObject(parentID);
+
+	if (parentPerk == nullptr) {
+		return 1;
+	}
+
+	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(parentPerk->getDataObjectComponent()->get());
+
+	if (data == nullptr) {
+		return 1;
+	}
+
+	auto deed = data->getDeed();
+
+	if (deed == nullptr) {
+		return 1;
+	}
+
+	switch(selectedID) {
+		// Main Menu
+		case(RadialOptions::SERVER_MENU1):
+			return 0;
+		// Toggle Performance
+		case(RadialOptions::SERVER_MENU2): {
+			bool actorIsPerforming = false;
+
+			if (actorIsPerforming) {
+				player->sendSystemMessage("@event_perk_npc_actor:areabarks_disabled"); // The actor will no longer perform.
+
+				// TODO: Toggle area bark
+			} else {
+				player->sendSystemMessage("@event_perk_npc_actor:areabarks_enabled"); // When conversed with the actor will now perform.
+
+				// TODO: Send list box to select animation, mood, and bark message
+			}
+
+			return 0;
+		}
+		// Request to customize clothing
+		case(RadialOptions::SERVER_MENU3): {
+
+			auto chatManager = zoneServer->getChatManager();
+
+			if (chatManager == nullptr) {
+				return 1;
+			}
+
+			int species = actorAgent->getSpecies();
+
+			if (species == CreatureObject::ITHORIAN) {
+				chatManager->broadcastChatMessage(actorAgent, "@event_perk_npc_actor:wear_no_ithorian", 0, 0, chatManager->getMoodID("stubborn"));
+				actorAgent->doAnimation("wave_on_dismissing");
+			} else {
+				chatManager->broadcastChatMessage(actorAgent, "@event_perk_npc_actor:wear_how", 0, 0, chatManager->getMoodID("cheerful"));
+				actorAgent->doAnimation("slow_down");
+			}
+
+			return 0;
+		}
+		case(RadialOptions::SERVER_MENU8): {
+			Time* purchaseTime = deed->getPurchaseTime();
+
+			if (purchaseTime == nullptr) {
+				return 1;
+			}
+
+			Time currentTime;
+			uint64 timeDelta = currentTime.getMiliTime() - purchaseTime->getMiliTime();
+
+			uint64 minutes = (EventPerkDeedTemplate::TIME_TO_LIVE - timeDelta) / 60000;
+
+			StringIdChatParameter params("event_perk", "show_exp_time"); // This rental will expire in approximately %DI minutes.
+			params.setDI(minutes);
+
+			// Send message to player
+			player->sendSystemMessage(params);
+
+			return 0;
+		}
+		case (RadialOptions::SERVER_OBSERVE): {
+			auto perkTano = parentPerk->asTangibleObject();
+
+			if (perkTano == nullptr) {
+				return 1;
+			}
+
+			Locker perClock(perkTano, sceneObject);
+
+			if (!perkTano->isInvisible()) {
+				perkTano->setInvisible(true);
+				sceneObject->broadcastDestroy(perkTano, false);
+			} else {
+				perkTano->setInvisible(false);
+				sceneObject->broadcastObject(perkTano, false);
+			}
+
+			return 0;
+		}
+		default:
+			break;
+	}
+
+	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
+}
